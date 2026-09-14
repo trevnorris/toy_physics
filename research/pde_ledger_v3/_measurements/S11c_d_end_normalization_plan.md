@@ -35,6 +35,13 @@ repository root for the current normalization command and durable live logs.
    metadata path, full-basis ranks, source joins and transcript census.
    A finite-contrast raw balance discrepancy must be investigated against its
    recorded truncation remainder; it cannot be silently accepted as closure.
+   RIGHT's completed investigation finds only eta-squared coefficients in the
+   saved discarded balance and its regular-sheet derivatives. Contract these
+   independent operands through every full right and adjoint basis, emit the
+   raw residual, remainder and difference separately, and require the
+   difference to meet the numerical diagnostic threshold. Preserve the raw
+   nonzero values in the accepted inventory. Apply the same calculation to
+   LEFT and REFERENCE; do not infer their results from RIGHT.
    Publish each accepted transcript atomically and save with DataLad/git-annex;
    commit ordinary source, plan, report and inventory files with Git. Verify
    full payload hashes after annexing before the next stage.

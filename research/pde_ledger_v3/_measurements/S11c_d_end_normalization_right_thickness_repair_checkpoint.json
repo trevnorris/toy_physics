@@ -1,0 +1,1313 @@
+{
+  "end": "RIGHT",
+  "case": "LAB_HELD_RHO4_CONSTANT",
+  "prefix": "END_NORMALIZATION_RIGHT_LAB_HELD_RHO4_CONSTANT",
+  "provenance": {
+    "producerManifestSha256": "7ba5c4aee54860f3665099ef33fc048602a53c742f41360ce46bcc1e75b82421",
+    "cacheSha256": "1d52bed28683e0736324e3cf46b3a69cdc092df6368b1036595b40dc4aaae8e2",
+    "producerTranscriptSha256": "19822837896b084fb8bcbd11b16aa5120e2c5b01c1c3084357aed279b7b70ce8",
+    "producerSources": {
+      "_measurements/S11c_thickness_coordinate_run_stage.py": "4ceed1f51d256e12cc14f05268d3354f220a80cb4c798916e56f1aed2bc579f4",
+      "scripts/S11c_d_mixing_scattering_sympy_audit.py": "7926ec3bb2e456f49b33fd025b901ecf836ca690178fb7f0d3d335a37874a0f1",
+      "scripts/ledger_fold.py": "97da78c6631c09e5575dd14511760506f1ac08771cf07948978004e92f0b2333",
+      "directives/S11c_d_SHARED_PHYSICS.md": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5",
+      "scripts/S11c_b_exports.py": "3c6555f90a85382a5e96f3f961f0e36a4875d9259fe1be947fa8e683669b7084",
+      "scripts/S11c_c1_exports.py": "a5353b86dc526fd1b56734fdbdf7dc7f42387a3195ab4de84e8994f751871cdc",
+      "scripts/S11c_c2_exports.py": "2ba5ed487b84ecb98290df6f1650fa6210fe2784cfa02a0f3cff96cd718411cd",
+      "directives/S11c_d_sympy_build_PROGRAM_BRIEF.md": "64d4acaf2b207ef5f8d46dd9f0d4a2eccdb73a6ecce25e0f7d5afd0aee453bed",
+      "directives/S11c_d_sympy_build_directive.md": "455294b7fd0995bb1bb5fc9a3017c34b76dbb54f41fbbe93d6d4b82f86de8851",
+      "scripts/S11c_d_output_codec.py": "49873a2fa5c3184aab097263f0a6128379e094e42dbde5052456c5f3908bf717",
+      "_measurements/S11c_d_channel_preflight_input.json": "db0d6f4dd955515e2c53e59039bb36c65ba6736f0233e8a20db9356ef24fb6b4"
+    },
+    "engineSha256": "d1c94521de128e6f11357ac990664dee1ae481333cb04806f9ce88d37c6b118a",
+    "instrumentSha256": "bacf421e5d9489b99d975f083e5524a6a341456c065ef873eb99727a0f0e3579",
+    "inputSha256": "db0d6f4dd955515e2c53e59039bb36c65ba6736f0233e8a20db9356ef24fb6b4",
+    "end": "RIGHT",
+    "case": "LAB_HELD_RHO4_CONSTANT",
+    "sourceCheckpointSha256": "89f67d0cce6740c3e360c1523c0db5414664f9853fe130adfb3ce8373fa6686c",
+    "sourcePacketSha256": "56825f670042c21e56ac6b02ce553b90227158704b4fb40c6b9f8f8c03071b1a",
+    "sourceConstructors": [
+      "UniformSlabCurrent",
+      "SlabEnergyBalance",
+      "ClosedAcousticEnergy",
+      "ConstantEndPencil",
+      "polynomial_terms"
+    ],
+    "sourceEnergySha256": "962396dcb7c7abb5640b19e5b79fea5fb16a4a1a8b2b7f40d2c9fbec899e801c",
+    "sourcePencilStructuralJoin": true,
+    "sourceProfileStructuralJoin": true,
+    "pairingCheckpointSha256": "e8e0d0771bd4365055351bdc041f0a45020f5252bdb5ff5793592d1c9c388605",
+    "pairingCacheSha256": "690ceb5c452de298f67ec929cacb76d7d16e182efcd321f9692ecf1cbd28b628",
+    "pairingRetainedResidualScalars": 802,
+    "pairingRetainedNonzeroScalars": 0,
+    "nativePacket": "PY_S11CD_END_SPECTRUM_INPUT_RIGHT_LAB_HELD_RHO4_CONSTANT_0",
+    "rootDiskCount": 9,
+    "rootLiftCount": 18,
+    "physicalPencilJoin": true,
+    "frequencyCheckpointSha256": "5835984d1daff0078ec248710df0b77cf073d166cfc663d7f6fac957c4d1e588",
+    "frequencyCacheSha256": "7a282d5a052e44cee5371261da05473ccb45c6139ec05a0b709dd33956c99191"
+  },
+  "sourceFiles": {
+    "scripts/S11c_d_mixing_scattering_sympy_audit.py": "d1c94521de128e6f11357ac990664dee1ae481333cb04806f9ce88d37c6b118a",
+    "scripts/S11c_d_output_codec.py": "49873a2fa5c3184aab097263f0a6128379e094e42dbde5052456c5f3908bf717",
+    "scripts/ledger_fold.py": "97da78c6631c09e5575dd14511760506f1ac08771cf07948978004e92f0b2333",
+    "_measurements/S11c_d_end_normalization_check.py": "bacf421e5d9489b99d975f083e5524a6a341456c065ef873eb99727a0f0e3579",
+    "_measurements/S11c_d_end_normalization_validate.py": "0380f9436ba88f75e9a4cffacaa183995c1632ceb06636604dd4841cc88d99e1",
+    "_measurements/S11c_d_end_pairing_check.py": "1fcf86b0be819e2c7e9a2127d8330c907bcaccf58d1d15c3f1534d594d926dee",
+    "_measurements/S11c_d_modal_current_check.py": "776fb44142aa62f940f61dbafe9dc664656f94431d74029d9580f2a407671708",
+    "_measurements/S11c_d_joint_sheet_check.py": "bee88e06b32a406ca405d686856d26cc8353964ec05e106b9b12389d324b4200",
+    "_measurements/S11c_d_current_reality_check.py": "ef4cf975f34123cc4e585432e1311a395f70cbbd9d63640f0a2eef2b72ee1cb1"
+  },
+  "recordCount": 18,
+  "basisDirections": 22,
+  "nullityCounts": {
+    "1": 14,
+    "2": 4
+  },
+  "definedFieldMaps": 18,
+  "physicalCurrentNormalizationCount": 2,
+  "coefficientResidualScalars": 250,
+  "coefficientNonzeroScalars": 0,
+  "symbolicResidualScalars": 50,
+  "symbolicNonzeroScalars": 0,
+  "modalResidualNormMaxima": {
+    "CONJUGATE_PENCIL": 4.440892632559174e-16,
+    "CONJUGATE_POWER_MAP": 0.0,
+    "CURRENT_DIAGONALIZATION": 4.440892098500626e-16,
+    "CURRENT_HERMITIAN": 7.979727989493313e-17,
+    "ENERGY_HERMITIAN": 8.881784197001252e-16,
+    "FINITE_BALANCE": 3.356728901572596e-06,
+    "FLUX_FREQUENCY_NORMALIZATION": 4.0829350897698436e-16,
+    "FLUX_LEFT_KERNEL": 2.1597905938105276e-16,
+    "FLUX_RIGHT_KERNEL": 4.663895485497248e-16,
+    "FREQUENCY_BALANCE_DERIVATIVE": 2.4000448163983938e-05,
+    "FREQUENCY_CURRENT_ENERGY_RECONSTRUCTION": 2.4000448164552826e-05,
+    "FREQUENCY_NORMALIZATION": 5.801131102572949e-15,
+    "FREQUENCY_ROW_PAIRING_BRIDGE": 1.9153403449637975e-16,
+    "INFINITE_CURRENT_HERMITIAN": 8.881784197001252e-16,
+    "LEFT_BASIS": 1.1365772226214924e-15,
+    "LEFT_KERNEL": 5.5097271857096295e-15,
+    "LEFT_PROJECTOR": 1.2017461522637832e-15,
+    "NORMALIZED_LEFT_KERNEL": 7.968136216289003e-14,
+    "NORMALIZED_POWER_LEFT_SPLIT": 1.1470611239840712e-16,
+    "NORMAL_BALANCE_DERIVATIVE": 3.1165783561057635e-05,
+    "NORMAL_CURRENT_ENERGY_RECONSTRUCTION": 3.1165783561041216e-05,
+    "NORMAL_ROW_PAIRING_BRIDGE": 3.552713678800501e-15,
+    "POWER_LEFT_SPLIT": 0.0,
+    "RIGHT_BASIS": 5.043363483670664e-16,
+    "RIGHT_KERNEL": 4.707768288161083e-15,
+    "RIGHT_PROJECTOR": 4.658236695625619e-16,
+    "SIGNED_CURRENT_NORMALIZATION": 3.2509274339057394e-16
+  },
+  "adjointResidualNormMaxima": {
+    "ADJOINT_WEIGHTED_KERNEL": 8.387647217030525e-14,
+    "BASIS_BRIDGE": 3.737758995854663e-15,
+    "BASIS_DEFECT": 7.72490363801826e-16,
+    "BASIS_FIELD_MAP": 7.645413378870353e-19,
+    "BASIS_FREQUENCY_PAIRING": 5.801131102572949e-15,
+    "BASIS_MIXED_CURRENT": 5.154477250192718e-16,
+    "BASIS_PHYSICAL_CURRENT": 9.05465834433109e-16,
+    "CURRENT_FINITE_BRIDGE_RECONSTRUCTION": 3.711916995117355e-16,
+    "CURRENT_FINITE_PHYSICAL_JOIN": 0.0,
+    "CURRENT_INFINITE_BRIDGE_RECONSTRUCTION": 3.580361673049448e-15,
+    "CURRENT_INFINITE_PHYSICAL_JOIN": 0.0,
+    "ENERGY_FINITE_BRIDGE_RECONSTRUCTION": 9.155133597044475e-16,
+    "ENERGY_FINITE_PHYSICAL_JOIN": 0.0,
+    "FREQUENCY_MIXED_BALANCE_DERIVATIVE": 0.0019949982832742456,
+    "FREQUENCY_MIXED_CURRENT_ENERGY_RECONSTRUCTION": 0.001994998283251517,
+    "FREQUENCY_PAIRING_COVARIANCE": 4.996947982117292e-15,
+    "FREQUENCY_PRODUCT_RULE": 2.223194897777502e-15,
+    "INVERSE_SOLVE_JOIN": 3.190032237666424e-14,
+    "NORMAL_MIXED_BALANCE_DERIVATIVE": 0.013414257118491698,
+    "NORMAL_MIXED_CURRENT_ENERGY_RECONSTRUCTION": 0.013414257118483696,
+    "NORMAL_PAIRING_COVARIANCE": 1.517719948885615e-14,
+    "NORMAL_PRODUCT_RULE": 3.502142286644957e-14,
+    "PHYSICAL_FIELD_RECONSTRUCTION": 4.58826851275338e-16,
+    "RIGHT_WEIGHTED_KERNEL": 1.2183213543486752e-15,
+    "ROW_TO_FIELD": 5.333694441429199e-15,
+    "SIGNED_CURRENT_RECONSTRUCTION": 4.974880484721513e-16,
+    "SOURCE_PENCIL_JOIN": 0.0,
+    "SOURCE_POWER_MAP_JOIN": 0.0,
+    "WEIGHTED_FREQUENCY_NORMALIZATION": 4.058986044477193e-15
+  },
+  "frequencyJoins": [
+    {
+      "index": 0,
+      "discreteResiduals": {
+        "INDEX": 0,
+        "ROOT_DISK_INDEX": 0,
+        "NORMAL_LIFT_SIGN": 0,
+        "NULLITY": 0,
+        "FREQUENCY_PAIRING_RANK": 0,
+        "RIGHT_BASIS_RANK": 0,
+        "LEFT_BASIS_RANK": 0
+      },
+      "residualNorms": {
+        "RIGHT_PROJECTOR": 6.148540959017084e-16,
+        "LEFT_PROJECTOR": 4.5536918530173485e-16,
+        "FREQUENCY_MATRIX": 6.015151650916092e-16
+      },
+      "liftDifferenceNorms": {
+        "K": 1.8305014624533087e-16,
+        "Q": 8.182330069738499e-16
+      }
+    },
+    {
+      "index": 1,
+      "discreteResiduals": {
+        "INDEX": 0,
+        "ROOT_DISK_INDEX": 0,
+        "NORMAL_LIFT_SIGN": 0,
+        "NULLITY": 0,
+        "FREQUENCY_PAIRING_RANK": 0,
+        "RIGHT_BASIS_RANK": 0,
+        "LEFT_BASIS_RANK": 0
+      },
+      "residualNorms": {
+        "RIGHT_PROJECTOR": 6.148540959017084e-16,
+        "LEFT_PROJECTOR": 4.5536918530173485e-16,
+        "FREQUENCY_MATRIX": 6.015151650916092e-16
+      },
+      "liftDifferenceNorms": {
+        "K": 1.8305014624533087e-16,
+        "Q": 8.182330069738499e-16
+      }
+    },
+    {
+      "index": 2,
+      "discreteResiduals": {
+        "INDEX": 0,
+        "ROOT_DISK_INDEX": 0,
+        "NORMAL_LIFT_SIGN": 0,
+        "NULLITY": 0,
+        "FREQUENCY_PAIRING_RANK": 0,
+        "RIGHT_BASIS_RANK": 0,
+        "LEFT_BASIS_RANK": 0
+      },
+      "residualNorms": {
+        "RIGHT_PROJECTOR": 6.217050073642659e-16,
+        "LEFT_PROJECTOR": 8.221121110977332e-16,
+        "FREQUENCY_MATRIX": 4.932185106688458e-16
+      },
+      "liftDifferenceNorms": {
+        "K": 1.8614926822754936e-16,
+        "Q": 4.845408959633774e-16
+      }
+    },
+    {
+      "index": 3,
+      "discreteResiduals": {
+        "INDEX": 0,
+        "ROOT_DISK_INDEX": 0,
+        "NORMAL_LIFT_SIGN": 0,
+        "NULLITY": 0,
+        "FREQUENCY_PAIRING_RANK": 0,
+        "RIGHT_BASIS_RANK": 0,
+        "LEFT_BASIS_RANK": 0
+      },
+      "residualNorms": {
+        "RIGHT_PROJECTOR": 6.217050073642659e-16,
+        "LEFT_PROJECTOR": 8.221121110977332e-16,
+        "FREQUENCY_MATRIX": 4.932185106688458e-16
+      },
+      "liftDifferenceNorms": {
+        "K": 1.8614926822754936e-16,
+        "Q": 4.845408959633774e-16
+      }
+    },
+    {
+      "index": 4,
+      "discreteResiduals": {
+        "INDEX": 0,
+        "ROOT_DISK_INDEX": 0,
+        "NORMAL_LIFT_SIGN": 0,
+        "NULLITY": 0,
+        "FREQUENCY_PAIRING_RANK": 0,
+        "RIGHT_BASIS_RANK": 0,
+        "LEFT_BASIS_RANK": 0
+      },
+      "residualNorms": {
+        "RIGHT_PROJECTOR": 6.295138105113418e-16,
+        "LEFT_PROJECTOR": 8.4360906433854495e-16,
+        "FREQUENCY_MATRIX": 3.995382106136554e-14
+      },
+      "liftDifferenceNorms": {
+        "K": 1.222766083992805e-18,
+        "Q": 4.916095877805191e-17
+      }
+    },
+    {
+      "index": 5,
+      "discreteResiduals": {
+        "INDEX": 0,
+        "ROOT_DISK_INDEX": 0,
+        "NORMAL_LIFT_SIGN": 0,
+        "NULLITY": 0,
+        "FREQUENCY_PAIRING_RANK": 0,
+        "RIGHT_BASIS_RANK": 0,
+        "LEFT_BASIS_RANK": 0
+      },
+      "residualNorms": {
+        "RIGHT_PROJECTOR": 6.295138105113418e-16,
+        "LEFT_PROJECTOR": 8.4360906433854495e-16,
+        "FREQUENCY_MATRIX": 3.995382106136554e-14
+      },
+      "liftDifferenceNorms": {
+        "K": 1.222766083992805e-18,
+        "Q": 4.916095877805191e-17
+      }
+    },
+    {
+      "index": 6,
+      "discreteResiduals": {
+        "INDEX": 0,
+        "ROOT_DISK_INDEX": 0,
+        "NORMAL_LIFT_SIGN": 0,
+        "NULLITY": 0,
+        "FREQUENCY_PAIRING_RANK": 0,
+        "RIGHT_BASIS_RANK": 0,
+        "LEFT_BASIS_RANK": 0
+      },
+      "residualNorms": {
+        "RIGHT_PROJECTOR": 5.511782834569484e-16,
+        "LEFT_PROJECTOR": 5.689430213163507e-16,
+        "FREQUENCY_MATRIX": 2.447582644091524e-16
+      },
+      "liftDifferenceNorms": {
+        "K": 5.392511094487528e-17,
+        "Q": 2.484413358232556e-16
+      }
+    },
+    {
+      "index": 7,
+      "discreteResiduals": {
+        "INDEX": 0,
+        "ROOT_DISK_INDEX": 0,
+        "NORMAL_LIFT_SIGN": 0,
+        "NULLITY": 0,
+        "FREQUENCY_PAIRING_RANK": 0,
+        "RIGHT_BASIS_RANK": 0,
+        "LEFT_BASIS_RANK": 0
+      },
+      "residualNorms": {
+        "RIGHT_PROJECTOR": 5.511782834569484e-16,
+        "LEFT_PROJECTOR": 5.689430213163507e-16,
+        "FREQUENCY_MATRIX": 2.447582644091524e-16
+      },
+      "liftDifferenceNorms": {
+        "K": 5.392511094487528e-17,
+        "Q": 2.484413358232556e-16
+      }
+    },
+    {
+      "index": 8,
+      "discreteResiduals": {
+        "INDEX": 0,
+        "ROOT_DISK_INDEX": 0,
+        "NORMAL_LIFT_SIGN": 0,
+        "NULLITY": 0,
+        "FREQUENCY_PAIRING_RANK": 0,
+        "RIGHT_BASIS_RANK": 0,
+        "LEFT_BASIS_RANK": 0
+      },
+      "residualNorms": {
+        "RIGHT_PROJECTOR": 1.1944477038514177e-15,
+        "LEFT_PROJECTOR": 8.08454250347328e-16,
+        "FREQUENCY_MATRIX": 2.780799568681879e-16
+      },
+      "liftDifferenceNorms": {
+        "K": 1.4301859177058828e-17,
+        "Q": 2.389875959205201e-16
+      }
+    },
+    {
+      "index": 9,
+      "discreteResiduals": {
+        "INDEX": 0,
+        "ROOT_DISK_INDEX": 0,
+        "NORMAL_LIFT_SIGN": 0,
+        "NULLITY": 0,
+        "FREQUENCY_PAIRING_RANK": 0,
+        "RIGHT_BASIS_RANK": 0,
+        "LEFT_BASIS_RANK": 0
+      },
+      "residualNorms": {
+        "RIGHT_PROJECTOR": 1.1944477038514177e-15,
+        "LEFT_PROJECTOR": 8.08454250347328e-16,
+        "FREQUENCY_MATRIX": 2.780799568681879e-16
+      },
+      "liftDifferenceNorms": {
+        "K": 1.4301859177058828e-17,
+        "Q": 2.389875959205201e-16
+      }
+    },
+    {
+      "index": 10,
+      "discreteResiduals": {
+        "INDEX": 0,
+        "ROOT_DISK_INDEX": 0,
+        "NORMAL_LIFT_SIGN": 0,
+        "NULLITY": 0,
+        "FREQUENCY_PAIRING_RANK": 0,
+        "RIGHT_BASIS_RANK": 0,
+        "LEFT_BASIS_RANK": 0
+      },
+      "residualNorms": {
+        "RIGHT_PROJECTOR": 2.8745434471786387e-16,
+        "LEFT_PROJECTOR": 2.2484054495138425e-16,
+        "FREQUENCY_MATRIX": 4.5788059093331e-16
+      },
+      "liftDifferenceNorms": {
+        "K": 1.3207030900147393e-16,
+        "Q": 4.2543461745557663e-16
+      }
+    },
+    {
+      "index": 11,
+      "discreteResiduals": {
+        "INDEX": 0,
+        "ROOT_DISK_INDEX": 0,
+        "NORMAL_LIFT_SIGN": 0,
+        "NULLITY": 0,
+        "FREQUENCY_PAIRING_RANK": 0,
+        "RIGHT_BASIS_RANK": 0,
+        "LEFT_BASIS_RANK": 0
+      },
+      "residualNorms": {
+        "RIGHT_PROJECTOR": 2.8745434471786387e-16,
+        "LEFT_PROJECTOR": 2.2484054495138425e-16,
+        "FREQUENCY_MATRIX": 4.5788059093331e-16
+      },
+      "liftDifferenceNorms": {
+        "K": 1.3207030900147393e-16,
+        "Q": 4.2543461745557663e-16
+      }
+    },
+    {
+      "index": 12,
+      "discreteResiduals": {
+        "INDEX": 0,
+        "ROOT_DISK_INDEX": 0,
+        "NORMAL_LIFT_SIGN": 0,
+        "NULLITY": 0,
+        "FREQUENCY_PAIRING_RANK": 0,
+        "RIGHT_BASIS_RANK": 0,
+        "LEFT_BASIS_RANK": 0
+      },
+      "residualNorms": {
+        "RIGHT_PROJECTOR": 5.597845813092019e-16,
+        "LEFT_PROJECTOR": 6.371369122433721e-16,
+        "FREQUENCY_MATRIX": 5.154784088943445e-16
+      },
+      "liftDifferenceNorms": {
+        "K": 9.378768811937219e-17,
+        "Q": 2.9913902919103326e-15
+      }
+    },
+    {
+      "index": 13,
+      "discreteResiduals": {
+        "INDEX": 0,
+        "ROOT_DISK_INDEX": 0,
+        "NORMAL_LIFT_SIGN": 0,
+        "NULLITY": 0,
+        "FREQUENCY_PAIRING_RANK": 0,
+        "RIGHT_BASIS_RANK": 0,
+        "LEFT_BASIS_RANK": 0
+      },
+      "residualNorms": {
+        "RIGHT_PROJECTOR": 5.597845813092019e-16,
+        "LEFT_PROJECTOR": 6.371369122433721e-16,
+        "FREQUENCY_MATRIX": 5.154784088943445e-16
+      },
+      "liftDifferenceNorms": {
+        "K": 9.378768811937219e-17,
+        "Q": 2.9913902919103326e-15
+      }
+    },
+    {
+      "index": 14,
+      "discreteResiduals": {
+        "INDEX": 0,
+        "ROOT_DISK_INDEX": 0,
+        "NORMAL_LIFT_SIGN": 0,
+        "NULLITY": 0,
+        "FREQUENCY_PAIRING_RANK": 0,
+        "RIGHT_BASIS_RANK": 0,
+        "LEFT_BASIS_RANK": 0
+      },
+      "residualNorms": {
+        "RIGHT_PROJECTOR": 7.957484229206175e-16,
+        "LEFT_PROJECTOR": 1.1258579860024534e-15,
+        "FREQUENCY_MATRIX": 4.166484014393338e-16
+      },
+      "liftDifferenceNorms": {
+        "K": 8.963304498639304e-18,
+        "Q": 4.684777775118861e-16
+      }
+    },
+    {
+      "index": 15,
+      "discreteResiduals": {
+        "INDEX": 0,
+        "ROOT_DISK_INDEX": 0,
+        "NORMAL_LIFT_SIGN": 0,
+        "NULLITY": 0,
+        "FREQUENCY_PAIRING_RANK": 0,
+        "RIGHT_BASIS_RANK": 0,
+        "LEFT_BASIS_RANK": 0
+      },
+      "residualNorms": {
+        "RIGHT_PROJECTOR": 7.957484229206175e-16,
+        "LEFT_PROJECTOR": 1.1258579860024534e-15,
+        "FREQUENCY_MATRIX": 4.166484014393338e-16
+      },
+      "liftDifferenceNorms": {
+        "K": 8.963304498639304e-18,
+        "Q": 4.684777775118861e-16
+      }
+    },
+    {
+      "index": 16,
+      "discreteResiduals": {
+        "INDEX": 0,
+        "ROOT_DISK_INDEX": 0,
+        "NORMAL_LIFT_SIGN": 0,
+        "NULLITY": 0,
+        "FREQUENCY_PAIRING_RANK": 0,
+        "RIGHT_BASIS_RANK": 0,
+        "LEFT_BASIS_RANK": 0
+      },
+      "residualNorms": {
+        "RIGHT_PROJECTOR": 1.9066330807859352e-15,
+        "LEFT_PROJECTOR": 5.378533117511891e-16,
+        "FREQUENCY_MATRIX": 2.7916809299318436e-16
+      },
+      "liftDifferenceNorms": {
+        "K": 8.963304498639304e-18,
+        "Q": 4.684777775118861e-16
+      }
+    },
+    {
+      "index": 17,
+      "discreteResiduals": {
+        "INDEX": 0,
+        "ROOT_DISK_INDEX": 0,
+        "NORMAL_LIFT_SIGN": 0,
+        "NULLITY": 0,
+        "FREQUENCY_PAIRING_RANK": 0,
+        "RIGHT_BASIS_RANK": 0,
+        "LEFT_BASIS_RANK": 0
+      },
+      "residualNorms": {
+        "RIGHT_PROJECTOR": 1.9066330807859352e-15,
+        "LEFT_PROJECTOR": 5.378533117511891e-16,
+        "FREQUENCY_MATRIX": 2.7916809299318436e-16
+      },
+      "liftDifferenceNorms": {
+        "K": 8.963304498639304e-18,
+        "Q": 4.684777775118861e-16
+      }
+    }
+  ],
+  "orientationRecords": [
+    {
+      "INDEX": 0,
+      "ROOT_DISK_INDEX": 0,
+      "NORMAL_LIFT_SIGN": 1,
+      "NULLITY": 1,
+      "OUTWARD_FLUX_CLASSIFICATION_DEFINED": false,
+      "SHEET_MEMBERSHIP": "True",
+      "RETAINED_AS_MATCHING_CANDIDATE": true
+    },
+    {
+      "INDEX": 1,
+      "ROOT_DISK_INDEX": 0,
+      "NORMAL_LIFT_SIGN": -1,
+      "NULLITY": 1,
+      "OUTWARD_FLUX_CLASSIFICATION_DEFINED": false,
+      "SHEET_MEMBERSHIP": "True",
+      "RETAINED_AS_MATCHING_CANDIDATE": true
+    },
+    {
+      "INDEX": 2,
+      "ROOT_DISK_INDEX": 1,
+      "NORMAL_LIFT_SIGN": 1,
+      "NULLITY": 1,
+      "OUTWARD_FLUX_CLASSIFICATION_DEFINED": false,
+      "SHEET_MEMBERSHIP": "False",
+      "RETAINED_AS_MATCHING_CANDIDATE": true
+    },
+    {
+      "INDEX": 3,
+      "ROOT_DISK_INDEX": 1,
+      "NORMAL_LIFT_SIGN": -1,
+      "NULLITY": 1,
+      "OUTWARD_FLUX_CLASSIFICATION_DEFINED": false,
+      "SHEET_MEMBERSHIP": "False",
+      "RETAINED_AS_MATCHING_CANDIDATE": true
+    },
+    {
+      "INDEX": 4,
+      "ROOT_DISK_INDEX": 2,
+      "NORMAL_LIFT_SIGN": 1,
+      "NULLITY": 1,
+      "OUTWARD_FLUX_CLASSIFICATION_DEFINED": false,
+      "SHEET_MEMBERSHIP": "True",
+      "RETAINED_AS_MATCHING_CANDIDATE": true
+    },
+    {
+      "INDEX": 5,
+      "ROOT_DISK_INDEX": 2,
+      "NORMAL_LIFT_SIGN": -1,
+      "NULLITY": 1,
+      "OUTWARD_FLUX_CLASSIFICATION_DEFINED": false,
+      "SHEET_MEMBERSHIP": "True",
+      "RETAINED_AS_MATCHING_CANDIDATE": true
+    },
+    {
+      "INDEX": 6,
+      "ROOT_DISK_INDEX": 3,
+      "NORMAL_LIFT_SIGN": 1,
+      "NULLITY": 1,
+      "OUTWARD_FLUX_CLASSIFICATION_DEFINED": false,
+      "SHEET_MEMBERSHIP": "True",
+      "RETAINED_AS_MATCHING_CANDIDATE": true
+    },
+    {
+      "INDEX": 7,
+      "ROOT_DISK_INDEX": 3,
+      "NORMAL_LIFT_SIGN": -1,
+      "NULLITY": 1,
+      "OUTWARD_FLUX_CLASSIFICATION_DEFINED": false,
+      "SHEET_MEMBERSHIP": "True",
+      "RETAINED_AS_MATCHING_CANDIDATE": true
+    },
+    {
+      "INDEX": 8,
+      "ROOT_DISK_INDEX": 4,
+      "NORMAL_LIFT_SIGN": 1,
+      "NULLITY": 1,
+      "OUTWARD_FLUX_CLASSIFICATION_DEFINED": false,
+      "SHEET_MEMBERSHIP": "False",
+      "RETAINED_AS_MATCHING_CANDIDATE": true
+    },
+    {
+      "INDEX": 9,
+      "ROOT_DISK_INDEX": 4,
+      "NORMAL_LIFT_SIGN": -1,
+      "NULLITY": 1,
+      "OUTWARD_FLUX_CLASSIFICATION_DEFINED": false,
+      "SHEET_MEMBERSHIP": "False",
+      "RETAINED_AS_MATCHING_CANDIDATE": true
+    },
+    {
+      "INDEX": 10,
+      "ROOT_DISK_INDEX": 5,
+      "NORMAL_LIFT_SIGN": 1,
+      "NULLITY": 1,
+      "OUTWARD_FLUX_CLASSIFICATION_DEFINED": false,
+      "SHEET_MEMBERSHIP": "False",
+      "RETAINED_AS_MATCHING_CANDIDATE": true
+    },
+    {
+      "INDEX": 11,
+      "ROOT_DISK_INDEX": 5,
+      "NORMAL_LIFT_SIGN": -1,
+      "NULLITY": 1,
+      "OUTWARD_FLUX_CLASSIFICATION_DEFINED": false,
+      "SHEET_MEMBERSHIP": "False",
+      "RETAINED_AS_MATCHING_CANDIDATE": true
+    },
+    {
+      "INDEX": 12,
+      "ROOT_DISK_INDEX": 6,
+      "NORMAL_LIFT_SIGN": 1,
+      "NULLITY": 1,
+      "OUTWARD_FLUX_CLASSIFICATION_DEFINED": false,
+      "SHEET_MEMBERSHIP": "False",
+      "RETAINED_AS_MATCHING_CANDIDATE": true
+    },
+    {
+      "INDEX": 13,
+      "ROOT_DISK_INDEX": 6,
+      "NORMAL_LIFT_SIGN": -1,
+      "NULLITY": 1,
+      "OUTWARD_FLUX_CLASSIFICATION_DEFINED": false,
+      "SHEET_MEMBERSHIP": "False",
+      "RETAINED_AS_MATCHING_CANDIDATE": true
+    },
+    {
+      "INDEX": 14,
+      "ROOT_DISK_INDEX": 7,
+      "NORMAL_LIFT_SIGN": 1,
+      "NULLITY": 2,
+      "OUTWARD_FLUX_CLASSIFICATION_DEFINED": false,
+      "SHEET_MEMBERSHIP": "False",
+      "RETAINED_AS_MATCHING_CANDIDATE": true
+    },
+    {
+      "INDEX": 15,
+      "ROOT_DISK_INDEX": 7,
+      "NORMAL_LIFT_SIGN": -1,
+      "NULLITY": 2,
+      "OUTWARD_FLUX_CLASSIFICATION_DEFINED": false,
+      "SHEET_MEMBERSHIP": "False",
+      "RETAINED_AS_MATCHING_CANDIDATE": true
+    },
+    {
+      "INDEX": 16,
+      "ROOT_DISK_INDEX": 8,
+      "NORMAL_LIFT_SIGN": 1,
+      "NULLITY": 2,
+      "OUTWARD_FLUX_CLASSIFICATION_DEFINED": true,
+      "SHEET_MEMBERSHIP": "True",
+      "RETAINED_AS_MATCHING_CANDIDATE": true,
+      "INCOMING_BASIS_COLUMNS": [],
+      "OUTGOING_BASIS_COLUMNS": [
+        0,
+        1
+      ],
+      "UNCLASSIFIED_BASIS_DIRECTIONS": 0
+    },
+    {
+      "INDEX": 17,
+      "ROOT_DISK_INDEX": 8,
+      "NORMAL_LIFT_SIGN": -1,
+      "NULLITY": 2,
+      "OUTWARD_FLUX_CLASSIFICATION_DEFINED": true,
+      "SHEET_MEMBERSHIP": "True",
+      "RETAINED_AS_MATCHING_CANDIDATE": true,
+      "INCOMING_BASIS_COLUMNS": [
+        0,
+        1
+      ],
+      "OUTGOING_BASIS_COLUMNS": [],
+      "UNCLASSIFIED_BASIS_DIRECTIONS": 0
+    }
+  ],
+  "normalReality": {
+    "diskStatuses": {
+      "PROVED_NONREAL": 7,
+      "PROVED_REAL": 2
+    },
+    "candidateStatuses": {
+      "PROVED_NONREAL": 14,
+      "PROVED_REAL": 4
+    },
+    "axisSets": [
+      {
+        "FACTOR_INDEX": 0,
+        "AXIS": "REAL",
+        "GCD_DEGREE": 0,
+        "REAL_ROOT_COUNT": 0
+      },
+      {
+        "FACTOR_INDEX": 0,
+        "AXIS": "IMAGINARY",
+        "GCD_DEGREE": 0,
+        "REAL_ROOT_COUNT": 0
+      },
+      {
+        "FACTOR_INDEX": 1,
+        "AXIS": "REAL",
+        "GCD_DEGREE": 2,
+        "REAL_ROOT_COUNT": 0
+      },
+      {
+        "FACTOR_INDEX": 1,
+        "AXIS": "IMAGINARY",
+        "GCD_DEGREE": 2,
+        "REAL_ROOT_COUNT": 2
+      }
+    ],
+    "checkedAxisRootIntervals": 2,
+    "literalCertificateResiduals": 19,
+    "normalizedSubspaces": [
+      {
+        "index": 16,
+        "nullity": 2,
+        "k": "0.78951461882180074",
+        "nativeQ": "8.144527815247077*I",
+        "currentEigenvalues": [
+          0.5921359641163506,
+          0.5921359641163506
+        ]
+      },
+      {
+        "index": 17,
+        "nullity": 2,
+        "k": "-0.78951461882180074",
+        "nativeQ": "8.144527815247077*I",
+        "currentEigenvalues": [
+          -0.5921359641163506,
+          -0.5921359641163506
+        ]
+      }
+    ],
+    "normalizedBasisDirections": 4
+  },
+  "wallSeconds": 1904.7402266534045,
+  "peakRssKiB": 202624,
+  "objects": {
+    "modal.pickle": "bd968b271b68d6bf9ec18bf75307594d8a5d0ca779541b40486cf299cb0c5497",
+    "adjoint.pickle": "26313fd4f061495547373a2a9ae131d24483e539cd52f054e6a7381d5bf89129"
+  },
+  "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-end-normalization-20260914/right",
+  "tagCount": 5990,
+  "metadataPaths": 28146,
+  "numericResidualScalars": 5850,
+  "sourceAssignments": 5988,
+  "validationSourceSha256": "24382e1e1b8018a4e7d15052f7950b57be4e9339ac332ed4769b5e0125eec3f3",
+  "residualNormsAboveDiagnosticThreshold": {
+    "MODAL_FINITE_BALANCE": 3.356728901572596e-06,
+    "MODAL_NORMAL_BALANCE_DERIVATIVE": 3.1165783561057635e-05,
+    "MODAL_NORMAL_CURRENT_ENERGY_RECONSTRUCTION": 3.1165783561041216e-05,
+    "MODAL_FREQUENCY_BALANCE_DERIVATIVE": 2.4000448163983938e-05,
+    "MODAL_FREQUENCY_CURRENT_ENERGY_RECONSTRUCTION": 2.4000448164552826e-05,
+    "ADJOINT_NORMAL_MIXED_BALANCE_DERIVATIVE": 0.013414257118491698,
+    "ADJOINT_NORMAL_MIXED_CURRENT_ENERGY_RECONSTRUCTION": 0.013414257118483696,
+    "ADJOINT_FREQUENCY_MIXED_BALANCE_DERIVATIVE": 0.0019949982832742456,
+    "ADJOINT_FREQUENCY_MIXED_CURRENT_ENERGY_RECONSTRUCTION": 0.001994998283251517
+  },
+  "unaccountedResidualNormsAboveDiagnosticThreshold": {},
+  "remainderAccounting": {
+    "pairingCheckpointSha256": "e8e0d0771bd4365055351bdc041f0a45020f5252bdb5ff5793592d1c9c388605",
+    "pairingCacheSha256": "690ceb5c452de298f67ec929cacb76d7d16e182efcd321f9692ecf1cbd28b628",
+    "sourceSha256": "215896c1bf594d7dc6690067b1b00b9b33a8abab0fcf017d109969f1364cff28",
+    "coefficientGradesEtaSigma": {
+      "FINITE": [
+        [
+          2,
+          0
+        ]
+      ],
+      "EQUAL": [
+        [
+          2,
+          0
+        ]
+      ],
+      "NORMAL": [
+        [
+          2,
+          0
+        ]
+      ],
+      "NORMAL_EQUAL": [
+        [
+          2,
+          0
+        ]
+      ],
+      "FREQUENCY": [
+        [
+          2,
+          0
+        ]
+      ],
+      "FREQUENCY_EQUAL": [
+        [
+          2,
+          0
+        ]
+      ]
+    },
+    "algebraicChecks": {
+      "FINITE_DECOMPOSITION": {
+        "scalars": 25,
+        "nonzeroScalars": 0
+      },
+      "FINITE_EPSILON_COEFFICIENT": {
+        "scalars": 25,
+        "nonzeroScalars": 0
+      },
+      "FINITE_RETAINED": {
+        "scalars": 25,
+        "nonzeroScalars": 0
+      },
+      "FINITE_REPROJECTED": {
+        "scalars": 25,
+        "nonzeroScalars": 0
+      },
+      "EQUAL_DECOMPOSITION": {
+        "scalars": 25,
+        "nonzeroScalars": 0
+      },
+      "EQUAL_EPSILON_COEFFICIENT": {
+        "scalars": 25,
+        "nonzeroScalars": 0
+      },
+      "EQUAL_RETAINED": {
+        "scalars": 25,
+        "nonzeroScalars": 0
+      },
+      "EQUAL_REPROJECTED": {
+        "scalars": 25,
+        "nonzeroScalars": 0
+      },
+      "NORMAL_REPROJECTED": {
+        "scalars": 25,
+        "nonzeroScalars": 0
+      },
+      "FREQUENCY_REPROJECTED": {
+        "scalars": 25,
+        "nonzeroScalars": 0
+      },
+      "EQUAL_BRANCH_JOIN": {
+        "scalars": 25,
+        "nonzeroScalars": 0
+      }
+    },
+    "records": [
+      {
+        "index": 0,
+        "rootDiskIndex": 0,
+        "normalLiftSign": 1,
+        "nullity": 1,
+        "rightRank": 1,
+        "adjointRank": 1,
+        "residualMinusRemainderNorms": {
+          "MODAL_FINITE_BALANCE": 4.509003526206002e-17,
+          "MODAL_NORMAL_BALANCE_DERIVATIVE": 7.607361992998216e-17,
+          "MODAL_NORMAL_CURRENT_ENERGY_RECONSTRUCTION": 9.257776954949164e-17,
+          "ADJOINT_NORMAL_MIXED_BALANCE_DERIVATIVE": 1.315950704812441e-14,
+          "ADJOINT_NORMAL_MIXED_CURRENT_ENERGY_RECONSTRUCTION": 2.1183507647292922e-14,
+          "MODAL_FREQUENCY_BALANCE_DERIVATIVE": 2.6821500566323723e-16,
+          "MODAL_FREQUENCY_CURRENT_ENERGY_RECONSTRUCTION": 2.185499163502304e-16,
+          "ADJOINT_FREQUENCY_MIXED_BALANCE_DERIVATIVE": 2.5145738693645643e-14,
+          "ADJOINT_FREQUENCY_MIXED_CURRENT_ENERGY_RECONSTRUCTION": 4.79241448139728e-14
+        }
+      },
+      {
+        "index": 1,
+        "rootDiskIndex": 0,
+        "normalLiftSign": -1,
+        "nullity": 1,
+        "rightRank": 1,
+        "adjointRank": 1,
+        "residualMinusRemainderNorms": {
+          "MODAL_FINITE_BALANCE": 4.509003526206002e-17,
+          "MODAL_NORMAL_BALANCE_DERIVATIVE": 7.607361992998216e-17,
+          "MODAL_NORMAL_CURRENT_ENERGY_RECONSTRUCTION": 9.257776954949164e-17,
+          "ADJOINT_NORMAL_MIXED_BALANCE_DERIVATIVE": 1.315950704812441e-14,
+          "ADJOINT_NORMAL_MIXED_CURRENT_ENERGY_RECONSTRUCTION": 2.1183507647292922e-14,
+          "MODAL_FREQUENCY_BALANCE_DERIVATIVE": 2.6821500566323723e-16,
+          "MODAL_FREQUENCY_CURRENT_ENERGY_RECONSTRUCTION": 2.185499163502304e-16,
+          "ADJOINT_FREQUENCY_MIXED_BALANCE_DERIVATIVE": 2.5145738693645643e-14,
+          "ADJOINT_FREQUENCY_MIXED_CURRENT_ENERGY_RECONSTRUCTION": 4.79241448139728e-14
+        }
+      },
+      {
+        "index": 2,
+        "rootDiskIndex": 1,
+        "normalLiftSign": 1,
+        "nullity": 1,
+        "rightRank": 1,
+        "adjointRank": 1,
+        "residualMinusRemainderNorms": {
+          "MODAL_FINITE_BALANCE": 9.266455549684726e-18,
+          "MODAL_NORMAL_BALANCE_DERIVATIVE": 8.475720356730335e-17,
+          "MODAL_NORMAL_CURRENT_ENERGY_RECONSTRUCTION": 6.914058938117506e-17,
+          "ADJOINT_NORMAL_MIXED_BALANCE_DERIVATIVE": 1.8037144995059753e-16,
+          "ADJOINT_NORMAL_MIXED_CURRENT_ENERGY_RECONSTRUCTION": 1.2466999594363003e-16,
+          "MODAL_FREQUENCY_BALANCE_DERIVATIVE": 6.845079705948164e-16,
+          "MODAL_FREQUENCY_CURRENT_ENERGY_RECONSTRUCTION": 1.184051061226402e-16,
+          "ADJOINT_FREQUENCY_MIXED_BALANCE_DERIVATIVE": 1.7623950299760136e-15,
+          "ADJOINT_FREQUENCY_MIXED_CURRENT_ENERGY_RECONSTRUCTION": 3.3524141650639707e-15
+        }
+      },
+      {
+        "index": 3,
+        "rootDiskIndex": 1,
+        "normalLiftSign": -1,
+        "nullity": 1,
+        "rightRank": 1,
+        "adjointRank": 1,
+        "residualMinusRemainderNorms": {
+          "MODAL_FINITE_BALANCE": 9.266455549684726e-18,
+          "MODAL_NORMAL_BALANCE_DERIVATIVE": 8.475720356730335e-17,
+          "MODAL_NORMAL_CURRENT_ENERGY_RECONSTRUCTION": 6.914058938117506e-17,
+          "ADJOINT_NORMAL_MIXED_BALANCE_DERIVATIVE": 1.8037144995059753e-16,
+          "ADJOINT_NORMAL_MIXED_CURRENT_ENERGY_RECONSTRUCTION": 1.2466999594363003e-16,
+          "MODAL_FREQUENCY_BALANCE_DERIVATIVE": 6.845079705948164e-16,
+          "MODAL_FREQUENCY_CURRENT_ENERGY_RECONSTRUCTION": 1.184051061226402e-16,
+          "ADJOINT_FREQUENCY_MIXED_BALANCE_DERIVATIVE": 1.7623950299760136e-15,
+          "ADJOINT_FREQUENCY_MIXED_CURRENT_ENERGY_RECONSTRUCTION": 3.3524141650639707e-15
+        }
+      },
+      {
+        "index": 4,
+        "rootDiskIndex": 2,
+        "normalLiftSign": 1,
+        "nullity": 1,
+        "rightRank": 1,
+        "adjointRank": 1,
+        "residualMinusRemainderNorms": {
+          "MODAL_FINITE_BALANCE": 1.4143819288962895e-15,
+          "MODAL_NORMAL_BALANCE_DERIVATIVE": 6.66308528376407e-14,
+          "MODAL_NORMAL_CURRENT_ENERGY_RECONSTRUCTION": 5.715938957036992e-14,
+          "ADJOINT_NORMAL_MIXED_BALANCE_DERIVATIVE": 2.06034850288615e-13,
+          "ADJOINT_NORMAL_MIXED_CURRENT_ENERGY_RECONSTRUCTION": 2.1493192609444154e-13,
+          "MODAL_FREQUENCY_BALANCE_DERIVATIVE": 2.009150719868985e-14,
+          "MODAL_FREQUENCY_CURRENT_ENERGY_RECONSTRUCTION": 2.1355539675760202e-14,
+          "ADJOINT_FREQUENCY_MIXED_BALANCE_DERIVATIVE": 4.025046830409798e-15,
+          "ADJOINT_FREQUENCY_MIXED_CURRENT_ENERGY_RECONSTRUCTION": 3.9818383924066824e-15
+        }
+      },
+      {
+        "index": 5,
+        "rootDiskIndex": 2,
+        "normalLiftSign": -1,
+        "nullity": 1,
+        "rightRank": 1,
+        "adjointRank": 1,
+        "residualMinusRemainderNorms": {
+          "MODAL_FINITE_BALANCE": 1.4143819288962895e-15,
+          "MODAL_NORMAL_BALANCE_DERIVATIVE": 6.66308528376407e-14,
+          "MODAL_NORMAL_CURRENT_ENERGY_RECONSTRUCTION": 5.715938957036992e-14,
+          "ADJOINT_NORMAL_MIXED_BALANCE_DERIVATIVE": 2.06034850288615e-13,
+          "ADJOINT_NORMAL_MIXED_CURRENT_ENERGY_RECONSTRUCTION": 2.1493192609444154e-13,
+          "MODAL_FREQUENCY_BALANCE_DERIVATIVE": 2.009150719868985e-14,
+          "MODAL_FREQUENCY_CURRENT_ENERGY_RECONSTRUCTION": 2.1355539675760202e-14,
+          "ADJOINT_FREQUENCY_MIXED_BALANCE_DERIVATIVE": 4.025046830409798e-15,
+          "ADJOINT_FREQUENCY_MIXED_CURRENT_ENERGY_RECONSTRUCTION": 3.9818383924066824e-15
+        }
+      },
+      {
+        "index": 6,
+        "rootDiskIndex": 3,
+        "normalLiftSign": 1,
+        "nullity": 1,
+        "rightRank": 1,
+        "adjointRank": 1,
+        "residualMinusRemainderNorms": {
+          "MODAL_FINITE_BALANCE": 4.996282012198481e-18,
+          "MODAL_NORMAL_BALANCE_DERIVATIVE": 4.5147071811410805e-17,
+          "MODAL_NORMAL_CURRENT_ENERGY_RECONSTRUCTION": 8.245403635338559e-17,
+          "ADJOINT_NORMAL_MIXED_BALANCE_DERIVATIVE": 9.508011685689516e-17,
+          "ADJOINT_NORMAL_MIXED_CURRENT_ENERGY_RECONSTRUCTION": 7.37405104828521e-17,
+          "MODAL_FREQUENCY_BALANCE_DERIVATIVE": 1.2350067544410117e-16,
+          "MODAL_FREQUENCY_CURRENT_ENERGY_RECONSTRUCTION": 7.556838428431656e-17,
+          "ADJOINT_FREQUENCY_MIXED_BALANCE_DERIVATIVE": 2.601404059276323e-16,
+          "ADJOINT_FREQUENCY_MIXED_CURRENT_ENERGY_RECONSTRUCTION": 2.0705840677819153e-16
+        }
+      },
+      {
+        "index": 7,
+        "rootDiskIndex": 3,
+        "normalLiftSign": -1,
+        "nullity": 1,
+        "rightRank": 1,
+        "adjointRank": 1,
+        "residualMinusRemainderNorms": {
+          "MODAL_FINITE_BALANCE": 4.996282012198481e-18,
+          "MODAL_NORMAL_BALANCE_DERIVATIVE": 4.5147071811410805e-17,
+          "MODAL_NORMAL_CURRENT_ENERGY_RECONSTRUCTION": 8.245403635338559e-17,
+          "ADJOINT_NORMAL_MIXED_BALANCE_DERIVATIVE": 9.508011685689516e-17,
+          "ADJOINT_NORMAL_MIXED_CURRENT_ENERGY_RECONSTRUCTION": 7.37405104828521e-17,
+          "MODAL_FREQUENCY_BALANCE_DERIVATIVE": 1.2350067544410117e-16,
+          "MODAL_FREQUENCY_CURRENT_ENERGY_RECONSTRUCTION": 7.556838428431656e-17,
+          "ADJOINT_FREQUENCY_MIXED_BALANCE_DERIVATIVE": 2.601404059276323e-16,
+          "ADJOINT_FREQUENCY_MIXED_CURRENT_ENERGY_RECONSTRUCTION": 2.0705840677819153e-16
+        }
+      },
+      {
+        "index": 8,
+        "rootDiskIndex": 4,
+        "normalLiftSign": 1,
+        "nullity": 1,
+        "rightRank": 1,
+        "adjointRank": 1,
+        "residualMinusRemainderNorms": {
+          "MODAL_FINITE_BALANCE": 2.253094546670497e-17,
+          "MODAL_NORMAL_BALANCE_DERIVATIVE": 8.018119260430108e-17,
+          "MODAL_NORMAL_CURRENT_ENERGY_RECONSTRUCTION": 2.1474608089197953e-16,
+          "ADJOINT_NORMAL_MIXED_BALANCE_DERIVATIVE": 1.7188288932999111e-16,
+          "ADJOINT_NORMAL_MIXED_CURRENT_ENERGY_RECONSTRUCTION": 2.5892751710701416e-17,
+          "MODAL_FREQUENCY_BALANCE_DERIVATIVE": 2.1082080715782896e-17,
+          "MODAL_FREQUENCY_CURRENT_ENERGY_RECONSTRUCTION": 5.2544299062503724e-17,
+          "ADJOINT_FREQUENCY_MIXED_BALANCE_DERIVATIVE": 4.4921128704996045e-17,
+          "ADJOINT_FREQUENCY_MIXED_CURRENT_ENERGY_RECONSTRUCTION": 1.146036607428929e-16
+        }
+      },
+      {
+        "index": 9,
+        "rootDiskIndex": 4,
+        "normalLiftSign": -1,
+        "nullity": 1,
+        "rightRank": 1,
+        "adjointRank": 1,
+        "residualMinusRemainderNorms": {
+          "MODAL_FINITE_BALANCE": 2.253094546670497e-17,
+          "MODAL_NORMAL_BALANCE_DERIVATIVE": 8.018119260430108e-17,
+          "MODAL_NORMAL_CURRENT_ENERGY_RECONSTRUCTION": 2.1474608089197953e-16,
+          "ADJOINT_NORMAL_MIXED_BALANCE_DERIVATIVE": 1.7188288932999111e-16,
+          "ADJOINT_NORMAL_MIXED_CURRENT_ENERGY_RECONSTRUCTION": 2.5892751710701416e-17,
+          "MODAL_FREQUENCY_BALANCE_DERIVATIVE": 2.1082080715782896e-17,
+          "MODAL_FREQUENCY_CURRENT_ENERGY_RECONSTRUCTION": 5.2544299062503724e-17,
+          "ADJOINT_FREQUENCY_MIXED_BALANCE_DERIVATIVE": 4.4921128704996045e-17,
+          "ADJOINT_FREQUENCY_MIXED_CURRENT_ENERGY_RECONSTRUCTION": 1.146036607428929e-16
+        }
+      },
+      {
+        "index": 10,
+        "rootDiskIndex": 5,
+        "normalLiftSign": 1,
+        "nullity": 1,
+        "rightRank": 1,
+        "adjointRank": 1,
+        "residualMinusRemainderNorms": {
+          "MODAL_FINITE_BALANCE": 4.116898926462764e-18,
+          "MODAL_NORMAL_BALANCE_DERIVATIVE": 1.3726583929472171e-16,
+          "MODAL_NORMAL_CURRENT_ENERGY_RECONSTRUCTION": 1.4562611243834973e-16,
+          "ADJOINT_NORMAL_MIXED_BALANCE_DERIVATIVE": 1.308361685047982e-16,
+          "ADJOINT_NORMAL_MIXED_CURRENT_ENERGY_RECONSTRUCTION": 7.694158043479549e-17,
+          "MODAL_FREQUENCY_BALANCE_DERIVATIVE": 3.697741040506313e-16,
+          "MODAL_FREQUENCY_CURRENT_ENERGY_RECONSTRUCTION": 7.723679207418118e-16,
+          "ADJOINT_FREQUENCY_MIXED_BALANCE_DERIVATIVE": 5.561411571280684e-16,
+          "ADJOINT_FREQUENCY_MIXED_CURRENT_ENERGY_RECONSTRUCTION": 1.4509959830687516e-15
+        }
+      },
+      {
+        "index": 11,
+        "rootDiskIndex": 5,
+        "normalLiftSign": -1,
+        "nullity": 1,
+        "rightRank": 1,
+        "adjointRank": 1,
+        "residualMinusRemainderNorms": {
+          "MODAL_FINITE_BALANCE": 4.116898926462764e-18,
+          "MODAL_NORMAL_BALANCE_DERIVATIVE": 1.3726583929472171e-16,
+          "MODAL_NORMAL_CURRENT_ENERGY_RECONSTRUCTION": 1.4562611243834973e-16,
+          "ADJOINT_NORMAL_MIXED_BALANCE_DERIVATIVE": 1.308361685047982e-16,
+          "ADJOINT_NORMAL_MIXED_CURRENT_ENERGY_RECONSTRUCTION": 7.694158043479549e-17,
+          "MODAL_FREQUENCY_BALANCE_DERIVATIVE": 3.697741040506313e-16,
+          "MODAL_FREQUENCY_CURRENT_ENERGY_RECONSTRUCTION": 7.723679207418118e-16,
+          "ADJOINT_FREQUENCY_MIXED_BALANCE_DERIVATIVE": 5.561411571280684e-16,
+          "ADJOINT_FREQUENCY_MIXED_CURRENT_ENERGY_RECONSTRUCTION": 1.4509959830687516e-15
+        }
+      },
+      {
+        "index": 12,
+        "rootDiskIndex": 6,
+        "normalLiftSign": 1,
+        "nullity": 1,
+        "rightRank": 1,
+        "adjointRank": 1,
+        "residualMinusRemainderNorms": {
+          "MODAL_FINITE_BALANCE": 1.8138730612802674e-17,
+          "MODAL_NORMAL_BALANCE_DERIVATIVE": 1.8132937480891234e-16,
+          "MODAL_NORMAL_CURRENT_ENERGY_RECONSTRUCTION": 1.1302104674092662e-16,
+          "ADJOINT_NORMAL_MIXED_BALANCE_DERIVATIVE": 1.9456573285913167e-14,
+          "ADJOINT_NORMAL_MIXED_CURRENT_ENERGY_RECONSTRUCTION": 8.423132894517132e-15,
+          "MODAL_FREQUENCY_BALANCE_DERIVATIVE": 3.067667264372942e-16,
+          "MODAL_FREQUENCY_CURRENT_ENERGY_RECONSTRUCTION": 3.357000583012671e-16,
+          "ADJOINT_FREQUENCY_MIXED_BALANCE_DERIVATIVE": 4.0637019306596443e-14,
+          "ADJOINT_FREQUENCY_MIXED_CURRENT_ENERGY_RECONSTRUCTION": 5.228241493330046e-14
+        }
+      },
+      {
+        "index": 13,
+        "rootDiskIndex": 6,
+        "normalLiftSign": -1,
+        "nullity": 1,
+        "rightRank": 1,
+        "adjointRank": 1,
+        "residualMinusRemainderNorms": {
+          "MODAL_FINITE_BALANCE": 1.8138730612802674e-17,
+          "MODAL_NORMAL_BALANCE_DERIVATIVE": 1.8132937480891234e-16,
+          "MODAL_NORMAL_CURRENT_ENERGY_RECONSTRUCTION": 1.1302104674092662e-16,
+          "ADJOINT_NORMAL_MIXED_BALANCE_DERIVATIVE": 1.9456573285913167e-14,
+          "ADJOINT_NORMAL_MIXED_CURRENT_ENERGY_RECONSTRUCTION": 8.423132894517132e-15,
+          "MODAL_FREQUENCY_BALANCE_DERIVATIVE": 3.067667264372942e-16,
+          "MODAL_FREQUENCY_CURRENT_ENERGY_RECONSTRUCTION": 3.357000583012671e-16,
+          "ADJOINT_FREQUENCY_MIXED_BALANCE_DERIVATIVE": 4.0637019306596443e-14,
+          "ADJOINT_FREQUENCY_MIXED_CURRENT_ENERGY_RECONSTRUCTION": 5.228241493330046e-14
+        }
+      },
+      {
+        "index": 14,
+        "rootDiskIndex": 7,
+        "normalLiftSign": 1,
+        "nullity": 2,
+        "rightRank": 2,
+        "adjointRank": 2,
+        "residualMinusRemainderNorms": {
+          "MODAL_FINITE_BALANCE": 5.118476924636891e-19,
+          "MODAL_NORMAL_BALANCE_DERIVATIVE": 1.5269966876134378e-16,
+          "MODAL_NORMAL_CURRENT_ENERGY_RECONSTRUCTION": 1.6048344404893324e-16,
+          "ADJOINT_NORMAL_MIXED_BALANCE_DERIVATIVE": 3.0237558170563137e-16,
+          "ADJOINT_NORMAL_MIXED_CURRENT_ENERGY_RECONSTRUCTION": 3.2341397078598816e-16,
+          "MODAL_FREQUENCY_BALANCE_DERIVATIVE": 1.2179719301930984e-16,
+          "MODAL_FREQUENCY_CURRENT_ENERGY_RECONSTRUCTION": 2.5542000833005805e-16,
+          "ADJOINT_FREQUENCY_MIXED_BALANCE_DERIVATIVE": 2.4118260974776126e-16,
+          "ADJOINT_FREQUENCY_MIXED_CURRENT_ENERGY_RECONSTRUCTION": 2.2448220835131724e-16
+        }
+      },
+      {
+        "index": 15,
+        "rootDiskIndex": 7,
+        "normalLiftSign": -1,
+        "nullity": 2,
+        "rightRank": 2,
+        "adjointRank": 2,
+        "residualMinusRemainderNorms": {
+          "MODAL_FINITE_BALANCE": 5.118476924636891e-19,
+          "MODAL_NORMAL_BALANCE_DERIVATIVE": 1.5269966876134378e-16,
+          "MODAL_NORMAL_CURRENT_ENERGY_RECONSTRUCTION": 1.6048344404893324e-16,
+          "ADJOINT_NORMAL_MIXED_BALANCE_DERIVATIVE": 3.0237558170563137e-16,
+          "ADJOINT_NORMAL_MIXED_CURRENT_ENERGY_RECONSTRUCTION": 3.2341397078598816e-16,
+          "MODAL_FREQUENCY_BALANCE_DERIVATIVE": 1.2179719301930984e-16,
+          "MODAL_FREQUENCY_CURRENT_ENERGY_RECONSTRUCTION": 2.5542000833005805e-16,
+          "ADJOINT_FREQUENCY_MIXED_BALANCE_DERIVATIVE": 2.4118260974776126e-16,
+          "ADJOINT_FREQUENCY_MIXED_CURRENT_ENERGY_RECONSTRUCTION": 2.2448220835131724e-16
+        }
+      },
+      {
+        "index": 16,
+        "rootDiskIndex": 8,
+        "normalLiftSign": 1,
+        "nullity": 2,
+        "rightRank": 2,
+        "adjointRank": 2,
+        "residualMinusRemainderNorms": {
+          "MODAL_FINITE_BALANCE": 7.728658629658149e-19,
+          "MODAL_NORMAL_BALANCE_DERIVATIVE": 1.0601441498496674e-16,
+          "MODAL_NORMAL_CURRENT_ENERGY_RECONSTRUCTION": 1.6789698371147613e-16,
+          "ADJOINT_NORMAL_MIXED_BALANCE_DERIVATIVE": 2.0992953462369644e-16,
+          "ADJOINT_NORMAL_MIXED_CURRENT_ENERGY_RECONSTRUCTION": 2.2270090456870616e-16,
+          "MODAL_FREQUENCY_BALANCE_DERIVATIVE": 6.561436414910017e-17,
+          "MODAL_FREQUENCY_CURRENT_ENERGY_RECONSTRUCTION": 1.216241786997081e-16,
+          "ADJOINT_FREQUENCY_MIXED_BALANCE_DERIVATIVE": 1.299294678974866e-16,
+          "ADJOINT_FREQUENCY_MIXED_CURRENT_ENERGY_RECONSTRUCTION": 3.3370513134823635e-16
+        }
+      },
+      {
+        "index": 17,
+        "rootDiskIndex": 8,
+        "normalLiftSign": -1,
+        "nullity": 2,
+        "rightRank": 2,
+        "adjointRank": 2,
+        "residualMinusRemainderNorms": {
+          "MODAL_FINITE_BALANCE": 7.728658629658149e-19,
+          "MODAL_NORMAL_BALANCE_DERIVATIVE": 1.0601441498496674e-16,
+          "MODAL_NORMAL_CURRENT_ENERGY_RECONSTRUCTION": 1.6789698371147613e-16,
+          "ADJOINT_NORMAL_MIXED_BALANCE_DERIVATIVE": 2.0992953462369644e-16,
+          "ADJOINT_NORMAL_MIXED_CURRENT_ENERGY_RECONSTRUCTION": 2.2270090456870616e-16,
+          "MODAL_FREQUENCY_BALANCE_DERIVATIVE": 6.561436414910017e-17,
+          "MODAL_FREQUENCY_CURRENT_ENERGY_RECONSTRUCTION": 1.216241786997081e-16,
+          "ADJOINT_FREQUENCY_MIXED_BALANCE_DERIVATIVE": 1.299294678974866e-16,
+          "ADJOINT_FREQUENCY_MIXED_CURRENT_ENERGY_RECONSTRUCTION": 3.3370513134823635e-16
+        }
+      }
+    ],
+    "residualMinusRemainderNormMaxima": {
+      "MODAL_FINITE_BALANCE": 1.4143819288962895e-15,
+      "MODAL_NORMAL_BALANCE_DERIVATIVE": 6.66308528376407e-14,
+      "MODAL_NORMAL_CURRENT_ENERGY_RECONSTRUCTION": 5.715938957036992e-14,
+      "ADJOINT_NORMAL_MIXED_BALANCE_DERIVATIVE": 2.06034850288615e-13,
+      "ADJOINT_NORMAL_MIXED_CURRENT_ENERGY_RECONSTRUCTION": 2.1493192609444154e-13,
+      "MODAL_FREQUENCY_BALANCE_DERIVATIVE": 2.009150719868985e-14,
+      "MODAL_FREQUENCY_CURRENT_ENERGY_RECONSTRUCTION": 2.1355539675760202e-14,
+      "ADJOINT_FREQUENCY_MIXED_BALANCE_DERIVATIVE": 4.0637019306596443e-14,
+      "ADJOINT_FREQUENCY_MIXED_CURRENT_ENERGY_RECONSTRUCTION": 5.228241493330046e-14
+    }
+  },
+  "remainderEvidence": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-end-normalization-20260914/right/remainders.out",
+    "bytes": 433148,
+    "sha256": "3e9073802a10132c3173a5b25b1dd0ff51af6db59ff0b5301d583034cc6e002d",
+    "tagCount": 1046,
+    "metadataPaths": 1345,
+    "writeKeyCount": 522
+  },
+  "diagnosticThreshold": 1e-08,
+  "artifacts": {
+    "full.out": {
+      "bytes": 3521646,
+      "sha256": "93455251213deb51751ed6a0647033dccd011e13851322ee08d64d5d60ee42ce"
+    },
+    "stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "modal.pickle": {
+      "bytes": 803192,
+      "sha256": "bd968b271b68d6bf9ec18bf75307594d8a5d0ca779541b40486cf299cb0c5497"
+    },
+    "adjoint.pickle": {
+      "bytes": 421735,
+      "sha256": "26313fd4f061495547373a2a9ae131d24483e539cd52f054e6a7381d5bf89129"
+    },
+    "checks.json": {
+      "bytes": 23992,
+      "sha256": "c3f505714f5c421c7a3bf41c2b72b356a2a3f1571e57df9035f847ed1ac98f58"
+    },
+    "progress.jsonl": {
+      "bytes": 10259,
+      "sha256": "0bf7193d9c935290960042535b2c1000de738294c5257d5bcbd66353176e2a9f"
+    },
+    "arguments.json": {
+      "bytes": 633,
+      "sha256": "144b8d36b27d40830415f1c3a05d61afd33cbd48cd0b4e92529b702aebcf65f0"
+    },
+    "remainders.out": {
+      "bytes": 433148,
+      "sha256": "3e9073802a10132c3173a5b25b1dd0ff51af6db59ff0b5301d583034cc6e002d"
+    },
+    "remainders.pickle": {
+      "bytes": 54446,
+      "sha256": "813f59e5c0bc9f3271da8b59cffb752ac9afab5e660bb4b4b66498aad8d178ca"
+    }
+  },
+  "scope": "One supplied case, complete isolated root/lift subspaces, finite-contrast retained-operator evaluation; continuum re-expansion and global exceptional coverage remain open.",
+  "publications": {
+    "full.out": {
+      "path": "scripts/out/S11c_d_end_normalization_right_thickness_repair.out",
+      "bytes": 3521646,
+      "sha256": "93455251213deb51751ed6a0647033dccd011e13851322ee08d64d5d60ee42ce"
+    },
+    "remainders.out": {
+      "path": "scripts/out/S11c_d_end_normalization_right_thickness_repair_remainders.out",
+      "bytes": 433148,
+      "sha256": "3e9073802a10132c3173a5b25b1dd0ff51af6db59ff0b5301d583034cc6e002d"
+    }
+  },
+  "publication": {
+    "path": "scripts/out/S11c_d_end_normalization_right_thickness_repair.out",
+    "bytes": 3521646,
+    "sha256": "93455251213deb51751ed6a0647033dccd011e13851322ee08d64d5d60ee42ce"
+  },
+  "validationSourceSnapshots": {
+    "_measurements/S11c_d_end_normalization_validate.py": {
+      "sha256": "24382e1e1b8018a4e7d15052f7950b57be4e9339ac332ed4769b5e0125eec3f3",
+      "snapshot": "/var/projects/toy_physics/_scratch/s11c/s11c-end-normalization-20260914/right/validation_sources/24382e1e1b8018a4e7d15052f7950b57be4e9339ac332ed4769b5e0125eec3f3/S11c_d_end_normalization_validate.py"
+    },
+    "_measurements/S11c_d_end_normalization_remainder_check.py": {
+      "sha256": "215896c1bf594d7dc6690067b1b00b9b33a8abab0fcf017d109969f1364cff28",
+      "snapshot": "/var/projects/toy_physics/_scratch/s11c/s11c-end-normalization-20260914/right/validation_sources/215896c1bf594d7dc6690067b1b00b9b33a8abab0fcf017d109969f1364cff28/S11c_d_end_normalization_remainder_check.py"
+    }
+  },
+  "validationInvocation": {
+    "stage": "right_validate_remainder",
+    "command": [
+      "python",
+      "-u",
+      "_measurements/S11c_d_end_normalization_validate.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-end-normalization-20260914/right",
+      "--publish"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-end-normalization-20260914/right_validate_remainder.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-end-normalization-20260914/right_validate_remainder.stderr",
+    "startedUtc": "2026-09-14T19:15:50.356306+00:00",
+    "childPid": 1825610,
+    "status": "completed",
+    "exitCode": 0,
+    "wallSeconds": 178.00134505704045,
+    "stderrBytes": 0,
+    "finishedUtc": "2026-09-14T19:18:48.357757+00:00"
+  }
+}

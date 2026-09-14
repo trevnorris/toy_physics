@@ -1,5 +1,5 @@
 {
-  "observedUtc": "2026-09-14T18:34:01.450466+00:00",
+  "observedUtc": "2026-09-14T19:20:12.337270+00:00",
   "producerManifest": "/tmp/s11c-thickness-coordinate-20260914/b_full/manifest.json",
   "producerManifestSha256": "08ab820f4bc65cf4ba1e36b12cb8e611f99e322b670be6d558fa097be3f2363b",
   "producerCompleted": true,
@@ -15,7 +15,7 @@
     "residualScalars": 2634,
     "nonzeroResidualScalars": 0
   },
-  "continuationState": "All eight endpoint stages committed; fresh RIGHT normalization active",
+  "continuationState": "All eight endpoint prerequisites committed; RIGHT normalization validated and published; LEFT next",
   "recurringFollowup": {
     "id": "continue-s11c-d-build",
     "status": "DELETED",
@@ -25,7 +25,7 @@
     "observedUtc": "2026-09-14T18:38:12.381336+00:00",
     "continuationPolicy": "The user controls continuation. No scheduled follow-ups or automatic restarts; do not create or recreate automations from a general instruction to continue working. Wait for the user to direct subsequent work. Leave the already-authorized running calculation alone."
   },
-  "scope": "Regenerated b/c1/c2/d and all source/frequency/pairing prerequisites are committed. All three pairings have zero retained discrepancies. Endpoint current/adjoint normalization is now in progress.",
+  "scope": "Regenerated b/c1/c2/d and endpoint prerequisites remain complete. RIGHT normalization has explicit discarded-grade accounting; LEFT and REFERENCE normalization and full scattering remain.",
   "activeContinuation": {
     "stateDirectory": "/tmp/s11c-thickness-coordinate-20260914/continuation_after_c2_annex",
     "startAt": "d",
@@ -171,5 +171,6 @@
       "previousUpdateResult": "not found in app; replacement created"
     }
   ],
-  "continuationPolicy": "The user controls continuation. No scheduled follow-ups or automatic restarts; do not create or recreate automations from a general instruction to continue working. Wait for the user to direct subsequent work. Leave the already-authorized running calculation alone."
+  "continuationPolicy": "The user controls continuation. No scheduled follow-ups or automatic restarts; do not create or recreate automations from a general instruction to continue working. Wait for the user to direct subsequent work. Leave the already-authorized running calculation alone.",
+  "normalizationCheckpoint": "S11c_d_end_normalization_execution_checkpoint.json"
 }

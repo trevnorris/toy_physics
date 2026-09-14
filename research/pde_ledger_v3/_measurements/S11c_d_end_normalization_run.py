@@ -49,7 +49,9 @@ def main():
     record.update({'status':'completed' if code==0 else 'failed','exitCode':code,
         'wallSeconds':time.monotonic()-started,'stderrBytes':stderr_path.stat().st_size,
         'finishedUtc':datetime.now(timezone.utc).isoformat()})
-    if '--run-directory' in command and any(word.endswith('_check.py') for word in command[1:]):
+    # Persist the child outcome even if subsequent log bookkeeping fails.
+    save()
+    if '--run-directory' in command and any(Path(word).name == 'S11c_d_end_normalization_check.py' for word in command[1:]):
         destination = Path(command[command.index('--run-directory')+1]).resolve()
         destination.relative_to(base)
         if destination.exists():

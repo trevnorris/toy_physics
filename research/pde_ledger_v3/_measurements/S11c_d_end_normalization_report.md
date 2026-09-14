@@ -1,31 +1,35 @@
 # S11c-d endpoint normalization execution
 
-All eight fresh source/frequency/pairing prerequisites are committed through
-432db7e7. RIGHT, LEFT and REFERENCE each have 802 retained pairing residual
-scalars, all zero. The earlier failing packet remains historical evidence.
+RIGHT normalization is validated and published for the supplied LAB_HELD /
+RHO4_CONSTANT case. The 31.8-minute constructor computed 18 isolated-root/lift
+candidates, all 22 basis directions, and 18 invertible adjoint field maps. Two
+two-dimensional subspaces have defined physical current normalization: two
+incoming and two outgoing basis directions at RIGHT. Independent frequency
+and full-coordinate-projector joins agree within 4.0e-14.
 
-Prepared endpoint adapters and the serial-job guard are committed at 5bb2c811.
-The emitter context extension and updated execution handoff are committed at
-834810e0; the recorded AST comparison limits native changes to the two emitters.
-The full modal/adjoint calculation bodies remain unchanged.
+Validation covers 5,990 original tags, 28,146 metadata paths and 5,850 numerical
+residual scalars. The 250 coefficient and 50 symbolic map residual scalars are
+zero. Nine raw balance/reconstruction families remain nonzero, up to 0.01342
+in the declared numerical unit frame. The independent pairing remainder and
+its regular-sheet derivatives contain only eta-squared coefficients. All 275
+remainder decomposition/projection/limit residual scalars are zero. Contracting
+those operands through every full right and adjoint subspace accounts for the
+raw residuals, with a largest difference of 2.15e-13. This establishes the stated
+retained-order accounting; finite-contrast balance is not claimed to be exact.
 
-RIGHT normalization is running in the durable repository directory. The input,
-source, physical-pencil and native root/lift joins completed; the initial
-symbolic construction has not yet produced per-mode records. No stderr is
-recorded. Current CPU/memory observations and exact live-log locations are in
-[S11c_d_end_normalization_execution_checkpoint.json](S11c_d_end_normalization_execution_checkpoint.json).
-This is an execution checkpoint, not a normalization result or a new physical
-finding. The calculation was left running. On the user's instruction, the app's
-`continue-s11c-d-build` follow-up was deleted; the older
-`continue-s11c-d-repair-and-build` identifier was confirmed absent.
-The user controls continuation. Do not create or recreate scheduled tasks
-without an explicit scheduling request.
+The original normalization transcript and a separate dimensioned, graded
+remainder transcript are published together. Their fingerprints, hashes,
+source snapshots, complete per-mode comparisons and raw diagnostics are in
+[S11c_d_end_normalization_right_thickness_repair_checkpoint.json](S11c_d_end_normalization_right_thickness_repair_checkpoint.json).
+Frozen physical producer files remain unchanged. Checker repairs handle JSON
+representation and input-map order; the validator checks every binding before
+replaying the original ordering. The launcher now attaches logs only for the
+actual constructor and persists child completion before log bookkeeping.
 
-After completion, follow the execution checkpoint's operational notes and
-[plan](S11c_d_end_normalization_plan.md): validate/publish/commit RIGHT, then
-compute LEFT and REFERENCE serially. An operational checker correction must
-retain frozen producer pins and must not force physical recomputation. Only
-an upstream physical repair requires renewed user confirmation. Complete
-variable-profile scattering, section 3b poles, bookkeeping, controls and the
-final export remain later program work. No current normalization `.out` has
-yet been published or annexed.
+All eight fresh source/frequency/pairing prerequisites remain committed through
+432db7e7, with 802 zero retained pairing scalars at each of RIGHT, LEFT and
+REFERENCE. Next compute LEFT, then REFERENCE, serially and apply the same
+independent remainder check. The [plan](S11c_d_end_normalization_plan.md) retains
+variable-profile scattering, section 3b frequency poles, bookkeeping, controls
+and final export as later work. Existing sheet/exceptional-domain limits remain.
+The user controls continuation; no scheduled follow-ups are active or authorized.

@@ -14,6 +14,7 @@ import numpy as np
 import sympy as sp
 
 import S11c_d_end_normalization_check as runner
+import S11c_d_end_normalization_remainder_check as remainder_checker
 from S11c_d_end_normalization_check import ROOT, engine, digest, decoded_lines, _restore
 from S11c_d_output_codec import restore_emission_index
 
@@ -22,11 +23,21 @@ def assoc(value):
     return {str(k):v for k,v in value}
 
 
+def json_value(value):
+    """Compare the in-memory value with its persisted JSON representation."""
+    return json.loads(json.dumps(value))
+
+
 def validate(base):
     summary = json.loads((base/'checks.json').read_text())
+    validation_source = Path(__file__).resolve().relative_to(ROOT).as_posix()
     for name, sha in summary['sourceFiles'].items():
-        if digest(ROOT/name) != sha or digest(base/'source'/name) != sha:
-            raise ValueError(('source pin', name))
+        if digest(base/'source'/name) != sha:
+            raise ValueError(('frozen source pin', name))
+        # A checker repair does not change the frozen calculation. Its new hash
+        # is recorded separately; every current producer/helper pin stays exact.
+        if name != validation_source and digest(ROOT/name) != sha:
+            raise ValueError(('current producer source pin', name))
     for name, sha in summary['objects'].items():
         if digest(base/name) != sha:
             raise ValueError(('normalization payload pin', name))
@@ -40,7 +51,7 @@ def validate(base):
     pairing, current, inputs, provenance = runner.load_pairing(args)
     native, coverage, binding, physical = runner.load_native(args,pairing,inputs,provenance)
     frequency = runner.load_frequency(args,provenance,physical)
-    if provenance != summary['provenance']:
+    if json_value(provenance) != summary['provenance']:
         raise ValueError('normalization source/input joins')
     modal, known = pickle.loads((base/'modal.pickle').read_bytes())
     adjoint, adjoint_known = pickle.loads((base/'adjoint.pickle').read_bytes())
@@ -55,6 +66,13 @@ def validate(base):
             raise ValueError(('transcript tag', tag))
         entries[tag] = _restore(payload)
     prefix = summary['prefix']
+    # Input mapping traverses a free-symbol set. Check every binding, then replay
+    # its recorded association order so metadata grouping is reproducible.
+    saved_bindings = assoc(entries['PY_S11CD_'+prefix+'_MATERIAL_AND_GRADE_BINDINGS'])
+    names_to_symbols = {str(k):k for k in binding}
+    if len(names_to_symbols) != len(binding) or saved_bindings != {str(k):v for k,v in binding.items()}:
+        raise ValueError('material and grade binding census/value join')
+    binding = {names_to_symbols[name]:binding[names_to_symbols[name]] for name in saved_bindings}
     final = 'PY_S11CD_'+prefix+'_EMISSION_LINES'
     if final not in entries:
         raise ValueError('missing emission index')
@@ -106,6 +124,8 @@ def validate(base):
             raise ValueError('nonempty dimension constraints')
     if joins != summary['frequencyJoins']:
         raise ValueError('independent frequency join summary')
+    if json_value([{**v,'SHEET_MEMBERSHIP':str(v['SHEET_MEMBERSHIP'])} for v in orientation]) != summary['orientationRecords']:
+        raise ValueError('outward orientation summary')
     if any(any(r['discreteResiduals'].values()) or max(r['residualNorms'].values())>1e-8 or
            max(r['liftDifferenceNorms'].values())>1e-8 for r in joins):
         raise ValueError('independent frequency/subspace discrepancy')
@@ -150,13 +170,32 @@ def validate(base):
     if any(v!=0 for v in symbolic+coefficients):
         raise ValueError('symbolic map/coefficient residual')
     diagnostic = {name:value for name,value in maxima.items() if value>1e-8}
+    remainder = remainder_checker.compute(base,pairing,builder,modal,adjoint,binding)
+    remainder_summary = remainder['summary']
+    remainder_evidence = remainder_checker.emit_evidence(base,builder,remainder)
+    (base/'remainders.pickle').write_bytes(pickle.dumps(remainder,protocol=5))
+    if any(v['nonzeroScalars'] for v in remainder_summary['algebraicChecks'].values()):
+        raise ValueError('pairing remainder decomposition/retained-grade discrepancy; inspect emitted evidence')
+    if any(a<=1 and b<=1 for values in remainder_summary['coefficientGradesEtaSigma'].values() for a,b in values):
+        raise ValueError('remainder contains retained background coefficient')
+    if len(remainder_summary['records']) != len(native) or any(
+            v['rightRank']!=v['nullity'] or v['adjointRank'] not in (None,v['nullity'])
+            for v in remainder_summary['records']):
+        raise ValueError('remainder full-subspace census')
+    remainder_norms = remainder_summary['residualMinusRemainderNormMaxima']
+    if any(value>1e-8 for value in remainder_norms.values()):
+        raise ValueError('unexplained normalization balance residual; inspect emitted remainder operands')
+    unaccounted = {name:value for name,value in diagnostic.items() if name not in remainder_norms}
     inventory = {**summary,'runDirectory':str(base),'tagCount':len(entries),
         'metadataPaths':paths,'numericResidualScalars':residual_scalars,
         'sourceAssignments':len(indexed),'validationSourceSha256':digest(Path(__file__)),
         'residualNormsAboveDiagnosticThreshold':diagnostic,
+        'unaccountedResidualNormsAboveDiagnosticThreshold':unaccounted,
+        'remainderAccounting':remainder_summary,'remainderEvidence':remainder_evidence,
         'diagnosticThreshold':1e-8,
         'artifacts':{name:{'bytes':(base/name).stat().st_size,'sha256':digest(base/name)} for name in
-            ('full.out','stderr.txt','modal.pickle','adjoint.pickle','checks.json','progress.jsonl','arguments.json')},
+            ('full.out','stderr.txt','modal.pickle','adjoint.pickle','checks.json','progress.jsonl','arguments.json',
+             'remainders.out','remainders.pickle')},
         'scope':'One supplied case, complete isolated root/lift subspaces, finite-contrast retained-operator evaluation; continuum re-expansion and global exceptional coverage remain open.'}
     (base/'validation.json').write_text(json.dumps(inventory,indent=2)+'\n')
     return inventory
@@ -173,22 +212,26 @@ def main():
     inventory = validate(base)
     print(json.dumps({key:inventory[key] for key in ('end','recordCount','basisDirections','definedFieldMaps',
         'physicalCurrentNormalizationCount','tagCount','metadataPaths','numericResidualScalars',
-        'residualNormsAboveDiagnosticThreshold')},indent=2))
-    if inventory['residualNormsAboveDiagnosticThreshold']:
+        'residualNormsAboveDiagnosticThreshold','unaccountedResidualNormsAboveDiagnosticThreshold')},indent=2))
+    if inventory['unaccountedResidualNormsAboveDiagnosticThreshold']:
         raise ValueError('normalization diagnostics require investigation before publication')
     if args.publish:
         stem = 'S11c_d_end_normalization_'+inventory['end'].lower()+'_'+args.publication_suffix
-        target = ROOT/'scripts/out'/(stem+'.out')
         checkpoint = ROOT/'_measurements'/(stem+'_checkpoint.json')
-        if target.exists() or target.is_symlink() or checkpoint.exists():
+        publications={'full.out':ROOT/'scripts/out'/(stem+'.out'),
+                      'remainders.out':ROOT/'scripts/out'/(stem+'_remainders.out')}
+        if checkpoint.exists() or any(target.exists() or target.is_symlink() for target in publications.values()):
             raise ValueError('publication target exists')
-        temporary = target.with_name('.'+target.name+'.new')
-        with temporary.open('xb') as destination, (base/'full.out').open('rb') as source:
-            shutil.copyfileobj(source,destination);destination.flush();os.fsync(destination.fileno())
-        if digest(temporary) != inventory['artifacts']['full.out']['sha256']:
-            raise ValueError('publication copy hash')
-        os.replace(temporary,target)
-        inventory['publication'] = {'path':str(target.relative_to(ROOT)),**inventory['artifacts']['full.out']}
+        inventory['publications']={}
+        for name,target in publications.items():
+            temporary = target.with_name('.'+target.name+'.new')
+            with temporary.open('xb') as destination, (base/name).open('rb') as source:
+                shutil.copyfileobj(source,destination);destination.flush();os.fsync(destination.fileno())
+            if digest(temporary) != inventory['artifacts'][name]['sha256']:
+                raise ValueError('publication copy hash')
+            os.replace(temporary,target)
+            inventory['publications'][name]={'path':str(target.relative_to(ROOT)),**inventory['artifacts'][name]}
+        inventory['publication']=inventory['publications']['full.out']
         checkpoint.write_text(json.dumps(inventory,indent=2)+'\n')
 
 

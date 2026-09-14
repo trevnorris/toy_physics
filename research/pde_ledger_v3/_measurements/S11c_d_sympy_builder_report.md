@@ -1,37 +1,32 @@
 # S11c-d SymPy builder checkpoint
 
-The user controls continuation. Scheduled follow-ups have been removed; do
-not create or recreate automations without an explicit scheduling request.
-The already-authorized calculation was left running.
+RIGHT current/adjoint normalization is validated and published for the supplied
+LAB_HELD / RHO4_CONSTANT case: all 18 root/lift candidates, 22 basis directions,
+18 invertible field maps, and two current-normalized two-dimensional subspaces.
+Validation covers 5,990 original tags and 5,850 numerical residual scalars.
+The nine nonzero raw balance/reconstruction families are preserved. Independent
+contractions of the saved eta-squared pairing remainder account for them to
+2.15e-13; 275 decomposition/projection/limit residual scalars are zero. No new
+upstream physical repair was needed. This is retained-order accounting, not an
+exact finite-contrast balance or a higher-order continuum prediction.
 
 The thickness-coordinate repair and native b/c1/c2/d regeneration are committed
-through 8b2e3cf2. All eight fresh endpoint source/frequency/pairing stages are
-now validated, published and committed through **432db7e7**. RIGHT, LEFT and
-REFERENCE two-frequency pairings each contain 802 retained residual scalars,
-all zero. RIGHT is committed at 7c2001b6; LEFT at 86e61755. The earlier three
-RIGHT retained discrepancies are preserved in their historical checkpoint.
+through 8b2e3cf2. All eight endpoint source/frequency/pairing prerequisites remain
+committed through 432db7e7; RIGHT, LEFT and REFERENCE each have 802 zero retained
+pairing residual scalars. The next stage is LEFT normalization, then REFERENCE.
+See the [normalization report](S11c_d_end_normalization_report.md) and
+[plan](S11c_d_end_normalization_plan.md) for complete evidence and boundaries.
 
-The next stage is fresh full-subspace current and adjoint normalization at both
-ends, with a new reference regression. The prepared runner, validator and
-serial-job guard are committed at **5bb2c811**; see the
-[normalization plan](S11c_d_end_normalization_plan.md). The native emitters now
-accept the actual end/case context; an AST comparison verifies that their
-calculation bodies are unchanged. RIGHT normalization is running. Its results
-are not yet validated or published.
-
-All important working runs are stored under the repository's `_scratch/s11c/`.
-Published `.out` files use DataLad/git-annex with post-save full-hash checks;
-ordinary sources, reports and inventories use Git. Historical `/tmp` paths
-are compatibility links; see the [storage report](S11c_storage_report.md).
-The [execution checkpoint](S11c_thickness_coordinate_execution_checkpoint.json)
-points to the live durable normalization record.
+All working runs and source snapshots live in the repository's _scratch/s11c/.
+Published .out files use DataLad/git-annex with post-save full-hash verification;
+ordinary sources, reports and inventories use Git. The user controls continuation.
+No scheduled follow-ups are active or authorized.
 
 The complete two-ended variable-profile S-matrix, profile-frequency bound
 poles/residues/overlap, survival, flux bookkeeping, weak coefficients, section 5
-controls and final own-row export remain program work. Existing per-root and
-full-subspace checks retain their stated sheet and exceptional-domain limits.
-The supplied physical premises and c2 operand debt remain inherited premises,
-not independently verified by this builder. No final S11c_d_exports.py exists.
+controls and final own-row export remain program work. Per-root and full-subspace
+checks retain their stated sheet and exceptional-domain limits. Supplied physical
+premises and c2 operand debt remain inherited premises. No S11c_d_exports.py exists.
 
 ## Retained user-approved solver/export contract
 

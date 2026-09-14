@@ -1,5 +1,5 @@
 {
-  "observedUtc": "2026-09-14T17:25:34.991282+00:00",
+  "observedUtc": "2026-09-14T17:29:17.136900+00:00",
   "producerManifest": "/tmp/s11c-thickness-coordinate-20260914/b_full/manifest.json",
   "producerManifestSha256": "08ab820f4bc65cf4ba1e36b12cb8e611f99e322b670be6d558fa097be3f2363b",
   "producerCompleted": true,
@@ -15,13 +15,13 @@
     "residualScalars": 2634,
     "nonzeroResidualScalars": 0
   },
-  "continuationState": "serial endpoint queue active; completed RIGHT construction adopted for validation and publication",
+  "continuationState": "RIGHT source validated, published and committed; serial endpoint queue constructing LEFT",
   "recurringFollowup": {
     "id": "continue-s11c-d-repair-and-build",
     "status": "ACTIVE",
     "userApproved": true
   },
-  "scope": "Native b/c1/c2/d queue complete. Fresh RIGHT source constructed with zero retained residuals and 127 zero cancellation identities. Endpoint validator/publication and subsequent planned stages are managed serially.",
+  "scope": "Native regeneration complete. Fresh RIGHT source validated with 85 source objects, 33 zero retained source residuals and 127 zero cancellation identities. LEFT/reference sources, frequency packets and all three fresh pairings remain in the active serial queue. Normalization adapters are planned, not computed.",
   "activeContinuation": {
     "stateDirectory": "/tmp/s11c-thickness-coordinate-20260914/continuation_after_c2_annex",
     "startAt": "d",
@@ -115,10 +115,12 @@
     "controllerSha256": "46fd4d3380438deba8c280ccb0c150a3a96c852b0ec2e5462266fae4503bf8bd",
     "latest": {
       "event": "child_running",
-      "stage": "right_source",
-      "operation": "validate_publish",
-      "childPid": 1773905,
-      "utc": "2026-09-14T17:24:44Z"
+      "stage": "left_source",
+      "operation": "construct",
+      "childPid": 1775733,
+      "utc": "2026-09-14T17:27:24Z"
     }
-  }
+  },
+  "rightSourceCommit": "fba5f1fb",
+  "rightSourceCheckpoint": "S11c_d_end_current_source_right_thickness_repair_checkpoint.json"
 }

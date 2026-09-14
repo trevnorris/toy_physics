@@ -356,3 +356,19 @@ construction and began its validator/publisher. Runtime discovery is
 checkpoint explicitly gives this pointer priority over the two completed
 earlier queues. Subsequent stages retain the existing order and separate
 publication/commit boundaries.
+
+RIGHT source validation and publication completed at **fba5f1fb**. The
+validator checked **85 source objects**, **368 source metadata paths**,
+**33 retained source residual scalars** and **3484 tags**; all retained source
+residuals and all 127 cancellation identities are zero. The annexed transcript
+has **8,788,422 bytes**, SHA256
+`3619e8ea9da541706ffe14bc9093037104013a942fb85a2ede275c0dbac84501`.
+The post-save hash check succeeded. LEFT source construction started
+automatically at **2026-09-14 17:27:24 UTC**.
+
+Read-only inspection located the remaining reference-specific loaders,
+zero-background bindings and per-mode emitter labels in the modal/adjoint
+instruments. Their required endpoint adapters are recorded in the active
+repair plan's normalization handoff. The native constructors already retrieve
+the endpoint energy/acoustic context. No live pinned implementation changed;
+normalization work still requires the completed fresh pairing checkpoints.

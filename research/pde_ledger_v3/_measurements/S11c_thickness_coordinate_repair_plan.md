@@ -136,3 +136,49 @@ use `--check-directory-suffix exact --state-directory
 used for the newly emitted small kinetic diagnostics; the native producer is
 unchanged and remains reusable under its source/artifact guards. Earlier
 attempts remain intact. Current state is always the active pointer's directory.
+
+## Normalization handoff after the eight endpoint stages
+
+Read-only inspection of the existing implementation identifies the concrete
+adapters still needed for step 6. This is preparation while the endpoint queue
+runs, not a new normalization result. First require the fresh RIGHT, LEFT and
+reference pairing checkpoints with no retained discrepancy. Preserve every
+earlier packet and its source pins. Do not edit a native source while the
+active endpoint controller pins it.
+
+- `ModalCurrentSubspaces.__init__/prepare` already retrieve energy and acoustic
+  data through `pairing.anchoring` and `pairing.end`. Keep those computed
+  physical tensors, epsilon-squared coefficient extraction and radical-curve
+  derivatives. The reference-focused `S11c_d_modal_subspace_check.load_current`
+  instead expects the old pairing tuple in `objects.pickle`; the fresh endpoint
+  pairing stores its result, checks, retained values and remainders in
+  `complete.pickle`. Add a source-checked adapter for that actual packet and
+  reuse `S11c_d_end_pairing_check.build` for the endpoint context.
+- The old `load_spectrum` selects reference symbols and tags. Join each new
+  endpoint's physical pencil, supplied bindings, native root disks and both
+  normal-momentum lifts to its fresh frequency checkpoint. Compare full
+  subspaces/projectors when independently computed bases differ. Retain every
+  candidate, complete basis, rank/reality/sheet/decay gate and exceptional
+  record; do not substitute aggregate or single-vector witnesses.
+- The focused modal and adjoint runners force `eta = sigma = 0`, appropriate
+  to their reference calculation. Endpoint execution must use the supplied
+  physical homotopy at that endpoint after preserving independent symbolic
+  grades and raw/retained/remainder records. Record finite-contrast evaluations
+  of the retained operator as such; they cannot erase retained discrepancies
+  or supply a higher-order continuum prediction.
+- Both native modal/adjoint emitters and the adjoint validator currently embed
+  `REFERENCE_LAB_HELD_RHO4_CONSTANT` in per-mode tags. Carry the real case/end
+  through these interfaces and provenance; never relabel a reference packet
+  as an endpoint. Preserve a fresh reference regression alongside both ends.
+- Reuse `AdjointCurrentMap` for the full power-map solve, product-rule terms,
+  physical/mixed field forms, defect reconstruction and nonunitary basis
+  covariance. Its focused loader requires the corresponding new modal packet
+  and matching source hashes. Keep an undefined inverse/rank gate explicit.
+  Apply the actual outward endpoint orientations to computed signed currents
+  when identifying incoming/outgoing spaces; retain evanescent matching modes.
+
+Validate bounded transcripts, literal residuals, restored grades/dimensions
+and input/source joins, then commit before variable-profile matching. These
+adapters extend existing constructions under the accepted plan and introduce
+no new physical premise. Generic exceptional coverage, the complete S-matrix
+and section 3b profile-frequency poles remain later work.

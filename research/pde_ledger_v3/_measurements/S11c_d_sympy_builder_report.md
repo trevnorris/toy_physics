@@ -22,8 +22,9 @@ queue is now committed through **8b2e3cf2**: d took 4166.19 seconds at
 2,476,192 KiB peak RSS, and its nine inventories and source joins passed their
 recorded checks. The 83,989,687-byte d transcript is annexed and its full hash
 is verified. Fresh RIGHT source construction completed with 127 zero
-cancellation identities and no retained nonzero source residual. The serial
-endpoint queue is validating it before publication and the next stage; the
+cancellation identities and no retained nonzero source residual. Validation
+and annex publication completed at **fba5f1fb**: 85 source objects, 33 retained
+source residual scalars and 3484 tags. The serial endpoint queue is constructing LEFT; the
 independent-frequency balance has not yet been recomputed. Execution and the approved
 recurring continuation are recorded in the active repair report. Downstream
 artifacts remain historical until each producer's validated regeneration finishes.

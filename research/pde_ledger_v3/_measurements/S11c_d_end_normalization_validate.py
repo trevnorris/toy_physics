@@ -30,6 +30,15 @@ def json_value(value):
 
 def validate(base):
     summary = json.loads((base/'checks.json').read_text())
+    validation_sources = {}
+    for path in (Path(__file__).resolve(),Path(remainder_checker.__file__).resolve()):
+        sha = digest(path)
+        snapshot = base/'validation_sources'/sha/path.name
+        snapshot.parent.mkdir(parents=True,exist_ok=True)
+        if snapshot.exists() and digest(snapshot)!=sha:
+            raise ValueError('validation source snapshot changed')
+        if not snapshot.exists():snapshot.write_bytes(path.read_bytes())
+        validation_sources[path.relative_to(ROOT).as_posix()] = {'sha256':sha,'snapshot':str(snapshot)}
     validation_source = Path(__file__).resolve().relative_to(ROOT).as_posix()
     for name, sha in summary['sourceFiles'].items():
         if digest(base/'source'/name) != sha:
@@ -186,9 +195,13 @@ def validate(base):
     if any(value>1e-8 for value in remainder_norms.values()):
         raise ValueError('unexplained normalization balance residual; inspect emitted remainder operands')
     unaccounted = {name:value for name,value in diagnostic.items() if name not in remainder_norms}
+    if any(digest(ROOT/name)!=item['sha256'] or digest(Path(item['snapshot']))!=item['sha256']
+           for name,item in validation_sources.items()):
+        raise ValueError('validation source changed during run')
     inventory = {**summary,'runDirectory':str(base),'tagCount':len(entries),
         'metadataPaths':paths,'numericResidualScalars':residual_scalars,
         'sourceAssignments':len(indexed),'validationSourceSha256':digest(Path(__file__)),
+        'validationSourceSnapshots':validation_sources,
         'residualNormsAboveDiagnosticThreshold':diagnostic,
         'unaccountedResidualNormsAboveDiagnosticThreshold':unaccounted,
         'remainderAccounting':remainder_summary,'remainderEvidence':remainder_evidence,

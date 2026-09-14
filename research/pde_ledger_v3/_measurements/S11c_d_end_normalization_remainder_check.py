@@ -125,7 +125,7 @@ def emit_evidence(base, builder, computed):
         'NORMALIZATION_ADJOINT_SHA256':summary['objects']['adjoint.pickle'],
         'PAIRING_CACHE_SHA256':computed['summary']['pairingCacheSha256'],
         'SOURCE_SHA256':computed['summary']['sourceSha256'],
-        'FINITE_CONTRAST_EVALUATION':True,'CONTINUUM_REEXPANSION_PERFORMED':False})
+        'FINITE_CONTRAST_EVALUATION':summary['end']!='REFERENCE','CONTINUUM_REEXPANSION_PERFORMED':False})
     def matrix_unit(quantity):
         return lambda path:tuple(a-b-c for a,b,c in zip(quantity,
             builder.field_units[path[0]//5],builder.field_units[path[0]%5]))

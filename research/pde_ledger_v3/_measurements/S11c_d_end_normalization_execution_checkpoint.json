@@ -1,5 +1,5 @@
 {
-  "observedUtc": "2026-09-14T19:20:12.337270+00:00",
+  "observedUtc": "2026-09-14T19:21:59.488377+00:00",
   "active": {
     "stage": "right_validate_remainder",
     "command": [
@@ -154,7 +154,7 @@
     },
     "maximumResidualMinusRemainderNorm": 2.1493192609444154e-13
   },
-  "nextStage": "LEFT full-subspace current and adjoint normalization",
+  "nextStage": "LEFT full-subspace normalization prepared; constructor launch follows this checkpoint",
   "operationalResolutions": {
     "constructorLogLink": [
       {
@@ -175,5 +175,27 @@
     "jsonComparison": "Normalize tuple/list representations and stringify sheet membership as the producer summary does.",
     "bindingReplay": "Verify the full binding map, then replay its recorded order.",
     "remainderLauncher": "Auxiliary computation completed; launcher incorrectly attempted to attach its logs to the existing RIGHT run. Preserve the original logs and probe result; restrict attachment to the exact normalization constructor. Final validation recomputed the remainder and completed with exit 0."
-  }
+  },
+  "rightCommit": "0da0f7469526c77991ec44f9106348eb87322c0b",
+  "rightAnnexVerification": {
+    "commit": "0da0f7469526c77991ec44f9106348eb87322c0b",
+    "outputs": [
+      {
+        "path": "scripts/out/S11c_d_end_normalization_right_thickness_repair.out",
+        "annexKey": "MD5E-s3521646--6bb8b68ffc71c49a8caa9c88db98f3d0.out",
+        "sha256": "93455251213deb51751ed6a0647033dccd011e13851322ee08d64d5d60ee42ce",
+        "bytes": 3521646
+      },
+      {
+        "path": "scripts/out/S11c_d_end_normalization_right_thickness_repair_remainders.out",
+        "annexKey": "MD5E-s433148--e6f987038a93fe92a809148691b32900.out",
+        "sha256": "3e9073802a10132c3173a5b25b1dd0ff51af6db59ff0b5301d583034cc6e002d",
+        "bytes": 433148
+      }
+    ]
+  },
+  "nextValidationChanges": [
+    "Snapshot validator and remainder helper automatically before execution and verify their pins afterward.",
+    "Use the actual REFERENCE/end condition for the finite-contrast domain flag. RIGHT numerical and evidence construction bodies are unchanged."
+  ]
 }

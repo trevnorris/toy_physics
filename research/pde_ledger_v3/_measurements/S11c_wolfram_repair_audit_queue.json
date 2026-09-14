@@ -1,6 +1,6 @@
 {
   "kind": "MANUAL_REPOSITORY_WORK_QUEUE",
-  "status": "AUDITED_DEFECT_REQUIRES_USER_APPROVAL",
+  "status": "REPAIR_AUTHORIZED_IN_PROGRESS",
   "recordedUtc": "2026-09-14T20:09:08.997024+00:00",
   "authorization": "User approved queuing the four-issue Mathematica audit and specified a maximum of two concurrent Mathematica scripts.",
   "plan": "_measurements/S11c_wolfram_repair_audit_plan.md",
@@ -89,9 +89,9 @@
     "leftValidation": "COMMITTED",
     "leftCheckpoint": "_measurements/S11c_d_end_normalization_left_thickness_repair_checkpoint.json",
     "leftCommit": "b271c71b4601adf3aaa1457a4ac04a44f2f57995",
-    "auditStatus": "AUDITED_DEFECT_REQUIRES_USER_APPROVAL",
+    "auditStatus": "AUDIT_COMPLETE_REPAIR_AUTHORIZED",
     "activeProcess": null,
-    "nextAction": "Obtain user approval for S11c_wolfram_pressure_trace_repair_plan.md before editing the native c2 producer. REFERENCE/scattering remains paused at this decision."
+    "nextAction": "Complete ordered Mathematica c2 reference-pressure repair, focused verification, native four-case regeneration and publication; then resume REFERENCE normalization."
   },
   "evidenceRoot": "/var/projects/toy_physics/_scratch/s11c",
   "publicationRoot": "mathematica/out",
@@ -105,8 +105,9 @@
     "pathMeaning": "Actual Wolfram script path",
     "specifiedBy": "User"
   },
-  "updatedUtc": "2026-09-14T20:54:58.471394+00:00",
+  "updatedUtc": "2026-09-14T21:10:40.559839+00:00",
   "report": "_measurements/S11c_wolfram_repair_audit_report.md",
   "checkpoint": "_measurements/S11c_wolfram_repair_audit_checkpoint.json",
-  "repairPlan": "_measurements/S11c_wolfram_pressure_trace_repair_plan.md"
+  "repairPlan": "_measurements/S11c_wolfram_pressure_trace_repair_plan.md",
+  "repairAuthorization": "User approved the Mathematica c2 repair after audit checkpoint 946acc84."
 }

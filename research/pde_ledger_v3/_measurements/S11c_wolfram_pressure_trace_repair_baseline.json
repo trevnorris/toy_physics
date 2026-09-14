@@ -1,0 +1,40 @@
+{
+  "head": "946acc8447ccc672540c11271c3445db74a2d10e",
+  "authorizedUtc": "2026-09-14T21:02:57.722030+00:00",
+  "authorization": "User: so only 1 of the 4 needs to be repaired? please continue with the repair",
+  "sourcePins": {
+    "mathematica/S11c_c2_N6_mathematica_audit.wl": {
+      "bytes": 72941,
+      "sha256": "e5cea55b4c061323e3a2e84acb4cc9716a3bf9f1a3ee53e8f0303c275714e745"
+    },
+    "mathematica/S11c_c2_N6_ablation_harness.wl": {
+      "bytes": 3712,
+      "sha256": "fcc8a272da0d446baa96900a0163fdb39c6e88fd0d2231c24ec5f1c6fc863279"
+    },
+    "scripts/S11c_c2_N6_ablation_harness_wl.py": {
+      "bytes": 18513,
+      "sha256": "2820a3f194aabc4242c898378f10f4962a0f9a6c72c848dfe57867716c07d908"
+    },
+    "_measurements/S11c_wolfram_pressure_trace_repair_plan.md": {
+      "bytes": 4044,
+      "sha256": "eed0c94df033a0b5066658036950bc69cf78c883f34d4cc84b434aeda8dc8687"
+    }
+  },
+  "auditCheckpoint": "_measurements/S11c_wolfram_repair_audit_checkpoint.json",
+  "auditCheckpointSha256": "3b3240ca8eb2c0916f5020610884666eca43c66b4b593d352bec4bc4d1ca32cd",
+  "priorOutputs": {
+    "mathematica/out/S11c_b_brane_operator_mathematica_audit.out": {
+      "bytes": 156163159,
+      "sha256": "b7c744a3e698f25a0911463b97d257826a61c4af3c625686c53786a14571b9b5"
+    },
+    "mathematica/out/S11c_c1_bulk_closure_mathematica_audit.out": {
+      "bytes": 81881078,
+      "sha256": "d63e616786eebb58d24e2270d5e449c3151b150071a341d4a36bdfbc00a17fdd"
+    },
+    "mathematica/out/S11c_c2_N6_mathematica_audit.out": {
+      "bytes": 397864807,
+      "sha256": "6531a9f11c8162eed3cc616c174261546af02fa902760309f128b3862293bff8"
+    }
+  },
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-wolfram-pressure-repair-20260914"
+}

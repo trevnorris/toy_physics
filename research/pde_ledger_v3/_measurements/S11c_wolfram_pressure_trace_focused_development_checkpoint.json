@@ -1,0 +1,408 @@
+{
+  "kind": "focused",
+  "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-wolfram-pressure-repair-20260914/focused-development-02",
+  "manifest": {
+    "status": "completed",
+    "head": "946acc8447ccc672540c11271c3445db74a2d10e",
+    "startedUtc": "2026-09-14T21:17:07.097322+00:00",
+    "sources": {
+      "mathematica/S11c_b_brane_operator_mathematica_audit.wl": {
+        "bytes": 140124,
+        "sha256": "c77d5cd79a08f785021fa6574ed15ab91d0b4ad12f0ef1c06a2c2c01a7c6cca3"
+      },
+      "mathematica/S11c_c1_bulk_closure_mathematica_audit.wl": {
+        "bytes": 100559,
+        "sha256": "58b6557969814c65926b0e0848666ee0819b778c094ee68b4b27a85f218de181"
+      },
+      "mathematica/S11c_c2_N6_mathematica_audit.wl": {
+        "bytes": 77671,
+        "sha256": "ad85604e5d0d07e90bcf2bb8248af239c5521ed0707bacde4da81a8e11866456"
+      },
+      "directives/S11b_SHARED_PHYSICS.md": {
+        "bytes": 76540,
+        "sha256": "9ea9e388e9d6421a841eaf851d12e1793527bba9a24aeeface3bfac2f4b40078"
+      },
+      "directives/S11c_a_SHARED_PHYSICS.md": {
+        "bytes": 28887,
+        "sha256": "348bb3a3fa8f849139773096885a783ef46e8b24740ad1776eb21a4aa222e7f4"
+      },
+      "directives/S11c_b_SHARED_PHYSICS.md": {
+        "bytes": 39529,
+        "sha256": "84d319141045522072bdbe944e72901ce78c70e73fdca31b5693d640f144ca89"
+      },
+      "directives/S11c_c1_SHARED_PHYSICS.md": {
+        "bytes": 50376,
+        "sha256": "47554c8c9cf2fd070c1048a7ae0ca36b1315bf50a48ed07a51019ff3e72987ad"
+      },
+      "directives/S11c_c2_SHARED_PHYSICS.md": {
+        "bytes": 41229,
+        "sha256": "656d55a36be5f7179934f187c106fdc942dd98b4533a683c99135d29ceb62cd1"
+      },
+      "_measurements/S11c_wolfram_repair_audit_plan.md": {
+        "bytes": 6123,
+        "sha256": "038107789395a012ca0675e97c664a46fb4da13b4e742ef154e51ee694c50e74"
+      },
+      "_measurements/S11c_wolfram_repair_audit_run.py": {
+        "bytes": 6272,
+        "sha256": "e766e7d499e3af6975697e0cc244f029378c0d9a2ac47fa0def3d87dc8f26780"
+      },
+      "mathematica/S11c_wolfram_pressure_trace_repair_check.wl": {
+        "bytes": 18539,
+        "sha256": "dc1640524bbdd2bf363babdedf8fa58e973ac5b60f1fa101420be047579c9d6d"
+      },
+      "_measurements/S11c_wolfram_pressure_trace_repair_plan.md": {
+        "bytes": 4151,
+        "sha256": "e5f9aceb2d4f887592efd4c0a33ef95a87ff9946f1e3348a7c4aa5540552b3e3"
+      },
+      "_measurements/S11c_wolfram_pressure_trace_repair_baseline.json": {
+        "bytes": 1738,
+        "sha256": "82277d495bb5d63aef9da6e3e0df32be381d3c4ff527bdf17400ee070a95ba40"
+      }
+    },
+    "priorOutputs": {
+      "mathematica/out/S11c_b_brane_operator_mathematica_audit.out": {
+        "bytes": 156163159,
+        "sha256": "b7c744a3e698f25a0911463b97d257826a61c4af3c625686c53786a14571b9b5"
+      },
+      "mathematica/out/S11c_c1_bulk_closure_mathematica_audit.out": {
+        "bytes": 81881078,
+        "sha256": "d63e616786eebb58d24e2270d5e449c3151b150071a341d4a36bdfbc00a17fdd"
+      },
+      "mathematica/out/S11c_c2_N6_mathematica_audit.out": {
+        "bytes": 397864807,
+        "sha256": "6531a9f11c8162eed3cc616c174261546af02fa902760309f128b3862293bff8"
+      }
+    },
+    "command": [
+      "math",
+      "-script",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-wolfram-pressure-repair-20260914/focused-development-02/sources/mathematica/S11c_wolfram_pressure_trace_repair_check.wl"
+    ],
+    "cwd": "/var/projects/toy_physics/research/pde_ledger_v3",
+    "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-wolfram-pressure-repair-20260914/focused-development-02",
+    "sourceTransform": null,
+    "caseEnvironment": {
+      "S11C_WOLFRAM_REPAIR_CASE": "LAB_HELD_RHO4_CONSTANT"
+    },
+    "childPid": 1866463,
+    "exitCode": 0,
+    "wallSeconds": 20.798704523593187,
+    "peakRssKiB": 380200,
+    "finishedUtc": "2026-09-14T21:17:27.896469+00:00",
+    "output": {
+      "bytes": 1593638,
+      "sha256": "3ad7b44b3544c2e4c56540ea831875da0e687ed5838dc9e3e03e417e517d4ed4"
+    },
+    "stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "sourceStability": {
+      "mathematica/S11c_b_brane_operator_mathematica_audit.wl": true,
+      "mathematica/S11c_c1_bulk_closure_mathematica_audit.wl": true,
+      "mathematica/S11c_c2_N6_mathematica_audit.wl": true,
+      "directives/S11b_SHARED_PHYSICS.md": true,
+      "directives/S11c_a_SHARED_PHYSICS.md": true,
+      "directives/S11c_b_SHARED_PHYSICS.md": true,
+      "directives/S11c_c1_SHARED_PHYSICS.md": true,
+      "directives/S11c_c2_SHARED_PHYSICS.md": true,
+      "_measurements/S11c_wolfram_repair_audit_plan.md": true,
+      "_measurements/S11c_wolfram_repair_audit_run.py": true,
+      "mathematica/S11c_wolfram_pressure_trace_repair_check.wl": true,
+      "_measurements/S11c_wolfram_pressure_trace_repair_plan.md": true,
+      "_measurements/S11c_wolfram_pressure_trace_repair_baseline.json": true
+    },
+    "priorOutputStability": {
+      "mathematica/out/S11c_b_brane_operator_mathematica_audit.out": true,
+      "mathematica/out/S11c_c1_bulk_closure_mathematica_audit.out": true,
+      "mathematica/out/S11c_c2_N6_mathematica_audit.out": true
+    }
+  },
+  "manifestPin": {
+    "bytes": 4838,
+    "sha256": "9a8ea469f8eef941bc58cb5ce6d7c8c114c1e71278aa8f3300bfa0d9ec30cd7c"
+  },
+  "validationSource": {
+    "bytes": 8947,
+    "sha256": "5fff5cd9eb546e7071906fd499f6da78503c63fe0c0d282b92b2f91d3c91cec8"
+  },
+  "result": {
+    "summary": {
+      "records": 82,
+      "matrixFaceCases": 2,
+      "nativeRowCases": 4,
+      "uniformCases": 4,
+      "residuals": {
+        "wlRepairedTraceMatrix1PhysicalJoin": [
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0"
+        ],
+        "wlRepairedTraceMatrix1ReferenceJoin": [
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0"
+        ],
+        "wlRepairedTraceMatrix1TraceMapJoin": [
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0"
+        ],
+        "wlRepairedTraceMatrix1TraceInverseJoin": [
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0"
+        ],
+        "wlRepairedTraceMatrix1Reconstruction": [
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0"
+        ],
+        "wlRepairedTraceMatrix1ZeroFrequencyPhysical": [
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0"
+        ],
+        "wlRepairedTraceMatrix1ZeroFrequencyReference": [
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0"
+        ],
+        "wlRepairedTraceMatrix2PhysicalJoin": [
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0"
+        ],
+        "wlRepairedTraceMatrix2ReferenceJoin": [
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0"
+        ],
+        "wlRepairedTraceMatrix2TraceMapJoin": [
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0"
+        ],
+        "wlRepairedTraceMatrix2TraceInverseJoin": [
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0"
+        ],
+        "wlRepairedTraceMatrix2Reconstruction": [
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0"
+        ],
+        "wlRepairedTraceMatrix2ZeroFrequencyPhysical": [
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0"
+        ],
+        "wlRepairedTraceMatrix2ZeroFrequencyReference": [
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0"
+        ],
+        "wlRepairedTraceNativeRow1Component1": [
+          "0"
+        ],
+        "wlRepairedTraceNativeRow1Component2": [
+          "0"
+        ],
+        "wlRepairedTraceNativeRow1Component3": [
+          "0"
+        ],
+        "wlRepairedTraceNativeRow1Component4": [
+          "0"
+        ],
+        "wlRepairedTraceNativeRow1Component5": [
+          "0"
+        ],
+        "wlRepairedTraceNativeRow2Component1": [
+          "0"
+        ],
+        "wlRepairedTraceNativeRow2Component2": [
+          "0"
+        ],
+        "wlRepairedTraceNativeRow2Component3": [
+          "0"
+        ],
+        "wlRepairedTraceNativeRow2Component4": [
+          "0"
+        ],
+        "wlRepairedTraceNativeRow2Component5": [
+          "0"
+        ],
+        "wlRepairedTraceNativeRow3Component1": [
+          "0"
+        ],
+        "wlRepairedTraceNativeRow3Component2": [
+          "0"
+        ],
+        "wlRepairedTraceNativeRow3Component3": [
+          "0"
+        ],
+        "wlRepairedTraceNativeRow3Component4": [
+          "0"
+        ],
+        "wlRepairedTraceNativeRow3Component5": [
+          "0"
+        ],
+        "wlRepairedTraceNativeRow4Component1": [
+          "0"
+        ],
+        "wlRepairedTraceNativeRow4Component2": [
+          "0"
+        ],
+        "wlRepairedTraceNativeRow4Component3": [
+          "0"
+        ],
+        "wlRepairedTraceNativeRow4Component4": [
+          "0"
+        ],
+        "wlRepairedTraceNativeRow4Component5": [
+          "0"
+        ],
+        "wlRepairedTraceUniform1Face": [
+          "0"
+        ],
+        "wlRepairedTraceUniform1Reference": [
+          "0"
+        ],
+        "wlRepairedTraceUniform1Jet": [
+          "0"
+        ],
+        "wlRepairedTraceUniform2Face": [
+          "0"
+        ],
+        "wlRepairedTraceUniform2Reference": [
+          "0"
+        ],
+        "wlRepairedTraceUniform2Jet": [
+          "0"
+        ],
+        "wlRepairedTraceUniform3Face": [
+          "0"
+        ],
+        "wlRepairedTraceUniform3Reference": [
+          "0"
+        ],
+        "wlRepairedTraceUniform3Jet": [
+          "0"
+        ],
+        "wlRepairedTraceUniform4Face": [
+          "0"
+        ],
+        "wlRepairedTraceUniform4Reference": [
+          "0"
+        ],
+        "wlRepairedTraceUniform4Jet": [
+          "0"
+        ]
+      },
+      "mutationNonzeroComponents": {
+        "wlRepairedTraceMatrix1Mutation2": 3,
+        "wlRepairedTraceMatrix1Mutation4": 3,
+        "wlRepairedTraceMatrix1Mutation1": 3,
+        "wlRepairedTraceMatrix2Mutation2": 3,
+        "wlRepairedTraceMatrix2Mutation4": 3,
+        "wlRepairedTraceMatrix2Mutation1": 3
+      },
+      "orderedMomentumNonzeroComponents": [
+        4,
+        4
+      ]
+    },
+    "summaryPin": {
+      "bytes": 3754,
+      "sha256": "7a2392b3974c889e40f2329a89e73b0cfa01b086bbdefad135f1df5faf4e31aa"
+    },
+    "residualScalarCount": 158,
+    "nonzeroResidualScalars": 0
+  },
+  "publication": null
+}

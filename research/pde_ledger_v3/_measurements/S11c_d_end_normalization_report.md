@@ -42,8 +42,8 @@ source pins in [the checkpoint](S11c_d_end_normalization_left_thickness_repair_c
 LEFT is committed at b271c71b. The [Mathematica audit](S11c_wolfram_repair_audit_report.md)
 found a duplicate physical/reference pressure shift in c2 N6; the three mechanical
 issues are absent on the audited b domain. The [repair plan](S11c_wolfram_pressure_trace_repair_plan.md)
-requires user approval before changing that producer. REFERENCE and scattering
-remain paused at this decision; the accepted SymPy results are unchanged.
-No CAS process is active.
+is user approved. The complete focused repair check has 218 zero residuals;
+native c2 regeneration is next. REFERENCE and scattering wait for that repair
+checkpoint; accepted SymPy results are unchanged.
 Existing sheet/exceptional-domain limits remain.
 The user controls continuation; no scheduled follow-ups are active or authorized.

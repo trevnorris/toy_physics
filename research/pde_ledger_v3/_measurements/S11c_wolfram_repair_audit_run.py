@@ -29,14 +29,18 @@ SOURCES = [
 
 
 def pin(path: Path) -> dict:
-    return {"bytes": path.stat().st_size,
-            "sha256": hashlib.sha256(path.read_bytes()).hexdigest()}
+    digest = hashlib.sha256()
+    with path.open("rb") as stream:
+        for chunk in iter(lambda: stream.read(4 * 1024 * 1024), b""):
+            digest.update(chunk)
+    return {"bytes": path.stat().st_size, "sha256": digest.hexdigest()}
 
 
 def main() -> None:
     parser = argparse.ArgumentParser(__doc__)
     parser.add_argument("script", type=Path)
     parser.add_argument("--run-directory", type=Path, required=True)
+    parser.add_argument("--native-case", choices=("LAB_HELD_RHO4_CONSTANT", "MATERIAL_ADVECTED_RHO4_CONSTANT"))
     args = parser.parse_args()
     script = (ROOT / args.script).resolve()
     run = args.run_directory.resolve()
@@ -61,6 +65,9 @@ def main() -> None:
         (run / "occupied-processes.json").write_text(json.dumps(occupied, indent=2) + "\n")
         raise SystemExit("CAS process present; audit not launched. See occupied-processes.json")
     paths = list(dict.fromkeys([*SOURCES, str(script.relative_to(ROOT))]))
+    if "repair" in script.name or script.name == "S11c_c2_N6_mathematica_audit.wl":
+        paths.extend(["_measurements/S11c_wolfram_pressure_trace_repair_plan.md",
+                      "_measurements/S11c_wolfram_pressure_trace_repair_baseline.json"])
     source_pins = {}
     for relative in paths:
         source = ROOT / relative
@@ -72,13 +79,31 @@ def main() -> None:
     for relative in SOURCES[:3]:
         output = ROOT / "mathematica/out" / (Path(relative).stem + ".out")
         prior_outputs[str(output.relative_to(ROOT))] = pin(output)
+    executed = run / "sources" / script.relative_to(ROOT)
+    transform = None
+    if args.native_case:
+        if script.name != "S11c_c2_N6_mathematica_audit.wl":
+            raise ValueError("native-case restriction is only for the native c2 driver")
+        source = executed.read_text()
+        old = '{case, Tuples[{{"LAB_HELD", "MATERIAL_ADVECTED"}, {"RHO4_CONSTANT", "RHOBR_CONSTANT"}}]}'
+        anchor = "LAB_HELD" if args.native_case.startswith("LAB_HELD") else "MATERIAL_ADVECTED"
+        new = '{case, {{"' + anchor + '", "RHO4_CONSTANT"}}}'
+        if source.count(old) != 1:
+            raise ValueError("single-case native iterator census")
+        executed = run / "executed.wl"
+        executed.write_text(source.replace(old, new))
+        transform = {"kind": "CASE_RESTRICTION_ONLY", "old": old, "new": new,
+                     "occurrences": 1, "executedPin": pin(executed)}
     manifest = {
         "status": "prepared", "head": subprocess.check_output(
             ["git", "rev-parse", "HEAD"], cwd=ROOT, text=True).strip(),
         "startedUtc": dt.datetime.now(dt.timezone.utc).isoformat(),
         "sources": source_pins, "priorOutputs": prior_outputs,
-        "command": ["math", "-script", str(run / "sources" / script.relative_to(ROOT))],
+        "command": ["math", "-script", str(executed)],
         "cwd": str(ROOT), "runDirectory": str(run),
+        "sourceTransform": transform,
+        "caseEnvironment": {key: value for key, value in os.environ.items()
+                            if key.startswith("S11C_WOLFRAM_REPAIR_")},
     }
     manifest_path = run / "manifest.json"
 

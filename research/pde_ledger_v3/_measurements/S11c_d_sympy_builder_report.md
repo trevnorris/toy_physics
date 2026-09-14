@@ -22,8 +22,10 @@ residual-minus-remainder norm is 8.21e-13.
 The [Mathematica audit](S11c_wolfram_repair_audit_report.md) found a duplicate
 pressure shift in native c2 N6. The three mechanical issues are absent on the
 audited b domain (200 zero residuals). The [repair plan](S11c_wolfram_pressure_trace_repair_plan.md)
-awaits user approval before REFERENCE or further scattering. LEFT is committed
-at b271c71b; the accepted SymPy chain remains unchanged. No CAS run is active.
+is user approved and in progress before REFERENCE or further scattering. LEFT is committed
+at b271c71b; the accepted SymPy chain remains unchanged. The full focused
+Mathematica repair check has 218 zero residuals; native c2 regeneration is next.
+See S11c_wolfram_pressure_trace_repair_execution.json.
 See the [normalization report](S11c_d_end_normalization_report.md) and
 [plan](S11c_d_end_normalization_plan.md) for complete evidence and boundaries.
 

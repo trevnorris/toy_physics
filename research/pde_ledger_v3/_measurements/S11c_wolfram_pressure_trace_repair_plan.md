@@ -1,4 +1,4 @@
-# Mathematica c2 reference-pressure repair — awaiting user approval
+# Mathematica c2 reference-pressure repair — user approved
 
 The [source-pinned audit](S11c_wolfram_repair_audit_report.md) establishes a
 duplicate displacement in `mathematica/S11c_c2_N6_mathematica_audit.wl`.
@@ -8,10 +8,12 @@ and the `buildCase` closed-slot guard feed that physical response and its
 normal continuation directly into the reference slots. The guard compares
 two uses of the same image and therefore cannot establish physical trace meaning.
 
-This plan is a reviewable proposal. The audit authorization does not authorize
-editing that producer. REFERENCE normalization and further scattering pause at
-this repair decision. The corrected SymPy chain remains accepted on its recorded
-domains; this Wolfram finding does not itself require rerunning it.
+The user approved this repair on 2026-09-14: “so only 1 of the 4 needs to be
+repaired? please continue with the repair”. The baseline is pinned in
+`S11c_wolfram_pressure_trace_repair_baseline.json`. REFERENCE normalization and
+further scattering wait for this repair's validated disposition. The corrected
+SymPy chain remains accepted on its recorded domains; this Wolfram finding does
+not itself require rerunning it.
 
 1. Preserve the audited native source/output pins and failing witness. Derive
    the affine pressure-evaluation map from the actual native face law, keeping

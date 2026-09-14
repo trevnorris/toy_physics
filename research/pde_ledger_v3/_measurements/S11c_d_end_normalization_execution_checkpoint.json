@@ -154,7 +154,7 @@
     },
     "maximumResidualMinusRemainderNorm": 2.1493192609444154e-13
   },
-  "nextStage": "Obtain user approval for S11c_wolfram_pressure_trace_repair_plan.md before editing the native c2 producer. REFERENCE/scattering remains paused at this decision.",
+  "nextStage": "Complete approved Mathematica c2 reference-pressure repair and native regeneration, then resume REFERENCE normalization.",
   "operationalResolutions": {
     "constructorLogLink": [
       {
@@ -342,5 +342,6 @@
   },
   "leftCommit": "b271c71b4601adf3aaa1457a4ac04a44f2f57995",
   "wolframAuditCheckpoint": "S11c_wolfram_repair_audit_checkpoint.json",
-  "wolframAuditStatus": "AUDITED_DEFECT_REQUIRES_USER_APPROVAL"
+  "wolframAuditStatus": "REPAIR_AUTHORIZED_IN_PROGRESS",
+  "wolframRepairExecution": "S11c_wolfram_pressure_trace_repair_execution.json"
 }

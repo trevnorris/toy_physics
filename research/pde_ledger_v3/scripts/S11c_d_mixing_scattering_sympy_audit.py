@@ -1542,6 +1542,35 @@ class BoundedSourceFourierQuadrature:
                 'unitFrameIntervalErrorEstimates':info.errors}
 
 
+    class ThreeMomentum(CachedMomentum):
+        """Vary the two inner panel orders in the unchanged native layout."""
+
+        def batches(self, variables, setting, pairs, width):
+            """Keep native limit order, splitting an inner leg at known outer legs."""
+            points,weights=[],[];lower,upper=-setting['momentumBound'],setting['momentumBound']
+            def descend(index,environment,weight):
+                if index<0:
+                    yield tuple(environment[v] for v in variables),weight
+                    return
+                variable=variables[index]
+                centers=[environment[b if a==variable else a] for a,b in pairs
+                         if variable in (a,b) and (b if a==variable else a) in environment]
+                if setting['kind']=='legacy':centers=[];order=setting['momentumNodes']
+                else:order=setting['innerOrders'][index] if centers else setting['outerOrder']
+                x,w,_=self.rule(lower,upper,order,centers,width)
+                for value,mass in zip(x,w):
+                    environment[variable]=value
+                    yield from descend(index-1,environment,weight*mass)
+                environment.pop(variable)
+            for point,weight in descend(len(variables)-1,{},1.):
+                points.append(point);weights.append(weight)
+                if len(points)==self.batch_nodes:
+                    yield np.asarray(points),np.asarray(weights)
+                    points,weights=[],[]
+            if points:yield np.asarray(points),np.asarray(weights)
+
+
+
 class EdgeReduction:
     """Partial Fourier transform in an orthonormal chart with n=e_3.
 

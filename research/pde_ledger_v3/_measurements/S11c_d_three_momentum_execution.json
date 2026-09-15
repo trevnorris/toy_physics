@@ -1,0 +1,90 @@
+{
+  "status": "READY_TO_LAUNCH",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-three-momentum-20260915",
+  "stage": "three_construct",
+  "plan": "S11c_d_three_momentum_plan.md",
+  "report": "S11c_d_three_momentum_report.md",
+  "checker": "S11c_d_three_momentum_check.py",
+  "acceptedPairCommit": "3d4a32dd6bc8a6dd6642734d9338df8f7fe132c6",
+  "pairAnnexVerificationCommit": "a3d8bb14",
+  "next": "Run four initial separate-order three-momentum grids per field, then assess remaining momentum/source/profile/adaptive checks.",
+  "scope": "Fixed finite domains and positive regulator; retained baseline and single/pair layouts are explicit. No independent adaptive three-momentum result, physical tails, Abel limit, scattering or poles.",
+  "preflight": "S11c_d_three_momentum_preflight.json",
+  "preflightChecksSha256": "107144d9d68b0076fabc30b7510fe63a31d61d5f3edcc6961d4ba8131ef5e615",
+  "costEstimate": {
+    "nodeCounts": [
+      {
+        "outerOrder": 64,
+        "innerOrders": [
+          16,
+          16
+        ],
+        "nodes": 6833088
+      },
+      {
+        "outerOrder": 96,
+        "innerOrders": [
+          16,
+          16
+        ],
+        "nodes": 10282400
+      },
+      {
+        "outerOrder": 144,
+        "innerOrders": [
+          16,
+          16
+        ],
+        "nodes": 15403200
+      },
+      {
+        "outerOrder": 144,
+        "innerOrders": [
+          24,
+          16
+        ],
+        "nodes": 23104800
+      },
+      {
+        "outerOrder": 144,
+        "innerOrders": [
+          32,
+          16
+        ],
+        "nodes": 30806400
+      },
+      {
+        "outerOrder": 144,
+        "innerOrders": [
+          32,
+          24
+        ],
+        "nodes": 46208128
+      },
+      {
+        "outerOrder": 144,
+        "innerOrders": [
+          32,
+          32
+        ],
+        "nodes": 61610816
+      }
+    ],
+    "newGridNodeTotalBothFields": 867718016,
+    "prefixRateSecondsPerNode": [
+      5.9264425715355173e-05,
+      8.543887736323086e-05
+    ],
+    "prefixBasedWallHours": [
+      14.28466941697427,
+      20.593570320802776
+    ],
+    "scope": "Measured prefix extrapolation; excludes growing inventories/emission and nonuniform batching cost, not a runtime guarantee.",
+    "countWallSeconds": 48.74201190005988,
+    "initialFourGridNodeTotalBothFields": 166892992,
+    "initialFourGridPrefixBasedWallHours": [
+      2.7474492574437126,
+      3.960874965630741
+    ]
+  }
+}

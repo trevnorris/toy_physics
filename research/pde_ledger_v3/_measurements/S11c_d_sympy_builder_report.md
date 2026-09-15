@@ -114,12 +114,12 @@ All 30 rows, 22 records and 91,047 metadata paths pass, with unchanged held term
 and packet hashes. The 5.65 MB transcript is published and annex-verified.
 Next: the remaining ten three-momentum rows, before physical tails and Abel limits.
 
-The three-momentum preflight matches both saved 16,384-node prefixes exactly,
-including all ten rows, masses, mutations, nodes and weights. Retained full-action
-joins, rule caches and emission metadata pass. The initial run varies outer and
-each inner momentum order independently in four grids per field, retaining
-validated single/pair terms. Further source/profile and adaptive checks follow
-its measured evidence; no new complete three-momentum result is accepted yet.
+Initial three-momentum refinement is validated in 3h22m: all ten rows and both
+fields, with final outer/innermost/middle raw changes 2.68e-12 / 8.22e-15 /
+5.61e-14. All ten records, 10,184 partials and 34,691 metadata paths pass, with
+unchanged held terms, source hashes and packet identities. The 2.24 MB transcript
+is prepared for annex publication. Next are source/profile order refinements on
+the fixed final momentum grid; physical tails and Abel limits remain work.
 
 ## Retained user-approved solver/export contract
 

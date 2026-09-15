@@ -1,37 +1,29 @@
-# S11c-d three-momentum refinement
+# S11c-d initial three-momentum refinement
 
-The two-momentum result is published at 3d4a32dd and annex-verified at a3d8bb14.
-The next calculation retains its final values and the validated one-momentum
-values while refining all ten remaining three-momentum rows. The original
-finest three-momentum group remains the explicitly retained baseline.
+The complete run passed in 3 hours 22 minutes with exit zero and empty stderr,
+using one native numerical thread and peak RSS 165.9 MiB. All ten native rows,
+ten bound source records and four nested profile types cover both approved
+fields and three positions. Eight new grids evaluate 166,892,992 momentum nodes.
+The two original full baselines are explicitly retained from accepted packets;
+all single/pair terms remain unchanged and actual measure controls respond.
 
-The engine extension changes only the lookup of two inner panel orders in the
-original recursive batching method. Exact method and whole-engine AST joins
-preserve all physical coefficients, source/profile evaluation, native limits,
-Abel transfer pairs and derived width. The initial run varies outer, innermost and middle resolution separately on
-both approved Gaussian fields. Source/profile refinement follows the measured
-momentum evidence.
-It keeps the finite domains and positive regulator unchanged.
+Final raw-integral changes under outer, innermost and middle refinement are at
+most 2.68e-12, 8.22e-15 and 5.61e-14. The action correction from the retained
+three-momentum baseline is 1.51e-14 / 6.74e-15. Later inner refinements change
+complete actions by zero at the numerical precision used; their raw integral
+changes remain explicit, so rounded action values are not a convergence proof.
 
-Focused checks compare actual finite prefixes to preserved original arrays,
-nodes, weights, mass and measure controls, and verify the retained mixed action.
-Every completed production grid and partial sum remains in repository scratch.
-No full three-momentum refinement result has yet been accepted. Independent
-adaptive checks, parameter-grade coverage, physical tails/interchange and Abel
-weak limits remain separate requirements before scattering and bound poles.
-Approved inputs and the retained solver/export contract remain unchanged.
+All ten records, three exact read-only caches, 9,470 tags, 4,733 fresh keys and
+34,691 metadata paths pass. Source/profile cache units and every finite ordered
+limit and three-dimensional box mass are checked explicitly. All 56 frozen
+sources and 10,184 partial packets are verified; pre/post-emission hashes agree.
+The 2,239,644-byte transcript is prepared for annex publication at
+`scripts/out/S11c_d_three_momentum.out`; SHA256
+`9216d38dc7653e54623e505233b56c1e37b0972dcae8111a202af45d4a9a8b7a`.
 
-Focused checks passed with exit zero and empty stderr. Both 16,384-node native
-prefixes match exactly in every row, mutated value, mass, node and weight. The
-retained complete-action reconstruction is exact. Both inner-order controls
-change the actual nodes, and all cached rules are exact and read-only. These
-prefixes are not full integrals. A retained-baseline emission smoke test replays
-2,046 tags, 1,021 keys and 17,637 metadata paths. Explicit unit guards cover
-every ordered momentum limit, three-dimensional box mass and distinct source/
-profile cache arrays. Full source and packet hashes agree.
-
-Counting actual native panels gives 166,892,992 new momentum nodes across both
-fields for the initial four grids. Measured prefix rates suggest roughly 3-4
-hours before checkpoint/emission overhead; this is an extrapolation, not a
-runtime guarantee. The original complete sweep estimate was 14-21 hours, so
-higher orders and source/profile refinement await the initial numerical evidence.
+Next: raise source order from 128 to 256, then profile order from 128 to 256,
+on the fixed outer-144/inner-24/24 grid. The small measured inner-order changes
+make source/profile accuracy the next uncertainty to test. Further momentum or
+adaptive checks are chosen from those results. Independent-grade convergence,
+physical tails/interchange and Abel weak limits remain work before scattering
+and bound poles. Preserve approved inputs, all operands and the retained contract.

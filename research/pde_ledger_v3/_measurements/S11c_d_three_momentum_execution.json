@@ -1,5 +1,5 @@
 {
-  "status": "RUNNING",
+  "status": "VALIDATED_PUBLICATION_PREPARED",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-three-momentum-20260915",
   "stage": "three_construct",
   "plan": "S11c_d_three_momentum_plan.md",
@@ -7,7 +7,7 @@
   "checker": "S11c_d_three_momentum_check.py",
   "acceptedPairCommit": "3d4a32dd6bc8a6dd6642734d9338df8f7fe132c6",
   "pairAnnexVerificationCommit": "a3d8bb14",
-  "next": "Run four initial separate-order three-momentum grids per field, then assess remaining momentum/source/profile/adaptive checks.",
+  "next": "Annex-verify publication, then check source/profile orders on the accepted final three-momentum grid, retaining validated single/pair contributions.",
   "scope": "Fixed finite domains and positive regulator; retained baseline and single/pair layouts are explicit. No independent adaptive three-momentum result, physical tails, Abel limit, scattering or poles.",
   "preflight": "S11c_d_three_momentum_preflight.json",
   "preflightChecksSha256": "107144d9d68b0076fabc30b7510fe63a31d61d5f3edcc6961d4ba8131ef5e615",
@@ -140,5 +140,25 @@
     "notifications": {}
   },
   "observedProcesses": "    PID STAT     ELAPSED NLWP COMMAND\n3138667 SNs        00:26    1 /usr/bin/python _measurements/S11c_d_end_normalization_run.py --run-root /var/projects/toy_physics/_scratch/s11c/s11c-three-momentum-20260915 --stage three_construct -- python -u _measurements/S11c_d_three_momentum_check.py --run-directory /var/projects/toy_physics/_scratch/s11c/s11c-three-momentum-20260915/complete\n3138668 SNs        00:26    1 /usr/bin/python /var/projects/toy_physics/_scratch/s11c/s11c-three-momentum-20260915/completion-watcher/watch.py --pid 3138667 --thread 01a08c53-295c-70f0-baaf-353db1745867 --directory /var/projects/toy_physics/_scratch/s11c/s11c-three-momentum-20260915/completion-watcher --message-file /var/projects/toy_physics/_scratch/s11c/s11c-three-momentum-20260915/completion-watcher/continuation.txt --error-log /var/projects/toy_physics/_scratch/s11c/s11c-three-momentum-20260915/three_construct.stderr --codex-bin /home/trevnorris/.npm-packages/bin/codex\n3138674 RN         00:26    1 python -u _measurements/S11c_d_three_momentum_check.py --run-directory /var/projects/toy_physics/_scratch/s11c/s11c-three-momentum-20260915/complete\n",
-  "launcherSha256": "6e7defc80ac58917b5515ffd325804612309393dc9d12d367c96c1e524b0a9f0"
+  "launcherSha256": "6e7defc80ac58917b5515ffd325804612309393dc9d12d367c96c1e524b0a9f0",
+  "invocation": {
+    "stage": "three_construct",
+    "command": [
+      "python",
+      "-u",
+      "_measurements/S11c_d_three_momentum_check.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-three-momentum-20260915/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-three-momentum-20260915/three_construct.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-three-momentum-20260915/three_construct.stderr",
+    "startedUtc": "2026-09-15T19:30:08.480560+00:00",
+    "childPid": 3138674,
+    "status": "completed",
+    "exitCode": 0,
+    "wallSeconds": 12124.638983700424,
+    "stderrBytes": 0,
+    "finishedUtc": "2026-09-15T22:52:13.119661+00:00"
+  },
+  "acceptedCheckpoint": "S11c_d_three_momentum_checkpoint.json"
 }

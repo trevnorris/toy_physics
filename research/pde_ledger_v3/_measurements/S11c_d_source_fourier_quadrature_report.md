@@ -51,3 +51,15 @@ traceback, and operands/certificates saved before subsequent work. Every case
 must pass along with its coefficient mutation; a timeout remains unresolved.
 The production certificate criterion and physics engine are unchanged pending
 this test. The accepted source/factorization/test packets remain intact.
+
+The bounded uncompressed regression is validated: all ten cases completed in
+75.22 seconds, with peak worker RSS 71,708 KiB. Every expanded representation
+differs from its comparison operand, all ten exact residuals and all 62 proof
+scalars vanish, all original limits agree, and every coefficient mutation is
+nonzero. Saved certificate/mutation operands, case/source hashes, and all
+stdout/checkpoint joins passed inspection.
+
+Production now selects `shared=False` only in `integral_comparison`. A whole
+checker AST join permits exactly that one boolean change; the physics engine
+is unchanged. Raw residuals, live representation strings/hashes and all 320
+occurrence joins remain. Full source quadrature is prepared for retry-02.

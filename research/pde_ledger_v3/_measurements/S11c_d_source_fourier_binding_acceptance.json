@@ -1,0 +1,119 @@
+{
+  "status": "ACCEPTED_FOR_NATIVE_BINDING_COMPARISONS",
+  "regressionDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-binding-bounded-20260915/complete",
+  "validation": {
+    "caseCount": 10,
+    "proofCount": 62,
+    "records": [
+      {
+        "test": 0,
+        "index": 30,
+        "proofs": 6,
+        "representationsDiffer": true,
+        "operandHash": "27909e4c1cfc45f8252db0b129b23bb6cfdc8120ffbf176db13e5af4d1dfb9d5",
+        "certificateHash": "63992132a428bfb37baf7f02ef22e36ac113f1b8a82a5db384cf04beec355f46",
+        "mutationHash": "7917d0d55f8b31dbf4c68cf259f2169dc21a5c5cc1a20342e5c479b2048d4b80"
+      },
+      {
+        "test": 0,
+        "index": 31,
+        "proofs": 6,
+        "representationsDiffer": true,
+        "operandHash": "98170efd500e108f3218e633492997893a2e337bcd2b085ce9dc49f4f90f9b6f",
+        "certificateHash": "431261b203fa2d12b3277d340f87201b8f5fee8b331f00216ffde6786683194c",
+        "mutationHash": "b5f4354a1dd43dbfa72c2d9d0afc53814eb58fdbf54519a840db3c34a24bc091"
+      },
+      {
+        "test": 0,
+        "index": 32,
+        "proofs": 6,
+        "representationsDiffer": true,
+        "operandHash": "961eb45c1e3e0ff6b67336cfc18883504b8245f73be7c9277903f9d041dccf9c",
+        "certificateHash": "6cdfa95b99b6d68f45a6a03d5e703ceece4d92ebc48f6ce0e260f355b798b3c0",
+        "mutationHash": "ac6a8dbc1e3c6cbbd0fd37c605002bb06aab24620d224be0f1cd253a47205b9f"
+      },
+      {
+        "test": 0,
+        "index": 33,
+        "proofs": 7,
+        "representationsDiffer": true,
+        "operandHash": "8822b4ed4a43fe783dcb986fa3acc88fed7002b1b7c19bc8ab0cc7de883516b0",
+        "certificateHash": "38eb859f1d5f1244111b701f330ddb5b1cdb893d73442acf2b7d0c7a63b2a511",
+        "mutationHash": "cc3833e16d86289bc828a1b572817ab9db2a945192241b5cf39622e959e0e125"
+      },
+      {
+        "test": 0,
+        "index": 34,
+        "proofs": 6,
+        "representationsDiffer": true,
+        "operandHash": "5f4e62e17371ad0463e8ec442b02dc09e8483f617582d3a977082cac5becae69",
+        "certificateHash": "7006a394d03b168f8055979c781cb215089d6a2e8c76af9a7860fd8f48981898",
+        "mutationHash": "0ee378eb5a2307954a67fb8147866ddc5a22433c48a1a561a38b3705d6c561a8"
+      },
+      {
+        "test": 1,
+        "index": 30,
+        "proofs": 6,
+        "representationsDiffer": true,
+        "operandHash": "07454d23fb30788f7bdbaa435d411fbcad678fbd0d7199d4772ebfd46f0c1cc6",
+        "certificateHash": "497950a845142720fef258d58012aaa6ded06e9d240b1ecc6eb40101d583c0eb",
+        "mutationHash": "cd31a63ac71e69bdc3f5af2a0883d1e5397b0efdbd7fa6dd0166f6b8c73b35ec"
+      },
+      {
+        "test": 1,
+        "index": 31,
+        "proofs": 6,
+        "representationsDiffer": true,
+        "operandHash": "b3fe01220e7b8bf97eafc788a838dac5c59f557bb932a54098b733e0211a2379",
+        "certificateHash": "5987778e19497bf97e3d50efdb8790cde86b01d61292df160486baa995cd9f49",
+        "mutationHash": "552107eb9291fa7ae3a2bea6e7f87c2b01d8289082545b591f0f467e1d4d3b78"
+      },
+      {
+        "test": 1,
+        "index": 32,
+        "proofs": 6,
+        "representationsDiffer": true,
+        "operandHash": "6e68231632b20254c6e9353a13449249d045d78d44f935dd8d1d9bad3ccd300e",
+        "certificateHash": "8db5594027cf91a18e8f9c1c43c76929f953b4492ceb07f26d7b22917af645ae",
+        "mutationHash": "c4e1e5652b0f363a2f80c442657b4953d941c40a8eb7b58f74ec082524a400ce"
+      },
+      {
+        "test": 1,
+        "index": 33,
+        "proofs": 7,
+        "representationsDiffer": true,
+        "operandHash": "7909e23595056c4f6473c81fa71e378e3a8b5858ffd025b22ffc03f63bdc2eb8",
+        "certificateHash": "99b225c2bc3e300aff219013351661fcf988adffc2ed7f950682b0a8c4d7b177",
+        "mutationHash": "cc677de86059962dd87a36d63b2ecca4b19b515899188ae6dc97a1e2fe29ec23"
+      },
+      {
+        "test": 1,
+        "index": 34,
+        "proofs": 6,
+        "representationsDiffer": true,
+        "operandHash": "2a7c50b5b42656df8b4bceb37852c74042938498594b680fe86bd6d547305403",
+        "certificateHash": "5f9089de29cf92ab9c205a2ed5f3bdfbc97944d00e1155941d91106a8c1db9c7",
+        "mutationHash": "e329b6ac4545a6b44c8f27cda4c8a6386c0190b6c03c4c6a240b895904694953"
+      }
+    ],
+    "checksSha256": "ecda282f76835f0fdebc9e0969f0826f8e009c9d101232ebe21848193945de63",
+    "preflightSha256": "05c59b1247e941c64fcbd511e6d3a25700b13a439ddea5b878a2d8cf87053230",
+    "wallSeconds": 75.2244034325704,
+    "peakWorkerRssKiB": 71708,
+    "sourceFiles": {
+      "_measurements/S11c_d_source_fourier_binding_regression.py": "dda0e708870bd0a64c9bf26c066afd5b4165daadafaa6bcc5fa5d809e29cbcb8",
+      "_measurements/S11c_d_source_fourier_quadrature_check.py": "16faf208ee9f9d6e630bc85ed7b29f30c2fc6566edc6cd5480cead2397f0e7d7",
+      "scripts/S11c_d_mixing_scattering_sympy_audit.py": "32666c4f79ae78806c023eb1aefbef36868be9d0d52f0f8537140e9088d30204"
+    },
+    "accepted": true
+  },
+  "validationSha256": "44bb8e0d5517868de95ba81f87fe2128854788a76c828b3d9c4a6f028cfb3276",
+  "validationScriptSha256": "7b83deed2c48ee8c231b9edba2c503d2b6515a75f1d2a317c088cab80f4465b8",
+  "validationStderrBytes": 0,
+  "productionChange": "Only the reconstruction_certificate shared keyword in integral_comparison changes True to False; whole-checker AST equality holds after this substitution.",
+  "narrowProductionAstJoin": true,
+  "previousCheckerSha256": "16faf208ee9f9d6e630bc85ed7b29f30c2fc6566edc6cd5480cead2397f0e7d7",
+  "currentCheckerSha256": "640a5fa5ae39933ec012df76979909f5551ffa690eb7bbab16fd188c5082b901",
+  "sourceEngineUnchanged": true,
+  "scope": "Exact expanded-representation binding certificates on ten saved cases, all 62 proof residuals zero, every coefficient mutation nonzero and every native limit equal. This accepts the instrument route, not numerical source quadrature or full-action convergence."
+}

@@ -54,3 +54,8 @@ existing uncompressed certificate route on every saved case in independent
 subprocesses with wall/memory limits and per-case checkpoints. Adopt it only
 after exact residual/proof and mutation checks pass; never accept a timeout
 or replace an uncomputed certificate with a numerical witness.
+
+The bounded test passed all ten cases in 75.22 seconds with 62 zero proof
+residuals and all coefficient mutations nonzero. The production occurrence
+comparison now selects the tested uncompressed route. Its exact criterion,
+full operand/limit joins and saved representation evidence remain unchanged.

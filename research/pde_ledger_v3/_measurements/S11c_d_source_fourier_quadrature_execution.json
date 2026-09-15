@@ -1,12 +1,12 @@
 {
-  "status": "BOUNDED_BINDING_REGRESSION_RUNNING",
+  "status": "BINDING_REPAIR_VALIDATED_QUADRATURE_RETRY_PREPARED",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-source-quadrature-20260914",
   "stage": "source_quadrature",
   "plan": "S11c_d_source_fourier_quadrature_plan.md",
   "report": "S11c_d_source_fourier_quadrature_report.md",
   "preflight": "S11c_d_source_fourier_quadrature_preflight.json",
   "acceptedFactorizationCommit": "bed088beb40f988647ec8a7861e9e898e4861fd5",
-  "next": "Run bounded uncompressed certificates on all saved representation cases, then adopt only a passing method and resume full source quadrature.",
+  "next": "Run full source quadrature with the validated uncompressed native-binding certificate route, preserving all bound source records and live representations.",
   "scope": "Finite smooth source integrals and sampled quadrature refinement only; no full-action convergence, unbounded interchange, Abel weak limit, scattering or pole result.",
   "implementationCommit": "a86c0500",
   "originalLaunch": {
@@ -65,7 +65,7 @@
     }
   },
   "repair": "S11c_d_source_fourier_quadrature_loader_repair.json",
-  "activeRunRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-binding-bounded-20260915",
+  "activeRunRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-source-quadrature-20260914/retry-02",
   "loaderRepairCommit": "0f1003030287f6210600eb13fed191f998e8a1dc",
   "launch": {
     "launchedUtc": "2026-09-15T04:01:50.640269+00:00",
@@ -292,5 +292,25 @@
     "notifications": {}
   },
   "boundedRegressionCommit": "022a27de",
-  "boundedRegressionLauncherSha256": "cb25c262146e1f518ac727b63c21db99db8d6fa7e979cf132405d3d7f530e341"
+  "boundedRegressionLauncherSha256": "cb25c262146e1f518ac727b63c21db99db8d6fa7e979cf132405d3d7f530e341",
+  "bindingAcceptance": "S11c_d_source_fourier_binding_acceptance.json",
+  "boundedRegressionCompletion": {
+    "stage": "binding_regression",
+    "command": [
+      "python",
+      "-u",
+      "_measurements/S11c_d_source_fourier_binding_regression.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-binding-bounded-20260915/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-binding-bounded-20260915/binding_regression.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-binding-bounded-20260915/binding_regression.stderr",
+    "startedUtc": "2026-09-15T12:39:26.831739+00:00",
+    "childPid": 2634912,
+    "status": "completed",
+    "exitCode": 0,
+    "wallSeconds": 75.2244034325704,
+    "stderrBytes": 0,
+    "finishedUtc": "2026-09-15T12:40:42.056242+00:00"
+  }
 }

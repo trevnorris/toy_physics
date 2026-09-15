@@ -87,6 +87,12 @@ are preserved; no numerical source result has yet been accepted. Full-action qua
 before physical limit claims and boundary matching.
 See the factorization report and accepted checkpoint for evidence and scope.
 
+The bounded uncompressed binding test passed all ten expanded-representation
+cases in 75.22 seconds, with 62 zero proof residuals and all coefficient
+mutations nonzero. The tested method is adopted by a single boolean change
+in the occurrence-comparison helper; the physics engine is unchanged. Full
+source quadrature is prepared for retry with all saved operands preserved.
+
 ## Retained user-approved solver/export contract
 
 

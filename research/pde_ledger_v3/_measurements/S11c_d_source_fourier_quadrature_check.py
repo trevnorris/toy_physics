@@ -141,8 +141,10 @@ def integral_comparison(current, expected):
     normalized = raw
     replay, exponent = (), ()
     if current != expected:
+        # Bound rational coefficients retain their algebraic dependencies;
+        # CSE here can turn the cancellation into a large independent-symbol GCD.
         certificate = engine.BoundedSourceFourierAssembly.reconstruction_certificate(
-            current.function, expected.function, shared=True)
+            current.function, expected.function, shared=False)
         normalized = certificate['RESIDUAL']
         replay = certificate['REPLAY_RESIDUALS']
         exponent = tuple(v[1] for v in certificate['PHASE_SPLITS'].values())+tuple(

@@ -75,7 +75,8 @@ the retry exposed ten native operands with middle momentum outside source
 position. The finite-domain adapter now locates source position by identity
 and preserves the other limits. All 80 layout checks and 32 focused residuals
 pass; the native engine prefix is unchanged. Per-row hashed saves now retain
-completed downstream work. The full factorization/metadata retry is pending.
+completed downstream work. Repair 50c51500 is committed; the full
+factorization/metadata retry was launched with a local completion/error watcher.
 See the domain and factorization reports for evidence and scope limits.
 
 ## Retained user-approved solver/export contract

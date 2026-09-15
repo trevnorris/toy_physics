@@ -49,6 +49,7 @@ The next run preflights every layout and saves each completed row, phase
 state and metadata context with hashes, before proceeding to the next row.
 A strict source/provenance join permits resumption from those rows. It emits
 the native source-limit index and remaining ordered limits with full metadata.
-The all-operand run in `retry-02` is pending; no factorization output has yet
-been accepted or published. See the limit-repair checkpoint for the inventory,
+The limit-order repair is committed at `50c51500`. The all-operand run in
+`retry-02` was launched with its owned supervisor and completion/error watcher;
+no factorization output has yet been accepted or published. See the limit-repair checkpoint for the inventory,
 regression records and original failure hashes.

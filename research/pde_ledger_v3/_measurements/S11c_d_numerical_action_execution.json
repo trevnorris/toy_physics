@@ -1,5 +1,5 @@
 {
-  "status": "VALIDATED_PENDING_COMMIT",
+  "status": "COMPLETED_COMMITTED",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-numerical-action-20260914",
   "plan": "S11c_d_numerical_action_plan.md",
   "planStep": 3,
@@ -73,5 +73,14 @@
     "path": "scripts/out/S11c_d_numerical_action.out",
     "bytes": 287329,
     "sha256": "3855a4300c4c9a5116b70697e32678e1258a270dbebc70357d7195c2599e6159"
+  },
+  "publicationCommit": "009667f74cee4e35fc5ec8b0149401447c66822c",
+  "annexVerification": {
+    "commit": "009667f74cee4e35fc5ec8b0149401447c66822c",
+    "path": "scripts/out/S11c_d_numerical_action.out",
+    "bytes": 287329,
+    "sha256": "3855a4300c4c9a5116b70697e32678e1258a270dbebc70357d7195c2599e6159",
+    "isSymlink": true,
+    "annexKey": "MD5E-s287329--07da8eb0607447db546f36b5e512554a.out"
   }
 }

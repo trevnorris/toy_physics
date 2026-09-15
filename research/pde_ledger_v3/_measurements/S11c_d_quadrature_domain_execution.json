@@ -1,0 +1,11 @@
+{
+  "status": "IMPLEMENTED_READY_TO_RUN",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-quadrature-domain-20260914",
+  "plan": "S11c_d_quadrature_limits_plan.md",
+  "sourcePublicationCommit": "009667f74cee4e35fc5ec8b0149401447c66822c",
+  "sourceSha256": {
+    "_measurements/S11c_d_quadrature_domain_check.py": "0195285ef6971808558c738389c43f8557178645285ea6e64f51e36b393fd021"
+  },
+  "scope": "Source denominator operands, all Abel transfer pairs, derived peak widths and finite mass resolution, all nested profile transforms and estimated tails. No full action limit or scattering claim.",
+  "next": "Run the source-derived quadrature domain checker with a silent local completion/error watcher."
+}

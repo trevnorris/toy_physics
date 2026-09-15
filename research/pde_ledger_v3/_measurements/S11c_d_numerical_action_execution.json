@@ -11,7 +11,7 @@
     "scripts/S11c_d_mixing_scattering_sympy_audit.py": "368d05d508ea99c8fe9ad544a8aba649e174aecc88da26bbf6d6c7c6efce151c",
     "_measurements/S11c_d_numerical_action_check.py": "86d5b373df8825c1e6dca198555b2a65e62822a3d9ba32868a89ca135bb7968f"
   },
-  "next": "Refine finite quadrature, tails, domains and the Abel regulator before boundary matching. Reuse the saved bound operators and direct/assembled test operands.",
+  "next": "Quadrature-domain saved-operand recovery is running after a complex-sum recording repair; see S11c_d_quadrature_domain_execution.json. The accepted bounded action publication is unchanged.",
   "implementationCommit": "2663a526",
   "launch": {
     "launchedUtc": "2026-09-15T00:50:41.182475+00:00",

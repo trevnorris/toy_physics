@@ -18,3 +18,7 @@ been accepted. The saved denominator, Abel, profile and transcript operands
 remain intact. Recovery restores complete complex mass sums from their saved
 density and quadrature operands, reuses all profile and denominator work, and
 checks that the recorded real projections and source helpers are unchanged.
+
+The recording repair is committed at `84968950`. Saved-operand recovery is
+running under its own supervisor and silent completion/error watcher. No
+quadrature-domain publication has yet been accepted.

@@ -1,5 +1,5 @@
 {
-  "status": "COMPLETED_WARNING_RECOVERY_REQUIRED",
+  "status": "RECOVERY_RUNNING",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-quadrature-domain-20260914",
   "plan": "S11c_d_quadrature_limits_plan.md",
   "sourcePublicationCommit": "009667f74cee4e35fc5ec8b0149401447c66822c",
@@ -7,7 +7,7 @@
     "_measurements/S11c_d_quadrature_domain_check.py": "17717deeb8db99c9684c46695e62d5d6606087310b8ac288f09120086e10867e"
   },
   "scope": "Source denominator operands, all Abel transfer pairs, derived peak widths and finite mass resolution, all nested profile transforms and estimated tails. No full action limit or scattering claim.",
-  "next": "Run saved-operand recovery, verify complete real-projection and source/helper joins, and validate the corrected transcript before publication.",
+  "next": "Wait for the recovery completion/error watcher. Validate saved-operand/source joins, complete complex mass sums, metadata and emission before publication.",
   "implementationCommit": "4bbfb331",
   "launch": {
     "launchedUtc": "2026-09-15T01:16:21.590365+00:00",
@@ -71,5 +71,65 @@
     "errorLog": "/var/projects/toy_physics/_scratch/s11c/s11c-quadrature-domain-20260914/domain_construct.stderr"
   },
   "recoveryRunRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-quadrature-domain-20260914/recovery-01",
-  "issue": "The recorded Abel sums cast complex numerical values to float, generating two ComplexWarnings. Keep all original artifacts; restore full complex sums from saved density/quadrature operands and reuse all denominator/profile computations."
+  "issue": "The recorded Abel sums cast complex numerical values to float, generating two ComplexWarnings. Keep all original artifacts; restore full complex sums from saved density/quadrature operands and reuse all denominator/profile computations.",
+  "repairCommit": "84968950",
+  "recoveryLaunch": {
+    "launchedUtc": "2026-09-15T01:21:05.049522+00:00",
+    "command": [
+      "/usr/bin/python",
+      "_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-quadrature-domain-20260914/recovery-01",
+      "--stage",
+      "domain_recover",
+      "--",
+      "python",
+      "-u",
+      "_measurements/S11c_d_quadrature_domain_check.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-quadrature-domain-20260914/recovery-01/complete",
+      "--resume-from",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-quadrature-domain-20260914/complete"
+    ],
+    "supervisorPid": 1968823,
+    "watcherPid": 1968824,
+    "watcherDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-quadrature-domain-20260914/recovery-01/completion-watcher"
+  },
+  "recoveryActive": {
+    "stage": "domain_recover",
+    "command": [
+      "python",
+      "-u",
+      "_measurements/S11c_d_quadrature_domain_check.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-quadrature-domain-20260914/recovery-01/complete",
+      "--resume-from",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-quadrature-domain-20260914/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-quadrature-domain-20260914/recovery-01/domain_recover.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-quadrature-domain-20260914/recovery-01/domain_recover.stderr",
+    "startedUtc": "2026-09-15T01:21:05.155003+00:00",
+    "childPid": 1968828,
+    "status": "completed",
+    "exitCode": 0,
+    "wallSeconds": 45.812870213761926,
+    "stderrBytes": 0,
+    "finishedUtc": "2026-09-15T01:21:50.967981+00:00"
+  },
+  "recoveryCompletionWatcher": {
+    "status": "finished",
+    "watcherPid": 1968824,
+    "jobPid": 1968823,
+    "thread": "01a08c53-295c-70f0-baaf-353db1745867",
+    "startedUtc": "2026-09-15T01:21:05.183105+00:00",
+    "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
+    "messageSha256": "10c5b1ce8de862f3afdeab3ea60b6a705750cc4b4a1a50a62a82349180315fee",
+    "notifications": {
+      "completion": {
+        "status": "queued",
+        "exitCode": 0,
+        "finishedUtc": "2026-09-15T01:21:51.991872+00:00"
+      }
+    }
+  }
 }

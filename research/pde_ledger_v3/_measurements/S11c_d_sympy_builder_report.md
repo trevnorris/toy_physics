@@ -65,7 +65,10 @@ The numerical action check completed: all 300 components agree within
 2.49e-16, retaining 1,920 nonlocal contributions and passing mutation checks.
 All 106 tags and 3,611 metadata paths replayed, and source/packet hashes agree.
 Grid changes reach 0.04670; quadrature refinement, physical tails and Abel
-weak limits remain work before boundary matching. See the numerical action report.
+weak limits remain work before boundary matching. Publication is annex-verified
+at 009667f7. Quadrature-domain recovery is running after a complex-sum recorder
+repair; all saved physical operands are retained. See the numerical action and
+quadrature domain reports.
 
 ## Retained user-approved solver/export contract
 

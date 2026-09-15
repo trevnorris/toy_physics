@@ -1,6 +1,6 @@
 {
   "kind": "bounded uncompressed source binding certificate experiment",
-  "status": "PREPARED",
+  "status": "BOUNDED_BINDING_REGRESSION_RUNNING",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-binding-bounded-20260915",
   "priorInterruption": {
     "reason": "More than eight hours in the auxiliary expanded-representation regression without a completed record. Request KeyboardInterrupt traceback to locate the bottleneck; preserve all accepted operands.",
@@ -117,5 +117,50 @@
     "caseAddressSpaceBytes": 8589934592
   },
   "scriptSha256": "dda0e708870bd0a64c9bf26c066afd5b4165daadafaa6bcc5fa5d809e29cbcb8",
-  "scope": "Ten cases derived from the saved diagnostic inventory. Independent subprocess per case, operands saved before certification and certificate saved before mutation. Stop at any failed/timeout worker. No upstream regeneration or numerical source acceptance."
+  "scope": "Ten cases derived from the saved diagnostic inventory. Independent subprocess per case, operands saved before certification and certificate saved before mutation. Stop at any failed/timeout worker. No upstream regeneration or numerical source acceptance.",
+  "launch": {
+    "launchedUtc": "2026-09-15T12:39:26.704259+00:00",
+    "command": [
+      "/usr/bin/python",
+      "_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-binding-bounded-20260915",
+      "--stage",
+      "binding_regression",
+      "--",
+      "python",
+      "-u",
+      "_measurements/S11c_d_source_fourier_binding_regression.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-binding-bounded-20260915/complete"
+    ],
+    "supervisorPid": 2634859,
+    "watcherPid": 2634861,
+    "watcherDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-binding-bounded-20260915/completion-watcher"
+  },
+  "activeAtCheckpoint": {
+    "stage": "binding_regression",
+    "command": [
+      "python",
+      "-u",
+      "_measurements/S11c_d_source_fourier_binding_regression.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-binding-bounded-20260915/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-binding-bounded-20260915/binding_regression.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-binding-bounded-20260915/binding_regression.stderr",
+    "startedUtc": "2026-09-15T12:39:26.831739+00:00",
+    "childPid": 2634912,
+    "status": "running"
+  },
+  "watcherAtCheckpoint": {
+    "status": "waiting",
+    "watcherPid": 2634861,
+    "jobPid": 2634859,
+    "thread": "01a08c53-295c-70f0-baaf-353db1745867",
+    "startedUtc": "2026-09-15T12:39:26.844398+00:00",
+    "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
+    "messageSha256": "ad3a2a86ccbffe37cafcf826848419114a5dc259daad49dad381d82f5f3473ba",
+    "notifications": {}
+  }
 }

@@ -154,7 +154,7 @@
     },
     "maximumResidualMinusRemainderNorm": 2.1493192609444154e-13
   },
-  "nextStage": "Reduced-action source is committed and annex-verified at 83e98566. Local-jet/intact-integral assembly follows; numerical coefficient choices are pending.",
+  "nextStage": "Exact reduced assembly is validated: 281 zero residuals, four local derivative matrices and 80 nonlocal integrals. Annex publication precedes numerical action evaluation; 30 inherited numerical coefficient values remain a pending input choice.",
   "operationalResolutions": {
     "constructorLogLink": [
       {

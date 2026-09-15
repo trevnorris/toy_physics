@@ -48,8 +48,10 @@ incoming and two outgoing directions per end. All cross-mode currents were
 evaluated; reconstruction residual norms are below 6.34e-16. The 500-tag packet
 and 2,763 metadata paths passed full replay. The packet is committed and annex-verified at 3a5d3d25. Reduced operator
 assembly now has validated full five-slot source rows and all five native
-probe-action columns. The source packet passed row/emission replay and 279
-metadata paths; numerical local/nonlocal action assembly is next.
+probe-action columns. Exact assembly is validated: four local derivative
+matrices, 80 distinct nonlocal integrals and 281 zero reconstruction/extraction
+residuals; 1,226 metadata paths passed replay. Numerical action evaluation
+awaits the input choice for 30 inherited free gradient-energy coefficients.
 
 The complete two-ended variable-profile S-matrix, profile-frequency bound
 poles/residues/overlap, survival, flux bookkeeping, weak coefficients, section 5

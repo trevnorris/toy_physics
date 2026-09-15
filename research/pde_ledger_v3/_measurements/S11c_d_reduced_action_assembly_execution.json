@@ -1,5 +1,5 @@
 {
-  "status": "RECOVERY_RUNNING",
+  "status": "VALIDATED_PUBLISHED_PENDING_COMMIT",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-reduced-action-assembly-20260914",
   "plan": "S11c_d_variable_profile_matching_plan.md",
   "planStep": 3,
@@ -10,9 +10,9 @@
   },
   "scope": "Exact local derivative coefficient matrices and intact nonlocal integral actions, with literal reconstruction and independent derivative-extraction residuals. No numerical quadrature or scattering result.",
   "numericalInput": "Awaiting user choice for 30 inherited gradient-energy coefficients; symbolic assembly is independent of that choice.",
-  "next": "Validate the preserved packet/transcript with --resume-from after converting derivative orders to native JSON integers. Do not recompute the assembly.",
+  "next": "Commit and verify the annex publication. Obtain the numerical-instance choice for the 30 inherited coefficients before binding and evaluating local/nonlocal actions.",
   "implementationCommit": "b9dba906",
-  "observedUtc": "2026-09-15T00:23:52.235796+00:00",
+  "observedUtc": "2026-09-15T00:26:14.096113+00:00",
   "active": {
     "stage": "assembly_validate",
     "command": [
@@ -28,7 +28,11 @@
     "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-reduced-action-assembly-20260914/recovery-01/assembly_validate.stderr",
     "startedUtc": "2026-09-15T00:23:24.449994+00:00",
     "childPid": 1936113,
-    "status": "running"
+    "status": "completed",
+    "exitCode": 0,
+    "wallSeconds": 50.60965711902827,
+    "stderrBytes": 0,
+    "finishedUtc": "2026-09-15T00:24:15.059735+00:00"
   },
   "launch": {
     "launchedUtc": "2026-09-15T00:17:16.235554+00:00",
@@ -142,13 +146,25 @@
     "watcherDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-reduced-action-assembly-20260914/recovery-01/completion-watcher"
   },
   "recoveryCompletionWatcher": {
-    "status": "waiting",
+    "status": "finished",
     "watcherPid": 1936108,
     "jobPid": 1936107,
     "thread": "01a08c53-295c-70f0-baaf-353db1745867",
     "startedUtc": "2026-09-15T00:23:24.460464+00:00",
     "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
     "messageSha256": "244196dc48cce0e06868e941ed9ed4c6f6515282d2d8f4c3c2e83969893ce6d8",
-    "notifications": {}
+    "notifications": {
+      "completion": {
+        "status": "queued",
+        "exitCode": 0,
+        "finishedUtc": "2026-09-15T00:24:15.482257+00:00"
+      }
+    }
+  },
+  "checkpoint": "S11c_d_reduced_action_assembly_checkpoint.json",
+  "publication": {
+    "path": "scripts/out/S11c_d_reduced_action_assembly.out",
+    "bytes": 829611,
+    "sha256": "fe1d8d656621298e056ea4078312d353fc0e0b4a2742f03636413b5c38a47658"
   }
 }

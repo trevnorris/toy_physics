@@ -1,0 +1,270 @@
+{
+  "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-reduced-action-assembly-20260914/recovery-01/complete",
+  "sourceFiles": {
+    "scripts/S11c_d_mixing_scattering_sympy_audit.py": "147f1bc1df4ce4b3ea9c131a0684afe4ee0016153cd1f71bd8b74f6eedace970",
+    "scripts/S11c_b_exports.py": "3c6555f90a85382a5e96f3f961f0e36a4875d9259fe1be947fa8e683669b7084",
+    "scripts/S11c_c1_exports.py": "a5353b86dc526fd1b56734fdbdf7dc7f42387a3195ab4de84e8994f751871cdc",
+    "scripts/S11c_c2_exports.py": "2ba5ed487b84ecb98290df6f1650fa6210fe2784cfa02a0f3cff96cd718411cd",
+    "directives/S11c_d_SHARED_PHYSICS.md": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5",
+    "scripts/ledger_fold.py": "97da78c6631c09e5575dd14511760506f1ac08771cf07948978004e92f0b2333",
+    "directives/S11b_SHARED_PHYSICS.md": "9ea9e388e9d6421a841eaf851d12e1793527bba9a24aeeface3bfac2f4b40078",
+    "scripts/S11c_d_output_codec.py": "49873a2fa5c3184aab097263f0a6128379e094e42dbde5052456c5f3908bf717",
+    "_measurements/S11c_d_reduced_action_assembly_check.py": "f620a643c761474aeaa181ad34a368bc35c1f9e81fb528a81744c2a32af364a8",
+    "_measurements/S11c_d_reduced_action_source_check.py": "aae3b2402e1707ef27f217b917dc10592f38acbe35d18356fbc4886ed854f754",
+    "_measurements/S11c_d_reduced_action_source_checkpoint.json": "b6dcd36ee6cf8ed3b3943e207012dd165fce62ec39cb8f53ca3c23f4715d094b",
+    "_measurements/S11c_d_channel_preflight_input.json": "db0d6f4dd955515e2c53e59039bb36c65ba6736f0233e8a20db9356ef24fb6b4",
+    "_measurements/S11c_d_variable_profile_matching_plan.md": "b48cd0248e43f7d9c7fa926c71ed415b904e08f81c8ea01816cb05f3a109879d"
+  },
+  "provenance": {
+    "SOURCE_CHECKPOINT_SHA256": "b6dcd36ee6cf8ed3b3943e207012dd165fce62ec39cb8f53ca3c23f4715d094b",
+    "REDUCED_ACTION_SHA256": "e9062c3455c7e59fe816f47172062a0c118b201d03809ec0826575dac22872b0",
+    "ACTIONS_SHA256": "4c2372a7102d1db9f21a049ab3104465e8d9245ab832be88c900bc8519b46e02",
+    "INPUT_SHA256": "db0d6f4dd955515e2c53e59039bb36c65ba6736f0233e8a20db9356ef24fb6b4"
+  },
+  "localDerivativeOrders": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "termCensus": [
+    {
+      "COLUMN": 0,
+      "ROW": 0,
+      "LOCAL_TERMS": 3,
+      "NONLOCAL_TERMS": 0
+    },
+    {
+      "COLUMN": 0,
+      "ROW": 1,
+      "LOCAL_TERMS": 2,
+      "NONLOCAL_TERMS": 0
+    },
+    {
+      "COLUMN": 0,
+      "ROW": 2,
+      "LOCAL_TERMS": 3,
+      "NONLOCAL_TERMS": 0
+    },
+    {
+      "COLUMN": 0,
+      "ROW": 3,
+      "LOCAL_TERMS": 2,
+      "NONLOCAL_TERMS": 16
+    },
+    {
+      "COLUMN": 0,
+      "ROW": 4,
+      "LOCAL_TERMS": 2,
+      "NONLOCAL_TERMS": 16
+    },
+    {
+      "COLUMN": 1,
+      "ROW": 0,
+      "LOCAL_TERMS": 2,
+      "NONLOCAL_TERMS": 0
+    },
+    {
+      "COLUMN": 1,
+      "ROW": 1,
+      "LOCAL_TERMS": 3,
+      "NONLOCAL_TERMS": 0
+    },
+    {
+      "COLUMN": 1,
+      "ROW": 2,
+      "LOCAL_TERMS": 3,
+      "NONLOCAL_TERMS": 0
+    },
+    {
+      "COLUMN": 1,
+      "ROW": 3,
+      "LOCAL_TERMS": 2,
+      "NONLOCAL_TERMS": 16
+    },
+    {
+      "COLUMN": 1,
+      "ROW": 4,
+      "LOCAL_TERMS": 2,
+      "NONLOCAL_TERMS": 16
+    },
+    {
+      "COLUMN": 2,
+      "ROW": 0,
+      "LOCAL_TERMS": 3,
+      "NONLOCAL_TERMS": 0
+    },
+    {
+      "COLUMN": 2,
+      "ROW": 1,
+      "LOCAL_TERMS": 3,
+      "NONLOCAL_TERMS": 0
+    },
+    {
+      "COLUMN": 2,
+      "ROW": 2,
+      "LOCAL_TERMS": 4,
+      "NONLOCAL_TERMS": 0
+    },
+    {
+      "COLUMN": 2,
+      "ROW": 3,
+      "LOCAL_TERMS": 3,
+      "NONLOCAL_TERMS": 16
+    },
+    {
+      "COLUMN": 2,
+      "ROW": 4,
+      "LOCAL_TERMS": 3,
+      "NONLOCAL_TERMS": 16
+    },
+    {
+      "COLUMN": 3,
+      "ROW": 0,
+      "LOCAL_TERMS": 3,
+      "NONLOCAL_TERMS": 0
+    },
+    {
+      "COLUMN": 3,
+      "ROW": 1,
+      "LOCAL_TERMS": 3,
+      "NONLOCAL_TERMS": 0
+    },
+    {
+      "COLUMN": 3,
+      "ROW": 2,
+      "LOCAL_TERMS": 4,
+      "NONLOCAL_TERMS": 0
+    },
+    {
+      "COLUMN": 3,
+      "ROW": 3,
+      "LOCAL_TERMS": 2,
+      "NONLOCAL_TERMS": 16
+    },
+    {
+      "COLUMN": 3,
+      "ROW": 4,
+      "LOCAL_TERMS": 3,
+      "NONLOCAL_TERMS": 16
+    },
+    {
+      "COLUMN": 4,
+      "ROW": 0,
+      "LOCAL_TERMS": 3,
+      "NONLOCAL_TERMS": 0
+    },
+    {
+      "COLUMN": 4,
+      "ROW": 1,
+      "LOCAL_TERMS": 3,
+      "NONLOCAL_TERMS": 0
+    },
+    {
+      "COLUMN": 4,
+      "ROW": 2,
+      "LOCAL_TERMS": 4,
+      "NONLOCAL_TERMS": 0
+    },
+    {
+      "COLUMN": 4,
+      "ROW": 3,
+      "LOCAL_TERMS": 3,
+      "NONLOCAL_TERMS": 16
+    },
+    {
+      "COLUMN": 4,
+      "ROW": 4,
+      "LOCAL_TERMS": 3,
+      "NONLOCAL_TERMS": 16
+    }
+  ],
+  "distinctNonlocalIntegrals": 80,
+  "residualScalars": 281,
+  "nonzeroResidualScalars": 0,
+  "unboundConstitutiveParameters": [
+    "gamma_s11cb_mu_r_bg_01",
+    "gamma_s11cb_mu_r_bg_02",
+    "gamma_s11cb_mu_r_bg_03",
+    "gamma_s11cb_mu_r_bg_04",
+    "gamma_s11cb_mu_r_bg_05",
+    "gamma_s11cb_mu_r_bg_06",
+    "gamma_s11cb_mu_r_bg_07",
+    "gamma_s11cb_mu_r_bg_08",
+    "gamma_s11cb_mu_r_bg_09",
+    "gamma_s11cb_mu_r_bg_10",
+    "gamma_s11cb_mu_r_bg_11",
+    "gamma_s11cb_mu_r_bg_12",
+    "gamma_s11cb_mu_r_bg_13",
+    "gamma_s11cb_mu_r_bg_14",
+    "gamma_s11cb_mu_r_bg_15",
+    "gamma_s11cb_w_bg_01",
+    "gamma_s11cb_w_bg_02",
+    "gamma_s11cb_w_bg_03",
+    "gamma_s11cb_w_bg_04",
+    "gamma_s11cb_w_bg_05",
+    "gamma_s11cb_w_bg_06",
+    "gamma_s11cb_w_bg_07",
+    "gamma_s11cb_w_bg_08",
+    "gamma_s11cb_w_bg_09",
+    "gamma_s11cb_w_bg_10",
+    "gamma_s11cb_w_bg_11",
+    "gamma_s11cb_w_bg_12",
+    "gamma_s11cb_w_bg_13",
+    "gamma_s11cb_w_bg_14",
+    "gamma_s11cb_w_bg_15"
+  ],
+  "tagCount": 170,
+  "metadataPaths": 1226,
+  "writeKeyCount": 83,
+  "wallSeconds": 49.20529351942241,
+  "peakRssKiB": 154500,
+  "artifacts": {
+    "full.out": {
+      "bytes": 829611,
+      "sha256": "fe1d8d656621298e056ea4078312d353fc0e0b4a2742f03636413b5c38a47658"
+    },
+    "assembly.pickle": {
+      "bytes": 111081,
+      "sha256": "8eda57998285137d99cce9564757627a57f8d5bc9b27091c86a65a9cc59230a0"
+    }
+  },
+  "scope": "Exact local-jet and intact-integral assembly with formal reconstruction and derivative-extraction residuals. No numerical quadrature or scattering solution.",
+  "resumedFrom": {
+    "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-reduced-action-assembly-20260914/complete",
+    "sourceFiles": {
+      "scripts/S11c_d_mixing_scattering_sympy_audit.py": "147f1bc1df4ce4b3ea9c131a0684afe4ee0016153cd1f71bd8b74f6eedace970",
+      "scripts/S11c_b_exports.py": "3c6555f90a85382a5e96f3f961f0e36a4875d9259fe1be947fa8e683669b7084",
+      "scripts/S11c_c1_exports.py": "a5353b86dc526fd1b56734fdbdf7dc7f42387a3195ab4de84e8994f751871cdc",
+      "scripts/S11c_c2_exports.py": "2ba5ed487b84ecb98290df6f1650fa6210fe2784cfa02a0f3cff96cd718411cd",
+      "directives/S11c_d_SHARED_PHYSICS.md": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5",
+      "scripts/ledger_fold.py": "97da78c6631c09e5575dd14511760506f1ac08771cf07948978004e92f0b2333",
+      "directives/S11b_SHARED_PHYSICS.md": "9ea9e388e9d6421a841eaf851d12e1793527bba9a24aeeface3bfac2f4b40078",
+      "scripts/S11c_d_output_codec.py": "49873a2fa5c3184aab097263f0a6128379e094e42dbde5052456c5f3908bf717",
+      "_measurements/S11c_d_reduced_action_assembly_check.py": "89872e9c40a7b9d2feaf6312c4eb26b218b94d4bb573819998de94ee2185f814",
+      "_measurements/S11c_d_reduced_action_source_check.py": "aae3b2402e1707ef27f217b917dc10592f38acbe35d18356fbc4886ed854f754",
+      "_measurements/S11c_d_reduced_action_source_checkpoint.json": "b6dcd36ee6cf8ed3b3943e207012dd165fce62ec39cb8f53ca3c23f4715d094b",
+      "_measurements/S11c_d_channel_preflight_input.json": "db0d6f4dd955515e2c53e59039bb36c65ba6736f0233e8a20db9356ef24fb6b4",
+      "_measurements/S11c_d_variable_profile_matching_plan.md": "b48cd0248e43f7d9c7fa926c71ed415b904e08f81c8ea01816cb05f3a109879d"
+    },
+    "artifacts": {
+      "assembly.pickle": {
+        "bytes": 111081,
+        "sha256": "8eda57998285137d99cce9564757627a57f8d5bc9b27091c86a65a9cc59230a0"
+      },
+      "full.out": {
+        "bytes": 829611,
+        "sha256": "fe1d8d656621298e056ea4078312d353fc0e0b4a2742f03636413b5c38a47658"
+      }
+    },
+    "consumedHelperAstJoins": {
+      "load": true,
+      "emit_result": true
+    }
+  },
+  "publication": {
+    "path": "scripts/out/S11c_d_reduced_action_assembly.out",
+    "bytes": 829611,
+    "sha256": "fe1d8d656621298e056ea4078312d353fc0e0b4a2742f03636413b5c38a47658"
+  }
+}

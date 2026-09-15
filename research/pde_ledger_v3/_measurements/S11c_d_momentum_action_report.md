@@ -20,7 +20,7 @@ packets have verified hashes. Bound and numerical packets remain byte-identical
 before/after emission. Peak process RSS was 235.4 MiB; estimated phase workspace
 was 6.00 MiB and batch cache 89 KiB, within their separate 32 MiB budgets.
 
-The 2,215,633-byte transcript is prepared for DataLad/git-annex publication at
+The 2,215,633-byte transcript is published and annex-verified at 20fe9381:
 `scripts/out/S11c_d_momentum_action.out`; SHA256
 `d910ed2b3d47397c950f4965024850c8ac9bf4ac5f35913e75c3dc16039a9900`.
 All intermediate data remain in repository scratch. Next: isolate the remaining

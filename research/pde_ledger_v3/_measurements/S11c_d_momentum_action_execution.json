@@ -1,5 +1,5 @@
 {
-  "status": "VALIDATED_PUBLICATION_PREPARED",
+  "status": "PUBLISHED_AND_ANNEX_VERIFIED",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-momentum-action-20260915",
   "stage": "momentum_construct",
   "plan": "S11c_d_momentum_action_plan.md",
@@ -7,7 +7,7 @@
   "checker": "S11c_d_momentum_action_check.py",
   "acceptedSourceQuadratureCommit": "36dce2e20a157038d26208aadeb1adae86ccd1db",
   "annexVerificationCommit": "daf404a7",
-  "next": "Annex-verify this finite-grid publication, then refine the remaining momentum differences using saved operands.",
+  "next": "Refine the dominant one-momentum action contribution using accepted higher-dimensional results and independent outer quadrature.",
   "scope": "Finite source/profile/momentum boxes at positive regulator only; no infinite-domain tails/interchange, Abel weak limit, matching, scattering or pole result.",
   "preflight": "S11c_d_momentum_action_preflight.json",
   "preflightChecksSha256": "643b9c1e4cab766a43b90fb7571f14e2681cce040c702926737b342c8c35a665",
@@ -78,5 +78,14 @@
     "stderrBytes": 0,
     "finishedUtc": "2026-09-15T18:29:10.945969+00:00"
   },
-  "acceptedCheckpoint": "S11c_d_momentum_action_checkpoint.json"
+  "acceptedCheckpoint": "S11c_d_momentum_action_checkpoint.json",
+  "publicationVerification": {
+    "commit": "20fe938137db79401e1275f50c56f3d2943d70d1",
+    "path": "research/pde_ledger_v3/scripts/out/S11c_d_momentum_action.out",
+    "bytes": 2215633,
+    "sha256": "d910ed2b3d47397c950f4965024850c8ac9bf4ac5f35913e75c3dc16039a9900",
+    "symlink": true,
+    "gitMode": "120000",
+    "annexKey": "MD5E-s2215633--c7ff48fcedf645c7351d23803c347b23.out"
+  }
 }

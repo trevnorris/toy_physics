@@ -1,0 +1,14 @@
+{
+  "status": "PREPARED",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-reduced-action-assembly-20260914",
+  "plan": "S11c_d_variable_profile_matching_plan.md",
+  "planStep": 3,
+  "sourcePublicationCommit": "83e9856672a47aabb579d764500f440f00c600d3",
+  "sourceSha256": {
+    "scripts/S11c_d_mixing_scattering_sympy_audit.py": "147f1bc1df4ce4b3ea9c131a0684afe4ee0016153cd1f71bd8b74f6eedace970",
+    "_measurements/S11c_d_reduced_action_assembly_check.py": "89872e9c40a7b9d2feaf6312c4eb26b218b94d4bb573819998de94ee2185f814"
+  },
+  "scope": "Exact local derivative coefficient matrices and intact nonlocal integral actions, with literal reconstruction and independent derivative-extraction residuals. No numerical quadrature or scattering result.",
+  "numericalInput": "Awaiting user choice for 30 inherited gradient-energy coefficients; symbolic assembly is independent of that choice.",
+  "next": "Run source-pinned assembly, preserve raw operands before emission, replay metadata, publish validated output via DataLad/git-annex and commit. Then bind the agreed numerical instance and construct action quadrature."
+}

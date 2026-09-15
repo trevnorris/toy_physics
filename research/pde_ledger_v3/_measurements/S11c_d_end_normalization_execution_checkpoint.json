@@ -154,7 +154,7 @@
     },
     "maximumResidualMinusRemainderNorm": 2.1493192609444154e-13
   },
-  "nextStage": "Matching channels are committed and annex-verified at 3a5d3d25. Continue reduced variable-profile operator assembly.",
+  "nextStage": "Reduced-action source is committed and annex-verified at 83e98566. Local-jet/intact-integral assembly follows; numerical coefficient choices are pending.",
   "operationalResolutions": {
     "constructorLogLink": [
       {
@@ -644,5 +644,5 @@
     ]
   },
   "matchingPublicationCommit": "3a5d3d25d0689816bfbe24c6cdf9904673635c3a",
-  "operatorAssemblyExecution": "S11c_d_reduced_action_source_execution.json"
+  "operatorAssemblyExecution": "S11c_d_reduced_action_assembly_execution.json"
 }

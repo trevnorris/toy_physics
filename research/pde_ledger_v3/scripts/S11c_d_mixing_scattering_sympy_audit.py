@@ -696,6 +696,92 @@ def polynomial_terms(expression, generators):
     return tuple(visit(expression).items())
 
 
+class ReducedActionAssembly:
+    """Extract local jets and intact nonlocal actions from native probe columns.
+
+    Integrals remain computed source operands with their complete limits and
+    ordered momentum arguments. Polynomial collection does not evaluate them.
+    """
+
+    def __init__(self, pencil, columns):
+        self.pencil, self.columns, self.r = pencil, columns, pencil.r
+        if len(columns) != len(pencil.fields) or any(len(c) != len(pencil.fields) for c in columns):
+            raise ValueError('complete native probe-action column array required')
+
+    def generators(self, value, probe):
+        integrals, jets, seen = set(), set(), set()
+        @lru_cache(maxsize=None)
+        def contains_probe(node):
+            return ((isinstance(node, AppliedUndef) and node.func == probe)
+                    or any(contains_probe(a) for a in node.args))
+        def visit(node):
+            if node in seen:
+                return
+            seen.add(node)
+            if isinstance(node, sp.Integral) and contains_probe(node):
+                integrals.add(node)
+                return
+            if isinstance(node, sp.Derivative) and contains_probe(node):
+                if node.expr != probe(self.r.z) or any(v != self.r.z for v, _ in node.variable_count):
+                    raise NotImplementedError('unresolved local probe derivative')
+                jets.add(node)
+                return
+            if isinstance(node, AppliedUndef) and node.func == probe:
+                if node.args != (self.r.z,):
+                    raise NotImplementedError('nonlocal probe outside an integral')
+                jets.add(node)
+                return
+            for a in node.args:
+                visit(a)
+        visit(value)
+        return tuple(sorted(jets, key=sp.default_sort_key)), tuple(sorted(integrals, key=sp.default_sort_key))
+
+    def construct(self):
+        rows, orders, all_integrals = [], set(), set()
+        for column, values in enumerate(self.columns):
+            probe = self.pencil.probes[column]
+            for row, value in enumerate(values):
+                jets, integrals = self.generators(value, probe)
+                generators = jets+integrals
+                terms = polynomial_terms(value, generators)
+                coefficients = [sp.S.Zero]*len(generators)
+                remainder = sp.S.Zero
+                for powers, coefficient in terms:
+                    if sum(powers) == 1:
+                        coefficients[powers.index(1)] += coefficient
+                    else:
+                        remainder += coefficient*sp.prod(g**p for g, p in zip(generators, powers))
+                local = {}
+                for jet, coefficient in zip(jets, coefficients):
+                    order = sum(n for _, n in jet.variable_count) if isinstance(jet, sp.Derivative) else 0
+                    orders.add(order); local[order] = coefficient
+                nonlocal_terms = tuple(zip(integrals, coefficients[len(jets):]))
+                all_integrals.update(integrals)
+                # This is a literal reconstruction and an independent
+                # derivative extraction in the same formal carrier algebra.
+                symbols = tuple(sp.Dummy('s11cdAssemblyCarrier'+str(i)) for i in range(len(generators)))
+                dimensions = PHYSICAL_METADATA.dimensions
+                dimensions.known.update({s: dimensions.measure(g) for s, g in zip(symbols, generators)})
+                mapping = dict(zip(generators, symbols))
+                formal = memo_xreplace(value, mapping)
+                assembled = sum(c*s for c, s in zip(coefficients, symbols))
+                residual = sp.expand(formal-assembled)
+                zero = dict.fromkeys(symbols, sp.S.Zero)
+                coefficient_residuals = tuple(sp.expand(sp.diff(formal, s).xreplace(zero)-c)
+                                              for s, c in zip(symbols, coefficients))
+                rows.append({'COLUMN': column, 'ROW': row, 'LOCAL': local,
+                    'NONLOCAL': nonlocal_terms, 'GENERATORS': generators,
+                    'COEFFICIENTS': tuple(coefficients), 'NONLINEAR_OR_AFFINE_REMAINDER': remainder,
+                    'RECONSTRUCTION_RESIDUAL': residual,
+                    'DERIVATIVE_EXTRACTION_RESIDUALS': coefficient_residuals})
+        matrices = {order: sp.zeros(len(self.pencil.fields)) for order in sorted(orders)}
+        for record in rows:
+            for order, coefficient in record['LOCAL'].items():
+                matrices[order][record['ROW'], record['COLUMN']] = coefficient
+        return {'ROWS': rows, 'LOCAL_MATRICES': {n: sp.ImmutableMatrix(m) for n, m in matrices.items()},
+                'NONLOCAL_INTEGRALS': tuple(sorted(all_integrals, key=sp.default_sort_key))}
+
+
 class EdgeReduction:
     """Partial Fourier transform in an orthonormal chart with n=e_3.
 

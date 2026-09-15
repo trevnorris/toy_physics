@@ -15,7 +15,7 @@
     "residualScalars": 2634,
     "nonzeroResidualScalars": 0
   },
-  "continuationState": "Both-end matching channels are committed and annex-verified at 3a5d3d25; reduced variable-profile operator assembly is next.",
+  "continuationState": "Reduced-action source is committed and annex-verified at 83e98566. Local-jet/intact-integral assembly follows; numerical coefficient choices are pending.",
   "recurringFollowup": {
     "id": "continue-s11c-d-build",
     "status": "DELETED",
@@ -204,5 +204,5 @@
   "nextMatchingPlan": "S11c_d_variable_profile_matching_plan.md",
   "matchingExecution": "S11c_d_matching_channels_execution.json",
   "matchingPublicationCommit": "3a5d3d25d0689816bfbe24c6cdf9904673635c3a",
-  "operatorAssemblyExecution": "S11c_d_reduced_action_source_execution.json"
+  "operatorAssemblyExecution": "S11c_d_reduced_action_assembly_execution.json"
 }

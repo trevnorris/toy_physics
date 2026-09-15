@@ -1,5 +1,5 @@
 {
-  "status": "VALIDATED_PUBLICATION_PREPARED",
+  "status": "PUBLISHED_AND_ANNEX_VERIFIED",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-single-momentum-20260915",
   "stage": "single_construct",
   "plan": "S11c_d_single_momentum_plan.md",
@@ -8,7 +8,7 @@
   "acceptedMomentumCommit": "20fe938137db79401e1275f50c56f3d2943d70d1",
   "annexVerificationCommit": "621d81db",
   "diagnostic": "S11c_d_momentum_refinement_diagnostic.json",
-  "next": "Annex-verify publication, then refine the two-momentum contribution with the accepted single- and three-momentum terms held explicitly.",
+  "next": "Refine the two-momentum contribution, holding the validated single- and accepted three-momentum terms explicitly.",
   "scope": "Finite-domain one-momentum refinement with explicitly held two/three-momentum rules; no full physical action limit, scattering or pole result.",
   "preflight": "S11c_d_single_momentum_preflight.json",
   "preflightChecksSha256": "5831748be70f986705dc35d20a8563f93c7370d373673101eb2b34899922aa95",
@@ -85,5 +85,14 @@
     "stderrBytes": 0,
     "finishedUtc": "2026-09-15T18:49:19.453498+00:00"
   },
-  "acceptedCheckpoint": "S11c_d_single_momentum_checkpoint.json"
+  "acceptedCheckpoint": "S11c_d_single_momentum_checkpoint.json",
+  "publicationVerification": {
+    "commit": "9fad1d115b9c24aba2ad8841087f149a05687796",
+    "path": "scripts/out/S11c_d_single_momentum.out",
+    "bytes": 3838693,
+    "sha256": "6176e624f8eb852bb7de3bd3a2a03a99592db2dcb3980f4d41c62544b0a8e2cf",
+    "symlink": true,
+    "gitMode": "120000",
+    "annexKey": "MD5E-s3838693--d471717a22412db95a05a5c412a8466f.out"
+  }
 }

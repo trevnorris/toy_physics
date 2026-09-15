@@ -16,8 +16,8 @@ The refined action differs from the old finest grid by 1.77e-7 / 4.78e-8.
 All 14 numerical records, six exact read-only rule caches, 13,230 tags, 6,613
 fresh keys and 64,385 metadata paths pass. Every source/record hash is verified;
 all accepted and new numerical packet hashes are unchanged by emission. Peak
-process RSS is 261.3 MiB. The 3,838,693-byte transcript is prepared for annex
-publication at `scripts/out/S11c_d_single_momentum.out`; SHA256
+process RSS is 261.3 MiB. The 3,838,693-byte transcript is published and
+annex-verified at 9fad1d11: `scripts/out/S11c_d_single_momentum.out`; SHA256
 `6176e624f8eb852bb7de3bd3a2a03a99592db2dcb3980f4d41c62544b0a8e2cf`.
 
 The one-momentum discrepancy is resolved for these finite numerical tests.

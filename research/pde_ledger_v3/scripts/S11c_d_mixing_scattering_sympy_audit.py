@@ -1242,6 +1242,166 @@ class BoundedSourceFourierQuadrature:
         return values, errors
 
 
+    class FiniteMomentum:
+        """Stream the remaining momentum integrals of accepted source factors."""
+
+        def __init__(self, rows, sources, reduction, *, workspace_bytes=32*1024*1024, batch_nodes=256):
+            self.rows, self.sources, self.r = rows, sources, reduction
+            self.workspace_bytes, self.batch_nodes = int(workspace_bytes), int(batch_nodes)
+            self.compiler = BoundedActionQuadrature({})
+            self.transforms, self.frequency_functions = {}, {}
+            self.peak_workspace_estimate = 0
+            self.peak_phase_workspace_estimate = 0
+            self.peak_batch_cache_estimate = 0
+            self._legendre = {}
+            self.source_frequency_census = {}
+            self.profile_integrals = set()
+
+        def rule(self, lower, upper, order, centers=(), width=None):
+            points = {float(lower),float(upper)}
+            for center in centers:
+                if not np.isfinite(center) or width is None or width<=0:
+                    raise ValueError('invalid concentration center/width')
+                if lower<center<upper:points.add(float(center))
+                distance=float(width)
+                while distance<2*(upper-lower+abs(center)):
+                    for point in (center-distance,center+distance):
+                        if lower<point<upper:points.add(float(point))
+                    distance*=2
+            points=sorted(points)
+            if order not in self._legendre:self._legendre[order]=np.polynomial.legendre.leggauss(order)
+            x,w=self._legendre[order]
+            return (np.concatenate([(a+b)/2+(b-a)*x/2 for a,b in zip(points,points[1:])]),
+                    np.concatenate([(b-a)*w/2 for a,b in zip(points,points[1:])]),points)
+
+        def batches(self, variables, setting, pairs, width):
+            """Keep native limit order, splitting an inner leg at known outer legs."""
+            points,weights=[],[];lower,upper=-setting['momentumBound'],setting['momentumBound']
+            def descend(index,environment,weight):
+                if index<0:
+                    yield tuple(environment[v] for v in variables),weight
+                    return
+                variable=variables[index]
+                centers=[environment[b if a==variable else a] for a,b in pairs
+                         if variable in (a,b) and (b if a==variable else a) in environment]
+                if setting['kind']=='legacy':centers=[];order=setting['momentumNodes']
+                else:order=setting['panelOrder'] if centers else setting['outerOrder']
+                x,w,_=self.rule(lower,upper,order,centers,width)
+                for value,mass in zip(x,w):
+                    environment[variable]=value
+                    yield from descend(index-1,environment,weight*mass)
+                environment.pop(variable)
+            for point,weight in descend(len(variables)-1,{},1.):
+                points.append(point);weights.append(weight)
+                if len(points)==self.batch_nodes:
+                    yield np.asarray(points),np.asarray(weights)
+                    points,weights=[],[]
+            if points:yield np.asarray(points),np.asarray(weights)
+
+        def profile_value(self, integral, environment, setting, cache):
+            if integral in cache:return cache[integral]
+            self.profile_integrals.add(integral)
+            if len(integral.limits)!=1 or integral.limits[0][0]!=self.r.xi:
+                raise ValueError('unhandled nested profile limit')
+            variable,lower,upper=integral.limits[0]
+            if (float(lower),float(upper))!=(-setting['profileBound'],setting['profileBound']):
+                raise ValueError('nested profile cutoff mismatch')
+            panels=([float(lower),float(upper)] if setting['kind']=='legacy' else [float(lower),0.,float(upper)])
+            nodes,weights=BoundedSourceFourierQuadrature.rule(panels,setting['profileNodes'])
+            symbols,nested,function=self.compiler.compiled(integral.function)
+            if nested:raise ValueError('unexpected nested integral inside profile transform')
+            size=len(next(iter(environment.values())))
+            result=np.empty(size,dtype=complex)
+            batch=max(1,min(size,(self.workspace_bytes-4096)//(96*len(nodes))))
+            for start in range(0,size,batch):
+                stop=min(size,start+batch)
+                values=[nodes[None,:] if s==variable else np.asarray(environment[s])[start:stop,None] for s in symbols]
+                with np.errstate(over='raise',invalid='raise',divide='raise',under='ignore'):
+                    evaluated=np.asarray(function(*values),dtype=complex)
+                evaluated=np.broadcast_to(evaluated,(stop-start,len(nodes)))
+                result[start:stop]=np.sum(evaluated*weights[None,:],axis=1)
+                self.peak_phase_workspace_estimate=max(self.peak_phase_workspace_estimate,4096+96*(stop-start)*len(nodes))
+            if not np.all(np.isfinite(result)):raise ValueError('nonfinite profile transform')
+            cache[integral]=result
+            return result
+
+        def coefficient_value(self, expression, environment, positions, setting, profile_cache):
+            symbols,integrals,function=self.compiler.compiled(expression)
+            values=[positions[None,:] if s==self.r.z else np.asarray(environment[s])[:,None] for s in symbols]
+            values.extend(self.profile_value(i,environment,setting,profile_cache)[:,None] for i in integrals)
+            with np.errstate(over='raise',invalid='raise',divide='raise',under='ignore'):
+                result=np.asarray(function(*values),dtype=complex)
+            shape=(len(next(iter(environment.values()))),len(positions))
+            result=np.broadcast_to(result,shape)
+            if not np.all(np.isfinite(result)):raise ValueError('nonfinite momentum coefficient')
+            return result
+
+        def source_value(self, record, environment, setting, cache):
+            amplitude=record['boundAmplitude'];frequency=record['frequency']
+            if frequency not in self.frequency_functions:
+                symbols=tuple(sorted(dag_free_symbols(frequency),key=sp.default_sort_key))
+                self.frequency_functions[frequency]=(symbols,sp.lambdify(symbols,frequency,'numpy'))
+            symbols,function=self.frequency_functions[frequency]
+            count=len(next(iter(environment.values())))
+            frequencies=np.broadcast_to(np.asarray(function(*(environment[s] for s in symbols)),dtype=float),(count,))
+            lower,upper=map(float,record['range']['bounds'])
+            if not np.all(np.isfinite(frequencies)) or frequencies.min()<lower-1e-12 or frequencies.max()>upper+1e-12:
+                raise ValueError('momentum source frequency outside accepted finite range')
+            census_key=(record['test'],record['sourceIndex'])
+            previous=self.source_frequency_census.get(census_key,(float('inf'),float('-inf'),0))
+            self.source_frequency_census[census_key]=(min(previous[0],float(frequencies.min())),
+                max(previous[1],float(frequencies.max())),previous[2]+count)
+            unique,inverse=np.unique(frequencies,return_inverse=True)
+            key=(amplitude,unique.tobytes())
+            if key not in cache:
+                if amplitude not in self.transforms:
+                    self.transforms[amplitude]=BoundedSourceFourierQuadrature(self.r.zp,amplitude,workspace_bytes=self.workspace_bytes)
+                limit=setting['sourceBound']
+                if setting['kind']=='legacy':panels=[-limit,limit]
+                else:
+                    width=float(record['testWidth']);ell=float(record['profileWidth'])
+                    panels=sorted({-limit,limit,0.,*(v for v in (-width,width,-ell,ell) if -limit<v<limit)})
+                cache[key]=self.transforms[amplitude].gauss(unique,panels,setting['sourceNodes'])
+                self.peak_phase_workspace_estimate=max(self.peak_phase_workspace_estimate,self.transforms[amplitude].peak_workspace_bytes)
+            return cache[key][inverse]
+
+        def group(self, test, variables, setting, pairs, width, positions, batch_checkpoint=None):
+            rows=[r for r in self.rows if tuple(l[0] for l in r['limits'])==tuple(variables)]
+            positions=np.asarray(positions,dtype=float)
+            values=np.zeros((len(rows),len(positions)),dtype=complex)
+            mutated=np.zeros_like(values);mass=0.;node_count=0;batch_count=0
+            for points,weights in self.batches(tuple(variables),setting,pairs,width):
+                environment={v:points[:,i] for i,v in enumerate(variables)}
+                environment[self.r.regulator]=np.full(len(weights),setting['regulator'])
+                profile_cache={};source_cache={}
+                for index,row in enumerate(rows):
+                    integrand=np.zeros((len(weights),len(positions)),dtype=complex)
+                    for factor in row['factors']:
+                        source=self.sources[(test,factor['sourceIndex'])]
+                        coefficient=self.coefficient_value(factor['coefficient'],environment,positions,setting,profile_cache)
+                        integrand+=coefficient*self.source_value(source,environment,setting,source_cache)[:,None]
+                    values[index]+=np.sum(integrand*weights[:,None],axis=0)
+                    # Re-enter at this actual momentum quadrature weight.
+                    mutated[index]+=np.sum(integrand*(weights*1.001)[:,None],axis=0)
+                mass+=float(np.sum(weights));node_count+=len(weights);batch_count+=1
+                temporary=96*len(weights)*len(positions)+sum(v.nbytes for v in (*profile_cache.values(),*source_cache.values()))
+                self.peak_batch_cache_estimate=max(self.peak_batch_cache_estimate,temporary)
+                self.peak_workspace_estimate=self.peak_phase_workspace_estimate+self.peak_batch_cache_estimate
+                if temporary>self.workspace_bytes:raise ValueError('momentum batch cache exceeds workspace budget')
+                if batch_checkpoint:
+                    batch_checkpoint({'batchCount':batch_count,'nodeCount':node_count,
+                        'values':values.copy(),'measureMutationValues':mutated.copy(),
+                        'quadratureMass':mass,'rowIndices':[r['index'] for r in rows],
+                        'variables':tuple(variables),'setting':dict(setting),'test':test,
+                        'width':width,'positions':positions.copy(),
+                        'peakWorkspaceEstimateBytes':self.peak_workspace_estimate})
+            expected_volume=(2*setting['momentumBound'])**len(variables)
+            return {'test':test,'rowIndices':[r['index'] for r in rows],'variables':tuple(variables),
+                'values':values,'measureMutationValues':mutated,'measureMutationResidual':mutated-values,
+                'quadratureMass':mass,'boxVolume':expected_volume,'volumeResidual':mass-expected_volume,
+                'nodeCount':node_count,'batchCount':batch_count,'peakWorkspaceEstimateBytes':self.peak_workspace_estimate}
+
+
 class EdgeReduction:
     """Partial Fourier transform in an orthonormal chart with n=e_3.
 

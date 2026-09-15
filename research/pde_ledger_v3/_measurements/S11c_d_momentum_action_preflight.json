@@ -1,0 +1,112 @@
+{
+  "nativeEngineAstJoin": true,
+  "sourceFiles": {
+    "scripts/S11c_d_mixing_scattering_sympy_audit.py": "fd75edfb270d7a55a1e47e7978c1860856e5a2b41ca04621974ddf43102189cc",
+    "_measurements/S11c_d_momentum_action_check.py": "247d2ee6b7004888eca1d653b53f8be773c68041d7254389c4d14328d0001ff3",
+    "_measurements/S11c_d_momentum_action_preflight.py": "529a15fc7deae9a15bb63d8b41bd91a32b5e92e3b4f50d04641ce7973eebb205"
+  },
+  "sourceCheckpointSha256": "f75cc549a3c7eb6e28e44b83b022abf0d5dee03dbb8d3a149771ab5ae07979e1",
+  "domainCheckpointSha256": "266cc9cf75d10578c0c77daaa9d7d1817f18ede208a4941f84540c6a05be0284",
+  "engineSha256": "fd75edfb270d7a55a1e47e7978c1860856e5a2b41ca04621974ddf43102189cc",
+  "checkerSha256": "247d2ee6b7004888eca1d653b53f8be773c68041d7254389c4d14328d0001ff3",
+  "preflightSha256": "529a15fc7deae9a15bb63d8b41bd91a32b5e92e3b4f50d04641ce7973eebb205",
+  "profileCount": 6,
+  "boundSourceCount": 70,
+  "rules": [
+    {
+      "center": 0.0,
+      "panels": [
+        -2.0,
+        -1.2800000000000002,
+        -0.6400000000000001,
+        -0.32000000000000006,
+        -0.16000000000000003,
+        -0.08000000000000002,
+        -0.04000000000000001,
+        -0.020000000000000004,
+        0.0,
+        0.020000000000000004,
+        0.04000000000000001,
+        0.08000000000000002,
+        0.16000000000000003,
+        0.32000000000000006,
+        0.6400000000000001,
+        1.2800000000000002,
+        2.0
+      ],
+      "nodes": 256,
+      "massResidual": 0.0,
+      "secondMomentResidual": -8.881784197001252e-16,
+      "abelResidual": [
+        -4.440892098500626e-16,
+        -1.1555579666323415e-33
+      ],
+      "omittedPanelsDifference": 2.6276605996447673,
+      "weightMutation": 0.0031215933202157764
+    },
+    {
+      "center": 0.13,
+      "panels": [
+        -2.0,
+        -1.1500000000000004,
+        -0.5100000000000001,
+        -0.19000000000000006,
+        -0.030000000000000027,
+        0.04999999999999999,
+        0.09,
+        0.11,
+        0.13,
+        0.15000000000000002,
+        0.17,
+        0.21000000000000002,
+        0.29000000000000004,
+        0.45000000000000007,
+        0.7700000000000001,
+        1.4100000000000001,
+        2.0
+      ],
+      "nodes": 256,
+      "massResidual": 0.0,
+      "secondMomentResidual": 0.0,
+      "abelResidual": [
+        -8.881784197001252e-16,
+        -5.436192521810263e-18
+      ],
+      "omittedPanelsDifference": 1.0664427863835888,
+      "weightMutation": 0.003121508478765911
+    },
+    {
+      "center": 1.99,
+      "panels": [
+        -2.0,
+        -0.5700000000000005,
+        0.7099999999999997,
+        1.3499999999999999,
+        1.67,
+        1.83,
+        1.91,
+        1.95,
+        1.97,
+        1.99,
+        2.0
+      ],
+      "nodes": 160,
+      "massResidual": -4.440892098500626e-16,
+      "secondMomentResidual": -8.881784197001252e-16,
+      "abelResidual": [
+        -1.199040866595169e-14,
+        2.2163932501445637e-17
+      ],
+      "omittedPanelsDifference": 0.3788301658137061,
+      "weightMutation": 0.002029431446447294
+    }
+  ],
+  "profileMaxResidual": 0.0,
+  "sourceMaxScaledResidual": 2.299900379292009e-14,
+  "operandsSha256": "d5f35d49c05a35fd5d72c7d23caff53028dea95b1f57c4a121879ddc6b93e1d1",
+  "wallSeconds": 25.17014152277261,
+  "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-momentum-action-20260915/focused-02",
+  "checksSha256": "643b9c1e4cab766a43b90fb7571f14e2681cce040c702926737b342c8c35a665",
+  "stderrBytes": 0,
+  "exitCode": 0
+}

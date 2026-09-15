@@ -91,6 +91,13 @@ and nested profile factors. Full-action convergence, physical tails and Abel
 limits remain work before boundary matching; finite source tests do not replace
 these requirements.
 
+Finite momentum implementation is prepared: streaming source/profile evaluation,
+native whole-action comparisons, three concentration-aware grids, and durable
+partial sums. Focused checks cover all 70 bound sources and six nested profiles;
+maximum scaled source difference is 2.30e-14, profile difference is zero, and
+Abel panel differences are at most 1.20e-14. No full momentum result is accepted
+yet; see S11c_d_momentum_action_plan.md and its execution checkpoint.
+
 ## Retained user-approved solver/export contract
 
 

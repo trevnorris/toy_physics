@@ -1,0 +1,14 @@
+{
+  "status": "PREPARED",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-momentum-action-20260915",
+  "stage": "momentum_construct",
+  "plan": "S11c_d_momentum_action_plan.md",
+  "report": "S11c_d_momentum_action_report.md",
+  "checker": "S11c_d_momentum_action_check.py",
+  "acceptedSourceQuadratureCommit": "36dce2e20a157038d26208aadeb1adae86ccd1db",
+  "annexVerificationCommit": "daf404a7",
+  "next": "Validate complete common-grid native action and term comparisons, then inspect concentration-aware finite momentum refinements.",
+  "scope": "Finite source/profile/momentum boxes at positive regulator only; no infinite-domain tails/interchange, Abel weak limit, matching, scattering or pole result.",
+  "preflight": "S11c_d_momentum_action_preflight.json",
+  "preflightChecksSha256": "643b9c1e4cab766a43b90fb7571f14e2681cce040c702926737b342c8c35a665"
+}

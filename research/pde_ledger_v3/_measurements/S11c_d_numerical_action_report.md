@@ -29,3 +29,7 @@ quadrature convergence and the Abel weak limit must still be resolved before
 two-ended boundary matching. No S-matrix or profile-frequency pole is produced
 by this checkpoint. Existing symbolic operators and the builder report's
 retained solver/export contract remain unchanged.
+
+Implementation is committed at `2663a526`. The native one-case constructor
+and validator are running under the recorded supervisor and silent local
+completion/error watcher; acceptance is pending.

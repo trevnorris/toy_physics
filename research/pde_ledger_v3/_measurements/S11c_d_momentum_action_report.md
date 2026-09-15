@@ -1,30 +1,29 @@
 # S11c-d finite-action momentum quadrature
 
-The accepted finite source quadrature is published at 36dce2e2 and its annex
-verification is committed at daf404a7. This stage consumes those bound source
-amplitudes and frequencies, all 80 factorized native integrals, all six nested
-profile operands and all three source-derived Abel transfer pairs.
+The complete run finished in 4 h 2 min with exit zero and empty stderr. All 80
+native factorized integrals, 70 bound sources, six nested profiles and three
+Abel transfer pairs retain their source and ordered-limit joins. Both old grids
+agree with the native evaluator: all 300 action components and 1,920 nonlocal
+terms pass, with maximum scaled action difference 1.11e-16 and term difference
+3.60e-17. Actual momentum-weight mutations respond in all evaluated layouts.
 
-The implementation streams the remaining momentum quadrature in bounded
-batches. It evaluates the source and profile integrals directly at requested
-momenta and preserves native limit order. Both saved whole-action grids are
-checked first, covering both Gaussian fields, three positions, 300 components
-and every original nonlocal term. Three concentration-aware momentum grids
-then record changes at fixed source/profile orders, finite bounds and regulator.
+Three concentration-aware momentum refinements use panel orders 8/12/16 and
+outer orders 24/40/64, with source/profile orders fixed at 128, momentum bounds
++/-2, source bounds +/-32, profile bounds +/-10 and regulator 0.2. Full action
+changes fall from 1.51e-3 to 3.64e-5 for the first field and from 4.04e-4 to
+1.05e-5 for the second. These are finite-grid differences, not an established
+full-action limit. More momentum resolution is needed before tail/regulator work.
 
-Every bound row and completed layout/grid is saved. Partial numerical sums are
-saved every 64 batches. Actual operand metadata is exercised before expensive
-integration; complete emission replay and source/packet hashes follow it.
-The 32 MiB phase and cache budgets are recorded separately from process RSS.
+All 5,398 tags, 2,697 fresh write keys and 22,822 metadata paths replay. All
+43 frozen sources, five main artifacts and 1,326 saved row/group/grid/partial
+packets have verified hashes. Bound and numerical packets remain byte-identical
+before/after emission. Peak process RSS was 235.4 MiB; estimated phase workspace
+was 6.00 MiB and batch cache 89 KiB, within their separate 32 MiB budgets.
 
-Focused checks pass with exit zero and empty stderr: all 70 bound source
-evaluations agree with their literal operands within 2.30e-14 scaled error; all
-six profile evaluations match the native evaluator. Three Abel panel tests,
-including a peak near the finite boundary, agree with the saved exact primitive
-within 1.20e-14. Omitted panels and changed weights produce nonzero responses.
-The complete accepted engine AST joins after removing only the new helper.
-
-No full-action momentum result has been accepted yet. Finite refinement alone
-establishes no infinite-domain tails/interchange, Abel weak limit, two-ended
-matching, scattering or pole solve. Approved inputs and the retained solver/
-export contract remain in force.
+The 2,215,633-byte transcript is prepared for DataLad/git-annex publication at
+`scripts/out/S11c_d_momentum_action.out`; SHA256
+`d910ed2b3d47397c950f4965024850c8ac9bf4ac5f35913e75c3dc16039a9900`.
+All intermediate data remain in repository scratch. Next: isolate the remaining
+momentum changes and refine them, reusing accepted operands. Infinite-domain
+tails/interchange, Abel weak limits, boundary matching, scattering and bound
+poles remain work. Approved inputs and the solver/export contract are unchanged.

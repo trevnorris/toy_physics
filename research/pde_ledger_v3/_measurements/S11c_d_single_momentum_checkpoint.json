@@ -1,0 +1,358 @@
+{
+  "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-single-momentum-20260915/complete",
+  "sourceFiles": {
+    "scripts/S11c_d_mixing_scattering_sympy_audit.py": "2296df60565aecb532d1005a6d06f7d09c73c60c9d0a67b38566f898b91dee3a",
+    "scripts/S11c_b_exports.py": "3c6555f90a85382a5e96f3f961f0e36a4875d9259fe1be947fa8e683669b7084",
+    "scripts/S11c_c1_exports.py": "a5353b86dc526fd1b56734fdbdf7dc7f42387a3195ab4de84e8994f751871cdc",
+    "scripts/S11c_c2_exports.py": "2ba5ed487b84ecb98290df6f1650fa6210fe2784cfa02a0f3cff96cd718411cd",
+    "directives/S11c_d_SHARED_PHYSICS.md": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5",
+    "scripts/ledger_fold.py": "97da78c6631c09e5575dd14511760506f1ac08771cf07948978004e92f0b2333",
+    "directives/S11b_SHARED_PHYSICS.md": "9ea9e388e9d6421a841eaf851d12e1793527bba9a24aeeface3bfac2f4b40078",
+    "scripts/S11c_d_output_codec.py": "49873a2fa5c3184aab097263f0a6128379e094e42dbde5052456c5f3908bf717",
+    "_measurements/S11c_d_numerical_action_check.py": "86d5b373df8825c1e6dca198555b2a65e62822a3d9ba32868a89ca135bb7968f",
+    "_measurements/S11c_d_reduced_action_source_check.py": "aae3b2402e1707ef27f217b917dc10592f38acbe35d18356fbc4886ed854f754",
+    "_measurements/S11c_d_variable_profile_input_check.py": "70cdf2811f2ccd92380be24a80bb7af49f4e1a01504b09a9dbb47f8d3cbbb3b2",
+    "_measurements/S11c_d_reduced_action_assembly_checkpoint.json": "b4afb727b1a1ad2a468b0bab9a6ab369dbe4dd35bc46acd7150b7fa581cd984f",
+    "_measurements/S11c_d_variable_profile_development_input.json": "660b2b0b54494dce964c7f5fbd722a76a7e894d8ed92b18b5eb6290c3c10f1d5",
+    "_measurements/S11c_d_variable_profile_input_checkpoint.json": "c1d686dc1ec067bfcb05dc15c38b71bab4f91212ad1530c510afb7fe35542455",
+    "_measurements/S11c_d_numerical_action_plan.md": "13bca06fd2fe5a40cc05c03dc90d94c25ebc9b5a804ad9ae7098feb00f55dba4",
+    "_measurements/S11c_d_variable_profile_matching_plan.md": "b48cd0248e43f7d9c7fa926c71ed415b904e08f81c8ea01816cb05f3a109879d",
+    "_measurements/S11c_d_channel_preflight_input.json": "db0d6f4dd955515e2c53e59039bb36c65ba6736f0233e8a20db9356ef24fb6b4",
+    "_measurements/S11c_d_variable_profile_development_input_proposal.json": "5fd0a4feb51d627825956296e7f2c9ace57178e79e0f07041abc11f43960aabb",
+    "_measurements/S11c_d_variable_profile_parameter_checkpoint.json": "5571536d8a43eeb73c6fb562281200bbbad76d24f3f4ba401769d190dec4512d",
+    "_measurements/S11c_d_variable_profile_parameter_inventory.json": "02abaf37a0febb4daef1a26b2ca314e756af29b7dcaea524a1d95d9736f45b7b",
+    "_measurements/S11c_d_matching_channels_checkpoint.json": "c4ad9b9051f9c3fadb076593dd35ec12d1779fad6d1558c691c3b735fe4d3eeb",
+    "_measurements/S11c_d_source_fourier_factorization_checkpoint.json": "fcf6f1c5598b63c11d4f8a76d2d94c2b5bace590e83d4beea3e52e82f44158a6",
+    "_measurements/S11c_d_numerical_action_checkpoint.json": "d66690ef13b252b15af82422e5a426d352a5ce2de0b2c11fcbb28adffbbdc3c2",
+    "_measurements/S11c_d_reduced_action_source_checkpoint.json": "b6dcd36ee6cf8ed3b3943e207012dd165fce62ec39cb8f53ca3c23f4715d094b",
+    "_measurements/S11c_d_source_fourier_quadrature_plan.md": "c09a32ebbb98e4b199670aa0b5d0eaafc170741d08e36b6f6d2eb3336bab7f12",
+    "_measurements/S11c_d_source_fourier_quadrature_check.py": "d52747cba3e5cbdf4cbff6816ccd07d79564032d0a64d57bf80aef5815430323",
+    "_measurements/S11c_d_source_fourier_quadrature_recover.py": "e06bb737cb10b5e5d99eacfc7f3d3f94ee1b326ef57308f590fede96baac7be3",
+    "_measurements/S11c_d_source_fourier_quadrature_emission_plan.md": "0f111ae15a35feef849448fc212c7d99313bdaf6f685b447e8028222c045c591",
+    "_measurements/S11c_d_source_fourier_quadrature_emission_repair.json": "290ea315f422b76c0c256d9047c322b355a0455d11049973554fe07b85445886",
+    "_measurements/S11c_d_source_fourier_quadrature_replay_repair.json": "57ead60830444646ed3a1bc7c50597ac764a3ae5a2052abd538891c1c05708c8",
+    "_measurements/S11c_d_source_fourier_factorization_check.py": "b6573d82198f262ac5eea8362fb478a93a1f9b8ea17bd0d4645c67cb40168f23",
+    "_measurements/S11c_d_quadrature_domain_checkpoint.json": "266cc9cf75d10578c0c77daaa9d7d1817f18ede208a4941f84540c6a05be0284",
+    "_measurements/S11c_d_source_fourier_factorization_plan.md": "9d68ab06e2d1b180b10fc38863deb392e9eebc9524eda51c264acf5c4f17f5a0",
+    "_measurements/S11c_d_source_fourier_residual_recover.py": "443953029c6848c9f0ea377b7cd3005f9f537d29b2431e2122cf2f8fda83e2b9",
+    "_measurements/S11c_d_source_fourier_residual_plan.md": "d65e2a040eb34ae5938b427969a47b474de6ebc243ffb996a105ae8d7726b983",
+    "_measurements/S11c_d_source_fourier_residual_repair_checkpoint.json": "8fce782cdbfff7c5f139aec93c5d3035e87d3bc384ce1ada052de55abe7e57b3",
+    "_measurements/S11c_d_source_fourier_quadrature_finish.py": "1f36a7de4954284aa8293c93d7737edcd9d7f2b8e4cac9cb059f728b3ee59c75",
+    "_measurements/S11c_d_source_fourier_quadrature_metadata_repair.json": "3c50089342f0612da2c9f0cfae3e371372649e27318c3653d8e3d3bde713656f",
+    "_measurements/S11c_d_source_fourier_quadrature_finish_plan.md": "9119694f0c85a42c044edef17139669056220209c25929386e7581eac1464d30",
+    "_measurements/S11c_d_source_fourier_quadrature_checkpoint.json": "f75cc549a3c7eb6e28e44b83b022abf0d5dee03dbb8d3a149771ab5ae07979e1",
+    "_measurements/S11c_d_momentum_action_plan.md": "3571c4f169c71b7f32e9e9ede31f3e2d228e8ff2774a8334824c74dad17a7517",
+    "_measurements/S11c_d_momentum_action_check.py": "247d2ee6b7004888eca1d653b53f8be773c68041d7254389c4d14328d0001ff3",
+    "_measurements/S11c_d_momentum_action_preflight.py": "529a15fc7deae9a15bb63d8b41bd91a32b5e92e3b4f50d04641ce7973eebb205",
+    "_measurements/S11c_d_momentum_action_checkpoint.json": "ab4f77bbdcd18f4093f7a90c11b214fea9ee727d958c63902fc10e7ad377e554",
+    "_measurements/S11c_d_single_momentum_plan.md": "0c23d30e0e0d778f370ed2b375d50c5273f8f8c4b7c0bbd5dceece853a54a3c9",
+    "_measurements/S11c_d_single_momentum_check.py": "52a40b81cf8afbbeebc88436305b98024dc4022eaf613651476852e901edacc7",
+    "_measurements/S11c_d_momentum_refinement_diagnostic.json": "38bbe0f48c8323914d074b1e3e2666b96c6ab060efd621708051f81b39fc15af",
+    "_measurements/S11c_d_single_momentum_preflight.py": "7f827734966a2cb635c8e04869597de7a3400469538e0bf450927acc61254350"
+  },
+  "provenance": {
+    "MOMENTUM_CHECKPOINT_SHA256": "ab4f77bbdcd18f4093f7a90c11b214fea9ee727d958c63902fc10e7ad377e554",
+    "BOUND_PACKET_SHA256": "6a6bf833a1c2e8d58a4f3469ca19c7ae6ea529d53549e47b9b053d1286154fb4",
+    "NUMERICAL_PACKET_SHA256": "2cf184cd82698f2a696e4812077f80d3b8bbb8dace7e07365e52ef86de78e54d",
+    "APPROVED_INPUT_SHA256": "660b2b0b54494dce964c7f5fbd722a76a7e894d8ed92b18b5eb6290c3c10f1d5"
+  },
+  "nativeEngineAstJoin": true,
+  "rowCount": 40,
+  "sourceCount": 40,
+  "records": 14,
+  "norms": [
+    {
+      "test": 0,
+      "index": 0,
+      "method": "gauss",
+      "outerOrder": 64,
+      "sourceOrder": 128,
+      "referenceIntegralDifference": 0.0,
+      "differenceFromReference": 0.0
+    },
+    {
+      "test": 0,
+      "index": 1,
+      "method": "gauss",
+      "outerOrder": 96,
+      "sourceOrder": 128,
+      "referenceIntegralDifference": 1.767765730533891e-07,
+      "precedingIntegralDifference": 1.767765730533891e-07,
+      "differenceFromReference": 1.7678916080747453e-07,
+      "precedingActionDifference": 1.7678916080747453e-07
+    },
+    {
+      "test": 0,
+      "index": 2,
+      "method": "gauss",
+      "outerOrder": 144,
+      "sourceOrder": 128,
+      "referenceIntegralDifference": 1.769414407136537e-07,
+      "precedingIntegralDifference": 1.738609172052278e-10,
+      "differenceFromReference": 1.76954040283862e-07,
+      "precedingActionDifference": 1.738733967720448e-10
+    },
+    {
+      "test": 0,
+      "index": 3,
+      "method": "gauss",
+      "outerOrder": 216,
+      "sourceOrder": 128,
+      "referenceIntegralDifference": 1.7694144605705754e-07,
+      "precedingIntegralDifference": 6.6361016730646146e-15,
+      "differenceFromReference": 1.7695404563055323e-07,
+      "precedingActionDifference": 6.637152673998786e-15
+    },
+    {
+      "test": 0,
+      "index": 4,
+      "method": "gauss",
+      "outerOrder": 216,
+      "sourceOrder": 192,
+      "referenceIntegralDifference": 1.7694144599377372e-07,
+      "precedingIntegralDifference": 1.5840761136409033e-15,
+      "differenceFromReference": 1.7695404556574862e-07,
+      "precedingActionDifference": 1.3473788308519686e-15
+    },
+    {
+      "test": 0,
+      "index": 5,
+      "method": "gauss",
+      "outerOrder": 216,
+      "sourceOrder": 256,
+      "referenceIntegralDifference": 1.7694144604118181e-07,
+      "precedingIntegralDifference": 1.0931786361305639e-15,
+      "differenceFromReference": 1.7695404561229766e-07,
+      "precedingActionDifference": 9.000523778413571e-16
+    },
+    {
+      "test": 0,
+      "index": 6,
+      "method": "adaptive",
+      "outerOrder": 216,
+      "sourceOrder": 256,
+      "precedingIntegralDifference": 1.8452761694870047e-15,
+      "differenceFromReference": 1.769540453613223e-07,
+      "precedingActionDifference": 1.897149936107019e-15,
+      "errorEstimate": 3.714303937541279e-13,
+      "evaluations": 315,
+      "success": true
+    },
+    {
+      "test": 1,
+      "index": 0,
+      "method": "gauss",
+      "outerOrder": 64,
+      "sourceOrder": 128,
+      "referenceIntegralDifference": 0.0,
+      "differenceFromReference": 0.0
+    },
+    {
+      "test": 1,
+      "index": 1,
+      "method": "gauss",
+      "outerOrder": 96,
+      "sourceOrder": 128,
+      "referenceIntegralDifference": 4.779619370328163e-08,
+      "precedingIntegralDifference": 4.779619370328163e-08,
+      "differenceFromReference": 4.778721831884512e-08,
+      "precedingActionDifference": 4.778721831884512e-08
+    },
+    {
+      "test": 1,
+      "index": 2,
+      "method": "gauss",
+      "outerOrder": 144,
+      "sourceOrder": 128,
+      "referenceIntegralDifference": 4.7838938762444514e-08,
+      "precedingIntegralDifference": 4.618736935277908e-11,
+      "differenceFromReference": 4.782995522083901e-08,
+      "precedingActionDifference": 4.6178517438713707e-11
+    },
+    {
+      "test": 1,
+      "index": 3,
+      "method": "gauss",
+      "outerOrder": 216,
+      "sourceOrder": 128,
+      "referenceIntegralDifference": 4.783893965817348e-08,
+      "precedingIntegralDifference": 2.123644483273159e-15,
+      "differenceFromReference": 4.78299561530642e-08,
+      "precedingActionDifference": 2.220836327733602e-15
+    },
+    {
+      "test": 1,
+      "index": 4,
+      "method": "gauss",
+      "outerOrder": 216,
+      "sourceOrder": 192,
+      "referenceIntegralDifference": 4.783893903049876e-08,
+      "precedingIntegralDifference": 3.801616318915047e-15,
+      "differenceFromReference": 4.7829955514349026e-08,
+      "precedingActionDifference": 3.652984962908445e-15
+    },
+    {
+      "test": 1,
+      "index": 5,
+      "method": "gauss",
+      "outerOrder": 216,
+      "sourceOrder": 256,
+      "referenceIntegralDifference": 4.783893939873696e-08,
+      "precedingIntegralDifference": 2.5929213023004676e-15,
+      "differenceFromReference": 4.7829955838876114e-08,
+      "precedingActionDifference": 2.2965563763527768e-15
+    },
+    {
+      "test": 1,
+      "index": 6,
+      "method": "adaptive",
+      "outerOrder": 216,
+      "sourceOrder": 256,
+      "precedingIntegralDifference": 1.5274395355072809e-15,
+      "differenceFromReference": 4.78299565375182e-08,
+      "precedingActionDifference": 1.4087834495375955e-15,
+      "errorEstimate": 8.884070799834283e-12,
+      "evaluations": 357,
+      "success": true
+    }
+  ],
+  "ruleCaches": 6,
+  "tagCount": 13230,
+  "writeKeyCount": 6613,
+  "metadataPaths": 64385,
+  "recordArtifacts": [
+    {
+      "path": "records/0-0.pickle",
+      "bytes": 45459,
+      "sha256": "4b064b163952af6e67ffc926337de5069414b9596266b72e499de38e5b42a836"
+    },
+    {
+      "path": "records/0-1.pickle",
+      "bytes": 48693,
+      "sha256": "7dc0f5d6c466a5ba7c53f1b66e146056fdc517e783e1a7b07ead6c109dc4d620"
+    },
+    {
+      "path": "records/0-2.pickle",
+      "bytes": 48693,
+      "sha256": "51573c8e7cbeb4881ec2db7509b8b513976a41c62681fd81cf4f333cf92a40c0"
+    },
+    {
+      "path": "records/0-3.pickle",
+      "bytes": 48693,
+      "sha256": "feaa0e0b8f9081457043373284dd6625d2027a12c733be090ed352870f132b60"
+    },
+    {
+      "path": "records/0-4.pickle",
+      "bytes": 48693,
+      "sha256": "538971fb94c842ab192dc1b273e7c25921ede28436899ef534690d138f33837e"
+    },
+    {
+      "path": "records/0-5.pickle",
+      "bytes": 48694,
+      "sha256": "7af345c150cec71a81f90eeb6bcfd16467a852e1faabeeab4f4cf9b3dae81b5c"
+    },
+    {
+      "path": "records/0-adaptive.pickle",
+      "bytes": 58477,
+      "sha256": "dd99c53d95c126affa2780d4f816cc2325cd9cfae12081488cb250df15413142"
+    },
+    {
+      "path": "records/1-0.pickle",
+      "bytes": 45459,
+      "sha256": "84e67d9867d124a41cf5679f9617083632f98a2c8c7408be9b8eb0c4ae8876fa"
+    },
+    {
+      "path": "records/1-1.pickle",
+      "bytes": 48693,
+      "sha256": "e6f5c7dd51918ff253540475424835f37786c4374b4c60d191b70cbbb5f009aa"
+    },
+    {
+      "path": "records/1-2.pickle",
+      "bytes": 48693,
+      "sha256": "435eafcbddd80f3c66aee9a939d5525a2c0a90a7a69d8fa8336baccae0a8c3ba"
+    },
+    {
+      "path": "records/1-3.pickle",
+      "bytes": 48693,
+      "sha256": "76b7857f2dda5c95d17c7fc80aa3a880b8e0c9b6a918a373d531ee393ca2d10f"
+    },
+    {
+      "path": "records/1-4.pickle",
+      "bytes": 48693,
+      "sha256": "4257755db74df3575b5f245d664f57af538b6cea45dc5ccfb218ef6efc5b05a7"
+    },
+    {
+      "path": "records/1-5.pickle",
+      "bytes": 48694,
+      "sha256": "b13a054ded6f65e2505afd67ac12861cf0ebffaa11aad62fd16a8811e6fa0188"
+    },
+    {
+      "path": "records/1-adaptive.pickle",
+      "bytes": 60421,
+      "sha256": "7be00f06171b63539abf667ab4539225f015bf34d20b479d073828571d71490d"
+    }
+  ],
+  "packetHashesBeforeEmission": {
+    "accepted-bound-momentum.pickle": "6a6bf833a1c2e8d58a4f3469ca19c7ae6ea529d53549e47b9b053d1286154fb4",
+    "accepted-momentum-action.pickle": "2cf184cd82698f2a696e4812077f80d3b8bbb8dace7e07365e52ef86de78e54d",
+    "single-momentum.pickle": "ca03a9f6e1e3da8c2b30ee59bdb60a506f1f8feb07f6aeb229e72051bac46458"
+  },
+  "packetHashesAfterEmission": {
+    "accepted-bound-momentum.pickle": "6a6bf833a1c2e8d58a4f3469ca19c7ae6ea529d53549e47b9b053d1286154fb4",
+    "accepted-momentum-action.pickle": "2cf184cd82698f2a696e4812077f80d3b8bbb8dace7e07365e52ef86de78e54d",
+    "single-momentum.pickle": "ca03a9f6e1e3da8c2b30ee59bdb60a506f1f8feb07f6aeb229e72051bac46458"
+  },
+  "wallSeconds": 112.35975104942918,
+  "peakRssKiB": 267540,
+  "artifacts": {
+    "single-momentum.pickle": {
+      "bytes": 671911,
+      "sha256": "ca03a9f6e1e3da8c2b30ee59bdb60a506f1f8feb07f6aeb229e72051bac46458"
+    },
+    "accepted-momentum-action.pickle": {
+      "bytes": 550399,
+      "sha256": "2cf184cd82698f2a696e4812077f80d3b8bbb8dace7e07365e52ef86de78e54d"
+    },
+    "full.out": {
+      "bytes": 3838693,
+      "sha256": "6176e624f8eb852bb7de3bd3a2a03a99592db2dcb3980f4d41c62544b0a8e2cf"
+    },
+    "accepted-bound-momentum.pickle": {
+      "bytes": 638411,
+      "sha256": "6a6bf833a1c2e8d58a4f3469ca19c7ae6ea529d53549e47b9b053d1286154fb4"
+    }
+  },
+  "scope": "One-momentum outer/source quadrature refinements and adaptive outer comparison, with complete actions retaining the accepted finest two/three-momentum terms. No full-action tail, regulator limit, scattering or pole result.",
+  "publication": {
+    "path": "scripts/out/S11c_d_single_momentum.out",
+    "bytes": 3838693,
+    "sha256": "6176e624f8eb852bb7de3bd3a2a03a99592db2dcb3980f4d41c62544b0a8e2cf"
+  },
+  "metrics": {
+    "outerOrderFinalIntegralDifference": 6.6361016730646146e-15,
+    "sourceOrderMaxIntegralDifference": 3.801616318915047e-15,
+    "adaptiveMaxIntegralDifference": 1.8452761694870047e-15,
+    "adaptiveMaxActionDifference": 1.897149936107019e-15,
+    "adaptiveMaxErrorEstimate": 8.884070799834283e-12
+  },
+  "verificationInvocation": {
+    "stage": "single_construct",
+    "command": [
+      "python",
+      "-u",
+      "_measurements/S11c_d_single_momentum_check.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-single-momentum-20260915/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-single-momentum-20260915/single_construct.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-single-momentum-20260915/single_construct.stderr",
+    "startedUtc": "2026-09-15T18:47:25.387088+00:00",
+    "childPid": 3121564,
+    "status": "completed",
+    "exitCode": 0,
+    "wallSeconds": 114.06632228475064,
+    "stderrBytes": 0,
+    "finishedUtc": "2026-09-15T18:49:19.453498+00:00"
+  },
+  "finalChecksSha256": "14d278fbb435159383cc9c59a6d893fbab4bb09887933a0dc6ceabaed74dd987"
+}

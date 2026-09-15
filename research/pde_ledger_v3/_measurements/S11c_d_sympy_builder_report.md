@@ -100,11 +100,12 @@ physical tails and Abel limits. The 2.22 MB transcript replays all 5,398 tags,
 2,697 keys and 22,822 metadata paths, with unchanged operand packets. See the
 momentum action report and accepted checkpoint. No scattering/pole claim follows.
 
-The next targeted calculation refines the dominant 40 one-momentum rows and
-checks adaptive outer quadrature, retaining the accepted higher-dimensional
-terms explicitly. Its cached-rule and point-evaluator checks reproduce the
-reference rows and full actions exactly. See the single-momentum plan/report;
-new refinement results remain pending.
+The targeted one-momentum refinement is validated: final outer/source changes
+are below 6.64e-15 / 3.81e-15; adaptive outer quadrature agrees within 1.90e-15
+in complete actions. The accepted baseline and all held native terms replay
+exactly. The 3.84 MB transcript has 13,230 tags and 64,385 metadata paths, with
+unchanged packet hashes. Next is two-momentum refinement with the accepted
+one- and three-momentum terms held explicitly. Full physical limits remain work.
 
 ## Retained user-approved solver/export contract
 

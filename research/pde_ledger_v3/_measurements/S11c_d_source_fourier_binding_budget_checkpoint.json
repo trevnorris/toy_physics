@@ -1,0 +1,121 @@
+{
+  "kind": "bounded uncompressed source binding certificate experiment",
+  "status": "PREPARED",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-binding-bounded-20260915",
+  "priorInterruption": {
+    "reason": "More than eight hours in the auxiliary expanded-representation regression without a completed record. Request KeyboardInterrupt traceback to locate the bottleneck; preserve all accepted operands.",
+    "pid": 2036254,
+    "command": [
+      "python",
+      "-u",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-source-quadrature-20260914/binding-production-check-02.py"
+    ],
+    "beforeProcess": "    PID %CPU   RSS     ELAPSED COMMAND\n2036254 99.9 8019052  08:17:32 python -u /var/projects/toy_physics/_scratch/s11c/s11c-source-quadrature-20260914/binding-production-check-02.py\n",
+    "preservedFiles": {
+      "binding-certificate-1-31.pickle": {
+        "bytes": 3187,
+        "sha256": "de95fdfeb2d0cb9b7597421ef7c7cd9ae9ad9214a9177e16dd43ae47245d676a"
+      },
+      "checks.json": {
+        "bytes": 30398,
+        "sha256": "05d5c4972fa6de50901b06e6e23848d0f569f5d42f56cc5365d1722620c6bb4e"
+      },
+      "binding-certificate-1-33.pickle": {
+        "bytes": 3668,
+        "sha256": "1e34d1674646e85bc73d9f1d968e28526d8b9ef163a817d7a6e57cffc90918f5"
+      },
+      "binding-certificate-0-32.pickle": {
+        "bytes": 3270,
+        "sha256": "ad2a4f2dcc4a4e7b51033e1ce9addbabd1984cd42c9dcd0d533eea7be3d17827"
+      },
+      "pairs.pickle": {
+        "bytes": 139035,
+        "sha256": "4f5be9236355fc0cc16a04d542e95fd480b63e075a82c77859ca9e270a437169"
+      },
+      "invocation.json": {
+        "bytes": 564,
+        "sha256": "b473113828d50104b70b7a9ea9bd27a5ed2388699a0ae63603d98bc243224b66"
+      },
+      "binding-certificate-0-30.pickle": {
+        "bytes": 2364,
+        "sha256": "5b4f11f0169f3fa6935a26df0ed095a1fabd928200c74a83544b1c2ade4cadca"
+      },
+      "production-invocation.json": {
+        "bytes": 502,
+        "sha256": "60a3e57d89b33b313d1ec17fcf5eacbb0e834e57b483aab52eee07f5bed62b87"
+      },
+      "binding-certificates.pickle": {
+        "bytes": 2367,
+        "sha256": "15afdd1f414a3c01132410c1f7463fea6dd8cc8a45f440f9c5606e5ed2bb0a14"
+      },
+      "binding-certificates-complete.pickle": {
+        "bytes": 21742,
+        "sha256": "e1ccd75af02902891fdbea6ce6adcb32d7b6d20f514bea582f35f01e39802f38"
+      },
+      "binding-certificate-0-33.pickle": {
+        "bytes": 3769,
+        "sha256": "807302a3278589e67d402f6ee0c649f3294b4c66c0ca029c0a3971bd93619388"
+      },
+      "production-mutations.pickle": {
+        "bytes": 3892,
+        "sha256": "40dfd37f29cd7bb1c2ead759232fe7dd3ee4f31bd5cedbd8c588d4c431100aa0"
+      },
+      "binding-certificate-0-34.pickle": {
+        "bytes": 4058,
+        "sha256": "cf4132e5c0432232a1041a5424f486643162fa3f21788a3a25648da4dfce887a"
+      },
+      "binding-certificate-0-31.pickle": {
+        "bytes": 3270,
+        "sha256": "accea4d1bec2a0fa6b4f98141de0624d8ae38e56193bd385f87bb1468ff0dfc0"
+      },
+      "binding-certificate-1-32.pickle": {
+        "bytes": 3187,
+        "sha256": "7fae4af47e0a34676e2fd68ddb1a0ae8229a4a439a49f61fe2dbc6db2f2897e4"
+      },
+      "binding-certificate-checks.json": {
+        "bytes": 1970,
+        "sha256": "71ce9ea6236e376c0e11dc2c5966fb9710aa93ea5efc9c6069b696157fab2a22"
+      },
+      "binding-certificate-progress.json": {
+        "bytes": 1363,
+        "sha256": "9a4bdc0df6bf57a9e34af01c8dda92f940e82a71014b9381933a1cd05709f1ed"
+      },
+      "binding-mutation.pickle": {
+        "bytes": 2399,
+        "sha256": "9d5818fe47e31ec381bc23deabadb697e76cb7ba3a34e2a6b38ff71b685b9cbd"
+      },
+      "progress.json": {
+        "bytes": 178,
+        "sha256": "29566ffed8116ae598158c3bb195aeefd0f9686d383a4afe79592c5dea22a19f"
+      },
+      "binding-certificate-1-30.pickle": {
+        "bytes": 2312,
+        "sha256": "9bca12ef770c75ead75369f4502d0b8297be02671a3178a8dfb11680f1e1b235"
+      },
+      "binding-certificate-1-34.pickle": {
+        "bytes": 3969,
+        "sha256": "4e496c65cefd1eec6b09191b621147489737147562487768e96e4af575742736"
+      },
+      "production-checks.json": {
+        "bytes": 74895,
+        "sha256": "00d267b11d65af8810321bd27212ffd1d066df7e9f2bc217dd4ac0adb89d26e7"
+      }
+    },
+    "signal": "SIGINT",
+    "requestedUnix": 1789475539.9636676,
+    "exitObserved": true
+  },
+  "priorTraceback": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-source-quadrature-20260914/binding-diagnostic/production-02.stderr",
+    "sha256": "6ab2f41b0297149ef84c6030dd66fbe0b2a43fe3f50537408a6019d9cd1a43c2"
+  },
+  "bottleneck": "SymPy multivariate polynomial GCD inside sp.cancel at reconstruction_certificate line 1088 with shared=True, reached from computed expanded integrands.",
+  "candidate": "Use the existing shared=False certificate path, which retains the actual rational relationships without CSE definitions. No production criterion or physics change is accepted yet.",
+  "limits": {
+    "caseWallSeconds": 180,
+    "tracebackAfterSeconds": 150,
+    "caseAddressSpaceBytes": 8589934592
+  },
+  "scriptSha256": "dda0e708870bd0a64c9bf26c066afd5b4165daadafaa6bcc5fa5d809e29cbcb8",
+  "scope": "Ten cases derived from the saved diagnostic inventory. Independent subprocess per case, operands saved before certification and certificate saved before mutation. Stop at any failed/timeout worker. No upstream regeneration or numerical source acceptance."
+}

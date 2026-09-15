@@ -81,7 +81,9 @@ bounded frequency batches and compares refined Gauss rules with independent
 adaptive integration. Its focused finite-integral residuals are below 3.56e-15;
 the full source-integral run stopped before quadrature on a live expression
 representation join. The repair retains exact pair certificates and original
-limits, with an expanded-representation regression running under its watcher. Full-action quadrature remains work
+limits, with a bounded uncompressed-certificate test prepared after the expanded-form
+stress check entered an eight-hour polynomial GCD. Its traceback and operands
+are preserved; no numerical source result has yet been accepted. Full-action quadrature remains work
 before physical limit claims and boundary matching.
 See the factorization report and accepted checkpoint for evidence and scope.
 

@@ -38,8 +38,16 @@ production helper also rejects a changed integration limit.
 The checker now compares each actual occurrence, preserves raw and certified
 residuals plus live representation strings/hashes, and saves per-test joins
 and each bound source before later guards. It uses the existing exact
-certificate helper; the engine and physical inputs are unchanged. A watched
-regression on computed expanded versions of the ten saved integrands is still
-running to exercise unequal representations. No full source quadrature has
+certificate helper; the engine and physical inputs are unchanged. The expanded-form regression ran for more than eight hours without a completed
+result. SIGINT preserved a traceback in multivariate polynomial GCD inside
+`sp.cancel`; SIGTERM then finished interpreter teardown. No full source quadrature has
 yet run or been accepted. See the binding repair checkpoint for saved operands,
 source hashes and the live regression record.
+
+A bounded replacement tests the existing uncompressed (`shared=False`)
+certificate path. Each of the ten saved cases runs in its own subprocess,
+with a three-minute wall limit, an 8 GiB address-space ceiling, an early
+traceback, and operands/certificates saved before subsequent work. Every case
+must pass along with its coefficient mutation; a timeout remains unresolved.
+The production certificate criterion and physics engine are unchanged pending
+this test. The accepted source/factorization/test packets remain intact.

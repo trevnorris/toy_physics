@@ -47,3 +47,10 @@ repository _scratch/s11c/ with one CAS job and a silent completion/error
 watcher. Preserve every completed packet on failure; resume only with exact
 source/provenance joins or an explicit instrument-repair join. Preserve the
 builder report's retained solver/export contract suffix.
+
+After the expanded-form stress check entered an eight-hour polynomial GCD,
+its traceback was preserved and that auxiliary process was stopped. Test the
+existing uncompressed certificate route on every saved case in independent
+subprocesses with wall/memory limits and per-case checkpoints. Adopt it only
+after exact residual/proof and mutation checks pass; never accept a timeout
+or replace an uncomputed certificate with a numerical witness.

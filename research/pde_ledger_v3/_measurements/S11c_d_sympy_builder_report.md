@@ -70,21 +70,15 @@ at 009667f7. Quadrature-domain recovery passed with empty stderr: all source
 and operand joins agree. Width-based split rules resolve the elementary Abel
 mass to 5.33e-15; profile transforms agree to 1.25e-12 at the refined order.
 The domain transcript is annex-verified at e514b704. Bounded source Fourier
-factorization remains pending. Phase extraction was repaired at 91f56ec6;
-the retry exposed ten native operands with middle momentum outside source
-position. The finite-domain adapter now locates source position by identity
-and preserves the other limits. All 80 layout checks and 32 focused residuals
-pass; the native engine prefix is unchanged. Per-row hashed saves now retain
-completed downstream work. Repair 50c51500 is committed; the full
-factorization/metadata retry was launched with a local completion/error watcher.
-See the domain and factorization reports for evidence and scope limits.
-
-All 80 bounded Fourier rows are now saved, with 35 distinct source
-integrals. Full metadata/source replay completed, but 58 expanded
-reconstruction residuals require exact normalization. A saved-pair recovery
-is committed at 8066cb3b and launched with its local watcher. Representative
-pairs pass and a coefficient mutation is detected. The complete source packet, original residuals and all denominator
-restrictions remain preserved. No factorization publication is accepted yet.
+factorization is now validated: all 80 original operators, 35 distinct source
+integrals, 324 zero normalized residuals and 264 zero certificate proofs.
+All 58 original expanded residuals remain beside exact saved-pair checks;
+all denominator/branch restrictions are retained. The source packet is
+byte-identical and its constructor unchanged. Full replay covers 1,670 tags,
+4,752 metadata paths and 833 fresh write-keys. The transcript is prepared for
+annex publication. Numerical source integrals and full-action quadrature
+refinement remain work before physical limit claims and boundary matching.
+See the factorization report and accepted checkpoint for evidence and scope.
 
 ## Retained user-approved solver/export contract
 

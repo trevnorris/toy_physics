@@ -1,5 +1,5 @@
 {
-  "status": "RESIDUAL_RECOVERY_RUNNING",
+  "status": "VALIDATED_PENDING_ANNEX_SAVE",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-source-fourier-20260914",
   "plan": "S11c_d_source_fourier_factorization_plan.md",
   "domainPublicationCommit": "e514b7040483725f7a2c5652ae1727432aa4642d",
@@ -8,7 +8,7 @@
     "_measurements/S11c_d_source_fourier_residual_recover.py": "443953029c6848c9f0ea377b7cd3005f9f537d29b2431e2122cf2f8fda83e2b9"
   },
   "scope": "Source Fourier factorization of every original nonlocal integral on explicit finite domains, preserving symbolic coefficients and literal phase/integrand residuals. No numerical integration or unbounded distributional interchange.",
-  "next": "Resume from the saved-pair recovery watcher, validate every normalized/proof residual, full metadata/source/limit joins and unchanged source packets, then publish through DataLad/git-annex and commit. No factorization reconstruction is needed.",
+  "next": "Publish and annex-verify the accepted factorization transcript, then bind/refine approved source Fourier test integrals before full-action momentum panels.",
   "implementationCommit": "185365fc",
   "launch": {
     "launchedUtc": "2026-09-15T01:36:50.005639+00:00",
@@ -229,16 +229,32 @@
     "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-source-fourier-20260914/recovery-01/fourier_recover.stderr",
     "startedUtc": "2026-09-15T03:36:48.082659+00:00",
     "childPid": 2021185,
-    "status": "running"
+    "status": "completed",
+    "exitCode": 0,
+    "wallSeconds": 262.48135614953935,
+    "stderrBytes": 0,
+    "finishedUtc": "2026-09-15T03:41:10.564102+00:00"
   },
   "residualRecoveryWatcher": {
-    "status": "waiting",
+    "status": "finished",
     "watcherPid": 2021181,
     "jobPid": 2021180,
     "thread": "01a08c53-295c-70f0-baaf-353db1745867",
     "startedUtc": "2026-09-15T03:36:48.084814+00:00",
     "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
     "messageSha256": "8cd034334c9c55c6da0ec30bfbb98cf62bb79735621055699ca738a8a39f1ade",
-    "notifications": {}
+    "notifications": {
+      "completion": {
+        "status": "queued",
+        "exitCode": 0,
+        "finishedUtc": "2026-09-15T03:41:10.936719+00:00"
+      }
+    }
+  },
+  "checkpoint": "S11c_d_source_fourier_factorization_checkpoint.json",
+  "publication": {
+    "path": "scripts/out/S11c_d_source_fourier_factorization.out",
+    "bytes": 2838204,
+    "sha256": "82276df05e5bc004a790ab804e4363590df7aef3f64587242eb5fc97e348ea25"
   }
 }

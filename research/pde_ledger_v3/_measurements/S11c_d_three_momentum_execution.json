@@ -1,5 +1,5 @@
 {
-  "status": "READY_TO_LAUNCH",
+  "status": "RUNNING",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-three-momentum-20260915",
   "stage": "three_construct",
   "plan": "S11c_d_three_momentum_plan.md",
@@ -86,5 +86,59 @@
       2.7474492574437126,
       3.960874965630741
     ]
-  }
+  },
+  "implementationCommit": "d6d095cc",
+  "launch": {
+    "launchedUtc": "2026-09-15T19:30:08.387019+00:00",
+    "command": [
+      "/usr/bin/python",
+      "_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-three-momentum-20260915",
+      "--stage",
+      "three_construct",
+      "--",
+      "python",
+      "-u",
+      "_measurements/S11c_d_three_momentum_check.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-three-momentum-20260915/complete"
+    ],
+    "supervisorPid": 3138667,
+    "watcherPid": 3138668,
+    "watcherDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-three-momentum-20260915/completion-watcher",
+    "threadEnvironment": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1"
+    }
+  },
+  "activeAtLaunch": {
+    "stage": "three_construct",
+    "command": [
+      "python",
+      "-u",
+      "_measurements/S11c_d_three_momentum_check.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-three-momentum-20260915/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-three-momentum-20260915/three_construct.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-three-momentum-20260915/three_construct.stderr",
+    "startedUtc": "2026-09-15T19:30:08.480560+00:00",
+    "childPid": 3138674,
+    "status": "running"
+  },
+  "watcherAtLaunch": {
+    "status": "waiting",
+    "watcherPid": 3138668,
+    "jobPid": 3138667,
+    "thread": "01a08c53-295c-70f0-baaf-353db1745867",
+    "startedUtc": "2026-09-15T19:30:08.498301+00:00",
+    "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
+    "messageSha256": "05c1a4567454c409dbcc0cac2395af986324a0642a27b701c6129e4227dedb32",
+    "notifications": {}
+  },
+  "observedProcesses": "    PID STAT     ELAPSED NLWP COMMAND\n3138667 SNs        00:26    1 /usr/bin/python _measurements/S11c_d_end_normalization_run.py --run-root /var/projects/toy_physics/_scratch/s11c/s11c-three-momentum-20260915 --stage three_construct -- python -u _measurements/S11c_d_three_momentum_check.py --run-directory /var/projects/toy_physics/_scratch/s11c/s11c-three-momentum-20260915/complete\n3138668 SNs        00:26    1 /usr/bin/python /var/projects/toy_physics/_scratch/s11c/s11c-three-momentum-20260915/completion-watcher/watch.py --pid 3138667 --thread 01a08c53-295c-70f0-baaf-353db1745867 --directory /var/projects/toy_physics/_scratch/s11c/s11c-three-momentum-20260915/completion-watcher --message-file /var/projects/toy_physics/_scratch/s11c/s11c-three-momentum-20260915/completion-watcher/continuation.txt --error-log /var/projects/toy_physics/_scratch/s11c/s11c-three-momentum-20260915/three_construct.stderr --codex-bin /home/trevnorris/.npm-packages/bin/codex\n3138674 RN         00:26    1 python -u _measurements/S11c_d_three_momentum_check.py --run-directory /var/projects/toy_physics/_scratch/s11c/s11c-three-momentum-20260915/complete\n",
+  "launcherSha256": "6e7defc80ac58917b5515ffd325804612309393dc9d12d367c96c1e524b0a9f0"
 }

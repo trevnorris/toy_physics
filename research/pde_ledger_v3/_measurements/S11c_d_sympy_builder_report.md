@@ -131,9 +131,11 @@ The user approved four isolated numerical workers with one native thread each.
 Exact resume preserves native summation and reproduces an uninterrupted prefix,
 including frequency counts and mutations. The serial source/profile run was
 intentionally paused with 11,616,256 computed nodes preserved byte-for-byte.
-Four-worker action and emission equivalence validation is running; production
-will resume from that accumulator after acceptance. The physical engine and
-original serial constructor/emitter remain unchanged.
+Four-worker action and emission equivalence is now validated: four prefixes
+and six complete underresolved records agree exactly; 26,705 metadata paths
+replay and both repaired standalone transcripts are byte-identical. Production
+will resume from that accumulator. The physical engine and original serial
+constructor/emitter remain unchanged; these tests establish scheduling only.
 
 ## Retained user-approved solver/export contract
 

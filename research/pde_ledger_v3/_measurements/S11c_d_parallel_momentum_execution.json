@@ -1,12 +1,12 @@
 {
-  "status": "PREFLIGHT_EMISSION_RECOVERY_RUNNING",
+  "status": "PREFLIGHT_ACCEPTED_PRODUCTION_READY",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-momentum-20260915",
   "plan": "S11c_d_parallel_momentum_plan.md",
   "report": "S11c_d_parallel_momentum_report.md",
   "instrument": "S11c_d_parallel_momentum.py",
   "workers": 4,
   "nativeThreadsPerWorker": 1,
-  "next": "Validate preserved prefix/full results with independent transcript encoders; commit acceptance and launch production.",
+  "next": "Launch prepared production/launch.py with four isolated workers, retaining the serial 11616256-node accumulator.",
   "implementationCommit": "c0034190",
   "handoff": "S11c_d_parallel_momentum_handoff.json",
   "preservedPrefixNodes": 11616256,
@@ -155,5 +155,28 @@
     "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
     "messageSha256": "28aee0407c347dd95d28797157727f38a564d283a057d0453afd6914bf1db0d3",
     "notifications": {}
+  },
+  "acceptance": "S11c_d_parallel_momentum_acceptance.json",
+  "acceptanceSha256": "07a3537ef58489e114efd9b5e124c665c12d7d32935896f856c9750023e9f706",
+  "recoveryOutcome": {
+    "stage": "parallel_recover",
+    "command": [
+      "python",
+      "-u",
+      "_measurements/S11c_d_parallel_momentum_recover.py",
+      "--directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-momentum-20260915/validation-recovery/complete",
+      "--previous",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-momentum-20260915/validation/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-momentum-20260915/validation-recovery/parallel_recover.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-momentum-20260915/validation-recovery/parallel_recover.stderr",
+    "startedUtc": "2026-09-15T23:33:23.245726+00:00",
+    "childPid": 3221191,
+    "status": "completed",
+    "exitCode": 0,
+    "wallSeconds": 57.37839551270008,
+    "stderrBytes": 0,
+    "finishedUtc": "2026-09-15T23:34:20.624168+00:00"
   }
 }

@@ -1,0 +1,4309 @@
+{
+  "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-pair-momentum-20260915/complete",
+  "sourceFiles": {
+    "scripts/S11c_d_mixing_scattering_sympy_audit.py": "997cb56c5b304f2b2d2f760cefb25f3c5b6a9718b2299ff0a775871e306a95f4",
+    "scripts/S11c_b_exports.py": "3c6555f90a85382a5e96f3f961f0e36a4875d9259fe1be947fa8e683669b7084",
+    "scripts/S11c_c1_exports.py": "a5353b86dc526fd1b56734fdbdf7dc7f42387a3195ab4de84e8994f751871cdc",
+    "scripts/S11c_c2_exports.py": "2ba5ed487b84ecb98290df6f1650fa6210fe2784cfa02a0f3cff96cd718411cd",
+    "directives/S11c_d_SHARED_PHYSICS.md": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5",
+    "scripts/ledger_fold.py": "97da78c6631c09e5575dd14511760506f1ac08771cf07948978004e92f0b2333",
+    "directives/S11b_SHARED_PHYSICS.md": "9ea9e388e9d6421a841eaf851d12e1793527bba9a24aeeface3bfac2f4b40078",
+    "scripts/S11c_d_output_codec.py": "49873a2fa5c3184aab097263f0a6128379e094e42dbde5052456c5f3908bf717",
+    "_measurements/S11c_d_numerical_action_check.py": "86d5b373df8825c1e6dca198555b2a65e62822a3d9ba32868a89ca135bb7968f",
+    "_measurements/S11c_d_reduced_action_source_check.py": "aae3b2402e1707ef27f217b917dc10592f38acbe35d18356fbc4886ed854f754",
+    "_measurements/S11c_d_variable_profile_input_check.py": "70cdf2811f2ccd92380be24a80bb7af49f4e1a01504b09a9dbb47f8d3cbbb3b2",
+    "_measurements/S11c_d_reduced_action_assembly_checkpoint.json": "b4afb727b1a1ad2a468b0bab9a6ab369dbe4dd35bc46acd7150b7fa581cd984f",
+    "_measurements/S11c_d_variable_profile_development_input.json": "660b2b0b54494dce964c7f5fbd722a76a7e894d8ed92b18b5eb6290c3c10f1d5",
+    "_measurements/S11c_d_variable_profile_input_checkpoint.json": "c1d686dc1ec067bfcb05dc15c38b71bab4f91212ad1530c510afb7fe35542455",
+    "_measurements/S11c_d_numerical_action_plan.md": "13bca06fd2fe5a40cc05c03dc90d94c25ebc9b5a804ad9ae7098feb00f55dba4",
+    "_measurements/S11c_d_variable_profile_matching_plan.md": "b48cd0248e43f7d9c7fa926c71ed415b904e08f81c8ea01816cb05f3a109879d",
+    "_measurements/S11c_d_channel_preflight_input.json": "db0d6f4dd955515e2c53e59039bb36c65ba6736f0233e8a20db9356ef24fb6b4",
+    "_measurements/S11c_d_variable_profile_development_input_proposal.json": "5fd0a4feb51d627825956296e7f2c9ace57178e79e0f07041abc11f43960aabb",
+    "_measurements/S11c_d_variable_profile_parameter_checkpoint.json": "5571536d8a43eeb73c6fb562281200bbbad76d24f3f4ba401769d190dec4512d",
+    "_measurements/S11c_d_variable_profile_parameter_inventory.json": "02abaf37a0febb4daef1a26b2ca314e756af29b7dcaea524a1d95d9736f45b7b",
+    "_measurements/S11c_d_matching_channels_checkpoint.json": "c4ad9b9051f9c3fadb076593dd35ec12d1779fad6d1558c691c3b735fe4d3eeb",
+    "_measurements/S11c_d_source_fourier_factorization_checkpoint.json": "fcf6f1c5598b63c11d4f8a76d2d94c2b5bace590e83d4beea3e52e82f44158a6",
+    "_measurements/S11c_d_numerical_action_checkpoint.json": "d66690ef13b252b15af82422e5a426d352a5ce2de0b2c11fcbb28adffbbdc3c2",
+    "_measurements/S11c_d_reduced_action_source_checkpoint.json": "b6dcd36ee6cf8ed3b3943e207012dd165fce62ec39cb8f53ca3c23f4715d094b",
+    "_measurements/S11c_d_source_fourier_quadrature_plan.md": "c09a32ebbb98e4b199670aa0b5d0eaafc170741d08e36b6f6d2eb3336bab7f12",
+    "_measurements/S11c_d_source_fourier_quadrature_check.py": "d52747cba3e5cbdf4cbff6816ccd07d79564032d0a64d57bf80aef5815430323",
+    "_measurements/S11c_d_source_fourier_quadrature_recover.py": "e06bb737cb10b5e5d99eacfc7f3d3f94ee1b326ef57308f590fede96baac7be3",
+    "_measurements/S11c_d_source_fourier_quadrature_emission_plan.md": "0f111ae15a35feef849448fc212c7d99313bdaf6f685b447e8028222c045c591",
+    "_measurements/S11c_d_source_fourier_quadrature_emission_repair.json": "290ea315f422b76c0c256d9047c322b355a0455d11049973554fe07b85445886",
+    "_measurements/S11c_d_source_fourier_quadrature_replay_repair.json": "57ead60830444646ed3a1bc7c50597ac764a3ae5a2052abd538891c1c05708c8",
+    "_measurements/S11c_d_source_fourier_factorization_check.py": "b6573d82198f262ac5eea8362fb478a93a1f9b8ea17bd0d4645c67cb40168f23",
+    "_measurements/S11c_d_quadrature_domain_checkpoint.json": "266cc9cf75d10578c0c77daaa9d7d1817f18ede208a4941f84540c6a05be0284",
+    "_measurements/S11c_d_source_fourier_factorization_plan.md": "9d68ab06e2d1b180b10fc38863deb392e9eebc9524eda51c264acf5c4f17f5a0",
+    "_measurements/S11c_d_source_fourier_residual_recover.py": "443953029c6848c9f0ea377b7cd3005f9f537d29b2431e2122cf2f8fda83e2b9",
+    "_measurements/S11c_d_source_fourier_residual_plan.md": "d65e2a040eb34ae5938b427969a47b474de6ebc243ffb996a105ae8d7726b983",
+    "_measurements/S11c_d_source_fourier_residual_repair_checkpoint.json": "8fce782cdbfff7c5f139aec93c5d3035e87d3bc384ce1ada052de55abe7e57b3",
+    "_measurements/S11c_d_source_fourier_quadrature_finish.py": "1f36a7de4954284aa8293c93d7737edcd9d7f2b8e4cac9cb059f728b3ee59c75",
+    "_measurements/S11c_d_source_fourier_quadrature_metadata_repair.json": "3c50089342f0612da2c9f0cfae3e371372649e27318c3653d8e3d3bde713656f",
+    "_measurements/S11c_d_source_fourier_quadrature_finish_plan.md": "9119694f0c85a42c044edef17139669056220209c25929386e7581eac1464d30",
+    "_measurements/S11c_d_source_fourier_quadrature_checkpoint.json": "f75cc549a3c7eb6e28e44b83b022abf0d5dee03dbb8d3a149771ab5ae07979e1",
+    "_measurements/S11c_d_momentum_action_plan.md": "3571c4f169c71b7f32e9e9ede31f3e2d228e8ff2774a8334824c74dad17a7517",
+    "_measurements/S11c_d_momentum_action_check.py": "247d2ee6b7004888eca1d653b53f8be773c68041d7254389c4d14328d0001ff3",
+    "_measurements/S11c_d_momentum_action_preflight.py": "529a15fc7deae9a15bb63d8b41bd91a32b5e92e3b4f50d04641ce7973eebb205",
+    "_measurements/S11c_d_momentum_action_checkpoint.json": "ab4f77bbdcd18f4093f7a90c11b214fea9ee727d958c63902fc10e7ad377e554",
+    "_measurements/S11c_d_single_momentum_plan.md": "0c23d30e0e0d778f370ed2b375d50c5273f8f8c4b7c0bbd5dceece853a54a3c9",
+    "_measurements/S11c_d_single_momentum_check.py": "52a40b81cf8afbbeebc88436305b98024dc4022eaf613651476852e901edacc7",
+    "_measurements/S11c_d_momentum_refinement_diagnostic.json": "38bbe0f48c8323914d074b1e3e2666b96c6ab060efd621708051f81b39fc15af",
+    "_measurements/S11c_d_single_momentum_preflight.py": "7f827734966a2cb635c8e04869597de7a3400469538e0bf450927acc61254350",
+    "_measurements/S11c_d_single_momentum_checkpoint.json": "b36ed270f6e1e2a0163b799372d567bc35dca75292c5e5d7fed7d710f21bbe5b",
+    "_measurements/S11c_d_pair_momentum_plan.md": "51f7267c9549ed1ce61297fa7258e1bef6d4b21f457adab5eab86b0fc6929ddb",
+    "_measurements/S11c_d_pair_momentum_check.py": "ac74aa8420bcde083207e8cbec45e56561848b9f92c5e824e77bec8c08fd4505",
+    "_measurements/S11c_d_pair_momentum_preflight.py": "5184806cd9bad7bedfcdf78ebe2e6d3d596238ed2ea2262d882899b4348e3e50"
+  },
+  "provenance": {
+    "SINGLE_CHECKPOINT_SHA256": "b36ed270f6e1e2a0163b799372d567bc35dca75292c5e5d7fed7d710f21bbe5b",
+    "BOUND_PACKET_SHA256": "6a6bf833a1c2e8d58a4f3469ca19c7ae6ea529d53549e47b9b053d1286154fb4",
+    "NUMERICAL_PACKET_SHA256": "2cf184cd82698f2a696e4812077f80d3b8bbb8dace7e07365e52ef86de78e54d",
+    "APPROVED_INPUT_SHA256": "660b2b0b54494dce964c7f5fbd722a76a7e894d8ed92b18b5eb6290c3c10f1d5",
+    "SINGLE_PACKET_SHA256": "ca03a9f6e1e3da8c2b30ee59bdb60a506f1f8feb07f6aeb229e72051bac46458"
+  },
+  "nativeEngineAstJoin": true,
+  "profileEvaluatorAstJoin": true,
+  "rowCount": 30,
+  "profileCount": 2,
+  "sourceCount": 30,
+  "records": 22,
+  "norms": [
+    {
+      "test": 0,
+      "index": 0,
+      "method": "gauss",
+      "outerOrder": 64,
+      "sourceOrder": 128,
+      "panelOrder": 16,
+      "profileOrder": 128,
+      "referenceIntegralDifference": 0.0,
+      "differenceFromReference": 0.0
+    },
+    {
+      "test": 0,
+      "index": 1,
+      "method": "gauss",
+      "outerOrder": 96,
+      "sourceOrder": 128,
+      "panelOrder": 16,
+      "profileOrder": 128,
+      "referenceIntegralDifference": 2.421510440972637e-08,
+      "precedingIntegralDifference": 2.421510440972637e-08,
+      "differenceFromReference": 3.6256385122888084e-11,
+      "precedingActionDifference": 3.6256385122888084e-11
+    },
+    {
+      "test": 0,
+      "index": 2,
+      "method": "gauss",
+      "outerOrder": 144,
+      "sourceOrder": 128,
+      "panelOrder": 16,
+      "profileOrder": 128,
+      "referenceIntegralDifference": 2.423679263487067e-08,
+      "precedingIntegralDifference": 2.311624384246582e-11,
+      "differenceFromReference": 3.62834484299393e-11,
+      "precedingActionDifference": 3.144816035082525e-14
+    },
+    {
+      "test": 0,
+      "index": 3,
+      "method": "gauss",
+      "outerOrder": 216,
+      "sourceOrder": 128,
+      "panelOrder": 16,
+      "profileOrder": 128,
+      "referenceIntegralDifference": 2.4236778524083302e-08,
+      "precedingIntegralDifference": 4.81954303479567e-14,
+      "differenceFromReference": 3.6283559221662525e-11,
+      "precedingActionDifference": 4.613190423717512e-16
+    },
+    {
+      "test": 0,
+      "index": 4,
+      "method": "gauss",
+      "outerOrder": 216,
+      "sourceOrder": 128,
+      "panelOrder": 24,
+      "profileOrder": 128,
+      "referenceIntegralDifference": 2.423836022579134e-08,
+      "precedingIntegralDifference": 1.1377325183036355e-11,
+      "differenceFromReference": 3.6291834026644525e-11,
+      "precedingActionDifference": 1.9703296838824727e-14
+    },
+    {
+      "test": 0,
+      "index": 5,
+      "method": "gauss",
+      "outerOrder": 216,
+      "sourceOrder": 128,
+      "panelOrder": 32,
+      "profileOrder": 128,
+      "referenceIntegralDifference": 2.4237604323556433e-08,
+      "precedingIntegralDifference": 8.633938075154525e-13,
+      "differenceFromReference": 3.6294188104736096e-11,
+      "precedingActionDifference": 4.203160165859031e-15
+    },
+    {
+      "test": 0,
+      "index": 6,
+      "method": "gauss",
+      "outerOrder": 216,
+      "sourceOrder": 192,
+      "panelOrder": 32,
+      "profileOrder": 128,
+      "referenceIntegralDifference": 2.423760431095589e-08,
+      "precedingIntegralDifference": 8.627088728023104e-17,
+      "differenceFromReference": 3.6294188104736096e-11,
+      "precedingActionDifference": 0.0
+    },
+    {
+      "test": 0,
+      "index": 7,
+      "method": "gauss",
+      "outerOrder": 216,
+      "sourceOrder": 256,
+      "panelOrder": 32,
+      "profileOrder": 128,
+      "referenceIntegralDifference": 2.423760432451809e-08,
+      "precedingIntegralDifference": 5.818439421673297e-17,
+      "differenceFromReference": 3.6294188104736096e-11,
+      "precedingActionDifference": 0.0
+    },
+    {
+      "test": 0,
+      "index": 8,
+      "method": "gauss",
+      "outerOrder": 216,
+      "sourceOrder": 256,
+      "panelOrder": 32,
+      "profileOrder": 192,
+      "referenceIntegralDifference": 2.4237603402363127e-08,
+      "precedingIntegralDifference": 1.0160649910902764e-14,
+      "differenceFromReference": 3.6294188104736096e-11,
+      "precedingActionDifference": 1.3877787807814457e-17
+    },
+    {
+      "test": 0,
+      "index": 9,
+      "method": "gauss",
+      "outerOrder": 216,
+      "sourceOrder": 256,
+      "panelOrder": 32,
+      "profileOrder": 256,
+      "referenceIntegralDifference": 2.4237603794434548e-08,
+      "precedingIntegralDifference": 5.2277117350691e-15,
+      "differenceFromReference": 3.6294188104736096e-11,
+      "precedingActionDifference": 1.3877787807814457e-17
+    },
+    {
+      "test": 0,
+      "index": 10,
+      "method": "adaptive",
+      "outerOrder": 216,
+      "sourceOrder": 256,
+      "panelOrder": 32,
+      "profileOrder": 256,
+      "precedingIntegralDifference": 1.315398974062599e-14,
+      "differenceFromReference": 3.629418989269914e-11,
+      "precedingActionDifference": 6.206335383118183e-17,
+      "errorEstimate": 5.182181169799413e-14,
+      "evaluations": 315,
+      "success": true
+    },
+    {
+      "test": 1,
+      "index": 0,
+      "method": "gauss",
+      "outerOrder": 64,
+      "sourceOrder": 128,
+      "panelOrder": 16,
+      "profileOrder": 128,
+      "referenceIntegralDifference": 0.0,
+      "differenceFromReference": 0.0
+    },
+    {
+      "test": 1,
+      "index": 1,
+      "method": "gauss",
+      "outerOrder": 96,
+      "sourceOrder": 128,
+      "panelOrder": 16,
+      "profileOrder": 128,
+      "referenceIntegralDifference": 8.418141107141753e-09,
+      "precedingIntegralDifference": 8.418141107141753e-09,
+      "differenceFromReference": 1.525615000232348e-11,
+      "precedingActionDifference": 1.525615000232348e-11
+    },
+    {
+      "test": 1,
+      "index": 2,
+      "method": "gauss",
+      "outerOrder": 144,
+      "sourceOrder": 128,
+      "panelOrder": 16,
+      "profileOrder": 128,
+      "referenceIntegralDifference": 8.425221931783211e-09,
+      "precedingIntegralDifference": 7.521719407353648e-12,
+      "differenceFromReference": 1.526720919145793e-11,
+      "precedingActionDifference": 1.2761771000656872e-14
+    },
+    {
+      "test": 1,
+      "index": 3,
+      "method": "gauss",
+      "outerOrder": 216,
+      "sourceOrder": 128,
+      "panelOrder": 16,
+      "profileOrder": 128,
+      "referenceIntegralDifference": 8.42526245425371e-09,
+      "precedingIntegralDifference": 8.324254453482052e-14,
+      "differenceFromReference": 1.526728620702035e-11,
+      "precedingActionDifference": 4.460365043975677e-16
+    },
+    {
+      "test": 1,
+      "index": 4,
+      "method": "gauss",
+      "outerOrder": 216,
+      "sourceOrder": 128,
+      "panelOrder": 24,
+      "profileOrder": 128,
+      "referenceIntegralDifference": 8.420003978581503e-09,
+      "precedingIntegralDifference": 1.717048745488496e-11,
+      "differenceFromReference": 1.5273196411471718e-11,
+      "precedingActionDifference": 3.2632172087766496e-14
+    },
+    {
+      "test": 1,
+      "index": 5,
+      "method": "gauss",
+      "outerOrder": 216,
+      "sourceOrder": 128,
+      "panelOrder": 32,
+      "profileOrder": 128,
+      "referenceIntegralDifference": 8.421164926729062e-09,
+      "precedingIntegralDifference": 1.4955896501267857e-12,
+      "differenceFromReference": 1.527337937250257e-11,
+      "precedingActionDifference": 6.5831784552428596e-15
+    },
+    {
+      "test": 1,
+      "index": 6,
+      "method": "gauss",
+      "outerOrder": 216,
+      "sourceOrder": 192,
+      "panelOrder": 32,
+      "profileOrder": 128,
+      "referenceIntegralDifference": 8.421165110997897e-09,
+      "precedingIntegralDifference": 4.207196203546245e-16,
+      "differenceFromReference": 1.527337937250257e-11,
+      "precedingActionDifference": 2.710505431213761e-20
+    },
+    {
+      "test": 1,
+      "index": 7,
+      "method": "gauss",
+      "outerOrder": 216,
+      "sourceOrder": 256,
+      "panelOrder": 32,
+      "profileOrder": 128,
+      "referenceIntegralDifference": 8.421164981659513e-09,
+      "precedingIntegralDifference": 2.618455766672135e-16,
+      "differenceFromReference": 1.527337937250257e-11,
+      "precedingActionDifference": 0.0
+    },
+    {
+      "test": 1,
+      "index": 8,
+      "method": "gauss",
+      "outerOrder": 216,
+      "sourceOrder": 256,
+      "panelOrder": 32,
+      "profileOrder": 192,
+      "referenceIntegralDifference": 8.421165383124799e-09,
+      "precedingIntegralDifference": 1.653055610688879e-14,
+      "differenceFromReference": 1.527337937250257e-11,
+      "precedingActionDifference": 1.3877787807814457e-17
+    },
+    {
+      "test": 1,
+      "index": 9,
+      "method": "gauss",
+      "outerOrder": 216,
+      "sourceOrder": 256,
+      "panelOrder": 32,
+      "profileOrder": 256,
+      "referenceIntegralDifference": 8.421165188165798e-09,
+      "precedingIntegralDifference": 8.541938514399924e-15,
+      "differenceFromReference": 1.527337937250257e-11,
+      "precedingActionDifference": 1.0408340855860843e-17
+    },
+    {
+      "test": 1,
+      "index": 10,
+      "method": "adaptive",
+      "outerOrder": 216,
+      "sourceOrder": 256,
+      "panelOrder": 32,
+      "profileOrder": 256,
+      "precedingIntegralDifference": 2.447832850559355e-14,
+      "differenceFromReference": 1.527337937250257e-11,
+      "precedingActionDifference": 6.206335383118183e-17,
+      "errorEstimate": 1.5996241955419222e-12,
+      "evaluations": 357,
+      "success": true
+    }
+  ],
+  "ruleCaches": 9,
+  "tagCount": 20778,
+  "writeKeyCount": 10387,
+  "metadataPaths": 91047,
+  "recordArtifacts": [
+    {
+      "path": "records/0-0.pickle",
+      "bytes": 42229,
+      "sha256": "81e8cee3281987d2c6c242829b32f31a2f8a432f13f20ec8a690b0acf9c39fd4"
+    },
+    {
+      "path": "records/0-1.pickle",
+      "bytes": 44983,
+      "sha256": "fc042ae1b09f2afc73aec365c0318752dfd0b44c47a44e45c3ba5c4d6d3d4b40"
+    },
+    {
+      "path": "records/0-2.pickle",
+      "bytes": 44983,
+      "sha256": "4397223a93fc6ddd35d91b343ef37e5a84ab1419786fabd61c4b54c5eb89da17"
+    },
+    {
+      "path": "records/0-3.pickle",
+      "bytes": 44983,
+      "sha256": "c513ebc50af9f87b41e98c5f74c293b1361957b43d16ebd56e84fc4191ba829a"
+    },
+    {
+      "path": "records/0-4.pickle",
+      "bytes": 44986,
+      "sha256": "55eaf28aea6027ee444515c3b4246c6c841b7366c1013436fbb5b55f6b451fee"
+    },
+    {
+      "path": "records/0-5.pickle",
+      "bytes": 44986,
+      "sha256": "ccc33085e8ab15d193a8acb3b9cec1c2a97ce1e64467231409c50980647c80ed"
+    },
+    {
+      "path": "records/0-6.pickle",
+      "bytes": 44986,
+      "sha256": "f06d688a986aff3794c670fb83d686b46cce012d1504ea3cfcdcf6e9b5bf935a"
+    },
+    {
+      "path": "records/0-7.pickle",
+      "bytes": 44987,
+      "sha256": "9ed0677898bd838e5b1989bbe5812c6af757872e205f51aa31af5dd2d540cff9"
+    },
+    {
+      "path": "records/0-8.pickle",
+      "bytes": 44987,
+      "sha256": "f68c6c8d91f5217e8481d80db9a31835111b0a1d8e9f0f45650fdd0aaac7f579"
+    },
+    {
+      "path": "records/0-9.pickle",
+      "bytes": 44988,
+      "sha256": "be829f23a65ec465686f85e33fb34dd1ec7f10a15987169925c3b21a0fa3c638"
+    },
+    {
+      "path": "records/0-adaptive.pickle",
+      "bytes": 52367,
+      "sha256": "014439af8ae0b5d44eeddeff80e355d89bf9dea51c1a7f561aac056143cf9579"
+    },
+    {
+      "path": "records/1-0.pickle",
+      "bytes": 42229,
+      "sha256": "cc1b18c886bee6145f7618638a7d5a711a22064385180d6b24d4d81b0bce4343"
+    },
+    {
+      "path": "records/1-1.pickle",
+      "bytes": 44983,
+      "sha256": "d25928931a234b4de21556e4f008f17c1ab7600cbd9330c774dc87635d94eb0a"
+    },
+    {
+      "path": "records/1-2.pickle",
+      "bytes": 44983,
+      "sha256": "684cc6a0a721ec640844de2d8830f3394ade20b4b2cd54f1bd7bfa591bbb22ba"
+    },
+    {
+      "path": "records/1-3.pickle",
+      "bytes": 44983,
+      "sha256": "12c1fd3bfefcf5f0ced6848d76477febed006b174479dde7c377735922cd8ec0"
+    },
+    {
+      "path": "records/1-4.pickle",
+      "bytes": 44986,
+      "sha256": "f5727c4e66d22b42d6dde0bbdcde06dc3f43f2f505ef17d8dcf64a0388e36083"
+    },
+    {
+      "path": "records/1-5.pickle",
+      "bytes": 44986,
+      "sha256": "24a0e56246ed5763e374d0d7c0df23fe31b617f5d90222e06d5ce0a26d6e78b0"
+    },
+    {
+      "path": "records/1-6.pickle",
+      "bytes": 44986,
+      "sha256": "b4d30ceb2facb66c759af424b2f85c1c8ffd7318d70091c1ff35b548d33e9c3c"
+    },
+    {
+      "path": "records/1-7.pickle",
+      "bytes": 44987,
+      "sha256": "b5ce6ed69a03baf95c3912f98c0059936d1e3725962702397e5c1540fbf4e20f"
+    },
+    {
+      "path": "records/1-8.pickle",
+      "bytes": 44987,
+      "sha256": "17752e72dd51e558cc02f2a0940587e0eb2f41bcb0388fba26da3e82bf6ce625"
+    },
+    {
+      "path": "records/1-9.pickle",
+      "bytes": 44988,
+      "sha256": "69722d4fcb489d0ebbe6b9f53fb94968284c56621d986e96b4cc4df258b4ea93"
+    },
+    {
+      "path": "records/1-adaptive.pickle",
+      "bytes": 53831,
+      "sha256": "b540944773119f98408fa2059afdd3d7ec552174c944edb0044acf269079fe5c"
+    }
+  ],
+  "partialArtifacts": [
+    {
+      "path": "partials/0-1-000064.pickle",
+      "bytes": 3694,
+      "sha256": "e68c6ad65dfe6732d7d14cb4c34f29c435744be03a0dbace6129ff055362d12d"
+    },
+    {
+      "path": "partials/0-2-000064.pickle",
+      "bytes": 3694,
+      "sha256": "cb37180206503ffe2ab02b0fff5edabea3575e6212e05a701eef935d52bf3bb4"
+    },
+    {
+      "path": "partials/0-2-000128.pickle",
+      "bytes": 3694,
+      "sha256": "544bc02fe0ec33e24a10921af76a8f21476a5e3069826ac9d811830dec7a0f6a"
+    },
+    {
+      "path": "partials/0-3-000064.pickle",
+      "bytes": 3694,
+      "sha256": "c547f17924e8df16de03896fdf2d22ebcc1e72db9bfa5fae788f7806b74d8ce8"
+    },
+    {
+      "path": "partials/0-3-000128.pickle",
+      "bytes": 3694,
+      "sha256": "66cbe65de5b4a0615ebeff450edf3b0226361225e61f57c5ea290bef61bbcb82"
+    },
+    {
+      "path": "partials/0-3-000192.pickle",
+      "bytes": 3694,
+      "sha256": "3488b308838e12b5cdd024d573b96fe591e75b73cf6abe9951bda0230e2d3941"
+    },
+    {
+      "path": "partials/0-4-000064.pickle",
+      "bytes": 3694,
+      "sha256": "37674c6003c0963c2f4eba0d837f8e263a7af3d3ce2717a57f9799fc750cb06f"
+    },
+    {
+      "path": "partials/0-4-000128.pickle",
+      "bytes": 3694,
+      "sha256": "b4f77e842e9fa9c7c127f4ad10f931d60f7c50e9975856916b94664120f8376e"
+    },
+    {
+      "path": "partials/0-4-000192.pickle",
+      "bytes": 3694,
+      "sha256": "9183adfbd2fbd21fff21b39df4b6fd227d51e15542784c0ef5f0d0158e3f75a6"
+    },
+    {
+      "path": "partials/0-4-000256.pickle",
+      "bytes": 3697,
+      "sha256": "6b3392b1189fc45b1d449879a0f5b444ed0259158eafeb697ebfcc5b47fc47a7"
+    },
+    {
+      "path": "partials/0-5-000064.pickle",
+      "bytes": 3694,
+      "sha256": "892b5c4627c00a52fa53fddc6e6de7d4f2a46acc8500b6e713c7f900cf107572"
+    },
+    {
+      "path": "partials/0-5-000128.pickle",
+      "bytes": 3694,
+      "sha256": "2383dff9e60b8c6cfd4d01abcbf3ebd85f55ac1aeef6acffc62212233ee58b6b"
+    },
+    {
+      "path": "partials/0-5-000192.pickle",
+      "bytes": 3694,
+      "sha256": "abf0df4a51efdd9747a872e723b8601111da78fe61f1533e8765414b64d52700"
+    },
+    {
+      "path": "partials/0-5-000256.pickle",
+      "bytes": 3697,
+      "sha256": "28eb9cb191c2ab01f7a0165dc7a0225b0a3ac5f93909fbd5bd8ac9986a6b2998"
+    },
+    {
+      "path": "partials/0-5-000320.pickle",
+      "bytes": 3697,
+      "sha256": "0d021f6afff551644df3a73435b60f56da9ecb69c2991db4606f356dee97efb4"
+    },
+    {
+      "path": "partials/0-5-000384.pickle",
+      "bytes": 3697,
+      "sha256": "ea5aa1d0d6e88c7f0c6373bc98bbdb366f2b1613e610c4792743ef1c95b25603"
+    },
+    {
+      "path": "partials/0-6-000064.pickle",
+      "bytes": 3694,
+      "sha256": "f501b4a3ed46d147b1e758e5f6a1cdae44b1f2e6de3f4f9d16ec9cc8c7e1f670"
+    },
+    {
+      "path": "partials/0-6-000128.pickle",
+      "bytes": 3694,
+      "sha256": "7ef1fcdb0e651236c71341e5bee6a73d906efd9f788c83c2fc27e5d17e3e13f7"
+    },
+    {
+      "path": "partials/0-6-000192.pickle",
+      "bytes": 3694,
+      "sha256": "5b8eafae06f0f3bf40e8f75fbb8e82651917db5166e30d2cadbc328352741221"
+    },
+    {
+      "path": "partials/0-6-000256.pickle",
+      "bytes": 3697,
+      "sha256": "0787b8108b508536cd70cda0c8c00b3bc2d868c1cd7dcd9275b9ed66302a1e9b"
+    },
+    {
+      "path": "partials/0-6-000320.pickle",
+      "bytes": 3697,
+      "sha256": "36ff24a9bd29bdbabf91cc50ff1fec6c8e6876e4934437862d3fa6c1b29eee9f"
+    },
+    {
+      "path": "partials/0-6-000384.pickle",
+      "bytes": 3697,
+      "sha256": "23b3c388a237d902f91288f2fe3ba052231486cc7971df5509935fb7bea8d187"
+    },
+    {
+      "path": "partials/0-7-000064.pickle",
+      "bytes": 3695,
+      "sha256": "4c7d6acbb8ea6da09d6d40d35c890fc3f10e60432878b78016a9100f493aa857"
+    },
+    {
+      "path": "partials/0-7-000128.pickle",
+      "bytes": 3695,
+      "sha256": "0c85355ea7c33d4e948f6c5268ca181dc0c115063b1de5ea91ed19320d020175"
+    },
+    {
+      "path": "partials/0-7-000192.pickle",
+      "bytes": 3695,
+      "sha256": "860f8794fad463b43dd13823ab044056850091e7f8138bc19bb25fa4cf5f5153"
+    },
+    {
+      "path": "partials/0-7-000256.pickle",
+      "bytes": 3698,
+      "sha256": "18ab4742301815f148e666bd6a2ba697d2b2092ecb6df46be3175ef30629232a"
+    },
+    {
+      "path": "partials/0-7-000320.pickle",
+      "bytes": 3698,
+      "sha256": "38bc7a67334af57edcb54ec45a019f008848030e3594ca6f7ad92f93703ae06d"
+    },
+    {
+      "path": "partials/0-7-000384.pickle",
+      "bytes": 3698,
+      "sha256": "b9c8be9cce883044b0183dd0a08b6f34f59bedb596b83c1921f5257e5c308e58"
+    },
+    {
+      "path": "partials/0-8-000064.pickle",
+      "bytes": 3695,
+      "sha256": "7f312475d121a3d0435768a4aac911f2bc47b0af875db4aa8e81d057d149afee"
+    },
+    {
+      "path": "partials/0-8-000128.pickle",
+      "bytes": 3695,
+      "sha256": "0479cd324db117eca0cf1aaa22329f3b69cde9b2a09f54b71dbaf2be7cfee9f2"
+    },
+    {
+      "path": "partials/0-8-000192.pickle",
+      "bytes": 3695,
+      "sha256": "b42576d851e847ee05f1166e2a551e75ca58abc9127b678352355d4692cdfbf8"
+    },
+    {
+      "path": "partials/0-8-000256.pickle",
+      "bytes": 3698,
+      "sha256": "e4320475043739c4cd64da05d0b9f69fa977f66b3583d86953d4a864985c4991"
+    },
+    {
+      "path": "partials/0-8-000320.pickle",
+      "bytes": 3698,
+      "sha256": "9d977364646aa4ec0f6798c5834fa92410a012e791f162ddb98f62e9969adee6"
+    },
+    {
+      "path": "partials/0-8-000384.pickle",
+      "bytes": 3698,
+      "sha256": "f33741a55883b6d005375acce0d7b253e07c1ff0a0d10478968421f8181238fa"
+    },
+    {
+      "path": "partials/0-9-000064.pickle",
+      "bytes": 3696,
+      "sha256": "b633f1e50dff5d8aaf86e93ebd426e81aff6c982bf6695914fed988c1be75e56"
+    },
+    {
+      "path": "partials/0-9-000128.pickle",
+      "bytes": 3696,
+      "sha256": "b05ae5dbe9ab4ba7d398c606e59101fc3602568d0e6baa82b5123d2a272c97e7"
+    },
+    {
+      "path": "partials/0-9-000192.pickle",
+      "bytes": 3696,
+      "sha256": "afc01adcd9e884ff7be41b7e786d646833943115fb8d7aa77fd247514287befb"
+    },
+    {
+      "path": "partials/0-9-000256.pickle",
+      "bytes": 3699,
+      "sha256": "23a8fa0522317aa7dab2d331b132f76beb88301187058341dafc10917db0e388"
+    },
+    {
+      "path": "partials/0-9-000320.pickle",
+      "bytes": 3699,
+      "sha256": "b132126eb8968c32598360d452239c9ff2d3488d126eca62d003c25c134e7b00"
+    },
+    {
+      "path": "partials/0-9-000384.pickle",
+      "bytes": 3699,
+      "sha256": "d0c715656eff8a3f3ad57a0ebd6e46fa8e353312777f736546b26cae612bd0c0"
+    },
+    {
+      "path": "partials/1-1-000064.pickle",
+      "bytes": 3694,
+      "sha256": "9464a4a7d52ccd7ff359ab02f3add4e13aefc66086df23f57cc14048c1b18ce0"
+    },
+    {
+      "path": "partials/1-2-000064.pickle",
+      "bytes": 3694,
+      "sha256": "b3bd08c8c8aa9f610b2110ac935531d556c24aed456e9c8c4bd56325a47e9ba5"
+    },
+    {
+      "path": "partials/1-2-000128.pickle",
+      "bytes": 3694,
+      "sha256": "2a80f36d9287f84b3fad1ecb69a0356ba6fc65653c919df76a6d628799f494e0"
+    },
+    {
+      "path": "partials/1-3-000064.pickle",
+      "bytes": 3694,
+      "sha256": "df6f4c0f6b6d82291e7195509ded683bba1d0984e151c8fd7e2dc713002488d7"
+    },
+    {
+      "path": "partials/1-3-000128.pickle",
+      "bytes": 3694,
+      "sha256": "7fb477e4900175362f6b6953b8b4db7090ff2d10412beffb5c04a751535c4615"
+    },
+    {
+      "path": "partials/1-3-000192.pickle",
+      "bytes": 3694,
+      "sha256": "a0f81550204bc77c0a5832c94b4db719b427e7b2715df724470a741840c861a1"
+    },
+    {
+      "path": "partials/1-4-000064.pickle",
+      "bytes": 3694,
+      "sha256": "f8dd6d8a9859d6c774ef05592e50c14f00e908fcf1247d756b86bf0753d68f4a"
+    },
+    {
+      "path": "partials/1-4-000128.pickle",
+      "bytes": 3694,
+      "sha256": "d89dd3f65b574dec0a687f7f5887c039f3858e9a5733cb33e4506c608d4c7b42"
+    },
+    {
+      "path": "partials/1-4-000192.pickle",
+      "bytes": 3694,
+      "sha256": "815e8ffa54e7beb43862ebb288992c1d9f46b59857cc7f8c2bc8fddaf8631759"
+    },
+    {
+      "path": "partials/1-4-000256.pickle",
+      "bytes": 3697,
+      "sha256": "ff6442336e5cd53b0ee25b2d2e9aa42bd4aa996652e51e70e34d951a388e835e"
+    },
+    {
+      "path": "partials/1-5-000064.pickle",
+      "bytes": 3694,
+      "sha256": "ffb3f6a5f96b1732158c4ca914a92c058d3f852c735a7ab918f735c7038bc9dc"
+    },
+    {
+      "path": "partials/1-5-000128.pickle",
+      "bytes": 3694,
+      "sha256": "efdbcab550d1ba824fcc9cfc436d385f46fc58cf69b92a87cb8d4e5177e6c686"
+    },
+    {
+      "path": "partials/1-5-000192.pickle",
+      "bytes": 3694,
+      "sha256": "b9062536f55ead14ad89da538ec28541654f6683a96c5e04dc87343412476263"
+    },
+    {
+      "path": "partials/1-5-000256.pickle",
+      "bytes": 3697,
+      "sha256": "256b163a7261defe762a68ed434385d3a45910aa89e7f31fac36b44c8cf1e49a"
+    },
+    {
+      "path": "partials/1-5-000320.pickle",
+      "bytes": 3697,
+      "sha256": "5c7a09eb840e6c1a70bd71a88b75cbdcf84eabb4c060feaec5c2e57e6c0566e6"
+    },
+    {
+      "path": "partials/1-5-000384.pickle",
+      "bytes": 3697,
+      "sha256": "2d5c8d03ad3f752aa36252e154069d35095527a8e21989f2b622638c230dc26b"
+    },
+    {
+      "path": "partials/1-6-000064.pickle",
+      "bytes": 3694,
+      "sha256": "fa184ab52028c88ae4beae566bf9634b1fcf5af3f73ec6bc8e65827118859396"
+    },
+    {
+      "path": "partials/1-6-000128.pickle",
+      "bytes": 3694,
+      "sha256": "a0205a9bbf78c87304eaf7553ae4984f9224da6ce80973d6b761b7854abcbcad"
+    },
+    {
+      "path": "partials/1-6-000192.pickle",
+      "bytes": 3694,
+      "sha256": "5462d4fd9c8bcb19187a465cf05517b9e1f435b80120739cba2c5a2d313232e5"
+    },
+    {
+      "path": "partials/1-6-000256.pickle",
+      "bytes": 3697,
+      "sha256": "fee1a6d40ddf4337244dd0b77d636de6c9bc6d2dc87d09edf355382b373ca2ff"
+    },
+    {
+      "path": "partials/1-6-000320.pickle",
+      "bytes": 3697,
+      "sha256": "34a6a519539517bc6809a631910ff427fb81f25b6bf2497b36decbdd25b8c451"
+    },
+    {
+      "path": "partials/1-6-000384.pickle",
+      "bytes": 3697,
+      "sha256": "c67ea3e4112721527ab71028e2db7e27970f74a3425de64429d91fa4033ffbc4"
+    },
+    {
+      "path": "partials/1-7-000064.pickle",
+      "bytes": 3695,
+      "sha256": "1d71d81949209fdadcab9c7b19248ff1a14c4f3f8f29ad5a70763d96da7eff72"
+    },
+    {
+      "path": "partials/1-7-000128.pickle",
+      "bytes": 3695,
+      "sha256": "b4e573e3269462823ae67f5868acb19178cf681a436107d4dd7215d219bb46a6"
+    },
+    {
+      "path": "partials/1-7-000192.pickle",
+      "bytes": 3695,
+      "sha256": "0d4f55b7e513481759c1beb1d1c0299d2955f90527303e2be9a6523d5933b416"
+    },
+    {
+      "path": "partials/1-7-000256.pickle",
+      "bytes": 3698,
+      "sha256": "ba9795db4740fb2f798c1d40f03473538ffa22a42531e8440dadc74038a8c2cc"
+    },
+    {
+      "path": "partials/1-7-000320.pickle",
+      "bytes": 3698,
+      "sha256": "0a222cb41e369b7d888a7eefb27d41bc76c0af3cdd0ea55dfeb18b134a070f00"
+    },
+    {
+      "path": "partials/1-7-000384.pickle",
+      "bytes": 3698,
+      "sha256": "f271372ad3170a3b60fc32a49cca78d30d1f3ac27a3dc17dfc77e3b713ada8f0"
+    },
+    {
+      "path": "partials/1-8-000064.pickle",
+      "bytes": 3695,
+      "sha256": "7927a641c1bbd6fce9604d20bd2f85b6384a65badbf4c94d78364ba2b42ef5e0"
+    },
+    {
+      "path": "partials/1-8-000128.pickle",
+      "bytes": 3695,
+      "sha256": "7683a2fc6bcb59e8de3dccec96972574f89453bf9671f19a39521c38e9325184"
+    },
+    {
+      "path": "partials/1-8-000192.pickle",
+      "bytes": 3695,
+      "sha256": "0a87a39c142050b3af3d89d8a582764dcdfe48ec6d0e3784160669ef01df1e02"
+    },
+    {
+      "path": "partials/1-8-000256.pickle",
+      "bytes": 3698,
+      "sha256": "b7b1f5fef6b865896c722fac69efaab4b79418076cf5e87231c09498e70cc13b"
+    },
+    {
+      "path": "partials/1-8-000320.pickle",
+      "bytes": 3698,
+      "sha256": "1833570c5879f325d94131d55189b6c0995d698831f8d546402d0b4bed175361"
+    },
+    {
+      "path": "partials/1-8-000384.pickle",
+      "bytes": 3698,
+      "sha256": "e6b1ef0d4d894fefdb54bafc155583c9fa20908a7949858bd590a757a8126fe2"
+    },
+    {
+      "path": "partials/1-9-000064.pickle",
+      "bytes": 3696,
+      "sha256": "2bc135a2384ab85a8a9dfd5d6f0a596622ee9343798cb18b33bc8921f6138198"
+    },
+    {
+      "path": "partials/1-9-000128.pickle",
+      "bytes": 3696,
+      "sha256": "c1887337032b44ed37536a1bc5ef3977a1cee35e84113a32df9e9d1874df6c40"
+    },
+    {
+      "path": "partials/1-9-000192.pickle",
+      "bytes": 3696,
+      "sha256": "3027e12485a0e5b45c1514c9b8a0252953719e3d89013eeb4a7d594699e7e782"
+    },
+    {
+      "path": "partials/1-9-000256.pickle",
+      "bytes": 3699,
+      "sha256": "ccde7ec088af5ccb5d1cc45bf9d258b1bd6cc7f88afc327bd224464c6a9056fe"
+    },
+    {
+      "path": "partials/1-9-000320.pickle",
+      "bytes": 3699,
+      "sha256": "d813f958319f32a1a3d0ae1268df37289dfc2ed996a3a74de1690910e9fce74f"
+    },
+    {
+      "path": "partials/1-9-000384.pickle",
+      "bytes": 3699,
+      "sha256": "5ab724f3684a7dd3623b3405378321543ccfe1ef89a512c465c4bec4af269b9f"
+    }
+  ],
+  "outerPointArtifacts": [
+    {
+      "path": "outer-points/0-000000.pickle",
+      "bytes": 1994,
+      "sha256": "9f6d3490bdbd6e8a3149393a34d2f5e7e9210f16effb5f360e9eae60f15a9da8"
+    },
+    {
+      "path": "outer-points/0-000001.pickle",
+      "bytes": 1994,
+      "sha256": "1251d3fd53176ca57df4a5e1bdb29c24c53b21079817ac51be3ab1c67c7f45eb"
+    },
+    {
+      "path": "outer-points/0-000002.pickle",
+      "bytes": 1994,
+      "sha256": "8466188599461b139e96e97f0360d5e90f5c4c99b0141f763714d19b9e321309"
+    },
+    {
+      "path": "outer-points/0-000003.pickle",
+      "bytes": 1994,
+      "sha256": "25711eb06cf0c508592c5b3bea6595d22d9b974d4d10819d749acb378aef260b"
+    },
+    {
+      "path": "outer-points/0-000004.pickle",
+      "bytes": 1994,
+      "sha256": "b73b4c9cc53e028144e882d3754c2d7d9dbc17974aa655bb6329d0cf6c92e146"
+    },
+    {
+      "path": "outer-points/0-000005.pickle",
+      "bytes": 1994,
+      "sha256": "2883e9afbac7f745f83a784277005e71f487eea7bfeed0b57156f883193e2be1"
+    },
+    {
+      "path": "outer-points/0-000006.pickle",
+      "bytes": 1994,
+      "sha256": "0cfd0981baaae75f0c6770778b1a483e4428aaa62000aa9b8bf0cf3ef24e52fd"
+    },
+    {
+      "path": "outer-points/0-000007.pickle",
+      "bytes": 1994,
+      "sha256": "adad40d15adfe69796231126c32b8a64a00982173c426de98a2d8ee6c962f765"
+    },
+    {
+      "path": "outer-points/0-000008.pickle",
+      "bytes": 1994,
+      "sha256": "56570c0a62ed6219dad9b49f7bbae36e2e2c9d1273e85a801edd7a121e7d248f"
+    },
+    {
+      "path": "outer-points/0-000009.pickle",
+      "bytes": 1994,
+      "sha256": "b4f186e8e258afa2d46b3447bd08cfa13be65b9066ddc6463fe38e65fca0a4c3"
+    },
+    {
+      "path": "outer-points/0-000010.pickle",
+      "bytes": 1994,
+      "sha256": "0e3feb3c4b873a368d26a25df606c44c29535e7b8c9eea3e9aed11e590788f26"
+    },
+    {
+      "path": "outer-points/0-000011.pickle",
+      "bytes": 1994,
+      "sha256": "785e5bd1307d811437608aa10168cba6763694e9d8060dca3c6d289cf630fc15"
+    },
+    {
+      "path": "outer-points/0-000012.pickle",
+      "bytes": 1994,
+      "sha256": "a84a07e6027e46a2fb6a57c6cf969b01bf31880a0c3b862b628294a5b1cc6ab6"
+    },
+    {
+      "path": "outer-points/0-000013.pickle",
+      "bytes": 1994,
+      "sha256": "1402271013974bdb6909d42880f7a1f967dd4d756d27390cd30d0ced5af541f1"
+    },
+    {
+      "path": "outer-points/0-000014.pickle",
+      "bytes": 1994,
+      "sha256": "00992118386ad1a449c1ae5b66d616c3444b4ac81af70414d79f98fcd26c860b"
+    },
+    {
+      "path": "outer-points/0-000015.pickle",
+      "bytes": 1994,
+      "sha256": "f8e45164ecb36776d43984d23fe7d5784bdf2bfda4ccf999bbe7cb7fc007319e"
+    },
+    {
+      "path": "outer-points/0-000016.pickle",
+      "bytes": 1994,
+      "sha256": "b00c5512defcac82e5e27456d090babb71080aeebfdf526ac2e0fbc672e7de4e"
+    },
+    {
+      "path": "outer-points/0-000017.pickle",
+      "bytes": 1994,
+      "sha256": "ac6f5bec0a191976d882b5c97500b1efa3ed4b79ec082da0919bb1e18362dace"
+    },
+    {
+      "path": "outer-points/0-000018.pickle",
+      "bytes": 1994,
+      "sha256": "0b21632ae444f58b77f433d17a53f09257acffc8280eae19e15ce971dbf6b19d"
+    },
+    {
+      "path": "outer-points/0-000019.pickle",
+      "bytes": 1994,
+      "sha256": "8656368064286643426c7ebb982ad32545fddfdaf49849fb9f7e2e587cb41049"
+    },
+    {
+      "path": "outer-points/0-000020.pickle",
+      "bytes": 1994,
+      "sha256": "685a938d1877e9be55ac5f5526aae5598bf8c6a010450f158147e6b4a729b2fd"
+    },
+    {
+      "path": "outer-points/0-000021.pickle",
+      "bytes": 1994,
+      "sha256": "d4f92a0f477c433413f32f77b4b99aef1c28016aa3b54178df309239a0e7556c"
+    },
+    {
+      "path": "outer-points/0-000022.pickle",
+      "bytes": 1994,
+      "sha256": "08ef3696209d2b90b975564c96852d6f48002c2c7b9b1fbef4ea11f99803d95d"
+    },
+    {
+      "path": "outer-points/0-000023.pickle",
+      "bytes": 1994,
+      "sha256": "ffdf60a65a4b4807a5b30ce06f0347abf1c55a9494da07ab17099d3742df4117"
+    },
+    {
+      "path": "outer-points/0-000024.pickle",
+      "bytes": 1994,
+      "sha256": "1ca9649cad99a0bc2dce3521927581b569c413b3131ca117b8642c99d6023d71"
+    },
+    {
+      "path": "outer-points/0-000025.pickle",
+      "bytes": 1994,
+      "sha256": "e6bbbf2bd3346545e91379815dce2950c99603e743b171a30a2a453d771b866a"
+    },
+    {
+      "path": "outer-points/0-000026.pickle",
+      "bytes": 1994,
+      "sha256": "5fd2a59e3720de065e14d3c0190f51a296ced8708c5efa23325b1676bf8d852b"
+    },
+    {
+      "path": "outer-points/0-000027.pickle",
+      "bytes": 1994,
+      "sha256": "42ff5b094dbba52381b36a5b2818ffe7144c8c9191be798a27219c4729cfee9a"
+    },
+    {
+      "path": "outer-points/0-000028.pickle",
+      "bytes": 1994,
+      "sha256": "01a4ece1f2ecb78a1442378452d948893adbb3e2c21830986f72b24cd30a5d74"
+    },
+    {
+      "path": "outer-points/0-000029.pickle",
+      "bytes": 1994,
+      "sha256": "df28d656c68791d40d922d48d742f645bfd626ab32fd95b57b6d33919148db83"
+    },
+    {
+      "path": "outer-points/0-000030.pickle",
+      "bytes": 1994,
+      "sha256": "9d830b1b3fe742f6178971fdabe915f6ed528caf5b37da696a48257c7f63557d"
+    },
+    {
+      "path": "outer-points/0-000031.pickle",
+      "bytes": 1994,
+      "sha256": "0f8897f14d0afbab07bc5ff5872390a8238da07bc5f932b8b7d4883de41152e8"
+    },
+    {
+      "path": "outer-points/0-000032.pickle",
+      "bytes": 1994,
+      "sha256": "bab42ad124d4ff2b1c056e9cfc96703c5c010d2eec7d3429ccb3cd0ded2917b5"
+    },
+    {
+      "path": "outer-points/0-000033.pickle",
+      "bytes": 1994,
+      "sha256": "b07c8d49d0ac0f1a5331fff7a6f8703a83c1690bb965215b4baf664fbe8e4a3b"
+    },
+    {
+      "path": "outer-points/0-000034.pickle",
+      "bytes": 1994,
+      "sha256": "0a4421542096d2b63890f25ed200f98a60d3265f4fb7199779b1082c5b6ad5db"
+    },
+    {
+      "path": "outer-points/0-000035.pickle",
+      "bytes": 1994,
+      "sha256": "ec4284c6214606272202c9636c832d30067b247b911cbf6c8c7210a0c9972929"
+    },
+    {
+      "path": "outer-points/0-000036.pickle",
+      "bytes": 1994,
+      "sha256": "717233b741130a46c84d3eb0e4642f9e3f991598a89597c54c1bd77fa8bcba75"
+    },
+    {
+      "path": "outer-points/0-000037.pickle",
+      "bytes": 1994,
+      "sha256": "d678cbc63f02e07972af406704a75ea2e43ef65e6d53082bd074e35672282291"
+    },
+    {
+      "path": "outer-points/0-000038.pickle",
+      "bytes": 1994,
+      "sha256": "3f0b78d3ef353a6ea2ae60ff71347d4f2e849f449fe3cbb48a28b18b1f229829"
+    },
+    {
+      "path": "outer-points/0-000039.pickle",
+      "bytes": 1994,
+      "sha256": "1de49146f68f0473d49448b78cf89197ab69797b2e63abd01d9a5ac7e817c258"
+    },
+    {
+      "path": "outer-points/0-000040.pickle",
+      "bytes": 1994,
+      "sha256": "e8c5d073b7c4bbb1539367d2965ce1d2b7cf9a4cb2b0b8889f2ff3c5f7834e30"
+    },
+    {
+      "path": "outer-points/0-000041.pickle",
+      "bytes": 1994,
+      "sha256": "55ca85dd76f74bf40df9505c2fad00866ca5748548322946e79ebdcfc3c7b610"
+    },
+    {
+      "path": "outer-points/0-000042.pickle",
+      "bytes": 1994,
+      "sha256": "80d7028dfb4732b158edbdd001e313be571b29441a82776a908b7a7ae7a79c7a"
+    },
+    {
+      "path": "outer-points/0-000043.pickle",
+      "bytes": 1994,
+      "sha256": "e47ddee7f16b2045aecce7822c417b19f6cddfa580e3f3f3dc03cff077bdca26"
+    },
+    {
+      "path": "outer-points/0-000044.pickle",
+      "bytes": 1994,
+      "sha256": "e370ac671f73e2bebd1cebbe850077c7c386f79a54bae2c3a6dd535343e8bdcd"
+    },
+    {
+      "path": "outer-points/0-000045.pickle",
+      "bytes": 1994,
+      "sha256": "55d5d414d7b2aa502a18679e80584cb8fcce678029c73200ff359fd780849080"
+    },
+    {
+      "path": "outer-points/0-000046.pickle",
+      "bytes": 1994,
+      "sha256": "c162b98f2f9ea563f06361a242b3c07e0e6cecf0c090779bb3fe3d5175032fa2"
+    },
+    {
+      "path": "outer-points/0-000047.pickle",
+      "bytes": 1994,
+      "sha256": "3911abcb3ff40ded5a221e43d5c7b03e8e09b8aabaa4f4d9c71fd3f122ecd971"
+    },
+    {
+      "path": "outer-points/0-000048.pickle",
+      "bytes": 1994,
+      "sha256": "03d1f498820d28d775123c7f12d37a7fcae3fc64c855a8b57afb24f43464aed7"
+    },
+    {
+      "path": "outer-points/0-000049.pickle",
+      "bytes": 1994,
+      "sha256": "9bd58458900c7e0630534d69e3564c7bb71b4ea2d94d162df97f56f3632f730f"
+    },
+    {
+      "path": "outer-points/0-000050.pickle",
+      "bytes": 1994,
+      "sha256": "d4dfd19eccf0cd07eaed32850e4c3c0072ce421505d550f61c4d69ee3ea1dff2"
+    },
+    {
+      "path": "outer-points/0-000051.pickle",
+      "bytes": 1994,
+      "sha256": "28de5f27ddf3afb54bfae5518f8921e93fb925bcfa698c33a450b79dbca6ec85"
+    },
+    {
+      "path": "outer-points/0-000052.pickle",
+      "bytes": 1994,
+      "sha256": "67be047659643d51eb86700ad853ebddddf631fa79cd7134e7e4e151a0281500"
+    },
+    {
+      "path": "outer-points/0-000053.pickle",
+      "bytes": 1994,
+      "sha256": "e05e99fee06b4442fb8d3088b015c1ed7ff474c555fcefce347d4c67c9cfcb2c"
+    },
+    {
+      "path": "outer-points/0-000054.pickle",
+      "bytes": 1994,
+      "sha256": "8dd0d67163f7b96d722201df4652626aed5a92c980fe31d768cf6f77a39ae152"
+    },
+    {
+      "path": "outer-points/0-000055.pickle",
+      "bytes": 1994,
+      "sha256": "1ad8d25bb9264486875cf9819c1af9c47bf6d76fb7b5a0aae2c257efd9bad9f3"
+    },
+    {
+      "path": "outer-points/0-000056.pickle",
+      "bytes": 1994,
+      "sha256": "83abc06d5ad2e211e25f616830aab4115994abc781e7054d88fda4e7ed60d424"
+    },
+    {
+      "path": "outer-points/0-000057.pickle",
+      "bytes": 1994,
+      "sha256": "cd23e858b17f4148e578c045427312e65265d9846a3f1094ff12a839169e894c"
+    },
+    {
+      "path": "outer-points/0-000058.pickle",
+      "bytes": 1994,
+      "sha256": "6e147073aac1c7f46a8f3ccb8d70495387a7f6edc6f3a2ebef63e035b9ca0384"
+    },
+    {
+      "path": "outer-points/0-000059.pickle",
+      "bytes": 1994,
+      "sha256": "8594c5efb80b7d2f92c0ca9cc0a738ea83f2d93ec1297c5f2d44b1067c8a9c47"
+    },
+    {
+      "path": "outer-points/0-000060.pickle",
+      "bytes": 1994,
+      "sha256": "8fe16b91ff46989c1459b3ce4b927807d7123461148a32f5a9c77afcd1fc766f"
+    },
+    {
+      "path": "outer-points/0-000061.pickle",
+      "bytes": 1994,
+      "sha256": "cee8dbc007b8ce0d015915df24611dd8df440d4333c0d323c7d30773f9cef170"
+    },
+    {
+      "path": "outer-points/0-000062.pickle",
+      "bytes": 1994,
+      "sha256": "43d94e37aa4f8ce8f19adb58bbccc325d349815d6fbeb8782592774f885d520e"
+    },
+    {
+      "path": "outer-points/0-000063.pickle",
+      "bytes": 1994,
+      "sha256": "210a942d3aef4c01d7e8bc5428798083200e3293ecc09dcc7901bc6814fa011b"
+    },
+    {
+      "path": "outer-points/0-000064.pickle",
+      "bytes": 1994,
+      "sha256": "cdb59a1cc89a6185d9f90f5519411cd0695ceef27404f89e051a8905fc743ccb"
+    },
+    {
+      "path": "outer-points/0-000065.pickle",
+      "bytes": 1994,
+      "sha256": "4e11789dcfac4a3d14a888ecd21707219b20307dd58ab3acd7fadaff4d8218f0"
+    },
+    {
+      "path": "outer-points/0-000066.pickle",
+      "bytes": 1994,
+      "sha256": "36bc22457b3f3d458d32fc1cbd2953fd61373f9299b9891786f785bfb7c71123"
+    },
+    {
+      "path": "outer-points/0-000067.pickle",
+      "bytes": 1994,
+      "sha256": "08a37c220aaadd27a43ed5bba28f47700174ed0091db06a97cea56eb4208889e"
+    },
+    {
+      "path": "outer-points/0-000068.pickle",
+      "bytes": 1994,
+      "sha256": "f9a73ce969c5a19ebbd587e68078c874cf5a9c87893e9bf4528f5fac0132389c"
+    },
+    {
+      "path": "outer-points/0-000069.pickle",
+      "bytes": 1994,
+      "sha256": "d9b300c1e1d18a136f07b9a87b2c874e3ef71f5d5044f99fd7537a6ad96dea47"
+    },
+    {
+      "path": "outer-points/0-000070.pickle",
+      "bytes": 1994,
+      "sha256": "ba13b5137d3a7ee0a892718568b51a5eef6f7c45c9ef0ae700595c3571783c04"
+    },
+    {
+      "path": "outer-points/0-000071.pickle",
+      "bytes": 1994,
+      "sha256": "316cd8e06d30e6fab76392b183b02c16830a4a16a6a105cba3470c5f466c4547"
+    },
+    {
+      "path": "outer-points/0-000072.pickle",
+      "bytes": 1994,
+      "sha256": "9da0037b20eb6645980164901e65ce16d376dac5133a29f88488dcb5df11b6cf"
+    },
+    {
+      "path": "outer-points/0-000073.pickle",
+      "bytes": 1994,
+      "sha256": "046341f53b78990b784a363a1da1a136b402e015b2302645bad5016cf2ea5550"
+    },
+    {
+      "path": "outer-points/0-000074.pickle",
+      "bytes": 1994,
+      "sha256": "e20b635e3539596704701ced14e92de2a1445623942dd4a42d53daf5b71f9109"
+    },
+    {
+      "path": "outer-points/0-000075.pickle",
+      "bytes": 1994,
+      "sha256": "85a2c2be7d03ed2aab93ecbb256f42ec570438699d024b66aeaebd7ee0eb2dfa"
+    },
+    {
+      "path": "outer-points/0-000076.pickle",
+      "bytes": 1994,
+      "sha256": "8cbaf76b575521822c97d83bb671b9875e6aab2bd0dc03b1fdf2baae57e44f12"
+    },
+    {
+      "path": "outer-points/0-000077.pickle",
+      "bytes": 1994,
+      "sha256": "ee056c178b84781f8fa15852724f350685b89072c9078411fcf92f1d652f6bfa"
+    },
+    {
+      "path": "outer-points/0-000078.pickle",
+      "bytes": 1994,
+      "sha256": "544fc5e2952c16fdca7d5bf3953ffd62fd5b51d7bcb45f9c712c8967c9d09183"
+    },
+    {
+      "path": "outer-points/0-000079.pickle",
+      "bytes": 1994,
+      "sha256": "0f736a816a814481cc071a8290e64d428cffdd3792f3b101b9adb6fa925ad6a0"
+    },
+    {
+      "path": "outer-points/0-000080.pickle",
+      "bytes": 1994,
+      "sha256": "827c2e3cd35332a4ba4bb70828de0ec5581395352705348a19cc7e5f3152fb94"
+    },
+    {
+      "path": "outer-points/0-000081.pickle",
+      "bytes": 1994,
+      "sha256": "19e5efa75e9abfcc79155a5c2b188f48d9523a888253bd590daa42065766453b"
+    },
+    {
+      "path": "outer-points/0-000082.pickle",
+      "bytes": 1994,
+      "sha256": "987118c51d61431a8d6ea6cecf0a75e3b0115152f369de1a8437a090b34485aa"
+    },
+    {
+      "path": "outer-points/0-000083.pickle",
+      "bytes": 1994,
+      "sha256": "5f12fa79267e9ebc171b6212a14925d3154d4233528f22e3fe1ebba68ad6148d"
+    },
+    {
+      "path": "outer-points/0-000084.pickle",
+      "bytes": 1994,
+      "sha256": "e1f02bdf10c514ef0c662002364f68148ba8c11e6c2a359e683359f78a046a02"
+    },
+    {
+      "path": "outer-points/0-000085.pickle",
+      "bytes": 1994,
+      "sha256": "9127580476637ca3c45ee265884e636997d824cb34040b257ef2b74a036c3b98"
+    },
+    {
+      "path": "outer-points/0-000086.pickle",
+      "bytes": 1994,
+      "sha256": "488c84937d634b870b9e64be59a045588b1740c74f74f4cc028f8c1448a53321"
+    },
+    {
+      "path": "outer-points/0-000087.pickle",
+      "bytes": 1994,
+      "sha256": "ab74c577a581e0c3eaa4db2e165df62bbfa2e23ce6a1743935ea5c90023a7925"
+    },
+    {
+      "path": "outer-points/0-000088.pickle",
+      "bytes": 1994,
+      "sha256": "dcd2a3092f8f33d4443b690362474f89c8051bc1007a50f1b625a8161c2d2e96"
+    },
+    {
+      "path": "outer-points/0-000089.pickle",
+      "bytes": 1994,
+      "sha256": "67fd4b93f1371bb35f4000b197d03b871fb4c94d0895f0de9a1a94652cbb5dff"
+    },
+    {
+      "path": "outer-points/0-000090.pickle",
+      "bytes": 1994,
+      "sha256": "f0b4242c0c5eaaa91cd485093ae040f88fd792f61175d0b7c9c10daebf95bc3d"
+    },
+    {
+      "path": "outer-points/0-000091.pickle",
+      "bytes": 1994,
+      "sha256": "4be9f2faf2b8e87cbfd478b617fe353c2bfccf297e91ef6dace5f7b7241a65f8"
+    },
+    {
+      "path": "outer-points/0-000092.pickle",
+      "bytes": 1994,
+      "sha256": "3bd3940ac200c7d12078bd2fe2480cc84a8833d2d20f6106cb583050bff09d71"
+    },
+    {
+      "path": "outer-points/0-000093.pickle",
+      "bytes": 1994,
+      "sha256": "518f41cbe3e2995fef84332d320ed04b169bbc8cc6fb4e323e9860c9593dbbe2"
+    },
+    {
+      "path": "outer-points/0-000094.pickle",
+      "bytes": 1994,
+      "sha256": "c79f08409d8fbc6928adfa74c474ed83f9e54e83d7d8187ad3201d8eba6f7029"
+    },
+    {
+      "path": "outer-points/0-000095.pickle",
+      "bytes": 1994,
+      "sha256": "54829647fc4208f89ecf8381729d67a80cf91d217596f5ceea619269ced458a1"
+    },
+    {
+      "path": "outer-points/0-000096.pickle",
+      "bytes": 1994,
+      "sha256": "8cc5c7650748fa3475c3f13f5953f65692d1cbc9c6563caf264aeeb007729a22"
+    },
+    {
+      "path": "outer-points/0-000097.pickle",
+      "bytes": 1994,
+      "sha256": "dadc216bc49ad39508a6bf986d4f74e4c6eb42a1c8d4d334aaf30ff4e1b3ba81"
+    },
+    {
+      "path": "outer-points/0-000098.pickle",
+      "bytes": 1994,
+      "sha256": "7a9376207ed37c6dfd89adbb630996b6c85815252eae002285b1a86e0a873469"
+    },
+    {
+      "path": "outer-points/0-000099.pickle",
+      "bytes": 1994,
+      "sha256": "47147595c729a84ffddf0fbf180ecf657487715206503095dcdc64f394df1ae4"
+    },
+    {
+      "path": "outer-points/0-000100.pickle",
+      "bytes": 1994,
+      "sha256": "e0432cc76972ac317ea5eb26b0ff55bb235412005c6fdeae89485f3cf1342a57"
+    },
+    {
+      "path": "outer-points/0-000101.pickle",
+      "bytes": 1994,
+      "sha256": "6f0451dd3258e37a67573518ef459c4ff380dc87b99a56d167c9a6c65fff49a4"
+    },
+    {
+      "path": "outer-points/0-000102.pickle",
+      "bytes": 1994,
+      "sha256": "38749bfe6e611bbc31b7f785d449443d53dfdebdc9d53ad28438b112c360dfe5"
+    },
+    {
+      "path": "outer-points/0-000103.pickle",
+      "bytes": 1994,
+      "sha256": "cfe286cf7cab90fc22bba0cc5406eae94d206c911f7258f751fca67a3e9d6e62"
+    },
+    {
+      "path": "outer-points/0-000104.pickle",
+      "bytes": 1994,
+      "sha256": "4f2bf585eb46704dfa273e7e55553f2e423fe5c6cace8af2c680e120d88ca43d"
+    },
+    {
+      "path": "outer-points/0-000105.pickle",
+      "bytes": 1994,
+      "sha256": "eae0e60f946e5ae9effbc89d5fb66d3ee5dba8bb270f37efa102ce57f92bebf7"
+    },
+    {
+      "path": "outer-points/0-000106.pickle",
+      "bytes": 1994,
+      "sha256": "e8da4f4a99cca31954288fb25dcbe56530077daa743b344f52a4894d294e50bc"
+    },
+    {
+      "path": "outer-points/0-000107.pickle",
+      "bytes": 1994,
+      "sha256": "1870531174b4463d453fa8f89b2bf3ac36a7b5f9a0d33c12150bcf55d2c09e15"
+    },
+    {
+      "path": "outer-points/0-000108.pickle",
+      "bytes": 1994,
+      "sha256": "b7a0281628618dfab2707fd92f645d408e5259530dfb92b11e6ebd462bbe31d1"
+    },
+    {
+      "path": "outer-points/0-000109.pickle",
+      "bytes": 1994,
+      "sha256": "4102e6c0b5cad4ddacf82045b31aac12301850f3b4fab3bcf9e5c4a5e9704953"
+    },
+    {
+      "path": "outer-points/0-000110.pickle",
+      "bytes": 1994,
+      "sha256": "504ca5da40f9bf689fae07a1304d4f79501c6780b10b9c53ad643072ef85646e"
+    },
+    {
+      "path": "outer-points/0-000111.pickle",
+      "bytes": 1994,
+      "sha256": "4a7a3fc420f99c113691022050c97147be78eaa2dca6a76968013f499be4b76e"
+    },
+    {
+      "path": "outer-points/0-000112.pickle",
+      "bytes": 1994,
+      "sha256": "ad603717fa400af3583d82a3d8ceb6122609cb46fb8837ef82fc41a746359ffb"
+    },
+    {
+      "path": "outer-points/0-000113.pickle",
+      "bytes": 1994,
+      "sha256": "329186fa74b858e66b2cfc9322ea6bdd995aa2dab7ef08278fc4e322036a90f6"
+    },
+    {
+      "path": "outer-points/0-000114.pickle",
+      "bytes": 1994,
+      "sha256": "56986071313d79890d45e9f80f5f6d859be33bef2369d90b2c0527b2ad2a02b1"
+    },
+    {
+      "path": "outer-points/0-000115.pickle",
+      "bytes": 1994,
+      "sha256": "30fcf0c6501b6b4d41063496ee1a6e195f92eb2a2053d71e793ef78268357a39"
+    },
+    {
+      "path": "outer-points/0-000116.pickle",
+      "bytes": 1994,
+      "sha256": "cc456f60cb29895a0f59019ad113963e74be8a79dd303aebfe913e78c00de0fa"
+    },
+    {
+      "path": "outer-points/0-000117.pickle",
+      "bytes": 1994,
+      "sha256": "ce88c3d4705115ec500f7d7c1e96e69ff1ae4bdfb8a97ac0a8c811237038d73b"
+    },
+    {
+      "path": "outer-points/0-000118.pickle",
+      "bytes": 1994,
+      "sha256": "c6296a42576026e99b3ef19ae1451cdf0bb76e5617b4f401d97ec1e626516da1"
+    },
+    {
+      "path": "outer-points/0-000119.pickle",
+      "bytes": 1994,
+      "sha256": "838f413b4906019ca142a8a5fc626823c0effeb83c0a9a2d8e0f4f8162502e50"
+    },
+    {
+      "path": "outer-points/0-000120.pickle",
+      "bytes": 1994,
+      "sha256": "d6b1dd5d4f801d9a0018a9fb2a638bcf061a13ac5cef34d864649b09aa2989b6"
+    },
+    {
+      "path": "outer-points/0-000121.pickle",
+      "bytes": 1994,
+      "sha256": "8f4fdf504f5cf570e74b11e1818d2c8733ea5fb13006d1fc294b74b8a6daeeb7"
+    },
+    {
+      "path": "outer-points/0-000122.pickle",
+      "bytes": 1994,
+      "sha256": "85c591734542c4fbd945e0aa3a32805ead7b39fbb6993fc9f774a4ab7d184325"
+    },
+    {
+      "path": "outer-points/0-000123.pickle",
+      "bytes": 1994,
+      "sha256": "64389250ac18b334c4140bdf18a4fd601f5c16b184bc944233943888265f6244"
+    },
+    {
+      "path": "outer-points/0-000124.pickle",
+      "bytes": 1994,
+      "sha256": "24969699710f937e6a89521200a653824ab550e27451077fa804f0a448134b40"
+    },
+    {
+      "path": "outer-points/0-000125.pickle",
+      "bytes": 1994,
+      "sha256": "f698cb8b83210fe7e0c12971e72869c7be837223208818d37ca6078c0a03c9fe"
+    },
+    {
+      "path": "outer-points/0-000126.pickle",
+      "bytes": 1994,
+      "sha256": "13e784e0b5bcd17183f4121ce90ae41fdf170453c5027868e2f6c85b0d367329"
+    },
+    {
+      "path": "outer-points/0-000127.pickle",
+      "bytes": 1994,
+      "sha256": "cdba296d930df9a35eb338dd72f7e3eb519c060b91263dc03d9e8a91be6ba0d9"
+    },
+    {
+      "path": "outer-points/0-000128.pickle",
+      "bytes": 1994,
+      "sha256": "f3dcd5dda7389265566cea67b2edf4851befefc7fa4a81eeaf1bdbc712af2e89"
+    },
+    {
+      "path": "outer-points/0-000129.pickle",
+      "bytes": 1994,
+      "sha256": "f14d23303702a538079797c4c9af35bc7c49a5a8f1c773915f190c239332a22c"
+    },
+    {
+      "path": "outer-points/0-000130.pickle",
+      "bytes": 1994,
+      "sha256": "0c2a5bdfb233e0e2eb2e3f42e35941feda6664df12ed52a12b2f7d7fa60a34b4"
+    },
+    {
+      "path": "outer-points/0-000131.pickle",
+      "bytes": 1994,
+      "sha256": "f56b0a1ecc71deef879143566cbaec23cae696f1ddff8b33d37b08ef62e9f90a"
+    },
+    {
+      "path": "outer-points/0-000132.pickle",
+      "bytes": 1994,
+      "sha256": "7cf5cd8ee1b6ef8f2268f504f7af0f610e84a69f5d9f9a2b72c08a151c832c22"
+    },
+    {
+      "path": "outer-points/0-000133.pickle",
+      "bytes": 1994,
+      "sha256": "8e6d36b2de0f01a2b777276cad773832987d53ec09a0176175cb9a4341dc5295"
+    },
+    {
+      "path": "outer-points/0-000134.pickle",
+      "bytes": 1994,
+      "sha256": "352687ef8f7091ec4ffcf4b2470401bf41369dccfec3f80c6679dd39e1bcfdac"
+    },
+    {
+      "path": "outer-points/0-000135.pickle",
+      "bytes": 1994,
+      "sha256": "94ccfbda89e47090c9403097935cf6c73260f94f77bd48e8be54867a3404870c"
+    },
+    {
+      "path": "outer-points/0-000136.pickle",
+      "bytes": 1994,
+      "sha256": "b2c266607a55a29b00d35effcebd2531e4eb55ade52a02e58c158ef4c82bc06d"
+    },
+    {
+      "path": "outer-points/0-000137.pickle",
+      "bytes": 1994,
+      "sha256": "d03baed099db67c8000d99698381ab499d28e486616423af5d1ba2536e151b8c"
+    },
+    {
+      "path": "outer-points/0-000138.pickle",
+      "bytes": 1994,
+      "sha256": "d015d08be368e9bfb0b0da4176376b586185a47cf16d68ef207a3313e5ab17d7"
+    },
+    {
+      "path": "outer-points/0-000139.pickle",
+      "bytes": 1994,
+      "sha256": "e9c1cecaa64909bf5aced1b90385c36d022d5e4adb1242fe3ff817128873e503"
+    },
+    {
+      "path": "outer-points/0-000140.pickle",
+      "bytes": 1994,
+      "sha256": "4a7d309ef3f488590080b6244e99efadc6bb5ab82f9274eb42d4df9789c15264"
+    },
+    {
+      "path": "outer-points/0-000141.pickle",
+      "bytes": 1994,
+      "sha256": "41d9a05ba1bd37a2fea3040934ceae98ff87e69a1520e978692ce2ac1ee18a73"
+    },
+    {
+      "path": "outer-points/0-000142.pickle",
+      "bytes": 1994,
+      "sha256": "603a0169e5ad1a7e3b46a1e669f5b9f3d0ebe78abbff9fc34c30bd302da6e10a"
+    },
+    {
+      "path": "outer-points/0-000143.pickle",
+      "bytes": 1994,
+      "sha256": "a073a52d953cb39b0b688494dbfff7177b36466e311d277dd8db08f656ad4698"
+    },
+    {
+      "path": "outer-points/0-000144.pickle",
+      "bytes": 1994,
+      "sha256": "5e1b5cb30d8eaaa2eff727392fac3b9fe8aa442a9d73428ee9f6e9ac58a72065"
+    },
+    {
+      "path": "outer-points/0-000145.pickle",
+      "bytes": 1994,
+      "sha256": "a3d2f1b56ce3105180315392842ee078257f6762e41fd8f65feb6525ea075dac"
+    },
+    {
+      "path": "outer-points/0-000146.pickle",
+      "bytes": 1994,
+      "sha256": "001821ea67c86e33850bffbfc6901b5f4d5843c740b742f0900de059e5a074bb"
+    },
+    {
+      "path": "outer-points/0-000147.pickle",
+      "bytes": 1994,
+      "sha256": "f2e96d657312a65007d94f7d7bbe2ee3895307dbd55c273f9c322466832c3561"
+    },
+    {
+      "path": "outer-points/0-000148.pickle",
+      "bytes": 1994,
+      "sha256": "05c149c51d5bc497f6b4eb01d151a4dbbed9676b4722a0b36b3d9690113c15b7"
+    },
+    {
+      "path": "outer-points/0-000149.pickle",
+      "bytes": 1994,
+      "sha256": "ca4c6b5abcec528bd1cba8b8bc6160cc72cc3a588645bf9c77d4a68f9cfa2313"
+    },
+    {
+      "path": "outer-points/0-000150.pickle",
+      "bytes": 1994,
+      "sha256": "9abb7f484dd2aa621849446761161abc7d20576b6b15eccfde67586865d3170f"
+    },
+    {
+      "path": "outer-points/0-000151.pickle",
+      "bytes": 1994,
+      "sha256": "ec39ef103bfed928025d96e9461b5c1805dd58c826da68bd52d3c84e9050b5d9"
+    },
+    {
+      "path": "outer-points/0-000152.pickle",
+      "bytes": 1994,
+      "sha256": "f8d94d13993b1c6f04ea4a446be90b0fedc46fb252a367b507a1c704e1625d71"
+    },
+    {
+      "path": "outer-points/0-000153.pickle",
+      "bytes": 1994,
+      "sha256": "0341f82ce1e9f5318cc1b024195cf265712e784a59aa648865b365e07b274385"
+    },
+    {
+      "path": "outer-points/0-000154.pickle",
+      "bytes": 1994,
+      "sha256": "70d3b4ecb7802b701fcaa81ddfc8718a7223d979eccfae516395ebfbd16a6e8d"
+    },
+    {
+      "path": "outer-points/0-000155.pickle",
+      "bytes": 1994,
+      "sha256": "5a97fc22a5d687c9d8df5a59bc3780020ea0717fb3ff0539b486a99704b18fe3"
+    },
+    {
+      "path": "outer-points/0-000156.pickle",
+      "bytes": 1994,
+      "sha256": "dd0d0f96ecee2d12a168d730fe4d0d82700ccfab86212360290e8f50914b1367"
+    },
+    {
+      "path": "outer-points/0-000157.pickle",
+      "bytes": 1994,
+      "sha256": "3e258670cded24b18818e2896a812b4a08eb4bd95caeffc3295981a435e0a7b0"
+    },
+    {
+      "path": "outer-points/0-000158.pickle",
+      "bytes": 1994,
+      "sha256": "99234d1608f71fbbda064aff2c6b7a4adf3a35888ef97b547693d46e93b672cf"
+    },
+    {
+      "path": "outer-points/0-000159.pickle",
+      "bytes": 1994,
+      "sha256": "47f9c8b0d065688804ae30ee0c6a8438254d9584a4ce4f66ba0f99b5bc377e3f"
+    },
+    {
+      "path": "outer-points/0-000160.pickle",
+      "bytes": 1994,
+      "sha256": "581ed9da99840c779abbf6c7e14725e67f13f7bab0da9673932390e0c2c46afb"
+    },
+    {
+      "path": "outer-points/0-000161.pickle",
+      "bytes": 1994,
+      "sha256": "24fa7cf73ef185400b0a5e2567fd0ba6fae91e17dfc5cb261fa104950013727a"
+    },
+    {
+      "path": "outer-points/0-000162.pickle",
+      "bytes": 1994,
+      "sha256": "c103636d6b1f4bf97f8088f2e4feb4cbc78cb243ada8cbfed58df7c9c61fcfcc"
+    },
+    {
+      "path": "outer-points/0-000163.pickle",
+      "bytes": 1994,
+      "sha256": "9e43f76a5f00514a5a8849adf2bdf11cca5d2c0e2bb5554aff7ffd69ddae075c"
+    },
+    {
+      "path": "outer-points/0-000164.pickle",
+      "bytes": 1994,
+      "sha256": "2201df07eefb6e756b2fc7b63638fb44387fea403a73a8460657b95bb1c3b75e"
+    },
+    {
+      "path": "outer-points/0-000165.pickle",
+      "bytes": 1994,
+      "sha256": "696e862194967550c247d78e559f90293e569879c9cb2901cf2f7fc9dffaff83"
+    },
+    {
+      "path": "outer-points/0-000166.pickle",
+      "bytes": 1994,
+      "sha256": "b412bd3f002a88ffd4e30e73f4f016d1c3565c6b88eccd3950e9a16426639edf"
+    },
+    {
+      "path": "outer-points/0-000167.pickle",
+      "bytes": 1994,
+      "sha256": "168e537f5620ea9c4b9db7b130c29e1156c882ece2cee908e1ca533d0177bc61"
+    },
+    {
+      "path": "outer-points/0-000168.pickle",
+      "bytes": 1994,
+      "sha256": "9e4bddb3787caaa94285beba48fb8805aef0200a70989dfaebf0e26dbf60c847"
+    },
+    {
+      "path": "outer-points/0-000169.pickle",
+      "bytes": 1994,
+      "sha256": "7152577e518ab164108d42da41f3a5c5d78abc28f4993a044eb0b5f71a8d5d55"
+    },
+    {
+      "path": "outer-points/0-000170.pickle",
+      "bytes": 1994,
+      "sha256": "37bb9f75f89f5a07d80e3229b88fb7cbddf0e6b18704caa8ed9559002e0a7bf8"
+    },
+    {
+      "path": "outer-points/0-000171.pickle",
+      "bytes": 1994,
+      "sha256": "60b6fc4f5ca743de87452150df0b42fe5e2bc477bd097f47be9edb1c51966f99"
+    },
+    {
+      "path": "outer-points/0-000172.pickle",
+      "bytes": 1994,
+      "sha256": "0b00d9faf86b20911f9501ffbc58ae9b6d8eb83cce1a773a80095dfdf4f912a0"
+    },
+    {
+      "path": "outer-points/0-000173.pickle",
+      "bytes": 1994,
+      "sha256": "e8d21c92678d75038cb7338be14b86862bd37d301aaf02580dae605a65f105a0"
+    },
+    {
+      "path": "outer-points/0-000174.pickle",
+      "bytes": 1994,
+      "sha256": "d1d0a572a901b6be9fae0f073b840683fd681df3f7851fa32aeb225d61ac26d6"
+    },
+    {
+      "path": "outer-points/0-000175.pickle",
+      "bytes": 1994,
+      "sha256": "b5f4ba9b06c1094501b4e129e3da4fcfdd034c5cfa8e00a2113756225e607ce2"
+    },
+    {
+      "path": "outer-points/0-000176.pickle",
+      "bytes": 1994,
+      "sha256": "7bad34ccd7d74f85693f53848c900ecc09b55533d6620c2a35d96ab7e65820c0"
+    },
+    {
+      "path": "outer-points/0-000177.pickle",
+      "bytes": 1994,
+      "sha256": "00f4a2b9ba2efa061976d2805729ca92fa396df30c00cc129add40b1287673f4"
+    },
+    {
+      "path": "outer-points/0-000178.pickle",
+      "bytes": 1994,
+      "sha256": "2628843eb238eb8ce87b7d4c5671f60254b5d5ed2eb51f2a8da736086cf85a8a"
+    },
+    {
+      "path": "outer-points/0-000179.pickle",
+      "bytes": 1994,
+      "sha256": "69759c6f8db58a2ad50a4d6425275e06230470bfb0dc41f9a034890bd68fb106"
+    },
+    {
+      "path": "outer-points/0-000180.pickle",
+      "bytes": 1994,
+      "sha256": "e5a51fce1d2a8d625d67c2d20dec0fbe8c3bb5169c033ff279a44cc73f14ce7c"
+    },
+    {
+      "path": "outer-points/0-000181.pickle",
+      "bytes": 1994,
+      "sha256": "4dab796cb75fdafd3ca9935bb098ba3d9a848320aa13c169c0e895b82f319ced"
+    },
+    {
+      "path": "outer-points/0-000182.pickle",
+      "bytes": 1994,
+      "sha256": "10c151c3dabb82026c4daa79d1c6c065dab49f057a27191ebdd6cf9f283a1a4e"
+    },
+    {
+      "path": "outer-points/0-000183.pickle",
+      "bytes": 1994,
+      "sha256": "48a27b740fecf6f9c9db15a4b1b108735a5c0a06af6b24bc41f330e79b812a29"
+    },
+    {
+      "path": "outer-points/0-000184.pickle",
+      "bytes": 1994,
+      "sha256": "97580771d844f9037c2bfde66541f8d50827ef8eef99379306961cd78c81e6ec"
+    },
+    {
+      "path": "outer-points/0-000185.pickle",
+      "bytes": 1994,
+      "sha256": "7cb5ec9f9a8545494aebf757c4da83f6ba837fffa9101dee9e3fdea44d69646f"
+    },
+    {
+      "path": "outer-points/0-000186.pickle",
+      "bytes": 1994,
+      "sha256": "024096c70bc05c937530569ffedb5f76d97eccc4de3836400347766de8fcc8ca"
+    },
+    {
+      "path": "outer-points/0-000187.pickle",
+      "bytes": 1994,
+      "sha256": "6a84f90eefe707cf265137d589b507d39303cb0c12fd604b8025ae70123408f1"
+    },
+    {
+      "path": "outer-points/0-000188.pickle",
+      "bytes": 1994,
+      "sha256": "f45c355eef9d1b12d1ec9fa59e6e29adf0597f620a8e059590a620323ad6a388"
+    },
+    {
+      "path": "outer-points/0-000189.pickle",
+      "bytes": 1994,
+      "sha256": "bbe91154610f93be5a8e60c20a5f0619724a91527f174b838bd5cd9d042b0320"
+    },
+    {
+      "path": "outer-points/0-000190.pickle",
+      "bytes": 1994,
+      "sha256": "a24e13ec83cadccd392038de1af301603ca3db25dca1172b232b428436824c65"
+    },
+    {
+      "path": "outer-points/0-000191.pickle",
+      "bytes": 1994,
+      "sha256": "d10164a0f2f433d543d6b887013e3645223f3b22989febcf61f866285c8ee4cc"
+    },
+    {
+      "path": "outer-points/0-000192.pickle",
+      "bytes": 1994,
+      "sha256": "4f1c85e71a72ce0af173efb41aacc3d3a27fd91ff818d73a8d951501f08e1af6"
+    },
+    {
+      "path": "outer-points/0-000193.pickle",
+      "bytes": 1994,
+      "sha256": "a4fa355822a622319954feac79af078ecf55de2dd1e074a8747b86cb6d1591c1"
+    },
+    {
+      "path": "outer-points/0-000194.pickle",
+      "bytes": 1994,
+      "sha256": "12d31f1be2e9c2c6c4edde8fad52f17d4a8736a60e64e7e8bd0b4c4e387f4d01"
+    },
+    {
+      "path": "outer-points/0-000195.pickle",
+      "bytes": 1994,
+      "sha256": "74643e9d5c6be101c368e34254d6451b03df733e05f12d0e1b6192f8326a9524"
+    },
+    {
+      "path": "outer-points/0-000196.pickle",
+      "bytes": 1994,
+      "sha256": "fcec63d9e33ba001f0e937c1a36c73c6f48b59720ee4e174c62e5f823f7568ec"
+    },
+    {
+      "path": "outer-points/0-000197.pickle",
+      "bytes": 1994,
+      "sha256": "9f24a148abc6f6cba7a1d8f355c73b3caaa1440f79c6dcadbc448d5b10e35f9a"
+    },
+    {
+      "path": "outer-points/0-000198.pickle",
+      "bytes": 1994,
+      "sha256": "92851339bfdc35222855385621dd9b974cf707ac1e89e5b6fa09987722a93d82"
+    },
+    {
+      "path": "outer-points/0-000199.pickle",
+      "bytes": 1994,
+      "sha256": "117fb6f2a6a011109478d17f66f36d5d17e885e88334e9f90ad53b8e7d3e38bb"
+    },
+    {
+      "path": "outer-points/0-000200.pickle",
+      "bytes": 1994,
+      "sha256": "f4b85202fed2d1c0f55e0c329a13a2e08edb1cc6f33ab1436743be1f26163406"
+    },
+    {
+      "path": "outer-points/0-000201.pickle",
+      "bytes": 1994,
+      "sha256": "7d078144ed5283cffc21fb52f84c3e03d09257c8faf8c936c18100a6b14755a9"
+    },
+    {
+      "path": "outer-points/0-000202.pickle",
+      "bytes": 1994,
+      "sha256": "0560b17ab7d8f7b5984702fc279bd7f059d7112f3dea9b6d195e7394f4d4d9bc"
+    },
+    {
+      "path": "outer-points/0-000203.pickle",
+      "bytes": 1994,
+      "sha256": "47e0e931103737636f4cbf74a5ec6968070e962bc2d07174e919419542bb2fab"
+    },
+    {
+      "path": "outer-points/0-000204.pickle",
+      "bytes": 1994,
+      "sha256": "16a260ab8da2874603534743425d6749561497dd7b4c120bd8b5dca52148000f"
+    },
+    {
+      "path": "outer-points/0-000205.pickle",
+      "bytes": 1994,
+      "sha256": "69cc89f4a6174175ea27617f7f88bee876755d077debd698ea8580e2e6647f97"
+    },
+    {
+      "path": "outer-points/0-000206.pickle",
+      "bytes": 1994,
+      "sha256": "7677e0a57d858d4a2b4a2977cebe6321a9abfc449d9a7a9ef2b722557926f441"
+    },
+    {
+      "path": "outer-points/0-000207.pickle",
+      "bytes": 1994,
+      "sha256": "c374c0f72f742c8d550284018cb04e58ac9575e39211611829b9948834273de4"
+    },
+    {
+      "path": "outer-points/0-000208.pickle",
+      "bytes": 1994,
+      "sha256": "1b54bb1a2fe67d91bf21133fd53815cc7318468e3ec6a0cb38b8eea2428bfe8a"
+    },
+    {
+      "path": "outer-points/0-000209.pickle",
+      "bytes": 1994,
+      "sha256": "84a2e922aa6308ed11e02dc0823d2d95a5008c86e207ec851ec27237ebe180f7"
+    },
+    {
+      "path": "outer-points/0-000210.pickle",
+      "bytes": 1994,
+      "sha256": "57a78515b7714b50e6f9d8428547058148fce65cf881bf5714731151f2eebebb"
+    },
+    {
+      "path": "outer-points/0-000211.pickle",
+      "bytes": 1994,
+      "sha256": "b81b58b83547c3d723ad0f0bf2a1fe747d1d73764cb005032fffe391c168b250"
+    },
+    {
+      "path": "outer-points/0-000212.pickle",
+      "bytes": 1994,
+      "sha256": "e2d476d6ce2ea7bad7956fb1796ac4a6359ac2ae08ac4507246401de1375b551"
+    },
+    {
+      "path": "outer-points/0-000213.pickle",
+      "bytes": 1994,
+      "sha256": "517327dd1230f2e5eae753646291650ffaab2e484998422f133c441b83133daa"
+    },
+    {
+      "path": "outer-points/0-000214.pickle",
+      "bytes": 1994,
+      "sha256": "cdf6073bc58dcc1ddc2bf4cb8e14989cf42d524a8cb156774c2c1893536112b8"
+    },
+    {
+      "path": "outer-points/0-000215.pickle",
+      "bytes": 1994,
+      "sha256": "3b99172df11ebad0947102d6e1dd433699abdd9cb36d889c76c06597afcd1e9e"
+    },
+    {
+      "path": "outer-points/0-000216.pickle",
+      "bytes": 1994,
+      "sha256": "6bdd03f7df720aff30b1f6733f8c05805daded911ac10655f0f50125e11bd1ac"
+    },
+    {
+      "path": "outer-points/0-000217.pickle",
+      "bytes": 1994,
+      "sha256": "77618278ba14108b6794195acc7e537537b77ad68c5979a25d0b252e8d78e37e"
+    },
+    {
+      "path": "outer-points/0-000218.pickle",
+      "bytes": 1994,
+      "sha256": "50587504f213b0d503efe91a7226d4889266264e2877067624bf79baa6b9a469"
+    },
+    {
+      "path": "outer-points/0-000219.pickle",
+      "bytes": 1994,
+      "sha256": "2fdabe1f189e8043608b5096ed6296ad21de409fd6a28ed64520769a475c116b"
+    },
+    {
+      "path": "outer-points/0-000220.pickle",
+      "bytes": 1994,
+      "sha256": "8b0a311903b332318aa2352cdabf29b301ad00843f3cfe7f9a81b0df4d202a23"
+    },
+    {
+      "path": "outer-points/0-000221.pickle",
+      "bytes": 1994,
+      "sha256": "5c5f3c1781b70204e5378d07e679a4293cc98ddc974af7d8dfe57743f405fa9a"
+    },
+    {
+      "path": "outer-points/0-000222.pickle",
+      "bytes": 1994,
+      "sha256": "d7d0067f47b755f7722b3af4755b48f6a68cd5a2b29379694d28f1a66d3e8afe"
+    },
+    {
+      "path": "outer-points/0-000223.pickle",
+      "bytes": 1994,
+      "sha256": "7f35ed26143249e91d455fee2267aacd1c6063b6831d6d7c97fe169336aefdbe"
+    },
+    {
+      "path": "outer-points/0-000224.pickle",
+      "bytes": 1994,
+      "sha256": "d3aa92e7be55d5fdaee77941181ba56f6853c4b1143325c2ad56896f977bd7cc"
+    },
+    {
+      "path": "outer-points/0-000225.pickle",
+      "bytes": 1994,
+      "sha256": "c1405b2945bccb14fa2acc3d0d36dea5bc17658ffe08a00786789e848c65774b"
+    },
+    {
+      "path": "outer-points/0-000226.pickle",
+      "bytes": 1994,
+      "sha256": "67ebf0235d708aa6bf581cb514886fa02ce197c246331b3640d816755e046a74"
+    },
+    {
+      "path": "outer-points/0-000227.pickle",
+      "bytes": 1994,
+      "sha256": "cb0311f93cac236a22b80163a1e56e3f8a55cb4980963722ecbf33b5fd7fa362"
+    },
+    {
+      "path": "outer-points/0-000228.pickle",
+      "bytes": 1994,
+      "sha256": "dafca21438a4744dc1960292338ff11fe2c943719a1defae7fe94fd5622ba42a"
+    },
+    {
+      "path": "outer-points/0-000229.pickle",
+      "bytes": 1994,
+      "sha256": "dd456d02de81643efa0667d67f6e214b6cdda8462629c2f94ea1aa11a1c8e99b"
+    },
+    {
+      "path": "outer-points/0-000230.pickle",
+      "bytes": 1994,
+      "sha256": "5944ef0b596add8b520b32d727342db28fd054b4e098e9bb52d0ca2c03506214"
+    },
+    {
+      "path": "outer-points/0-000231.pickle",
+      "bytes": 1994,
+      "sha256": "ca46eca3474fc958c0266c3e1b8e93dcbae92f0bd89bb27c4f16057f1c1ed10f"
+    },
+    {
+      "path": "outer-points/0-000232.pickle",
+      "bytes": 1994,
+      "sha256": "be13a71b5a4a66ad8b5a92d430de8314b4f79e06cef98469d5c8be8e4272c2d2"
+    },
+    {
+      "path": "outer-points/0-000233.pickle",
+      "bytes": 1994,
+      "sha256": "b5918d5347a24f9f16b6e6f334ae198f58f7c09d8af561293fadfaa3e570f848"
+    },
+    {
+      "path": "outer-points/0-000234.pickle",
+      "bytes": 1994,
+      "sha256": "a7f03135e1759b7a0bcf7415444a0520f7e9a82b1e3fefea8001c4a5f93daf58"
+    },
+    {
+      "path": "outer-points/0-000235.pickle",
+      "bytes": 1994,
+      "sha256": "8140e645706e10f07a1259306947c85d2dc113ec407f2351b008632b60721e0d"
+    },
+    {
+      "path": "outer-points/0-000236.pickle",
+      "bytes": 1994,
+      "sha256": "36303db45655cd902b59207fa8db9c65c3282f9120bb32d36cac97733fa9d134"
+    },
+    {
+      "path": "outer-points/0-000237.pickle",
+      "bytes": 1994,
+      "sha256": "1bf9ae2cf6172cdf7cf3d65bab1f23a4969365a8810705909f71764378c2f1c5"
+    },
+    {
+      "path": "outer-points/0-000238.pickle",
+      "bytes": 1994,
+      "sha256": "a67e37e3b0786c0f62d29ae48accee18377867a7268d06deac27b6909bd1c021"
+    },
+    {
+      "path": "outer-points/0-000239.pickle",
+      "bytes": 1994,
+      "sha256": "76146b6bc1c2aeacc2441906b35e53692233534af9a24ce62933ccc0b51ad3df"
+    },
+    {
+      "path": "outer-points/0-000240.pickle",
+      "bytes": 1994,
+      "sha256": "1f8d6631dc78d8e986a9ed25c6ace8fb6bce8d5411451ed7ecaf13219ffcbed7"
+    },
+    {
+      "path": "outer-points/0-000241.pickle",
+      "bytes": 1994,
+      "sha256": "da56f0a5ead2955bfee682755abce27fda9229c8776b86c501a3bc8f3276e538"
+    },
+    {
+      "path": "outer-points/0-000242.pickle",
+      "bytes": 1994,
+      "sha256": "e94565b9f426b1ca1adc2e92aab1f5c4a79025e5c16532b6be9bc9193ebc5226"
+    },
+    {
+      "path": "outer-points/0-000243.pickle",
+      "bytes": 1994,
+      "sha256": "7705bb005891c1aff6932e14c2488da37072100a391bf357dcbcc799bb150ca6"
+    },
+    {
+      "path": "outer-points/0-000244.pickle",
+      "bytes": 1994,
+      "sha256": "56b2069ed1e347f915791219211c62b13359b18e212da855fe8ac325ab307f3d"
+    },
+    {
+      "path": "outer-points/0-000245.pickle",
+      "bytes": 1994,
+      "sha256": "f333142c47526220bc98e92d3e2a660234f0b8543ba484244a640cb6f282d36f"
+    },
+    {
+      "path": "outer-points/0-000246.pickle",
+      "bytes": 1994,
+      "sha256": "da323c2eb42507a5793c38ce25cd2afa365dc443c897e00d7c41155d89f97201"
+    },
+    {
+      "path": "outer-points/0-000247.pickle",
+      "bytes": 1994,
+      "sha256": "7a8d604c9fc23c17941504d31f65c9600c8d5f480a69ae46952dc46cb460cde1"
+    },
+    {
+      "path": "outer-points/0-000248.pickle",
+      "bytes": 1994,
+      "sha256": "85b43bc6f55831fb264b178997ff46177c7ed882c09e42e2e6c0cb394413f783"
+    },
+    {
+      "path": "outer-points/0-000249.pickle",
+      "bytes": 1994,
+      "sha256": "4e9fd60b9898ab45826dbd4cdd88d826295c61fd7332c62d9f6907f25fd1de83"
+    },
+    {
+      "path": "outer-points/0-000250.pickle",
+      "bytes": 1994,
+      "sha256": "37086590b36d52d12526de5a1a99b4c13bfea7bd6aa5e33062b0980b734db776"
+    },
+    {
+      "path": "outer-points/0-000251.pickle",
+      "bytes": 1994,
+      "sha256": "04e5ca2d8bb1afec2abf073c2c31f4d5144ebb1df1d14abae23fec1105e3954a"
+    },
+    {
+      "path": "outer-points/0-000252.pickle",
+      "bytes": 1994,
+      "sha256": "c66ea56eb6a57ec6e4739c66d3a61fdde197e2b51381bbc982267797c57185a9"
+    },
+    {
+      "path": "outer-points/0-000253.pickle",
+      "bytes": 1994,
+      "sha256": "36d78e300606a74f8f2b770ab1a98bd690c634cde7fbdec2115042ba4aadc6dc"
+    },
+    {
+      "path": "outer-points/0-000254.pickle",
+      "bytes": 1994,
+      "sha256": "f657002dcefd7e039dacf60a4655427e196abd3f5e919349485e397fd8c902b3"
+    },
+    {
+      "path": "outer-points/0-000255.pickle",
+      "bytes": 1994,
+      "sha256": "06e9af2cfafc5f2ed563815f95bd89611d0f37a6ce077edcf46d98de86240ee7"
+    },
+    {
+      "path": "outer-points/0-000256.pickle",
+      "bytes": 1994,
+      "sha256": "235845339dde9a4c9146d879915dc0c43e45b1bb44030398cc3154527305c090"
+    },
+    {
+      "path": "outer-points/0-000257.pickle",
+      "bytes": 1994,
+      "sha256": "13311029e7fd13d8e8e405be66759cccecd4fddcfe8a5b1208d63d923c95a3b6"
+    },
+    {
+      "path": "outer-points/0-000258.pickle",
+      "bytes": 1994,
+      "sha256": "f86c62babad70c34d66812f54b29a9a6cf44cfe8c2db0488f3a4174fe47c7f1c"
+    },
+    {
+      "path": "outer-points/0-000259.pickle",
+      "bytes": 1994,
+      "sha256": "b9ff326dae5078ec13f493e2e7d9529c7c29e6a1f859bbcadd08a23269803f29"
+    },
+    {
+      "path": "outer-points/0-000260.pickle",
+      "bytes": 1994,
+      "sha256": "a608a803ed154fc51289329dd0e1e3968ddf58f13d3190b12d57301a79147fd6"
+    },
+    {
+      "path": "outer-points/0-000261.pickle",
+      "bytes": 1994,
+      "sha256": "b2e57f3efaefb48510ec6961176940c3cc1dc220b5de87d0315435c21cf0a30a"
+    },
+    {
+      "path": "outer-points/0-000262.pickle",
+      "bytes": 1994,
+      "sha256": "bb1184182392bf08d466ca8e73d9717acd1c197753dc9e560710034f60071d8a"
+    },
+    {
+      "path": "outer-points/0-000263.pickle",
+      "bytes": 1994,
+      "sha256": "f9ed7d59850ceb53fcee334aeab71c0df6b7fd970922d3b907b686cc4fa47f08"
+    },
+    {
+      "path": "outer-points/0-000264.pickle",
+      "bytes": 1994,
+      "sha256": "01d09752d159ee90888d28e1b18d802ea0b7b9659ec9e1dccdff765254fbb020"
+    },
+    {
+      "path": "outer-points/0-000265.pickle",
+      "bytes": 1994,
+      "sha256": "d71117e838b329796ec955d53220e69e802ccf8e679d19fde06c8c99ad7ed3bf"
+    },
+    {
+      "path": "outer-points/0-000266.pickle",
+      "bytes": 1994,
+      "sha256": "1720243e645319ec42f072a8b18e48f9375d982e74b55f758281a9feb733b960"
+    },
+    {
+      "path": "outer-points/0-000267.pickle",
+      "bytes": 1994,
+      "sha256": "f66ba4d70ec0ea8caa25893bc5ebc6d507d8dd05d8b99d36b548275aa20a6902"
+    },
+    {
+      "path": "outer-points/0-000268.pickle",
+      "bytes": 1994,
+      "sha256": "1df3ce9988f4e096204bb384fe066b5b7af6dfb159ea3b2366145d95cfe39fce"
+    },
+    {
+      "path": "outer-points/0-000269.pickle",
+      "bytes": 1994,
+      "sha256": "de64a5e2e0bae984ad2f031b81acfa443b22415c42728f079cb85af94048b48e"
+    },
+    {
+      "path": "outer-points/0-000270.pickle",
+      "bytes": 1994,
+      "sha256": "0df86a0044bd482f773697b98057bc41687e1eb839017856d75142b2973702ae"
+    },
+    {
+      "path": "outer-points/0-000271.pickle",
+      "bytes": 1994,
+      "sha256": "d927142b95cdc2ea7127aa51dbd3f0b56de1462ecf9030fabdcb0de1261670a3"
+    },
+    {
+      "path": "outer-points/0-000272.pickle",
+      "bytes": 1994,
+      "sha256": "43d141772da01a8e4234476b5ff5905317fce007151e909c736d9d44ee3ceeae"
+    },
+    {
+      "path": "outer-points/0-000273.pickle",
+      "bytes": 1994,
+      "sha256": "a6d13ea838c9d19cd837c3b3fef600a6d87a9c665806a069303239058bd0d9a8"
+    },
+    {
+      "path": "outer-points/0-000274.pickle",
+      "bytes": 1994,
+      "sha256": "a32d422b4cdc2c8550dfe06d96d34ef707ebf46ac45a71a8b20433ca769f7c18"
+    },
+    {
+      "path": "outer-points/0-000275.pickle",
+      "bytes": 1994,
+      "sha256": "9524154100347d9a23fb190b867994f9f8ffa5debdf67a666965d851b895db85"
+    },
+    {
+      "path": "outer-points/0-000276.pickle",
+      "bytes": 1994,
+      "sha256": "78c0c97684adce54f2ec8525f74cba59c02f3b7a0a454932d8549cecd5e3c772"
+    },
+    {
+      "path": "outer-points/0-000277.pickle",
+      "bytes": 1994,
+      "sha256": "276aeb0e155c82a2f97fa6b59413c42cde794596f8ebdcb4f0a97523197e2ce7"
+    },
+    {
+      "path": "outer-points/0-000278.pickle",
+      "bytes": 1994,
+      "sha256": "2ba9e9d1e58ce960d68e52eeb55f48defe7a696a73b24fa82f7f8118549a1e89"
+    },
+    {
+      "path": "outer-points/0-000279.pickle",
+      "bytes": 1994,
+      "sha256": "d3aff20b04296fa3a02660ac06bfb1f1b7f631f7ccbb07facd31cf0d7cd7646c"
+    },
+    {
+      "path": "outer-points/0-000280.pickle",
+      "bytes": 1994,
+      "sha256": "1c10b4d8d08a1b5eea55435cb73ab6d5649ddc8312b8ea47efaeae31e7418b2c"
+    },
+    {
+      "path": "outer-points/0-000281.pickle",
+      "bytes": 1994,
+      "sha256": "9a03aeac383e2f147571d46d4c9e09549aaecf7a706828a51ca20b28eeaee366"
+    },
+    {
+      "path": "outer-points/0-000282.pickle",
+      "bytes": 1994,
+      "sha256": "04c6c560cbefedb0e25fd481ef0012f251c7c5cccf5b8b964ca45b32cc8926fc"
+    },
+    {
+      "path": "outer-points/0-000283.pickle",
+      "bytes": 1994,
+      "sha256": "d81951f1c0bccff6b89d0e8e2a8b90d4308bed6502315d93b6ad928c1000b6e0"
+    },
+    {
+      "path": "outer-points/0-000284.pickle",
+      "bytes": 1994,
+      "sha256": "8276e29ff669b44c4a91c448e4b896300d964562fc6f6c05ea494ca5dca33807"
+    },
+    {
+      "path": "outer-points/0-000285.pickle",
+      "bytes": 1994,
+      "sha256": "bde58f2d2c5302f3a74ba138a256904173770b617ba6c5515ced0ccbbdc1cf8a"
+    },
+    {
+      "path": "outer-points/0-000286.pickle",
+      "bytes": 1994,
+      "sha256": "d65ae35228950202249e9d81d7c99767536fb346de5416c9836e24a0fd426fbb"
+    },
+    {
+      "path": "outer-points/0-000287.pickle",
+      "bytes": 1994,
+      "sha256": "afbd46dfe120fc79f1aae211ec383132ce8cbda48b25a3397a4978aa5081ab49"
+    },
+    {
+      "path": "outer-points/0-000288.pickle",
+      "bytes": 1994,
+      "sha256": "c6160ee14f049f481f0b7934dab957247ef0d1e8478a744e7c47f4baf5fbf52e"
+    },
+    {
+      "path": "outer-points/0-000289.pickle",
+      "bytes": 1994,
+      "sha256": "01477389b61ff142de51ede8826293d37cf2829fd20d4dc8fb7a30aee0f5bc07"
+    },
+    {
+      "path": "outer-points/0-000290.pickle",
+      "bytes": 1994,
+      "sha256": "0736e30136251025c65eb80ae49c84df972ece0c9bd64dba0395eaa6e3d2b524"
+    },
+    {
+      "path": "outer-points/0-000291.pickle",
+      "bytes": 1994,
+      "sha256": "953b2ee6963760ea59a1ed8452bbffc916a093dfe4979c99bef7ea44735a2a18"
+    },
+    {
+      "path": "outer-points/0-000292.pickle",
+      "bytes": 1994,
+      "sha256": "884b5a4eef5e9321f8d28a017f70da88f38bca5e2cef8154995c84f4702b65b0"
+    },
+    {
+      "path": "outer-points/0-000293.pickle",
+      "bytes": 1994,
+      "sha256": "dc6c7e746793a88f4d7cba160b31923214917fc10b0afc206b6a23a64f2427f6"
+    },
+    {
+      "path": "outer-points/0-000294.pickle",
+      "bytes": 1994,
+      "sha256": "47217ccdb220edfec1c271d25b1457b071dc60683352793f43e345c5a97c1ae4"
+    },
+    {
+      "path": "outer-points/0-000295.pickle",
+      "bytes": 1994,
+      "sha256": "03016ea1b334f2f7da1cadd98e96a46339ea4e220ce9bc6813c149879561319e"
+    },
+    {
+      "path": "outer-points/0-000296.pickle",
+      "bytes": 1994,
+      "sha256": "4b42847766943c2b87bfd1a2564532da942790da9164b56f886dddca40f03ed8"
+    },
+    {
+      "path": "outer-points/0-000297.pickle",
+      "bytes": 1994,
+      "sha256": "e375a1a40d88d90ae60576545f2923bf496ebe9af9923c24e81ba8e9ab037d1c"
+    },
+    {
+      "path": "outer-points/0-000298.pickle",
+      "bytes": 1994,
+      "sha256": "924615d0a7d2b3ee5c6424b59140d3037ebf97e6e55871a4ae5311418f536821"
+    },
+    {
+      "path": "outer-points/0-000299.pickle",
+      "bytes": 1994,
+      "sha256": "0a91f2df009c7d2e0b80b6fda436003ce21333a1124cd1602d5e14beb2def585"
+    },
+    {
+      "path": "outer-points/0-000300.pickle",
+      "bytes": 1994,
+      "sha256": "eebd6456ee365cc6e9853ae9e784c9077af2a58f0b3f4159eca2226dcb477b56"
+    },
+    {
+      "path": "outer-points/0-000301.pickle",
+      "bytes": 1994,
+      "sha256": "1af126335477bdca54f0145299a95421b7fe3d0df088291da1f38d113c3ee1f6"
+    },
+    {
+      "path": "outer-points/0-000302.pickle",
+      "bytes": 1994,
+      "sha256": "4a7c1dfd5a4702cb54aa7c028d1fa01520378d70a9f86086913701f638d737f6"
+    },
+    {
+      "path": "outer-points/0-000303.pickle",
+      "bytes": 1994,
+      "sha256": "fcc7084db9b5ceae2185f6e3c96f0aaf4192a5fd62aa4871014adf2d0d31f2f2"
+    },
+    {
+      "path": "outer-points/0-000304.pickle",
+      "bytes": 1994,
+      "sha256": "849764c773a3bf62bb19192e47d0ce636ffef6b4008e6a45833cbfdb99faa8d5"
+    },
+    {
+      "path": "outer-points/0-000305.pickle",
+      "bytes": 1994,
+      "sha256": "e88567c3c096cb3611b2a8dae80d9eca33c9a48beee0efbb277851ee01187eb8"
+    },
+    {
+      "path": "outer-points/0-000306.pickle",
+      "bytes": 1994,
+      "sha256": "ccd6bd014fc6709f30ce6e6ecbfff3696b2849b09754e8986a3758cd08571367"
+    },
+    {
+      "path": "outer-points/0-000307.pickle",
+      "bytes": 1994,
+      "sha256": "9dba3d6056641476c9c504cc417a16ca2929a39286257799006d3cffd08366b1"
+    },
+    {
+      "path": "outer-points/0-000308.pickle",
+      "bytes": 1994,
+      "sha256": "edd00f83d8cea572ddd9fd66759dbbf2c8da8fa66467648bcf50499adf76060f"
+    },
+    {
+      "path": "outer-points/0-000309.pickle",
+      "bytes": 1994,
+      "sha256": "8d11213a7849f75e862edaf7a1e7a4d443c6568e17de9c61c36804f51a5fca3e"
+    },
+    {
+      "path": "outer-points/0-000310.pickle",
+      "bytes": 1994,
+      "sha256": "329f03b1717a1d0893575be53dfd0b0e5d537474c49c5d6dc7eeff01d64a221e"
+    },
+    {
+      "path": "outer-points/0-000311.pickle",
+      "bytes": 1994,
+      "sha256": "0ab4e289dfbd9e22e9f054b2f6bdbbcb777b483e74ae2e1d1a18f3c2cf81328b"
+    },
+    {
+      "path": "outer-points/0-000312.pickle",
+      "bytes": 1994,
+      "sha256": "6b38e38559cbcf012c0e7e861bfc07f76758510301f9fdf08edaffffaa181554"
+    },
+    {
+      "path": "outer-points/0-000313.pickle",
+      "bytes": 1994,
+      "sha256": "9c948b01b3a8f53123db01d1e8375124a8e1a963c471ad8fe84e8b53ea924877"
+    },
+    {
+      "path": "outer-points/0-000314.pickle",
+      "bytes": 1994,
+      "sha256": "7b58c5166669a054c5df04fc44d83afc6d15a83b292a988e6dd7b4b23ea496b7"
+    },
+    {
+      "path": "outer-points/1-000000.pickle",
+      "bytes": 1994,
+      "sha256": "58952ee754936d6125017ef887b9a72fb5755f0797d14b48ed4d360b80301854"
+    },
+    {
+      "path": "outer-points/1-000001.pickle",
+      "bytes": 1994,
+      "sha256": "788dac4e58fd7da42d710791408273c01d0912fb7de3cb4f2554a3f4b43682bf"
+    },
+    {
+      "path": "outer-points/1-000002.pickle",
+      "bytes": 1994,
+      "sha256": "093ceb57cf039cd098b76e599f9a2a53b566dc99195d673557974375b7f106ea"
+    },
+    {
+      "path": "outer-points/1-000003.pickle",
+      "bytes": 1994,
+      "sha256": "a1966a4111b462f5d0d2ab53543956ff180d79ae81e1bcf39620055b2ada2840"
+    },
+    {
+      "path": "outer-points/1-000004.pickle",
+      "bytes": 1994,
+      "sha256": "967f58fb0f1ad25415b9d69b4ee6e9e353359cacdb4388bcb317dece18fdc074"
+    },
+    {
+      "path": "outer-points/1-000005.pickle",
+      "bytes": 1994,
+      "sha256": "2fc841abc209d036fba3f990ac9b3abb08c0ed4d61bc013296eb427d76dcd13b"
+    },
+    {
+      "path": "outer-points/1-000006.pickle",
+      "bytes": 1994,
+      "sha256": "dbe5fc421e5a43a36618ad4ca36d65e91f4873261663e0ebbaf2f615dd2c9d15"
+    },
+    {
+      "path": "outer-points/1-000007.pickle",
+      "bytes": 1994,
+      "sha256": "00841555e5722864bb81df627769ff78fac2fe5118ca9e51d2210508800c878a"
+    },
+    {
+      "path": "outer-points/1-000008.pickle",
+      "bytes": 1994,
+      "sha256": "205adb59efee104f46f946f2c4b4ce6b2d522a6cbec346274b6012c6560eba10"
+    },
+    {
+      "path": "outer-points/1-000009.pickle",
+      "bytes": 1994,
+      "sha256": "78d1f3a909f2621007a3ed25169eb7792e733e58202c6155ed111e2620a13038"
+    },
+    {
+      "path": "outer-points/1-000010.pickle",
+      "bytes": 1994,
+      "sha256": "27b83c86bc29a09f5e0135c94927390b58ecc260bd57494977a953750ac224ab"
+    },
+    {
+      "path": "outer-points/1-000011.pickle",
+      "bytes": 1994,
+      "sha256": "e462e21e5074c28455c28e3cf79e91b1bc5ca1d92532f72272dc06aa0b469c14"
+    },
+    {
+      "path": "outer-points/1-000012.pickle",
+      "bytes": 1994,
+      "sha256": "6b9045a70bd0567674e3ba9f206f7794469ff8716c83ae2f399ab5b15c6727a7"
+    },
+    {
+      "path": "outer-points/1-000013.pickle",
+      "bytes": 1994,
+      "sha256": "199dfa2f2e6ce24b61c94fc8ce440b582d6b5c73680ae0e7e49f1727f255ef51"
+    },
+    {
+      "path": "outer-points/1-000014.pickle",
+      "bytes": 1994,
+      "sha256": "994e534c4ae45b692579728b7e1cd17939c2835f58197662d017de33fafaa0ab"
+    },
+    {
+      "path": "outer-points/1-000015.pickle",
+      "bytes": 1994,
+      "sha256": "82788ac938d63c986c60049afa19702462a62d6212372f464f8f9b56fe754f5f"
+    },
+    {
+      "path": "outer-points/1-000016.pickle",
+      "bytes": 1994,
+      "sha256": "5b9cd41c1c4965108a7e7edf3d7fcf0c686fd120c426de36759c0f4e724ba7c7"
+    },
+    {
+      "path": "outer-points/1-000017.pickle",
+      "bytes": 1994,
+      "sha256": "d9bef5d8970e9777c3a0017cc4e2273865bcb7edf096cbdf6231a11f3ae18f6d"
+    },
+    {
+      "path": "outer-points/1-000018.pickle",
+      "bytes": 1994,
+      "sha256": "a0cff2bca927e8931887cdac41cabefe2be7a75af9359eb91e1dfda0ac71c763"
+    },
+    {
+      "path": "outer-points/1-000019.pickle",
+      "bytes": 1994,
+      "sha256": "f86e9b0099dca86458571b27d0ec0b21a88838e42f7d05cdfd203db64cd6f251"
+    },
+    {
+      "path": "outer-points/1-000020.pickle",
+      "bytes": 1994,
+      "sha256": "a36cc250a57f39cf13f4eb2239d1b5e81e23087fcb5f221e24b24e7a18686663"
+    },
+    {
+      "path": "outer-points/1-000021.pickle",
+      "bytes": 1994,
+      "sha256": "95af1ec8d837f3497ae4fe9445ef54cf09d949404f29115c4b160fc24c360eea"
+    },
+    {
+      "path": "outer-points/1-000022.pickle",
+      "bytes": 1994,
+      "sha256": "e3034a43bbd7eedb7d0af04f2f4b1b37a0564db64ddc4066bb59464850836151"
+    },
+    {
+      "path": "outer-points/1-000023.pickle",
+      "bytes": 1994,
+      "sha256": "5f6c695a00f5b394ce5fd09dca68b07b77c757ef9d012da2f5f0535f42c500de"
+    },
+    {
+      "path": "outer-points/1-000024.pickle",
+      "bytes": 1994,
+      "sha256": "2bb0ac8072cefb408e228d39f46f70b815a3a578d7e9d1b26e545b9a5abc5be4"
+    },
+    {
+      "path": "outer-points/1-000025.pickle",
+      "bytes": 1994,
+      "sha256": "8b686d3006be2ef1ff7b49e7ee6c7cd0c6237ab8b7853f1db3facb7cb8591329"
+    },
+    {
+      "path": "outer-points/1-000026.pickle",
+      "bytes": 1994,
+      "sha256": "efa9307bbb29f0983f3490eb24567ef05e8bd84f98aee101830f581a40621349"
+    },
+    {
+      "path": "outer-points/1-000027.pickle",
+      "bytes": 1994,
+      "sha256": "d2ea0a184b464b249e5723290f0239e7940d2d570addc364bbb54d8c1d015301"
+    },
+    {
+      "path": "outer-points/1-000028.pickle",
+      "bytes": 1994,
+      "sha256": "7a07a42d8dcb303a217ede6b0d61f5b519bc1f1aa767a30c4a5f3f37c8c7ffbe"
+    },
+    {
+      "path": "outer-points/1-000029.pickle",
+      "bytes": 1994,
+      "sha256": "ef949917caaae9a59159cf178169d3bffadff89a793b8532774faa88c3a0a47f"
+    },
+    {
+      "path": "outer-points/1-000030.pickle",
+      "bytes": 1994,
+      "sha256": "9a70cd44ca183a3df76f1b0cde629e61a23f6a6a0362093dd9780c44fb94e788"
+    },
+    {
+      "path": "outer-points/1-000031.pickle",
+      "bytes": 1994,
+      "sha256": "ee9c7b78bf794a144d755179e5cf2f4a099785c4c74999a8a5e02b9bb8ee33dd"
+    },
+    {
+      "path": "outer-points/1-000032.pickle",
+      "bytes": 1994,
+      "sha256": "abefa04f7643ba7c2551fa5b156a2c589c1cbea4065f441011cffe8c751fbd71"
+    },
+    {
+      "path": "outer-points/1-000033.pickle",
+      "bytes": 1994,
+      "sha256": "b0503809742d48af175c894dddba2c46c2ee4a91ebc4a27c25246d9d24a12962"
+    },
+    {
+      "path": "outer-points/1-000034.pickle",
+      "bytes": 1994,
+      "sha256": "547dd5d0c284c2d5742784c3f34d2492f95a79c2c0d3c9b021f5ab73a4662e21"
+    },
+    {
+      "path": "outer-points/1-000035.pickle",
+      "bytes": 1994,
+      "sha256": "3af2d7c3a4432e45d76de81c1149578aca2d3bb2f7b87749901df8563cbee125"
+    },
+    {
+      "path": "outer-points/1-000036.pickle",
+      "bytes": 1994,
+      "sha256": "b53b965c411b4c5d8661cd0f60c4a0eff8f5e78a393bd274dcfde2220e4508ee"
+    },
+    {
+      "path": "outer-points/1-000037.pickle",
+      "bytes": 1994,
+      "sha256": "bcbb4c81fd492777af187fb8de1ee6efad2e4d84904f067f69a49f270acb4f03"
+    },
+    {
+      "path": "outer-points/1-000038.pickle",
+      "bytes": 1994,
+      "sha256": "1341f3774066f308e33b3c65fc85defd62c70fa8e8e7212c15e2850fe85065ca"
+    },
+    {
+      "path": "outer-points/1-000039.pickle",
+      "bytes": 1994,
+      "sha256": "8bee92d08028e31742b9fc450ca4b34670bae8f5b7a7cc2fae69a261cb76c11e"
+    },
+    {
+      "path": "outer-points/1-000040.pickle",
+      "bytes": 1994,
+      "sha256": "56c7624b1d83fe08b02967c66c39ba201bba7277be55399fdb3d2ee50a5cfbda"
+    },
+    {
+      "path": "outer-points/1-000041.pickle",
+      "bytes": 1994,
+      "sha256": "5c71c3b1aca6067af020a5863e1ce7e0eee5caf7487520cce9fb0aa6dd419daa"
+    },
+    {
+      "path": "outer-points/1-000042.pickle",
+      "bytes": 1994,
+      "sha256": "c742825a0324d593a13d494b2ea3d010201fd328182b6d8988de2bbaa56c1fec"
+    },
+    {
+      "path": "outer-points/1-000043.pickle",
+      "bytes": 1994,
+      "sha256": "6c64a17e132d35a81956057ef4eda6c4b199b1d7bba8c7f02081bd2ae7261f8e"
+    },
+    {
+      "path": "outer-points/1-000044.pickle",
+      "bytes": 1994,
+      "sha256": "cd897a2360febd7372afc32a8bb13fa523c5a29a33ac17ac4e3be833890126d8"
+    },
+    {
+      "path": "outer-points/1-000045.pickle",
+      "bytes": 1994,
+      "sha256": "87c388aa2999257a6625d0d10310aaa098103c79c98943722bc632f4d0b5d3b2"
+    },
+    {
+      "path": "outer-points/1-000046.pickle",
+      "bytes": 1994,
+      "sha256": "466a280bee5a65e3d629dd9af61007a6afa1adcad6472e099c19af44856bd278"
+    },
+    {
+      "path": "outer-points/1-000047.pickle",
+      "bytes": 1994,
+      "sha256": "757e6faf7378fa28bc34cc037445b5cee1c3813e8a5aafe07e5b3c2a8b437e29"
+    },
+    {
+      "path": "outer-points/1-000048.pickle",
+      "bytes": 1994,
+      "sha256": "897792a0b698ae6071c6cba84d0c8db28237edbfe2913d7cae12eb569755f8a4"
+    },
+    {
+      "path": "outer-points/1-000049.pickle",
+      "bytes": 1994,
+      "sha256": "88ffa415afe10d767a6944b34308edb7b2e5c497186eca3a33d230c620a6cfce"
+    },
+    {
+      "path": "outer-points/1-000050.pickle",
+      "bytes": 1994,
+      "sha256": "04a9613608697ed2414519280e8fab1b3a75f78010f3baf1752353e142464814"
+    },
+    {
+      "path": "outer-points/1-000051.pickle",
+      "bytes": 1994,
+      "sha256": "9c5ecf954f4f8c687cf7316e3df56b040b3b36be7d155a5c62c4e6a5b986162b"
+    },
+    {
+      "path": "outer-points/1-000052.pickle",
+      "bytes": 1994,
+      "sha256": "ad444ada1c09d344b7ba8399d953ba90a849eea10a72455edc07d8ea522a05e0"
+    },
+    {
+      "path": "outer-points/1-000053.pickle",
+      "bytes": 1994,
+      "sha256": "90badb3e9f09145b7b7e7de80a99fb15b949bd31b0c97736497cab281fcac9ee"
+    },
+    {
+      "path": "outer-points/1-000054.pickle",
+      "bytes": 1994,
+      "sha256": "0949b5cfcc10e533cdfcd33e9e70e7bc3d6dbdfdabfbf5000cca362a1f18d68c"
+    },
+    {
+      "path": "outer-points/1-000055.pickle",
+      "bytes": 1994,
+      "sha256": "ed2115f3de4e4a322cc0516bc9edfa79467f052450e342fc005ec5e80991b3b4"
+    },
+    {
+      "path": "outer-points/1-000056.pickle",
+      "bytes": 1994,
+      "sha256": "6ced3ee1c1449525269936ba18e0af379e70c1f75679cbd4b4e8fc385db32bcf"
+    },
+    {
+      "path": "outer-points/1-000057.pickle",
+      "bytes": 1994,
+      "sha256": "800f31d758de48ac656b5f84a9605b655d992f904e42477755c534201ec88afe"
+    },
+    {
+      "path": "outer-points/1-000058.pickle",
+      "bytes": 1994,
+      "sha256": "b77bc96ab56dc44a3e3dde535cbb4844e078c6c62c4734d5382d4676ff3c9612"
+    },
+    {
+      "path": "outer-points/1-000059.pickle",
+      "bytes": 1994,
+      "sha256": "32db8917ad658eec0fd2beae58f3df16fe5630702540fbbab40aad69a870febf"
+    },
+    {
+      "path": "outer-points/1-000060.pickle",
+      "bytes": 1994,
+      "sha256": "7258ab5041dea312c0fad33b0c5bc0e4e5dda5313090fab297c4f2dcb29bde37"
+    },
+    {
+      "path": "outer-points/1-000061.pickle",
+      "bytes": 1994,
+      "sha256": "2ff67c2f4f4fa4dbee1dff99fb62feb91410ccb8da17bb53683f2d6a6a7b58c2"
+    },
+    {
+      "path": "outer-points/1-000062.pickle",
+      "bytes": 1994,
+      "sha256": "8795aaa7e121fbbb75d6bc42354b732a376efc4d9935e65f15e43cbb60ec82c9"
+    },
+    {
+      "path": "outer-points/1-000063.pickle",
+      "bytes": 1994,
+      "sha256": "81f59fd52446ee7d3f2a566f825948c02f7248e02d50df65e905b73758fbc09e"
+    },
+    {
+      "path": "outer-points/1-000064.pickle",
+      "bytes": 1994,
+      "sha256": "aa5a337b3dd432ff25154ee25aeb8524361b2c748a0a10ce22d8d377cb299ed3"
+    },
+    {
+      "path": "outer-points/1-000065.pickle",
+      "bytes": 1994,
+      "sha256": "886a564afddd87164208fda811328757b20f407234c636a3b75b5916c87e77a5"
+    },
+    {
+      "path": "outer-points/1-000066.pickle",
+      "bytes": 1994,
+      "sha256": "4e6752a83d64df08c517d3f1a7d2ba0b860735ad5266fe4e4a89b4c5bf7e6115"
+    },
+    {
+      "path": "outer-points/1-000067.pickle",
+      "bytes": 1994,
+      "sha256": "bb6f357a9657733838ba8faa92064512f0a562d040d91c20cd653dcf2e15a2cb"
+    },
+    {
+      "path": "outer-points/1-000068.pickle",
+      "bytes": 1994,
+      "sha256": "1aa2ce27956a5cd93e7750a7d3b57fa214f83f0488541c5993f6ff05a0ac19de"
+    },
+    {
+      "path": "outer-points/1-000069.pickle",
+      "bytes": 1994,
+      "sha256": "75e0261cc0f7ab96d8ffc1a5c48d874ff22f5aedfec7fb7d88e65ac91a06f61f"
+    },
+    {
+      "path": "outer-points/1-000070.pickle",
+      "bytes": 1994,
+      "sha256": "d108c51dd6ded8b5e64ab204dc48619951c316b2efdfb13a97e2a336becaf8d2"
+    },
+    {
+      "path": "outer-points/1-000071.pickle",
+      "bytes": 1994,
+      "sha256": "04fe66f8cde30caed71683aef821a936ab410f7469d55654ad0cc36953edf284"
+    },
+    {
+      "path": "outer-points/1-000072.pickle",
+      "bytes": 1994,
+      "sha256": "0c3e51fd981a897bbadbd8ec4b58c348802232d85b3e407e85893cdbf0a80a84"
+    },
+    {
+      "path": "outer-points/1-000073.pickle",
+      "bytes": 1994,
+      "sha256": "6033e707955b8bc8b698b9aed44022c6d76c2a154e87bfc7fadced48b5716103"
+    },
+    {
+      "path": "outer-points/1-000074.pickle",
+      "bytes": 1994,
+      "sha256": "824416067a56a698107409af2e7dbaa9d9779e4a5fbafbd2ea9369c759f60e2d"
+    },
+    {
+      "path": "outer-points/1-000075.pickle",
+      "bytes": 1994,
+      "sha256": "4ae60b69f2aff5bb193a83cd62b9360706e259e017c91b4acb386426fe7a8b6d"
+    },
+    {
+      "path": "outer-points/1-000076.pickle",
+      "bytes": 1994,
+      "sha256": "b18e53a0156b5ddcd2321199360febf010ca95c7810871938213ff96623d3909"
+    },
+    {
+      "path": "outer-points/1-000077.pickle",
+      "bytes": 1994,
+      "sha256": "5668982d50e4105b19bc65fbbe5ef7ffdb8c9fb90f26710e04497932411d2ddd"
+    },
+    {
+      "path": "outer-points/1-000078.pickle",
+      "bytes": 1994,
+      "sha256": "09d6c3aa8c8db3957c172b7a16733e7ea2d66d14fd5025aee631d0b06391c8c9"
+    },
+    {
+      "path": "outer-points/1-000079.pickle",
+      "bytes": 1994,
+      "sha256": "f509ed0c2bcc70f5bb1731723ff6158bdff80a907abc016b038f91cf3e781617"
+    },
+    {
+      "path": "outer-points/1-000080.pickle",
+      "bytes": 1994,
+      "sha256": "970532bcd3e5b0ca52f135c2eabe70293b4d7e5c126ccfc0e7ba57ea29346fdb"
+    },
+    {
+      "path": "outer-points/1-000081.pickle",
+      "bytes": 1994,
+      "sha256": "bfa041652f55b5f3f5ba762d2314c068b6a5ec41da2a153fd970f6f4097f0b7a"
+    },
+    {
+      "path": "outer-points/1-000082.pickle",
+      "bytes": 1994,
+      "sha256": "2db04f7a694130996e0ad87943c20019a464e6fcc9c2f33b7be3fc661797662a"
+    },
+    {
+      "path": "outer-points/1-000083.pickle",
+      "bytes": 1994,
+      "sha256": "9f9765b4c8f51d21d73d5137dfbfd1dee922562b9897a922be143f0022d4d260"
+    },
+    {
+      "path": "outer-points/1-000084.pickle",
+      "bytes": 1994,
+      "sha256": "b8047259c1d4e106474e36b0eb291097a6c2dfb9971180371b06f9b4b6cc393c"
+    },
+    {
+      "path": "outer-points/1-000085.pickle",
+      "bytes": 1994,
+      "sha256": "3bb37e50c8a915ae5f11f0967f955ed89a8918b6154cb5a12de933e1137801aa"
+    },
+    {
+      "path": "outer-points/1-000086.pickle",
+      "bytes": 1994,
+      "sha256": "7f29ed6d10c3bb1277741bd227280bd4fc242b258353b6951f53530114b8a124"
+    },
+    {
+      "path": "outer-points/1-000087.pickle",
+      "bytes": 1994,
+      "sha256": "a55d92d799d54f72e8c9cf9a2bfa56f5864c3eaefa1f036a2337018ceb97ef30"
+    },
+    {
+      "path": "outer-points/1-000088.pickle",
+      "bytes": 1994,
+      "sha256": "2cea88dfe50b944250cd83c15fb67fb6ffc32556295900615c49cc3a49ed60cb"
+    },
+    {
+      "path": "outer-points/1-000089.pickle",
+      "bytes": 1994,
+      "sha256": "07e40e38d3b71f0e96ffdac4f7c903f42e521aaa3468c82fbdc00423b8636e7b"
+    },
+    {
+      "path": "outer-points/1-000090.pickle",
+      "bytes": 1994,
+      "sha256": "2822df04c0cd670058803db500e9a3b29e10719067468847e9cecbbec410778c"
+    },
+    {
+      "path": "outer-points/1-000091.pickle",
+      "bytes": 1994,
+      "sha256": "5326027553a8d5f0ea66bf54254cd30e9c26e59e7c7547e65c4f6ca6df619266"
+    },
+    {
+      "path": "outer-points/1-000092.pickle",
+      "bytes": 1994,
+      "sha256": "ab90bdedb771f5738d6917ccaeee39a63a693fcc3ad9a36a9eb338afc3cc192e"
+    },
+    {
+      "path": "outer-points/1-000093.pickle",
+      "bytes": 1994,
+      "sha256": "79f531aa058db92607ee37d639d78243dca89ece860291624dab74bdcbb1c641"
+    },
+    {
+      "path": "outer-points/1-000094.pickle",
+      "bytes": 1994,
+      "sha256": "673b7b9908d83f674815feb336b2de4b9946dfe43a7a2df206f4effe44db25c0"
+    },
+    {
+      "path": "outer-points/1-000095.pickle",
+      "bytes": 1994,
+      "sha256": "5fd5e4b499e70ae09042c2e0fce8a8fff38262114d2b01f16fe783e997974afe"
+    },
+    {
+      "path": "outer-points/1-000096.pickle",
+      "bytes": 1994,
+      "sha256": "da9704970be7152a88834520f9c228053ab093b6ecf2190eda2faea4209ab9f2"
+    },
+    {
+      "path": "outer-points/1-000097.pickle",
+      "bytes": 1994,
+      "sha256": "c9c6019b44c6ef78967b40a6770220239a828a7aa93848cc5eb55bb667386681"
+    },
+    {
+      "path": "outer-points/1-000098.pickle",
+      "bytes": 1994,
+      "sha256": "838ac714dd5a09261795f83b7b78705b56dd48ddd5de706c567e407676407521"
+    },
+    {
+      "path": "outer-points/1-000099.pickle",
+      "bytes": 1994,
+      "sha256": "2c4639c9b62e5a3cbf98ecd190e204e8cd0a2a3af92d7b83ef0cb3e3dddf421e"
+    },
+    {
+      "path": "outer-points/1-000100.pickle",
+      "bytes": 1994,
+      "sha256": "714becc5c4c78ace75cc22f21a04503e24f123b573200e01b15136c08588b8bf"
+    },
+    {
+      "path": "outer-points/1-000101.pickle",
+      "bytes": 1994,
+      "sha256": "26c280f42f33b441ef13cc0526a8dcc87455a01458cd618ccc70ef10b6bdf4df"
+    },
+    {
+      "path": "outer-points/1-000102.pickle",
+      "bytes": 1994,
+      "sha256": "cfaa47670f4d90b4cb614dad49fc0fb5c64728e0e16e1fcc66b461d19becd1d7"
+    },
+    {
+      "path": "outer-points/1-000103.pickle",
+      "bytes": 1994,
+      "sha256": "52525249a82dcf7d23d2e022840d67da8f944314d6b9632cda9aaab721437b2f"
+    },
+    {
+      "path": "outer-points/1-000104.pickle",
+      "bytes": 1994,
+      "sha256": "e7a8a558e52ba6df01e72c6ba20ca5f24c8840bca705a271ee0de7f4b2f02a6e"
+    },
+    {
+      "path": "outer-points/1-000105.pickle",
+      "bytes": 1994,
+      "sha256": "dfec2100f07a5e5a4495ebbfd8663af69df2774b60f16be49d3dc97261292da7"
+    },
+    {
+      "path": "outer-points/1-000106.pickle",
+      "bytes": 1994,
+      "sha256": "6d0c2073c1f31760892fc238a04a451eaa8f8a179bcdad7c4a838a64dd5ba52f"
+    },
+    {
+      "path": "outer-points/1-000107.pickle",
+      "bytes": 1994,
+      "sha256": "29d6ef7c2a381702eb19599b171cc98625c144cb18fa9ab59b7798f0a22c7461"
+    },
+    {
+      "path": "outer-points/1-000108.pickle",
+      "bytes": 1994,
+      "sha256": "34b7d219734fed7b0f0302212de0e2dff5c2c98e11fcb5215831c3cedaf411d8"
+    },
+    {
+      "path": "outer-points/1-000109.pickle",
+      "bytes": 1994,
+      "sha256": "2c1099f224bd64ed19b41254c32d07306fec98fb70477926fa0746061c499792"
+    },
+    {
+      "path": "outer-points/1-000110.pickle",
+      "bytes": 1994,
+      "sha256": "1e7a6f46400e4d0b0c9e70e575e115a1190db9ccdd9ef914a2ecaf9178a167ca"
+    },
+    {
+      "path": "outer-points/1-000111.pickle",
+      "bytes": 1994,
+      "sha256": "d1e1019cab8c1d4ac07bb70b427a6bb5a9b52469c60531449d767bb59e793c11"
+    },
+    {
+      "path": "outer-points/1-000112.pickle",
+      "bytes": 1994,
+      "sha256": "44d1975cc0f4c30455d8f1a14b4da6ed42ba234cf26836e45267485be9f0fb17"
+    },
+    {
+      "path": "outer-points/1-000113.pickle",
+      "bytes": 1994,
+      "sha256": "0ae3b1cc89d9834321412bd48a2c7c4d3cc1155e7aeb9bf4a62edf4267dfbf7b"
+    },
+    {
+      "path": "outer-points/1-000114.pickle",
+      "bytes": 1994,
+      "sha256": "9c628492f1580818e638139ae33618b7c3c193eae3d3c396659344eb86e1c574"
+    },
+    {
+      "path": "outer-points/1-000115.pickle",
+      "bytes": 1994,
+      "sha256": "785fa257d4a0f9fb641f9fa990cfcf342fdc6d5fb1eafa59740c11a5bd607a2a"
+    },
+    {
+      "path": "outer-points/1-000116.pickle",
+      "bytes": 1994,
+      "sha256": "f75675b906c27b260e804f9ff7c8b59a018c02c60d1c81758cfe0ce31862c61d"
+    },
+    {
+      "path": "outer-points/1-000117.pickle",
+      "bytes": 1994,
+      "sha256": "777813cbb613fd4d4071bb2749a081ed77a5ca81f08266ce6d83f438d6cc6f47"
+    },
+    {
+      "path": "outer-points/1-000118.pickle",
+      "bytes": 1994,
+      "sha256": "be55a916e407b4ca80dba2715c67e2c22fe4cdcf3d4dcf6d6d9a8e4e9c1a4e3a"
+    },
+    {
+      "path": "outer-points/1-000119.pickle",
+      "bytes": 1994,
+      "sha256": "b3e6146652f508e0272c2d8d63971c124eaac71565c3f05130133548fcffc692"
+    },
+    {
+      "path": "outer-points/1-000120.pickle",
+      "bytes": 1994,
+      "sha256": "334a0c9949e2366c92022c10df08ef6d0e4fe0ab95cefe252623f383edb4afa6"
+    },
+    {
+      "path": "outer-points/1-000121.pickle",
+      "bytes": 1994,
+      "sha256": "f6e908628f74db3fa0f49e6bab45467e06ad11b0862ed1bba52d16abc2483535"
+    },
+    {
+      "path": "outer-points/1-000122.pickle",
+      "bytes": 1994,
+      "sha256": "e30af22872894c0c8ece0e5e04b3b5571af2394fcb9d80dd133b0a9101e79a77"
+    },
+    {
+      "path": "outer-points/1-000123.pickle",
+      "bytes": 1994,
+      "sha256": "2f5cc02b120d320070814367e0c80a99c69b275ce0cda70602e592659c9e13d3"
+    },
+    {
+      "path": "outer-points/1-000124.pickle",
+      "bytes": 1994,
+      "sha256": "d2a06314abceefb20d84b8f1fc6fabe199e871b6ec481945a33d2e265668f85d"
+    },
+    {
+      "path": "outer-points/1-000125.pickle",
+      "bytes": 1994,
+      "sha256": "accdce89719675bb1365c646e7fed22124b4e079ebd886723eaee4f563c4acb1"
+    },
+    {
+      "path": "outer-points/1-000126.pickle",
+      "bytes": 1994,
+      "sha256": "01649a92dc743c201208eff8195200b72340354b2843aea29f1f9ccd20398fc5"
+    },
+    {
+      "path": "outer-points/1-000127.pickle",
+      "bytes": 1994,
+      "sha256": "ac3bbc448fb283c75cc698d9ec06cccee9dce20eae8694bf7829149af922f9b6"
+    },
+    {
+      "path": "outer-points/1-000128.pickle",
+      "bytes": 1994,
+      "sha256": "9275541dbfb2d7c276c54d8e51f3327a19d71919cf8779efccf11db292539e28"
+    },
+    {
+      "path": "outer-points/1-000129.pickle",
+      "bytes": 1994,
+      "sha256": "57df0ef50ae0baafc871d21cbc2aa9af72bbbc0afd0d84e26d333055d4f504e6"
+    },
+    {
+      "path": "outer-points/1-000130.pickle",
+      "bytes": 1994,
+      "sha256": "ec654e5e0d8281ab0ec64d2a50a0370764f90f804aca2bb45b94b791a51735b0"
+    },
+    {
+      "path": "outer-points/1-000131.pickle",
+      "bytes": 1994,
+      "sha256": "1023da6e341df5b14b91d4eb95a7384964ff592f6e47498a948d7046bf42d4da"
+    },
+    {
+      "path": "outer-points/1-000132.pickle",
+      "bytes": 1994,
+      "sha256": "6b2833bcd6b41f26b4ee5e2057c0c0027003ef942163eb7f8df2b5d9d6cbfc18"
+    },
+    {
+      "path": "outer-points/1-000133.pickle",
+      "bytes": 1994,
+      "sha256": "5d9927bf0abf0809d7fb4c0a39af6ae9ba4fc13eb27cf893a9a7d825500b02c5"
+    },
+    {
+      "path": "outer-points/1-000134.pickle",
+      "bytes": 1994,
+      "sha256": "18f316839fcc000e7f001232b7c3e3367f4583bc5f2e9110769bacc71307d939"
+    },
+    {
+      "path": "outer-points/1-000135.pickle",
+      "bytes": 1994,
+      "sha256": "7d44055602ffb7895fd580c6e1e2c3e4ab4b3a63aa33bbdcbfad506fd141d9c4"
+    },
+    {
+      "path": "outer-points/1-000136.pickle",
+      "bytes": 1994,
+      "sha256": "533477cc19a31a9cdd97b0dcaa29587e57aa2e377fb6c30a855f3c91dfcde69e"
+    },
+    {
+      "path": "outer-points/1-000137.pickle",
+      "bytes": 1994,
+      "sha256": "58dc1b4a7a3b5ac9f1e7cb788504336930621d8b97b4f9d9bb30b4c9c21b0b5e"
+    },
+    {
+      "path": "outer-points/1-000138.pickle",
+      "bytes": 1994,
+      "sha256": "fd7f349ced3a550ff413153a973e96561dce56eb2db60e3b1afa6eb17751d393"
+    },
+    {
+      "path": "outer-points/1-000139.pickle",
+      "bytes": 1994,
+      "sha256": "5f6845c345f7771f690ffe4f2546dcef336979ddc41ac4e900798945ef178131"
+    },
+    {
+      "path": "outer-points/1-000140.pickle",
+      "bytes": 1994,
+      "sha256": "195600381aa55bf0723279cd8574e73761a9732d81aaa74c61b9d14468331307"
+    },
+    {
+      "path": "outer-points/1-000141.pickle",
+      "bytes": 1994,
+      "sha256": "2ccbf84d1b258c46d011b83b59b80f2f95d9cc8a969f2a89d5d10f4fee6b8222"
+    },
+    {
+      "path": "outer-points/1-000142.pickle",
+      "bytes": 1994,
+      "sha256": "d55446197e0e398baf1c280fed81d67e56db455aadbc51a66dbbdaaf2c142db3"
+    },
+    {
+      "path": "outer-points/1-000143.pickle",
+      "bytes": 1994,
+      "sha256": "75e1bbccfe8b61322b3a9cd998a8549132ec17c62b5b992891ac0f2ab5ec819f"
+    },
+    {
+      "path": "outer-points/1-000144.pickle",
+      "bytes": 1994,
+      "sha256": "c7f5d2e564d7d8bb05b4b505ff41c5eef07955378c91e3d1f0cb8caec1ce0d11"
+    },
+    {
+      "path": "outer-points/1-000145.pickle",
+      "bytes": 1994,
+      "sha256": "1ea69b762288508d98898b720d3797fc7f2f2cc9c27125027ccce9cc04ee5ea8"
+    },
+    {
+      "path": "outer-points/1-000146.pickle",
+      "bytes": 1994,
+      "sha256": "9a1c44df23dd9a53237f6670f7c292a97e2811f784ba6c6ae8fecabc0adab4a2"
+    },
+    {
+      "path": "outer-points/1-000147.pickle",
+      "bytes": 1994,
+      "sha256": "afd3caacb80213cdf890b69d05399162fe6528c5458f822985558a6a8725ff8a"
+    },
+    {
+      "path": "outer-points/1-000148.pickle",
+      "bytes": 1994,
+      "sha256": "1966534d22cba2cad3e3fb5574c9933675d3ea176da711e7870f245b2f293fcc"
+    },
+    {
+      "path": "outer-points/1-000149.pickle",
+      "bytes": 1994,
+      "sha256": "11189f98d8d8d4cb4dc13af370b89725d5fec08c8f50737a046acd2ceb380864"
+    },
+    {
+      "path": "outer-points/1-000150.pickle",
+      "bytes": 1994,
+      "sha256": "a22e0e848de36c4245eed25e5cab93803b90078b4950f09618bc32545502d26d"
+    },
+    {
+      "path": "outer-points/1-000151.pickle",
+      "bytes": 1994,
+      "sha256": "77625ab4c1b8fad35f8c39afb59ae7cca841d12cbc301e0f683458b64ab0e3ff"
+    },
+    {
+      "path": "outer-points/1-000152.pickle",
+      "bytes": 1994,
+      "sha256": "70318abae8cfddcccded35cb2650d521eaaaa5f13851c4591e6fb95858c6138a"
+    },
+    {
+      "path": "outer-points/1-000153.pickle",
+      "bytes": 1994,
+      "sha256": "37b9df388365ab9fde5dadd3af6e8b8e56c0482440cbfaeb26f9a5ee7f880136"
+    },
+    {
+      "path": "outer-points/1-000154.pickle",
+      "bytes": 1994,
+      "sha256": "d85c1195e707b28c0e0ed9a5de17b11aa51a21e4c03734caae4cfc9b859340f1"
+    },
+    {
+      "path": "outer-points/1-000155.pickle",
+      "bytes": 1994,
+      "sha256": "49aa1ebbb91914bab612a372adbadcd3406c0873be9ac09927dc9c7519e413fa"
+    },
+    {
+      "path": "outer-points/1-000156.pickle",
+      "bytes": 1994,
+      "sha256": "f3d324c4569d354bb291af7fe20192c60345911fe14e6acf7c219575f9224aa2"
+    },
+    {
+      "path": "outer-points/1-000157.pickle",
+      "bytes": 1994,
+      "sha256": "3aba2101f12667e92b69e1f3ff5628c2d59820eb44d23a114a49102b98e6a55f"
+    },
+    {
+      "path": "outer-points/1-000158.pickle",
+      "bytes": 1994,
+      "sha256": "44a38eea5c963d7a56dfbbc6926af0c75d09a015e928ed25886bfc8ae03e2a4f"
+    },
+    {
+      "path": "outer-points/1-000159.pickle",
+      "bytes": 1994,
+      "sha256": "3294bc9a06eec2e74b1cb337e04ce06bc2b2e6f5d1ad61eb760aae66f93d6409"
+    },
+    {
+      "path": "outer-points/1-000160.pickle",
+      "bytes": 1994,
+      "sha256": "79d682827a8d373e3efffadff154cb79ffd9546440c60635100041f9d97a9c30"
+    },
+    {
+      "path": "outer-points/1-000161.pickle",
+      "bytes": 1994,
+      "sha256": "78d593577ea6ea46f3998be891cdf47cfa00d69bf9060e068f5fe6b8d3c51bbd"
+    },
+    {
+      "path": "outer-points/1-000162.pickle",
+      "bytes": 1994,
+      "sha256": "ac8ed2a6eb053dc53fee593e3c22766f909cc0d7d48a60fb9beda93f578e0755"
+    },
+    {
+      "path": "outer-points/1-000163.pickle",
+      "bytes": 1994,
+      "sha256": "ab29b045f998a668752cbc01db913cdf5b28bd776560027c7ee51f04df40e57e"
+    },
+    {
+      "path": "outer-points/1-000164.pickle",
+      "bytes": 1994,
+      "sha256": "4c48aef9dddd3401328b62c918e35cbe1df8b063ebb09cf53bd0b60034c01db0"
+    },
+    {
+      "path": "outer-points/1-000165.pickle",
+      "bytes": 1994,
+      "sha256": "4ca5b866fce6975b947708d406fd63601d3d92f957cdb1b633a305099d65b6ba"
+    },
+    {
+      "path": "outer-points/1-000166.pickle",
+      "bytes": 1994,
+      "sha256": "64217c38c4d23b9280da1565156ddc74a171e5c47e3a96686e631ae7d50a06ba"
+    },
+    {
+      "path": "outer-points/1-000167.pickle",
+      "bytes": 1994,
+      "sha256": "9bee4be8691c8fb7acc864596b219ad57fe7bf77460221c14485e8c4bf62ea23"
+    },
+    {
+      "path": "outer-points/1-000168.pickle",
+      "bytes": 1994,
+      "sha256": "a920034ff4290505892585cd6e18e88267e2b6f67e0a576fe2305e7f1896875a"
+    },
+    {
+      "path": "outer-points/1-000169.pickle",
+      "bytes": 1994,
+      "sha256": "7df88325f38747d62f83b9d5e30246663797edc64b42f714c3067e6bcbda5a70"
+    },
+    {
+      "path": "outer-points/1-000170.pickle",
+      "bytes": 1994,
+      "sha256": "d61710f44102a5b4efdfebe6b4fd3e06303a3003781c35459c7682175c30ef06"
+    },
+    {
+      "path": "outer-points/1-000171.pickle",
+      "bytes": 1994,
+      "sha256": "fc19e492285944a5e6cf990c110a3a88d10d8b4077243acd270d0f8ed4e4c5b9"
+    },
+    {
+      "path": "outer-points/1-000172.pickle",
+      "bytes": 1994,
+      "sha256": "2b32702c545a65c9bbf7d66068ff5b91e5cacac709b56d1c723c571c39fbe17a"
+    },
+    {
+      "path": "outer-points/1-000173.pickle",
+      "bytes": 1994,
+      "sha256": "3a3f3c2ba8e8f9dc80c42d262424cefc7ae1121b234ed735ff4c2de13ebd2e86"
+    },
+    {
+      "path": "outer-points/1-000174.pickle",
+      "bytes": 1994,
+      "sha256": "a150ed839263568ce222a2314e9961315aad7d1228bf7bb8ca619ad31f1c188b"
+    },
+    {
+      "path": "outer-points/1-000175.pickle",
+      "bytes": 1994,
+      "sha256": "194bfe88225c212ec06c69c1199a1175fb27ba461745df5fdef8a785bcdb334e"
+    },
+    {
+      "path": "outer-points/1-000176.pickle",
+      "bytes": 1994,
+      "sha256": "77318db775760e14be0b78cd93326c120a4dbfe97f950d6a45229f5590ed1a71"
+    },
+    {
+      "path": "outer-points/1-000177.pickle",
+      "bytes": 1994,
+      "sha256": "a183ce9fbaa718ccac355bd87f41b8716f1164897b55523152c8aea48e6ae3e1"
+    },
+    {
+      "path": "outer-points/1-000178.pickle",
+      "bytes": 1994,
+      "sha256": "ebbbbfb63c7777646259aa6a4784ee4ca523204ee5d775d03e1d2b6863e142d4"
+    },
+    {
+      "path": "outer-points/1-000179.pickle",
+      "bytes": 1994,
+      "sha256": "ee8c09a9e311090f325771883d58b572fb1b520979274a5f0ff07e9ce619e2cf"
+    },
+    {
+      "path": "outer-points/1-000180.pickle",
+      "bytes": 1994,
+      "sha256": "53b104eb13401a29270f9cfde1a138bbf5f291d75a9a5336969ca3b623eccc82"
+    },
+    {
+      "path": "outer-points/1-000181.pickle",
+      "bytes": 1994,
+      "sha256": "ffe28146c698da9d5f1cc71186ee97351266006a7dab6b9b9ca8ce74b833e79b"
+    },
+    {
+      "path": "outer-points/1-000182.pickle",
+      "bytes": 1994,
+      "sha256": "7d833aaa7fce795f65f4fa4d60ef1ec936b4a43dad59b1ec39fa40db59c42bac"
+    },
+    {
+      "path": "outer-points/1-000183.pickle",
+      "bytes": 1994,
+      "sha256": "9d91b5cf74df4f8e7f5bd9604d3ecffbbbd4c7c8bae50f6ae8b6101fd58a1bf2"
+    },
+    {
+      "path": "outer-points/1-000184.pickle",
+      "bytes": 1994,
+      "sha256": "a0207b365f0e3ee4eeff6a5f6e25e85d27c5e8b3c7a7d09df40aefe1296abc9a"
+    },
+    {
+      "path": "outer-points/1-000185.pickle",
+      "bytes": 1994,
+      "sha256": "b9ee36200429d31ceb25932a14a3b9a4e5b39b3176374209929dfd1a34891e15"
+    },
+    {
+      "path": "outer-points/1-000186.pickle",
+      "bytes": 1994,
+      "sha256": "141f21dcc03e37417f5d4d60408deb6716923aa85652adc33e5f4cb1d6a1e9e1"
+    },
+    {
+      "path": "outer-points/1-000187.pickle",
+      "bytes": 1994,
+      "sha256": "bef0d427c62264f3503db9280c8e1c6efd59779e633ec59250f02f44834c5095"
+    },
+    {
+      "path": "outer-points/1-000188.pickle",
+      "bytes": 1994,
+      "sha256": "975f6d1fa03550f1c930b9feec526067e46f7cf01a16588871c11d7c84d2162a"
+    },
+    {
+      "path": "outer-points/1-000189.pickle",
+      "bytes": 1994,
+      "sha256": "de1b843ad6be39e771b1e14485e319834edef365313e8c9ff9087e91372b6fb0"
+    },
+    {
+      "path": "outer-points/1-000190.pickle",
+      "bytes": 1994,
+      "sha256": "c7f890a9b130eb10cf3db02f37ac1779eb08d4ad5b7c2131bb9a67a8dc41db0c"
+    },
+    {
+      "path": "outer-points/1-000191.pickle",
+      "bytes": 1994,
+      "sha256": "9ccb96bf56447428fb2e96e9459212fb9ba02d8c8d3fd24f53135e46d8091c5c"
+    },
+    {
+      "path": "outer-points/1-000192.pickle",
+      "bytes": 1994,
+      "sha256": "3d08b9c97405249a77211709927a48f1da1af3dfdad397514d3eee7d10f344f7"
+    },
+    {
+      "path": "outer-points/1-000193.pickle",
+      "bytes": 1994,
+      "sha256": "4d12871ddb2646040831a2d9f0508530cc2a6d3d443a535985f12217e06e33a4"
+    },
+    {
+      "path": "outer-points/1-000194.pickle",
+      "bytes": 1994,
+      "sha256": "8b5dd06b7989b84465fb09af453b1354bdc144a58cfcc639da3bc1a02b7cf5da"
+    },
+    {
+      "path": "outer-points/1-000195.pickle",
+      "bytes": 1994,
+      "sha256": "62031c295db6fb7a4532539bfc50ebf6421e44968b57fcd274dffbeb7e320a1a"
+    },
+    {
+      "path": "outer-points/1-000196.pickle",
+      "bytes": 1994,
+      "sha256": "6bea9cd60c14cd1beab0055f201c1978f73901b20ffc0bea97df46dece54119e"
+    },
+    {
+      "path": "outer-points/1-000197.pickle",
+      "bytes": 1994,
+      "sha256": "12cc698a49cb7cdb42bcbb5cc5290841af2b42e076eeb13ecbc4cfd03ae8f0d3"
+    },
+    {
+      "path": "outer-points/1-000198.pickle",
+      "bytes": 1994,
+      "sha256": "0fc1ea3f3740667a1ef95acce452113666b37b2bab575f122e073137e720d71c"
+    },
+    {
+      "path": "outer-points/1-000199.pickle",
+      "bytes": 1994,
+      "sha256": "e175589b2a7594767fdd1132f67732cd941add48acde6cbb38606cf4b7b4aca0"
+    },
+    {
+      "path": "outer-points/1-000200.pickle",
+      "bytes": 1994,
+      "sha256": "7ea105f70346e1dedbc00388e89de2f33e4fddeba119f920000d23abdf8f2ae4"
+    },
+    {
+      "path": "outer-points/1-000201.pickle",
+      "bytes": 1994,
+      "sha256": "5c2560a59e095ec85414a8f9a5fa83a815d9554fbf53b8ceb09dc4e1252cc777"
+    },
+    {
+      "path": "outer-points/1-000202.pickle",
+      "bytes": 1994,
+      "sha256": "b8e244d18a307629608161f5d403f76c894a049dffb2570b40f1fb0d9a52e904"
+    },
+    {
+      "path": "outer-points/1-000203.pickle",
+      "bytes": 1994,
+      "sha256": "5974c14a52c738066ea8ff6011e3effa6ef27bbc66bd965e4c325eb5f03fe0b6"
+    },
+    {
+      "path": "outer-points/1-000204.pickle",
+      "bytes": 1994,
+      "sha256": "c6e2f4a98c0d0e218fc1365debf4dc11b943dbc6b1c9bb6853eb369c94b95aa9"
+    },
+    {
+      "path": "outer-points/1-000205.pickle",
+      "bytes": 1994,
+      "sha256": "6591f03b79044d8b29f0c824a4f54988a9899cee3b2dd266f705a835eef04173"
+    },
+    {
+      "path": "outer-points/1-000206.pickle",
+      "bytes": 1994,
+      "sha256": "e9cdba18ac41775966a5b94f5c51e630465c4f94d80874ef12f4d832a27295d8"
+    },
+    {
+      "path": "outer-points/1-000207.pickle",
+      "bytes": 1994,
+      "sha256": "3fa240ecbc0c669fb4c46a843fb7488395fd0d195ff0d286dca4016439afd828"
+    },
+    {
+      "path": "outer-points/1-000208.pickle",
+      "bytes": 1994,
+      "sha256": "4170de78d795d38fc8e7bab116c048a4525d9682ffed4a3f03c140cfb4f45150"
+    },
+    {
+      "path": "outer-points/1-000209.pickle",
+      "bytes": 1994,
+      "sha256": "c4bd8da7b2662c228e68c3c072760e704c336c6746f1ecdd6f2e4c0e653fae7d"
+    },
+    {
+      "path": "outer-points/1-000210.pickle",
+      "bytes": 1994,
+      "sha256": "ddfdc156a5545d5cbbd00738dca85aa0e30f0983802790c9a781036b54c30fd9"
+    },
+    {
+      "path": "outer-points/1-000211.pickle",
+      "bytes": 1994,
+      "sha256": "f69475ca3c9c8e18794882e83be14767d8d0bda5867273a61696d65dafd70138"
+    },
+    {
+      "path": "outer-points/1-000212.pickle",
+      "bytes": 1994,
+      "sha256": "7920306dec3d88f013cba7a4b00ea4f476477f7bebd928e4d5136f9c9175617a"
+    },
+    {
+      "path": "outer-points/1-000213.pickle",
+      "bytes": 1994,
+      "sha256": "c28623f1adebf6f323cd3fa1449ff0fbc7059ba8e1941919349baf8e2976a098"
+    },
+    {
+      "path": "outer-points/1-000214.pickle",
+      "bytes": 1994,
+      "sha256": "1e5a879f7155616700a289013d7634fda266136ced8e68e36115ff506ea7983d"
+    },
+    {
+      "path": "outer-points/1-000215.pickle",
+      "bytes": 1994,
+      "sha256": "b952fb0bd51ba867a502f675aa0e3cb60ca0a463555937d16d3cf5a001179156"
+    },
+    {
+      "path": "outer-points/1-000216.pickle",
+      "bytes": 1994,
+      "sha256": "dfef665635a9612b1a5acb2c2fe447dc9997783a0c0ebde951b4074116a9f091"
+    },
+    {
+      "path": "outer-points/1-000217.pickle",
+      "bytes": 1994,
+      "sha256": "458ad0f6c8625d866b5102b96d3de1a2b4031de25b51a4079d79ebcdb40a6885"
+    },
+    {
+      "path": "outer-points/1-000218.pickle",
+      "bytes": 1994,
+      "sha256": "22a67904f370bf8510f2019dead35ab3601bf355d791374fcef61dbac05b19d8"
+    },
+    {
+      "path": "outer-points/1-000219.pickle",
+      "bytes": 1994,
+      "sha256": "5a2308393a66825a331d74d38a6c2acfed8840f5597cca83e69b0220bb9b140a"
+    },
+    {
+      "path": "outer-points/1-000220.pickle",
+      "bytes": 1994,
+      "sha256": "23d1f3a211755163dd8088ef4ad945d73f0ae3f98bc76ece81aaa0cfabb8f8de"
+    },
+    {
+      "path": "outer-points/1-000221.pickle",
+      "bytes": 1994,
+      "sha256": "4a52aefcfe8738e22cae54cc545a1b806961eb3b1e0a35d26f14f37664dedb98"
+    },
+    {
+      "path": "outer-points/1-000222.pickle",
+      "bytes": 1994,
+      "sha256": "9ff1b979c571d91e90a569264ca49b6262261aa734b7d78952a3ed29d7490f61"
+    },
+    {
+      "path": "outer-points/1-000223.pickle",
+      "bytes": 1994,
+      "sha256": "fd905d8f88a8d3fe1ae75443ed02de84b41a30cc2830ac05e8064852cd38975a"
+    },
+    {
+      "path": "outer-points/1-000224.pickle",
+      "bytes": 1994,
+      "sha256": "08cd9ce0acc79be43301d05eb713e6cebac75c949cd9a2bf0f1f7f38248db4d5"
+    },
+    {
+      "path": "outer-points/1-000225.pickle",
+      "bytes": 1994,
+      "sha256": "6cf1c08a1600290fb9634bc4a296dd8932514e5fa54653c790bbfd8398c7c7c4"
+    },
+    {
+      "path": "outer-points/1-000226.pickle",
+      "bytes": 1994,
+      "sha256": "641dae3a7daeac57a703e1631f30359731722aa907ff43d9be358eda3e82aa25"
+    },
+    {
+      "path": "outer-points/1-000227.pickle",
+      "bytes": 1994,
+      "sha256": "6df877e912caa7f9746dd119f8f2b8aed24fa44d98c096d390ebec52228e2dcb"
+    },
+    {
+      "path": "outer-points/1-000228.pickle",
+      "bytes": 1994,
+      "sha256": "ceb0fea23a866b106bd9ec17b25f42582390d0ba862609e1e0276af7ee2b8344"
+    },
+    {
+      "path": "outer-points/1-000229.pickle",
+      "bytes": 1994,
+      "sha256": "1dbd8f1c8fe1df48936c5d974066427eac78dc87eb0d0313a4c6200909e04e26"
+    },
+    {
+      "path": "outer-points/1-000230.pickle",
+      "bytes": 1994,
+      "sha256": "09eeb4923f9b78e763ecde646de1314bea1123f7e7ac409cb64a390bd2592458"
+    },
+    {
+      "path": "outer-points/1-000231.pickle",
+      "bytes": 1994,
+      "sha256": "fa1bd537be134370a4e0944e0844f1bb8cefc649cd72d39a4c0ebd2f71cc4fb3"
+    },
+    {
+      "path": "outer-points/1-000232.pickle",
+      "bytes": 1994,
+      "sha256": "e9a87f5fd9b2db5d16881047cfbab3e22cec3f8a7bef9758b959433598de0604"
+    },
+    {
+      "path": "outer-points/1-000233.pickle",
+      "bytes": 1994,
+      "sha256": "2fbcca5dde34e69a10258ab38f75be292ad94c39eec80a138a29ee6be7c90fff"
+    },
+    {
+      "path": "outer-points/1-000234.pickle",
+      "bytes": 1994,
+      "sha256": "30ebbaa79e2b2415555ef1c5584e8706eb0cd9112ba8b3229dfa18518c83dec4"
+    },
+    {
+      "path": "outer-points/1-000235.pickle",
+      "bytes": 1994,
+      "sha256": "b2e7250e5f7198d2c479fedc3bda5864273e59fa1b87295799a0886d72a72f13"
+    },
+    {
+      "path": "outer-points/1-000236.pickle",
+      "bytes": 1994,
+      "sha256": "b93de10b06c58f0d40ec8cb07568c9b81189123a3ffda8e952bfc1ccea3e4905"
+    },
+    {
+      "path": "outer-points/1-000237.pickle",
+      "bytes": 1994,
+      "sha256": "638484444a4eef3a79f0117a222a566e3fa5d582b1c3237e245888007712d5e3"
+    },
+    {
+      "path": "outer-points/1-000238.pickle",
+      "bytes": 1994,
+      "sha256": "359de19c5efbedc1e60207a8c16c443737f514adf105e0427c0da3664891d320"
+    },
+    {
+      "path": "outer-points/1-000239.pickle",
+      "bytes": 1994,
+      "sha256": "85f8dbad2a72e8d31dd656f539615ff499cd9b51fa68110c135f6507c166ac80"
+    },
+    {
+      "path": "outer-points/1-000240.pickle",
+      "bytes": 1994,
+      "sha256": "94af8bb767606f3bda9434e60b1e83a2e049ce176d607111822baa4ed3532264"
+    },
+    {
+      "path": "outer-points/1-000241.pickle",
+      "bytes": 1994,
+      "sha256": "49f8b39a0a0a12deac95e2b283c270d367029f01283f90c91066197f15c69c2d"
+    },
+    {
+      "path": "outer-points/1-000242.pickle",
+      "bytes": 1994,
+      "sha256": "f8cb5d2580f2225acc9969e057e414ca22d9cbfc8df96b2ccffc1813f5ccfd87"
+    },
+    {
+      "path": "outer-points/1-000243.pickle",
+      "bytes": 1994,
+      "sha256": "5d63c251fd9c855cc1dcccdafd51d75fede3fd2295672068b5be0e626f4c6109"
+    },
+    {
+      "path": "outer-points/1-000244.pickle",
+      "bytes": 1994,
+      "sha256": "be20a40f9da07181a8e57e830478e13fd0a7034334b048b601d6d1493745c849"
+    },
+    {
+      "path": "outer-points/1-000245.pickle",
+      "bytes": 1994,
+      "sha256": "dc04ccf5102be8a68bc28ac669c8c05d4923ac984464571cb986c77cc4cf051d"
+    },
+    {
+      "path": "outer-points/1-000246.pickle",
+      "bytes": 1994,
+      "sha256": "f817921bc2392a3dd47592bdf3fecba1d126b94a8fc391b6f107a3378bbceaa7"
+    },
+    {
+      "path": "outer-points/1-000247.pickle",
+      "bytes": 1994,
+      "sha256": "08b4023dd2b1129382d781dcf06fc5c079185520118c826c1fa7a6d287b65802"
+    },
+    {
+      "path": "outer-points/1-000248.pickle",
+      "bytes": 1994,
+      "sha256": "8b6a271a7461454d5bc6ef05f6d92981d3e5f68402fa86554d17d38a080b0817"
+    },
+    {
+      "path": "outer-points/1-000249.pickle",
+      "bytes": 1994,
+      "sha256": "d761f2bd833d5d8f3aea1072497ebe3df750cd473f97aab947e85f3539f1a88a"
+    },
+    {
+      "path": "outer-points/1-000250.pickle",
+      "bytes": 1994,
+      "sha256": "26bdac1b86e323ef1e9f360da868c1d977a1195cffcf310d2eba69a007fccbbe"
+    },
+    {
+      "path": "outer-points/1-000251.pickle",
+      "bytes": 1994,
+      "sha256": "7ab7d34cf29d1da25baa7acf0dd1f71fc29de090c49114f769c71dd99b25af20"
+    },
+    {
+      "path": "outer-points/1-000252.pickle",
+      "bytes": 1994,
+      "sha256": "275c883514e208fead0b787b263cb312e6fe2ebdd73ce34ce164157188eb1299"
+    },
+    {
+      "path": "outer-points/1-000253.pickle",
+      "bytes": 1994,
+      "sha256": "55d90934ad15d32e8433b827290c45d2d46e133c55843467c56f7c4052dcfb28"
+    },
+    {
+      "path": "outer-points/1-000254.pickle",
+      "bytes": 1994,
+      "sha256": "f8e023cbe48eb1202da6fc455a003b825e6833ec38b971acd8e145dbb5d40e28"
+    },
+    {
+      "path": "outer-points/1-000255.pickle",
+      "bytes": 1994,
+      "sha256": "7edd4d93e3b9c5d5cf65f843cbd3ee9ecedf2b8ee15117b41163aa514fb224b8"
+    },
+    {
+      "path": "outer-points/1-000256.pickle",
+      "bytes": 1994,
+      "sha256": "0d1265632ef1e0df9949e3afbb922007fce3e78d00655650e61d07cefc9f3a14"
+    },
+    {
+      "path": "outer-points/1-000257.pickle",
+      "bytes": 1994,
+      "sha256": "2281b4a1468ffeb09f6ff831095d462db23b20af9a815cc4e35c6a7f2aec55f2"
+    },
+    {
+      "path": "outer-points/1-000258.pickle",
+      "bytes": 1994,
+      "sha256": "c635c5934e9f111560d2aebe92589dab7388cf2d670634aa47cd82b0398f2ecc"
+    },
+    {
+      "path": "outer-points/1-000259.pickle",
+      "bytes": 1994,
+      "sha256": "d7f2744373bcc1ca07f18acb6f516a115772da3249ae716663a0c059c23bfeac"
+    },
+    {
+      "path": "outer-points/1-000260.pickle",
+      "bytes": 1994,
+      "sha256": "50ccc5f7e22a929161a3a87c27630a49c96318f18106a88eb6c88ee8b2ceef1d"
+    },
+    {
+      "path": "outer-points/1-000261.pickle",
+      "bytes": 1994,
+      "sha256": "ba6fd6d9709d5c33c45f22d40cc5f604bafd3f17876b141f243c230329ec4275"
+    },
+    {
+      "path": "outer-points/1-000262.pickle",
+      "bytes": 1994,
+      "sha256": "72499ed866bd985e7d62b89cf2aeda4a9bd58074a0b99b2f0595f3573aaf8413"
+    },
+    {
+      "path": "outer-points/1-000263.pickle",
+      "bytes": 1994,
+      "sha256": "dd884e375950abc4dfb3cf1844eec662b0b484cc9fe1c8da2fe3d4b3707a9f58"
+    },
+    {
+      "path": "outer-points/1-000264.pickle",
+      "bytes": 1994,
+      "sha256": "5851fe15d91befce9611f9a5de5ee07b4e867bf9befa82ca07e7bd022dd33806"
+    },
+    {
+      "path": "outer-points/1-000265.pickle",
+      "bytes": 1994,
+      "sha256": "1bf1a74e87cebdbaeed0ffa910a02021d0509f13a60aa0904a7929c8a2ecd447"
+    },
+    {
+      "path": "outer-points/1-000266.pickle",
+      "bytes": 1994,
+      "sha256": "82297e69713ff62f467f91d1f4438ceb97b450b3a718c84052e9cef221ae3996"
+    },
+    {
+      "path": "outer-points/1-000267.pickle",
+      "bytes": 1994,
+      "sha256": "2326523f69a08b9b32ddda409cb86918aa09472fd4b9625645abb51856945b8b"
+    },
+    {
+      "path": "outer-points/1-000268.pickle",
+      "bytes": 1994,
+      "sha256": "4ab86fe320b2ea0f43dfe518f8f708ddc383913df9e64f39de08bedff8ccc999"
+    },
+    {
+      "path": "outer-points/1-000269.pickle",
+      "bytes": 1994,
+      "sha256": "ec5bd2b273fc5f69f005a7164746885e899d2272e51cb468bd4a75a40bb6eb30"
+    },
+    {
+      "path": "outer-points/1-000270.pickle",
+      "bytes": 1994,
+      "sha256": "1e6e4ed5207909885c9f0a9e7ca4632b363300be4cf84f0a3345f4d85444fdcf"
+    },
+    {
+      "path": "outer-points/1-000271.pickle",
+      "bytes": 1994,
+      "sha256": "e8741e8aea7609f6cb9f13854ca280c7ee34d572eb30ca2f12f57ca644674c84"
+    },
+    {
+      "path": "outer-points/1-000272.pickle",
+      "bytes": 1994,
+      "sha256": "d56f570b1506c20d7214eb544181d02d852f193114996e51e61900df4c7f90e5"
+    },
+    {
+      "path": "outer-points/1-000273.pickle",
+      "bytes": 1994,
+      "sha256": "d155e42a87053d0094fd79d91634a3c6c56794057176af14cd6efbe4ce57cf64"
+    },
+    {
+      "path": "outer-points/1-000274.pickle",
+      "bytes": 1994,
+      "sha256": "84f7cb7e9ca0d6d3d835e4c6875e81d4465817d942100587e884401bb6240d92"
+    },
+    {
+      "path": "outer-points/1-000275.pickle",
+      "bytes": 1994,
+      "sha256": "3ccb5d8567a04d27a224e523cdfbdbcf8f6387c6825a8e0af1bbfc1732b3d28c"
+    },
+    {
+      "path": "outer-points/1-000276.pickle",
+      "bytes": 1994,
+      "sha256": "74cfc992883562aeaf6d0947ad938530ca1a642ea28b8d94cada19a8f058c775"
+    },
+    {
+      "path": "outer-points/1-000277.pickle",
+      "bytes": 1994,
+      "sha256": "850a05b9153c30d677a8ff0a02d55b239310353fe2938860e62344af22ed7d96"
+    },
+    {
+      "path": "outer-points/1-000278.pickle",
+      "bytes": 1994,
+      "sha256": "29f4d475b7cbf1b4a5e2902df19b45eaba5721e480568a7e2c5f6c17b079e48e"
+    },
+    {
+      "path": "outer-points/1-000279.pickle",
+      "bytes": 1994,
+      "sha256": "2563cb7cdca664938468b7f59c3c1af4f51b8ffa2910f8d96c07690c6c62b188"
+    },
+    {
+      "path": "outer-points/1-000280.pickle",
+      "bytes": 1994,
+      "sha256": "301a75cac4a677c004724de6cf3ee00104d0c89100a7173357f3665f78b1a1a7"
+    },
+    {
+      "path": "outer-points/1-000281.pickle",
+      "bytes": 1994,
+      "sha256": "e68e45548aa1f7b4d171a1c5c80cabbd17e6f7f7be6d7c4cc269f83e1eb5b703"
+    },
+    {
+      "path": "outer-points/1-000282.pickle",
+      "bytes": 1994,
+      "sha256": "d8929c2c4a8d72bf8fa435b75154fc5f4bed83b318c4b4715e1385a13751b6ca"
+    },
+    {
+      "path": "outer-points/1-000283.pickle",
+      "bytes": 1994,
+      "sha256": "b8193b80c6a8d83ae69f5c4b849788c5e93183ad8dfddd68c2e29091d098f427"
+    },
+    {
+      "path": "outer-points/1-000284.pickle",
+      "bytes": 1994,
+      "sha256": "66990f12d2cddab89c83a2dd0c8315eae13ab0f211a3cc0f9cdc616bee4d8393"
+    },
+    {
+      "path": "outer-points/1-000285.pickle",
+      "bytes": 1994,
+      "sha256": "090ef18bb1aa17c4fcc854d5db279d8e93e6d550594461091a05cc3877836e87"
+    },
+    {
+      "path": "outer-points/1-000286.pickle",
+      "bytes": 1994,
+      "sha256": "b3dfb5a57470d827c73eadd16678b946299f784b440e2b661e001e15193f857d"
+    },
+    {
+      "path": "outer-points/1-000287.pickle",
+      "bytes": 1994,
+      "sha256": "9f8862a88ea4d2562f8bc5e4459851127ca47021cd0d0b600af8da42838cf9a9"
+    },
+    {
+      "path": "outer-points/1-000288.pickle",
+      "bytes": 1994,
+      "sha256": "6e5669ebdeee216b04716eb8c06bf82e384cc3a9533e54322e67f4664c96b04e"
+    },
+    {
+      "path": "outer-points/1-000289.pickle",
+      "bytes": 1994,
+      "sha256": "8766b2f2b71ca07620f2667f9a3ff5cc2726ec546254f185bc8e3cb3c2665aa7"
+    },
+    {
+      "path": "outer-points/1-000290.pickle",
+      "bytes": 1994,
+      "sha256": "6fda79f6cb2c5f3889e1b52225b339c12b615eaa77f64b2f99b5b01105f91798"
+    },
+    {
+      "path": "outer-points/1-000291.pickle",
+      "bytes": 1994,
+      "sha256": "b4418587f1080f90faa7e0bc139065533357163cc1911b60a0cfcc2ebc85a904"
+    },
+    {
+      "path": "outer-points/1-000292.pickle",
+      "bytes": 1994,
+      "sha256": "cbd3b735be53b6c701ff97a38aec115c35afaee8e46b95033dce054a812886e0"
+    },
+    {
+      "path": "outer-points/1-000293.pickle",
+      "bytes": 1994,
+      "sha256": "96ce27a09a39ac10a2c6f1d4bcced8b92472b3a2f5cbbe419515df3e1a978747"
+    },
+    {
+      "path": "outer-points/1-000294.pickle",
+      "bytes": 1994,
+      "sha256": "b1eec9c73498e0b99341caf606a73111f470954556ece13aa0de01b9969004ca"
+    },
+    {
+      "path": "outer-points/1-000295.pickle",
+      "bytes": 1994,
+      "sha256": "62f39fc8167645fc722f47186083a9bfcdca8e06a584ff1b58b4ff4f7dc99345"
+    },
+    {
+      "path": "outer-points/1-000296.pickle",
+      "bytes": 1994,
+      "sha256": "d5e7423e4cd87fd53e7e33bbc3e466873b79c0b4138acebe53c9cb7de7858a67"
+    },
+    {
+      "path": "outer-points/1-000297.pickle",
+      "bytes": 1994,
+      "sha256": "6e52e7f95e5d43c9f87960c059d4f78e3126f123f97bd2511a66343794963dbe"
+    },
+    {
+      "path": "outer-points/1-000298.pickle",
+      "bytes": 1994,
+      "sha256": "b183f7f792adf51f1df767fa688ff2bcaf34a2575e3f38b0fc12e4353f0dfb5a"
+    },
+    {
+      "path": "outer-points/1-000299.pickle",
+      "bytes": 1994,
+      "sha256": "6ba3e9f4d587b2ff01e1223682d0c530efe5bac14694cfaf91c507b3b6d671c1"
+    },
+    {
+      "path": "outer-points/1-000300.pickle",
+      "bytes": 1994,
+      "sha256": "2b63bd793d208ebbf5f741e11847e154d72401161f404f96cb75c598a8e68161"
+    },
+    {
+      "path": "outer-points/1-000301.pickle",
+      "bytes": 1994,
+      "sha256": "0c67509745f11c731eaa78bb22769981ed53bebbd39fd2aa8f8e19c29289a5b7"
+    },
+    {
+      "path": "outer-points/1-000302.pickle",
+      "bytes": 1994,
+      "sha256": "8e95d8d594befbffcd4288e94d1cf6948acee436bdeb0a207a167d1d6afeb281"
+    },
+    {
+      "path": "outer-points/1-000303.pickle",
+      "bytes": 1994,
+      "sha256": "a77af22a7ccb59df1fb58d13fde38d3669ff2451160db7d493e25496fe33575f"
+    },
+    {
+      "path": "outer-points/1-000304.pickle",
+      "bytes": 1994,
+      "sha256": "70ed983e65b33268ffcd25313944e979b235865c36e82188df090daa7d31f83c"
+    },
+    {
+      "path": "outer-points/1-000305.pickle",
+      "bytes": 1994,
+      "sha256": "50886688bf619869aaf743297aad4bd9242808ddb9c2c1d397d13fd87ae36cb6"
+    },
+    {
+      "path": "outer-points/1-000306.pickle",
+      "bytes": 1994,
+      "sha256": "52b4b927c229fc61eaa00db602faf077fca2da64b415879bdae57cd3cf305a59"
+    },
+    {
+      "path": "outer-points/1-000307.pickle",
+      "bytes": 1994,
+      "sha256": "01f16f36515a803064d7e1937bfecdc0680bc2a269433cb4ce62ce2cb6aae98c"
+    },
+    {
+      "path": "outer-points/1-000308.pickle",
+      "bytes": 1994,
+      "sha256": "c7c71cced03ad1be6517faac7032fe24482521c857d1cb84eb1c242980661d1c"
+    },
+    {
+      "path": "outer-points/1-000309.pickle",
+      "bytes": 1994,
+      "sha256": "ab2f961fbed8ac62d97234e2263441bf60448c2a113ac583262f3223854ac918"
+    },
+    {
+      "path": "outer-points/1-000310.pickle",
+      "bytes": 1994,
+      "sha256": "eee0d3a22ee454ff054eeaa2de85a432c4cc8b46852330a79818b8ad7e1e055c"
+    },
+    {
+      "path": "outer-points/1-000311.pickle",
+      "bytes": 1994,
+      "sha256": "667e41d0fc8708e321a8dd101fb66ec3d8254ea1537844546d26b479e7604252"
+    },
+    {
+      "path": "outer-points/1-000312.pickle",
+      "bytes": 1994,
+      "sha256": "0c2bd5851d3a81c6f9fb308ff1199b6c5cc96d8836317b3a4ee57f01cec00035"
+    },
+    {
+      "path": "outer-points/1-000313.pickle",
+      "bytes": 1994,
+      "sha256": "1574707313dd7fc7946c812b874b245b3b79e55af40cb7a0d814bd8ca32d16cd"
+    },
+    {
+      "path": "outer-points/1-000314.pickle",
+      "bytes": 1994,
+      "sha256": "2c197a3b906fe6e5dbff357c02355e1ff2f3498e4bb2e6c0e0e3ee5ba22aee2a"
+    },
+    {
+      "path": "outer-points/1-000315.pickle",
+      "bytes": 1994,
+      "sha256": "0ef3eaba3ba11ac4623f127ccc5a7133efa0d17a95b9fc4855d1ad63a2aefdd3"
+    },
+    {
+      "path": "outer-points/1-000316.pickle",
+      "bytes": 1994,
+      "sha256": "25833d7835760c5b65f39adf42a85b30699641fd635584f212251cf471da8670"
+    },
+    {
+      "path": "outer-points/1-000317.pickle",
+      "bytes": 1994,
+      "sha256": "aec3b91710a061cf655e6161c420323529dd8497f4f28aa712facb0f1ee09405"
+    },
+    {
+      "path": "outer-points/1-000318.pickle",
+      "bytes": 1994,
+      "sha256": "4c92cf21cf8ecbf9f3ff993beeba11a9a4a772c0c0d3c039ae7d92090c20337c"
+    },
+    {
+      "path": "outer-points/1-000319.pickle",
+      "bytes": 1994,
+      "sha256": "0f1d0ce5a0f6ea291a7b978a85282409f40c9f46406eae2572218b9956fe1e39"
+    },
+    {
+      "path": "outer-points/1-000320.pickle",
+      "bytes": 1994,
+      "sha256": "58f4c7e7f9a7b6360b13d3d5f5505f634c7d17e57538242091be1f3f302e8a71"
+    },
+    {
+      "path": "outer-points/1-000321.pickle",
+      "bytes": 1994,
+      "sha256": "95484889c38f456816e631e2922179e155d473c2d353480fe9db22491fc5d61f"
+    },
+    {
+      "path": "outer-points/1-000322.pickle",
+      "bytes": 1994,
+      "sha256": "6cb9d5101da1d37646e9385fb627e5630d62ecdf488add214b0d1fed956ac798"
+    },
+    {
+      "path": "outer-points/1-000323.pickle",
+      "bytes": 1994,
+      "sha256": "8f4fa6bf0944d1eaee5c8ec797f320b310e907c9a4d6899f5781f84f887d44ac"
+    },
+    {
+      "path": "outer-points/1-000324.pickle",
+      "bytes": 1994,
+      "sha256": "d1888d0c207d22b97e59418dee9b6f51881cae6e136d138be6ee0c873d609d7f"
+    },
+    {
+      "path": "outer-points/1-000325.pickle",
+      "bytes": 1994,
+      "sha256": "db4b7d60c56472b1d6376c5f04c23929943d51b51195eccbc4b68a56211e2e72"
+    },
+    {
+      "path": "outer-points/1-000326.pickle",
+      "bytes": 1994,
+      "sha256": "504558d20278f5a08a2423b5c63c21679fd9bca84231261348ecd04d89869ed8"
+    },
+    {
+      "path": "outer-points/1-000327.pickle",
+      "bytes": 1994,
+      "sha256": "4140821d52eb50ddf9d5b1f4f2964ef3159f1dffc11eca5dcd328d4032669fa8"
+    },
+    {
+      "path": "outer-points/1-000328.pickle",
+      "bytes": 1994,
+      "sha256": "18abff5e3dcb131a7bf28858368d5575ad3789274d8024ab516f9d029e654aac"
+    },
+    {
+      "path": "outer-points/1-000329.pickle",
+      "bytes": 1994,
+      "sha256": "93983f40f391b5cddb4b7245cf305b1a20043f161baac74a134bdd2a58db9ab5"
+    },
+    {
+      "path": "outer-points/1-000330.pickle",
+      "bytes": 1994,
+      "sha256": "d8941356c46abae30492132ce7e7735f29ae216535196bdd201c93b441dbd029"
+    },
+    {
+      "path": "outer-points/1-000331.pickle",
+      "bytes": 1994,
+      "sha256": "1f96200194223f9515283a98f51ef90666b2468cec6f076829336e402a69bc7a"
+    },
+    {
+      "path": "outer-points/1-000332.pickle",
+      "bytes": 1994,
+      "sha256": "8871845dbf85ab71a024f1e85829908ebd33a6a9676c5dba717fb62c106e7638"
+    },
+    {
+      "path": "outer-points/1-000333.pickle",
+      "bytes": 1994,
+      "sha256": "eda9bb972334decce620cb73137eef187ba0eda190f2b41fd5513c1d930a96d4"
+    },
+    {
+      "path": "outer-points/1-000334.pickle",
+      "bytes": 1994,
+      "sha256": "83efddee210e0c38f073f8f9e8bdefba0afd31d717fe3cd6e38bff5070c69493"
+    },
+    {
+      "path": "outer-points/1-000335.pickle",
+      "bytes": 1994,
+      "sha256": "135f546b346b85710cdaadd103894d01055ff1cb4fa82b7d3b540d793755cd85"
+    },
+    {
+      "path": "outer-points/1-000336.pickle",
+      "bytes": 1994,
+      "sha256": "1c2ffd28047c21701e12732069f36a0424171ccaf9642ddd28cb16a865445f18"
+    },
+    {
+      "path": "outer-points/1-000337.pickle",
+      "bytes": 1994,
+      "sha256": "f4ccb11cbbb77de0e8aa88e1aa3f059f74e8aabfa26f56e4bc695b4ab9881f47"
+    },
+    {
+      "path": "outer-points/1-000338.pickle",
+      "bytes": 1994,
+      "sha256": "f4cb955ccd94f8912d5bd972fdd92f45278987f96755784d8a7eb66504c34810"
+    },
+    {
+      "path": "outer-points/1-000339.pickle",
+      "bytes": 1994,
+      "sha256": "6ca647b5024042fde0a542800bd3290dbfac14cad9265e3d39917dd3d7d0656d"
+    },
+    {
+      "path": "outer-points/1-000340.pickle",
+      "bytes": 1994,
+      "sha256": "bef617dd4f0a41e362bbcc35aa97abc7d922e2856eb843aa84a07ed67c71130d"
+    },
+    {
+      "path": "outer-points/1-000341.pickle",
+      "bytes": 1994,
+      "sha256": "0bd4f10d47bd11762653da705b06d60280f58ed1e94e523cf752a3a4103454f9"
+    },
+    {
+      "path": "outer-points/1-000342.pickle",
+      "bytes": 1994,
+      "sha256": "e97c2a23edc0c16171ce5449b682df29896dff25b83feeef2a2c33de879a7c34"
+    },
+    {
+      "path": "outer-points/1-000343.pickle",
+      "bytes": 1994,
+      "sha256": "16b20f66731426b0fe11193f6952d09b8c69e16b72df9b509e718f7ba9b08f1a"
+    },
+    {
+      "path": "outer-points/1-000344.pickle",
+      "bytes": 1994,
+      "sha256": "008233f3563f5576a0034fccc4afb57f1e1d141b0cb77b7117403478cf0c822f"
+    },
+    {
+      "path": "outer-points/1-000345.pickle",
+      "bytes": 1994,
+      "sha256": "da0c79b7e1930b7e61856a675a5a3e0f05d0d82c5cb646dc1bb70b946153baf4"
+    },
+    {
+      "path": "outer-points/1-000346.pickle",
+      "bytes": 1994,
+      "sha256": "49808e9eb40942b82ecd9581ab074e8c4f2f372c73c3fd6da2be810432ba1f69"
+    },
+    {
+      "path": "outer-points/1-000347.pickle",
+      "bytes": 1994,
+      "sha256": "e79ac8cad3bcea3f4bba49900dd98b51c2a1ea0dcb96f886de55410f604c16d4"
+    },
+    {
+      "path": "outer-points/1-000348.pickle",
+      "bytes": 1994,
+      "sha256": "252553080fd7296cf0d24a157c1c094b4c72441b07ef4c87d8abb9334d974a54"
+    },
+    {
+      "path": "outer-points/1-000349.pickle",
+      "bytes": 1994,
+      "sha256": "069d64bd9a19e0fa7e36b408048e0f6273c08d7aec2e286a71b656849daad72e"
+    },
+    {
+      "path": "outer-points/1-000350.pickle",
+      "bytes": 1994,
+      "sha256": "f7541599cc23270626f0ce7d854a98081ad200f9504a1ac539ac37db15d7ec09"
+    },
+    {
+      "path": "outer-points/1-000351.pickle",
+      "bytes": 1994,
+      "sha256": "10796d9e581ad4c3863bce2d9bc286688ce252d29ebf49b1689e5379fcf2fc10"
+    },
+    {
+      "path": "outer-points/1-000352.pickle",
+      "bytes": 1994,
+      "sha256": "ddfa40fbdee4d5cb333d2a49488e1cf0fb181d10001673e568796660cf56f7ad"
+    },
+    {
+      "path": "outer-points/1-000353.pickle",
+      "bytes": 1994,
+      "sha256": "79b7c4e9373ac4a60f22573956d4ffa94b1bf65e5c2d4f2b79ad89591cf1ea91"
+    },
+    {
+      "path": "outer-points/1-000354.pickle",
+      "bytes": 1994,
+      "sha256": "a2fff9ebbf6e2f1786d66e8fbdd1ec6ed76adf657f927c79b950cc69790c8b1a"
+    },
+    {
+      "path": "outer-points/1-000355.pickle",
+      "bytes": 1994,
+      "sha256": "f9db7f4f66ceb03c87a8ccafefc097a12fcdb54c1cb143367c7216896fd09285"
+    },
+    {
+      "path": "outer-points/1-000356.pickle",
+      "bytes": 1994,
+      "sha256": "86b2f5e767a81d70733ad9749f2b15a348000202f9554edb75a2572027a60520"
+    }
+  ],
+  "packetHashesBeforeEmission": {
+    "accepted-bound-momentum.pickle": "6a6bf833a1c2e8d58a4f3469ca19c7ae6ea529d53549e47b9b053d1286154fb4",
+    "accepted-momentum-action.pickle": "2cf184cd82698f2a696e4812077f80d3b8bbb8dace7e07365e52ef86de78e54d",
+    "accepted-single-momentum.pickle": "ca03a9f6e1e3da8c2b30ee59bdb60a506f1f8feb07f6aeb229e72051bac46458",
+    "pair-momentum.pickle": "f39ccb536c7dc27ef27f4be759b503fd8b53b50fea64c6175fcddebe872bd3b9"
+  },
+  "packetHashesAfterEmission": {
+    "accepted-bound-momentum.pickle": "6a6bf833a1c2e8d58a4f3469ca19c7ae6ea529d53549e47b9b053d1286154fb4",
+    "accepted-momentum-action.pickle": "2cf184cd82698f2a696e4812077f80d3b8bbb8dace7e07365e52ef86de78e54d",
+    "accepted-single-momentum.pickle": "ca03a9f6e1e3da8c2b30ee59bdb60a506f1f8feb07f6aeb229e72051bac46458",
+    "pair-momentum.pickle": "f39ccb536c7dc27ef27f4be759b503fd8b53b50fea64c6175fcddebe872bd3b9"
+  },
+  "wallSeconds": 305.6458135554567,
+  "peakRssKiB": 331132,
+  "artifacts": {
+    "accepted-single-momentum.pickle": {
+      "bytes": 671911,
+      "sha256": "ca03a9f6e1e3da8c2b30ee59bdb60a506f1f8feb07f6aeb229e72051bac46458"
+    },
+    "accepted-momentum-action.pickle": {
+      "bytes": 550399,
+      "sha256": "2cf184cd82698f2a696e4812077f80d3b8bbb8dace7e07365e52ef86de78e54d"
+    },
+    "full.out": {
+      "bytes": 5651996,
+      "sha256": "9b901f3aac1a46869cf59c5ef0ac5d30c98710f573ee441da18b669fe4fa80f0"
+    },
+    "accepted-bound-momentum.pickle": {
+      "bytes": 638411,
+      "sha256": "6a6bf833a1c2e8d58a4f3469ca19c7ae6ea529d53549e47b9b053d1286154fb4"
+    },
+    "pair-momentum.pickle": {
+      "bytes": 976735,
+      "sha256": "f39ccb536c7dc27ef27f4be759b503fd8b53b50fea64c6175fcddebe872bd3b9"
+    }
+  },
+  "scope": "Two-momentum outer/panel/source/profile refinements and adaptive outer comparison, with accepted single-momentum and original finest three-momentum terms explicitly held. No full-action tail, regulator limit, scattering or pole result.",
+  "publication": {
+    "path": "scripts/out/S11c_d_pair_momentum.out",
+    "bytes": 5651996,
+    "sha256": "9b901f3aac1a46869cf59c5ef0ac5d30c98710f573ee441da18b669fe4fa80f0"
+  },
+  "metrics": {
+    "finalOuterIntegralChange": 8.324254453482052e-14,
+    "finalInnerPanelIntegralChange": 1.4955896501267857e-12,
+    "finalSourceIntegralChange": 2.618455766672135e-16,
+    "finalProfileIntegralChange": 8.541938514399924e-15,
+    "adaptiveMaxIntegralDifference": 2.447832850559355e-14,
+    "adaptiveMaxActionDifference": 6.206335383118183e-17,
+    "adaptiveMaxErrorEstimate": 1.5996241955419222e-12
+  },
+  "verificationInvocation": {
+    "stage": "pair_construct",
+    "command": [
+      "python",
+      "-u",
+      "_measurements/S11c_d_pair_momentum_check.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-pair-momentum-20260915/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-pair-momentum-20260915/pair_construct.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-pair-momentum-20260915/pair_construct.stderr",
+    "startedUtc": "2026-09-15T19:05:35.212616+00:00",
+    "childPid": 3128046,
+    "status": "completed",
+    "exitCode": 0,
+    "wallSeconds": 307.52818158548325,
+    "stderrBytes": 0,
+    "finishedUtc": "2026-09-15T19:10:42.740888+00:00"
+  },
+  "finalChecksSha256": "a737d69e85499f79f4ca9730d170b5ab847dd929a9b098163ab99312ec3bbece"
+}

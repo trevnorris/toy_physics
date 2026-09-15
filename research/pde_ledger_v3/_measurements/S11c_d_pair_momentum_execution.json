@@ -1,12 +1,12 @@
 {
-  "status": "RUNNING",
+  "status": "VALIDATED_PUBLICATION_PREPARED",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-pair-momentum-20260915",
   "stage": "pair_construct",
   "plan": "S11c_d_pair_momentum_plan.md",
   "report": "S11c_d_pair_momentum_report.md",
   "checker": "S11c_d_pair_momentum_check.py",
   "acceptedSingleCommit": "9fad1d115b9c24aba2ad8841087f149a05687796",
-  "next": "Validate two-momentum outer/panel/source/profile refinements and adaptive outer comparison, with accepted single- and three-momentum terms held explicitly.",
+  "next": "Annex-verify publication, then refine remaining three-momentum raw integrals with validated single/pair contributions held explicitly.",
   "scope": "Finite paired-momentum quadrature at fixed positive regulator; no full physical action limit, matching, scattering or poles.",
   "preflight": "S11c_d_pair_momentum_preflight.json",
   "preflightChecksSha256": "164cf1ebc36758127a4ceb35089a75cac85679112c01b7dba05908bed1cf1f9b",
@@ -64,5 +64,25 @@
     "notifications": {}
   },
   "observedProcesses": "    PID STAT     ELAPSED NLWP COMMAND\n3128040 Ss         00:27    1 /usr/bin/python _measurements/S11c_d_end_normalization_run.py --run-root /var/projects/toy_physics/_scratch/s11c/s11c-pair-momentum-20260915 --stage pair_construct -- python -u _measurements/S11c_d_pair_momentum_check.py --run-directory /var/projects/toy_physics/_scratch/s11c/s11c-pair-momentum-20260915/complete\n3128041 Ss         00:27    1 /usr/bin/python /var/projects/toy_physics/_scratch/s11c/s11c-pair-momentum-20260915/completion-watcher/watch.py --pid 3128040 --thread 01a08c53-295c-70f0-baaf-353db1745867 --directory /var/projects/toy_physics/_scratch/s11c/s11c-pair-momentum-20260915/completion-watcher --message-file /var/projects/toy_physics/_scratch/s11c/s11c-pair-momentum-20260915/completion-watcher/continuation.txt --error-log /var/projects/toy_physics/_scratch/s11c/s11c-pair-momentum-20260915/pair_construct.stderr --codex-bin /home/trevnorris/.npm-packages/bin/codex\n3128046 R          00:27    1 python -u _measurements/S11c_d_pair_momentum_check.py --run-directory /var/projects/toy_physics/_scratch/s11c/s11c-pair-momentum-20260915/complete\n",
-  "launcherSha256": "b2a2bf2d660017cc1099af5d8b0d97dfc49e3b9cf119b38a7775eb1e9ad05214"
+  "launcherSha256": "b2a2bf2d660017cc1099af5d8b0d97dfc49e3b9cf119b38a7775eb1e9ad05214",
+  "invocation": {
+    "stage": "pair_construct",
+    "command": [
+      "python",
+      "-u",
+      "_measurements/S11c_d_pair_momentum_check.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-pair-momentum-20260915/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-pair-momentum-20260915/pair_construct.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-pair-momentum-20260915/pair_construct.stderr",
+    "startedUtc": "2026-09-15T19:05:35.212616+00:00",
+    "childPid": 3128046,
+    "status": "completed",
+    "exitCode": 0,
+    "wallSeconds": 307.52818158548325,
+    "stderrBytes": 0,
+    "finishedUtc": "2026-09-15T19:10:42.740888+00:00"
+  },
+  "acceptedCheckpoint": "S11c_d_pair_momentum_checkpoint.json"
 }

@@ -1,27 +1,28 @@
 # S11c-d two-momentum refinement
 
-The one-momentum refinement is published at 9fad1d11. Its final outer/source
-changes are below 6.64e-15/3.81e-15, and adaptive outer actions agree within
-1.90e-15. This stage retains those values and the original finest three-momentum
-terms while refining all 30 native two-momentum rows on both approved fields.
+The complete run passed in 308 seconds with exit zero and empty stderr, using
+one native numerical thread. All 30 two-momentum rows, 30 bound source records
+and two nested profile types cover both approved fields and three positions.
+The original outer-64/panel-16/source-128/profile-128 baseline replays exactly.
+Every held single/three-momentum term is unchanged; actual measure controls respond.
 
-The prepared run varies outer order, inner panel order, source order and profile
-order separately, then compares independent adaptive outer quadrature. It keeps
-the original finite bounds and positive regulator. Complete actions explicitly
-identify the changed and held rules; held-layout convergence is not presumed.
+Final raw-integral changes under outer, inner-panel, source and profile refinement
+are respectively 8.33e-14, 1.50e-12, 2.62e-16 and 8.55e-15. Adaptive Gauss-Kronrod
+outer quadrature agrees within 2.45e-14 in integral arrays and 6.21e-17 in complete
+actions, with error estimates at most 1.60e-12. Independence is restricted to the
+outer rule on the same inner/source/profile operands. The final action correction
+from the old pair baseline is 3.63e-11 / 1.53e-11 for the two fields.
 
-The new helper caches the same source and profile Gauss nodes/weights. A whole-
-engine AST join preserves all existing construction code, and a separate method
-join permits only the profile-rule lookup change. Every cache is compared exactly
-with the original rule and made read-only. One native numerical thread is used.
-Every completed grid, partial sum and adaptive outer-point value is saved.
+All 22 records, nine exact read-only caches, 20,778 tags, 10,387 fresh keys and
+91,047 metadata paths pass. Source and profile cache units remain distinct.
+All 52 source hashes, 80 partial and 672 adaptive-point packets are verified;
+pre/post-emission packet identities agree. Peak process RSS was 323.4 MiB.
+The 5,651,996-byte transcript is prepared for annex publication at
+`scripts/out/S11c_d_pair_momentum.out`; SHA256
+`9b901f3aac1a46869cf59c5ef0ac5d30c98710f573ee441da18b669fe4fa80f0`.
 
-Focused checks passed in 31.9 seconds with exit zero and empty stderr: all
-30 rows and complete actions reproduce the accepted baseline exactly. Summing
-128 independently evaluated inner-at-outer values differs by only 1.17e-17.
-All source/profile node and weight caches match exactly and remain read-only;
-actual weight mutations respond on both tests.
-No paired refinement result is accepted yet. Three-momentum refinement,
-independent-grade coverage, physical tails/interchange and Abel weak limits
-remain separate requirements before matching, scattering and poles. All approved
-inputs, durable operands and the retained solver/export contract are preserved.
+Next: refine all ten three-momentum raw integrals. Their small weighted action
+contribution does not establish raw-integral or independent-grade convergence.
+Physical domain tails/interchange, Abel weak limits, matching, scattering and
+bound poles remain separate work. Approved inputs and the retained contract stay
+unchanged; all accepted operands and failed-run evidence remain in repository scratch.

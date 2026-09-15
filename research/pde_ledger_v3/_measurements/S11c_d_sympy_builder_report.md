@@ -107,11 +107,12 @@ exactly. The 3.84 MB transcript has 13,230 tags and 64,385 metadata paths, with
 unchanged packet hashes. Next is two-momentum refinement with the accepted
 one- and three-momentum terms held explicitly. Full physical limits remain work.
 
-The prepared two-momentum evaluator reproduces all 30 baseline rows and full
-actions exactly; independent inner-at-outer reconstruction differs by at most
-1.17e-17. Exact cached source/profile rules preserve the original evaluator.
-Next it varies outer/panel/source/profile resolution separately and compares
-adaptive outer integration, holding accepted other layouts explicitly.
+Two-momentum refinement is validated: final outer/panel/source/profile raw
+integral changes are 8.33e-14 / 1.50e-12 / 2.62e-16 / 8.55e-15. Adaptive outer
+quadrature agrees within 2.45e-14 in integrals and 6.21e-17 in complete actions.
+All 30 rows, 22 records and 91,047 metadata paths pass, with unchanged held terms
+and packet hashes. The 5.65 MB transcript is prepared for annex publication.
+Next: the remaining ten three-momentum rows, before physical tails and Abel limits.
 
 ## Retained user-approved solver/export contract
 

@@ -1,0 +1,36 @@
+{
+  "handoffPath": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-momentum-20260915/handoff.json",
+  "handoffSha256": "b43641230186bd7e1c666176ea0b8d7d3dd32c95c028391afe95b0156114f9cd",
+  "status": "SERIAL_STOPPED_FOR_PARALLEL",
+  "oldInvocation": {
+    "stage": "source_construct",
+    "command": [
+      "python",
+      "-u",
+      "_measurements/S11c_d_three_momentum_source_check.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-three-momentum-source-20260915/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-three-momentum-source-20260915/source_construct.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-three-momentum-source-20260915/source_construct.stderr",
+    "startedUtc": "2026-09-15T23:00:33.114065+00:00",
+    "childPid": 3205887,
+    "status": "failed",
+    "exitCode": -2,
+    "wallSeconds": 1127.1851413417608,
+    "stderrBytes": 1678,
+    "finishedUtc": "2026-09-15T23:19:20.299268+00:00"
+  },
+  "resumes": {
+    "0-1": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-momentum-20260915/handoff-inputs/0-1.pickle",
+      "sha256": "40080c4979dbb241a49cf859fa8debc54e437ac18b5f148d6e1e2e6f9da12064",
+      "sourcePath": "/var/projects/toy_physics/_scratch/s11c/s11c-three-momentum-source-20260915/complete/partials/0-1-045376.pickle",
+      "sourceSha256": "40080c4979dbb241a49cf859fa8debc54e437ac18b5f148d6e1e2e6f9da12064",
+      "kind": "partial_grid",
+      "nodeCount": 11616256
+    }
+  },
+  "recordCount": 1,
+  "partialCount": 709
+}

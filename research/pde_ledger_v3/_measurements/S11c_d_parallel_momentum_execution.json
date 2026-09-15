@@ -1,10 +1,13 @@
 {
-  "status": "RESUME_VALIDATED_PARALLEL_VALIDATION_PENDING",
+  "status": "SERIAL_HANDOFF_COMPLETE_PARALLEL_VALIDATION_PENDING",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-momentum-20260915",
   "plan": "S11c_d_parallel_momentum_plan.md",
   "report": "S11c_d_parallel_momentum_report.md",
   "instrument": "S11c_d_parallel_momentum.py",
   "workers": 4,
   "nativeThreadsPerWorker": 1,
-  "next": "Preserve and stop the owned serial run; validate four-process equivalence, then resume production from saved accumulators."
+  "next": "Preserve and stop the owned serial run; validate four-process equivalence, then resume production from saved accumulators.",
+  "implementationCommit": "c0034190",
+  "handoff": "S11c_d_parallel_momentum_handoff.json",
+  "preservedPrefixNodes": 11616256
 }

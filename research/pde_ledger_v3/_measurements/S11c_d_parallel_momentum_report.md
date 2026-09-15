@@ -19,3 +19,8 @@ comparisons are the next validation. Their purpose is scheduling equivalence;
 no new accuracy or physical-limit result follows. Preserve original serial logs
 and every saved operand during the intentional handoff. No source/profile
 refinement result has yet been accepted.
+
+The authorized handoff preserved 709 original partial packets and copied the
+latest 11,616,256-node accumulator byte-for-byte. The old watcher was disarmed
+before interrupting its verified child; its interrupted outcome is recorded
+explicitly. The four-worker validation will run before production continuation.

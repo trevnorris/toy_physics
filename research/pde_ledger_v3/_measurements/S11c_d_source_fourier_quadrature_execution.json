@@ -1,12 +1,12 @@
 {
-  "status": "FINAL_METADATA_COMPARISON_PREPARED",
+  "status": "FINAL_SAVED_TRANSCRIPT_VALIDATION_RUNNING",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-source-quadrature-20260914",
-  "stage": "source_recover",
+  "stage": "source_finish",
   "plan": "S11c_d_source_fourier_quadrature_plan.md",
   "report": "S11c_d_source_fourier_quadrature_report.md",
   "preflight": "S11c_d_source_fourier_quadrature_preflight.json",
   "acceptedFactorizationCommit": "bed088beb40f988647ec8a7861e9e898e4861fd5",
-  "next": "Finish the twenty certified raw-zero metadata transitions and final hashes from saved outputs, then publish source quadrature.",
+  "next": "Inspect the final saved-transcript validator outcome; publish only after all guards and hashes pass.",
   "scope": "Finite smooth source integrals and sampled quadrature refinement only; no full-action convergence, unbounded interchange, Abel weak limit, scattering or pole result.",
   "implementationCommit": "a86c0500",
   "originalLaunch": {
@@ -65,7 +65,7 @@
     }
   },
   "repair": "S11c_d_source_fourier_quadrature_loader_repair.json",
-  "activeRunRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-source-quadrature-20260914/recovery-02",
+  "activeRunRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-source-quadrature-20260914/recovery-03",
   "loaderRepairCommit": "0f1003030287f6210600eb13fed191f998e8a1dc",
   "launch": {
     "launchedUtc": "2026-09-15T12:45:49.574318+00:00",
@@ -505,5 +505,59 @@
     "stderrBytes": 2619,
     "finishedUtc": "2026-09-15T13:37:01.680199+00:00"
   },
-  "metadataRepair": "S11c_d_source_fourier_quadrature_metadata_repair.json"
+  "metadataRepair": "S11c_d_source_fourier_quadrature_metadata_repair.json",
+  "finishImplementationCommit": "f345ffe3",
+  "finishLaunch": {
+    "launch": {
+      "launchedUtc": "2026-09-15T13:47:05.252108+00:00",
+      "command": [
+        "/usr/bin/python",
+        "_measurements/S11c_d_end_normalization_run.py",
+        "--run-root",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-source-quadrature-20260914/recovery-03",
+        "--stage",
+        "source_finish",
+        "--",
+        "python",
+        "-u",
+        "_measurements/S11c_d_source_fourier_quadrature_finish.py",
+        "--run-directory",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-source-quadrature-20260914/recovery-03/complete",
+        "--source-run-directory",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-source-quadrature-20260914/recovery-02/complete"
+      ],
+      "supervisorPid": 751101,
+      "watcherPid": 751104,
+      "watcherDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-source-quadrature-20260914/recovery-03/completion-watcher"
+    },
+    "active": {
+      "stage": "source_finish",
+      "command": [
+        "python",
+        "-u",
+        "_measurements/S11c_d_source_fourier_quadrature_finish.py",
+        "--run-directory",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-source-quadrature-20260914/recovery-03/complete",
+        "--source-run-directory",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-source-quadrature-20260914/recovery-02/complete"
+      ],
+      "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-source-quadrature-20260914/recovery-03/source_finish.stdout",
+      "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-source-quadrature-20260914/recovery-03/source_finish.stderr",
+      "startedUtc": "2026-09-15T13:47:05.455360+00:00",
+      "childPid": 751151,
+      "status": "running"
+    },
+    "watcher": {
+      "status": "waiting",
+      "watcherPid": 751104,
+      "jobPid": 751101,
+      "thread": "01a08c53-295c-70f0-baaf-353db1745867",
+      "startedUtc": "2026-09-15T13:47:05.482229+00:00",
+      "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
+      "messageSha256": "3c0fbcfdfc40e5a20bba11ff43bc835a6179261604719585bf160deddc83b5cb",
+      "notifications": {}
+    },
+    "observedProcesses": "    PID STAT     ELAPSED COMMAND\n 751101 SNs        00:47 /usr/bin/python _measurements/S11c_d_end_normalization_run.py --run-root /var/projects/toy_physics/_scratch/s11c/s11c-source-quadrature-20260914/recovery-03 --stage source_finish -- python -u _measurements/S11c_d_source_fourier_quadrature_finish.py --run-directory /var/projects/toy_physics/_scratch/s11c/s11c-source-quadrature-20260914/recovery-03/complete --source-run-directory /var/projects/toy_physics/_scratch/s11c/s11c-source-quadrature-20260914/recovery-02/complete\n 751104 SNs        00:47 /usr/bin/python /var/projects/toy_physics/_scratch/s11c/s11c-source-quadrature-20260914/recovery-03/completion-watcher/watch.py --pid 751101 --thread 01a08c53-295c-70f0-baaf-353db1745867 --directory /var/projects/toy_physics/_scratch/s11c/s11c-source-quadrature-20260914/recovery-03/completion-watcher --message-file /var/projects/toy_physics/_scratch/s11c/s11c-source-quadrature-20260914/recovery-03/completion-watcher/continuation.txt --error-log /var/projects/toy_physics/_scratch/s11c/s11c-source-quadrature-20260914/recovery-03/source_finish.stderr --codex-bin /home/trevnorris/.npm-packages/bin/codex\n 751151 RNl        00:47 python -u _measurements/S11c_d_source_fourier_quadrature_finish.py --run-directory /var/projects/toy_physics/_scratch/s11c/s11c-source-quadrature-20260914/recovery-03/complete --source-run-directory /var/projects/toy_physics/_scratch/s11c/s11c-source-quadrature-20260914/recovery-02/complete\n",
+    "launcherSha256": "d8eee91b5be7176f996769ccdba2b71f673529a336b4656eae24fad89bd2721e"
+  }
 }

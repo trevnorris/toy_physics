@@ -24,6 +24,7 @@ their metadata support from constant degree to empty support. The final checker
 verifies the saved live AST, exact zero certificate, unchanged path/unit and
 precise coefficient-support transition. It reuses all saved results and the
 completed transcript, without repeating replay, certificates or integrations.
+The final validator (f345ffe3) is launched with its silent local watcher.
 See the metadata repair checkpoint and finish plan.
 
 After publication, proceed to concentration-aware full-action momentum

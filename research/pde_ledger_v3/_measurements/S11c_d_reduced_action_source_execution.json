@@ -1,5 +1,5 @@
 {
-  "status": "RUNNING",
+  "status": "VALIDATED_PUBLISHED_PENDING_COMMIT",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-reduced-action-source-20260914",
   "plan": "S11c_d_variable_profile_matching_plan.md",
   "planStep": 3,
@@ -11,10 +11,10 @@
     "_measurements/S11c_d_reduced_action_source_check.py": "aae3b2402e1707ef27f217b917dc10592f38acbe35d18356fbc4886ed854f754"
   },
   "scope": "One supplied case: native reduction, complete five-slot source storage and all five native probe-action columns. Numerical action assembly and integration remain subsequent work.",
-  "next": "Run one source materialization and validate saved-object/emission/source joins. Preserve operands before any runtime repair. Then implement local/nonlocal numerical action assembly and its independent action residuals.",
+  "next": "Commit and verify annex payloads, then derive the local coefficient and ordered nonlocal assembly.",
   "watching": "Silent local completion/error wake-up; no model polling, recurring checks or overlapping heavy CAS.",
   "implementationCommit": "2a24df65",
-  "observedUtc": "2026-09-14T23:58:59.776020+00:00",
+  "observedUtc": "2026-09-15T00:04:07.826004+00:00",
   "launch": {
     "launchedUtc": "2026-09-14T23:58:07.786131+00:00",
     "command": [
@@ -48,16 +48,39 @@
     "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-reduced-action-source-20260914/source_construct.stderr",
     "startedUtc": "2026-09-14T23:58:07.870653+00:00",
     "childPid": 1925284,
-    "status": "running"
+    "status": "completed",
+    "exitCode": 0,
+    "wallSeconds": 268.96874724607915,
+    "stderrBytes": 0,
+    "finishedUtc": "2026-09-15T00:02:36.839482+00:00"
   },
   "completionWatcher": {
-    "status": "waiting",
+    "status": "finished",
     "watcherPid": 1925280,
     "jobPid": 1925279,
     "thread": "01a08c53-295c-70f0-baaf-353db1745867",
     "startedUtc": "2026-09-14T23:58:07.879040+00:00",
     "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
     "messageSha256": "cb78b03690e577c5055fb1e25303535829b98c43c3ee30a529cb9e2747f2051c",
-    "notifications": {}
+    "notifications": {
+      "completion": {
+        "status": "queued",
+        "exitCode": 0,
+        "finishedUtc": "2026-09-15T00:02:37.244874+00:00"
+      }
+    }
+  },
+  "checkpoint": "S11c_d_reduced_action_source_checkpoint.json",
+  "publications": {
+    "reduction.out": {
+      "path": "scripts/out/S11c_d_reduced_action_source_reduction.out",
+      "bytes": 5172171,
+      "sha256": "2a6336eca32b2ee1407b1429295ab0756f55a638613a119b33a2e9af1d8fcb1a"
+    },
+    "full.out": {
+      "path": "scripts/out/S11c_d_reduced_action_source.out",
+      "bytes": 191235,
+      "sha256": "c291ea4b30ceba61aca9975b639ef3344ea564890e903960c25809c5acf626fe"
+    }
   }
 }

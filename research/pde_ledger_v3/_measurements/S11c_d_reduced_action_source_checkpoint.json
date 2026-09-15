@@ -1,0 +1,355 @@
+{
+  "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-reduced-action-source-20260914/complete",
+  "sourceFiles": {
+    "scripts/S11c_d_mixing_scattering_sympy_audit.py": "0d0ef5da7136f8a2033bd0fb076c56523d9097f972748b652b93b8778adc5101",
+    "scripts/S11c_b_exports.py": "3c6555f90a85382a5e96f3f961f0e36a4875d9259fe1be947fa8e683669b7084",
+    "scripts/S11c_c1_exports.py": "a5353b86dc526fd1b56734fdbdf7dc7f42387a3195ab4de84e8994f751871cdc",
+    "scripts/S11c_c2_exports.py": "2ba5ed487b84ecb98290df6f1650fa6210fe2784cfa02a0f3cff96cd718411cd",
+    "directives/S11c_d_SHARED_PHYSICS.md": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5",
+    "scripts/ledger_fold.py": "97da78c6631c09e5575dd14511760506f1ac08771cf07948978004e92f0b2333",
+    "directives/S11b_SHARED_PHYSICS.md": "9ea9e388e9d6421a841eaf851d12e1793527bba9a24aeeface3bfac2f4b40078",
+    "scripts/S11c_d_output_codec.py": "49873a2fa5c3184aab097263f0a6128379e094e42dbde5052456c5f3908bf717",
+    "_measurements/S11c_d_reduced_action_source_check.py": "aae3b2402e1707ef27f217b917dc10592f38acbe35d18356fbc4886ed854f754",
+    "_measurements/S11c_d_channel_preflight_input.json": "db0d6f4dd955515e2c53e59039bb36c65ba6736f0233e8a20db9356ef24fb6b4",
+    "_measurements/S11c_d_matching_channels_checkpoint.json": "c4ad9b9051f9c3fadb076593dd35ec12d1779fad6d1558c691c3b735fe4d3eeb",
+    "_measurements/S11c_d_variable_profile_matching_plan.md": "b48cd0248e43f7d9c7fa926c71ed415b904e08f81c8ea01816cb05f3a109879d",
+    "directives/S11c_d_sympy_build_PROGRAM_BRIEF.md": "64d4acaf2b207ef5f8d46dd9f0d4a2eccdb73a6ecce25e0f7d5afd0aee453bed",
+    "directives/S11c_d_sympy_build_directive.md": "455294b7fd0995bb1bb5fc9a3017c34b76dbb54f41fbbe93d6d4b82f86de8851"
+  },
+  "sourceJoins": {
+    "matchingCheckpointSha256": "c4ad9b9051f9c3fadb076593dd35ec12d1779fad6d1558c691c3b735fe4d3eeb",
+    "inputSha256": "db0d6f4dd955515e2c53e59039bb36c65ba6736f0233e8a20db9356ef24fb6b4",
+    "producerManifestSha256": "7ba5c4aee54860f3665099ef33fc048602a53c742f41360ce46bcc1e75b82421",
+    "nativeConstructorAstJoin": true,
+    "physicalInputJoins": {
+      "scripts/S11c_b_exports.py": true,
+      "scripts/S11c_c1_exports.py": true,
+      "scripts/S11c_c2_exports.py": true,
+      "scripts/ledger_fold.py": true,
+      "directives/S11c_d_SHARED_PHYSICS.md": true
+    }
+  },
+  "reductionReplay": {
+    "tagCount": 865,
+    "replayedObjectAndMetadataTags": 8,
+    "indexedTags": 863
+  },
+  "actionCensus": [
+    {
+      "COLUMN": 0,
+      "ROW": 0,
+      "DAG_NODES": 81,
+      "TOP_LEVEL_ADDENDS": 6,
+      "DISTINCT_INTEGRALS": 0,
+      "DISTINCT_DERIVATIVES": 6,
+      "PROBE_APPLICATIONS": 1,
+      "FOREIGN_PROBES": 0,
+      "UNSUBSTITUTED_FIELDS": 0
+    },
+    {
+      "COLUMN": 0,
+      "ROW": 1,
+      "DAG_NODES": 60,
+      "TOP_LEVEL_ADDENDS": 3,
+      "DISTINCT_INTEGRALS": 0,
+      "DISTINCT_DERIVATIVES": 5,
+      "PROBE_APPLICATIONS": 1,
+      "FOREIGN_PROBES": 0,
+      "UNSUBSTITUTED_FIELDS": 0
+    },
+    {
+      "COLUMN": 0,
+      "ROW": 2,
+      "DAG_NODES": 86,
+      "TOP_LEVEL_ADDENDS": 4,
+      "DISTINCT_INTEGRALS": 0,
+      "DISTINCT_DERIVATIVES": 8,
+      "PROBE_APPLICATIONS": 1,
+      "FOREIGN_PROBES": 0,
+      "UNSUBSTITUTED_FIELDS": 0
+    },
+    {
+      "COLUMN": 0,
+      "ROW": 3,
+      "DAG_NODES": 687,
+      "TOP_LEVEL_ADDENDS": 6,
+      "DISTINCT_INTEGRALS": 22,
+      "DISTINCT_DERIVATIVES": 10,
+      "PROBE_APPLICATIONS": 2,
+      "FOREIGN_PROBES": 0,
+      "UNSUBSTITUTED_FIELDS": 0
+    },
+    {
+      "COLUMN": 0,
+      "ROW": 4,
+      "DAG_NODES": 741,
+      "TOP_LEVEL_ADDENDS": 6,
+      "DISTINCT_INTEGRALS": 22,
+      "DISTINCT_DERIVATIVES": 10,
+      "PROBE_APPLICATIONS": 2,
+      "FOREIGN_PROBES": 0,
+      "UNSUBSTITUTED_FIELDS": 0
+    },
+    {
+      "COLUMN": 1,
+      "ROW": 0,
+      "DAG_NODES": 60,
+      "TOP_LEVEL_ADDENDS": 3,
+      "DISTINCT_INTEGRALS": 0,
+      "DISTINCT_DERIVATIVES": 5,
+      "PROBE_APPLICATIONS": 1,
+      "FOREIGN_PROBES": 0,
+      "UNSUBSTITUTED_FIELDS": 0
+    },
+    {
+      "COLUMN": 1,
+      "ROW": 1,
+      "DAG_NODES": 81,
+      "TOP_LEVEL_ADDENDS": 6,
+      "DISTINCT_INTEGRALS": 0,
+      "DISTINCT_DERIVATIVES": 6,
+      "PROBE_APPLICATIONS": 1,
+      "FOREIGN_PROBES": 0,
+      "UNSUBSTITUTED_FIELDS": 0
+    },
+    {
+      "COLUMN": 1,
+      "ROW": 2,
+      "DAG_NODES": 86,
+      "TOP_LEVEL_ADDENDS": 4,
+      "DISTINCT_INTEGRALS": 0,
+      "DISTINCT_DERIVATIVES": 8,
+      "PROBE_APPLICATIONS": 1,
+      "FOREIGN_PROBES": 0,
+      "UNSUBSTITUTED_FIELDS": 0
+    },
+    {
+      "COLUMN": 1,
+      "ROW": 3,
+      "DAG_NODES": 687,
+      "TOP_LEVEL_ADDENDS": 6,
+      "DISTINCT_INTEGRALS": 22,
+      "DISTINCT_DERIVATIVES": 10,
+      "PROBE_APPLICATIONS": 2,
+      "FOREIGN_PROBES": 0,
+      "UNSUBSTITUTED_FIELDS": 0
+    },
+    {
+      "COLUMN": 1,
+      "ROW": 4,
+      "DAG_NODES": 741,
+      "TOP_LEVEL_ADDENDS": 6,
+      "DISTINCT_INTEGRALS": 22,
+      "DISTINCT_DERIVATIVES": 10,
+      "PROBE_APPLICATIONS": 2,
+      "FOREIGN_PROBES": 0,
+      "UNSUBSTITUTED_FIELDS": 0
+    },
+    {
+      "COLUMN": 2,
+      "ROW": 0,
+      "DAG_NODES": 91,
+      "TOP_LEVEL_ADDENDS": 3,
+      "DISTINCT_INTEGRALS": 0,
+      "DISTINCT_DERIVATIVES": 6,
+      "PROBE_APPLICATIONS": 1,
+      "FOREIGN_PROBES": 0,
+      "UNSUBSTITUTED_FIELDS": 0
+    },
+    {
+      "COLUMN": 2,
+      "ROW": 1,
+      "DAG_NODES": 91,
+      "TOP_LEVEL_ADDENDS": 3,
+      "DISTINCT_INTEGRALS": 0,
+      "DISTINCT_DERIVATIVES": 6,
+      "PROBE_APPLICATIONS": 1,
+      "FOREIGN_PROBES": 0,
+      "UNSUBSTITUTED_FIELDS": 0
+    },
+    {
+      "COLUMN": 2,
+      "ROW": 2,
+      "DAG_NODES": 129,
+      "TOP_LEVEL_ADDENDS": 7,
+      "DISTINCT_INTEGRALS": 0,
+      "DISTINCT_DERIVATIVES": 9,
+      "PROBE_APPLICATIONS": 1,
+      "FOREIGN_PROBES": 0,
+      "UNSUBSTITUTED_FIELDS": 0
+    },
+    {
+      "COLUMN": 2,
+      "ROW": 3,
+      "DAG_NODES": 748,
+      "TOP_LEVEL_ADDENDS": 6,
+      "DISTINCT_INTEGRALS": 22,
+      "DISTINCT_DERIVATIVES": 12,
+      "PROBE_APPLICATIONS": 2,
+      "FOREIGN_PROBES": 0,
+      "UNSUBSTITUTED_FIELDS": 0
+    },
+    {
+      "COLUMN": 2,
+      "ROW": 4,
+      "DAG_NODES": 850,
+      "TOP_LEVEL_ADDENDS": 6,
+      "DISTINCT_INTEGRALS": 22,
+      "DISTINCT_DERIVATIVES": 12,
+      "PROBE_APPLICATIONS": 2,
+      "FOREIGN_PROBES": 0,
+      "UNSUBSTITUTED_FIELDS": 0
+    },
+    {
+      "COLUMN": 3,
+      "ROW": 0,
+      "DAG_NODES": 70,
+      "TOP_LEVEL_ADDENDS": 6,
+      "DISTINCT_INTEGRALS": 0,
+      "DISTINCT_DERIVATIVES": 6,
+      "PROBE_APPLICATIONS": 1,
+      "FOREIGN_PROBES": 0,
+      "UNSUBSTITUTED_FIELDS": 0
+    },
+    {
+      "COLUMN": 3,
+      "ROW": 1,
+      "DAG_NODES": 70,
+      "TOP_LEVEL_ADDENDS": 6,
+      "DISTINCT_INTEGRALS": 0,
+      "DISTINCT_DERIVATIVES": 6,
+      "PROBE_APPLICATIONS": 1,
+      "FOREIGN_PROBES": 0,
+      "UNSUBSTITUTED_FIELDS": 0
+    },
+    {
+      "COLUMN": 3,
+      "ROW": 2,
+      "DAG_NODES": 103,
+      "TOP_LEVEL_ADDENDS": 7,
+      "DISTINCT_INTEGRALS": 0,
+      "DISTINCT_DERIVATIVES": 9,
+      "PROBE_APPLICATIONS": 1,
+      "FOREIGN_PROBES": 0,
+      "UNSUBSTITUTED_FIELDS": 0
+    },
+    {
+      "COLUMN": 3,
+      "ROW": 3,
+      "DAG_NODES": 663,
+      "TOP_LEVEL_ADDENDS": 7,
+      "DISTINCT_INTEGRALS": 22,
+      "DISTINCT_DERIVATIVES": 7,
+      "PROBE_APPLICATIONS": 2,
+      "FOREIGN_PROBES": 0,
+      "UNSUBSTITUTED_FIELDS": 0
+    },
+    {
+      "COLUMN": 3,
+      "ROW": 4,
+      "DAG_NODES": 724,
+      "TOP_LEVEL_ADDENDS": 10,
+      "DISTINCT_INTEGRALS": 22,
+      "DISTINCT_DERIVATIVES": 10,
+      "PROBE_APPLICATIONS": 2,
+      "FOREIGN_PROBES": 0,
+      "UNSUBSTITUTED_FIELDS": 0
+    },
+    {
+      "COLUMN": 4,
+      "ROW": 0,
+      "DAG_NODES": 106,
+      "TOP_LEVEL_ADDENDS": 7,
+      "DISTINCT_INTEGRALS": 0,
+      "DISTINCT_DERIVATIVES": 6,
+      "PROBE_APPLICATIONS": 1,
+      "FOREIGN_PROBES": 0,
+      "UNSUBSTITUTED_FIELDS": 0
+    },
+    {
+      "COLUMN": 4,
+      "ROW": 1,
+      "DAG_NODES": 106,
+      "TOP_LEVEL_ADDENDS": 7,
+      "DISTINCT_INTEGRALS": 0,
+      "DISTINCT_DERIVATIVES": 6,
+      "PROBE_APPLICATIONS": 1,
+      "FOREIGN_PROBES": 0,
+      "UNSUBSTITUTED_FIELDS": 0
+    },
+    {
+      "COLUMN": 4,
+      "ROW": 2,
+      "DAG_NODES": 162,
+      "TOP_LEVEL_ADDENDS": 7,
+      "DISTINCT_INTEGRALS": 0,
+      "DISTINCT_DERIVATIVES": 9,
+      "PROBE_APPLICATIONS": 1,
+      "FOREIGN_PROBES": 0,
+      "UNSUBSTITUTED_FIELDS": 0
+    },
+    {
+      "COLUMN": 4,
+      "ROW": 3,
+      "DAG_NODES": 799,
+      "TOP_LEVEL_ADDENDS": 9,
+      "DISTINCT_INTEGRALS": 22,
+      "DISTINCT_DERIVATIVES": 12,
+      "PROBE_APPLICATIONS": 2,
+      "FOREIGN_PROBES": 0,
+      "UNSUBSTITUTED_FIELDS": 0
+    },
+    {
+      "COLUMN": 4,
+      "ROW": 4,
+      "DAG_NODES": 856,
+      "TOP_LEVEL_ADDENDS": 10,
+      "DISTINCT_INTEGRALS": 22,
+      "DISTINCT_DERIVATIVES": 12,
+      "PROBE_APPLICATIONS": 2,
+      "FOREIGN_PROBES": 0,
+      "UNSUBSTITUTED_FIELDS": 0
+    }
+  ],
+  "artifacts": {
+    "reduction.out": {
+      "bytes": 5172171,
+      "sha256": "2a6336eca32b2ee1407b1429295ab0756f55a638613a119b33a2e9af1d8fcb1a"
+    },
+    "reduction.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reduced-action.pickle": {
+      "bytes": 1146420,
+      "sha256": "e9062c3455c7e59fe816f47172062a0c118b201d03809ec0826575dac22872b0"
+    },
+    "actions.pickle": {
+      "bytes": 176671,
+      "sha256": "4c2372a7102d1db9f21a049ab3104465e8d9245ab832be88c900bc8519b46e02"
+    },
+    "full.out": {
+      "bytes": 191235,
+      "sha256": "c291ea4b30ceba61aca9975b639ef3344ea564890e903960c25809c5acf626fe"
+    }
+  },
+  "emissionReplayTags": 12,
+  "writeKeyCount": 4,
+  "metadataPaths": 279,
+  "wallSeconds": 267.8357892120257,
+  "peakRssKiB": 133512,
+  "reductionChildPeakRssKiB": 2476652,
+  "scope": "Computed reduced source rows and native probe actions. No local/nonlocal numerical quadrature, boundary solve or scattering result.",
+  "publications": {
+    "reduction.out": {
+      "path": "scripts/out/S11c_d_reduced_action_source_reduction.out",
+      "bytes": 5172171,
+      "sha256": "2a6336eca32b2ee1407b1429295ab0756f55a638613a119b33a2e9af1d8fcb1a"
+    },
+    "full.out": {
+      "path": "scripts/out/S11c_d_reduced_action_source.out",
+      "bytes": 191235,
+      "sha256": "c291ea4b30ceba61aca9975b639ef3344ea564890e903960c25809c5acf626fe"
+    }
+  }
+}

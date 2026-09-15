@@ -1,26 +1,32 @@
 # S11c-d reduced-action source checkpoint
 
-Prepared for step 3 of the variable-profile matching plan. Both-end matching
-channels are committed and annex-verified at `3a5d3d25`.
+Validated on LAB_HELD / RHO4_CONSTANT. The native reduction and source adapter
+completed in 268.97 seconds with both stderr files empty. The reduction child
+peaked at 2,476,652 KiB RSS; the adapter peaked at 133,512 KiB.
 
-The main engine now optionally preserves its computed five-slot reduced rows,
-branch bindings, native reduction state and restored dimensions in repository
-scratch storage. Import wiring, Fourier reduction and all existing constructors
-are unchanged; the constructor AST join against the accepted matching source
-passes. Parent exports and the input profile/parameter file join the accepted
-endpoint producer. The existing transcript fingerprints cannot reconstruct these
-full operands, so this runs the native reduction once on the supplied case.
+Both computed five-slot rows, all branch bindings and native reduction/dimension
+state are saved. Their eight object/metadata tags replay exactly against the
+865-tag reduction transcript, whose source-line index is complete. All five
+native probe-action columns (25 row/column actions) were constructed and saved
+before emission. No foreign probe or unsubstituted physical field remains.
+The 12-tag action stream passed full replay, with 279 resolved metadata paths
+and four injective fresh write-keys. Source snapshots, repaired parent exports
+and the explicit independent profile/parameter instance join the accepted ends.
 
-`S11c_d_reduced_action_source_check.py` will replay the saved rows and their
-metadata against the closed reduction transcript, construct all five native
-probe-action columns, preserve them before emission, and replay their complete
-fingerprints and metadata. It checks full row/slot/field/branch and source joins,
-including the explicit independent w/m profile input. No calculation result is
-accepted yet.
+`save_reduced_action_cache` in the main engine stores computed operands;
+`ReducedPencil.columns` computes the probe actions. The source checker verifies
+storage/emission/source joins and the complete field census. Its column census
+retains the nonlocal integrals in the two thickness-equation rows. These checks
+establish source availability and faithful serialization, not numerical action
+agreement or a scattering solution.
 
-Next: extract the local coefficient operators and preserve the full ordered
-nonlocal integrals, bind the explicit profile instance, evaluate the numerical
-actions and compare them with independent reduced-row actions. Quadrature,
-two-ended boundary matching, convergence, continuum re-expansion and subsequent
-spectral/scattering work remain open. No physical integral is evaluated by its
-fingerprint. Final all-case main/export regeneration remains later program work.
+The 5,172,171-byte reduction transcript and 191,235-byte probe-action transcript
+are published under scripts/out through DataLad/git-annex. Full hashes, saved
+operand inventory and source pins are in S11c_d_reduced_action_source_checkpoint.json.
+Both raw operand caches remain in repository _scratch/s11c/.
+
+Next: derive local coefficient operators and preserve every ordered nonlocal
+integral; bind the input profiles and compute independent numerical action
+residuals. Quadrature, two-ended boundary matching, convergence, continuum
+re-expansion and spectral/scattering work remain open. Final all-case producer
+and own-row export regeneration remain later program work.

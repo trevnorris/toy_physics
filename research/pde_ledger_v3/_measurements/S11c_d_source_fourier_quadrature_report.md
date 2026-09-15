@@ -21,3 +21,9 @@ interchange, Abel weak limit, scattering or pole result is established here.
 
 Next: validate/publish the source quadrature and use it in concentration-aware
 full-action momentum integration. See the plan and execution checkpoint.
+
+The first launch stopped before binding or numerical integration: the source
+checkpoint contains two publications, while the new loader expected one. The
+loader now validates both existing schemas and every listed publication. All
+four consumed checkpoint inventories pass; only that loader changed. Original
+logs and source snapshots are preserved. A retry is prepared.

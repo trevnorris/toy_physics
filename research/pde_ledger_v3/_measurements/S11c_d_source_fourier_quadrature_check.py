@@ -33,8 +33,17 @@ def accepted(path):
     for name, item in record['artifacts'].items():
         if digest(base/name) != item['sha256']:
             raise ValueError(('accepted operand hash changed', str(path), name))
-    if digest(ROOT/record['publication']['path']) != record['publication']['sha256']:
-        raise ValueError(('accepted publication changed', str(path)))
+    if 'publication' in record and 'publications' not in record:
+        publications = (record['publication'],)
+    elif 'publications' in record and 'publication' not in record:
+        publications = tuple(record['publications'].values())
+    else:
+        raise ValueError(('missing or ambiguous accepted publication inventory', str(path)))
+    if not publications:
+        raise ValueError(('empty accepted publication inventory', str(path)))
+    for item in publications:
+        if digest(ROOT/item['path']) != item['sha256']:
+            raise ValueError(('accepted publication changed', str(path), item['path']))
     return record, base
 
 

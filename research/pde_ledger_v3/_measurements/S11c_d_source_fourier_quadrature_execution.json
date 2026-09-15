@@ -1,5 +1,5 @@
 {
-  "status": "PREPARED",
+  "status": "LOADER_REPAIRED_RETRY_PREPARED",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-source-quadrature-20260914",
   "stage": "source_quadrature",
   "plan": "S11c_d_source_fourier_quadrature_plan.md",
@@ -7,5 +7,63 @@
   "preflight": "S11c_d_source_fourier_quadrature_preflight.json",
   "acceptedFactorizationCommit": "bed088beb40f988647ec8a7861e9e898e4861fd5",
   "next": "Evaluate and validate all source Fourier integrals for both approved tests, then complete concentration-aware full-action momentum quadrature.",
-  "scope": "Finite smooth source integrals and sampled quadrature refinement only; no full-action convergence, unbounded interchange, Abel weak limit, scattering or pole result."
+  "scope": "Finite smooth source integrals and sampled quadrature refinement only; no full-action convergence, unbounded interchange, Abel weak limit, scattering or pole result.",
+  "implementationCommit": "a86c0500",
+  "originalLaunch": {
+    "launchedUtc": "2026-09-15T03:59:38.932981+00:00",
+    "command": [
+      "/usr/bin/python",
+      "_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-source-quadrature-20260914",
+      "--stage",
+      "source_quadrature",
+      "--",
+      "python",
+      "-u",
+      "_measurements/S11c_d_source_fourier_quadrature_check.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-source-quadrature-20260914/complete"
+    ],
+    "supervisorPid": 2028632,
+    "watcherPid": 2028633,
+    "watcherDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-source-quadrature-20260914/completion-watcher"
+  },
+  "originalInvocation": {
+    "stage": "source_quadrature",
+    "command": [
+      "python",
+      "-u",
+      "_measurements/S11c_d_source_fourier_quadrature_check.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-source-quadrature-20260914/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-source-quadrature-20260914/source_quadrature.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-source-quadrature-20260914/source_quadrature.stderr",
+    "startedUtc": "2026-09-15T03:59:39.069562+00:00",
+    "childPid": 2028640,
+    "status": "failed",
+    "exitCode": 1,
+    "wallSeconds": 2.9795881025493145,
+    "stderrBytes": 796,
+    "finishedUtc": "2026-09-15T03:59:42.049303+00:00"
+  },
+  "originalWatcher": {
+    "status": "finished",
+    "watcherPid": 2028633,
+    "jobPid": 2028632,
+    "thread": "01a08c53-295c-70f0-baaf-353db1745867",
+    "startedUtc": "2026-09-15T03:59:39.098527+00:00",
+    "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
+    "messageSha256": "8610390725f96c0c821c8bc7c243e5755157e15364e032564eb7bf49510f320d",
+    "notifications": {
+      "completion": {
+        "status": "queued",
+        "exitCode": 0,
+        "finishedUtc": "2026-09-15T03:59:43.010965+00:00"
+      }
+    }
+  },
+  "repair": "S11c_d_source_fourier_quadrature_loader_repair.json",
+  "activeRunRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-source-quadrature-20260914/retry-01"
 }

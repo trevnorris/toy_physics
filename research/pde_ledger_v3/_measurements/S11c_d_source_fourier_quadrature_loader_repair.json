@@ -1,0 +1,54 @@
+{
+  "kind": "source quadrature accepted checkpoint publication-schema compatibility",
+  "unchangedOutsideAcceptedLoader": true,
+  "checkedInventories": [
+    {
+      "checkpoint": "source_fourier_factorization",
+      "artifactCount": 4,
+      "publicationCount": 1
+    },
+    {
+      "checkpoint": "numerical_action",
+      "artifactCount": 9,
+      "publicationCount": 1
+    },
+    {
+      "checkpoint": "reduced_action_source",
+      "artifactCount": 5,
+      "publicationCount": 2
+    },
+    {
+      "checkpoint": "reduced_action_assembly",
+      "artifactCount": 2,
+      "publicationCount": 1
+    }
+  ],
+  "scriptSha256": "52633bb4972ae7a65298af0d753f70befb42ab892c86140ad0daff0263b72683",
+  "originalRunDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-source-quadrature-20260914",
+  "originalInvocation": {
+    "stage": "source_quadrature",
+    "command": [
+      "python",
+      "-u",
+      "_measurements/S11c_d_source_fourier_quadrature_check.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-source-quadrature-20260914/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-source-quadrature-20260914/source_quadrature.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-source-quadrature-20260914/source_quadrature.stderr",
+    "startedUtc": "2026-09-15T03:59:39.069562+00:00",
+    "childPid": 2028640,
+    "status": "failed",
+    "exitCode": 1,
+    "wallSeconds": 2.9795881025493145,
+    "stderrBytes": 796,
+    "finishedUtc": "2026-09-15T03:59:42.049303+00:00"
+  },
+  "preserved": {
+    "source_quadrature.stderr": "f02aeccefbf28f70590682e45d6cff3424dcd093bd4dd260ab20d6a0ada690bf",
+    "source_quadrature.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "source_quadrature.invocation.json": "b8c29e29a7eaca446b57d8705dd97cec04eb1bb15e4d17eb756130be25d12155",
+    "launch.json": "0c6be65130b024fefda5f7100298a7f51a99629a309db67a3a51e3c557e43d20"
+  },
+  "scope": "Validate every published transcript in either existing checkpoint schema. Original run stopped before source loading/binding or quadrature. No source operand or physics changes."
+}

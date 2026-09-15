@@ -26,4 +26,5 @@ The first launch stopped before binding or numerical integration: the source
 checkpoint contains two publications, while the new loader expected one. The
 loader now validates both existing schemas and every listed publication. All
 four consumed checkpoint inventories pass; only that loader changed. Original
-logs and source snapshots are preserved. A retry is prepared.
+logs and source snapshots are preserved. The retry is running under the single-job supervisor and silent local
+completion/error watcher. No full source-quadrature result is yet accepted.

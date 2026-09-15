@@ -42,7 +42,8 @@ f8984364 stopped before emission at a structurally unequal source substitution
 (test 0/source 24). This comparison now preserves every actual pair and tests
 unequal forms with the existing exact uncompressed certificate method, including
 coefficient mutations and per-worker time/memory limits. Proofs and full recovery
-validation remain pending. The output repair
+validation remain pending. Recovery-02 (11c8abfc) is running under the single-job
+supervisor with its silent local watcher. The output repair
 keeps manifests lossless and reuses saved packets, preserving original live
 binding forms separately from their pickle representations. See the emission
 repair plan/checkpoint; no integrations or upstream physics are repeated.

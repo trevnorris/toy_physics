@@ -1,12 +1,12 @@
 {
-  "status": "VALIDATED_PUBLICATION_PREPARED",
+  "status": "PUBLISHED_AND_ANNEX_VERIFIED",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-pair-momentum-20260915",
   "stage": "pair_construct",
   "plan": "S11c_d_pair_momentum_plan.md",
   "report": "S11c_d_pair_momentum_report.md",
   "checker": "S11c_d_pair_momentum_check.py",
   "acceptedSingleCommit": "9fad1d115b9c24aba2ad8841087f149a05687796",
-  "next": "Annex-verify publication, then refine remaining three-momentum raw integrals with validated single/pair contributions held explicitly.",
+  "next": "Refine remaining ten three-momentum rows with validated single/pair contributions held explicitly.",
   "scope": "Finite paired-momentum quadrature at fixed positive regulator; no full physical action limit, matching, scattering or poles.",
   "preflight": "S11c_d_pair_momentum_preflight.json",
   "preflightChecksSha256": "164cf1ebc36758127a4ceb35089a75cac85679112c01b7dba05908bed1cf1f9b",
@@ -84,5 +84,15 @@
     "stderrBytes": 0,
     "finishedUtc": "2026-09-15T19:10:42.740888+00:00"
   },
-  "acceptedCheckpoint": "S11c_d_pair_momentum_checkpoint.json"
+  "acceptedCheckpoint": "S11c_d_pair_momentum_checkpoint.json",
+  "publicationCommit": "3d4a32dd6bc8a6dd6642734d9338df8f7fe132c6",
+  "annexVerification": {
+    "publicationCommit": "3d4a32dd6bc8a6dd6642734d9338df8f7fe132c6",
+    "path": "research/pde_ledger_v3/scripts/out/S11c_d_pair_momentum.out",
+    "sha256": "9b901f3aac1a46869cf59c5ef0ac5d30c98710f573ee441da18b669fe4fa80f0",
+    "bytes": 5651996,
+    "annexKey": "MD5E-s5651996--2e14e0e50980f604295be4bf4ad2f96a.out",
+    "symlink": "../../../../.git/annex/objects/J5/51/MD5E-s5651996--2e14e0e50980f604295be4bf4ad2f96a.out/MD5E-s5651996--2e14e0e50980f604295be4bf4ad2f96a.out",
+    "gitMode": "120000"
+  }
 }

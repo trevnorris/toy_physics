@@ -111,7 +111,7 @@ Two-momentum refinement is validated: final outer/panel/source/profile raw
 integral changes are 8.33e-14 / 1.50e-12 / 2.62e-16 / 8.55e-15. Adaptive outer
 quadrature agrees within 2.45e-14 in integrals and 6.21e-17 in complete actions.
 All 30 rows, 22 records and 91,047 metadata paths pass, with unchanged held terms
-and packet hashes. The 5.65 MB transcript is prepared for annex publication.
+and packet hashes. The 5.65 MB transcript is published and annex-verified.
 Next: the remaining ten three-momentum rows, before physical tails and Abel limits.
 
 ## Retained user-approved solver/export contract

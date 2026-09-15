@@ -4305,5 +4305,14 @@
     "stderrBytes": 0,
     "finishedUtc": "2026-09-15T19:10:42.740888+00:00"
   },
-  "finalChecksSha256": "a737d69e85499f79f4ca9730d170b5ab847dd929a9b098163ab99312ec3bbece"
+  "finalChecksSha256": "a737d69e85499f79f4ca9730d170b5ab847dd929a9b098163ab99312ec3bbece",
+  "annexVerification": {
+    "publicationCommit": "3d4a32dd6bc8a6dd6642734d9338df8f7fe132c6",
+    "path": "research/pde_ledger_v3/scripts/out/S11c_d_pair_momentum.out",
+    "sha256": "9b901f3aac1a46869cf59c5ef0ac5d30c98710f573ee441da18b669fe4fa80f0",
+    "bytes": 5651996,
+    "annexKey": "MD5E-s5651996--2e14e0e50980f604295be4bf4ad2f96a.out",
+    "symlink": "../../../../.git/annex/objects/J5/51/MD5E-s5651996--2e14e0e50980f604295be4bf4ad2f96a.out/MD5E-s5651996--2e14e0e50980f604295be4bf4ad2f96a.out",
+    "gitMode": "120000"
+  }
 }

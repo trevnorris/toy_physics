@@ -75,30 +75,21 @@ integrals, 324 zero normalized residuals and 264 zero certificate proofs.
 All 58 original expanded residuals remain beside exact saved-pair checks;
 all denominator/branch restrictions are retained. The source packet is
 byte-identical and its constructor unchanged. Full replay covers 1,670 tags,
-4,752 metadata paths and 833 fresh write-keys. The transcript is published and annex-verified at bed088be. The next source
-quadrature adapter binds all 35 source integrals to both approved tests, uses
-bounded frequency batches and compares refined Gauss rules with independent
-adaptive integration. Its focused finite-integral residuals are below 3.56e-15;
-the full source-integral run stopped before quadrature on a live expression
-representation join. The repair retains exact pair certificates and original
-limits, with a bounded uncompressed-certificate test prepared after the expanded-form
-stress check entered an eight-hour polynomial GCD. Its traceback and operands
-are preserved; no numerical source result has yet been accepted. Full-action quadrature remains work
-before physical limit claims and boundary matching.
-See the factorization report and accepted checkpoint for evidence and scope.
-
-The bounded uncompressed binding test passed all ten expanded-representation
-cases in 75.22 seconds, with 62 zero proof residuals and all coefficient
-mutations nonzero. The tested method is adopted by a single boolean change
-in the occurrence-comparison helper; the physics engine is unchanged. Full
-source quadrature is prepared for retry with all saved operands preserved.
-
-
-Source Fourier quadrature retry-02 has saved all 70 sources and 140 numerical
-records. Final validation stopped on a fingerprinted structural emission index.
-The emission repair reuses those packets and retains the original live binding
-representations; full source-quadrature publication remains pending. See
-`S11c_d_source_fourier_quadrature_emission_plan.md` and its repair checkpoint.
+4,752 metadata paths and 833 fresh write-keys. The transcript is published and annex-verified at bed088be. Source Fourier quadrature is now validated:
+35 distinct source integrals on both approved Gaussian fields, 140 interval
+records and 9,240 frequency evaluations. All 320 native occurrence joins and
+104 binding proofs pass, with 42 additional zero replay proofs and all coefficient
+and measure mutations detected. Scaled source/adaptive residuals reach only
+1.73e-14 / 4.11e-13. Gauss changes are 1.43e-6 / 4.11e-13 and the largest finite
+source-interval change is 4.40e-9. The 8.69 MB transcript has 10,400 tags and
+151,318 metadata paths; source and numerical packet hashes are unchanged.
+Original live raw forms remain distinct from their canonical pickle forms,
+with twenty exact metadata-support transitions checked and forty altered-unit/
+order controls rejected. See the source quadrature report and accepted checkpoint.
+Next is complete-action momentum quadrature with all three Abel transfer pairs
+and nested profile factors. Full-action convergence, physical tails and Abel
+limits remain work before boundary matching; finite source tests do not replace
+these requirements.
 
 ## Retained user-approved solver/export contract
 

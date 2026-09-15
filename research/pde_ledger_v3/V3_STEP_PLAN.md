@@ -730,6 +730,33 @@ which makes it dimensionally inhomogeneous (force on the left, acceleration in t
 not present the repaired formula as a quotation.** Quote the source as written, record the missing-mass
 **typo**, and cite the dimensionally correct form from `4d_1pn_full.tex:886`.
 
+⛔⛔ **GRAVITY-SECTOR PLUG — REVISIT BEFORE COMMITTING THE SPECIES/INTERIOR-DEPENDENT RESPONSE (banked 2026-09-15).**
+Before extending S16 beyond leading-order universality — into the **interior-dependent / species-dependent**
+gravitational response, or the defect-to-worldline matching per lepton family — **STOP and read
+`notes/muonium_gravity_corrections.md`** (full source: `notes/muonium_gravity_research_track_handoff.md`).
+This step is exactly where the model can corner itself on gravity. The muonium/LEMING experiment (~2–3 yr) makes
+a **second-generation lepton** free-fall test plausible, so the corrections below are load-bearing here:
+- ⛔ **The interior-dependence this step already flags is where a species anomaly (`κ_μ≠1`) would live.** Do NOT
+  assume universality to fix throat geometry and then "derive" universality (circularity — M3).
+- **Separate the three masses:** passive `m_p` (response-side — what LEMING measures, and what S16 is about),
+  active `m_a` (source-side), inertial `m_i`. ⛔ Don't conflate; equality must emerge as a Ward identity, not be
+  assumed.
+- **`κ_ρ=1` here is TARGET-MATCHED (calibrated `−Gm/r`), ⛔ NOT derived** — treat the species-specific `κ_{ρ,s}`
+  as open and compute it per branch.
+- ⛔ **Do NOT import the WITHDRAWN lepton throat-geometry results** (`L/a≈1.85`, `11:2:5`, `−57/64`,
+  `a_j∝(2j+1)^-1`, deep-needle, `m_G~ρa²L`) — withdrawn pending a first-principles branch solve.
+- ⭐ **`κ_μ` is an OUTPUT, not a target — a surprising value is NOT a failure** (don't lock the 2nd-gen throat
+  radius). But its *status* depends on where it shows up + consistency: passive (`m_p/m_i≠1`) = LEMING-measurable
+  prediction; active-only = not-a-failure-but-unfalsifiable-unless-it-leaks; momentum-violating = red flag unless
+  the reservoir flux is **derived** (a reservoir *permits* exchange, ⛔ doesn't guarantee it). ⇒ run the
+  **structural consistency audit** (*source anomalously + fall normally + conserve momentum, at one fixed order?*
+  — the §5.1-negligible-flux vs bridge-`S_{J_i}` tension) **before** any branch solve, ⛔ with no preference for
+  the answer that makes LEMING more useful. Electron/1st-gen is NOT free: must give `κ_e≈1` to ~10⁻¹⁵.
+  Full guardrail: `notes/muonium_gravity_corrections.md` §7.
+- This is a **deferred parallel branch** gated on the throat/moving-throat PDE (off critical path) + the S11
+  medium chain — a warning to not corner ourselves here, ⛔ not a step to run now. Outcome 5 (can't compute
+  without importing κ=1 ⇒ no muonium prediction) is a legitimate honest result.
+
 ⛔ **A11 GATE — this step must not substitute one length for another.** The source's `a` is a
 **Gaussian/profile support width** controlling `Q_ij = M a² δ_ij / 2`; the model's **mouth radius** is a
 different object, and the bridge report says outright it *"is not an invariant reduction width"*.

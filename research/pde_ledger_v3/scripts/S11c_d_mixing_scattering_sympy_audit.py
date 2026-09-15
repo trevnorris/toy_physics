@@ -782,6 +782,162 @@ class ReducedActionAssembly:
                 'NONLOCAL_INTEGRALS': tuple(sorted(all_integrals, key=sp.default_sort_key))}
 
 
+class NumericalReducedAction:
+    """Bind computed reduced actions to an explicit numerical/profile instance."""
+
+    def __init__(self, pencil, assembly, specification):
+        self.pencil, self.assembly, self.r = pencil, assembly, pencil.r
+        self.input = ChannelInput(self.r, specification)
+
+    @lru_cache(maxsize=None)
+    def bind(self, node):
+        if node in self.input.limits:
+            return self.input.limits[node]
+        if isinstance(node, sp.Symbol):
+            return self.input.origin.get(node, self.input.parameters.get(node.name, node))
+        if isinstance(node, AppliedUndef) and node.func in self.r.profiles.values():
+            name = next(k for k, f in self.r.profiles.items() if f == node.func)
+            return self.input.profiles[name].subs(self.r.xi, self.bind(node.args[0]))
+        if not node.args or isinstance(node, Str):
+            return node
+        if isinstance(node, sp.Limit):
+            raise ValueError('profile limit outside the supplied input map')
+        if isinstance(node, sp.Derivative):
+            return sp.diff(self.bind(node.expr), *node.variable_count)
+        if isinstance(node, sp.Subs):
+            return self.bind(node.expr).subs(list(zip(node.variables,
+                                                     (self.bind(p) for p in node.point))), simultaneous=True)
+        if isinstance(node, sp.Integral):
+            return sp.Integral(self.bind(node.function),
+                               *(sp.Tuple(v, self.bind(a), self.bind(b)) for v, a, b in node.limits))
+        return node.func(*(self.bind(a) for a in node.args))
+
+    def local_matrices(self):
+        return {n: self.bind(m) for n, m in self.assembly['LOCAL_MATRICES'].items()}
+
+    def direct_actions(self, field):
+        """Substitute the test ansatz directly in the full reduced source rows."""
+        epsilon = self.r.symbols['epsilon_shape']
+        result = []
+        for j in range(len(self.pencil.fields)):
+            mapping = {f: (lambda z, i=i: field(z) if i == j else sp.S.Zero)
+                       for i, f in enumerate(self.pencil.fields)}
+            selected = dag_substitute(self.pencil.strong, mapping)
+            result.append(self.bind(map_leaves(selected, lambda e: sp.diff(e, epsilon))))
+        return sp.Tuple(*result)
+
+    def assembled_actions(self, field):
+        """Keep local derivative and every ordered nonlocal contribution separate."""
+        records = []
+        for row in self.assembly['ROWS']:
+            probe = self.pencil.probes[row['COLUMN']]
+            local = sp.Add(*(self.bind(c)*sp.diff(field(self.r.z), self.r.z, n)
+                             for n, c in row['LOCAL'].items()))
+            nonlocal_terms = tuple((self.bind(c), self.bind(dag_substitute(g, {probe: field})))
+                                   for g, c in row['NONLOCAL'])
+            records.append({'COLUMN': row['COLUMN'], 'ROW': row['ROW'],
+                            'LOCAL': local, 'NONLOCAL': nonlocal_terms})
+        return records
+
+
+class BoundedActionQuadrature:
+    """Evaluate the native nested integrals on explicitly bounded domains.
+
+    Finite regulator and finite quadrature operands are retained. This class
+    does not take an Abel limit or assign a value to an infinite-domain action.
+    """
+
+    def __init__(self, domains, *, contraction='sum', weight_scale=1.0):
+        if contraction not in ('sum', 'dot'):
+            raise ValueError('unknown quadrature contraction')
+        self.domains, self.contraction, self.weight_scale = domains, contraction, weight_scale
+        self.rules, self.integral_cache, self.evaluated_integrals = {}, {}, set()
+        for variable, (lower, upper, count) in domains.items():
+            nodes, weights = np.polynomial.legendre.leggauss(int(count))
+            self.rules[variable] = ((upper-lower)*nodes/2+(upper+lower)/2,
+                                    (upper-lower)*weights/2)
+
+    @staticmethod
+    @lru_cache(maxsize=None)
+    def outer_integrals(expression):
+        found, seen = set(), set()
+        def visit(node):
+            if node in seen:
+                return
+            seen.add(node)
+            if isinstance(node, sp.Integral):
+                found.add(node)
+                return
+            for a in node.args:
+                visit(a)
+        visit(expression)
+        return tuple(sorted(found, key=sp.default_sort_key))
+
+    @lru_cache(maxsize=None)
+    def compiled(self, expression):
+        integrals = self.outer_integrals(expression)
+        carriers = tuple(sp.Dummy('s11cdEvaluatedIntegral'+str(i)) for i in range(len(integrals)))
+        algebraic = memo_xreplace(expression, dict(zip(integrals, carriers)))
+        symbols = tuple(sorted(dag_free_symbols(algebraic)-set(carriers), key=sp.default_sort_key))
+        # Complex powers use the principal branch of the actual source
+        # expression; branch Piecewise predicates are retained by lambdify.
+        power = sp.Function('s11cdNumericalComplexPower')
+        replacements = {n: power(n.base, n.exp) for n in sp.preorder_traversal(algebraic)
+                        if n.is_Pow and n.exp.is_integer is not True}
+        algebraic = memo_xreplace(algebraic, replacements)
+        function = sp.lambdify((*symbols, *carriers), algebraic,
+            modules=[{'s11cdNumericalComplexPower': lambda x, p: np.asarray(x, dtype=complex)**p,
+                      'sqrt': np.lib.scimath.sqrt}, 'numpy'], cse=True, docstring_limit=0)
+        return symbols, integrals, function
+
+    def evaluate(self, expression, environment):
+        symbols, integrals, function = self.compiled(expression)
+        missing = set(symbols)-set(environment)
+        if missing:
+            raise ValueError(('unbound numerical action symbols', tuple(map(str, missing))))
+        values = [environment[s] for s in symbols]
+        values.extend(self.integrate(i, environment) for i in integrals)
+        with np.errstate(over='raise', invalid='raise', divide='raise', under='ignore'):
+            result = np.asarray(function(*values), dtype=complex)
+        if not np.all(np.isfinite(result)):
+            raise ValueError('nonfinite bounded action operand')
+        return result
+
+    def integrate(self, integral, environment):
+        free = tuple(sorted(dag_free_symbols(integral), key=sp.default_sort_key))
+        selected = {s: np.asarray(environment[s]) for s in free}
+        key = (integral, tuple((s, a.shape, a.tobytes()) for s, a in selected.items()))
+        if key in self.integral_cache:
+            return self.integral_cache[key]
+        if any(len(lim) != 3 or lim[1:] != (-sp.oo, sp.oo) for lim in integral.limits):
+            raise NotImplementedError('quadrature requires recorded rectangular native infinite limits')
+        variables = [lim[0] for lim in integral.limits]
+        if len(variables) != len(set(variables)) or any(v not in self.rules for v in variables):
+            raise ValueError('missing or repeated ordered integration variable')
+        rank = max((a.ndim for a in selected.values()), default=0)
+        count = len(variables)
+        local = {s: a.reshape(a.shape+(1,)*count) for s, a in selected.items()}
+        for i, variable in enumerate(variables):
+            nodes, _ = self.rules[variable]
+            shape = [1]*(rank+count); shape[rank+i] = len(nodes)
+            local[variable] = nodes.reshape(shape)
+        value = self.evaluate(integral.function, local)
+        shape = np.broadcast_shapes(*(a.shape for a in local.values()))
+        value = np.broadcast_to(value, shape)
+        # SymPy's first limit is innermost. Remove that axis first; the
+        # remaining integration axes move into the same position.
+        for variable in variables:
+            weights = self.rules[variable][1]*self.weight_scale
+            if self.contraction == 'sum':
+                weight_shape = [1]*value.ndim; weight_shape[rank] = len(weights)
+                value = np.sum(value*weights.reshape(weight_shape), axis=rank)
+            else:
+                value = np.tensordot(value, weights, axes=([rank], [0]))
+        self.integral_cache[key] = value
+        self.evaluated_integrals.add(integral)
+        return value
+
+
 class EdgeReduction:
     """Partial Fourier transform in an orthonormal chart with n=e_3.
 

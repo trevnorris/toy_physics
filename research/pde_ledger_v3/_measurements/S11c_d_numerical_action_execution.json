@@ -1,0 +1,15 @@
+{
+  "status": "IMPLEMENTED_READY_TO_RUN",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-numerical-action-20260914",
+  "plan": "S11c_d_numerical_action_plan.md",
+  "planStep": 3,
+  "inputApprovalCommit": "93692321",
+  "sourcePublicationCommit": "d868f949",
+  "input": "S11c_d_variable_profile_development_input.json",
+  "scope": "All five field/equation directions; full reduced source substitutions versus local/nonlocal assembly on finite quadrature domains. Infinite-domain/Abel weak limits and scattering remain unresolved.",
+  "sourceSha256": {
+    "scripts/S11c_d_mixing_scattering_sympy_audit.py": "368d05d508ea99c8fe9ad544a8aba649e174aecc88da26bbf6d6c7c6efce151c",
+    "_measurements/S11c_d_numerical_action_check.py": "86d5b373df8825c1e6dca198555b2a65e62822a3d9ba32868a89ca135bb7968f"
+  },
+  "next": "Run the one-case numerical action constructor/validator with a silent local completion/error watcher."
+}

@@ -1,5 +1,5 @@
 {
-  "status": "PREFLIGHT_EMISSION_RECOVERY_PREPARED",
+  "status": "PREFLIGHT_EMISSION_RECOVERY_RUNNING",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-momentum-20260915",
   "plan": "S11c_d_parallel_momentum_plan.md",
   "report": "S11c_d_parallel_momentum_report.md",
@@ -99,5 +99,61 @@
     "stderrBytes": 1034,
     "finishedUtc": "2026-09-15T23:22:20.900977+00:00"
   },
-  "repairPlan": "S11c_d_parallel_momentum_emission_repair_plan.md"
+  "repairPlan": "S11c_d_parallel_momentum_emission_repair_plan.md",
+  "recoveryImplementationCommit": "6ec6ecbc",
+  "recoveryLaunch": {
+    "launchedUtc": "2026-09-15T23:33:23.214866+00:00",
+    "command": [
+      "/usr/bin/python",
+      "_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-momentum-20260915/validation-recovery",
+      "--stage",
+      "parallel_recover",
+      "--",
+      "python",
+      "-u",
+      "_measurements/S11c_d_parallel_momentum_recover.py",
+      "--directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-momentum-20260915/validation-recovery/complete",
+      "--previous",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-momentum-20260915/validation/complete"
+    ],
+    "supervisorPid": 3221188,
+    "watcherPid": 3221189,
+    "watcherDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-momentum-20260915/validation-recovery/completion-watcher",
+    "threadEnvironment": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1"
+    }
+  },
+  "recoveryActiveAtLaunch": {
+    "stage": "parallel_recover",
+    "command": [
+      "python",
+      "-u",
+      "_measurements/S11c_d_parallel_momentum_recover.py",
+      "--directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-momentum-20260915/validation-recovery/complete",
+      "--previous",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-momentum-20260915/validation/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-momentum-20260915/validation-recovery/parallel_recover.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-momentum-20260915/validation-recovery/parallel_recover.stderr",
+    "startedUtc": "2026-09-15T23:33:23.245726+00:00",
+    "childPid": 3221191,
+    "status": "running"
+  },
+  "recoveryWatcherAtLaunch": {
+    "status": "waiting",
+    "watcherPid": 3221189,
+    "jobPid": 3221188,
+    "thread": "01a08c53-295c-70f0-baaf-353db1745867",
+    "startedUtc": "2026-09-15T23:33:23.250779+00:00",
+    "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
+    "messageSha256": "28aee0407c347dd95d28797157727f38a564d283a057d0453afd6914bf1db0d3",
+    "notifications": {}
+  }
 }

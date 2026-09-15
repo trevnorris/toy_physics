@@ -1,5 +1,5 @@
 {
-  "status": "RUNNING",
+  "status": "VALIDATED_PENDING_COMMIT",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-numerical-action-20260914",
   "plan": "S11c_d_numerical_action_plan.md",
   "planStep": 3,
@@ -11,7 +11,7 @@
     "scripts/S11c_d_mixing_scattering_sympy_audit.py": "368d05d508ea99c8fe9ad544a8aba649e174aecc88da26bbf6d6c7c6efce151c",
     "_measurements/S11c_d_numerical_action_check.py": "86d5b373df8825c1e6dca198555b2a65e62822a3d9ba32868a89ca135bb7968f"
   },
-  "next": "Wait for the owned completion/error watcher; inspect saved action residuals, sources, metadata and quadrature limits before accepting any numerical result.",
+  "next": "Refine finite quadrature, tails, domains and the Abel regulator before boundary matching. Reuse the saved bound operators and direct/assembled test operands.",
   "implementationCommit": "2663a526",
   "launch": {
     "launchedUtc": "2026-09-15T00:50:41.182475+00:00",
@@ -46,16 +46,32 @@
     "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-numerical-action-20260914/action_construct.stderr",
     "startedUtc": "2026-09-15T00:50:41.280853+00:00",
     "childPid": 1950867,
-    "status": "running"
+    "status": "completed",
+    "exitCode": 0,
+    "wallSeconds": 649.9301454788074,
+    "stderrBytes": 0,
+    "finishedUtc": "2026-09-15T01:01:31.211108+00:00"
   },
   "completionWatcher": {
-    "status": "waiting",
+    "status": "finished",
     "watcherPid": 1950862,
     "jobPid": 1950861,
     "thread": "01a08c53-295c-70f0-baaf-353db1745867",
     "startedUtc": "2026-09-15T00:50:41.294507+00:00",
     "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
     "messageSha256": "39af26f5c139f375274a53bcd11c3a0d393d8b625c8219450217314a602bf10e",
-    "notifications": {}
+    "notifications": {
+      "completion": {
+        "status": "queued",
+        "exitCode": 0,
+        "finishedUtc": "2026-09-15T01:01:32.610793+00:00"
+      }
+    }
+  },
+  "checkpoint": "S11c_d_numerical_action_checkpoint.json",
+  "publication": {
+    "path": "scripts/out/S11c_d_numerical_action.out",
+    "bytes": 287329,
+    "sha256": "3855a4300c4c9a5116b70697e32678e1258a270dbebc70357d7195c2599e6159"
   }
 }

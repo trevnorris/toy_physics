@@ -1,0 +1,420 @@
+{
+  "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-numerical-action-20260914/complete",
+  "sourceFiles": {
+    "scripts/S11c_d_mixing_scattering_sympy_audit.py": "368d05d508ea99c8fe9ad544a8aba649e174aecc88da26bbf6d6c7c6efce151c",
+    "scripts/S11c_b_exports.py": "3c6555f90a85382a5e96f3f961f0e36a4875d9259fe1be947fa8e683669b7084",
+    "scripts/S11c_c1_exports.py": "a5353b86dc526fd1b56734fdbdf7dc7f42387a3195ab4de84e8994f751871cdc",
+    "scripts/S11c_c2_exports.py": "2ba5ed487b84ecb98290df6f1650fa6210fe2784cfa02a0f3cff96cd718411cd",
+    "directives/S11c_d_SHARED_PHYSICS.md": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5",
+    "scripts/ledger_fold.py": "97da78c6631c09e5575dd14511760506f1ac08771cf07948978004e92f0b2333",
+    "directives/S11b_SHARED_PHYSICS.md": "9ea9e388e9d6421a841eaf851d12e1793527bba9a24aeeface3bfac2f4b40078",
+    "scripts/S11c_d_output_codec.py": "49873a2fa5c3184aab097263f0a6128379e094e42dbde5052456c5f3908bf717",
+    "_measurements/S11c_d_numerical_action_check.py": "86d5b373df8825c1e6dca198555b2a65e62822a3d9ba32868a89ca135bb7968f",
+    "_measurements/S11c_d_reduced_action_source_check.py": "aae3b2402e1707ef27f217b917dc10592f38acbe35d18356fbc4886ed854f754",
+    "_measurements/S11c_d_variable_profile_input_check.py": "70cdf2811f2ccd92380be24a80bb7af49f4e1a01504b09a9dbb47f8d3cbbb3b2",
+    "_measurements/S11c_d_reduced_action_assembly_checkpoint.json": "b4afb727b1a1ad2a468b0bab9a6ab369dbe4dd35bc46acd7150b7fa581cd984f",
+    "_measurements/S11c_d_variable_profile_development_input.json": "660b2b0b54494dce964c7f5fbd722a76a7e894d8ed92b18b5eb6290c3c10f1d5",
+    "_measurements/S11c_d_variable_profile_input_checkpoint.json": "c1d686dc1ec067bfcb05dc15c38b71bab4f91212ad1530c510afb7fe35542455",
+    "_measurements/S11c_d_numerical_action_plan.md": "13bca06fd2fe5a40cc05c03dc90d94c25ebc9b5a804ad9ae7098feb00f55dba4",
+    "_measurements/S11c_d_variable_profile_matching_plan.md": "b48cd0248e43f7d9c7fa926c71ed415b904e08f81c8ea01816cb05f3a109879d",
+    "_measurements/S11c_d_channel_preflight_input.json": "db0d6f4dd955515e2c53e59039bb36c65ba6736f0233e8a20db9356ef24fb6b4",
+    "_measurements/S11c_d_variable_profile_development_input_proposal.json": "5fd0a4feb51d627825956296e7f2c9ace57178e79e0f07041abc11f43960aabb",
+    "_measurements/S11c_d_variable_profile_parameter_checkpoint.json": "5571536d8a43eeb73c6fb562281200bbbad76d24f3f4ba401769d190dec4512d",
+    "_measurements/S11c_d_variable_profile_parameter_inventory.json": "02abaf37a0febb4daef1a26b2ca314e756af29b7dcaea524a1d95d9736f45b7b",
+    "_measurements/S11c_d_matching_channels_checkpoint.json": "c4ad9b9051f9c3fadb076593dd35ec12d1779fad6d1558c691c3b735fe4d3eeb"
+  },
+  "provenance": {
+    "ASSEMBLY_CHECKPOINT_SHA256": "b4afb727b1a1ad2a468b0bab9a6ab369dbe4dd35bc46acd7150b7fa581cd984f",
+    "ASSEMBLY_PACKET_SHA256": "8eda57998285137d99cce9564757627a57f8d5bc9b27091c86a65a9cc59230a0",
+    "APPROVED_INPUT_SHA256": "660b2b0b54494dce964c7f5fbd722a76a7e894d8ed92b18b5eb6290c3c10f1d5",
+    "INPUT_PROJECTION_SHA256": "c1d686dc1ec067bfcb05dc15c38b71bab4f91212ad1530c510afb7fe35542455",
+    "BASE_INPUT_SHA256": "db0d6f4dd955515e2c53e59039bb36c65ba6736f0233e8a20db9356ef24fb6b4"
+  },
+  "inputProjection": {
+    "status": "USER_APPROVED_INPUT_JOINED",
+    "authorization": "Go ahead with the proposed values",
+    "files": {
+      "proposal": {
+        "path": "_measurements/S11c_d_variable_profile_development_input_proposal.json",
+        "sha256": "5fd0a4feb51d627825956296e7f2c9ace57178e79e0f07041abc11f43960aabb"
+      },
+      "input": {
+        "path": "_measurements/S11c_d_variable_profile_development_input.json",
+        "sha256": "660b2b0b54494dce964c7f5fbd722a76a7e894d8ed92b18b5eb6290c3c10f1d5"
+      },
+      "base": {
+        "path": "_measurements/S11c_d_channel_preflight_input.json",
+        "sha256": "db0d6f4dd955515e2c53e59039bb36c65ba6736f0233e8a20db9356ef24fb6b4"
+      },
+      "dependencies": {
+        "path": "_measurements/S11c_d_variable_profile_parameter_checkpoint.json",
+        "sha256": "5571536d8a43eeb73c6fb562281200bbbad76d24f3f4ba401769d190dec4512d"
+      },
+      "inventory": {
+        "path": "_measurements/S11c_d_variable_profile_parameter_inventory.json",
+        "sha256": "02abaf37a0febb4daef1a26b2ca314e756af29b7dcaea524a1d95d9736f45b7b"
+      },
+      "matching": {
+        "path": "_measurements/S11c_d_matching_channels_checkpoint.json",
+        "sha256": "c4ad9b9051f9c3fadb076593dd35ec12d1779fad6d1558c691c3b735fe4d3eeb"
+      }
+    },
+    "existingParameterDifferences": {
+      "B_rho_3": "0",
+      "C": "0",
+      "G_W_u": "0",
+      "G_theta_u": "0",
+      "Lambda_A_0": "0",
+      "Lambda_V_0": "0",
+      "Lambda_X_0": "0",
+      "W_0": "0",
+      "L_W": "0",
+      "eta_bg": "0",
+      "c_s0": "0",
+      "k_W": "0",
+      "kappa_W": "0",
+      "kappa_theta": "0",
+      "kappa_theta_W": "0",
+      "mu_R": "0",
+      "mu_S": "0",
+      "mu_W": "0",
+      "omega": "0",
+      "rho_br": "0",
+      "rho_m": "0",
+      "tau_A": "0",
+      "tau_V": "0",
+      "tau_X": "0",
+      "s11cdTangentialMomentum1": "0",
+      "s11cdTangentialMomentum2": "0"
+    },
+    "addedCoefficientCount": 30,
+    "addedCoefficientUnits": {
+      "gamma_s11cb_mu_r_bg_01": [
+        "0",
+        "0",
+        "0"
+      ],
+      "gamma_s11cb_mu_r_bg_02": [
+        "0",
+        "0",
+        "0"
+      ],
+      "gamma_s11cb_mu_r_bg_03": [
+        "0",
+        "0",
+        "0"
+      ],
+      "gamma_s11cb_mu_r_bg_04": [
+        "0",
+        "0",
+        "0"
+      ],
+      "gamma_s11cb_mu_r_bg_05": [
+        "0",
+        "0",
+        "0"
+      ],
+      "gamma_s11cb_mu_r_bg_06": [
+        "2",
+        "0",
+        "0"
+      ],
+      "gamma_s11cb_mu_r_bg_07": [
+        "2",
+        "0",
+        "0"
+      ],
+      "gamma_s11cb_mu_r_bg_08": [
+        "2",
+        "0",
+        "0"
+      ],
+      "gamma_s11cb_mu_r_bg_09": [
+        "2",
+        "0",
+        "0"
+      ],
+      "gamma_s11cb_mu_r_bg_10": [
+        "2",
+        "0",
+        "0"
+      ],
+      "gamma_s11cb_mu_r_bg_11": [
+        "2",
+        "0",
+        "0"
+      ],
+      "gamma_s11cb_mu_r_bg_12": [
+        "2",
+        "0",
+        "0"
+      ],
+      "gamma_s11cb_mu_r_bg_13": [
+        "2",
+        "0",
+        "0"
+      ],
+      "gamma_s11cb_mu_r_bg_14": [
+        "2",
+        "0",
+        "0"
+      ],
+      "gamma_s11cb_mu_r_bg_15": [
+        "2",
+        "0",
+        "0"
+      ],
+      "gamma_s11cb_w_bg_01": [
+        "-2",
+        "-2",
+        "1"
+      ],
+      "gamma_s11cb_w_bg_02": [
+        "-2",
+        "-2",
+        "1"
+      ],
+      "gamma_s11cb_w_bg_03": [
+        "-2",
+        "-2",
+        "1"
+      ],
+      "gamma_s11cb_w_bg_04": [
+        "-2",
+        "-2",
+        "1"
+      ],
+      "gamma_s11cb_w_bg_05": [
+        "-2",
+        "-2",
+        "1"
+      ],
+      "gamma_s11cb_w_bg_06": [
+        "0",
+        "-2",
+        "1"
+      ],
+      "gamma_s11cb_w_bg_07": [
+        "0",
+        "-2",
+        "1"
+      ],
+      "gamma_s11cb_w_bg_08": [
+        "0",
+        "-2",
+        "1"
+      ],
+      "gamma_s11cb_w_bg_09": [
+        "0",
+        "-2",
+        "1"
+      ],
+      "gamma_s11cb_w_bg_10": [
+        "0",
+        "-2",
+        "1"
+      ],
+      "gamma_s11cb_w_bg_11": [
+        "0",
+        "-2",
+        "1"
+      ],
+      "gamma_s11cb_w_bg_12": [
+        "0",
+        "-2",
+        "1"
+      ],
+      "gamma_s11cb_w_bg_13": [
+        "0",
+        "-2",
+        "1"
+      ],
+      "gamma_s11cb_w_bg_14": [
+        "0",
+        "-2",
+        "1"
+      ],
+      "gamma_s11cb_w_bg_15": [
+        "0",
+        "-2",
+        "1"
+      ]
+    },
+    "matchingBaseInputJoins": {
+      "LEFT": true,
+      "RIGHT": true
+    },
+    "inheritedEndOperatorDependencies": {
+      "REFERENCE": {
+        "cacheSha256": "b453f91c68e6f9281716805de18081cee7bdc348f4cd32ca40ed66a3e2225fbd",
+        "matrices": {
+          "WEAK": {
+            "shape": [
+              6,
+              6
+            ],
+            "presentInventoriedCoefficients": [],
+            "presentCount": 0
+          },
+          "STRONG": {
+            "shape": [
+              5,
+              5
+            ],
+            "presentInventoriedCoefficients": [],
+            "presentCount": 0
+          }
+        }
+      },
+      "LEFT": {
+        "cacheSha256": "35e5dba88a3d367a3be84d148e9fe3aee2c85d34076b269219ca0e10fa0a27f4",
+        "matrices": {
+          "WEAK": {
+            "shape": [
+              6,
+              6
+            ],
+            "presentInventoriedCoefficients": [],
+            "presentCount": 0
+          },
+          "STRONG": {
+            "shape": [
+              5,
+              5
+            ],
+            "presentInventoriedCoefficients": [],
+            "presentCount": 0
+          }
+        }
+      },
+      "RIGHT": {
+        "cacheSha256": "1d52bed28683e0736324e3cf46b3a69cdc092df6368b1036595b40dc4aaae8e2",
+        "matrices": {
+          "WEAK": {
+            "shape": [
+              6,
+              6
+            ],
+            "presentInventoriedCoefficients": [],
+            "presentCount": 0
+          },
+          "STRONG": {
+            "shape": [
+              5,
+              5
+            ],
+            "presentInventoriedCoefficients": [],
+            "presentCount": 0
+          }
+        }
+      }
+    },
+    "scope": "The selected extension preserves all old parameters, profiles and units. All added coefficients are absent from the accepted strong/weak end pencils. Existing end records retain their original input hashes; this projection joins their reuse."
+  },
+  "norms": [
+    {
+      "test": 0,
+      "grid": 0,
+      "maxResidual": 1.1188630228279524e-16,
+      "maxScaledResidual": 6.140597633576051e-17,
+      "measureMutationDifference": 0.00024208054961377386,
+      "coefficientMutationDifference": 0.0037616076765676354,
+      "assembledIntegralCount": 86,
+      "directIntegralCount": 86
+    },
+    {
+      "test": 0,
+      "grid": 1,
+      "maxResidual": 1.1107649934270853e-16,
+      "maxScaledResidual": 6.140597633576051e-17,
+      "measureMutationDifference": 0.0002510949136050405,
+      "coefficientMutationDifference": 0.0037616076765676354,
+      "assembledIntegralCount": 86,
+      "directIntegralCount": 86
+    },
+    {
+      "test": 1,
+      "grid": 0,
+      "maxResidual": 2.2887833992611187e-16,
+      "maxScaledResidual": 1.1008290754251132e-16,
+      "measureMutationDifference": 0.00021814944417186417,
+      "coefficientMutationDifference": 0.0037616076765676354,
+      "assembledIntegralCount": 86,
+      "directIntegralCount": 86
+    },
+    {
+      "test": 1,
+      "grid": 1,
+      "maxResidual": 2.482534153247273e-16,
+      "maxScaledResidual": 1.0586037272998865e-16,
+      "measureMutationDifference": 0.0002132853469249504,
+      "coefficientMutationDifference": 0.0037616076765676354,
+      "assembledIntegralCount": 86,
+      "directIntegralCount": 86
+    }
+  ],
+  "gridChanges": [
+    0.03215925567242921,
+    0.04669754575422284
+  ],
+  "actionComponentEvaluations": 300,
+  "nonlocalTermEvaluations": 1920,
+  "localDerivativeOrders": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "boundIntegralCount": 80,
+  "tagCount": 106,
+  "writeKeyCount": 51,
+  "metadataPaths": 3611,
+  "packetSha256BeforeEmission": "39ff873497a9ec39eee08af129e802e942220c9c8403defe91774fc4acb58994",
+  "packetSha256AfterEmission": "39ff873497a9ec39eee08af129e802e942220c9c8403defe91774fc4acb58994",
+  "wallSeconds": 646.8618878973648,
+  "peakRssKiB": 167712,
+  "artifacts": {
+    "actions.pickle": {
+      "bytes": 153208,
+      "sha256": "39ff873497a9ec39eee08af129e802e942220c9c8403defe91774fc4acb58994"
+    },
+    "bound-operators.pickle": {
+      "bytes": 25035,
+      "sha256": "c16b1e09dd5fabdfcbeef0d5e4797cb70f7edd704ba32678efe8500527ad5b9d"
+    },
+    "full.out": {
+      "bytes": 287329,
+      "sha256": "3855a4300c4c9a5116b70697e32678e1258a270dbebc70357d7195c2599e6159"
+    },
+    "test-0-grid-0.pickle": {
+      "bytes": 35110,
+      "sha256": "109bb8832c939dbf84b978158d3a8bd5ebc7a7409097e785be0c1357801e50b2"
+    },
+    "test-0-grid-1.pickle": {
+      "bytes": 35110,
+      "sha256": "d30847858831ca8096ab93787626d0fc43cfd04dbb026e6d5ea95026b4f3b2d2"
+    },
+    "test-0-operands.pickle": {
+      "bytes": 38196,
+      "sha256": "5b7d465cea79a4cd53e6c654e52ce37267ad5187ef27d1df5c13540cc3c891ab"
+    },
+    "test-1-grid-0.pickle": {
+      "bytes": 35143,
+      "sha256": "6541d5b26042da76e4234d009c96e3e7adcee7b3ae470e9b8e03c562126ca335"
+    },
+    "test-1-grid-1.pickle": {
+      "bytes": 35143,
+      "sha256": "08b360ce71d7b1e20e8766e17cb0bdf30b1502ac89b66b8b9298470208148b24"
+    },
+    "test-1-operands.pickle": {
+      "bytes": 38419,
+      "sha256": "798fb9355b212114162b86c8ebc4e8a65df2e49a4ffba2665ea1d316f8a9e258"
+    }
+  },
+  "scope": "Complete five-field source/assembly numerical action comparisons on the recorded finite quadrature domains and positive Abel regulator. Shared quadrature nodes with independent sum/dot contractions test assembly; physical tail, infinite-domain, and Abel weak limits remain unresolved. No scattering or profile-frequency pole solve.",
+  "publication": {
+    "path": "scripts/out/S11c_d_numerical_action.out",
+    "bytes": 287329,
+    "sha256": "3855a4300c4c9a5116b70697e32678e1258a270dbebc70357d7195c2599e6159"
+  }
+}

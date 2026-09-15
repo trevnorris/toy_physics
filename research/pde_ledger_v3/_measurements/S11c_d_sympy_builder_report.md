@@ -61,10 +61,11 @@ controls and final own-row export remain program work. Per-root and full-subspac
 checks retain their stated sheet and exceptional-domain limits. Supplied physical
 premises and c2 operand debt remain inherited premises. No S11c_d_exports.py exists.
 
-The numerical action adapter is committed at 2663a526 and its one-case
-constructor/validator is running. Finite-domain action agreement, quadrature
-changes and mutation sensitivity are pending acceptance; physical tail and
-Abel weak limits remain separate work before boundary matching.
+The numerical action check completed: all 300 components agree within
+2.49e-16, retaining 1,920 nonlocal contributions and passing mutation checks.
+All 106 tags and 3,611 metadata paths replayed, and source/packet hashes agree.
+Grid changes reach 0.04670; quadrature refinement, physical tails and Abel
+weak limits remain work before boundary matching. See the numerical action report.
 
 ## Retained user-approved solver/export contract
 

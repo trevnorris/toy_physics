@@ -10,13 +10,14 @@
   },
   "scope": "Exact local derivative coefficient matrices and intact nonlocal integral actions, with literal reconstruction and independent derivative-extraction residuals. No numerical quadrature or scattering result.",
   "numericalInput": {
-    "status": "AWAITING_USER_CHOICE",
+    "status": "USER_APPROVED",
     "proposal": "S11c_d_variable_profile_development_input_proposal.json",
     "proposalSha256": "5fd0a4feb51d627825956296e7f2c9ace57178e79e0f07041abc11f43960aabb",
     "endDependencyCheckpoint": "S11c_d_variable_profile_parameter_checkpoint.json",
-    "existingInputUnchanged": true
+    "existingInputUnchanged": true,
+    "input": "S11c_d_variable_profile_development_input.json"
   },
-  "next": "Obtain the numerical-instance choice, then follow S11c_d_numerical_action_plan.md. No owned scripts remain running.",
+  "next": "Follow S11c_d_numerical_action_plan.md using the user-approved coefficient extension and unchanged end input projection.",
   "implementationCommit": "b9dba906",
   "observedUtc": "2026-09-15T00:31:05.793916+00:00",
   "active": {

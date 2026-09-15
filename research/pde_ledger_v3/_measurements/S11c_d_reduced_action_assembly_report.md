@@ -32,8 +32,8 @@ The complete evidence inventory is S11c_d_reduced_action_assembly_checkpoint.jso
 Numerical action evaluation needs values for 30 inherited free gradient-energy
 coefficients missing from the endpoint-only input. S11c-b section 3a explicitly
 leaves these constants free; this is an input choice, not an upstream bug.
-Their symbolic dependence is preserved. Await the requested numerical-instance
-choice before binding them. Then verify the extended input's end restrictions
+Their symbolic dependence is preserved. The user approved the proposed numerical-instance
+values. Verify the extended input's end restrictions
 and compute actual local/nonlocal actions against direct reduced-row test
 actions, with quadrature, tails and the Abel weak limit accounted for before
 boundary matching. The S-matrix, continuum expansion, profile-frequency poles
@@ -42,5 +42,6 @@ and final own-row export remain open program work.
 Publication is committed at `d868f949`; the full annex payload hash is verified.
 The parameter-dependency checkpoint finds all 30 coefficients absent from both
 strong and weak operators at LEFT, RIGHT and REFERENCE. The new development
-input proposal preserves every existing parameter/profile and remains unapplied.
-The numerical action plan is ready; continuation awaits the input choice.
+input preserves every existing parameter/profile and uses the user-approved
+values 1/101 through 30/101 in the recorded inherited units. Numerical action
+validation proceeds under S11c_d_numerical_action_plan.md.

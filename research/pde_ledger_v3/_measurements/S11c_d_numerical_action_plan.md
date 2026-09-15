@@ -5,8 +5,8 @@ orders 0–3 and 80 intact nonlocal integral operators. This continues step 3 of
 the variable-profile matching plan. It does not replace its later boundary,
 continuum-expansion or profile-frequency-pole requirements.
 
-1. Resolve the pending numerical-instance choice for the 30 inherited free
-   gradient-energy coefficients. The proposed input is unapplied. Preserve all
+1. The user approved the proposed numerical instance for the 30 inherited free
+   gradient-energy coefficients. Use the separate development input. Preserve all
    existing parameter values, independent profile formulas, unit frame and
    symbolic coefficient dependence. Verify the selected extension against the
    accepted end operators and normalization inputs before use.

@@ -1,0 +1,285 @@
+{
+  "status": "USER_APPROVED_INPUT_JOINED",
+  "authorization": "Go ahead with the proposed values",
+  "files": {
+    "proposal": {
+      "path": "_measurements/S11c_d_variable_profile_development_input_proposal.json",
+      "sha256": "5fd0a4feb51d627825956296e7f2c9ace57178e79e0f07041abc11f43960aabb"
+    },
+    "input": {
+      "path": "_measurements/S11c_d_variable_profile_development_input.json",
+      "sha256": "660b2b0b54494dce964c7f5fbd722a76a7e894d8ed92b18b5eb6290c3c10f1d5"
+    },
+    "base": {
+      "path": "_measurements/S11c_d_channel_preflight_input.json",
+      "sha256": "db0d6f4dd955515e2c53e59039bb36c65ba6736f0233e8a20db9356ef24fb6b4"
+    },
+    "dependencies": {
+      "path": "_measurements/S11c_d_variable_profile_parameter_checkpoint.json",
+      "sha256": "5571536d8a43eeb73c6fb562281200bbbad76d24f3f4ba401769d190dec4512d"
+    },
+    "inventory": {
+      "path": "_measurements/S11c_d_variable_profile_parameter_inventory.json",
+      "sha256": "02abaf37a0febb4daef1a26b2ca314e756af29b7dcaea524a1d95d9736f45b7b"
+    },
+    "matching": {
+      "path": "_measurements/S11c_d_matching_channels_checkpoint.json",
+      "sha256": "c4ad9b9051f9c3fadb076593dd35ec12d1779fad6d1558c691c3b735fe4d3eeb"
+    }
+  },
+  "existingParameterDifferences": {
+    "B_rho_3": "0",
+    "C": "0",
+    "G_W_u": "0",
+    "G_theta_u": "0",
+    "Lambda_A_0": "0",
+    "Lambda_V_0": "0",
+    "Lambda_X_0": "0",
+    "W_0": "0",
+    "L_W": "0",
+    "eta_bg": "0",
+    "c_s0": "0",
+    "k_W": "0",
+    "kappa_W": "0",
+    "kappa_theta": "0",
+    "kappa_theta_W": "0",
+    "mu_R": "0",
+    "mu_S": "0",
+    "mu_W": "0",
+    "omega": "0",
+    "rho_br": "0",
+    "rho_m": "0",
+    "tau_A": "0",
+    "tau_V": "0",
+    "tau_X": "0",
+    "s11cdTangentialMomentum1": "0",
+    "s11cdTangentialMomentum2": "0"
+  },
+  "addedCoefficientCount": 30,
+  "addedCoefficientUnits": {
+    "gamma_s11cb_mu_r_bg_01": [
+      "0",
+      "0",
+      "0"
+    ],
+    "gamma_s11cb_mu_r_bg_02": [
+      "0",
+      "0",
+      "0"
+    ],
+    "gamma_s11cb_mu_r_bg_03": [
+      "0",
+      "0",
+      "0"
+    ],
+    "gamma_s11cb_mu_r_bg_04": [
+      "0",
+      "0",
+      "0"
+    ],
+    "gamma_s11cb_mu_r_bg_05": [
+      "0",
+      "0",
+      "0"
+    ],
+    "gamma_s11cb_mu_r_bg_06": [
+      "2",
+      "0",
+      "0"
+    ],
+    "gamma_s11cb_mu_r_bg_07": [
+      "2",
+      "0",
+      "0"
+    ],
+    "gamma_s11cb_mu_r_bg_08": [
+      "2",
+      "0",
+      "0"
+    ],
+    "gamma_s11cb_mu_r_bg_09": [
+      "2",
+      "0",
+      "0"
+    ],
+    "gamma_s11cb_mu_r_bg_10": [
+      "2",
+      "0",
+      "0"
+    ],
+    "gamma_s11cb_mu_r_bg_11": [
+      "2",
+      "0",
+      "0"
+    ],
+    "gamma_s11cb_mu_r_bg_12": [
+      "2",
+      "0",
+      "0"
+    ],
+    "gamma_s11cb_mu_r_bg_13": [
+      "2",
+      "0",
+      "0"
+    ],
+    "gamma_s11cb_mu_r_bg_14": [
+      "2",
+      "0",
+      "0"
+    ],
+    "gamma_s11cb_mu_r_bg_15": [
+      "2",
+      "0",
+      "0"
+    ],
+    "gamma_s11cb_w_bg_01": [
+      "-2",
+      "-2",
+      "1"
+    ],
+    "gamma_s11cb_w_bg_02": [
+      "-2",
+      "-2",
+      "1"
+    ],
+    "gamma_s11cb_w_bg_03": [
+      "-2",
+      "-2",
+      "1"
+    ],
+    "gamma_s11cb_w_bg_04": [
+      "-2",
+      "-2",
+      "1"
+    ],
+    "gamma_s11cb_w_bg_05": [
+      "-2",
+      "-2",
+      "1"
+    ],
+    "gamma_s11cb_w_bg_06": [
+      "0",
+      "-2",
+      "1"
+    ],
+    "gamma_s11cb_w_bg_07": [
+      "0",
+      "-2",
+      "1"
+    ],
+    "gamma_s11cb_w_bg_08": [
+      "0",
+      "-2",
+      "1"
+    ],
+    "gamma_s11cb_w_bg_09": [
+      "0",
+      "-2",
+      "1"
+    ],
+    "gamma_s11cb_w_bg_10": [
+      "0",
+      "-2",
+      "1"
+    ],
+    "gamma_s11cb_w_bg_11": [
+      "0",
+      "-2",
+      "1"
+    ],
+    "gamma_s11cb_w_bg_12": [
+      "0",
+      "-2",
+      "1"
+    ],
+    "gamma_s11cb_w_bg_13": [
+      "0",
+      "-2",
+      "1"
+    ],
+    "gamma_s11cb_w_bg_14": [
+      "0",
+      "-2",
+      "1"
+    ],
+    "gamma_s11cb_w_bg_15": [
+      "0",
+      "-2",
+      "1"
+    ]
+  },
+  "matchingBaseInputJoins": {
+    "LEFT": true,
+    "RIGHT": true
+  },
+  "inheritedEndOperatorDependencies": {
+    "REFERENCE": {
+      "cacheSha256": "b453f91c68e6f9281716805de18081cee7bdc348f4cd32ca40ed66a3e2225fbd",
+      "matrices": {
+        "WEAK": {
+          "shape": [
+            6,
+            6
+          ],
+          "presentInventoriedCoefficients": [],
+          "presentCount": 0
+        },
+        "STRONG": {
+          "shape": [
+            5,
+            5
+          ],
+          "presentInventoriedCoefficients": [],
+          "presentCount": 0
+        }
+      }
+    },
+    "LEFT": {
+      "cacheSha256": "35e5dba88a3d367a3be84d148e9fe3aee2c85d34076b269219ca0e10fa0a27f4",
+      "matrices": {
+        "WEAK": {
+          "shape": [
+            6,
+            6
+          ],
+          "presentInventoriedCoefficients": [],
+          "presentCount": 0
+        },
+        "STRONG": {
+          "shape": [
+            5,
+            5
+          ],
+          "presentInventoriedCoefficients": [],
+          "presentCount": 0
+        }
+      }
+    },
+    "RIGHT": {
+      "cacheSha256": "1d52bed28683e0736324e3cf46b3a69cdc092df6368b1036595b40dc4aaae8e2",
+      "matrices": {
+        "WEAK": {
+          "shape": [
+            6,
+            6
+          ],
+          "presentInventoriedCoefficients": [],
+          "presentCount": 0
+        },
+        "STRONG": {
+          "shape": [
+            5,
+            5
+          ],
+          "presentInventoriedCoefficients": [],
+          "presentCount": 0
+        }
+      }
+    }
+  },
+  "scope": "The selected extension preserves all old parameters, profiles and units. All added coefficients are absent from the accepted strong/weak end pencils. Existing end records retain their original input hashes; this projection joins their reuse.",
+  "instrument": {
+    "path": "research/pde_ledger_v3/_measurements/S11c_d_variable_profile_input_check.py",
+    "sha256": "70cdf2811f2ccd92380be24a80bb7af49f4e1a01504b09a9dbb47f8d3cbbb3b2"
+  }
+}

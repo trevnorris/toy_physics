@@ -50,8 +50,10 @@ and 2,763 metadata paths passed full replay. The packet is committed and annex-v
 assembly now has validated full five-slot source rows and all five native
 probe-action columns. Exact assembly is validated: four local derivative
 matrices, 80 distinct nonlocal integrals and 281 zero reconstruction/extraction
-residuals; 1,226 metadata paths passed replay. Numerical action evaluation
-awaits the input choice for 30 inherited free gradient-energy coefficients.
+residuals; 1,226 metadata paths passed replay. The user approved the proposed values
+for all 30 inherited free gradient-energy coefficients. The separate development
+input preserves every original parameter and profile. Numerical action evaluation
+continues with the accepted end-dependency proof and unchanged symbolic operators.
 
 The complete two-ended variable-profile S-matrix, profile-frequency bound
 poles/residues/overlap, survival, flux bookkeeping, weak coefficients, section 5

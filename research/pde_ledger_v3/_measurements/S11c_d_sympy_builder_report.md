@@ -66,9 +66,10 @@ The numerical action check completed: all 300 components agree within
 All 106 tags and 3,611 metadata paths replayed, and source/packet hashes agree.
 Grid changes reach 0.04670; quadrature refinement, physical tails and Abel
 weak limits remain work before boundary matching. Publication is annex-verified
-at 009667f7. Quadrature-domain recovery is running after a complex-sum recorder
-repair; all saved physical operands are retained. See the numerical action and
-quadrature domain reports.
+at 009667f7. Quadrature-domain recovery passed with empty stderr: all source
+and operand joins agree. Width-based split rules resolve the elementary Abel
+mass to 5.33e-15; profile transforms agree to 1.25e-12 at the refined order.
+Full-action refinement remains necessary. See the quadrature domain report.
 
 ## Retained user-approved solver/export contract
 

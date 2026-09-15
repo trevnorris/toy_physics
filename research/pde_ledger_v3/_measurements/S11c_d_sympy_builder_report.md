@@ -79,7 +79,9 @@ byte-identical and its constructor unchanged. Full replay covers 1,670 tags,
 quadrature adapter binds all 35 source integrals to both approved tests, uses
 bounded frequency batches and compares refined Gauss rules with independent
 adaptive integration. Its focused finite-integral residuals are below 3.56e-15;
-the full source-integral run is pending. Full-action quadrature remains work
+the full source-integral run stopped before quadrature on a live expression
+representation join. The repair retains exact pair certificates and original
+limits, with an expanded-representation regression running under its watcher. Full-action quadrature remains work
 before physical limit claims and boundary matching.
 See the factorization report and accepted checkpoint for evidence and scope.
 

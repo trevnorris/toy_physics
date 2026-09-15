@@ -26,5 +26,20 @@ The first launch stopped before binding or numerical integration: the source
 checkpoint contains two publications, while the new loader expected one. The
 loader now validates both existing schemas and every listed publication. All
 four consumed checkpoint inventories pass; only that loader changed. Original
-logs and source snapshots are preserved. The retry is running under the single-job supervisor and silent local
-completion/error watcher. No full source-quadrature result is yet accepted.
+logs and source snapshots are preserved. The retry stopped before quadrature on the exact native-test binding guard.
+
+The binding diagnostic covers 160 original/test pairs and all 320 explicit
+field/row/term occurrences. Ten pairs had unequal live expression trees; all
+limits agree. Pickle reconstruction makes all 320 saved occurrences exactly
+equal. Certificates on those restored pairs have zero normalized residuals
+and 52 zero proof scalars; a coefficient mutation remains nonzero. The repaired
+production helper also rejects a changed integration limit.
+
+The checker now compares each actual occurrence, preserves raw and certified
+residuals plus live representation strings/hashes, and saves per-test joins
+and each bound source before later guards. It uses the existing exact
+certificate helper; the engine and physical inputs are unchanged. A watched
+regression on computed expanded versions of the ten saved integrands is still
+running to exercise unequal representations. No full source quadrature has
+yet run or been accepted. See the binding repair checkpoint for saved operands,
+source hashes and the live regression record.

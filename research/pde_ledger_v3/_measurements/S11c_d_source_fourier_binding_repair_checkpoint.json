@@ -1,0 +1,292 @@
+{
+  "kind": "native test binding representation check",
+  "status": "REPAIR_IMPLEMENTED_EXPANDED_REGRESSION_RUNNING",
+  "failedInvocation": {
+    "stage": "source_quadrature",
+    "command": [
+      "python",
+      "-u",
+      "_measurements/S11c_d_source_fourier_quadrature_check.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-source-quadrature-20260914/retry-01/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-source-quadrature-20260914/retry-01/source_quadrature.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-source-quadrature-20260914/retry-01/source_quadrature.stderr",
+    "startedUtc": "2026-09-15T04:01:50.755997+00:00",
+    "childPid": 2030040,
+    "status": "failed",
+    "exitCode": 1,
+    "wallSeconds": 84.42065407708287,
+    "stderrBytes": 695,
+    "finishedUtc": "2026-09-15T04:03:15.176749+00:00"
+  },
+  "diagnosticRunDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-source-quadrature-20260914/binding-diagnostic",
+  "diagnostic": {
+    "sourceSha256": "cb70d25aa4eb1fd01a4b68d7b2e285074f39546b8754c99f380077570d2863a5",
+    "checkerSha256": "52633bb4972ae7a65298af0d753f70befb42ab892c86140ad0daff0263b72683",
+    "provenance": {
+      "FOURIER_CHECKPOINT_SHA256": "fcf6f1c5598b63c11d4f8a76d2d94c2b5bace590e83d4beea3e52e82f44158a6",
+      "FACTOR_PACKET_SHA256": "4ad4e99de3f13a8bf3e42374f1425a84521e27634635063adb497cdc94651033",
+      "CERTIFICATE_PACKET_SHA256": "c69ed83e4a484a93d8f65e1389362943155e79157ba94a1f8c9ab2fed8fb2275",
+      "NUMERICAL_CHECKPOINT_SHA256": "d66690ef13b252b15af82422e5a426d352a5ce2de0b2c11fcbb28adffbbdc3c2",
+      "ASSEMBLY_CHECKPOINT_SHA256": "b4afb727b1a1ad2a468b0bab9a6ab369dbe4dd35bc46acd7150b7fa581cd984f",
+      "SOURCE_ACTION_CHECKPOINT_SHA256": "b6dcd36ee6cf8ed3b3943e207012dd165fce62ec39cb8f53ca3c23f4715d094b",
+      "APPROVED_INPUT_SHA256": "660b2b0b54494dce964c7f5fbd722a76a7e894d8ed92b18b5eb6290c3c10f1d5",
+      "INPUT_PROJECTION_SHA256": "c1d686dc1ec067bfcb05dc15c38b71bab4f91212ad1530c510afb7fe35542455",
+      "TEST_PACKET_SHA256": [
+        "5b7d465cea79a4cd53e6c654e52ce37267ad5187ef27d1df5c13540cc3c891ab",
+        "798fb9355b212114162b86c8ebc4e8a65df2e49a4ffba2665ea1d316f8a9e258"
+      ]
+    },
+    "pairsSha256": "4f5be9236355fc0cc16a04d542e95fd480b63e075a82c77859ca9e270a437169",
+    "exactFailures": 10,
+    "canonicalFailures": 10,
+    "wallSeconds": 96.46098574064672
+  },
+  "restoredPairCertificates": {
+    "sourceSha256": "e1af8c040254f9daeb18293f479edf7e0eaf353a3e28ce924311148396e98a55",
+    "pairsSha256": "4f5be9236355fc0cc16a04d542e95fd480b63e075a82c77859ca9e270a437169",
+    "certificatesSha256": "e1ccd75af02902891fdbea6ce6adcb32d7b6d20f514bea582f35f01e39802f38",
+    "mutationSha256": "9d5818fe47e31ec381bc23deabadb697e76cb7ba3a34e2a6b38ff71b685b9cbd",
+    "certificates": [
+      {
+        "test": 0,
+        "index": 30,
+        "limitsEqual": true,
+        "residualZero": true,
+        "proofCount": 5,
+        "nonzeroProofs": 0
+      },
+      {
+        "test": 0,
+        "index": 31,
+        "limitsEqual": true,
+        "residualZero": true,
+        "proofCount": 5,
+        "nonzeroProofs": 0
+      },
+      {
+        "test": 0,
+        "index": 32,
+        "limitsEqual": true,
+        "residualZero": true,
+        "proofCount": 5,
+        "nonzeroProofs": 0
+      },
+      {
+        "test": 0,
+        "index": 33,
+        "limitsEqual": true,
+        "residualZero": true,
+        "proofCount": 6,
+        "nonzeroProofs": 0
+      },
+      {
+        "test": 0,
+        "index": 34,
+        "limitsEqual": true,
+        "residualZero": true,
+        "proofCount": 5,
+        "nonzeroProofs": 0
+      },
+      {
+        "test": 1,
+        "index": 30,
+        "limitsEqual": true,
+        "residualZero": true,
+        "proofCount": 5,
+        "nonzeroProofs": 0
+      },
+      {
+        "test": 1,
+        "index": 31,
+        "limitsEqual": true,
+        "residualZero": true,
+        "proofCount": 5,
+        "nonzeroProofs": 0
+      },
+      {
+        "test": 1,
+        "index": 32,
+        "limitsEqual": true,
+        "residualZero": true,
+        "proofCount": 5,
+        "nonzeroProofs": 0
+      },
+      {
+        "test": 1,
+        "index": 33,
+        "limitsEqual": true,
+        "residualZero": true,
+        "proofCount": 6,
+        "nonzeroProofs": 0
+      },
+      {
+        "test": 1,
+        "index": 34,
+        "limitsEqual": true,
+        "residualZero": true,
+        "proofCount": 5,
+        "nonzeroProofs": 0
+      }
+    ],
+    "mutationResidualNonzero": true,
+    "wallSeconds": 0.6756151523441076
+  },
+  "restoredProduction": {
+    "occurrences": 320,
+    "exactOccurrences": 320,
+    "normalizedZeroOccurrences": 320,
+    "proofResiduals": 0,
+    "nonzeroProofResiduals": 0,
+    "coefficientMutationNonzero": true,
+    "limitMutationRejected": true,
+    "pairsSha256": "4f5be9236355fc0cc16a04d542e95fd480b63e075a82c77859ca9e270a437169",
+    "checkerSha256": "4e2861228f1f95d825e50495132861fe344185798e01e7c2d29b4808bfd78801",
+    "engineSha256": "32666c4f79ae78806c023eb1aefbef36868be9d0d52f0f8537140e9088d30204",
+    "sourceSha256": "01f23855f210a3cfa71c2e214858ad36565faca9e3d86b8e0ff0567ef165694d"
+  },
+  "expandedRegression": {
+    "script": "/var/projects/toy_physics/_scratch/s11c/s11c-source-quadrature-20260914/binding-production-check-02.py",
+    "toolSessionId": 27879,
+    "checksPath": "/var/projects/toy_physics/_scratch/s11c/s11c-source-quadrature-20260914/binding-diagnostic/production-checks-02.json",
+    "status": "RUNNING",
+    "processPid": 2036254,
+    "watcherPid": 2037157,
+    "watcherDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-source-quadrature-20260914/binding-diagnostic/production-completion-watcher"
+  },
+  "watcherAtCheckpoint": {
+    "status": "waiting",
+    "watcherPid": 2037157,
+    "jobPid": 2036254,
+    "thread": "01a08c53-295c-70f0-baaf-353db1745867",
+    "startedUtc": "2026-09-15T04:17:05.071220+00:00",
+    "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
+    "messageSha256": "cf90429d8bdf9388ecbe3d32660330f806ae7d211660be9acf1d9e09e6f15962",
+    "notifications": {}
+  },
+  "sourceFiles": {
+    "_measurements/S11c_d_source_fourier_quadrature_check.py": "16faf208ee9f9d6e630bc85ed7b29f30c2fc6566edc6cd5480cead2397f0e7d7",
+    "scripts/S11c_d_mixing_scattering_sympy_audit.py": "32666c4f79ae78806c023eb1aefbef36868be9d0d52f0f8537140e9088d30204",
+    "_measurements/S11c_d_source_fourier_quadrature_plan.md": "55c6d7aed76c4146e8a767927338a0d65fdc95a14443a2c7c29930baa12748ee"
+  },
+  "artifacts": {
+    "binding-certificate-1-31.pickle": {
+      "bytes": 3187,
+      "sha256": "de95fdfeb2d0cb9b7597421ef7c7cd9ae9ad9214a9177e16dd43ae47245d676a"
+    },
+    "checks.json": {
+      "bytes": 30398,
+      "sha256": "05d5c4972fa6de50901b06e6e23848d0f569f5d42f56cc5365d1722620c6bb4e"
+    },
+    "binding-certificate-1-33.pickle": {
+      "bytes": 3668,
+      "sha256": "1e34d1674646e85bc73d9f1d968e28526d8b9ef163a817d7a6e57cffc90918f5"
+    },
+    "binding-certificate-0-32.pickle": {
+      "bytes": 3270,
+      "sha256": "ad2a4f2dcc4a4e7b51033e1ce9addbabd1984cd42c9dcd0d533eea7be3d17827"
+    },
+    "pairs.pickle": {
+      "bytes": 139035,
+      "sha256": "4f5be9236355fc0cc16a04d542e95fd480b63e075a82c77859ca9e270a437169"
+    },
+    "invocation.json": {
+      "bytes": 564,
+      "sha256": "b473113828d50104b70b7a9ea9bd27a5ed2388699a0ae63603d98bc243224b66"
+    },
+    "binding-certificate-0-30.pickle": {
+      "bytes": 2364,
+      "sha256": "5b4f11f0169f3fa6935a26df0ed095a1fabd928200c74a83544b1c2ade4cadca"
+    },
+    "binding-certificates.pickle": {
+      "bytes": 2367,
+      "sha256": "15afdd1f414a3c01132410c1f7463fea6dd8cc8a45f440f9c5606e5ed2bb0a14"
+    },
+    "binding-certificates-complete.pickle": {
+      "bytes": 21742,
+      "sha256": "e1ccd75af02902891fdbea6ce6adcb32d7b6d20f514bea582f35f01e39802f38"
+    },
+    "certificate-02.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "binding-certificate-0-33.pickle": {
+      "bytes": 3769,
+      "sha256": "807302a3278589e67d402f6ee0c649f3294b4c66c0ca029c0a3971bd93619388"
+    },
+    "production-mutations.pickle": {
+      "bytes": 3892,
+      "sha256": "40dfd37f29cd7bb1c2ead759232fe7dd3ee4f31bd5cedbd8c588d4c431100aa0"
+    },
+    "binding-certificate-0-34.pickle": {
+      "bytes": 4058,
+      "sha256": "cf4132e5c0432232a1041a5424f486643162fa3f21788a3a25648da4dfce887a"
+    },
+    "production.stdout": {
+      "bytes": 556,
+      "sha256": "b1f14ba3b26d3912d6b5c1c5135f78dd6f03808fcce828bc4e07f12334e4a29e"
+    },
+    "binding-certificate-0-31.pickle": {
+      "bytes": 3270,
+      "sha256": "accea4d1bec2a0fa6b4f98141de0624d8ae38e56193bd385f87bb1468ff0dfc0"
+    },
+    "binding-certificate-1-32.pickle": {
+      "bytes": 3187,
+      "sha256": "7fae4af47e0a34676e2fd68ddb1a0ae8229a4a439a49f61fe2dbc6db2f2897e4"
+    },
+    "binding-certificate-checks.json": {
+      "bytes": 1970,
+      "sha256": "71ce9ea6236e376c0e11dc2c5966fb9710aa93ea5efc9c6069b696157fab2a22"
+    },
+    "production.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "binding-certificate-progress.json": {
+      "bytes": 1363,
+      "sha256": "9a4bdc0df6bf57a9e34af01c8dda92f940e82a71014b9381933a1cd05709f1ed"
+    },
+    "binding-mutation.pickle": {
+      "bytes": 2399,
+      "sha256": "9d5818fe47e31ec381bc23deabadb697e76cb7ba3a34e2a6b38ff71b685b9cbd"
+    },
+    "certificate.stdout": {
+      "bytes": 105,
+      "sha256": "b2ad766772128c097d85e37b6993cdc4bb837e23b8605b37100888d8806664e3"
+    },
+    "production-resource-at-checkpoint.txt": {
+      "bytes": 183,
+      "sha256": "44e08fa7aceddf05401faa4ae1ae4fc5e09d113fcbec8930f46bbf151253ad55"
+    },
+    "certificate.stderr": {
+      "bytes": 457,
+      "sha256": "351534c55381e3a19610ecf19f2acd0960e328c3377aa412a9b1f9bdaaaff516"
+    },
+    "progress.json": {
+      "bytes": 178,
+      "sha256": "29566ffed8116ae598158c3bb195aeefd0f9686d383a4afe79592c5dea22a19f"
+    },
+    "binding-certificate-1-30.pickle": {
+      "bytes": 2312,
+      "sha256": "9bca12ef770c75ead75369f4502d0b8297be02671a3178a8dfb11680f1e1b235"
+    },
+    "binding-certificate-1-34.pickle": {
+      "bytes": 3969,
+      "sha256": "4e496c65cefd1eec6b09191b621147489737147562487768e96e4af575742736"
+    },
+    "certificate-02.stdout": {
+      "bytes": 3020,
+      "sha256": "6e24f6db79ba7f17adc4edc03ec8b06a5d6bd3bd5a6d8a5424dc598bdf091b6c"
+    },
+    "production-checks.json": {
+      "bytes": 74895,
+      "sha256": "00d267b11d65af8810321bd27212ffd1d066df7e9f2bc217dd4ac0adb89d26e7"
+    }
+  },
+  "activeLogPaths": [
+    "/var/projects/toy_physics/_scratch/s11c/s11c-source-quadrature-20260914/binding-diagnostic/production-02.stdout",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-source-quadrature-20260914/binding-diagnostic/production-02.stderr"
+  ],
+  "scope": "Live exact comparison failed for ten original/test pairs, twenty occurrences. Pickle reconstruction makes all 320 saved occurrences exactly equal. Restored-pair certificates and coefficient/limit mutations pass; computed expanded representations are still being checked. The repaired full run must certify any live inequality, retain literal residuals and live representation strings, and preserve every native limit and occurrence. No full source quadrature, upstream physical change or scattering result."
+}

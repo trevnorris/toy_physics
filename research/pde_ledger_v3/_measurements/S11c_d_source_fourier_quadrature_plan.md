@@ -13,7 +13,12 @@ reconstruct the reduced action or the hour-long factorization.
 2. Bind each actual source amplitude, character and frequency. Derive each
    frequency range from its affine dependence on the three normal momenta
    and the recorded finite momentum box. Check every factor's source identity,
-   test-field assignment and original limit/remaining-momentum order. Retain
+   test-field assignment and original limit/remaining-momentum order. Compare
+   each actual assembly field/row/term occurrence with its saved test operand;
+   retain literal pairs and raw residuals. For unequal representations use the
+   existing exact rational/phase certificate helper, requiring every normalized
+   and proof residual to vanish while the original limit tuples agree exactly.
+   Check a one-sided coefficient mutation and a changed-limit control. Retain
    all original singular-domain restrictions; this is a finite smooth test.
 3. Evaluate every distinct source integral for both tests. Use panelled Gauss
    rules at three orders, bounded frequency batches, and independent adaptive
@@ -21,7 +26,8 @@ reconstruct the reduced action or the hour-long factorization.
    extrema, interior frequencies and the test carrier when in range. Compare
    the original bound source with the separated amplitude/character at actual
    momentum assignments. Record a change in the original integration weight
-   as a sensitivity control. Save each completed integral and all operands.
+   as a sensitivity control. Save binding comparisons per test and each bound
+   source record before later guards; then save every completed integral.
 4. Repeat on a larger finite source interval and retain the resulting changes
    separately from quadrature errors. Report adaptive error estimates and
    the conservative phase-workspace estimate and process peak RSS. Numerical samples and finite interval

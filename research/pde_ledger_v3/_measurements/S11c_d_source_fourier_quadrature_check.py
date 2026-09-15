@@ -3,6 +3,8 @@
 import argparse
 import ast
 import contextlib
+from functools import lru_cache
+import hashlib
 import json
 from pathlib import Path
 import pickle
@@ -131,23 +133,59 @@ def load():
     return pencil, assembled['result'], packet['result'], tests, saved_actions, provenance, joins
 
 
-def bind_sources(pencil, assembly, factors, tests, numerical):
+@lru_cache(maxsize=None)
+def integral_comparison(current, expected):
+    """Compare actual integrands with exactly retained native limit tuples."""
+    raw = current.function-expected.function
+    certificate = None
+    normalized = raw
+    replay, exponent = (), ()
+    if current != expected:
+        certificate = engine.BoundedSourceFourierAssembly.reconstruction_certificate(
+            current.function, expected.function, shared=True)
+        normalized = certificate['RESIDUAL']
+        replay = certificate['REPLAY_RESIDUALS']
+        exponent = tuple(v[1] for v in certificate['PHASE_SPLITS'].values())+tuple(
+            v[2] for v in certificate['RADICAL_POWERS'].values())
+    return {'current':current,'expected':expected,'exactEqual':current==expected,
+        'limitsEqual':current.limits==expected.limits,'rawResidual':raw,
+        'normalizedResidual':normalized,'replayResiduals':replay,
+        'exponentResiduals':exponent,'certificate':certificate,
+        'representationStrings':tuple(sp.srepr(v) for v in (current,expected,raw))}
+
+
+def bind_sources(pencil, assembly, factors, tests, numerical, checkpoint=None):
     adapter = engine.NumericalReducedAction(pencil, assembly, json.loads(native.INPUT.read_text()))
     r = pencil.r; momenta = tuple(r.normal_map[g[2]] for g in r.momentum_groups)
     settings = numerical['results'][0]['settings']
     momentum_bound = sp.Rational(str(settings['momentumBound']))
     domains = {k: (-momentum_bound, momentum_bound) for k in momenta}
     bounds = (float(settings['sourceBound']), 1.5*float(settings['sourceBound']))
-    records, joins = [], []
+    records, joins, comparisons = [], [], []
     for ti,test in enumerate(tests):
         field = lambda z: engine.memo_xreplace(test['field'], {r.z: z})
         if field(r.z) != sp.exp(-(r.z/test['width'])**2+sp.I*test['momentum']*r.z):
             raise ValueError('saved Gaussian ansatz differs')
         mapping = {p: field for p in pencil.probes}
-        cached_integrals = {g for row in test['assembled'] for _,g in row['NONLOCAL']}
-        for row in factors['ROWS']:
-            current = adapter.bind(engine.dag_substitute(row['ORIGINAL'], mapping))
-            joins.append(current in cached_integrals)
+        originals = {row['ORIGINAL']:row['INDEX'] for row in factors['ROWS']}
+        test_comparisons = []
+        for row in assembly['ROWS']:
+            j,i = row['COLUMN'],row['ROW']
+            cached_row = next(v for v in test['assembled'] if (v['COLUMN'],v['ROW'])==(j,i))
+            if len(cached_row['NONLOCAL']) != len(row['NONLOCAL']):
+                raise ValueError('native test nonlocal term census differs')
+            for term,(original,coefficient) in enumerate(row['NONLOCAL']):
+                current = adapter.bind(engine.dag_substitute(original,mapping))
+                comparison = integral_comparison(current,cached_row['NONLOCAL'][term][1])
+                item = {'test':ti,'sourceIndex':originals[original],'column':j,'row':i,'term':term,
+                    'original':original,'comparison':comparison,
+                    'integralUnit':engine.PHYSICAL_METADATA.dimensions.measure(original),
+                    'integrandUnit':engine.PHYSICAL_METADATA.dimensions.measure(original.function)}
+                test_comparisons.append(item)
+                joins.append(comparison['limitsEqual'] and comparison['normalizedResidual']==0 and
+                    all(v==0 for v in (*comparison['replayResiduals'],*comparison['exponentResiduals'])))
+        comparisons.extend(test_comparisons)
+        if checkpoint: checkpoint('joins-'+str(ti),test_comparisons)
         for si,source_integral in enumerate(factors['SOURCE_INTEGRALS']):
             uses = [(row['INDEX'],fi,f) for row in factors['ROWS'] for fi,f in enumerate(row['FACTORS'])
                     if f['SOURCE_INTEGRAL'] == source_integral]
@@ -187,10 +225,10 @@ def bind_sources(pencil, assembly, factors, tests, numerical):
                 'assignmentResidual': range_residual,
                 'amplitudeUnit': engine.PHYSICAL_METADATA.dimensions.measure(f['AMPLITUDE']),
                 'integralUnit': engine.PHYSICAL_METADATA.dimensions.measure(source_integral)})
-    if not all(joins):
-        raise ValueError('bound original integrals do not join accepted numerical test packets')
+            if checkpoint: checkpoint('source-'+str(ti)+'-'+str(si),records[-1])
     return {'records': records, 'momenta': momenta, 'momentumDomains': domains, 'sourceBounds': bounds,
         'orders': (32,64,128), 'workspaceBytes': 16*1024*1024, 'nativeTestIntegralJoins': joins,
+        'nativeTestIntegralComparisons':comparisons,
         'testWidthsMomenta': [(t['width'],t['momentum']) for t in tests],
         'profileWidth': float(adapter.bind(r.ell))}
 
@@ -235,6 +273,24 @@ def emit_result(result, bound, pencil, provenance):
     numeric('PROFILE_WIDTH', bound['profileWidth'], lambda p: zunit)
     numeric('WORKSPACE_BYTES', bound['workspaceBytes'], lambda p: zero, True)
     numeric('NATIVE_TEST_INTEGRAL_JOINS', bound['nativeTestIntegralJoins'], lambda p: zero, True)
+    for index,item in enumerate(bound['nativeTestIntegralComparisons']):
+        comparison=item['comparison']; suffix=str(index)
+        numeric('NATIVE_TEST_OCCURRENCE_'+suffix,
+                tuple(item[k] for k in ('test','sourceIndex','column','row','term')),lambda p:zero,True)
+        engine.fingerprinted(PREFIX+'_NATIVE_SYMBOLIC_INTEGRAL_'+suffix,item['original'])
+        for name,value,unit in (
+                ('BOUND_INTEGRAL_PAIR',sp.Tuple(comparison['current'],comparison['expected']),item['integralUnit']),
+                ('RAW_BINDING_RESIDUAL',comparison['rawResidual'],item['integrandUnit'])):
+            engine.emit(PREFIX+'_'+name+'_'+suffix,engine.carrier_fingerprint(value))
+            engine.emit('METADATA_'+PREFIX+'_'+name+'_'+suffix,
+                        metadata.numeric_metadata(value,lambda p:unit))
+        numeric('NORMALIZED_BINDING_RESIDUAL_'+suffix,comparison['normalizedResidual'],lambda p:item['integrandUnit'],True)
+        numeric('BINDING_REPLAY_RESIDUALS_'+suffix,comparison['replayResiduals'],lambda p:item['integrandUnit'],True)
+        numeric('BINDING_EXPONENT_RESIDUALS_'+suffix,comparison['exponentResiduals'],lambda p:zero,True)
+        numeric('BINDING_EXACT_AND_LIMIT_JOINS_'+suffix,
+                (comparison['exactEqual'],comparison['limitsEqual']),lambda p:zero,True)
+        engine.physical(PREFIX+'_BINDING_REPRESENTATION_SHA256_'+suffix,
+            tuple(hashlib.sha256(v.encode()).hexdigest() for v in comparison['representationStrings']))
     for record in bound['records']:
         suffix = str(record['test'])+'_'+str(record['sourceIndex'])
         engine.fingerprinted(PREFIX+'_SYMBOLIC_SOURCE_'+suffix, record['originalSourceIntegral'])
@@ -280,10 +336,19 @@ def main():
             pins[name]=digest(path); dest=base/'source'/name; dest.parent.mkdir(parents=True,exist_ok=True); shutil.copyfile(path,dest)
     preflight={'sourceFiles':pins,'provenance':provenance,'nativeEngineAstJoin':True,'originalLimitJoins':joins}
     save(base/'preflight.json',preflight)
-    bound=bind_sources(pencil,assembly,factors,tests,numerical)
+    bound_directory=base/'bound-records'; bound_directory.mkdir(); bound_inventory=[]
+    def bound_checkpoint(name,value):
+        path=bound_directory/(name+'.pickle')
+        atomic_pickle(path,{'value':value,'provenance':provenance,
+            'dimensionState':dict(vars(engine.PHYSICAL_METADATA.dimensions))})
+        bound_inventory.append({'path':str(path.relative_to(base)),'bytes':path.stat().st_size,'sha256':digest(path)})
+        save(base/'bound-record-inventory.json',bound_inventory)
+    bound=bind_sources(pencil,assembly,factors,tests,numerical,checkpoint=bound_checkpoint)
     atomic_pickle(base/'bound-sources.pickle',{'result':bound,'provenance':provenance,
         'dimensionState':dict(vars(engine.PHYSICAL_METADATA.dimensions))})
     bound_hash=digest(base/'bound-sources.pickle'); progress(base,'sources_bound',sources=len(bound['records']))
+    if not all(bound['nativeTestIntegralJoins']):
+        raise ValueError('saved bound integrals require native test join inspection')
     destination=base/'integrals'; destination.mkdir(); inventory=[]; completed={}
     if args.resume_from:
         previous=args.resume_from.resolve(); previous.relative_to(STORE)
@@ -383,6 +448,14 @@ def main():
     atomic_pickle(base/'dimensions-after-emission.pickle',dict(vars(engine.PHYSICAL_METADATA.dimensions)))
     summary={'runDirectory':str(base),'sourceFiles':pins,'provenance':provenance,'nativeEngineAstJoin':True,
         'originalLimitJoins':joins,'nativeTestIntegralJoins':bound['nativeTestIntegralJoins'],
+        'nativeTestIntegralOccurrences':len(bound['nativeTestIntegralComparisons']),
+        'nonidenticalBindingOccurrences':sum(not r['comparison']['exactEqual'] for r in bound['nativeTestIntegralComparisons']),
+        'nonzeroRawBindingResiduals':sum(r['comparison']['rawResidual']!=0 for r in bound['nativeTestIntegralComparisons']),
+        'nonzeroNormalizedBindingResiduals':sum(r['comparison']['normalizedResidual']!=0 for r in bound['nativeTestIntegralComparisons']),
+        'bindingProofResiduals':sum(len(r['comparison']['replayResiduals'])+len(r['comparison']['exponentResiduals'])
+                                    for r in bound['nativeTestIntegralComparisons']),
+        'nonzeroBindingProofResiduals':sum(v!=0 for r in bound['nativeTestIntegralComparisons']
+            for v in (*r['comparison']['replayResiduals'],*r['comparison']['exponentResiduals'])),
         'distinctSymbolicSourceIntegrals':len(factors['SOURCE_INTEGRALS']),'boundSourceCount':len(bound['records']),
         'evaluationRecords':len(evaluations),'frequencyEvaluations':sum(len(v['frequencies']) for v in evaluations),
         'maxAssignmentResidual':max(float(np.max(np.abs(r['assignmentResidual']))) for r in bound['records']),
@@ -391,7 +464,7 @@ def main():
         'tagCount':len(entries),'writeKeyCount':len(keys),'metadataPaths':metadata_paths,
         'boundPacketSha256BeforeEmission':bound_hash,'boundPacketSha256AfterEmission':digest(base/'bound-sources.pickle'),
         'packetSha256BeforeEmission':before,'packetSha256AfterEmission':digest(base/'quadrature.pickle'),
-        'integralArtifacts':inventory,'wallSeconds':time.monotonic()-started,
+        'integralArtifacts':inventory,'boundRecordArtifacts':bound_inventory,'wallSeconds':time.monotonic()-started,
         'peakRssKiB':resource.getrusage(resource.RUSAGE_SELF).ru_maxrss,
         'artifacts':{p.name:{'bytes':p.stat().st_size,'sha256':digest(p)} for p in sorted(base.iterdir()) if p.suffix in ('.pickle','.out')},
         'scope':'All distinct accepted bounded source integrals evaluated on both approved Gaussian tests at recorded finite source intervals and derived frequency samples. '

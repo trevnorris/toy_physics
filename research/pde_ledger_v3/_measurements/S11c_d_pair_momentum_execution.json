@@ -1,5 +1,5 @@
 {
-  "status": "PREPARED",
+  "status": "RUNNING",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-pair-momentum-20260915",
   "stage": "pair_construct",
   "plan": "S11c_d_pair_momentum_plan.md",
@@ -10,5 +10,59 @@
   "scope": "Finite paired-momentum quadrature at fixed positive regulator; no full physical action limit, matching, scattering or poles.",
   "preflight": "S11c_d_pair_momentum_preflight.json",
   "preflightChecksSha256": "164cf1ebc36758127a4ceb35089a75cac85679112c01b7dba05908bed1cf1f9b",
-  "annexVerificationCommit": "46a9d094"
+  "annexVerificationCommit": "46a9d094",
+  "implementationCommit": "f8d5a0a1",
+  "launch": {
+    "launchedUtc": "2026-09-15T19:05:35.104003+00:00",
+    "command": [
+      "/usr/bin/python",
+      "_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-pair-momentum-20260915",
+      "--stage",
+      "pair_construct",
+      "--",
+      "python",
+      "-u",
+      "_measurements/S11c_d_pair_momentum_check.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-pair-momentum-20260915/complete"
+    ],
+    "supervisorPid": 3128040,
+    "watcherPid": 3128041,
+    "watcherDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-pair-momentum-20260915/completion-watcher",
+    "threadEnvironment": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1"
+    }
+  },
+  "activeAtLaunch": {
+    "stage": "pair_construct",
+    "command": [
+      "python",
+      "-u",
+      "_measurements/S11c_d_pair_momentum_check.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-pair-momentum-20260915/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-pair-momentum-20260915/pair_construct.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-pair-momentum-20260915/pair_construct.stderr",
+    "startedUtc": "2026-09-15T19:05:35.212616+00:00",
+    "childPid": 3128046,
+    "status": "running"
+  },
+  "watcherAtLaunch": {
+    "status": "waiting",
+    "watcherPid": 3128041,
+    "jobPid": 3128040,
+    "thread": "01a08c53-295c-70f0-baaf-353db1745867",
+    "startedUtc": "2026-09-15T19:05:35.206577+00:00",
+    "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
+    "messageSha256": "6ed3c9607d194db1147324b696e6b6ee3b6cdfd861f99bff66910e11363c9f90",
+    "notifications": {}
+  },
+  "observedProcesses": "    PID STAT     ELAPSED NLWP COMMAND\n3128040 Ss         00:27    1 /usr/bin/python _measurements/S11c_d_end_normalization_run.py --run-root /var/projects/toy_physics/_scratch/s11c/s11c-pair-momentum-20260915 --stage pair_construct -- python -u _measurements/S11c_d_pair_momentum_check.py --run-directory /var/projects/toy_physics/_scratch/s11c/s11c-pair-momentum-20260915/complete\n3128041 Ss         00:27    1 /usr/bin/python /var/projects/toy_physics/_scratch/s11c/s11c-pair-momentum-20260915/completion-watcher/watch.py --pid 3128040 --thread 01a08c53-295c-70f0-baaf-353db1745867 --directory /var/projects/toy_physics/_scratch/s11c/s11c-pair-momentum-20260915/completion-watcher --message-file /var/projects/toy_physics/_scratch/s11c/s11c-pair-momentum-20260915/completion-watcher/continuation.txt --error-log /var/projects/toy_physics/_scratch/s11c/s11c-pair-momentum-20260915/pair_construct.stderr --codex-bin /home/trevnorris/.npm-packages/bin/codex\n3128046 R          00:27    1 python -u _measurements/S11c_d_pair_momentum_check.py --run-directory /var/projects/toy_physics/_scratch/s11c/s11c-pair-momentum-20260915/complete\n",
+  "launcherSha256": "b2a2bf2d660017cc1099af5d8b0d97dfc49e3b9cf119b38a7775eb1e9ad05214"
 }

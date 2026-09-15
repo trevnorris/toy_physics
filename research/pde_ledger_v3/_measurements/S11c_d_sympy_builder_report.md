@@ -127,6 +127,14 @@ metadata paths replay exactly. It will double source order, then profile order,
 on both fields while retaining validated single/pair terms. No full follow-up
 result is accepted yet; independent quadrature and physical limits remain work.
 
+The user approved four isolated numerical workers with one native thread each.
+Exact resume preserves native summation and reproduces an uninterrupted prefix,
+including frequency counts and mutations. The serial source/profile run was
+intentionally paused with 11,616,256 computed nodes preserved byte-for-byte.
+Four-worker action and emission equivalence validation is running; production
+will resume from that accumulator after acceptance. The physical engine and
+original serial constructor/emitter remain unchanged.
+
 ## Retained user-approved solver/export contract
 
 

@@ -1,13 +1,81 @@
 {
-  "status": "SERIAL_HANDOFF_COMPLETE_PARALLEL_VALIDATION_PENDING",
+  "status": "PARALLEL_VALIDATION_RUNNING",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-momentum-20260915",
   "plan": "S11c_d_parallel_momentum_plan.md",
   "report": "S11c_d_parallel_momentum_report.md",
   "instrument": "S11c_d_parallel_momentum.py",
   "workers": 4,
   "nativeThreadsPerWorker": 1,
-  "next": "Preserve and stop the owned serial run; validate four-process equivalence, then resume production from saved accumulators.",
+  "next": "Validate serial/four-worker numerical, action and emission equivalence; commit acceptance and launch prepared production from the saved accumulator.",
   "implementationCommit": "c0034190",
   "handoff": "S11c_d_parallel_momentum_handoff.json",
-  "preservedPrefixNodes": 11616256
+  "preservedPrefixNodes": 11616256,
+  "handoffCommit": "180892d4",
+  "validationLaunch": {
+    "launchedUtc": "2026-09-15T23:20:41.634205+00:00",
+    "command": [
+      "/usr/bin/python",
+      "_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-momentum-20260915/validation",
+      "--stage",
+      "parallel_preflight",
+      "--",
+      "python",
+      "-u",
+      "_measurements/S11c_d_parallel_momentum_preflight.py",
+      "--directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-momentum-20260915/validation/complete",
+      "--mode",
+      "parallel"
+    ],
+    "supervisorPid": 3215328,
+    "watcherPid": 3215329,
+    "watcherDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-momentum-20260915/validation/completion-watcher",
+    "threadEnvironment": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1"
+    }
+  },
+  "validationActiveAtLaunch": {
+    "stage": "parallel_preflight",
+    "command": [
+      "python",
+      "-u",
+      "_measurements/S11c_d_parallel_momentum_preflight.py",
+      "--directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-momentum-20260915/validation/complete",
+      "--mode",
+      "parallel"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-momentum-20260915/validation/parallel_preflight.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-momentum-20260915/validation/parallel_preflight.stderr",
+    "startedUtc": "2026-09-15T23:20:41.665408+00:00",
+    "childPid": 3215331,
+    "status": "failed",
+    "exitCode": 1,
+    "wallSeconds": 99.23551799543202,
+    "stderrBytes": 1034,
+    "finishedUtc": "2026-09-15T23:22:20.900977+00:00"
+  },
+  "validationWatcherAtLaunch": {
+    "status": "finished",
+    "watcherPid": 3215329,
+    "jobPid": 3215328,
+    "thread": "01a08c53-295c-70f0-baaf-353db1745867",
+    "startedUtc": "2026-09-15T23:20:41.669408+00:00",
+    "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
+    "messageSha256": "0f11b03964030600673ec93e281d3be302dae3c7f236fe063e513862e7c6cb37",
+    "notifications": {
+      "completion": {
+        "status": "queued",
+        "exitCode": 0,
+        "finishedUtc": "2026-09-15T23:22:21.385061+00:00"
+      }
+    }
+  },
+  "productionLauncher": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-momentum-20260915/production/launch.py",
+  "productionLauncherSha256": "192f04aba0537df85513558732670419a85ed67db032cdb8033db1b00c02bdfa"
 }

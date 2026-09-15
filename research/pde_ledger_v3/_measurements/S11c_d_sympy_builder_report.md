@@ -72,7 +72,8 @@ mass to 5.33e-15; profile transforms agree to 1.25e-12 at the refined order.
 The domain transcript is annex-verified at e514b704. Bounded source Fourier
 factorization stopped on an exponential power-dictionary representation issue.
 The new extractor is repaired; five focused cases have 20 zero residuals and
-the native engine prefix is unchanged. The all-operand retry is pending.
+the native engine prefix is unchanged. Repair 91f56ec6 is committed; the
+all-operand retry has been launched with its local completion/error watcher.
 This prepares full-action refinement without combined source/momentum tensors.
 See the domain and factorization reports.
 

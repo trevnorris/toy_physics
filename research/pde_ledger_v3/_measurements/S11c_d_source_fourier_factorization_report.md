@@ -29,6 +29,7 @@ shifted and absent characters. The full native engine prefix has an exact
 AST match to the accepted quadrature source. All original logs and snapshots
 remain in the original run directory; no upstream reconstruction is needed.
 
-The repaired all-operand run is pending in `retry-01`. No factorization output
+The repair is committed at `91f56ec6`. The all-operand retry was launched
+in `retry-01` with an owned supervisor and silent completion/error watcher. No factorization output
 has been accepted or published. See the character-repair checkpoint for the
 failure record, regression data and source hashes.

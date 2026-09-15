@@ -134,7 +134,8 @@ intentionally paused with 11,616,256 computed nodes preserved byte-for-byte.
 Four-worker action and emission equivalence is now validated: four prefixes
 and six complete underresolved records agree exactly; 26,705 metadata paths
 replay and both repaired standalone transcripts are byte-identical. Production
-will resume from that accumulator. The physical engine and original serial
+is running with four verified single-thread workers from that accumulator.
+The physical engine and original serial
 constructor/emitter remain unchanged; these tests establish scheduling only.
 
 ## Retained user-approved solver/export contract

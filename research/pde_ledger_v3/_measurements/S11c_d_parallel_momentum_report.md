@@ -31,8 +31,8 @@ The authorized serial handoff preserved 709 partials and copied the latest
 11,616,256-node accumulator byte-for-byte. Original logs and snapshots remain.
 The old watcher is disarmed and that serial run must not be restarted.
 
-Next: launch four production workers, one per field/source-profile setting,
-with one native thread and a 2 GiB address-space ceiling each. Retain the native
+Production is running with four workers, one per field/source-profile setting,
+each verified at one native thread and a 2 GiB address-space ceiling. Retain the native
 summation order, deterministic aggregation, independent logs/checkpoints and
 silent completion/error wake-up. The accepted focused transcripts remain in
 repository scratch; publish the production physical transcript only after its

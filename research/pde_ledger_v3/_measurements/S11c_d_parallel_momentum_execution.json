@@ -1,12 +1,12 @@
 {
-  "status": "PREFLIGHT_ACCEPTED_PRODUCTION_READY",
+  "status": "PARALLEL_PRODUCTION_RUNNING",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-momentum-20260915",
   "plan": "S11c_d_parallel_momentum_plan.md",
   "report": "S11c_d_parallel_momentum_report.md",
   "instrument": "S11c_d_parallel_momentum.py",
   "workers": 4,
   "nativeThreadsPerWorker": 1,
-  "next": "Launch prepared production/launch.py with four isolated workers, retaining the serial 11616256-node accumulator.",
+  "next": "Wait silently for the owned completion/error watcher; validate complete source/profile refinement and publish accepted output through DataLad/git-annex.",
   "implementationCommit": "c0034190",
   "handoff": "S11c_d_parallel_momentum_handoff.json",
   "preservedPrefixNodes": 11616256,
@@ -178,5 +178,139 @@
     "wallSeconds": 57.37839551270008,
     "stderrBytes": 0,
     "finishedUtc": "2026-09-15T23:34:20.624168+00:00"
+  },
+  "acceptanceCommit": "08cde968",
+  "productionLaunch": {
+    "launchedUtc": "2026-09-15T23:36:43.419818+00:00",
+    "command": [
+      "/usr/bin/python",
+      "_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-momentum-20260915/production",
+      "--stage",
+      "parallel_construct",
+      "--",
+      "python",
+      "-u",
+      "_measurements/S11c_d_parallel_momentum.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-momentum-20260915/production/complete",
+      "--handoff",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-momentum-20260915/handoff.json"
+    ],
+    "supervisorPid": 3224394,
+    "watcherPid": 3224395,
+    "watcherDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-momentum-20260915/production/completion-watcher",
+    "threadEnvironment": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1"
+    }
+  },
+  "productionActiveAtLaunch": {
+    "stage": "parallel_construct",
+    "command": [
+      "python",
+      "-u",
+      "_measurements/S11c_d_parallel_momentum.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-momentum-20260915/production/complete",
+      "--handoff",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-momentum-20260915/handoff.json"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-momentum-20260915/production/parallel_construct.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-momentum-20260915/production/parallel_construct.stderr",
+    "startedUtc": "2026-09-15T23:36:43.478499+00:00",
+    "childPid": 3224399,
+    "status": "running"
+  },
+  "productionWatcherAtLaunch": {
+    "status": "waiting",
+    "watcherPid": 3224395,
+    "jobPid": 3224394,
+    "thread": "01a08c53-295c-70f0-baaf-353db1745867",
+    "startedUtc": "2026-09-15T23:36:43.487264+00:00",
+    "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
+    "messageSha256": "f345f34affce742a1347d95d106de3d40ecc8a66d76ab2e41e81032f203fe125",
+    "notifications": {}
+  },
+  "productionWorkersAtLaunch": [
+    {
+      "task": [
+        0,
+        1
+      ],
+      "pid": 3224426,
+      "parentPid": 3224399,
+      "threads": 1,
+      "state": "R (running)",
+      "rss": "115624 kB",
+      "threadEnvironment": {
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1"
+      },
+      "addressSpaceLimit": "Max address space         2147483648           2147483648           bytes     "
+    },
+    {
+      "task": [
+        0,
+        2
+      ],
+      "pid": 3224427,
+      "parentPid": 3224399,
+      "threads": 1,
+      "state": "R (running)",
+      "rss": "117700 kB",
+      "threadEnvironment": {
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1"
+      },
+      "addressSpaceLimit": "Max address space         2147483648           2147483648           bytes     "
+    },
+    {
+      "task": [
+        1,
+        1
+      ],
+      "pid": 3224428,
+      "parentPid": 3224399,
+      "threads": 1,
+      "state": "R (running)",
+      "rss": "115648 kB",
+      "threadEnvironment": {
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1"
+      },
+      "addressSpaceLimit": "Max address space         2147483648           2147483648           bytes     "
+    },
+    {
+      "task": [
+        1,
+        2
+      ],
+      "pid": 3224429,
+      "parentPid": 3224399,
+      "threads": 1,
+      "state": "R (running)",
+      "rss": "117700 kB",
+      "threadEnvironment": {
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1"
+      },
+      "addressSpaceLimit": "Max address space         2147483648           2147483648           bytes     "
+    }
+  ],
+  "productionLaunchVerification": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-momentum-20260915/production/launch-verification.json",
+    "sha256": "a682d848969e9e53e9e3c665c024c7b5e8d3abc182180caf6747a0d68ef5a4b5"
   }
 }

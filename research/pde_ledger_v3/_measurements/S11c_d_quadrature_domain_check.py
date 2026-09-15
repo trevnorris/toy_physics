@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Source-derived denominator, Abel-resolution and profile-tail operands."""
 import argparse
+import ast
 import contextlib
 import json
 from pathlib import Path
@@ -124,7 +125,7 @@ def abel_records(adapter, previous):
         for regulator in regulators:
             for location in centers:
                 exact = float(primitive_fn(bound, location, regulator)-primitive_fn(-bound, location, regulator))
-                value = float(np.dot(weights, density_fn(nodes, location, regulator)))
+                value = complex(np.dot(weights, density_fn(nodes, location, regulator)))
                 w = float(width_fn(regulator))
                 ordinary.append({'count': count, 'regulator': regulator, 'center': location,
                     'width': w, 'exact': exact, 'value': value, 'residual': value-exact})
@@ -132,7 +133,7 @@ def abel_records(adapter, previous):
                 # same source-derived panel boundaries.
                 for order in (8, 16):
                     x, weights_split, panels = split_rule(-bound, bound, location, w, order)
-                    value_split = float(np.dot(weights_split, density_fn(x, location, regulator)))
+                    value_split = complex(np.dot(weights_split, density_fn(x, location, regulator)))
                     split.append({'parentCount': count, 'order': order, 'count': len(x),
                         'regulator': regulator, 'center': location, 'width': w, 'panels': panels,
                         'exact': exact, 'value': value_split, 'residual': value_split-exact})
@@ -253,9 +254,81 @@ def emit_result(result, pencil, provenance):
                 lambda p: unit)
 
 
+def recover_saved(origin, base, pencil, provenance):
+    """Retain all symbolic/profile work and restore the full complex mass sums."""
+    import copy
+    origin = origin.resolve(); origin.relative_to(STORE)
+    previous = json.loads((origin/'checks.json').read_text())
+    instrument = str(Path(__file__).resolve().relative_to(ROOT))
+    for name, sha in previous['sourceFiles'].items():
+        if digest(origin/'source'/name) != sha:
+            raise ValueError(('recovery source snapshot changed', name))
+        if name != instrument and digest(ROOT/name) != sha:
+            raise ValueError(('recovery consumed source changed', name))
+    for name, item in previous['artifacts'].items():
+        if digest(origin/name) != item['sha256']:
+            raise ValueError(('recovery saved operand changed', name))
+    frozen = ast.parse((origin/'source'/instrument).read_text())
+    current = ast.parse(Path(__file__).read_text())
+    joins = {}
+    for name in ('load', 'denominator_records', 'split_rule', 'adaptive_complex', 'profile_records', 'emit_result'):
+        a = next(n for n in frozen.body if getattr(n, 'name', None) == name)
+        b = next(n for n in current.body if getattr(n, 'name', None) == name)
+        joins[name] = ast.dump(a) == ast.dump(b)
+    old_abel = next(n for n in frozen.body if getattr(n, 'name', None) == 'abel_records')
+    new_abel = next(n for n in current.body if getattr(n, 'name', None) == 'abel_records')
+    class RestoreComplexCast(ast.NodeTransformer):
+        def visit_Call(self, node):
+            self.generic_visit(node)
+            if (isinstance(node.func, ast.Name) and node.func.id == 'float' and len(node.args) == 1
+                and isinstance(node.args[0], ast.Call) and isinstance(node.args[0].func, ast.Attribute)
+                and isinstance(node.args[0].func.value, ast.Name) and node.args[0].func.value.id == 'np'
+                and node.args[0].func.attr == 'dot'):
+                node.func.id = 'complex'
+            return node
+    joins['abelRecordsComplexCastsOnly'] = ast.dump(RestoreComplexCast().visit(old_abel)) == ast.dump(new_abel)
+    if not all(joins.values()):
+        raise ValueError(('recovery helper AST join', joins))
+    with (origin/'domains.pickle').open('rb') as stream:
+        packet = pickle.load(stream)
+    if packet['provenance'] != provenance:
+        raise ValueError('recovery packet source identity')
+    engine.PHYSICAL_METADATA.dimensions.__dict__.update(packet['dimensionState'])
+    result = dict(packet['result'])
+    abel = copy.deepcopy(result['abel'])
+    density = sp.lambdify((abel['momentum'], abel['center'], pencil.r.regulator), abel['density'], 'numpy')
+    real_differences, imaginary_parts = [], []
+    for old_rows, new_rows, method in ((result['abel']['ordinary'], abel['ordinary'], 'ordinary'),
+                                      (result['abel']['split'], abel['split'], 'split')):
+        for old, row in zip(old_rows, new_rows):
+            if method == 'ordinary':
+                nodes, weights = roots_legendre(row['count'])
+                nodes, weights = abel['bound']*nodes, abel['bound']*weights
+            else:
+                nodes, weights, panels = split_rule(-abel['bound'], abel['bound'], row['center'], row['width'], row['order'])
+                if panels != row['panels'] or len(nodes) != row['count']:
+                    raise ValueError('recovery quadrature panel join')
+            row['value'] = complex(np.dot(weights, density(nodes, row['center'], row['regulator'])))
+            row['residual'] = row['value']-row['exact']
+            real_differences.append(row['value'].real-old['value'])
+            imaginary_parts.append(row['value'].imag)
+    result['abel'] = abel
+    shutil.copyfile(origin/'denominators.pickle', base/'denominators.pickle')
+    atomic_pickle(base/'abel.pickle', abel)
+    record = {'runDirectory': str(origin), 'sourceFiles': previous['sourceFiles'],
+        'artifacts': previous['artifacts'], 'consumedHelperAstJoins': joins,
+        'realProjectionResiduals': real_differences, 'restoredImaginaryParts': imaginary_parts,
+        'denominatorPacketSha256Unchanged': digest(base/'denominators.pickle') == digest(origin/'denominators.pickle'),
+        'profileOperandIdentity': result['profiles'] is packet['result']['profiles']}
+    save(base/'recovery.json', record)
+    return result, record
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--run-directory', type=Path, required=True)
+    parser.add_argument('--resume-from', type=Path,
+                        help='reuse all saved symbolic/profile results and restore full complex Abel sums')
     args = parser.parse_args()
     base = args.run_directory.resolve(); base.relative_to(STORE); base.mkdir(parents=True, exist_ok=False)
     started = time.monotonic()
@@ -269,12 +342,17 @@ def main():
                   'APPROVED_INPUT_SHA256': digest(native.INPUT),
                   'NUMERICAL_ACTION_PACKET_SHA256': checkpoint['artifacts']['actions.pickle']['sha256']}
     save(base/'preflight.json', {'sourceFiles': pins, 'provenance': provenance})
-    denominators, pairs = denominator_records(assembly, adapter)
-    atomic_pickle(base/'denominators.pickle', {'denominators': denominators, 'pairs': pairs})
-    abel = abel_records(adapter, previous)
-    atomic_pickle(base/'abel.pickle', abel)
-    profiles = profile_records(assembly, adapter)
-    result = {'denominators': denominators, 'pairs': pairs, 'abel': abel, 'profiles': profiles}
+    recovery = None
+    if args.resume_from:
+        result, recovery = recover_saved(args.resume_from, base, pencil, provenance)
+        denominators, pairs, abel, profiles = (result[k] for k in ('denominators', 'pairs', 'abel', 'profiles'))
+    else:
+        denominators, pairs = denominator_records(assembly, adapter)
+        atomic_pickle(base/'denominators.pickle', {'denominators': denominators, 'pairs': pairs})
+        abel = abel_records(adapter, previous)
+        atomic_pickle(base/'abel.pickle', abel)
+        profiles = profile_records(assembly, adapter)
+        result = {'denominators': denominators, 'pairs': pairs, 'abel': abel, 'profiles': profiles}
     atomic_pickle(base/'domains.pickle', {'result': result, 'provenance': provenance,
         'dimensionState': dict(vars(engine.PHYSICAL_METADATA.dimensions))})
     before = digest(base/'domains.pickle')
@@ -342,6 +420,8 @@ def main():
                       if p.suffix in ('.pickle', '.out')},
         'scope': 'Source denominator operands, positive-regulator Abel resolution and finite profile-transform/tail quadrature. '
                  'Adaptive error estimates are numerical estimates. Full action/domain convergence and the Abel weak limit remain unresolved.'}
+    if recovery is not None:
+        summary['recovery'] = recovery
     save(base/'checks.json', summary)
     if pins != {str(p.relative_to(ROOT)): digest(p) for p in paths} or before != digest(base/'domains.pickle'):
         raise ValueError('quadrature domain source/packet changed')
@@ -349,6 +429,9 @@ def main():
         raise ValueError('source Abel primitive/width residual needs inspection')
     if max(abs(r['residual']) for r in abel['split'] if r['order'] == 16) > 1e-10:
         raise ValueError('split Abel mass resolution needs inspection')
+    if recovery is not None and (any(v != 0 for v in recovery['realProjectionResiduals'])
+            or not recovery['denominatorPacketSha256Unchanged'] or not recovery['profileOperandIdentity']):
+        raise ValueError('recovered mass/source operand join needs inspection')
     print(json.dumps(summary, indent=2))
 
 

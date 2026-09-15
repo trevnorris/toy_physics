@@ -1,11 +1,75 @@
 {
-  "status": "IMPLEMENTED_READY_TO_RUN",
+  "status": "COMPLETED_WARNING_RECOVERY_REQUIRED",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-quadrature-domain-20260914",
   "plan": "S11c_d_quadrature_limits_plan.md",
   "sourcePublicationCommit": "009667f74cee4e35fc5ec8b0149401447c66822c",
   "sourceSha256": {
-    "_measurements/S11c_d_quadrature_domain_check.py": "0195285ef6971808558c738389c43f8557178645285ea6e64f51e36b393fd021"
+    "_measurements/S11c_d_quadrature_domain_check.py": "17717deeb8db99c9684c46695e62d5d6606087310b8ac288f09120086e10867e"
   },
   "scope": "Source denominator operands, all Abel transfer pairs, derived peak widths and finite mass resolution, all nested profile transforms and estimated tails. No full action limit or scattering claim.",
-  "next": "Run the source-derived quadrature domain checker with a silent local completion/error watcher."
+  "next": "Run saved-operand recovery, verify complete real-projection and source/helper joins, and validate the corrected transcript before publication.",
+  "implementationCommit": "4bbfb331",
+  "launch": {
+    "launchedUtc": "2026-09-15T01:16:21.590365+00:00",
+    "command": [
+      "/usr/bin/python",
+      "_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-quadrature-domain-20260914",
+      "--stage",
+      "domain_construct",
+      "--",
+      "python",
+      "-u",
+      "_measurements/S11c_d_quadrature_domain_check.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-quadrature-domain-20260914/complete"
+    ],
+    "supervisorPid": 1966530,
+    "watcherPid": 1966531,
+    "watcherDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-quadrature-domain-20260914/completion-watcher"
+  },
+  "active": {
+    "stage": "domain_construct",
+    "command": [
+      "python",
+      "-u",
+      "_measurements/S11c_d_quadrature_domain_check.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-quadrature-domain-20260914/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-quadrature-domain-20260914/domain_construct.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-quadrature-domain-20260914/domain_construct.stderr",
+    "startedUtc": "2026-09-15T01:16:21.714044+00:00",
+    "childPid": 1966536,
+    "status": "completed",
+    "exitCode": 0,
+    "wallSeconds": 63.254824603907764,
+    "stderrBytes": 508,
+    "finishedUtc": "2026-09-15T01:17:24.968968+00:00"
+  },
+  "completionWatcher": {
+    "status": "finished",
+    "watcherPid": 1966531,
+    "jobPid": 1966530,
+    "thread": "01a08c53-295c-70f0-baaf-353db1745867",
+    "startedUtc": "2026-09-15T01:16:21.732172+00:00",
+    "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
+    "messageSha256": "73e92620c945a933f8a1ed825946437a569be0eb450a7460cfa94f21bc02f141",
+    "notifications": {
+      "issue": {
+        "status": "queued",
+        "exitCode": 0,
+        "finishedUtc": "2026-09-15T01:17:08.142792+00:00"
+      },
+      "completion": {
+        "status": "queued",
+        "exitCode": 0,
+        "finishedUtc": "2026-09-15T01:17:25.985902+00:00"
+      }
+    },
+    "errorLog": "/var/projects/toy_physics/_scratch/s11c/s11c-quadrature-domain-20260914/domain_construct.stderr"
+  },
+  "recoveryRunRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-quadrature-domain-20260914/recovery-01",
+  "issue": "The recorded Abel sums cast complex numerical values to float, generating two ComplexWarnings. Keep all original artifacts; restore full complex sums from saved density/quadrature operands and reuse all denominator/profile computations."
 }

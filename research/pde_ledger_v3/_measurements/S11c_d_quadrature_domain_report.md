@@ -12,4 +12,9 @@ The source operator and existing quadrature implementation remain unchanged.
 Exact sign flags record properties SymPy establishes; an unset flag does not
 mean the opposite property. Tail quadrature errors are numerical estimates.
 Elementary kernel/profile resolution does not establish the full action limit
-or permit a scattering solve. Execution and validation are pending.
+or permit a scattering solve. The first run completed in 63.25 seconds with
+exit zero, but its two complex-to-float casts emitted warnings. No result has
+been accepted. The saved denominator, Abel, profile and transcript operands
+remain intact. Recovery restores complete complex mass sums from their saved
+density and quadrature operands, reuses all profile and denominator work, and
+checks that the recorded real projections and source helpers are unchanged.

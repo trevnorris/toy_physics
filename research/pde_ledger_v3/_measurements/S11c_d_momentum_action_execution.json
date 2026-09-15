@@ -1,5 +1,5 @@
 {
-  "status": "PREPARED",
+  "status": "RUNNING",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-momentum-action-20260915",
   "stage": "momentum_construct",
   "plan": "S11c_d_momentum_action_plan.md",
@@ -10,5 +10,53 @@
   "next": "Validate complete common-grid native action and term comparisons, then inspect concentration-aware finite momentum refinements.",
   "scope": "Finite source/profile/momentum boxes at positive regulator only; no infinite-domain tails/interchange, Abel weak limit, matching, scattering or pole result.",
   "preflight": "S11c_d_momentum_action_preflight.json",
-  "preflightChecksSha256": "643b9c1e4cab766a43b90fb7571f14e2681cce040c702926737b342c8c35a665"
+  "preflightChecksSha256": "643b9c1e4cab766a43b90fb7571f14e2681cce040c702926737b342c8c35a665",
+  "implementationCommit": "91a634a5",
+  "launch": {
+    "launchedUtc": "2026-09-15T14:27:09.722406+00:00",
+    "command": [
+      "/usr/bin/python",
+      "_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-momentum-action-20260915",
+      "--stage",
+      "momentum_construct",
+      "--",
+      "python",
+      "-u",
+      "_measurements/S11c_d_momentum_action_check.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-momentum-action-20260915/complete"
+    ],
+    "supervisorPid": 1706826,
+    "watcherPid": 1706829,
+    "watcherDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-momentum-action-20260915/completion-watcher"
+  },
+  "activeAtLaunch": {
+    "stage": "momentum_construct",
+    "command": [
+      "python",
+      "-u",
+      "_measurements/S11c_d_momentum_action_check.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-momentum-action-20260915/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-momentum-action-20260915/momentum_construct.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-momentum-action-20260915/momentum_construct.stderr",
+    "startedUtc": "2026-09-15T14:27:09.876453+00:00",
+    "childPid": 1706914,
+    "status": "running"
+  },
+  "watcherAtLaunch": {
+    "status": "waiting",
+    "watcherPid": 1706829,
+    "jobPid": 1706826,
+    "thread": "01a08c53-295c-70f0-baaf-353db1745867",
+    "startedUtc": "2026-09-15T14:27:09.872885+00:00",
+    "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
+    "messageSha256": "5e963312524df40aa060a44192b09dff51fbdb4948464bd8b5fb45cb1db0bba5",
+    "notifications": {}
+  },
+  "observedProcesses": "    PID STAT     ELAPSED COMMAND\n1706826 SNs        00:35 /usr/bin/python _measurements/S11c_d_end_normalization_run.py --run-root /var/projects/toy_physics/_scratch/s11c/s11c-momentum-action-20260915 --stage momentum_construct -- python -u _measurements/S11c_d_momentum_action_check.py --run-directory /var/projects/toy_physics/_scratch/s11c/s11c-momentum-action-20260915/complete\n1706829 SNs        00:35 /usr/bin/python /var/projects/toy_physics/_scratch/s11c/s11c-momentum-action-20260915/completion-watcher/watch.py --pid 1706826 --thread 01a08c53-295c-70f0-baaf-353db1745867 --directory /var/projects/toy_physics/_scratch/s11c/s11c-momentum-action-20260915/completion-watcher --message-file /var/projects/toy_physics/_scratch/s11c/s11c-momentum-action-20260915/completion-watcher/continuation.txt --error-log /var/projects/toy_physics/_scratch/s11c/s11c-momentum-action-20260915/momentum_construct.stderr --codex-bin /home/trevnorris/.npm-packages/bin/codex\n1706914 RNl        00:35 python -u _measurements/S11c_d_momentum_action_check.py --run-directory /var/projects/toy_physics/_scratch/s11c/s11c-momentum-action-20260915/complete\n",
+  "launcherSha256": "c4fd6b6af5b129da88f843abc05c4dcf33bb6c548b147f5e50ff474148b6e1bc"
 }

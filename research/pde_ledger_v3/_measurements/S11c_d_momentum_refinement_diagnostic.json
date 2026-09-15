@@ -1,0 +1,428 @@
+{
+  "comparisons": [
+    {
+      "test": 0,
+      "fromGrid": 2,
+      "toGrid": 3,
+      "fullChange": 0.0015055249921407676,
+      "scaledChange": 0.0013330791597110138,
+      "largestCell": [
+        0,
+        4,
+        4
+      ],
+      "layoutChanges": [
+        {
+          "variables": [
+            "s11cdOutputNormalMomentum"
+          ],
+          "maxActionChange": 0.0015053890557776815,
+          "maxIntegralChange": 0.001505284411477832,
+          "maxCell": [
+            0,
+            4,
+            4
+          ]
+        },
+        {
+          "variables": [
+            "s11cdOutputNormalMomentum",
+            "s11cdInputNormalMomentum"
+          ],
+          "maxActionChange": 2.7097519601830105e-07,
+          "maxIntegralChange": 0.0002673430329688411,
+          "maxCell": [
+            2,
+            4,
+            4
+          ]
+        },
+        {
+          "variables": [
+            "s11cdOutputNormalMomentum",
+            "s11cdInputNormalMomentum",
+            "s11cdMiddleNormalMomentum"
+          ],
+          "maxActionChange": 6.060429126767615e-11,
+          "maxIntegralChange": 4.503437490418493e-06,
+          "maxCell": [
+            0,
+            4,
+            4
+          ]
+        }
+      ],
+      "layoutSumResidual": 1.2359002717630468e-16
+    },
+    {
+      "test": 0,
+      "fromGrid": 3,
+      "toGrid": 4,
+      "fullChange": 3.644685876198032e-05,
+      "scaledChange": 3.227174050698659e-05,
+      "largestCell": [
+        0,
+        4,
+        4
+      ],
+      "layoutChanges": [
+        {
+          "variables": [
+            "s11cdOutputNormalMomentum"
+          ],
+          "maxActionChange": 3.6442622535475977e-05,
+          "maxIntegralChange": 3.6440052655146455e-05,
+          "maxCell": [
+            0,
+            4,
+            4
+          ]
+        },
+        {
+          "variables": [
+            "s11cdOutputNormalMomentum",
+            "s11cdInputNormalMomentum"
+          ],
+          "maxActionChange": 7.713029592750437e-09,
+          "maxIntegralChange": 5.3953370857979055e-06,
+          "maxCell": [
+            2,
+            4,
+            4
+          ]
+        },
+        {
+          "variables": [
+            "s11cdOutputNormalMomentum",
+            "s11cdInputNormalMomentum",
+            "s11cdMiddleNormalMomentum"
+          ],
+          "maxActionChange": 2.223945628966426e-12,
+          "maxIntegralChange": 2.2646427611173072e-07,
+          "maxCell": [
+            0,
+            4,
+            4
+          ]
+        }
+      ],
+      "layoutSumResidual": 1.2131237265594014e-16
+    },
+    {
+      "test": 1,
+      "fromGrid": 2,
+      "toGrid": 3,
+      "fullChange": 0.0004038242589913202,
+      "scaledChange": 0.00017300351181229255,
+      "largestCell": [
+        2,
+        4,
+        4
+      ],
+      "layoutChanges": [
+        {
+          "variables": [
+            "s11cdOutputNormalMomentum"
+          ],
+          "maxActionChange": 0.0004039675831732051,
+          "maxIntegralChange": 0.0004040529368547875,
+          "maxCell": [
+            2,
+            4,
+            4
+          ]
+        },
+        {
+          "variables": [
+            "s11cdOutputNormalMomentum",
+            "s11cdInputNormalMomentum"
+          ],
+          "maxActionChange": 1.4591894140341736e-07,
+          "maxIntegralChange": 0.00012589343854220697,
+          "maxCell": [
+            2,
+            4,
+            4
+          ]
+        },
+        {
+          "variables": [
+            "s11cdOutputNormalMomentum",
+            "s11cdInputNormalMomentum",
+            "s11cdMiddleNormalMomentum"
+          ],
+          "maxActionChange": 3.369112365197397e-11,
+          "maxIntegralChange": 3.099425958817546e-06,
+          "maxCell": [
+            2,
+            4,
+            4
+          ]
+        }
+      ],
+      "layoutSumResidual": 2.031897163484949e-16
+    },
+    {
+      "test": 1,
+      "fromGrid": 3,
+      "toGrid": 4,
+      "fullChange": 1.0544816203429143e-05,
+      "scaledChange": 4.5175533436439394e-06,
+      "largestCell": [
+        2,
+        4,
+        4
+      ],
+      "layoutChanges": [
+        {
+          "variables": [
+            "s11cdOutputNormalMomentum"
+          ],
+          "maxActionChange": 1.0548346374970262e-05,
+          "maxIntegralChange": 1.0550290874378681e-05,
+          "maxCell": [
+            2,
+            4,
+            4
+          ]
+        },
+        {
+          "variables": [
+            "s11cdOutputNormalMomentum",
+            "s11cdInputNormalMomentum"
+          ],
+          "maxActionChange": 3.545562105967656e-09,
+          "maxIntegralChange": 1.9786840995978247e-06,
+          "maxCell": [
+            2,
+            4,
+            4
+          ]
+        },
+        {
+          "variables": [
+            "s11cdOutputNormalMomentum",
+            "s11cdInputNormalMomentum",
+            "s11cdMiddleNormalMomentum"
+          ],
+          "maxActionChange": 1.0152505833552606e-12,
+          "maxIntegralChange": 1.1943618772308678e-07,
+          "maxCell": [
+            2,
+            4,
+            4
+          ]
+        }
+      ],
+      "layoutSumResidual": 2.8984746238116854e-16
+    }
+  ],
+  "gridNorms": [
+    {
+      "test": 0,
+      "grid": 2,
+      "actionMax": 3.7726232502932944,
+      "groups": [
+        {
+          "variables": [
+            "s11cdOutputNormalMomentum"
+          ],
+          "nodes": 24,
+          "maxIntegral": 0.12735754765794197,
+          "massResidual": 0.0
+        },
+        {
+          "variables": [
+            "s11cdOutputNormalMomentum",
+            "s11cdInputNormalMomentum"
+          ],
+          "nodes": 2816,
+          "maxIntegral": 0.0121904532077276,
+          "massResidual": -1.7763568394002505e-15
+        },
+        {
+          "variables": [
+            "s11cdOutputNormalMomentum",
+            "s11cdInputNormalMomentum",
+            "s11cdMiddleNormalMomentum"
+          ],
+          "nodes": 651184,
+          "maxIntegral": 6.890940652563384e-05,
+          "massResidual": 1.5631940186722204e-13
+        }
+      ]
+    },
+    {
+      "test": 1,
+      "grid": 2,
+      "actionMax": 3.789962222239901,
+      "groups": [
+        {
+          "variables": [
+            "s11cdOutputNormalMomentum"
+          ],
+          "nodes": 24,
+          "maxIntegral": 0.10626988728191604,
+          "massResidual": 0.0
+        },
+        {
+          "variables": [
+            "s11cdOutputNormalMomentum",
+            "s11cdInputNormalMomentum"
+          ],
+          "nodes": 2816,
+          "maxIntegral": 0.020546763183430124,
+          "massResidual": -1.7763568394002505e-15
+        },
+        {
+          "variables": [
+            "s11cdOutputNormalMomentum",
+            "s11cdInputNormalMomentum",
+            "s11cdMiddleNormalMomentum"
+          ],
+          "nodes": 651184,
+          "maxIntegral": 6.990115626410115e-05,
+          "massResidual": 1.5631940186722204e-13
+        }
+      ]
+    },
+    {
+      "test": 0,
+      "grid": 3,
+      "actionMax": 3.772283944933307,
+      "groups": [
+        {
+          "variables": [
+            "s11cdOutputNormalMomentum"
+          ],
+          "nodes": 40,
+          "maxIntegral": 0.1276153301960139,
+          "massResidual": -4.440892098500626e-16
+        },
+        {
+          "variables": [
+            "s11cdOutputNormalMomentum",
+            "s11cdInputNormalMomentum"
+          ],
+          "nodes": 7008,
+          "maxIntegral": 0.012130538638401125,
+          "massResidual": -1.7763568394002505e-15
+        },
+        {
+          "variables": [
+            "s11cdOutputNormalMomentum",
+            "s11cdInputNormalMomentum",
+            "s11cdMiddleNormalMomentum"
+          ],
+          "nodes": 2424024,
+          "maxIntegral": 6.574702414709786e-05,
+          "massResidual": 1.1368683772161603e-13
+        }
+      ]
+    },
+    {
+      "test": 1,
+      "grid": 3,
+      "actionMax": 3.7900631806592435,
+      "groups": [
+        {
+          "variables": [
+            "s11cdOutputNormalMomentum"
+          ],
+          "nodes": 40,
+          "maxIntegral": 0.10616272966250628,
+          "massResidual": -4.440892098500626e-16
+        },
+        {
+          "variables": [
+            "s11cdOutputNormalMomentum",
+            "s11cdInputNormalMomentum"
+          ],
+          "nodes": 7008,
+          "maxIntegral": 0.02055420799691239,
+          "massResidual": -1.7763568394002505e-15
+        },
+        {
+          "variables": [
+            "s11cdOutputNormalMomentum",
+            "s11cdInputNormalMomentum",
+            "s11cdMiddleNormalMomentum"
+          ],
+          "nodes": 2424024,
+          "maxIntegral": 6.945626224848707e-05,
+          "massResidual": 1.1368683772161603e-13
+        }
+      ]
+    },
+    {
+      "test": 0,
+      "grid": 4,
+      "actionMax": 3.7722743262536,
+      "groups": [
+        {
+          "variables": [
+            "s11cdOutputNormalMomentum"
+          ],
+          "nodes": 64,
+          "maxIntegral": 0.12761905062120305,
+          "massResidual": 0.0
+        },
+        {
+          "variables": [
+            "s11cdOutputNormalMomentum",
+            "s11cdInputNormalMomentum"
+          ],
+          "nodes": 14848,
+          "maxIntegral": 0.01213007893356581,
+          "massResidual": 3.552713678800501e-15
+        },
+        {
+          "variables": [
+            "s11cdOutputNormalMomentum",
+            "s11cdInputNormalMomentum",
+            "s11cdMiddleNormalMomentum"
+          ],
+          "nodes": 6833088,
+          "maxIntegral": 6.5620409327724e-05,
+          "massResidual": 3.268496584496461e-13
+        }
+      ]
+    },
+    {
+      "test": 1,
+      "grid": 4,
+      "actionMax": 3.790065967447844,
+      "groups": [
+        {
+          "variables": [
+            "s11cdOutputNormalMomentum"
+          ],
+          "nodes": 64,
+          "maxIntegral": 0.10616110063199291,
+          "massResidual": 0.0
+        },
+        {
+          "variables": [
+            "s11cdOutputNormalMomentum",
+            "s11cdInputNormalMomentum"
+          ],
+          "nodes": 14848,
+          "maxIntegral": 0.020554323555096836,
+          "massResidual": 3.552713678800501e-15
+        },
+        {
+          "variables": [
+            "s11cdOutputNormalMomentum",
+            "s11cdInputNormalMomentum",
+            "s11cdMiddleNormalMomentum"
+          ],
+          "nodes": 6833088,
+          "maxIntegral": 6.945478399594111e-05,
+          "massResidual": 3.268496584496461e-13
+        }
+      ]
+    }
+  ],
+  "momentumPacketSha256": "2cf184cd82698f2a696e4812077f80d3b8bbb8dace7e07365e52ef86de78e54d",
+  "boundPacketSha256": "6a6bf833a1c2e8d58a4f3469ca19c7ae6ea529d53549e47b9b053d1286154fb4"
+}

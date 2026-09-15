@@ -1402,6 +1402,64 @@ class BoundedSourceFourierQuadrature:
                 'nodeCount':node_count,'batchCount':batch_count,'peakWorkspaceEstimateBytes':self.peak_workspace_estimate}
 
 
+    class SingleMomentum(FiniteMomentum):
+        """Refine a retained one-momentum layout and its independent outer rule."""
+
+        def __init__(self, rows, sources, reduction, **options):
+            super().__init__(rows, sources, reduction, **options)
+            self.fixed_rules = {}
+            owner = self
+            class CachedSource(BoundedSourceFourierQuadrature):
+                @staticmethod
+                def rule(points, order):
+                    return owner.fixed_rule(points, order)
+            self.cached_source_type = CachedSource
+
+        def fixed_rule(self, points, order):
+            key = (tuple(map(float, points)), int(order))
+            if key not in self.fixed_rules:
+                nodes, weights = BoundedSourceFourierQuadrature.rule(points, order)
+                nodes.setflags(write=False); weights.setflags(write=False)
+                self.fixed_rules[key] = (nodes, weights)
+            return self.fixed_rules[key]
+
+        def source_value(self, record, environment, setting, cache):
+            amplitude = record['boundAmplitude']
+            if amplitude not in self.transforms:
+                self.transforms[amplitude] = self.cached_source_type(
+                    self.r.zp, amplitude, workspace_bytes=self.workspace_bytes)
+            return super().source_value(record, environment, setting, cache)
+
+        def at_momentum(self, test, variable, setting, positions, momentum):
+            rows = [row for row in self.rows if tuple(l[0] for l in row['limits']) == (variable,)]
+            if any(f['coefficient'].has(sp.Integral) for row in rows for f in row['factors']):
+                raise ValueError('single-momentum adaptive layout contains nested profiles')
+            positions = np.asarray(positions, dtype=float)
+            environment = {variable: np.asarray([momentum]), self.r.regulator: np.asarray([setting['regulator']])}
+            source_cache = {}; profile_cache = {}
+            values = np.zeros((len(rows), len(positions)), dtype=complex)
+            for index, row in enumerate(rows):
+                for factor in row['factors']:
+                    coefficient = self.coefficient_value(factor['coefficient'], environment, positions, setting, profile_cache)
+                    transform = self.source_value(self.sources[(test, factor['sourceIndex'])], environment, setting, source_cache)
+                    values[index] += (coefficient*transform[:, None])[0]
+            return values
+
+        def adaptive(self, test, variable, setting, positions, *, tolerance=1e-10):
+            from scipy.integrate import quad_vec
+            value, error, info = quad_vec(
+                lambda k: self.at_momentum(test, variable, setting, positions, k),
+                -setting['momentumBound'], setting['momentumBound'],
+                epsabs=tolerance, epsrel=tolerance, norm='max', quadrature='gk21',
+                workers=1, cache_size=8*1024*1024, limit=2000, full_output=True)
+            return {'test':test, 'variables':(variable,),
+                'rowIndices':[r['index'] for r in self.rows if tuple(l[0] for l in r['limits'])==(variable,)],
+                'values':value, 'unitFrameErrorEstimate':error, 'unitFrameTolerance':tolerance,
+                'evaluations':info.neval, 'success':info.success, 'status':info.status,
+                'message':info.message, 'intervals':info.intervals,
+                'intervalValues':info.integrals, 'unitFrameIntervalErrorEstimates':info.errors}
+
+
 class EdgeReduction:
     """Partial Fourier transform in an orthonormal chart with n=e_3.
 

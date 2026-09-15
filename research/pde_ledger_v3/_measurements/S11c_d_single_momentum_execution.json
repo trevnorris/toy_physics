@@ -1,0 +1,15 @@
+{
+  "status": "PREPARED",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-single-momentum-20260915",
+  "stage": "single_construct",
+  "plan": "S11c_d_single_momentum_plan.md",
+  "report": "S11c_d_single_momentum_report.md",
+  "checker": "S11c_d_single_momentum_check.py",
+  "acceptedMomentumCommit": "20fe938137db79401e1275f50c56f3d2943d70d1",
+  "annexVerificationCommit": "621d81db",
+  "diagnostic": "S11c_d_momentum_refinement_diagnostic.json",
+  "next": "Validate the refined one-momentum terms and complete actions with the accepted higher-dimensional terms held fixed; inspect adaptive and source-order differences.",
+  "scope": "Finite-domain one-momentum refinement with explicitly held two/three-momentum rules; no full physical action limit, scattering or pole result.",
+  "preflight": "S11c_d_single_momentum_preflight.json",
+  "preflightChecksSha256": "5831748be70f986705dc35d20a8563f93c7370d373673101eb2b34899922aa95"
+}

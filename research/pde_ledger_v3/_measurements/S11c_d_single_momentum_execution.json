@@ -1,5 +1,5 @@
 {
-  "status": "PREPARED",
+  "status": "RUNNING",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-single-momentum-20260915",
   "stage": "single_construct",
   "plan": "S11c_d_single_momentum_plan.md",
@@ -11,5 +11,59 @@
   "next": "Validate the refined one-momentum terms and complete actions with the accepted higher-dimensional terms held fixed; inspect adaptive and source-order differences.",
   "scope": "Finite-domain one-momentum refinement with explicitly held two/three-momentum rules; no full physical action limit, scattering or pole result.",
   "preflight": "S11c_d_single_momentum_preflight.json",
-  "preflightChecksSha256": "5831748be70f986705dc35d20a8563f93c7370d373673101eb2b34899922aa95"
+  "preflightChecksSha256": "5831748be70f986705dc35d20a8563f93c7370d373673101eb2b34899922aa95",
+  "implementationCommit": "2cfa21f6",
+  "launch": {
+    "launchedUtc": "2026-09-15T18:47:25.297636+00:00",
+    "command": [
+      "/usr/bin/python",
+      "_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-single-momentum-20260915",
+      "--stage",
+      "single_construct",
+      "--",
+      "python",
+      "-u",
+      "_measurements/S11c_d_single_momentum_check.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-single-momentum-20260915/complete"
+    ],
+    "supervisorPid": 3121558,
+    "watcherPid": 3121559,
+    "watcherDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-single-momentum-20260915/completion-watcher",
+    "threadEnvironment": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1"
+    }
+  },
+  "activeAtLaunch": {
+    "stage": "single_construct",
+    "command": [
+      "python",
+      "-u",
+      "_measurements/S11c_d_single_momentum_check.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-single-momentum-20260915/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-single-momentum-20260915/single_construct.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-single-momentum-20260915/single_construct.stderr",
+    "startedUtc": "2026-09-15T18:47:25.387088+00:00",
+    "childPid": 3121564,
+    "status": "running"
+  },
+  "watcherAtLaunch": {
+    "status": "waiting",
+    "watcherPid": 3121559,
+    "jobPid": 3121558,
+    "thread": "01a08c53-295c-70f0-baaf-353db1745867",
+    "startedUtc": "2026-09-15T18:47:25.408617+00:00",
+    "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
+    "messageSha256": "8d317409c0eea6315e9b83d39532f5fc425359277998869283b27c74ece0c2f8",
+    "notifications": {}
+  },
+  "observedProcesses": "    PID STAT     ELAPSED NLWP COMMAND\n3121558 Ss         00:30    1 /usr/bin/python _measurements/S11c_d_end_normalization_run.py --run-root /var/projects/toy_physics/_scratch/s11c/s11c-single-momentum-20260915 --stage single_construct -- python -u _measurements/S11c_d_single_momentum_check.py --run-directory /var/projects/toy_physics/_scratch/s11c/s11c-single-momentum-20260915/complete\n3121559 Ss         00:30    1 /usr/bin/python /var/projects/toy_physics/_scratch/s11c/s11c-single-momentum-20260915/completion-watcher/watch.py --pid 3121558 --thread 01a08c53-295c-70f0-baaf-353db1745867 --directory /var/projects/toy_physics/_scratch/s11c/s11c-single-momentum-20260915/completion-watcher --message-file /var/projects/toy_physics/_scratch/s11c/s11c-single-momentum-20260915/completion-watcher/continuation.txt --error-log /var/projects/toy_physics/_scratch/s11c/s11c-single-momentum-20260915/single_construct.stderr --codex-bin /home/trevnorris/.npm-packages/bin/codex\n3121564 R          00:30    1 python -u _measurements/S11c_d_single_momentum_check.py --run-directory /var/projects/toy_physics/_scratch/s11c/s11c-single-momentum-20260915/complete\n",
+  "launcherSha256": "3b975ed4e6f36be2251a6aa45035973ab73fe8f56e7836c5a2ac687d32f03e34"
 }

@@ -1025,18 +1025,32 @@ class BoundedSourceFourierAssembly:
             return sp.Piecewise(*((sp.expand_mul(expression), condition) for expression, condition in folded.args))
         return sp.expand_mul(folded)
 
-    def construct(self):
-        rows, source_integrals = [], set()
+    def limit_layout(self, original):
+        variables = tuple(limit[0] for limit in original.limits)
+        if len(variables) != len(set(variables)) or variables.count(self.r.zp) != 1:
+            raise NotImplementedError('source factorization requires one source limit and distinct integration variables')
+        bounded = self.bounded(original)
+        source_index = variables.index(self.r.zp)
+        remaining = tuple(limit for i, limit in enumerate(bounded.limits) if i != source_index)
+        return bounded, source_index, bounded.limits[source_index], remaining
+
+    def construct(self, checkpoint=None, completed=()):
+        # Inspect every native ordering before starting expensive algebra.
+        layouts = tuple(self.limit_layout(original) for original in self.integrals)
+        rows = list(completed)
+        if len(rows) > len(self.integrals) or any(row['INDEX'] != i or
+                row['ORIGINAL'] != self.integrals[i] for i, row in enumerate(rows)):
+            raise ValueError('saved source factorization rows do not join the original operands')
+        source_integrals = {f['SOURCE_INTEGRAL'] for row in rows for f in row['FACTORS']}
         zp = self.r.zp
         for index, original in enumerate(self.integrals):
-            if original.limits[-1][0] != zp:
-                raise NotImplementedError('native source-position integral is not the outermost limit')
-            bounded = self.bounded(original)
+            if index < len(completed):
+                continue
+            bounded, source_index, source_limit, remaining = layouts[index]
             factors = self.separate(bounded.function)
             reconstructed = sp.Add(*(coefficient*source for source, coefficient in factors.items()))
             residual = self.reconstruction_residual(bounded.function, reconstructed)
             records = []
-            remaining = bounded.limits[:-1]
             for source, coefficient in sorted(factors.items(), key=lambda item: sp.default_sort_key(item[0])):
                 if coefficient.has(zp):
                     raise ValueError('source coefficient retains source-position dependence')
@@ -1054,7 +1068,7 @@ class BoundedSourceFourierAssembly:
                 amplitude = sp.cancel(source/character)
                 if frequency.has(zp) or (dag_free_symbols(amplitude) & self.external):
                     raise NotImplementedError('source amplitude/frequency separation is incomplete')
-                source_integral = sp.Integral(source, bounded.limits[-1])
+                source_integral = sp.Integral(source, source_limit)
                 source_integrals.add(source_integral)
                 records.append({'SOURCE': source, 'COEFFICIENT': coefficient, 'CHARACTER': character,
                     'FREQUENCY': frequency, 'AMPLITUDE': amplitude, 'SOURCE_INTEGRAL': source_integral,
@@ -1064,7 +1078,11 @@ class BoundedSourceFourierAssembly:
             source_first = sp.Add(*(sp.Integral(record['COEFFICIENT']*record['SOURCE_INTEGRAL'], *remaining)
                                    for record in records))
             rows.append({'INDEX': index, 'ORIGINAL': original, 'BOUNDED': bounded, 'FACTORS': records,
-                         'RECONSTRUCTION_RESIDUAL': residual, 'SOURCE_FIRST_BOUNDED': source_first})
+                         'RECONSTRUCTION_RESIDUAL': residual, 'SOURCE_FIRST_BOUNDED': source_first,
+                         'SOURCE_LIMIT_INDEX': source_index, 'SOURCE_LIMIT': source_limit,
+                         'REMAINING_LIMITS': remaining})
+            if checkpoint is not None:
+                checkpoint(rows[-1], self.phases)
         return {'ROWS': rows, 'CUTOFFS': self.cutoffs,
                 'SOURCE_INTEGRALS': tuple(sorted(source_integrals, key=sp.default_sort_key)),
                 'PHASES': tuple((phase, data) for phase, data in sorted(self.phases.items(), key=lambda item: sp.default_sort_key(item[0])))}

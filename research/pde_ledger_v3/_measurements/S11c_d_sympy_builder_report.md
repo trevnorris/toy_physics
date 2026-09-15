@@ -70,12 +70,13 @@ at 009667f7. Quadrature-domain recovery passed with empty stderr: all source
 and operand joins agree. Width-based split rules resolve the elementary Abel
 mass to 5.33e-15; profile transforms agree to 1.25e-12 at the refined order.
 The domain transcript is annex-verified at e514b704. Bounded source Fourier
-factorization stopped on an exponential power-dictionary representation issue.
-The new extractor is repaired; five focused cases have 20 zero residuals and
-the native engine prefix is unchanged. Repair 91f56ec6 is committed; the
-all-operand retry has been launched with its local completion/error watcher.
-This prepares full-action refinement without combined source/momentum tensors.
-See the domain and factorization reports.
+factorization remains pending. Phase extraction was repaired at 91f56ec6;
+the retry exposed ten native operands with middle momentum outside source
+position. The finite-domain adapter now locates source position by identity
+and preserves the other limits. All 80 layout checks and 32 focused residuals
+pass; the native engine prefix is unchanged. Per-row hashed saves now retain
+completed downstream work. The full factorization/metadata retry is pending.
+See the domain and factorization reports for evidence and scope limits.
 
 ## Retained user-approved solver/export contract
 

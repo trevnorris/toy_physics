@@ -90,6 +90,10 @@ def emit_result(result, pencil, provenance):
         engine.fingerprinted(PREFIX+'_ORIGINAL_AND_BOUNDED_'+suffix,
                              sp.Tuple(row['ORIGINAL'], row['BOUNDED']), {(0,): unit, (1,): unit})
         engine.fingerprinted(PREFIX+'_SOURCE_FIRST_BOUNDED_'+suffix, row['SOURCE_FIRST_BOUNDED'], {(): unit})
+        engine.physical(PREFIX+'_LIMIT_LAYOUT_'+suffix,
+            sp.Tuple(row['SOURCE_LIMIT_INDEX'], sp.Tuple(*(lim[0] for lim in row['ORIGINAL'].limits)),
+                     row['SOURCE_LIMIT'], sp.Tuple(*row['REMAINING_LIMITS'])),
+            zero_dimensions={(0,): zero})
         engine.physical(PREFIX+'_INTEGRAND_RECONSTRUCTION_RESIDUAL_'+suffix,
                         row['RECONSTRUCTION_RESIDUAL'], zero_dimensions={(): integrand_unit})
         operands, residuals, operand_units, residual_units = [], [], {}, {}
@@ -120,6 +124,7 @@ def emit_result(result, pencil, provenance):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--run-directory', type=Path, required=True)
+    parser.add_argument('--resume-from', type=Path)
     args = parser.parse_args()
     base = args.run_directory.resolve(); base.relative_to(STORE); base.mkdir(parents=True, exist_ok=False)
     started = time.monotonic()
@@ -131,7 +136,45 @@ def main():
     pencil, assembly, provenance = load()
     save(base/'preflight.json', {'sourceFiles': pins, 'provenance': provenance})
     builder = engine.BoundedSourceFourierAssembly(pencil.r, assembly['NONLOCAL_INTEGRALS'])
-    result = builder.construct()
+    # Complete limit census precedes factorization, including the ten native
+    # operands whose middle momentum is outside the source-position limit.
+    layouts = [builder.limit_layout(i) for i in assembly['NONLOCAL_INTEGRALS']]
+    save(base/'limit-layouts.json', [{'index': i, 'sourceLimitIndex': layout[1],
+        'originalVariables': [str(lim[0]) for lim in assembly['NONLOCAL_INTEGRALS'][i].limits],
+        'remainingVariables': [str(lim[0]) for lim in layout[3]]} for i, layout in enumerate(layouts)])
+    row_directory = base/'rows'; row_directory.mkdir()
+    inventory, completed = [], []
+    if args.resume_from:
+        previous = args.resume_from.resolve(); previous.relative_to(STORE)
+        prior = json.loads((previous/'preflight.json').read_text())
+        if prior != {'sourceFiles': pins, 'provenance': provenance}:
+            raise ValueError('resume source/provenance differs; an explicit repair join is required')
+        for item in json.loads((previous/'row-inventory.json').read_text()):
+            source = previous/item['path']
+            if digest(source) != item['sha256']:
+                raise ValueError(('saved source row hash changed', item['path']))
+            with source.open('rb') as stream:
+                state = pickle.load(stream)
+            if state['provenance'] != provenance or state['row']['INDEX'] != len(completed):
+                raise ValueError('saved source row provenance/order changed')
+            shutil.copyfile(source, base/item['path'])
+            completed.append(state['row']); inventory.append(item)
+            builder.phases = state['phases']
+            engine.PHYSICAL_METADATA.dimensions.__dict__.update(state['dimensionState'])
+        save(base/'resume.json', {'runDirectory': str(previous), 'rowCount': len(completed),
+            'inventorySha256': digest(previous/'row-inventory.json')})
+    save(base/'row-inventory.json', inventory)
+    def checkpoint(row, phases):
+        path = row_directory/('row-'+str(row['INDEX']).zfill(3)+'.pickle')
+        atomic_pickle(path, {'row': row, 'phases': dict(phases), 'provenance': provenance,
+            'dimensionState': dict(vars(engine.PHYSICAL_METADATA.dimensions))})
+        inventory.append({'path': str(path.relative_to(base)), 'sha256': digest(path),
+                          'bytes': path.stat().st_size})
+        save(base/'row-inventory.json', inventory)
+        with (base/'progress.jsonl').open('a') as stream:
+            stream.write(json.dumps({'completedRows': len(inventory), 'sourceLimitIndex': row['SOURCE_LIMIT_INDEX'],
+                'factorCount': len(row['FACTORS']), 'wallSeconds': time.monotonic()-started})+'\n')
+    result = builder.construct(checkpoint=checkpoint, completed=completed)
     atomic_pickle(base/'factorization.pickle', {'result': result, 'provenance': provenance,
         'dimensionState': dict(vars(engine.PHYSICAL_METADATA.dimensions))})
     before = digest(base/'factorization.pickle')
@@ -182,11 +225,25 @@ def main():
     residuals.extend(f[k] for row in result['ROWS'] for f in row['FACTORS'] for k in
                      ('AMPLITUDE_RECONSTRUCTION_RESIDUAL', 'CHARACTER_NORMALIZATION_RESIDUAL', 'CHARACTER_EQUATION_RESIDUAL'))
     residuals.extend(p[k] for _, p in result['PHASES'] for k in ('EXPONENT_RESIDUAL', 'SECOND_SOURCE_DERIVATIVE'))
+    layout_joins = []
+    for index, row in enumerate(result['ROWS']):
+        original = assembly['NONLOCAL_INTEGRALS'][index]
+        variables = tuple(lim[0] for lim in original.limits)
+        source_index = variables.index(pencil.r.zp)
+        expected_remaining = tuple(lim for i, lim in enumerate(row['BOUNDED'].limits) if i != source_index)
+        layout_joins.append(row['INDEX'] == index and row['ORIGINAL'] == original
+            and row['BOUNDED'] == builder.bounded(original)
+            and row['SOURCE_LIMIT_INDEX'] == source_index
+            and row['SOURCE_LIMIT'] == row['BOUNDED'].limits[source_index]
+            and row['REMAINING_LIMITS'] == expected_remaining
+            and all(f['SOURCE_INTEGRAL'].limits == (row['SOURCE_LIMIT'],) for f in row['FACTORS']))
     summary = {'runDirectory': str(base), 'sourceFiles': pins, 'provenance': provenance,
         'originalIntegralCount': len(assembly['NONLOCAL_INTEGRALS']), 'factorizedIntegralCount': len(result['ROWS']),
         'factorCounts': [len(r['FACTORS']) for r in result['ROWS']],
         'distinctBoundedSourceIntegrals': len(result['SOURCE_INTEGRALS']), 'phaseCount': len(result['PHASES']),
         'cutoffs': {str(v): str(c) for v, c in result['CUTOFFS'].items()},
+        'sourceLimitIndices': [r['SOURCE_LIMIT_INDEX'] for r in result['ROWS']],
+        'limitLayoutJoins': layout_joins, 'savedRows': inventory,
         'residualScalars': len(residuals), 'nonzeroResidualScalars': sum(r != 0 for r in residuals),
         'tagCount': len(entries), 'writeKeyCount': len(keys), 'metadataPaths': metadata_paths,
         'packetSha256BeforeEmission': before, 'packetSha256AfterEmission': digest(base/'factorization.pickle'),
@@ -199,6 +256,10 @@ def main():
     save(base/'checks.json', summary)
     if pins != {str(p.relative_to(ROOT)): digest(p) for p in paths} or before != digest(base/'factorization.pickle'):
         raise ValueError('bounded source Fourier source/packet changed')
+    if not all(layout_joins) or len(result['ROWS']) != len(assembly['NONLOCAL_INTEGRALS']):
+        raise ValueError('bounded source Fourier limit/operand census changed')
+    if any(digest(base/item['path']) != item['sha256'] for item in inventory):
+        raise ValueError('bounded source Fourier row packet changed')
     if any(r != 0 for r in residuals) or engine.PHYSICAL_METADATA.dimensions.constraints:
         raise ValueError('bounded source Fourier residual or dimension requires inspection')
     print(json.dumps(summary, indent=2))

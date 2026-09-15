@@ -13,7 +13,9 @@ momentum/source tensors need not be materialized together.
 2. Factor each actual bounded integrand into a sum of source-position factors
    times coefficients independent of that position. Split only computed
    exponential phases and preserve all Piecewise branches, momentum roles,
-   profile functions, derivatives and measures. Record literal phase and
+   profile functions, derivatives and measures. Find source position by its
+   integration variable, preserving all remaining momentum orders: ten native
+   operands have middle momentum outside source position. Record literal phase and
    integrand reconstruction residuals against the original operand.
 3. Derive the source-frequency character and source amplitude of every factor.
    Retain the original phase, its logarithmic derivative, normalization at
@@ -35,3 +37,8 @@ the accepted caches, one CAS job at a time, with durable repository scratch
 storage and a silent completion/error watcher. Publish .out through DataLad/
 git-annex, verify hashes and commit each step. No upstream physical change is
 authorized by this numerical assembly plan.
+
+Preflight the entire native limit census before expensive factorization. Save
+each completed row, cumulative phase records and dimension state with hashes.
+Resume only with exact source/provenance and original-operand joins; any code
+change during recovery needs its own explicit consumed-helper repair join.

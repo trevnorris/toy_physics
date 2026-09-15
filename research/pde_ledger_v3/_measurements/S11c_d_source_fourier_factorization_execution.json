@@ -1,14 +1,14 @@
 {
-  "status": "RETRY_RUNNING",
+  "status": "LIMIT_ORDER_REPAIRED_PENDING_RETRY",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-source-fourier-20260914",
   "plan": "S11c_d_source_fourier_factorization_plan.md",
   "domainPublicationCommit": "e514b7040483725f7a2c5652ae1727432aa4642d",
   "sourceSha256": {
-    "scripts/S11c_d_mixing_scattering_sympy_audit.py": "70091858e66cd8bd2405715129f3294d1697427177f6c13450b364ea3dd91701",
-    "_measurements/S11c_d_source_fourier_factorization_check.py": "bef950d35e6d525a61800b9e43ade6b09d44bbc8426536bfc54e6dea57bc35cd"
+    "scripts/S11c_d_mixing_scattering_sympy_audit.py": "2fe2bdb0afa6e51017525ab6a202e13989dd2ae4e11a34394422571e958fdc39",
+    "_measurements/S11c_d_source_fourier_factorization_check.py": "b6573d82198f262ac5eea8362fb478a93a1f9b8ea17bd0d4645c67cb40168f23"
   },
   "scope": "Source Fourier factorization of every original nonlocal integral on explicit finite domains, preserving symbolic coefficients and literal phase/integrand residuals. No numerical integration or unbounded distributional interchange.",
-  "next": "Resume from the retry-01 completion/error watcher; require the complete all-operand validation before publication.",
+  "next": "Run full factorization with all native layouts preflighted and durable per-row saves; no factorization output has been accepted or published.",
   "implementationCommit": "185365fc",
   "launch": {
     "launchedUtc": "2026-09-15T01:36:50.005639+00:00",
@@ -69,7 +69,7 @@
     "scripts/S11c_d_mixing_scattering_sympy_audit.py": "1e60c74a99ee4251be0da0a31589c02f569dbbd821a265d2f16eae077772a6ee",
     "_measurements/S11c_d_source_fourier_factorization_check.py": "bef950d35e6d525a61800b9e43ade6b09d44bbc8426536bfc54e6dea57bc35cd"
   },
-  "issue": "The exponential power dictionary maps E to a phase; testing for exp(phase) keys rejected direct source characters. Use literal multiplicative factors and a symbolic unit character when none are present.",
+  "issue": "The remaining ten native integrals have middle momentum outside source position. The new adapter incorrectly required the source limit to be last. It now finds the source by variable identity and preserves all other limit orderings.",
   "retryRunRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-source-fourier-20260914/retry-01",
   "repairCheckpoint": "S11c_d_source_fourier_character_repair_checkpoint.json",
   "repairCommit": "91f56ec6",
@@ -106,16 +106,29 @@
     "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-source-fourier-20260914/retry-01/fourier_construct.stderr",
     "startedUtc": "2026-09-15T01:47:32.436073+00:00",
     "childPid": 1985358,
-    "status": "running"
+    "status": "failed",
+    "exitCode": 1,
+    "wallSeconds": 440.4965066695586,
+    "stderrBytes": 658,
+    "finishedUtc": "2026-09-15T01:54:52.932742+00:00"
   },
   "retryCompletionWatcher": {
-    "status": "waiting",
+    "status": "finished",
     "watcherPid": 1985335,
     "jobPid": 1985334,
     "thread": "01a08c53-295c-70f0-baaf-353db1745867",
     "startedUtc": "2026-09-15T01:47:32.463990+00:00",
     "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
     "messageSha256": "b581658198a88eeb27b36190021fd98102e025fd5e649be00c9f0ae4629e9ced",
-    "notifications": {}
-  }
+    "notifications": {
+      "completion": {
+        "status": "queued",
+        "exitCode": 0,
+        "finishedUtc": "2026-09-15T01:54:53.757525+00:00"
+      }
+    }
+  },
+  "phaseRepairIssue": "The exponential power dictionary maps E to a phase; testing for exp(phase) keys rejected direct source characters. Use literal multiplicative factors and a symbolic unit character when none are present.",
+  "limitOrderRepairCheckpoint": "S11c_d_source_fourier_limit_repair_checkpoint.json",
+  "nextRunRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-source-fourier-20260914/retry-02"
 }

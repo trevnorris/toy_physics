@@ -1,0 +1,627 @@
+{
+  "kind": "native limit ordering adapter repair",
+  "failedRunRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-source-fourier-20260914/retry-01",
+  "invocation": {
+    "stage": "fourier_construct",
+    "command": [
+      "python",
+      "-u",
+      "_measurements/S11c_d_source_fourier_factorization_check.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-source-fourier-20260914/retry-01/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-source-fourier-20260914/retry-01/fourier_construct.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-source-fourier-20260914/retry-01/fourier_construct.stderr",
+    "startedUtc": "2026-09-15T01:47:32.436073+00:00",
+    "childPid": 1985358,
+    "status": "failed",
+    "exitCode": 1,
+    "wallSeconds": 440.4965066695586,
+    "stderrBytes": 658,
+    "finishedUtc": "2026-09-15T01:54:52.932742+00:00"
+  },
+  "nativeLimitCensus": {
+    "((s11cdOutputNormalMomentum, -oo, oo), (s11cdSourceNormalPosition, -oo, oo))": 40,
+    "((s11cdOutputNormalMomentum, -oo, oo), (s11cdInputNormalMomentum, -oo, oo), (s11cdSourceNormalPosition, -oo, oo))": 30,
+    "((s11cdOutputNormalMomentum, -oo, oo), (s11cdInputNormalMomentum, -oo, oo), (s11cdSourceNormalPosition, -oo, oo), (s11cdMiddleNormalMomentum, -oo, oo))": 10
+  },
+  "firstRejectedOriginalIndex": 70,
+  "factorizationPacketCreated": false,
+  "preservedFiles": {
+    "fourier_construct.invocation.json": {
+      "bytes": 722,
+      "sha256": "de582a46201035da0261c22c6523afc060467c5c8816774664c615fc96bac8db"
+    },
+    "fourier_construct.stderr": {
+      "bytes": 658,
+      "sha256": "318fab6b741666768f1f14b0bfa27c57c7d2ac6ac5f209cfbab7bdacf89d724a"
+    },
+    "fourier_construct.stdout": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "complete/preflight.json": {
+      "bytes": 3415,
+      "sha256": "6302a1b209a33badd8c429d3d3de56440c72c0b8cb29968af5eae87caf0bcc25"
+    },
+    "limit-inventory.json": {
+      "bytes": 62735,
+      "sha256": "62e80780c5f381ba99361ff68bc5bc511f045a5b904989dc029963cb72579751"
+    },
+    "limit-regression.py": {
+      "bytes": 4560,
+      "sha256": "c121bca8a34c6bb47862e1bfd32e063c223de275750b86b5c220f344f2bbd1f5"
+    },
+    "limit-regression.json": {
+      "bytes": 10057,
+      "sha256": "9160a65535a987dcc3450383f3345cbb1edb533d1e7d966d5293f97c7bc23cec"
+    }
+  },
+  "regression": {
+    "orderCases": [
+      {
+        "variables": [
+          "k",
+          "q",
+          "x"
+        ],
+        "sourceLimitIndex": 2,
+        "remainingVariables": [
+          "k",
+          "q"
+        ],
+        "residuals": [
+          "0",
+          "0"
+        ],
+        "resumeIdentity": true
+      },
+      {
+        "variables": [
+          "k",
+          "x",
+          "q"
+        ],
+        "sourceLimitIndex": 1,
+        "remainingVariables": [
+          "k",
+          "q"
+        ],
+        "residuals": [
+          "0",
+          "0"
+        ],
+        "resumeIdentity": true
+      },
+      {
+        "variables": [
+          "q",
+          "k",
+          "x"
+        ],
+        "sourceLimitIndex": 2,
+        "remainingVariables": [
+          "q",
+          "k"
+        ],
+        "residuals": [
+          "0",
+          "0"
+        ],
+        "resumeIdentity": true
+      },
+      {
+        "variables": [
+          "q",
+          "x",
+          "k"
+        ],
+        "sourceLimitIndex": 1,
+        "remainingVariables": [
+          "q",
+          "k"
+        ],
+        "residuals": [
+          "0",
+          "0"
+        ],
+        "resumeIdentity": true
+      },
+      {
+        "variables": [
+          "x",
+          "k",
+          "q"
+        ],
+        "sourceLimitIndex": 0,
+        "remainingVariables": [
+          "k",
+          "q"
+        ],
+        "residuals": [
+          "0",
+          "0"
+        ],
+        "resumeIdentity": true
+      },
+      {
+        "variables": [
+          "x",
+          "q",
+          "k"
+        ],
+        "sourceLimitIndex": 0,
+        "remainingVariables": [
+          "q",
+          "k"
+        ],
+        "residuals": [
+          "0",
+          "0"
+        ],
+        "resumeIdentity": true
+      }
+    ],
+    "phaseCases": [
+      {
+        "expression": "f(x)*exp(-I*k*x)",
+        "residuals": [
+          "0",
+          "0",
+          "0",
+          "0"
+        ]
+      },
+      {
+        "expression": "f(x)*exp(-2*I*k*x)",
+        "residuals": [
+          "0",
+          "0",
+          "0",
+          "0"
+        ]
+      },
+      {
+        "expression": "f(x)*exp(-I*k*x)*exp(-I*q*x)",
+        "residuals": [
+          "0",
+          "0",
+          "0",
+          "0"
+        ]
+      },
+      {
+        "expression": "exp(I*k*(-x + z))*Derivative(f(x), x)",
+        "residuals": [
+          "0",
+          "0",
+          "0",
+          "0"
+        ]
+      },
+      {
+        "expression": "f(x)",
+        "residuals": [
+          "0",
+          "0",
+          "0",
+          "0"
+        ]
+      }
+    ],
+    "nativeLayouts": [
+      {
+        "index": 0,
+        "sourceLimitIndex": 1,
+        "orderedLimitJoin": true
+      },
+      {
+        "index": 1,
+        "sourceLimitIndex": 1,
+        "orderedLimitJoin": true
+      },
+      {
+        "index": 2,
+        "sourceLimitIndex": 1,
+        "orderedLimitJoin": true
+      },
+      {
+        "index": 3,
+        "sourceLimitIndex": 1,
+        "orderedLimitJoin": true
+      },
+      {
+        "index": 4,
+        "sourceLimitIndex": 1,
+        "orderedLimitJoin": true
+      },
+      {
+        "index": 5,
+        "sourceLimitIndex": 1,
+        "orderedLimitJoin": true
+      },
+      {
+        "index": 6,
+        "sourceLimitIndex": 1,
+        "orderedLimitJoin": true
+      },
+      {
+        "index": 7,
+        "sourceLimitIndex": 1,
+        "orderedLimitJoin": true
+      },
+      {
+        "index": 8,
+        "sourceLimitIndex": 1,
+        "orderedLimitJoin": true
+      },
+      {
+        "index": 9,
+        "sourceLimitIndex": 1,
+        "orderedLimitJoin": true
+      },
+      {
+        "index": 10,
+        "sourceLimitIndex": 1,
+        "orderedLimitJoin": true
+      },
+      {
+        "index": 11,
+        "sourceLimitIndex": 1,
+        "orderedLimitJoin": true
+      },
+      {
+        "index": 12,
+        "sourceLimitIndex": 1,
+        "orderedLimitJoin": true
+      },
+      {
+        "index": 13,
+        "sourceLimitIndex": 1,
+        "orderedLimitJoin": true
+      },
+      {
+        "index": 14,
+        "sourceLimitIndex": 1,
+        "orderedLimitJoin": true
+      },
+      {
+        "index": 15,
+        "sourceLimitIndex": 1,
+        "orderedLimitJoin": true
+      },
+      {
+        "index": 16,
+        "sourceLimitIndex": 1,
+        "orderedLimitJoin": true
+      },
+      {
+        "index": 17,
+        "sourceLimitIndex": 1,
+        "orderedLimitJoin": true
+      },
+      {
+        "index": 18,
+        "sourceLimitIndex": 1,
+        "orderedLimitJoin": true
+      },
+      {
+        "index": 19,
+        "sourceLimitIndex": 1,
+        "orderedLimitJoin": true
+      },
+      {
+        "index": 20,
+        "sourceLimitIndex": 1,
+        "orderedLimitJoin": true
+      },
+      {
+        "index": 21,
+        "sourceLimitIndex": 1,
+        "orderedLimitJoin": true
+      },
+      {
+        "index": 22,
+        "sourceLimitIndex": 1,
+        "orderedLimitJoin": true
+      },
+      {
+        "index": 23,
+        "sourceLimitIndex": 1,
+        "orderedLimitJoin": true
+      },
+      {
+        "index": 24,
+        "sourceLimitIndex": 1,
+        "orderedLimitJoin": true
+      },
+      {
+        "index": 25,
+        "sourceLimitIndex": 1,
+        "orderedLimitJoin": true
+      },
+      {
+        "index": 26,
+        "sourceLimitIndex": 1,
+        "orderedLimitJoin": true
+      },
+      {
+        "index": 27,
+        "sourceLimitIndex": 1,
+        "orderedLimitJoin": true
+      },
+      {
+        "index": 28,
+        "sourceLimitIndex": 1,
+        "orderedLimitJoin": true
+      },
+      {
+        "index": 29,
+        "sourceLimitIndex": 1,
+        "orderedLimitJoin": true
+      },
+      {
+        "index": 30,
+        "sourceLimitIndex": 1,
+        "orderedLimitJoin": true
+      },
+      {
+        "index": 31,
+        "sourceLimitIndex": 1,
+        "orderedLimitJoin": true
+      },
+      {
+        "index": 32,
+        "sourceLimitIndex": 1,
+        "orderedLimitJoin": true
+      },
+      {
+        "index": 33,
+        "sourceLimitIndex": 1,
+        "orderedLimitJoin": true
+      },
+      {
+        "index": 34,
+        "sourceLimitIndex": 1,
+        "orderedLimitJoin": true
+      },
+      {
+        "index": 35,
+        "sourceLimitIndex": 1,
+        "orderedLimitJoin": true
+      },
+      {
+        "index": 36,
+        "sourceLimitIndex": 1,
+        "orderedLimitJoin": true
+      },
+      {
+        "index": 37,
+        "sourceLimitIndex": 1,
+        "orderedLimitJoin": true
+      },
+      {
+        "index": 38,
+        "sourceLimitIndex": 1,
+        "orderedLimitJoin": true
+      },
+      {
+        "index": 39,
+        "sourceLimitIndex": 1,
+        "orderedLimitJoin": true
+      },
+      {
+        "index": 40,
+        "sourceLimitIndex": 2,
+        "orderedLimitJoin": true
+      },
+      {
+        "index": 41,
+        "sourceLimitIndex": 2,
+        "orderedLimitJoin": true
+      },
+      {
+        "index": 42,
+        "sourceLimitIndex": 2,
+        "orderedLimitJoin": true
+      },
+      {
+        "index": 43,
+        "sourceLimitIndex": 2,
+        "orderedLimitJoin": true
+      },
+      {
+        "index": 44,
+        "sourceLimitIndex": 2,
+        "orderedLimitJoin": true
+      },
+      {
+        "index": 45,
+        "sourceLimitIndex": 2,
+        "orderedLimitJoin": true
+      },
+      {
+        "index": 46,
+        "sourceLimitIndex": 2,
+        "orderedLimitJoin": true
+      },
+      {
+        "index": 47,
+        "sourceLimitIndex": 2,
+        "orderedLimitJoin": true
+      },
+      {
+        "index": 48,
+        "sourceLimitIndex": 2,
+        "orderedLimitJoin": true
+      },
+      {
+        "index": 49,
+        "sourceLimitIndex": 2,
+        "orderedLimitJoin": true
+      },
+      {
+        "index": 50,
+        "sourceLimitIndex": 2,
+        "orderedLimitJoin": true
+      },
+      {
+        "index": 51,
+        "sourceLimitIndex": 2,
+        "orderedLimitJoin": true
+      },
+      {
+        "index": 52,
+        "sourceLimitIndex": 2,
+        "orderedLimitJoin": true
+      },
+      {
+        "index": 53,
+        "sourceLimitIndex": 2,
+        "orderedLimitJoin": true
+      },
+      {
+        "index": 54,
+        "sourceLimitIndex": 2,
+        "orderedLimitJoin": true
+      },
+      {
+        "index": 55,
+        "sourceLimitIndex": 2,
+        "orderedLimitJoin": true
+      },
+      {
+        "index": 56,
+        "sourceLimitIndex": 2,
+        "orderedLimitJoin": true
+      },
+      {
+        "index": 57,
+        "sourceLimitIndex": 2,
+        "orderedLimitJoin": true
+      },
+      {
+        "index": 58,
+        "sourceLimitIndex": 2,
+        "orderedLimitJoin": true
+      },
+      {
+        "index": 59,
+        "sourceLimitIndex": 2,
+        "orderedLimitJoin": true
+      },
+      {
+        "index": 60,
+        "sourceLimitIndex": 2,
+        "orderedLimitJoin": true
+      },
+      {
+        "index": 61,
+        "sourceLimitIndex": 2,
+        "orderedLimitJoin": true
+      },
+      {
+        "index": 62,
+        "sourceLimitIndex": 2,
+        "orderedLimitJoin": true
+      },
+      {
+        "index": 63,
+        "sourceLimitIndex": 2,
+        "orderedLimitJoin": true
+      },
+      {
+        "index": 64,
+        "sourceLimitIndex": 2,
+        "orderedLimitJoin": true
+      },
+      {
+        "index": 65,
+        "sourceLimitIndex": 2,
+        "orderedLimitJoin": true
+      },
+      {
+        "index": 66,
+        "sourceLimitIndex": 2,
+        "orderedLimitJoin": true
+      },
+      {
+        "index": 67,
+        "sourceLimitIndex": 2,
+        "orderedLimitJoin": true
+      },
+      {
+        "index": 68,
+        "sourceLimitIndex": 2,
+        "orderedLimitJoin": true
+      },
+      {
+        "index": 69,
+        "sourceLimitIndex": 2,
+        "orderedLimitJoin": true
+      },
+      {
+        "index": 70,
+        "sourceLimitIndex": 2,
+        "orderedLimitJoin": true
+      },
+      {
+        "index": 71,
+        "sourceLimitIndex": 2,
+        "orderedLimitJoin": true
+      },
+      {
+        "index": 72,
+        "sourceLimitIndex": 2,
+        "orderedLimitJoin": true
+      },
+      {
+        "index": 73,
+        "sourceLimitIndex": 2,
+        "orderedLimitJoin": true
+      },
+      {
+        "index": 74,
+        "sourceLimitIndex": 2,
+        "orderedLimitJoin": true
+      },
+      {
+        "index": 75,
+        "sourceLimitIndex": 2,
+        "orderedLimitJoin": true
+      },
+      {
+        "index": 76,
+        "sourceLimitIndex": 2,
+        "orderedLimitJoin": true
+      },
+      {
+        "index": 77,
+        "sourceLimitIndex": 2,
+        "orderedLimitJoin": true
+      },
+      {
+        "index": 78,
+        "sourceLimitIndex": 2,
+        "orderedLimitJoin": true
+      },
+      {
+        "index": 79,
+        "sourceLimitIndex": 2,
+        "orderedLimitJoin": true
+      }
+    ],
+    "nativePrefixAstJoin": true,
+    "sourceFiles": {
+      "scripts/S11c_d_mixing_scattering_sympy_audit.py": "2fe2bdb0afa6e51017525ab6a202e13989dd2ae4e11a34394422571e958fdc39",
+      "_measurements/S11c_d_source_fourier_factorization_check.py": "b6573d82198f262ac5eea8362fb478a93a1f9b8ea17bd0d4645c67cb40168f23"
+    },
+    "assemblySha256": "8eda57998285137d99cce9564757627a57f8d5bc9b27091c86a65a9cc59230a0"
+  },
+  "computedZeroResidualCount": 32,
+  "sourceFiles": {
+    "scripts/S11c_d_mixing_scattering_sympy_audit.py": "2fe2bdb0afa6e51017525ab6a202e13989dd2ae4e11a34394422571e958fdc39",
+    "_measurements/S11c_d_source_fourier_factorization_check.py": "b6573d82198f262ac5eea8362fb478a93a1f9b8ea17bd0d4645c67cb40168f23"
+  },
+  "scope": "Finite-domain source-position extraction finds its unique limit by variable identity. Remaining momentum order is preserved. All 80 original layouts are checked before algebra; full factorization and metadata validation remain pending. No upstream physical change or infinite-domain interchange."
+}

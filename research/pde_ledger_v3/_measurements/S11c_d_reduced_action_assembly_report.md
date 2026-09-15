@@ -11,8 +11,13 @@ For each of the 25 actions, the constructor computes a literal reconstruction
 residual, any affine/nonlinear remainder, and coefficient residuals against an
 independent differentiation of the source in the formal carrier algebra.
 The checker preserves the full packet before emission, verifies all source and
-cache joins, and replays every fingerprint, dimension and grade. Results are
-pending the run. These checks concern exact assembly, not physical quadrature.
+cache joins, and replays every fingerprint, dimension and grade. The constructor
+saved its complete packet and transcript, then failed while writing the JSON
+summary: derivative orders included SymPy integers. The repair converts those
+orders to native integers and adds validation from saved operands. No physical
+formula changes or assembly rerun is needed. Acceptance remains pending final
+residual/source validation. These checks concern exact assembly, not physical
+quadrature.
 
 The source contains 30 inherited free gradient-energy coefficients absent from
 the current numerical input. S11c-b section 3a explicitly carries these constants;

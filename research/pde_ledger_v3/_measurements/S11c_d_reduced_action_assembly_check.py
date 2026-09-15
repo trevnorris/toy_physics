@@ -86,9 +86,48 @@ def emit_result(result, actions, missing, provenance):
     engine.physical(PREFIX+'_SOURCE_PROVENANCE', provenance)
 
 
+def resume_packet(origin, destination, provenance):
+    """Reuse saved construction and transcript after an instrument-only fix."""
+    origin = origin.resolve(); origin.relative_to(STORE)
+    before = json.loads((origin/'preflight.json').read_text())
+    instrument = str(Path(__file__).resolve().relative_to(ROOT))
+    for name, sha in before['sourceFiles'].items():
+        if digest(origin/'source'/name) != sha:
+            raise ValueError(('original assembly snapshot changed', name))
+        if name != instrument and digest(ROOT/name) != sha:
+            raise ValueError(('assembly input/constructor changed', name))
+    frozen = ast.parse((origin/'source'/instrument).read_text())
+    current = ast.parse(Path(__file__).read_text())
+    joins = {}
+    for name in ('load', 'emit_result'):
+        a = next(n for n in frozen.body if getattr(n, 'name', None) == name)
+        b = next(n for n in current.body if getattr(n, 'name', None) == name)
+        joins[name] = ast.dump(a) == ast.dump(b)
+    if not all(joins.values()) or before['provenance'] != provenance:
+        raise ValueError('assembly source/emitter resume join')
+    artifacts = {}
+    for name in ('assembly.pickle', 'full.out'):
+        path = origin/name
+        artifacts[name] = {'bytes': path.stat().st_size, 'sha256': digest(path)}
+        shutil.copyfile(path, destination/name)
+        if digest(destination/name) != artifacts[name]['sha256']:
+            raise ValueError('assembly resume copy mismatch')
+    with (destination/'assembly.pickle').open('rb') as stream:
+        saved = pickle.load(stream)
+    if saved['provenance'] != provenance:
+        raise ValueError('assembly packet provenance changed')
+    engine.PHYSICAL_METADATA.dimensions.__dict__.update(saved['dimensionState'])
+    record = {'runDirectory': str(origin), 'sourceFiles': before['sourceFiles'],
+              'artifacts': artifacts, 'consumedHelperAstJoins': joins}
+    save(destination/'resumed-inputs.json', record)
+    return saved['result'], record
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--run-directory', type=Path, required=True)
+    parser.add_argument('--resume-from', type=Path,
+                        help='validate an existing saved packet/transcript without construction')
     args = parser.parse_args()
     base = args.run_directory.resolve(); base.relative_to(STORE)
     base.mkdir(parents=True, exist_ok=False)
@@ -103,33 +142,42 @@ def main():
         'ACTIONS_SHA256': checkpoint['artifacts']['actions.pickle']['sha256'],
         'INPUT_SHA256': digest(source.INPUT)}
     save(base/'preflight.json', {'sourceFiles': pins, 'provenance': provenance})
-    assembly = engine.ReducedActionAssembly(pencil, actions['columns'])
-    result = assembly.construct()
-    atomic_pickle(base/'assembly.pickle', {'result': result,
-        'dimensionState': dict(vars(engine.PHYSICAL_METADATA.dimensions)), 'provenance': provenance})
+    resumed = None
+    if args.resume_from:
+        result, resumed = resume_packet(args.resume_from, base, provenance)
+    else:
+        assembly = engine.ReducedActionAssembly(pencil, actions['columns'])
+        result = assembly.construct()
+        atomic_pickle(base/'assembly.pickle', {'result': result,
+            'dimensionState': dict(vars(engine.PHYSICAL_METADATA.dimensions)), 'provenance': provenance})
     free = set(engine.dag_free_symbols(actions['columns']))
     parameters = packet['inputSpecification']['parameters']
     live = {pencil.r.z, pencil.r.regulator, pencil.r.symbols['sigma_W']}
     missing = tuple(sorted((s for s in free-live if s.name not in parameters), key=sp.default_sort_key))
-    with (base/'full.out').open('x') as transcript, contextlib.redirect_stdout(transcript):
-        emit_result(result, actions, missing, provenance)
-        census = [{'COLUMN': r['COLUMN'], 'ROW': r['ROW'], 'LOCAL_TERMS': len(r['LOCAL']),
-                   'NONLOCAL_TERMS': len(r['NONLOCAL'])} for r in result['ROWS']]
-        zero = engine.PHYSICAL_METADATA.dimensions.zero
-        census_units = {p: zero for p, _ in engine.leaves(engine.cas(census))}
-        engine.physical(PREFIX+'_TERM_CENSUS', census, zero_dimensions=census_units)
-        keys = {tag: 's11cd'+''.join(w.title() for w in tag.removeprefix('PY_S11CD_').split('_'))
-                for tag in engine.EMISSION_LINES if not tag.startswith('PY_S11CD_METADATA_')}
-        engine.physical(PREFIX+'_WRITE_KEYS', keys)
-        index = engine.emission_index(engine.EMISSION_LINES)
-        index_units = {p: zero for p, _ in engine.leaves(engine.cas(index))}
-        engine.physical(PREFIX+'_EMISSION_LINES', index, zero_dimensions=index_units)
+    census = [{'COLUMN': r['COLUMN'], 'ROW': r['ROW'], 'LOCAL_TERMS': len(r['LOCAL']),
+               'NONLOCAL_TERMS': len(r['NONLOCAL'])} for r in result['ROWS']]
+    zero = engine.PHYSICAL_METADATA.dimensions.zero
+    census_units = {p: zero for p, _ in engine.leaves(engine.cas(census))}
+    if not args.resume_from:
+        with (base/'full.out').open('x') as transcript, contextlib.redirect_stdout(transcript):
+            emit_result(result, actions, missing, provenance)
+            engine.physical(PREFIX+'_TERM_CENSUS', census, zero_dimensions=census_units)
+            keys = {tag: 's11cd'+''.join(w.title() for w in tag.removeprefix('PY_S11CD_').split('_'))
+                    for tag in engine.EMISSION_LINES if not tag.startswith('PY_S11CD_METADATA_')}
+            engine.physical(PREFIX+'_WRITE_KEYS', keys)
+            index = engine.emission_index(engine.EMISSION_LINES)
+            index_units = {p: zero for p, _ in engine.leaves(engine.cas(index))}
+            engine.physical(PREFIX+'_EMISSION_LINES', index, zero_dimensions=index_units)
     entries = {}
     for line in decoded_lines(base/'full.out'):
         tag, _, body = line.rstrip('\n').partition(': ')
         if tag in entries:
             raise ValueError('duplicate assembly emission')
         entries[tag] = _restore(body)
+    if args.resume_from:
+        keys = {str(k): str(v) for k, v in entries['PY_S11CD_'+PREFIX+'_WRITE_KEYS']}
+        index = {str(k): v for k, v in entries['PY_S11CD_'+PREFIX+'_EMISSION_LINES']}
+        index_units = {p: zero for p, _ in engine.leaves(engine.cas(index))}
     seen = set(); original = engine.emit
     def compare(name, value):
         tag = 'PY_S11CD_'+name
@@ -163,7 +211,7 @@ def main():
     residuals = [v for r in result['ROWS'] for v in (r['RECONSTRUCTION_RESIDUAL'],
         r['NONLINEAR_OR_AFFINE_REMAINDER'], *r['DERIVATIVE_EXTRACTION_RESIDUALS'])]
     summary = {'runDirectory': str(base), 'sourceFiles': pins, 'provenance': provenance,
-        'localDerivativeOrders': list(result['LOCAL_MATRICES']), 'termCensus': census,
+        'localDerivativeOrders': [int(n) for n in result['LOCAL_MATRICES']], 'termCensus': census,
         'distinctNonlocalIntegrals': len(result['NONLOCAL_INTEGRALS']),
         'residualScalars': len(residuals), 'nonzeroResidualScalars': sum(v != 0 for v in residuals),
         'unboundConstitutiveParameters': [str(s) for s in missing],
@@ -171,6 +219,8 @@ def main():
         'wallSeconds': time.monotonic()-started, 'peakRssKiB': resource.getrusage(resource.RUSAGE_SELF).ru_maxrss,
         'artifacts': {n: {'bytes': (base/n).stat().st_size, 'sha256': digest(base/n)} for n in ('full.out', 'assembly.pickle')},
         'scope': 'Exact local-jet and intact-integral assembly with formal reconstruction and derivative-extraction residuals. No numerical quadrature or scattering solution.'}
+    if resumed is not None:
+        summary['resumedFrom'] = resumed
     save(base/'checks.json', summary)
     if pins != {str(p.relative_to(ROOT)): digest(p) for p in SOURCES}:
         raise ValueError('assembly sources changed during execution')

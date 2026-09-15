@@ -1,18 +1,18 @@
 {
-  "status": "RUNNING",
+  "status": "SUMMARY_REPAIR_PREPARED",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-reduced-action-assembly-20260914",
   "plan": "S11c_d_variable_profile_matching_plan.md",
   "planStep": 3,
   "sourcePublicationCommit": "83e9856672a47aabb579d764500f440f00c600d3",
   "sourceSha256": {
     "scripts/S11c_d_mixing_scattering_sympy_audit.py": "147f1bc1df4ce4b3ea9c131a0684afe4ee0016153cd1f71bd8b74f6eedace970",
-    "_measurements/S11c_d_reduced_action_assembly_check.py": "89872e9c40a7b9d2feaf6312c4eb26b218b94d4bb573819998de94ee2185f814"
+    "_measurements/S11c_d_reduced_action_assembly_check.py": "f620a643c761474aeaa181ad34a368bc35c1f9e81fb528a81744c2a32af364a8"
   },
   "scope": "Exact local derivative coefficient matrices and intact nonlocal integral actions, with literal reconstruction and independent derivative-extraction residuals. No numerical quadrature or scattering result.",
   "numericalInput": "Awaiting user choice for 30 inherited gradient-energy coefficients; symbolic assembly is independent of that choice.",
-  "next": "Run source-pinned assembly, preserve raw operands before emission, replay metadata, publish validated output via DataLad/git-annex and commit. Then bind the agreed numerical instance and construct action quadrature.",
+  "next": "Validate the preserved packet/transcript with --resume-from after converting derivative orders to native JSON integers. Do not recompute the assembly.",
   "implementationCommit": "b9dba906",
-  "observedUtc": "2026-09-15T00:17:40.700974+00:00",
+  "observedUtc": "2026-09-15T00:22:07.857663+00:00",
   "active": {
     "stage": "assembly_construct",
     "command": [
@@ -26,7 +26,11 @@
     "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-reduced-action-assembly-20260914/assembly_construct.stderr",
     "startedUtc": "2026-09-15T00:17:16.310615+00:00",
     "childPid": 1933653,
-    "status": "running"
+    "status": "failed",
+    "exitCode": 1,
+    "wallSeconds": 62.56172976642847,
+    "stderrBytes": 1312,
+    "finishedUtc": "2026-09-15T00:18:18.872415+00:00"
   },
   "launch": {
     "launchedUtc": "2026-09-15T00:17:16.235554+00:00",
@@ -57,5 +61,63 @@
     "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
     "messageSha256": "96eefd60e7712d91c11c64992876db40dd7c661e1e0be961cd2abfd6856f0f13",
     "notifications": {}
+  },
+  "failedAttempt": {
+    "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-reduced-action-assembly-20260914/complete",
+    "invocation": {
+      "stage": "assembly_construct",
+      "command": [
+        "python",
+        "-u",
+        "_measurements/S11c_d_reduced_action_assembly_check.py",
+        "--run-directory",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-reduced-action-assembly-20260914/complete"
+      ],
+      "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-reduced-action-assembly-20260914/assembly_construct.stdout",
+      "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-reduced-action-assembly-20260914/assembly_construct.stderr",
+      "startedUtc": "2026-09-15T00:17:16.310615+00:00",
+      "childPid": 1933653,
+      "status": "failed",
+      "exitCode": 1,
+      "wallSeconds": 62.56172976642847,
+      "stderrBytes": 1312,
+      "finishedUtc": "2026-09-15T00:18:18.872415+00:00"
+    },
+    "reason": "The completed construction and emission replay reached JSON summary serialization with a SymPy derivative-order integer. Saved assembly and transcript remain intact; final residual/source guards still require recovery validation."
+  },
+  "recoveryRunRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-reduced-action-assembly-20260914/recovery-01",
+  "savedPacketInspection": {
+    "localOrderRuntimeTypes": [
+      [
+        "0",
+        "int"
+      ],
+      [
+        "1",
+        "One"
+      ],
+      [
+        "2",
+        "Integer"
+      ],
+      [
+        "3",
+        "Integer"
+      ]
+    ],
+    "rows": 25,
+    "residualScalars": 281,
+    "nonzeroResidualScalars": 0,
+    "distinctNonlocalIntegrals": 80,
+    "artifacts": {
+      "full.out": {
+        "bytes": 829611,
+        "sha256": "fe1d8d656621298e056ea4078312d353fc0e0b4a2742f03636413b5c38a47658"
+      },
+      "assembly.pickle": {
+        "bytes": 111081,
+        "sha256": "8eda57998285137d99cce9564757627a57f8d5bc9b27091c86a65a9cc59230a0"
+      }
+    }
   }
 }

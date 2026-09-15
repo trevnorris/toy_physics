@@ -1,0 +1,24 @@
+{
+  "status": "READY_TO_LAUNCH",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-three-momentum-source-20260915",
+  "stage": "source_construct",
+  "plan": "S11c_d_three_momentum_source_plan.md",
+  "report": "S11c_d_three_momentum_source_report.md",
+  "checker": "S11c_d_three_momentum_source_check.py",
+  "acceptedThreeCommit": "22e78b55ac37e94b055b19307132fe251903f2dc",
+  "annexVerificationCommit": "b87885b5",
+  "next": "Validate focused baseline/emission joins and run two source/profile refinement grids per field.",
+  "scope": "Fixed finite domains, regulator and momentum grid; no uniform convergence, independent-grade, tail, Abel, scattering or pole claim.",
+  "preflight": "S11c_d_three_momentum_source_preflight.json",
+  "preflightChecksSha256": "64f2524f5c32b4aed8648d1f90e1b211ffe0c07bf85d9a7f9f5062f0fd1a4a19",
+  "costEstimate": {
+    "nodesPerNewGrid": 34656096,
+    "newGrids": 4,
+    "newNodeTotalBothFields": 138624384,
+    "prefixBasedWallHours": [
+      2.0941574175701194,
+      3.3540706573155816
+    ],
+    "scope": "Prefix-rate extrapolation excluding nonuniform batch cost, checkpoints and emission; not a runtime guarantee."
+  }
+}

@@ -121,6 +121,12 @@ unchanged held terms, source hashes and packet identities. The 2.24 MB transcrip
 is published and annex-verified. Next are source/profile order refinements on
 the fixed final momentum grid; physical tails and Abel limits remain work.
 
+The source/profile follow-up keeps the accepted three-momentum grid and the
+byte-identical engine. Focused prefixes, retained full actions and 17,637
+metadata paths replay exactly. It will double source order, then profile order,
+on both fields while retaining validated single/pair terms. No full follow-up
+result is accepted yet; independent quadrature and physical limits remain work.
+
 ## Retained user-approved solver/export contract
 
 

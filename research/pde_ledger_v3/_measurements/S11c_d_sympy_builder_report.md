@@ -93,6 +93,13 @@ mutations nonzero. The tested method is adopted by a single boolean change
 in the occurrence-comparison helper; the physics engine is unchanged. Full
 source quadrature is prepared for retry with all saved operands preserved.
 
+
+Source Fourier quadrature retry-02 has saved all 70 sources and 140 numerical
+records. Final validation stopped on a fingerprinted structural emission index.
+The emission repair reuses those packets and retains the original live binding
+representations; full source-quadrature publication remains pending. See
+`S11c_d_source_fourier_quadrature_emission_plan.md` and its repair checkpoint.
+
 ## Retained user-approved solver/export contract
 
 

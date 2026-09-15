@@ -28,10 +28,21 @@ comparison's shared keyword changed to False; the complete checker AST joins
 after that substitution and the physics engine is unchanged. The repair is
 committed at 420f36a0.
 
-Full source quadrature retry-02 is running with the single-job supervisor and
-silent local completion/error watcher. No full source-quadrature result is yet
-accepted. Next is validation/publication, followed by concentration-aware
-full-action momentum integration. Finite source tests establish no uniform
-interpolation bound, infinite tail/interchange, full-action convergence, Abel
-weak limit, scattering or pole result. See the plan, execution checkpoint and
-binding acceptance record for evidence and retained boundaries.
+Full retry-02 saved all 70 bound sources, 320 occurrence comparisons and 140
+numerical integration records (9,240 frequencies). Its final live emission
+replay completed, then decoding the structural emission index failed because
+the generic physical wrapper had replaced its fields with a fingerprint.
+The numerical packets and original 11.83 MB transcript are preserved.
+
+Inspection of saved arrays gives maximum scaled source/adaptive differences
+1.73e-14 / 4.11e-13. Gauss order changes are 1.43e-6 and 4.11e-13; the largest
+finite source-interval change is 4.40e-9. Every measure mutation is detected.
+These results await complete validation and publication. The output repair
+keeps manifests lossless and reuses saved packets, preserving original live
+binding forms separately from their pickle representations. See the emission
+repair plan/checkpoint; no integrations or upstream physics are repeated.
+
+Next is accepted publication, then concentration-aware full-action momentum
+integration. Finite source tests establish no uniform interpolation bound,
+infinite tail/interchange, full-action convergence, Abel weak limit, scattering
+or pole result. The retained solver/export contract is unchanged.

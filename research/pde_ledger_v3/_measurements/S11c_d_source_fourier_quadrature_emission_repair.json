@@ -1,0 +1,96 @@
+{
+  "status": "PREPARED_SAVED_PACKET_VALIDATION",
+  "sourceRunDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-source-quadrature-20260914/retry-02/complete",
+  "sourceArtifacts": {
+    "integral-inventory.json": {
+      "bytes": 20823,
+      "sha256": "22d9289dd08893aac60a0b6b7214c1685e4a466321d3bf84c42cd4042e831eb9"
+    },
+    "bound-record-inventory.json": {
+      "bytes": 11353,
+      "sha256": "396e5c8237a4496944f8248f5980fb0c2b0cb82759f542f20395ba39983122d0"
+    },
+    "preflight.json": {
+      "bytes": 5925,
+      "sha256": "46780c377cb7bc10991e73557944c9e8ee287d1608fb0ee39b73e669fdf72d1d"
+    },
+    "progress.jsonl": {
+      "bytes": 14142,
+      "sha256": "269f90284bac04a4102c966b30c721f96832d72e4f44d9e04f7be554e8a8e3e5"
+    },
+    "full.out": {
+      "bytes": 11826484,
+      "sha256": "f8a27895dc501bd3c67cdf572d9df35d861440d3a902962a16f4681415bbff4a"
+    },
+    "bound-sources.pickle": {
+      "bytes": 1344648,
+      "sha256": "ff77d1d6e13c827f4675615f002e26e92c9a8d1c9ef114f64c73ffbaa676ff6e"
+    },
+    "quadrature.pickle": {
+      "bytes": 1890645,
+      "sha256": "381ccc6db87f3545624fbbb5556ff13b66cd899cb6f4fd2883b5bd8639dd55fc"
+    },
+    "../source_quadrature.stderr": {
+      "bytes": 630,
+      "sha256": "2d1e9785f0805869b3a71b2f85aaa776b8bf717ee333f9869f74767be3c98dc5"
+    },
+    "../source_quadrature.stdout": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "../source_quadrature.invocation.json": {
+      "bytes": 728,
+      "sha256": "03a3ae35b29ed7c74a92cbc0ebd69d3881122916800d7a6c89090cc16dd63d66"
+    },
+    "../active.json": {
+      "bytes": 728,
+      "sha256": "03a3ae35b29ed7c74a92cbc0ebd69d3881122916800d7a6c89090cc16dd63d66"
+    }
+  },
+  "sourceInvocation": {
+    "stage": "source_quadrature",
+    "command": [
+      "python",
+      "-u",
+      "_measurements/S11c_d_source_fourier_quadrature_check.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-source-quadrature-20260914/retry-02/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-source-quadrature-20260914/retry-02/source_quadrature.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-source-quadrature-20260914/retry-02/source_quadrature.stderr",
+    "startedUtc": "2026-09-15T12:45:49.688268+00:00",
+    "childPid": 2799177,
+    "status": "failed",
+    "exitCode": 1,
+    "wallSeconds": 695.1029482409358,
+    "stderrBytes": 630,
+    "finishedUtc": "2026-09-15T12:57:24.791366+00:00"
+  },
+  "failure": "All numerical records and the full live emission replay completed. The physical wrapper replaced the large structural emission index with a carrier fingerprint; restore_emission_index then raised KeyError for s11cdIndexedTagCount.",
+  "repair": "Emit structural write-key and source-line manifests losslessly with the same dimension/grade metadata. Extract unchanged emission/validation tail for saved-packet reuse.",
+  "wholeCheckerAstJoin": true,
+  "physicsEngineUnchanged": true,
+  "recomputeNumericalQuadrature": false,
+  "savedNumericalInspection": {
+    "boundPacketSha256": "ff77d1d6e13c827f4675615f002e26e92c9a8d1c9ef114f64c73ffbaa676ff6e",
+    "quadraturePacketSha256": "381ccc6db87f3545624fbbb5556ff13b66cd899cb6f4fd2883b5bd8639dd55fc",
+    "boundSources": 70,
+    "bindingOccurrences": 320,
+    "nonidenticalLiveBindings": 20,
+    "nonzeroNormalizedBindingResiduals": 0,
+    "evaluationRecords": 140,
+    "frequencyEvaluations": 9240,
+    "maxSourceResidual": 6.07087979554246e-14,
+    "maxScaledSourceResidual": 1.7272583204320683e-14,
+    "maxAdaptiveResidual": 4.106096809083534e-13,
+    "maxScaledAdaptiveResidual": 4.106096809083531e-13,
+    "maxRefinements": [
+      1.4274489059662443e-06,
+      4.1095001236765735e-13
+    ],
+    "maxFiniteIntervalChange": 4.402679110171448e-09,
+    "minRecordMaxMutation": 4.387623736291933e-06
+  },
+  "pending": "Full saved source/occurrence/limit/certificate/inventory joins, metadata/emission replay, original/recovery payload comparison, numerical guards and publication.",
+  "scope": "Finite source tests only. Original live representations and raw residuals remain preserved; pickle reconstruction equivalences are separate. No full action convergence, infinite-domain/Abel limit, scattering or poles."
+}

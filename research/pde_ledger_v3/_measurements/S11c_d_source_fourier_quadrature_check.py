@@ -393,14 +393,30 @@ def main():
     atomic_pickle(base/'quadrature.pickle',{'result':result,'provenance':provenance,'boundPacketSha256':bound_hash,
         'dimensionState':dict(vars(engine.PHYSICAL_METADATA.dimensions))})
     before=digest(base/'quadrature.pickle')
+    summary = finalize(base, started, pins, pencil, factors, provenance, joins,
+        bound, result, bound_hash, before, inventory, bound_inventory)
+    print(json.dumps(summary,indent=2))
+
+
+def emit_manifest(name, value, *, zero_dimensions=None):
+    """Keep structural lookup fields lossless, with their ordinary metadata."""
+    body = engine.cas(value)
+    engine.emit(name, body)
+    engine.emit('METADATA_'+name, engine.PHYSICAL_METADATA.record(body, zero_dimensions))
+
+
+def finalize(base, started, pins, pencil, factors, provenance, joins,
+             bound, result, bound_hash, before, inventory, bound_inventory):
+    """Emit and validate computed packets independently of their construction."""
+    evaluations = result['evaluations']; changes = result['domainChanges']
     with (base/'full.out').open('x') as stream,contextlib.redirect_stdout(stream):
         emit_result(result,bound,pencil,provenance)
         keys={tag:'s11cd'+''.join(w.title() for w in tag.removeprefix('PY_S11CD_').split('_'))
               for tag in engine.EMISSION_LINES if not tag.startswith('PY_S11CD_METADATA_')}
-        engine.physical(PREFIX+'_WRITE_KEYS',keys)
+        emit_manifest(PREFIX+'_WRITE_KEYS',keys)
         index=engine.emission_index(engine.EMISSION_LINES)
         zero_units={p:(0,0,0) for p,_ in engine.leaves(engine.cas(index))}
-        engine.physical(PREFIX+'_EMISSION_LINES',index,zero_dimensions=zero_units)
+        emit_manifest(PREFIX+'_EMISSION_LINES',index,zero_dimensions=zero_units)
     entries={}
     for line in decoded_lines(base/'full.out'):
         tag,_,body=line.rstrip('\n').partition(': ')
@@ -414,8 +430,8 @@ def main():
     engine.emit=compare
     try:
         emit_result(result,bound,pencil,provenance)
-        engine.physical(PREFIX+'_WRITE_KEYS',keys)
-        engine.physical(PREFIX+'_EMISSION_LINES',index,zero_dimensions=zero_units)
+        emit_manifest(PREFIX+'_WRITE_KEYS',keys)
+        emit_manifest(PREFIX+'_EMISSION_LINES',index,zero_dimensions=zero_units)
     finally:
         engine.emit=original
     if seen != set(entries) or len(keys) != len(set(keys.values())) or set(keys.values()) & set(engine.IMPORT_KEYS):
@@ -479,7 +495,7 @@ def main():
             any(n['maxScaledSourceResidual']>1e-10 or n['maxScaledAdaptiveResidual']>1e-9 for n in norms) or
             max(n['maxMutationDifference'] for n in norms)<=1e-12):
         raise ValueError('source quadrature residual or sensitivity needs inspection')
-    print(json.dumps(summary,indent=2))
+    return summary
 
 
 if __name__=='__main__':

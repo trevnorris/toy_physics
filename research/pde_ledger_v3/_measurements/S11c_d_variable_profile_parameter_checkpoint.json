@@ -1,0 +1,89 @@
+{
+  "case": "LAB_HELD_RHO4_CONSTANT",
+  "coefficientCount": 30,
+  "inventorySha256": "02abaf37a0febb4daef1a26b2ca314e756af29b7dcaea524a1d95d9736f45b7b",
+  "sourceCheckpointSha256": "b6dcd36ee6cf8ed3b3943e207012dd165fce62ec39cb8f53ca3c23f4715d094b",
+  "nativeManifestSha256": "7ba5c4aee54860f3665099ef33fc048602a53c742f41360ce46bcc1e75b82421",
+  "nativeConstructorAstJoins": {
+    "EdgeReduction": true,
+    "ReducedPencil": true,
+    "ConstantEndPencil": true,
+    "dag_substitute": true,
+    "polynomial_terms": true
+  },
+  "endOperatorDependencies": {
+    "REFERENCE": {
+      "cacheSha256": "b453f91c68e6f9281716805de18081cee7bdc348f4cd32ca40ed66a3e2225fbd",
+      "matrices": {
+        "WEAK": {
+          "shape": [
+            6,
+            6
+          ],
+          "presentInventoriedCoefficients": [],
+          "presentCount": 0
+        },
+        "STRONG": {
+          "shape": [
+            5,
+            5
+          ],
+          "presentInventoriedCoefficients": [],
+          "presentCount": 0
+        }
+      }
+    },
+    "LEFT": {
+      "cacheSha256": "35e5dba88a3d367a3be84d148e9fe3aee2c85d34076b269219ca0e10fa0a27f4",
+      "matrices": {
+        "WEAK": {
+          "shape": [
+            6,
+            6
+          ],
+          "presentInventoriedCoefficients": [],
+          "presentCount": 0
+        },
+        "STRONG": {
+          "shape": [
+            5,
+            5
+          ],
+          "presentInventoriedCoefficients": [],
+          "presentCount": 0
+        }
+      }
+    },
+    "RIGHT": {
+      "cacheSha256": "1d52bed28683e0736324e3cf46b3a69cdc092df6368b1036595b40dc4aaae8e2",
+      "matrices": {
+        "WEAK": {
+          "shape": [
+            6,
+            6
+          ],
+          "presentInventoriedCoefficients": [],
+          "presentCount": 0
+        },
+        "STRONG": {
+          "shape": [
+            5,
+            5
+          ],
+          "presentInventoriedCoefficients": [],
+          "presentCount": 0
+        }
+      }
+    }
+  },
+  "scope": "Exact symbolic dependency census of the accepted native strong and weak end matrices. The proposed numerical extension must preserve every existing parameter and profile.",
+  "instrument": {
+    "path": "_measurements/S11c_d_variable_profile_parameter_check.py",
+    "sha256": "dc0a8a236c6c1829b90cd0c6921d942fab9593494d2146736b81db22a5b6e7c7",
+    "snapshot": "/var/projects/toy_physics/_scratch/s11c/s11c-reduced-action-assembly-20260914/parameter-end-check-source.py"
+  },
+  "rawOutput": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-reduced-action-assembly-20260914/parameter-end-check.json",
+    "sha256": "1696aa1113b6c761e0e2c2232fe8671d779474a18fd73a13c93d5512a21fb724"
+  }
+}

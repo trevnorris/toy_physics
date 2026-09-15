@@ -38,3 +38,9 @@ and compute actual local/nonlocal actions against direct reduced-row test
 actions, with quadrature, tails and the Abel weak limit accounted for before
 boundary matching. The S-matrix, continuum expansion, profile-frequency poles
 and final own-row export remain open program work.
+
+Publication is committed at `d868f949`; the full annex payload hash is verified.
+The parameter-dependency checkpoint finds all 30 coefficients absent from both
+strong and weak operators at LEFT, RIGHT and REFERENCE. The new development
+input proposal preserves every existing parameter/profile and remains unapplied.
+The numerical action plan is ready; continuation awaits the input choice.

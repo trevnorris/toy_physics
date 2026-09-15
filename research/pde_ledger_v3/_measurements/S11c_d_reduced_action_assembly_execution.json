@@ -1,5 +1,5 @@
 {
-  "status": "VALIDATED_PUBLISHED_PENDING_COMMIT",
+  "status": "COMPLETED_COMMITTED",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-reduced-action-assembly-20260914",
   "plan": "S11c_d_variable_profile_matching_plan.md",
   "planStep": 3,
@@ -9,10 +9,16 @@
     "_measurements/S11c_d_reduced_action_assembly_check.py": "f620a643c761474aeaa181ad34a368bc35c1f9e81fb528a81744c2a32af364a8"
   },
   "scope": "Exact local derivative coefficient matrices and intact nonlocal integral actions, with literal reconstruction and independent derivative-extraction residuals. No numerical quadrature or scattering result.",
-  "numericalInput": "Awaiting user choice for 30 inherited gradient-energy coefficients; symbolic assembly is independent of that choice.",
-  "next": "Commit and verify the annex publication. Obtain the numerical-instance choice for the 30 inherited coefficients before binding and evaluating local/nonlocal actions.",
+  "numericalInput": {
+    "status": "AWAITING_USER_CHOICE",
+    "proposal": "S11c_d_variable_profile_development_input_proposal.json",
+    "proposalSha256": "5fd0a4feb51d627825956296e7f2c9ace57178e79e0f07041abc11f43960aabb",
+    "endDependencyCheckpoint": "S11c_d_variable_profile_parameter_checkpoint.json",
+    "existingInputUnchanged": true
+  },
+  "next": "Obtain the numerical-instance choice, then follow S11c_d_numerical_action_plan.md. No owned scripts remain running.",
   "implementationCommit": "b9dba906",
-  "observedUtc": "2026-09-15T00:26:14.096113+00:00",
+  "observedUtc": "2026-09-15T00:31:05.793916+00:00",
   "active": {
     "stage": "assembly_validate",
     "command": [
@@ -166,5 +172,14 @@
     "path": "scripts/out/S11c_d_reduced_action_assembly.out",
     "bytes": 829611,
     "sha256": "fe1d8d656621298e056ea4078312d353fc0e0b4a2742f03636413b5c38a47658"
+  },
+  "publicationCommit": "d868f94909bbc149ed3bdab2eeb00250d016189c",
+  "annexVerification": {
+    "commit": "d868f94909bbc149ed3bdab2eeb00250d016189c",
+    "path": "scripts/out/S11c_d_reduced_action_assembly.out",
+    "bytes": 829611,
+    "sha256": "fe1d8d656621298e056ea4078312d353fc0e0b4a2742f03636413b5c38a47658",
+    "isSymlink": true,
+    "annexKey": "MD5E-s829611--72b9881447e344f460fa6aae7e06673c.out"
   }
 }

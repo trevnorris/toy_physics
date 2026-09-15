@@ -38,8 +38,11 @@ Inspection of saved arrays gives maximum scaled source/adaptive differences
 1.73e-14 / 4.11e-13. Gauss order changes are 1.43e-6 and 4.11e-13; the largest
 finite source-interval change is 4.40e-9. Every measure mutation is detected.
 These results await complete validation and publication. Saved-packet recovery
-is running with the local completion/error watcher; implementation is committed
-at f8984364. The output repair
+f8984364 stopped before emission at a structurally unequal source substitution
+(test 0/source 24). This comparison now preserves every actual pair and tests
+unequal forms with the existing exact uncompressed certificate method, including
+coefficient mutations and per-worker time/memory limits. Proofs and full recovery
+validation remain pending. The output repair
 keeps manifests lossless and reuses saved packets, preserving original live
 binding forms separately from their pickle representations. See the emission
 repair plan/checkpoint; no integrations or upstream physics are repeated.

@@ -3,6 +3,10 @@
 import argparse
 import ast
 import hashlib
+import faulthandler
+import multiprocessing
+import os
+import resource
 import inspect
 import json
 from pathlib import Path
@@ -13,12 +17,13 @@ import numpy as np
 import sympy as sp
 import S11c_d_source_fourier_quadrature_check as original
 from S11c_d_source_fourier_quadrature_check import (
-    ROOT, STORE, engine, digest, save, unpickle, decoded_lines, _restore)
+    ROOT, STORE, engine, digest, save, atomic_pickle, unpickle, decoded_lines, _restore)
 from S11c_d_output_codec import restore_emission_index
 
 PLAN = ROOT/'_measurements/S11c_d_source_fourier_quadrature_emission_plan.md'
 REPAIR = ROOT/'_measurements/S11c_d_source_fourier_quadrature_emission_repair.json'
-SOURCES = (*original.SOURCES, Path(__file__).resolve(), PLAN, REPAIR)
+REPLAY_REPAIR = ROOT/'_measurements/S11c_d_source_fourier_quadrature_replay_repair.json'
+SOURCES = (*original.SOURCES, Path(__file__).resolve(), PLAN, REPAIR, REPLAY_REPAIR)
 
 
 def checker_join(previous_text, current_text):
@@ -75,6 +80,73 @@ def entries(path):
     return result
 
 
+def certificate_worker(directory, left, right):
+    """Fork preserves the actual live operands; pickle can change their trees."""
+    with (directory/'stdout').open('x') as out, (directory/'stderr').open('x') as err:
+        os.dup2(out.fileno(),1); os.dup2(err.fileno(),2)
+        resource.setrlimit(resource.RLIMIT_AS,(8*1024**3,8*1024**3))
+        faulthandler.dump_traceback_later(150,file=err)
+        begin=time.monotonic()
+        certificate=engine.BoundedSourceFourierAssembly.reconstruction_certificate(left,right,shared=False)
+        atomic_pickle(directory/'certificate.pickle',certificate)
+        proofs=tuple(certificate['REPLAY_RESIDUALS'])+tuple(v[1] for v in certificate['PHASE_SPLITS'].values())+tuple(
+            v[2] for v in certificate['RADICAL_POWERS'].values())
+        result={'liveExactEqual':left==right,'normalizedResidualZero':certificate['RESIDUAL']==0,
+            'proofResidualCount':len(proofs),'nonzeroProofResiduals':sum(v!=0 for v in proofs),
+            'representationSha256':[hashlib.sha256(sp.srepr(v).encode()).hexdigest() for v in (left,right)]}
+        save(directory/'certificate-checks.json',result)
+        mutation=engine.BoundedSourceFourierAssembly.reconstruction_certificate(left,2*right,shared=False)
+        atomic_pickle(directory/'mutation.pickle',mutation)
+        result.update(coefficientMutationNonzero=mutation['RESIDUAL']!=0,
+            wallSeconds=time.monotonic()-begin,peakRssKiB=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss)
+        save(directory/'checks.json',result); print(json.dumps(result,indent=2),flush=True)
+        faulthandler.cancel_dump_traceback_later()
+        if result['liveExactEqual'] or not result['normalizedResidualZero'] or result['nonzeroProofResiduals'] or not result['coefficientMutationNonzero']:
+            raise ValueError('live source replay certificate requires inspection')
+
+
+def certify_replay(base,left,right,key,unit,inventory):
+    """Save every actual replay pair before applying its exact equality guard."""
+    directory=base/'source-binding-replay'/('-'.join(map(str,key)))
+    directory.mkdir(parents=True,exist_ok=False)
+    representations=tuple(sp.srepr(v) for v in (left,right))
+    atomic_pickle(directory/'operands.pickle',{'left':left,'right':right,'rawResidual':left-right,
+        'representations':representations,'dimensionLTM':unit,
+        'sourceBoundPacketSha256':digest(base/'bound-sources.pickle')})
+    item={'key':list(key),'path':str(directory.relative_to(base)),'liveExactEqual':left==right,
+        'operandSha256':digest(directory/'operands.pickle')}
+    inventory.append(item);save(base/'source-binding-replay-inventory.json',inventory)
+    if left!=right:
+        # A spawn/unpickle boundary may itself canonicalize the operands. Fork
+        # keeps the live expression trees and performs no concurrent parent CAS.
+        worker=multiprocessing.get_context('fork').Process(target=certificate_worker,args=(directory,left,right))
+        worker.start(); worker.join(180)
+        if worker.is_alive():
+            worker.terminate(); worker.join(5)
+            if worker.is_alive(): worker.kill(); worker.join()
+            item['status']='timeout'
+        else: item['status']='exited'
+        item['exitCode']=worker.exitcode
+        item['stderrBytes']=(directory/'stderr').stat().st_size if (directory/'stderr').exists() else None
+        save(base/'source-binding-replay-inventory.json',inventory)
+        if item['status']!='exited' or item['exitCode']!=0 or item['stderrBytes']!=0:
+            raise ValueError(('bounded live source replay certificate',key,item['status']))
+        checks=json.loads((directory/'checks.json').read_text())
+        equal(checks['representationSha256'],[hashlib.sha256(v.encode()).hexdigest() for v in representations],(key,'live-worker-pair'))
+        if checks['liveExactEqual'] or not checks['normalizedResidualZero'] or checks['nonzeroProofResiduals'] or not checks['coefficientMutationNonzero']:
+            raise ValueError(('source replay worker guards',key))
+        certificate=unpickle(directory/'certificate.pickle');mutation=unpickle(directory/'mutation.pickle')
+        equal(certificate['LEFT'],unpickle(directory/'operands.pickle')['left'],(key,'certificate-left'))
+        equal(certificate['RIGHT'],unpickle(directory/'operands.pickle')['right'],(key,'certificate-right'))
+        equal(mutation['LEFT'],certificate['LEFT'],(key,'mutation-left'))
+        equal(mutation['RIGHT'],2*certificate['RIGHT'],(key,'mutation-right'))
+        item['checks']=checks
+    else:
+        item['normalizedResidualZero']=(left-right)==0
+    item['artifacts']={p.name:{'bytes':p.stat().st_size,'sha256':digest(p)} for p in directory.iterdir() if p.is_file()}
+    save(base/'source-binding-replay-inventory.json',inventory)
+
+
 def validate_saved(previous, base, bound_packet, quadrature_packet, pencil, assembly, factors, tests, numerical, provenance):
     bound, result = bound_packet['result'], quadrature_packet['result']
     for packet in (bound_packet,quadrature_packet): equal(packet['provenance'],provenance)
@@ -128,6 +200,7 @@ def validate_saved(previous, base, bound_packet, quadrature_packet, pencil, asse
     equal(bound['momentumDomains'],{k:(-momentum_bound,momentum_bound) for k in expected_momenta})
     equal(bound['sourceBounds'],(float(settings['sourceBound']),1.5*float(settings['sourceBound'])))
     equal(tuple(bound['orders']),(32,64,128))
+    replay_inventory=[]
     for key,r in record_map.items():
         ti,si=key; source=factors['SOURCE_INTEGRALS'][si]
         uses=[(row['INDEX'],fi,f) for row in factors['ROWS'] for fi,f in enumerate(row['FACTORS']) if f['SOURCE_INTEGRAL']==source]
@@ -136,7 +209,8 @@ def validate_saved(previous, base, bound_packet, quadrature_packet, pencil, asse
         field=lambda z:engine.memo_xreplace(tests[ti]['field'],{pencil.r.z:z})
         mapping={p:field for p in pencil.probes}
         for symbolic,saved in (('AMPLITUDE','boundAmplitude'),('SOURCE','boundSource')):
-            equal(r[saved],adapter.bind(engine.dag_substitute(uses[0][2][symbolic],mapping)),(key,saved))
+            certify_replay(base,r[saved],adapter.bind(engine.dag_substitute(uses[0][2][symbolic],mapping)),
+                (*key,saved),engine.PHYSICAL_METADATA.dimensions.measure(uses[0][2][symbolic]),replay_inventory)
         equal(r['symbolicAmplitude'],uses[0][2]['AMPLITUDE'],(key,'symbolicAmplitude'))
         equal(r['symbolicFrequency'],uses[0][2]['FREQUENCY'],(key,'symbolicFrequency'))
         equal(r['frequency'],adapter.bind(uses[0][2]['FREQUENCY']),(key,'frequency'))
@@ -200,7 +274,7 @@ def validate_saved(previous, base, bound_packet, quadrature_packet, pencil, asse
     for name,items in (('integral-inventory.json',inventory),('bound-record-inventory.json',bound_inventory)):
         save(base/name,items)
     save(base/'representation-joins.json',representation_records)
-    return inventory,bound_inventory,representation_records
+    return inventory,bound_inventory,representation_records,replay_inventory
 
 
 def compare_transcripts(previous,base,bound,representation_records):
@@ -280,7 +354,7 @@ def main():
     save(base/'preflight.json',{'sourceFiles':pins,'provenance':provenance,'sourceRunDirectory':str(previous),
         'sourcePreflightSha256':digest(previous/'preflight.json'),'wholeCheckerAstJoin':True,
         'sourceArtifacts':repair['sourceArtifacts'],'boundPacketSha256':bound_hash,'quadraturePacketSha256':packet_hash})
-    inventory,bound_inventory,representations=validate_saved(previous,base,bp,qp,pencil,assembly,factors,tests,numerical,provenance)
+    inventory,bound_inventory,representations,replay_inventory=validate_saved(previous,base,bp,qp,pencil,assembly,factors,tests,numerical,provenance)
     original.progress(base,'saved_operands_validated',sources=len(bp['result']['records']),integrals=len(inventory))
     summary=original.finalize(base,started,pins,pencil,factors,provenance,joins,bp['result'],qp['result'],
                               bound_hash,packet_hash,inventory,bound_inventory)
@@ -293,7 +367,9 @@ def main():
         'savedOperandAndInventoryJoins':True,'quadratureRecomputed':False,'emissionComparison':comparison,
         'restoredExactBindingOccurrences':sum(v['restoredExactEqual'] for v in representations),
         'representationJoinsSha256':digest(base/'representation-joins.json'),
-        'emissionDifferencesSha256':digest(base/'emission-differences.json')})
+        'emissionDifferencesSha256':digest(base/'emission-differences.json'),
+        'sourceBindingReplayArtifacts':replay_inventory,
+        'sourceBindingReplayInventorySha256':digest(base/'source-binding-replay-inventory.json')})
     save(base/'checks.json',summary); save(base/'recovery.json',summary)
     equal(pins,{name:digest(ROOT/name) for name in pins},('post-recovery-sources',))
     print(json.dumps(summary,indent=2))

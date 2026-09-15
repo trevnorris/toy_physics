@@ -36,3 +36,14 @@ repository scratch. A failed instrument check leaves saved operands intact for
 further validation. No source integration, full-action convergence, infinite
 interchange, Abel weak limit, scattering or pole result is manufactured by this
 output repair. Preserve the builder report's retained solver/export suffix.
+
+The first recovery stopped before emission at an exact structural source replay
+comparison (test 0/source 24). The original packets are unchanged. Extend this
+replay guard to the already tested exact certificate method: save every actual
+source/amplitude pair before checking it, and for unequal live forms use a
+sequential forked worker with the existing shared=False certificate and a
+one-sided coefficient mutation. Fork preserves the actual expression trees;
+pickle reconstruction is not used as a substitute for the live comparison.
+Require zero normalized/proof residuals and a nonzero mutation. Save all proof
+packets and live representation hashes, enforce 180 seconds and 8 GiB per worker,
+and stop on any failure or timeout. No numerical integral is recomputed.

@@ -1,12 +1,12 @@
 {
-  "status": "SAVED_PACKET_EMISSION_RECOVERY_RUNNING",
+  "status": "SAVED_SOURCE_REPLAY_CERTIFICATE_REPAIR_PREPARED",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-source-quadrature-20260914",
   "stage": "source_recover",
   "plan": "S11c_d_source_fourier_quadrature_plan.md",
   "report": "S11c_d_source_fourier_quadrature_report.md",
   "preflight": "S11c_d_source_fourier_quadrature_preflight.json",
   "acceptedFactorizationCommit": "bed088beb40f988647ec8a7861e9e898e4861fd5",
-  "next": "Inspect watched saved-packet validation on completion; require all final guards before accepting source quadrature.",
+  "next": "Validate every actual saved/replayed source pair with exact structural equality or a bounded uncompressed certificate, then finish saved-packet output validation.",
   "scope": "Finite smooth source integrals and sampled quadrature refinement only; no full-action convergence, unbounded interchange, Abel weak limit, scattering or pole result.",
   "implementationCommit": "a86c0500",
   "originalLaunch": {
@@ -407,5 +407,27 @@
     },
     "observedProcesses": "    PID STAT     ELAPSED COMMAND\n4118607 SNs        00:43 /usr/bin/python _measurements/S11c_d_end_normalization_run.py --run-root /var/projects/toy_physics/_scratch/s11c/s11c-source-quadrature-20260914/recovery-01 --stage source_recover -- python -u _measurements/S11c_d_source_fourier_quadrature_recover.py --run-directory /var/projects/toy_physics/_scratch/s11c/s11c-source-quadrature-20260914/recovery-01/complete --source-run-directory /var/projects/toy_physics/_scratch/s11c/s11c-source-quadrature-20260914/retry-02/complete\n4118608 SNs        00:43 /usr/bin/python /var/projects/toy_physics/_scratch/s11c/s11c-source-quadrature-20260914/recovery-01/completion-watcher/watch.py --pid 4118607 --thread 01a08c53-295c-70f0-baaf-353db1745867 --directory /var/projects/toy_physics/_scratch/s11c/s11c-source-quadrature-20260914/recovery-01/completion-watcher --message-file /var/projects/toy_physics/_scratch/s11c/s11c-source-quadrature-20260914/recovery-01/completion-watcher/continuation.txt --error-log /var/projects/toy_physics/_scratch/s11c/s11c-source-quadrature-20260914/recovery-01/source_recover.stderr --codex-bin /home/trevnorris/.npm-packages/bin/codex\n4118659 RNl        00:43 python -u _measurements/S11c_d_source_fourier_quadrature_recover.py --run-directory /var/projects/toy_physics/_scratch/s11c/s11c-source-quadrature-20260914/recovery-01/complete --source-run-directory /var/projects/toy_physics/_scratch/s11c/s11c-source-quadrature-20260914/retry-02/complete\n",
     "launcherSha256": "440019651701c5d494848b5545f6e09d418a9b8f60201e694973962cc35987c6"
-  }
+  },
+  "emissionRecovery01Invocation": {
+    "stage": "source_recover",
+    "command": [
+      "python",
+      "-u",
+      "_measurements/S11c_d_source_fourier_quadrature_recover.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-source-quadrature-20260914/recovery-01/complete",
+      "--source-run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-source-quadrature-20260914/retry-02/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-source-quadrature-20260914/recovery-01/source_recover.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-source-quadrature-20260914/recovery-01/source_recover.stderr",
+    "startedUtc": "2026-09-15T13:17:12.785362+00:00",
+    "childPid": 4118659,
+    "status": "failed",
+    "exitCode": 1,
+    "wallSeconds": 143.44928723853081,
+    "stderrBytes": 976,
+    "finishedUtc": "2026-09-15T13:19:36.234816+00:00"
+  },
+  "replayRepair": "S11c_d_source_fourier_quadrature_replay_repair.json"
 }

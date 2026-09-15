@@ -1,0 +1,67 @@
+{
+  "status": "BOUNDED_LIVE_SOURCE_REPLAY_CERTIFICATES_PREPARED",
+  "sourceRecoveryDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-source-quadrature-20260914/recovery-01",
+  "invocation": {
+    "stage": "source_recover",
+    "command": [
+      "python",
+      "-u",
+      "_measurements/S11c_d_source_fourier_quadrature_recover.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-source-quadrature-20260914/recovery-01/complete",
+      "--source-run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-source-quadrature-20260914/retry-02/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-source-quadrature-20260914/recovery-01/source_recover.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-source-quadrature-20260914/recovery-01/source_recover.stderr",
+    "startedUtc": "2026-09-15T13:17:12.785362+00:00",
+    "childPid": 4118659,
+    "status": "failed",
+    "exitCode": 1,
+    "wallSeconds": 143.44928723853081,
+    "stderrBytes": 976,
+    "finishedUtc": "2026-09-15T13:19:36.234816+00:00"
+  },
+  "failure": "Exact source substitution replay found structurally unequal boundSource at test 0/source 24 before emission. No physical discrepancy follows from this structural test alone.",
+  "preservedArtifacts": {
+    "source_recover.stderr": {
+      "bytes": 976,
+      "sha256": "bb551e4e6c546f07b2a57dbe94a3b16dfdcf6e1c2ecc8c60e8c761aa3f96f49f"
+    },
+    "source_recover.stdout": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "complete/preflight.json": {
+      "bytes": 7501,
+      "sha256": "9d6886efe4da7497ef9176b56c0cd853dcf34016ddb3cfa2e69220a2121d2ba2"
+    },
+    "complete/bound-sources.pickle": {
+      "bytes": 1344648,
+      "sha256": "ff77d1d6e13c827f4675615f002e26e92c9a8d1c9ef114f64c73ffbaa676ff6e"
+    },
+    "complete/quadrature.pickle": {
+      "bytes": 1890645,
+      "sha256": "381ccc6db87f3545624fbbb5556ff13b66cd899cb6f4fd2883b5bd8639dd55fc"
+    }
+  },
+  "unchangedFunctions": [
+    "checker_join",
+    "equal",
+    "entries",
+    "compare_transcripts"
+  ],
+  "consumedHelperAstJoin": true,
+  "sourceRecoveryCheckerSha256": "e5a50f8c773704df0445b9a5247a77cf6f4536228cb165fb1e7a473c37e08bd2",
+  "repairedRecoveryCheckerSha256": "bdbaa89766824465e730d6620402dfe7be4f7a19996da14b2eeb906b85be7a56",
+  "repair": "Save every actual bound source/amplitude replay pair before its equality guard. For unequal live expressions, fork a sequential worker retaining the actual expression trees, use existing shared=False exact certificates and a one-sided coefficient mutation, and save all proofs before further guards. Pickle is not used to transfer live operands to the worker.",
+  "workerLimits": {
+    "wallSeconds": 180,
+    "tracebackSeconds": 150,
+    "addressSpaceBytes": 8589934592
+  },
+  "pending": "All new live operand certificates, zero normalized/proof residuals and nonzero mutations; full recovery/source/numerical/metadata/emission validation and publication.",
+  "physicsEngineUnchanged": true,
+  "numericalConstructorUnchanged": true,
+  "quadratureRecomputed": false
+}

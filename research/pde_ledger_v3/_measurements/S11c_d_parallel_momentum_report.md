@@ -24,3 +24,11 @@ The authorized handoff preserved 709 original partial packets and copied the
 latest 11,616,256-node accumulator byte-for-byte. The old watcher was disarmed
 before interrupting its verified child; its interrupted outcome is recorded
 explicitly. The four-worker validation will run before production continuation.
+
+The first preflight completed all four numerical prefix and complete-grid
+comparisons, then failed standalone decoding of its second transcript: the
+preflight reused the first file's payload encoder. All saved arrays and both
+transcripts are preserved. The narrow repair resets that encoder per file;
+recovery will validate saved operands without repeating integration. Serial
+cumulative and per-worker workspace peaks are checked separately and explicitly.
+See the emission repair plan. Production has not started.

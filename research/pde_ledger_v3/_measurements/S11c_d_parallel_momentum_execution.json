@@ -1,12 +1,12 @@
 {
-  "status": "PARALLEL_VALIDATION_RUNNING",
+  "status": "PREFLIGHT_EMISSION_RECOVERY_PREPARED",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-momentum-20260915",
   "plan": "S11c_d_parallel_momentum_plan.md",
   "report": "S11c_d_parallel_momentum_report.md",
   "instrument": "S11c_d_parallel_momentum.py",
   "workers": 4,
   "nativeThreadsPerWorker": 1,
-  "next": "Validate serial/four-worker numerical, action and emission equivalence; commit acceptance and launch prepared production from the saved accumulator.",
+  "next": "Validate preserved prefix/full results with independent transcript encoders; commit acceptance and launch production.",
   "implementationCommit": "c0034190",
   "handoff": "S11c_d_parallel_momentum_handoff.json",
   "preservedPrefixNodes": 11616256,
@@ -77,5 +77,27 @@
     }
   },
   "productionLauncher": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-momentum-20260915/production/launch.py",
-  "productionLauncherSha256": "192f04aba0537df85513558732670419a85ed67db032cdb8033db1b00c02bdfa"
+  "productionLauncherSha256": "192f04aba0537df85513558732670419a85ed67db032cdb8033db1b00c02bdfa",
+  "validationOutcome": {
+    "stage": "parallel_preflight",
+    "command": [
+      "python",
+      "-u",
+      "_measurements/S11c_d_parallel_momentum_preflight.py",
+      "--directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-momentum-20260915/validation/complete",
+      "--mode",
+      "parallel"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-momentum-20260915/validation/parallel_preflight.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-momentum-20260915/validation/parallel_preflight.stderr",
+    "startedUtc": "2026-09-15T23:20:41.665408+00:00",
+    "childPid": 3215331,
+    "status": "failed",
+    "exitCode": 1,
+    "wallSeconds": 99.23551799543202,
+    "stderrBytes": 1034,
+    "finishedUtc": "2026-09-15T23:22:20.900977+00:00"
+  },
+  "repairPlan": "S11c_d_parallel_momentum_emission_repair_plan.md"
 }

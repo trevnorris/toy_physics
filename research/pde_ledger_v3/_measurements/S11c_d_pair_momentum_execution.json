@@ -1,0 +1,14 @@
+{
+  "status": "PREPARED",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-pair-momentum-20260915",
+  "stage": "pair_construct",
+  "plan": "S11c_d_pair_momentum_plan.md",
+  "report": "S11c_d_pair_momentum_report.md",
+  "checker": "S11c_d_pair_momentum_check.py",
+  "acceptedSingleCommit": "9fad1d115b9c24aba2ad8841087f149a05687796",
+  "next": "Validate two-momentum outer/panel/source/profile refinements and adaptive outer comparison, with accepted single- and three-momentum terms held explicitly.",
+  "scope": "Finite paired-momentum quadrature at fixed positive regulator; no full physical action limit, matching, scattering or poles.",
+  "preflight": "S11c_d_pair_momentum_preflight.json",
+  "preflightChecksSha256": "164cf1ebc36758127a4ceb35089a75cac85679112c01b7dba05908bed1cf1f9b",
+  "annexVerificationCommit": "46a9d094"
+}

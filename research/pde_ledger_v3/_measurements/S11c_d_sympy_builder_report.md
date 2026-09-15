@@ -107,6 +107,12 @@ exactly. The 3.84 MB transcript has 13,230 tags and 64,385 metadata paths, with
 unchanged packet hashes. Next is two-momentum refinement with the accepted
 one- and three-momentum terms held explicitly. Full physical limits remain work.
 
+The prepared two-momentum evaluator reproduces all 30 baseline rows and full
+actions exactly; independent inner-at-outer reconstruction differs by at most
+1.17e-17. Exact cached source/profile rules preserve the original evaluator.
+Next it varies outer/panel/source/profile resolution separately and compares
+adaptive outer integration, holding accepted other layouts explicitly.
+
 ## Retained user-approved solver/export contract
 
 

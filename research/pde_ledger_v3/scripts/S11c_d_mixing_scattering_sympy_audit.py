@@ -1460,6 +1460,88 @@ class BoundedSourceFourierQuadrature:
                 'intervalValues':info.integrals, 'unitFrameIntervalErrorEstimates':info.errors}
 
 
+    class CachedMomentum(SingleMomentum):
+        """Reuse exact profile rules and independently integrate an outer leg."""
+
+        def __init__(self, rows, sources, reduction, **options):
+            super().__init__(rows, sources, reduction, **options)
+            self.profile_rule_keys = set()
+
+        def profile_rule(self, points, order):
+            self.profile_rule_keys.add((tuple(map(float, points)), int(order)))
+            return self.fixed_rule(points, order)
+
+        def profile_value(self, integral, environment, setting, cache):
+            if integral in cache:return cache[integral]
+            self.profile_integrals.add(integral)
+            if len(integral.limits)!=1 or integral.limits[0][0]!=self.r.xi:
+                raise ValueError('unhandled nested profile limit')
+            variable,lower,upper=integral.limits[0]
+            if (float(lower),float(upper))!=(-setting['profileBound'],setting['profileBound']):
+                raise ValueError('nested profile cutoff mismatch')
+            panels=([float(lower),float(upper)] if setting['kind']=='legacy' else [float(lower),0.,float(upper)])
+            nodes,weights=self.profile_rule(panels,setting['profileNodes'])
+            symbols,nested,function=self.compiler.compiled(integral.function)
+            if nested:raise ValueError('unexpected nested integral inside profile transform')
+            size=len(next(iter(environment.values())))
+            result=np.empty(size,dtype=complex)
+            batch=max(1,min(size,(self.workspace_bytes-4096)//(96*len(nodes))))
+            for start in range(0,size,batch):
+                stop=min(size,start+batch)
+                values=[nodes[None,:] if s==variable else np.asarray(environment[s])[start:stop,None] for s in symbols]
+                with np.errstate(over='raise',invalid='raise',divide='raise',under='ignore'):
+                    evaluated=np.asarray(function(*values),dtype=complex)
+                evaluated=np.broadcast_to(evaluated,(stop-start,len(nodes)))
+                result[start:stop]=np.sum(evaluated*weights[None,:],axis=1)
+                self.peak_phase_workspace_estimate=max(self.peak_phase_workspace_estimate,4096+96*(stop-start)*len(nodes))
+            if not np.all(np.isfinite(result)):raise ValueError('nonfinite profile transform')
+            cache[integral]=result
+            return result
+
+
+        def inner_at_outer(self, test, variables, setting, pairs, width, positions, outer_value):
+            if len(variables)!=2:
+                raise ValueError('independent outer quadrature requires two ordered momenta')
+            inner, outer = variables
+            centers=[outer_value for a,b in pairs if inner in (a,b) and (b if a==inner else a)==outer]
+            nodes,weights,_=self.rule(-setting['momentumBound'],setting['momentumBound'],
+                setting['panelOrder'] if centers else setting['outerOrder'],centers,width)
+            rows=[row for row in self.rows if tuple(l[0] for l in row['limits'])==tuple(variables)]
+            positions=np.asarray(positions,dtype=float)
+            values=np.zeros((len(rows),len(positions)),dtype=complex)
+            for start in range(0,len(nodes),self.batch_nodes):
+                selected=nodes[start:start+self.batch_nodes];masses=weights[start:start+self.batch_nodes]
+                environment={inner:selected,outer:np.full(len(selected),outer_value),
+                    self.r.regulator:np.full(len(selected),setting['regulator'])}
+                profiles={};sources={}
+                for i,row in enumerate(rows):
+                    integrand=np.zeros((len(selected),len(positions)),dtype=complex)
+                    for factor in row['factors']:
+                        coefficient=self.coefficient_value(factor['coefficient'],environment,positions,setting,profiles)
+                        source=self.source_value(self.sources[(test,factor['sourceIndex'])],environment,setting,sources)
+                        integrand+=coefficient*source[:,None]
+                    values[i]+=np.sum(integrand*masses[:,None],axis=0)
+            return values
+
+        def adaptive_outer(self, test, variables, setting, pairs, width, positions, *, tolerance=1e-10, checkpoint=None):
+            from scipy.integrate import quad_vec
+            def integrand(k):
+                values=self.inner_at_outer(test,variables,setting,pairs,width,positions,k)
+                if checkpoint:checkpoint(k,values)
+                return values
+            value,error,info=quad_vec(
+                integrand,
+                -setting['momentumBound'],setting['momentumBound'],
+                epsabs=tolerance,epsrel=tolerance,norm='max',quadrature='gk21',
+                workers=1,cache_size=8*1024*1024,limit=2000,full_output=True)
+            return {'test':test,'variables':tuple(variables),
+                'rowIndices':[r['index'] for r in self.rows if tuple(l[0] for l in r['limits'])==tuple(variables)],
+                'values':value,'unitFrameErrorEstimate':error,'unitFrameTolerance':tolerance,
+                'evaluations':info.neval,'success':info.success,'status':info.status,'message':info.message,
+                'intervals':info.intervals,'intervalValues':info.integrals,
+                'unitFrameIntervalErrorEstimates':info.errors}
+
+
 class EdgeReduction:
     """Partial Fourier transform in an orthonormal chart with n=e_3.
 

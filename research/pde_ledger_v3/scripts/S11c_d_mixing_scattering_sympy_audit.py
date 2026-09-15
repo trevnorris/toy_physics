@@ -1160,6 +1160,88 @@ class BoundedSourceFourierAssembly:
                 'PHASES': tuple((phase, data) for phase, data in sorted(self.phases.items(), key=lambda item: sp.default_sort_key(item[0])))}
 
 
+class BoundedSourceFourierQuadrature:
+    """One-dimensional source transforms on explicit finite intervals.
+
+    Frequencies come from the accepted factorization. Workspace is bounded
+    independently of the number of requested frequencies. No interpolation,
+    infinite-domain interchange or regulator limit is performed here.
+    """
+
+    def __init__(self, variable, amplitude, *, workspace_bytes=16*1024*1024):
+        import numpy as np
+        self.np, self.variable, self.amplitude = np, variable, amplitude
+        if dag_free_symbols(amplitude)-{variable} or amplitude.has(sp.Integral, sp.Derivative, sp.Subs, AppliedUndef):
+            raise ValueError('source amplitude has unresolved operands')
+        self.function = sp.lambdify(variable, amplitude, modules='numpy', cse=True)
+        self.workspace_bytes, self.peak_workspace_bytes = int(workspace_bytes), 0
+
+    @staticmethod
+    def affine_range(frequency, domains):
+        """Derive exact extrema on a rectangular box; reject nonlinear phases."""
+        coefficients = {v: sp.diff(frequency, v) for v in domains}
+        origin = frequency.subs({v: 0 for v in domains}, simultaneous=True)
+        residual = sp.expand(frequency-origin-sp.Add(*(c*v for v,c in coefficients.items())))
+        if residual != 0 or any(c.free_symbols or c.is_real is not True for c in (*coefficients.values(), origin)):
+            raise ValueError('source frequency is not a real affine box map')
+        lower = origin+sum(min(c*domains[v][0], c*domains[v][1]) for v,c in coefficients.items())
+        upper = origin+sum(max(c*domains[v][0], c*domains[v][1]) for v,c in coefficients.items())
+        return {'origin': origin, 'coefficients': coefficients, 'bounds': (lower, upper), 'residual': residual}
+
+    @staticmethod
+    def rule(points, order):
+        import numpy as np
+        points = np.asarray(sorted(set(map(float, points))), dtype=float)
+        if len(points) < 2 or order < 2:
+            raise ValueError('invalid source integration panels')
+        x, w = np.polynomial.legendre.leggauss(order)
+        nodes, weights = [], []
+        for lo, hi in zip(points[:-1], points[1:]):
+            nodes.append((lo+hi)/2+(hi-lo)*x/2)
+            weights.append((hi-lo)*w/2)
+        return np.concatenate(nodes), np.concatenate(weights)
+
+    def gauss(self, frequencies, points, order, *, weight_scale=1.0):
+        np = self.np
+        nodes, weights = self.rule(points, order)
+        amplitudes = np.broadcast_to(np.asarray(self.function(nodes), dtype=complex), nodes.shape)
+        frequencies = np.asarray(frequencies, dtype=float)
+        fixed = nodes.nbytes+weights.nbytes+amplitudes.nbytes+frequencies.nbytes
+        # Reserve six complex arrays per phase entry, including temporaries.
+        available = self.workspace_bytes-fixed
+        batch = min(len(frequencies), available//(96*len(nodes)))
+        if batch < 1:
+            raise ValueError('source quadrature workspace too small for one frequency')
+        result = np.empty(frequencies.shape, dtype=complex)
+        for start in range(0, len(frequencies), batch):
+            f = frequencies[start:start+batch]
+            self.peak_workspace_bytes = max(self.peak_workspace_bytes, fixed+96*len(nodes)*len(f))
+            phase = np.exp(-1j*f[:, None]*nodes[None, :])
+            result[start:start+batch] = np.sum(phase*(amplitudes*weights*weight_scale)[None, :], axis=1)
+        if not np.all(np.isfinite(result)):
+            raise ValueError('nonfinite source Gauss transform')
+        return result
+
+    def adaptive(self, frequencies, points, *, tolerance=1e-11):
+        from scipy.integrate import quad
+        np = self.np
+        values, errors = [], []
+        points = sorted(set(map(float, points)))
+        for frequency in frequencies:
+            def integrand(z):
+                return complex(self.function(z))*np.exp(-1j*float(frequency)*z)
+            parts, estimates = [], []
+            for lo, hi in zip(points[:-1], points[1:]):
+                re, er = quad(lambda z: integrand(z).real, lo, hi, epsabs=tolerance, epsrel=tolerance, limit=200)
+                im, ei = quad(lambda z: integrand(z).imag, lo, hi, epsabs=tolerance, epsrel=tolerance, limit=200)
+                parts.append(complex(re, im)); estimates.append(er+ei)
+            values.append(sum(parts)); errors.append(sum(estimates))
+        values, errors = np.asarray(values), np.asarray(errors)
+        if not np.all(np.isfinite(values)) or not np.all(np.isfinite(errors)):
+            raise ValueError('nonfinite adaptive source transform')
+        return values, errors
+
+
 class EdgeReduction:
     """Partial Fourier transform in an orthonormal chart with n=e_3.
 

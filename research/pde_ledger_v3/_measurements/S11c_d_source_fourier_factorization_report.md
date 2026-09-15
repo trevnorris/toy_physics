@@ -23,10 +23,10 @@ certificates and pre/post source/certificate hashes were verified. Recovery
 completed in 262.48 seconds with empty stderr and approximately 996 MiB peak
 RSS; it did not rebuild the hour-long factorization.
 
-The 2,838,204-byte accepted transcript is prepared at
+The 2,838,204-byte accepted transcript is published at
 scripts/out/S11c_d_source_fourier_factorization.out, SHA-256
 82276df05e5bc004a790ab804e4363590df7aef3f64587242eb5fc97e348ea25.
-Publication uses DataLad/git-annex. Original failed runs, their raw transcripts
+Publication is annex-verified at `bed088be`. Original failed runs, their raw transcripts
 and every row packet remain in repository _scratch/s11c/.
 
 This establishes finite-domain source factorization under the original

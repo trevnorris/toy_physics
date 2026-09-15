@@ -1,5 +1,5 @@
 {
-  "status": "VALIDATED_PENDING_ANNEX_SAVE",
+  "status": "COMPLETED_COMMITTED",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-source-fourier-20260914",
   "plan": "S11c_d_source_fourier_factorization_plan.md",
   "domainPublicationCommit": "e514b7040483725f7a2c5652ae1727432aa4642d",
@@ -8,7 +8,7 @@
     "_measurements/S11c_d_source_fourier_residual_recover.py": "443953029c6848c9f0ea377b7cd3005f9f537d29b2431e2122cf2f8fda83e2b9"
   },
   "scope": "Source Fourier factorization of every original nonlocal integral on explicit finite domains, preserving symbolic coefficients and literal phase/integrand residuals. No numerical integration or unbounded distributional interchange.",
-  "next": "Publish and annex-verify the accepted factorization transcript, then bind/refine approved source Fourier test integrals before full-action momentum panels.",
+  "next": "Bind the approved test fields and refine bounded source Fourier integrals; preserve the accepted factorization and use concentration-aware momentum panels afterward.",
   "implementationCommit": "185365fc",
   "launch": {
     "launchedUtc": "2026-09-15T01:36:50.005639+00:00",
@@ -256,5 +256,14 @@
     "path": "scripts/out/S11c_d_source_fourier_factorization.out",
     "bytes": 2838204,
     "sha256": "82276df05e5bc004a790ab804e4363590df7aef3f64587242eb5fc97e348ea25"
+  },
+  "publicationCommit": "bed088beb40f988647ec8a7861e9e898e4861fd5",
+  "annexVerification": {
+    "commit": "bed088beb40f988647ec8a7861e9e898e4861fd5",
+    "path": "scripts/out/S11c_d_source_fourier_factorization.out",
+    "bytes": 2838204,
+    "sha256": "82276df05e5bc004a790ab804e4363590df7aef3f64587242eb5fc97e348ea25",
+    "isSymlink": true,
+    "annexKey": "MD5E-s2838204--3acf4f9203e8d07760509fae0722a818.out"
   }
 }

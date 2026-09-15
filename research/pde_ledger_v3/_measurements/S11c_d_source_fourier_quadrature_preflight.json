@@ -1,0 +1,38 @@
+{
+  "kind": "source Fourier quadrature implementation preflight",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-source-quadrature-20260914",
+  "focused": {
+    "maxGaussExactResidual": 3.552756030195431e-15,
+    "maxAdaptiveExactResidual": 1.7763568394002505e-15,
+    "maxBatchChange": 0.0,
+    "peakWorkspaceBytes": 20512,
+    "workspaceBytes": 24000,
+    "affineBounds": [
+      "-15",
+      "8"
+    ],
+    "affineResidual": "0",
+    "nonlinearRejected": true,
+    "nativeEngineAstJoin": true,
+    "engineSha256": "32666c4f79ae78806c023eb1aefbef36868be9d0d52f0f8537140e9088d30204"
+  },
+  "files": {
+    "scripts/S11c_d_mixing_scattering_sympy_audit.py": {
+      "sha256": "32666c4f79ae78806c023eb1aefbef36868be9d0d52f0f8537140e9088d30204",
+      "bytes": 524058
+    },
+    "_measurements/S11c_d_source_fourier_quadrature_check.py": {
+      "sha256": "24d19aef33881346005d5b8bbf79eb2b76fbadb4ecd181332aac43ef8ca75388",
+      "bytes": 26821
+    },
+    "_measurements/S11c_d_source_fourier_quadrature_plan.md": {
+      "sha256": "000995344b0a195261ef734c7e937cef329bbc7b2a724ff7b1f3260e038424eb",
+      "bytes": 2957
+    }
+  },
+  "focusedFiles": {
+    "focused-check.py": "398ab4d2c19407d0bc3b8bb37f2bde66ea8881d83329907b318d54d21c9db64b",
+    "focused-check.json": "8f34ffc4f1ae806d9b0792db9511400336a6895d4bbb6c305ec45212bb567239"
+  },
+  "scope": "Exact finite polynomial-exponential integration checks, quadrature batching invariance and affine frequency-domain guard. Full accepted-source evaluation is pending."
+}

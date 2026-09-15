@@ -1,0 +1,11 @@
+{
+  "status": "PREPARED",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-source-quadrature-20260914",
+  "stage": "source_quadrature",
+  "plan": "S11c_d_source_fourier_quadrature_plan.md",
+  "report": "S11c_d_source_fourier_quadrature_report.md",
+  "preflight": "S11c_d_source_fourier_quadrature_preflight.json",
+  "acceptedFactorizationCommit": "bed088beb40f988647ec8a7861e9e898e4861fd5",
+  "next": "Evaluate and validate all source Fourier integrals for both approved tests, then complete concentration-aware full-action momentum quadrature.",
+  "scope": "Finite smooth source integrals and sampled quadrature refinement only; no full-action convergence, unbounded interchange, Abel weak limit, scattering or pole result."
+}

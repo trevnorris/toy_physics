@@ -75,9 +75,12 @@ integrals, 324 zero normalized residuals and 264 zero certificate proofs.
 All 58 original expanded residuals remain beside exact saved-pair checks;
 all denominator/branch restrictions are retained. The source packet is
 byte-identical and its constructor unchanged. Full replay covers 1,670 tags,
-4,752 metadata paths and 833 fresh write-keys. The transcript is prepared for
-annex publication. Numerical source integrals and full-action quadrature
-refinement remain work before physical limit claims and boundary matching.
+4,752 metadata paths and 833 fresh write-keys. The transcript is published and annex-verified at bed088be. The next source
+quadrature adapter binds all 35 source integrals to both approved tests, uses
+bounded frequency batches and compares refined Gauss rules with independent
+adaptive integration. Its focused finite-integral residuals are below 3.56e-15;
+the full source-integral run is pending. Full-action quadrature remains work
+before physical limit claims and boundary matching.
 See the factorization report and accepted checkpoint for evidence and scope.
 
 ## Retained user-approved solver/export contract

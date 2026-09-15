@@ -51,18 +51,21 @@ and the throat deep-solve is off the critical path. It formalizes + extends that
 
 ## 3. Grounding finding — the reset does NOT threaten the current S11 build
 
-A targeted search (2026-09-15) shows the withdrawn **numerical** results (`L/a`, `1.85`, `11:2:5`, `−57/64`,
-`2j+1`, deep-needle, `m_G~ρa²L`) live in the **old gravity/lepton/PN track** (`notes/`, `docs/`) — **not** in the
-current S11 critical path (`research/pde_ledger_v3/`). The S11 build discusses the throat/charge sector
-conceptually but imports none of the withdrawn numbers. ⇒ **the reset is bounded and non-blocking for the
-in-flight S11c-d work.** The junction where these results would re-enter the ledger is the gravity-sector
+A targeted search (2026-09-15, **corrected** — an earlier pass wrongly said "not in `pde_ledger_v3`") shows the
+withdrawn **numerical** results (`L/a`, `1.85`, `11:2:5`, `−57/64`, `2j+1`, deep-needle, `m_G~ρa²L`) are **NOT
+imported into the S11 BUILD** (`research/pde_ledger_v3/scripts/*` + `*_exports.py` compute none of them) — but they
+DO appear in the ledger tree as **history/register entries** (`research/pde_ledger_v3/DEFECT_REGISTER.md`,
+`SESSION_REASONING.md`) and in the S16 plug, alongside the old `notes/`+`docs/` track. ⇒ **the reset is bounded
+and non-blocking for the in-flight S11c-d BUILD** (nothing computed imports them), but the quarantine must cover
+those ledger register/history docs too. The junction where these results would re-enter the ledger is the gravity-sector
 worldtube/interior-dependence step — **S16 in `V3_STEP_PLAN.md`** — which is where the forward-warning plug is
 placed (§5 below). *(Caveat: this is a targeted spot-check, not the full Phase-A dependency audit — that audit is
 what makes it definitive.)*
 
 ## 4. Near-term actions (bounded, independent of the S11 hold)
 
-1. **Dependency audit + quarantine of the OLD track.** Grep `notes/`+`docs/` for `a`, `L`, `L/a`, radius,
+1. **Dependency audit + quarantine of the OLD track.** Grep `notes/`+`docs/` **and the ledger register/history
+   (`research/pde_ledger_v3/DEFECT_REGISTER.md`, `SESSION_REASONING.md`)** for `a`, `L`, `L/a`, radius,
    diameter, volume, `m_G`, `κ_ρ`, `11:2:5`, `2j+1`, `−57/64`; classify each hit
    (exact / ansatz-dependent / fitted / target-matched / reverse-engineered / obsolete); add explicit
    `do-not-import` warnings so invalid geometry isn't silently reused. Ground it in commands→`_measurements`,

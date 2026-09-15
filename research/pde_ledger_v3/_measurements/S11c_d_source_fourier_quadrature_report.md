@@ -1,54 +1,33 @@
 # S11c-d source Fourier quadrature checkpoint
 
-The bounded factorization is published and annex-verified at bed088be: all 80
-native operators and 35 source integrals, with 324 zero normalized residuals
-and 264 zero proof residuals. Original denominator/branch restrictions and raw
-representation residuals remain explicit.
+All 35 distinct source integrals have been evaluated on both approved Gaussian
+fields, at 66 frequencies and two finite source intervals: 140 records and
+9,240 frequency evaluations. All 320 native field/row/term comparisons pass
+with 104 zero certificate proof residuals and exact native limits. Original
+live representation strings and the numerical packets remain preserved.
 
-The source quadrature adapter binds every source factor to both approved
-Gaussian tests, derives its actual frequency range, and compares three Gauss
-orders with literal original-source and independent adaptive integration at
-two finite source intervals. Phase batches have an explicit memory budget.
-Each binding and completed integral is saved for recovery. Focused finite
-integration errors are below 3.56e-15 and are unchanged by batch size.
+The saved-source recovery additionally checked all 140 amplitude/source replay
+pairs. Ten unequal live forms passed exact certificates with 42 zero proof
+residuals and ten nonzero coefficient mutations, in 4.30 seconds of worker time
+(maximum worker RSS 146,624 KiB). Every source, packet, inventory and numerical
+guard, plus full emission/metadata replay, completed. The original bound and
+quadrature packet hashes are unchanged.
 
-The native binding comparison now follows all 320 field/row/term occurrences.
-Ten original/test pairs differed live but all saved occurrences compare exactly
-equal after pickle reconstruction; live representation strings/hashes remain
-alongside raw residuals and exact certificates. The first loader failure and
-the later exact-tree join failure stopped before numerical quadrature. Their
-logs and operands are preserved in the execution and repair checkpoints.
+Maximum scaled source/adaptive differences are 1.73e-14 / 4.11e-13. Gauss order
+changes are 1.43e-6 and 4.11e-13; the largest finite source-interval change is
+4.40e-9. Every measure mutation is detected. The saved corrected transcript is
+8.69 MB, with 10,400 tags and 151,318 metadata paths.
 
-An expanded-form CSE stress check entered an eight-hour polynomial GCD. The
-bounded uncompressed alternative passed all ten cases in 75.22 seconds, with
-peak worker RSS 71,708 KiB: all exact residuals and 62 proof scalars vanish,
-all native limits agree, and every coefficient mutation remains nonzero.
-All saved operand/source/hash joins passed validation. Only the production
-comparison's shared keyword changed to False; the complete checker AST joins
-after that substitution and the physics engine is unchanged. The repair is
-committed at 420f36a0.
+Acceptance remains pending only the final original/recovery comparison: twenty
+raw binding residuals canonicalized to zero on pickle reconstruction, changing
+their metadata support from constant degree to empty support. The final checker
+verifies the saved live AST, exact zero certificate, unchanged path/unit and
+precise coefficient-support transition. It reuses all saved results and the
+completed transcript, without repeating replay, certificates or integrations.
+See the metadata repair checkpoint and finish plan.
 
-Full retry-02 saved all 70 bound sources, 320 occurrence comparisons and 140
-numerical integration records (9,240 frequencies). Its final live emission
-replay completed, then decoding the structural emission index failed because
-the generic physical wrapper had replaced its fields with a fingerprint.
-The numerical packets and original 11.83 MB transcript are preserved.
-
-Inspection of saved arrays gives maximum scaled source/adaptive differences
-1.73e-14 / 4.11e-13. Gauss order changes are 1.43e-6 and 4.11e-13; the largest
-finite source-interval change is 4.40e-9. Every measure mutation is detected.
-These results await complete validation and publication. Saved-packet recovery
-f8984364 stopped before emission at a structurally unequal source substitution
-(test 0/source 24). This comparison now preserves every actual pair and tests
-unequal forms with the existing exact uncompressed certificate method, including
-coefficient mutations and per-worker time/memory limits. Proofs and full recovery
-validation remain pending. Recovery-02 (11c8abfc) is running under the single-job
-supervisor with its silent local watcher. The output repair
-keeps manifests lossless and reuses saved packets, preserving original live
-binding forms separately from their pickle representations. See the emission
-repair plan/checkpoint; no integrations or upstream physics are repeated.
-
-Next is accepted publication, then concentration-aware full-action momentum
-integration. Finite source tests establish no uniform interpolation bound,
-infinite tail/interchange, full-action convergence, Abel weak limit, scattering
-or pole result. The retained solver/export contract is unchanged.
+After publication, proceed to concentration-aware full-action momentum
+integration with all nested profile operands and three Abel transfer pairs.
+Finite source tests establish no uniform interpolation bound, infinite tails
+or interchange, full-action convergence, Abel weak limit, scattering or poles.
+The approved inputs and retained solver/export contract are unchanged.

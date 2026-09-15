@@ -1,0 +1,101 @@
+{
+  "status": "FINAL_METADATA_COMPARISON_PREPARED",
+  "sourceRunDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-source-quadrature-20260914/recovery-02/complete",
+  "sourceInvocation": {
+    "stage": "source_recover",
+    "command": [
+      "python",
+      "-u",
+      "_measurements/S11c_d_source_fourier_quadrature_recover.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-source-quadrature-20260914/recovery-02/complete",
+      "--source-run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-source-quadrature-20260914/retry-02/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-source-quadrature-20260914/recovery-02/source_recover.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-source-quadrature-20260914/recovery-02/source_recover.stderr",
+    "startedUtc": "2026-09-15T13:25:35.805369+00:00",
+    "childPid": 144253,
+    "status": "failed",
+    "exitCode": 1,
+    "wallSeconds": 685.8747085202485,
+    "stderrBytes": 2619,
+    "finishedUtc": "2026-09-15T13:37:01.680199+00:00"
+  },
+  "sourceArtifacts": {
+    "integral-inventory.json": {
+      "bytes": 20823,
+      "sha256": "22d9289dd08893aac60a0b6b7214c1685e4a466321d3bf84c42cd4042e831eb9"
+    },
+    "checks.json": {
+      "bytes": 122893,
+      "sha256": "281089ecca0380c1fb220f22fd90f7a972023ecb665263505c889def568d4a10"
+    },
+    "bound-record-inventory.json": {
+      "bytes": 11353,
+      "sha256": "396e5c8237a4496944f8248f5980fb0c2b0cb82759f542f20395ba39983122d0"
+    },
+    "preflight.json": {
+      "bytes": 7642,
+      "sha256": "4f089e7f6ddc5ee004cae47f81237d74df884fb36b5d447d69a276c3b74584c1"
+    },
+    "emission-differences.json": {
+      "bytes": 21111,
+      "sha256": "069361f4cb047268f13db67d78f5d8bddf1373f3ef6de5d25cea2626dbac01ee"
+    },
+    "progress.jsonl": {
+      "bytes": 104,
+      "sha256": "599229d6a687b57764d73b27ec3a79d33399d544fbc335fd1b0d6fe44bec11e6"
+    },
+    "dimensions-after-emission.pickle": {
+      "bytes": 21024,
+      "sha256": "ecea3ff2528f020bc64a5636670acff2472dba7b952538ba069816b2fcd87386"
+    },
+    "full.out": {
+      "bytes": 8694921,
+      "sha256": "285b9441a382e395b6227fa9eb7226f39b0e8ce0291457deee3ccaf7877ea3a3"
+    },
+    "source-binding-replay-inventory.json": {
+      "bytes": 75723,
+      "sha256": "48ee4a8a27ff72b2513afc05263caa8c9ec89f6c5028d7d01cdc5d583f343e38"
+    },
+    "bound-sources.pickle": {
+      "bytes": 1344648,
+      "sha256": "ff77d1d6e13c827f4675615f002e26e92c9a8d1c9ef114f64c73ffbaa676ff6e"
+    },
+    "representation-joins.json": {
+      "bytes": 111593,
+      "sha256": "598f1e6b8c163b3bda8ea9543319e1955706e34c4ef83299cd86593ae25c1e01"
+    },
+    "quadrature.pickle": {
+      "bytes": 1890645,
+      "sha256": "381ccc6db87f3545624fbbb5556ff13b66cd899cb6f4fd2883b5bd8639dd55fc"
+    },
+    "../active.json": {
+      "bytes": 857,
+      "sha256": "1fbc8b68a20978b1580e555af5985a39bc9c8b8cdc03cacb1c4c96eb0217277e"
+    },
+    "../source_recover.invocation.json": {
+      "bytes": 857,
+      "sha256": "1fbc8b68a20978b1580e555af5985a39bc9c8b8cdc03cacb1c4c96eb0217277e"
+    },
+    "../source_recover.stderr": {
+      "bytes": 2619,
+      "sha256": "41f47dcd1afed1aeae3c9153cdc87f64f59326b4e12acc7fb85efc2a94b33f13"
+    },
+    "../source_recover.stdout": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "sourceRecoverySha256": "bdbaa89766824465e730d6620402dfe7be4f7a19996da14b2eeb906b85be7a56",
+  "repairedRecoverySha256": "e06bb737cb10b5e5d99eacfc7f3d3f94ee1b326ef57308f590fede96baac7be3",
+  "oldComparisonAstSha256": "de2564e74fd6e9ffb7cefb9f3d855dde59b24e6f7747adf6ce7fe459898e0b94",
+  "newComparisonAstSha256": "b87954636b96578727fea36e409ac4f5399339a467c70a273d5f6c61baf5ce7f",
+  "unchangedPrecomparisonGuards": true,
+  "narrowComparisonAstJoin": true,
+  "completed": "All 140 source/amplitude replay pairs, ten unequal-pair certificates with 42 zero proof residuals and ten nonzero mutations; original numerical guards, source/packet/inventory joins and full metadata/emission replay completed. The remaining guard found twenty raw-residual metadata support transitions after pickle canonicalized their certified raw expressions to zero.",
+  "repair": "For each transition, inspect the saved live expression AST and exact certificate; require no grade generators, exact zero on canonical restore, unchanged scalar path and inherited unit, and exactly the degree-zero to empty support change dictated by the existing coefficients base case. Reject altered units or support. No broad metadata exemption.",
+  "resume": "Reuse saved transcript and all previously validated packets/proofs. Finish only the remaining comparison, controls and post-hash guards; do not repeat source replay, certification, numerical integration or emission.",
+  "pending": "Final comparison and scoped source-quadrature publication; no full-action convergence or physical scattering claim."
+}

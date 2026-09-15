@@ -277,6 +277,45 @@ def validate_saved(previous, base, bound_packet, quadrature_packet, pencil, asse
     return inventory,bound_inventory,representation_records,replay_inventory
 
 
+def zero_metadata_transition(old_body, new_body, item):
+    """Prove the coefficient-support change of a certified raw zero on reload."""
+    comparison=item['comparison']; text=comparison['representationStrings'][2]
+    tree=ast.parse(text,mode='eval')
+    # coefficients() has an explicit base case for expressions without its
+    # three grade generators. Read symbol identities from the saved live AST,
+    # before SymPy can canonicalize this particular raw expression to zero.
+    symbols={n.args[0].value for n in ast.walk(tree) if isinstance(n,ast.Call)
+        and isinstance(n.func,ast.Name) and n.func.id in ('Symbol','Dummy')
+        and n.args and isinstance(n.args[0],ast.Constant)}
+    generators=engine.PHYSICAL_METADATA.generators
+    if symbols & {str(g) for g in generators}:
+        raise ValueError('raw live metadata has unresolved grade generators')
+    if (text==sp.srepr(sp.S.Zero) or comparison['rawResidual']!=0 or _restore(text)!=0 or
+            comparison['normalizedResidual']!=0 or not comparison['limitsEqual'] or
+            comparison['certificate'] is None or comparison['certificate']['RESIDUAL']!=0 or
+            any(v!=0 for v in (*comparison['replayResiduals'],*comparison['exponentResiduals']))):
+        raise ValueError('metadata transition lacks its saved live-to-zero certificate')
+    if len(old_body)!=1 or len(new_body)!=1: raise ValueError('raw metadata leaf census')
+    old={str(k):v for k,v in old_body[0]}; new={str(k):v for k,v in new_body[0]}
+    if set(old)!=set(new) or set(old)!={'PATHS','DIMENSION_L_T_M','MULTIGRADE','EPSILON_LAMBDA_SUPPORT'}:
+        raise ValueError('raw metadata schema differs')
+    equal(old['PATHS'],sp.Tuple(sp.Tuple()),('raw-metadata-scalar-path',))
+    equal(old['PATHS'],new['PATHS']);equal(old['DIMENSION_L_T_M'],new['DIMENSION_L_T_M'])
+    equal(old['DIMENSION_L_T_M'],engine.cas(item['integrandUnit']))
+    # Derive supports from the unchanged coefficients() base case and its
+    # homotopy projection. No physical value or unit is replaced here.
+    degree=tuple(0 for _ in generators)
+    equal(old['MULTIGRADE'],engine.cas((degree,)))
+    equal(old['EPSILON_LAMBDA_SUPPORT'],engine.cas(((degree[0],sum(degree[1:])),)))
+    equal(new['MULTIGRADE'],engine.cas(tuple(engine.PHYSICAL_METADATA.coefficients(comparison['rawResidual']))))
+    equal(new['EPSILON_LAMBDA_SUPPORT'],sp.Tuple())
+    return {'liveRepresentationSha256':hashlib.sha256(text.encode()).hexdigest(),
+        'liveAstHasGradeGenerators':False,'serializedRawIsZero':True,'certifiedResidualIsZero':True,
+        'pathsUnchanged':True,'dimensionLTM':list(map(str,item['integrandUnit'])),
+        'liveMultigrade':[list(degree)],'serializedMultigrade':[],
+        'liveEpsilonLambdaSupport':[[degree[0],sum(degree[1:])]],'serializedEpsilonLambdaSupport':[]}
+
+
 def compare_transcripts(previous,base,bound,representation_records):
     old,new=entries(previous/'full.out'),entries(base/'full.out')
     if list(old)!=list(new): raise ValueError('recovery tag/order census changed')
@@ -296,6 +335,7 @@ def compare_transcripts(previous,base,bound,representation_records):
     keys={str(k):str(v) for k,v in _restore(new[key_tag])}
     equal(_restore(old[key_tag]),engine.cas(engine.carrier_fingerprint(engine.cas(keys))),('old-keys-fingerprint',))
     allowed={final,key_tag,'PY_S11CD_METADATA_'+original.PREFIX+'_EMISSION_LINES'}
+    metadata_transitions=[]
     for item,join in zip(bound['nativeTestIntegralComparisons'],representation_records):
         i=join['occurrence']; tag=prefix+'_BINDING_REPRESENTATION_SHA256_'+str(i)
         equal(_restore(old[tag]),engine.cas(join['representationSha256']),('original-live-representation-hash',i))
@@ -304,6 +344,11 @@ def compare_transcripts(previous,base,bound,representation_records):
         # literal native limits and the saved zero certificates are mandatory.
         if not join['liveExactEqual']:
             allowed.update(prefix+'_'+kind+'_'+str(i) for kind in ('BOUND_INTEGRAL_PAIR','RAW_BINDING_RESIDUAL'))
+            metadata_tag='PY_S11CD_METADATA_'+original.PREFIX+'_RAW_BINDING_RESIDUAL_'+str(i)
+            if old[metadata_tag]!=new[metadata_tag]:
+                proof=zero_metadata_transition(_restore(old[metadata_tag]),_restore(new[metadata_tag]),item)
+                metadata_transitions.append({'occurrence':i,'tag':metadata_tag,**proof})
+                allowed.add(metadata_tag)
     differences=[]
     for tag in old:
         if old[tag]!=new[tag]:
@@ -323,7 +368,7 @@ def compare_transcripts(previous,base,bound,representation_records):
         else: raise ValueError('emission index mutation was accepted')
     return {'identicalDecodedPayloads':len(old)-len(differences),'changedPayloads':differences,
         'originalIndexFingerprintJoin':True,'originalWriteKeyFingerprintJoin':True,
-        'wrongCountAndOrderRejected':True}
+        'wrongCountAndOrderRejected':True,'certifiedRawZeroMetadataTransitions':metadata_transitions}
 
 
 def main():

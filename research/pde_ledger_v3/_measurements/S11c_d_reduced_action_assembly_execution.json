@@ -1,5 +1,5 @@
 {
-  "status": "SUMMARY_REPAIR_PREPARED",
+  "status": "RECOVERY_RUNNING",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-reduced-action-assembly-20260914",
   "plan": "S11c_d_variable_profile_matching_plan.md",
   "planStep": 3,
@@ -12,25 +12,23 @@
   "numericalInput": "Awaiting user choice for 30 inherited gradient-energy coefficients; symbolic assembly is independent of that choice.",
   "next": "Validate the preserved packet/transcript with --resume-from after converting derivative orders to native JSON integers. Do not recompute the assembly.",
   "implementationCommit": "b9dba906",
-  "observedUtc": "2026-09-15T00:22:07.857663+00:00",
+  "observedUtc": "2026-09-15T00:23:52.235796+00:00",
   "active": {
-    "stage": "assembly_construct",
+    "stage": "assembly_validate",
     "command": [
       "python",
       "-u",
       "_measurements/S11c_d_reduced_action_assembly_check.py",
       "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-reduced-action-assembly-20260914/recovery-01/complete",
+      "--resume-from",
       "/var/projects/toy_physics/_scratch/s11c/s11c-reduced-action-assembly-20260914/complete"
     ],
-    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-reduced-action-assembly-20260914/assembly_construct.stdout",
-    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-reduced-action-assembly-20260914/assembly_construct.stderr",
-    "startedUtc": "2026-09-15T00:17:16.310615+00:00",
-    "childPid": 1933653,
-    "status": "failed",
-    "exitCode": 1,
-    "wallSeconds": 62.56172976642847,
-    "stderrBytes": 1312,
-    "finishedUtc": "2026-09-15T00:18:18.872415+00:00"
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-reduced-action-assembly-20260914/recovery-01/assembly_validate.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-reduced-action-assembly-20260914/recovery-01/assembly_validate.stderr",
+    "startedUtc": "2026-09-15T00:23:24.449994+00:00",
+    "childPid": 1936113,
+    "status": "running"
   },
   "launch": {
     "launchedUtc": "2026-09-15T00:17:16.235554+00:00",
@@ -119,5 +117,38 @@
         "sha256": "8eda57998285137d99cce9564757627a57f8d5bc9b27091c86a65a9cc59230a0"
       }
     }
+  },
+  "repairCommit": "70d605c2",
+  "recoveryLaunch": {
+    "launchedUtc": "2026-09-15T00:23:24.367876+00:00",
+    "command": [
+      "/usr/bin/python",
+      "_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-reduced-action-assembly-20260914/recovery-01",
+      "--stage",
+      "assembly_validate",
+      "--",
+      "python",
+      "-u",
+      "_measurements/S11c_d_reduced_action_assembly_check.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-reduced-action-assembly-20260914/recovery-01/complete",
+      "--resume-from",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-reduced-action-assembly-20260914/complete"
+    ],
+    "supervisorPid": 1936107,
+    "watcherPid": 1936108,
+    "watcherDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-reduced-action-assembly-20260914/recovery-01/completion-watcher"
+  },
+  "recoveryCompletionWatcher": {
+    "status": "waiting",
+    "watcherPid": 1936108,
+    "jobPid": 1936107,
+    "thread": "01a08c53-295c-70f0-baaf-353db1745867",
+    "startedUtc": "2026-09-15T00:23:24.460464+00:00",
+    "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
+    "messageSha256": "244196dc48cce0e06868e941ed9ed4c6f6515282d2d8f4c3c2e83969893ce6d8",
+    "notifications": {}
   }
 }

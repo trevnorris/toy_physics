@@ -938,6 +938,134 @@ class BoundedActionQuadrature:
         return value
 
 
+class BoundedSourceFourierAssembly:
+    """Source-position factorization of the computed finite-domain actions."""
+
+    def __init__(self, reduction, integrals):
+        self.r, self.integrals = reduction, integrals
+        variables = set()
+        for value in integrals:
+            for integral in value.atoms(sp.Integral):
+                for limit in integral.limits:
+                    if len(limit) != 3 or limit[1:] != (-sp.oo, sp.oo):
+                        raise NotImplementedError('finite-domain adapter requires the native infinite rectangular limits')
+                    variables.add(limit[0])
+        self.cutoffs = {v: sp.Symbol('s11cdSourceFourier'+v.name.removeprefix('s11cd')+'Cutoff', positive=True)
+                        for v in sorted(variables, key=sp.default_sort_key)}
+        dimensions = PHYSICAL_METADATA.dimensions
+        dimensions.known.update({bound: dimensions.measure(v) for v, bound in self.cutoffs.items()})
+        self.external = {reduction.z, *(reduction.normal_map[g[2]] for g in reduction.momentum_groups)}
+        self.phases = {}
+
+    @lru_cache(maxsize=None)
+    def bounded(self, node):
+        if not node.args or isinstance(node, Str):
+            return node
+        if isinstance(node, sp.Integral):
+            return sp.Integral(self.bounded(node.function),
+                *(sp.Tuple(v, -self.cutoffs[v], self.cutoffs[v]) for v, _, _ in node.limits))
+        return node.func(*(self.bounded(a) for a in node.args))
+
+    @lru_cache(maxsize=None)
+    def separate(self, node):
+        zp = self.r.zp
+        if not node.has(zp):
+            return {sp.S.One: node}
+        if not (dag_free_symbols(node) & self.external):
+            return {node: sp.S.One}
+        if node.func == sp.exp:
+            terms = sp.Add.make_args(sp.expand(node.args[0]))
+            source_exponent = sp.Add(*(a for a in terms if a.has(zp)))
+            other_exponent = sp.Add(*(a for a in terms if not a.has(zp)))
+            source_phase, other_phase = sp.exp(source_exponent), sp.exp(other_exponent)
+            self.phases[node] = {'SOURCE_EXPONENT': source_exponent, 'OTHER_EXPONENT': other_exponent,
+                'EXPONENT_RESIDUAL': sp.expand(node.args[0]-source_exponent-other_exponent),
+                'SECOND_SOURCE_DERIVATIVE': sp.diff(source_exponent, zp, 2)}
+            return {source_phase: other_phase}
+        if node.is_Add:
+            result = {}
+            for arg in node.args:
+                for source, coefficient in self.separate(arg).items():
+                    result[source] = result.get(source, sp.S.Zero)+coefficient
+            return result
+        if node.is_Mul or (node.is_Pow and node.exp.is_Integer and node.exp >= 0):
+            factors = node.args if node.is_Mul else (node.base,)*int(node.exp)
+            result = {sp.S.One: sp.S.One}
+            for factor in factors:
+                product = {}
+                for a, b in result.items():
+                    for c, d in self.separate(factor).items():
+                        key = a*c
+                        product[key] = product.get(key, sp.S.Zero)+b*d
+                result = product
+            return result
+        if isinstance(node, sp.Piecewise):
+            branches = [(self.separate(expression), condition) for expression, condition in node.args]
+            if any(condition.has(zp) for _, condition in branches):
+                raise NotImplementedError('source-dependent branch requires separate domain treatment')
+            basis = set().union(*(set(values) for values, _ in branches))
+            return {source: sp.Piecewise(*((values.get(source, sp.S.Zero), condition)
+                                           for values, condition in branches)) for source in basis}
+        raise NotImplementedError(('unseparated source coordinate', node.func))
+
+    @staticmethod
+    @lru_cache(maxsize=None)
+    def expanded_characters(node):
+        if not node.args or isinstance(node, Str):
+            return node
+        if node.func == sp.exp:
+            return sp.exp(sp.expand(node.args[0])).expand(power_exp=True)
+        return node.func(*(BoundedSourceFourierAssembly.expanded_characters(a) for a in node.args))
+
+    @classmethod
+    def reconstruction_residual(cls, original, reconstructed):
+        difference = cls.expanded_characters(original)-cls.expanded_characters(reconstructed)
+        folded = sp.piecewise_fold(difference)
+        if isinstance(folded, sp.Piecewise):
+            return sp.Piecewise(*((sp.expand_mul(expression), condition) for expression, condition in folded.args))
+        return sp.expand_mul(folded)
+
+    def construct(self):
+        rows, source_integrals = [], set()
+        zp = self.r.zp
+        for index, original in enumerate(self.integrals):
+            if original.limits[-1][0] != zp:
+                raise NotImplementedError('native source-position integral is not the outermost limit')
+            bounded = self.bounded(original)
+            factors = self.separate(bounded.function)
+            reconstructed = sp.Add(*(coefficient*source for source, coefficient in factors.items()))
+            residual = self.reconstruction_residual(bounded.function, reconstructed)
+            records = []
+            remaining = bounded.limits[:-1]
+            for source, coefficient in sorted(factors.items(), key=lambda item: sp.default_sort_key(item[0])):
+                if coefficient.has(zp):
+                    raise ValueError('source coefficient retains source-position dependence')
+                characters = tuple(e for e in source.atoms(sp.exp)
+                                   if e.has(zp) and (dag_free_symbols(e) & self.external))
+                powers = source.as_powers_dict()
+                if any(e not in powers for e in characters):
+                    raise NotImplementedError('embedded source character requires further separation')
+                character = sp.prod(e**powers[e] for e in characters)
+                frequency = sp.simplify(sp.I*sp.diff(character, zp)/character)
+                amplitude = sp.cancel(source/character)
+                if frequency.has(zp) or (dag_free_symbols(amplitude) & self.external):
+                    raise NotImplementedError('source amplitude/frequency separation is incomplete')
+                source_integral = sp.Integral(source, bounded.limits[-1])
+                source_integrals.add(source_integral)
+                records.append({'SOURCE': source, 'COEFFICIENT': coefficient, 'CHARACTER': character,
+                    'FREQUENCY': frequency, 'AMPLITUDE': amplitude, 'SOURCE_INTEGRAL': source_integral,
+                    'AMPLITUDE_RECONSTRUCTION_RESIDUAL': self.reconstruction_residual(source, character*amplitude),
+                    'CHARACTER_NORMALIZATION_RESIDUAL': sp.simplify(character.subs(zp, 0)-1),
+                    'CHARACTER_EQUATION_RESIDUAL': sp.simplify(sp.diff(character, zp)+sp.I*frequency*character)})
+            source_first = sp.Add(*(sp.Integral(record['COEFFICIENT']*record['SOURCE_INTEGRAL'], *remaining)
+                                   for record in records))
+            rows.append({'INDEX': index, 'ORIGINAL': original, 'BOUNDED': bounded, 'FACTORS': records,
+                         'RECONSTRUCTION_RESIDUAL': residual, 'SOURCE_FIRST_BOUNDED': source_first})
+        return {'ROWS': rows, 'CUTOFFS': self.cutoffs,
+                'SOURCE_INTEGRALS': tuple(sorted(source_integrals, key=sp.default_sort_key)),
+                'PHASES': tuple((phase, data) for phase, data in sorted(self.phases.items(), key=lambda item: sp.default_sort_key(item[0])))}
+
+
 class EdgeReduction:
     """Partial Fourier transform in an orthonormal chart with n=e_3.
 

@@ -1,0 +1,12 @@
+{
+  "status": "IMPLEMENTED_READY_TO_RUN",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-source-fourier-20260914",
+  "plan": "S11c_d_source_fourier_factorization_plan.md",
+  "domainPublicationCommit": "e514b7040483725f7a2c5652ae1727432aa4642d",
+  "sourceSha256": {
+    "scripts/S11c_d_mixing_scattering_sympy_audit.py": "1e60c74a99ee4251be0da0a31589c02f569dbbd821a265d2f16eae077772a6ee",
+    "_measurements/S11c_d_source_fourier_factorization_check.py": "bef950d35e6d525a61800b9e43ade6b09d44bbc8426536bfc54e6dea57bc35cd"
+  },
+  "scope": "Source Fourier factorization of every original nonlocal integral on explicit finite domains, preserving symbolic coefficients and literal phase/integrand residuals. No numerical integration or unbounded distributional interchange.",
+  "next": "Run the one-case constructor/validator with a silent local completion/error watcher; use accepted factors in subsequent full-action quadrature refinement."
+}

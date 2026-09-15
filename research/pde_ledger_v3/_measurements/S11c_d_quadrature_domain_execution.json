@@ -1,5 +1,5 @@
 {
-  "status": "VALIDATED_PENDING_COMMIT",
+  "status": "COMPLETED_COMMITTED",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-quadrature-domain-20260914",
   "plan": "S11c_d_quadrature_limits_plan.md",
   "sourcePublicationCommit": "009667f74cee4e35fc5ec8b0149401447c66822c",
@@ -137,5 +137,14 @@
     "path": "scripts/out/S11c_d_quadrature_domain.out",
     "bytes": 307234,
     "sha256": "e31fc2bb175182198135b3f512935dd37a34ab4193878a79382f56468fe6f014"
+  },
+  "publicationCommit": "e514b7040483725f7a2c5652ae1727432aa4642d",
+  "annexVerification": {
+    "commit": "e514b7040483725f7a2c5652ae1727432aa4642d",
+    "path": "scripts/out/S11c_d_quadrature_domain.out",
+    "bytes": 307234,
+    "sha256": "e31fc2bb175182198135b3f512935dd37a34ab4193878a79382f56468fe6f014",
+    "isSymlink": true,
+    "annexKey": "MD5E-s307234--1f1c2115db076e05929173d1dbfd702f.out"
   }
 }

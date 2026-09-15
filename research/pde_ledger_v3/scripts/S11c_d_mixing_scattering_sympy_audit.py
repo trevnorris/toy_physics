@@ -1034,6 +1034,78 @@ class BoundedSourceFourierAssembly:
         remaining = tuple(limit for i, limit in enumerate(bounded.limits) if i != source_index)
         return bounded, source_index, bounded.limits[source_index], remaining
 
+    @staticmethod
+    def reconstruction_certificate(left, right, *, shared=True):
+        """Exact rational identity on the original expressions' domains.
+
+        Integral/profile carriers remain intact. Exponentials use Laurent
+        characters so opposite phases are reciprocal; rational powers use
+        the same principal root for positive and negative integer powers.
+        No root sign or Piecewise predicate is replaced by a sample.
+        """
+        carriers, phases, radicals = {}, {}, {}
+        def carrier(node):
+            if node not in carriers:
+                carriers[node] = sp.Dummy('s11cdFourierIdentityCarrier'+str(len(carriers)))
+            return carriers[node]
+        @lru_cache(maxsize=None)
+        def encode(node):
+            # I must retain I**2=-1, rather than become a free indeterminate.
+            if node.is_number or node.is_Symbol:
+                return node
+            if node.func == sp.exp:
+                factors, terms = [], []
+                for term in sp.Add.make_args(sp.expand(node.args[0])):
+                    power, argument = term.as_coeff_Mul()
+                    if not power.is_Integer:
+                        power, argument = sp.S.One, term
+                    factors.append(carrier(sp.exp(argument))**power)
+                    terms.append(power*argument)
+                phases[node] = (sp.Add(*terms), sp.expand(node.args[0]-sp.Add(*terms)))
+                return sp.Mul(*factors)
+            if isinstance(node, sp.Piecewise):
+                return sp.Piecewise(*((encode(value), condition) for value, condition in node.args))
+            if node.is_Add or node.is_Mul:
+                return node.func(*(encode(a) for a in node.args))
+            if node.is_Pow and node.exp.is_Integer:
+                return encode(node.base)**node.exp
+            if node.is_Pow and node.exp.is_Rational:
+                root = sp.Pow(node.base, sp.Rational(1, node.exp.q))
+                radicals[node] = (root, node.exp.p, node.exp-sp.Rational(node.exp.p, node.exp.q))
+                return carrier(root)**node.exp.p
+            return carrier(node)
+        encoded = (encode(left), encode(right))
+        definitions, reduced_pair = sp.cse(encoded,
+            symbols=sp.numbered_symbols('s11cdFourierSharedIdentity', cls=sp.Dummy),
+            order='none') if shared else ([], encoded)
+        restored_definitions = {}
+        for symbol, value in definitions:
+            restored_definitions[symbol] = memo_xreplace(value, restored_definitions)
+        replay = tuple(memo_xreplace(value, restored_definitions) for value in reduced_pair)
+        replay_residuals = tuple(a-b for a, b in zip(replay, encoded))
+        difference = sp.piecewise_fold(reduced_pair[0]-reduced_pair[1])
+        branches = difference.args if isinstance(difference, sp.Piecewise) else ((difference, sp.true),)
+        normalized = tuple((sp.cancel(value), condition) for value, condition in branches)
+        rational_residual = sp.Piecewise(*normalized)
+        decode = {value: key for key, value in carriers.items()}
+        residual = memo_xreplace(memo_xreplace(rational_residual, restored_definitions), decode)
+        seen, denominator_bases = set(), set()
+        def denominators(node):
+            if node in seen:
+                return
+            seen.add(node)
+            if node.is_Pow and node.exp.is_negative:
+                denominator_bases.add(node.base)
+            for arg in node.args:
+                denominators(arg)
+        denominators(left); denominators(right)
+        return {'LEFT': left, 'RIGHT': right, 'ENCODED_PAIR': encoded,
+                'CARRIER_DEFINITIONS': decode, 'PHASE_SPLITS': phases, 'RADICAL_POWERS': radicals,
+                'SHARED_DEFINITIONS': tuple(definitions), 'REDUCED_PAIR': tuple(reduced_pair),
+                'REPLAY_RESIDUALS': replay_residuals, 'RATIONAL_BRANCHES': normalized,
+                'RESIDUAL': residual,
+                'ORIGINAL_DENOMINATOR_BASES': tuple(sorted(denominator_bases, key=sp.default_sort_key))}
+
     def construct(self, checkpoint=None, completed=()):
         # Inspect every native ordering before starting expensive algebra.
         layouts = tuple(self.limit_layout(original) for original in self.integrals)

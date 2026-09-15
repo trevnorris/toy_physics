@@ -79,6 +79,13 @@ completed downstream work. Repair 50c51500 is committed; the full
 factorization/metadata retry was launched with a local completion/error watcher.
 See the domain and factorization reports for evidence and scope limits.
 
+All 80 bounded Fourier rows are now saved, with 35 distinct source
+integrals. Full metadata/source replay completed, but 58 expanded
+reconstruction residuals require exact normalization. A saved-pair recovery
+is prepared; representative pairs pass and a coefficient mutation is
+detected. The complete source packet, original residuals and all denominator
+restrictions remain preserved. No factorization publication is accepted yet.
+
 ## Retained user-approved solver/export contract
 
 

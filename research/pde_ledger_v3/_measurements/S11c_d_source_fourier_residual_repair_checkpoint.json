@@ -1,0 +1,590 @@
+{
+  "kind": "saved Fourier reconstruction normalization",
+  "sourceRunDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-source-fourier-20260914/retry-02/complete",
+  "sourceInvocation": {
+    "stage": "fourier_construct",
+    "command": [
+      "python",
+      "-u",
+      "_measurements/S11c_d_source_fourier_factorization_check.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-source-fourier-20260914/retry-02/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-source-fourier-20260914/retry-02/fourier_construct.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-source-fourier-20260914/retry-02/fourier_construct.stderr",
+    "startedUtc": "2026-09-15T02:02:14.223651+00:00",
+    "childPid": 1995407,
+    "status": "failed",
+    "exitCode": 1,
+    "wallSeconds": 4077.5746712284163,
+    "stderrBytes": 488,
+    "finishedUtc": "2026-09-15T03:10:11.798441+00:00"
+  },
+  "sourceChecksSha256": "68c02db3c24879d2f9d3df7fc49a2f28183df8a68b997d1ce0eed7e8d3584936",
+  "sourceArtifacts": {
+    "factorization.pickle": {
+      "bytes": 6465424,
+      "sha256": "4ad4e99de3f13a8bf3e42374f1425a84521e27634635063adb497cdc94651033"
+    },
+    "full.out": {
+      "bytes": 21274739,
+      "sha256": "beed20ac10b2bd7fa5749a2f385163439f754b19af5a137fb3d38cf5504eb69d"
+    }
+  },
+  "savedRows": [
+    {
+      "path": "rows/row-000.pickle",
+      "sha256": "5f7ac809470f615dc5d5cbab2e11b61a30f520aa8855f067e96068e3abad7bc1",
+      "bytes": 24679
+    },
+    {
+      "path": "rows/row-001.pickle",
+      "sha256": "2517d28cb7579da07d0955f87b9c5ecf0c6a76a3f4f246c657ce0ee80fe9cc13",
+      "bytes": 24625
+    },
+    {
+      "path": "rows/row-002.pickle",
+      "sha256": "99877789548890a5861fb3094a445fa1e69a64a0754d5c99894998e1588c0995",
+      "bytes": 24374
+    },
+    {
+      "path": "rows/row-003.pickle",
+      "sha256": "86555075c9a834d9514afc895b4618bbce0c3d5853460096ebe7696362383276",
+      "bytes": 24320
+    },
+    {
+      "path": "rows/row-004.pickle",
+      "sha256": "ac365937f1bf31d5b1cd94ded337cc016123d70a3efb86437bf2a6e1969921f4",
+      "bytes": 26374
+    },
+    {
+      "path": "rows/row-005.pickle",
+      "sha256": "1e1511158cb76cc9611ffb03243d9170b21c08d63f1ea2ebdd3a07b9dd84b323",
+      "bytes": 26298
+    },
+    {
+      "path": "rows/row-006.pickle",
+      "sha256": "9868ae0e325c39318a6067e1464e100f33df7e7ee0ceef3f2dc43cdb3b84f20c",
+      "bytes": 26374
+    },
+    {
+      "path": "rows/row-007.pickle",
+      "sha256": "67fecdf578ecdda006c3ffaf102092157a7b1e4adf9cbce3f8f9f07009b22c08",
+      "bytes": 26298
+    },
+    {
+      "path": "rows/row-008.pickle",
+      "sha256": "0fb34e125ebee43fa36965cb27f6bca4149ee7c3cbab3d7b55ec4d5485f48239",
+      "bytes": 25454
+    },
+    {
+      "path": "rows/row-009.pickle",
+      "sha256": "edc6ed018ecd2438e9f9d04c87236e6de585fa11f245e79eb50e99473fe9a831",
+      "bytes": 25400
+    },
+    {
+      "path": "rows/row-010.pickle",
+      "sha256": "5111f6e90547e634b9181a22485c02f12d6779af68cb79499255a1a74b0dc003",
+      "bytes": 27312
+    },
+    {
+      "path": "rows/row-011.pickle",
+      "sha256": "5f40292ea1c2a87e5112c87d67579acba0b78d8473cb5415a8745a26194e03ee",
+      "bytes": 27236
+    },
+    {
+      "path": "rows/row-012.pickle",
+      "sha256": "f64a24d42855ba204c6de2a9f9747644c9cf740f5916c178fbf40e9f4cd52083",
+      "bytes": 23455
+    },
+    {
+      "path": "rows/row-013.pickle",
+      "sha256": "48dc6c7fed6201dbab1f9947b6b556a7d251f82071f2c26a424544045b7c7823",
+      "bytes": 23392
+    },
+    {
+      "path": "rows/row-014.pickle",
+      "sha256": "956c1c5cd2ae755fb906cbba05bb65ae76040b03934a1d936651248db708e80d",
+      "bytes": 24643
+    },
+    {
+      "path": "rows/row-015.pickle",
+      "sha256": "e5373d1cd803e78c0707e8ef03e1eaedbce0d5f909a9fe779a6e85cddcf4a9c2",
+      "bytes": 23572
+    },
+    {
+      "path": "rows/row-016.pickle",
+      "sha256": "9e53517b4152d56a7d564613de69533ab23ab8e87dfa4ca6ef4f9974cb26cdbf",
+      "bytes": 23496
+    },
+    {
+      "path": "rows/row-017.pickle",
+      "sha256": "1ad66528197cc4026e4db3bc11ff00edc881b36d9a454268f1729f076c0bbb7e",
+      "bytes": 23546
+    },
+    {
+      "path": "rows/row-018.pickle",
+      "sha256": "1987e3a3ad2ec8776a0048df93cdd8dd0ffa7434f927e7caf1cb7c2aea4f9f8b",
+      "bytes": 23461
+    },
+    {
+      "path": "rows/row-019.pickle",
+      "sha256": "cb43fcec4e88275d05e6ec112dd464606bef12d4af44de84b8c13f86ab51c54c",
+      "bytes": 23546
+    },
+    {
+      "path": "rows/row-020.pickle",
+      "sha256": "ba95e9c76ac8d1a8d44aaf99dac1dae9eab6f384679c638964b8cf9e3567c584",
+      "bytes": 23461
+    },
+    {
+      "path": "rows/row-021.pickle",
+      "sha256": "adde570038b6ae569fae0c0bf89eadd188f234f172b55c44fb00fa25bbc214a4",
+      "bytes": 24338
+    },
+    {
+      "path": "rows/row-022.pickle",
+      "sha256": "db75fc1ecf9f893ef2e7b1c6e52d661e99c0f14c4badd0e3cb44bd819b97a861",
+      "bytes": 26322
+    },
+    {
+      "path": "rows/row-023.pickle",
+      "sha256": "76f59e32177cf5bb70e218db020dbcc2c92094412f6fc04e81bd180cb797ec01",
+      "bytes": 26322
+    },
+    {
+      "path": "rows/row-024.pickle",
+      "sha256": "f6f6980b4a50dd7eb182aa2629149658d7e7f50d08b06577f3dcec5500e5a544",
+      "bytes": 25418
+    },
+    {
+      "path": "rows/row-025.pickle",
+      "sha256": "cfcda8f9de1fd56817b0be654a9ebc4fc40e80439066d847e211e1e9eff3df98",
+      "bytes": 27260
+    },
+    {
+      "path": "rows/row-026.pickle",
+      "sha256": "12bf0677aae56b518083080b20f6b8f39149753d5432d7e2fcaa184e0709704e",
+      "bytes": 24097
+    },
+    {
+      "path": "rows/row-027.pickle",
+      "sha256": "4fdd52ddfe48ff7b9dfa901f41db0115efaf02b4d474e3b2929239d5108be093",
+      "bytes": 23479
+    },
+    {
+      "path": "rows/row-028.pickle",
+      "sha256": "3d7c81ab07270561a1cb8be91b4b369355ac2c2fa655addc84cb525106a1e413",
+      "bytes": 24248
+    },
+    {
+      "path": "rows/row-029.pickle",
+      "sha256": "2d7148725deeef33fa3cd94a026a0ad6495466c310a20f3d5d8ff7f1b35f6878",
+      "bytes": 23520
+    },
+    {
+      "path": "rows/row-030.pickle",
+      "sha256": "f6769197ca5d029e8fef2430c94ace73a8f4577451dbe264d5536ab96b4f7de7",
+      "bytes": 24399
+    },
+    {
+      "path": "rows/row-031.pickle",
+      "sha256": "bb9b03a35fcf18c6801b227bc190fd0de40820e198c2a95b2dd0912345d95264",
+      "bytes": 26095
+    },
+    {
+      "path": "rows/row-032.pickle",
+      "sha256": "2f61020c42e08852b5b6614a5eebb423fc8b870d68251e3010ffbb5443282f6c",
+      "bytes": 26095
+    },
+    {
+      "path": "rows/row-033.pickle",
+      "sha256": "732d169a96c5c353b4b9e476a36575d062d8a879ecbfc1e6367db8e41186cda0",
+      "bytes": 29054
+    },
+    {
+      "path": "rows/row-034.pickle",
+      "sha256": "53420d1e40c1db8d5edd54e0fca5d1f4575801bd599765db9d3c4a10193afc70",
+      "bytes": 26763
+    },
+    {
+      "path": "rows/row-035.pickle",
+      "sha256": "4ec15002eb6518fd80b4a2933593b0a34da8b408a804c53682c2d7fe2767c5aa",
+      "bytes": 23517
+    },
+    {
+      "path": "rows/row-036.pickle",
+      "sha256": "a9ec38df8f9d419e0127567f6218b5468fcd72b3957f141edb3bacd048d490a4",
+      "bytes": 23517
+    },
+    {
+      "path": "rows/row-037.pickle",
+      "sha256": "7cbac67d86c9816b7a4695a4cf18ed25ddde685d863ff50c7231bd70ed81146b",
+      "bytes": 23748
+    },
+    {
+      "path": "rows/row-038.pickle",
+      "sha256": "2dea68785dde5a9274ab9b8a07ea2020246eadf769bfe9cc943c85b65d7f2c11",
+      "bytes": 23748
+    },
+    {
+      "path": "rows/row-039.pickle",
+      "sha256": "cad58fa499fd62587868581d9657e1941f5116897ef921dc26e75966d0949393",
+      "bytes": 23748
+    },
+    {
+      "path": "rows/row-040.pickle",
+      "sha256": "b466b9313275d87d5e5f9aea909de9324fae55dfa787385319374b1bfacbc5f1",
+      "bytes": 26346
+    },
+    {
+      "path": "rows/row-041.pickle",
+      "sha256": "c2e3faf1bb3a7ace2cdb611282c1b4879d74efab2138bc85edfb892b455831b9",
+      "bytes": 26298
+    },
+    {
+      "path": "rows/row-042.pickle",
+      "sha256": "724b9f7df230b282544fbab108ce7b9f3f61936b993f282aa351d165ad567b3a",
+      "bytes": 26314
+    },
+    {
+      "path": "rows/row-043.pickle",
+      "sha256": "08fc62cc6d1ddafd616519031dc37927150ed9c2f7724cef595f14c1f3d11170",
+      "bytes": 25135
+    },
+    {
+      "path": "rows/row-044.pickle",
+      "sha256": "8d57fc96f019d6caab2a8b39c663304154230d308dd65d95d2fd7dc3ed533fb6",
+      "bytes": 25087
+    },
+    {
+      "path": "rows/row-045.pickle",
+      "sha256": "5039824bd4ca96ba7985843d50335a20bc7ea4232e5e3bee2d6be3476a11a942",
+      "bytes": 25857
+    },
+    {
+      "path": "rows/row-046.pickle",
+      "sha256": "04c48c934df07e06eafd179e0729671a7c4e09b492459a026a1824eaf519a5e1",
+      "bytes": 25115
+    },
+    {
+      "path": "rows/row-047.pickle",
+      "sha256": "acd9249ffd40e9858939630b4211c42b25ec6762477c4395d4d31208c1aa7580",
+      "bytes": 26005
+    },
+    {
+      "path": "rows/row-048.pickle",
+      "sha256": "5b8ab0cf7cc6c370c207e0654c14d9a668919825270aaae83ebef9083c61cdfa",
+      "bytes": 25102
+    },
+    {
+      "path": "rows/row-049.pickle",
+      "sha256": "8b667d8a521c4cd01b7c423bd3b9b131f957194cb3221e0bacfecc8b3b6df6ba",
+      "bytes": 25054
+    },
+    {
+      "path": "rows/row-050.pickle",
+      "sha256": "b74f75e2057996b821225cfc09b394525340bd6bf4fa44ff913f49c80759c64b",
+      "bytes": 25040
+    },
+    {
+      "path": "rows/row-051.pickle",
+      "sha256": "38fe2d88161976262d2564f5b98253f5c912cf6f67b24098e513da29c5b2bdff",
+      "bytes": 24992
+    },
+    {
+      "path": "rows/row-052.pickle",
+      "sha256": "06ef3ecfa89a0d61df2074aea941a3f59bf6d21b4da4eb0ad66be2bad4e16574",
+      "bytes": 25040
+    },
+    {
+      "path": "rows/row-053.pickle",
+      "sha256": "63e65de1bc4ac1fc8c5d3b7cda0a07e1a91b02454e605f72464fb9330145f60a",
+      "bytes": 24992
+    },
+    {
+      "path": "rows/row-054.pickle",
+      "sha256": "3cc67df7b773a82ad42342cb9457740fb49f93044b22da65d31cc3a64e3565b5",
+      "bytes": 25085
+    },
+    {
+      "path": "rows/row-055.pickle",
+      "sha256": "fa763f4b0602d22367a1b1e4617a8fa717aa7030c131728abfc9c76f6e3b91e7",
+      "bytes": 25072
+    },
+    {
+      "path": "rows/row-056.pickle",
+      "sha256": "17ebd2083eec49acb86013cdbdf2f7c4dba34512ae65699e98efac0bdeda4014",
+      "bytes": 25072
+    },
+    {
+      "path": "rows/row-057.pickle",
+      "sha256": "ebc62858a534550bc6d7ab1a0410b368533a9bcf8fa3c5d0325f620a6d51b78a",
+      "bytes": 25358
+    },
+    {
+      "path": "rows/row-058.pickle",
+      "sha256": "cf42b395e4711fc6870316e45d8ba2a582d0d3d8bddbcaa591154527defe83d6",
+      "bytes": 25375
+    },
+    {
+      "path": "rows/row-059.pickle",
+      "sha256": "2d067c3ea24efb595afdeb426aa641d35d1852cb72d4ae3a1f0a5b7c8e2a4bb5",
+      "bytes": 25375
+    },
+    {
+      "path": "rows/row-060.pickle",
+      "sha256": "5c2cd37aefe65474ebf3013fc7f45fc986c627cf74267d38386c65e870025698",
+      "bytes": 179269
+    },
+    {
+      "path": "rows/row-061.pickle",
+      "sha256": "a8c12e6c2c9798d3a85424b59fd3a04c21978572f4a7183d0fc9993b6b60d2d0",
+      "bytes": 238928
+    },
+    {
+      "path": "rows/row-062.pickle",
+      "sha256": "1f520add8a8c47a094a6b14a3197d9883634785c11ac7c525ed2b18700629195",
+      "bytes": 238928
+    },
+    {
+      "path": "rows/row-063.pickle",
+      "sha256": "33def87b3195b1b375902dc5fc91e6468f544a35d307ea6ed7c3708a2c93cc50",
+      "bytes": 242364
+    },
+    {
+      "path": "rows/row-064.pickle",
+      "sha256": "f996c290a3a009b65e5542d02a6ba28eb7cfba9997eb0ba5b519615761571775",
+      "bytes": 263930
+    },
+    {
+      "path": "rows/row-065.pickle",
+      "sha256": "d64f4dfe4a0eecc63cfc8263bf67e42bb2b4dfbaffdedd9883f58a711a3f8a96",
+      "bytes": 131575
+    },
+    {
+      "path": "rows/row-066.pickle",
+      "sha256": "f3b02d0adb0dacd9ac88f8949b6addd28a7b4e1c35284a33faaea108ca605ec7",
+      "bytes": 82190
+    },
+    {
+      "path": "rows/row-067.pickle",
+      "sha256": "111fb45f49a6c752e1e040386f90a27df7091fc06e10c39ad7cda208348b3a3d",
+      "bytes": 79912
+    },
+    {
+      "path": "rows/row-068.pickle",
+      "sha256": "d32eff80a1a8c03775f1dc351ccc3d80502a2c6fd5cca4cd2a1b300318e4838d",
+      "bytes": 79864
+    },
+    {
+      "path": "rows/row-069.pickle",
+      "sha256": "74660e4ffd1bceda6bca94a043f4009e724f62158aeb1022fc218ca44216f3eb",
+      "bytes": 79864
+    },
+    {
+      "path": "rows/row-070.pickle",
+      "sha256": "7ae7a7c83572e76024cfd407dd546cead365a10d0f5b957106919d1d3319c1c4",
+      "bytes": 2906703
+    },
+    {
+      "path": "rows/row-071.pickle",
+      "sha256": "5d2eff86ca155d1f9c08f39b9e37da25b1ba15c2fb4295afce6c415d6a4feae4",
+      "bytes": 2827536
+    },
+    {
+      "path": "rows/row-072.pickle",
+      "sha256": "d3adf624ce83889d2c6278f07cd9acf31b4353f9f4f1c39efd133be28bacc019",
+      "bytes": 937827
+    },
+    {
+      "path": "rows/row-073.pickle",
+      "sha256": "7f8b7bfb6d142c5238f17a1162db53d64b0858bd9adab2008ff96b03c6f385ef",
+      "bytes": 913440
+    },
+    {
+      "path": "rows/row-074.pickle",
+      "sha256": "1b9b9d6f7efe173d62408e3bee93ee78e69e7652b2440f1a8e1a49a9679547a1",
+      "bytes": 927375
+    },
+    {
+      "path": "rows/row-075.pickle",
+      "sha256": "c314c06440844fb3a6f1597782a69ae6cd8db1476ec8615494c8984db3c27b67",
+      "bytes": 902965
+    },
+    {
+      "path": "rows/row-076.pickle",
+      "sha256": "9f111590366ece9cc52eed5fe3deb79212abd4ae148a65066227acb5df5d3b70",
+      "bytes": 927591
+    },
+    {
+      "path": "rows/row-077.pickle",
+      "sha256": "52f9b544f1792b13526e194087cac72b28c85e70c84c2051edf54cfc46de9f11",
+      "bytes": 903181
+    },
+    {
+      "path": "rows/row-078.pickle",
+      "sha256": "6fcb46b510b0510f9d412cc9adb86ffd960ad5366f741c2fcb38889778e38d75",
+      "bytes": 927591
+    },
+    {
+      "path": "rows/row-079.pickle",
+      "sha256": "2a033f3eff0133ccb2648b6ffa0b49600716c3651d6b7f07ec945ed2ab367989",
+      "bytes": 903181
+    }
+  ],
+  "originalIntegralCount": 80,
+  "rawResidualScalars": 324,
+  "nonzeroRawResidualScalars": 58,
+  "originalMetadataPaths": 3478,
+  "originalTagCount": 972,
+  "sourcePacketBeforeEmission": "4ad4e99de3f13a8bf3e42374f1425a84521e27634635063adb497cdc94651033",
+  "sourcePacketAfterEmission": "4ad4e99de3f13a8bf3e42374f1425a84521e27634635063adb497cdc94651033",
+  "sourceLimitJoins": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+  ],
+  "regression": {
+    "cases": [
+      {
+        "row": 0,
+        "kind": "AMPLITUDE",
+        "rightScale": 1,
+        "normalizedResidualZero": true,
+        "proofResidualCount": 3,
+        "nonzeroProofResiduals": 0,
+        "originalDenominatorBases": 3,
+        "wallSeconds": 0.1967890989035368
+      },
+      {
+        "row": 65,
+        "kind": "INTEGRAND",
+        "rightScale": 1,
+        "normalizedResidualZero": true,
+        "proofResidualCount": 7,
+        "nonzeroProofResiduals": 0,
+        "originalDenominatorBases": 18,
+        "wallSeconds": 0.16622609831392765
+      },
+      {
+        "row": 70,
+        "kind": "INTEGRAND",
+        "rightScale": 1,
+        "normalizedResidualZero": true,
+        "proofResidualCount": 8,
+        "nonzeroProofResiduals": 0,
+        "originalDenominatorBases": 20,
+        "wallSeconds": 0.3536587581038475
+      },
+      {
+        "row": 0,
+        "kind": "AMPLITUDE",
+        "rightScale": 2,
+        "normalizedResidualZero": false,
+        "proofResidualCount": 3,
+        "nonzeroProofResiduals": 0,
+        "originalDenominatorBases": 3,
+        "wallSeconds": 0.8830911731347442
+      }
+    ],
+    "constructorAstJoin": true,
+    "engineSha256": "15cfaea72e51715bfee7c0dbac2bacb2363db24c431669fdb933dfe973dd161d"
+  },
+  "regressionFiles": {
+    "certificate-regression-65-1.pickle": "733090e56278275646483f3afae3f0c45b595c890bc4e2b432ee1853fb22ef8e",
+    "certificate-regression-0-2.pickle": "a58a137f3419f36f7287e0ec02f98af7c7fe2b43b34decf5593e22c8326a83c1",
+    "certificate-regression-70-1.pickle": "54baea1b636eb16fcf8503dd96029238dea09fc33af0169257da0d96cda2d94a",
+    "certificate-regression.json": "e9256dcd212d97991281fa7f3062032b6086c5741549f7c0966229d0eefbe2eb",
+    "certificate-regression.py": "010c219df7792e5a17dc87a91f584dc15269061abbac7234a89bfbd052c774b3",
+    "certificate-regression-0-1.pickle": "1d62aefc1f5dd705d46dbcdade7c545ab5a25c4541cb3ec9f0dab1d742fc0e56"
+  },
+  "diagnosticInventorySha256": "66743c3db84db427880b941cfa7541a83abec7379b82c89f03862ebba91cce19",
+  "preservedOriginalFailureFiles": {
+    "fourier_construct.stderr": "d606b34402fecbb4ce9890316ae6ee724873eae672b254a9d3ada544560101bc",
+    "fourier_construct.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "fourier_construct.invocation.json": "1b782eafc353b35fcebe16fd4864ffa4a065f0b5f5047cc59accbba92556a816"
+  },
+  "sourceFiles": {
+    "scripts/S11c_d_mixing_scattering_sympy_audit.py": "15cfaea72e51715bfee7c0dbac2bacb2363db24c431669fdb933dfe973dd161d",
+    "_measurements/S11c_d_source_fourier_residual_recover.py": "443953029c6848c9f0ea377b7cd3005f9f537d29b2431e2122cf2f8fda83e2b9"
+  },
+  "scope": "Representative saved pairs reduce exactly to zero; a one-sided coefficient mutation remains nonzero. Full recovery validation is pending. Original operands, raw residuals, source snapshots and denominator domains remain unchanged."
+}

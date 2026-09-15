@@ -1,14 +1,14 @@
 {
-  "status": "RETRY_02_RUNNING",
+  "status": "RESIDUAL_RECOVERY_PREPARED",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-source-fourier-20260914",
   "plan": "S11c_d_source_fourier_factorization_plan.md",
   "domainPublicationCommit": "e514b7040483725f7a2c5652ae1727432aa4642d",
   "sourceSha256": {
-    "scripts/S11c_d_mixing_scattering_sympy_audit.py": "2fe2bdb0afa6e51017525ab6a202e13989dd2ae4e11a34394422571e958fdc39",
-    "_measurements/S11c_d_source_fourier_factorization_check.py": "b6573d82198f262ac5eea8362fb478a93a1f9b8ea17bd0d4645c67cb40168f23"
+    "scripts/S11c_d_mixing_scattering_sympy_audit.py": "15cfaea72e51715bfee7c0dbac2bacb2363db24c431669fdb933dfe973dd161d",
+    "_measurements/S11c_d_source_fourier_residual_recover.py": "443953029c6848c9f0ea377b7cd3005f9f537d29b2431e2122cf2f8fda83e2b9"
   },
   "scope": "Source Fourier factorization of every original nonlocal integral on explicit finite domains, preserving symbolic coefficients and literal phase/integrand residuals. No numerical integration or unbounded distributional interchange.",
-  "next": "Resume from the retry-02 completion/error watcher. Validate every row, layout, residual and metadata join before publication; use saved row packets for any instrument recovery.",
+  "next": "Launch saved-pair recovery, preserve the original 324 residuals and byte-identical source packet, and require complete normalized/proof/metadata/source/hash checks before publication.",
   "implementationCommit": "185365fc",
   "launch": {
     "launchedUtc": "2026-09-15T01:36:50.005639+00:00",
@@ -69,7 +69,7 @@
     "scripts/S11c_d_mixing_scattering_sympy_audit.py": "1e60c74a99ee4251be0da0a31589c02f569dbbd821a265d2f16eae077772a6ee",
     "_measurements/S11c_d_source_fourier_factorization_check.py": "bef950d35e6d525a61800b9e43ade6b09d44bbc8426536bfc54e6dea57bc35cd"
   },
-  "issue": "The remaining ten native integrals have middle momentum outside source position. The new adapter incorrectly required the source limit to be last. It now finds the source by variable identity and preserves all other limit orderings.",
+  "issue": "The complete factorization and replay were saved, but deep expansion left 58 reconstruction residuals nonzero in stored form. Exact saved-pair normalization is pending; representative amplitude and branch-dependent integrand pairs pass without reconstructing physics.",
   "retryRunRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-source-fourier-20260914/retry-01",
   "repairCheckpoint": "S11c_d_source_fourier_character_repair_checkpoint.json",
   "repairCommit": "91f56ec6",
@@ -130,7 +130,7 @@
   },
   "phaseRepairIssue": "The exponential power dictionary maps E to a phase; testing for exp(phase) keys rejected direct source characters. Use literal multiplicative factors and a symbolic unit character when none are present.",
   "limitOrderRepairCheckpoint": "S11c_d_source_fourier_limit_repair_checkpoint.json",
-  "nextRunRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-source-fourier-20260914/retry-02",
+  "nextRunRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-source-fourier-20260914/recovery-01",
   "activeRunRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-source-fourier-20260914/retry-02",
   "limitOrderRepairCommit": "50c51500",
   "retry02Launch": {
@@ -166,16 +166,29 @@
     "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-source-fourier-20260914/retry-02/fourier_construct.stderr",
     "startedUtc": "2026-09-15T02:02:14.223651+00:00",
     "childPid": 1995407,
-    "status": "running"
+    "status": "failed",
+    "exitCode": 1,
+    "wallSeconds": 4077.5746712284163,
+    "stderrBytes": 488,
+    "finishedUtc": "2026-09-15T03:10:11.798441+00:00"
   },
   "retry02CompletionWatcher": {
-    "status": "waiting",
+    "status": "finished",
     "watcherPid": 1995402,
     "jobPid": 1995401,
     "thread": "01a08c53-295c-70f0-baaf-353db1745867",
     "startedUtc": "2026-09-15T02:02:14.249667+00:00",
     "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
     "messageSha256": "401c6d5f9d11ecf6fc835655ef25def93900d8a9591f8e1cfb05a0d78dc8f0af",
-    "notifications": {}
-  }
+    "notifications": {
+      "completion": {
+        "status": "queued",
+        "exitCode": 0,
+        "finishedUtc": "2026-09-15T03:10:12.147003+00:00"
+      }
+    }
+  },
+  "limitOrderIssue": "The remaining ten native integrals have middle momentum outside source position. The new adapter incorrectly required the source limit to be last. It now finds the source by variable identity and preserves all other limit orderings.",
+  "residualRecoveryCheckpoint": "S11c_d_source_fourier_residual_repair_checkpoint.json",
+  "residualRecoveryPlan": "S11c_d_source_fourier_residual_plan.md"
 }

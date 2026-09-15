@@ -53,3 +53,22 @@ The limit-order repair is committed at `50c51500`. The all-operand run in
 `retry-02` was launched with its owned supervisor and completion/error watcher;
 no factorization output has yet been accepted or published. See the limit-repair checkpoint for the inventory,
 regression records and original failure hashes.
+
+The retry-02 constructor saved all 80 rows, 35 distinct bounded source
+integrals and its complete 6,465,424-byte packet. Source/limit joins and
+replay of 972 tags and 3,478 metadata paths completed. The final guard
+reported 58 of 324 residuals nonzero in their expanded representation
+(20 integrand, 38 amplitude). The original packet is unchanged across
+emission; the 21,274,739-byte transcript and all 80 row packets are preserved.
+Nothing from this run is accepted or published yet.
+
+The saved-pair recovery keeps the construction unchanged. It normalizes
+reciprocal exponential characters, retains the imaginary unit, and reduces
+shared rational expressions while preserving their definitions and original
+denominator domains. Representative amplitude and branch-dependent integrand
+pairs reduce to zero; the shared-expression and exponent replay residuals
+vanish. A one-sided coefficient mutation remains nonzero. The entire original
+constructor has an exact AST match after removing only the new certificate
+helper. Full validation of all 58 remaining pairs is pending; see the
+[recovery plan](S11c_d_source_fourier_residual_plan.md) and repair checkpoint.
+No source factorization or upstream physics regeneration is required.

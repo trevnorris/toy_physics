@@ -1,5 +1,5 @@
 {
-  "status": "PREPARED",
+  "status": "RUNNING",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-reduced-action-assembly-20260914",
   "plan": "S11c_d_variable_profile_matching_plan.md",
   "planStep": 3,
@@ -10,5 +10,52 @@
   },
   "scope": "Exact local derivative coefficient matrices and intact nonlocal integral actions, with literal reconstruction and independent derivative-extraction residuals. No numerical quadrature or scattering result.",
   "numericalInput": "Awaiting user choice for 30 inherited gradient-energy coefficients; symbolic assembly is independent of that choice.",
-  "next": "Run source-pinned assembly, preserve raw operands before emission, replay metadata, publish validated output via DataLad/git-annex and commit. Then bind the agreed numerical instance and construct action quadrature."
+  "next": "Run source-pinned assembly, preserve raw operands before emission, replay metadata, publish validated output via DataLad/git-annex and commit. Then bind the agreed numerical instance and construct action quadrature.",
+  "implementationCommit": "b9dba906",
+  "observedUtc": "2026-09-15T00:17:40.700974+00:00",
+  "active": {
+    "stage": "assembly_construct",
+    "command": [
+      "python",
+      "-u",
+      "_measurements/S11c_d_reduced_action_assembly_check.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-reduced-action-assembly-20260914/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-reduced-action-assembly-20260914/assembly_construct.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-reduced-action-assembly-20260914/assembly_construct.stderr",
+    "startedUtc": "2026-09-15T00:17:16.310615+00:00",
+    "childPid": 1933653,
+    "status": "running"
+  },
+  "launch": {
+    "launchedUtc": "2026-09-15T00:17:16.235554+00:00",
+    "command": [
+      "/usr/bin/python",
+      "_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-reduced-action-assembly-20260914",
+      "--stage",
+      "assembly_construct",
+      "--",
+      "python",
+      "-u",
+      "_measurements/S11c_d_reduced_action_assembly_check.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-reduced-action-assembly-20260914/complete"
+    ],
+    "supervisorPid": 1933648,
+    "watcherPid": 1933649,
+    "watcherDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-reduced-action-assembly-20260914/completion-watcher"
+  },
+  "completionWatcher": {
+    "status": "waiting",
+    "watcherPid": 1933649,
+    "jobPid": 1933648,
+    "thread": "01a08c53-295c-70f0-baaf-353db1745867",
+    "startedUtc": "2026-09-15T00:17:16.321519+00:00",
+    "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
+    "messageSha256": "96eefd60e7712d91c11c64992876db40dd7c661e1e0be961cd2abfd6856f0f13",
+    "notifications": {}
+  }
 }

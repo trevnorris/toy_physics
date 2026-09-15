@@ -18,3 +18,7 @@ original infinite distributional integrals or establish their physical limit.
 No source integral is numerically evaluated by this factorization alone.
 Validation is pending before applying the split momentum panels and advancing
 the full-action convergence checks.
+
+Implementation is committed at `185365fc`. The native one-case constructor/
+validator is running with its owned supervisor and silent completion/error
+watcher; the factorization result is not yet accepted.

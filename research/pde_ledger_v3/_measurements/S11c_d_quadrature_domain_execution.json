@@ -7,7 +7,7 @@
     "_measurements/S11c_d_quadrature_domain_check.py": "17717deeb8db99c9684c46695e62d5d6606087310b8ac288f09120086e10867e"
   },
   "scope": "Source denominator operands, all Abel transfer pairs, derived peak widths and finite mass resolution, all nested profile transforms and estimated tails. No full action limit or scattering claim.",
-  "next": "Use computed concentration widths and split-rule evidence for full-action refinement. Reuse saved direct/assembled operands; establish finite-domain factorization before larger quadrature tensors.",
+  "next": "The quadrature-domain publication is complete and annex-verified at e514b704. Bounded source Fourier factorization is running; see S11c_d_source_fourier_factorization_execution.json. Earlier domain-run watcher events are superseded.",
   "implementationCommit": "4bbfb331",
   "launch": {
     "launchedUtc": "2026-09-15T01:16:21.590365+00:00",

@@ -72,3 +72,7 @@ constructor has an exact AST match after removing only the new certificate
 helper. Full validation of all 58 remaining pairs is pending; see the
 [recovery plan](S11c_d_source_fourier_residual_plan.md) and repair checkpoint.
 No source factorization or upstream physics regeneration is required.
+
+Recovery is committed at `8066cb3b` and launched in `recovery-01` with an
+owned supervisor and silent completion/error watcher. Acceptance remains
+pending the complete saved-pair, proof, metadata and hash checks.

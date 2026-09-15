@@ -82,8 +82,8 @@ See the domain and factorization reports for evidence and scope limits.
 All 80 bounded Fourier rows are now saved, with 35 distinct source
 integrals. Full metadata/source replay completed, but 58 expanded
 reconstruction residuals require exact normalization. A saved-pair recovery
-is prepared; representative pairs pass and a coefficient mutation is
-detected. The complete source packet, original residuals and all denominator
+is committed at 8066cb3b and launched with its local watcher. Representative
+pairs pass and a coefficient mutation is detected. The complete source packet, original residuals and all denominator
 restrictions remain preserved. No factorization publication is accepted yet.
 
 ## Retained user-approved solver/export contract

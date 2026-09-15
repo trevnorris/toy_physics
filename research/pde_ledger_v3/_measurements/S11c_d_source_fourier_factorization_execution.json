@@ -1,5 +1,5 @@
 {
-  "status": "RESIDUAL_RECOVERY_PREPARED",
+  "status": "RESIDUAL_RECOVERY_RUNNING",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-source-fourier-20260914",
   "plan": "S11c_d_source_fourier_factorization_plan.md",
   "domainPublicationCommit": "e514b7040483725f7a2c5652ae1727432aa4642d",
@@ -8,7 +8,7 @@
     "_measurements/S11c_d_source_fourier_residual_recover.py": "443953029c6848c9f0ea377b7cd3005f9f537d29b2431e2122cf2f8fda83e2b9"
   },
   "scope": "Source Fourier factorization of every original nonlocal integral on explicit finite domains, preserving symbolic coefficients and literal phase/integrand residuals. No numerical integration or unbounded distributional interchange.",
-  "next": "Launch saved-pair recovery, preserve the original 324 residuals and byte-identical source packet, and require complete normalized/proof/metadata/source/hash checks before publication.",
+  "next": "Resume from the saved-pair recovery watcher, validate every normalized/proof residual, full metadata/source/limit joins and unchanged source packets, then publish through DataLad/git-annex and commit. No factorization reconstruction is needed.",
   "implementationCommit": "185365fc",
   "launch": {
     "launchedUtc": "2026-09-15T01:36:50.005639+00:00",
@@ -131,7 +131,7 @@
   "phaseRepairIssue": "The exponential power dictionary maps E to a phase; testing for exp(phase) keys rejected direct source characters. Use literal multiplicative factors and a symbolic unit character when none are present.",
   "limitOrderRepairCheckpoint": "S11c_d_source_fourier_limit_repair_checkpoint.json",
   "nextRunRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-source-fourier-20260914/recovery-01",
-  "activeRunRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-source-fourier-20260914/retry-02",
+  "activeRunRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-source-fourier-20260914/recovery-01",
   "limitOrderRepairCommit": "50c51500",
   "retry02Launch": {
     "launchedUtc": "2026-09-15T02:02:14.084859+00:00",
@@ -190,5 +190,55 @@
   },
   "limitOrderIssue": "The remaining ten native integrals have middle momentum outside source position. The new adapter incorrectly required the source limit to be last. It now finds the source by variable identity and preserves all other limit orderings.",
   "residualRecoveryCheckpoint": "S11c_d_source_fourier_residual_repair_checkpoint.json",
-  "residualRecoveryPlan": "S11c_d_source_fourier_residual_plan.md"
+  "residualRecoveryPlan": "S11c_d_source_fourier_residual_plan.md",
+  "residualRecoveryCommit": "8066cb3b",
+  "residualRecoveryLaunch": {
+    "launchedUtc": "2026-09-15T03:36:48.001110+00:00",
+    "command": [
+      "/usr/bin/python",
+      "_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-source-fourier-20260914/recovery-01",
+      "--stage",
+      "fourier_recover",
+      "--",
+      "python",
+      "-u",
+      "_measurements/S11c_d_source_fourier_residual_recover.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-source-fourier-20260914/recovery-01/complete",
+      "--source-run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-source-fourier-20260914/retry-02/complete"
+    ],
+    "supervisorPid": 2021180,
+    "watcherPid": 2021181,
+    "watcherDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-source-fourier-20260914/recovery-01/completion-watcher"
+  },
+  "residualRecoveryActive": {
+    "stage": "fourier_recover",
+    "command": [
+      "python",
+      "-u",
+      "_measurements/S11c_d_source_fourier_residual_recover.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-source-fourier-20260914/recovery-01/complete",
+      "--source-run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-source-fourier-20260914/retry-02/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-source-fourier-20260914/recovery-01/fourier_recover.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-source-fourier-20260914/recovery-01/fourier_recover.stderr",
+    "startedUtc": "2026-09-15T03:36:48.082659+00:00",
+    "childPid": 2021185,
+    "status": "running"
+  },
+  "residualRecoveryWatcher": {
+    "status": "waiting",
+    "watcherPid": 2021181,
+    "jobPid": 2021180,
+    "thread": "01a08c53-295c-70f0-baaf-353db1745867",
+    "startedUtc": "2026-09-15T03:36:48.084814+00:00",
+    "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
+    "messageSha256": "8cd034334c9c55c6da0ec30bfbb98cf62bb79735621055699ca738a8a39f1ade",
+    "notifications": {}
+  }
 }

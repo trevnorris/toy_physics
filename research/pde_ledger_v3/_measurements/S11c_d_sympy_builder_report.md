@@ -118,7 +118,7 @@ Initial three-momentum refinement is validated in 3h22m: all ten rows and both
 fields, with final outer/innermost/middle raw changes 2.68e-12 / 8.22e-15 /
 5.61e-14. All ten records, 10,184 partials and 34,691 metadata paths pass, with
 unchanged held terms, source hashes and packet identities. The 2.24 MB transcript
-is prepared for annex publication. Next are source/profile order refinements on
+is published and annex-verified. Next are source/profile order refinements on
 the fixed final momentum grid; physical tails and Abel limits remain work.
 
 ## Retained user-approved solver/export contract

@@ -1,5 +1,5 @@
 {
-  "status": "VALIDATED_PUBLICATION_PREPARED",
+  "status": "PUBLISHED_AND_ANNEX_VERIFIED",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-three-momentum-20260915",
   "stage": "three_construct",
   "plan": "S11c_d_three_momentum_plan.md",
@@ -7,7 +7,7 @@
   "checker": "S11c_d_three_momentum_check.py",
   "acceptedPairCommit": "3d4a32dd6bc8a6dd6642734d9338df8f7fe132c6",
   "pairAnnexVerificationCommit": "a3d8bb14",
-  "next": "Annex-verify publication, then check source/profile orders on the accepted final three-momentum grid, retaining validated single/pair contributions.",
+  "next": "Refine source/profile orders on the accepted final three-momentum grid, retaining validated single/pair contributions.",
   "scope": "Fixed finite domains and positive regulator; retained baseline and single/pair layouts are explicit. No independent adaptive three-momentum result, physical tails, Abel limit, scattering or poles.",
   "preflight": "S11c_d_three_momentum_preflight.json",
   "preflightChecksSha256": "107144d9d68b0076fabc30b7510fe63a31d61d5f3edcc6961d4ba8131ef5e615",
@@ -160,5 +160,15 @@
     "stderrBytes": 0,
     "finishedUtc": "2026-09-15T22:52:13.119661+00:00"
   },
-  "acceptedCheckpoint": "S11c_d_three_momentum_checkpoint.json"
+  "acceptedCheckpoint": "S11c_d_three_momentum_checkpoint.json",
+  "publicationCommit": "22e78b55ac37e94b055b19307132fe251903f2dc",
+  "annexVerification": {
+    "publicationCommit": "22e78b55ac37e94b055b19307132fe251903f2dc",
+    "path": "research/pde_ledger_v3/scripts/out/S11c_d_three_momentum.out",
+    "sha256": "9216d38dc7653e54623e505233b56c1e37b0972dcae8111a202af45d4a9a8b7a",
+    "bytes": 2239644,
+    "annexKey": "MD5E-s2239644--f30e04a1f79a048be8559123dfef3784.out",
+    "symlink": "../../../../.git/annex/objects/MP/54/MD5E-s2239644--f30e04a1f79a048be8559123dfef3784.out/MD5E-s2239644--f30e04a1f79a048be8559123dfef3784.out",
+    "gitMode": "120000"
+  }
 }

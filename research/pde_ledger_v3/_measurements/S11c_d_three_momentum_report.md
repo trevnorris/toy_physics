@@ -17,7 +17,7 @@ All ten records, three exact read-only caches, 9,470 tags, 4,733 fresh keys and
 34,691 metadata paths pass. Source/profile cache units and every finite ordered
 limit and three-dimensional box mass are checked explicitly. All 56 frozen
 sources and 10,184 partial packets are verified; pre/post-emission hashes agree.
-The 2,239,644-byte transcript is prepared for annex publication at
+The 2,239,644-byte transcript is published through DataLad/git-annex at
 `scripts/out/S11c_d_three_momentum.out`; SHA256
 `9216d38dc7653e54623e505233b56c1e37b0972dcae8111a202af45d4a9a8b7a`.
 
@@ -27,3 +27,5 @@ make source/profile accuracy the next uncertainty to test. Further momentum or
 adaptive checks are chosen from those results. Independent-grade convergence,
 physical tails/interchange and Abel weak limits remain work before scattering
 and bound poles. Preserve approved inputs, all operands and the retained contract.
+
+Publication commit: `22e78b55ac37e94b055b19307132fe251903f2dc`. Full SHA256, annex key, symlink and Git mode 120000 verified.

@@ -1,12 +1,12 @@
 {
-  "status": "VALIDATED_PUBLICATION_PREPARED",
+  "status": "PUBLISHED_AND_ANNEX_VERIFIED",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-source-quadrature-20260914",
   "stage": "source_finish",
   "plan": "S11c_d_source_fourier_quadrature_plan.md",
   "report": "S11c_d_source_fourier_quadrature_report.md",
   "preflight": "S11c_d_source_fourier_quadrature_preflight.json",
   "acceptedFactorizationCommit": "bed088beb40f988647ec8a7861e9e898e4861fd5",
-  "next": "Annex-verify the published source transcript, then continue concentration-aware complete-action momentum integration.",
+  "next": "Implement source-derived concentration-aware complete-action momentum integration with every nested profile operand and all three Abel transfer pairs.",
   "scope": "Finite smooth source integrals and sampled quadrature refinement only; no full-action convergence, unbounded interchange, Abel weak limit, scattering or pole result.",
   "implementationCommit": "a86c0500",
   "originalLaunch": {
@@ -581,5 +581,14 @@
     "stderrBytes": 0,
     "finishedUtc": "2026-09-15T13:48:00.531727+00:00"
   },
-  "acceptedCheckpoint": "S11c_d_source_fourier_quadrature_checkpoint.json"
+  "acceptedCheckpoint": "S11c_d_source_fourier_quadrature_checkpoint.json",
+  "publicationVerification": {
+    "commit": "36dce2e20a157038d26208aadeb1adae86ccd1db",
+    "path": "research/pde_ledger_v3/scripts/out/S11c_d_source_fourier_quadrature.out",
+    "symlink": true,
+    "gitMode": "120000",
+    "annexKey": "MD5E-s8694921--8275a96afbf8c67b51508828181759c2.out",
+    "bytes": 8694921,
+    "sha256": "285b9441a382e395b6227fa9eb7226f39b0e8ce0291457deee3ccaf7877ea3a3"
+  }
 }

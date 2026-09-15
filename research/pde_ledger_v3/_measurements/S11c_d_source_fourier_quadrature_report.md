@@ -20,7 +20,8 @@ constant-to-empty metadata support transitions retain exact paths and units,
 with forty altered-unit/order controls rejected. All other payloads agree except
 the corresponding certified raw carrier representations and structural manifests.
 
-The corrected 8,694,921-byte transcript is prepared for DataLad publication at
+The corrected 8,694,921-byte transcript is published and annex-verified at
+commit 36dce2e2:
 `scripts/out/S11c_d_source_fourier_quadrature.out`; SHA256
 `285b9441a382e395b6227fa9eb7226f39b0e8ce0291457deee3ccaf7877ea3a3`.
 The accepted checkpoint records complete sources, proofs, inventories and hashes.

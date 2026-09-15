@@ -1042,10 +1042,14 @@ class BoundedSourceFourierAssembly:
                     raise ValueError('source coefficient retains source-position dependence')
                 characters = tuple(e for e in source.atoms(sp.exp)
                                    if e.has(zp) and (dag_free_symbols(e) & self.external))
-                powers = source.as_powers_dict()
-                if any(e not in powers for e in characters):
+                # as_powers_dict rewrites exp(phase) as {E: phase}; its
+                # keys therefore cannot identify the literal exponential
+                # factors. Mul.make_args retains each computed phase, with
+                # any canonical multiplicity already in its exponent.
+                direct_factors = sp.Mul.make_args(source)
+                if any(e not in direct_factors for e in characters):
                     raise NotImplementedError('embedded source character requires further separation')
-                character = sp.prod(e**powers[e] for e in characters)
+                character = sp.Mul(*(f for f in direct_factors if f in characters))
                 frequency = sp.simplify(sp.I*sp.diff(character, zp)/character)
                 amplitude = sp.cancel(source/character)
                 if frequency.has(zp) or (dag_free_symbols(amplitude) & self.external):

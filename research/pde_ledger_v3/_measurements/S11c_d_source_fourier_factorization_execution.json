@@ -1,14 +1,14 @@
 {
-  "status": "RUNNING",
+  "status": "REPAIRED_PENDING_RETRY",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-source-fourier-20260914",
   "plan": "S11c_d_source_fourier_factorization_plan.md",
   "domainPublicationCommit": "e514b7040483725f7a2c5652ae1727432aa4642d",
   "sourceSha256": {
-    "scripts/S11c_d_mixing_scattering_sympy_audit.py": "1e60c74a99ee4251be0da0a31589c02f569dbbd821a265d2f16eae077772a6ee",
+    "scripts/S11c_d_mixing_scattering_sympy_audit.py": "70091858e66cd8bd2405715129f3294d1697427177f6c13450b364ea3dd91701",
     "_measurements/S11c_d_source_fourier_factorization_check.py": "bef950d35e6d525a61800b9e43ade6b09d44bbc8426536bfc54e6dea57bc35cd"
   },
   "scope": "Source Fourier factorization of every original nonlocal integral on explicit finite domains, preserving symbolic coefficients and literal phase/integrand residuals. No numerical integration or unbounded distributional interchange.",
-  "next": "Wait for the owned completion/error watcher; inspect full finite-domain factorization residuals, source joins, metadata and packet hashes before publication.",
+  "next": "Run the repaired constructor over all 80 original nonlocal operands; no factorization result has been accepted or published.",
   "implementationCommit": "185365fc",
   "launch": {
     "launchedUtc": "2026-09-15T01:36:50.005639+00:00",
@@ -43,16 +43,33 @@
     "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-source-fourier-20260914/fourier_construct.stderr",
     "startedUtc": "2026-09-15T01:36:50.106100+00:00",
     "childPid": 1976758,
-    "status": "running"
+    "status": "failed",
+    "exitCode": 1,
+    "wallSeconds": 33.122185532934964,
+    "stderrBytes": 648,
+    "finishedUtc": "2026-09-15T01:37:23.228421+00:00"
   },
   "completionWatcher": {
-    "status": "waiting",
+    "status": "finished",
     "watcherPid": 1976754,
     "jobPid": 1976753,
     "thread": "01a08c53-295c-70f0-baaf-353db1745867",
     "startedUtc": "2026-09-15T01:36:50.114116+00:00",
     "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
     "messageSha256": "accba5cbb2ea26b526fd3a9293d3459638da46971033e8428ac718cbcf84bd35",
-    "notifications": {}
-  }
+    "notifications": {
+      "completion": {
+        "status": "queued",
+        "exitCode": 0,
+        "finishedUtc": "2026-09-15T01:37:24.528538+00:00"
+      }
+    }
+  },
+  "originalSourceSha256": {
+    "scripts/S11c_d_mixing_scattering_sympy_audit.py": "1e60c74a99ee4251be0da0a31589c02f569dbbd821a265d2f16eae077772a6ee",
+    "_measurements/S11c_d_source_fourier_factorization_check.py": "bef950d35e6d525a61800b9e43ade6b09d44bbc8426536bfc54e6dea57bc35cd"
+  },
+  "issue": "The exponential power dictionary maps E to a phase; testing for exp(phase) keys rejected direct source characters. Use literal multiplicative factors and a symbolic unit character when none are present.",
+  "retryRunRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-source-fourier-20260914/retry-01",
+  "repairCheckpoint": "S11c_d_source_fourier_character_repair_checkpoint.json"
 }

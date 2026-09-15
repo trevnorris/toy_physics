@@ -19,6 +19,16 @@ No source integral is numerically evaluated by this factorization alone.
 Validation is pending before applying the split momentum panels and advancing
 the full-action convergence checks.
 
-Implementation is committed at `185365fc`. The native one-case constructor/
-validator is running with its owned supervisor and silent completion/error
-watcher; the factorization result is not yet accepted.
+Implementation is committed at `185365fc`. The first constructor stopped
+before saving a factorization packet: SymPy represents exponential powers as
+`E: phase`, so looking for `exp(phase)` among power-dictionary keys rejected
+a direct character. The repair reads the literal multiplicative factors and
+uses a symbolic unit for a factor with no momentum character. Five focused
+cases give 20 zero reconstruction/phase residuals, including repeated, mixed,
+shifted and absent characters. The full native engine prefix has an exact
+AST match to the accepted quadrature source. All original logs and snapshots
+remain in the original run directory; no upstream reconstruction is needed.
+
+The repaired all-operand run is pending in `retry-01`. No factorization output
+has been accepted or published. See the character-repair checkpoint for the
+failure record, regression data and source hashes.

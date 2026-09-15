@@ -1,0 +1,128 @@
+{
+  "kind": "phase extraction instrument repair",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-source-fourier-20260914",
+  "originalInvocation": {
+    "stage": "fourier_construct",
+    "command": [
+      "python",
+      "-u",
+      "_measurements/S11c_d_source_fourier_factorization_check.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-source-fourier-20260914/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-source-fourier-20260914/fourier_construct.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-source-fourier-20260914/fourier_construct.stderr",
+    "startedUtc": "2026-09-15T01:36:50.106100+00:00",
+    "childPid": 1976758,
+    "status": "failed",
+    "exitCode": 1,
+    "wallSeconds": 33.122185532934964,
+    "stderrBytes": 648,
+    "finishedUtc": "2026-09-15T01:37:23.228421+00:00"
+  },
+  "originalSources": {
+    "scripts/S11c_d_mixing_scattering_sympy_audit.py": "1e60c74a99ee4251be0da0a31589c02f569dbbd821a265d2f16eae077772a6ee",
+    "_measurements/S11c_d_source_fourier_factorization_check.py": "bef950d35e6d525a61800b9e43ade6b09d44bbc8426536bfc54e6dea57bc35cd"
+  },
+  "preservedFiles": {
+    "active.json": {
+      "bytes": 696,
+      "sha256": "b3cc1b0c7e01dc6dbfbde1d9da4d20a808d863d715822f1f7caf188f34ae80f5"
+    },
+    "fourier_construct.invocation.json": {
+      "bytes": 696,
+      "sha256": "b3cc1b0c7e01dc6dbfbde1d9da4d20a808d863d715822f1f7caf188f34ae80f5"
+    },
+    "fourier_construct.stderr": {
+      "bytes": 648,
+      "sha256": "ec8e4f3dec7b612b497f5dfcacb18df3942721db55c260be8e5955dbda1a6ea2"
+    },
+    "fourier_construct.stdout": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "complete/preflight.json": {
+      "bytes": 3415,
+      "sha256": "86234f5643d224f581871c593af3fb6c037fb981a41ef08f92a99d6de82dfa77"
+    }
+  },
+  "factorizationPacketCreated": false,
+  "regression": {
+    "sympyVersion": "1.14.0",
+    "cases": [
+      {
+        "input": "f(x)*exp(-I*k*x)",
+        "powerDictionary": "defaultdict(<class 'int'>, {E: -I*k*x, f(x): 1})",
+        "frequencies": [
+          "k"
+        ],
+        "residuals": [
+          "0",
+          "0",
+          "0",
+          "0"
+        ]
+      },
+      {
+        "input": "f(x)*exp(-2*I*k*x)",
+        "powerDictionary": "defaultdict(<class 'int'>, {E: -2*I*k*x, f(x): 1})",
+        "frequencies": [
+          "2*k"
+        ],
+        "residuals": [
+          "0",
+          "0",
+          "0",
+          "0"
+        ]
+      },
+      {
+        "input": "f(x)*exp(-I*k*x)*exp(-I*q*x)",
+        "powerDictionary": "defaultdict(<class 'int'>, {E: -I*k*x - I*q*x, f(x): 1})",
+        "frequencies": [
+          "k + q"
+        ],
+        "residuals": [
+          "0",
+          "0",
+          "0",
+          "0"
+        ]
+      },
+      {
+        "input": "exp(I*k*(-x + z))*Derivative(f(x), x)",
+        "powerDictionary": "defaultdict(<class 'int'>, {Derivative(f(x), x): 1, E: I*k*(-x + z)})",
+        "frequencies": [
+          "k"
+        ],
+        "residuals": [
+          "0",
+          "0",
+          "0",
+          "0"
+        ]
+      },
+      {
+        "input": "f(x)",
+        "powerDictionary": "defaultdict(<class 'int'>, {f(x): 1})",
+        "frequencies": [
+          "0"
+        ],
+        "residuals": [
+          "0",
+          "0",
+          "0",
+          "0"
+        ]
+      }
+    ],
+    "nativePrefixAstJoin": true,
+    "engineSha256": "70091858e66cd8bd2405715129f3294d1697427177f6c13450b364ea3dd91701"
+  },
+  "regressionFiles": {
+    "character-regression.py": "65b0e89b903517e1bb25b2dbb6dbac746c63c310758d189940baae1ef66a42a2",
+    "character-regression.json": "d21fea9779781c8ef38dcd204da41f10b6282ac7fd28182dd72122f0435f9827"
+  },
+  "nativePhysicsPrefixUnchanged": true,
+  "scope": "Only the new finite-domain source-character extractor changed. Original source snapshots and logs are retained. All-operand construction and metadata validation remain required."
+}

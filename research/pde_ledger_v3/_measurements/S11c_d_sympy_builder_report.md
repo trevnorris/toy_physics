@@ -70,8 +70,11 @@ at 009667f7. Quadrature-domain recovery passed with empty stderr: all source
 and operand joins agree. Width-based split rules resolve the elementary Abel
 mass to 5.33e-15; profile transforms agree to 1.25e-12 at the refined order.
 The domain transcript is annex-verified at e514b704. Bounded source Fourier
-factorization is running to prepare the full-action refinement without large
-combined source/momentum tensors. See the domain and factorization reports.
+factorization stopped on an exponential power-dictionary representation issue.
+The new extractor is repaired; five focused cases have 20 zero residuals and
+the native engine prefix is unchanged. The all-operand retry is pending.
+This prepares full-action refinement without combined source/momentum tensors.
+See the domain and factorization reports.
 
 ## Retained user-approved solver/export contract
 

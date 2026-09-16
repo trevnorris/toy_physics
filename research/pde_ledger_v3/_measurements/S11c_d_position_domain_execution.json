@@ -1,5 +1,5 @@
 {
-  "status": "VALIDATED_PUBLICATION_PREPARED",
+  "status": "PUBLISHED_ANNEX_VERIFIED",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-position-domain-20260916",
   "checker": "S11c_d_position_domain.py",
   "preflight": "S11c_d_position_domain_preflight.py",
@@ -313,5 +313,13 @@
     "finishedUtc": "2026-09-16T07:25:01.429863+00:00"
   },
   "acceptedCheckpoint": "S11c_d_position_domain_checkpoint.json",
-  "acceptedRunRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-position-domain-20260916/production"
+  "acceptedRunRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-position-domain-20260916/production",
+  "annexVerification": {
+    "publicationCommit": "e4f8d74e1a2fda88b9c1da64eb442f5ea6c09db2",
+    "sha256": "95e629c42063ad4a639e02b71db25493c770e879ab4b6e0f155c477101d9a120",
+    "annexKey": "MD5E-s2311911--d38a291d29c497ed405ece0e020e2d94.out",
+    "symlink": "../../../../.git/annex/objects/8F/2Q/MD5E-s2311911--d38a291d29c497ed405ece0e020e2d94.out/MD5E-s2311911--d38a291d29c497ed405ece0e020e2d94.out",
+    "gitIndex": "120000 d119ece1635cdae20310ee7c3c2b3974d2466f50 0\tresearch/pde_ledger_v3/scripts/out/S11c_d_position_domain.out",
+    "bytes": 2311911
+  }
 }

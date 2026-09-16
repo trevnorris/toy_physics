@@ -19,7 +19,7 @@ coefficient reverse joins and read-only rules pass. Replay covers 7,394 tags,
 3,695 fresh keys and 40,672 metadata paths, with unchanged pre/post packets.
 Peak worker/coordinator RSS was 148.1/211.4 MiB, separate from workspace budgets.
 
-The 2,311,911-byte transcript is prepared for DataLad/git-annex publication at
+The 2,311,911-byte transcript is published and annex-verified at
 `scripts/out/S11c_d_position_domain.out`, SHA256
 `95e629c42063ad4a639e02b71db25493c770e879ab4b6e0f155c477101d9a120`.
 Preflight and its saved metadata recovery are accepted at 9bbcfa3f. Recovery
@@ -30,3 +30,5 @@ ranges, check their quadrature resolution and native domain joins, then evaluate
 complete action changes. Position tails still need action-level bounds; momentum
 and Abel limits, scattering and poles remain work. Preserve the approved inputs,
 unchanged engine and retained solver/export contract.
+
+Publication commit: `e4f8d74e1a2fda88b9c1da64eb442f5ea6c09db2`. Full SHA256, annex key, canonical symlink and Git mode 120000 are verified.

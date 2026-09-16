@@ -141,7 +141,7 @@ Finite position-domain production is validated in 2h26m. All 80 rows and both
 fields were reevaluated at source/profile bounds 48/10 and 48/14. Source/profile
 domain changes reach 8.47e-14 / 4.40e-15 in complete actions. All 12 layouts,
 8,484 partials, 71 sources and 40,672 metadata paths pass with unchanged packets.
-The 2.31 MB transcript is prepared for annex publication. Next is momentum-domain
+The 2.31 MB transcript is published and annex-verified. Next is momentum-domain
 expansion with freshly computed source-frequency/profile-transfer ranges and
 resolution checks. Finite changes do not establish physical tail or Abel limits.
 

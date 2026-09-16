@@ -42796,7 +42796,7 @@
   "wallSeconds": 8745.541985783726,
   "coordinatorPeakRssKiB": 216476,
   "scope": "Finite source/profile domain changes only at held finite momentum domain and positive regulator. No infinite tail bound, uniform/independent-grade coverage, Abel limit, scattering or pole result.",
-  "status": "VALIDATED_PUBLICATION_PREPARED",
+  "status": "PUBLISHED_ANNEX_VERIFIED",
   "acceptedUtc": "2026-09-16T07:28:01.431330+00:00",
   "verificationInvocation": {
     "stage": "position_construct",
@@ -42886,5 +42886,13 @@
     "path": "scripts/out/S11c_d_position_domain.out",
     "bytes": 2311911,
     "sha256": "95e629c42063ad4a639e02b71db25493c770e879ab4b6e0f155c477101d9a120"
+  },
+  "annexVerification": {
+    "publicationCommit": "e4f8d74e1a2fda88b9c1da64eb442f5ea6c09db2",
+    "sha256": "95e629c42063ad4a639e02b71db25493c770e879ab4b6e0f155c477101d9a120",
+    "annexKey": "MD5E-s2311911--d38a291d29c497ed405ece0e020e2d94.out",
+    "symlink": "../../../../.git/annex/objects/8F/2Q/MD5E-s2311911--d38a291d29c497ed405ece0e020e2d94.out/MD5E-s2311911--d38a291d29c497ed405ece0e020e2d94.out",
+    "gitIndex": "120000 d119ece1635cdae20310ee7c3c2b3974d2466f50 0\tresearch/pde_ledger_v3/scripts/out/S11c_d_position_domain.out",
+    "bytes": 2311911
   }
 }

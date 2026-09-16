@@ -1,5 +1,5 @@
 {
-  "status": "PREFLIGHT_PREPARED",
+  "status": "PREFLIGHT_RUNNING",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-three-adaptive-20260916",
   "checker": "S11c_d_three_momentum_adaptive.py",
   "preflight": "S11c_d_three_momentum_adaptive_preflight.py",
@@ -9,5 +9,58 @@
   "annexVerificationCommit": "16838693",
   "workers": 4,
   "nativeThreadsPerWorker": 1,
-  "next": "Validate actual conditioned/native prefixes, full grouping, adaptive workers and complete metadata/emission before production."
+  "next": "Wait for the silent preflight completion/error watcher, accept full native/conditional and adaptive/emission checks, then run production.",
+  "implementationCommit": "f4cf2728",
+  "launch": {
+    "launchedUtc": "2026-09-16T02:10:40.311776+00:00",
+    "command": [
+      "/usr/bin/python",
+      "_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-three-adaptive-20260916/preflight",
+      "--stage",
+      "adaptive_preflight",
+      "--",
+      "python",
+      "-u",
+      "_measurements/S11c_d_three_momentum_adaptive_preflight.py",
+      "--directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-three-adaptive-20260916/preflight/complete"
+    ],
+    "supervisorPid": 3311590,
+    "watcherPid": 3311591,
+    "watcherDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-three-adaptive-20260916/preflight/completion-watcher",
+    "threadEnvironment": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1"
+    }
+  },
+  "activeAtLaunch": {
+    "stage": "adaptive_preflight",
+    "command": [
+      "python",
+      "-u",
+      "_measurements/S11c_d_three_momentum_adaptive_preflight.py",
+      "--directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-three-adaptive-20260916/preflight/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-three-adaptive-20260916/preflight/adaptive_preflight.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-three-adaptive-20260916/preflight/adaptive_preflight.stderr",
+    "startedUtc": "2026-09-16T02:10:40.366642+00:00",
+    "childPid": 3311595,
+    "status": "running"
+  },
+  "watcherAtLaunch": {
+    "status": "waiting",
+    "watcherPid": 3311591,
+    "jobPid": 3311590,
+    "thread": "01a08c53-295c-70f0-baaf-353db1745867",
+    "startedUtc": "2026-09-16T02:10:40.375831+00:00",
+    "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
+    "messageSha256": "e331c0378d0d22877f8be418abf03dc33f7b726a16017c8d2d8c57b47f690357",
+    "notifications": {}
+  },
+  "launcherSha256": "2050c25759a3e40350b3a7c0cf4f4801388d64affde2d2c7727b34f466e81458"
 }

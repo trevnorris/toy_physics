@@ -1,0 +1,1945 @@
+{
+  "status": "PASS",
+  "started_utc": "2026-09-16T19:34:40.997030+00:00",
+  "instrument_sha256": "9eadf60a9d644783b9607475f9b30f867956cc756f14459e6e3687d5a37f26b8",
+  "source_sha256_before": {
+    "_measurements/S11_lean_d3_generate.py": "2be172074609c7c768339c3847773c887e6935623701fc3a9eb20528aa7b3b45",
+    "lean/lake-manifest.json": "91fd5318cdc35e4044d6e059c6ef73d94b955d27adf8a5860b07ec92add9377e",
+    "lean/lakefile.toml": "3633a4454248c5c136f7ea986833ab2baa8c2cc90998ae4583fdb9e4b9200e0c",
+    "lean/lean-toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+    "lean/s10/S10Controls/Action.lean": "e1764df0b26a46d6822ec4a72cca42e5d4f9df06686a1b649c86fd13af9f6566",
+    "lean/s10/S10Controls/Analytic.lean": "bac51e35f46740653dbcea68724deecf23f9fdb8991c696f54007287b57afab5",
+    "lean/s10/S10Controls/PhaseAverage.lean": "ff2863169741814592ec0947da8941976d6ebf2d676e07300e0c0b48905034ba",
+    "lean/s10/S10Controls/PlaneWave.lean": "14149fe870ddadc3aa547a49706748990d1eed9f74e428423f9c81e3a745863e",
+    "lean/s10/S10Controls/Variation.lean": "0141297128ec34c925d11ffe13b2e08203282b4d1ada4d388b23b2d689db7c0e",
+    "lean/s10/S10Pilot/Action.lean": "a7466f2c23a123f244615217d27d5048a625bddfaad5ce2a6f0456a8704f435c",
+    "lean/s10/S10Pilot/Analytic.lean": "f8a6fe854a7ed775a7ecf65fdf8589db2b865139a811daf1e4e27c34bac8811d",
+    "lean/s10/S10Pilot/PhaseAverage.lean": "2007235232001290ac87d25e8922e4a3b615583272ef39034b2aedc83dee4429",
+    "lean/s10/S10Pilot/PlaneWave.lean": "d64ad2d70169976f42cacb3ece650776780a17fe640d1efee4aa7677e53c85cb",
+    "lean/s10/S10Pilot/Variation.lean": "f4678338fb72fe859c627cbc5da3ccb90e9f38b7a5d774705219f880cdcc871d",
+    "lean/s11/S11D3Bulk/Action.lean": "ac5a0f8b42bb27ffb703e3b9ff5f2efcdae559706583b0ccd343e64502ed5f63",
+    "lean/s11/S11D3Bulk/Bulk.lean": "b70072ba81550a53af9b12ee4eb50ffe06c849bc5c9c44003f459c3ebaacb601",
+    "lean/s11/S11D3Bulk/Calculus.lean": "4a2f040ebbddf14bed0b3effcb6087fd8ff2b66d877c18af7576a122108b8167",
+    "lean/s11/S11D3Bulk/Census.lean": "4a63069f2db5306b93d83498190a28c13e6466deb4da64af1639141f926a4dc1",
+    "lean/s11/S11D3Bulk/Variation.lean": "a25416fc69bced11d1109fd396f0cbb5087f55a5864039d0fb04c93564b75b6a",
+    "lean/s11/S11D3Bulk.lean": "1dcb9fed9540c5fa7be9b48c8d1be6122c013eee4570fd7f654189ad9dccaf7d",
+    "lean/s11/S11D3Invariants/Classification.lean": "2cfba9f58fe6932859833f7e0fe8f8f0c398618de1086a6b358527d3563b3c02",
+    "lean/s11/S11D3Invariants/Constraints.lean": "cc8a4b788b205cf2de7f4aea4b617e0e41c2047c489806f59ef6d56d770bfc13",
+    "lean/s11/S11D3Invariants/Quadratic.lean": "ccb26fd2c468c84e5cc499840179b3d574c497d15604baebce226009dc70933f",
+    "lean/s11/S11D3Invariants/Rotation.lean": "1de41bfbbea2144e6a63ce9d1752b9bff18497fadb8c5bfdfee818fcffc68426",
+    "lean/s11/S11Homogeneous/Action.lean": "73a8cbfbe7770cd0d17262728f9887d2038260fc965d2abc34944b8af20aeb4b"
+  },
+  "dependency_olean_sha256": {
+    "lean/.lake/build/lib/lean/S10Controls/Action.olean": "da96a6b32e4cd34392e44aac2da19ea3368f1063c2cc5c20257e455d0c404e49",
+    "lean/.lake/build/lib/lean/S10Controls/Analytic.olean": "716adf3a25d5b3fe03307f1275266e39eb50d3dae176e6c23c73935870c2a730",
+    "lean/.lake/build/lib/lean/S10Controls/PhaseAverage.olean": "dc0472a02f0909c9026828c3f15946132c8ddaeefcc7fa3a57b00d21ca38440a",
+    "lean/.lake/build/lib/lean/S10Controls/PlaneWave.olean": "2e15e57ea63854fba96383e24788881ae509d1743618f8017eb1cbcb3e56a2a7",
+    "lean/.lake/build/lib/lean/S10Controls/Variation.olean": "3a0060269a368cbd43feb1548ae3c594520ebf684147438330f9bc53dbbaa5b7",
+    "lean/.lake/build/lib/lean/S10Pilot/Action.olean": "1be8c3c4196dd7d4ec3eab5adeec1ad4efd799f37bea3169a7b2396a59efc3bb",
+    "lean/.lake/build/lib/lean/S10Pilot/Analytic.olean": "9734d5342b5ee8d0683ce8e04b29e063554c4481f6db0e0cc5e418b68a9bebc6",
+    "lean/.lake/build/lib/lean/S10Pilot/PhaseAverage.olean": "16fec04f6fce2983d3353cc643b8881ef91f9ba43fe3d3a5868e539eac3aec5f",
+    "lean/.lake/build/lib/lean/S10Pilot/PlaneWave.olean": "0d66b90ba63086dceddbae3b9cdeae947fcc286b6fa2d3bcd9c9dc033e0608b4",
+    "lean/.lake/build/lib/lean/S10Pilot/Variation.olean": "d2ae9c5944f74e9581b1a82893f65c7d715811b6407427ed997440c6033b36eb",
+    "lean/.lake/build/lib/lean/S11D3Invariants/Classification.olean": "8debe95d1cb11b440b1be97c5d9786a6405ed3bbca319b358cebd8c1155980d4",
+    "lean/.lake/build/lib/lean/S11D3Invariants/Constraints.olean": "5d86c2d145cabc4181e3b474c7ffc9cafcbd889ab190da01d53149ad2a3134ca",
+    "lean/.lake/build/lib/lean/S11D3Invariants/Quadratic.olean": "814b4bd7f2520f5dcb2e92be13d5edea4db87b1442917a5ddb1705297bbe1023",
+    "lean/.lake/build/lib/lean/S11D3Invariants/Rotation.olean": "1f23a7517dc5075d86914a05ce90f92b9fa8e3780bef99e53970686a9958d553",
+    "lean/.lake/build/lib/lean/S11Homogeneous/Action.olean": "1d75ed6bc81eef456cfce6c31a7bd35c753159e90d22453881660b462396111e"
+  },
+  "checks": [
+    {
+      "name": "dependency_S10Pilot_Action",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "-o",
+        "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S10Pilot/Action.olean",
+        "s10/S10Pilot/Action.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 15.856,
+      "source_sha256": "a7466f2c23a123f244615217d27d5048a625bddfaad5ce2a6f0456a8704f435c",
+      "required_failure_in": null,
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "olean_sha256": "1be8c3c4196dd7d4ec3eab5adeec1ad4efd799f37bea3169a7b2396a59efc3bb",
+      "input_olean_sha256": {},
+      "reused_from_instrument_sha256": "6ce57a5a7de61bd9e47e805d942a8d70181d33f7a7c1da9b2b39a7ef05358a5e",
+      "reuse_source_dependency_sha256": {
+        "_measurements/S11_lean_d3_generate.py": "2be172074609c7c768339c3847773c887e6935623701fc3a9eb20528aa7b3b45",
+        "lean/lake-manifest.json": "91fd5318cdc35e4044d6e059c6ef73d94b955d27adf8a5860b07ec92add9377e",
+        "lean/lakefile.toml": "3633a4454248c5c136f7ea986833ab2baa8c2cc90998ae4583fdb9e4b9200e0c",
+        "lean/lean-toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+        "lean/s10/S10Pilot/Action.lean": "a7466f2c23a123f244615217d27d5048a625bddfaad5ce2a6f0456a8704f435c"
+      }
+    },
+    {
+      "name": "dependency_S10Pilot_PlaneWave",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "-o",
+        "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S10Pilot/PlaneWave.olean",
+        "s10/S10Pilot/PlaneWave.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 10.589,
+      "source_sha256": "d64ad2d70169976f42cacb3ece650776780a17fe640d1efee4aa7677e53c85cb",
+      "required_failure_in": null,
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "olean_sha256": "0d66b90ba63086dceddbae3b9cdeae947fcc286b6fa2d3bcd9c9dc033e0608b4",
+      "input_olean_sha256": {
+        "lean/.lake/build/lib/lean/S10Pilot/Action.olean": "1be8c3c4196dd7d4ec3eab5adeec1ad4efd799f37bea3169a7b2396a59efc3bb"
+      },
+      "reused_from_instrument_sha256": "6ce57a5a7de61bd9e47e805d942a8d70181d33f7a7c1da9b2b39a7ef05358a5e",
+      "reuse_source_dependency_sha256": {
+        "_measurements/S11_lean_d3_generate.py": "2be172074609c7c768339c3847773c887e6935623701fc3a9eb20528aa7b3b45",
+        "lean/lake-manifest.json": "91fd5318cdc35e4044d6e059c6ef73d94b955d27adf8a5860b07ec92add9377e",
+        "lean/lakefile.toml": "3633a4454248c5c136f7ea986833ab2baa8c2cc90998ae4583fdb9e4b9200e0c",
+        "lean/lean-toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+        "lean/s10/S10Pilot/Action.lean": "a7466f2c23a123f244615217d27d5048a625bddfaad5ce2a6f0456a8704f435c",
+        "lean/s10/S10Pilot/PlaneWave.lean": "d64ad2d70169976f42cacb3ece650776780a17fe640d1efee4aa7677e53c85cb"
+      }
+    },
+    {
+      "name": "dependency_S10Pilot_Analytic",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "-o",
+        "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S10Pilot/Analytic.olean",
+        "s10/S10Pilot/Analytic.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 10.638,
+      "source_sha256": "f8a6fe854a7ed775a7ecf65fdf8589db2b865139a811daf1e4e27c34bac8811d",
+      "required_failure_in": null,
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "olean_sha256": "9734d5342b5ee8d0683ce8e04b29e063554c4481f6db0e0cc5e418b68a9bebc6",
+      "input_olean_sha256": {
+        "lean/.lake/build/lib/lean/S10Pilot/Action.olean": "1be8c3c4196dd7d4ec3eab5adeec1ad4efd799f37bea3169a7b2396a59efc3bb",
+        "lean/.lake/build/lib/lean/S10Pilot/PlaneWave.olean": "0d66b90ba63086dceddbae3b9cdeae947fcc286b6fa2d3bcd9c9dc033e0608b4"
+      },
+      "reused_from_instrument_sha256": "6ce57a5a7de61bd9e47e805d942a8d70181d33f7a7c1da9b2b39a7ef05358a5e",
+      "reuse_source_dependency_sha256": {
+        "_measurements/S11_lean_d3_generate.py": "2be172074609c7c768339c3847773c887e6935623701fc3a9eb20528aa7b3b45",
+        "lean/lake-manifest.json": "91fd5318cdc35e4044d6e059c6ef73d94b955d27adf8a5860b07ec92add9377e",
+        "lean/lakefile.toml": "3633a4454248c5c136f7ea986833ab2baa8c2cc90998ae4583fdb9e4b9200e0c",
+        "lean/lean-toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+        "lean/s10/S10Pilot/Action.lean": "a7466f2c23a123f244615217d27d5048a625bddfaad5ce2a6f0456a8704f435c",
+        "lean/s10/S10Pilot/Analytic.lean": "f8a6fe854a7ed775a7ecf65fdf8589db2b865139a811daf1e4e27c34bac8811d",
+        "lean/s10/S10Pilot/PlaneWave.lean": "d64ad2d70169976f42cacb3ece650776780a17fe640d1efee4aa7677e53c85cb"
+      }
+    },
+    {
+      "name": "dependency_S10Pilot_Variation",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "-o",
+        "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S10Pilot/Variation.olean",
+        "s10/S10Pilot/Variation.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 11.695,
+      "source_sha256": "f4678338fb72fe859c627cbc5da3ccb90e9f38b7a5d774705219f880cdcc871d",
+      "required_failure_in": null,
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "olean_sha256": "d2ae9c5944f74e9581b1a82893f65c7d715811b6407427ed997440c6033b36eb",
+      "input_olean_sha256": {
+        "lean/.lake/build/lib/lean/S10Pilot/Action.olean": "1be8c3c4196dd7d4ec3eab5adeec1ad4efd799f37bea3169a7b2396a59efc3bb",
+        "lean/.lake/build/lib/lean/S10Pilot/Analytic.olean": "9734d5342b5ee8d0683ce8e04b29e063554c4481f6db0e0cc5e418b68a9bebc6",
+        "lean/.lake/build/lib/lean/S10Pilot/PlaneWave.olean": "0d66b90ba63086dceddbae3b9cdeae947fcc286b6fa2d3bcd9c9dc033e0608b4"
+      },
+      "reused_from_instrument_sha256": "6ce57a5a7de61bd9e47e805d942a8d70181d33f7a7c1da9b2b39a7ef05358a5e",
+      "reuse_source_dependency_sha256": {
+        "_measurements/S11_lean_d3_generate.py": "2be172074609c7c768339c3847773c887e6935623701fc3a9eb20528aa7b3b45",
+        "lean/lake-manifest.json": "91fd5318cdc35e4044d6e059c6ef73d94b955d27adf8a5860b07ec92add9377e",
+        "lean/lakefile.toml": "3633a4454248c5c136f7ea986833ab2baa8c2cc90998ae4583fdb9e4b9200e0c",
+        "lean/lean-toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+        "lean/s10/S10Pilot/Action.lean": "a7466f2c23a123f244615217d27d5048a625bddfaad5ce2a6f0456a8704f435c",
+        "lean/s10/S10Pilot/Analytic.lean": "f8a6fe854a7ed775a7ecf65fdf8589db2b865139a811daf1e4e27c34bac8811d",
+        "lean/s10/S10Pilot/PlaneWave.lean": "d64ad2d70169976f42cacb3ece650776780a17fe640d1efee4aa7677e53c85cb",
+        "lean/s10/S10Pilot/Variation.lean": "f4678338fb72fe859c627cbc5da3ccb90e9f38b7a5d774705219f880cdcc871d"
+      }
+    },
+    {
+      "name": "dependency_S11D3Invariants_Quadratic",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "-o",
+        "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S11D3Invariants/Quadratic.olean",
+        "s11/S11D3Invariants/Quadratic.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 10.581,
+      "source_sha256": "ccb26fd2c468c84e5cc499840179b3d574c497d15604baebce226009dc70933f",
+      "required_failure_in": null,
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "olean_sha256": "814b4bd7f2520f5dcb2e92be13d5edea4db87b1442917a5ddb1705297bbe1023",
+      "input_olean_sha256": {},
+      "reused_from_instrument_sha256": "6ce57a5a7de61bd9e47e805d942a8d70181d33f7a7c1da9b2b39a7ef05358a5e",
+      "reuse_source_dependency_sha256": {
+        "_measurements/S11_lean_d3_generate.py": "2be172074609c7c768339c3847773c887e6935623701fc3a9eb20528aa7b3b45",
+        "lean/lake-manifest.json": "91fd5318cdc35e4044d6e059c6ef73d94b955d27adf8a5860b07ec92add9377e",
+        "lean/lakefile.toml": "3633a4454248c5c136f7ea986833ab2baa8c2cc90998ae4583fdb9e4b9200e0c",
+        "lean/lean-toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+        "lean/s11/S11D3Invariants/Quadratic.lean": "ccb26fd2c468c84e5cc499840179b3d574c497d15604baebce226009dc70933f"
+      }
+    },
+    {
+      "name": "dependency_S11D3Invariants_Rotation",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "-o",
+        "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S11D3Invariants/Rotation.olean",
+        "s11/S11D3Invariants/Rotation.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 12.899,
+      "source_sha256": "1de41bfbbea2144e6a63ce9d1752b9bff18497fadb8c5bfdfee818fcffc68426",
+      "required_failure_in": null,
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "olean_sha256": "1f23a7517dc5075d86914a05ce90f92b9fa8e3780bef99e53970686a9958d553",
+      "input_olean_sha256": {
+        "lean/.lake/build/lib/lean/S11D3Invariants/Quadratic.olean": "814b4bd7f2520f5dcb2e92be13d5edea4db87b1442917a5ddb1705297bbe1023"
+      },
+      "reused_from_instrument_sha256": "6ce57a5a7de61bd9e47e805d942a8d70181d33f7a7c1da9b2b39a7ef05358a5e",
+      "reuse_source_dependency_sha256": {
+        "_measurements/S11_lean_d3_generate.py": "2be172074609c7c768339c3847773c887e6935623701fc3a9eb20528aa7b3b45",
+        "lean/lake-manifest.json": "91fd5318cdc35e4044d6e059c6ef73d94b955d27adf8a5860b07ec92add9377e",
+        "lean/lakefile.toml": "3633a4454248c5c136f7ea986833ab2baa8c2cc90998ae4583fdb9e4b9200e0c",
+        "lean/lean-toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+        "lean/s11/S11D3Invariants/Quadratic.lean": "ccb26fd2c468c84e5cc499840179b3d574c497d15604baebce226009dc70933f",
+        "lean/s11/S11D3Invariants/Rotation.lean": "1de41bfbbea2144e6a63ce9d1752b9bff18497fadb8c5bfdfee818fcffc68426"
+      }
+    },
+    {
+      "name": "dependency_S11D3Invariants_Constraints",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "-o",
+        "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S11D3Invariants/Constraints.olean",
+        "s11/S11D3Invariants/Constraints.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 217.273,
+      "source_sha256": "cc8a4b788b205cf2de7f4aea4b617e0e41c2047c489806f59ef6d56d770bfc13",
+      "required_failure_in": null,
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "olean_sha256": "5d86c2d145cabc4181e3b474c7ffc9cafcbd889ab190da01d53149ad2a3134ca",
+      "input_olean_sha256": {
+        "lean/.lake/build/lib/lean/S11D3Invariants/Quadratic.olean": "814b4bd7f2520f5dcb2e92be13d5edea4db87b1442917a5ddb1705297bbe1023",
+        "lean/.lake/build/lib/lean/S11D3Invariants/Rotation.olean": "1f23a7517dc5075d86914a05ce90f92b9fa8e3780bef99e53970686a9958d553"
+      },
+      "reused_from_instrument_sha256": "6ce57a5a7de61bd9e47e805d942a8d70181d33f7a7c1da9b2b39a7ef05358a5e",
+      "reuse_source_dependency_sha256": {
+        "_measurements/S11_lean_d3_generate.py": "2be172074609c7c768339c3847773c887e6935623701fc3a9eb20528aa7b3b45",
+        "lean/lake-manifest.json": "91fd5318cdc35e4044d6e059c6ef73d94b955d27adf8a5860b07ec92add9377e",
+        "lean/lakefile.toml": "3633a4454248c5c136f7ea986833ab2baa8c2cc90998ae4583fdb9e4b9200e0c",
+        "lean/lean-toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+        "lean/s11/S11D3Invariants/Constraints.lean": "cc8a4b788b205cf2de7f4aea4b617e0e41c2047c489806f59ef6d56d770bfc13",
+        "lean/s11/S11D3Invariants/Quadratic.lean": "ccb26fd2c468c84e5cc499840179b3d574c497d15604baebce226009dc70933f",
+        "lean/s11/S11D3Invariants/Rotation.lean": "1de41bfbbea2144e6a63ce9d1752b9bff18497fadb8c5bfdfee818fcffc68426"
+      }
+    },
+    {
+      "name": "dependency_S11D3Invariants_Classification",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "-o",
+        "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S11D3Invariants/Classification.olean",
+        "s11/S11D3Invariants/Classification.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 9.783,
+      "source_sha256": "2cfba9f58fe6932859833f7e0fe8f8f0c398618de1086a6b358527d3563b3c02",
+      "required_failure_in": null,
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "olean_sha256": "8debe95d1cb11b440b1be97c5d9786a6405ed3bbca319b358cebd8c1155980d4",
+      "input_olean_sha256": {
+        "lean/.lake/build/lib/lean/S11D3Invariants/Constraints.olean": "5d86c2d145cabc4181e3b474c7ffc9cafcbd889ab190da01d53149ad2a3134ca",
+        "lean/.lake/build/lib/lean/S11D3Invariants/Quadratic.olean": "814b4bd7f2520f5dcb2e92be13d5edea4db87b1442917a5ddb1705297bbe1023",
+        "lean/.lake/build/lib/lean/S11D3Invariants/Rotation.olean": "1f23a7517dc5075d86914a05ce90f92b9fa8e3780bef99e53970686a9958d553"
+      },
+      "reused_from_instrument_sha256": "6ce57a5a7de61bd9e47e805d942a8d70181d33f7a7c1da9b2b39a7ef05358a5e",
+      "reuse_source_dependency_sha256": {
+        "_measurements/S11_lean_d3_generate.py": "2be172074609c7c768339c3847773c887e6935623701fc3a9eb20528aa7b3b45",
+        "lean/lake-manifest.json": "91fd5318cdc35e4044d6e059c6ef73d94b955d27adf8a5860b07ec92add9377e",
+        "lean/lakefile.toml": "3633a4454248c5c136f7ea986833ab2baa8c2cc90998ae4583fdb9e4b9200e0c",
+        "lean/lean-toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+        "lean/s11/S11D3Invariants/Classification.lean": "2cfba9f58fe6932859833f7e0fe8f8f0c398618de1086a6b358527d3563b3c02",
+        "lean/s11/S11D3Invariants/Constraints.lean": "cc8a4b788b205cf2de7f4aea4b617e0e41c2047c489806f59ef6d56d770bfc13",
+        "lean/s11/S11D3Invariants/Quadratic.lean": "ccb26fd2c468c84e5cc499840179b3d574c497d15604baebce226009dc70933f",
+        "lean/s11/S11D3Invariants/Rotation.lean": "1de41bfbbea2144e6a63ce9d1752b9bff18497fadb8c5bfdfee818fcffc68426"
+      }
+    },
+    {
+      "name": "dependency_S10Controls_Action",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "-o",
+        "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S10Controls/Action.olean",
+        "s10/S10Controls/Action.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 11.698,
+      "source_sha256": "e1764df0b26a46d6822ec4a72cca42e5d4f9df06686a1b649c86fd13af9f6566",
+      "required_failure_in": null,
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "olean_sha256": "da96a6b32e4cd34392e44aac2da19ea3368f1063c2cc5c20257e455d0c404e49",
+      "input_olean_sha256": {
+        "lean/.lake/build/lib/lean/S10Pilot/Action.olean": "1be8c3c4196dd7d4ec3eab5adeec1ad4efd799f37bea3169a7b2396a59efc3bb",
+        "lean/.lake/build/lib/lean/S10Pilot/PlaneWave.olean": "0d66b90ba63086dceddbae3b9cdeae947fcc286b6fa2d3bcd9c9dc033e0608b4"
+      },
+      "reused_from_instrument_sha256": "6ce57a5a7de61bd9e47e805d942a8d70181d33f7a7c1da9b2b39a7ef05358a5e",
+      "reuse_source_dependency_sha256": {
+        "_measurements/S11_lean_d3_generate.py": "2be172074609c7c768339c3847773c887e6935623701fc3a9eb20528aa7b3b45",
+        "lean/lake-manifest.json": "91fd5318cdc35e4044d6e059c6ef73d94b955d27adf8a5860b07ec92add9377e",
+        "lean/lakefile.toml": "3633a4454248c5c136f7ea986833ab2baa8c2cc90998ae4583fdb9e4b9200e0c",
+        "lean/lean-toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+        "lean/s10/S10Controls/Action.lean": "e1764df0b26a46d6822ec4a72cca42e5d4f9df06686a1b649c86fd13af9f6566",
+        "lean/s10/S10Pilot/Action.lean": "a7466f2c23a123f244615217d27d5048a625bddfaad5ce2a6f0456a8704f435c",
+        "lean/s10/S10Pilot/PlaneWave.lean": "d64ad2d70169976f42cacb3ece650776780a17fe640d1efee4aa7677e53c85cb"
+      }
+    },
+    {
+      "name": "dependency_S10Controls_PlaneWave",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "-o",
+        "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S10Controls/PlaneWave.olean",
+        "s10/S10Controls/PlaneWave.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 10.337,
+      "source_sha256": "14149fe870ddadc3aa547a49706748990d1eed9f74e428423f9c81e3a745863e",
+      "required_failure_in": null,
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "olean_sha256": "2e15e57ea63854fba96383e24788881ae509d1743618f8017eb1cbcb3e56a2a7",
+      "input_olean_sha256": {
+        "lean/.lake/build/lib/lean/S10Controls/Action.olean": "da96a6b32e4cd34392e44aac2da19ea3368f1063c2cc5c20257e455d0c404e49",
+        "lean/.lake/build/lib/lean/S10Pilot/Action.olean": "1be8c3c4196dd7d4ec3eab5adeec1ad4efd799f37bea3169a7b2396a59efc3bb",
+        "lean/.lake/build/lib/lean/S10Pilot/PlaneWave.olean": "0d66b90ba63086dceddbae3b9cdeae947fcc286b6fa2d3bcd9c9dc033e0608b4"
+      },
+      "reused_from_instrument_sha256": "6ce57a5a7de61bd9e47e805d942a8d70181d33f7a7c1da9b2b39a7ef05358a5e",
+      "reuse_source_dependency_sha256": {
+        "_measurements/S11_lean_d3_generate.py": "2be172074609c7c768339c3847773c887e6935623701fc3a9eb20528aa7b3b45",
+        "lean/lake-manifest.json": "91fd5318cdc35e4044d6e059c6ef73d94b955d27adf8a5860b07ec92add9377e",
+        "lean/lakefile.toml": "3633a4454248c5c136f7ea986833ab2baa8c2cc90998ae4583fdb9e4b9200e0c",
+        "lean/lean-toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+        "lean/s10/S10Controls/Action.lean": "e1764df0b26a46d6822ec4a72cca42e5d4f9df06686a1b649c86fd13af9f6566",
+        "lean/s10/S10Controls/PlaneWave.lean": "14149fe870ddadc3aa547a49706748990d1eed9f74e428423f9c81e3a745863e",
+        "lean/s10/S10Pilot/Action.lean": "a7466f2c23a123f244615217d27d5048a625bddfaad5ce2a6f0456a8704f435c",
+        "lean/s10/S10Pilot/PlaneWave.lean": "d64ad2d70169976f42cacb3ece650776780a17fe640d1efee4aa7677e53c85cb"
+      }
+    },
+    {
+      "name": "dependency_S10Controls_Analytic",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "-o",
+        "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S10Controls/Analytic.olean",
+        "s10/S10Controls/Analytic.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 4.292,
+      "source_sha256": "bac51e35f46740653dbcea68724deecf23f9fdb8991c696f54007287b57afab5",
+      "required_failure_in": null,
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "olean_sha256": "716adf3a25d5b3fe03307f1275266e39eb50d3dae176e6c23c73935870c2a730",
+      "input_olean_sha256": {
+        "lean/.lake/build/lib/lean/S10Controls/Action.olean": "da96a6b32e4cd34392e44aac2da19ea3368f1063c2cc5c20257e455d0c404e49",
+        "lean/.lake/build/lib/lean/S10Controls/PlaneWave.olean": "2e15e57ea63854fba96383e24788881ae509d1743618f8017eb1cbcb3e56a2a7",
+        "lean/.lake/build/lib/lean/S10Pilot/Action.olean": "1be8c3c4196dd7d4ec3eab5adeec1ad4efd799f37bea3169a7b2396a59efc3bb",
+        "lean/.lake/build/lib/lean/S10Pilot/Analytic.olean": "9734d5342b5ee8d0683ce8e04b29e063554c4481f6db0e0cc5e418b68a9bebc6",
+        "lean/.lake/build/lib/lean/S10Pilot/PlaneWave.olean": "0d66b90ba63086dceddbae3b9cdeae947fcc286b6fa2d3bcd9c9dc033e0608b4",
+        "lean/.lake/build/lib/lean/S10Pilot/Variation.olean": "d2ae9c5944f74e9581b1a82893f65c7d715811b6407427ed997440c6033b36eb"
+      },
+      "reused_from_instrument_sha256": "6ce57a5a7de61bd9e47e805d942a8d70181d33f7a7c1da9b2b39a7ef05358a5e",
+      "reuse_source_dependency_sha256": {
+        "_measurements/S11_lean_d3_generate.py": "2be172074609c7c768339c3847773c887e6935623701fc3a9eb20528aa7b3b45",
+        "lean/lake-manifest.json": "91fd5318cdc35e4044d6e059c6ef73d94b955d27adf8a5860b07ec92add9377e",
+        "lean/lakefile.toml": "3633a4454248c5c136f7ea986833ab2baa8c2cc90998ae4583fdb9e4b9200e0c",
+        "lean/lean-toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+        "lean/s10/S10Controls/Action.lean": "e1764df0b26a46d6822ec4a72cca42e5d4f9df06686a1b649c86fd13af9f6566",
+        "lean/s10/S10Controls/Analytic.lean": "bac51e35f46740653dbcea68724deecf23f9fdb8991c696f54007287b57afab5",
+        "lean/s10/S10Controls/PlaneWave.lean": "14149fe870ddadc3aa547a49706748990d1eed9f74e428423f9c81e3a745863e",
+        "lean/s10/S10Pilot/Action.lean": "a7466f2c23a123f244615217d27d5048a625bddfaad5ce2a6f0456a8704f435c",
+        "lean/s10/S10Pilot/Analytic.lean": "f8a6fe854a7ed775a7ecf65fdf8589db2b865139a811daf1e4e27c34bac8811d",
+        "lean/s10/S10Pilot/PlaneWave.lean": "d64ad2d70169976f42cacb3ece650776780a17fe640d1efee4aa7677e53c85cb",
+        "lean/s10/S10Pilot/Variation.lean": "f4678338fb72fe859c627cbc5da3ccb90e9f38b7a5d774705219f880cdcc871d"
+      }
+    },
+    {
+      "name": "dependency_S10Controls_Variation",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "-o",
+        "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S10Controls/Variation.olean",
+        "s10/S10Controls/Variation.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 5.647,
+      "source_sha256": "0141297128ec34c925d11ffe13b2e08203282b4d1ada4d388b23b2d689db7c0e",
+      "required_failure_in": null,
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "olean_sha256": "3a0060269a368cbd43feb1548ae3c594520ebf684147438330f9bc53dbbaa5b7",
+      "input_olean_sha256": {
+        "lean/.lake/build/lib/lean/S10Controls/Action.olean": "da96a6b32e4cd34392e44aac2da19ea3368f1063c2cc5c20257e455d0c404e49",
+        "lean/.lake/build/lib/lean/S10Controls/Analytic.olean": "716adf3a25d5b3fe03307f1275266e39eb50d3dae176e6c23c73935870c2a730",
+        "lean/.lake/build/lib/lean/S10Controls/PlaneWave.olean": "2e15e57ea63854fba96383e24788881ae509d1743618f8017eb1cbcb3e56a2a7",
+        "lean/.lake/build/lib/lean/S10Pilot/Action.olean": "1be8c3c4196dd7d4ec3eab5adeec1ad4efd799f37bea3169a7b2396a59efc3bb",
+        "lean/.lake/build/lib/lean/S10Pilot/Analytic.olean": "9734d5342b5ee8d0683ce8e04b29e063554c4481f6db0e0cc5e418b68a9bebc6",
+        "lean/.lake/build/lib/lean/S10Pilot/PlaneWave.olean": "0d66b90ba63086dceddbae3b9cdeae947fcc286b6fa2d3bcd9c9dc033e0608b4",
+        "lean/.lake/build/lib/lean/S10Pilot/Variation.olean": "d2ae9c5944f74e9581b1a82893f65c7d715811b6407427ed997440c6033b36eb"
+      },
+      "reused_from_instrument_sha256": "6ce57a5a7de61bd9e47e805d942a8d70181d33f7a7c1da9b2b39a7ef05358a5e",
+      "reuse_source_dependency_sha256": {
+        "_measurements/S11_lean_d3_generate.py": "2be172074609c7c768339c3847773c887e6935623701fc3a9eb20528aa7b3b45",
+        "lean/lake-manifest.json": "91fd5318cdc35e4044d6e059c6ef73d94b955d27adf8a5860b07ec92add9377e",
+        "lean/lakefile.toml": "3633a4454248c5c136f7ea986833ab2baa8c2cc90998ae4583fdb9e4b9200e0c",
+        "lean/lean-toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+        "lean/s10/S10Controls/Action.lean": "e1764df0b26a46d6822ec4a72cca42e5d4f9df06686a1b649c86fd13af9f6566",
+        "lean/s10/S10Controls/Analytic.lean": "bac51e35f46740653dbcea68724deecf23f9fdb8991c696f54007287b57afab5",
+        "lean/s10/S10Controls/PlaneWave.lean": "14149fe870ddadc3aa547a49706748990d1eed9f74e428423f9c81e3a745863e",
+        "lean/s10/S10Controls/Variation.lean": "0141297128ec34c925d11ffe13b2e08203282b4d1ada4d388b23b2d689db7c0e",
+        "lean/s10/S10Pilot/Action.lean": "a7466f2c23a123f244615217d27d5048a625bddfaad5ce2a6f0456a8704f435c",
+        "lean/s10/S10Pilot/Analytic.lean": "f8a6fe854a7ed775a7ecf65fdf8589db2b865139a811daf1e4e27c34bac8811d",
+        "lean/s10/S10Pilot/PlaneWave.lean": "d64ad2d70169976f42cacb3ece650776780a17fe640d1efee4aa7677e53c85cb",
+        "lean/s10/S10Pilot/Variation.lean": "f4678338fb72fe859c627cbc5da3ccb90e9f38b7a5d774705219f880cdcc871d"
+      }
+    },
+    {
+      "name": "dependency_S10Pilot_PhaseAverage",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "-o",
+        "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S10Pilot/PhaseAverage.olean",
+        "s10/S10Pilot/PhaseAverage.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 4.289,
+      "source_sha256": "2007235232001290ac87d25e8922e4a3b615583272ef39034b2aedc83dee4429",
+      "required_failure_in": null,
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "olean_sha256": "16fec04f6fce2983d3353cc643b8881ef91f9ba43fe3d3a5868e539eac3aec5f",
+      "input_olean_sha256": {
+        "lean/.lake/build/lib/lean/S10Pilot/Action.olean": "1be8c3c4196dd7d4ec3eab5adeec1ad4efd799f37bea3169a7b2396a59efc3bb",
+        "lean/.lake/build/lib/lean/S10Pilot/PlaneWave.olean": "0d66b90ba63086dceddbae3b9cdeae947fcc286b6fa2d3bcd9c9dc033e0608b4"
+      },
+      "reused_from_instrument_sha256": "6ce57a5a7de61bd9e47e805d942a8d70181d33f7a7c1da9b2b39a7ef05358a5e",
+      "reuse_source_dependency_sha256": {
+        "_measurements/S11_lean_d3_generate.py": "2be172074609c7c768339c3847773c887e6935623701fc3a9eb20528aa7b3b45",
+        "lean/lake-manifest.json": "91fd5318cdc35e4044d6e059c6ef73d94b955d27adf8a5860b07ec92add9377e",
+        "lean/lakefile.toml": "3633a4454248c5c136f7ea986833ab2baa8c2cc90998ae4583fdb9e4b9200e0c",
+        "lean/lean-toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+        "lean/s10/S10Pilot/Action.lean": "a7466f2c23a123f244615217d27d5048a625bddfaad5ce2a6f0456a8704f435c",
+        "lean/s10/S10Pilot/PhaseAverage.lean": "2007235232001290ac87d25e8922e4a3b615583272ef39034b2aedc83dee4429",
+        "lean/s10/S10Pilot/PlaneWave.lean": "d64ad2d70169976f42cacb3ece650776780a17fe640d1efee4aa7677e53c85cb"
+      }
+    },
+    {
+      "name": "dependency_S10Controls_PhaseAverage",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "-o",
+        "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S10Controls/PhaseAverage.olean",
+        "s10/S10Controls/PhaseAverage.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 4.34,
+      "source_sha256": "ff2863169741814592ec0947da8941976d6ebf2d676e07300e0c0b48905034ba",
+      "required_failure_in": null,
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "olean_sha256": "dc0472a02f0909c9026828c3f15946132c8ddaeefcc7fa3a57b00d21ca38440a",
+      "input_olean_sha256": {
+        "lean/.lake/build/lib/lean/S10Controls/Action.olean": "da96a6b32e4cd34392e44aac2da19ea3368f1063c2cc5c20257e455d0c404e49",
+        "lean/.lake/build/lib/lean/S10Controls/PlaneWave.olean": "2e15e57ea63854fba96383e24788881ae509d1743618f8017eb1cbcb3e56a2a7",
+        "lean/.lake/build/lib/lean/S10Pilot/Action.olean": "1be8c3c4196dd7d4ec3eab5adeec1ad4efd799f37bea3169a7b2396a59efc3bb",
+        "lean/.lake/build/lib/lean/S10Pilot/PlaneWave.olean": "0d66b90ba63086dceddbae3b9cdeae947fcc286b6fa2d3bcd9c9dc033e0608b4"
+      },
+      "reused_from_instrument_sha256": "6ce57a5a7de61bd9e47e805d942a8d70181d33f7a7c1da9b2b39a7ef05358a5e",
+      "reuse_source_dependency_sha256": {
+        "_measurements/S11_lean_d3_generate.py": "2be172074609c7c768339c3847773c887e6935623701fc3a9eb20528aa7b3b45",
+        "lean/lake-manifest.json": "91fd5318cdc35e4044d6e059c6ef73d94b955d27adf8a5860b07ec92add9377e",
+        "lean/lakefile.toml": "3633a4454248c5c136f7ea986833ab2baa8c2cc90998ae4583fdb9e4b9200e0c",
+        "lean/lean-toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+        "lean/s10/S10Controls/Action.lean": "e1764df0b26a46d6822ec4a72cca42e5d4f9df06686a1b649c86fd13af9f6566",
+        "lean/s10/S10Controls/PhaseAverage.lean": "ff2863169741814592ec0947da8941976d6ebf2d676e07300e0c0b48905034ba",
+        "lean/s10/S10Controls/PlaneWave.lean": "14149fe870ddadc3aa547a49706748990d1eed9f74e428423f9c81e3a745863e",
+        "lean/s10/S10Pilot/Action.lean": "a7466f2c23a123f244615217d27d5048a625bddfaad5ce2a6f0456a8704f435c",
+        "lean/s10/S10Pilot/PlaneWave.lean": "d64ad2d70169976f42cacb3ece650776780a17fe640d1efee4aa7677e53c85cb"
+      }
+    },
+    {
+      "name": "dependency_S11Homogeneous_Action",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "-o",
+        "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S11Homogeneous/Action.olean",
+        "s11/S11Homogeneous/Action.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 5.797,
+      "source_sha256": "73a8cbfbe7770cd0d17262728f9887d2038260fc965d2abc34944b8af20aeb4b",
+      "required_failure_in": null,
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "olean_sha256": "1d75ed6bc81eef456cfce6c31a7bd35c753159e90d22453881660b462396111e",
+      "input_olean_sha256": {
+        "lean/.lake/build/lib/lean/S10Controls/Action.olean": "da96a6b32e4cd34392e44aac2da19ea3368f1063c2cc5c20257e455d0c404e49",
+        "lean/.lake/build/lib/lean/S10Controls/Analytic.olean": "716adf3a25d5b3fe03307f1275266e39eb50d3dae176e6c23c73935870c2a730",
+        "lean/.lake/build/lib/lean/S10Controls/PhaseAverage.olean": "dc0472a02f0909c9026828c3f15946132c8ddaeefcc7fa3a57b00d21ca38440a",
+        "lean/.lake/build/lib/lean/S10Controls/PlaneWave.olean": "2e15e57ea63854fba96383e24788881ae509d1743618f8017eb1cbcb3e56a2a7",
+        "lean/.lake/build/lib/lean/S10Controls/Variation.olean": "3a0060269a368cbd43feb1548ae3c594520ebf684147438330f9bc53dbbaa5b7",
+        "lean/.lake/build/lib/lean/S10Pilot/Action.olean": "1be8c3c4196dd7d4ec3eab5adeec1ad4efd799f37bea3169a7b2396a59efc3bb",
+        "lean/.lake/build/lib/lean/S10Pilot/Analytic.olean": "9734d5342b5ee8d0683ce8e04b29e063554c4481f6db0e0cc5e418b68a9bebc6",
+        "lean/.lake/build/lib/lean/S10Pilot/PhaseAverage.olean": "16fec04f6fce2983d3353cc643b8881ef91f9ba43fe3d3a5868e539eac3aec5f",
+        "lean/.lake/build/lib/lean/S10Pilot/PlaneWave.olean": "0d66b90ba63086dceddbae3b9cdeae947fcc286b6fa2d3bcd9c9dc033e0608b4",
+        "lean/.lake/build/lib/lean/S10Pilot/Variation.olean": "d2ae9c5944f74e9581b1a82893f65c7d715811b6407427ed997440c6033b36eb"
+      },
+      "reused_from_instrument_sha256": "6ce57a5a7de61bd9e47e805d942a8d70181d33f7a7c1da9b2b39a7ef05358a5e",
+      "reuse_source_dependency_sha256": {
+        "_measurements/S11_lean_d3_generate.py": "2be172074609c7c768339c3847773c887e6935623701fc3a9eb20528aa7b3b45",
+        "lean/lake-manifest.json": "91fd5318cdc35e4044d6e059c6ef73d94b955d27adf8a5860b07ec92add9377e",
+        "lean/lakefile.toml": "3633a4454248c5c136f7ea986833ab2baa8c2cc90998ae4583fdb9e4b9200e0c",
+        "lean/lean-toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+        "lean/s10/S10Controls/Action.lean": "e1764df0b26a46d6822ec4a72cca42e5d4f9df06686a1b649c86fd13af9f6566",
+        "lean/s10/S10Controls/Analytic.lean": "bac51e35f46740653dbcea68724deecf23f9fdb8991c696f54007287b57afab5",
+        "lean/s10/S10Controls/PhaseAverage.lean": "ff2863169741814592ec0947da8941976d6ebf2d676e07300e0c0b48905034ba",
+        "lean/s10/S10Controls/PlaneWave.lean": "14149fe870ddadc3aa547a49706748990d1eed9f74e428423f9c81e3a745863e",
+        "lean/s10/S10Controls/Variation.lean": "0141297128ec34c925d11ffe13b2e08203282b4d1ada4d388b23b2d689db7c0e",
+        "lean/s10/S10Pilot/Action.lean": "a7466f2c23a123f244615217d27d5048a625bddfaad5ce2a6f0456a8704f435c",
+        "lean/s10/S10Pilot/Analytic.lean": "f8a6fe854a7ed775a7ecf65fdf8589db2b865139a811daf1e4e27c34bac8811d",
+        "lean/s10/S10Pilot/PhaseAverage.lean": "2007235232001290ac87d25e8922e4a3b615583272ef39034b2aedc83dee4429",
+        "lean/s10/S10Pilot/PlaneWave.lean": "d64ad2d70169976f42cacb3ece650776780a17fe640d1efee4aa7677e53c85cb",
+        "lean/s10/S10Pilot/Variation.lean": "f4678338fb72fe859c627cbc5da3ccb90e9f38b7a5d774705219f880cdcc871d",
+        "lean/s11/S11Homogeneous/Action.lean": "73a8cbfbe7770cd0d17262728f9887d2038260fc965d2abc34944b8af20aeb4b"
+      }
+    },
+    {
+      "name": "build_Action",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "-o",
+        "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S11D3Bulk/Action.olean",
+        "s11/S11D3Bulk/Action.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 18.241,
+      "source_sha256": "ac5a0f8b42bb27ffb703e3b9ff5f2efcdae559706583b0ccd343e64502ed5f63",
+      "required_failure_in": null,
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "olean_sha256": "2d88ab3c827c4d1cdc4e7443582f32bed6d14e70ff596ecea87cd8e376584c41",
+      "input_olean_sha256": {
+        "lean/.lake/build/lib/lean/S10Pilot/Action.olean": "1be8c3c4196dd7d4ec3eab5adeec1ad4efd799f37bea3169a7b2396a59efc3bb",
+        "lean/.lake/build/lib/lean/S10Pilot/Analytic.olean": "9734d5342b5ee8d0683ce8e04b29e063554c4481f6db0e0cc5e418b68a9bebc6",
+        "lean/.lake/build/lib/lean/S10Pilot/PlaneWave.olean": "0d66b90ba63086dceddbae3b9cdeae947fcc286b6fa2d3bcd9c9dc033e0608b4",
+        "lean/.lake/build/lib/lean/S10Pilot/Variation.olean": "d2ae9c5944f74e9581b1a82893f65c7d715811b6407427ed997440c6033b36eb",
+        "lean/.lake/build/lib/lean/S11D3Invariants/Classification.olean": "8debe95d1cb11b440b1be97c5d9786a6405ed3bbca319b358cebd8c1155980d4",
+        "lean/.lake/build/lib/lean/S11D3Invariants/Constraints.olean": "5d86c2d145cabc4181e3b474c7ffc9cafcbd889ab190da01d53149ad2a3134ca",
+        "lean/.lake/build/lib/lean/S11D3Invariants/Quadratic.olean": "814b4bd7f2520f5dcb2e92be13d5edea4db87b1442917a5ddb1705297bbe1023",
+        "lean/.lake/build/lib/lean/S11D3Invariants/Rotation.olean": "1f23a7517dc5075d86914a05ce90f92b9fa8e3780bef99e53970686a9958d553"
+      }
+    },
+    {
+      "name": "build_Calculus",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "-o",
+        "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S11D3Bulk/Calculus.olean",
+        "s11/S11D3Bulk/Calculus.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 15.523,
+      "source_sha256": "4a2f040ebbddf14bed0b3effcb6087fd8ff2b66d877c18af7576a122108b8167",
+      "required_failure_in": null,
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "olean_sha256": "44b23067db3fda0756963461a817b38efb5fb149c92e343e5c8beaec68ada7bf",
+      "input_olean_sha256": {
+        "lean/.lake/build/lib/lean/S10Pilot/Action.olean": "1be8c3c4196dd7d4ec3eab5adeec1ad4efd799f37bea3169a7b2396a59efc3bb",
+        "lean/.lake/build/lib/lean/S10Pilot/Analytic.olean": "9734d5342b5ee8d0683ce8e04b29e063554c4481f6db0e0cc5e418b68a9bebc6",
+        "lean/.lake/build/lib/lean/S10Pilot/PlaneWave.olean": "0d66b90ba63086dceddbae3b9cdeae947fcc286b6fa2d3bcd9c9dc033e0608b4",
+        "lean/.lake/build/lib/lean/S10Pilot/Variation.olean": "d2ae9c5944f74e9581b1a82893f65c7d715811b6407427ed997440c6033b36eb",
+        "lean/.lake/build/lib/lean/S11D3Bulk/Action.olean": "2d88ab3c827c4d1cdc4e7443582f32bed6d14e70ff596ecea87cd8e376584c41",
+        "lean/.lake/build/lib/lean/S11D3Invariants/Classification.olean": "8debe95d1cb11b440b1be97c5d9786a6405ed3bbca319b358cebd8c1155980d4",
+        "lean/.lake/build/lib/lean/S11D3Invariants/Constraints.olean": "5d86c2d145cabc4181e3b474c7ffc9cafcbd889ab190da01d53149ad2a3134ca",
+        "lean/.lake/build/lib/lean/S11D3Invariants/Quadratic.olean": "814b4bd7f2520f5dcb2e92be13d5edea4db87b1442917a5ddb1705297bbe1023",
+        "lean/.lake/build/lib/lean/S11D3Invariants/Rotation.olean": "1f23a7517dc5075d86914a05ce90f92b9fa8e3780bef99e53970686a9958d553"
+      }
+    },
+    {
+      "name": "build_Variation",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "-o",
+        "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S11D3Bulk/Variation.olean",
+        "s11/S11D3Bulk/Variation.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 12.824,
+      "source_sha256": "a25416fc69bced11d1109fd396f0cbb5087f55a5864039d0fb04c93564b75b6a",
+      "required_failure_in": null,
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "olean_sha256": "30d58e4c912568074b47c33795e8adbf20783e66cc8cc004a1cfefca55fa186c",
+      "input_olean_sha256": {
+        "lean/.lake/build/lib/lean/S10Pilot/Action.olean": "1be8c3c4196dd7d4ec3eab5adeec1ad4efd799f37bea3169a7b2396a59efc3bb",
+        "lean/.lake/build/lib/lean/S10Pilot/Analytic.olean": "9734d5342b5ee8d0683ce8e04b29e063554c4481f6db0e0cc5e418b68a9bebc6",
+        "lean/.lake/build/lib/lean/S10Pilot/PlaneWave.olean": "0d66b90ba63086dceddbae3b9cdeae947fcc286b6fa2d3bcd9c9dc033e0608b4",
+        "lean/.lake/build/lib/lean/S10Pilot/Variation.olean": "d2ae9c5944f74e9581b1a82893f65c7d715811b6407427ed997440c6033b36eb",
+        "lean/.lake/build/lib/lean/S11D3Bulk/Action.olean": "2d88ab3c827c4d1cdc4e7443582f32bed6d14e70ff596ecea87cd8e376584c41",
+        "lean/.lake/build/lib/lean/S11D3Invariants/Classification.olean": "8debe95d1cb11b440b1be97c5d9786a6405ed3bbca319b358cebd8c1155980d4",
+        "lean/.lake/build/lib/lean/S11D3Invariants/Constraints.olean": "5d86c2d145cabc4181e3b474c7ffc9cafcbd889ab190da01d53149ad2a3134ca",
+        "lean/.lake/build/lib/lean/S11D3Invariants/Quadratic.olean": "814b4bd7f2520f5dcb2e92be13d5edea4db87b1442917a5ddb1705297bbe1023",
+        "lean/.lake/build/lib/lean/S11D3Invariants/Rotation.olean": "1f23a7517dc5075d86914a05ce90f92b9fa8e3780bef99e53970686a9958d553"
+      }
+    },
+    {
+      "name": "build_Bulk",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "-o",
+        "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S11D3Bulk/Bulk.olean",
+        "s11/S11D3Bulk/Bulk.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 18.887,
+      "source_sha256": "b70072ba81550a53af9b12ee4eb50ffe06c849bc5c9c44003f459c3ebaacb601",
+      "required_failure_in": null,
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "olean_sha256": "faebec5079c0b12f4f8eb329935a426410f7c09c21b045b9a6a1425253a88a74",
+      "input_olean_sha256": {
+        "lean/.lake/build/lib/lean/S10Controls/Action.olean": "da96a6b32e4cd34392e44aac2da19ea3368f1063c2cc5c20257e455d0c404e49",
+        "lean/.lake/build/lib/lean/S10Controls/Analytic.olean": "716adf3a25d5b3fe03307f1275266e39eb50d3dae176e6c23c73935870c2a730",
+        "lean/.lake/build/lib/lean/S10Controls/PhaseAverage.olean": "dc0472a02f0909c9026828c3f15946132c8ddaeefcc7fa3a57b00d21ca38440a",
+        "lean/.lake/build/lib/lean/S10Controls/PlaneWave.olean": "2e15e57ea63854fba96383e24788881ae509d1743618f8017eb1cbcb3e56a2a7",
+        "lean/.lake/build/lib/lean/S10Controls/Variation.olean": "3a0060269a368cbd43feb1548ae3c594520ebf684147438330f9bc53dbbaa5b7",
+        "lean/.lake/build/lib/lean/S10Pilot/Action.olean": "1be8c3c4196dd7d4ec3eab5adeec1ad4efd799f37bea3169a7b2396a59efc3bb",
+        "lean/.lake/build/lib/lean/S10Pilot/Analytic.olean": "9734d5342b5ee8d0683ce8e04b29e063554c4481f6db0e0cc5e418b68a9bebc6",
+        "lean/.lake/build/lib/lean/S10Pilot/PhaseAverage.olean": "16fec04f6fce2983d3353cc643b8881ef91f9ba43fe3d3a5868e539eac3aec5f",
+        "lean/.lake/build/lib/lean/S10Pilot/PlaneWave.olean": "0d66b90ba63086dceddbae3b9cdeae947fcc286b6fa2d3bcd9c9dc033e0608b4",
+        "lean/.lake/build/lib/lean/S10Pilot/Variation.olean": "d2ae9c5944f74e9581b1a82893f65c7d715811b6407427ed997440c6033b36eb",
+        "lean/.lake/build/lib/lean/S11D3Bulk/Action.olean": "2d88ab3c827c4d1cdc4e7443582f32bed6d14e70ff596ecea87cd8e376584c41",
+        "lean/.lake/build/lib/lean/S11D3Bulk/Calculus.olean": "44b23067db3fda0756963461a817b38efb5fb149c92e343e5c8beaec68ada7bf",
+        "lean/.lake/build/lib/lean/S11D3Bulk/Variation.olean": "30d58e4c912568074b47c33795e8adbf20783e66cc8cc004a1cfefca55fa186c",
+        "lean/.lake/build/lib/lean/S11D3Invariants/Classification.olean": "8debe95d1cb11b440b1be97c5d9786a6405ed3bbca319b358cebd8c1155980d4",
+        "lean/.lake/build/lib/lean/S11D3Invariants/Constraints.olean": "5d86c2d145cabc4181e3b474c7ffc9cafcbd889ab190da01d53149ad2a3134ca",
+        "lean/.lake/build/lib/lean/S11D3Invariants/Quadratic.olean": "814b4bd7f2520f5dcb2e92be13d5edea4db87b1442917a5ddb1705297bbe1023",
+        "lean/.lake/build/lib/lean/S11D3Invariants/Rotation.olean": "1f23a7517dc5075d86914a05ce90f92b9fa8e3780bef99e53970686a9958d553",
+        "lean/.lake/build/lib/lean/S11Homogeneous/Action.olean": "1d75ed6bc81eef456cfce6c31a7bd35c753159e90d22453881660b462396111e"
+      }
+    },
+    {
+      "name": "build_Census",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "-o",
+        "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S11D3Bulk/Census.olean",
+        "s11/S11D3Bulk/Census.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 11.796,
+      "source_sha256": "4a63069f2db5306b93d83498190a28c13e6466deb4da64af1639141f926a4dc1",
+      "required_failure_in": null,
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "olean_sha256": "9fa3a976181e3def9370063905bf42705f5173ce59ed0ae4d325f8a3d70bac0e",
+      "input_olean_sha256": {
+        "lean/.lake/build/lib/lean/S10Controls/Action.olean": "da96a6b32e4cd34392e44aac2da19ea3368f1063c2cc5c20257e455d0c404e49",
+        "lean/.lake/build/lib/lean/S10Controls/Analytic.olean": "716adf3a25d5b3fe03307f1275266e39eb50d3dae176e6c23c73935870c2a730",
+        "lean/.lake/build/lib/lean/S10Controls/PhaseAverage.olean": "dc0472a02f0909c9026828c3f15946132c8ddaeefcc7fa3a57b00d21ca38440a",
+        "lean/.lake/build/lib/lean/S10Controls/PlaneWave.olean": "2e15e57ea63854fba96383e24788881ae509d1743618f8017eb1cbcb3e56a2a7",
+        "lean/.lake/build/lib/lean/S10Controls/Variation.olean": "3a0060269a368cbd43feb1548ae3c594520ebf684147438330f9bc53dbbaa5b7",
+        "lean/.lake/build/lib/lean/S10Pilot/Action.olean": "1be8c3c4196dd7d4ec3eab5adeec1ad4efd799f37bea3169a7b2396a59efc3bb",
+        "lean/.lake/build/lib/lean/S10Pilot/Analytic.olean": "9734d5342b5ee8d0683ce8e04b29e063554c4481f6db0e0cc5e418b68a9bebc6",
+        "lean/.lake/build/lib/lean/S10Pilot/PhaseAverage.olean": "16fec04f6fce2983d3353cc643b8881ef91f9ba43fe3d3a5868e539eac3aec5f",
+        "lean/.lake/build/lib/lean/S10Pilot/PlaneWave.olean": "0d66b90ba63086dceddbae3b9cdeae947fcc286b6fa2d3bcd9c9dc033e0608b4",
+        "lean/.lake/build/lib/lean/S10Pilot/Variation.olean": "d2ae9c5944f74e9581b1a82893f65c7d715811b6407427ed997440c6033b36eb",
+        "lean/.lake/build/lib/lean/S11D3Bulk/Action.olean": "2d88ab3c827c4d1cdc4e7443582f32bed6d14e70ff596ecea87cd8e376584c41",
+        "lean/.lake/build/lib/lean/S11D3Bulk/Bulk.olean": "faebec5079c0b12f4f8eb329935a426410f7c09c21b045b9a6a1425253a88a74",
+        "lean/.lake/build/lib/lean/S11D3Bulk/Calculus.olean": "44b23067db3fda0756963461a817b38efb5fb149c92e343e5c8beaec68ada7bf",
+        "lean/.lake/build/lib/lean/S11D3Bulk/Variation.olean": "30d58e4c912568074b47c33795e8adbf20783e66cc8cc004a1cfefca55fa186c",
+        "lean/.lake/build/lib/lean/S11D3Invariants/Classification.olean": "8debe95d1cb11b440b1be97c5d9786a6405ed3bbca319b358cebd8c1155980d4",
+        "lean/.lake/build/lib/lean/S11D3Invariants/Constraints.olean": "5d86c2d145cabc4181e3b474c7ffc9cafcbd889ab190da01d53149ad2a3134ca",
+        "lean/.lake/build/lib/lean/S11D3Invariants/Quadratic.olean": "814b4bd7f2520f5dcb2e92be13d5edea4db87b1442917a5ddb1705297bbe1023",
+        "lean/.lake/build/lib/lean/S11D3Invariants/Rotation.olean": "1f23a7517dc5075d86914a05ce90f92b9fa8e3780bef99e53970686a9958d553",
+        "lean/.lake/build/lib/lean/S11Homogeneous/Action.olean": "1d75ed6bc81eef456cfce6c31a7bd35c753159e90d22453881660b462396111e"
+      }
+    },
+    {
+      "name": "axiom_audit",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "-o",
+        "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S11D3Bulk.olean",
+        "s11/S11D3Bulk.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 8.274,
+      "source_sha256": "1dcb9fed9540c5fa7be9b48c8d1be6122c013eee4570fd7f654189ad9dccaf7d",
+      "required_failure_in": null,
+      "diagnostics": [],
+      "output": "'S11D3Bulk.density_identity' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D3Bulk.all_invariant_densities' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D3Bulk.lagrangian_increment' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D3Bulk.lagrangian_variation' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D3Bulk.momentum_eq' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D3Bulk.momentum_smul' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D3Bulk.smooth_momentum' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D3Bulk.smooth_eulerLagrange' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D3Bulk.partial_add' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D3Bulk.partial_sub' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D3Bulk.partial_neg' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D3Bulk.partial_const_mul' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D3Bulk.partial_mul' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D3Bulk.partial_zero' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D3Bulk.partial_second' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D3Bulk.partial_commute' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D3Bulk.linearDensity_eq' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D3Bulk.lagrangian_change' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D3Bulk.linearDensity_self' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D3Bulk.integrable_linear_term' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D3Bulk.integrable_linearDensity' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D3Bulk.integrable_test_lagrangian' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D3Bulk.relative_density_integrable' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D3Bulk.relativeAction_expansion' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D3Bulk.relativeAction_hasDerivAt' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D3Bulk.integrable_el_term' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D3Bulk.integrated_variation_by_parts' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D3Bulk.relativeAction_deriv_eq_eulerLagrange' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D3Bulk.actionStationary_iff_eulerLagrange' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D3Bulk.gradDiv_eq' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D3Bulk.eulerLagrange_eq' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D3Bulk.boundary_identity' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D3Bulk.null_density_is_divergence' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D3Bulk.homogeneous_operator' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D3Bulk.momentum_contraction' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D3Bulk.eulerLagrange_planeWave' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D3Bulk.modal_longitudinal' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D3Bulk.modal_transverse' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D3Bulk.modal_zero_wavevector' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D3Bulk.bulkEquivalent_iff' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D3Bulk.bulkEquivalent_response' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D3Bulk.response_surjective' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D3Bulk.variationallyNull_iff' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D3Bulk.null_parameterization' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D3Bulk.nullSpace_identification' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D3Bulk.bulk_response_dimension' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D3Bulk.null_dimension' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D3Bulk.null_nonzero_example' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D3Bulk.exists_nonzero_firstVariation' depends on axioms: [propext, Classical.choice, Quot.sound]\n",
+      "output_sha256": "c2956f29eca6fa2847e438ab822c7e772c7df93dd9e18e9b088c80d12372e000",
+      "olean_sha256": "dcd020c99bbe3e3bd57c1b6220b53d968a9eccc18af9c9649ad2fe76c5a3c62e",
+      "input_olean_sha256": {
+        "lean/.lake/build/lib/lean/S10Controls/Action.olean": "da96a6b32e4cd34392e44aac2da19ea3368f1063c2cc5c20257e455d0c404e49",
+        "lean/.lake/build/lib/lean/S10Controls/Analytic.olean": "716adf3a25d5b3fe03307f1275266e39eb50d3dae176e6c23c73935870c2a730",
+        "lean/.lake/build/lib/lean/S10Controls/PhaseAverage.olean": "dc0472a02f0909c9026828c3f15946132c8ddaeefcc7fa3a57b00d21ca38440a",
+        "lean/.lake/build/lib/lean/S10Controls/PlaneWave.olean": "2e15e57ea63854fba96383e24788881ae509d1743618f8017eb1cbcb3e56a2a7",
+        "lean/.lake/build/lib/lean/S10Controls/Variation.olean": "3a0060269a368cbd43feb1548ae3c594520ebf684147438330f9bc53dbbaa5b7",
+        "lean/.lake/build/lib/lean/S10Pilot/Action.olean": "1be8c3c4196dd7d4ec3eab5adeec1ad4efd799f37bea3169a7b2396a59efc3bb",
+        "lean/.lake/build/lib/lean/S10Pilot/Analytic.olean": "9734d5342b5ee8d0683ce8e04b29e063554c4481f6db0e0cc5e418b68a9bebc6",
+        "lean/.lake/build/lib/lean/S10Pilot/PhaseAverage.olean": "16fec04f6fce2983d3353cc643b8881ef91f9ba43fe3d3a5868e539eac3aec5f",
+        "lean/.lake/build/lib/lean/S10Pilot/PlaneWave.olean": "0d66b90ba63086dceddbae3b9cdeae947fcc286b6fa2d3bcd9c9dc033e0608b4",
+        "lean/.lake/build/lib/lean/S10Pilot/Variation.olean": "d2ae9c5944f74e9581b1a82893f65c7d715811b6407427ed997440c6033b36eb",
+        "lean/.lake/build/lib/lean/S11D3Bulk/Action.olean": "2d88ab3c827c4d1cdc4e7443582f32bed6d14e70ff596ecea87cd8e376584c41",
+        "lean/.lake/build/lib/lean/S11D3Bulk/Bulk.olean": "faebec5079c0b12f4f8eb329935a426410f7c09c21b045b9a6a1425253a88a74",
+        "lean/.lake/build/lib/lean/S11D3Bulk/Calculus.olean": "44b23067db3fda0756963461a817b38efb5fb149c92e343e5c8beaec68ada7bf",
+        "lean/.lake/build/lib/lean/S11D3Bulk/Census.olean": "9fa3a976181e3def9370063905bf42705f5173ce59ed0ae4d325f8a3d70bac0e",
+        "lean/.lake/build/lib/lean/S11D3Bulk/Variation.olean": "30d58e4c912568074b47c33795e8adbf20783e66cc8cc004a1cfefca55fa186c",
+        "lean/.lake/build/lib/lean/S11D3Invariants/Classification.olean": "8debe95d1cb11b440b1be97c5d9786a6405ed3bbca319b358cebd8c1155980d4",
+        "lean/.lake/build/lib/lean/S11D3Invariants/Constraints.olean": "5d86c2d145cabc4181e3b474c7ffc9cafcbd889ab190da01d53149ad2a3134ca",
+        "lean/.lake/build/lib/lean/S11D3Invariants/Quadratic.olean": "814b4bd7f2520f5dcb2e92be13d5edea4db87b1442917a5ddb1705297bbe1023",
+        "lean/.lake/build/lib/lean/S11D3Invariants/Rotation.olean": "1f23a7517dc5075d86914a05ce90f92b9fa8e3780bef99e53970686a9958d553",
+        "lean/.lake/build/lib/lean/S11Homogeneous/Action.olean": "1d75ed6bc81eef456cfce6c31a7bd35c753159e90d22453881660b462396111e"
+      }
+    },
+    {
+      "name": "density_sign",
+      "expected": "REJECTED",
+      "outcome": "REJECTED",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/d3_bulk_verification/density_sign.lean"
+      ],
+      "exit_status": 1,
+      "wall_seconds": 17.239,
+      "source_sha256": "9511aa79ad8cd8dfedfee2ca11cd73243caac993684e91e76f47f517c11263f2",
+      "required_failure_in": "density_identity",
+      "diagnostics": [
+        {
+          "declaration": "density_identity",
+          "line": 20,
+          "message": "s11/_scratch/d3_bulk_verification/density_sign.lean:20:91: error: unsolved goals\nv : Vec 3\nJ : Jet 3\n⊢ v 0 * J (Fin.succ 0) 0 * J (Fin.succ 1) 1 + v 0 * J (Fin.succ 0) 0 * J (Fin.succ 2) 2 +\n                                          v 0 * J (Fin.succ 0) 0 ^ 2 * (1 / 2) +\n                                        v 0 * J (Fin.succ 1) 1 * J (Fin.succ 2) 2 +\n                                      v 0 * J (Fin.succ 1) 1 ^ 2 * (1 / 2) +\n                                    v 0 * J (Fin.succ 2) 2 ^ 2 * (1 / 2) +\n                                  J (Fin.succ 0) 0 ^ 2 * v 1 * (1 / 2) +\n                                J (Fin.succ 0) 0 ^ 2 * v 2 * (1 / 2) +\n                              J (Fin.succ 1) 1 ^ 2 * v 1 * (1 / 2) +\n                            J (Fin.succ 1) 1 ^ 2 * v 2 * (1 / 2) +\n                          J (Fin.succ 2) 2 ^ 2 * v 1 * (1 / 2) +\n                        J (Fin.succ 2) 2 ^ 2 * v 2 * (1 / 2) +\n                      v 1 * J (Fin.succ 0) 1 * J (Fin.succ 1) 0 +\n                    v 1 * J (Fin.succ 0) 2 * J (Fin.succ 2) 0 +\n                  v 1 * J (Fin.succ 1) 2 * J (Fin.succ 2) 1 +\n                J (Fin.succ 0) 1 ^ 2 * v 2 * (1 / 2) +\n              J (Fin.succ 1) 0 ^ 2 * v 2 * (1 / 2) +\n            J (Fin.succ 0) 2 ^ 2 * v 2 * (1 / 2) +\n          J (Fin.succ 2) 0 ^ 2 * v 2 * (1 / 2) +\n        J (Fin.succ 1) 2 ^ 2 * v 2 * (1 / 2) +\n      J (Fin.succ 2) 1 ^ 2 * v 2 * (1 / 2) =\n    -(v 0 * J (Fin.succ 0) 0 * J (Fin.succ 1) 1) - v 0 * J (Fin.succ 0) 0 * J (Fin.succ 2) 2 +\n                                          v 0 * J (Fin.succ 0) 0 ^ 2 * (-1 / 2) -\n                                        v 0 * J (Fin.succ 1) 1 * J (Fin.succ 2) 2 +\n                                      v 0 * J (Fin.succ 1) 1 ^ 2 * (-1 / 2) +\n                                    v 0 * J (Fin.succ 2) 2 ^ 2 * (-1 / 2) +\n                                  J (Fin.succ 0) 0 ^ 2 * v 1 * (-1 / 2) +\n                                J (Fin.succ 0) 0 ^ 2 * v 2 * (-1 / 2) +\n                              J (Fin.succ 1) 1 ^ 2 * v 1 * (-1 / 2) +\n                            J (Fin.succ 1) 1 ^ 2 * v 2 * (-1 / 2) +\n                          J (Fin.succ 2) 2 ^ 2 * v 1 * (-1 / 2) +\n                        J (Fin.succ 2) 2 ^ 2 * v 2 * (-1 / 2) -\n                      v 1 * J (Fin.succ 0) 1 * J (Fin.succ 1) 0 -\n                    v 1 * J (Fin.succ 0) 2 * J (Fin.succ 2) 0 -\n                  v 1 * J (Fin.succ 1) 2 * J (Fin.succ 2) 1 +\n                J (Fin.succ 0) 1 ^ 2 * v 2 * (-1 / 2) +\n              J (Fin.succ 1) 0 ^ 2 * v 2 * (-1 / 2) +\n            J (Fin.succ 0) 2 ^ 2 * v 2 * (-1 / 2) +\n          J (Fin.succ 2) 0 ^ 2 * v 2 * (-1 / 2) +\n        J (Fin.succ 1) 2 ^ 2 * v 2 * (-1 / 2) +\n      J (Fin.succ 2) 1 ^ 2 * v 2 * (-1 / 2)\nTry this:\n  [apply] ring_nf\n  \n  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.\n    \n  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.\n"
+        },
+        {
+          "declaration": "lagrangian_increment",
+          "line": 39,
+          "message": "s11/_scratch/d3_bulk_verification/density_sign.lean:39:61: error: unsolved goals\nv : Vec 3\ns : ℝ\nJ H : Jet 3\n⊢ ⋯ + ⋯ + ⋯ * (1 / 2) + ⋯ * H (Fin.succ 0) 0 * v 1 + J (Fin.succ 0) 0 * s * H (Fin.succ 0) 0 * v 2 +\n                                                                                                J (Fin.succ 0) 0 ^ 2 *\n                                                                                                    v 1 *\n                                                                                                  (1 / 2) +\n                                                                                              J (Fin.succ 0) 0 ^ 2 *\n                                                                                                  v 2 *\n                                                                                                (1 / 2) +\n                                                                                            s * J (Fin.succ 1) 1 *\n                                                                                                H (Fin.succ 1) 1 *\n                                                                                              v 1 +\n                                                                                          s * J (Fin.succ 1) 1 *\n                                                                                              H (Fin.succ 1) 1 *\n                                                                                            v 2 +\n                                                                                        s * J (Fin.succ 2) 2 *\n                                                                                            H (Fin.succ 2) 2 *\n                                                                                          v 1 +\n                                                                                      s * J (Fin.succ 2) 2 *\n                                                                                          H (Fin.succ 2) 2 *\n                                                                                        v 2 +\n                                                                                    s * v 1 * J (Fin.succ 0) 1 *\n                                                                                      H (Fin.succ 1) 0 +\n                                                                                  s * v 1 * H (Fin.succ 0) 1 *\n                                                                                    J (Fin.succ 1) 0 +\n                                                                                s * v 1 * J (Fin.succ 0) 2 *\n                                                                                  H (Fin.succ 2) 0 +\n                                                                              s * v 1 * H (Fin.succ 0) 2 *\n                                                                                J (Fin.succ 2) 0 +\n                                                                            s * v 1 * J (Fin.succ 1) 2 *\n                                                                              H (Fin.succ 2) 1 +\n                                                                          s * v 1 * H (Fin.succ 1) 2 *\n                                                                            J (Fin.succ 2) 1 +\n                                                                        s * J (Fin.succ 0) 1 * H (Fin.succ 0) 1 * v 2 +\n                                                                      s * J (Fin.succ 1) 0 * H (Fin.succ 1) 0 * v 2 +\n                                                                    s * J (Fin.succ 0) 2 * H (Fin.succ 0) 2 * v 2 +\n                                                                  s * J (Fin.succ 2) 0 * H (Fin.succ 2) 0 * v 2 +\n                                                                s * J (Fin.succ 1) 2 * H (Fin.succ 1) 2 * v 2 +\n                                                              s * J (Fin.succ 2) 1 * H (Fin.succ 2) 1 * v 2 +\n                                                            s ^ 2 * H (Fin.succ 0) 0 ^ 2 * v 1 * (1 / 2) +\n                                                          s ^ 2 * H (Fin.succ 0) 0 ^ 2 * v 2 * (1 / 2) +\n                                                        s ^ 2 * H (Fin.succ 1) 1 ^ 2 * v 1 * (1 / 2) +\n                                                      s ^ 2 * H (Fin.succ 1) 1 ^ 2 * v 2 * (1 / 2) +\n                                                    s ^ 2 * H (Fin.succ 2) 2 ^ 2 * v 1 * (1 / 2) +\n                                                  s ^ 2 * H (Fin.succ 2) 2 ^ 2 * v 2 * (1 / 2) +\n                                                s ^ 2 * v 1 * H (Fin.succ 0) 1 * H (Fin.succ 1) 0 +\n                                              s ^ 2 * v 1 * H (Fin.succ 0) 2 * H (Fin.succ 2) 0 +\n                                            s ^ 2 * v 1 * H (Fin.succ 1) 2 * H (Fin.succ 2) 1 +\n                                          s ^ 2 * H (Fin.succ 0) 1 ^ 2 * v 2 * (1 / 2) +\n                                        s ^ 2 * H (Fin.succ 1) 0 ^ 2 * v 2 * (1 / 2) +\n                                      s ^ 2 * H (Fin.succ 0) 2 ^ 2 * v 2 * (1 / 2) +\n                                    s ^ 2 * H (Fin.succ 2) 0 ^ 2 * v 2 * (1 / 2) +\n                                  s ^ 2 * H (Fin.succ 1) 2 ^ 2 * v 2 * (1 / 2) +\n                                s ^ 2 * H (Fin.succ 2) 1 ^ 2 * v 2 * (1 / 2) +\n                              J (Fin.succ 1) 1 ^ 2 * v 1 * (1 / 2) +\n                            J (Fin.succ 1) 1 ^ 2 * v 2 * (1 / 2) +\n                          J (Fin.succ 2) 2 ^ 2 * v 1 * (1 / 2) +\n                        J (Fin.succ 2) 2 ^ 2 * v 2 * (1 / 2) +\n                      v 1 * J (Fin.succ 0) 1 * J (Fin.succ 1) 0 +\n                    v 1 * J (Fin.succ 0) 2 * J (Fin.succ 2) 0 +\n                  v 1 * J (Fin.succ 1) 2 * J (Fin.succ 2) 1 +\n                J (Fin.succ 0) 1 ^ 2 * v 2 * (1 / 2) +\n              J (Fin.succ 1) 0 ^ 2 * v 2 * (1 / 2) +\n            J (Fin.succ 0) 2 ^ 2 * v 2 * (1 / 2) +\n          J (Fin.succ 2) 0 ^ 2 * v 2 * (1 / 2) +\n        J (Fin.succ 1) 2 ^ 2 * v 2 * (1 / 2) +\n      J (Fin.succ 2) 1 ^ 2 * v 2 * (1 / 2) =\n    ⋯ + ⋯ + ⋯ * (1 / 2) - ⋯ * H (Fin.succ 0) 0 * v 1 - J (Fin.succ 0) 0 * s * H (Fin.succ 0) 0 * v 2 +\n                                                                                                J (Fin.succ 0) 0 ^ 2 *\n                                                                                                    v 1 *\n                                                                                                  (1 / 2) +\n                                                                                              J (Fin.succ 0) 0 ^ 2 *\n                                                                                                  v 2 *\n                                                                                                (1 / 2) -\n                                                                                            s * J (Fin.succ 1) 1 *\n                                                                                                H (Fin.succ 1) 1 *\n                                                                                              v 1 -\n                                                                                          s * J (Fin.succ 1) 1 *\n                                                                                              H (Fin.succ 1) 1 *\n                                                                                            v 2 -\n                                                                                        s * J (Fin.succ 2) 2 *\n                                                                                            H (Fin.succ 2) 2 *\n                                                                                          v 1 -\n                                                                                      s * J (Fin.succ 2) 2 *\n                                                                                          H (Fin.succ 2) 2 *\n                                                                                        v 2 -\n                                                                                    s * v 1 * J (Fin.succ 0) 1 *\n                                                                                      H (Fin.succ 1) 0 -\n                                                                                  s * v 1 * H (Fin.succ 0) 1 *\n                                                                                    J (Fin.succ 1) 0 -\n                                                                                s * v 1 * J (Fin.succ 0) 2 *\n                                                                                  H (Fin.succ 2) 0 -\n                                                                              s * v 1 * H (Fin.succ 0) 2 *\n                                                                                J (Fin.succ 2) 0 -\n                                                                            s * v 1 * J (Fin.succ 1) 2 *\n                                                                              H (Fin.succ 2) 1 -\n                                                                          s * v 1 * H (Fin.succ 1) 2 *\n                                                                            J (Fin.succ 2) 1 -\n                                                                        s * J (Fin.succ 0) 1 * H (Fin.succ 0) 1 * v 2 -\n                                                                      s * J (Fin.succ 1) 0 * H (Fin.succ 1) 0 * v 2 -\n                                                                    s * J (Fin.succ 0) 2 * H (Fin.succ 0) 2 * v 2 -\n                                                                  s * J (Fin.succ 2) 0 * H (Fin.succ 2) 0 * v 2 -\n                                                                s * J (Fin.succ 1) 2 * H (Fin.succ 1) 2 * v 2 -\n                                                              s * J (Fin.succ 2) 1 * H (Fin.succ 2) 1 * v 2 +\n                                                            s ^ 2 * H (Fin.succ 0) 0 ^ 2 * v 1 * (1 / 2) +\n                                                          s ^ 2 * H (Fin.succ 0) 0 ^ 2 * v 2 * (1 / 2) +\n                                                        s ^ 2 * H (Fin.succ 1) 1 ^ 2 * v 1 * (1 / 2) +\n                                                      s ^ 2 * H (Fin.succ 1) 1 ^ 2 * v 2 * (1 / 2) +\n                                                    s ^ 2 * H (Fin.succ 2) 2 ^ 2 * v 1 * (1 / 2) +\n                                                  s ^ 2 * H (Fin.succ 2) 2 ^ 2 * v 2 * (1 / 2) +\n                                                s ^ 2 * v 1 * H (Fin.succ 0) 1 * H (Fin.succ 1) 0 +\n                                              s ^ 2 * v 1 * H (Fin.succ 0) 2 * H (Fin.succ 2) 0 +\n                                            s ^ 2 * v 1 * H (Fin.succ 1) 2 * H (Fin.succ 2) 1 +\n                                          s ^ 2 * H (Fin.succ 0) 1 ^ 2 * v 2 * (1 / 2) +\n                                        s ^ 2 * H (Fin.succ 1) 0 ^ 2 * v 2 * (1 / 2) +\n                                      s ^ 2 * H (Fin.succ 0) 2 ^ 2 * v 2 * (1 / 2) +\n                                    s ^ 2 * H (Fin.succ 2) 0 ^ 2 * v 2 * (1 / 2) +\n                                  s ^ 2 * H (Fin.succ 1) 2 ^ 2 * v 2 * (1 / 2) +\n                                s ^ 2 * H (Fin.succ 2) 1 ^ 2 * v 2 * (1 / 2) +\n                              J (Fin.succ 1) 1 ^ 2 * v 1 * (1 / 2) +\n                            J (Fin.succ 1) 1 ^ 2 * v 2 * (1 / 2) +\n                          J (Fin.succ 2) 2 ^ 2 * v 1 * (1 / 2) +\n                        J (Fin.succ 2) 2 ^ 2 * v 2 * (1 / 2) +\n                      v 1 * J (Fin.succ 0) 1 * J (Fin.succ 1) 0 +\n                    v 1 * J (Fin.succ 0) 2 * J (Fin.succ 2) 0 +\n                  v 1 * J (Fin.succ 1) 2 * J (Fin.succ 2) 1 +\n                J (Fin.succ 0) 1 ^ 2 * v 2 * (1 / 2) +\n              J (Fin.succ 1) 0 ^ 2 * v 2 * (1 / 2) +\n            J (Fin.succ 0) 2 ^ 2 * v 2 * (1 / 2) +\n          J (Fin.succ 2) 0 ^ 2 * v 2 * (1 / 2) +\n        J (Fin.succ 1) 2 ^ 2 * v 2 * (1 / 2) +\n      J (Fin.succ 2) 1 ^ 2 * v 2 * (1 / 2)\n"
+        }
+      ],
+      "output": "Try this:\n  [apply] ring_nf\n  \n  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.\n    \n  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.\ns11/_scratch/d3_bulk_verification/density_sign.lean:20:91: error: unsolved goals\nv : Vec 3\nJ : Jet 3\n⊢ v 0 * J (Fin.succ 0) 0 * J (Fin.succ 1) 1 + v 0 * J (Fin.succ 0) 0 * J (Fin.succ 2) 2 +\n                                          v 0 * J (Fin.succ 0) 0 ^ 2 * (1 / 2) +\n                                        v 0 * J (Fin.succ 1) 1 * J (Fin.succ 2) 2 +\n                                      v 0 * J (Fin.succ 1) 1 ^ 2 * (1 / 2) +\n                                    v 0 * J (Fin.succ 2) 2 ^ 2 * (1 / 2) +\n                                  J (Fin.succ 0) 0 ^ 2 * v 1 * (1 / 2) +\n                                J (Fin.succ 0) 0 ^ 2 * v 2 * (1 / 2) +\n                              J (Fin.succ 1) 1 ^ 2 * v 1 * (1 / 2) +\n                            J (Fin.succ 1) 1 ^ 2 * v 2 * (1 / 2) +\n                          J (Fin.succ 2) 2 ^ 2 * v 1 * (1 / 2) +\n                        J (Fin.succ 2) 2 ^ 2 * v 2 * (1 / 2) +\n                      v 1 * J (Fin.succ 0) 1 * J (Fin.succ 1) 0 +\n                    v 1 * J (Fin.succ 0) 2 * J (Fin.succ 2) 0 +\n                  v 1 * J (Fin.succ 1) 2 * J (Fin.succ 2) 1 +\n                J (Fin.succ 0) 1 ^ 2 * v 2 * (1 / 2) +\n              J (Fin.succ 1) 0 ^ 2 * v 2 * (1 / 2) +\n            J (Fin.succ 0) 2 ^ 2 * v 2 * (1 / 2) +\n          J (Fin.succ 2) 0 ^ 2 * v 2 * (1 / 2) +\n        J (Fin.succ 1) 2 ^ 2 * v 2 * (1 / 2) +\n      J (Fin.succ 2) 1 ^ 2 * v 2 * (1 / 2) =\n    -(v 0 * J (Fin.succ 0) 0 * J (Fin.succ 1) 1) - v 0 * J (Fin.succ 0) 0 * J (Fin.succ 2) 2 +\n                                          v 0 * J (Fin.succ 0) 0 ^ 2 * (-1 / 2) -\n                                        v 0 * J (Fin.succ 1) 1 * J (Fin.succ 2) 2 +\n                                      v 0 * J (Fin.succ 1) 1 ^ 2 * (-1 / 2) +\n                                    v 0 * J (Fin.succ 2) 2 ^ 2 * (-1 / 2) +\n                                  J (Fin.succ 0) 0 ^ 2 * v 1 * (-1 / 2) +\n                                J (Fin.succ 0) 0 ^ 2 * v 2 * (-1 / 2) +\n                              J (Fin.succ 1) 1 ^ 2 * v 1 * (-1 / 2) +\n                            J (Fin.succ 1) 1 ^ 2 * v 2 * (-1 / 2) +\n                          J (Fin.succ 2) 2 ^ 2 * v 1 * (-1 / 2) +\n                        J (Fin.succ 2) 2 ^ 2 * v 2 * (-1 / 2) -\n                      v 1 * J (Fin.succ 0) 1 * J (Fin.succ 1) 0 -\n                    v 1 * J (Fin.succ 0) 2 * J (Fin.succ 2) 0 -\n                  v 1 * J (Fin.succ 1) 2 * J (Fin.succ 2) 1 +\n                J (Fin.succ 0) 1 ^ 2 * v 2 * (-1 / 2) +\n              J (Fin.succ 1) 0 ^ 2 * v 2 * (-1 / 2) +\n            J (Fin.succ 0) 2 ^ 2 * v 2 * (-1 / 2) +\n          J (Fin.succ 2) 0 ^ 2 * v 2 * (-1 / 2) +\n        J (Fin.succ 1) 2 ^ 2 * v 2 * (-1 / 2) +\n      J (Fin.succ 2) 1 ^ 2 * v 2 * (-1 / 2)\nTry this:\n  [apply] ring_nf\n  \n  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.\n    \n  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.\ns11/_scratch/d3_bulk_verification/density_sign.lean:39:61: error: unsolved goals\nv : Vec 3\ns : ℝ\nJ H : Jet 3\n⊢ ⋯ + ⋯ + ⋯ * (1 / 2) + ⋯ * H (Fin.succ 0) 0 * v 1 + J (Fin.succ 0) 0 * s * H (Fin.succ 0) 0 * v 2 +\n                                                                                                J (Fin.succ 0) 0 ^ 2 *\n                                                                                                    v 1 *\n                                                                                                  (1 / 2) +\n                                                                                              J (Fin.succ 0) 0 ^ 2 *\n                                                                                                  v 2 *\n                                                                                                (1 / 2) +\n                                                                                            s * J (Fin.succ 1) 1 *\n                                                                                                H (Fin.succ 1) 1 *\n                                                                                              v 1 +\n                                                                                          s * J (Fin.succ 1) 1 *\n                                                                                              H (Fin.succ 1) 1 *\n                                                                                            v 2 +\n                                                                                        s * J (Fin.succ 2) 2 *\n                                                                                            H (Fin.succ 2) 2 *\n                                                                                          v 1 +\n                                                                                      s * J (Fin.succ 2) 2 *\n                                                                                          H (Fin.succ 2) 2 *\n                                                                                        v 2 +\n                                                                                    s * v 1 * J (Fin.succ 0) 1 *\n                                                                                      H (Fin.succ 1) 0 +\n                                                                                  s * v 1 * H (Fin.succ 0) 1 *\n                                                                                    J (Fin.succ 1) 0 +\n                                                                                s * v 1 * J (Fin.succ 0) 2 *\n                                                                                  H (Fin.succ 2) 0 +\n                                                                              s * v 1 * H (Fin.succ 0) 2 *\n                                                                                J (Fin.succ 2) 0 +\n                                                                            s * v 1 * J (Fin.succ 1) 2 *\n                                                                              H (Fin.succ 2) 1 +\n                                                                          s * v 1 * H (Fin.succ 1) 2 *\n                                                                            J (Fin.succ 2) 1 +\n                                                                        s * J (Fin.succ 0) 1 * H (Fin.succ 0) 1 * v 2 +\n                                                                      s * J (Fin.succ 1) 0 * H (Fin.succ 1) 0 * v 2 +\n                                                                    s * J (Fin.succ 0) 2 * H (Fin.succ 0) 2 * v 2 +\n                                                                  s * J (Fin.succ 2) 0 * H (Fin.succ 2) 0 * v 2 +\n                                                                s * J (Fin.succ 1) 2 * H (Fin.succ 1) 2 * v 2 +\n                                                              s * J (Fin.succ 2) 1 * H (Fin.succ 2) 1 * v 2 +\n                                                            s ^ 2 * H (Fin.succ 0) 0 ^ 2 * v 1 * (1 / 2) +\n                                                          s ^ 2 * H (Fin.succ 0) 0 ^ 2 * v 2 * (1 / 2) +\n                                                        s ^ 2 * H (Fin.succ 1) 1 ^ 2 * v 1 * (1 / 2) +\n                                                      s ^ 2 * H (Fin.succ 1) 1 ^ 2 * v 2 * (1 / 2) +\n                                                    s ^ 2 * H (Fin.succ 2) 2 ^ 2 * v 1 * (1 / 2) +\n                                                  s ^ 2 * H (Fin.succ 2) 2 ^ 2 * v 2 * (1 / 2) +\n                                                s ^ 2 * v 1 * H (Fin.succ 0) 1 * H (Fin.succ 1) 0 +\n                                              s ^ 2 * v 1 * H (Fin.succ 0) 2 * H (Fin.succ 2) 0 +\n                                            s ^ 2 * v 1 * H (Fin.succ 1) 2 * H (Fin.succ 2) 1 +\n                                          s ^ 2 * H (Fin.succ 0) 1 ^ 2 * v 2 * (1 / 2) +\n                                        s ^ 2 * H (Fin.succ 1) 0 ^ 2 * v 2 * (1 / 2) +\n                                      s ^ 2 * H (Fin.succ 0) 2 ^ 2 * v 2 * (1 / 2) +\n                                    s ^ 2 * H (Fin.succ 2) 0 ^ 2 * v 2 * (1 / 2) +\n                                  s ^ 2 * H (Fin.succ 1) 2 ^ 2 * v 2 * (1 / 2) +\n                                s ^ 2 * H (Fin.succ 2) 1 ^ 2 * v 2 * (1 / 2) +\n                              J (Fin.succ 1) 1 ^ 2 * v 1 * (1 / 2) +\n                            J (Fin.succ 1) 1 ^ 2 * v 2 * (1 / 2) +\n                          J (Fin.succ 2) 2 ^ 2 * v 1 * (1 / 2) +\n                        J (Fin.succ 2) 2 ^ 2 * v 2 * (1 / 2) +\n                      v 1 * J (Fin.succ 0) 1 * J (Fin.succ 1) 0 +\n                    v 1 * J (Fin.succ 0) 2 * J (Fin.succ 2) 0 +\n                  v 1 * J (Fin.succ 1) 2 * J (Fin.succ 2) 1 +\n                J (Fin.succ 0) 1 ^ 2 * v 2 * (1 / 2) +\n              J (Fin.succ 1) 0 ^ 2 * v 2 * (1 / 2) +\n            J (Fin.succ 0) 2 ^ 2 * v 2 * (1 / 2) +\n          J (Fin.succ 2) 0 ^ 2 * v 2 * (1 / 2) +\n        J (Fin.succ 1) 2 ^ 2 * v 2 * (1 / 2) +\n      J (Fin.succ 2) 1 ^ 2 * v 2 * (1 / 2) =\n    ⋯ + ⋯ + ⋯ * (1 / 2) - ⋯ * H (Fin.succ 0) 0 * v 1 - J (Fin.succ 0) 0 * s * H (Fin.succ 0) 0 * v 2 +\n                                                                                                J (Fin.succ 0) 0 ^ 2 *\n                                                                                                    v 1 *\n                                                                                                  (1 / 2) +\n                                                                                              J (Fin.succ 0) 0 ^ 2 *\n                                                                                                  v 2 *\n                                                                                                (1 / 2) -\n                                                                                            s * J (Fin.succ 1) 1 *\n                                                                                                H (Fin.succ 1) 1 *\n                                                                                              v 1 -\n                                                                                          s * J (Fin.succ 1) 1 *\n                                                                                              H (Fin.succ 1) 1 *\n                                                                                            v 2 -\n                                                                                        s * J (Fin.succ 2) 2 *\n                                                                                            H (Fin.succ 2) 2 *\n                                                                                          v 1 -\n                                                                                      s * J (Fin.succ 2) 2 *\n                                                                                          H (Fin.succ 2) 2 *\n                                                                                        v 2 -\n                                                                                    s * v 1 * J (Fin.succ 0) 1 *\n                                                                                      H (Fin.succ 1) 0 -\n                                                                                  s * v 1 * H (Fin.succ 0) 1 *\n                                                                                    J (Fin.succ 1) 0 -\n                                                                                s * v 1 * J (Fin.succ 0) 2 *\n                                                                                  H (Fin.succ 2) 0 -\n                                                                              s * v 1 * H (Fin.succ 0) 2 *\n                                                                                J (Fin.succ 2) 0 -\n                                                                            s * v 1 * J (Fin.succ 1) 2 *\n                                                                              H (Fin.succ 2) 1 -\n                                                                          s * v 1 * H (Fin.succ 1) 2 *\n                                                                            J (Fin.succ 2) 1 -\n                                                                        s * J (Fin.succ 0) 1 * H (Fin.succ 0) 1 * v 2 -\n                                                                      s * J (Fin.succ 1) 0 * H (Fin.succ 1) 0 * v 2 -\n                                                                    s * J (Fin.succ 0) 2 * H (Fin.succ 0) 2 * v 2 -\n                                                                  s * J (Fin.succ 2) 0 * H (Fin.succ 2) 0 * v 2 -\n                                                                s * J (Fin.succ 1) 2 * H (Fin.succ 1) 2 * v 2 -\n                                                              s * J (Fin.succ 2) 1 * H (Fin.succ 2) 1 * v 2 +\n                                                            s ^ 2 * H (Fin.succ 0) 0 ^ 2 * v 1 * (1 / 2) +\n                                                          s ^ 2 * H (Fin.succ 0) 0 ^ 2 * v 2 * (1 / 2) +\n                                                        s ^ 2 * H (Fin.succ 1) 1 ^ 2 * v 1 * (1 / 2) +\n                                                      s ^ 2 * H (Fin.succ 1) 1 ^ 2 * v 2 * (1 / 2) +\n                                                    s ^ 2 * H (Fin.succ 2) 2 ^ 2 * v 1 * (1 / 2) +\n                                                  s ^ 2 * H (Fin.succ 2) 2 ^ 2 * v 2 * (1 / 2) +\n                                                s ^ 2 * v 1 * H (Fin.succ 0) 1 * H (Fin.succ 1) 0 +\n                                              s ^ 2 * v 1 * H (Fin.succ 0) 2 * H (Fin.succ 2) 0 +\n                                            s ^ 2 * v 1 * H (Fin.succ 1) 2 * H (Fin.succ 2) 1 +\n                                          s ^ 2 * H (Fin.succ 0) 1 ^ 2 * v 2 * (1 / 2) +\n                                        s ^ 2 * H (Fin.succ 1) 0 ^ 2 * v 2 * (1 / 2) +\n                                      s ^ 2 * H (Fin.succ 0) 2 ^ 2 * v 2 * (1 / 2) +\n                                    s ^ 2 * H (Fin.succ 2) 0 ^ 2 * v 2 * (1 / 2) +\n                                  s ^ 2 * H (Fin.succ 1) 2 ^ 2 * v 2 * (1 / 2) +\n                                s ^ 2 * H (Fin.succ 2) 1 ^ 2 * v 2 * (1 / 2) +\n                              J (Fin.succ 1) 1 ^ 2 * v 1 * (1 / 2) +\n                            J (Fin.succ 1) 1 ^ 2 * v 2 * (1 / 2) +\n                          J (Fin.succ 2) 2 ^ 2 * v 1 * (1 / 2) +\n                        J (Fin.succ 2) 2 ^ 2 * v 2 * (1 / 2) +\n                      v 1 * J (Fin.succ 0) 1 * J (Fin.succ 1) 0 +\n                    v 1 * J (Fin.succ 0) 2 * J (Fin.succ 2) 0 +\n                  v 1 * J (Fin.succ 1) 2 * J (Fin.succ 2) 1 +\n                J (Fin.succ 0) 1 ^ 2 * v 2 * (1 / 2) +\n              J (Fin.succ 1) 0 ^ 2 * v 2 * (1 / 2) +\n            J (Fin.succ 0) 2 ^ 2 * v 2 * (1 / 2) +\n          J (Fin.succ 2) 0 ^ 2 * v 2 * (1 / 2) +\n        J (Fin.succ 1) 2 ^ 2 * v 2 * (1 / 2) +\n      J (Fin.succ 2) 1 ^ 2 * v 2 * (1 / 2)\n",
+      "output_sha256": "532228dc3f8eae751ccb9c3a1f650c6a7d9093fe5a8656cda63688cf09a63766",
+      "source": "import S10Pilot.Variation\nimport S11D3Invariants.Classification\n\n/-! K1: the full classified D3 density, with constant real coefficients.\nL = -Q/2. Spatial rows are derivative indices; no inertia is added. -/\nnamespace S11D3Bulk\nnoncomputable section\nopen S10Pilot\nopen scoped ContDiff\n\ndef spatialGradient (J : Jet 3) : S11D3Invariants.Mat := fun j i => J j.succ i\ndef divergence (J : Jet 3) : ℝ := ∑ i : Fin 3, J i.succ i\ndef transposePair (J : Jet 3) : ℝ := ∑ i : Fin 3, ∑ j : Fin 3, J i.succ j * J j.succ i\ndef gradientSquare (J : Jet 3) : ℝ := ∑ i : Fin 3, ∑ j : Fin 3, J i.succ j ^ 2\n\ndef lagrangian (v : Vec 3) (J : Jet 3) : ℝ :=\n  (1 / 2 : ℝ) * (v 0 * divergence J ^ 2 + v 1 * transposePair J + v 2 * gradientSquare J)\n\ntheorem density_identity (v : Vec 3) (J : Jet 3) :\n    lagrangian v J = -(1 / 2 : ℝ) * S11D3Invariants.invariantForm v (spatialGradient J) := by\n  rw [S11D3Invariants.invariantForm_apply]\n  simp only [lagrangian, divergence, transposePair, gradientSquare, spatialGradient,\n    Matrix.trace, Matrix.diag_apply, Matrix.mul_apply, Matrix.transpose_apply,\n    Fin.sum_univ_three]\n  ring\n\ntheorem all_invariant_densities (Q : S11D3Invariants.Quad)\n    (hQ : S11D3Invariants.SOInvariant Q) :\n    ∃! v : Vec 3, Q = S11D3Invariants.invariantForm v :=\n  S11D3Invariants.SO_unique Q hQ\n\ndef variationDensity (v : Vec 3) (J H : Jet 3) : ℝ :=\n  -(v 0 * divergence J * divergence H +\n    v 1 * (∑ i : Fin 3, ∑ j : Fin 3, J j.succ i * H i.succ j) +\n    v 2 * (∑ i : Fin 3, ∑ j : Fin 3, J i.succ j * H i.succ j))\n\ntheorem lagrangian_increment (v : Vec 3) (s : ℝ) (J H : Jet 3) :\n    lagrangian v (J + s • H) = lagrangian v J +\n      s * variationDensity v J H + s ^ 2 * lagrangian v H := by\n  simp only [lagrangian, variationDensity, divergence, transposePair, gradientSquare,\n    Fin.sum_univ_three, Pi.add_apply, Pi.smul_apply, smul_eq_mul]\n  ring\n\ntheorem lagrangian_variation (v : Vec 3) (J H : Jet 3) :\n    HasDerivAt (fun s : ℝ => lagrangian v (J + s • H)) (variationDensity v J H) 0 := by\n  have h := ((hasDerivAt_const (0 : ℝ) (lagrangian v J)).add\n    ((hasDerivAt_id (0 : ℝ)).mul_const (variationDensity v J H))).add\n    (((hasDerivAt_id (0 : ℝ)).pow 2).mul_const (lagrangian v H))\n  convert! h using 1\n  · funext s\n    exact lagrangian_increment v s J H\n  · simp\n\ndef momentum (v : Vec 3) (J : Jet 3) (j : Fin 4) (i : Fin 3) : ℝ :=\n  deriv (fun s : ℝ => lagrangian v (J + s • basisJet j i)) 0\n\ntheorem momentum_eq (v : Vec 3) (J : Jet 3) (j : Fin 4) (i : Fin 3) :\n    momentum v J j i = Fin.cases 0\n      (fun r => -(v 0 * (if r = i then divergence J else 0) +\n        v 1 * J i.succ r + v 2 * J r.succ i)) j := by\n  unfold momentum\n  rw [(lagrangian_variation v J (basisJet j i)).deriv]\n  cases j using Fin.cases\n  · fin_cases i <;> simp [variationDensity, divergence, basisJet_apply, Fin.sum_univ_three]\n  · rename_i r\n    simp only [Fin.cases_succ]\n    fin_cases r <;> fin_cases i <;>\n      simp [variationDensity, divergence, basisJet_apply, Fin.sum_univ_three]\n\ntheorem momentum_smul (v : Vec 3) (s : ℝ) (J : Jet 3) (j : Fin 4) (i : Fin 3) :\n    momentum v (s • J) j i = s * momentum v J j i := by\n  rw [momentum_eq, momentum_eq]\n  cases j using Fin.cases\n  · simp\n  · rename_i r\n    by_cases h : r = i <;> simp [h, divergence, Fin.sum_univ_three] <;> ring\n\ndef eulerLagrange (v : Vec 3) (u : Point 3 → Vec 3) (x : Point 3) : Vec 3 :=\n  fun i => -∑ j : Fin 4, coordDeriv j (fun y => momentum v (fieldJet u y) j i) x\n\ntheorem smooth_momentum {u : Point 3 → Vec 3} (hu : SmoothField u)\n    (v : Vec 3) (j : Fin 4) (i : Fin 3) :\n    ContDiff ℝ ∞ (fun x => momentum v (fieldJet u x) j i) := by\n  have hJ : ∀ a b, ContDiff ℝ ∞ (fun x => fieldJet u x a b) :=\n    fun a b => smooth_coordDeriv (hu b) a\n  cases j using Fin.cases\n  · simp only [momentum_eq, Fin.cases_zero]\n    fun_prop\n  · rename_i r\n    by_cases h : r = i <;> simp only [momentum_eq, Fin.cases_succ, h, if_true, if_false, divergence]\n    all_goals fun_prop\n\ntheorem smooth_eulerLagrange {u : Point 3 → Vec 3} (hu : SmoothField u)\n    (v : Vec 3) (i : Fin 3) : ContDiff ℝ ∞ (fun x => eulerLagrange v u x i) := by\n  have hd : ∀ j, ContDiff ℝ ∞ (coordDeriv j (fun y => momentum v (fieldJet u y) j i)) :=\n    fun j => smooth_coordDeriv (smooth_momentum hu v j i) j\n  unfold eulerLagrange\n  fun_prop\n\nend\nend S11D3Bulk\n",
+      "canonical_source": "lean/s11/S11D3Bulk/Action.lean",
+      "replacement": {
+        "old": "  -(1 / 2 : ℝ) * (v 0 * divergence J ^ 2",
+        "new": "  (1 / 2 : ℝ) * (v 0 * divergence J ^ 2"
+      }
+    },
+    {
+      "name": "density_half",
+      "expected": "REJECTED",
+      "outcome": "REJECTED",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/d3_bulk_verification/density_half.lean"
+      ],
+      "exit_status": 1,
+      "wall_seconds": 18.192,
+      "source_sha256": "9bf4ee6be4e7a1f510cd39becfd136caee11ca8e4de56e948cfb2e26c885892f",
+      "required_failure_in": "density_identity",
+      "diagnostics": [
+        {
+          "declaration": "density_identity",
+          "line": 20,
+          "message": "s11/_scratch/d3_bulk_verification/density_half.lean:20:91: error: unsolved goals\nv : Vec 3\nJ : Jet 3\n⊢ -(v 0 * J (Fin.succ 0) 0 * J (Fin.succ 1) 1 * 2) - v 0 * J (Fin.succ 0) 0 * J (Fin.succ 2) 2 * 2 -\n                                          v 0 * J (Fin.succ 0) 0 ^ 2 -\n                                        v 0 * J (Fin.succ 1) 1 * J (Fin.succ 2) 2 * 2 -\n                                      v 0 * J (Fin.succ 1) 1 ^ 2 -\n                                    v 0 * J (Fin.succ 2) 2 ^ 2 -\n                                  J (Fin.succ 0) 0 ^ 2 * v 1 -\n                                J (Fin.succ 0) 0 ^ 2 * v 2 -\n                              J (Fin.succ 1) 1 ^ 2 * v 1 -\n                            J (Fin.succ 1) 1 ^ 2 * v 2 -\n                          J (Fin.succ 2) 2 ^ 2 * v 1 -\n                        J (Fin.succ 2) 2 ^ 2 * v 2 -\n                      v 1 * J (Fin.succ 0) 1 * J (Fin.succ 1) 0 * 2 -\n                    v 1 * J (Fin.succ 0) 2 * J (Fin.succ 2) 0 * 2 -\n                  v 1 * J (Fin.succ 1) 2 * J (Fin.succ 2) 1 * 2 -\n                J (Fin.succ 0) 1 ^ 2 * v 2 -\n              J (Fin.succ 1) 0 ^ 2 * v 2 -\n            J (Fin.succ 0) 2 ^ 2 * v 2 -\n          J (Fin.succ 2) 0 ^ 2 * v 2 -\n        J (Fin.succ 1) 2 ^ 2 * v 2 -\n      J (Fin.succ 2) 1 ^ 2 * v 2 =\n    -(v 0 * J (Fin.succ 0) 0 * J (Fin.succ 1) 1) - v 0 * J (Fin.succ 0) 0 * J (Fin.succ 2) 2 +\n                                          v 0 * J (Fin.succ 0) 0 ^ 2 * (-1 / 2) -\n                                        v 0 * J (Fin.succ 1) 1 * J (Fin.succ 2) 2 +\n                                      v 0 * J (Fin.succ 1) 1 ^ 2 * (-1 / 2) +\n                                    v 0 * J (Fin.succ 2) 2 ^ 2 * (-1 / 2) +\n                                  J (Fin.succ 0) 0 ^ 2 * v 1 * (-1 / 2) +\n                                J (Fin.succ 0) 0 ^ 2 * v 2 * (-1 / 2) +\n                              J (Fin.succ 1) 1 ^ 2 * v 1 * (-1 / 2) +\n                            J (Fin.succ 1) 1 ^ 2 * v 2 * (-1 / 2) +\n                          J (Fin.succ 2) 2 ^ 2 * v 1 * (-1 / 2) +\n                        J (Fin.succ 2) 2 ^ 2 * v 2 * (-1 / 2) -\n                      v 1 * J (Fin.succ 0) 1 * J (Fin.succ 1) 0 -\n                    v 1 * J (Fin.succ 0) 2 * J (Fin.succ 2) 0 -\n                  v 1 * J (Fin.succ 1) 2 * J (Fin.succ 2) 1 +\n                J (Fin.succ 0) 1 ^ 2 * v 2 * (-1 / 2) +\n              J (Fin.succ 1) 0 ^ 2 * v 2 * (-1 / 2) +\n            J (Fin.succ 0) 2 ^ 2 * v 2 * (-1 / 2) +\n          J (Fin.succ 2) 0 ^ 2 * v 2 * (-1 / 2) +\n        J (Fin.succ 1) 2 ^ 2 * v 2 * (-1 / 2) +\n      J (Fin.succ 2) 1 ^ 2 * v 2 * (-1 / 2)\nTry this:\n  [apply] ring_nf\n  \n  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.\n    \n  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.\n"
+        },
+        {
+          "declaration": "lagrangian_increment",
+          "line": 39,
+          "message": "s11/_scratch/d3_bulk_verification/density_half.lean:39:61: error: unsolved goals\nv : Vec 3\ns : ℝ\nJ H : Jet 3\n⊢ ⋯ - ⋯ - v 0 * ⋯ - ⋯ * v 1 * 2 - ⋯ * H (Fin.succ 0) 0 * v 2 * 2 - J (Fin.succ 0) 0 ^ 2 * v 1 -\n                                                                                              J (Fin.succ 0) 0 ^ 2 *\n                                                                                                v 2 -\n                                                                                            s * J (Fin.succ 1) 1 *\n                                                                                                  H (Fin.succ 1) 1 *\n                                                                                                v 1 *\n                                                                                              2 -\n                                                                                          s * J (Fin.succ 1) 1 *\n                                                                                                H (Fin.succ 1) 1 *\n                                                                                              v 2 *\n                                                                                            2 -\n                                                                                        s * J (Fin.succ 2) 2 *\n                                                                                              H (Fin.succ 2) 2 *\n                                                                                            v 1 *\n                                                                                          2 -\n                                                                                      s * J (Fin.succ 2) 2 *\n                                                                                            H (Fin.succ 2) 2 *\n                                                                                          v 2 *\n                                                                                        2 -\n                                                                                    s * v 1 * J (Fin.succ 0) 1 *\n                                                                                        H (Fin.succ 1) 0 *\n                                                                                      2 -\n                                                                                  s * v 1 * H (Fin.succ 0) 1 *\n                                                                                      J (Fin.succ 1) 0 *\n                                                                                    2 -\n                                                                                s * v 1 * J (Fin.succ 0) 2 *\n                                                                                    H (Fin.succ 2) 0 *\n                                                                                  2 -\n                                                                              s * v 1 * H (Fin.succ 0) 2 *\n                                                                                  J (Fin.succ 2) 0 *\n                                                                                2 -\n                                                                            s * v 1 * J (Fin.succ 1) 2 *\n                                                                                H (Fin.succ 2) 1 *\n                                                                              2 -\n                                                                          s * v 1 * H (Fin.succ 1) 2 *\n                                                                              J (Fin.succ 2) 1 *\n                                                                            2 -\n                                                                        s * J (Fin.succ 0) 1 * H (Fin.succ 0) 1 * v 2 *\n                                                                          2 -\n                                                                      s * J (Fin.succ 1) 0 * H (Fin.succ 1) 0 * v 2 *\n                                                                        2 -\n                                                                    s * J (Fin.succ 0) 2 * H (Fin.succ 0) 2 * v 2 * 2 -\n                                                                  s * J (Fin.succ 2) 0 * H (Fin.succ 2) 0 * v 2 * 2 -\n                                                                s * J (Fin.succ 1) 2 * H (Fin.succ 1) 2 * v 2 * 2 -\n                                                              s * J (Fin.succ 2) 1 * H (Fin.succ 2) 1 * v 2 * 2 -\n                                                            s ^ 2 * H (Fin.succ 0) 0 ^ 2 * v 1 -\n                                                          s ^ 2 * H (Fin.succ 0) 0 ^ 2 * v 2 -\n                                                        s ^ 2 * H (Fin.succ 1) 1 ^ 2 * v 1 -\n                                                      s ^ 2 * H (Fin.succ 1) 1 ^ 2 * v 2 -\n                                                    s ^ 2 * H (Fin.succ 2) 2 ^ 2 * v 1 -\n                                                  s ^ 2 * H (Fin.succ 2) 2 ^ 2 * v 2 -\n                                                s ^ 2 * v 1 * H (Fin.succ 0) 1 * H (Fin.succ 1) 0 * 2 -\n                                              s ^ 2 * v 1 * H (Fin.succ 0) 2 * H (Fin.succ 2) 0 * 2 -\n                                            s ^ 2 * v 1 * H (Fin.succ 1) 2 * H (Fin.succ 2) 1 * 2 -\n                                          s ^ 2 * H (Fin.succ 0) 1 ^ 2 * v 2 -\n                                        s ^ 2 * H (Fin.succ 1) 0 ^ 2 * v 2 -\n                                      s ^ 2 * H (Fin.succ 0) 2 ^ 2 * v 2 -\n                                    s ^ 2 * H (Fin.succ 2) 0 ^ 2 * v 2 -\n                                  s ^ 2 * H (Fin.succ 1) 2 ^ 2 * v 2 -\n                                s ^ 2 * H (Fin.succ 2) 1 ^ 2 * v 2 -\n                              J (Fin.succ 1) 1 ^ 2 * v 1 -\n                            J (Fin.succ 1) 1 ^ 2 * v 2 -\n                          J (Fin.succ 2) 2 ^ 2 * v 1 -\n                        J (Fin.succ 2) 2 ^ 2 * v 2 -\n                      v 1 * J (Fin.succ 0) 1 * J (Fin.succ 1) 0 * 2 -\n                    v 1 * J (Fin.succ 0) 2 * J (Fin.succ 2) 0 * 2 -\n                  v 1 * J (Fin.succ 1) 2 * J (Fin.succ 2) 1 * 2 -\n                J (Fin.succ 0) 1 ^ 2 * v 2 -\n              J (Fin.succ 1) 0 ^ 2 * v 2 -\n            J (Fin.succ 0) 2 ^ 2 * v 2 -\n          J (Fin.succ 2) 0 ^ 2 * v 2 -\n        J (Fin.succ 1) 2 ^ 2 * v 2 -\n      J (Fin.succ 2) 1 ^ 2 * v 2 =\n    ⋯ - ⋯ - v 0 * ⋯ - ⋯ * H (Fin.succ 0) 0 * v 1 - J (Fin.succ 0) 0 * s * H (Fin.succ 0) 0 * v 2 -\n                                                                                                J (Fin.succ 0) 0 ^ 2 *\n                                                                                                  v 1 -\n                                                                                              J (Fin.succ 0) 0 ^ 2 *\n                                                                                                v 2 -\n                                                                                            s * J (Fin.succ 1) 1 *\n                                                                                                H (Fin.succ 1) 1 *\n                                                                                              v 1 -\n                                                                                          s * J (Fin.succ 1) 1 *\n                                                                                              H (Fin.succ 1) 1 *\n                                                                                            v 2 -\n                                                                                        s * J (Fin.succ 2) 2 *\n                                                                                            H (Fin.succ 2) 2 *\n                                                                                          v 1 -\n                                                                                      s * J (Fin.succ 2) 2 *\n                                                                                          H (Fin.succ 2) 2 *\n                                                                                        v 2 -\n                                                                                    s * v 1 * J (Fin.succ 0) 1 *\n                                                                                      H (Fin.succ 1) 0 -\n                                                                                  s * v 1 * H (Fin.succ 0) 1 *\n                                                                                    J (Fin.succ 1) 0 -\n                                                                                s * v 1 * J (Fin.succ 0) 2 *\n                                                                                  H (Fin.succ 2) 0 -\n                                                                              s * v 1 * H (Fin.succ 0) 2 *\n                                                                                J (Fin.succ 2) 0 -\n                                                                            s * v 1 * J (Fin.succ 1) 2 *\n                                                                              H (Fin.succ 2) 1 -\n                                                                          s * v 1 * H (Fin.succ 1) 2 *\n                                                                            J (Fin.succ 2) 1 -\n                                                                        s * J (Fin.succ 0) 1 * H (Fin.succ 0) 1 * v 2 -\n                                                                      s * J (Fin.succ 1) 0 * H (Fin.succ 1) 0 * v 2 -\n                                                                    s * J (Fin.succ 0) 2 * H (Fin.succ 0) 2 * v 2 -\n                                                                  s * J (Fin.succ 2) 0 * H (Fin.succ 2) 0 * v 2 -\n                                                                s * J (Fin.succ 1) 2 * H (Fin.succ 1) 2 * v 2 -\n                                                              s * J (Fin.succ 2) 1 * H (Fin.succ 2) 1 * v 2 -\n                                                            s ^ 2 * H (Fin.succ 0) 0 ^ 2 * v 1 -\n                                                          s ^ 2 * H (Fin.succ 0) 0 ^ 2 * v 2 -\n                                                        s ^ 2 * H (Fin.succ 1) 1 ^ 2 * v 1 -\n                                                      s ^ 2 * H (Fin.succ 1) 1 ^ 2 * v 2 -\n                                                    s ^ 2 * H (Fin.succ 2) 2 ^ 2 * v 1 -\n                                                  s ^ 2 * H (Fin.succ 2) 2 ^ 2 * v 2 -\n                                                s ^ 2 * v 1 * H (Fin.succ 0) 1 * H (Fin.succ 1) 0 * 2 -\n                                              s ^ 2 * v 1 * H (Fin.succ 0) 2 * H (Fin.succ 2) 0 * 2 -\n                                            s ^ 2 * v 1 * H (Fin.succ 1) 2 * H (Fin.succ 2) 1 * 2 -\n                                          s ^ 2 * H (Fin.succ 0) 1 ^ 2 * v 2 -\n                                        s ^ 2 * H (Fin.succ 1) 0 ^ 2 * v 2 -\n                                      s ^ 2 * H (Fin.succ 0) 2 ^ 2 * v 2 -\n                                    s ^ 2 * H (Fin.succ 2) 0 ^ 2 * v 2 -\n                                  s ^ 2 * H (Fin.succ 1) 2 ^ 2 * v 2 -\n                                s ^ 2 * H (Fin.succ 2) 1 ^ 2 * v 2 -\n                              J (Fin.succ 1) 1 ^ 2 * v 1 -\n                            J (Fin.succ 1) 1 ^ 2 * v 2 -\n                          J (Fin.succ 2) 2 ^ 2 * v 1 -\n                        J (Fin.succ 2) 2 ^ 2 * v 2 -\n                      v 1 * J (Fin.succ 0) 1 * J (Fin.succ 1) 0 * 2 -\n                    v 1 * J (Fin.succ 0) 2 * J (Fin.succ 2) 0 * 2 -\n                  v 1 * J (Fin.succ 1) 2 * J (Fin.succ 2) 1 * 2 -\n                J (Fin.succ 0) 1 ^ 2 * v 2 -\n              J (Fin.succ 1) 0 ^ 2 * v 2 -\n            J (Fin.succ 0) 2 ^ 2 * v 2 -\n          J (Fin.succ 2) 0 ^ 2 * v 2 -\n        J (Fin.succ 1) 2 ^ 2 * v 2 -\n      J (Fin.succ 2) 1 ^ 2 * v 2\n"
+        }
+      ],
+      "output": "Try this:\n  [apply] ring_nf\n  \n  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.\n    \n  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.\ns11/_scratch/d3_bulk_verification/density_half.lean:20:91: error: unsolved goals\nv : Vec 3\nJ : Jet 3\n⊢ -(v 0 * J (Fin.succ 0) 0 * J (Fin.succ 1) 1 * 2) - v 0 * J (Fin.succ 0) 0 * J (Fin.succ 2) 2 * 2 -\n                                          v 0 * J (Fin.succ 0) 0 ^ 2 -\n                                        v 0 * J (Fin.succ 1) 1 * J (Fin.succ 2) 2 * 2 -\n                                      v 0 * J (Fin.succ 1) 1 ^ 2 -\n                                    v 0 * J (Fin.succ 2) 2 ^ 2 -\n                                  J (Fin.succ 0) 0 ^ 2 * v 1 -\n                                J (Fin.succ 0) 0 ^ 2 * v 2 -\n                              J (Fin.succ 1) 1 ^ 2 * v 1 -\n                            J (Fin.succ 1) 1 ^ 2 * v 2 -\n                          J (Fin.succ 2) 2 ^ 2 * v 1 -\n                        J (Fin.succ 2) 2 ^ 2 * v 2 -\n                      v 1 * J (Fin.succ 0) 1 * J (Fin.succ 1) 0 * 2 -\n                    v 1 * J (Fin.succ 0) 2 * J (Fin.succ 2) 0 * 2 -\n                  v 1 * J (Fin.succ 1) 2 * J (Fin.succ 2) 1 * 2 -\n                J (Fin.succ 0) 1 ^ 2 * v 2 -\n              J (Fin.succ 1) 0 ^ 2 * v 2 -\n            J (Fin.succ 0) 2 ^ 2 * v 2 -\n          J (Fin.succ 2) 0 ^ 2 * v 2 -\n        J (Fin.succ 1) 2 ^ 2 * v 2 -\n      J (Fin.succ 2) 1 ^ 2 * v 2 =\n    -(v 0 * J (Fin.succ 0) 0 * J (Fin.succ 1) 1) - v 0 * J (Fin.succ 0) 0 * J (Fin.succ 2) 2 +\n                                          v 0 * J (Fin.succ 0) 0 ^ 2 * (-1 / 2) -\n                                        v 0 * J (Fin.succ 1) 1 * J (Fin.succ 2) 2 +\n                                      v 0 * J (Fin.succ 1) 1 ^ 2 * (-1 / 2) +\n                                    v 0 * J (Fin.succ 2) 2 ^ 2 * (-1 / 2) +\n                                  J (Fin.succ 0) 0 ^ 2 * v 1 * (-1 / 2) +\n                                J (Fin.succ 0) 0 ^ 2 * v 2 * (-1 / 2) +\n                              J (Fin.succ 1) 1 ^ 2 * v 1 * (-1 / 2) +\n                            J (Fin.succ 1) 1 ^ 2 * v 2 * (-1 / 2) +\n                          J (Fin.succ 2) 2 ^ 2 * v 1 * (-1 / 2) +\n                        J (Fin.succ 2) 2 ^ 2 * v 2 * (-1 / 2) -\n                      v 1 * J (Fin.succ 0) 1 * J (Fin.succ 1) 0 -\n                    v 1 * J (Fin.succ 0) 2 * J (Fin.succ 2) 0 -\n                  v 1 * J (Fin.succ 1) 2 * J (Fin.succ 2) 1 +\n                J (Fin.succ 0) 1 ^ 2 * v 2 * (-1 / 2) +\n              J (Fin.succ 1) 0 ^ 2 * v 2 * (-1 / 2) +\n            J (Fin.succ 0) 2 ^ 2 * v 2 * (-1 / 2) +\n          J (Fin.succ 2) 0 ^ 2 * v 2 * (-1 / 2) +\n        J (Fin.succ 1) 2 ^ 2 * v 2 * (-1 / 2) +\n      J (Fin.succ 2) 1 ^ 2 * v 2 * (-1 / 2)\nTry this:\n  [apply] ring_nf\n  \n  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.\n    \n  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.\ns11/_scratch/d3_bulk_verification/density_half.lean:39:61: error: unsolved goals\nv : Vec 3\ns : ℝ\nJ H : Jet 3\n⊢ ⋯ - ⋯ - v 0 * ⋯ - ⋯ * v 1 * 2 - ⋯ * H (Fin.succ 0) 0 * v 2 * 2 - J (Fin.succ 0) 0 ^ 2 * v 1 -\n                                                                                              J (Fin.succ 0) 0 ^ 2 *\n                                                                                                v 2 -\n                                                                                            s * J (Fin.succ 1) 1 *\n                                                                                                  H (Fin.succ 1) 1 *\n                                                                                                v 1 *\n                                                                                              2 -\n                                                                                          s * J (Fin.succ 1) 1 *\n                                                                                                H (Fin.succ 1) 1 *\n                                                                                              v 2 *\n                                                                                            2 -\n                                                                                        s * J (Fin.succ 2) 2 *\n                                                                                              H (Fin.succ 2) 2 *\n                                                                                            v 1 *\n                                                                                          2 -\n                                                                                      s * J (Fin.succ 2) 2 *\n                                                                                            H (Fin.succ 2) 2 *\n                                                                                          v 2 *\n                                                                                        2 -\n                                                                                    s * v 1 * J (Fin.succ 0) 1 *\n                                                                                        H (Fin.succ 1) 0 *\n                                                                                      2 -\n                                                                                  s * v 1 * H (Fin.succ 0) 1 *\n                                                                                      J (Fin.succ 1) 0 *\n                                                                                    2 -\n                                                                                s * v 1 * J (Fin.succ 0) 2 *\n                                                                                    H (Fin.succ 2) 0 *\n                                                                                  2 -\n                                                                              s * v 1 * H (Fin.succ 0) 2 *\n                                                                                  J (Fin.succ 2) 0 *\n                                                                                2 -\n                                                                            s * v 1 * J (Fin.succ 1) 2 *\n                                                                                H (Fin.succ 2) 1 *\n                                                                              2 -\n                                                                          s * v 1 * H (Fin.succ 1) 2 *\n                                                                              J (Fin.succ 2) 1 *\n                                                                            2 -\n                                                                        s * J (Fin.succ 0) 1 * H (Fin.succ 0) 1 * v 2 *\n                                                                          2 -\n                                                                      s * J (Fin.succ 1) 0 * H (Fin.succ 1) 0 * v 2 *\n                                                                        2 -\n                                                                    s * J (Fin.succ 0) 2 * H (Fin.succ 0) 2 * v 2 * 2 -\n                                                                  s * J (Fin.succ 2) 0 * H (Fin.succ 2) 0 * v 2 * 2 -\n                                                                s * J (Fin.succ 1) 2 * H (Fin.succ 1) 2 * v 2 * 2 -\n                                                              s * J (Fin.succ 2) 1 * H (Fin.succ 2) 1 * v 2 * 2 -\n                                                            s ^ 2 * H (Fin.succ 0) 0 ^ 2 * v 1 -\n                                                          s ^ 2 * H (Fin.succ 0) 0 ^ 2 * v 2 -\n                                                        s ^ 2 * H (Fin.succ 1) 1 ^ 2 * v 1 -\n                                                      s ^ 2 * H (Fin.succ 1) 1 ^ 2 * v 2 -\n                                                    s ^ 2 * H (Fin.succ 2) 2 ^ 2 * v 1 -\n                                                  s ^ 2 * H (Fin.succ 2) 2 ^ 2 * v 2 -\n                                                s ^ 2 * v 1 * H (Fin.succ 0) 1 * H (Fin.succ 1) 0 * 2 -\n                                              s ^ 2 * v 1 * H (Fin.succ 0) 2 * H (Fin.succ 2) 0 * 2 -\n                                            s ^ 2 * v 1 * H (Fin.succ 1) 2 * H (Fin.succ 2) 1 * 2 -\n                                          s ^ 2 * H (Fin.succ 0) 1 ^ 2 * v 2 -\n                                        s ^ 2 * H (Fin.succ 1) 0 ^ 2 * v 2 -\n                                      s ^ 2 * H (Fin.succ 0) 2 ^ 2 * v 2 -\n                                    s ^ 2 * H (Fin.succ 2) 0 ^ 2 * v 2 -\n                                  s ^ 2 * H (Fin.succ 1) 2 ^ 2 * v 2 -\n                                s ^ 2 * H (Fin.succ 2) 1 ^ 2 * v 2 -\n                              J (Fin.succ 1) 1 ^ 2 * v 1 -\n                            J (Fin.succ 1) 1 ^ 2 * v 2 -\n                          J (Fin.succ 2) 2 ^ 2 * v 1 -\n                        J (Fin.succ 2) 2 ^ 2 * v 2 -\n                      v 1 * J (Fin.succ 0) 1 * J (Fin.succ 1) 0 * 2 -\n                    v 1 * J (Fin.succ 0) 2 * J (Fin.succ 2) 0 * 2 -\n                  v 1 * J (Fin.succ 1) 2 * J (Fin.succ 2) 1 * 2 -\n                J (Fin.succ 0) 1 ^ 2 * v 2 -\n              J (Fin.succ 1) 0 ^ 2 * v 2 -\n            J (Fin.succ 0) 2 ^ 2 * v 2 -\n          J (Fin.succ 2) 0 ^ 2 * v 2 -\n        J (Fin.succ 1) 2 ^ 2 * v 2 -\n      J (Fin.succ 2) 1 ^ 2 * v 2 =\n    ⋯ - ⋯ - v 0 * ⋯ - ⋯ * H (Fin.succ 0) 0 * v 1 - J (Fin.succ 0) 0 * s * H (Fin.succ 0) 0 * v 2 -\n                                                                                                J (Fin.succ 0) 0 ^ 2 *\n                                                                                                  v 1 -\n                                                                                              J (Fin.succ 0) 0 ^ 2 *\n                                                                                                v 2 -\n                                                                                            s * J (Fin.succ 1) 1 *\n                                                                                                H (Fin.succ 1) 1 *\n                                                                                              v 1 -\n                                                                                          s * J (Fin.succ 1) 1 *\n                                                                                              H (Fin.succ 1) 1 *\n                                                                                            v 2 -\n                                                                                        s * J (Fin.succ 2) 2 *\n                                                                                            H (Fin.succ 2) 2 *\n                                                                                          v 1 -\n                                                                                      s * J (Fin.succ 2) 2 *\n                                                                                          H (Fin.succ 2) 2 *\n                                                                                        v 2 -\n                                                                                    s * v 1 * J (Fin.succ 0) 1 *\n                                                                                      H (Fin.succ 1) 0 -\n                                                                                  s * v 1 * H (Fin.succ 0) 1 *\n                                                                                    J (Fin.succ 1) 0 -\n                                                                                s * v 1 * J (Fin.succ 0) 2 *\n                                                                                  H (Fin.succ 2) 0 -\n                                                                              s * v 1 * H (Fin.succ 0) 2 *\n                                                                                J (Fin.succ 2) 0 -\n                                                                            s * v 1 * J (Fin.succ 1) 2 *\n                                                                              H (Fin.succ 2) 1 -\n                                                                          s * v 1 * H (Fin.succ 1) 2 *\n                                                                            J (Fin.succ 2) 1 -\n                                                                        s * J (Fin.succ 0) 1 * H (Fin.succ 0) 1 * v 2 -\n                                                                      s * J (Fin.succ 1) 0 * H (Fin.succ 1) 0 * v 2 -\n                                                                    s * J (Fin.succ 0) 2 * H (Fin.succ 0) 2 * v 2 -\n                                                                  s * J (Fin.succ 2) 0 * H (Fin.succ 2) 0 * v 2 -\n                                                                s * J (Fin.succ 1) 2 * H (Fin.succ 1) 2 * v 2 -\n                                                              s * J (Fin.succ 2) 1 * H (Fin.succ 2) 1 * v 2 -\n                                                            s ^ 2 * H (Fin.succ 0) 0 ^ 2 * v 1 -\n                                                          s ^ 2 * H (Fin.succ 0) 0 ^ 2 * v 2 -\n                                                        s ^ 2 * H (Fin.succ 1) 1 ^ 2 * v 1 -\n                                                      s ^ 2 * H (Fin.succ 1) 1 ^ 2 * v 2 -\n                                                    s ^ 2 * H (Fin.succ 2) 2 ^ 2 * v 1 -\n                                                  s ^ 2 * H (Fin.succ 2) 2 ^ 2 * v 2 -\n                                                s ^ 2 * v 1 * H (Fin.succ 0) 1 * H (Fin.succ 1) 0 * 2 -\n                                              s ^ 2 * v 1 * H (Fin.succ 0) 2 * H (Fin.succ 2) 0 * 2 -\n                                            s ^ 2 * v 1 * H (Fin.succ 1) 2 * H (Fin.succ 2) 1 * 2 -\n                                          s ^ 2 * H (Fin.succ 0) 1 ^ 2 * v 2 -\n                                        s ^ 2 * H (Fin.succ 1) 0 ^ 2 * v 2 -\n                                      s ^ 2 * H (Fin.succ 0) 2 ^ 2 * v 2 -\n                                    s ^ 2 * H (Fin.succ 2) 0 ^ 2 * v 2 -\n                                  s ^ 2 * H (Fin.succ 1) 2 ^ 2 * v 2 -\n                                s ^ 2 * H (Fin.succ 2) 1 ^ 2 * v 2 -\n                              J (Fin.succ 1) 1 ^ 2 * v 1 -\n                            J (Fin.succ 1) 1 ^ 2 * v 2 -\n                          J (Fin.succ 2) 2 ^ 2 * v 1 -\n                        J (Fin.succ 2) 2 ^ 2 * v 2 -\n                      v 1 * J (Fin.succ 0) 1 * J (Fin.succ 1) 0 * 2 -\n                    v 1 * J (Fin.succ 0) 2 * J (Fin.succ 2) 0 * 2 -\n                  v 1 * J (Fin.succ 1) 2 * J (Fin.succ 2) 1 * 2 -\n                J (Fin.succ 0) 1 ^ 2 * v 2 -\n              J (Fin.succ 1) 0 ^ 2 * v 2 -\n            J (Fin.succ 0) 2 ^ 2 * v 2 -\n          J (Fin.succ 2) 0 ^ 2 * v 2 -\n        J (Fin.succ 1) 2 ^ 2 * v 2 -\n      J (Fin.succ 2) 1 ^ 2 * v 2\n",
+      "output_sha256": "2ef2d0889122cdae2d7b67728c9667b1a3337b8644a86f21bd66a909e607c9b1",
+      "source": "import S10Pilot.Variation\nimport S11D3Invariants.Classification\n\n/-! K1: the full classified D3 density, with constant real coefficients.\nL = -Q/2. Spatial rows are derivative indices; no inertia is added. -/\nnamespace S11D3Bulk\nnoncomputable section\nopen S10Pilot\nopen scoped ContDiff\n\ndef spatialGradient (J : Jet 3) : S11D3Invariants.Mat := fun j i => J j.succ i\ndef divergence (J : Jet 3) : ℝ := ∑ i : Fin 3, J i.succ i\ndef transposePair (J : Jet 3) : ℝ := ∑ i : Fin 3, ∑ j : Fin 3, J i.succ j * J j.succ i\ndef gradientSquare (J : Jet 3) : ℝ := ∑ i : Fin 3, ∑ j : Fin 3, J i.succ j ^ 2\n\ndef lagrangian (v : Vec 3) (J : Jet 3) : ℝ :=\n  -(1 : ℝ) * (v 0 * divergence J ^ 2 + v 1 * transposePair J + v 2 * gradientSquare J)\n\ntheorem density_identity (v : Vec 3) (J : Jet 3) :\n    lagrangian v J = -(1 / 2 : ℝ) * S11D3Invariants.invariantForm v (spatialGradient J) := by\n  rw [S11D3Invariants.invariantForm_apply]\n  simp only [lagrangian, divergence, transposePair, gradientSquare, spatialGradient,\n    Matrix.trace, Matrix.diag_apply, Matrix.mul_apply, Matrix.transpose_apply,\n    Fin.sum_univ_three]\n  ring\n\ntheorem all_invariant_densities (Q : S11D3Invariants.Quad)\n    (hQ : S11D3Invariants.SOInvariant Q) :\n    ∃! v : Vec 3, Q = S11D3Invariants.invariantForm v :=\n  S11D3Invariants.SO_unique Q hQ\n\ndef variationDensity (v : Vec 3) (J H : Jet 3) : ℝ :=\n  -(v 0 * divergence J * divergence H +\n    v 1 * (∑ i : Fin 3, ∑ j : Fin 3, J j.succ i * H i.succ j) +\n    v 2 * (∑ i : Fin 3, ∑ j : Fin 3, J i.succ j * H i.succ j))\n\ntheorem lagrangian_increment (v : Vec 3) (s : ℝ) (J H : Jet 3) :\n    lagrangian v (J + s • H) = lagrangian v J +\n      s * variationDensity v J H + s ^ 2 * lagrangian v H := by\n  simp only [lagrangian, variationDensity, divergence, transposePair, gradientSquare,\n    Fin.sum_univ_three, Pi.add_apply, Pi.smul_apply, smul_eq_mul]\n  ring\n\ntheorem lagrangian_variation (v : Vec 3) (J H : Jet 3) :\n    HasDerivAt (fun s : ℝ => lagrangian v (J + s • H)) (variationDensity v J H) 0 := by\n  have h := ((hasDerivAt_const (0 : ℝ) (lagrangian v J)).add\n    ((hasDerivAt_id (0 : ℝ)).mul_const (variationDensity v J H))).add\n    (((hasDerivAt_id (0 : ℝ)).pow 2).mul_const (lagrangian v H))\n  convert! h using 1\n  · funext s\n    exact lagrangian_increment v s J H\n  · simp\n\ndef momentum (v : Vec 3) (J : Jet 3) (j : Fin 4) (i : Fin 3) : ℝ :=\n  deriv (fun s : ℝ => lagrangian v (J + s • basisJet j i)) 0\n\ntheorem momentum_eq (v : Vec 3) (J : Jet 3) (j : Fin 4) (i : Fin 3) :\n    momentum v J j i = Fin.cases 0\n      (fun r => -(v 0 * (if r = i then divergence J else 0) +\n        v 1 * J i.succ r + v 2 * J r.succ i)) j := by\n  unfold momentum\n  rw [(lagrangian_variation v J (basisJet j i)).deriv]\n  cases j using Fin.cases\n  · fin_cases i <;> simp [variationDensity, divergence, basisJet_apply, Fin.sum_univ_three]\n  · rename_i r\n    simp only [Fin.cases_succ]\n    fin_cases r <;> fin_cases i <;>\n      simp [variationDensity, divergence, basisJet_apply, Fin.sum_univ_three]\n\ntheorem momentum_smul (v : Vec 3) (s : ℝ) (J : Jet 3) (j : Fin 4) (i : Fin 3) :\n    momentum v (s • J) j i = s * momentum v J j i := by\n  rw [momentum_eq, momentum_eq]\n  cases j using Fin.cases\n  · simp\n  · rename_i r\n    by_cases h : r = i <;> simp [h, divergence, Fin.sum_univ_three] <;> ring\n\ndef eulerLagrange (v : Vec 3) (u : Point 3 → Vec 3) (x : Point 3) : Vec 3 :=\n  fun i => -∑ j : Fin 4, coordDeriv j (fun y => momentum v (fieldJet u y) j i) x\n\ntheorem smooth_momentum {u : Point 3 → Vec 3} (hu : SmoothField u)\n    (v : Vec 3) (j : Fin 4) (i : Fin 3) :\n    ContDiff ℝ ∞ (fun x => momentum v (fieldJet u x) j i) := by\n  have hJ : ∀ a b, ContDiff ℝ ∞ (fun x => fieldJet u x a b) :=\n    fun a b => smooth_coordDeriv (hu b) a\n  cases j using Fin.cases\n  · simp only [momentum_eq, Fin.cases_zero]\n    fun_prop\n  · rename_i r\n    by_cases h : r = i <;> simp only [momentum_eq, Fin.cases_succ, h, if_true, if_false, divergence]\n    all_goals fun_prop\n\ntheorem smooth_eulerLagrange {u : Point 3 → Vec 3} (hu : SmoothField u)\n    (v : Vec 3) (i : Fin 3) : ContDiff ℝ ∞ (fun x => eulerLagrange v u x i) := by\n  have hd : ∀ j, ContDiff ℝ ∞ (coordDeriv j (fun y => momentum v (fieldJet u y) j i)) :=\n    fun j => smooth_coordDeriv (smooth_momentum hu v j i) j\n  unfold eulerLagrange\n  fun_prop\n\nend\nend S11D3Bulk\n",
+      "canonical_source": "lean/s11/S11D3Bulk/Action.lean",
+      "replacement": {
+        "old": "  -(1 / 2 : ℝ) * (v 0 * divergence J ^ 2",
+        "new": "  -(1 : ℝ) * (v 0 * divergence J ^ 2"
+      }
+    },
+    {
+      "name": "bulk_coefficient_map",
+      "expected": "REJECTED",
+      "outcome": "REJECTED",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/d3_bulk_verification/bulk_coefficient_map.lean"
+      ],
+      "exit_status": 1,
+      "wall_seconds": 24.228,
+      "source_sha256": "82d9d4c02edf237dc31e07ff5c7c744aa8bec98756aba401dee299148e57a63f",
+      "required_failure_in": "homogeneous_operator",
+      "diagnostics": [
+        {
+          "declaration": "homogeneous_operator",
+          "line": 81,
+          "message": "s11/_scratch/d3_bulk_verification/bulk_coefficient_map.lean:81:37: error: unsolved goals\nv : Vec 3\nomega : ℝ\nk a : Vec 3\ni : Fin 3\n⊢ (v 1 - v 0 = -v 1 + -v 0 ∨ dot k a = 0) ∨ k i = 0\nTry this:\n  [apply] ring_nf\n  \n  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.\n    \n  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.\nTry this:\n  [apply] ring_nf\n  \n  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.\n    \n  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.\nTry this:\n  [apply] ring_nf\n  \n  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.\n    \n  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.\n"
+        },
+        {
+          "declaration": "momentum_contraction",
+          "line": 87,
+          "message": "s11/_scratch/d3_bulk_verification/bulk_coefficient_map.lean:87:31: error: unsolved goals\ncase «0»\nv : Vec 3\nomega : ℝ\nk a : Vec 3\n⊢ -(k 0 * v 1 * k 1 * a 1) - k 0 * v 1 * k 2 * a 2 - k 0 * v 0 * k 1 * a 1 - k 0 * v 0 * k 2 * a 2 -\n              k 0 ^ 2 * v 2 * a 0 -\n            k 0 ^ 2 * a 0 * v 1 -\n          k 0 ^ 2 * a 0 * v 0 -\n        v 2 * a 0 * k 1 ^ 2 -\n      v 2 * a 0 * k 2 ^ 2 =\n    k 0 * v 1 * k 1 * a 1 + k 0 * v 1 * k 2 * a 2 - k 0 * v 0 * k 1 * a 1 - k 0 * v 0 * k 2 * a 2 -\n              k 0 ^ 2 * v 2 * a 0 +\n            k 0 ^ 2 * a 0 * v 1 -\n          k 0 ^ 2 * a 0 * v 0 -\n        v 2 * a 0 * k 1 ^ 2 -\n      v 2 * a 0 * k 2 ^ 2\n\ncase «1»\nv : Vec 3\nomega : ℝ\nk a : Vec 3\n⊢ -(k 0 * v 1 * k 1 * a 0) - k 0 * k 1 * a 0 * v 0 - k 0 ^ 2 * v 2 * a 1 - v 2 * a 1 * k 1 ^ 2 - v 2 * a 1 * k 2 ^ 2 -\n            a 1 * v 1 * k 1 ^ 2 -\n          a 1 * k 1 ^ 2 * v 0 -\n        v 1 * k 1 * k 2 * a 2 -\n      k 1 * v 0 * k 2 * a 2 =\n    k 0 * v 1 * k 1 * a 0 - k 0 * k 1 * a 0 * v 0 - k 0 ^ 2 * v 2 * a 1 - v 2 * a 1 * k 1 ^ 2 - v 2 * a 1 * k 2 ^ 2 +\n            a 1 * v 1 * k 1 ^ 2 -\n          a 1 * k 1 ^ 2 * v 0 +\n        v 1 * k 1 * k 2 * a 2 -\n      k 1 * v 0 * k 2 * a 2\n\ncase «2»\nv : Vec 3\nomega : ℝ\nk a : Vec 3\n⊢ -(k 0 * v 1 * k 2 * a 0) - k 0 * k 2 * a 0 * v 0 - k 0 ^ 2 * v 2 * a 2 - v 2 * a 2 * k 2 ^ 2 - v 2 * a 2 * k 1 ^ 2 -\n            a 2 * v 1 * k 2 ^ 2 -\n          a 2 * k 2 ^ 2 * v 0 -\n        v 1 * k 2 * k 1 * a 1 -\n      k 2 * k 1 * a 1 * v 0 =\n    k 0 * v 1 * k 2 * a 0 - k 0 * k 2 * a 0 * v 0 - k 0 ^ 2 * v 2 * a 2 - v 2 * a 2 * k 2 ^ 2 - v 2 * a 2 * k 1 ^ 2 +\n            a 2 * v 1 * k 2 ^ 2 -\n          a 2 * k 2 ^ 2 * v 0 +\n        v 1 * k 2 * k 1 * a 1 -\n      k 2 * k 1 * a 1 * v 0\nTry this:\n  [apply] ring_nf\n  \n  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.\n    \n  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.\n"
+        },
+        {
+          "declaration": "modal_longitudinal",
+          "line": 116,
+          "message": "s11/_scratch/d3_bulk_verification/bulk_coefficient_map.lean:116:65: error: unsolved goals\nv k : Vec 3\ni : Fin 3\n⊢ -(v 2 * dot k k * k i) + dot k k * k i * v 1 - dot k k * k i * v 0 =\n    -(v 2 * dot k k * k i) - dot k k * k i * v 1 - dot k k * k i * v 0\n"
+        }
+      ],
+      "output": "s11/_scratch/d3_bulk_verification/bulk_coefficient_map.lean:81:37: error: unsolved goals\nv : Vec 3\nomega : ℝ\nk a : Vec 3\ni : Fin 3\n⊢ (v 1 - v 0 = -v 1 + -v 0 ∨ dot k a = 0) ∨ k i = 0\nTry this:\n  [apply] ring_nf\n  \n  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.\n    \n  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.\nTry this:\n  [apply] ring_nf\n  \n  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.\n    \n  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.\nTry this:\n  [apply] ring_nf\n  \n  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.\n    \n  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.\ns11/_scratch/d3_bulk_verification/bulk_coefficient_map.lean:87:31: error: unsolved goals\ncase «0»\nv : Vec 3\nomega : ℝ\nk a : Vec 3\n⊢ -(k 0 * v 1 * k 1 * a 1) - k 0 * v 1 * k 2 * a 2 - k 0 * v 0 * k 1 * a 1 - k 0 * v 0 * k 2 * a 2 -\n              k 0 ^ 2 * v 2 * a 0 -\n            k 0 ^ 2 * a 0 * v 1 -\n          k 0 ^ 2 * a 0 * v 0 -\n        v 2 * a 0 * k 1 ^ 2 -\n      v 2 * a 0 * k 2 ^ 2 =\n    k 0 * v 1 * k 1 * a 1 + k 0 * v 1 * k 2 * a 2 - k 0 * v 0 * k 1 * a 1 - k 0 * v 0 * k 2 * a 2 -\n              k 0 ^ 2 * v 2 * a 0 +\n            k 0 ^ 2 * a 0 * v 1 -\n          k 0 ^ 2 * a 0 * v 0 -\n        v 2 * a 0 * k 1 ^ 2 -\n      v 2 * a 0 * k 2 ^ 2\n\ncase «1»\nv : Vec 3\nomega : ℝ\nk a : Vec 3\n⊢ -(k 0 * v 1 * k 1 * a 0) - k 0 * k 1 * a 0 * v 0 - k 0 ^ 2 * v 2 * a 1 - v 2 * a 1 * k 1 ^ 2 - v 2 * a 1 * k 2 ^ 2 -\n            a 1 * v 1 * k 1 ^ 2 -\n          a 1 * k 1 ^ 2 * v 0 -\n        v 1 * k 1 * k 2 * a 2 -\n      k 1 * v 0 * k 2 * a 2 =\n    k 0 * v 1 * k 1 * a 0 - k 0 * k 1 * a 0 * v 0 - k 0 ^ 2 * v 2 * a 1 - v 2 * a 1 * k 1 ^ 2 - v 2 * a 1 * k 2 ^ 2 +\n            a 1 * v 1 * k 1 ^ 2 -\n          a 1 * k 1 ^ 2 * v 0 +\n        v 1 * k 1 * k 2 * a 2 -\n      k 1 * v 0 * k 2 * a 2\n\ncase «2»\nv : Vec 3\nomega : ℝ\nk a : Vec 3\n⊢ -(k 0 * v 1 * k 2 * a 0) - k 0 * k 2 * a 0 * v 0 - k 0 ^ 2 * v 2 * a 2 - v 2 * a 2 * k 2 ^ 2 - v 2 * a 2 * k 1 ^ 2 -\n            a 2 * v 1 * k 2 ^ 2 -\n          a 2 * k 2 ^ 2 * v 0 -\n        v 1 * k 2 * k 1 * a 1 -\n      k 2 * k 1 * a 1 * v 0 =\n    k 0 * v 1 * k 2 * a 0 - k 0 * k 2 * a 0 * v 0 - k 0 ^ 2 * v 2 * a 2 - v 2 * a 2 * k 2 ^ 2 - v 2 * a 2 * k 1 ^ 2 +\n            a 2 * v 1 * k 2 ^ 2 -\n          a 2 * k 2 ^ 2 * v 0 +\n        v 1 * k 2 * k 1 * a 1 -\n      k 2 * k 1 * a 1 * v 0\nTry this:\n  [apply] ring_nf\n  \n  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.\n    \n  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.\ns11/_scratch/d3_bulk_verification/bulk_coefficient_map.lean:116:65: error: unsolved goals\nv k : Vec 3\ni : Fin 3\n⊢ -(v 2 * dot k k * k i) + dot k k * k i * v 1 - dot k k * k i * v 0 =\n    -(v 2 * dot k k * k i) - dot k k * k i * v 1 - dot k k * k i * v 0\n",
+      "output_sha256": "c3d2071d3c0719b06b36e134577859d41a7fc41082bb1ba289e3f0c4c44dede9",
+      "source": "import S11D3Bulk.Calculus\nimport S11D3Bulk.Variation\nimport S11Homogeneous.Action\n\n/-! K2–K3: the actual local operator, divergence current and physical map. -/\nnamespace S11D3Bulk\nnoncomputable section\nopen S10Pilot\nopen scoped ContDiff\n\ndef gradDiv (u : Point 3 → Vec 3) (x : Point 3) : Vec 3 :=\n  fun i => ∑ j : Fin 3, coordDeriv i.succ (coordDeriv j.succ (fun y => u y j)) x\n\ndef laplacian (u : Point 3 → Vec 3) (x : Point 3) : Vec 3 :=\n  fun i => ∑ j : Fin 3, coordDeriv j.succ (coordDeriv j.succ (fun y => u y i)) x\n\ntheorem gradDiv_eq {u : Point 3 → Vec 3} (hu : SmoothField u)\n    (x : Point 3) (i : Fin 3) :\n    gradDiv u x i = coordDeriv i.succ (fun y => divergence (fieldJet u y)) x := by\n  have hJ : ∀ a b, ContDiff ℝ ∞ (fun x => fieldJet u x a b) :=\n    fun a b => smooth_coordDeriv (hu b) a\n  simp only [gradDiv, divergence, Fin.sum_univ_three]\n  simp (disch := fun_prop) only [partial_add]\n  rfl\n\ntheorem eulerLagrange_eq {u : Point 3 → Vec 3} (hu : SmoothField u)\n    (v : Vec 3) (x : Point 3) :\n    eulerLagrange v u x = (v 0 + v 1) • gradDiv u x + v 2 • laplacian u x := by\n  have hJ : ∀ a b, ContDiff ℝ ∞ (fun x => fieldJet u x a b) :=\n    fun a b => smooth_coordDeriv (hu b) a\n  have hcomm (i j : Fin 4) (r : Fin 3) :\n      coordDeriv i (coordDeriv j (fun y => u y r)) x =\n      coordDeriv j (coordDeriv i (fun y => u y r)) x := partial_commute (hu r) i j x\n  ext i\n  fin_cases i\n  all_goals simp only [eulerLagrange, momentum_eq, Fin.sum_univ_succ,\n    Fin.sum_univ_zero, Fin.cases_zero, Fin.cases_succ, divergence,\n    Pi.smul_apply, Pi.add_apply, smul_eq_mul, gradDiv, laplacian]\n  all_goals norm_num [Fin.succ] at *\n  all_goals simp (disch := fun_prop) only [partial_neg, partial_add, partial_const_mul, partial_zero]\n  all_goals simp only [fieldJet]\n  · erw [hcomm 2 1 1, hcomm 3 1 2]\n    ring!\n  · erw [hcomm 1 2 0, hcomm 3 2 2]\n    ring!\n  · erw [hcomm 1 3 0, hcomm 2 3 1]\n    ring!\n\ndef boundaryCurrent (u : Point 3 → Vec 3) (x : Point 3) : Vec 3 :=\n  fun i => ∑ j : Fin 3,\n    (u x i * fieldJet u x j.succ j - u x j * fieldJet u x j.succ i)\n\ntheorem boundary_identity {u : Point 3 → Vec 3} (hu : SmoothField u) (x : Point 3) :\n    (∑ i : Fin 3, coordDeriv i.succ (fun y => boundaryCurrent u y i) x) =\n      divergence (fieldJet u x) ^ 2 - transposePair (fieldJet u x) := by\n  have hU : ∀ i : Fin 3, ContDiff ℝ ∞ (fun x => u x i) := hu\n  have hJ : ∀ a b, ContDiff ℝ ∞ (fun x => fieldJet u x a b) :=\n    fun a b => smooth_coordDeriv (hu b) a\n  have hcomm (i j : Fin 4) (r : Fin 3) :\n      coordDeriv i (coordDeriv j (fun y => u y r)) x =\n      coordDeriv j (coordDeriv i (fun y => u y r)) x := partial_commute (hu r) i j x\n  simp only [boundaryCurrent, divergence, transposePair, Fin.sum_univ_three]\n  simp (disch := fun_prop) only [partial_add, partial_sub, partial_mul]\n  simp only [fieldJet]\n  simp only [hcomm]\n  ring\n\ntheorem null_density_is_divergence {u : Point 3 → Vec 3} (hu : SmoothField u)\n    (a : ℝ) (x : Point 3) :\n    lagrangian ![a,-a,0] (fieldJet u x) =\n      -a / 2 * (∑ i : Fin 3, coordDeriv i.succ (fun y => boundaryCurrent u y i) x) := by\n  rw [boundary_identity hu]\n  simp [lagrangian]\n  ring\n\ndef modalOperator (v : Vec 3) (k a : Vec 3) : Vec 3 :=\n  (-v 2 * normSq k) • a + (-(v 0 - v 1) * dot k a) • k\n\ntheorem homogeneous_operator (v : Vec 3) (omega : ℝ) (k a : Vec 3) :\n    modalOperator v k a = S11Homogeneous.modalOperator 0 (v 2)\n      (v 0 + v 1 + v 2) omega k a := by\n  ext i\n  simp [modalOperator, S11Homogeneous.modalOperator]\n\ntheorem momentum_contraction (v : Vec 3) (omega : ℝ) (k a : Vec 3) (i : Fin 3) :\n    (∑ j : Fin 4, waveCovector omega k j * momentum v (modeJet (-omega) k a) j i) =\n      modalOperator v k a i := by\n  simp only [momentum_eq, waveCovector, modeJet, divergence, Fin.sum_univ_succ,\n    Fin.sum_univ_zero, Fin.cases_zero, Fin.cases_succ]\n  fin_cases i <;> simp [modalOperator, normSq, dot, Fin.sum_univ_three] <;> ring\n\ntheorem eulerLagrange_planeWave (v : Vec 3) (omega : ℝ) (k a : Vec 3) (x : Point 3) :\n    eulerLagrange v (planeWave omega k a) x =\n      Real.cos (phase (waveCovector omega k) x) • modalOperator v k a := by\n  ext i\n  unfold eulerLagrange\n  simp_rw [fieldJet_planeWave, momentum_smul]\n  have he : ∀ j : Fin 4,\n      (fun y => -Real.sin (phase (waveCovector omega k) y) *\n        momentum v (modeJet (-omega) k a) j i) =\n      (fun y => -momentum v (modeJet (-omega) k a) j i *\n        Real.sin (phase (waveCovector omega k) y)) := by\n    intro j\n    funext y\n    ring\n  simp_rw [he, partial_const_sin]\n  simp only [Pi.smul_apply, smul_eq_mul]\n  rw [← momentum_contraction v omega]\n  simp only [Finset.mul_sum]\n  rw [← Finset.sum_neg_distrib]\n  apply Finset.sum_congr rfl\n  intro j _\n  ring\n\ntheorem modal_longitudinal (v : Vec 3) (k : Vec 3) :\n    modalOperator v k k = (-(v 0 + v 1 + v 2) * normSq k) • k := by\n  ext i\n  simp [modalOperator, normSq]\n  ring\n\ntheorem modal_transverse (v : Vec 3) (k a : Vec 3) (ha : dot k a = 0) :\n    modalOperator v k a = (-v 2 * normSq k) • a := by\n  simp [modalOperator, ha]\n\ntheorem modal_zero_wavevector (v a : Vec 3) : modalOperator v 0 a = 0 := by\n  simp [modalOperator, normSq, dot]\n\nend\nend S11D3Bulk\n",
+      "canonical_source": "lean/s11/S11D3Bulk/Bulk.lean",
+      "replacement": {
+        "old": "(-(v 0 + v 1) * dot k a) • k",
+        "new": "(-(v 0 - v 1) * dot k a) • k"
+      }
+    },
+    {
+      "name": "boundary_current_sign",
+      "expected": "REJECTED",
+      "outcome": "REJECTED",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/d3_bulk_verification/boundary_current_sign.lean"
+      ],
+      "exit_status": 1,
+      "wall_seconds": 23.225,
+      "source_sha256": "f8274504487580a6f7e0981f9cb0a812c034d8af32fd5b874cf68f1c16be577f",
+      "required_failure_in": "boundary_identity",
+      "diagnostics": [
+        {
+          "declaration": "boundary_identity",
+          "line": 55,
+          "message": "s11/_scratch/d3_bulk_verification/boundary_current_sign.lean:55:70: error: unsolved goals\nu : Point 3 → Vec 3\nhu : SmoothField u\nx : Point 3\nhU : ∀ (i : Fin 3), ContDiff ℝ ∞ fun x => u x i\nhJ : ∀ (a : Fin (3 + 1)) (b : Fin 3), ContDiff ℝ ∞ fun x => fieldJet u x a b\nhcomm :\n  ∀ (i j : Fin 4) (r : Fin 3),\n    coordDeriv i (coordDeriv j fun y => u y r) x = coordDeriv j (coordDeriv i fun y => u y r) x\n⊢ coordDeriv (Fin.succ 0) (fun y => u y 0) x * coordDeriv (Fin.succ 1) (fun x => u x 1) x * 2 +\n                                      coordDeriv (Fin.succ 0) (fun y => u y 0) x *\n                                          coordDeriv (Fin.succ 2) (fun x => u x 2) x *\n                                        2 +\n                                    coordDeriv (Fin.succ 0) (fun y => u y 0) x ^ 2 * 2 +\n                                  u x 0 *\n                                      coordDeriv (Fin.succ 0) (fun y => coordDeriv (Fin.succ 0) (fun y => u y 0) y) x *\n                                    2 +\n                                u x 0 *\n                                    coordDeriv (Fin.succ 0) (fun y => coordDeriv (Fin.succ 1) (fun x => u x 1) y) x *\n                                  2 +\n                              u x 0 * coordDeriv (Fin.succ 0) (fun y => coordDeriv (Fin.succ 2) (fun x => u x 2) y) x *\n                                2 +\n                            coordDeriv (Fin.succ 1) (fun x => u x 1) x * coordDeriv (Fin.succ 2) (fun x => u x 2) x *\n                              2 +\n                          coordDeriv (Fin.succ 1) (fun x => u x 1) x ^ 2 * 2 +\n                        coordDeriv (Fin.succ 0) (fun x => u x 1) x * coordDeriv (Fin.succ 1) (fun y => u y 0) x * 2 +\n                      u x 1 * coordDeriv (Fin.succ 0) (fun y => coordDeriv (Fin.succ 1) (fun y => u y 0) y) x * 2 +\n                    u x 1 * coordDeriv (Fin.succ 1) (fun y => coordDeriv (Fin.succ 1) (fun x => u x 1) y) x * 2 +\n                  u x 1 * coordDeriv (Fin.succ 1) (fun y => coordDeriv (Fin.succ 2) (fun x => u x 2) y) x * 2 +\n                coordDeriv (Fin.succ 2) (fun x => u x 2) x ^ 2 * 2 +\n              coordDeriv (Fin.succ 0) (fun x => u x 2) x * coordDeriv (Fin.succ 2) (fun y => u y 0) x * 2 +\n            u x 2 * coordDeriv (Fin.succ 0) (fun y => coordDeriv (Fin.succ 2) (fun y => u y 0) y) x * 2 +\n          u x 2 * coordDeriv (Fin.succ 1) (fun y => coordDeriv (Fin.succ 2) (fun x => u x 1) y) x * 2 +\n        u x 2 * coordDeriv (Fin.succ 2) (fun y => coordDeriv (Fin.succ 2) (fun x => u x 2) y) x * 2 +\n      coordDeriv (Fin.succ 1) (fun x => u x 2) x * coordDeriv (Fin.succ 2) (fun x => u x 1) x * 2 =\n    coordDeriv (Fin.succ 0) (fun y => u y 0) x * coordDeriv (Fin.succ 1) (fun x => u x 1) x * 2 +\n              coordDeriv (Fin.succ 0) (fun y => u y 0) x * coordDeriv (Fin.succ 2) (fun x => u x 2) x * 2 +\n            coordDeriv (Fin.succ 1) (fun x => u x 1) x * coordDeriv (Fin.succ 2) (fun x => u x 2) x * 2 -\n          coordDeriv (Fin.succ 0) (fun x => u x 1) x * coordDeriv (Fin.succ 1) (fun y => u y 0) x * 2 -\n        coordDeriv (Fin.succ 0) (fun x => u x 2) x * coordDeriv (Fin.succ 2) (fun y => u y 0) x * 2 -\n      coordDeriv (Fin.succ 1) (fun x => u x 2) x * coordDeriv (Fin.succ 2) (fun x => u x 1) x * 2\n"
+        },
+        {
+          "declaration": "boundary_identity",
+          "line": 63,
+          "message": "s11/_scratch/d3_bulk_verification/boundary_current_sign.lean:63:46: error: This simp argument is unused:\n  partial_sub\n\nHint: Omit it from the simp argument list.\n  [apply] simp (disch := fun_prop) only [partial_add, partial_mul]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\n"
+        }
+      ],
+      "output": "Try this:\n  [apply] ring_nf\n  \n  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.\n    \n  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.\ns11/_scratch/d3_bulk_verification/boundary_current_sign.lean:55:70: error: unsolved goals\nu : Point 3 → Vec 3\nhu : SmoothField u\nx : Point 3\nhU : ∀ (i : Fin 3), ContDiff ℝ ∞ fun x => u x i\nhJ : ∀ (a : Fin (3 + 1)) (b : Fin 3), ContDiff ℝ ∞ fun x => fieldJet u x a b\nhcomm :\n  ∀ (i j : Fin 4) (r : Fin 3),\n    coordDeriv i (coordDeriv j fun y => u y r) x = coordDeriv j (coordDeriv i fun y => u y r) x\n⊢ coordDeriv (Fin.succ 0) (fun y => u y 0) x * coordDeriv (Fin.succ 1) (fun x => u x 1) x * 2 +\n                                      coordDeriv (Fin.succ 0) (fun y => u y 0) x *\n                                          coordDeriv (Fin.succ 2) (fun x => u x 2) x *\n                                        2 +\n                                    coordDeriv (Fin.succ 0) (fun y => u y 0) x ^ 2 * 2 +\n                                  u x 0 *\n                                      coordDeriv (Fin.succ 0) (fun y => coordDeriv (Fin.succ 0) (fun y => u y 0) y) x *\n                                    2 +\n                                u x 0 *\n                                    coordDeriv (Fin.succ 0) (fun y => coordDeriv (Fin.succ 1) (fun x => u x 1) y) x *\n                                  2 +\n                              u x 0 * coordDeriv (Fin.succ 0) (fun y => coordDeriv (Fin.succ 2) (fun x => u x 2) y) x *\n                                2 +\n                            coordDeriv (Fin.succ 1) (fun x => u x 1) x * coordDeriv (Fin.succ 2) (fun x => u x 2) x *\n                              2 +\n                          coordDeriv (Fin.succ 1) (fun x => u x 1) x ^ 2 * 2 +\n                        coordDeriv (Fin.succ 0) (fun x => u x 1) x * coordDeriv (Fin.succ 1) (fun y => u y 0) x * 2 +\n                      u x 1 * coordDeriv (Fin.succ 0) (fun y => coordDeriv (Fin.succ 1) (fun y => u y 0) y) x * 2 +\n                    u x 1 * coordDeriv (Fin.succ 1) (fun y => coordDeriv (Fin.succ 1) (fun x => u x 1) y) x * 2 +\n                  u x 1 * coordDeriv (Fin.succ 1) (fun y => coordDeriv (Fin.succ 2) (fun x => u x 2) y) x * 2 +\n                coordDeriv (Fin.succ 2) (fun x => u x 2) x ^ 2 * 2 +\n              coordDeriv (Fin.succ 0) (fun x => u x 2) x * coordDeriv (Fin.succ 2) (fun y => u y 0) x * 2 +\n            u x 2 * coordDeriv (Fin.succ 0) (fun y => coordDeriv (Fin.succ 2) (fun y => u y 0) y) x * 2 +\n          u x 2 * coordDeriv (Fin.succ 1) (fun y => coordDeriv (Fin.succ 2) (fun x => u x 1) y) x * 2 +\n        u x 2 * coordDeriv (Fin.succ 2) (fun y => coordDeriv (Fin.succ 2) (fun x => u x 2) y) x * 2 +\n      coordDeriv (Fin.succ 1) (fun x => u x 2) x * coordDeriv (Fin.succ 2) (fun x => u x 1) x * 2 =\n    coordDeriv (Fin.succ 0) (fun y => u y 0) x * coordDeriv (Fin.succ 1) (fun x => u x 1) x * 2 +\n              coordDeriv (Fin.succ 0) (fun y => u y 0) x * coordDeriv (Fin.succ 2) (fun x => u x 2) x * 2 +\n            coordDeriv (Fin.succ 1) (fun x => u x 1) x * coordDeriv (Fin.succ 2) (fun x => u x 2) x * 2 -\n          coordDeriv (Fin.succ 0) (fun x => u x 1) x * coordDeriv (Fin.succ 1) (fun y => u y 0) x * 2 -\n        coordDeriv (Fin.succ 0) (fun x => u x 2) x * coordDeriv (Fin.succ 2) (fun y => u y 0) x * 2 -\n      coordDeriv (Fin.succ 1) (fun x => u x 2) x * coordDeriv (Fin.succ 2) (fun x => u x 1) x * 2\ns11/_scratch/d3_bulk_verification/boundary_current_sign.lean:63:46: error: This simp argument is unused:\n  partial_sub\n\nHint: Omit it from the simp argument list.\n  [apply] simp (disch := fun_prop) only [partial_add, partial_mul]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\n",
+      "output_sha256": "3d51c9344b70ba4c1ef30ba0a640310edddc02a2f0c00ebeb2d1aed489f9151a",
+      "source": "import S11D3Bulk.Calculus\nimport S11D3Bulk.Variation\nimport S11Homogeneous.Action\n\n/-! K2–K3: the actual local operator, divergence current and physical map. -/\nnamespace S11D3Bulk\nnoncomputable section\nopen S10Pilot\nopen scoped ContDiff\n\ndef gradDiv (u : Point 3 → Vec 3) (x : Point 3) : Vec 3 :=\n  fun i => ∑ j : Fin 3, coordDeriv i.succ (coordDeriv j.succ (fun y => u y j)) x\n\ndef laplacian (u : Point 3 → Vec 3) (x : Point 3) : Vec 3 :=\n  fun i => ∑ j : Fin 3, coordDeriv j.succ (coordDeriv j.succ (fun y => u y i)) x\n\ntheorem gradDiv_eq {u : Point 3 → Vec 3} (hu : SmoothField u)\n    (x : Point 3) (i : Fin 3) :\n    gradDiv u x i = coordDeriv i.succ (fun y => divergence (fieldJet u y)) x := by\n  have hJ : ∀ a b, ContDiff ℝ ∞ (fun x => fieldJet u x a b) :=\n    fun a b => smooth_coordDeriv (hu b) a\n  simp only [gradDiv, divergence, Fin.sum_univ_three]\n  simp (disch := fun_prop) only [partial_add]\n  rfl\n\ntheorem eulerLagrange_eq {u : Point 3 → Vec 3} (hu : SmoothField u)\n    (v : Vec 3) (x : Point 3) :\n    eulerLagrange v u x = (v 0 + v 1) • gradDiv u x + v 2 • laplacian u x := by\n  have hJ : ∀ a b, ContDiff ℝ ∞ (fun x => fieldJet u x a b) :=\n    fun a b => smooth_coordDeriv (hu b) a\n  have hcomm (i j : Fin 4) (r : Fin 3) :\n      coordDeriv i (coordDeriv j (fun y => u y r)) x =\n      coordDeriv j (coordDeriv i (fun y => u y r)) x := partial_commute (hu r) i j x\n  ext i\n  fin_cases i\n  all_goals simp only [eulerLagrange, momentum_eq, Fin.sum_univ_succ,\n    Fin.sum_univ_zero, Fin.cases_zero, Fin.cases_succ, divergence,\n    Pi.smul_apply, Pi.add_apply, smul_eq_mul, gradDiv, laplacian]\n  all_goals norm_num [Fin.succ] at *\n  all_goals simp (disch := fun_prop) only [partial_neg, partial_add, partial_const_mul, partial_zero]\n  all_goals simp only [fieldJet]\n  · erw [hcomm 2 1 1, hcomm 3 1 2]\n    ring!\n  · erw [hcomm 1 2 0, hcomm 3 2 2]\n    ring!\n  · erw [hcomm 1 3 0, hcomm 2 3 1]\n    ring!\n\ndef boundaryCurrent (u : Point 3 → Vec 3) (x : Point 3) : Vec 3 :=\n  fun i => ∑ j : Fin 3,\n    (u x i * fieldJet u x j.succ j + u x j * fieldJet u x j.succ i)\n\ntheorem boundary_identity {u : Point 3 → Vec 3} (hu : SmoothField u) (x : Point 3) :\n    (∑ i : Fin 3, coordDeriv i.succ (fun y => boundaryCurrent u y i) x) =\n      divergence (fieldJet u x) ^ 2 - transposePair (fieldJet u x) := by\n  have hU : ∀ i : Fin 3, ContDiff ℝ ∞ (fun x => u x i) := hu\n  have hJ : ∀ a b, ContDiff ℝ ∞ (fun x => fieldJet u x a b) :=\n    fun a b => smooth_coordDeriv (hu b) a\n  have hcomm (i j : Fin 4) (r : Fin 3) :\n      coordDeriv i (coordDeriv j (fun y => u y r)) x =\n      coordDeriv j (coordDeriv i (fun y => u y r)) x := partial_commute (hu r) i j x\n  simp only [boundaryCurrent, divergence, transposePair, Fin.sum_univ_three]\n  simp (disch := fun_prop) only [partial_add, partial_sub, partial_mul]\n  simp only [fieldJet]\n  simp only [hcomm]\n  ring\n\ntheorem null_density_is_divergence {u : Point 3 → Vec 3} (hu : SmoothField u)\n    (a : ℝ) (x : Point 3) :\n    lagrangian ![a,-a,0] (fieldJet u x) =\n      -a / 2 * (∑ i : Fin 3, coordDeriv i.succ (fun y => boundaryCurrent u y i) x) := by\n  rw [boundary_identity hu]\n  simp [lagrangian]\n  ring\n\ndef modalOperator (v : Vec 3) (k a : Vec 3) : Vec 3 :=\n  (-v 2 * normSq k) • a + (-(v 0 + v 1) * dot k a) • k\n\ntheorem homogeneous_operator (v : Vec 3) (omega : ℝ) (k a : Vec 3) :\n    modalOperator v k a = S11Homogeneous.modalOperator 0 (v 2)\n      (v 0 + v 1 + v 2) omega k a := by\n  ext i\n  simp [modalOperator, S11Homogeneous.modalOperator]\n\ntheorem momentum_contraction (v : Vec 3) (omega : ℝ) (k a : Vec 3) (i : Fin 3) :\n    (∑ j : Fin 4, waveCovector omega k j * momentum v (modeJet (-omega) k a) j i) =\n      modalOperator v k a i := by\n  simp only [momentum_eq, waveCovector, modeJet, divergence, Fin.sum_univ_succ,\n    Fin.sum_univ_zero, Fin.cases_zero, Fin.cases_succ]\n  fin_cases i <;> simp [modalOperator, normSq, dot, Fin.sum_univ_three] <;> ring\n\ntheorem eulerLagrange_planeWave (v : Vec 3) (omega : ℝ) (k a : Vec 3) (x : Point 3) :\n    eulerLagrange v (planeWave omega k a) x =\n      Real.cos (phase (waveCovector omega k) x) • modalOperator v k a := by\n  ext i\n  unfold eulerLagrange\n  simp_rw [fieldJet_planeWave, momentum_smul]\n  have he : ∀ j : Fin 4,\n      (fun y => -Real.sin (phase (waveCovector omega k) y) *\n        momentum v (modeJet (-omega) k a) j i) =\n      (fun y => -momentum v (modeJet (-omega) k a) j i *\n        Real.sin (phase (waveCovector omega k) y)) := by\n    intro j\n    funext y\n    ring\n  simp_rw [he, partial_const_sin]\n  simp only [Pi.smul_apply, smul_eq_mul]\n  rw [← momentum_contraction v omega]\n  simp only [Finset.mul_sum]\n  rw [← Finset.sum_neg_distrib]\n  apply Finset.sum_congr rfl\n  intro j _\n  ring\n\ntheorem modal_longitudinal (v : Vec 3) (k : Vec 3) :\n    modalOperator v k k = (-(v 0 + v 1 + v 2) * normSq k) • k := by\n  ext i\n  simp [modalOperator, normSq]\n  ring\n\ntheorem modal_transverse (v : Vec 3) (k a : Vec 3) (ha : dot k a = 0) :\n    modalOperator v k a = (-v 2 * normSq k) • a := by\n  simp [modalOperator, ha]\n\ntheorem modal_zero_wavevector (v a : Vec 3) : modalOperator v 0 a = 0 := by\n  simp [modalOperator, normSq, dot]\n\nend\nend S11D3Bulk\n",
+      "canonical_source": "lean/s11/S11D3Bulk/Bulk.lean",
+      "replacement": {
+        "old": "u x i * fieldJet u x j.succ j - u x j * fieldJet u x j.succ i",
+        "new": "u x i * fieldJet u x j.succ j + u x j * fieldJet u x j.succ i"
+      }
+    },
+    {
+      "name": "zero_null_positive",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/d3_bulk_verification/zero_null_positive.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 7.113,
+      "source_sha256": "5b27b61d7fe22ad525125d9bdf9e90d4fd1ffbed51d3eeeaf5b30605840202c1",
+      "required_failure_in": "contract_control",
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "import S11D3Bulk.Census\nopen S10Pilot S11D3Bulk\nnoncomputable section\ntheorem contract_control :  VariationallyNull 0 := by\n  norm_num [variationallyNull_iff, Matrix.cons_val_two]\n"
+    },
+    {
+      "name": "zero_null_mutant",
+      "expected": "REJECTED",
+      "outcome": "REJECTED",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/d3_bulk_verification/zero_null_mutant.lean"
+      ],
+      "exit_status": 1,
+      "wall_seconds": 7.316,
+      "source_sha256": "f78754f570c2ea22bdf68805734010e0d6124f877d33d1c592b0768a57ef2387",
+      "required_failure_in": "contract_control",
+      "diagnostics": [
+        {
+          "declaration": "contract_control",
+          "line": 4,
+          "message": "s11/_scratch/d3_bulk_verification/zero_null_mutant.lean:4:52: error: unsolved goals\n⊢ False\n"
+        }
+      ],
+      "output": "s11/_scratch/d3_bulk_verification/zero_null_mutant.lean:4:52: error: unsolved goals\n⊢ False\n",
+      "output_sha256": "8534927434c756273264dd78e567ce21162c6c507eb35225fe7605ce3c2ba79b",
+      "source": "import S11D3Bulk.Census\nopen S10Pilot S11D3Bulk\nnoncomputable section\ntheorem contract_control : ¬ VariationallyNull 0 := by\n  norm_num [variationallyNull_iff, Matrix.cons_val_two]\n"
+    },
+    {
+      "name": "nonzero_null_positive",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/d3_bulk_verification/nonzero_null_positive.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 7.366,
+      "source_sha256": "77a6d0d7f9001b5a196f12c58f14815f70527d1a8858201564b99f5451f82f6a",
+      "required_failure_in": "contract_control",
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "import S11D3Bulk.Census\nopen S10Pilot S11D3Bulk\nnoncomputable section\ntheorem contract_control :  VariationallyNull ![1,-1,0] := by\n  norm_num [variationallyNull_iff, Matrix.cons_val_two]\n"
+    },
+    {
+      "name": "nonzero_null_mutant",
+      "expected": "REJECTED",
+      "outcome": "REJECTED",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/d3_bulk_verification/nonzero_null_mutant.lean"
+      ],
+      "exit_status": 1,
+      "wall_seconds": 7.467,
+      "source_sha256": "1cae4c03876fee6cc218927efb9a83385cfda67e894dbdf3b62915a7e42b3d0b",
+      "required_failure_in": "contract_control",
+      "diagnostics": [
+        {
+          "declaration": "contract_control",
+          "line": 4,
+          "message": "s11/_scratch/d3_bulk_verification/nonzero_null_mutant.lean:4:60: error: unsolved goals\n⊢ False\n"
+        }
+      ],
+      "output": "s11/_scratch/d3_bulk_verification/nonzero_null_mutant.lean:4:60: error: unsolved goals\n⊢ False\n",
+      "output_sha256": "756e53742001c9cb2c644e31355276e982b1d4bf3cb6a6b56121e0e8b2210c61",
+      "source": "import S11D3Bulk.Census\nopen S10Pilot S11D3Bulk\nnoncomputable section\ntheorem contract_control : ¬ VariationallyNull ![1,-1,0] := by\n  norm_num [variationallyNull_iff, Matrix.cons_val_two]\n"
+    },
+    {
+      "name": "frobenius_not_null_positive",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/d3_bulk_verification/frobenius_not_null_positive.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 7.519,
+      "source_sha256": "f99fb13adabdd6432e657ba3d08a6e1e2daeb0c44ded582604e1ff6a60a9f08f",
+      "required_failure_in": "contract_control",
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "import S11D3Bulk.Census\nopen S10Pilot S11D3Bulk\nnoncomputable section\ntheorem contract_control : ¬ VariationallyNull ![0,0,1] := by\n  norm_num [variationallyNull_iff, Matrix.cons_val_two]\n"
+    },
+    {
+      "name": "frobenius_not_null_mutant",
+      "expected": "REJECTED",
+      "outcome": "REJECTED",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/d3_bulk_verification/frobenius_not_null_mutant.lean"
+      ],
+      "exit_status": 1,
+      "wall_seconds": 7.719,
+      "source_sha256": "fdf610f5f86957f26734416a915691c6131651edad1484affea00f522ca7bf15",
+      "required_failure_in": "contract_control",
+      "diagnostics": [
+        {
+          "declaration": "contract_control",
+          "line": 4,
+          "message": "s11/_scratch/d3_bulk_verification/frobenius_not_null_mutant.lean:4:58: error: unsolved goals\n⊢ False\n"
+        }
+      ],
+      "output": "s11/_scratch/d3_bulk_verification/frobenius_not_null_mutant.lean:4:58: error: unsolved goals\n⊢ False\n",
+      "output_sha256": "0cab5887ee6b0307ad51b6e7943da9b49f2e7895ead9345ff1960ca47b79fc76",
+      "source": "import S11D3Bulk.Census\nopen S10Pilot S11D3Bulk\nnoncomputable section\ntheorem contract_control :  VariationallyNull ![0,0,1] := by\n  norm_num [variationallyNull_iff, Matrix.cons_val_two]\n"
+    },
+    {
+      "name": "trace_equivalence_positive",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/d3_bulk_verification/trace_equivalence_positive.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 7.317,
+      "source_sha256": "13c177f9b58b610cba11235659532dd7769eb8ffdbf24803d68d59c62358658e",
+      "required_failure_in": "contract_control",
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "import S11D3Bulk.Census\nopen S10Pilot S11D3Bulk\nnoncomputable section\ntheorem contract_control :  BulkEquivalent ![1,0,0] ![0,1,0] := by\n  norm_num [bulkEquivalent_iff, Matrix.cons_val_two]\n"
+    },
+    {
+      "name": "trace_equivalence_mutant",
+      "expected": "REJECTED",
+      "outcome": "REJECTED",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/d3_bulk_verification/trace_equivalence_mutant.lean"
+      ],
+      "exit_status": 1,
+      "wall_seconds": 7.366,
+      "source_sha256": "268d519ee023e663fc959538e6d74bd0cea9a1799806cb6c949b5557c32c8999",
+      "required_failure_in": "contract_control",
+      "diagnostics": [
+        {
+          "declaration": "contract_control",
+          "line": 4,
+          "message": "s11/_scratch/d3_bulk_verification/trace_equivalence_mutant.lean:4:65: error: unsolved goals\n⊢ False\n"
+        }
+      ],
+      "output": "s11/_scratch/d3_bulk_verification/trace_equivalence_mutant.lean:4:65: error: unsolved goals\n⊢ False\n",
+      "output_sha256": "8e8a399c0024a4f87c96088ec60b7b4477a8c961791f1e07fd1f63babcc93bd4",
+      "source": "import S11D3Bulk.Census\nopen S10Pilot S11D3Bulk\nnoncomputable section\ntheorem contract_control : ¬ BulkEquivalent ![1,0,0] ![0,1,0] := by\n  norm_num [bulkEquivalent_iff, Matrix.cons_val_two]\n"
+    },
+    {
+      "name": "different_c_positive",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/d3_bulk_verification/different_c_positive.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 7.467,
+      "source_sha256": "d31db4a4c53c8e4238b2e1c1c4f25b6d4bdee5ad7a1218dc3475fcac5428ee03",
+      "required_failure_in": "contract_control",
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "import S11D3Bulk.Census\nopen S10Pilot S11D3Bulk\nnoncomputable section\ntheorem contract_control : ¬ BulkEquivalent ![1,0,0] ![1,0,1] := by\n  norm_num [bulkEquivalent_iff, Matrix.cons_val_two]\n"
+    },
+    {
+      "name": "different_c_mutant",
+      "expected": "REJECTED",
+      "outcome": "REJECTED",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/d3_bulk_verification/different_c_mutant.lean"
+      ],
+      "exit_status": 1,
+      "wall_seconds": 7.719,
+      "source_sha256": "99f18123d998af2f62e6d91467ad7919a723008157bfca80e64ec9167d06c858",
+      "required_failure_in": "contract_control",
+      "diagnostics": [
+        {
+          "declaration": "contract_control",
+          "line": 4,
+          "message": "s11/_scratch/d3_bulk_verification/different_c_mutant.lean:4:64: error: unsolved goals\n⊢ False\n"
+        }
+      ],
+      "output": "s11/_scratch/d3_bulk_verification/different_c_mutant.lean:4:64: error: unsolved goals\n⊢ False\n",
+      "output_sha256": "d53b1339f0cc63ca56606f3c75a3ed1236316124410acd1c38e245723942abe7",
+      "source": "import S11D3Bulk.Census\nopen S10Pilot S11D3Bulk\nnoncomputable section\ntheorem contract_control :  BulkEquivalent ![1,0,0] ![1,0,1] := by\n  norm_num [bulkEquivalent_iff, Matrix.cons_val_two]\n"
+    },
+    {
+      "name": "response_count_positive",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/d3_bulk_verification/response_count_positive.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 7.719,
+      "source_sha256": "d08a1fa1a93a038a25988c86a49ec77687c08b9289e6c7b181ca0c5acc9058b7",
+      "required_failure_in": "contract_control",
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "import S11D3Bulk.Census\nopen S10Pilot S11D3Bulk\nnoncomputable section\ntheorem contract_control : Module.finrank ℝ (LinearMap.range responseMap) = 2 := by\n  norm_num [bulk_response_dimension]\n"
+    },
+    {
+      "name": "response_count_mutant",
+      "expected": "REJECTED",
+      "outcome": "REJECTED",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/d3_bulk_verification/response_count_mutant.lean"
+      ],
+      "exit_status": 1,
+      "wall_seconds": 7.519,
+      "source_sha256": "bdb2b74540e763e27c6fcf3bd058633528f2d83bb0e5aa709a5eef94f3daf3e7",
+      "required_failure_in": "contract_control",
+      "diagnostics": [
+        {
+          "declaration": "contract_control",
+          "line": 4,
+          "message": "s11/_scratch/d3_bulk_verification/response_count_mutant.lean:4:81: error: unsolved goals\n⊢ False\n"
+        }
+      ],
+      "output": "s11/_scratch/d3_bulk_verification/response_count_mutant.lean:4:81: error: unsolved goals\n⊢ False\n",
+      "output_sha256": "004b09ee41c84297e14ec5cb5f0df8aefc6254fbd8e4d28462d2abe8361324fa",
+      "source": "import S11D3Bulk.Census\nopen S10Pilot S11D3Bulk\nnoncomputable section\ntheorem contract_control : Module.finrank ℝ (LinearMap.range responseMap) = 3 := by\n  norm_num [bulk_response_dimension]\n"
+    },
+    {
+      "name": "null_count_positive",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/d3_bulk_verification/null_count_positive.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 7.366,
+      "source_sha256": "d6b352ff29aaa84b69c1c89f1c6163a40739cc93e3c879c9ec491dd294230777",
+      "required_failure_in": "contract_control",
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "import S11D3Bulk.Census\nopen S10Pilot S11D3Bulk\nnoncomputable section\ntheorem contract_control : Module.finrank ℝ (LinearMap.ker responseMap) = 1 := by\n  norm_num [null_dimension]\n"
+    },
+    {
+      "name": "null_count_mutant",
+      "expected": "REJECTED",
+      "outcome": "REJECTED",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/d3_bulk_verification/null_count_mutant.lean"
+      ],
+      "exit_status": 1,
+      "wall_seconds": 7.416,
+      "source_sha256": "8d100380af0c3f8dd4c470ec14801e7694ff8e7b5a02932caa52548265a6d8ad",
+      "required_failure_in": "contract_control",
+      "diagnostics": [
+        {
+          "declaration": "contract_control",
+          "line": 4,
+          "message": "s11/_scratch/d3_bulk_verification/null_count_mutant.lean:4:79: error: unsolved goals\n⊢ False\n"
+        }
+      ],
+      "output": "s11/_scratch/d3_bulk_verification/null_count_mutant.lean:4:79: error: unsolved goals\n⊢ False\n",
+      "output_sha256": "1f9f1309f9dc4924ef5f2015237b1feb0ccdf87faa7f383ed32280c6f0509058",
+      "source": "import S11D3Bulk.Census\nopen S10Pilot S11D3Bulk\nnoncomputable section\ntheorem contract_control : Module.finrank ℝ (LinearMap.ker responseMap) = 0 := by\n  norm_num [null_dimension]\n"
+    },
+    {
+      "name": "zero_wavevector_positive",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/d3_bulk_verification/zero_wavevector_positive.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 7.214,
+      "source_sha256": "1e61acbf2708dd1a635cd1bbe9ec32c72b8d3f2a761e774733434b0bb406dcc9",
+      "required_failure_in": "contract_control",
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "import S11D3Bulk.Census\nopen S10Pilot S11D3Bulk\nnoncomputable section\ntheorem contract_control : S11D3Bulk.modalOperator ![1,2,3] 0 ![1,0,0] 0 = 0 := by\n  norm_num [modal_zero_wavevector]\n"
+    },
+    {
+      "name": "zero_wavevector_mutant",
+      "expected": "REJECTED",
+      "outcome": "REJECTED",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/d3_bulk_verification/zero_wavevector_mutant.lean"
+      ],
+      "exit_status": 1,
+      "wall_seconds": 7.217,
+      "source_sha256": "17b05a1a834f2e933c89a20e41472e5508012cf43be0e76ce35c2e2294acba70",
+      "required_failure_in": "contract_control",
+      "diagnostics": [
+        {
+          "declaration": "contract_control",
+          "line": 4,
+          "message": "s11/_scratch/d3_bulk_verification/zero_wavevector_mutant.lean:4:80: error: unsolved goals\n⊢ False\n"
+        }
+      ],
+      "output": "s11/_scratch/d3_bulk_verification/zero_wavevector_mutant.lean:4:80: error: unsolved goals\n⊢ False\n",
+      "output_sha256": "100be50ca155ddcc644382688c9f2d99f505f9f1fbb325d63ea945bbb781ad2c",
+      "source": "import S11D3Bulk.Census\nopen S10Pilot S11D3Bulk\nnoncomputable section\ntheorem contract_control : S11D3Bulk.modalOperator ![1,2,3] 0 ![1,0,0] 0 = 1 := by\n  norm_num [modal_zero_wavevector]\n"
+    },
+    {
+      "name": "admissible_compact_variation_positive",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/d3_bulk_verification/admissible_compact_variation_positive.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 7.164,
+      "source_sha256": "6177aa5f5aec57ed6fe71d74ad8fe0af95c965182a0fe6e22e2312859529bcdc",
+      "required_failure_in": null,
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "import S11D3Bulk.Census\nopen S10Pilot S11D3Bulk\nnoncomputable section\ntheorem contract_control : ∃ u h : Point 3 → Vec 3, SmoothField u ∧ TestField h ∧ deriv (S11D3Bulk.relativeAction ![-2,3,-5] u h) 0 ≠ 0 := exists_nonzero_firstVariation _ (by norm_num)\n"
+    },
+    {
+      "name": "longitudinal_positive",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/d3_bulk_verification/longitudinal_positive.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 7.368,
+      "source_sha256": "ac5d3a2f09e39b3dd3078a6d4208f28a4389f23a4b3e62074b070205a6cdd5de",
+      "required_failure_in": null,
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "import S11D3Bulk.Census\nopen S10Pilot S11D3Bulk\nnoncomputable section\ntheorem contract_control : S11D3Bulk.modalOperator ![1,2,3] ![1,0,0] ![1,0,0] = ![-6,0,0] := by\n  ext i\n  fin_cases i <;> norm_num [modal_longitudinal, normSq, dot, Fin.sum_univ_three, Matrix.cons_val_two]\n"
+    },
+    {
+      "name": "transverse_positive",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/d3_bulk_verification/transverse_positive.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 7.821,
+      "source_sha256": "554fa181086921efb270fe8cf81c81a91ad76e089c2043a1e9c21f8b0c16a594",
+      "required_failure_in": null,
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "import S11D3Bulk.Census\nopen S10Pilot S11D3Bulk\nnoncomputable section\ntheorem contract_control : S11D3Bulk.modalOperator ![1,2,3] ![1,0,0] ![0,1,0] = ![0,-3,0] := by\n  ext i\n  fin_cases i <;> norm_num [S11D3Bulk.modalOperator, normSq, dot, Fin.sum_univ_three, Matrix.cons_val_two]\n"
+    }
+  ],
+  "resources": {
+    "workers": 1,
+    "lean_threads": 1,
+    "lean_allocator_limit_mib": 4096,
+    "process_timeout_seconds": 600,
+    "note": "Allocator limit is not an OS RSS cap."
+  },
+  "dependency_olean_sha256_before_build": {
+    "lean/.lake/build/lib/lean/S10Controls/Action.olean": "da96a6b32e4cd34392e44aac2da19ea3368f1063c2cc5c20257e455d0c404e49",
+    "lean/.lake/build/lib/lean/S10Controls/Analytic.olean": "716adf3a25d5b3fe03307f1275266e39eb50d3dae176e6c23c73935870c2a730",
+    "lean/.lake/build/lib/lean/S10Controls/PhaseAverage.olean": "dc0472a02f0909c9026828c3f15946132c8ddaeefcc7fa3a57b00d21ca38440a",
+    "lean/.lake/build/lib/lean/S10Controls/PlaneWave.olean": "2e15e57ea63854fba96383e24788881ae509d1743618f8017eb1cbcb3e56a2a7",
+    "lean/.lake/build/lib/lean/S10Controls/Variation.olean": "3a0060269a368cbd43feb1548ae3c594520ebf684147438330f9bc53dbbaa5b7",
+    "lean/.lake/build/lib/lean/S10Pilot/Action.olean": "1be8c3c4196dd7d4ec3eab5adeec1ad4efd799f37bea3169a7b2396a59efc3bb",
+    "lean/.lake/build/lib/lean/S10Pilot/Analytic.olean": "9734d5342b5ee8d0683ce8e04b29e063554c4481f6db0e0cc5e418b68a9bebc6",
+    "lean/.lake/build/lib/lean/S10Pilot/PhaseAverage.olean": "16fec04f6fce2983d3353cc643b8881ef91f9ba43fe3d3a5868e539eac3aec5f",
+    "lean/.lake/build/lib/lean/S10Pilot/PlaneWave.olean": "0d66b90ba63086dceddbae3b9cdeae947fcc286b6fa2d3bcd9c9dc033e0608b4",
+    "lean/.lake/build/lib/lean/S10Pilot/Variation.olean": "d2ae9c5944f74e9581b1a82893f65c7d715811b6407427ed997440c6033b36eb",
+    "lean/.lake/build/lib/lean/S11D3Invariants/Classification.olean": "8debe95d1cb11b440b1be97c5d9786a6405ed3bbca319b358cebd8c1155980d4",
+    "lean/.lake/build/lib/lean/S11D3Invariants/Constraints.olean": "5d86c2d145cabc4181e3b474c7ffc9cafcbd889ab190da01d53149ad2a3134ca",
+    "lean/.lake/build/lib/lean/S11D3Invariants/Quadratic.olean": "814b4bd7f2520f5dcb2e92be13d5edea4db87b1442917a5ddb1705297bbe1023",
+    "lean/.lake/build/lib/lean/S11D3Invariants/Rotation.olean": "1f23a7517dc5075d86914a05ce90f92b9fa8e3780bef99e53970686a9958d553",
+    "lean/.lake/build/lib/lean/S11Homogeneous/Action.olean": "1d75ed6bc81eef456cfce6c31a7bd35c753159e90d22453881660b462396111e"
+  },
+  "axiom_audit_count": 49,
+  "axiom_declarations": {
+    "S11D3Bulk.density_identity": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D3Bulk.all_invariant_densities": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D3Bulk.lagrangian_increment": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D3Bulk.lagrangian_variation": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D3Bulk.momentum_eq": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D3Bulk.momentum_smul": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D3Bulk.smooth_momentum": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D3Bulk.smooth_eulerLagrange": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D3Bulk.partial_add": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D3Bulk.partial_sub": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D3Bulk.partial_neg": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D3Bulk.partial_const_mul": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D3Bulk.partial_mul": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D3Bulk.partial_zero": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D3Bulk.partial_second": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D3Bulk.partial_commute": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D3Bulk.linearDensity_eq": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D3Bulk.lagrangian_change": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D3Bulk.linearDensity_self": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D3Bulk.integrable_linear_term": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D3Bulk.integrable_linearDensity": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D3Bulk.integrable_test_lagrangian": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D3Bulk.relative_density_integrable": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D3Bulk.relativeAction_expansion": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D3Bulk.relativeAction_hasDerivAt": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D3Bulk.integrable_el_term": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D3Bulk.integrated_variation_by_parts": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D3Bulk.relativeAction_deriv_eq_eulerLagrange": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D3Bulk.actionStationary_iff_eulerLagrange": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D3Bulk.gradDiv_eq": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D3Bulk.eulerLagrange_eq": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D3Bulk.boundary_identity": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D3Bulk.null_density_is_divergence": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D3Bulk.homogeneous_operator": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D3Bulk.momentum_contraction": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D3Bulk.eulerLagrange_planeWave": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D3Bulk.modal_longitudinal": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D3Bulk.modal_transverse": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D3Bulk.modal_zero_wavevector": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D3Bulk.bulkEquivalent_iff": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D3Bulk.bulkEquivalent_response": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D3Bulk.response_surjective": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D3Bulk.variationallyNull_iff": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D3Bulk.null_parameterization": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D3Bulk.nullSpace_identification": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D3Bulk.bulk_response_dimension": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D3Bulk.null_dimension": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D3Bulk.null_nonzero_example": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D3Bulk.exists_nonzero_firstVariation": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "source_sha256_after": {
+    "_measurements/S11_lean_d3_generate.py": "2be172074609c7c768339c3847773c887e6935623701fc3a9eb20528aa7b3b45",
+    "lean/lake-manifest.json": "91fd5318cdc35e4044d6e059c6ef73d94b955d27adf8a5860b07ec92add9377e",
+    "lean/lakefile.toml": "3633a4454248c5c136f7ea986833ab2baa8c2cc90998ae4583fdb9e4b9200e0c",
+    "lean/lean-toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+    "lean/s10/S10Controls/Action.lean": "e1764df0b26a46d6822ec4a72cca42e5d4f9df06686a1b649c86fd13af9f6566",
+    "lean/s10/S10Controls/Analytic.lean": "bac51e35f46740653dbcea68724deecf23f9fdb8991c696f54007287b57afab5",
+    "lean/s10/S10Controls/PhaseAverage.lean": "ff2863169741814592ec0947da8941976d6ebf2d676e07300e0c0b48905034ba",
+    "lean/s10/S10Controls/PlaneWave.lean": "14149fe870ddadc3aa547a49706748990d1eed9f74e428423f9c81e3a745863e",
+    "lean/s10/S10Controls/Variation.lean": "0141297128ec34c925d11ffe13b2e08203282b4d1ada4d388b23b2d689db7c0e",
+    "lean/s10/S10Pilot/Action.lean": "a7466f2c23a123f244615217d27d5048a625bddfaad5ce2a6f0456a8704f435c",
+    "lean/s10/S10Pilot/Analytic.lean": "f8a6fe854a7ed775a7ecf65fdf8589db2b865139a811daf1e4e27c34bac8811d",
+    "lean/s10/S10Pilot/PhaseAverage.lean": "2007235232001290ac87d25e8922e4a3b615583272ef39034b2aedc83dee4429",
+    "lean/s10/S10Pilot/PlaneWave.lean": "d64ad2d70169976f42cacb3ece650776780a17fe640d1efee4aa7677e53c85cb",
+    "lean/s10/S10Pilot/Variation.lean": "f4678338fb72fe859c627cbc5da3ccb90e9f38b7a5d774705219f880cdcc871d",
+    "lean/s11/S11D3Bulk/Action.lean": "ac5a0f8b42bb27ffb703e3b9ff5f2efcdae559706583b0ccd343e64502ed5f63",
+    "lean/s11/S11D3Bulk/Bulk.lean": "b70072ba81550a53af9b12ee4eb50ffe06c849bc5c9c44003f459c3ebaacb601",
+    "lean/s11/S11D3Bulk/Calculus.lean": "4a2f040ebbddf14bed0b3effcb6087fd8ff2b66d877c18af7576a122108b8167",
+    "lean/s11/S11D3Bulk/Census.lean": "4a63069f2db5306b93d83498190a28c13e6466deb4da64af1639141f926a4dc1",
+    "lean/s11/S11D3Bulk/Variation.lean": "a25416fc69bced11d1109fd396f0cbb5087f55a5864039d0fb04c93564b75b6a",
+    "lean/s11/S11D3Bulk.lean": "1dcb9fed9540c5fa7be9b48c8d1be6122c013eee4570fd7f654189ad9dccaf7d",
+    "lean/s11/S11D3Invariants/Classification.lean": "2cfba9f58fe6932859833f7e0fe8f8f0c398618de1086a6b358527d3563b3c02",
+    "lean/s11/S11D3Invariants/Constraints.lean": "cc8a4b788b205cf2de7f4aea4b617e0e41c2047c489806f59ef6d56d770bfc13",
+    "lean/s11/S11D3Invariants/Quadratic.lean": "ccb26fd2c468c84e5cc499840179b3d574c497d15604baebce226009dc70933f",
+    "lean/s11/S11D3Invariants/Rotation.lean": "1de41bfbbea2144e6a63ce9d1752b9bff18497fadb8c5bfdfee818fcffc68426",
+    "lean/s11/S11Homogeneous/Action.lean": "73a8cbfbe7770cd0d17262728f9887d2038260fc965d2abc34944b8af20aeb4b"
+  },
+  "finished_utc": "2026-09-16T19:39:53.143727+00:00"
+}

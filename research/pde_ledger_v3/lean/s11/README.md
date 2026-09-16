@@ -113,3 +113,18 @@ python3 ../_measurements/S11_lean_d3_contract_check.py
 The formal check supports hash-checked `--reuse-build`. It also checks that the
 finite coordinate certificate matches its generator. Neither command reruns a
 production audit or modifies S11c exports.
+
+## D3 bulk variation K1–K4
+
+The authorized increment [D3_BULK_COVERAGE.md](D3_BULK_COVERAGE.md) connects
+the completed three-density classification to bulk equations. **K1–K4 is
+complete:** local verification passes and both independent reviewers returned
+CLEAR. See [D3_BULK_FIDELITY_REVIEW.md](D3_BULK_FIDELITY_REVIEW.md). The object and sign map
+are recorded in [D3_BULK_FIDELITY.md](D3_BULK_FIDELITY.md), with current evidence
+in [D3_BULK_VERIFICATION.txt](D3_BULK_VERIFICATION.txt).
+
+`S11D3Bulk` reuses S10 calculus and the D3 classification. Its checked results
+are the actual first variation, the one-dimensional null family, the two
+independent bulk responses and their identification with homogeneous stiffness.
+It includes an explicit divergence current and compact native Q9 V5 checks.
+It does not add new spectral or interface calculations.

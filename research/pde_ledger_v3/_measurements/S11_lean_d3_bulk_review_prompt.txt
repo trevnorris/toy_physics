@@ -1,0 +1,61 @@
+Independent non-author fidelity review: bounded D3 bulk variation K1–K4.
+
+Read MANIFEST.json and lean/FORMALIZATION_POLICY.md, then
+lean/s11/D3_BULK_COVERAGE.md, D3_BULK_FIDELITY.md, D3_BULK_VERIFICATION.txt,
+the five S11D3Bulk modules and audit root, and the compact native source check
+and terminal/validation records. The packet includes the complete local Lean
+import closure and pins, native sources and the shared physics/step specification.
+
+Review the mathematics and statement fidelity, not merely reported compilation.
+The input is the full D3 invariant quadratic family classified in J1–J4,
+Q(G)=a(tr G)^2+b tr(G^2)+c tr(G G^T), G_ij=partial_i u_j, with arbitrary constant
+real a,b,c and supplied action density L=-Q/2. No inertia is added. Check the
+link to S11D3Invariants.invariantForm, derivative-defined momenta, actual finite
+relative-action derivative, integration by parts, and equivalence between
+stationarity against all smooth compact tests and the pointwise local PDE.
+
+Does the proved EL equal (a+b)grad(div u)+c Delta u on every smooth field? Are
+mixed derivatives commuted from smoothness rather than an extra assumption?
+Does the explicit current F_i=sum_j(u_i partial_j u_j-u_j partial_j u_i) have
+divergence (div u)^2-tr(G^2)? Does bulk equivalence hold exactly when (c,a+b)
+agree, on all smooth backgrounds and all points? Check the necessary separating
+plane waves and the all-field sufficiency argument. Is variational nullness
+exactly c=0, a+b=0, including zero and negative coefficients? Are the kernel/range
+dimensions 1/2 connected to the actual variational operator rather than an
+unrelated coefficient map? Check existence of a nonzero compact first variation
+outside the null locus and nonvacuous passing examples.
+
+Check the actual density-derived modal operator for every real k, including
+zero, its longitudinal/transverse action and its identity with the existing
+homogeneous operator at rho=0, mu=c, B=a+b+c. This is not a new spectrum claim.
+
+For the native link, inspect the actual Q9 V1 basis change, every V5 basis vector
+and arbitrary coefficient combinations. The native EL helper has the opposite
+overall variational sign: native EL(L)=-Lean EL(L), V5(Q)=2 Lean EL(L). Check
+coefficient normalization, derivative-coordinate ordering, symbolic mixed-
+derivative reduction, and the sign/factor and wrong-map controls. Wolfram is
+source inspection only. Translation software is not claimed kernel-certified.
+
+Inspect the mutations and their observed diagnostics. A rejected mathematical
+claim must not be counted on the basis of a syntax/import/resource failure.
+The boundary-current mutation also creates an unused simp-argument warning;
+its rejection is justified separately by the displayed false identity and
+smooth counterexample, as documented. Passing controls and current source,
+dependency/object correspondence must be accounted for.
+
+This is nullness only within the classified constant-coefficient D3 family,
+on R^(3+1) with smooth compact spacetime variations. Background total action
+need not be finite. The divergence identity does not discard boundary physics.
+No D4/D5, general null-Lagrangian classification, variable coefficients, new
+spectrum/stability/interface work, S11c, production/comparator/export work or
+systematic CAS bridge belongs to this review. Earlier H/I/E/J sources and
+historical records are retained; no fresh review of their unrelated scope is
+requested. Do not change any file.
+
+Return a substantive final report with verdict CLEAR or NOT CLEAR, reviewed
+packet identifier (as supplied unless independently recomputed), the definitions,
+assumptions and quantifiers checked, findings with file/theorem references, and
+exact limits of your independent verification. Distinguish blockers from optional
+improvements. Do not claim compilation, native execution or hash recomputation
+unless performed. Plans, partial responses and unsupported approval are not
+review clearance.

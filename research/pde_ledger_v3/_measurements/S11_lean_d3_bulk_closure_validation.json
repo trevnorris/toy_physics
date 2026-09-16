@@ -1,0 +1,172 @@
+{
+  "status": "PASS",
+  "validated_utc": "2026-09-16T20:16:09.313823+00:00",
+  "scope": "K1\u2013K4 bounded D3 bulk variation",
+  "packet_sha256": "bb5fe9bbfbc09f3a184bb6f256daba74f9ee7d6baa85cbb67b6e4eb2ddb83b54",
+  "file_count": 41,
+  "preflight": {
+    "status": "PASS",
+    "packet_sha256": "bb5fe9bbfbc09f3a184bb6f256daba74f9ee7d6baa85cbb67b6e4eb2ddb83b54",
+    "file_count": 41,
+    "compiled_objects": 21,
+    "checked": "archive/snapshot/live files; source/generator/instruments/reports/logs/objects; package pins; historical proof bytes"
+  },
+  "snapshot_archive_transport_correspondence": "PASS",
+  "archive_sha256": "4dae234d09a153122d3dd49eef4aee92b971ed24b64154e238c9abda6ab4d29b",
+  "manifest_sha256": "f71b3453e26c09a2e0e16a77bcd9348aed7c5f8089f881a751892e184ff1ce31",
+  "live_files_changed_before_closure_documentation": [],
+  "local_validation_sha256": "96b02d147ffe16f8bae3004f4cac4f08508742dd8567fa6e0688cd6b8dc6dc4f",
+  "current_sources_instruments_reports_objects": "PASS",
+  "check_logs_validated": 44,
+  "compiled_objects_validated": 21,
+  "package_checkout_pins": [
+    {
+      "name": "Physlib",
+      "commit": "8b2b23701c07409f882c49e0bd290a214e44450c",
+      "tracked_source_clean": true
+    },
+    {
+      "name": "mathlib",
+      "commit": "db584cd6d46c92f209a44c0f1c829460d327499d",
+      "tracked_source_clean": true
+    },
+    {
+      "name": "\u00abdoc-gen4\u00bb",
+      "commit": "aceca4eeb5a79092eabefaa75fcb72b701d02205",
+      "tracked_source_clean": true
+    },
+    {
+      "name": "plausible",
+      "commit": "b7eb3304aeae834b12dda98993a37f6a41f6f0bb",
+      "tracked_source_clean": true
+    },
+    {
+      "name": "LeanSearchClient",
+      "commit": "5f4d51b81cbd3f6b32b156bfad9056621a040404",
+      "tracked_source_clean": true
+    },
+    {
+      "name": "importGraph",
+      "commit": "16f02aa7642864af59f1ff0e384a015994db9118",
+      "tracked_source_clean": true
+    },
+    {
+      "name": "proofwidgets",
+      "commit": "4be2e3d5087eeb272cf5a8853b8f9dd025ef5957",
+      "tracked_source_clean": true
+    },
+    {
+      "name": "aesop",
+      "commit": "3448c0bcc5ce01b2d1546e483ec3620e32df3d0e",
+      "tracked_source_clean": true
+    },
+    {
+      "name": "Qq",
+      "commit": "92c15be17b7caf78c2ad767ec40f89052d908d81",
+      "tracked_source_clean": true
+    },
+    {
+      "name": "batteries",
+      "commit": "4488d40d070b9700d4d5a6aa342f0d40c31b2a2d",
+      "tracked_source_clean": true
+    },
+    {
+      "name": "leansqlite",
+      "commit": "6168b7549738a19bc837a1625c60c5d1e5dd8aeb",
+      "tracked_source_clean": true
+    },
+    {
+      "name": "Cli",
+      "commit": "6130a47896ce867c6a4a55373441e59e565bad0f",
+      "tracked_source_clean": true
+    },
+    {
+      "name": "UnicodeBasic",
+      "commit": "37e7d8cb7316a88cd3e91208385c9ec6ae780019",
+      "tracked_source_clean": true
+    },
+    {
+      "name": "BibtexQuery",
+      "commit": "852edafa268eb038a7158551fd580ee8433847b0",
+      "tracked_source_clean": true
+    },
+    {
+      "name": "MD4Lean",
+      "commit": "31907cc18f48a95384f99cee5582c00fb39e0f67",
+      "tracked_source_clean": true
+    }
+  ],
+  "historical_proof_correspondence": {
+    "S11_lean_fidelity_review_packet.json": {
+      "manifest_sha256": "91f740e9d51c5af9d3c38e300e95ed1c812fe2214091b02c88931fe0fcb361bb",
+      "unchanged_proof_files": 27
+    },
+    "S11_lean_invariant_review_packet.json": {
+      "manifest_sha256": "0a7fd1e8b774b3a73338adf74cd5f346a2060caff037c110318be37624d4e3ae",
+      "unchanged_proof_files": 6
+    },
+    "S11_lean_dynamics_review_packet.json": {
+      "manifest_sha256": "5f54346e2540db29015e799cfb7cd13718e301680c37ceb6fdb18f68b6a3cc40",
+      "unchanged_proof_files": 13
+    },
+    "S11_lean_d3_review_packet.json": {
+      "manifest_sha256": "f78d38219935608d3a71024940d9f6fe2d8ab4e596bb24412d10f93e1a3cf739",
+      "unchanged_proof_files": 7
+    }
+  },
+  "reviewers": {
+    "claude": {
+      "session_id": "682f7c75-0025-4c23-9622-3c8471b8cd26",
+      "verdict": "CLEAR",
+      "termination": "end_turn",
+      "run_exit_status": 0,
+      "model_usage_ids": [
+        "claude-haiku-4-5-20251001",
+        "claude-opus-5[1m]"
+      ],
+      "raw_sha256": "857e310c65f2f222e7cce306de9319d0f4d04ffec54393578880670d4d63508a",
+      "run_sha256": "06da8a2671a4f2d0c192e2692705e4be755bdcf7470d8a22a3b3b475e1720abb",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "report": "research/pde_ledger_v3/_measurements/S11_lean_d3_bulk_fidelity_claude_v1.md",
+      "report_sha256": "d81b80c8742f89f8d395becd9995ec924e012a760ccc6fe0cd91b7fef71e46c0",
+      "report_extraction_character_offset": 0,
+      "review_limit": "Independent source fidelity review and mathematical hand checks; no independent compilation, instrument execution or cryptographic recomputation."
+    },
+    "grok": {
+      "session_id": "39517b87-b493-4e50-a898-397530883923",
+      "verdict": "CLEAR",
+      "termination": "end_turn",
+      "run_exit_status": 0,
+      "model_usage_ids": [
+        "grok-4.6-build"
+      ],
+      "raw_sha256": "508a49566eec2c37691e3acf8c992fd2e0193d3dfb6f9bfa56d6ac50ccccabee",
+      "run_sha256": "776bc316899f4f6464b1dd6143521c71e0ad925aac7ad0079a8becf9d930386e",
+      "stderr_sha256": "561faeea9d77b57cf5d547028ba6439f4c65a2da5e9e0be13f52577fb8ee8132",
+      "report": "research/pde_ledger_v3/_measurements/S11_lean_d3_bulk_fidelity_grok_v1.md",
+      "report_sha256": "9de799fae47e73118160985a8d08a81bf5fc933f1a04aa178de621ee950ceb42",
+      "report_extraction_character_offset": 988,
+      "review_limit": "Independent source fidelity review and mathematical hand checks; no independent compilation, instrument execution or cryptographic recomputation."
+    }
+  },
+  "unresolved_blockers": [],
+  "stdout_stderr_adjudication": "Both exited zero with end_turn and substantive final CLEAR reports. Claude stderr empty. Grok startup plugin-precedence, hook and /tmp repository-discovery warnings did not prevent its completed source review. No partial, cancelled, errored or plan-only response accepted.",
+  "grok_extraction": "Only the terminal report after the unique final verdict heading is extracted. Earlier progress and the separate thought field are not review conclusions; the complete raw response is preserved.",
+  "closure_documentation_pending": false,
+  "completion_claimed": true,
+  "closed_utc": "2026-09-16T20:16:09.313823+00:00",
+  "completion_scope": "Bounded D3 bulk variation K1\u2013K4 only",
+  "live_packet_documentation_changes": {
+    "lean/s11/D3_BULK_COVERAGE.md": "fcd659c452dd076208990945a7a5f5efba84ff8a457cbae8acf56a5a21d17805",
+    "lean/s11/D3_BULK_FIDELITY.md": "094e19ca75e11ae41a8eb653256539d30d4c32e7ab7066a1673e18898dd38c46",
+    "lean/s11/D3_BULK_VERIFICATION.txt": "cee6995d35d38166a6b7eee1ebafe0e98fee2d8b39384fe24ca28f7eb4ae3fae",
+    "lean/s11/README.md": "f0e52c0353f01dcca8bf29a3a9aa3540dc62ce48a8392f5f474c6860b4768525"
+  },
+  "closure_document": {
+    "path": "lean/s11/D3_BULK_FIDELITY_REVIEW.md",
+    "sha256": "8461b0be7a96f914ab783dbbf4c8f50d405cdf3d5eb8a99aefd6a3a0db16a95f"
+  },
+  "preserved_reviewed_evidence": "37 other packet files retain reviewed bytes. All 21 compiled objects and all input dependencies match. Snapshot/archive/transport and earlier H/I/E/J proof bytes and evidence are unchanged.",
+  "disposition": "Both independent reviews CLEAR with no blockers. Optional observations recorded under the stopping rule; no proof/instrument/native changes or substantive re-review required.",
+  "commit_requested": false
+}

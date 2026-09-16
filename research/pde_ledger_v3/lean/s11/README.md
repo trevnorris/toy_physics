@@ -1,6 +1,6 @@
-# Homogeneous S11 Lean work
+# S11 Lean contracts
 
-This is the first bounded S11 contract under
+The homogeneous contract below is the first bounded S11 contract under
 [FORMALIZATION_POLICY.md](../FORMALIZATION_POLICY.md). Read
 [COVERAGE.md](COVERAGE.md) for H1–H4 and [FIDELITY.md](FIDELITY.md) for the precise
 claims, native action/operator correspondence and limits. Local verification
@@ -37,3 +37,28 @@ The compact source check is
 `python3 ../_measurements/S11_lean_source_check.py`. It executes the selected
 native D3 MAIN constructor and two small modal routes, not the production audit.
 No new installation or dependency update is needed.
+
+
+## D2 invariant-space contract I1–I4
+
+The separately authorized [invariant contract](INVARIANT_NEXT.md) proves the
+complete quadratic invariant spaces under SO(2) and O(2) conjugation, with
+dimensions 4 and 3 and a one-dimensional reflection-odd complement. Local
+verification passes and both independent fidelity reviews returned CLEAR.
+**I1–I4 are complete**; see the
+[review and closure record](INVARIANT_FIDELITY_REVIEW.md).
+Read [INVARIANT_FIDELITY.md](INVARIANT_FIDELITY.md) for the object conventions,
+minimal native Q9 transpose correction and its exact D2 span check, and
+[INVARIANT_VERIFICATION.txt](INVARIANT_VERIFICATION.txt) for the evidence.
+
+From `lean/`, its separate sequential verification command is
+
+```sh
+python3 ../_measurements/S11_lean_invariant_contract_check.py
+```
+
+The compact source command is
+`python3 ../_measurements/S11_lean_invariant_source_check.py`. These use separate
+reports from H1–H4. The original orientation-probe script is historical and
+expects the pre-repair native source. The new contract does not certify D3–D5,
+EL/total-divergence classes, production exports, or S11c calculations.

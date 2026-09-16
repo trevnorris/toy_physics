@@ -1,0 +1,50 @@
+import S11Invariants.Controls
+
+/-! Audit root for the bounded D2 invariant-space contract I1–I4. -/
+
+#print axioms S11Invariants.coordinates_decode
+#print axioms S11Invariants.decode_coordinates
+#print axioms S11Invariants.frame_expansion
+#print axioms S11Invariants.polynomialForm_apply
+#print axioms S11Invariants.quadratic_representation
+#print axioms S11Invariants.polynomial_injective
+#print axioms S11Invariants.polynomialForm_injective
+#print axioms S11Invariants.polynomialForm_surjective
+#print axioms S11Invariants.coefficient_action
+#print axioms S11Invariants.rotation_proper
+#print axioms S11Invariants.proper_rotation
+#print axioms S11Invariants.coordinates_rotation
+#print axioms S11Invariants.spin_two_norm
+#print axioms S11Invariants.reflection_orthogonal
+#print axioms S11Invariants.reflection_det
+#print axioms S11Invariants.reflection_square
+#print axioms S11Invariants.coordinates_reflection
+#print axioms S11Invariants.orthogonal_det
+#print axioms S11Invariants.orthogonal_mul
+#print axioms S11Invariants.conjugate_mul
+#print axioms S11Invariants.reflection_twice
+#print axioms S11Invariants.orthogonal_invariance_iff
+#print axioms S11Invariants.invariantForm_apply
+#print axioms S11Invariants.invariantForm_SO
+#print axioms S11Invariants.invariant_coefficients
+#print axioms S11Invariants.SO_classification
+#print axioms S11Invariants.invariantForm_injective
+#print axioms S11Invariants.invariantForm_O
+#print axioms S11Invariants.invariantForm_odd
+#print axioms S11Invariants.O_classification
+#print axioms S11Invariants.odd_classification
+#print axioms S11Invariants.soMap_bijective
+#print axioms S11Invariants.so_dimension
+#print axioms S11Invariants.oMap_bijective
+#print axioms S11Invariants.o_dimension
+#print axioms S11Invariants.oddMap_bijective
+#print axioms S11Invariants.odd_dimension
+#print axioms S11Invariants.even_odd_disjoint
+#print axioms S11Invariants.even_odd_span
+#print axioms S11Invariants.oddPairing_SO
+#print axioms S11Invariants.oddPairing_odd
+#print axioms S11Invariants.oddPairing_not_O
+#print axioms S11Invariants.oddPairing_not_even_span
+#print axioms S11Invariants.wrongNativeForm_apply
+#print axioms S11Invariants.wrongNativeForm_not_SO
+#print axioms S11Invariants.wrongNativeForm_witness

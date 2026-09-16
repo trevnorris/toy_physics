@@ -1,0 +1,59 @@
+{
+  "status": "CONFIRMED_SOURCE_FIDELITY_DISCREPANCY",
+  "checked_utc": "2026-09-16T03:39:57.464313+00:00",
+  "scope": "Read-only native D2 Q9 counterexample; no complete census claim or engine repair",
+  "source_sha256": "352fc502f6e191afa512a2dec513685a48c9b32bc8b4e63ca84c5af9be629db4",
+  "instrument_sha256": "97fdf242506c339a2cf8ef90e69f1c8f41a7318bdcdb29a004b39849810e5229",
+  "selected_original_functions": [
+    "compute_q9",
+    "derivative_placeholders",
+    "matrix_from_rows",
+    "q9_row_to_poly",
+    "q9_vector"
+  ],
+  "coordinate_binding": "g_1,...,g_25 as real symbols; registry initialization not executed",
+  "native_SO_dimension": 4,
+  "native_O_dimension": 3,
+  "native_SO_basis": [
+    "g_1**2 + g_2*g_3 + g_4**2",
+    "g_1*g_2 - g_1*g_3 + g_2*g_4 - g_3*g_4",
+    "g_1*g_4 - g_2*g_3",
+    "g_2**2 - g_2*g_3 + g_3**2"
+  ],
+  "native_infinitesimal_residuals": [
+    "g_1*g_2 + g_1*g_3 - g_2*g_4 - g_3*g_4",
+    "0",
+    "0",
+    "-g_1*g_2 - g_1*g_3 + g_2*g_4 + g_3*g_4"
+  ],
+  "native_finite_rotation_residuals": [
+    "-12*(3*g_1 - 4*g_2 - 4*g_3 - 3*g_4)*(4*g_1 + 3*g_2 + 3*g_3 - 4*g_4)/625",
+    "0",
+    "0",
+    "12*(3*g_1 - 4*g_2 - 4*g_3 - 3*g_4)*(4*g_1 + 3*g_2 + 3*g_3 - 4*g_4)/625"
+  ],
+  "proper_rotation": "Matrix([[3/5, -4/5], [4/5, 3/5]])",
+  "witness_G": "diag(1,0)",
+  "witness_polynomial": "g_1**2 + g_2*g_3 + g_4**2",
+  "before": "1",
+  "after": "481/625",
+  "trace_square_rotation_residual": "0",
+  "native_basis_rank": 4,
+  "rank_after_adding_trace_square": 5,
+  "transposed_control_dimension": 4,
+  "transposed_control_polynomials": [
+    "-g_1*g_4 + g_2*g_3",
+    "-2*g_1*g_4 + g_2**2 + g_3**2",
+    "-g_1*g_2 + g_1*g_3 - g_2*g_4 + g_3*g_4",
+    "g_1**2 + 2*g_1*g_4 + g_4**2"
+  ],
+  "transposed_control_rotation_residuals": [
+    "0",
+    "0",
+    "0",
+    "0"
+  ],
+  "limits": "A counterexample disproves the emitted invariant span. Passing one rotation does not prove full group invariance. D3-D5 and downstream effects are not measured here.",
+  "initial_probe_note": "An earlier inline assertion compared an unexpanded zero expression structurally; expanding residuals fixed that instrument error. It was not counted as mathematical failure.",
+  "homogeneous_contract": "H1-H4 excluded Q9 and checked MAIN independence from its sentinel; no homogeneous theorem is reopened."
+}

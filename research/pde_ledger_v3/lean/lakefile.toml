@@ -36,3 +36,8 @@ leanOptions = { warningAsError = true }
 name = "S11Homogeneous"
 srcDir = "s11"
 leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "S11Invariants"
+srcDir = "s11"
+leanOptions = { warningAsError = true }

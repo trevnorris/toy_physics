@@ -1,0 +1,76 @@
+{
+  "status": "COMPLETE",
+  "scope": "Bounded D2 S11 I1\u2013I4 independent fidelity review",
+  "packet_revision": "S11 D2 invariants I1\u2013I4 fidelity contract v1",
+  "packet_sha256": "f95d1667e54b4c8139881feaa86267ebe60eb4e9d85f0f4f4bd2dff9dc2b2747",
+  "file_count": 28,
+  "archive": "research/pde_ledger_v3/_measurements/S11_lean_invariant_review_packet_v1.tar.gz",
+  "archive_sha256": "7f4328f8a963e7c2c19a0b1e2e3a8c1cf1e32ecfc25d8f0820d26313b44d20d1",
+  "archive_bytes": 118415,
+  "packet_directory": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_invariants/review_packet_v1",
+  "manifest": "research/pde_ledger_v3/_measurements/S11_lean_invariant_review_packet.json",
+  "manifest_sha256": "0a7fd1e8b774b3a73338adf74cd5f346a2060caff037c110318be37624d4e3ae",
+  "destinations": [
+    "Claude",
+    "Grok"
+  ],
+  "external_reviews_started": true,
+  "local_verification": "PASS: five modules and audit root; 46 standard-axiom audits; nine mathematical rejections; eight positive controls; current source/olean/dependency hashes match",
+  "prepared_utc": "2026-09-16T04:14:09.252928+00:00",
+  "snapshot_validation": "PASS: live files, snapshot and archive member hashes all agree",
+  "review_verdicts": {
+    "claude": {
+      "session_id": "97d2cc9d-20df-4063-b08e-f90a22a9a340",
+      "verdict": "CLEAR",
+      "termination": "end_turn",
+      "run_exit_status": 0,
+      "model_usage_ids": [
+        "claude-haiku-4-5-20251001",
+        "claude-opus-5[1m]"
+      ],
+      "raw_sha256": "a12fdf075eafb38fa1a1cfd618d98798ab0808c1064beb2456eba77cbb201d33",
+      "run_sha256": "b6fd0ba97789a46bb84657297b53e1130f371efa5c2295a9fdca36348cdb4928",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "report": "research/pde_ledger_v3/_measurements/S11_lean_invariant_fidelity_claude_v1.md",
+      "report_sha256": "0df0ad9b3714ef4ebfc828b59fa45f0b0de6ef194fe400f6b9400f06c3424efc",
+      "report_extraction_character_offset": 0,
+      "review_limit": "Read-only source fidelity review; no independent Lean rebuild or cryptographic recomputation claimed."
+    },
+    "grok": {
+      "session_id": "b6a98ca4-8b3f-477c-8b89-b27f2a7617b6",
+      "verdict": "CLEAR",
+      "termination": "end_turn",
+      "run_exit_status": 0,
+      "model_usage_ids": [
+        "grok-4.6-build"
+      ],
+      "raw_sha256": "b49f6a2e1a7e50fd1014bec91e6e25cc2e1951126c2f70268cc08210072569dc",
+      "run_sha256": "09ff8b73f791e930311525718b2fefd33110264917ba0d1b56a02da9c816a19f",
+      "stderr_sha256": "253c71180e32a2d19ec433b765b1055a48b397d505d612871702facd1a865684",
+      "report": "research/pde_ledger_v3/_measurements/S11_lean_invariant_fidelity_grok_v1.md",
+      "report_sha256": "fc3bbedf0287e9c000f3b81ccb2d3d72dd5e452b2aa992c2997b356c144c254f",
+      "report_extraction_character_offset": 1013,
+      "review_limit": "Read-only source fidelity review; no independent Lean rebuild or cryptographic recomputation claimed."
+    }
+  },
+  "completion_claimed": true,
+  "committed": false,
+  "authorization_context": "User approved sending the fixed 28-file D2 S11 packet to Claude and Grok after the explicit transfer request and follow-up identifying that pending transfer.",
+  "authorization_quote": "Approved",
+  "authorization_recorded_utc": "2026-09-16T12:11:08.653865+00:00",
+  "preflight_validation": "PASS: all 28 live/snapshot/archive files, manifest, proof/dependency and compiled-module hashes match",
+  "review_started_utc": "2026-09-16T12:11:47.192929+00:00",
+  "transport_directory": "/tmp/s11-lean-invariant-fidelity-wc1d97_6/packet",
+  "supervisor_pid": 3486247,
+  "review_supervisor_sha256": "23496605ef4ab72ae462983f81dffefaed55b636d1fd5051f4f40a41a198c209",
+  "review_supervisor_finished_utc": "2026-09-16T12:23:31.892518+00:00",
+  "live_files_changed_since_packet": [],
+  "unresolved_blockers": [],
+  "completed_utc": "2026-09-16T12:28:25.360854+00:00",
+  "closure_scope": "Bounded D2 S11 invariant contract I1\u2013I4 only",
+  "disposition_record": "research/pde_ledger_v3/lean/s11/INVARIANT_FIDELITY_REVIEW.md",
+  "closure_validation": "research/pde_ledger_v3/_measurements/S11_lean_invariant_closure_validation.json",
+  "closure_validation_sha256": "0d0ac26dc0ca2282f2cd72e4fdd34c3c8dd04bc9b8bca31eadb5744a8b339960",
+  "post_review_changes": "Four packet documentation files plus the new closure record. Proofs, native sources, dependencies, instruments and check records retain reviewed hashes.",
+  "pinned_export_constraint": "Preserve pinned S11c-b/c1/c2 exports for the other running job; no writes by this closure."
+}

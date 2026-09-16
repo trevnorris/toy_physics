@@ -1,0 +1,694 @@
+{
+  "status": "PASS",
+  "started_utc": "2026-09-16T04:05:35.790077+00:00",
+  "instrument_sha256": "d4d635727bb10dca63fcb085bc8e4fa660897bf17bd38d212d4af5807987bed7",
+  "source_sha256_before": {
+    "lean/lake-manifest.json": "91fd5318cdc35e4044d6e059c6ef73d94b955d27adf8a5860b07ec92add9377e",
+    "lean/lakefile.toml": "9a0e082c7c582ed69ea4ae07ea643cec9debf81c744fbaab96fd98c485941b25",
+    "lean/lean-toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+    "lean/s11/S11Invariants/Census.lean": "3205b54bddc3c70606d5882f8661decfb1138c1354528170d7beae59d952f4b1",
+    "lean/s11/S11Invariants/Classification.lean": "c723e3f9407a22765b972ad043ff2abc454f8cfda236e36d002ffce65bab54c2",
+    "lean/s11/S11Invariants/Controls.lean": "8dcd1c9c760160f871f581c01f8e637dc487ad51c10f55458293e37b3e2d7995",
+    "lean/s11/S11Invariants/Quadratic.lean": "01dc76c702453a66a09ea3d11e54ddeee14d667dd61dd2e3a02737e15b5f7196",
+    "lean/s11/S11Invariants/Rotation.lean": "8ab28819adfaeb3f126c5905fa53e37d612afc5fe495baf0aaa2ec7873b7ed76",
+    "lean/s11/S11Invariants.lean": "e2ed5e9ef79fe3785a91b8ad29a35f6019463f1952cd1e6761490930d62f8e8d"
+  },
+  "checks": [
+    {
+      "name": "build_Quadratic",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "-o",
+        "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S11Invariants/Quadratic.olean",
+        "s11/S11Invariants/Quadratic.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 22.091,
+      "source_sha256": "01dc76c702453a66a09ea3d11e54ddeee14d667dd61dd2e3a02737e15b5f7196",
+      "required_failure_in": null,
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "olean_sha256": "f2d3ec53c652731bca388b9c4e73a4caf390f52bc192761ecab4fbf00c5b5a50"
+    },
+    {
+      "name": "build_Rotation",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "-o",
+        "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S11Invariants/Rotation.olean",
+        "s11/S11Invariants/Rotation.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 22.643,
+      "source_sha256": "8ab28819adfaeb3f126c5905fa53e37d612afc5fe495baf0aaa2ec7873b7ed76",
+      "required_failure_in": null,
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "olean_sha256": "9bd5d3b501c3b31069d9d4f05948c9ae67d79951685ec16d37e9e8bbbaca3cc5"
+    },
+    {
+      "name": "build_Classification",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "-o",
+        "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S11Invariants/Classification.olean",
+        "s11/S11Invariants/Classification.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 21.099,
+      "source_sha256": "c723e3f9407a22765b972ad043ff2abc454f8cfda236e36d002ffce65bab54c2",
+      "required_failure_in": null,
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "olean_sha256": "4447a49a63613a07dc05cb14587dc829fbeb4d1e0463a043e400f24d4a98c9a4"
+    },
+    {
+      "name": "build_Census",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "-o",
+        "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S11Invariants/Census.olean",
+        "s11/S11Invariants/Census.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 14.518,
+      "source_sha256": "3205b54bddc3c70606d5882f8661decfb1138c1354528170d7beae59d952f4b1",
+      "required_failure_in": null,
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "olean_sha256": "734701d4d8bf90b7b348ee5165fbaff1be91fb11c15178f251d4a681086e6faa"
+    },
+    {
+      "name": "build_Controls",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "-o",
+        "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S11Invariants/Controls.olean",
+        "s11/S11Invariants/Controls.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 10.742,
+      "source_sha256": "8dcd1c9c760160f871f581c01f8e637dc487ad51c10f55458293e37b3e2d7995",
+      "required_failure_in": null,
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "olean_sha256": "6c5a093e61576a8b562bb81defa6184277a4c41ef13e1b4337ad3072b69b7b31"
+    },
+    {
+      "name": "axiom_audit",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "-o",
+        "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S11Invariants.olean",
+        "s11/S11Invariants.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 8.93,
+      "source_sha256": "e2ed5e9ef79fe3785a91b8ad29a35f6019463f1952cd1e6761490930d62f8e8d",
+      "required_failure_in": null,
+      "diagnostics": [],
+      "output": "'S11Invariants.coordinates_decode' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11Invariants.decode_coordinates' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11Invariants.frame_expansion' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11Invariants.polynomialForm_apply' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11Invariants.quadratic_representation' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11Invariants.polynomial_injective' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11Invariants.polynomialForm_injective' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11Invariants.polynomialForm_surjective' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11Invariants.coefficient_action' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11Invariants.rotation_proper' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11Invariants.proper_rotation' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11Invariants.coordinates_rotation' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11Invariants.spin_two_norm' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11Invariants.reflection_orthogonal' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11Invariants.reflection_det' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11Invariants.reflection_square' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11Invariants.coordinates_reflection' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11Invariants.orthogonal_det' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11Invariants.orthogonal_mul' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11Invariants.conjugate_mul' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11Invariants.reflection_twice' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11Invariants.orthogonal_invariance_iff' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11Invariants.invariantForm_apply' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11Invariants.invariantForm_SO' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11Invariants.invariant_coefficients' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11Invariants.SO_classification' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11Invariants.invariantForm_injective' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11Invariants.invariantForm_O' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11Invariants.invariantForm_odd' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11Invariants.O_classification' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11Invariants.odd_classification' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11Invariants.soMap_bijective' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11Invariants.so_dimension' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11Invariants.oMap_bijective' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11Invariants.o_dimension' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11Invariants.oddMap_bijective' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11Invariants.odd_dimension' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11Invariants.even_odd_disjoint' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11Invariants.even_odd_span' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11Invariants.oddPairing_SO' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11Invariants.oddPairing_odd' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11Invariants.oddPairing_not_O' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11Invariants.oddPairing_not_even_span' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11Invariants.wrongNativeForm_apply' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11Invariants.wrongNativeForm_not_SO' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11Invariants.wrongNativeForm_witness' depends on axioms: [propext, Classical.choice, Quot.sound]\n",
+      "output_sha256": "69d09d4aa2411e1983ebe7a4c5f200c98814272b04f7317c18cfbc0151f51c25",
+      "olean_sha256": "f22d416037e7bec64925b6c9237796a1c8326baec34f6b5df5e89b80c12c187c"
+    },
+    {
+      "name": "coefficient_action_orientation",
+      "expected": "REJECTED",
+      "outcome": "REJECTED",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/invariant_verification/coefficient_action_orientation.lean"
+      ],
+      "exit_status": 1,
+      "wall_seconds": 19.297,
+      "source_sha256": "243b57fe21e3ca55a29e3e71ab61f773cf5ed6249d9eb7c763a67c1be1ae6214",
+      "required_failure_in": "coefficient_action",
+      "diagnostics": [
+        {
+          "declaration": "coefficient_action",
+          "line": 147,
+          "message": "s11/_scratch/invariant_verification/coefficient_action_orientation.lean:147:35: error: unsolved goals\ncase e_f\nn : ℕ\nA : Matrix (Fin n) (Fin n) ℝ\nc m : Fin n → ℝ\nj i : Fin n\na✝ : i ∈ Finset.univ\n⊢ c i * A i j * m j = c i * m j * A j i\n"
+        },
+        {
+          "declaration": "coefficient_action",
+          "line": 148,
+          "message": "s11/_scratch/invariant_verification/coefficient_action_orientation.lean:148:40: error: This simp argument is unused:\n  Matrix.transpose_apply\n\nHint: Omit it from the simp argument list.\n  [apply] simp only [Matrix.mulVec, dotProduct]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\n"
+        }
+      ],
+      "output": "Try this:\n  [apply] ring_nf\n  \n  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.\n    \n  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.\ns11/_scratch/invariant_verification/coefficient_action_orientation.lean:147:35: error: unsolved goals\ncase e_f\nn : ℕ\nA : Matrix (Fin n) (Fin n) ℝ\nc m : Fin n → ℝ\nj i : Fin n\na✝ : i ∈ Finset.univ\n⊢ c i * A i j * m j = c i * m j * A j i\ns11/_scratch/invariant_verification/coefficient_action_orientation.lean:148:40: error: This simp argument is unused:\n  Matrix.transpose_apply\n\nHint: Omit it from the simp argument list.\n  [apply] simp only [Matrix.mulVec, dotProduct]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\n",
+      "output_sha256": "f821541f79273af07cdf8e8361c0493e316a5ded5e6a382724670eddc66f1c65",
+      "source": "import Mathlib.LinearAlgebra.QuadraticForm.Basic\nimport Mathlib.LinearAlgebra.Dimension.Constructions\nimport Mathlib.Tactic\n\n/-! Actual quadratic forms on all real 2x2 matrices. The ten-coefficient\npresentation below is proved exhaustive using the associated bilinear form. -/\n\nnamespace S11Invariants\nnoncomputable section\n\nabbrev Mat := Matrix (Fin 2) (Fin 2) ℝ\nabbrev Quad := QuadraticForm ℝ Mat\nabbrev Coordinates := Fin 4 → ℝ\nabbrev Coefficients := Fin 10 → ℝ\n\ndef coordinates (G : Mat) : Coordinates :=\n  ![G 0 0 + G 1 1, G 0 1 - G 1 0, G 0 0 - G 1 1, G 0 1 + G 1 0]\n\ndef decode (v : Coordinates) : Mat :=\n  ![![(v 0 + v 2) / 2, (v 1 + v 3) / 2],\n    ![(v 3 - v 1) / 2, (v 0 - v 2) / 2]]\n\ntheorem coordinates_decode (v : Coordinates) : coordinates (decode v) = v := by\n  ext i\n  fin_cases i <;> simp [coordinates, decode] <;> ring\n\ntheorem decode_coordinates (G : Mat) : decode (coordinates G) = G := by\n  ext i j\n  fin_cases i <;> fin_cases j <;> simp [coordinates, decode]\n\ndef coordinateMap (i : Fin 4) : Mat →ₗ[ℝ] ℝ where\n  toFun G := coordinates G i\n  map_add' G H := by fin_cases i <;> simp [coordinates] <;> ring\n  map_smul' r G := by fin_cases i <;> simp [coordinates] <;> ring\n\ndef frame : Fin 4 → Mat :=\n  ![decode ![1,0,0,0], decode ![0,1,0,0], decode ![0,0,1,0], decode ![0,0,0,1]]\n\ntheorem frame_expansion (G : Mat) :\n    G = coordinates G 0 • frame 0 + coordinates G 1 • frame 1 +\n        coordinates G 2 • frame 2 + coordinates G 3 • frame 3 := by\n  ext i j\n  fin_cases i <;> fin_cases j\n  · change G 0 0 = (G 0 0 + G 1 1) * ((1+0)/2) + (G 0 1-G 1 0) * ((0+0)/2) +\n      (G 0 0-G 1 1) * ((0+1)/2) + (G 0 1+G 1 0) * ((0+0)/2)\n    ring\n  · change G 0 1 = (G 0 0 + G 1 1) * ((0+0)/2) + (G 0 1-G 1 0) * ((1+0)/2) +\n      (G 0 0-G 1 1) * ((0+0)/2) + (G 0 1+G 1 0) * ((0+1)/2)\n    ring\n  · change G 1 0 = (G 0 0 + G 1 1) * ((0-0)/2) + (G 0 1-G 1 0) * ((0-1)/2) +\n      (G 0 0-G 1 1) * ((0-0)/2) + (G 0 1+G 1 0) * ((1-0)/2)\n    ring\n  · change G 1 1 = (G 0 0 + G 1 1) * ((1-0)/2) + (G 0 1-G 1 0) * ((0-0)/2) +\n      (G 0 0-G 1 1) * ((0-1)/2) + (G 0 1+G 1 0) * ((0-0)/2)\n    ring\n\ndef polynomial (c : Coefficients) (v : Coordinates) : ℝ :=\n  c 0 * v 0 ^ 2 + c 1 * v 0 * v 1 + c 2 * v 0 * v 2 + c 3 * v 0 * v 3 +\n  c 4 * v 1 ^ 2 + c 5 * v 1 * v 2 + c 6 * v 1 * v 3 +\n  c 7 * v 2 ^ 2 + c 8 * v 2 * v 3 + c 9 * v 3 ^ 2\n\ndef monomial (i j : Fin 4) : Quad :=\n  QuadraticMap.linMulLin (coordinateMap i) (coordinateMap j)\n\ndef polynomialForm (c : Coefficients) : Quad :=\n  c 0 • monomial 0 0 + c 1 • monomial 0 1 + c 2 • monomial 0 2 + c 3 • monomial 0 3 +\n  c 4 • monomial 1 1 + c 5 • monomial 1 2 + c 6 • monomial 1 3 +\n  c 7 • monomial 2 2 + c 8 • monomial 2 3 + c 9 • monomial 3 3\n\ntheorem polynomialForm_apply (c : Coefficients) (G : Mat) :\n    polynomialForm c G = polynomial c (coordinates G) := by\n  simp [polynomialForm, monomial, coordinateMap, polynomial, pow_two]\n  ring\n\ntheorem quadratic_representation (Q : Quad) :\n    ∃ c : Coefficients, ∀ G, Q G = polynomial c (coordinates G) := by\n  let b := Q.associated\n  let c : Coefficients :=\n    ![b (frame 0) (frame 0), b (frame 0) (frame 1) + b (frame 1) (frame 0),\n      b (frame 0) (frame 2) + b (frame 2) (frame 0),\n      b (frame 0) (frame 3) + b (frame 3) (frame 0), b (frame 1) (frame 1),\n      b (frame 1) (frame 2) + b (frame 2) (frame 1),\n      b (frame 1) (frame 3) + b (frame 3) (frame 1), b (frame 2) (frame 2),\n      b (frame 2) (frame 3) + b (frame 3) (frame 2), b (frame 3) (frame 3)]\n  refine ⟨c, fun G => ?_⟩\n  have hb : Q G = b G G := (Q.associated_eq_self_apply ℝ G).symm\n  rw [hb, congrArg (fun Z => b Z Z) (frame_expansion G)]\n  simp only [polynomial, c, Matrix.cons_val]\n  simp only [map_add, map_smul, LinearMap.add_apply, LinearMap.smul_apply, smul_eq_mul]\n  ring\n\ntheorem polynomial_injective {c d : Coefficients}\n    (h : ∀ v, polynomial c v = polynomial d v) : c = d := by\n  have h0 := h ![1,0,0,0]\n  have h1 := h ![1,1,0,0]\n  have h2 := h ![1,0,1,0]\n  have h3 := h ![1,0,0,1]\n  have h4 := h ![0,1,0,0]\n  have h5 := h ![0,1,1,0]\n  have h6 := h ![0,1,0,1]\n  have h7 := h ![0,0,1,0]\n  have h8 := h ![0,0,1,1]\n  have h9 := h ![0,0,0,1]\n  norm_num [polynomial, Matrix.cons_val_two, Matrix.cons_val_three] at h0 h1 h2 h3 h4 h5 h6 h7 h8 h9\n  ext i\n  fin_cases i\n  · change c 0 = d 0\n    linarith\n  · change c 1 = d 1\n    linarith\n  · change c 2 = d 2\n    linarith\n  · change c 3 = d 3\n    linarith\n  · change c 4 = d 4\n    linarith\n  · change c 5 = d 5\n    linarith\n  · change c 6 = d 6\n    linarith\n  · change c 7 = d 7\n    linarith\n  · change c 8 = d 8\n    linarith\n  · change c 9 = d 9\n    linarith\n\ntheorem polynomialForm_injective : Function.Injective polynomialForm := by\n  intro c d h\n  apply polynomial_injective\n  intro v\n  have hv := congrArg (fun Q : Quad => Q (decode v)) h\n  simpa only [polynomialForm_apply, coordinates_decode] using hv\n\ntheorem polynomialForm_surjective : Function.Surjective polynomialForm := by\n  intro Q\n  obtain ⟨c, hc⟩ := quadratic_representation Q\n  refine ⟨c, ?_⟩\n  ext G\n  rw [polynomialForm_apply, hc]\n\n/-- Images of basis polynomials stored as rows act on coefficient columns by\nthe transpose. This identity is independent of dimension or a CAS row layout. -/\ntheorem coefficient_action {n : ℕ} (A : Matrix (Fin n) (Fin n) ℝ)\n    (c m : Fin n → ℝ) :\n    (∑ i, c i * (∑ j, A i j * m j)) =\n      ∑ j, (A.mulVec c) j * m j := by\n  simp only [Matrix.mulVec, dotProduct, Matrix.transpose_apply]\n  simp_rw [Finset.mul_sum, Finset.sum_mul]\n  rw [Finset.sum_comm]\n  congr 1\n  funext j\n  apply Finset.sum_congr rfl\n  intro i _\n  ring\n\nend\nend S11Invariants\n",
+      "canonical_source": "lean/s11/S11Invariants/Quadratic.lean",
+      "replacement": {
+        "old": "(A.transpose.mulVec c)",
+        "new": "(A.mulVec c)"
+      }
+    },
+    {
+      "name": "odd_pairing_coefficient",
+      "expected": "REJECTED",
+      "outcome": "REJECTED",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/invariant_verification/odd_pairing_coefficient.lean"
+      ],
+      "exit_status": 1,
+      "wall_seconds": 10.128,
+      "source_sha256": "7225bf7ba701469d0f9d823c024e61bcf8654e17b1c5406af1d90fbca80a4076",
+      "required_failure_in": "invariantForm_apply",
+      "diagnostics": [
+        {
+          "declaration": "invariantForm_apply",
+          "line": 17,
+          "message": "s11/_scratch/invariant_verification/odd_pairing_coefficient.lean:17:49: error: unsolved goals\nv : Fin 4 → ℝ\nG : Mat\n⊢ v 0 * coordinates G 0 ^ 2 + v 1 * coordinates G 1 ^ 2 + v 2 * coordinates G 2 ^ 2 + v 2 * coordinates G 3 ^ 2 =\n    v 0 * coordinates G 0 ^ 2 + coordinates G 0 * coordinates G 1 * v 3 + v 1 * coordinates G 1 ^ 2 +\n        v 2 * coordinates G 2 ^ 2 +\n      v 2 * coordinates G 3 ^ 2\n"
+        }
+      ],
+      "output": "Try this:\n  [apply] ring_nf\n  \n  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.\n    \n  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.\ns11/_scratch/invariant_verification/odd_pairing_coefficient.lean:17:49: error: unsolved goals\nv : Fin 4 → ℝ\nG : Mat\n⊢ v 0 * coordinates G 0 ^ 2 + v 1 * coordinates G 1 ^ 2 + v 2 * coordinates G 2 ^ 2 + v 2 * coordinates G 3 ^ 2 =\n    v 0 * coordinates G 0 ^ 2 + coordinates G 0 * coordinates G 1 * v 3 + v 1 * coordinates G 1 ^ 2 +\n        v 2 * coordinates G 2 ^ 2 +\n      v 2 * coordinates G 3 ^ 2\n",
+      "output_sha256": "c8c00062ad9aa4611dc7388c0a02a35de23683da267c0f9e6d44a42bd74a0ace",
+      "source": "import S11Invariants.Rotation\n\n/-! Exhaustive D2 classification. Finite test rotations are used only for\nnecessary constraints; sufficiency is proved for every proper rotation. -/\nnamespace S11Invariants\nnoncomputable section\n\n/-- Coefficients of trace-square, skew-square, traceless-symmetric norm,\nand the trace/skew pairing, in that order. -/\ndef invariantForm (v : Fin 4 → ℝ) : Quad :=\n  v 0 • monomial 0 0 + v 1 • monomial 1 1 +\n  v 2 • (monomial 2 2 + monomial 3 3) + (0 : ℝ) • monomial 0 1\n\ntheorem invariantForm_apply (v : Fin 4 → ℝ) (G : Mat) :\n    invariantForm v G = v 0 * coordinates G 0 ^ 2 + v 1 * coordinates G 1 ^ 2 +\n      v 2 * (coordinates G 2 ^ 2 + coordinates G 3 ^ 2) +\n      v 3 * coordinates G 0 * coordinates G 1 := by\n  simp [invariantForm, monomial, coordinateMap, pow_two]\n  ring\n\ntheorem invariantForm_SO (v : Fin 4 → ℝ) : SOInvariant (invariantForm v) := by\n  intro R hR G\n  obtain ⟨a,b,hn,rfl⟩ := proper_rotation hR\n  simp only [invariantForm_apply, coordinates_rotation, Matrix.cons_val]\n  rw [spin_two_norm, hn]\n  ring\n\n/-- Necessary conditions extracted from two admissible rotations. -/\ntheorem invariant_coefficients {Q : Quad} (hQ : SOInvariant Q) (c : Coefficients)\n    (hc : ∀ G, Q G = polynomial c (coordinates G)) :\n    c 2 = 0 ∧ c 3 = 0 ∧ c 5 = 0 ∧ c 6 = 0 ∧ c 7 = c 9 ∧ c 8 = 0 := by\n  have quarter (v : Coordinates) := hQ (rotation 0 1) (rotation_proper (by norm_num)) (decode v)\n  simp only [hc, coordinates_rotation, coordinates_decode] at quarter\n  have h2 := quarter ![1,0,1,0]\n  have h3 := quarter ![1,0,0,1]\n  have h5 := quarter ![0,1,1,0]\n  have h6 := quarter ![0,1,0,1]\n  norm_num [polynomial, Matrix.cons_val_two, Matrix.cons_val_three] at h2 h3 h5 h6\n  have hc2 : c 2 = 0 := by linarith\n  have hc3 : c 3 = 0 := by linarith\n  have hc5 : c 5 = 0 := by linarith\n  have hc6 : c 6 = 0 := by linarith\n  have rational (v : Coordinates) :=\n    hQ (rotation (3/5) (4/5)) (rotation_proper (by norm_num)) (decode v)\n  simp only [hc, coordinates_rotation, coordinates_decode] at rational\n  have hx := rational ![0,0,1,0]\n  have hxy := rational ![0,0,1,1]\n  norm_num [polynomial, Matrix.cons_val_two, Matrix.cons_val_three] at hx hxy\n  exact ⟨hc2,hc3,hc5,hc6,by linarith,by linarith⟩\n\ntheorem SO_classification (Q : Quad) :\n    SOInvariant Q ↔ ∃ v : Fin 4 → ℝ, Q = invariantForm v := by\n  constructor\n  · intro hQ\n    obtain ⟨c,hc⟩ := quadratic_representation Q\n    obtain ⟨h2,h3,h5,h6,h79,h8⟩ := invariant_coefficients hQ c hc\n    refine ⟨![c 0,c 4,c 7,c 1], ?_⟩\n    ext G\n    rw [hc, invariantForm_apply]\n    simp only [polynomial, Matrix.cons_val, h2,h3,h5,h6,h79,h8]\n    ring\n  · rintro ⟨v,rfl⟩\n    exact invariantForm_SO v\n\ntheorem invariantForm_injective : Function.Injective invariantForm := by\n  intro v w h\n  have hv (z : Coordinates) := congrArg (fun Q : Quad => Q (decode z)) h\n  simp only [invariantForm_apply, coordinates_decode] at hv\n  have h0 := hv ![1,0,0,0]\n  have h1 := hv ![0,1,0,0]\n  have h2 := hv ![0,0,1,0]\n  have h3 := hv ![1,1,0,0]\n  norm_num [Matrix.cons_val_two, Matrix.cons_val_three] at h0 h1 h2 h3\n  ext i\n  fin_cases i\n  · exact h0\n  · exact h1\n  · exact h2\n  · change v 3 = w 3\n    linarith\n\ntheorem invariantForm_O (v : Fin 4 → ℝ) : OInvariant (invariantForm v) ↔ v 3 = 0 := by\n  rw [orthogonal_invariance_iff]\n  constructor\n  · rintro ⟨_,hf⟩\n    have h := hf (decode ![1,1,0,0])\n    norm_num [invariantForm_apply, coordinates_reflection, coordinates_decode,\n      Matrix.cons_val_two, Matrix.cons_val_three] at h\n    linarith\n  · intro h\n    refine ⟨invariantForm_SO v, fun G => ?_⟩\n    simp only [invariantForm_apply, coordinates_reflection, Matrix.cons_val, h]\n    ring\n\ntheorem invariantForm_odd (v : Fin 4 → ℝ) :\n    ReflectionOdd (invariantForm v) ↔ v 0 = 0 ∧ v 1 = 0 ∧ v 2 = 0 := by\n  constructor\n  · intro hf\n    have h0 := hf (decode ![1,0,0,0])\n    have h1 := hf (decode ![0,1,0,0])\n    have h2 := hf (decode ![0,0,1,0])\n    norm_num [invariantForm_apply, coordinates_reflection, coordinates_decode,\n      Matrix.cons_val_two, Matrix.cons_val_three] at h0 h1 h2\n    exact ⟨by linarith,by linarith,by linarith⟩\n  · rintro ⟨h0,h1,h2⟩ G\n    simp only [invariantForm_apply, coordinates_reflection, Matrix.cons_val, h0,h1,h2]\n    ring\n\ntheorem O_classification (Q : Quad) :\n    OInvariant Q ↔ ∃ v : Fin 3 → ℝ, Q = invariantForm ![v 0,v 1,v 2,0] := by\n  constructor\n  · intro hQ\n    obtain ⟨v,rfl⟩ := (SO_classification Q).mp ((orthogonal_invariance_iff Q).mp hQ).1\n    have hv := (invariantForm_O v).mp hQ\n    refine ⟨![v 0,v 1,v 2], ?_⟩\n    congr 1\n    ext i\n    fin_cases i <;> simp [Matrix.cons_val_two, hv]\n  · rintro ⟨v,rfl⟩\n    exact (invariantForm_O _).mpr (by simp [Matrix.cons_val_three])\n\ntheorem odd_classification (Q : Quad) :\n    SOInvariant Q ∧ ReflectionOdd Q ↔ ∃ d : ℝ, Q = invariantForm ![0,0,0,d] := by\n  constructor\n  · rintro ⟨hSO,hodd⟩\n    obtain ⟨v,rfl⟩ := (SO_classification Q).mp hSO\n    obtain ⟨h0,h1,h2⟩ := (invariantForm_odd v).mp hodd\n    refine ⟨v 3, ?_⟩\n    congr 1\n    ext i\n    fin_cases i <;> simp [h0,h1,h2]\n  · rintro ⟨d,rfl⟩\n    exact ⟨invariantForm_SO _, (invariantForm_odd _).mpr (by norm_num [Matrix.cons_val_two])⟩\n\nend\nend S11Invariants\n",
+      "canonical_source": "lean/s11/S11Invariants/Classification.lean",
+      "replacement": {
+        "old": "v 2 • (monomial 2 2 + monomial 3 3) + v 3 • monomial 0 1",
+        "new": "v 2 • (monomial 2 2 + monomial 3 3) + (0 : ℝ) • monomial 0 1"
+      }
+    },
+    {
+      "name": "so_dimension_positive",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/invariant_verification/so_dimension_positive.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 4.088,
+      "source_sha256": "2c3ebd6e91c055d91223e5dd2c95f86ada336780628b3dea853d01cbdda25ff4",
+      "required_failure_in": "contract_control",
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "import S11Invariants.Controls\nopen S11Invariants\nnoncomputable section\ntheorem contract_control : Module.finrank ℝ soSpace = 4 := by\n  norm_num [so_dimension]\n"
+    },
+    {
+      "name": "so_dimension_mutant",
+      "expected": "REJECTED",
+      "outcome": "REJECTED",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/invariant_verification/so_dimension_mutant.lean"
+      ],
+      "exit_status": 1,
+      "wall_seconds": 4.19,
+      "source_sha256": "1242aa3244cbb7063095bb2784e47b43725374b0920ad2ab29859f29a7640f2e",
+      "required_failure_in": "contract_control",
+      "diagnostics": [
+        {
+          "declaration": "contract_control",
+          "line": 4,
+          "message": "s11/_scratch/invariant_verification/so_dimension_mutant.lean:4:59: error: unsolved goals\n⊢ False\n"
+        }
+      ],
+      "output": "s11/_scratch/invariant_verification/so_dimension_mutant.lean:4:59: error: unsolved goals\n⊢ False\n",
+      "output_sha256": "1e793aaed5db2414a2ab3478696cd71a087cbbd092fed0306e0a707ee834a494",
+      "source": "import S11Invariants.Controls\nopen S11Invariants\nnoncomputable section\ntheorem contract_control : Module.finrank ℝ soSpace = 3 := by\n  norm_num [so_dimension]\n"
+    },
+    {
+      "name": "o_dimension_positive",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/invariant_verification/o_dimension_positive.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 4.24,
+      "source_sha256": "7ab2779590633de5a2c1c03f9f94b023b6fd46f6c51b1d377c3917263e0e0001",
+      "required_failure_in": "contract_control",
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "import S11Invariants.Controls\nopen S11Invariants\nnoncomputable section\ntheorem contract_control : Module.finrank ℝ oSpace = 3 := by\n  norm_num [o_dimension]\n"
+    },
+    {
+      "name": "o_dimension_mutant",
+      "expected": "REJECTED",
+      "outcome": "REJECTED",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/invariant_verification/o_dimension_mutant.lean"
+      ],
+      "exit_status": 1,
+      "wall_seconds": 4.241,
+      "source_sha256": "f376caa7436aa08ef09023008c240ded05de5b7cdac911e74ad82824a5807a6d",
+      "required_failure_in": "contract_control",
+      "diagnostics": [
+        {
+          "declaration": "contract_control",
+          "line": 4,
+          "message": "s11/_scratch/invariant_verification/o_dimension_mutant.lean:4:58: error: unsolved goals\n⊢ False\n"
+        }
+      ],
+      "output": "s11/_scratch/invariant_verification/o_dimension_mutant.lean:4:58: error: unsolved goals\n⊢ False\n",
+      "output_sha256": "a69c93e49766d4b869874baf9772e3be31d4ae86e1023df6bddcdd0e64deb774",
+      "source": "import S11Invariants.Controls\nopen S11Invariants\nnoncomputable section\ntheorem contract_control : Module.finrank ℝ oSpace = 4 := by\n  norm_num [o_dimension]\n"
+    },
+    {
+      "name": "odd_dimension_positive",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/invariant_verification/odd_dimension_positive.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 4.14,
+      "source_sha256": "af15458307442aaf450d9105802c947fbbdaacd2a0bdf64291548c35c1fcf488",
+      "required_failure_in": "contract_control",
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "import S11Invariants.Controls\nopen S11Invariants\nnoncomputable section\ntheorem contract_control : Module.finrank ℝ oddSpace = 1 := by\n  norm_num [odd_dimension]\n"
+    },
+    {
+      "name": "odd_dimension_mutant",
+      "expected": "REJECTED",
+      "outcome": "REJECTED",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/invariant_verification/odd_dimension_mutant.lean"
+      ],
+      "exit_status": 1,
+      "wall_seconds": 7.871,
+      "source_sha256": "0f177b4a691c7dfa28228224c11b4ee5e830997240fcc7da803e485586e32649",
+      "required_failure_in": "contract_control",
+      "diagnostics": [
+        {
+          "declaration": "contract_control",
+          "line": 4,
+          "message": "s11/_scratch/invariant_verification/odd_dimension_mutant.lean:4:60: error: unsolved goals\n⊢ False\n"
+        }
+      ],
+      "output": "s11/_scratch/invariant_verification/odd_dimension_mutant.lean:4:60: error: unsolved goals\n⊢ False\n",
+      "output_sha256": "57ac5562a9acd9410b1ce7bee8cc7449e55937c0fd7395a29e62b7062e10bb63",
+      "source": "import S11Invariants.Controls\nopen S11Invariants\nnoncomputable section\ntheorem contract_control : Module.finrank ℝ oddSpace = 0 := by\n  norm_num [odd_dimension]\n"
+    },
+    {
+      "name": "odd_pairing_is_required_positive",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/invariant_verification/odd_pairing_is_required_positive.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 9.033,
+      "source_sha256": "83ed7bb5df1e120a05d5a3b96b424167cba4455926b5980772c16e0eb1d76c4a",
+      "required_failure_in": "contract_control",
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "import S11Invariants.Controls\nopen S11Invariants\nnoncomputable section\ntheorem contract_control : ¬ (∃ v : Fin 3 → ℝ, oddPairing = invariantForm ![v 0,v 1,v 2,0]) := by\n  norm_num [oddPairing_not_even_span]\n"
+    },
+    {
+      "name": "odd_pairing_is_required_mutant",
+      "expected": "REJECTED",
+      "outcome": "REJECTED",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/invariant_verification/odd_pairing_is_required_mutant.lean"
+      ],
+      "exit_status": 1,
+      "wall_seconds": 8.629,
+      "source_sha256": "859fc65ba4e9cdc30b97da959dc893f799f3dda91431bed090bf642dbe0bd5ff",
+      "required_failure_in": "contract_control",
+      "diagnostics": [
+        {
+          "declaration": "contract_control",
+          "line": 4,
+          "message": "s11/_scratch/invariant_verification/odd_pairing_is_required_mutant.lean:4:94: error: unsolved goals\n⊢ False\n"
+        }
+      ],
+      "output": "s11/_scratch/invariant_verification/odd_pairing_is_required_mutant.lean:4:94: error: unsolved goals\n⊢ False\n",
+      "output_sha256": "ef7a85ba08404f38cdb96098c77081850b1ba3f457b2f2a8bf1554f4c4498d7e",
+      "source": "import S11Invariants.Controls\nopen S11Invariants\nnoncomputable section\ntheorem contract_control :  (∃ v : Fin 3 → ℝ, oddPairing = invariantForm ![v 0,v 1,v 2,0]) := by\n  norm_num [oddPairing_not_even_span]\n"
+    },
+    {
+      "name": "odd_pairing_not_O_positive",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/invariant_verification/odd_pairing_not_O_positive.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 8.526,
+      "source_sha256": "161f9373123613a355b65b50b129ac705dc24448f77edc88aee7a56a67571e4a",
+      "required_failure_in": "contract_control",
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "import S11Invariants.Controls\nopen S11Invariants\nnoncomputable section\ntheorem contract_control : ¬ OInvariant oddPairing := by\n  norm_num [oddPairing_not_O]\n"
+    },
+    {
+      "name": "odd_pairing_not_O_mutant",
+      "expected": "REJECTED",
+      "outcome": "REJECTED",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/invariant_verification/odd_pairing_not_O_mutant.lean"
+      ],
+      "exit_status": 1,
+      "wall_seconds": 8.578,
+      "source_sha256": "970207ff7e1a3a84234eec56b3fd77adbc7617067330a991bb6bec8096c7908d",
+      "required_failure_in": "contract_control",
+      "diagnostics": [
+        {
+          "declaration": "contract_control",
+          "line": 4,
+          "message": "s11/_scratch/invariant_verification/odd_pairing_not_O_mutant.lean:4:53: error: unsolved goals\n⊢ False\n"
+        }
+      ],
+      "output": "s11/_scratch/invariant_verification/odd_pairing_not_O_mutant.lean:4:53: error: unsolved goals\n⊢ False\n",
+      "output_sha256": "20b5b9da1aa2d1be4f946e157a96fedc1e38fb877c4e2aca487642a91e1f2819",
+      "source": "import S11Invariants.Controls\nopen S11Invariants\nnoncomputable section\ntheorem contract_control :  OInvariant oddPairing := by\n  norm_num [oddPairing_not_O]\n"
+    },
+    {
+      "name": "wrong_native_form_positive",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/invariant_verification/wrong_native_form_positive.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 8.576,
+      "source_sha256": "588097f8f82be1cbd87e4bf904ffcd8024b23018cc2cce3ecb0f499983b772a8",
+      "required_failure_in": "contract_control",
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "import S11Invariants.Controls\nopen S11Invariants\nnoncomputable section\ntheorem contract_control : ¬ SOInvariant wrongNativeForm := by\n  norm_num [wrongNativeForm_not_SO]\n"
+    },
+    {
+      "name": "wrong_native_form_mutant",
+      "expected": "REJECTED",
+      "outcome": "REJECTED",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/invariant_verification/wrong_native_form_mutant.lean"
+      ],
+      "exit_status": 1,
+      "wall_seconds": 8.626,
+      "source_sha256": "3a419dd914725415270b9ef33ecaabc443cc49a935b98d20a98b3bbbf52b2ca8",
+      "required_failure_in": "contract_control",
+      "diagnostics": [
+        {
+          "declaration": "contract_control",
+          "line": 4,
+          "message": "s11/_scratch/invariant_verification/wrong_native_form_mutant.lean:4:59: error: unsolved goals\n⊢ False\n"
+        }
+      ],
+      "output": "s11/_scratch/invariant_verification/wrong_native_form_mutant.lean:4:59: error: unsolved goals\n⊢ False\n",
+      "output_sha256": "98efdeebfb43ec86d28ab8d8cd6ce62d373a4220fb363f0bf56000f891584228",
+      "source": "import S11Invariants.Controls\nopen S11Invariants\nnoncomputable section\ntheorem contract_control :  SOInvariant wrongNativeForm := by\n  norm_num [wrongNativeForm_not_SO]\n"
+    },
+    {
+      "name": "proper_rotation_domain_positive",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/invariant_verification/proper_rotation_domain_positive.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 8.628,
+      "source_sha256": "280ddd07491ba5c4f7fde9cd2454f0739942f41ee9b4b9efbb30e6e03e81e0e2",
+      "required_failure_in": "contract_control",
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "import S11Invariants.Controls\nopen S11Invariants\nnoncomputable section\ntheorem contract_control : ¬ Proper (rotation 1 1) := by\n  simp only [Proper, Orthogonal, Matrix.det_fin_two]\n  norm_num [rotation]\n"
+    },
+    {
+      "name": "proper_rotation_domain_mutant",
+      "expected": "REJECTED",
+      "outcome": "REJECTED",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/invariant_verification/proper_rotation_domain_mutant.lean"
+      ],
+      "exit_status": 1,
+      "wall_seconds": 8.776,
+      "source_sha256": "9e54e657b31b306305e61d0f69b4c6bfee81e0b82e6059315cbacf4b3e3abf7e",
+      "required_failure_in": "contract_control",
+      "diagnostics": [
+        {
+          "declaration": "contract_control",
+          "line": 4,
+          "message": "s11/_scratch/invariant_verification/proper_rotation_domain_mutant.lean:4:53: error: unsolved goals\n⊢ False\n"
+        }
+      ],
+      "output": "s11/_scratch/invariant_verification/proper_rotation_domain_mutant.lean:4:53: error: unsolved goals\n⊢ False\n",
+      "output_sha256": "73c14a8fa20f8d8a8d89718cfb6b08b7acaf60b0e39c7672333b4ffd7baf29ee",
+      "source": "import S11Invariants.Controls\nopen S11Invariants\nnoncomputable section\ntheorem contract_control :  Proper (rotation 1 1) := by\n  simp only [Proper, Orthogonal, Matrix.det_fin_two]\n  norm_num [rotation]\n"
+    },
+    {
+      "name": "admissible_witness_positive",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/invariant_verification/admissible_witness_positive.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 8.677,
+      "source_sha256": "d195a9d445cc73593fe959548469048fcaec3f7eb3dd03f4a09e439c9a7fddf8",
+      "required_failure_in": null,
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "import S11Invariants.Controls\nopen S11Invariants\nnoncomputable section\ntheorem contract_control : Proper (rotation (3/5) (4/5)) ∧ wrongNativeForm !![1,0;0,0] = 1 ∧ wrongNativeForm (conjugate (rotation (3/5) (4/5)) !![1,0;0,0]) = 481/625 := wrongNativeForm_witness\n"
+    }
+  ],
+  "resources": {
+    "workers": 1,
+    "lean_threads": 1,
+    "lean_allocator_limit_mib": 4096,
+    "process_timeout_seconds": 300,
+    "note": "Allocator limit is not an OS RSS cap."
+  },
+  "axiom_audit_count": 46,
+  "source_sha256_after": {
+    "lean/lake-manifest.json": "91fd5318cdc35e4044d6e059c6ef73d94b955d27adf8a5860b07ec92add9377e",
+    "lean/lakefile.toml": "9a0e082c7c582ed69ea4ae07ea643cec9debf81c744fbaab96fd98c485941b25",
+    "lean/lean-toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+    "lean/s11/S11Invariants/Census.lean": "3205b54bddc3c70606d5882f8661decfb1138c1354528170d7beae59d952f4b1",
+    "lean/s11/S11Invariants/Classification.lean": "c723e3f9407a22765b972ad043ff2abc454f8cfda236e36d002ffce65bab54c2",
+    "lean/s11/S11Invariants/Controls.lean": "8dcd1c9c760160f871f581c01f8e637dc487ad51c10f55458293e37b3e2d7995",
+    "lean/s11/S11Invariants/Quadratic.lean": "01dc76c702453a66a09ea3d11e54ddeee14d667dd61dd2e3a02737e15b5f7196",
+    "lean/s11/S11Invariants/Rotation.lean": "8ab28819adfaeb3f126c5905fa53e37d612afc5fe495baf0aaa2ec7873b7ed76",
+    "lean/s11/S11Invariants.lean": "e2ed5e9ef79fe3785a91b8ad29a35f6019463f1952cd1e6761490930d62f8e8d"
+  },
+  "finished_utc": "2026-09-16T04:09:32.215562+00:00"
+}

@@ -1,0 +1,98 @@
+{
+  "status": "PASS",
+  "validated_utc": "2026-09-16T12:25:38.605254+00:00",
+  "scope": "Bounded S11 D2 invariant contract I1\u2013I4",
+  "packet_sha256": "f95d1667e54b4c8139881feaa86267ebe60eb4e9d85f0f4f4bd2dff9dc2b2747",
+  "packet_file_count": 28,
+  "archive_sha256": "7f4328f8a963e7c2c19a0b1e2e3a8c1cf1e32ecfc25d8f0820d26313b44d20d1",
+  "manifest_sha256": "0a7fd1e8b774b3a73338adf74cd5f346a2060caff037c110318be37624d4e3ae",
+  "snapshot_archive_transport_correspondence": "PASS",
+  "live_files_changed_since_reviewed_packet_before_closure_docs": [],
+  "shared_source_reconciliation": "No shared-source hash changed: SymPy and Wolfram match the reviewed snapshot exactly. No other-session work was overwritten.",
+  "proof_source_and_dependency_hashes": {
+    "lean/lake-manifest.json": "91fd5318cdc35e4044d6e059c6ef73d94b955d27adf8a5860b07ec92add9377e",
+    "lean/lakefile.toml": "9a0e082c7c582ed69ea4ae07ea643cec9debf81c744fbaab96fd98c485941b25",
+    "lean/lean-toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+    "lean/s11/S11Invariants/Census.lean": "3205b54bddc3c70606d5882f8661decfb1138c1354528170d7beae59d952f4b1",
+    "lean/s11/S11Invariants/Classification.lean": "c723e3f9407a22765b972ad043ff2abc454f8cfda236e36d002ffce65bab54c2",
+    "lean/s11/S11Invariants/Controls.lean": "8dcd1c9c760160f871f581c01f8e637dc487ad51c10f55458293e37b3e2d7995",
+    "lean/s11/S11Invariants/Quadratic.lean": "01dc76c702453a66a09ea3d11e54ddeee14d667dd61dd2e3a02737e15b5f7196",
+    "lean/s11/S11Invariants/Rotation.lean": "8ab28819adfaeb3f126c5905fa53e37d612afc5fe495baf0aaa2ec7873b7ed76",
+    "lean/s11/S11Invariants.lean": "e2ed5e9ef79fe3785a91b8ad29a35f6019463f1952cd1e6761490930d62f8e8d"
+  },
+  "compiled_module_sha256": {
+    "lean/.lake/build/lib/lean/S11Invariants/Quadratic.olean": "f2d3ec53c652731bca388b9c4e73a4caf390f52bc192761ecab4fbf00c5b5a50",
+    "lean/.lake/build/lib/lean/S11Invariants/Rotation.olean": "9bd5d3b501c3b31069d9d4f05948c9ae67d79951685ec16d37e9e8bbbaca3cc5",
+    "lean/.lake/build/lib/lean/S11Invariants/Classification.olean": "4447a49a63613a07dc05cb14587dc829fbeb4d1e0463a043e400f24d4a98c9a4",
+    "lean/.lake/build/lib/lean/S11Invariants/Census.olean": "734701d4d8bf90b7b348ee5165fbaff1be91fb11c15178f251d4a681086e6faa",
+    "lean/.lake/build/lib/lean/S11Invariants/Controls.olean": "6c5a093e61576a8b562bb81defa6184277a4c41ef13e1b4337ad3072b69b7b31",
+    "lean/.lake/build/lib/lean/S11Invariants.olean": "f22d416037e7bec64925b6c9237796a1c8326baec34f6b5df5e89b80c12c187c"
+  },
+  "clean_dependency_pins_rechecked": 15,
+  "local_validation_sha256": "e6eb03ec06178d5e875be67da3a62ca5b6111f9ac0c860838e864b866dcb5a66",
+  "reviews": {
+    "claude": {
+      "session_id": "97d2cc9d-20df-4063-b08e-f90a22a9a340",
+      "verdict": "CLEAR",
+      "termination": "end_turn",
+      "run_exit_status": 0,
+      "model_usage_ids": [
+        "claude-haiku-4-5-20251001",
+        "claude-opus-5[1m]"
+      ],
+      "raw_sha256": "a12fdf075eafb38fa1a1cfd618d98798ab0808c1064beb2456eba77cbb201d33",
+      "run_sha256": "b6fd0ba97789a46bb84657297b53e1130f371efa5c2295a9fdca36348cdb4928",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "report": "research/pde_ledger_v3/_measurements/S11_lean_invariant_fidelity_claude_v1.md",
+      "report_sha256": "0df0ad9b3714ef4ebfc828b59fa45f0b0de6ef194fe400f6b9400f06c3424efc",
+      "report_extraction_character_offset": 0,
+      "review_limit": "Read-only source fidelity review; no independent Lean rebuild or cryptographic recomputation claimed."
+    },
+    "grok": {
+      "session_id": "b6a98ca4-8b3f-477c-8b89-b27f2a7617b6",
+      "verdict": "CLEAR",
+      "termination": "end_turn",
+      "run_exit_status": 0,
+      "model_usage_ids": [
+        "grok-4.6-build"
+      ],
+      "raw_sha256": "b49f6a2e1a7e50fd1014bec91e6e25cc2e1951126c2f70268cc08210072569dc",
+      "run_sha256": "09ff8b73f791e930311525718b2fefd33110264917ba0d1b56a02da9c816a19f",
+      "stderr_sha256": "253c71180e32a2d19ec433b765b1055a48b397d505d612871702facd1a865684",
+      "report": "research/pde_ledger_v3/_measurements/S11_lean_invariant_fidelity_grok_v1.md",
+      "report_sha256": "fc3bbedf0287e9c000f3b81ccb2d3d72dd5e452b2aa992c2997b356c144c254f",
+      "report_extraction_character_offset": 1013,
+      "review_limit": "Read-only source fidelity review; no independent Lean rebuild or cryptographic recomputation claimed."
+    }
+  },
+  "unresolved_blockers": [],
+  "stderr_disposition": "Claude stderr empty. Grok stderr contains plugin/hook configuration and /tmp repository-discovery warnings; final exit 0, end_turn and a substantive CLEAR report. No failed review is counted.",
+  "report_extraction": "Exact terminal verdict/report text. Raw JSON, process records and stderr remain unchanged; progress text is excluded from the Grok markdown report.",
+  "review_statistics_correction": "Claude prose says 27 files plus MANIFEST and six negated-claim controls. Manifest/records establish 28 payload files plus MANIFEST, seven concrete false-statement mutants plus two source mutants, and eight positive controls. These prose counts do not alter the verdict or proof.",
+  "closure_complete": true,
+  "completed_utc": "2026-09-16T12:28:25.360854+00:00",
+  "post_review_documentation_changes": {
+    "lean/s11/INVARIANT_FIDELITY.md": {
+      "reviewed_sha256": "e1faaac1eb1bf8ac7d98ea1a9bfd632e0ef581409595b2ebfc14f1fba058bf2e",
+      "current_sha256": "1ac1281f3c808e9bdcad93902d07e14956af504bdb92ffca0bca7824e1447d1e"
+    },
+    "lean/s11/INVARIANT_NEXT.md": {
+      "reviewed_sha256": "e83c0694d88b706d5152bdfd40868ede38ccbad8f2464392ef3ef6cf5d1bed27",
+      "current_sha256": "1914f8530c758a8a3bc1894b4d201639d6bdb38bb0c80afcb08bf61ceebad49f"
+    },
+    "lean/s11/INVARIANT_VERIFICATION.txt": {
+      "reviewed_sha256": "5fb7bfe52bd61c4887dcec78ad18e7e2120825a321f2b2b5917c51c31153cb56",
+      "current_sha256": "f2493faa57d10631c85c14fe5f1a64f08c9a16b6d685f3b227c864031a74e708"
+    },
+    "lean/s11/README.md": {
+      "reviewed_sha256": "716fc66b06204fcba32677bad488e2ba9da7f2ff83b8e85925984ba000e4588a",
+      "current_sha256": "0f3e6808b8612aebffd01b3301afc0b1a19e5f14f13b68da05fd536efec8cbbb"
+    }
+  },
+  "closure_document_sha256": "05913bfdeb024c364f81be3994e89c28bee41f2c310120bd09cf2737bb2d6d2f",
+  "checked_document_links": 48,
+  "post_review_source_changes": "None. Proofs, native sources, instruments and check records retain reviewed hashes.",
+  "preservation": "No S11c calculation/export writes were performed by this closure. The pinned S11c-b/c1/c2 exports were left untouched.",
+  "commit_requested": false,
+  "commit_performed": false
+}

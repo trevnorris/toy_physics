@@ -1,0 +1,73 @@
+{
+  "status": "PASS",
+  "checked_utc": "2026-09-16T04:05:35.536547+00:00",
+  "source_sha256": "dc77f30b3e0b2b72aa13c7531a586e6ef50167949e645d99378de8527e06bfe2",
+  "wolfram_source_sha256": "133bacbcbc2dd192ba64a82b94a1cde6b4359bfdf0748c59584b6a3e90683237",
+  "instrument_sha256": "bcbc64a2e9f020db3713a32246cb3253f61ba30bcc81e8dffbf5e0ddf41894ee",
+  "selected_functions": [
+    "compute_q9",
+    "derivative_placeholders",
+    "matrix_from_rows",
+    "q9_row_to_poly",
+    "q9_vector"
+  ],
+  "coordinate_convention": "row-major real g_1,...,g_4; G_ij = partial_i u_j; no EL quotient",
+  "native_spans": {
+    "SO": {
+      "dimension": 4,
+      "native_basis": "Matrix([[1, 0, 0, 0, 0, 2, 0, 0, 0, 1], [0, 1, -1, 0, 0, 0, 1, 0, -1, 0], [0, 0, 0, 1, 0, -1, 0, 0, 0, 0], [0, 0, 0, 0, 1, -2, 0, 1, 0, 0]])",
+      "basis_polynomials": [
+        "g_1**2 + 2*g_2*g_3 + g_4**2",
+        "g_1*g_2 - g_1*g_3 + g_2*g_4 - g_3*g_4",
+        "g_1*g_4 - g_2*g_3",
+        "g_2**2 - 2*g_2*g_3 + g_3**2"
+      ],
+      "contract_polynomials": [
+        "g_1**2 + 2*g_1*g_4 + g_4**2",
+        "g_2**2 - 2*g_2*g_3 + g_3**2",
+        "g_1**2 - 2*g_1*g_4 + g_2**2 + 2*g_2*g_3 + g_3**2 + g_4**2",
+        "g_1*g_2 - g_1*g_3 + g_2*g_4 - g_3*g_4"
+      ],
+      "stacked_rank": 4,
+      "same_rref": true
+    },
+    "O": {
+      "dimension": 3,
+      "native_basis": "Matrix([[1, 0, 0, 0, 0, 2, 0, 0, 0, 1], [0, 0, 0, 1, 0, -1, 0, 0, 0, 0], [0, 0, 0, 0, 1, -2, 0, 1, 0, 0]])",
+      "basis_polynomials": [
+        "g_1**2 + 2*g_2*g_3 + g_4**2",
+        "g_1*g_4 - g_2*g_3",
+        "g_2**2 - 2*g_2*g_3 + g_3**2"
+      ],
+      "contract_polynomials": [
+        "g_1**2 + 2*g_1*g_4 + g_4**2",
+        "g_2**2 - 2*g_2*g_3 + g_3**2",
+        "g_1**2 - 2*g_1*g_4 + g_2**2 + 2*g_2*g_3 + g_3**2 + g_4**2"
+      ],
+      "stacked_rank": 3,
+      "same_rref": true
+    },
+    "odd": {
+      "dimension": 1,
+      "native_basis": "Matrix([[0, 1, -1, 0, 0, 0, 1, 0, -1, 0]])",
+      "basis_polynomials": [
+        "g_1*g_2 - g_1*g_3 + g_2*g_4 - g_3*g_4"
+      ],
+      "contract_polynomials": [
+        "g_1*g_2 - g_1*g_3 + g_2*g_4 - g_3*g_4"
+      ],
+      "stacked_rank": 1,
+      "same_rref": true
+    }
+  },
+  "orientation_control": {
+    "wrong_counts": [
+      4,
+      3
+    ],
+    "wrong_span_rejected": true,
+    "counterexample_residual": "-144/625"
+  },
+  "wolfram_link": "source inspection: Transpose[actionRows]; no engine execution claimed",
+  "limits": "D2 Q9 V1/V2/V6 spans only. No D3-D5 census, V5/EL classification, production rerun, comparator/export or S11c work."
+}

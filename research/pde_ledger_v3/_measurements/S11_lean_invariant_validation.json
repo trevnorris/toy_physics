@@ -1,0 +1,139 @@
+{
+  "status": "PASS",
+  "validated_utc": "2026-09-16T04:11:32.035244+00:00",
+  "scope": "D2 invariant contract I1\u2013I4 local verification; independent review pending",
+  "proof_source_and_dependency_hashes": {
+    "lean/lake-manifest.json": "91fd5318cdc35e4044d6e059c6ef73d94b955d27adf8a5860b07ec92add9377e",
+    "lean/lakefile.toml": "9a0e082c7c582ed69ea4ae07ea643cec9debf81c744fbaab96fd98c485941b25",
+    "lean/lean-toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+    "lean/s11/S11Invariants/Census.lean": "3205b54bddc3c70606d5882f8661decfb1138c1354528170d7beae59d952f4b1",
+    "lean/s11/S11Invariants/Classification.lean": "c723e3f9407a22765b972ad043ff2abc454f8cfda236e36d002ffce65bab54c2",
+    "lean/s11/S11Invariants/Controls.lean": "8dcd1c9c760160f871f581c01f8e637dc487ad51c10f55458293e37b3e2d7995",
+    "lean/s11/S11Invariants/Quadratic.lean": "01dc76c702453a66a09ea3d11e54ddeee14d667dd61dd2e3a02737e15b5f7196",
+    "lean/s11/S11Invariants/Rotation.lean": "8ab28819adfaeb3f126c5905fa53e37d612afc5fe495baf0aaa2ec7873b7ed76",
+    "lean/s11/S11Invariants.lean": "e2ed5e9ef79fe3785a91b8ad29a35f6019463f1952cd1e6761490930d62f8e8d"
+  },
+  "compiled_module_sha256": {
+    "lean/.lake/build/lib/lean/S11Invariants/Quadratic.olean": "f2d3ec53c652731bca388b9c4e73a4caf390f52bc192761ecab4fbf00c5b5a50",
+    "lean/.lake/build/lib/lean/S11Invariants/Rotation.olean": "9bd5d3b501c3b31069d9d4f05948c9ae67d79951685ec16d37e9e8bbbaca3cc5",
+    "lean/.lake/build/lib/lean/S11Invariants/Classification.olean": "4447a49a63613a07dc05cb14587dc829fbeb4d1e0463a043e400f24d4a98c9a4",
+    "lean/.lake/build/lib/lean/S11Invariants/Census.olean": "734701d4d8bf90b7b348ee5165fbaff1be91fb11c15178f251d4a681086e6faa",
+    "lean/.lake/build/lib/lean/S11Invariants/Controls.olean": "6c5a093e61576a8b562bb81defa6184277a4c41ef13e1b4337ad3072b69b7b31",
+    "lean/.lake/build/lib/lean/S11Invariants.olean": "f22d416037e7bec64925b6c9237796a1c8326baec34f6b5df5e89b80c12c187c"
+  },
+  "validated_check_logs": 23,
+  "axiom_declarations": 46,
+  "allowed_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "mathematical_mutations_rejected": [
+    "coefficient_action_orientation",
+    "odd_pairing_coefficient",
+    "so_dimension_mutant",
+    "o_dimension_mutant",
+    "odd_dimension_mutant",
+    "odd_pairing_is_required_mutant",
+    "odd_pairing_not_O_mutant",
+    "wrong_native_form_mutant",
+    "proper_rotation_domain_mutant"
+  ],
+  "positive_controls_passed": [
+    "so_dimension_positive",
+    "o_dimension_positive",
+    "odd_dimension_positive",
+    "odd_pairing_is_required_positive",
+    "odd_pairing_not_O_positive",
+    "wrong_native_form_positive",
+    "proper_rotation_domain_positive",
+    "admissible_witness_positive"
+  ],
+  "orientation_mutation_note": "Intended algebraic failure is c_i A_ij m_j = c_i m_j A_ji. A secondary unused Matrix.transpose_apply simp-argument linter error is present; it was not the acceptance criterion. The explicit coefficient mismatch, not the linter, establishes rejection.",
+  "package_checkout_pins": [
+    {
+      "name": "Physlib",
+      "commit": "8b2b23701c07409f882c49e0bd290a214e44450c",
+      "tracked_source_clean": true
+    },
+    {
+      "name": "mathlib",
+      "commit": "db584cd6d46c92f209a44c0f1c829460d327499d",
+      "tracked_source_clean": true
+    },
+    {
+      "name": "\u00abdoc-gen4\u00bb",
+      "commit": "aceca4eeb5a79092eabefaa75fcb72b701d02205",
+      "tracked_source_clean": true
+    },
+    {
+      "name": "plausible",
+      "commit": "b7eb3304aeae834b12dda98993a37f6a41f6f0bb",
+      "tracked_source_clean": true
+    },
+    {
+      "name": "LeanSearchClient",
+      "commit": "5f4d51b81cbd3f6b32b156bfad9056621a040404",
+      "tracked_source_clean": true
+    },
+    {
+      "name": "importGraph",
+      "commit": "16f02aa7642864af59f1ff0e384a015994db9118",
+      "tracked_source_clean": true
+    },
+    {
+      "name": "proofwidgets",
+      "commit": "4be2e3d5087eeb272cf5a8853b8f9dd025ef5957",
+      "tracked_source_clean": true
+    },
+    {
+      "name": "aesop",
+      "commit": "3448c0bcc5ce01b2d1546e483ec3620e32df3d0e",
+      "tracked_source_clean": true
+    },
+    {
+      "name": "Qq",
+      "commit": "92c15be17b7caf78c2ad767ec40f89052d908d81",
+      "tracked_source_clean": true
+    },
+    {
+      "name": "batteries",
+      "commit": "4488d40d070b9700d4d5a6aa342f0d40c31b2a2d",
+      "tracked_source_clean": true
+    },
+    {
+      "name": "leansqlite",
+      "commit": "6168b7549738a19bc837a1625c60c5d1e5dd8aeb",
+      "tracked_source_clean": true
+    },
+    {
+      "name": "Cli",
+      "commit": "6130a47896ce867c6a4a55373441e59e565bad0f",
+      "tracked_source_clean": true
+    },
+    {
+      "name": "UnicodeBasic",
+      "commit": "37e7d8cb7316a88cd3e91208385c9ec6ae780019",
+      "tracked_source_clean": true
+    },
+    {
+      "name": "BibtexQuery",
+      "commit": "852edafa268eb038a7158551fd580ee8433847b0",
+      "tracked_source_clean": true
+    },
+    {
+      "name": "MD4Lean",
+      "commit": "31907cc18f48a95384f99cee5582c00fb39e0f67",
+      "tracked_source_clean": true
+    }
+  ],
+  "native_span_check": "PASS, exact D2 SO/O/odd span identities; no engine production rerun",
+  "native_source_sha256": "dc77f30b3e0b2b72aa13c7531a586e6ef50167949e645d99378de8527e06bfe2",
+  "wolfram_source_sha256": "133bacbcbc2dd192ba64a82b94a1cde6b4359bfdf0748c59584b6a3e90683237",
+  "contract_instrument_sha256": "d4d635727bb10dca63fcb085bc8e4fa660897bf17bd38d212d4af5807987bed7",
+  "source_instrument_sha256": "bcbc64a2e9f020db3713a32246cb3253f61ba30bcc81e8dffbf5e0ddf41894ee",
+  "contract_report_sha256": "f49e38b2d807c99e3cf0c7c8dfdadca97243e3ba9917853a4a1c765ade23e583",
+  "source_report_sha256": "c21675eeae3bd33699b2a22572312fdeb808002a3b4fc9a3313af54ebf1ec9dd",
+  "historical_probe_correspondence": "PASS: original source bytes match git checkpoint d80d02d2 and original instrument hash matches",
+  "homogeneous_proof_correspondence": "PASS: all Lean proof files in historical H1\u2013H4 review packet retain their reviewed hashes"
+}

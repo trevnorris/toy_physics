@@ -1,0 +1,67 @@
+Bounded S11 D2 invariant contract I1–I4: local verification
+Status: LOCAL PASS. Both independent fidelity reviews now CLEAR; I1–I4 complete.
+See INVARIANT_FIDELITY_REVIEW.md for the reviewed snapshot and dispositions.
+Validated UTC: 2026-09-16T04:11:32.035244+00:00
+Policy: ../FORMALIZATION_POLICY.md; contract: INVARIANT_NEXT.md
+
+From lean/:
+  python3 ../_measurements/S11_lean_invariant_contract_check.py
+  python3 ../_measurements/S11_lean_invariant_source_check.py
+Run: 2026-09-16T04:05:35.790077+00:00 to 2026-09-16T04:09:32.215562+00:00
+One Lean worker: nice -n 10 lake env lean -j1 -M4096
+  -DwarningAsError=true. The allocator limit is not an OS RSS cap.
+
+Five modules and the audit root passed. All 46 audited theorem dependencies
+use only propext, Classical.choice and Quot.sound; no admissions or custom
+physics axioms. The audit list covers every theorem in the five modules.
+Nine mathematical mutations were rejected; eight explicit positive controls
+passed. Canonical sources remained unchanged during isolated controls.
+
+Mutation adjudication:
+- Wrong coefficient orientation leaves c_i A_ij m_j = c_i m_j A_ji for arbitrary
+  A,c,m. This algebraic failure is the required rejection. A secondary unused
+  Matrix.transpose_apply simp-argument linter error was not the criterion.
+- Deleting the odd-pairing coefficient leaves the missing t*s term in the
+  invariantForm_apply identity. This checks the coefficient/evaluation link.
+  The separate odd_pairing_is_required mutation tests completeness by falsely
+  asserting that the odd pairing lies in the three-form even span.
+- Wrong SO/O/odd dimensions, omission of the odd pairing, making it O-invariant,
+  accepting the wrong native form, and accepting rotation(1,1) as proper each
+  leave False in contract_control. No syntax, timeout, import or resource
+  failure is accepted as mathematical rejection.
+- Positive controls include dimensions 4/3/1, the corresponding exclusion
+  statements, and an explicit admissible proper rotation with the concrete
+  native-polynomial values 1 and 481/625. Canonical source builds also pass for
+  the two isolated source-mutation controls.
+
+All nine local source/dependency-pin hashes agree before/after and with live
+files; all six compiled-module hashes match. All 23 individual check logs and
+source hashes match. The two instrument hashes and native source hashes match.
+All 15 dependency package checkout commits equal the manifest pins and have
+no tracked source changes. Every homogeneous proof in the old H1–H4 packet
+retains its reviewed hash; historical reports are not rewritten.
+
+Compact native check: exact D2 V1/V2/V6 spans match the contract bases, with
+counts 4/3/1. An in-memory wrong-orientation control keeps counts 4/3 but fails
+the span comparison. Wolfram's matching transpose is source inspection only.
+No fresh Wolfram, production audit, D3–D5 census or comparator/export run is
+claimed. The original pre-repair probe source hash matches checkpoint d80d02d2.
+
+Durable records:
+  ../../_measurements/S11_lean_invariant_contract_checks.json
+  SHA256 f49e38b2d807c99e3cf0c7c8dfdadca97243e3ba9917853a4a1c765ade23e583
+  ../../_measurements/S11_lean_invariant_source_checks.json
+  SHA256 c21675eeae3bd33699b2a22572312fdeb808002a3b4fc9a3313af54ebf1ec9dd
+  ../../_measurements/S11_lean_invariant_validation.json
+  SHA256 e6eb03ec06178d5e875be67da3a62ca5b6111f9ac0c860838e864b866dcb5a66
+
+Supervisor job.log is empty and its state is PASS with both exit codes 0.
+Only documentation/packet preparation follows verification; no proof rebuild
+is required. This record does not clear independent fidelity review or S11 as
+a whole. The I1–I4 stopping rule applies once the two reviews are resolved.
+
+Closure validation: both reviewers returned substantive CLEAR verdicts.
+All reviewed source, compiled-module, snapshot/archive/transport and dependency
+hashes match. Only closure documentation changed after review; canonical
+proofs, instruments and terminal check records are unchanged. No rebuild or
+mutation rerun is required for these documentation changes.

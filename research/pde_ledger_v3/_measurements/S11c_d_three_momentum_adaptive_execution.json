@@ -1,5 +1,5 @@
 {
-  "status": "VALIDATED_PUBLICATION_PREPARED",
+  "status": "PUBLISHED_ANNEX_VERIFIED",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-three-adaptive-20260916",
   "checker": "S11c_d_three_momentum_adaptive.py",
   "preflight": "S11c_d_three_momentum_adaptive_preflight.py",
@@ -236,5 +236,13 @@
     "stderrBytes": 0,
     "finishedUtc": "2026-09-16T04:28:20.494164+00:00"
   },
-  "acceptedCheckpoint": "S11c_d_three_momentum_adaptive_checkpoint.json"
+  "acceptedCheckpoint": "S11c_d_three_momentum_adaptive_checkpoint.json",
+  "annexVerification": {
+    "publicationCommit": "44e3f8934605643a8f0576dec134ba037a106294",
+    "sha256": "7247f932018e700746c7ebda0dd09826c492c7255bb29735584fe7b7ed57b1dc",
+    "annexKey": "MD5E-s1184850--6281779c0ce73b1000b290addbe9c3bb.out",
+    "symlink": "../../../../.git/annex/objects/PM/vv/MD5E-s1184850--6281779c0ce73b1000b290addbe9c3bb.out/MD5E-s1184850--6281779c0ce73b1000b290addbe9c3bb.out",
+    "gitIndex": "120000 8f2cb051bb9f621a9b45fd70b6da7f2acfafa36c 0\tresearch/pde_ledger_v3/scripts/out/S11c_d_three_momentum_adaptive.out",
+    "bytes": 1184850
+  }
 }

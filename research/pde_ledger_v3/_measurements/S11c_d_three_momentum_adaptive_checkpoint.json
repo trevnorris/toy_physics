@@ -36184,7 +36184,7 @@
   "scope": "Independent adaptive outer quadrature only; accepted inner/source/profile rules held. No uniform or independent-grade convergence, physical tails/interchange, Abel limits, scattering or poles.",
   "wallSeconds": 7927.7953869681805,
   "coordinatorPeakRssKiB": 198764,
-  "status": "VALIDATED_PUBLICATION_PREPARED",
+  "status": "PUBLISHED_ANNEX_VERIFIED",
   "acceptedUtc": "2026-09-16T04:33:57.180101+00:00",
   "verificationInvocation": {
     "stage": "adaptive_construct",
@@ -36269,5 +36269,13 @@
     "fullConditionalUnitAndSourceJoins": true,
     "allCurrentFrozenArtifactHashesVerified": true,
     "checksStdoutIdentity": true
+  },
+  "annexVerification": {
+    "publicationCommit": "44e3f8934605643a8f0576dec134ba037a106294",
+    "sha256": "7247f932018e700746c7ebda0dd09826c492c7255bb29735584fe7b7ed57b1dc",
+    "annexKey": "MD5E-s1184850--6281779c0ce73b1000b290addbe9c3bb.out",
+    "symlink": "../../../../.git/annex/objects/PM/vv/MD5E-s1184850--6281779c0ce73b1000b290addbe9c3bb.out/MD5E-s1184850--6281779c0ce73b1000b290addbe9c3bb.out",
+    "gitIndex": "120000 8f2cb051bb9f621a9b45fd70b6da7f2acfafa36c 0\tresearch/pde_ledger_v3/scripts/out/S11c_d_three_momentum_adaptive.out",
+    "bytes": 1184850
   }
 }

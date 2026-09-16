@@ -21,10 +21,12 @@ packet hashes pass. Replay covers 3,906 tags, 1,951 fresh keys and 20,678 metada
 paths. Peak worker/coordinator RSS is 134.8/194.1 MiB; workspace budgets are
 separate. The native engine and accepted constructor/emitter remain unchanged.
 
-The 1,184,850-byte transcript is prepared for DataLad/git-annex publication at
+The 1,184,850-byte transcript is published and annex-verified at
 `scripts/out/S11c_d_three_momentum_adaptive.out`, SHA256
 `7247f932018e700746c7ebda0dd09826c492c7255bb29735584fe7b7ed57b1dc`.
 Preflight was accepted at 19cfa05c; its coarse smoke was an instrument check.
 Next: source/profile domain and tail tests, followed by momentum-domain and
 Abel checks as supported by the evidence. Scattering and poles remain work.
 Preserve all saved operands, approved inputs and the retained solver contract.
+
+Publication commit: `44e3f8934605643a8f0576dec134ba037a106294`. Full payload, annex key, symlink and Git mode 120000 are verified.

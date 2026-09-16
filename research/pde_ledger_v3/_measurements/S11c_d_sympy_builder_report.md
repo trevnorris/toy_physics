@@ -133,7 +133,7 @@ Independent adaptive outer production is validated in 2h12m. All ten rows
 and both fields agree with Gauss-144 within 1.74e-16 in raw integrals; complete
 actions round equal. All 420 conditional points, 6,764 partials, 67 sources and
 20,678 metadata paths pass with unchanged packets and held single/pair terms.
-The 1.18 MB transcript is prepared for annex publication. Next are finite-domain
+The 1.18 MB transcript is published and annex-verified. Next are finite-domain
 and tail checks. Inner/source/profile rules were held, so independent outer
 agreement does not establish uniform/grade coverage, tails or Abel limits.
 

@@ -31,3 +31,8 @@ leanOptions = { warningAsError = true }
 name = "S10Audit"
 srcDir = "s10"
 leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "S11Homogeneous"
+srcDir = "s11"
+leanOptions = { warningAsError = true }

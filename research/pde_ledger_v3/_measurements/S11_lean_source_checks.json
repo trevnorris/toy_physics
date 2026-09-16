@@ -1,0 +1,204 @@
+{
+  "status": "PASS",
+  "scope": "H1 compact D3 MAIN action/operator correspondence",
+  "limits": "Original selected SymPy code executed; Wolfram source inspection only. References are handwritten; hashes do not certify translation or future edits. No invariant census, full audit, export/comparator or S11c calculation executed.",
+  "sympy_version": "1.14.0",
+  "checks": [
+    {
+      "name": "native_MAIN_action",
+      "expected_zero": true,
+      "observed_zero": true,
+      "residual": "[0]"
+    },
+    {
+      "name": "native_A_is_negative_Lean_operator",
+      "expected_zero": true,
+      "observed_zero": true,
+      "residual": "[0, 0, 0, 0, 0, 0, 0, 0, 0]"
+    },
+    {
+      "name": "native_B_is_half_Lean_operator",
+      "expected_zero": true,
+      "observed_zero": true,
+      "residual": "[0, 0, 0, 0, 0, 0, 0, 0, 0]"
+    },
+    {
+      "name": "native_phase_average_normalization",
+      "expected_zero": true,
+      "observed_zero": true,
+      "residual": "[0]"
+    },
+    {
+      "name": "native_B_determinant",
+      "expected_zero": true,
+      "observed_zero": true,
+      "residual": "[0]"
+    },
+    {
+      "name": "reversed_compression_sign_detected_in_action",
+      "expected_zero": false,
+      "observed_zero": false,
+      "residual": "[B_comp*(G_1_1 + G_2_2 + G_3_3)**2]"
+    },
+    {
+      "name": "reversed_compression_sign_detected_in_operator",
+      "expected_zero": false,
+      "observed_zero": false,
+      "residual": "[-2*B_comp*k1**2, -2*B_comp*k1*k2, -2*B_comp*k1*k3, -2*B_comp*k1*k2, -2*B_comp*k2**2, -2*B_comp*k2*k3, -2*B_comp*k1*k3, -2*B_comp*k2*k3, -2*B_comp*k3**2]"
+    },
+    {
+      "name": "missing_phase_half_detected",
+      "expected_zero": false,
+      "observed_zero": false,
+      "residual": "[(B_comp*k1**2 + k2**2*mu_R + k3**2*mu_R - omegaSquared*rho_br)/2, k1*k2*(B_comp - mu_R)/2, k1*k3*(B_comp - mu_R)/2, k1*k2*(B_comp - mu_R)/2, (B_comp*k2**2 + k1**2*mu_R + k3**2*mu_R - omegaSquared*rho_br)/2, k2*k3*(B_comp - mu_R)/2, k1*k3*(B_comp - mu_R)/2, k2*k3*(B_comp - mu_R)/2, (B_comp*k3**2 + k1**2*mu_R + k2**2*mu_R - omegaSquared*rho_br)/2]"
+    }
+  ],
+  "native_symbol_bindings": {
+    "rho_br": "Symbol('rho_br', positive=True)",
+    "mu_R": "Symbol('mu_R', positive=True)",
+    "B_comp": "Symbol('B_comp', positive=True)",
+    "omegaSquared": "Symbol('omegaSquared', real=True)"
+  },
+  "selected_original_source_ranges": [
+    [
+      32,
+      32
+    ],
+    [
+      42,
+      42
+    ],
+    [
+      65,
+      69
+    ],
+    [
+      72,
+      73
+    ],
+    [
+      77,
+      77
+    ],
+    [
+      78,
+      78
+    ],
+    [
+      79,
+      79
+    ],
+    [
+      80,
+      80
+    ],
+    [
+      81,
+      81
+    ],
+    [
+      82,
+      82
+    ],
+    [
+      83,
+      83
+    ],
+    [
+      84,
+      84
+    ],
+    [
+      86,
+      90
+    ],
+    [
+      98,
+      98
+    ],
+    [
+      99,
+      99
+    ],
+    [
+      101,
+      101
+    ],
+    [
+      102,
+      102
+    ],
+    [
+      103,
+      103
+    ],
+    [
+      151,
+      158
+    ],
+    [
+      162,
+      166
+    ],
+    [
+      316,
+      321
+    ],
+    [
+      331,
+      340
+    ],
+    [
+      381,
+      395
+    ],
+    [
+      398,
+      404
+    ],
+    [
+      407,
+      418
+    ],
+    [
+      421,
+      426
+    ],
+    [
+      429,
+      475
+    ]
+  ],
+  "selected_upstream_scalar_ranges": [
+    [
+      27,
+      27
+    ],
+    [
+      35,
+      35
+    ],
+    [
+      1146,
+      1146
+    ]
+  ],
+  "unused_PD_sentinel_absent_from_MAIN": true,
+  "route_A_stripped_phase": "cos(phase)",
+  "wolfram_literal_anchors": [
+    "\"MAIN\" | \"XKIN_ANISO\", {{muR/2, \"curl\"}, {bComp/2, \"div\"}}",
+    "divDensity[gradient_] := Tr[gradient]^2;",
+    "{<|\"Factor\" -> rhoBr/2, \"DensityJet\" -> Total[velocityJet^2]|>}",
+    "lagrangianJet = Total[kineticTermsJet] - Total[stiffnessTermsJet];",
+    "D[D[lagrangianJet, velocityJet[[component]]] /. jetRules,",
+    "Integrate[Expand[planeLagrangian], {phaseVariable, 0, 2 Pi}]/(2 Pi)",
+    "D[averagedLagrangian, amplitudes[[row]], amplitudes[[column]]]"
+  ],
+  "source_sha256": {
+    "scripts/S11_stray_longitudinal_sympy_audit.py": "352fc502f6e191afa512a2dec513685a48c9b32bc8b4e63ca84c5af9be629db4",
+    "mathematica/S11_stray_longitudinal_mathematica_audit.wl": "133bacbcbc2dd192ba64a82b94a1cde6b4359bfdf0748c59584b6a3e90683237",
+    "scripts/S10_exports.py": "bc8de16bae05dcf6caa71d82184f5aa95e2a9d6fd157fdbb674b88f185ed34c9",
+    "lean/../_measurements/S11_lean_source_check.py": "71e1d6157908b39b2219994a925c7c5d4b069f1fbe28e0d0c51950052c27ce87",
+    "lean/s11/S11Homogeneous/Action.lean": "73a8cbfbe7770cd0d17262728f9887d2038260fc965d2abc34944b8af20aeb4b"
+  }
+}

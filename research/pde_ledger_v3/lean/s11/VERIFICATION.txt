@@ -1,0 +1,41 @@
+Bounded homogeneous S11 H1-H4: local verification evidence
+Validated UTC: 2026-09-16T02:44:17.960510+00:00
+Contract: COVERAGE.md; policy: ../FORMALIZATION_POLICY.md
+Status: LOCAL PASS. Two independent fidelity reviews remain pending.
+
+Verification command (from lean/):
+  python3 ../_measurements/S11_lean_contract_check.py
+Run: 2026-09-16T02:31:25.526352+00:00 to 2026-09-16T02:37:17.586835+00:00
+One process at a time: nice -n 10 lake env lean -j1 -M4096
+  -DwarningAsError=true. The allocator limit is not an OS RSS cap.
+
+Three module builds and the audit root passed. All 29 audited declarations use
+only propext, Classical.choice and Quot.sound. There are no admissions or
+custom physics axioms in these audited theorem dependencies.
+All 15 mathematical mutants were rejected: two isolated source changes and
+13 concrete false statements. All 13 explicit positive counterparts passed;
+the canonical Action build also passes for both source-mutation controls.
+Diagnostics were inspected: source mutants leave the false identities described
+in FIDELITY.md; concrete mutants leave False in contract_control. Import,
+syntax, resource or instrument failure is not accepted as mutation evidence.
+Canonical sources were not modified by isolated mutation checks.
+
+All 18 before/after transitive local source/dependency-pin hashes match each
+other and the live files. Built S11 output-module hashes also match the record.
+The instrument hash and every saved control-source/output hash were validated.
+Full commands, exact sources, diagnostics and individual hashes:
+  ../../_measurements/S11_lean_contract_checks.json
+  SHA256 b808425fd7f8f8167d9585a746dc2b07f067a9d77858ec44315e7cf2c75abfb7
+Instrument SHA256 203f3d9c5450438ce041e781df95c55adaba0dd92eeb2dc26ee94b05b936d658
+
+Compact native source check: PASS, with all five identity residuals zero and
+all three deliberate discrepancy residuals nonzero. All recorded source hashes
+match live files. Selected original SymPy MAIN code was executed; Wolfram is
+source inspection only. Q11 is separately inspected as described in FIDELITY.md.
+  ../../_measurements/S11_lean_source_checks.json
+  SHA256 b0e6cb8f5e9ff14240ec5a7084cd578354d76679de9718587b015bbf6359097e
+
+Supervisor log: ../../_scratch/S11_lean_homogeneous/verification_run1/job.log
+The log is empty; the completed result and watcher indicate normal completion.
+Only documentation was changed after this verification; no rebuild was needed.
+This evidence does not close independent fidelity review or the whole S11 step.

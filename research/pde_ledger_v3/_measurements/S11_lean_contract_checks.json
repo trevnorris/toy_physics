@@ -1,0 +1,964 @@
+{
+  "status": "PASS",
+  "started_utc": "2026-09-16T02:31:25.526352+00:00",
+  "instrument_sha256": "203f3d9c5450438ce041e781df95c55adaba0dd92eeb2dc26ee94b05b936d658",
+  "source_sha256_before": {
+    "lean/lake-manifest.json": "91fd5318cdc35e4044d6e059c6ef73d94b955d27adf8a5860b07ec92add9377e",
+    "lean/lakefile.toml": "8c7d874927089ecb287e8cbd91c8fab6c2b116a26883030eb82e7a97b19a0291",
+    "lean/lean-toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+    "lean/s10/S10Controls/Action.lean": "e1764df0b26a46d6822ec4a72cca42e5d4f9df06686a1b649c86fd13af9f6566",
+    "lean/s10/S10Controls/Analytic.lean": "bac51e35f46740653dbcea68724deecf23f9fdb8991c696f54007287b57afab5",
+    "lean/s10/S10Controls/PhaseAverage.lean": "ff2863169741814592ec0947da8941976d6ebf2d676e07300e0c0b48905034ba",
+    "lean/s10/S10Controls/PlaneWave.lean": "14149fe870ddadc3aa547a49706748990d1eed9f74e428423f9c81e3a745863e",
+    "lean/s10/S10Controls/Variation.lean": "0141297128ec34c925d11ffe13b2e08203282b4d1ada4d388b23b2d689db7c0e",
+    "lean/s10/S10Pilot/Action.lean": "a7466f2c23a123f244615217d27d5048a625bddfaad5ce2a6f0456a8704f435c",
+    "lean/s10/S10Pilot/Analytic.lean": "f8a6fe854a7ed775a7ecf65fdf8589db2b865139a811daf1e4e27c34bac8811d",
+    "lean/s10/S10Pilot/PhaseAverage.lean": "2007235232001290ac87d25e8922e4a3b615583272ef39034b2aedc83dee4429",
+    "lean/s10/S10Pilot/PlaneWave.lean": "d64ad2d70169976f42cacb3ece650776780a17fe640d1efee4aa7677e53c85cb",
+    "lean/s10/S10Pilot/Spectrum.lean": "2bd131d15cebac4a233a1304da4461dc2da3cab2e9142155ffcc842649459e83",
+    "lean/s10/S10Pilot/Variation.lean": "f4678338fb72fe859c627cbc5da3ccb90e9f38b7a5d774705219f880cdcc871d",
+    "lean/s11/S11Homogeneous/Action.lean": "73a8cbfbe7770cd0d17262728f9887d2038260fc965d2abc34944b8af20aeb4b",
+    "lean/s11/S11Homogeneous/Spectrum.lean": "1d686dd225e2ef6106354c4c6682389d858f5c4b2241b19e027d44eaa893b8ea",
+    "lean/s11/S11Homogeneous/Threshold.lean": "b96c40a78c85b2fed1644ecc0367ce1cb2f5f6b4c82673fa196768cd0346aa45",
+    "lean/s11/S11Homogeneous.lean": "884fa4594f640982ecbc229d60b668651604715ebe62fcff9a0afb3aeee41428"
+  },
+  "checks": [
+    {
+      "name": "build_Action",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "-o",
+        "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S11Homogeneous/Action.olean",
+        "s11/S11Homogeneous/Action.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 16.172,
+      "source_sha256": "73a8cbfbe7770cd0d17262728f9887d2038260fc965d2abc34944b8af20aeb4b",
+      "required_failure_in": null,
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "olean_sha256": "1d75ed6bc81eef456cfce6c31a7bd35c753159e90d22453881660b462396111e"
+    },
+    {
+      "name": "build_Spectrum",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "-o",
+        "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S11Homogeneous/Spectrum.olean",
+        "s11/S11Homogeneous/Spectrum.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 15.014,
+      "source_sha256": "1d686dd225e2ef6106354c4c6682389d858f5c4b2241b19e027d44eaa893b8ea",
+      "required_failure_in": null,
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "olean_sha256": "1517fbd8940d36e4116105c228038234f58a838b3b766248bc65c01540751860"
+    },
+    {
+      "name": "build_Threshold",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "-o",
+        "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S11Homogeneous/Threshold.olean",
+        "s11/S11Homogeneous/Threshold.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 16.569,
+      "source_sha256": "b96c40a78c85b2fed1644ecc0367ce1cb2f5f6b4c82673fa196768cd0346aa45",
+      "required_failure_in": null,
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "olean_sha256": "15bd9bce4a53465425e802a846052f275518f025d854465eb1132daf96222e2e"
+    },
+    {
+      "name": "axiom_audit",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "-o",
+        "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S11Homogeneous.olean",
+        "s11/S11Homogeneous.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 10.558,
+      "source_sha256": "884fa4594f640982ecbc229d60b668651604715ebe62fcff9a0afb3aeee41428",
+      "required_failure_in": null,
+      "diagnostics": [],
+      "output": "'S11Homogeneous.lagrangian_split' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11Homogeneous.lagrangian_variation' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11Homogeneous.modalOperator_split' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11Homogeneous.modalAction_variation' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11Homogeneous.phaseDensity_eq' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11Homogeneous.phaseAverage_eq' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11Homogeneous.modal_stationary_iff' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11Homogeneous.relativeAction_split' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11Homogeneous.relativeAction_deriv_eq_eulerLagrange' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11Homogeneous.actionStationary_iff_eulerLagrange' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11Homogeneous.eulerLagrange_planeWave' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11Homogeneous.actionStationary_planeWave_iff' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11Homogeneous.zero_compression_action' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11Homogeneous.zero_compression_operator' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11Homogeneous.coefficient_zero_iff' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11Homogeneous.transverse_operator' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11Homogeneous.longitudinal_operator' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11Homogeneous.frequency_coincidence_iff' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11Homogeneous.transverse_kernel_iff' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11Homogeneous.longitudinal_kernel_iff' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11Homogeneous.off_roots_iff' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11Homogeneous.coincidence_space' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11Homogeneous.modeSpace_classification' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11Homogeneous.kernel_census_three' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11Homogeneous.positive_frequencies' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11Homogeneous.zero_compression_stationarity' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11Homogeneous.zero_wavevector_iff' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11Homogeneous.phase_matching' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11Homogeneous.threshold_classification' depends on axioms: [propext, Classical.choice, Quot.sound]\n",
+      "output_sha256": "9bda9364e06cb0b0e7f7570f02288467a1f28318074ec9ab09ee9429b1f3736e",
+      "olean_sha256": "cdc5b443813d907bebaa60940bbe1fe9da2165d0da3ce01616015fcfef366990"
+    },
+    {
+      "name": "compression_action_sign",
+      "expected": "REJECTED",
+      "outcome": "REJECTED",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/verification/compression_action_sign.lean"
+      ],
+      "exit_status": 1,
+      "wall_seconds": 15.224,
+      "source_sha256": "ca8cb356a817bd4bbac9185ca256402f82059f1cfee87dbef9b54e14721f873c",
+      "required_failure_in": "lagrangian_split",
+      "diagnostics": [
+        {
+          "declaration": "lagrangian_split",
+          "line": 21,
+          "message": "s11/_scratch/verification/compression_action_sign.lean:21:54: error: unsolved goals\nD : ℕ\nrho mu B : ℝ\nJ : Jet D\n⊢ B * S10Controls.divergenceOnlyStiffness J * (1 / 2) = B * S10Controls.divergenceOnlyStiffness J * (-1 / 2)\n"
+        }
+      ],
+      "output": "Try this:\n  [apply] ring_nf\n  \n  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.\n    \n  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.\ns11/_scratch/verification/compression_action_sign.lean:21:54: error: unsolved goals\nD : ℕ\nrho mu B : ℝ\nJ : Jet D\n⊢ B * S10Controls.divergenceOnlyStiffness J * (1 / 2) = B * S10Controls.divergenceOnlyStiffness J * (-1 / 2)\n",
+      "output_sha256": "289600c6341140f8ad484e1012d0eba46820a5c7efe6e5aba3b3df05cf75abeb",
+      "source": "import S10Pilot.Variation\nimport S10Controls.Variation\nimport S10Pilot.PhaseAverage\nimport S10Controls.PhaseAverage\n\n/-! The supplied homogeneous action, combined from the existing curl and\ndivergence densities. The compression summand has zero inertia: kinetic energy\nis counted once. Integrated variation is reused, not assumed. -/\n\nnamespace S11Homogeneous\nopen S10Pilot MeasureTheory\nnoncomputable section\nvariable {D : ℕ}\n\ndef lagrangian (rho mu B : ℝ) (J : Jet D) : ℝ :=\n  rho / 2 * normSq (J 0) - mu / 2 * stiffness J +\n    B / 2 * S10Controls.divergenceOnlyStiffness J\n\ntheorem lagrangian_split (rho mu B : ℝ) (J : Jet D) :\n    lagrangian rho mu B J = S10Pilot.lagrangian rho mu J +\n      S10Controls.lagrangian .divergenceOnly 0 B J := by\n  simp [lagrangian, S10Pilot.lagrangian, S10Controls.lagrangian, S10Controls.stiffness]\n  ring\n\ntheorem lagrangian_variation (rho mu B : ℝ) (J H : Jet D) :\n    HasDerivAt (fun s : ℝ => lagrangian rho mu B (J + s • H))\n      (S10Pilot.variationDensity rho mu J H +\n        S10Controls.variationDensity .divergenceOnly 0 B J H) 0 := by\n  simp_rw [lagrangian_split]\n  exact (S10Pilot.lagrangian_variation rho mu J H).add\n    (S10Controls.lagrangian_variation .divergenceOnly 0 B J H)\n\ndef modalOperator (rho mu B omega : ℝ) (k a : Vec D) : Vec D :=\n  (rho * omega ^ 2 - mu * normSq k) • a + ((mu - B) * dot k a) • k\n\ntheorem modalOperator_split (rho mu B omega : ℝ) (k a : Vec D) :\n    modalOperator rho mu B omega k a = S10Pilot.modalOperator rho mu omega k a +\n      S10Controls.modalOperator .divergenceOnly 0 B omega k a := by\n  ext i\n  simp [modalOperator, S10Pilot.modalOperator, S10Controls.modalOperator]\n  ring\n\ndef modalAction (rho mu B omega : ℝ) (k a : Vec D) : ℝ :=\n  lagrangian rho mu B (modeJet omega k a)\n\ntheorem modalAction_variation (rho mu B omega : ℝ) (k a b : Vec D) :\n    HasDerivAt (fun s : ℝ => modalAction rho mu B omega k (a + s • b))\n      (dot (modalOperator rho mu B omega k a) b) 0 := by\n  simp only [modalAction, lagrangian_split, modalOperator_split, dot_add_left]\n  exact (S10Pilot.modalAction_variation rho mu omega k a b).add\n    (S10Controls.modalAction_variation .divergenceOnly 0 B omega k a b)\n\ntheorem phaseDensity_eq (rho mu B omega : ℝ) (k a : Vec D) (phi : ℝ) :\n    lagrangian rho mu B ((-Real.sin phi) • modeJet (-omega) k a) =\n      Real.sin phi ^ 2 * modalAction rho mu B omega k a := by\n  rw [lagrangian_split]\n  change S10Pilot.phaseDensity rho mu omega k a phi +\n    S10Controls.phaseDensity .divergenceOnly 0 B omega k a phi = _\n  rw [S10Pilot.phaseDensity_eq, S10Controls.phaseDensity_eq]\n  simp only [modalAction, lagrangian_split, S10Pilot.modalAction, S10Controls.modalAction]\n  ring\n\ndef phaseAverage (rho mu B omega : ℝ) (k a : Vec D) : ℝ :=\n  (1 / (2 * Real.pi)) * ∫ phi in (0 : ℝ)..(2 * Real.pi),\n    lagrangian rho mu B ((-Real.sin phi) • modeJet (-omega) k a)\n\ntheorem phaseAverage_eq (rho mu B omega : ℝ) (k a : Vec D) :\n    phaseAverage rho mu B omega k a = (1 / 2 : ℝ) * modalAction rho mu B omega k a := by\n  unfold phaseAverage\n  simp_rw [phaseDensity_eq]\n  rw [intervalIntegral.integral_mul_const, integral_sin_sq]\n  simp only [Real.sin_zero, zero_mul, Real.sin_two_pi, sub_zero, zero_add]\n  field_simp\n\ndef ModalStationary (rho mu B omega : ℝ) (k a : Vec D) : Prop :=\n  ∀ b : Vec D, deriv (fun s : ℝ => modalAction rho mu B omega k (a + s • b)) 0 = 0\n\ntheorem modal_stationary_iff (rho mu B omega : ℝ) (k a : Vec D) :\n    ModalStationary rho mu B omega k a ↔ modalOperator rho mu B omega k a = 0 := by\n  constructor\n  · intro h\n    have hs := h (modalOperator rho mu B omega k a)\n    rw [(modalAction_variation _ _ _ _ _ _ _).deriv] at hs\n    by_contra hn\n    exact (ne_of_gt (dot_self_pos hn)) hs\n  · intro h b\n    rw [(modalAction_variation _ _ _ _ _ _ _).deriv, h, zero_dot]\n\ndef relativeAction (rho mu B : ℝ) (u h : Point D → Vec D) (s : ℝ) : ℝ :=\n  ∫ x, lagrangian rho mu B (fieldJet (u + s • h) x) - lagrangian rho mu B (fieldJet u x)\n\ntheorem relativeAction_split {u h : Point D → Vec D} (hu : SmoothField u)\n    (hh : TestField h) (rho mu B s : ℝ) :\n    relativeAction rho mu B u h s = S10Pilot.relativeAction rho mu u h s +\n      S10Controls.relativeAction .divergenceOnly 0 B u h s := by\n  unfold relativeAction S10Pilot.relativeAction S10Controls.relativeAction\n  simp_rw [lagrangian_split]\n  have rearrange : ∀ x : Point D,\n      (S10Pilot.lagrangian rho mu (fieldJet (u + s • h) x) +\n        S10Controls.lagrangian .divergenceOnly 0 B (fieldJet (u + s • h) x)) -\n      (S10Pilot.lagrangian rho mu (fieldJet u x) +\n        S10Controls.lagrangian .divergenceOnly 0 B (fieldJet u x)) =\n      (S10Pilot.lagrangian rho mu (fieldJet (u + s • h) x) -\n        S10Pilot.lagrangian rho mu (fieldJet u x)) +\n      (S10Controls.lagrangian .divergenceOnly 0 B (fieldJet (u + s • h) x) -\n        S10Controls.lagrangian .divergenceOnly 0 B (fieldJet u x)) := by\n    intro x\n    ring\n  simp_rw [rearrange]\n  exact integral_add (S10Pilot.relative_density_integrable hu hh rho mu s)\n    (S10Controls.relative_density_integrable .divergenceOnly hu hh 0 B s)\n\n/-- Sum of two already action-derived local Euler–Lagrange expressions. -/\ndef eulerLagrange (rho mu B : ℝ) (u : Point D → Vec D) (x : Point D) : Vec D :=\n  S10Pilot.eulerLagrange rho mu u x + S10Controls.eulerLagrange .divergenceOnly 0 B u x\n\ntheorem relativeAction_deriv_eq_eulerLagrange {u h : Point D → Vec D}\n    (hu : SmoothField u) (hh : TestField h) (rho mu B : ℝ) :\n    deriv (relativeAction rho mu B u h) 0 =\n      ∫ x, ∑ i : Fin D, eulerLagrange rho mu B u x i * h x i := by\n  have heq : relativeAction rho mu B u h =\n      S10Pilot.relativeAction rho mu u h +\n        S10Controls.relativeAction .divergenceOnly 0 B u h :=\n    funext (relativeAction_split hu hh rho mu B)\n  rw [heq, ((S10Pilot.relativeAction_hasDerivAt hu hh rho mu).add\n    (S10Controls.relativeAction_hasDerivAt .divergenceOnly hu hh 0 B)).deriv]\n  rw [S10Pilot.integrated_variation_by_parts hu hh,\n    S10Controls.integrated_variation_by_parts .divergenceOnly hu hh]\n  have hi₁ : Integrable (fun x => ∑ i : Fin D, S10Pilot.eulerLagrange rho mu u x i * h x i) :=\n    integrable_finsetSum _ (fun i _ => integrable_mul_compact\n      (S10Pilot.smooth_eulerLagrange hu rho mu i).continuous (hh.1 i).continuous (hh.2 i))\n  have hi₂ : Integrable (fun x => ∑ i : Fin D,\n      S10Controls.eulerLagrange .divergenceOnly 0 B u x i * h x i) :=\n    integrable_finsetSum _ (fun i _ => integrable_mul_compact\n      (S10Controls.smooth_eulerLagrange .divergenceOnly hu 0 B i).continuous\n      (hh.1 i).continuous (hh.2 i))\n  rw [← integral_add hi₁ hi₂]\n  congr 1\n  funext x\n  simp [eulerLagrange, add_mul, Finset.sum_add_distrib]\n\ndef ActionStationary (rho mu B : ℝ) (u : Point D → Vec D) : Prop :=\n  ∀ h : Point D → Vec D, TestField h → deriv (relativeAction rho mu B u h) 0 = 0\n\ntheorem actionStationary_iff_eulerLagrange {u : Point D → Vec D}\n    (hu : SmoothField u) (rho mu B : ℝ) :\n    ActionStationary rho mu B u ↔ ∀ x, eulerLagrange rho mu B u x = 0 := by\n  have hc : ∀ i, Continuous (fun x => eulerLagrange rho mu B u x i) := fun i =>\n    (S10Pilot.smooth_eulerLagrange hu rho mu i).continuous.add\n      (S10Controls.smooth_eulerLagrange .divergenceOnly hu 0 B i).continuous\n  constructor\n  · intro hs\n    have hz : ∀ i : Fin D, (fun x => eulerLagrange rho mu B u x i) = fun _ => 0 := by\n      intro i\n      have hae := ae_eq_zero_of_integral_contDiff_smul_eq_zero\n        (μ := volume) (hc i).locallyIntegrable (fun f hf hcompact => ?_)\n      · exact MeasureTheory.Measure.eq_of_ae_eq hae (hc i) continuous_const\n      · have hh := single_testField hf hcompact i\n        have h := hs (fun x => Pi.single i (f x)) hh\n        rw [relativeAction_deriv_eq_eulerLagrange hu hh] at h\n        simpa [Pi.single_apply, mul_comm] using h\n    intro x\n    ext i\n    exact congrFun (hz i) x\n  · intro he h hh\n    rw [relativeAction_deriv_eq_eulerLagrange hu hh]\n    simp [he]\n\ntheorem eulerLagrange_planeWave (rho mu B omega : ℝ) (k a : Vec D) (x : Point D) :\n    eulerLagrange rho mu B (planeWave omega k a) x =\n      Real.cos (phase (waveCovector omega k) x) • modalOperator rho mu B omega k a := by\n  rw [eulerLagrange, S10Pilot.eulerLagrange_planeWave,\n    S10Controls.eulerLagrange_planeWave, modalOperator_split, smul_add]\n\ntheorem actionStationary_planeWave_iff (rho mu B omega : ℝ) (k a : Vec D) :\n    ActionStationary rho mu B (planeWave omega k a) ↔ ModalStationary rho mu B omega k a := by\n  rw [actionStationary_iff_eulerLagrange (smooth_planeWave omega k a), modal_stationary_iff]\n  constructor\n  · intro h\n    simpa [eulerLagrange_planeWave, phase, dot] using h 0\n  · intro h x\n    simp [eulerLagrange_planeWave, h]\n\ntheorem zero_compression_action (rho mu : ℝ) (J : Jet D) :\n    lagrangian rho mu 0 J = S10Pilot.lagrangian rho mu J := by\n  simp [lagrangian, S10Pilot.lagrangian]\n\ntheorem zero_compression_operator (rho mu omega : ℝ) (k a : Vec D) :\n    modalOperator rho mu 0 omega k a = S10Pilot.modalOperator rho mu omega k a := by\n  simp [modalOperator, S10Pilot.modalOperator_eq]\n\nend\nend S11Homogeneous\n",
+      "canonical_source": "lean/s11/S11Homogeneous/Action.lean",
+      "replacement": {
+        "old": "mu / 2 * stiffness J -\n    B / 2",
+        "new": "mu / 2 * stiffness J +\n    B / 2"
+      }
+    },
+    {
+      "name": "phase_average_half",
+      "expected": "REJECTED",
+      "outcome": "REJECTED",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/verification/phase_average_half.lean"
+      ],
+      "exit_status": 1,
+      "wall_seconds": 14.975,
+      "source_sha256": "04e3df179b05f671d722134150db6bea28eb97c0ee47a03c714fc2a3e3e8a2b1",
+      "required_failure_in": "phaseAverage_eq",
+      "diagnostics": [
+        {
+          "declaration": "phaseAverage_eq",
+          "line": 68,
+          "message": "s11/_scratch/verification/phase_average_half.lean:68:82: error: unsolved goals\nD : ℕ\nrho mu B omega : ℝ\nk a : Vec D\n⊢ modalAction rho mu B omega k a = 2 * modalAction rho mu B omega k a\n"
+        }
+      ],
+      "output": "s11/_scratch/verification/phase_average_half.lean:68:82: error: unsolved goals\nD : ℕ\nrho mu B omega : ℝ\nk a : Vec D\n⊢ modalAction rho mu B omega k a = 2 * modalAction rho mu B omega k a\n",
+      "output_sha256": "745dfd05164ab491fb3c212abf7c86470de67e4e0c09ba411ea9f0d23da9933d",
+      "source": "import S10Pilot.Variation\nimport S10Controls.Variation\nimport S10Pilot.PhaseAverage\nimport S10Controls.PhaseAverage\n\n/-! The supplied homogeneous action, combined from the existing curl and\ndivergence densities. The compression summand has zero inertia: kinetic energy\nis counted once. Integrated variation is reused, not assumed. -/\n\nnamespace S11Homogeneous\nopen S10Pilot MeasureTheory\nnoncomputable section\nvariable {D : ℕ}\n\ndef lagrangian (rho mu B : ℝ) (J : Jet D) : ℝ :=\n  rho / 2 * normSq (J 0) - mu / 2 * stiffness J -\n    B / 2 * S10Controls.divergenceOnlyStiffness J\n\ntheorem lagrangian_split (rho mu B : ℝ) (J : Jet D) :\n    lagrangian rho mu B J = S10Pilot.lagrangian rho mu J +\n      S10Controls.lagrangian .divergenceOnly 0 B J := by\n  simp [lagrangian, S10Pilot.lagrangian, S10Controls.lagrangian, S10Controls.stiffness]\n  ring\n\ntheorem lagrangian_variation (rho mu B : ℝ) (J H : Jet D) :\n    HasDerivAt (fun s : ℝ => lagrangian rho mu B (J + s • H))\n      (S10Pilot.variationDensity rho mu J H +\n        S10Controls.variationDensity .divergenceOnly 0 B J H) 0 := by\n  simp_rw [lagrangian_split]\n  exact (S10Pilot.lagrangian_variation rho mu J H).add\n    (S10Controls.lagrangian_variation .divergenceOnly 0 B J H)\n\ndef modalOperator (rho mu B omega : ℝ) (k a : Vec D) : Vec D :=\n  (rho * omega ^ 2 - mu * normSq k) • a + ((mu - B) * dot k a) • k\n\ntheorem modalOperator_split (rho mu B omega : ℝ) (k a : Vec D) :\n    modalOperator rho mu B omega k a = S10Pilot.modalOperator rho mu omega k a +\n      S10Controls.modalOperator .divergenceOnly 0 B omega k a := by\n  ext i\n  simp [modalOperator, S10Pilot.modalOperator, S10Controls.modalOperator]\n  ring\n\ndef modalAction (rho mu B omega : ℝ) (k a : Vec D) : ℝ :=\n  lagrangian rho mu B (modeJet omega k a)\n\ntheorem modalAction_variation (rho mu B omega : ℝ) (k a b : Vec D) :\n    HasDerivAt (fun s : ℝ => modalAction rho mu B omega k (a + s • b))\n      (dot (modalOperator rho mu B omega k a) b) 0 := by\n  simp only [modalAction, lagrangian_split, modalOperator_split, dot_add_left]\n  exact (S10Pilot.modalAction_variation rho mu omega k a b).add\n    (S10Controls.modalAction_variation .divergenceOnly 0 B omega k a b)\n\ntheorem phaseDensity_eq (rho mu B omega : ℝ) (k a : Vec D) (phi : ℝ) :\n    lagrangian rho mu B ((-Real.sin phi) • modeJet (-omega) k a) =\n      Real.sin phi ^ 2 * modalAction rho mu B omega k a := by\n  rw [lagrangian_split]\n  change S10Pilot.phaseDensity rho mu omega k a phi +\n    S10Controls.phaseDensity .divergenceOnly 0 B omega k a phi = _\n  rw [S10Pilot.phaseDensity_eq, S10Controls.phaseDensity_eq]\n  simp only [modalAction, lagrangian_split, S10Pilot.modalAction, S10Controls.modalAction]\n  ring\n\ndef phaseAverage (rho mu B omega : ℝ) (k a : Vec D) : ℝ :=\n  (1 / (2 * Real.pi)) * ∫ phi in (0 : ℝ)..(2 * Real.pi),\n    lagrangian rho mu B ((-Real.sin phi) • modeJet (-omega) k a)\n\ntheorem phaseAverage_eq (rho mu B omega : ℝ) (k a : Vec D) :\n    phaseAverage rho mu B omega k a = (1 : ℝ) * modalAction rho mu B omega k a := by\n  unfold phaseAverage\n  simp_rw [phaseDensity_eq]\n  rw [intervalIntegral.integral_mul_const, integral_sin_sq]\n  simp only [Real.sin_zero, zero_mul, Real.sin_two_pi, sub_zero, zero_add]\n  field_simp\n\ndef ModalStationary (rho mu B omega : ℝ) (k a : Vec D) : Prop :=\n  ∀ b : Vec D, deriv (fun s : ℝ => modalAction rho mu B omega k (a + s • b)) 0 = 0\n\ntheorem modal_stationary_iff (rho mu B omega : ℝ) (k a : Vec D) :\n    ModalStationary rho mu B omega k a ↔ modalOperator rho mu B omega k a = 0 := by\n  constructor\n  · intro h\n    have hs := h (modalOperator rho mu B omega k a)\n    rw [(modalAction_variation _ _ _ _ _ _ _).deriv] at hs\n    by_contra hn\n    exact (ne_of_gt (dot_self_pos hn)) hs\n  · intro h b\n    rw [(modalAction_variation _ _ _ _ _ _ _).deriv, h, zero_dot]\n\ndef relativeAction (rho mu B : ℝ) (u h : Point D → Vec D) (s : ℝ) : ℝ :=\n  ∫ x, lagrangian rho mu B (fieldJet (u + s • h) x) - lagrangian rho mu B (fieldJet u x)\n\ntheorem relativeAction_split {u h : Point D → Vec D} (hu : SmoothField u)\n    (hh : TestField h) (rho mu B s : ℝ) :\n    relativeAction rho mu B u h s = S10Pilot.relativeAction rho mu u h s +\n      S10Controls.relativeAction .divergenceOnly 0 B u h s := by\n  unfold relativeAction S10Pilot.relativeAction S10Controls.relativeAction\n  simp_rw [lagrangian_split]\n  have rearrange : ∀ x : Point D,\n      (S10Pilot.lagrangian rho mu (fieldJet (u + s • h) x) +\n        S10Controls.lagrangian .divergenceOnly 0 B (fieldJet (u + s • h) x)) -\n      (S10Pilot.lagrangian rho mu (fieldJet u x) +\n        S10Controls.lagrangian .divergenceOnly 0 B (fieldJet u x)) =\n      (S10Pilot.lagrangian rho mu (fieldJet (u + s • h) x) -\n        S10Pilot.lagrangian rho mu (fieldJet u x)) +\n      (S10Controls.lagrangian .divergenceOnly 0 B (fieldJet (u + s • h) x) -\n        S10Controls.lagrangian .divergenceOnly 0 B (fieldJet u x)) := by\n    intro x\n    ring\n  simp_rw [rearrange]\n  exact integral_add (S10Pilot.relative_density_integrable hu hh rho mu s)\n    (S10Controls.relative_density_integrable .divergenceOnly hu hh 0 B s)\n\n/-- Sum of two already action-derived local Euler–Lagrange expressions. -/\ndef eulerLagrange (rho mu B : ℝ) (u : Point D → Vec D) (x : Point D) : Vec D :=\n  S10Pilot.eulerLagrange rho mu u x + S10Controls.eulerLagrange .divergenceOnly 0 B u x\n\ntheorem relativeAction_deriv_eq_eulerLagrange {u h : Point D → Vec D}\n    (hu : SmoothField u) (hh : TestField h) (rho mu B : ℝ) :\n    deriv (relativeAction rho mu B u h) 0 =\n      ∫ x, ∑ i : Fin D, eulerLagrange rho mu B u x i * h x i := by\n  have heq : relativeAction rho mu B u h =\n      S10Pilot.relativeAction rho mu u h +\n        S10Controls.relativeAction .divergenceOnly 0 B u h :=\n    funext (relativeAction_split hu hh rho mu B)\n  rw [heq, ((S10Pilot.relativeAction_hasDerivAt hu hh rho mu).add\n    (S10Controls.relativeAction_hasDerivAt .divergenceOnly hu hh 0 B)).deriv]\n  rw [S10Pilot.integrated_variation_by_parts hu hh,\n    S10Controls.integrated_variation_by_parts .divergenceOnly hu hh]\n  have hi₁ : Integrable (fun x => ∑ i : Fin D, S10Pilot.eulerLagrange rho mu u x i * h x i) :=\n    integrable_finsetSum _ (fun i _ => integrable_mul_compact\n      (S10Pilot.smooth_eulerLagrange hu rho mu i).continuous (hh.1 i).continuous (hh.2 i))\n  have hi₂ : Integrable (fun x => ∑ i : Fin D,\n      S10Controls.eulerLagrange .divergenceOnly 0 B u x i * h x i) :=\n    integrable_finsetSum _ (fun i _ => integrable_mul_compact\n      (S10Controls.smooth_eulerLagrange .divergenceOnly hu 0 B i).continuous\n      (hh.1 i).continuous (hh.2 i))\n  rw [← integral_add hi₁ hi₂]\n  congr 1\n  funext x\n  simp [eulerLagrange, add_mul, Finset.sum_add_distrib]\n\ndef ActionStationary (rho mu B : ℝ) (u : Point D → Vec D) : Prop :=\n  ∀ h : Point D → Vec D, TestField h → deriv (relativeAction rho mu B u h) 0 = 0\n\ntheorem actionStationary_iff_eulerLagrange {u : Point D → Vec D}\n    (hu : SmoothField u) (rho mu B : ℝ) :\n    ActionStationary rho mu B u ↔ ∀ x, eulerLagrange rho mu B u x = 0 := by\n  have hc : ∀ i, Continuous (fun x => eulerLagrange rho mu B u x i) := fun i =>\n    (S10Pilot.smooth_eulerLagrange hu rho mu i).continuous.add\n      (S10Controls.smooth_eulerLagrange .divergenceOnly hu 0 B i).continuous\n  constructor\n  · intro hs\n    have hz : ∀ i : Fin D, (fun x => eulerLagrange rho mu B u x i) = fun _ => 0 := by\n      intro i\n      have hae := ae_eq_zero_of_integral_contDiff_smul_eq_zero\n        (μ := volume) (hc i).locallyIntegrable (fun f hf hcompact => ?_)\n      · exact MeasureTheory.Measure.eq_of_ae_eq hae (hc i) continuous_const\n      · have hh := single_testField hf hcompact i\n        have h := hs (fun x => Pi.single i (f x)) hh\n        rw [relativeAction_deriv_eq_eulerLagrange hu hh] at h\n        simpa [Pi.single_apply, mul_comm] using h\n    intro x\n    ext i\n    exact congrFun (hz i) x\n  · intro he h hh\n    rw [relativeAction_deriv_eq_eulerLagrange hu hh]\n    simp [he]\n\ntheorem eulerLagrange_planeWave (rho mu B omega : ℝ) (k a : Vec D) (x : Point D) :\n    eulerLagrange rho mu B (planeWave omega k a) x =\n      Real.cos (phase (waveCovector omega k) x) • modalOperator rho mu B omega k a := by\n  rw [eulerLagrange, S10Pilot.eulerLagrange_planeWave,\n    S10Controls.eulerLagrange_planeWave, modalOperator_split, smul_add]\n\ntheorem actionStationary_planeWave_iff (rho mu B omega : ℝ) (k a : Vec D) :\n    ActionStationary rho mu B (planeWave omega k a) ↔ ModalStationary rho mu B omega k a := by\n  rw [actionStationary_iff_eulerLagrange (smooth_planeWave omega k a), modal_stationary_iff]\n  constructor\n  · intro h\n    simpa [eulerLagrange_planeWave, phase, dot] using h 0\n  · intro h x\n    simp [eulerLagrange_planeWave, h]\n\ntheorem zero_compression_action (rho mu : ℝ) (J : Jet D) :\n    lagrangian rho mu 0 J = S10Pilot.lagrangian rho mu J := by\n  simp [lagrangian, S10Pilot.lagrangian]\n\ntheorem zero_compression_operator (rho mu omega : ℝ) (k a : Vec D) :\n    modalOperator rho mu 0 omega k a = S10Pilot.modalOperator rho mu omega k a := by\n  simp [modalOperator, S10Pilot.modalOperator_eq]\n\nend\nend S11Homogeneous\n",
+      "canonical_source": "lean/s11/S11Homogeneous/Action.lean",
+      "replacement": {
+        "old": "phaseAverage rho mu B omega k a = (1 / 2 : ℝ) * modalAction",
+        "new": "phaseAverage rho mu B omega k a = (1 : ℝ) * modalAction"
+      }
+    },
+    {
+      "name": "transverse_count_positive",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/verification/transverse_count_positive.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 10.388,
+      "source_sha256": "dbfd6b2e1bfb56bcaf3c30103a55569ca7d2f45fab5110cc25e1a0811477f743",
+      "required_failure_in": "contract_control",
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "import S11Homogeneous.Threshold\nopen S10Pilot S11Homogeneous\nnoncomputable section\nabbrev k3 : Vec 3 := ![0, 0, 1]\nabbrev e1 : Vec 3 := ![1, 0, 0]\nabbrev e3 : Vec 3 := ![0, 0, 1]\ntheorem k3_ne : k3 ≠ 0 := by\n  intro h\n  have h2 := congrFun h 2\n  norm_num [k3, Matrix.cons_val_two] at h2\ntheorem contract_control :\n    Module.finrank ℝ (S11Homogeneous.modeSpace 1 1 4 1 k3) = 2 := by\n  rw [kernel_census_three (by norm_num) k3_ne]\n  norm_num [coneValue, normSq, dot, k3, Fin.sum_univ_succ]\n"
+    },
+    {
+      "name": "transverse_count_mutant",
+      "expected": "REJECTED",
+      "outcome": "REJECTED",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/verification/transverse_count_mutant.lean"
+      ],
+      "exit_status": 1,
+      "wall_seconds": 10.841,
+      "source_sha256": "b227d07d3cfd404519f2fc58065fb092cf8682531b3a0c4b63eb373f7f710e3c",
+      "required_failure_in": "contract_control",
+      "diagnostics": [
+        {
+          "declaration": "contract_control",
+          "line": 12,
+          "message": "s11/_scratch/verification/transverse_count_mutant.lean:12:66: error: unsolved goals\n⊢ False\n"
+        }
+      ],
+      "output": "s11/_scratch/verification/transverse_count_mutant.lean:12:66: error: unsolved goals\n⊢ False\n",
+      "output_sha256": "e5b272c3a50001ebd4dec59d905ca526f9cfd0fdd9d4c9e88ad5c4f7414f1816",
+      "source": "import S11Homogeneous.Threshold\nopen S10Pilot S11Homogeneous\nnoncomputable section\nabbrev k3 : Vec 3 := ![0, 0, 1]\nabbrev e1 : Vec 3 := ![1, 0, 0]\nabbrev e3 : Vec 3 := ![0, 0, 1]\ntheorem k3_ne : k3 ≠ 0 := by\n  intro h\n  have h2 := congrFun h 2\n  norm_num [k3, Matrix.cons_val_two] at h2\ntheorem contract_control :\n    Module.finrank ℝ (S11Homogeneous.modeSpace 1 1 4 1 k3) = 3 := by\n  rw [kernel_census_three (by norm_num) k3_ne]\n  norm_num [coneValue, normSq, dot, k3, Fin.sum_univ_succ]\n"
+    },
+    {
+      "name": "longitudinal_count_positive",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/verification/longitudinal_count_positive.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 10.992,
+      "source_sha256": "abfbf2053772a1ff74be970dac4eff9fb2181ecffec9c3a2a1d176c407b963c7",
+      "required_failure_in": "contract_control",
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "import S11Homogeneous.Threshold\nopen S10Pilot S11Homogeneous\nnoncomputable section\nabbrev k3 : Vec 3 := ![0, 0, 1]\nabbrev e1 : Vec 3 := ![1, 0, 0]\nabbrev e3 : Vec 3 := ![0, 0, 1]\ntheorem k3_ne : k3 ≠ 0 := by\n  intro h\n  have h2 := congrFun h 2\n  norm_num [k3, Matrix.cons_val_two] at h2\ntheorem contract_control :\n    Module.finrank ℝ (S11Homogeneous.modeSpace 1 1 4 2 k3) = 1 := by\n  rw [kernel_census_three (by norm_num) k3_ne]\n  norm_num [coneValue, normSq, dot, k3, Fin.sum_univ_succ]\n"
+    },
+    {
+      "name": "longitudinal_count_mutant",
+      "expected": "REJECTED",
+      "outcome": "REJECTED",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/verification/longitudinal_count_mutant.lean"
+      ],
+      "exit_status": 1,
+      "wall_seconds": 10.24,
+      "source_sha256": "c40c3e36049a7534be99a8707ff0e5acef22b75ea1890e89c3c584e53f05c0e9",
+      "required_failure_in": "contract_control",
+      "diagnostics": [
+        {
+          "declaration": "contract_control",
+          "line": 12,
+          "message": "s11/_scratch/verification/longitudinal_count_mutant.lean:12:66: error: unsolved goals\n⊢ False\n"
+        }
+      ],
+      "output": "s11/_scratch/verification/longitudinal_count_mutant.lean:12:66: error: unsolved goals\n⊢ False\n",
+      "output_sha256": "651d2c65c2729a33530d9d220438c54b7c6ff61df6fac728d664a7522e7a6a46",
+      "source": "import S11Homogeneous.Threshold\nopen S10Pilot S11Homogeneous\nnoncomputable section\nabbrev k3 : Vec 3 := ![0, 0, 1]\nabbrev e1 : Vec 3 := ![1, 0, 0]\nabbrev e3 : Vec 3 := ![0, 0, 1]\ntheorem k3_ne : k3 ≠ 0 := by\n  intro h\n  have h2 := congrFun h 2\n  norm_num [k3, Matrix.cons_val_two] at h2\ntheorem contract_control :\n    Module.finrank ℝ (S11Homogeneous.modeSpace 1 1 4 2 k3) = 2 := by\n  rw [kernel_census_three (by norm_num) k3_ne]\n  norm_num [coneValue, normSq, dot, k3, Fin.sum_univ_succ]\n"
+    },
+    {
+      "name": "coincidence_count_positive",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/verification/coincidence_count_positive.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 9.885,
+      "source_sha256": "8d81a5bab2593d27b73ab2997f4e513c2aa2e7e85d225dc3021032525fd67039",
+      "required_failure_in": "contract_control",
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "import S11Homogeneous.Threshold\nopen S10Pilot S11Homogeneous\nnoncomputable section\nabbrev k3 : Vec 3 := ![0, 0, 1]\nabbrev e1 : Vec 3 := ![1, 0, 0]\nabbrev e3 : Vec 3 := ![0, 0, 1]\ntheorem k3_ne : k3 ≠ 0 := by\n  intro h\n  have h2 := congrFun h 2\n  norm_num [k3, Matrix.cons_val_two] at h2\ntheorem contract_control :\n    Module.finrank ℝ (S11Homogeneous.modeSpace 1 1 1 1 k3) = 3 := by\n  rw [kernel_census_three (by norm_num) k3_ne]\n  norm_num [coneValue, normSq, dot, k3, Fin.sum_univ_succ]\n"
+    },
+    {
+      "name": "coincidence_count_mutant",
+      "expected": "REJECTED",
+      "outcome": "REJECTED",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/verification/coincidence_count_mutant.lean"
+      ],
+      "exit_status": 1,
+      "wall_seconds": 10.085,
+      "source_sha256": "87d0340c140adba7a5ff9193f5b8957b0eca37e2c0810696214399379c91ee9d",
+      "required_failure_in": "contract_control",
+      "diagnostics": [
+        {
+          "declaration": "contract_control",
+          "line": 12,
+          "message": "s11/_scratch/verification/coincidence_count_mutant.lean:12:66: error: unsolved goals\n⊢ False\n"
+        }
+      ],
+      "output": "s11/_scratch/verification/coincidence_count_mutant.lean:12:66: error: unsolved goals\n⊢ False\n",
+      "output_sha256": "0b91a589c4705c62a4f34dfe6c99e88770e2fb0b82260b9f2eeba17dc7d7ec9f",
+      "source": "import S11Homogeneous.Threshold\nopen S10Pilot S11Homogeneous\nnoncomputable section\nabbrev k3 : Vec 3 := ![0, 0, 1]\nabbrev e1 : Vec 3 := ![1, 0, 0]\nabbrev e3 : Vec 3 := ![0, 0, 1]\ntheorem k3_ne : k3 ≠ 0 := by\n  intro h\n  have h2 := congrFun h 2\n  norm_num [k3, Matrix.cons_val_two] at h2\ntheorem contract_control :\n    Module.finrank ℝ (S11Homogeneous.modeSpace 1 1 1 1 k3) = 2 := by\n  rw [kernel_census_three (by norm_num) k3_ne]\n  norm_num [coneValue, normSq, dot, k3, Fin.sum_univ_succ]\n"
+    },
+    {
+      "name": "transverse_independent_of_compression_positive",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/verification/transverse_independent_of_compression_positive.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 9.938,
+      "source_sha256": "41a4031f8d4a56da13955a0e47b39b39b576c6158b87af172749b0dd46ad07b1",
+      "required_failure_in": "contract_control",
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "import S11Homogeneous.Threshold\nopen S10Pilot S11Homogeneous\nnoncomputable section\nabbrev k3 : Vec 3 := ![0, 0, 1]\nabbrev e1 : Vec 3 := ![1, 0, 0]\nabbrev e3 : Vec 3 := ![0, 0, 1]\ntheorem k3_ne : k3 ≠ 0 := by\n  intro h\n  have h2 := congrFun h 2\n  norm_num [k3, Matrix.cons_val_two] at h2\ntheorem contract_control :  S11Homogeneous.ModalStationary 1 1 9 1 k3 e1 := by\n  norm_num [S11Homogeneous.modal_stationary_iff, S11Homogeneous.modalOperator,\n    normSq, dot, k3, e1, e3, Fin.sum_univ_succ, funext_iff, Fin.forall_fin_succ]\n"
+    },
+    {
+      "name": "transverse_independent_of_compression_mutant",
+      "expected": "REJECTED",
+      "outcome": "REJECTED",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/verification/transverse_independent_of_compression_mutant.lean"
+      ],
+      "exit_status": 1,
+      "wall_seconds": 9.936,
+      "source_sha256": "d329b89898074045a02ff5531af5fb34416322c5f2a70af0763c870898f471db",
+      "required_failure_in": "contract_control",
+      "diagnostics": [
+        {
+          "declaration": "contract_control",
+          "line": 11,
+          "message": "s11/_scratch/verification/transverse_independent_of_compression_mutant.lean:11:77: error: unsolved goals\n⊢ False\n"
+        }
+      ],
+      "output": "s11/_scratch/verification/transverse_independent_of_compression_mutant.lean:11:77: error: unsolved goals\n⊢ False\n",
+      "output_sha256": "f69d92bcb515836d29309f8ac36de913e5f8f5e73ec2153549eea4e8eba8880e",
+      "source": "import S11Homogeneous.Threshold\nopen S10Pilot S11Homogeneous\nnoncomputable section\nabbrev k3 : Vec 3 := ![0, 0, 1]\nabbrev e1 : Vec 3 := ![1, 0, 0]\nabbrev e3 : Vec 3 := ![0, 0, 1]\ntheorem k3_ne : k3 ≠ 0 := by\n  intro h\n  have h2 := congrFun h 2\n  norm_num [k3, Matrix.cons_val_two] at h2\ntheorem contract_control : ¬ S11Homogeneous.ModalStationary 1 1 9 1 k3 e1 := by\n  norm_num [S11Homogeneous.modal_stationary_iff, S11Homogeneous.modalOperator,\n    normSq, dot, k3, e1, e3, Fin.sum_univ_succ, funext_iff, Fin.forall_fin_succ]\n"
+    },
+    {
+      "name": "longitudinal_root_is_not_shear_root_positive",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/verification/longitudinal_root_is_not_shear_root_positive.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 10.29,
+      "source_sha256": "7ac06da9ee0a5034eca6f87ad1e7e1a5590bcfdd99066756bc52e049e462b711",
+      "required_failure_in": "contract_control",
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "import S11Homogeneous.Threshold\nopen S10Pilot S11Homogeneous\nnoncomputable section\nabbrev k3 : Vec 3 := ![0, 0, 1]\nabbrev e1 : Vec 3 := ![1, 0, 0]\nabbrev e3 : Vec 3 := ![0, 0, 1]\ntheorem k3_ne : k3 ≠ 0 := by\n  intro h\n  have h2 := congrFun h 2\n  norm_num [k3, Matrix.cons_val_two] at h2\ntheorem contract_control : ¬ S11Homogeneous.ModalStationary 1 1 4 1 k3 e3 := by\n  norm_num [S11Homogeneous.modal_stationary_iff, S11Homogeneous.modalOperator,\n    normSq, dot, k3, e1, e3, Fin.sum_univ_succ, funext_iff, Fin.forall_fin_succ]\n"
+    },
+    {
+      "name": "longitudinal_root_is_not_shear_root_mutant",
+      "expected": "REJECTED",
+      "outcome": "REJECTED",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/verification/longitudinal_root_is_not_shear_root_mutant.lean"
+      ],
+      "exit_status": 1,
+      "wall_seconds": 9.89,
+      "source_sha256": "b428846d361dc08ccafebaed0bc12115c96abffcb00657a903ee191380e2c16e",
+      "required_failure_in": "contract_control",
+      "diagnostics": [
+        {
+          "declaration": "contract_control",
+          "line": 11,
+          "message": "s11/_scratch/verification/longitudinal_root_is_not_shear_root_mutant.lean:11:76: error: unsolved goals\n⊢ False\n"
+        }
+      ],
+      "output": "s11/_scratch/verification/longitudinal_root_is_not_shear_root_mutant.lean:11:76: error: unsolved goals\n⊢ False\n",
+      "output_sha256": "ed92302c0b55ea721742529fe3a7e9cb1dfc7122d079ce5c6aba5985d9ec3918",
+      "source": "import S11Homogeneous.Threshold\nopen S10Pilot S11Homogeneous\nnoncomputable section\nabbrev k3 : Vec 3 := ![0, 0, 1]\nabbrev e1 : Vec 3 := ![1, 0, 0]\nabbrev e3 : Vec 3 := ![0, 0, 1]\ntheorem k3_ne : k3 ≠ 0 := by\n  intro h\n  have h2 := congrFun h 2\n  norm_num [k3, Matrix.cons_val_two] at h2\ntheorem contract_control :  S11Homogeneous.ModalStationary 1 1 4 1 k3 e3 := by\n  norm_num [S11Homogeneous.modal_stationary_iff, S11Homogeneous.modalOperator,\n    normSq, dot, k3, e1, e3, Fin.sum_univ_succ, funext_iff, Fin.forall_fin_succ]\n"
+    },
+    {
+      "name": "off_roots_excluded_positive",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/verification/off_roots_excluded_positive.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 9.937,
+      "source_sha256": "1e952832348e9444d184fe874d4c49b464d275aee5c318944e18bf971ffc2341",
+      "required_failure_in": "contract_control",
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "import S11Homogeneous.Threshold\nopen S10Pilot S11Homogeneous\nnoncomputable section\nabbrev k3 : Vec 3 := ![0, 0, 1]\nabbrev e1 : Vec 3 := ![1, 0, 0]\nabbrev e3 : Vec 3 := ![0, 0, 1]\ntheorem k3_ne : k3 ≠ 0 := by\n  intro h\n  have h2 := congrFun h 2\n  norm_num [k3, Matrix.cons_val_two] at h2\ntheorem contract_control : ¬ S11Homogeneous.ModalStationary 1 1 4 3 k3 e1 := by\n  norm_num [S11Homogeneous.modal_stationary_iff, S11Homogeneous.modalOperator,\n    normSq, dot, k3, e1, e3, Fin.sum_univ_succ, funext_iff, Fin.forall_fin_succ]\n"
+    },
+    {
+      "name": "off_roots_excluded_mutant",
+      "expected": "REJECTED",
+      "outcome": "REJECTED",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/verification/off_roots_excluded_mutant.lean"
+      ],
+      "exit_status": 1,
+      "wall_seconds": 10.642,
+      "source_sha256": "5f1de4840e267446151857e3e0c48522a8e72bdf9c8660a3c974019e7ef8ad83",
+      "required_failure_in": "contract_control",
+      "diagnostics": [
+        {
+          "declaration": "contract_control",
+          "line": 11,
+          "message": "s11/_scratch/verification/off_roots_excluded_mutant.lean:11:76: error: unsolved goals\n⊢ False\n"
+        }
+      ],
+      "output": "s11/_scratch/verification/off_roots_excluded_mutant.lean:11:76: error: unsolved goals\n⊢ False\n",
+      "output_sha256": "7824c910fa4a62d88fc0e18044578886a72d22bd8e65fca07546b3123fe4d26c",
+      "source": "import S11Homogeneous.Threshold\nopen S10Pilot S11Homogeneous\nnoncomputable section\nabbrev k3 : Vec 3 := ![0, 0, 1]\nabbrev e1 : Vec 3 := ![1, 0, 0]\nabbrev e3 : Vec 3 := ![0, 0, 1]\ntheorem k3_ne : k3 ≠ 0 := by\n  intro h\n  have h2 := congrFun h 2\n  norm_num [k3, Matrix.cons_val_two] at h2\ntheorem contract_control :  S11Homogeneous.ModalStationary 1 1 4 3 k3 e1 := by\n  norm_num [S11Homogeneous.modal_stationary_iff, S11Homogeneous.modalOperator,\n    normSq, dot, k3, e1, e3, Fin.sum_univ_succ, funext_iff, Fin.forall_fin_succ]\n"
+    },
+    {
+      "name": "zero_compression_static_mode_positive",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/verification/zero_compression_static_mode_positive.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 9.985,
+      "source_sha256": "9a39962fdd1e1c18f402b1f90ad3def135e00b59c2a236fc641b37978d755da3",
+      "required_failure_in": "contract_control",
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "import S11Homogeneous.Threshold\nopen S10Pilot S11Homogeneous\nnoncomputable section\nabbrev k3 : Vec 3 := ![0, 0, 1]\nabbrev e1 : Vec 3 := ![1, 0, 0]\nabbrev e3 : Vec 3 := ![0, 0, 1]\ntheorem k3_ne : k3 ≠ 0 := by\n  intro h\n  have h2 := congrFun h 2\n  norm_num [k3, Matrix.cons_val_two] at h2\ntheorem contract_control :  S11Homogeneous.ModalStationary 1 1 0 0 k3 e3 := by\n  norm_num [S11Homogeneous.modal_stationary_iff, S11Homogeneous.modalOperator,\n    normSq, dot, k3, e1, e3, Fin.sum_univ_succ, funext_iff, Fin.forall_fin_succ]\n"
+    },
+    {
+      "name": "zero_compression_static_mode_mutant",
+      "expected": "REJECTED",
+      "outcome": "REJECTED",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/verification/zero_compression_static_mode_mutant.lean"
+      ],
+      "exit_status": 1,
+      "wall_seconds": 10.036,
+      "source_sha256": "702288553b3d82b008983a9e0c481849d3e68e456396be5ce09318f8ede8d0a0",
+      "required_failure_in": "contract_control",
+      "diagnostics": [
+        {
+          "declaration": "contract_control",
+          "line": 11,
+          "message": "s11/_scratch/verification/zero_compression_static_mode_mutant.lean:11:77: error: unsolved goals\n⊢ False\n"
+        }
+      ],
+      "output": "s11/_scratch/verification/zero_compression_static_mode_mutant.lean:11:77: error: unsolved goals\n⊢ False\n",
+      "output_sha256": "cad5e45b93b940e25ed7873fb4c5fd8fa225e1258a68e8bd153212bb6892d931",
+      "source": "import S11Homogeneous.Threshold\nopen S10Pilot S11Homogeneous\nnoncomputable section\nabbrev k3 : Vec 3 := ![0, 0, 1]\nabbrev e1 : Vec 3 := ![1, 0, 0]\nabbrev e3 : Vec 3 := ![0, 0, 1]\ntheorem k3_ne : k3 ≠ 0 := by\n  intro h\n  have h2 := congrFun h 2\n  norm_num [k3, Matrix.cons_val_two] at h2\ntheorem contract_control : ¬ S11Homogeneous.ModalStationary 1 1 0 0 k3 e3 := by\n  norm_num [S11Homogeneous.modal_stationary_iff, S11Homogeneous.modalOperator,\n    normSq, dot, k3, e1, e3, Fin.sum_univ_succ, funext_iff, Fin.forall_fin_succ]\n"
+    },
+    {
+      "name": "zero_wavevector_static_mode_positive",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/verification/zero_wavevector_static_mode_positive.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 10.339,
+      "source_sha256": "09c8ace71336bc116cdf8375995ce4d00c4f24eeaddebd872ae3b6ecc1c9a8d3",
+      "required_failure_in": "contract_control",
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "import S11Homogeneous.Threshold\nopen S10Pilot S11Homogeneous\nnoncomputable section\nabbrev k3 : Vec 3 := ![0, 0, 1]\nabbrev e1 : Vec 3 := ![1, 0, 0]\nabbrev e3 : Vec 3 := ![0, 0, 1]\ntheorem k3_ne : k3 ≠ 0 := by\n  intro h\n  have h2 := congrFun h 2\n  norm_num [k3, Matrix.cons_val_two] at h2\ntheorem contract_control :  S11Homogeneous.ModalStationary 1 1 4 0 0 e1 := by\n  norm_num [S11Homogeneous.modal_stationary_iff, S11Homogeneous.modalOperator,\n    normSq, dot, k3, e1, e3, Fin.sum_univ_succ, funext_iff, Fin.forall_fin_succ]\n"
+    },
+    {
+      "name": "zero_wavevector_static_mode_mutant",
+      "expected": "REJECTED",
+      "outcome": "REJECTED",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/verification/zero_wavevector_static_mode_mutant.lean"
+      ],
+      "exit_status": 1,
+      "wall_seconds": 9.735,
+      "source_sha256": "c64b6fa242261370d7ab3a79b2f966ed2f15d5d4ffd8742d461693f903107ad4",
+      "required_failure_in": "contract_control",
+      "diagnostics": [
+        {
+          "declaration": "contract_control",
+          "line": 11,
+          "message": "s11/_scratch/verification/zero_wavevector_static_mode_mutant.lean:11:76: error: unsolved goals\n⊢ False\n"
+        }
+      ],
+      "output": "s11/_scratch/verification/zero_wavevector_static_mode_mutant.lean:11:76: error: unsolved goals\n⊢ False\n",
+      "output_sha256": "9645076e8087380060f0b7c34dd509957f6d73a4a5911298272c948271dd8bee",
+      "source": "import S11Homogeneous.Threshold\nopen S10Pilot S11Homogeneous\nnoncomputable section\nabbrev k3 : Vec 3 := ![0, 0, 1]\nabbrev e1 : Vec 3 := ![1, 0, 0]\nabbrev e3 : Vec 3 := ![0, 0, 1]\ntheorem k3_ne : k3 ≠ 0 := by\n  intro h\n  have h2 := congrFun h 2\n  norm_num [k3, Matrix.cons_val_two] at h2\ntheorem contract_control : ¬ S11Homogeneous.ModalStationary 1 1 4 0 0 e1 := by\n  norm_num [S11Homogeneous.modal_stationary_iff, S11Homogeneous.modalOperator,\n    normSq, dot, k3, e1, e3, Fin.sum_univ_succ, funext_iff, Fin.forall_fin_succ]\n"
+    },
+    {
+      "name": "zero_wavevector_no_dynamic_mode_positive",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/verification/zero_wavevector_no_dynamic_mode_positive.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 9.934,
+      "source_sha256": "5b96979a5f84b0fa9d48d50b58d83cbdf31951d9c1ebae7d188b791b2071cc48",
+      "required_failure_in": "contract_control",
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "import S11Homogeneous.Threshold\nopen S10Pilot S11Homogeneous\nnoncomputable section\nabbrev k3 : Vec 3 := ![0, 0, 1]\nabbrev e1 : Vec 3 := ![1, 0, 0]\nabbrev e3 : Vec 3 := ![0, 0, 1]\ntheorem k3_ne : k3 ≠ 0 := by\n  intro h\n  have h2 := congrFun h 2\n  norm_num [k3, Matrix.cons_val_two] at h2\ntheorem contract_control : ¬ S11Homogeneous.ModalStationary 1 1 4 1 0 e1 := by\n  norm_num [S11Homogeneous.modal_stationary_iff, S11Homogeneous.modalOperator,\n    normSq, dot, k3, e1, e3, Fin.sum_univ_succ, funext_iff, Fin.forall_fin_succ]\n"
+    },
+    {
+      "name": "zero_wavevector_no_dynamic_mode_mutant",
+      "expected": "REJECTED",
+      "outcome": "REJECTED",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/verification/zero_wavevector_no_dynamic_mode_mutant.lean"
+      ],
+      "exit_status": 1,
+      "wall_seconds": 10.237,
+      "source_sha256": "739e141fd4aa109eef22f89260996f4543d2cf175257791aa480925e111c6c8b",
+      "required_failure_in": "contract_control",
+      "diagnostics": [
+        {
+          "declaration": "contract_control",
+          "line": 11,
+          "message": "s11/_scratch/verification/zero_wavevector_no_dynamic_mode_mutant.lean:11:75: error: unsolved goals\n⊢ False\n"
+        }
+      ],
+      "output": "s11/_scratch/verification/zero_wavevector_no_dynamic_mode_mutant.lean:11:75: error: unsolved goals\n⊢ False\n",
+      "output_sha256": "a0c858ce93a3cb825b613b90491e7360024be019dfe0e3598b69bf4334d00000",
+      "source": "import S11Homogeneous.Threshold\nopen S10Pilot S11Homogeneous\nnoncomputable section\nabbrev k3 : Vec 3 := ![0, 0, 1]\nabbrev e1 : Vec 3 := ![1, 0, 0]\nabbrev e3 : Vec 3 := ![0, 0, 1]\ntheorem k3_ne : k3 ≠ 0 := by\n  intro h\n  have h2 := congrFun h 2\n  norm_num [k3, Matrix.cons_val_two] at h2\ntheorem contract_control :  S11Homogeneous.ModalStationary 1 1 4 1 0 e1 := by\n  norm_num [S11Homogeneous.modal_stationary_iff, S11Homogeneous.modalOperator,\n    normSq, dot, k3, e1, e3, Fin.sum_univ_succ, funext_iff, Fin.forall_fin_succ]\n"
+    },
+    {
+      "name": "below_grazing_positive",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/verification/below_grazing_positive.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 9.886,
+      "source_sha256": "dbfb0a4934a7c53abc43490826acbd846a108de3045f9d6471086ebc9a4eec8b",
+      "required_failure_in": "contract_control",
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "import S11Homogeneous.Threshold\nopen S10Pilot S11Homogeneous\nnoncomputable section\nabbrev k3 : Vec 3 := ![0, 0, 1]\nabbrev e1 : Vec 3 := ![1, 0, 0]\nabbrev e3 : Vec 3 := ![0, 0, 1]\ntheorem k3_ne : k3 ≠ 0 := by\n  intro h\n  have h2 := congrFun h 2\n  norm_num [k3, Matrix.cons_val_two] at h2\ntheorem contract_control : normalWaveSq 1 1 2 k3 < 0 := by\n  norm_num [normalWaveSq, normSq, dot, k3, Fin.sum_univ_succ]\n"
+    },
+    {
+      "name": "below_grazing_mutant",
+      "expected": "REJECTED",
+      "outcome": "REJECTED",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/verification/below_grazing_mutant.lean"
+      ],
+      "exit_status": 1,
+      "wall_seconds": 9.985,
+      "source_sha256": "451f8232e53f7105c1330bd36b0354c8f5ce38fc8c04f465c15190e594a5e0d5",
+      "required_failure_in": "contract_control",
+      "diagnostics": [
+        {
+          "declaration": "contract_control",
+          "line": 11,
+          "message": "s11/_scratch/verification/below_grazing_mutant.lean:11:56: error: unsolved goals\n⊢ False\n"
+        }
+      ],
+      "output": "s11/_scratch/verification/below_grazing_mutant.lean:11:56: error: unsolved goals\n⊢ False\n",
+      "output_sha256": "308385ca84157afd3b14181064a9c61a8bf62dfbceacc08b06bc7edbf3a379ae",
+      "source": "import S11Homogeneous.Threshold\nopen S10Pilot S11Homogeneous\nnoncomputable section\nabbrev k3 : Vec 3 := ![0, 0, 1]\nabbrev e1 : Vec 3 := ![1, 0, 0]\nabbrev e3 : Vec 3 := ![0, 0, 1]\ntheorem k3_ne : k3 ≠ 0 := by\n  intro h\n  have h2 := congrFun h 2\n  norm_num [k3, Matrix.cons_val_two] at h2\ntheorem contract_control : normalWaveSq 1 1 2 k3 > 0 := by\n  norm_num [normalWaveSq, normSq, dot, k3, Fin.sum_univ_succ]\n"
+    },
+    {
+      "name": "at_grazing_positive",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/verification/at_grazing_positive.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 10.455,
+      "source_sha256": "9a5d65aad54aece61758219cfbc8ec40f35683efcafe540fec26c6fae24f61ba",
+      "required_failure_in": "contract_control",
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "import S11Homogeneous.Threshold\nopen S10Pilot S11Homogeneous\nnoncomputable section\nabbrev k3 : Vec 3 := ![0, 0, 1]\nabbrev e1 : Vec 3 := ![1, 0, 0]\nabbrev e3 : Vec 3 := ![0, 0, 1]\ntheorem k3_ne : k3 ≠ 0 := by\n  intro h\n  have h2 := congrFun h 2\n  norm_num [k3, Matrix.cons_val_two] at h2\ntheorem contract_control : normalWaveSq 1 4 2 k3 = 0 := by\n  norm_num [normalWaveSq, normSq, dot, k3, Fin.sum_univ_succ]\n"
+    },
+    {
+      "name": "at_grazing_mutant",
+      "expected": "REJECTED",
+      "outcome": "REJECTED",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/verification/at_grazing_mutant.lean"
+      ],
+      "exit_status": 1,
+      "wall_seconds": 10.086,
+      "source_sha256": "543831b02857adf399901ea0a45a714572e0b10fb123462cb03ffbec0ce5168b",
+      "required_failure_in": "contract_control",
+      "diagnostics": [
+        {
+          "declaration": "contract_control",
+          "line": 11,
+          "message": "s11/_scratch/verification/at_grazing_mutant.lean:11:56: error: unsolved goals\n⊢ False\n"
+        }
+      ],
+      "output": "s11/_scratch/verification/at_grazing_mutant.lean:11:56: error: unsolved goals\n⊢ False\n",
+      "output_sha256": "98090c5847b0484d52c3b013d8f4bcc4747333df49ce5d7426564cef24af8ba5",
+      "source": "import S11Homogeneous.Threshold\nopen S10Pilot S11Homogeneous\nnoncomputable section\nabbrev k3 : Vec 3 := ![0, 0, 1]\nabbrev e1 : Vec 3 := ![1, 0, 0]\nabbrev e3 : Vec 3 := ![0, 0, 1]\ntheorem k3_ne : k3 ≠ 0 := by\n  intro h\n  have h2 := congrFun h 2\n  norm_num [k3, Matrix.cons_val_two] at h2\ntheorem contract_control : normalWaveSq 1 4 2 k3 ≠ 0 := by\n  norm_num [normalWaveSq, normSq, dot, k3, Fin.sum_univ_succ]\n"
+    },
+    {
+      "name": "above_grazing_positive",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/verification/above_grazing_positive.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 10.187,
+      "source_sha256": "5d3bcf8496d8cdcb821909d48d3a7081398be34698cd1f023e536003fa5e8961",
+      "required_failure_in": "contract_control",
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "import S11Homogeneous.Threshold\nopen S10Pilot S11Homogeneous\nnoncomputable section\nabbrev k3 : Vec 3 := ![0, 0, 1]\nabbrev e1 : Vec 3 := ![1, 0, 0]\nabbrev e3 : Vec 3 := ![0, 0, 1]\ntheorem k3_ne : k3 ≠ 0 := by\n  intro h\n  have h2 := congrFun h 2\n  norm_num [k3, Matrix.cons_val_two] at h2\ntheorem contract_control : normalWaveSq 1 9 2 k3 > 0 := by\n  norm_num [normalWaveSq, normSq, dot, k3, Fin.sum_univ_succ]\n"
+    },
+    {
+      "name": "above_grazing_mutant",
+      "expected": "REJECTED",
+      "outcome": "REJECTED",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/verification/above_grazing_mutant.lean"
+      ],
+      "exit_status": 1,
+      "wall_seconds": 10.036,
+      "source_sha256": "64aeaa7c2944ec148c01c04610c0e5dac6771e4c0f784f9213e7dc8b481a214a",
+      "required_failure_in": "contract_control",
+      "diagnostics": [
+        {
+          "declaration": "contract_control",
+          "line": 11,
+          "message": "s11/_scratch/verification/above_grazing_mutant.lean:11:56: error: unsolved goals\n⊢ False\n"
+        }
+      ],
+      "output": "s11/_scratch/verification/above_grazing_mutant.lean:11:56: error: unsolved goals\n⊢ False\n",
+      "output_sha256": "69ed2f10ef7b164f91c9b6e650f9f313d760a30def4fc8760cc7d3618e78f983",
+      "source": "import S11Homogeneous.Threshold\nopen S10Pilot S11Homogeneous\nnoncomputable section\nabbrev k3 : Vec 3 := ![0, 0, 1]\nabbrev e1 : Vec 3 := ![1, 0, 0]\nabbrev e3 : Vec 3 := ![0, 0, 1]\ntheorem k3_ne : k3 ≠ 0 := by\n  intro h\n  have h2 := congrFun h 2\n  norm_num [k3, Matrix.cons_val_two] at h2\ntheorem contract_control : normalWaveSq 1 9 2 k3 < 0 := by\n  norm_num [normalWaveSq, normSq, dot, k3, Fin.sum_univ_succ]\n"
+    },
+    {
+      "name": "grazing_requires_nonzero_wavevector_positive",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/verification/grazing_requires_nonzero_wavevector_positive.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 9.836,
+      "source_sha256": "3c7d13d77fc6d013dd4f94fea7ab096a07c86f4fcb81f23fc915cc05ba6ac6a5",
+      "required_failure_in": "contract_control",
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "import S11Homogeneous.Threshold\nopen S10Pilot S11Homogeneous\nnoncomputable section\nabbrev k3 : Vec 3 := ![0, 0, 1]\nabbrev e1 : Vec 3 := ![1, 0, 0]\nabbrev e3 : Vec 3 := ![0, 0, 1]\ntheorem k3_ne : k3 ≠ 0 := by\n  intro h\n  have h2 := congrFun h 2\n  norm_num [k3, Matrix.cons_val_two] at h2\ntheorem contract_control :\n    normalWaveSq 1 1 2 (0 : Vec 3) = 0 ∧ (1 : ℝ) ≠ 1 * 2 ^ 2 := by\n  norm_num [normalWaveSq, normSq, dot]\n"
+    },
+    {
+      "name": "grazing_requires_nonzero_wavevector_mutant",
+      "expected": "REJECTED",
+      "outcome": "REJECTED",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/verification/grazing_requires_nonzero_wavevector_mutant.lean"
+      ],
+      "exit_status": 1,
+      "wall_seconds": 9.534,
+      "source_sha256": "e9f0f3b6b49280b7032db8056d794e4e380b94f8e15dfb60b8d79f9a8651d3a7",
+      "required_failure_in": "contract_control",
+      "diagnostics": [
+        {
+          "declaration": "contract_control",
+          "line": 12,
+          "message": "s11/_scratch/verification/grazing_requires_nonzero_wavevector_mutant.lean:12:64: error: unsolved goals\n⊢ False\n"
+        }
+      ],
+      "output": "s11/_scratch/verification/grazing_requires_nonzero_wavevector_mutant.lean:12:64: error: unsolved goals\n⊢ False\n",
+      "output_sha256": "e685b23d758519d9c15954e0970ba2ec56ac302515acc921b37add0e6ecfd818",
+      "source": "import S11Homogeneous.Threshold\nopen S10Pilot S11Homogeneous\nnoncomputable section\nabbrev k3 : Vec 3 := ![0, 0, 1]\nabbrev e1 : Vec 3 := ![1, 0, 0]\nabbrev e3 : Vec 3 := ![0, 0, 1]\ntheorem k3_ne : k3 ≠ 0 := by\n  intro h\n  have h2 := congrFun h 2\n  norm_num [k3, Matrix.cons_val_two] at h2\ntheorem contract_control :\n    normalWaveSq 1 1 2 (0 : Vec 3) = 0 ∧ (1 : ℝ) = 1 * 2 ^ 2 := by\n  norm_num [normalWaveSq, normSq, dot]\n"
+    }
+  ],
+  "resources": {
+    "workers": 1,
+    "lean_threads": 1,
+    "lean_allocator_limit_mib": 4096,
+    "process_timeout_seconds": 300,
+    "note": "Allocator limit is not an OS RSS cap."
+  },
+  "axiom_audit_count": 29,
+  "source_sha256_after": {
+    "lean/lake-manifest.json": "91fd5318cdc35e4044d6e059c6ef73d94b955d27adf8a5860b07ec92add9377e",
+    "lean/lakefile.toml": "8c7d874927089ecb287e8cbd91c8fab6c2b116a26883030eb82e7a97b19a0291",
+    "lean/lean-toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+    "lean/s10/S10Controls/Action.lean": "e1764df0b26a46d6822ec4a72cca42e5d4f9df06686a1b649c86fd13af9f6566",
+    "lean/s10/S10Controls/Analytic.lean": "bac51e35f46740653dbcea68724deecf23f9fdb8991c696f54007287b57afab5",
+    "lean/s10/S10Controls/PhaseAverage.lean": "ff2863169741814592ec0947da8941976d6ebf2d676e07300e0c0b48905034ba",
+    "lean/s10/S10Controls/PlaneWave.lean": "14149fe870ddadc3aa547a49706748990d1eed9f74e428423f9c81e3a745863e",
+    "lean/s10/S10Controls/Variation.lean": "0141297128ec34c925d11ffe13b2e08203282b4d1ada4d388b23b2d689db7c0e",
+    "lean/s10/S10Pilot/Action.lean": "a7466f2c23a123f244615217d27d5048a625bddfaad5ce2a6f0456a8704f435c",
+    "lean/s10/S10Pilot/Analytic.lean": "f8a6fe854a7ed775a7ecf65fdf8589db2b865139a811daf1e4e27c34bac8811d",
+    "lean/s10/S10Pilot/PhaseAverage.lean": "2007235232001290ac87d25e8922e4a3b615583272ef39034b2aedc83dee4429",
+    "lean/s10/S10Pilot/PlaneWave.lean": "d64ad2d70169976f42cacb3ece650776780a17fe640d1efee4aa7677e53c85cb",
+    "lean/s10/S10Pilot/Spectrum.lean": "2bd131d15cebac4a233a1304da4461dc2da3cab2e9142155ffcc842649459e83",
+    "lean/s10/S10Pilot/Variation.lean": "f4678338fb72fe859c627cbc5da3ccb90e9f38b7a5d774705219f880cdcc871d",
+    "lean/s11/S11Homogeneous/Action.lean": "73a8cbfbe7770cd0d17262728f9887d2038260fc965d2abc34944b8af20aeb4b",
+    "lean/s11/S11Homogeneous/Spectrum.lean": "1d686dd225e2ef6106354c4c6682389d858f5c4b2241b19e027d44eaa893b8ea",
+    "lean/s11/S11Homogeneous/Threshold.lean": "b96c40a78c85b2fed1644ecc0367ce1cb2f5f6b4c82673fa196768cd0346aa45",
+    "lean/s11/S11Homogeneous.lean": "884fa4594f640982ecbc229d60b668651604715ebe62fcff9a0afb3aeee41428"
+  },
+  "finished_utc": "2026-09-16T02:37:17.586835+00:00"
+}

@@ -40,7 +40,10 @@ not a density change, and the channel would need separate argument.
 **Move 2 — what a quadratic stiffness on the brane can be.** Decompose `∂_i u_j` into trace,
 symmetric-traceless and antisymmetric parts. ⭐ **S10 did not forget a term — it kept ONE invariant of
 several.** Curl-only stiffness charges for twist and nothing else, which is why the longitudinal came out
-free rather than forbidden: a longitudinal wave is pure trace.
+free rather than forbidden: a longitudinal plane wave has a symmetric gradient
+and hence no curl. That gradient generally contains both trace and symmetric-traceless
+parts; it is not pure trace. The selected curl-only action charges neither of those
+parts. (Clarified during the S11 homogeneous Lean fidelity pass, 2026-09-16 UTC.)
 
 ⛔⛔ **CORRECTION — the orchestrator's count in this move was WRONG, and both engines caught it.** The
 walk asserted *"exactly three coefficients, for every `D ≥ 2`."* ⭐ **False under proper rotations.**

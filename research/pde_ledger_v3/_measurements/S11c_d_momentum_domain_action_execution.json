@@ -1,5 +1,5 @@
 {
-  "status": "PRODUCTION_RUNNING",
+  "status": "VALIDATED_PUBLICATION_PREPARED",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-momentum-domain-action-20260916",
   "checker": "S11c_d_momentum_domain_action.py",
   "preflight": "S11c_d_momentum_domain_action_preflight.py",
@@ -10,7 +10,7 @@
   "acceptedPreparationAnnexVerificationCommit": "1cba44b5",
   "maximumConcurrentWorkers": 4,
   "nativeThreadsPerWorker": 1,
-  "next": "Await silent local completion/error wake-up for the two baseline workers followed by four wider-box workers. Inspect every raw rule/domain change and all source/packet/metadata checks before production acceptance and annex publication.",
+  "next": "Annex-verify the finite momentum-domain publication, then refine the dominant paired-momentum contribution at cutoffs 3/4 before interpreting finite-box differences as tails.",
   "implementationCommit": "f781846f",
   "preflightRunRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-momentum-domain-action-20260916/preflight",
   "launch": {
@@ -107,5 +107,26 @@
     "sha256": "f7c9e9701424fe3e5e609407bc9da5bf47ca1793611822ecac96b068b62a899e",
     "report": "S11c_d_q9_dependency_report.md",
     "disposition": "Continue current immutable-source production; no identified Q9 value dependency. Preserve frozen operands and require explicit consumed-row/source joins after the separately owned repair is accepted."
-  }
+  },
+  "productionOutcome": {
+    "stage": "momentum_construct",
+    "command": [
+      "python",
+      "-u",
+      "_measurements/S11c_d_momentum_domain_action.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-momentum-domain-action-20260916/production/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-momentum-domain-action-20260916/production/momentum_construct.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-momentum-domain-action-20260916/production/momentum_construct.stderr",
+    "startedUtc": "2026-09-16T08:06:18.023821+00:00",
+    "childPid": 3437497,
+    "status": "completed",
+    "exitCode": 0,
+    "wallSeconds": 33422.037526207976,
+    "stderrBytes": 0,
+    "finishedUtc": "2026-09-16T17:23:20.062001+00:00"
+  },
+  "acceptedCheckpoint": "S11c_d_momentum_domain_action_checkpoint.json",
+  "acceptedRunRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-momentum-domain-action-20260916/production"
 }

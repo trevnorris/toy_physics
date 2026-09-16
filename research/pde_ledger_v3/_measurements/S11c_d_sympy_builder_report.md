@@ -153,27 +153,25 @@ for 384-to-512. Next compute source256/profile512 complete actions with a
 matching-rule cutoff-2 baseline before cutoffs 3/4. The 7.30 MB preparation
 transcript is published and annex-verified; wider actions and physical limits remain.
 
-Complete momentum-domain action preflight is accepted in 113.6 seconds:
-152 selected-transform comparisons, six exact production-order prefixes and
-six exact coarse serial/worker full actions. All 78 sources and 37,614 metadata
-paths join, with clean workers and unchanged packets. Full production is running:
-matching-profile cutoff-2 baseline then cutoff-3/4 actions, with all nonlocal
-rows reevaluated. The coarse smoke establishes instrument execution only;
-finite-domain momentum refinement and physical limits remain separate work.
-
-Production launch is recorded after preflight acceptance 649a98d2. Two matching
-baseline workers run first, then four wider-box workers; startup confirms one
-native thread and 2 GiB per worker with empty stderr. The silent local watcher
-owns completion/error wake-up. No production result is accepted yet.
+Momentum-domain action preflight 649a98d2 passed 152 selected transforms,
+six exact prefixes and six exact coarse full actions, with 37,614 metadata
+paths. The coarse smoke remains instrument evidence only.
 
 The separately discovered S11 Q9 coefficient-action orientation defect has
 been dependency-traced. Its 72-row family is carried in accumulated exports,
 but c1/c2/d import manifests exclude it; the actual d binder retains identical
 73 inputs when all Q9 rows are removed. The current 78-source production hashes
-match and its numerical operands remain unchanged. Continue the active run;
-refresh carried rows/provenance only after the upstream repair is accepted,
+match and its numerical operands remain unchanged. The run completed against
+those immutable inputs. Refresh carried rows/provenance after repair acceptance,
 with explicit consumed-root/closure joins. D3-D5 Q9 validation and parity-odd
 extra-action checks remain owned by that repair. See the Q9 dependency report.
+
+The complete momentum-domain production is now accepted: six clean workers,
+240,460,912 new nodes in 9 h 17 m, 18 saved layouts, 14,672 partials and
+66,798 metadata paths. The matching profile-order baseline changes the action
+by 6.94e-18; cutoff 2→3 and 3→4 changes reach 2.25e-7 and 1.14e-7.
+Wider-box paired-momentum refinement is next before tail interpretation.
+The 3.41 MB canonical transcript and checkpoint retain every source/packet join.
 
 ## Retained user-approved solver/export contract
 

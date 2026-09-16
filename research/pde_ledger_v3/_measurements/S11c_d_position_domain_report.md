@@ -1,32 +1,30 @@
 # S11c-d source/profile domain action checkpoint
 
-Independent outer quadrature is published at 44e3f893 and annex-verified at
-96258429. The two approved fields agree with Gauss-144 within 1.74e-16 in raw
-integrals on the original finite domains. All 420 points and 20,678 metadata
-paths pass; no infinite-domain or Abel limit follows.
+The position-domain instrument preflight is accepted. It covers all 80 native
+rows, 70 bound sources, six nested profiles and both approved fields. The 70
+source and 12 profile transform checks retain actual frequency assignments;
+scaled source/direct and source-order residuals are at most 1.84e-14 / 7.36e-13,
+with profile literal/order residuals 1.78e-15 / 1.16e-12. All six production-order
+baseline prefixes and four coarse full-cell serial/worker actions agree exactly.
+All four workers exited zero with empty stderr and actual measures responded.
 
-The next helper preserves all 80 native rows, 70 bound sources and six nested
-profiles. It changes source/profile cutoffs from 32/10 to 48/10, then 48/14,
-with all momentum limits and the regulator fixed. Saved-operand focused checks
-pass all 240 coefficient reverse joins and preserve the complete field/limit
-census. No source/profile integrand, physical parameter or engine code changes.
+The metadata cache lookup repair is validated from saved operands in 78.4 seconds,
+without repeating numerical integration. All 7,394 tags, 3,695 fresh keys and
+25,312 metadata paths replay. Sixteen altered cache-unit controls and five invalid
+cache addresses are rejected; the wrong profile-limit control also rejects.
+The original/recovery 2,228,922-byte transcripts are byte-identical, SHA256
+5426e901cf2928be222df1c1c6405ea4b8c8972c068b4b4475585fb5a771786d.
+All 72 current/frozen sources, original/copied artifacts and pre/post packets
+agree under the explicit repair join. The engine, constructor and emitter remain
+unchanged. The coarse smoke is instrument evidence, not a physical domain result.
 
-The preflight completed all numerical work in 102 seconds: 70 source and
-12 profile transform records, six production-order prefixes and four complete
-coarse serial/worker actions. All workers exit zero with empty stderr. Scaled
-source/direct and source-order residuals reach 1.84e-14 and 7.36e-13; profile
-literal/order residuals reach 1.78e-15 and 1.16e-12. These are instrument checks.
+Full production is ready: source/profile cutoffs 32/10 to 48/10, then 48/14,
+with momentum bounds +/-2 and regulator 0.2 fixed. Four single-thread workers
+with 2 GiB ceilings cover two fields times two new domains, reevaluating all
+80 nonlocal rows with the accepted per-layout momentum rules and source/profile
+order 256. Save every completed layout and each 64-batch partial.
 
-Final metadata validation stopped because the inherited validator expected a
-single cache list instead of per-field/domain caches. All results and the
-2.23 MB transcript are preserved. The narrow repair selects the actual cache
-using its complete tag coordinates and reverses to the native replayer AST.
-Recovery is running from every saved operand, checking original/recovery payload identity
-and exercises wrong-unit controls without repeating numerical integration.
-No complete domain production or new physical tail result is accepted yet.
-
-After acceptance, four workers will evaluate both new domains on both fields,
-using every nonlocal contribution and each layout's accepted momentum rule.
-Source/profile order remains 256. Preserve every completed layout and partial;
-choose further quadrature, domain and tail work from the actual changes before
-momentum-domain and Abel limits. The retained solver/export contract is unchanged.
+Independent adaptive outer evidence remains published and annex-verified at
+44e3f893/96258429. The forthcoming finite cutoff changes establish no infinite
+tail bound, uniform/independent-grade coverage, Abel limit, scattering or pole.
+Preserve all approved inputs and the retained solver/export contract.

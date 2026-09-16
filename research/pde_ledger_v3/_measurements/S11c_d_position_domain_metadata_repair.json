@@ -1,5 +1,5 @@
 {
-  "status": "SAVED_PREFLIGHT_METADATA_RECOVERY_READY",
+  "status": "ACCEPTED_SAVED_OPERAND_METADATA_RECOVERY",
   "sourceRunDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-position-domain-20260916/preflight/complete",
   "recoveryRunRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-position-domain-20260916/preflight-recovery",
   "originalInvocation": {
@@ -116,5 +116,44 @@
   "sourceScaledOrderChange": 7.35537167849815e-13,
   "profileOriginalResidual": 1.7763568394002505e-15,
   "profileOrderChange": 1.1546381469128743e-12,
-  "scope": "All numerical preflight work saved. Only remaining metadata validation and source/packet joins will run; no accepted production position-domain result."
+  "scope": "All numerical preflight work saved. Only remaining metadata validation and source/packet joins will run; no accepted production position-domain result.",
+  "acceptedPreflight": "S11c_d_position_domain_preflight.json",
+  "recoveryOutcome": {
+    "stage": "position_recover",
+    "command": [
+      "python",
+      "-u",
+      "_measurements/S11c_d_position_domain_recover.py",
+      "--origin",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-position-domain-20260916/preflight/complete",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-position-domain-20260916/preflight-recovery/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-position-domain-20260916/preflight-recovery/position_recover.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-position-domain-20260916/preflight-recovery/position_recover.stderr",
+    "startedUtc": "2026-09-16T04:54:24.137105+00:00",
+    "childPid": 3388397,
+    "status": "completed",
+    "exitCode": 0,
+    "wallSeconds": 78.39087102282792,
+    "stderrBytes": 0,
+    "finishedUtc": "2026-09-16T04:55:42.528025+00:00"
+  },
+  "recoveryEvidence": {
+    "origin": "/var/projects/toy_physics/_scratch/s11c/s11c-position-domain-20260916/preflight/complete",
+    "repairJoin": {
+      "originalCheckerSha256": "152e69abf22d628941a5f5c4cd470a8e53cd4521b4c009f633683a535097e6df",
+      "repairedCheckerSha256": "d056a00e7500cd27a0d824b0b6f9b66ca9bbb2dd412b2b8c490d621afcf71b46",
+      "restoredWholeCheckerAstSha256": "c3edf07ea80a80040d5d6970503328b4bb1454b17f2f89e1891b5be96fc2f081",
+      "originalWholeCheckerAstSha256": "c3edf07ea80a80040d5d6970503328b4bb1454b17f2f89e1891b5be96fc2f081",
+      "nativeReplayJoin": {
+        "nativeReplayAstSha256": "fcf8e0a596020117003f9f06ee25bf4aed07ea4e3ee65b702f4838057c8e1536",
+        "restoredReplayAstSha256": "fcf8e0a596020117003f9f06ee25bf4aed07ea4e3ee65b702f4838057c8e1536"
+      }
+    },
+    "originalTranscriptSha256": "5426e901cf2928be222df1c1c6405ea4b8c8972c068b4b4475585fb5a771786d",
+    "recoveryTranscriptSha256": "5426e901cf2928be222df1c1c6405ea4b8c8972c068b4b4475585fb5a771786d",
+    "originalRecoveryPayloadDifferences": 0,
+    "numericalIntegrationRepeated": false
+  }
 }

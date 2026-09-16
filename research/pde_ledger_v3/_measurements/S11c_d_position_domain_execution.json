@@ -1,5 +1,5 @@
 {
-  "status": "PREFLIGHT_SAVED_OPERAND_RECOVERY_RUNNING",
+  "status": "PREFLIGHT_ACCEPTED_PRODUCTION_READY",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-position-domain-20260916",
   "checker": "S11c_d_position_domain.py",
   "preflight": "S11c_d_position_domain_preflight.py",
@@ -9,7 +9,7 @@
   "acceptedAdaptiveAnnexVerificationCommit": "96258429",
   "workers": 4,
   "nativeThreadsPerWorker": 1,
-  "next": "Wait silently for owned recovery completion/error wake-up; accept saved preflight evidence and launch complete position-domain production only after final validation.",
+  "next": "Launch full source/profile finite-domain action evaluation with four isolated single-thread workers and a silent completion/error watcher.",
   "implementationCommit": "303e5b50",
   "launch": {
     "launchedUtc": "2026-09-16T04:44:54.351027+00:00",
@@ -141,5 +141,28 @@
     "messageSha256": "dd607bd213024cb201a6c9ab5a3f40c6ac6d6106340969aad21a79db8a0bcf60",
     "notifications": {}
   },
-  "recoveryLauncherSha256": "bef5d5ee634de22a36723c5e00d2fa00250ebcbc6777a1d9de4249f34d205f1f"
+  "recoveryLauncherSha256": "bef5d5ee634de22a36723c5e00d2fa00250ebcbc6777a1d9de4249f34d205f1f",
+  "recoveryOutcome": {
+    "stage": "position_recover",
+    "command": [
+      "python",
+      "-u",
+      "_measurements/S11c_d_position_domain_recover.py",
+      "--origin",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-position-domain-20260916/preflight/complete",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-position-domain-20260916/preflight-recovery/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-position-domain-20260916/preflight-recovery/position_recover.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-position-domain-20260916/preflight-recovery/position_recover.stderr",
+    "startedUtc": "2026-09-16T04:54:24.137105+00:00",
+    "childPid": 3388397,
+    "status": "completed",
+    "exitCode": 0,
+    "wallSeconds": 78.39087102282792,
+    "stderrBytes": 0,
+    "finishedUtc": "2026-09-16T04:55:42.528025+00:00"
+  },
+  "acceptedPreflight": "S11c_d_position_domain_preflight.json",
+  "acceptedPreflightSha256": "ff3e22544d3cb7c5b271f9ad08720e2f11214ed9981f63d4ed06b6e736bdb672"
 }

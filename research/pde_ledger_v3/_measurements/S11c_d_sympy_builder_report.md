@@ -137,13 +137,12 @@ The 1.18 MB transcript is published and annex-verified. Next are finite-domain
 and tail checks. Inner/source/profile rules were held, so independent outer
 agreement does not establish uniform/grade coverage, tails or Abel limits.
 
-Finite position-domain preflight completed all 82 transform checks, six
-production-order prefixes and four coarse worker/action comparisons. A final
-metadata cache lookup expected the old global schema. The narrow adapter repair
-reverses to the native validator AST; saved-operand recovery is running with
-original/recovery payload comparison and actual wrong-unit controls. All work
-is preserved and no integration is repeated. Complete finite-domain production
-and physical tail/Abel results remain pending.
+Finite position-domain preflight is accepted: 82 transform checks, six exact
+production-order prefixes and four exact coarse full-action comparisons. Saved
+metadata recovery passes all 25,312 paths and 21 cache controls; original and
+recovery transcripts are byte-identical. No integration was repeated. Full
+80-row production at source/profile cutoffs 48/10 and 48/14 is ready, retaining
+momentum bounds +/-2 and regulator 0.2. Physical tail/Abel work remains pending.
 
 ## Retained user-approved solver/export contract
 

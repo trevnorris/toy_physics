@@ -1,5 +1,5 @@
 {
-  "status": "PRODUCTION_RUNNING",
+  "status": "VALIDATED_PUBLICATION_PREPARED",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-wide-adaptive-20260916",
   "checker": "S11c_d_wide_momentum_adaptive.py",
   "plan": "S11c_d_wide_momentum_adaptive_plan.md",
@@ -9,7 +9,7 @@
   "maximumConcurrentWorkers": 4,
   "nativeThreadsPerWorker": 1,
   "workerAddressSpaceBytes": 2147483648,
-  "next": "Silent local watcher owns completion/error wake-up. Validate independent outer results, then publish via DataLad and commit; choose remaining wide-three/tail work from measured evidence.",
+  "next": "Annex-verify and commit independent single/pair outer result; then refine the retained wider-box three-momentum rows before physical tail interpretation.",
   "preflightRunRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-wide-adaptive-20260916/preflight",
   "launcherSha256": "0ab1ca3e3facb7f47098949eb0ab775f3368d60dc25a34418fdeada3288d01f4",
   "implementationCommit": "ccd70c11",
@@ -102,5 +102,25 @@
   "productionLaunchVerification": {
     "path": "/var/projects/toy_physics/_scratch/s11c/s11c-wide-adaptive-20260916/production/launch-verification.json",
     "sha256": "601837d90246a686f4ec9cf1ac072e9a58aca40e0675ae66e0e9aa7e4cd83df7"
-  }
+  },
+  "productionOutcome": {
+    "stage": "adaptive_construct",
+    "command": [
+      "python",
+      "-u",
+      "_measurements/S11c_d_wide_momentum_adaptive.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-wide-adaptive-20260916/production/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-wide-adaptive-20260916/production/adaptive_construct.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-wide-adaptive-20260916/production/adaptive_construct.stderr",
+    "startedUtc": "2026-09-16T18:26:18.559228+00:00",
+    "childPid": 358639,
+    "status": "completed",
+    "exitCode": 0,
+    "wallSeconds": 260.00618858262897,
+    "stderrBytes": 0,
+    "finishedUtc": "2026-09-16T18:30:38.565467+00:00"
+  },
+  "acceptedCheckpoint": "S11c_d_wide_momentum_adaptive_checkpoint.json"
 }

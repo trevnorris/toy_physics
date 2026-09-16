@@ -182,15 +182,13 @@ remains 1.134674e-7. All held three-momentum values remain explicit. The
 outer quadrature on boxes 3/4, followed by needed three-momentum checks;
 physical tails, regulator limits and scattering remain open.
 
-Independent wider-box outer instrument preflight is accepted: all16 native
-conditional point/node/weight comparisons and eight independent full-action
-contractions agree exactly. Four clean workers, 84 sources, 2646 conditional
-points, 2160 held-term scalars and 68253 metadata paths pass in 123.75 seconds.
-The 6.30 MB coarse transcript remains instrument evidence in durable scratch.
-Full GK21 outer production launched after acceptance5d519d3a for single/pair
-rows on boxes3/4, holding paired inner64, source/profile256/512 and all accepted
-triple rows. Four single-thread2GiB workers and the silent watcher are verified;
-no production result is accepted yet.
+Independent wider-box outer production is accepted in4m20s: all40 single
+and30 paired rows agree with refined Gauss within4.83e-15/7.71e-16; all eight
+adaptive solves finish. The box3-to4 action difference remains1.134674e-7.
+Four clean workers,84 sources,3066 conditional points and101909 metadata paths
+pass. The6.75MB transcript is ready for annex publication. Next refine the
+held wider-box three-momentum terms at fixed source/profile/domain/regulator
+settings. Finite agreement does not establish physical tails or Abel limits.
 
 ## Retained user-approved solver/export contract
 

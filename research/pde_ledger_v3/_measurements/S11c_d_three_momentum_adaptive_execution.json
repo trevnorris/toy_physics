@@ -1,0 +1,13 @@
+{
+  "status": "PREFLIGHT_PREPARED",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-three-adaptive-20260916",
+  "checker": "S11c_d_three_momentum_adaptive.py",
+  "preflight": "S11c_d_three_momentum_adaptive_preflight.py",
+  "plan": "S11c_d_three_momentum_adaptive_plan.md",
+  "report": "S11c_d_three_momentum_adaptive_report.md",
+  "acceptedSourceCommit": "9ecb6ed84f7e3ddac3964d7fbe42a1266fb28579",
+  "annexVerificationCommit": "16838693",
+  "workers": 4,
+  "nativeThreadsPerWorker": 1,
+  "next": "Validate actual conditioned/native prefixes, full grouping, adaptive workers and complete metadata/emission before production."
+}

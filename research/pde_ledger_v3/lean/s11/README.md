@@ -138,3 +138,17 @@ exactly two independent bulk responses. The explicit divergence current
 explains the missing response; it does not establish that boundary effects
 vanish. The added assurance is completeness, checked conventions, meaningful
 negative controls and two independent fidelity reviews.
+
+## D4 invariant completeness
+
+The bounded [D4_COVERAGE.md](D4_COVERAGE.md) contract is complete, with local
+verification passed and both independent fidelity reviews CLEAR. Lean proves
+the full SO(4)/O(4)/reflection-odd quadratic density classification, unique
+coefficients, census 4/3/1 and complete even/odd split. Compact native checks
+match the complete spaces and establish `P_D=P`, with the fully summed
+epsilon contraction equal to `2P`. All fourteen mathematical mutations were
+rejected and sixteen positives passed. See [D4_FIDELITY.md](D4_FIDELITY.md)
+and [D4_VERIFICATION.txt](D4_VERIFICATION.txt); review provenance and optional
+finding dispositions are in [D4_FIDELITY_REVIEW.md](D4_FIDELITY_REVIEW.md).
+The divergence/zero bulk effect
+of the D4 odd term remains a separate increment.

@@ -1,0 +1,53 @@
+Independent non-author fidelity review: bounded D4 quadratic invariants D4.1–D4.4.
+
+Read the fixed MANIFEST.json and lean/FORMALIZATION_POLICY.md, then
+lean/s11/D4_COVERAGE.md, D4_FIDELITY.md, D4_VERIFICATION.txt, all thirteen
+S11D4Invariants modules and the audit root, and the compact native source check
+and terminal records. The packet includes the actual native sources and shared
+physics/step specification to identify the intended object.
+
+Review the mathematics and statement fidelity, not merely the author-reported
+build status. Does the associated-bilinear representation cover every real
+quadratic form on all real 4×4 matrices? Are all 132 necessary equations derived
+from admissible members of the full SO quantifier, and does the reconstruction
+use them to establish completeness? The certificate is split into compilation
+blocks only; check that this introduces no assumptions or omissions. Is
+full-group sufficiency proved independently, including the orientation
+identity P(R G Rᵀ)=det(R) P(G) for every real R?
+
+Check the normalization and unique coefficients of trace-square,
+trace-of-square, Frobenius-square and the orientation form P. Are the full
+O-invariant forms exactly d=0, the reflection-minus forms inside SO exactly
+a=b=c=0, and the dimensions 4/3/1 those of the actual invariant submodules?
+Check the even/odd span and disjointness, including the zero form. Inspect the
+mutations, failure diagnostics, admissible positive examples and full-group
+sensitivity control; errors/timeouts do not count as mathematical rejection.
+
+Is the connection to actual Q9 V1/V2/V6 an exact full-span comparison rather
+than counts alone? Inspect the native generator orientation, the reflection
+operator in the native basis, and the wrong-span controls. In particular,
+native P_D equals the displayed P, whereas the fully summed
+epsilon_ijkl Gij Gkl equals 2P for epsilon_0123=+1. Distinguish this checked
+normalization from conventions that are merely inferred from an invariant's
+name. The native Python link is tested translation, not a kernel-certified
+CAS bridge. Wolfram evidence is source inspection only.
+
+This is a classification of pointwise quadratic densities before any EL or
+divergence quotient. No positivity, symmetric-gradient restriction, transverse
+ansatz, field equation, regularity or boundary assumption, or derived physical
+dimension is claimed. Finite necessary rotation tests do not replace the
+full-group sufficiency proof. The generator selects finite rational
+certificates; Lean must check all generated mathematics.
+
+Stay within D4.1–D4.4. D4's divergence/zero bulk variation is a separate next
+increment. Do not request new D5, EL/divergence, dynamics, interface, S11c,
+production/comparator/export or systematic CAS-bridge work. Identify a required
+fix only if it affects this bounded theorem, coverage or fidelity. Distinguish
+blockers from optional improvements. Do not change any file.
+
+Return a substantive final report with verdict CLEAR or NOT CLEAR, the reviewed
+packet identifier (as supplied, unless independently recomputed), scope and
+assumptions checked, detailed findings with file/theorem references, and exact
+limits of your independent verification. Do not claim to have compiled Lean,
+rerun the native instrument or recomputed hashes unless you actually did so.
+A plan, partial response or unsupported approval is not review clearance.

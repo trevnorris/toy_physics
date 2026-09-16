@@ -1,0 +1,272 @@
+{
+  "status": "PASS",
+  "validated_utc": "2026-09-16T21:51:10.875036+00:00",
+  "scope": "D4.1\u2013D4.4 local invariant verification; independent fidelity reviews pending",
+  "proof_source_and_dependency_hashes": {
+    "_measurements/S11_lean_d4_generate.py": "b71b4813a3d8d00a786069f2416527c8e7f631b9e104c3094e3e7377a5c8d28d",
+    "lean/lake-manifest.json": "91fd5318cdc35e4044d6e059c6ef73d94b955d27adf8a5860b07ec92add9377e",
+    "lean/lakefile.toml": "7430d06c3972d9e214470201240bdeace6e175f17286842f888c679506adcec1",
+    "lean/lean-toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+    "lean/s11/S11D4Invariants/Census.lean": "ff727f1177cc6f4125f3116ba2a65149f961ba3e663ad8d79760153a4089c150",
+    "lean/s11/S11D4Invariants/Classification.lean": "3b95a47959eeabc44268a2ae7dd1b8d5ff9d3f454d3c7b12d23c7fca365a2729",
+    "lean/s11/S11D4Invariants/ConstraintBlock0.lean": "a392b17298a7a4e89f2a29b7f475d3451d0845041a9dbe38704429812e7e7425",
+    "lean/s11/S11D4Invariants/ConstraintBlock1.lean": "9e6cdf6c14a124af9e713fc0d922d5b37def9773d658cdb53847ce6e94769651",
+    "lean/s11/S11D4Invariants/ConstraintBlock2.lean": "d22ebe83d4b3e3a6bae8ebcfa7a94ddb34d2fe95110b23a3e9948a20dcf614e9",
+    "lean/s11/S11D4Invariants/ConstraintBlock3.lean": "a4f413393844de5e8a0126cf03d502c6ee32b1a44686b03762d39db72764ffa0",
+    "lean/s11/S11D4Invariants/ConstraintPolynomial.lean": "998ce5e4f2d0930e5e52997c4c300128d990b175030272dd321e4004036ec41a",
+    "lean/s11/S11D4Invariants/Constraints.lean": "dfe4f2dc27bc140681eb60ce2cf0fdc6926bcb61ab31e2ef2bb8957c1e68c43e",
+    "lean/s11/S11D4Invariants/Controls.lean": "71744668ec60a6b1a1addd882c75fed08855caa4c565f8516576abed0c455f8b",
+    "lean/s11/S11D4Invariants/Forms.lean": "74ff651936459ee6e3b7b9a136b06c929be19ec22ce10559dd371008d2e03a69",
+    "lean/s11/S11D4Invariants/Orientation.lean": "417aa006bce48911f0cdd914b0f9087e19fbf876d7a13647d98f684a545ce31f",
+    "lean/s11/S11D4Invariants/Quadratic.lean": "5d64eda063b367049135aed7072821f2679dc860987dc0578036af6955809763",
+    "lean/s11/S11D4Invariants/Rotation.lean": "01f3e8e0fa11ba6eb53c756b8ea67a825de83f2cd13c8b81b5c58de6490f391c",
+    "lean/s11/S11D4Invariants.lean": "c261c18a429a14566e8a53837098ce81bd8d168dca02d0679a56548e4b99c82d"
+  },
+  "compiled_module_sha256": {
+    "lean/.lake/build/lib/lean/S11D4Invariants/Quadratic.olean": "48361d3511e3f8a471577407190d37756eba773675f311dcbfd2c1606adba1a3",
+    "lean/.lake/build/lib/lean/S11D4Invariants/Rotation.olean": "0562cb2478f1881c42f46c3a590546f886c3a1b475e0eb656badd0cd62db98cc",
+    "lean/.lake/build/lib/lean/S11D4Invariants/Orientation.olean": "b7c3908a02ef887a9fa18f0fd8dba613a17c18c3038b4c0d298cfd5cb6358d67",
+    "lean/.lake/build/lib/lean/S11D4Invariants/Forms.olean": "13991521ee83b5460ce5461e729134f19505e8c862d3861215cc43867e4d54c1",
+    "lean/.lake/build/lib/lean/S11D4Invariants/ConstraintPolynomial.olean": "a54a630545b7b6714ec3c71be9cac38b664eb66f2f781311d61eef4d7b01bb6e",
+    "lean/.lake/build/lib/lean/S11D4Invariants/ConstraintBlock0.olean": "ba6c12127d281349829eb82fc9876e51d63ce2daa8fbfbb5267ce954a6d18226",
+    "lean/.lake/build/lib/lean/S11D4Invariants/ConstraintBlock1.olean": "5b616443dcc909cfe38da17d11f1aca2763a428e9e18658ecf6e91d2e6a44c2c",
+    "lean/.lake/build/lib/lean/S11D4Invariants/ConstraintBlock2.olean": "27dfb6ffa539087f020be2cd9da47ac6ebbbe3cfb83c5db3558d4f4ce989a8d7",
+    "lean/.lake/build/lib/lean/S11D4Invariants/ConstraintBlock3.olean": "e30d85d353325f9b86e8d8dcd14e29231aaf0f584dc0245ff5b945ff70161c79",
+    "lean/.lake/build/lib/lean/S11D4Invariants/Constraints.olean": "93e21a270430915462180ac86b2e1d229636f8c7a85a019bb4b200559c2d11a7",
+    "lean/.lake/build/lib/lean/S11D4Invariants/Classification.olean": "556ead212a046b381b6b6789eb957d17fc987f0266a1b56f4752cc3490e808de",
+    "lean/.lake/build/lib/lean/S11D4Invariants/Census.olean": "4d4c1a6e6877e372a9ab669d0b2ada76f3c9a34447aa7238344ccadf09ea0082",
+    "lean/.lake/build/lib/lean/S11D4Invariants/Controls.olean": "028dfc14163252fbd1c57704f44076359b33c65e95f77e3aa37f5887fe2447c2",
+    "lean/.lake/build/lib/lean/S11D4Invariants.olean": "eda9abe48f3366a8136f6553daec17e8a4f66a740426b17bbad2a89b14c4520b"
+  },
+  "dependency_olean_sha256": {},
+  "validated_check_logs": 44,
+  "reused_builds": 14,
+  "axiom_declarations": 49,
+  "allowed_axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "mathematical_mutations_rejected": [
+    "trace_normalization",
+    "trace_of_square_sign",
+    "so_dimension_mutant",
+    "o_dimension_mutant",
+    "odd_dimension_mutant",
+    "trace_required_mutant",
+    "trace_of_square_required_mutant",
+    "frobenius_required_mutant",
+    "orientation_required_mutant",
+    "reflection_excludes_odd_mutant",
+    "odd_excludes_even_mutant",
+    "full_group_sensitivity_mutant",
+    "orientation_normalization_mutant",
+    "determinant_sign_mutant"
+  ],
+  "positive_controls_passed": [
+    "so_dimension_positive",
+    "o_dimension_positive",
+    "odd_dimension_positive",
+    "trace_required_positive",
+    "trace_of_square_required_positive",
+    "frobenius_required_positive",
+    "orientation_required_positive",
+    "reflection_excludes_odd_positive",
+    "odd_excludes_even_positive",
+    "full_group_sensitivity_positive",
+    "orientation_normalization_positive",
+    "determinant_sign_positive",
+    "nonempty_odd_positive",
+    "zero_positive",
+    "negative_coefficients_positive",
+    "unique_coefficients_positive"
+  ],
+  "mutation_adjudication": {
+    "trace_normalization": {
+      "required_declaration": "traceSquare_apply",
+      "mathematical_diagnostic_present": true,
+      "instrument_failure_accepted": false
+    },
+    "trace_of_square_sign": {
+      "required_declaration": "traceOfSquare_apply",
+      "mathematical_diagnostic_present": true,
+      "instrument_failure_accepted": false
+    },
+    "so_dimension_mutant": {
+      "required_declaration": "contract_control",
+      "mathematical_diagnostic_present": true,
+      "instrument_failure_accepted": false
+    },
+    "o_dimension_mutant": {
+      "required_declaration": "contract_control",
+      "mathematical_diagnostic_present": true,
+      "instrument_failure_accepted": false
+    },
+    "odd_dimension_mutant": {
+      "required_declaration": "contract_control",
+      "mathematical_diagnostic_present": true,
+      "instrument_failure_accepted": false
+    },
+    "trace_required_mutant": {
+      "required_declaration": "contract_control",
+      "mathematical_diagnostic_present": true,
+      "instrument_failure_accepted": false
+    },
+    "trace_of_square_required_mutant": {
+      "required_declaration": "contract_control",
+      "mathematical_diagnostic_present": true,
+      "instrument_failure_accepted": false
+    },
+    "frobenius_required_mutant": {
+      "required_declaration": "contract_control",
+      "mathematical_diagnostic_present": true,
+      "instrument_failure_accepted": false
+    },
+    "orientation_required_mutant": {
+      "required_declaration": "contract_control",
+      "mathematical_diagnostic_present": true,
+      "instrument_failure_accepted": false
+    },
+    "reflection_excludes_odd_mutant": {
+      "required_declaration": "contract_control",
+      "mathematical_diagnostic_present": true,
+      "instrument_failure_accepted": false
+    },
+    "odd_excludes_even_mutant": {
+      "required_declaration": "contract_control",
+      "mathematical_diagnostic_present": true,
+      "instrument_failure_accepted": false
+    },
+    "full_group_sensitivity_mutant": {
+      "required_declaration": "contract_control",
+      "mathematical_diagnostic_present": true,
+      "instrument_failure_accepted": false
+    },
+    "orientation_normalization_mutant": {
+      "required_declaration": "contract_control",
+      "mathematical_diagnostic_present": true,
+      "instrument_failure_accepted": false
+    },
+    "determinant_sign_mutant": {
+      "required_declaration": "contract_control",
+      "mathematical_diagnostic_present": true,
+      "instrument_failure_accepted": false
+    }
+  },
+  "mathematical_failure_notes": {
+    "trace_normalization": "At G=diag(1,1,0,0), the changed cross coefficient makes the value 5 instead of 4.",
+    "trace_of_square_sign": "At G01=G10=1 and other entries zero, the changed coefficient makes the value -2 instead of 2.",
+    "twelve_statement_mutations": "Each must reduce to False in contract_control, with the corresponding true statement passing."
+  },
+  "package_checkout_pins": [
+    {
+      "name": "Physlib",
+      "commit": "8b2b23701c07409f882c49e0bd290a214e44450c",
+      "tracked_source_clean": true
+    },
+    {
+      "name": "mathlib",
+      "commit": "db584cd6d46c92f209a44c0f1c829460d327499d",
+      "tracked_source_clean": true
+    },
+    {
+      "name": "\u00abdoc-gen4\u00bb",
+      "commit": "aceca4eeb5a79092eabefaa75fcb72b701d02205",
+      "tracked_source_clean": true
+    },
+    {
+      "name": "plausible",
+      "commit": "b7eb3304aeae834b12dda98993a37f6a41f6f0bb",
+      "tracked_source_clean": true
+    },
+    {
+      "name": "LeanSearchClient",
+      "commit": "5f4d51b81cbd3f6b32b156bfad9056621a040404",
+      "tracked_source_clean": true
+    },
+    {
+      "name": "importGraph",
+      "commit": "16f02aa7642864af59f1ff0e384a015994db9118",
+      "tracked_source_clean": true
+    },
+    {
+      "name": "proofwidgets",
+      "commit": "4be2e3d5087eeb272cf5a8853b8f9dd025ef5957",
+      "tracked_source_clean": true
+    },
+    {
+      "name": "aesop",
+      "commit": "3448c0bcc5ce01b2d1546e483ec3620e32df3d0e",
+      "tracked_source_clean": true
+    },
+    {
+      "name": "Qq",
+      "commit": "92c15be17b7caf78c2ad767ec40f89052d908d81",
+      "tracked_source_clean": true
+    },
+    {
+      "name": "batteries",
+      "commit": "4488d40d070b9700d4d5a6aa342f0d40c31b2a2d",
+      "tracked_source_clean": true
+    },
+    {
+      "name": "leansqlite",
+      "commit": "6168b7549738a19bc837a1625c60c5d1e5dd8aeb",
+      "tracked_source_clean": true
+    },
+    {
+      "name": "Cli",
+      "commit": "6130a47896ce867c6a4a55373441e59e565bad0f",
+      "tracked_source_clean": true
+    },
+    {
+      "name": "UnicodeBasic",
+      "commit": "37e7d8cb7316a88cd3e91208385c9ec6ae780019",
+      "tracked_source_clean": true
+    },
+    {
+      "name": "BibtexQuery",
+      "commit": "852edafa268eb038a7158551fd580ee8433847b0",
+      "tracked_source_clean": true
+    },
+    {
+      "name": "MD4Lean",
+      "commit": "31907cc18f48a95384f99cee5582c00fb39e0f67",
+      "tracked_source_clean": true
+    }
+  ],
+  "native_source_sha256": {
+    "scripts/S11_stray_longitudinal_sympy_audit.py": "dc77f30b3e0b2b72aa13c7531a586e6ef50167949e645d99378de8527e06bfe2",
+    "mathematica/S11_stray_longitudinal_mathematica_audit.wl": "133bacbcbc2dd192ba64a82b94a1cde6b4359bfdf0748c59584b6a3e90683237"
+  },
+  "contract_instrument_sha256": "512b0be7acee45bdfb5f209f845dfb855f54885a7095ae178aff3e5d2420b877",
+  "source_instrument_sha256": "3b44d352c7dfdd7253dd71c9616eeac00d19c515e027d43d9a2ecbf593acbd37",
+  "contract_report_sha256": "0530ef4516a85862d53c028a41b295146cbbfe2d9b51698ae4617668af24e982",
+  "source_report_sha256": "4d950e73a9d5bb0aa3c76b71d92587355595b8458048fbc59d83d1f7db6fc930",
+  "generator_sha256": "b71b4813a3d8d00a786069f2416527c8e7f631b9e104c3094e3e7377a5c8d28d",
+  "historical_proof_correspondence": {
+    "S11_lean_fidelity_review_packet.json": {
+      "manifest_sha256": "91f740e9d51c5af9d3c38e300e95ed1c812fe2214091b02c88931fe0fcb361bb",
+      "unchanged_proof_files": 27
+    },
+    "S11_lean_invariant_review_packet.json": {
+      "manifest_sha256": "0a7fd1e8b774b3a73338adf74cd5f346a2060caff037c110318be37624d4e3ae",
+      "unchanged_proof_files": 6
+    },
+    "S11_lean_dynamics_review_packet.json": {
+      "manifest_sha256": "5f54346e2540db29015e799cfb7cd13718e301680c37ceb6fdb18f68b6a3cc40",
+      "unchanged_proof_files": 13
+    },
+    "S11_lean_d3_review_packet.json": {
+      "manifest_sha256": "f78d38219935608d3a71024940d9f6fe2d8ab4e596bb24412d10f93e1a3cf739",
+      "unchanged_proof_files": 7
+    },
+    "S11_lean_d3_bulk_review_packet.json": {
+      "manifest_sha256": "f71b3453e26c09a2e0e16a77bcd9348aed7c5f8089f881a751892e184ff1ce31",
+      "unchanged_proof_files": 21
+    }
+  },
+  "native_connection": "Exact complete D4 Q9 V1/V2/V6 spans, reflection operator, P_D=P, epsilon contraction=2P. Wrong-span controls detected. Wolfram source inspection only.",
+  "review_status": "PENDING; no D4 review transfer authorized",
+  "completion_claimed": false
+}

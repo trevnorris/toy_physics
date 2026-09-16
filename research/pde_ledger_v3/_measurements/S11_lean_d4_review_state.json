@@ -1,0 +1,79 @@
+{
+  "status": "COMPLETE",
+  "scope": "Bounded D4 S11 D4.1\u2013D4.4 independent fidelity review",
+  "packet_revision": "S11 D4 quadratic invariants D4.1\u2013D4.4 fidelity contract v1",
+  "packet_sha256": "a91cfbf327a6d180e5f8d3e9e3dd9dc0037c426b71be41c0a55ec45d7a719762",
+  "file_count": 34,
+  "archive": "research/pde_ledger_v3/_measurements/S11_lean_d4_review_packet_v1.tar.gz",
+  "archive_sha256": "cf69d3c8cc4b1b239052a8245d11f21bdfaa1e033e2fdd2806bb4e75c4c51229",
+  "archive_bytes": 146804,
+  "packet_directory": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_d4/review_packet_v1",
+  "manifest": "research/pde_ledger_v3/_measurements/S11_lean_d4_review_packet.json",
+  "manifest_sha256": "b5e49158bb7ef2b3f81b7346ba449615e5d20327c6324d99993141e730b8a13b",
+  "destinations": [
+    "Claude",
+    "Grok"
+  ],
+  "external_reviews_started": true,
+  "local_verification": "PASS: thirteen modules and audit root; 49 standard-axiom audits; fourteen mathematical rejections; sixteen positive controls; compact native checks; current source/olean/dependency hashes match",
+  "prepared_utc": "2026-09-16T21:53:57.341607+00:00",
+  "snapshot_validation": "PASS: live files, snapshot and archive member hashes all agree",
+  "review_verdicts": {
+    "claude": {
+      "verdict": "CLEAR",
+      "session_id": "bf27013a-bb48-4c14-84ad-71f23849893a",
+      "report": "research/pde_ledger_v3/_measurements/S11_lean_d4_fidelity_claude_v1.md",
+      "report_sha256": "0b087f75dd570cd9f9029037ad5917df063a52814554c51ca27fedcb380646b5"
+    },
+    "grok": {
+      "verdict": "CLEAR",
+      "session_id": "af92f927-4f14-4b00-81dd-116b01b7a034",
+      "report": "research/pde_ledger_v3/_measurements/S11_lean_d4_fidelity_grok_v1.md",
+      "report_sha256": "de60ae4b59602860c97432f02e57952637bedddf867d4b7a7e3118ba1e6f5b98"
+    }
+  },
+  "completion_claimed": true,
+  "committed": false,
+  "authorization_context": "The user answered \"Proceed\" to the explicit request to send this frozen 34-file D4 packet to Claude and Grok for independent fidelity review.",
+  "pinned_export_constraint": "Preserve S11c-b/c1/c2 exports and all S11c calculation files; this packet and work do not write them.",
+  "authorization_quote": "Proceed",
+  "authorized_utc": "2026-09-16T21:58:33.415889+00:00",
+  "authorization_packet_sha256": "a91cfbf327a6d180e5f8d3e9e3dd9dc0037c426b71be41c0a55ec45d7a719762",
+  "authorization_destinations": [
+    "Claude",
+    "Grok"
+  ],
+  "authorization_preflight": {
+    "status": "PASS",
+    "packet_sha256": "a91cfbf327a6d180e5f8d3e9e3dd9dc0037c426b71be41c0a55ec45d7a719762",
+    "file_count": 34,
+    "compiled_objects": 14,
+    "checked": "archive/snapshot/live files; source/generator/instruments/reports/logs/objects; package pins; historical proof bytes"
+  },
+  "review_started_utc": "2026-09-16T21:58:41.154693+00:00",
+  "transport_directory": "/tmp/s11-lean-d4-fidelity-7n2pac9b/packet",
+  "launch_preflight": {
+    "status": "PASS",
+    "packet_sha256": "a91cfbf327a6d180e5f8d3e9e3dd9dc0037c426b71be41c0a55ec45d7a719762",
+    "file_count": 34,
+    "compiled_objects": 14,
+    "checked": "archive/snapshot/live files; source/generator/instruments/reports/logs/objects; package pins; historical proof bytes"
+  },
+  "supervisor_pid": 483987,
+  "review_supervisor_sha256": "aaa8a4ca309df40000d936a661ef0a23897539410b3c86046440699e36a25937",
+  "review_supervisor_finished_utc": "2026-09-16T22:14:18.209977+00:00",
+  "live_files_changed_since_packet": [],
+  "completed_utc": "2026-09-16T22:20:19.181717+00:00",
+  "completion_scope": "Bounded D4 quadratic invariant classification D4.1\u2013D4.4 only",
+  "unresolved_blockers": [],
+  "closure_validation": "research/pde_ledger_v3/_measurements/S11_lean_d4_closure_validation.json",
+  "closure_validation_sha256": "6a57bf49ba7e3e5aa08d671b3403d23b0d95f178a8fc31c8f29191b489cc409d",
+  "closure_document": "research/pde_ledger_v3/lean/s11/D4_FIDELITY_REVIEW.md",
+  "live_packet_documentation_changes": {
+    "lean/s11/D4_COVERAGE.md": "acfd052e066a8d0c8c370eaba96f425db182b0be15e5316f8d77098b0d1702ff",
+    "lean/s11/D4_FIDELITY.md": "3c4b73e588f7cb742ea2838597f767b5d4743856b24473b4db005754da10563c",
+    "lean/s11/D4_VERIFICATION.txt": "649201970092d4ce5e76ecb478ccc0bcb1c29b313b7b3f074308035a989bbb24",
+    "lean/s11/README.md": "ddacae44948182edc443e779e62b3d0a7b1c5cb0e4b701733a99d8182f5b532a"
+  },
+  "disposition": "Both independent reviews CLEAR with no blockers. Optional observations resolved by documentation or declined under the stopping rule; no proof/instrument/native changes or substantive re-review required."
+}

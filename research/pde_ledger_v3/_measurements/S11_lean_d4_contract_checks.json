@@ -1,0 +1,1836 @@
+{
+  "status": "PASS",
+  "started_utc": "2026-09-16T21:45:53.935419+00:00",
+  "instrument_sha256": "512b0be7acee45bdfb5f209f845dfb855f54885a7095ae178aff3e5d2420b877",
+  "source_sha256_before": {
+    "_measurements/S11_lean_d4_generate.py": "b71b4813a3d8d00a786069f2416527c8e7f631b9e104c3094e3e7377a5c8d28d",
+    "lean/lake-manifest.json": "91fd5318cdc35e4044d6e059c6ef73d94b955d27adf8a5860b07ec92add9377e",
+    "lean/lakefile.toml": "7430d06c3972d9e214470201240bdeace6e175f17286842f888c679506adcec1",
+    "lean/lean-toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+    "lean/s11/S11D4Invariants/Census.lean": "ff727f1177cc6f4125f3116ba2a65149f961ba3e663ad8d79760153a4089c150",
+    "lean/s11/S11D4Invariants/Classification.lean": "3b95a47959eeabc44268a2ae7dd1b8d5ff9d3f454d3c7b12d23c7fca365a2729",
+    "lean/s11/S11D4Invariants/ConstraintBlock0.lean": "a392b17298a7a4e89f2a29b7f475d3451d0845041a9dbe38704429812e7e7425",
+    "lean/s11/S11D4Invariants/ConstraintBlock1.lean": "9e6cdf6c14a124af9e713fc0d922d5b37def9773d658cdb53847ce6e94769651",
+    "lean/s11/S11D4Invariants/ConstraintBlock2.lean": "d22ebe83d4b3e3a6bae8ebcfa7a94ddb34d2fe95110b23a3e9948a20dcf614e9",
+    "lean/s11/S11D4Invariants/ConstraintBlock3.lean": "a4f413393844de5e8a0126cf03d502c6ee32b1a44686b03762d39db72764ffa0",
+    "lean/s11/S11D4Invariants/ConstraintPolynomial.lean": "998ce5e4f2d0930e5e52997c4c300128d990b175030272dd321e4004036ec41a",
+    "lean/s11/S11D4Invariants/Constraints.lean": "dfe4f2dc27bc140681eb60ce2cf0fdc6926bcb61ab31e2ef2bb8957c1e68c43e",
+    "lean/s11/S11D4Invariants/Controls.lean": "71744668ec60a6b1a1addd882c75fed08855caa4c565f8516576abed0c455f8b",
+    "lean/s11/S11D4Invariants/Forms.lean": "74ff651936459ee6e3b7b9a136b06c929be19ec22ce10559dd371008d2e03a69",
+    "lean/s11/S11D4Invariants/Orientation.lean": "417aa006bce48911f0cdd914b0f9087e19fbf876d7a13647d98f684a545ce31f",
+    "lean/s11/S11D4Invariants/Quadratic.lean": "5d64eda063b367049135aed7072821f2679dc860987dc0578036af6955809763",
+    "lean/s11/S11D4Invariants/Rotation.lean": "01f3e8e0fa11ba6eb53c756b8ea67a825de83f2cd13c8b81b5c58de6490f391c",
+    "lean/s11/S11D4Invariants.lean": "c261c18a429a14566e8a53837098ce81bd8d168dca02d0679a56548e4b99c82d"
+  },
+  "dependency_olean_sha256": {},
+  "checks": [
+    {
+      "name": "build_Quadratic",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "-o",
+        "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S11D4Invariants/Quadratic.olean",
+        "s11/S11D4Invariants/Quadratic.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 54.088,
+      "source_sha256": "5d64eda063b367049135aed7072821f2679dc860987dc0578036af6955809763",
+      "required_failure_in": null,
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "olean_sha256": "48361d3511e3f8a471577407190d37756eba773675f311dcbfd2c1606adba1a3",
+      "input_olean_sha256": {},
+      "reused_from_instrument_sha256": "94e43340a6da2eb71d5bd46981448572dce913770c7118cb71fa34997ac82199",
+      "reuse_source_dependency_sha256": {
+        "_measurements/S11_lean_d4_generate.py": "b71b4813a3d8d00a786069f2416527c8e7f631b9e104c3094e3e7377a5c8d28d",
+        "lean/lake-manifest.json": "91fd5318cdc35e4044d6e059c6ef73d94b955d27adf8a5860b07ec92add9377e",
+        "lean/lakefile.toml": "7430d06c3972d9e214470201240bdeace6e175f17286842f888c679506adcec1",
+        "lean/lean-toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+        "lean/s11/S11D4Invariants/Quadratic.lean": "5d64eda063b367049135aed7072821f2679dc860987dc0578036af6955809763"
+      }
+    },
+    {
+      "name": "build_Rotation",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "-o",
+        "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S11D4Invariants/Rotation.olean",
+        "s11/S11D4Invariants/Rotation.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 85.747,
+      "source_sha256": "01f3e8e0fa11ba6eb53c756b8ea67a825de83f2cd13c8b81b5c58de6490f391c",
+      "required_failure_in": null,
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "olean_sha256": "0562cb2478f1881c42f46c3a590546f886c3a1b475e0eb656badd0cd62db98cc",
+      "input_olean_sha256": {
+        "lean/.lake/build/lib/lean/S11D4Invariants/Quadratic.olean": "48361d3511e3f8a471577407190d37756eba773675f311dcbfd2c1606adba1a3"
+      },
+      "reused_from_instrument_sha256": "94e43340a6da2eb71d5bd46981448572dce913770c7118cb71fa34997ac82199",
+      "reuse_source_dependency_sha256": {
+        "_measurements/S11_lean_d4_generate.py": "b71b4813a3d8d00a786069f2416527c8e7f631b9e104c3094e3e7377a5c8d28d",
+        "lean/lake-manifest.json": "91fd5318cdc35e4044d6e059c6ef73d94b955d27adf8a5860b07ec92add9377e",
+        "lean/lakefile.toml": "7430d06c3972d9e214470201240bdeace6e175f17286842f888c679506adcec1",
+        "lean/lean-toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+        "lean/s11/S11D4Invariants/Quadratic.lean": "5d64eda063b367049135aed7072821f2679dc860987dc0578036af6955809763",
+        "lean/s11/S11D4Invariants/Rotation.lean": "01f3e8e0fa11ba6eb53c756b8ea67a825de83f2cd13c8b81b5c58de6490f391c"
+      }
+    },
+    {
+      "name": "build_Orientation",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "-o",
+        "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S11D4Invariants/Orientation.olean",
+        "s11/S11D4Invariants/Orientation.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 12.702,
+      "source_sha256": "417aa006bce48911f0cdd914b0f9087e19fbf876d7a13647d98f684a545ce31f",
+      "required_failure_in": null,
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "olean_sha256": "b7c3908a02ef887a9fa18f0fd8dba613a17c18c3038b4c0d298cfd5cb6358d67",
+      "input_olean_sha256": {
+        "lean/.lake/build/lib/lean/S11D4Invariants/Quadratic.olean": "48361d3511e3f8a471577407190d37756eba773675f311dcbfd2c1606adba1a3",
+        "lean/.lake/build/lib/lean/S11D4Invariants/Rotation.olean": "0562cb2478f1881c42f46c3a590546f886c3a1b475e0eb656badd0cd62db98cc"
+      },
+      "reused_from_instrument_sha256": "94e43340a6da2eb71d5bd46981448572dce913770c7118cb71fa34997ac82199",
+      "reuse_source_dependency_sha256": {
+        "_measurements/S11_lean_d4_generate.py": "b71b4813a3d8d00a786069f2416527c8e7f631b9e104c3094e3e7377a5c8d28d",
+        "lean/lake-manifest.json": "91fd5318cdc35e4044d6e059c6ef73d94b955d27adf8a5860b07ec92add9377e",
+        "lean/lakefile.toml": "7430d06c3972d9e214470201240bdeace6e175f17286842f888c679506adcec1",
+        "lean/lean-toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+        "lean/s11/S11D4Invariants/Orientation.lean": "417aa006bce48911f0cdd914b0f9087e19fbf876d7a13647d98f684a545ce31f",
+        "lean/s11/S11D4Invariants/Quadratic.lean": "5d64eda063b367049135aed7072821f2679dc860987dc0578036af6955809763",
+        "lean/s11/S11D4Invariants/Rotation.lean": "01f3e8e0fa11ba6eb53c756b8ea67a825de83f2cd13c8b81b5c58de6490f391c"
+      }
+    },
+    {
+      "name": "build_Forms",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "-o",
+        "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S11D4Invariants/Forms.olean",
+        "s11/S11D4Invariants/Forms.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 15.873,
+      "source_sha256": "74ff651936459ee6e3b7b9a136b06c929be19ec22ce10559dd371008d2e03a69",
+      "required_failure_in": null,
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "olean_sha256": "13991521ee83b5460ce5461e729134f19505e8c862d3861215cc43867e4d54c1",
+      "input_olean_sha256": {
+        "lean/.lake/build/lib/lean/S11D4Invariants/Orientation.olean": "b7c3908a02ef887a9fa18f0fd8dba613a17c18c3038b4c0d298cfd5cb6358d67",
+        "lean/.lake/build/lib/lean/S11D4Invariants/Quadratic.olean": "48361d3511e3f8a471577407190d37756eba773675f311dcbfd2c1606adba1a3",
+        "lean/.lake/build/lib/lean/S11D4Invariants/Rotation.olean": "0562cb2478f1881c42f46c3a590546f886c3a1b475e0eb656badd0cd62db98cc"
+      },
+      "reused_from_instrument_sha256": "94e43340a6da2eb71d5bd46981448572dce913770c7118cb71fa34997ac82199",
+      "reuse_source_dependency_sha256": {
+        "_measurements/S11_lean_d4_generate.py": "b71b4813a3d8d00a786069f2416527c8e7f631b9e104c3094e3e7377a5c8d28d",
+        "lean/lake-manifest.json": "91fd5318cdc35e4044d6e059c6ef73d94b955d27adf8a5860b07ec92add9377e",
+        "lean/lakefile.toml": "7430d06c3972d9e214470201240bdeace6e175f17286842f888c679506adcec1",
+        "lean/lean-toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+        "lean/s11/S11D4Invariants/Forms.lean": "74ff651936459ee6e3b7b9a136b06c929be19ec22ce10559dd371008d2e03a69",
+        "lean/s11/S11D4Invariants/Orientation.lean": "417aa006bce48911f0cdd914b0f9087e19fbf876d7a13647d98f684a545ce31f",
+        "lean/s11/S11D4Invariants/Quadratic.lean": "5d64eda063b367049135aed7072821f2679dc860987dc0578036af6955809763",
+        "lean/s11/S11D4Invariants/Rotation.lean": "01f3e8e0fa11ba6eb53c756b8ea67a825de83f2cd13c8b81b5c58de6490f391c"
+      }
+    },
+    {
+      "name": "build_ConstraintPolynomial",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "-o",
+        "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S11D4Invariants/ConstraintPolynomial.olean",
+        "s11/S11D4Invariants/ConstraintPolynomial.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 9.732,
+      "source_sha256": "998ce5e4f2d0930e5e52997c4c300128d990b175030272dd321e4004036ec41a",
+      "required_failure_in": null,
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "olean_sha256": "a54a630545b7b6714ec3c71be9cac38b664eb66f2f781311d61eef4d7b01bb6e",
+      "input_olean_sha256": {
+        "lean/.lake/build/lib/lean/S11D4Invariants/Forms.olean": "13991521ee83b5460ce5461e729134f19505e8c862d3861215cc43867e4d54c1",
+        "lean/.lake/build/lib/lean/S11D4Invariants/Orientation.olean": "b7c3908a02ef887a9fa18f0fd8dba613a17c18c3038b4c0d298cfd5cb6358d67",
+        "lean/.lake/build/lib/lean/S11D4Invariants/Quadratic.olean": "48361d3511e3f8a471577407190d37756eba773675f311dcbfd2c1606adba1a3",
+        "lean/.lake/build/lib/lean/S11D4Invariants/Rotation.olean": "0562cb2478f1881c42f46c3a590546f886c3a1b475e0eb656badd0cd62db98cc"
+      },
+      "reused_from_instrument_sha256": "94e43340a6da2eb71d5bd46981448572dce913770c7118cb71fa34997ac82199",
+      "reuse_source_dependency_sha256": {
+        "_measurements/S11_lean_d4_generate.py": "b71b4813a3d8d00a786069f2416527c8e7f631b9e104c3094e3e7377a5c8d28d",
+        "lean/lake-manifest.json": "91fd5318cdc35e4044d6e059c6ef73d94b955d27adf8a5860b07ec92add9377e",
+        "lean/lakefile.toml": "7430d06c3972d9e214470201240bdeace6e175f17286842f888c679506adcec1",
+        "lean/lean-toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+        "lean/s11/S11D4Invariants/ConstraintPolynomial.lean": "998ce5e4f2d0930e5e52997c4c300128d990b175030272dd321e4004036ec41a",
+        "lean/s11/S11D4Invariants/Forms.lean": "74ff651936459ee6e3b7b9a136b06c929be19ec22ce10559dd371008d2e03a69",
+        "lean/s11/S11D4Invariants/Orientation.lean": "417aa006bce48911f0cdd914b0f9087e19fbf876d7a13647d98f684a545ce31f",
+        "lean/s11/S11D4Invariants/Quadratic.lean": "5d64eda063b367049135aed7072821f2679dc860987dc0578036af6955809763",
+        "lean/s11/S11D4Invariants/Rotation.lean": "01f3e8e0fa11ba6eb53c756b8ea67a825de83f2cd13c8b81b5c58de6490f391c"
+      }
+    },
+    {
+      "name": "build_ConstraintBlock0",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "-o",
+        "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S11D4Invariants/ConstraintBlock0.olean",
+        "s11/S11D4Invariants/ConstraintBlock0.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 102.964,
+      "source_sha256": "a392b17298a7a4e89f2a29b7f475d3451d0845041a9dbe38704429812e7e7425",
+      "required_failure_in": null,
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "olean_sha256": "ba6c12127d281349829eb82fc9876e51d63ce2daa8fbfbb5267ce954a6d18226",
+      "input_olean_sha256": {
+        "lean/.lake/build/lib/lean/S11D4Invariants/ConstraintPolynomial.olean": "a54a630545b7b6714ec3c71be9cac38b664eb66f2f781311d61eef4d7b01bb6e",
+        "lean/.lake/build/lib/lean/S11D4Invariants/Forms.olean": "13991521ee83b5460ce5461e729134f19505e8c862d3861215cc43867e4d54c1",
+        "lean/.lake/build/lib/lean/S11D4Invariants/Orientation.olean": "b7c3908a02ef887a9fa18f0fd8dba613a17c18c3038b4c0d298cfd5cb6358d67",
+        "lean/.lake/build/lib/lean/S11D4Invariants/Quadratic.olean": "48361d3511e3f8a471577407190d37756eba773675f311dcbfd2c1606adba1a3",
+        "lean/.lake/build/lib/lean/S11D4Invariants/Rotation.olean": "0562cb2478f1881c42f46c3a590546f886c3a1b475e0eb656badd0cd62db98cc"
+      },
+      "reused_from_instrument_sha256": "94e43340a6da2eb71d5bd46981448572dce913770c7118cb71fa34997ac82199",
+      "reuse_source_dependency_sha256": {
+        "_measurements/S11_lean_d4_generate.py": "b71b4813a3d8d00a786069f2416527c8e7f631b9e104c3094e3e7377a5c8d28d",
+        "lean/lake-manifest.json": "91fd5318cdc35e4044d6e059c6ef73d94b955d27adf8a5860b07ec92add9377e",
+        "lean/lakefile.toml": "7430d06c3972d9e214470201240bdeace6e175f17286842f888c679506adcec1",
+        "lean/lean-toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+        "lean/s11/S11D4Invariants/ConstraintBlock0.lean": "a392b17298a7a4e89f2a29b7f475d3451d0845041a9dbe38704429812e7e7425",
+        "lean/s11/S11D4Invariants/ConstraintPolynomial.lean": "998ce5e4f2d0930e5e52997c4c300128d990b175030272dd321e4004036ec41a",
+        "lean/s11/S11D4Invariants/Forms.lean": "74ff651936459ee6e3b7b9a136b06c929be19ec22ce10559dd371008d2e03a69",
+        "lean/s11/S11D4Invariants/Orientation.lean": "417aa006bce48911f0cdd914b0f9087e19fbf876d7a13647d98f684a545ce31f",
+        "lean/s11/S11D4Invariants/Quadratic.lean": "5d64eda063b367049135aed7072821f2679dc860987dc0578036af6955809763",
+        "lean/s11/S11D4Invariants/Rotation.lean": "01f3e8e0fa11ba6eb53c756b8ea67a825de83f2cd13c8b81b5c58de6490f391c"
+      }
+    },
+    {
+      "name": "build_ConstraintBlock1",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "-o",
+        "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S11D4Invariants/ConstraintBlock1.olean",
+        "s11/S11D4Invariants/ConstraintBlock1.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 98.232,
+      "source_sha256": "9e6cdf6c14a124af9e713fc0d922d5b37def9773d658cdb53847ce6e94769651",
+      "required_failure_in": null,
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "olean_sha256": "5b616443dcc909cfe38da17d11f1aca2763a428e9e18658ecf6e91d2e6a44c2c",
+      "input_olean_sha256": {
+        "lean/.lake/build/lib/lean/S11D4Invariants/ConstraintPolynomial.olean": "a54a630545b7b6714ec3c71be9cac38b664eb66f2f781311d61eef4d7b01bb6e",
+        "lean/.lake/build/lib/lean/S11D4Invariants/Forms.olean": "13991521ee83b5460ce5461e729134f19505e8c862d3861215cc43867e4d54c1",
+        "lean/.lake/build/lib/lean/S11D4Invariants/Orientation.olean": "b7c3908a02ef887a9fa18f0fd8dba613a17c18c3038b4c0d298cfd5cb6358d67",
+        "lean/.lake/build/lib/lean/S11D4Invariants/Quadratic.olean": "48361d3511e3f8a471577407190d37756eba773675f311dcbfd2c1606adba1a3",
+        "lean/.lake/build/lib/lean/S11D4Invariants/Rotation.olean": "0562cb2478f1881c42f46c3a590546f886c3a1b475e0eb656badd0cd62db98cc"
+      },
+      "reused_from_instrument_sha256": "94e43340a6da2eb71d5bd46981448572dce913770c7118cb71fa34997ac82199",
+      "reuse_source_dependency_sha256": {
+        "_measurements/S11_lean_d4_generate.py": "b71b4813a3d8d00a786069f2416527c8e7f631b9e104c3094e3e7377a5c8d28d",
+        "lean/lake-manifest.json": "91fd5318cdc35e4044d6e059c6ef73d94b955d27adf8a5860b07ec92add9377e",
+        "lean/lakefile.toml": "7430d06c3972d9e214470201240bdeace6e175f17286842f888c679506adcec1",
+        "lean/lean-toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+        "lean/s11/S11D4Invariants/ConstraintBlock1.lean": "9e6cdf6c14a124af9e713fc0d922d5b37def9773d658cdb53847ce6e94769651",
+        "lean/s11/S11D4Invariants/ConstraintPolynomial.lean": "998ce5e4f2d0930e5e52997c4c300128d990b175030272dd321e4004036ec41a",
+        "lean/s11/S11D4Invariants/Forms.lean": "74ff651936459ee6e3b7b9a136b06c929be19ec22ce10559dd371008d2e03a69",
+        "lean/s11/S11D4Invariants/Orientation.lean": "417aa006bce48911f0cdd914b0f9087e19fbf876d7a13647d98f684a545ce31f",
+        "lean/s11/S11D4Invariants/Quadratic.lean": "5d64eda063b367049135aed7072821f2679dc860987dc0578036af6955809763",
+        "lean/s11/S11D4Invariants/Rotation.lean": "01f3e8e0fa11ba6eb53c756b8ea67a825de83f2cd13c8b81b5c58de6490f391c"
+      }
+    },
+    {
+      "name": "build_ConstraintBlock2",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "-o",
+        "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S11D4Invariants/ConstraintBlock2.olean",
+        "s11/S11D4Invariants/ConstraintBlock2.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 99.033,
+      "source_sha256": "d22ebe83d4b3e3a6bae8ebcfa7a94ddb34d2fe95110b23a3e9948a20dcf614e9",
+      "required_failure_in": null,
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "olean_sha256": "27dfb6ffa539087f020be2cd9da47ac6ebbbe3cfb83c5db3558d4f4ce989a8d7",
+      "input_olean_sha256": {
+        "lean/.lake/build/lib/lean/S11D4Invariants/ConstraintPolynomial.olean": "a54a630545b7b6714ec3c71be9cac38b664eb66f2f781311d61eef4d7b01bb6e",
+        "lean/.lake/build/lib/lean/S11D4Invariants/Forms.olean": "13991521ee83b5460ce5461e729134f19505e8c862d3861215cc43867e4d54c1",
+        "lean/.lake/build/lib/lean/S11D4Invariants/Orientation.olean": "b7c3908a02ef887a9fa18f0fd8dba613a17c18c3038b4c0d298cfd5cb6358d67",
+        "lean/.lake/build/lib/lean/S11D4Invariants/Quadratic.olean": "48361d3511e3f8a471577407190d37756eba773675f311dcbfd2c1606adba1a3",
+        "lean/.lake/build/lib/lean/S11D4Invariants/Rotation.olean": "0562cb2478f1881c42f46c3a590546f886c3a1b475e0eb656badd0cd62db98cc"
+      },
+      "reused_from_instrument_sha256": "94e43340a6da2eb71d5bd46981448572dce913770c7118cb71fa34997ac82199",
+      "reuse_source_dependency_sha256": {
+        "_measurements/S11_lean_d4_generate.py": "b71b4813a3d8d00a786069f2416527c8e7f631b9e104c3094e3e7377a5c8d28d",
+        "lean/lake-manifest.json": "91fd5318cdc35e4044d6e059c6ef73d94b955d27adf8a5860b07ec92add9377e",
+        "lean/lakefile.toml": "7430d06c3972d9e214470201240bdeace6e175f17286842f888c679506adcec1",
+        "lean/lean-toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+        "lean/s11/S11D4Invariants/ConstraintBlock2.lean": "d22ebe83d4b3e3a6bae8ebcfa7a94ddb34d2fe95110b23a3e9948a20dcf614e9",
+        "lean/s11/S11D4Invariants/ConstraintPolynomial.lean": "998ce5e4f2d0930e5e52997c4c300128d990b175030272dd321e4004036ec41a",
+        "lean/s11/S11D4Invariants/Forms.lean": "74ff651936459ee6e3b7b9a136b06c929be19ec22ce10559dd371008d2e03a69",
+        "lean/s11/S11D4Invariants/Orientation.lean": "417aa006bce48911f0cdd914b0f9087e19fbf876d7a13647d98f684a545ce31f",
+        "lean/s11/S11D4Invariants/Quadratic.lean": "5d64eda063b367049135aed7072821f2679dc860987dc0578036af6955809763",
+        "lean/s11/S11D4Invariants/Rotation.lean": "01f3e8e0fa11ba6eb53c756b8ea67a825de83f2cd13c8b81b5c58de6490f391c"
+      }
+    },
+    {
+      "name": "build_ConstraintBlock3",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "-o",
+        "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S11D4Invariants/ConstraintBlock3.olean",
+        "s11/S11D4Invariants/ConstraintBlock3.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 100.652,
+      "source_sha256": "a4f413393844de5e8a0126cf03d502c6ee32b1a44686b03762d39db72764ffa0",
+      "required_failure_in": null,
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "olean_sha256": "e30d85d353325f9b86e8d8dcd14e29231aaf0f584dc0245ff5b945ff70161c79",
+      "input_olean_sha256": {
+        "lean/.lake/build/lib/lean/S11D4Invariants/ConstraintPolynomial.olean": "a54a630545b7b6714ec3c71be9cac38b664eb66f2f781311d61eef4d7b01bb6e",
+        "lean/.lake/build/lib/lean/S11D4Invariants/Forms.olean": "13991521ee83b5460ce5461e729134f19505e8c862d3861215cc43867e4d54c1",
+        "lean/.lake/build/lib/lean/S11D4Invariants/Orientation.olean": "b7c3908a02ef887a9fa18f0fd8dba613a17c18c3038b4c0d298cfd5cb6358d67",
+        "lean/.lake/build/lib/lean/S11D4Invariants/Quadratic.olean": "48361d3511e3f8a471577407190d37756eba773675f311dcbfd2c1606adba1a3",
+        "lean/.lake/build/lib/lean/S11D4Invariants/Rotation.olean": "0562cb2478f1881c42f46c3a590546f886c3a1b475e0eb656badd0cd62db98cc"
+      },
+      "reused_from_instrument_sha256": "94e43340a6da2eb71d5bd46981448572dce913770c7118cb71fa34997ac82199",
+      "reuse_source_dependency_sha256": {
+        "_measurements/S11_lean_d4_generate.py": "b71b4813a3d8d00a786069f2416527c8e7f631b9e104c3094e3e7377a5c8d28d",
+        "lean/lake-manifest.json": "91fd5318cdc35e4044d6e059c6ef73d94b955d27adf8a5860b07ec92add9377e",
+        "lean/lakefile.toml": "7430d06c3972d9e214470201240bdeace6e175f17286842f888c679506adcec1",
+        "lean/lean-toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+        "lean/s11/S11D4Invariants/ConstraintBlock3.lean": "a4f413393844de5e8a0126cf03d502c6ee32b1a44686b03762d39db72764ffa0",
+        "lean/s11/S11D4Invariants/ConstraintPolynomial.lean": "998ce5e4f2d0930e5e52997c4c300128d990b175030272dd321e4004036ec41a",
+        "lean/s11/S11D4Invariants/Forms.lean": "74ff651936459ee6e3b7b9a136b06c929be19ec22ce10559dd371008d2e03a69",
+        "lean/s11/S11D4Invariants/Orientation.lean": "417aa006bce48911f0cdd914b0f9087e19fbf876d7a13647d98f684a545ce31f",
+        "lean/s11/S11D4Invariants/Quadratic.lean": "5d64eda063b367049135aed7072821f2679dc860987dc0578036af6955809763",
+        "lean/s11/S11D4Invariants/Rotation.lean": "01f3e8e0fa11ba6eb53c756b8ea67a825de83f2cd13c8b81b5c58de6490f391c"
+      }
+    },
+    {
+      "name": "build_Constraints",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "-o",
+        "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S11D4Invariants/Constraints.olean",
+        "s11/S11D4Invariants/Constraints.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 71.902,
+      "source_sha256": "dfe4f2dc27bc140681eb60ce2cf0fdc6926bcb61ab31e2ef2bb8957c1e68c43e",
+      "required_failure_in": null,
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "olean_sha256": "93e21a270430915462180ac86b2e1d229636f8c7a85a019bb4b200559c2d11a7",
+      "input_olean_sha256": {
+        "lean/.lake/build/lib/lean/S11D4Invariants/ConstraintBlock0.olean": "ba6c12127d281349829eb82fc9876e51d63ce2daa8fbfbb5267ce954a6d18226",
+        "lean/.lake/build/lib/lean/S11D4Invariants/ConstraintBlock1.olean": "5b616443dcc909cfe38da17d11f1aca2763a428e9e18658ecf6e91d2e6a44c2c",
+        "lean/.lake/build/lib/lean/S11D4Invariants/ConstraintBlock2.olean": "27dfb6ffa539087f020be2cd9da47ac6ebbbe3cfb83c5db3558d4f4ce989a8d7",
+        "lean/.lake/build/lib/lean/S11D4Invariants/ConstraintBlock3.olean": "e30d85d353325f9b86e8d8dcd14e29231aaf0f584dc0245ff5b945ff70161c79",
+        "lean/.lake/build/lib/lean/S11D4Invariants/ConstraintPolynomial.olean": "a54a630545b7b6714ec3c71be9cac38b664eb66f2f781311d61eef4d7b01bb6e",
+        "lean/.lake/build/lib/lean/S11D4Invariants/Forms.olean": "13991521ee83b5460ce5461e729134f19505e8c862d3861215cc43867e4d54c1",
+        "lean/.lake/build/lib/lean/S11D4Invariants/Orientation.olean": "b7c3908a02ef887a9fa18f0fd8dba613a17c18c3038b4c0d298cfd5cb6358d67",
+        "lean/.lake/build/lib/lean/S11D4Invariants/Quadratic.olean": "48361d3511e3f8a471577407190d37756eba773675f311dcbfd2c1606adba1a3",
+        "lean/.lake/build/lib/lean/S11D4Invariants/Rotation.olean": "0562cb2478f1881c42f46c3a590546f886c3a1b475e0eb656badd0cd62db98cc"
+      },
+      "reused_from_instrument_sha256": "94e43340a6da2eb71d5bd46981448572dce913770c7118cb71fa34997ac82199",
+      "reuse_source_dependency_sha256": {
+        "_measurements/S11_lean_d4_generate.py": "b71b4813a3d8d00a786069f2416527c8e7f631b9e104c3094e3e7377a5c8d28d",
+        "lean/lake-manifest.json": "91fd5318cdc35e4044d6e059c6ef73d94b955d27adf8a5860b07ec92add9377e",
+        "lean/lakefile.toml": "7430d06c3972d9e214470201240bdeace6e175f17286842f888c679506adcec1",
+        "lean/lean-toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+        "lean/s11/S11D4Invariants/ConstraintBlock0.lean": "a392b17298a7a4e89f2a29b7f475d3451d0845041a9dbe38704429812e7e7425",
+        "lean/s11/S11D4Invariants/ConstraintBlock1.lean": "9e6cdf6c14a124af9e713fc0d922d5b37def9773d658cdb53847ce6e94769651",
+        "lean/s11/S11D4Invariants/ConstraintBlock2.lean": "d22ebe83d4b3e3a6bae8ebcfa7a94ddb34d2fe95110b23a3e9948a20dcf614e9",
+        "lean/s11/S11D4Invariants/ConstraintBlock3.lean": "a4f413393844de5e8a0126cf03d502c6ee32b1a44686b03762d39db72764ffa0",
+        "lean/s11/S11D4Invariants/ConstraintPolynomial.lean": "998ce5e4f2d0930e5e52997c4c300128d990b175030272dd321e4004036ec41a",
+        "lean/s11/S11D4Invariants/Constraints.lean": "dfe4f2dc27bc140681eb60ce2cf0fdc6926bcb61ab31e2ef2bb8957c1e68c43e",
+        "lean/s11/S11D4Invariants/Forms.lean": "74ff651936459ee6e3b7b9a136b06c929be19ec22ce10559dd371008d2e03a69",
+        "lean/s11/S11D4Invariants/Orientation.lean": "417aa006bce48911f0cdd914b0f9087e19fbf876d7a13647d98f684a545ce31f",
+        "lean/s11/S11D4Invariants/Quadratic.lean": "5d64eda063b367049135aed7072821f2679dc860987dc0578036af6955809763",
+        "lean/s11/S11D4Invariants/Rotation.lean": "01f3e8e0fa11ba6eb53c756b8ea67a825de83f2cd13c8b81b5c58de6490f391c"
+      }
+    },
+    {
+      "name": "build_Classification",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "-o",
+        "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S11D4Invariants/Classification.olean",
+        "s11/S11D4Invariants/Classification.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 17.333,
+      "source_sha256": "3b95a47959eeabc44268a2ae7dd1b8d5ff9d3f454d3c7b12d23c7fca365a2729",
+      "required_failure_in": null,
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "olean_sha256": "556ead212a046b381b6b6789eb957d17fc987f0266a1b56f4752cc3490e808de",
+      "input_olean_sha256": {
+        "lean/.lake/build/lib/lean/S11D4Invariants/ConstraintBlock0.olean": "ba6c12127d281349829eb82fc9876e51d63ce2daa8fbfbb5267ce954a6d18226",
+        "lean/.lake/build/lib/lean/S11D4Invariants/ConstraintBlock1.olean": "5b616443dcc909cfe38da17d11f1aca2763a428e9e18658ecf6e91d2e6a44c2c",
+        "lean/.lake/build/lib/lean/S11D4Invariants/ConstraintBlock2.olean": "27dfb6ffa539087f020be2cd9da47ac6ebbbe3cfb83c5db3558d4f4ce989a8d7",
+        "lean/.lake/build/lib/lean/S11D4Invariants/ConstraintBlock3.olean": "e30d85d353325f9b86e8d8dcd14e29231aaf0f584dc0245ff5b945ff70161c79",
+        "lean/.lake/build/lib/lean/S11D4Invariants/ConstraintPolynomial.olean": "a54a630545b7b6714ec3c71be9cac38b664eb66f2f781311d61eef4d7b01bb6e",
+        "lean/.lake/build/lib/lean/S11D4Invariants/Constraints.olean": "93e21a270430915462180ac86b2e1d229636f8c7a85a019bb4b200559c2d11a7",
+        "lean/.lake/build/lib/lean/S11D4Invariants/Forms.olean": "13991521ee83b5460ce5461e729134f19505e8c862d3861215cc43867e4d54c1",
+        "lean/.lake/build/lib/lean/S11D4Invariants/Orientation.olean": "b7c3908a02ef887a9fa18f0fd8dba613a17c18c3038b4c0d298cfd5cb6358d67",
+        "lean/.lake/build/lib/lean/S11D4Invariants/Quadratic.olean": "48361d3511e3f8a471577407190d37756eba773675f311dcbfd2c1606adba1a3",
+        "lean/.lake/build/lib/lean/S11D4Invariants/Rotation.olean": "0562cb2478f1881c42f46c3a590546f886c3a1b475e0eb656badd0cd62db98cc"
+      },
+      "reused_from_instrument_sha256": "94e43340a6da2eb71d5bd46981448572dce913770c7118cb71fa34997ac82199",
+      "reuse_source_dependency_sha256": {
+        "_measurements/S11_lean_d4_generate.py": "b71b4813a3d8d00a786069f2416527c8e7f631b9e104c3094e3e7377a5c8d28d",
+        "lean/lake-manifest.json": "91fd5318cdc35e4044d6e059c6ef73d94b955d27adf8a5860b07ec92add9377e",
+        "lean/lakefile.toml": "7430d06c3972d9e214470201240bdeace6e175f17286842f888c679506adcec1",
+        "lean/lean-toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+        "lean/s11/S11D4Invariants/Classification.lean": "3b95a47959eeabc44268a2ae7dd1b8d5ff9d3f454d3c7b12d23c7fca365a2729",
+        "lean/s11/S11D4Invariants/ConstraintBlock0.lean": "a392b17298a7a4e89f2a29b7f475d3451d0845041a9dbe38704429812e7e7425",
+        "lean/s11/S11D4Invariants/ConstraintBlock1.lean": "9e6cdf6c14a124af9e713fc0d922d5b37def9773d658cdb53847ce6e94769651",
+        "lean/s11/S11D4Invariants/ConstraintBlock2.lean": "d22ebe83d4b3e3a6bae8ebcfa7a94ddb34d2fe95110b23a3e9948a20dcf614e9",
+        "lean/s11/S11D4Invariants/ConstraintBlock3.lean": "a4f413393844de5e8a0126cf03d502c6ee32b1a44686b03762d39db72764ffa0",
+        "lean/s11/S11D4Invariants/ConstraintPolynomial.lean": "998ce5e4f2d0930e5e52997c4c300128d990b175030272dd321e4004036ec41a",
+        "lean/s11/S11D4Invariants/Constraints.lean": "dfe4f2dc27bc140681eb60ce2cf0fdc6926bcb61ab31e2ef2bb8957c1e68c43e",
+        "lean/s11/S11D4Invariants/Forms.lean": "74ff651936459ee6e3b7b9a136b06c929be19ec22ce10559dd371008d2e03a69",
+        "lean/s11/S11D4Invariants/Orientation.lean": "417aa006bce48911f0cdd914b0f9087e19fbf876d7a13647d98f684a545ce31f",
+        "lean/s11/S11D4Invariants/Quadratic.lean": "5d64eda063b367049135aed7072821f2679dc860987dc0578036af6955809763",
+        "lean/s11/S11D4Invariants/Rotation.lean": "01f3e8e0fa11ba6eb53c756b8ea67a825de83f2cd13c8b81b5c58de6490f391c"
+      }
+    },
+    {
+      "name": "build_Census",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "-o",
+        "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S11D4Invariants/Census.olean",
+        "s11/S11D4Invariants/Census.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 11.597,
+      "source_sha256": "ff727f1177cc6f4125f3116ba2a65149f961ba3e663ad8d79760153a4089c150",
+      "required_failure_in": null,
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "olean_sha256": "4d4c1a6e6877e372a9ab669d0b2ada76f3c9a34447aa7238344ccadf09ea0082",
+      "input_olean_sha256": {
+        "lean/.lake/build/lib/lean/S11D4Invariants/Classification.olean": "556ead212a046b381b6b6789eb957d17fc987f0266a1b56f4752cc3490e808de",
+        "lean/.lake/build/lib/lean/S11D4Invariants/ConstraintBlock0.olean": "ba6c12127d281349829eb82fc9876e51d63ce2daa8fbfbb5267ce954a6d18226",
+        "lean/.lake/build/lib/lean/S11D4Invariants/ConstraintBlock1.olean": "5b616443dcc909cfe38da17d11f1aca2763a428e9e18658ecf6e91d2e6a44c2c",
+        "lean/.lake/build/lib/lean/S11D4Invariants/ConstraintBlock2.olean": "27dfb6ffa539087f020be2cd9da47ac6ebbbe3cfb83c5db3558d4f4ce989a8d7",
+        "lean/.lake/build/lib/lean/S11D4Invariants/ConstraintBlock3.olean": "e30d85d353325f9b86e8d8dcd14e29231aaf0f584dc0245ff5b945ff70161c79",
+        "lean/.lake/build/lib/lean/S11D4Invariants/ConstraintPolynomial.olean": "a54a630545b7b6714ec3c71be9cac38b664eb66f2f781311d61eef4d7b01bb6e",
+        "lean/.lake/build/lib/lean/S11D4Invariants/Constraints.olean": "93e21a270430915462180ac86b2e1d229636f8c7a85a019bb4b200559c2d11a7",
+        "lean/.lake/build/lib/lean/S11D4Invariants/Forms.olean": "13991521ee83b5460ce5461e729134f19505e8c862d3861215cc43867e4d54c1",
+        "lean/.lake/build/lib/lean/S11D4Invariants/Orientation.olean": "b7c3908a02ef887a9fa18f0fd8dba613a17c18c3038b4c0d298cfd5cb6358d67",
+        "lean/.lake/build/lib/lean/S11D4Invariants/Quadratic.olean": "48361d3511e3f8a471577407190d37756eba773675f311dcbfd2c1606adba1a3",
+        "lean/.lake/build/lib/lean/S11D4Invariants/Rotation.olean": "0562cb2478f1881c42f46c3a590546f886c3a1b475e0eb656badd0cd62db98cc"
+      },
+      "reused_from_instrument_sha256": "94e43340a6da2eb71d5bd46981448572dce913770c7118cb71fa34997ac82199",
+      "reuse_source_dependency_sha256": {
+        "_measurements/S11_lean_d4_generate.py": "b71b4813a3d8d00a786069f2416527c8e7f631b9e104c3094e3e7377a5c8d28d",
+        "lean/lake-manifest.json": "91fd5318cdc35e4044d6e059c6ef73d94b955d27adf8a5860b07ec92add9377e",
+        "lean/lakefile.toml": "7430d06c3972d9e214470201240bdeace6e175f17286842f888c679506adcec1",
+        "lean/lean-toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+        "lean/s11/S11D4Invariants/Census.lean": "ff727f1177cc6f4125f3116ba2a65149f961ba3e663ad8d79760153a4089c150",
+        "lean/s11/S11D4Invariants/Classification.lean": "3b95a47959eeabc44268a2ae7dd1b8d5ff9d3f454d3c7b12d23c7fca365a2729",
+        "lean/s11/S11D4Invariants/ConstraintBlock0.lean": "a392b17298a7a4e89f2a29b7f475d3451d0845041a9dbe38704429812e7e7425",
+        "lean/s11/S11D4Invariants/ConstraintBlock1.lean": "9e6cdf6c14a124af9e713fc0d922d5b37def9773d658cdb53847ce6e94769651",
+        "lean/s11/S11D4Invariants/ConstraintBlock2.lean": "d22ebe83d4b3e3a6bae8ebcfa7a94ddb34d2fe95110b23a3e9948a20dcf614e9",
+        "lean/s11/S11D4Invariants/ConstraintBlock3.lean": "a4f413393844de5e8a0126cf03d502c6ee32b1a44686b03762d39db72764ffa0",
+        "lean/s11/S11D4Invariants/ConstraintPolynomial.lean": "998ce5e4f2d0930e5e52997c4c300128d990b175030272dd321e4004036ec41a",
+        "lean/s11/S11D4Invariants/Constraints.lean": "dfe4f2dc27bc140681eb60ce2cf0fdc6926bcb61ab31e2ef2bb8957c1e68c43e",
+        "lean/s11/S11D4Invariants/Forms.lean": "74ff651936459ee6e3b7b9a136b06c929be19ec22ce10559dd371008d2e03a69",
+        "lean/s11/S11D4Invariants/Orientation.lean": "417aa006bce48911f0cdd914b0f9087e19fbf876d7a13647d98f684a545ce31f",
+        "lean/s11/S11D4Invariants/Quadratic.lean": "5d64eda063b367049135aed7072821f2679dc860987dc0578036af6955809763",
+        "lean/s11/S11D4Invariants/Rotation.lean": "01f3e8e0fa11ba6eb53c756b8ea67a825de83f2cd13c8b81b5c58de6490f391c"
+      }
+    },
+    {
+      "name": "build_Controls",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "-o",
+        "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S11D4Invariants/Controls.olean",
+        "s11/S11D4Invariants/Controls.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 8.927,
+      "source_sha256": "71744668ec60a6b1a1addd882c75fed08855caa4c565f8516576abed0c455f8b",
+      "required_failure_in": null,
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "olean_sha256": "028dfc14163252fbd1c57704f44076359b33c65e95f77e3aa37f5887fe2447c2",
+      "input_olean_sha256": {
+        "lean/.lake/build/lib/lean/S11D4Invariants/Census.olean": "4d4c1a6e6877e372a9ab669d0b2ada76f3c9a34447aa7238344ccadf09ea0082",
+        "lean/.lake/build/lib/lean/S11D4Invariants/Classification.olean": "556ead212a046b381b6b6789eb957d17fc987f0266a1b56f4752cc3490e808de",
+        "lean/.lake/build/lib/lean/S11D4Invariants/ConstraintBlock0.olean": "ba6c12127d281349829eb82fc9876e51d63ce2daa8fbfbb5267ce954a6d18226",
+        "lean/.lake/build/lib/lean/S11D4Invariants/ConstraintBlock1.olean": "5b616443dcc909cfe38da17d11f1aca2763a428e9e18658ecf6e91d2e6a44c2c",
+        "lean/.lake/build/lib/lean/S11D4Invariants/ConstraintBlock2.olean": "27dfb6ffa539087f020be2cd9da47ac6ebbbe3cfb83c5db3558d4f4ce989a8d7",
+        "lean/.lake/build/lib/lean/S11D4Invariants/ConstraintBlock3.olean": "e30d85d353325f9b86e8d8dcd14e29231aaf0f584dc0245ff5b945ff70161c79",
+        "lean/.lake/build/lib/lean/S11D4Invariants/ConstraintPolynomial.olean": "a54a630545b7b6714ec3c71be9cac38b664eb66f2f781311d61eef4d7b01bb6e",
+        "lean/.lake/build/lib/lean/S11D4Invariants/Constraints.olean": "93e21a270430915462180ac86b2e1d229636f8c7a85a019bb4b200559c2d11a7",
+        "lean/.lake/build/lib/lean/S11D4Invariants/Forms.olean": "13991521ee83b5460ce5461e729134f19505e8c862d3861215cc43867e4d54c1",
+        "lean/.lake/build/lib/lean/S11D4Invariants/Orientation.olean": "b7c3908a02ef887a9fa18f0fd8dba613a17c18c3038b4c0d298cfd5cb6358d67",
+        "lean/.lake/build/lib/lean/S11D4Invariants/Quadratic.olean": "48361d3511e3f8a471577407190d37756eba773675f311dcbfd2c1606adba1a3",
+        "lean/.lake/build/lib/lean/S11D4Invariants/Rotation.olean": "0562cb2478f1881c42f46c3a590546f886c3a1b475e0eb656badd0cd62db98cc"
+      },
+      "reused_from_instrument_sha256": "94e43340a6da2eb71d5bd46981448572dce913770c7118cb71fa34997ac82199",
+      "reuse_source_dependency_sha256": {
+        "_measurements/S11_lean_d4_generate.py": "b71b4813a3d8d00a786069f2416527c8e7f631b9e104c3094e3e7377a5c8d28d",
+        "lean/lake-manifest.json": "91fd5318cdc35e4044d6e059c6ef73d94b955d27adf8a5860b07ec92add9377e",
+        "lean/lakefile.toml": "7430d06c3972d9e214470201240bdeace6e175f17286842f888c679506adcec1",
+        "lean/lean-toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+        "lean/s11/S11D4Invariants/Census.lean": "ff727f1177cc6f4125f3116ba2a65149f961ba3e663ad8d79760153a4089c150",
+        "lean/s11/S11D4Invariants/Classification.lean": "3b95a47959eeabc44268a2ae7dd1b8d5ff9d3f454d3c7b12d23c7fca365a2729",
+        "lean/s11/S11D4Invariants/ConstraintBlock0.lean": "a392b17298a7a4e89f2a29b7f475d3451d0845041a9dbe38704429812e7e7425",
+        "lean/s11/S11D4Invariants/ConstraintBlock1.lean": "9e6cdf6c14a124af9e713fc0d922d5b37def9773d658cdb53847ce6e94769651",
+        "lean/s11/S11D4Invariants/ConstraintBlock2.lean": "d22ebe83d4b3e3a6bae8ebcfa7a94ddb34d2fe95110b23a3e9948a20dcf614e9",
+        "lean/s11/S11D4Invariants/ConstraintBlock3.lean": "a4f413393844de5e8a0126cf03d502c6ee32b1a44686b03762d39db72764ffa0",
+        "lean/s11/S11D4Invariants/ConstraintPolynomial.lean": "998ce5e4f2d0930e5e52997c4c300128d990b175030272dd321e4004036ec41a",
+        "lean/s11/S11D4Invariants/Constraints.lean": "dfe4f2dc27bc140681eb60ce2cf0fdc6926bcb61ab31e2ef2bb8957c1e68c43e",
+        "lean/s11/S11D4Invariants/Controls.lean": "71744668ec60a6b1a1addd882c75fed08855caa4c565f8516576abed0c455f8b",
+        "lean/s11/S11D4Invariants/Forms.lean": "74ff651936459ee6e3b7b9a136b06c929be19ec22ce10559dd371008d2e03a69",
+        "lean/s11/S11D4Invariants/Orientation.lean": "417aa006bce48911f0cdd914b0f9087e19fbf876d7a13647d98f684a545ce31f",
+        "lean/s11/S11D4Invariants/Quadratic.lean": "5d64eda063b367049135aed7072821f2679dc860987dc0578036af6955809763",
+        "lean/s11/S11D4Invariants/Rotation.lean": "01f3e8e0fa11ba6eb53c756b8ea67a825de83f2cd13c8b81b5c58de6490f391c"
+      }
+    },
+    {
+      "name": "axiom_audit",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "-o",
+        "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S11D4Invariants.olean",
+        "s11/S11D4Invariants.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 7.119,
+      "source_sha256": "c261c18a429a14566e8a53837098ce81bd8d168dca02d0679a56548e4b99c82d",
+      "required_failure_in": null,
+      "diagnostics": [],
+      "output": "'S11D4Invariants.coordinates_decode' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D4Invariants.decode_coordinates' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D4Invariants.frame_expansion' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D4Invariants.quadratic_representation' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D4Invariants.det_four' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D4Invariants.rotationXY_proper' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D4Invariants.rotationYZ_proper' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D4Invariants.rotationZW_proper' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D4Invariants.coordinates_rotationXY' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D4Invariants.coordinates_rotationYZ' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D4Invariants.coordinates_rotationZW' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D4Invariants.reflection_orthogonal' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D4Invariants.reflection_det' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D4Invariants.trace_conjugate' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D4Invariants.conjugate_mul' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D4Invariants.conjugate_transpose' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D4Invariants.orientation_conjugate' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D4Invariants.traceSquare_apply' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D4Invariants.traceOfSquare_apply' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D4Invariants.frobeniusSquare_apply' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D4Invariants.orientationForm_apply' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D4Invariants.invariantForm_apply' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D4Invariants.invariantForm_SO' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D4Invariants.invariantForm_reflection' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D4Invariants.invariant_polynomial' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D4Invariants.SO_classification' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D4Invariants.invariantForm_injective' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D4Invariants.SO_unique' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D4Invariants.invariantForm_O' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D4Invariants.invariantForm_odd' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D4Invariants.O_classification' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D4Invariants.odd_classification' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D4Invariants.soMap_bijective' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D4Invariants.oMap_bijective' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D4Invariants.oddMap_bijective' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D4Invariants.so_dimension' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D4Invariants.o_dimension' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D4Invariants.odd_dimension' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D4Invariants.even_odd_disjoint' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D4Invariants.even_odd_span' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D4Invariants.census' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D4Invariants.trace_not_omittable' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D4Invariants.traceOfSquare_not_omittable' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D4Invariants.frobenius_not_omittable' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D4Invariants.orientation_not_omittable' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D4Invariants.orientation_nonzero' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D4Invariants.nonzero_odd_exists' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D4Invariants.zero_invariant' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D4Invariants.single_entry_not_invariant' depends on axioms: [propext, Classical.choice, Quot.sound]\n",
+      "output_sha256": "4f903aba48851284776d987517957cae2b508a075f01e2ed664f0bbea10775fc",
+      "olean_sha256": "eda9abe48f3366a8136f6553daec17e8a4f66a740426b17bbad2a89b14c4520b",
+      "input_olean_sha256": {
+        "lean/.lake/build/lib/lean/S11D4Invariants/Census.olean": "4d4c1a6e6877e372a9ab669d0b2ada76f3c9a34447aa7238344ccadf09ea0082",
+        "lean/.lake/build/lib/lean/S11D4Invariants/Classification.olean": "556ead212a046b381b6b6789eb957d17fc987f0266a1b56f4752cc3490e808de",
+        "lean/.lake/build/lib/lean/S11D4Invariants/ConstraintBlock0.olean": "ba6c12127d281349829eb82fc9876e51d63ce2daa8fbfbb5267ce954a6d18226",
+        "lean/.lake/build/lib/lean/S11D4Invariants/ConstraintBlock1.olean": "5b616443dcc909cfe38da17d11f1aca2763a428e9e18658ecf6e91d2e6a44c2c",
+        "lean/.lake/build/lib/lean/S11D4Invariants/ConstraintBlock2.olean": "27dfb6ffa539087f020be2cd9da47ac6ebbbe3cfb83c5db3558d4f4ce989a8d7",
+        "lean/.lake/build/lib/lean/S11D4Invariants/ConstraintBlock3.olean": "e30d85d353325f9b86e8d8dcd14e29231aaf0f584dc0245ff5b945ff70161c79",
+        "lean/.lake/build/lib/lean/S11D4Invariants/ConstraintPolynomial.olean": "a54a630545b7b6714ec3c71be9cac38b664eb66f2f781311d61eef4d7b01bb6e",
+        "lean/.lake/build/lib/lean/S11D4Invariants/Constraints.olean": "93e21a270430915462180ac86b2e1d229636f8c7a85a019bb4b200559c2d11a7",
+        "lean/.lake/build/lib/lean/S11D4Invariants/Controls.olean": "028dfc14163252fbd1c57704f44076359b33c65e95f77e3aa37f5887fe2447c2",
+        "lean/.lake/build/lib/lean/S11D4Invariants/Forms.olean": "13991521ee83b5460ce5461e729134f19505e8c862d3861215cc43867e4d54c1",
+        "lean/.lake/build/lib/lean/S11D4Invariants/Orientation.olean": "b7c3908a02ef887a9fa18f0fd8dba613a17c18c3038b4c0d298cfd5cb6358d67",
+        "lean/.lake/build/lib/lean/S11D4Invariants/Quadratic.olean": "48361d3511e3f8a471577407190d37756eba773675f311dcbfd2c1606adba1a3",
+        "lean/.lake/build/lib/lean/S11D4Invariants/Rotation.olean": "0562cb2478f1881c42f46c3a590546f886c3a1b475e0eb656badd0cd62db98cc"
+      },
+      "reused_from_instrument_sha256": "94e43340a6da2eb71d5bd46981448572dce913770c7118cb71fa34997ac82199",
+      "reuse_source_dependency_sha256": {
+        "_measurements/S11_lean_d4_generate.py": "b71b4813a3d8d00a786069f2416527c8e7f631b9e104c3094e3e7377a5c8d28d",
+        "lean/lake-manifest.json": "91fd5318cdc35e4044d6e059c6ef73d94b955d27adf8a5860b07ec92add9377e",
+        "lean/lakefile.toml": "7430d06c3972d9e214470201240bdeace6e175f17286842f888c679506adcec1",
+        "lean/lean-toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+        "lean/s11/S11D4Invariants/Census.lean": "ff727f1177cc6f4125f3116ba2a65149f961ba3e663ad8d79760153a4089c150",
+        "lean/s11/S11D4Invariants/Classification.lean": "3b95a47959eeabc44268a2ae7dd1b8d5ff9d3f454d3c7b12d23c7fca365a2729",
+        "lean/s11/S11D4Invariants/ConstraintBlock0.lean": "a392b17298a7a4e89f2a29b7f475d3451d0845041a9dbe38704429812e7e7425",
+        "lean/s11/S11D4Invariants/ConstraintBlock1.lean": "9e6cdf6c14a124af9e713fc0d922d5b37def9773d658cdb53847ce6e94769651",
+        "lean/s11/S11D4Invariants/ConstraintBlock2.lean": "d22ebe83d4b3e3a6bae8ebcfa7a94ddb34d2fe95110b23a3e9948a20dcf614e9",
+        "lean/s11/S11D4Invariants/ConstraintBlock3.lean": "a4f413393844de5e8a0126cf03d502c6ee32b1a44686b03762d39db72764ffa0",
+        "lean/s11/S11D4Invariants/ConstraintPolynomial.lean": "998ce5e4f2d0930e5e52997c4c300128d990b175030272dd321e4004036ec41a",
+        "lean/s11/S11D4Invariants/Constraints.lean": "dfe4f2dc27bc140681eb60ce2cf0fdc6926bcb61ab31e2ef2bb8957c1e68c43e",
+        "lean/s11/S11D4Invariants/Controls.lean": "71744668ec60a6b1a1addd882c75fed08855caa4c565f8516576abed0c455f8b",
+        "lean/s11/S11D4Invariants/Forms.lean": "74ff651936459ee6e3b7b9a136b06c929be19ec22ce10559dd371008d2e03a69",
+        "lean/s11/S11D4Invariants/Orientation.lean": "417aa006bce48911f0cdd914b0f9087e19fbf876d7a13647d98f684a545ce31f",
+        "lean/s11/S11D4Invariants/Quadratic.lean": "5d64eda063b367049135aed7072821f2679dc860987dc0578036af6955809763",
+        "lean/s11/S11D4Invariants/Rotation.lean": "01f3e8e0fa11ba6eb53c756b8ea67a825de83f2cd13c8b81b5c58de6490f391c",
+        "lean/s11/S11D4Invariants.lean": "c261c18a429a14566e8a53837098ce81bd8d168dca02d0679a56548e4b99c82d"
+      }
+    },
+    {
+      "name": "trace_normalization",
+      "expected": "REJECTED",
+      "outcome": "REJECTED",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/d4_verification/trace_normalization.lean"
+      ],
+      "exit_status": 1,
+      "wall_seconds": 18.376,
+      "source_sha256": "3efb6dad2a9000f31085c7a53ec3c7c910f0c3a5bac3d7ae8e23e7e6123bb96d",
+      "required_failure_in": "traceSquare_apply",
+      "diagnostics": [
+        {
+          "declaration": "traceSquare_apply",
+          "line": 21,
+          "message": "s11/_scratch/d4_verification/trace_normalization.lean:21:69: error: unsolved goals\nG : Mat\n⊢ G 0 0 * G 1 1 * 3 + G 0 0 * G 2 2 * 2 + G 0 0 * G 3 3 * 2 + G 0 0 ^ 2 + G 1 1 * G 2 2 * 2 + G 1 1 * G 3 3 * 2 +\n            G 1 1 ^ 2 +\n          G 2 2 * G 3 3 * 2 +\n        G 2 2 ^ 2 +\n      G 3 3 ^ 2 =\n    G 0 0 * G 1 1 * 2 + G 0 0 * G 2 2 * 2 + G 0 0 * G 3 3 * 2 + G 0 0 ^ 2 + G 1 1 * G 2 2 * 2 + G 1 1 * G 3 3 * 2 +\n            G 1 1 ^ 2 +\n          G 2 2 * G 3 3 * 2 +\n        G 2 2 ^ 2 +\n      G 3 3 ^ 2\n"
+        }
+      ],
+      "output": "Try this:\n  [apply] ring_nf\n  \n  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.\n    \n  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.\ns11/_scratch/d4_verification/trace_normalization.lean:21:69: error: unsolved goals\nG : Mat\n⊢ G 0 0 * G 1 1 * 3 + G 0 0 * G 2 2 * 2 + G 0 0 * G 3 3 * 2 + G 0 0 ^ 2 + G 1 1 * G 2 2 * 2 + G 1 1 * G 3 3 * 2 +\n            G 1 1 ^ 2 +\n          G 2 2 * G 3 3 * 2 +\n        G 2 2 ^ 2 +\n      G 3 3 ^ 2 =\n    G 0 0 * G 1 1 * 2 + G 0 0 * G 2 2 * 2 + G 0 0 * G 3 3 * 2 + G 0 0 ^ 2 + G 1 1 * G 2 2 * 2 + G 1 1 * G 3 3 * 2 +\n            G 1 1 ^ 2 +\n          G 2 2 * G 3 3 * 2 +\n        G 2 2 ^ 2 +\n      G 3 3 ^ 2\n",
+      "output_sha256": "fe1875572120467d53042d31045bda1720f911fa73bb8ff1785c09b15cc9e112",
+      "source": "import S11D4Invariants.Orientation\n\n/-! Four explicit quadratic forms and full-group sufficiency. -/\nnamespace S11D4Invariants\nnoncomputable section\n\ndef traceSquare : Quad :=\n  monomial 0 0 + monomial 5 5 + monomial 10 10 + monomial 15 15 + 3 • monomial 0 5 + 2 • monomial 0 10 + 2 • monomial 0 15 + 2 • monomial 5 10 + 2 • monomial 5 15 + 2 • monomial 10 15\n\ndef traceOfSquare : Quad :=\n  monomial 0 0 + monomial 5 5 + monomial 10 10 + monomial 15 15 + 2 • monomial 1 4 + 2 • monomial 2 8 + 2 • monomial 3 12 + 2 • monomial 6 9 + 2 • monomial 7 13 + 2 • monomial 11 14\n\ndef frobeniusSquare : Quad :=\n  monomial 0 0 + monomial 1 1 + monomial 2 2 + monomial 3 3 + monomial 4 4 + monomial 5 5 + monomial 6 6 + monomial 7 7 + monomial 8 8 + monomial 9 9 + monomial 10 10 + monomial 11 11 + monomial 12 12 + monomial 13 13 + monomial 14 14 + monomial 15 15\n\ndef orientationForm : Quad :=\n  monomial 1 11 - monomial 1 14 - monomial 4 11 + monomial 4 14 -\n  monomial 2 7 + monomial 2 13 + monomial 8 7 - monomial 8 13 +\n  monomial 3 6 - monomial 3 9 - monomial 12 6 + monomial 12 9\n\ntheorem traceSquare_apply (G : Mat) : traceSquare G = G.trace ^ 2 := by\n  simp [traceSquare, monomial, coordinateMap, coordinates, Matrix.trace, Fin.sum_univ_four]\n  ring\n\ntheorem traceOfSquare_apply (G : Mat) : traceOfSquare G = (G*G).trace := by\n  simp [traceOfSquare, monomial, coordinateMap, coordinates, Matrix.trace,\n    Matrix.mul_apply, Fin.sum_univ_four]\n  ring\n\ntheorem frobeniusSquare_apply (G : Mat) : frobeniusSquare G = (G*G.transpose).trace := by\n  simp [frobeniusSquare, monomial, coordinateMap, coordinates, Matrix.trace,\n    Matrix.mul_apply, Fin.sum_univ_four]\n  ring\n\ntheorem orientationForm_apply (G : Mat) : orientationForm G = orientation G := by\n  simp [orientationForm, monomial, coordinateMap, coordinates, orientation]\n  ring\n\ndef invariantForm (v : Fin 4 → ℝ) : Quad :=\n  v 0 • traceSquare + v 1 • traceOfSquare + v 2 • frobeniusSquare + v 3 • orientationForm\n\ntheorem invariantForm_apply (v : Fin 4 → ℝ) (G : Mat) :\n    invariantForm v G = v 0 * G.trace ^ 2 + v 1 * (G*G).trace +\n      v 2 * (G*G.transpose).trace + v 3 * orientation G := by\n  simp [invariantForm, traceSquare_apply, traceOfSquare_apply, frobeniusSquare_apply,\n    orientationForm_apply]\n\ntheorem invariantForm_SO (v : Fin 4 → ℝ) : SOInvariant (invariantForm v) := by\n  intro R hR G\n  simp only [invariantForm_apply, trace_conjugate hR.1, conjugate_transpose,\n    conjugate_mul hR.1, orientation_conjugate, hR.2, one_mul]\n\ntheorem invariantForm_reflection (v : Fin 4 → ℝ) (G : Mat) :\n    invariantForm v (conjugate reflection G) =\n      v 0 * G.trace ^ 2 + v 1 * (G*G).trace +\n      v 2 * (G*G.transpose).trace - v 3 * orientation G := by\n  simp only [invariantForm_apply, trace_conjugate reflection_orthogonal,\n    conjugate_transpose, conjugate_mul reflection_orthogonal,\n    orientation_conjugate, reflection_det]\n  ring\n\nend\nend S11D4Invariants\n",
+      "canonical_source": "lean/s11/S11D4Invariants/Forms.lean",
+      "replacement": {
+        "old": "2 • monomial 0 5",
+        "new": "3 • monomial 0 5"
+      }
+    },
+    {
+      "name": "trace_of_square_sign",
+      "expected": "REJECTED",
+      "outcome": "REJECTED",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/d4_verification/trace_of_square_sign.lean"
+      ],
+      "exit_status": 1,
+      "wall_seconds": 18.921,
+      "source_sha256": "7db7973a5700ba28fe073da5fb585ac4e8e09bc55d13b5471c446fa12378fa55",
+      "required_failure_in": "traceOfSquare_apply",
+      "diagnostics": [
+        {
+          "declaration": "traceOfSquare_apply",
+          "line": 25,
+          "message": "s11/_scratch/d4_verification/trace_of_square_sign.lean:25:73: error: unsolved goals\nG : Mat\n⊢ G 0 0 ^ 2 + G 1 1 ^ 2 + G 2 2 ^ 2 + G 3 3 ^ 2 - G 0 1 * G 1 0 * 2 + G 0 2 * G 2 0 * 2 + G 0 3 * G 3 0 * 2 +\n          G 1 2 * G 2 1 * 2 +\n        G 1 3 * G 3 1 * 2 +\n      G 2 3 * G 3 2 * 2 =\n    G 0 0 ^ 2 + G 1 1 ^ 2 + G 2 2 ^ 2 + G 3 3 ^ 2 + G 0 1 * G 1 0 * 2 + G 0 2 * G 2 0 * 2 + G 0 3 * G 3 0 * 2 +\n          G 1 2 * G 2 1 * 2 +\n        G 1 3 * G 3 1 * 2 +\n      G 2 3 * G 3 2 * 2\n"
+        }
+      ],
+      "output": "Try this:\n  [apply] ring_nf\n  \n  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.\n    \n  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.\ns11/_scratch/d4_verification/trace_of_square_sign.lean:25:73: error: unsolved goals\nG : Mat\n⊢ G 0 0 ^ 2 + G 1 1 ^ 2 + G 2 2 ^ 2 + G 3 3 ^ 2 - G 0 1 * G 1 0 * 2 + G 0 2 * G 2 0 * 2 + G 0 3 * G 3 0 * 2 +\n          G 1 2 * G 2 1 * 2 +\n        G 1 3 * G 3 1 * 2 +\n      G 2 3 * G 3 2 * 2 =\n    G 0 0 ^ 2 + G 1 1 ^ 2 + G 2 2 ^ 2 + G 3 3 ^ 2 + G 0 1 * G 1 0 * 2 + G 0 2 * G 2 0 * 2 + G 0 3 * G 3 0 * 2 +\n          G 1 2 * G 2 1 * 2 +\n        G 1 3 * G 3 1 * 2 +\n      G 2 3 * G 3 2 * 2\n",
+      "output_sha256": "14778b682bb065f34d31f5b7d9b1864643575c6073deb210fadb37336986a81d",
+      "source": "import S11D4Invariants.Orientation\n\n/-! Four explicit quadratic forms and full-group sufficiency. -/\nnamespace S11D4Invariants\nnoncomputable section\n\ndef traceSquare : Quad :=\n  monomial 0 0 + monomial 5 5 + monomial 10 10 + monomial 15 15 + 2 • monomial 0 5 + 2 • monomial 0 10 + 2 • monomial 0 15 + 2 • monomial 5 10 + 2 • monomial 5 15 + 2 • monomial 10 15\n\ndef traceOfSquare : Quad :=\n  monomial 0 0 + monomial 5 5 + monomial 10 10 + monomial 15 15 + (-2 : ℝ) • monomial 1 4 + 2 • monomial 2 8 + 2 • monomial 3 12 + 2 • monomial 6 9 + 2 • monomial 7 13 + 2 • monomial 11 14\n\ndef frobeniusSquare : Quad :=\n  monomial 0 0 + monomial 1 1 + monomial 2 2 + monomial 3 3 + monomial 4 4 + monomial 5 5 + monomial 6 6 + monomial 7 7 + monomial 8 8 + monomial 9 9 + monomial 10 10 + monomial 11 11 + monomial 12 12 + monomial 13 13 + monomial 14 14 + monomial 15 15\n\ndef orientationForm : Quad :=\n  monomial 1 11 - monomial 1 14 - monomial 4 11 + monomial 4 14 -\n  monomial 2 7 + monomial 2 13 + monomial 8 7 - monomial 8 13 +\n  monomial 3 6 - monomial 3 9 - monomial 12 6 + monomial 12 9\n\ntheorem traceSquare_apply (G : Mat) : traceSquare G = G.trace ^ 2 := by\n  simp [traceSquare, monomial, coordinateMap, coordinates, Matrix.trace, Fin.sum_univ_four]\n  ring\n\ntheorem traceOfSquare_apply (G : Mat) : traceOfSquare G = (G*G).trace := by\n  simp [traceOfSquare, monomial, coordinateMap, coordinates, Matrix.trace,\n    Matrix.mul_apply, Fin.sum_univ_four]\n  ring\n\ntheorem frobeniusSquare_apply (G : Mat) : frobeniusSquare G = (G*G.transpose).trace := by\n  simp [frobeniusSquare, monomial, coordinateMap, coordinates, Matrix.trace,\n    Matrix.mul_apply, Fin.sum_univ_four]\n  ring\n\ntheorem orientationForm_apply (G : Mat) : orientationForm G = orientation G := by\n  simp [orientationForm, monomial, coordinateMap, coordinates, orientation]\n  ring\n\ndef invariantForm (v : Fin 4 → ℝ) : Quad :=\n  v 0 • traceSquare + v 1 • traceOfSquare + v 2 • frobeniusSquare + v 3 • orientationForm\n\ntheorem invariantForm_apply (v : Fin 4 → ℝ) (G : Mat) :\n    invariantForm v G = v 0 * G.trace ^ 2 + v 1 * (G*G).trace +\n      v 2 * (G*G.transpose).trace + v 3 * orientation G := by\n  simp [invariantForm, traceSquare_apply, traceOfSquare_apply, frobeniusSquare_apply,\n    orientationForm_apply]\n\ntheorem invariantForm_SO (v : Fin 4 → ℝ) : SOInvariant (invariantForm v) := by\n  intro R hR G\n  simp only [invariantForm_apply, trace_conjugate hR.1, conjugate_transpose,\n    conjugate_mul hR.1, orientation_conjugate, hR.2, one_mul]\n\ntheorem invariantForm_reflection (v : Fin 4 → ℝ) (G : Mat) :\n    invariantForm v (conjugate reflection G) =\n      v 0 * G.trace ^ 2 + v 1 * (G*G).trace +\n      v 2 * (G*G.transpose).trace - v 3 * orientation G := by\n  simp only [invariantForm_apply, trace_conjugate reflection_orthogonal,\n    conjugate_transpose, conjugate_mul reflection_orthogonal,\n    orientation_conjugate, reflection_det]\n  ring\n\nend\nend S11D4Invariants\n",
+      "canonical_source": "lean/s11/S11D4Invariants/Forms.lean",
+      "replacement": {
+        "old": "2 • monomial 1 4",
+        "new": "(-2 : ℝ) • monomial 1 4"
+      }
+    },
+    {
+      "name": "so_dimension_positive",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/d4_verification/so_dimension_positive.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 7.67,
+      "source_sha256": "5cf16889ad77395b155773dc5c44c0e6ad945d41e8e2ea93d4e30d9cd080884a",
+      "required_failure_in": "contract_control",
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "import S11D4Invariants.Controls\nopen S11D4Invariants\nnoncomputable section\ntheorem contract_control : Module.finrank ℝ soSpace = 4 := by\n  norm_num [so_dimension]\n"
+    },
+    {
+      "name": "so_dimension_mutant",
+      "expected": "REJECTED",
+      "outcome": "REJECTED",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/d4_verification/so_dimension_mutant.lean"
+      ],
+      "exit_status": 1,
+      "wall_seconds": 7.925,
+      "source_sha256": "6e49c7e791bbba10be93f2b9d3a7017fe90cecc9176bbe706041d03a6ace4254",
+      "required_failure_in": "contract_control",
+      "diagnostics": [
+        {
+          "declaration": "contract_control",
+          "line": 4,
+          "message": "s11/_scratch/d4_verification/so_dimension_mutant.lean:4:59: error: unsolved goals\n⊢ False\n"
+        }
+      ],
+      "output": "s11/_scratch/d4_verification/so_dimension_mutant.lean:4:59: error: unsolved goals\n⊢ False\n",
+      "output_sha256": "9f790417db31e7ecd2f2d0861f54aa6755a1f6f2e4b5e821a522713372d779bf",
+      "source": "import S11D4Invariants.Controls\nopen S11D4Invariants\nnoncomputable section\ntheorem contract_control : Module.finrank ℝ soSpace = 3 := by\n  norm_num [so_dimension]\n"
+    },
+    {
+      "name": "o_dimension_positive",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/d4_verification/o_dimension_positive.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 8.173,
+      "source_sha256": "d65862dc5836f078c8a3970a9de9fdb3e2d70686977ab52c8b96ee5139b891b5",
+      "required_failure_in": "contract_control",
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "import S11D4Invariants.Controls\nopen S11D4Invariants\nnoncomputable section\ntheorem contract_control : Module.finrank ℝ oSpace = 3 := by\n  norm_num [o_dimension]\n"
+    },
+    {
+      "name": "o_dimension_mutant",
+      "expected": "REJECTED",
+      "outcome": "REJECTED",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/d4_verification/o_dimension_mutant.lean"
+      ],
+      "exit_status": 1,
+      "wall_seconds": 8.023,
+      "source_sha256": "bd450fd0ac47cad494ee3c4cdb5dc79a191bab675b115adc9fc343dcf735ddc5",
+      "required_failure_in": "contract_control",
+      "diagnostics": [
+        {
+          "declaration": "contract_control",
+          "line": 4,
+          "message": "s11/_scratch/d4_verification/o_dimension_mutant.lean:4:58: error: unsolved goals\n⊢ False\n"
+        }
+      ],
+      "output": "s11/_scratch/d4_verification/o_dimension_mutant.lean:4:58: error: unsolved goals\n⊢ False\n",
+      "output_sha256": "2cd2f39bb957c944e3a0302a75194d8fc111a11e46a926a4cf6eebeafae09576",
+      "source": "import S11D4Invariants.Controls\nopen S11D4Invariants\nnoncomputable section\ntheorem contract_control : Module.finrank ℝ oSpace = 4 := by\n  norm_num [o_dimension]\n"
+    },
+    {
+      "name": "odd_dimension_positive",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/d4_verification/odd_dimension_positive.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 8.072,
+      "source_sha256": "fd0fa217504b394e152fcd41acaed2569e9be960b2ba02d049eae1af7052bc7b",
+      "required_failure_in": "contract_control",
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "import S11D4Invariants.Controls\nopen S11D4Invariants\nnoncomputable section\ntheorem contract_control : Module.finrank ℝ oddSpace = 1 := by\n  norm_num [odd_dimension]\n"
+    },
+    {
+      "name": "odd_dimension_mutant",
+      "expected": "REJECTED",
+      "outcome": "REJECTED",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/d4_verification/odd_dimension_mutant.lean"
+      ],
+      "exit_status": 1,
+      "wall_seconds": 8.023,
+      "source_sha256": "2315ade3a4e40a79bf6e38cf20468a6dc87c9a0d36911fbc75d000fa2868c120",
+      "required_failure_in": "contract_control",
+      "diagnostics": [
+        {
+          "declaration": "contract_control",
+          "line": 4,
+          "message": "s11/_scratch/d4_verification/odd_dimension_mutant.lean:4:60: error: unsolved goals\n⊢ False\n"
+        }
+      ],
+      "output": "s11/_scratch/d4_verification/odd_dimension_mutant.lean:4:60: error: unsolved goals\n⊢ False\n",
+      "output_sha256": "614135027a1405f416ba66f55872f80a57cd10d66510b13549b5bf46f5f706a7",
+      "source": "import S11D4Invariants.Controls\nopen S11D4Invariants\nnoncomputable section\ntheorem contract_control : Module.finrank ℝ oddSpace = 0 := by\n  norm_num [odd_dimension]\n"
+    },
+    {
+      "name": "trace_required_positive",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/d4_verification/trace_required_positive.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 8.022,
+      "source_sha256": "cad7567cfdf668bf99ddd5cce5d5221976b47117b5954f862451775da2c93356",
+      "required_failure_in": "contract_control",
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "import S11D4Invariants.Controls\nopen S11D4Invariants\nnoncomputable section\ntheorem contract_control : ¬ ∃ b c d : ℝ, invariantForm ![1,0,0,0] = invariantForm ![0,b,c,d] := by\n  norm_num [trace_not_omittable]\n"
+    },
+    {
+      "name": "trace_required_mutant",
+      "expected": "REJECTED",
+      "outcome": "REJECTED",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/d4_verification/trace_required_mutant.lean"
+      ],
+      "exit_status": 1,
+      "wall_seconds": 8.173,
+      "source_sha256": "d01b36432e1a781110909f4a4fca270bd2810a2b0cba900e7f6882d6990fdde9",
+      "required_failure_in": "contract_control",
+      "diagnostics": [
+        {
+          "declaration": "contract_control",
+          "line": 4,
+          "message": "s11/_scratch/d4_verification/trace_required_mutant.lean:4:96: error: unsolved goals\n⊢ False\n"
+        }
+      ],
+      "output": "s11/_scratch/d4_verification/trace_required_mutant.lean:4:96: error: unsolved goals\n⊢ False\n",
+      "output_sha256": "51e79198c54f0784e904d072546e477264e10559e9f3a8a79e3e2462722d049f",
+      "source": "import S11D4Invariants.Controls\nopen S11D4Invariants\nnoncomputable section\ntheorem contract_control :  ∃ b c d : ℝ, invariantForm ![1,0,0,0] = invariantForm ![0,b,c,d] := by\n  norm_num [trace_not_omittable]\n"
+    },
+    {
+      "name": "trace_of_square_required_positive",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/d4_verification/trace_of_square_required_positive.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 8.124,
+      "source_sha256": "2747bbf479c8f2b8d73b6edd20281521b55ab58d0f81dc50600380d3273d7082",
+      "required_failure_in": "contract_control",
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "import S11D4Invariants.Controls\nopen S11D4Invariants\nnoncomputable section\ntheorem contract_control : ¬ ∃ a c d : ℝ, invariantForm ![0,1,0,0] = invariantForm ![a,0,c,d] := by\n  norm_num [traceOfSquare_not_omittable]\n"
+    },
+    {
+      "name": "trace_of_square_required_mutant",
+      "expected": "REJECTED",
+      "outcome": "REJECTED",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/d4_verification/trace_of_square_required_mutant.lean"
+      ],
+      "exit_status": 1,
+      "wall_seconds": 8.074,
+      "source_sha256": "77b916a5a8cb37655a635dd55a3a7ca62f71ccf64c207912f2b558007789675b",
+      "required_failure_in": "contract_control",
+      "diagnostics": [
+        {
+          "declaration": "contract_control",
+          "line": 4,
+          "message": "s11/_scratch/d4_verification/trace_of_square_required_mutant.lean:4:96: error: unsolved goals\n⊢ False\n"
+        }
+      ],
+      "output": "s11/_scratch/d4_verification/trace_of_square_required_mutant.lean:4:96: error: unsolved goals\n⊢ False\n",
+      "output_sha256": "a0dcc1b35a198d7c42b874a57d3bbdd0e9ba332225f2a90cbc5e36d069710d30",
+      "source": "import S11D4Invariants.Controls\nopen S11D4Invariants\nnoncomputable section\ntheorem contract_control :  ∃ a c d : ℝ, invariantForm ![0,1,0,0] = invariantForm ![a,0,c,d] := by\n  norm_num [traceOfSquare_not_omittable]\n"
+    },
+    {
+      "name": "frobenius_required_positive",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/d4_verification/frobenius_required_positive.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 8.426,
+      "source_sha256": "6dabde66a3870dc98bec9f34cdb505ea403533cde272e916525e8d792c5f29fd",
+      "required_failure_in": "contract_control",
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "import S11D4Invariants.Controls\nopen S11D4Invariants\nnoncomputable section\ntheorem contract_control : ¬ ∃ a b d : ℝ, invariantForm ![0,0,1,0] = invariantForm ![a,b,0,d] := by\n  norm_num [frobenius_not_omittable]\n"
+    },
+    {
+      "name": "frobenius_required_mutant",
+      "expected": "REJECTED",
+      "outcome": "REJECTED",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/d4_verification/frobenius_required_mutant.lean"
+      ],
+      "exit_status": 1,
+      "wall_seconds": 8.223,
+      "source_sha256": "1ea8d3f990302f98c7cf2c2e8f4d6c59d50a061fa9e8a8d459319c56aeb25f10",
+      "required_failure_in": "contract_control",
+      "diagnostics": [
+        {
+          "declaration": "contract_control",
+          "line": 4,
+          "message": "s11/_scratch/d4_verification/frobenius_required_mutant.lean:4:96: error: unsolved goals\n⊢ False\n"
+        }
+      ],
+      "output": "s11/_scratch/d4_verification/frobenius_required_mutant.lean:4:96: error: unsolved goals\n⊢ False\n",
+      "output_sha256": "68b3b4e5fb3ed213e5a2c96cb0bf337d94c71adf855514860474912da33e9e55",
+      "source": "import S11D4Invariants.Controls\nopen S11D4Invariants\nnoncomputable section\ntheorem contract_control :  ∃ a b d : ℝ, invariantForm ![0,0,1,0] = invariantForm ![a,b,0,d] := by\n  norm_num [frobenius_not_omittable]\n"
+    },
+    {
+      "name": "orientation_required_positive",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/d4_verification/orientation_required_positive.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 8.224,
+      "source_sha256": "8229a90ec06ad3e3de805ebbce01ddb4b990e0f4f47f64d4f0ed7a46baf6f1ad",
+      "required_failure_in": "contract_control",
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "import S11D4Invariants.Controls\nopen S11D4Invariants\nnoncomputable section\ntheorem contract_control : ¬ ∃ a b c : ℝ, invariantForm ![0,0,0,1] = invariantForm ![a,b,c,0] := by\n  norm_num [orientation_not_omittable]\n"
+    },
+    {
+      "name": "orientation_required_mutant",
+      "expected": "REJECTED",
+      "outcome": "REJECTED",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/d4_verification/orientation_required_mutant.lean"
+      ],
+      "exit_status": 1,
+      "wall_seconds": 9.031,
+      "source_sha256": "5769df3f20732d9f8a1dfcaa0ddda2480e174dec2c1452306b566cb64564fe0f",
+      "required_failure_in": "contract_control",
+      "diagnostics": [
+        {
+          "declaration": "contract_control",
+          "line": 4,
+          "message": "s11/_scratch/d4_verification/orientation_required_mutant.lean:4:96: error: unsolved goals\n⊢ False\n"
+        }
+      ],
+      "output": "s11/_scratch/d4_verification/orientation_required_mutant.lean:4:96: error: unsolved goals\n⊢ False\n",
+      "output_sha256": "36ff9ab252e5af01ae9a38486ebf1e9867066c74dff394e5e27ed84f042fab43",
+      "source": "import S11D4Invariants.Controls\nopen S11D4Invariants\nnoncomputable section\ntheorem contract_control :  ∃ a b c : ℝ, invariantForm ![0,0,0,1] = invariantForm ![a,b,c,0] := by\n  norm_num [orientation_not_omittable]\n"
+    },
+    {
+      "name": "reflection_excludes_odd_positive",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/d4_verification/reflection_excludes_odd_positive.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 8.075,
+      "source_sha256": "63ee3431b255af8917abf69d3550e78259f5b9cf039d6b0a3f4060d73d371bd5",
+      "required_failure_in": "contract_control",
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "import S11D4Invariants.Controls\nopen S11D4Invariants\nnoncomputable section\ntheorem contract_control : ¬ OInvariant (invariantForm ![0,0,0,1]) := by\n  norm_num [invariantForm_O, Matrix.cons_val_three]\n"
+    },
+    {
+      "name": "reflection_excludes_odd_mutant",
+      "expected": "REJECTED",
+      "outcome": "REJECTED",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/d4_verification/reflection_excludes_odd_mutant.lean"
+      ],
+      "exit_status": 1,
+      "wall_seconds": 8.83,
+      "source_sha256": "3541f54689accb618ee61f09c7c43bb561a7cdd7d3dc0c36c874839bd1cef4ce",
+      "required_failure_in": "contract_control",
+      "diagnostics": [
+        {
+          "declaration": "contract_control",
+          "line": 4,
+          "message": "s11/_scratch/d4_verification/reflection_excludes_odd_mutant.lean:4:69: error: unsolved goals\n⊢ False\n"
+        }
+      ],
+      "output": "s11/_scratch/d4_verification/reflection_excludes_odd_mutant.lean:4:69: error: unsolved goals\n⊢ False\n",
+      "output_sha256": "96b0ce0435dc8d71967a221bf23a327a39f8034cc70004a7951bf7cdd24103e6",
+      "source": "import S11D4Invariants.Controls\nopen S11D4Invariants\nnoncomputable section\ntheorem contract_control :  OInvariant (invariantForm ![0,0,0,1]) := by\n  norm_num [invariantForm_O, Matrix.cons_val_three]\n"
+    },
+    {
+      "name": "odd_excludes_even_positive",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/d4_verification/odd_excludes_even_positive.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 8.779,
+      "source_sha256": "ee58c7856fe7c43252b5a68334112d9a65abd492f48e7301825fe738cf69a67e",
+      "required_failure_in": "contract_control",
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "import S11D4Invariants.Controls\nopen S11D4Invariants\nnoncomputable section\ntheorem contract_control : ¬ ReflectionOdd (invariantForm ![1,0,0,1]) := by\n  norm_num [invariantForm_odd, Matrix.cons_val_two]\n"
+    },
+    {
+      "name": "odd_excludes_even_mutant",
+      "expected": "REJECTED",
+      "outcome": "REJECTED",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/d4_verification/odd_excludes_even_mutant.lean"
+      ],
+      "exit_status": 1,
+      "wall_seconds": 8.023,
+      "source_sha256": "d84126d0330959c2a529db19f8cc6f759bd0d21113fb5a64ce44f819f28bf9bf",
+      "required_failure_in": "contract_control",
+      "diagnostics": [
+        {
+          "declaration": "contract_control",
+          "line": 4,
+          "message": "s11/_scratch/d4_verification/odd_excludes_even_mutant.lean:4:72: error: unsolved goals\n⊢ False\n"
+        }
+      ],
+      "output": "s11/_scratch/d4_verification/odd_excludes_even_mutant.lean:4:72: error: unsolved goals\n⊢ False\n",
+      "output_sha256": "8e82734b6cbd61f6b995e850d3fb69a3895163b2331b047a8a1bbf6f5570555d",
+      "source": "import S11D4Invariants.Controls\nopen S11D4Invariants\nnoncomputable section\ntheorem contract_control :  ReflectionOdd (invariantForm ![1,0,0,1]) := by\n  norm_num [invariantForm_odd, Matrix.cons_val_two]\n"
+    },
+    {
+      "name": "full_group_sensitivity_positive",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/d4_verification/full_group_sensitivity_positive.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 8.273,
+      "source_sha256": "2b2b6d521e303c76381a4ad62d280e5b87608fb9089fa5db5de10767ea89c381",
+      "required_failure_in": "contract_control",
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "import S11D4Invariants.Controls\nopen S11D4Invariants\nnoncomputable section\ntheorem contract_control : ¬ SOInvariant (monomial 0 0) := by\n  norm_num [single_entry_not_invariant]\n"
+    },
+    {
+      "name": "full_group_sensitivity_mutant",
+      "expected": "REJECTED",
+      "outcome": "REJECTED",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/d4_verification/full_group_sensitivity_mutant.lean"
+      ],
+      "exit_status": 1,
+      "wall_seconds": 8.729,
+      "source_sha256": "b70207b3da5eb1ee0c630e4b60d5cc3cc175d8658730e8c03a657aa53ba665cd",
+      "required_failure_in": "contract_control",
+      "diagnostics": [
+        {
+          "declaration": "contract_control",
+          "line": 4,
+          "message": "s11/_scratch/d4_verification/full_group_sensitivity_mutant.lean:4:58: error: unsolved goals\n⊢ False\n"
+        }
+      ],
+      "output": "s11/_scratch/d4_verification/full_group_sensitivity_mutant.lean:4:58: error: unsolved goals\n⊢ False\n",
+      "output_sha256": "bd998cbc49b8009deb59ed45f218198fb5e398010149ca8beb518c4db5b1c099",
+      "source": "import S11D4Invariants.Controls\nopen S11D4Invariants\nnoncomputable section\ntheorem contract_control :  SOInvariant (monomial 0 0) := by\n  norm_num [single_entry_not_invariant]\n"
+    },
+    {
+      "name": "orientation_normalization_positive",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/d4_verification/orientation_normalization_positive.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 8.425,
+      "source_sha256": "872a956bc0917bd6112fa9e912e45be3b4575d45067e6a98522db1cf40b7d627",
+      "required_failure_in": "contract_control",
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "import S11D4Invariants.Controls\nopen S11D4Invariants\nnoncomputable section\ntheorem contract_control : orientation (Matrix.of ![![0,1,0,0],![0,0,0,0],![0,0,0,1],![0,0,0,0]]) = 1 := by\n  norm_num [orientation, Matrix.cons_val_two, Matrix.cons_val_three]\n"
+    },
+    {
+      "name": "orientation_normalization_mutant",
+      "expected": "REJECTED",
+      "outcome": "REJECTED",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/d4_verification/orientation_normalization_mutant.lean"
+      ],
+      "exit_status": 1,
+      "wall_seconds": 8.173,
+      "source_sha256": "c4bb088102c2be55133d8e6a20b496c42482b79109d283a08ed5ef5421fb65d6",
+      "required_failure_in": "contract_control",
+      "diagnostics": [
+        {
+          "declaration": "contract_control",
+          "line": 4,
+          "message": "s11/_scratch/d4_verification/orientation_normalization_mutant.lean:4:105: error: unsolved goals\n⊢ False\n"
+        }
+      ],
+      "output": "s11/_scratch/d4_verification/orientation_normalization_mutant.lean:4:105: error: unsolved goals\n⊢ False\n",
+      "output_sha256": "2d145917af4b58893f2e6c781206a2dcf22eef0d64536677f7c61eb3a62cb63f",
+      "source": "import S11D4Invariants.Controls\nopen S11D4Invariants\nnoncomputable section\ntheorem contract_control : orientation (Matrix.of ![![0,1,0,0],![0,0,0,0],![0,0,0,1],![0,0,0,0]]) = 2 := by\n  norm_num [orientation, Matrix.cons_val_two, Matrix.cons_val_three]\n"
+    },
+    {
+      "name": "determinant_sign_positive",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/d4_verification/determinant_sign_positive.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 8.275,
+      "source_sha256": "f1aad5540cacaaf04fdb880b6ffab8b463f9a950df96c17a9232aee1644b310e",
+      "required_failure_in": "contract_control",
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "import S11D4Invariants.Controls\nopen S11D4Invariants\nnoncomputable section\ntheorem contract_control : orientation (conjugate reflection (Matrix.of ![![0,1,0,0],![0,0,0,0],![0,0,0,1],![0,0,0,0]])) = -1 := by\n  rw [orientation_conjugate, reflection_det]\n  norm_num [orientation, Matrix.cons_val_two, Matrix.cons_val_three]\n"
+    },
+    {
+      "name": "determinant_sign_mutant",
+      "expected": "REJECTED",
+      "outcome": "REJECTED",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/d4_verification/determinant_sign_mutant.lean"
+      ],
+      "exit_status": 1,
+      "wall_seconds": 8.878,
+      "source_sha256": "fe79cbd4245b101e429e5941567b252bc695879325903b6f1dc01c1c0755a15d",
+      "required_failure_in": "contract_control",
+      "diagnostics": [
+        {
+          "declaration": "contract_control",
+          "line": 4,
+          "message": "s11/_scratch/d4_verification/determinant_sign_mutant.lean:4:128: error: unsolved goals\n⊢ False\n"
+        }
+      ],
+      "output": "s11/_scratch/d4_verification/determinant_sign_mutant.lean:4:128: error: unsolved goals\n⊢ False\n",
+      "output_sha256": "ddfeca87fbe7ca9020bcb5225454786a07370ee4c11d43dbb9e3121eb7cff67d",
+      "source": "import S11D4Invariants.Controls\nopen S11D4Invariants\nnoncomputable section\ntheorem contract_control : orientation (conjugate reflection (Matrix.of ![![0,1,0,0],![0,0,0,0],![0,0,0,1],![0,0,0,0]])) = 1 := by\n  rw [orientation_conjugate, reflection_det]\n  norm_num [orientation, Matrix.cons_val_two, Matrix.cons_val_three]\n"
+    },
+    {
+      "name": "nonempty_odd_positive",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/d4_verification/nonempty_odd_positive.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 9.699,
+      "source_sha256": "2f3cdfa9dccb3d2e6df69083e42f690f1f8fefabf14619d8d35dd2edb9aa495a",
+      "required_failure_in": null,
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "import S11D4Invariants.Controls\nopen S11D4Invariants\nnoncomputable section\ntheorem contract_control : ∃ Q : Quad, SOInvariant Q ∧ ReflectionOdd Q ∧ Q ≠ 0 := nonzero_odd_exists\n"
+    },
+    {
+      "name": "zero_positive",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/d4_verification/zero_positive.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 7.117,
+      "source_sha256": "fe9ad4fb01a31285cec4d34059ea0efe973b73c15c285322cf5b07aebf8d398b",
+      "required_failure_in": null,
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "import S11D4Invariants.Controls\nopen S11D4Invariants\nnoncomputable section\ntheorem contract_control : SOInvariant (0 : Quad) ∧ ReflectionOdd (0 : Quad) := zero_invariant\n"
+    },
+    {
+      "name": "negative_coefficients_positive",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/d4_verification/negative_coefficients_positive.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 6.963,
+      "source_sha256": "80f024d435b53aafe52bbe6fbd8f1e95c15a63795a56ea193f52b06d18cf2e6a",
+      "required_failure_in": null,
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "import S11D4Invariants.Controls\nopen S11D4Invariants\nnoncomputable section\ntheorem contract_control : SOInvariant (invariantForm ![-2,3,-5,-7]) := invariantForm_SO _\n"
+    },
+    {
+      "name": "unique_coefficients_positive",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/d4_verification/unique_coefficients_positive.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 6.763,
+      "source_sha256": "6c113f3098139e23187a0db4a4cf18a3202dd1a670e26ff319b04d9f3566f0da",
+      "required_failure_in": null,
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "import S11D4Invariants.Controls\nopen S11D4Invariants\nnoncomputable section\ntheorem contract_control : ∃! v : Fin 4 → ℝ, invariantForm ![-2,3,-5,-7] = invariantForm v := SO_unique _ (invariantForm_SO _)\n"
+    }
+  ],
+  "resources": {
+    "workers": 1,
+    "lean_threads": 1,
+    "lean_allocator_limit_mib": 4096,
+    "process_timeout_seconds": 600,
+    "note": "Allocator limit is not an OS RSS cap."
+  },
+  "dependency_olean_sha256_before_build": {},
+  "axiom_audit_count": 49,
+  "axiom_declarations": {
+    "S11D4Invariants.coordinates_decode": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D4Invariants.decode_coordinates": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D4Invariants.frame_expansion": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D4Invariants.quadratic_representation": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D4Invariants.det_four": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D4Invariants.rotationXY_proper": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D4Invariants.rotationYZ_proper": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D4Invariants.rotationZW_proper": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D4Invariants.coordinates_rotationXY": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D4Invariants.coordinates_rotationYZ": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D4Invariants.coordinates_rotationZW": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D4Invariants.reflection_orthogonal": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D4Invariants.reflection_det": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D4Invariants.trace_conjugate": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D4Invariants.conjugate_mul": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D4Invariants.conjugate_transpose": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D4Invariants.orientation_conjugate": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D4Invariants.traceSquare_apply": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D4Invariants.traceOfSquare_apply": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D4Invariants.frobeniusSquare_apply": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D4Invariants.orientationForm_apply": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D4Invariants.invariantForm_apply": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D4Invariants.invariantForm_SO": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D4Invariants.invariantForm_reflection": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D4Invariants.invariant_polynomial": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D4Invariants.SO_classification": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D4Invariants.invariantForm_injective": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D4Invariants.SO_unique": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D4Invariants.invariantForm_O": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D4Invariants.invariantForm_odd": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D4Invariants.O_classification": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D4Invariants.odd_classification": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D4Invariants.soMap_bijective": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D4Invariants.oMap_bijective": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D4Invariants.oddMap_bijective": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D4Invariants.so_dimension": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D4Invariants.o_dimension": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D4Invariants.odd_dimension": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D4Invariants.even_odd_disjoint": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D4Invariants.even_odd_span": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D4Invariants.census": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D4Invariants.trace_not_omittable": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D4Invariants.traceOfSquare_not_omittable": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D4Invariants.frobenius_not_omittable": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D4Invariants.orientation_not_omittable": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D4Invariants.orientation_nonzero": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D4Invariants.nonzero_odd_exists": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D4Invariants.zero_invariant": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D4Invariants.single_entry_not_invariant": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "source_sha256_after": {
+    "_measurements/S11_lean_d4_generate.py": "b71b4813a3d8d00a786069f2416527c8e7f631b9e104c3094e3e7377a5c8d28d",
+    "lean/lake-manifest.json": "91fd5318cdc35e4044d6e059c6ef73d94b955d27adf8a5860b07ec92add9377e",
+    "lean/lakefile.toml": "7430d06c3972d9e214470201240bdeace6e175f17286842f888c679506adcec1",
+    "lean/lean-toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+    "lean/s11/S11D4Invariants/Census.lean": "ff727f1177cc6f4125f3116ba2a65149f961ba3e663ad8d79760153a4089c150",
+    "lean/s11/S11D4Invariants/Classification.lean": "3b95a47959eeabc44268a2ae7dd1b8d5ff9d3f454d3c7b12d23c7fca365a2729",
+    "lean/s11/S11D4Invariants/ConstraintBlock0.lean": "a392b17298a7a4e89f2a29b7f475d3451d0845041a9dbe38704429812e7e7425",
+    "lean/s11/S11D4Invariants/ConstraintBlock1.lean": "9e6cdf6c14a124af9e713fc0d922d5b37def9773d658cdb53847ce6e94769651",
+    "lean/s11/S11D4Invariants/ConstraintBlock2.lean": "d22ebe83d4b3e3a6bae8ebcfa7a94ddb34d2fe95110b23a3e9948a20dcf614e9",
+    "lean/s11/S11D4Invariants/ConstraintBlock3.lean": "a4f413393844de5e8a0126cf03d502c6ee32b1a44686b03762d39db72764ffa0",
+    "lean/s11/S11D4Invariants/ConstraintPolynomial.lean": "998ce5e4f2d0930e5e52997c4c300128d990b175030272dd321e4004036ec41a",
+    "lean/s11/S11D4Invariants/Constraints.lean": "dfe4f2dc27bc140681eb60ce2cf0fdc6926bcb61ab31e2ef2bb8957c1e68c43e",
+    "lean/s11/S11D4Invariants/Controls.lean": "71744668ec60a6b1a1addd882c75fed08855caa4c565f8516576abed0c455f8b",
+    "lean/s11/S11D4Invariants/Forms.lean": "74ff651936459ee6e3b7b9a136b06c929be19ec22ce10559dd371008d2e03a69",
+    "lean/s11/S11D4Invariants/Orientation.lean": "417aa006bce48911f0cdd914b0f9087e19fbf876d7a13647d98f684a545ce31f",
+    "lean/s11/S11D4Invariants/Quadratic.lean": "5d64eda063b367049135aed7072821f2679dc860987dc0578036af6955809763",
+    "lean/s11/S11D4Invariants/Rotation.lean": "01f3e8e0fa11ba6eb53c756b8ea67a825de83f2cd13c8b81b5c58de6490f391c",
+    "lean/s11/S11D4Invariants.lean": "c261c18a429a14566e8a53837098ce81bd8d168dca02d0679a56548e4b99c82d"
+  },
+  "finished_utc": "2026-09-16T21:50:25.745081+00:00"
+}

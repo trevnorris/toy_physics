@@ -1,0 +1,132 @@
+S11 D4 invariant contract D4.1–D4.4 — complete; local PASS; both reviews CLEAR
+
+Scope: all real quadratic densities on all real 4x4 gradients under full
+SO/O conjugation. Unique coefficients for trace-square, trace-of-square,
+Frobenius-square and orientation P; full O exactly d=0; reflection-odd inside
+SO exactly a=b=c=0; actual invariant-submodule dimensions 4/3/1 and complete
+even/odd decomposition. No EL or divergence quotient is taken.
+See D4_COVERAGE.md and D4_FIDELITY.md for definitions and exclusions.
+
+Terminal run: _scratch/S11_lean_d4/verification_run5, PASS, 2026-09-16.
+Durable evidence: _measurements/S11_lean_d4_contract_checks.json,
+S11_lean_d4_source_checks.json and S11_lean_d4_validation.json. The frozen
+local validation retains its historical pending-review label. Current closure
+is recorded in D4_FIDELITY_REVIEW.md and S11_lean_d4_closure_validation.json.
+
+RESULTS
+- Thirteen modules and the audit root compiled in run4. Run5 reused these
+  fourteen successful builds after validating their commands, full local
+  transitive source closures, pins/generator and input/output object hashes.
+  Reuse was checked in dependency order; focused builds were not accepted as
+  recorded evidence. All mutations and positive controls executed afresh.
+- All 49 requested axiom declarations were matched by name and use only
+  propext, Classical.choice and Quot.sound. No admissions or custom axioms
+  occur in the canonical proof modules. The parser permits an empty axiom set;
+  none was reported for this run's selected declarations.
+- Fourteen mathematical mutations rejected. Twelve false statements reduce
+  to False: SO/O/odd dimensions 3/4/0 instead of 4/3/1; omission of each of the
+  four forms; nonzero odd claimed O-invariant; an even component claimed odd;
+  single-entry-square SO invariance; orientation value 2 instead of 1; and
+  reflected orientation +1 instead of -1.
+- The other two mutations change actual form definitions in isolated source
+  copies and expose mismatched polynomial terms in the named identity. For
+  traceSquare_apply, a cross coefficient 3 instead of 2 gives value 5 instead
+  of 4 at G=diag(1,1,0,0). For traceOfSquare_apply, coefficient -2 instead of
+  2 gives -2 instead of 2 at G01=G10=1 with all other entries zero. Canonical
+  versions pass. These are false identities, not missing-lemma failures.
+- Sixteen positives passed: the twelve paired true statements, nonempty odd
+  space, zero form, negative coefficients and unique coefficients. They
+  establish admissibility and test sensitivity; they do not replace proof.
+- All 44 check logs, fourteen compiled D4 objects, proof sources, generator,
+  instruments, native sources and pins match the validation record. The
+  generator's --check passed before the suite. The fifteen dependency-package
+  checkouts match pinned commits and have clean tracked source. Previously
+  reviewed H/I/E/J/K proof bytes remain unchanged; their evidence is historical.
+
+NATIVE IDENTIFICATION
+The original five selected SymPy helper definitions, run only for D4, give
+complete Q9 V1/V2/V6 row spaces equal to the contract's SO/O/odd spaces, with
+dimensions 4/3/1. Their reflection operator agrees in the actual native V1
+basis. Native PD_POLY equals P exactly. The fully summed epsilon_ijkl Gij Gkl
+equals 2P for epsilon_0123=+1. This factor is recorded rather than removed by
+rescaling. The shared specification defines P_D from the computed V6 basis.
+
+A rank-four wrong span and the old generator-orientation convention both fail
+span comparison; the old convention retains counts 4/3/1. These controls run
+only in memory. Canonical native source hashes are unchanged. Wolfram evidence
+is source inspection of the generator-block transpose, not engine execution.
+No production driver, export replacement, comparator or S11c work was run.
+
+BOUNDED REPAIRS AND REUSE
+Run1 did not start the recorded suite: preliminary rotation/reflection proofs
+left concrete matrix products and literal entries unreduced. Expanding matrix
+operations before general simplification, explicitly reducing entries 2/3,
+and removing unused simp arguments fixed those proof-code issues.
+
+Run2 passed Quadratic, Rotation, Orientation and Forms, then its combined
+Constraints certificate hit the 600-second process limit; no mutations ran.
+The certificate was split into ConstraintPolynomial and four blocks of 33
+equations. The 132 necessary equations, reconstruction and invariant_polynomial
+claim were compared and preserved. The timeout handler was repaired to stop
+the entire owned launcher/Lean process group. Its deliberate parent/child
+timeout test passed; the identified run2 orphan was stopped before run3.
+
+Run3 exposed unreduced literal-vector entries in the necessary equations.
+Using simp only [decode, Matrix.cons_val] before polynomial expansion and
+normalization fixes the evaluation without changing the equations. Focused
+first and final rotation equations passed. A redundant closing ring call in
+Classification was removed. Run4 then passed every canonical build and audit.
+
+Run4 stopped later on a determinant-sign positive control: broad simplification
+unfolded orientation before applying orientation_conjugate. Only the control
+proof changed to rewrite orientation_conjugate and reflection_det first. The
+true -1 and false +1 versions passed their focused checks; the false statement
+reduces to False. All canonical sources, generator, pins and compiled objects
+were unchanged. Run5 reused the successful build records and ran all controls.
+
+Run4's instrument SHA256 was
+94e43340a6da2eb71d5bd46981448572dce913770c7118cb71fa34997ac82199.
+The final instrument SHA256 is
+512b0be7acee45bdfb5f209f845dfb855f54885a7095ae178aff3e5d2420b877.
+Reuse records retain the earlier instrument provenance and successful command,
+diagnostics and source/object hashes; they do not claim fresh compilation.
+The timeout function is byte-identical to the tested version. Historical
+diagnostics, focused probes, split comparison and timeout cleanup evidence are
+retained under _scratch/S11_lean_d4, outside the fixed review packet.
+No timeout, warning-only failure or instrument failure was accepted as a
+mathematical rejection.
+
+Resources: one Lean process at a time, -j1 -M4096, nice 10, 600-second timeout
+per process. The allocator limit is not an OS RSS cap. Durable logs and an
+OS-wait completion hook avoid model polling. No earlier local Lean module was
+imported or rebuilt by this increment; package revisions stay pinned.
+
+REVIEW BOUNDARY
+The fixed packet contains the proofs, coverage/fidelity records, compact native
+link, controls, terminal evidence, pins and native source/specification context.
+S11_lean_d4_review_packet.json identifies the exact review revision; it is
+byte-identical to the MANIFEST.json supplied to reviewers. The user authorized
+this 34-file packet with "Proceed". Claude (Opus 5) and Grok (grok-4.6-build)
+each returned a substantive terminal CLEAR review, exit 0 and end_turn, with
+no required fixes. Their source reviews and mathematical hand checks did not
+independently compile Lean, rerun instruments or recompute hashes.
+
+The author inspected both raw responses, run records and stderr. Claude stderr
+was empty. Grok's startup warnings did not prevent its completed source review.
+Only its final report, beginning at character offset 1157 in text, was accepted;
+progress messages and the separate thought field are not clearance. Both raw
+responses and all original run records remain unchanged.
+
+All 34 live packet files matched before closure documentation. Archive,
+snapshot, transport, proof/generator/instrument/native source hashes, reports,
+44 logs, fourteen compiled objects, dependency pins and prior H/I/E/J/K proof
+bytes were revalidated. Only the four coverage/fidelity/verification/README
+documents changed afterward. Optional observations and the older step-prose
+editorial follow-up are recorded in D4_FIDELITY_REVIEW.md. No substantive proof
+or instrument changes require re-review or another build/control run.
+
+D4's divergence/zero bulk variation remains a separate next increment. D5,
+variable coefficients, general null-Lagrangian classification, new spectra or
+interfaces, production runs and systematic CAS bridging are outside this work.
+All S11c files and pinned exports were preserved. No D4 commit was requested
+or made for this verification and packet preparation.

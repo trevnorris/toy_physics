@@ -190,6 +190,12 @@ pass. The6.75MB transcript is published and annex-verified. Next refine the
 held wider-box three-momentum terms at fixed source/profile/domain/regulator
 settings. Finite agreement does not establish physical tails or Abel limits.
 
+Wider-box triple refinement instrument a70c4ca3 now has a supervised preflight:
+four saved native prefixes, four finest-rule cost prefixes, isolated settings
+and a four-worker coarse sweep precede any full216/24/24→216/32/24→216/32/32
+production. Single/pair values stay explicitly held. The silent watcher owns
+completion; no new triple result is accepted yet.
+
 ## Retained user-approved solver/export contract
 
 

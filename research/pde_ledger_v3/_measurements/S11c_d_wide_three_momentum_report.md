@@ -24,3 +24,9 @@ position bounds48/14 and regulator0.2. Save each group/record and every64-batch
 partial. The prior nine-hour grids and upstream factorization are preserved.
 Independent-grade/uniform/global exceptional coverage, physical infinite
 tails, Abel limits, scattering and poles remain open.
+
+Implementation is committed at a70c4ca3. Preflight launched at18:38:53 UTC
+on2026-09-16 with its silent local completion/error watcher. Startup verifies
+the one-thread coordinator,84 accepted current/frozen sources,87 total pins
+and empty strict stderr. Native prefix checks precede four-worker dispatch;
+no preflight result is accepted yet.

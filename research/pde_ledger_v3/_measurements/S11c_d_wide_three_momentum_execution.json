@@ -1,5 +1,5 @@
 {
-  "status": "INSTRUMENT_PREPARED",
+  "status": "PREFLIGHT_RUNNING",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-wide-three-20260916",
   "checker": "S11c_d_wide_three_momentum.py",
   "plan": "S11c_d_wide_three_momentum_plan.md",
@@ -11,5 +11,37 @@
   "workerAddressSpaceBytes": 2147483648,
   "preflightRunRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-wide-three-20260916/preflight",
   "launcherSha256": "b61932fe6e0a79bd8ad12a3213e56055653a93cbcebbbf94537694c51b526d0c",
-  "next": "Validate focused prefixes and four-worker instrument smoke, commit acceptance, then launch fixed-wide-box triple refinement. No accepted full triple refinement yet."
+  "next": "Silent local watcher owns completion/error wake-up. Validate saved native prefixes, settings, coarse workers and metadata before committing acceptance and launching production.",
+  "implementationCommit": "a70c4ca3",
+  "launch": {
+    "launchedUtc": "2026-09-16T18:38:53.235234+00:00",
+    "command": [
+      "/usr/bin/python",
+      "_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-wide-three-20260916/preflight",
+      "--stage",
+      "three_preflight",
+      "--",
+      "python",
+      "-u",
+      "_measurements/S11c_d_wide_three_momentum.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-wide-three-20260916/preflight/complete",
+      "--preflight"
+    ],
+    "supervisorPid": 364436,
+    "watcherPid": 364437,
+    "watcherDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-wide-three-20260916/preflight/completion-watcher",
+    "threadEnvironment": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1"
+    }
+  },
+  "launchVerification": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-wide-three-20260916/preflight/launch-verification.json",
+    "sha256": "53660c761691791f4e87b5d10ef9a5c5fb1860bd6dd4dd19d66ea9bbc29d0064"
+  }
 }

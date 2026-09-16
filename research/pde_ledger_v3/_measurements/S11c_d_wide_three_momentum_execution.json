@@ -1,5 +1,5 @@
 {
-  "status": "PREFLIGHT_ACCEPTED",
+  "status": "PRODUCTION_RUNNING",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-wide-three-20260916",
   "checker": "S11c_d_wide_three_momentum.py",
   "plan": "S11c_d_wide_three_momentum_plan.md",
@@ -11,7 +11,7 @@
   "workerAddressSpaceBytes": 2147483648,
   "preflightRunRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-wide-three-20260916/preflight",
   "launcherSha256": "b61932fe6e0a79bd8ad12a3213e56055653a93cbcebbbf94537694c51b526d0c",
-  "next": "Commit accepted instrument preflight and launch four-worker fixed-wide-box triple production with silent completion/error wake-up.",
+  "next": "Silent local watcher owns completion/error wake-up. Validate full fixed-wide-box triple refinement, publish accepted transcript via DataLad, then choose further independent triple or physical tail checks from actual evidence.",
   "implementationCommit": "a70c4ca3",
   "launch": {
     "launchedUtc": "2026-09-16T18:38:53.235234+00:00",
@@ -67,5 +67,40 @@
   "acceptedPreflight": "S11c_d_wide_three_momentum_preflight.json",
   "acceptedPreflightSha256": "9f2e47c80b4694f808e5d5c29ca7e7a4537cc296bf1382515738b765bcdae654",
   "productionRunRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-wide-three-20260916/production",
-  "productionLauncherSha256": "4941e4a5d26fe6bbc8aea3f31797b0d08cfba711cc4e2d173a21bd33013eb9f1"
+  "productionLauncherSha256": "0df3e3018acaa31988367d0aef959ed802fc984af5d348547103813dd63cd513",
+  "acceptedPreflightCommit": "8ac0caaf",
+  "productionLaunch": {
+    "launchedUtc": "2026-09-16T18:45:50.919696+00:00",
+    "command": [
+      "/usr/bin/python",
+      "_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-wide-three-20260916/production",
+      "--stage",
+      "three_construct",
+      "--",
+      "python",
+      "-u",
+      "_measurements/S11c_d_wide_three_momentum.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-wide-three-20260916/production/complete"
+    ],
+    "supervisorPid": 367367,
+    "watcherPid": 367368,
+    "watcherDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-wide-three-20260916/production/completion-watcher",
+    "threadEnvironment": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1"
+    }
+  },
+  "productionLaunchPreconditions": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-wide-three-20260916/production/launch-preconditions.json",
+    "sha256": "e4af9f668c7889b2ca1e1f6f7ce128d4dc3bb552a592aaaa46c1938e9873a5fb"
+  },
+  "productionLaunchVerification": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-wide-three-20260916/production/launch-verification.json",
+    "sha256": "c7a04bc74c5e1d819fde3f501d17f4216268c133c9d7b922a1b890c376c3ae10"
+  }
 }

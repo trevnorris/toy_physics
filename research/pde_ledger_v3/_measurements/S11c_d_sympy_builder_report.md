@@ -194,8 +194,10 @@ Wider-box triple instrument preflight is accepted in 114.51 seconds: four exact
 saved prefixes, four finest-rule cost prefixes, twelve isolated settings and
 twelve exact coarse serial/worker plus independent cell comparisons. Four clean
 workers, 87 sources, 5040 held-term scalars and 75886 metadata paths pass.
-The 5.07 MB smoke stays instrument evidence in durable scratch. Next launch
-216/24/24→216/32/24→216/32/32 production with all single/pair values held.
+The 5.07 MB smoke stays instrument evidence in durable scratch. Production launched after acceptance 8ac0caaf at
+216/24/24→216/32/24→216/32/32 with all single/pair values held. Four single-thread
+2 GiB workers, 87 current/frozen sources and the silent watcher are verified;
+no production result is accepted yet.
 Prefix extrapolation suggests roughly 16 hours, with concurrent-load uncertainty.
 
 ## Retained user-approved solver/export contract

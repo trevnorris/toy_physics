@@ -36,3 +36,9 @@ f3bc5754/acf00f65, with raw discrepancies 4.83e-15 / 7.71e-16 and sampled
 cutoff 3-to-4 action change 1.134674e-7. No new full triple refinement is yet
 accepted. Uniform/independent-grade/global exceptional coverage, infinite
 tails, Abel limits, scattering and poles remain open.
+
+Preflight acceptance is committed at `8ac0caaf`. Production launched at
+18:45:50 UTC on 2026-09-16. Startup verifies all four workers with one native
+thread and a 2 GiB address-space ceiling each, all 87 current/frozen sources,
+empty strict stderr and the silent completion/error watcher. No production
+result is yet accepted.

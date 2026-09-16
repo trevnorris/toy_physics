@@ -1,0 +1,13 @@
+{
+  "status": "IMPLEMENTED_READY",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-momentum-domain-20260916",
+  "checker": "S11c_d_momentum_domain_prepare.py",
+  "plan": "S11c_d_momentum_domain_plan.md",
+  "report": "S11c_d_momentum_domain_prepare_report.md",
+  "focused": "S11c_d_momentum_domain_prepare_focused.json",
+  "acceptedPositionPublicationCommit": "e4f8d74e1a2fda88b9c1da64eb442f5ea6c09db2",
+  "acceptedPositionAnnexVerificationCommit": "29b0c8e9",
+  "workers": 4,
+  "nativeThreadsPerWorker": 1,
+  "next": "Run source/profile resolution and native coefficient probes on wider momentum domains under the standard supervisor and silent watcher; select matching-rule full action work from measured evidence."
+}

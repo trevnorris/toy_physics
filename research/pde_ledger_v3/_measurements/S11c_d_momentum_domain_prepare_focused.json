@@ -1,0 +1,296 @@
+{
+  "sourceSha256": "195c26b062d6bff63520a823f6dbf1b89d4973c4f93b004fae81f3e67800762e",
+  "engineSha256": "5bf77729682960bb59f10c672a5fe3f67a98b0a9533da7c6189a37183596050f",
+  "checks": [
+    {
+      "cutoff": 2.0,
+      "rowCount": 80,
+      "sourceCount": 70,
+      "profileCount": 6,
+      "sourceRanges": [
+        [
+          -2.0,
+          2.0
+        ]
+      ],
+      "profileRanges": [
+        [
+          -40.0,
+          40.0
+        ]
+      ],
+      "edgeProfileChecks": [
+        {
+          "profile": 0,
+          "frequencies": [
+            -40.0,
+            0.0,
+            40.0
+          ],
+          "orderChanges": [
+            4.927668697490124e-16,
+            3.9301904306579436e-14
+          ]
+        },
+        {
+          "profile": 1,
+          "frequencies": [
+            -40.0,
+            0.0,
+            40.0
+          ],
+          "orderChanges": [
+            4.927668697490124e-16,
+            3.9301904306579436e-14
+          ]
+        },
+        {
+          "profile": 2,
+          "frequencies": [
+            -40.0,
+            0.0,
+            40.0
+          ],
+          "orderChanges": [
+            4.927668697490124e-16,
+            3.9301904306579436e-14
+          ]
+        },
+        {
+          "profile": 3,
+          "frequencies": [
+            -40.0,
+            0.0,
+            40.0
+          ],
+          "orderChanges": [
+            7.136878614081731e-13,
+            1.2525166683939346e-12
+          ]
+        },
+        {
+          "profile": 4,
+          "frequencies": [
+            -40.0,
+            0.0,
+            40.0
+          ],
+          "orderChanges": [
+            7.136878614081731e-13,
+            1.2525166683939346e-12
+          ]
+        },
+        {
+          "profile": 5,
+          "frequencies": [
+            -40.0,
+            0.0,
+            40.0
+          ],
+          "orderChanges": [
+            7.136878614081731e-13,
+            1.2525166683939346e-12
+          ]
+        }
+      ]
+    },
+    {
+      "cutoff": 3.0,
+      "rowCount": 80,
+      "sourceCount": 70,
+      "profileCount": 6,
+      "sourceRanges": [
+        [
+          -3.0,
+          3.0
+        ]
+      ],
+      "profileRanges": [
+        [
+          -60.0,
+          60.0
+        ]
+      ],
+      "edgeProfileChecks": [
+        {
+          "profile": 0,
+          "frequencies": [
+            -60.0,
+            0.0,
+            60.0
+          ],
+          "orderChanges": [
+            2.4988360412040373e-15,
+            1.4207390931269196e-14
+          ]
+        },
+        {
+          "profile": 1,
+          "frequencies": [
+            -60.0,
+            0.0,
+            60.0
+          ],
+          "orderChanges": [
+            2.4988360412040373e-15,
+            1.4207390931269196e-14
+          ]
+        },
+        {
+          "profile": 2,
+          "frequencies": [
+            -60.0,
+            0.0,
+            60.0
+          ],
+          "orderChanges": [
+            2.4988360412040373e-15,
+            1.4207390931269196e-14
+          ]
+        },
+        {
+          "profile": 3,
+          "frequencies": [
+            -60.0,
+            0.0,
+            60.0
+          ],
+          "orderChanges": [
+            6.821210263296962e-13,
+            1.0570538233486363e-12
+          ]
+        },
+        {
+          "profile": 4,
+          "frequencies": [
+            -60.0,
+            0.0,
+            60.0
+          ],
+          "orderChanges": [
+            6.821210263296962e-13,
+            1.0570538233486363e-12
+          ]
+        },
+        {
+          "profile": 5,
+          "frequencies": [
+            -60.0,
+            0.0,
+            60.0
+          ],
+          "orderChanges": [
+            6.821210263296962e-13,
+            1.0570538233486363e-12
+          ]
+        }
+      ]
+    },
+    {
+      "cutoff": 4.0,
+      "rowCount": 80,
+      "sourceCount": 70,
+      "profileCount": 6,
+      "sourceRanges": [
+        [
+          -4.0,
+          4.0
+        ]
+      ],
+      "profileRanges": [
+        [
+          -80.0,
+          80.0
+        ]
+      ],
+      "edgeProfileChecks": [
+        {
+          "profile": 0,
+          "frequencies": [
+            -80.0,
+            0.0,
+            80.0
+          ],
+          "orderChanges": [
+            0.0004963872642775122,
+            9.733020710111194e-16
+          ]
+        },
+        {
+          "profile": 1,
+          "frequencies": [
+            -80.0,
+            0.0,
+            80.0
+          ],
+          "orderChanges": [
+            0.0004963872642775122,
+            9.733020710111194e-16
+          ]
+        },
+        {
+          "profile": 2,
+          "frequencies": [
+            -80.0,
+            0.0,
+            80.0
+          ],
+          "orderChanges": [
+            0.0004963872642775122,
+            9.733020710111194e-16
+          ]
+        },
+        {
+          "profile": 3,
+          "frequencies": [
+            -80.0,
+            0.0,
+            80.0
+          ],
+          "orderChanges": [
+            0.0004650308670839642,
+            1.1273072597058501e-12
+          ]
+        },
+        {
+          "profile": 4,
+          "frequencies": [
+            -80.0,
+            0.0,
+            80.0
+          ],
+          "orderChanges": [
+            0.0004650308670839642,
+            1.1273072597058501e-12
+          ]
+        },
+        {
+          "profile": 5,
+          "frequencies": [
+            -80.0,
+            0.0,
+            80.0
+          ],
+          "orderChanges": [
+            0.0004650308670839642,
+            1.1273072597058501e-12
+          ]
+        }
+      ]
+    }
+  ],
+  "packetSha256": "ae506678c3f4627a23ff51da9d7463567950969ba77bf7c1ebb9d6e6032885bd",
+  "scope": "Exact finite cutoff/range binding and three profile-transfer probes only; no complete action or uniform quadrature claim.",
+  "testedBindingSourceSha256": "7091a50bea9114b9961d6b18139f7a48f7e4ea6cdcbe33a90ade7a0885ccfd07",
+  "subsequentChange": "Only emission of explicit source-use/profile identities and reconstruction residuals was added after the focused numeric binding checks; rebind/assignments and all numerical functions are unchanged.",
+  "postFocusEmissionJoin": {
+    "reconstructedOriginalSha256": "7091a50bea9114b9961d6b18139f7a48f7e4ea6cdcbe33a90ade7a0885ccfd07",
+    "unchangedHelperAstSha256": {
+      "assignments": "74fa9325a513f58a5f02809416c0adb9b0fac8199d3aebba990b47e11f910bf5",
+      "rebind": "901c50418cdd1205beb126ba19532b2d2d10790daacd2b50c3d3ac14892f829d",
+      "record_guard": "5398144e6fb06c0790bdcd316e22e1723acb17fd31794e018dd17c9a27e04612",
+      "evaluate_task": "5be1110168b1436df70b12d369046e284c73dca033211c5d7b1c141cfdf0e9eb"
+    },
+    "change": "Added only explicit source-use/profile identity and reconstruction-residual emission."
+  }
+}

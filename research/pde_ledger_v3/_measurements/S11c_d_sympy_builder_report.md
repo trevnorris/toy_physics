@@ -156,10 +156,15 @@ transcript is published and annex-verified; wider actions and physical limits re
 Complete momentum-domain action preflight is accepted in 113.6 seconds:
 152 selected-transform comparisons, six exact production-order prefixes and
 six exact coarse serial/worker full actions. All 78 sources and 37,614 metadata
-paths join, with clean workers and unchanged packets. Full production is ready:
+paths join, with clean workers and unchanged packets. Full production is running:
 matching-profile cutoff-2 baseline then cutoff-3/4 actions, with all nonlocal
 rows reevaluated. The coarse smoke establishes instrument execution only;
 finite-domain momentum refinement and physical limits remain separate work.
+
+Production launch is recorded after preflight acceptance 649a98d2. Two matching
+baseline workers run first, then four wider-box workers; startup confirms one
+native thread and 2 GiB per worker with empty stderr. The silent local watcher
+owns completion/error wake-up. No production result is accepted yet.
 
 ## Retained user-approved solver/export contract
 

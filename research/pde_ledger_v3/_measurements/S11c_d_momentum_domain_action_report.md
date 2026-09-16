@@ -19,7 +19,7 @@ Acceptance verifies saved operands without repeating numerical integration.
 The coarse smoke is instrument evidence only; its intentionally large numerical
 changes are not physical domain results.
 
-Production is ready: retain cutoff-2/profile256, compute cutoff-2/profile512,
+Production is running: retain cutoff-2/profile256, compute cutoff-2/profile512,
 then compute cutoffs 3/4 with the same source256/profile512 rule and single216,
 pair216/32, triple144/24/24 momentum rules. Source/profile bounds stay 48/14 and
 regulator stays 0.2. Every native nonlocal contribution is reevaluated. Profile
@@ -33,3 +33,9 @@ with engine and approved inputs unchanged. No production action has yet been
 accepted. Wider-box momentum resolution, uniform/independent-grade and global
 exceptional-locus coverage, infinite tails, Abel limits, scattering and bound
 poles remain work under the retained solver/export contract.
+
+The accepted preflight is committed at 649a98d2. Production launched at
+08:06:18 UTC on 2026-09-16. Startup verification confirms both baseline workers,
+one native thread and a 2 GiB address-space ceiling per worker, the coordinator
+and silent watcher, with empty stderr. The four wider-box workers launch only
+after the baseline wave finishes. No production result has been accepted yet.

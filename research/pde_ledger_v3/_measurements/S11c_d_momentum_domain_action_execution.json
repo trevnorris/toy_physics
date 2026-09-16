@@ -1,5 +1,5 @@
 {
-  "status": "PREFLIGHT_ACCEPTED_PRODUCTION_READY",
+  "status": "PRODUCTION_RUNNING",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-momentum-domain-action-20260916",
   "checker": "S11c_d_momentum_domain_action.py",
   "preflight": "S11c_d_momentum_domain_action_preflight.py",
@@ -10,7 +10,7 @@
   "acceptedPreparationAnnexVerificationCommit": "1cba44b5",
   "maximumConcurrentWorkers": 4,
   "nativeThreadsPerWorker": 1,
-  "next": "Launch prepared production/launch.py: matching-rule cutoff-2 baseline, then cutoff3/4 complete actions under one supervisor with at most four single-thread workers and silent completion/error watcher.",
+  "next": "Await silent local completion/error wake-up for the two baseline workers followed by four wider-box workers. Inspect every raw rule/domain change and all source/packet/metadata checks before production acceptance and annex publication.",
   "implementationCommit": "f781846f",
   "preflightRunRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-momentum-domain-action-20260916/preflight",
   "launch": {
@@ -64,5 +64,42 @@
     "finishedUtc": "2026-09-16T08:01:51.866949+00:00"
   },
   "acceptedPreflight": "S11c_d_momentum_domain_action_preflight.json",
-  "acceptedPreflightSha256": "718d17e2f8d340a50e4470b759ca479101a20775c58ded52b8007cf9d3eef0e4"
+  "acceptedPreflightSha256": "718d17e2f8d340a50e4470b759ca479101a20775c58ded52b8007cf9d3eef0e4",
+  "acceptedPreflightCommit": "649a98d29851f2307c12612587d6ebba99389bb2",
+  "productionRunRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-momentum-domain-action-20260916/production",
+  "productionLaunch": {
+    "launchedUtc": "2026-09-16T08:06:17.993924+00:00",
+    "command": [
+      "/usr/bin/python",
+      "_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-momentum-domain-action-20260916/production",
+      "--stage",
+      "momentum_construct",
+      "--",
+      "python",
+      "-u",
+      "_measurements/S11c_d_momentum_domain_action.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-momentum-domain-action-20260916/production/complete"
+    ],
+    "supervisorPid": 3437495,
+    "watcherPid": 3437496,
+    "watcherDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-momentum-domain-action-20260916/production/completion-watcher",
+    "threadEnvironment": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1"
+    }
+  },
+  "productionLauncherSha256": "7a9e5402e12c960e85fca10f9e3e2ffe25c8d0b58a085c2547e1338ff7d51181",
+  "productionLaunchPreconditions": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-momentum-domain-action-20260916/production/launch-preconditions.json",
+    "sha256": "a4599fe15ef5bbc537e122f7f524a17569606c684d630c17d9161f571d61b955"
+  },
+  "productionLaunchVerification": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-momentum-domain-action-20260916/production/launch-verification.json",
+    "sha256": "654faf41de473663e3109a59e84e5bf291024c9a6225ebce20c6a14f3e3d95b9"
+  }
 }

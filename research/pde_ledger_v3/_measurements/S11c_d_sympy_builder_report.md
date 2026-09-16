@@ -129,11 +129,13 @@ source, worker, partial and pre/post-packet hashes agree. The 1.52 MB transcript
 is published and annex-verified. Next is independent adaptive outer quadrature,
 then physical domain/tail and regulator checks; finite agreement is not a limit.
 
-Independent adaptive outer preflight is validated: production-order prefixes
-agree within 3.11e-16 relative, regrouped full actions agree exactly, and all
-294 underresolved smoke points plus 13,766 metadata paths pass. Full-resolution
-adaptive outer integration is running with four single-thread workers; its
-physical result remains pending.
+Independent adaptive outer production is validated in 2h12m. All ten rows
+and both fields agree with Gauss-144 within 1.74e-16 in raw integrals; complete
+actions round equal. All 420 conditional points, 6,764 partials, 67 sources and
+20,678 metadata paths pass with unchanged packets and held single/pair terms.
+The 1.18 MB transcript is prepared for annex publication. Next are finite-domain
+and tail checks. Inner/source/profile rules were held, so independent outer
+agreement does not establish uniform/grade coverage, tails or Abel limits.
 
 ## Retained user-approved solver/export contract
 

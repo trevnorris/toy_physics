@@ -1,32 +1,30 @@
 # S11c-d independent adaptive outer quadrature
 
-Preflight passed in 63.2 seconds with exit zero and empty stderr. Both accepted
-production-order 16,384-node prefixes have identical momentum nodes; weight
-residuals are at most 1.33e-23, relative values/mutations 3.11e-16/1.89e-16,
-and mass residuals 3.39e-21. Complete underresolved native/conditional grouping
-agrees within 1.03e-15 relative and complete actions agree exactly.
+Production passed in 2h12m with exit zero and empty stderr in all four workers.
+Adaptive GK21 outer quadrature agrees with accepted Gauss-144 raw integrals
+within 1.74e-16 (field 0) and 1.33e-16 (field 1). Complete actions round equal
+at working precision; every raw integral and native term difference is retained.
+Summed half-interval error estimates are 7.29e-12 and 4.33e-12. Each half targets
+5e-11 absolute in the declared numerical unit frame, with zero relative tolerance.
 
-All four adaptive smoke workers completed. Their 294 conditional points have
-verified source/field/limit/provenance and conditional-dimension joins, finite
-masses and actual measure responses. All ten rows and four nested profiles are
-covered. Every source/record/point/worker hash and pre/post packet identity passes.
-Full replay covers 3,906 tags, 1,951 fresh keys and 13,766 metadata paths.
-The smoke uses inner orders 1/1, source/profile 16/16 and tolerance 1e-3; its
-large changes from the accepted reference are not a physical convergence result.
+All ten native three-momentum rows and both approved fields are covered. Inner
+orders remain 24/24, source/profile orders 256/256, momentum/source/profile
+bounds 2/32/10 and regulator 0.2. Single/pair contributions remain unchanged.
+This is independent outer quadrature on held inner/source/profile operands;
+it establishes no uniform or independent-grade convergence or physical limit.
 
-Source/profile refinement remains published at 9ecb6ed8 and annex-verified at
-16838693, with final raw changes below 6.14e-19 / 3.64e-17. Production is running to compare a separate adaptive GK21 outer rule against accepted Gauss-144
-values, holding inner 24/24 and source/profile 256/256 fixed. Four workers cover
-two fields times [-2,0] and [0,2], with one native thread and 2 GiB ceiling each.
-Per-half absolute tolerance is 5e-11 in the declared unit frame, relative zero.
+All 420 conditional points, 6,764 partials, four worker results and four records
+pass source/field/profile/limit/provenance and conditional-unit joins. Finite
+conditional masses agree within 5.69e-14 and every actual measure mutation
+responds. All 67 current/frozen sources, exact read-only caches and pre/post
+packet hashes pass. Replay covers 3,906 tags, 1,951 fresh keys and 20,678 metadata
+paths. Peak worker/coordinator RSS is 134.8/194.1 MiB; workspace budgets are
+separate. The native engine and accepted constructor/emitter remain unchanged.
 
-The helper reverses exactly to native recursion/group ASTs after undoing the
-fixed-outer entry and omitted measure. The engine remains byte-identical.
-Every conditional point and partial sum is saved before guards. Keep all
-accepted single/pair terms, approved inputs and solver/export contract.
-No production adaptive result is accepted yet; uniform/independent-grade
-coverage, physical domains/tails, Abel limits, scattering and poles remain work.
-
-All four live production workers were verified at one native thread and a
-2 GiB address-space ceiling, with empty stderr. The owned completion/error
-watcher is waiting; no model polling or recurring task is used.
+The 1,184,850-byte transcript is prepared for DataLad/git-annex publication at
+`scripts/out/S11c_d_three_momentum_adaptive.out`, SHA256
+`7247f932018e700746c7ebda0dd09826c492c7255bb29735584fe7b7ed57b1dc`.
+Preflight was accepted at 19cfa05c; its coarse smoke was an instrument check.
+Next: source/profile domain and tail tests, followed by momentum-domain and
+Abel checks as supported by the evidence. Scattering and poles remain work.
+Preserve all saved operands, approved inputs and the retained solver contract.

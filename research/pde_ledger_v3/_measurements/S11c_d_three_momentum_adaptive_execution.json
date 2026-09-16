@@ -1,5 +1,5 @@
 {
-  "status": "ADAPTIVE_PRODUCTION_RUNNING",
+  "status": "VALIDATED_PUBLICATION_PREPARED",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-three-adaptive-20260916",
   "checker": "S11c_d_three_momentum_adaptive.py",
   "preflight": "S11c_d_three_momentum_adaptive_preflight.py",
@@ -9,7 +9,7 @@
   "annexVerificationCommit": "16838693",
   "workers": 4,
   "nativeThreadsPerWorker": 1,
-  "next": "Wait silently for the owned completion/error watcher; validate full-resolution adaptive evidence, publish through DataLad/git-annex if accepted, and select physical domain/tail or additional quadrature work from the results.",
+  "next": "Verify annex publication, then derive finite-domain/tail tests from all accepted native operators; retain finite and independent-outer scope.",
   "implementationCommit": "f4cf2728",
   "launch": {
     "launchedUtc": "2026-09-16T02:10:40.311776+00:00",
@@ -215,5 +215,26 @@
   "productionLaunchVerification": {
     "path": "/var/projects/toy_physics/_scratch/s11c/s11c-three-adaptive-20260916/production/launch-verification.json",
     "sha256": "6f96fa951faf708c00881bddacf0137c7cc538351835b92252b25faf6cf081b3"
-  }
+  },
+  "acceptedRunRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-three-adaptive-20260916/production",
+  "productionOutcome": {
+    "stage": "adaptive_construct",
+    "command": [
+      "python",
+      "-u",
+      "_measurements/S11c_d_three_momentum_adaptive.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-three-adaptive-20260916/production/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-three-adaptive-20260916/production/adaptive_construct.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-three-adaptive-20260916/production/adaptive_construct.stderr",
+    "startedUtc": "2026-09-16T02:16:11.141403+00:00",
+    "childPid": 3314584,
+    "status": "completed",
+    "exitCode": 0,
+    "wallSeconds": 7929.352672257461,
+    "stderrBytes": 0,
+    "finishedUtc": "2026-09-16T04:28:20.494164+00:00"
+  },
+  "acceptedCheckpoint": "S11c_d_three_momentum_adaptive_checkpoint.json"
 }

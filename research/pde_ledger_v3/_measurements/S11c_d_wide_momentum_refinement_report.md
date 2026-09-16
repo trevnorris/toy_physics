@@ -37,3 +37,10 @@ coverage, infinite tails, Abel limits, scattering and poles remain open.
 Saved-operand acceptance verifies 81 source files, 56 worker artifacts,
 40 exact read-only cache records and 6720 held-term scalars. Peak
 worker RSS is 140,172 KiB; coordinator RSS is 486,696 KiB.
+
+Preflight acceptance is committed at 09fb8752. Production launched at
+17:51:35 UTC on 2026-09-16 under the existing supervisor and silent completion/
+error watcher. No production result has yet been accepted.
+Startup verification confirms four workers, one native thread and a 2 GiB
+address-space ceiling each, 81 matching current/frozen sources and empty
+supervisor/worker stderr. The local watcher owns the next wake-up.

@@ -177,7 +177,7 @@ The wider-box refinement preflight is accepted: eight exact saved prefixes,
 24 isolated production-setting changes and 24 exact coarse serial/worker and
 independent cell comparisons. Four clean workers, 81 sources, 28 records and
 135,662 metadata paths join, with every held value unchanged. The 10.51 MB
-smoke remains instrument evidence. Production will refine single/paired terms
+smoke remains instrument evidence. Production launched after acceptance 09fb8752 to refine single/paired terms
 on fixed boxes 3/4 with accepted three-momentum values explicitly retained.
 No new physical refinement result is accepted yet.
 

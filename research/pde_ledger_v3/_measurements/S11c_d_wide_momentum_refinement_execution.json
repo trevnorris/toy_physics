@@ -1,5 +1,5 @@
 {
-  "status": "PREFLIGHT_ACCEPTED",
+  "status": "PRODUCTION_RUNNING",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-wide-momentum-20260916",
   "checker": "S11c_d_wide_momentum_refinement.py",
   "plan": "S11c_d_wide_momentum_refinement_plan.md",
@@ -11,7 +11,7 @@
   "nativeThreadsPerWorker": 1,
   "workerAddressSpaceBytes": 2147483648,
   "preflightRunRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-wide-momentum-20260916/preflight",
-  "next": "Commit instrument acceptance and launch the four-worker fixed-wide-box production sweep with a silent completion/error watcher.",
+  "next": "Await silent local completion/error wake-up; inspect literal fixed-box refinement differences and all source/metadata/held-term joins before acceptance and annex publication.",
   "launcherSha256": "657a09bae243ce684b0242368e2593f4ab5022774b355d092c83992414f63d7d",
   "implementationCommit": "13653baa",
   "launch": {
@@ -66,5 +66,42 @@
     "finishedUtc": "2026-09-16T17:42:40.166980+00:00"
   },
   "acceptedPreflight": "S11c_d_wide_momentum_refinement_preflight.json",
-  "acceptedPreflightSha256": "8d6d48b6487c9d5e6d3c45234cac0ace7aa5d752172e2233fffc41572266b8f5"
+  "acceptedPreflightSha256": "8d6d48b6487c9d5e6d3c45234cac0ace7aa5d752172e2233fffc41572266b8f5",
+  "acceptedPreflightCommit": "09fb8752",
+  "productionRunRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-wide-momentum-20260916/production",
+  "productionLauncherSha256": "cb1e98c7f0faeadd4cc31cff6c3e9464ae11622ad8fd6c1af3aecbad1ed3c2cd",
+  "productionLaunch": {
+    "launchedUtc": "2026-09-16T17:51:35.218815+00:00",
+    "command": [
+      "/usr/bin/python",
+      "_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-wide-momentum-20260916/production",
+      "--stage",
+      "wide_construct",
+      "--",
+      "python",
+      "-u",
+      "_measurements/S11c_d_wide_momentum_refinement.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-wide-momentum-20260916/production/complete"
+    ],
+    "supervisorPid": 342965,
+    "watcherPid": 342966,
+    "watcherDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-wide-momentum-20260916/production/completion-watcher",
+    "threadEnvironment": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1"
+    }
+  },
+  "productionLaunchPreconditions": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-wide-momentum-20260916/production/launch-preconditions.json",
+    "sha256": "1aac7f51c46298ac7a700675af0de24cd0630b30fa24ca911bf614cf72340d08"
+  },
+  "productionLaunchVerification": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-wide-momentum-20260916/production/launch-verification.json",
+    "sha256": "b0270a9a10e1989112de22d9a8af73439db694463402abc74a59cd2821c626a6"
+  }
 }

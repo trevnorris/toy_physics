@@ -190,11 +190,13 @@ pass. The6.75MB transcript is published and annex-verified. Next refine the
 held wider-box three-momentum terms at fixed source/profile/domain/regulator
 settings. Finite agreement does not establish physical tails or Abel limits.
 
-Wider-box triple refinement instrument a70c4ca3 now has a supervised preflight:
-four saved native prefixes, four finest-rule cost prefixes, isolated settings
-and a four-worker coarse sweep precede any full216/24/24→216/32/24→216/32/32
-production. Single/pair values stay explicitly held. The silent watcher owns
-completion; no new triple result is accepted yet.
+Wider-box triple instrument preflight is accepted in 114.51 seconds: four exact
+saved prefixes, four finest-rule cost prefixes, twelve isolated settings and
+twelve exact coarse serial/worker plus independent cell comparisons. Four clean
+workers, 87 sources, 5040 held-term scalars and 75886 metadata paths pass.
+The 5.07 MB smoke stays instrument evidence in durable scratch. Next launch
+216/24/24→216/32/24→216/32/32 production with all single/pair values held.
+Prefix extrapolation suggests roughly 16 hours, with concurrent-load uncertainty.
 
 ## Retained user-approved solver/export contract
 

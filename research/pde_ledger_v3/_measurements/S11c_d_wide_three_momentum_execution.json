@@ -1,5 +1,5 @@
 {
-  "status": "PREFLIGHT_RUNNING",
+  "status": "PREFLIGHT_ACCEPTED",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-wide-three-20260916",
   "checker": "S11c_d_wide_three_momentum.py",
   "plan": "S11c_d_wide_three_momentum_plan.md",
@@ -11,7 +11,7 @@
   "workerAddressSpaceBytes": 2147483648,
   "preflightRunRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-wide-three-20260916/preflight",
   "launcherSha256": "b61932fe6e0a79bd8ad12a3213e56055653a93cbcebbbf94537694c51b526d0c",
-  "next": "Silent local watcher owns completion/error wake-up. Validate saved native prefixes, settings, coarse workers and metadata before committing acceptance and launching production.",
+  "next": "Commit accepted instrument preflight and launch four-worker fixed-wide-box triple production with silent completion/error wake-up.",
   "implementationCommit": "a70c4ca3",
   "launch": {
     "launchedUtc": "2026-09-16T18:38:53.235234+00:00",
@@ -43,5 +43,29 @@
   "launchVerification": {
     "path": "/var/projects/toy_physics/_scratch/s11c/s11c-wide-three-20260916/preflight/launch-verification.json",
     "sha256": "53660c761691791f4e87b5d10ef9a5c5fb1860bd6dd4dd19d66ea9bbc29d0064"
-  }
+  },
+  "preflightOutcome": {
+    "stage": "three_preflight",
+    "command": [
+      "python",
+      "-u",
+      "_measurements/S11c_d_wide_three_momentum.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-wide-three-20260916/preflight/complete",
+      "--preflight"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-wide-three-20260916/preflight/three_preflight.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-wide-three-20260916/preflight/three_preflight.stderr",
+    "startedUtc": "2026-09-16T18:38:53.265879+00:00",
+    "childPid": 364438,
+    "status": "completed",
+    "exitCode": 0,
+    "wallSeconds": 114.51256504748017,
+    "stderrBytes": 0,
+    "finishedUtc": "2026-09-16T18:40:47.778491+00:00"
+  },
+  "acceptedPreflight": "S11c_d_wide_three_momentum_preflight.json",
+  "acceptedPreflightSha256": "9f2e47c80b4694f808e5d5c29ca7e7a4537cc296bf1382515738b765bcdae654",
+  "productionRunRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-wide-three-20260916/production",
+  "productionLauncherSha256": "4941e4a5d26fe6bbc8aea3f31797b0d08cfba711cc4e2d173a21bd33013eb9f1"
 }

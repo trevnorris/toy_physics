@@ -1,0 +1,16 @@
+{
+  "status": "PREFLIGHT_PREPARED",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-wide-momentum-20260916",
+  "checker": "S11c_d_wide_momentum_refinement.py",
+  "plan": "S11c_d_wide_momentum_refinement_plan.md",
+  "report": "S11c_d_wide_momentum_refinement_report.md",
+  "focused": "S11c_d_wide_momentum_refinement_focused.json",
+  "acceptedDomainPublicationCommit": "995d590934e9f8ed3b0b6f0a9306cbbe06f6c840",
+  "acceptedDomainAnnexVerificationCommit": "ce220b19",
+  "maximumConcurrentWorkers": 4,
+  "nativeThreadsPerWorker": 1,
+  "workerAddressSpaceBytes": 2147483648,
+  "preflightRunRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-wide-momentum-20260916/preflight",
+  "next": "Run and validate saved-prefix/coarse-worker instrument preflight before physical wider-box refinement.",
+  "launcherSha256": "657a09bae243ce684b0242368e2593f4ab5022774b355d092c83992414f63d7d"
+}

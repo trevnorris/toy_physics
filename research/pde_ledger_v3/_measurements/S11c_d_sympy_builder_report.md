@@ -173,6 +173,11 @@ by 6.94e-18; cutoff 2→3 and 3→4 changes reach 2.25e-7 and 1.14e-7.
 Wider-box paired-momentum refinement is next before tail interpretation.
 The 3.41 MB canonical transcript and checkpoint retain every source/packet join.
 
+The next fixed-wide-box refinement instrument preserves the native engine and
+accepted three-momentum results. Its 24 production-setting isolation checks
+pass; supervised prefix/coarse-worker and full metadata preflight is next.
+No new physical refinement result is accepted yet.
+
 ## Retained user-approved solver/export contract
 
 

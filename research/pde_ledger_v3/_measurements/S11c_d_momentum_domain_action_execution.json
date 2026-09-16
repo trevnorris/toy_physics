@@ -1,5 +1,5 @@
 {
-  "status": "IMPLEMENTED_PREFLIGHT_READY",
+  "status": "PREFLIGHT_RUNNING",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-momentum-domain-action-20260916",
   "checker": "S11c_d_momentum_domain_action.py",
   "preflight": "S11c_d_momentum_domain_action_preflight.py",
@@ -10,5 +10,38 @@
   "acceptedPreparationAnnexVerificationCommit": "1cba44b5",
   "maximumConcurrentWorkers": 4,
   "nativeThreadsPerWorker": 1,
-  "next": "Run bounded native-transform/prefix/coarse-worker/emission preflight. On acceptance commit and launch common-rule complete actions with explicit profile-rule baseline."
+  "next": "Await silent completion/error notification; accept full source/transform/prefix/coarse-action/metadata preflight before launching prepared production/launch.py.",
+  "implementationCommit": "f781846f",
+  "preflightRunRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-momentum-domain-action-20260916/preflight",
+  "launch": {
+    "launchedUtc": "2026-09-16T07:59:58.201781+00:00",
+    "command": [
+      "/usr/bin/python",
+      "_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-momentum-domain-action-20260916/preflight",
+      "--stage",
+      "momentum_preflight",
+      "--",
+      "python",
+      "-u",
+      "_measurements/S11c_d_momentum_domain_action_preflight.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-momentum-domain-action-20260916/preflight/complete"
+    ],
+    "supervisorPid": 3433682,
+    "watcherPid": 3433683,
+    "watcherDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-momentum-domain-action-20260916/preflight/completion-watcher",
+    "threadEnvironment": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1"
+    }
+  },
+  "launcherSha256": "386484aed9be62bcd44a2987449cd8e8bc13d705ea6ae771acaa120279d3dba6",
+  "launchVerification": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-momentum-domain-action-20260916/preflight/launch-verification.json",
+    "sha256": "50681d205357707a4bbe0e0bae6ad2d639aacc5fe367be1fa38e465f14c34260"
+  }
 }

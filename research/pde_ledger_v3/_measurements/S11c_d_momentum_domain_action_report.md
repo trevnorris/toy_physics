@@ -25,3 +25,8 @@ metadata path. Its intentionally coarse smoke establishes instrument execution
 only. No new complete production action has been accepted yet. Wider-box
 momentum refinement, physical tails, uniform/independent-grade coverage, Abel
 limits, two-ended matching and bound poles remain separate work.
+
+Implementation and focused evidence are committed at f781846f. The bounded
+preflight launched at 07:59:58 UTC on 2026-09-16. Host startup verification
+confirms the supervisor/coordinator and silent watcher, one numerical thread
+and empty stderr. Await final validation; production is prepared but not started.

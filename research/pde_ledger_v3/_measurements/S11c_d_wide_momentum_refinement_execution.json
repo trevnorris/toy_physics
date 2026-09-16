@@ -1,5 +1,5 @@
 {
-  "status": "PREFLIGHT_PREPARED",
+  "status": "PREFLIGHT_RUNNING",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-wide-momentum-20260916",
   "checker": "S11c_d_wide_momentum_refinement.py",
   "plan": "S11c_d_wide_momentum_refinement_plan.md",
@@ -11,6 +11,38 @@
   "nativeThreadsPerWorker": 1,
   "workerAddressSpaceBytes": 2147483648,
   "preflightRunRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-wide-momentum-20260916/preflight",
-  "next": "Run and validate saved-prefix/coarse-worker instrument preflight before physical wider-box refinement.",
-  "launcherSha256": "657a09bae243ce684b0242368e2593f4ab5022774b355d092c83992414f63d7d"
+  "next": "Await silent local completion/error wake-up. Validate saved native prefixes, coarse serial/worker actions and full metadata before production.",
+  "launcherSha256": "657a09bae243ce684b0242368e2593f4ab5022774b355d092c83992414f63d7d",
+  "implementationCommit": "13653baa",
+  "launch": {
+    "launchedUtc": "2026-09-16T17:38:06.638825+00:00",
+    "command": [
+      "/usr/bin/python",
+      "_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-wide-momentum-20260916/preflight",
+      "--stage",
+      "wide_preflight",
+      "--",
+      "python",
+      "-u",
+      "_measurements/S11c_d_wide_momentum_refinement.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-wide-momentum-20260916/preflight/complete",
+      "--preflight"
+    ],
+    "supervisorPid": 337089,
+    "watcherPid": 337090,
+    "watcherDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-wide-momentum-20260916/preflight/completion-watcher",
+    "threadEnvironment": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1"
+    }
+  },
+  "launchVerification": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-wide-momentum-20260916/preflight/launch-verification.json",
+    "sha256": "9131d7eb7d574f3fae807571a1eb4edd3a672fb426d88c307e85bdb0ed15c09f"
+  }
 }

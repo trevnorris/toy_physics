@@ -13,3 +13,8 @@ coordinate and preserve the three-momentum rule. Full supervised preflight
 still must verify eight saved native prefixes, four coarse worker sweeps,
 24 serial/native-cell comparisons, held operands and metadata/emission replay.
 No new physical refinement, tail or scattering result is accepted yet.
+
+Implementation is committed at 13653baa. The supervised preflight launched at
+17:38:06 UTC on 2026-09-16, with a live single-thread coordinator, empty stderr
+and the silent local watcher. Saved production-prefix checks precede the four
+coarse workers. No preflight or physical production result is yet accepted.

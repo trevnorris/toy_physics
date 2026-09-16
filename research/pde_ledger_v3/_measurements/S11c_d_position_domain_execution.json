@@ -1,0 +1,13 @@
+{
+  "status": "IMPLEMENTED_PREFLIGHT_READY",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-position-domain-20260916",
+  "checker": "S11c_d_position_domain.py",
+  "preflight": "S11c_d_position_domain_preflight.py",
+  "plan": "S11c_d_position_domain_plan.md",
+  "report": "S11c_d_position_domain_report.md",
+  "acceptedAdaptivePublicationCommit": "44e3f8934605643a8f0576dec134ba037a106294",
+  "acceptedAdaptiveAnnexVerificationCommit": "96258429",
+  "workers": 4,
+  "nativeThreadsPerWorker": 1,
+  "next": "Run the bounded transform/binding/prefix/four-worker emission preflight; accept it before launching complete finite position-domain actions."
+}

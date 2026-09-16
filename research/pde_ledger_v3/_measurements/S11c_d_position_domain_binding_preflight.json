@@ -1,0 +1,24 @@
+{
+  "choices": [
+    [
+      32,
+      10
+    ],
+    [
+      48,
+      10
+    ],
+    [
+      48,
+      14
+    ]
+  ],
+  "rowsPerChoice": 80,
+  "sourcesPerChoice": 70,
+  "profilesPerChoice": 6,
+  "coefficientReverseResidualsPerChoice": 80,
+  "allResidualsZero": true,
+  "sourceSha256": "152e69abf22d628941a5f5c4cd470a8e53cd4521b4c009f633683a535097e6df",
+  "engineSha256": "5bf77729682960bb59f10c672a5fe3f67a98b0a9533da7c6189a37183596050f",
+  "scope": "Saved-operand cutoff binding only. No new numerical domain result."
+}

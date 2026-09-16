@@ -1,5 +1,5 @@
 {
-  "status": "PRODUCTION_RUNNING",
+  "status": "VALIDATED_PUBLICATION_PREPARED",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-wide-momentum-20260916",
   "checker": "S11c_d_wide_momentum_refinement.py",
   "plan": "S11c_d_wide_momentum_refinement_plan.md",
@@ -11,7 +11,7 @@
   "nativeThreadsPerWorker": 1,
   "workerAddressSpaceBytes": 2147483648,
   "preflightRunRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-wide-momentum-20260916/preflight",
-  "next": "Await silent local completion/error wake-up; inspect literal fixed-box refinement differences and all source/metadata/held-term joins before acceptance and annex publication.",
+  "next": "Annex-verify and commit production refinement, then compare independent adaptive outer quadrature on the two wider boxes. Three-momentum values remain held.",
   "launcherSha256": "657a09bae243ce684b0242368e2593f4ab5022774b355d092c83992414f63d7d",
   "implementationCommit": "13653baa",
   "launch": {
@@ -103,5 +103,25 @@
   "productionLaunchVerification": {
     "path": "/var/projects/toy_physics/_scratch/s11c/s11c-wide-momentum-20260916/production/launch-verification.json",
     "sha256": "b0270a9a10e1989112de22d9a8af73439db694463402abc74a59cd2821c626a6"
-  }
+  },
+  "productionOutcome": {
+    "stage": "wide_construct",
+    "command": [
+      "python",
+      "-u",
+      "_measurements/S11c_d_wide_momentum_refinement.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-wide-momentum-20260916/production/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-wide-momentum-20260916/production/wide_construct.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-wide-momentum-20260916/production/wide_construct.stderr",
+    "startedUtc": "2026-09-16T17:51:35.314978+00:00",
+    "childPid": 342974,
+    "status": "completed",
+    "exitCode": 0,
+    "wallSeconds": 627.8769866805524,
+    "stderrBytes": 0,
+    "finishedUtc": "2026-09-16T18:02:03.192067+00:00"
+  },
+  "acceptedCheckpoint": "S11c_d_wide_momentum_refinement_checkpoint.json"
 }

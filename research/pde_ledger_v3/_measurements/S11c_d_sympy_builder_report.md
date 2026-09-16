@@ -173,13 +173,14 @@ by 6.94e-18; cutoff 2→3 and 3→4 changes reach 2.25e-7 and 1.14e-7.
 Wider-box paired-momentum refinement is next before tail interpretation.
 The 3.41 MB canonical transcript and checkpoint retain every source/packet join.
 
-The wider-box refinement preflight is accepted: eight exact saved prefixes,
-24 isolated production-setting changes and 24 exact coarse serial/worker and
-independent cell comparisons. Four clean workers, 81 sources, 28 records and
-135,662 metadata paths join, with every held value unchanged. The 10.51 MB
-smoke remains instrument evidence. Production launched after acceptance 09fb8752 to refine single/paired terms
-on fixed boxes 3/4 with accepted three-momentum values explicitly retained.
-No new physical refinement result is accepted yet.
+Wider-box one-/two-momentum production is accepted in 10m28s: four clean
+workers, 4,674,896 new nodes, 28 records, 274 partials and 236,526 metadata
+paths. Final single and paired outer/inner changes reach 2.87e-15 and
+4.84e-16 / 3.40e-16 in raw integrals. The refined cutoff 3-to-4 action change
+remains 1.134674e-7. All held three-momentum values remain explicit. The
+10.64 MB transcript is ready for annex publication. Next is independent
+outer quadrature on boxes 3/4, followed by needed three-momentum checks;
+physical tails, regulator limits and scattering remain open.
 
 ## Retained user-approved solver/export contract
 

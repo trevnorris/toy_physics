@@ -1,46 +1,29 @@
 # S11c-d wider-box quadrature refinement
 
-The supervised instrument preflight completed cleanly in 273.4 seconds. All
-eight comparisons with actual saved production prefixes agree exactly,
-including values, measure mutations, masses and row/node counts. The 24
-production-setting comparisons isolate each changed quadrature coordinate.
-Four coarse workers and all 24 serial native-group/independent cell contractions
-pass. Held groups, settings and native terms stay unchanged at every stage.
+Production completed cleanly in 10m28s with four single-thread workers. All
+40 one-momentum and 30 two-momentum rows were refined on both fields at fixed
+cutoffs 3/4, regulator 0.2, position bounds 48/14 and source/profile orders
+256/512. The ten three-momentum rows and their 144/24/24 rules remain held.
 
-Replay covers 36,682 tags, 18,339 fresh write keys and 135,662 metadata paths
-across 28 records. All current/frozen sources, worker/group/record and focused
-artifacts, checks/stdout and pre/post packets join. Acceptance reconstructs
-saved actions and verifies the complete operands without reintegration. Its
-local validator uses exact recursive equality for nested NumPy source arrays;
-the initial comparison attempt and instrument note remain preserved in scratch.
-The producer, physics engine, numerical constructor and emitter are unchanged.
+The final single outer-order change is 2.87e-15 in raw integrals and 2.84e-15
+in complete actions. Final paired outer/inner changes are 4.84e-16 / 3.40e-16
+in raw integrals. The refined cutoff 3-to-4 complete-action difference remains
+1.134674e-7. These sampled refinements are much smaller than that box effect;
+independent outer quadrature and wider-box three-momentum checks remain next.
 
-The 10,506,536-byte smoke transcript stays in durable scratch, SHA256
-f5c3e6350e82cacb3dcf86c758cc6d382e1cf86ffaff5a79d2fd824c442652c7.
-Its intentionally coarse numerical changes establish instrument execution only.
-No physical wider-box refinement result is accepted yet.
+Saved-operand acceptance verifies all 81 current/frozen sources, 28 records,
+330 worker artifacts including 274 partials, 40 exact read-only cache records,
+6720 zero held-term scalars, every native contraction and literal refinement
+array. Production evaluated 4,674,896 new nodes; peak worker RSS was 143,720 KiB.
+All workers and the supervisor exited zero with empty stderr; checks/stdout,
+pre/post packets and 236,526 metadata paths join. The preflight accepted at
+09fb8752 remains instrument evidence only.
 
-Production keeps each momentum box (3 or 4), regulator 0.2, source/profile bounds
-48/14 and source/profile orders 256/512 fixed. Four single-thread workers with
-2 GiB ceilings own the two fields times two boxes. Refine single outer 216 to
-324/432, pair outer 216 to 324/432 at inner32, then pair inner48/64. Retain the
-accepted three-momentum values and their 144/24/24 rules explicitly throughout.
-Save every record/group and every 64-batch partial before later guards.
-
-Complete-domain actions are published/annex-verified at 995d5909/ce220b19.
-Matching profile-rule action changes reach 6.94e-18; box changes reach 2.25e-7
-then 1.14e-7 and are dominated by paired terms. Measured refinements will select
-later adaptive or three-momentum checks before interpreting box changes as
-tails. Full wider-box convergence, independent-grade/uniform/global exceptional
+The 10,635,882-byte transcript has SHA256
+`e6ab9b3c8919412dde2fcc3a9274645575edcf03e9e9e856434e11db3a998e54`.
+Its canonical path is `scripts/out/S11c_d_wide_momentum_refinement.out`.
+The checkpoint retains source, worker, publication and validation evidence.
+Full wider-box convergence, independent-grade/uniform/global exceptional
 coverage, infinite tails, Abel limits, scattering and poles remain open.
-
-Saved-operand acceptance verifies 81 source files, 56 worker artifacts,
-40 exact read-only cache records and 6720 held-term scalars. Peak
-worker RSS is 140,172 KiB; coordinator RSS is 486,696 KiB.
-
-Preflight acceptance is committed at 09fb8752. Production launched at
-17:51:35 UTC on 2026-09-16 under the existing supervisor and silent completion/
-error watcher. No production result has yet been accepted.
-Startup verification confirms four workers, one native thread and a 2 GiB
-address-space ceiling each, 81 matching current/frozen sources and empty
-supervisor/worker stderr. The local watcher owns the next wake-up.
+The engine and approved inputs are unchanged; Q9-only edits have no identified
+consumed-input dependency, and pinned exports are not rebased here.

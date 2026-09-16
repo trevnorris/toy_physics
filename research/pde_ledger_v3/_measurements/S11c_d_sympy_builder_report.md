@@ -145,6 +145,13 @@ The 2.31 MB transcript is published and annex-verified. Next is momentum-domain
 expansion with freshly computed source-frequency/profile-transfer ranges and
 resolution checks. Finite changes do not establish physical tail or Abel limits.
 
+Momentum-domain preparation is running for cutoffs 3 and 4, with freshly
+computed source ranges +/-3 and +/-4 and profile transfers +/-60 and +/-80.
+The old profile order 256 is underresolved at the new extreme transfer; higher
+orders and adaptive checks will select the next complete-action rules. All four
+numerical workers exited cleanly; final validation remains pending under the
+silent local watcher. No wider-domain full action has yet been computed.
+
 ## Retained user-approved solver/export contract
 
 

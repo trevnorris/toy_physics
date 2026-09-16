@@ -1,5 +1,5 @@
 {
-  "status": "IMPLEMENTED_READY",
+  "status": "MOMENTUM_DOMAIN_PREPARATION_RUNNING",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-momentum-domain-20260916",
   "checker": "S11c_d_momentum_domain_prepare.py",
   "plan": "S11c_d_momentum_domain_plan.md",
@@ -9,5 +9,46 @@
   "acceptedPositionAnnexVerificationCommit": "29b0c8e9",
   "workers": 4,
   "nativeThreadsPerWorker": 1,
-  "next": "Run source/profile resolution and native coefficient probes on wider momentum domains under the standard supervisor and silent watcher; select matching-rule full action work from measured evidence."
+  "next": "Await the local completion/error wake-up for final emission/metadata/source/packet validation. All four numerical workers finished with exit zero and empty stderr at startup verification; no preparation result is accepted before final supervisor exit and complete validation.",
+  "implementationCommit": "5aedcc01",
+  "launch": {
+    "launchedUtc": "2026-09-16T07:41:38.565301+00:00",
+    "command": [
+      "/usr/bin/python",
+      "_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-momentum-domain-20260916",
+      "--stage",
+      "momentum_prepare",
+      "--",
+      "python",
+      "-u",
+      "_measurements/S11c_d_momentum_domain_prepare.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-momentum-domain-20260916/complete"
+    ],
+    "supervisorPid": 3424259,
+    "watcherPid": 3424260,
+    "watcherDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-momentum-domain-20260916/completion-watcher",
+    "threadEnvironment": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1"
+    }
+  },
+  "launcherSha256": "06f1d7a5b8266b37acc12d7d940ff869c3ec3552c9f2fac3498adb164dbe80f3",
+  "launchVerification": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-momentum-domain-20260916/launch-verification.json",
+    "sha256": "8598b26ad47385b05d601337b8961b081edff33d135ceb51bc2fca55099e3268",
+    "stderrBytes": 0,
+    "coordinatorThreads": 1,
+    "workersCompleted": 4,
+    "workerExitCodes": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
 }

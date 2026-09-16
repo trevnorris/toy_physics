@@ -28,3 +28,9 @@ keeping any resolution change distinct and computing a matching-rule baseline
 or fixed-domain refinement where required. No wider-box full action, physical
 infinite-tail/Abel limit, scattering or pole has been computed by this preparation.
 The engine and approved inputs are unchanged; preserve the retained solver contract.
+
+Implementation is committed at 5aedcc01. The supervised preparation launched
+on 2026-09-16 at 07:41:38 UTC. All four numerical workers finished cleanly in
+106.33 seconds; final transcript/metadata validation was still running at the
+launch checkpoint, with empty stderr. No result is accepted pending final
+validation. The local completion/error watcher will wake this thread.

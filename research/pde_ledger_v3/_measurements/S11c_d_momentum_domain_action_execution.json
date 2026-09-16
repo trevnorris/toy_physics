@@ -1,0 +1,14 @@
+{
+  "status": "IMPLEMENTED_PREFLIGHT_READY",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-momentum-domain-action-20260916",
+  "checker": "S11c_d_momentum_domain_action.py",
+  "preflight": "S11c_d_momentum_domain_action_preflight.py",
+  "plan": "S11c_d_momentum_domain_action_plan.md",
+  "report": "S11c_d_momentum_domain_action_report.md",
+  "focused": "S11c_d_momentum_domain_action_focused.json",
+  "acceptedPreparationPublicationCommit": "fd372976940bc9096c3782fbd1faff6688139817",
+  "acceptedPreparationAnnexVerificationCommit": "1cba44b5",
+  "maximumConcurrentWorkers": 4,
+  "nativeThreadsPerWorker": 1,
+  "next": "Run bounded native-transform/prefix/coarse-worker/emission preflight. On acceptance commit and launch common-rule complete actions with explicit profile-rule baseline."
+}

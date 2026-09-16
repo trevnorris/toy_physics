@@ -1,0 +1,288 @@
+{
+  "sourceFiles": {
+    "scripts/S11c_d_mixing_scattering_sympy_audit.py": "5bf77729682960bb59f10c672a5fe3f67a98b0a9533da7c6189a37183596050f",
+    "scripts/S11c_b_exports.py": "3c6555f90a85382a5e96f3f961f0e36a4875d9259fe1be947fa8e683669b7084",
+    "scripts/S11c_c1_exports.py": "a5353b86dc526fd1b56734fdbdf7dc7f42387a3195ab4de84e8994f751871cdc",
+    "scripts/S11c_c2_exports.py": "2ba5ed487b84ecb98290df6f1650fa6210fe2784cfa02a0f3cff96cd718411cd",
+    "directives/S11c_d_SHARED_PHYSICS.md": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5",
+    "scripts/ledger_fold.py": "97da78c6631c09e5575dd14511760506f1ac08771cf07948978004e92f0b2333",
+    "directives/S11b_SHARED_PHYSICS.md": "9ea9e388e9d6421a841eaf851d12e1793527bba9a24aeeface3bfac2f4b40078",
+    "scripts/S11c_d_output_codec.py": "49873a2fa5c3184aab097263f0a6128379e094e42dbde5052456c5f3908bf717",
+    "_measurements/S11c_d_numerical_action_check.py": "86d5b373df8825c1e6dca198555b2a65e62822a3d9ba32868a89ca135bb7968f",
+    "_measurements/S11c_d_reduced_action_source_check.py": "aae3b2402e1707ef27f217b917dc10592f38acbe35d18356fbc4886ed854f754",
+    "_measurements/S11c_d_variable_profile_input_check.py": "70cdf2811f2ccd92380be24a80bb7af49f4e1a01504b09a9dbb47f8d3cbbb3b2",
+    "_measurements/S11c_d_reduced_action_assembly_checkpoint.json": "b4afb727b1a1ad2a468b0bab9a6ab369dbe4dd35bc46acd7150b7fa581cd984f",
+    "_measurements/S11c_d_variable_profile_development_input.json": "660b2b0b54494dce964c7f5fbd722a76a7e894d8ed92b18b5eb6290c3c10f1d5",
+    "_measurements/S11c_d_variable_profile_input_checkpoint.json": "c1d686dc1ec067bfcb05dc15c38b71bab4f91212ad1530c510afb7fe35542455",
+    "_measurements/S11c_d_numerical_action_plan.md": "13bca06fd2fe5a40cc05c03dc90d94c25ebc9b5a804ad9ae7098feb00f55dba4",
+    "_measurements/S11c_d_variable_profile_matching_plan.md": "b48cd0248e43f7d9c7fa926c71ed415b904e08f81c8ea01816cb05f3a109879d",
+    "_measurements/S11c_d_channel_preflight_input.json": "db0d6f4dd955515e2c53e59039bb36c65ba6736f0233e8a20db9356ef24fb6b4",
+    "_measurements/S11c_d_variable_profile_development_input_proposal.json": "5fd0a4feb51d627825956296e7f2c9ace57178e79e0f07041abc11f43960aabb",
+    "_measurements/S11c_d_variable_profile_parameter_checkpoint.json": "5571536d8a43eeb73c6fb562281200bbbad76d24f3f4ba401769d190dec4512d",
+    "_measurements/S11c_d_variable_profile_parameter_inventory.json": "02abaf37a0febb4daef1a26b2ca314e756af29b7dcaea524a1d95d9736f45b7b",
+    "_measurements/S11c_d_matching_channels_checkpoint.json": "c4ad9b9051f9c3fadb076593dd35ec12d1779fad6d1558c691c3b735fe4d3eeb",
+    "_measurements/S11c_d_source_fourier_factorization_checkpoint.json": "fcf6f1c5598b63c11d4f8a76d2d94c2b5bace590e83d4beea3e52e82f44158a6",
+    "_measurements/S11c_d_numerical_action_checkpoint.json": "d66690ef13b252b15af82422e5a426d352a5ce2de0b2c11fcbb28adffbbdc3c2",
+    "_measurements/S11c_d_reduced_action_source_checkpoint.json": "b6dcd36ee6cf8ed3b3943e207012dd165fce62ec39cb8f53ca3c23f4715d094b",
+    "_measurements/S11c_d_source_fourier_quadrature_plan.md": "c09a32ebbb98e4b199670aa0b5d0eaafc170741d08e36b6f6d2eb3336bab7f12",
+    "_measurements/S11c_d_source_fourier_quadrature_check.py": "d52747cba3e5cbdf4cbff6816ccd07d79564032d0a64d57bf80aef5815430323",
+    "_measurements/S11c_d_source_fourier_quadrature_recover.py": "e06bb737cb10b5e5d99eacfc7f3d3f94ee1b326ef57308f590fede96baac7be3",
+    "_measurements/S11c_d_source_fourier_quadrature_emission_plan.md": "0f111ae15a35feef849448fc212c7d99313bdaf6f685b447e8028222c045c591",
+    "_measurements/S11c_d_source_fourier_quadrature_emission_repair.json": "290ea315f422b76c0c256d9047c322b355a0455d11049973554fe07b85445886",
+    "_measurements/S11c_d_source_fourier_quadrature_replay_repair.json": "57ead60830444646ed3a1bc7c50597ac764a3ae5a2052abd538891c1c05708c8",
+    "_measurements/S11c_d_source_fourier_factorization_check.py": "b6573d82198f262ac5eea8362fb478a93a1f9b8ea17bd0d4645c67cb40168f23",
+    "_measurements/S11c_d_quadrature_domain_checkpoint.json": "266cc9cf75d10578c0c77daaa9d7d1817f18ede208a4941f84540c6a05be0284",
+    "_measurements/S11c_d_source_fourier_factorization_plan.md": "9d68ab06e2d1b180b10fc38863deb392e9eebc9524eda51c264acf5c4f17f5a0",
+    "_measurements/S11c_d_source_fourier_residual_recover.py": "443953029c6848c9f0ea377b7cd3005f9f537d29b2431e2122cf2f8fda83e2b9",
+    "_measurements/S11c_d_source_fourier_residual_plan.md": "d65e2a040eb34ae5938b427969a47b474de6ebc243ffb996a105ae8d7726b983",
+    "_measurements/S11c_d_source_fourier_residual_repair_checkpoint.json": "8fce782cdbfff7c5f139aec93c5d3035e87d3bc384ce1ada052de55abe7e57b3",
+    "_measurements/S11c_d_source_fourier_quadrature_finish.py": "1f36a7de4954284aa8293c93d7737edcd9d7f2b8e4cac9cb059f728b3ee59c75",
+    "_measurements/S11c_d_source_fourier_quadrature_metadata_repair.json": "3c50089342f0612da2c9f0cfae3e371372649e27318c3653d8e3d3bde713656f",
+    "_measurements/S11c_d_source_fourier_quadrature_finish_plan.md": "9119694f0c85a42c044edef17139669056220209c25929386e7581eac1464d30",
+    "_measurements/S11c_d_source_fourier_quadrature_checkpoint.json": "f75cc549a3c7eb6e28e44b83b022abf0d5dee03dbb8d3a149771ab5ae07979e1",
+    "_measurements/S11c_d_momentum_action_plan.md": "3571c4f169c71b7f32e9e9ede31f3e2d228e8ff2774a8334824c74dad17a7517",
+    "_measurements/S11c_d_momentum_action_check.py": "247d2ee6b7004888eca1d653b53f8be773c68041d7254389c4d14328d0001ff3",
+    "_measurements/S11c_d_momentum_action_preflight.py": "529a15fc7deae9a15bb63d8b41bd91a32b5e92e3b4f50d04641ce7973eebb205",
+    "_measurements/S11c_d_momentum_action_checkpoint.json": "ab4f77bbdcd18f4093f7a90c11b214fea9ee727d958c63902fc10e7ad377e554",
+    "_measurements/S11c_d_single_momentum_plan.md": "0c23d30e0e0d778f370ed2b375d50c5273f8f8c4b7c0bbd5dceece853a54a3c9",
+    "_measurements/S11c_d_single_momentum_check.py": "52a40b81cf8afbbeebc88436305b98024dc4022eaf613651476852e901edacc7",
+    "_measurements/S11c_d_momentum_refinement_diagnostic.json": "38bbe0f48c8323914d074b1e3e2666b96c6ab060efd621708051f81b39fc15af",
+    "_measurements/S11c_d_single_momentum_preflight.py": "7f827734966a2cb635c8e04869597de7a3400469538e0bf450927acc61254350",
+    "_measurements/S11c_d_single_momentum_checkpoint.json": "b36ed270f6e1e2a0163b799372d567bc35dca75292c5e5d7fed7d710f21bbe5b",
+    "_measurements/S11c_d_pair_momentum_plan.md": "51f7267c9549ed1ce61297fa7258e1bef6d4b21f457adab5eab86b0fc6929ddb",
+    "_measurements/S11c_d_pair_momentum_check.py": "ac74aa8420bcde083207e8cbec45e56561848b9f92c5e824e77bec8c08fd4505",
+    "_measurements/S11c_d_pair_momentum_preflight.py": "5184806cd9bad7bedfcdf78ebe2e6d3d596238ed2ea2262d882899b4348e3e50",
+    "_measurements/S11c_d_pair_momentum_checkpoint.json": "7d979d9b0a538d83f19ca82b9b7e7c5cd042e42f86de6e28e9467c72e07ca49f",
+    "_measurements/S11c_d_three_momentum_plan.md": "36884891d49e52fd904e745c183b6d4b78d2b6deca79e40baf9a0bab8d823f8f",
+    "_measurements/S11c_d_three_momentum_check.py": "91a20d235b47c58636e2fa7a3c5452757ff9204206330461aa1f3968a5095f88",
+    "_measurements/S11c_d_three_momentum_preflight.py": "f89751be2f5918fc997c8ab56e35896ea7003c84dea1b46077c3785cccd5482f",
+    "_measurements/S11c_d_three_momentum_checkpoint.json": "15b9bb597a8b105e25bc7dc2debe9ced6276f844a1a9d8e6e886b3dc33effb70",
+    "_measurements/S11c_d_three_momentum_source_plan.md": "291372237561766c8e4c726f0fcb8b0664440fc0ad8220f8a9eee2fc8e471c08",
+    "_measurements/S11c_d_three_momentum_source_check.py": "1753567b20d5739787aedf3269c783f172777043dfe92fd989525c21fadee487",
+    "_measurements/S11c_d_three_momentum_source_preflight.py": "8d2a951eb4a2d6a285908da295aaa950dd7a5935cb93c80948586cb40e453807",
+    "_measurements/S11c_d_parallel_momentum.py": "ecc9c93c89f4e670b8cccf213a57c6380ac73fe37bedefedb25a3e8dabfb536c",
+    "_measurements/S11c_d_parallel_momentum_plan.md": "adb54f9b40d42485d584f4d1ff3a751dd1dd1b3d471ff5b732efa41ec673cedb",
+    "_measurements/S11c_d_parallel_momentum_preflight.py": "5ee24943d10b27629a4c2b3d0d7d9e20f25c9bb861f777cb4abf134cc1a5ac49",
+    "_measurements/S11c_d_three_momentum_source_checkpoint.json": "59fb52ba78eb30c903e6ff73c6e0f496bbda77a7e4dc99cadfe2dd3583d8d090",
+    "_measurements/S11c_d_three_momentum_adaptive_plan.md": "cc4018383997e35e67641a20a797630ffc487d3e291b3bdf14ce046b4b18d9ca",
+    "_measurements/S11c_d_three_momentum_adaptive.py": "a028e76029f8386c900c88c8edaf02766b821c29c179c5c26d7ce3d7860fc1c2",
+    "_measurements/S11c_d_three_momentum_adaptive_preflight.py": "4f23a01a682055c50ef79cd6f80a76fe344b37a7d47dd30aa43ac4b1b0fb2900",
+    "_measurements/S11c_d_three_momentum_adaptive_checkpoint.json": "95931edb7dc3f6e70c9ac0660018a4ab81ea31abc70e713f2409fae320b0b900",
+    "_measurements/S11c_d_position_domain_plan.md": "d040e80bfc9388a2a1396c74e822ef15ca265d2a63f17aee924e055c9e018421",
+    "_measurements/S11c_d_position_domain.py": "d056a00e7500cd27a0d824b0b6f9b66ca9bbb2dd412b2b8c490d621afcf71b46",
+    "_measurements/S11c_d_position_domain_preflight.py": "55a6534e26411c3ebc2565f7b64fcc76901ec4025e292c1833be227ac7214922",
+    "_measurements/S11c_d_position_domain_checkpoint.json": "e6d313e7aee867a89bd32184a7e732aefbfb6fb093bc850b0bcbae592eac5b7c",
+    "_measurements/S11c_d_momentum_domain_plan.md": "d74b3dc9666a6c196baf808d79b4aa0086a7e5becd7ee8a6342089f14dd616e3",
+    "_measurements/S11c_d_momentum_domain_prepare.py": "195c26b062d6bff63520a823f6dbf1b89d4973c4f93b004fae81f3e67800762e",
+    "_measurements/S11c_d_momentum_domain_prepare_checkpoint.json": "e3bed380b42f35687f35675922342e10161affbe986b4bfa5c9cf8ac6576d8b7",
+    "_measurements/S11c_d_momentum_domain_action_plan.md": "19d9e62400d57d781f5087333ea31a8a339703909040fee5893c17ab6d4aa3e8",
+    "_measurements/S11c_d_momentum_domain_action.py": "db37d83a74ebd0fc82b903285a69a9a04ce9c7bb62341539a3b4c5f12f4956cf",
+    "_measurements/S11c_d_momentum_domain_action_preflight.py": "a13219d2cec3ac199f3c855abf01d3f0ba2877937693e627f614f85a893cc02c"
+  },
+  "provenance": {
+    "POSITION_DOMAIN_CHECKPOINT_SHA256": "e6d313e7aee867a89bd32184a7e732aefbfb6fb093bc850b0bcbae592eac5b7c",
+    "POSITION_DOMAIN_BOUND_PACKET_SHA256": "22c5fd507e981207022a80b73271306d23915e02e2c9ec3b55230c4fce67b813",
+    "POSITION_DOMAIN_PACKET_SHA256": "f9eb109e080b8e7d15abec73dcbf2c36aa3782b6dc1e3f53a08907c558fbe5e0",
+    "APPROVED_INPUT_SHA256": "660b2b0b54494dce964c7f5fbd722a76a7e894d8ed92b18b5eb6290c3c10f1d5",
+    "INSTRUMENT_SHA256": "195c26b062d6bff63520a823f6dbf1b89d4973c4f93b004fae81f3e67800762e",
+    "PLAN_SHA256": "d74b3dc9666a6c196baf808d79b4aa0086a7e5becd7ee8a6342089f14dd616e3",
+    "MOMENTUM_PREPARATION_CHECKPOINT_SHA256": "e3bed380b42f35687f35675922342e10161affbe986b4bfa5c9cf8ac6576d8b7",
+    "MOMENTUM_DOMAIN_ACTION_INSTRUMENT_SHA256": "db37d83a74ebd0fc82b903285a69a9a04ce9c7bb62341539a3b4c5f12f4956cf",
+    "MOMENTUM_DOMAIN_ACTION_PLAN_SHA256": "19d9e62400d57d781f5087333ea31a8a339703909040fee5893c17ab6d4aa3e8"
+  },
+  "rows": 80,
+  "sources": 70,
+  "profiles": 6,
+  "methodJoin": {
+    "nativeWorkerAstSha256": "b739eb838bf660911c5e786315d4f704e219df1488fb0d5b6407f421181d7cd7",
+    "restoredWorkerAstSha256": "b739eb838bf660911c5e786315d4f704e219df1488fb0d5b6407f421181d7cd7"
+  },
+  "baselineActionAndTermReconstruction": true,
+  "settings": {
+    "0": {
+      "1": {
+        "momentumBound": 2.0,
+        "momentumNodes": 12,
+        "sourceBound": 48.0,
+        "sourceNodes": 256,
+        "profileBound": 14.0,
+        "profileNodes": 256,
+        "regulator": 0.2,
+        "kind": "concentrated",
+        "panelOrder": 16,
+        "outerOrder": 216,
+        "innerOrders": []
+      },
+      "2": {
+        "momentumBound": 2.0,
+        "momentumNodes": 12,
+        "sourceBound": 48.0,
+        "sourceNodes": 256,
+        "profileBound": 14.0,
+        "profileNodes": 256,
+        "regulator": 0.2,
+        "kind": "concentrated",
+        "panelOrder": 32,
+        "outerOrder": 216,
+        "innerOrders": [
+          32
+        ]
+      },
+      "3": {
+        "momentumBound": 2.0,
+        "momentumNodes": 12,
+        "sourceBound": 48.0,
+        "sourceNodes": 256,
+        "profileBound": 14.0,
+        "profileNodes": 256,
+        "regulator": 0.2,
+        "kind": "concentrated",
+        "panelOrder": 16,
+        "outerOrder": 144,
+        "innerOrders": [
+          24,
+          24
+        ]
+      }
+    },
+    "1": {
+      "1": {
+        "momentumBound": 2.0,
+        "momentumNodes": 12,
+        "sourceBound": 48.0,
+        "sourceNodes": 256,
+        "profileBound": 14.0,
+        "profileNodes": 512,
+        "regulator": 0.2,
+        "kind": "concentrated",
+        "panelOrder": 16,
+        "outerOrder": 216,
+        "innerOrders": []
+      },
+      "2": {
+        "momentumBound": 2.0,
+        "momentumNodes": 12,
+        "sourceBound": 48.0,
+        "sourceNodes": 256,
+        "profileBound": 14.0,
+        "profileNodes": 512,
+        "regulator": 0.2,
+        "kind": "concentrated",
+        "panelOrder": 32,
+        "outerOrder": 216,
+        "innerOrders": [
+          32
+        ]
+      },
+      "3": {
+        "momentumBound": 2.0,
+        "momentumNodes": 12,
+        "sourceBound": 48.0,
+        "sourceNodes": 256,
+        "profileBound": 14.0,
+        "profileNodes": 512,
+        "regulator": 0.2,
+        "kind": "concentrated",
+        "panelOrder": 16,
+        "outerOrder": 144,
+        "innerOrders": [
+          24,
+          24
+        ]
+      }
+    },
+    "2": {
+      "1": {
+        "momentumBound": 3.0,
+        "momentumNodes": 12,
+        "sourceBound": 48.0,
+        "sourceNodes": 256,
+        "profileBound": 14.0,
+        "profileNodes": 512,
+        "regulator": 0.2,
+        "kind": "concentrated",
+        "panelOrder": 16,
+        "outerOrder": 216,
+        "innerOrders": []
+      },
+      "2": {
+        "momentumBound": 3.0,
+        "momentumNodes": 12,
+        "sourceBound": 48.0,
+        "sourceNodes": 256,
+        "profileBound": 14.0,
+        "profileNodes": 512,
+        "regulator": 0.2,
+        "kind": "concentrated",
+        "panelOrder": 32,
+        "outerOrder": 216,
+        "innerOrders": [
+          32
+        ]
+      },
+      "3": {
+        "momentumBound": 3.0,
+        "momentumNodes": 12,
+        "sourceBound": 48.0,
+        "sourceNodes": 256,
+        "profileBound": 14.0,
+        "profileNodes": 512,
+        "regulator": 0.2,
+        "kind": "concentrated",
+        "panelOrder": 16,
+        "outerOrder": 144,
+        "innerOrders": [
+          24,
+          24
+        ]
+      }
+    },
+    "3": {
+      "1": {
+        "momentumBound": 4.0,
+        "momentumNodes": 12,
+        "sourceBound": 48.0,
+        "sourceNodes": 256,
+        "profileBound": 14.0,
+        "profileNodes": 512,
+        "regulator": 0.2,
+        "kind": "concentrated",
+        "panelOrder": 16,
+        "outerOrder": 216,
+        "innerOrders": []
+      },
+      "2": {
+        "momentumBound": 4.0,
+        "momentumNodes": 12,
+        "sourceBound": 48.0,
+        "sourceNodes": 256,
+        "profileBound": 14.0,
+        "profileNodes": 512,
+        "regulator": 0.2,
+        "kind": "concentrated",
+        "panelOrder": 32,
+        "outerOrder": 216,
+        "innerOrders": [
+          32
+        ]
+      },
+      "3": {
+        "momentumBound": 4.0,
+        "momentumNodes": 12,
+        "sourceBound": 48.0,
+        "sourceNodes": 256,
+        "profileBound": 14.0,
+        "profileNodes": 512,
+        "regulator": 0.2,
+        "kind": "concentrated",
+        "panelOrder": 16,
+        "outerOrder": 144,
+        "innerOrders": [
+          24,
+          24
+        ]
+      }
+    }
+  },
+  "packetSha256": "b3c0212caf3f4c1e7816fbb6cd01a9e1c967b549c3e32810ec6ea8f7e99250da"
+}

@@ -1,32 +1,35 @@
 # S11c-d complete-action momentum domains
 
-Preparation is published and annex-verified at fd372976/1cba44b5. The selected
-source256/profile512 rule is based on literal/adaptive transform evidence,
-including the explicit failure of profile256 resolution on the wider box.
+The instrument preflight passed in 113.6 seconds. All 152 selected native
+transform comparisons join the accepted literal/adaptive preparation records.
+Scaled native-rule residuals are at most 4.65e-16 for sources and 1.76e-15 for
+profiles; scaled adaptive residuals reach 1.03e-13 and 1.13e-12 respectively.
+All six retained production-order prefixes and six complete coarse serial/worker
+actions agree exactly, including independent native-cell contractions. Each
+worker evaluates all 80 rows, 35 sources and six profiles, with actual measure
+responses, finite masses and exact read-only source/profile caches.
 
-The next action stage preserves the accepted cutoff-2/profile256 result,
-computes a matching cutoff-2/profile512 baseline, then evaluates cutoffs 3/4
-using the same finite quadrature rules. Baseline profile-rule changes and
-subsequent box changes remain separate records. Every nonlocal row is replaced;
-none of the single/pair contributions is held. Two baseline workers precede
-four wider-box workers under one supervisor, each single threaded and at 2 GiB.
+All six workers exit zero with empty stderr in two waves (two then four).
+Replay covers 10,374 tags, 5,185 fresh keys and 37,614 metadata paths. All 78
+current/frozen sources, saved transform/prefix/coarse/layout/worker artifacts,
+checks/stdout and pre/post packets join. The 3,358,998-byte instrument transcript
+remains in durable scratch with SHA256
+2fc197b9232f4aa6ce9d92402f05721a9ef047e42de16c8f2fca17812b1b2482.
+Acceptance verifies saved operands without repeating numerical integration.
+The coarse smoke is instrument evidence only; its intentionally large numerical
+changes are not physical domain results.
 
-Focused loading reconstructs both accepted complete actions and every native
-term exactly, with 80 rows, 70 sources and six profiles. Production settings
-change only profileNodes at the new baseline and only momentumBound afterward.
-The native worker differs only in its allowed task indices and settings lookup;
-the reversed whole-worker AST hash is identical. The physics engine, integration
-methods, approved coefficients and source/profile domains are unchanged.
+Production is ready: retain cutoff-2/profile256, compute cutoff-2/profile512,
+then compute cutoffs 3/4 with the same source256/profile512 rule and single216,
+pair216/32, triple144/24/24 momentum rules. Source/profile bounds stay 48/14 and
+regulator stays 0.2. Every native nonlocal contribution is reevaluated. Profile
+rule changes and subsequent box changes remain separate. Two baseline workers
+precede four wider-box workers, each single threaded with a 2 GiB ceiling;
+save every completed layout and every 64-batch partial under one supervisor.
 
-A bounded preflight is prepared: join all 152 accepted Fourier records to the
-actual source/profile methods at the selected orders, compare six retained
-production-order prefixes, then six coarse serial/worker full actions and every
-metadata path. Its intentionally coarse smoke establishes instrument execution
-only. No new complete production action has been accepted yet. Wider-box
-momentum refinement, physical tails, uniform/independent-grade coverage, Abel
-limits, two-ended matching and bound poles remain separate work.
-
-Implementation and focused evidence are committed at f781846f. The bounded
-preflight launched at 07:59:58 UTC on 2026-09-16. Host startup verification
-confirms the supervisor/coordinator and silent watcher, one numerical thread
-and empty stderr. Await final validation; production is prepared but not started.
+Preparation is published/annex-verified at fd372976/1cba44b5; implementation is
+f781846f. The reversed whole-worker and native metadata-replayer ASTs join,
+with engine and approved inputs unchanged. No production action has yet been
+accepted. Wider-box momentum resolution, uniform/independent-grade and global
+exceptional-locus coverage, infinite tails, Abel limits, scattering and bound
+poles remain work under the retained solver/export contract.

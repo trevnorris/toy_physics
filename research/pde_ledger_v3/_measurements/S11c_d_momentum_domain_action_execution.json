@@ -1,5 +1,5 @@
 {
-  "status": "PREFLIGHT_RUNNING",
+  "status": "PREFLIGHT_ACCEPTED_PRODUCTION_READY",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-momentum-domain-action-20260916",
   "checker": "S11c_d_momentum_domain_action.py",
   "preflight": "S11c_d_momentum_domain_action_preflight.py",
@@ -10,7 +10,7 @@
   "acceptedPreparationAnnexVerificationCommit": "1cba44b5",
   "maximumConcurrentWorkers": 4,
   "nativeThreadsPerWorker": 1,
-  "next": "Await silent completion/error notification; accept full source/transform/prefix/coarse-action/metadata preflight before launching prepared production/launch.py.",
+  "next": "Launch prepared production/launch.py: matching-rule cutoff-2 baseline, then cutoff3/4 complete actions under one supervisor with at most four single-thread workers and silent completion/error watcher.",
   "implementationCommit": "f781846f",
   "preflightRunRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-momentum-domain-action-20260916/preflight",
   "launch": {
@@ -43,5 +43,26 @@
   "launchVerification": {
     "path": "/var/projects/toy_physics/_scratch/s11c/s11c-momentum-domain-action-20260916/preflight/launch-verification.json",
     "sha256": "50681d205357707a4bbe0e0bae6ad2d639aacc5fe367be1fa38e465f14c34260"
-  }
+  },
+  "preflightOutcome": {
+    "stage": "momentum_preflight",
+    "command": [
+      "python",
+      "-u",
+      "_measurements/S11c_d_momentum_domain_action_preflight.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-momentum-domain-action-20260916/preflight/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-momentum-domain-action-20260916/preflight/momentum_preflight.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-momentum-domain-action-20260916/preflight/momentum_preflight.stderr",
+    "startedUtc": "2026-09-16T07:59:58.232286+00:00",
+    "childPid": 3433685,
+    "status": "completed",
+    "exitCode": 0,
+    "wallSeconds": 113.63462266977876,
+    "stderrBytes": 0,
+    "finishedUtc": "2026-09-16T08:01:51.866949+00:00"
+  },
+  "acceptedPreflight": "S11c_d_momentum_domain_action_preflight.json",
+  "acceptedPreflightSha256": "718d17e2f8d340a50e4470b759ca479101a20775c58ded52b8007cf9d3eef0e4"
 }

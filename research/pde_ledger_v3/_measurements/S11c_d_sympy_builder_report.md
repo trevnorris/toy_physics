@@ -153,12 +153,13 @@ for 384-to-512. Next compute source256/profile512 complete actions with a
 matching-rule cutoff-2 baseline before cutoffs 3/4. The 7.30 MB preparation
 transcript is published and annex-verified; wider actions and physical limits remain.
 
-Complete momentum-domain action implementation is checkpointed at f781846f.
-The accepted baseline and every native contribution reconstruct exactly; a
-whole-worker AST join permits only task-index and settings lookup changes.
-The bounded selected-transform/prefix/coarse-action/emission preflight is
-running under the silent watcher. On acceptance, compute the matching-profile
-cutoff-2 baseline then cutoff-3/4 full actions. No production result yet.
+Complete momentum-domain action preflight is accepted in 113.6 seconds:
+152 selected-transform comparisons, six exact production-order prefixes and
+six exact coarse serial/worker full actions. All 78 sources and 37,614 metadata
+paths join, with clean workers and unchanged packets. Full production is ready:
+matching-profile cutoff-2 baseline then cutoff-3/4 actions, with all nonlocal
+rows reevaluated. The coarse smoke establishes instrument execution only;
+finite-domain momentum refinement and physical limits remain separate work.
 
 ## Retained user-approved solver/export contract
 

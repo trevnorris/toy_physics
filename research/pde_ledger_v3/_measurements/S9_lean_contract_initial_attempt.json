@@ -1,0 +1,1905 @@
+{
+  "note": "Initial verification passed the S9 rebuild and 32 audits, but rejected the weak simp-only diagnostic as unexpected. The next instrument uses a wrong-sign expansion claim with an explicit mathematical failure. Canonical proofs are unchanged.",
+  "instrument_source": "#!/usr/bin/env python3\n\"\"\"Sequential, bounded S9 verification and isolated mathematical mutations.\n\nOne Lean worker, 4096 MiB Lean allocator limit, low scheduling priority. Logs,\nsources and incremental records survive an error. A timeout/resource failure is\nan instrument failure, never a successfully rejected mutation. No CAS jobs.\n\"\"\"\nfrom datetime import datetime, timezone\nimport argparse\nimport hashlib\nimport json\nimport os\nfrom pathlib import Path\nimport re\nimport subprocess\nimport time\n\nBASE = Path(__file__).resolve().parents[1]\nLEAN = BASE / 'lean'\nSCRATCH = LEAN / 's9/_scratch/closure'\nREPORT = BASE / '_measurements/S9_lean_contract_checks.json'\nORDER = ('Action', 'PlaneWave', 'Analytic', 'Variation', 'FiniteAction',\n         'Spectrum', 'Certificate', 'VariationalCertificate', 'Madelung')\nCASES = (\n    ('action_shear_sign', 'Action',\n     'rho / 2 * normSq (J 0) - mu / 2 * normSq (jetCurl J)',\n     'rho / 2 * normSq (J 0) + mu / 2 * normSq (jetCurl J)',\n     {'lagrangian_variation'}),\n    ('relative_action_sign', 'Variation',\n     '∫ x : Point, lagrangian rho mu (fieldJet (u + s • h) x) -\\n    lagrangian rho mu (fieldJet u x)',\n     '∫ x : Point, lagrangian rho mu (fieldJet u x) -\\n    lagrangian rho mu (fieldJet (u + s • h) x)',\n     {'relativeAction_expansion'}),\n    ('transverse_count', 'Spectrum',\n     'Module.finrank ℝ (transverseSpace k) = 2',\n     'Module.finrank ℝ (transverseSpace k) = 3', {'transverseSpace_finrank'}),\n    ('longitudinal_count', 'Spectrum',\n     'Module.finrank ℝ (longitudinalSpace k) = 1',\n     'Module.finrank ℝ (longitudinalSpace k) = 2', {'longitudinalSpace_finrank'}),\n    ('phase_wrong_coordinate', 'Madelung',\n     '(hbar / mass) * coordDeriv i.succ theta x',\n     '(hbar / mass) * coordDeriv 0 theta x', {'velocity_phasePerturbation'}),\n    ('phase_sine_sign', 'Madelung',\n     '(-(hbar / mass) * A) • k',\n     '((hbar / mass) * A) • k', {'linearVelocity_eq'}),\n)\nEXAMPLES = (\n    ('zero_wavevector_domain', '''theorem domain_control :\n    ModalStationary 1 1 0 (0 : Vec) (![0, 0, 1] : Vec) ∧\n      (![0, 0, 1] : Vec) REL longitudinalSpace (0 : Vec) := by\n  norm_num [modal_stationary_iff, modalOperator, normSq, dot, longitudinalSpace]\n''', '∉', '∈'),\n    ('longitudinal_not_transverse', '''theorem domain_control :\n    Madelung.cosAmplitude 1 1 1 (![0, 0, 1] : Vec) REL\n      transverseSpace (![0, 0, 1] : Vec) := by\n  norm_num [Madelung.cosAmplitude, transverseSpace, dotLinear, dot]\n''', '∉', '∈'),\n    ('nonzero_prefactor_required_for_range', '''theorem domain_control :\n    Madelung.cosAmplitude 0 1 1 (![0, 0, 1] : Vec) REL 0 := by\n  norm_num [Madelung.cosAmplitude]\n''', '=', '≠'),\n)\n\n\ndef digest(path):\n    return hashlib.sha256(path.read_bytes()).hexdigest()\n\n\ndef main():\n    parser = argparse.ArgumentParser(__doc__)\n    parser.add_argument('--reuse-build', action='store_true',\n                        help='Reuse successful builds only when all canonical source hashes match.')\n    args = parser.parse_args()\n    SCRATCH.mkdir(parents=True, exist_ok=True)\n    sources = sorted((LEAN / 's9/S9Pilot').glob('*.lean')) + [LEAN / 's9/S9Pilot.lean']\n    before = {str(p.relative_to(BASE)): digest(p) for p in sources}\n    prior = json.loads(REPORT.read_text()) if args.reuse_build and REPORT.exists() else {}\n    reusable = {r['name']: r for r in prior.get('checks', []) if r['outcome'] == 'PASS'} if (\n        prior.get('canonical_sha256_before') == before) else {}\n    report = {'status': 'RUNNING', 'started_utc': datetime.now(timezone.utc).isoformat(),\n              'instrument_sha256': digest(Path(__file__)),\n              'resources': {'concurrent_lean_processes': 1, 'threads': 1,\n                            'lean_allocator_limit_mib': 4096, 'process_timeout_seconds': 300,\n                            'limits_note': 'Lean allocator limit is not an OS RSS cap; one process at a time.'},\n              'canonical_sha256_before': before, 'checks': []}\n\n    def save():\n        temporary = REPORT.with_suffix('.new')\n        temporary.write_text(json.dumps(report, indent=2, ensure_ascii=False) + '\\n')\n        temporary.replace(REPORT)\n\n    def run(name, path, expected, required=(), output_module=None):\n        rel = str(path.relative_to(LEAN))\n        command = ['nice', '-n', '10', 'lake', 'env', 'lean', '-j1', '-M4096',\n                   '-DwarningAsError=true']\n        if output_module:\n            command += ['-o', str(LEAN / '.lake/build/lib/lean' / output_module)]\n        command.append(rel)\n        if output_module and name in reusable:\n            old = reusable[name]\n            if old['source_sha256'] == digest(path) and old['command'] == command:\n                record = {**old, 'reused_build_from_instrument_sha256': prior['instrument_sha256']}\n                report['checks'].append(record)\n                save()\n                return record\n        start = time.monotonic()\n        log = SCRATCH / (name + '.log')\n        with log.open('w') as stream:\n            result = subprocess.run(command, cwd=LEAN, stdout=stream, stderr=subprocess.STDOUT,\n                                    env={**os.environ, 'OMP_NUM_THREADS': '1', 'OPENBLAS_NUM_THREADS': '1'},\n                                    timeout=300)\n        output = log.read_text()\n        source = path.read_text()\n        decls = [(source[:m.start()].count('\\n') + 1, m[1]) for m in\n                 re.finditer(r'^\\s*(?:theorem|def|abbrev)\\s+(\\w+)', source, re.M)]\n        errors = list(re.finditer(re.escape(rel) + r':(\\d+):\\d+: error:', output))\n        diagnostics = []\n        for i, match in enumerate(errors):\n            line = int(match[1])\n            decl = next((n for pos, n in reversed(decls) if pos <= line), '')\n            block = output[match.start():errors[i+1].start() if i+1 < len(errors) else len(output)]\n            diagnostics.append({'declaration': decl, 'line': line, 'message': block})\n        invalid = re.search(r'unknown (?:module|namespace|identifier)|unexpected token|'\n                            r'maximum (?:recursion|heartbeats)|excessive memory|out of memory|'\n                            r'PANIC|failed to create|No such file', output, re.I)\n        mathematical = r'unsolved goals|Type mismatch|failed to close|proved that the proposition|Tactic `rewrite` failed'\n        intended = [d for d in diagnostics if d['declaration'] in required and\n                    re.search(mathematical, d['message'], re.I)]\n        valid = (result.returncode == 0 and not re.search(r'\\b(?:error|warning):', output)) if expected == 'PASS' else (\n            result.returncode == 1 and bool(intended) and not invalid)\n        record = {'name': name, 'expected': expected, 'outcome': expected if valid else 'UNEXPECTED',\n                  'command': command, 'source_sha256': digest(path), 'exit_status': result.returncode,\n                  'wall_seconds': round(time.monotonic() - start, 3),\n                  'required_failure_in': sorted(required), 'diagnostics': diagnostics,\n                  'output': output, 'output_sha256': digest(log)}\n        report['checks'].append(record)\n        save()\n        if not valid:\n            raise RuntimeError(f'{name}: unexpected result; inspect {log}')\n        return record\n\n    save()\n    try:\n        # Rebuild only the small S9 library sequentially; reuse pinned Mathlib/Physlib.\n        for module in ORDER:\n            run('build_' + module, LEAN / 's9/S9Pilot' / (module + '.lean'), 'PASS',\n                output_module='S9Pilot/' + module + '.olean')\n        audit = run('axiom_audit', LEAN / 's9/S9Pilot.lean', 'PASS', output_module='S9Pilot.olean')\n        axioms = re.findall(r\"depends on axioms: \\[([^\\]]*)\\]\", audit['output'])\n        assert len(axioms) == 32, ('axiom audit count', len(axioms))\n        assert all(set(a.replace(' ', '').split(',')) <= {'propext', 'Classical.choice', 'Quot.sound', ''}\n                   for a in axioms)\n        assert not any(re.search(r'^\\s*(?:axiom\\b|.*\\b(?:sorry|admit)\\b)', p.read_text(), re.M) for p in sources)\n        report['axiom_audit_count'] = len(axioms)\n        for name, module, old, new, required in CASES:\n            canonical = LEAN / 's9/S9Pilot' / (module + '.lean')\n            source = canonical.read_text()\n            assert source.count(old) == 1, (name, source.count(old))\n            mutant = SCRATCH / (name + '.lean')\n            mutant.write_text(source.replace(old, new))\n            record = run(name, mutant, 'REJECTED', required)\n            record.update(canonical_source=str(canonical.relative_to(BASE)),\n                          canonical_sha256=digest(canonical), replacement={'old': old, 'new': new})\n            save()\n        for name, statement, correct, wrong in EXAMPLES:\n            for label, relation, expected in [('positive', correct, 'PASS'), ('mutant', wrong, 'REJECTED')]:\n                path = SCRATCH / (name + '_' + label + '.lean')\n                path.write_text('import S9Pilot.Madelung\\nopen S9Pilot\\nnoncomputable section\\n' + statement.replace('REL', relation))\n                record = run(name + '_' + label, path, expected, {'domain_control'})\n                record['source'] = path.read_text()\n                save()\n        after = {str(p.relative_to(BASE)): digest(p) for p in sources}\n        assert before == after, 'canonical source changed during verification'\n        report.update(status='PASS', canonical_sha256_after=after)\n    except Exception as error:\n        report.update(status='ERROR', error=repr(error))\n        raise\n    finally:\n        report['finished_utc'] = datetime.now(timezone.utc).isoformat()\n        save()\n\n\nif __name__ == '__main__':\n    main()\n",
+  "report": {
+    "status": "ERROR",
+    "started_utc": "2026-09-16T00:51:17.502797+00:00",
+    "instrument_sha256": "ec3dbf050e01ad5e7758d7485779216a6f4d853cf23dfe8b663a1ba61733dca9",
+    "resources": {
+      "concurrent_lean_processes": 1,
+      "threads": 1,
+      "lean_allocator_limit_mib": 4096,
+      "process_timeout_seconds": 300,
+      "limits_note": "Lean allocator limit is not an OS RSS cap; one process at a time."
+    },
+    "canonical_sha256_before": {
+      "lean/s9/S9Pilot/Action.lean": "dafe6e059b64ccbaa98a5ac4e5a5b5706ef51e19479556e42fc4bf840df0bd56",
+      "lean/s9/S9Pilot/Analytic.lean": "66352628b83475280942c32dee6d1c9e704ae0526ba536a3f62136e2c77ac666",
+      "lean/s9/S9Pilot/Certificate.lean": "0c279281a0d488e51b1c3a4de29849dd4d1fce0a94d01abc9e5fff990da7d5e1",
+      "lean/s9/S9Pilot/FiniteAction.lean": "28868a9a30996a36fe0c32c8ad53f0f5f5549162f81ba27a703f7b2d08cef324",
+      "lean/s9/S9Pilot/Madelung.lean": "6d4ad27266effbf2493e0cf7c6f9ce55f2bba2501eaeab584110a59bfaac455e",
+      "lean/s9/S9Pilot/PlaneWave.lean": "8803fdaf6e7ce26a336d6663decc23e4c871377e95ef9bf9bb71b77f1605cb21",
+      "lean/s9/S9Pilot/Spectrum.lean": "bdd6e886eb291ce0837ea8d94b10bb7548a6fb37a227c90e82f0e7799936e1a3",
+      "lean/s9/S9Pilot/Variation.lean": "5ea90c39293879695be59e1a53f0046b13d52577dfb59e0b16a42546c4591dd2",
+      "lean/s9/S9Pilot/VariationalCertificate.lean": "1d500fd5bb36b435341b31bcea9f4c9848af8548593aab1d1336a0e3d3243e36",
+      "lean/s9/S9Pilot.lean": "32671c668126f7b4afee4c709031547326d49b4d087c1a2d372f2fff87e7abf6"
+    },
+    "checks": [
+      {
+        "name": "build_Action",
+        "expected": "PASS",
+        "outcome": "PASS",
+        "command": [
+          "nice",
+          "-n",
+          "10",
+          "lake",
+          "env",
+          "lean",
+          "-j1",
+          "-M4096",
+          "-DwarningAsError=true",
+          "-o",
+          "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S9Pilot/Action.olean",
+          "s9/S9Pilot/Action.lean"
+        ],
+        "source_sha256": "dafe6e059b64ccbaa98a5ac4e5a5b5706ef51e19479556e42fc4bf840df0bd56",
+        "exit_status": 0,
+        "wall_seconds": 21.939,
+        "required_failure_in": [],
+        "diagnostics": [],
+        "output": "",
+        "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "name": "build_PlaneWave",
+        "expected": "PASS",
+        "outcome": "PASS",
+        "command": [
+          "nice",
+          "-n",
+          "10",
+          "lake",
+          "env",
+          "lean",
+          "-j1",
+          "-M4096",
+          "-DwarningAsError=true",
+          "-o",
+          "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S9Pilot/PlaneWave.olean",
+          "s9/S9Pilot/PlaneWave.lean"
+        ],
+        "source_sha256": "8803fdaf6e7ce26a336d6663decc23e4c871377e95ef9bf9bb71b77f1605cb21",
+        "exit_status": 0,
+        "wall_seconds": 19.095,
+        "required_failure_in": [],
+        "diagnostics": [],
+        "output": "",
+        "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "name": "build_Analytic",
+        "expected": "PASS",
+        "outcome": "PASS",
+        "command": [
+          "nice",
+          "-n",
+          "10",
+          "lake",
+          "env",
+          "lean",
+          "-j1",
+          "-M4096",
+          "-DwarningAsError=true",
+          "-o",
+          "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S9Pilot/Analytic.olean",
+          "s9/S9Pilot/Analytic.lean"
+        ],
+        "source_sha256": "66352628b83475280942c32dee6d1c9e704ae0526ba536a3f62136e2c77ac666",
+        "exit_status": 0,
+        "wall_seconds": 14.764,
+        "required_failure_in": [],
+        "diagnostics": [],
+        "output": "",
+        "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "name": "build_Variation",
+        "expected": "PASS",
+        "outcome": "PASS",
+        "command": [
+          "nice",
+          "-n",
+          "10",
+          "lake",
+          "env",
+          "lean",
+          "-j1",
+          "-M4096",
+          "-DwarningAsError=true",
+          "-o",
+          "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S9Pilot/Variation.olean",
+          "s9/S9Pilot/Variation.lean"
+        ],
+        "source_sha256": "5ea90c39293879695be59e1a53f0046b13d52577dfb59e0b16a42546c4591dd2",
+        "exit_status": 0,
+        "wall_seconds": 16.282,
+        "required_failure_in": [],
+        "diagnostics": [],
+        "output": "",
+        "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "name": "build_FiniteAction",
+        "expected": "PASS",
+        "outcome": "PASS",
+        "command": [
+          "nice",
+          "-n",
+          "10",
+          "lake",
+          "env",
+          "lean",
+          "-j1",
+          "-M4096",
+          "-DwarningAsError=true",
+          "-o",
+          "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S9Pilot/FiniteAction.olean",
+          "s9/S9Pilot/FiniteAction.lean"
+        ],
+        "source_sha256": "28868a9a30996a36fe0c32c8ad53f0f5f5549162f81ba27a703f7b2d08cef324",
+        "exit_status": 0,
+        "wall_seconds": 10.639,
+        "required_failure_in": [],
+        "diagnostics": [],
+        "output": "",
+        "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "name": "build_Spectrum",
+        "expected": "PASS",
+        "outcome": "PASS",
+        "command": [
+          "nice",
+          "-n",
+          "10",
+          "lake",
+          "env",
+          "lean",
+          "-j1",
+          "-M4096",
+          "-DwarningAsError=true",
+          "-o",
+          "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S9Pilot/Spectrum.olean",
+          "s9/S9Pilot/Spectrum.lean"
+        ],
+        "source_sha256": "bdd6e886eb291ce0837ea8d94b10bb7548a6fb37a227c90e82f0e7799936e1a3",
+        "exit_status": 0,
+        "wall_seconds": 12.853,
+        "required_failure_in": [],
+        "diagnostics": [],
+        "output": "",
+        "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "name": "build_Certificate",
+        "expected": "PASS",
+        "outcome": "PASS",
+        "command": [
+          "nice",
+          "-n",
+          "10",
+          "lake",
+          "env",
+          "lean",
+          "-j1",
+          "-M4096",
+          "-DwarningAsError=true",
+          "-o",
+          "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S9Pilot/Certificate.olean",
+          "s9/S9Pilot/Certificate.lean"
+        ],
+        "source_sha256": "0c279281a0d488e51b1c3a4de29849dd4d1fce0a94d01abc9e5fff990da7d5e1",
+        "exit_status": 0,
+        "wall_seconds": 10.891,
+        "required_failure_in": [],
+        "diagnostics": [],
+        "output": "",
+        "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "name": "build_VariationalCertificate",
+        "expected": "PASS",
+        "outcome": "PASS",
+        "command": [
+          "nice",
+          "-n",
+          "10",
+          "lake",
+          "env",
+          "lean",
+          "-j1",
+          "-M4096",
+          "-DwarningAsError=true",
+          "-o",
+          "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S9Pilot/VariationalCertificate.olean",
+          "s9/S9Pilot/VariationalCertificate.lean"
+        ],
+        "source_sha256": "1d500fd5bb36b435341b31bcea9f4c9848af8548593aab1d1336a0e3d3243e36",
+        "exit_status": 0,
+        "wall_seconds": 10.64,
+        "required_failure_in": [],
+        "diagnostics": [],
+        "output": "",
+        "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "name": "build_Madelung",
+        "expected": "PASS",
+        "outcome": "PASS",
+        "command": [
+          "nice",
+          "-n",
+          "10",
+          "lake",
+          "env",
+          "lean",
+          "-j1",
+          "-M4096",
+          "-DwarningAsError=true",
+          "-o",
+          "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S9Pilot/Madelung.olean",
+          "s9/S9Pilot/Madelung.lean"
+        ],
+        "source_sha256": "6d4ad27266effbf2493e0cf7c6f9ce55f2bba2501eaeab584110a59bfaac455e",
+        "exit_status": 0,
+        "wall_seconds": 11.902,
+        "required_failure_in": [],
+        "diagnostics": [],
+        "output": "",
+        "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "name": "axiom_audit",
+        "expected": "PASS",
+        "outcome": "PASS",
+        "command": [
+          "nice",
+          "-n",
+          "10",
+          "lake",
+          "env",
+          "lean",
+          "-j1",
+          "-M4096",
+          "-DwarningAsError=true",
+          "-o",
+          "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S9Pilot.olean",
+          "s9/S9Pilot.lean"
+        ],
+        "source_sha256": "32671c668126f7b4afee4c709031547326d49b4d087c1a2d372f2fff87e7abf6",
+        "exit_status": 0,
+        "wall_seconds": 11.546,
+        "required_failure_in": [],
+        "diagnostics": [],
+        "output": "ClassicalMechanics.planeWave_waveEquation {d : ℕ} (c : ℝ) (s : Space.Direction d) (f₀ : ℝ → EuclideanSpace ℝ (Fin d))\n  (hf₀ : ContDiff ℝ 2 f₀) (t : Time) (x : Space d) :\n  ClassicalMechanics.WaveEquation (ClassicalMechanics.planeWave f₀ c s) t x c\n'S9Pilot.candidateOmegaSq_scaling' depends on axioms: [propext, Classical.choice, Quot.sound]\n'ClassicalMechanics.planeWave_waveEquation' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S9Pilot.lagrangian_variation' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S9Pilot.modal_stationary_iff' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S9Pilot.planeWave_lagrangian' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S9Pilot.eulerLagrange_planeWave' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S9Pilot.s9_plane_wave_certificate' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S9Pilot.propagating_planeWave_iff' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S9Pilot.coneValue_scaling' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S9Pilot.concrete_transverse_wave' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S9Pilot.concrete_longitudinal_not_wave' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S9Pilot.coord_integration_by_parts' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S9Pilot.relative_density_integrable' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S9Pilot.relativeAction_hasDerivAt' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S9Pilot.relativeAction_deriv_eq_eulerLagrange' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S9Pilot.actionStationary_iff_eulerLagrange' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S9Pilot.finiteAction_hasDerivAt' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S9Pilot.s9_variational_certificate' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S9Pilot.propagating_variational_mode_iff' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S9Pilot.concrete_transverse_stationary' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S9Pilot.concrete_longitudinal_detected_by_test' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S9Pilot.Madelung.phasePerturbation_coordDeriv' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S9Pilot.Madelung.velocity_phasePerturbation' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S9Pilot.Madelung.linearVelocity_eq' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S9Pilot.Madelung.cosAmplitude_mem' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S9Pilot.Madelung.sinAmplitude_mem' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S9Pilot.Madelung.cosAmplitude_range' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S9Pilot.Madelung.longitudinal_transverse_eq_zero' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S9Pilot.Madelung.no_transverse_velocity' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S9Pilot.Madelung.transverse_linearVelocity_zero' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S9Pilot.Madelung.zero_wavevector' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S9Pilot.Madelung.concrete_longitudinal_velocity' depends on axioms: [propext, Classical.choice, Quot.sound]\n",
+        "output_sha256": "9af8395dc1248fec8ded52289f00faf1784fa0e70ee9942ec75395f2a6e2cd67"
+      },
+      {
+        "name": "action_shear_sign",
+        "expected": "REJECTED",
+        "outcome": "REJECTED",
+        "command": [
+          "nice",
+          "-n",
+          "10",
+          "lake",
+          "env",
+          "lean",
+          "-j1",
+          "-M4096",
+          "-DwarningAsError=true",
+          "s9/_scratch/closure/action_shear_sign.lean"
+        ],
+        "source_sha256": "859c605b5adb9c1f652268ba583e5f5db50a9725ed54855dd8c9528aee02ba25",
+        "exit_status": 1,
+        "wall_seconds": 15.322,
+        "required_failure_in": [
+          "lagrangian_variation"
+        ],
+        "diagnostics": [
+          {
+            "declaration": "lagrangian_variation",
+            "line": 52,
+            "message": "s9/_scratch/closure/action_shear_sign.lean:52:2: error: unsolved goals\ncase e'_8\nrho mu : ℝ\nJ H : Jet\nC : ℝ := rho * dot (J 0) (H 0) - mu * dot (jetCurl J) (jetCurl H)\nh :\n  HasDerivAt (((fun x => lagrangian rho mu J) + fun y => id y * C) + fun y => (id ^ 2) y * lagrangian rho mu H)\n    (0 + 1 * C + ↑2 * id 0 ^ (2 - 1) * 1 * lagrangian rho mu H) 0\ns : ℝ\n⊢ rho * J 0 0 * s * H 0 0 + rho * J 0 0 ^ 2 * (1 / 2) + rho * s * J 0 1 * H 0 1 + rho * s * J 0 2 * H 0 2 +\n                                                                          rho * s ^ 2 * H 0 0 ^ 2 * (1 / 2) +\n                                                                        rho * s ^ 2 * H 0 1 ^ 2 * (1 / 2) +\n                                                                      rho * s ^ 2 * H 0 2 ^ 2 * (1 / 2) +\n                                                                    rho * J 0 1 ^ 2 * (1 / 2) +\n                                                                  rho * J 0 2 ^ 2 * (1 / 2) +\n                                                                s * mu * J 2 2 * H 2 2 -\n                                                              s * mu * J 2 2 * H 3 1 -\n                                                            s * mu * H 2 2 * J 3 1 +\n                                                          s * mu * J 3 1 * H 3 1 +\n                                                        s * mu * J 3 0 * H 3 0 -\n                                                      s * mu * J 3 0 * H 1 2 -\n                                                    s * mu * H 3 0 * J 1 2 +\n                                                  s * mu * J 1 2 * H 1 2 +\n                                                s * mu * J 1 1 * H 1 1 -\n                                              s * mu * J 1 1 * H 2 0 -\n                                            s * mu * H 1 1 * J 2 0 +\n                                          s * mu * J 2 0 * H 2 0 -\n                                        s ^ 2 * mu * H 2 2 * H 3 1 +\n                                      s ^ 2 * mu * H 2 2 ^ 2 * (1 / 2) +\n                                    s ^ 2 * mu * H 3 1 ^ 2 * (1 / 2) -\n                                  s ^ 2 * mu * H 3 0 * H 1 2 +\n                                s ^ 2 * mu * H 3 0 ^ 2 * (1 / 2) +\n                              s ^ 2 * mu * H 1 2 ^ 2 * (1 / 2) -\n                            s ^ 2 * mu * H 1 1 * H 2 0 +\n                          s ^ 2 * mu * H 1 1 ^ 2 * (1 / 2) +\n                        s ^ 2 * mu * H 2 0 ^ 2 * (1 / 2) -\n                      mu * J 2 2 * J 3 1 +\n                    mu * J 2 2 ^ 2 * (1 / 2) +\n                  mu * J 3 1 ^ 2 * (1 / 2) -\n                mu * J 3 0 * J 1 2 +\n              mu * J 3 0 ^ 2 * (1 / 2) +\n            mu * J 1 2 ^ 2 * (1 / 2) -\n          mu * J 1 1 * J 2 0 +\n        mu * J 1 1 ^ 2 * (1 / 2) +\n      mu * J 2 0 ^ 2 * (1 / 2) =\n    rho * J 0 0 * s * H 0 0 + rho * J 0 0 ^ 2 * (1 / 2) + rho * s * J 0 1 * H 0 1 + rho * s * J 0 2 * H 0 2 +\n                                                                          rho * s ^ 2 * H 0 0 ^ 2 * (1 / 2) +\n                                                                        rho * s ^ 2 * H 0 1 ^ 2 * (1 / 2) +\n                                                                      rho * s ^ 2 * H 0 2 ^ 2 * (1 / 2) +\n                                                                    rho * J 0 1 ^ 2 * (1 / 2) +\n                                                                  rho * J 0 2 ^ 2 * (1 / 2) -\n                                                                s * mu * J 2 2 * H 2 2 +\n                                                              s * mu * J 2 2 * H 3 1 +\n                                                            s * mu * H 2 2 * J 3 1 -\n                                                          s * mu * J 3 1 * H 3 1 -\n                                                        s * mu * J 3 0 * H 3 0 +\n                                                      s * mu * J 3 0 * H 1 2 +\n                                                    s * mu * H 3 0 * J 1 2 -\n                                                  s * mu * J 1 2 * H 1 2 -\n                                                s * mu * J 1 1 * H 1 1 +\n                                              s * mu * J 1 1 * H 2 0 +\n                                            s * mu * H 1 1 * J 2 0 -\n                                          s * mu * J 2 0 * H 2 0 -\n                                        s ^ 2 * mu * H 2 2 * H 3 1 +\n                                      s ^ 2 * mu * H 2 2 ^ 2 * (1 / 2) +\n                                    s ^ 2 * mu * H 3 1 ^ 2 * (1 / 2) -\n                                  s ^ 2 * mu * H 3 0 * H 1 2 +\n                                s ^ 2 * mu * H 3 0 ^ 2 * (1 / 2) +\n                              s ^ 2 * mu * H 1 2 ^ 2 * (1 / 2) -\n                            s ^ 2 * mu * H 1 1 * H 2 0 +\n                          s ^ 2 * mu * H 1 1 ^ 2 * (1 / 2) +\n                        s ^ 2 * mu * H 2 0 ^ 2 * (1 / 2) -\n                      mu * J 2 2 * J 3 1 +\n                    mu * J 2 2 ^ 2 * (1 / 2) +\n                  mu * J 3 1 ^ 2 * (1 / 2) -\n                mu * J 3 0 * J 1 2 +\n              mu * J 3 0 ^ 2 * (1 / 2) +\n            mu * J 1 2 ^ 2 * (1 / 2) -\n          mu * J 1 1 * J 2 0 +\n        mu * J 1 1 ^ 2 * (1 / 2) +\n      mu * J 2 0 ^ 2 * (1 / 2)\n"
+          }
+        ],
+        "output": "Try this:\n  [apply] ring_nf\n  \n  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.\n    \n  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.\ns9/_scratch/closure/action_shear_sign.lean:52:2: error: unsolved goals\ncase e'_8\nrho mu : ℝ\nJ H : Jet\nC : ℝ := rho * dot (J 0) (H 0) - mu * dot (jetCurl J) (jetCurl H)\nh :\n  HasDerivAt (((fun x => lagrangian rho mu J) + fun y => id y * C) + fun y => (id ^ 2) y * lagrangian rho mu H)\n    (0 + 1 * C + ↑2 * id 0 ^ (2 - 1) * 1 * lagrangian rho mu H) 0\ns : ℝ\n⊢ rho * J 0 0 * s * H 0 0 + rho * J 0 0 ^ 2 * (1 / 2) + rho * s * J 0 1 * H 0 1 + rho * s * J 0 2 * H 0 2 +\n                                                                          rho * s ^ 2 * H 0 0 ^ 2 * (1 / 2) +\n                                                                        rho * s ^ 2 * H 0 1 ^ 2 * (1 / 2) +\n                                                                      rho * s ^ 2 * H 0 2 ^ 2 * (1 / 2) +\n                                                                    rho * J 0 1 ^ 2 * (1 / 2) +\n                                                                  rho * J 0 2 ^ 2 * (1 / 2) +\n                                                                s * mu * J 2 2 * H 2 2 -\n                                                              s * mu * J 2 2 * H 3 1 -\n                                                            s * mu * H 2 2 * J 3 1 +\n                                                          s * mu * J 3 1 * H 3 1 +\n                                                        s * mu * J 3 0 * H 3 0 -\n                                                      s * mu * J 3 0 * H 1 2 -\n                                                    s * mu * H 3 0 * J 1 2 +\n                                                  s * mu * J 1 2 * H 1 2 +\n                                                s * mu * J 1 1 * H 1 1 -\n                                              s * mu * J 1 1 * H 2 0 -\n                                            s * mu * H 1 1 * J 2 0 +\n                                          s * mu * J 2 0 * H 2 0 -\n                                        s ^ 2 * mu * H 2 2 * H 3 1 +\n                                      s ^ 2 * mu * H 2 2 ^ 2 * (1 / 2) +\n                                    s ^ 2 * mu * H 3 1 ^ 2 * (1 / 2) -\n                                  s ^ 2 * mu * H 3 0 * H 1 2 +\n                                s ^ 2 * mu * H 3 0 ^ 2 * (1 / 2) +\n                              s ^ 2 * mu * H 1 2 ^ 2 * (1 / 2) -\n                            s ^ 2 * mu * H 1 1 * H 2 0 +\n                          s ^ 2 * mu * H 1 1 ^ 2 * (1 / 2) +\n                        s ^ 2 * mu * H 2 0 ^ 2 * (1 / 2) -\n                      mu * J 2 2 * J 3 1 +\n                    mu * J 2 2 ^ 2 * (1 / 2) +\n                  mu * J 3 1 ^ 2 * (1 / 2) -\n                mu * J 3 0 * J 1 2 +\n              mu * J 3 0 ^ 2 * (1 / 2) +\n            mu * J 1 2 ^ 2 * (1 / 2) -\n          mu * J 1 1 * J 2 0 +\n        mu * J 1 1 ^ 2 * (1 / 2) +\n      mu * J 2 0 ^ 2 * (1 / 2) =\n    rho * J 0 0 * s * H 0 0 + rho * J 0 0 ^ 2 * (1 / 2) + rho * s * J 0 1 * H 0 1 + rho * s * J 0 2 * H 0 2 +\n                                                                          rho * s ^ 2 * H 0 0 ^ 2 * (1 / 2) +\n                                                                        rho * s ^ 2 * H 0 1 ^ 2 * (1 / 2) +\n                                                                      rho * s ^ 2 * H 0 2 ^ 2 * (1 / 2) +\n                                                                    rho * J 0 1 ^ 2 * (1 / 2) +\n                                                                  rho * J 0 2 ^ 2 * (1 / 2) -\n                                                                s * mu * J 2 2 * H 2 2 +\n                                                              s * mu * J 2 2 * H 3 1 +\n                                                            s * mu * H 2 2 * J 3 1 -\n                                                          s * mu * J 3 1 * H 3 1 -\n                                                        s * mu * J 3 0 * H 3 0 +\n                                                      s * mu * J 3 0 * H 1 2 +\n                                                    s * mu * H 3 0 * J 1 2 -\n                                                  s * mu * J 1 2 * H 1 2 -\n                                                s * mu * J 1 1 * H 1 1 +\n                                              s * mu * J 1 1 * H 2 0 +\n                                            s * mu * H 1 1 * J 2 0 -\n                                          s * mu * J 2 0 * H 2 0 -\n                                        s ^ 2 * mu * H 2 2 * H 3 1 +\n                                      s ^ 2 * mu * H 2 2 ^ 2 * (1 / 2) +\n                                    s ^ 2 * mu * H 3 1 ^ 2 * (1 / 2) -\n                                  s ^ 2 * mu * H 3 0 * H 1 2 +\n                                s ^ 2 * mu * H 3 0 ^ 2 * (1 / 2) +\n                              s ^ 2 * mu * H 1 2 ^ 2 * (1 / 2) -\n                            s ^ 2 * mu * H 1 1 * H 2 0 +\n                          s ^ 2 * mu * H 1 1 ^ 2 * (1 / 2) +\n                        s ^ 2 * mu * H 2 0 ^ 2 * (1 / 2) -\n                      mu * J 2 2 * J 3 1 +\n                    mu * J 2 2 ^ 2 * (1 / 2) +\n                  mu * J 3 1 ^ 2 * (1 / 2) -\n                mu * J 3 0 * J 1 2 +\n              mu * J 3 0 ^ 2 * (1 / 2) +\n            mu * J 1 2 ^ 2 * (1 / 2) -\n          mu * J 1 1 * J 2 0 +\n        mu * J 1 1 ^ 2 * (1 / 2) +\n      mu * J 2 0 ^ 2 * (1 / 2)\n",
+        "output_sha256": "b2f9ebb789fbe2c88b2804c0333234044cf5722176f8d52b481bf3ec671d7383",
+        "canonical_source": "lean/s9/S9Pilot/Action.lean",
+        "canonical_sha256": "dafe6e059b64ccbaa98a5ac4e5a5b5706ef51e19479556e42fc4bf840df0bd56",
+        "replacement": {
+          "old": "rho / 2 * normSq (J 0) - mu / 2 * normSq (jetCurl J)",
+          "new": "rho / 2 * normSq (J 0) + mu / 2 * normSq (jetCurl J)"
+        }
+      },
+      {
+        "name": "relative_action_sign",
+        "expected": "REJECTED",
+        "outcome": "UNEXPECTED",
+        "command": [
+          "nice",
+          "-n",
+          "10",
+          "lake",
+          "env",
+          "lean",
+          "-j1",
+          "-M4096",
+          "-DwarningAsError=true",
+          "s9/_scratch/closure/relative_action_sign.lean"
+        ],
+        "source_sha256": "382f058f0d3807adc627785b0f4670aac7872cbf9a3cd8fd0d8479bd88d44dd2",
+        "exit_status": 1,
+        "wall_seconds": 15.422,
+        "required_failure_in": [
+          "relativeAction_expansion"
+        ],
+        "diagnostics": [
+          {
+            "declaration": "relativeAction_expansion",
+            "line": 74,
+            "message": "s9/_scratch/closure/relative_action_sign.lean:74:38: error: `simp` made no progress\n"
+          }
+        ],
+        "output": "s9/_scratch/closure/relative_action_sign.lean:74:38: error: `simp` made no progress\n",
+        "output_sha256": "b8b8efb631694a2e36b95b73d97125dee3ebb929e2ff3e3d3ba41e7d7c683d12"
+      }
+    ],
+    "axiom_audit_count": 32,
+    "error": "RuntimeError('relative_action_sign: unexpected result; inspect /var/projects/toy_physics/research/pde_ledger_v3/lean/s9/_scratch/closure/relative_action_sign.log')",
+    "finished_utc": "2026-09-16T00:54:08.843337+00:00"
+  },
+  "subsequent_attempts": [
+    {
+      "note": "The revised relative-action test exposed the sign mismatch. The general transverse-count mutant only reported an omega tactic failure, so the instrument again refused to count it. Counts are next tested by admissible concrete wrong-count statements using the unchanged general theorems.",
+      "instrument_source": "#!/usr/bin/env python3\n\"\"\"Sequential, bounded S9 verification and isolated mathematical mutations.\n\nOne Lean worker, 4096 MiB Lean allocator limit, low scheduling priority. Logs,\nsources and incremental records survive an error. A timeout/resource failure is\nan instrument failure, never a successfully rejected mutation. No CAS jobs.\n\"\"\"\nfrom datetime import datetime, timezone\nimport argparse\nimport hashlib\nimport json\nimport os\nfrom pathlib import Path\nimport re\nimport subprocess\nimport time\n\nBASE = Path(__file__).resolve().parents[1]\nLEAN = BASE / 'lean'\nSCRATCH = LEAN / 's9/_scratch/closure'\nREPORT = BASE / '_measurements/S9_lean_contract_checks.json'\nORDER = ('Action', 'PlaneWave', 'Analytic', 'Variation', 'FiniteAction',\n         'Spectrum', 'Certificate', 'VariationalCertificate', 'Madelung')\nCASES = (\n    ('action_shear_sign', 'Action',\n     'rho / 2 * normSq (J 0) - mu / 2 * normSq (jetCurl J)',\n     'rho / 2 * normSq (J 0) + mu / 2 * normSq (jetCurl J)',\n     {'lagrangian_variation'}),\n    ('relative_action_expansion_sign', 'Variation',\n     'relativeAction rho mu u h s =\\n      s * (∫ x, linearDensity rho mu (fieldJet u x) (fieldJet h x)) +\\n      s ^ 2 * (∫ x, lagrangian rho mu (fieldJet h x))',\n     'relativeAction rho mu u h s =\\n      -(s * (∫ x, linearDensity rho mu (fieldJet u x) (fieldJet h x))) -\\n      s ^ 2 * (∫ x, lagrangian rho mu (fieldJet h x))',\n     {'relativeAction_expansion'}),\n    ('transverse_count', 'Spectrum',\n     'Module.finrank ℝ (transverseSpace k) = 2',\n     'Module.finrank ℝ (transverseSpace k) = 3', {'transverseSpace_finrank'}),\n    ('longitudinal_count', 'Spectrum',\n     'Module.finrank ℝ (longitudinalSpace k) = 1',\n     'Module.finrank ℝ (longitudinalSpace k) = 2', {'longitudinalSpace_finrank'}),\n    ('phase_wrong_coordinate', 'Madelung',\n     '(hbar / mass) * coordDeriv i.succ theta x',\n     '(hbar / mass) * coordDeriv 0 theta x', {'velocity_phasePerturbation'}),\n    ('phase_sine_sign', 'Madelung',\n     '(-(hbar / mass) * A) • k',\n     '((hbar / mass) * A) • k', {'linearVelocity_eq'}),\n)\nEXAMPLES = (\n    ('zero_wavevector_domain', '''theorem domain_control :\n    ModalStationary 1 1 0 (0 : Vec) (![0, 0, 1] : Vec) ∧\n      (![0, 0, 1] : Vec) REL longitudinalSpace (0 : Vec) := by\n  norm_num [modal_stationary_iff, modalOperator, normSq, dot, longitudinalSpace]\n''', '∉', '∈'),\n    ('longitudinal_not_transverse', '''theorem domain_control :\n    Madelung.cosAmplitude 1 1 1 (![0, 0, 1] : Vec) REL\n      transverseSpace (![0, 0, 1] : Vec) := by\n  norm_num [Madelung.cosAmplitude, transverseSpace, dotLinear, dot]\n''', '∉', '∈'),\n    ('nonzero_prefactor_required_for_range', '''theorem domain_control :\n    Madelung.cosAmplitude 0 1 1 (![0, 0, 1] : Vec) REL 0 := by\n  norm_num [Madelung.cosAmplitude]\n''', '=', '≠'),\n)\n\n\ndef digest(path):\n    return hashlib.sha256(path.read_bytes()).hexdigest()\n\n\ndef main():\n    parser = argparse.ArgumentParser(__doc__)\n    parser.add_argument('--reuse-build', action='store_true',\n                        help='Reuse successful builds only when all canonical source hashes match.')\n    args = parser.parse_args()\n    SCRATCH.mkdir(parents=True, exist_ok=True)\n    sources = sorted((LEAN / 's9/S9Pilot').glob('*.lean')) + [LEAN / 's9/S9Pilot.lean']\n    before = {str(p.relative_to(BASE)): digest(p) for p in sources}\n    prior = json.loads(REPORT.read_text()) if args.reuse_build and REPORT.exists() else {}\n    reusable = {r['name']: r for r in prior.get('checks', []) if r['outcome'] == 'PASS'} if (\n        prior.get('canonical_sha256_before') == before) else {}\n    report = {'status': 'RUNNING', 'started_utc': datetime.now(timezone.utc).isoformat(),\n              'instrument_sha256': digest(Path(__file__)),\n              'resources': {'concurrent_lean_processes': 1, 'threads': 1,\n                            'lean_allocator_limit_mib': 4096, 'process_timeout_seconds': 300,\n                            'limits_note': 'Lean allocator limit is not an OS RSS cap; one process at a time.'},\n              'canonical_sha256_before': before, 'checks': []}\n\n    def save():\n        temporary = REPORT.with_suffix('.new')\n        temporary.write_text(json.dumps(report, indent=2, ensure_ascii=False) + '\\n')\n        temporary.replace(REPORT)\n\n    def run(name, path, expected, required=(), output_module=None):\n        rel = str(path.relative_to(LEAN))\n        command = ['nice', '-n', '10', 'lake', 'env', 'lean', '-j1', '-M4096',\n                   '-DwarningAsError=true']\n        if output_module:\n            command += ['-o', str(LEAN / '.lake/build/lib/lean' / output_module)]\n        command.append(rel)\n        if output_module and name in reusable:\n            old = reusable[name]\n            if old['source_sha256'] == digest(path) and old['command'] == command:\n                record = {**old, 'reused_build_from_instrument_sha256': prior['instrument_sha256']}\n                report['checks'].append(record)\n                save()\n                return record\n        start = time.monotonic()\n        log = SCRATCH / (name + '.log')\n        with log.open('w') as stream:\n            result = subprocess.run(command, cwd=LEAN, stdout=stream, stderr=subprocess.STDOUT,\n                                    env={**os.environ, 'OMP_NUM_THREADS': '1', 'OPENBLAS_NUM_THREADS': '1'},\n                                    timeout=300)\n        output = log.read_text()\n        source = path.read_text()\n        decls = [(source[:m.start()].count('\\n') + 1, m[1]) for m in\n                 re.finditer(r'^\\s*(?:theorem|def|abbrev)\\s+(\\w+)', source, re.M)]\n        errors = list(re.finditer(re.escape(rel) + r':(\\d+):\\d+: error:', output))\n        diagnostics = []\n        for i, match in enumerate(errors):\n            line = int(match[1])\n            decl = next((n for pos, n in reversed(decls) if pos <= line), '')\n            block = output[match.start():errors[i+1].start() if i+1 < len(errors) else len(output)]\n            diagnostics.append({'declaration': decl, 'line': line, 'message': block})\n        invalid = re.search(r'unknown (?:module|namespace|identifier)|unexpected token|'\n                            r'maximum (?:recursion|heartbeats)|excessive memory|out of memory|'\n                            r'PANIC|failed to create|No such file', output, re.I)\n        mathematical = r'unsolved goals|Type mismatch|failed to close|proved that the proposition|Tactic `rewrite` failed'\n        intended = [d for d in diagnostics if d['declaration'] in required and\n                    re.search(mathematical, d['message'], re.I)]\n        valid = (result.returncode == 0 and not re.search(r'\\b(?:error|warning):', output)) if expected == 'PASS' else (\n            result.returncode == 1 and bool(intended) and not invalid)\n        record = {'name': name, 'expected': expected, 'outcome': expected if valid else 'UNEXPECTED',\n                  'command': command, 'source_sha256': digest(path), 'exit_status': result.returncode,\n                  'wall_seconds': round(time.monotonic() - start, 3),\n                  'required_failure_in': sorted(required), 'diagnostics': diagnostics,\n                  'output': output, 'output_sha256': digest(log)}\n        report['checks'].append(record)\n        save()\n        if not valid:\n            raise RuntimeError(f'{name}: unexpected result; inspect {log}')\n        return record\n\n    save()\n    try:\n        # Rebuild only the small S9 library sequentially; reuse pinned Mathlib/Physlib.\n        for module in ORDER:\n            run('build_' + module, LEAN / 's9/S9Pilot' / (module + '.lean'), 'PASS',\n                output_module='S9Pilot/' + module + '.olean')\n        audit = run('axiom_audit', LEAN / 's9/S9Pilot.lean', 'PASS', output_module='S9Pilot.olean')\n        axioms = re.findall(r\"depends on axioms: \\[([^\\]]*)\\]\", audit['output'])\n        assert len(axioms) == 32, ('axiom audit count', len(axioms))\n        assert all(set(a.replace(' ', '').split(',')) <= {'propext', 'Classical.choice', 'Quot.sound', ''}\n                   for a in axioms)\n        assert not any(re.search(r'^\\s*(?:axiom\\b|.*\\b(?:sorry|admit)\\b)', p.read_text(), re.M) for p in sources)\n        report['axiom_audit_count'] = len(axioms)\n        for name, module, old, new, required in CASES:\n            canonical = LEAN / 's9/S9Pilot' / (module + '.lean')\n            source = canonical.read_text()\n            assert source.count(old) == 1, (name, source.count(old))\n            mutant = SCRATCH / (name + '.lean')\n            mutant.write_text(source.replace(old, new))\n            record = run(name, mutant, 'REJECTED', required)\n            record.update(canonical_source=str(canonical.relative_to(BASE)),\n                          canonical_sha256=digest(canonical), replacement={'old': old, 'new': new})\n            save()\n        for name, statement, correct, wrong in EXAMPLES:\n            for label, relation, expected in [('positive', correct, 'PASS'), ('mutant', wrong, 'REJECTED')]:\n                path = SCRATCH / (name + '_' + label + '.lean')\n                path.write_text('import S9Pilot.Madelung\\nopen S9Pilot\\nnoncomputable section\\n' + statement.replace('REL', relation))\n                record = run(name + '_' + label, path, expected, {'domain_control'})\n                record['source'] = path.read_text()\n                save()\n        after = {str(p.relative_to(BASE)): digest(p) for p in sources}\n        assert before == after, 'canonical source changed during verification'\n        report.update(status='PASS', canonical_sha256_after=after)\n    except Exception as error:\n        report.update(status='ERROR', error=repr(error))\n        raise\n    finally:\n        report['finished_utc'] = datetime.now(timezone.utc).isoformat()\n        save()\n\n\nif __name__ == '__main__':\n    main()\n",
+      "report": {
+        "status": "ERROR",
+        "started_utc": "2026-09-16T00:55:37.685403+00:00",
+        "instrument_sha256": "f110837a1ab038144007affa90cb0466f104b09d3b0ee35b27cdc0f4c15fc0a0",
+        "resources": {
+          "concurrent_lean_processes": 1,
+          "threads": 1,
+          "lean_allocator_limit_mib": 4096,
+          "process_timeout_seconds": 300,
+          "limits_note": "Lean allocator limit is not an OS RSS cap; one process at a time."
+        },
+        "canonical_sha256_before": {
+          "lean/s9/S9Pilot/Action.lean": "dafe6e059b64ccbaa98a5ac4e5a5b5706ef51e19479556e42fc4bf840df0bd56",
+          "lean/s9/S9Pilot/Analytic.lean": "66352628b83475280942c32dee6d1c9e704ae0526ba536a3f62136e2c77ac666",
+          "lean/s9/S9Pilot/Certificate.lean": "0c279281a0d488e51b1c3a4de29849dd4d1fce0a94d01abc9e5fff990da7d5e1",
+          "lean/s9/S9Pilot/FiniteAction.lean": "28868a9a30996a36fe0c32c8ad53f0f5f5549162f81ba27a703f7b2d08cef324",
+          "lean/s9/S9Pilot/Madelung.lean": "6d4ad27266effbf2493e0cf7c6f9ce55f2bba2501eaeab584110a59bfaac455e",
+          "lean/s9/S9Pilot/PlaneWave.lean": "8803fdaf6e7ce26a336d6663decc23e4c871377e95ef9bf9bb71b77f1605cb21",
+          "lean/s9/S9Pilot/Spectrum.lean": "bdd6e886eb291ce0837ea8d94b10bb7548a6fb37a227c90e82f0e7799936e1a3",
+          "lean/s9/S9Pilot/Variation.lean": "5ea90c39293879695be59e1a53f0046b13d52577dfb59e0b16a42546c4591dd2",
+          "lean/s9/S9Pilot/VariationalCertificate.lean": "1d500fd5bb36b435341b31bcea9f4c9848af8548593aab1d1336a0e3d3243e36",
+          "lean/s9/S9Pilot.lean": "32671c668126f7b4afee4c709031547326d49b4d087c1a2d372f2fff87e7abf6"
+        },
+        "checks": [
+          {
+            "name": "build_Action",
+            "expected": "PASS",
+            "outcome": "PASS",
+            "command": [
+              "nice",
+              "-n",
+              "10",
+              "lake",
+              "env",
+              "lean",
+              "-j1",
+              "-M4096",
+              "-DwarningAsError=true",
+              "-o",
+              "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S9Pilot/Action.olean",
+              "s9/S9Pilot/Action.lean"
+            ],
+            "source_sha256": "dafe6e059b64ccbaa98a5ac4e5a5b5706ef51e19479556e42fc4bf840df0bd56",
+            "exit_status": 0,
+            "wall_seconds": 21.939,
+            "required_failure_in": [],
+            "diagnostics": [],
+            "output": "",
+            "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "reused_build_from_instrument_sha256": "ec3dbf050e01ad5e7758d7485779216a6f4d853cf23dfe8b663a1ba61733dca9"
+          },
+          {
+            "name": "build_PlaneWave",
+            "expected": "PASS",
+            "outcome": "PASS",
+            "command": [
+              "nice",
+              "-n",
+              "10",
+              "lake",
+              "env",
+              "lean",
+              "-j1",
+              "-M4096",
+              "-DwarningAsError=true",
+              "-o",
+              "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S9Pilot/PlaneWave.olean",
+              "s9/S9Pilot/PlaneWave.lean"
+            ],
+            "source_sha256": "8803fdaf6e7ce26a336d6663decc23e4c871377e95ef9bf9bb71b77f1605cb21",
+            "exit_status": 0,
+            "wall_seconds": 19.095,
+            "required_failure_in": [],
+            "diagnostics": [],
+            "output": "",
+            "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "reused_build_from_instrument_sha256": "ec3dbf050e01ad5e7758d7485779216a6f4d853cf23dfe8b663a1ba61733dca9"
+          },
+          {
+            "name": "build_Analytic",
+            "expected": "PASS",
+            "outcome": "PASS",
+            "command": [
+              "nice",
+              "-n",
+              "10",
+              "lake",
+              "env",
+              "lean",
+              "-j1",
+              "-M4096",
+              "-DwarningAsError=true",
+              "-o",
+              "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S9Pilot/Analytic.olean",
+              "s9/S9Pilot/Analytic.lean"
+            ],
+            "source_sha256": "66352628b83475280942c32dee6d1c9e704ae0526ba536a3f62136e2c77ac666",
+            "exit_status": 0,
+            "wall_seconds": 14.764,
+            "required_failure_in": [],
+            "diagnostics": [],
+            "output": "",
+            "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "reused_build_from_instrument_sha256": "ec3dbf050e01ad5e7758d7485779216a6f4d853cf23dfe8b663a1ba61733dca9"
+          },
+          {
+            "name": "build_Variation",
+            "expected": "PASS",
+            "outcome": "PASS",
+            "command": [
+              "nice",
+              "-n",
+              "10",
+              "lake",
+              "env",
+              "lean",
+              "-j1",
+              "-M4096",
+              "-DwarningAsError=true",
+              "-o",
+              "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S9Pilot/Variation.olean",
+              "s9/S9Pilot/Variation.lean"
+            ],
+            "source_sha256": "5ea90c39293879695be59e1a53f0046b13d52577dfb59e0b16a42546c4591dd2",
+            "exit_status": 0,
+            "wall_seconds": 16.282,
+            "required_failure_in": [],
+            "diagnostics": [],
+            "output": "",
+            "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "reused_build_from_instrument_sha256": "ec3dbf050e01ad5e7758d7485779216a6f4d853cf23dfe8b663a1ba61733dca9"
+          },
+          {
+            "name": "build_FiniteAction",
+            "expected": "PASS",
+            "outcome": "PASS",
+            "command": [
+              "nice",
+              "-n",
+              "10",
+              "lake",
+              "env",
+              "lean",
+              "-j1",
+              "-M4096",
+              "-DwarningAsError=true",
+              "-o",
+              "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S9Pilot/FiniteAction.olean",
+              "s9/S9Pilot/FiniteAction.lean"
+            ],
+            "source_sha256": "28868a9a30996a36fe0c32c8ad53f0f5f5549162f81ba27a703f7b2d08cef324",
+            "exit_status": 0,
+            "wall_seconds": 10.639,
+            "required_failure_in": [],
+            "diagnostics": [],
+            "output": "",
+            "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "reused_build_from_instrument_sha256": "ec3dbf050e01ad5e7758d7485779216a6f4d853cf23dfe8b663a1ba61733dca9"
+          },
+          {
+            "name": "build_Spectrum",
+            "expected": "PASS",
+            "outcome": "PASS",
+            "command": [
+              "nice",
+              "-n",
+              "10",
+              "lake",
+              "env",
+              "lean",
+              "-j1",
+              "-M4096",
+              "-DwarningAsError=true",
+              "-o",
+              "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S9Pilot/Spectrum.olean",
+              "s9/S9Pilot/Spectrum.lean"
+            ],
+            "source_sha256": "bdd6e886eb291ce0837ea8d94b10bb7548a6fb37a227c90e82f0e7799936e1a3",
+            "exit_status": 0,
+            "wall_seconds": 12.853,
+            "required_failure_in": [],
+            "diagnostics": [],
+            "output": "",
+            "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "reused_build_from_instrument_sha256": "ec3dbf050e01ad5e7758d7485779216a6f4d853cf23dfe8b663a1ba61733dca9"
+          },
+          {
+            "name": "build_Certificate",
+            "expected": "PASS",
+            "outcome": "PASS",
+            "command": [
+              "nice",
+              "-n",
+              "10",
+              "lake",
+              "env",
+              "lean",
+              "-j1",
+              "-M4096",
+              "-DwarningAsError=true",
+              "-o",
+              "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S9Pilot/Certificate.olean",
+              "s9/S9Pilot/Certificate.lean"
+            ],
+            "source_sha256": "0c279281a0d488e51b1c3a4de29849dd4d1fce0a94d01abc9e5fff990da7d5e1",
+            "exit_status": 0,
+            "wall_seconds": 10.891,
+            "required_failure_in": [],
+            "diagnostics": [],
+            "output": "",
+            "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "reused_build_from_instrument_sha256": "ec3dbf050e01ad5e7758d7485779216a6f4d853cf23dfe8b663a1ba61733dca9"
+          },
+          {
+            "name": "build_VariationalCertificate",
+            "expected": "PASS",
+            "outcome": "PASS",
+            "command": [
+              "nice",
+              "-n",
+              "10",
+              "lake",
+              "env",
+              "lean",
+              "-j1",
+              "-M4096",
+              "-DwarningAsError=true",
+              "-o",
+              "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S9Pilot/VariationalCertificate.olean",
+              "s9/S9Pilot/VariationalCertificate.lean"
+            ],
+            "source_sha256": "1d500fd5bb36b435341b31bcea9f4c9848af8548593aab1d1336a0e3d3243e36",
+            "exit_status": 0,
+            "wall_seconds": 10.64,
+            "required_failure_in": [],
+            "diagnostics": [],
+            "output": "",
+            "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "reused_build_from_instrument_sha256": "ec3dbf050e01ad5e7758d7485779216a6f4d853cf23dfe8b663a1ba61733dca9"
+          },
+          {
+            "name": "build_Madelung",
+            "expected": "PASS",
+            "outcome": "PASS",
+            "command": [
+              "nice",
+              "-n",
+              "10",
+              "lake",
+              "env",
+              "lean",
+              "-j1",
+              "-M4096",
+              "-DwarningAsError=true",
+              "-o",
+              "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S9Pilot/Madelung.olean",
+              "s9/S9Pilot/Madelung.lean"
+            ],
+            "source_sha256": "6d4ad27266effbf2493e0cf7c6f9ce55f2bba2501eaeab584110a59bfaac455e",
+            "exit_status": 0,
+            "wall_seconds": 11.902,
+            "required_failure_in": [],
+            "diagnostics": [],
+            "output": "",
+            "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "reused_build_from_instrument_sha256": "ec3dbf050e01ad5e7758d7485779216a6f4d853cf23dfe8b663a1ba61733dca9"
+          },
+          {
+            "name": "axiom_audit",
+            "expected": "PASS",
+            "outcome": "PASS",
+            "command": [
+              "nice",
+              "-n",
+              "10",
+              "lake",
+              "env",
+              "lean",
+              "-j1",
+              "-M4096",
+              "-DwarningAsError=true",
+              "-o",
+              "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S9Pilot.olean",
+              "s9/S9Pilot.lean"
+            ],
+            "source_sha256": "32671c668126f7b4afee4c709031547326d49b4d087c1a2d372f2fff87e7abf6",
+            "exit_status": 0,
+            "wall_seconds": 11.546,
+            "required_failure_in": [],
+            "diagnostics": [],
+            "output": "ClassicalMechanics.planeWave_waveEquation {d : ℕ} (c : ℝ) (s : Space.Direction d) (f₀ : ℝ → EuclideanSpace ℝ (Fin d))\n  (hf₀ : ContDiff ℝ 2 f₀) (t : Time) (x : Space d) :\n  ClassicalMechanics.WaveEquation (ClassicalMechanics.planeWave f₀ c s) t x c\n'S9Pilot.candidateOmegaSq_scaling' depends on axioms: [propext, Classical.choice, Quot.sound]\n'ClassicalMechanics.planeWave_waveEquation' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S9Pilot.lagrangian_variation' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S9Pilot.modal_stationary_iff' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S9Pilot.planeWave_lagrangian' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S9Pilot.eulerLagrange_planeWave' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S9Pilot.s9_plane_wave_certificate' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S9Pilot.propagating_planeWave_iff' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S9Pilot.coneValue_scaling' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S9Pilot.concrete_transverse_wave' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S9Pilot.concrete_longitudinal_not_wave' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S9Pilot.coord_integration_by_parts' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S9Pilot.relative_density_integrable' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S9Pilot.relativeAction_hasDerivAt' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S9Pilot.relativeAction_deriv_eq_eulerLagrange' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S9Pilot.actionStationary_iff_eulerLagrange' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S9Pilot.finiteAction_hasDerivAt' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S9Pilot.s9_variational_certificate' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S9Pilot.propagating_variational_mode_iff' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S9Pilot.concrete_transverse_stationary' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S9Pilot.concrete_longitudinal_detected_by_test' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S9Pilot.Madelung.phasePerturbation_coordDeriv' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S9Pilot.Madelung.velocity_phasePerturbation' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S9Pilot.Madelung.linearVelocity_eq' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S9Pilot.Madelung.cosAmplitude_mem' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S9Pilot.Madelung.sinAmplitude_mem' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S9Pilot.Madelung.cosAmplitude_range' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S9Pilot.Madelung.longitudinal_transverse_eq_zero' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S9Pilot.Madelung.no_transverse_velocity' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S9Pilot.Madelung.transverse_linearVelocity_zero' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S9Pilot.Madelung.zero_wavevector' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S9Pilot.Madelung.concrete_longitudinal_velocity' depends on axioms: [propext, Classical.choice, Quot.sound]\n",
+            "output_sha256": "9af8395dc1248fec8ded52289f00faf1784fa0e70ee9942ec75395f2a6e2cd67",
+            "reused_build_from_instrument_sha256": "ec3dbf050e01ad5e7758d7485779216a6f4d853cf23dfe8b663a1ba61733dca9"
+          },
+          {
+            "name": "action_shear_sign",
+            "expected": "REJECTED",
+            "outcome": "REJECTED",
+            "command": [
+              "nice",
+              "-n",
+              "10",
+              "lake",
+              "env",
+              "lean",
+              "-j1",
+              "-M4096",
+              "-DwarningAsError=true",
+              "s9/_scratch/closure/action_shear_sign.lean"
+            ],
+            "source_sha256": "859c605b5adb9c1f652268ba583e5f5db50a9725ed54855dd8c9528aee02ba25",
+            "exit_status": 1,
+            "wall_seconds": 18.147,
+            "required_failure_in": [
+              "lagrangian_variation"
+            ],
+            "diagnostics": [
+              {
+                "declaration": "lagrangian_variation",
+                "line": 52,
+                "message": "s9/_scratch/closure/action_shear_sign.lean:52:2: error: unsolved goals\ncase e'_8\nrho mu : ℝ\nJ H : Jet\nC : ℝ := rho * dot (J 0) (H 0) - mu * dot (jetCurl J) (jetCurl H)\nh :\n  HasDerivAt (((fun x => lagrangian rho mu J) + fun y => id y * C) + fun y => (id ^ 2) y * lagrangian rho mu H)\n    (0 + 1 * C + ↑2 * id 0 ^ (2 - 1) * 1 * lagrangian rho mu H) 0\ns : ℝ\n⊢ rho * J 0 0 * s * H 0 0 + rho * J 0 0 ^ 2 * (1 / 2) + rho * s * J 0 1 * H 0 1 + rho * s * J 0 2 * H 0 2 +\n                                                                          rho * s ^ 2 * H 0 0 ^ 2 * (1 / 2) +\n                                                                        rho * s ^ 2 * H 0 1 ^ 2 * (1 / 2) +\n                                                                      rho * s ^ 2 * H 0 2 ^ 2 * (1 / 2) +\n                                                                    rho * J 0 1 ^ 2 * (1 / 2) +\n                                                                  rho * J 0 2 ^ 2 * (1 / 2) +\n                                                                s * mu * J 2 2 * H 2 2 -\n                                                              s * mu * J 2 2 * H 3 1 -\n                                                            s * mu * H 2 2 * J 3 1 +\n                                                          s * mu * J 3 1 * H 3 1 +\n                                                        s * mu * J 3 0 * H 3 0 -\n                                                      s * mu * J 3 0 * H 1 2 -\n                                                    s * mu * H 3 0 * J 1 2 +\n                                                  s * mu * J 1 2 * H 1 2 +\n                                                s * mu * J 1 1 * H 1 1 -\n                                              s * mu * J 1 1 * H 2 0 -\n                                            s * mu * H 1 1 * J 2 0 +\n                                          s * mu * J 2 0 * H 2 0 -\n                                        s ^ 2 * mu * H 2 2 * H 3 1 +\n                                      s ^ 2 * mu * H 2 2 ^ 2 * (1 / 2) +\n                                    s ^ 2 * mu * H 3 1 ^ 2 * (1 / 2) -\n                                  s ^ 2 * mu * H 3 0 * H 1 2 +\n                                s ^ 2 * mu * H 3 0 ^ 2 * (1 / 2) +\n                              s ^ 2 * mu * H 1 2 ^ 2 * (1 / 2) -\n                            s ^ 2 * mu * H 1 1 * H 2 0 +\n                          s ^ 2 * mu * H 1 1 ^ 2 * (1 / 2) +\n                        s ^ 2 * mu * H 2 0 ^ 2 * (1 / 2) -\n                      mu * J 2 2 * J 3 1 +\n                    mu * J 2 2 ^ 2 * (1 / 2) +\n                  mu * J 3 1 ^ 2 * (1 / 2) -\n                mu * J 3 0 * J 1 2 +\n              mu * J 3 0 ^ 2 * (1 / 2) +\n            mu * J 1 2 ^ 2 * (1 / 2) -\n          mu * J 1 1 * J 2 0 +\n        mu * J 1 1 ^ 2 * (1 / 2) +\n      mu * J 2 0 ^ 2 * (1 / 2) =\n    rho * J 0 0 * s * H 0 0 + rho * J 0 0 ^ 2 * (1 / 2) + rho * s * J 0 1 * H 0 1 + rho * s * J 0 2 * H 0 2 +\n                                                                          rho * s ^ 2 * H 0 0 ^ 2 * (1 / 2) +\n                                                                        rho * s ^ 2 * H 0 1 ^ 2 * (1 / 2) +\n                                                                      rho * s ^ 2 * H 0 2 ^ 2 * (1 / 2) +\n                                                                    rho * J 0 1 ^ 2 * (1 / 2) +\n                                                                  rho * J 0 2 ^ 2 * (1 / 2) -\n                                                                s * mu * J 2 2 * H 2 2 +\n                                                              s * mu * J 2 2 * H 3 1 +\n                                                            s * mu * H 2 2 * J 3 1 -\n                                                          s * mu * J 3 1 * H 3 1 -\n                                                        s * mu * J 3 0 * H 3 0 +\n                                                      s * mu * J 3 0 * H 1 2 +\n                                                    s * mu * H 3 0 * J 1 2 -\n                                                  s * mu * J 1 2 * H 1 2 -\n                                                s * mu * J 1 1 * H 1 1 +\n                                              s * mu * J 1 1 * H 2 0 +\n                                            s * mu * H 1 1 * J 2 0 -\n                                          s * mu * J 2 0 * H 2 0 -\n                                        s ^ 2 * mu * H 2 2 * H 3 1 +\n                                      s ^ 2 * mu * H 2 2 ^ 2 * (1 / 2) +\n                                    s ^ 2 * mu * H 3 1 ^ 2 * (1 / 2) -\n                                  s ^ 2 * mu * H 3 0 * H 1 2 +\n                                s ^ 2 * mu * H 3 0 ^ 2 * (1 / 2) +\n                              s ^ 2 * mu * H 1 2 ^ 2 * (1 / 2) -\n                            s ^ 2 * mu * H 1 1 * H 2 0 +\n                          s ^ 2 * mu * H 1 1 ^ 2 * (1 / 2) +\n                        s ^ 2 * mu * H 2 0 ^ 2 * (1 / 2) -\n                      mu * J 2 2 * J 3 1 +\n                    mu * J 2 2 ^ 2 * (1 / 2) +\n                  mu * J 3 1 ^ 2 * (1 / 2) -\n                mu * J 3 0 * J 1 2 +\n              mu * J 3 0 ^ 2 * (1 / 2) +\n            mu * J 1 2 ^ 2 * (1 / 2) -\n          mu * J 1 1 * J 2 0 +\n        mu * J 1 1 ^ 2 * (1 / 2) +\n      mu * J 2 0 ^ 2 * (1 / 2)\n"
+              }
+            ],
+            "output": "Try this:\n  [apply] ring_nf\n  \n  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.\n    \n  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.\ns9/_scratch/closure/action_shear_sign.lean:52:2: error: unsolved goals\ncase e'_8\nrho mu : ℝ\nJ H : Jet\nC : ℝ := rho * dot (J 0) (H 0) - mu * dot (jetCurl J) (jetCurl H)\nh :\n  HasDerivAt (((fun x => lagrangian rho mu J) + fun y => id y * C) + fun y => (id ^ 2) y * lagrangian rho mu H)\n    (0 + 1 * C + ↑2 * id 0 ^ (2 - 1) * 1 * lagrangian rho mu H) 0\ns : ℝ\n⊢ rho * J 0 0 * s * H 0 0 + rho * J 0 0 ^ 2 * (1 / 2) + rho * s * J 0 1 * H 0 1 + rho * s * J 0 2 * H 0 2 +\n                                                                          rho * s ^ 2 * H 0 0 ^ 2 * (1 / 2) +\n                                                                        rho * s ^ 2 * H 0 1 ^ 2 * (1 / 2) +\n                                                                      rho * s ^ 2 * H 0 2 ^ 2 * (1 / 2) +\n                                                                    rho * J 0 1 ^ 2 * (1 / 2) +\n                                                                  rho * J 0 2 ^ 2 * (1 / 2) +\n                                                                s * mu * J 2 2 * H 2 2 -\n                                                              s * mu * J 2 2 * H 3 1 -\n                                                            s * mu * H 2 2 * J 3 1 +\n                                                          s * mu * J 3 1 * H 3 1 +\n                                                        s * mu * J 3 0 * H 3 0 -\n                                                      s * mu * J 3 0 * H 1 2 -\n                                                    s * mu * H 3 0 * J 1 2 +\n                                                  s * mu * J 1 2 * H 1 2 +\n                                                s * mu * J 1 1 * H 1 1 -\n                                              s * mu * J 1 1 * H 2 0 -\n                                            s * mu * H 1 1 * J 2 0 +\n                                          s * mu * J 2 0 * H 2 0 -\n                                        s ^ 2 * mu * H 2 2 * H 3 1 +\n                                      s ^ 2 * mu * H 2 2 ^ 2 * (1 / 2) +\n                                    s ^ 2 * mu * H 3 1 ^ 2 * (1 / 2) -\n                                  s ^ 2 * mu * H 3 0 * H 1 2 +\n                                s ^ 2 * mu * H 3 0 ^ 2 * (1 / 2) +\n                              s ^ 2 * mu * H 1 2 ^ 2 * (1 / 2) -\n                            s ^ 2 * mu * H 1 1 * H 2 0 +\n                          s ^ 2 * mu * H 1 1 ^ 2 * (1 / 2) +\n                        s ^ 2 * mu * H 2 0 ^ 2 * (1 / 2) -\n                      mu * J 2 2 * J 3 1 +\n                    mu * J 2 2 ^ 2 * (1 / 2) +\n                  mu * J 3 1 ^ 2 * (1 / 2) -\n                mu * J 3 0 * J 1 2 +\n              mu * J 3 0 ^ 2 * (1 / 2) +\n            mu * J 1 2 ^ 2 * (1 / 2) -\n          mu * J 1 1 * J 2 0 +\n        mu * J 1 1 ^ 2 * (1 / 2) +\n      mu * J 2 0 ^ 2 * (1 / 2) =\n    rho * J 0 0 * s * H 0 0 + rho * J 0 0 ^ 2 * (1 / 2) + rho * s * J 0 1 * H 0 1 + rho * s * J 0 2 * H 0 2 +\n                                                                          rho * s ^ 2 * H 0 0 ^ 2 * (1 / 2) +\n                                                                        rho * s ^ 2 * H 0 1 ^ 2 * (1 / 2) +\n                                                                      rho * s ^ 2 * H 0 2 ^ 2 * (1 / 2) +\n                                                                    rho * J 0 1 ^ 2 * (1 / 2) +\n                                                                  rho * J 0 2 ^ 2 * (1 / 2) -\n                                                                s * mu * J 2 2 * H 2 2 +\n                                                              s * mu * J 2 2 * H 3 1 +\n                                                            s * mu * H 2 2 * J 3 1 -\n                                                          s * mu * J 3 1 * H 3 1 -\n                                                        s * mu * J 3 0 * H 3 0 +\n                                                      s * mu * J 3 0 * H 1 2 +\n                                                    s * mu * H 3 0 * J 1 2 -\n                                                  s * mu * J 1 2 * H 1 2 -\n                                                s * mu * J 1 1 * H 1 1 +\n                                              s * mu * J 1 1 * H 2 0 +\n                                            s * mu * H 1 1 * J 2 0 -\n                                          s * mu * J 2 0 * H 2 0 -\n                                        s ^ 2 * mu * H 2 2 * H 3 1 +\n                                      s ^ 2 * mu * H 2 2 ^ 2 * (1 / 2) +\n                                    s ^ 2 * mu * H 3 1 ^ 2 * (1 / 2) -\n                                  s ^ 2 * mu * H 3 0 * H 1 2 +\n                                s ^ 2 * mu * H 3 0 ^ 2 * (1 / 2) +\n                              s ^ 2 * mu * H 1 2 ^ 2 * (1 / 2) -\n                            s ^ 2 * mu * H 1 1 * H 2 0 +\n                          s ^ 2 * mu * H 1 1 ^ 2 * (1 / 2) +\n                        s ^ 2 * mu * H 2 0 ^ 2 * (1 / 2) -\n                      mu * J 2 2 * J 3 1 +\n                    mu * J 2 2 ^ 2 * (1 / 2) +\n                  mu * J 3 1 ^ 2 * (1 / 2) -\n                mu * J 3 0 * J 1 2 +\n              mu * J 3 0 ^ 2 * (1 / 2) +\n            mu * J 1 2 ^ 2 * (1 / 2) -\n          mu * J 1 1 * J 2 0 +\n        mu * J 1 1 ^ 2 * (1 / 2) +\n      mu * J 2 0 ^ 2 * (1 / 2)\n",
+            "output_sha256": "b2f9ebb789fbe2c88b2804c0333234044cf5722176f8d52b481bf3ec671d7383",
+            "canonical_source": "lean/s9/S9Pilot/Action.lean",
+            "canonical_sha256": "dafe6e059b64ccbaa98a5ac4e5a5b5706ef51e19479556e42fc4bf840df0bd56",
+            "replacement": {
+              "old": "rho / 2 * normSq (J 0) - mu / 2 * normSq (jetCurl J)",
+              "new": "rho / 2 * normSq (J 0) + mu / 2 * normSq (jetCurl J)"
+            }
+          },
+          {
+            "name": "relative_action_expansion_sign",
+            "expected": "REJECTED",
+            "outcome": "REJECTED",
+            "command": [
+              "nice",
+              "-n",
+              "10",
+              "lake",
+              "env",
+              "lean",
+              "-j1",
+              "-M4096",
+              "-DwarningAsError=true",
+              "s9/_scratch/closure/relative_action_expansion_sign.lean"
+            ],
+            "source_sha256": "232665cd599dc94ea18260138ec2dfad3c43215a0fcea4db3d6f7cddbb39b2f9",
+            "exit_status": 1,
+            "wall_seconds": 17.341,
+            "required_failure_in": [
+              "relativeAction_expansion"
+            ],
+            "diagnostics": [
+              {
+                "declaration": "relativeAction_expansion",
+                "line": 72,
+                "message": "s9/_scratch/closure/relative_action_expansion_sign.lean:72:57: error: unsolved goals\nu h : Point → Vec\nhu : SmoothField u\nhh : TestField h\nrho mu s : ℝ\n⊢ (s * ∫ (a : Point), linearDensity rho mu (fieldJet u a) (fieldJet h a)) +\n      s ^ 2 * ∫ (a : Point), lagrangian rho mu (fieldJet h a) =\n    -(s * ∫ (a : Point), linearDensity rho mu (fieldJet u a) (fieldJet h a)) -\n      s ^ 2 * ∫ (a : Point), lagrangian rho mu (fieldJet h a)\n"
+              },
+              {
+                "declaration": "relativeAction_hasDerivAt",
+                "line": 87,
+                "message": "s9/_scratch/closure/relative_action_expansion_sign.lean:87:11: error: Application type mismatch: The argument\n  relativeAction_expansion hu hh rho mu\nhas type\n  ∀ (s : ℝ),\n    relativeAction rho mu u h s =\n      -(s * ∫ (x : Point), linearDensity rho mu (fieldJet u x) (fieldJet h x)) -\n        s ^ 2 * ∫ (x : Point), lagrangian rho mu (fieldJet h x)\nbut is expected to have type\n  ∀ (x : ℝ),\n    relativeAction rho mu u h x =\n      (x * ∫ (x : Point), linearDensity rho mu (fieldJet u x) (fieldJet h x)) +\n        x ^ 2 * ∫ (x : Point), lagrangian rho mu (fieldJet h x)\nin the application\n  funext (relativeAction_expansion hu hh rho mu)\n"
+              }
+            ],
+            "output": "s9/_scratch/closure/relative_action_expansion_sign.lean:72:57: error: unsolved goals\nu h : Point → Vec\nhu : SmoothField u\nhh : TestField h\nrho mu s : ℝ\n⊢ (s * ∫ (a : Point), linearDensity rho mu (fieldJet u a) (fieldJet h a)) +\n      s ^ 2 * ∫ (a : Point), lagrangian rho mu (fieldJet h a) =\n    -(s * ∫ (a : Point), linearDensity rho mu (fieldJet u a) (fieldJet h a)) -\n      s ^ 2 * ∫ (a : Point), lagrangian rho mu (fieldJet h a)\ns9/_scratch/closure/relative_action_expansion_sign.lean:87:11: error: Application type mismatch: The argument\n  relativeAction_expansion hu hh rho mu\nhas type\n  ∀ (s : ℝ),\n    relativeAction rho mu u h s =\n      -(s * ∫ (x : Point), linearDensity rho mu (fieldJet u x) (fieldJet h x)) -\n        s ^ 2 * ∫ (x : Point), lagrangian rho mu (fieldJet h x)\nbut is expected to have type\n  ∀ (x : ℝ),\n    relativeAction rho mu u h x =\n      (x * ∫ (x : Point), linearDensity rho mu (fieldJet u x) (fieldJet h x)) +\n        x ^ 2 * ∫ (x : Point), lagrangian rho mu (fieldJet h x)\nin the application\n  funext (relativeAction_expansion hu hh rho mu)\n",
+            "output_sha256": "cce3cdbe4285540428466c79966327e1dd8342616359ce4a5c7c4fea27096278",
+            "canonical_source": "lean/s9/S9Pilot/Variation.lean",
+            "canonical_sha256": "5ea90c39293879695be59e1a53f0046b13d52577dfb59e0b16a42546c4591dd2",
+            "replacement": {
+              "old": "relativeAction rho mu u h s =\n      s * (∫ x, linearDensity rho mu (fieldJet u x) (fieldJet h x)) +\n      s ^ 2 * (∫ x, lagrangian rho mu (fieldJet h x))",
+              "new": "relativeAction rho mu u h s =\n      -(s * (∫ x, linearDensity rho mu (fieldJet u x) (fieldJet h x))) -\n      s ^ 2 * (∫ x, lagrangian rho mu (fieldJet h x))"
+            }
+          },
+          {
+            "name": "transverse_count",
+            "expected": "REJECTED",
+            "outcome": "UNEXPECTED",
+            "command": [
+              "nice",
+              "-n",
+              "10",
+              "lake",
+              "env",
+              "lean",
+              "-j1",
+              "-M4096",
+              "-DwarningAsError=true",
+              "s9/_scratch/closure/transverse_count.lean"
+            ],
+            "source_sha256": "164c15167a9ddc548e62c7cb4ee2f365424734a0aa34c61f2cce7c91cd22ac50",
+            "exit_status": 1,
+            "wall_seconds": 15.265,
+            "required_failure_in": [
+              "transverseSpace_finrank"
+            ],
+            "diagnostics": [
+              {
+                "declaration": "transverseSpace_finrank",
+                "line": 80,
+                "message": "s9/_scratch/closure/transverse_count.lean:80:2: error: omega could not prove the goal:\nNo usable constraints found. You may need to unfold definitions so `omega` can see linear arithmetic facts about `Nat` and `Int`, which may also involve multiplication, division, and modular remainder by constants.\n"
+              }
+            ],
+            "output": "s9/_scratch/closure/transverse_count.lean:80:2: error: omega could not prove the goal:\nNo usable constraints found. You may need to unfold definitions so `omega` can see linear arithmetic facts about `Nat` and `Int`, which may also involve multiplication, division, and modular remainder by constants.\n",
+            "output_sha256": "6b02696e01abda87cae10d93ea89fb91f4e84449f95c886293c31696ee553337"
+          }
+        ],
+        "axiom_audit_count": 32,
+        "error": "RuntimeError('transverse_count: unexpected result; inspect /var/projects/toy_physics/research/pde_ledger_v3/lean/s9/_scratch/closure/transverse_count.log')",
+        "finished_utc": "2026-09-16T00:56:28.487162+00:00"
+      }
+    },
+    {
+      "note": "All four source mutants were rejected mathematically. A concrete count positive control needed the existing Matrix.cons_val_two simplification; the instrument stopped rather than accepting any associated negative control.",
+      "instrument_source": "#!/usr/bin/env python3\n\"\"\"Sequential, bounded S9 verification and isolated mathematical mutations.\n\nOne Lean worker, 4096 MiB Lean allocator limit, low scheduling priority. Logs,\nsources and incremental records survive an error. A timeout/resource failure is\nan instrument failure, never a successfully rejected mutation. No CAS jobs.\n\"\"\"\nfrom datetime import datetime, timezone\nimport argparse\nimport hashlib\nimport json\nimport os\nfrom pathlib import Path\nimport re\nimport subprocess\nimport time\n\nBASE = Path(__file__).resolve().parents[1]\nLEAN = BASE / 'lean'\nSCRATCH = LEAN / 's9/_scratch/closure'\nREPORT = BASE / '_measurements/S9_lean_contract_checks.json'\nORDER = ('Action', 'PlaneWave', 'Analytic', 'Variation', 'FiniteAction',\n         'Spectrum', 'Certificate', 'VariationalCertificate', 'Madelung')\nCASES = (\n    ('action_shear_sign', 'Action',\n     'rho / 2 * normSq (J 0) - mu / 2 * normSq (jetCurl J)',\n     'rho / 2 * normSq (J 0) + mu / 2 * normSq (jetCurl J)',\n     {'lagrangian_variation'}),\n    ('relative_action_expansion_sign', 'Variation',\n     'relativeAction rho mu u h s =\\n      s * (∫ x, linearDensity rho mu (fieldJet u x) (fieldJet h x)) +\\n      s ^ 2 * (∫ x, lagrangian rho mu (fieldJet h x))',\n     'relativeAction rho mu u h s =\\n      -(s * (∫ x, linearDensity rho mu (fieldJet u x) (fieldJet h x))) -\\n      s ^ 2 * (∫ x, lagrangian rho mu (fieldJet h x))',\n     {'relativeAction_expansion'}),\n    ('phase_wrong_coordinate', 'Madelung',\n     '(hbar / mass) * coordDeriv i.succ theta x',\n     '(hbar / mass) * coordDeriv 0 theta x', {'velocity_phasePerturbation'}),\n    ('phase_sine_sign', 'Madelung',\n     '(-(hbar / mass) * A) • k',\n     '((hbar / mass) * A) • k', {'linearVelocity_eq'}),\n)\nEXAMPLES = (\n    ('transverse_count', '''theorem domain_control :\n    Module.finrank ℝ (transverseSpace (![0, 0, 1] : Vec)) = REL := by\n  have hk : (![0, 0, 1] : Vec) ≠ 0 := by\n    intro h\n    have h2 := congrFun h 2\n    norm_num at h2\n  have hd := transverseSpace_finrank hk\n  norm_num [hd]\n''', '2', '3'),\n    ('longitudinal_count', '''theorem domain_control :\n    Module.finrank ℝ (longitudinalSpace (![0, 0, 1] : Vec)) = REL := by\n  have hk : (![0, 0, 1] : Vec) ≠ 0 := by\n    intro h\n    have h2 := congrFun h 2\n    norm_num at h2\n  have hd := longitudinalSpace_finrank hk\n  norm_num [hd]\n''', '1', '2'),\n    ('zero_wavevector_domain', '''theorem domain_control :\n    ModalStationary 1 1 0 (0 : Vec) (![0, 0, 1] : Vec) ∧\n      (![0, 0, 1] : Vec) REL longitudinalSpace (0 : Vec) := by\n  norm_num [modal_stationary_iff, modalOperator, normSq, dot, longitudinalSpace]\n''', '∉', '∈'),\n    ('longitudinal_not_transverse', '''theorem domain_control :\n    Madelung.cosAmplitude 1 1 1 (![0, 0, 1] : Vec) REL\n      transverseSpace (![0, 0, 1] : Vec) := by\n  norm_num [Madelung.cosAmplitude, transverseSpace, dotLinear, dot]\n''', '∉', '∈'),\n    ('nonzero_prefactor_required_for_range', '''theorem domain_control :\n    Madelung.cosAmplitude 0 1 1 (![0, 0, 1] : Vec) REL 0 := by\n  norm_num [Madelung.cosAmplitude]\n''', '=', '≠'),\n)\n\n\ndef digest(path):\n    return hashlib.sha256(path.read_bytes()).hexdigest()\n\n\ndef main():\n    parser = argparse.ArgumentParser(__doc__)\n    parser.add_argument('--reuse-build', action='store_true',\n                        help='Reuse successful builds only when all canonical source hashes match.')\n    args = parser.parse_args()\n    SCRATCH.mkdir(parents=True, exist_ok=True)\n    sources = sorted((LEAN / 's9/S9Pilot').glob('*.lean')) + [LEAN / 's9/S9Pilot.lean']\n    before = {str(p.relative_to(BASE)): digest(p) for p in sources}\n    prior = json.loads(REPORT.read_text()) if args.reuse_build and REPORT.exists() else {}\n    reusable = {r['name']: r for r in prior.get('checks', []) if r['outcome'] == 'PASS'} if (\n        prior.get('canonical_sha256_before') == before) else {}\n    report = {'status': 'RUNNING', 'started_utc': datetime.now(timezone.utc).isoformat(),\n              'instrument_sha256': digest(Path(__file__)),\n              'resources': {'concurrent_lean_processes': 1, 'threads': 1,\n                            'lean_allocator_limit_mib': 4096, 'process_timeout_seconds': 300,\n                            'limits_note': 'Lean allocator limit is not an OS RSS cap; one process at a time.'},\n              'canonical_sha256_before': before, 'checks': []}\n\n    def save():\n        temporary = REPORT.with_suffix('.new')\n        temporary.write_text(json.dumps(report, indent=2, ensure_ascii=False) + '\\n')\n        temporary.replace(REPORT)\n\n    def run(name, path, expected, required=(), output_module=None):\n        rel = str(path.relative_to(LEAN))\n        command = ['nice', '-n', '10', 'lake', 'env', 'lean', '-j1', '-M4096',\n                   '-DwarningAsError=true']\n        if output_module:\n            command += ['-o', str(LEAN / '.lake/build/lib/lean' / output_module)]\n        command.append(rel)\n        if output_module and name in reusable:\n            old = reusable[name]\n            if old['source_sha256'] == digest(path) and old['command'] == command:\n                record = {**old, 'reused_build_from_instrument_sha256': prior['instrument_sha256']}\n                report['checks'].append(record)\n                save()\n                return record\n        start = time.monotonic()\n        log = SCRATCH / (name + '.log')\n        with log.open('w') as stream:\n            result = subprocess.run(command, cwd=LEAN, stdout=stream, stderr=subprocess.STDOUT,\n                                    env={**os.environ, 'OMP_NUM_THREADS': '1', 'OPENBLAS_NUM_THREADS': '1'},\n                                    timeout=300)\n        output = log.read_text()\n        source = path.read_text()\n        decls = [(source[:m.start()].count('\\n') + 1, m[1]) for m in\n                 re.finditer(r'^\\s*(?:theorem|def|abbrev)\\s+(\\w+)', source, re.M)]\n        errors = list(re.finditer(re.escape(rel) + r':(\\d+):\\d+: error:', output))\n        diagnostics = []\n        for i, match in enumerate(errors):\n            line = int(match[1])\n            decl = next((n for pos, n in reversed(decls) if pos <= line), '')\n            block = output[match.start():errors[i+1].start() if i+1 < len(errors) else len(output)]\n            diagnostics.append({'declaration': decl, 'line': line, 'message': block})\n        invalid = re.search(r'unknown (?:module|namespace|identifier)|unexpected token|'\n                            r'maximum (?:recursion|heartbeats)|excessive memory|out of memory|'\n                            r'PANIC|failed to create|No such file', output, re.I)\n        mathematical = r'unsolved goals|Type mismatch|failed to close|proved that the proposition|Tactic `rewrite` failed'\n        intended = [d for d in diagnostics if d['declaration'] in required and\n                    re.search(mathematical, d['message'], re.I)]\n        valid = (result.returncode == 0 and not re.search(r'\\b(?:error|warning):', output)) if expected == 'PASS' else (\n            result.returncode == 1 and bool(intended) and not invalid)\n        record = {'name': name, 'expected': expected, 'outcome': expected if valid else 'UNEXPECTED',\n                  'command': command, 'source_sha256': digest(path), 'exit_status': result.returncode,\n                  'wall_seconds': round(time.monotonic() - start, 3),\n                  'required_failure_in': sorted(required), 'diagnostics': diagnostics,\n                  'output': output, 'output_sha256': digest(log)}\n        report['checks'].append(record)\n        save()\n        if not valid and expected == 'PASS':\n            raise RuntimeError(f'{name}: unexpected result; inspect {log}')\n        return record\n\n    save()\n    try:\n        # Rebuild only the small S9 library sequentially; reuse pinned Mathlib/Physlib.\n        for module in ORDER:\n            run('build_' + module, LEAN / 's9/S9Pilot' / (module + '.lean'), 'PASS',\n                output_module='S9Pilot/' + module + '.olean')\n        audit = run('axiom_audit', LEAN / 's9/S9Pilot.lean', 'PASS', output_module='S9Pilot.olean')\n        axioms = re.findall(r\"depends on axioms: \\[([^\\]]*)\\]\", audit['output'])\n        assert len(axioms) == 32, ('axiom audit count', len(axioms))\n        assert all(set(a.replace(' ', '').split(',')) <= {'propext', 'Classical.choice', 'Quot.sound', ''}\n                   for a in axioms)\n        assert not any(re.search(r'^\\s*(?:axiom\\b|.*\\b(?:sorry|admit)\\b)', p.read_text(), re.M) for p in sources)\n        report['axiom_audit_count'] = len(axioms)\n        for name, module, old, new, required in CASES:\n            canonical = LEAN / 's9/S9Pilot' / (module + '.lean')\n            source = canonical.read_text()\n            assert source.count(old) == 1, (name, source.count(old))\n            mutant = SCRATCH / (name + '.lean')\n            mutant.write_text(source.replace(old, new))\n            record = run(name, mutant, 'REJECTED', required)\n            record.update(canonical_source=str(canonical.relative_to(BASE)),\n                          canonical_sha256=digest(canonical), replacement={'old': old, 'new': new})\n            save()\n        for name, statement, correct, wrong in EXAMPLES:\n            for label, relation, expected in [('positive', correct, 'PASS'), ('mutant', wrong, 'REJECTED')]:\n                path = SCRATCH / (name + '_' + label + '.lean')\n                path.write_text('import S9Pilot.Madelung\\nopen S9Pilot\\nnoncomputable section\\n' + statement.replace('REL', relation))\n                record = run(name + '_' + label, path, expected, {'domain_control'})\n                record['source'] = path.read_text()\n                save()\n        after = {str(p.relative_to(BASE)): digest(p) for p in sources}\n        assert before == after, 'canonical source changed during verification'\n        assert all(c['outcome'] != 'UNEXPECTED' for c in report['checks']), 'unexpected mutation outcomes; inspect recorded diagnostics'\n        report.update(status='PASS', canonical_sha256_after=after)\n    except Exception as error:\n        report.update(status='ERROR', error=repr(error))\n        raise\n    finally:\n        report['finished_utc'] = datetime.now(timezone.utc).isoformat()\n        save()\n\n\nif __name__ == '__main__':\n    main()\n",
+      "report": {
+        "status": "ERROR",
+        "started_utc": "2026-09-16T00:57:47.516392+00:00",
+        "instrument_sha256": "cb4ed01b8254f32ce2bf203d6eb4c797f2f8b3b0cfdc55325dd1d8923d83db47",
+        "resources": {
+          "concurrent_lean_processes": 1,
+          "threads": 1,
+          "lean_allocator_limit_mib": 4096,
+          "process_timeout_seconds": 300,
+          "limits_note": "Lean allocator limit is not an OS RSS cap; one process at a time."
+        },
+        "canonical_sha256_before": {
+          "lean/s9/S9Pilot/Action.lean": "dafe6e059b64ccbaa98a5ac4e5a5b5706ef51e19479556e42fc4bf840df0bd56",
+          "lean/s9/S9Pilot/Analytic.lean": "66352628b83475280942c32dee6d1c9e704ae0526ba536a3f62136e2c77ac666",
+          "lean/s9/S9Pilot/Certificate.lean": "0c279281a0d488e51b1c3a4de29849dd4d1fce0a94d01abc9e5fff990da7d5e1",
+          "lean/s9/S9Pilot/FiniteAction.lean": "28868a9a30996a36fe0c32c8ad53f0f5f5549162f81ba27a703f7b2d08cef324",
+          "lean/s9/S9Pilot/Madelung.lean": "6d4ad27266effbf2493e0cf7c6f9ce55f2bba2501eaeab584110a59bfaac455e",
+          "lean/s9/S9Pilot/PlaneWave.lean": "8803fdaf6e7ce26a336d6663decc23e4c871377e95ef9bf9bb71b77f1605cb21",
+          "lean/s9/S9Pilot/Spectrum.lean": "bdd6e886eb291ce0837ea8d94b10bb7548a6fb37a227c90e82f0e7799936e1a3",
+          "lean/s9/S9Pilot/Variation.lean": "5ea90c39293879695be59e1a53f0046b13d52577dfb59e0b16a42546c4591dd2",
+          "lean/s9/S9Pilot/VariationalCertificate.lean": "1d500fd5bb36b435341b31bcea9f4c9848af8548593aab1d1336a0e3d3243e36",
+          "lean/s9/S9Pilot.lean": "32671c668126f7b4afee4c709031547326d49b4d087c1a2d372f2fff87e7abf6"
+        },
+        "checks": [
+          {
+            "name": "build_Action",
+            "expected": "PASS",
+            "outcome": "PASS",
+            "command": [
+              "nice",
+              "-n",
+              "10",
+              "lake",
+              "env",
+              "lean",
+              "-j1",
+              "-M4096",
+              "-DwarningAsError=true",
+              "-o",
+              "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S9Pilot/Action.olean",
+              "s9/S9Pilot/Action.lean"
+            ],
+            "source_sha256": "dafe6e059b64ccbaa98a5ac4e5a5b5706ef51e19479556e42fc4bf840df0bd56",
+            "exit_status": 0,
+            "wall_seconds": 21.939,
+            "required_failure_in": [],
+            "diagnostics": [],
+            "output": "",
+            "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "reused_build_from_instrument_sha256": "f110837a1ab038144007affa90cb0466f104b09d3b0ee35b27cdc0f4c15fc0a0"
+          },
+          {
+            "name": "build_PlaneWave",
+            "expected": "PASS",
+            "outcome": "PASS",
+            "command": [
+              "nice",
+              "-n",
+              "10",
+              "lake",
+              "env",
+              "lean",
+              "-j1",
+              "-M4096",
+              "-DwarningAsError=true",
+              "-o",
+              "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S9Pilot/PlaneWave.olean",
+              "s9/S9Pilot/PlaneWave.lean"
+            ],
+            "source_sha256": "8803fdaf6e7ce26a336d6663decc23e4c871377e95ef9bf9bb71b77f1605cb21",
+            "exit_status": 0,
+            "wall_seconds": 19.095,
+            "required_failure_in": [],
+            "diagnostics": [],
+            "output": "",
+            "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "reused_build_from_instrument_sha256": "f110837a1ab038144007affa90cb0466f104b09d3b0ee35b27cdc0f4c15fc0a0"
+          },
+          {
+            "name": "build_Analytic",
+            "expected": "PASS",
+            "outcome": "PASS",
+            "command": [
+              "nice",
+              "-n",
+              "10",
+              "lake",
+              "env",
+              "lean",
+              "-j1",
+              "-M4096",
+              "-DwarningAsError=true",
+              "-o",
+              "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S9Pilot/Analytic.olean",
+              "s9/S9Pilot/Analytic.lean"
+            ],
+            "source_sha256": "66352628b83475280942c32dee6d1c9e704ae0526ba536a3f62136e2c77ac666",
+            "exit_status": 0,
+            "wall_seconds": 14.764,
+            "required_failure_in": [],
+            "diagnostics": [],
+            "output": "",
+            "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "reused_build_from_instrument_sha256": "f110837a1ab038144007affa90cb0466f104b09d3b0ee35b27cdc0f4c15fc0a0"
+          },
+          {
+            "name": "build_Variation",
+            "expected": "PASS",
+            "outcome": "PASS",
+            "command": [
+              "nice",
+              "-n",
+              "10",
+              "lake",
+              "env",
+              "lean",
+              "-j1",
+              "-M4096",
+              "-DwarningAsError=true",
+              "-o",
+              "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S9Pilot/Variation.olean",
+              "s9/S9Pilot/Variation.lean"
+            ],
+            "source_sha256": "5ea90c39293879695be59e1a53f0046b13d52577dfb59e0b16a42546c4591dd2",
+            "exit_status": 0,
+            "wall_seconds": 16.282,
+            "required_failure_in": [],
+            "diagnostics": [],
+            "output": "",
+            "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "reused_build_from_instrument_sha256": "f110837a1ab038144007affa90cb0466f104b09d3b0ee35b27cdc0f4c15fc0a0"
+          },
+          {
+            "name": "build_FiniteAction",
+            "expected": "PASS",
+            "outcome": "PASS",
+            "command": [
+              "nice",
+              "-n",
+              "10",
+              "lake",
+              "env",
+              "lean",
+              "-j1",
+              "-M4096",
+              "-DwarningAsError=true",
+              "-o",
+              "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S9Pilot/FiniteAction.olean",
+              "s9/S9Pilot/FiniteAction.lean"
+            ],
+            "source_sha256": "28868a9a30996a36fe0c32c8ad53f0f5f5549162f81ba27a703f7b2d08cef324",
+            "exit_status": 0,
+            "wall_seconds": 10.639,
+            "required_failure_in": [],
+            "diagnostics": [],
+            "output": "",
+            "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "reused_build_from_instrument_sha256": "f110837a1ab038144007affa90cb0466f104b09d3b0ee35b27cdc0f4c15fc0a0"
+          },
+          {
+            "name": "build_Spectrum",
+            "expected": "PASS",
+            "outcome": "PASS",
+            "command": [
+              "nice",
+              "-n",
+              "10",
+              "lake",
+              "env",
+              "lean",
+              "-j1",
+              "-M4096",
+              "-DwarningAsError=true",
+              "-o",
+              "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S9Pilot/Spectrum.olean",
+              "s9/S9Pilot/Spectrum.lean"
+            ],
+            "source_sha256": "bdd6e886eb291ce0837ea8d94b10bb7548a6fb37a227c90e82f0e7799936e1a3",
+            "exit_status": 0,
+            "wall_seconds": 12.853,
+            "required_failure_in": [],
+            "diagnostics": [],
+            "output": "",
+            "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "reused_build_from_instrument_sha256": "f110837a1ab038144007affa90cb0466f104b09d3b0ee35b27cdc0f4c15fc0a0"
+          },
+          {
+            "name": "build_Certificate",
+            "expected": "PASS",
+            "outcome": "PASS",
+            "command": [
+              "nice",
+              "-n",
+              "10",
+              "lake",
+              "env",
+              "lean",
+              "-j1",
+              "-M4096",
+              "-DwarningAsError=true",
+              "-o",
+              "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S9Pilot/Certificate.olean",
+              "s9/S9Pilot/Certificate.lean"
+            ],
+            "source_sha256": "0c279281a0d488e51b1c3a4de29849dd4d1fce0a94d01abc9e5fff990da7d5e1",
+            "exit_status": 0,
+            "wall_seconds": 10.891,
+            "required_failure_in": [],
+            "diagnostics": [],
+            "output": "",
+            "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "reused_build_from_instrument_sha256": "f110837a1ab038144007affa90cb0466f104b09d3b0ee35b27cdc0f4c15fc0a0"
+          },
+          {
+            "name": "build_VariationalCertificate",
+            "expected": "PASS",
+            "outcome": "PASS",
+            "command": [
+              "nice",
+              "-n",
+              "10",
+              "lake",
+              "env",
+              "lean",
+              "-j1",
+              "-M4096",
+              "-DwarningAsError=true",
+              "-o",
+              "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S9Pilot/VariationalCertificate.olean",
+              "s9/S9Pilot/VariationalCertificate.lean"
+            ],
+            "source_sha256": "1d500fd5bb36b435341b31bcea9f4c9848af8548593aab1d1336a0e3d3243e36",
+            "exit_status": 0,
+            "wall_seconds": 10.64,
+            "required_failure_in": [],
+            "diagnostics": [],
+            "output": "",
+            "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "reused_build_from_instrument_sha256": "f110837a1ab038144007affa90cb0466f104b09d3b0ee35b27cdc0f4c15fc0a0"
+          },
+          {
+            "name": "build_Madelung",
+            "expected": "PASS",
+            "outcome": "PASS",
+            "command": [
+              "nice",
+              "-n",
+              "10",
+              "lake",
+              "env",
+              "lean",
+              "-j1",
+              "-M4096",
+              "-DwarningAsError=true",
+              "-o",
+              "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S9Pilot/Madelung.olean",
+              "s9/S9Pilot/Madelung.lean"
+            ],
+            "source_sha256": "6d4ad27266effbf2493e0cf7c6f9ce55f2bba2501eaeab584110a59bfaac455e",
+            "exit_status": 0,
+            "wall_seconds": 11.902,
+            "required_failure_in": [],
+            "diagnostics": [],
+            "output": "",
+            "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "reused_build_from_instrument_sha256": "f110837a1ab038144007affa90cb0466f104b09d3b0ee35b27cdc0f4c15fc0a0"
+          },
+          {
+            "name": "axiom_audit",
+            "expected": "PASS",
+            "outcome": "PASS",
+            "command": [
+              "nice",
+              "-n",
+              "10",
+              "lake",
+              "env",
+              "lean",
+              "-j1",
+              "-M4096",
+              "-DwarningAsError=true",
+              "-o",
+              "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S9Pilot.olean",
+              "s9/S9Pilot.lean"
+            ],
+            "source_sha256": "32671c668126f7b4afee4c709031547326d49b4d087c1a2d372f2fff87e7abf6",
+            "exit_status": 0,
+            "wall_seconds": 11.546,
+            "required_failure_in": [],
+            "diagnostics": [],
+            "output": "ClassicalMechanics.planeWave_waveEquation {d : ℕ} (c : ℝ) (s : Space.Direction d) (f₀ : ℝ → EuclideanSpace ℝ (Fin d))\n  (hf₀ : ContDiff ℝ 2 f₀) (t : Time) (x : Space d) :\n  ClassicalMechanics.WaveEquation (ClassicalMechanics.planeWave f₀ c s) t x c\n'S9Pilot.candidateOmegaSq_scaling' depends on axioms: [propext, Classical.choice, Quot.sound]\n'ClassicalMechanics.planeWave_waveEquation' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S9Pilot.lagrangian_variation' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S9Pilot.modal_stationary_iff' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S9Pilot.planeWave_lagrangian' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S9Pilot.eulerLagrange_planeWave' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S9Pilot.s9_plane_wave_certificate' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S9Pilot.propagating_planeWave_iff' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S9Pilot.coneValue_scaling' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S9Pilot.concrete_transverse_wave' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S9Pilot.concrete_longitudinal_not_wave' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S9Pilot.coord_integration_by_parts' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S9Pilot.relative_density_integrable' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S9Pilot.relativeAction_hasDerivAt' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S9Pilot.relativeAction_deriv_eq_eulerLagrange' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S9Pilot.actionStationary_iff_eulerLagrange' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S9Pilot.finiteAction_hasDerivAt' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S9Pilot.s9_variational_certificate' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S9Pilot.propagating_variational_mode_iff' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S9Pilot.concrete_transverse_stationary' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S9Pilot.concrete_longitudinal_detected_by_test' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S9Pilot.Madelung.phasePerturbation_coordDeriv' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S9Pilot.Madelung.velocity_phasePerturbation' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S9Pilot.Madelung.linearVelocity_eq' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S9Pilot.Madelung.cosAmplitude_mem' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S9Pilot.Madelung.sinAmplitude_mem' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S9Pilot.Madelung.cosAmplitude_range' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S9Pilot.Madelung.longitudinal_transverse_eq_zero' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S9Pilot.Madelung.no_transverse_velocity' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S9Pilot.Madelung.transverse_linearVelocity_zero' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S9Pilot.Madelung.zero_wavevector' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S9Pilot.Madelung.concrete_longitudinal_velocity' depends on axioms: [propext, Classical.choice, Quot.sound]\n",
+            "output_sha256": "9af8395dc1248fec8ded52289f00faf1784fa0e70ee9942ec75395f2a6e2cd67",
+            "reused_build_from_instrument_sha256": "f110837a1ab038144007affa90cb0466f104b09d3b0ee35b27cdc0f4c15fc0a0"
+          },
+          {
+            "name": "action_shear_sign",
+            "expected": "REJECTED",
+            "outcome": "REJECTED",
+            "command": [
+              "nice",
+              "-n",
+              "10",
+              "lake",
+              "env",
+              "lean",
+              "-j1",
+              "-M4096",
+              "-DwarningAsError=true",
+              "s9/_scratch/closure/action_shear_sign.lean"
+            ],
+            "source_sha256": "859c605b5adb9c1f652268ba583e5f5db50a9725ed54855dd8c9528aee02ba25",
+            "exit_status": 1,
+            "wall_seconds": 19.019,
+            "required_failure_in": [
+              "lagrangian_variation"
+            ],
+            "diagnostics": [
+              {
+                "declaration": "lagrangian_variation",
+                "line": 52,
+                "message": "s9/_scratch/closure/action_shear_sign.lean:52:2: error: unsolved goals\ncase e'_8\nrho mu : ℝ\nJ H : Jet\nC : ℝ := rho * dot (J 0) (H 0) - mu * dot (jetCurl J) (jetCurl H)\nh :\n  HasDerivAt (((fun x => lagrangian rho mu J) + fun y => id y * C) + fun y => (id ^ 2) y * lagrangian rho mu H)\n    (0 + 1 * C + ↑2 * id 0 ^ (2 - 1) * 1 * lagrangian rho mu H) 0\ns : ℝ\n⊢ rho * J 0 0 * s * H 0 0 + rho * J 0 0 ^ 2 * (1 / 2) + rho * s * J 0 1 * H 0 1 + rho * s * J 0 2 * H 0 2 +\n                                                                          rho * s ^ 2 * H 0 0 ^ 2 * (1 / 2) +\n                                                                        rho * s ^ 2 * H 0 1 ^ 2 * (1 / 2) +\n                                                                      rho * s ^ 2 * H 0 2 ^ 2 * (1 / 2) +\n                                                                    rho * J 0 1 ^ 2 * (1 / 2) +\n                                                                  rho * J 0 2 ^ 2 * (1 / 2) +\n                                                                s * mu * J 2 2 * H 2 2 -\n                                                              s * mu * J 2 2 * H 3 1 -\n                                                            s * mu * H 2 2 * J 3 1 +\n                                                          s * mu * J 3 1 * H 3 1 +\n                                                        s * mu * J 3 0 * H 3 0 -\n                                                      s * mu * J 3 0 * H 1 2 -\n                                                    s * mu * H 3 0 * J 1 2 +\n                                                  s * mu * J 1 2 * H 1 2 +\n                                                s * mu * J 1 1 * H 1 1 -\n                                              s * mu * J 1 1 * H 2 0 -\n                                            s * mu * H 1 1 * J 2 0 +\n                                          s * mu * J 2 0 * H 2 0 -\n                                        s ^ 2 * mu * H 2 2 * H 3 1 +\n                                      s ^ 2 * mu * H 2 2 ^ 2 * (1 / 2) +\n                                    s ^ 2 * mu * H 3 1 ^ 2 * (1 / 2) -\n                                  s ^ 2 * mu * H 3 0 * H 1 2 +\n                                s ^ 2 * mu * H 3 0 ^ 2 * (1 / 2) +\n                              s ^ 2 * mu * H 1 2 ^ 2 * (1 / 2) -\n                            s ^ 2 * mu * H 1 1 * H 2 0 +\n                          s ^ 2 * mu * H 1 1 ^ 2 * (1 / 2) +\n                        s ^ 2 * mu * H 2 0 ^ 2 * (1 / 2) -\n                      mu * J 2 2 * J 3 1 +\n                    mu * J 2 2 ^ 2 * (1 / 2) +\n                  mu * J 3 1 ^ 2 * (1 / 2) -\n                mu * J 3 0 * J 1 2 +\n              mu * J 3 0 ^ 2 * (1 / 2) +\n            mu * J 1 2 ^ 2 * (1 / 2) -\n          mu * J 1 1 * J 2 0 +\n        mu * J 1 1 ^ 2 * (1 / 2) +\n      mu * J 2 0 ^ 2 * (1 / 2) =\n    rho * J 0 0 * s * H 0 0 + rho * J 0 0 ^ 2 * (1 / 2) + rho * s * J 0 1 * H 0 1 + rho * s * J 0 2 * H 0 2 +\n                                                                          rho * s ^ 2 * H 0 0 ^ 2 * (1 / 2) +\n                                                                        rho * s ^ 2 * H 0 1 ^ 2 * (1 / 2) +\n                                                                      rho * s ^ 2 * H 0 2 ^ 2 * (1 / 2) +\n                                                                    rho * J 0 1 ^ 2 * (1 / 2) +\n                                                                  rho * J 0 2 ^ 2 * (1 / 2) -\n                                                                s * mu * J 2 2 * H 2 2 +\n                                                              s * mu * J 2 2 * H 3 1 +\n                                                            s * mu * H 2 2 * J 3 1 -\n                                                          s * mu * J 3 1 * H 3 1 -\n                                                        s * mu * J 3 0 * H 3 0 +\n                                                      s * mu * J 3 0 * H 1 2 +\n                                                    s * mu * H 3 0 * J 1 2 -\n                                                  s * mu * J 1 2 * H 1 2 -\n                                                s * mu * J 1 1 * H 1 1 +\n                                              s * mu * J 1 1 * H 2 0 +\n                                            s * mu * H 1 1 * J 2 0 -\n                                          s * mu * J 2 0 * H 2 0 -\n                                        s ^ 2 * mu * H 2 2 * H 3 1 +\n                                      s ^ 2 * mu * H 2 2 ^ 2 * (1 / 2) +\n                                    s ^ 2 * mu * H 3 1 ^ 2 * (1 / 2) -\n                                  s ^ 2 * mu * H 3 0 * H 1 2 +\n                                s ^ 2 * mu * H 3 0 ^ 2 * (1 / 2) +\n                              s ^ 2 * mu * H 1 2 ^ 2 * (1 / 2) -\n                            s ^ 2 * mu * H 1 1 * H 2 0 +\n                          s ^ 2 * mu * H 1 1 ^ 2 * (1 / 2) +\n                        s ^ 2 * mu * H 2 0 ^ 2 * (1 / 2) -\n                      mu * J 2 2 * J 3 1 +\n                    mu * J 2 2 ^ 2 * (1 / 2) +\n                  mu * J 3 1 ^ 2 * (1 / 2) -\n                mu * J 3 0 * J 1 2 +\n              mu * J 3 0 ^ 2 * (1 / 2) +\n            mu * J 1 2 ^ 2 * (1 / 2) -\n          mu * J 1 1 * J 2 0 +\n        mu * J 1 1 ^ 2 * (1 / 2) +\n      mu * J 2 0 ^ 2 * (1 / 2)\n"
+              }
+            ],
+            "output": "Try this:\n  [apply] ring_nf\n  \n  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.\n    \n  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.\ns9/_scratch/closure/action_shear_sign.lean:52:2: error: unsolved goals\ncase e'_8\nrho mu : ℝ\nJ H : Jet\nC : ℝ := rho * dot (J 0) (H 0) - mu * dot (jetCurl J) (jetCurl H)\nh :\n  HasDerivAt (((fun x => lagrangian rho mu J) + fun y => id y * C) + fun y => (id ^ 2) y * lagrangian rho mu H)\n    (0 + 1 * C + ↑2 * id 0 ^ (2 - 1) * 1 * lagrangian rho mu H) 0\ns : ℝ\n⊢ rho * J 0 0 * s * H 0 0 + rho * J 0 0 ^ 2 * (1 / 2) + rho * s * J 0 1 * H 0 1 + rho * s * J 0 2 * H 0 2 +\n                                                                          rho * s ^ 2 * H 0 0 ^ 2 * (1 / 2) +\n                                                                        rho * s ^ 2 * H 0 1 ^ 2 * (1 / 2) +\n                                                                      rho * s ^ 2 * H 0 2 ^ 2 * (1 / 2) +\n                                                                    rho * J 0 1 ^ 2 * (1 / 2) +\n                                                                  rho * J 0 2 ^ 2 * (1 / 2) +\n                                                                s * mu * J 2 2 * H 2 2 -\n                                                              s * mu * J 2 2 * H 3 1 -\n                                                            s * mu * H 2 2 * J 3 1 +\n                                                          s * mu * J 3 1 * H 3 1 +\n                                                        s * mu * J 3 0 * H 3 0 -\n                                                      s * mu * J 3 0 * H 1 2 -\n                                                    s * mu * H 3 0 * J 1 2 +\n                                                  s * mu * J 1 2 * H 1 2 +\n                                                s * mu * J 1 1 * H 1 1 -\n                                              s * mu * J 1 1 * H 2 0 -\n                                            s * mu * H 1 1 * J 2 0 +\n                                          s * mu * J 2 0 * H 2 0 -\n                                        s ^ 2 * mu * H 2 2 * H 3 1 +\n                                      s ^ 2 * mu * H 2 2 ^ 2 * (1 / 2) +\n                                    s ^ 2 * mu * H 3 1 ^ 2 * (1 / 2) -\n                                  s ^ 2 * mu * H 3 0 * H 1 2 +\n                                s ^ 2 * mu * H 3 0 ^ 2 * (1 / 2) +\n                              s ^ 2 * mu * H 1 2 ^ 2 * (1 / 2) -\n                            s ^ 2 * mu * H 1 1 * H 2 0 +\n                          s ^ 2 * mu * H 1 1 ^ 2 * (1 / 2) +\n                        s ^ 2 * mu * H 2 0 ^ 2 * (1 / 2) -\n                      mu * J 2 2 * J 3 1 +\n                    mu * J 2 2 ^ 2 * (1 / 2) +\n                  mu * J 3 1 ^ 2 * (1 / 2) -\n                mu * J 3 0 * J 1 2 +\n              mu * J 3 0 ^ 2 * (1 / 2) +\n            mu * J 1 2 ^ 2 * (1 / 2) -\n          mu * J 1 1 * J 2 0 +\n        mu * J 1 1 ^ 2 * (1 / 2) +\n      mu * J 2 0 ^ 2 * (1 / 2) =\n    rho * J 0 0 * s * H 0 0 + rho * J 0 0 ^ 2 * (1 / 2) + rho * s * J 0 1 * H 0 1 + rho * s * J 0 2 * H 0 2 +\n                                                                          rho * s ^ 2 * H 0 0 ^ 2 * (1 / 2) +\n                                                                        rho * s ^ 2 * H 0 1 ^ 2 * (1 / 2) +\n                                                                      rho * s ^ 2 * H 0 2 ^ 2 * (1 / 2) +\n                                                                    rho * J 0 1 ^ 2 * (1 / 2) +\n                                                                  rho * J 0 2 ^ 2 * (1 / 2) -\n                                                                s * mu * J 2 2 * H 2 2 +\n                                                              s * mu * J 2 2 * H 3 1 +\n                                                            s * mu * H 2 2 * J 3 1 -\n                                                          s * mu * J 3 1 * H 3 1 -\n                                                        s * mu * J 3 0 * H 3 0 +\n                                                      s * mu * J 3 0 * H 1 2 +\n                                                    s * mu * H 3 0 * J 1 2 -\n                                                  s * mu * J 1 2 * H 1 2 -\n                                                s * mu * J 1 1 * H 1 1 +\n                                              s * mu * J 1 1 * H 2 0 +\n                                            s * mu * H 1 1 * J 2 0 -\n                                          s * mu * J 2 0 * H 2 0 -\n                                        s ^ 2 * mu * H 2 2 * H 3 1 +\n                                      s ^ 2 * mu * H 2 2 ^ 2 * (1 / 2) +\n                                    s ^ 2 * mu * H 3 1 ^ 2 * (1 / 2) -\n                                  s ^ 2 * mu * H 3 0 * H 1 2 +\n                                s ^ 2 * mu * H 3 0 ^ 2 * (1 / 2) +\n                              s ^ 2 * mu * H 1 2 ^ 2 * (1 / 2) -\n                            s ^ 2 * mu * H 1 1 * H 2 0 +\n                          s ^ 2 * mu * H 1 1 ^ 2 * (1 / 2) +\n                        s ^ 2 * mu * H 2 0 ^ 2 * (1 / 2) -\n                      mu * J 2 2 * J 3 1 +\n                    mu * J 2 2 ^ 2 * (1 / 2) +\n                  mu * J 3 1 ^ 2 * (1 / 2) -\n                mu * J 3 0 * J 1 2 +\n              mu * J 3 0 ^ 2 * (1 / 2) +\n            mu * J 1 2 ^ 2 * (1 / 2) -\n          mu * J 1 1 * J 2 0 +\n        mu * J 1 1 ^ 2 * (1 / 2) +\n      mu * J 2 0 ^ 2 * (1 / 2)\n",
+            "output_sha256": "b2f9ebb789fbe2c88b2804c0333234044cf5722176f8d52b481bf3ec671d7383",
+            "canonical_source": "lean/s9/S9Pilot/Action.lean",
+            "canonical_sha256": "dafe6e059b64ccbaa98a5ac4e5a5b5706ef51e19479556e42fc4bf840df0bd56",
+            "replacement": {
+              "old": "rho / 2 * normSq (J 0) - mu / 2 * normSq (jetCurl J)",
+              "new": "rho / 2 * normSq (J 0) + mu / 2 * normSq (jetCurl J)"
+            }
+          },
+          {
+            "name": "relative_action_expansion_sign",
+            "expected": "REJECTED",
+            "outcome": "REJECTED",
+            "command": [
+              "nice",
+              "-n",
+              "10",
+              "lake",
+              "env",
+              "lean",
+              "-j1",
+              "-M4096",
+              "-DwarningAsError=true",
+              "s9/_scratch/closure/relative_action_expansion_sign.lean"
+            ],
+            "source_sha256": "232665cd599dc94ea18260138ec2dfad3c43215a0fcea4db3d6f7cddbb39b2f9",
+            "exit_status": 1,
+            "wall_seconds": 18.041,
+            "required_failure_in": [
+              "relativeAction_expansion"
+            ],
+            "diagnostics": [
+              {
+                "declaration": "relativeAction_expansion",
+                "line": 72,
+                "message": "s9/_scratch/closure/relative_action_expansion_sign.lean:72:57: error: unsolved goals\nu h : Point → Vec\nhu : SmoothField u\nhh : TestField h\nrho mu s : ℝ\n⊢ (s * ∫ (a : Point), linearDensity rho mu (fieldJet u a) (fieldJet h a)) +\n      s ^ 2 * ∫ (a : Point), lagrangian rho mu (fieldJet h a) =\n    -(s * ∫ (a : Point), linearDensity rho mu (fieldJet u a) (fieldJet h a)) -\n      s ^ 2 * ∫ (a : Point), lagrangian rho mu (fieldJet h a)\n"
+              },
+              {
+                "declaration": "relativeAction_hasDerivAt",
+                "line": 87,
+                "message": "s9/_scratch/closure/relative_action_expansion_sign.lean:87:11: error: Application type mismatch: The argument\n  relativeAction_expansion hu hh rho mu\nhas type\n  ∀ (s : ℝ),\n    relativeAction rho mu u h s =\n      -(s * ∫ (x : Point), linearDensity rho mu (fieldJet u x) (fieldJet h x)) -\n        s ^ 2 * ∫ (x : Point), lagrangian rho mu (fieldJet h x)\nbut is expected to have type\n  ∀ (x : ℝ),\n    relativeAction rho mu u h x =\n      (x * ∫ (x : Point), linearDensity rho mu (fieldJet u x) (fieldJet h x)) +\n        x ^ 2 * ∫ (x : Point), lagrangian rho mu (fieldJet h x)\nin the application\n  funext (relativeAction_expansion hu hh rho mu)\n"
+              }
+            ],
+            "output": "s9/_scratch/closure/relative_action_expansion_sign.lean:72:57: error: unsolved goals\nu h : Point → Vec\nhu : SmoothField u\nhh : TestField h\nrho mu s : ℝ\n⊢ (s * ∫ (a : Point), linearDensity rho mu (fieldJet u a) (fieldJet h a)) +\n      s ^ 2 * ∫ (a : Point), lagrangian rho mu (fieldJet h a) =\n    -(s * ∫ (a : Point), linearDensity rho mu (fieldJet u a) (fieldJet h a)) -\n      s ^ 2 * ∫ (a : Point), lagrangian rho mu (fieldJet h a)\ns9/_scratch/closure/relative_action_expansion_sign.lean:87:11: error: Application type mismatch: The argument\n  relativeAction_expansion hu hh rho mu\nhas type\n  ∀ (s : ℝ),\n    relativeAction rho mu u h s =\n      -(s * ∫ (x : Point), linearDensity rho mu (fieldJet u x) (fieldJet h x)) -\n        s ^ 2 * ∫ (x : Point), lagrangian rho mu (fieldJet h x)\nbut is expected to have type\n  ∀ (x : ℝ),\n    relativeAction rho mu u h x =\n      (x * ∫ (x : Point), linearDensity rho mu (fieldJet u x) (fieldJet h x)) +\n        x ^ 2 * ∫ (x : Point), lagrangian rho mu (fieldJet h x)\nin the application\n  funext (relativeAction_expansion hu hh rho mu)\n",
+            "output_sha256": "cce3cdbe4285540428466c79966327e1dd8342616359ce4a5c7c4fea27096278",
+            "canonical_source": "lean/s9/S9Pilot/Variation.lean",
+            "canonical_sha256": "5ea90c39293879695be59e1a53f0046b13d52577dfb59e0b16a42546c4591dd2",
+            "replacement": {
+              "old": "relativeAction rho mu u h s =\n      s * (∫ x, linearDensity rho mu (fieldJet u x) (fieldJet h x)) +\n      s ^ 2 * (∫ x, lagrangian rho mu (fieldJet h x))",
+              "new": "relativeAction rho mu u h s =\n      -(s * (∫ x, linearDensity rho mu (fieldJet u x) (fieldJet h x))) -\n      s ^ 2 * (∫ x, lagrangian rho mu (fieldJet h x))"
+            }
+          },
+          {
+            "name": "phase_wrong_coordinate",
+            "expected": "REJECTED",
+            "outcome": "REJECTED",
+            "command": [
+              "nice",
+              "-n",
+              "10",
+              "lake",
+              "env",
+              "lean",
+              "-j1",
+              "-M4096",
+              "-DwarningAsError=true",
+              "s9/_scratch/closure/phase_wrong_coordinate.lean"
+            ],
+            "source_sha256": "6acfb14822a7f43336acb63c87bd38f9e8aee8beb766f0b74aad9a8f8070e5ed",
+            "exit_status": 1,
+            "wall_seconds": 11.354,
+            "required_failure_in": [
+              "velocity_phasePerturbation"
+            ],
+            "diagnostics": [
+              {
+                "declaration": "velocity",
+                "line": 22,
+                "message": "s9/_scratch/closure/phase_wrong_coordinate.lean:22:6: error: Variable name `i` is not explicitly referenced.\n\nHint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:\n  [apply] _i\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\n"
+              },
+              {
+                "declaration": "velocity_phasePerturbation",
+                "line": 49,
+                "message": "s9/_scratch/closure/phase_wrong_coordinate.lean:49:6: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern\n  waveCovector omega k i.succ\nin the target expression\n  hbar / mass *\n      (epsilon * (-A * Real.sin (phase (waveCovector omega k) x) + B * Real.cos (phase (waveCovector omega k) x)) *\n        waveCovector omega k 0) =\n    epsilon *\n      (hbar / mass * (-A * Real.sin (phase (waveCovector omega k) x) + B * Real.cos (phase (waveCovector omega k) x)) *\n        k i)\n\nhbar mass theta0 epsilon omega A B : ℝ\nk : Vec\nx : Point\ni : Fin 3\nhi : waveCovector omega k i.succ = k i\n⊢ hbar / mass *\n      (epsilon * (-A * Real.sin (phase (waveCovector omega k) x) + B * Real.cos (phase (waveCovector omega k) x)) *\n        waveCovector omega k 0) =\n    epsilon *\n      (hbar / mass * (-A * Real.sin (phase (waveCovector omega k) x) + B * Real.cos (phase (waveCovector omega k) x)) *\n        k i)\n"
+              }
+            ],
+            "output": "s9/_scratch/closure/phase_wrong_coordinate.lean:22:6: error: Variable name `i` is not explicitly referenced.\n\nHint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:\n  [apply] _i\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\ns9/_scratch/closure/phase_wrong_coordinate.lean:49:6: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern\n  waveCovector omega k i.succ\nin the target expression\n  hbar / mass *\n      (epsilon * (-A * Real.sin (phase (waveCovector omega k) x) + B * Real.cos (phase (waveCovector omega k) x)) *\n        waveCovector omega k 0) =\n    epsilon *\n      (hbar / mass * (-A * Real.sin (phase (waveCovector omega k) x) + B * Real.cos (phase (waveCovector omega k) x)) *\n        k i)\n\nhbar mass theta0 epsilon omega A B : ℝ\nk : Vec\nx : Point\ni : Fin 3\nhi : waveCovector omega k i.succ = k i\n⊢ hbar / mass *\n      (epsilon * (-A * Real.sin (phase (waveCovector omega k) x) + B * Real.cos (phase (waveCovector omega k) x)) *\n        waveCovector omega k 0) =\n    epsilon *\n      (hbar / mass * (-A * Real.sin (phase (waveCovector omega k) x) + B * Real.cos (phase (waveCovector omega k) x)) *\n        k i)\n",
+            "output_sha256": "e3100c55277873d49c3e1d08e7d78440d8e768fe2b09ccdacea4f48566417fbc",
+            "canonical_source": "lean/s9/S9Pilot/Madelung.lean",
+            "canonical_sha256": "6d4ad27266effbf2493e0cf7c6f9ce55f2bba2501eaeab584110a59bfaac455e",
+            "replacement": {
+              "old": "(hbar / mass) * coordDeriv i.succ theta x",
+              "new": "(hbar / mass) * coordDeriv 0 theta x"
+            }
+          },
+          {
+            "name": "phase_sine_sign",
+            "expected": "REJECTED",
+            "outcome": "REJECTED",
+            "command": [
+              "nice",
+              "-n",
+              "10",
+              "lake",
+              "env",
+              "lean",
+              "-j1",
+              "-M4096",
+              "-DwarningAsError=true",
+              "s9/_scratch/closure/phase_sine_sign.lean"
+            ],
+            "source_sha256": "072c93f872b9dea0d2ca614d04620fe8be31087a9013ec8fa41404209f38bc5c",
+            "exit_status": 1,
+            "wall_seconds": 12.907,
+            "required_failure_in": [
+              "linearVelocity_eq"
+            ],
+            "diagnostics": [
+              {
+                "declaration": "linearVelocity_eq",
+                "line": 63,
+                "message": "s9/_scratch/closure/phase_sine_sign.lean:63:80: error: unsolved goals\ncase e'_3\nhbar mass theta0 omega A B : ℝ\nk : Vec\nx : Point\ni : Fin 3\nh :\n  HasDerivAt\n    (fun y =>\n      id y *\n        (hbar / mass *\n            (-A * Real.sin (phase (waveCovector omega k) x) + B * Real.cos (phase (waveCovector omega k) x)) *\n          k i))\n    (1 *\n      (hbar / mass * (-A * Real.sin (phase (waveCovector omega k) x) + B * Real.cos (phase (waveCovector omega k) x)) *\n        k i))\n    0\n⊢ Real.cos (phase (waveCovector omega k) x) * hbar * mass⁻¹ * B * k i +\n      hbar * mass⁻¹ * k i * Real.sin (phase (waveCovector omega k) x) * A =\n    Real.cos (phase (waveCovector omega k) x) * hbar * mass⁻¹ * B * k i -\n      hbar * mass⁻¹ * k i * Real.sin (phase (waveCovector omega k) x) * A\n"
+              },
+              {
+                "declaration": "sinAmplitude_mem",
+                "line": 79,
+                "message": "s9/_scratch/closure/phase_sine_sign.lean:79:56: error: Application type mismatch: The argument\n  rfl\nhas type\n  ?m.26 = ?m.26\nbut is expected to have type\n  (-(hbar / mass) * A) • k = sinAmplitude hbar mass A k\nin the application\n  Exists.intro (-(hbar / mass) * A) rfl\n"
+              }
+            ],
+            "output": "Try this:\n  [apply] ring_nf\n  \n  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.\n    \n  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.\ns9/_scratch/closure/phase_sine_sign.lean:63:80: error: unsolved goals\ncase e'_3\nhbar mass theta0 omega A B : ℝ\nk : Vec\nx : Point\ni : Fin 3\nh :\n  HasDerivAt\n    (fun y =>\n      id y *\n        (hbar / mass *\n            (-A * Real.sin (phase (waveCovector omega k) x) + B * Real.cos (phase (waveCovector omega k) x)) *\n          k i))\n    (1 *\n      (hbar / mass * (-A * Real.sin (phase (waveCovector omega k) x) + B * Real.cos (phase (waveCovector omega k) x)) *\n        k i))\n    0\n⊢ Real.cos (phase (waveCovector omega k) x) * hbar * mass⁻¹ * B * k i +\n      hbar * mass⁻¹ * k i * Real.sin (phase (waveCovector omega k) x) * A =\n    Real.cos (phase (waveCovector omega k) x) * hbar * mass⁻¹ * B * k i -\n      hbar * mass⁻¹ * k i * Real.sin (phase (waveCovector omega k) x) * A\ns9/_scratch/closure/phase_sine_sign.lean:79:56: error: Application type mismatch: The argument\n  rfl\nhas type\n  ?m.26 = ?m.26\nbut is expected to have type\n  (-(hbar / mass) * A) • k = sinAmplitude hbar mass A k\nin the application\n  Exists.intro (-(hbar / mass) * A) rfl\n",
+            "output_sha256": "4e93b47eae8f299c7b9b0e5a7c8ebb4d2a9dcc76fdcd39070004563c508fbe7a",
+            "canonical_source": "lean/s9/S9Pilot/Madelung.lean",
+            "canonical_sha256": "6d4ad27266effbf2493e0cf7c6f9ce55f2bba2501eaeab584110a59bfaac455e",
+            "replacement": {
+              "old": "(-(hbar / mass) * A) • k",
+              "new": "((hbar / mass) * A) • k"
+            }
+          },
+          {
+            "name": "transverse_count_positive",
+            "expected": "PASS",
+            "outcome": "UNEXPECTED",
+            "command": [
+              "nice",
+              "-n",
+              "10",
+              "lake",
+              "env",
+              "lean",
+              "-j1",
+              "-M4096",
+              "-DwarningAsError=true",
+              "s9/_scratch/closure/transverse_count_positive.lean"
+            ],
+            "source_sha256": "fe5863a514c161e55a3287c3db91b314ca5416cf03f73a532a3319c6434515c3",
+            "exit_status": 1,
+            "wall_seconds": 4.677,
+            "required_failure_in": [
+              "domain_control"
+            ],
+            "diagnostics": [
+              {
+                "declaration": "domain_control",
+                "line": 6,
+                "message": "s9/_scratch/closure/transverse_count_positive.lean:6:38: error: unsolved goals\nh : ![0, 0, 1] = 0\nh2 : ![0, 0, 1] 2 = 0\n⊢ False\n"
+              }
+            ],
+            "output": "s9/_scratch/closure/transverse_count_positive.lean:6:38: error: unsolved goals\nh : ![0, 0, 1] = 0\nh2 : ![0, 0, 1] 2 = 0\n⊢ False\n",
+            "output_sha256": "0857ca42cd8cddc1172f7bb33f7da3b87c33a987c229dc084e9f2e052d11dbc3"
+          }
+        ],
+        "axiom_audit_count": 32,
+        "error": "RuntimeError('transverse_count_positive: unexpected result; inspect /var/projects/toy_physics/research/pde_ledger_v3/lean/s9/_scratch/closure/transverse_count_positive.log')",
+        "finished_utc": "2026-09-16T00:58:53.588979+00:00"
+      }
+    },
+    {
+      "note": "Both concrete dimension positive/mutant pairs passed. The zero-wavevector positive control needed pointwise extensionality to simplify the zero modal operator; the instrument stopped before testing the associated false claim.",
+      "instrument_source": "#!/usr/bin/env python3\n\"\"\"Sequential, bounded S9 verification and isolated mathematical mutations.\n\nOne Lean worker, 4096 MiB Lean allocator limit, low scheduling priority. Logs,\nsources and incremental records survive an error. A timeout/resource failure is\nan instrument failure, never a successfully rejected mutation. No CAS jobs.\n\"\"\"\nfrom datetime import datetime, timezone\nimport argparse\nimport hashlib\nimport json\nimport os\nfrom pathlib import Path\nimport re\nimport subprocess\nimport time\n\nBASE = Path(__file__).resolve().parents[1]\nLEAN = BASE / 'lean'\nSCRATCH = LEAN / 's9/_scratch/closure'\nREPORT = BASE / '_measurements/S9_lean_contract_checks.json'\nORDER = ('Action', 'PlaneWave', 'Analytic', 'Variation', 'FiniteAction',\n         'Spectrum', 'Certificate', 'VariationalCertificate', 'Madelung')\nCASES = (\n    ('action_shear_sign', 'Action',\n     'rho / 2 * normSq (J 0) - mu / 2 * normSq (jetCurl J)',\n     'rho / 2 * normSq (J 0) + mu / 2 * normSq (jetCurl J)',\n     {'lagrangian_variation'}),\n    ('relative_action_expansion_sign', 'Variation',\n     'relativeAction rho mu u h s =\\n      s * (∫ x, linearDensity rho mu (fieldJet u x) (fieldJet h x)) +\\n      s ^ 2 * (∫ x, lagrangian rho mu (fieldJet h x))',\n     'relativeAction rho mu u h s =\\n      -(s * (∫ x, linearDensity rho mu (fieldJet u x) (fieldJet h x))) -\\n      s ^ 2 * (∫ x, lagrangian rho mu (fieldJet h x))',\n     {'relativeAction_expansion'}),\n    ('phase_wrong_coordinate', 'Madelung',\n     '(hbar / mass) * coordDeriv i.succ theta x',\n     '(hbar / mass) * coordDeriv 0 theta x', {'velocity_phasePerturbation'}),\n    ('phase_sine_sign', 'Madelung',\n     '(-(hbar / mass) * A) • k',\n     '((hbar / mass) * A) • k', {'linearVelocity_eq'}),\n)\nEXAMPLES = (\n    ('transverse_count', '''theorem domain_control :\n    Module.finrank ℝ (transverseSpace (![0, 0, 1] : Vec)) = REL := by\n  have hk : (![0, 0, 1] : Vec) ≠ 0 := by\n    intro h\n    have h2 := congrFun h 2\n    norm_num [Matrix.cons_val_two] at h2\n  have hd := transverseSpace_finrank hk\n  norm_num [hd]\n''', '2', '3'),\n    ('longitudinal_count', '''theorem domain_control :\n    Module.finrank ℝ (longitudinalSpace (![0, 0, 1] : Vec)) = REL := by\n  have hk : (![0, 0, 1] : Vec) ≠ 0 := by\n    intro h\n    have h2 := congrFun h 2\n    norm_num [Matrix.cons_val_two] at h2\n  have hd := longitudinalSpace_finrank hk\n  norm_num [hd]\n''', '1', '2'),\n    ('zero_wavevector_domain', '''theorem domain_control :\n    ModalStationary 1 1 0 (0 : Vec) (![0, 0, 1] : Vec) ∧\n      (![0, 0, 1] : Vec) REL longitudinalSpace (0 : Vec) := by\n  norm_num [modal_stationary_iff, modalOperator, normSq, dot, longitudinalSpace, Matrix.cons_val_two]\n''', '∉', '∈'),\n    ('longitudinal_not_transverse', '''theorem domain_control :\n    Madelung.cosAmplitude 1 1 1 (![0, 0, 1] : Vec) REL\n      transverseSpace (![0, 0, 1] : Vec) := by\n  norm_num [Madelung.cosAmplitude, transverseSpace, dotLinear, dot, Matrix.cons_val_two]\n''', '∉', '∈'),\n    ('nonzero_prefactor_required_for_range', '''theorem domain_control :\n    Madelung.cosAmplitude 0 1 1 (![0, 0, 1] : Vec) REL 0 := by\n  norm_num [Madelung.cosAmplitude]\n''', '=', '≠'),\n)\n\n\ndef digest(path):\n    return hashlib.sha256(path.read_bytes()).hexdigest()\n\n\ndef main():\n    parser = argparse.ArgumentParser(__doc__)\n    parser.add_argument('--reuse-build', action='store_true',\n                        help='Reuse successful builds only when all canonical source hashes match.')\n    args = parser.parse_args()\n    SCRATCH.mkdir(parents=True, exist_ok=True)\n    sources = sorted((LEAN / 's9/S9Pilot').glob('*.lean')) + [LEAN / 's9/S9Pilot.lean']\n    before = {str(p.relative_to(BASE)): digest(p) for p in sources}\n    prior = json.loads(REPORT.read_text()) if args.reuse_build and REPORT.exists() else {}\n    reusable = {r['name']: r for r in prior.get('checks', []) if r['outcome'] == 'PASS'} if (\n        prior.get('canonical_sha256_before') == before) else {}\n    report = {'status': 'RUNNING', 'started_utc': datetime.now(timezone.utc).isoformat(),\n              'instrument_sha256': digest(Path(__file__)),\n              'resources': {'concurrent_lean_processes': 1, 'threads': 1,\n                            'lean_allocator_limit_mib': 4096, 'process_timeout_seconds': 300,\n                            'limits_note': 'Lean allocator limit is not an OS RSS cap; one process at a time.'},\n              'canonical_sha256_before': before, 'checks': []}\n\n    def save():\n        temporary = REPORT.with_suffix('.new')\n        temporary.write_text(json.dumps(report, indent=2, ensure_ascii=False) + '\\n')\n        temporary.replace(REPORT)\n\n    def run(name, path, expected, required=(), output_module=None):\n        rel = str(path.relative_to(LEAN))\n        command = ['nice', '-n', '10', 'lake', 'env', 'lean', '-j1', '-M4096',\n                   '-DwarningAsError=true']\n        if output_module:\n            command += ['-o', str(LEAN / '.lake/build/lib/lean' / output_module)]\n        command.append(rel)\n        if output_module and name in reusable:\n            old = reusable[name]\n            if old['source_sha256'] == digest(path) and old['command'] == command:\n                record = {**old, 'reused_build_from_instrument_sha256': prior['instrument_sha256']}\n                report['checks'].append(record)\n                save()\n                return record\n        start = time.monotonic()\n        log = SCRATCH / (name + '.log')\n        with log.open('w') as stream:\n            result = subprocess.run(command, cwd=LEAN, stdout=stream, stderr=subprocess.STDOUT,\n                                    env={**os.environ, 'OMP_NUM_THREADS': '1', 'OPENBLAS_NUM_THREADS': '1'},\n                                    timeout=300)\n        output = log.read_text()\n        source = path.read_text()\n        decls = [(source[:m.start()].count('\\n') + 1, m[1]) for m in\n                 re.finditer(r'^\\s*(?:theorem|def|abbrev)\\s+(\\w+)', source, re.M)]\n        errors = list(re.finditer(re.escape(rel) + r':(\\d+):\\d+: error:', output))\n        diagnostics = []\n        for i, match in enumerate(errors):\n            line = int(match[1])\n            decl = next((n for pos, n in reversed(decls) if pos <= line), '')\n            block = output[match.start():errors[i+1].start() if i+1 < len(errors) else len(output)]\n            diagnostics.append({'declaration': decl, 'line': line, 'message': block})\n        invalid = re.search(r'unknown (?:module|namespace|identifier)|unexpected token|'\n                            r'maximum (?:recursion|heartbeats)|excessive memory|out of memory|'\n                            r'PANIC|failed to create|No such file', output, re.I)\n        mathematical = r'unsolved goals|Type mismatch|failed to close|proved that the proposition|Tactic `rewrite` failed'\n        intended = [d for d in diagnostics if d['declaration'] in required and\n                    re.search(mathematical, d['message'], re.I)]\n        valid = (result.returncode == 0 and not re.search(r'\\b(?:error|warning):', output)) if expected == 'PASS' else (\n            result.returncode == 1 and bool(intended) and not invalid)\n        record = {'name': name, 'expected': expected, 'outcome': expected if valid else 'UNEXPECTED',\n                  'command': command, 'source_sha256': digest(path), 'exit_status': result.returncode,\n                  'wall_seconds': round(time.monotonic() - start, 3),\n                  'required_failure_in': sorted(required), 'diagnostics': diagnostics,\n                  'output': output, 'output_sha256': digest(log)}\n        report['checks'].append(record)\n        save()\n        if not valid and expected == 'PASS':\n            raise RuntimeError(f'{name}: unexpected result; inspect {log}')\n        return record\n\n    save()\n    try:\n        # Rebuild only the small S9 library sequentially; reuse pinned Mathlib/Physlib.\n        for module in ORDER:\n            run('build_' + module, LEAN / 's9/S9Pilot' / (module + '.lean'), 'PASS',\n                output_module='S9Pilot/' + module + '.olean')\n        audit = run('axiom_audit', LEAN / 's9/S9Pilot.lean', 'PASS', output_module='S9Pilot.olean')\n        axioms = re.findall(r\"depends on axioms: \\[([^\\]]*)\\]\", audit['output'])\n        assert len(axioms) == 32, ('axiom audit count', len(axioms))\n        assert all(set(a.replace(' ', '').split(',')) <= {'propext', 'Classical.choice', 'Quot.sound', ''}\n                   for a in axioms)\n        assert not any(re.search(r'^\\s*(?:axiom\\b|.*\\b(?:sorry|admit)\\b)', p.read_text(), re.M) for p in sources)\n        report['axiom_audit_count'] = len(axioms)\n        for name, module, old, new, required in CASES:\n            canonical = LEAN / 's9/S9Pilot' / (module + '.lean')\n            source = canonical.read_text()\n            assert source.count(old) == 1, (name, source.count(old))\n            mutant = SCRATCH / (name + '.lean')\n            mutant.write_text(source.replace(old, new))\n            record = run(name, mutant, 'REJECTED', required)\n            record.update(canonical_source=str(canonical.relative_to(BASE)),\n                          canonical_sha256=digest(canonical), replacement={'old': old, 'new': new})\n            save()\n        for name, statement, correct, wrong in EXAMPLES:\n            for label, relation, expected in [('positive', correct, 'PASS'), ('mutant', wrong, 'REJECTED')]:\n                path = SCRATCH / (name + '_' + label + '.lean')\n                path.write_text('import S9Pilot.Madelung\\nopen S9Pilot\\nnoncomputable section\\n' + statement.replace('REL', relation))\n                record = run(name + '_' + label, path, expected, {'domain_control'})\n                record['source'] = path.read_text()\n                save()\n        after = {str(p.relative_to(BASE)): digest(p) for p in sources}\n        assert before == after, 'canonical source changed during verification'\n        assert all(c['outcome'] != 'UNEXPECTED' for c in report['checks']), 'unexpected mutation outcomes; inspect recorded diagnostics'\n        report.update(status='PASS', canonical_sha256_after=after)\n    except Exception as error:\n        report.update(status='ERROR', error=repr(error))\n        raise\n    finally:\n        report['finished_utc'] = datetime.now(timezone.utc).isoformat()\n        save()\n\n\nif __name__ == '__main__':\n    main()\n",
+      "report": {
+        "status": "ERROR",
+        "started_utc": "2026-09-16T01:01:27.701867+00:00",
+        "instrument_sha256": "28a2a8b7f8707e46152444f21dbee0322e1f6b6ce5beacfe875d6cf08a7561c1",
+        "resources": {
+          "concurrent_lean_processes": 1,
+          "threads": 1,
+          "lean_allocator_limit_mib": 4096,
+          "process_timeout_seconds": 300,
+          "limits_note": "Lean allocator limit is not an OS RSS cap; one process at a time."
+        },
+        "canonical_sha256_before": {
+          "lean/s9/S9Pilot/Action.lean": "dafe6e059b64ccbaa98a5ac4e5a5b5706ef51e19479556e42fc4bf840df0bd56",
+          "lean/s9/S9Pilot/Analytic.lean": "66352628b83475280942c32dee6d1c9e704ae0526ba536a3f62136e2c77ac666",
+          "lean/s9/S9Pilot/Certificate.lean": "0c279281a0d488e51b1c3a4de29849dd4d1fce0a94d01abc9e5fff990da7d5e1",
+          "lean/s9/S9Pilot/FiniteAction.lean": "28868a9a30996a36fe0c32c8ad53f0f5f5549162f81ba27a703f7b2d08cef324",
+          "lean/s9/S9Pilot/Madelung.lean": "6d4ad27266effbf2493e0cf7c6f9ce55f2bba2501eaeab584110a59bfaac455e",
+          "lean/s9/S9Pilot/PlaneWave.lean": "8803fdaf6e7ce26a336d6663decc23e4c871377e95ef9bf9bb71b77f1605cb21",
+          "lean/s9/S9Pilot/Spectrum.lean": "bdd6e886eb291ce0837ea8d94b10bb7548a6fb37a227c90e82f0e7799936e1a3",
+          "lean/s9/S9Pilot/Variation.lean": "5ea90c39293879695be59e1a53f0046b13d52577dfb59e0b16a42546c4591dd2",
+          "lean/s9/S9Pilot/VariationalCertificate.lean": "1d500fd5bb36b435341b31bcea9f4c9848af8548593aab1d1336a0e3d3243e36",
+          "lean/s9/S9Pilot.lean": "32671c668126f7b4afee4c709031547326d49b4d087c1a2d372f2fff87e7abf6"
+        },
+        "checks": [
+          {
+            "name": "build_Action",
+            "expected": "PASS",
+            "outcome": "PASS",
+            "command": [
+              "nice",
+              "-n",
+              "10",
+              "lake",
+              "env",
+              "lean",
+              "-j1",
+              "-M4096",
+              "-DwarningAsError=true",
+              "-o",
+              "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S9Pilot/Action.olean",
+              "s9/S9Pilot/Action.lean"
+            ],
+            "source_sha256": "dafe6e059b64ccbaa98a5ac4e5a5b5706ef51e19479556e42fc4bf840df0bd56",
+            "exit_status": 0,
+            "wall_seconds": 21.939,
+            "required_failure_in": [],
+            "diagnostics": [],
+            "output": "",
+            "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "reused_build_from_instrument_sha256": "cb4ed01b8254f32ce2bf203d6eb4c797f2f8b3b0cfdc55325dd1d8923d83db47"
+          },
+          {
+            "name": "build_PlaneWave",
+            "expected": "PASS",
+            "outcome": "PASS",
+            "command": [
+              "nice",
+              "-n",
+              "10",
+              "lake",
+              "env",
+              "lean",
+              "-j1",
+              "-M4096",
+              "-DwarningAsError=true",
+              "-o",
+              "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S9Pilot/PlaneWave.olean",
+              "s9/S9Pilot/PlaneWave.lean"
+            ],
+            "source_sha256": "8803fdaf6e7ce26a336d6663decc23e4c871377e95ef9bf9bb71b77f1605cb21",
+            "exit_status": 0,
+            "wall_seconds": 19.095,
+            "required_failure_in": [],
+            "diagnostics": [],
+            "output": "",
+            "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "reused_build_from_instrument_sha256": "cb4ed01b8254f32ce2bf203d6eb4c797f2f8b3b0cfdc55325dd1d8923d83db47"
+          },
+          {
+            "name": "build_Analytic",
+            "expected": "PASS",
+            "outcome": "PASS",
+            "command": [
+              "nice",
+              "-n",
+              "10",
+              "lake",
+              "env",
+              "lean",
+              "-j1",
+              "-M4096",
+              "-DwarningAsError=true",
+              "-o",
+              "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S9Pilot/Analytic.olean",
+              "s9/S9Pilot/Analytic.lean"
+            ],
+            "source_sha256": "66352628b83475280942c32dee6d1c9e704ae0526ba536a3f62136e2c77ac666",
+            "exit_status": 0,
+            "wall_seconds": 14.764,
+            "required_failure_in": [],
+            "diagnostics": [],
+            "output": "",
+            "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "reused_build_from_instrument_sha256": "cb4ed01b8254f32ce2bf203d6eb4c797f2f8b3b0cfdc55325dd1d8923d83db47"
+          },
+          {
+            "name": "build_Variation",
+            "expected": "PASS",
+            "outcome": "PASS",
+            "command": [
+              "nice",
+              "-n",
+              "10",
+              "lake",
+              "env",
+              "lean",
+              "-j1",
+              "-M4096",
+              "-DwarningAsError=true",
+              "-o",
+              "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S9Pilot/Variation.olean",
+              "s9/S9Pilot/Variation.lean"
+            ],
+            "source_sha256": "5ea90c39293879695be59e1a53f0046b13d52577dfb59e0b16a42546c4591dd2",
+            "exit_status": 0,
+            "wall_seconds": 16.282,
+            "required_failure_in": [],
+            "diagnostics": [],
+            "output": "",
+            "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "reused_build_from_instrument_sha256": "cb4ed01b8254f32ce2bf203d6eb4c797f2f8b3b0cfdc55325dd1d8923d83db47"
+          },
+          {
+            "name": "build_FiniteAction",
+            "expected": "PASS",
+            "outcome": "PASS",
+            "command": [
+              "nice",
+              "-n",
+              "10",
+              "lake",
+              "env",
+              "lean",
+              "-j1",
+              "-M4096",
+              "-DwarningAsError=true",
+              "-o",
+              "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S9Pilot/FiniteAction.olean",
+              "s9/S9Pilot/FiniteAction.lean"
+            ],
+            "source_sha256": "28868a9a30996a36fe0c32c8ad53f0f5f5549162f81ba27a703f7b2d08cef324",
+            "exit_status": 0,
+            "wall_seconds": 10.639,
+            "required_failure_in": [],
+            "diagnostics": [],
+            "output": "",
+            "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "reused_build_from_instrument_sha256": "cb4ed01b8254f32ce2bf203d6eb4c797f2f8b3b0cfdc55325dd1d8923d83db47"
+          },
+          {
+            "name": "build_Spectrum",
+            "expected": "PASS",
+            "outcome": "PASS",
+            "command": [
+              "nice",
+              "-n",
+              "10",
+              "lake",
+              "env",
+              "lean",
+              "-j1",
+              "-M4096",
+              "-DwarningAsError=true",
+              "-o",
+              "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S9Pilot/Spectrum.olean",
+              "s9/S9Pilot/Spectrum.lean"
+            ],
+            "source_sha256": "bdd6e886eb291ce0837ea8d94b10bb7548a6fb37a227c90e82f0e7799936e1a3",
+            "exit_status": 0,
+            "wall_seconds": 12.853,
+            "required_failure_in": [],
+            "diagnostics": [],
+            "output": "",
+            "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "reused_build_from_instrument_sha256": "cb4ed01b8254f32ce2bf203d6eb4c797f2f8b3b0cfdc55325dd1d8923d83db47"
+          },
+          {
+            "name": "build_Certificate",
+            "expected": "PASS",
+            "outcome": "PASS",
+            "command": [
+              "nice",
+              "-n",
+              "10",
+              "lake",
+              "env",
+              "lean",
+              "-j1",
+              "-M4096",
+              "-DwarningAsError=true",
+              "-o",
+              "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S9Pilot/Certificate.olean",
+              "s9/S9Pilot/Certificate.lean"
+            ],
+            "source_sha256": "0c279281a0d488e51b1c3a4de29849dd4d1fce0a94d01abc9e5fff990da7d5e1",
+            "exit_status": 0,
+            "wall_seconds": 10.891,
+            "required_failure_in": [],
+            "diagnostics": [],
+            "output": "",
+            "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "reused_build_from_instrument_sha256": "cb4ed01b8254f32ce2bf203d6eb4c797f2f8b3b0cfdc55325dd1d8923d83db47"
+          },
+          {
+            "name": "build_VariationalCertificate",
+            "expected": "PASS",
+            "outcome": "PASS",
+            "command": [
+              "nice",
+              "-n",
+              "10",
+              "lake",
+              "env",
+              "lean",
+              "-j1",
+              "-M4096",
+              "-DwarningAsError=true",
+              "-o",
+              "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S9Pilot/VariationalCertificate.olean",
+              "s9/S9Pilot/VariationalCertificate.lean"
+            ],
+            "source_sha256": "1d500fd5bb36b435341b31bcea9f4c9848af8548593aab1d1336a0e3d3243e36",
+            "exit_status": 0,
+            "wall_seconds": 10.64,
+            "required_failure_in": [],
+            "diagnostics": [],
+            "output": "",
+            "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "reused_build_from_instrument_sha256": "cb4ed01b8254f32ce2bf203d6eb4c797f2f8b3b0cfdc55325dd1d8923d83db47"
+          },
+          {
+            "name": "build_Madelung",
+            "expected": "PASS",
+            "outcome": "PASS",
+            "command": [
+              "nice",
+              "-n",
+              "10",
+              "lake",
+              "env",
+              "lean",
+              "-j1",
+              "-M4096",
+              "-DwarningAsError=true",
+              "-o",
+              "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S9Pilot/Madelung.olean",
+              "s9/S9Pilot/Madelung.lean"
+            ],
+            "source_sha256": "6d4ad27266effbf2493e0cf7c6f9ce55f2bba2501eaeab584110a59bfaac455e",
+            "exit_status": 0,
+            "wall_seconds": 11.902,
+            "required_failure_in": [],
+            "diagnostics": [],
+            "output": "",
+            "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "reused_build_from_instrument_sha256": "cb4ed01b8254f32ce2bf203d6eb4c797f2f8b3b0cfdc55325dd1d8923d83db47"
+          },
+          {
+            "name": "axiom_audit",
+            "expected": "PASS",
+            "outcome": "PASS",
+            "command": [
+              "nice",
+              "-n",
+              "10",
+              "lake",
+              "env",
+              "lean",
+              "-j1",
+              "-M4096",
+              "-DwarningAsError=true",
+              "-o",
+              "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S9Pilot.olean",
+              "s9/S9Pilot.lean"
+            ],
+            "source_sha256": "32671c668126f7b4afee4c709031547326d49b4d087c1a2d372f2fff87e7abf6",
+            "exit_status": 0,
+            "wall_seconds": 11.546,
+            "required_failure_in": [],
+            "diagnostics": [],
+            "output": "ClassicalMechanics.planeWave_waveEquation {d : ℕ} (c : ℝ) (s : Space.Direction d) (f₀ : ℝ → EuclideanSpace ℝ (Fin d))\n  (hf₀ : ContDiff ℝ 2 f₀) (t : Time) (x : Space d) :\n  ClassicalMechanics.WaveEquation (ClassicalMechanics.planeWave f₀ c s) t x c\n'S9Pilot.candidateOmegaSq_scaling' depends on axioms: [propext, Classical.choice, Quot.sound]\n'ClassicalMechanics.planeWave_waveEquation' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S9Pilot.lagrangian_variation' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S9Pilot.modal_stationary_iff' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S9Pilot.planeWave_lagrangian' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S9Pilot.eulerLagrange_planeWave' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S9Pilot.s9_plane_wave_certificate' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S9Pilot.propagating_planeWave_iff' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S9Pilot.coneValue_scaling' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S9Pilot.concrete_transverse_wave' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S9Pilot.concrete_longitudinal_not_wave' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S9Pilot.coord_integration_by_parts' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S9Pilot.relative_density_integrable' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S9Pilot.relativeAction_hasDerivAt' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S9Pilot.relativeAction_deriv_eq_eulerLagrange' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S9Pilot.actionStationary_iff_eulerLagrange' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S9Pilot.finiteAction_hasDerivAt' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S9Pilot.s9_variational_certificate' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S9Pilot.propagating_variational_mode_iff' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S9Pilot.concrete_transverse_stationary' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S9Pilot.concrete_longitudinal_detected_by_test' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S9Pilot.Madelung.phasePerturbation_coordDeriv' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S9Pilot.Madelung.velocity_phasePerturbation' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S9Pilot.Madelung.linearVelocity_eq' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S9Pilot.Madelung.cosAmplitude_mem' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S9Pilot.Madelung.sinAmplitude_mem' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S9Pilot.Madelung.cosAmplitude_range' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S9Pilot.Madelung.longitudinal_transverse_eq_zero' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S9Pilot.Madelung.no_transverse_velocity' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S9Pilot.Madelung.transverse_linearVelocity_zero' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S9Pilot.Madelung.zero_wavevector' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S9Pilot.Madelung.concrete_longitudinal_velocity' depends on axioms: [propext, Classical.choice, Quot.sound]\n",
+            "output_sha256": "9af8395dc1248fec8ded52289f00faf1784fa0e70ee9942ec75395f2a6e2cd67",
+            "reused_build_from_instrument_sha256": "cb4ed01b8254f32ce2bf203d6eb4c797f2f8b3b0cfdc55325dd1d8923d83db47"
+          },
+          {
+            "name": "action_shear_sign",
+            "expected": "REJECTED",
+            "outcome": "REJECTED",
+            "command": [
+              "nice",
+              "-n",
+              "10",
+              "lake",
+              "env",
+              "lean",
+              "-j1",
+              "-M4096",
+              "-DwarningAsError=true",
+              "s9/_scratch/closure/action_shear_sign.lean"
+            ],
+            "source_sha256": "859c605b5adb9c1f652268ba583e5f5db50a9725ed54855dd8c9528aee02ba25",
+            "exit_status": 1,
+            "wall_seconds": 17.848,
+            "required_failure_in": [
+              "lagrangian_variation"
+            ],
+            "diagnostics": [
+              {
+                "declaration": "lagrangian_variation",
+                "line": 52,
+                "message": "s9/_scratch/closure/action_shear_sign.lean:52:2: error: unsolved goals\ncase e'_8\nrho mu : ℝ\nJ H : Jet\nC : ℝ := rho * dot (J 0) (H 0) - mu * dot (jetCurl J) (jetCurl H)\nh :\n  HasDerivAt (((fun x => lagrangian rho mu J) + fun y => id y * C) + fun y => (id ^ 2) y * lagrangian rho mu H)\n    (0 + 1 * C + ↑2 * id 0 ^ (2 - 1) * 1 * lagrangian rho mu H) 0\ns : ℝ\n⊢ rho * J 0 0 * s * H 0 0 + rho * J 0 0 ^ 2 * (1 / 2) + rho * s * J 0 1 * H 0 1 + rho * s * J 0 2 * H 0 2 +\n                                                                          rho * s ^ 2 * H 0 0 ^ 2 * (1 / 2) +\n                                                                        rho * s ^ 2 * H 0 1 ^ 2 * (1 / 2) +\n                                                                      rho * s ^ 2 * H 0 2 ^ 2 * (1 / 2) +\n                                                                    rho * J 0 1 ^ 2 * (1 / 2) +\n                                                                  rho * J 0 2 ^ 2 * (1 / 2) +\n                                                                s * mu * J 2 2 * H 2 2 -\n                                                              s * mu * J 2 2 * H 3 1 -\n                                                            s * mu * H 2 2 * J 3 1 +\n                                                          s * mu * J 3 1 * H 3 1 +\n                                                        s * mu * J 3 0 * H 3 0 -\n                                                      s * mu * J 3 0 * H 1 2 -\n                                                    s * mu * H 3 0 * J 1 2 +\n                                                  s * mu * J 1 2 * H 1 2 +\n                                                s * mu * J 1 1 * H 1 1 -\n                                              s * mu * J 1 1 * H 2 0 -\n                                            s * mu * H 1 1 * J 2 0 +\n                                          s * mu * J 2 0 * H 2 0 -\n                                        s ^ 2 * mu * H 2 2 * H 3 1 +\n                                      s ^ 2 * mu * H 2 2 ^ 2 * (1 / 2) +\n                                    s ^ 2 * mu * H 3 1 ^ 2 * (1 / 2) -\n                                  s ^ 2 * mu * H 3 0 * H 1 2 +\n                                s ^ 2 * mu * H 3 0 ^ 2 * (1 / 2) +\n                              s ^ 2 * mu * H 1 2 ^ 2 * (1 / 2) -\n                            s ^ 2 * mu * H 1 1 * H 2 0 +\n                          s ^ 2 * mu * H 1 1 ^ 2 * (1 / 2) +\n                        s ^ 2 * mu * H 2 0 ^ 2 * (1 / 2) -\n                      mu * J 2 2 * J 3 1 +\n                    mu * J 2 2 ^ 2 * (1 / 2) +\n                  mu * J 3 1 ^ 2 * (1 / 2) -\n                mu * J 3 0 * J 1 2 +\n              mu * J 3 0 ^ 2 * (1 / 2) +\n            mu * J 1 2 ^ 2 * (1 / 2) -\n          mu * J 1 1 * J 2 0 +\n        mu * J 1 1 ^ 2 * (1 / 2) +\n      mu * J 2 0 ^ 2 * (1 / 2) =\n    rho * J 0 0 * s * H 0 0 + rho * J 0 0 ^ 2 * (1 / 2) + rho * s * J 0 1 * H 0 1 + rho * s * J 0 2 * H 0 2 +\n                                                                          rho * s ^ 2 * H 0 0 ^ 2 * (1 / 2) +\n                                                                        rho * s ^ 2 * H 0 1 ^ 2 * (1 / 2) +\n                                                                      rho * s ^ 2 * H 0 2 ^ 2 * (1 / 2) +\n                                                                    rho * J 0 1 ^ 2 * (1 / 2) +\n                                                                  rho * J 0 2 ^ 2 * (1 / 2) -\n                                                                s * mu * J 2 2 * H 2 2 +\n                                                              s * mu * J 2 2 * H 3 1 +\n                                                            s * mu * H 2 2 * J 3 1 -\n                                                          s * mu * J 3 1 * H 3 1 -\n                                                        s * mu * J 3 0 * H 3 0 +\n                                                      s * mu * J 3 0 * H 1 2 +\n                                                    s * mu * H 3 0 * J 1 2 -\n                                                  s * mu * J 1 2 * H 1 2 -\n                                                s * mu * J 1 1 * H 1 1 +\n                                              s * mu * J 1 1 * H 2 0 +\n                                            s * mu * H 1 1 * J 2 0 -\n                                          s * mu * J 2 0 * H 2 0 -\n                                        s ^ 2 * mu * H 2 2 * H 3 1 +\n                                      s ^ 2 * mu * H 2 2 ^ 2 * (1 / 2) +\n                                    s ^ 2 * mu * H 3 1 ^ 2 * (1 / 2) -\n                                  s ^ 2 * mu * H 3 0 * H 1 2 +\n                                s ^ 2 * mu * H 3 0 ^ 2 * (1 / 2) +\n                              s ^ 2 * mu * H 1 2 ^ 2 * (1 / 2) -\n                            s ^ 2 * mu * H 1 1 * H 2 0 +\n                          s ^ 2 * mu * H 1 1 ^ 2 * (1 / 2) +\n                        s ^ 2 * mu * H 2 0 ^ 2 * (1 / 2) -\n                      mu * J 2 2 * J 3 1 +\n                    mu * J 2 2 ^ 2 * (1 / 2) +\n                  mu * J 3 1 ^ 2 * (1 / 2) -\n                mu * J 3 0 * J 1 2 +\n              mu * J 3 0 ^ 2 * (1 / 2) +\n            mu * J 1 2 ^ 2 * (1 / 2) -\n          mu * J 1 1 * J 2 0 +\n        mu * J 1 1 ^ 2 * (1 / 2) +\n      mu * J 2 0 ^ 2 * (1 / 2)\n"
+              }
+            ],
+            "output": "Try this:\n  [apply] ring_nf\n  \n  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.\n    \n  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.\ns9/_scratch/closure/action_shear_sign.lean:52:2: error: unsolved goals\ncase e'_8\nrho mu : ℝ\nJ H : Jet\nC : ℝ := rho * dot (J 0) (H 0) - mu * dot (jetCurl J) (jetCurl H)\nh :\n  HasDerivAt (((fun x => lagrangian rho mu J) + fun y => id y * C) + fun y => (id ^ 2) y * lagrangian rho mu H)\n    (0 + 1 * C + ↑2 * id 0 ^ (2 - 1) * 1 * lagrangian rho mu H) 0\ns : ℝ\n⊢ rho * J 0 0 * s * H 0 0 + rho * J 0 0 ^ 2 * (1 / 2) + rho * s * J 0 1 * H 0 1 + rho * s * J 0 2 * H 0 2 +\n                                                                          rho * s ^ 2 * H 0 0 ^ 2 * (1 / 2) +\n                                                                        rho * s ^ 2 * H 0 1 ^ 2 * (1 / 2) +\n                                                                      rho * s ^ 2 * H 0 2 ^ 2 * (1 / 2) +\n                                                                    rho * J 0 1 ^ 2 * (1 / 2) +\n                                                                  rho * J 0 2 ^ 2 * (1 / 2) +\n                                                                s * mu * J 2 2 * H 2 2 -\n                                                              s * mu * J 2 2 * H 3 1 -\n                                                            s * mu * H 2 2 * J 3 1 +\n                                                          s * mu * J 3 1 * H 3 1 +\n                                                        s * mu * J 3 0 * H 3 0 -\n                                                      s * mu * J 3 0 * H 1 2 -\n                                                    s * mu * H 3 0 * J 1 2 +\n                                                  s * mu * J 1 2 * H 1 2 +\n                                                s * mu * J 1 1 * H 1 1 -\n                                              s * mu * J 1 1 * H 2 0 -\n                                            s * mu * H 1 1 * J 2 0 +\n                                          s * mu * J 2 0 * H 2 0 -\n                                        s ^ 2 * mu * H 2 2 * H 3 1 +\n                                      s ^ 2 * mu * H 2 2 ^ 2 * (1 / 2) +\n                                    s ^ 2 * mu * H 3 1 ^ 2 * (1 / 2) -\n                                  s ^ 2 * mu * H 3 0 * H 1 2 +\n                                s ^ 2 * mu * H 3 0 ^ 2 * (1 / 2) +\n                              s ^ 2 * mu * H 1 2 ^ 2 * (1 / 2) -\n                            s ^ 2 * mu * H 1 1 * H 2 0 +\n                          s ^ 2 * mu * H 1 1 ^ 2 * (1 / 2) +\n                        s ^ 2 * mu * H 2 0 ^ 2 * (1 / 2) -\n                      mu * J 2 2 * J 3 1 +\n                    mu * J 2 2 ^ 2 * (1 / 2) +\n                  mu * J 3 1 ^ 2 * (1 / 2) -\n                mu * J 3 0 * J 1 2 +\n              mu * J 3 0 ^ 2 * (1 / 2) +\n            mu * J 1 2 ^ 2 * (1 / 2) -\n          mu * J 1 1 * J 2 0 +\n        mu * J 1 1 ^ 2 * (1 / 2) +\n      mu * J 2 0 ^ 2 * (1 / 2) =\n    rho * J 0 0 * s * H 0 0 + rho * J 0 0 ^ 2 * (1 / 2) + rho * s * J 0 1 * H 0 1 + rho * s * J 0 2 * H 0 2 +\n                                                                          rho * s ^ 2 * H 0 0 ^ 2 * (1 / 2) +\n                                                                        rho * s ^ 2 * H 0 1 ^ 2 * (1 / 2) +\n                                                                      rho * s ^ 2 * H 0 2 ^ 2 * (1 / 2) +\n                                                                    rho * J 0 1 ^ 2 * (1 / 2) +\n                                                                  rho * J 0 2 ^ 2 * (1 / 2) -\n                                                                s * mu * J 2 2 * H 2 2 +\n                                                              s * mu * J 2 2 * H 3 1 +\n                                                            s * mu * H 2 2 * J 3 1 -\n                                                          s * mu * J 3 1 * H 3 1 -\n                                                        s * mu * J 3 0 * H 3 0 +\n                                                      s * mu * J 3 0 * H 1 2 +\n                                                    s * mu * H 3 0 * J 1 2 -\n                                                  s * mu * J 1 2 * H 1 2 -\n                                                s * mu * J 1 1 * H 1 1 +\n                                              s * mu * J 1 1 * H 2 0 +\n                                            s * mu * H 1 1 * J 2 0 -\n                                          s * mu * J 2 0 * H 2 0 -\n                                        s ^ 2 * mu * H 2 2 * H 3 1 +\n                                      s ^ 2 * mu * H 2 2 ^ 2 * (1 / 2) +\n                                    s ^ 2 * mu * H 3 1 ^ 2 * (1 / 2) -\n                                  s ^ 2 * mu * H 3 0 * H 1 2 +\n                                s ^ 2 * mu * H 3 0 ^ 2 * (1 / 2) +\n                              s ^ 2 * mu * H 1 2 ^ 2 * (1 / 2) -\n                            s ^ 2 * mu * H 1 1 * H 2 0 +\n                          s ^ 2 * mu * H 1 1 ^ 2 * (1 / 2) +\n                        s ^ 2 * mu * H 2 0 ^ 2 * (1 / 2) -\n                      mu * J 2 2 * J 3 1 +\n                    mu * J 2 2 ^ 2 * (1 / 2) +\n                  mu * J 3 1 ^ 2 * (1 / 2) -\n                mu * J 3 0 * J 1 2 +\n              mu * J 3 0 ^ 2 * (1 / 2) +\n            mu * J 1 2 ^ 2 * (1 / 2) -\n          mu * J 1 1 * J 2 0 +\n        mu * J 1 1 ^ 2 * (1 / 2) +\n      mu * J 2 0 ^ 2 * (1 / 2)\n",
+            "output_sha256": "b2f9ebb789fbe2c88b2804c0333234044cf5722176f8d52b481bf3ec671d7383",
+            "canonical_source": "lean/s9/S9Pilot/Action.lean",
+            "canonical_sha256": "dafe6e059b64ccbaa98a5ac4e5a5b5706ef51e19479556e42fc4bf840df0bd56",
+            "replacement": {
+              "old": "rho / 2 * normSq (J 0) - mu / 2 * normSq (jetCurl J)",
+              "new": "rho / 2 * normSq (J 0) + mu / 2 * normSq (jetCurl J)"
+            }
+          },
+          {
+            "name": "relative_action_expansion_sign",
+            "expected": "REJECTED",
+            "outcome": "REJECTED",
+            "command": [
+              "nice",
+              "-n",
+              "10",
+              "lake",
+              "env",
+              "lean",
+              "-j1",
+              "-M4096",
+              "-DwarningAsError=true",
+              "s9/_scratch/closure/relative_action_expansion_sign.lean"
+            ],
+            "source_sha256": "232665cd599dc94ea18260138ec2dfad3c43215a0fcea4db3d6f7cddbb39b2f9",
+            "exit_status": 1,
+            "wall_seconds": 17.339,
+            "required_failure_in": [
+              "relativeAction_expansion"
+            ],
+            "diagnostics": [
+              {
+                "declaration": "relativeAction_expansion",
+                "line": 72,
+                "message": "s9/_scratch/closure/relative_action_expansion_sign.lean:72:57: error: unsolved goals\nu h : Point → Vec\nhu : SmoothField u\nhh : TestField h\nrho mu s : ℝ\n⊢ (s * ∫ (a : Point), linearDensity rho mu (fieldJet u a) (fieldJet h a)) +\n      s ^ 2 * ∫ (a : Point), lagrangian rho mu (fieldJet h a) =\n    -(s * ∫ (a : Point), linearDensity rho mu (fieldJet u a) (fieldJet h a)) -\n      s ^ 2 * ∫ (a : Point), lagrangian rho mu (fieldJet h a)\n"
+              },
+              {
+                "declaration": "relativeAction_hasDerivAt",
+                "line": 87,
+                "message": "s9/_scratch/closure/relative_action_expansion_sign.lean:87:11: error: Application type mismatch: The argument\n  relativeAction_expansion hu hh rho mu\nhas type\n  ∀ (s : ℝ),\n    relativeAction rho mu u h s =\n      -(s * ∫ (x : Point), linearDensity rho mu (fieldJet u x) (fieldJet h x)) -\n        s ^ 2 * ∫ (x : Point), lagrangian rho mu (fieldJet h x)\nbut is expected to have type\n  ∀ (x : ℝ),\n    relativeAction rho mu u h x =\n      (x * ∫ (x : Point), linearDensity rho mu (fieldJet u x) (fieldJet h x)) +\n        x ^ 2 * ∫ (x : Point), lagrangian rho mu (fieldJet h x)\nin the application\n  funext (relativeAction_expansion hu hh rho mu)\n"
+              }
+            ],
+            "output": "s9/_scratch/closure/relative_action_expansion_sign.lean:72:57: error: unsolved goals\nu h : Point → Vec\nhu : SmoothField u\nhh : TestField h\nrho mu s : ℝ\n⊢ (s * ∫ (a : Point), linearDensity rho mu (fieldJet u a) (fieldJet h a)) +\n      s ^ 2 * ∫ (a : Point), lagrangian rho mu (fieldJet h a) =\n    -(s * ∫ (a : Point), linearDensity rho mu (fieldJet u a) (fieldJet h a)) -\n      s ^ 2 * ∫ (a : Point), lagrangian rho mu (fieldJet h a)\ns9/_scratch/closure/relative_action_expansion_sign.lean:87:11: error: Application type mismatch: The argument\n  relativeAction_expansion hu hh rho mu\nhas type\n  ∀ (s : ℝ),\n    relativeAction rho mu u h s =\n      -(s * ∫ (x : Point), linearDensity rho mu (fieldJet u x) (fieldJet h x)) -\n        s ^ 2 * ∫ (x : Point), lagrangian rho mu (fieldJet h x)\nbut is expected to have type\n  ∀ (x : ℝ),\n    relativeAction rho mu u h x =\n      (x * ∫ (x : Point), linearDensity rho mu (fieldJet u x) (fieldJet h x)) +\n        x ^ 2 * ∫ (x : Point), lagrangian rho mu (fieldJet h x)\nin the application\n  funext (relativeAction_expansion hu hh rho mu)\n",
+            "output_sha256": "cce3cdbe4285540428466c79966327e1dd8342616359ce4a5c7c4fea27096278",
+            "canonical_source": "lean/s9/S9Pilot/Variation.lean",
+            "canonical_sha256": "5ea90c39293879695be59e1a53f0046b13d52577dfb59e0b16a42546c4591dd2",
+            "replacement": {
+              "old": "relativeAction rho mu u h s =\n      s * (∫ x, linearDensity rho mu (fieldJet u x) (fieldJet h x)) +\n      s ^ 2 * (∫ x, lagrangian rho mu (fieldJet h x))",
+              "new": "relativeAction rho mu u h s =\n      -(s * (∫ x, linearDensity rho mu (fieldJet u x) (fieldJet h x))) -\n      s ^ 2 * (∫ x, lagrangian rho mu (fieldJet h x))"
+            }
+          },
+          {
+            "name": "phase_wrong_coordinate",
+            "expected": "REJECTED",
+            "outcome": "REJECTED",
+            "command": [
+              "nice",
+              "-n",
+              "10",
+              "lake",
+              "env",
+              "lean",
+              "-j1",
+              "-M4096",
+              "-DwarningAsError=true",
+              "s9/_scratch/closure/phase_wrong_coordinate.lean"
+            ],
+            "source_sha256": "6acfb14822a7f43336acb63c87bd38f9e8aee8beb766f0b74aad9a8f8070e5ed",
+            "exit_status": 1,
+            "wall_seconds": 14.172,
+            "required_failure_in": [
+              "velocity_phasePerturbation"
+            ],
+            "diagnostics": [
+              {
+                "declaration": "velocity",
+                "line": 22,
+                "message": "s9/_scratch/closure/phase_wrong_coordinate.lean:22:6: error: Variable name `i` is not explicitly referenced.\n\nHint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:\n  [apply] _i\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\n"
+              },
+              {
+                "declaration": "velocity_phasePerturbation",
+                "line": 49,
+                "message": "s9/_scratch/closure/phase_wrong_coordinate.lean:49:6: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern\n  waveCovector omega k i.succ\nin the target expression\n  hbar / mass *\n      (epsilon * (-A * Real.sin (phase (waveCovector omega k) x) + B * Real.cos (phase (waveCovector omega k) x)) *\n        waveCovector omega k 0) =\n    epsilon *\n      (hbar / mass * (-A * Real.sin (phase (waveCovector omega k) x) + B * Real.cos (phase (waveCovector omega k) x)) *\n        k i)\n\nhbar mass theta0 epsilon omega A B : ℝ\nk : Vec\nx : Point\ni : Fin 3\nhi : waveCovector omega k i.succ = k i\n⊢ hbar / mass *\n      (epsilon * (-A * Real.sin (phase (waveCovector omega k) x) + B * Real.cos (phase (waveCovector omega k) x)) *\n        waveCovector omega k 0) =\n    epsilon *\n      (hbar / mass * (-A * Real.sin (phase (waveCovector omega k) x) + B * Real.cos (phase (waveCovector omega k) x)) *\n        k i)\n"
+              }
+            ],
+            "output": "s9/_scratch/closure/phase_wrong_coordinate.lean:22:6: error: Variable name `i` is not explicitly referenced.\n\nHint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:\n  [apply] _i\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\ns9/_scratch/closure/phase_wrong_coordinate.lean:49:6: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern\n  waveCovector omega k i.succ\nin the target expression\n  hbar / mass *\n      (epsilon * (-A * Real.sin (phase (waveCovector omega k) x) + B * Real.cos (phase (waveCovector omega k) x)) *\n        waveCovector omega k 0) =\n    epsilon *\n      (hbar / mass * (-A * Real.sin (phase (waveCovector omega k) x) + B * Real.cos (phase (waveCovector omega k) x)) *\n        k i)\n\nhbar mass theta0 epsilon omega A B : ℝ\nk : Vec\nx : Point\ni : Fin 3\nhi : waveCovector omega k i.succ = k i\n⊢ hbar / mass *\n      (epsilon * (-A * Real.sin (phase (waveCovector omega k) x) + B * Real.cos (phase (waveCovector omega k) x)) *\n        waveCovector omega k 0) =\n    epsilon *\n      (hbar / mass * (-A * Real.sin (phase (waveCovector omega k) x) + B * Real.cos (phase (waveCovector omega k) x)) *\n        k i)\n",
+            "output_sha256": "e3100c55277873d49c3e1d08e7d78440d8e768fe2b09ccdacea4f48566417fbc",
+            "canonical_source": "lean/s9/S9Pilot/Madelung.lean",
+            "canonical_sha256": "6d4ad27266effbf2493e0cf7c6f9ce55f2bba2501eaeab584110a59bfaac455e",
+            "replacement": {
+              "old": "(hbar / mass) * coordDeriv i.succ theta x",
+              "new": "(hbar / mass) * coordDeriv 0 theta x"
+            }
+          },
+          {
+            "name": "phase_sine_sign",
+            "expected": "REJECTED",
+            "outcome": "REJECTED",
+            "command": [
+              "nice",
+              "-n",
+              "10",
+              "lake",
+              "env",
+              "lean",
+              "-j1",
+              "-M4096",
+              "-DwarningAsError=true",
+              "s9/_scratch/closure/phase_sine_sign.lean"
+            ],
+            "source_sha256": "072c93f872b9dea0d2ca614d04620fe8be31087a9013ec8fa41404209f38bc5c",
+            "exit_status": 1,
+            "wall_seconds": 17.475,
+            "required_failure_in": [
+              "linearVelocity_eq"
+            ],
+            "diagnostics": [
+              {
+                "declaration": "linearVelocity_eq",
+                "line": 63,
+                "message": "s9/_scratch/closure/phase_sine_sign.lean:63:80: error: unsolved goals\ncase e'_3\nhbar mass theta0 omega A B : ℝ\nk : Vec\nx : Point\ni : Fin 3\nh :\n  HasDerivAt\n    (fun y =>\n      id y *\n        (hbar / mass *\n            (-A * Real.sin (phase (waveCovector omega k) x) + B * Real.cos (phase (waveCovector omega k) x)) *\n          k i))\n    (1 *\n      (hbar / mass * (-A * Real.sin (phase (waveCovector omega k) x) + B * Real.cos (phase (waveCovector omega k) x)) *\n        k i))\n    0\n⊢ Real.cos (phase (waveCovector omega k) x) * hbar * mass⁻¹ * B * k i +\n      hbar * mass⁻¹ * k i * Real.sin (phase (waveCovector omega k) x) * A =\n    Real.cos (phase (waveCovector omega k) x) * hbar * mass⁻¹ * B * k i -\n      hbar * mass⁻¹ * k i * Real.sin (phase (waveCovector omega k) x) * A\n"
+              },
+              {
+                "declaration": "sinAmplitude_mem",
+                "line": 79,
+                "message": "s9/_scratch/closure/phase_sine_sign.lean:79:56: error: Application type mismatch: The argument\n  rfl\nhas type\n  ?m.26 = ?m.26\nbut is expected to have type\n  (-(hbar / mass) * A) • k = sinAmplitude hbar mass A k\nin the application\n  Exists.intro (-(hbar / mass) * A) rfl\n"
+              }
+            ],
+            "output": "Try this:\n  [apply] ring_nf\n  \n  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.\n    \n  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.\ns9/_scratch/closure/phase_sine_sign.lean:63:80: error: unsolved goals\ncase e'_3\nhbar mass theta0 omega A B : ℝ\nk : Vec\nx : Point\ni : Fin 3\nh :\n  HasDerivAt\n    (fun y =>\n      id y *\n        (hbar / mass *\n            (-A * Real.sin (phase (waveCovector omega k) x) + B * Real.cos (phase (waveCovector omega k) x)) *\n          k i))\n    (1 *\n      (hbar / mass * (-A * Real.sin (phase (waveCovector omega k) x) + B * Real.cos (phase (waveCovector omega k) x)) *\n        k i))\n    0\n⊢ Real.cos (phase (waveCovector omega k) x) * hbar * mass⁻¹ * B * k i +\n      hbar * mass⁻¹ * k i * Real.sin (phase (waveCovector omega k) x) * A =\n    Real.cos (phase (waveCovector omega k) x) * hbar * mass⁻¹ * B * k i -\n      hbar * mass⁻¹ * k i * Real.sin (phase (waveCovector omega k) x) * A\ns9/_scratch/closure/phase_sine_sign.lean:79:56: error: Application type mismatch: The argument\n  rfl\nhas type\n  ?m.26 = ?m.26\nbut is expected to have type\n  (-(hbar / mass) * A) • k = sinAmplitude hbar mass A k\nin the application\n  Exists.intro (-(hbar / mass) * A) rfl\n",
+            "output_sha256": "4e93b47eae8f299c7b9b0e5a7c8ebb4d2a9dcc76fdcd39070004563c508fbe7a",
+            "canonical_source": "lean/s9/S9Pilot/Madelung.lean",
+            "canonical_sha256": "6d4ad27266effbf2493e0cf7c6f9ce55f2bba2501eaeab584110a59bfaac455e",
+            "replacement": {
+              "old": "(-(hbar / mass) * A) • k",
+              "new": "((hbar / mass) * A) • k"
+            }
+          },
+          {
+            "name": "transverse_count_positive",
+            "expected": "PASS",
+            "outcome": "PASS",
+            "command": [
+              "nice",
+              "-n",
+              "10",
+              "lake",
+              "env",
+              "lean",
+              "-j1",
+              "-M4096",
+              "-DwarningAsError=true",
+              "s9/_scratch/closure/transverse_count_positive.lean"
+            ],
+            "source_sha256": "fc833e4f0af1ff7af8aea6e0c9a0b3e018685d7ca5e7af607d0d3f770bfa16a3",
+            "exit_status": 0,
+            "wall_seconds": 11.304,
+            "required_failure_in": [
+              "domain_control"
+            ],
+            "diagnostics": [],
+            "output": "",
+            "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "source": "import S9Pilot.Madelung\nopen S9Pilot\nnoncomputable section\ntheorem domain_control :\n    Module.finrank ℝ (transverseSpace (![0, 0, 1] : Vec)) = 2 := by\n  have hk : (![0, 0, 1] : Vec) ≠ 0 := by\n    intro h\n    have h2 := congrFun h 2\n    norm_num [Matrix.cons_val_two] at h2\n  have hd := transverseSpace_finrank hk\n  norm_num [hd]\n"
+          },
+          {
+            "name": "transverse_count_mutant",
+            "expected": "REJECTED",
+            "outcome": "REJECTED",
+            "command": [
+              "nice",
+              "-n",
+              "10",
+              "lake",
+              "env",
+              "lean",
+              "-j1",
+              "-M4096",
+              "-DwarningAsError=true",
+              "s9/_scratch/closure/transverse_count_mutant.lean"
+            ],
+            "source_sha256": "c9c662c940ae30fcf992d31ddfab69d73b8c9a9bef9c584522206451acc142a8",
+            "exit_status": 1,
+            "wall_seconds": 10.651,
+            "required_failure_in": [
+              "domain_control"
+            ],
+            "diagnostics": [
+              {
+                "declaration": "domain_control",
+                "line": 5,
+                "message": "s9/_scratch/closure/transverse_count_mutant.lean:5:65: error: unsolved goals\nhk : ![0, 0, 1] ≠ 0\nhd : Module.finrank ℝ ↥(transverseSpace ![0, 0, 1]) = 2\n⊢ False\n"
+              }
+            ],
+            "output": "s9/_scratch/closure/transverse_count_mutant.lean:5:65: error: unsolved goals\nhk : ![0, 0, 1] ≠ 0\nhd : Module.finrank ℝ ↥(transverseSpace ![0, 0, 1]) = 2\n⊢ False\n",
+            "output_sha256": "735c390f1208888b82f849fb1095bd7fa119740e3cba5256424bc899dc51cd3d",
+            "source": "import S9Pilot.Madelung\nopen S9Pilot\nnoncomputable section\ntheorem domain_control :\n    Module.finrank ℝ (transverseSpace (![0, 0, 1] : Vec)) = 3 := by\n  have hk : (![0, 0, 1] : Vec) ≠ 0 := by\n    intro h\n    have h2 := congrFun h 2\n    norm_num [Matrix.cons_val_two] at h2\n  have hd := transverseSpace_finrank hk\n  norm_num [hd]\n"
+          },
+          {
+            "name": "longitudinal_count_positive",
+            "expected": "PASS",
+            "outcome": "PASS",
+            "command": [
+              "nice",
+              "-n",
+              "10",
+              "lake",
+              "env",
+              "lean",
+              "-j1",
+              "-M4096",
+              "-DwarningAsError=true",
+              "s9/_scratch/closure/longitudinal_count_positive.lean"
+            ],
+            "source_sha256": "5bd24f1230b122961fd53b40c1c10d1326045065b719af52dc9f8de0ab87bdca",
+            "exit_status": 0,
+            "wall_seconds": 9.447,
+            "required_failure_in": [
+              "domain_control"
+            ],
+            "diagnostics": [],
+            "output": "",
+            "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "source": "import S9Pilot.Madelung\nopen S9Pilot\nnoncomputable section\ntheorem domain_control :\n    Module.finrank ℝ (longitudinalSpace (![0, 0, 1] : Vec)) = 1 := by\n  have hk : (![0, 0, 1] : Vec) ≠ 0 := by\n    intro h\n    have h2 := congrFun h 2\n    norm_num [Matrix.cons_val_two] at h2\n  have hd := longitudinalSpace_finrank hk\n  norm_num [hd]\n"
+          },
+          {
+            "name": "longitudinal_count_mutant",
+            "expected": "REJECTED",
+            "outcome": "REJECTED",
+            "command": [
+              "nice",
+              "-n",
+              "10",
+              "lake",
+              "env",
+              "lean",
+              "-j1",
+              "-M4096",
+              "-DwarningAsError=true",
+              "s9/_scratch/closure/longitudinal_count_mutant.lean"
+            ],
+            "source_sha256": "ecb20d27ac2eebd5b07a638e9b0ff4e45080e479e9b34eb0369b1f581b9cf82d",
+            "exit_status": 1,
+            "wall_seconds": 8.894,
+            "required_failure_in": [
+              "domain_control"
+            ],
+            "diagnostics": [
+              {
+                "declaration": "domain_control",
+                "line": 5,
+                "message": "s9/_scratch/closure/longitudinal_count_mutant.lean:5:67: error: unsolved goals\nhk : ![0, 0, 1] ≠ 0\nhd : Module.finrank ℝ ↥(longitudinalSpace ![0, 0, 1]) = 1\n⊢ False\n"
+              }
+            ],
+            "output": "s9/_scratch/closure/longitudinal_count_mutant.lean:5:67: error: unsolved goals\nhk : ![0, 0, 1] ≠ 0\nhd : Module.finrank ℝ ↥(longitudinalSpace ![0, 0, 1]) = 1\n⊢ False\n",
+            "output_sha256": "ee481795dc14a6d7d47ee66c685c31913e0e1ece693c08ca1d6088ee99eaed83",
+            "source": "import S9Pilot.Madelung\nopen S9Pilot\nnoncomputable section\ntheorem domain_control :\n    Module.finrank ℝ (longitudinalSpace (![0, 0, 1] : Vec)) = 2 := by\n  have hk : (![0, 0, 1] : Vec) ≠ 0 := by\n    intro h\n    have h2 := congrFun h 2\n    norm_num [Matrix.cons_val_two] at h2\n  have hd := longitudinalSpace_finrank hk\n  norm_num [hd]\n"
+          },
+          {
+            "name": "zero_wavevector_domain_positive",
+            "expected": "PASS",
+            "outcome": "UNEXPECTED",
+            "command": [
+              "nice",
+              "-n",
+              "10",
+              "lake",
+              "env",
+              "lean",
+              "-j1",
+              "-M4096",
+              "-DwarningAsError=true",
+              "s9/_scratch/closure/zero_wavevector_domain_positive.lean"
+            ],
+            "source_sha256": "dbdc7222d81e9be3263600d013bfef11660a223861f03104120c79f85afb4291",
+            "exit_status": 1,
+            "wall_seconds": 9.045,
+            "required_failure_in": [
+              "domain_control"
+            ],
+            "diagnostics": [
+              {
+                "declaration": "domain_control",
+                "line": 6,
+                "message": "s9/_scratch/closure/zero_wavevector_domain_positive.lean:6:58: error: unsolved goals\n⊢ modalOperator 1 1 0 0 ![0, 0, 1] = 0\n"
+              }
+            ],
+            "output": "s9/_scratch/closure/zero_wavevector_domain_positive.lean:6:58: error: unsolved goals\n⊢ modalOperator 1 1 0 0 ![0, 0, 1] = 0\n",
+            "output_sha256": "0bdc2af92b6d3fa4d21d1998f15b7af17378b10ed619227d3a9a056fb15f54b8"
+          }
+        ],
+        "axiom_audit_count": 32,
+        "error": "RuntimeError('zero_wavevector_domain_positive: unexpected result; inspect /var/projects/toy_physics/research/pde_ledger_v3/lean/s9/_scratch/closure/zero_wavevector_domain_positive.log')",
+        "finished_utc": "2026-09-16T01:03:23.969696+00:00"
+      }
+    }
+  ]
+}

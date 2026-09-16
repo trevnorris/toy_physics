@@ -1,6 +1,7 @@
 import Physlib.ClassicalMechanics.WaveEquation.Basic
 import S9Pilot.Certificate
 import S9Pilot.VariationalCertificate
+import S9Pilot.Madelung
 
 /-!
 S9 formalization pilot: integrated variation, local PDE, and plane-wave spectrum.
@@ -46,3 +47,14 @@ end S9Pilot
 #print axioms S9Pilot.propagating_variational_mode_iff
 #print axioms S9Pilot.concrete_transverse_stationary
 #print axioms S9Pilot.concrete_longitudinal_detected_by_test
+#print axioms S9Pilot.Madelung.phasePerturbation_coordDeriv
+#print axioms S9Pilot.Madelung.velocity_phasePerturbation
+#print axioms S9Pilot.Madelung.linearVelocity_eq
+#print axioms S9Pilot.Madelung.cosAmplitude_mem
+#print axioms S9Pilot.Madelung.sinAmplitude_mem
+#print axioms S9Pilot.Madelung.cosAmplitude_range
+#print axioms S9Pilot.Madelung.longitudinal_transverse_eq_zero
+#print axioms S9Pilot.Madelung.no_transverse_velocity
+#print axioms S9Pilot.Madelung.transverse_linearVelocity_zero
+#print axioms S9Pilot.Madelung.zero_wavevector
+#print axioms S9Pilot.Madelung.concrete_longitudinal_velocity

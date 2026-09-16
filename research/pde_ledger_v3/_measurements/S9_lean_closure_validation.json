@@ -1,0 +1,86 @@
+{
+  "status": "PASS",
+  "packet_sha256": "6903a1fa2cedf302561deab7dd04c6e88f523125b372a416cd6448ed4325d0eb",
+  "archive_sha256": "10eb027fa73f93f6e469e0c8950abd5dc765bc7a984093adea7dd446beb1e5d4",
+  "live_path_exception": {
+    "docs/model_map.md": "repo-root/docs/model_map.md"
+  },
+  "pre_editorial_validation": {
+    "utc": "2026-09-16T01:45:14.202316+00:00",
+    "live_matches": 49,
+    "packet_matches": 49,
+    "archive_matches": 49,
+    "manifest_matches": true,
+    "canonical_and_instrument_hashes_match": true
+  },
+  "reviews": {
+    "claude": {
+      "session_id": "a00d350a-61b5-4b28-87a7-d77ef4811ff9",
+      "verdict": "CLEAR",
+      "run_exit_status": 0,
+      "termination": "end_turn",
+      "finished_utc": "2026-09-16T01:28:43.983735+00:00",
+      "report_extraction": "Complete decoded result field, verbatim.",
+      "artifacts_sha256": {
+        "_measurements/S9_lean_fidelity_claude_v1.json": "b37e938a77200c7f47211be2fda3ca0024192de061f93c5d805aaf5ddeb52d2e",
+        "_measurements/S9_lean_fidelity_claude_v1_run.json": "ec23fe81cc80277854eb0d1b3d2d13db4b1146223734872dfdebb00532108293",
+        "_measurements/S9_lean_fidelity_claude_v1.md": "e934e4e722972bcff482ff8ff65c161ed52b58b3beba975c2e83d84b085ecb46",
+        "_measurements/S9_lean_fidelity_claude_v1.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "grok": {
+      "session_id": "e1dc69d7-d887-44fc-89ca-aed0216d4503",
+      "verdict": "CLEAR",
+      "run_exit_status": 0,
+      "termination": "end_turn",
+      "finished_utc": "2026-09-16T01:37:52.303955+00:00",
+      "report_extraction": "Decoded text field from its first final-report heading (612 leading progress characters omitted), verbatim thereafter.",
+      "artifacts_sha256": {
+        "_measurements/S9_lean_fidelity_grok_v1.json": "0d21b634b7134584042a601c6dbc8c172965109b009a62379ac5a8bef14afaa5",
+        "_measurements/S9_lean_fidelity_grok_v1_run.json": "cae8e4c413b39556ff3d0c62ee940f95c0674506e6f0439f0c0ae2762e430802",
+        "_measurements/S9_lean_fidelity_grok_v1.md": "44b993d11479e020bbb02a04ac1928f97129d71ed2510e241606ee3eb6ddf112",
+        "_measurements/S9_lean_fidelity_grok_v1.stderr": "61d66950074f5d5de2d07dd8c5334fdcffac2bb0276551cbf5b61285947c4c88"
+      }
+    }
+  },
+  "completed_utc": "2026-09-16T01:49:50.230464+00:00",
+  "post_editorial_validation": {
+    "unchanged_packet_files": 45,
+    "editorial_only_changes": {
+      "lean/s9/COVERAGE.md": {
+        "reviewed_sha256": "0649a431734d84e57bfda2b255ed3494596d3337a5b9e5bfa5da6a1b1f679618",
+        "current_sha256": "e85399cfeae30fe1b8dba95927de16c562f8581ec227e78bfafd36b0960aa761"
+      },
+      "lean/s9/FIDELITY.md": {
+        "reviewed_sha256": "545ea5c1421e8ed6e708a9f76c5fa0b1917e5c27e5c7abf350472623c75c8716",
+        "current_sha256": "3d3a0b8210f11f175d47c9c68cd5f5fbe6200e1b81fc314986922783db2082a0"
+      },
+      "lean/s9/README.md": {
+        "reviewed_sha256": "55379031def96f0908f478368d033cfb51797fb53cadb0228795182e136f89c3",
+        "current_sha256": "3bd62b4b764864258e1267ad2c2ee27316d3a7d0fd223d1fad5e3d39dce33623"
+      },
+      "lean/s9/RESULT.md": {
+        "reviewed_sha256": "e57350a044f40bb2b4695bb4cc7cb77abd186806e44a31dce3f49012524ce77e",
+        "current_sha256": "745875fca9deee071e4db64a6d265e7336104c6c28355968f0ac8c9c49af14ab"
+      }
+    },
+    "canonical_and_instrument_hashes_match": true,
+    "all_review_artifacts_unchanged": true,
+    "archive_and_manifest_match": true,
+    "local_markdown_links_checked": 63,
+    "git_diff_check": "PASS",
+    "archive_eligible_for_version_control": true
+  },
+  "verification_summary": {
+    "built_modules": 9,
+    "axiom_audits": 32,
+    "mathematical_rejections": 9,
+    "explicit_positive_controls": 5
+  },
+  "closure_artifacts_sha256": {
+    "lean/s9/FIDELITY_REVIEW.md": "a711e49df69b65cbec88f8a5812dbb97156dfb62911bdd63f61ce52fdc1e0a87",
+    "_measurements/.gitignore": "e08295701f1391cf0274aebea1f545e14ec7d693f7525cb8de2139e5127f2345"
+  },
+  "closure_decision": "C1-C4 complete after two CLEAR reviews; only editorial clarifications after review; no proof/instrument changes, new proof scope, or commit.",
+  "checkpoint_editorial_note": "At user-authorized checkpoint preparation, clarified that the closure record was written before its commit; no reviewed source or theorem changed."
+}

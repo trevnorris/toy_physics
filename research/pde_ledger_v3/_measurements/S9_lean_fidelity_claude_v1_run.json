@@ -1,0 +1,30 @@
+{
+  "engine": "claude",
+  "session_id": "a00d350a-61b5-4b28-87a7-d77ef4811ff9",
+  "command": [
+    "/home/trevnorris/.local/bin/claude",
+    "--print",
+    "--output-format",
+    "json",
+    "--tools",
+    "Read,Glob,Grep",
+    "--allowedTools",
+    "Read,Glob,Grep",
+    "--permission-mode",
+    "dontAsk",
+    "--strict-mcp-config",
+    "--mcp-config",
+    "{\"mcpServers\":{}}",
+    "--setting-sources",
+    "",
+    "--disable-slash-commands",
+    "--session-id",
+    "a00d350a-61b5-4b28-87a7-d77ef4811ff9"
+  ],
+  "cwd": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S9_lean_closure/review_packet_v1",
+  "packet_sha256": "6903a1fa2cedf302561deab7dd04c6e88f523125b372a416cd6448ed4325d0eb",
+  "started_utc": "2026-09-16T01:18:07.334069+00:00",
+  "exit_status": 0,
+  "wall_seconds": 636.65,
+  "finished_utc": "2026-09-16T01:28:43.983735+00:00"
+}

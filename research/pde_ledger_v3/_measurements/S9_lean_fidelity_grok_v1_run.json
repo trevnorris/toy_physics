@@ -1,0 +1,28 @@
+{
+  "engine": "grok",
+  "session_id": "e1dc69d7-d887-44fc-89ca-aed0216d4503",
+  "command": [
+    "/home/trevnorris/.local/bin/grok",
+    "--cwd",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S9_lean_closure/review_packet_v1",
+    "--prompt-file",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S9_lean_closure/review_packet_v1/_measurements/S9_lean_fidelity_review_prompt.txt",
+    "--output-format",
+    "json",
+    "--permission-mode",
+    "dontAsk",
+    "--no-plan",
+    "--tools",
+    "Read,Search,ListDir",
+    "--no-subagents",
+    "--disable-web-search",
+    "--session-id",
+    "e1dc69d7-d887-44fc-89ca-aed0216d4503"
+  ],
+  "cwd": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S9_lean_closure/review_packet_v1",
+  "packet_sha256": "6903a1fa2cedf302561deab7dd04c6e88f523125b372a416cd6448ed4325d0eb",
+  "started_utc": "2026-09-16T01:28:43.984211+00:00",
+  "exit_status": 0,
+  "wall_seconds": 548.32,
+  "finished_utc": "2026-09-16T01:37:52.303955+00:00"
+}

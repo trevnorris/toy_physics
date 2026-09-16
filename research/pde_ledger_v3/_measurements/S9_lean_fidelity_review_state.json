@@ -1,0 +1,40 @@
+{
+  "status": "COMPLETE",
+  "scope": "Bounded S9 C4 independent statement-fidelity review",
+  "packet_revision": "S9 bounded fidelity contract v1",
+  "packet_sha256": "6903a1fa2cedf302561deab7dd04c6e88f523125b372a416cd6448ed4325d0eb",
+  "file_count": 49,
+  "archive": "research/pde_ledger_v3/_measurements/S9_lean_fidelity_packet_v1.tar.gz",
+  "archive_sha256": "10eb027fa73f93f6e469e0c8950abd5dc765bc7a984093adea7dd446beb1e5d4",
+  "destinations": [
+    "Claude",
+    "Grok"
+  ],
+  "external_reviews_started": true,
+  "local_verification": "PASS: 32 axiom audits, nine mathematical rejections, five explicit positive counterparts; canonical source hashes unchanged",
+  "prior_approval_review_block": "Automatic approval review rejected transferring this specific repository-derived packet to Claude/Grok without explicit user authorization. Do not send or use an indirect workaround before authorization.",
+  "authorization_quote": "Yes you can send the files for review",
+  "authorization_recorded_utc": "2026-09-16T01:17:17.427736+00:00",
+  "completed_utc": "2026-09-16T01:49:50.230464+00:00",
+  "closure_scope": "S9 bounded Lean C1-C4 only",
+  "review_verdicts": {
+    "claude": {
+      "session_id": "a00d350a-61b5-4b28-87a7-d77ef4811ff9",
+      "verdict": "CLEAR",
+      "termination": "end_turn",
+      "run_exit_status": 0
+    },
+    "grok": {
+      "session_id": "e1dc69d7-d887-44fc-89ca-aed0216d4503",
+      "verdict": "CLEAR",
+      "termination": "end_turn",
+      "run_exit_status": 0
+    }
+  },
+  "unresolved_blockers": [],
+  "disposition_record": "research/pde_ledger_v3/lean/s9/FIDELITY_REVIEW.md",
+  "closure_validation": "research/pde_ledger_v3/_measurements/S9_lean_closure_validation.json",
+  "closure_validation_sha256": "971e9af17ac7a945fc850ca269164039c374f6981f9bf0f08dd67004006aed16",
+  "post_review_changes": "Four documentation files only; proofs, dependency pins, CAS sources, check scripts and verification results retain reviewed hashes.",
+  "committed_at_closure": false
+}

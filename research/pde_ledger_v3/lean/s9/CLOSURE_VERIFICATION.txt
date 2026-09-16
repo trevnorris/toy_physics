@@ -1,0 +1,68 @@
+S9 bounded closure verification
+Recorded UTC: 2026-09-16T01:10:28.241429+00:00
+Command: python3 research/pde_ledger_v3/_measurements/S9_lean_contract_check.py --reuse-build
+Working directory: /var/projects/toy_physics
+Exit status: 0
+All nine S9 modules rebuilt sequentially; audit entry point compiled.
+Builds were reused only with identical canonical source hashes and commands.
+Initial build records and instrument source are retained in _measurements/S9_lean_contract_initial_attempt.json.
+Resource settings: one Lean process, -j1 -M4096 -DwarningAsError=true, nice 10.
+The memory setting limits the Lean allocator, not OS resident memory.
+32 selected axiom audits: only propext, Classical.choice, Quot.sound.
+No admissions or custom physics axioms in the canonical S9 sources.
+Nine mathematical mutations rejected; five explicit positive counterparts pass.
+Exact commands, mutated sources/replacements, diagnostics and hashes: _measurements/S9_lean_contract_checks.json.
+Fidelity review is a separate obligation and is still pending.
+
+ClassicalMechanics.planeWave_waveEquation {d : ℕ} (c : ℝ) (s : Space.Direction d) (f₀ : ℝ → EuclideanSpace ℝ (Fin d))
+  (hf₀ : ContDiff ℝ 2 f₀) (t : Time) (x : Space d) :
+  ClassicalMechanics.WaveEquation (ClassicalMechanics.planeWave f₀ c s) t x c
+'S9Pilot.candidateOmegaSq_scaling' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ClassicalMechanics.planeWave_waveEquation' depends on axioms: [propext, Classical.choice, Quot.sound]
+'S9Pilot.lagrangian_variation' depends on axioms: [propext, Classical.choice, Quot.sound]
+'S9Pilot.modal_stationary_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'S9Pilot.planeWave_lagrangian' depends on axioms: [propext, Classical.choice, Quot.sound]
+'S9Pilot.eulerLagrange_planeWave' depends on axioms: [propext, Classical.choice, Quot.sound]
+'S9Pilot.s9_plane_wave_certificate' depends on axioms: [propext, Classical.choice, Quot.sound]
+'S9Pilot.propagating_planeWave_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'S9Pilot.coneValue_scaling' depends on axioms: [propext, Classical.choice, Quot.sound]
+'S9Pilot.concrete_transverse_wave' depends on axioms: [propext, Classical.choice, Quot.sound]
+'S9Pilot.concrete_longitudinal_not_wave' depends on axioms: [propext, Classical.choice, Quot.sound]
+'S9Pilot.coord_integration_by_parts' depends on axioms: [propext, Classical.choice, Quot.sound]
+'S9Pilot.relative_density_integrable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'S9Pilot.relativeAction_hasDerivAt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'S9Pilot.relativeAction_deriv_eq_eulerLagrange' depends on axioms: [propext, Classical.choice, Quot.sound]
+'S9Pilot.actionStationary_iff_eulerLagrange' depends on axioms: [propext, Classical.choice, Quot.sound]
+'S9Pilot.finiteAction_hasDerivAt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'S9Pilot.s9_variational_certificate' depends on axioms: [propext, Classical.choice, Quot.sound]
+'S9Pilot.propagating_variational_mode_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'S9Pilot.concrete_transverse_stationary' depends on axioms: [propext, Classical.choice, Quot.sound]
+'S9Pilot.concrete_longitudinal_detected_by_test' depends on axioms: [propext, Classical.choice, Quot.sound]
+'S9Pilot.Madelung.phasePerturbation_coordDeriv' depends on axioms: [propext, Classical.choice, Quot.sound]
+'S9Pilot.Madelung.velocity_phasePerturbation' depends on axioms: [propext, Classical.choice, Quot.sound]
+'S9Pilot.Madelung.linearVelocity_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'S9Pilot.Madelung.cosAmplitude_mem' depends on axioms: [propext, Classical.choice, Quot.sound]
+'S9Pilot.Madelung.sinAmplitude_mem' depends on axioms: [propext, Classical.choice, Quot.sound]
+'S9Pilot.Madelung.cosAmplitude_range' depends on axioms: [propext, Classical.choice, Quot.sound]
+'S9Pilot.Madelung.longitudinal_transverse_eq_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'S9Pilot.Madelung.no_transverse_velocity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'S9Pilot.Madelung.transverse_linearVelocity_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'S9Pilot.Madelung.zero_wavevector' depends on axioms: [propext, Classical.choice, Quot.sound]
+'S9Pilot.Madelung.concrete_longitudinal_velocity' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+SHA-256 of verified canonical sources (relative to research/pde_ledger_v3):
+32671c668126f7b4afee4c709031547326d49b4d087c1a2d372f2fff87e7abf6  lean/s9/S9Pilot.lean
+dafe6e059b64ccbaa98a5ac4e5a5b5706ef51e19479556e42fc4bf840df0bd56  lean/s9/S9Pilot/Action.lean
+66352628b83475280942c32dee6d1c9e704ae0526ba536a3f62136e2c77ac666  lean/s9/S9Pilot/Analytic.lean
+0c279281a0d488e51b1c3a4de29849dd4d1fce0a94d01abc9e5fff990da7d5e1  lean/s9/S9Pilot/Certificate.lean
+28868a9a30996a36fe0c32c8ad53f0f5f5549162f81ba27a703f7b2d08cef324  lean/s9/S9Pilot/FiniteAction.lean
+6d4ad27266effbf2493e0cf7c6f9ce55f2bba2501eaeab584110a59bfaac455e  lean/s9/S9Pilot/Madelung.lean
+8803fdaf6e7ce26a336d6663decc23e4c871377e95ef9bf9bb71b77f1605cb21  lean/s9/S9Pilot/PlaneWave.lean
+bdd6e886eb291ce0837ea8d94b10bb7548a6fb37a227c90e82f0e7799936e1a3  lean/s9/S9Pilot/Spectrum.lean
+5ea90c39293879695be59e1a53f0046b13d52577dfb59e0b16a42546c4591dd2  lean/s9/S9Pilot/Variation.lean
+1d500fd5bb36b435341b31bcea9f4c9848af8548593aab1d1336a0e3d3243e36  lean/s9/S9Pilot/VariationalCertificate.lean
+
+Current dependency pins (relative to lean/):
+302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b  lean-toolchain
+749f67669c4f2a92daef047d9c925afc8d457d35b2adc5a7f8d4ac30fbe24b09  lakefile.toml
+91fd5318cdc35e4044d6e059c6ef73d94b955d27adf8a5860b07ec92add9377e  lake-manifest.json

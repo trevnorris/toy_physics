@@ -1,0 +1,152 @@
+{
+  "status": "PASS",
+  "scope": "S9 MAIN action and modal operator; exact symbolic SymPy checks, Wolfram source anchors",
+  "limits": "References are handwritten and independently reviewed. No Lean execution of CAS, no fresh Wolfram run, no export/comparator certification.",
+  "sympy_version": "1.14.0",
+  "checks": [
+    {
+      "name": "native_MAIN_action_equals_Lean_jet_reference",
+      "expected_zero": true,
+      "observed_zero": true,
+      "residual": "[0]"
+    },
+    {
+      "name": "native_route_A_equals_contract_operator",
+      "expected_zero": true,
+      "observed_zero": true,
+      "residual": "[0, 0, 0, 0, 0, 0, 0, 0, 0]"
+    },
+    {
+      "name": "native_paired_route_B_equals_contract_operator",
+      "expected_zero": true,
+      "observed_zero": true,
+      "residual": "[0, 0, 0, 0, 0, 0, 0, 0, 0]"
+    },
+    {
+      "name": "native_squared_frequency_determinant",
+      "expected_zero": true,
+      "observed_zero": true,
+      "residual": "[0]"
+    },
+    {
+      "name": "wrong_shear_sign_action_rejected",
+      "expected_zero": false,
+      "observed_zero": false,
+      "residual": "[mu_R*(J11**2 - 2*J11*J20 + J12**2 - 2*J12*J30 + J20**2 + J22**2 - 2*J22*J31 + J30**2 + J31**2)]"
+    },
+    {
+      "name": "wrong_shear_sign_operator_rejected",
+      "expected_zero": false,
+      "observed_zero": false,
+      "residual": "[2*mu_R*(ky**2 + kz**2), -2*kx*ky*mu_R, -2*kx*kz*mu_R, -2*kx*ky*mu_R, 2*mu_R*(kx**2 + kz**2), -2*ky*kz*mu_R, -2*kx*kz*mu_R, -2*ky*kz*mu_R, 2*mu_R*(kx**2 + ky**2)]"
+    }
+  ],
+  "selected_original_source_ranges": [
+    [
+      28,
+      28
+    ],
+    [
+      29,
+      29
+    ],
+    [
+      30,
+      30
+    ],
+    [
+      31,
+      31
+    ],
+    [
+      32,
+      32
+    ],
+    [
+      33,
+      33
+    ],
+    [
+      34,
+      34
+    ],
+    [
+      35,
+      35
+    ],
+    [
+      36,
+      36
+    ],
+    [
+      37,
+      37
+    ],
+    [
+      38,
+      38
+    ],
+    [
+      48,
+      56
+    ],
+    [
+      59,
+      65
+    ],
+    [
+      110,
+      110
+    ],
+    [
+      111,
+      111
+    ],
+    [
+      144,
+      144
+    ],
+    [
+      145,
+      145
+    ],
+    [
+      146,
+      146
+    ],
+    [
+      147,
+      147
+    ],
+    [
+      148,
+      148
+    ],
+    [
+      157,
+      171
+    ],
+    [
+      174,
+      180
+    ],
+    [
+      183,
+      196
+    ]
+  ],
+  "wolfram_source_anchors": [
+    "coordinates = {t, x, y, z};",
+    "velocityVector = D[fieldVector, t];",
+    "curlVector = Curl[fieldVector, spaceCoordinates];",
+    "mainLagrangian = rhoBr velocityVector.velocityVector/2 - muR curlVector.curlVector/2;",
+    "wavePhase = Exp[I (waveVector.spaceCoordinates - omega t)];"
+  ],
+  "source_sha256": {
+    "scripts/S9_light_requires_shear_sympy_audit.py": "0793b063b891f832f9ecb85c0cbdac35a084f8beb3ff7164d53bdf20dcb7d945",
+    "mathematica/S9_light_requires_shear_mathematica_audit.wl": "1fd1cc56ffa9a250dfb98f9580f5037994389d248bb02eb940bfbd0f5000ad77",
+    "_measurements/S9_lean_source_check.py": "d2bb0221147b42d8f144cb4fb991051b6701b3b218701a6631ea6ea19362bb1d",
+    "lean/s9/S9Pilot/Action.lean": "dafe6e059b64ccbaa98a5ac4e5a5b5706ef51e19479556e42fc4bf840df0bd56",
+    "lean/s9/S9Pilot/PlaneWave.lean": "8803fdaf6e7ce26a336d6663decc23e4c871377e95ef9bf9bb71b77f1605cb21"
+  }
+}

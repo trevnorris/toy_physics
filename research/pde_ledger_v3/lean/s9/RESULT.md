@@ -88,7 +88,7 @@ is installed and its existing wave theorem remains an installation check; the
 custom S9 derivation does not reuse Physlib's physical field definitions. No CAS
 output or numerical fingerprint is a proof premise.
 
-## Verification
+## Original pilot verification
 
 `lake build S9Pilot` passed with warnings treated as errors for the pilot modules.
 All 21 audited declarations, including both combined certificates and the
@@ -119,6 +119,25 @@ The canonical source retained its original signs. These checks show that the
 existing proofs fail under those changes; they do not establish that every
 possible mistranscription would be detected.
 
+## Bounded scalar-phase extension (2026-09-15)
+
+[Madelung.lean](S9Pilot/Madelung.lean) now derives, from the actual supplied
+spatial derivative `v = (hbar/m) grad(theta)`, the first velocity variation for
+`theta = theta0 + epsilon (A cos(phi) + B sin(phi))`. With
+`phi = k·x − omega t`, the cosine and sine velocity amplitudes are `(hbar/m) B k`
+and `−(hbar/m) A k`. Both are in the longitudinal span. For nonzero `hbar,m`
+the cosine-amplitude range is that whole span, and for nonzero `k` its intersection
+with the transverse space is zero. A concrete nonzero longitudinal example
+and the zero-wavevector limit are proved as well.
+
+The new module compiles with warnings treated as errors. The consolidated S9
+rebuild, 32 axiom audits and mutation controls pass; see
+[CLOSURE_VERIFICATION.txt](CLOSURE_VERIFICATION.txt). Both independent
+statement-fidelity reviews are CLEAR, closing the bounded C1–C4 contract;
+see [FIDELITY_REVIEW.md](FIDELITY_REVIEW.md) for the reviewed revision and
+dispositions, and [COVERAGE.md](COVERAGE.md) for the finite completion criteria. The compact
+original-engine connection and exact interpretation are in [FIDELITY.md](FIDELITY.md).
+
 ## Remaining boundary
 
 The formalized setting is D=3, flat whole spacetime R^4, constant material
@@ -130,11 +149,14 @@ have not been formalized here.
 The original S9 library does not include arbitrary-dimensional mode counts or
 dimensional units; the later S10 libraries supply those extensions, with exact
 D=3 baseline agreement. Remaining exclusions across this checkpoint include
-completeness of general PDE solutions through Fourier superposition; the GNLS
-no-transverse-mode argument; confinement and nonlinear physics; and derivation
+completeness of general PDE solutions through Fourier superposition; GNLS
+dynamics and the broader scalar spin-1 claim beyond the phase-velocity theorem;
+confinement and nonlinear physics; and derivation
 of the curl-only action or its material constants from a microscopic medium.
 The supplied density and its physical interpretation remain premises. The CAS
-scripts, exports, and ledger prose have not themselves been certified or modified
-by this pilot. No discrepancy with the selected S9 results was found. The
+exports and broader ledger prose have not themselves been certified or modified
+by this closure task. Its compact action/operator source checks do not certify
+the original parser/comparator pipeline. No discrepancy with the selected S9
+results was found. The
 [coverage map](COVERAGE.md) distinguishes the completed pilot from the remaining
 S9 ledger obligations.

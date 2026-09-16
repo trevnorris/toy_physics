@@ -1,5 +1,5 @@
 {
-  "status": "POSITION_DOMAIN_PRODUCTION_RUNNING",
+  "status": "VALIDATED_PUBLICATION_PREPARED",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-position-domain-20260916",
   "checker": "S11c_d_position_domain.py",
   "preflight": "S11c_d_position_domain_preflight.py",
@@ -9,7 +9,7 @@
   "acceptedAdaptiveAnnexVerificationCommit": "96258429",
   "workers": 4,
   "nativeThreadsPerWorker": 1,
-  "next": "Wait silently for owned production completion/error wake-up; validate complete position-domain evidence and publish accepted output through DataLad/git-annex.",
+  "next": "Annex-verify the finite position-domain publication, then prepare source-derived momentum-domain expansion and its frequency/profile quadrature checks before further physical limit claims.",
   "implementationCommit": "303e5b50",
   "launch": {
     "launchedUtc": "2026-09-16T04:44:54.351027+00:00",
@@ -292,5 +292,26 @@
       },
       "addressSpaceLimit": "Max address space         2147483648           2147483648           bytes     "
     }
-  ]
+  ],
+  "productionOutcome": {
+    "stage": "position_construct",
+    "command": [
+      "python",
+      "-u",
+      "_measurements/S11c_d_position_domain.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-position-domain-20260916/production/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-position-domain-20260916/production/position_construct.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-position-domain-20260916/production/position_construct.stderr",
+    "startedUtc": "2026-09-16T04:59:14.185911+00:00",
+    "childPid": 3391610,
+    "status": "completed",
+    "exitCode": 0,
+    "wallSeconds": 8747.243899317458,
+    "stderrBytes": 0,
+    "finishedUtc": "2026-09-16T07:25:01.429863+00:00"
+  },
+  "acceptedCheckpoint": "S11c_d_position_domain_checkpoint.json",
+  "acceptedRunRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-position-domain-20260916/production"
 }

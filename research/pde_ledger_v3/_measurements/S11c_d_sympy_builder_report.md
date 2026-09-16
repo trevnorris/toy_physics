@@ -137,12 +137,13 @@ The 1.18 MB transcript is published and annex-verified. Next are finite-domain
 and tail checks. Inner/source/profile rules were held, so independent outer
 agreement does not establish uniform/grade coverage, tails or Abel limits.
 
-Finite position-domain preflight is accepted: 82 transform checks, six exact
-production-order prefixes and four exact coarse full-action comparisons. Saved
-metadata recovery passes all 25,312 paths and 21 cache controls; original and
-recovery transcripts are byte-identical. No integration was repeated. Full
-80-row production at source/profile cutoffs 48/10 and 48/14 is running, retaining
-momentum bounds +/-2 and regulator 0.2. Physical tail/Abel work remains pending.
+Finite position-domain production is validated in 2h26m. All 80 rows and both
+fields were reevaluated at source/profile bounds 48/10 and 48/14. Source/profile
+domain changes reach 8.47e-14 / 4.40e-15 in complete actions. All 12 layouts,
+8,484 partials, 71 sources and 40,672 metadata paths pass with unchanged packets.
+The 2.31 MB transcript is prepared for annex publication. Next is momentum-domain
+expansion with freshly computed source-frequency/profile-transfer ranges and
+resolution checks. Finite changes do not establish physical tail or Abel limits.
 
 ## Retained user-approved solver/export contract
 

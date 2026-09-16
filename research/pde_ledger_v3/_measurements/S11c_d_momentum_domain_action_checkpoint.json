@@ -73900,7 +73900,7 @@
   "wallSeconds": 33420.184259867296,
   "coordinatorPeakRssKiB": 237624,
   "scope": "Finite common-rule momentum boxes with explicit profile-rule baseline. Wider-box momentum refinement, infinite tails, uniform/independent-grade coverage, Abel limits, scattering and poles are not established.",
-  "status": "VALIDATED_PUBLICATION_PREPARED",
+  "status": "PUBLISHED_ANNEX_VERIFIED",
   "acceptedUtc": "2026-09-16T17:25:18.277429+00:00",
   "verificationInvocation": {
     "stage": "momentum_construct",
@@ -74015,5 +74015,13 @@
     "path": "scripts/out/S11c_d_momentum_domain_action.out",
     "bytes": 3405408,
     "sha256": "7d46adab80e9423c14ce852e4d67eecc49761d06dc3f8253a1d7fdf99ee09bc8"
+  },
+  "annexVerification": {
+    "publicationCommit": "995d590934e9f8ed3b0b6f0a9306cbbe06f6c840",
+    "sha256": "7d46adab80e9423c14ce852e4d67eecc49761d06dc3f8253a1d7fdf99ee09bc8",
+    "annexKey": "MD5E-s3405408--58928bda602cdf8c91aedb9679cf3d8f.out",
+    "symlink": "../../../../.git/annex/objects/jQ/3v/MD5E-s3405408--58928bda602cdf8c91aedb9679cf3d8f.out/MD5E-s3405408--58928bda602cdf8c91aedb9679cf3d8f.out",
+    "gitMode": "120000",
+    "bytes": 3405408
   }
 }

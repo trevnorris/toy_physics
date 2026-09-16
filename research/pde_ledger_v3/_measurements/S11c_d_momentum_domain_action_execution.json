@@ -1,5 +1,5 @@
 {
-  "status": "VALIDATED_PUBLICATION_PREPARED",
+  "status": "PUBLISHED_ANNEX_VERIFIED",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-momentum-domain-action-20260916",
   "checker": "S11c_d_momentum_domain_action.py",
   "preflight": "S11c_d_momentum_domain_action_preflight.py",
@@ -10,7 +10,7 @@
   "acceptedPreparationAnnexVerificationCommit": "1cba44b5",
   "maximumConcurrentWorkers": 4,
   "nativeThreadsPerWorker": 1,
-  "next": "Annex-verify the finite momentum-domain publication, then refine the dominant paired-momentum contribution at cutoffs 3/4 before interpreting finite-box differences as tails.",
+  "next": "Refine fixed-cutoff single/pair quadratures on momentum boxes 3/4; retain and label accepted three-momentum contributions while resolving the dominant paired changes.",
   "implementationCommit": "f781846f",
   "preflightRunRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-momentum-domain-action-20260916/preflight",
   "launch": {
@@ -128,5 +128,14 @@
     "finishedUtc": "2026-09-16T17:23:20.062001+00:00"
   },
   "acceptedCheckpoint": "S11c_d_momentum_domain_action_checkpoint.json",
-  "acceptedRunRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-momentum-domain-action-20260916/production"
+  "acceptedRunRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-momentum-domain-action-20260916/production",
+  "publicationCommit": "995d590934e9f8ed3b0b6f0a9306cbbe06f6c840",
+  "annexVerification": {
+    "publicationCommit": "995d590934e9f8ed3b0b6f0a9306cbbe06f6c840",
+    "sha256": "7d46adab80e9423c14ce852e4d67eecc49761d06dc3f8253a1d7fdf99ee09bc8",
+    "annexKey": "MD5E-s3405408--58928bda602cdf8c91aedb9679cf3d8f.out",
+    "symlink": "../../../../.git/annex/objects/jQ/3v/MD5E-s3405408--58928bda602cdf8c91aedb9679cf3d8f.out/MD5E-s3405408--58928bda602cdf8c91aedb9679cf3d8f.out",
+    "gitMode": "120000",
+    "bytes": 3405408
+  }
 }

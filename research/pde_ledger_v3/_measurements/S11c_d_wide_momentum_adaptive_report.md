@@ -33,3 +33,9 @@ refined cutoff3-to4 full-action change1.134674e-7. No new adaptive physical
 result is accepted yet. Remaining wider-three checks, uniform/independent-grade
 or global exceptional coverage, physical tails, Abel limits, scattering and
 poles are separate work. Preserve all accepted grids and factorization.
+
+Preflight acceptance is committed at5d519d3a. Production launched at
+18:26:18 UTC on 2026-09-16. Startup verifies all four workers with one
+native thread and a2GiB address-space ceiling each, 84 current/frozen source
+hashes, empty strict stderr and the local completion/error watcher.
+No production result has yet been accepted.

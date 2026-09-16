@@ -187,8 +187,10 @@ conditional point/node/weight comparisons and eight independent full-action
 contractions agree exactly. Four clean workers, 84 sources, 2646 conditional
 points, 2160 held-term scalars and 68253 metadata paths pass in 123.75 seconds.
 The 6.30 MB coarse transcript remains instrument evidence in durable scratch.
-Next launch full GK21 outer integration for single/pair rows on boxes3/4,
-holding paired inner64, source/profile256/512 and all accepted triple rows.
+Full GK21 outer production launched after acceptance5d519d3a for single/pair
+rows on boxes3/4, holding paired inner64, source/profile256/512 and all accepted
+triple rows. Four single-thread2GiB workers and the silent watcher are verified;
+no production result is accepted yet.
 
 ## Retained user-approved solver/export contract
 

@@ -1,5 +1,5 @@
 {
-  "status": "PREFLIGHT_ACCEPTED",
+  "status": "PRODUCTION_RUNNING",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-wide-adaptive-20260916",
   "checker": "S11c_d_wide_momentum_adaptive.py",
   "plan": "S11c_d_wide_momentum_adaptive_plan.md",
@@ -9,7 +9,7 @@
   "maximumConcurrentWorkers": 4,
   "nativeThreadsPerWorker": 1,
   "workerAddressSpaceBytes": 2147483648,
-  "next": "Commit accepted instrument preflight and launch four-worker independent outer production with silent completion/error wake-up.",
+  "next": "Silent local watcher owns completion/error wake-up. Validate independent outer results, then publish via DataLad and commit; choose remaining wide-three/tail work from measured evidence.",
   "preflightRunRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-wide-adaptive-20260916/preflight",
   "launcherSha256": "0ab1ca3e3facb7f47098949eb0ab775f3368d60dc25a34418fdeada3288d01f4",
   "implementationCommit": "ccd70c11",
@@ -67,5 +67,40 @@
   "acceptedPreflight": "S11c_d_wide_momentum_adaptive_preflight.json",
   "acceptedPreflightSha256": "04fa92e475348247f3baa9444cd76007fe2f165633d85e1d43db1788b5266f74",
   "productionRunRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-wide-adaptive-20260916/production",
-  "productionLauncherSha256": "94519353a3015161f5eba97975e24d59f511d6e8a74717720b3ed116bf5ba37a"
+  "productionLauncherSha256": "eb2f81f4193f7de829e9d674a661f0ce68601a4d36b332c375366db7d1747183",
+  "acceptedPreflightCommit": "5d519d3a",
+  "productionLaunch": {
+    "launchedUtc": "2026-09-16T18:26:18.519767+00:00",
+    "command": [
+      "/usr/bin/python",
+      "_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-wide-adaptive-20260916/production",
+      "--stage",
+      "adaptive_construct",
+      "--",
+      "python",
+      "-u",
+      "_measurements/S11c_d_wide_momentum_adaptive.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-wide-adaptive-20260916/production/complete"
+    ],
+    "supervisorPid": 358633,
+    "watcherPid": 358634,
+    "watcherDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-wide-adaptive-20260916/production/completion-watcher",
+    "threadEnvironment": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1"
+    }
+  },
+  "productionLaunchPreconditions": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-wide-adaptive-20260916/production/launch-preconditions.json",
+    "sha256": "01d61a42077b3d705dd9890421d595a455a7501453a839224b152b546f91b4b1"
+  },
+  "productionLaunchVerification": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-wide-adaptive-20260916/production/launch-verification.json",
+    "sha256": "601837d90246a686f4ec9cf1ac072e9a58aca40e0675ae66e0e9aa7e4cd83df7"
+  }
 }

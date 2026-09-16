@@ -37,3 +37,7 @@ summation order, deterministic aggregation, independent logs/checkpoints and
 silent completion/error wake-up. The accepted focused transcripts remain in
 repository scratch; publish the production physical transcript only after its
 full validation. See the acceptance and handoff checkpoints.
+
+Production completed successfully in 2h18m. All four children exited zero with
+empty stderr, retaining the 11,616,256-node prefix. The source/profile refinement
+is validated; see S11c_d_three_momentum_source_report.md and its checkpoint.

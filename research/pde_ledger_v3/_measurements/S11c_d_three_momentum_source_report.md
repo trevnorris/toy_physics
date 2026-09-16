@@ -1,27 +1,29 @@
 # S11c-d three-momentum source/profile refinement
 
-The initial three-momentum result is published at 22e78b55 and annex-verified
-at b87885b5. Its final raw outer/innermost/middle changes are below 2.68e-12 /
-8.22e-15 / 5.61e-14. This next stage keeps the accepted momentum grid and all
-single/pair contributions, doubles source order to 256, then profile order to
-256. It covers all ten rows, both approved fields and all four nested profiles.
+The four-worker continuation passed in 2 hours 18 minutes with exit zero and
+empty stderr in every process. Each numerical worker used one native thread;
+peak worker/coordinator RSS was 114.8/148.9 MiB. Four grids cover 138,624,384
+momentum nodes, retaining the saved 11,616,256-node prefix and computing the
+remaining 127,008,128 nodes. The engine and native summation order are unchanged.
 
-The engine is unchanged. The new checker verifies the accepted packet chain,
-reconstructs the retained mixed baseline, and emits the actual distinct momentum
-orders for every held layout. It saves all complete and partial results and
-preserves raw integral changes alongside weighted term and full-action changes.
-The accepted baseline is reused explicitly. No source/profile full refinement
-result is accepted yet; independent quadrature, parameter-grade coverage,
-physical tails/interchange and Abel weak limits remain separate work.
+All ten native rows, both approved Gaussian fields, ten source records and four
+nested profiles are included. Source order 128 to 256 changes raw integrals by
+at most 6.14e-19; profile order 128 to 256 changes them by at most 3.64e-17.
+Complete actions round equal at the working precision, while every raw change
+remains explicit. Accepted single/pair contributions and the refined baseline
+are retained unchanged. These sampled finite results do not establish uniform
+or independent-grade convergence, physical tails, Abel limits, scattering or poles.
 
-Focused checks passed in 21.5 seconds with exit zero and empty stderr. Both
-16,384-node baseline prefixes match exactly in every value, mutation, mass,
-node and weight. The complete retained action also matches exactly. Cached
-source/profile rules are exact and read-only; actual measure and order controls
-respond. Higher-order prefixes are evaluated without claiming full integrals.
-The retained-baseline emission replays 2,046 tags, 1,021 keys and 17,637 metadata
-paths, with explicit momentum-limit, box-mass and source/profile cache units.
+All six records, four read-only rule caches, 5,754 tags, 2,875 fresh keys and
+26,705 metadata paths passed replay. The 63 current/frozen sources, 7,752 merged
+partial records and 7,756 worker result/partial artifacts are verified, including
+the serial handoff and all pre/post-emission packet identities. Workspace split
+estimates conservatively include the saved combined prefix estimate; RSS remains
+separate. Serial cumulative versus worker-local peaks were validated explicitly.
 
-The next four new full grids evaluate 138,624,384 momentum nodes. Measured
-prefix rates suggest 2.1-3.4 hours before checkpoint/emission overhead; allow
-roughly 3-4 hours. This is a runtime estimate, not convergence evidence.
+The 1,516,717-byte transcript is prepared for DataLad/git-annex publication at
+`scripts/out/S11c_d_three_momentum_source.out`, SHA256
+`9020fef82c2499a26c76c8c7fd3c7649f14ae45592092ca44b325cdd0c859bfa`.
+Next: an independent adaptive outer quadrature, holding the resolved inner,
+source and profile rules fixed, before physical domain/tail and regulator tests.
+Preserve all saved operands and the retained solver/export contract.

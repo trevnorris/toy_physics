@@ -121,22 +121,13 @@ unchanged held terms, source hashes and packet identities. The 2.24 MB transcrip
 is published and annex-verified. Next are source/profile order refinements on
 the fixed final momentum grid; physical tails and Abel limits remain work.
 
-The source/profile follow-up keeps the accepted three-momentum grid and the
-byte-identical engine. Focused prefixes, retained full actions and 17,637
-metadata paths replay exactly. It will double source order, then profile order,
-on both fields while retaining validated single/pair terms. No full follow-up
-result is accepted yet; independent quadrature and physical limits remain work.
-
-The user approved four isolated numerical workers with one native thread each.
-Exact resume preserves native summation and reproduces an uninterrupted prefix,
-including frequency counts and mutations. The serial source/profile run was
-intentionally paused with 11,616,256 computed nodes preserved byte-for-byte.
-Four-worker action and emission equivalence is now validated: four prefixes
-and six complete underresolved records agree exactly; 26,705 metadata paths
-replay and both repaired standalone transcripts are byte-identical. Production
-is running with four verified single-thread workers from that accumulator.
-The physical engine and original serial
-constructor/emitter remain unchanged; these tests establish scheduling only.
+Three-momentum source/profile refinement is validated in 2h18m with four
+single-thread workers. The preserved 11,616,256-node prefix was resumed without
+changing native summation. Raw source/profile order changes are at most
+6.14e-19 / 3.64e-17. All ten rows, six records and 26,705 metadata paths pass;
+source, worker, partial and pre/post-packet hashes agree. The 1.52 MB transcript
+is prepared for annex publication. Next is independent adaptive outer quadrature,
+then physical domain/tail and regulator checks; finite agreement is not a limit.
 
 ## Retained user-approved solver/export contract
 

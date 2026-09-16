@@ -1,12 +1,12 @@
 {
-  "status": "PARALLEL_PRODUCTION_RUNNING",
+  "status": "VALIDATED_PUBLICATION_PREPARED",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-momentum-20260915",
   "plan": "S11c_d_parallel_momentum_plan.md",
   "report": "S11c_d_parallel_momentum_report.md",
   "instrument": "S11c_d_parallel_momentum.py",
   "workers": 4,
   "nativeThreadsPerWorker": 1,
-  "next": "Wait silently for the owned completion/error watcher; validate complete source/profile refinement and publish accepted output through DataLad/git-annex.",
+  "next": "Annex-verify publication, then prepare independent adaptive outer quadrature on accepted source/profile and inner-momentum operands.",
   "implementationCommit": "c0034190",
   "handoff": "S11c_d_parallel_momentum_handoff.json",
   "preservedPrefixNodes": 11616256,
@@ -312,5 +312,28 @@
   "productionLaunchVerification": {
     "path": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-momentum-20260915/production/launch-verification.json",
     "sha256": "a682d848969e9e53e9e3c665c024c7b5e8d3abc182180caf6747a0d68ef5a4b5"
-  }
+  },
+  "acceptedRunRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-momentum-20260915/production",
+  "invocation": {
+    "stage": "parallel_construct",
+    "command": [
+      "python",
+      "-u",
+      "_measurements/S11c_d_parallel_momentum.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-momentum-20260915/production/complete",
+      "--handoff",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-momentum-20260915/handoff.json"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-momentum-20260915/production/parallel_construct.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-momentum-20260915/production/parallel_construct.stderr",
+    "startedUtc": "2026-09-15T23:36:43.478499+00:00",
+    "childPid": 3224399,
+    "status": "completed",
+    "exitCode": 0,
+    "wallSeconds": 8256.756879942492,
+    "stderrBytes": 0,
+    "finishedUtc": "2026-09-16T01:54:20.235465+00:00"
+  },
+  "acceptedCheckpoint": "S11c_d_three_momentum_source_checkpoint.json"
 }

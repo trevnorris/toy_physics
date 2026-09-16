@@ -1,5 +1,5 @@
 {
-  "status": "PREFLIGHT_RUNNING",
+  "status": "PREFLIGHT_ACCEPTED",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-wide-momentum-20260916",
   "checker": "S11c_d_wide_momentum_refinement.py",
   "plan": "S11c_d_wide_momentum_refinement_plan.md",
@@ -11,7 +11,7 @@
   "nativeThreadsPerWorker": 1,
   "workerAddressSpaceBytes": 2147483648,
   "preflightRunRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-wide-momentum-20260916/preflight",
-  "next": "Await silent local completion/error wake-up. Validate saved native prefixes, coarse serial/worker actions and full metadata before production.",
+  "next": "Commit instrument acceptance and launch the four-worker fixed-wide-box production sweep with a silent completion/error watcher.",
   "launcherSha256": "657a09bae243ce684b0242368e2593f4ab5022774b355d092c83992414f63d7d",
   "implementationCommit": "13653baa",
   "launch": {
@@ -44,5 +44,27 @@
   "launchVerification": {
     "path": "/var/projects/toy_physics/_scratch/s11c/s11c-wide-momentum-20260916/preflight/launch-verification.json",
     "sha256": "9131d7eb7d574f3fae807571a1eb4edd3a672fb426d88c307e85bdb0ed15c09f"
-  }
+  },
+  "preflightOutcome": {
+    "stage": "wide_preflight",
+    "command": [
+      "python",
+      "-u",
+      "_measurements/S11c_d_wide_momentum_refinement.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-wide-momentum-20260916/preflight/complete",
+      "--preflight"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-wide-momentum-20260916/preflight/wide_preflight.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-wide-momentum-20260916/preflight/wide_preflight.stderr",
+    "startedUtc": "2026-09-16T17:38:06.733675+00:00",
+    "childPid": 337094,
+    "status": "completed",
+    "exitCode": 0,
+    "wallSeconds": 273.43322684057057,
+    "stderrBytes": 0,
+    "finishedUtc": "2026-09-16T17:42:40.166980+00:00"
+  },
+  "acceptedPreflight": "S11c_d_wide_momentum_refinement_preflight.json",
+  "acceptedPreflightSha256": "8d6d48b6487c9d5e6d3c45234cac0ace7aa5d752172e2233fffc41572266b8f5"
 }

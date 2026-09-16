@@ -1,5 +1,5 @@
 {
-  "status": "PREFLIGHT_ACCEPTED_PRODUCTION_READY",
+  "status": "POSITION_DOMAIN_PRODUCTION_RUNNING",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-position-domain-20260916",
   "checker": "S11c_d_position_domain.py",
   "preflight": "S11c_d_position_domain_preflight.py",
@@ -9,7 +9,7 @@
   "acceptedAdaptiveAnnexVerificationCommit": "96258429",
   "workers": 4,
   "nativeThreadsPerWorker": 1,
-  "next": "Launch full source/profile finite-domain action evaluation with four isolated single-thread workers and a silent completion/error watcher.",
+  "next": "Wait silently for owned production completion/error wake-up; validate complete position-domain evidence and publish accepted output through DataLad/git-annex.",
   "implementationCommit": "303e5b50",
   "launch": {
     "launchedUtc": "2026-09-16T04:44:54.351027+00:00",
@@ -164,5 +164,133 @@
     "finishedUtc": "2026-09-16T04:55:42.528025+00:00"
   },
   "acceptedPreflight": "S11c_d_position_domain_preflight.json",
-  "acceptedPreflightSha256": "ff3e22544d3cb7c5b271f9ad08720e2f11214ed9981f63d4ed06b6e736bdb672"
+  "acceptedPreflightSha256": "ff3e22544d3cb7c5b271f9ad08720e2f11214ed9981f63d4ed06b6e736bdb672",
+  "preflightAcceptanceCommit": "9bbcfa3f",
+  "productionLaunch": {
+    "launchedUtc": "2026-09-16T04:59:14.154805+00:00",
+    "command": [
+      "/usr/bin/python",
+      "_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-position-domain-20260916/production",
+      "--stage",
+      "position_construct",
+      "--",
+      "python",
+      "-u",
+      "_measurements/S11c_d_position_domain.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-position-domain-20260916/production/complete"
+    ],
+    "supervisorPid": 3391604,
+    "watcherPid": 3391605,
+    "watcherDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-position-domain-20260916/production/completion-watcher",
+    "threadEnvironment": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1"
+    }
+  },
+  "productionActiveAtLaunch": {
+    "stage": "position_construct",
+    "command": [
+      "python",
+      "-u",
+      "_measurements/S11c_d_position_domain.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-position-domain-20260916/production/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-position-domain-20260916/production/position_construct.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-position-domain-20260916/production/position_construct.stderr",
+    "startedUtc": "2026-09-16T04:59:14.185911+00:00",
+    "childPid": 3391610,
+    "status": "running"
+  },
+  "productionWatcherAtLaunch": {
+    "status": "waiting",
+    "watcherPid": 3391605,
+    "jobPid": 3391604,
+    "thread": "01a08c53-295c-70f0-baaf-353db1745867",
+    "startedUtc": "2026-09-16T04:59:14.196518+00:00",
+    "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
+    "messageSha256": "c42bb1df063d0388f4dc5add7b09454ba383259c29587aaa34cb74e3bab2b8a9",
+    "notifications": {}
+  },
+  "productionLauncher": "/var/projects/toy_physics/_scratch/s11c/s11c-position-domain-20260916/production/launch.py",
+  "productionLauncherSha256": "548503e75a48b70e46d2dea16781759e019527a567c122a52b6a571dd5e8619f",
+  "productionLaunchVerification": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-position-domain-20260916/production/launch-verification.json",
+    "sha256": "38a9ccf1fbd95b46e9e8c0e49dc4f37b1d119d28210340fb038e1fbcd6def51e"
+  },
+  "productionWorkersAtLaunch": [
+    {
+      "task": [
+        0,
+        1
+      ],
+      "pid": 3391679,
+      "parentPid": 3391610,
+      "threads": 1,
+      "rss": "151736 kB",
+      "threadEnvironment": {
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1"
+      },
+      "addressSpaceLimit": "Max address space         2147483648           2147483648           bytes     "
+    },
+    {
+      "task": [
+        0,
+        2
+      ],
+      "pid": 3391680,
+      "parentPid": 3391610,
+      "threads": 1,
+      "rss": "151736 kB",
+      "threadEnvironment": {
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1"
+      },
+      "addressSpaceLimit": "Max address space         2147483648           2147483648           bytes     "
+    },
+    {
+      "task": [
+        1,
+        1
+      ],
+      "pid": 3391681,
+      "parentPid": 3391610,
+      "threads": 1,
+      "rss": "151736 kB",
+      "threadEnvironment": {
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1"
+      },
+      "addressSpaceLimit": "Max address space         2147483648           2147483648           bytes     "
+    },
+    {
+      "task": [
+        1,
+        2
+      ],
+      "pid": 3391682,
+      "parentPid": 3391610,
+      "threads": 1,
+      "rss": "151736 kB",
+      "threadEnvironment": {
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1"
+      },
+      "addressSpaceLimit": "Max address space         2147483648           2147483648           bytes     "
+    }
+  ]
 }

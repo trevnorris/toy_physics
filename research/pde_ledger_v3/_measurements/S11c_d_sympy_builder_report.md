@@ -145,12 +145,13 @@ The 2.31 MB transcript is published and annex-verified. Next is momentum-domain
 expansion with freshly computed source-frequency/profile-transfer ranges and
 resolution checks. Finite changes do not establish physical tail or Abel limits.
 
-Momentum-domain preparation is running for cutoffs 3 and 4, with freshly
-computed source ranges +/-3 and +/-4 and profile transfers +/-60 and +/-80.
-The old profile order 256 is underresolved at the new extreme transfer; higher
-orders and adaptive checks will select the next complete-action rules. All four
-numerical workers exited cleanly; final validation remains pending under the
-silent local watcher. No wider-domain full action has yet been computed.
+Momentum-domain preparation is validated in 7m37s: 152 source/profile records,
+all 80-row coefficient probes, 74 sources and 263,184 metadata paths pass.
+Source/profile adaptive residuals reach 7.17e-13 / 1.15e-12. At the new wider
+transfer range, profile 256-to-384 changes reach 0.00404, falling to 1.80e-12
+for 384-to-512. Next compute source256/profile512 complete actions with a
+matching-rule cutoff-2 baseline before cutoffs 3/4. The 7.30 MB preparation
+transcript is ready for publication; wider actions and physical limits remain.
 
 ## Retained user-approved solver/export contract
 

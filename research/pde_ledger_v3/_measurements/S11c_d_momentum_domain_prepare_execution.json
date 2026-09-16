@@ -1,5 +1,5 @@
 {
-  "status": "MOMENTUM_DOMAIN_PREPARATION_RUNNING",
+  "status": "VALIDATED_PUBLICATION_PREPARED",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-momentum-domain-20260916",
   "checker": "S11c_d_momentum_domain_prepare.py",
   "plan": "S11c_d_momentum_domain_plan.md",
@@ -9,7 +9,7 @@
   "acceptedPositionAnnexVerificationCommit": "29b0c8e9",
   "workers": 4,
   "nativeThreadsPerWorker": 1,
-  "next": "Await the local completion/error wake-up for final emission/metadata/source/packet validation. All four numerical workers finished with exit zero and empty stderr at startup verification; no preparation result is accepted before final supervisor exit and complete validation.",
+  "next": "Annex-verify preparation, then compute matching-rule baseline and wider momentum actions, keeping resolution effects explicit.",
   "implementationCommit": "5aedcc01",
   "launch": {
     "launchedUtc": "2026-09-16T07:41:38.565301+00:00",
@@ -50,5 +50,25 @@
       0,
       0
     ]
-  }
+  },
+  "outcome": {
+    "stage": "momentum_prepare",
+    "command": [
+      "python",
+      "-u",
+      "_measurements/S11c_d_momentum_domain_prepare.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-momentum-domain-20260916/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-momentum-domain-20260916/momentum_prepare.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-momentum-domain-20260916/momentum_prepare.stderr",
+    "startedUtc": "2026-09-16T07:41:38.595862+00:00",
+    "childPid": 3424262,
+    "status": "completed",
+    "exitCode": 0,
+    "wallSeconds": 457.30508052930236,
+    "stderrBytes": 0,
+    "finishedUtc": "2026-09-16T07:49:15.900992+00:00"
+  },
+  "acceptedCheckpoint": "S11c_d_momentum_domain_prepare_checkpoint.json"
 }

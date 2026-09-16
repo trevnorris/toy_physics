@@ -1,36 +1,29 @@
 # S11c-d momentum-domain preparation
 
-Position-domain actions are published and annex-verified at e4f8d74e/29b0c8e9.
-Source/profile cutoff changes reach only 8.47e-14 / 4.40e-15 in complete actions
-on the accepted finite momentum box. They do not establish an infinite tail.
+The preparation passed in 7m37s with four clean single-thread workers. Exact
+baseline/reverse joins preserve all 80 rows, 70 source records and six profiles
+at momentum cutoffs 2/3/4, source/profile cutoffs 48/14 and regulator 0.2.
+Source ranges are +/-2/3/4; profile transfer ranges are +/-40/60/80.
 
-The next helper binds momentum cutoffs 2, 3 and 4 in the actual symbolic limits,
-retaining source/profile cutoffs 48/14, regulator 0.2, all 80 native rows, all
-70 bound sources and six profiles. Focused exact baseline/reverse joins pass.
-Computed source ranges are +/-2, +/-3, +/-4; computed dimensionless profile
-transfer ranges are +/-40, +/-60, +/-80. Actual real-box assignments are retained.
+All 152 transform records pass literal/adaptive comparisons and actual weight
+mutations. The largest source literal/adaptive residuals are 5.87e-14/7.17e-13;
+profile residuals are 1.70e-15/1.15e-12. Source 256-to-384 changes reach 8.14e-13.
+Profile 256-to-384 changes reach 0.0040414 on the newly enlarged box, while
+384-to-512 changes reach 1.80e-12. Every raw discrepancy and adaptive error
+estimate is retained; the old profile order is inadequate for the new range.
 
-At profile transfer +/-80, the old order 256 is underresolved: order 256 to 384
-changes sampled profiles by up to 4.964e-4, while 384 to 512 changes these probes
-by at most 1.13e-12. This concerns the newly proposed wider domain. It does not
-invalidate the accepted +/-2 momentum calculation. Three endpoint/zero probes
-alone do not establish uniform resolution or select a final production rule.
+All four sets of coefficient probes include every native row, 49 real-box
+coordinates and all three Abel diagonals/width offsets. They establish sampled
+execution only, not global denominator, sheet or exceptional-locus coverage.
+All 74 source files, 160 worker/record/probe artifacts and pre/post packets
+join. Emission replays 10,664 tags, 5,330 write keys and 263,184 metadata paths.
+The 7.30 MB transcript is prepared for DataLad publication; no physics or
+numerical integration was repeated in publication verification.
 
-The prepared four-worker run compares source orders 128/256/384 and profile
-orders 256/384/512 across complete new sampled frequency assignments, including
-literal original operands, independent adaptive integration and actual weight
-mutations. Every completed record is saved before guards. Coefficient probes
-cover all native rows at corners, center and all Abel diagonals/width offsets;
-these are sampled execution checks, not global exceptional-domain coverage.
-
-Use the resulting evidence to select complete momentum-domain action rules,
-keeping any resolution change distinct and computing a matching-rule baseline
-or fixed-domain refinement where required. No wider-box full action, physical
-infinite-tail/Abel limit, scattering or pole has been computed by this preparation.
-The engine and approved inputs are unchanged; preserve the retained solver contract.
-
-Implementation is committed at 5aedcc01. The supervised preparation launched
-on 2026-09-16 at 07:41:38 UTC. All four numerical workers finished cleanly in
-106.33 seconds; final transcript/metadata validation was still running at the
-launch checkpoint, with empty stderr. No result is accepted pending final
-validation. The local completion/error watcher will wake this thread.
+Next use source order 256 and profile order 512 in complete actions, with an
+explicit matching-rule cutoff-2 baseline before cutoffs 3 and 4. Every nonlocal
+row must be reevaluated. Keep the baseline rule change separate from the box
+changes, and inspect finite momentum resolution before any tail interpretation.
+The preparation computes no wider-box action, uniform/independent-grade bound,
+infinite tail, Abel limit, scattering or pole. Approved inputs and engine are
+unchanged; the retained solver/export contract remains binding.

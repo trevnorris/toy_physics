@@ -30,3 +30,6 @@ The canonical6,750,781-byte transcript is
 Full wide-box/independent-grade/uniform/global exceptional convergence,
 physical infinite tails, Abel limits, scattering and poles remain open.
 The physics engine, approved values and pinned exports are unchanged.
+
+Publication commit `f3bc5754` stores the transcript through DataLad.
+Full SHA256, MD5E key, symlink and Git mode120000 are verified.

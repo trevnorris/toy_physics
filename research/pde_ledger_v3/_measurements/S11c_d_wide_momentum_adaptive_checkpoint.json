@@ -15842,7 +15842,7 @@
   "wallSeconds": 258.2249680971727,
   "coordinatorPeakRssKiB": 366892,
   "scope": "Finite independent single/pair outer integration at fixed wide boxes with accepted three-momentum values held; no uniform or independent-grade convergence, global exceptional coverage, physical tails, Abel limit, scattering or poles.",
-  "status": "VALIDATED_PUBLICATION_PREPARED",
+  "status": "PUBLISHED_ANNEX_VERIFIED",
   "acceptedUtc": "2026-09-16T18:31:54.708556+00:00",
   "verificationInvocation": {
     "stage": "adaptive_construct",
@@ -15922,5 +15922,13 @@
     "path": "scripts/out/S11c_d_wide_momentum_adaptive.out",
     "bytes": 6750781,
     "sha256": "afdac193d8b7d3fce4bb734336503d1d02d182e38f40829d914261a97d4be99d"
+  },
+  "publicationCommit": "f3bc5754b0d34300a25aec596f6d6a4f829baeaf",
+  "annexVerification": {
+    "sha256": "afdac193d8b7d3fce4bb734336503d1d02d182e38f40829d914261a97d4be99d",
+    "annexKey": "MD5E-s6750781--63a952aa5c244e8c23e2bfa10d9daea4.out",
+    "symlink": "../../../../.git/annex/objects/6q/Ff/MD5E-s6750781--63a952aa5c244e8c23e2bfa10d9daea4.out/MD5E-s6750781--63a952aa5c244e8c23e2bfa10d9daea4.out",
+    "gitMode": "120000",
+    "bytes": 6750781
   }
 }

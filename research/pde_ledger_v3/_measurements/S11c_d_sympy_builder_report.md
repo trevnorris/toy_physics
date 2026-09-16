@@ -186,7 +186,7 @@ Independent wider-box outer production is accepted in4m20s: all40 single
 and30 paired rows agree with refined Gauss within4.83e-15/7.71e-16; all eight
 adaptive solves finish. The box3-to4 action difference remains1.134674e-7.
 Four clean workers,84 sources,3066 conditional points and101909 metadata paths
-pass. The6.75MB transcript is ready for annex publication. Next refine the
+pass. The6.75MB transcript is published and annex-verified. Next refine the
 held wider-box three-momentum terms at fixed source/profile/domain/regulator
 settings. Finite agreement does not establish physical tails or Abel limits.
 

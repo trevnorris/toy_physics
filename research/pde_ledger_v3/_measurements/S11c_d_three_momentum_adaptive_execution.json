@@ -1,5 +1,5 @@
 {
-  "status": "PREFLIGHT_RUNNING",
+  "status": "PREFLIGHT_ACCEPTED_PRODUCTION_READY",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-three-adaptive-20260916",
   "checker": "S11c_d_three_momentum_adaptive.py",
   "preflight": "S11c_d_three_momentum_adaptive_preflight.py",
@@ -9,7 +9,7 @@
   "annexVerificationCommit": "16838693",
   "workers": 4,
   "nativeThreadsPerWorker": 1,
-  "next": "Wait for the silent preflight completion/error watcher, accept full native/conditional and adaptive/emission checks, then run production.",
+  "next": "Launch independent adaptive outer production with four isolated single-thread workers; inner 24/24, source/profile 256/256, per-half absolute tolerance 5e-11 and relative zero.",
   "implementationCommit": "f4cf2728",
   "launch": {
     "launchedUtc": "2026-09-16T02:10:40.311776+00:00",
@@ -62,5 +62,26 @@
     "messageSha256": "e331c0378d0d22877f8be418abf03dc33f7b726a16017c8d2d8c57b47f690357",
     "notifications": {}
   },
-  "launcherSha256": "2050c25759a3e40350b3a7c0cf4f4801388d64affde2d2c7727b34f466e81458"
+  "launcherSha256": "2050c25759a3e40350b3a7c0cf4f4801388d64affde2d2c7727b34f466e81458",
+  "preflightOutcome": {
+    "stage": "adaptive_preflight",
+    "command": [
+      "python",
+      "-u",
+      "_measurements/S11c_d_three_momentum_adaptive_preflight.py",
+      "--directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-three-adaptive-20260916/preflight/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-three-adaptive-20260916/preflight/adaptive_preflight.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-three-adaptive-20260916/preflight/adaptive_preflight.stderr",
+    "startedUtc": "2026-09-16T02:10:40.366642+00:00",
+    "childPid": 3311595,
+    "status": "completed",
+    "exitCode": 0,
+    "wallSeconds": 63.18712763488293,
+    "stderrBytes": 0,
+    "finishedUtc": "2026-09-16T02:11:43.553834+00:00"
+  },
+  "acceptedPreflight": "S11c_d_three_momentum_adaptive_preflight.json",
+  "acceptedPreflightSha256": "520e385329fc796b99e1a81dff839d8e9edc464a085e9ecf810add70810655db"
 }

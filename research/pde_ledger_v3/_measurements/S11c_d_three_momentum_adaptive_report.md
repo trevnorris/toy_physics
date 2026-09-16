@@ -1,22 +1,29 @@
 # S11c-d independent adaptive outer quadrature
 
-Source/profile refinement is published and annex-verified at 9ecb6ed8/16838693.
-Its final raw source/profile changes are below 6.14e-19 / 3.64e-17. The next
-calculation independently replaces only the outer Gauss rule with adaptive GK21;
-inner momentum, source and profile rules remain at their accepted resolutions.
-The physical engine and all prior constructors remain unchanged.
+Preflight passed in 63.2 seconds with exit zero and empty stderr. Both accepted
+production-order 16,384-node prefixes have identical momentum nodes; weight
+residuals are at most 1.33e-23, relative values/mutations 3.11e-16/1.89e-16,
+and mass residuals 3.39e-21. Complete underresolved native/conditional grouping
+agrees within 1.03e-15 relative and complete actions agree exactly.
 
-The new helper derives its conditional batch recursion and group evaluator from
-the native method bodies. Exact AST reversal removes only the fixed-outer
-recursion entry and the omitted measure in the conditional volume. Conditional
-point units are the original row units minus one momentum unit. Four isolated
-workers cover two fields and two disjoint outer half-intervals, with one native
-thread each. Every conditional point and partial sum is saved before guards.
+All four adaptive smoke workers completed. Their 294 conditional points have
+verified source/field/limit/provenance and conditional-dimension joins, finite
+masses and actual measure responses. All ten rows and four nested profiles are
+covered. Every source/record/point/worker hash and pre/post packet identity passes.
+Full replay covers 3,906 tags, 1,951 fresh keys and 13,766 metadata paths.
+The smoke uses inner orders 1/1, source/profile 16/16 and tolerance 1e-3; its
+large changes from the accepted reference are not a physical convergence result.
 
-Preflight is prepared: compare production-order conditioned prefixes with saved
-native operands, compare complete underresolved Gauss grouping and full actions,
-then run an explicitly underresolved four-worker adaptive/emission smoke test.
-No new adaptive physical result has yet been accepted. Production tolerance is
-5e-11 absolute per half in the declared unit frame, zero relative tolerance;
-the smoke test has its separate loose numerical tolerance and limited scope.
-Physical domain/tail and Abel checks remain work before scattering and poles.
+Source/profile refinement remains published at 9ecb6ed8 and annex-verified at
+16838693, with final raw changes below 6.14e-19 / 3.64e-17. Production now is
+ready to compare a separate adaptive GK21 outer rule against accepted Gauss-144
+values, holding inner 24/24 and source/profile 256/256 fixed. Four workers cover
+two fields times [-2,0] and [0,2], with one native thread and 2 GiB ceiling each.
+Per-half absolute tolerance is 5e-11 in the declared unit frame, relative zero.
+
+The helper reverses exactly to native recursion/group ASTs after undoing the
+fixed-outer entry and omitted measure. The engine remains byte-identical.
+Every conditional point and partial sum is saved before guards. Keep all
+accepted single/pair terms, approved inputs and solver/export contract.
+No production adaptive result is accepted yet; uniform/independent-grade
+coverage, physical domains/tails, Abel limits, scattering and poles remain work.

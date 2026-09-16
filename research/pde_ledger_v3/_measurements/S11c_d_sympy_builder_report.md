@@ -129,6 +129,11 @@ source, worker, partial and pre/post-packet hashes agree. The 1.52 MB transcript
 is published and annex-verified. Next is independent adaptive outer quadrature,
 then physical domain/tail and regulator checks; finite agreement is not a limit.
 
+Independent adaptive outer preflight is validated: production-order prefixes
+agree within 3.11e-16 relative, regrouped full actions agree exactly, and all
+294 underresolved smoke points plus 13,766 metadata paths pass. Full-resolution
+adaptive outer integration is ready; its physical result remains pending.
+
 ## Retained user-approved solver/export contract
 
 

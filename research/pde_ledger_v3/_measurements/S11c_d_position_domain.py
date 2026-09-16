@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Finite position-domain action changes from accepted native operators."""
-import argparse,contextlib,copy,json,resource,shutil,time
+import argparse,ast,contextlib,copy,hashlib,inspect,json,resource,shutil,textwrap,time
 from pathlib import Path
 from types import SimpleNamespace
 import numpy as np
@@ -224,16 +224,44 @@ def emit(result,r,bound,rows,finest,provenance):
             numeric('WORKSPACE_'+key,[t[k] for k in ('phaseWorkspaceEstimateBytes','batchCacheEstimateBytes','workspaceBudgetBytes')],lambda p:zero,True)
 
 
+def cache_for_tag(result,tag):
+    prefixes=tuple('PY_S11CD_METADATA_'+PREFIX+'_CACHE_'+name+'_' for name in ('NODESRESIDUAL','WEIGHTSRESIDUAL'))
+    prefix=next((p for p in prefixes if tag.startswith(p)),None)
+    require(prefix is not None,'position-domain cache metadata tag')
+    suffix=tag.removeprefix(prefix).split('_')
+    require(len(suffix)==3 and all(v.isdigit() for v in suffix),'position-domain cache metadata coordinates')
+    test,index,cache=map(int,suffix)
+    records=[v for v in result['records'] if v['test']==test and v['index']==index and 'telemetry' in v]
+    require(len(records)==1,'position-domain cache metadata record')
+    caches=records[0]['telemetry']['cacheChecks']
+    require(0<=cache<len(caches),'position-domain cache metadata index')
+    return caches[cache]
+
+
+def replay_adapter():
+    original=ast.parse(textwrap.dedent(inspect.getsource(native.emit_and_replay)))
+    tree=copy.deepcopy(original)
+    assignments=[n for n in ast.walk(tree) if isinstance(n,ast.Assign) and len(n.targets)==1 and isinstance(n.targets[0],ast.Name) and n.targets[0].id=='cache']
+    require(len(assignments)==1 and ast.unparse(assignments[0].value)=="result['cacheChecks'][int(tag.rsplit('_', 1)[1])]",'native cache lookup census')
+    previous=copy.deepcopy(assignments[0].value)
+    assignments[0].value=ast.parse('cache_for_tag(result,tag)',mode='eval').body
+    restored=copy.deepcopy(tree)
+    next(n for n in ast.walk(restored) if isinstance(n,ast.Assign) and len(n.targets)==1 and isinstance(n.targets[0],ast.Name) and n.targets[0].id=='cache').value=previous
+    require(ast.dump(restored)==ast.dump(original),'full native replayer AST join')
+    namespace=dict(vars(native),emit=emit,PREFIX=PREFIX,cache_for_tag=cache_for_tag)
+    exec(compile(ast.fix_missing_locations(tree),'<position-domain-cache-replay>','exec'),namespace)
+    return namespace['emit_and_replay'],{'nativeReplayAstSha256':hashlib.sha256(ast.dump(original).encode()).hexdigest(),'restoredReplayAstSha256':hashlib.sha256(ast.dump(restored).encode()).hexdigest()}
+
+
 def finish(base,data,workers,started):
     result=combine(base,data,workers);before={p.name:digest(p) for p in base.glob('*.pickle')}
-    previous_emit,previous_prefix=native.emit,native.PREFIX;native.emit,native.PREFIX=emit,PREFIX
+    replay,method_join=replay_adapter()
     engine.EMISSION_LINES.clear();engine.PAYLOAD_ENCODER=engine.PayloadEncoder()
-    try:entries,keys,paths=native.emit_and_replay(base,result,data['r'],data['bound'],data['bound']['rows'],data['finest'],data['provenance'])
-    finally:native.emit,native.PREFIX=previous_emit,previous_prefix
+    entries,keys,paths=replay(base,result,data['r'],data['bound'],data['bound']['rows'],data['finest'],data['provenance'])
     norms=[{'test':v['test'],'index':v['index'],'rawIntegralChanges':[float(np.max(abs(a))) for a in v['integralChanges']],
         'actionChange':float(np.max(abs(v['precedingActionDifference']))),'rawTermChange':max(float(np.max(abs(t))) if len(t) else 0. for t in v['termChanges'])} for v in result['records'] if 'integralChanges' in v]
     summary={'runDirectory':str(base),'sourceFiles':data['sourceFiles'],'provenance':data['provenance'],'smoke':data['smoke'],
-        'rows':80,'sources':70,'profiles':6,'records':len(result['records']),'norms':norms,'tagCount':len(entries),'writeKeyCount':len(keys),'metadataPaths':paths,
+        'rows':80,'sources':70,'profiles':6,'records':len(result['records']),'norms':norms,'tagCount':len(entries),'writeKeyCount':len(keys),'metadataPaths':paths,'replayMethodJoin':method_join,
         'recordArtifacts':result['recordArtifacts'],'workerArtifacts':result['workerArtifacts'],'workerManifest':json.loads((base/'workers.json').read_text()),
         'packetHashesBeforeEmission':before,'packetHashesAfterEmission':{n:digest(base/n) for n in before},
         'artifacts':{p.name:{'bytes':p.stat().st_size,'sha256':digest(p)} for p in base.iterdir() if p.suffix in ('.pickle','.out')},

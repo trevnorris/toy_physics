@@ -1,5 +1,5 @@
 {
-  "status": "PREFLIGHT_RUNNING",
+  "status": "PREFLIGHT_NUMERICS_SAVED_METADATA_RECOVERY_READY",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-position-domain-20260916",
   "checker": "S11c_d_position_domain.py",
   "preflight": "S11c_d_position_domain_preflight.py",
@@ -9,7 +9,7 @@
   "acceptedAdaptiveAnnexVerificationCommit": "96258429",
   "workers": 4,
   "nativeThreadsPerWorker": 1,
-  "next": "Wait silently for the local completion/error wake-up; accept the bounded domain preflight before launching complete domain production.",
+  "next": "Recover only remaining metadata/source/packet validation from saved preflight operands; accept before full finite-domain production.",
   "implementationCommit": "303e5b50",
   "launch": {
     "launchedUtc": "2026-09-16T04:44:54.351027+00:00",
@@ -62,5 +62,27 @@
     "messageSha256": "76c935a2add4fce5df0afef12921fb6ce36794ef9602186d028b82d0676f5941",
     "notifications": {}
   },
-  "launcherSha256": "943ac08f4631ae75f33d053ab8f4b86691f91a450a04824434988894d5f593ea"
+  "launcherSha256": "943ac08f4631ae75f33d053ab8f4b86691f91a450a04824434988894d5f593ea",
+  "preflightOutcome": {
+    "stage": "position_preflight",
+    "command": [
+      "python",
+      "-u",
+      "_measurements/S11c_d_position_domain_preflight.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-position-domain-20260916/preflight/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-position-domain-20260916/preflight/position_preflight.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-position-domain-20260916/preflight/position_preflight.stderr",
+    "startedUtc": "2026-09-16T04:44:54.400395+00:00",
+    "childPid": 3382957,
+    "status": "failed",
+    "exitCode": 1,
+    "wallSeconds": 101.80903698969632,
+    "stderrBytes": 940,
+    "finishedUtc": "2026-09-16T04:46:36.209481+00:00"
+  },
+  "recoveryRunRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-position-domain-20260916/preflight-recovery",
+  "metadataRepair": "S11c_d_position_domain_metadata_repair.json",
+  "recoveryPlan": "S11c_d_position_domain_recovery_plan.md"
 }

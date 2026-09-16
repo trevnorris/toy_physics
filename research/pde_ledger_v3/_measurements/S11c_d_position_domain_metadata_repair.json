@@ -1,0 +1,120 @@
+{
+  "status": "SAVED_PREFLIGHT_METADATA_RECOVERY_READY",
+  "sourceRunDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-position-domain-20260916/preflight/complete",
+  "recoveryRunRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-position-domain-20260916/preflight-recovery",
+  "originalInvocation": {
+    "stage": "position_preflight",
+    "command": [
+      "python",
+      "-u",
+      "_measurements/S11c_d_position_domain_preflight.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-position-domain-20260916/preflight/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-position-domain-20260916/preflight/position_preflight.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-position-domain-20260916/preflight/position_preflight.stderr",
+    "startedUtc": "2026-09-16T04:44:54.400395+00:00",
+    "childPid": 3382957,
+    "status": "failed",
+    "exitCode": 1,
+    "wallSeconds": 101.80903698969632,
+    "stderrBytes": 940,
+    "finishedUtc": "2026-09-16T04:46:36.209481+00:00"
+  },
+  "repairJoin": {
+    "originalCheckerSha256": "152e69abf22d628941a5f5c4cd470a8e53cd4521b4c009f633683a535097e6df",
+    "repairedCheckerSha256": "d056a00e7500cd27a0d824b0b6f9b66ca9bbb2dd412b2b8c490d621afcf71b46",
+    "restoredWholeCheckerAstSha256": "c3edf07ea80a80040d5d6970503328b4bb1454b17f2f89e1891b5be96fc2f081",
+    "originalWholeCheckerAstSha256": "c3edf07ea80a80040d5d6970503328b4bb1454b17f2f89e1891b5be96fc2f081",
+    "nativeReplayJoin": {
+      "nativeReplayAstSha256": "fcf8e0a596020117003f9f06ee25bf4aed07ea4e3ee65b702f4838057c8e1536",
+      "restoredReplayAstSha256": "fcf8e0a596020117003f9f06ee25bf4aed07ea4e3ee65b702f4838057c8e1536"
+    }
+  },
+  "transformRecords": 82,
+  "prefixRecords": 6,
+  "coarseActionRecords": 4,
+  "workerManifest": {
+    "status": "completed",
+    "outcomes": [
+      {
+        "task": [
+          1,
+          1
+        ],
+        "pid": 3383199,
+        "exitCode": 0,
+        "stderrBytes": 0
+      },
+      {
+        "task": [
+          1,
+          2
+        ],
+        "pid": 3383200,
+        "exitCode": 0,
+        "stderrBytes": 0
+      },
+      {
+        "task": [
+          0,
+          1
+        ],
+        "pid": 3383197,
+        "exitCode": 0,
+        "stderrBytes": 0
+      },
+      {
+        "task": [
+          0,
+          2
+        ],
+        "pid": 3383198,
+        "exitCode": 0,
+        "stderrBytes": 0
+      }
+    ],
+    "wallSeconds": 2.6442293021827936,
+    "resultFiles": {
+      "0-1": "891208ffd77f0f87847115285fc712d3bdc66832ef1a673d86fd5a439de15f22",
+      "0-2": "803e969a43feddd7939a982ddae33a18637df04820731079474434147603b45c",
+      "1-1": "1d9f34f5eea6749eb698996590e5901f6837f4b59cb7131bd002d0006c268c3a",
+      "1-2": "1b06c3adb25db64d9889890a32e8bea89ce10a4da647c335a4e5da98fb50d214"
+    }
+  },
+  "originalArtifacts": {
+    "bound-position-domains.pickle": {
+      "bytes": 745662,
+      "sha256": "44bd68f02417bc7d33e89958e8d5d994dbbf4fec9e6ad98aff6ae825cc32aba2"
+    },
+    "position-domain.pickle": {
+      "bytes": 549164,
+      "sha256": "e4e55b26539a2626c12d20ac31e4a980944110a9c960b8052ee7112a496c7259"
+    },
+    "full.out": {
+      "bytes": 2228922,
+      "sha256": "5426e901cf2928be222df1c1c6405ea4b8c8972c068b4b4475585fb5a771786d"
+    },
+    "focused-before-smoke.json": {
+      "bytes": 29397,
+      "sha256": "8d10875c4925abdfb3c0a370c8ab6ba3e9abfef6990793e725580c9ce2193ef9"
+    },
+    "transform-inventory.json": {
+      "bytes": 12713,
+      "sha256": "b68262437e69ffe35349a764ccc8ec5894bcdddc5d0913b9314813e3eb3b87fd"
+    },
+    "record-inventory.json": {
+      "bytes": 867,
+      "sha256": "b200b92828fe4ae27837b4de7bf17057679aa6d497a1c2ac789bdf8aba071093"
+    },
+    "workers.json": {
+      "bytes": 924,
+      "sha256": "10c6ad41382e69271365ea06bb3e0fa32a581f0fcbebe65bad539306e6de8554"
+    }
+  },
+  "sourceScaledOriginalResidual": 1.8333445458820515e-14,
+  "sourceScaledOrderChange": 7.35537167849815e-13,
+  "profileOriginalResidual": 1.7763568394002505e-15,
+  "profileOrderChange": 1.1546381469128743e-12,
+  "scope": "All numerical preflight work saved. Only remaining metadata validation and source/packet joins will run; no accepted production position-domain result."
+}

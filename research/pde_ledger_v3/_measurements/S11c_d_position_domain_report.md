@@ -11,12 +11,19 @@ with all momentum limits and the regulator fixed. Saved-operand focused checks
 pass all 240 coefficient reverse joins and preserve the complete field/limit
 census. No source/profile integrand, physical parameter or engine code changes.
 
-The bounded preflight is running to check every new source/profile transform against
-literal operands and higher order, production-order baseline prefixes, complete
-coarse serial/worker actions, actual measure and wrong-limit controls, and full
-metadata/emission replay. Four worker processes each use one native thread and
-2 GiB. A coarse smoke is an instrument check only. Complete domain production
-has not begun and no new domain/tail result is accepted.
+The preflight completed all numerical work in 102 seconds: 70 source and
+12 profile transform records, six production-order prefixes and four complete
+coarse serial/worker actions. All workers exit zero with empty stderr. Scaled
+source/direct and source-order residuals reach 1.84e-14 and 7.36e-13; profile
+literal/order residuals reach 1.78e-15 and 1.16e-12. These are instrument checks.
+
+Final metadata validation stopped because the inherited validator expected a
+single cache list instead of per-field/domain caches. All results and the
+2.23 MB transcript are preserved. The narrow repair selects the actual cache
+using its complete tag coordinates and reverses to the native replayer AST.
+Recovery reuses every saved operand, checks original/recovery payload identity
+and exercises wrong-unit controls without repeating numerical integration.
+No complete domain production or new physical tail result is accepted yet.
 
 After acceptance, four workers will evaluate both new domains on both fields,
 using every nonlocal contribution and each layout's accepted momentum rule.

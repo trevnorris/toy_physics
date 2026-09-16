@@ -182,10 +182,13 @@ remains 1.134674e-7. All held three-momentum values remain explicit. The
 outer quadrature on boxes 3/4, followed by needed three-momentum checks;
 physical tails, regulator limits and scattering remain open.
 
-Independent wider-box outer integration is prepared at ccd70c11. Its supervised
-preflight compares the conditional adapter with native single/pair point routines
-and exercises four coarse adaptive workers before production. The silent local
-watcher owns completion; no new adaptive result is accepted yet.
+Independent wider-box outer instrument preflight is accepted: all16 native
+conditional point/node/weight comparisons and eight independent full-action
+contractions agree exactly. Four clean workers, 84 sources, 2646 conditional
+points, 2160 held-term scalars and 68253 metadata paths pass in 123.75 seconds.
+The 6.30 MB coarse transcript remains instrument evidence in durable scratch.
+Next launch full GK21 outer integration for single/pair rows on boxes3/4,
+holding paired inner64, source/profile256/512 and all accepted triple rows.
 
 ## Retained user-approved solver/export contract
 

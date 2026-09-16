@@ -1,5 +1,5 @@
 {
-  "status": "PREFLIGHT_RUNNING",
+  "status": "PREFLIGHT_ACCEPTED",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-wide-adaptive-20260916",
   "checker": "S11c_d_wide_momentum_adaptive.py",
   "plan": "S11c_d_wide_momentum_adaptive_plan.md",
@@ -9,7 +9,7 @@
   "maximumConcurrentWorkers": 4,
   "nativeThreadsPerWorker": 1,
   "workerAddressSpaceBytes": 2147483648,
-  "next": "Silent local watcher owns completion/error wake-up. Validate focused/worker/metadata evidence before accepting preflight and launching production.",
+  "next": "Commit accepted instrument preflight and launch four-worker independent outer production with silent completion/error wake-up.",
   "preflightRunRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-wide-adaptive-20260916/preflight",
   "launcherSha256": "0ab1ca3e3facb7f47098949eb0ab775f3368d60dc25a34418fdeada3288d01f4",
   "implementationCommit": "ccd70c11",
@@ -43,5 +43,29 @@
   "launchVerification": {
     "path": "/var/projects/toy_physics/_scratch/s11c/s11c-wide-adaptive-20260916/preflight/launch-verification.json",
     "sha256": "9f5793605fd64ce18d38759e51a18521545124805496fa368e2fb2f7c0dc1e0c"
-  }
+  },
+  "preflightOutcome": {
+    "stage": "adaptive_preflight",
+    "command": [
+      "python",
+      "-u",
+      "_measurements/S11c_d_wide_momentum_adaptive.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-wide-adaptive-20260916/preflight/complete",
+      "--preflight"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-wide-adaptive-20260916/preflight/adaptive_preflight.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-wide-adaptive-20260916/preflight/adaptive_preflight.stderr",
+    "startedUtc": "2026-09-16T18:19:40.053477+00:00",
+    "childPid": 354708,
+    "status": "completed",
+    "exitCode": 0,
+    "wallSeconds": 123.74817578215152,
+    "stderrBytes": 0,
+    "finishedUtc": "2026-09-16T18:21:43.801704+00:00"
+  },
+  "acceptedPreflight": "S11c_d_wide_momentum_adaptive_preflight.json",
+  "acceptedPreflightSha256": "04fa92e475348247f3baa9444cd76007fe2f165633d85e1d43db1788b5266f74",
+  "productionRunRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-wide-adaptive-20260916/production",
+  "productionLauncherSha256": "94519353a3015161f5eba97975e24d59f511d6e8a74717720b3ed116bf5ba37a"
 }

@@ -11,7 +11,7 @@ with all momentum limits and the regulator fixed. Saved-operand focused checks
 pass all 240 coefficient reverse joins and preserve the complete field/limit
 census. No source/profile integrand, physical parameter or engine code changes.
 
-The bounded preflight will check every new source/profile transform against
+The bounded preflight is running to check every new source/profile transform against
 literal operands and higher order, production-order baseline prefixes, complete
 coarse serial/worker actions, actual measure and wrong-limit controls, and full
 metadata/emission replay. Four worker processes each use one native thread and

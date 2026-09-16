@@ -137,6 +137,12 @@ The 1.18 MB transcript is published and annex-verified. Next are finite-domain
 and tail checks. Inner/source/profile rules were held, so independent outer
 agreement does not establish uniform/grade coverage, tails or Abel limits.
 
+Finite position-domain checks are implemented: source/profile cutoffs 32/10
+to 48/10, then 48/14, preserving all 80 rows, 70 sources and six profiles.
+All 240 focused coefficient reverse joins pass. The bounded transform, prefix,
+four-worker and emission preflight is running under a silent local watcher;
+complete domain production and physical tail/Abel results remain pending.
+
 ## Retained user-approved solver/export contract
 
 

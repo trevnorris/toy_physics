@@ -1,5 +1,5 @@
 {
-  "status": "IMPLEMENTED_PREFLIGHT_READY",
+  "status": "PREFLIGHT_RUNNING",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-position-domain-20260916",
   "checker": "S11c_d_position_domain.py",
   "preflight": "S11c_d_position_domain_preflight.py",
@@ -9,5 +9,58 @@
   "acceptedAdaptiveAnnexVerificationCommit": "96258429",
   "workers": 4,
   "nativeThreadsPerWorker": 1,
-  "next": "Run the bounded transform/binding/prefix/four-worker emission preflight; accept it before launching complete finite position-domain actions."
+  "next": "Wait silently for the local completion/error wake-up; accept the bounded domain preflight before launching complete domain production.",
+  "implementationCommit": "303e5b50",
+  "launch": {
+    "launchedUtc": "2026-09-16T04:44:54.351027+00:00",
+    "command": [
+      "/usr/bin/python",
+      "_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-position-domain-20260916/preflight",
+      "--stage",
+      "position_preflight",
+      "--",
+      "python",
+      "-u",
+      "_measurements/S11c_d_position_domain_preflight.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-position-domain-20260916/preflight/complete"
+    ],
+    "supervisorPid": 3382952,
+    "watcherPid": 3382953,
+    "watcherDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-position-domain-20260916/preflight/completion-watcher",
+    "threadEnvironment": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1"
+    }
+  },
+  "activeAtLaunch": {
+    "stage": "position_preflight",
+    "command": [
+      "python",
+      "-u",
+      "_measurements/S11c_d_position_domain_preflight.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-position-domain-20260916/preflight/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-position-domain-20260916/preflight/position_preflight.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-position-domain-20260916/preflight/position_preflight.stderr",
+    "startedUtc": "2026-09-16T04:44:54.400395+00:00",
+    "childPid": 3382957,
+    "status": "running"
+  },
+  "watcherAtLaunch": {
+    "status": "waiting",
+    "watcherPid": 3382953,
+    "jobPid": 3382952,
+    "thread": "01a08c53-295c-70f0-baaf-353db1745867",
+    "startedUtc": "2026-09-16T04:44:54.394637+00:00",
+    "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
+    "messageSha256": "76c935a2add4fce5df0afef12921fb6ce36794ef9602186d028b82d0676f5941",
+    "notifications": {}
+  },
+  "launcherSha256": "943ac08f4631ae75f33d053ab8f4b86691f91a450a04824434988894d5f593ea"
 }

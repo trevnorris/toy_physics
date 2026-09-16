@@ -1,0 +1,15 @@
+{
+  "status": "INSTRUMENT_PREPARED",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-wide-three-20260916",
+  "checker": "S11c_d_wide_three_momentum.py",
+  "plan": "S11c_d_wide_three_momentum_plan.md",
+  "report": "S11c_d_wide_three_momentum_report.md",
+  "acceptedAdaptivePublicationCommit": "f3bc5754b0d34300a25aec596f6d6a4f829baeaf",
+  "acceptedAdaptiveAnnexVerificationCommit": "acf00f65",
+  "maximumConcurrentWorkers": 4,
+  "nativeThreadsPerWorker": 1,
+  "workerAddressSpaceBytes": 2147483648,
+  "preflightRunRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-wide-three-20260916/preflight",
+  "launcherSha256": "b61932fe6e0a79bd8ad12a3213e56055653a93cbcebbbf94537694c51b526d0c",
+  "next": "Validate focused prefixes and four-worker instrument smoke, commit acceptance, then launch fixed-wide-box triple refinement. No accepted full triple refinement yet."
+}

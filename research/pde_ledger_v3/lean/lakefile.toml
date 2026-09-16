@@ -46,3 +46,8 @@ leanOptions = { warningAsError = true }
 name = "S11OddDynamics"
 srcDir = "s11"
 leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "S11D3Invariants"
+srcDir = "s11"
+leanOptions = { warningAsError = true }

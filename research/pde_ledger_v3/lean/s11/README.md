@@ -89,3 +89,27 @@ The latter binds the nine unchanged local dependency sources to their compiled
 objects, then checks the new modules, axioms and mutations with one Lean worker.
 It supports hash-checked `--reuse-build`. These checks do not regenerate pinned
 S11c exports or certify the complete XFORM_EXTRA spectrum.
+
+## D3 invariant completeness J1–J4
+
+The bounded contract is [D3_COVERAGE.md](D3_COVERAGE.md), with the exact object
+and native span map in [D3_FIDELITY.md](D3_FIDELITY.md). **J1–J4 is complete:
+local verification passed and both independent fidelity reviews returned
+CLEAR.** See [D3_VERIFICATION.txt](D3_VERIFICATION.txt) and
+[D3_FIDELITY_REVIEW.md](D3_FIDELITY_REVIEW.md).
+
+`S11D3Invariants` classifies quadratic forms on all real 3×3 gradients under
+the full SO/O conjugation action. Its proved census is 3/3/0, with the unique
+trace-square, trace-of-square and Frobenius-square parameterization. This is a
+density classification before any EL or total-divergence quotient.
+
+The compact native check and one-worker formal checks run sequentially:
+
+```sh
+python3 ../_measurements/S11_lean_d3_source_check.py
+python3 ../_measurements/S11_lean_d3_contract_check.py
+```
+
+The formal check supports hash-checked `--reuse-build`. It also checks that the
+finite coordinate certificate matches its generator. Neither command reruns a
+production audit or modifies S11c exports.

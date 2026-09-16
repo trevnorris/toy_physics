@@ -1,0 +1,89 @@
+S11 D3 invariant contract J1–J4 — complete; local PASS; both reviews CLEAR
+
+Scope: all real quadratic densities on all real 3x3 gradients, full SO/O
+conjugation, unique trace-square / trace-of-square / Frobenius-square
+coefficients, equality of the invariant submodules, and census 3/3/0 with zero
+reflection-minus submodule. See D3_COVERAGE.md and D3_FIDELITY.md.
+
+Terminal run: _scratch/S11_lean_d3/verification_run3, PASS, 2026-09-16.
+Durable records: _measurements/S11_lean_d3_contract_checks.json,
+S11_lean_d3_source_checks.json and S11_lean_d3_validation.json. The frozen local
+validation record predates the reviews and retains its historical pending label.
+Current closure: D3_FIDELITY_REVIEW.md and
+_measurements/S11_lean_d3_closure_validation.json.
+
+RESULTS
+- Six modules and audit root compiled. All 40 requested axiom declarations were
+  matched by name and use only propext, Classical.choice and Quot.sound.
+  The parser permits an explicitly empty set, but none was reported this run.
+  No admissions or custom axioms occur in the canonical proof modules.
+- Ten mathematical mutations rejected: SO count 2 instead of 3; O count 4
+  instead of 3; odd count 1 instead of 0; omission of each of the three forms;
+  a nonzero invariant odd extra; single-entry-square invariance; trace-square
+  cross coefficient 3 instead of 2; trace-of-square cross coefficient -2
+  instead of 2. The two coefficient mutations expose the mismatched terms in
+  the named identity. Each of the eight false statements reduces to False.
+  Syntax/import/environment failures and timeouts are not accepted rejections.
+- Twelve positive controls passed: the eight corresponding true statements,
+  nonzero invariant existence, zero-form admissibility, negative coefficients,
+  and unique coefficients. These support nonvacuity; they do not replace proof.
+- All 29 command records, seven compiled objects, local sources, generator,
+  instruments, package pins and output logs match the validation record.
+  Generator --check confirms the canonical generated files. Completed H1–H4,
+  I1–I4 and E1–E4 proof bytes remain unchanged; their evidence is historical.
+
+NATIVE IDENTIFICATION
+The original selected SymPy Q9 helpers, run only for D3, give V1/V2 spans equal
+to the complete three-form Lean span, a 0x45 V6 basis, identity reflection
+operator and zero P_D. A deliberately wrong rank-three span fails comparison.
+The old generator-orientation control also fails span comparison while retaining
+counts 3/3/0. Both are in-memory instrument controls, not Lean mutations.
+Canonical native source hashes are unchanged. Wolfram evidence is source
+inspection of the generator transpose only, not engine execution. No production
+driver, comparator/export pipeline or S11c calculation was run.
+
+PROOF-CODE REPAIRS AND REUSE
+Run1 stopped at Constraints on unreduced matrix/vector literals. The repair
+checks typed Matrix.of images and uses an explicit definitional polynomial
+expansion, retaining the claim and finite certificate. A focused check including
+the rational rotation passed. Run2 then compiled the full certificate and
+stopped in Classification on a concrete vecMul/transpose simplification issue.
+Expanding matrix identities before general simplification fixes that evaluation.
+The final control-file repair explicitly reduces its third vector entry.
+No failed canonical build was counted as a mutation.
+
+Run3 reused the successful Quadratic, Rotation and Constraints builds only after
+checking their commands, compiled-object hashes, full local transitive source
+closures, toolchain/manifest/lakefile and generator hashes. It freshly built
+Classification, Census, Controls and the audit root. Imports were checked in
+dependency order. All mutations and positive controls executed afresh.
+The Constraints build took 283.807 seconds in run2, close to the 300-second
+limit. Its record identifies prior instrument f2c526cf268b261640397e3592b9d1115
+585338b6be7870b35146e47be277ad8. Run3 retains the successful command, diagnostics,
+source/object hashes and dependency-closure guard; it does not claim a new
+Constraints compilation. The earlier full report is outside the fixed packet.
+
+Resources: one Lean process at a time, -j1 -M4096, nice 10, per-process timeout
+300 seconds. The allocator limit is not an OS RSS cap. Durable logs and an
+OS-wait completion hook avoid model polling. No completed local S9/S10/S11 proof
+module is imported or rebuilt by this increment; dependency packages stay pinned.
+
+REVIEW BOUNDARY
+The fixed packet contains the theorem, coverage/fidelity records, compact native
+link, controls, terminal evidence and source provenance. Its manifest and archive
+identify the exact review revision. The user authorized this 27-file packet by
+saying "yes go ahead". Claude (Opus 5) and Grok (grok-4.6-build) each returned a
+substantive final CLEAR review, exit 0 and end_turn, with no blocking findings.
+Neither independently compiled Lean, reran instruments or recomputed hashes.
+The author checked both raw responses, run records and stderr before accepting
+the verdicts; preliminary plans were not clearance. Grok's startup warnings did
+not prevent its completed source review. See D3_FIDELITY_REVIEW.md for limits
+and optional finding dispositions.
+
+All 27 live packet files matched before closure documentation. Archive,
+snapshot, transport, proof sources, generator, instruments, terminal reports,
+seven compiled objects, 29 logs and dependency pins were revalidated. Only the
+coverage, fidelity, verification and README documents changed afterward; the
+reviewed evidence remains fixed. No proof rebuild or mutation rerun is needed
+for those documentation changes. J1–J4 is closed, not all of S11. No commit
+requested or made for this closure.

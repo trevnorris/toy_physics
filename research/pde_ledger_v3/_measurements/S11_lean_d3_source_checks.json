@@ -1,0 +1,66 @@
+{
+  "status": "PASS",
+  "checked_utc": "2026-09-16T14:54:17.748726+00:00",
+  "source_sha256": {
+    "scripts/S11_stray_longitudinal_sympy_audit.py": "dc77f30b3e0b2b72aa13c7531a586e6ef50167949e645d99378de8527e06bfe2",
+    "mathematica/S11_stray_longitudinal_mathematica_audit.wl": "133bacbcbc2dd192ba64a82b94a1cde6b4359bfdf0748c59584b6a3e90683237"
+  },
+  "instrument_sha256": "ec8a89f06abf92f6ced0256a89e078b402179f2d1abb907f91db2b6646e7ff1c",
+  "selected_functions": [
+    "compute_q9",
+    "derivative_placeholders",
+    "matrix_from_rows",
+    "q9_row_to_poly",
+    "q9_vector"
+  ],
+  "coordinate_convention": "all real row-major g_1,...,g_9; G_ij = partial_i u_j; no EL quotient",
+  "contract_polynomials": [
+    "g_1**2 + 2*g_1*g_5 + 2*g_1*g_9 + g_5**2 + 2*g_5*g_9 + g_9**2",
+    "g_1**2 + 2*g_2*g_4 + 2*g_3*g_7 + g_5**2 + 2*g_6*g_8 + g_9**2",
+    "g_1**2 + g_2**2 + g_3**2 + g_4**2 + g_5**2 + g_6**2 + g_7**2 + g_8**2 + g_9**2"
+  ],
+  "native_spans": {
+    "SO": {
+      "dimension": 3,
+      "native_basis": "Matrix([[1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 1], [0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, -1, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, -2, 0, 0, 0, 0, 0, 1, 0, 0, 0, -2, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, -2, 0, 1, 0, 0, 1, 0, 0]])",
+      "native_polynomials": [
+        "g_1**2 + 2*g_2*g_4 + 2*g_3*g_7 + g_5**2 + 2*g_6*g_8 + g_9**2",
+        "g_1*g_5 + g_1*g_9 - g_2*g_4 - g_3*g_7 + g_5*g_9 - g_6*g_8",
+        "g_2**2 - 2*g_2*g_4 + g_3**2 - 2*g_3*g_7 + g_4**2 + g_6**2 - 2*g_6*g_8 + g_7**2 + g_8**2"
+      ],
+      "same_rref": true,
+      "stacked_rank": 3
+    },
+    "O": {
+      "dimension": 3,
+      "native_basis": "Matrix([[1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 1], [0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, -1, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, -2, 0, 0, 0, 0, 0, 1, 0, 0, 0, -2, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, -2, 0, 1, 0, 0, 1, 0, 0]])",
+      "native_polynomials": [
+        "g_1**2 + 2*g_2*g_4 + 2*g_3*g_7 + g_5**2 + 2*g_6*g_8 + g_9**2",
+        "g_1*g_5 + g_1*g_9 - g_2*g_4 - g_3*g_7 + g_5*g_9 - g_6*g_8",
+        "g_2**2 - 2*g_2*g_4 + g_3**2 - 2*g_3*g_7 + g_4**2 + g_6**2 - 2*g_6*g_8 + g_7**2 + g_8**2"
+      ],
+      "same_rref": true,
+      "stacked_rank": 3
+    },
+    "odd": {
+      "dimension": 0,
+      "native_basis": "Matrix(0, 45, [])",
+      "native_polynomials": [],
+      "same_rref": true,
+      "stacked_rank": 0
+    }
+  },
+  "odd_operator_identity": true,
+  "PD_zero": true,
+  "controls": {
+    "same_count_wrong_span_rejected": true,
+    "wrong_orientation_counts": [
+      3,
+      3,
+      0
+    ],
+    "wrong_orientation_span_rejected": true
+  },
+  "wolfram_link": "source inspection of Transpose[actionRows] only; no engine execution claimed",
+  "limits": "D3 Q9 V1/V2/V6 only; no V5/EL, dynamics, D4-D5, production rerun/export/comparator or S11c work"
+}

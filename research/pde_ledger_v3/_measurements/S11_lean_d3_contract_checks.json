@@ -1,0 +1,1082 @@
+{
+  "status": "PASS",
+  "started_utc": "2026-09-16T14:54:21.549323+00:00",
+  "instrument_sha256": "faec8d0a97ba2a9e7070a9653d348168e07b0a711226ec39a3ede537c0bfe69b",
+  "source_sha256_before": {
+    "_measurements/S11_lean_d3_generate.py": "2be172074609c7c768339c3847773c887e6935623701fc3a9eb20528aa7b3b45",
+    "lean/lake-manifest.json": "91fd5318cdc35e4044d6e059c6ef73d94b955d27adf8a5860b07ec92add9377e",
+    "lean/lakefile.toml": "9a4a46a278853ca14e5ad03d8d5379ef50ca2d566c99a7140eefca4245efaf63",
+    "lean/lean-toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+    "lean/s11/S11D3Invariants/Census.lean": "2c40ffba318ea7483ceb7b220cdcbe3303fbd1c6dec6fd380d852f16e625981c",
+    "lean/s11/S11D3Invariants/Classification.lean": "2cfba9f58fe6932859833f7e0fe8f8f0c398618de1086a6b358527d3563b3c02",
+    "lean/s11/S11D3Invariants/Constraints.lean": "cc8a4b788b205cf2de7f4aea4b617e0e41c2047c489806f59ef6d56d770bfc13",
+    "lean/s11/S11D3Invariants/Controls.lean": "ff8b1bb0725f7fb55b66888b2ebf434ef2f5f0864aaf4f79e5a4d722b00f183e",
+    "lean/s11/S11D3Invariants/Quadratic.lean": "ccb26fd2c468c84e5cc499840179b3d574c497d15604baebce226009dc70933f",
+    "lean/s11/S11D3Invariants/Rotation.lean": "1de41bfbbea2144e6a63ce9d1752b9bff18497fadb8c5bfdfee818fcffc68426",
+    "lean/s11/S11D3Invariants.lean": "2ebf9eaea29251aa113f331410a9a17dbc4fda9bbf1da460a7cf69db1bd1dc9f"
+  },
+  "dependency_olean_sha256": {},
+  "checks": [
+    {
+      "name": "build_Quadratic",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "-o",
+        "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S11D3Invariants/Quadratic.olean",
+        "s11/S11D3Invariants/Quadratic.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 31.637,
+      "source_sha256": "ccb26fd2c468c84e5cc499840179b3d574c497d15604baebce226009dc70933f",
+      "required_failure_in": null,
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "olean_sha256": "814b4bd7f2520f5dcb2e92be13d5edea4db87b1442917a5ddb1705297bbe1023",
+      "reused_from_instrument_sha256": "f2c526cf268b261640397e3592b9d1115585338b6be7870b35146e47be277ad8",
+      "reuse_source_dependency_sha256": {
+        "_measurements/S11_lean_d3_generate.py": "2be172074609c7c768339c3847773c887e6935623701fc3a9eb20528aa7b3b45",
+        "lean/lake-manifest.json": "91fd5318cdc35e4044d6e059c6ef73d94b955d27adf8a5860b07ec92add9377e",
+        "lean/lakefile.toml": "9a4a46a278853ca14e5ad03d8d5379ef50ca2d566c99a7140eefca4245efaf63",
+        "lean/lean-toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+        "lean/s11/S11D3Invariants/Quadratic.lean": "ccb26fd2c468c84e5cc499840179b3d574c497d15604baebce226009dc70933f"
+      }
+    },
+    {
+      "name": "build_Rotation",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "-o",
+        "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S11D3Invariants/Rotation.olean",
+        "s11/S11D3Invariants/Rotation.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 25.491,
+      "source_sha256": "1de41bfbbea2144e6a63ce9d1752b9bff18497fadb8c5bfdfee818fcffc68426",
+      "required_failure_in": null,
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "olean_sha256": "1f23a7517dc5075d86914a05ce90f92b9fa8e3780bef99e53970686a9958d553",
+      "reused_from_instrument_sha256": "f2c526cf268b261640397e3592b9d1115585338b6be7870b35146e47be277ad8",
+      "reuse_source_dependency_sha256": {
+        "_measurements/S11_lean_d3_generate.py": "2be172074609c7c768339c3847773c887e6935623701fc3a9eb20528aa7b3b45",
+        "lean/lake-manifest.json": "91fd5318cdc35e4044d6e059c6ef73d94b955d27adf8a5860b07ec92add9377e",
+        "lean/lakefile.toml": "9a4a46a278853ca14e5ad03d8d5379ef50ca2d566c99a7140eefca4245efaf63",
+        "lean/lean-toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+        "lean/s11/S11D3Invariants/Quadratic.lean": "ccb26fd2c468c84e5cc499840179b3d574c497d15604baebce226009dc70933f",
+        "lean/s11/S11D3Invariants/Rotation.lean": "1de41bfbbea2144e6a63ce9d1752b9bff18497fadb8c5bfdfee818fcffc68426"
+      }
+    },
+    {
+      "name": "build_Constraints",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "-o",
+        "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S11D3Invariants/Constraints.olean",
+        "s11/S11D3Invariants/Constraints.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 283.807,
+      "source_sha256": "cc8a4b788b205cf2de7f4aea4b617e0e41c2047c489806f59ef6d56d770bfc13",
+      "required_failure_in": null,
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "olean_sha256": "5d86c2d145cabc4181e3b474c7ffc9cafcbd889ab190da01d53149ad2a3134ca",
+      "reused_from_instrument_sha256": "f2c526cf268b261640397e3592b9d1115585338b6be7870b35146e47be277ad8",
+      "reuse_source_dependency_sha256": {
+        "_measurements/S11_lean_d3_generate.py": "2be172074609c7c768339c3847773c887e6935623701fc3a9eb20528aa7b3b45",
+        "lean/lake-manifest.json": "91fd5318cdc35e4044d6e059c6ef73d94b955d27adf8a5860b07ec92add9377e",
+        "lean/lakefile.toml": "9a4a46a278853ca14e5ad03d8d5379ef50ca2d566c99a7140eefca4245efaf63",
+        "lean/lean-toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+        "lean/s11/S11D3Invariants/Constraints.lean": "cc8a4b788b205cf2de7f4aea4b617e0e41c2047c489806f59ef6d56d770bfc13",
+        "lean/s11/S11D3Invariants/Quadratic.lean": "ccb26fd2c468c84e5cc499840179b3d574c497d15604baebce226009dc70933f",
+        "lean/s11/S11D3Invariants/Rotation.lean": "1de41bfbbea2144e6a63ce9d1752b9bff18497fadb8c5bfdfee818fcffc68426"
+      }
+    },
+    {
+      "name": "build_Classification",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "-o",
+        "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S11D3Invariants/Classification.olean",
+        "s11/S11D3Invariants/Classification.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 14.018,
+      "source_sha256": "2cfba9f58fe6932859833f7e0fe8f8f0c398618de1086a6b358527d3563b3c02",
+      "required_failure_in": null,
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "olean_sha256": "8debe95d1cb11b440b1be97c5d9786a6405ed3bbca319b358cebd8c1155980d4"
+    },
+    {
+      "name": "build_Census",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "-o",
+        "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S11D3Invariants/Census.olean",
+        "s11/S11D3Invariants/Census.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 12.45,
+      "source_sha256": "2c40ffba318ea7483ceb7b220cdcbe3303fbd1c6dec6fd380d852f16e625981c",
+      "required_failure_in": null,
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "olean_sha256": "93755b10cee8e1b52c8033158a87badf9d227e837ee39632470cb281d81798a7"
+    },
+    {
+      "name": "build_Controls",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "-o",
+        "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S11D3Invariants/Controls.olean",
+        "s11/S11D3Invariants/Controls.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 13.005,
+      "source_sha256": "ff8b1bb0725f7fb55b66888b2ebf434ef2f5f0864aaf4f79e5a4d722b00f183e",
+      "required_failure_in": null,
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "olean_sha256": "52e98125f4ee05d5a3fcf5ebcef6355d73296382f2f116dc42ff20262c0a00fa"
+    },
+    {
+      "name": "axiom_audit",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "-o",
+        "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S11D3Invariants.olean",
+        "s11/S11D3Invariants.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 8.878,
+      "source_sha256": "2ebf9eaea29251aa113f331410a9a17dbc4fda9bbf1da460a7cf69db1bd1dc9f",
+      "required_failure_in": null,
+      "diagnostics": [],
+      "output": "'S11D3Invariants.coordinates_decode' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D3Invariants.decode_coordinates' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D3Invariants.frame_expansion' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D3Invariants.quadratic_representation' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D3Invariants.rotationXY_proper' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D3Invariants.rotationYZ_proper' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D3Invariants.reflection_orthogonal' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D3Invariants.reflection_det' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D3Invariants.conjugate_apply' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D3Invariants.trace_conjugate' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D3Invariants.conjugate_mul' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D3Invariants.conjugate_transpose' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D3Invariants.traceSquare_apply' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D3Invariants.traceOfSquare_apply' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D3Invariants.frobeniusSquare_apply' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D3Invariants.invariantForm_apply' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D3Invariants.invariantForm_O' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D3Invariants.invariantForm_SO' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D3Invariants.polynomial_vec' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D3Invariants.invariant_polynomial' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D3Invariants.SO_classification' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D3Invariants.SO_iff_O' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D3Invariants.O_classification' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D3Invariants.invariantForm_injective' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D3Invariants.SO_unique' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D3Invariants.odd_classification' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D3Invariants.so_eq_o' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D3Invariants.odd_eq_bot' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D3Invariants.soMap_bijective' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D3Invariants.so_dimension' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D3Invariants.o_dimension' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D3Invariants.odd_dimension' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D3Invariants.census' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D3Invariants.trace_not_omittable' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D3Invariants.traceOfSquare_not_omittable' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D3Invariants.frobenius_not_omittable' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D3Invariants.nonzero_invariant_exists' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D3Invariants.zero_invariant' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D3Invariants.nonzero_odd_impossible' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D3Invariants.single_entry_not_invariant' depends on axioms: [propext, Classical.choice, Quot.sound]\n",
+      "output_sha256": "a93ad128d6b0207f7a6fb2219a9a517ffe536e741890d6f2c0794d5cdb0c6eff",
+      "olean_sha256": "6c642a99e90d7f029cb35d892ff9c0ca3771e91832b614f9d6e74e730055498e"
+    },
+    {
+      "name": "trace_normalization",
+      "expected": "REJECTED",
+      "outcome": "REJECTED",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/d3_verification/trace_normalization.lean"
+      ],
+      "exit_status": 1,
+      "wall_seconds": 22.943,
+      "source_sha256": "1b2913391605ab9d699119b712c9f22a11e528b76cd1d5618c765d4a2c6202f5",
+      "required_failure_in": "traceSquare_apply",
+      "diagnostics": [
+        {
+          "declaration": "traceSquare_apply",
+          "line": 86,
+          "message": "s11/_scratch/d3_verification/trace_normalization.lean:86:69: error: unsolved goals\nG : Mat\n⊢ G 0 0 * G 1 1 * 3 + G 0 0 * G 2 2 * 2 + G 0 0 ^ 2 + G 1 1 * G 2 2 * 2 + G 1 1 ^ 2 + G 2 2 ^ 2 =\n    G 0 0 * G 1 1 * 2 + G 0 0 * G 2 2 * 2 + G 0 0 ^ 2 + G 1 1 * G 2 2 * 2 + G 1 1 ^ 2 + G 2 2 ^ 2\n"
+        }
+      ],
+      "output": "Try this:\n  [apply] ring_nf\n  \n  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.\n    \n  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.\ns11/_scratch/d3_verification/trace_normalization.lean:86:69: error: unsolved goals\nG : Mat\n⊢ G 0 0 * G 1 1 * 3 + G 0 0 * G 2 2 * 2 + G 0 0 ^ 2 + G 1 1 * G 2 2 * 2 + G 1 1 ^ 2 + G 2 2 ^ 2 =\n    G 0 0 * G 1 1 * 2 + G 0 0 * G 2 2 * 2 + G 0 0 ^ 2 + G 1 1 * G 2 2 * 2 + G 1 1 ^ 2 + G 2 2 ^ 2\n",
+      "output_sha256": "950e0fae0450e3c25616cbd8b0a93bb83db71faaf05326cac8208565d739dc23",
+      "source": "import S11D3Invariants.Quadratic\n\n/-! Full group predicates and trace invariants on real 3x3 matrices.\nFinite test rotations do not replace the quantifier over the full group. -/\nnamespace S11D3Invariants\nnoncomputable section\n\ndef conjugate (R G : Mat) : Mat := R * G * R.transpose\ndef Orthogonal (R : Mat) : Prop := R.transpose * R = 1\ndef Proper (R : Mat) : Prop := Orthogonal R ∧ R.det = 1\n\ndef SOInvariant (Q : Quad) : Prop := ∀ R, Proper R → ∀ G, Q (conjugate R G) = Q G\ndef OInvariant (Q : Quad) : Prop := ∀ R, Orthogonal R → ∀ G, Q (conjugate R G) = Q G\n\ndef reflection : Mat := ![![-1,0,0],![0,1,0],![0,0,1]]\ndef ReflectionOdd (Q : Quad) : Prop := ∀ G, Q (conjugate reflection G) = -Q G\n\ndef rotationXY (a b : ℝ) : Mat := ![![a,-b,0],![b,a,0],![0,0,1]]\ndef rotationYZ (a b : ℝ) : Mat := ![![1,0,0],![0,a,-b],![0,b,a]]\n\ntheorem rotationXY_proper {a b : ℝ} (h : a^2+b^2=1) : Proper (rotationXY a b) := by\n  constructor\n  · unfold Orthogonal\n    ext i j\n    simp only [Matrix.mul_apply, Matrix.transpose_apply, Fin.sum_univ_three]\n    fin_cases i <;> fin_cases j <;> simp [rotationXY] <;> nlinarith\n  · rw [Matrix.det_fin_three]\n    simp [rotationXY]\n    nlinarith\n\ntheorem rotationYZ_proper {a b : ℝ} (h : a^2+b^2=1) : Proper (rotationYZ a b) := by\n  constructor\n  · unfold Orthogonal\n    ext i j\n    simp only [Matrix.mul_apply, Matrix.transpose_apply, Fin.sum_univ_three]\n    fin_cases i <;> fin_cases j <;> simp [rotationYZ] <;> nlinarith\n  · rw [Matrix.det_fin_three]\n    simp [rotationYZ]\n    nlinarith\n\ntheorem reflection_orthogonal : Orthogonal reflection := by\n  ext i j\n  simp only [Matrix.mul_apply, Matrix.transpose_apply, Fin.sum_univ_three]\n  fin_cases i <;> fin_cases j <;> norm_num [reflection, Matrix.cons_val_two]\n\ntheorem reflection_det : reflection.det = -1 := by\n  rw [Matrix.det_fin_three]\n  norm_num [reflection, Matrix.cons_val_two]\n\n/-- Entry formula avoids reliance on simplification through concrete matrix literals. -/\ntheorem conjugate_apply (R G : Mat) (i j : Fin 3) :\n    conjugate R G i j = ∑ k : Fin 3, (∑ l : Fin 3, R i l * G l k) * R j k := by\n  rfl\n\ntheorem trace_conjugate {R : Mat} (hR : Orthogonal R) (G : Mat) :\n    (conjugate R G).trace = G.trace := by\n  unfold conjugate\n  rw [Matrix.trace_mul_cycle, hR, Matrix.one_mul]\n\ntheorem conjugate_mul {R : Mat} (hR : Orthogonal R) (G H : Mat) :\n    conjugate R G * conjugate R H = conjugate R (G*H) := by\n  unfold conjugate\n  calc R*G*R.transpose*(R*H*R.transpose) = R*G*(R.transpose*R)*H*R.transpose := by\n         simp only [Matrix.mul_assoc]\n       _ = R*(G*H)*R.transpose := by\n         rw [hR, Matrix.mul_one]\n         simp only [Matrix.mul_assoc]\n\ntheorem conjugate_transpose (R G : Mat) :\n    (conjugate R G).transpose = conjugate R G.transpose := by\n  simp only [conjugate, Matrix.transpose_mul, Matrix.transpose_transpose, Matrix.mul_assoc]\n\n/-- Unnormalized basis: trace square, trace of square, Frobenius square. -/\ndef traceSquare : Quad :=\n  monomial 0 0 + monomial 4 4 + monomial 8 8 +\n  3 • monomial 0 4 + 2 • monomial 0 8 + 2 • monomial 4 8\n\ndef traceOfSquare : Quad :=\n  monomial 0 0 + monomial 4 4 + monomial 8 8 +\n  2 • monomial 1 3 + 2 • monomial 2 6 + 2 • monomial 5 7\n\ndef frobeniusSquare : Quad :=\n  monomial 0 0 + monomial 1 1 + monomial 2 2 + monomial 3 3 +\n  monomial 4 4 + monomial 5 5 + monomial 6 6 + monomial 7 7 + monomial 8 8\n\ntheorem traceSquare_apply (G : Mat) : traceSquare G = G.trace ^ 2 := by\n  simp [traceSquare, monomial, coordinateMap, coordinates, Matrix.trace, Fin.sum_univ_three]\n  ring\n\ntheorem traceOfSquare_apply (G : Mat) : traceOfSquare G = (G*G).trace := by\n  simp [traceOfSquare, monomial, coordinateMap, coordinates, Matrix.trace,\n    Matrix.mul_apply, Fin.sum_univ_three]\n  ring\n\ntheorem frobeniusSquare_apply (G : Mat) : frobeniusSquare G = (G*G.transpose).trace := by\n  simp [frobeniusSquare, monomial, coordinateMap, coordinates, Matrix.trace,\n    Matrix.mul_apply, Fin.sum_univ_three]\n  ring\n\ndef invariantForm (v : Fin 3 → ℝ) : Quad :=\n  v 0 • traceSquare + v 1 • traceOfSquare + v 2 • frobeniusSquare\n\ntheorem invariantForm_apply (v : Fin 3 → ℝ) (G : Mat) :\n    invariantForm v G = v 0 * G.trace ^ 2 + v 1 * (G*G).trace +\n      v 2 * (G*G.transpose).trace := by\n  simp [invariantForm, traceSquare_apply, traceOfSquare_apply, frobeniusSquare_apply]\n\ntheorem invariantForm_O (v : Fin 3 → ℝ) : OInvariant (invariantForm v) := by\n  intro R hR G\n  simp only [invariantForm_apply, trace_conjugate hR, conjugate_transpose,\n    conjugate_mul hR]\n\ntheorem invariantForm_SO (v : Fin 3 → ℝ) : SOInvariant (invariantForm v) :=\n  fun R hR => invariantForm_O v R hR.1\n\nend\nend S11D3Invariants\n",
+      "canonical_source": "lean/s11/S11D3Invariants/Rotation.lean",
+      "replacement": {
+        "old": "2 • monomial 0 4",
+        "new": "3 • monomial 0 4"
+      }
+    },
+    {
+      "name": "trace_of_square_sign",
+      "expected": "REJECTED",
+      "outcome": "REJECTED",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/d3_verification/trace_of_square_sign.lean"
+      ],
+      "exit_status": 1,
+      "wall_seconds": 22.417,
+      "source_sha256": "a6d546b7795075c622bda963ca8b94772031f9ef368268de63f2ad3c5881187f",
+      "required_failure_in": "traceOfSquare_apply",
+      "diagnostics": [
+        {
+          "declaration": "traceOfSquare_apply",
+          "line": 90,
+          "message": "s11/_scratch/d3_verification/trace_of_square_sign.lean:90:73: error: unsolved goals\nG : Mat\n⊢ G 0 0 ^ 2 + G 1 1 ^ 2 + G 2 2 ^ 2 - G 0 1 * G 1 0 * 2 + G 0 2 * G 2 0 * 2 + G 1 2 * G 2 1 * 2 =\n    G 0 0 ^ 2 + G 1 1 ^ 2 + G 2 2 ^ 2 + G 0 1 * G 1 0 * 2 + G 0 2 * G 2 0 * 2 + G 1 2 * G 2 1 * 2\n"
+        }
+      ],
+      "output": "Try this:\n  [apply] ring_nf\n  \n  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.\n    \n  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.\ns11/_scratch/d3_verification/trace_of_square_sign.lean:90:73: error: unsolved goals\nG : Mat\n⊢ G 0 0 ^ 2 + G 1 1 ^ 2 + G 2 2 ^ 2 - G 0 1 * G 1 0 * 2 + G 0 2 * G 2 0 * 2 + G 1 2 * G 2 1 * 2 =\n    G 0 0 ^ 2 + G 1 1 ^ 2 + G 2 2 ^ 2 + G 0 1 * G 1 0 * 2 + G 0 2 * G 2 0 * 2 + G 1 2 * G 2 1 * 2\n",
+      "output_sha256": "d81771fd41a4fc73a4f6b2c61a9d4f2a61cbf27f7629df1e4b22b3bb06ae0137",
+      "source": "import S11D3Invariants.Quadratic\n\n/-! Full group predicates and trace invariants on real 3x3 matrices.\nFinite test rotations do not replace the quantifier over the full group. -/\nnamespace S11D3Invariants\nnoncomputable section\n\ndef conjugate (R G : Mat) : Mat := R * G * R.transpose\ndef Orthogonal (R : Mat) : Prop := R.transpose * R = 1\ndef Proper (R : Mat) : Prop := Orthogonal R ∧ R.det = 1\n\ndef SOInvariant (Q : Quad) : Prop := ∀ R, Proper R → ∀ G, Q (conjugate R G) = Q G\ndef OInvariant (Q : Quad) : Prop := ∀ R, Orthogonal R → ∀ G, Q (conjugate R G) = Q G\n\ndef reflection : Mat := ![![-1,0,0],![0,1,0],![0,0,1]]\ndef ReflectionOdd (Q : Quad) : Prop := ∀ G, Q (conjugate reflection G) = -Q G\n\ndef rotationXY (a b : ℝ) : Mat := ![![a,-b,0],![b,a,0],![0,0,1]]\ndef rotationYZ (a b : ℝ) : Mat := ![![1,0,0],![0,a,-b],![0,b,a]]\n\ntheorem rotationXY_proper {a b : ℝ} (h : a^2+b^2=1) : Proper (rotationXY a b) := by\n  constructor\n  · unfold Orthogonal\n    ext i j\n    simp only [Matrix.mul_apply, Matrix.transpose_apply, Fin.sum_univ_three]\n    fin_cases i <;> fin_cases j <;> simp [rotationXY] <;> nlinarith\n  · rw [Matrix.det_fin_three]\n    simp [rotationXY]\n    nlinarith\n\ntheorem rotationYZ_proper {a b : ℝ} (h : a^2+b^2=1) : Proper (rotationYZ a b) := by\n  constructor\n  · unfold Orthogonal\n    ext i j\n    simp only [Matrix.mul_apply, Matrix.transpose_apply, Fin.sum_univ_three]\n    fin_cases i <;> fin_cases j <;> simp [rotationYZ] <;> nlinarith\n  · rw [Matrix.det_fin_three]\n    simp [rotationYZ]\n    nlinarith\n\ntheorem reflection_orthogonal : Orthogonal reflection := by\n  ext i j\n  simp only [Matrix.mul_apply, Matrix.transpose_apply, Fin.sum_univ_three]\n  fin_cases i <;> fin_cases j <;> norm_num [reflection, Matrix.cons_val_two]\n\ntheorem reflection_det : reflection.det = -1 := by\n  rw [Matrix.det_fin_three]\n  norm_num [reflection, Matrix.cons_val_two]\n\n/-- Entry formula avoids reliance on simplification through concrete matrix literals. -/\ntheorem conjugate_apply (R G : Mat) (i j : Fin 3) :\n    conjugate R G i j = ∑ k : Fin 3, (∑ l : Fin 3, R i l * G l k) * R j k := by\n  rfl\n\ntheorem trace_conjugate {R : Mat} (hR : Orthogonal R) (G : Mat) :\n    (conjugate R G).trace = G.trace := by\n  unfold conjugate\n  rw [Matrix.trace_mul_cycle, hR, Matrix.one_mul]\n\ntheorem conjugate_mul {R : Mat} (hR : Orthogonal R) (G H : Mat) :\n    conjugate R G * conjugate R H = conjugate R (G*H) := by\n  unfold conjugate\n  calc R*G*R.transpose*(R*H*R.transpose) = R*G*(R.transpose*R)*H*R.transpose := by\n         simp only [Matrix.mul_assoc]\n       _ = R*(G*H)*R.transpose := by\n         rw [hR, Matrix.mul_one]\n         simp only [Matrix.mul_assoc]\n\ntheorem conjugate_transpose (R G : Mat) :\n    (conjugate R G).transpose = conjugate R G.transpose := by\n  simp only [conjugate, Matrix.transpose_mul, Matrix.transpose_transpose, Matrix.mul_assoc]\n\n/-- Unnormalized basis: trace square, trace of square, Frobenius square. -/\ndef traceSquare : Quad :=\n  monomial 0 0 + monomial 4 4 + monomial 8 8 +\n  2 • monomial 0 4 + 2 • monomial 0 8 + 2 • monomial 4 8\n\ndef traceOfSquare : Quad :=\n  monomial 0 0 + monomial 4 4 + monomial 8 8 +\n  (-2 : ℝ) • monomial 1 3 + 2 • monomial 2 6 + 2 • monomial 5 7\n\ndef frobeniusSquare : Quad :=\n  monomial 0 0 + monomial 1 1 + monomial 2 2 + monomial 3 3 +\n  monomial 4 4 + monomial 5 5 + monomial 6 6 + monomial 7 7 + monomial 8 8\n\ntheorem traceSquare_apply (G : Mat) : traceSquare G = G.trace ^ 2 := by\n  simp [traceSquare, monomial, coordinateMap, coordinates, Matrix.trace, Fin.sum_univ_three]\n  ring\n\ntheorem traceOfSquare_apply (G : Mat) : traceOfSquare G = (G*G).trace := by\n  simp [traceOfSquare, monomial, coordinateMap, coordinates, Matrix.trace,\n    Matrix.mul_apply, Fin.sum_univ_three]\n  ring\n\ntheorem frobeniusSquare_apply (G : Mat) : frobeniusSquare G = (G*G.transpose).trace := by\n  simp [frobeniusSquare, monomial, coordinateMap, coordinates, Matrix.trace,\n    Matrix.mul_apply, Fin.sum_univ_three]\n  ring\n\ndef invariantForm (v : Fin 3 → ℝ) : Quad :=\n  v 0 • traceSquare + v 1 • traceOfSquare + v 2 • frobeniusSquare\n\ntheorem invariantForm_apply (v : Fin 3 → ℝ) (G : Mat) :\n    invariantForm v G = v 0 * G.trace ^ 2 + v 1 * (G*G).trace +\n      v 2 * (G*G.transpose).trace := by\n  simp [invariantForm, traceSquare_apply, traceOfSquare_apply, frobeniusSquare_apply]\n\ntheorem invariantForm_O (v : Fin 3 → ℝ) : OInvariant (invariantForm v) := by\n  intro R hR G\n  simp only [invariantForm_apply, trace_conjugate hR, conjugate_transpose,\n    conjugate_mul hR]\n\ntheorem invariantForm_SO (v : Fin 3 → ℝ) : SOInvariant (invariantForm v) :=\n  fun R hR => invariantForm_O v R hR.1\n\nend\nend S11D3Invariants\n",
+      "canonical_source": "lean/s11/S11D3Invariants/Rotation.lean",
+      "replacement": {
+        "old": "2 • monomial 1 3",
+        "new": "(-2 : ℝ) • monomial 1 3"
+      }
+    },
+    {
+      "name": "so_dimension_positive",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/d3_verification/so_dimension_positive.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 8.725,
+      "source_sha256": "0fe0d1b0a58ca9a4f3f741c7af43fd60c57b3a785da9ba62bb41c2c45ee509ca",
+      "required_failure_in": "contract_control",
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "import S11D3Invariants.Controls\nopen S11D3Invariants\nnoncomputable section\ntheorem contract_control : Module.finrank ℝ soSpace = 3 := by\n  norm_num [so_dimension]\n"
+    },
+    {
+      "name": "so_dimension_mutant",
+      "expected": "REJECTED",
+      "outcome": "REJECTED",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/d3_verification/so_dimension_mutant.lean"
+      ],
+      "exit_status": 1,
+      "wall_seconds": 9.984,
+      "source_sha256": "bd6a43b6146aa1169fc35ab359a614f22be41d8467e843d86e0fe043319add33",
+      "required_failure_in": "contract_control",
+      "diagnostics": [
+        {
+          "declaration": "contract_control",
+          "line": 4,
+          "message": "s11/_scratch/d3_verification/so_dimension_mutant.lean:4:59: error: unsolved goals\n⊢ False\n"
+        }
+      ],
+      "output": "s11/_scratch/d3_verification/so_dimension_mutant.lean:4:59: error: unsolved goals\n⊢ False\n",
+      "output_sha256": "bf71f232629545e6d664f2ffb1f451e5fb458c2c3d56c4dea11cc77c30e931f1",
+      "source": "import S11D3Invariants.Controls\nopen S11D3Invariants\nnoncomputable section\ntheorem contract_control : Module.finrank ℝ soSpace = 2 := by\n  norm_num [so_dimension]\n"
+    },
+    {
+      "name": "o_dimension_positive",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/d3_verification/o_dimension_positive.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 8.879,
+      "source_sha256": "27ec5bca2db0ae3630f7e3d3587a8d641af5aafdb555b79f4e0d030d3c596fa2",
+      "required_failure_in": "contract_control",
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "import S11D3Invariants.Controls\nopen S11D3Invariants\nnoncomputable section\ntheorem contract_control : Module.finrank ℝ oSpace = 3 := by\n  norm_num [o_dimension]\n"
+    },
+    {
+      "name": "o_dimension_mutant",
+      "expected": "REJECTED",
+      "outcome": "REJECTED",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/d3_verification/o_dimension_mutant.lean"
+      ],
+      "exit_status": 1,
+      "wall_seconds": 8.727,
+      "source_sha256": "60d6dc75ffc00eee009b0a3d05e09ec542be6a488cb46880cf48f15bb31453ef",
+      "required_failure_in": "contract_control",
+      "diagnostics": [
+        {
+          "declaration": "contract_control",
+          "line": 4,
+          "message": "s11/_scratch/d3_verification/o_dimension_mutant.lean:4:58: error: unsolved goals\n⊢ False\n"
+        }
+      ],
+      "output": "s11/_scratch/d3_verification/o_dimension_mutant.lean:4:58: error: unsolved goals\n⊢ False\n",
+      "output_sha256": "1a5c63e6a86a22e68414461797bcb48e03330763a1ba5369fa6c110367fcae1b",
+      "source": "import S11D3Invariants.Controls\nopen S11D3Invariants\nnoncomputable section\ntheorem contract_control : Module.finrank ℝ oSpace = 4 := by\n  norm_num [o_dimension]\n"
+    },
+    {
+      "name": "odd_dimension_positive",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/d3_verification/odd_dimension_positive.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 6.406,
+      "source_sha256": "cf64fd266c63d0dabeb1906867c15d075dd9e2be8a747e3d47fe487bac2ed5db",
+      "required_failure_in": "contract_control",
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "import S11D3Invariants.Controls\nopen S11D3Invariants\nnoncomputable section\ntheorem contract_control : Module.finrank ℝ oddSpace = 0 := by\n  norm_num [odd_dimension]\n"
+    },
+    {
+      "name": "odd_dimension_mutant",
+      "expected": "REJECTED",
+      "outcome": "REJECTED",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/d3_verification/odd_dimension_mutant.lean"
+      ],
+      "exit_status": 1,
+      "wall_seconds": 4.642,
+      "source_sha256": "16053d5cb3335190f3ad326fc69f826327f11849d0f6b113cc6fbebbb1020551",
+      "required_failure_in": "contract_control",
+      "diagnostics": [
+        {
+          "declaration": "contract_control",
+          "line": 4,
+          "message": "s11/_scratch/d3_verification/odd_dimension_mutant.lean:4:60: error: unsolved goals\n⊢ False\n"
+        }
+      ],
+      "output": "s11/_scratch/d3_verification/odd_dimension_mutant.lean:4:60: error: unsolved goals\n⊢ False\n",
+      "output_sha256": "5d06cdbfc96af0920c658933eab8982766697fe5be1ac284b29c9556157b14e5",
+      "source": "import S11D3Invariants.Controls\nopen S11D3Invariants\nnoncomputable section\ntheorem contract_control : Module.finrank ℝ oddSpace = 1 := by\n  norm_num [odd_dimension]\n"
+    },
+    {
+      "name": "trace_required_positive",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/d3_verification/trace_required_positive.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 9.581,
+      "source_sha256": "e734ed09171d3e4fce92cd8ffc53d5e6658eccba8df65e005de0603c63877b4a",
+      "required_failure_in": "contract_control",
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "import S11D3Invariants.Controls\nopen S11D3Invariants\nnoncomputable section\ntheorem contract_control : ¬ ∃ b c : ℝ, invariantForm ![1,0,0] = invariantForm ![0,b,c] := by\n  norm_num [trace_not_omittable]\n"
+    },
+    {
+      "name": "trace_required_mutant",
+      "expected": "REJECTED",
+      "outcome": "REJECTED",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/d3_verification/trace_required_mutant.lean"
+      ],
+      "exit_status": 1,
+      "wall_seconds": 9.078,
+      "source_sha256": "f013b3f1dea2f6eb76d9a6fa961a392e0cd20044b55078b74b48394de37deefd",
+      "required_failure_in": "contract_control",
+      "diagnostics": [
+        {
+          "declaration": "contract_control",
+          "line": 4,
+          "message": "s11/_scratch/d3_verification/trace_required_mutant.lean:4:90: error: unsolved goals\n⊢ False\n"
+        }
+      ],
+      "output": "s11/_scratch/d3_verification/trace_required_mutant.lean:4:90: error: unsolved goals\n⊢ False\n",
+      "output_sha256": "63cad03b2c2a4c87575f5bb3309fd35a751a47ad56d02bba2554bde31bc4b30f",
+      "source": "import S11D3Invariants.Controls\nopen S11D3Invariants\nnoncomputable section\ntheorem contract_control :  ∃ b c : ℝ, invariantForm ![1,0,0] = invariantForm ![0,b,c] := by\n  norm_num [trace_not_omittable]\n"
+    },
+    {
+      "name": "trace_of_square_required_positive",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/d3_verification/trace_of_square_required_positive.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 8.977,
+      "source_sha256": "a550b47b36bd96d3828ba08d3bce1d6481f98d3810fcfe1122f1d36770f654b5",
+      "required_failure_in": "contract_control",
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "import S11D3Invariants.Controls\nopen S11D3Invariants\nnoncomputable section\ntheorem contract_control : ¬ ∃ a c : ℝ, invariantForm ![0,1,0] = invariantForm ![a,0,c] := by\n  norm_num [traceOfSquare_not_omittable]\n"
+    },
+    {
+      "name": "trace_of_square_required_mutant",
+      "expected": "REJECTED",
+      "outcome": "REJECTED",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/d3_verification/trace_of_square_required_mutant.lean"
+      ],
+      "exit_status": 1,
+      "wall_seconds": 8.977,
+      "source_sha256": "ca79affa907e1faf35198c968ce2b7324f8039e1991aa9f8f44737c29df18fec",
+      "required_failure_in": "contract_control",
+      "diagnostics": [
+        {
+          "declaration": "contract_control",
+          "line": 4,
+          "message": "s11/_scratch/d3_verification/trace_of_square_required_mutant.lean:4:90: error: unsolved goals\n⊢ False\n"
+        }
+      ],
+      "output": "s11/_scratch/d3_verification/trace_of_square_required_mutant.lean:4:90: error: unsolved goals\n⊢ False\n",
+      "output_sha256": "bcd2ce7b0d44901c38320314766c13c04179b99f9783bfbc751015a1b3cbcc65",
+      "source": "import S11D3Invariants.Controls\nopen S11D3Invariants\nnoncomputable section\ntheorem contract_control :  ∃ a c : ℝ, invariantForm ![0,1,0] = invariantForm ![a,0,c] := by\n  norm_num [traceOfSquare_not_omittable]\n"
+    },
+    {
+      "name": "frobenius_required_positive",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/d3_verification/frobenius_required_positive.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 8.625,
+      "source_sha256": "9748f501f8ef9c3a4441d6a33875753ba7781d029cbcf3b228956a7584fc2b0d",
+      "required_failure_in": "contract_control",
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "import S11D3Invariants.Controls\nopen S11D3Invariants\nnoncomputable section\ntheorem contract_control : ¬ ∃ a b : ℝ, invariantForm ![0,0,1] = invariantForm ![a,b,0] := by\n  norm_num [frobenius_not_omittable]\n"
+    },
+    {
+      "name": "frobenius_required_mutant",
+      "expected": "REJECTED",
+      "outcome": "REJECTED",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/d3_verification/frobenius_required_mutant.lean"
+      ],
+      "exit_status": 1,
+      "wall_seconds": 8.576,
+      "source_sha256": "c182caeadc425993b0ebedf9405803e64407baba1925d4a67d54217f4f1e7a04",
+      "required_failure_in": "contract_control",
+      "diagnostics": [
+        {
+          "declaration": "contract_control",
+          "line": 4,
+          "message": "s11/_scratch/d3_verification/frobenius_required_mutant.lean:4:90: error: unsolved goals\n⊢ False\n"
+        }
+      ],
+      "output": "s11/_scratch/d3_verification/frobenius_required_mutant.lean:4:90: error: unsolved goals\n⊢ False\n",
+      "output_sha256": "1492efd9de67403beae10dc870325afac7cfeebec58846817f7c8081722a8d73",
+      "source": "import S11D3Invariants.Controls\nopen S11D3Invariants\nnoncomputable section\ntheorem contract_control :  ∃ a b : ℝ, invariantForm ![0,0,1] = invariantForm ![a,b,0] := by\n  norm_num [frobenius_not_omittable]\n"
+    },
+    {
+      "name": "no_odd_extra_positive",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/d3_verification/no_odd_extra_positive.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 8.674,
+      "source_sha256": "30eb30d3e4915cc201e2efc8dc7fb6c267d8910a4e1bb9b4770934197596620b",
+      "required_failure_in": "contract_control",
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "import S11D3Invariants.Controls\nopen S11D3Invariants\nnoncomputable section\ntheorem contract_control : ¬ ∃ Q : Quad, SOInvariant Q ∧ ReflectionOdd Q ∧ Q ≠ 0 := by\n  norm_num [nonzero_odd_impossible]\n"
+    },
+    {
+      "name": "no_odd_extra_mutant",
+      "expected": "REJECTED",
+      "outcome": "REJECTED",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/d3_verification/no_odd_extra_mutant.lean"
+      ],
+      "exit_status": 1,
+      "wall_seconds": 8.624,
+      "source_sha256": "497ef755671c92e4a58d71f3a0569961f76a1f36b8db2e331622525d368b314b",
+      "required_failure_in": "contract_control",
+      "diagnostics": [
+        {
+          "declaration": "contract_control",
+          "line": 4,
+          "message": "s11/_scratch/d3_verification/no_odd_extra_mutant.lean:4:83: error: unsolved goals\n⊢ False\n"
+        }
+      ],
+      "output": "s11/_scratch/d3_verification/no_odd_extra_mutant.lean:4:83: error: unsolved goals\n⊢ False\n",
+      "output_sha256": "c9f141a1d0be0ae8d2ad9a08975986f50e10cebf24dd191456d7be8b8db7cb79",
+      "source": "import S11D3Invariants.Controls\nopen S11D3Invariants\nnoncomputable section\ntheorem contract_control :  ∃ Q : Quad, SOInvariant Q ∧ ReflectionOdd Q ∧ Q ≠ 0 := by\n  norm_num [nonzero_odd_impossible]\n"
+    },
+    {
+      "name": "full_group_sensitivity_positive",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/d3_verification/full_group_sensitivity_positive.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 8.322,
+      "source_sha256": "042fb20471516d3d52f40dbeecc55e1871faef49d0e6cb324ad7617d6d0ec9e6",
+      "required_failure_in": "contract_control",
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "import S11D3Invariants.Controls\nopen S11D3Invariants\nnoncomputable section\ntheorem contract_control : ¬ SOInvariant (monomial 0 0) := by\n  norm_num [single_entry_not_invariant]\n"
+    },
+    {
+      "name": "full_group_sensitivity_mutant",
+      "expected": "REJECTED",
+      "outcome": "REJECTED",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/d3_verification/full_group_sensitivity_mutant.lean"
+      ],
+      "exit_status": 1,
+      "wall_seconds": 8.374,
+      "source_sha256": "f01ce3118962b6aeebc4e1758c3c88d4a7ad1781731f70608081630aed92759a",
+      "required_failure_in": "contract_control",
+      "diagnostics": [
+        {
+          "declaration": "contract_control",
+          "line": 4,
+          "message": "s11/_scratch/d3_verification/full_group_sensitivity_mutant.lean:4:58: error: unsolved goals\n⊢ False\n"
+        }
+      ],
+      "output": "s11/_scratch/d3_verification/full_group_sensitivity_mutant.lean:4:58: error: unsolved goals\n⊢ False\n",
+      "output_sha256": "884e43dc5cb53d09b6dc88bb0e30370869f2a459b71d94ae7ad6cac77725ae67",
+      "source": "import S11D3Invariants.Controls\nopen S11D3Invariants\nnoncomputable section\ntheorem contract_control :  SOInvariant (monomial 0 0) := by\n  norm_num [single_entry_not_invariant]\n"
+    },
+    {
+      "name": "nonempty_positive",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/d3_verification/nonempty_positive.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 8.323,
+      "source_sha256": "12c2d714173477172f7d0e81cfb94403f5eb5e1e049b5cae277b8d0df960be20",
+      "required_failure_in": null,
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "import S11D3Invariants.Controls\nopen S11D3Invariants\nnoncomputable section\ntheorem contract_control : ∃ Q : Quad, SOInvariant Q ∧ Q ≠ 0 := nonzero_invariant_exists\n"
+    },
+    {
+      "name": "zero_positive",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/d3_verification/zero_positive.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 8.373,
+      "source_sha256": "0a7220eab62babfab233a8b0f8036280e7d1d6506825adc3d0ca0ad5628293a5",
+      "required_failure_in": null,
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "import S11D3Invariants.Controls\nopen S11D3Invariants\nnoncomputable section\ntheorem contract_control : SOInvariant (0 : Quad) ∧ ReflectionOdd (0 : Quad) := zero_invariant\n"
+    },
+    {
+      "name": "negative_coefficients_positive",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/d3_verification/negative_coefficients_positive.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 8.422,
+      "source_sha256": "7021a4c6d0f7b66bbfd393ec004d6d49ebefadc3d4fb7756efa69d13a1aaa324",
+      "required_failure_in": null,
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "import S11D3Invariants.Controls\nopen S11D3Invariants\nnoncomputable section\ntheorem contract_control : OInvariant (invariantForm ![-2,3,-5]) := invariantForm_O _\n"
+    },
+    {
+      "name": "unique_coefficients_positive",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/d3_verification/unique_coefficients_positive.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 8.171,
+      "source_sha256": "91ee83ed9188a36289175b53034069ea97baba3a7e51e87080d3671262af3328",
+      "required_failure_in": null,
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "import S11D3Invariants.Controls\nopen S11D3Invariants\nnoncomputable section\ntheorem contract_control : ∃! v : Fin 3 → ℝ, invariantForm ![-2,3,-5] = invariantForm v := SO_unique _ (invariantForm_SO _)\n"
+    }
+  ],
+  "resources": {
+    "workers": 1,
+    "lean_threads": 1,
+    "lean_allocator_limit_mib": 4096,
+    "process_timeout_seconds": 300,
+    "note": "Allocator limit is not an OS RSS cap."
+  },
+  "dependency_olean_sha256_before_build": {},
+  "axiom_audit_count": 40,
+  "axiom_declarations": {
+    "S11D3Invariants.coordinates_decode": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D3Invariants.decode_coordinates": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D3Invariants.frame_expansion": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D3Invariants.quadratic_representation": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D3Invariants.rotationXY_proper": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D3Invariants.rotationYZ_proper": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D3Invariants.reflection_orthogonal": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D3Invariants.reflection_det": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D3Invariants.conjugate_apply": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D3Invariants.trace_conjugate": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D3Invariants.conjugate_mul": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D3Invariants.conjugate_transpose": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D3Invariants.traceSquare_apply": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D3Invariants.traceOfSquare_apply": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D3Invariants.frobeniusSquare_apply": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D3Invariants.invariantForm_apply": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D3Invariants.invariantForm_O": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D3Invariants.invariantForm_SO": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D3Invariants.polynomial_vec": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D3Invariants.invariant_polynomial": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D3Invariants.SO_classification": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D3Invariants.SO_iff_O": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D3Invariants.O_classification": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D3Invariants.invariantForm_injective": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D3Invariants.SO_unique": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D3Invariants.odd_classification": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D3Invariants.so_eq_o": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D3Invariants.odd_eq_bot": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D3Invariants.soMap_bijective": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D3Invariants.so_dimension": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D3Invariants.o_dimension": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D3Invariants.odd_dimension": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D3Invariants.census": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D3Invariants.trace_not_omittable": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D3Invariants.traceOfSquare_not_omittable": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D3Invariants.frobenius_not_omittable": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D3Invariants.nonzero_invariant_exists": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D3Invariants.zero_invariant": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D3Invariants.nonzero_odd_impossible": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D3Invariants.single_entry_not_invariant": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "source_sha256_after": {
+    "_measurements/S11_lean_d3_generate.py": "2be172074609c7c768339c3847773c887e6935623701fc3a9eb20528aa7b3b45",
+    "lean/lake-manifest.json": "91fd5318cdc35e4044d6e059c6ef73d94b955d27adf8a5860b07ec92add9377e",
+    "lean/lakefile.toml": "9a4a46a278853ca14e5ad03d8d5379ef50ca2d566c99a7140eefca4245efaf63",
+    "lean/lean-toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+    "lean/s11/S11D3Invariants/Census.lean": "2c40ffba318ea7483ceb7b220cdcbe3303fbd1c6dec6fd380d852f16e625981c",
+    "lean/s11/S11D3Invariants/Classification.lean": "2cfba9f58fe6932859833f7e0fe8f8f0c398618de1086a6b358527d3563b3c02",
+    "lean/s11/S11D3Invariants/Constraints.lean": "cc8a4b788b205cf2de7f4aea4b617e0e41c2047c489806f59ef6d56d770bfc13",
+    "lean/s11/S11D3Invariants/Controls.lean": "ff8b1bb0725f7fb55b66888b2ebf434ef2f5f0864aaf4f79e5a4d722b00f183e",
+    "lean/s11/S11D3Invariants/Quadratic.lean": "ccb26fd2c468c84e5cc499840179b3d574c497d15604baebce226009dc70933f",
+    "lean/s11/S11D3Invariants/Rotation.lean": "1de41bfbbea2144e6a63ce9d1752b9bff18497fadb8c5bfdfee818fcffc68426",
+    "lean/s11/S11D3Invariants.lean": "2ebf9eaea29251aa113f331410a9a17dbc4fda9bbf1da460a7cf69db1bd1dc9f"
+  },
+  "finished_utc": "2026-09-16T14:58:44.257481+00:00"
+}

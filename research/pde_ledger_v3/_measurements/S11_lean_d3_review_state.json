@@ -1,0 +1,94 @@
+{
+  "status": "COMPLETE",
+  "scope": "Bounded D3 S11 J1\u2013J4 independent fidelity review",
+  "packet_revision": "S11 D3 quadratic invariants J1\u2013J4 fidelity contract v1",
+  "packet_sha256": "015d0249e7f5cf911323cdd3c787f5d9fb69a45104515fc958be5e53877e9e6c",
+  "file_count": 27,
+  "archive": "research/pde_ledger_v3/_measurements/S11_lean_d3_review_packet_v1.tar.gz",
+  "archive_sha256": "a4b44d54fadef971f557ef85cc3e62d48919807639ab3b764735740059d30db2",
+  "archive_bytes": 130181,
+  "packet_directory": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_d3/review_packet_v1",
+  "manifest": "research/pde_ledger_v3/_measurements/S11_lean_d3_review_packet.json",
+  "manifest_sha256": "f78d38219935608d3a71024940d9f6fe2d8ab4e596bb24412d10f93e1a3cf739",
+  "destinations": [
+    "Claude",
+    "Grok"
+  ],
+  "external_reviews_started": true,
+  "local_verification": "PASS: six modules and audit root; 40 standard-axiom audits; ten mathematical rejections; twelve positive controls; compact native checks; current source/olean/dependency hashes match",
+  "prepared_utc": "2026-09-16T15:01:18.478394+00:00",
+  "snapshot_validation": "PASS: live files, snapshot and archive member hashes all agree",
+  "review_verdicts": {
+    "claude": {
+      "session_id": "33b7a236-0b9e-4a85-a5ea-5c2fd7240cea",
+      "verdict": "CLEAR",
+      "termination": "end_turn",
+      "run_exit_status": 0,
+      "model_usage_ids": [
+        "claude-haiku-4-5-20251001",
+        "claude-opus-5[1m]"
+      ],
+      "raw_sha256": "6008f7f0b9deeee94fdaf85eecead626feba4be353ae1470f46bc6d41471ac93",
+      "run_sha256": "a70aa9bb299088ecd1306a41209dd8d44f1a63fa915da5c11bd8de000b1dccd6",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "report": "research/pde_ledger_v3/_measurements/S11_lean_d3_fidelity_claude_v1.md",
+      "report_sha256": "dc01e6b01428bc96343d6643e59898905a1b80094de4151c7c9e74c91601cfc2",
+      "report_extraction_character_offset": 0,
+      "review_limit": "Read-only source fidelity review; no independent Lean compilation, instrument execution or cryptographic recomputation."
+    },
+    "grok": {
+      "session_id": "19edca5d-9172-4851-86a0-c3e60907e3e6",
+      "verdict": "CLEAR",
+      "termination": "end_turn",
+      "run_exit_status": 0,
+      "model_usage_ids": [
+        "grok-4.6-build"
+      ],
+      "raw_sha256": "263a2886c0aa15e014829de8a7b7708edad22c35c7982fe9b40c59a87c27c230",
+      "run_sha256": "d5ad0b2c3a8d3bd4f509db7d43f22d37786b8216c79b067bb95817175eec6a21",
+      "stderr_sha256": "544234de452deb7eb0c8e1d75789a6c6b60f7052be4254fae35b525465e7dcde",
+      "report": "research/pde_ledger_v3/_measurements/S11_lean_d3_fidelity_grok_v1.md",
+      "report_sha256": "840add7b40a95106899633f9a71eedf79df364cff60f632b2b74c76c90d9204c",
+      "report_extraction_character_offset": 1074,
+      "review_limit": "Read-only source fidelity review; no independent Lean compilation, instrument execution or cryptographic recomputation."
+    }
+  },
+  "completion_claimed": true,
+  "committed": false,
+  "authorization_context": "The user explicitly approved sending this fixed 27-file D3 J1\u2013J4 packet to Claude and Grok for independent fidelity reviews by saying \"yes go ahead\" in response to that exact request.",
+  "pinned_export_constraint": "Preserve S11c-b/c1/c2 exports and all S11c calculation files; this packet and work do not write them.",
+  "authorization_quote": "yes go ahead",
+  "authorization_recorded_utc": "2026-09-16T15:07:47.064081+00:00",
+  "authorization_preflight": {
+    "status": "PASS",
+    "packet_sha256": "015d0249e7f5cf911323cdd3c787f5d9fb69a45104515fc958be5e53877e9e6c",
+    "file_count": 27,
+    "compiled_objects": 7,
+    "checked": "archive/snapshot/live files; source/generator/instruments/reports/logs/objects; package pins; historical proof bytes"
+  },
+  "review_started_utc": "2026-09-16T15:08:00.438480+00:00",
+  "transport_directory": "/tmp/s11-lean-d3-fidelity-av4o_3fi/packet",
+  "launch_preflight": {
+    "status": "PASS",
+    "packet_sha256": "015d0249e7f5cf911323cdd3c787f5d9fb69a45104515fc958be5e53877e9e6c",
+    "file_count": 27,
+    "compiled_objects": 7,
+    "checked": "archive/snapshot/live files; source/generator/instruments/reports/logs/objects; package pins; historical proof bytes"
+  },
+  "supervisor_pid": 291310,
+  "review_supervisor_sha256": "92022b6b085b7ec6d01b04d841c4958af161e25e753236acabb9d27efb6e9c2d",
+  "review_supervisor_finished_utc": "2026-09-16T15:19:47.169824+00:00",
+  "live_files_changed_since_packet": [
+    "lean/s11/D3_COVERAGE.md",
+    "lean/s11/D3_FIDELITY.md",
+    "lean/s11/D3_VERIFICATION.txt",
+    "lean/s11/README.md"
+  ],
+  "unresolved_blockers": [],
+  "completed_utc": "2026-09-16T15:24:55.209690+00:00",
+  "closure_scope": "Bounded D3 quadratic invariants J1\u2013J4 only",
+  "closure_validation": "research/pde_ledger_v3/_measurements/S11_lean_d3_closure_validation.json",
+  "closure_validation_sha256": "d57bcb2b23d4d2c5a3ca14e4e1ecd2dda7c0476e7cb0a2a790f83278099a23e2",
+  "disposition_record": "research/pde_ledger_v3/lean/s11/D3_FIDELITY_REVIEW.md",
+  "post_review_changes": "Four packet documentation files and new closure record only. Proofs, native sources, dependencies, generators, instruments and terminal records retain reviewed hashes."
+}

@@ -1,0 +1,43 @@
+import S11D3Invariants.Controls
+
+/-! J1–J4 standard-axiom audit roots. -/
+#print axioms S11D3Invariants.coordinates_decode
+#print axioms S11D3Invariants.decode_coordinates
+#print axioms S11D3Invariants.frame_expansion
+#print axioms S11D3Invariants.quadratic_representation
+#print axioms S11D3Invariants.rotationXY_proper
+#print axioms S11D3Invariants.rotationYZ_proper
+#print axioms S11D3Invariants.reflection_orthogonal
+#print axioms S11D3Invariants.reflection_det
+#print axioms S11D3Invariants.conjugate_apply
+#print axioms S11D3Invariants.trace_conjugate
+#print axioms S11D3Invariants.conjugate_mul
+#print axioms S11D3Invariants.conjugate_transpose
+#print axioms S11D3Invariants.traceSquare_apply
+#print axioms S11D3Invariants.traceOfSquare_apply
+#print axioms S11D3Invariants.frobeniusSquare_apply
+#print axioms S11D3Invariants.invariantForm_apply
+#print axioms S11D3Invariants.invariantForm_O
+#print axioms S11D3Invariants.invariantForm_SO
+#print axioms S11D3Invariants.polynomial_vec
+#print axioms S11D3Invariants.invariant_polynomial
+#print axioms S11D3Invariants.SO_classification
+#print axioms S11D3Invariants.SO_iff_O
+#print axioms S11D3Invariants.O_classification
+#print axioms S11D3Invariants.invariantForm_injective
+#print axioms S11D3Invariants.SO_unique
+#print axioms S11D3Invariants.odd_classification
+#print axioms S11D3Invariants.so_eq_o
+#print axioms S11D3Invariants.odd_eq_bot
+#print axioms S11D3Invariants.soMap_bijective
+#print axioms S11D3Invariants.so_dimension
+#print axioms S11D3Invariants.o_dimension
+#print axioms S11D3Invariants.odd_dimension
+#print axioms S11D3Invariants.census
+#print axioms S11D3Invariants.trace_not_omittable
+#print axioms S11D3Invariants.traceOfSquare_not_omittable
+#print axioms S11D3Invariants.frobenius_not_omittable
+#print axioms S11D3Invariants.nonzero_invariant_exists
+#print axioms S11D3Invariants.zero_invariant
+#print axioms S11D3Invariants.nonzero_odd_impossible
+#print axioms S11D3Invariants.single_entry_not_invariant

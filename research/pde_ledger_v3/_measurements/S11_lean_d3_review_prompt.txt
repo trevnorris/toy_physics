@@ -1,0 +1,38 @@
+Independent non-author fidelity review: bounded D3 quadratic invariants J1–J4.
+
+Read the fixed MANIFEST.json and lean/FORMALIZATION_POLICY.md, then
+lean/s11/D3_COVERAGE.md, D3_FIDELITY.md, D3_VERIFICATION.txt, all six
+S11D3Invariants modules and the audit root, and the compact native source check
+and terminal records. The packet includes the actual native sources and shared
+physics/step specification for identifying the intended object.
+
+Review the mathematics and statement fidelity, not merely the author-reported
+build status. Is the domain truly every real quadratic form on all real 3×3
+matrices? Does the associated-bilinear representation cover the full space?
+Are the rotation constraints derived from admissible members of the full SO
+quantifier, and is full O sufficiency proved independently? Are the exact
+trace-square / trace-of-square / Frobenius-square normalization, unique
+coefficients, equality of the actual SO/O submodules, and zero reflection-minus
+submodule established? Do count and omission controls have admissible positive
+examples? Is the connection to actual Q9 V1/V2/V6 a full span comparison rather
+than counts only? Inspect the actual generator orientation and test controls.
+
+This is a classification of quadratic densities before any EL or divergence
+quotient. No positivity, symmetric-gradient restriction, transverse ansatz,
+field equations or derived physical dimension is assumed. Finite necessary
+rotation tests do not substitute for the full-group sufficiency proof. The
+untrusted generator selects rational finite-coordinate certificates; Lean must
+check all generated mathematics. The native Python link is tested translation,
+not a kernel-certified CAS bridge. Wolfram evidence is source inspection only.
+
+Stay within J1–J4. Do not request new D4/D5, dynamics, EL/divergence, interface,
+S11c, production/comparator/export or systematic CAS-bridge work. Identify a
+required fix only if it affects this bounded theorem, coverage or fidelity.
+Distinguish blockers from optional improvements. Do not change any file.
+
+Return a substantive final report with verdict CLEAR or NOT CLEAR, the reviewed
+packet identifier (as supplied, unless independently recomputed), scope and
+assumptions checked, detailed findings with file/theorem references, and exact
+limits of your independent verification. Do not claim to have compiled Lean,
+rerun the native instrument or recomputed hashes unless you actually did so.
+A plan, partial response or unsupported approval is not review clearance.

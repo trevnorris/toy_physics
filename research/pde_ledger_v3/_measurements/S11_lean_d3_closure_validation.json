@@ -1,0 +1,160 @@
+{
+  "status": "PASS",
+  "validated_utc": "2026-09-16T15:24:55.209690+00:00",
+  "scope": "J1\u2013J4 bounded D3 quadratic invariants",
+  "packet_sha256": "015d0249e7f5cf911323cdd3c787f5d9fb69a45104515fc958be5e53877e9e6c",
+  "file_count": 27,
+  "archive_sha256": "a4b44d54fadef971f557ef85cc3e62d48919807639ab3b764735740059d30db2",
+  "manifest_sha256": "f78d38219935608d3a71024940d9f6fe2d8ab4e596bb24412d10f93e1a3cf739",
+  "snapshot_archive_transport_correspondence": "PASS",
+  "live_files_changed_before_closure_documentation": [],
+  "local_validation_sha256": "14e44d3ae798b7edabc07d19b3d5a0b567e0e879475cc522099e04667dceff7b",
+  "current_sources_instruments_reports_objects": "PASS",
+  "check_logs_validated": 29,
+  "compiled_objects_validated": 7,
+  "package_checkout_pins": [
+    {
+      "name": "Physlib",
+      "commit": "8b2b23701c07409f882c49e0bd290a214e44450c",
+      "tracked_source_clean": true
+    },
+    {
+      "name": "mathlib",
+      "commit": "db584cd6d46c92f209a44c0f1c829460d327499d",
+      "tracked_source_clean": true
+    },
+    {
+      "name": "\u00abdoc-gen4\u00bb",
+      "commit": "aceca4eeb5a79092eabefaa75fcb72b701d02205",
+      "tracked_source_clean": true
+    },
+    {
+      "name": "plausible",
+      "commit": "b7eb3304aeae834b12dda98993a37f6a41f6f0bb",
+      "tracked_source_clean": true
+    },
+    {
+      "name": "LeanSearchClient",
+      "commit": "5f4d51b81cbd3f6b32b156bfad9056621a040404",
+      "tracked_source_clean": true
+    },
+    {
+      "name": "importGraph",
+      "commit": "16f02aa7642864af59f1ff0e384a015994db9118",
+      "tracked_source_clean": true
+    },
+    {
+      "name": "proofwidgets",
+      "commit": "4be2e3d5087eeb272cf5a8853b8f9dd025ef5957",
+      "tracked_source_clean": true
+    },
+    {
+      "name": "aesop",
+      "commit": "3448c0bcc5ce01b2d1546e483ec3620e32df3d0e",
+      "tracked_source_clean": true
+    },
+    {
+      "name": "Qq",
+      "commit": "92c15be17b7caf78c2ad767ec40f89052d908d81",
+      "tracked_source_clean": true
+    },
+    {
+      "name": "batteries",
+      "commit": "4488d40d070b9700d4d5a6aa342f0d40c31b2a2d",
+      "tracked_source_clean": true
+    },
+    {
+      "name": "leansqlite",
+      "commit": "6168b7549738a19bc837a1625c60c5d1e5dd8aeb",
+      "tracked_source_clean": true
+    },
+    {
+      "name": "Cli",
+      "commit": "6130a47896ce867c6a4a55373441e59e565bad0f",
+      "tracked_source_clean": true
+    },
+    {
+      "name": "UnicodeBasic",
+      "commit": "37e7d8cb7316a88cd3e91208385c9ec6ae780019",
+      "tracked_source_clean": true
+    },
+    {
+      "name": "BibtexQuery",
+      "commit": "852edafa268eb038a7158551fd580ee8433847b0",
+      "tracked_source_clean": true
+    },
+    {
+      "name": "MD4Lean",
+      "commit": "31907cc18f48a95384f99cee5582c00fb39e0f67",
+      "tracked_source_clean": true
+    }
+  ],
+  "historical_proof_correspondence": {
+    "S11_lean_fidelity_review_packet.json": {
+      "manifest_sha256": "91f740e9d51c5af9d3c38e300e95ed1c812fe2214091b02c88931fe0fcb361bb",
+      "unchanged_proof_files": 27
+    },
+    "S11_lean_invariant_review_packet.json": {
+      "manifest_sha256": "0a7fd1e8b774b3a73338adf74cd5f346a2060caff037c110318be37624d4e3ae",
+      "unchanged_proof_files": 6
+    },
+    "S11_lean_dynamics_review_packet.json": {
+      "manifest_sha256": "5f54346e2540db29015e799cfb7cd13718e301680c37ceb6fdb18f68b6a3cc40",
+      "unchanged_proof_files": 13
+    }
+  },
+  "reviewers": {
+    "claude": {
+      "session_id": "33b7a236-0b9e-4a85-a5ea-5c2fd7240cea",
+      "verdict": "CLEAR",
+      "termination": "end_turn",
+      "run_exit_status": 0,
+      "model_usage_ids": [
+        "claude-haiku-4-5-20251001",
+        "claude-opus-5[1m]"
+      ],
+      "raw_sha256": "6008f7f0b9deeee94fdaf85eecead626feba4be353ae1470f46bc6d41471ac93",
+      "run_sha256": "a70aa9bb299088ecd1306a41209dd8d44f1a63fa915da5c11bd8de000b1dccd6",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "report": "research/pde_ledger_v3/_measurements/S11_lean_d3_fidelity_claude_v1.md",
+      "report_sha256": "dc01e6b01428bc96343d6643e59898905a1b80094de4151c7c9e74c91601cfc2",
+      "report_extraction_character_offset": 0,
+      "review_limit": "Read-only source fidelity review; no independent Lean compilation, instrument execution or cryptographic recomputation."
+    },
+    "grok": {
+      "session_id": "19edca5d-9172-4851-86a0-c3e60907e3e6",
+      "verdict": "CLEAR",
+      "termination": "end_turn",
+      "run_exit_status": 0,
+      "model_usage_ids": [
+        "grok-4.6-build"
+      ],
+      "raw_sha256": "263a2886c0aa15e014829de8a7b7708edad22c35c7982fe9b40c59a87c27c230",
+      "run_sha256": "d5ad0b2c3a8d3bd4f509db7d43f22d37786b8216c79b067bb95817175eec6a21",
+      "stderr_sha256": "544234de452deb7eb0c8e1d75789a6c6b60f7052be4254fae35b525465e7dcde",
+      "report": "research/pde_ledger_v3/_measurements/S11_lean_d3_fidelity_grok_v1.md",
+      "report_sha256": "840add7b40a95106899633f9a71eedf79df364cff60f632b2b74c76c90d9204c",
+      "report_extraction_character_offset": 1074,
+      "review_limit": "Read-only source fidelity review; no independent Lean compilation, instrument execution or cryptographic recomputation."
+    }
+  },
+  "stdout_stderr_adjudication": "Both exited zero with end_turn and substantive final CLEAR reports. Claude stderr empty. Grok startup plugin/hook and /tmp repository-discovery warnings did not prevent completed source review. No partial/error/plan-only response accepted.",
+  "grok_extraction": "Raw text includes preliminary progress and proposed execution. The final substantive report, beginning at character offset 1074, explicitly disclaims independent compilation, instrument execution and hash recomputation. Entire raw response retained unchanged.",
+  "unresolved_blockers": [],
+  "closure_documentation_pending": false,
+  "closed_utc": "2026-09-16T15:24:55.209690+00:00",
+  "live_packet_documentation_changes": {
+    "lean/s11/D3_COVERAGE.md": "d553262698780860338295225c18427a7e534db26aaaa4ef203a28f53fc7c8e8",
+    "lean/s11/D3_FIDELITY.md": "be503d2b082f5ee1918cfe9aea3a1d080816a5475706aa4c6d432fff60cc67ab",
+    "lean/s11/D3_VERIFICATION.txt": "de52bcdbf017fe3b8f04196db45e373357704c63ce226f1226eacfa22901b659",
+    "lean/s11/README.md": "0144f7aa9dcb9762a34be757ca35f2259cd86dccb0fbc25d45dcb0346e80e30d"
+  },
+  "closure_document": {
+    "path": "lean/s11/D3_FIDELITY_REVIEW.md",
+    "sha256": "3137afbd0ac355029ae8707f14a94fdc3ea9b6396b2588b31b84ff82fcaa9f7d"
+  },
+  "preserved_reviewed_evidence": "The other 23 packet files retain reviewed hashes. All seven current compiled objects match; frozen snapshot/archive/transport unchanged. Historical H/I/E proof bytes and records preserved.",
+  "disposition": "Both independent final reviews CLEAR; optional documentation clarifications made. No proof/native-source/generator/instrument changes, rebuilds, mutation reruns or substantive re-review required.",
+  "completion_scope": "Bounded D3 quadratic invariants J1\u2013J4 only",
+  "commit_requested": false
+}

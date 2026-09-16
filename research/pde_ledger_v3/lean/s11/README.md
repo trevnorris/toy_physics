@@ -62,3 +62,30 @@ The compact source command is
 reports from H1–H4. The original orientation-probe script is historical and
 expects the pre-repair native source. The new contract does not certify D3–D5,
 EL/total-divergence classes, production exports, or S11c calculations.
+
+## D2 odd-invariant dynamics E1–E4
+
+The next bounded increment is [DYNAMICS_COVERAGE.md](DYNAMICS_COVERAGE.md), with
+its precise object and normalization map in
+[DYNAMICS_FIDELITY.md](DYNAMICS_FIDELITY.md). **E1–E4 is complete: local verification passed and both independent reviews
+returned CLEAR.** See [DYNAMICS_VERIFICATION.txt](DYNAMICS_VERIFICATION.txt) and
+[DYNAMICS_FIDELITY_REVIEW.md](DYNAMICS_FIDELITY_REVIEW.md). It addresses the actual bulk first variation of the D2
+odd term and its exhaustive longitudinal/transverse mixing criterion.
+
+`S11OddDynamics/Action.lean` identifies `-beta P/2`, its derivative-defined
+momenta, local PDE and modal operator. `Variation.lean` derives the finite
+relative-action variation using existing S10 calculus. `Mixing.lean` identifies
+the zero loci and supplies a smooth background with nonzero compact-test first
+variation whenever beta is nonzero. `S11OddDynamics.lean` audits the new theorems.
+
+Separate commands, run sequentially from `lean/`, are
+
+```sh
+python3 ../_measurements/S11_lean_dynamics_source_check.py
+python3 ../_measurements/S11_lean_dynamics_contract_check.py
+```
+
+The latter binds the nine unchanged local dependency sources to their compiled
+objects, then checks the new modules, axioms and mutations with one Lean worker.
+It supports hash-checked `--reuse-build`. These checks do not regenerate pinned
+S11c exports or certify the complete XFORM_EXTRA spectrum.

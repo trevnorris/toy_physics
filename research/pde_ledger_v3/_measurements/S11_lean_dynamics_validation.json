@@ -1,0 +1,230 @@
+{
+  "status": "PASS",
+  "validated_utc": "2026-09-16T13:06:21.253130+00:00",
+  "scope": "D2 odd-invariant dynamics E1\u2013E4 local verification; independent reviews pending",
+  "proof_source_and_dependency_hashes": {
+    "lean/lake-manifest.json": "91fd5318cdc35e4044d6e059c6ef73d94b955d27adf8a5860b07ec92add9377e",
+    "lean/lakefile.toml": "e03d7bba014f532ef3fdc8a9fd7224359d4d5d49ed37830d3397c6ab0a6fd516",
+    "lean/lean-toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+    "lean/s10/S10Pilot/Action.lean": "a7466f2c23a123f244615217d27d5048a625bddfaad5ce2a6f0456a8704f435c",
+    "lean/s10/S10Pilot/Analytic.lean": "f8a6fe854a7ed775a7ecf65fdf8589db2b865139a811daf1e4e27c34bac8811d",
+    "lean/s10/S10Pilot/PlaneWave.lean": "d64ad2d70169976f42cacb3ece650776780a17fe640d1efee4aa7677e53c85cb",
+    "lean/s10/S10Pilot/Variation.lean": "f4678338fb72fe859c627cbc5da3ccb90e9f38b7a5d774705219f880cdcc871d",
+    "lean/s11/S11Invariants/Census.lean": "3205b54bddc3c70606d5882f8661decfb1138c1354528170d7beae59d952f4b1",
+    "lean/s11/S11Invariants/Classification.lean": "c723e3f9407a22765b972ad043ff2abc454f8cfda236e36d002ffce65bab54c2",
+    "lean/s11/S11Invariants/Controls.lean": "8dcd1c9c760160f871f581c01f8e637dc487ad51c10f55458293e37b3e2d7995",
+    "lean/s11/S11Invariants/Quadratic.lean": "01dc76c702453a66a09ea3d11e54ddeee14d667dd61dd2e3a02737e15b5f7196",
+    "lean/s11/S11Invariants/Rotation.lean": "8ab28819adfaeb3f126c5905fa53e37d612afc5fe495baf0aaa2ec7873b7ed76",
+    "lean/s11/S11OddDynamics/Action.lean": "ff7a89e658989581ab1ec763137fe3de6d3f411c8496341dc72016334035d2f1",
+    "lean/s11/S11OddDynamics/Mixing.lean": "1a8dfd830caa11d77101adc283ea41d5ed7feab56ddc55ad5db7cb4a076be44d",
+    "lean/s11/S11OddDynamics/Variation.lean": "c4095887edb81ecf4840614ef70fcf5a4a33bdc00dd848ca301086482cba9308",
+    "lean/s11/S11OddDynamics.lean": "8a737301ae8dd719a2a5bdf8c7c2722fc6ec49fcc0b61d0eb57e37f1e7c6c594"
+  },
+  "compiled_module_sha256": {
+    "lean/.lake/build/lib/lean/S10Pilot/Action.olean": "1be8c3c4196dd7d4ec3eab5adeec1ad4efd799f37bea3169a7b2396a59efc3bb",
+    "lean/.lake/build/lib/lean/S10Pilot/PlaneWave.olean": "0d66b90ba63086dceddbae3b9cdeae947fcc286b6fa2d3bcd9c9dc033e0608b4",
+    "lean/.lake/build/lib/lean/S10Pilot/Analytic.olean": "9734d5342b5ee8d0683ce8e04b29e063554c4481f6db0e0cc5e418b68a9bebc6",
+    "lean/.lake/build/lib/lean/S10Pilot/Variation.olean": "d2ae9c5944f74e9581b1a82893f65c7d715811b6407427ed997440c6033b36eb",
+    "lean/.lake/build/lib/lean/S11Invariants/Quadratic.olean": "f2d3ec53c652731bca388b9c4e73a4caf390f52bc192761ecab4fbf00c5b5a50",
+    "lean/.lake/build/lib/lean/S11Invariants/Rotation.olean": "9bd5d3b501c3b31069d9d4f05948c9ae67d79951685ec16d37e9e8bbbaca3cc5",
+    "lean/.lake/build/lib/lean/S11Invariants/Classification.olean": "4447a49a63613a07dc05cb14587dc829fbeb4d1e0463a043e400f24d4a98c9a4",
+    "lean/.lake/build/lib/lean/S11Invariants/Census.olean": "734701d4d8bf90b7b348ee5165fbaff1be91fb11c15178f251d4a681086e6faa",
+    "lean/.lake/build/lib/lean/S11Invariants/Controls.olean": "6c5a093e61576a8b562bb81defa6184277a4c41ef13e1b4337ad3072b69b7b31",
+    "lean/.lake/build/lib/lean/S11OddDynamics/Action.olean": "660174e3b314e2a399acbd987c42842478b9a8be34054cbdc8d2c4305fae15d0",
+    "lean/.lake/build/lib/lean/S11OddDynamics/Variation.olean": "9ec671349ae972426ba15825a7ea358ce433ce00b4db289c80838c09a613d4d0",
+    "lean/.lake/build/lib/lean/S11OddDynamics/Mixing.olean": "5338fd200bb3d85911c730a6075b8bdc43d0d8b0c65d875d3a20c712c7080213",
+    "lean/.lake/build/lib/lean/S11OddDynamics.olean": "dc7a5f6ff8cebc175a21a214ec9be2ef3028799d48894c6734908507ab2cc3d0"
+  },
+  "validated_check_logs": 31,
+  "axiom_declarations": 47,
+  "allowed_axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "mathematical_mutations_rejected": [
+    "density_sign",
+    "density_factor",
+    "local_EL_sign",
+    "nonzero_is_not_null_mutant",
+    "zero_is_null_mutant",
+    "nonzero_mixes_mutant",
+    "zero_coefficient_no_mixing_mutant",
+    "zero_wavevector_no_mixing_mutant",
+    "negative_coefficient_mixes_mutant",
+    "witness_EL_sign_mutant"
+  ],
+  "positive_controls_passed": [
+    "nonzero_is_not_null_positive",
+    "zero_is_null_positive",
+    "nonzero_mixes_positive",
+    "zero_coefficient_no_mixing_positive",
+    "zero_wavevector_no_mixing_positive",
+    "negative_coefficient_mixes_positive",
+    "witness_EL_sign_positive",
+    "admissible_compact_variation_positive"
+  ],
+  "mutation_adjudication": {
+    "density_sign": {
+      "required_declaration": "density_identity",
+      "mathematical_diagnostic_present": true,
+      "instrument_failure_accepted": false
+    },
+    "density_factor": {
+      "required_declaration": "density_identity",
+      "mathematical_diagnostic_present": true,
+      "instrument_failure_accepted": false
+    },
+    "local_EL_sign": {
+      "required_declaration": "eulerLagrange_eq",
+      "mathematical_diagnostic_present": true,
+      "instrument_failure_accepted": false
+    },
+    "nonzero_is_not_null_mutant": {
+      "required_declaration": "contract_control",
+      "mathematical_diagnostic_present": true,
+      "instrument_failure_accepted": false
+    },
+    "zero_is_null_mutant": {
+      "required_declaration": "contract_control",
+      "mathematical_diagnostic_present": true,
+      "instrument_failure_accepted": false
+    },
+    "nonzero_mixes_mutant": {
+      "required_declaration": "contract_control",
+      "mathematical_diagnostic_present": true,
+      "instrument_failure_accepted": false
+    },
+    "zero_coefficient_no_mixing_mutant": {
+      "required_declaration": "contract_control",
+      "mathematical_diagnostic_present": true,
+      "instrument_failure_accepted": false
+    },
+    "zero_wavevector_no_mixing_mutant": {
+      "required_declaration": "contract_control",
+      "mathematical_diagnostic_present": true,
+      "instrument_failure_accepted": false
+    },
+    "negative_coefficient_mixes_mutant": {
+      "required_declaration": "contract_control",
+      "mathematical_diagnostic_present": true,
+      "instrument_failure_accepted": false
+    },
+    "witness_EL_sign_mutant": {
+      "required_declaration": "contract_control",
+      "mathematical_diagnostic_present": true,
+      "instrument_failure_accepted": false
+    }
+  },
+  "mathematical_failure_notes": {
+    "density_sign": "Required identity has opposite coefficients of beta*J10*J11, etc.; later change-tactic failure is secondary.",
+    "density_factor": "Required identity has full coefficients on one side versus half on the other; secondary failures are not the criterion.",
+    "local_EL_sign": "Both required component identities have opposite coefficients of the differentiated divergence/skew; later rewrite failure is secondary.",
+    "seven_statement_mutations": "Each explicitly reduces to False in contract_control; its corresponding true statement passes."
+  },
+  "package_checkout_pins": [
+    {
+      "name": "Physlib",
+      "commit": "8b2b23701c07409f882c49e0bd290a214e44450c",
+      "tracked_source_clean": true
+    },
+    {
+      "name": "mathlib",
+      "commit": "db584cd6d46c92f209a44c0f1c829460d327499d",
+      "tracked_source_clean": true
+    },
+    {
+      "name": "\u00abdoc-gen4\u00bb",
+      "commit": "aceca4eeb5a79092eabefaa75fcb72b701d02205",
+      "tracked_source_clean": true
+    },
+    {
+      "name": "plausible",
+      "commit": "b7eb3304aeae834b12dda98993a37f6a41f6f0bb",
+      "tracked_source_clean": true
+    },
+    {
+      "name": "LeanSearchClient",
+      "commit": "5f4d51b81cbd3f6b32b156bfad9056621a040404",
+      "tracked_source_clean": true
+    },
+    {
+      "name": "importGraph",
+      "commit": "16f02aa7642864af59f1ff0e384a015994db9118",
+      "tracked_source_clean": true
+    },
+    {
+      "name": "proofwidgets",
+      "commit": "4be2e3d5087eeb272cf5a8853b8f9dd025ef5957",
+      "tracked_source_clean": true
+    },
+    {
+      "name": "aesop",
+      "commit": "3448c0bcc5ce01b2d1546e483ec3620e32df3d0e",
+      "tracked_source_clean": true
+    },
+    {
+      "name": "Qq",
+      "commit": "92c15be17b7caf78c2ad767ec40f89052d908d81",
+      "tracked_source_clean": true
+    },
+    {
+      "name": "batteries",
+      "commit": "4488d40d070b9700d4d5a6aa342f0d40c31b2a2d",
+      "tracked_source_clean": true
+    },
+    {
+      "name": "leansqlite",
+      "commit": "6168b7549738a19bc837a1625c60c5d1e5dd8aeb",
+      "tracked_source_clean": true
+    },
+    {
+      "name": "Cli",
+      "commit": "6130a47896ce867c6a4a55373441e59e565bad0f",
+      "tracked_source_clean": true
+    },
+    {
+      "name": "UnicodeBasic",
+      "commit": "37e7d8cb7316a88cd3e91208385c9ec6ae780019",
+      "tracked_source_clean": true
+    },
+    {
+      "name": "BibtexQuery",
+      "commit": "852edafa268eb038a7158551fd580ee8433847b0",
+      "tracked_source_clean": true
+    },
+    {
+      "name": "MD4Lean",
+      "commit": "31907cc18f48a95384f99cee5582c00fb39e0f67",
+      "tracked_source_clean": true
+    }
+  ],
+  "native_source_sha256": {
+    "scripts/S11_stray_longitudinal_sympy_audit.py": "dc77f30b3e0b2b72aa13c7531a586e6ef50167949e645d99378de8527e06bfe2",
+    "mathematica/S11_stray_longitudinal_mathematica_audit.wl": "133bacbcbc2dd192ba64a82b94a1cde6b4359bfdf0748c59584b6a3e90683237"
+  },
+  "contract_instrument_sha256": "35ffcbed777bec147445ede2841bf020f5519d17a811df77317fc127c80b9835",
+  "source_instrument_sha256": "2f25ec286de72b27a1adaec10e7598e0bbff3c25ee6e839a671f774736113022",
+  "contract_report_sha256": "ba1462c1a819e12b37620f98b6cd58849b45a4108dbba8fc3c5f6ceb0ceb2e4b",
+  "source_report_sha256": "45bc25dcc7b1273639d6fe0e018e20c48ccbde03ca84dc0cbaa63fc76dc51be9",
+  "historical_proof_correspondence": {
+    "S11_lean_fidelity_review_packet.json": {
+      "manifest_sha256": "91f740e9d51c5af9d3c38e300e95ed1c812fe2214091b02c88931fe0fcb361bb",
+      "unchanged_proof_files": 27
+    },
+    "S11_lean_invariant_review_packet.json": {
+      "manifest_sha256": "0a7fd1e8b774b3a73338adf74cd5f346a2060caff037c110318be37624d4e3ae",
+      "unchanged_proof_files": 6
+    }
+  },
+  "rebuilt_dependency_objects_changed": [
+    "lean/.lake/build/lib/lean/S10Pilot/Action.olean",
+    "lean/.lake/build/lib/lean/S10Pilot/Analytic.olean",
+    "lean/.lake/build/lib/lean/S10Pilot/PlaneWave.olean",
+    "lean/.lake/build/lib/lean/S10Pilot/Variation.olean"
+  ],
+  "dependency_rebuild_note": "All nine local dependency sources were unchanged and freshly compiled sequentially for this run. Four S10 object hashes changed on rebuild; the new source/build/object records apply to E1\u2013E4. Historical H1\u2013H4 and I1\u2013I4 evidence was not rewritten.",
+  "native_connection": "Eight exact symbolic identities; two in-memory action sign/factor mutations rejected; five explicit beta/k locus controls. Wolfram source inspection only.",
+  "review_status": "PENDING; no external reviews started for this packet",
+  "completion_claimed": false
+}

@@ -1,0 +1,114 @@
+{
+  "status": "PASS",
+  "checked_utc": "2026-09-16T12:56:20.747415+00:00",
+  "source_sha256": {
+    "scripts/S11_stray_longitudinal_sympy_audit.py": "dc77f30b3e0b2b72aa13c7531a586e6ef50167949e645d99378de8527e06bfe2",
+    "mathematica/S11_stray_longitudinal_mathematica_audit.wl": "133bacbcbc2dd192ba64a82b94a1cde6b4359bfdf0748c59584b6a3e90683237"
+  },
+  "instrument_sha256": "2f25ec286de72b27a1adaec10e7598e0bbff3c25ee6e839a671f774736113022",
+  "selected_definitions": [
+    "PackageBuild",
+    "Term",
+    "coefficient_ordering",
+    "compute_q9",
+    "coordinate_substitution",
+    "derivative_placeholders",
+    "euler_lagrange_from_placeholders",
+    "matrix_from_rows",
+    "package_build",
+    "period_average",
+    "q9_row_to_poly",
+    "q9_v5",
+    "q9_vector",
+    "route_a_matrix",
+    "route_b_matrix",
+    "stiffness_densities",
+    "to_coordinate",
+    "u_functions"
+  ],
+  "identities": {
+    "actual_PD_equals_oddPairing": true,
+    "actual_action_increment_sign_and_half": true,
+    "native_EL_equals_negative_Lean_EL": true,
+    "native_V5_odd_combination_scale": true,
+    "route_A_equals_negative_Lean_operator": true,
+    "route_B_equals_half_Lean_operator": true,
+    "averaged_density_equals_half_modalAction": true,
+    "cosine_factor": true
+  },
+  "objects": {
+    "native_PD": "G_1_1*G_1_2 - G_1_1*G_2_1 + G_1_2*G_2_2 - G_2_1*G_2_2",
+    "actual_delta": "-G_1_1*G_1_2*beta/2 + G_1_1*G_2_1*beta/2 - G_1_2*G_2_2*beta/2 + G_2_1*G_2_2*beta/2",
+    "native_EL": "Matrix([[-beta*Derivative(u2(x1, x2, t), (x1, 2))/2 + beta*Derivative(u2(x1, x2, t), (x2, 2))/2 + beta*Derivative(u1(x1, x2, t), x1, x2)/2 + beta*Derivative(u1(x1, x2, t), x2, x1)/2], [-beta*Derivative(u1(x1, x2, t), (x1, 2))/2 + beta*Derivative(u1(x1, x2, t), (x2, 2))/2 - beta*Derivative(u2(x1, x2, t), x1, x2)/2 - beta*Derivative(u2(x1, x2, t), x2, x1)/2]])",
+    "Lean_EL_convention": "Matrix([[beta*(Derivative(u2(x1, x2, t), (x1, 2)) - Derivative(u2(x1, x2, t), (x2, 2)) - 2*Derivative(u1(x1, x2, t), x1, x2))/2], [beta*(Derivative(u1(x1, x2, t), (x1, 2)) - Derivative(u1(x1, x2, t), (x2, 2)) + 2*Derivative(u2(x1, x2, t), x1, x2))/2]])",
+    "V5_odd_coefficients": [
+      "0",
+      "1",
+      "0",
+      "0"
+    ],
+    "V5_odd": "Matrix([[Derivative(u2(x1, x2, t), (x1, 2)) - Derivative(u2(x1, x2, t), (x2, 2)) - Derivative(u1(x1, x2, t), x1, x2) - Derivative(u1(x1, x2, t), x2, x1)], [Derivative(u1(x1, x2, t), (x1, 2)) - Derivative(u1(x1, x2, t), (x2, 2)) + Derivative(u2(x1, x2, t), x1, x2) + Derivative(u2(x1, x2, t), x2, x1)]])",
+    "Lean_modal_matrix": "Matrix([[beta*k1*k2, -beta*(k1**2 - k2**2)/2], [-beta*(k1**2 - k2**2)/2, -beta*k1*k2]])",
+    "route_A": "Matrix([[-beta*k1*k2, beta*(k1**2 - k2**2)/2], [beta*(k1**2 - k2**2)/2, beta*k1*k2]])",
+    "route_B": "Matrix([[beta*k1*k2/2, beta*(-k1**2 + k2**2)/4], [beta*(-k1**2 + k2**2)/4, -beta*k1*k2/2]])",
+    "average": "beta*(a1**2*k1*k2 - a1*a2*k1**2 + a1*a2*k2**2 - a2**2*k1*k2)/4"
+  },
+  "wolfram_source_only_anchors": [
+    "\"XFORM_EXTRA\", {{muR/2, \"curl\"}, {bComp/2, \"div\"}, {beta/2, \"pd\"}}",
+    "lagrangianJet = Total[kineticTermsJet] - Total[stiffnessTermsJet];",
+    "eulerOperatorForGradientDensity[polynomial_, gradientVariables_, frame_] := Module[",
+    "Integrate[Expand[planeLagrangian], {phaseVariable, 0, 2 Pi}]/(2 Pi)"
+  ],
+  "instrument_mutations": {
+    "wrong_action_sign": {
+      "required_failed_identity": "actual_action_increment_sign_and_half",
+      "identity_results": {
+        "actual_PD_equals_oddPairing": true,
+        "actual_action_increment_sign_and_half": false,
+        "native_EL_equals_negative_Lean_EL": false,
+        "native_V5_odd_combination_scale": false,
+        "route_A_equals_negative_Lean_operator": false,
+        "route_B_equals_half_Lean_operator": false,
+        "averaged_density_equals_half_modalAction": false,
+        "cosine_factor": true
+      }
+    },
+    "missing_action_half": {
+      "required_failed_identity": "route_A_equals_negative_Lean_operator",
+      "identity_results": {
+        "actual_PD_equals_oddPairing": true,
+        "actual_action_increment_sign_and_half": false,
+        "native_EL_equals_negative_Lean_EL": false,
+        "native_V5_odd_combination_scale": false,
+        "route_A_equals_negative_Lean_operator": false,
+        "route_B_equals_half_Lean_operator": false,
+        "averaged_density_equals_half_modalAction": false,
+        "cosine_factor": true
+      }
+    }
+  },
+  "positive_locus_checks": {
+    "(0, (0, 0))": {
+      "matrix": "Matrix([[0, 0], [0, 0]])",
+      "cross_pairing": "0"
+    },
+    "(0, (1, 0))": {
+      "matrix": "Matrix([[0, 0], [0, 0]])",
+      "cross_pairing": "0"
+    },
+    "(2, (0, 0))": {
+      "matrix": "Matrix([[0, 0], [0, 0]])",
+      "cross_pairing": "0"
+    },
+    "(2, (1, 0))": {
+      "matrix": "Matrix([[0, -1], [-1, 0]])",
+      "cross_pairing": "-1"
+    },
+    "(-2, (3, 4))": {
+      "matrix": "Matrix([[-24, -7], [-7, 24]])",
+      "cross_pairing": "625"
+    }
+  },
+  "translation": "G_ij=partial_i u_j; Lean spacetime (t,x1,x2), native function arguments (x1,x2,t); beta constant real. Lean EL=-div(momentum), native EL=+div(momentum). Route A=-M, Route B=M/2, average=modalAction/2.",
+  "boundary": "Selected SymPy helper execution and exact symbolic comparisons. No Wolfram execution or production export/comparator clearance; no S11c files written."
+}

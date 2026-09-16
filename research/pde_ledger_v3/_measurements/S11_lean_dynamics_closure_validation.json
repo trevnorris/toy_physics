@@ -1,0 +1,145 @@
+{
+  "status": "PASS",
+  "validated_utc": "2026-09-16T13:29:29.059476+00:00",
+  "scope": "E1\u2013E4 bounded D2 odd dynamics",
+  "packet_sha256": "16a1dd5784c344f032716d86974b52a58c79110464e2cb1353b915c17d2581c0",
+  "file_count": 34,
+  "archive_sha256": "d91f74171af7d5fcfbb3bc623d58bc07ccc5de30a5f96a2fd53138789dfacd58",
+  "manifest_sha256": "5f54346e2540db29015e799cfb7cd13718e301680c37ceb6fdb18f68b6a3cc40",
+  "snapshot_archive_transport_correspondence": "PASS",
+  "live_files_changed_before_closure_documentation": [],
+  "local_validation_sha256": "e637e5cdd77a77a57543f86f5eeebfe6b14acba3168696f911567d110134a2c6",
+  "current_sources_instruments_reports_objects": "PASS",
+  "check_logs_validated": 31,
+  "package_checkout_pins": [
+    {
+      "name": "Physlib",
+      "commit": "8b2b23701c07409f882c49e0bd290a214e44450c",
+      "tracked_source_clean": true
+    },
+    {
+      "name": "mathlib",
+      "commit": "db584cd6d46c92f209a44c0f1c829460d327499d",
+      "tracked_source_clean": true
+    },
+    {
+      "name": "\u00abdoc-gen4\u00bb",
+      "commit": "aceca4eeb5a79092eabefaa75fcb72b701d02205",
+      "tracked_source_clean": true
+    },
+    {
+      "name": "plausible",
+      "commit": "b7eb3304aeae834b12dda98993a37f6a41f6f0bb",
+      "tracked_source_clean": true
+    },
+    {
+      "name": "LeanSearchClient",
+      "commit": "5f4d51b81cbd3f6b32b156bfad9056621a040404",
+      "tracked_source_clean": true
+    },
+    {
+      "name": "importGraph",
+      "commit": "16f02aa7642864af59f1ff0e384a015994db9118",
+      "tracked_source_clean": true
+    },
+    {
+      "name": "proofwidgets",
+      "commit": "4be2e3d5087eeb272cf5a8853b8f9dd025ef5957",
+      "tracked_source_clean": true
+    },
+    {
+      "name": "aesop",
+      "commit": "3448c0bcc5ce01b2d1546e483ec3620e32df3d0e",
+      "tracked_source_clean": true
+    },
+    {
+      "name": "Qq",
+      "commit": "92c15be17b7caf78c2ad767ec40f89052d908d81",
+      "tracked_source_clean": true
+    },
+    {
+      "name": "batteries",
+      "commit": "4488d40d070b9700d4d5a6aa342f0d40c31b2a2d",
+      "tracked_source_clean": true
+    },
+    {
+      "name": "leansqlite",
+      "commit": "6168b7549738a19bc837a1625c60c5d1e5dd8aeb",
+      "tracked_source_clean": true
+    },
+    {
+      "name": "Cli",
+      "commit": "6130a47896ce867c6a4a55373441e59e565bad0f",
+      "tracked_source_clean": true
+    },
+    {
+      "name": "UnicodeBasic",
+      "commit": "37e7d8cb7316a88cd3e91208385c9ec6ae780019",
+      "tracked_source_clean": true
+    },
+    {
+      "name": "BibtexQuery",
+      "commit": "852edafa268eb038a7158551fd580ee8433847b0",
+      "tracked_source_clean": true
+    },
+    {
+      "name": "MD4Lean",
+      "commit": "31907cc18f48a95384f99cee5582c00fb39e0f67",
+      "tracked_source_clean": true
+    }
+  ],
+  "reviewers": {
+    "claude": {
+      "session_id": "88a2fb0e-0d69-4ed3-8882-c738bb29e852",
+      "verdict": "CLEAR",
+      "termination": "end_turn",
+      "run_exit_status": 0,
+      "model_usage_ids": [
+        "claude-haiku-4-5-20251001",
+        "claude-opus-5[1m]"
+      ],
+      "raw_sha256": "9eec02d649a43ff46baf863af45684cccaf943cd2398f3d8a47e60997b91300c",
+      "run_sha256": "6b907a8f02e0b4b932eb94578a1918fe6d2aa2eebf43b1a8291b6fdd6a92a661",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "report": "research/pde_ledger_v3/_measurements/S11_lean_dynamics_fidelity_claude_v1.md",
+      "report_sha256": "b9276def5069942d3a6594ffaee870a0f0800452860f571aabb6c34d87e4455f",
+      "report_extraction_character_offset": 0,
+      "review_limit": "Read-only source fidelity review; no independent Lean rebuild, instrument rerun or cryptographic recomputation claimed."
+    },
+    "grok": {
+      "session_id": "7b511736-39b0-4aef-a03b-3a6cf27d4582",
+      "verdict": "CLEAR",
+      "termination": "end_turn",
+      "run_exit_status": 0,
+      "model_usage_ids": [
+        "grok-4.6-build"
+      ],
+      "raw_sha256": "405a95f5c8c88c95deb001d8f923a200a5cf130b88c53d21ee05efff0d731619",
+      "run_sha256": "9a05222434a54155ba799ca45521810f24ed00d4c1fc2032185c86b12be10d61",
+      "stderr_sha256": "08ade6c05029757059750f4b1d3f523dc3781f96ff2997c28007beedbf072dce",
+      "report": "research/pde_ledger_v3/_measurements/S11_lean_dynamics_fidelity_grok_v1.md",
+      "report_sha256": "abea4c1f639042527b68c9fe27a644a8af146b89263aa2bf1031e8362d8b4756",
+      "report_extraction_character_offset": 1026,
+      "review_limit": "Read-only source fidelity review; no independent Lean rebuild, instrument rerun or cryptographic recomputation claimed."
+    }
+  },
+  "stdout_stderr_adjudication": "Both exited zero with end_turn and substantive final CLEAR reports. Claude stderr empty. Grok stderr contains startup plugin/hook and /tmp repository-discovery warnings; no truncated/error/plan-only verdict accepted.",
+  "grok_extraction": "Raw text includes preliminary progress messages. Durable report starts at its unique final review heading; raw response is retained unchanged. The final report explicitly disclaims hash recomputation.",
+  "unresolved_blockers": [],
+  "closure_documentation_pending": false,
+  "closed_utc": "2026-09-16T13:32:11.399801+00:00",
+  "live_packet_documentation_changes": {
+    "lean/s11/DYNAMICS_COVERAGE.md": "2cd1756c4616476310b606d9be348fe4b000bf4fe381f99a0d1d7b518878af1b",
+    "lean/s11/DYNAMICS_FIDELITY.md": "d110e84eca9dd884324aa506faae68f52b7fa84b1ba0e1abe3a811d0a5b34787",
+    "lean/s11/DYNAMICS_VERIFICATION.txt": "6020d4e64be22aec11bc9059a11b90a69704e18a2863ad6b7f890ad5348edc3f",
+    "lean/s11/README.md": "7fdd29dd581114d5fbfe72866b3734423779698b1226486fd23602e9962dc79b"
+  },
+  "closure_document": {
+    "path": "lean/s11/DYNAMICS_FIDELITY_REVIEW.md",
+    "sha256": "c1144c9e932bedb0a223c8279809fa719739985d51de4a6a0941b1a265bde9ce"
+  },
+  "preserved_reviewed_evidence": "All other 30 packet files, including all proofs, native sources, dependency pins, instruments and terminal check records, retain reviewed hashes. All 13 current compiled objects match. Frozen snapshot/archive/transport unchanged.",
+  "disposition": "Both independent final reviews CLEAR; optional documentation clarifications made. No substantive proof/source/instrument change or re-review required.",
+  "completion_scope": "Bounded D2 odd-invariant dynamics E1\u2013E4 only",
+  "commit_requested": false
+}

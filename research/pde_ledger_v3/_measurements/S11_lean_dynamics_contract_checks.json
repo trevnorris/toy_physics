@@ -1,0 +1,975 @@
+{
+  "status": "PASS",
+  "started_utc": "2026-09-16T12:56:21.172916+00:00",
+  "instrument_sha256": "35ffcbed777bec147445ede2841bf020f5519d17a811df77317fc127c80b9835",
+  "source_sha256_before": {
+    "lean/lake-manifest.json": "91fd5318cdc35e4044d6e059c6ef73d94b955d27adf8a5860b07ec92add9377e",
+    "lean/lakefile.toml": "e03d7bba014f532ef3fdc8a9fd7224359d4d5d49ed37830d3397c6ab0a6fd516",
+    "lean/lean-toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+    "lean/s10/S10Pilot/Action.lean": "a7466f2c23a123f244615217d27d5048a625bddfaad5ce2a6f0456a8704f435c",
+    "lean/s10/S10Pilot/Analytic.lean": "f8a6fe854a7ed775a7ecf65fdf8589db2b865139a811daf1e4e27c34bac8811d",
+    "lean/s10/S10Pilot/PlaneWave.lean": "d64ad2d70169976f42cacb3ece650776780a17fe640d1efee4aa7677e53c85cb",
+    "lean/s10/S10Pilot/Variation.lean": "f4678338fb72fe859c627cbc5da3ccb90e9f38b7a5d774705219f880cdcc871d",
+    "lean/s11/S11Invariants/Census.lean": "3205b54bddc3c70606d5882f8661decfb1138c1354528170d7beae59d952f4b1",
+    "lean/s11/S11Invariants/Classification.lean": "c723e3f9407a22765b972ad043ff2abc454f8cfda236e36d002ffce65bab54c2",
+    "lean/s11/S11Invariants/Controls.lean": "8dcd1c9c760160f871f581c01f8e637dc487ad51c10f55458293e37b3e2d7995",
+    "lean/s11/S11Invariants/Quadratic.lean": "01dc76c702453a66a09ea3d11e54ddeee14d667dd61dd2e3a02737e15b5f7196",
+    "lean/s11/S11Invariants/Rotation.lean": "8ab28819adfaeb3f126c5905fa53e37d612afc5fe495baf0aaa2ec7873b7ed76",
+    "lean/s11/S11OddDynamics/Action.lean": "ff7a89e658989581ab1ec763137fe3de6d3f411c8496341dc72016334035d2f1",
+    "lean/s11/S11OddDynamics/Mixing.lean": "1a8dfd830caa11d77101adc283ea41d5ed7feab56ddc55ad5db7cb4a076be44d",
+    "lean/s11/S11OddDynamics/Variation.lean": "c4095887edb81ecf4840614ef70fcf5a4a33bdc00dd848ca301086482cba9308",
+    "lean/s11/S11OddDynamics.lean": "8a737301ae8dd719a2a5bdf8c7c2722fc6ec49fcc0b61d0eb57e37f1e7c6c594"
+  },
+  "dependency_olean_sha256": {
+    "lean/.lake/build/lib/lean/S10Pilot/Action.olean": "1be8c3c4196dd7d4ec3eab5adeec1ad4efd799f37bea3169a7b2396a59efc3bb",
+    "lean/.lake/build/lib/lean/S10Pilot/Analytic.olean": "9734d5342b5ee8d0683ce8e04b29e063554c4481f6db0e0cc5e418b68a9bebc6",
+    "lean/.lake/build/lib/lean/S10Pilot/PlaneWave.olean": "0d66b90ba63086dceddbae3b9cdeae947fcc286b6fa2d3bcd9c9dc033e0608b4",
+    "lean/.lake/build/lib/lean/S10Pilot/Variation.olean": "d2ae9c5944f74e9581b1a82893f65c7d715811b6407427ed997440c6033b36eb",
+    "lean/.lake/build/lib/lean/S11Invariants/Census.olean": "734701d4d8bf90b7b348ee5165fbaff1be91fb11c15178f251d4a681086e6faa",
+    "lean/.lake/build/lib/lean/S11Invariants/Classification.olean": "4447a49a63613a07dc05cb14587dc829fbeb4d1e0463a043e400f24d4a98c9a4",
+    "lean/.lake/build/lib/lean/S11Invariants/Controls.olean": "6c5a093e61576a8b562bb81defa6184277a4c41ef13e1b4337ad3072b69b7b31",
+    "lean/.lake/build/lib/lean/S11Invariants/Quadratic.olean": "f2d3ec53c652731bca388b9c4e73a4caf390f52bc192761ecab4fbf00c5b5a50",
+    "lean/.lake/build/lib/lean/S11Invariants/Rotation.olean": "9bd5d3b501c3b31069d9d4f05948c9ae67d79951685ec16d37e9e8bbbaca3cc5"
+  },
+  "checks": [
+    {
+      "name": "dependency_S10Pilot_Action",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "-o",
+        "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S10Pilot/Action.olean",
+        "s10/S10Pilot/Action.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 17.333,
+      "source_sha256": "a7466f2c23a123f244615217d27d5048a625bddfaad5ce2a6f0456a8704f435c",
+      "required_failure_in": null,
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "olean_sha256": "1be8c3c4196dd7d4ec3eab5adeec1ad4efd799f37bea3169a7b2396a59efc3bb"
+    },
+    {
+      "name": "dependency_S10Pilot_PlaneWave",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "-o",
+        "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S10Pilot/PlaneWave.olean",
+        "s10/S10Pilot/PlaneWave.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 14.614,
+      "source_sha256": "d64ad2d70169976f42cacb3ece650776780a17fe640d1efee4aa7677e53c85cb",
+      "required_failure_in": null,
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "olean_sha256": "0d66b90ba63086dceddbae3b9cdeae947fcc286b6fa2d3bcd9c9dc033e0608b4"
+    },
+    {
+      "name": "dependency_S10Pilot_Analytic",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "-o",
+        "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S10Pilot/Analytic.olean",
+        "s10/S10Pilot/Analytic.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 14.009,
+      "source_sha256": "f8a6fe854a7ed775a7ecf65fdf8589db2b865139a811daf1e4e27c34bac8811d",
+      "required_failure_in": null,
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "olean_sha256": "9734d5342b5ee8d0683ce8e04b29e063554c4481f6db0e0cc5e418b68a9bebc6"
+    },
+    {
+      "name": "dependency_S10Pilot_Variation",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "-o",
+        "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S10Pilot/Variation.olean",
+        "s10/S10Pilot/Variation.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 15.572,
+      "source_sha256": "f4678338fb72fe859c627cbc5da3ccb90e9f38b7a5d774705219f880cdcc871d",
+      "required_failure_in": null,
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "olean_sha256": "d2ae9c5944f74e9581b1a82893f65c7d715811b6407427ed997440c6033b36eb"
+    },
+    {
+      "name": "dependency_S11Invariants_Quadratic",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "-o",
+        "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S11Invariants/Quadratic.olean",
+        "s11/S11Invariants/Quadratic.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 23.523,
+      "source_sha256": "01dc76c702453a66a09ea3d11e54ddeee14d667dd61dd2e3a02737e15b5f7196",
+      "required_failure_in": null,
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "olean_sha256": "f2d3ec53c652731bca388b9c4e73a4caf390f52bc192761ecab4fbf00c5b5a50"
+    },
+    {
+      "name": "dependency_S11Invariants_Rotation",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "-o",
+        "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S11Invariants/Rotation.olean",
+        "s11/S11Invariants/Rotation.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 24.53,
+      "source_sha256": "8ab28819adfaeb3f126c5905fa53e37d612afc5fe495baf0aaa2ec7873b7ed76",
+      "required_failure_in": null,
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "olean_sha256": "9bd5d3b501c3b31069d9d4f05948c9ae67d79951685ec16d37e9e8bbbaca3cc5"
+    },
+    {
+      "name": "dependency_S11Invariants_Classification",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "-o",
+        "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S11Invariants/Classification.olean",
+        "s11/S11Invariants/Classification.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 22.869,
+      "source_sha256": "c723e3f9407a22765b972ad043ff2abc454f8cfda236e36d002ffce65bab54c2",
+      "required_failure_in": null,
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "olean_sha256": "4447a49a63613a07dc05cb14587dc829fbeb4d1e0463a043e400f24d4a98c9a4"
+    },
+    {
+      "name": "dependency_S11Invariants_Census",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "-o",
+        "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S11Invariants/Census.olean",
+        "s11/S11Invariants/Census.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 15.621,
+      "source_sha256": "3205b54bddc3c70606d5882f8661decfb1138c1354528170d7beae59d952f4b1",
+      "required_failure_in": null,
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "olean_sha256": "734701d4d8bf90b7b348ee5165fbaff1be91fb11c15178f251d4a681086e6faa"
+    },
+    {
+      "name": "dependency_S11Invariants_Controls",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "-o",
+        "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S11Invariants/Controls.olean",
+        "s11/S11Invariants/Controls.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 11.345,
+      "source_sha256": "8dcd1c9c760160f871f581c01f8e637dc487ad51c10f55458293e37b3e2d7995",
+      "required_failure_in": null,
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "olean_sha256": "6c5a093e61576a8b562bb81defa6184277a4c41ef13e1b4337ad3072b69b7b31"
+    },
+    {
+      "name": "build_Action",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "-o",
+        "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S11OddDynamics/Action.olean",
+        "s11/S11OddDynamics/Action.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 24.382,
+      "source_sha256": "ff7a89e658989581ab1ec763137fe3de6d3f411c8496341dc72016334035d2f1",
+      "required_failure_in": null,
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "olean_sha256": "660174e3b314e2a399acbd987c42842478b9a8be34054cbdc8d2c4305fae15d0"
+    },
+    {
+      "name": "build_Variation",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "-o",
+        "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S11OddDynamics/Variation.olean",
+        "s11/S11OddDynamics/Variation.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 14.667,
+      "source_sha256": "c4095887edb81ecf4840614ef70fcf5a4a33bdc00dd848ca301086482cba9308",
+      "required_failure_in": null,
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "olean_sha256": "9ec671349ae972426ba15825a7ea358ce433ce00b4db289c80838c09a613d4d0"
+    },
+    {
+      "name": "build_Mixing",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "-o",
+        "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S11OddDynamics/Mixing.olean",
+        "s11/S11OddDynamics/Mixing.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 13.761,
+      "source_sha256": "1a8dfd830caa11d77101adc283ea41d5ed7feab56ddc55ad5db7cb4a076be44d",
+      "required_failure_in": null,
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "olean_sha256": "5338fd200bb3d85911c730a6075b8bdc43d0d8b0c65d875d3a20c712c7080213"
+    },
+    {
+      "name": "axiom_audit",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "-o",
+        "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S11OddDynamics.olean",
+        "s11/S11OddDynamics.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 9.685,
+      "source_sha256": "8a737301ae8dd719a2a5bdf8c7c2722fc6ec49fcc0b61d0eb57e37f1e7c6c594",
+      "required_failure_in": null,
+      "diagnostics": [],
+      "output": "'S11OddDynamics.density_identity' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11OddDynamics.lagrangian_increment' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11OddDynamics.lagrangian_smul' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11OddDynamics.lagrangian_variation' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11OddDynamics.momentum_eq' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11OddDynamics.momentum_smul' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11OddDynamics.smooth_momentum' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11OddDynamics.smooth_eulerLagrange' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11OddDynamics.coordDeriv_const_mul' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11OddDynamics.coordDeriv_zero' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11OddDynamics.eulerLagrange_eq' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11OddDynamics.modalAction_eq' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11OddDynamics.modal_variation' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11OddDynamics.momentum_contraction' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11OddDynamics.eulerLagrange_planeWave' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11OddDynamics.linearDensity_eq' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11OddDynamics.lagrangian_change' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11OddDynamics.linearDensity_self' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11OddDynamics.integrable_linear_term' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11OddDynamics.integrable_linearDensity' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11OddDynamics.integrable_test_lagrangian' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11OddDynamics.relative_density_integrable' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11OddDynamics.relativeAction_expansion' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11OddDynamics.relativeAction_hasDerivAt' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11OddDynamics.integrable_el_term' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11OddDynamics.integrated_variation_by_parts' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11OddDynamics.relativeAction_deriv_eq_eulerLagrange' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11OddDynamics.actionStationary_iff_eulerLagrange' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11OddDynamics.dot_turn' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11OddDynamics.turn_dot' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11OddDynamics.normSq_turn' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11OddDynamics.normSq_eq_zero_iff' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11OddDynamics.polarization_reconstruction' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11OddDynamics.polarization_decomposition' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11OddDynamics.modalOperator_longitudinal' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11OddDynamics.modalOperator_transverse' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11OddDynamics.cross_pairing' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11OddDynamics.mixing_iff' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11OddDynamics.modalOperator_zero_beta' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11OddDynamics.modalOperator_zero_wavevector' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11OddDynamics.mixing_cases' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11OddDynamics.witness_smooth' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11OddDynamics.witness_eulerLagrange' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11OddDynamics.witness_not_stationary' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11OddDynamics.exists_nonzero_firstVariation' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11OddDynamics.zero_beta_stationary' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11OddDynamics.variationallyNull_iff' depends on axioms: [propext, Classical.choice, Quot.sound]\n",
+      "output_sha256": "f752afbb28f6573ab4991dcfe10d13a1588c54ad65a9953b7e8d365b6c50552e",
+      "olean_sha256": "dc7a5f6ff8cebc175a21a214ec9be2ef3028799d48894c6734908507ab2cc3d0"
+    },
+    {
+      "name": "density_sign",
+      "expected": "REJECTED",
+      "outcome": "REJECTED",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/dynamics_verification/density_sign.lean"
+      ],
+      "exit_status": 1,
+      "wall_seconds": 23.479,
+      "source_sha256": "4cf9bd600bcf29a26c582888279ddbbcc6417da208a8b2e421ade12c54b3dec8",
+      "required_failure_in": "density_identity",
+      "diagnostics": [
+        {
+          "declaration": "density_identity",
+          "line": 20,
+          "message": "s11/_scratch/dynamics_verification/density_sign.lean:20:84: error: unsolved goals\nbeta : ℝ\nJ : Jet 2\n⊢ beta * J 1 0 * J 1 1 * (1 / 2) + beta * J 1 0 * J 2 0 * (-1 / 2) + beta * J 2 1 * J 1 1 * (1 / 2) +\n      beta * J 2 1 * J 2 0 * (-1 / 2) =\n    beta * J 1 0 * J 1 1 * (-1 / 2) + beta * J 1 0 * J 2 0 * (1 / 2) + beta * J 2 1 * J 1 1 * (-1 / 2) +\n      beta * J 2 1 * J 2 0 * (1 / 2)\nTry this:\n  [apply] ring_nf\n  \n  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.\n    \n  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.\n"
+        },
+        {
+          "declaration": "lagrangian_increment",
+          "line": 31,
+          "message": "s11/_scratch/dynamics_verification/density_sign.lean:31:67: error: unsolved goals\nbeta s : ℝ\nJ H : Jet 2\n⊢ beta * J (Fin.succ 0) 0 * s * H (Fin.succ 0) 1 * (1 / 2) + beta * J (Fin.succ 0) 0 * s * H (Fin.succ 1) 0 * (-1 / 2) +\n                                beta * J (Fin.succ 0) 0 * J (Fin.succ 0) 1 * (1 / 2) +\n                              beta * J (Fin.succ 0) 0 * J (Fin.succ 1) 0 * (-1 / 2) +\n                            beta * s * H (Fin.succ 0) 0 * J (Fin.succ 0) 1 * (1 / 2) +\n                          beta * s * H (Fin.succ 0) 0 * J (Fin.succ 1) 0 * (-1 / 2) +\n                        beta * s * J (Fin.succ 1) 1 * H (Fin.succ 0) 1 * (1 / 2) +\n                      beta * s * J (Fin.succ 1) 1 * H (Fin.succ 1) 0 * (-1 / 2) +\n                    beta * s * H (Fin.succ 1) 1 * J (Fin.succ 0) 1 * (1 / 2) +\n                  beta * s * H (Fin.succ 1) 1 * J (Fin.succ 1) 0 * (-1 / 2) +\n                beta * s ^ 2 * H (Fin.succ 0) 0 * H (Fin.succ 0) 1 * (1 / 2) +\n              beta * s ^ 2 * H (Fin.succ 0) 0 * H (Fin.succ 1) 0 * (-1 / 2) +\n            beta * s ^ 2 * H (Fin.succ 1) 1 * H (Fin.succ 0) 1 * (1 / 2) +\n          beta * s ^ 2 * H (Fin.succ 1) 1 * H (Fin.succ 1) 0 * (-1 / 2) +\n        beta * J (Fin.succ 1) 1 * J (Fin.succ 0) 1 * (1 / 2) +\n      beta * J (Fin.succ 1) 1 * J (Fin.succ 1) 0 * (-1 / 2) =\n    beta * J (Fin.succ 0) 0 * s * H (Fin.succ 0) 1 * (-1 / 2) +\n                                  beta * J (Fin.succ 0) 0 * s * H (Fin.succ 1) 0 * (1 / 2) +\n                                beta * J (Fin.succ 0) 0 * J (Fin.succ 0) 1 * (1 / 2) +\n                              beta * J (Fin.succ 0) 0 * J (Fin.succ 1) 0 * (-1 / 2) +\n                            beta * s * H (Fin.succ 0) 0 * J (Fin.succ 0) 1 * (-1 / 2) +\n                          beta * s * H (Fin.succ 0) 0 * J (Fin.succ 1) 0 * (1 / 2) +\n                        beta * s * J (Fin.succ 1) 1 * H (Fin.succ 0) 1 * (-1 / 2) +\n                      beta * s * J (Fin.succ 1) 1 * H (Fin.succ 1) 0 * (1 / 2) +\n                    beta * s * H (Fin.succ 1) 1 * J (Fin.succ 0) 1 * (-1 / 2) +\n                  beta * s * H (Fin.succ 1) 1 * J (Fin.succ 1) 0 * (1 / 2) +\n                beta * s ^ 2 * H (Fin.succ 0) 0 * H (Fin.succ 0) 1 * (1 / 2) +\n              beta * s ^ 2 * H (Fin.succ 0) 0 * H (Fin.succ 1) 0 * (-1 / 2) +\n            beta * s ^ 2 * H (Fin.succ 1) 1 * H (Fin.succ 0) 1 * (1 / 2) +\n          beta * s ^ 2 * H (Fin.succ 1) 1 * H (Fin.succ 1) 0 * (-1 / 2) +\n        beta * J (Fin.succ 1) 1 * J (Fin.succ 0) 1 * (1 / 2) +\n      beta * J (Fin.succ 1) 1 * J (Fin.succ 1) 0 * (-1 / 2)\n"
+        },
+        {
+          "declaration": "modalAction_eq",
+          "line": 128,
+          "message": "s11/_scratch/dynamics_verification/density_sign.lean:128:2: error: 'change' tactic failed, pattern\n  -beta / 2 * (k 0 * a 0 + k 1 * a 1) * (k 0 * a 1 - k 1 * a 0) = ?m.44\nis not definitionally equal to target\n  modalAction beta k a = -beta / 2 * dot k a * dot (turn k) a\n"
+        }
+      ],
+      "output": "Try this:\n  [apply] ring_nf\n  \n  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.\n    \n  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.\ns11/_scratch/dynamics_verification/density_sign.lean:20:84: error: unsolved goals\nbeta : ℝ\nJ : Jet 2\n⊢ beta * J 1 0 * J 1 1 * (1 / 2) + beta * J 1 0 * J 2 0 * (-1 / 2) + beta * J 2 1 * J 1 1 * (1 / 2) +\n      beta * J 2 1 * J 2 0 * (-1 / 2) =\n    beta * J 1 0 * J 1 1 * (-1 / 2) + beta * J 1 0 * J 2 0 * (1 / 2) + beta * J 2 1 * J 1 1 * (-1 / 2) +\n      beta * J 2 1 * J 2 0 * (1 / 2)\nTry this:\n  [apply] ring_nf\n  \n  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.\n    \n  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.\ns11/_scratch/dynamics_verification/density_sign.lean:31:67: error: unsolved goals\nbeta s : ℝ\nJ H : Jet 2\n⊢ beta * J (Fin.succ 0) 0 * s * H (Fin.succ 0) 1 * (1 / 2) + beta * J (Fin.succ 0) 0 * s * H (Fin.succ 1) 0 * (-1 / 2) +\n                                beta * J (Fin.succ 0) 0 * J (Fin.succ 0) 1 * (1 / 2) +\n                              beta * J (Fin.succ 0) 0 * J (Fin.succ 1) 0 * (-1 / 2) +\n                            beta * s * H (Fin.succ 0) 0 * J (Fin.succ 0) 1 * (1 / 2) +\n                          beta * s * H (Fin.succ 0) 0 * J (Fin.succ 1) 0 * (-1 / 2) +\n                        beta * s * J (Fin.succ 1) 1 * H (Fin.succ 0) 1 * (1 / 2) +\n                      beta * s * J (Fin.succ 1) 1 * H (Fin.succ 1) 0 * (-1 / 2) +\n                    beta * s * H (Fin.succ 1) 1 * J (Fin.succ 0) 1 * (1 / 2) +\n                  beta * s * H (Fin.succ 1) 1 * J (Fin.succ 1) 0 * (-1 / 2) +\n                beta * s ^ 2 * H (Fin.succ 0) 0 * H (Fin.succ 0) 1 * (1 / 2) +\n              beta * s ^ 2 * H (Fin.succ 0) 0 * H (Fin.succ 1) 0 * (-1 / 2) +\n            beta * s ^ 2 * H (Fin.succ 1) 1 * H (Fin.succ 0) 1 * (1 / 2) +\n          beta * s ^ 2 * H (Fin.succ 1) 1 * H (Fin.succ 1) 0 * (-1 / 2) +\n        beta * J (Fin.succ 1) 1 * J (Fin.succ 0) 1 * (1 / 2) +\n      beta * J (Fin.succ 1) 1 * J (Fin.succ 1) 0 * (-1 / 2) =\n    beta * J (Fin.succ 0) 0 * s * H (Fin.succ 0) 1 * (-1 / 2) +\n                                  beta * J (Fin.succ 0) 0 * s * H (Fin.succ 1) 0 * (1 / 2) +\n                                beta * J (Fin.succ 0) 0 * J (Fin.succ 0) 1 * (1 / 2) +\n                              beta * J (Fin.succ 0) 0 * J (Fin.succ 1) 0 * (-1 / 2) +\n                            beta * s * H (Fin.succ 0) 0 * J (Fin.succ 0) 1 * (-1 / 2) +\n                          beta * s * H (Fin.succ 0) 0 * J (Fin.succ 1) 0 * (1 / 2) +\n                        beta * s * J (Fin.succ 1) 1 * H (Fin.succ 0) 1 * (-1 / 2) +\n                      beta * s * J (Fin.succ 1) 1 * H (Fin.succ 1) 0 * (1 / 2) +\n                    beta * s * H (Fin.succ 1) 1 * J (Fin.succ 0) 1 * (-1 / 2) +\n                  beta * s * H (Fin.succ 1) 1 * J (Fin.succ 1) 0 * (1 / 2) +\n                beta * s ^ 2 * H (Fin.succ 0) 0 * H (Fin.succ 0) 1 * (1 / 2) +\n              beta * s ^ 2 * H (Fin.succ 0) 0 * H (Fin.succ 1) 0 * (-1 / 2) +\n            beta * s ^ 2 * H (Fin.succ 1) 1 * H (Fin.succ 0) 1 * (1 / 2) +\n          beta * s ^ 2 * H (Fin.succ 1) 1 * H (Fin.succ 1) 0 * (-1 / 2) +\n        beta * J (Fin.succ 1) 1 * J (Fin.succ 0) 1 * (1 / 2) +\n      beta * J (Fin.succ 1) 1 * J (Fin.succ 1) 0 * (-1 / 2)\ns11/_scratch/dynamics_verification/density_sign.lean:128:2: error: 'change' tactic failed, pattern\n  -beta / 2 * (k 0 * a 0 + k 1 * a 1) * (k 0 * a 1 - k 1 * a 0) = ?m.44\nis not definitionally equal to target\n  modalAction beta k a = -beta / 2 * dot k a * dot (turn k) a\n",
+      "output_sha256": "25aa53b74bafd944b35f11b2e33c61fc1600b21becdcb4288b09f8db8315cc0d",
+      "source": "import S10Pilot.Variation\nimport S11Invariants.Controls\n\n/-! E1 and the local E2/E3 identities. Spatial rows are derivative indices;\ncoordinates are (t,x1,x2). This is only XFORM_EXTRA minus MAIN, with constant beta. -/\nnamespace S11OddDynamics\nnoncomputable section\nopen S10Pilot\nopen scoped ContDiff\n\ndef spatialGradient (J : Jet 2) : S11Invariants.Mat := fun j i => J j.succ i\n\ndef divergence (J : Jet 2) : ℝ := J (0 : Fin 2).succ 0 + J (1 : Fin 2).succ 1\ndef skew (J : Jet 2) : ℝ := J (0 : Fin 2).succ 1 - J (1 : Fin 2).succ 0\n\ndef lagrangian (beta : ℝ) (J : Jet 2) : ℝ :=\n  beta / 2 * divergence J * skew J\n\ntheorem density_identity (beta : ℝ) (J : Jet 2) :\n    lagrangian beta J = -beta / 2 * S11Invariants.oddPairing (spatialGradient J) := by\n  simp only [S11Invariants.oddPairing, S11Invariants.invariantForm_apply,\n    S11Invariants.coordinates, Matrix.cons_val, spatialGradient]\n  simp [lagrangian, divergence, skew]\n  ring\n\ndef variationDensity (beta : ℝ) (J H : Jet 2) : ℝ :=\n  -beta / 2 * (divergence H * skew J + divergence J * skew H)\n\ntheorem lagrangian_increment (beta s : ℝ) (J H : Jet 2) :\n    lagrangian beta (J + s • H) = lagrangian beta J +\n      s * variationDensity beta J H + s ^ 2 * lagrangian beta H := by\n  simp only [lagrangian, variationDensity, divergence, skew, Pi.add_apply, Pi.smul_apply,\n    smul_eq_mul]\n  ring\n\ntheorem lagrangian_smul (beta s : ℝ) (J : Jet 2) :\n    lagrangian beta (s • J) = s ^ 2 * lagrangian beta J := by\n  simp only [lagrangian, divergence, skew, Pi.smul_apply, smul_eq_mul]\n  ring\n\ntheorem lagrangian_variation (beta : ℝ) (J H : Jet 2) :\n    HasDerivAt (fun s : ℝ => lagrangian beta (J + s • H))\n      (variationDensity beta J H) 0 := by\n  have h := ((hasDerivAt_const (0 : ℝ) (lagrangian beta J)).add\n    ((hasDerivAt_id (0 : ℝ)).mul_const (variationDensity beta J H))).add\n    (((hasDerivAt_id (0 : ℝ)).pow 2).mul_const (lagrangian beta H))\n  convert! h using 1\n  · funext s\n    exact lagrangian_increment beta s J H\n  · simp\n\n/-- An actual derivative of the supplied density, not an asserted constitutive law. -/\ndef momentum (beta : ℝ) (J : Jet 2) (j : Fin 3) (i : Fin 2) : ℝ :=\n  deriv (fun s : ℝ => lagrangian beta (J + s • basisJet j i)) 0\n\ntheorem momentum_eq (beta : ℝ) (J : Jet 2) (j : Fin 3) (i : Fin 2) :\n    momentum beta J j i =\n      !![0, 0; -beta / 2 * skew J, -beta / 2 * divergence J;\n        beta / 2 * divergence J, -beta / 2 * skew J] j i := by\n  unfold momentum\n  rw [(lagrangian_variation beta J (basisJet j i)).deriv]\n  fin_cases j <;> fin_cases i <;>\n    simp [variationDensity, divergence, skew, basisJet_apply]\n  all_goals ring\n\ntheorem momentum_smul (beta s : ℝ) (J : Jet 2) (j : Fin 3) (i : Fin 2) :\n    momentum beta (s • J) j i = s * momentum beta J j i := by\n  rw [momentum_eq, momentum_eq]\n  fin_cases j <;> fin_cases i <;> simp [divergence, skew]\n  all_goals ring\n\n/-- Variational sign dL/du - sum_j partial_j(dL/dJ_ji). -/\ndef eulerLagrange (beta : ℝ) (u : Point 2 → Vec 2) (x : Point 2) : Vec 2 :=\n  fun i => -∑ j : Fin 3, coordDeriv j (fun y => momentum beta (fieldJet u y) j i) x\n\ntheorem smooth_momentum {u : Point 2 → Vec 2} (hu : SmoothField u)\n    (beta : ℝ) (j : Fin 3) (i : Fin 2) :\n    ContDiff ℝ ∞ (fun x => momentum beta (fieldJet u x) j i) := by\n  have hJ : ∀ a b, ContDiff ℝ ∞ (fun x => fieldJet u x a b) :=\n    fun a b => smooth_coordDeriv (hu b) a\n  fin_cases j <;> fin_cases i <;> simp [momentum_eq, divergence, skew]\n  all_goals fun_prop\n\ntheorem smooth_eulerLagrange {u : Point 2 → Vec 2} (hu : SmoothField u) (beta : ℝ)\n    (i : Fin 2) : ContDiff ℝ ∞ (fun x => eulerLagrange beta u x i) := by\n  have hd : ∀ j, ContDiff ℝ ∞ (coordDeriv j (fun y => momentum beta (fieldJet u y) j i)) :=\n    fun j => smooth_coordDeriv (smooth_momentum hu beta j i) j\n  unfold eulerLagrange\n  fun_prop\n\ntheorem coordDeriv_const_mul {f : Point 2 → ℝ} (hf : Differentiable ℝ f)\n    (c : ℝ) (j : Fin 3) (x : Point 2) :\n    coordDeriv j (fun y => c * f y) x = c * coordDeriv j f x := by\n  rw [coordDeriv_eq_fderiv (hf.const_mul c), coordDeriv_eq_fderiv hf]\n  simp [fderiv_const_mul (hf x)]\n\ntheorem coordDeriv_zero (j : Fin 3) (x : Point 2) :\n    coordDeriv j (fun _ => (0 : ℝ)) x = 0 := by simp [coordDeriv]\n\n/-- Compact local formula; no commutation of mixed derivatives is required. -/\ntheorem eulerLagrange_eq {u : Point 2 → Vec 2} (hu : SmoothField u) (beta : ℝ)\n    (x : Point 2) : eulerLagrange beta u x =\n    ![beta / 2 * (coordDeriv 1 (fun y => skew (fieldJet u y)) x -\n        coordDeriv 2 (fun y => divergence (fieldJet u y)) x),\n      beta / 2 * (coordDeriv 1 (fun y => divergence (fieldJet u y)) x +\n        coordDeriv 2 (fun y => skew (fieldJet u y)) x)] := by\n  have hJ : ∀ a b, ContDiff ℝ ∞ (fun y => fieldJet u y a b) :=\n    fun a b => smooth_coordDeriv (hu b) a\n  have hd : ContDiff ℝ ∞ (fun y => divergence (fieldJet u y)) := by unfold divergence; fun_prop\n  have hs : ContDiff ℝ ∞ (fun y => skew (fieldJet u y)) := by unfold skew; fun_prop\n  ext i\n  fin_cases i <;> simp [eulerLagrange, momentum_eq, Fin.sum_univ_succ,\n    coordDeriv_const_mul (hs.differentiable (by simp)),\n    coordDeriv_const_mul (hd.differentiable (by simp)), coordDeriv_zero] <;> ring\n\n/-- The positively oriented perpendicular direction for row-major curl convention. -/\ndef turn (k : Vec 2) : Vec 2 := ![-k 1, k 0]\n\ndef modalAction (beta : ℝ) (k a : Vec 2) : ℝ :=\n  lagrangian beta (modeJet 0 k a)\n\n/-- Identified with both the action derivative and the local PDE below. -/\ndef modalOperator (beta : ℝ) (k a : Vec 2) : Vec 2 :=\n  (-beta / 2) • ((dot (turn k) a) • k + (dot k a) • turn k)\n\ntheorem modalAction_eq (beta : ℝ) (k a : Vec 2) :\n    modalAction beta k a = -beta / 2 * dot k a * dot (turn k) a := by\n  change -beta / 2 * (k 0 * a 0 + k 1 * a 1) * (k 0 * a 1 - k 1 * a 0) = _\n  simp only [dot, turn, Fin.sum_univ_two, Matrix.cons_val]\n  ring\n\ntheorem modal_variation (beta : ℝ) (k a b : Vec 2) :\n    HasDerivAt (fun s : ℝ => modalAction beta k (a + s • b))\n      (dot (modalOperator beta k a) b) 0 := by\n  simp_rw [modalAction_eq, dot_add_right, dot_smul_right]\n  have h := (((hasDerivAt_const (0 : ℝ) (dot k a)).add\n    ((hasDerivAt_id (0 : ℝ)).mul_const (dot k b))).const_mul (-beta / 2)).mul\n    ((hasDerivAt_const (0 : ℝ) (dot (turn k) a)).add\n    ((hasDerivAt_id (0 : ℝ)).mul_const (dot (turn k) b)))\n  convert! h using 1\n  simp [modalOperator, dot_smul_left, dot_add_left]\n  ring\n\ntheorem momentum_contraction (beta omega : ℝ) (k a : Vec 2) (i : Fin 2) :\n    (∑ j : Fin 3, waveCovector omega k j * momentum beta (modeJet (-omega) k a) j i) =\n      modalOperator beta k a i := by\n  simp only [Fin.sum_univ_succ, waveCovector, Fin.cases_zero, Fin.cases_succ,\n    momentum_eq, Fin.sum_univ_zero]\n  fin_cases i\n  · change -omega * 0 + (k 0 * (-beta / 2 * (k 0 * a 1 - k 1 * a 0)) +\n        (k 1 * (beta / 2 * (k 0 * a 0 + k 1 * a 1)) + 0)) = _\n    simp [modalOperator, dot, turn, Fin.sum_univ_two, Matrix.vecHead, Matrix.vecTail]\n    ring\n  · change -omega * 0 + (k 0 * (-beta / 2 * (k 0 * a 0 + k 1 * a 1)) +\n        (k 1 * (-beta / 2 * (k 0 * a 1 - k 1 * a 0)) + 0)) = _\n    simp [modalOperator, dot, turn, Fin.sum_univ_two, Matrix.vecHead, Matrix.vecTail]\n    ring\n\ntheorem eulerLagrange_planeWave (beta omega : ℝ) (k a : Vec 2) (x : Point 2) :\n    eulerLagrange beta (planeWave omega k a) x =\n      Real.cos (phase (waveCovector omega k) x) • modalOperator beta k a := by\n  ext i\n  unfold eulerLagrange\n  simp_rw [fieldJet_planeWave, momentum_smul]\n  have hrearrange : ∀ j : Fin 3,\n      (fun y => -Real.sin (phase (waveCovector omega k) y) *\n        momentum beta (modeJet (-omega) k a) j i) =\n      (fun y => -momentum beta (modeJet (-omega) k a) j i *\n        Real.sin (phase (waveCovector omega k) y)) := by\n    intro j\n    funext y\n    ring\n  simp_rw [hrearrange, partial_const_sin]\n  simp only [Pi.smul_apply, smul_eq_mul]\n  rw [← momentum_contraction beta omega]\n  simp only [Finset.mul_sum]\n  rw [← Finset.sum_neg_distrib]\n  apply Finset.sum_congr rfl\n  intro j _\n  ring\n\nend\nend S11OddDynamics\n",
+      "canonical_source": "lean/s11/S11OddDynamics/Action.lean",
+      "replacement": {
+        "old": "  -beta / 2 * divergence J * skew J",
+        "new": "  beta / 2 * divergence J * skew J"
+      }
+    },
+    {
+      "name": "density_factor",
+      "expected": "REJECTED",
+      "outcome": "REJECTED",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/dynamics_verification/density_factor.lean"
+      ],
+      "exit_status": 1,
+      "wall_seconds": 24.281,
+      "source_sha256": "3ee169fb54b2127b508377808ef2c8a8f0cb90374c08f3dc44f3f2aa640d2af9",
+      "required_failure_in": "density_identity",
+      "diagnostics": [
+        {
+          "declaration": "density_identity",
+          "line": 20,
+          "message": "s11/_scratch/dynamics_verification/density_factor.lean:20:84: error: unsolved goals\nbeta : ℝ\nJ : Jet 2\n⊢ -(beta * J 1 0 * J 1 1) + beta * J 1 0 * J 2 0 - beta * J 2 1 * J 1 1 + beta * J 2 1 * J 2 0 =\n    beta * J 1 0 * J 1 1 * (-1 / 2) + beta * J 1 0 * J 2 0 * (1 / 2) + beta * J 2 1 * J 1 1 * (-1 / 2) +\n      beta * J 2 1 * J 2 0 * (1 / 2)\nTry this:\n  [apply] ring_nf\n  \n  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.\n    \n  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.\n"
+        },
+        {
+          "declaration": "lagrangian_increment",
+          "line": 31,
+          "message": "s11/_scratch/dynamics_verification/density_factor.lean:31:67: error: unsolved goals\nbeta s : ℝ\nJ H : Jet 2\n⊢ -(beta * J (Fin.succ 0) 0 * s * H (Fin.succ 0) 1) + beta * J (Fin.succ 0) 0 * s * H (Fin.succ 1) 0 -\n                                beta * J (Fin.succ 0) 0 * J (Fin.succ 0) 1 +\n                              beta * J (Fin.succ 0) 0 * J (Fin.succ 1) 0 -\n                            beta * s * H (Fin.succ 0) 0 * J (Fin.succ 0) 1 +\n                          beta * s * H (Fin.succ 0) 0 * J (Fin.succ 1) 0 -\n                        beta * s * J (Fin.succ 1) 1 * H (Fin.succ 0) 1 +\n                      beta * s * J (Fin.succ 1) 1 * H (Fin.succ 1) 0 -\n                    beta * s * H (Fin.succ 1) 1 * J (Fin.succ 0) 1 +\n                  beta * s * H (Fin.succ 1) 1 * J (Fin.succ 1) 0 -\n                beta * s ^ 2 * H (Fin.succ 0) 0 * H (Fin.succ 0) 1 +\n              beta * s ^ 2 * H (Fin.succ 0) 0 * H (Fin.succ 1) 0 -\n            beta * s ^ 2 * H (Fin.succ 1) 1 * H (Fin.succ 0) 1 +\n          beta * s ^ 2 * H (Fin.succ 1) 1 * H (Fin.succ 1) 0 -\n        beta * J (Fin.succ 1) 1 * J (Fin.succ 0) 1 +\n      beta * J (Fin.succ 1) 1 * J (Fin.succ 1) 0 =\n    beta * J (Fin.succ 0) 0 * s * H (Fin.succ 0) 1 * (-1 / 2) +\n                                  beta * J (Fin.succ 0) 0 * s * H (Fin.succ 1) 0 * (1 / 2) -\n                                beta * J (Fin.succ 0) 0 * J (Fin.succ 0) 1 +\n                              beta * J (Fin.succ 0) 0 * J (Fin.succ 1) 0 +\n                            beta * s * H (Fin.succ 0) 0 * J (Fin.succ 0) 1 * (-1 / 2) +\n                          beta * s * H (Fin.succ 0) 0 * J (Fin.succ 1) 0 * (1 / 2) +\n                        beta * s * J (Fin.succ 1) 1 * H (Fin.succ 0) 1 * (-1 / 2) +\n                      beta * s * J (Fin.succ 1) 1 * H (Fin.succ 1) 0 * (1 / 2) +\n                    beta * s * H (Fin.succ 1) 1 * J (Fin.succ 0) 1 * (-1 / 2) +\n                  beta * s * H (Fin.succ 1) 1 * J (Fin.succ 1) 0 * (1 / 2) -\n                beta * s ^ 2 * H (Fin.succ 0) 0 * H (Fin.succ 0) 1 +\n              beta * s ^ 2 * H (Fin.succ 0) 0 * H (Fin.succ 1) 0 -\n            beta * s ^ 2 * H (Fin.succ 1) 1 * H (Fin.succ 0) 1 +\n          beta * s ^ 2 * H (Fin.succ 1) 1 * H (Fin.succ 1) 0 -\n        beta * J (Fin.succ 1) 1 * J (Fin.succ 0) 1 +\n      beta * J (Fin.succ 1) 1 * J (Fin.succ 1) 0\n"
+        },
+        {
+          "declaration": "modalAction_eq",
+          "line": 128,
+          "message": "s11/_scratch/dynamics_verification/density_factor.lean:128:2: error: 'change' tactic failed, pattern\n  -beta / 2 * (k 0 * a 0 + k 1 * a 1) * (k 0 * a 1 - k 1 * a 0) = ?m.44\nis not definitionally equal to target\n  modalAction beta k a = -beta / 2 * dot k a * dot (turn k) a\n"
+        }
+      ],
+      "output": "Try this:\n  [apply] ring_nf\n  \n  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.\n    \n  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.\ns11/_scratch/dynamics_verification/density_factor.lean:20:84: error: unsolved goals\nbeta : ℝ\nJ : Jet 2\n⊢ -(beta * J 1 0 * J 1 1) + beta * J 1 0 * J 2 0 - beta * J 2 1 * J 1 1 + beta * J 2 1 * J 2 0 =\n    beta * J 1 0 * J 1 1 * (-1 / 2) + beta * J 1 0 * J 2 0 * (1 / 2) + beta * J 2 1 * J 1 1 * (-1 / 2) +\n      beta * J 2 1 * J 2 0 * (1 / 2)\nTry this:\n  [apply] ring_nf\n  \n  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.\n    \n  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.\ns11/_scratch/dynamics_verification/density_factor.lean:31:67: error: unsolved goals\nbeta s : ℝ\nJ H : Jet 2\n⊢ -(beta * J (Fin.succ 0) 0 * s * H (Fin.succ 0) 1) + beta * J (Fin.succ 0) 0 * s * H (Fin.succ 1) 0 -\n                                beta * J (Fin.succ 0) 0 * J (Fin.succ 0) 1 +\n                              beta * J (Fin.succ 0) 0 * J (Fin.succ 1) 0 -\n                            beta * s * H (Fin.succ 0) 0 * J (Fin.succ 0) 1 +\n                          beta * s * H (Fin.succ 0) 0 * J (Fin.succ 1) 0 -\n                        beta * s * J (Fin.succ 1) 1 * H (Fin.succ 0) 1 +\n                      beta * s * J (Fin.succ 1) 1 * H (Fin.succ 1) 0 -\n                    beta * s * H (Fin.succ 1) 1 * J (Fin.succ 0) 1 +\n                  beta * s * H (Fin.succ 1) 1 * J (Fin.succ 1) 0 -\n                beta * s ^ 2 * H (Fin.succ 0) 0 * H (Fin.succ 0) 1 +\n              beta * s ^ 2 * H (Fin.succ 0) 0 * H (Fin.succ 1) 0 -\n            beta * s ^ 2 * H (Fin.succ 1) 1 * H (Fin.succ 0) 1 +\n          beta * s ^ 2 * H (Fin.succ 1) 1 * H (Fin.succ 1) 0 -\n        beta * J (Fin.succ 1) 1 * J (Fin.succ 0) 1 +\n      beta * J (Fin.succ 1) 1 * J (Fin.succ 1) 0 =\n    beta * J (Fin.succ 0) 0 * s * H (Fin.succ 0) 1 * (-1 / 2) +\n                                  beta * J (Fin.succ 0) 0 * s * H (Fin.succ 1) 0 * (1 / 2) -\n                                beta * J (Fin.succ 0) 0 * J (Fin.succ 0) 1 +\n                              beta * J (Fin.succ 0) 0 * J (Fin.succ 1) 0 +\n                            beta * s * H (Fin.succ 0) 0 * J (Fin.succ 0) 1 * (-1 / 2) +\n                          beta * s * H (Fin.succ 0) 0 * J (Fin.succ 1) 0 * (1 / 2) +\n                        beta * s * J (Fin.succ 1) 1 * H (Fin.succ 0) 1 * (-1 / 2) +\n                      beta * s * J (Fin.succ 1) 1 * H (Fin.succ 1) 0 * (1 / 2) +\n                    beta * s * H (Fin.succ 1) 1 * J (Fin.succ 0) 1 * (-1 / 2) +\n                  beta * s * H (Fin.succ 1) 1 * J (Fin.succ 1) 0 * (1 / 2) -\n                beta * s ^ 2 * H (Fin.succ 0) 0 * H (Fin.succ 0) 1 +\n              beta * s ^ 2 * H (Fin.succ 0) 0 * H (Fin.succ 1) 0 -\n            beta * s ^ 2 * H (Fin.succ 1) 1 * H (Fin.succ 0) 1 +\n          beta * s ^ 2 * H (Fin.succ 1) 1 * H (Fin.succ 1) 0 -\n        beta * J (Fin.succ 1) 1 * J (Fin.succ 0) 1 +\n      beta * J (Fin.succ 1) 1 * J (Fin.succ 1) 0\ns11/_scratch/dynamics_verification/density_factor.lean:128:2: error: 'change' tactic failed, pattern\n  -beta / 2 * (k 0 * a 0 + k 1 * a 1) * (k 0 * a 1 - k 1 * a 0) = ?m.44\nis not definitionally equal to target\n  modalAction beta k a = -beta / 2 * dot k a * dot (turn k) a\n",
+      "output_sha256": "b080e812850aef9effdc0e08601b79f85b9d340ee2c30ac1a2d2de4c2cb67dce",
+      "source": "import S10Pilot.Variation\nimport S11Invariants.Controls\n\n/-! E1 and the local E2/E3 identities. Spatial rows are derivative indices;\ncoordinates are (t,x1,x2). This is only XFORM_EXTRA minus MAIN, with constant beta. -/\nnamespace S11OddDynamics\nnoncomputable section\nopen S10Pilot\nopen scoped ContDiff\n\ndef spatialGradient (J : Jet 2) : S11Invariants.Mat := fun j i => J j.succ i\n\ndef divergence (J : Jet 2) : ℝ := J (0 : Fin 2).succ 0 + J (1 : Fin 2).succ 1\ndef skew (J : Jet 2) : ℝ := J (0 : Fin 2).succ 1 - J (1 : Fin 2).succ 0\n\ndef lagrangian (beta : ℝ) (J : Jet 2) : ℝ :=\n  -beta * divergence J * skew J\n\ntheorem density_identity (beta : ℝ) (J : Jet 2) :\n    lagrangian beta J = -beta / 2 * S11Invariants.oddPairing (spatialGradient J) := by\n  simp only [S11Invariants.oddPairing, S11Invariants.invariantForm_apply,\n    S11Invariants.coordinates, Matrix.cons_val, spatialGradient]\n  simp [lagrangian, divergence, skew]\n  ring\n\ndef variationDensity (beta : ℝ) (J H : Jet 2) : ℝ :=\n  -beta / 2 * (divergence H * skew J + divergence J * skew H)\n\ntheorem lagrangian_increment (beta s : ℝ) (J H : Jet 2) :\n    lagrangian beta (J + s • H) = lagrangian beta J +\n      s * variationDensity beta J H + s ^ 2 * lagrangian beta H := by\n  simp only [lagrangian, variationDensity, divergence, skew, Pi.add_apply, Pi.smul_apply,\n    smul_eq_mul]\n  ring\n\ntheorem lagrangian_smul (beta s : ℝ) (J : Jet 2) :\n    lagrangian beta (s • J) = s ^ 2 * lagrangian beta J := by\n  simp only [lagrangian, divergence, skew, Pi.smul_apply, smul_eq_mul]\n  ring\n\ntheorem lagrangian_variation (beta : ℝ) (J H : Jet 2) :\n    HasDerivAt (fun s : ℝ => lagrangian beta (J + s • H))\n      (variationDensity beta J H) 0 := by\n  have h := ((hasDerivAt_const (0 : ℝ) (lagrangian beta J)).add\n    ((hasDerivAt_id (0 : ℝ)).mul_const (variationDensity beta J H))).add\n    (((hasDerivAt_id (0 : ℝ)).pow 2).mul_const (lagrangian beta H))\n  convert! h using 1\n  · funext s\n    exact lagrangian_increment beta s J H\n  · simp\n\n/-- An actual derivative of the supplied density, not an asserted constitutive law. -/\ndef momentum (beta : ℝ) (J : Jet 2) (j : Fin 3) (i : Fin 2) : ℝ :=\n  deriv (fun s : ℝ => lagrangian beta (J + s • basisJet j i)) 0\n\ntheorem momentum_eq (beta : ℝ) (J : Jet 2) (j : Fin 3) (i : Fin 2) :\n    momentum beta J j i =\n      !![0, 0; -beta / 2 * skew J, -beta / 2 * divergence J;\n        beta / 2 * divergence J, -beta / 2 * skew J] j i := by\n  unfold momentum\n  rw [(lagrangian_variation beta J (basisJet j i)).deriv]\n  fin_cases j <;> fin_cases i <;>\n    simp [variationDensity, divergence, skew, basisJet_apply]\n  all_goals ring\n\ntheorem momentum_smul (beta s : ℝ) (J : Jet 2) (j : Fin 3) (i : Fin 2) :\n    momentum beta (s • J) j i = s * momentum beta J j i := by\n  rw [momentum_eq, momentum_eq]\n  fin_cases j <;> fin_cases i <;> simp [divergence, skew]\n  all_goals ring\n\n/-- Variational sign dL/du - sum_j partial_j(dL/dJ_ji). -/\ndef eulerLagrange (beta : ℝ) (u : Point 2 → Vec 2) (x : Point 2) : Vec 2 :=\n  fun i => -∑ j : Fin 3, coordDeriv j (fun y => momentum beta (fieldJet u y) j i) x\n\ntheorem smooth_momentum {u : Point 2 → Vec 2} (hu : SmoothField u)\n    (beta : ℝ) (j : Fin 3) (i : Fin 2) :\n    ContDiff ℝ ∞ (fun x => momentum beta (fieldJet u x) j i) := by\n  have hJ : ∀ a b, ContDiff ℝ ∞ (fun x => fieldJet u x a b) :=\n    fun a b => smooth_coordDeriv (hu b) a\n  fin_cases j <;> fin_cases i <;> simp [momentum_eq, divergence, skew]\n  all_goals fun_prop\n\ntheorem smooth_eulerLagrange {u : Point 2 → Vec 2} (hu : SmoothField u) (beta : ℝ)\n    (i : Fin 2) : ContDiff ℝ ∞ (fun x => eulerLagrange beta u x i) := by\n  have hd : ∀ j, ContDiff ℝ ∞ (coordDeriv j (fun y => momentum beta (fieldJet u y) j i)) :=\n    fun j => smooth_coordDeriv (smooth_momentum hu beta j i) j\n  unfold eulerLagrange\n  fun_prop\n\ntheorem coordDeriv_const_mul {f : Point 2 → ℝ} (hf : Differentiable ℝ f)\n    (c : ℝ) (j : Fin 3) (x : Point 2) :\n    coordDeriv j (fun y => c * f y) x = c * coordDeriv j f x := by\n  rw [coordDeriv_eq_fderiv (hf.const_mul c), coordDeriv_eq_fderiv hf]\n  simp [fderiv_const_mul (hf x)]\n\ntheorem coordDeriv_zero (j : Fin 3) (x : Point 2) :\n    coordDeriv j (fun _ => (0 : ℝ)) x = 0 := by simp [coordDeriv]\n\n/-- Compact local formula; no commutation of mixed derivatives is required. -/\ntheorem eulerLagrange_eq {u : Point 2 → Vec 2} (hu : SmoothField u) (beta : ℝ)\n    (x : Point 2) : eulerLagrange beta u x =\n    ![beta / 2 * (coordDeriv 1 (fun y => skew (fieldJet u y)) x -\n        coordDeriv 2 (fun y => divergence (fieldJet u y)) x),\n      beta / 2 * (coordDeriv 1 (fun y => divergence (fieldJet u y)) x +\n        coordDeriv 2 (fun y => skew (fieldJet u y)) x)] := by\n  have hJ : ∀ a b, ContDiff ℝ ∞ (fun y => fieldJet u y a b) :=\n    fun a b => smooth_coordDeriv (hu b) a\n  have hd : ContDiff ℝ ∞ (fun y => divergence (fieldJet u y)) := by unfold divergence; fun_prop\n  have hs : ContDiff ℝ ∞ (fun y => skew (fieldJet u y)) := by unfold skew; fun_prop\n  ext i\n  fin_cases i <;> simp [eulerLagrange, momentum_eq, Fin.sum_univ_succ,\n    coordDeriv_const_mul (hs.differentiable (by simp)),\n    coordDeriv_const_mul (hd.differentiable (by simp)), coordDeriv_zero] <;> ring\n\n/-- The positively oriented perpendicular direction for row-major curl convention. -/\ndef turn (k : Vec 2) : Vec 2 := ![-k 1, k 0]\n\ndef modalAction (beta : ℝ) (k a : Vec 2) : ℝ :=\n  lagrangian beta (modeJet 0 k a)\n\n/-- Identified with both the action derivative and the local PDE below. -/\ndef modalOperator (beta : ℝ) (k a : Vec 2) : Vec 2 :=\n  (-beta / 2) • ((dot (turn k) a) • k + (dot k a) • turn k)\n\ntheorem modalAction_eq (beta : ℝ) (k a : Vec 2) :\n    modalAction beta k a = -beta / 2 * dot k a * dot (turn k) a := by\n  change -beta / 2 * (k 0 * a 0 + k 1 * a 1) * (k 0 * a 1 - k 1 * a 0) = _\n  simp only [dot, turn, Fin.sum_univ_two, Matrix.cons_val]\n  ring\n\ntheorem modal_variation (beta : ℝ) (k a b : Vec 2) :\n    HasDerivAt (fun s : ℝ => modalAction beta k (a + s • b))\n      (dot (modalOperator beta k a) b) 0 := by\n  simp_rw [modalAction_eq, dot_add_right, dot_smul_right]\n  have h := (((hasDerivAt_const (0 : ℝ) (dot k a)).add\n    ((hasDerivAt_id (0 : ℝ)).mul_const (dot k b))).const_mul (-beta / 2)).mul\n    ((hasDerivAt_const (0 : ℝ) (dot (turn k) a)).add\n    ((hasDerivAt_id (0 : ℝ)).mul_const (dot (turn k) b)))\n  convert! h using 1\n  simp [modalOperator, dot_smul_left, dot_add_left]\n  ring\n\ntheorem momentum_contraction (beta omega : ℝ) (k a : Vec 2) (i : Fin 2) :\n    (∑ j : Fin 3, waveCovector omega k j * momentum beta (modeJet (-omega) k a) j i) =\n      modalOperator beta k a i := by\n  simp only [Fin.sum_univ_succ, waveCovector, Fin.cases_zero, Fin.cases_succ,\n    momentum_eq, Fin.sum_univ_zero]\n  fin_cases i\n  · change -omega * 0 + (k 0 * (-beta / 2 * (k 0 * a 1 - k 1 * a 0)) +\n        (k 1 * (beta / 2 * (k 0 * a 0 + k 1 * a 1)) + 0)) = _\n    simp [modalOperator, dot, turn, Fin.sum_univ_two, Matrix.vecHead, Matrix.vecTail]\n    ring\n  · change -omega * 0 + (k 0 * (-beta / 2 * (k 0 * a 0 + k 1 * a 1)) +\n        (k 1 * (-beta / 2 * (k 0 * a 1 - k 1 * a 0)) + 0)) = _\n    simp [modalOperator, dot, turn, Fin.sum_univ_two, Matrix.vecHead, Matrix.vecTail]\n    ring\n\ntheorem eulerLagrange_planeWave (beta omega : ℝ) (k a : Vec 2) (x : Point 2) :\n    eulerLagrange beta (planeWave omega k a) x =\n      Real.cos (phase (waveCovector omega k) x) • modalOperator beta k a := by\n  ext i\n  unfold eulerLagrange\n  simp_rw [fieldJet_planeWave, momentum_smul]\n  have hrearrange : ∀ j : Fin 3,\n      (fun y => -Real.sin (phase (waveCovector omega k) y) *\n        momentum beta (modeJet (-omega) k a) j i) =\n      (fun y => -momentum beta (modeJet (-omega) k a) j i *\n        Real.sin (phase (waveCovector omega k) y)) := by\n    intro j\n    funext y\n    ring\n  simp_rw [hrearrange, partial_const_sin]\n  simp only [Pi.smul_apply, smul_eq_mul]\n  rw [← momentum_contraction beta omega]\n  simp only [Finset.mul_sum]\n  rw [← Finset.sum_neg_distrib]\n  apply Finset.sum_congr rfl\n  intro j _\n  ring\n\nend\nend S11OddDynamics\n",
+      "canonical_source": "lean/s11/S11OddDynamics/Action.lean",
+      "replacement": {
+        "old": "  -beta / 2 * divergence J * skew J",
+        "new": "  -beta * divergence J * skew J"
+      }
+    },
+    {
+      "name": "local_EL_sign",
+      "expected": "REJECTED",
+      "outcome": "REJECTED",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/dynamics_verification/local_EL_sign.lean"
+      ],
+      "exit_status": 1,
+      "wall_seconds": 24.179,
+      "source_sha256": "01892ff5b42c961c8592f9fd9932fe64bd601d08997920b8a0a1aa285072e458",
+      "required_failure_in": "eulerLagrange_eq",
+      "diagnostics": [
+        {
+          "declaration": "eulerLagrange_eq",
+          "line": 106,
+          "message": "s11/_scratch/dynamics_verification/local_EL_sign.lean:106:59: error: unsolved goals\ncase «0»\nu : Point 2 → Vec 2\nhu : SmoothField u\nbeta : ℝ\nx : Point 2\nhJ : ∀ (a : Fin (2 + 1)) (b : Fin 2), ContDiff ℝ ∞ fun y => fieldJet u y a b\nhd : ContDiff ℝ ∞ fun y => divergence (fieldJet u y)\nhs : ContDiff ℝ ∞ fun y => skew (fieldJet u y)\n⊢ beta * coordDeriv 1 (fun y => skew (fieldJet u y)) x * (-1 / 2) +\n      beta * coordDeriv 2 (fun y => divergence (fieldJet u y)) x * (1 / 2) =\n    beta * coordDeriv 1 (fun y => skew (fieldJet u y)) x * (1 / 2) +\n      beta * coordDeriv 2 (fun y => divergence (fieldJet u y)) x * (-1 / 2)\n\ncase «1»\nu : Point 2 → Vec 2\nhu : SmoothField u\nbeta : ℝ\nx : Point 2\nhJ : ∀ (a : Fin (2 + 1)) (b : Fin 2), ContDiff ℝ ∞ fun y => fieldJet u y a b\nhd : ContDiff ℝ ∞ fun y => divergence (fieldJet u y)\nhs : ContDiff ℝ ∞ fun y => skew (fieldJet u y)\n⊢ beta * coordDeriv 1 (fun y => divergence (fieldJet u y)) x * (-1 / 2) +\n      beta * coordDeriv 2 (fun y => skew (fieldJet u y)) x * (-1 / 2) =\n    beta * coordDeriv 1 (fun y => divergence (fieldJet u y)) x * (1 / 2) +\n      beta * coordDeriv 2 (fun y => skew (fieldJet u y)) x * (1 / 2)\n"
+        },
+        {
+          "declaration": "eulerLagrange_planeWave",
+          "line": 177,
+          "message": "s11/_scratch/dynamics_verification/local_EL_sign.lean:177:6: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern\n  -∑ x ∈ ?m.75, ?f x\nin the target expression\n  ∑ x_1,\n      -momentum beta (modeJet (-omega) k a) x_1 i * Real.cos (phase (waveCovector omega k) x) *\n        waveCovector omega k x_1 =\n    ∑ i_1,\n      Real.cos (phase (waveCovector omega k) x) *\n        (waveCovector omega k i_1 * momentum beta (modeJet (-omega) k a) i_1 i)\n\nbeta omega : ℝ\nk a : Vec 2\nx : Point 2\ni : Fin 2\nhrearrange :\n  ∀ (j : Fin 3),\n    (fun y => -Real.sin (phase (waveCovector omega k) y) * momentum beta (modeJet (-omega) k a) j i) = fun y =>\n      -momentum beta (modeJet (-omega) k a) j i * Real.sin (phase (waveCovector omega k) y)\n⊢ ∑ x_1,\n      -momentum beta (modeJet (-omega) k a) x_1 i * Real.cos (phase (waveCovector omega k) x) *\n        waveCovector omega k x_1 =\n    ∑ i_1,\n      Real.cos (phase (waveCovector omega k) x) *\n        (waveCovector omega k i_1 * momentum beta (modeJet (-omega) k a) i_1 i)\n"
+        }
+      ],
+      "output": "Try this:\n  [apply] ring_nf\n  \n  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.\n    \n  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.\nTry this:\n  [apply] ring_nf\n  \n  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.\n    \n  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.\ns11/_scratch/dynamics_verification/local_EL_sign.lean:106:59: error: unsolved goals\ncase «0»\nu : Point 2 → Vec 2\nhu : SmoothField u\nbeta : ℝ\nx : Point 2\nhJ : ∀ (a : Fin (2 + 1)) (b : Fin 2), ContDiff ℝ ∞ fun y => fieldJet u y a b\nhd : ContDiff ℝ ∞ fun y => divergence (fieldJet u y)\nhs : ContDiff ℝ ∞ fun y => skew (fieldJet u y)\n⊢ beta * coordDeriv 1 (fun y => skew (fieldJet u y)) x * (-1 / 2) +\n      beta * coordDeriv 2 (fun y => divergence (fieldJet u y)) x * (1 / 2) =\n    beta * coordDeriv 1 (fun y => skew (fieldJet u y)) x * (1 / 2) +\n      beta * coordDeriv 2 (fun y => divergence (fieldJet u y)) x * (-1 / 2)\n\ncase «1»\nu : Point 2 → Vec 2\nhu : SmoothField u\nbeta : ℝ\nx : Point 2\nhJ : ∀ (a : Fin (2 + 1)) (b : Fin 2), ContDiff ℝ ∞ fun y => fieldJet u y a b\nhd : ContDiff ℝ ∞ fun y => divergence (fieldJet u y)\nhs : ContDiff ℝ ∞ fun y => skew (fieldJet u y)\n⊢ beta * coordDeriv 1 (fun y => divergence (fieldJet u y)) x * (-1 / 2) +\n      beta * coordDeriv 2 (fun y => skew (fieldJet u y)) x * (-1 / 2) =\n    beta * coordDeriv 1 (fun y => divergence (fieldJet u y)) x * (1 / 2) +\n      beta * coordDeriv 2 (fun y => skew (fieldJet u y)) x * (1 / 2)\ns11/_scratch/dynamics_verification/local_EL_sign.lean:177:6: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern\n  -∑ x ∈ ?m.75, ?f x\nin the target expression\n  ∑ x_1,\n      -momentum beta (modeJet (-omega) k a) x_1 i * Real.cos (phase (waveCovector omega k) x) *\n        waveCovector omega k x_1 =\n    ∑ i_1,\n      Real.cos (phase (waveCovector omega k) x) *\n        (waveCovector omega k i_1 * momentum beta (modeJet (-omega) k a) i_1 i)\n\nbeta omega : ℝ\nk a : Vec 2\nx : Point 2\ni : Fin 2\nhrearrange :\n  ∀ (j : Fin 3),\n    (fun y => -Real.sin (phase (waveCovector omega k) y) * momentum beta (modeJet (-omega) k a) j i) = fun y =>\n      -momentum beta (modeJet (-omega) k a) j i * Real.sin (phase (waveCovector omega k) y)\n⊢ ∑ x_1,\n      -momentum beta (modeJet (-omega) k a) x_1 i * Real.cos (phase (waveCovector omega k) x) *\n        waveCovector omega k x_1 =\n    ∑ i_1,\n      Real.cos (phase (waveCovector omega k) x) *\n        (waveCovector omega k i_1 * momentum beta (modeJet (-omega) k a) i_1 i)\n",
+      "output_sha256": "d8aaf4a1e7f72bcad1937e130e90d640bb16df6fa590af92c934414ecc3e725e",
+      "source": "import S10Pilot.Variation\nimport S11Invariants.Controls\n\n/-! E1 and the local E2/E3 identities. Spatial rows are derivative indices;\ncoordinates are (t,x1,x2). This is only XFORM_EXTRA minus MAIN, with constant beta. -/\nnamespace S11OddDynamics\nnoncomputable section\nopen S10Pilot\nopen scoped ContDiff\n\ndef spatialGradient (J : Jet 2) : S11Invariants.Mat := fun j i => J j.succ i\n\ndef divergence (J : Jet 2) : ℝ := J (0 : Fin 2).succ 0 + J (1 : Fin 2).succ 1\ndef skew (J : Jet 2) : ℝ := J (0 : Fin 2).succ 1 - J (1 : Fin 2).succ 0\n\ndef lagrangian (beta : ℝ) (J : Jet 2) : ℝ :=\n  -beta / 2 * divergence J * skew J\n\ntheorem density_identity (beta : ℝ) (J : Jet 2) :\n    lagrangian beta J = -beta / 2 * S11Invariants.oddPairing (spatialGradient J) := by\n  simp only [S11Invariants.oddPairing, S11Invariants.invariantForm_apply,\n    S11Invariants.coordinates, Matrix.cons_val, spatialGradient]\n  simp [lagrangian, divergence, skew]\n  ring\n\ndef variationDensity (beta : ℝ) (J H : Jet 2) : ℝ :=\n  -beta / 2 * (divergence H * skew J + divergence J * skew H)\n\ntheorem lagrangian_increment (beta s : ℝ) (J H : Jet 2) :\n    lagrangian beta (J + s • H) = lagrangian beta J +\n      s * variationDensity beta J H + s ^ 2 * lagrangian beta H := by\n  simp only [lagrangian, variationDensity, divergence, skew, Pi.add_apply, Pi.smul_apply,\n    smul_eq_mul]\n  ring\n\ntheorem lagrangian_smul (beta s : ℝ) (J : Jet 2) :\n    lagrangian beta (s • J) = s ^ 2 * lagrangian beta J := by\n  simp only [lagrangian, divergence, skew, Pi.smul_apply, smul_eq_mul]\n  ring\n\ntheorem lagrangian_variation (beta : ℝ) (J H : Jet 2) :\n    HasDerivAt (fun s : ℝ => lagrangian beta (J + s • H))\n      (variationDensity beta J H) 0 := by\n  have h := ((hasDerivAt_const (0 : ℝ) (lagrangian beta J)).add\n    ((hasDerivAt_id (0 : ℝ)).mul_const (variationDensity beta J H))).add\n    (((hasDerivAt_id (0 : ℝ)).pow 2).mul_const (lagrangian beta H))\n  convert! h using 1\n  · funext s\n    exact lagrangian_increment beta s J H\n  · simp\n\n/-- An actual derivative of the supplied density, not an asserted constitutive law. -/\ndef momentum (beta : ℝ) (J : Jet 2) (j : Fin 3) (i : Fin 2) : ℝ :=\n  deriv (fun s : ℝ => lagrangian beta (J + s • basisJet j i)) 0\n\ntheorem momentum_eq (beta : ℝ) (J : Jet 2) (j : Fin 3) (i : Fin 2) :\n    momentum beta J j i =\n      !![0, 0; -beta / 2 * skew J, -beta / 2 * divergence J;\n        beta / 2 * divergence J, -beta / 2 * skew J] j i := by\n  unfold momentum\n  rw [(lagrangian_variation beta J (basisJet j i)).deriv]\n  fin_cases j <;> fin_cases i <;>\n    simp [variationDensity, divergence, skew, basisJet_apply]\n  all_goals ring\n\ntheorem momentum_smul (beta s : ℝ) (J : Jet 2) (j : Fin 3) (i : Fin 2) :\n    momentum beta (s • J) j i = s * momentum beta J j i := by\n  rw [momentum_eq, momentum_eq]\n  fin_cases j <;> fin_cases i <;> simp [divergence, skew]\n  all_goals ring\n\n/-- Variational sign dL/du - sum_j partial_j(dL/dJ_ji). -/\ndef eulerLagrange (beta : ℝ) (u : Point 2 → Vec 2) (x : Point 2) : Vec 2 :=\n  fun i => ∑ j : Fin 3, coordDeriv j (fun y => momentum beta (fieldJet u y) j i) x\n\ntheorem smooth_momentum {u : Point 2 → Vec 2} (hu : SmoothField u)\n    (beta : ℝ) (j : Fin 3) (i : Fin 2) :\n    ContDiff ℝ ∞ (fun x => momentum beta (fieldJet u x) j i) := by\n  have hJ : ∀ a b, ContDiff ℝ ∞ (fun x => fieldJet u x a b) :=\n    fun a b => smooth_coordDeriv (hu b) a\n  fin_cases j <;> fin_cases i <;> simp [momentum_eq, divergence, skew]\n  all_goals fun_prop\n\ntheorem smooth_eulerLagrange {u : Point 2 → Vec 2} (hu : SmoothField u) (beta : ℝ)\n    (i : Fin 2) : ContDiff ℝ ∞ (fun x => eulerLagrange beta u x i) := by\n  have hd : ∀ j, ContDiff ℝ ∞ (coordDeriv j (fun y => momentum beta (fieldJet u y) j i)) :=\n    fun j => smooth_coordDeriv (smooth_momentum hu beta j i) j\n  unfold eulerLagrange\n  fun_prop\n\ntheorem coordDeriv_const_mul {f : Point 2 → ℝ} (hf : Differentiable ℝ f)\n    (c : ℝ) (j : Fin 3) (x : Point 2) :\n    coordDeriv j (fun y => c * f y) x = c * coordDeriv j f x := by\n  rw [coordDeriv_eq_fderiv (hf.const_mul c), coordDeriv_eq_fderiv hf]\n  simp [fderiv_const_mul (hf x)]\n\ntheorem coordDeriv_zero (j : Fin 3) (x : Point 2) :\n    coordDeriv j (fun _ => (0 : ℝ)) x = 0 := by simp [coordDeriv]\n\n/-- Compact local formula; no commutation of mixed derivatives is required. -/\ntheorem eulerLagrange_eq {u : Point 2 → Vec 2} (hu : SmoothField u) (beta : ℝ)\n    (x : Point 2) : eulerLagrange beta u x =\n    ![beta / 2 * (coordDeriv 1 (fun y => skew (fieldJet u y)) x -\n        coordDeriv 2 (fun y => divergence (fieldJet u y)) x),\n      beta / 2 * (coordDeriv 1 (fun y => divergence (fieldJet u y)) x +\n        coordDeriv 2 (fun y => skew (fieldJet u y)) x)] := by\n  have hJ : ∀ a b, ContDiff ℝ ∞ (fun y => fieldJet u y a b) :=\n    fun a b => smooth_coordDeriv (hu b) a\n  have hd : ContDiff ℝ ∞ (fun y => divergence (fieldJet u y)) := by unfold divergence; fun_prop\n  have hs : ContDiff ℝ ∞ (fun y => skew (fieldJet u y)) := by unfold skew; fun_prop\n  ext i\n  fin_cases i <;> simp [eulerLagrange, momentum_eq, Fin.sum_univ_succ,\n    coordDeriv_const_mul (hs.differentiable (by simp)),\n    coordDeriv_const_mul (hd.differentiable (by simp)), coordDeriv_zero] <;> ring\n\n/-- The positively oriented perpendicular direction for row-major curl convention. -/\ndef turn (k : Vec 2) : Vec 2 := ![-k 1, k 0]\n\ndef modalAction (beta : ℝ) (k a : Vec 2) : ℝ :=\n  lagrangian beta (modeJet 0 k a)\n\n/-- Identified with both the action derivative and the local PDE below. -/\ndef modalOperator (beta : ℝ) (k a : Vec 2) : Vec 2 :=\n  (-beta / 2) • ((dot (turn k) a) • k + (dot k a) • turn k)\n\ntheorem modalAction_eq (beta : ℝ) (k a : Vec 2) :\n    modalAction beta k a = -beta / 2 * dot k a * dot (turn k) a := by\n  change -beta / 2 * (k 0 * a 0 + k 1 * a 1) * (k 0 * a 1 - k 1 * a 0) = _\n  simp only [dot, turn, Fin.sum_univ_two, Matrix.cons_val]\n  ring\n\ntheorem modal_variation (beta : ℝ) (k a b : Vec 2) :\n    HasDerivAt (fun s : ℝ => modalAction beta k (a + s • b))\n      (dot (modalOperator beta k a) b) 0 := by\n  simp_rw [modalAction_eq, dot_add_right, dot_smul_right]\n  have h := (((hasDerivAt_const (0 : ℝ) (dot k a)).add\n    ((hasDerivAt_id (0 : ℝ)).mul_const (dot k b))).const_mul (-beta / 2)).mul\n    ((hasDerivAt_const (0 : ℝ) (dot (turn k) a)).add\n    ((hasDerivAt_id (0 : ℝ)).mul_const (dot (turn k) b)))\n  convert! h using 1\n  simp [modalOperator, dot_smul_left, dot_add_left]\n  ring\n\ntheorem momentum_contraction (beta omega : ℝ) (k a : Vec 2) (i : Fin 2) :\n    (∑ j : Fin 3, waveCovector omega k j * momentum beta (modeJet (-omega) k a) j i) =\n      modalOperator beta k a i := by\n  simp only [Fin.sum_univ_succ, waveCovector, Fin.cases_zero, Fin.cases_succ,\n    momentum_eq, Fin.sum_univ_zero]\n  fin_cases i\n  · change -omega * 0 + (k 0 * (-beta / 2 * (k 0 * a 1 - k 1 * a 0)) +\n        (k 1 * (beta / 2 * (k 0 * a 0 + k 1 * a 1)) + 0)) = _\n    simp [modalOperator, dot, turn, Fin.sum_univ_two, Matrix.vecHead, Matrix.vecTail]\n    ring\n  · change -omega * 0 + (k 0 * (-beta / 2 * (k 0 * a 0 + k 1 * a 1)) +\n        (k 1 * (-beta / 2 * (k 0 * a 1 - k 1 * a 0)) + 0)) = _\n    simp [modalOperator, dot, turn, Fin.sum_univ_two, Matrix.vecHead, Matrix.vecTail]\n    ring\n\ntheorem eulerLagrange_planeWave (beta omega : ℝ) (k a : Vec 2) (x : Point 2) :\n    eulerLagrange beta (planeWave omega k a) x =\n      Real.cos (phase (waveCovector omega k) x) • modalOperator beta k a := by\n  ext i\n  unfold eulerLagrange\n  simp_rw [fieldJet_planeWave, momentum_smul]\n  have hrearrange : ∀ j : Fin 3,\n      (fun y => -Real.sin (phase (waveCovector omega k) y) *\n        momentum beta (modeJet (-omega) k a) j i) =\n      (fun y => -momentum beta (modeJet (-omega) k a) j i *\n        Real.sin (phase (waveCovector omega k) y)) := by\n    intro j\n    funext y\n    ring\n  simp_rw [hrearrange, partial_const_sin]\n  simp only [Pi.smul_apply, smul_eq_mul]\n  rw [← momentum_contraction beta omega]\n  simp only [Finset.mul_sum]\n  rw [← Finset.sum_neg_distrib]\n  apply Finset.sum_congr rfl\n  intro j _\n  ring\n\nend\nend S11OddDynamics\n",
+      "canonical_source": "lean/s11/S11OddDynamics/Action.lean",
+      "replacement": {
+        "old": "fun i => -∑ j : Fin 3, coordDeriv j",
+        "new": "fun i => ∑ j : Fin 3, coordDeriv j"
+      }
+    },
+    {
+      "name": "nonzero_is_not_null_positive",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/dynamics_verification/nonzero_is_not_null_positive.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 10.589,
+      "source_sha256": "c3881391fd21bf2155ba8b00b1f86e13487dc9bdd3f6f3f68ef1be77c60d66de",
+      "required_failure_in": "contract_control",
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "import S11OddDynamics.Mixing\nopen S10Pilot S11OddDynamics\nnoncomputable section\ntheorem contract_control : ¬ VariationallyNull 1 := by\n  norm_num [variationallyNull_iff]\n"
+    },
+    {
+      "name": "nonzero_is_not_null_mutant",
+      "expected": "REJECTED",
+      "outcome": "REJECTED",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/dynamics_verification/nonzero_is_not_null_mutant.lean"
+      ],
+      "exit_status": 1,
+      "wall_seconds": 10.69,
+      "source_sha256": "b0909cc77e7a00918d5548029574a71604d51f261f8229b378ae240f49246eff",
+      "required_failure_in": "contract_control",
+      "diagnostics": [
+        {
+          "declaration": "contract_control",
+          "line": 4,
+          "message": "s11/_scratch/dynamics_verification/nonzero_is_not_null_mutant.lean:4:51: error: unsolved goals\n⊢ False\n"
+        }
+      ],
+      "output": "s11/_scratch/dynamics_verification/nonzero_is_not_null_mutant.lean:4:51: error: unsolved goals\n⊢ False\n",
+      "output_sha256": "e68ba58e6a30635f49f5410d2af69225261b83219171eb3fe56fbe67c2fbe8f8",
+      "source": "import S11OddDynamics.Mixing\nopen S10Pilot S11OddDynamics\nnoncomputable section\ntheorem contract_control :  VariationallyNull 1 := by\n  norm_num [variationallyNull_iff]\n"
+    },
+    {
+      "name": "zero_is_null_positive",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/dynamics_verification/zero_is_null_positive.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 10.237,
+      "source_sha256": "8ee249dad001dcdc55e8964151ebcc94f2b6646f8756eac6e1480f07bad47526",
+      "required_failure_in": "contract_control",
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "import S11OddDynamics.Mixing\nopen S10Pilot S11OddDynamics\nnoncomputable section\ntheorem contract_control :  VariationallyNull 0 := by\n  norm_num [variationallyNull_iff]\n"
+    },
+    {
+      "name": "zero_is_null_mutant",
+      "expected": "REJECTED",
+      "outcome": "REJECTED",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/dynamics_verification/zero_is_null_mutant.lean"
+      ],
+      "exit_status": 1,
+      "wall_seconds": 9.683,
+      "source_sha256": "01edb079fe7eddf9c71aa109abb810a9dcdbe781f785199096a57fb101ee8be7",
+      "required_failure_in": "contract_control",
+      "diagnostics": [
+        {
+          "declaration": "contract_control",
+          "line": 4,
+          "message": "s11/_scratch/dynamics_verification/zero_is_null_mutant.lean:4:52: error: unsolved goals\n⊢ False\n"
+        }
+      ],
+      "output": "s11/_scratch/dynamics_verification/zero_is_null_mutant.lean:4:52: error: unsolved goals\n⊢ False\n",
+      "output_sha256": "bcf297924b118840b7e2acba9f16c200fb21820ce74e2349ded3520c59af4ede",
+      "source": "import S11OddDynamics.Mixing\nopen S10Pilot S11OddDynamics\nnoncomputable section\ntheorem contract_control : ¬ VariationallyNull 0 := by\n  norm_num [variationallyNull_iff]\n"
+    },
+    {
+      "name": "nonzero_mixes_positive",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/dynamics_verification/nonzero_mixes_positive.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 11.27,
+      "source_sha256": "147c31e18fb8b01b29adc7ea293936d64822a6d67afff928fc3f5deddfbda8e1",
+      "required_failure_in": "contract_control",
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "import S11OddDynamics.Mixing\nopen S10Pilot S11OddDynamics\nnoncomputable section\ntheorem contract_control :  Mixes 1 ![1,0] := by\n  norm_num [mixing_iff, funext_iff, Fin.forall_fin_two]\n"
+    },
+    {
+      "name": "nonzero_mixes_mutant",
+      "expected": "REJECTED",
+      "outcome": "REJECTED",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/dynamics_verification/nonzero_mixes_mutant.lean"
+      ],
+      "exit_status": 1,
+      "wall_seconds": 10.602,
+      "source_sha256": "9538a85e6e1c15ab49d427e0291706bf8b097407f308ca779f2e144b702a6e2f",
+      "required_failure_in": "contract_control",
+      "diagnostics": [
+        {
+          "declaration": "contract_control",
+          "line": 4,
+          "message": "s11/_scratch/dynamics_verification/nonzero_mixes_mutant.lean:4:47: error: unsolved goals\n⊢ False\n"
+        }
+      ],
+      "output": "s11/_scratch/dynamics_verification/nonzero_mixes_mutant.lean:4:47: error: unsolved goals\n⊢ False\n",
+      "output_sha256": "0feb32a57093934e30b5979622db07004814fb16b792eaa3d3418d937ee0a895",
+      "source": "import S11OddDynamics.Mixing\nopen S10Pilot S11OddDynamics\nnoncomputable section\ntheorem contract_control : ¬ Mixes 1 ![1,0] := by\n  norm_num [mixing_iff, funext_iff, Fin.forall_fin_two]\n"
+    },
+    {
+      "name": "zero_coefficient_no_mixing_positive",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/dynamics_verification/zero_coefficient_no_mixing_positive.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 9.933,
+      "source_sha256": "54f01b71161e0e6819e517c9afbdeb7a8a3c51dcf0d5b6fe5d01a8c2b9d5f27c",
+      "required_failure_in": "contract_control",
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "import S11OddDynamics.Mixing\nopen S10Pilot S11OddDynamics\nnoncomputable section\ntheorem contract_control : ¬ Mixes 0 ![1,0] := by\n  norm_num [mixing_iff]\n"
+    },
+    {
+      "name": "zero_coefficient_no_mixing_mutant",
+      "expected": "REJECTED",
+      "outcome": "REJECTED",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/dynamics_verification/zero_coefficient_no_mixing_mutant.lean"
+      ],
+      "exit_status": 1,
+      "wall_seconds": 9.984,
+      "source_sha256": "cf997aa685eb7d8754b9bea025b1b76f3d3e3d78995f8a2cbc421077442cb2d9",
+      "required_failure_in": "contract_control",
+      "diagnostics": [
+        {
+          "declaration": "contract_control",
+          "line": 4,
+          "message": "s11/_scratch/dynamics_verification/zero_coefficient_no_mixing_mutant.lean:4:46: error: unsolved goals\n⊢ False\n"
+        }
+      ],
+      "output": "s11/_scratch/dynamics_verification/zero_coefficient_no_mixing_mutant.lean:4:46: error: unsolved goals\n⊢ False\n",
+      "output_sha256": "19f3fa0e537c404a360f6a2fd4f2c47b4023524bcc59faf4718b1948dbb1cf14",
+      "source": "import S11OddDynamics.Mixing\nopen S10Pilot S11OddDynamics\nnoncomputable section\ntheorem contract_control :  Mixes 0 ![1,0] := by\n  norm_num [mixing_iff]\n"
+    },
+    {
+      "name": "zero_wavevector_no_mixing_positive",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/dynamics_verification/zero_wavevector_no_mixing_positive.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 9.683,
+      "source_sha256": "798fc07fc86943bff54ea02f4de47a4fa6d578220c770d1f1b6962cef757b765",
+      "required_failure_in": "contract_control",
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "import S11OddDynamics.Mixing\nopen S10Pilot S11OddDynamics\nnoncomputable section\ntheorem contract_control : ¬ Mixes 1 0 := by\n  norm_num [mixing_iff]\n"
+    },
+    {
+      "name": "zero_wavevector_no_mixing_mutant",
+      "expected": "REJECTED",
+      "outcome": "REJECTED",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/dynamics_verification/zero_wavevector_no_mixing_mutant.lean"
+      ],
+      "exit_status": 1,
+      "wall_seconds": 10.035,
+      "source_sha256": "bfe484c9ac91a1136f8a2fea960c257b418857747400791d12c6e35d45a21985",
+      "required_failure_in": "contract_control",
+      "diagnostics": [
+        {
+          "declaration": "contract_control",
+          "line": 4,
+          "message": "s11/_scratch/dynamics_verification/zero_wavevector_no_mixing_mutant.lean:4:41: error: unsolved goals\n⊢ False\n"
+        }
+      ],
+      "output": "s11/_scratch/dynamics_verification/zero_wavevector_no_mixing_mutant.lean:4:41: error: unsolved goals\n⊢ False\n",
+      "output_sha256": "4f282996b038da8f1586aef46e9a7df285543cb28ef8443dbdb9a0bee4bc5928",
+      "source": "import S11OddDynamics.Mixing\nopen S10Pilot S11OddDynamics\nnoncomputable section\ntheorem contract_control :  Mixes 1 0 := by\n  norm_num [mixing_iff]\n"
+    },
+    {
+      "name": "negative_coefficient_mixes_positive",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/dynamics_verification/negative_coefficient_mixes_positive.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 10.035,
+      "source_sha256": "eb46ad973aaa4280bde85dd9fac635b3e4ff72e849677ffe04d547fbc6caf442",
+      "required_failure_in": "contract_control",
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "import S11OddDynamics.Mixing\nopen S10Pilot S11OddDynamics\nnoncomputable section\ntheorem contract_control :  Mixes (-2) ![3,4] := by\n  norm_num [mixing_iff, funext_iff, Fin.forall_fin_two]\n"
+    },
+    {
+      "name": "negative_coefficient_mixes_mutant",
+      "expected": "REJECTED",
+      "outcome": "REJECTED",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/dynamics_verification/negative_coefficient_mixes_mutant.lean"
+      ],
+      "exit_status": 1,
+      "wall_seconds": 9.935,
+      "source_sha256": "b11f3961aaad18476ccdae5ee0376a14b60062984244ee2f70b69ebe625f0277",
+      "required_failure_in": "contract_control",
+      "diagnostics": [
+        {
+          "declaration": "contract_control",
+          "line": 4,
+          "message": "s11/_scratch/dynamics_verification/negative_coefficient_mixes_mutant.lean:4:50: error: unsolved goals\n⊢ False\n"
+        }
+      ],
+      "output": "s11/_scratch/dynamics_verification/negative_coefficient_mixes_mutant.lean:4:50: error: unsolved goals\n⊢ False\n",
+      "output_sha256": "976c97137ec59228bd54cf94dbef2bcdce1a600d092892f6dcc8026c24c0583f",
+      "source": "import S11OddDynamics.Mixing\nopen S10Pilot S11OddDynamics\nnoncomputable section\ntheorem contract_control : ¬ Mixes (-2) ![3,4] := by\n  norm_num [mixing_iff, funext_iff, Fin.forall_fin_two]\n"
+    },
+    {
+      "name": "witness_EL_sign_positive",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/dynamics_verification/witness_EL_sign_positive.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 9.834,
+      "source_sha256": "1478e07e88e883fec087da434a4ea273d40d6a365a77dc691672379889f4d459",
+      "required_failure_in": "contract_control",
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "import S11OddDynamics.Mixing\nopen S10Pilot S11OddDynamics\nnoncomputable section\ntheorem contract_control : S11OddDynamics.eulerLagrange 1 witnessField 0 1 = -1/2 := by\n  norm_num [witness_eulerLagrange]\n"
+    },
+    {
+      "name": "witness_EL_sign_mutant",
+      "expected": "REJECTED",
+      "outcome": "REJECTED",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/dynamics_verification/witness_EL_sign_mutant.lean"
+      ],
+      "exit_status": 1,
+      "wall_seconds": 9.888,
+      "source_sha256": "d896a58d4416cc973a49b22a55f51009f3dc73c091ea791e6a3ba9756614cfc6",
+      "required_failure_in": "contract_control",
+      "diagnostics": [
+        {
+          "declaration": "contract_control",
+          "line": 4,
+          "message": "s11/_scratch/dynamics_verification/witness_EL_sign_mutant.lean:4:84: error: unsolved goals\n⊢ False\n"
+        }
+      ],
+      "output": "s11/_scratch/dynamics_verification/witness_EL_sign_mutant.lean:4:84: error: unsolved goals\n⊢ False\n",
+      "output_sha256": "69354951c6a5e757fbcd3537a9992d72659eca03a19d63762cc1cc2bbea4ad9d",
+      "source": "import S11OddDynamics.Mixing\nopen S10Pilot S11OddDynamics\nnoncomputable section\ntheorem contract_control : S11OddDynamics.eulerLagrange 1 witnessField 0 1 = 1/2 := by\n  norm_num [witness_eulerLagrange]\n"
+    },
+    {
+      "name": "admissible_compact_variation_positive",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/dynamics_verification/admissible_compact_variation_positive.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 9.783,
+      "source_sha256": "caf8e60e7beaa8b9019a5ff57df41a49dc458037efae906d6e23ac06c2b7be3e",
+      "required_failure_in": null,
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "import S11OddDynamics.Mixing\nopen S10Pilot S11OddDynamics\nnoncomputable section\ntheorem contract_control : ∃ h : Point 2 → Vec 2, TestField h ∧ deriv (S11OddDynamics.relativeAction 1 witnessField h) 0 ≠ 0 := exists_nonzero_firstVariation (by norm_num)\n"
+    }
+  ],
+  "resources": {
+    "workers": 1,
+    "lean_threads": 1,
+    "lean_allocator_limit_mib": 4096,
+    "process_timeout_seconds": 300,
+    "note": "Allocator limit is not an OS RSS cap."
+  },
+  "dependency_olean_sha256_before_build": {
+    "lean/.lake/build/lib/lean/S10Pilot/Action.olean": "49bc4243066188feda004c36cb3b391acd106c239def0271f965079a50ccc750",
+    "lean/.lake/build/lib/lean/S10Pilot/Analytic.olean": "9a514454e8a904ceb3583781f892cdea7cca602ebda53b03249fd409e9a06349",
+    "lean/.lake/build/lib/lean/S10Pilot/PlaneWave.olean": "ef4176ed7bc5ef4d8686c63c1ea23225cc14bdd6e8a902ea99d851afdb3432d9",
+    "lean/.lake/build/lib/lean/S10Pilot/Variation.olean": "b5dfa0ccd8f54d76aab382a18d826f9256e3542f9dd1b4c146d1a6343c688a51",
+    "lean/.lake/build/lib/lean/S11Invariants/Census.olean": "734701d4d8bf90b7b348ee5165fbaff1be91fb11c15178f251d4a681086e6faa",
+    "lean/.lake/build/lib/lean/S11Invariants/Classification.olean": "4447a49a63613a07dc05cb14587dc829fbeb4d1e0463a043e400f24d4a98c9a4",
+    "lean/.lake/build/lib/lean/S11Invariants/Controls.olean": "6c5a093e61576a8b562bb81defa6184277a4c41ef13e1b4337ad3072b69b7b31",
+    "lean/.lake/build/lib/lean/S11Invariants/Quadratic.olean": "f2d3ec53c652731bca388b9c4e73a4caf390f52bc192761ecab4fbf00c5b5a50",
+    "lean/.lake/build/lib/lean/S11Invariants/Rotation.olean": "9bd5d3b501c3b31069d9d4f05948c9ae67d79951685ec16d37e9e8bbbaca3cc5"
+  },
+  "axiom_audit_count": 47,
+  "source_sha256_after": {
+    "lean/lake-manifest.json": "91fd5318cdc35e4044d6e059c6ef73d94b955d27adf8a5860b07ec92add9377e",
+    "lean/lakefile.toml": "e03d7bba014f532ef3fdc8a9fd7224359d4d5d49ed37830d3397c6ab0a6fd516",
+    "lean/lean-toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+    "lean/s10/S10Pilot/Action.lean": "a7466f2c23a123f244615217d27d5048a625bddfaad5ce2a6f0456a8704f435c",
+    "lean/s10/S10Pilot/Analytic.lean": "f8a6fe854a7ed775a7ecf65fdf8589db2b865139a811daf1e4e27c34bac8811d",
+    "lean/s10/S10Pilot/PlaneWave.lean": "d64ad2d70169976f42cacb3ece650776780a17fe640d1efee4aa7677e53c85cb",
+    "lean/s10/S10Pilot/Variation.lean": "f4678338fb72fe859c627cbc5da3ccb90e9f38b7a5d774705219f880cdcc871d",
+    "lean/s11/S11Invariants/Census.lean": "3205b54bddc3c70606d5882f8661decfb1138c1354528170d7beae59d952f4b1",
+    "lean/s11/S11Invariants/Classification.lean": "c723e3f9407a22765b972ad043ff2abc454f8cfda236e36d002ffce65bab54c2",
+    "lean/s11/S11Invariants/Controls.lean": "8dcd1c9c760160f871f581c01f8e637dc487ad51c10f55458293e37b3e2d7995",
+    "lean/s11/S11Invariants/Quadratic.lean": "01dc76c702453a66a09ea3d11e54ddeee14d667dd61dd2e3a02737e15b5f7196",
+    "lean/s11/S11Invariants/Rotation.lean": "8ab28819adfaeb3f126c5905fa53e37d612afc5fe495baf0aaa2ec7873b7ed76",
+    "lean/s11/S11OddDynamics/Action.lean": "ff7a89e658989581ab1ec763137fe3de6d3f411c8496341dc72016334035d2f1",
+    "lean/s11/S11OddDynamics/Mixing.lean": "1a8dfd830caa11d77101adc283ea41d5ed7feab56ddc55ad5db7cb4a076be44d",
+    "lean/s11/S11OddDynamics/Variation.lean": "c4095887edb81ecf4840614ef70fcf5a4a33bdc00dd848ca301086482cba9308",
+    "lean/s11/S11OddDynamics.lean": "8a737301ae8dd719a2a5bdf8c7c2722fc6ec49fcc0b61d0eb57e37f1e7c6c594"
+  },
+  "finished_utc": "2026-09-16T13:03:47.695493+00:00"
+}

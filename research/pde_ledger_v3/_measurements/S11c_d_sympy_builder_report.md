@@ -126,7 +126,7 @@ single-thread workers. The preserved 11,616,256-node prefix was resumed without
 changing native summation. Raw source/profile order changes are at most
 6.14e-19 / 3.64e-17. All ten rows, six records and 26,705 metadata paths pass;
 source, worker, partial and pre/post-packet hashes agree. The 1.52 MB transcript
-is prepared for annex publication. Next is independent adaptive outer quadrature,
+is published and annex-verified. Next is independent adaptive outer quadrature,
 then physical domain/tail and regulator checks; finite agreement is not a limit.
 
 ## Retained user-approved solver/export contract

@@ -1,5 +1,5 @@
 {
-  "status": "VALIDATED_PUBLICATION_PREPARED",
+  "status": "PUBLISHED_ANNEX_VERIFIED",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-three-momentum-source-20260915",
   "stage": "source_construct",
   "plan": "S11c_d_three_momentum_source_plan.md",
@@ -7,7 +7,7 @@
   "checker": "S11c_d_three_momentum_source_check.py",
   "acceptedThreeCommit": "22e78b55ac37e94b055b19307132fe251903f2dc",
   "annexVerificationCommit": "b87885b5",
-  "next": "Annex-verify publication, then prepare independent adaptive outer quadrature on accepted source/profile and inner-momentum operands.",
+  "next": "Prepare independent three-momentum adaptive outer quadrature with retained inner/source/profile rules.",
   "scope": "Fixed finite domains, regulator and momentum grid; no uniform convergence, independent-grade, tail, Abel, scattering or pole claim.",
   "preflight": "S11c_d_three_momentum_source_preflight.json",
   "preflightChecksSha256": "64f2524f5c32b4aed8648d1f90e1b211ffe0c07bf85d9a7f9f5062f0fd1a4a19",
@@ -117,5 +117,15 @@
     "stderrBytes": 0,
     "finishedUtc": "2026-09-16T01:54:20.235465+00:00"
   },
-  "acceptedCheckpoint": "S11c_d_three_momentum_source_checkpoint.json"
+  "acceptedCheckpoint": "S11c_d_three_momentum_source_checkpoint.json",
+  "publicationCommit": "9ecb6ed84f7e3ddac3964d7fbe42a1266fb28579",
+  "annexVerification": {
+    "publicationCommit": "9ecb6ed84f7e3ddac3964d7fbe42a1266fb28579",
+    "path": "research/pde_ledger_v3/scripts/out/S11c_d_three_momentum_source.out",
+    "sha256": "9020fef82c2499a26c76c8c7fd3c7649f14ae45592092ca44b325cdd0c859bfa",
+    "bytes": 1516717,
+    "annexKey": "MD5E-s1516717--9b5f4c46ef88ae45f7ca49a2e3b878ac.out",
+    "symlink": "../../../../.git/annex/objects/Pw/FM/MD5E-s1516717--9b5f4c46ef88ae45f7ca49a2e3b878ac.out/MD5E-s1516717--9b5f4c46ef88ae45f7ca49a2e3b878ac.out",
+    "gitMode": "120000"
+  }
 }

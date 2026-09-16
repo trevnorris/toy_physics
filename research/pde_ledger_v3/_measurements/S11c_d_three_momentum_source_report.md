@@ -21,7 +21,7 @@ the serial handoff and all pre/post-emission packet identities. Workspace split
 estimates conservatively include the saved combined prefix estimate; RSS remains
 separate. Serial cumulative versus worker-local peaks were validated explicitly.
 
-The 1,516,717-byte transcript is prepared for DataLad/git-annex publication at
+The 1,516,717-byte transcript is published and annex-verified at
 `scripts/out/S11c_d_three_momentum_source.out`, SHA256
 `9020fef82c2499a26c76c8c7fd3c7649f14ae45592092ca44b325cdd0c859bfa`.
 Next: an independent adaptive outer quadrature, holding the resolved inner,

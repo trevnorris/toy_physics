@@ -128,3 +128,13 @@ are the actual first variation, the one-dimensional null family, the two
 independent bulk responses and their identification with homogeneous stiffness.
 It includes an explicit divergence current and compact native Q9 V5 checks.
 It does not add new spectral or interface calculations.
+
+This is a stronger verification of existing mathematics and native CAS results,
+not a new physical discovery. For
+`Q = a (tr G)² + b tr(G²) + c tr(G Gᵀ)` and `L = -Q/2`, Lean proves that
+the bulk operator is `(a+b) grad(div u) + c Delta u` for every smooth field.
+Its entire null family is `c = 0, a+b = 0`: three independent densities give
+exactly two independent bulk responses. The explicit divergence current
+explains the missing response; it does not establish that boundary effects
+vanish. The added assurance is completeness, checked conventions, meaningful
+negative controls and two independent fidelity reviews.

@@ -132,7 +132,8 @@ then physical domain/tail and regulator checks; finite agreement is not a limit.
 Independent adaptive outer preflight is validated: production-order prefixes
 agree within 3.11e-16 relative, regrouped full actions agree exactly, and all
 294 underresolved smoke points plus 13,766 metadata paths pass. Full-resolution
-adaptive outer integration is ready; its physical result remains pending.
+adaptive outer integration is running with four single-thread workers; its
+physical result remains pending.
 
 ## Retained user-approved solver/export contract
 

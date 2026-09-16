@@ -15,8 +15,7 @@ The smoke uses inner orders 1/1, source/profile 16/16 and tolerance 1e-3; its
 large changes from the accepted reference are not a physical convergence result.
 
 Source/profile refinement remains published at 9ecb6ed8 and annex-verified at
-16838693, with final raw changes below 6.14e-19 / 3.64e-17. Production now is
-ready to compare a separate adaptive GK21 outer rule against accepted Gauss-144
+16838693, with final raw changes below 6.14e-19 / 3.64e-17. Production is running to compare a separate adaptive GK21 outer rule against accepted Gauss-144
 values, holding inner 24/24 and source/profile 256/256 fixed. Four workers cover
 two fields times [-2,0] and [0,2], with one native thread and 2 GiB ceiling each.
 Per-half absolute tolerance is 5e-11 in the declared unit frame, relative zero.
@@ -27,3 +26,7 @@ Every conditional point and partial sum is saved before guards. Keep all
 accepted single/pair terms, approved inputs and solver/export contract.
 No production adaptive result is accepted yet; uniform/independent-grade
 coverage, physical domains/tails, Abel limits, scattering and poles remain work.
+
+All four live production workers were verified at one native thread and a
+2 GiB address-space ceiling, with empty stderr. The owned completion/error
+watcher is waiting; no model polling or recurring task is used.

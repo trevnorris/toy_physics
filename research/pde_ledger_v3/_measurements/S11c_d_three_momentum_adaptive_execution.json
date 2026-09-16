@@ -1,5 +1,5 @@
 {
-  "status": "PREFLIGHT_ACCEPTED_PRODUCTION_READY",
+  "status": "ADAPTIVE_PRODUCTION_RUNNING",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-three-adaptive-20260916",
   "checker": "S11c_d_three_momentum_adaptive.py",
   "preflight": "S11c_d_three_momentum_adaptive_preflight.py",
@@ -9,7 +9,7 @@
   "annexVerificationCommit": "16838693",
   "workers": 4,
   "nativeThreadsPerWorker": 1,
-  "next": "Launch independent adaptive outer production with four isolated single-thread workers; inner 24/24, source/profile 256/256, per-half absolute tolerance 5e-11 and relative zero.",
+  "next": "Wait silently for the owned completion/error watcher; validate full-resolution adaptive evidence, publish through DataLad/git-annex if accepted, and select physical domain/tail or additional quadrature work from the results.",
   "implementationCommit": "f4cf2728",
   "launch": {
     "launchedUtc": "2026-09-16T02:10:40.311776+00:00",
@@ -83,5 +83,137 @@
     "finishedUtc": "2026-09-16T02:11:43.553834+00:00"
   },
   "acceptedPreflight": "S11c_d_three_momentum_adaptive_preflight.json",
-  "acceptedPreflightSha256": "520e385329fc796b99e1a81dff839d8e9edc464a085e9ecf810add70810655db"
+  "acceptedPreflightSha256": "520e385329fc796b99e1a81dff839d8e9edc464a085e9ecf810add70810655db",
+  "preflightAcceptanceCommit": "19cfa05cfc4590ccc3400a9d1b1ac8d4ec1af3aa",
+  "productionLauncher": "/var/projects/toy_physics/_scratch/s11c/s11c-three-adaptive-20260916/production/launch.py",
+  "productionLauncherSha256": "9f17bca1a64c6a66cad20398431197bed92d558beeb9d34158c0e57baddb1bfa",
+  "productionLaunch": {
+    "launchedUtc": "2026-09-16T02:16:11.051862+00:00",
+    "command": [
+      "/usr/bin/python",
+      "_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-three-adaptive-20260916/production",
+      "--stage",
+      "adaptive_construct",
+      "--",
+      "python",
+      "-u",
+      "_measurements/S11c_d_three_momentum_adaptive.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-three-adaptive-20260916/production/complete"
+    ],
+    "supervisorPid": 3314579,
+    "watcherPid": 3314580,
+    "watcherDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-three-adaptive-20260916/production/completion-watcher",
+    "threadEnvironment": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1"
+    }
+  },
+  "productionActiveAtLaunch": {
+    "stage": "adaptive_construct",
+    "command": [
+      "python",
+      "-u",
+      "_measurements/S11c_d_three_momentum_adaptive.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-three-adaptive-20260916/production/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-three-adaptive-20260916/production/adaptive_construct.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-three-adaptive-20260916/production/adaptive_construct.stderr",
+    "startedUtc": "2026-09-16T02:16:11.141403+00:00",
+    "childPid": 3314584,
+    "status": "running"
+  },
+  "productionWatcherAtLaunch": {
+    "status": "waiting",
+    "watcherPid": 3314580,
+    "jobPid": 3314579,
+    "thread": "01a08c53-295c-70f0-baaf-353db1745867",
+    "startedUtc": "2026-09-16T02:16:11.151357+00:00",
+    "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
+    "messageSha256": "e857ae98d630734693db84fe71f0edf5873c0423fecf371af5a5fd58357c8ae9",
+    "notifications": {}
+  },
+  "productionWorkersAtLaunch": [
+    {
+      "task": [
+        0,
+        0
+      ],
+      "pid": 3314638,
+      "parentPid": 3314584,
+      "threads": 1,
+      "state": "R (running)",
+      "rss": "138164 kB",
+      "threadEnvironment": {
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1"
+      },
+      "addressSpaceLimit": "Max address space         2147483648           2147483648           bytes     "
+    },
+    {
+      "task": [
+        0,
+        1
+      ],
+      "pid": 3314639,
+      "parentPid": 3314584,
+      "threads": 1,
+      "state": "R (running)",
+      "rss": "138176 kB",
+      "threadEnvironment": {
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1"
+      },
+      "addressSpaceLimit": "Max address space         2147483648           2147483648           bytes     "
+    },
+    {
+      "task": [
+        1,
+        0
+      ],
+      "pid": 3314640,
+      "parentPid": 3314584,
+      "threads": 1,
+      "state": "R (running)",
+      "rss": "138164 kB",
+      "threadEnvironment": {
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1"
+      },
+      "addressSpaceLimit": "Max address space         2147483648           2147483648           bytes     "
+    },
+    {
+      "task": [
+        1,
+        1
+      ],
+      "pid": 3314641,
+      "parentPid": 3314584,
+      "threads": 1,
+      "state": "R (running)",
+      "rss": "138176 kB",
+      "threadEnvironment": {
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1"
+      },
+      "addressSpaceLimit": "Max address space         2147483648           2147483648           bytes     "
+    }
+  ],
+  "productionLaunchVerification": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-three-adaptive-20260916/production/launch-verification.json",
+    "sha256": "6f96fa951faf708c00881bddacf0137c7cc538351835b92252b25faf6cf081b3"
+  }
 }

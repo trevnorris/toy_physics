@@ -1,0 +1,15 @@
+{
+  "status": "INSTRUMENT_PREPARED",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-wide-adaptive-20260916",
+  "checker": "S11c_d_wide_momentum_adaptive.py",
+  "plan": "S11c_d_wide_momentum_adaptive_plan.md",
+  "report": "S11c_d_wide_momentum_adaptive_report.md",
+  "acceptedWidePublicationCommit": "812864e3aeec140c831be6fd5724fd2fd1a5bd75",
+  "acceptedWideAnnexVerificationCommit": "dbf4c961",
+  "maximumConcurrentWorkers": 4,
+  "nativeThreadsPerWorker": 1,
+  "workerAddressSpaceBytes": 2147483648,
+  "next": "Run instrument preflight, accept and commit complete evidence, then launch full independent outer comparison; keep three-momentum values held.",
+  "preflightRunRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-wide-adaptive-20260916/preflight",
+  "launcherSha256": "0ab1ca3e3facb7f47098949eb0ab775f3368d60dc25a34418fdeada3288d01f4"
+}

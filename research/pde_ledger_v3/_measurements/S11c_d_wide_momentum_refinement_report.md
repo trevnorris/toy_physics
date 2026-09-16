@@ -27,3 +27,7 @@ Full wider-box convergence, independent-grade/uniform/global exceptional
 coverage, infinite tails, Abel limits, scattering and poles remain open.
 The engine and approved inputs are unchanged; Q9-only edits have no identified
 consumed-input dependency, and pinned exports are not rebased here.
+
+Publication commit `812864e3` stores the canonical transcript through
+DataLad/git-annex. Its full SHA256, MD5E key, symlink and Git mode 120000
+are verified against the accepted payload.

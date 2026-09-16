@@ -1,5 +1,5 @@
 {
-  "status": "VALIDATED_PUBLICATION_PREPARED",
+  "status": "PUBLISHED_ANNEX_VERIFIED",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-wide-momentum-20260916",
   "checker": "S11c_d_wide_momentum_refinement.py",
   "plan": "S11c_d_wide_momentum_refinement_plan.md",
@@ -123,5 +123,13 @@
     "stderrBytes": 0,
     "finishedUtc": "2026-09-16T18:02:03.192067+00:00"
   },
-  "acceptedCheckpoint": "S11c_d_wide_momentum_refinement_checkpoint.json"
+  "acceptedCheckpoint": "S11c_d_wide_momentum_refinement_checkpoint.json",
+  "publicationCommit": "812864e3aeec140c831be6fd5724fd2fd1a5bd75",
+  "annexVerification": {
+    "sha256": "e6ab9b3c8919412dde2fcc3a9274645575edcf03e9e9e856434e11db3a998e54",
+    "annexKey": "MD5E-s10635882--e89af591567c32a6f01bc1716d5d38da.out",
+    "symlink": "../../../../.git/annex/objects/PG/1j/MD5E-s10635882--e89af591567c32a6f01bc1716d5d38da.out/MD5E-s10635882--e89af591567c32a6f01bc1716d5d38da.out",
+    "gitMode": "120000",
+    "bytes": 10635882
+  }
 }

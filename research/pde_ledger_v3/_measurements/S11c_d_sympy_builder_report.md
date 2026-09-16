@@ -178,7 +178,7 @@ workers, 4,674,896 new nodes, 28 records, 274 partials and 236,526 metadata
 paths. Final single and paired outer/inner changes reach 2.87e-15 and
 4.84e-16 / 3.40e-16 in raw integrals. The refined cutoff 3-to-4 action change
 remains 1.134674e-7. All held three-momentum values remain explicit. The
-10.64 MB transcript is ready for annex publication. Next is independent
+10.64 MB transcript is published and annex-verified. Next is independent
 outer quadrature on boxes 3/4, followed by needed three-momentum checks;
 physical tails, regulator limits and scattering remain open.
 

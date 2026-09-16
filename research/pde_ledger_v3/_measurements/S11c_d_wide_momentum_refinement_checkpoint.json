@@ -2300,7 +2300,7 @@
   "wallSeconds": 625.3664718614891,
   "coordinatorPeakRssKiB": 482612,
   "scope": "Fixed wide boxes: single and paired quadrature changes with accepted three-momentum values explicitly held. No independent adaptive check, full wide-box convergence, physical tails, Abel limit, scattering or poles.",
-  "status": "VALIDATED_PUBLICATION_PREPARED",
+  "status": "PUBLISHED_ANNEX_VERIFIED",
   "acceptedUtc": "2026-09-16T18:05:27.512777+00:00",
   "verificationInvocation": {
     "stage": "wide_construct",
@@ -2392,5 +2392,13 @@
     "path": "scripts/out/S11c_d_wide_momentum_refinement.out",
     "bytes": 10635882,
     "sha256": "e6ab9b3c8919412dde2fcc3a9274645575edcf03e9e9e856434e11db3a998e54"
+  },
+  "publicationCommit": "812864e3aeec140c831be6fd5724fd2fd1a5bd75",
+  "annexVerification": {
+    "sha256": "e6ab9b3c8919412dde2fcc3a9274645575edcf03e9e9e856434e11db3a998e54",
+    "annexKey": "MD5E-s10635882--e89af591567c32a6f01bc1716d5d38da.out",
+    "symlink": "../../../../.git/annex/objects/PG/1j/MD5E-s10635882--e89af591567c32a6f01bc1716d5d38da.out/MD5E-s10635882--e89af591567c32a6f01bc1716d5d38da.out",
+    "gitMode": "120000",
+    "bytes": 10635882
   }
 }

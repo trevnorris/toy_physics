@@ -22,3 +22,9 @@ zero relative tolerance. All partials/points remain in durable repository scratc
 No adaptive result is accepted yet. Wider three-momentum checks, physical
 tails, Abel limits, uniform/independent-grade/global exceptional coverage,
 scattering and poles remain open.
+
+Implementation is committed at ccd70c11. Preflight launched at 18:19:40 UTC
+on 2026-09-16 under the existing supervisor and silent completion/error watcher.
+Startup verifies the one-thread coordinator, watcher and all 81 accepted
+current/frozen source files with empty strict stderr. Focused comparisons
+precede the four-worker smoke dispatch; no preflight result is accepted yet.

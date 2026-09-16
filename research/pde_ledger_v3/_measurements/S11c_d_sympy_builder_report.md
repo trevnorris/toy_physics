@@ -182,6 +182,11 @@ remains 1.134674e-7. All held three-momentum values remain explicit. The
 outer quadrature on boxes 3/4, followed by needed three-momentum checks;
 physical tails, regulator limits and scattering remain open.
 
+Independent wider-box outer integration is prepared at ccd70c11. Its supervised
+preflight compares the conditional adapter with native single/pair point routines
+and exercises four coarse adaptive workers before production. The silent local
+watcher owns completion; no new adaptive result is accepted yet.
+
 ## Retained user-approved solver/export contract
 
 

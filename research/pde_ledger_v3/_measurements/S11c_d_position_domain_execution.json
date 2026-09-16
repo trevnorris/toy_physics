@@ -1,5 +1,5 @@
 {
-  "status": "PREFLIGHT_NUMERICS_SAVED_METADATA_RECOVERY_READY",
+  "status": "PREFLIGHT_SAVED_OPERAND_RECOVERY_RUNNING",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-position-domain-20260916",
   "checker": "S11c_d_position_domain.py",
   "preflight": "S11c_d_position_domain_preflight.py",
@@ -9,7 +9,7 @@
   "acceptedAdaptiveAnnexVerificationCommit": "96258429",
   "workers": 4,
   "nativeThreadsPerWorker": 1,
-  "next": "Recover only remaining metadata/source/packet validation from saved preflight operands; accept before full finite-domain production.",
+  "next": "Wait silently for owned recovery completion/error wake-up; accept saved preflight evidence and launch complete position-domain production only after final validation.",
   "implementationCommit": "303e5b50",
   "launch": {
     "launchedUtc": "2026-09-16T04:44:54.351027+00:00",
@@ -84,5 +84,62 @@
   },
   "recoveryRunRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-position-domain-20260916/preflight-recovery",
   "metadataRepair": "S11c_d_position_domain_metadata_repair.json",
-  "recoveryPlan": "S11c_d_position_domain_recovery_plan.md"
+  "recoveryPlan": "S11c_d_position_domain_recovery_plan.md",
+  "metadataRepairCommit": "2806e4ef",
+  "recoveryLaunch": {
+    "launchedUtc": "2026-09-16T04:54:24.109716+00:00",
+    "command": [
+      "/usr/bin/python",
+      "_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-position-domain-20260916/preflight-recovery",
+      "--stage",
+      "position_recover",
+      "--",
+      "python",
+      "-u",
+      "_measurements/S11c_d_position_domain_recover.py",
+      "--origin",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-position-domain-20260916/preflight/complete",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-position-domain-20260916/preflight-recovery/complete"
+    ],
+    "supervisorPid": 3388395,
+    "watcherPid": 3388396,
+    "watcherDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-position-domain-20260916/preflight-recovery/completion-watcher",
+    "threadEnvironment": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1"
+    }
+  },
+  "recoveryActiveAtLaunch": {
+    "stage": "position_recover",
+    "command": [
+      "python",
+      "-u",
+      "_measurements/S11c_d_position_domain_recover.py",
+      "--origin",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-position-domain-20260916/preflight/complete",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-position-domain-20260916/preflight-recovery/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-position-domain-20260916/preflight-recovery/position_recover.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-position-domain-20260916/preflight-recovery/position_recover.stderr",
+    "startedUtc": "2026-09-16T04:54:24.137105+00:00",
+    "childPid": 3388397,
+    "status": "running"
+  },
+  "recoveryWatcherAtLaunch": {
+    "status": "waiting",
+    "watcherPid": 3388396,
+    "jobPid": 3388395,
+    "thread": "01a08c53-295c-70f0-baaf-353db1745867",
+    "startedUtc": "2026-09-16T04:54:24.141312+00:00",
+    "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
+    "messageSha256": "dd607bd213024cb201a6c9ab5a3f40c6ac6d6106340969aad21a79db8a0bcf60",
+    "notifications": {}
+  },
+  "recoveryLauncherSha256": "bef5d5ee634de22a36723c5e00d2fa00250ebcbc6777a1d9de4249f34d205f1f"
 }

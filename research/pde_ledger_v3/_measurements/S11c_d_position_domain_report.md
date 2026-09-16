@@ -21,7 +21,7 @@ Final metadata validation stopped because the inherited validator expected a
 single cache list instead of per-field/domain caches. All results and the
 2.23 MB transcript are preserved. The narrow repair selects the actual cache
 using its complete tag coordinates and reverses to the native replayer AST.
-Recovery reuses every saved operand, checks original/recovery payload identity
+Recovery is running from every saved operand, checking original/recovery payload identity
 and exercises wrong-unit controls without repeating numerical integration.
 No complete domain production or new physical tail result is accepted yet.
 

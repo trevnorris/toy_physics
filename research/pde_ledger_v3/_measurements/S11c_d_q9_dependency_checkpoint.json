@@ -1,0 +1,1240 @@
+{
+  "status": "DEPENDENCY_TRACE_NO_S11CD_NUMERICAL_RERUN_REQUIRED_FOR_Q9_ONLY_PATCH",
+  "checkedUtc": "2026-09-16T12:09:57.363200+00:00",
+  "scope": "Read-only standard-library AST, hash, raw-key binder and pickle-opcode trace; no CAS or Q9 D3-D5 validation.",
+  "instrumentSha256": "67b5d6956c15124accb04b8bdf951a845bb348f46fb079b431c35b2f81dad651",
+  "producer": {
+    "path": "scripts/S11_stray_longitudinal_sympy_audit.py",
+    "workingSha256": "dc77f30b3e0b2b72aa13c7531a586e6ef50167949e645d99378de8527e06bfe2",
+    "headSha256": "352fc502f6e191afa512a2dec513685a48c9b32bc8b4e63ca84c5af9be629db4",
+    "changedDefinitions": [
+      "compute_q9"
+    ]
+  },
+  "q9FamilyQuantities": [
+    "MONOMIAL_ORDERING",
+    "V1_BASIS",
+    "V1_DIM",
+    "V2_BASIS",
+    "V2_DIM",
+    "V3_DIFFERENCE",
+    "R0_MATRIX",
+    "R0_ORTHOGONALITY_RESIDUAL",
+    "R0_DETERMINANT",
+    "V4_REFLECTED",
+    "V4_RESIDUAL",
+    "V4_SUM",
+    "V5_EULER_LAGRANGE",
+    "V6_OPERATOR",
+    "V6_BASIS",
+    "V6_DIM",
+    "V7_RESIDUAL",
+    "PD_TERM"
+  ],
+  "q9FamilyKeyCount": 72,
+  "q9ActionPackages": [
+    "XFORM_EXTRA"
+  ],
+  "q7DirectQ9ReadCount": 0,
+  "exports": {
+    "S11": {
+      "path": "scripts/S11_exports.py",
+      "sha256": "527d63da4dc09548e19098c3546e7e5f01a77036cbe622cbc5d0238126cdf9b8",
+      "rowCount": 1663,
+      "q9FamilyKeys": [
+        "monomial_ordering_d2",
+        "monomial_ordering_d3",
+        "monomial_ordering_d4",
+        "monomial_ordering_d5",
+        "pd_term_d2",
+        "pd_term_d3",
+        "pd_term_d4",
+        "pd_term_d5",
+        "r0_determinant_d2",
+        "r0_determinant_d3",
+        "r0_determinant_d4",
+        "r0_determinant_d5",
+        "r0_matrix_d2",
+        "r0_matrix_d3",
+        "r0_matrix_d4",
+        "r0_matrix_d5",
+        "r0_orthogonality_residual_d2",
+        "r0_orthogonality_residual_d3",
+        "r0_orthogonality_residual_d4",
+        "r0_orthogonality_residual_d5",
+        "v1_basis_d2",
+        "v1_basis_d3",
+        "v1_basis_d4",
+        "v1_basis_d5",
+        "v1_dim_d2",
+        "v1_dim_d3",
+        "v1_dim_d4",
+        "v1_dim_d5",
+        "v2_basis_d2",
+        "v2_basis_d3",
+        "v2_basis_d4",
+        "v2_basis_d5",
+        "v2_dim_d2",
+        "v2_dim_d3",
+        "v2_dim_d4",
+        "v2_dim_d5",
+        "v3_difference_d2",
+        "v3_difference_d3",
+        "v3_difference_d4",
+        "v3_difference_d5",
+        "v4_reflected_d2",
+        "v4_reflected_d3",
+        "v4_reflected_d4",
+        "v4_reflected_d5",
+        "v4_residual_d2",
+        "v4_residual_d3",
+        "v4_residual_d4",
+        "v4_residual_d5",
+        "v4_sum_d2",
+        "v4_sum_d3",
+        "v4_sum_d4",
+        "v4_sum_d5",
+        "v5_euler_lagrange_d2",
+        "v5_euler_lagrange_d3",
+        "v5_euler_lagrange_d4",
+        "v5_euler_lagrange_d5",
+        "v6_basis_d2",
+        "v6_basis_d3",
+        "v6_basis_d4",
+        "v6_basis_d5",
+        "v6_dim_d2",
+        "v6_dim_d3",
+        "v6_dim_d4",
+        "v6_dim_d5",
+        "v6_operator_d2",
+        "v6_operator_d3",
+        "v6_operator_d4",
+        "v6_operator_d5",
+        "v7_residual_d2",
+        "v7_residual_d3",
+        "v7_residual_d4",
+        "v7_residual_d5"
+      ],
+      "q9ValueIdentityToS11": 72,
+      "rawCopiedQ9Family": true
+    },
+    "S11b": {
+      "path": "scripts/S11b_exports.py",
+      "sha256": "e5fd228654de2000699cca8ff4f1a6b041056c22dd8a4da41f493566d446c27e",
+      "rowCount": 1958,
+      "q9FamilyKeys": [
+        "monomial_ordering_d2",
+        "monomial_ordering_d3",
+        "monomial_ordering_d4",
+        "monomial_ordering_d5",
+        "pd_term_d2",
+        "pd_term_d3",
+        "pd_term_d4",
+        "pd_term_d5",
+        "r0_determinant_d2",
+        "r0_determinant_d3",
+        "r0_determinant_d4",
+        "r0_determinant_d5",
+        "r0_matrix_d2",
+        "r0_matrix_d3",
+        "r0_matrix_d4",
+        "r0_matrix_d5",
+        "r0_orthogonality_residual_d2",
+        "r0_orthogonality_residual_d3",
+        "r0_orthogonality_residual_d4",
+        "r0_orthogonality_residual_d5",
+        "v1_basis_d2",
+        "v1_basis_d3",
+        "v1_basis_d4",
+        "v1_basis_d5",
+        "v1_dim_d2",
+        "v1_dim_d3",
+        "v1_dim_d4",
+        "v1_dim_d5",
+        "v2_basis_d2",
+        "v2_basis_d3",
+        "v2_basis_d4",
+        "v2_basis_d5",
+        "v2_dim_d2",
+        "v2_dim_d3",
+        "v2_dim_d4",
+        "v2_dim_d5",
+        "v3_difference_d2",
+        "v3_difference_d3",
+        "v3_difference_d4",
+        "v3_difference_d5",
+        "v4_reflected_d2",
+        "v4_reflected_d3",
+        "v4_reflected_d4",
+        "v4_reflected_d5",
+        "v4_residual_d2",
+        "v4_residual_d3",
+        "v4_residual_d4",
+        "v4_residual_d5",
+        "v4_sum_d2",
+        "v4_sum_d3",
+        "v4_sum_d4",
+        "v4_sum_d5",
+        "v5_euler_lagrange_d2",
+        "v5_euler_lagrange_d3",
+        "v5_euler_lagrange_d4",
+        "v5_euler_lagrange_d5",
+        "v6_basis_d2",
+        "v6_basis_d3",
+        "v6_basis_d4",
+        "v6_basis_d5",
+        "v6_dim_d2",
+        "v6_dim_d3",
+        "v6_dim_d4",
+        "v6_dim_d5",
+        "v6_operator_d2",
+        "v6_operator_d3",
+        "v6_operator_d4",
+        "v6_operator_d5",
+        "v7_residual_d2",
+        "v7_residual_d3",
+        "v7_residual_d4",
+        "v7_residual_d5"
+      ],
+      "q9ValueIdentityToS11": 72,
+      "rawCopiedQ9Family": true
+    },
+    "S11c_a": {
+      "path": "scripts/S11c_a_exports.py",
+      "sha256": "f0fd8d6d75dc7320393b7c6aad10e3fb23ca14ab8b6a50deee7d9995fbab6b17",
+      "rowCount": 2090,
+      "q9FamilyKeys": [
+        "monomial_ordering_d2",
+        "monomial_ordering_d3",
+        "monomial_ordering_d4",
+        "monomial_ordering_d5",
+        "pd_term_d2",
+        "pd_term_d3",
+        "pd_term_d4",
+        "pd_term_d5",
+        "r0_determinant_d2",
+        "r0_determinant_d3",
+        "r0_determinant_d4",
+        "r0_determinant_d5",
+        "r0_matrix_d2",
+        "r0_matrix_d3",
+        "r0_matrix_d4",
+        "r0_matrix_d5",
+        "r0_orthogonality_residual_d2",
+        "r0_orthogonality_residual_d3",
+        "r0_orthogonality_residual_d4",
+        "r0_orthogonality_residual_d5",
+        "v1_basis_d2",
+        "v1_basis_d3",
+        "v1_basis_d4",
+        "v1_basis_d5",
+        "v1_dim_d2",
+        "v1_dim_d3",
+        "v1_dim_d4",
+        "v1_dim_d5",
+        "v2_basis_d2",
+        "v2_basis_d3",
+        "v2_basis_d4",
+        "v2_basis_d5",
+        "v2_dim_d2",
+        "v2_dim_d3",
+        "v2_dim_d4",
+        "v2_dim_d5",
+        "v3_difference_d2",
+        "v3_difference_d3",
+        "v3_difference_d4",
+        "v3_difference_d5",
+        "v4_reflected_d2",
+        "v4_reflected_d3",
+        "v4_reflected_d4",
+        "v4_reflected_d5",
+        "v4_residual_d2",
+        "v4_residual_d3",
+        "v4_residual_d4",
+        "v4_residual_d5",
+        "v4_sum_d2",
+        "v4_sum_d3",
+        "v4_sum_d4",
+        "v4_sum_d5",
+        "v5_euler_lagrange_d2",
+        "v5_euler_lagrange_d3",
+        "v5_euler_lagrange_d4",
+        "v5_euler_lagrange_d5",
+        "v6_basis_d2",
+        "v6_basis_d3",
+        "v6_basis_d4",
+        "v6_basis_d5",
+        "v6_dim_d2",
+        "v6_dim_d3",
+        "v6_dim_d4",
+        "v6_dim_d5",
+        "v6_operator_d2",
+        "v6_operator_d3",
+        "v6_operator_d4",
+        "v6_operator_d5",
+        "v7_residual_d2",
+        "v7_residual_d3",
+        "v7_residual_d4",
+        "v7_residual_d5"
+      ],
+      "q9ValueIdentityToS11": 72,
+      "rawCopiedQ9Family": true
+    },
+    "S11c_b": {
+      "path": "scripts/S11c_b_exports.py",
+      "sha256": "3c6555f90a85382a5e96f3f961f0e36a4875d9259fe1be947fa8e683669b7084",
+      "rowCount": 2441,
+      "q9FamilyKeys": [
+        "monomial_ordering_d2",
+        "monomial_ordering_d3",
+        "monomial_ordering_d4",
+        "monomial_ordering_d5",
+        "pd_term_d2",
+        "pd_term_d3",
+        "pd_term_d4",
+        "pd_term_d5",
+        "r0_determinant_d2",
+        "r0_determinant_d3",
+        "r0_determinant_d4",
+        "r0_determinant_d5",
+        "r0_matrix_d2",
+        "r0_matrix_d3",
+        "r0_matrix_d4",
+        "r0_matrix_d5",
+        "r0_orthogonality_residual_d2",
+        "r0_orthogonality_residual_d3",
+        "r0_orthogonality_residual_d4",
+        "r0_orthogonality_residual_d5",
+        "v1_basis_d2",
+        "v1_basis_d3",
+        "v1_basis_d4",
+        "v1_basis_d5",
+        "v1_dim_d2",
+        "v1_dim_d3",
+        "v1_dim_d4",
+        "v1_dim_d5",
+        "v2_basis_d2",
+        "v2_basis_d3",
+        "v2_basis_d4",
+        "v2_basis_d5",
+        "v2_dim_d2",
+        "v2_dim_d3",
+        "v2_dim_d4",
+        "v2_dim_d5",
+        "v3_difference_d2",
+        "v3_difference_d3",
+        "v3_difference_d4",
+        "v3_difference_d5",
+        "v4_reflected_d2",
+        "v4_reflected_d3",
+        "v4_reflected_d4",
+        "v4_reflected_d5",
+        "v4_residual_d2",
+        "v4_residual_d3",
+        "v4_residual_d4",
+        "v4_residual_d5",
+        "v4_sum_d2",
+        "v4_sum_d3",
+        "v4_sum_d4",
+        "v4_sum_d5",
+        "v5_euler_lagrange_d2",
+        "v5_euler_lagrange_d3",
+        "v5_euler_lagrange_d4",
+        "v5_euler_lagrange_d5",
+        "v6_basis_d2",
+        "v6_basis_d3",
+        "v6_basis_d4",
+        "v6_basis_d5",
+        "v6_dim_d2",
+        "v6_dim_d3",
+        "v6_dim_d4",
+        "v6_dim_d5",
+        "v6_operator_d2",
+        "v6_operator_d3",
+        "v6_operator_d4",
+        "v6_operator_d5",
+        "v7_residual_d2",
+        "v7_residual_d3",
+        "v7_residual_d4",
+        "v7_residual_d5"
+      ],
+      "q9ValueIdentityToS11": 72,
+      "rawCopiedQ9Family": true
+    },
+    "S11c_c1": {
+      "path": "scripts/S11c_c1_exports.py",
+      "sha256": "a5353b86dc526fd1b56734fdbdf7dc7f42387a3195ab4de84e8994f751871cdc",
+      "rowCount": 44,
+      "q9FamilyKeys": [],
+      "q9ValueIdentityToS11": 0,
+      "rawCopiedQ9Family": true
+    },
+    "S11c_c2": {
+      "path": "scripts/S11c_c2_exports.py",
+      "sha256": "2ba5ed487b84ecb98290df6f1650fa6210fe2784cfa02a0f3cff96cd718411cd",
+      "rowCount": 70,
+      "q9FamilyKeys": [],
+      "q9ValueIdentityToS11": 0,
+      "rawCopiedQ9Family": true
+    }
+  },
+  "manifests": {
+    "c1": {
+      "path": "scripts/S11c_c1_bulk_closure_sympy_audit.py",
+      "sha256": "02abfa93076efcb38a1b300daf9adedf5e3ad425ebf9d73555d730cea935ba20",
+      "keys": [
+        "mu_theta_operator",
+        "c_s0",
+        "rho_m",
+        "rho_br",
+        "W_0",
+        "e_W",
+        "v_bulk_normal_0",
+        "q_out",
+        "omega",
+        "epsilon_shape",
+        "Lambda_A_0",
+        "Lambda_V_0",
+        "Lambda_X_0",
+        "tau_A",
+        "tau_V",
+        "tau_X",
+        "face_normal",
+        "conormal_deriv",
+        "face_measure_shape_deriv",
+        "face_velocity",
+        "relative_flux",
+        "kinematic_balance",
+        "traction",
+        "face_shift",
+        "closure_shape_deriv",
+        "W_bg",
+        "w1_profile",
+        "L_W",
+        "sigma_W",
+        "eta_bg",
+        "rho_br_bg_rho4_constant",
+        "z_impermeable",
+        "z_by_regime",
+        "z_by_parity",
+        "added_mass",
+        "grazing_behaviour",
+        "face_response",
+        "face_response_coeffs",
+        "permeable_dissipative_by_regime_and_parity",
+        "degenerate_loci_equations",
+        "degenerate_loci_solution",
+        "degenerate_loci_identically_satisfied",
+        "degenerate_loci_inconsistent",
+        "degenerate_loci_real_admissible"
+      ],
+      "q9Intersection": []
+    },
+    "c2": {
+      "path": "scripts/S11c_c2_selfenergy_fold_sympy_audit.py",
+      "sha256": "0e90c751d36178a9846e75c38ac4ad0c8591b4b8ce11b6dc194218913265d434",
+      "keys": [
+        "slab_operator",
+        "slab_operator_term_origins",
+        "mu_theta_operator",
+        "energy_basis_variable",
+        "closure_shape_deriv",
+        "face_normal",
+        "conormal_deriv",
+        "face_measure_shape_deriv",
+        "face_velocity",
+        "relative_flux",
+        "kinematic_balance",
+        "traction",
+        "face_shift",
+        "background_density_map",
+        "s11c_c1_face_response",
+        "s11c_c1_face_response_coeffs",
+        "dtn_operator",
+        "dtn_flat_symbol",
+        "dtn_kernel",
+        "coupling_kernel",
+        "rho_m",
+        "rho_br",
+        "W_0",
+        "epsilon_shape",
+        "eta_bg",
+        "sigma_W",
+        "W_bg",
+        "L_W",
+        "mu_R",
+        "omega",
+        "c_s0",
+        "Lambda_A_0",
+        "Lambda_V_0",
+        "Lambda_X_0",
+        "rho_br_bg_rho4_constant"
+      ],
+      "q9Intersection": []
+    },
+    "d": {
+      "path": "scripts/S11c_d_mixing_scattering_sympy_audit.py",
+      "sha256": "5bf77729682960bb59f10c672a5fe3f67a98b0a9533da7c6189a37183596050f",
+      "keys": [
+        "s11cc2ClosedSlabOperator",
+        "s11cc2ClosedCouplingKernel",
+        "L_W",
+        "omega",
+        "energy_basis_variable",
+        "s11cc2Coefficientw1Profile",
+        "s11cc2Coefficientw1ProfileDimension",
+        "s11cc2Coefficientm1Profile",
+        "s11cc2Coefficientm1ProfileDimension",
+        "s11cc2Fieldtheta",
+        "s11cc2FieldthetaDimension",
+        "s11cc2FieldeW",
+        "s11cc2FieldeWDimension",
+        "s11cc2Fieldu1",
+        "s11cc2Fieldu1Dimension",
+        "s11cc2Fieldu2",
+        "s11cc2Fieldu2Dimension",
+        "s11cc2Fieldu3",
+        "s11cc2Fieldu3Dimension",
+        "s11cc2FourierW1ProfileHatTransfer",
+        "s11cc2FourierW1ProfileHatTransferDimension",
+        "s11cc2FourierW1ProfileJetHat1",
+        "s11cc2FourierW1ProfileJetHat1Dimension",
+        "s11cc2FourierW1ProfileJetHat2",
+        "s11cc2FourierW1ProfileJetHat2Dimension",
+        "s11cc2FourierW1ProfileJetHat3",
+        "s11cc2FourierW1ProfileJetHat3Dimension",
+        "s11cc2MiddleMomentum1",
+        "s11cc2MiddleMomentum1Dimension",
+        "s11cc2MiddleMomentum2",
+        "s11cc2MiddleMomentum2Dimension",
+        "s11cc2MiddleMomentum3",
+        "s11cc2MiddleMomentum3Dimension",
+        "s11cc2OutgoingNormalMomentum",
+        "s11cc2OutgoingNormalMomentumDimension",
+        "s11cc2Time",
+        "s11cc2TimeDimension",
+        "s11cc2X1",
+        "s11cc2X1Dimension",
+        "s11cc2X2",
+        "s11cc2X2Dimension",
+        "s11cc2X3",
+        "s11cc2X3Dimension",
+        "s11cc2Y1",
+        "s11cc2Y1Dimension",
+        "s11cc2Y2",
+        "s11cc2Y2Dimension",
+        "s11cc2Y3",
+        "s11cc2Y3Dimension",
+        "s11cc2TrialA0",
+        "s11cc2TrialA0Dimension",
+        "s11cc2TrialA1",
+        "s11cc2TrialA1Dimension",
+        "s11cc2TrialA2",
+        "s11cc2TrialA2Dimension",
+        "s11cc2TrialTheta",
+        "s11cc2TrialThetaDimension",
+        "s11cc2TrialE",
+        "s11cc2TrialEDimension",
+        "s11cc2TrialPhi",
+        "s11cc2TrialPhiDimension",
+        "s11cc2TestA0",
+        "s11cc2TestA0Dimension",
+        "s11cc2TestA1",
+        "s11cc2TestA1Dimension",
+        "s11cc2TestA2",
+        "s11cc2TestA2Dimension",
+        "s11cc2TestTheta",
+        "s11cc2TestThetaDimension",
+        "s11cc2TestE",
+        "s11cc2TestEDimension",
+        "s11cc2TestPhi",
+        "s11cc2TestPhiDimension"
+      ],
+      "q9Intersection": []
+    }
+  },
+  "actualDBinderControl": {
+    "removedQ9Keys": 72,
+    "selectedRows": 73,
+    "sameBindingsAfterRemoval": true,
+    "changedConsumedRootDetected": true
+  },
+  "upstreamLedgerAccesses": {
+    "S11b_interface_coupling_law_sympy_audit.py": {
+      "sha256": "e7ba853ded139f5795d659fc7f495fc7de57e3937185aa829c5873568bd5d6c6",
+      "accesses": [
+        {
+          "line": 76,
+          "operation": "INCOMING_LEDGER['c_s0']"
+        },
+        {
+          "line": 77,
+          "operation": "INCOMING_LEDGER['mu_R']"
+        },
+        {
+          "line": 78,
+          "operation": "INCOMING_LEDGER['rho_br']"
+        },
+        {
+          "line": 2713,
+          "operation": "INCOMING_LEDGER.items()"
+        },
+        {
+          "line": 2723,
+          "operation": "INCOMING_LEDGER.get(candidate.key)"
+        },
+        {
+          "line": 2858,
+          "operation": "INCOMING_LEDGER[row_name]"
+        },
+        {
+          "line": 2864,
+          "operation": "INCOMING_LEDGER[dimension_key]"
+        }
+      ]
+    },
+    "S11c_a_interface_geometry_sympy_audit.py": {
+      "sha256": "f4da0f2224257381300e5e78cc74a1341485b82446ac98251ca25d4b3c1a6be7",
+      "accesses": [
+        {
+          "line": 77,
+          "operation": "INCOMING_LEDGER[name]"
+        },
+        {
+          "line": 81,
+          "operation": "'c_s0'"
+        },
+        {
+          "line": 82,
+          "operation": "'mu_R'"
+        },
+        {
+          "line": 83,
+          "operation": "'rho_br'"
+        },
+        {
+          "line": 84,
+          "operation": "'W_0'"
+        },
+        {
+          "line": 85,
+          "operation": "'e_W'"
+        },
+        {
+          "line": 86,
+          "operation": "'rho_m'"
+        },
+        {
+          "line": 87,
+          "operation": "'v_bulk_normal_0'"
+        },
+        {
+          "line": 88,
+          "operation": "'omega'"
+        },
+        {
+          "line": 89,
+          "operation": "'Lambda_A_0'"
+        },
+        {
+          "line": 90,
+          "operation": "'Lambda_V_0'"
+        },
+        {
+          "line": 91,
+          "operation": "'Lambda_X_0'"
+        },
+        {
+          "line": 92,
+          "operation": "'tau_A'"
+        },
+        {
+          "line": 93,
+          "operation": "'tau_V'"
+        },
+        {
+          "line": 94,
+          "operation": "'tau_X'"
+        },
+        {
+          "line": 95,
+          "operation": "'theta'"
+        },
+        {
+          "line": 96,
+          "operation": "'zeta_c'"
+        },
+        {
+          "line": 97,
+          "operation": "'delta_v_theta'"
+        },
+        {
+          "line": 98,
+          "operation": "'delta_v_e_W'"
+        },
+        {
+          "line": 99,
+          "operation": "'delta_p_plus'"
+        },
+        {
+          "line": 100,
+          "operation": "'delta_p_minus'"
+        },
+        {
+          "line": 101,
+          "operation": "'x_1'"
+        },
+        {
+          "line": 102,
+          "operation": "'x_2'"
+        },
+        {
+          "line": 103,
+          "operation": "'x_3'"
+        },
+        {
+          "line": 104,
+          "operation": "'t'"
+        },
+        {
+          "line": 105,
+          "operation": "'w'"
+        },
+        {
+          "line": 1987,
+          "operation": "INCOMING_LEDGER.items()"
+        },
+        {
+          "line": 1996,
+          "operation": "INCOMING_LEDGER.get(candidate.key)"
+        }
+      ]
+    },
+    "S11c_b_brane_operator_sympy_audit.py": {
+      "sha256": "666b4005b745dd29933561f701c6c1859a2b00e9855badcb08e2347308504472",
+      "accesses": [
+        {
+          "line": 139,
+          "operation": "INCOMING_LEDGER[name]"
+        },
+        {
+          "line": 144,
+          "operation": "'c_s0'"
+        },
+        {
+          "line": 145,
+          "operation": "'mu_R'"
+        },
+        {
+          "line": 146,
+          "operation": "'rho_br'"
+        },
+        {
+          "line": 147,
+          "operation": "'W_0'"
+        },
+        {
+          "line": 148,
+          "operation": "'e_W'"
+        },
+        {
+          "line": 149,
+          "operation": "'rho_m'"
+        },
+        {
+          "line": 150,
+          "operation": "'v_bulk_normal_0'"
+        },
+        {
+          "line": 155,
+          "operation": "'B_rho_3'"
+        },
+        {
+          "line": 156,
+          "operation": "'C'"
+        },
+        {
+          "line": 157,
+          "operation": "'k_W'"
+        },
+        {
+          "line": 158,
+          "operation": "'kappa_W'"
+        },
+        {
+          "line": 161,
+          "operation": "'mu_W'"
+        },
+        {
+          "line": 162,
+          "operation": "'mu_S'"
+        },
+        {
+          "line": 163,
+          "operation": "'G_theta_u'"
+        },
+        {
+          "line": 164,
+          "operation": "'G_W_u'"
+        },
+        {
+          "line": 165,
+          "operation": "'kappa_theta'"
+        },
+        {
+          "line": 168,
+          "operation": "'kappa_theta_W'"
+        },
+        {
+          "line": 173,
+          "operation": "'W_bg'"
+        },
+        {
+          "line": 174,
+          "operation": "'mu_R_bg'"
+        },
+        {
+          "line": 175,
+          "operation": "'w1_profile'"
+        },
+        {
+          "line": 176,
+          "operation": "'m1_profile'"
+        },
+        {
+          "line": 177,
+          "operation": "'L_W'"
+        },
+        {
+          "line": 178,
+          "operation": "'sigma_W'"
+        },
+        {
+          "line": 179,
+          "operation": "'eta_bg'"
+        },
+        {
+          "line": 180,
+          "operation": "'e_W_bg'"
+        },
+        {
+          "line": 183,
+          "operation": "f'W_bg_d{i}'"
+        },
+        {
+          "line": 187,
+          "operation": "f'mu_R_bg_d{i}'"
+        },
+        {
+          "line": 193,
+          "operation": "f'w1_profile_d{i}'"
+        },
+        {
+          "line": 197,
+          "operation": "f'm1_profile_d{i}'"
+        },
+        {
+          "line": 201,
+          "operation": "'rho_4D_bg_rho4_constant'"
+        },
+        {
+          "line": 204,
+          "operation": "'rho_br_bg_rho4_constant'"
+        },
+        {
+          "line": 207,
+          "operation": "'rho_4D_bg_rhobr_constant'"
+        },
+        {
+          "line": 210,
+          "operation": "'rho_br_bg_rhobr_constant'"
+        },
+        {
+          "line": 215,
+          "operation": "'theta'"
+        },
+        {
+          "line": 217,
+          "operation": "f'u_{a}'"
+        },
+        {
+          "line": 222,
+          "operation": "f'u_{a}_d{i}'"
+        },
+        {
+          "line": 228,
+          "operation": "f'grad_theta_{i}'"
+        },
+        {
+          "line": 232,
+          "operation": "f'e_W_d{i}'"
+        },
+        {
+          "line": 236,
+          "operation": "f'u_{a}_t'"
+        },
+        {
+          "line": 242,
+          "operation": "f'u_{a}_t_d{i}'"
+        },
+        {
+          "line": 260,
+          "operation": "'e_W_t'"
+        },
+        {
+          "line": 261,
+          "operation": "'theta_t'"
+        },
+        {
+          "line": 262,
+          "operation": "'epsilon_shape'"
+        },
+        {
+          "line": 391,
+          "operation": "INCOMING_LEDGER[name]"
+        },
+        {
+          "line": 400,
+          "operation": "INCOMING_LEDGER[name]"
+        },
+        {
+          "line": 415,
+          "operation": "name"
+        },
+        {
+          "line": 419,
+          "operation": "f'w1_profile_d{i}d{j}'"
+        },
+        {
+          "line": 439,
+          "operation": "INCOMING_LEDGER[name]"
+        },
+        {
+          "line": 480,
+          "operation": "name"
+        },
+        {
+          "line": 485,
+          "operation": "f'delta_p_{face_name}'"
+        },
+        {
+          "line": 488,
+          "operation": "f'd_w_delta_p_{face_name}'"
+        },
+        {
+          "line": 494,
+          "operation": "f'delta_rho_4D_face_{face_name}'"
+        },
+        {
+          "line": 500,
+          "operation": "f'd_w_delta_rho_4D_face_{face_name}'"
+        },
+        {
+          "line": 507,
+          "operation": "f'delta_v_bulk_{face_name}_{component}'"
+        },
+        {
+          "line": 513,
+          "operation": "f'd_w_delta_v_bulk_{face_name}_{component}'"
+        },
+        {
+          "line": 519,
+          "operation": "f'd_w_delta_j_bulk_{face_name}_{component}'"
+        },
+        {
+          "line": 527,
+          "operation": "f'delta_j_bulk_{component}'"
+        },
+        {
+          "line": 533,
+          "operation": "f'trace_grad_f_{component}'"
+        },
+        {
+          "line": 539,
+          "operation": "f'd_w_trace_grad_f_{component}'"
+        },
+        {
+          "line": 546,
+          "operation": "'delta_rho_4D_bulk_t'"
+        },
+        {
+          "line": 553,
+          "operation": "name"
+        },
+        {
+          "line": 555,
+          "operation": "f'delta_v_u_{component}'"
+        },
+        {
+          "line": 561,
+          "operation": "f'delta_v_u_{component}_d{component}'"
+        },
+        {
+          "line": 568,
+          "operation": "'theta_t'"
+        },
+        {
+          "line": 569,
+          "operation": "'zeta_c'"
+        },
+        {
+          "line": 570,
+          "operation": "'zeta_c_t'"
+        },
+        {
+          "line": 571,
+          "operation": "'delta_v_zeta_c'"
+        },
+        {
+          "line": 575,
+          "operation": "f'zeta_c_d{i}'"
+        },
+        {
+          "line": 579,
+          "operation": "INCOMING_LEDGER['delta_v_theta']"
+        },
+        {
+          "line": 580,
+          "operation": "INCOMING_LEDGER['delta_v_e_W']"
+        },
+        {
+          "line": 582,
+          "operation": "INCOMING_LEDGER[f'delta_v_u_{component}']"
+        },
+        {
+          "line": 588,
+          "operation": "INCOMING_LEDGER[f'delta_v_u_{component}_d{direction}']"
+        },
+        {
+          "line": 2122,
+          "operation": "INCOMING_LEDGER['mu_theta_M' if branch == 'MATERIAL_ADVECTED' else 'mu_theta_L']"
+        },
+        {
+          "line": 2177,
+          "operation": "INCOMING_LEDGER['delta_v_zeta_c']"
+        },
+        {
+          "line": 3122,
+          "operation": "INCOMING_LEDGER['mu_theta_M' if branch == 'MATERIAL_ADVECTED' else 'mu_theta_L']"
+        },
+        {
+          "line": 4998,
+          "operation": "'k'"
+        },
+        {
+          "line": 4999,
+          "operation": "'omega'"
+        },
+        {
+          "line": 5043,
+          "operation": "INCOMING_LEDGER['inplane_eom']"
+        },
+        {
+          "line": 5044,
+          "operation": "INCOMING_LEDGER['thickness_eom']"
+        },
+        {
+          "line": 5049,
+          "operation": "INCOMING_LEDGER['transverse_coupling']"
+        },
+        {
+          "line": 5079,
+          "operation": "INCOMING_LEDGER['transverse_dispersion']"
+        },
+        {
+          "line": 5315,
+          "operation": "INCOMING_LEDGER.items()"
+        },
+        {
+          "line": 5324,
+          "operation": "INCOMING_LEDGER.get(candidate.key)"
+        }
+      ]
+    }
+  },
+  "reducedCacheImportEvidence": {
+    "PY_S11CD_IMPORT_LOOKUPS": {
+      "sha256": "f1ee6cbda7279a8cd95c9c8a7771aafff23c7e852870f6290536eb14bc3458ee",
+      "q9Intersection": [],
+      "strings": [
+        "L_W",
+        "energy_basis_variable",
+        "omega",
+        "s11cc2ClosedCouplingKernel",
+        "s11cc2ClosedSlabOperator",
+        "s11cc2Coefficientm1Profile",
+        "s11cc2Coefficientm1ProfileDimension",
+        "s11cc2Coefficientw1Profile",
+        "s11cc2Coefficientw1ProfileDimension",
+        "s11cc2FieldeW",
+        "s11cc2FieldeWDimension",
+        "s11cc2Fieldtheta",
+        "s11cc2FieldthetaDimension",
+        "s11cc2Fieldu1",
+        "s11cc2Fieldu1Dimension",
+        "s11cc2Fieldu2",
+        "s11cc2Fieldu2Dimension",
+        "s11cc2Fieldu3",
+        "s11cc2Fieldu3Dimension",
+        "s11cc2FourierW1ProfileHatTransfer",
+        "s11cc2FourierW1ProfileHatTransferDimension",
+        "s11cc2FourierW1ProfileJetHat1",
+        "s11cc2FourierW1ProfileJetHat1Dimension",
+        "s11cc2FourierW1ProfileJetHat2",
+        "s11cc2FourierW1ProfileJetHat2Dimension",
+        "s11cc2FourierW1ProfileJetHat3",
+        "s11cc2FourierW1ProfileJetHat3Dimension",
+        "s11cc2MiddleMomentum1",
+        "s11cc2MiddleMomentum1Dimension",
+        "s11cc2MiddleMomentum2",
+        "s11cc2MiddleMomentum2Dimension",
+        "s11cc2MiddleMomentum3",
+        "s11cc2MiddleMomentum3Dimension",
+        "s11cc2OutgoingNormalMomentum",
+        "s11cc2OutgoingNormalMomentumDimension",
+        "s11cc2TestA0",
+        "s11cc2TestA0Dimension",
+        "s11cc2TestA1",
+        "s11cc2TestA1Dimension",
+        "s11cc2TestA2",
+        "s11cc2TestA2Dimension",
+        "s11cc2TestE",
+        "s11cc2TestEDimension",
+        "s11cc2TestPhi",
+        "s11cc2TestPhiDimension",
+        "s11cc2TestTheta",
+        "s11cc2TestThetaDimension",
+        "s11cc2Time",
+        "s11cc2TimeDimension",
+        "s11cc2TrialA0",
+        "s11cc2TrialA0Dimension",
+        "s11cc2TrialA1",
+        "s11cc2TrialA1Dimension",
+        "s11cc2TrialA2",
+        "s11cc2TrialA2Dimension",
+        "s11cc2TrialE",
+        "s11cc2TrialEDimension",
+        "s11cc2TrialPhi",
+        "s11cc2TrialPhiDimension",
+        "s11cc2TrialTheta",
+        "s11cc2TrialThetaDimension",
+        "s11cc2X1",
+        "s11cc2X1Dimension",
+        "s11cc2X2",
+        "s11cc2X2Dimension",
+        "s11cc2X3",
+        "s11cc2X3Dimension",
+        "s11cc2Y1",
+        "s11cc2Y1Dimension",
+        "s11cc2Y2",
+        "s11cc2Y2Dimension",
+        "s11cc2Y3",
+        "s11cc2Y3Dimension"
+      ]
+    },
+    "PY_S11CD_IMPORT_CLOSURE": {
+      "sha256": "749d9bcc626bd80dc54ec22fc48b91104490c276e428a5d5057941cadb157a67",
+      "q9Intersection": [],
+      "strings": null
+    }
+  },
+  "cacheChecks": [
+    {
+      "checkpoint": "_measurements/S11c_d_reduced_action_source_checkpoint.json",
+      "checkpointSha256": "b6dcd36ee6cf8ed3b3943e207012dd165fce62ec39cb8f53ca3c23f4715d094b",
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-reduced-action-source-20260914/complete/reduced-action.pickle",
+      "sha256": "e9062c3455c7e59fe816f47172062a0c118b201d03809ec0826575dac22872b0",
+      "q9RowNameOpcodes": [],
+      "note": "String-opcode census supports the source-level bind trace; it is not a standalone algebraic independence proof."
+    },
+    {
+      "checkpoint": "_measurements/S11c_d_reduced_action_source_checkpoint.json",
+      "checkpointSha256": "b6dcd36ee6cf8ed3b3943e207012dd165fce62ec39cb8f53ca3c23f4715d094b",
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-reduced-action-source-20260914/complete/actions.pickle",
+      "sha256": "4c2372a7102d1db9f21a049ab3104465e8d9245ab832be88c900bc8519b46e02",
+      "q9RowNameOpcodes": [],
+      "note": "String-opcode census supports the source-level bind trace; it is not a standalone algebraic independence proof."
+    },
+    {
+      "checkpoint": "_measurements/S11c_d_momentum_action_checkpoint.json",
+      "checkpointSha256": "ab4f77bbdcd18f4093f7a90c11b214fea9ee727d958c63902fc10e7ad377e554",
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-momentum-action-20260915/complete/bound-momentum.pickle",
+      "sha256": "6a6bf833a1c2e8d58a4f3469ca19c7ae6ea529d53549e47b9b053d1286154fb4",
+      "q9RowNameOpcodes": [],
+      "note": "String-opcode census supports the source-level bind trace; it is not a standalone algebraic independence proof."
+    }
+  ],
+  "activeJob": {
+    "directory": "/var/projects/toy_physics/_scratch/s11c/s11c-momentum-domain-action-20260916/production",
+    "active": {
+      "stage": "momentum_construct",
+      "command": [
+        "python",
+        "-u",
+        "_measurements/S11c_d_momentum_domain_action.py",
+        "--run-directory",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-momentum-domain-action-20260916/production/complete"
+      ],
+      "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-momentum-domain-action-20260916/production/momentum_construct.stdout",
+      "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-momentum-domain-action-20260916/production/momentum_construct.stderr",
+      "startedUtc": "2026-09-16T08:06:18.023821+00:00",
+      "childPid": 3437497,
+      "status": "running"
+    },
+    "workers": {
+      "status": "running",
+      "workers": [
+        {
+          "task": [
+            0,
+            2
+          ],
+          "pid": 3471020,
+          "directory": "/var/projects/toy_physics/_scratch/s11c/s11c-momentum-domain-action-20260916/production/complete/worker-0-2"
+        },
+        {
+          "task": [
+            0,
+            3
+          ],
+          "pid": 3471021,
+          "directory": "/var/projects/toy_physics/_scratch/s11c/s11c-momentum-domain-action-20260916/production/complete/worker-0-3"
+        },
+        {
+          "task": [
+            1,
+            2
+          ],
+          "pid": 3471022,
+          "directory": "/var/projects/toy_physics/_scratch/s11c/s11c-momentum-domain-action-20260916/production/complete/worker-1-2"
+        },
+        {
+          "task": [
+            1,
+            3
+          ],
+          "pid": 3471023,
+          "directory": "/var/projects/toy_physics/_scratch/s11c/s11c-momentum-domain-action-20260916/production/complete/worker-1-3"
+        }
+      ]
+    },
+    "pinnedSourceCount": 78,
+    "allCurrentFrozenHashesMatch": true,
+    "producerIsPinned": false,
+    "pinnedExports": {
+      "scripts/S11c_b_exports.py": "3c6555f90a85382a5e96f3f961f0e36a4875d9259fe1be947fa8e683669b7084",
+      "scripts/S11c_c1_exports.py": "a5353b86dc526fd1b56734fdbdf7dc7f42387a3195ab4de84e8994f751871cdc",
+      "scripts/S11c_c2_exports.py": "2ba5ed487b84ecb98290df6f1650fa6210fe2784cfa02a0f3cff96cd718411cd"
+    },
+    "stderrBytes": 0
+  },
+  "disposition": {
+    "continueActiveS11cdJob": true,
+    "recomputeQ9AndCheckD3D5": "Owned by upstream repair session after its review; counts alone are insufficient.",
+    "recheckExtraAction": "Revalidate PD_TERM and XFORM_EXTRA for each dimension; do not presume the parity-odd density changes before comparison.",
+    "refreshAccumulatedExports": "Q9 family values are carried unchanged through S11/S11b/S11c-a/S11c-b; these containers require a controlled row/provenance refresh after repair acceptance.",
+    "retainS11cdOperands": "No identified Q9 value edge into the closed slab/kernel, energy-current input or bound numerical operators. Preserve caches and compare actually consumed roots/closure before any later rebase.",
+    "activeInputImmutability": "Do not replace pinned S11c-b/c1/c2 exports while production runs; even an unused-row change alters their whole-file hashes and causes a provenance guard failure.",
+    "notEstablished": "No D3-D5 Q9 correctness claim, no blanket downstream correctness claim, no accepted repair or new physical result."
+  }
+}

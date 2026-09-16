@@ -101,5 +101,11 @@
   "productionLaunchVerification": {
     "path": "/var/projects/toy_physics/_scratch/s11c/s11c-momentum-domain-action-20260916/production/launch-verification.json",
     "sha256": "654faf41de473663e3109a59e84e5bf291024c9a6225ebce20c6a14f3e3d95b9"
+  },
+  "upstreamQ9DependencyAudit": {
+    "checkpoint": "S11c_d_q9_dependency_checkpoint.json",
+    "sha256": "f7c9e9701424fe3e5e609407bc9da5bf47ca1793611822ecac96b068b62a899e",
+    "report": "S11c_d_q9_dependency_report.md",
+    "disposition": "Continue current immutable-source production; no identified Q9 value dependency. Preserve frozen operands and require explicit consumed-row/source joins after the separately owned repair is accepted."
   }
 }

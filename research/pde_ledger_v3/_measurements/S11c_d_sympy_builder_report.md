@@ -166,6 +166,15 @@ baseline workers run first, then four wider-box workers; startup confirms one
 native thread and 2 GiB per worker with empty stderr. The silent local watcher
 owns completion/error wake-up. No production result is accepted yet.
 
+The separately discovered S11 Q9 coefficient-action orientation defect has
+been dependency-traced. Its 72-row family is carried in accumulated exports,
+but c1/c2/d import manifests exclude it; the actual d binder retains identical
+73 inputs when all Q9 rows are removed. The current 78-source production hashes
+match and its numerical operands remain unchanged. Continue the active run;
+refresh carried rows/provenance only after the upstream repair is accepted,
+with explicit consumed-root/closure joins. D3-D5 Q9 validation and parity-odd
+extra-action checks remain owned by that repair. See the Q9 dependency report.
+
 ## Retained user-approved solver/export contract
 
 

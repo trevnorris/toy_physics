@@ -3417,7 +3417,7 @@
   "wallSeconds": 455.31341270636767,
   "peakRssKiB": 512324,
   "scope": "Momentum cutoff binding and sampled source/profile quadrature and coefficient execution only. No wider-box complete action, uniform or exceptional-locus coverage, infinite-tail bound, Abel limit, scattering or pole.",
-  "status": "VALIDATED_PUBLICATION_PREPARED",
+  "status": "PUBLISHED_ANNEX_VERIFIED",
   "acceptedUtc": "2026-09-16T07:51:29.245441+00:00",
   "verificationInvocation": {
     "stage": "momentum_prepare",
@@ -3509,5 +3509,13 @@
     "path": "scripts/out/S11c_d_momentum_domain_prepare.out",
     "bytes": 7296597,
     "sha256": "6a24805ee96f27bd8d4a0853204b9ccf66898b3338c1ee1093f869880edd4d3f"
+  },
+  "annexVerification": {
+    "publicationCommit": "fd372976940bc9096c3782fbd1faff6688139817",
+    "path": "research/pde_ledger_v3/scripts/out/S11c_d_momentum_domain_prepare.out",
+    "sha256": "6a24805ee96f27bd8d4a0853204b9ccf66898b3338c1ee1093f869880edd4d3f",
+    "annexKey": "MD5E-s7296597--e8433d02b5abf8f564466854c575057d.out",
+    "symlink": "../../../../.git/annex/objects/jw/pP/MD5E-s7296597--e8433d02b5abf8f564466854c575057d.out/MD5E-s7296597--e8433d02b5abf8f564466854c575057d.out",
+    "gitMode": "120000"
   }
 }

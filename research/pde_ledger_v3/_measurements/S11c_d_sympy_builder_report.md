@@ -151,7 +151,7 @@ Source/profile adaptive residuals reach 7.17e-13 / 1.15e-12. At the new wider
 transfer range, profile 256-to-384 changes reach 0.00404, falling to 1.80e-12
 for 384-to-512. Next compute source256/profile512 complete actions with a
 matching-rule cutoff-2 baseline before cutoffs 3/4. The 7.30 MB preparation
-transcript is ready for publication; wider actions and physical limits remain.
+transcript is published and annex-verified; wider actions and physical limits remain.
 
 ## Retained user-approved solver/export contract
 

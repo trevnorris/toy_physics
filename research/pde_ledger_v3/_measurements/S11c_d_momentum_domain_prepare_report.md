@@ -17,7 +17,7 @@ coordinates and all three Abel diagonals/width offsets. They establish sampled
 execution only, not global denominator, sheet or exceptional-locus coverage.
 All 74 source files, 160 worker/record/probe artifacts and pre/post packets
 join. Emission replays 10,664 tags, 5,330 write keys and 263,184 metadata paths.
-The 7.30 MB transcript is prepared for DataLad publication; no physics or
+The 7.30 MB transcript is published and annex-verified at fd372976. No physics or
 numerical integration was repeated in publication verification.
 
 Next use source order 256 and profile order 512 in complete actions, with an

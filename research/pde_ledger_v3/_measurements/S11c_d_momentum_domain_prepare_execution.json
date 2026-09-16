@@ -1,5 +1,5 @@
 {
-  "status": "VALIDATED_PUBLICATION_PREPARED",
+  "status": "PUBLISHED_ANNEX_VERIFIED",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-momentum-domain-20260916",
   "checker": "S11c_d_momentum_domain_prepare.py",
   "plan": "S11c_d_momentum_domain_plan.md",
@@ -9,7 +9,7 @@
   "acceptedPositionAnnexVerificationCommit": "29b0c8e9",
   "workers": 4,
   "nativeThreadsPerWorker": 1,
-  "next": "Annex-verify preparation, then compute matching-rule baseline and wider momentum actions, keeping resolution effects explicit.",
+  "next": "Implement complete momentum-domain action with a source256/profile512 cutoff-2 matching baseline and cutoff3/4 comparisons; validate bounded prefixes and coarse worker/emission joins before production.",
   "implementationCommit": "5aedcc01",
   "launch": {
     "launchedUtc": "2026-09-16T07:41:38.565301+00:00",
@@ -70,5 +70,14 @@
     "stderrBytes": 0,
     "finishedUtc": "2026-09-16T07:49:15.900992+00:00"
   },
-  "acceptedCheckpoint": "S11c_d_momentum_domain_prepare_checkpoint.json"
+  "acceptedCheckpoint": "S11c_d_momentum_domain_prepare_checkpoint.json",
+  "publicationCommit": "fd372976940bc9096c3782fbd1faff6688139817",
+  "annexVerification": {
+    "publicationCommit": "fd372976940bc9096c3782fbd1faff6688139817",
+    "path": "research/pde_ledger_v3/scripts/out/S11c_d_momentum_domain_prepare.out",
+    "sha256": "6a24805ee96f27bd8d4a0853204b9ccf66898b3338c1ee1093f869880edd4d3f",
+    "annexKey": "MD5E-s7296597--e8433d02b5abf8f564466854c575057d.out",
+    "symlink": "../../../../.git/annex/objects/jw/pP/MD5E-s7296597--e8433d02b5abf8f564466854c575057d.out/MD5E-s7296597--e8433d02b5abf8f564466854c575057d.out",
+    "gitMode": "120000"
+  }
 }

@@ -1,0 +1,288 @@
+{
+  "status": "PASS",
+  "validated_utc": "2026-09-16T23:47:20.977162+00:00",
+  "scope": "D4B.1\u2013D4B.4 local odd-divergence/variation verification; independent fidelity reviews pending",
+  "proof_source_and_dependency_hashes": {
+    "_measurements/S11_lean_d4_generate.py": "b71b4813a3d8d00a786069f2416527c8e7f631b9e104c3094e3e7377a5c8d28d",
+    "lean/lake-manifest.json": "91fd5318cdc35e4044d6e059c6ef73d94b955d27adf8a5860b07ec92add9377e",
+    "lean/lakefile.toml": "da2daca55f5ca557c81bd559bcde2845274cf59780489fe1de657fe662296e90",
+    "lean/lean-toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+    "lean/s10/S10Pilot/Action.lean": "a7466f2c23a123f244615217d27d5048a625bddfaad5ce2a6f0456a8704f435c",
+    "lean/s10/S10Pilot/Analytic.lean": "f8a6fe854a7ed775a7ecf65fdf8589db2b865139a811daf1e4e27c34bac8811d",
+    "lean/s10/S10Pilot/PlaneWave.lean": "d64ad2d70169976f42cacb3ece650776780a17fe640d1efee4aa7677e53c85cb",
+    "lean/s11/S11D4Invariants/Classification.lean": "3b95a47959eeabc44268a2ae7dd1b8d5ff9d3f454d3c7b12d23c7fca365a2729",
+    "lean/s11/S11D4Invariants/ConstraintBlock0.lean": "a392b17298a7a4e89f2a29b7f475d3451d0845041a9dbe38704429812e7e7425",
+    "lean/s11/S11D4Invariants/ConstraintBlock1.lean": "9e6cdf6c14a124af9e713fc0d922d5b37def9773d658cdb53847ce6e94769651",
+    "lean/s11/S11D4Invariants/ConstraintBlock2.lean": "d22ebe83d4b3e3a6bae8ebcfa7a94ddb34d2fe95110b23a3e9948a20dcf614e9",
+    "lean/s11/S11D4Invariants/ConstraintBlock3.lean": "a4f413393844de5e8a0126cf03d502c6ee32b1a44686b03762d39db72764ffa0",
+    "lean/s11/S11D4Invariants/ConstraintPolynomial.lean": "998ce5e4f2d0930e5e52997c4c300128d990b175030272dd321e4004036ec41a",
+    "lean/s11/S11D4Invariants/Constraints.lean": "dfe4f2dc27bc140681eb60ce2cf0fdc6926bcb61ab31e2ef2bb8957c1e68c43e",
+    "lean/s11/S11D4Invariants/Forms.lean": "74ff651936459ee6e3b7b9a136b06c929be19ec22ce10559dd371008d2e03a69",
+    "lean/s11/S11D4Invariants/Orientation.lean": "417aa006bce48911f0cdd914b0f9087e19fbf876d7a13647d98f684a545ce31f",
+    "lean/s11/S11D4Invariants/Quadratic.lean": "5d64eda063b367049135aed7072821f2679dc860987dc0578036af6955809763",
+    "lean/s11/S11D4Invariants/Rotation.lean": "01f3e8e0fa11ba6eb53c756b8ea67a825de83f2cd13c8b81b5c58de6490f391c",
+    "lean/s11/S11D4Odd/Action.lean": "f83222be186089289e444f98d2518a3c5057248c7216ad1ee0fe769df36cc4be",
+    "lean/s11/S11D4Odd/Boundary.lean": "691c9981cc50d4b32ec66628c6aadc3102d2e7551a3a36540874e09731c619c8",
+    "lean/s11/S11D4Odd/Calculus.lean": "22604d9999f0a28079ff7fd9a9f88760df1509ae0c8a3838de26f3fefbeddd04",
+    "lean/s11/S11D4Odd/Variation.lean": "2bb66ed4848d61893e035250e3047dfa5cdbfd2081b8928d0bf663dfbf3d728f",
+    "lean/s11/S11D4Odd.lean": "d2e5686a4cd48fa548c83db8b267dadff65de50b4b8accf6f5eaba0fcdf8276e"
+  },
+  "compiled_module_sha256": {
+    "lean/.lake/build/lib/lean/S10Pilot/Action.olean": "1be8c3c4196dd7d4ec3eab5adeec1ad4efd799f37bea3169a7b2396a59efc3bb",
+    "lean/.lake/build/lib/lean/S10Pilot/PlaneWave.olean": "0d66b90ba63086dceddbae3b9cdeae947fcc286b6fa2d3bcd9c9dc033e0608b4",
+    "lean/.lake/build/lib/lean/S10Pilot/Analytic.olean": "9734d5342b5ee8d0683ce8e04b29e063554c4481f6db0e0cc5e418b68a9bebc6",
+    "lean/.lake/build/lib/lean/S11D4Invariants/Quadratic.olean": "48361d3511e3f8a471577407190d37756eba773675f311dcbfd2c1606adba1a3",
+    "lean/.lake/build/lib/lean/S11D4Invariants/Rotation.olean": "0562cb2478f1881c42f46c3a590546f886c3a1b475e0eb656badd0cd62db98cc",
+    "lean/.lake/build/lib/lean/S11D4Invariants/Orientation.olean": "b7c3908a02ef887a9fa18f0fd8dba613a17c18c3038b4c0d298cfd5cb6358d67",
+    "lean/.lake/build/lib/lean/S11D4Invariants/Forms.olean": "13991521ee83b5460ce5461e729134f19505e8c862d3861215cc43867e4d54c1",
+    "lean/.lake/build/lib/lean/S11D4Invariants/ConstraintPolynomial.olean": "a54a630545b7b6714ec3c71be9cac38b664eb66f2f781311d61eef4d7b01bb6e",
+    "lean/.lake/build/lib/lean/S11D4Invariants/ConstraintBlock0.olean": "ba6c12127d281349829eb82fc9876e51d63ce2daa8fbfbb5267ce954a6d18226",
+    "lean/.lake/build/lib/lean/S11D4Invariants/ConstraintBlock1.olean": "5b616443dcc909cfe38da17d11f1aca2763a428e9e18658ecf6e91d2e6a44c2c",
+    "lean/.lake/build/lib/lean/S11D4Invariants/ConstraintBlock2.olean": "27dfb6ffa539087f020be2cd9da47ac6ebbbe3cfb83c5db3558d4f4ce989a8d7",
+    "lean/.lake/build/lib/lean/S11D4Invariants/ConstraintBlock3.olean": "e30d85d353325f9b86e8d8dcd14e29231aaf0f584dc0245ff5b945ff70161c79",
+    "lean/.lake/build/lib/lean/S11D4Invariants/Constraints.olean": "93e21a270430915462180ac86b2e1d229636f8c7a85a019bb4b200559c2d11a7",
+    "lean/.lake/build/lib/lean/S11D4Invariants/Classification.olean": "556ead212a046b381b6b6789eb957d17fc987f0266a1b56f4752cc3490e808de",
+    "lean/.lake/build/lib/lean/S11D4Odd/Action.olean": "a65aef95ed828d2e4f211393720cf4d15e8106ab3d743d2fc5384d177681ec97",
+    "lean/.lake/build/lib/lean/S11D4Odd/Calculus.olean": "17a981fa8a51641be48dd7fa533c7dc458aaf2ce8d485fa8e04a39dd49086ad6",
+    "lean/.lake/build/lib/lean/S11D4Odd/Variation.olean": "31f397ac9ba6935cf3a2f4f20ba652844ef4a87fb067964eddc0de4926dcae7e",
+    "lean/.lake/build/lib/lean/S11D4Odd/Boundary.olean": "8a4351fa6f9dba60578a8c7764aa2ce9654f6eb5e2bcfc97c0ec0c91baca25ec",
+    "lean/.lake/build/lib/lean/S11D4Odd.olean": "47e8ddb6099861d8b11772863ccbf7a97d319191059d0a314b50e25642d4e6dc"
+  },
+  "dependency_olean_sha256": {
+    "lean/.lake/build/lib/lean/S10Pilot/Action.olean": "1be8c3c4196dd7d4ec3eab5adeec1ad4efd799f37bea3169a7b2396a59efc3bb",
+    "lean/.lake/build/lib/lean/S10Pilot/Analytic.olean": "9734d5342b5ee8d0683ce8e04b29e063554c4481f6db0e0cc5e418b68a9bebc6",
+    "lean/.lake/build/lib/lean/S10Pilot/PlaneWave.olean": "0d66b90ba63086dceddbae3b9cdeae947fcc286b6fa2d3bcd9c9dc033e0608b4",
+    "lean/.lake/build/lib/lean/S11D4Invariants/Classification.olean": "556ead212a046b381b6b6789eb957d17fc987f0266a1b56f4752cc3490e808de",
+    "lean/.lake/build/lib/lean/S11D4Invariants/ConstraintBlock0.olean": "ba6c12127d281349829eb82fc9876e51d63ce2daa8fbfbb5267ce954a6d18226",
+    "lean/.lake/build/lib/lean/S11D4Invariants/ConstraintBlock1.olean": "5b616443dcc909cfe38da17d11f1aca2763a428e9e18658ecf6e91d2e6a44c2c",
+    "lean/.lake/build/lib/lean/S11D4Invariants/ConstraintBlock2.olean": "27dfb6ffa539087f020be2cd9da47ac6ebbbe3cfb83c5db3558d4f4ce989a8d7",
+    "lean/.lake/build/lib/lean/S11D4Invariants/ConstraintBlock3.olean": "e30d85d353325f9b86e8d8dcd14e29231aaf0f584dc0245ff5b945ff70161c79",
+    "lean/.lake/build/lib/lean/S11D4Invariants/ConstraintPolynomial.olean": "a54a630545b7b6714ec3c71be9cac38b664eb66f2f781311d61eef4d7b01bb6e",
+    "lean/.lake/build/lib/lean/S11D4Invariants/Constraints.olean": "93e21a270430915462180ac86b2e1d229636f8c7a85a019bb4b200559c2d11a7",
+    "lean/.lake/build/lib/lean/S11D4Invariants/Forms.olean": "13991521ee83b5460ce5461e729134f19505e8c862d3861215cc43867e4d54c1",
+    "lean/.lake/build/lib/lean/S11D4Invariants/Orientation.olean": "b7c3908a02ef887a9fa18f0fd8dba613a17c18c3038b4c0d298cfd5cb6358d67",
+    "lean/.lake/build/lib/lean/S11D4Invariants/Quadratic.olean": "48361d3511e3f8a471577407190d37756eba773675f311dcbfd2c1606adba1a3",
+    "lean/.lake/build/lib/lean/S11D4Invariants/Rotation.olean": "0562cb2478f1881c42f46c3a590546f886c3a1b475e0eb656badd0cd62db98cc"
+  },
+  "validated_check_logs": 43,
+  "reused_builds": 14,
+  "axiom_declarations": 41,
+  "allowed_axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "mathematical_mutations_rejected": [
+    "density_normalization",
+    "complementary_orientation_sign",
+    "mixed_derivative_index",
+    "boundary_current_factor",
+    "nonzero_density_mutant",
+    "momentum_sign_mutant",
+    "current_factor_mutant",
+    "degree_two_contraction_mutant",
+    "first_variation_zero_mutant",
+    "local_EL_zero_mutant",
+    "negative_beta_density_mutant",
+    "time_momentum_zero_mutant"
+  ],
+  "positive_controls_passed": [
+    "nonzero_density_positive",
+    "momentum_sign_positive",
+    "current_factor_positive",
+    "degree_two_contraction_positive",
+    "first_variation_zero_positive",
+    "local_EL_zero_positive",
+    "negative_beta_density_positive",
+    "time_momentum_zero_positive",
+    "zero_field_admissible_positive",
+    "negative_beta_stationary_positive",
+    "zero_beta_stationary_positive",
+    "smooth_affine_background_positive"
+  ],
+  "mutation_adjudication": {
+    "density_normalization": {
+      "required_declaration": "density_identity",
+      "mathematical_diagnostic_present": true,
+      "instrument_failure_accepted": false
+    },
+    "complementary_orientation_sign": {
+      "required_declaration": "momentum_eq",
+      "mathematical_diagnostic_present": true,
+      "instrument_failure_accepted": false
+    },
+    "mixed_derivative_index": {
+      "required_declaration": "dualCurl_divergence_zero",
+      "mathematical_diagnostic_present": true,
+      "instrument_failure_accepted": false
+    },
+    "boundary_current_factor": {
+      "required_declaration": "boundary_identity",
+      "mathematical_diagnostic_present": true,
+      "instrument_failure_accepted": false
+    },
+    "nonzero_density_mutant": {
+      "required_declaration": "contract_control",
+      "mathematical_diagnostic_present": true,
+      "instrument_failure_accepted": false
+    },
+    "momentum_sign_mutant": {
+      "required_declaration": "contract_control",
+      "mathematical_diagnostic_present": true,
+      "instrument_failure_accepted": false
+    },
+    "current_factor_mutant": {
+      "required_declaration": "contract_control",
+      "mathematical_diagnostic_present": true,
+      "instrument_failure_accepted": false
+    },
+    "degree_two_contraction_mutant": {
+      "required_declaration": "contract_control",
+      "mathematical_diagnostic_present": true,
+      "instrument_failure_accepted": false
+    },
+    "first_variation_zero_mutant": {
+      "required_declaration": "contract_control",
+      "mathematical_diagnostic_present": true,
+      "instrument_failure_accepted": false
+    },
+    "local_EL_zero_mutant": {
+      "required_declaration": "contract_control",
+      "mathematical_diagnostic_present": true,
+      "instrument_failure_accepted": false
+    },
+    "negative_beta_density_mutant": {
+      "required_declaration": "contract_control",
+      "mathematical_diagnostic_present": true,
+      "instrument_failure_accepted": false
+    },
+    "time_momentum_zero_mutant": {
+      "required_declaration": "contract_control",
+      "mathematical_diagnostic_present": true,
+      "instrument_failure_accepted": false
+    }
+  },
+  "mathematical_failure_notes": {
+    "density_normalization": "At witnessJet, beta=2, the changed L is -2 but density_identity requires -1.",
+    "complementary_orientation_sign": "At witnessJet, beta=2, dL/dG10=+1 while the changed complementary entry predicts -1.",
+    "mixed_derivative_index": "For u=(0,0,0,x1*x2), replacing each divergence derivative by partial_1 gives the j=0 component 1 instead of 0. This named false identity is the accepted rejection; later rewrite/simp mismatches are downstream diagnostics, not evidence.",
+    "boundary_current_factor": "For u=(0,x1,0,x3), P=1; the doubled current has divergence 2. The named false factor identity is the accepted rejection; the later concrete change-tactic mismatch is not evidence.",
+    "eight_statement_mutations": "Each reduces to False in contract_control, with its paired true statement passing."
+  },
+  "package_checkout_pins": [
+    {
+      "name": "Physlib",
+      "commit": "8b2b23701c07409f882c49e0bd290a214e44450c",
+      "tracked_source_clean": true
+    },
+    {
+      "name": "mathlib",
+      "commit": "db584cd6d46c92f209a44c0f1c829460d327499d",
+      "tracked_source_clean": true
+    },
+    {
+      "name": "\u00abdoc-gen4\u00bb",
+      "commit": "aceca4eeb5a79092eabefaa75fcb72b701d02205",
+      "tracked_source_clean": true
+    },
+    {
+      "name": "plausible",
+      "commit": "b7eb3304aeae834b12dda98993a37f6a41f6f0bb",
+      "tracked_source_clean": true
+    },
+    {
+      "name": "LeanSearchClient",
+      "commit": "5f4d51b81cbd3f6b32b156bfad9056621a040404",
+      "tracked_source_clean": true
+    },
+    {
+      "name": "importGraph",
+      "commit": "16f02aa7642864af59f1ff0e384a015994db9118",
+      "tracked_source_clean": true
+    },
+    {
+      "name": "proofwidgets",
+      "commit": "4be2e3d5087eeb272cf5a8853b8f9dd025ef5957",
+      "tracked_source_clean": true
+    },
+    {
+      "name": "aesop",
+      "commit": "3448c0bcc5ce01b2d1546e483ec3620e32df3d0e",
+      "tracked_source_clean": true
+    },
+    {
+      "name": "Qq",
+      "commit": "92c15be17b7caf78c2ad767ec40f89052d908d81",
+      "tracked_source_clean": true
+    },
+    {
+      "name": "batteries",
+      "commit": "4488d40d070b9700d4d5a6aa342f0d40c31b2a2d",
+      "tracked_source_clean": true
+    },
+    {
+      "name": "leansqlite",
+      "commit": "6168b7549738a19bc837a1625c60c5d1e5dd8aeb",
+      "tracked_source_clean": true
+    },
+    {
+      "name": "Cli",
+      "commit": "6130a47896ce867c6a4a55373441e59e565bad0f",
+      "tracked_source_clean": true
+    },
+    {
+      "name": "UnicodeBasic",
+      "commit": "37e7d8cb7316a88cd3e91208385c9ec6ae780019",
+      "tracked_source_clean": true
+    },
+    {
+      "name": "BibtexQuery",
+      "commit": "852edafa268eb038a7158551fd580ee8433847b0",
+      "tracked_source_clean": true
+    },
+    {
+      "name": "MD4Lean",
+      "commit": "31907cc18f48a95384f99cee5582c00fb39e0f67",
+      "tracked_source_clean": true
+    }
+  ],
+  "native_source_sha256": {
+    "scripts/S11_stray_longitudinal_sympy_audit.py": "dc77f30b3e0b2b72aa13c7531a586e6ef50167949e645d99378de8527e06bfe2",
+    "mathematica/S11_stray_longitudinal_mathematica_audit.wl": "133bacbcbc2dd192ba64a82b94a1cde6b4359bfdf0748c59584b6a3e90683237"
+  },
+  "contract_instrument_sha256": "23ecd887aad332ec378d2b23fc734cefd4439f32dc8ccfa0ee2e3ba0450d65de",
+  "source_instrument_sha256": "9da5336022d53f7f7f132ce613bb207c54bdd80dd3197cb702ee6c3842d97e04",
+  "contract_report_sha256": "a18c9b2f5f29c3844d2e4ac94cce41bf942c81db831ffad1e558ec84944888db",
+  "source_report_sha256": "9c7e7669f635ca920a8d5dd5df4bc37abb5ecca2d22af0e5669e9dec25f2bcc5",
+  "generator_sha256": "b71b4813a3d8d00a786069f2416527c8e7f631b9e104c3094e3e7377a5c8d28d",
+  "historical_proof_correspondence": {
+    "S11_lean_fidelity_review_packet.json": {
+      "manifest_sha256": "91f740e9d51c5af9d3c38e300e95ed1c812fe2214091b02c88931fe0fcb361bb",
+      "unchanged_proof_files": 27
+    },
+    "S11_lean_invariant_review_packet.json": {
+      "manifest_sha256": "0a7fd1e8b774b3a73338adf74cd5f346a2060caff037c110318be37624d4e3ae",
+      "unchanged_proof_files": 6
+    },
+    "S11_lean_dynamics_review_packet.json": {
+      "manifest_sha256": "5f54346e2540db29015e799cfb7cd13718e301680c37ceb6fdb18f68b6a3cc40",
+      "unchanged_proof_files": 13
+    },
+    "S11_lean_d3_review_packet.json": {
+      "manifest_sha256": "f78d38219935608d3a71024940d9f6fe2d8ab4e596bb24412d10f93e1a3cf739",
+      "unchanged_proof_files": 7
+    },
+    "S11_lean_d3_bulk_review_packet.json": {
+      "manifest_sha256": "f71b3453e26c09a2e0e16a77bcd9348aed7c5f8089f881a751892e184ff1ce31",
+      "unchanged_proof_files": 21
+    },
+    "S11_lean_d4_review_packet.json": {
+      "manifest_sha256": "b5e49158bb7ef2b3f81b7346ba449615e5d20327c6324d99993141e730b8a13b",
+      "unchanged_proof_files": 14
+    }
+  },
+  "native_connection": "Actual native P_D=P, exact derivative momenta -beta M/2, zero time row, contraction 2P, div M=0 and div K=P, actual native EL and V5 odd combination zero. Sign/factor/non-null/always-zero controls detected. Tested symbolic translation; Wolfram source inspection only.",
+  "historical_preflight_sha256": "305f3ed761cf945ff85e18afd8863c32a9cfecce477ab7e449e04120befb9df9",
+  "review_status": "PENDING; new D4B packet transfer not yet authorized",
+  "completion_claimed": false
+}

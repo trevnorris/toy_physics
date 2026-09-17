@@ -1,0 +1,1854 @@
+{
+  "status": "PASS",
+  "started_utc": "2026-09-16T23:40:09.122498+00:00",
+  "instrument_sha256": "23ecd887aad332ec378d2b23fc734cefd4439f32dc8ccfa0ee2e3ba0450d65de",
+  "source_sha256_before": {
+    "_measurements/S11_lean_d4_generate.py": "b71b4813a3d8d00a786069f2416527c8e7f631b9e104c3094e3e7377a5c8d28d",
+    "lean/lake-manifest.json": "91fd5318cdc35e4044d6e059c6ef73d94b955d27adf8a5860b07ec92add9377e",
+    "lean/lakefile.toml": "da2daca55f5ca557c81bd559bcde2845274cf59780489fe1de657fe662296e90",
+    "lean/lean-toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+    "lean/s10/S10Pilot/Action.lean": "a7466f2c23a123f244615217d27d5048a625bddfaad5ce2a6f0456a8704f435c",
+    "lean/s10/S10Pilot/Analytic.lean": "f8a6fe854a7ed775a7ecf65fdf8589db2b865139a811daf1e4e27c34bac8811d",
+    "lean/s10/S10Pilot/PlaneWave.lean": "d64ad2d70169976f42cacb3ece650776780a17fe640d1efee4aa7677e53c85cb",
+    "lean/s11/S11D4Invariants/Classification.lean": "3b95a47959eeabc44268a2ae7dd1b8d5ff9d3f454d3c7b12d23c7fca365a2729",
+    "lean/s11/S11D4Invariants/ConstraintBlock0.lean": "a392b17298a7a4e89f2a29b7f475d3451d0845041a9dbe38704429812e7e7425",
+    "lean/s11/S11D4Invariants/ConstraintBlock1.lean": "9e6cdf6c14a124af9e713fc0d922d5b37def9773d658cdb53847ce6e94769651",
+    "lean/s11/S11D4Invariants/ConstraintBlock2.lean": "d22ebe83d4b3e3a6bae8ebcfa7a94ddb34d2fe95110b23a3e9948a20dcf614e9",
+    "lean/s11/S11D4Invariants/ConstraintBlock3.lean": "a4f413393844de5e8a0126cf03d502c6ee32b1a44686b03762d39db72764ffa0",
+    "lean/s11/S11D4Invariants/ConstraintPolynomial.lean": "998ce5e4f2d0930e5e52997c4c300128d990b175030272dd321e4004036ec41a",
+    "lean/s11/S11D4Invariants/Constraints.lean": "dfe4f2dc27bc140681eb60ce2cf0fdc6926bcb61ab31e2ef2bb8957c1e68c43e",
+    "lean/s11/S11D4Invariants/Forms.lean": "74ff651936459ee6e3b7b9a136b06c929be19ec22ce10559dd371008d2e03a69",
+    "lean/s11/S11D4Invariants/Orientation.lean": "417aa006bce48911f0cdd914b0f9087e19fbf876d7a13647d98f684a545ce31f",
+    "lean/s11/S11D4Invariants/Quadratic.lean": "5d64eda063b367049135aed7072821f2679dc860987dc0578036af6955809763",
+    "lean/s11/S11D4Invariants/Rotation.lean": "01f3e8e0fa11ba6eb53c756b8ea67a825de83f2cd13c8b81b5c58de6490f391c",
+    "lean/s11/S11D4Odd/Action.lean": "f83222be186089289e444f98d2518a3c5057248c7216ad1ee0fe769df36cc4be",
+    "lean/s11/S11D4Odd/Boundary.lean": "691c9981cc50d4b32ec66628c6aadc3102d2e7551a3a36540874e09731c619c8",
+    "lean/s11/S11D4Odd/Calculus.lean": "22604d9999f0a28079ff7fd9a9f88760df1509ae0c8a3838de26f3fefbeddd04",
+    "lean/s11/S11D4Odd/Variation.lean": "2bb66ed4848d61893e035250e3047dfa5cdbfd2081b8928d0bf663dfbf3d728f",
+    "lean/s11/S11D4Odd.lean": "d2e5686a4cd48fa548c83db8b267dadff65de50b4b8accf6f5eaba0fcdf8276e"
+  },
+  "dependency_olean_sha256": {
+    "lean/.lake/build/lib/lean/S10Pilot/Action.olean": "1be8c3c4196dd7d4ec3eab5adeec1ad4efd799f37bea3169a7b2396a59efc3bb",
+    "lean/.lake/build/lib/lean/S10Pilot/Analytic.olean": "9734d5342b5ee8d0683ce8e04b29e063554c4481f6db0e0cc5e418b68a9bebc6",
+    "lean/.lake/build/lib/lean/S10Pilot/PlaneWave.olean": "0d66b90ba63086dceddbae3b9cdeae947fcc286b6fa2d3bcd9c9dc033e0608b4",
+    "lean/.lake/build/lib/lean/S11D4Invariants/Classification.olean": "556ead212a046b381b6b6789eb957d17fc987f0266a1b56f4752cc3490e808de",
+    "lean/.lake/build/lib/lean/S11D4Invariants/ConstraintBlock0.olean": "ba6c12127d281349829eb82fc9876e51d63ce2daa8fbfbb5267ce954a6d18226",
+    "lean/.lake/build/lib/lean/S11D4Invariants/ConstraintBlock1.olean": "5b616443dcc909cfe38da17d11f1aca2763a428e9e18658ecf6e91d2e6a44c2c",
+    "lean/.lake/build/lib/lean/S11D4Invariants/ConstraintBlock2.olean": "27dfb6ffa539087f020be2cd9da47ac6ebbbe3cfb83c5db3558d4f4ce989a8d7",
+    "lean/.lake/build/lib/lean/S11D4Invariants/ConstraintBlock3.olean": "e30d85d353325f9b86e8d8dcd14e29231aaf0f584dc0245ff5b945ff70161c79",
+    "lean/.lake/build/lib/lean/S11D4Invariants/ConstraintPolynomial.olean": "a54a630545b7b6714ec3c71be9cac38b664eb66f2f781311d61eef4d7b01bb6e",
+    "lean/.lake/build/lib/lean/S11D4Invariants/Constraints.olean": "93e21a270430915462180ac86b2e1d229636f8c7a85a019bb4b200559c2d11a7",
+    "lean/.lake/build/lib/lean/S11D4Invariants/Forms.olean": "13991521ee83b5460ce5461e729134f19505e8c862d3861215cc43867e4d54c1",
+    "lean/.lake/build/lib/lean/S11D4Invariants/Orientation.olean": "b7c3908a02ef887a9fa18f0fd8dba613a17c18c3038b4c0d298cfd5cb6358d67",
+    "lean/.lake/build/lib/lean/S11D4Invariants/Quadratic.olean": "48361d3511e3f8a471577407190d37756eba773675f311dcbfd2c1606adba1a3",
+    "lean/.lake/build/lib/lean/S11D4Invariants/Rotation.olean": "0562cb2478f1881c42f46c3a590546f886c3a1b475e0eb656badd0cd62db98cc"
+  },
+  "checks": [
+    {
+      "name": "dependency_S10Pilot_Action",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "-o",
+        "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S10Pilot/Action.olean",
+        "s10/S10Pilot/Action.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 12.302,
+      "source_sha256": "a7466f2c23a123f244615217d27d5048a625bddfaad5ce2a6f0456a8704f435c",
+      "required_failure_in": null,
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "olean_sha256": "1be8c3c4196dd7d4ec3eab5adeec1ad4efd799f37bea3169a7b2396a59efc3bb",
+      "input_olean_sha256": {},
+      "reused_from_instrument_sha256": "763443a69911fe8ecc60a2006c08a09f38d0357f7d06afa149ba3bf6026650f8",
+      "reuse_source_dependency_sha256": {
+        "_measurements/S11_lean_d4_generate.py": "b71b4813a3d8d00a786069f2416527c8e7f631b9e104c3094e3e7377a5c8d28d",
+        "lean/lake-manifest.json": "91fd5318cdc35e4044d6e059c6ef73d94b955d27adf8a5860b07ec92add9377e",
+        "lean/lakefile.toml": "da2daca55f5ca557c81bd559bcde2845274cf59780489fe1de657fe662296e90",
+        "lean/lean-toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+        "lean/s10/S10Pilot/Action.lean": "a7466f2c23a123f244615217d27d5048a625bddfaad5ce2a6f0456a8704f435c"
+      }
+    },
+    {
+      "name": "dependency_S10Pilot_PlaneWave",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "-o",
+        "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S10Pilot/PlaneWave.olean",
+        "s10/S10Pilot/PlaneWave.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 10.841,
+      "source_sha256": "d64ad2d70169976f42cacb3ece650776780a17fe640d1efee4aa7677e53c85cb",
+      "required_failure_in": null,
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "olean_sha256": "0d66b90ba63086dceddbae3b9cdeae947fcc286b6fa2d3bcd9c9dc033e0608b4",
+      "input_olean_sha256": {
+        "lean/.lake/build/lib/lean/S10Pilot/Action.olean": "1be8c3c4196dd7d4ec3eab5adeec1ad4efd799f37bea3169a7b2396a59efc3bb"
+      },
+      "reused_from_instrument_sha256": "763443a69911fe8ecc60a2006c08a09f38d0357f7d06afa149ba3bf6026650f8",
+      "reuse_source_dependency_sha256": {
+        "_measurements/S11_lean_d4_generate.py": "b71b4813a3d8d00a786069f2416527c8e7f631b9e104c3094e3e7377a5c8d28d",
+        "lean/lake-manifest.json": "91fd5318cdc35e4044d6e059c6ef73d94b955d27adf8a5860b07ec92add9377e",
+        "lean/lakefile.toml": "da2daca55f5ca557c81bd559bcde2845274cf59780489fe1de657fe662296e90",
+        "lean/lean-toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+        "lean/s10/S10Pilot/Action.lean": "a7466f2c23a123f244615217d27d5048a625bddfaad5ce2a6f0456a8704f435c",
+        "lean/s10/S10Pilot/PlaneWave.lean": "d64ad2d70169976f42cacb3ece650776780a17fe640d1efee4aa7677e53c85cb"
+      }
+    },
+    {
+      "name": "dependency_S10Pilot_Analytic",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "-o",
+        "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S10Pilot/Analytic.olean",
+        "s10/S10Pilot/Analytic.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 10.436,
+      "source_sha256": "f8a6fe854a7ed775a7ecf65fdf8589db2b865139a811daf1e4e27c34bac8811d",
+      "required_failure_in": null,
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "olean_sha256": "9734d5342b5ee8d0683ce8e04b29e063554c4481f6db0e0cc5e418b68a9bebc6",
+      "input_olean_sha256": {
+        "lean/.lake/build/lib/lean/S10Pilot/Action.olean": "1be8c3c4196dd7d4ec3eab5adeec1ad4efd799f37bea3169a7b2396a59efc3bb",
+        "lean/.lake/build/lib/lean/S10Pilot/PlaneWave.olean": "0d66b90ba63086dceddbae3b9cdeae947fcc286b6fa2d3bcd9c9dc033e0608b4"
+      },
+      "reused_from_instrument_sha256": "763443a69911fe8ecc60a2006c08a09f38d0357f7d06afa149ba3bf6026650f8",
+      "reuse_source_dependency_sha256": {
+        "_measurements/S11_lean_d4_generate.py": "b71b4813a3d8d00a786069f2416527c8e7f631b9e104c3094e3e7377a5c8d28d",
+        "lean/lake-manifest.json": "91fd5318cdc35e4044d6e059c6ef73d94b955d27adf8a5860b07ec92add9377e",
+        "lean/lakefile.toml": "da2daca55f5ca557c81bd559bcde2845274cf59780489fe1de657fe662296e90",
+        "lean/lean-toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+        "lean/s10/S10Pilot/Action.lean": "a7466f2c23a123f244615217d27d5048a625bddfaad5ce2a6f0456a8704f435c",
+        "lean/s10/S10Pilot/Analytic.lean": "f8a6fe854a7ed775a7ecf65fdf8589db2b865139a811daf1e4e27c34bac8811d",
+        "lean/s10/S10Pilot/PlaneWave.lean": "d64ad2d70169976f42cacb3ece650776780a17fe640d1efee4aa7677e53c85cb"
+      }
+    },
+    {
+      "name": "dependency_S11D4Invariants_Quadratic",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "-o",
+        "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S11D4Invariants/Quadratic.olean",
+        "s11/S11D4Invariants/Quadratic.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 52.167,
+      "source_sha256": "5d64eda063b367049135aed7072821f2679dc860987dc0578036af6955809763",
+      "required_failure_in": null,
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "olean_sha256": "48361d3511e3f8a471577407190d37756eba773675f311dcbfd2c1606adba1a3",
+      "input_olean_sha256": {},
+      "reused_from_instrument_sha256": "763443a69911fe8ecc60a2006c08a09f38d0357f7d06afa149ba3bf6026650f8",
+      "reuse_source_dependency_sha256": {
+        "_measurements/S11_lean_d4_generate.py": "b71b4813a3d8d00a786069f2416527c8e7f631b9e104c3094e3e7377a5c8d28d",
+        "lean/lake-manifest.json": "91fd5318cdc35e4044d6e059c6ef73d94b955d27adf8a5860b07ec92add9377e",
+        "lean/lakefile.toml": "da2daca55f5ca557c81bd559bcde2845274cf59780489fe1de657fe662296e90",
+        "lean/lean-toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+        "lean/s11/S11D4Invariants/Quadratic.lean": "5d64eda063b367049135aed7072821f2679dc860987dc0578036af6955809763"
+      }
+    },
+    {
+      "name": "dependency_S11D4Invariants_Rotation",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "-o",
+        "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S11D4Invariants/Rotation.olean",
+        "s11/S11D4Invariants/Rotation.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 86.039,
+      "source_sha256": "01f3e8e0fa11ba6eb53c756b8ea67a825de83f2cd13c8b81b5c58de6490f391c",
+      "required_failure_in": null,
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "olean_sha256": "0562cb2478f1881c42f46c3a590546f886c3a1b475e0eb656badd0cd62db98cc",
+      "input_olean_sha256": {
+        "lean/.lake/build/lib/lean/S11D4Invariants/Quadratic.olean": "48361d3511e3f8a471577407190d37756eba773675f311dcbfd2c1606adba1a3"
+      },
+      "reused_from_instrument_sha256": "763443a69911fe8ecc60a2006c08a09f38d0357f7d06afa149ba3bf6026650f8",
+      "reuse_source_dependency_sha256": {
+        "_measurements/S11_lean_d4_generate.py": "b71b4813a3d8d00a786069f2416527c8e7f631b9e104c3094e3e7377a5c8d28d",
+        "lean/lake-manifest.json": "91fd5318cdc35e4044d6e059c6ef73d94b955d27adf8a5860b07ec92add9377e",
+        "lean/lakefile.toml": "da2daca55f5ca557c81bd559bcde2845274cf59780489fe1de657fe662296e90",
+        "lean/lean-toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+        "lean/s11/S11D4Invariants/Quadratic.lean": "5d64eda063b367049135aed7072821f2679dc860987dc0578036af6955809763",
+        "lean/s11/S11D4Invariants/Rotation.lean": "01f3e8e0fa11ba6eb53c756b8ea67a825de83f2cd13c8b81b5c58de6490f391c"
+      }
+    },
+    {
+      "name": "dependency_S11D4Invariants_Orientation",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "-o",
+        "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S11D4Invariants/Orientation.olean",
+        "s11/S11D4Invariants/Orientation.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 12.753,
+      "source_sha256": "417aa006bce48911f0cdd914b0f9087e19fbf876d7a13647d98f684a545ce31f",
+      "required_failure_in": null,
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "olean_sha256": "b7c3908a02ef887a9fa18f0fd8dba613a17c18c3038b4c0d298cfd5cb6358d67",
+      "input_olean_sha256": {
+        "lean/.lake/build/lib/lean/S11D4Invariants/Quadratic.olean": "48361d3511e3f8a471577407190d37756eba773675f311dcbfd2c1606adba1a3",
+        "lean/.lake/build/lib/lean/S11D4Invariants/Rotation.olean": "0562cb2478f1881c42f46c3a590546f886c3a1b475e0eb656badd0cd62db98cc"
+      },
+      "reused_from_instrument_sha256": "763443a69911fe8ecc60a2006c08a09f38d0357f7d06afa149ba3bf6026650f8",
+      "reuse_source_dependency_sha256": {
+        "_measurements/S11_lean_d4_generate.py": "b71b4813a3d8d00a786069f2416527c8e7f631b9e104c3094e3e7377a5c8d28d",
+        "lean/lake-manifest.json": "91fd5318cdc35e4044d6e059c6ef73d94b955d27adf8a5860b07ec92add9377e",
+        "lean/lakefile.toml": "da2daca55f5ca557c81bd559bcde2845274cf59780489fe1de657fe662296e90",
+        "lean/lean-toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+        "lean/s11/S11D4Invariants/Orientation.lean": "417aa006bce48911f0cdd914b0f9087e19fbf876d7a13647d98f684a545ce31f",
+        "lean/s11/S11D4Invariants/Quadratic.lean": "5d64eda063b367049135aed7072821f2679dc860987dc0578036af6955809763",
+        "lean/s11/S11D4Invariants/Rotation.lean": "01f3e8e0fa11ba6eb53c756b8ea67a825de83f2cd13c8b81b5c58de6490f391c"
+      }
+    },
+    {
+      "name": "dependency_S11D4Invariants_Forms",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "-o",
+        "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S11D4Invariants/Forms.olean",
+        "s11/S11D4Invariants/Forms.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 16.125,
+      "source_sha256": "74ff651936459ee6e3b7b9a136b06c929be19ec22ce10559dd371008d2e03a69",
+      "required_failure_in": null,
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "olean_sha256": "13991521ee83b5460ce5461e729134f19505e8c862d3861215cc43867e4d54c1",
+      "input_olean_sha256": {
+        "lean/.lake/build/lib/lean/S11D4Invariants/Orientation.olean": "b7c3908a02ef887a9fa18f0fd8dba613a17c18c3038b4c0d298cfd5cb6358d67",
+        "lean/.lake/build/lib/lean/S11D4Invariants/Quadratic.olean": "48361d3511e3f8a471577407190d37756eba773675f311dcbfd2c1606adba1a3",
+        "lean/.lake/build/lib/lean/S11D4Invariants/Rotation.olean": "0562cb2478f1881c42f46c3a590546f886c3a1b475e0eb656badd0cd62db98cc"
+      },
+      "reused_from_instrument_sha256": "763443a69911fe8ecc60a2006c08a09f38d0357f7d06afa149ba3bf6026650f8",
+      "reuse_source_dependency_sha256": {
+        "_measurements/S11_lean_d4_generate.py": "b71b4813a3d8d00a786069f2416527c8e7f631b9e104c3094e3e7377a5c8d28d",
+        "lean/lake-manifest.json": "91fd5318cdc35e4044d6e059c6ef73d94b955d27adf8a5860b07ec92add9377e",
+        "lean/lakefile.toml": "da2daca55f5ca557c81bd559bcde2845274cf59780489fe1de657fe662296e90",
+        "lean/lean-toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+        "lean/s11/S11D4Invariants/Forms.lean": "74ff651936459ee6e3b7b9a136b06c929be19ec22ce10559dd371008d2e03a69",
+        "lean/s11/S11D4Invariants/Orientation.lean": "417aa006bce48911f0cdd914b0f9087e19fbf876d7a13647d98f684a545ce31f",
+        "lean/s11/S11D4Invariants/Quadratic.lean": "5d64eda063b367049135aed7072821f2679dc860987dc0578036af6955809763",
+        "lean/s11/S11D4Invariants/Rotation.lean": "01f3e8e0fa11ba6eb53c756b8ea67a825de83f2cd13c8b81b5c58de6490f391c"
+      }
+    },
+    {
+      "name": "dependency_S11D4Invariants_ConstraintPolynomial",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "-o",
+        "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S11D4Invariants/ConstraintPolynomial.olean",
+        "s11/S11D4Invariants/ConstraintPolynomial.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 8.876,
+      "source_sha256": "998ce5e4f2d0930e5e52997c4c300128d990b175030272dd321e4004036ec41a",
+      "required_failure_in": null,
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "olean_sha256": "a54a630545b7b6714ec3c71be9cac38b664eb66f2f781311d61eef4d7b01bb6e",
+      "input_olean_sha256": {
+        "lean/.lake/build/lib/lean/S11D4Invariants/Forms.olean": "13991521ee83b5460ce5461e729134f19505e8c862d3861215cc43867e4d54c1",
+        "lean/.lake/build/lib/lean/S11D4Invariants/Orientation.olean": "b7c3908a02ef887a9fa18f0fd8dba613a17c18c3038b4c0d298cfd5cb6358d67",
+        "lean/.lake/build/lib/lean/S11D4Invariants/Quadratic.olean": "48361d3511e3f8a471577407190d37756eba773675f311dcbfd2c1606adba1a3",
+        "lean/.lake/build/lib/lean/S11D4Invariants/Rotation.olean": "0562cb2478f1881c42f46c3a590546f886c3a1b475e0eb656badd0cd62db98cc"
+      },
+      "reused_from_instrument_sha256": "763443a69911fe8ecc60a2006c08a09f38d0357f7d06afa149ba3bf6026650f8",
+      "reuse_source_dependency_sha256": {
+        "_measurements/S11_lean_d4_generate.py": "b71b4813a3d8d00a786069f2416527c8e7f631b9e104c3094e3e7377a5c8d28d",
+        "lean/lake-manifest.json": "91fd5318cdc35e4044d6e059c6ef73d94b955d27adf8a5860b07ec92add9377e",
+        "lean/lakefile.toml": "da2daca55f5ca557c81bd559bcde2845274cf59780489fe1de657fe662296e90",
+        "lean/lean-toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+        "lean/s11/S11D4Invariants/ConstraintPolynomial.lean": "998ce5e4f2d0930e5e52997c4c300128d990b175030272dd321e4004036ec41a",
+        "lean/s11/S11D4Invariants/Forms.lean": "74ff651936459ee6e3b7b9a136b06c929be19ec22ce10559dd371008d2e03a69",
+        "lean/s11/S11D4Invariants/Orientation.lean": "417aa006bce48911f0cdd914b0f9087e19fbf876d7a13647d98f684a545ce31f",
+        "lean/s11/S11D4Invariants/Quadratic.lean": "5d64eda063b367049135aed7072821f2679dc860987dc0578036af6955809763",
+        "lean/s11/S11D4Invariants/Rotation.lean": "01f3e8e0fa11ba6eb53c756b8ea67a825de83f2cd13c8b81b5c58de6490f391c"
+      }
+    },
+    {
+      "name": "dependency_S11D4Invariants_ConstraintBlock0",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "-o",
+        "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S11D4Invariants/ConstraintBlock0.olean",
+        "s11/S11D4Invariants/ConstraintBlock0.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 98.786,
+      "source_sha256": "a392b17298a7a4e89f2a29b7f475d3451d0845041a9dbe38704429812e7e7425",
+      "required_failure_in": null,
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "olean_sha256": "ba6c12127d281349829eb82fc9876e51d63ce2daa8fbfbb5267ce954a6d18226",
+      "input_olean_sha256": {
+        "lean/.lake/build/lib/lean/S11D4Invariants/ConstraintPolynomial.olean": "a54a630545b7b6714ec3c71be9cac38b664eb66f2f781311d61eef4d7b01bb6e",
+        "lean/.lake/build/lib/lean/S11D4Invariants/Forms.olean": "13991521ee83b5460ce5461e729134f19505e8c862d3861215cc43867e4d54c1",
+        "lean/.lake/build/lib/lean/S11D4Invariants/Orientation.olean": "b7c3908a02ef887a9fa18f0fd8dba613a17c18c3038b4c0d298cfd5cb6358d67",
+        "lean/.lake/build/lib/lean/S11D4Invariants/Quadratic.olean": "48361d3511e3f8a471577407190d37756eba773675f311dcbfd2c1606adba1a3",
+        "lean/.lake/build/lib/lean/S11D4Invariants/Rotation.olean": "0562cb2478f1881c42f46c3a590546f886c3a1b475e0eb656badd0cd62db98cc"
+      },
+      "reused_from_instrument_sha256": "763443a69911fe8ecc60a2006c08a09f38d0357f7d06afa149ba3bf6026650f8",
+      "reuse_source_dependency_sha256": {
+        "_measurements/S11_lean_d4_generate.py": "b71b4813a3d8d00a786069f2416527c8e7f631b9e104c3094e3e7377a5c8d28d",
+        "lean/lake-manifest.json": "91fd5318cdc35e4044d6e059c6ef73d94b955d27adf8a5860b07ec92add9377e",
+        "lean/lakefile.toml": "da2daca55f5ca557c81bd559bcde2845274cf59780489fe1de657fe662296e90",
+        "lean/lean-toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+        "lean/s11/S11D4Invariants/ConstraintBlock0.lean": "a392b17298a7a4e89f2a29b7f475d3451d0845041a9dbe38704429812e7e7425",
+        "lean/s11/S11D4Invariants/ConstraintPolynomial.lean": "998ce5e4f2d0930e5e52997c4c300128d990b175030272dd321e4004036ec41a",
+        "lean/s11/S11D4Invariants/Forms.lean": "74ff651936459ee6e3b7b9a136b06c929be19ec22ce10559dd371008d2e03a69",
+        "lean/s11/S11D4Invariants/Orientation.lean": "417aa006bce48911f0cdd914b0f9087e19fbf876d7a13647d98f684a545ce31f",
+        "lean/s11/S11D4Invariants/Quadratic.lean": "5d64eda063b367049135aed7072821f2679dc860987dc0578036af6955809763",
+        "lean/s11/S11D4Invariants/Rotation.lean": "01f3e8e0fa11ba6eb53c756b8ea67a825de83f2cd13c8b81b5c58de6490f391c"
+      }
+    },
+    {
+      "name": "dependency_S11D4Invariants_ConstraintBlock1",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "-o",
+        "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S11D4Invariants/ConstraintBlock1.olean",
+        "s11/S11D4Invariants/ConstraintBlock1.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 104.369,
+      "source_sha256": "9e6cdf6c14a124af9e713fc0d922d5b37def9773d658cdb53847ce6e94769651",
+      "required_failure_in": null,
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "olean_sha256": "5b616443dcc909cfe38da17d11f1aca2763a428e9e18658ecf6e91d2e6a44c2c",
+      "input_olean_sha256": {
+        "lean/.lake/build/lib/lean/S11D4Invariants/ConstraintPolynomial.olean": "a54a630545b7b6714ec3c71be9cac38b664eb66f2f781311d61eef4d7b01bb6e",
+        "lean/.lake/build/lib/lean/S11D4Invariants/Forms.olean": "13991521ee83b5460ce5461e729134f19505e8c862d3861215cc43867e4d54c1",
+        "lean/.lake/build/lib/lean/S11D4Invariants/Orientation.olean": "b7c3908a02ef887a9fa18f0fd8dba613a17c18c3038b4c0d298cfd5cb6358d67",
+        "lean/.lake/build/lib/lean/S11D4Invariants/Quadratic.olean": "48361d3511e3f8a471577407190d37756eba773675f311dcbfd2c1606adba1a3",
+        "lean/.lake/build/lib/lean/S11D4Invariants/Rotation.olean": "0562cb2478f1881c42f46c3a590546f886c3a1b475e0eb656badd0cd62db98cc"
+      },
+      "reused_from_instrument_sha256": "763443a69911fe8ecc60a2006c08a09f38d0357f7d06afa149ba3bf6026650f8",
+      "reuse_source_dependency_sha256": {
+        "_measurements/S11_lean_d4_generate.py": "b71b4813a3d8d00a786069f2416527c8e7f631b9e104c3094e3e7377a5c8d28d",
+        "lean/lake-manifest.json": "91fd5318cdc35e4044d6e059c6ef73d94b955d27adf8a5860b07ec92add9377e",
+        "lean/lakefile.toml": "da2daca55f5ca557c81bd559bcde2845274cf59780489fe1de657fe662296e90",
+        "lean/lean-toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+        "lean/s11/S11D4Invariants/ConstraintBlock1.lean": "9e6cdf6c14a124af9e713fc0d922d5b37def9773d658cdb53847ce6e94769651",
+        "lean/s11/S11D4Invariants/ConstraintPolynomial.lean": "998ce5e4f2d0930e5e52997c4c300128d990b175030272dd321e4004036ec41a",
+        "lean/s11/S11D4Invariants/Forms.lean": "74ff651936459ee6e3b7b9a136b06c929be19ec22ce10559dd371008d2e03a69",
+        "lean/s11/S11D4Invariants/Orientation.lean": "417aa006bce48911f0cdd914b0f9087e19fbf876d7a13647d98f684a545ce31f",
+        "lean/s11/S11D4Invariants/Quadratic.lean": "5d64eda063b367049135aed7072821f2679dc860987dc0578036af6955809763",
+        "lean/s11/S11D4Invariants/Rotation.lean": "01f3e8e0fa11ba6eb53c756b8ea67a825de83f2cd13c8b81b5c58de6490f391c"
+      }
+    },
+    {
+      "name": "dependency_S11D4Invariants_ConstraintBlock2",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "-o",
+        "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S11D4Invariants/ConstraintBlock2.olean",
+        "s11/S11D4Invariants/ConstraintBlock2.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 97.067,
+      "source_sha256": "d22ebe83d4b3e3a6bae8ebcfa7a94ddb34d2fe95110b23a3e9948a20dcf614e9",
+      "required_failure_in": null,
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "olean_sha256": "27dfb6ffa539087f020be2cd9da47ac6ebbbe3cfb83c5db3558d4f4ce989a8d7",
+      "input_olean_sha256": {
+        "lean/.lake/build/lib/lean/S11D4Invariants/ConstraintPolynomial.olean": "a54a630545b7b6714ec3c71be9cac38b664eb66f2f781311d61eef4d7b01bb6e",
+        "lean/.lake/build/lib/lean/S11D4Invariants/Forms.olean": "13991521ee83b5460ce5461e729134f19505e8c862d3861215cc43867e4d54c1",
+        "lean/.lake/build/lib/lean/S11D4Invariants/Orientation.olean": "b7c3908a02ef887a9fa18f0fd8dba613a17c18c3038b4c0d298cfd5cb6358d67",
+        "lean/.lake/build/lib/lean/S11D4Invariants/Quadratic.olean": "48361d3511e3f8a471577407190d37756eba773675f311dcbfd2c1606adba1a3",
+        "lean/.lake/build/lib/lean/S11D4Invariants/Rotation.olean": "0562cb2478f1881c42f46c3a590546f886c3a1b475e0eb656badd0cd62db98cc"
+      },
+      "reused_from_instrument_sha256": "763443a69911fe8ecc60a2006c08a09f38d0357f7d06afa149ba3bf6026650f8",
+      "reuse_source_dependency_sha256": {
+        "_measurements/S11_lean_d4_generate.py": "b71b4813a3d8d00a786069f2416527c8e7f631b9e104c3094e3e7377a5c8d28d",
+        "lean/lake-manifest.json": "91fd5318cdc35e4044d6e059c6ef73d94b955d27adf8a5860b07ec92add9377e",
+        "lean/lakefile.toml": "da2daca55f5ca557c81bd559bcde2845274cf59780489fe1de657fe662296e90",
+        "lean/lean-toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+        "lean/s11/S11D4Invariants/ConstraintBlock2.lean": "d22ebe83d4b3e3a6bae8ebcfa7a94ddb34d2fe95110b23a3e9948a20dcf614e9",
+        "lean/s11/S11D4Invariants/ConstraintPolynomial.lean": "998ce5e4f2d0930e5e52997c4c300128d990b175030272dd321e4004036ec41a",
+        "lean/s11/S11D4Invariants/Forms.lean": "74ff651936459ee6e3b7b9a136b06c929be19ec22ce10559dd371008d2e03a69",
+        "lean/s11/S11D4Invariants/Orientation.lean": "417aa006bce48911f0cdd914b0f9087e19fbf876d7a13647d98f684a545ce31f",
+        "lean/s11/S11D4Invariants/Quadratic.lean": "5d64eda063b367049135aed7072821f2679dc860987dc0578036af6955809763",
+        "lean/s11/S11D4Invariants/Rotation.lean": "01f3e8e0fa11ba6eb53c756b8ea67a825de83f2cd13c8b81b5c58de6490f391c"
+      }
+    },
+    {
+      "name": "dependency_S11D4Invariants_ConstraintBlock3",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "-o",
+        "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S11D4Invariants/ConstraintBlock3.olean",
+        "s11/S11D4Invariants/ConstraintBlock3.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 94.2,
+      "source_sha256": "a4f413393844de5e8a0126cf03d502c6ee32b1a44686b03762d39db72764ffa0",
+      "required_failure_in": null,
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "olean_sha256": "e30d85d353325f9b86e8d8dcd14e29231aaf0f584dc0245ff5b945ff70161c79",
+      "input_olean_sha256": {
+        "lean/.lake/build/lib/lean/S11D4Invariants/ConstraintPolynomial.olean": "a54a630545b7b6714ec3c71be9cac38b664eb66f2f781311d61eef4d7b01bb6e",
+        "lean/.lake/build/lib/lean/S11D4Invariants/Forms.olean": "13991521ee83b5460ce5461e729134f19505e8c862d3861215cc43867e4d54c1",
+        "lean/.lake/build/lib/lean/S11D4Invariants/Orientation.olean": "b7c3908a02ef887a9fa18f0fd8dba613a17c18c3038b4c0d298cfd5cb6358d67",
+        "lean/.lake/build/lib/lean/S11D4Invariants/Quadratic.olean": "48361d3511e3f8a471577407190d37756eba773675f311dcbfd2c1606adba1a3",
+        "lean/.lake/build/lib/lean/S11D4Invariants/Rotation.olean": "0562cb2478f1881c42f46c3a590546f886c3a1b475e0eb656badd0cd62db98cc"
+      },
+      "reused_from_instrument_sha256": "763443a69911fe8ecc60a2006c08a09f38d0357f7d06afa149ba3bf6026650f8",
+      "reuse_source_dependency_sha256": {
+        "_measurements/S11_lean_d4_generate.py": "b71b4813a3d8d00a786069f2416527c8e7f631b9e104c3094e3e7377a5c8d28d",
+        "lean/lake-manifest.json": "91fd5318cdc35e4044d6e059c6ef73d94b955d27adf8a5860b07ec92add9377e",
+        "lean/lakefile.toml": "da2daca55f5ca557c81bd559bcde2845274cf59780489fe1de657fe662296e90",
+        "lean/lean-toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+        "lean/s11/S11D4Invariants/ConstraintBlock3.lean": "a4f413393844de5e8a0126cf03d502c6ee32b1a44686b03762d39db72764ffa0",
+        "lean/s11/S11D4Invariants/ConstraintPolynomial.lean": "998ce5e4f2d0930e5e52997c4c300128d990b175030272dd321e4004036ec41a",
+        "lean/s11/S11D4Invariants/Forms.lean": "74ff651936459ee6e3b7b9a136b06c929be19ec22ce10559dd371008d2e03a69",
+        "lean/s11/S11D4Invariants/Orientation.lean": "417aa006bce48911f0cdd914b0f9087e19fbf876d7a13647d98f684a545ce31f",
+        "lean/s11/S11D4Invariants/Quadratic.lean": "5d64eda063b367049135aed7072821f2679dc860987dc0578036af6955809763",
+        "lean/s11/S11D4Invariants/Rotation.lean": "01f3e8e0fa11ba6eb53c756b8ea67a825de83f2cd13c8b81b5c58de6490f391c"
+      }
+    },
+    {
+      "name": "dependency_S11D4Invariants_Constraints",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "-o",
+        "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S11D4Invariants/Constraints.olean",
+        "s11/S11D4Invariants/Constraints.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 55.822,
+      "source_sha256": "dfe4f2dc27bc140681eb60ce2cf0fdc6926bcb61ab31e2ef2bb8957c1e68c43e",
+      "required_failure_in": null,
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "olean_sha256": "93e21a270430915462180ac86b2e1d229636f8c7a85a019bb4b200559c2d11a7",
+      "input_olean_sha256": {
+        "lean/.lake/build/lib/lean/S11D4Invariants/ConstraintBlock0.olean": "ba6c12127d281349829eb82fc9876e51d63ce2daa8fbfbb5267ce954a6d18226",
+        "lean/.lake/build/lib/lean/S11D4Invariants/ConstraintBlock1.olean": "5b616443dcc909cfe38da17d11f1aca2763a428e9e18658ecf6e91d2e6a44c2c",
+        "lean/.lake/build/lib/lean/S11D4Invariants/ConstraintBlock2.olean": "27dfb6ffa539087f020be2cd9da47ac6ebbbe3cfb83c5db3558d4f4ce989a8d7",
+        "lean/.lake/build/lib/lean/S11D4Invariants/ConstraintBlock3.olean": "e30d85d353325f9b86e8d8dcd14e29231aaf0f584dc0245ff5b945ff70161c79",
+        "lean/.lake/build/lib/lean/S11D4Invariants/ConstraintPolynomial.olean": "a54a630545b7b6714ec3c71be9cac38b664eb66f2f781311d61eef4d7b01bb6e",
+        "lean/.lake/build/lib/lean/S11D4Invariants/Forms.olean": "13991521ee83b5460ce5461e729134f19505e8c862d3861215cc43867e4d54c1",
+        "lean/.lake/build/lib/lean/S11D4Invariants/Orientation.olean": "b7c3908a02ef887a9fa18f0fd8dba613a17c18c3038b4c0d298cfd5cb6358d67",
+        "lean/.lake/build/lib/lean/S11D4Invariants/Quadratic.olean": "48361d3511e3f8a471577407190d37756eba773675f311dcbfd2c1606adba1a3",
+        "lean/.lake/build/lib/lean/S11D4Invariants/Rotation.olean": "0562cb2478f1881c42f46c3a590546f886c3a1b475e0eb656badd0cd62db98cc"
+      },
+      "reused_from_instrument_sha256": "763443a69911fe8ecc60a2006c08a09f38d0357f7d06afa149ba3bf6026650f8",
+      "reuse_source_dependency_sha256": {
+        "_measurements/S11_lean_d4_generate.py": "b71b4813a3d8d00a786069f2416527c8e7f631b9e104c3094e3e7377a5c8d28d",
+        "lean/lake-manifest.json": "91fd5318cdc35e4044d6e059c6ef73d94b955d27adf8a5860b07ec92add9377e",
+        "lean/lakefile.toml": "da2daca55f5ca557c81bd559bcde2845274cf59780489fe1de657fe662296e90",
+        "lean/lean-toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+        "lean/s11/S11D4Invariants/ConstraintBlock0.lean": "a392b17298a7a4e89f2a29b7f475d3451d0845041a9dbe38704429812e7e7425",
+        "lean/s11/S11D4Invariants/ConstraintBlock1.lean": "9e6cdf6c14a124af9e713fc0d922d5b37def9773d658cdb53847ce6e94769651",
+        "lean/s11/S11D4Invariants/ConstraintBlock2.lean": "d22ebe83d4b3e3a6bae8ebcfa7a94ddb34d2fe95110b23a3e9948a20dcf614e9",
+        "lean/s11/S11D4Invariants/ConstraintBlock3.lean": "a4f413393844de5e8a0126cf03d502c6ee32b1a44686b03762d39db72764ffa0",
+        "lean/s11/S11D4Invariants/ConstraintPolynomial.lean": "998ce5e4f2d0930e5e52997c4c300128d990b175030272dd321e4004036ec41a",
+        "lean/s11/S11D4Invariants/Constraints.lean": "dfe4f2dc27bc140681eb60ce2cf0fdc6926bcb61ab31e2ef2bb8957c1e68c43e",
+        "lean/s11/S11D4Invariants/Forms.lean": "74ff651936459ee6e3b7b9a136b06c929be19ec22ce10559dd371008d2e03a69",
+        "lean/s11/S11D4Invariants/Orientation.lean": "417aa006bce48911f0cdd914b0f9087e19fbf876d7a13647d98f684a545ce31f",
+        "lean/s11/S11D4Invariants/Quadratic.lean": "5d64eda063b367049135aed7072821f2679dc860987dc0578036af6955809763",
+        "lean/s11/S11D4Invariants/Rotation.lean": "01f3e8e0fa11ba6eb53c756b8ea67a825de83f2cd13c8b81b5c58de6490f391c"
+      }
+    },
+    {
+      "name": "dependency_S11D4Invariants_Classification",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "-o",
+        "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S11D4Invariants/Classification.olean",
+        "s11/S11D4Invariants/Classification.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 20.305,
+      "source_sha256": "3b95a47959eeabc44268a2ae7dd1b8d5ff9d3f454d3c7b12d23c7fca365a2729",
+      "required_failure_in": null,
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "olean_sha256": "556ead212a046b381b6b6789eb957d17fc987f0266a1b56f4752cc3490e808de",
+      "input_olean_sha256": {
+        "lean/.lake/build/lib/lean/S11D4Invariants/ConstraintBlock0.olean": "ba6c12127d281349829eb82fc9876e51d63ce2daa8fbfbb5267ce954a6d18226",
+        "lean/.lake/build/lib/lean/S11D4Invariants/ConstraintBlock1.olean": "5b616443dcc909cfe38da17d11f1aca2763a428e9e18658ecf6e91d2e6a44c2c",
+        "lean/.lake/build/lib/lean/S11D4Invariants/ConstraintBlock2.olean": "27dfb6ffa539087f020be2cd9da47ac6ebbbe3cfb83c5db3558d4f4ce989a8d7",
+        "lean/.lake/build/lib/lean/S11D4Invariants/ConstraintBlock3.olean": "e30d85d353325f9b86e8d8dcd14e29231aaf0f584dc0245ff5b945ff70161c79",
+        "lean/.lake/build/lib/lean/S11D4Invariants/ConstraintPolynomial.olean": "a54a630545b7b6714ec3c71be9cac38b664eb66f2f781311d61eef4d7b01bb6e",
+        "lean/.lake/build/lib/lean/S11D4Invariants/Constraints.olean": "93e21a270430915462180ac86b2e1d229636f8c7a85a019bb4b200559c2d11a7",
+        "lean/.lake/build/lib/lean/S11D4Invariants/Forms.olean": "13991521ee83b5460ce5461e729134f19505e8c862d3861215cc43867e4d54c1",
+        "lean/.lake/build/lib/lean/S11D4Invariants/Orientation.olean": "b7c3908a02ef887a9fa18f0fd8dba613a17c18c3038b4c0d298cfd5cb6358d67",
+        "lean/.lake/build/lib/lean/S11D4Invariants/Quadratic.olean": "48361d3511e3f8a471577407190d37756eba773675f311dcbfd2c1606adba1a3",
+        "lean/.lake/build/lib/lean/S11D4Invariants/Rotation.olean": "0562cb2478f1881c42f46c3a590546f886c3a1b475e0eb656badd0cd62db98cc"
+      },
+      "reused_from_instrument_sha256": "763443a69911fe8ecc60a2006c08a09f38d0357f7d06afa149ba3bf6026650f8",
+      "reuse_source_dependency_sha256": {
+        "_measurements/S11_lean_d4_generate.py": "b71b4813a3d8d00a786069f2416527c8e7f631b9e104c3094e3e7377a5c8d28d",
+        "lean/lake-manifest.json": "91fd5318cdc35e4044d6e059c6ef73d94b955d27adf8a5860b07ec92add9377e",
+        "lean/lakefile.toml": "da2daca55f5ca557c81bd559bcde2845274cf59780489fe1de657fe662296e90",
+        "lean/lean-toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+        "lean/s11/S11D4Invariants/Classification.lean": "3b95a47959eeabc44268a2ae7dd1b8d5ff9d3f454d3c7b12d23c7fca365a2729",
+        "lean/s11/S11D4Invariants/ConstraintBlock0.lean": "a392b17298a7a4e89f2a29b7f475d3451d0845041a9dbe38704429812e7e7425",
+        "lean/s11/S11D4Invariants/ConstraintBlock1.lean": "9e6cdf6c14a124af9e713fc0d922d5b37def9773d658cdb53847ce6e94769651",
+        "lean/s11/S11D4Invariants/ConstraintBlock2.lean": "d22ebe83d4b3e3a6bae8ebcfa7a94ddb34d2fe95110b23a3e9948a20dcf614e9",
+        "lean/s11/S11D4Invariants/ConstraintBlock3.lean": "a4f413393844de5e8a0126cf03d502c6ee32b1a44686b03762d39db72764ffa0",
+        "lean/s11/S11D4Invariants/ConstraintPolynomial.lean": "998ce5e4f2d0930e5e52997c4c300128d990b175030272dd321e4004036ec41a",
+        "lean/s11/S11D4Invariants/Constraints.lean": "dfe4f2dc27bc140681eb60ce2cf0fdc6926bcb61ab31e2ef2bb8957c1e68c43e",
+        "lean/s11/S11D4Invariants/Forms.lean": "74ff651936459ee6e3b7b9a136b06c929be19ec22ce10559dd371008d2e03a69",
+        "lean/s11/S11D4Invariants/Orientation.lean": "417aa006bce48911f0cdd914b0f9087e19fbf876d7a13647d98f684a545ce31f",
+        "lean/s11/S11D4Invariants/Quadratic.lean": "5d64eda063b367049135aed7072821f2679dc860987dc0578036af6955809763",
+        "lean/s11/S11D4Invariants/Rotation.lean": "01f3e8e0fa11ba6eb53c756b8ea67a825de83f2cd13c8b81b5c58de6490f391c"
+      }
+    },
+    {
+      "name": "build_Action",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "-o",
+        "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S11D4Odd/Action.olean",
+        "s11/S11D4Odd/Action.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 15.673,
+      "source_sha256": "f83222be186089289e444f98d2518a3c5057248c7216ad1ee0fe769df36cc4be",
+      "required_failure_in": null,
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "olean_sha256": "a65aef95ed828d2e4f211393720cf4d15e8106ab3d743d2fc5384d177681ec97",
+      "input_olean_sha256": {
+        "lean/.lake/build/lib/lean/S10Pilot/Action.olean": "1be8c3c4196dd7d4ec3eab5adeec1ad4efd799f37bea3169a7b2396a59efc3bb",
+        "lean/.lake/build/lib/lean/S10Pilot/Analytic.olean": "9734d5342b5ee8d0683ce8e04b29e063554c4481f6db0e0cc5e418b68a9bebc6",
+        "lean/.lake/build/lib/lean/S10Pilot/PlaneWave.olean": "0d66b90ba63086dceddbae3b9cdeae947fcc286b6fa2d3bcd9c9dc033e0608b4",
+        "lean/.lake/build/lib/lean/S11D4Invariants/Classification.olean": "556ead212a046b381b6b6789eb957d17fc987f0266a1b56f4752cc3490e808de",
+        "lean/.lake/build/lib/lean/S11D4Invariants/ConstraintBlock0.olean": "ba6c12127d281349829eb82fc9876e51d63ce2daa8fbfbb5267ce954a6d18226",
+        "lean/.lake/build/lib/lean/S11D4Invariants/ConstraintBlock1.olean": "5b616443dcc909cfe38da17d11f1aca2763a428e9e18658ecf6e91d2e6a44c2c",
+        "lean/.lake/build/lib/lean/S11D4Invariants/ConstraintBlock2.olean": "27dfb6ffa539087f020be2cd9da47ac6ebbbe3cfb83c5db3558d4f4ce989a8d7",
+        "lean/.lake/build/lib/lean/S11D4Invariants/ConstraintBlock3.olean": "e30d85d353325f9b86e8d8dcd14e29231aaf0f584dc0245ff5b945ff70161c79",
+        "lean/.lake/build/lib/lean/S11D4Invariants/ConstraintPolynomial.olean": "a54a630545b7b6714ec3c71be9cac38b664eb66f2f781311d61eef4d7b01bb6e",
+        "lean/.lake/build/lib/lean/S11D4Invariants/Constraints.olean": "93e21a270430915462180ac86b2e1d229636f8c7a85a019bb4b200559c2d11a7",
+        "lean/.lake/build/lib/lean/S11D4Invariants/Forms.olean": "13991521ee83b5460ce5461e729134f19505e8c862d3861215cc43867e4d54c1",
+        "lean/.lake/build/lib/lean/S11D4Invariants/Orientation.olean": "b7c3908a02ef887a9fa18f0fd8dba613a17c18c3038b4c0d298cfd5cb6358d67",
+        "lean/.lake/build/lib/lean/S11D4Invariants/Quadratic.olean": "48361d3511e3f8a471577407190d37756eba773675f311dcbfd2c1606adba1a3",
+        "lean/.lake/build/lib/lean/S11D4Invariants/Rotation.olean": "0562cb2478f1881c42f46c3a590546f886c3a1b475e0eb656badd0cd62db98cc"
+      }
+    },
+    {
+      "name": "build_Calculus",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "-o",
+        "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S11D4Odd/Calculus.olean",
+        "s11/S11D4Odd/Calculus.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 11.897,
+      "source_sha256": "22604d9999f0a28079ff7fd9a9f88760df1509ae0c8a3838de26f3fefbeddd04",
+      "required_failure_in": null,
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "olean_sha256": "17a981fa8a51641be48dd7fa533c7dc458aaf2ce8d485fa8e04a39dd49086ad6",
+      "input_olean_sha256": {
+        "lean/.lake/build/lib/lean/S10Pilot/Action.olean": "1be8c3c4196dd7d4ec3eab5adeec1ad4efd799f37bea3169a7b2396a59efc3bb",
+        "lean/.lake/build/lib/lean/S10Pilot/Analytic.olean": "9734d5342b5ee8d0683ce8e04b29e063554c4481f6db0e0cc5e418b68a9bebc6",
+        "lean/.lake/build/lib/lean/S10Pilot/PlaneWave.olean": "0d66b90ba63086dceddbae3b9cdeae947fcc286b6fa2d3bcd9c9dc033e0608b4"
+      }
+    },
+    {
+      "name": "build_Variation",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "-o",
+        "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S11D4Odd/Variation.olean",
+        "s11/S11D4Odd/Variation.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 11.545,
+      "source_sha256": "2bb66ed4848d61893e035250e3047dfa5cdbfd2081b8928d0bf663dfbf3d728f",
+      "required_failure_in": null,
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "olean_sha256": "31f397ac9ba6935cf3a2f4f20ba652844ef4a87fb067964eddc0de4926dcae7e",
+      "input_olean_sha256": {
+        "lean/.lake/build/lib/lean/S10Pilot/Action.olean": "1be8c3c4196dd7d4ec3eab5adeec1ad4efd799f37bea3169a7b2396a59efc3bb",
+        "lean/.lake/build/lib/lean/S10Pilot/Analytic.olean": "9734d5342b5ee8d0683ce8e04b29e063554c4481f6db0e0cc5e418b68a9bebc6",
+        "lean/.lake/build/lib/lean/S10Pilot/PlaneWave.olean": "0d66b90ba63086dceddbae3b9cdeae947fcc286b6fa2d3bcd9c9dc033e0608b4",
+        "lean/.lake/build/lib/lean/S11D4Invariants/Classification.olean": "556ead212a046b381b6b6789eb957d17fc987f0266a1b56f4752cc3490e808de",
+        "lean/.lake/build/lib/lean/S11D4Invariants/ConstraintBlock0.olean": "ba6c12127d281349829eb82fc9876e51d63ce2daa8fbfbb5267ce954a6d18226",
+        "lean/.lake/build/lib/lean/S11D4Invariants/ConstraintBlock1.olean": "5b616443dcc909cfe38da17d11f1aca2763a428e9e18658ecf6e91d2e6a44c2c",
+        "lean/.lake/build/lib/lean/S11D4Invariants/ConstraintBlock2.olean": "27dfb6ffa539087f020be2cd9da47ac6ebbbe3cfb83c5db3558d4f4ce989a8d7",
+        "lean/.lake/build/lib/lean/S11D4Invariants/ConstraintBlock3.olean": "e30d85d353325f9b86e8d8dcd14e29231aaf0f584dc0245ff5b945ff70161c79",
+        "lean/.lake/build/lib/lean/S11D4Invariants/ConstraintPolynomial.olean": "a54a630545b7b6714ec3c71be9cac38b664eb66f2f781311d61eef4d7b01bb6e",
+        "lean/.lake/build/lib/lean/S11D4Invariants/Constraints.olean": "93e21a270430915462180ac86b2e1d229636f8c7a85a019bb4b200559c2d11a7",
+        "lean/.lake/build/lib/lean/S11D4Invariants/Forms.olean": "13991521ee83b5460ce5461e729134f19505e8c862d3861215cc43867e4d54c1",
+        "lean/.lake/build/lib/lean/S11D4Invariants/Orientation.olean": "b7c3908a02ef887a9fa18f0fd8dba613a17c18c3038b4c0d298cfd5cb6358d67",
+        "lean/.lake/build/lib/lean/S11D4Invariants/Quadratic.olean": "48361d3511e3f8a471577407190d37756eba773675f311dcbfd2c1606adba1a3",
+        "lean/.lake/build/lib/lean/S11D4Invariants/Rotation.olean": "0562cb2478f1881c42f46c3a590546f886c3a1b475e0eb656badd0cd62db98cc",
+        "lean/.lake/build/lib/lean/S11D4Odd/Action.olean": "a65aef95ed828d2e4f211393720cf4d15e8106ab3d743d2fc5384d177681ec97"
+      }
+    },
+    {
+      "name": "build_Boundary",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "-o",
+        "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S11D4Odd/Boundary.olean",
+        "s11/S11D4Odd/Boundary.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 11.997,
+      "source_sha256": "691c9981cc50d4b32ec66628c6aadc3102d2e7551a3a36540874e09731c619c8",
+      "required_failure_in": null,
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "olean_sha256": "8a4351fa6f9dba60578a8c7764aa2ce9654f6eb5e2bcfc97c0ec0c91baca25ec",
+      "input_olean_sha256": {
+        "lean/.lake/build/lib/lean/S10Pilot/Action.olean": "1be8c3c4196dd7d4ec3eab5adeec1ad4efd799f37bea3169a7b2396a59efc3bb",
+        "lean/.lake/build/lib/lean/S10Pilot/Analytic.olean": "9734d5342b5ee8d0683ce8e04b29e063554c4481f6db0e0cc5e418b68a9bebc6",
+        "lean/.lake/build/lib/lean/S10Pilot/PlaneWave.olean": "0d66b90ba63086dceddbae3b9cdeae947fcc286b6fa2d3bcd9c9dc033e0608b4",
+        "lean/.lake/build/lib/lean/S11D4Invariants/Classification.olean": "556ead212a046b381b6b6789eb957d17fc987f0266a1b56f4752cc3490e808de",
+        "lean/.lake/build/lib/lean/S11D4Invariants/ConstraintBlock0.olean": "ba6c12127d281349829eb82fc9876e51d63ce2daa8fbfbb5267ce954a6d18226",
+        "lean/.lake/build/lib/lean/S11D4Invariants/ConstraintBlock1.olean": "5b616443dcc909cfe38da17d11f1aca2763a428e9e18658ecf6e91d2e6a44c2c",
+        "lean/.lake/build/lib/lean/S11D4Invariants/ConstraintBlock2.olean": "27dfb6ffa539087f020be2cd9da47ac6ebbbe3cfb83c5db3558d4f4ce989a8d7",
+        "lean/.lake/build/lib/lean/S11D4Invariants/ConstraintBlock3.olean": "e30d85d353325f9b86e8d8dcd14e29231aaf0f584dc0245ff5b945ff70161c79",
+        "lean/.lake/build/lib/lean/S11D4Invariants/ConstraintPolynomial.olean": "a54a630545b7b6714ec3c71be9cac38b664eb66f2f781311d61eef4d7b01bb6e",
+        "lean/.lake/build/lib/lean/S11D4Invariants/Constraints.olean": "93e21a270430915462180ac86b2e1d229636f8c7a85a019bb4b200559c2d11a7",
+        "lean/.lake/build/lib/lean/S11D4Invariants/Forms.olean": "13991521ee83b5460ce5461e729134f19505e8c862d3861215cc43867e4d54c1",
+        "lean/.lake/build/lib/lean/S11D4Invariants/Orientation.olean": "b7c3908a02ef887a9fa18f0fd8dba613a17c18c3038b4c0d298cfd5cb6358d67",
+        "lean/.lake/build/lib/lean/S11D4Invariants/Quadratic.olean": "48361d3511e3f8a471577407190d37756eba773675f311dcbfd2c1606adba1a3",
+        "lean/.lake/build/lib/lean/S11D4Invariants/Rotation.olean": "0562cb2478f1881c42f46c3a590546f886c3a1b475e0eb656badd0cd62db98cc",
+        "lean/.lake/build/lib/lean/S11D4Odd/Action.olean": "a65aef95ed828d2e4f211393720cf4d15e8106ab3d743d2fc5384d177681ec97",
+        "lean/.lake/build/lib/lean/S11D4Odd/Calculus.olean": "17a981fa8a51641be48dd7fa533c7dc458aaf2ce8d485fa8e04a39dd49086ad6",
+        "lean/.lake/build/lib/lean/S11D4Odd/Variation.olean": "31f397ac9ba6935cf3a2f4f20ba652844ef4a87fb067964eddc0de4926dcae7e"
+      }
+    },
+    {
+      "name": "axiom_audit",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "-o",
+        "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S11D4Odd.olean",
+        "s11/S11D4Odd.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 7.266,
+      "source_sha256": "d2e5686a4cd48fa548c83db8b267dadff65de50b4b8accf6f5eaba0fcdf8276e",
+      "required_failure_in": null,
+      "diagnostics": [],
+      "output": "'S11D4Odd.orientationJet_eq' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D4Odd.density_identity' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D4Odd.all_odd_densities' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D4Odd.lagrangian_increment' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D4Odd.lagrangian_variation' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D4Odd.momentum_eq' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D4Odd.dualCurl_contraction' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D4Odd.smooth_dualCurl' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D4Odd.smooth_momentum' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D4Odd.smooth_eulerLagrange' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D4Odd.partial_add' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D4Odd.partial_sub' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D4Odd.partial_neg' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D4Odd.partial_const_mul' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D4Odd.partial_mul' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D4Odd.partial_zero' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D4Odd.partial_sum' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D4Odd.partial_second' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D4Odd.partial_commute' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D4Odd.linearDensity_eq' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D4Odd.lagrangian_change' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D4Odd.linearDensity_self' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D4Odd.integrable_linear_term' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D4Odd.integrable_linearDensity' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D4Odd.integrable_test_lagrangian' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D4Odd.relative_density_integrable' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D4Odd.relativeAction_expansion' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D4Odd.relativeAction_hasDerivAt' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D4Odd.integrable_el_term' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D4Odd.integrated_variation_by_parts' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D4Odd.relativeAction_deriv_eq_eulerLagrange' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D4Odd.dualCurl_divergence_zero' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D4Odd.eulerLagrange_zero' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D4Odd.boundary_identity' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D4Odd.lagrangian_is_divergence' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D4Odd.firstVariation_zero' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D4Odd.every_background_stationary' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D4Odd.nonzero_density' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D4Odd.witness_lagrangian' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D4Odd.nonzero_momentum' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11D4Odd.current_normalization' depends on axioms: [propext, Classical.choice, Quot.sound]\n",
+      "output_sha256": "3415dce9254ff111de8665de98a65d2876ac761ddf4959bd61ada5e2a9e026bd",
+      "olean_sha256": "47e8ddb6099861d8b11772863ccbf7a97d319191059d0a314b50e25642d4e6dc",
+      "input_olean_sha256": {
+        "lean/.lake/build/lib/lean/S10Pilot/Action.olean": "1be8c3c4196dd7d4ec3eab5adeec1ad4efd799f37bea3169a7b2396a59efc3bb",
+        "lean/.lake/build/lib/lean/S10Pilot/Analytic.olean": "9734d5342b5ee8d0683ce8e04b29e063554c4481f6db0e0cc5e418b68a9bebc6",
+        "lean/.lake/build/lib/lean/S10Pilot/PlaneWave.olean": "0d66b90ba63086dceddbae3b9cdeae947fcc286b6fa2d3bcd9c9dc033e0608b4",
+        "lean/.lake/build/lib/lean/S11D4Invariants/Classification.olean": "556ead212a046b381b6b6789eb957d17fc987f0266a1b56f4752cc3490e808de",
+        "lean/.lake/build/lib/lean/S11D4Invariants/ConstraintBlock0.olean": "ba6c12127d281349829eb82fc9876e51d63ce2daa8fbfbb5267ce954a6d18226",
+        "lean/.lake/build/lib/lean/S11D4Invariants/ConstraintBlock1.olean": "5b616443dcc909cfe38da17d11f1aca2763a428e9e18658ecf6e91d2e6a44c2c",
+        "lean/.lake/build/lib/lean/S11D4Invariants/ConstraintBlock2.olean": "27dfb6ffa539087f020be2cd9da47ac6ebbbe3cfb83c5db3558d4f4ce989a8d7",
+        "lean/.lake/build/lib/lean/S11D4Invariants/ConstraintBlock3.olean": "e30d85d353325f9b86e8d8dcd14e29231aaf0f584dc0245ff5b945ff70161c79",
+        "lean/.lake/build/lib/lean/S11D4Invariants/ConstraintPolynomial.olean": "a54a630545b7b6714ec3c71be9cac38b664eb66f2f781311d61eef4d7b01bb6e",
+        "lean/.lake/build/lib/lean/S11D4Invariants/Constraints.olean": "93e21a270430915462180ac86b2e1d229636f8c7a85a019bb4b200559c2d11a7",
+        "lean/.lake/build/lib/lean/S11D4Invariants/Forms.olean": "13991521ee83b5460ce5461e729134f19505e8c862d3861215cc43867e4d54c1",
+        "lean/.lake/build/lib/lean/S11D4Invariants/Orientation.olean": "b7c3908a02ef887a9fa18f0fd8dba613a17c18c3038b4c0d298cfd5cb6358d67",
+        "lean/.lake/build/lib/lean/S11D4Invariants/Quadratic.olean": "48361d3511e3f8a471577407190d37756eba773675f311dcbfd2c1606adba1a3",
+        "lean/.lake/build/lib/lean/S11D4Invariants/Rotation.olean": "0562cb2478f1881c42f46c3a590546f886c3a1b475e0eb656badd0cd62db98cc",
+        "lean/.lake/build/lib/lean/S11D4Odd/Action.olean": "a65aef95ed828d2e4f211393720cf4d15e8106ab3d743d2fc5384d177681ec97",
+        "lean/.lake/build/lib/lean/S11D4Odd/Boundary.olean": "8a4351fa6f9dba60578a8c7764aa2ce9654f6eb5e2bcfc97c0ec0c91baca25ec",
+        "lean/.lake/build/lib/lean/S11D4Odd/Calculus.olean": "17a981fa8a51641be48dd7fa533c7dc458aaf2ce8d485fa8e04a39dd49086ad6",
+        "lean/.lake/build/lib/lean/S11D4Odd/Variation.olean": "31f397ac9ba6935cf3a2f4f20ba652844ef4a87fb067964eddc0de4926dcae7e"
+      }
+    },
+    {
+      "name": "density_normalization",
+      "expected": "REJECTED",
+      "outcome": "REJECTED",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/d4_odd_verification/density_normalization.lean"
+      ],
+      "exit_status": 1,
+      "wall_seconds": 18.695,
+      "source_sha256": "4c343f3b7d2d4b4b7642a5452eddd899901928e499ab3920fa385cff92ef90e3",
+      "required_failure_in": "density_identity",
+      "diagnostics": [
+        {
+          "declaration": "density_identity",
+          "line": 28,
+          "message": "s11/_scratch/d4_odd_verification/density_normalization.lean:28:73: error: unsolved goals\nbeta : ℝ\nJ : Jet 4\n⊢ -(beta * S11D4Invariants.orientation (spatialGradient J)) =\n    beta * S11D4Invariants.orientation (spatialGradient J) * (-1 / 2)\nTry this:\n  [apply] ring_nf\n  \n  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.\n    \n  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.\n"
+        },
+        {
+          "declaration": "lagrangian_increment",
+          "line": 45,
+          "message": "s11/_scratch/d4_odd_verification/density_normalization.lean:45:67: error: unsolved goals\nbeta s : ℝ\nJ H : Jet 4\n⊢ -(beta * J (Fin.succ 0) 1 * s * H (Fin.succ 2) 3) + beta * J (Fin.succ 0) 1 * s * H (Fin.succ 3) 2 -\n                                                                                                beta *\n                                                                                                    J (Fin.succ 0) 1 *\n                                                                                                  J (Fin.succ 2) 3 +\n                                                                                              beta * J (Fin.succ 0) 1 *\n                                                                                                J (Fin.succ 3) 2 -\n                                                                                            beta * s *\n                                                                                                H (Fin.succ 0) 1 *\n                                                                                              J (Fin.succ 2) 3 +\n                                                                                          beta * s * H (Fin.succ 0) 1 *\n                                                                                            J (Fin.succ 3) 2 +\n                                                                                        beta * s * J (Fin.succ 1) 0 *\n                                                                                          H (Fin.succ 2) 3 -\n                                                                                      beta * s * J (Fin.succ 1) 0 *\n                                                                                        H (Fin.succ 3) 2 +\n                                                                                    beta * s * H (Fin.succ 1) 0 *\n                                                                                      J (Fin.succ 2) 3 -\n                                                                                  beta * s * H (Fin.succ 1) 0 *\n                                                                                    J (Fin.succ 3) 2 +\n                                                                                beta * s * J (Fin.succ 0) 2 *\n                                                                                  H (Fin.succ 1) 3 -\n                                                                              beta * s * J (Fin.succ 0) 2 *\n                                                                                H (Fin.succ 3) 1 +\n                                                                            beta * s * H (Fin.succ 0) 2 *\n                                                                              J (Fin.succ 1) 3 -\n                                                                          beta * s * H (Fin.succ 0) 2 *\n                                                                            J (Fin.succ 3) 1 -\n                                                                        beta * s * J (Fin.succ 2) 0 * H (Fin.succ 1) 3 +\n                                                                      beta * s * J (Fin.succ 2) 0 * H (Fin.succ 3) 1 -\n                                                                    beta * s * H (Fin.succ 2) 0 * J (Fin.succ 1) 3 +\n                                                                  beta * s * H (Fin.succ 2) 0 * J (Fin.succ 3) 1 -\n                                                                beta * s * J (Fin.succ 0) 3 * H (Fin.succ 1) 2 +\n                                                              beta * s * J (Fin.succ 0) 3 * H (Fin.succ 2) 1 -\n                                                            beta * s * H (Fin.succ 0) 3 * J (Fin.succ 1) 2 +\n                                                          beta * s * H (Fin.succ 0) 3 * J (Fin.succ 2) 1 +\n                                                        beta * s * J (Fin.succ 3) 0 * H (Fin.succ 1) 2 -\n                                                      beta * s * J (Fin.succ 3) 0 * H (Fin.succ 2) 1 +\n                                                    beta * s * H (Fin.succ 3) 0 * J (Fin.succ 1) 2 -\n                                                  beta * s * H (Fin.succ 3) 0 * J (Fin.succ 2) 1 -\n                                                beta * s ^ 2 * H (Fin.succ 0) 1 * H (Fin.succ 2) 3 +\n                                              beta * s ^ 2 * H (Fin.succ 0) 1 * H (Fin.succ 3) 2 +\n                                            beta * s ^ 2 * H (Fin.succ 1) 0 * H (Fin.succ 2) 3 -\n                                          beta * s ^ 2 * H (Fin.succ 1) 0 * H (Fin.succ 3) 2 +\n                                        beta * s ^ 2 * H (Fin.succ 0) 2 * H (Fin.succ 1) 3 -\n                                      beta * s ^ 2 * H (Fin.succ 0) 2 * H (Fin.succ 3) 1 -\n                                    beta * s ^ 2 * H (Fin.succ 2) 0 * H (Fin.succ 1) 3 +\n                                  beta * s ^ 2 * H (Fin.succ 2) 0 * H (Fin.succ 3) 1 -\n                                beta * s ^ 2 * H (Fin.succ 0) 3 * H (Fin.succ 1) 2 +\n                              beta * s ^ 2 * H (Fin.succ 0) 3 * H (Fin.succ 2) 1 +\n                            beta * s ^ 2 * H (Fin.succ 3) 0 * H (Fin.succ 1) 2 -\n                          beta * s ^ 2 * H (Fin.succ 3) 0 * H (Fin.succ 2) 1 +\n                        beta * J (Fin.succ 1) 0 * J (Fin.succ 2) 3 -\n                      beta * J (Fin.succ 1) 0 * J (Fin.succ 3) 2 +\n                    beta * J (Fin.succ 0) 2 * J (Fin.succ 1) 3 -\n                  beta * J (Fin.succ 0) 2 * J (Fin.succ 3) 1 -\n                beta * J (Fin.succ 2) 0 * J (Fin.succ 1) 3 +\n              beta * J (Fin.succ 2) 0 * J (Fin.succ 3) 1 -\n            beta * J (Fin.succ 0) 3 * J (Fin.succ 1) 2 +\n          beta * J (Fin.succ 0) 3 * J (Fin.succ 2) 1 +\n        beta * J (Fin.succ 3) 0 * J (Fin.succ 1) 2 -\n      beta * J (Fin.succ 3) 0 * J (Fin.succ 2) 1 =\n    beta * J (Fin.succ 0) 1 * s * H (Fin.succ 2) 3 * (-1 / 2) +\n                                                                                                  beta *\n                                                                                                          J (Fin.succ 0)\n                                                                                                            1 *\n                                                                                                        s *\n                                                                                                      H (Fin.succ 3) 2 *\n                                                                                                    (1 / 2) -\n                                                                                                beta *\n                                                                                                    J (Fin.succ 0) 1 *\n                                                                                                  J (Fin.succ 2) 3 +\n                                                                                              beta * J (Fin.succ 0) 1 *\n                                                                                                J (Fin.succ 3) 2 +\n                                                                                            beta * s *\n                                                                                                  H (Fin.succ 0) 1 *\n                                                                                                J (Fin.succ 2) 3 *\n                                                                                              (-1 / 2) +\n                                                                                          beta * s * H (Fin.succ 0) 1 *\n                                                                                              J (Fin.succ 3) 2 *\n                                                                                            (1 / 2) +\n                                                                                        beta * s * J (Fin.succ 1) 0 *\n                                                                                            H (Fin.succ 2) 3 *\n                                                                                          (1 / 2) +\n                                                                                      beta * s * J (Fin.succ 1) 0 *\n                                                                                          H (Fin.succ 3) 2 *\n                                                                                        (-1 / 2) +\n                                                                                    beta * s * H (Fin.succ 1) 0 *\n                                                                                        J (Fin.succ 2) 3 *\n                                                                                      (1 / 2) +\n                                                                                  beta * s * H (Fin.succ 1) 0 *\n                                                                                      J (Fin.succ 3) 2 *\n                                                                                    (-1 / 2) +\n                                                                                beta * s * J (Fin.succ 0) 2 *\n                                                                                    H (Fin.succ 1) 3 *\n                                                                                  (1 / 2) +\n                                                                              beta * s * J (Fin.succ 0) 2 *\n                                                                                  H (Fin.succ 3) 1 *\n                                                                                (-1 / 2) +\n                                                                            beta * s * H (Fin.succ 0) 2 *\n                                                                                J (Fin.succ 1) 3 *\n                                                                              (1 / 2) +\n                                                                          beta * s * H (Fin.succ 0) 2 *\n                                                                              J (Fin.succ 3) 1 *\n                                                                            (-1 / 2) +\n                                                                        beta * s * J (Fin.succ 2) 0 * H (Fin.succ 1) 3 *\n                                                                          (-1 / 2) +\n                                                                      beta * s * J (Fin.succ 2) 0 * H (Fin.succ 3) 1 *\n                                                                        (1 / 2) +\n                                                                    beta * s * H (Fin.succ 2) 0 * J (Fin.succ 1) 3 *\n                                                                      (-1 / 2) +\n                                                                  beta * s * H (Fin.succ 2) 0 * J (Fin.succ 3) 1 *\n                                                                    (1 / 2) +\n                                                                beta * s * J (Fin.succ 0) 3 * H (Fin.succ 1) 2 *\n                                                                  (-1 / 2) +\n                                                              beta * s * J (Fin.succ 0) 3 * H (Fin.succ 2) 1 * (1 / 2) +\n                                                            beta * s * H (Fin.succ 0) 3 * J (Fin.succ 1) 2 * (-1 / 2) +\n                                                          beta * s * H (Fin.succ 0) 3 * J (Fin.succ 2) 1 * (1 / 2) +\n                                                        beta * s * J (Fin.succ 3) 0 * H (Fin.succ 1) 2 * (1 / 2) +\n                                                      beta * s * J (Fin.succ 3) 0 * H (Fin.succ 2) 1 * (-1 / 2) +\n                                                    beta * s * H (Fin.succ 3) 0 * J (Fin.succ 1) 2 * (1 / 2) +\n                                                  beta * s * H (Fin.succ 3) 0 * J (Fin.succ 2) 1 * (-1 / 2) -\n                                                beta * s ^ 2 * H (Fin.succ 0) 1 * H (Fin.succ 2) 3 +\n                                              beta * s ^ 2 * H (Fin.succ 0) 1 * H (Fin.succ 3) 2 +\n                                            beta * s ^ 2 * H (Fin.succ 1) 0 * H (Fin.succ 2) 3 -\n                                          beta * s ^ 2 * H (Fin.succ 1) 0 * H (Fin.succ 3) 2 +\n                                        beta * s ^ 2 * H (Fin.succ 0) 2 * H (Fin.succ 1) 3 -\n                                      beta * s ^ 2 * H (Fin.succ 0) 2 * H (Fin.succ 3) 1 -\n                                    beta * s ^ 2 * H (Fin.succ 2) 0 * H (Fin.succ 1) 3 +\n                                  beta * s ^ 2 * H (Fin.succ 2) 0 * H (Fin.succ 3) 1 -\n                                beta * s ^ 2 * H (Fin.succ 0) 3 * H (Fin.succ 1) 2 +\n                              beta * s ^ 2 * H (Fin.succ 0) 3 * H (Fin.succ 2) 1 +\n                            beta * s ^ 2 * H (Fin.succ 3) 0 * H (Fin.succ 1) 2 -\n                          beta * s ^ 2 * H (Fin.succ 3) 0 * H (Fin.succ 2) 1 +\n                        beta * J (Fin.succ 1) 0 * J (Fin.succ 2) 3 -\n                      beta * J (Fin.succ 1) 0 * J (Fin.succ 3) 2 +\n                    beta * J (Fin.succ 0) 2 * J (Fin.succ 1) 3 -\n                  beta * J (Fin.succ 0) 2 * J (Fin.succ 3) 1 -\n                beta * J (Fin.succ 2) 0 * J (Fin.succ 1) 3 +\n              beta * J (Fin.succ 2) 0 * J (Fin.succ 3) 1 -\n            beta * J (Fin.succ 0) 3 * J (Fin.succ 1) 2 +\n          beta * J (Fin.succ 0) 3 * J (Fin.succ 2) 1 +\n        beta * J (Fin.succ 3) 0 * J (Fin.succ 1) 2 -\n      beta * J (Fin.succ 3) 0 * J (Fin.succ 2) 1\n"
+        }
+      ],
+      "output": "Try this:\n  [apply] ring_nf\n  \n  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.\n    \n  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.\ns11/_scratch/d4_odd_verification/density_normalization.lean:28:73: error: unsolved goals\nbeta : ℝ\nJ : Jet 4\n⊢ -(beta * S11D4Invariants.orientation (spatialGradient J)) =\n    beta * S11D4Invariants.orientation (spatialGradient J) * (-1 / 2)\nTry this:\n  [apply] ring_nf\n  \n  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.\n    \n  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.\ns11/_scratch/d4_odd_verification/density_normalization.lean:45:67: error: unsolved goals\nbeta s : ℝ\nJ H : Jet 4\n⊢ -(beta * J (Fin.succ 0) 1 * s * H (Fin.succ 2) 3) + beta * J (Fin.succ 0) 1 * s * H (Fin.succ 3) 2 -\n                                                                                                beta *\n                                                                                                    J (Fin.succ 0) 1 *\n                                                                                                  J (Fin.succ 2) 3 +\n                                                                                              beta * J (Fin.succ 0) 1 *\n                                                                                                J (Fin.succ 3) 2 -\n                                                                                            beta * s *\n                                                                                                H (Fin.succ 0) 1 *\n                                                                                              J (Fin.succ 2) 3 +\n                                                                                          beta * s * H (Fin.succ 0) 1 *\n                                                                                            J (Fin.succ 3) 2 +\n                                                                                        beta * s * J (Fin.succ 1) 0 *\n                                                                                          H (Fin.succ 2) 3 -\n                                                                                      beta * s * J (Fin.succ 1) 0 *\n                                                                                        H (Fin.succ 3) 2 +\n                                                                                    beta * s * H (Fin.succ 1) 0 *\n                                                                                      J (Fin.succ 2) 3 -\n                                                                                  beta * s * H (Fin.succ 1) 0 *\n                                                                                    J (Fin.succ 3) 2 +\n                                                                                beta * s * J (Fin.succ 0) 2 *\n                                                                                  H (Fin.succ 1) 3 -\n                                                                              beta * s * J (Fin.succ 0) 2 *\n                                                                                H (Fin.succ 3) 1 +\n                                                                            beta * s * H (Fin.succ 0) 2 *\n                                                                              J (Fin.succ 1) 3 -\n                                                                          beta * s * H (Fin.succ 0) 2 *\n                                                                            J (Fin.succ 3) 1 -\n                                                                        beta * s * J (Fin.succ 2) 0 * H (Fin.succ 1) 3 +\n                                                                      beta * s * J (Fin.succ 2) 0 * H (Fin.succ 3) 1 -\n                                                                    beta * s * H (Fin.succ 2) 0 * J (Fin.succ 1) 3 +\n                                                                  beta * s * H (Fin.succ 2) 0 * J (Fin.succ 3) 1 -\n                                                                beta * s * J (Fin.succ 0) 3 * H (Fin.succ 1) 2 +\n                                                              beta * s * J (Fin.succ 0) 3 * H (Fin.succ 2) 1 -\n                                                            beta * s * H (Fin.succ 0) 3 * J (Fin.succ 1) 2 +\n                                                          beta * s * H (Fin.succ 0) 3 * J (Fin.succ 2) 1 +\n                                                        beta * s * J (Fin.succ 3) 0 * H (Fin.succ 1) 2 -\n                                                      beta * s * J (Fin.succ 3) 0 * H (Fin.succ 2) 1 +\n                                                    beta * s * H (Fin.succ 3) 0 * J (Fin.succ 1) 2 -\n                                                  beta * s * H (Fin.succ 3) 0 * J (Fin.succ 2) 1 -\n                                                beta * s ^ 2 * H (Fin.succ 0) 1 * H (Fin.succ 2) 3 +\n                                              beta * s ^ 2 * H (Fin.succ 0) 1 * H (Fin.succ 3) 2 +\n                                            beta * s ^ 2 * H (Fin.succ 1) 0 * H (Fin.succ 2) 3 -\n                                          beta * s ^ 2 * H (Fin.succ 1) 0 * H (Fin.succ 3) 2 +\n                                        beta * s ^ 2 * H (Fin.succ 0) 2 * H (Fin.succ 1) 3 -\n                                      beta * s ^ 2 * H (Fin.succ 0) 2 * H (Fin.succ 3) 1 -\n                                    beta * s ^ 2 * H (Fin.succ 2) 0 * H (Fin.succ 1) 3 +\n                                  beta * s ^ 2 * H (Fin.succ 2) 0 * H (Fin.succ 3) 1 -\n                                beta * s ^ 2 * H (Fin.succ 0) 3 * H (Fin.succ 1) 2 +\n                              beta * s ^ 2 * H (Fin.succ 0) 3 * H (Fin.succ 2) 1 +\n                            beta * s ^ 2 * H (Fin.succ 3) 0 * H (Fin.succ 1) 2 -\n                          beta * s ^ 2 * H (Fin.succ 3) 0 * H (Fin.succ 2) 1 +\n                        beta * J (Fin.succ 1) 0 * J (Fin.succ 2) 3 -\n                      beta * J (Fin.succ 1) 0 * J (Fin.succ 3) 2 +\n                    beta * J (Fin.succ 0) 2 * J (Fin.succ 1) 3 -\n                  beta * J (Fin.succ 0) 2 * J (Fin.succ 3) 1 -\n                beta * J (Fin.succ 2) 0 * J (Fin.succ 1) 3 +\n              beta * J (Fin.succ 2) 0 * J (Fin.succ 3) 1 -\n            beta * J (Fin.succ 0) 3 * J (Fin.succ 1) 2 +\n          beta * J (Fin.succ 0) 3 * J (Fin.succ 2) 1 +\n        beta * J (Fin.succ 3) 0 * J (Fin.succ 1) 2 -\n      beta * J (Fin.succ 3) 0 * J (Fin.succ 2) 1 =\n    beta * J (Fin.succ 0) 1 * s * H (Fin.succ 2) 3 * (-1 / 2) +\n                                                                                                  beta *\n                                                                                                          J (Fin.succ 0)\n                                                                                                            1 *\n                                                                                                        s *\n                                                                                                      H (Fin.succ 3) 2 *\n                                                                                                    (1 / 2) -\n                                                                                                beta *\n                                                                                                    J (Fin.succ 0) 1 *\n                                                                                                  J (Fin.succ 2) 3 +\n                                                                                              beta * J (Fin.succ 0) 1 *\n                                                                                                J (Fin.succ 3) 2 +\n                                                                                            beta * s *\n                                                                                                  H (Fin.succ 0) 1 *\n                                                                                                J (Fin.succ 2) 3 *\n                                                                                              (-1 / 2) +\n                                                                                          beta * s * H (Fin.succ 0) 1 *\n                                                                                              J (Fin.succ 3) 2 *\n                                                                                            (1 / 2) +\n                                                                                        beta * s * J (Fin.succ 1) 0 *\n                                                                                            H (Fin.succ 2) 3 *\n                                                                                          (1 / 2) +\n                                                                                      beta * s * J (Fin.succ 1) 0 *\n                                                                                          H (Fin.succ 3) 2 *\n                                                                                        (-1 / 2) +\n                                                                                    beta * s * H (Fin.succ 1) 0 *\n                                                                                        J (Fin.succ 2) 3 *\n                                                                                      (1 / 2) +\n                                                                                  beta * s * H (Fin.succ 1) 0 *\n                                                                                      J (Fin.succ 3) 2 *\n                                                                                    (-1 / 2) +\n                                                                                beta * s * J (Fin.succ 0) 2 *\n                                                                                    H (Fin.succ 1) 3 *\n                                                                                  (1 / 2) +\n                                                                              beta * s * J (Fin.succ 0) 2 *\n                                                                                  H (Fin.succ 3) 1 *\n                                                                                (-1 / 2) +\n                                                                            beta * s * H (Fin.succ 0) 2 *\n                                                                                J (Fin.succ 1) 3 *\n                                                                              (1 / 2) +\n                                                                          beta * s * H (Fin.succ 0) 2 *\n                                                                              J (Fin.succ 3) 1 *\n                                                                            (-1 / 2) +\n                                                                        beta * s * J (Fin.succ 2) 0 * H (Fin.succ 1) 3 *\n                                                                          (-1 / 2) +\n                                                                      beta * s * J (Fin.succ 2) 0 * H (Fin.succ 3) 1 *\n                                                                        (1 / 2) +\n                                                                    beta * s * H (Fin.succ 2) 0 * J (Fin.succ 1) 3 *\n                                                                      (-1 / 2) +\n                                                                  beta * s * H (Fin.succ 2) 0 * J (Fin.succ 3) 1 *\n                                                                    (1 / 2) +\n                                                                beta * s * J (Fin.succ 0) 3 * H (Fin.succ 1) 2 *\n                                                                  (-1 / 2) +\n                                                              beta * s * J (Fin.succ 0) 3 * H (Fin.succ 2) 1 * (1 / 2) +\n                                                            beta * s * H (Fin.succ 0) 3 * J (Fin.succ 1) 2 * (-1 / 2) +\n                                                          beta * s * H (Fin.succ 0) 3 * J (Fin.succ 2) 1 * (1 / 2) +\n                                                        beta * s * J (Fin.succ 3) 0 * H (Fin.succ 1) 2 * (1 / 2) +\n                                                      beta * s * J (Fin.succ 3) 0 * H (Fin.succ 2) 1 * (-1 / 2) +\n                                                    beta * s * H (Fin.succ 3) 0 * J (Fin.succ 1) 2 * (1 / 2) +\n                                                  beta * s * H (Fin.succ 3) 0 * J (Fin.succ 2) 1 * (-1 / 2) -\n                                                beta * s ^ 2 * H (Fin.succ 0) 1 * H (Fin.succ 2) 3 +\n                                              beta * s ^ 2 * H (Fin.succ 0) 1 * H (Fin.succ 3) 2 +\n                                            beta * s ^ 2 * H (Fin.succ 1) 0 * H (Fin.succ 2) 3 -\n                                          beta * s ^ 2 * H (Fin.succ 1) 0 * H (Fin.succ 3) 2 +\n                                        beta * s ^ 2 * H (Fin.succ 0) 2 * H (Fin.succ 1) 3 -\n                                      beta * s ^ 2 * H (Fin.succ 0) 2 * H (Fin.succ 3) 1 -\n                                    beta * s ^ 2 * H (Fin.succ 2) 0 * H (Fin.succ 1) 3 +\n                                  beta * s ^ 2 * H (Fin.succ 2) 0 * H (Fin.succ 3) 1 -\n                                beta * s ^ 2 * H (Fin.succ 0) 3 * H (Fin.succ 1) 2 +\n                              beta * s ^ 2 * H (Fin.succ 0) 3 * H (Fin.succ 2) 1 +\n                            beta * s ^ 2 * H (Fin.succ 3) 0 * H (Fin.succ 1) 2 -\n                          beta * s ^ 2 * H (Fin.succ 3) 0 * H (Fin.succ 2) 1 +\n                        beta * J (Fin.succ 1) 0 * J (Fin.succ 2) 3 -\n                      beta * J (Fin.succ 1) 0 * J (Fin.succ 3) 2 +\n                    beta * J (Fin.succ 0) 2 * J (Fin.succ 1) 3 -\n                  beta * J (Fin.succ 0) 2 * J (Fin.succ 3) 1 -\n                beta * J (Fin.succ 2) 0 * J (Fin.succ 1) 3 +\n              beta * J (Fin.succ 2) 0 * J (Fin.succ 3) 1 -\n            beta * J (Fin.succ 0) 3 * J (Fin.succ 1) 2 +\n          beta * J (Fin.succ 0) 3 * J (Fin.succ 2) 1 +\n        beta * J (Fin.succ 3) 0 * J (Fin.succ 1) 2 -\n      beta * J (Fin.succ 3) 0 * J (Fin.succ 2) 1\n",
+      "output_sha256": "0be22a6f7043e6c01b82366ec1859238cd86d52094434bdbf236b26c923af756",
+      "source": "import S10Pilot.Analytic\nimport S11D4Invariants.Classification\n\n/-! D4B.1: the supplied constant-coefficient odd density and its actual derivative.\nThe spatial row is the derivative index. No even density or inertia is added. -/\nnamespace S11D4Odd\nnoncomputable section\nopen S10Pilot\nopen scoped ContDiff\n\ndef spatialGradient (J : Jet 4) : S11D4Invariants.Mat := fun i j => J i.succ j\ndef orientationJet (J : Jet 4) : ℝ := S11D4Invariants.orientation (spatialGradient J)\n\ntheorem orientationJet_eq (J : Jet 4) :\n    orientationJet J = antisym J 0 1 * antisym J 2 3 -\n      antisym J 0 2 * antisym J 1 3 + antisym J 0 3 * antisym J 1 2 := rfl\n\ndef dualCurl (J : Jet 4) : S11D4Invariants.Mat := Matrix.of\n  ![![0, antisym J 2 3, -antisym J 1 3, antisym J 1 2],\n    ![-antisym J 2 3, 0, antisym J 0 3, -antisym J 0 2],\n    ![antisym J 1 3, -antisym J 0 3, 0, antisym J 0 1],\n    ![-antisym J 1 2, antisym J 0 2, -antisym J 0 1, 0]]\n\ndef lagrangian (beta : ℝ) (J : Jet 4) : ℝ := -beta * orientationJet J\n\ntheorem density_identity (beta : ℝ) (J : Jet 4) :\n    lagrangian beta J = -(1 / 2 : ℝ) *\n      S11D4Invariants.invariantForm ![0,0,0,beta] (spatialGradient J) := by\n  rw [S11D4Invariants.invariantForm_apply]\n  simp only [Matrix.cons_val, lagrangian, orientationJet, zero_mul, zero_add]\n  ring\n\ntheorem all_odd_densities (Q : S11D4Invariants.Quad) :\n    S11D4Invariants.SOInvariant Q ∧ S11D4Invariants.ReflectionOdd Q ↔\n      ∃ beta : ℝ, Q = S11D4Invariants.invariantForm ![0,0,0,beta] :=\n  S11D4Invariants.odd_classification Q\n\ndef variationDensity (beta : ℝ) (J H : Jet 4) : ℝ := -(beta / 2) *\n  (antisym H 0 1 * antisym J 2 3 + antisym J 0 1 * antisym H 2 3 -\n   antisym H 0 2 * antisym J 1 3 - antisym J 0 2 * antisym H 1 3 +\n   antisym H 0 3 * antisym J 1 2 + antisym J 0 3 * antisym H 1 2)\n\ntheorem lagrangian_increment (beta s : ℝ) (J H : Jet 4) :\n    lagrangian beta (J + s • H) = lagrangian beta J +\n      s * variationDensity beta J H + s ^ 2 * lagrangian beta H := by\n  simp only [lagrangian, orientationJet_eq, variationDensity, antisym,\n    Pi.add_apply, Pi.smul_apply, smul_eq_mul]\n  ring\n\ntheorem lagrangian_variation (beta : ℝ) (J H : Jet 4) :\n    HasDerivAt (fun s : ℝ => lagrangian beta (J + s • H))\n      (variationDensity beta J H) 0 := by\n  have h := ((hasDerivAt_const (0 : ℝ) (lagrangian beta J)).add\n    ((hasDerivAt_id (0 : ℝ)).mul_const (variationDensity beta J H))).add\n    (((hasDerivAt_id (0 : ℝ)).pow 2).mul_const (lagrangian beta H))\n  convert! h using 1\n  · funext s\n    exact lagrangian_increment beta s J H\n  · simp\n\ndef momentum (beta : ℝ) (J : Jet 4) (j : Fin 5) (i : Fin 4) : ℝ :=\n  deriv (fun s : ℝ => lagrangian beta (J + s • basisJet j i)) 0\n\ntheorem momentum_eq (beta : ℝ) (J : Jet 4) (j : Fin 5) (i : Fin 4) :\n    momentum beta J j i = Fin.cases 0 (fun r => -(beta / 2) * dualCurl J r i) j := by\n  unfold momentum\n  rw [(lagrangian_variation beta J (basisJet j i)).deriv]\n  cases j using Fin.cases\n  · fin_cases i <;> simp [variationDensity, antisym, basisJet_apply]\n  · rename_i r\n    simp only [Fin.cases_succ]\n    fin_cases r <;> fin_cases i <;>\n      simp [variationDensity, dualCurl, antisym, basisJet_apply,\n        Matrix.cons_val_two, Matrix.cons_val_three]\n\ntheorem dualCurl_contraction (J : Jet 4) :\n    (∑ i : Fin 4, ∑ j : Fin 4, J i.succ j * dualCurl J i j) = 2 * orientationJet J := by\n  simp only [Fin.sum_univ_four, dualCurl, Matrix.of_apply, Matrix.cons_val,\n    orientationJet_eq, antisym]\n  ring\n\ndef eulerLagrange (beta : ℝ) (u : Point 4 → Vec 4) (x : Point 4) : Vec 4 :=\n  fun i => -∑ j : Fin 5, coordDeriv j (fun y => momentum beta (fieldJet u y) j i) x\n\ntheorem smooth_dualCurl {u : Point 4 → Vec 4} (hu : SmoothField u) (i j : Fin 4) :\n    ContDiff ℝ ∞ (fun x => dualCurl (fieldJet u x) i j) := by\n  have hJ : ∀ a b, ContDiff ℝ ∞ (fun x => fieldJet u x a b) :=\n    fun a b => smooth_coordDeriv (hu b) a\n  fin_cases i <;> fin_cases j <;>\n    simp [dualCurl, antisym, Matrix.cons_val_two, Matrix.cons_val_three]\n  all_goals fun_prop\n\ntheorem smooth_momentum {u : Point 4 → Vec 4} (hu : SmoothField u)\n    (beta : ℝ) (j : Fin 5) (i : Fin 4) :\n    ContDiff ℝ ∞ (fun x => momentum beta (fieldJet u x) j i) := by\n  cases j using Fin.cases\n  · simp only [momentum_eq, Fin.cases_zero]\n    fun_prop\n  · rename_i r\n    simp only [momentum_eq, Fin.cases_succ]\n    exact contDiff_const.mul (smooth_dualCurl hu r i)\n\ntheorem smooth_eulerLagrange {u : Point 4 → Vec 4} (hu : SmoothField u)\n    (beta : ℝ) (i : Fin 4) : ContDiff ℝ ∞ (fun x => eulerLagrange beta u x i) := by\n  have hd : ∀ j, ContDiff ℝ ∞\n      (coordDeriv j (fun y => momentum beta (fieldJet u y) j i)) :=\n    fun j => smooth_coordDeriv (smooth_momentum hu beta j i) j\n  unfold eulerLagrange\n  fun_prop\n\nend\nend S11D4Odd\n",
+      "canonical_source": "lean/s11/S11D4Odd/Action.lean",
+      "replacement": {
+        "old": "-(beta / 2) * orientationJet J",
+        "new": "-beta * orientationJet J"
+      }
+    },
+    {
+      "name": "complementary_orientation_sign",
+      "expected": "REJECTED",
+      "outcome": "REJECTED",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/d4_odd_verification/complementary_orientation_sign.lean"
+      ],
+      "exit_status": 1,
+      "wall_seconds": 17.032,
+      "source_sha256": "3ddfdda48c81a3d29b5fc74f0e71e3ff76d52a0a5f60f2aec0e9afae41c5d8f8",
+      "required_failure_in": "momentum_eq",
+      "diagnostics": [
+        {
+          "declaration": "momentum_eq",
+          "line": 70,
+          "message": "s11/_scratch/d4_odd_verification/complementary_orientation_sign.lean:70:2: error: unsolved goals\ncase succ.«1».«0»\nbeta : ℝ\nJ : Jet 4\n⊢ J 4 2 - J 3 3 = J 3 3 - J 4 2 ∨ beta = 0\nTry this:\n  [apply] ring_nf\n  \n  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.\n    \n  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.\n"
+        },
+        {
+          "declaration": "dualCurl_contraction",
+          "line": 77,
+          "message": "s11/_scratch/d4_odd_verification/complementary_orientation_sign.lean:77:86: error: unsolved goals\nJ : Jet 4\n⊢ J (Fin.succ 0) 1 * J (Fin.succ 2) 3 * 2 - J (Fin.succ 0) 1 * J (Fin.succ 3) 2 * 2 -\n                    J (Fin.succ 0) 2 * J (Fin.succ 1) 3 * 2 +\n                  J (Fin.succ 0) 2 * J (Fin.succ 3) 1 * 2 +\n                J (Fin.succ 1) 3 * J (Fin.succ 2) 0 * 2 -\n              J (Fin.succ 3) 1 * J (Fin.succ 2) 0 * 2 +\n            J (Fin.succ 0) 3 * J (Fin.succ 1) 2 * 2 -\n          J (Fin.succ 0) 3 * J (Fin.succ 2) 1 * 2 -\n        J (Fin.succ 1) 2 * J (Fin.succ 3) 0 * 2 +\n      J (Fin.succ 2) 1 * J (Fin.succ 3) 0 * 2 =\n    J (Fin.succ 0) 1 * J (Fin.succ 2) 3 * 2 - J (Fin.succ 0) 1 * J (Fin.succ 3) 2 * 2 -\n                        J (Fin.succ 2) 3 * J (Fin.succ 1) 0 * 2 +\n                      J (Fin.succ 3) 2 * J (Fin.succ 1) 0 * 2 -\n                    J (Fin.succ 0) 2 * J (Fin.succ 1) 3 * 2 +\n                  J (Fin.succ 0) 2 * J (Fin.succ 3) 1 * 2 +\n                J (Fin.succ 1) 3 * J (Fin.succ 2) 0 * 2 -\n              J (Fin.succ 3) 1 * J (Fin.succ 2) 0 * 2 +\n            J (Fin.succ 0) 3 * J (Fin.succ 1) 2 * 2 -\n          J (Fin.succ 0) 3 * J (Fin.succ 2) 1 * 2 -\n        J (Fin.succ 1) 2 * J (Fin.succ 3) 0 * 2 +\n      J (Fin.succ 2) 1 * J (Fin.succ 3) 0 * 2\n"
+        }
+      ],
+      "output": "s11/_scratch/d4_odd_verification/complementary_orientation_sign.lean:70:2: error: unsolved goals\ncase succ.«1».«0»\nbeta : ℝ\nJ : Jet 4\n⊢ J 4 2 - J 3 3 = J 3 3 - J 4 2 ∨ beta = 0\nTry this:\n  [apply] ring_nf\n  \n  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.\n    \n  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.\ns11/_scratch/d4_odd_verification/complementary_orientation_sign.lean:77:86: error: unsolved goals\nJ : Jet 4\n⊢ J (Fin.succ 0) 1 * J (Fin.succ 2) 3 * 2 - J (Fin.succ 0) 1 * J (Fin.succ 3) 2 * 2 -\n                    J (Fin.succ 0) 2 * J (Fin.succ 1) 3 * 2 +\n                  J (Fin.succ 0) 2 * J (Fin.succ 3) 1 * 2 +\n                J (Fin.succ 1) 3 * J (Fin.succ 2) 0 * 2 -\n              J (Fin.succ 3) 1 * J (Fin.succ 2) 0 * 2 +\n            J (Fin.succ 0) 3 * J (Fin.succ 1) 2 * 2 -\n          J (Fin.succ 0) 3 * J (Fin.succ 2) 1 * 2 -\n        J (Fin.succ 1) 2 * J (Fin.succ 3) 0 * 2 +\n      J (Fin.succ 2) 1 * J (Fin.succ 3) 0 * 2 =\n    J (Fin.succ 0) 1 * J (Fin.succ 2) 3 * 2 - J (Fin.succ 0) 1 * J (Fin.succ 3) 2 * 2 -\n                        J (Fin.succ 2) 3 * J (Fin.succ 1) 0 * 2 +\n                      J (Fin.succ 3) 2 * J (Fin.succ 1) 0 * 2 -\n                    J (Fin.succ 0) 2 * J (Fin.succ 1) 3 * 2 +\n                  J (Fin.succ 0) 2 * J (Fin.succ 3) 1 * 2 +\n                J (Fin.succ 1) 3 * J (Fin.succ 2) 0 * 2 -\n              J (Fin.succ 3) 1 * J (Fin.succ 2) 0 * 2 +\n            J (Fin.succ 0) 3 * J (Fin.succ 1) 2 * 2 -\n          J (Fin.succ 0) 3 * J (Fin.succ 2) 1 * 2 -\n        J (Fin.succ 1) 2 * J (Fin.succ 3) 0 * 2 +\n      J (Fin.succ 2) 1 * J (Fin.succ 3) 0 * 2\n",
+      "output_sha256": "fcf45159a8bff53f745ade257716ee76d5522be5c111fad2d58540863ac633f9",
+      "source": "import S10Pilot.Analytic\nimport S11D4Invariants.Classification\n\n/-! D4B.1: the supplied constant-coefficient odd density and its actual derivative.\nThe spatial row is the derivative index. No even density or inertia is added. -/\nnamespace S11D4Odd\nnoncomputable section\nopen S10Pilot\nopen scoped ContDiff\n\ndef spatialGradient (J : Jet 4) : S11D4Invariants.Mat := fun i j => J i.succ j\ndef orientationJet (J : Jet 4) : ℝ := S11D4Invariants.orientation (spatialGradient J)\n\ntheorem orientationJet_eq (J : Jet 4) :\n    orientationJet J = antisym J 0 1 * antisym J 2 3 -\n      antisym J 0 2 * antisym J 1 3 + antisym J 0 3 * antisym J 1 2 := rfl\n\ndef dualCurl (J : Jet 4) : S11D4Invariants.Mat := Matrix.of\n  ![![0, antisym J 2 3, -antisym J 1 3, antisym J 1 2],\n    ![antisym J 2 3, 0, antisym J 0 3, -antisym J 0 2],\n    ![antisym J 1 3, -antisym J 0 3, 0, antisym J 0 1],\n    ![-antisym J 1 2, antisym J 0 2, -antisym J 0 1, 0]]\n\ndef lagrangian (beta : ℝ) (J : Jet 4) : ℝ := -(beta / 2) * orientationJet J\n\ntheorem density_identity (beta : ℝ) (J : Jet 4) :\n    lagrangian beta J = -(1 / 2 : ℝ) *\n      S11D4Invariants.invariantForm ![0,0,0,beta] (spatialGradient J) := by\n  rw [S11D4Invariants.invariantForm_apply]\n  simp only [Matrix.cons_val, lagrangian, orientationJet, zero_mul, zero_add]\n  ring\n\ntheorem all_odd_densities (Q : S11D4Invariants.Quad) :\n    S11D4Invariants.SOInvariant Q ∧ S11D4Invariants.ReflectionOdd Q ↔\n      ∃ beta : ℝ, Q = S11D4Invariants.invariantForm ![0,0,0,beta] :=\n  S11D4Invariants.odd_classification Q\n\ndef variationDensity (beta : ℝ) (J H : Jet 4) : ℝ := -(beta / 2) *\n  (antisym H 0 1 * antisym J 2 3 + antisym J 0 1 * antisym H 2 3 -\n   antisym H 0 2 * antisym J 1 3 - antisym J 0 2 * antisym H 1 3 +\n   antisym H 0 3 * antisym J 1 2 + antisym J 0 3 * antisym H 1 2)\n\ntheorem lagrangian_increment (beta s : ℝ) (J H : Jet 4) :\n    lagrangian beta (J + s • H) = lagrangian beta J +\n      s * variationDensity beta J H + s ^ 2 * lagrangian beta H := by\n  simp only [lagrangian, orientationJet_eq, variationDensity, antisym,\n    Pi.add_apply, Pi.smul_apply, smul_eq_mul]\n  ring\n\ntheorem lagrangian_variation (beta : ℝ) (J H : Jet 4) :\n    HasDerivAt (fun s : ℝ => lagrangian beta (J + s • H))\n      (variationDensity beta J H) 0 := by\n  have h := ((hasDerivAt_const (0 : ℝ) (lagrangian beta J)).add\n    ((hasDerivAt_id (0 : ℝ)).mul_const (variationDensity beta J H))).add\n    (((hasDerivAt_id (0 : ℝ)).pow 2).mul_const (lagrangian beta H))\n  convert! h using 1\n  · funext s\n    exact lagrangian_increment beta s J H\n  · simp\n\ndef momentum (beta : ℝ) (J : Jet 4) (j : Fin 5) (i : Fin 4) : ℝ :=\n  deriv (fun s : ℝ => lagrangian beta (J + s • basisJet j i)) 0\n\ntheorem momentum_eq (beta : ℝ) (J : Jet 4) (j : Fin 5) (i : Fin 4) :\n    momentum beta J j i = Fin.cases 0 (fun r => -(beta / 2) * dualCurl J r i) j := by\n  unfold momentum\n  rw [(lagrangian_variation beta J (basisJet j i)).deriv]\n  cases j using Fin.cases\n  · fin_cases i <;> simp [variationDensity, antisym, basisJet_apply]\n  · rename_i r\n    simp only [Fin.cases_succ]\n    fin_cases r <;> fin_cases i <;>\n      simp [variationDensity, dualCurl, antisym, basisJet_apply,\n        Matrix.cons_val_two, Matrix.cons_val_three]\n\ntheorem dualCurl_contraction (J : Jet 4) :\n    (∑ i : Fin 4, ∑ j : Fin 4, J i.succ j * dualCurl J i j) = 2 * orientationJet J := by\n  simp only [Fin.sum_univ_four, dualCurl, Matrix.of_apply, Matrix.cons_val,\n    orientationJet_eq, antisym]\n  ring\n\ndef eulerLagrange (beta : ℝ) (u : Point 4 → Vec 4) (x : Point 4) : Vec 4 :=\n  fun i => -∑ j : Fin 5, coordDeriv j (fun y => momentum beta (fieldJet u y) j i) x\n\ntheorem smooth_dualCurl {u : Point 4 → Vec 4} (hu : SmoothField u) (i j : Fin 4) :\n    ContDiff ℝ ∞ (fun x => dualCurl (fieldJet u x) i j) := by\n  have hJ : ∀ a b, ContDiff ℝ ∞ (fun x => fieldJet u x a b) :=\n    fun a b => smooth_coordDeriv (hu b) a\n  fin_cases i <;> fin_cases j <;>\n    simp [dualCurl, antisym, Matrix.cons_val_two, Matrix.cons_val_three]\n  all_goals fun_prop\n\ntheorem smooth_momentum {u : Point 4 → Vec 4} (hu : SmoothField u)\n    (beta : ℝ) (j : Fin 5) (i : Fin 4) :\n    ContDiff ℝ ∞ (fun x => momentum beta (fieldJet u x) j i) := by\n  cases j using Fin.cases\n  · simp only [momentum_eq, Fin.cases_zero]\n    fun_prop\n  · rename_i r\n    simp only [momentum_eq, Fin.cases_succ]\n    exact contDiff_const.mul (smooth_dualCurl hu r i)\n\ntheorem smooth_eulerLagrange {u : Point 4 → Vec 4} (hu : SmoothField u)\n    (beta : ℝ) (i : Fin 4) : ContDiff ℝ ∞ (fun x => eulerLagrange beta u x i) := by\n  have hd : ∀ j, ContDiff ℝ ∞\n      (coordDeriv j (fun y => momentum beta (fieldJet u y) j i)) :=\n    fun j => smooth_coordDeriv (smooth_momentum hu beta j i) j\n  unfold eulerLagrange\n  fun_prop\n\nend\nend S11D4Odd\n",
+      "canonical_source": "lean/s11/S11D4Odd/Action.lean",
+      "replacement": {
+        "old": "![-antisym J 2 3, 0, antisym J 0 3, -antisym J 0 2]",
+        "new": "![antisym J 2 3, 0, antisym J 0 3, -antisym J 0 2]"
+      }
+    },
+    {
+      "name": "mixed_derivative_index",
+      "expected": "REJECTED",
+      "outcome": "REJECTED",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/d4_odd_verification/mixed_derivative_index.lean"
+      ],
+      "exit_status": 1,
+      "wall_seconds": 13.458,
+      "source_sha256": "5f951dd97e3109c95df8e5a192ecda491a7de6d42bbd5414471fa1f8554e5c6b",
+      "required_failure_in": "dualCurl_divergence_zero",
+      "diagnostics": [
+        {
+          "declaration": "dualCurl_divergence_zero",
+          "line": 13,
+          "message": "s11/_scratch/d4_odd_verification/mixed_derivative_index.lean:13:90: error: unsolved goals\ncase «0»\nu : Point 4 → Vec 4\nhu : SmoothField u\nx : Point 4\nhJ : ∀ (a : Fin (4 + 1)) (b : Fin 4), ContDiff ℝ ∞ fun x => fieldJet u x a b\nhcomm :\n  ∀ (i k : Fin 5) (r : Fin 4),\n    coordDeriv i (coordDeriv k fun y => u y r) x = coordDeriv k (coordDeriv i fun y => u y r) x\n⊢ coordDeriv (Fin.succ 3) (coordDeriv 1 fun x => u x 2) x - coordDeriv (Fin.succ 2) (coordDeriv 1 fun x => u x 3) x +\n            coordDeriv 2 (coordDeriv 1 fun x => u x 3) x -\n          coordDeriv (Fin.succ 3) (coordDeriv 1 fun x => u x 1) x +\n        coordDeriv (Fin.succ 2) (coordDeriv 1 fun x => u x 1) x -\n      coordDeriv 2 (coordDeriv 1 fun x => u x 2) x =\n    0\n\ncase «1»\nu : Point 4 → Vec 4\nhu : SmoothField u\nx : Point 4\nhJ : ∀ (a : Fin (4 + 1)) (b : Fin 4), ContDiff ℝ ∞ fun x => fieldJet u x a b\nhcomm :\n  ∀ (i k : Fin 5) (r : Fin 4),\n    coordDeriv i (coordDeriv k fun y => u y r) x = coordDeriv k (coordDeriv i fun y => u y r) x\n⊢ coordDeriv (Fin.succ 2) (coordDeriv 1 fun x => u x 3) x - coordDeriv (Fin.succ 3) (coordDeriv 1 fun x => u x 2) x +\n            coordDeriv (Fin.succ 3) (coordDeriv 1 fun x => u x 0) x -\n          coordDeriv 1 (coordDeriv 1 fun x => u x 3) x +\n        coordDeriv 1 (coordDeriv 1 fun x => u x 2) x -\n      coordDeriv (Fin.succ 2) (coordDeriv 1 fun x => u x 0) x =\n    0\n\ncase «2»\nu : Point 4 → Vec 4\nhu : SmoothField u\nx : Point 4\nhJ : ∀ (a : Fin (4 + 1)) (b : Fin 4), ContDiff ℝ ∞ fun x => fieldJet u x a b\nhcomm :\n  ∀ (i k : Fin 5) (r : Fin 4),\n    coordDeriv i (coordDeriv k fun y => u y r) x = coordDeriv k (coordDeriv i fun y => u y r) x\n⊢ coordDeriv (Fin.succ 3) (coordDeriv 1 fun x => u x 1) x - coordDeriv 2 (coordDeriv 1 fun x => u x 3) x +\n            coordDeriv 1 (coordDeriv 1 fun x => u x 3) x -\n          coordDeriv (Fin.succ 3) (coordDeriv 1 fun x => u x 0) x +\n        coordDeriv 2 (coordDeriv 1 fun x => u x 0) x -\n      coordDeriv 1 (coordDeriv 1 fun x => u x 1) x =\n    0\n\ncase «3»\nu : Point 4 → Vec 4\nhu : SmoothField u\nx : Point 4\nhJ : ∀ (a : Fin (4 + 1)) (b : Fin 4), ContDiff ℝ ∞ fun x => fieldJet u x a b\nhcomm :\n  ∀ (i k : Fin 5) (r : Fin 4),\n    coordDeriv i (coordDeriv k fun y => u y r) x = coordDeriv k (coordDeriv i fun y => u y r) x\n⊢ coordDeriv 2 (coordDeriv 1 fun x => u x 2) x - coordDeriv (Fin.succ 2) (coordDeriv 1 fun x => u x 1) x +\n            coordDeriv (Fin.succ 2) (coordDeriv 1 fun x => u x 0) x -\n          coordDeriv 1 (coordDeriv 1 fun x => u x 2) x +\n        coordDeriv 1 (coordDeriv 1 fun x => u x 1) x -\n      coordDeriv 2 (coordDeriv 1 fun x => u x 0) x =\n    0\n"
+        },
+        {
+          "declaration": "eulerLagrange_zero",
+          "line": 39,
+          "message": "s11/_scratch/d4_odd_verification/mixed_derivative_index.lean:39:24: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern\n  ∑ i, coordDeriv 1 (fun y => dualCurl (fieldJet u y) i ?j) ?x\nin the target expression\n  -(-(beta / 2) * ∑ i_1, coordDeriv i_1.succ (fun y => dualCurl (fieldJet u y) i_1 i) x) = 0\n\nu : Point 4 → Vec 4\nhu : SmoothField u\nbeta : ℝ\nx : Point 4\ni : Fin 4\nhp :\n  ∀ (j : Fin 4),\n    coordDeriv j.succ (fun y => -(beta / 2) * dualCurl (fieldJet u y) j i) x =\n      -(beta / 2) * coordDeriv j.succ (fun y => dualCurl (fieldJet u y) j i) x\n⊢ -(-(beta / 2) * ∑ i_1, coordDeriv i_1.succ (fun y => dualCurl (fieldJet u y) i_1 i) x) = 0\n\nNote: The target expression is not type-correct under the `implicit` transparency level, which may have triggered the failure. This is usually caused by unfolding of semireducible definitions in prior tactic steps. Use `set_option linter.tacticCheckInstances true` to investigate the source of the issue.\nFull error:\n  function expected\n    dualCurl (fieldJet u y) i\n"
+        },
+        {
+          "declaration": "boundary_identity",
+          "line": 70,
+          "message": "s11/_scratch/d4_odd_verification/mixed_derivative_index.lean:70:31: error: `simp` made no progress\n\nNote: The target expression is not type-correct under the `implicit` transparency level, which may have triggered the failure. This is usually caused by unfolding of semireducible definitions in prior tactic steps. Use `set_option linter.tacticCheckInstances true` to investigate the source of the issue.\nFull error:\n  function expected\n    dualCurl (fieldJet u y) i\n"
+        }
+      ],
+      "output": "Try this:\n  [apply] ring_nf\n  \n  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.\n    \n  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.\nTry this:\n  [apply] ring_nf\n  \n  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.\n    \n  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.\nTry this:\n  [apply] ring_nf\n  \n  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.\n    \n  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.\nTry this:\n  [apply] ring_nf\n  \n  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.\n    \n  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.\ns11/_scratch/d4_odd_verification/mixed_derivative_index.lean:13:90: error: unsolved goals\ncase «0»\nu : Point 4 → Vec 4\nhu : SmoothField u\nx : Point 4\nhJ : ∀ (a : Fin (4 + 1)) (b : Fin 4), ContDiff ℝ ∞ fun x => fieldJet u x a b\nhcomm :\n  ∀ (i k : Fin 5) (r : Fin 4),\n    coordDeriv i (coordDeriv k fun y => u y r) x = coordDeriv k (coordDeriv i fun y => u y r) x\n⊢ coordDeriv (Fin.succ 3) (coordDeriv 1 fun x => u x 2) x - coordDeriv (Fin.succ 2) (coordDeriv 1 fun x => u x 3) x +\n            coordDeriv 2 (coordDeriv 1 fun x => u x 3) x -\n          coordDeriv (Fin.succ 3) (coordDeriv 1 fun x => u x 1) x +\n        coordDeriv (Fin.succ 2) (coordDeriv 1 fun x => u x 1) x -\n      coordDeriv 2 (coordDeriv 1 fun x => u x 2) x =\n    0\n\ncase «1»\nu : Point 4 → Vec 4\nhu : SmoothField u\nx : Point 4\nhJ : ∀ (a : Fin (4 + 1)) (b : Fin 4), ContDiff ℝ ∞ fun x => fieldJet u x a b\nhcomm :\n  ∀ (i k : Fin 5) (r : Fin 4),\n    coordDeriv i (coordDeriv k fun y => u y r) x = coordDeriv k (coordDeriv i fun y => u y r) x\n⊢ coordDeriv (Fin.succ 2) (coordDeriv 1 fun x => u x 3) x - coordDeriv (Fin.succ 3) (coordDeriv 1 fun x => u x 2) x +\n            coordDeriv (Fin.succ 3) (coordDeriv 1 fun x => u x 0) x -\n          coordDeriv 1 (coordDeriv 1 fun x => u x 3) x +\n        coordDeriv 1 (coordDeriv 1 fun x => u x 2) x -\n      coordDeriv (Fin.succ 2) (coordDeriv 1 fun x => u x 0) x =\n    0\n\ncase «2»\nu : Point 4 → Vec 4\nhu : SmoothField u\nx : Point 4\nhJ : ∀ (a : Fin (4 + 1)) (b : Fin 4), ContDiff ℝ ∞ fun x => fieldJet u x a b\nhcomm :\n  ∀ (i k : Fin 5) (r : Fin 4),\n    coordDeriv i (coordDeriv k fun y => u y r) x = coordDeriv k (coordDeriv i fun y => u y r) x\n⊢ coordDeriv (Fin.succ 3) (coordDeriv 1 fun x => u x 1) x - coordDeriv 2 (coordDeriv 1 fun x => u x 3) x +\n            coordDeriv 1 (coordDeriv 1 fun x => u x 3) x -\n          coordDeriv (Fin.succ 3) (coordDeriv 1 fun x => u x 0) x +\n        coordDeriv 2 (coordDeriv 1 fun x => u x 0) x -\n      coordDeriv 1 (coordDeriv 1 fun x => u x 1) x =\n    0\n\ncase «3»\nu : Point 4 → Vec 4\nhu : SmoothField u\nx : Point 4\nhJ : ∀ (a : Fin (4 + 1)) (b : Fin 4), ContDiff ℝ ∞ fun x => fieldJet u x a b\nhcomm :\n  ∀ (i k : Fin 5) (r : Fin 4),\n    coordDeriv i (coordDeriv k fun y => u y r) x = coordDeriv k (coordDeriv i fun y => u y r) x\n⊢ coordDeriv 2 (coordDeriv 1 fun x => u x 2) x - coordDeriv (Fin.succ 2) (coordDeriv 1 fun x => u x 1) x +\n            coordDeriv (Fin.succ 2) (coordDeriv 1 fun x => u x 0) x -\n          coordDeriv 1 (coordDeriv 1 fun x => u x 2) x +\n        coordDeriv 1 (coordDeriv 1 fun x => u x 1) x -\n      coordDeriv 2 (coordDeriv 1 fun x => u x 0) x =\n    0\ns11/_scratch/d4_odd_verification/mixed_derivative_index.lean:39:24: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern\n  ∑ i, coordDeriv 1 (fun y => dualCurl (fieldJet u y) i ?j) ?x\nin the target expression\n  -(-(beta / 2) * ∑ i_1, coordDeriv i_1.succ (fun y => dualCurl (fieldJet u y) i_1 i) x) = 0\n\nu : Point 4 → Vec 4\nhu : SmoothField u\nbeta : ℝ\nx : Point 4\ni : Fin 4\nhp :\n  ∀ (j : Fin 4),\n    coordDeriv j.succ (fun y => -(beta / 2) * dualCurl (fieldJet u y) j i) x =\n      -(beta / 2) * coordDeriv j.succ (fun y => dualCurl (fieldJet u y) j i) x\n⊢ -(-(beta / 2) * ∑ i_1, coordDeriv i_1.succ (fun y => dualCurl (fieldJet u y) i_1 i) x) = 0\n\nNote: The target expression is not type-correct under the `implicit` transparency level, which may have triggered the failure. This is usually caused by unfolding of semireducible definitions in prior tactic steps. Use `set_option linter.tacticCheckInstances true` to investigate the source of the issue.\nFull error:\n  function expected\n    dualCurl (fieldJet u y) i\ns11/_scratch/d4_odd_verification/mixed_derivative_index.lean:70:31: error: `simp` made no progress\n\nNote: The target expression is not type-correct under the `implicit` transparency level, which may have triggered the failure. This is usually caused by unfolding of semireducible definitions in prior tactic steps. Use `set_option linter.tacticCheckInstances true` to investigate the source of the issue.\nFull error:\n  function expected\n    dualCurl (fieldJet u y) i\n",
+      "output_sha256": "18e9f061d7713187840d493586260fa22f82fe02e058f5a4f7fbb2d31b773d8f",
+      "source": "import S11D4Odd.Calculus\nimport S11D4Odd.Variation\n\n/-! D4B.2–D4B.3: an explicit current and vanishing bulk variation, retaining\nthe distinction between a nonzero density and its zero bulk response. -/\nnamespace S11D4Odd\nnoncomputable section\nopen S10Pilot MeasureTheory\nopen scoped ContDiff\n\ntheorem dualCurl_divergence_zero {u : Point 4 → Vec 4} (hu : SmoothField u)\n    (x : Point 4) (j : Fin 4) :\n    (∑ i : Fin 4, coordDeriv (1 : Fin 5) (fun y => dualCurl (fieldJet u y) i j) x) = 0 := by\n  have hJ : ∀ a b, ContDiff ℝ ∞ (fun x => fieldJet u x a b) :=\n    fun a b => smooth_coordDeriv (hu b) a\n  have hcomm (i k : Fin 5) (r : Fin 4) :\n      coordDeriv i (coordDeriv k (fun y => u y r)) x =\n      coordDeriv k (coordDeriv i (fun y => u y r)) x := partial_commute (hu r) i k x\n  fin_cases j\n  all_goals norm_num [Fin.sum_univ_four, dualCurl, antisym,\n    Matrix.cons_val_two, Matrix.cons_val_three]\n  all_goals simp (disch := fun_prop) only [partial_sub, partial_zero]\n  all_goals simp only [fieldJet]\n  all_goals simp only [hcomm]\n  all_goals ring\n\ntheorem eulerLagrange_zero {u : Point 4 → Vec 4} (hu : SmoothField u)\n    (beta : ℝ) (x : Point 4) : eulerLagrange beta u x = 0 := by\n  ext i\n  have hp : ∀ j : Fin 4,\n      coordDeriv j.succ (fun y => -(beta / 2) * dualCurl (fieldJet u y) j i) x =\n        -(beta / 2) * coordDeriv j.succ (fun y => dualCurl (fieldJet u y) j i) x :=\n    fun j => partial_const_mul (smooth_dualCurl hu j i) _ _ _\n  change -(∑ j : Fin 5, coordDeriv j (fun y => momentum beta (fieldJet u y) j i) x) = 0\n  rw [Fin.sum_univ_succ]\n  simp only [momentum_eq,\n    Fin.cases_zero, Fin.cases_succ, partial_zero, zero_add]\n  simp_rw [hp]\n  rw [← Finset.mul_sum, dualCurl_divergence_zero hu]\n  simp\n\n/-- The factor 1/2 compensates the degree-two Euler contraction. -/\ndef currentJet (v : Vec 4) (J : Jet 4) (i : Fin 4) : ℝ :=\n  (1 / 2 : ℝ) * ∑ j : Fin 4, v j * dualCurl J i j\n\ndef boundaryCurrent (u : Point 4 → Vec 4) (x : Point 4) : Vec 4 :=\n  fun i => currentJet (u x) (fieldJet u x) i\n\ntheorem boundary_identity {u : Point 4 → Vec 4} (hu : SmoothField u) (x : Point 4) :\n    (∑ i : Fin 4, coordDeriv i.succ (fun y => boundaryCurrent u y i) x) =\n      orientationJet (fieldJet u x) := by\n  have hU : ∀ j : Fin 4, ContDiff ℝ ∞ (fun x => u x j) := hu\n  have hM : ∀ i j : Fin 4, ContDiff ℝ ∞ (fun x => dualCurl (fieldJet u x) i j) :=\n    smooth_dualCurl hu\n  have hp (i j : Fin 4) :\n      coordDeriv i.succ (fun y => u y j * dualCurl (fieldJet u y) i j) x =\n        fieldJet u x i.succ j * dualCurl (fieldJet u x) i j +\n          u x j * coordDeriv i.succ (fun y => dualCurl (fieldJet u y) i j) x :=\n    partial_mul (hu j) (hM i j) _ _\n  have hd (i : Fin 4) : coordDeriv i.succ (fun y => boundaryCurrent u y i) x =\n      (1 / 2 : ℝ) * ∑ j : Fin 4,\n        (fieldJet u x i.succ j * dualCurl (fieldJet u x) i j +\n          u x j * coordDeriv i.succ (fun y => dualCurl (fieldJet u y) i j) x) := by\n    unfold boundaryCurrent currentJet\n    rw [partial_const_mul (by fun_prop), partial_sum _ (fun j => (hu j).mul (hM i j))]\n    simp_rw [hp]\n  have hc : (∑ i : Fin 4, ∑ j : Fin 4,\n      u x j * coordDeriv i.succ (fun y => dualCurl (fieldJet u y) i j) x) = 0 := by\n    rw [Finset.sum_comm]\n    simp_rw [← Finset.mul_sum, dualCurl_divergence_zero hu]\n    simp\n  simp_rw [hd, Finset.sum_add_distrib]\n  rw [← Finset.mul_sum, Finset.sum_add_distrib, dualCurl_contraction, hc]\n  ring\n\ntheorem lagrangian_is_divergence {u : Point 4 → Vec 4} (hu : SmoothField u)\n    (beta : ℝ) (x : Point 4) :\n    lagrangian beta (fieldJet u x) = -(beta / 2) *\n      (∑ i : Fin 4, coordDeriv i.succ (fun y => boundaryCurrent u y i) x) := by\n  rw [boundary_identity hu]\n  rfl\n\ntheorem firstVariation_zero {u h : Point 4 → Vec 4}\n    (hu : SmoothField u) (hh : TestField h) (beta : ℝ) :\n    deriv (relativeAction beta u h) 0 = 0 := by\n  rw [relativeAction_deriv_eq_eulerLagrange hu hh]\n  simp [eulerLagrange_zero hu]\n\ntheorem every_background_stationary {u : Point 4 → Vec 4}\n    (hu : SmoothField u) (beta : ℝ) : ActionStationary beta u :=\n  fun _ hh => firstVariation_zero hu hh beta\n\ndef witnessJet : Jet 4 := Fin.cases (fun _ => 0)\n  (Matrix.of ![![0,1,0,0],![0,0,0,0],![0,0,0,1],![0,0,0,0]])\n\ntheorem nonzero_density : orientationJet witnessJet = 1 := by\n  change ((1 : ℝ) - 0) * (1 - 0) - (0 - 0) * (0 - 0) + (0 - 0) * (0 - 0) = 1\n  norm_num\n\ntheorem witness_lagrangian (beta : ℝ) : lagrangian beta witnessJet = -beta / 2 := by\n  rw [lagrangian, nonzero_density]\n  ring\n\ntheorem nonzero_momentum : momentum 2 witnessJet 1 1 = -1 := by\n  rw [momentum_eq]\n  change -(2 / 2 : ℝ) * (1 - 0) = -1\n  norm_num\n\ntheorem current_normalization : currentJet ![0,2,0,0] witnessJet 0 = 1 := by\n  unfold currentJet\n  rw [Fin.sum_univ_four]\n  change (1 / 2 : ℝ) * (0 * 0 + 2 * (1 - 0) + 0 * -(0 - 0) + 0 * (0 - 0)) = 1\n  norm_num\n\nend\nend S11D4Odd\n",
+      "canonical_source": "lean/s11/S11D4Odd/Boundary.lean",
+      "replacement": {
+        "old": "(∑ i : Fin 4, coordDeriv i.succ (fun y => dualCurl (fieldJet u y) i j) x) = 0 := by",
+        "new": "(∑ i : Fin 4, coordDeriv (1 : Fin 5) (fun y => dualCurl (fieldJet u y) i j) x) = 0 := by"
+      }
+    },
+    {
+      "name": "boundary_current_factor",
+      "expected": "REJECTED",
+      "outcome": "REJECTED",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/d4_odd_verification/boundary_current_factor.lean"
+      ],
+      "exit_status": 1,
+      "wall_seconds": 12.552,
+      "source_sha256": "081c97513ffcea7547a9e05a72b8e19911ca99367803e15453c18f0dd083d576",
+      "required_failure_in": "boundary_identity",
+      "diagnostics": [
+        {
+          "declaration": "boundary_identity",
+          "line": 63,
+          "message": "s11/_scratch/d4_odd_verification/boundary_current_factor.lean:63:81: error: unsolved goals\nu : Point 4 → Vec 4\nhu : SmoothField u\nx : Point 4\nhU : ∀ (j : Fin 4), ContDiff ℝ ∞ fun x => u x j\nhM : ∀ (i j : Fin 4), ContDiff ℝ ∞ fun x => dualCurl (fieldJet u x) i j\nhp :\n  ∀ (i j : Fin 4),\n    coordDeriv i.succ (fun y => u y j * dualCurl (fieldJet u y) i j) x =\n      fieldJet u x i.succ j * dualCurl (fieldJet u x) i j +\n        u x j * coordDeriv i.succ (fun y => dualCurl (fieldJet u y) i j) x\ni : Fin 4\n⊢ 1 *\n      ∑ x_1,\n        (fieldJet u x i.succ x_1 * dualCurl (fieldJet u x) i x_1 +\n          u x x_1 * coordDeriv i.succ (fun y => dualCurl (fieldJet u y) i x_1) x) =\n    1 / 2 *\n      ∑ x_1,\n        (fieldJet u x i.succ x_1 * dualCurl (fieldJet u x) i x_1 +\n          u x x_1 * coordDeriv i.succ (fun y => dualCurl (fieldJet u y) i x_1) x)\n"
+        },
+        {
+          "declaration": "current_normalization",
+          "line": 112,
+          "message": "s11/_scratch/d4_odd_verification/boundary_current_factor.lean:112:2: error: 'change' tactic failed, pattern\n  1 / 2 * (0 * 0 + 2 * (1 - 0) + 0 * -(0 - 0) + 0 * (0 - 0)) = 1\nis not definitionally equal to target\n  1 *\n      (![0, 2, 0, 0] 0 * dualCurl witnessJet 0 0 + ![0, 2, 0, 0] 1 * dualCurl witnessJet 0 1 +\n          ![0, 2, 0, 0] 2 * dualCurl witnessJet 0 2 +\n        ![0, 2, 0, 0] 3 * dualCurl witnessJet 0 3) =\n    1\n"
+        }
+      ],
+      "output": "s11/_scratch/d4_odd_verification/boundary_current_factor.lean:63:81: error: unsolved goals\nu : Point 4 → Vec 4\nhu : SmoothField u\nx : Point 4\nhU : ∀ (j : Fin 4), ContDiff ℝ ∞ fun x => u x j\nhM : ∀ (i j : Fin 4), ContDiff ℝ ∞ fun x => dualCurl (fieldJet u x) i j\nhp :\n  ∀ (i j : Fin 4),\n    coordDeriv i.succ (fun y => u y j * dualCurl (fieldJet u y) i j) x =\n      fieldJet u x i.succ j * dualCurl (fieldJet u x) i j +\n        u x j * coordDeriv i.succ (fun y => dualCurl (fieldJet u y) i j) x\ni : Fin 4\n⊢ 1 *\n      ∑ x_1,\n        (fieldJet u x i.succ x_1 * dualCurl (fieldJet u x) i x_1 +\n          u x x_1 * coordDeriv i.succ (fun y => dualCurl (fieldJet u y) i x_1) x) =\n    1 / 2 *\n      ∑ x_1,\n        (fieldJet u x i.succ x_1 * dualCurl (fieldJet u x) i x_1 +\n          u x x_1 * coordDeriv i.succ (fun y => dualCurl (fieldJet u y) i x_1) x)\ns11/_scratch/d4_odd_verification/boundary_current_factor.lean:112:2: error: 'change' tactic failed, pattern\n  1 / 2 * (0 * 0 + 2 * (1 - 0) + 0 * -(0 - 0) + 0 * (0 - 0)) = 1\nis not definitionally equal to target\n  1 *\n      (![0, 2, 0, 0] 0 * dualCurl witnessJet 0 0 + ![0, 2, 0, 0] 1 * dualCurl witnessJet 0 1 +\n          ![0, 2, 0, 0] 2 * dualCurl witnessJet 0 2 +\n        ![0, 2, 0, 0] 3 * dualCurl witnessJet 0 3) =\n    1\n",
+      "output_sha256": "441603867867cb0d90cecaacf83c90e0b9f553c4edd91ccb41b49b593b74bda0",
+      "source": "import S11D4Odd.Calculus\nimport S11D4Odd.Variation\n\n/-! D4B.2–D4B.3: an explicit current and vanishing bulk variation, retaining\nthe distinction between a nonzero density and its zero bulk response. -/\nnamespace S11D4Odd\nnoncomputable section\nopen S10Pilot MeasureTheory\nopen scoped ContDiff\n\ntheorem dualCurl_divergence_zero {u : Point 4 → Vec 4} (hu : SmoothField u)\n    (x : Point 4) (j : Fin 4) :\n    (∑ i : Fin 4, coordDeriv i.succ (fun y => dualCurl (fieldJet u y) i j) x) = 0 := by\n  have hJ : ∀ a b, ContDiff ℝ ∞ (fun x => fieldJet u x a b) :=\n    fun a b => smooth_coordDeriv (hu b) a\n  have hcomm (i k : Fin 5) (r : Fin 4) :\n      coordDeriv i (coordDeriv k (fun y => u y r)) x =\n      coordDeriv k (coordDeriv i (fun y => u y r)) x := partial_commute (hu r) i k x\n  fin_cases j\n  all_goals norm_num [Fin.sum_univ_four, dualCurl, antisym,\n    Matrix.cons_val_two, Matrix.cons_val_three]\n  all_goals simp (disch := fun_prop) only [partial_sub, partial_zero]\n  all_goals simp only [fieldJet]\n  all_goals simp only [hcomm]\n  all_goals ring\n\ntheorem eulerLagrange_zero {u : Point 4 → Vec 4} (hu : SmoothField u)\n    (beta : ℝ) (x : Point 4) : eulerLagrange beta u x = 0 := by\n  ext i\n  have hp : ∀ j : Fin 4,\n      coordDeriv j.succ (fun y => -(beta / 2) * dualCurl (fieldJet u y) j i) x =\n        -(beta / 2) * coordDeriv j.succ (fun y => dualCurl (fieldJet u y) j i) x :=\n    fun j => partial_const_mul (smooth_dualCurl hu j i) _ _ _\n  change -(∑ j : Fin 5, coordDeriv j (fun y => momentum beta (fieldJet u y) j i) x) = 0\n  rw [Fin.sum_univ_succ]\n  simp only [momentum_eq,\n    Fin.cases_zero, Fin.cases_succ, partial_zero, zero_add]\n  simp_rw [hp]\n  rw [← Finset.mul_sum, dualCurl_divergence_zero hu]\n  simp\n\n/-- The factor 1/2 compensates the degree-two Euler contraction. -/\ndef currentJet (v : Vec 4) (J : Jet 4) (i : Fin 4) : ℝ :=\n  (1 : ℝ) * ∑ j : Fin 4, v j * dualCurl J i j\n\ndef boundaryCurrent (u : Point 4 → Vec 4) (x : Point 4) : Vec 4 :=\n  fun i => currentJet (u x) (fieldJet u x) i\n\ntheorem boundary_identity {u : Point 4 → Vec 4} (hu : SmoothField u) (x : Point 4) :\n    (∑ i : Fin 4, coordDeriv i.succ (fun y => boundaryCurrent u y i) x) =\n      orientationJet (fieldJet u x) := by\n  have hU : ∀ j : Fin 4, ContDiff ℝ ∞ (fun x => u x j) := hu\n  have hM : ∀ i j : Fin 4, ContDiff ℝ ∞ (fun x => dualCurl (fieldJet u x) i j) :=\n    smooth_dualCurl hu\n  have hp (i j : Fin 4) :\n      coordDeriv i.succ (fun y => u y j * dualCurl (fieldJet u y) i j) x =\n        fieldJet u x i.succ j * dualCurl (fieldJet u x) i j +\n          u x j * coordDeriv i.succ (fun y => dualCurl (fieldJet u y) i j) x :=\n    partial_mul (hu j) (hM i j) _ _\n  have hd (i : Fin 4) : coordDeriv i.succ (fun y => boundaryCurrent u y i) x =\n      (1 / 2 : ℝ) * ∑ j : Fin 4,\n        (fieldJet u x i.succ j * dualCurl (fieldJet u x) i j +\n          u x j * coordDeriv i.succ (fun y => dualCurl (fieldJet u y) i j) x) := by\n    unfold boundaryCurrent currentJet\n    rw [partial_const_mul (by fun_prop), partial_sum _ (fun j => (hu j).mul (hM i j))]\n    simp_rw [hp]\n  have hc : (∑ i : Fin 4, ∑ j : Fin 4,\n      u x j * coordDeriv i.succ (fun y => dualCurl (fieldJet u y) i j) x) = 0 := by\n    rw [Finset.sum_comm]\n    simp_rw [← Finset.mul_sum, dualCurl_divergence_zero hu]\n    simp\n  simp_rw [hd, Finset.sum_add_distrib]\n  rw [← Finset.mul_sum, Finset.sum_add_distrib, dualCurl_contraction, hc]\n  ring\n\ntheorem lagrangian_is_divergence {u : Point 4 → Vec 4} (hu : SmoothField u)\n    (beta : ℝ) (x : Point 4) :\n    lagrangian beta (fieldJet u x) = -(beta / 2) *\n      (∑ i : Fin 4, coordDeriv i.succ (fun y => boundaryCurrent u y i) x) := by\n  rw [boundary_identity hu]\n  rfl\n\ntheorem firstVariation_zero {u h : Point 4 → Vec 4}\n    (hu : SmoothField u) (hh : TestField h) (beta : ℝ) :\n    deriv (relativeAction beta u h) 0 = 0 := by\n  rw [relativeAction_deriv_eq_eulerLagrange hu hh]\n  simp [eulerLagrange_zero hu]\n\ntheorem every_background_stationary {u : Point 4 → Vec 4}\n    (hu : SmoothField u) (beta : ℝ) : ActionStationary beta u :=\n  fun _ hh => firstVariation_zero hu hh beta\n\ndef witnessJet : Jet 4 := Fin.cases (fun _ => 0)\n  (Matrix.of ![![0,1,0,0],![0,0,0,0],![0,0,0,1],![0,0,0,0]])\n\ntheorem nonzero_density : orientationJet witnessJet = 1 := by\n  change ((1 : ℝ) - 0) * (1 - 0) - (0 - 0) * (0 - 0) + (0 - 0) * (0 - 0) = 1\n  norm_num\n\ntheorem witness_lagrangian (beta : ℝ) : lagrangian beta witnessJet = -beta / 2 := by\n  rw [lagrangian, nonzero_density]\n  ring\n\ntheorem nonzero_momentum : momentum 2 witnessJet 1 1 = -1 := by\n  rw [momentum_eq]\n  change -(2 / 2 : ℝ) * (1 - 0) = -1\n  norm_num\n\ntheorem current_normalization : currentJet ![0,2,0,0] witnessJet 0 = 1 := by\n  unfold currentJet\n  rw [Fin.sum_univ_four]\n  change (1 / 2 : ℝ) * (0 * 0 + 2 * (1 - 0) + 0 * -(0 - 0) + 0 * (0 - 0)) = 1\n  norm_num\n\nend\nend S11D4Odd\n",
+      "canonical_source": "lean/s11/S11D4Odd/Boundary.lean",
+      "replacement": {
+        "old": "(1 / 2 : ℝ) * ∑ j : Fin 4, v j * dualCurl J i j",
+        "new": "(1 : ℝ) * ∑ j : Fin 4, v j * dualCurl J i j"
+      }
+    },
+    {
+      "name": "nonzero_density_positive",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/d4_odd_verification/nonzero_density_positive.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 7.418,
+      "source_sha256": "34c5302199c2cfd73c54fad13d86451d9862e1fc707ec5000fb7a1492c074b9e",
+      "required_failure_in": "contract_control",
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "import S11D4Odd.Boundary\nopen S10Pilot S11D4Odd\nnoncomputable section\nopen scoped ContDiff\ntheorem contract_control : orientationJet witnessJet = 1 := by\n  norm_num [nonzero_density]\n"
+    },
+    {
+      "name": "nonzero_density_mutant",
+      "expected": "REJECTED",
+      "outcome": "REJECTED",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/d4_odd_verification/nonzero_density_mutant.lean"
+      ],
+      "exit_status": 1,
+      "wall_seconds": 7.468,
+      "source_sha256": "bcecf81ba35a5b9b3e9e81f9041331318cd85b66c7d614fa52bf30642d32ac6f",
+      "required_failure_in": "contract_control",
+      "diagnostics": [
+        {
+          "declaration": "contract_control",
+          "line": 5,
+          "message": "s11/_scratch/d4_odd_verification/nonzero_density_mutant.lean:5:60: error: unsolved goals\n⊢ False\n"
+        }
+      ],
+      "output": "s11/_scratch/d4_odd_verification/nonzero_density_mutant.lean:5:60: error: unsolved goals\n⊢ False\n",
+      "output_sha256": "fb42679200aed5508ec7b58bb5e6bc4207c22297c2ca04de0e4b02b212b0342c",
+      "source": "import S11D4Odd.Boundary\nopen S10Pilot S11D4Odd\nnoncomputable section\nopen scoped ContDiff\ntheorem contract_control : orientationJet witnessJet = 0 := by\n  norm_num [nonzero_density]\n"
+    },
+    {
+      "name": "momentum_sign_positive",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/d4_odd_verification/momentum_sign_positive.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 7.267,
+      "source_sha256": "6a812f44ef8f720e7989371c2b6b72e4f873804a579473f8816a1bbb3d4c46b0",
+      "required_failure_in": "contract_control",
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "import S11D4Odd.Boundary\nopen S10Pilot S11D4Odd\nnoncomputable section\nopen scoped ContDiff\ntheorem contract_control : S11D4Odd.momentum 2 witnessJet 1 1 = -1 := by\n  norm_num [nonzero_momentum]\n"
+    },
+    {
+      "name": "momentum_sign_mutant",
+      "expected": "REJECTED",
+      "outcome": "REJECTED",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/d4_odd_verification/momentum_sign_mutant.lean"
+      ],
+      "exit_status": 1,
+      "wall_seconds": 7.215,
+      "source_sha256": "96097867bff3718bfde30f89e653b09e42c1dd1e1f6dd5b2cd4dd89034a9eafa",
+      "required_failure_in": "contract_control",
+      "diagnostics": [
+        {
+          "declaration": "contract_control",
+          "line": 5,
+          "message": "s11/_scratch/d4_odd_verification/momentum_sign_mutant.lean:5:69: error: unsolved goals\n⊢ False\n"
+        }
+      ],
+      "output": "s11/_scratch/d4_odd_verification/momentum_sign_mutant.lean:5:69: error: unsolved goals\n⊢ False\n",
+      "output_sha256": "a794f04096ef77ce584589ba396c2a458a044402470f90c05917a2a3572f7fb6",
+      "source": "import S11D4Odd.Boundary\nopen S10Pilot S11D4Odd\nnoncomputable section\nopen scoped ContDiff\ntheorem contract_control : S11D4Odd.momentum 2 witnessJet 1 1 = 1 := by\n  norm_num [nonzero_momentum]\n"
+    },
+    {
+      "name": "current_factor_positive",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/d4_odd_verification/current_factor_positive.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 7.365,
+      "source_sha256": "36c8f86d64cf69aa4dfc0251fede609bcebfc1d4904c269b30e547f132b9d814",
+      "required_failure_in": "contract_control",
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "import S11D4Odd.Boundary\nopen S10Pilot S11D4Odd\nnoncomputable section\nopen scoped ContDiff\ntheorem contract_control : currentJet ![0,2,0,0] witnessJet 0 = 1 := by\n  norm_num [current_normalization]\n"
+    },
+    {
+      "name": "current_factor_mutant",
+      "expected": "REJECTED",
+      "outcome": "REJECTED",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/d4_odd_verification/current_factor_mutant.lean"
+      ],
+      "exit_status": 1,
+      "wall_seconds": 10.239,
+      "source_sha256": "d32cac72126072dd76833a9f9e480ac28d2a04ce6e830636a36d5ba706ea6d41",
+      "required_failure_in": "contract_control",
+      "diagnostics": [
+        {
+          "declaration": "contract_control",
+          "line": 5,
+          "message": "s11/_scratch/d4_odd_verification/current_factor_mutant.lean:5:69: error: unsolved goals\n⊢ False\n"
+        }
+      ],
+      "output": "s11/_scratch/d4_odd_verification/current_factor_mutant.lean:5:69: error: unsolved goals\n⊢ False\n",
+      "output_sha256": "691baab2517acd6a0e979ceb9fe68a63a085440ad3ff0ce8de6772d196b2e1ac",
+      "source": "import S11D4Odd.Boundary\nopen S10Pilot S11D4Odd\nnoncomputable section\nopen scoped ContDiff\ntheorem contract_control : currentJet ![0,2,0,0] witnessJet 0 = 2 := by\n  norm_num [current_normalization]\n"
+    },
+    {
+      "name": "degree_two_contraction_positive",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/d4_odd_verification/degree_two_contraction_positive.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 12.805,
+      "source_sha256": "45b771b184df80d802f97e1eda954ff386f082316c4387f6af5fd0a5d0bb81e2",
+      "required_failure_in": "contract_control",
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "import S11D4Odd.Boundary\nopen S10Pilot S11D4Odd\nnoncomputable section\nopen scoped ContDiff\ntheorem contract_control : (∑ i : Fin 4, ∑ j : Fin 4, witnessJet i.succ j * dualCurl witnessJet i j) = 2 := by\n  norm_num [dualCurl_contraction, nonzero_density]\n"
+    },
+    {
+      "name": "degree_two_contraction_mutant",
+      "expected": "REJECTED",
+      "outcome": "REJECTED",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/d4_odd_verification/degree_two_contraction_mutant.lean"
+      ],
+      "exit_status": 1,
+      "wall_seconds": 9.934,
+      "source_sha256": "8a5798cf8b19965d8d462dc1a9471f62e53172b00a5328809cb2e5d07bbac959",
+      "required_failure_in": "contract_control",
+      "diagnostics": [
+        {
+          "declaration": "contract_control",
+          "line": 5,
+          "message": "s11/_scratch/d4_odd_verification/degree_two_contraction_mutant.lean:5:108: error: unsolved goals\n⊢ False\n"
+        }
+      ],
+      "output": "s11/_scratch/d4_odd_verification/degree_two_contraction_mutant.lean:5:108: error: unsolved goals\n⊢ False\n",
+      "output_sha256": "09b75ea0a11ac0fafc091d720dcb65a95a02719da077f83c9fdacafdd6c1676b",
+      "source": "import S11D4Odd.Boundary\nopen S10Pilot S11D4Odd\nnoncomputable section\nopen scoped ContDiff\ntheorem contract_control : (∑ i : Fin 4, ∑ j : Fin 4, witnessJet i.succ j * dualCurl witnessJet i j) = 1 := by\n  norm_num [dualCurl_contraction, nonzero_density]\n"
+    },
+    {
+      "name": "first_variation_zero_positive",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/d4_odd_verification/first_variation_zero_positive.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 7.316,
+      "source_sha256": "742c8ee35b234ad927c8907c4f5a6692cc56e5befa93f67d3f4a747da701eb7f",
+      "required_failure_in": "contract_control",
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "import S11D4Odd.Boundary\nopen S10Pilot S11D4Odd\nnoncomputable section\nopen scoped ContDiff\ntheorem contract_control {u h : Point 4 → Vec 4} (hu : SmoothField u) (hh : TestField h) : deriv (S11D4Odd.relativeAction 3 u h) 0 = 0 := by\n  norm_num [firstVariation_zero hu hh]\n"
+    },
+    {
+      "name": "first_variation_zero_mutant",
+      "expected": "REJECTED",
+      "outcome": "REJECTED",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/d4_odd_verification/first_variation_zero_mutant.lean"
+      ],
+      "exit_status": 1,
+      "wall_seconds": 7.266,
+      "source_sha256": "20556851a3710e3628a3f35beed3904c92a02175c32b67e73c19e4c01b763102",
+      "required_failure_in": "contract_control",
+      "diagnostics": [
+        {
+          "declaration": "contract_control",
+          "line": 5,
+          "message": "s11/_scratch/d4_odd_verification/first_variation_zero_mutant.lean:5:138: error: unsolved goals\nu h : Point 4 → Vec 4\nhu : SmoothField u\nhh : TestField h\n⊢ False\n"
+        }
+      ],
+      "output": "s11/_scratch/d4_odd_verification/first_variation_zero_mutant.lean:5:138: error: unsolved goals\nu h : Point 4 → Vec 4\nhu : SmoothField u\nhh : TestField h\n⊢ False\n",
+      "output_sha256": "96b3991dba61323fc071537023ceafc8d8ee89ebba9b328725b851df22cfc55b",
+      "source": "import S11D4Odd.Boundary\nopen S10Pilot S11D4Odd\nnoncomputable section\nopen scoped ContDiff\ntheorem contract_control {u h : Point 4 → Vec 4} (hu : SmoothField u) (hh : TestField h) : deriv (S11D4Odd.relativeAction 3 u h) 0 = 1 := by\n  norm_num [firstVariation_zero hu hh]\n"
+    },
+    {
+      "name": "local_EL_zero_positive",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/d4_odd_verification/local_EL_zero_positive.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 7.366,
+      "source_sha256": "ae4445954b79f2b7d7f3cfd7b3484f24e82624829fce8279c87ff4e273ac62b4",
+      "required_failure_in": "contract_control",
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "import S11D4Odd.Boundary\nopen S10Pilot S11D4Odd\nnoncomputable section\nopen scoped ContDiff\ntheorem contract_control {u : Point 4 → Vec 4} (hu : SmoothField u) (x : Point 4) : S11D4Odd.eulerLagrange 3 u x 0 = 0 := by\n  norm_num [eulerLagrange_zero hu]\n"
+    },
+    {
+      "name": "local_EL_zero_mutant",
+      "expected": "REJECTED",
+      "outcome": "REJECTED",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/d4_odd_verification/local_EL_zero_mutant.lean"
+      ],
+      "exit_status": 1,
+      "wall_seconds": 7.366,
+      "source_sha256": "d9cd3814e2e07b3035ea1be35d1dc9bd503ff6c028c3905a95aa7bbab66dba1e",
+      "required_failure_in": "contract_control",
+      "diagnostics": [
+        {
+          "declaration": "contract_control",
+          "line": 5,
+          "message": "s11/_scratch/d4_odd_verification/local_EL_zero_mutant.lean:5:122: error: unsolved goals\nu : Point 4 → Vec 4\nhu : SmoothField u\nx : Point 4\n⊢ False\n"
+        }
+      ],
+      "output": "s11/_scratch/d4_odd_verification/local_EL_zero_mutant.lean:5:122: error: unsolved goals\nu : Point 4 → Vec 4\nhu : SmoothField u\nx : Point 4\n⊢ False\n",
+      "output_sha256": "bf96ac51347be9ddea24ec68e25a3e0bce2ac4f026090b9c6ba98c41bc3a0b64",
+      "source": "import S11D4Odd.Boundary\nopen S10Pilot S11D4Odd\nnoncomputable section\nopen scoped ContDiff\ntheorem contract_control {u : Point 4 → Vec 4} (hu : SmoothField u) (x : Point 4) : S11D4Odd.eulerLagrange 3 u x 0 = 1 := by\n  norm_num [eulerLagrange_zero hu]\n"
+    },
+    {
+      "name": "negative_beta_density_positive",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/d4_odd_verification/negative_beta_density_positive.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 7.215,
+      "source_sha256": "2fa4ad964996188d6dcc6d14f5b76b3f12a70771ade0461a0274549306b9942b",
+      "required_failure_in": "contract_control",
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "import S11D4Odd.Boundary\nopen S10Pilot S11D4Odd\nnoncomputable section\nopen scoped ContDiff\ntheorem contract_control : S11D4Odd.lagrangian (-2) witnessJet = 1 := by\n  norm_num [witness_lagrangian]\n"
+    },
+    {
+      "name": "negative_beta_density_mutant",
+      "expected": "REJECTED",
+      "outcome": "REJECTED",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/d4_odd_verification/negative_beta_density_mutant.lean"
+      ],
+      "exit_status": 1,
+      "wall_seconds": 7.367,
+      "source_sha256": "d6dcc1c675af5392c8befc6affb6b5069860f1af7a7e42c6123cf666bbe9508f",
+      "required_failure_in": "contract_control",
+      "diagnostics": [
+        {
+          "declaration": "contract_control",
+          "line": 5,
+          "message": "s11/_scratch/d4_odd_verification/negative_beta_density_mutant.lean:5:71: error: unsolved goals\n⊢ False\n"
+        }
+      ],
+      "output": "s11/_scratch/d4_odd_verification/negative_beta_density_mutant.lean:5:71: error: unsolved goals\n⊢ False\n",
+      "output_sha256": "866f00064a975f7e195164547920656dc35ec898e861456293828cfaeec3791a",
+      "source": "import S11D4Odd.Boundary\nopen S10Pilot S11D4Odd\nnoncomputable section\nopen scoped ContDiff\ntheorem contract_control : S11D4Odd.lagrangian (-2) witnessJet = -1 := by\n  norm_num [witness_lagrangian]\n"
+    },
+    {
+      "name": "time_momentum_zero_positive",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/d4_odd_verification/time_momentum_zero_positive.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 7.518,
+      "source_sha256": "9b51e9074b027ff10a9d2d1412f77ea24257052cb1296239c81ecc047267b662",
+      "required_failure_in": "contract_control",
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "import S11D4Odd.Boundary\nopen S10Pilot S11D4Odd\nnoncomputable section\nopen scoped ContDiff\ntheorem contract_control (J : Jet 4) : S11D4Odd.momentum 3 J 0 1 = 0 := by\n  norm_num [S11D4Odd.momentum_eq]\n"
+    },
+    {
+      "name": "time_momentum_zero_mutant",
+      "expected": "REJECTED",
+      "outcome": "REJECTED",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/d4_odd_verification/time_momentum_zero_mutant.lean"
+      ],
+      "exit_status": 1,
+      "wall_seconds": 7.618,
+      "source_sha256": "b13e38260cb48c4b591b28b3f24663e6ddce74119e76d3cd65d0b57a2a55fb0f",
+      "required_failure_in": "contract_control",
+      "diagnostics": [
+        {
+          "declaration": "contract_control",
+          "line": 5,
+          "message": "s11/_scratch/d4_odd_verification/time_momentum_zero_mutant.lean:5:72: error: unsolved goals\nJ : Jet 4\n⊢ False\n"
+        }
+      ],
+      "output": "s11/_scratch/d4_odd_verification/time_momentum_zero_mutant.lean:5:72: error: unsolved goals\nJ : Jet 4\n⊢ False\n",
+      "output_sha256": "3ab8af4a9987cecb6430c50698c1b29846ca82587ea59d9f2e763ed2e413b59a",
+      "source": "import S11D4Odd.Boundary\nopen S10Pilot S11D4Odd\nnoncomputable section\nopen scoped ContDiff\ntheorem contract_control (J : Jet 4) : S11D4Odd.momentum 3 J 0 1 = 1 := by\n  norm_num [S11D4Odd.momentum_eq]\n"
+    },
+    {
+      "name": "zero_field_admissible_positive",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/d4_odd_verification/zero_field_admissible_positive.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 7.316,
+      "source_sha256": "23323e7d62b8f1fea6aa2f2381562353c34274a30117df5ef14e3f5f5a6aa69c",
+      "required_failure_in": null,
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "import S11D4Odd.Boundary\nopen S10Pilot S11D4Odd\nnoncomputable section\nopen scoped ContDiff\ntheorem contract_control : TestField (fun _ : Point 4 => (0 : Vec 4)) := by\n  constructor\n  · intro i\n    fun_prop\n  · intro i\n    simp [HasCompactSupport]\n\n"
+    },
+    {
+      "name": "negative_beta_stationary_positive",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/d4_odd_verification/negative_beta_stationary_positive.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 7.316,
+      "source_sha256": "99e38c455874ffd23da6deddab3b75bc7daa20124ffc51aca265d9d198f47f26",
+      "required_failure_in": null,
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "import S11D4Odd.Boundary\nopen S10Pilot S11D4Odd\nnoncomputable section\nopen scoped ContDiff\ntheorem contract_control {u : Point 4 → Vec 4} (hu : SmoothField u) : S11D4Odd.ActionStationary (-7) u := every_background_stationary hu _\n\n"
+    },
+    {
+      "name": "zero_beta_stationary_positive",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/d4_odd_verification/zero_beta_stationary_positive.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 7.467,
+      "source_sha256": "7754438ed3c13ca8dd5ef28632e3a715287bb286e7c945bea41c6c29e4d25c3f",
+      "required_failure_in": null,
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "import S11D4Odd.Boundary\nopen S10Pilot S11D4Odd\nnoncomputable section\nopen scoped ContDiff\ntheorem contract_control {u : Point 4 → Vec 4} (hu : SmoothField u) : S11D4Odd.ActionStationary 0 u := every_background_stationary hu _\n\n"
+    },
+    {
+      "name": "smooth_affine_background_positive",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/d4_odd_verification/smooth_affine_background_positive.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 7.569,
+      "source_sha256": "1638c449621cdfc3fd4e88d5e0a2af5e895997af235086b2b475cfac1e164c01",
+      "required_failure_in": null,
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "import S11D4Odd.Boundary\nopen S10Pilot S11D4Odd\nnoncomputable section\nopen scoped ContDiff\ntheorem contract_control : SmoothField (fun x : Point 4 => (![0,x 1,0,x 3] : Vec 4)) := by\n  intro i\n  fin_cases i <;> simp [Matrix.cons_val_two, Matrix.cons_val_three] <;> fun_prop\n\n"
+    }
+  ],
+  "resources": {
+    "workers": 1,
+    "lean_threads": 1,
+    "lean_allocator_limit_mib": 4096,
+    "process_timeout_seconds": 600,
+    "note": "Allocator limit is not an OS RSS cap."
+  },
+  "dependency_olean_sha256_before_build": {
+    "lean/.lake/build/lib/lean/S10Pilot/Action.olean": "1be8c3c4196dd7d4ec3eab5adeec1ad4efd799f37bea3169a7b2396a59efc3bb",
+    "lean/.lake/build/lib/lean/S10Pilot/Analytic.olean": "9734d5342b5ee8d0683ce8e04b29e063554c4481f6db0e0cc5e418b68a9bebc6",
+    "lean/.lake/build/lib/lean/S10Pilot/PlaneWave.olean": "0d66b90ba63086dceddbae3b9cdeae947fcc286b6fa2d3bcd9c9dc033e0608b4",
+    "lean/.lake/build/lib/lean/S11D4Invariants/Classification.olean": "556ead212a046b381b6b6789eb957d17fc987f0266a1b56f4752cc3490e808de",
+    "lean/.lake/build/lib/lean/S11D4Invariants/ConstraintBlock0.olean": "ba6c12127d281349829eb82fc9876e51d63ce2daa8fbfbb5267ce954a6d18226",
+    "lean/.lake/build/lib/lean/S11D4Invariants/ConstraintBlock1.olean": "5b616443dcc909cfe38da17d11f1aca2763a428e9e18658ecf6e91d2e6a44c2c",
+    "lean/.lake/build/lib/lean/S11D4Invariants/ConstraintBlock2.olean": "27dfb6ffa539087f020be2cd9da47ac6ebbbe3cfb83c5db3558d4f4ce989a8d7",
+    "lean/.lake/build/lib/lean/S11D4Invariants/ConstraintBlock3.olean": "e30d85d353325f9b86e8d8dcd14e29231aaf0f584dc0245ff5b945ff70161c79",
+    "lean/.lake/build/lib/lean/S11D4Invariants/ConstraintPolynomial.olean": "a54a630545b7b6714ec3c71be9cac38b664eb66f2f781311d61eef4d7b01bb6e",
+    "lean/.lake/build/lib/lean/S11D4Invariants/Constraints.olean": "93e21a270430915462180ac86b2e1d229636f8c7a85a019bb4b200559c2d11a7",
+    "lean/.lake/build/lib/lean/S11D4Invariants/Forms.olean": "13991521ee83b5460ce5461e729134f19505e8c862d3861215cc43867e4d54c1",
+    "lean/.lake/build/lib/lean/S11D4Invariants/Orientation.olean": "b7c3908a02ef887a9fa18f0fd8dba613a17c18c3038b4c0d298cfd5cb6358d67",
+    "lean/.lake/build/lib/lean/S11D4Invariants/Quadratic.olean": "48361d3511e3f8a471577407190d37756eba773675f311dcbfd2c1606adba1a3",
+    "lean/.lake/build/lib/lean/S11D4Invariants/Rotation.olean": "0562cb2478f1881c42f46c3a590546f886c3a1b475e0eb656badd0cd62db98cc"
+  },
+  "axiom_audit_count": 41,
+  "axiom_declarations": {
+    "S11D4Odd.orientationJet_eq": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D4Odd.density_identity": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D4Odd.all_odd_densities": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D4Odd.lagrangian_increment": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D4Odd.lagrangian_variation": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D4Odd.momentum_eq": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D4Odd.dualCurl_contraction": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D4Odd.smooth_dualCurl": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D4Odd.smooth_momentum": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D4Odd.smooth_eulerLagrange": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D4Odd.partial_add": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D4Odd.partial_sub": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D4Odd.partial_neg": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D4Odd.partial_const_mul": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D4Odd.partial_mul": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D4Odd.partial_zero": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D4Odd.partial_sum": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D4Odd.partial_second": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D4Odd.partial_commute": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D4Odd.linearDensity_eq": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D4Odd.lagrangian_change": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D4Odd.linearDensity_self": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D4Odd.integrable_linear_term": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D4Odd.integrable_linearDensity": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D4Odd.integrable_test_lagrangian": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D4Odd.relative_density_integrable": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D4Odd.relativeAction_expansion": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D4Odd.relativeAction_hasDerivAt": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D4Odd.integrable_el_term": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D4Odd.integrated_variation_by_parts": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D4Odd.relativeAction_deriv_eq_eulerLagrange": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D4Odd.dualCurl_divergence_zero": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D4Odd.eulerLagrange_zero": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D4Odd.boundary_identity": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D4Odd.lagrangian_is_divergence": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D4Odd.firstVariation_zero": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D4Odd.every_background_stationary": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D4Odd.nonzero_density": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D4Odd.witness_lagrangian": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D4Odd.nonzero_momentum": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11D4Odd.current_normalization": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "source_sha256_after": {
+    "_measurements/S11_lean_d4_generate.py": "b71b4813a3d8d00a786069f2416527c8e7f631b9e104c3094e3e7377a5c8d28d",
+    "lean/lake-manifest.json": "91fd5318cdc35e4044d6e059c6ef73d94b955d27adf8a5860b07ec92add9377e",
+    "lean/lakefile.toml": "da2daca55f5ca557c81bd559bcde2845274cf59780489fe1de657fe662296e90",
+    "lean/lean-toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+    "lean/s10/S10Pilot/Action.lean": "a7466f2c23a123f244615217d27d5048a625bddfaad5ce2a6f0456a8704f435c",
+    "lean/s10/S10Pilot/Analytic.lean": "f8a6fe854a7ed775a7ecf65fdf8589db2b865139a811daf1e4e27c34bac8811d",
+    "lean/s10/S10Pilot/PlaneWave.lean": "d64ad2d70169976f42cacb3ece650776780a17fe640d1efee4aa7677e53c85cb",
+    "lean/s11/S11D4Invariants/Classification.lean": "3b95a47959eeabc44268a2ae7dd1b8d5ff9d3f454d3c7b12d23c7fca365a2729",
+    "lean/s11/S11D4Invariants/ConstraintBlock0.lean": "a392b17298a7a4e89f2a29b7f475d3451d0845041a9dbe38704429812e7e7425",
+    "lean/s11/S11D4Invariants/ConstraintBlock1.lean": "9e6cdf6c14a124af9e713fc0d922d5b37def9773d658cdb53847ce6e94769651",
+    "lean/s11/S11D4Invariants/ConstraintBlock2.lean": "d22ebe83d4b3e3a6bae8ebcfa7a94ddb34d2fe95110b23a3e9948a20dcf614e9",
+    "lean/s11/S11D4Invariants/ConstraintBlock3.lean": "a4f413393844de5e8a0126cf03d502c6ee32b1a44686b03762d39db72764ffa0",
+    "lean/s11/S11D4Invariants/ConstraintPolynomial.lean": "998ce5e4f2d0930e5e52997c4c300128d990b175030272dd321e4004036ec41a",
+    "lean/s11/S11D4Invariants/Constraints.lean": "dfe4f2dc27bc140681eb60ce2cf0fdc6926bcb61ab31e2ef2bb8957c1e68c43e",
+    "lean/s11/S11D4Invariants/Forms.lean": "74ff651936459ee6e3b7b9a136b06c929be19ec22ce10559dd371008d2e03a69",
+    "lean/s11/S11D4Invariants/Orientation.lean": "417aa006bce48911f0cdd914b0f9087e19fbf876d7a13647d98f684a545ce31f",
+    "lean/s11/S11D4Invariants/Quadratic.lean": "5d64eda063b367049135aed7072821f2679dc860987dc0578036af6955809763",
+    "lean/s11/S11D4Invariants/Rotation.lean": "01f3e8e0fa11ba6eb53c756b8ea67a825de83f2cd13c8b81b5c58de6490f391c",
+    "lean/s11/S11D4Odd/Action.lean": "f83222be186089289e444f98d2518a3c5057248c7216ad1ee0fe769df36cc4be",
+    "lean/s11/S11D4Odd/Boundary.lean": "691c9981cc50d4b32ec66628c6aadc3102d2e7551a3a36540874e09731c619c8",
+    "lean/s11/S11D4Odd/Calculus.lean": "22604d9999f0a28079ff7fd9a9f88760df1509ae0c8a3838de26f3fefbeddd04",
+    "lean/s11/S11D4Odd/Variation.lean": "2bb66ed4848d61893e035250e3047dfa5cdbfd2081b8928d0bf663dfbf3d728f",
+    "lean/s11/S11D4Odd.lean": "d2e5686a4cd48fa548c83db8b267dadff65de50b4b8accf6f5eaba0fcdf8276e"
+  },
+  "finished_utc": "2026-09-16T23:44:53.622228+00:00"
+}

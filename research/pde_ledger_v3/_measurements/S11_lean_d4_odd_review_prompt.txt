@@ -1,0 +1,85 @@
+Independent non-author fidelity review: bounded D4 odd-density divergence
+and bulk first variation, D4B.1–D4B.4.
+
+Read MANIFEST.json and lean/FORMALIZATION_POLICY.md, followed by
+lean/s11/D4_ODD_COVERAGE.md, D4_ODD_FIDELITY.md, D4_ODD_VERIFICATION.txt,
+the four S11D4Odd modules and their audit root. The packet includes the full
+local import source closure, pinned package metadata, the existing D4
+certificate generator, compact native instruments and terminal records,
+and the actual native sources/shared specification. Manifest paths are
+relative to the packet root. The dependency classification at d6119f75 is
+historical; review the new uses and fidelity without widening this increment.
+
+This is mathematical statement-fidelity review, not an approval based only
+on author-reported build status. Inspect definitions, quantifiers and proof
+logic, including the reuse of S10's actual derivatives/integration machinery.
+Do not assume that a zero-versus-zero operator comparison fixes normalization.
+
+Check the supplied action and conventions: G_ij=partial_i u_j, spatial row
+is the derivative index; F_ij=G_ij-G_ji; P=F01 F23-F02 F13+F03 F12;
+L=-beta P/2 with arbitrary constant real beta. The shared specification
+defines L=T-W and the odd stiffness term beta P_D/2. Native P_D must come
+from the actual computed V6 basis without arbitrary rescaling, and the
+compact check must establish P_D=P. Lean has coordinate order (t,x1,x2,x3,x4);
+native functions have named arguments (x1,x2,x3,x4,t). Check that the translation
+matches the intended spatial and time derivatives. No beta positivity or
+nonzero premise, symmetry of G, transverse ansatz or time independence is used.
+
+Check that all_odd_densities invokes the exhaustive existing reflection-odd
+classification and that density_identity relates the supplied action to that
+same family. Is momentum defined by actual differentiation of L, with spatial
+entries -beta M_ij/2 and zero time row? Is linearDensity genuinely its first
+variation, not a separately posited operator? Check signs and factors using
+the nonzero witnesses as well as the canonical formulas.
+
+Check the divergence mathematics for every smooth background:
+sum_ij G_ij M_ij=2P, sum_i partial_i M_ij=0, and
+K_i=(1/2)sum_j u_j M_ij with div K=P. Are mixed derivatives commuted only
+under appropriate regularity? Is the Euler–Lagrange expression defined from
+actual momenta and proved to vanish? Boundary effects are not asserted absent.
+
+Check the finite relative action, integrability and differentiation:
+integral [L(jet(u+s h))-L(jet u)] for every smooth u and smooth compact h
+on real 4+1 spacetime, even when the full background action is not integrable.
+Does the proved expansion and integration by parts give the derivative of
+this actual integral, and does firstVariation_zero cover all these fields,
+all compact variations and every constant beta (including zero and negative)?
+The witnesses P=1 and nonzero momentum must prevent confusion between zero
+bulk variation and pointwise vanishing of the density.
+
+Inspect the compact native link: original selected Q9/coordinate/EL helpers,
+actual P_D, derivative momenta, explicit current, and the native V5 odd
+combination in the actual V1 basis. Native EL uses the opposite sign from
+Lean's first-variation convention. Its bulk zero is insufficient for a sign
+check: inspect the nonzero momentum sign/factor controls. Does adding G00^2
+give a non-null native operator and catch an always-zero helper mutation?
+This is exact tested symbolic translation, not a kernel-certified CAS bridge.
+Wolfram evidence is source inspection only; no Wolfram execution is claimed.
+
+Inspect the twelve mathematical rejections and twelve positive controls.
+Four source mutations must expose the named false identities, and eight
+paired wrong statements must reduce to False. The wrong divergence-index
+mutation also causes downstream rewrite/simp failures, and the current-factor
+mutation causes a later concrete-conversion failure. Those secondary errors
+are not accepted as evidence: assess the earlier mathematical counterexamples
+and diagnostics independently. Syntax/import errors, timeouts and warnings
+alone are not rejected mutations. Check consistency and admissible examples.
+
+The author reports run2 PASS: four fresh modules/root, fourteen guarded reused
+imports, 41 standard-axiom audits, twelve rejections and twelve positives.
+The first run's proof-code failures and focused repairs changed no definitions
+or theorem statements; only the completed recorded run is acceptance evidence.
+State the exact limits of your independent checks: do not claim to have built
+Lean, run a native instrument or recomputed hashes unless you actually did so.
+
+Stay within D4B.1–D4B.4. No full D4 even-family bulk census, variable beta,
+general null-Lagrangian classification, D5, full XFORM_EXTRA spectrum,
+stability/interface work, S11c, production/comparator/export work or systematic
+CAS bridge is requested. Distinguish required corrections from optional
+improvements. Do not modify any file or launch production calculations.
+
+Return a substantive final report with verdict CLEAR or NOT CLEAR, reviewed
+packet identifier (as supplied unless independently recomputed), assumptions
+and conventions checked, detailed findings with file/theorem references, and
+the limits of verification. A plan, partial/errored response or unsupported
+approval does not provide fidelity clearance.

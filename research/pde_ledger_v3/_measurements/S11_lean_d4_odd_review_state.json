@@ -1,0 +1,69 @@
+{
+  "status": "COMPLETE",
+  "scope": "Bounded D4 odd S11 D4B.1\u2013D4B.4 independent fidelity review",
+  "packet_revision": "S11 D4 odd divergence/variation D4B.1\u2013D4B.4 fidelity contract v1",
+  "packet_sha256": "1c2fb3840e56f82e506adbddb13463a6fbc645193294a3173531026f0ae838d5",
+  "file_count": 38,
+  "archive": "research/pde_ledger_v3/_measurements/S11_lean_d4_odd_review_packet_v1.tar.gz",
+  "archive_sha256": "166f3de5984894b7b9383e87e03a7b1e5c731ea9a891ca1a724309836eb4b8cc",
+  "archive_bytes": 152580,
+  "packet_directory": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_d4_odd/review_packet_v1",
+  "manifest": "research/pde_ledger_v3/_measurements/S11_lean_d4_odd_review_packet.json",
+  "manifest_sha256": "970bb4ce1cc64423ca2da4c3c1fc86ad93fd515793c849f2fb56dea314ee7f14",
+  "destinations": [
+    "Claude",
+    "Grok"
+  ],
+  "external_reviews_started": true,
+  "local_verification": "PASS: four modules and audit root; fourteen guarded reused imports; 41 standard-axiom audits; twelve mathematical rejections; twelve positive controls; compact native checks; current source/olean/dependency hashes match",
+  "prepared_utc": "2026-09-16T23:51:33.393775+00:00",
+  "snapshot_validation": "PASS: live files, snapshot and archive member hashes all agree",
+  "review_verdicts": {
+    "claude": "CLEAR",
+    "grok": "CLEAR"
+  },
+  "completion_claimed": true,
+  "committed": false,
+  "authorization_context": "The user answered \"Yes you can\" to the explicit request to send this fixed 38-file D4 odd-density packet to Claude and Grok for independent fidelity review.",
+  "pinned_export_constraint": "Preserve S11c-b/c1/c2 exports and all S11c calculation files; this packet and work do not write them.",
+  "authorization_quote": "Yes you can",
+  "authorized_utc": "2026-09-16T23:55:46.776833+00:00",
+  "authorization_packet_sha256": "1c2fb3840e56f82e506adbddb13463a6fbc645193294a3173531026f0ae838d5",
+  "authorization_destinations": [
+    "Claude",
+    "Grok"
+  ],
+  "authorization_preflight": {
+    "status": "PASS",
+    "packet_sha256": "1c2fb3840e56f82e506adbddb13463a6fbc645193294a3173531026f0ae838d5",
+    "file_count": 38,
+    "compiled_objects": 19,
+    "checked": "archive/snapshot/live files; source/generator/instruments/reports/logs/objects; package pins; historical proof bytes"
+  },
+  "review_started_utc": "2026-09-16T23:56:56.246065+00:00",
+  "transport_directory": "/tmp/s11-lean-d4-odd-fidelity-ek4szbzi/packet",
+  "launch_preflight": {
+    "status": "PASS",
+    "packet_sha256": "1c2fb3840e56f82e506adbddb13463a6fbc645193294a3173531026f0ae838d5",
+    "file_count": 38,
+    "compiled_objects": 19,
+    "checked": "archive/snapshot/live files; source/generator/instruments/reports/logs/objects; package pins; historical proof bytes"
+  },
+  "supervisor_pid": 538202,
+  "review_supervisor_sha256": "ef8921fa696ab998361789ba85460b251ccf9022b28b6b9b8f71188419a546a9",
+  "review_supervisor_finished_utc": "2026-09-17T00:10:59.921209+00:00",
+  "live_files_changed_since_packet": [],
+  "completed_utc": "2026-09-17T00:16:07.610169+00:00",
+  "completion_scope": "D4B.1\u2013D4B.4 only",
+  "unresolved_blockers": [],
+  "closure_document": "research/pde_ledger_v3/lean/s11/D4_ODD_FIDELITY_REVIEW.md",
+  "closure_validation": "research/pde_ledger_v3/_measurements/S11_lean_d4_odd_closure_validation.json",
+  "closure_validation_sha256": "7ab7015590987779986a574d8dbdc9d908f7cd2b9d2e3b8ec4ef93c88f49200b",
+  "live_packet_documentation_changes": {
+    "lean/s11/D4_ODD_COVERAGE.md": "91e9d4461b4eb253f32c82f7f015ea06932d4c172e2d316e96ae7a080f1395af",
+    "lean/s11/D4_ODD_FIDELITY.md": "1627efdde4a8445265dc0e6890c91524a08b4b792985b378deaf338083b5e627",
+    "lean/s11/D4_ODD_VERIFICATION.txt": "0161110f1d83f25199a5b74bce01f289bae4478976383468308667d41c21235e",
+    "lean/s11/README.md": "ef802293e2dab0b83a6c957feddc940df7d6be99a7e84efe67607d7c33005c84"
+  },
+  "review_disposition": "Both terminal substantive reports read and adjudicated CLEAR; no required corrections. Optional suggestions are documented in the closure record."
+}

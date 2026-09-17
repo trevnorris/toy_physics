@@ -150,5 +150,21 @@ epsilon contraction equal to `2P`. All fourteen mathematical mutations were
 rejected and sixteen positives passed. See [D4_FIDELITY.md](D4_FIDELITY.md)
 and [D4_VERIFICATION.txt](D4_VERIFICATION.txt); review provenance and optional
 finding dispositions are in [D4_FIDELITY_REVIEW.md](D4_FIDELITY_REVIEW.md).
-The divergence/zero bulk effect
-of the D4 odd term remains a separate increment.
+The divergence/zero bulk effect of the D4 odd term is covered by the separate
+D4B increment below.
+
+## D4 odd-density bulk variation
+
+The bounded [D4_ODD_COVERAGE.md](D4_ODD_COVERAGE.md) increment is complete:
+local verification passes and Claude and Grok independently returned CLEAR.
+It proves the explicit divergence current and zero bulk first variation of
+the constant-coefficient odd term, using the completed D4 classification.
+The current retains its factor of one half; nonzero density and
+momentum controls distinguish a bulk cancellation from pointwise vanishing.
+Four modules and the audit root pass, with 41 standard-axiom audits, twelve
+mathematical rejections, twelve positives and compact native correspondence.
+See [D4_ODD_FIDELITY.md](D4_ODD_FIDELITY.md) and
+[D4_ODD_VERIFICATION.txt](D4_ODD_VERIFICATION.txt), with review provenance and
+finding dispositions in [D4_ODD_FIDELITY_REVIEW.md](D4_ODD_FIDELITY_REVIEW.md).
+This is a statement about constant coefficients and compact variations;
+possible boundary effects remain.

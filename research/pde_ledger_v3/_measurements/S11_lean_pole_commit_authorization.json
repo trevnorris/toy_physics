@@ -1,0 +1,27 @@
+{
+  "recorded_utc": "2026-09-17T04:49:39.996029+00:00",
+  "user_quote": "After they approve go ahead and commit",
+  "scope": "Commit only the NP1\u2013NP4 nonlinear-pencil finite-core work, review evidence and requested handoff after both independent reviews clear and required findings are resolved.",
+  "packet_sha256": "9c7e8e41dd1820647c3dc787ad171043944038c70d37b873699d414f49396e57",
+  "reviewers": [
+    "Claude",
+    "Grok"
+  ],
+  "conditions": [
+    "Both independent substantive reviews are CLEAR; partial, cancelled, errored or plan-only responses do not qualify.",
+    "Resolve required findings and obtain re-review for substantive changes where necessary.",
+    "Validate current proof, dependency, instrument and compiled-object correspondence; document bounded closure.",
+    "Review the staged diff; include only this session's NP work and preserve unrelated and other-session changes."
+  ],
+  "commit_message_prefix": "lean:",
+  "new_scope_authorized": false,
+  "commit_performed": false,
+  "conditions_met_utc": "2026-09-17T05:05:56.923087+00:00",
+  "review_clearance": {
+    "claude": "CLEAR",
+    "grok": "CLEAR"
+  },
+  "required_findings_resolved": true,
+  "closure_validation": "research/pde_ledger_v3/_measurements/S11_lean_pole_closure_validation.json",
+  "commit_preparation": "Ready for scoped checkpoint; commit_performed records the precommit state."
+}

@@ -1,0 +1,106 @@
+Independent non-author fidelity review: bounded nonlinear-pencil finite core
+NP1–NP4, the third mathematical question from the S11c calculation session.
+
+Read MANIFEST.json, lean/FORMALIZATION_POLICY.md, and POLE_COVERAGE.md,
+POLE_FIDELITY.md, POLE_VERIFICATION.txt and POLE_ASSESSMENT.md in lean/s11.
+Read all six S11NonlinearPole modules and the audit root. The packet includes
+their complete local import closure, package pins, formal/native instruments
+and reports, author validation and selected read-only native correction context.
+Mathlib itself and compiled objects are not packaged; package pins and direct
+import source/object hashes are recorded. Reported builds/hash validation are
+author evidence unless you independently check them. Paths are packet-relative.
+
+Review statement fidelity, hypotheses, quantifiers, normalization, map types,
+proof logic, compact operator identification and interpretation. Counts/builds
+alone are not clearance. Distinguish the finite proved core from literature or
+application hypotheses in the assessment. Do not require the deliberately
+excluded general analytic theory as a prerequisite for these bounded claims.
+
+NP1: PairingData supplies separately typed vector spaces X, Y and K over a
+field, A:X->Y, V:K->X, W:Y->K and an actual linear equivalence D:K≃K with D=WAV.
+The name derivative for A does not establish A=L'(z*); that identification is
+an application premise. W need not annihilate L0 in the basic algebra. Check
+R=V D^-1 W, RAR=R, P_X=RA, P_Y=AR, full ranges range(V), range(AV), and ranks
+dim K under finite-dimensional K. The algebra permits zero-dimensional K and
+does not imply an actual pole. A singular pairing cannot supply this data.
+The residue uniqueness theorem assumes range R<=range V and W A R=W.
+The separate inverse-coefficient theorem assumes full range V=ker L0,
+W L0=0, L0 R=0, L0 H+A R=I and proves R=V D^-1 W. These are supplied algebraic
+coefficient identities; neither an analytic inverse expansion nor the full
+Keldysh semisimplicity/existence criterion is proved. Check that the stronger
+analytic interpretation is never smuggled into the formal conclusion.
+
+NP2: moment is an actual positively oriented circle integral centered at zero,
+normalized by 1/(2*pi*i). Positive radius keeps zero off the path. Check all
+integer exponents and finite sums in the complete complex normed-space theorem;
+polynomial moments vanish by actual integration. Matrix integrals use the
+finite elementwise norm. The finite double principal part is supplied, not
+constructed as an inverse. Its ordered product with A+zB has moment C1*A+C2*B.
+Interpreting A+zB as a particular pencil derivative remains an application
+premise. With rectangular O:n->o and B:u->n, the actual response moment is
+O0*C1*B0 + O0*C2*B1 + O1*C2*B0. Check order, indices, factors and completeness
+of the finite expansion. No general meromorphic or holomorphic remainder is
+silently discarded; the generic theorem covers exactly its finite operands.
+
+NP3: inspect the actual pencil, derivative, inverse and contour identities.
+For scalar z^2 the inverse moment is 0, logarithmic moment 2 (nonidempotent),
+and the weighted higher-coefficient moment is 1. For z^2-1 the zeros are +/-1,
+the zero-centered radius-2 circle misses them and its logarithmic moment is 2,
+also nonidempotent. These are actual contour counterexamples, not merely named
+algebraic counts. Field inversion is totalized at zero in Lean; inverse
+identities must require nonzero z and the relevant paths must avoid poles.
+For N=[[0,1],[0,0]], check the genuine zI-N pencil, actual derivative I,
+two-sided inverse I/z+N/z^2, determinant z^2, one-axis kernel at zero and
+explicit chain. Its inverse/logarithmic moment is I, idempotent with trace 2,
+while the higher coefficient N is nonzero. Defectiveness therefore does not
+invalidate this genuine affine state projection. The faithful scalar transfer
+is inverse entry (0,1)=z^-2: residue zero, nonzero singular response. Observation
+2+5z and forcing 1+3z give the actual scalar response 2/z^2+11/z+15, residue 11;
+frozen maps give 0. No general Riesz calculus, Smith/chain classification or
+abstract operator argument principle is claimed by these explicit examples.
+
+NP4: assess the 17 paired mathematical rejections and 21 positives. Every
+accepted mutant has exactly one diagnostic with one unsolved False in
+contract_control. These are concrete statement controls, not replacements in
+the canonical sources. Check pairing normalization, full two-dimensional rank,
+singular exclusion, noncommuting product order, contour sign, scalar residues/
+counts/nonidempotency, Jordan/higher coefficients, zero-residue/nonzero-response
+distinction, and observation/forcing omissions. Admissible scaled/full pairings
+and actual inverse/idempotency/zero-residue/constant-polynomial positives support
+consistency. State any load-bearing fidelity gap rather than inflating scope.
+
+The compact native instrument parses selected original source AST assignments
+and reads existing synthetic operators/maps. It never imports or executes the
+S11c scripts or regenerates their reports. Inspect its 19 checks and four
+translation controls (wrong Jordan sign, same-kernel scalar rescaling, forcing
+coordinate, frozen observation). Existing 89-check repair evidence is explicitly
+historical; this increment does not claim to rerun or kernel-certify it.
+The nonlinearPoleV2 addendum supersedes unrestricted projector wording in the
+unchanged pinned v10 shared specification. Read-only native inputs establish
+the selected synthetic context, not the full physical S11c operator.
+
+Author verification: run1 freshly built all seven canonical objects and printed
+55 allowed axiom lists, then a parser failed on a wrapped list before controls.
+The repaired parser accepts wrapped/empty lists and rejects nonstandard axioms.
+Run2 reused seven guarded builds, passed the audit/four pairs, then a paired
+positive failed because broad simp changed the expression before a named
+identity matched. That pair now uses norm_num only with the named identity.
+Run3 reused all seven canonical builds under full transitive source/pin/command/
+input/output guards and ran all 38 controls fresh: PASS. No failed instrument
+or positive control counts as a mathematical rejection. Canonical sources,
+claims, pins, native inputs and seven NP objects were unchanged in both repairs.
+All forty VC and five T1 protected objects and seven read-only native inputs
+match the preservation record. Fifteen clean package pins and four direct
+Mathlib source/object pairs match; the transitive Mathlib cache is the pinned
+trust baseline, not rebuilt here. State your own verification limits; do not
+claim to have run Lean, native code or hash checks unless you actually did.
+
+No file modifications or production runs. No general Fredholm/Keldysh existence,
+arbitrary argument-principle/Riesz theory, physical pole search, scattering,
+homotopy/displacement expansion, D5 or systematic CAS bridge. Distinguish
+required fidelity corrections from optional stronger results.
+
+Return a substantive terminal report: CLEAR or NOT CLEAR; packet identifier
+(as supplied unless recomputed); checked assumptions/conventions; findings
+with file/theorem references; and verification limits. Partial, errored,
+plan-only or unsupported approval responses do not count as clearance.

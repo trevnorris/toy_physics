@@ -194,3 +194,26 @@ checks. Both independent fidelity reviews are CLEAR; the bounded contract is
 complete. See [review and closure](VARIABLE_COEFFICIENT_FIDELITY_REVIEW.md) and
 [the fidelity boundary](VARIABLE_COEFFICIENT_FIDELITY.md); no full S11c operator
 or multidimensional transmission result is claimed.
+
+## Nonlinear-pencil finite core NP1–NP4
+
+VC1–VC4 is complete at `9865050f`. The user authorized proceeding to the
+calculation session's third question after that checkpoint. The
+[assessment](POLE_ASSESSMENT.md) reconciles the already adopted
+`nonlinearPoleV2` correction with its analytic and physical application
+obligations. [POLE_COVERAGE.md](POLE_COVERAGE.md) bounds this increment to typed
+modal algebra, finite Laurent/circle integrals and discriminating actual small
+pencils. [POLE_FIDELITY.md](POLE_FIDELITY.md) records the precise proof boundary.
+
+Local verification passes: seven guarded canonical builds, 55 standard-axiom
+audits, 17 mathematical rejections and 21 positives. The compact read-only
+identification passes 19 checks and four controls. Claude and Grok independently
+returned CLEAR; the bounded contract is complete. See
+[review dispositions](POLE_FIDELITY_REVIEW.md),
+[POLE_VERIFICATION.txt](POLE_VERIFICATION.txt), and the
+[calculation-session handoff](POLE_HANDOFF.md). Run the separate
+`../_measurements/S11_lean_pole_contract_check.py` from `lean/` for the one-worker
+suite; `--reuse-build` requires its recorded source/command/object guards.
+This increment does not rerun the old native diagnostics or S11c production,
+prove analytic Fredholm theory, or certify a physical pole/scattering solve.
+Its README and lakefile additions do not update the historical VC packet.

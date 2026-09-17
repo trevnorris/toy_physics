@@ -1,0 +1,116 @@
+{
+  "status": "PASS",
+  "closed_utc": "2026-09-17T05:05:56.923087+00:00",
+  "scope": "Bounded NP1–NP4 nonlinear-pencil finite core complete; general analytic/physical application obligations remain excluded.",
+  "packet_sha256": "9c7e8e41dd1820647c3dc787ad171043944038c70d37b873699d414f49396e57",
+  "archive_sha256": "2c354358720bb6fd03afd8298a237131cf326de785222598ee15bef84b9bb9d7",
+  "manifest_sha256": "a85ac31521dcf002a4baaa4d4a5244c6f98f00da917d470287003cd9f2ec0e6e",
+  "pre_closure_validation_sha256": "84912d498d35fea8121dcc61a60cbef3ce31d076fed4ffdbb36f4ccac5c16b12",
+  "before_closure": {
+    "status": "PASS",
+    "validated_utc": "2026-09-17T05:01:35.986079+00:00",
+    "packet_sha256": "9c7e8e41dd1820647c3dc787ad171043944038c70d37b873699d414f49396e57",
+    "payload_files": 31,
+    "archive_snapshot_live_preflight": {
+      "status": "PASS",
+      "packet_sha256": "9c7e8e41dd1820647c3dc787ad171043944038c70d37b873699d414f49396e57",
+      "file_count": 31,
+      "compiled_objects": 7,
+      "preserved_historical_objects": 45,
+      "read_only_native_inputs": 7,
+      "checked": "Archive/snapshot/live files; sources/instruments/reports/logs/input/output objects; package pins and direct Mathlib bytes; historical object preservation"
+    },
+    "transport_correspondence": "PASS",
+    "reviews": {
+      "claude": {
+        "session_id": "13c6554e-2dc7-41d7-aa84-735448bc3fc3",
+        "verdict": "CLEAR",
+        "terminal": "success/end_turn/completed",
+        "models": [
+          "claude-haiku-4-5-20251001",
+          "claude-opus-5[1m]"
+        ],
+        "raw_sha256": "aa8ee813acbadfb967e2bf86b6e470ab1392f262352d4f0586217683f4e941f9",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "run_record_sha256": "6c6ff4688a51ef0f711035c8f099118e1081eb49b7692efe51dbdcf135c64531",
+        "report_sha256": "df2ea653e9447c67d6afa8f0ebde268e66b36733b3e66ef6b5fe96a0fa10b535",
+        "text_field": "result",
+        "terminal_report_offset": 0,
+        "started_utc": "2026-09-17T04:47:07.865991+00:00",
+        "finished_utc": "2026-09-17T04:50:54.462771+00:00",
+        "review_limit": "Independent source reading and hand algebra; no independent Lean/native/hash execution."
+      },
+      "grok": {
+        "session_id": "e3941bb7-1d01-49bb-82aa-c0d2016f7547",
+        "verdict": "CLEAR",
+        "terminal": "end_turn",
+        "models": [
+          "grok-4.6-build"
+        ],
+        "raw_sha256": "839fe3b371a4096bc8ade0d366f4b4fd109a221e0eea26a1b0591fcdd9ce2268",
+        "stderr_sha256": "43f80254b6c1df564f82d80883573f8c1d6b70e94d93e64c29f66e79b8558e6c",
+        "run_record_sha256": "474512a2cef2edf6e1c387e48df36f37637b3150086a63306b5fa8e34aef89ca",
+        "report_sha256": "9f5a8f98e7f4bbc977cba96601fe665a57f60b386817bf4e6593b030e6d7108f",
+        "text_field": "text",
+        "terminal_report_offset": 848,
+        "started_utc": "2026-09-17T04:50:54.489517+00:00",
+        "finished_utc": "2026-09-17T04:59:08.664852+00:00",
+        "review_limit": "Independent source reading and hand algebra; no independent Lean/native/hash execution."
+      }
+    },
+    "no_shared_source_drift": true,
+    "adjudication": "Both substantive terminal reports are CLEAR with no required mathematical correction. Optional findings will be dispositioned in POLE_FIDELITY_REVIEW.md; no canonical source change is required.",
+    "stderr_adjudication": "Claude stderr empty. Grok startup plugin/hook/repository warnings are nonfatal; complete substantive report, end_turn and exit 0 verified. No partial or plan-only response accepted."
+  },
+  "reviews_complete": true,
+  "required_findings_unresolved": [],
+  "canonical_sources_changed": false,
+  "instruments_changed": false,
+  "reviewed_snapshot_archive_transport_unchanged": true,
+  "canonical_object_count": 7,
+  "protected_object_count": 45,
+  "read_only_native_input_count": 7,
+  "local_check_records": 45,
+  "axiom_audits": 55,
+  "mathematical_rejections": 17,
+  "positives": 21,
+  "native_checks": 19,
+  "translation_controls": 4,
+  "package_pin_count": 15,
+  "direct_Mathlib_source_object_pairs": 4,
+  "post_review_live_document_differences": {
+    "lean/s11/POLE_ASSESSMENT.md": {
+      "reviewed_sha256": "ada87aa7f3a94a71c6113bdf7a0ef26cf396be2a8046b6d2c530fdea8d4b6b27",
+      "closure_sha256": "a15017e8564daa898c93a7f6d2f3d1df9ad2fdeab6550c121bc2e32bf7fe0ee5"
+    },
+    "lean/s11/POLE_COVERAGE.md": {
+      "reviewed_sha256": "df12602b2f4827ed4bcb524af6185919d0f634050add58fe86dec69e36e509e8",
+      "closure_sha256": "509caa0dfb5793e878e330971f69ada258e87577f5fb707824fd52d0e69c4e51"
+    },
+    "lean/s11/POLE_FIDELITY.md": {
+      "reviewed_sha256": "89736fe9c9363355f2eb60c7fa2859ea774d680c8d61f03c3824234620b09bb0",
+      "closure_sha256": "52ddb536bdd744b407a647d29248a311ce77e9bd80c56dff42c34585fbf84f6a"
+    },
+    "lean/s11/POLE_VERIFICATION.txt": {
+      "reviewed_sha256": "a257267ed858153162baa689b88e66b07d01aa92cec853278f78f0a3b65750f5",
+      "closure_sha256": "6975254dacc0e96e1afd8bd5b7ecd97285bb7835473be64fa723ee99b7c91d0a"
+    },
+    "lean/s11/README.md": {
+      "reviewed_sha256": "9ab8b85b9a9b90f87b1b411da78e830fab6070c685b758e613b65595171e832d",
+      "closure_sha256": "186c1e95acc8dfbbdc3218fe5bf4ea0660361d26d15238e0f175730a9c71cadb"
+    }
+  },
+  "closure_document_sha256": {
+    "lean/s11/POLE_ASSESSMENT.md": "a15017e8564daa898c93a7f6d2f3d1df9ad2fdeab6550c121bc2e32bf7fe0ee5",
+    "lean/s11/POLE_COVERAGE.md": "509caa0dfb5793e878e330971f69ada258e87577f5fb707824fd52d0e69c4e51",
+    "lean/s11/POLE_FIDELITY.md": "52ddb536bdd744b407a647d29248a311ce77e9bd80c56dff42c34585fbf84f6a",
+    "lean/s11/POLE_FIDELITY_REVIEW.md": "cd3a0f6c121c522c989a67f5f794a4bd21cb6dd2e64452ac7ed77d09313e379f",
+    "lean/s11/POLE_HANDOFF.md": "f0f16bf4f8370abc073f0c7b479da32a7069841312edb5fdbd370e65a337ff5c",
+    "lean/s11/POLE_VERIFICATION.txt": "6975254dacc0e96e1afd8bd5b7ecd97285bb7835473be64fa723ee99b7c91d0a",
+    "lean/s11/README.md": "186c1e95acc8dfbbdc3218fe5bf4ea0660361d26d15238e0f175730a9c71cadb"
+  },
+  "reverification_decision": "Only status/clarification documents changed; proofs, instruments and all objects match. No rebuild, mutation rerun or substantive re-review required under the policy.",
+  "commit_authorized": true,
+  "commit_authorization_quote": "After they approve go ahead and commit",
+  "commit_preparation": "Ready for an explicit NP-only staged diff and lean: checkpoint. This record is written before the commit; the resulting commit is recorded by git and a local receipt."
+}

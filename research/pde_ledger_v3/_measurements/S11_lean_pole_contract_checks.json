@@ -1,0 +1,1968 @@
+{
+  "status": "PASS",
+  "started_utc": "2026-09-17T03:29:23.820670+00:00",
+  "historical_preservation": {
+    "status": "PASS",
+    "completed_VC_checkpoint": "9865050f",
+    "preserved_objects": {
+      "lean/.lake/build/lib/lean/S10Pilot/Action.olean": "1be8c3c4196dd7d4ec3eab5adeec1ad4efd799f37bea3169a7b2396a59efc3bb",
+      "lean/.lake/build/lib/lean/S10Pilot/PlaneWave.olean": "0d66b90ba63086dceddbae3b9cdeae947fcc286b6fa2d3bcd9c9dc033e0608b4",
+      "lean/.lake/build/lib/lean/S10Pilot/Analytic.olean": "9734d5342b5ee8d0683ce8e04b29e063554c4481f6db0e0cc5e418b68a9bebc6",
+      "lean/.lake/build/lib/lean/S11D4Odd/Calculus.olean": "17a981fa8a51641be48dd7fa533c7dc458aaf2ce8d485fa8e04a39dd49086ad6",
+      "lean/.lake/build/lib/lean/S10Pilot/Variation.olean": "d2ae9c5944f74e9581b1a82893f65c7d715811b6407427ed997440c6033b36eb",
+      "lean/.lake/build/lib/lean/S11D3Invariants/Quadratic.olean": "814b4bd7f2520f5dcb2e92be13d5edea4db87b1442917a5ddb1705297bbe1023",
+      "lean/.lake/build/lib/lean/S11D3Invariants/Rotation.olean": "1f23a7517dc5075d86914a05ce90f92b9fa8e3780bef99e53970686a9958d553",
+      "lean/.lake/build/lib/lean/S11D3Invariants/Constraints.olean": "5d86c2d145cabc4181e3b474c7ffc9cafcbd889ab190da01d53149ad2a3134ca",
+      "lean/.lake/build/lib/lean/S11D3Invariants/Classification.olean": "8debe95d1cb11b440b1be97c5d9786a6405ed3bbca319b358cebd8c1155980d4",
+      "lean/.lake/build/lib/lean/S11D3Bulk/Action.olean": "2d88ab3c827c4d1cdc4e7443582f32bed6d14e70ff596ecea87cd8e376584c41",
+      "lean/.lake/build/lib/lean/S11D3Bulk/Calculus.olean": "44b23067db3fda0756963461a817b38efb5fb149c92e343e5c8beaec68ada7bf",
+      "lean/.lake/build/lib/lean/S11D3Bulk/Variation.olean": "30d58e4c912568074b47c33795e8adbf20783e66cc8cc004a1cfefca55fa186c",
+      "lean/.lake/build/lib/lean/S10Controls/Action.olean": "da96a6b32e4cd34392e44aac2da19ea3368f1063c2cc5c20257e455d0c404e49",
+      "lean/.lake/build/lib/lean/S10Controls/PlaneWave.olean": "2e15e57ea63854fba96383e24788881ae509d1743618f8017eb1cbcb3e56a2a7",
+      "lean/.lake/build/lib/lean/S10Controls/Analytic.olean": "716adf3a25d5b3fe03307f1275266e39eb50d3dae176e6c23c73935870c2a730",
+      "lean/.lake/build/lib/lean/S10Controls/Variation.olean": "3a0060269a368cbd43feb1548ae3c594520ebf684147438330f9bc53dbbaa5b7",
+      "lean/.lake/build/lib/lean/S10Pilot/PhaseAverage.olean": "16fec04f6fce2983d3353cc643b8881ef91f9ba43fe3d3a5868e539eac3aec5f",
+      "lean/.lake/build/lib/lean/S10Controls/PhaseAverage.olean": "dc0472a02f0909c9026828c3f15946132c8ddaeefcc7fa3a57b00d21ca38440a",
+      "lean/.lake/build/lib/lean/S11Homogeneous/Action.olean": "1d75ed6bc81eef456cfce6c31a7bd35c753159e90d22453881660b462396111e",
+      "lean/.lake/build/lib/lean/S11D3Bulk/Bulk.olean": "faebec5079c0b12f4f8eb329935a426410f7c09c21b045b9a6a1425253a88a74",
+      "lean/.lake/build/lib/lean/S11D4Invariants/Quadratic.olean": "48361d3511e3f8a471577407190d37756eba773675f311dcbfd2c1606adba1a3",
+      "lean/.lake/build/lib/lean/S11D4Invariants/Rotation.olean": "0562cb2478f1881c42f46c3a590546f886c3a1b475e0eb656badd0cd62db98cc",
+      "lean/.lake/build/lib/lean/S11D4Invariants/Orientation.olean": "b7c3908a02ef887a9fa18f0fd8dba613a17c18c3038b4c0d298cfd5cb6358d67",
+      "lean/.lake/build/lib/lean/S11D4Invariants/Forms.olean": "13991521ee83b5460ce5461e729134f19505e8c862d3861215cc43867e4d54c1",
+      "lean/.lake/build/lib/lean/S11D4Invariants/ConstraintPolynomial.olean": "a54a630545b7b6714ec3c71be9cac38b664eb66f2f781311d61eef4d7b01bb6e",
+      "lean/.lake/build/lib/lean/S11D4Invariants/ConstraintBlock0.olean": "ba6c12127d281349829eb82fc9876e51d63ce2daa8fbfbb5267ce954a6d18226",
+      "lean/.lake/build/lib/lean/S11D4Invariants/ConstraintBlock1.olean": "5b616443dcc909cfe38da17d11f1aca2763a428e9e18658ecf6e91d2e6a44c2c",
+      "lean/.lake/build/lib/lean/S11D4Invariants/ConstraintBlock2.olean": "27dfb6ffa539087f020be2cd9da47ac6ebbbe3cfb83c5db3558d4f4ce989a8d7",
+      "lean/.lake/build/lib/lean/S11D4Invariants/ConstraintBlock3.olean": "e30d85d353325f9b86e8d8dcd14e29231aaf0f584dc0245ff5b945ff70161c79",
+      "lean/.lake/build/lib/lean/S11D4Invariants/Constraints.olean": "93e21a270430915462180ac86b2e1d229636f8c7a85a019bb4b200559c2d11a7",
+      "lean/.lake/build/lib/lean/S11D4Invariants/Classification.olean": "556ead212a046b381b6b6789eb957d17fc987f0266a1b56f4752cc3490e808de",
+      "lean/.lake/build/lib/lean/S11D4Odd/Action.olean": "a65aef95ed828d2e4f211393720cf4d15e8106ab3d743d2fc5384d177681ec97",
+      "lean/.lake/build/lib/lean/S11D4Odd/Variation.olean": "31f397ac9ba6935cf3a2f4f20ba652844ef4a87fb067964eddc0de4926dcae7e",
+      "lean/.lake/build/lib/lean/S11D4Odd/Boundary.olean": "8a4351fa6f9dba60578a8c7764aa2ce9654f6eb5e2bcfc97c0ec0c91baca25ec",
+      "lean/.lake/build/lib/lean/S11VariableCoefficients/Common.olean": "c14f01e7591fc0348c6969c6617cfbc146d5fa8db6377a0460ab17e85cbc9eff",
+      "lean/.lake/build/lib/lean/S11VariableCoefficients/D3.olean": "abe6bcc935f3fdfaf0578ef30845164207752acabf69cea122ed5226d100e715",
+      "lean/.lake/build/lib/lean/S11VariableCoefficients/D4.olean": "1ea68964efd3985dd07197a9ce40541dcfc18e0715f0b01cb5e978a90d7e0ff0",
+      "lean/.lake/build/lib/lean/S11VariableCoefficients/Interface.olean": "b080e91453bef0627aa85a3dcbec007409c0d7a3b8c02652746587f0edca8b97",
+      "lean/.lake/build/lib/lean/S11VariableCoefficients/Controls.olean": "3f48be471adcd6bf353ee565f56c19ad3cacb890fc6292de489cf31426c71d91",
+      "lean/.lake/build/lib/lean/S11VariableCoefficients.olean": "5fa2f7162b70f29c95bb1b63624fcf908e21b07ca16e9f1aadc68cf9cc491ce9",
+      "lean/.lake/build/lib/lean/S11AnalyticError/Tail.olean": "5eddc6d95a35f6b84aaaa5ea68ab139104de7b75bedf0001e9abc54589241a5e",
+      "lean/.lake/build/lib/lean/S11AnalyticError/Abel.olean": "d2075d6a52b160c6337504144165ae331130a42f61ac97426788feebe47f6062",
+      "lean/.lake/build/lib/lean/S11AnalyticError/Stability.olean": "222699b74d19abb91f80edc83dfd4b1438c69837ea9674c9bc3e2fb61ea50131",
+      "lean/.lake/build/lib/lean/S11AnalyticError/Controls.olean": "379664a68cf5e6c343ed54583c036a9164cf7cc85ae3f9ffe428ca4da78f5012",
+      "lean/.lake/build/lib/lean/S11AnalyticError.olean": "25ef725af62c89e5a845c121922d8fb8be07b0ed3b25317a3ce22d72fea42d2b"
+    },
+    "read_only_inputs": {
+      "directives/S11c_d_NONLINEAR_POLE_CONTRACT.md": "2b6018faf0d5ca772bf9c980174d8ebe7545127a3bf43ba01d1b3c0b6a5be423",
+      "directives/S11c_d_SHARED_PHYSICS.md": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5",
+      "_measurements/S11c_d_nonlinear_pole_contract_check.py": "5d5f7170693fc2ded40a3aaf0b0241e5ea331114fe95dd06d9bd0d80de7b2350",
+      "_measurements/S11c_d_nonlinear_pole_contract_checks.json": "d853c34e92dc2d3519f1dc33ae9ab1f5b7b4e58a9bd08e3ccebcb101d1eb3ed0",
+      "_measurements/S11c_d_nonlinear_pole_contract_probe.py": "011a42bbeebb250a85c9b45f4e86d91eaa41287d367913c042eba93d80f58092",
+      "_measurements/S11c_d_nonlinear_pole_contract_probe.json": "690719bf8dd6fda2c814f856689a623cc4e8a8c8231ca95c215842e776400b20",
+      "_measurements/S11c_d_nonlinear_pole_repair_checkpoint.json": "dd2b421e8605c680cc831b3ee67d0554a80b2ebbdc55fa839f2f33168d0f583f"
+    },
+    "note": "Read-only input hashes, not a production/source regeneration."
+  },
+  "native_identification": {
+    "report_sha256": "6b2f88644f4947ed50cb6d1936a8331858bf99483a0ad14dd688e4fea47d414b",
+    "instrument_sha256": "cef9250b43c688ced78a27d3036b2a19643d1def4f918739a432a90bd32c050c"
+  },
+  "instrument_sha256": "435abe01d9fada4719e82d0ddf84c26ad90efc4319c79e049c546e552ccdb187",
+  "source_sha256_before": {
+    "_measurements/S11_lean_pole_preserved_inputs.json": "eded7b38f5dc8fabc73571dd4df2d534f173352205f946adf637334aa67f1c1e",
+    "_measurements/S11_lean_pole_source_check.py": "cef9250b43c688ced78a27d3036b2a19643d1def4f918739a432a90bd32c050c",
+    "_measurements/S11_lean_pole_source_checks.json": "6b2f88644f4947ed50cb6d1936a8331858bf99483a0ad14dd688e4fea47d414b",
+    "_measurements/S11c_d_nonlinear_pole_contract_check.py": "5d5f7170693fc2ded40a3aaf0b0241e5ea331114fe95dd06d9bd0d80de7b2350",
+    "_measurements/S11c_d_nonlinear_pole_contract_checks.json": "d853c34e92dc2d3519f1dc33ae9ab1f5b7b4e58a9bd08e3ccebcb101d1eb3ed0",
+    "_measurements/S11c_d_nonlinear_pole_contract_probe.json": "690719bf8dd6fda2c814f856689a623cc4e8a8c8231ca95c215842e776400b20",
+    "_measurements/S11c_d_nonlinear_pole_contract_probe.py": "011a42bbeebb250a85c9b45f4e86d91eaa41287d367913c042eba93d80f58092",
+    "_measurements/S11c_d_nonlinear_pole_repair_checkpoint.json": "dd2b421e8605c680cc831b3ee67d0554a80b2ebbdc55fa839f2f33168d0f583f",
+    "directives/S11c_d_NONLINEAR_POLE_CONTRACT.md": "2b6018faf0d5ca772bf9c980174d8ebe7545127a3bf43ba01d1b3c0b6a5be423",
+    "directives/S11c_d_SHARED_PHYSICS.md": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5",
+    "lean/lake-manifest.json": "91fd5318cdc35e4044d6e059c6ef73d94b955d27adf8a5860b07ec92add9377e",
+    "lean/lakefile.toml": "812bbdf333f13a57cc03e1f5d4087e9c1c4d1e57e317dfc736f0f6d3b092dd28",
+    "lean/lean-toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+    "lean/s11/S11NonlinearPole/Controls.lean": "ab0346bb4e918a2e8cce423e3f014106f037ec48c2fa47d4012eacbeac484fd0",
+    "lean/s11/S11NonlinearPole/Jordan.lean": "0b5c45c602e152f6603dba12ee13f194415f93c186d3c3dfcbb22bcca1823935",
+    "lean/s11/S11NonlinearPole/Laurent.lean": "dffe8b6cc498223263024e2add9cef2b092a5c1bcecfdf2b3490b33746a6c812",
+    "lean/s11/S11NonlinearPole/Modal.lean": "a5e2f829767ff3042c2fd235e7026b78f5b8a5d8691f9f58c5a62e593d1d5d29",
+    "lean/s11/S11NonlinearPole/Moments.lean": "174a679828eb6968be6dfdd8b1b16c35057cd0ec6e7310476b34c6baabd4bbb1",
+    "lean/s11/S11NonlinearPole/Scalar.lean": "bc1ef65fe74413fd0d3975d7ee7569bae889f423a563873935200fdf68a8d99c",
+    "lean/s11/S11NonlinearPole.lean": "8287d9935b2649313b69a1fac32c243ab9dfc1fff1232356001573674fb2af1e"
+  },
+  "dependency_olean_sha256": {},
+  "checks": [
+    {
+      "name": "build_Modal",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "-o",
+        "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S11NonlinearPole/Modal.olean",
+        "s11/S11NonlinearPole/Modal.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 17.851,
+      "source_sha256": "a5e2f829767ff3042c2fd235e7026b78f5b8a5d8691f9f58c5a62e593d1d5d29",
+      "required_failure_in": null,
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "olean_sha256": "bad7c031a7a2dba6fda6b1b10b6e7bb9392fb545b4f016efc3b71f3c778f5af7",
+      "input_olean_sha256": {
+        "lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/Matrix/Normed.olean": "76f092341dd79cc522502b924020f926f9ce65b2fcbbcecebf003a61338d7bb9",
+        "lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/LinearAlgebra/Dimension/Finrank.olean": "25a63dbb56c5f4ac6dd386e4b8c1943f48e61650136cac4ec465bb9f9c6cdbc0",
+        "lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Tactic.olean": "c71aaaefb337826cd40ede82fd5f374299ece9c68476faca676474067b64ca7f",
+        "lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Integral/CircleIntegral.olean": "e122b1acfc432e0683856cd1e8469f58348e6a55bfe5f9544d59085d76db905b"
+      },
+      "source_dependency_sha256": {
+        "lean/lake-manifest.json": "91fd5318cdc35e4044d6e059c6ef73d94b955d27adf8a5860b07ec92add9377e",
+        "lean/lakefile.toml": "812bbdf333f13a57cc03e1f5d4087e9c1c4d1e57e317dfc736f0f6d3b092dd28",
+        "lean/lean-toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+        "lean/s11/S11NonlinearPole/Modal.lean": "a5e2f829767ff3042c2fd235e7026b78f5b8a5d8691f9f58c5a62e593d1d5d29",
+        "lean/.lake/packages/mathlib/Mathlib/Analysis/Matrix/Normed.lean": "f47bfccf19da0082e9b2a298457485b1c6ba5c4b19df97a69e89598180e30d2e",
+        "lean/.lake/packages/mathlib/Mathlib/LinearAlgebra/Dimension/Finrank.lean": "4ab91c2b2e2d56f24c0260f25d55a31042cac8112a943a7c877594528c363e21",
+        "lean/.lake/packages/mathlib/Mathlib/Tactic.lean": "6ec9a1714e9fa472f7e5614792f1aa5a65f360ec56688b0dc765d1bee2e1bdd5",
+        "lean/.lake/packages/mathlib/Mathlib/MeasureTheory/Integral/CircleIntegral.lean": "b7c53c14ea891c62786102c2ab5836616762de23b9f30c094c08000569e897c6"
+      },
+      "reused_from_instrument_sha256": "6016ab437b2c16d430d4b9d5f4401843d00a512421158a0db85d9a9e6d7815b6",
+      "reuse_source_dependency_sha256": {
+        "lean/lake-manifest.json": "91fd5318cdc35e4044d6e059c6ef73d94b955d27adf8a5860b07ec92add9377e",
+        "lean/lakefile.toml": "812bbdf333f13a57cc03e1f5d4087e9c1c4d1e57e317dfc736f0f6d3b092dd28",
+        "lean/lean-toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+        "lean/s11/S11NonlinearPole/Modal.lean": "a5e2f829767ff3042c2fd235e7026b78f5b8a5d8691f9f58c5a62e593d1d5d29",
+        "lean/.lake/packages/mathlib/Mathlib/Analysis/Matrix/Normed.lean": "f47bfccf19da0082e9b2a298457485b1c6ba5c4b19df97a69e89598180e30d2e",
+        "lean/.lake/packages/mathlib/Mathlib/LinearAlgebra/Dimension/Finrank.lean": "4ab91c2b2e2d56f24c0260f25d55a31042cac8112a943a7c877594528c363e21",
+        "lean/.lake/packages/mathlib/Mathlib/Tactic.lean": "6ec9a1714e9fa472f7e5614792f1aa5a65f360ec56688b0dc765d1bee2e1bdd5",
+        "lean/.lake/packages/mathlib/Mathlib/MeasureTheory/Integral/CircleIntegral.lean": "b7c53c14ea891c62786102c2ab5836616762de23b9f30c094c08000569e897c6"
+      }
+    },
+    {
+      "name": "build_Moments",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "-o",
+        "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S11NonlinearPole/Moments.olean",
+        "s11/S11NonlinearPole/Moments.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 11.594,
+      "source_sha256": "174a679828eb6968be6dfdd8b1b16c35057cd0ec6e7310476b34c6baabd4bbb1",
+      "required_failure_in": null,
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "olean_sha256": "1e42c5ba6de549b6e3f5bb10f40d18c569a8ad593ba72eef824b6fa4e0ce6300",
+      "input_olean_sha256": {
+        "lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/Matrix/Normed.olean": "76f092341dd79cc522502b924020f926f9ce65b2fcbbcecebf003a61338d7bb9",
+        "lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/LinearAlgebra/Dimension/Finrank.olean": "25a63dbb56c5f4ac6dd386e4b8c1943f48e61650136cac4ec465bb9f9c6cdbc0",
+        "lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Tactic.olean": "c71aaaefb337826cd40ede82fd5f374299ece9c68476faca676474067b64ca7f",
+        "lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Integral/CircleIntegral.olean": "e122b1acfc432e0683856cd1e8469f58348e6a55bfe5f9544d59085d76db905b"
+      },
+      "source_dependency_sha256": {
+        "lean/lake-manifest.json": "91fd5318cdc35e4044d6e059c6ef73d94b955d27adf8a5860b07ec92add9377e",
+        "lean/lakefile.toml": "812bbdf333f13a57cc03e1f5d4087e9c1c4d1e57e317dfc736f0f6d3b092dd28",
+        "lean/lean-toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+        "lean/s11/S11NonlinearPole/Moments.lean": "174a679828eb6968be6dfdd8b1b16c35057cd0ec6e7310476b34c6baabd4bbb1",
+        "lean/.lake/packages/mathlib/Mathlib/Analysis/Matrix/Normed.lean": "f47bfccf19da0082e9b2a298457485b1c6ba5c4b19df97a69e89598180e30d2e",
+        "lean/.lake/packages/mathlib/Mathlib/LinearAlgebra/Dimension/Finrank.lean": "4ab91c2b2e2d56f24c0260f25d55a31042cac8112a943a7c877594528c363e21",
+        "lean/.lake/packages/mathlib/Mathlib/Tactic.lean": "6ec9a1714e9fa472f7e5614792f1aa5a65f360ec56688b0dc765d1bee2e1bdd5",
+        "lean/.lake/packages/mathlib/Mathlib/MeasureTheory/Integral/CircleIntegral.lean": "b7c53c14ea891c62786102c2ab5836616762de23b9f30c094c08000569e897c6"
+      },
+      "reused_from_instrument_sha256": "6016ab437b2c16d430d4b9d5f4401843d00a512421158a0db85d9a9e6d7815b6",
+      "reuse_source_dependency_sha256": {
+        "lean/lake-manifest.json": "91fd5318cdc35e4044d6e059c6ef73d94b955d27adf8a5860b07ec92add9377e",
+        "lean/lakefile.toml": "812bbdf333f13a57cc03e1f5d4087e9c1c4d1e57e317dfc736f0f6d3b092dd28",
+        "lean/lean-toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+        "lean/s11/S11NonlinearPole/Moments.lean": "174a679828eb6968be6dfdd8b1b16c35057cd0ec6e7310476b34c6baabd4bbb1",
+        "lean/.lake/packages/mathlib/Mathlib/Analysis/Matrix/Normed.lean": "f47bfccf19da0082e9b2a298457485b1c6ba5c4b19df97a69e89598180e30d2e",
+        "lean/.lake/packages/mathlib/Mathlib/LinearAlgebra/Dimension/Finrank.lean": "4ab91c2b2e2d56f24c0260f25d55a31042cac8112a943a7c877594528c363e21",
+        "lean/.lake/packages/mathlib/Mathlib/Tactic.lean": "6ec9a1714e9fa472f7e5614792f1aa5a65f360ec56688b0dc765d1bee2e1bdd5",
+        "lean/.lake/packages/mathlib/Mathlib/MeasureTheory/Integral/CircleIntegral.lean": "b7c53c14ea891c62786102c2ab5836616762de23b9f30c094c08000569e897c6"
+      }
+    },
+    {
+      "name": "build_Laurent",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "-o",
+        "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S11NonlinearPole/Laurent.olean",
+        "s11/S11NonlinearPole/Laurent.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 14.261,
+      "source_sha256": "dffe8b6cc498223263024e2add9cef2b092a5c1bcecfdf2b3490b33746a6c812",
+      "required_failure_in": null,
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "olean_sha256": "9b9161b70081e330921f879c3048515ad88f190ba48066deae140a743b164a75",
+      "input_olean_sha256": {
+        "lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/Matrix/Normed.olean": "76f092341dd79cc522502b924020f926f9ce65b2fcbbcecebf003a61338d7bb9",
+        "lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/LinearAlgebra/Dimension/Finrank.olean": "25a63dbb56c5f4ac6dd386e4b8c1943f48e61650136cac4ec465bb9f9c6cdbc0",
+        "lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Tactic.olean": "c71aaaefb337826cd40ede82fd5f374299ece9c68476faca676474067b64ca7f",
+        "lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Integral/CircleIntegral.olean": "e122b1acfc432e0683856cd1e8469f58348e6a55bfe5f9544d59085d76db905b",
+        "lean/.lake/build/lib/lean/S11NonlinearPole/Moments.olean": "1e42c5ba6de549b6e3f5bb10f40d18c569a8ad593ba72eef824b6fa4e0ce6300"
+      },
+      "source_dependency_sha256": {
+        "lean/lake-manifest.json": "91fd5318cdc35e4044d6e059c6ef73d94b955d27adf8a5860b07ec92add9377e",
+        "lean/lakefile.toml": "812bbdf333f13a57cc03e1f5d4087e9c1c4d1e57e317dfc736f0f6d3b092dd28",
+        "lean/lean-toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+        "lean/s11/S11NonlinearPole/Laurent.lean": "dffe8b6cc498223263024e2add9cef2b092a5c1bcecfdf2b3490b33746a6c812",
+        "lean/s11/S11NonlinearPole/Moments.lean": "174a679828eb6968be6dfdd8b1b16c35057cd0ec6e7310476b34c6baabd4bbb1",
+        "lean/.lake/packages/mathlib/Mathlib/Analysis/Matrix/Normed.lean": "f47bfccf19da0082e9b2a298457485b1c6ba5c4b19df97a69e89598180e30d2e",
+        "lean/.lake/packages/mathlib/Mathlib/LinearAlgebra/Dimension/Finrank.lean": "4ab91c2b2e2d56f24c0260f25d55a31042cac8112a943a7c877594528c363e21",
+        "lean/.lake/packages/mathlib/Mathlib/Tactic.lean": "6ec9a1714e9fa472f7e5614792f1aa5a65f360ec56688b0dc765d1bee2e1bdd5",
+        "lean/.lake/packages/mathlib/Mathlib/MeasureTheory/Integral/CircleIntegral.lean": "b7c53c14ea891c62786102c2ab5836616762de23b9f30c094c08000569e897c6"
+      },
+      "reused_from_instrument_sha256": "6016ab437b2c16d430d4b9d5f4401843d00a512421158a0db85d9a9e6d7815b6",
+      "reuse_source_dependency_sha256": {
+        "lean/lake-manifest.json": "91fd5318cdc35e4044d6e059c6ef73d94b955d27adf8a5860b07ec92add9377e",
+        "lean/lakefile.toml": "812bbdf333f13a57cc03e1f5d4087e9c1c4d1e57e317dfc736f0f6d3b092dd28",
+        "lean/lean-toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+        "lean/s11/S11NonlinearPole/Laurent.lean": "dffe8b6cc498223263024e2add9cef2b092a5c1bcecfdf2b3490b33746a6c812",
+        "lean/s11/S11NonlinearPole/Moments.lean": "174a679828eb6968be6dfdd8b1b16c35057cd0ec6e7310476b34c6baabd4bbb1",
+        "lean/.lake/packages/mathlib/Mathlib/Analysis/Matrix/Normed.lean": "f47bfccf19da0082e9b2a298457485b1c6ba5c4b19df97a69e89598180e30d2e",
+        "lean/.lake/packages/mathlib/Mathlib/LinearAlgebra/Dimension/Finrank.lean": "4ab91c2b2e2d56f24c0260f25d55a31042cac8112a943a7c877594528c363e21",
+        "lean/.lake/packages/mathlib/Mathlib/Tactic.lean": "6ec9a1714e9fa472f7e5614792f1aa5a65f360ec56688b0dc765d1bee2e1bdd5",
+        "lean/.lake/packages/mathlib/Mathlib/MeasureTheory/Integral/CircleIntegral.lean": "b7c53c14ea891c62786102c2ab5836616762de23b9f30c094c08000569e897c6"
+      }
+    },
+    {
+      "name": "build_Scalar",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "-o",
+        "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S11NonlinearPole/Scalar.olean",
+        "s11/S11NonlinearPole/Scalar.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 11.948,
+      "source_sha256": "bc1ef65fe74413fd0d3975d7ee7569bae889f423a563873935200fdf68a8d99c",
+      "required_failure_in": null,
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "olean_sha256": "ff2ace393554768f459dbe47ec57d75232736ab8726c8998d5b33ce6091f280c",
+      "input_olean_sha256": {
+        "lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/Matrix/Normed.olean": "76f092341dd79cc522502b924020f926f9ce65b2fcbbcecebf003a61338d7bb9",
+        "lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/LinearAlgebra/Dimension/Finrank.olean": "25a63dbb56c5f4ac6dd386e4b8c1943f48e61650136cac4ec465bb9f9c6cdbc0",
+        "lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Tactic.olean": "c71aaaefb337826cd40ede82fd5f374299ece9c68476faca676474067b64ca7f",
+        "lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Integral/CircleIntegral.olean": "e122b1acfc432e0683856cd1e8469f58348e6a55bfe5f9544d59085d76db905b",
+        "lean/.lake/build/lib/lean/S11NonlinearPole/Moments.olean": "1e42c5ba6de549b6e3f5bb10f40d18c569a8ad593ba72eef824b6fa4e0ce6300"
+      },
+      "source_dependency_sha256": {
+        "lean/lake-manifest.json": "91fd5318cdc35e4044d6e059c6ef73d94b955d27adf8a5860b07ec92add9377e",
+        "lean/lakefile.toml": "812bbdf333f13a57cc03e1f5d4087e9c1c4d1e57e317dfc736f0f6d3b092dd28",
+        "lean/lean-toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+        "lean/s11/S11NonlinearPole/Moments.lean": "174a679828eb6968be6dfdd8b1b16c35057cd0ec6e7310476b34c6baabd4bbb1",
+        "lean/s11/S11NonlinearPole/Scalar.lean": "bc1ef65fe74413fd0d3975d7ee7569bae889f423a563873935200fdf68a8d99c",
+        "lean/.lake/packages/mathlib/Mathlib/Analysis/Matrix/Normed.lean": "f47bfccf19da0082e9b2a298457485b1c6ba5c4b19df97a69e89598180e30d2e",
+        "lean/.lake/packages/mathlib/Mathlib/LinearAlgebra/Dimension/Finrank.lean": "4ab91c2b2e2d56f24c0260f25d55a31042cac8112a943a7c877594528c363e21",
+        "lean/.lake/packages/mathlib/Mathlib/Tactic.lean": "6ec9a1714e9fa472f7e5614792f1aa5a65f360ec56688b0dc765d1bee2e1bdd5",
+        "lean/.lake/packages/mathlib/Mathlib/MeasureTheory/Integral/CircleIntegral.lean": "b7c53c14ea891c62786102c2ab5836616762de23b9f30c094c08000569e897c6"
+      },
+      "reused_from_instrument_sha256": "6016ab437b2c16d430d4b9d5f4401843d00a512421158a0db85d9a9e6d7815b6",
+      "reuse_source_dependency_sha256": {
+        "lean/lake-manifest.json": "91fd5318cdc35e4044d6e059c6ef73d94b955d27adf8a5860b07ec92add9377e",
+        "lean/lakefile.toml": "812bbdf333f13a57cc03e1f5d4087e9c1c4d1e57e317dfc736f0f6d3b092dd28",
+        "lean/lean-toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+        "lean/s11/S11NonlinearPole/Moments.lean": "174a679828eb6968be6dfdd8b1b16c35057cd0ec6e7310476b34c6baabd4bbb1",
+        "lean/s11/S11NonlinearPole/Scalar.lean": "bc1ef65fe74413fd0d3975d7ee7569bae889f423a563873935200fdf68a8d99c",
+        "lean/.lake/packages/mathlib/Mathlib/Analysis/Matrix/Normed.lean": "f47bfccf19da0082e9b2a298457485b1c6ba5c4b19df97a69e89598180e30d2e",
+        "lean/.lake/packages/mathlib/Mathlib/LinearAlgebra/Dimension/Finrank.lean": "4ab91c2b2e2d56f24c0260f25d55a31042cac8112a943a7c877594528c363e21",
+        "lean/.lake/packages/mathlib/Mathlib/Tactic.lean": "6ec9a1714e9fa472f7e5614792f1aa5a65f360ec56688b0dc765d1bee2e1bdd5",
+        "lean/.lake/packages/mathlib/Mathlib/MeasureTheory/Integral/CircleIntegral.lean": "b7c53c14ea891c62786102c2ab5836616762de23b9f30c094c08000569e897c6"
+      }
+    },
+    {
+      "name": "build_Jordan",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "-o",
+        "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S11NonlinearPole/Jordan.olean",
+        "s11/S11NonlinearPole/Jordan.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 12.351,
+      "source_sha256": "0b5c45c602e152f6603dba12ee13f194415f93c186d3c3dfcbb22bcca1823935",
+      "required_failure_in": null,
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "olean_sha256": "10bd18cba0edd88a3a8ea7937af7cdcbb7ffc409735a8a3036117afa470cf861",
+      "input_olean_sha256": {
+        "lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/Matrix/Normed.olean": "76f092341dd79cc522502b924020f926f9ce65b2fcbbcecebf003a61338d7bb9",
+        "lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/LinearAlgebra/Dimension/Finrank.olean": "25a63dbb56c5f4ac6dd386e4b8c1943f48e61650136cac4ec465bb9f9c6cdbc0",
+        "lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Tactic.olean": "c71aaaefb337826cd40ede82fd5f374299ece9c68476faca676474067b64ca7f",
+        "lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Integral/CircleIntegral.olean": "e122b1acfc432e0683856cd1e8469f58348e6a55bfe5f9544d59085d76db905b",
+        "lean/.lake/build/lib/lean/S11NonlinearPole/Laurent.olean": "9b9161b70081e330921f879c3048515ad88f190ba48066deae140a743b164a75",
+        "lean/.lake/build/lib/lean/S11NonlinearPole/Moments.olean": "1e42c5ba6de549b6e3f5bb10f40d18c569a8ad593ba72eef824b6fa4e0ce6300",
+        "lean/.lake/build/lib/lean/S11NonlinearPole/Scalar.olean": "ff2ace393554768f459dbe47ec57d75232736ab8726c8998d5b33ce6091f280c"
+      },
+      "source_dependency_sha256": {
+        "lean/lake-manifest.json": "91fd5318cdc35e4044d6e059c6ef73d94b955d27adf8a5860b07ec92add9377e",
+        "lean/lakefile.toml": "812bbdf333f13a57cc03e1f5d4087e9c1c4d1e57e317dfc736f0f6d3b092dd28",
+        "lean/lean-toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+        "lean/s11/S11NonlinearPole/Jordan.lean": "0b5c45c602e152f6603dba12ee13f194415f93c186d3c3dfcbb22bcca1823935",
+        "lean/s11/S11NonlinearPole/Laurent.lean": "dffe8b6cc498223263024e2add9cef2b092a5c1bcecfdf2b3490b33746a6c812",
+        "lean/s11/S11NonlinearPole/Moments.lean": "174a679828eb6968be6dfdd8b1b16c35057cd0ec6e7310476b34c6baabd4bbb1",
+        "lean/s11/S11NonlinearPole/Scalar.lean": "bc1ef65fe74413fd0d3975d7ee7569bae889f423a563873935200fdf68a8d99c",
+        "lean/.lake/packages/mathlib/Mathlib/Analysis/Matrix/Normed.lean": "f47bfccf19da0082e9b2a298457485b1c6ba5c4b19df97a69e89598180e30d2e",
+        "lean/.lake/packages/mathlib/Mathlib/LinearAlgebra/Dimension/Finrank.lean": "4ab91c2b2e2d56f24c0260f25d55a31042cac8112a943a7c877594528c363e21",
+        "lean/.lake/packages/mathlib/Mathlib/Tactic.lean": "6ec9a1714e9fa472f7e5614792f1aa5a65f360ec56688b0dc765d1bee2e1bdd5",
+        "lean/.lake/packages/mathlib/Mathlib/MeasureTheory/Integral/CircleIntegral.lean": "b7c53c14ea891c62786102c2ab5836616762de23b9f30c094c08000569e897c6"
+      },
+      "reused_from_instrument_sha256": "6016ab437b2c16d430d4b9d5f4401843d00a512421158a0db85d9a9e6d7815b6",
+      "reuse_source_dependency_sha256": {
+        "lean/lake-manifest.json": "91fd5318cdc35e4044d6e059c6ef73d94b955d27adf8a5860b07ec92add9377e",
+        "lean/lakefile.toml": "812bbdf333f13a57cc03e1f5d4087e9c1c4d1e57e317dfc736f0f6d3b092dd28",
+        "lean/lean-toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+        "lean/s11/S11NonlinearPole/Jordan.lean": "0b5c45c602e152f6603dba12ee13f194415f93c186d3c3dfcbb22bcca1823935",
+        "lean/s11/S11NonlinearPole/Laurent.lean": "dffe8b6cc498223263024e2add9cef2b092a5c1bcecfdf2b3490b33746a6c812",
+        "lean/s11/S11NonlinearPole/Moments.lean": "174a679828eb6968be6dfdd8b1b16c35057cd0ec6e7310476b34c6baabd4bbb1",
+        "lean/s11/S11NonlinearPole/Scalar.lean": "bc1ef65fe74413fd0d3975d7ee7569bae889f423a563873935200fdf68a8d99c",
+        "lean/.lake/packages/mathlib/Mathlib/Analysis/Matrix/Normed.lean": "f47bfccf19da0082e9b2a298457485b1c6ba5c4b19df97a69e89598180e30d2e",
+        "lean/.lake/packages/mathlib/Mathlib/LinearAlgebra/Dimension/Finrank.lean": "4ab91c2b2e2d56f24c0260f25d55a31042cac8112a943a7c877594528c363e21",
+        "lean/.lake/packages/mathlib/Mathlib/Tactic.lean": "6ec9a1714e9fa472f7e5614792f1aa5a65f360ec56688b0dc765d1bee2e1bdd5",
+        "lean/.lake/packages/mathlib/Mathlib/MeasureTheory/Integral/CircleIntegral.lean": "b7c53c14ea891c62786102c2ab5836616762de23b9f30c094c08000569e897c6"
+      }
+    },
+    {
+      "name": "build_Controls",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "-o",
+        "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S11NonlinearPole/Controls.olean",
+        "s11/S11NonlinearPole/Controls.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 9.079,
+      "source_sha256": "ab0346bb4e918a2e8cce423e3f014106f037ec48c2fa47d4012eacbeac484fd0",
+      "required_failure_in": null,
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "olean_sha256": "5a4a8dcf98b942150cdaa88505dd139e0f70fddacc7a04ffdee4602ff804bfbf",
+      "input_olean_sha256": {
+        "lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/Matrix/Normed.olean": "76f092341dd79cc522502b924020f926f9ce65b2fcbbcecebf003a61338d7bb9",
+        "lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/LinearAlgebra/Dimension/Finrank.olean": "25a63dbb56c5f4ac6dd386e4b8c1943f48e61650136cac4ec465bb9f9c6cdbc0",
+        "lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Tactic.olean": "c71aaaefb337826cd40ede82fd5f374299ece9c68476faca676474067b64ca7f",
+        "lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Integral/CircleIntegral.olean": "e122b1acfc432e0683856cd1e8469f58348e6a55bfe5f9544d59085d76db905b",
+        "lean/.lake/build/lib/lean/S11NonlinearPole/Jordan.olean": "10bd18cba0edd88a3a8ea7937af7cdcbb7ffc409735a8a3036117afa470cf861",
+        "lean/.lake/build/lib/lean/S11NonlinearPole/Laurent.olean": "9b9161b70081e330921f879c3048515ad88f190ba48066deae140a743b164a75",
+        "lean/.lake/build/lib/lean/S11NonlinearPole/Modal.olean": "bad7c031a7a2dba6fda6b1b10b6e7bb9392fb545b4f016efc3b71f3c778f5af7",
+        "lean/.lake/build/lib/lean/S11NonlinearPole/Moments.olean": "1e42c5ba6de549b6e3f5bb10f40d18c569a8ad593ba72eef824b6fa4e0ce6300",
+        "lean/.lake/build/lib/lean/S11NonlinearPole/Scalar.olean": "ff2ace393554768f459dbe47ec57d75232736ab8726c8998d5b33ce6091f280c"
+      },
+      "source_dependency_sha256": {
+        "lean/lake-manifest.json": "91fd5318cdc35e4044d6e059c6ef73d94b955d27adf8a5860b07ec92add9377e",
+        "lean/lakefile.toml": "812bbdf333f13a57cc03e1f5d4087e9c1c4d1e57e317dfc736f0f6d3b092dd28",
+        "lean/lean-toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+        "lean/s11/S11NonlinearPole/Controls.lean": "ab0346bb4e918a2e8cce423e3f014106f037ec48c2fa47d4012eacbeac484fd0",
+        "lean/s11/S11NonlinearPole/Jordan.lean": "0b5c45c602e152f6603dba12ee13f194415f93c186d3c3dfcbb22bcca1823935",
+        "lean/s11/S11NonlinearPole/Laurent.lean": "dffe8b6cc498223263024e2add9cef2b092a5c1bcecfdf2b3490b33746a6c812",
+        "lean/s11/S11NonlinearPole/Modal.lean": "a5e2f829767ff3042c2fd235e7026b78f5b8a5d8691f9f58c5a62e593d1d5d29",
+        "lean/s11/S11NonlinearPole/Moments.lean": "174a679828eb6968be6dfdd8b1b16c35057cd0ec6e7310476b34c6baabd4bbb1",
+        "lean/s11/S11NonlinearPole/Scalar.lean": "bc1ef65fe74413fd0d3975d7ee7569bae889f423a563873935200fdf68a8d99c",
+        "lean/.lake/packages/mathlib/Mathlib/Analysis/Matrix/Normed.lean": "f47bfccf19da0082e9b2a298457485b1c6ba5c4b19df97a69e89598180e30d2e",
+        "lean/.lake/packages/mathlib/Mathlib/LinearAlgebra/Dimension/Finrank.lean": "4ab91c2b2e2d56f24c0260f25d55a31042cac8112a943a7c877594528c363e21",
+        "lean/.lake/packages/mathlib/Mathlib/Tactic.lean": "6ec9a1714e9fa472f7e5614792f1aa5a65f360ec56688b0dc765d1bee2e1bdd5",
+        "lean/.lake/packages/mathlib/Mathlib/MeasureTheory/Integral/CircleIntegral.lean": "b7c53c14ea891c62786102c2ab5836616762de23b9f30c094c08000569e897c6"
+      },
+      "reused_from_instrument_sha256": "6016ab437b2c16d430d4b9d5f4401843d00a512421158a0db85d9a9e6d7815b6",
+      "reuse_source_dependency_sha256": {
+        "lean/lake-manifest.json": "91fd5318cdc35e4044d6e059c6ef73d94b955d27adf8a5860b07ec92add9377e",
+        "lean/lakefile.toml": "812bbdf333f13a57cc03e1f5d4087e9c1c4d1e57e317dfc736f0f6d3b092dd28",
+        "lean/lean-toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+        "lean/s11/S11NonlinearPole/Controls.lean": "ab0346bb4e918a2e8cce423e3f014106f037ec48c2fa47d4012eacbeac484fd0",
+        "lean/s11/S11NonlinearPole/Jordan.lean": "0b5c45c602e152f6603dba12ee13f194415f93c186d3c3dfcbb22bcca1823935",
+        "lean/s11/S11NonlinearPole/Laurent.lean": "dffe8b6cc498223263024e2add9cef2b092a5c1bcecfdf2b3490b33746a6c812",
+        "lean/s11/S11NonlinearPole/Modal.lean": "a5e2f829767ff3042c2fd235e7026b78f5b8a5d8691f9f58c5a62e593d1d5d29",
+        "lean/s11/S11NonlinearPole/Moments.lean": "174a679828eb6968be6dfdd8b1b16c35057cd0ec6e7310476b34c6baabd4bbb1",
+        "lean/s11/S11NonlinearPole/Scalar.lean": "bc1ef65fe74413fd0d3975d7ee7569bae889f423a563873935200fdf68a8d99c",
+        "lean/.lake/packages/mathlib/Mathlib/Analysis/Matrix/Normed.lean": "f47bfccf19da0082e9b2a298457485b1c6ba5c4b19df97a69e89598180e30d2e",
+        "lean/.lake/packages/mathlib/Mathlib/LinearAlgebra/Dimension/Finrank.lean": "4ab91c2b2e2d56f24c0260f25d55a31042cac8112a943a7c877594528c363e21",
+        "lean/.lake/packages/mathlib/Mathlib/Tactic.lean": "6ec9a1714e9fa472f7e5614792f1aa5a65f360ec56688b0dc765d1bee2e1bdd5",
+        "lean/.lake/packages/mathlib/Mathlib/MeasureTheory/Integral/CircleIntegral.lean": "b7c53c14ea891c62786102c2ab5836616762de23b9f30c094c08000569e897c6"
+      }
+    },
+    {
+      "name": "axiom_audit",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "-o",
+        "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/build/lib/lean/S11NonlinearPole.olean",
+        "s11/S11NonlinearPole.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 7.723,
+      "source_sha256": "8287d9935b2649313b69a1fac32c243ab9dfc1fff1232356001573674fb2af1e",
+      "required_failure_in": null,
+      "diagnostics": [],
+      "output": "'S11NonlinearPole.PairingData.residue_sandwich' depends on axioms: [propext, Quot.sound]\n'S11NonlinearPole.PairingData.fieldProjection_fixes' depends on axioms: [propext, Quot.sound]\n'S11NonlinearPole.PairingData.sourceProjection_fixes' depends on axioms: [propext, Quot.sound]\n'S11NonlinearPole.PairingData.fieldProjection_idempotent' depends on axioms: [propext, Quot.sound]\n'S11NonlinearPole.PairingData.sourceProjection_idempotent' depends on axioms: [propext, Quot.sound]\n'S11NonlinearPole.PairingData.range_fieldProjection' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11NonlinearPole.PairingData.range_sourceProjection' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11NonlinearPole.PairingData.finrank_fieldProjection' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11NonlinearPole.PairingData.finrank_sourceProjection' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11NonlinearPole.PairingData.residue_unique' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11NonlinearPole.PairingData.residue_of_inverse_coefficients' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'S11NonlinearPole.moment_zpow' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11NonlinearPole.moment_finite_laurent' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11NonlinearPole.moment_polynomial' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11NonlinearPole.double_log_expansion' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11NonlinearPole.double_log_moment' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11NonlinearPole.double_response_expansion' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11NonlinearPole.double_response_moment' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11NonlinearPole.square_derivative' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11NonlinearPole.square_inverse_identity' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11NonlinearPole.square_log_formula' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11NonlinearPole.square_residue' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11NonlinearPole.square_log_moment' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11NonlinearPole.square_log_not_idempotent' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11NonlinearPole.square_higher_coefficient' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11NonlinearPole.twoRoot_zeros' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11NonlinearPole.twoRoot_log_formula' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11NonlinearPole.twoRoot_log_moment' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11NonlinearPole.twoRoot_log_not_idempotent' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11NonlinearPole.affine_response_expansion' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11NonlinearPole.affine_response_residue' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11NonlinearPole.jordan_nilpotent' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11NonlinearPole.jordan_nonzero' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11NonlinearPole.jordan_derivative' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11NonlinearPole.jordan_inverse_left' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11NonlinearPole.jordan_inverse_right' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11NonlinearPole.jordan_determinant' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11NonlinearPole.jordan_kernel' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11NonlinearPole.jordan_chain' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11NonlinearPole.jordan_residue' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11NonlinearPole.jordan_higher_coefficient' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11NonlinearPole.jordan_log_moment' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11NonlinearPole.jordan_projection_idempotent' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11NonlinearPole.jordan_count' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11NonlinearPole.jordan_transfer_exact' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11NonlinearPole.jordan_transfer_residue' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11NonlinearPole.jordan_transfer_nonzero' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11NonlinearPole.scaled_residue' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11NonlinearPole.scaled_projection' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11NonlinearPole.full_projection_rank' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11NonlinearPole.zero_pairing_not_invertible' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11NonlinearPole.ordered_log_entry' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11NonlinearPole.reversed_log_entry' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11NonlinearPole.frozen_response_residue' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11NonlinearPole.simple_residue' depends on axioms: [propext, Classical.choice, Quot.sound]\n",
+      "output_sha256": "262e943d9e83895e73da08ca464590e6848c1ff097a14a577c9398b64cc69e9b",
+      "olean_sha256": "062d1c7e528f80e3ec5f763f243ebd2676473008f8d88ae4bdc78e46aa6b405e",
+      "input_olean_sha256": {
+        "lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/Matrix/Normed.olean": "76f092341dd79cc522502b924020f926f9ce65b2fcbbcecebf003a61338d7bb9",
+        "lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/LinearAlgebra/Dimension/Finrank.olean": "25a63dbb56c5f4ac6dd386e4b8c1943f48e61650136cac4ec465bb9f9c6cdbc0",
+        "lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Tactic.olean": "c71aaaefb337826cd40ede82fd5f374299ece9c68476faca676474067b64ca7f",
+        "lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Integral/CircleIntegral.olean": "e122b1acfc432e0683856cd1e8469f58348e6a55bfe5f9544d59085d76db905b",
+        "lean/.lake/build/lib/lean/S11NonlinearPole/Controls.olean": "5a4a8dcf98b942150cdaa88505dd139e0f70fddacc7a04ffdee4602ff804bfbf",
+        "lean/.lake/build/lib/lean/S11NonlinearPole/Jordan.olean": "10bd18cba0edd88a3a8ea7937af7cdcbb7ffc409735a8a3036117afa470cf861",
+        "lean/.lake/build/lib/lean/S11NonlinearPole/Laurent.olean": "9b9161b70081e330921f879c3048515ad88f190ba48066deae140a743b164a75",
+        "lean/.lake/build/lib/lean/S11NonlinearPole/Modal.olean": "bad7c031a7a2dba6fda6b1b10b6e7bb9392fb545b4f016efc3b71f3c778f5af7",
+        "lean/.lake/build/lib/lean/S11NonlinearPole/Moments.olean": "1e42c5ba6de549b6e3f5bb10f40d18c569a8ad593ba72eef824b6fa4e0ce6300",
+        "lean/.lake/build/lib/lean/S11NonlinearPole/Scalar.olean": "ff2ace393554768f459dbe47ec57d75232736ab8726c8998d5b33ce6091f280c"
+      },
+      "source_dependency_sha256": {
+        "lean/lake-manifest.json": "91fd5318cdc35e4044d6e059c6ef73d94b955d27adf8a5860b07ec92add9377e",
+        "lean/lakefile.toml": "812bbdf333f13a57cc03e1f5d4087e9c1c4d1e57e317dfc736f0f6d3b092dd28",
+        "lean/lean-toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+        "lean/s11/S11NonlinearPole/Controls.lean": "ab0346bb4e918a2e8cce423e3f014106f037ec48c2fa47d4012eacbeac484fd0",
+        "lean/s11/S11NonlinearPole/Jordan.lean": "0b5c45c602e152f6603dba12ee13f194415f93c186d3c3dfcbb22bcca1823935",
+        "lean/s11/S11NonlinearPole/Laurent.lean": "dffe8b6cc498223263024e2add9cef2b092a5c1bcecfdf2b3490b33746a6c812",
+        "lean/s11/S11NonlinearPole/Modal.lean": "a5e2f829767ff3042c2fd235e7026b78f5b8a5d8691f9f58c5a62e593d1d5d29",
+        "lean/s11/S11NonlinearPole/Moments.lean": "174a679828eb6968be6dfdd8b1b16c35057cd0ec6e7310476b34c6baabd4bbb1",
+        "lean/s11/S11NonlinearPole/Scalar.lean": "bc1ef65fe74413fd0d3975d7ee7569bae889f423a563873935200fdf68a8d99c",
+        "lean/s11/S11NonlinearPole.lean": "8287d9935b2649313b69a1fac32c243ab9dfc1fff1232356001573674fb2af1e",
+        "lean/.lake/packages/mathlib/Mathlib/Analysis/Matrix/Normed.lean": "f47bfccf19da0082e9b2a298457485b1c6ba5c4b19df97a69e89598180e30d2e",
+        "lean/.lake/packages/mathlib/Mathlib/LinearAlgebra/Dimension/Finrank.lean": "4ab91c2b2e2d56f24c0260f25d55a31042cac8112a943a7c877594528c363e21",
+        "lean/.lake/packages/mathlib/Mathlib/Tactic.lean": "6ec9a1714e9fa472f7e5614792f1aa5a65f360ec56688b0dc765d1bee2e1bdd5",
+        "lean/.lake/packages/mathlib/Mathlib/MeasureTheory/Integral/CircleIntegral.lean": "b7c53c14ea891c62786102c2ab5836616762de23b9f30c094c08000569e897c6"
+      },
+      "reused_from_instrument_sha256": "6016ab437b2c16d430d4b9d5f4401843d00a512421158a0db85d9a9e6d7815b6",
+      "reuse_source_dependency_sha256": {
+        "lean/lake-manifest.json": "91fd5318cdc35e4044d6e059c6ef73d94b955d27adf8a5860b07ec92add9377e",
+        "lean/lakefile.toml": "812bbdf333f13a57cc03e1f5d4087e9c1c4d1e57e317dfc736f0f6d3b092dd28",
+        "lean/lean-toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+        "lean/s11/S11NonlinearPole/Controls.lean": "ab0346bb4e918a2e8cce423e3f014106f037ec48c2fa47d4012eacbeac484fd0",
+        "lean/s11/S11NonlinearPole/Jordan.lean": "0b5c45c602e152f6603dba12ee13f194415f93c186d3c3dfcbb22bcca1823935",
+        "lean/s11/S11NonlinearPole/Laurent.lean": "dffe8b6cc498223263024e2add9cef2b092a5c1bcecfdf2b3490b33746a6c812",
+        "lean/s11/S11NonlinearPole/Modal.lean": "a5e2f829767ff3042c2fd235e7026b78f5b8a5d8691f9f58c5a62e593d1d5d29",
+        "lean/s11/S11NonlinearPole/Moments.lean": "174a679828eb6968be6dfdd8b1b16c35057cd0ec6e7310476b34c6baabd4bbb1",
+        "lean/s11/S11NonlinearPole/Scalar.lean": "bc1ef65fe74413fd0d3975d7ee7569bae889f423a563873935200fdf68a8d99c",
+        "lean/s11/S11NonlinearPole.lean": "8287d9935b2649313b69a1fac32c243ab9dfc1fff1232356001573674fb2af1e",
+        "lean/.lake/packages/mathlib/Mathlib/Analysis/Matrix/Normed.lean": "f47bfccf19da0082e9b2a298457485b1c6ba5c4b19df97a69e89598180e30d2e",
+        "lean/.lake/packages/mathlib/Mathlib/LinearAlgebra/Dimension/Finrank.lean": "4ab91c2b2e2d56f24c0260f25d55a31042cac8112a943a7c877594528c363e21",
+        "lean/.lake/packages/mathlib/Mathlib/Tactic.lean": "6ec9a1714e9fa472f7e5614792f1aa5a65f360ec56688b0dc765d1bee2e1bdd5",
+        "lean/.lake/packages/mathlib/Mathlib/MeasureTheory/Integral/CircleIntegral.lean": "b7c53c14ea891c62786102c2ab5836616762de23b9f30c094c08000569e897c6"
+      }
+    },
+    {
+      "name": "pairing_normalization_positive",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/pole_verification/pairing_normalization_positive.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 8.982,
+      "source_sha256": "49d180813cd3ad68cfc909800e765752b4d746c7990cc1b7d00fe0112fe37598",
+      "required_failure_in": "contract_control",
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "import S11NonlinearPole.Controls\nopen S11NonlinearPole\nopen scoped Matrix.Norms.Elementwise\nnoncomputable section\ntheorem contract_control : scaledPair.residueCandidate 1 = 1/2 := by\n  norm_num [scaled_residue]\n"
+    },
+    {
+      "name": "pairing_normalization_mutant",
+      "expected": "REJECTED",
+      "outcome": "REJECTED",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/pole_verification/pairing_normalization_mutant.lean"
+      ],
+      "exit_status": 1,
+      "wall_seconds": 7.369,
+      "source_sha256": "c2e528af4ecc6ff30d4dc9e2fb1821f0062a813af65c48a53954790d4bc2101c",
+      "required_failure_in": "contract_control",
+      "diagnostics": [
+        {
+          "declaration": "contract_control",
+          "line": 5,
+          "message": "s11/_scratch/pole_verification/pairing_normalization_mutant.lean:5:64: error: unsolved goals\n⊢ False\n"
+        }
+      ],
+      "output": "s11/_scratch/pole_verification/pairing_normalization_mutant.lean:5:64: error: unsolved goals\n⊢ False\n",
+      "output_sha256": "4de6f3e081d79868610b57161a2cda3eb4833c75070eb02b1ac1f79bf2bb4716",
+      "source": "import S11NonlinearPole.Controls\nopen S11NonlinearPole\nopen scoped Matrix.Norms.Elementwise\nnoncomputable section\ntheorem contract_control : scaledPair.residueCandidate 1 = 1 := by\n  norm_num [scaled_residue]\n"
+    },
+    {
+      "name": "projection_normalization_positive",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/pole_verification/projection_normalization_positive.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 7.519,
+      "source_sha256": "5ab04be279737267c00583c34fe8714727c7449796c032026d48d96560f7505e",
+      "required_failure_in": "contract_control",
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "import S11NonlinearPole.Controls\nopen S11NonlinearPole\nopen scoped Matrix.Norms.Elementwise\nnoncomputable section\ntheorem contract_control : scaledPair.fieldProjection 1 = 1 := by\n  norm_num [scaled_projection]\n"
+    },
+    {
+      "name": "projection_normalization_mutant",
+      "expected": "REJECTED",
+      "outcome": "REJECTED",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/pole_verification/projection_normalization_mutant.lean"
+      ],
+      "exit_status": 1,
+      "wall_seconds": 7.316,
+      "source_sha256": "184d01951fd11e4163fe2e3f47368624b4e92ec3ed437377d8e3466133cd1f88",
+      "required_failure_in": "contract_control",
+      "diagnostics": [
+        {
+          "declaration": "contract_control",
+          "line": 5,
+          "message": "s11/_scratch/pole_verification/projection_normalization_mutant.lean:5:63: error: unsolved goals\n⊢ False\n"
+        }
+      ],
+      "output": "s11/_scratch/pole_verification/projection_normalization_mutant.lean:5:63: error: unsolved goals\n⊢ False\n",
+      "output_sha256": "7552dcd4628fc3706f6f611b74c056825c0e06781fa7827221cad5d0849e5abf",
+      "source": "import S11NonlinearPole.Controls\nopen S11NonlinearPole\nopen scoped Matrix.Norms.Elementwise\nnoncomputable section\ntheorem contract_control : scaledPair.fieldProjection 1 = 2 := by\n  norm_num [scaled_projection]\n"
+    },
+    {
+      "name": "full_modal_rank_positive",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/pole_verification/full_modal_rank_positive.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 7.417,
+      "source_sha256": "0b2fb8e530328c30066ba6d25cc6b1977087fd98ffa9e207c8d44bef32aa5ee0",
+      "required_failure_in": "contract_control",
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "import S11NonlinearPole.Controls\nopen S11NonlinearPole\nopen scoped Matrix.Norms.Elementwise\nnoncomputable section\ntheorem contract_control : Module.finrank ℂ (LinearMap.range fullPair.fieldProjection) = 2 := by\n  norm_num [full_projection_rank]\n"
+    },
+    {
+      "name": "full_modal_rank_mutant",
+      "expected": "REJECTED",
+      "outcome": "REJECTED",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/pole_verification/full_modal_rank_mutant.lean"
+      ],
+      "exit_status": 1,
+      "wall_seconds": 7.418,
+      "source_sha256": "6c6a8d3ffc6de81397a9bed0e79cc46b9cccf0a4985a5c929acbdfe9c8df899e",
+      "required_failure_in": "contract_control",
+      "diagnostics": [
+        {
+          "declaration": "contract_control",
+          "line": 5,
+          "message": "s11/_scratch/pole_verification/full_modal_rank_mutant.lean:5:94: error: unsolved goals\n⊢ False\n"
+        }
+      ],
+      "output": "s11/_scratch/pole_verification/full_modal_rank_mutant.lean:5:94: error: unsolved goals\n⊢ False\n",
+      "output_sha256": "51247ddf9212528d865cfc12e037fd33dfdfe160f1dd2c0e65675f3b8060fe56",
+      "source": "import S11NonlinearPole.Controls\nopen S11NonlinearPole\nopen scoped Matrix.Norms.Elementwise\nnoncomputable section\ntheorem contract_control : Module.finrank ℂ (LinearMap.range fullPair.fieldProjection) = 1 := by\n  norm_num [full_projection_rank]\n"
+    },
+    {
+      "name": "singular_pairing_positive",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/pole_verification/singular_pairing_positive.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 7.567,
+      "source_sha256": "f8c6ed8743fd583c79dabc3c9d257e06a0f46be3b8ac83d995355c161e7c5e69",
+      "required_failure_in": "contract_control",
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "import S11NonlinearPole.Controls\nopen S11NonlinearPole\nopen scoped Matrix.Norms.Elementwise\nnoncomputable section\ntheorem contract_control : ¬ Function.Injective (fun x : ℂ => (0 : ℂ) * x) := by\n  norm_num [zero_pairing_not_invertible]\n"
+    },
+    {
+      "name": "singular_pairing_mutant",
+      "expected": "REJECTED",
+      "outcome": "REJECTED",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/pole_verification/singular_pairing_mutant.lean"
+      ],
+      "exit_status": 1,
+      "wall_seconds": 7.518,
+      "source_sha256": "3673dbc5129eb47e7d8fce0a16eccc2b9ef40438d9edc32e219aad7377a6afec",
+      "required_failure_in": "contract_control",
+      "diagnostics": [
+        {
+          "declaration": "contract_control",
+          "line": 5,
+          "message": "s11/_scratch/pole_verification/singular_pairing_mutant.lean:5:76: error: unsolved goals\n⊢ False\n"
+        }
+      ],
+      "output": "s11/_scratch/pole_verification/singular_pairing_mutant.lean:5:76: error: unsolved goals\n⊢ False\n",
+      "output_sha256": "2a9417694e6eda82f2d40b547a7623d5767f5c073b5832dcd461a4c43f33c37e",
+      "source": "import S11NonlinearPole.Controls\nopen S11NonlinearPole\nopen scoped Matrix.Norms.Elementwise\nnoncomputable section\ntheorem contract_control : Function.Injective (fun x : ℂ => (0 : ℂ) * x) := by\n  norm_num [zero_pairing_not_invertible]\n"
+    },
+    {
+      "name": "ordered_log_positive",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/pole_verification/ordered_log_positive.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 7.671,
+      "source_sha256": "2f126f7cc1de23b7220c3e949a8e7bc80c8b5ed177bd5e24732b0a6f92959db8",
+      "required_failure_in": "contract_control",
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "import S11NonlinearPole.Controls\nopen S11NonlinearPole\nopen scoped Matrix.Norms.Elementwise\nnoncomputable section\ntheorem contract_control : moment 1 (fun z => doublePrincipal jordanN 0 z * (jordanN.transpose + z • 0)) 0 0 = 1 := by\n  norm_num only [ordered_log_entry]\n"
+    },
+    {
+      "name": "ordered_log_mutant",
+      "expected": "REJECTED",
+      "outcome": "REJECTED",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/pole_verification/ordered_log_mutant.lean"
+      ],
+      "exit_status": 1,
+      "wall_seconds": 7.568,
+      "source_sha256": "412572c7117be5a27d962c059144526bd3fb3331243d4a33dbdbbf0454071c89",
+      "required_failure_in": "contract_control",
+      "diagnostics": [
+        {
+          "declaration": "contract_control",
+          "line": 5,
+          "message": "s11/_scratch/pole_verification/ordered_log_mutant.lean:5:116: error: unsolved goals\n⊢ False\n"
+        }
+      ],
+      "output": "s11/_scratch/pole_verification/ordered_log_mutant.lean:5:116: error: unsolved goals\n⊢ False\n",
+      "output_sha256": "b40a4831affeb0a716f69fb1a8d366dd2fdf30bee7547baa9efb2108d7d2a592",
+      "source": "import S11NonlinearPole.Controls\nopen S11NonlinearPole\nopen scoped Matrix.Norms.Elementwise\nnoncomputable section\ntheorem contract_control : moment 1 (fun z => doublePrincipal jordanN 0 z * (jordanN.transpose + z • 0)) 0 0 = 0 := by\n  norm_num only [ordered_log_entry]\n"
+    },
+    {
+      "name": "contour_sign_positive",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/pole_verification/contour_sign_positive.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 7.517,
+      "source_sha256": "c3473fe23f6ee119faa1a74ce5747d1852d9bb4f3f3a6770c7c5072e1aac0da7",
+      "required_failure_in": "contract_control",
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "import S11NonlinearPole.Controls\nopen S11NonlinearPole\nopen scoped Matrix.Norms.Elementwise\nnoncomputable section\ntheorem contract_control : moment 1 (fun z : ℂ => z⁻¹) = 1 := by\n  norm_num [simple_residue]\n"
+    },
+    {
+      "name": "contour_sign_mutant",
+      "expected": "REJECTED",
+      "outcome": "REJECTED",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/pole_verification/contour_sign_mutant.lean"
+      ],
+      "exit_status": 1,
+      "wall_seconds": 7.468,
+      "source_sha256": "98fa2a50c63af5ebea518415084939e64ea21e2fb83dfa98fac06f9829e1f0e2",
+      "required_failure_in": "contract_control",
+      "diagnostics": [
+        {
+          "declaration": "contract_control",
+          "line": 5,
+          "message": "s11/_scratch/pole_verification/contour_sign_mutant.lean:5:63: error: unsolved goals\n⊢ False\n"
+        }
+      ],
+      "output": "s11/_scratch/pole_verification/contour_sign_mutant.lean:5:63: error: unsolved goals\n⊢ False\n",
+      "output_sha256": "4b246b7aaeb55e3fd75a774bfc578ab796eb5248ee198b50e62e70fd5377bc6c",
+      "source": "import S11NonlinearPole.Controls\nopen S11NonlinearPole\nopen scoped Matrix.Norms.Elementwise\nnoncomputable section\ntheorem contract_control : moment 1 (fun z : ℂ => z⁻¹) = -1 := by\n  norm_num [simple_residue]\n"
+    },
+    {
+      "name": "double_zero_residue_positive",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/pole_verification/double_zero_residue_positive.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 7.52,
+      "source_sha256": "c40cbc5cb90f56a84a678439a00554a87e607c0205bc195f125f0c409d04d97e",
+      "required_failure_in": "contract_control",
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "import S11NonlinearPole.Controls\nopen S11NonlinearPole\nopen scoped Matrix.Norms.Elementwise\nnoncomputable section\ntheorem contract_control : moment 1 squareInverse = 0 := by\n  norm_num [square_residue 1 (by norm_num)]\n"
+    },
+    {
+      "name": "double_zero_residue_mutant",
+      "expected": "REJECTED",
+      "outcome": "REJECTED",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/pole_verification/double_zero_residue_mutant.lean"
+      ],
+      "exit_status": 1,
+      "wall_seconds": 7.467,
+      "source_sha256": "7bb0345c75b2c77732a0865fd337ec5824df92023a2f535c7423adcd2b7ac68f",
+      "required_failure_in": "contract_control",
+      "diagnostics": [
+        {
+          "declaration": "contract_control",
+          "line": 5,
+          "message": "s11/_scratch/pole_verification/double_zero_residue_mutant.lean:5:57: error: unsolved goals\n⊢ False\n"
+        }
+      ],
+      "output": "s11/_scratch/pole_verification/double_zero_residue_mutant.lean:5:57: error: unsolved goals\n⊢ False\n",
+      "output_sha256": "db239be73ec6fb5482f34544665aa1dec88ca4b28e6726cc915082bf3d0726df",
+      "source": "import S11NonlinearPole.Controls\nopen S11NonlinearPole\nopen scoped Matrix.Norms.Elementwise\nnoncomputable section\ntheorem contract_control : moment 1 squareInverse = 1 := by\n  norm_num [square_residue 1 (by norm_num)]\n"
+    },
+    {
+      "name": "double_log_count_positive",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/pole_verification/double_log_count_positive.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 7.669,
+      "source_sha256": "e64c874a355cb08f707726a47be0234f6e1351a3f9d3166e4c0ce740250cacfd",
+      "required_failure_in": "contract_control",
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "import S11NonlinearPole.Controls\nopen S11NonlinearPole\nopen scoped Matrix.Norms.Elementwise\nnoncomputable section\ntheorem contract_control : moment 1 squareLog = 2 := by\n  norm_num [square_log_moment 1 (by norm_num)]\n"
+    },
+    {
+      "name": "double_log_count_mutant",
+      "expected": "REJECTED",
+      "outcome": "REJECTED",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/pole_verification/double_log_count_mutant.lean"
+      ],
+      "exit_status": 1,
+      "wall_seconds": 7.569,
+      "source_sha256": "b6aaa4a805cf020d25793d322e74074cc6fbb6dbf191cbfac34ee131a351689f",
+      "required_failure_in": "contract_control",
+      "diagnostics": [
+        {
+          "declaration": "contract_control",
+          "line": 5,
+          "message": "s11/_scratch/pole_verification/double_log_count_mutant.lean:5:53: error: unsolved goals\n⊢ False\n"
+        }
+      ],
+      "output": "s11/_scratch/pole_verification/double_log_count_mutant.lean:5:53: error: unsolved goals\n⊢ False\n",
+      "output_sha256": "ee023627c8fcc6d0229338bb792c4ce8b34f0e94643e4b47cecca16c283b77f1",
+      "source": "import S11NonlinearPole.Controls\nopen S11NonlinearPole\nopen scoped Matrix.Norms.Elementwise\nnoncomputable section\ntheorem contract_control : moment 1 squareLog = 1 := by\n  norm_num [square_log_moment 1 (by norm_num)]\n"
+    },
+    {
+      "name": "unjustified_idempotency_positive",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/pole_verification/unjustified_idempotency_positive.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 7.417,
+      "source_sha256": "e684fad4d824488c94ff585448ee9cb2a29c3ac3e96d25ef9414fa4ed6cdb694",
+      "required_failure_in": "contract_control",
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "import S11NonlinearPole.Controls\nopen S11NonlinearPole\nopen scoped Matrix.Norms.Elementwise\nnoncomputable section\ntheorem contract_control : moment 1 squareLog * moment 1 squareLog ≠ moment 1 squareLog := by\n  norm_num [square_log_moment 1 (by norm_num)]\n"
+    },
+    {
+      "name": "unjustified_idempotency_mutant",
+      "expected": "REJECTED",
+      "outcome": "REJECTED",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/pole_verification/unjustified_idempotency_mutant.lean"
+      ],
+      "exit_status": 1,
+      "wall_seconds": 7.471,
+      "source_sha256": "711c1fa80e1a07c251603f79cf09c704715783b46076614f941b65a422e5c17b",
+      "required_failure_in": "contract_control",
+      "diagnostics": [
+        {
+          "declaration": "contract_control",
+          "line": 5,
+          "message": "s11/_scratch/pole_verification/unjustified_idempotency_mutant.lean:5:91: error: unsolved goals\n⊢ False\n"
+        }
+      ],
+      "output": "s11/_scratch/pole_verification/unjustified_idempotency_mutant.lean:5:91: error: unsolved goals\n⊢ False\n",
+      "output_sha256": "3b6992850094b79f9c8a06656c69f27f3f075e15ada60ff3e245f38d85b83538",
+      "source": "import S11NonlinearPole.Controls\nopen S11NonlinearPole\nopen scoped Matrix.Norms.Elementwise\nnoncomputable section\ntheorem contract_control : moment 1 squareLog * moment 1 squareLog = moment 1 squareLog := by\n  norm_num [square_log_moment 1 (by norm_num)]\n"
+    },
+    {
+      "name": "higher_coefficient_positive",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/pole_verification/higher_coefficient_positive.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 7.468,
+      "source_sha256": "e0849699015b14d6b6f6b2a5ed5c804af8bebd33f9b2b46d8aa6e1963cf06869",
+      "required_failure_in": "contract_control",
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "import S11NonlinearPole.Controls\nopen S11NonlinearPole\nopen scoped Matrix.Norms.Elementwise\nnoncomputable section\ntheorem contract_control : moment 1 (fun z => z * squareInverse z) = 1 := by\n  norm_num [square_higher_coefficient 1 (by norm_num)]\n"
+    },
+    {
+      "name": "higher_coefficient_mutant",
+      "expected": "REJECTED",
+      "outcome": "REJECTED",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/pole_verification/higher_coefficient_mutant.lean"
+      ],
+      "exit_status": 1,
+      "wall_seconds": 7.468,
+      "source_sha256": "f932767cb48c12caabf54e35c40957bbf7d71d1c18bdc347d488463333a02195",
+      "required_failure_in": "contract_control",
+      "diagnostics": [
+        {
+          "declaration": "contract_control",
+          "line": 5,
+          "message": "s11/_scratch/pole_verification/higher_coefficient_mutant.lean:5:74: error: unsolved goals\n⊢ False\n"
+        }
+      ],
+      "output": "s11/_scratch/pole_verification/higher_coefficient_mutant.lean:5:74: error: unsolved goals\n⊢ False\n",
+      "output_sha256": "0f561d351011aaf0a2f5ba3e6929a40ea77a0bbdd7d98a79a96c334eea4ba311",
+      "source": "import S11NonlinearPole.Controls\nopen S11NonlinearPole\nopen scoped Matrix.Norms.Elementwise\nnoncomputable section\ntheorem contract_control : moment 1 (fun z => z * squareInverse z) = 0 := by\n  norm_num [square_higher_coefficient 1 (by norm_num)]\n"
+    },
+    {
+      "name": "nonlinear_cluster_positive",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/pole_verification/nonlinear_cluster_positive.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 7.419,
+      "source_sha256": "91003bfd1d5fb3527883eec0c9ec0867599ad004c8a9a274f76d85168eadc65d",
+      "required_failure_in": "contract_control",
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "import S11NonlinearPole.Controls\nopen S11NonlinearPole\nopen scoped Matrix.Norms.Elementwise\nnoncomputable section\ntheorem contract_control : moment 2 twoRootLog * moment 2 twoRootLog ≠ moment 2 twoRootLog := by\n  norm_num [twoRoot_log_moment]\n"
+    },
+    {
+      "name": "nonlinear_cluster_mutant",
+      "expected": "REJECTED",
+      "outcome": "REJECTED",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/pole_verification/nonlinear_cluster_mutant.lean"
+      ],
+      "exit_status": 1,
+      "wall_seconds": 7.369,
+      "source_sha256": "546cdb161be84d29db9fc740ce5c6490b68104fe40605ff1fb138ec667a726e9",
+      "required_failure_in": "contract_control",
+      "diagnostics": [
+        {
+          "declaration": "contract_control",
+          "line": 5,
+          "message": "s11/_scratch/pole_verification/nonlinear_cluster_mutant.lean:5:94: error: unsolved goals\n⊢ False\n"
+        }
+      ],
+      "output": "s11/_scratch/pole_verification/nonlinear_cluster_mutant.lean:5:94: error: unsolved goals\n⊢ False\n",
+      "output_sha256": "859d476c4b75d5d837dccf87abb41760be42fd04057afadef5f2113a4ee88bb4",
+      "source": "import S11NonlinearPole.Controls\nopen S11NonlinearPole\nopen scoped Matrix.Norms.Elementwise\nnoncomputable section\ntheorem contract_control : moment 2 twoRootLog * moment 2 twoRootLog = moment 2 twoRootLog := by\n  norm_num [twoRoot_log_moment]\n"
+    },
+    {
+      "name": "Jordan_residue_entry_positive",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/pole_verification/Jordan_residue_entry_positive.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 7.467,
+      "source_sha256": "9435d0af697e925626225057ed081f6830925887d7fc0ea6e61b31007784633d",
+      "required_failure_in": "contract_control",
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "import S11NonlinearPole.Controls\nopen S11NonlinearPole\nopen scoped Matrix.Norms.Elementwise\nnoncomputable section\ntheorem contract_control : moment 1 jordanResolvent 0 0 = 1 := by\n  norm_num [jordan_residue 1 (by norm_num)]\n"
+    },
+    {
+      "name": "Jordan_residue_entry_mutant",
+      "expected": "REJECTED",
+      "outcome": "REJECTED",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/pole_verification/Jordan_residue_entry_mutant.lean"
+      ],
+      "exit_status": 1,
+      "wall_seconds": 7.519,
+      "source_sha256": "fb41c3b5a29d5aa9b2be919e8c9d7c52f56febc7bebf6a59740d39785f7513ef",
+      "required_failure_in": "contract_control",
+      "diagnostics": [
+        {
+          "declaration": "contract_control",
+          "line": 5,
+          "message": "s11/_scratch/pole_verification/Jordan_residue_entry_mutant.lean:5:63: error: unsolved goals\n⊢ False\n"
+        }
+      ],
+      "output": "s11/_scratch/pole_verification/Jordan_residue_entry_mutant.lean:5:63: error: unsolved goals\n⊢ False\n",
+      "output_sha256": "d082c2d053292522bd479ccd12bb64e5a96b4c4c50281e8e228c6db6e48b6de0",
+      "source": "import S11NonlinearPole.Controls\nopen S11NonlinearPole\nopen scoped Matrix.Norms.Elementwise\nnoncomputable section\ntheorem contract_control : moment 1 jordanResolvent 0 0 = 0 := by\n  norm_num [jordan_residue 1 (by norm_num)]\n"
+    },
+    {
+      "name": "Jordan_higher_entry_positive",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/pole_verification/Jordan_higher_entry_positive.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 7.467,
+      "source_sha256": "9ac37f670e317bf0f918ead3c4ad4fc342a9cba7654dad655121e678ddb34fae",
+      "required_failure_in": "contract_control",
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "import S11NonlinearPole.Controls\nopen S11NonlinearPole\nopen scoped Matrix.Norms.Elementwise\nnoncomputable section\ntheorem contract_control : moment 1 (fun z => z • jordanResolvent z) 0 1 = 1 := by\n  norm_num [jordan_higher_coefficient 1 (by norm_num), jordanN]\n"
+    },
+    {
+      "name": "Jordan_higher_entry_mutant",
+      "expected": "REJECTED",
+      "outcome": "REJECTED",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/pole_verification/Jordan_higher_entry_mutant.lean"
+      ],
+      "exit_status": 1,
+      "wall_seconds": 7.518,
+      "source_sha256": "ea4f3d5f31756e3ceb71cacb5a415f31860d61f311fb633513e46b7a990af21a",
+      "required_failure_in": "contract_control",
+      "diagnostics": [
+        {
+          "declaration": "contract_control",
+          "line": 5,
+          "message": "s11/_scratch/pole_verification/Jordan_higher_entry_mutant.lean:5:80: error: unsolved goals\n⊢ False\n"
+        }
+      ],
+      "output": "s11/_scratch/pole_verification/Jordan_higher_entry_mutant.lean:5:80: error: unsolved goals\n⊢ False\n",
+      "output_sha256": "17a1d19dded606323109d83bf81e5c34a7e48a9261edea0778471f935d7a421c",
+      "source": "import S11NonlinearPole.Controls\nopen S11NonlinearPole\nopen scoped Matrix.Norms.Elementwise\nnoncomputable section\ntheorem contract_control : moment 1 (fun z => z • jordanResolvent z) 0 1 = 0 := by\n  norm_num [jordan_higher_coefficient 1 (by norm_num), jordanN]\n"
+    },
+    {
+      "name": "zero_residue_response_positive",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/pole_verification/zero_residue_response_positive.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 7.267,
+      "source_sha256": "d24a05e6a39285c8177b68cc1f951d952e8e211e9ae7c81f414e3d3591186e42",
+      "required_failure_in": "contract_control",
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "import S11NonlinearPole.Controls\nopen S11NonlinearPole\nopen scoped Matrix.Norms.Elementwise\nnoncomputable section\ntheorem contract_control : jordanTransfer 1 = 1 := by\n  norm_num [jordan_transfer_nonzero]\n"
+    },
+    {
+      "name": "zero_residue_response_mutant",
+      "expected": "REJECTED",
+      "outcome": "REJECTED",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/pole_verification/zero_residue_response_mutant.lean"
+      ],
+      "exit_status": 1,
+      "wall_seconds": 7.318,
+      "source_sha256": "b4335c32403e07947ab34b90903557fe3622a181fac3f79ac925a3abfd08c10f",
+      "required_failure_in": "contract_control",
+      "diagnostics": [
+        {
+          "declaration": "contract_control",
+          "line": 5,
+          "message": "s11/_scratch/pole_verification/zero_residue_response_mutant.lean:5:51: error: unsolved goals\n⊢ False\n"
+        }
+      ],
+      "output": "s11/_scratch/pole_verification/zero_residue_response_mutant.lean:5:51: error: unsolved goals\n⊢ False\n",
+      "output_sha256": "acc8c690c15825cec3fe4513332e4e4d59dbd3c6b8cad55d4620cb04b7aefb2c",
+      "source": "import S11NonlinearPole.Controls\nopen S11NonlinearPole\nopen scoped Matrix.Norms.Elementwise\nnoncomputable section\ntheorem contract_control : jordanTransfer 1 = 0 := by\n  norm_num [jordan_transfer_nonzero]\n"
+    },
+    {
+      "name": "frozen_maps_positive",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/pole_verification/frozen_maps_positive.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 7.367,
+      "source_sha256": "0eade8dc64ba773adf44eb07b897d36900e1a79e2353ad035f5f47d3380ba1c7",
+      "required_failure_in": "contract_control",
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "import S11NonlinearPole.Controls\nopen S11NonlinearPole\nopen scoped Matrix.Norms.Elementwise\nnoncomputable section\ntheorem contract_control : moment 1 affineResponse = 11 := by\n  norm_num [affine_response_residue 1 (by norm_num)]\n"
+    },
+    {
+      "name": "frozen_maps_mutant",
+      "expected": "REJECTED",
+      "outcome": "REJECTED",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/pole_verification/frozen_maps_mutant.lean"
+      ],
+      "exit_status": 1,
+      "wall_seconds": 7.469,
+      "source_sha256": "0e62bf96708114bc741a516c0581747e7ee432fd6b115a1a9e00ca7cd34228ff",
+      "required_failure_in": "contract_control",
+      "diagnostics": [
+        {
+          "declaration": "contract_control",
+          "line": 5,
+          "message": "s11/_scratch/pole_verification/frozen_maps_mutant.lean:5:58: error: unsolved goals\n⊢ False\n"
+        }
+      ],
+      "output": "s11/_scratch/pole_verification/frozen_maps_mutant.lean:5:58: error: unsolved goals\n⊢ False\n",
+      "output_sha256": "231375d096bbccc6e4968cedd281eb55ef9781bb181a51bf9c8e2f337bd15b4f",
+      "source": "import S11NonlinearPole.Controls\nopen S11NonlinearPole\nopen scoped Matrix.Norms.Elementwise\nnoncomputable section\ntheorem contract_control : moment 1 affineResponse = 0 := by\n  norm_num [affine_response_residue 1 (by norm_num)]\n"
+    },
+    {
+      "name": "omit_observation_derivative_positive",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/pole_verification/omit_observation_derivative_positive.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 7.316,
+      "source_sha256": "0eade8dc64ba773adf44eb07b897d36900e1a79e2353ad035f5f47d3380ba1c7",
+      "required_failure_in": "contract_control",
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "import S11NonlinearPole.Controls\nopen S11NonlinearPole\nopen scoped Matrix.Norms.Elementwise\nnoncomputable section\ntheorem contract_control : moment 1 affineResponse = 11 := by\n  norm_num [affine_response_residue 1 (by norm_num)]\n"
+    },
+    {
+      "name": "omit_observation_derivative_mutant",
+      "expected": "REJECTED",
+      "outcome": "REJECTED",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/pole_verification/omit_observation_derivative_mutant.lean"
+      ],
+      "exit_status": 1,
+      "wall_seconds": 7.518,
+      "source_sha256": "8ca86db541b54471c496dc8633f72ad16581d765a36120ac3d670d01d6631e15",
+      "required_failure_in": "contract_control",
+      "diagnostics": [
+        {
+          "declaration": "contract_control",
+          "line": 5,
+          "message": "s11/_scratch/pole_verification/omit_observation_derivative_mutant.lean:5:58: error: unsolved goals\n⊢ False\n"
+        }
+      ],
+      "output": "s11/_scratch/pole_verification/omit_observation_derivative_mutant.lean:5:58: error: unsolved goals\n⊢ False\n",
+      "output_sha256": "2f9ca4a09f53dd13aae7cb1488c8fee5352863adb625c944eb8568f50d64e4c1",
+      "source": "import S11NonlinearPole.Controls\nopen S11NonlinearPole\nopen scoped Matrix.Norms.Elementwise\nnoncomputable section\ntheorem contract_control : moment 1 affineResponse = 6 := by\n  norm_num [affine_response_residue 1 (by norm_num)]\n"
+    },
+    {
+      "name": "omit_forcing_derivative_positive",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/pole_verification/omit_forcing_derivative_positive.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 7.469,
+      "source_sha256": "0eade8dc64ba773adf44eb07b897d36900e1a79e2353ad035f5f47d3380ba1c7",
+      "required_failure_in": "contract_control",
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "import S11NonlinearPole.Controls\nopen S11NonlinearPole\nopen scoped Matrix.Norms.Elementwise\nnoncomputable section\ntheorem contract_control : moment 1 affineResponse = 11 := by\n  norm_num [affine_response_residue 1 (by norm_num)]\n"
+    },
+    {
+      "name": "omit_forcing_derivative_mutant",
+      "expected": "REJECTED",
+      "outcome": "REJECTED",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/pole_verification/omit_forcing_derivative_mutant.lean"
+      ],
+      "exit_status": 1,
+      "wall_seconds": 7.468,
+      "source_sha256": "3d9c7ef0d556cabc2831ed95aa3bff7ea15bed5c98b310112b2d39dc4d7a8bba",
+      "required_failure_in": "contract_control",
+      "diagnostics": [
+        {
+          "declaration": "contract_control",
+          "line": 5,
+          "message": "s11/_scratch/pole_verification/omit_forcing_derivative_mutant.lean:5:58: error: unsolved goals\n⊢ False\n"
+        }
+      ],
+      "output": "s11/_scratch/pole_verification/omit_forcing_derivative_mutant.lean:5:58: error: unsolved goals\n⊢ False\n",
+      "output_sha256": "0a2a9f15f278246ddf2af5100a0865e62312b7461afb5fcff59ffed170f8913a",
+      "source": "import S11NonlinearPole.Controls\nopen S11NonlinearPole\nopen scoped Matrix.Norms.Elementwise\nnoncomputable section\ntheorem contract_control : moment 1 affineResponse = 5 := by\n  norm_num [affine_response_residue 1 (by norm_num)]\n"
+    },
+    {
+      "name": "Jordan_idempotent_positive",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/pole_verification/Jordan_idempotent_positive.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 7.566,
+      "source_sha256": "5f6033bbb44cbf6e51db4dd4772bf47076bd123e0fc2385b14dc08d87426f551",
+      "required_failure_in": null,
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "import S11NonlinearPole.Controls\nopen S11NonlinearPole\nopen scoped Matrix.Norms.Elementwise\nnoncomputable section\ntheorem contract_control : moment 1 jordanLog * moment 1 jordanLog = moment 1 jordanLog := jordan_projection_idempotent 1 (by norm_num)\n"
+    },
+    {
+      "name": "Jordan_inverse_positive",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/pole_verification/Jordan_inverse_positive.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 7.115,
+      "source_sha256": "e328edca219dbb5a7e1c4d1ffb682d3ba1178ad09fbfc24db34a4d098feb5f97",
+      "required_failure_in": null,
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "import S11NonlinearPole.Controls\nopen S11NonlinearPole\nopen scoped Matrix.Norms.Elementwise\nnoncomputable section\ntheorem contract_control : jordanPencil 1 * jordanResolvent 1 = 1 := jordan_inverse_left (by norm_num)\n"
+    },
+    {
+      "name": "physical_residue_zero_positive",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/pole_verification/physical_residue_zero_positive.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 7.419,
+      "source_sha256": "58286eac8eace904866bbb54c68beee1d7aefa353a884093d3e88c6111d2b1c4",
+      "required_failure_in": null,
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "import S11NonlinearPole.Controls\nopen S11NonlinearPole\nopen scoped Matrix.Norms.Elementwise\nnoncomputable section\ntheorem contract_control : moment 1 jordanTransfer = 0 := jordan_transfer_residue 1 (by norm_num)\n"
+    },
+    {
+      "name": "constant_polynomial_positive",
+      "expected": "PASS",
+      "outcome": "PASS",
+      "command": [
+        "nice",
+        "-n",
+        "10",
+        "lake",
+        "env",
+        "lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "s11/_scratch/pole_verification/constant_polynomial_positive.lean"
+      ],
+      "exit_status": 0,
+      "wall_seconds": 7.419,
+      "source_sha256": "59e9e50305b5e1529b2ab10ce889f17d77f6599a41b3d82aed8e81fc3bb07896",
+      "required_failure_in": null,
+      "diagnostics": [],
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "import S11NonlinearPole.Controls\nopen S11NonlinearPole\nopen scoped Matrix.Norms.Elementwise\nnoncomputable section\ntheorem contract_control : moment 1 (fun _ : ℂ => (7 : ℂ)) = 0 := by\n  simpa using moment_zpow_smul 1 (by norm_num) 0 (7 : ℂ)\n"
+    }
+  ],
+  "external_dependencies": {
+    "package_pins": [
+      {
+        "name": "Physlib",
+        "commit": "8b2b23701c07409f882c49e0bd290a214e44450c",
+        "tracked_source_clean": true
+      },
+      {
+        "name": "mathlib",
+        "commit": "db584cd6d46c92f209a44c0f1c829460d327499d",
+        "tracked_source_clean": true
+      },
+      {
+        "name": "«doc-gen4»",
+        "commit": "aceca4eeb5a79092eabefaa75fcb72b701d02205",
+        "tracked_source_clean": true
+      },
+      {
+        "name": "plausible",
+        "commit": "b7eb3304aeae834b12dda98993a37f6a41f6f0bb",
+        "tracked_source_clean": true
+      },
+      {
+        "name": "LeanSearchClient",
+        "commit": "5f4d51b81cbd3f6b32b156bfad9056621a040404",
+        "tracked_source_clean": true
+      },
+      {
+        "name": "importGraph",
+        "commit": "16f02aa7642864af59f1ff0e384a015994db9118",
+        "tracked_source_clean": true
+      },
+      {
+        "name": "proofwidgets",
+        "commit": "4be2e3d5087eeb272cf5a8853b8f9dd025ef5957",
+        "tracked_source_clean": true
+      },
+      {
+        "name": "aesop",
+        "commit": "3448c0bcc5ce01b2d1546e483ec3620e32df3d0e",
+        "tracked_source_clean": true
+      },
+      {
+        "name": "Qq",
+        "commit": "92c15be17b7caf78c2ad767ec40f89052d908d81",
+        "tracked_source_clean": true
+      },
+      {
+        "name": "batteries",
+        "commit": "4488d40d070b9700d4d5a6aa342f0d40c31b2a2d",
+        "tracked_source_clean": true
+      },
+      {
+        "name": "leansqlite",
+        "commit": "6168b7549738a19bc837a1625c60c5d1e5dd8aeb",
+        "tracked_source_clean": true
+      },
+      {
+        "name": "Cli",
+        "commit": "6130a47896ce867c6a4a55373441e59e565bad0f",
+        "tracked_source_clean": true
+      },
+      {
+        "name": "UnicodeBasic",
+        "commit": "37e7d8cb7316a88cd3e91208385c9ec6ae780019",
+        "tracked_source_clean": true
+      },
+      {
+        "name": "BibtexQuery",
+        "commit": "852edafa268eb038a7158551fd580ee8433847b0",
+        "tracked_source_clean": true
+      },
+      {
+        "name": "MD4Lean",
+        "commit": "31907cc18f48a95384f99cee5582c00fb39e0f67",
+        "tracked_source_clean": true
+      }
+    ],
+    "direct_import_source_sha256": {
+      "lean/.lake/packages/mathlib/Mathlib/Analysis/Matrix/Normed.lean": "f47bfccf19da0082e9b2a298457485b1c6ba5c4b19df97a69e89598180e30d2e",
+      "lean/.lake/packages/mathlib/Mathlib/LinearAlgebra/Dimension/Finrank.lean": "4ab91c2b2e2d56f24c0260f25d55a31042cac8112a943a7c877594528c363e21",
+      "lean/.lake/packages/mathlib/Mathlib/Tactic.lean": "6ec9a1714e9fa472f7e5614792f1aa5a65f360ec56688b0dc765d1bee2e1bdd5",
+      "lean/.lake/packages/mathlib/Mathlib/MeasureTheory/Integral/CircleIntegral.lean": "b7c53c14ea891c62786102c2ab5836616762de23b9f30c094c08000569e897c6"
+    },
+    "direct_import_olean_sha256": {
+      "lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/Matrix/Normed.olean": "76f092341dd79cc522502b924020f926f9ce65b2fcbbcecebf003a61338d7bb9",
+      "lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/LinearAlgebra/Dimension/Finrank.olean": "25a63dbb56c5f4ac6dd386e4b8c1943f48e61650136cac4ec465bb9f9c6cdbc0",
+      "lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Tactic.olean": "c71aaaefb337826cd40ede82fd5f374299ece9c68476faca676474067b64ca7f",
+      "lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Integral/CircleIntegral.olean": "e122b1acfc432e0683856cd1e8469f58348e6a55bfe5f9544d59085d76db905b"
+    }
+  },
+  "resources": {
+    "workers": 1,
+    "lean_threads": 1,
+    "lean_allocator_limit_mib": 4096,
+    "process_timeout_seconds": 600,
+    "note": "Allocator limit is not an OS RSS cap."
+  },
+  "dependency_olean_sha256_before_build": {},
+  "axiom_audit_count": 55,
+  "axiom_declarations": {
+    "S11NonlinearPole.PairingData.residue_sandwich": [
+      "propext",
+      "Quot.sound"
+    ],
+    "S11NonlinearPole.PairingData.fieldProjection_fixes": [
+      "propext",
+      "Quot.sound"
+    ],
+    "S11NonlinearPole.PairingData.sourceProjection_fixes": [
+      "propext",
+      "Quot.sound"
+    ],
+    "S11NonlinearPole.PairingData.fieldProjection_idempotent": [
+      "propext",
+      "Quot.sound"
+    ],
+    "S11NonlinearPole.PairingData.sourceProjection_idempotent": [
+      "propext",
+      "Quot.sound"
+    ],
+    "S11NonlinearPole.PairingData.range_fieldProjection": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11NonlinearPole.PairingData.range_sourceProjection": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11NonlinearPole.PairingData.finrank_fieldProjection": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11NonlinearPole.PairingData.finrank_sourceProjection": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11NonlinearPole.PairingData.residue_unique": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11NonlinearPole.PairingData.residue_of_inverse_coefficients": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11NonlinearPole.moment_zpow": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11NonlinearPole.moment_finite_laurent": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11NonlinearPole.moment_polynomial": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11NonlinearPole.double_log_expansion": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11NonlinearPole.double_log_moment": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11NonlinearPole.double_response_expansion": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11NonlinearPole.double_response_moment": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11NonlinearPole.square_derivative": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11NonlinearPole.square_inverse_identity": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11NonlinearPole.square_log_formula": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11NonlinearPole.square_residue": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11NonlinearPole.square_log_moment": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11NonlinearPole.square_log_not_idempotent": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11NonlinearPole.square_higher_coefficient": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11NonlinearPole.twoRoot_zeros": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11NonlinearPole.twoRoot_log_formula": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11NonlinearPole.twoRoot_log_moment": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11NonlinearPole.twoRoot_log_not_idempotent": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11NonlinearPole.affine_response_expansion": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11NonlinearPole.affine_response_residue": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11NonlinearPole.jordan_nilpotent": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11NonlinearPole.jordan_nonzero": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11NonlinearPole.jordan_derivative": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11NonlinearPole.jordan_inverse_left": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11NonlinearPole.jordan_inverse_right": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11NonlinearPole.jordan_determinant": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11NonlinearPole.jordan_kernel": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11NonlinearPole.jordan_chain": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11NonlinearPole.jordan_residue": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11NonlinearPole.jordan_higher_coefficient": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11NonlinearPole.jordan_log_moment": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11NonlinearPole.jordan_projection_idempotent": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11NonlinearPole.jordan_count": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11NonlinearPole.jordan_transfer_exact": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11NonlinearPole.jordan_transfer_residue": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11NonlinearPole.jordan_transfer_nonzero": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11NonlinearPole.scaled_residue": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11NonlinearPole.scaled_projection": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11NonlinearPole.full_projection_rank": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11NonlinearPole.zero_pairing_not_invertible": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11NonlinearPole.ordered_log_entry": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11NonlinearPole.reversed_log_entry": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11NonlinearPole.frozen_response_residue": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "S11NonlinearPole.simple_residue": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "source_sha256_after": {
+    "_measurements/S11_lean_pole_preserved_inputs.json": "eded7b38f5dc8fabc73571dd4df2d534f173352205f946adf637334aa67f1c1e",
+    "_measurements/S11_lean_pole_source_check.py": "cef9250b43c688ced78a27d3036b2a19643d1def4f918739a432a90bd32c050c",
+    "_measurements/S11_lean_pole_source_checks.json": "6b2f88644f4947ed50cb6d1936a8331858bf99483a0ad14dd688e4fea47d414b",
+    "_measurements/S11c_d_nonlinear_pole_contract_check.py": "5d5f7170693fc2ded40a3aaf0b0241e5ea331114fe95dd06d9bd0d80de7b2350",
+    "_measurements/S11c_d_nonlinear_pole_contract_checks.json": "d853c34e92dc2d3519f1dc33ae9ab1f5b7b4e58a9bd08e3ccebcb101d1eb3ed0",
+    "_measurements/S11c_d_nonlinear_pole_contract_probe.json": "690719bf8dd6fda2c814f856689a623cc4e8a8c8231ca95c215842e776400b20",
+    "_measurements/S11c_d_nonlinear_pole_contract_probe.py": "011a42bbeebb250a85c9b45f4e86d91eaa41287d367913c042eba93d80f58092",
+    "_measurements/S11c_d_nonlinear_pole_repair_checkpoint.json": "dd2b421e8605c680cc831b3ee67d0554a80b2ebbdc55fa839f2f33168d0f583f",
+    "directives/S11c_d_NONLINEAR_POLE_CONTRACT.md": "2b6018faf0d5ca772bf9c980174d8ebe7545127a3bf43ba01d1b3c0b6a5be423",
+    "directives/S11c_d_SHARED_PHYSICS.md": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5",
+    "lean/lake-manifest.json": "91fd5318cdc35e4044d6e059c6ef73d94b955d27adf8a5860b07ec92add9377e",
+    "lean/lakefile.toml": "812bbdf333f13a57cc03e1f5d4087e9c1c4d1e57e317dfc736f0f6d3b092dd28",
+    "lean/lean-toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+    "lean/s11/S11NonlinearPole/Controls.lean": "ab0346bb4e918a2e8cce423e3f014106f037ec48c2fa47d4012eacbeac484fd0",
+    "lean/s11/S11NonlinearPole/Jordan.lean": "0b5c45c602e152f6603dba12ee13f194415f93c186d3c3dfcbb22bcca1823935",
+    "lean/s11/S11NonlinearPole/Laurent.lean": "dffe8b6cc498223263024e2add9cef2b092a5c1bcecfdf2b3490b33746a6c812",
+    "lean/s11/S11NonlinearPole/Modal.lean": "a5e2f829767ff3042c2fd235e7026b78f5b8a5d8691f9f58c5a62e593d1d5d29",
+    "lean/s11/S11NonlinearPole/Moments.lean": "174a679828eb6968be6dfdd8b1b16c35057cd0ec6e7310476b34c6baabd4bbb1",
+    "lean/s11/S11NonlinearPole/Scalar.lean": "bc1ef65fe74413fd0d3975d7ee7569bae889f423a563873935200fdf68a8d99c",
+    "lean/s11/S11NonlinearPole.lean": "8287d9935b2649313b69a1fac32c243ab9dfc1fff1232356001573674fb2af1e"
+  },
+  "finished_utc": "2026-09-17T03:34:10.076236+00:00"
+}

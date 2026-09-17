@@ -1,0 +1,158 @@
+{
+  "status": "PASS",
+  "scope": "NP compact read-only synthetic object/source identification; no physical poles or production runs.",
+  "instrument_sha256": "cef9250b43c688ced78a27d3036b2a19643d1def4f918739a432a90bd32c050c",
+  "source_sha256": {
+    "directives/S11c_d_NONLINEAR_POLE_CONTRACT.md": "2b6018faf0d5ca772bf9c980174d8ebe7545127a3bf43ba01d1b3c0b6a5be423",
+    "directives/S11c_d_SHARED_PHYSICS.md": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5",
+    "_measurements/S11c_d_nonlinear_pole_contract_check.py": "5d5f7170693fc2ded40a3aaf0b0241e5ea331114fe95dd06d9bd0d80de7b2350",
+    "_measurements/S11c_d_nonlinear_pole_contract_checks.json": "d853c34e92dc2d3519f1dc33ae9ab1f5b7b4e58a9bd08e3ccebcb101d1eb3ed0",
+    "_measurements/S11c_d_nonlinear_pole_contract_probe.py": "011a42bbeebb250a85c9b45f4e86d91eaa41287d367913c042eba93d80f58092",
+    "_measurements/S11c_d_nonlinear_pole_contract_probe.json": "690719bf8dd6fda2c814f856689a623cc4e8a8c8231ca95c215842e776400b20",
+    "_measurements/S11c_d_nonlinear_pole_repair_checkpoint.json": "dd2b421e8605c680cc831b3ee67d0554a80b2ebbdc55fa839f2f33168d0f583f"
+  },
+  "sympy_version": "1.14.0",
+  "checks": [
+    {
+      "name": "scalarDouble_source_AST",
+      "passed": true
+    },
+    {
+      "name": "scalarBothRoots_source_AST",
+      "passed": true
+    },
+    {
+      "name": "affineJordan_source_AST",
+      "passed": true
+    },
+    {
+      "name": "realization_scalar_source_AST",
+      "passed": true
+    },
+    {
+      "name": "forcing_observation_source_AST",
+      "passed": true
+    },
+    {
+      "name": "scalarDouble_recorded_operator",
+      "passed": true
+    },
+    {
+      "name": "scalarBothRoots_recorded_operator",
+      "passed": true
+    },
+    {
+      "name": "affineJordan_recorded_operator",
+      "passed": true
+    },
+    {
+      "name": "same_state_operator",
+      "passed": true
+    },
+    {
+      "name": "same_forcing_coordinate",
+      "passed": true
+    },
+    {
+      "name": "same_observed_coordinate",
+      "passed": true
+    },
+    {
+      "name": "same_affine_forcing",
+      "passed": true
+    },
+    {
+      "name": "same_affine_observation",
+      "passed": true
+    },
+    {
+      "name": "historical_evidence:OmittedPairingBasisChangeRejected",
+      "passed": true
+    },
+    {
+      "name": "historical_evidence:RealizationTransfer",
+      "passed": true
+    },
+    {
+      "name": "historical_evidence:HigherOrderCouplingSurvivesZeroResidue",
+      "passed": true
+    },
+    {
+      "name": "historical_evidence:FrozenForcingObservationAtDoublePoleRejected",
+      "passed": true
+    },
+    {
+      "name": "historical_evidence:AnalyticMapsFullLaurentReconstruction",
+      "passed": true
+    },
+    {
+      "name": "historical_evidence:doubleUnrestrictedProjectorRejected",
+      "passed": true
+    }
+  ],
+  "translation_controls": {
+    "same_count_wrong_Jordan_sign_rejected": true,
+    "same_kernel_scaled_scalar_rejected": true,
+    "wrong_forcing_coordinate_rejected": true,
+    "frozen_observation_rejected": true
+  },
+  "historical_evidence": {
+    "OmittedPairingBasisChangeRejected": {
+      "name": "OmittedPairingBasisChangeRejected",
+      "mutationResiduals": [
+        "-1",
+        "3/2",
+        "-3/2",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "satisfied": true
+    },
+    "RealizationTransfer": {
+      "name": "RealizationTransfer",
+      "residuals": [
+        "0"
+      ],
+      "satisfied": true
+    },
+    "HigherOrderCouplingSurvivesZeroResidue": {
+      "name": "HigherOrderCouplingSurvivesZeroResidue",
+      "mutationResiduals": [
+        "1"
+      ],
+      "satisfied": true
+    },
+    "FrozenForcingObservationAtDoublePoleRejected": {
+      "name": "FrozenForcingObservationAtDoublePoleRejected",
+      "mutationResiduals": [
+        "-11"
+      ],
+      "satisfied": true
+    },
+    "AnalyticMapsFullLaurentReconstruction": {
+      "name": "AnalyticMapsFullLaurentReconstruction",
+      "residuals": [
+        "0"
+      ],
+      "satisfied": true
+    },
+    "doubleUnrestrictedProjectorRejected": {
+      "name": "doubleUnrestrictedProjectorRejected",
+      "mutationResiduals": [
+        "2"
+      ],
+      "satisfied": true
+    }
+  },
+  "selected_native_operator_names": [
+    "scalarDouble",
+    "scalarBothRoots",
+    "affineJordan"
+  ],
+  "completed_utc": "2026-09-17T03:18:18.510059+00:00",
+  "interpretation": "The original diagnostic reports remain historical. Selected operands are identified to the Lean definitions by this instrument and source review; translation software is not kernel-certified."
+}

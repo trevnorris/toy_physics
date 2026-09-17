@@ -1,0 +1,70 @@
+{
+  "status": "COMPLETE",
+  "scope": "Bounded S11 NP1\u2013NP4 independent fidelity review",
+  "packet_revision": "S11 nonlinear-pencil finite-core NP1\u2013NP4 fidelity contract v1",
+  "packet_sha256": "9c7e8e41dd1820647c3dc787ad171043944038c70d37b873699d414f49396e57",
+  "file_count": 31,
+  "archive": "research/pde_ledger_v3/_measurements/S11_lean_pole_review_packet_v1.tar.gz",
+  "archive_sha256": "2c354358720bb6fd03afd8298a237131cf326de785222598ee15bef84b9bb9d7",
+  "archive_bytes": 105629,
+  "packet_directory": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_poles/review_packet_v1",
+  "manifest": "research/pde_ledger_v3/_measurements/S11_lean_pole_review_packet.json",
+  "manifest_sha256": "a85ac31521dcf002a4baaa4d4a5244c6f98f00da917d470287003cd9f2ec0e6e",
+  "destinations": [
+    "Claude",
+    "Grok"
+  ],
+  "external_reviews_started": true,
+  "local_verification": "PASS: seven canonical builds from recorded run1 reused under complete guards in run3; 55 standard-axiom audits; 17 fresh mathematical rejections and 21 fresh positives; 19 compact native checks and four translation controls; live sources, pins, input/output objects and preserved historical objects match",
+  "prepared_utc": "2026-09-17T03:44:42.077419+00:00",
+  "snapshot_validation": "PASS: live files, snapshot and archive member hashes agree",
+  "review_verdicts": {
+    "claude": "CLEAR",
+    "grok": "CLEAR"
+  },
+  "completion_claimed": true,
+  "committed": false,
+  "authorization_context": "The user explicitly authorizes sending the previously identified private fixed 31-file NP1\u2013NP4 packet to Grok and Claude in response to the specific transfer confirmation request. Packet hash and destinations remain unchanged.",
+  "pinned_export_constraint": "S11c inputs and exports remain unchanged. The packet includes only the seven pinned read-only shared/addendum and synthetic repair context files already identified by the NP preservation record; no production rerun or diagnostic regeneration is authorized.",
+  "authorization_quote": "I authorize sending those to grok and Claude",
+  "authorized_utc": "2026-09-17T04:46:40.746670+00:00",
+  "authorization_exchange_record": "research/pde_ledger_v3/_scratch/S11_lean_poles/review_run1/transfer_authorization_context.json",
+  "launch_blocked_by_automatic_review": false,
+  "automatic_approval_rejections": 2,
+  "last_blocked_utc": "2026-09-17T04:41:22.150420+00:00",
+  "required_next_input": null,
+  "handoff": "research/pde_ledger_v3/lean/s11/POLE_HANDOFF.md",
+  "handoff_review_status": "Both independent fidelity reviews CLEAR; bounded NP1\u2013NP4 complete.",
+  "prior_contextual_authorization": {
+    "quote": "Do the review and give me a write up for the other session",
+    "authorized_utc": "2026-09-17T04:37:02.356065+00:00",
+    "automatic_approval_rejections": 2
+  },
+  "review_started_utc": "2026-09-17T04:47:07.855676+00:00",
+  "transport_directory": "/tmp/s11-lean-pole-fidelity-knq_ro50/packet",
+  "launch_preflight": {
+    "status": "PASS",
+    "packet_sha256": "9c7e8e41dd1820647c3dc787ad171043944038c70d37b873699d414f49396e57",
+    "file_count": 31,
+    "compiled_objects": 7,
+    "preserved_historical_objects": 45,
+    "read_only_native_inputs": 7,
+    "checked": "Archive/snapshot/live files; sources/instruments/reports/logs/input/output objects; package pins and direct Mathlib bytes; historical object preservation"
+  },
+  "supervisor_pid": 728693,
+  "review_supervisor_sha256": "803eb25b70d3659d37da02aaec8df0bbb09670f399a2225617532cd45df94377",
+  "review_supervisor_finished_utc": "2026-09-17T04:59:08.679300+00:00",
+  "live_files_changed_since_packet": [],
+  "completed_utc": "2026-09-17T05:05:56.923087+00:00",
+  "fidelity_review": "research/pde_ledger_v3/lean/s11/POLE_FIDELITY_REVIEW.md",
+  "closure_validation": "research/pde_ledger_v3/_measurements/S11_lean_pole_closure_validation.json",
+  "post_review_document_changes": [
+    "lean/s11/POLE_ASSESSMENT.md",
+    "lean/s11/POLE_COVERAGE.md",
+    "lean/s11/POLE_FIDELITY.md",
+    "lean/s11/POLE_VERIFICATION.txt",
+    "lean/s11/README.md"
+  ],
+  "commit_authorization": "research/pde_ledger_v3/_measurements/S11_lean_pole_commit_authorization.json",
+  "commit_preparation": "Authorized after both reviews clear; this is the precommit closure record."
+}

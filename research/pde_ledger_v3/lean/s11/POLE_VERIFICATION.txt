@@ -1,0 +1,115 @@
+NP1–NP4 nonlinear-pencil finite core: local verification PASS
+Independent fidelity reviews: Claude CLEAR and Grok CLEAR.
+The bounded NP1–NP4 contract is complete. See POLE_FIDELITY_REVIEW.md.
+
+Authority: lean/FORMALIZATION_POLICY.md and lean/s11/POLE_COVERAGE.md.
+Detailed statement boundary: POLE_FIDELITY.md; application hypotheses:
+POLE_ASSESSMENT.md. Paths below are relative to research/pde_ledger_v3.
+
+Final recorded supervisor: _scratch/S11_lean_poles/verification_run3
+Final run: 2026-09-17 03:29:20 through 03:34:10 UTC; exit 0, status PASS.
+job.log is empty; no issues.log. One sequential Lean worker, nice 10,
+-j1 -M4096 -DwarningAsError=true, timeout 600 seconds per process.
+The allocator setting is not an OS RSS cap. Whole-process-group timeout cleanup
+is unchanged from the tested VC runner; no timeout is accepted as evidence.
+
+Formal verification
+  Six modules: Modal, Moments, Laurent, Scalar, Jordan, Controls; plus audit root.
+  Seven canonical objects built freshly in recorded run1, reused under complete
+  transitive source/pin/command/input/output guards in run2 and run3.
+  Focused development objects are not recorded reuse evidence.
+  55 selected declarations: only standard propext, Classical.choice, Quot.sound
+  axiom dependencies, or an empty list. No sorry, admit or custom physics axiom.
+  17 paired mathematical rejections and 21 positive controls, all fresh in run3.
+  45 check records = seven canonical builds/audit + 38 controls; seven objects.
+  Every false statement yielded exactly one diagnostic in contract_control
+  with exactly one unsolved False. Every positive exited 0 with no diagnostic.
+  No syntax/import/warning/resource/instrument failure counts as a rejection.
+  These are paired statement controls, not canonical source replacements.
+
+Paired control stems (each has _positive and _mutant records)
+  pairing_normalization              projection_normalization
+  full_modal_rank                    singular_pairing
+  ordered_log                        contour_sign
+  double_zero_residue                double_log_count
+  unjustified_idempotency            higher_coefficient
+  nonlinear_cluster                  Jordan_residue_entry
+  Jordan_higher_entry                 zero_residue_response
+  frozen_maps                        omit_observation_derivative
+  omit_forcing_derivative
+Additional passing controls
+  Jordan_idempotent_positive, Jordan_inverse_positive,
+  physical_residue_zero_positive, constant_polynomial_positive.
+The report contains the exact control sources, commands, diagnostics and hashes.
+
+Compact native identification
+  19 checks and four translation controls pass. The instrument parses selected
+  original native AST assignments and reads recorded synthetic operators/maps.
+  No S11c script is imported/executed; no production driver or old diagnostic
+  is rerun. The old 89-check repair evidence is historical, not kernel-certified.
+  Controls distinguish a wrong Jordan sign, same-kernel scalar rescaling,
+  wrong forcing coordinate and frozen observation.
+
+Live evidence validation
+  _measurements/S11_lean_pole_validation.json: PASS.
+  Author validation checks all current local sources, pins, formal/native
+  instruments/reports, saved control sources/logs, seven canonical objects,
+  every recorded input object and both archived build-lineage records.
+  Fifteen clean pinned package repositories and four direct Mathlib import
+  source/object pairs match. The transitive Mathlib cache is the pinned trust
+  baseline, not rebuilt here. NP imports no older local proof module.
+  All forty VC and five T1 protected objects match the initial preflight.
+  All seven read-only native/addendum inputs match; S11c inputs are unchanged.
+  _measurements/S11_lean_pole_preserved_inputs.json is the byte-for-byte copy of
+  _scratch/S11_lean_poles/initial_preflight.json.
+  Hash checks are author evidence until independently checked by a reviewer.
+
+Instrument and evidence SHA256
+  _measurements/S11_lean_pole_contract_check.py
+    435abe01d9fada4719e82d0ddf84c26ad90efc4319c79e049c546e552ccdb187
+  _measurements/S11_lean_pole_contract_checks.json
+    b2d4e03e34a5c8bc113a0538256bf77446c54735330111c31abf226a8a6cfa3f
+  _measurements/S11_lean_pole_source_check.py
+    cef9250b43c688ced78a27d3036b2a19643d1def4f918739a432a90bd32c050c
+  _measurements/S11_lean_pole_source_checks.json
+    6b2f88644f4947ed50cb6d1936a8331858bf99483a0ad14dd688e4fea47d414b
+  _measurements/S11_lean_pole_preserved_inputs.json
+    eded7b38f5dc8fabc73571dd4df2d534f173352205f946adf637334aa67f1c1e
+Individual source, dependency and object hashes are in the reports/validation.
+
+Repair history
+  Run1 passed all seven canonical builds and printed 55 allowed axiom lists,
+  then an audit parser rejected a wrapped list. No controls ran. The parser now
+  strips token whitespace; its regression accepts wrapped/empty lists and
+  rejects sorryAx, Lean.trustCompiler and a custom axiom. Paired proof code was
+  normalized to one tactic call to avoid unreachable follow-up tactics.
+  Run2 reused all seven builds, passed the audit and four pairs, then stopped
+  on ordered_log_positive: broad simp removed a zero summand before the named
+  identity matched. Only this paired proof changed to norm_num only with that
+  identity. Its strict positive/mutant probe passed before run3.
+  Statements, true/false values, canonical proofs, pins, native inputs and all
+  seven output objects were unchanged by these repairs. Run3 passed everything.
+  Diagnostics/preflights remain under _scratch/S11_lean_poles; the durable
+  validation records prior report hashes and confirms the guarded lineage.
+
+Scope and completed review obligation
+  Typed full-pairing algebra, conditional identification of a supplied inverse
+  coefficient, actual finite Laurent circle integrals and explicit scalar/
+  Jordan examples. Arbitrary pencils still require actual analytic expansions,
+  derivative identification, domains and remainder hypotheses. No analytic
+  inverse-existence theorem, general argument principle or Riesz calculus,
+  physical pole existence, outgoing realization or scattering solve is claimed.
+  The modal space may be zero-dimensional. Matrix integrals use the finite
+  elementwise norm. The synthetic examples are not a general classification.
+  No unspecified holomorphic remainder is discarded.
+  Both independent non-author reviews of the user-approved fixed 31-file
+  packet returned substantive terminal CLEAR reports. They performed source
+  reading and hand algebra, not separate Lean/native runs or hash checks.
+  Required mathematical corrections: none. Optional findings are dispositioned
+  in POLE_FIDELITY_REVIEW.md, including the limited zero-map/point-value controls
+  and conditional interpretation of the affine-derivative docstring.
+  _measurements/S11_lean_pole_closure_validation.json records archive/snapshot/
+  transport correspondence and live proof/dependency/object validation.
+  The approved packet remains frozen with its original pending-review wording;
+  only live closure/clarification documents and review records were added or
+  updated. No canonical proof, instrument, native input or object changed.

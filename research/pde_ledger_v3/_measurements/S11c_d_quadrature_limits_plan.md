@@ -108,11 +108,13 @@ pole questions. The latter is governed separately by the approved
 
 [`VARIABLE_COEFFICIENT_HANDOFF.md`](../lean/s11/VARIABLE_COEFFICIENT_HANDOFF.md)
 supplies VC1–VC4 for the specified local D3 family, D4 odd density and a scalar
-normal-slice interface identity. Local verification passes; its separate
-fidelity reviews remain pending. This is no finding of a missing term in the
+normal-slice interface identity. Its bounded proof/fidelity contract completed
+at `9865050f`, with both reviews clear and no required correction. The original
+reception checkpoint retains its review-pending history; the pole reception
+checkpoint records the closure and unchanged VC proof sources. This is no
+finding of a missing term in the
 complete closed S11c operator and establishes no general transmission problem.
-The new reception checkpoint pins this packet without changing it or launching
-more Lean work. Apply its hypotheses to step 5's realization and subsequent
+Apply its hypotheses to step 5's realization and subsequent
 boundary matching as follows.
 
 1. **Match the actual action and indices.** Lean uses derivative rows,
@@ -164,6 +166,13 @@ identify the nonlocal closure or its boundary data. A demonstrated upstream
 disagreement would require the user's repair checkpoint; no new discrepancy or
 production rerun is established by this reception. Preserve the running job's
 sources and validate it on its original inventory when the watcher completes.
+
+The separate [pole handoff application](S11c_d_nonlinear_pole_repair_plan.md#applying-the-np1np4-handoff)
+preserves the distinction between a conditional modal identity, a justified
+meromorphic inverse, a multiplicity count and a physical response. NP1–NP4's
+local checks pass and its fidelity review remains pending. It supplies no
+uniform inverse bound for step 5 and no permission to extend a generic stability
+margin through thresholds or poles. No current quadrature input changes.
 
 Preserve the full symbolic input and the builder report contract suffix. Keep
 durable runs in repository _scratch/s11c/, publish validated .out files using

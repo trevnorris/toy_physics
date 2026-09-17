@@ -117,7 +117,7 @@
     "checkpointSha256": "9c0176030bcaa0c954b6c53821ed7a704acfa6c915dfe3eaf0ade310a368f0c1",
     "status": "BOUNDED_PROOF_FIDELITY_COMPLETE_APPLICATION_OPEN",
     "applicationPlan": "_measurements/S11c_d_quadrature_limits_plan.md",
-    "applicationPlanSha256": "13e64a961130535389378d00f31405e926b94d73ebe1cefb094d529087d12830",
+    "applicationPlanSha256": "dc07df48f3b54501112838cf1ceba0c75109b010c5aab7a059e1ec84bb972be2",
     "disposition": "T1-T4 closure is accepted at ad365b5f; the earlier reception checkpoint remains historical. Apply only after establishing actual complete-operator and outgoing-domain premises; no numerical epsilon or kappa is certified.",
     "acceptedClosure": {
       "commit": "ad365b5f01e0954bc8adae10324a20a969181a80",
@@ -133,9 +133,40 @@
   "variableCoefficientHandoff": {
     "checkpoint": "_measurements/S11c_d_variable_coefficient_handoff_checkpoint.json",
     "checkpointSha256": "e05f70b7af5a689df6581a6310ec6dc2d72ec826b84632868051625092057f12",
-    "status": "RECEIVED_LOCAL_VERIFICATION_PASS_FIDELITY_REVIEW_PENDING",
+    "status": "BOUNDED_PROOF_FIDELITY_COMPLETE_APPLICATION_OPEN",
     "applicationPlan": "_measurements/S11c_d_quadrature_limits_plan.md",
-    "applicationPlanSha256": "13e64a961130535389378d00f31405e926b94d73ebe1cefb094d529087d12830",
-    "disposition": "Receive final VC fidelity disposition and accepted revision; apply actual-action, index, weighted-current and complete boundary-pairing checks before relying on VC identities in S11c matching."
+    "applicationPlanSha256": "dc07df48f3b54501112838cf1ceba0c75109b010c5aab7a059e1ec84bb972be2",
+    "disposition": "VC1-VC4 closed at 9865050f with both reviews clear. Apply actual-action, index, weighted-current and complete boundary-pairing checks before using the identities in S11c matching; original reception remains historical.",
+    "acceptedClosure": {
+      "commit": "9865050f0f8999ede3501006374531152c4560b1",
+      "checkpoint": "_measurements/S11_lean_variable_closure_validation.json",
+      "sha256": "4c285ba2eeaafc8cc29669de70e5ebd2549703ee9591468bf75c39ecb106f59c",
+      "reviewVerdicts": {
+        "claude": "CLEAR",
+        "grok": "CLEAR"
+      },
+      "reviewLimits": {
+        "claude": "Independent source reading and hand algebra; no independent Lean/native/hash execution.",
+        "grok": "Independent source reading and hand algebra; no independent Lean/native/hash execution."
+      },
+      "acceptedRevisionJoins": {
+        "_measurements/S11_lean_variable_closure_validation.json": "4c285ba2eeaafc8cc29669de70e5ebd2549703ee9591468bf75c39ecb106f59c",
+        "lean/s11/S11VariableCoefficients.lean": "d273c0431b54a208ca9710f5aa2451ab64347d72cd4613094972457168a171cd",
+        "lean/s11/S11VariableCoefficients/Common.lean": "05a9fce419bbccce91f9e55f8e53f482e29cd0fc5f142db8aa21218bb5e7e559",
+        "lean/s11/S11VariableCoefficients/Controls.lean": "c7d206f9c68b9e03f3c26dc9fbc3ea1be970e45c71273820036b9e2e5f0a2829",
+        "lean/s11/S11VariableCoefficients/D3.lean": "1127e18376f1b3e373650fecb60ffb89de7c6e17270edc034f9ef78d8e1d85f9",
+        "lean/s11/S11VariableCoefficients/D4.lean": "8d8d5c6a6d3def7b326fa0ea22fc67db24e7c76443c2efbe8ea1b477a6a4853f",
+        "lean/s11/S11VariableCoefficients/Interface.lean": "e05d672b30508e0e68e28e36d0d0b81db84a170c5776f113695261b509d9d045"
+      },
+      "applicationCertificateEstablished": false
+    }
+  },
+  "nonlinearPoleHandoff": {
+    "checkpoint": "_measurements/S11c_d_pole_handoff_checkpoint.json",
+    "checkpointSha256": "6a1910612a0988e6745c85519bfca8549fd0a06c34bcc2b3d445fd42d645dac1",
+    "status": "RECEIVED_LOCAL_VERIFICATION_PASS_FIDELITY_REVIEW_PENDING",
+    "applicationPlan": "_measurements/S11c_d_nonlinear_pole_repair_plan.md",
+    "applicationPlanSha256": "682b2c2ed98f3e634490a2094da2fa7f6e2a83a1083fac2b7fc9e497fa4f64d5",
+    "disposition": "No current input/helper/export changes or numerical rerun; validate current finite-action production on its original frozen inventory when its watcher wakes the session."
   }
 }

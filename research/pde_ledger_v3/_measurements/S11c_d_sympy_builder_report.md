@@ -8,6 +8,13 @@ records exact controls and provenance. The active quadrature's pinned v10 source
 and the retained contract suffix below stay byte-identical; its pole shorthand
 is interpreted under this correction. No physical pole result is yet computed.
 
+The Lean [pole handoff](../lean/s11/POLE_HANDOFF.md) supports this correction with
+conditional full-pairing projections, finite Laurent contour identities and
+response-map derivative controls. Local verification passes; fidelity reviews
+remain pending. The [pole application plan](S11c_d_nonlinear_pole_repair_plan.md)
+retains actual derivative/kernel/expansion joins and the unproved physical
+analytic premises. No new repair or numerical rerun follows from this handoff.
+
 The Lean [tail/Abel and stability handoff](../lean/s11/ANALYTIC_ERROR_HANDOFF.md)
 completed its bounded proof/fidelity contract at `ad365b5f` with both reviews clear.
 The [limits plan](S11c_d_quadrature_limits_plan.md) now maps its hypotheses to
@@ -17,7 +24,8 @@ or scattering convergence certificate follows yet. The reception checkpoint
 preserves the fixed review-packet hashes; no Lean work or production source changed.
 
 The [variable-coefficient/interface handoff](../lean/s11/VARIABLE_COEFFICIENT_HANDOFF.md)
-passes local verification with its separate fidelity reviews pending. The limits
+completed its bounded proof/fidelity contract at `9865050f`, with both reviews
+clear and no required correction. The limits
 plan records the derivative-row/native-field-row map, weighted divergence and
 boundary-current obligations, and the restricted interface hypotheses. Source
 inspection confirms profile-dependent density differentiation in the native

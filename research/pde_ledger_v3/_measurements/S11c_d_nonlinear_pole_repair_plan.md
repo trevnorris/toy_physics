@@ -53,5 +53,68 @@ unpinned build entry points agree, exact controls pass, and the original
 numerical sources and report suffix remain unchanged. It does not implement
 the still-outstanding physical pole search, establish an outgoing inverse or
 tail/Abel constants, or replace any of the original scattering/export work.
-The proposed Lean tail/stability increment retains priority for that separate
-analytic gap; no theorem completion is assumed.
+The bounded Lean tail/stability increment subsequently closed at `ad365b5f`;
+its actual operator-error and inverse-bound application remains open under
+`S11c_d_quadrature_limits_plan.md`.
+
+## Applying the NP1–NP4 handoff
+
+[`POLE_HANDOFF.md`](../lean/s11/POLE_HANDOFF.md) supports the adopted correction.
+Its local verification passes; independent fidelity reviews are running in the
+owning Lean session and remain unadjudicated at reception. The fixed 31-file
+packet is recorded in `S11c_d_pole_handoff_checkpoint.json`. This reception is
+not another review leg or an acceptance of the whole analytic pole theory.
+No change to `nonlinearPoleV2` or numerical regeneration is indicated.
+
+Apply this bounded result when building the outstanding frequency-pole stage:
+
+1. **Identify the physical pencil before using modal algebra.** Keep fixed
+   field/source spaces, common outgoing domain, sheet, topology and admissible
+   contour from the governing addendum. Establish the analytic inverse framework
+   and actual singularity separately. `PairingData` permits a zero-dimensional
+   modal space and supplies a map named `derivative`; neither implies a pole or
+   identifies that map with the derivative of the complete reduced operator.
+   Compute that derivative including every frequency-dependent reduced term and
+   any fixed-space identification, with full right/left kernel coverage.
+2. **Identify a residue before applying its projection identities.** NP1 proves
+   `R A R = R` and the idempotency, ranges and modal ranks of `R A` and `A R`
+   under the full invertible pairing `D = W A V`. Its separate coefficient
+   theorem needs `range V = ker L0`, `W L0 = 0`, `L0 R = 0` and
+   `L0 H + A R = I`. Supply those actual inverse-expansion identities and the
+   analytic/semisimplicity premises; the algebra does not construct an inverse
+   expansion. Preserve full subspaces, rank tolerances and exceptional domains.
+   A singular pairing leads to the higher-order construction, not dropped modes.
+3. **Match the contour and coefficient conventions.** NP2 integrates finite
+   Laurent operands on positively oriented circles centered at zero. Translate
+   from `delta = omega - omega_*` with the actual frequency scale, contour
+   differential and restored units. Identify the physical principal part and
+   justify the integral of every analytic remainder before using the finite
+   formula. The matrix examples use a finite elementwise norm, not our outgoing
+   operator norm. `C_-1 A0 + C_-2 A1` retains its product order; when the affine
+   factor is `L'`, `A1` is the actual second derivative, not its half-scaled
+   Taylor coefficient in `L`. General multiplicity/trace and Riesz claims still
+   require the distinct analytic hypotheses in the addendum.
+4. **Compute the full physical response.** For a double pole with analytic
+   affine forcing/observation, the checked residue is
+   `O0 C_-1 B0 + O0 C_-2 B1 + O1 C_-2 B0`. Identify each map and its derivatives
+   in the actual channel frames; for higher order extract the complete ordered
+   Laurent/Taylor convolution. Retain every singular coefficient even if the
+   residue vanishes. The scalar `z^-2` response with `O=2+5z`, `B=1+3z` gives
+   residue 11; frozen maps, omitted observation derivative and omitted forcing
+   derivative give 0, 6 and 5. These controls already agree with the adopted
+   synthetic repair. They are not a physical bound-channel calculation.
+5. **Retain the unresolved analytic and physical obligations.** NP1–NP4 supplies
+   no general analytic Fredholm/Keldysh existence proof, arbitrary root-chain
+   classification, Riesz realization, homotopy/displacement theorem, outgoing
+   condition or physical pole search. The tail/stability results do not provide
+   a bound through a pole; contour inverse estimates need their own domain and
+   separation evidence. Keep continuum/cut and bound-pole loci separate, and
+   establish normalizability, width and all-channel closure explicitly. The
+   existing constant-end normal-momentum records do not answer this frequency
+   question.
+
+Receive the owning session's final fidelity disposition before labeling this
+bounded Lean result independently cleared. The current calculation continues
+on its original pinned inputs; on completion validate those inputs as before.
+New stages pin the effective addendum and keep this application map separate
+from the historical finite-action evidence.

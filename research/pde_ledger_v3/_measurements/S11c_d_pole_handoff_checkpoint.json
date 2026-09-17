@@ -1,0 +1,111 @@
+{
+  "status": "RECEIVED_LOCAL_VERIFICATION_PASS_FIDELITY_REVIEW_PENDING",
+  "receivedUtc": "2026-09-17T04:53:48.807109+00:00",
+  "handoff": "lean/s11/POLE_HANDOFF.md",
+  "handoffSha256": "c10c53574e20a7aa1d6c8806f5e0c5dfb1cb47dfba7977dbfccc8fdc161f4ecd",
+  "reviewPacket": "_measurements/S11_lean_pole_review_packet.json",
+  "reviewPacketSha256": "a85ac31521dcf002a4baaa4d4a5244c6f98f00da917d470287003cd9f2ec0e6e",
+  "reviewPacketAggregateSha256": "9c7e8e41dd1820647c3dc787ad171043944038c70d37b873699d414f49396e57",
+  "reviewPacketSourceJoins": {
+    "_measurements/S11_lean_pole_contract_check.py": "435abe01d9fada4719e82d0ddf84c26ad90efc4319c79e049c546e552ccdb187",
+    "_measurements/S11_lean_pole_contract_checks.json": "b2d4e03e34a5c8bc113a0538256bf77446c54735330111c31abf226a8a6cfa3f",
+    "_measurements/S11_lean_pole_preserved_inputs.json": "eded7b38f5dc8fabc73571dd4df2d534f173352205f946adf637334aa67f1c1e",
+    "_measurements/S11_lean_pole_review_prompt.txt": "7d166a60e88e5ad83085774a823e78f62c77daed283e6506ec767e6896affca3",
+    "_measurements/S11_lean_pole_source_check.py": "cef9250b43c688ced78a27d3036b2a19643d1def4f918739a432a90bd32c050c",
+    "_measurements/S11_lean_pole_source_checks.json": "6b2f88644f4947ed50cb6d1936a8331858bf99483a0ad14dd688e4fea47d414b",
+    "_measurements/S11_lean_pole_validation.json": "99a96fe8d1dad6776625d6f351648a6425ae73ff06cf4535ea3de8e18b0a296b",
+    "_measurements/S11c_d_nonlinear_pole_contract_check.py": "5d5f7170693fc2ded40a3aaf0b0241e5ea331114fe95dd06d9bd0d80de7b2350",
+    "_measurements/S11c_d_nonlinear_pole_contract_checks.json": "d853c34e92dc2d3519f1dc33ae9ab1f5b7b4e58a9bd08e3ccebcb101d1eb3ed0",
+    "_measurements/S11c_d_nonlinear_pole_contract_probe.json": "690719bf8dd6fda2c814f856689a623cc4e8a8c8231ca95c215842e776400b20",
+    "_measurements/S11c_d_nonlinear_pole_contract_probe.py": "011a42bbeebb250a85c9b45f4e86d91eaa41287d367913c042eba93d80f58092",
+    "_measurements/S11c_d_nonlinear_pole_repair_checkpoint.json": "dd2b421e8605c680cc831b3ee67d0554a80b2ebbdc55fa839f2f33168d0f583f",
+    "directives/S11c_d_NONLINEAR_POLE_CONTRACT.md": "2b6018faf0d5ca772bf9c980174d8ebe7545127a3bf43ba01d1b3c0b6a5be423",
+    "directives/S11c_d_SHARED_PHYSICS.md": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5",
+    "lean/AGENTS.md": "f4b3c46e1931f4979f801914f941b6f023a44e158d91b98b95f91511f277a903",
+    "lean/FORMALIZATION_POLICY.md": "065a3f04bac720e5bfcb8dcb1aaf2a87a8df00a6c16682c417f009cd69c9e58c",
+    "lean/lake-manifest.json": "91fd5318cdc35e4044d6e059c6ef73d94b955d27adf8a5860b07ec92add9377e",
+    "lean/lakefile.toml": "812bbdf333f13a57cc03e1f5d4087e9c1c4d1e57e317dfc736f0f6d3b092dd28",
+    "lean/lean-toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+    "lean/s11/POLE_ASSESSMENT.md": "ada87aa7f3a94a71c6113bdf7a0ef26cf396be2a8046b6d2c530fdea8d4b6b27",
+    "lean/s11/POLE_COVERAGE.md": "df12602b2f4827ed4bcb524af6185919d0f634050add58fe86dec69e36e509e8",
+    "lean/s11/POLE_FIDELITY.md": "89736fe9c9363355f2eb60c7fa2859ea774d680c8d61f03c3824234620b09bb0",
+    "lean/s11/POLE_VERIFICATION.txt": "a257267ed858153162baa689b88e66b07d01aa92cec853278f78f0a3b65750f5",
+    "lean/s11/README.md": "9ab8b85b9a9b90f87b1b411da78e830fab6070c685b758e613b65595171e832d",
+    "lean/s11/S11NonlinearPole.lean": "8287d9935b2649313b69a1fac32c243ab9dfc1fff1232356001573674fb2af1e",
+    "lean/s11/S11NonlinearPole/Controls.lean": "ab0346bb4e918a2e8cce423e3f014106f037ec48c2fa47d4012eacbeac484fd0",
+    "lean/s11/S11NonlinearPole/Jordan.lean": "0b5c45c602e152f6603dba12ee13f194415f93c186d3c3dfcbb22bcca1823935",
+    "lean/s11/S11NonlinearPole/Laurent.lean": "dffe8b6cc498223263024e2add9cef2b092a5c1bcecfdf2b3490b33746a6c812",
+    "lean/s11/S11NonlinearPole/Modal.lean": "a5e2f829767ff3042c2fd235e7026b78f5b8a5d8691f9f58c5a62e593d1d5d29",
+    "lean/s11/S11NonlinearPole/Moments.lean": "174a679828eb6968be6dfdd8b1b16c35057cd0ec6e7310476b34c6baabd4bbb1",
+    "lean/s11/S11NonlinearPole/Scalar.lean": "bc1ef65fe74413fd0d3975d7ee7569bae889f423a563873935200fdf68a8d99c"
+  },
+  "localValidation": {
+    "path": "_measurements/S11_lean_pole_validation.json",
+    "sha256": "99a96fe8d1dad6776625d6f351648a6425ae73ff06cf4535ea3de8e18b0a296b",
+    "status": "PASS",
+    "recordedCanonicalBuilds": 7,
+    "buildsFreshInThisReception": 0,
+    "buildProvenance": "Seven canonical builds from recorded run1, reused under complete guards in run2 and run3; no focused objects used as recorded evidence.",
+    "axiomAudits": 55,
+    "mathematicalRejections": 17,
+    "positiveControls": 21,
+    "compactNativeChecks": 19,
+    "translationControls": 4,
+    "boundary": "Read and hash-joined recorded evidence; no Lean or native diagnostic rerun and no independent review in this session."
+  },
+  "reviewStateAtReception": {
+    "path": "_measurements/S11_lean_pole_review_state.json",
+    "sha256": "acb6c9574558258d22c3ce04a0e63fd933cc8f41c39129496357b87d2f4a1576",
+    "snapshot": "/var/projects/toy_physics/_scratch/s11c/s11c-pole-handoff-20260917/review-state-at-reception.json",
+    "snapshotSha256": "9ee43d8e0ee3e78feef02f73421f3c356c65548b63eba52a6b333bbcc536c2ee",
+    "status": "RUNNING",
+    "externalReviewsStarted": true,
+    "completionClaimed": false,
+    "boundary": "Owning session has authorized sequential external reviews underway; final adjudication is not supplied by this handoff. Earlier blocked launch is historical."
+  },
+  "proofApplicationBoundary": {
+    "modal": "Supplied full invertible W A V gives typed projections; physical derivative, full kernel/annihilator, singularity and inverse expansion require actual application joins.",
+    "contour": "Finite Laurent circle moments and ordered double-pole products; actual frequency scaling, analytic remainder and physical inverse identification remain required.",
+    "response": "Retain every singular coefficient and forcing/observation derivatives; zero residue does not remove a higher-order singular channel.",
+    "notEstablished": [
+      "physical pole existence",
+      "general analytic Fredholm or semisimplicity theorem",
+      "general chain classification or Riesz calculus",
+      "homotopy/displacement theory",
+      "normalizability or all-channel closure",
+      "physical scattering or capture"
+    ]
+  },
+  "variableCoefficientClosure": {
+    "commit": "9865050f0f8999ede3501006374531152c4560b1",
+    "checkpoint": "_measurements/S11_lean_variable_closure_validation.json",
+    "sha256": "4c285ba2eeaafc8cc29669de70e5ebd2549703ee9591468bf75c39ecb106f59c",
+    "reviewVerdicts": {
+      "claude": "CLEAR",
+      "grok": "CLEAR"
+    },
+    "reviewLimits": {
+      "claude": "Independent source reading and hand algebra; no independent Lean/native/hash execution.",
+      "grok": "Independent source reading and hand algebra; no independent Lean/native/hash execution."
+    },
+    "acceptedRevisionJoins": {
+      "_measurements/S11_lean_variable_closure_validation.json": "4c285ba2eeaafc8cc29669de70e5ebd2549703ee9591468bf75c39ecb106f59c",
+      "lean/s11/S11VariableCoefficients.lean": "d273c0431b54a208ca9710f5aa2451ab64347d72cd4613094972457168a171cd",
+      "lean/s11/S11VariableCoefficients/Common.lean": "05a9fce419bbccce91f9e55f8e53f482e29cd0fc5f142db8aa21218bb5e7e559",
+      "lean/s11/S11VariableCoefficients/Controls.lean": "c7d206f9c68b9e03f3c26dc9fbc3ea1be970e45c71273820036b9e2e5f0a2829",
+      "lean/s11/S11VariableCoefficients/D3.lean": "1127e18376f1b3e373650fecb60ffb89de7c6e17270edc034f9ef78d8e1d85f9",
+      "lean/s11/S11VariableCoefficients/D4.lean": "8d8d5c6a6d3def7b326fa0ea22fc67db24e7c76443c2efbe8ea1b477a6a4853f",
+      "lean/s11/S11VariableCoefficients/Interface.lean": "e05d672b30508e0e68e28e36d0d0b81db84a170c5776f113695261b509d9d045"
+    },
+    "applicationCertificateEstablished": false
+  },
+  "applicationPlan": "_measurements/S11c_d_nonlinear_pole_repair_plan.md",
+  "applicationPlanSha256": "682b2c2ed98f3e634490a2094da2fa7f6e2a83a1083fac2b7fc9e497fa4f64d5",
+  "limitsPlan": "_measurements/S11c_d_quadrature_limits_plan.md",
+  "limitsPlanSha256": "dc07df48f3b54501112838cf1ceba0c75109b010c5aab7a059e1ec84bb972be2",
+  "activeProductionPreflightSha256": "7384a01bf936eda0e24786bb7b59b10c8f4ca80911055f47b65bec0f66071cbd",
+  "activeProductionPinnedSourcesUnchanged": 87,
+  "retainedBuilderSuffixSha256": "f01024512c9a028e7e524e5a95b5c455be42e125d10c36f94e20493109b013c2",
+  "productionDisposition": "No current input/helper/export changes or numerical rerun; validate current finite-action production on its original frozen inventory when its watcher wakes the session.",
+  "next": "Receive final NP fidelity disposition; use the adopted nonlinearPoleV2 authority and application map in future pole construction. Physical analytic and numerical obligations remain open."
+}

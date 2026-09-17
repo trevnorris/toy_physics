@@ -5,7 +5,18 @@ The user-approved correction is effective through
 schema `nonlinearPoleV2`. The main program brief, build directive and completion
 addendum now point to it and use its typed pole/output requirements. It governs
 both future engines. This is an approved contract repair with exact mathematical
-controls, not an independent review or completed Lean proof.
+controls. The subsequent Lean NP1–NP4 handoff proves a bounded conditional core;
+its independent fidelity reviews remain pending at reception. Neither is a
+physical pole certificate or a proof of the complete analytic contract.
+
+The [application plan](S11c_d_nonlinear_pole_repair_plan.md#applying-the-np1np4-handoff)
+maps that handoff to actual derivative/full-kernel and inverse-expansion joins,
+ordered Laurent/response coefficients, contour scaling and the remaining
+analytic and physical premises. The reception checkpoint joins the fixed
+31-file packet and seven preserved native inputs. Local evidence reports seven
+guarded canonical builds, 55 axiom audits, 17 mathematical rejections and 21
+positive controls, plus 19 compact native checks and four translation controls.
+These were read and hash-joined, not rerun here. No further repair is identified.
 
 The correction distinguishes the full physical Laurent principal part from its
 residue, conditional full-nullspace semisimple projections, and Riesz projections
@@ -48,7 +59,7 @@ profile-frequency pole search is still outstanding; no S11c-d Wolfram pole
 implementation or final export exists to repair/regenerate now.
 
 Next: accept the active wider-box triple result on completion, then select the
-remaining quadrature/tail work from its evidence. The proposed Lean tail/Abel
+remaining quadrature/tail work from its evidence. The reviewed Lean tail/Abel
 and stability theorem remains a separate analytic ingredient; actual complete
 operator and outgoing-inverse bounds still have to be established. The original
 two-ended scattering, pole solve, survival/bookkeeping/controls and final

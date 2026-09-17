@@ -217,3 +217,17 @@ suite; `--reuse-build` requires its recorded source/command/object guards.
 This increment does not rerun the old native diagnostics or S11c production,
 prove analytic Fredholm theory, or certify a physical pole/scattering solve.
 Its README and lakefile additions do not update the historical VC packet.
+
+## Full D4 bulk equivalence (complete)
+
+`S11D4Bulk` implements the bounded [D4C.1–D4C.4 contract](D4_BULK_COVERAGE.md):
+actual variation of the full four-coefficient D4 density, exhaustive bulk
+operator equivalence, the two-dimensional response and null spaces, and both
+boundary currents. It reuses the completed D4 odd proof. Recorded verification
+passes 67 standard-axiom audits, sixteen mathematical rejections and twenty
+positive executions, plus compact native correspondence. Claude and Grok both
+cleared the fixed packet; author closure validation confirms unchanged proofs,
+objects and protected historical inputs. See
+[D4_BULK_FIDELITY_REVIEW.md](D4_BULK_FIDELITY_REVIEW.md) and
+[D4_BULK_FIDELITY.md](D4_BULK_FIDELITY.md). This adds no D5 or S11c calculation
+scope and does not assert absence of boundary effects.

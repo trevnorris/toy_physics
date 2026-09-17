@@ -1,0 +1,133 @@
+D4C.1–D4C.4: full D4 constant-coefficient bulk contract
+LOCAL VERIFICATION: PASS; INDEPENDENT FIDELITY REVIEWS: CLEAR / CLEAR
+BOUNDED CONTRACT: COMPLETE (D4C.1–D4C.4 only)
+
+Run: _scratch/S11_lean_d4_bulk/verification_run2
+Started: 2026-09-17T16:23:21.463848+00:00
+Finished: 2026-09-17T16:43:45.548401+00:00
+One Lean worker: -j1 -M4096 -DwarningAsError=true; 600-second process limit.
+Allocator limit is not an OS RSS cap. Whole process-group timeout cleanup is
+unchanged from the previously tested runner. No timeout occurred in this run.
+
+33 fresh canonical builds: 26 unchanged imports, six new modules, audit root.
+67 selected standard-axiom audits. Allowed: propext, Classical.choice, Quot.sound;
+empty lists are allowed. No sorry, admit, custom axioms or trustCompiler.
+16 fresh paired mathematical rejections; 20 fresh positive executions.
+Every rejected statement: one contract_control diagnostic, one unsolved False,
+no warning, syntax/import/resource failure. No source-replacement claim.
+The 20 positives represent 18 distinct source statements: even and odd momentum
+normalization positives repeat for separate sign/factor mutation pairs.
+
+Native: 12 exact identities; 2 actual native EL sign/factor mutations detected;
+7 target checks (3 wrong-formula rejections and 4 positive witnesses).
+All four computed native V1 basis vectors match the target trace/orientation
+space by an invertible exact basis change; P_D=P and actual momenta agree.
+Original selected Q9/V5/EL helpers only; no production or S11c execution.
+Wolfram source anchors inspected; no Wolfram computation claimed.
+
+Live-source/object validation: PASS. 15 clean pinned packages; 12 direct Mathlib
+source/object pairs. Transitive Mathlib cache is the pinned baseline, not rebuilt.
+327 historical Lean source/evidence files, 3 native/generator inputs and 18
+completed NP/T1/VC objects match. All 26 rebuilt dependency hashes remained
+identical in this run; historical evidence was not rewritten.
+
+Run1 stopped before the recorded suite on a concrete census vector reduction.
+The Controls witnesses also needed explicit finite-vector/Fin.cases reductions.
+The bounded repairs changed proof code only: every definition and theorem
+statement matches the pre-repair snapshot. All six focused modules passed;
+run2 still compiled every import/module freshly. No failed instrument or focused
+positive was accepted as a mutation.
+
+Author validation: _measurements/S11_lean_d4_bulk_validation.json
+Formal evidence: _measurements/S11_lean_d4_bulk_contract_checks.json
+Native evidence: _measurements/S11_lean_d4_bulk_source_checks.json
+Preservation: _measurements/S11_lean_d4_bulk_preserved_inputs.json
+
+Formal report SHA256: f37b5dcdd4e87179e47863253aa426c29f1a11dc5d8e16ed5af4a4096a0206cf
+Native report SHA256: 5a36a9412251ea46f021341636bc0bc0cedc0bde6efb5c067a61a1b7e1c1123d
+Formal instrument SHA256: 4212ffc36eeeffb6636fed12d1be427b9b935b5fd4d5d30928e7f98309b54f23
+Native instrument SHA256: becfb64eadbca31efdacbde91aaff9ba59679b9db170b83ae75b0ce96b8df0d1
+
+Claude and Grok completed substantive source-only reviews with no required fix.
+Their reviews did not independently execute Lean, native code or hash checks.
+Author closure validation rechecked packet/snapshot/archive/transport, sources,
+dependency pins, instruments, logs, objects and preserved historical inputs.
+No shared-source drift; canonical proofs and evidence remain unchanged.
+Only status/evidence-clarification documentation changed after review.
+Review dispositions: lean/s11/D4_BULK_FIDELITY_REVIEW.md
+Closure record: _measurements/S11_lean_d4_bulk_closure_validation.json
+Fixed packet: 061d0d96f0c3b62439875877aa4a107b53b6870a206b308ee8a04056bd8e8a11
+No commit requested or performed for this closure.
+No variable coefficients, D5, general null-Lagrangian/interface theorem, new
+spectrum/scattering/pole result, S11c calculation or systematic CAS bridge.
+
+CHECK RECORDS:
+PASS     dependency_S10Pilot_Action
+PASS     dependency_S10Pilot_PlaneWave
+PASS     dependency_S10Pilot_Analytic
+PASS     dependency_S10Pilot_Variation
+PASS     dependency_S11D4Invariants_Quadratic
+PASS     dependency_S11D4Invariants_Rotation
+PASS     dependency_S11D4Invariants_Orientation
+PASS     dependency_S11D4Invariants_Forms
+PASS     dependency_S11D4Invariants_ConstraintPolynomial
+PASS     dependency_S11D4Invariants_ConstraintBlock0
+PASS     dependency_S11D4Invariants_ConstraintBlock1
+PASS     dependency_S11D4Invariants_ConstraintBlock2
+PASS     dependency_S11D4Invariants_ConstraintBlock3
+PASS     dependency_S11D4Invariants_Constraints
+PASS     dependency_S11D4Invariants_Classification
+PASS     dependency_S11D4Odd_Calculus
+PASS     dependency_S11D4Odd_Action
+PASS     dependency_S11D4Odd_Variation
+PASS     dependency_S11D4Odd_Boundary
+PASS     dependency_S10Controls_Action
+PASS     dependency_S10Controls_PlaneWave
+PASS     dependency_S10Controls_Analytic
+PASS     dependency_S10Controls_Variation
+PASS     dependency_S10Pilot_PhaseAverage
+PASS     dependency_S10Controls_PhaseAverage
+PASS     dependency_S11Homogeneous_Action
+PASS     build_Even
+PASS     build_Action
+PASS     build_Variation
+PASS     build_Bulk
+PASS     build_Census
+PASS     build_Controls
+PASS     axiom_audit
+PASS     response_dimension_positive
+REJECTED response_dimension_mutant
+PASS     null_dimension_positive
+REJECTED null_dimension_mutant
+PASS     null_sum_sign_positive
+REJECTED null_sum_sign_mutant
+PASS     omit_laplacian_positive
+REJECTED omit_laplacian_mutant
+PASS     retain_odd_null_positive
+REJECTED retain_odd_null_mutant
+PASS     even_density_not_zero_positive
+REJECTED even_density_not_zero_mutant
+PASS     even_momentum_sign_positive
+REJECTED even_momentum_sign_mutant
+PASS     even_momentum_factor_positive
+REJECTED even_momentum_factor_mutant
+PASS     odd_density_factor_positive
+REJECTED odd_density_factor_mutant
+PASS     odd_momentum_sign_positive
+REJECTED odd_momentum_sign_mutant
+PASS     odd_momentum_factor_positive
+REJECTED odd_momentum_factor_mutant
+PASS     even_current_factor_positive
+REJECTED even_current_factor_mutant
+PASS     odd_current_factor_positive
+REJECTED odd_current_factor_mutant
+PASS     transverse_coefficient_positive
+REJECTED transverse_coefficient_mutant
+PASS     longitudinal_coefficient_positive
+REJECTED longitudinal_coefficient_mutant
+PASS     bulk_equivalence_positive
+REJECTED bulk_equivalence_mutant
+PASS     mixed_null_positive
+PASS     zero_wavevector_positive
+PASS     negative_coefficients_positive
+PASS     nonzero_variation_positive

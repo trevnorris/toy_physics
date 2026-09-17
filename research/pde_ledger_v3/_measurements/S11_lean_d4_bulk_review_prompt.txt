@@ -1,0 +1,115 @@
+Independent non-author statement-fidelity review: bounded full D4 bulk contract
+D4C.1–D4C.4. Review only this declared increment; author is Codex.
+
+Read MANIFEST.json, lean/FORMALIZATION_POLICY.md and the D4_BULK_COVERAGE.md,
+D4_BULK_FIDELITY.md and D4_BULK_VERIFICATION.txt files in lean/s11. Read the six
+S11D4Bulk modules (Even, Action, Variation, Bulk, Census, Controls) and audit
+root. The packet contains the complete local import closure, including the
+previously reviewed D4 classification, odd action/current/variation and S10
+analytic machinery. No changes are made to those old proofs. Mathlib itself
+and compiled objects are not packaged: pins and direct source/object hashes
+are recorded. Historical-file hashes are preservation evidence, not a claim
+that every historical report is included in the packet. Reported build/hash
+checks are author evidence unless you independently verify them.
+
+Assess mathematical statement fidelity, hypotheses, quantifiers, conventions,
+actual action/operator identification, completeness and interpretation. Counts
+or compilation alone are not clearance. Distinguish required fidelity fixes
+from optional stronger results. The separate S11c calculation session is outside
+this increment; there is no request to reproduce its calculations.
+
+D4C.1: the supplied full SO(4)-invariant quadratic family is
+Q=a(tr G)^2+b tr(G^2)+c tr(G G^T)+beta P,
+P=F01 F23-F02 F13+F03 F12, F=G-G^T, with L=-Q/2.
+Coefficients are arbitrary constant real parameters, including zero and
+negative values, not varied fields. G_ij=partial_i u_j. Lean Point 4 has time
+index zero and spatial derivative row i.succ; four real field components.
+Native functions list (x1,x2,x3,x4,t), with x_(i+1) corresponding to that spatial
+row. There is zero time momentum, no inertia and no dimensional rescaling.
+Even.lagrangian ignores the fourth coefficient and the full action adds the
+unchanged reviewed odd action. Check density_identity and SO_unique identify
+the entire classified density family. Momentum is the actual derivative in a
+basis-jet direction; the full momenta split as even plus odd.
+
+Check the relative action is an actual integral of the density change on a
+smooth background with smooth compact variation, not a formal definition of
+its asserted derivative. Integrability of compact terms, the quadratic
+expansion, actual HasDerivAt, integration by parts and the fundamental lemma
+justify stationarity iff pointwise local EL vanishes. An infinite absolute
+background action is not silently assumed integrable. The only field being
+varied is u; constants a,b,c,beta are fixed.
+
+D4C.2: verify the full local operator is (a+b) grad(div u)+c Delta u,
+using actual commuting coordinate derivatives and the reviewed odd cancellation.
+BulkEquivalent quantifies over all smooth four-component fields and all
+spacetime points. Equality iff c and a+b agree uses the full EL identity for
+sufficiency and explicit smooth transverse/longitudinal waves for necessity.
+Those waves are discriminating witnesses, not the domain of the theorem.
+No generic-only sampling or positivity assumption is substituted for coverage.
+
+D4C.3: VariationallyNull means zero actual first variation for every smooth
+background and compact variation. Check the iff c=0,a+b=0 and full family
+(t,-t,0,beta), with both free real parameters. responseMap is the actual linear
+map R^4->R^2, v |-> (v2,v0+v1), surjective with image and kernel dimensions 2/2.
+The result classifies this already classified quadratic family, not every
+possible null Lagrangian. Check the explicit even current
+J_i=sum_j(u_i partial_j u_j-u_j partial_j u_i), div J=(div u)^2-tr(G^2),
+and the reused odd K_i=(1/2)sum_j u_j M_ij, div K=P. The null action is the
+corresponding weighted sum of these divergences. Nonzero density/momentum and
+actual smooth affine-current witnesses retain boundary effects. Check the
+compact homogeneous map rho=0,mu=c,B=a+b+c, including k=0. No new physical
+spectrum, stability or boundary-value theorem is claimed.
+
+D4C.4: assess the sixteen paired mathematical rejections and twenty positive
+executions (eighteen distinct positive sources; the two momentum positives
+repeat for separate sign/factor pairs). Each false statement reduces to a
+single unsolved False diagnostic in contract_control without warnings or
+instrument errors. These are concrete statement controls, not replacements in
+canonical proof sources. Controls address response/kernel dimensions, null
+sum sign, c omission, the unrestricted odd null direction, pointwise nonzero
+null density, even/odd momentum signs/factors, current normalization, transverse
+and longitudinal coefficients, and full bulk equivalence. Additional positives
+cover the general mixed null family, zero wavevector, negative coefficients,
+and existence of a nonzero actual first variation outside the null family.
+Do not treat a syntax/import/timeout failure as mathematical rejection.
+
+The native instrument executes only selected original AST function definitions
+from the SymPy Q9/coordinate/EL source, without importing the production module
+or running its driver. It derives an exact invertible basis identification:
+V1 rows relative to (trace^2,trace(G^2),trace(G G^T),P) are
+(0,1,0,0), (1/2,-1/2,0,0), (0,-1,1,0), (0,0,0,1).
+The determinant is -1/2 and general native weights are (a+b+c,2a,c,beta).
+Check all four basis vectors, full L=-Q/2, native P_D=P, momenta, zero time row,
+modal and homogeneous maps. Native EL helper uses +div(momentum), opposite
+Lean's first-variation convention -div(momentum); native V5 of Q is twice the
+Lean EL of L. Inspect actual sign/factor source mutations of the native helper.
+The report has twelve identities, two native source mutations and seven target
+checks: three wrong-formula rejections and four positive witnesses. Nonzero
+odd density/momentum tests detect normalization even though its EL is zero.
+Wolfram anchors are source inspection only. This tested translation is outside
+the Lean kernel, not a formal proof of the CAS implementation.
+
+Author evidence: recorded run2 freshly compiled twenty-six unchanged imports,
+six new modules and root, printed sixty-seven allowed standard-axiom lists,
+and passed all thirty-six control executions (69 check records, 33 objects).
+Before run2, finite-entry and Fin.cases simplification repairs changed only
+proof code; every definition and theorem statement matches the earlier
+snapshot. Run1 had stopped before formal checks, and focused builds are not
+recorded reuse evidence. The unchanged D4 generator passed --check; no new
+rotation certificate was generated. Whole-group timeout cleanup is unchanged
+from its tested version and no timeout occurred in run2.
+
+Author validation matches all current source/dependency/generator/instrument,
+input/output object and saved log hashes, fifteen clean package pins, twelve
+direct Mathlib source/object pairs, 327 protected historical Lean files and
+18 completed NP/T1/VC objects. All 26 freshly rebuilt old import object hashes
+remained identical in this run. The transitive Mathlib cache is the pinned
+baseline, not rebuilt here. State your own verification limits; do not claim
+to have run Lean, native code or hash checks unless you actually did.
+
+No edits or production runs. No variable coefficients, D5, general null
+Lagrangians, interface theory, spectrum/scattering/pole work or systematic CAS
+bridge. Return a substantive terminal report: CLEAR or NOT CLEAR; packet
+identifier (as supplied unless recomputed); checked assumptions/conventions;
+findings with theorem/file references; and verification limits. Partial,
+plan-only, errored or unsupported approvals are not clearance.

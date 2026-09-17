@@ -1,0 +1,12 @@
+[2m2026-09-17T17:34:59.766475Z[0m [33m WARN[0m plugin name collision resolved by scope precedence [3mplugin_name[0m[2m=[0mfrontend-design [3mwinner[0m[2m=[0m/home/trevnorris/.claude/plugins/marketplaces/claude-plugins-official/plugins/frontend-design [3mloser[0m[2m=[0m/home/trevnorris/.claude/plugins/cache/claude-plugins-official/frontend-design/1aa8f02ec832
+[2m2026-09-17T17:34:59.832960Z[0m [33m WARN[0m plugin name collision resolved by scope precedence [3mplugin_name[0m[2m=[0mfrontend-design [3mwinner[0m[2m=[0m/home/trevnorris/.claude/plugins/marketplaces/claude-plugins-official/plugins/frontend-design [3mloser[0m[2m=[0m/home/trevnorris/.claude/plugins/cache/claude-plugins-official/frontend-design/1aa8f02ec832
+[2m2026-09-17T17:34:59.954205Z[0m [33m WARN[0m hooks: skipped unrecognized event names (check for typos) [3mfile[0m[2m=[0m/home/trevnorris/.claude/settings.json [3mskipped[0m[2m=[0m["PermissionRequest"]
+[2m2026-09-17T17:34:59.954803Z[0m [33m WARN[0m hook loading from settings file: failed to parse hook file /home/trevnorris/.cursor/hooks.json: invalid matcher groups for event 'beforeSubmitPrompt': missing field `hooks`
+[2m2026-09-17T17:34:59.954857Z[0m [33m WARN[0m hook loading error [3merror[0m[2m=[0mParseFile { path: "/home/trevnorris/.cursor/hooks.json", detail: "invalid matcher groups for event 'beforeSubmitPrompt': missing field `hooks`" }
+[2m2026-09-17T17:34:59.979319Z[0m [33m WARN[0m new_session: git repo discovery failed unexpectedly [3merror[0m[2m=[0mrepository path '/tmp' is not owned by current user; class=Config (7); code=Owner (-36) [3mcwd[0m[2m=[0m/tmp/s11-lean-d4-bulk-fidelity-g088sfar/packet
+[2m2026-09-17T17:43:13.687740Z[0m [31mERROR[0m responses API error [3mstatus[0m[2m=[0m503 Service Unavailable [3merror_message[0m[2m=[0mGrok is temporarily unavailable. Please try again in a moment. (HTTP 503). [3mbody_preview[0m[2m=[0m<html>
+<head><title>503 Service Temporarily Unavailable</title></head>
+<body>
+<center><h1>503 Service Temporarily Unavailable</h1></center>
+<hr><center>nginx</center>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a3c9e9758b08af3a',t:'MTc4OTY2Njk5Mw=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getEl [3mmodel_id[0m[2m=[0mgrok-4.6

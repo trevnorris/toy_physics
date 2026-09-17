@@ -1,0 +1,105 @@
+{
+  "status": "PASS",
+  "checked_utc": "2026-09-17T16:23:20.253819+00:00",
+  "instrument_sha256": "becfb64eadbca31efdacbde91aaff9ba59679b9db170b83ae75b0ce96b8df0d1",
+  "source_sha256": {
+    "scripts/S11_stray_longitudinal_sympy_audit.py": "dc77f30b3e0b2b72aa13c7531a586e6ef50167949e645d99378de8527e06bfe2",
+    "mathematica/S11_stray_longitudinal_mathematica_audit.wl": "133bacbcbc2dd192ba64a82b94a1cde6b4359bfdf0748c59584b6a3e90683237"
+  },
+  "selected_definitions": [
+    "compute_q9",
+    "coordinate_substitution",
+    "derivative_placeholders",
+    "euler_lagrange_from_placeholders",
+    "matrix_from_rows",
+    "q9_row_to_poly",
+    "q9_v5",
+    "q9_vector",
+    "to_coordinate",
+    "u_functions"
+  ],
+  "identities": {
+    "full_native_span": true,
+    "actual_density_normalization": true,
+    "V5_all_basis_combination": true,
+    "actual_L_native_EL_equals_negative_Lean_EL": true,
+    "V5_every_actual_basis_element": true,
+    "native_EL_modal_sign": true,
+    "homogeneous_mu_c_B_a_b_c": true,
+    "actual_full_momentum": true,
+    "native_odd_normalization": true,
+    "zero_time_momentum": true,
+    "response_rank_two_nullity_two": true,
+    "even_current_divergence": true
+  },
+  "objects": {
+    "native_basis_to_trace_forms": "Matrix([[0, 1, 0, 0], [1/2, -1/2, 0, 0], [0, -1, 1, 0], [0, 0, 0, 1]])",
+    "general_native_basis_weights": "Matrix([[a + b + c], [2*a], [c], [beta]])",
+    "native_V5": [
+      "Matrix([[2*Derivative(u1(x1, x2, x3, x4, t), (x1, 2)) + 2*Derivative(u2(x1, x2, x3, x4, t), x2, x1) + 2*Derivative(u3(x1, x2, x3, x4, t), x3, x1) + 2*Derivative(u4(x1, x2, x3, x4, t), x4, x1)], [2*Derivative(u2(x1, x2, x3, x4, t), (x2, 2)) + 2*Derivative(u1(x1, x2, x3, x4, t), x1, x2) + 2*Derivative(u3(x1, x2, x3, x4, t), x3, x2) + 2*Derivative(u4(x1, x2, x3, x4, t), x4, x2)], [2*Derivative(u3(x1, x2, x3, x4, t), (x3, 2)) + 2*Derivative(u1(x1, x2, x3, x4, t), x1, x3) + 2*Derivative(u2(x1, x2, x3, x4, t), x2, x3) + 2*Derivative(u4(x1, x2, x3, x4, t), x4, x3)], [2*Derivative(u4(x1, x2, x3, x4, t), (x4, 2)) + 2*Derivative(u1(x1, x2, x3, x4, t), x1, x4) + 2*Derivative(u2(x1, x2, x3, x4, t), x2, x4) + 2*Derivative(u3(x1, x2, x3, x4, t), x3, x4)]])",
+      "Matrix([[Derivative(u2(x1, x2, x3, x4, t), x1, x2) - Derivative(u2(x1, x2, x3, x4, t), x2, x1) + Derivative(u3(x1, x2, x3, x4, t), x1, x3) - Derivative(u3(x1, x2, x3, x4, t), x3, x1) + Derivative(u4(x1, x2, x3, x4, t), x1, x4) - Derivative(u4(x1, x2, x3, x4, t), x4, x1)], [-Derivative(u1(x1, x2, x3, x4, t), x1, x2) + Derivative(u1(x1, x2, x3, x4, t), x2, x1) + Derivative(u3(x1, x2, x3, x4, t), x2, x3) - Derivative(u3(x1, x2, x3, x4, t), x3, x2) + Derivative(u4(x1, x2, x3, x4, t), x2, x4) - Derivative(u4(x1, x2, x3, x4, t), x4, x2)], [-Derivative(u1(x1, x2, x3, x4, t), x1, x3) + Derivative(u1(x1, x2, x3, x4, t), x3, x1) - Derivative(u2(x1, x2, x3, x4, t), x2, x3) + Derivative(u2(x1, x2, x3, x4, t), x3, x2) + Derivative(u4(x1, x2, x3, x4, t), x3, x4) - Derivative(u4(x1, x2, x3, x4, t), x4, x3)], [-Derivative(u1(x1, x2, x3, x4, t), x1, x4) + Derivative(u1(x1, x2, x3, x4, t), x4, x1) - Derivative(u2(x1, x2, x3, x4, t), x2, x4) + Derivative(u2(x1, x2, x3, x4, t), x4, x2) - Derivative(u3(x1, x2, x3, x4, t), x3, x4) + Derivative(u3(x1, x2, x3, x4, t), x4, x3)]])",
+      "Matrix([[2*Derivative(u1(x1, x2, x3, x4, t), (x2, 2)) + 2*Derivative(u1(x1, x2, x3, x4, t), (x3, 2)) + 2*Derivative(u1(x1, x2, x3, x4, t), (x4, 2)) - 2*Derivative(u2(x1, x2, x3, x4, t), x2, x1) - 2*Derivative(u3(x1, x2, x3, x4, t), x3, x1) - 2*Derivative(u4(x1, x2, x3, x4, t), x4, x1)], [2*Derivative(u2(x1, x2, x3, x4, t), (x1, 2)) + 2*Derivative(u2(x1, x2, x3, x4, t), (x3, 2)) + 2*Derivative(u2(x1, x2, x3, x4, t), (x4, 2)) - 2*Derivative(u1(x1, x2, x3, x4, t), x1, x2) - 2*Derivative(u3(x1, x2, x3, x4, t), x3, x2) - 2*Derivative(u4(x1, x2, x3, x4, t), x4, x2)], [2*Derivative(u3(x1, x2, x3, x4, t), (x1, 2)) + 2*Derivative(u3(x1, x2, x3, x4, t), (x2, 2)) + 2*Derivative(u3(x1, x2, x3, x4, t), (x4, 2)) - 2*Derivative(u1(x1, x2, x3, x4, t), x1, x3) - 2*Derivative(u2(x1, x2, x3, x4, t), x2, x3) - 2*Derivative(u4(x1, x2, x3, x4, t), x4, x3)], [2*Derivative(u4(x1, x2, x3, x4, t), (x1, 2)) + 2*Derivative(u4(x1, x2, x3, x4, t), (x2, 2)) + 2*Derivative(u4(x1, x2, x3, x4, t), (x3, 2)) - 2*Derivative(u1(x1, x2, x3, x4, t), x1, x4) - 2*Derivative(u2(x1, x2, x3, x4, t), x2, x4) - 2*Derivative(u3(x1, x2, x3, x4, t), x3, x4)]])",
+      "Matrix([[-Derivative(u2(x1, x2, x3, x4, t), x3, x4) + Derivative(u2(x1, x2, x3, x4, t), x4, x3) + Derivative(u3(x1, x2, x3, x4, t), x2, x4) - Derivative(u3(x1, x2, x3, x4, t), x4, x2) - Derivative(u4(x1, x2, x3, x4, t), x2, x3) + Derivative(u4(x1, x2, x3, x4, t), x3, x2)], [Derivative(u1(x1, x2, x3, x4, t), x3, x4) - Derivative(u1(x1, x2, x3, x4, t), x4, x3) - Derivative(u3(x1, x2, x3, x4, t), x1, x4) + Derivative(u3(x1, x2, x3, x4, t), x4, x1) + Derivative(u4(x1, x2, x3, x4, t), x1, x3) - Derivative(u4(x1, x2, x3, x4, t), x3, x1)], [-Derivative(u1(x1, x2, x3, x4, t), x2, x4) + Derivative(u1(x1, x2, x3, x4, t), x4, x2) + Derivative(u2(x1, x2, x3, x4, t), x1, x4) - Derivative(u2(x1, x2, x3, x4, t), x4, x1) - Derivative(u4(x1, x2, x3, x4, t), x1, x2) + Derivative(u4(x1, x2, x3, x4, t), x2, x1)], [Derivative(u1(x1, x2, x3, x4, t), x2, x3) - Derivative(u1(x1, x2, x3, x4, t), x3, x2) - Derivative(u2(x1, x2, x3, x4, t), x1, x3) + Derivative(u2(x1, x2, x3, x4, t), x3, x1) + Derivative(u3(x1, x2, x3, x4, t), x1, x2) - Derivative(u3(x1, x2, x3, x4, t), x2, x1)]])"
+    ],
+    "per_basis_matches": [
+      true,
+      true,
+      true,
+      true
+    ],
+    "Lean_EL": "Matrix([[c*(Derivative(u1(x1, x2, x3, x4, t), (x1, 2)) + Derivative(u1(x1, x2, x3, x4, t), (x2, 2)) + Derivative(u1(x1, x2, x3, x4, t), (x3, 2)) + Derivative(u1(x1, x2, x3, x4, t), (x4, 2))) + (a + b)*(Derivative(u1(x1, x2, x3, x4, t), (x1, 2)) + Derivative(u2(x1, x2, x3, x4, t), x1, x2) + Derivative(u3(x1, x2, x3, x4, t), x1, x3) + Derivative(u4(x1, x2, x3, x4, t), x1, x4))], [c*(Derivative(u2(x1, x2, x3, x4, t), (x1, 2)) + Derivative(u2(x1, x2, x3, x4, t), (x2, 2)) + Derivative(u2(x1, x2, x3, x4, t), (x3, 2)) + Derivative(u2(x1, x2, x3, x4, t), (x4, 2))) + (a + b)*(Derivative(u2(x1, x2, x3, x4, t), (x2, 2)) + Derivative(u1(x1, x2, x3, x4, t), x1, x2) + Derivative(u3(x1, x2, x3, x4, t), x2, x3) + Derivative(u4(x1, x2, x3, x4, t), x2, x4))], [c*(Derivative(u3(x1, x2, x3, x4, t), (x1, 2)) + Derivative(u3(x1, x2, x3, x4, t), (x2, 2)) + Derivative(u3(x1, x2, x3, x4, t), (x3, 2)) + Derivative(u3(x1, x2, x3, x4, t), (x4, 2))) + (a + b)*(Derivative(u3(x1, x2, x3, x4, t), (x3, 2)) + Derivative(u1(x1, x2, x3, x4, t), x1, x3) + Derivative(u2(x1, x2, x3, x4, t), x2, x3) + Derivative(u4(x1, x2, x3, x4, t), x3, x4))], [c*(Derivative(u4(x1, x2, x3, x4, t), (x1, 2)) + Derivative(u4(x1, x2, x3, x4, t), (x2, 2)) + Derivative(u4(x1, x2, x3, x4, t), (x3, 2)) + Derivative(u4(x1, x2, x3, x4, t), (x4, 2))) + (a + b)*(Derivative(u4(x1, x2, x3, x4, t), (x4, 2)) + Derivative(u1(x1, x2, x3, x4, t), x1, x4) + Derivative(u2(x1, x2, x3, x4, t), x2, x4) + Derivative(u3(x1, x2, x3, x4, t), x3, x4))]])",
+    "native_EL_of_L": "Matrix([[-a*Derivative(u1(x1, x2, x3, x4, t), (x1, 2)) - a*Derivative(u2(x1, x2, x3, x4, t), x1, x2) - a*Derivative(u3(x1, x2, x3, x4, t), x1, x3) - a*Derivative(u4(x1, x2, x3, x4, t), x1, x4) - b*Derivative(u1(x1, x2, x3, x4, t), (x1, 2)) - b*Derivative(u2(x1, x2, x3, x4, t), x2, x1) - b*Derivative(u3(x1, x2, x3, x4, t), x3, x1) - b*Derivative(u4(x1, x2, x3, x4, t), x4, x1) + beta*Derivative(u2(x1, x2, x3, x4, t), x3, x4)/2 - beta*Derivative(u2(x1, x2, x3, x4, t), x4, x3)/2 - beta*Derivative(u3(x1, x2, x3, x4, t), x2, x4)/2 + beta*Derivative(u3(x1, x2, x3, x4, t), x4, x2)/2 + beta*Derivative(u4(x1, x2, x3, x4, t), x2, x3)/2 - beta*Derivative(u4(x1, x2, x3, x4, t), x3, x2)/2 - c*Derivative(u1(x1, x2, x3, x4, t), (x1, 2)) - c*Derivative(u1(x1, x2, x3, x4, t), (x2, 2)) - c*Derivative(u1(x1, x2, x3, x4, t), (x3, 2)) - c*Derivative(u1(x1, x2, x3, x4, t), (x4, 2))], [-a*Derivative(u2(x1, x2, x3, x4, t), (x2, 2)) - a*Derivative(u1(x1, x2, x3, x4, t), x2, x1) - a*Derivative(u3(x1, x2, x3, x4, t), x2, x3) - a*Derivative(u4(x1, x2, x3, x4, t), x2, x4) - b*Derivative(u2(x1, x2, x3, x4, t), (x2, 2)) - b*Derivative(u1(x1, x2, x3, x4, t), x1, x2) - b*Derivative(u3(x1, x2, x3, x4, t), x3, x2) - b*Derivative(u4(x1, x2, x3, x4, t), x4, x2) - beta*Derivative(u1(x1, x2, x3, x4, t), x3, x4)/2 + beta*Derivative(u1(x1, x2, x3, x4, t), x4, x3)/2 + beta*Derivative(u3(x1, x2, x3, x4, t), x1, x4)/2 - beta*Derivative(u3(x1, x2, x3, x4, t), x4, x1)/2 - beta*Derivative(u4(x1, x2, x3, x4, t), x1, x3)/2 + beta*Derivative(u4(x1, x2, x3, x4, t), x3, x1)/2 - c*Derivative(u2(x1, x2, x3, x4, t), (x1, 2)) - c*Derivative(u2(x1, x2, x3, x4, t), (x2, 2)) - c*Derivative(u2(x1, x2, x3, x4, t), (x3, 2)) - c*Derivative(u2(x1, x2, x3, x4, t), (x4, 2))], [-a*Derivative(u3(x1, x2, x3, x4, t), (x3, 2)) - a*Derivative(u1(x1, x2, x3, x4, t), x3, x1) - a*Derivative(u2(x1, x2, x3, x4, t), x3, x2) - a*Derivative(u4(x1, x2, x3, x4, t), x3, x4) - b*Derivative(u3(x1, x2, x3, x4, t), (x3, 2)) - b*Derivative(u1(x1, x2, x3, x4, t), x1, x3) - b*Derivative(u2(x1, x2, x3, x4, t), x2, x3) - b*Derivative(u4(x1, x2, x3, x4, t), x4, x3) + beta*Derivative(u1(x1, x2, x3, x4, t), x2, x4)/2 - beta*Derivative(u1(x1, x2, x3, x4, t), x4, x2)/2 - beta*Derivative(u2(x1, x2, x3, x4, t), x1, x4)/2 + beta*Derivative(u2(x1, x2, x3, x4, t), x4, x1)/2 + beta*Derivative(u4(x1, x2, x3, x4, t), x1, x2)/2 - beta*Derivative(u4(x1, x2, x3, x4, t), x2, x1)/2 - c*Derivative(u3(x1, x2, x3, x4, t), (x1, 2)) - c*Derivative(u3(x1, x2, x3, x4, t), (x2, 2)) - c*Derivative(u3(x1, x2, x3, x4, t), (x3, 2)) - c*Derivative(u3(x1, x2, x3, x4, t), (x4, 2))], [-a*Derivative(u4(x1, x2, x3, x4, t), (x4, 2)) - a*Derivative(u1(x1, x2, x3, x4, t), x4, x1) - a*Derivative(u2(x1, x2, x3, x4, t), x4, x2) - a*Derivative(u3(x1, x2, x3, x4, t), x4, x3) - b*Derivative(u4(x1, x2, x3, x4, t), (x4, 2)) - b*Derivative(u1(x1, x2, x3, x4, t), x1, x4) - b*Derivative(u2(x1, x2, x3, x4, t), x2, x4) - b*Derivative(u3(x1, x2, x3, x4, t), x3, x4) - beta*Derivative(u1(x1, x2, x3, x4, t), x2, x3)/2 + beta*Derivative(u1(x1, x2, x3, x4, t), x3, x2)/2 + beta*Derivative(u2(x1, x2, x3, x4, t), x1, x3)/2 - beta*Derivative(u2(x1, x2, x3, x4, t), x3, x1)/2 - beta*Derivative(u3(x1, x2, x3, x4, t), x1, x2)/2 + beta*Derivative(u3(x1, x2, x3, x4, t), x2, x1)/2 - c*Derivative(u4(x1, x2, x3, x4, t), (x1, 2)) - c*Derivative(u4(x1, x2, x3, x4, t), (x2, 2)) - c*Derivative(u4(x1, x2, x3, x4, t), (x3, 2)) - c*Derivative(u4(x1, x2, x3, x4, t), (x4, 2))]])",
+    "modal_matrix": "Matrix([[-c*(k1**2 + k2**2 + k3**2 + k4**2) - k1**2*(a + b), -k1*k2*(a + b), -k1*k3*(a + b), -k1*k4*(a + b)], [-k1*k2*(a + b), -c*(k1**2 + k2**2 + k3**2 + k4**2) - k2**2*(a + b), -k2*k3*(a + b), -k2*k4*(a + b)], [-k1*k3*(a + b), -k2*k3*(a + b), -c*(k1**2 + k2**2 + k3**2 + k4**2) - k3**2*(a + b), -k3*k4*(a + b)], [-k1*k4*(a + b), -k2*k4*(a + b), -k3*k4*(a + b), -c*(k1**2 + k2**2 + k3**2 + k4**2) - k4**2*(a + b)]])",
+    "normalization": "Q=a trace^2+b trace(GG)+c trace(GG^T)+beta P, L=-Q/2; native EL=-Lean EL.",
+    "actual_momenta": "Matrix([[-G_1_1*a - G_1_1*b - G_1_1*c - G_2_2*a - G_3_3*a - G_4_4*a, -G_1_2*c - G_2_1*b - G_3_4*beta/2 + G_4_3*beta/2, -G_1_3*c + G_2_4*beta/2 - G_3_1*b - G_4_2*beta/2, -G_1_4*c - G_2_3*beta/2 + G_3_2*beta/2 - G_4_1*b], [-G_1_2*b - G_2_1*c + G_3_4*beta/2 - G_4_3*beta/2, -G_1_1*a - G_2_2*a - G_2_2*b - G_2_2*c - G_3_3*a - G_4_4*a, -G_1_4*beta/2 - G_2_3*c - G_3_2*b + G_4_1*beta/2, G_1_3*beta/2 - G_2_4*c - G_3_1*beta/2 - G_4_2*b], [-G_1_3*b - G_2_4*beta/2 - G_3_1*c + G_4_2*beta/2, G_1_4*beta/2 - G_2_3*b - G_3_2*c - G_4_1*beta/2, -G_1_1*a - G_2_2*a - G_3_3*a - G_3_3*b - G_3_3*c - G_4_4*a, -G_1_2*beta/2 + G_2_1*beta/2 - G_3_4*c - G_4_3*b], [-G_1_4*b + G_2_3*beta/2 - G_3_2*beta/2 - G_4_1*c, -G_1_3*beta/2 - G_2_4*b + G_3_1*beta/2 - G_4_2*c, G_1_2*beta/2 - G_2_1*beta/2 - G_3_4*b - G_4_3*c, -G_1_1*a - G_2_2*a - G_3_3*a - G_4_4*a - G_4_4*b - G_4_4*c]])",
+    "response_map": "Matrix([[0, 0, 1, 0], [1, 1, 0, 0]])",
+    "nullspace": [
+      "Matrix([[-1], [1], [0], [0]])",
+      "Matrix([[0], [0], [0], [1]])"
+    ]
+  },
+  "native_mutations": {
+    "native_EL_sign": {
+      "full_native_span": true,
+      "actual_density_normalization": true,
+      "V5_all_basis_combination": false,
+      "actual_L_native_EL_equals_negative_Lean_EL": false,
+      "V5_every_actual_basis_element": false,
+      "native_EL_modal_sign": false,
+      "homogeneous_mu_c_B_a_b_c": true,
+      "actual_full_momentum": true,
+      "native_odd_normalization": true,
+      "zero_time_momentum": true,
+      "response_rank_two_nullity_two": true,
+      "even_current_divergence": true
+    },
+    "native_EL_factor": {
+      "full_native_span": true,
+      "actual_density_normalization": true,
+      "V5_all_basis_combination": false,
+      "actual_L_native_EL_equals_negative_Lean_EL": false,
+      "V5_every_actual_basis_element": false,
+      "native_EL_modal_sign": false,
+      "homogeneous_mu_c_B_a_b_c": true,
+      "actual_full_momentum": true,
+      "native_odd_normalization": true,
+      "zero_time_momentum": true,
+      "response_rank_two_nullity_two": true,
+      "even_current_divergence": true
+    }
+  },
+  "target_controls": {
+    "wrong_B_map_rejected": true,
+    "null_even_positive": true,
+    "nonnull_even_positive": true,
+    "odd_density_nonzero_positive": true,
+    "odd_momentum_nonzero_positive": true,
+    "odd_momentum_factor_rejected": true,
+    "odd_momentum_sign_rejected": true
+  },
+  "wolfram_source_only_anchors": [
+    "eulerOperatorForGradientDensity[polynomial_, gradientVariables_, frame_] := Module[",
+    "Transpose[actionRows]"
+  ],
+  "limits": "Selected original D4 Q9/V5/EL helper execution; no production drivers, exports, S11c or Wolfram execution. Exact symbolic translation checks, not a kernel-certified CAS bridge."
+}

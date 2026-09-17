@@ -1,0 +1,62 @@
+{
+  "status": "COMPLETE",
+  "scope": "Bounded S11 D4C.1\u2013D4C.4 independent fidelity review",
+  "packet_revision": "S11 full D4 bulk D4C.1\u2013D4C.4 fidelity contract v1",
+  "packet_sha256": "061d0d96f0c3b62439875877aa4a107b53b6870a206b308ee8a04056bd8e8a11",
+  "file_count": 52,
+  "archive": "research/pde_ledger_v3/_measurements/S11_lean_d4_bulk_review_packet_v1.tar.gz",
+  "archive_sha256": "35bd9b379c9e93ba3b43fa5c6c6484f0931066b1462308133977fd1efe759eae",
+  "archive_bytes": 190513,
+  "packet_directory": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_d4_bulk/review_packet_v1",
+  "manifest": "research/pde_ledger_v3/_measurements/S11_lean_d4_bulk_review_packet.json",
+  "manifest_sha256": "f934d35afd40fbb6f6eec22c0aa24554e31cac23dfda339f9c4cd758bb62d619",
+  "destinations": [
+    "Claude",
+    "Grok"
+  ],
+  "external_reviews_started": true,
+  "local_verification": "PASS: 33 fresh builds in recorded run2 (26 unchanged imports plus six new modules/root); 67 standard-axiom audits; 16 fresh mathematical rejections and 20 positive executions; 12 native identities, two native EL mutations and seven target checks; live sources, pins, input/output objects, logs and protected historical files/objects match",
+  "prepared_utc": "2026-09-17T16:50:14.026548+00:00",
+  "snapshot_validation": "PASS: live files, snapshot and archive member hashes agree",
+  "review_verdicts": {
+    "claude": "CLEAR",
+    "grok": "CLEAR"
+  },
+  "completion_claimed": true,
+  "committed": false,
+  "authorization_context": "The user explicitly approved transfer of this exact fixed 52-file private-repository packet to Claude and Grok by answering the immediately preceding exact-packet request.",
+  "pinned_export_constraint": "No S11c sources or exports are included or modified. Native inputs are the existing S11 Q9 SymPy/Wolfram sources and unchanged D4 certificate generator; only selected helpers were executed, with no production run. The historical preservation manifest contains hashes, not copies of all historical files.",
+  "authorization_quote": "Yes you can.",
+  "authorized_utc": "2026-09-17T17:29:06.461622+00:00",
+  "authorization_exchange_record": "research/pde_ledger_v3/_scratch/S11_lean_d4_bulk/review_run1/transfer_authorization_context.json",
+  "review_started_utc": "2026-09-17T17:30:48.084991+00:00",
+  "transport_directory": "/tmp/s11-lean-d4-bulk-fidelity-g088sfar/packet",
+  "launch_preflight": {
+    "status": "PASS",
+    "packet_sha256": "061d0d96f0c3b62439875877aa4a107b53b6870a206b308ee8a04056bd8e8a11",
+    "file_count": 52,
+    "compiled_objects": 33,
+    "preserved_historical_objects": 18,
+    "read_only_native_inputs": 3,
+    "historical_source_records": 327,
+    "checked": "Archive/snapshot/live files; sources/instruments/reports/logs/input/output objects; package pins and direct Mathlib bytes; historical object preservation"
+  },
+  "supervisor_pid": 2001417,
+  "review_supervisor_sha256": "2f01b24173fd44d28e860fd11ad27064d248103f774e25e0d328ca44dbcebbe5",
+  "review_supervisor_finished_utc": "2026-09-17T17:44:41.290792+00:00",
+  "live_files_changed_since_packet": [],
+  "completed_utc": "2026-09-17T17:52:57.795985+00:00",
+  "required_next_input": null,
+  "fidelity_review": "research/pde_ledger_v3/lean/s11/D4_BULK_FIDELITY_REVIEW.md",
+  "closure_validation": "research/pde_ledger_v3/_measurements/S11_lean_d4_bulk_closure_validation.json",
+  "post_review_document_changes": [
+    "lean/s11/D4_BULK_COVERAGE.md",
+    "lean/s11/D4_BULK_FIDELITY.md",
+    "lean/s11/D4_BULK_VERIFICATION.txt",
+    "lean/s11/README.md"
+  ],
+  "commit_authorized": true,
+  "commit_authorized_utc": "2026-09-17T17:55:37.862205+00:00",
+  "commit_authorization": "research/pde_ledger_v3/_measurements/S11_lean_d4_bulk_commit_authorization.json",
+  "commit_record_phase": "precommit; resulting commit recorded by git and a local receipt"
+}

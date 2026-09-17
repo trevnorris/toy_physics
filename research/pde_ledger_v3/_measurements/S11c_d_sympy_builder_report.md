@@ -9,12 +9,20 @@ and the retained contract suffix below stay byte-identical; its pole shorthand
 is interpreted under this correction. No physical pole result is yet computed.
 
 The Lean [tail/Abel and stability handoff](../lean/s11/ANALYTIC_ERROR_HANDOFF.md)
-has passing local verification; its independent fidelity reviews are pending.
+completed its bounded proof/fidelity contract at `ad365b5f` with both reviews clear.
 The [limits plan](S11c_d_quadrature_limits_plan.md) now maps its hypotheses to
 the actual outgoing domain, uniform folded-amplitude estimates, full operator
 error budget and inverse/channel bounds. No numerical epsilon, inverse bound
 or scattering convergence certificate follows yet. The reception checkpoint
 preserves the fixed review-packet hashes; no Lean work or production source changed.
+
+The [variable-coefficient/interface handoff](../lean/s11/VARIABLE_COEFFICIENT_HANDOFF.md)
+passes local verification with its separate fidelity reviews pending. The limits
+plan records the derivative-row/native-field-row map, weighted divergence and
+boundary-current obligations, and the restricted interface hypotheses. Source
+inspection confirms profile-dependent density differentiation in the native
+construction path; it is not a full closed-operator fidelity certificate. No new
+upstream defect or numerical rerun is established by this handoff.
 
 RIGHT current/adjoint normalization is validated and published for the supplied
 LAB_HELD / RHO4_CONSTANT case: all 18 root/lift candidates, 22 basis directions,

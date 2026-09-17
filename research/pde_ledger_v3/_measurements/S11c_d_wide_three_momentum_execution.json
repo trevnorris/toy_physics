@@ -115,9 +115,27 @@
   "analyticErrorHandoff": {
     "checkpoint": "_measurements/S11c_d_analytic_error_handoff_checkpoint.json",
     "checkpointSha256": "9c0176030bcaa0c954b6c53821ed7a704acfa6c915dfe3eaf0ade310a368f0c1",
+    "status": "BOUNDED_PROOF_FIDELITY_COMPLETE_APPLICATION_OPEN",
+    "applicationPlan": "_measurements/S11c_d_quadrature_limits_plan.md",
+    "applicationPlanSha256": "13e64a961130535389378d00f31405e926b94d73ebe1cefb094d529087d12830",
+    "disposition": "T1-T4 closure is accepted at ad365b5f; the earlier reception checkpoint remains historical. Apply only after establishing actual complete-operator and outgoing-domain premises; no numerical epsilon or kappa is certified.",
+    "acceptedClosure": {
+      "commit": "ad365b5f01e0954bc8adae10324a20a969181a80",
+      "checkpoint": "_measurements/S11_lean_analytic_error_closure_validation.json",
+      "sha256": "53112caf9035131d06d119a764cadc6daaf35be17b345ca68b9b7579f9c1af9e",
+      "reviewVerdicts": {
+        "claude": "CLEAR",
+        "grok": "CLEAR"
+      },
+      "applicationCertificateEstablished": false
+    }
+  },
+  "variableCoefficientHandoff": {
+    "checkpoint": "_measurements/S11c_d_variable_coefficient_handoff_checkpoint.json",
+    "checkpointSha256": "e05f70b7af5a689df6581a6310ec6dc2d72ec826b84632868051625092057f12",
     "status": "RECEIVED_LOCAL_VERIFICATION_PASS_FIDELITY_REVIEW_PENDING",
     "applicationPlan": "_measurements/S11c_d_quadrature_limits_plan.md",
-    "applicationPlanSha256": "a8f15c219854feaa80a682155dff57fafe14444b0d643ff63bd72223970e8b3f",
-    "disposition": "Receive final fidelity disposition and exact accepted source revision, then apply the conditional results only with established full-operator hypotheses. Continue original quadrature completion validation unchanged."
+    "applicationPlanSha256": "13e64a961130535389378d00f31405e926b94d73ebe1cefb094d529087d12830",
+    "disposition": "Receive final VC fidelity disposition and accepted revision; apply actual-action, index, weighted-current and complete boundary-pairing checks before relying on VC identities in S11c matching."
   }
 }

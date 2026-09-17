@@ -40,11 +40,13 @@ reduced source or the test-field substitutions.
 
 The calculation session has received
 [`ANALYTIC_ERROR_HANDOFF.md`](../lean/s11/ANALYTIC_ERROR_HANDOFF.md).
-Its local verification passes; independent statement-fidelity reviews are
-pending in the other session. Receipt is not final acceptance of that packet,
-a new Lean proof task, or a numerical scattering certificate. Preserve the
-reviewed revision and its eventual disposition before claiming final reliance.
-The reception checkpoint records the current handoff and fixed-packet hashes.
+The bounded T1–T4 work subsequently completed at `ad365b5f`: its recorded
+Claude and Grok fidelity reviews are clear and the closure record has no
+required finding remaining. The original reception checkpoint preserves its
+earlier review-pending state; the variable-coefficient reception checkpoint
+records the accepted closure revision and unchanged T1 proof sources. This
+establishes the bounded conditional result, not a numerical scattering
+certificate or a reason to enlarge the Lean task.
 
 T1 supplies the actual complex integral estimate
 `|full pairing - cutoff/Abel pairing| <= B (tailMass + a firstMoment)` for a
@@ -101,6 +103,67 @@ does not establish numerical epsilon or kappa, permit omitting unresolved
 convergence checks, or solve the variable-coefficient/interface and nonlinear
 pole questions. The latter is governed separately by the approved
 `S11c_d_NONLINEAR_POLE_CONTRACT.md` addendum.
+
+## Applying the variable-coefficient/interface handoff
+
+[`VARIABLE_COEFFICIENT_HANDOFF.md`](../lean/s11/VARIABLE_COEFFICIENT_HANDOFF.md)
+supplies VC1–VC4 for the specified local D3 family, D4 odd density and a scalar
+normal-slice interface identity. Local verification passes; its separate
+fidelity reviews remain pending. This is no finding of a missing term in the
+complete closed S11c operator and establishes no general transmission problem.
+The new reception checkpoint pins this packet without changing it or launching
+more Lean work. Apply its hypotheses to step 5's realization and subsequent
+boundary matching as follows.
+
+1. **Match the actual action and indices.** Lean uses derivative rows,
+   `G_ij = partial_i u_j`; native S11c-b stores `grad_u[field][direction]`, so
+   the map is `G_ij = grad_u[j][i]`. Preserve the transposed contraction of
+   the b-gradient in the D3 identity. Match the density sign, coefficient
+   factors, wave-amplitude normalization, retained grades and `1/L_W` coordinate
+   scaling before applying a component formula. Native `operator_from_density`
+   uses `epsilon * diff(density, grad_u[a][i])`; it must not be equated to the
+   negative-action Lean momentum merely by its array shape.
+2. **Keep profile dependence during variation.** Source inspection finds
+   `construct_energy` forms coefficient-times-invariant densities before
+   `build_operator` calls `operator_from_density`. That function takes density
+   derivatives and then `total_derivative`, which differentiates the live
+   W/MU background and retained profile jets. The inspected path therefore
+   includes the product-rule mechanism. S11c-d's `ReducedActionAssembly`
+   collects already-derived probe actions and checks their reconstruction;
+   it does not manufacture an operator by putting profiles into an old
+   constant-coefficient EL formula. These are source observations, not a new
+   all-coefficient fidelity proof or a validation of every retained term.
+3. **Retain weighted divergence corrections and currents.** A selected
+   constant-coefficient representative is not automatically interchangeable
+   with its profile-weighted divergence equivalents. For any such replacement,
+   derive the coefficient-gradient correction and the boundary current from
+   the original density; preserve both. Native uniform basis selection uses
+   Euler signatures before coefficient binding, so its representative choices
+   must be matched explicitly when applying the VC identities. No error in
+   those choices is inferred here. A D4 odd identity requires an actual D4
+   action/normalization identification; five reduced field slots do not imply
+   four spatial derivative directions. The existing Q9 dependency trace found
+   no consumed Q9-family input in S11c-d; this handoff does not alter that trace.
+4. **Derive the complete boundary pairing.** The VC scalar theorem keeps
+   `(pi_minus - pi_plus) dot h` for the normal from minus to plus. Match action
+   sign and distinguish momentum flux from stiffness traction and from the
+   S11b-derived energy current used in scattering. For a multidimensional
+   application supply tangential integration, side regularity, common test
+   traces, admissible variations and any surface action/source. Do not infer
+   field continuity or the existence of arbitrary solution traces. Our smooth
+   profile is not replaced by a discontinuous thin interface; artificial
+   domain-decomposition cuts introduce no new physical surface action. The
+   reduced local orders 0–3 and full nonlocal closed response need their actual
+   Green/boundary pairing, beyond the first-gradient local VC families.
+
+Before using these identities as a S11c operator/matching certificate, test the
+actual mapped action and retained order against the profile-aware derivation,
+including an omitted-gradient, derivative-index and reversed-interface-sign
+control. Reuse the accepted operands; generic local identities alone do not
+identify the nonlocal closure or its boundary data. A demonstrated upstream
+disagreement would require the user's repair checkpoint; no new discrepancy or
+production rerun is established by this reception. Preserve the running job's
+sources and validate it on its original inventory when the watcher completes.
 
 Preserve the full symbolic input and the builder report contract suffix. Keep
 durable runs in repository _scratch/s11c/, publish validated .out files using

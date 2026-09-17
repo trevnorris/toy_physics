@@ -1,0 +1,419 @@
+{
+  "status": "RECEIVED_LOCAL_VERIFICATION_PASS_FIDELITY_REVIEW_PENDING",
+  "receivedUtc": "2026-09-17T02:32:31.781528+00:00",
+  "handoff": "lean/s11/VARIABLE_COEFFICIENT_HANDOFF.md",
+  "handoffSha256": "0868681645503953d58d67c0123caf5a0cac9fab8a579c875e968c422459791e",
+  "reviewPacket": "_measurements/S11_lean_variable_review_packet.json",
+  "reviewPacketSha256": "1abf833f0806dcc518836ded7775a7808d73846f84d12b0dbc4462fab8b359bf",
+  "reviewPacketAggregateSha256": "8152df86a31ecaabe89713a3fb178c7c469885f905b9e486207bbc695c02cf45",
+  "reviewPacketSourceJoins": {
+    "_measurements/S11_lean_d3_bulk_source_checks.json": {
+      "expected": "dd61056ce58152e647b7d8c828bf195a445aa7924e5b9eb75ec478fb6a51a14c",
+      "actual": "dd61056ce58152e647b7d8c828bf195a445aa7924e5b9eb75ec478fb6a51a14c"
+    },
+    "_measurements/S11_lean_d3_generate.py": {
+      "expected": "2be172074609c7c768339c3847773c887e6935623701fc3a9eb20528aa7b3b45",
+      "actual": "2be172074609c7c768339c3847773c887e6935623701fc3a9eb20528aa7b3b45"
+    },
+    "_measurements/S11_lean_d4_generate.py": {
+      "expected": "b71b4813a3d8d00a786069f2416527c8e7f631b9e104c3094e3e7377a5c8d28d",
+      "actual": "b71b4813a3d8d00a786069f2416527c8e7f631b9e104c3094e3e7377a5c8d28d"
+    },
+    "_measurements/S11_lean_d4_odd_source_check.py": {
+      "expected": "9da5336022d53f7f7f132ce613bb207c54bdd80dd3197cb702ee6c3842d97e04",
+      "actual": "9da5336022d53f7f7f132ce613bb207c54bdd80dd3197cb702ee6c3842d97e04"
+    },
+    "_measurements/S11_lean_d4_odd_source_checks.json": {
+      "expected": "9c7e7669f635ca920a8d5dd5df4bc37abb5ecca2d22af0e5669e9dec25f2bcc5",
+      "actual": "9c7e7669f635ca920a8d5dd5df4bc37abb5ecca2d22af0e5669e9dec25f2bcc5"
+    },
+    "_measurements/S11_lean_variable_contract_check.py": {
+      "expected": "a8290ec5c2a1ea81a6f53ee675574cdb462c52bbea0694fab903cb9def4893e6",
+      "actual": "a8290ec5c2a1ea81a6f53ee675574cdb462c52bbea0694fab903cb9def4893e6"
+    },
+    "_measurements/S11_lean_variable_contract_checks.json": {
+      "expected": "16694743e610187addfca0cbddab42ed4aa2f97c4528eaf90a05708afe332774",
+      "actual": "16694743e610187addfca0cbddab42ed4aa2f97c4528eaf90a05708afe332774"
+    },
+    "_measurements/S11_lean_variable_review_prompt.txt": {
+      "expected": "a2ca04b3bade32c7e8f6756077b5531b1e7ba8f7d920160097e2c6490c3e4757",
+      "actual": "a2ca04b3bade32c7e8f6756077b5531b1e7ba8f7d920160097e2c6490c3e4757"
+    },
+    "_measurements/S11_lean_variable_source_check.py": {
+      "expected": "6d9f357e0652d0118004996e3348731cf5cfe22cad527090fae703991815be16",
+      "actual": "6d9f357e0652d0118004996e3348731cf5cfe22cad527090fae703991815be16"
+    },
+    "_measurements/S11_lean_variable_source_checks.json": {
+      "expected": "80b47b6160386f7b6e1fe5a3b2b1596c2fbc3e706ba0380063d99e24b469f24c",
+      "actual": "80b47b6160386f7b6e1fe5a3b2b1596c2fbc3e706ba0380063d99e24b469f24c"
+    },
+    "_measurements/S11_lean_variable_validation.json": {
+      "expected": "02e692db134fb66a461835499491ebc722bfeb0bbe577b8207a2b0d19bc4dea6",
+      "actual": "02e692db134fb66a461835499491ebc722bfeb0bbe577b8207a2b0d19bc4dea6"
+    },
+    "lean/AGENTS.md": {
+      "expected": "f4b3c46e1931f4979f801914f941b6f023a44e158d91b98b95f91511f277a903",
+      "actual": "f4b3c46e1931f4979f801914f941b6f023a44e158d91b98b95f91511f277a903"
+    },
+    "lean/FORMALIZATION_POLICY.md": {
+      "expected": "065a3f04bac720e5bfcb8dcb1aaf2a87a8df00a6c16682c417f009cd69c9e58c",
+      "actual": "065a3f04bac720e5bfcb8dcb1aaf2a87a8df00a6c16682c417f009cd69c9e58c"
+    },
+    "lean/lake-manifest.json": {
+      "expected": "91fd5318cdc35e4044d6e059c6ef73d94b955d27adf8a5860b07ec92add9377e",
+      "actual": "91fd5318cdc35e4044d6e059c6ef73d94b955d27adf8a5860b07ec92add9377e"
+    },
+    "lean/lakefile.toml": {
+      "expected": "818adeeb541fcbeb3b9925f040615915b61eb64d4ad8d8362a789a6834a0f9f9",
+      "actual": "818adeeb541fcbeb3b9925f040615915b61eb64d4ad8d8362a789a6834a0f9f9"
+    },
+    "lean/lean-toolchain": {
+      "expected": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+      "actual": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b"
+    },
+    "lean/s10/S10Controls/Action.lean": {
+      "expected": "e1764df0b26a46d6822ec4a72cca42e5d4f9df06686a1b649c86fd13af9f6566",
+      "actual": "e1764df0b26a46d6822ec4a72cca42e5d4f9df06686a1b649c86fd13af9f6566"
+    },
+    "lean/s10/S10Controls/Analytic.lean": {
+      "expected": "bac51e35f46740653dbcea68724deecf23f9fdb8991c696f54007287b57afab5",
+      "actual": "bac51e35f46740653dbcea68724deecf23f9fdb8991c696f54007287b57afab5"
+    },
+    "lean/s10/S10Controls/PhaseAverage.lean": {
+      "expected": "ff2863169741814592ec0947da8941976d6ebf2d676e07300e0c0b48905034ba",
+      "actual": "ff2863169741814592ec0947da8941976d6ebf2d676e07300e0c0b48905034ba"
+    },
+    "lean/s10/S10Controls/PlaneWave.lean": {
+      "expected": "14149fe870ddadc3aa547a49706748990d1eed9f74e428423f9c81e3a745863e",
+      "actual": "14149fe870ddadc3aa547a49706748990d1eed9f74e428423f9c81e3a745863e"
+    },
+    "lean/s10/S10Controls/Variation.lean": {
+      "expected": "0141297128ec34c925d11ffe13b2e08203282b4d1ada4d388b23b2d689db7c0e",
+      "actual": "0141297128ec34c925d11ffe13b2e08203282b4d1ada4d388b23b2d689db7c0e"
+    },
+    "lean/s10/S10Pilot/Action.lean": {
+      "expected": "a7466f2c23a123f244615217d27d5048a625bddfaad5ce2a6f0456a8704f435c",
+      "actual": "a7466f2c23a123f244615217d27d5048a625bddfaad5ce2a6f0456a8704f435c"
+    },
+    "lean/s10/S10Pilot/Analytic.lean": {
+      "expected": "f8a6fe854a7ed775a7ecf65fdf8589db2b865139a811daf1e4e27c34bac8811d",
+      "actual": "f8a6fe854a7ed775a7ecf65fdf8589db2b865139a811daf1e4e27c34bac8811d"
+    },
+    "lean/s10/S10Pilot/PhaseAverage.lean": {
+      "expected": "2007235232001290ac87d25e8922e4a3b615583272ef39034b2aedc83dee4429",
+      "actual": "2007235232001290ac87d25e8922e4a3b615583272ef39034b2aedc83dee4429"
+    },
+    "lean/s10/S10Pilot/PlaneWave.lean": {
+      "expected": "d64ad2d70169976f42cacb3ece650776780a17fe640d1efee4aa7677e53c85cb",
+      "actual": "d64ad2d70169976f42cacb3ece650776780a17fe640d1efee4aa7677e53c85cb"
+    },
+    "lean/s10/S10Pilot/Variation.lean": {
+      "expected": "f4678338fb72fe859c627cbc5da3ccb90e9f38b7a5d774705219f880cdcc871d",
+      "actual": "f4678338fb72fe859c627cbc5da3ccb90e9f38b7a5d774705219f880cdcc871d"
+    },
+    "lean/s11/README.md": {
+      "expected": "10db93ecc5233e3cb21d6a1fbdea21f5f3bf7ed635fb16ef964841bb54326640",
+      "actual": "10db93ecc5233e3cb21d6a1fbdea21f5f3bf7ed635fb16ef964841bb54326640"
+    },
+    "lean/s11/S11D3Bulk/Action.lean": {
+      "expected": "ac5a0f8b42bb27ffb703e3b9ff5f2efcdae559706583b0ccd343e64502ed5f63",
+      "actual": "ac5a0f8b42bb27ffb703e3b9ff5f2efcdae559706583b0ccd343e64502ed5f63"
+    },
+    "lean/s11/S11D3Bulk/Bulk.lean": {
+      "expected": "b70072ba81550a53af9b12ee4eb50ffe06c849bc5c9c44003f459c3ebaacb601",
+      "actual": "b70072ba81550a53af9b12ee4eb50ffe06c849bc5c9c44003f459c3ebaacb601"
+    },
+    "lean/s11/S11D3Bulk/Calculus.lean": {
+      "expected": "4a2f040ebbddf14bed0b3effcb6087fd8ff2b66d877c18af7576a122108b8167",
+      "actual": "4a2f040ebbddf14bed0b3effcb6087fd8ff2b66d877c18af7576a122108b8167"
+    },
+    "lean/s11/S11D3Bulk/Variation.lean": {
+      "expected": "a25416fc69bced11d1109fd396f0cbb5087f55a5864039d0fb04c93564b75b6a",
+      "actual": "a25416fc69bced11d1109fd396f0cbb5087f55a5864039d0fb04c93564b75b6a"
+    },
+    "lean/s11/S11D3Invariants/Classification.lean": {
+      "expected": "2cfba9f58fe6932859833f7e0fe8f8f0c398618de1086a6b358527d3563b3c02",
+      "actual": "2cfba9f58fe6932859833f7e0fe8f8f0c398618de1086a6b358527d3563b3c02"
+    },
+    "lean/s11/S11D3Invariants/Constraints.lean": {
+      "expected": "cc8a4b788b205cf2de7f4aea4b617e0e41c2047c489806f59ef6d56d770bfc13",
+      "actual": "cc8a4b788b205cf2de7f4aea4b617e0e41c2047c489806f59ef6d56d770bfc13"
+    },
+    "lean/s11/S11D3Invariants/Quadratic.lean": {
+      "expected": "ccb26fd2c468c84e5cc499840179b3d574c497d15604baebce226009dc70933f",
+      "actual": "ccb26fd2c468c84e5cc499840179b3d574c497d15604baebce226009dc70933f"
+    },
+    "lean/s11/S11D3Invariants/Rotation.lean": {
+      "expected": "1de41bfbbea2144e6a63ce9d1752b9bff18497fadb8c5bfdfee818fcffc68426",
+      "actual": "1de41bfbbea2144e6a63ce9d1752b9bff18497fadb8c5bfdfee818fcffc68426"
+    },
+    "lean/s11/S11D4Invariants/Classification.lean": {
+      "expected": "3b95a47959eeabc44268a2ae7dd1b8d5ff9d3f454d3c7b12d23c7fca365a2729",
+      "actual": "3b95a47959eeabc44268a2ae7dd1b8d5ff9d3f454d3c7b12d23c7fca365a2729"
+    },
+    "lean/s11/S11D4Invariants/ConstraintBlock0.lean": {
+      "expected": "a392b17298a7a4e89f2a29b7f475d3451d0845041a9dbe38704429812e7e7425",
+      "actual": "a392b17298a7a4e89f2a29b7f475d3451d0845041a9dbe38704429812e7e7425"
+    },
+    "lean/s11/S11D4Invariants/ConstraintBlock1.lean": {
+      "expected": "9e6cdf6c14a124af9e713fc0d922d5b37def9773d658cdb53847ce6e94769651",
+      "actual": "9e6cdf6c14a124af9e713fc0d922d5b37def9773d658cdb53847ce6e94769651"
+    },
+    "lean/s11/S11D4Invariants/ConstraintBlock2.lean": {
+      "expected": "d22ebe83d4b3e3a6bae8ebcfa7a94ddb34d2fe95110b23a3e9948a20dcf614e9",
+      "actual": "d22ebe83d4b3e3a6bae8ebcfa7a94ddb34d2fe95110b23a3e9948a20dcf614e9"
+    },
+    "lean/s11/S11D4Invariants/ConstraintBlock3.lean": {
+      "expected": "a4f413393844de5e8a0126cf03d502c6ee32b1a44686b03762d39db72764ffa0",
+      "actual": "a4f413393844de5e8a0126cf03d502c6ee32b1a44686b03762d39db72764ffa0"
+    },
+    "lean/s11/S11D4Invariants/ConstraintPolynomial.lean": {
+      "expected": "998ce5e4f2d0930e5e52997c4c300128d990b175030272dd321e4004036ec41a",
+      "actual": "998ce5e4f2d0930e5e52997c4c300128d990b175030272dd321e4004036ec41a"
+    },
+    "lean/s11/S11D4Invariants/Constraints.lean": {
+      "expected": "dfe4f2dc27bc140681eb60ce2cf0fdc6926bcb61ab31e2ef2bb8957c1e68c43e",
+      "actual": "dfe4f2dc27bc140681eb60ce2cf0fdc6926bcb61ab31e2ef2bb8957c1e68c43e"
+    },
+    "lean/s11/S11D4Invariants/Forms.lean": {
+      "expected": "74ff651936459ee6e3b7b9a136b06c929be19ec22ce10559dd371008d2e03a69",
+      "actual": "74ff651936459ee6e3b7b9a136b06c929be19ec22ce10559dd371008d2e03a69"
+    },
+    "lean/s11/S11D4Invariants/Orientation.lean": {
+      "expected": "417aa006bce48911f0cdd914b0f9087e19fbf876d7a13647d98f684a545ce31f",
+      "actual": "417aa006bce48911f0cdd914b0f9087e19fbf876d7a13647d98f684a545ce31f"
+    },
+    "lean/s11/S11D4Invariants/Quadratic.lean": {
+      "expected": "5d64eda063b367049135aed7072821f2679dc860987dc0578036af6955809763",
+      "actual": "5d64eda063b367049135aed7072821f2679dc860987dc0578036af6955809763"
+    },
+    "lean/s11/S11D4Invariants/Rotation.lean": {
+      "expected": "01f3e8e0fa11ba6eb53c756b8ea67a825de83f2cd13c8b81b5c58de6490f391c",
+      "actual": "01f3e8e0fa11ba6eb53c756b8ea67a825de83f2cd13c8b81b5c58de6490f391c"
+    },
+    "lean/s11/S11D4Odd/Action.lean": {
+      "expected": "f83222be186089289e444f98d2518a3c5057248c7216ad1ee0fe769df36cc4be",
+      "actual": "f83222be186089289e444f98d2518a3c5057248c7216ad1ee0fe769df36cc4be"
+    },
+    "lean/s11/S11D4Odd/Boundary.lean": {
+      "expected": "691c9981cc50d4b32ec66628c6aadc3102d2e7551a3a36540874e09731c619c8",
+      "actual": "691c9981cc50d4b32ec66628c6aadc3102d2e7551a3a36540874e09731c619c8"
+    },
+    "lean/s11/S11D4Odd/Calculus.lean": {
+      "expected": "22604d9999f0a28079ff7fd9a9f88760df1509ae0c8a3838de26f3fefbeddd04",
+      "actual": "22604d9999f0a28079ff7fd9a9f88760df1509ae0c8a3838de26f3fefbeddd04"
+    },
+    "lean/s11/S11D4Odd/Variation.lean": {
+      "expected": "2bb66ed4848d61893e035250e3047dfa5cdbfd2081b8928d0bf663dfbf3d728f",
+      "actual": "2bb66ed4848d61893e035250e3047dfa5cdbfd2081b8928d0bf663dfbf3d728f"
+    },
+    "lean/s11/S11Homogeneous/Action.lean": {
+      "expected": "73a8cbfbe7770cd0d17262728f9887d2038260fc965d2abc34944b8af20aeb4b",
+      "actual": "73a8cbfbe7770cd0d17262728f9887d2038260fc965d2abc34944b8af20aeb4b"
+    },
+    "lean/s11/S11VariableCoefficients.lean": {
+      "expected": "d273c0431b54a208ca9710f5aa2451ab64347d72cd4613094972457168a171cd",
+      "actual": "d273c0431b54a208ca9710f5aa2451ab64347d72cd4613094972457168a171cd"
+    },
+    "lean/s11/S11VariableCoefficients/Common.lean": {
+      "expected": "05a9fce419bbccce91f9e55f8e53f482e29cd0fc5f142db8aa21218bb5e7e559",
+      "actual": "05a9fce419bbccce91f9e55f8e53f482e29cd0fc5f142db8aa21218bb5e7e559"
+    },
+    "lean/s11/S11VariableCoefficients/Controls.lean": {
+      "expected": "c7d206f9c68b9e03f3c26dc9fbc3ea1be970e45c71273820036b9e2e5f0a2829",
+      "actual": "c7d206f9c68b9e03f3c26dc9fbc3ea1be970e45c71273820036b9e2e5f0a2829"
+    },
+    "lean/s11/S11VariableCoefficients/D3.lean": {
+      "expected": "1127e18376f1b3e373650fecb60ffb89de7c6e17270edc034f9ef78d8e1d85f9",
+      "actual": "1127e18376f1b3e373650fecb60ffb89de7c6e17270edc034f9ef78d8e1d85f9"
+    },
+    "lean/s11/S11VariableCoefficients/D4.lean": {
+      "expected": "8d8d5c6a6d3def7b326fa0ea22fc67db24e7c76443c2efbe8ea1b477a6a4853f",
+      "actual": "8d8d5c6a6d3def7b326fa0ea22fc67db24e7c76443c2efbe8ea1b477a6a4853f"
+    },
+    "lean/s11/S11VariableCoefficients/Interface.lean": {
+      "expected": "e05d672b30508e0e68e28e36d0d0b81db84a170c5776f113695261b509d9d045",
+      "actual": "e05d672b30508e0e68e28e36d0d0b81db84a170c5776f113695261b509d9d045"
+    },
+    "lean/s11/VARIABLE_COEFFICIENT_COVERAGE.md": {
+      "expected": "771f530c9c43a869a62bf47cdfc838521e99f321274aafc52ed88b59acdedbb2",
+      "actual": "771f530c9c43a869a62bf47cdfc838521e99f321274aafc52ed88b59acdedbb2"
+    },
+    "lean/s11/VARIABLE_COEFFICIENT_FIDELITY.md": {
+      "expected": "3dd7b3ee684f1b40f1d9a38c4183f94768acb5af2a52496d452255f86f44612a",
+      "actual": "3dd7b3ee684f1b40f1d9a38c4183f94768acb5af2a52496d452255f86f44612a"
+    },
+    "lean/s11/VARIABLE_COEFFICIENT_VERIFICATION.txt": {
+      "expected": "ccda3219dea4bf9d3d09787e60c66520be1432598bc4d17ab911200c28382202",
+      "actual": "ccda3219dea4bf9d3d09787e60c66520be1432598bc4d17ab911200c28382202"
+    },
+    "scripts/S11_stray_longitudinal_sympy_audit.py": {
+      "expected": "dc77f30b3e0b2b72aa13c7531a586e6ef50167949e645d99378de8527e06bfe2",
+      "actual": "dc77f30b3e0b2b72aa13c7531a586e6ef50167949e645d99378de8527e06bfe2"
+    }
+  },
+  "localValidation": {
+    "path": "_measurements/S11_lean_variable_validation.json",
+    "sha256": "02e692db134fb66a461835499491ebc722bfeb0bbe577b8207a2b0d19bc4dea6",
+    "reportedStatus": "PASS",
+    "reportedReusedBuilds": 40,
+    "reportedAxiomAudits": 31,
+    "reportedNativeIdentities": 7,
+    "reportedNativeControls": 10,
+    "reviewsComplete": false,
+    "independentlyRebuiltHere": false
+  },
+  "nativeSourceInspection": {
+    "scope": "Read-only source order/index observations; not a complete S11c action or interface fidelity proof.",
+    "producer": "scripts/S11c_b_brane_operator_sympy_audit.py",
+    "producerSha256": "666b4005b745dd29933561f701c6c1859a2b00e9855badcb08e2347308504472",
+    "export": "scripts/S11c_b_exports.py",
+    "exportSha256": "3c6555f90a85382a5e96f3f961f0e36a4875d9259fe1be947fa8e683669b7084",
+    "exportProducerDigest": "666b4005b745dd29933561f701c6c1859a2b00e9855badcb08e2347308504472",
+    "functions": {
+      "total_derivative": {
+        "line": 782,
+        "astSha256": "bac6c22b9039155dbcb5534331502e611fee5afa84264062112727f108d1f28c",
+        "namedCalls": [
+          "ValueError",
+          "background_jet_expression",
+          "dict",
+          "frozenset",
+          "range",
+          "sorted_index"
+        ]
+      },
+      "euler_derivative": {
+        "line": 845,
+        "astSha256": "01b621f316433dce2b12e09311c95f1d141aba5a81384c485ad1117f6ec03b82",
+        "namedCalls": [
+          "total_derivative"
+        ]
+      },
+      "basis_euler_signatures": {
+        "line": 1356,
+        "astSha256": "e52f8bf41f5f1ba81c195682cc2646561daca342856cc8f88be2f3fd18109523",
+        "namedCalls": [
+          "ValueError",
+          "basis_dx",
+          "sorted_index",
+          "tuple"
+        ]
+      },
+      "construct_energy": {
+        "line": 1727,
+        "astSha256": "15b4f2f841e3a5b23cdbeb177239e72d752a1edad9000af46298985fbbc88c0f",
+        "namedCalls": [
+          "EnergyBuild",
+          "Str",
+          "ablated_jets",
+          "basis_euler_signatures",
+          "dim_div",
+          "dimension_of",
+          "enumerate_new_candidates",
+          "frozenset",
+          "len",
+          "live_basis_substitution",
+          "profile_definitions",
+          "quotient_independent_indices",
+          "str",
+          "sum",
+          "total_derivative",
+          "tuple",
+          "uniform_coefficient"
+        ]
+      },
+      "operator_from_density": {
+        "line": 2339,
+        "astSha256": "e9b958d9089a4fd56efed415493fb0e420eb29fe8d32d6dc725a8d00c4fd781e",
+        "namedCalls": [
+          "Str",
+          "density_pair",
+          "dot",
+          "frozenset",
+          "kinetic_balance_from_energy",
+          "total_derivative",
+          "tuple"
+        ]
+      },
+      "build_operator": {
+        "line": 2773,
+        "astSha256": "609879834084f8f5b0e23212f824d7fd82b0cdc408ad750ccbd14e5f2ebcd848",
+        "namedCalls": [
+          "Str",
+          "ValueError",
+          "ablated_jets",
+          "bind_mu_theta_operand",
+          "casify",
+          "constraint_fold_from_source",
+          "construct_energy",
+          "corrupt_evolution_origin_source",
+          "corrupt_virtual_constraint_source",
+          "density_pair",
+          "face_generalized_force_rows",
+          "first_jet_flux",
+          "frozenset",
+          "kinetic_balance_from_energy",
+          "material_pullback",
+          "mechanical_work_row_normalization",
+          "named_tuple_row",
+          "operator_from_density",
+          "replace_selected_substrate_case",
+          "routed_density",
+          "selected_substrate_axes",
+          "selected_substrate_case",
+          "str",
+          "substrate_bundle",
+          "tuple"
+        ]
+      }
+    },
+    "indexMap": "Lean G_ij = native grad_u[j][i]; derivative rows versus field rows.",
+    "limitations": [
+      "Match actual action sign, factors, epsilon normalization and profile length before applying formulas.",
+      "Uniform Euler-signature representatives require explicit weighted-current/gradient accounting when changed.",
+      "VC local first-gradient momenta do not identify the full nonlocal/higher-derivative boundary pairing.",
+      "No new upstream discrepancy is established."
+    ]
+  },
+  "t1Closure": {
+    "commit": "ad365b5f01e0954bc8adae10324a20a969181a80",
+    "path": "_measurements/S11_lean_analytic_error_closure_validation.json",
+    "sha256": "53112caf9035131d06d119a764cadc6daaf35be17b345ca68b9b7579f9c1af9e",
+    "status": "PASS",
+    "reviewVerdicts": {
+      "claude": "CLEAR",
+      "grok": "CLEAR"
+    },
+    "remainingRequiredFindings": [],
+    "proofSourceJoins": {
+      "lean/s11/S11AnalyticError.lean": {
+        "acceptedSha256": "f12e67698203eaecb4b325f2acff04ad861829f0b83d218ee10d9c3f42ac7ea6",
+        "currentSha256": "f12e67698203eaecb4b325f2acff04ad861829f0b83d218ee10d9c3f42ac7ea6"
+      },
+      "lean/s11/S11AnalyticError/Abel.lean": {
+        "acceptedSha256": "3a36a531c0aff09a7ddd393176841357d287f962e3368f088321b7cfb01bde71",
+        "currentSha256": "3a36a531c0aff09a7ddd393176841357d287f962e3368f088321b7cfb01bde71"
+      },
+      "lean/s11/S11AnalyticError/Controls.lean": {
+        "acceptedSha256": "576890d09b983f39581db7fb8b036b42f81467a32232b3b578d32803a8dc2e51",
+        "currentSha256": "576890d09b983f39581db7fb8b036b42f81467a32232b3b578d32803a8dc2e51"
+      },
+      "lean/s11/S11AnalyticError/Stability.lean": {
+        "acceptedSha256": "9395a1a1f574c85e8bdf6346657ec7575f2bba483e4e13fb5a648b33f93d07dd",
+        "currentSha256": "9395a1a1f574c85e8bdf6346657ec7575f2bba483e4e13fb5a648b33f93d07dd"
+      },
+      "lean/s11/S11AnalyticError/Tail.lean": {
+        "acceptedSha256": "24f4c3c00a36e80514cd0ffe94b27f7059aa900d1a1fec703aa670bdf661ec89",
+        "currentSha256": "24f4c3c00a36e80514cd0ffe94b27f7059aa900d1a1fec703aa670bdf661ec89"
+      }
+    },
+    "scope": "Bounded conditional theorem/fidelity contract complete; actual S11c operator-error and outgoing-inverse constants remain unestablished."
+  },
+  "applicationPlan": "_measurements/S11c_d_quadrature_limits_plan.md",
+  "applicationPlanSha256": "13e64a961130535389378d00f31405e926b94d73ebe1cefb094d529087d12830",
+  "activeProductionPreflightSha256": "7384a01bf936eda0e24786bb7b59b10c8f4ca80911055f47b65bec0f66071cbd",
+  "activeProductionPinnedSourcesUnchanged": 87,
+  "productionDisposition": "Continue and validate original finite-action run without source change or restart.",
+  "next": "Receive final VC fidelity disposition and accepted revision; apply actual-action, index, weighted-current and complete boundary-pairing checks before relying on VC identities in S11c matching."
+}

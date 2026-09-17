@@ -1,0 +1,89 @@
+Independent non-author fidelity review: bounded T1–T4 tail/Abel and actual
+bounded inverse perturbation contract. This is not a full S11c error certificate.
+
+Read MANIFEST.json, lean/FORMALIZATION_POLICY.md, and
+lean/s11/ANALYTIC_ERROR_COVERAGE.md, ANALYTIC_ERROR_FIDELITY.md and
+ANALYTIC_ERROR_VERIFICATION.txt. Read the four S11AnalyticError modules and
+the audit root. The packet contains all local import sources, package pins,
+compact native source and formal instruments/reports, author validation,
+actual native source/input/specification and the initial analytic assessment.
+The full pinned Mathlib dependency tree is not packaged; direct source/object
+hashes and package pins are recorded. Treat reported builds/hashes as author
+evidence unless independently checked. Manifest paths are relative to packet.
+
+Review mathematical statement fidelity, hypotheses, quantifiers, definitions,
+proof logic, conventions and limits, rather than approving from build counts.
+Give concrete blockers if any. Do not let broader unfinished S11c work become
+an automatic expansion of this bounded conditional contract.
+
+T1: actual integrals, not abstract scalar error variables. Verify tailMass and
+firstMoment, complex norms (no real-part projection), measurable kept/complement
+split and the bounded multiplier. The top-level truncation/Abel theorems must
+ensure actual integrability, avoiding false physical inference from Bochner's
+zero value on nonintegrable functions. The primitive omitted-integral inequality
+alone is explicitly not an integrability certificate. Check all premises for
+combining full Abel error with the regulated tail. The intended bound is
+ B * (integral on complement norm(g) + a * integral abs(x)*norm(g)).
+The regulator is exp(-a*abs(x)), with a>=0, fixed origin and finite first moment.
+The theorem is for any measure on R; Lebesgue is the physical specialization.
+Negative R gives an empty kept set, not an invalid hidden premise. Zero a,
+zero amplitude and nonzero complex witnesses must retain their stated meaning.
+
+T2: actual inverse existence. Inspect perturbEquiv via Units.oneSub and the
+identification of its forward map with A+E. Is completeness used where needed?
+Do not confuse estimates assuming a supplied inverse B with construction:
+exists_controlled_inverse must join existence and its bounds. For
+norm(A^-1)<=kappa, norm(E)<=epsilon, kappa*epsilon<1, check denominator positivity,
+inverse norm <=kappa/(1-kappa*epsilon), inverse-difference bound
+kappa^2*epsilon/(1-kappa*epsilon), the resolvent identity, source perturbation
+identity, and the fixed bounded-observation estimate. No finite-dimensional,
+self-adjointness, real-frequency invertibility or unweighted L2 premise may
+be silently imported. A graph/outgoing realization of the actual differential
+operator is an application obligation. Check the full spaces and quantifiers.
+
+T3: compact native correspondence. The AST-selected original constructor
+statements execute without importing the production driver or building its
+closed operator. Inspect the exact Gaussian Fourier mass computation and Abel
+half-line statements. Negative/positive halves are 1/(a-i*s), 1/(a+i*s);
+constant is 2a/(a^2+s^2); step parts are a/(a^2+s^2), -i*s/(a^2+s^2).
+With s=L_W*(k-k'), measure L_W/(2*pi), h=a/L_W, verify the constant Poisson
+kernel and step (P_h-i Q_h)/2. The development input has L_W=10, origin xi=0.
+The raw delta_mass Meijer-G expression is NOT claimed evaluated or certified;
+the mass 2*pi check is the separate original Gaussian computation. Native
+sign/scale/omission controls must be nonzero and tied to these actual operands.
+The native translation is tested, not kernel certified. Distributional pairing
+with actual trial/test spaces, uniform folded moments and full-operator norm
+errors remain open. Check that the docs partition local differential, ordinary
+integrable and distributional contributions without asserting an established
+operator-wide estimate or class-wide rate. The assessment is context, not a
+claim that its stronger Fourier/Sobolev estimates were formalized here.
+
+T4: examine the 12 paired mathematical mutations and 16 positive controls.
+Every accepted mutant must produce exactly an unsolved False in contract_control,
+not an import/compiler/instrument failure or timeout. The tail/Abel witnesses
+are actual Dirac integrals. Inverse/solution/observation witnesses use exact
+scalar arithmetic; they are paired false statement controls, not replacements
+inside canonical general-theorem source. Check whether this bounded suite is
+adequate for the load-bearing claims and its limitations are accurately stated.
+Positive atomic integrability, zero-regulator/amplitude and strict-margin cases
+must expose consistent nonempty assumptions. Generic witnesses must not be
+mistaken for a proof of uniform physical operator premises.
+
+The author reports fresh builds of all four modules and audit root, 41 standard
+axiom declarations, 12 mathematical rejections, 16 positives, native checks
+and current source/input/output object correspondence. No old local proof or
+object was rebuilt. Mathlib's transitive compiled cache remains the existing
+pinned dependency trust baseline. State the exact limits of your own checks;
+do not claim to have run Lean, native code or hashes unless actually done.
+
+Stay within T1–T4. No production runs or file modifications. No variable
+coefficients/interfaces, nonlinear-pole formalization, limiting-absorption
+proof, full scattering certificate, D5, systematic CAS bridge or every-output
+checking. The actual S11c nonlinear-pole issue is being handled in a separate
+calculation session; it is not a review blocker for these conditional bounds.
+Distinguish required fidelity corrections from optional stronger results.
+
+Return a substantive terminal report: CLEAR or NOT CLEAR; packet identifier
+(as supplied unless independently recomputed); assumptions/conventions checked;
+findings with file/theorem references; and limits of verification. Partial,
+errored, plan-only or unsupported approval responses are not clearance.

@@ -1,0 +1,72 @@
+{
+  "status": "COMPLETE",
+  "scope": "Bounded S11 T1\u2013T4 independent fidelity review",
+  "packet_revision": "S11 tail/Abel and inverse stability T1\u2013T4 fidelity contract v1",
+  "packet_sha256": "79a8697aebca1ba1c1ac29e694083daed6c1df512259d07fc59444b27e2b8a48",
+  "file_count": 24,
+  "archive": "research/pde_ledger_v3/_measurements/S11_lean_analytic_error_review_packet_v1.tar.gz",
+  "archive_sha256": "7f4ffce53ed1b121b188a95fa1b5b49007a56ffb15cb951fd4c68ba775a2a81d",
+  "archive_bytes": 199864,
+  "packet_directory": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_analytic_error/review_packet_v1",
+  "manifest": "research/pde_ledger_v3/_measurements/S11_lean_analytic_error_review_packet.json",
+  "manifest_sha256": "9d18b3feb561e9fd61605bf624c9dd2449ebc36ee004ded1fd0febecd6ab0111",
+  "destinations": [
+    "Claude",
+    "Grok"
+  ],
+  "external_reviews_started": true,
+  "local_verification": "PASS: four modules plus root freshly built; 41 standard-axiom audits; 12 mathematical rejections; 16 positives; compact native checks; current source/input/output hashes match",
+  "prepared_utc": "2026-09-17T00:51:05.821191+00:00",
+  "snapshot_validation": "PASS: live files, snapshot and archive member hashes all agree",
+  "review_verdicts": {
+    "claude": "CLEAR",
+    "grok": "CLEAR"
+  },
+  "completion_claimed": true,
+  "committed": false,
+  "authorization_context": "The user explicitly approved sending this fixed 24-file T1\u2013T4 packet to Claude and Grok, then requested a separate pass-along writeup while reviews run.",
+  "pinned_export_constraint": "All S11c calculation files and pinned exports remain untouched. Three existing native source/input/specification files are read-only review context.",
+  "authorization_quote": "Yes, you have permission.",
+  "authorized_utc": "2026-09-17T01:03:37.768639+00:00",
+  "authorization_packet_sha256": "79a8697aebca1ba1c1ac29e694083daed6c1df512259d07fc59444b27e2b8a48",
+  "authorization_destinations": [
+    "Claude",
+    "Grok"
+  ],
+  "authorization_preflight": {
+    "status": "PASS",
+    "packet_sha256": "79a8697aebca1ba1c1ac29e694083daed6c1df512259d07fc59444b27e2b8a48",
+    "file_count": 24,
+    "compiled_objects": 5,
+    "preserved_D4B_objects": 19,
+    "checked": "Archive/snapshot/live files; source/instruments/reports/logs/input/output objects; package pins and direct Mathlib bytes; historical proof bytes"
+  },
+  "handoff_document": "research/pde_ledger_v3/lean/s11/ANALYTIC_ERROR_HANDOFF.md",
+  "review_started_utc": "2026-09-17T01:03:59.923140+00:00",
+  "transport_directory": "/tmp/s11-lean-analytic-error-fidelity-2x3288ob/packet",
+  "launch_preflight": {
+    "status": "PASS",
+    "packet_sha256": "79a8697aebca1ba1c1ac29e694083daed6c1df512259d07fc59444b27e2b8a48",
+    "file_count": 24,
+    "compiled_objects": 5,
+    "preserved_D4B_objects": 19,
+    "checked": "Archive/snapshot/live files; source/instruments/reports/logs/input/output objects; package pins and direct Mathlib bytes; historical proof bytes"
+  },
+  "supervisor_pid": 583176,
+  "review_supervisor_sha256": "12337217f26e86a74ae0b52ef206e71953474c0a7e4e70d61018df5e000e7a74",
+  "review_supervisor_finished_utc": "2026-09-17T01:17:06.626689+00:00",
+  "live_files_changed_since_packet": [],
+  "completed_utc": "2026-09-17T01:20:52.816011+00:00",
+  "unresolved_blockers": [],
+  "closure_document": "research/pde_ledger_v3/lean/s11/ANALYTIC_ERROR_FIDELITY_REVIEW.md",
+  "closure_validation": "research/pde_ledger_v3/_measurements/S11_lean_analytic_error_closure_validation.json",
+  "closure_validation_sha256": "53112caf9035131d06d119a764cadc6daaf35be17b345ca68b9b7579f9c1af9e",
+  "live_packet_documentation_changes": {
+    "lean/s11/ANALYTIC_ERROR_COVERAGE.md": "f986083cd83366742d8484be7059269837e39c51f94eaed5de6ebe394988d53c",
+    "lean/s11/ANALYTIC_ERROR_FIDELITY.md": "99774f14f4729ba8b0c12185a7f94b69ba7e9a40ee045543503283181d28bb3c",
+    "lean/s11/ANALYTIC_ERROR_VERIFICATION.txt": "7832be4a5c69523d590d6321ec986d0e013406c9fedae6879d7181c4aca091df",
+    "lean/s11/README.md": "fd74b41a61061c06384c751f21f01a9e6944304ffd7caa5e76a10400ed054f91"
+  },
+  "continuation_authorization": "research/pde_ledger_v3/_measurements/S11_lean_analytic_error_continuation_authorization.json",
+  "commit_status": "Authorized after review clearance; commit follows this closure record."
+}

@@ -1,0 +1,58 @@
+{
+  "packet_sha256": "79a8697aebca1ba1c1ac29e694083daed6c1df512259d07fc59444b27e2b8a48",
+  "file_count": 24,
+  "transport_correspondence": "PASS",
+  "review_records": {
+    "claude": {
+      "session_id": "69226bf6-d892-42bd-b9ce-262bb25d36ea",
+      "verdict": "CLEAR",
+      "raw_sha256": "a992185882d66dcb5f2e29b08ac0bd8c5b297f79b30bcdf5b3aa556833a23a13",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "run_sha256": "00f24a627a5e77fb9d2475a86e6d59c697b3c58e122640a19dadb6e567b25d92",
+      "report_sha256": "e1699e09ee6bd1e332fe30e4aa08ec9557092af29f6ad6c1cb1b58f06823e697",
+      "report_offset": 0,
+      "terminal": "success/end_turn",
+      "verification_limit": "Source fidelity and hand algebra only; no independent build, instrument execution or hash audit."
+    },
+    "grok": {
+      "session_id": "ab052e3d-1fc0-4b53-be41-2ff9e5a02335",
+      "verdict": "CLEAR",
+      "raw_sha256": "c479ad05fab9c5186a65aaace85586f5030cc9b8ec9958fc6a05c482f16fe6ea",
+      "stderr_sha256": "f7301fc210f72e8e20e50b87eb976ca8121bddaed9e514c09c82115a338953de",
+      "run_sha256": "60593607459bf26fea3874dccf2b80844ea59b60b8ca42087039df1e647ddc3f",
+      "report_sha256": "175867b5c427de100e7541d0a8399f6c477ac90d1889418e26ac2b7f4ec798e5",
+      "report_offset": 723,
+      "terminal": "end_turn",
+      "verification_limit": "Source fidelity and hand algebra only; no independent build, instrument execution or hash audit."
+    }
+  },
+  "pre_closure_source_correspondence": "All live packet files matched; no shared-source drift.",
+  "status": "PASS",
+  "checked_utc": "2026-09-17T01:20:52.816011+00:00",
+  "local_validation_sha256": "7634195426acb5e9df7341f8e67df8a14c83244e29fec09ee84f211b965ade1e",
+  "live_packet_documentation_changes": {
+    "lean/s11/ANALYTIC_ERROR_COVERAGE.md": "f986083cd83366742d8484be7059269837e39c51f94eaed5de6ebe394988d53c",
+    "lean/s11/ANALYTIC_ERROR_FIDELITY.md": "99774f14f4729ba8b0c12185a7f94b69ba7e9a40ee045543503283181d28bb3c",
+    "lean/s11/ANALYTIC_ERROR_VERIFICATION.txt": "7832be4a5c69523d590d6321ec986d0e013406c9fedae6879d7181c4aca091df",
+    "lean/s11/README.md": "fd74b41a61061c06384c751f21f01a9e6944304ffd7caa5e76a10400ed054f91"
+  },
+  "unchanged_packet_file_count": 20,
+  "compiled_objects": {
+    "lean/.lake/build/lib/lean/S11AnalyticError/Tail.olean": "5eddc6d95a35f6b84aaaa5ea68ab139104de7b75bedf0001e9abc54589241a5e",
+    "lean/.lake/build/lib/lean/S11AnalyticError/Abel.olean": "d2075d6a52b160c6337504144165ae331130a42f61ac97426788feebe47f6062",
+    "lean/.lake/build/lib/lean/S11AnalyticError/Stability.olean": "222699b74d19abb91f80edc83dfd4b1438c69837ea9674c9bc3e2fb61ea50131",
+    "lean/.lake/build/lib/lean/S11AnalyticError/Controls.olean": "379664a68cf5e6c343ed54583c036a9164cf7cc85ae3f9ffe428ca4da78f5012",
+    "lean/.lake/build/lib/lean/S11AnalyticError.olean": "25ef725af62c89e5a845c121922d8fb8be07b0ed3b25317a3ce22d72fea42d2b"
+  },
+  "preserved_D4B_object_count": 19,
+  "historical_proofs_preserved": true,
+  "review_scope": "T1\u2013T4 conditional bounds only",
+  "required_findings_remaining": [],
+  "documentation_findings_resolved": [
+    "Executed operands versus inspected physical width mapping",
+    "16 positive executions / 15 distinct statements",
+    "Real-phase bound and complex-transfer limitation"
+  ],
+  "completion_claimed": true,
+  "no_rebuild_reason": "Only documentation changed after the reviewed passing proof/instrument revision."
+}

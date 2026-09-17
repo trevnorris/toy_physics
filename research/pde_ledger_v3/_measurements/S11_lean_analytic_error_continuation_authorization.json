@@ -1,0 +1,15 @@
+{
+  "recorded_utc": "2026-09-17T01:13:26.581052+00:00",
+  "user_quote": "Great job. Once the review is over, if it passes then please commit and proceed to the second question.",
+  "packet_sha256": "79a8697aebca1ba1c1ac29e694083daed6c1df512259d07fc59444b27e2b8a48",
+  "condition": "Both independent T1\u2013T4 fidelity reviews must substantively clear; resolve required findings and revalidate current evidence before completion/commit.",
+  "authorized_actions": [
+    "Document bounded T1\u2013T4 closure, update the handoff review status, and commit only this session's T1\u2013T4 work with a lean: commit message.",
+    "Then proceed to question 2: establish a bounded contract for which constant-coefficient bulk equivalences survive variable coefficients, retaining coefficient-derivative and interface flux/jump terms with explicit regularity and trace assumptions."
+  ],
+  "preserve": "Other-session work, all S11c calculations/pinned exports, historical reviewed proofs/evidence and unrelated files.",
+  "governing_policy": "lean/FORMALIZATION_POLICY.md",
+  "supersedes": "Earlier no-commit/no-next-scope clauses for this T1\u2013T4 turn, including those captured in the already-running watcher message. It does not waive reviews or authorize transfer of a future question-2 packet.",
+  "reviews_left_running": true,
+  "status": "REVIEW_CLEARED_COMMIT_AUTHORIZED"
+}

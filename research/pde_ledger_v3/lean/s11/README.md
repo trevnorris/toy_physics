@@ -168,3 +168,17 @@ See [D4_ODD_FIDELITY.md](D4_ODD_FIDELITY.md) and
 finding dispositions in [D4_ODD_FIDELITY_REVIEW.md](D4_ODD_FIDELITY_REVIEW.md).
 This is a statement about constant coefficients and compact variations;
 possible boundary effects remain.
+
+## Tail, Abel and inverse-stability estimates
+
+The authorized [T1–T4 contract](ANALYTIC_ERROR_COVERAGE.md) addresses the first
+question from the S11c calculation session. It proves conditional integral
+tail/Abel and bounded-inverse perturbation estimates; operator-specific error
+constants and an outgoing inverse margin remain application obligations.
+The fresh recorded suite passed four modules plus the audit root, 41 standard-axiom
+audits, twelve mathematical rejections and sixteen positives. The compact native
+source check also passed. Claude and Grok independently cleared the bounded contract. Sixteen positive
+executions represent fifteen distinct statements. Review findings and limits
+are recorded in [ANALYTIC_ERROR_FIDELITY_REVIEW.md](ANALYTIC_ERROR_FIDELITY_REVIEW.md).
+See [ANALYTIC_ERROR_FIDELITY.md](ANALYTIC_ERROR_FIDELITY.md)
+for the compact native normalization link and the explicit limits of the claim.

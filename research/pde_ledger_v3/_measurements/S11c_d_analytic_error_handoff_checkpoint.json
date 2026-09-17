@@ -1,0 +1,135 @@
+{
+  "status": "RECEIVED_LOCAL_VERIFICATION_PASS_FIDELITY_REVIEW_PENDING",
+  "receivedUtc": "2026-09-17T01:10:01.028325+00:00",
+  "handoff": "lean/s11/ANALYTIC_ERROR_HANDOFF.md",
+  "handoffSha256": "e224fb1d623d8d707b2f0f2f896528831d7662e0234d738cd50633d786c9adef",
+  "scope": "Calculation-side application mapping only; no Lean build, proof change, review launch or numerical certificate.",
+  "reviewPacket": "_measurements/S11_lean_analytic_error_review_packet.json",
+  "reviewPacketSha256": "9d18b3feb561e9fd61605bf624c9dd2449ebc36ee004ded1fd0febecd6ab0111",
+  "reviewPacketAggregateSha256": "79a8697aebca1ba1c1ac29e694083daed6c1df512259d07fc59444b27e2b8a48",
+  "reviewPacketSourceJoins": {
+    "_measurements/S11_lean_analytic_error_contract_check.py": {
+      "expected": "94844f4466d6cc4b903aa0d13e7c76c1eab400395b73b4bb445b25818b99052b",
+      "actual": "94844f4466d6cc4b903aa0d13e7c76c1eab400395b73b4bb445b25818b99052b"
+    },
+    "_measurements/S11_lean_analytic_error_contract_checks.json": {
+      "expected": "e3bed7fec6302219a2134add2cdc73808a12e481e6803e54c097b156fdaf1593",
+      "actual": "e3bed7fec6302219a2134add2cdc73808a12e481e6803e54c097b156fdaf1593"
+    },
+    "_measurements/S11_lean_analytic_error_review_prompt.txt": {
+      "expected": "509c3c857ff7811304a520d6b84a2a74626fc25b93610f9739240a49b187a368",
+      "actual": "509c3c857ff7811304a520d6b84a2a74626fc25b93610f9739240a49b187a368"
+    },
+    "_measurements/S11_lean_analytic_error_source_check.py": {
+      "expected": "7de0f1417cf447b0c5b30d4a1bcce60200d698998b984741a5281ae8788f84e3",
+      "actual": "7de0f1417cf447b0c5b30d4a1bcce60200d698998b984741a5281ae8788f84e3"
+    },
+    "_measurements/S11_lean_analytic_error_source_checks.json": {
+      "expected": "aa7ceb2de231a73ca8e50ba9543136d810dd612d0765c1aa601d4ff84853884b",
+      "actual": "aa7ceb2de231a73ca8e50ba9543136d810dd612d0765c1aa601d4ff84853884b"
+    },
+    "_measurements/S11_lean_analytic_error_validation.json": {
+      "expected": "7634195426acb5e9df7341f8e67df8a14c83244e29fec09ee84f211b965ade1e",
+      "actual": "7634195426acb5e9df7341f8e67df8a14c83244e29fec09ee84f211b965ade1e"
+    },
+    "_measurements/S11c_d_variable_profile_development_input.json": {
+      "expected": "660b2b0b54494dce964c7f5fbd722a76a7e894d8ed92b18b5eb6290c3c10f1d5",
+      "actual": "660b2b0b54494dce964c7f5fbd722a76a7e894d8ed92b18b5eb6290c3c10f1d5"
+    },
+    "directives/S11c_d_SHARED_PHYSICS.md": {
+      "expected": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5",
+      "actual": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5"
+    },
+    "lean/AGENTS.md": {
+      "expected": "f4b3c46e1931f4979f801914f941b6f023a44e158d91b98b95f91511f277a903",
+      "actual": "f4b3c46e1931f4979f801914f941b6f023a44e158d91b98b95f91511f277a903"
+    },
+    "lean/FORMALIZATION_POLICY.md": {
+      "expected": "065a3f04bac720e5bfcb8dcb1aaf2a87a8df00a6c16682c417f009cd69c9e58c",
+      "actual": "065a3f04bac720e5bfcb8dcb1aaf2a87a8df00a6c16682c417f009cd69c9e58c"
+    },
+    "lean/lake-manifest.json": {
+      "expected": "91fd5318cdc35e4044d6e059c6ef73d94b955d27adf8a5860b07ec92add9377e",
+      "actual": "91fd5318cdc35e4044d6e059c6ef73d94b955d27adf8a5860b07ec92add9377e"
+    },
+    "lean/lakefile.toml": {
+      "expected": "f9ce7498148b23f768ce6f869eeeee08ff6b94e30f710a6d567778cf4af88062",
+      "actual": "f9ce7498148b23f768ce6f869eeeee08ff6b94e30f710a6d567778cf4af88062"
+    },
+    "lean/lean-toolchain": {
+      "expected": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+      "actual": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b"
+    },
+    "lean/s11/ANALYTIC_ERROR_COVERAGE.md": {
+      "expected": "476d9d50540b162d8eb9b7833995adc26f2a0623ec897fb0715e7a015581a360",
+      "actual": "476d9d50540b162d8eb9b7833995adc26f2a0623ec897fb0715e7a015581a360"
+    },
+    "lean/s11/ANALYTIC_ERROR_FIDELITY.md": {
+      "expected": "11065860e57fbff225cc92afb1080a45d9aa80c87d51ec456c49bddd68911382",
+      "actual": "11065860e57fbff225cc92afb1080a45d9aa80c87d51ec456c49bddd68911382"
+    },
+    "lean/s11/ANALYTIC_ERROR_VERIFICATION.txt": {
+      "expected": "387492c428d16828e17adc02f03e567f6cbceb2b639b5e56903d39a182ea8ee3",
+      "actual": "387492c428d16828e17adc02f03e567f6cbceb2b639b5e56903d39a182ea8ee3"
+    },
+    "lean/s11/README.md": {
+      "expected": "886126e823a10d9fd6155a0dc886fba0e76b04275adf9244a470c8c7e9e788dc",
+      "actual": "886126e823a10d9fd6155a0dc886fba0e76b04275adf9244a470c8c7e9e788dc"
+    },
+    "lean/s11/S11AnalyticError.lean": {
+      "expected": "f12e67698203eaecb4b325f2acff04ad861829f0b83d218ee10d9c3f42ac7ea6",
+      "actual": "f12e67698203eaecb4b325f2acff04ad861829f0b83d218ee10d9c3f42ac7ea6"
+    },
+    "lean/s11/S11AnalyticError/Abel.lean": {
+      "expected": "3a36a531c0aff09a7ddd393176841357d287f962e3368f088321b7cfb01bde71",
+      "actual": "3a36a531c0aff09a7ddd393176841357d287f962e3368f088321b7cfb01bde71"
+    },
+    "lean/s11/S11AnalyticError/Controls.lean": {
+      "expected": "576890d09b983f39581db7fb8b036b42f81467a32232b3b578d32803a8dc2e51",
+      "actual": "576890d09b983f39581db7fb8b036b42f81467a32232b3b578d32803a8dc2e51"
+    },
+    "lean/s11/S11AnalyticError/Stability.lean": {
+      "expected": "9395a1a1f574c85e8bdf6346657ec7575f2bba483e4e13fb5a648b33f93d07dd",
+      "actual": "9395a1a1f574c85e8bdf6346657ec7575f2bba483e4e13fb5a648b33f93d07dd"
+    },
+    "lean/s11/S11AnalyticError/Tail.lean": {
+      "expected": "24f4c3c00a36e80514cd0ffe94b27f7059aa900d1a1fec703aa670bdf661ec89",
+      "actual": "24f4c3c00a36e80514cd0ffe94b27f7059aa900d1a1fec703aa670bdf661ec89"
+    },
+    "lean/s11/S11C_ANALYTIC_ASSESSMENT.md": {
+      "expected": "390bdb7610c1ff806fd25f196fd8c3411a6d5247d9e2e370b82bc96e071e9de8",
+      "actual": "390bdb7610c1ff806fd25f196fd8c3411a6d5247d9e2e370b82bc96e071e9de8"
+    },
+    "scripts/S11c_d_mixing_scattering_sympy_audit.py": {
+      "expected": "5bf77729682960bb59f10c672a5fe3f67a98b0a9533da7c6189a37183596050f",
+      "actual": "5bf77729682960bb59f10c672a5fe3f67a98b0a9533da7c6189a37183596050f"
+    }
+  },
+  "localValidation": {
+    "path": "_measurements/S11_lean_analytic_error_validation.json",
+    "sha256": "7634195426acb5e9df7341f8e67df8a14c83244e29fec09ee84f211b965ade1e",
+    "reportedStatus": "PASS",
+    "reportedAxiomAudits": 41,
+    "reportedFreshBuildCount": 5,
+    "reportedNativeIdentityCount": 8,
+    "reportedNativeMutationCount": 4,
+    "reviewsComplete": false,
+    "completionClaimed": false,
+    "independentlyRebuiltByCalculationSession": false
+  },
+  "applicationPlan": "_measurements/S11c_d_quadrature_limits_plan.md",
+  "applicationPlanSha256": "a8f15c219854feaa80a682155dff57fafe14444b0d643ff63bd72223970e8b3f",
+  "applicationObligations": [
+    "fixed outgoing/graph-space realization and compatible discretization maps",
+    "uniform actual folded-amplitude tail and first-moment bounds",
+    "one complete retained-operator norm error budget",
+    "actual inverse bound and strict stability margin with source/channel/current errors"
+  ],
+  "numericalEpsilon": null,
+  "outgoingInverseKappa": null,
+  "reviewAcceptedCommit": null,
+  "activeProductionPinnedSourceCount": 87,
+  "activeProductionPreflightSha256": "7384a01bf936eda0e24786bb7b59b10c8f4ca80911055f47b65bec0f66071cbd",
+  "activeProductionSourcesUnchanged": true,
+  "next": "Receive final fidelity disposition and exact accepted source revision, then apply the conditional results only with established full-operator hypotheses. Continue original quadrature completion validation unchanged."
+}

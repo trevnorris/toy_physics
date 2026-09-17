@@ -111,5 +111,13 @@
     "status": "ACCEPTED_ADDITIVE_CONTRACT_REPAIR",
     "activePinnedSourcesUnchanged": 87,
     "disposition": "Complete and validate current action quadrature on its original frozen inventory. New stages must add nonlinearPoleV2 authority and this explicit dependency disposition to provenance; no pole-related numerical rerun is indicated."
+  },
+  "analyticErrorHandoff": {
+    "checkpoint": "_measurements/S11c_d_analytic_error_handoff_checkpoint.json",
+    "checkpointSha256": "9c0176030bcaa0c954b6c53821ed7a704acfa6c915dfe3eaf0ade310a368f0c1",
+    "status": "RECEIVED_LOCAL_VERIFICATION_PASS_FIDELITY_REVIEW_PENDING",
+    "applicationPlan": "_measurements/S11c_d_quadrature_limits_plan.md",
+    "applicationPlanSha256": "a8f15c219854feaa80a682155dff57fafe14444b0d643ff63bd72223970e8b3f",
+    "disposition": "Receive final fidelity disposition and exact accepted source revision, then apply the conditional results only with established full-operator hypotheses. Continue original quadrature completion validation unchanged."
   }
 }

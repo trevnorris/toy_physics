@@ -8,6 +8,14 @@ records exact controls and provenance. The active quadrature's pinned v10 source
 and the retained contract suffix below stay byte-identical; its pole shorthand
 is interpreted under this correction. No physical pole result is yet computed.
 
+The Lean [tail/Abel and stability handoff](../lean/s11/ANALYTIC_ERROR_HANDOFF.md)
+has passing local verification; its independent fidelity reviews are pending.
+The [limits plan](S11c_d_quadrature_limits_plan.md) now maps its hypotheses to
+the actual outgoing domain, uniform folded-amplitude estimates, full operator
+error budget and inverse/channel bounds. No numerical epsilon, inverse bound
+or scattering convergence certificate follows yet. The reception checkpoint
+preserves the fixed review-packet hashes; no Lean work or production source changed.
+
 RIGHT current/adjoint normalization is validated and published for the supplied
 LAB_HELD / RHO4_CONSTANT case: all 18 root/lift candidates, 22 basis directions,
 18 invertible field maps, and two current-normalized two-dimensional subspaces.

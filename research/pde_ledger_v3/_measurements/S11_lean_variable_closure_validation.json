@@ -1,0 +1,72 @@
+{
+  "status": "PASS",
+  "checked_utc": "2026-09-17T02:43:26.934833+00:00",
+  "scope": "Bounded VC1–VC4 complete after both independent fidelity reviews CLEAR",
+  "packet_sha256": "8152df86a31ecaabe89713a3fb178c7c469885f905b9e486207bbc695c02cf45",
+  "archive_sha256": "32e7b1acf2caaf3c329d3f8a31c53b5255d95e4c356a6d72ccefcd66c77ca8f6",
+  "manifest_sha256": "1abf833f0806dcc518836ded7775a7808d73846f84d12b0dbc4462fab8b359bf",
+  "payload_files": 61,
+  "archive_snapshot_transport_correspondence": "PASS",
+  "live_packet_correspondence_before_closure": "All 61 files matched; no shared-source drift",
+  "review_validation_before_closure_sha256": "1ac53c38898036579033600e865f5e37cfedbb871f4a38c21aedd8b09c4cf647",
+  "reviews": {
+    "claude": {
+      "session_id": "0cb30c1f-e1ca-4234-9877-f1a0d194e63b",
+      "verdict": "CLEAR",
+      "terminal": "success",
+      "models": [
+        "claude-haiku-4-5-20251001",
+        "claude-opus-5[1m]"
+      ],
+      "raw_sha256": "847b5525d2c6019e7efe6b251f646230b6a371fe1d3986d68f876f2fc2ad8828",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "run_record_sha256": "d9dd43485b9320a3c499749bc5f753516aab1659ea41d7126a9cfb2dcf0b352a",
+      "report_sha256": "3730a8fc05014301c224095c5600c43c6c48342650a087a43257e1c3fe81216f",
+      "text_field": "result",
+      "terminal_report_offset": 0,
+      "review_limit": "Independent source reading and hand algebra; no independent Lean/native/hash execution."
+    },
+    "grok": {
+      "session_id": "d60445f6-38e7-466e-adc3-04cc6a82ad45",
+      "verdict": "CLEAR",
+      "terminal": "end_turn",
+      "models": [
+        "grok-4.6-build"
+      ],
+      "raw_sha256": "65e4f50fbc67b1ffced8d4118ff49a8cca954f89713f342d325cc4b308aa3caa",
+      "stderr_sha256": "7e87f02666a663cbaa53b4d92b5b7dd9b6c0215ef03bf96f903b2808450748ff",
+      "run_record_sha256": "acbe85bccd97c7dfe828c010a5595c423a292de9c6c279b6596dde121a791ba0",
+      "report_sha256": "7cb8673c2506db6e02fb1a864b798ab186479af819e735d9dd7271236a5abf1e",
+      "text_field": "text",
+      "terminal_report_offset": 655,
+      "review_limit": "Independent source reading and hand algebra; no independent Lean/native/hash execution."
+    }
+  },
+  "formal_report_sha256": "16694743e610187addfca0cbddab42ed4aa2f97c4528eaf90a05708afe332774",
+  "native_report_sha256": "80b47b6160386f7b6e1fe5a3b2b1596c2fbc3e706ba0380063d99e24b469f24c",
+  "formal_instrument_sha256": "a8290ec5c2a1ea81a6f53ee675574cdb462c52bbea0694fab903cb9def4893e6",
+  "native_instrument_sha256": "6d9f357e0652d0118004996e3348731cf5cfe22cad527090fae703991815be16",
+  "current_compiled_objects": 40,
+  "preserved_T1_objects": 5,
+  "check_records_validated": 68,
+  "axioms": 31,
+  "mathematical_rejections": 12,
+  "positive_controls": 16,
+  "native_identities": 7,
+  "native_controls": 10,
+  "package_pins": "15 clean revisions validated by review_preflight before closure; 13 direct Mathlib source/object pairs match",
+  "proof_instrument_native_report_changes": [],
+  "closure_document_changes": {
+    "lean/s11/README.md": "6d57ae9fdccc7c02b59a702c3641364f3968f03049483cfbd2debeb4dc0f2f36",
+    "lean/s11/VARIABLE_COEFFICIENT_COVERAGE.md": "6a54c036727f8bc6ffcc4527b976d8d7962e476fdb90dadcb33a04e69b73e055",
+    "lean/s11/VARIABLE_COEFFICIENT_FIDELITY.md": "fe9097ed187a1c5aaabbbe5608d6f59c42158f0b195025f541a512b44416c71a",
+    "lean/s11/VARIABLE_COEFFICIENT_VERIFICATION.txt": "5ed6bbe13730bf2729bbf2454669c006d44f35a7427251f152553438942406ca"
+  },
+  "additional_closure_documents": {
+    "lean/s11/VARIABLE_COEFFICIENT_FIDELITY_REVIEW.md": "a604124e01aca73b0a1f43d58b2d07ea0a2bc6043c0f1181ee8fe92f39523fa5",
+    "lean/s11/VARIABLE_COEFFICIENT_HANDOFF.md": "ec5e1df969624528a8462c75aa975eab1597acf83c5fb59de270a92041fe7e5c"
+  },
+  "findings": "No required corrections. Documentation distinguishes runner acceptance from exactly-one diagnostic validation, epsilon prose/native evidence from Lean contraction, and supervisor versus per-check paths. Optional stronger results deferred.",
+  "rebuild_or_substantive_rereview_required": false,
+  "completion_claimed": true
+}

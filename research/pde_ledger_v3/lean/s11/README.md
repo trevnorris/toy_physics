@@ -182,3 +182,15 @@ executions represent fifteen distinct statements. Review findings and limits
 are recorded in [ANALYTIC_ERROR_FIDELITY_REVIEW.md](ANALYTIC_ERROR_FIDELITY_REVIEW.md).
 See [ANALYTIC_ERROR_FIDELITY.md](ANALYTIC_ERROR_FIDELITY.md)
 for the compact native normalization link and the explicit limits of the claim.
+
+## Variable coefficients and interface terms
+
+The authorized [VC1–VC4 contract](VARIABLE_COEFFICIENT_COVERAGE.md) addresses
+question 2 using the reviewed D3 family and D4 odd density. It proves the
+coefficient-gradient corrections, weighted currents and an actual flat-interface
+normal-slice integration identity. Local verification passes: 31 standard-axiom
+audits, twelve mathematical rejections, sixteen positives and compact native
+checks. Both independent fidelity reviews are CLEAR; the bounded contract is
+complete. See [review and closure](VARIABLE_COEFFICIENT_FIDELITY_REVIEW.md) and
+[the fidelity boundary](VARIABLE_COEFFICIENT_FIDELITY.md); no full S11c operator
+or multidimensional transmission result is claimed.

@@ -71,3 +71,8 @@ leanOptions = { warningAsError = true }
 name = "S11AnalyticError"
 srcDir = "s11"
 leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "S11VariableCoefficients"
+srcDir = "s11"
+leanOptions = { warningAsError = true }

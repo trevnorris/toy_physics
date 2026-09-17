@@ -1,0 +1,38 @@
+import S11VariableCoefficients.Common
+import S11VariableCoefficients.D3
+import S11VariableCoefficients.D4
+import S11VariableCoefficients.Interface
+import S11VariableCoefficients.Controls
+
+/-! VC1–VC4 selected standard-axiom audit. -/
+#print axioms S11VariableCoefficients.weighted_divergence
+#print axioms S11VariableCoefficients.weighted_density
+#print axioms S11VariableCoefficients.jumpPair_zero_iff
+#print axioms S11VariableCoefficients.jumpPair_swap
+#print axioms S11VariableCoefficients.D3.momentum_identity
+#print axioms S11VariableCoefficients.D3.pointwise_variation
+#print axioms S11VariableCoefficients.D3.eulerLagrange_product
+#print axioms S11VariableCoefficients.D3.eulerLagrange_eq
+#print axioms S11VariableCoefficients.D3.constant_profile
+#print axioms S11VariableCoefficients.D3.null_profile_residual
+#print axioms S11VariableCoefficients.D3.weighted_null_density
+#print axioms S11VariableCoefficients.D3.traction_eq
+#print axioms S11VariableCoefficients.D4.momentum_identity
+#print axioms S11VariableCoefficients.D4.pointwise_variation
+#print axioms S11VariableCoefficients.D4.eulerLagrange_eq
+#print axioms S11VariableCoefficients.D4.constant_profile
+#print axioms S11VariableCoefficients.D4.weighted_odd_density
+#print axioms S11VariableCoefficients.D4.traction_eq
+#print axioms S11VariableCoefficients.split_integration_by_parts
+#print axioms S11VariableCoefficients.compact_endpoint_split
+#print axioms S11VariableCoefficients.partial_coordinate
+#print axioms S11VariableCoefficients.d3Field_smooth
+#print axioms S11VariableCoefficients.d3_nonzero_response
+#print axioms S11VariableCoefficients.d4Field_smooth
+#print axioms S11VariableCoefficients.d4_nonzero_response
+#print axioms S11VariableCoefficients.nonzero_weighted_correction
+#print axioms S11VariableCoefficients.interfaceWitness_eq
+#print axioms S11VariableCoefficients.d3_traction_nonzero
+#print axioms S11VariableCoefficients.d4_traction_nonzero
+#print axioms S11VariableCoefficients.trace_jump_nonzero
+#print axioms S11VariableCoefficients.matched_trace_zero

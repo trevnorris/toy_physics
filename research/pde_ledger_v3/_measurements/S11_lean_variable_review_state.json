@@ -1,0 +1,52 @@
+{
+  "status": "COMPLETE",
+  "scope": "Bounded S11 VC1\u2013VC4 independent fidelity review",
+  "packet_revision": "S11 variable-coefficient and flat-interface VC1\u2013VC4 fidelity contract v1",
+  "packet_sha256": "8152df86a31ecaabe89713a3fb178c7c469885f905b9e486207bbc695c02cf45",
+  "file_count": 61,
+  "archive": "research/pde_ledger_v3/_measurements/S11_lean_variable_review_packet_v1.tar.gz",
+  "archive_sha256": "32e7b1acf2caaf3c329d3f8a31c53b5255d95e4c356a6d72ccefcd66c77ca8f6",
+  "archive_bytes": 152760,
+  "packet_directory": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_variable/review_packet_v1",
+  "manifest": "research/pde_ledger_v3/_measurements/S11_lean_variable_review_packet.json",
+  "manifest_sha256": "1abf833f0806dcc518836ded7775a7808d73846f84d12b0dbc4462fab8b359bf",
+  "destinations": [
+    "Claude",
+    "Grok"
+  ],
+  "external_reviews_started": true,
+  "local_verification": "PASS: 34 imports plus five modules/root built in run1 and all 40 reused with full guards in run2; 31 standard-axiom audits; 12 fresh mathematical rejections; 16 fresh positives; 7 native identities and 10 controls; current source/input/output hashes match",
+  "prepared_utc": "2026-09-17T02:19:45.200428+00:00",
+  "snapshot_validation": "PASS: live files, snapshot and archive member hashes all agree",
+  "review_verdicts": {
+    "claude": "CLEAR",
+    "grok": "CLEAR"
+  },
+  "completion_claimed": true,
+  "authorization_context": "User explicitly approved the exact packet identified in the preceding permission request. Do not request permission again for these two reviews.",
+  "pinned_export_constraint": "All S11c calculation files and pinned exports remain untouched and are not in this packet. The existing S11 stray-longitudinal native engine, selected-source extraction helper and two historical native reports are read-only review context.",
+  "authorization_quote": "Approved.",
+  "authorization_full_message": "Approved. Then give me a write up for the other session (if there's a file please list it by name since it's not copied out of left as a link)",
+  "authorization_recorded_utc": "2026-09-17T02:22:38.685508+00:00",
+  "authorization_scope": "Transfer this fixed 61-file VC1\u2013VC4 packet to Claude and Grok for independent fidelity reviews; prepare a local pass-along writeup outside the frozen packet. No new commit authorization.",
+  "review_started_utc": "2026-09-17T02:23:42.278471+00:00",
+  "transport_directory": "/tmp/s11-lean-variable-fidelity-91yap8tg/packet",
+  "launch_preflight": {
+    "status": "PASS",
+    "packet_sha256": "8152df86a31ecaabe89713a3fb178c7c469885f905b9e486207bbc695c02cf45",
+    "file_count": 61,
+    "compiled_objects": 40,
+    "preserved_T1_objects": 5,
+    "checked": "Archive/snapshot/live files; source/instruments/reports/logs/input/output objects; package pins and direct Mathlib bytes; historical proof bytes"
+  },
+  "supervisor_pid": 646226,
+  "review_supervisor_sha256": "e5ea08b92845844b6c0804503328a8fa1f2932079fef151901702b1a04e624a9",
+  "review_supervisor_finished_utc": "2026-09-17T02:36:08.693977+00:00",
+  "live_files_changed_since_packet": [],
+  "completed_utc": "2026-09-17T02:43:26.934833+00:00",
+  "closure_validation": "_measurements/S11_lean_variable_closure_validation.json",
+  "closure_validation_sha256": "4c285ba2eeaafc8cc29669de70e5ebd2549703ee9591468bf75c39ecb106f59c",
+  "post_review_changes": "Documentation only; frozen packet and canonical proof/instrument/evidence bytes unchanged.",
+  "continuation_authorization": "_measurements/S11_lean_variable_continuation_authorization.json",
+  "checkpoint_status": "User-authorized checkpoint; this state is recorded before the enclosing Git commit."
+}

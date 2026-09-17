@@ -1,0 +1,102 @@
+Independent non-author fidelity review: bounded VC1–VC4 variable-coefficient
+bulk identities and flat-interface normal-slice/trace contract.
+
+Read MANIFEST.json, lean/FORMALIZATION_POLICY.md, and the coverage, fidelity
+and verification documents named VARIABLE_COEFFICIENT_* in lean/s11. Read the
+five S11VariableCoefficients modules and audit root, checking the reused D3/D4
+definitions and theorems where needed. The packet contains the full local
+import closure, package pins and generators, compact native inputs and helper,
+formal/native instruments and reports, and author validation. Mathlib itself
+is not packaged; clean package pins and direct import source/object hashes
+are recorded. Reported builds and hash validation are author evidence unless
+independently checked. Paths are relative to the packet root.
+
+Review actual statement fidelity, hypotheses, quantifiers, normalizations,
+proof logic, action identification and interpretation. Build counts alone are
+not clearance. Stay within the declared scope: these are the previously
+reviewed local D3 family and D4 odd density, not the complete S11c operator.
+
+VC1: G_ij=partial_i u_j has spatial derivative rows. Point D has time followed
+by D spatial coordinates; Fin indices use i.succ for the spatial row. The
+prescribed smooth profiles are held fixed under variation; spacetime profiles
+are allowed. The D3 action is -[a(div u)^2+b tr(G^2)+c sum_ij G_ij^2]/2.
+Check actual jet derivative momenta, pointwise variation and local EL=-div p:
+ EL_j=(a+b)partial_j div u+c Delta u_j+(partial_j a)div u
+      +sum_i(partial_i b)partial_j u_i+sum_i(partial_i c)partial_i u_j.
+In particular, check the transposed b-gradient index against the actual
+momentum. Constants recover the old operator. For a=-b,c=0 check the remaining
+gradient residual and the explicit nonzero field example. No coefficient
+positivity, transverse ansatz, stationarity or background field equation is
+assumed. Zero time momentum does not require time-independent profiles/fields.
+No new integrated first-variation theorem is claimed for these profiles.
+
+VC2: verify the generic weighted-divergence product rule and its D3/D4 current
+instances, including signs and the action factor -1/2. For reviewed D4
+P=F01 F23-F02 F13+F03 F12, F=G-G^T, M_ij=partial P/partial G_ij, L=-beta P/2,
+check actual momenta -beta M/2, zero time row and
+ EL_j=(1/2)sum_i(partial_i beta)M_ij.
+The old constant-beta cancellation uses sum_i partial_i M_ij=0. Check that
+the weighted density retains +1/2 times the gradient/current contraction,
+so constant-coefficient bulk equivalence cannot erase boundary or profile
+terms. P follows the native computed odd-basis normalization; epsilon summed
+over all indices equals 2P. No classification of every possible variable
+profile giving zero response is claimed.
+
+VC3: inspect the actual two-interval integration-by-parts theorem and all its
+HasDerivAt and IntervalIntegrable premises, not just the algebraic jumpPair.
+Fluxes have separate real-line representatives, differentiable on each closed
+interval; this is stronger than a theorem about only one-sided weak traces.
+The same test h provides a common trace. Retain endpoints and the exact sign
+ (p_minus(c)-p_plus(c))*h(c).
+Oriented interval integrals do not require a<=c<=b, although the physical
+adjacent-interval interpretation does. The endpoint-zero corollary assumes
+h(a)=h(b)=0, not compact support. Check the explicit nonzero integral witness.
+The independent finite-dimensional pairing criterion quantifies over all
+test values: pairing zero iff the flux vectors match. D3/D4 traction is normal
+momentum flux n_i dL/dG_ij; physical stiffness traction has the opposite sign.
+The normal orientation is minus to plus. No surface action/source, weak-trace
+existence, solution trace surjectivity, field continuity, tangential Fubini
+lifting or general multidimensional stationarity/transmission result is proved.
+Check that these limits are accurate rather than adding broader hypotheses
+as purported completion requirements for the bounded slice theorem.
+
+VC4: examine the twelve paired mathematical rejections and sixteen positives.
+Each accepted mutant has exactly one unsolved False in contract_control.
+These are concrete statement mutations, not source replacements in the general
+proofs. Actual smooth fields give D3 EL=(1,0,0) and D4 EL=(0,1/2,0,0): Lean
+proves the specified nonzero component and the native check verifies the full
+vectors. Nonzero momentum tractions and an actual interval integral test signs/factors/jumps.
+Constant/equal-trace cases test admissibility. Assess whether this bounded
+suite is adequate for its load-bearing claims and accurately limited.
+
+The compact native instrument uses selected original Q9/coordinate helpers,
+without importing the production driver. Inspect the D3 basis identification
+and D4 native P_D=P. The new instrument itself derives variable-profile
+momentum divergence; the old constant-coefficient EL helper is not said to
+perform this extension. The native checks use spatial profiles; Lean permits
+spacetime profiles with zero time momentum. Seven exact identities and ten native controls pass.
+The derivative-index control has b=x1,a=c=0,u=(x2,0,0): actual EL=(0,1,0),
+wrong transposed b-gradient response zero. Source correspondence is tested
+symbolically, not kernel-certified CAS evaluation or an S11c-wide fidelity link.
+
+Author evidence: run1 passed 34 unchanged imports, five new modules and audit
+root, with 31 standard-axiom declarations. It stopped on finite-vector
+reduction in an extra positive control, not a mathematical mutation. Adding
+Matrix.cons_val_two to that control preserved all canonical sources/objects.
+Run2 reused forty recorded builds under full transitive source/pin/generator,
+command and input/output guards, and ran all 28 controls freshly. The native
+instrument was also rerun. Historical proofs/evidence and five T1 objects
+match; earlier D3/D4 objects may differ after unchanged dependency rebuilds.
+Focused objects are not recorded reuse evidence. The existing transitive
+Mathlib cache is the pinned trust baseline. State your own verification limits;
+do not claim to have run Lean, native code or hashes unless actually done.
+
+No file modifications or production runs. No new D5, curved/Sobolev interface,
+general null-Lagrangian, full S11c operator, spectrum/scattering/pole scope,
+systematic CAS bridge or every-output checking. Distinguish required fidelity
+corrections from optional stronger results.
+
+Return a substantive terminal report: CLEAR or NOT CLEAR; the packet identifier
+(as supplied unless recomputed); assumptions/conventions checked; findings
+with file/theorem references; and limits of verification. Partial, errored,
+plan-only or unsupported approval responses do not count as clearance.

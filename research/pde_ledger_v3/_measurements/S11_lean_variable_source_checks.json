@@ -1,0 +1,46 @@
+{
+  "status": "PASS",
+  "checked_utc": "2026-09-17T02:08:19.518747+00:00",
+  "instrument_sha256": "6d9f357e0652d0118004996e3348731cf5cfe22cad527090fae703991815be16",
+  "source_sha256": {
+    "scripts/S11_stray_longitudinal_sympy_audit.py": "dc77f30b3e0b2b72aa13c7531a586e6ef50167949e645d99378de8527e06bfe2",
+    "_measurements/S11_lean_d4_odd_source_check.py": "9da5336022d53f7f7f132ce613bb207c54bdd80dd3197cb702ee6c3842d97e04",
+    "_measurements/S11_lean_d3_bulk_source_checks.json": "dd61056ce58152e647b7d8c828bf195a445aa7924e5b9eb75ec478fb6a51a14c",
+    "_measurements/S11_lean_d4_odd_source_checks.json": "9c7e7669f635ca920a8d5dd5df4bc37abb5ecca2d22af0e5669e9dec25f2bcc5"
+  },
+  "identities": {
+    "D3_native_density": true,
+    "D3_EL_product": true,
+    "D3_weighted_null": true,
+    "D4_native_PD": true,
+    "D4_EL_gradient": true,
+    "D4_weighted_current": true,
+    "normal_slice_integral_jump": true
+  },
+  "controls": {
+    "D3_omit_gradient": true,
+    "D3_gradient_sign": true,
+    "D3_omit_weighted_current_correction": true,
+    "D3_wrong_derivative_index": true,
+    "D4_zero_bulk_claim": true,
+    "D4_factor": true,
+    "D4_sign": true,
+    "D4_omit_weighted_correction": true,
+    "interface_omission": true,
+    "interface_reversed_sign": true
+  },
+  "witnesses": {
+    "D3_index_witness": {
+      "actual_EL": "Matrix([[0], [1], [0]])",
+      "transposed_b_gradient_claim": "Matrix([[0], [0], [0]])"
+    },
+    "D3_variable_null_witness": "Matrix([[1], [0], [0]])",
+    "D4_variable_beta_witness": "Matrix([[0], [1/2], [0], [0]])",
+    "normal_slice_jump": "-3"
+  },
+  "limits": [
+    "Selected native Q9 densities and coordinate helpers only. Variable-profile total divergence derived by this instrument; old constant-coefficient EL helper is not used for this extension.",
+    "Only the reviewed D3 family and D4 odd density. No full S11c operator identification, production driver, pinned export or Wolfram execution.",
+    "Normal-slice interface witness; no multidimensional trace theorem or distribution product is claimed."
+  ]
+}

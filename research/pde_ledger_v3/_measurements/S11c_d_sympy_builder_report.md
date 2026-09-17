@@ -1,5 +1,13 @@
 # S11c-d SymPy builder checkpoint
 
+The user-approved [nonlinear pole correction](../directives/S11c_d_NONLINEAR_POLE_CONTRACT.md)
+now governs the remaining pole work and its export requirements. It replaces the
+unrestricted projector prescription with full Laurent data, conditional modal
+projections and justified Riesz realizations. The [repair report](S11c_d_nonlinear_pole_repair_report.md)
+records exact controls and provenance. The active quadrature's pinned v10 sources
+and the retained contract suffix below stay byte-identical; its pole shorthand
+is interpreted under this correction. No physical pole result is yet computed.
+
 RIGHT current/adjoint normalization is validated and published for the supplied
 LAB_HELD / RHO4_CONSTANT case: all 18 root/lift candidates, 22 basis directions,
 18 invertible field maps, and two current-normalized two-dimensional subspaces.

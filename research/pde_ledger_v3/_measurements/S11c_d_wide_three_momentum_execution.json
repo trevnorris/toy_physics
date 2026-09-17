@@ -11,7 +11,7 @@
   "workerAddressSpaceBytes": 2147483648,
   "preflightRunRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-wide-three-20260916/preflight",
   "launcherSha256": "b61932fe6e0a79bd8ad12a3213e56055653a93cbcebbbf94537694c51b526d0c",
-  "next": "Silent local watcher owns completion/error wake-up. Validate full fixed-wide-box triple refinement, publish accepted transcript via DataLad, then choose further independent triple or physical tail checks from actual evidence.",
+  "next": "Silent local watcher owns completion/error wake-up. Validate and publish the full fixed-wide-box triple refinement against its original frozen sources, then read the accepted nonlinear-pole repair checkpoint and carry the corrected authority into new stages before selecting further independent triple or physical tail checks from actual evidence.",
   "implementationCommit": "a70c4ca3",
   "launch": {
     "launchedUtc": "2026-09-16T18:38:53.235234+00:00",
@@ -102,5 +102,14 @@
   "productionLaunchVerification": {
     "path": "/var/projects/toy_physics/_scratch/s11c/s11c-wide-three-20260916/production/launch-verification.json",
     "sha256": "c7a04bc74c5e1d819fde3f501d17f4216268c133c9d7b922a1b890c376c3ae10"
+  },
+  "approvedPoleContractRepair": {
+    "authority": "directives/S11c_d_NONLINEAR_POLE_CONTRACT.md",
+    "authoritySha256": "2b6018faf0d5ca772bf9c980174d8ebe7545127a3bf43ba01d1b3c0b6a5be423",
+    "checkpoint": "_measurements/S11c_d_nonlinear_pole_repair_checkpoint.json",
+    "checkpointSha256": "dd2b421e8605c680cc831b3ee67d0554a80b2ebbdc55fa839f2f33168d0f583f",
+    "status": "ACCEPTED_ADDITIVE_CONTRACT_REPAIR",
+    "activePinnedSourcesUnchanged": 87,
+    "disposition": "Complete and validate current action quadrature on its original frozen inventory. New stages must add nonlinearPoleV2 authority and this explicit dependency disposition to provenance; no pole-related numerical rerun is indicated."
   }
 }

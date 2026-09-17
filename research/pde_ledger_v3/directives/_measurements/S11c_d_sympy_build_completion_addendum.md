@@ -1,8 +1,10 @@
 # S11c-d SymPy build — COMPLETION mandate (resume pass; extend the existing prototype)
 
-⭐ **This is a RESUME of an incomplete build, not a new build.** Your authority is unchanged: the cleared build
+⭐ **This is a RESUME of an incomplete build, not a new build.** Your authority consists of the build
 directive `directives/S11c_d_sympy_build_directive.md` (governs the build-mechanical layer) and, through it, the
-cleared physics spec `directives/S11c_d_SHARED_PHYSICS.md` (v10, `399a8516`, the physics authority). Read both.
+physics spec `directives/S11c_d_SHARED_PHYSICS.md` (v10, `399a8516`) with the user-approved correction
+`directives/S11c_d_NONLINEAR_POLE_CONTRACT.md` (`nonlinearPoleV2`). Read and pin the correction as well; it governs
+all repeated pole/projector requirements. Preserve the active run's frozen v10 file and historical inventories.
 Model: `gpt-6-astra`. All of the directive's obligations bind — the three script clauses, input-driven construction,
 the §3 census (all five payload slots), leak discipline, and the builder lane (build → run → report → **stop**; ⛔ no
 legs, comparator, WL engine, downstream steps, or commits).
@@ -29,7 +31,8 @@ unexecuted construction — the prototype correctly refused to, keep that discip
 3. **§3a:** modal energy current (S11b bilinear on the reduced operator), nonlinear-pencil normalization, the
    **complete two-ended channel S-matrix** (both incident ends, every open channel), conversion amplitude, continuum
    `T→H` flux functional.
-4. **§3b:** pole set + normalized Riesz residues/projectors + sheet/normalizability/width/all-channel-closure tests +
+4. **§3b:** pole set + physical Laurent principal parts and conditional projection/realization data under
+   `nonlinearPoleV2` + sheet/normalizability/width/all-channel-closure tests +
    spectral overlap (⛔ no capture probability), and the transverse survival functional.
 5. **§3c/§3d:** amplitude components + multigrade, physical flux baseline/interference/quadratic slots, total
    conversion fraction, induced-field quadratic form, N12 baseline/interference operands; weak Taylor coefficients +
@@ -40,7 +43,7 @@ unexecuted construction — the prototype correctly refused to, keep that discip
    flux-normalized dimensionless conversion FORM (⛔ no typed expected shape). Each = the object **and** its literal
    residual (both operands).
 7. **The export:** write `scripts/S11c_d_exports.py` as the own-rows delta (directive §5 membership: S-matrix /
-   conversion amplitude / continuum flux + survival / **bound pole set + Riesz + spectral overlap** / §3d weak
+   conversion amplitude / continuum flux + survival / **bound pole set + typed nonlinearPoleV2 data + spectral overlap** / §3d weak
    coefficients + recursive closure), with the bind-closure `assert_delta_is_minimal` guard and the casewise
    compact-vs-expanded semantic check. Everything else is EMIT-only (§5).
 

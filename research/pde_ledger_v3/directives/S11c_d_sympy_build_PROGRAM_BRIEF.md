@@ -8,6 +8,9 @@ When a turn ends before completion, stop at a **runnable checkpoint** and state 
 ## Authorities (read both — they bind; this brief only frames the program + state + discipline)
 - **Physics authority:** `directives/S11c_d_SHARED_PHYSICS.md` (cleared v10, committed `399a8516`). Every equation,
   premise, object, control, and the reduced-representation rule come from here.
+- **Approved pole correction:** `directives/S11c_d_NONLINEAR_POLE_CONTRACT.md` (`nonlinearPoleV2`) supersedes v10's
+  unrestricted pole/projector and promotion clauses and every repeated shorthand below. Read and pin both authorities.
+  The v10 file remains unchanged while the active finite-action production consumes its frozen baseline.
 - **Build-mechanical authority:** `directives/S11c_d_sympy_build_directive.md` (cleared: 3-parent import wiring +
   `IMPORT_KEYS` rule + the §1c Fourier-reduction element census against the real closed rows + leak discipline).
 - Supporting: the reduction census `directives/_measurements/S11c_d_sympy_build_directive_census.md`; the staging
@@ -59,7 +62,8 @@ EMIT tag; ⛔ no typed `√(v_out/v_in)`); nonlinear-pencil normalization `N_ab=
 two-ended channel S-matrix** (both incident ends `∈{−,+}`, every open reflected/transmitted mode); the conversion
 amplitude; the continuum `T→H` flux functional with the end-orientation factors.
 
-**C. §3b poles + survival.** The pole set of the retained pencil `𝓛(ω)` + normalized Riesz residues/projectors +
+**C. §3b poles + survival.** The pole set of the retained pencil `𝓛(ω)` + complete physical Laurent principal parts,
+conditional semisimple modal projections and justified Riesz realization data under `nonlinearPoleV2` +
 sheet/normalizability/width/all-channel-closure tests + spectral overlap (⛔ spectral overlap only — no capture
 probability/rate; a determinant/Jost value is a noncanonical diagnostic, ⛔ not a comparator key; an empty pole set is
 allowed **only** if computed, ⛔ never substituted for an unexecuted solve). The reflected+transmitted transverse
@@ -79,7 +83,7 @@ computed flux-normalized dimensionless conversion **FORM** (from the complete S-
 vertex; ⛔ no typed expected shape, ⛔ not a single-gradient subchannel).
 
 **F. Export.** `scripts/S11c_d_exports.py` as the own-rows delta (directive §5 membership: complete S-matrix /
-conversion amplitude / continuum `T→H` flux + transverse survival / **bound pole set + Riesz + spectral overlap** /
+conversion amplitude / continuum `T→H` flux + transverse survival / **bound pole set + typed nonlinearPoleV2 data + spectral overlap** /
 §3d weak coefficients + their recursive new coordinate/function/dimension bind-closure). Run `assert_delta_is_minimal`
 (bind-closure guard) and the casewise compact-vs-expanded semantic check
 `canonicalize(expanded_emitted_root − decode(compact_export_root)) == 0`. Store exports **transparent-factored**

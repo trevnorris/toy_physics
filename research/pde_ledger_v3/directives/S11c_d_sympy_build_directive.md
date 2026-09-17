@@ -1,7 +1,9 @@
 # S11c-d — SymPy build directive (profile-conditioned transverse↔thickness scattering; SymPy engine)
 
-⭐ **THIN directive.** All physics is the cleared spec `directives/S11c_d_SHARED_PHYSICS.md` (v10, **CLEARED**,
-committed `399a8516`; round-10 dual-engine gate both legs SOUND). This directive ⛔ does **not** restate or re-derive
+⭐ **THIN directive.** Physics comes from `directives/S11c_d_SHARED_PHYSICS.md` (v10, historical cleared baseline
+`399a8516`) together with the user-approved `directives/S11c_d_NONLINEAR_POLE_CONTRACT.md` (`nonlinearPoleV2`).
+The addendum supersedes the identified pole/projector and promotion clauses; its approval is not an independent
+review claim. The pinned v10 baseline stays unchanged during active finite-action production. This directive ⛔ does **not** restate or re-derive
 the physics (a re-wording is weaker and drifts, [[feedback_point_at_the_obligation_never_restate_it]]) — it POINTS at
 the spec and fixes only the **build-mechanical** layer: the import wiring, the exact `IMPORT_KEYS` root set, the
 **deferred §1c 3-D→1-D Fourier-reduction element census against the real closed rows** (§3 — the spec deferred this
@@ -13,7 +15,7 @@ here on purpose, `S11c_d_SHARED_PHYSICS.md:114-116,253-255`), the emit tags, and
 - **Deliverable export:** `scripts/S11c_d_exports.py` (own-rows delta; §5).
 - **Deliverable builder report:** `_measurements/S11c_d_sympy_builder_report.md` (the frozen import/reduction map +
   per-object which-line-computed-it + literal §5 residuals — ⛔ no verdicts).
-- **Physics authority (SUPPLIED, unfalsifiable in this build):** the whole S11c-d spec `399a8516`. This directive
+- **Physics authority (SUPPLIED, unfalsifiable in this build):** the S11c-d v10 baseline plus the approved pole addendum. This directive
   governs the **SymPy** engine only; the blind Wolfram engine + the T7 comparator are separate downstream artifacts
   with their own directives.
 
@@ -51,7 +53,8 @@ the chain at the ACTION / the imported operands, ⛔ never at a result.*
 ---
 
 ## 1 · What to build — POINTERS to the cleared spec (⛔ do not restate the physics)
-Build the S11c-d profile-conditioned mixing/scattering object exactly per `S11c_d_SHARED_PHYSICS.md`:
+Build the S11c-d profile-conditioned mixing/scattering object per `S11c_d_SHARED_PHYSICS.md`, with the pole clauses
+and their repeated requirements governed by `S11c_d_NONLINEAR_POLE_CONTRACT.md`:
 - **§0** scope (in/out); **§1a** the two consumed c2 closed rows + carriers (SUPPLIED); **§1b** the per-engine-SOUND
   vs **cross-engine-UNCLOSED** disposition — ⛔ do **not** treat the carried cross-engine operand agreement on the
   coupling kernel as closed (qualitative premise, §6 here); **§1c** the localized-interface profile class + branchwise
@@ -67,7 +70,7 @@ Build the S11c-d profile-conditioned mixing/scattering object exactly per `S11c_
   bilinear derived from the **S11b quadratic energy current on the reduced operator** (⛔ do **not** import/cite a c2
   traction–slab-pairing EMIT tag; ⛔ no typed `√(v_out/v_in)`); **§3b** the two **DISTINCT** photon-kill channels
   (continuum conversion + the **PROFILE-FUNCTIONAL, computed-conditional** bound pole — ⛔ do **not** invoke the 1-D
-  weak-well theorem, `N13`; emit pole set + normalized Riesz residues/projectors + sheet/normalizability/width/
+  weak-well theorem, `N13`; emit pole set + typed `nonlinearPoleV2` singular/projection data + sheet/normalizability/width/
   all-channel-closure tests + **spectral overlap only**, ⛔ no capture probability/rate; a determinant/Jost value is a
   noncanonical diagnostic, ⛔ not a comparator key) + the reflected-plus-transmitted **transverse survival functional**;
   **§3c** the order bookkeeping (`A₀`/zero-jet/first-jet/`ΔA` multigrade; physical flux **baseline/interference/
@@ -256,8 +259,10 @@ dimension (⛔ no object reported without both — [[feedback_dimensional_consis
   `S11CD_MODAL_FLUX_BILINEAR` (left/right modes, `∂_ω𝓛`, current matrices, normalization maps),
   `S11CD_COMPLETE_CHANNEL_S_MATRIX` (both incident ends; field- and flux-normalized), `S11CD_CONVERSION_AMPLITUDE`,
   `S11CD_CONTINUUM_T_TO_H_FLUX_FUNCTIONAL`.
-- **§3b:** `S11CD_CONTINUUM_CONVERSION`, `S11CD_BOUND_POLE_SET_AND_RIESZ_DATA` (poles, residues, projectors,
-  sheet/closure tests; **may be empty**), `S11CD_BOUND_SPECTRAL_OVERLAP`, `S11CD_TRANSVERSE_SURVIVAL_FUNCTIONAL`.
+- **§3b:** `S11CD_CONTINUUM_CONVERSION`, `S11CD_BOUND_POLE_SET_AND_RIESZ_DATA` (compatibility container with explicit
+  `nonlinearPoleV2` schema: physical principal parts, conditional modal projections, justified Riesz realization data,
+  multiplicities and sheet/closure tests; an empty set requires a completed scoped search),
+  `S11CD_BOUND_SPECTRAL_OVERLAP` (typed forcing/observation response), `S11CD_TRANSVERSE_SURVIVAL_FUNCTIONAL`.
 - **§3c:** `S11CD_AMPLITUDE_COMPONENTS_AND_MULTIGRADE` (`A₀,A_zero-jet,A_first-jet,ΔA`),
   `S11CD_TOTAL_CONVERSION_FLUX_EXPANSION` (baseline/interference/quadratic slots),
   `S11CD_TOTAL_T_TO_H_CONVERSION_FRACTION`, `S11CD_INDUCED_FIELD_QUADRATIC_FORM`,
@@ -289,7 +294,9 @@ states **which line computed it**.
 Write `scripts/S11c_d_exports.py` as an **own-rows delta** (⛔ not the accumulated whole-model file). Membership = the
 bind-closure (D1); `assert_delta_is_minimal` requires the delta's key-set = S11c-d's own bind-closure ∪ infra.
 `BUILD_INPUT_DIGESTS` pins `{this SymPy audit, scripts/S11c_b_exports.py, scripts/S11c_c1_exports.py,
-scripts/S11c_c2_exports.py, this spec, scripts/ledger_fold.py}` (§D3). ⛔ Never `git add -f` a big `.out`; ⛔ never
+scripts/S11c_c2_exports.py, this spec, directives/S11c_d_NONLINEAR_POLE_CONTRACT.md, scripts/ledger_fold.py}` (§D3).
+The added authority digest applies to new construction/export; do not rewrite historical input inventories.
+⛔ Never `git add -f` a big `.out`; ⛔ never
 annex an `*_exports.py`.
 
 ⭐⭐ **EMIT ≠ EXPORT — export ONLY what S11c-e binds (D1); everything else is EMIT-only (→ `.out`).** §4 lists what to
@@ -312,7 +319,7 @@ decision legs settle the exact export membership against that declared scope.
 
 ⛔ **EMIT-ONLY (→ `.out`, ⛔ NOT the ledger export):** the §3 reduction records/reconstruction round-trips, the
 amplitude-component/flux-slot bookkeeping, and **every §5 control operand/residual** (comparison/emit representations
-— the T7 reads them from stdout; ⛔ nothing downstream binds them). ⚠ The bound pole set / Riesz residues/projectors /
+— the T7 reads them from stdout; ⛔ nothing downstream binds them). ⚠ The bound pole set / typed nonlinearPoleV2 singular/projection data /
 spectral overlap are **EXPORTED** (above), ⛔ not emit-only — they are the declared resonance/local-spectrum handoff.
 
 ⭐ **Store the exported objects in a TRANSPARENT compact encoding** — an ordinary algebraically-equivalent factored

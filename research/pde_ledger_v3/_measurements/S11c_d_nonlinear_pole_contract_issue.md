@@ -1,6 +1,9 @@
 # S11c-d nonlinear-pole specification issue and proposed repair
 
-Status: **confirmed specification issue; repair awaits user approval**. The
+Status: **repair approved by the user after checkpoint `d9d4787e`**. The
+effective correction is `directives/S11c_d_NONLINEAR_POLE_CONTRACT.md`; see
+`S11c_d_nonlinear_pole_repair_report.md` for validation and adoption. The original
+assessment below is preserved with its original evidence and proposed scope. The
 running wider-box three-momentum quadrature may continue against its frozen
 inputs. No numerical result, governing authority, physics engine, export or
 Lean file is changed by this assessment.
@@ -61,7 +64,7 @@ as a whole file: editing it during production would break the strict source
 join. Leave it unchanged until the run is validated; later changes require an
 explicit provenance/dependency join, never replacement hashes alone.
 
-## Proposed repair, not yet adopted
+## Original proposed repair (subsequently approved)
 
 1. State fixed domain/codomain spaces, a local analytic sheet, isolation and
    regularity hypotheses. In the nonlocal setting provide the required analytic
@@ -92,10 +95,10 @@ explicit provenance/dependency join, never replacement hashes alone.
    and assumption controls for the repair. Audit actual consumers before any
    recomputation. No S11c-d Wolfram implementation was found in `mathematica/`.
 
-The user requested confirmation for a newly discovered upstream physical repair.
-Only the diagnostic and proposed scope are checkpointed now. Independent
-completion validation/publication of the already running action quadrature can
-proceed; adoption of this pole-contract repair waits for that confirmation.
+The original assessment paused adoption because the user requested confirmation
+for a newly discovered upstream physical repair. That confirmation has now been
+given. Independent completion validation/publication of the already running
+action quadrature continues under its original immutable input inventory.
 
 ## Analytic proof handoff
 

@@ -1,0 +1,2180 @@
+{
+  "schema": "nonlinearPoleV2ExactControls",
+  "scope": "Synthetic dimensionless mathematical controls only.",
+  "metadata": {
+    "unitLTM": [
+      0,
+      0,
+      0
+    ],
+    "epsEtaSigmaWOrder": [
+      0,
+      0,
+      0
+    ],
+    "lambdaOrder": 0
+  },
+  "sourceFiles": {
+    "_measurements/S11c_d_nonlinear_pole_contract_check.py": "5d5f7170693fc2ded40a3aaf0b0241e5ea331114fe95dd06d9bd0d80de7b2350",
+    "_measurements/S11c_d_nonlinear_pole_contract_probe.json": "690719bf8dd6fda2c814f856689a623cc4e8a8c8231ca95c215842e776400b20",
+    "directives/S11c_d_NONLINEAR_POLE_CONTRACT.md": "2b6018faf0d5ca772bf9c980174d8ebe7545127a3bf43ba01d1b3c0b6a5be423",
+    "directives/S11c_d_sympy_build_PROGRAM_BRIEF.md": "889e338feae14b5b1e81a36a706301566d2b3a8cc89024bd26afcd2ccfa51341",
+    "directives/S11c_d_sympy_build_directive.md": "5f64991f50803f3bd2728bc18859d536ec996166dafa994f197224d8b7213024",
+    "directives/_measurements/S11c_d_sympy_build_completion_addendum.md": "d564d3e9b240225d77932518fdd98c902741e579ad50042d25918ead3bee3532"
+  },
+  "principalParts": {
+    "double": {
+      "pencil": [
+        [
+          "z**2"
+        ]
+      ],
+      "inverse": [
+        [
+          "z**(-2)"
+        ]
+      ],
+      "order": 2,
+      "coefficients": [
+        [
+          [
+            "0"
+          ]
+        ],
+        [
+          [
+            "1"
+          ]
+        ]
+      ],
+      "holomorphicRemainder": [
+        [
+          "0"
+        ]
+      ],
+      "logarithmicIntegral": [
+        [
+          "2"
+        ]
+      ],
+      "logarithmicIdempotencyResidual": [
+        [
+          "2"
+        ]
+      ]
+    },
+    "mixed": {
+      "pencil": [
+        [
+          "z**2",
+          "0"
+        ],
+        [
+          "0",
+          "z"
+        ]
+      ],
+      "inverse": [
+        [
+          "z**(-2)",
+          "0"
+        ],
+        [
+          "0",
+          "1/z"
+        ]
+      ],
+      "order": 2,
+      "coefficients": [
+        [
+          [
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "1"
+          ]
+        ],
+        [
+          [
+            "1",
+            "0"
+          ],
+          [
+            "0",
+            "0"
+          ]
+        ]
+      ],
+      "holomorphicRemainder": [
+        [
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "logarithmicIntegral": [
+        [
+          "2",
+          "0"
+        ],
+        [
+          "0",
+          "1"
+        ]
+      ],
+      "logarithmicIdempotencyResidual": [
+        [
+          "2",
+          "0"
+        ],
+        [
+          "0",
+          "0"
+        ]
+      ]
+    },
+    "affineJordan": {
+      "pencil": [
+        [
+          "z",
+          "-1"
+        ],
+        [
+          "0",
+          "z"
+        ]
+      ],
+      "inverse": [
+        [
+          "1/z",
+          "z**(-2)"
+        ],
+        [
+          "0",
+          "1/z"
+        ]
+      ],
+      "order": 2,
+      "coefficients": [
+        [
+          [
+            "1",
+            "0"
+          ],
+          [
+            "0",
+            "1"
+          ]
+        ],
+        [
+          [
+            "0",
+            "1"
+          ],
+          [
+            "0",
+            "0"
+          ]
+        ]
+      ],
+      "holomorphicRemainder": [
+        [
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "logarithmicIntegral": [
+        [
+          "1",
+          "0"
+        ],
+        [
+          "0",
+          "1"
+        ]
+      ],
+      "logarithmicIdempotencyResidual": [
+        [
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0"
+        ]
+      ]
+    },
+    "semisimple": {
+      "pencil": [
+        [
+          "z",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "2*z",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "z + 1"
+        ]
+      ],
+      "inverse": [
+        [
+          "1/z",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "1/(2*z)",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "1/(z + 1)"
+        ]
+      ],
+      "order": 1,
+      "coefficients": [
+        [
+          [
+            "1",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "1/2",
+            "0"
+          ],
+          [
+            "0",
+            "0",
+            "0"
+          ]
+        ]
+      ],
+      "holomorphicRemainder": [
+        [
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "1/(z + 1)"
+        ]
+      ],
+      "logarithmicIntegral": [
+        [
+          "1",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "1",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "0"
+        ]
+      ],
+      "logarithmicIdempotencyResidual": [
+        [
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "0"
+        ]
+      ]
+    }
+  },
+  "fullChainSystems": {
+    "double": [
+      {
+        "length": 1,
+        "taylorSystem": [
+          [
+            "0"
+          ]
+        ],
+        "fullBasis": [
+          [
+            "1"
+          ]
+        ],
+        "nullity": 1,
+        "rank": 0
+      },
+      {
+        "length": 2,
+        "taylorSystem": [
+          [
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "0"
+          ]
+        ],
+        "fullBasis": [
+          [
+            "1",
+            "0"
+          ],
+          [
+            "0",
+            "1"
+          ]
+        ],
+        "nullity": 2,
+        "rank": 0
+      },
+      {
+        "length": 3,
+        "taylorSystem": [
+          [
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "1",
+            "0",
+            "0"
+          ]
+        ],
+        "fullBasis": [
+          [
+            "0",
+            "0"
+          ],
+          [
+            "1",
+            "0"
+          ],
+          [
+            "0",
+            "1"
+          ]
+        ],
+        "nullity": 2,
+        "rank": 1
+      }
+    ],
+    "mixed": [
+      {
+        "length": 1,
+        "taylorSystem": [
+          [
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "0"
+          ]
+        ],
+        "fullBasis": [
+          [
+            "1",
+            "0"
+          ],
+          [
+            "0",
+            "1"
+          ]
+        ],
+        "nullity": 2,
+        "rank": 0
+      },
+      {
+        "length": 2,
+        "taylorSystem": [
+          [
+            "0",
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "1",
+            "0",
+            "0"
+          ]
+        ],
+        "fullBasis": [
+          [
+            "1",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "1",
+            "0"
+          ],
+          [
+            "0",
+            "0",
+            "1"
+          ]
+        ],
+        "nullity": 3,
+        "rank": 1
+      },
+      {
+        "length": 3,
+        "taylorSystem": [
+          [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "1",
+            "0",
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "1",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "0",
+            "0",
+            "1",
+            "0",
+            "0"
+          ]
+        ],
+        "fullBasis": [
+          [
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "1",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "1",
+            "0"
+          ],
+          [
+            "0",
+            "0",
+            "1"
+          ]
+        ],
+        "nullity": 3,
+        "rank": 3
+      }
+    ],
+    "affineJordan": [
+      {
+        "length": 1,
+        "taylorSystem": [
+          [
+            "0",
+            "-1"
+          ],
+          [
+            "0",
+            "0"
+          ]
+        ],
+        "fullBasis": [
+          [
+            "1"
+          ],
+          [
+            "0"
+          ]
+        ],
+        "nullity": 1,
+        "rank": 1
+      },
+      {
+        "length": 2,
+        "taylorSystem": [
+          [
+            "0",
+            "-1",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "1",
+            "0",
+            "0",
+            "-1"
+          ],
+          [
+            "0",
+            "1",
+            "0",
+            "0"
+          ]
+        ],
+        "fullBasis": [
+          [
+            "0",
+            "1"
+          ],
+          [
+            "0",
+            "0"
+          ],
+          [
+            "1",
+            "0"
+          ],
+          [
+            "0",
+            "1"
+          ]
+        ],
+        "nullity": 2,
+        "rank": 2
+      },
+      {
+        "length": 3,
+        "taylorSystem": [
+          [
+            "0",
+            "-1",
+            "0",
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "1",
+            "0",
+            "0",
+            "-1",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "1",
+            "0",
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "0",
+            "1",
+            "0",
+            "0",
+            "-1"
+          ],
+          [
+            "0",
+            "0",
+            "0",
+            "1",
+            "0",
+            "0"
+          ]
+        ],
+        "fullBasis": [
+          [
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "1"
+          ],
+          [
+            "0",
+            "0"
+          ],
+          [
+            "1",
+            "0"
+          ],
+          [
+            "0",
+            "1"
+          ]
+        ],
+        "nullity": 2,
+        "rank": 4
+      }
+    ],
+    "semisimple": [
+      {
+        "length": 1,
+        "taylorSystem": [
+          [
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "0",
+            "1"
+          ]
+        ],
+        "fullBasis": [
+          [
+            "1",
+            "0"
+          ],
+          [
+            "0",
+            "1"
+          ],
+          [
+            "0",
+            "0"
+          ]
+        ],
+        "nullity": 2,
+        "rank": 1
+      },
+      {
+        "length": 2,
+        "taylorSystem": [
+          [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "0",
+            "1",
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "1",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "2",
+            "0",
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "0",
+            "1",
+            "0",
+            "0",
+            "1"
+          ]
+        ],
+        "fullBasis": [
+          [
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "0"
+          ],
+          [
+            "1",
+            "0"
+          ],
+          [
+            "0",
+            "1"
+          ],
+          [
+            "0",
+            "0"
+          ]
+        ],
+        "nullity": 2,
+        "rank": 4
+      },
+      {
+        "length": 3,
+        "taylorSystem": [
+          [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "0",
+            "1",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "1",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "2",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "0",
+            "1",
+            "0",
+            "0",
+            "1",
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "0",
+            "0",
+            "1",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "0",
+            "0",
+            "0",
+            "2",
+            "0",
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "1",
+            "0",
+            "0",
+            "1"
+          ]
+        ],
+        "fullBasis": [
+          [
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "0"
+          ],
+          [
+            "1",
+            "0"
+          ],
+          [
+            "0",
+            "1"
+          ],
+          [
+            "0",
+            "0"
+          ]
+        ],
+        "nullity": 2,
+        "rank": 7
+      }
+    ]
+  },
+  "semisimple": {
+    "pencil": [
+      [
+        "3*z",
+        "2*z",
+        "z"
+      ],
+      [
+        "2*z",
+        "2*z",
+        "z + 1"
+      ],
+      [
+        "0",
+        "0",
+        "z + 1"
+      ]
+    ],
+    "leftCoordinateMap": [
+      [
+        "1",
+        "1",
+        "0"
+      ],
+      [
+        "0",
+        "1",
+        "1"
+      ],
+      [
+        "0",
+        "0",
+        "1"
+      ]
+    ],
+    "rightCoordinateMap": [
+      [
+        "1",
+        "0",
+        "1"
+      ],
+      [
+        "1",
+        "1",
+        "0"
+      ],
+      [
+        "0",
+        "0",
+        "1"
+      ]
+    ],
+    "rightBasis": [
+      [
+        "1",
+        "0"
+      ],
+      [
+        "0",
+        "1"
+      ],
+      [
+        "0",
+        "0"
+      ]
+    ],
+    "leftBasis": [
+      [
+        "1",
+        "0",
+        "0"
+      ],
+      [
+        "0",
+        "-1",
+        "1"
+      ]
+    ],
+    "pairing": [
+      [
+        "3",
+        "2"
+      ],
+      [
+        "-2",
+        "-2"
+      ]
+    ],
+    "rightBasisChange": [
+      [
+        "1",
+        "1"
+      ],
+      [
+        "0",
+        "1"
+      ]
+    ],
+    "leftBasisChange": [
+      [
+        "1",
+        "0"
+      ],
+      [
+        "1",
+        "1"
+      ]
+    ],
+    "residue": [
+      [
+        "1",
+        "-1",
+        "1"
+      ],
+      [
+        "-1",
+        "3/2",
+        "-3/2"
+      ],
+      [
+        "0",
+        "0",
+        "0"
+      ]
+    ],
+    "fieldProjection": [
+      [
+        "1",
+        "0",
+        "1"
+      ],
+      [
+        "0",
+        "1",
+        "-1"
+      ],
+      [
+        "0",
+        "0",
+        "0"
+      ]
+    ],
+    "sourceProjection": [
+      [
+        "1",
+        "0",
+        "0"
+      ],
+      [
+        "0",
+        "1",
+        "-1"
+      ],
+      [
+        "0",
+        "0",
+        "0"
+      ]
+    ],
+    "forcingInjection": [
+      [
+        "1",
+        "0"
+      ],
+      [
+        "0",
+        "1"
+      ],
+      [
+        "1",
+        "1"
+      ]
+    ],
+    "observation": [
+      [
+        "1",
+        "2",
+        "0"
+      ],
+      [
+        "0",
+        "1",
+        "1"
+      ]
+    ],
+    "responseResidue": [
+      [
+        "1",
+        "1"
+      ],
+      [
+        "0",
+        "1/2"
+      ]
+    ],
+    "incorrectProjectorResponse": [
+      [
+        "6",
+        "8"
+      ],
+      [
+        "2",
+        "3"
+      ]
+    ],
+    "mapTypes": {
+      "residue": [
+        "Y",
+        "X"
+      ],
+      "fieldProjection": [
+        "X",
+        "X"
+      ],
+      "sourceProjection": [
+        "Y",
+        "Y"
+      ],
+      "forcingInjection": [
+        "U",
+        "Y"
+      ],
+      "observation": [
+        "X",
+        "Vo"
+      ]
+    }
+  },
+  "realization": {
+    "scalarPencil": "z**2",
+    "stateOperator": [
+      [
+        "0",
+        "1"
+      ],
+      [
+        "0",
+        "0"
+      ]
+    ],
+    "stateInjection": [
+      [
+        "0"
+      ],
+      [
+        "1"
+      ]
+    ],
+    "fieldRecovery": [
+      [
+        "1",
+        "0"
+      ]
+    ],
+    "stateResolvent": [
+      [
+        "1/z",
+        "z**(-2)"
+      ],
+      [
+        "0",
+        "1/z"
+      ]
+    ],
+    "stateProjector": [
+      [
+        "1",
+        "0"
+      ],
+      [
+        "0",
+        "1"
+      ]
+    ],
+    "forcing": "3*z + 1",
+    "observation": "5*z + 2",
+    "physicalResponse": [
+      [
+        "15 + 11/z + 2/z**2"
+      ]
+    ],
+    "physicalResponseResidue": [
+      [
+        "11"
+      ]
+    ],
+    "incorrectFrozenMapResidue": [
+      [
+        "0"
+      ]
+    ]
+  },
+  "perturbation": {
+    "original": "z**2",
+    "perturbed": "-perturbationScale + z**2",
+    "contour": "unit circle, with 0 < perturbationScale < 1",
+    "relativeErrorNorm": "perturbationScale",
+    "computedRoots": [
+      "-sqrt(perturbationScale)",
+      "sqrt(perturbationScale)"
+    ],
+    "originalAlgebraicCount": "2",
+    "perturbedAlgebraicCount": "2",
+    "displacementOverErrorLimit": "oo"
+  },
+  "checks": [
+    {
+      "name": "doubleLogarithmicLaurentConvolution",
+      "residuals": [
+        "0"
+      ],
+      "satisfied": true
+    },
+    {
+      "name": "doubleRemainderCoefficient1",
+      "residuals": [
+        "0"
+      ],
+      "satisfied": true
+    },
+    {
+      "name": "doubleLeftLaurentEquation1",
+      "residuals": [
+        "0"
+      ],
+      "satisfied": true
+    },
+    {
+      "name": "doubleRightLaurentEquation1",
+      "residuals": [
+        "0"
+      ],
+      "satisfied": true
+    },
+    {
+      "name": "doubleRemainderCoefficient2",
+      "residuals": [
+        "0"
+      ],
+      "satisfied": true
+    },
+    {
+      "name": "doubleLeftLaurentEquation2",
+      "residuals": [
+        "0"
+      ],
+      "satisfied": true
+    },
+    {
+      "name": "doubleRightLaurentEquation2",
+      "residuals": [
+        "0"
+      ],
+      "satisfied": true
+    },
+    {
+      "name": "doubleHighestPrincipalCoefficient",
+      "mutationResiduals": [
+        "1"
+      ],
+      "satisfied": true
+    },
+    {
+      "name": "mixedLogarithmicLaurentConvolution",
+      "residuals": [
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "satisfied": true
+    },
+    {
+      "name": "mixedRemainderCoefficient1",
+      "residuals": [
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "satisfied": true
+    },
+    {
+      "name": "mixedLeftLaurentEquation1",
+      "residuals": [
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "satisfied": true
+    },
+    {
+      "name": "mixedRightLaurentEquation1",
+      "residuals": [
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "satisfied": true
+    },
+    {
+      "name": "mixedRemainderCoefficient2",
+      "residuals": [
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "satisfied": true
+    },
+    {
+      "name": "mixedLeftLaurentEquation2",
+      "residuals": [
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "satisfied": true
+    },
+    {
+      "name": "mixedRightLaurentEquation2",
+      "residuals": [
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "satisfied": true
+    },
+    {
+      "name": "mixedHighestPrincipalCoefficient",
+      "mutationResiduals": [
+        "1",
+        "0",
+        "0",
+        "0"
+      ],
+      "satisfied": true
+    },
+    {
+      "name": "affineJordanLogarithmicLaurentConvolution",
+      "residuals": [
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "satisfied": true
+    },
+    {
+      "name": "affineJordanRemainderCoefficient1",
+      "residuals": [
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "satisfied": true
+    },
+    {
+      "name": "affineJordanLeftLaurentEquation1",
+      "residuals": [
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "satisfied": true
+    },
+    {
+      "name": "affineJordanRightLaurentEquation1",
+      "residuals": [
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "satisfied": true
+    },
+    {
+      "name": "affineJordanRemainderCoefficient2",
+      "residuals": [
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "satisfied": true
+    },
+    {
+      "name": "affineJordanLeftLaurentEquation2",
+      "residuals": [
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "satisfied": true
+    },
+    {
+      "name": "affineJordanRightLaurentEquation2",
+      "residuals": [
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "satisfied": true
+    },
+    {
+      "name": "affineJordanHighestPrincipalCoefficient",
+      "mutationResiduals": [
+        "0",
+        "1",
+        "0",
+        "0"
+      ],
+      "satisfied": true
+    },
+    {
+      "name": "semisimpleLogarithmicLaurentConvolution",
+      "residuals": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "satisfied": true
+    },
+    {
+      "name": "semisimpleRemainderCoefficient1",
+      "residuals": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "satisfied": true
+    },
+    {
+      "name": "semisimpleLeftLaurentEquation1",
+      "residuals": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "satisfied": true
+    },
+    {
+      "name": "semisimpleRightLaurentEquation1",
+      "residuals": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "satisfied": true
+    },
+    {
+      "name": "semisimpleHighestPrincipalCoefficient",
+      "mutationResiduals": [
+        "1",
+        "0",
+        "0",
+        "0",
+        "1/2",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "satisfied": true
+    },
+    {
+      "name": "doubleChainResidual1",
+      "residuals": [
+        "0"
+      ],
+      "satisfied": true
+    },
+    {
+      "name": "doubleChainCompleteness1",
+      "residuals": [
+        "0"
+      ],
+      "satisfied": true
+    },
+    {
+      "name": "doubleChainResidual2",
+      "residuals": [
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "satisfied": true
+    },
+    {
+      "name": "doubleChainCompleteness2",
+      "residuals": [
+        "0"
+      ],
+      "satisfied": true
+    },
+    {
+      "name": "doubleChainResidual3",
+      "residuals": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "satisfied": true
+    },
+    {
+      "name": "doubleChainCompleteness3",
+      "residuals": [
+        "0"
+      ],
+      "satisfied": true
+    },
+    {
+      "name": "mixedChainResidual1",
+      "residuals": [
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "satisfied": true
+    },
+    {
+      "name": "mixedChainCompleteness1",
+      "residuals": [
+        "0"
+      ],
+      "satisfied": true
+    },
+    {
+      "name": "mixedChainResidual2",
+      "residuals": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "satisfied": true
+    },
+    {
+      "name": "mixedChainCompleteness2",
+      "residuals": [
+        "0"
+      ],
+      "satisfied": true
+    },
+    {
+      "name": "mixedChainResidual3",
+      "residuals": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "satisfied": true
+    },
+    {
+      "name": "mixedChainCompleteness3",
+      "residuals": [
+        "0"
+      ],
+      "satisfied": true
+    },
+    {
+      "name": "affineJordanChainResidual1",
+      "residuals": [
+        "0",
+        "0"
+      ],
+      "satisfied": true
+    },
+    {
+      "name": "affineJordanChainCompleteness1",
+      "residuals": [
+        "0"
+      ],
+      "satisfied": true
+    },
+    {
+      "name": "affineJordanChainResidual2",
+      "residuals": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "satisfied": true
+    },
+    {
+      "name": "affineJordanChainCompleteness2",
+      "residuals": [
+        "0"
+      ],
+      "satisfied": true
+    },
+    {
+      "name": "affineJordanChainResidual3",
+      "residuals": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "satisfied": true
+    },
+    {
+      "name": "affineJordanChainCompleteness3",
+      "residuals": [
+        "0"
+      ],
+      "satisfied": true
+    },
+    {
+      "name": "semisimpleChainResidual1",
+      "residuals": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "satisfied": true
+    },
+    {
+      "name": "semisimpleChainCompleteness1",
+      "residuals": [
+        "0"
+      ],
+      "satisfied": true
+    },
+    {
+      "name": "semisimpleChainResidual2",
+      "residuals": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "satisfied": true
+    },
+    {
+      "name": "semisimpleChainCompleteness2",
+      "residuals": [
+        "0"
+      ],
+      "satisfied": true
+    },
+    {
+      "name": "semisimpleChainResidual3",
+      "residuals": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "satisfied": true
+    },
+    {
+      "name": "semisimpleChainCompleteness3",
+      "residuals": [
+        "0"
+      ],
+      "satisfied": true
+    },
+    {
+      "name": "SemisimpleDirectResidue",
+      "residuals": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "satisfied": true
+    },
+    {
+      "name": "FullRightNullspace",
+      "residuals": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "satisfied": true
+    },
+    {
+      "name": "FullLeftNullspace",
+      "residuals": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "satisfied": true
+    },
+    {
+      "name": "RightBasisCompleteness",
+      "residuals": [
+        "0"
+      ],
+      "satisfied": true
+    },
+    {
+      "name": "LeftBasisCompleteness",
+      "residuals": [
+        "0"
+      ],
+      "satisfied": true
+    },
+    {
+      "name": "FullPairingRank",
+      "residuals": [
+        "0"
+      ],
+      "satisfied": true
+    },
+    {
+      "name": "FieldIdempotency",
+      "residuals": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "satisfied": true
+    },
+    {
+      "name": "SourceIdempotency",
+      "residuals": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "satisfied": true
+    },
+    {
+      "name": "FieldRangeIdentity",
+      "residuals": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "satisfied": true
+    },
+    {
+      "name": "ModalBasisCovariance",
+      "residuals": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "satisfied": true
+    },
+    {
+      "name": "FieldCoordinateCovariance",
+      "residuals": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "satisfied": true
+    },
+    {
+      "name": "SourceCoordinateCovariance",
+      "residuals": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "satisfied": true
+    },
+    {
+      "name": "OmittedPairingBasisChangeRejected",
+      "mutationResiduals": [
+        "-1",
+        "3/2",
+        "-3/2",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "satisfied": true
+    },
+    {
+      "name": "TypedOverlapCoordinateCovariance",
+      "residuals": [
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "satisfied": true
+    },
+    {
+      "name": "FieldProjectorOnSourceRejected",
+      "mutationResiduals": [
+        "5",
+        "7",
+        "2",
+        "5/2"
+      ],
+      "satisfied": true
+    },
+    {
+      "name": "RealizationTransfer",
+      "residuals": [
+        "0"
+      ],
+      "satisfied": true
+    },
+    {
+      "name": "RealizedRieszIdempotency",
+      "residuals": [
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "satisfied": true
+    },
+    {
+      "name": "RealizationDeterminant",
+      "residuals": [
+        "0"
+      ],
+      "satisfied": true
+    },
+    {
+      "name": "StateNilpotentOrderTwo",
+      "residuals": [
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "satisfied": true
+    },
+    {
+      "name": "CompressedResidue",
+      "residuals": [
+        "0"
+      ],
+      "satisfied": true
+    },
+    {
+      "name": "HigherOrderCouplingSurvivesZeroResidue",
+      "mutationResiduals": [
+        "1"
+      ],
+      "satisfied": true
+    },
+    {
+      "name": "FrozenForcingObservationAtDoublePoleRejected",
+      "mutationResiduals": [
+        "-11"
+      ],
+      "satisfied": true
+    },
+    {
+      "name": "AnalyticMapsFullLaurentReconstruction",
+      "residuals": [
+        "0"
+      ],
+      "satisfied": true
+    },
+    {
+      "name": "CirclePerturbationNorm",
+      "residuals": [
+        "0"
+      ],
+      "satisfied": true
+    },
+    {
+      "name": "HomotopyAlgebraicCount",
+      "residuals": [
+        "0"
+      ],
+      "satisfied": true
+    },
+    {
+      "name": "PerturbedRoot-sqrt(perturbationScale)",
+      "residuals": [
+        "0"
+      ],
+      "satisfied": true
+    },
+    {
+      "name": "PerturbedRootsqrt(perturbationScale)",
+      "residuals": [
+        "0"
+      ],
+      "satisfied": true
+    },
+    {
+      "name": "DistinctRootCountPreservationRejected",
+      "mutationResiduals": [
+        "1"
+      ],
+      "satisfied": true
+    },
+    {
+      "name": "doubleSingularPairingFailsFullRank",
+      "mutationResiduals": [
+        "-1"
+      ],
+      "satisfied": true
+    },
+    {
+      "name": "doubleUnrestrictedProjectorRejected",
+      "mutationResiduals": [
+        "2"
+      ],
+      "satisfied": true
+    },
+    {
+      "name": "mixedSingularPairingFailsFullRank",
+      "mutationResiduals": [
+        "-1"
+      ],
+      "satisfied": true
+    },
+    {
+      "name": "mixedUnrestrictedProjectorRejected",
+      "mutationResiduals": [
+        "2",
+        "0",
+        "0",
+        "0"
+      ],
+      "satisfied": true
+    },
+    {
+      "name": "HistoricalSourceIdentity:_measurements/S11c_d_nonlinear_pole_contract_probe.py",
+      "expected": "011a42bbeebb250a85c9b45f4e86d91eaa41287d367913c042eba93d80f58092",
+      "actual": "011a42bbeebb250a85c9b45f4e86d91eaa41287d367913c042eba93d80f58092",
+      "satisfied": true
+    },
+    {
+      "name": "HistoricalSourceIdentity:directives/S11c_d_SHARED_PHYSICS.md",
+      "expected": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5",
+      "actual": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5",
+      "satisfied": true
+    },
+    {
+      "name": "HistoricalSourceIdentity:scripts/S11c_d_mixing_scattering_sympy_audit.py",
+      "expected": "5bf77729682960bb59f10c672a5fe3f67a98b0a9533da7c6189a37183596050f",
+      "actual": "5bf77729682960bb59f10c672a5fe3f67a98b0a9533da7c6189a37183596050f",
+      "satisfied": true
+    },
+    {
+      "name": "HistoricalSourceIdentity:_measurements/S11c_d_wide_three_momentum.py",
+      "expected": "455ba3aaf4481a101c6e3e3b7e23b7160ef7afa453c201c9e0e0b57b5d7afc3e",
+      "actual": "455ba3aaf4481a101c6e3e3b7e23b7160ef7afa453c201c9e0e0b57b5d7afc3e",
+      "satisfied": true
+    }
+  ]
+}

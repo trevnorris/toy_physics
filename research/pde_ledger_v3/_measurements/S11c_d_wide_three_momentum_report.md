@@ -42,3 +42,10 @@ Preflight acceptance is committed at `8ac0caaf`. Production launched at
 thread and a 2 GiB address-space ceiling each, all 87 current/frozen sources,
 empty strict stderr and the silent completion/error watcher. No production
 result is yet accepted.
+
+The user-approved [nonlinear-pole contract repair](S11c_d_nonlinear_pole_repair_report.md)
+is effective for new work through its governing addendum. Acceptance verifies
+all 87 current/frozen production sources unchanged; this action quadrature does
+not execute the repaired pole construction. Complete its original validation
+and publication normally, then include the correction and its dependency
+disposition explicitly in the next stage's provenance.

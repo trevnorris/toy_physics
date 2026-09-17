@@ -1,0 +1,586 @@
+{
+  "scope": "Exact rational matrix-pencil diagnostic; no S11c-d physical result or specification change.",
+  "sympyVersion": "1.14.0",
+  "metadata": {
+    "unitLTM": [
+      0,
+      0,
+      0
+    ],
+    "epsEtaSigmaWOrder": [
+      0,
+      0,
+      0
+    ],
+    "lambdaOrder": 0,
+    "meaning": "dimensionless synthetic pencils, exact ungraded calculation"
+  },
+  "sourceFiles": {
+    "_measurements/S11c_d_nonlinear_pole_contract_probe.py": "011a42bbeebb250a85c9b45f4e86d91eaa41287d367913c042eba93d80f58092",
+    "directives/S11c_d_SHARED_PHYSICS.md": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5",
+    "scripts/S11c_d_mixing_scattering_sympy_audit.py": "5bf77729682960bb59f10c672a5fe3f67a98b0a9533da7c6189a37183596050f",
+    "_measurements/S11c_d_wide_three_momentum.py": "455ba3aaf4481a101c6e3e3b7e23b7160ef7afa453c201c9e0e0b57b5d7afc3e"
+  },
+  "cases": [
+    {
+      "name": "scalarSimple",
+      "pencil": [
+        [
+          "z"
+        ]
+      ],
+      "inverse": [
+        [
+          "1/z"
+        ]
+      ],
+      "inverseResidual": [
+        [
+          "0"
+        ]
+      ],
+      "contourIntegral": [
+        [
+          "1"
+        ]
+      ],
+      "idempotencyResidual": [
+        [
+          "0"
+        ]
+      ],
+      "trace": "1",
+      "poles": [
+        {
+          "point": "0",
+          "nullity": 1,
+          "determinantZeroOrder": 1,
+          "inversePoleOrder": 1,
+          "residue": [
+            [
+              "1"
+            ]
+          ],
+          "derivativePairing": [
+            [
+              "1"
+            ]
+          ],
+          "derivativePairingRank": 1,
+          "modalResidueResidual": [
+            [
+              "0"
+            ]
+          ],
+          "localProjector": [
+            [
+              "1"
+            ]
+          ],
+          "localIdempotencyResidual": [
+            [
+              "0"
+            ]
+          ],
+          "localContourResidual": [
+            [
+              "0"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "scalarDouble",
+      "pencil": [
+        [
+          "z**2"
+        ]
+      ],
+      "inverse": [
+        [
+          "z**(-2)"
+        ]
+      ],
+      "inverseResidual": [
+        [
+          "0"
+        ]
+      ],
+      "contourIntegral": [
+        [
+          "2"
+        ]
+      ],
+      "idempotencyResidual": [
+        [
+          "2"
+        ]
+      ],
+      "trace": "2",
+      "poles": [
+        {
+          "point": "0",
+          "nullity": 1,
+          "determinantZeroOrder": 2,
+          "inversePoleOrder": 2,
+          "residue": [
+            [
+              "0"
+            ]
+          ],
+          "derivativePairing": [
+            [
+              "0"
+            ]
+          ],
+          "derivativePairingRank": 0
+        }
+      ]
+    },
+    {
+      "name": "semisimpleNullityTwo",
+      "pencil": [
+        [
+          "z",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "2*z",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "z + 1"
+        ]
+      ],
+      "inverse": [
+        [
+          "1/z",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "1/(2*z)",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "1/(z + 1)"
+        ]
+      ],
+      "inverseResidual": [
+        [
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "0"
+        ]
+      ],
+      "contourIntegral": [
+        [
+          "1",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "1",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "0"
+        ]
+      ],
+      "idempotencyResidual": [
+        [
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "0"
+        ]
+      ],
+      "trace": "2",
+      "poles": [
+        {
+          "point": "0",
+          "nullity": 2,
+          "determinantZeroOrder": 2,
+          "inversePoleOrder": 1,
+          "residue": [
+            [
+              "1",
+              "0",
+              "0"
+            ],
+            [
+              "0",
+              "1/2",
+              "0"
+            ],
+            [
+              "0",
+              "0",
+              "0"
+            ]
+          ],
+          "derivativePairing": [
+            [
+              "1",
+              "0"
+            ],
+            [
+              "0",
+              "2"
+            ]
+          ],
+          "derivativePairingRank": 2,
+          "modalResidueResidual": [
+            [
+              "0",
+              "0",
+              "0"
+            ],
+            [
+              "0",
+              "0",
+              "0"
+            ],
+            [
+              "0",
+              "0",
+              "0"
+            ]
+          ],
+          "localProjector": [
+            [
+              "1",
+              "0",
+              "0"
+            ],
+            [
+              "0",
+              "1",
+              "0"
+            ],
+            [
+              "0",
+              "0",
+              "0"
+            ]
+          ],
+          "localIdempotencyResidual": [
+            [
+              "0",
+              "0",
+              "0"
+            ],
+            [
+              "0",
+              "0",
+              "0"
+            ],
+            [
+              "0",
+              "0",
+              "0"
+            ]
+          ],
+          "localContourResidual": [
+            [
+              "0",
+              "0",
+              "0"
+            ],
+            [
+              "0",
+              "0",
+              "0"
+            ],
+            [
+              "0",
+              "0",
+              "0"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "affineJordan",
+      "pencil": [
+        [
+          "z",
+          "-1"
+        ],
+        [
+          "0",
+          "z"
+        ]
+      ],
+      "inverse": [
+        [
+          "1/z",
+          "z**(-2)"
+        ],
+        [
+          "0",
+          "1/z"
+        ]
+      ],
+      "inverseResidual": [
+        [
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "contourIntegral": [
+        [
+          "1",
+          "0"
+        ],
+        [
+          "0",
+          "1"
+        ]
+      ],
+      "idempotencyResidual": [
+        [
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "trace": "2",
+      "poles": [
+        {
+          "point": "0",
+          "nullity": 1,
+          "determinantZeroOrder": 2,
+          "inversePoleOrder": 2,
+          "residue": [
+            [
+              "1",
+              "0"
+            ],
+            [
+              "0",
+              "1"
+            ]
+          ],
+          "derivativePairing": [
+            [
+              "0"
+            ]
+          ],
+          "derivativePairingRank": 0
+        }
+      ]
+    },
+    {
+      "name": "scalarOneOfTwoRoots",
+      "pencil": [
+        [
+          "z**2 - 1"
+        ]
+      ],
+      "inverse": [
+        [
+          "1/(z**2 - 1)"
+        ]
+      ],
+      "inverseResidual": [
+        [
+          "0"
+        ]
+      ],
+      "contourIntegral": [
+        [
+          "1"
+        ]
+      ],
+      "idempotencyResidual": [
+        [
+          "0"
+        ]
+      ],
+      "trace": "1",
+      "poles": [
+        {
+          "point": "1",
+          "nullity": 1,
+          "determinantZeroOrder": 1,
+          "inversePoleOrder": 1,
+          "residue": [
+            [
+              "1/2"
+            ]
+          ],
+          "derivativePairing": [
+            [
+              "2"
+            ]
+          ],
+          "derivativePairingRank": 1,
+          "modalResidueResidual": [
+            [
+              "0"
+            ]
+          ],
+          "localProjector": [
+            [
+              "1"
+            ]
+          ],
+          "localIdempotencyResidual": [
+            [
+              "0"
+            ]
+          ],
+          "localContourResidual": [
+            [
+              "0"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "scalarBothRoots",
+      "pencil": [
+        [
+          "z**2 - 1"
+        ]
+      ],
+      "inverse": [
+        [
+          "1/(z**2 - 1)"
+        ]
+      ],
+      "inverseResidual": [
+        [
+          "0"
+        ]
+      ],
+      "contourIntegral": [
+        [
+          "2"
+        ]
+      ],
+      "idempotencyResidual": [
+        [
+          "2"
+        ]
+      ],
+      "trace": "2",
+      "poles": [
+        {
+          "point": "-1",
+          "nullity": 1,
+          "determinantZeroOrder": 1,
+          "inversePoleOrder": 1,
+          "residue": [
+            [
+              "-1/2"
+            ]
+          ],
+          "derivativePairing": [
+            [
+              "-2"
+            ]
+          ],
+          "derivativePairingRank": 1,
+          "modalResidueResidual": [
+            [
+              "0"
+            ]
+          ],
+          "localProjector": [
+            [
+              "1"
+            ]
+          ],
+          "localIdempotencyResidual": [
+            [
+              "0"
+            ]
+          ],
+          "localContourResidual": [
+            [
+              "0"
+            ]
+          ]
+        },
+        {
+          "point": "1",
+          "nullity": 1,
+          "determinantZeroOrder": 1,
+          "inversePoleOrder": 1,
+          "residue": [
+            [
+              "1/2"
+            ]
+          ],
+          "derivativePairing": [
+            [
+              "2"
+            ]
+          ],
+          "derivativePairingRank": 1,
+          "modalResidueResidual": [
+            [
+              "0"
+            ]
+          ],
+          "localProjector": [
+            [
+              "1"
+            ]
+          ],
+          "localIdempotencyResidual": [
+            [
+              "0"
+            ]
+          ],
+          "localContourResidual": [
+            [
+              "0"
+            ]
+          ]
+        }
+      ]
+    }
+  ]
+}

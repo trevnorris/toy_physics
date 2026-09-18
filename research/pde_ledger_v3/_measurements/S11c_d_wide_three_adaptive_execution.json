@@ -1,0 +1,17 @@
+{
+  "status": "IMPLEMENTATION_READY_FOR_PREFLIGHT",
+  "checker": "S11c_d_wide_three_adaptive.py",
+  "plan": "S11c_d_wide_three_adaptive_plan.md",
+  "report": "S11c_d_wide_three_adaptive_report.md",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-wide-three-adaptive-20260918",
+  "preflightRunRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-wide-three-adaptive-20260918/preflight",
+  "productionRunRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-wide-three-adaptive-20260918/production",
+  "acceptedReferenceCommit": "a25e727b",
+  "acceptedReferencePublicationCommit": "d128768c",
+  "maximumConcurrentWorkers": 4,
+  "nativeThreadsPerWorker": 1,
+  "workerAddressSpaceBytes": 2147483648,
+  "inputAuthority": "directives/S11c_d_NONLINEAR_POLE_CONTRACT.md",
+  "dependencyDisposition": "New stage records v10 plus nonlinearPoleV2; no physical operands or prior pinned sources change and no pole constructor is called.",
+  "next": "Commit implementation, launch the instrument preflight under the existing supervisor and silent local completion/error watcher, validate saved evidence before any full-resolution adaptive production."
+}

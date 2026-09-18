@@ -1,0 +1,35 @@
+{
+  "status": "IMPORT_AND_REVERSE_AST_JOINS_PASS",
+  "instrumentSha256": "af123066766700f40d71843d36a7b94513dcaf3b35fcef17af1fd4843ec8413a",
+  "methodJoins": {
+    "record": {
+      "nativeAstSha256": "cb407816c7cad293d55b874e20bccbfd39793d883e7ebc11ffb617ad97e868fc",
+      "restoredAstSha256": "cb407816c7cad293d55b874e20bccbfd39793d883e7ebc11ffb617ad97e868fc",
+      "adaptationCount": 1
+    },
+    "worker": {
+      "nativeAstSha256": "364c80ff94014293c7a5b72d28c0973443d5f6a7c77d66f53935154ad817b9af",
+      "restoredAstSha256": "364c80ff94014293c7a5b72d28c0973443d5f6a7c77d66f53935154ad817b9af",
+      "adaptationCount": 2
+    },
+    "finish": {
+      "nativeAstSha256": "69d42fc1ca4dfbd5e83a2785690cea3e30c4cd180ba67cb3d6478c8bcbebf0e1",
+      "restoredAstSha256": "69d42fc1ca4dfbd5e83a2785690cea3e30c4cd180ba67cb3d6478c8bcbebf0e1",
+      "adaptationCount": 2
+    },
+    "tripleGuard": {
+      "nativeAstSha256": "e09d4cfe82beb35d7062365acb7b2b96a31d3102bd56801de9e71ae509f0167a",
+      "restoredAstSha256": "e09d4cfe82beb35d7062365acb7b2b96a31d3102bd56801de9e71ae509f0167a",
+      "adaptationCount": 1
+    },
+    "conditional": {
+      "nativeBatchesAstSha256": "ea3a54132c62f9ec45e6a183f6315efcf902be600e24680497c46d27e18e8c71",
+      "nativeGroupAstSha256": "f4eac36edac04abcae48d5a4e2014992d2d7635c4b879b7431f3f2bf28b01b04"
+    },
+    "emitter": {
+      "nativeEmitterAstSha256": "c4f2f26228a14f6eb194ece3a2a592f0c85ead84ad2db320d2a542d99a80ad15",
+      "restoredEmitterAstSha256": "c4f2f26228a14f6eb194ece3a2a592f0c85ead84ad2db320d2a542d99a80ad15"
+    }
+  },
+  "scope": "Syntax/import and exact permitted adapter changes only; numerical preflight not yet executed."
+}

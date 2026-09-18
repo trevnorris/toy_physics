@@ -6,13 +6,13 @@ one triple adaptive stage and retain the complete single/pair contribution.
 The finish adapter changes its packet name and scope; full adaptive emission
 and metadata replay are reused with fresh stage keys. Import and reverse-AST
 checks pass. The numerical instrument preflight is accepted; full-resolution
-adaptive production has not started.
+adaptive production is running under its local completion/error watcher.
 
 The completed reference is published/annex-verified at d128768c/a25e727b:
 1,048,960,640 new nodes in44h03m, raw outer/innermost/middle changes
 3.68e-10 /3.92e-18 /1.55e-14. This stage keeps its finest inner32/32 and
 source/profile256/512 rules, cutoffs3/4, position bounds48/14 and regulator0.2.
-Four single-thread workers will replace only outer Gauss216 by adaptive GK21,
+Four single-thread workers replace only outer Gauss216 by adaptive GK21,
 absolute tolerance1e-10 and relativezero. Every complete action includes all80
 rows; all70 single/pair rows remain explicitly held at independently checked rules.
 
@@ -37,6 +37,10 @@ statement. No pole constructor is used here. Uniform operator bounds, physical
 tails, Abel limits, scattering and pole calculations remain separate application
 work under the Lean handoffs and retained solver/export contract.
 
-Implementation is committed at `6f6e94f4`. Acceptance is recorded in
-`S11c_d_wide_three_adaptive_preflight.json`. Next: commit this checkpoint and
-launch production under the existing supervisor and silent completion watcher.
+Implementation is committed at `6f6e94f4`. Acceptance is committed at `bdb86303`, with its full record in
+`S11c_d_wide_three_adaptive_preflight.json`. Production launched at 15:10:46 UTC
+on 2026-09-18. One startup check verifies the supervisor, waiting completion
+watcher, all four single-thread workers with 2 GiB ceilings, 92 current/frozen
+source pins and empty strict stderr. The watcher owns continuation; no physical
+adaptive result is accepted before final validation. Logs, points, partials and
+source snapshots remain under the production run root.

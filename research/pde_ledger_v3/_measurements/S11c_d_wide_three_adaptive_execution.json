@@ -1,5 +1,5 @@
 {
-  "status": "PREFLIGHT_ACCEPTED",
+  "status": "PRODUCTION_RUNNING",
   "checker": "S11c_d_wide_three_adaptive.py",
   "plan": "S11c_d_wide_three_adaptive_plan.md",
   "report": "S11c_d_wide_three_adaptive_report.md",
@@ -13,7 +13,7 @@
   "workerAddressSpaceBytes": 2147483648,
   "inputAuthority": "directives/S11c_d_NONLINEAR_POLE_CONTRACT.md",
   "dependencyDisposition": "New stage records v10 plus nonlinearPoleV2; no physical operands or prior pinned sources change and no pole constructor is called.",
-  "next": "Commit accepted preflight and launch four-worker independent triple outer production on fixed accepted inner/source/profile rules with a silent completion/error watcher.",
+  "next": "Await the local completion/error wake-up without model polling. Validate all saved production operands and full emission/metadata evidence, then publish through DataLad/git-annex, verify hashes and commit before selecting further physical domain/tail work.",
   "implementationCommit": "6f6e94f4",
   "launch": {
     "launchedUtc": "2026-09-18T15:00:09.449749+00:00",
@@ -67,5 +67,36 @@
     "finishedUtc": "2026-09-18T15:03:00.854365+00:00"
   },
   "acceptedPreflight": "S11c_d_wide_three_adaptive_preflight.json",
-  "acceptedPreflightSha256": "419bb744246141b15fa3fb40f7f4a70cc3d6b09ce39fb26fc01dc3809be14cd0"
+  "acceptedPreflightSha256": "419bb744246141b15fa3fb40f7f4a70cc3d6b09ce39fb26fc01dc3809be14cd0",
+  "acceptedPreflightCommit": "bdb86303f5952b0dabd21beb3466dd4e3a9db01c",
+  "productionLaunch": {
+    "launchedUtc": "2026-09-18T15:10:46.109169+00:00",
+    "command": [
+      "/usr/bin/python",
+      "_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-wide-three-adaptive-20260918/production",
+      "--stage",
+      "adaptive_construct",
+      "--",
+      "python",
+      "-u",
+      "_measurements/S11c_d_wide_three_adaptive.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-wide-three-adaptive-20260918/production/complete"
+    ],
+    "supervisorPid": 3470445,
+    "watcherPid": 3470446,
+    "watcherDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-wide-three-adaptive-20260918/production/completion-watcher",
+    "threadEnvironment": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1"
+    }
+  },
+  "productionLaunchVerification": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-wide-three-adaptive-20260918/production/launch-verification.json",
+    "sha256": "6e04781d5a800ca0e15f221757a8aa852e7978abcb1ede62b7c174e040cf0cc6"
+  }
 }

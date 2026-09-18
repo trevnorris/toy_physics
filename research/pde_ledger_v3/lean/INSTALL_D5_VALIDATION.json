@@ -1,0 +1,401 @@
+{
+  "schema_version": 1,
+  "status": "PASS",
+  "validated_utc": "2026-09-18T03:45:16.373940+00:00",
+  "scope": "D5 completed-contract catalog registration and fresh isolated replay; no new mathematical claim or independent fidelity review.",
+  "classification_checkpoint": "ec27ecf0",
+  "environment": {
+    "platform": "Linux",
+    "python_executable": "/usr/bin/python3",
+    "python_version": "3.10.12",
+    "sympy": "1.14.0",
+    "mpmath": "1.3.0",
+    "lean": "Lean (version 4.33.0, x86_64-unknown-linux-gnu, commit d8b18978322de05a8f3dba51ef03cf5461676c17, Release)",
+    "external_cache": "Existing pinned baseline; no full Mathlib or fresh OS/bootstrap rebuild."
+  },
+  "source_sha256": {
+    "lean/verify.py": "3e0af63101a12545f7438089a6be5bc341a2bcefc61fa47906260eecedaad259",
+    "lean/test_verify.py": "0f4adede37d47fb96e5e777b6afa4539c18ace041c0d3d169a3f1172a9d2e2bb",
+    "lean/test_setup.py": "9864b85cb15000f77ac61cec516e9e40e041962e58ee8c7ca767c98125c9b971",
+    "lean/setup.sh": "1824ab884a84c4727ffd886e1b564f4f80a9de246f9a4f9cc954ef8cdc40e728",
+    "lean/requirements.txt": "6d7d73ad83b15ccc569f609d8c556e93b56d8eda70146448671cdc0f641f34a4",
+    "lean/lean-toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+    "lean/lake-manifest.json": "91fd5318cdc35e4044d6e059c6ef73d94b955d27adf8a5860b07ec92add9377e",
+    "lean/lakefile.toml": "1407b4b97bfd604d5579e45774445315cf3673fea06fedb51433b458a1ed44b6",
+    "lean/INSTALL.md": "490402002d920353ab30b1e5ae831acf4d41b609f333703fb32d0cf1387b7dd8",
+    "lean/README.md": "f5bb7a2a25d547ca08c04b8570a02ef05d5b3008d9e0d61d1b08a44173cff760"
+  },
+  "historical_install_validation": {
+    "path": "lean/INSTALL_VALIDATION.json",
+    "sha256": "118855cdee606c784b6533a12466c99e85ac417678ea43a653128b57b1cd8fc4",
+    "unchanged": true,
+    "scope": "Original dated execution; its source hashes are not silently replaced by current integration hashes."
+  },
+  "unit_regressions": {
+    "passed": true,
+    "count": 10,
+    "log": "_scratch/lean_d5_portable/run1/unit_tests.log",
+    "log_sha256": "13ca1307862296ac6b34e128197f783e7096508b13653291d8801d9405ee166b",
+    "control_input_coverage": "All 349 currently registered control sources and historical diagnostic formats validated, without claiming a new full-catalog proof execution."
+  },
+  "portable_replay": {
+    "report": "_scratch/lean_portable/20260918T022950Z_2cvxh7zm/report.json",
+    "report_sha256": "7581655ec5e3f36f6ce0dd1a2d7d06fcf1c43e85d5d72c01cf60b13b7556916c",
+    "started_utc": "2026-09-18T02:29:50.683472+00:00",
+    "finished_utc": "2026-09-18T03:43:11.616698+00:00",
+    "records": 77,
+    "fresh_objects": 45,
+    "axiom_audits": 51,
+    "paired_mathematical_rejections": 13,
+    "positive_controls": 17,
+    "resources": {
+      "workers": 1,
+      "lean_threads": 1,
+      "allocator_mib": 4096,
+      "process_timeout_seconds": 600
+    },
+    "generator_correspondence": true,
+    "build_order_and_commands_checked": true,
+    "snapshot_live_inputs_checked": 55,
+    "controls": [
+      {
+        "name": "SO_count_positive",
+        "expected": "PASS",
+        "exit_status": 0,
+        "source_sha256": "d4d51880f826c116853fa47cc5ae2b0fdef796645ba328b9554b6b2ea63420c4",
+        "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "name": "SO_count_mutant",
+        "expected": "REJECTED",
+        "exit_status": 1,
+        "source_sha256": "522fc8d62ca8800539981bdcf866174ca97b6d6dea691511e99f55a291e55ef8",
+        "log_sha256": "3cc7c4346d9ef4c94396a26d1e61ba256c3d1e0e787bd99116bddf4389bb6878"
+      },
+      {
+        "name": "O_count_positive",
+        "expected": "PASS",
+        "exit_status": 0,
+        "source_sha256": "b99b28bc91e3756866081012941cd52c2231ef773009cba1ec408e155b594ec4",
+        "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "name": "O_count_mutant",
+        "expected": "REJECTED",
+        "exit_status": 1,
+        "source_sha256": "be0641be03c96b946046c2fc8ec4e8b827d2c968b97e6f81272fa936601f998e",
+        "log_sha256": "0fa8440a39fe3b6c0f77f9fd8d59eb146f84ba2bf8ef68dbd277036d3fc5d83f"
+      },
+      {
+        "name": "odd_count_positive",
+        "expected": "PASS",
+        "exit_status": 0,
+        "source_sha256": "88a9b856388ee1303d87584c0fdee8ddfacb47e3ff74f4cfc82a9ddbe193a3f8",
+        "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "name": "odd_count_mutant",
+        "expected": "REJECTED",
+        "exit_status": 1,
+        "source_sha256": "41548105cdfcad12b674b07d78ea64fb2d88e7096bed279601afb08f734a33c9",
+        "log_sha256": "b99173730c2295e556e68edf2d8b654fbadba6841f6c715845ea013aa7b9c616"
+      },
+      {
+        "name": "odd_existence_positive",
+        "expected": "PASS",
+        "exit_status": 0,
+        "source_sha256": "da1f3bcf491f7d3f5d2ad54e7bdcd6df95b71bc41d1598fa75189f5b3ec8ca3d",
+        "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "name": "odd_existence_mutant",
+        "expected": "REJECTED",
+        "exit_status": 1,
+        "source_sha256": "76edde0a498e828770a1a24ddd1d4c7ebd9590a32558f0ae8f9ef19626e08ccb",
+        "log_sha256": "2f31a572ed57977d4c29c09a045c23c711ac4700beb8ed081093f19826f48266"
+      },
+      {
+        "name": "omit_trace_positive",
+        "expected": "PASS",
+        "exit_status": 0,
+        "source_sha256": "3e1af4b09cf51507b6300393d5d4f1557cee777d8c45e34688f1f0f055a8253e",
+        "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "name": "omit_trace_mutant",
+        "expected": "REJECTED",
+        "exit_status": 1,
+        "source_sha256": "473c15df346f825fc40e585af5220ebdd9c59e9e3e7a2bddc721a903d0aa6596",
+        "log_sha256": "43cd157e71285be83502658127835e570ab8ab4a95d7e0211a39ebeed4790d6e"
+      },
+      {
+        "name": "omit_pair_positive",
+        "expected": "PASS",
+        "exit_status": 0,
+        "source_sha256": "c6bac95e2229e5465f9979fef4b93d757955cd79f13548c998a9f5f8dc647390",
+        "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "name": "omit_pair_mutant",
+        "expected": "REJECTED",
+        "exit_status": 1,
+        "source_sha256": "1f0d5cb0855b4dcc8fd7ce6fa599dec89377009486ee419e973014eff49cdc8f",
+        "log_sha256": "7945fc52592d91c9cc9e32852a525cef69130850204661813b8c4d32f19cb67a"
+      },
+      {
+        "name": "omit_frobenius_positive",
+        "expected": "PASS",
+        "exit_status": 0,
+        "source_sha256": "7e1b6f1e120a0d1c576f2a6f5ad50e9ea9df7f9db70c876ec95d0f462d0dda8e",
+        "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "name": "omit_frobenius_mutant",
+        "expected": "REJECTED",
+        "exit_status": 1,
+        "source_sha256": "180995c3f3f9b599830a05ec158c05fbbea9b815660a8110f5239d99047d14ce",
+        "log_sha256": "b7176c9e67c8e85bd090b05b5fb219f81eb4cf4d7e29a1d7cec5937e01344839"
+      },
+      {
+        "name": "wrong_span_member_positive",
+        "expected": "PASS",
+        "exit_status": 0,
+        "source_sha256": "1e6a81db0919a95bcebda857592ae0b249cd1438af7ba0f07ddd637dd0d3d7db",
+        "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "name": "wrong_span_member_mutant",
+        "expected": "REJECTED",
+        "exit_status": 1,
+        "source_sha256": "3eb3dbbc301254d565bd90229c8311e5948b2b8534169389253db9972f14208b",
+        "log_sha256": "33df1c073a22fded9ce58464223c77ce80ed6f95865caf0540dca04ac198d4d2"
+      },
+      {
+        "name": "trace_factor_positive",
+        "expected": "PASS",
+        "exit_status": 0,
+        "source_sha256": "d6231bf0d6724b445db3d2ae27f69cbdcae14334fdfe517cc581681a8c86fa06",
+        "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "name": "trace_factor_mutant",
+        "expected": "REJECTED",
+        "exit_status": 1,
+        "source_sha256": "36b093df674cfa3c7922c21fec11ec2a942dbdec6109d1988230309f9708f7ae",
+        "log_sha256": "379bee88e821f7f82a86982e94f293bc70c75bafdaec9fc85ae2013628b2f1e8"
+      },
+      {
+        "name": "pair_factor_positive",
+        "expected": "PASS",
+        "exit_status": 0,
+        "source_sha256": "7cc41716775f82613cfd77bfbdabbbe93c4029050d9fca72872d89ab97fb6fdf",
+        "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "name": "pair_factor_mutant",
+        "expected": "REJECTED",
+        "exit_status": 1,
+        "source_sha256": "33a794e84887c3b468ae1bf204ebd2d7563ee66a1e682fc218c7fe2d7fea3084",
+        "log_sha256": "ac7d187b21696c47d3740fe1bd1c9ef203320168b87faa8a4a270b4ddb4ea920"
+      },
+      {
+        "name": "frobenius_factor_positive",
+        "expected": "PASS",
+        "exit_status": 0,
+        "source_sha256": "c8a2a3cba747ac877855bb5f617cbe1eec19a22249ce7b38eb97a40e03559fb7",
+        "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "name": "frobenius_factor_mutant",
+        "expected": "REJECTED",
+        "exit_status": 1,
+        "source_sha256": "935ab9d8698617d026753780d2cc333544a6ed4c19f968752c26ba43412b9189",
+        "log_sha256": "3063768c88a1ef007c10aa6a7ea56cb00a1a264db348c1c2a0d5d8c3f06ef2e6"
+      },
+      {
+        "name": "reflection_sign_positive",
+        "expected": "PASS",
+        "exit_status": 0,
+        "source_sha256": "66942d28cf045a42cbafee40b5f8253af076ff14d8794244db6d1d265aa189b5",
+        "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "name": "reflection_sign_mutant",
+        "expected": "REJECTED",
+        "exit_status": 1,
+        "source_sha256": "2629a975be694b7e9c63161e1a47f41c4d873139924c1a27dec85feafbac1295",
+        "log_sha256": "e0bc47c076f4906b7e38e64d7b9688d86fa4fc52b13b62a547d3ee66d0afbe43"
+      },
+      {
+        "name": "SO_O_equality_positive",
+        "expected": "PASS",
+        "exit_status": 0,
+        "source_sha256": "b0502832b656a1751377f368617b8ebe51c0dc81bd94ef1c712feb7455507dd5",
+        "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "name": "SO_O_equality_mutant",
+        "expected": "REJECTED",
+        "exit_status": 1,
+        "source_sha256": "7f6cd5a02683ddad3a21b7d41872a44f8a7f81ff02bc79670b6b40b7621c3eb1",
+        "log_sha256": "867455cec57ea80709f35525f4967b697baaf60bd127cb891e94c240b09a28a8"
+      },
+      {
+        "name": "zero_form_positive",
+        "expected": "PASS",
+        "exit_status": 0,
+        "source_sha256": "f7a714e41c19e2098ec66dd5c1dcd11c35d10b6d5ec815271c99dae4072016b8",
+        "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "name": "nonzero_form_positive",
+        "expected": "PASS",
+        "exit_status": 0,
+        "source_sha256": "3782c479a3fb211ae10a986465b4fbf130b4c53782460e843498cdf1fd79a6c3",
+        "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "name": "arbitrary_coefficients_positive",
+        "expected": "PASS",
+        "exit_status": 0,
+        "source_sha256": "39ca1f8c94118f22096bb5b97e74f323398d7fe7b165e1a81b07db5c8558b6d3",
+        "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "name": "unique_coefficients_positive",
+        "expected": "PASS",
+        "exit_status": 0,
+        "source_sha256": "40c733b279395fa41dc63b3056391a59423d377f02520a12354f33d72f1012cf",
+        "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    ]
+  },
+  "native_replay": {
+    "report": "_scratch/lean_portable/20260918T022950Z_2cvxh7zm/snapshot/_measurements/S11_lean_d5_source_checks.json",
+    "report_sha256": "c181d4765a95fe5e6a89b53c2a6f22a65f24b9514c06282978013dde1133a4c8",
+    "SO_O_odd_dimensions": [
+      3,
+      3,
+      0
+    ],
+    "full_spans_and_reflection_checked": true,
+    "PD_zero": true,
+    "same_count_wrong_span_rejected": true,
+    "old_orientation_wrong_span_rejected": true,
+    "production_or_wolfram_execution": false
+  },
+  "dependencies": {
+    "clean_package_pins": 15,
+    "direct_mathlib_source_object_pairs": 5,
+    "records": {
+      "packages": [
+        {
+          "name": "Physlib",
+          "commit": "8b2b23701c07409f882c49e0bd290a214e44450c"
+        },
+        {
+          "name": "mathlib",
+          "commit": "db584cd6d46c92f209a44c0f1c829460d327499d"
+        },
+        {
+          "name": "\u00abdoc-gen4\u00bb",
+          "commit": "aceca4eeb5a79092eabefaa75fcb72b701d02205"
+        },
+        {
+          "name": "plausible",
+          "commit": "b7eb3304aeae834b12dda98993a37f6a41f6f0bb"
+        },
+        {
+          "name": "LeanSearchClient",
+          "commit": "5f4d51b81cbd3f6b32b156bfad9056621a040404"
+        },
+        {
+          "name": "importGraph",
+          "commit": "16f02aa7642864af59f1ff0e384a015994db9118"
+        },
+        {
+          "name": "proofwidgets",
+          "commit": "4be2e3d5087eeb272cf5a8853b8f9dd025ef5957"
+        },
+        {
+          "name": "aesop",
+          "commit": "3448c0bcc5ce01b2d1546e483ec3620e32df3d0e"
+        },
+        {
+          "name": "Qq",
+          "commit": "92c15be17b7caf78c2ad767ec40f89052d908d81"
+        },
+        {
+          "name": "batteries",
+          "commit": "4488d40d070b9700d4d5a6aa342f0d40c31b2a2d"
+        },
+        {
+          "name": "leansqlite",
+          "commit": "6168b7549738a19bc837a1625c60c5d1e5dd8aeb"
+        },
+        {
+          "name": "Cli",
+          "commit": "6130a47896ce867c6a4a55373441e59e565bad0f"
+        },
+        {
+          "name": "UnicodeBasic",
+          "commit": "37e7d8cb7316a88cd3e91208385c9ec6ae780019"
+        },
+        {
+          "name": "BibtexQuery",
+          "commit": "852edafa268eb038a7158551fd580ee8433847b0"
+        },
+        {
+          "name": "MD4Lean",
+          "commit": "31907cc18f48a95384f99cee5582c00fb39e0f67"
+        }
+      ],
+      "lean_version": "Lean (version 4.33.0, x86_64-unknown-linux-gnu, commit d8b18978322de05a8f3dba51ef03cf5461676c17, Release)",
+      "direct_imports": {
+        "Mathlib.LinearAlgebra.QuadraticForm.Basic": {
+          "olean_sha256": "7acdcb5cc2ba2312ca45fbe6d19fd48471517ff09cb4ee2c53e5193e6aa56536",
+          "path": "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/LinearAlgebra/QuadraticForm/Basic.olean",
+          "source_sha256": "4eff07148a5404af3f2005b4a17ecb3c0bb960d578779ce67c5ab22b713489c8"
+        },
+        "Mathlib.LinearAlgebra.Dimension.Constructions": {
+          "olean_sha256": "543064446a4e151b5cf6a7ef91289eb9370febbfe212f0f8b14b0c912fc30ae6",
+          "path": "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/LinearAlgebra/Dimension/Constructions.olean",
+          "source_sha256": "039f43b60c6dc3dec90e085beb9ee9dfe46da0d2a4d83f730ee274f337f29548"
+        },
+        "Mathlib.LinearAlgebra.Matrix.Trace": {
+          "olean_sha256": "5d0ba8d1379838544c1ea7661aa29eb8a2cf5753230c4de635173358a5753f36",
+          "path": "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/LinearAlgebra/Matrix/Trace.olean",
+          "source_sha256": "8053b04dc1c67b3a7d14262acc43b574e521940085e031726947f3c2241b7a73"
+        },
+        "Mathlib.Data.List.Fold": {
+          "olean_sha256": "2336933a323f721c51e8bfb5258be0a5b43563737430194390b1e6f1dd41aa16",
+          "path": "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Data/List/Fold.olean",
+          "source_sha256": "e5f8bfaa71d2f504301827cc4d99fcfca2008a3a7f8e44a597c309cb20d8eb7f"
+        },
+        "Mathlib.Tactic": {
+          "olean_sha256": "c71aaaefb337826cd40ede82fd5f374299ece9c68476faca676474067b64ca7f",
+          "path": "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Tactic.olean",
+          "source_sha256": "6ec9a1714e9fa472f7e5614792f1aa5a65f360ec56688b0dc765d1bee2e1bdd5"
+        }
+      }
+    }
+  },
+  "preservation": {
+    "historical_source_evidence_files": 499,
+    "shared_local_objects": 232,
+    "native_source_inputs": 2,
+    "all_matched": true,
+    "manifest": "_scratch/lean_d5_portable/run1/preserved.json",
+    "manifest_sha256": "ceb9f0541a3dcaf591d0699977fdd70b99364f46027ca65d9d2ea770e9bf99c1"
+  },
+  "author_adjudication": {
+    "path": "_scratch/lean_d5_portable/run1/adjudication.json",
+    "sha256": "51f99b6139f589a02b34ad9425d1aa0476e14dd677178d5bc271895e39e55ace"
+  },
+  "limitations": [
+    "No new full verify.py all proof/control execution.",
+    "No fresh OS/install/network bootstrap, macOS or native Windows validation.",
+    "No new independent fidelity review; D5 classification clearance remains at its prior checkpoint.",
+    "D5 bulk contract is unfinished and excluded from the completed catalog."
+  ]
+}

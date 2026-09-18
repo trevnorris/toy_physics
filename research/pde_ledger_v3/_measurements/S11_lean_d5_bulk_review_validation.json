@@ -1,0 +1,85 @@
+{
+  "status": "PASS",
+  "validated_utc": "2026-09-18T04:33:27.375256+00:00",
+  "packet_sha256": "d1c84f4d2ebb5d5bfc2933f41ec2c70e17e6059b0cfcd74dfe580beb92759b5e",
+  "payload_files": 80,
+  "archive_snapshot_live_preflight": {
+    "status": "PASS",
+    "packet_sha256": "d1c84f4d2ebb5d5bfc2933f41ec2c70e17e6059b0cfcd74dfe580beb92759b5e",
+    "file_count": 80,
+    "objects": 60,
+    "axiom_audits": 54,
+    "mathematical_rejections": 14,
+    "positive_executions": 18,
+    "preserved_objects": 232,
+    "historical_sources": 499,
+    "checked": "Authorization, fixed packet/archive/live correspondence; all current sources, objects, native inputs, instruments, saved reports/logs/lineage, package pins/direct Mathlib source/object pairs, seed replay and installation evidence."
+  },
+  "transport_correspondence": "PASS",
+  "reviews": {
+    "claude": {
+      "verdict": "CLEAR",
+      "session_id": "8bd7f971-28dc-410a-9dd6-8b9c2853da0b",
+      "terminal": "success/end_turn/completed",
+      "models": [
+        "claude-haiku-4-5-20251001",
+        "claude-opus-5[1m]"
+      ],
+      "raw_sha256": "3a0151cd1b032aaf9dfbef999d3c8e5c6f1b150facb1f0612ffcf59b28e33899",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "run_record_sha256": "1a7956244097390346252cf0b1b8436452896cdba69dc2e1edc8aeab4d99b1b5",
+      "report_sha256": "3b1914d9965ec6ff3005a9c7b1cd90aa23f8212e93bd3244c9932d3cd823897b",
+      "text_field": "result",
+      "terminal_report_offset": 0,
+      "started_utc": "2026-09-18T04:19:27.771704+00:00",
+      "finished_utc": "2026-09-18T04:21:58.535825+00:00",
+      "review_limit": "Independent source-and-record fidelity review, no independent Lean/native execution or computed hash verification."
+    },
+    "grok": {
+      "verdict": "CLEAR",
+      "session_id": "9cfd3052-ca2c-4b13-9a51-151f14e9804a",
+      "terminal": "end_turn",
+      "models": [
+        "grok-4.6-build"
+      ],
+      "raw_sha256": "5525ce4a5c637d473a043362b3b2915214216670ffade7eca8bf84e266c43a85",
+      "stderr_sha256": "ac4d7607c33ddf3c1ae002b4bc7f8e7fc89a7e444e8d79e64dc30c95dabf9d5a",
+      "run_record_sha256": "eed9d0c28c1c0cdaf206eacc9db1d9bf27d7170e363a6a7d00bb2cff7cce165b",
+      "report_sha256": "8b929036090e73fe72f02c8112182b30b569ab8ebbbe09ba5fba7f3f0e975a60",
+      "text_field": "text",
+      "terminal_report_offset": 887,
+      "started_utc": "2026-09-18T04:21:58.564463+00:00",
+      "finished_utc": "2026-09-18T04:30:27.610850+00:00",
+      "review_limit": "Independent source-and-record fidelity review, no independent Lean/native execution or computed hash verification."
+    }
+  },
+  "review_notes_validation": {
+    "grok_read_error": {
+      "target": {
+        "target_file": "/tmp/s11-lean-d5-bulk-fidelity-kh14ow6z/packet/_measurements/S11_lean_d5_bulk_review_packet.json"
+      },
+      "failure": {
+        "type": "ReadFile",
+        "FileNotFound": "Error: /tmp/s11-lean-d5-bulk-fidelity-kh14ow6z/packet/_measurements/S11_lean_d5_bulk_review_packet.json does not exist.\nNote: your current working directory is /tmp/s11-lean-d5-bulk-fidelity-kh14ow6z/packet"
+      },
+      "successful_authoritative_manifest_reads": [
+        {
+          "tool_call_id": "call-98eecbbd-d120-4077-981c-5c090bc128a9-0",
+          "input": {
+            "target_file": "/tmp/s11-lean-d5-bulk-fidelity-kh14ow6z/packet/MANIFEST.json"
+          },
+          "status": "completed"
+        }
+      ],
+      "adjudication": "Only the absent optional duplicate manifest path failed. The authoritative MANIFEST.json was read successfully, and the prompt/final report explicitly use it. Startup configuration/repository warnings did not prevent the substantive completed review. No missing proof read or failed terminal response is inferred.",
+      "session_updates_sha256": "819632e8dbf5d6881c4a04781958adcd9ed825490b3ca8fbe276c9d8b81eb8df"
+    },
+    "optional_notes": [
+      "Native current_factor_rejected is a generic polynomial sanity check, not an independent mutation of the computed current. Keep actual current-divergence identity and Lean witness/control as normalization evidence.",
+      "The homogeneous parameter map is operator/modal identification, not pointwise equality of action densities.",
+      "exists_nonzero_firstVariation is classical existence, not an explicit constructed witness."
+    ]
+  },
+  "no_shared_source_drift": true,
+  "adjudication": "Both substantive terminal reports CLEAR with no required correction. Optional notes will be dispositioned in D5_BULK_FIDELITY_REVIEW.md; proof and instrument bytes remain unchanged."
+}

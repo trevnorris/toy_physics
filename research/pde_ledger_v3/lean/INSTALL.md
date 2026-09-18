@@ -2,7 +2,9 @@
 
 These instructions cover the completed S9, S10 and bounded S11 Lean contracts.
 Use the checkout containing the proofs and their `_measurements/*_contract_checks.json`
-records. D5 is still in progress and is intentionally excluded from `all`.
+records. The independently reviewed D5 density classification is included in `all`;
+the completed D5 bulk contract has a separate recorded suite and remains
+outside this portable catalog.
 
 The supported command-line path is Linux, or Linux inside WSL2 on Windows.
 The tools also have macOS releases, but this repository's setup/replay path has
@@ -84,7 +86,7 @@ Select one or several contracts, inspect the plan, or run only one layer:
 ```
 
 The available names are `s9`, `s10`, `homogeneous`, `d2`, `d2-dynamics`, `d3`,
-`d3-bulk`, `d4`, `d4-odd`, `analytic-error`, `variable`, `poles`, and `d4-bulk`.
+`d3-bulk`, `d4`, `d4-odd`, `analytic-error`, `variable`, `poles`, `d4-bulk`, and `d5`.
 `s10` includes the retained, already committed CAS bridge proofs; this runner
 does not generate or expand that bridge. The complete run is substantial.
 `--plan` validates control inputs and shows the work without launching Lean.
@@ -118,7 +120,7 @@ The portable runner:
   Older source mutations are reconstructed only when their replacement applies
   exactly once and the resulting source hash matches. Passing controls must
   compile; failed controls must reach the intended mathematical diagnostic.
-- Checks D3/D4 generated certificates with their existing `--check` mode and
+- Checks D3/D4/D5 generated certificates with their existing `--check` mode and
   runs the selected compact SymPy source checks in the snapshot. Original
   reports are never overwritten. For the variable-coefficient check, the two
   upstream compact source checks run first in that same snapshot.
@@ -206,3 +208,32 @@ The full `verify.py all` proof run, macOS and native Windows were not exercised
 as part of this tooling change. All completed contract control inputs were
 validated, and their historical diagnostic formats were covered by the tooling
 tests. This validation adds no mathematical claim or fidelity-review clearance.
+
+## D5 catalog integration
+
+The completed D5 density classification (`ec27ecf0`) is now selectable with
+`.venv/bin/python verify.py d5` and included in `all`. It has 45 local modules,
+51 selected axiom audits and 30 paired/positive control executions. The runner
+also checks the unchanged D5 generator and compact native span instrument.
+The fresh D5 replay passed on Linux on 2026-09-18: all 45 objects, 51 axiom
+audits, thirteen intended mathematical rejections, seventeen positive controls,
+and the generator/native checks. Ten tooling regressions also pass. The run
+used one worker and took approximately 73 minutes on this host; other hardware
+may differ. Live inputs, logs, objects, fifteen clean dependency pins and five
+direct Mathlib source/object pairs were checked after completion.
+
+[INSTALL_D5_VALIDATION.json](INSTALL_D5_VALIDATION.json) records this new
+execution evidence. All 499 protected historical source/evidence files and 232
+shared ledger objects remained unchanged. The dated installation validation
+above remains historical and is not rewritten. This replay used the existing
+Python 3.10.12 environment with the pinned SymPy/mpmath versions and installed
+external Lean caches; it did not repeat a fresh OS/bootstrap download test or
+run the entire `all` proof catalog. The now-expanded catalog plans 232 unique
+local modules and 349 control executions; those plan counts are not a claim of
+a new full-catalog execution.
+
+D5 bulk subsequently completed verification and both independent reviews; see
+[s11/D5_BULK_FIDELITY_REVIEW.md](s11/D5_BULK_FIDELITY_REVIEW.md). It has not yet
+been registered in the portable catalog. This closure updates status prose only;
+`INSTALL_D5_VALIDATION.json` retains the hashes of the documents at replay time.
+Runner, setup, tests and execution evidence are unchanged.

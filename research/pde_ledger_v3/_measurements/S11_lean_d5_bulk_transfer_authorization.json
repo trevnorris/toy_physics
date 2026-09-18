@@ -1,0 +1,19 @@
+{
+  "authorized_utc": "2026-09-18T04:11:13.845676+00:00",
+  "user_message": "If you're going to ask for approval for grok and Claude to review, you have it. Wrap this up and if they sign off then commit.",
+  "scope": "Current bounded D5B.1\u2013D5B.4 packet after successful local verification, two independent non-author reviews by Claude and Grok, resolve bounded findings, commit after both clear; includes the already-authorized portable D5 integration work.",
+  "transfer_authorized": true,
+  "destinations": [
+    "Claude",
+    "Grok"
+  ],
+  "conditional_commit_authorized": true,
+  "condition": "both substantive independent reviews clear and bounded completion validated",
+  "new_scope_authorized": false,
+  "packet_sha256": "d1c84f4d2ebb5d5bfc2933f41ec2c70e17e6059b0cfcd74dfe580beb92759b5e",
+  "file_count": 80,
+  "archive_sha256": "f4cef6ae169e0c34c07bdacdf8b496ee40180139c2285fc74189818e5f055dde",
+  "source_authorization_record": "research/pde_ledger_v3/_scratch/S11_lean_d5_bulk/authorization_20260918.json",
+  "source_authorization_sha256": "70f93c4ca030be8d7b01e017c8e7f18b871d617ecc02e82222788bd81659a7a8",
+  "authorization_interpretation": "Explicit advance authorization of the current D5B review and conditional commit, given after the assistant explained the pending packet review; bound here to the verified fixed packet. No repeat approval required."
+}

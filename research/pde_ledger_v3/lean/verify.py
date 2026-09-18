@@ -38,6 +38,7 @@ CONTRACTS = {
     'variable': ('S11_lean_variable', ['S11VariableCoefficients']),
     'poles': ('S11_lean_pole', ['S11NonlinearPole']),
     'd4-bulk': ('S11_lean_d4_bulk', ['S11D4Bulk']),
+    'd5': ('S11_lean_d5', ['S11D5Invariants']),
 }
 IMPORT = re.compile(r'^import\s+([\w.]+)\s*$', re.M)
 LOCAL = re.compile(r'S(?:9|10|11)\w*(?:\.\w+)*\Z')
@@ -289,7 +290,7 @@ def main(argv=None):
     files |= {Path(s['report']) for s in specs.values()}
     files |= native_inputs(prefixes)
     generators = []
-    for dim in ['d3', 'd4']:
+    for dim in ['d3', 'd4', 'd5']:
         if any(m.startswith(f'S11{dim.upper()}Invariants') for m in order) and not args.native_only:
             generators.append(Path('_measurements') / f'S11_lean_{dim}_generate.py')
     files |= set(generators)

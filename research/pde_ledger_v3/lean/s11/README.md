@@ -247,3 +247,18 @@ returned CLEAR with no required fix; the bounded contract is complete. See
 [D5_FIDELITY_REVIEW.md](D5_FIDELITY_REVIEW.md) and
 [D5_VERIFICATION.txt](D5_VERIFICATION.txt).
 This increment does not include D5 bulk variation or S11c calculations.
+
+## D5 constant-coefficient bulk equivalence (complete)
+
+The authorized [D5B.1–D5B.4 contract](D5_BULK_COVERAGE.md) adds the actual
+first variation of the three-coefficient D5 density, universal bulk equivalence,
+the response/kernel dimensions 2/1, its explicit divergence current and the
+compact homogeneous parameter map. It reuses the completed D5 classification,
+S10 variation machinery and dimension-general coordinate calculus. See
+[D5_BULK_FIDELITY.md](D5_BULK_FIDELITY.md) for conventions and verification
+boundaries. Local verification passed and both independent reviews returned
+CLEAR. See [D5_BULK_FIDELITY_REVIEW.md](D5_BULK_FIDELITY_REVIEW.md) for closure
+and optional-note dispositions.
+The completed D5 density suite is now selectable through `verify.py d5`;
+the bulk proof has its separate recorded suite and is not yet registered in
+that portable catalog.

@@ -1,0 +1,31 @@
+Independent statement-fidelity review of D5B.1–D5B.4 only; author Codex.
+Read policy, coverage, fidelity, verification summary, five S11D5Bulk modules and root. Prior D5 classification and S10/D4 calculus are unchanged dependencies. Establish the correspondence of three coefficients to five field components; do not substitute coefficient-space dimension for spatial dimension.
+
+Check actual L=-Q/2 and derivative-defined momentum, row-derivative convention G_ij=partial_i u_j, zero time momentum, smooth backgrounds and smooth compact variations. Check actual integral expansion/HasDerivAt/integration by parts/fundamental lemma, without assuming an integrable infinite background action.
+Check EL=(a+b)grad(div u)+c Delta u on all smooth fields, universal bulk equivalence iff c and a+b agree, full null family (t,-t,0), image/kernel dimensions 2/1. Explicit waves prove necessity only; domain is all smooth fields. Retain arbitrary real coefficients including negative and zero.
+Check explicit current, action's -t/2 factor, nonzero density/momentum/current witnesses and compact homogeneous map rho=0,mu=c,B=a+b+c including zero wavevector. Boundary effects are not declared absent.
+Check actual Q9/V5 full-span/native action identification; native EL helper sign versus Lean and factor two for V5(Q). Native basis-to-target rows (0,1,0),(1/2,-1/2,0),(0,-1,1). Translation remains outside the kernel; no production or Wolfram run.
+Check meaningful paired controls, fifth-spatial-direction sensitivity, and discrimination of nonzero normalization despite null bulk variation. No failed instrument or positive control is accepted as mathematical rejection. Separate existing classification dependency reuse from fresh bulk checking and source-reading review from independently executed verification.
+Scope excludes variable coefficients, interfaces, general dimensions/null Lagrangians, spectrum/scattering/poles, S11c or production reruns and systematic CAS bridge. Return CLEAR only after substantive assessment, or FIX_REQUIRED with precise locations and necessary corrections; optional extensions are not required fixes. State exactly which source, supplied execution or independently obtained evidence was used. Do not contact another reviewer or disclose files outside the approved service/session.
+
+Read _measurements/S11_lean_d5_bulk_review_packet.json only if present; otherwise
+MANIFEST.json is the authoritative fixed packet manifest. Begin with
+lean/s11/D5_BULK_COVERAGE.md, D5_BULK_FIDELITY.md and D5_BULK_VERIFICATION.txt.
+All files you may read are within this isolated packet directory. Use only
+provided read-only tools. Do not execute scripts, modify files, access the
+original repository, or inspect the other review. The packet contains the
+complete local proof-source import closure, selected native sources, formal
+and native instruments/reports and author validation. Compiled objects and
+external Mathlib sources are not supplied; their hashes/execution records are
+author evidence, not an independently reproduced build. The existing portable
+D5 seed report is included as provenance. The 42 seeded classification imports
+and all other guarded canonical reuse must not be described as fresh builds
+in the final run. In particular, the 54 root audit lists were revalidated from
+the recorded run3 log, while the 32 controls were freshly executed in run4.
+
+Return a substantive final report with verdict CLEAR or FIX_REQUIRED, precise
+source/declaration references for any necessary finding, explicit domain and
+normalization checks, coverage and mutation assessment, and evidence limits.
+A plan or promise to review is not clearance. The user's commit authorization
+is conditional on both independent reviews clearing; do not commit or contact
+the other reviewer.

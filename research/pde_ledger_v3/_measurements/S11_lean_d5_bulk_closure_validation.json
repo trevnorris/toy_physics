@@ -1,0 +1,155 @@
+{
+  "status": "PASS",
+  "closed_utc": "2026-09-18T04:35:52.101298+00:00",
+  "scope": "Bounded D5B.1\u2013D5B.4 complete; portable D5 density registration validated; not S11/CAS production completion.",
+  "packet_sha256": "d1c84f4d2ebb5d5bfc2933f41ec2c70e17e6059b0cfcd74dfe580beb92759b5e",
+  "archive_sha256": "f4cef6ae169e0c34c07bdacdf8b496ee40180139c2285fc74189818e5f055dde",
+  "manifest_sha256": "fd85cf245eeb3be4c54cbc548a6d0a28716ab084028c05e2330ad5129b026997",
+  "pre_closure_validation_sha256": "072b6d97a35e2270b9f3338761642bb863f2236d92e9ff2f0c58d4b9c388c1e8",
+  "reviews": {
+    "claude": {
+      "verdict": "CLEAR",
+      "session_id": "8bd7f971-28dc-410a-9dd6-8b9c2853da0b",
+      "terminal": "success/end_turn/completed",
+      "models": [
+        "claude-haiku-4-5-20251001",
+        "claude-opus-5[1m]"
+      ],
+      "raw_sha256": "3a0151cd1b032aaf9dfbef999d3c8e5c6f1b150facb1f0612ffcf59b28e33899",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "run_record_sha256": "1a7956244097390346252cf0b1b8436452896cdba69dc2e1edc8aeab4d99b1b5",
+      "report_sha256": "3b1914d9965ec6ff3005a9c7b1cd90aa23f8212e93bd3244c9932d3cd823897b",
+      "text_field": "result",
+      "terminal_report_offset": 0,
+      "started_utc": "2026-09-18T04:19:27.771704+00:00",
+      "finished_utc": "2026-09-18T04:21:58.535825+00:00",
+      "review_limit": "Independent source-and-record fidelity review, no independent Lean/native execution or computed hash verification."
+    },
+    "grok": {
+      "verdict": "CLEAR",
+      "session_id": "9cfd3052-ca2c-4b13-9a51-151f14e9804a",
+      "terminal": "end_turn",
+      "models": [
+        "grok-4.6-build"
+      ],
+      "raw_sha256": "5525ce4a5c637d473a043362b3b2915214216670ffade7eca8bf84e266c43a85",
+      "stderr_sha256": "ac4d7607c33ddf3c1ae002b4bc7f8e7fc89a7e444e8d79e64dc30c95dabf9d5a",
+      "run_record_sha256": "eed9d0c28c1c0cdaf206eacc9db1d9bf27d7170e363a6a7d00bb2cff7cce165b",
+      "report_sha256": "8b929036090e73fe72f02c8112182b30b569ab8ebbbe09ba5fba7f3f0e975a60",
+      "text_field": "text",
+      "terminal_report_offset": 887,
+      "started_utc": "2026-09-18T04:21:58.564463+00:00",
+      "finished_utc": "2026-09-18T04:30:27.610850+00:00",
+      "review_limit": "Independent source-and-record fidelity review, no independent Lean/native execution or computed hash verification."
+    }
+  },
+  "review_notes_validation": {
+    "grok_read_error": {
+      "target": {
+        "target_file": "/tmp/s11-lean-d5-bulk-fidelity-kh14ow6z/packet/_measurements/S11_lean_d5_bulk_review_packet.json"
+      },
+      "failure": {
+        "type": "ReadFile",
+        "FileNotFound": "Error: /tmp/s11-lean-d5-bulk-fidelity-kh14ow6z/packet/_measurements/S11_lean_d5_bulk_review_packet.json does not exist.\nNote: your current working directory is /tmp/s11-lean-d5-bulk-fidelity-kh14ow6z/packet"
+      },
+      "successful_authoritative_manifest_reads": [
+        {
+          "tool_call_id": "call-98eecbbd-d120-4077-981c-5c090bc128a9-0",
+          "input": {
+            "target_file": "/tmp/s11-lean-d5-bulk-fidelity-kh14ow6z/packet/MANIFEST.json"
+          },
+          "status": "completed"
+        }
+      ],
+      "adjudication": "Only the absent optional duplicate manifest path failed. The authoritative MANIFEST.json was read successfully, and the prompt/final report explicitly use it. Startup configuration/repository warnings did not prevent the substantive completed review. No missing proof read or failed terminal response is inferred.",
+      "session_updates_sha256": "819632e8dbf5d6881c4a04781958adcd9ed825490b3ca8fbe276c9d8b81eb8df"
+    },
+    "optional_notes": [
+      "Native current_factor_rejected is a generic polynomial sanity check, not an independent mutation of the computed current. Keep actual current-divergence identity and Lean witness/control as normalization evidence.",
+      "The homogeneous parameter map is operator/modal identification, not pointwise equality of action densities.",
+      "exists_nonzero_firstVariation is classical existence, not an explicit constructed witness."
+    ]
+  },
+  "review_validation": "_measurements/S11_lean_d5_bulk_review_validation.json",
+  "closure_documentation_changes": {
+    "lean/s11/D5_BULK_COVERAGE.md": {
+      "before_sha256": "7cfc214166473cc31809604efe092445386853aa282f7e69aadd01a8ffdbf766",
+      "after_sha256": "ad5245a21377d1d0ca059d02adbff1b274583e3f5de7952200ff89e8ec1f9d02"
+    },
+    "lean/s11/D5_BULK_FIDELITY.md": {
+      "before_sha256": "5cc2c6bb0623bbbc6174c79af97e3000b5ffecb5c51a8e27467edf745a2ff2a9",
+      "after_sha256": "300bdba01051f1201c65a4a17e0abd4eb08a4d14d687f018f9e34d89454258c9"
+    },
+    "lean/s11/D5_BULK_VERIFICATION.txt": {
+      "before_sha256": "c25576b88103f8083cd98023852991cf1dfc6191ffa4ebf93cebcc7731ac148a",
+      "after_sha256": "c085d3e22935bd509a349e199dbcfe55746a04771a94ae347be7f9047de7e483"
+    },
+    "lean/s11/README.md": {
+      "before_sha256": "2d8eded1ab86c2e925f783cf97b776a91750628c26957ac1a50b7ec27667c58e",
+      "after_sha256": "f96dfcc70a96fa2a2aa57009852411d0114d432ee65d6d76b0f9bde2c1753411"
+    },
+    "lean/INSTALL.md": {
+      "before_sha256": "490402002d920353ab30b1e5ae831acf4d41b609f333703fb32d0cf1387b7dd8",
+      "after_sha256": "b4488f077e62ac1a6bb7991c60f27f2fc2b5bd19a4026608ff9739e203ebc3bf"
+    },
+    "lean/README.md": {
+      "before_sha256": "f5bb7a2a25d547ca08c04b8570a02ef05d5b3008d9e0d61d1b08a44173cff760",
+      "after_sha256": "bd3be89b4fce04988e7735f07a13ab2b14580f031ef772ad616e5f02ed756f5b"
+    }
+  },
+  "changed_packet_files": {
+    "lean/s11/D5_BULK_COVERAGE.md": {
+      "before_sha256": "7cfc214166473cc31809604efe092445386853aa282f7e69aadd01a8ffdbf766",
+      "after_sha256": "ad5245a21377d1d0ca059d02adbff1b274583e3f5de7952200ff89e8ec1f9d02"
+    },
+    "lean/s11/D5_BULK_FIDELITY.md": {
+      "before_sha256": "5cc2c6bb0623bbbc6174c79af97e3000b5ffecb5c51a8e27467edf745a2ff2a9",
+      "after_sha256": "300bdba01051f1201c65a4a17e0abd4eb08a4d14d687f018f9e34d89454258c9"
+    },
+    "lean/s11/D5_BULK_VERIFICATION.txt": {
+      "before_sha256": "c25576b88103f8083cd98023852991cf1dfc6191ffa4ebf93cebcc7731ac148a",
+      "after_sha256": "c085d3e22935bd509a349e199dbcfe55746a04771a94ae347be7f9047de7e483"
+    }
+  },
+  "substantive_sources_unchanged": true,
+  "new_review_required": false,
+  "proof_or_control_rerun_required": false,
+  "historical_install_records_unchanged": true,
+  "installation_status_only_changes": [
+    "lean/INSTALL.md",
+    "lean/README.md"
+  ],
+  "commit_authorization": "Explicit user authorization after both independent reviews clear; conditions met.",
+  "closure_source_sha256": {
+    "lean/s11/D5_BULK_COVERAGE.md": "ad5245a21377d1d0ca059d02adbff1b274583e3f5de7952200ff89e8ec1f9d02",
+    "lean/s11/D5_BULK_FIDELITY.md": "300bdba01051f1201c65a4a17e0abd4eb08a4d14d687f018f9e34d89454258c9",
+    "lean/s11/D5_BULK_VERIFICATION.txt": "c085d3e22935bd509a349e199dbcfe55746a04771a94ae347be7f9047de7e483",
+    "lean/s11/README.md": "f96dfcc70a96fa2a2aa57009852411d0114d432ee65d6d76b0f9bde2c1753411",
+    "lean/INSTALL.md": "b4488f077e62ac1a6bb7991c60f27f2fc2b5bd19a4026608ff9739e203ebc3bf",
+    "lean/README.md": "bd3be89b4fce04988e7735f07a13ab2b14580f031ef772ad616e5f02ed756f5b",
+    "lean/s11/D5_BULK_FIDELITY_REVIEW.md": "87fb4accd3c805218af3fcaf65da4b5b1b04b20d7f30a502b0b05875645dcee5",
+    "_measurements/S11_lean_d5_bulk_transfer_authorization.json": "43d941456ee3819d52129a2e77dfa795b09604f7577e900a4cabcff2604b9ad9"
+  },
+  "post_closure_validation": {
+    "status": "PASS",
+    "validated_utc": "2026-09-18T04:37:21.956402+00:00",
+    "packet_files": 80,
+    "canonical_objects": 60,
+    "protected_shared_objects": 232,
+    "historical_files": 499,
+    "proof_instrument_native_generator_pin_changes": false,
+    "archive_snapshot_transport_unchanged": true,
+    "only_declared_closure_documents_changed": true,
+    "historical_installation_status_document_changes": {
+      "lean/INSTALL.md": {
+        "recorded_execution_sha256": "490402002d920353ab30b1e5ae831acf4d41b609f333703fb32d0cf1387b7dd8",
+        "current_status_document_sha256": "b4488f077e62ac1a6bb7991c60f27f2fc2b5bd19a4026608ff9739e203ebc3bf"
+      },
+      "lean/README.md": {
+        "recorded_execution_sha256": "f5bb7a2a25d547ca08c04b8570a02ef05d5b3008d9e0d61d1b08a44173cff760",
+        "current_status_document_sha256": "bd3be89b4fce04988e7735f07a13ab2b14580f031ef772ad616e5f02ed756f5b"
+      }
+    },
+    "external_packages_and_direct_objects_match": true
+  }
+}

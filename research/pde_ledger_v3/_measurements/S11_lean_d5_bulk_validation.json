@@ -1,0 +1,828 @@
+{
+  "status": "PASS",
+  "validated_utc": "2026-09-18T04:16:11.275082+00:00",
+  "scope": "D5B.1\u2013D5B.4 only",
+  "reviews_complete": false,
+  "counts": {
+    "objects": 60,
+    "seeds": 42,
+    "builds": 18,
+    "mutations": 14,
+    "positives": 18
+  },
+  "axiom_audits": 54,
+  "source_sha256": {
+    "_measurements/S11_lean_d5_bulk_preserved_inputs.json": "2a405c7242e7f69831b8e36ea451a1e8b45a407c344fb234ca75b7659a717459",
+    "_measurements/S11_lean_d5_bulk_source_check.py": "bd3ed9e4b89a81f44ce27366bdf7759bfae2ad540f4378cef8c5b829bd935d69",
+    "_measurements/S11_lean_d5_bulk_source_checks.json": "58c496e660b71f50e3fa8f6cdc7a2d0b81ac98376e9ea7488b1cd21e00de6485",
+    "_measurements/S11_lean_d5_generate.py": "d9caaf2a1aca44ec6492fa5b72d475cbe1757bf037ed2a0d5841d2159adaf567",
+    "_scratch/lean_portable/20260918T022950Z_2cvxh7zm/report.json": "7581655ec5e3f36f6ce0dd1a2d7d06fcf1c43e85d5d72c01cf60b13b7556916c",
+    "lean/lake-manifest.json": "91fd5318cdc35e4044d6e059c6ef73d94b955d27adf8a5860b07ec92add9377e",
+    "lean/lakefile.toml": "1407b4b97bfd604d5579e45774445315cf3673fea06fedb51433b458a1ed44b6",
+    "lean/lean-toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+    "lean/s10/S10Controls/Action.lean": "e1764df0b26a46d6822ec4a72cca42e5d4f9df06686a1b649c86fd13af9f6566",
+    "lean/s10/S10Controls/Analytic.lean": "bac51e35f46740653dbcea68724deecf23f9fdb8991c696f54007287b57afab5",
+    "lean/s10/S10Controls/PhaseAverage.lean": "ff2863169741814592ec0947da8941976d6ebf2d676e07300e0c0b48905034ba",
+    "lean/s10/S10Controls/PlaneWave.lean": "14149fe870ddadc3aa547a49706748990d1eed9f74e428423f9c81e3a745863e",
+    "lean/s10/S10Controls/Variation.lean": "0141297128ec34c925d11ffe13b2e08203282b4d1ada4d388b23b2d689db7c0e",
+    "lean/s10/S10Pilot/Action.lean": "a7466f2c23a123f244615217d27d5048a625bddfaad5ce2a6f0456a8704f435c",
+    "lean/s10/S10Pilot/Analytic.lean": "f8a6fe854a7ed775a7ecf65fdf8589db2b865139a811daf1e4e27c34bac8811d",
+    "lean/s10/S10Pilot/PhaseAverage.lean": "2007235232001290ac87d25e8922e4a3b615583272ef39034b2aedc83dee4429",
+    "lean/s10/S10Pilot/PlaneWave.lean": "d64ad2d70169976f42cacb3ece650776780a17fe640d1efee4aa7677e53c85cb",
+    "lean/s10/S10Pilot/Variation.lean": "f4678338fb72fe859c627cbc5da3ccb90e9f38b7a5d774705219f880cdcc871d",
+    "lean/s11/S11D4Odd/Calculus.lean": "22604d9999f0a28079ff7fd9a9f88760df1509ae0c8a3838de26f3fefbeddd04",
+    "lean/s11/S11D5Bulk/Action.lean": "41dd348b6568e26ebc072695e4706038c6524c972daf8b62cf82668658e089e5",
+    "lean/s11/S11D5Bulk/Bulk.lean": "5f2f9cb368695a34a429db69c2b677bcb5078891cbc0aa44d407dab2108fa81d",
+    "lean/s11/S11D5Bulk/Census.lean": "20a0266385f04cadf620f56ec86095226bff373773dc60040309061fdf6729f2",
+    "lean/s11/S11D5Bulk/Controls.lean": "420c816833e59edd22d1dbadaacee8323ae027e71ef23061c28e304e9f0b5d90",
+    "lean/s11/S11D5Bulk/Variation.lean": "9f0a8a909a10c40774092f1d6822f25d614cea91dfe31be81cd44b8e49f95f48",
+    "lean/s11/S11D5Bulk.lean": "670c622f677fc32366787937ec9f70c9fb5fb4ebfdb1fb267c6eafd71fdbc213",
+    "lean/s11/S11D5Invariants/BilinearExpansion.lean": "eddd49b3cac76ced9b835f6dd2b214782fff806b75d06365fbe18dca95812d89",
+    "lean/s11/S11D5Invariants/Classification.lean": "04fdc44ec4a57ed1f79c28ccd15f67abe242e718a3fac79644cf126d79da152e",
+    "lean/s11/S11D5Invariants/ConstraintBlock0.lean": "ec9758b54d6b3c00b57b1cab0ff13d215970b06ad18204ce056fcf924566a32b",
+    "lean/s11/S11D5Invariants/ConstraintBlock1.lean": "af601feaa3452eb90d640dc21475711b3a8a22d468f9f95152fb94bc9dfdb59b",
+    "lean/s11/S11D5Invariants/ConstraintBlock10.lean": "c231a22794d288c88187b48e8e06faaa0e27890dc34b96f75507ad2f08d0c9b9",
+    "lean/s11/S11D5Invariants/ConstraintBlock11.lean": "23f865583618ed023977e3c1c6cdd781e09b55e73c0e64d72142efc25dc99d23",
+    "lean/s11/S11D5Invariants/ConstraintBlock12.lean": "bea86c03809411a1fdca9f71204d2522851c2e477660e2253477d26643c9509e",
+    "lean/s11/S11D5Invariants/ConstraintBlock13.lean": "833ff4ec251a0b7d5fee2cb5d93e64ebffd6dddf075b99a26f3499bb77b1e840",
+    "lean/s11/S11D5Invariants/ConstraintBlock14.lean": "93937f2dbf442ddf0b0fa6cb428fa6dbf4bfed051ab00cafe1165affc21b8ece",
+    "lean/s11/S11D5Invariants/ConstraintBlock15.lean": "eba1c94de870525e90c172bd20844782f5e3c11344aedb381aab0068daedc882",
+    "lean/s11/S11D5Invariants/ConstraintBlock16.lean": "f684c0771715c800bc34e152879ec515322f8f559f879b1b5f3b562ffc3e1607",
+    "lean/s11/S11D5Invariants/ConstraintBlock2.lean": "7a8d743bbd3e72d8fdd5f012e3efa3340f79246d779af9a324d264f9ea895959",
+    "lean/s11/S11D5Invariants/ConstraintBlock3.lean": "b11074e9540e1aaacf0447ef15f6e3c2f48d1366e089f275053d2438b973cb76",
+    "lean/s11/S11D5Invariants/ConstraintBlock4.lean": "626502941f1442eca4e6854e35c691114a8710d55120e1ea77cc4ccdb7e18f20",
+    "lean/s11/S11D5Invariants/ConstraintBlock5.lean": "dde7e382c07d9044dbb76d11671c28edb63cbd06fc758d35764f035af4218a2c",
+    "lean/s11/S11D5Invariants/ConstraintBlock6.lean": "1983ee5b7cc8c6d14f118ff70acc246a3b950309ff9249d65cea223b81b94cee",
+    "lean/s11/S11D5Invariants/ConstraintBlock7.lean": "4f11764947587171902c68bab7cd59a7840d45328533b5e5485f8cb97f9322c6",
+    "lean/s11/S11D5Invariants/ConstraintBlock8.lean": "f3a66ac6c4cdbc1151097630df9bd90227d1b06a67fcc39afa0fd298c1e86044",
+    "lean/s11/S11D5Invariants/ConstraintBlock9.lean": "3830225df1cb03d88835f93cb38e77af1bc684be717acc61f14f4687ef567224",
+    "lean/s11/S11D5Invariants/ConstraintPolynomial.lean": "f8de169d23a3a8aac74b84c53cb05ebc33e33482ca3075b53cefbf93e62bec5e",
+    "lean/s11/S11D5Invariants/Constraints.lean": "fc375ed0d4ea0a20d1ae188f344ac7685a87b4343016c06af76968a183524e63",
+    "lean/s11/S11D5Invariants/CoordinateAlgebra.lean": "e67dfcb4178fa431c1660c164e2f19e49208e5c9f2764bdb7f7d7c36173674f1",
+    "lean/s11/S11D5Invariants/Forms.lean": "4dc8be2d39bee493302589e5189717e7758c4320eb84db26576e2faee92e0957",
+    "lean/s11/S11D5Invariants/Quadratic.lean": "5846d89554719918d34d1ff860841866ae854cc8fa71cf66c237c2ce292b68f1",
+    "lean/s11/S11D5Invariants/ReconstructionBlock0.lean": "a72ea0feabee4f744205b54f4ee46e4d7bb4f1a6854080663ba0e5e7e819c927",
+    "lean/s11/S11D5Invariants/ReconstructionBlock1.lean": "186dcf0fecfd3cb46a8d47963ac37130f9e65259848985f30df612423ffd2e1d",
+    "lean/s11/S11D5Invariants/ReconstructionBlock10.lean": "29f35b766a6a29029fc0a1d5f476ecc3864488432b7ef2fa1ca4bc049b7a2369",
+    "lean/s11/S11D5Invariants/ReconstructionBlock11.lean": "5435d0556e22aad288b53ba44afe35b98b90316b63b1566614f0598ec4c55a20",
+    "lean/s11/S11D5Invariants/ReconstructionBlock12.lean": "fb6dc768aa1bbd072067a148fba2af65a1910895db10a9a5fac81d2c0bb31048",
+    "lean/s11/S11D5Invariants/ReconstructionBlock13.lean": "b97d37d625e7fc9ac1f3e17a39223eea19ca9220de5b1121dbadef7b20f4cfc9",
+    "lean/s11/S11D5Invariants/ReconstructionBlock14.lean": "f1385a8a34f7cfeb8440bd6fef68e1553b1180c8e6aa3fc51ea8822bd217b482",
+    "lean/s11/S11D5Invariants/ReconstructionBlock15.lean": "8e9dee9bb2367f7a9ae51afb1bbf5a0640fafd1b5b952ed652ead9a4dbf55db3",
+    "lean/s11/S11D5Invariants/ReconstructionBlock16.lean": "8e3f255b5084a196c20a24b98b4d797438eef7a36018a846ac0d8ecf6c82c64a",
+    "lean/s11/S11D5Invariants/ReconstructionBlock2.lean": "1508ceb28eb39698108b287bfaf86615bd31c376609d1a0cfd6e3151943bd2a3",
+    "lean/s11/S11D5Invariants/ReconstructionBlock3.lean": "ba5707227f26d2f90f1e5d68874ade702076f2fa10fc5e7f95cff893670ebb1d",
+    "lean/s11/S11D5Invariants/ReconstructionBlock4.lean": "654d1090ae91029dea306aaed6191698c906d10802ba144ab388d716eb5b4751",
+    "lean/s11/S11D5Invariants/ReconstructionBlock5.lean": "7c7bcb3cea4d5f909c5a3967f30f7ab8fb7281d98d8c177034346c4ce806a23b",
+    "lean/s11/S11D5Invariants/ReconstructionBlock6.lean": "c1a97e9fd1594640e1f3f8780b8bfa7609e4cf641fd2063731be14044e1a0190",
+    "lean/s11/S11D5Invariants/ReconstructionBlock7.lean": "0968b408fc379161d848baea40306d500973f91c326fdc48b3e6d0174df13ff1",
+    "lean/s11/S11D5Invariants/ReconstructionBlock8.lean": "fc4f521f9095e5d3650e10d96dd958dfcbc0414f1759daf54d26bbc578ae7fcc",
+    "lean/s11/S11D5Invariants/ReconstructionBlock9.lean": "6383f86525d83abe0e7e4b09d1cfe49ff16fd8f766c95851b29816ad47eb43d0",
+    "lean/s11/S11D5Invariants/Rotation.lean": "da53301d6313b96b007eefbc16a1cecb10260b5ea46e52822ee41817305106f9",
+    "lean/s11/S11Homogeneous/Action.lean": "73a8cbfbe7770cd0d17262728f9887d2038260fc965d2abc34944b8af20aeb4b",
+    "lean/verify.py": "3e0af63101a12545f7438089a6be5bc341a2bcefc61fa47906260eecedaad259",
+    "mathematica/S11_stray_longitudinal_mathematica_audit.wl": "133bacbcbc2dd192ba64a82b94a1cde6b4359bfdf0748c59584b6a3e90683237",
+    "scripts/S11_stray_longitudinal_sympy_audit.py": "dc77f30b3e0b2b72aa13c7531a586e6ef50167949e645d99378de8527e06bfe2"
+  },
+  "native_source_sha256": {
+    "scripts/S11_stray_longitudinal_sympy_audit.py": "dc77f30b3e0b2b72aa13c7531a586e6ef50167949e645d99378de8527e06bfe2",
+    "mathematica/S11_stray_longitudinal_mathematica_audit.wl": "133bacbcbc2dd192ba64a82b94a1cde6b4359bfdf0748c59584b6a3e90683237"
+  },
+  "compiled_object_sha256": {
+    "lean/s11/_scratch/d5_bulk_verification/objects/S10Pilot/Action.olean": "1be8c3c4196dd7d4ec3eab5adeec1ad4efd799f37bea3169a7b2396a59efc3bb",
+    "lean/s11/_scratch/d5_bulk_verification/objects/S10Pilot/PlaneWave.olean": "0d66b90ba63086dceddbae3b9cdeae947fcc286b6fa2d3bcd9c9dc033e0608b4",
+    "lean/s11/_scratch/d5_bulk_verification/objects/S10Pilot/Analytic.olean": "9734d5342b5ee8d0683ce8e04b29e063554c4481f6db0e0cc5e418b68a9bebc6",
+    "lean/s11/_scratch/d5_bulk_verification/objects/S11D4Odd/Calculus.olean": "17a981fa8a51641be48dd7fa533c7dc458aaf2ce8d485fa8e04a39dd49086ad6",
+    "lean/s11/_scratch/d5_bulk_verification/objects/S10Pilot/Variation.olean": "d2ae9c5944f74e9581b1a82893f65c7d715811b6407427ed997440c6033b36eb",
+    "lean/s11/_scratch/d5_bulk_verification/objects/S11D5Invariants/CoordinateAlgebra.olean": "b64e95bdc984f17abdb5682931191a1b12818132ee055233a255415751be26f6",
+    "lean/s11/_scratch/d5_bulk_verification/objects/S11D5Invariants/BilinearExpansion.olean": "9ab875d15db9bac871e7b03dabc874f57ab4fe39602dc1d8ec477100b8d086ef",
+    "lean/s11/_scratch/d5_bulk_verification/objects/S11D5Invariants/Quadratic.olean": "4f1361908ba731e6dbab1b42fdba22a480b94384f46a836295c5d92a80d0485d",
+    "lean/s11/_scratch/d5_bulk_verification/objects/S11D5Invariants/Rotation.olean": "0b8d9f6202655d54729edd2fcd960bc0bc0302bcd40632a60054e62b7c46dc54",
+    "lean/s11/_scratch/d5_bulk_verification/objects/S11D5Invariants/Forms.olean": "b657f2be401f588db0f77d2848eddba2a3f3d3bd7daf8f63d791aa2f8d14bfdd",
+    "lean/s11/_scratch/d5_bulk_verification/objects/S11D5Invariants/ConstraintPolynomial.olean": "a20f217db130d7a6a8641e91c36e6b655283f80961e19052578fb0af8896a4f6",
+    "lean/s11/_scratch/d5_bulk_verification/objects/S11D5Invariants/ConstraintBlock0.olean": "d4a1236c3488e3fece9bc841444b7b73c77b4626da3c95f1165c9d3bdb29274c",
+    "lean/s11/_scratch/d5_bulk_verification/objects/S11D5Invariants/ConstraintBlock1.olean": "3d7e0d4fb5a89eab5f788e27cf9fef8595129c8abdc5fd8eeeb6fd2dc537b7c9",
+    "lean/s11/_scratch/d5_bulk_verification/objects/S11D5Invariants/ConstraintBlock2.olean": "12f6f581b99f7d45bb06ef6f5646825233d6cb615962e53f71db9a12d5282067",
+    "lean/s11/_scratch/d5_bulk_verification/objects/S11D5Invariants/ConstraintBlock3.olean": "aad2522cb6d598b3f8f648e4177fc3a1f137ec895531392439def19be9bb3751",
+    "lean/s11/_scratch/d5_bulk_verification/objects/S11D5Invariants/ConstraintBlock4.olean": "33397a5d7a251e828540c41a77f95278ea72a56c329d6c76116582c49038eb4f",
+    "lean/s11/_scratch/d5_bulk_verification/objects/S11D5Invariants/ConstraintBlock5.olean": "45f216ae5574a4bf56bb56dae4092273189471329db02f4d28ad67483b206ca6",
+    "lean/s11/_scratch/d5_bulk_verification/objects/S11D5Invariants/ConstraintBlock6.olean": "08bffb69962974fb422b2353f5ddceb10e81c663f3a42199c684483e78167281",
+    "lean/s11/_scratch/d5_bulk_verification/objects/S11D5Invariants/ConstraintBlock11.olean": "ba8818c376800b3a5de96c33c95e4d86dfb8300bceea4cce11d2e9398199b2bb",
+    "lean/s11/_scratch/d5_bulk_verification/objects/S11D5Invariants/ConstraintBlock12.olean": "53ea9314511bd11e57bbd8c5821a042e7fcd01257fe1b71b12696ae279982aa9",
+    "lean/s11/_scratch/d5_bulk_verification/objects/S11D5Invariants/ConstraintBlock14.olean": "c110082af226f5da524d99651bd28a0fc2b362f9097d05980a2868e0171c14bc",
+    "lean/s11/_scratch/d5_bulk_verification/objects/S11D5Invariants/ConstraintBlock15.olean": "f4d1874e4ed6f404fdd96c9fe0eedbbbf721099ae07da52afa98d53684172119",
+    "lean/s11/_scratch/d5_bulk_verification/objects/S11D5Invariants/ConstraintBlock16.olean": "7b63378d011246d2b7f8443b228d4f195b8fa769c7d100eceea0c8c4c63b9489",
+    "lean/s11/_scratch/d5_bulk_verification/objects/S11D5Invariants/ReconstructionBlock0.olean": "64c424465d7c3abe710c80253e9e2167905a255823bb7bb110df8a7bf8837ffc",
+    "lean/s11/_scratch/d5_bulk_verification/objects/S11D5Invariants/ReconstructionBlock1.olean": "5ec942bb8cea436a24944a26e2dfb0acadb32ce0f4fe2eaf1719dbbfac4597c7",
+    "lean/s11/_scratch/d5_bulk_verification/objects/S11D5Invariants/ReconstructionBlock2.olean": "dfdfbd25435d7522e1e8bad155846058dc9f406e9196087cb0f893b6caaddb85",
+    "lean/s11/_scratch/d5_bulk_verification/objects/S11D5Invariants/ConstraintBlock7.olean": "eaa4dbca680a63766e7849053a53ad26aa34f79cb3eb657042a0092e75f25436",
+    "lean/s11/_scratch/d5_bulk_verification/objects/S11D5Invariants/ReconstructionBlock3.olean": "1a102d089a6017abfe07027a56e6fc02d4bc3c12892a4190727bd4284b6bc4d1",
+    "lean/s11/_scratch/d5_bulk_verification/objects/S11D5Invariants/ReconstructionBlock4.olean": "07af043936d24c6d0f5d2d392a50ecccc61b85e0df79b4233d742c0012129c20",
+    "lean/s11/_scratch/d5_bulk_verification/objects/S11D5Invariants/ReconstructionBlock5.olean": "7bc6ad14c0e590079709bfb6abaeeb562b08006886144e5c30c1faed8a499e46",
+    "lean/s11/_scratch/d5_bulk_verification/objects/S11D5Invariants/ReconstructionBlock6.olean": "d4ff343a9976419ad4f1fb6926ad8ffe6f787a13ac84489340e7986806d5b701",
+    "lean/s11/_scratch/d5_bulk_verification/objects/S11D5Invariants/ReconstructionBlock7.olean": "3926e4ded38112d6eaa53ae7dcbd13f261fa2f9dff1de35c164eb712bd01f8d6",
+    "lean/s11/_scratch/d5_bulk_verification/objects/S11D5Invariants/ReconstructionBlock8.olean": "d2a95e3c8a2f044f18f5facd6cdd118ed980bfabfcf374227c8a581099778e73",
+    "lean/s11/_scratch/d5_bulk_verification/objects/S11D5Invariants/ReconstructionBlock9.olean": "d3c7b87b0a6dd7362f996fb176df7814894dec6101a63f758855f797ed77802f",
+    "lean/s11/_scratch/d5_bulk_verification/objects/S11D5Invariants/ConstraintBlock8.olean": "d031f7be20eb991837e5b57553b2b6b0738628bdfa3754009940c206ba2ceec2",
+    "lean/s11/_scratch/d5_bulk_verification/objects/S11D5Invariants/ConstraintBlock13.olean": "42e799ddbf88c1e24db18f9b9a10efaec1efc36a941af74d8b564be023e2c6d2",
+    "lean/s11/_scratch/d5_bulk_verification/objects/S11D5Invariants/ReconstructionBlock10.olean": "165d308f551960b0561054584cf15c8f9eacea739a406f234b9e0b4011a7b3ef",
+    "lean/s11/_scratch/d5_bulk_verification/objects/S11D5Invariants/ConstraintBlock9.olean": "51777b228bf1aec298a880eae79181908446833772c183da22981c5735e634a1",
+    "lean/s11/_scratch/d5_bulk_verification/objects/S11D5Invariants/ReconstructionBlock11.olean": "3761fab9fd2f232cc1f2d5e0a48c46d2f2eadfb16948b4ba0911bc868504f4b4",
+    "lean/s11/_scratch/d5_bulk_verification/objects/S11D5Invariants/ReconstructionBlock12.olean": "c4d55607b32886e136d09be4a48d6a192852744cd0f572fcda2d23298d5a349f",
+    "lean/s11/_scratch/d5_bulk_verification/objects/S11D5Invariants/ConstraintBlock10.olean": "c2fbdc7a7a92658793a2e570d5847e6ece14fcc266ea337b5ade0c056d19c470",
+    "lean/s11/_scratch/d5_bulk_verification/objects/S11D5Invariants/ReconstructionBlock13.olean": "d8847b6c526732f2e04c15ca0b5f66994d572a09552ea4f2f64d8ea91f28a287",
+    "lean/s11/_scratch/d5_bulk_verification/objects/S11D5Invariants/ReconstructionBlock14.olean": "d1de4295a621902dcb4271b09a954b7187b2fbcd32a2296fd242ae5051cf66f1",
+    "lean/s11/_scratch/d5_bulk_verification/objects/S11D5Invariants/ReconstructionBlock15.olean": "ec0b7451062d12ead50f53f55174977c9e0d57a1ee51f476f70ad70320383233",
+    "lean/s11/_scratch/d5_bulk_verification/objects/S11D5Invariants/ReconstructionBlock16.olean": "23a8f5584d4d54a07ebe506881d3362bf338da12dd34c8bee08d3bc8e60c82b5",
+    "lean/s11/_scratch/d5_bulk_verification/objects/S11D5Invariants/Constraints.olean": "8ccf23238f13a861438d0d731f0cc365659c93f7440bbd05fda91b1bd1d8947a",
+    "lean/s11/_scratch/d5_bulk_verification/objects/S11D5Invariants/Classification.olean": "f2c89c6f95cc38b28a88ad8d1cd8ee6cac1e004e355e5044a439d65604e7ad7d",
+    "lean/s11/_scratch/d5_bulk_verification/objects/S11D5Bulk/Action.olean": "d3d270db4bd00b1b6d451d13be077a68e0e1edbd956ff511cbd1c55db68d941a",
+    "lean/s11/_scratch/d5_bulk_verification/objects/S11D5Bulk/Variation.olean": "559c2a7aa025e72dccc36e01c0310fa13de934c8be45c5dc87c4cb03e7ee0487",
+    "lean/s11/_scratch/d5_bulk_verification/objects/S10Controls/Action.olean": "da96a6b32e4cd34392e44aac2da19ea3368f1063c2cc5c20257e455d0c404e49",
+    "lean/s11/_scratch/d5_bulk_verification/objects/S10Controls/PlaneWave.olean": "2e15e57ea63854fba96383e24788881ae509d1743618f8017eb1cbcb3e56a2a7",
+    "lean/s11/_scratch/d5_bulk_verification/objects/S10Controls/Analytic.olean": "716adf3a25d5b3fe03307f1275266e39eb50d3dae176e6c23c73935870c2a730",
+    "lean/s11/_scratch/d5_bulk_verification/objects/S10Controls/Variation.olean": "3a0060269a368cbd43feb1548ae3c594520ebf684147438330f9bc53dbbaa5b7",
+    "lean/s11/_scratch/d5_bulk_verification/objects/S10Pilot/PhaseAverage.olean": "16fec04f6fce2983d3353cc643b8881ef91f9ba43fe3d3a5868e539eac3aec5f",
+    "lean/s11/_scratch/d5_bulk_verification/objects/S10Controls/PhaseAverage.olean": "dc0472a02f0909c9026828c3f15946132c8ddaeefcc7fa3a57b00d21ca38440a",
+    "lean/s11/_scratch/d5_bulk_verification/objects/S11Homogeneous/Action.olean": "1d75ed6bc81eef456cfce6c31a7bd35c753159e90d22453881660b462396111e",
+    "lean/s11/_scratch/d5_bulk_verification/objects/S11D5Bulk/Bulk.olean": "69c5650a8a6083c5fbc540c60d061a22bbc0a4f63dd342b8e2d6e510958e9f1b",
+    "lean/s11/_scratch/d5_bulk_verification/objects/S11D5Bulk/Census.olean": "2503aed649ceb4a188820cb2260e19b2adf7b7640356787e063e92579b39788a",
+    "lean/s11/_scratch/d5_bulk_verification/objects/S11D5Bulk/Controls.olean": "6fdec3e1eaa995e0ee37053562ee010b351f87b0dc8a9406de782021dcc2993a",
+    "lean/s11/_scratch/d5_bulk_verification/objects/S11D5Bulk.olean": "f1211880c607a5589c1f24e3340ad944a08859b35289d9562bd9ab3202912dde"
+  },
+  "external_dependencies": {
+    "packages": [
+      {
+        "name": "Physlib",
+        "commit": "8b2b23701c07409f882c49e0bd290a214e44450c"
+      },
+      {
+        "name": "mathlib",
+        "commit": "db584cd6d46c92f209a44c0f1c829460d327499d"
+      },
+      {
+        "name": "\u00abdoc-gen4\u00bb",
+        "commit": "aceca4eeb5a79092eabefaa75fcb72b701d02205"
+      },
+      {
+        "name": "plausible",
+        "commit": "b7eb3304aeae834b12dda98993a37f6a41f6f0bb"
+      },
+      {
+        "name": "LeanSearchClient",
+        "commit": "5f4d51b81cbd3f6b32b156bfad9056621a040404"
+      },
+      {
+        "name": "importGraph",
+        "commit": "16f02aa7642864af59f1ff0e384a015994db9118"
+      },
+      {
+        "name": "proofwidgets",
+        "commit": "4be2e3d5087eeb272cf5a8853b8f9dd025ef5957"
+      },
+      {
+        "name": "aesop",
+        "commit": "3448c0bcc5ce01b2d1546e483ec3620e32df3d0e"
+      },
+      {
+        "name": "Qq",
+        "commit": "92c15be17b7caf78c2ad767ec40f89052d908d81"
+      },
+      {
+        "name": "batteries",
+        "commit": "4488d40d070b9700d4d5a6aa342f0d40c31b2a2d"
+      },
+      {
+        "name": "leansqlite",
+        "commit": "6168b7549738a19bc837a1625c60c5d1e5dd8aeb"
+      },
+      {
+        "name": "Cli",
+        "commit": "6130a47896ce867c6a4a55373441e59e565bad0f"
+      },
+      {
+        "name": "UnicodeBasic",
+        "commit": "37e7d8cb7316a88cd3e91208385c9ec6ae780019"
+      },
+      {
+        "name": "BibtexQuery",
+        "commit": "852edafa268eb038a7158551fd580ee8433847b0"
+      },
+      {
+        "name": "MD4Lean",
+        "commit": "31907cc18f48a95384f99cee5582c00fb39e0f67"
+      }
+    ],
+    "lean_version": "Lean (version 4.33.0, x86_64-unknown-linux-gnu, commit d8b18978322de05a8f3dba51ef03cf5461676c17, Release)",
+    "direct_imports": {
+      "Mathlib.Analysis.Calculus.Deriv.Polynomial": {
+        "source": "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/packages/mathlib/Mathlib/Analysis/Calculus/Deriv/Polynomial.lean",
+        "source_sha256": "a95de7c2dbcf96686208f1418b045a647efc1cb2e05613d8abcbe4cb1b18ac81",
+        "path": "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/Calculus/Deriv/Polynomial.olean",
+        "olean_sha256": "4bf15dddc2418e92060ce1ba85115da9ad449a6a0376fe5798af3dacb154eac7"
+      },
+      "Mathlib.Analysis.SpecialFunctions.Trigonometric.Deriv": {
+        "source": "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/packages/mathlib/Mathlib/Analysis/SpecialFunctions/Trigonometric/Deriv.lean",
+        "source_sha256": "acb42335608f66556d2683f07b390999b415d6be4e779904ba829275a1042f41",
+        "path": "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/SpecialFunctions/Trigonometric/Deriv.olean",
+        "olean_sha256": "34f036dc85d235747b062d948dc24c1a60fbec623511c840f072f6936dab7d02"
+      },
+      "Mathlib.LinearAlgebra.FiniteDimensional.Lemmas": {
+        "source": "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/packages/mathlib/Mathlib/LinearAlgebra/FiniteDimensional/Lemmas.lean",
+        "source_sha256": "2b383a91a6e4566f630b2c682506d4305a0098d9d085387e9e3bdb1d3126f129",
+        "path": "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/LinearAlgebra/FiniteDimensional/Lemmas.olean",
+        "olean_sha256": "4ac959c8b00cfea93685ea3fe0a2d9bdfc11f632c74945ca6e44dbaf479d190d"
+      },
+      "Mathlib.LinearAlgebra.Matrix.DotProduct": {
+        "source": "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/packages/mathlib/Mathlib/LinearAlgebra/Matrix/DotProduct.lean",
+        "source_sha256": "abe08c1c8f3a22451e5242ceb70b7db37c5b62c641d4f0ee0829a45a12744612",
+        "path": "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/LinearAlgebra/Matrix/DotProduct.olean",
+        "olean_sha256": "acbb39e80f28ad3f5a52aa8131cc1498517c4630a74b8543b3862d805af73cd1"
+      },
+      "Mathlib.Tactic": {
+        "source": "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/packages/mathlib/Mathlib/Tactic.lean",
+        "source_sha256": "6ec9a1714e9fa472f7e5614792f1aa5a65f360ec56688b0dc765d1bee2e1bdd5",
+        "path": "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Tactic.olean",
+        "olean_sha256": "c71aaaefb337826cd40ede82fd5f374299ece9c68476faca676474067b64ca7f"
+      },
+      "Mathlib.Analysis.Calculus.LineDeriv.IntegrationByParts": {
+        "source": "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/packages/mathlib/Mathlib/Analysis/Calculus/LineDeriv/IntegrationByParts.lean",
+        "source_sha256": "37f8b789e35db498bbc477cfbf12a4e91d52f09acbaf0a379f4094480b3a9962",
+        "path": "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/Calculus/LineDeriv/IntegrationByParts.olean",
+        "olean_sha256": "e8c95dc01900bd0ca3b977bc8ad9c53d04d1267ccc9d5de900b89d671e4b2689"
+      },
+      "Mathlib.Analysis.Distribution.AEEqOfIntegralContDiff": {
+        "source": "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/packages/mathlib/Mathlib/Analysis/Distribution/AEEqOfIntegralContDiff.lean",
+        "source_sha256": "626e88cc762fe508d78e07923fdb29ab8b5c47e932b30e43e3cc352c0fee9eb2",
+        "path": "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/Distribution/AEEqOfIntegralContDiff.olean",
+        "olean_sha256": "9d6692d000942ccea36bc97fc23fd2e6f7c9a95fac9c7bcc4d78a562551ae874"
+      },
+      "Mathlib.Analysis.Calculus.FDeriv.Symmetric": {
+        "source": "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/packages/mathlib/Mathlib/Analysis/Calculus/FDeriv/Symmetric.lean",
+        "source_sha256": "976a6342e21ca80d37767a9149c385a42b4d3ed615cbe1ad23745943f3b6287f",
+        "path": "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/Calculus/FDeriv/Symmetric.olean",
+        "olean_sha256": "03c2e53438665360723871c61b209cca14a59e5e71fd74f8df8eab2f9fe9651f"
+      },
+      "Mathlib.LinearAlgebra.QuadraticForm.Basic": {
+        "source": "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/packages/mathlib/Mathlib/LinearAlgebra/QuadraticForm/Basic.lean",
+        "source_sha256": "4eff07148a5404af3f2005b4a17ecb3c0bb960d578779ce67c5ab22b713489c8",
+        "path": "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/LinearAlgebra/QuadraticForm/Basic.olean",
+        "olean_sha256": "7acdcb5cc2ba2312ca45fbe6d19fd48471517ff09cb4ee2c53e5193e6aa56536"
+      },
+      "Mathlib.LinearAlgebra.Dimension.Constructions": {
+        "source": "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/packages/mathlib/Mathlib/LinearAlgebra/Dimension/Constructions.lean",
+        "source_sha256": "039f43b60c6dc3dec90e085beb9ee9dfe46da0d2a4d83f730ee274f337f29548",
+        "path": "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/LinearAlgebra/Dimension/Constructions.olean",
+        "olean_sha256": "543064446a4e151b5cf6a7ef91289eb9370febbfe212f0f8b14b0c912fc30ae6"
+      },
+      "Mathlib.LinearAlgebra.Matrix.Trace": {
+        "source": "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/packages/mathlib/Mathlib/LinearAlgebra/Matrix/Trace.lean",
+        "source_sha256": "8053b04dc1c67b3a7d14262acc43b574e521940085e031726947f3c2241b7a73",
+        "path": "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/LinearAlgebra/Matrix/Trace.olean",
+        "olean_sha256": "5d0ba8d1379838544c1ea7661aa29eb8a2cf5753230c4de635173358a5753f36"
+      },
+      "Mathlib.Data.List.Fold": {
+        "source": "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/packages/mathlib/Mathlib/Data/List/Fold.lean",
+        "source_sha256": "e5f8bfaa71d2f504301827cc4d99fcfca2008a3a7f8e44a597c309cb20d8eb7f",
+        "path": "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Data/List/Fold.olean",
+        "olean_sha256": "2336933a323f721c51e8bfb5258be0a5b43563737430194390b1e6f1dd41aa16"
+      },
+      "Mathlib.Analysis.SpecialFunctions.Integrals.Basic": {
+        "source": "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/packages/mathlib/Mathlib/Analysis/SpecialFunctions/Integrals/Basic.lean",
+        "source_sha256": "58a81e8137bddf5cc43ae28f08ffa75ea3aa086e607cf70e70f70c3c8e935e81",
+        "path": "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/SpecialFunctions/Integrals/Basic.olean",
+        "olean_sha256": "eed6312cb1057e9859e418aa76e6b45e0adfbc561e6d50683849069c26654ec0"
+      }
+    },
+    "direct_import_source_sha256": {
+      "lean/.lake/packages/mathlib/Mathlib/Analysis/Calculus/Deriv/Polynomial.lean": "a95de7c2dbcf96686208f1418b045a647efc1cb2e05613d8abcbe4cb1b18ac81",
+      "lean/.lake/packages/mathlib/Mathlib/Analysis/SpecialFunctions/Trigonometric/Deriv.lean": "acb42335608f66556d2683f07b390999b415d6be4e779904ba829275a1042f41",
+      "lean/.lake/packages/mathlib/Mathlib/LinearAlgebra/FiniteDimensional/Lemmas.lean": "2b383a91a6e4566f630b2c682506d4305a0098d9d085387e9e3bdb1d3126f129",
+      "lean/.lake/packages/mathlib/Mathlib/LinearAlgebra/Matrix/DotProduct.lean": "abe08c1c8f3a22451e5242ceb70b7db37c5b62c641d4f0ee0829a45a12744612",
+      "lean/.lake/packages/mathlib/Mathlib/Tactic.lean": "6ec9a1714e9fa472f7e5614792f1aa5a65f360ec56688b0dc765d1bee2e1bdd5",
+      "lean/.lake/packages/mathlib/Mathlib/Analysis/Calculus/LineDeriv/IntegrationByParts.lean": "37f8b789e35db498bbc477cfbf12a4e91d52f09acbaf0a379f4094480b3a9962",
+      "lean/.lake/packages/mathlib/Mathlib/Analysis/Distribution/AEEqOfIntegralContDiff.lean": "626e88cc762fe508d78e07923fdb29ab8b5c47e932b30e43e3cc352c0fee9eb2",
+      "lean/.lake/packages/mathlib/Mathlib/Analysis/Calculus/FDeriv/Symmetric.lean": "976a6342e21ca80d37767a9149c385a42b4d3ed615cbe1ad23745943f3b6287f",
+      "lean/.lake/packages/mathlib/Mathlib/LinearAlgebra/QuadraticForm/Basic.lean": "4eff07148a5404af3f2005b4a17ecb3c0bb960d578779ce67c5ab22b713489c8",
+      "lean/.lake/packages/mathlib/Mathlib/LinearAlgebra/Dimension/Constructions.lean": "039f43b60c6dc3dec90e085beb9ee9dfe46da0d2a4d83f730ee274f337f29548",
+      "lean/.lake/packages/mathlib/Mathlib/LinearAlgebra/Matrix/Trace.lean": "8053b04dc1c67b3a7d14262acc43b574e521940085e031726947f3c2241b7a73",
+      "lean/.lake/packages/mathlib/Mathlib/Data/List/Fold.lean": "e5f8bfaa71d2f504301827cc4d99fcfca2008a3a7f8e44a597c309cb20d8eb7f",
+      "lean/.lake/packages/mathlib/Mathlib/Analysis/SpecialFunctions/Integrals/Basic.lean": "58a81e8137bddf5cc43ae28f08ffa75ea3aa086e607cf70e70f70c3c8e935e81"
+    },
+    "direct_import_olean_sha256": {
+      "lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/Calculus/Deriv/Polynomial.olean": "4bf15dddc2418e92060ce1ba85115da9ad449a6a0376fe5798af3dacb154eac7",
+      "lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/SpecialFunctions/Trigonometric/Deriv.olean": "34f036dc85d235747b062d948dc24c1a60fbec623511c840f072f6936dab7d02",
+      "lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/LinearAlgebra/FiniteDimensional/Lemmas.olean": "4ac959c8b00cfea93685ea3fe0a2d9bdfc11f632c74945ca6e44dbaf479d190d",
+      "lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/LinearAlgebra/Matrix/DotProduct.olean": "acbb39e80f28ad3f5a52aa8131cc1498517c4630a74b8543b3862d805af73cd1",
+      "lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Tactic.olean": "c71aaaefb337826cd40ede82fd5f374299ece9c68476faca676474067b64ca7f",
+      "lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/Calculus/LineDeriv/IntegrationByParts.olean": "e8c95dc01900bd0ca3b977bc8ad9c53d04d1267ccc9d5de900b89d671e4b2689",
+      "lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/Distribution/AEEqOfIntegralContDiff.olean": "9d6692d000942ccea36bc97fc23fd2e6f7c9a95fac9c7bcc4d78a562551ae874",
+      "lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/Calculus/FDeriv/Symmetric.olean": "03c2e53438665360723871c61b209cca14a59e5e71fd74f8df8eab2f9fe9651f",
+      "lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/LinearAlgebra/QuadraticForm/Basic.olean": "7acdcb5cc2ba2312ca45fbe6d19fd48471517ff09cb4ee2c53e5193e6aa56536",
+      "lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/LinearAlgebra/Dimension/Constructions.olean": "543064446a4e151b5cf6a7ef91289eb9370febbfe212f0f8b14b0c912fc30ae6",
+      "lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/LinearAlgebra/Matrix/Trace.olean": "5d0ba8d1379838544c1ea7661aa29eb8a2cf5753230c4de635173358a5753f36",
+      "lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Data/List/Fold.olean": "2336933a323f721c51e8bfb5258be0a5b43563737430194390b1e6f1dd41aa16",
+      "lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/SpecialFunctions/Integrals/Basic.olean": "eed6312cb1057e9859e418aa76e6b45e0adfbc561e6d50683849069c26654ec0"
+    }
+  },
+  "build_lineage": {
+    "build_S10Pilot.Action": {
+      "report": "_scratch/S11_lean_d5_bulk/verification_run2/contract_before.json",
+      "object": "1be8c3c4196dd7d4ec3eab5adeec1ad4efd799f37bea3169a7b2396a59efc3bb"
+    },
+    "build_S10Pilot.PlaneWave": {
+      "report": "_scratch/S11_lean_d5_bulk/verification_run2/contract_before.json",
+      "object": "0d66b90ba63086dceddbae3b9cdeae947fcc286b6fa2d3bcd9c9dc033e0608b4"
+    },
+    "build_S10Pilot.Analytic": {
+      "report": "_scratch/S11_lean_d5_bulk/verification_run2/contract_before.json",
+      "object": "9734d5342b5ee8d0683ce8e04b29e063554c4481f6db0e0cc5e418b68a9bebc6"
+    },
+    "build_S11D4Odd.Calculus": {
+      "report": "_scratch/S11_lean_d5_bulk/verification_run2/contract_before.json",
+      "object": "17a981fa8a51641be48dd7fa533c7dc458aaf2ce8d485fa8e04a39dd49086ad6"
+    },
+    "build_S10Pilot.Variation": {
+      "report": "_scratch/S11_lean_d5_bulk/verification_run2/contract_before.json",
+      "object": "d2ae9c5944f74e9581b1a82893f65c7d715811b6407427ed997440c6033b36eb"
+    },
+    "seed_S11D5Invariants.CoordinateAlgebra": {
+      "report": "_scratch/lean_portable/20260918T022950Z_2cvxh7zm/report.json",
+      "object": "b64e95bdc984f17abdb5682931191a1b12818132ee055233a255415751be26f6"
+    },
+    "seed_S11D5Invariants.BilinearExpansion": {
+      "report": "_scratch/lean_portable/20260918T022950Z_2cvxh7zm/report.json",
+      "object": "9ab875d15db9bac871e7b03dabc874f57ab4fe39602dc1d8ec477100b8d086ef"
+    },
+    "seed_S11D5Invariants.Quadratic": {
+      "report": "_scratch/lean_portable/20260918T022950Z_2cvxh7zm/report.json",
+      "object": "4f1361908ba731e6dbab1b42fdba22a480b94384f46a836295c5d92a80d0485d"
+    },
+    "seed_S11D5Invariants.Rotation": {
+      "report": "_scratch/lean_portable/20260918T022950Z_2cvxh7zm/report.json",
+      "object": "0b8d9f6202655d54729edd2fcd960bc0bc0302bcd40632a60054e62b7c46dc54"
+    },
+    "seed_S11D5Invariants.Forms": {
+      "report": "_scratch/lean_portable/20260918T022950Z_2cvxh7zm/report.json",
+      "object": "b657f2be401f588db0f77d2848eddba2a3f3d3bd7daf8f63d791aa2f8d14bfdd"
+    },
+    "seed_S11D5Invariants.ConstraintPolynomial": {
+      "report": "_scratch/lean_portable/20260918T022950Z_2cvxh7zm/report.json",
+      "object": "a20f217db130d7a6a8641e91c36e6b655283f80961e19052578fb0af8896a4f6"
+    },
+    "seed_S11D5Invariants.ConstraintBlock0": {
+      "report": "_scratch/lean_portable/20260918T022950Z_2cvxh7zm/report.json",
+      "object": "d4a1236c3488e3fece9bc841444b7b73c77b4626da3c95f1165c9d3bdb29274c"
+    },
+    "seed_S11D5Invariants.ConstraintBlock1": {
+      "report": "_scratch/lean_portable/20260918T022950Z_2cvxh7zm/report.json",
+      "object": "3d7e0d4fb5a89eab5f788e27cf9fef8595129c8abdc5fd8eeeb6fd2dc537b7c9"
+    },
+    "seed_S11D5Invariants.ConstraintBlock2": {
+      "report": "_scratch/lean_portable/20260918T022950Z_2cvxh7zm/report.json",
+      "object": "12f6f581b99f7d45bb06ef6f5646825233d6cb615962e53f71db9a12d5282067"
+    },
+    "seed_S11D5Invariants.ConstraintBlock3": {
+      "report": "_scratch/lean_portable/20260918T022950Z_2cvxh7zm/report.json",
+      "object": "aad2522cb6d598b3f8f648e4177fc3a1f137ec895531392439def19be9bb3751"
+    },
+    "seed_S11D5Invariants.ConstraintBlock4": {
+      "report": "_scratch/lean_portable/20260918T022950Z_2cvxh7zm/report.json",
+      "object": "33397a5d7a251e828540c41a77f95278ea72a56c329d6c76116582c49038eb4f"
+    },
+    "seed_S11D5Invariants.ConstraintBlock5": {
+      "report": "_scratch/lean_portable/20260918T022950Z_2cvxh7zm/report.json",
+      "object": "45f216ae5574a4bf56bb56dae4092273189471329db02f4d28ad67483b206ca6"
+    },
+    "seed_S11D5Invariants.ConstraintBlock6": {
+      "report": "_scratch/lean_portable/20260918T022950Z_2cvxh7zm/report.json",
+      "object": "08bffb69962974fb422b2353f5ddceb10e81c663f3a42199c684483e78167281"
+    },
+    "seed_S11D5Invariants.ConstraintBlock11": {
+      "report": "_scratch/lean_portable/20260918T022950Z_2cvxh7zm/report.json",
+      "object": "ba8818c376800b3a5de96c33c95e4d86dfb8300bceea4cce11d2e9398199b2bb"
+    },
+    "seed_S11D5Invariants.ConstraintBlock12": {
+      "report": "_scratch/lean_portable/20260918T022950Z_2cvxh7zm/report.json",
+      "object": "53ea9314511bd11e57bbd8c5821a042e7fcd01257fe1b71b12696ae279982aa9"
+    },
+    "seed_S11D5Invariants.ConstraintBlock14": {
+      "report": "_scratch/lean_portable/20260918T022950Z_2cvxh7zm/report.json",
+      "object": "c110082af226f5da524d99651bd28a0fc2b362f9097d05980a2868e0171c14bc"
+    },
+    "seed_S11D5Invariants.ConstraintBlock15": {
+      "report": "_scratch/lean_portable/20260918T022950Z_2cvxh7zm/report.json",
+      "object": "f4d1874e4ed6f404fdd96c9fe0eedbbbf721099ae07da52afa98d53684172119"
+    },
+    "seed_S11D5Invariants.ConstraintBlock16": {
+      "report": "_scratch/lean_portable/20260918T022950Z_2cvxh7zm/report.json",
+      "object": "7b63378d011246d2b7f8443b228d4f195b8fa769c7d100eceea0c8c4c63b9489"
+    },
+    "seed_S11D5Invariants.ReconstructionBlock0": {
+      "report": "_scratch/lean_portable/20260918T022950Z_2cvxh7zm/report.json",
+      "object": "64c424465d7c3abe710c80253e9e2167905a255823bb7bb110df8a7bf8837ffc"
+    },
+    "seed_S11D5Invariants.ReconstructionBlock1": {
+      "report": "_scratch/lean_portable/20260918T022950Z_2cvxh7zm/report.json",
+      "object": "5ec942bb8cea436a24944a26e2dfb0acadb32ce0f4fe2eaf1719dbbfac4597c7"
+    },
+    "seed_S11D5Invariants.ReconstructionBlock2": {
+      "report": "_scratch/lean_portable/20260918T022950Z_2cvxh7zm/report.json",
+      "object": "dfdfbd25435d7522e1e8bad155846058dc9f406e9196087cb0f893b6caaddb85"
+    },
+    "seed_S11D5Invariants.ConstraintBlock7": {
+      "report": "_scratch/lean_portable/20260918T022950Z_2cvxh7zm/report.json",
+      "object": "eaa4dbca680a63766e7849053a53ad26aa34f79cb3eb657042a0092e75f25436"
+    },
+    "seed_S11D5Invariants.ReconstructionBlock3": {
+      "report": "_scratch/lean_portable/20260918T022950Z_2cvxh7zm/report.json",
+      "object": "1a102d089a6017abfe07027a56e6fc02d4bc3c12892a4190727bd4284b6bc4d1"
+    },
+    "seed_S11D5Invariants.ReconstructionBlock4": {
+      "report": "_scratch/lean_portable/20260918T022950Z_2cvxh7zm/report.json",
+      "object": "07af043936d24c6d0f5d2d392a50ecccc61b85e0df79b4233d742c0012129c20"
+    },
+    "seed_S11D5Invariants.ReconstructionBlock5": {
+      "report": "_scratch/lean_portable/20260918T022950Z_2cvxh7zm/report.json",
+      "object": "7bc6ad14c0e590079709bfb6abaeeb562b08006886144e5c30c1faed8a499e46"
+    },
+    "seed_S11D5Invariants.ReconstructionBlock6": {
+      "report": "_scratch/lean_portable/20260918T022950Z_2cvxh7zm/report.json",
+      "object": "d4ff343a9976419ad4f1fb6926ad8ffe6f787a13ac84489340e7986806d5b701"
+    },
+    "seed_S11D5Invariants.ReconstructionBlock7": {
+      "report": "_scratch/lean_portable/20260918T022950Z_2cvxh7zm/report.json",
+      "object": "3926e4ded38112d6eaa53ae7dcbd13f261fa2f9dff1de35c164eb712bd01f8d6"
+    },
+    "seed_S11D5Invariants.ReconstructionBlock8": {
+      "report": "_scratch/lean_portable/20260918T022950Z_2cvxh7zm/report.json",
+      "object": "d2a95e3c8a2f044f18f5facd6cdd118ed980bfabfcf374227c8a581099778e73"
+    },
+    "seed_S11D5Invariants.ReconstructionBlock9": {
+      "report": "_scratch/lean_portable/20260918T022950Z_2cvxh7zm/report.json",
+      "object": "d3c7b87b0a6dd7362f996fb176df7814894dec6101a63f758855f797ed77802f"
+    },
+    "seed_S11D5Invariants.ConstraintBlock8": {
+      "report": "_scratch/lean_portable/20260918T022950Z_2cvxh7zm/report.json",
+      "object": "d031f7be20eb991837e5b57553b2b6b0738628bdfa3754009940c206ba2ceec2"
+    },
+    "seed_S11D5Invariants.ConstraintBlock13": {
+      "report": "_scratch/lean_portable/20260918T022950Z_2cvxh7zm/report.json",
+      "object": "42e799ddbf88c1e24db18f9b9a10efaec1efc36a941af74d8b564be023e2c6d2"
+    },
+    "seed_S11D5Invariants.ReconstructionBlock10": {
+      "report": "_scratch/lean_portable/20260918T022950Z_2cvxh7zm/report.json",
+      "object": "165d308f551960b0561054584cf15c8f9eacea739a406f234b9e0b4011a7b3ef"
+    },
+    "seed_S11D5Invariants.ConstraintBlock9": {
+      "report": "_scratch/lean_portable/20260918T022950Z_2cvxh7zm/report.json",
+      "object": "51777b228bf1aec298a880eae79181908446833772c183da22981c5735e634a1"
+    },
+    "seed_S11D5Invariants.ReconstructionBlock11": {
+      "report": "_scratch/lean_portable/20260918T022950Z_2cvxh7zm/report.json",
+      "object": "3761fab9fd2f232cc1f2d5e0a48c46d2f2eadfb16948b4ba0911bc868504f4b4"
+    },
+    "seed_S11D5Invariants.ReconstructionBlock12": {
+      "report": "_scratch/lean_portable/20260918T022950Z_2cvxh7zm/report.json",
+      "object": "c4d55607b32886e136d09be4a48d6a192852744cd0f572fcda2d23298d5a349f"
+    },
+    "seed_S11D5Invariants.ConstraintBlock10": {
+      "report": "_scratch/lean_portable/20260918T022950Z_2cvxh7zm/report.json",
+      "object": "c2fbdc7a7a92658793a2e570d5847e6ece14fcc266ea337b5ade0c056d19c470"
+    },
+    "seed_S11D5Invariants.ReconstructionBlock13": {
+      "report": "_scratch/lean_portable/20260918T022950Z_2cvxh7zm/report.json",
+      "object": "d8847b6c526732f2e04c15ca0b5f66994d572a09552ea4f2f64d8ea91f28a287"
+    },
+    "seed_S11D5Invariants.ReconstructionBlock14": {
+      "report": "_scratch/lean_portable/20260918T022950Z_2cvxh7zm/report.json",
+      "object": "d1de4295a621902dcb4271b09a954b7187b2fbcd32a2296fd242ae5051cf66f1"
+    },
+    "seed_S11D5Invariants.ReconstructionBlock15": {
+      "report": "_scratch/lean_portable/20260918T022950Z_2cvxh7zm/report.json",
+      "object": "ec0b7451062d12ead50f53f55174977c9e0d57a1ee51f476f70ad70320383233"
+    },
+    "seed_S11D5Invariants.ReconstructionBlock16": {
+      "report": "_scratch/lean_portable/20260918T022950Z_2cvxh7zm/report.json",
+      "object": "23a8f5584d4d54a07ebe506881d3362bf338da12dd34c8bee08d3bc8e60c82b5"
+    },
+    "seed_S11D5Invariants.Constraints": {
+      "report": "_scratch/lean_portable/20260918T022950Z_2cvxh7zm/report.json",
+      "object": "8ccf23238f13a861438d0d731f0cc365659c93f7440bbd05fda91b1bd1d8947a"
+    },
+    "seed_S11D5Invariants.Classification": {
+      "report": "_scratch/lean_portable/20260918T022950Z_2cvxh7zm/report.json",
+      "object": "f2c89c6f95cc38b28a88ad8d1cd8ee6cac1e004e355e5044a439d65604e7ad7d"
+    },
+    "build_S11D5Bulk.Action": {
+      "report": "_scratch/S11_lean_d5_bulk/verification_run2/contract_before.json",
+      "object": "d3d270db4bd00b1b6d451d13be077a68e0e1edbd956ff511cbd1c55db68d941a"
+    },
+    "build_S11D5Bulk.Variation": {
+      "report": "_scratch/S11_lean_d5_bulk/verification_run2/contract_before.json",
+      "object": "559c2a7aa025e72dccc36e01c0310fa13de934c8be45c5dc87c4cb03e7ee0487"
+    },
+    "build_S10Controls.Action": {
+      "report": "_scratch/S11_lean_d5_bulk/verification_run2/contract_before.json",
+      "object": "da96a6b32e4cd34392e44aac2da19ea3368f1063c2cc5c20257e455d0c404e49"
+    },
+    "build_S10Controls.PlaneWave": {
+      "report": "_scratch/S11_lean_d5_bulk/verification_run2/contract_before.json",
+      "object": "2e15e57ea63854fba96383e24788881ae509d1743618f8017eb1cbcb3e56a2a7"
+    },
+    "build_S10Controls.Analytic": {
+      "report": "_scratch/S11_lean_d5_bulk/verification_run2/contract_before.json",
+      "object": "716adf3a25d5b3fe03307f1275266e39eb50d3dae176e6c23c73935870c2a730"
+    },
+    "build_S10Controls.Variation": {
+      "report": "_scratch/S11_lean_d5_bulk/verification_run2/contract_before.json",
+      "object": "3a0060269a368cbd43feb1548ae3c594520ebf684147438330f9bc53dbbaa5b7"
+    },
+    "build_S10Pilot.PhaseAverage": {
+      "report": "_scratch/S11_lean_d5_bulk/verification_run2/contract_before.json",
+      "object": "16fec04f6fce2983d3353cc643b8881ef91f9ba43fe3d3a5868e539eac3aec5f"
+    },
+    "build_S10Controls.PhaseAverage": {
+      "report": "_scratch/S11_lean_d5_bulk/verification_run2/contract_before.json",
+      "object": "dc0472a02f0909c9026828c3f15946132c8ddaeefcc7fa3a57b00d21ca38440a"
+    },
+    "build_S11Homogeneous.Action": {
+      "report": "_scratch/S11_lean_d5_bulk/verification_run2/contract_before.json",
+      "object": "1d75ed6bc81eef456cfce6c31a7bd35c753159e90d22453881660b462396111e"
+    },
+    "build_S11D5Bulk.Bulk": {
+      "report": "_scratch/S11_lean_d5_bulk/verification_run3/contract_before.json",
+      "object": "69c5650a8a6083c5fbc540c60d061a22bbc0a4f63dd342b8e2d6e510958e9f1b"
+    },
+    "build_S11D5Bulk.Census": {
+      "report": "_scratch/S11_lean_d5_bulk/verification_run4/contract_before.json",
+      "object": "2503aed649ceb4a188820cb2260e19b2adf7b7640356787e063e92579b39788a"
+    },
+    "build_S11D5Bulk.Controls": {
+      "report": "_scratch/S11_lean_d5_bulk/verification_run4/contract_before.json",
+      "object": "6fdec3e1eaa995e0ee37053562ee010b351f87b0dc8a9406de782021dcc2993a"
+    },
+    "build_S11D5Bulk": {
+      "report": "_scratch/S11_lean_d5_bulk/verification_run4/contract_before.json",
+      "object": "f1211880c607a5589c1f24e3340ad944a08859b35289d9562bd9ab3202912dde"
+    }
+  },
+  "build_lineage_report_sha256": {
+    "_scratch/S11_lean_d5_bulk/verification_run2/contract_before.json": "d01cfc7b73d69d89869aa233cb80cfbad53362672fc2995b109b18e40b8f20a2",
+    "_scratch/S11_lean_d5_bulk/verification_run3/contract_before.json": "f08f31f50497676cf32b164262bebeb626eed25eb22bb398c1df9fcc9a8faa6c",
+    "_scratch/S11_lean_d5_bulk/verification_run4/contract_before.json": "0d89797a46e32dea6d80be4a44c0d69716740a25aee3489d27f7e3de562d578c"
+  },
+  "formal_instrument_sha256": "fa30f7f1ed94ba70c3166752dce96da4cd9b6dc761f896b8fefa2f4b7adaee81",
+  "formal_report_sha256": "7e69b7fe73333892f84fe980737f49c6aa3e41bd47484364a0d0bbb196bae429",
+  "native_instrument_sha256": "bd3ed9e4b89a81f44ce27366bdf7759bfae2ad540f4378cef8c5b829bd935d69",
+  "native_report_sha256": "58c496e660b71f50e3fa8f6cdc7a2d0b81ac98376e9ea7488b1cd21e00de6485",
+  "preservation_manifest_sha256": "2a405c7242e7f69831b8e36ea451a1e8b45a407c344fb234ca75b7659a717459",
+  "preserved_historical_source_count": 499,
+  "preserved_historical_objects": {
+    "lean/.lake/build/lib/lean/S11AnalyticError.olean": "25ef725af62c89e5a845c121922d8fb8be07b0ed3b25317a3ce22d72fea42d2b",
+    "lean/.lake/build/lib/lean/S10Pilot.olean": "94c7757fe4ca061946c4fa23234f74eb08187807ed7e31bd8ec08d801f70a362",
+    "lean/.lake/build/lib/lean/S11D4Invariants.olean": "eda9abe48f3366a8136f6553daec17e8a4f66a740426b17bbad2a89b14c4520b",
+    "lean/.lake/build/lib/lean/S11D4Bulk.olean": "b69d081e24073109ae0e460085b95c6772db68e3854f44c93a6fbfae74186ca0",
+    "lean/.lake/build/lib/lean/S11D5Invariants.olean": "26c801d04e0b854a8bf97a01de85aee2b042c9cba26c26293e6fa70bcf442937",
+    "lean/.lake/build/lib/lean/S11OddDynamics.olean": "dc7a5f6ff8cebc175a21a214ec9be2ef3028799d48894c6734908507ab2cc3d0",
+    "lean/.lake/build/lib/lean/S10Controls.olean": "a9f8c191c29370c33a3ab34fce0d3d54f3b1cb5e096032106e20da7e6f3bcd6e",
+    "lean/.lake/build/lib/lean/S11VariableCoefficients.olean": "5fa2f7162b70f29c95bb1b63624fcf908e21b07ca16e9f1aadc68cf9cc491ce9",
+    "lean/.lake/build/lib/lean/S11NonlinearPole.olean": "062d1c7e528f80e3ec5f763f243ebd2676473008f8d88ae4bdc78e46aa6b405e",
+    "lean/.lake/build/lib/lean/S10Anisotropic.olean": "92b7d51d8b7aec45f467fc5c9606307a9d1e1f1e78cbeebe4a390cda0b4e2794",
+    "lean/.lake/build/lib/lean/S9Pilot.olean": "882cc7847e4a8ab518e33c433fa760ddb2662a192a6610640ec1b02ba487bb70",
+    "lean/.lake/build/lib/lean/S11D3Bulk.olean": "dcd020c99bbe3e3bd57c1b6220b53d968a9eccc18af9c9649ad2fe76c5a3c62e",
+    "lean/.lake/build/lib/lean/S11Invariants.olean": "f22d416037e7bec64925b6c9237796a1c8326baec34f6b5df5e89b80c12c187c",
+    "lean/.lake/build/lib/lean/S11D3Invariants.olean": "6c642a99e90d7f029cb35d892ff9c0ca3771e91832b614f9d6e74e730055498e",
+    "lean/.lake/build/lib/lean/S10Audit.olean": "df4ab45893176e0ec7601280bc95fb04f30e83d2842e5b91d96ad21ad49bd076",
+    "lean/.lake/build/lib/lean/S11Homogeneous.olean": "cdc5b443813d907bebaa60940bbe1fe9da2165d0da3ce01616015fcfef366990",
+    "lean/.lake/build/lib/lean/S11D4Odd.olean": "47e8ddb6099861d8b11772863ccbf7a97d319191059d0a314b50e25642d4e6dc",
+    "lean/.lake/build/lib/lean/S9Pilot/Madelung.olean": "fe0eced10b821e539adaa9895ccf1b2a32e96016c9742fab5145ba0d5c75700e",
+    "lean/.lake/build/lib/lean/S9Pilot/Spectrum.olean": "69c9424cf51572d4e25821fdf31fd94a57984d7bd8268f57d0b7149fc513ac55",
+    "lean/.lake/build/lib/lean/S9Pilot/FiniteAction.olean": "6da92bc6c2e9a2335eb0120b1ab64c57989534b50095c9de2e571e7a71c6a444",
+    "lean/.lake/build/lib/lean/S9Pilot/Certificate.olean": "0ded993099b66d9b3ba5d9a50f2bccf243ec1acfe0021675ea30487267fd2ff8",
+    "lean/.lake/build/lib/lean/S9Pilot/PlaneWave.olean": "b8450a7e8f25d99c4d66c9969e27818cc5bbe108603edb0f9b2009b376e8fb81",
+    "lean/.lake/build/lib/lean/S9Pilot/Action.olean": "c3233616cee7d4946fd6929072dc72715721ba5325298b437ce8ef10d2c4a7c5",
+    "lean/.lake/build/lib/lean/S9Pilot/VariationalCertificate.olean": "2c368c17c3665f976b23855e71f1a77cc56d49735338d98c77376516a4cf1d78",
+    "lean/.lake/build/lib/lean/S9Pilot/Analytic.olean": "2bd8347c205a5ad5fed7b3c3c28b06053950f29ffd09ae3ce25192c94642dcfa",
+    "lean/.lake/build/lib/lean/S9Pilot/Variation.olean": "3cb9771557db7474728ceacbd061f9e90598f6670e39bbe35412815d120bcef4",
+    "lean/.lake/build/lib/lean/S11D5Invariants/ReconstructionBlock9.olean": "d3c7b87b0a6dd7362f996fb176df7814894dec6101a63f758855f797ed77802f",
+    "lean/.lake/build/lib/lean/S11D5Invariants/ConstraintBlock15.olean": "f4d1874e4ed6f404fdd96c9fe0eedbbbf721099ae07da52afa98d53684172119",
+    "lean/.lake/build/lib/lean/S11D5Invariants/ReconstructionBlock12.olean": "c4d55607b32886e136d09be4a48d6a192852744cd0f572fcda2d23298d5a349f",
+    "lean/.lake/build/lib/lean/S11D5Invariants/ReconstructionBlock1.olean": "5ec942bb8cea436a24944a26e2dfb0acadb32ce0f4fe2eaf1719dbbfac4597c7",
+    "lean/.lake/build/lib/lean/S11D5Invariants/ReconstructionBlock10.olean": "165d308f551960b0561054584cf15c8f9eacea739a406f234b9e0b4011a7b3ef",
+    "lean/.lake/build/lib/lean/S11D5Invariants/ConstraintBlock7.olean": "eaa4dbca680a63766e7849053a53ad26aa34f79cb3eb657042a0092e75f25436",
+    "lean/.lake/build/lib/lean/S11D5Invariants/ConstraintBlock13.olean": "42e799ddbf88c1e24db18f9b9a10efaec1efc36a941af74d8b564be023e2c6d2",
+    "lean/.lake/build/lib/lean/S11D5Invariants/ConstraintBlock2.olean": "12f6f581b99f7d45bb06ef6f5646825233d6cb615962e53f71db9a12d5282067",
+    "lean/.lake/build/lib/lean/S11D5Invariants/ConstraintBlock12.olean": "53ea9314511bd11e57bbd8c5821a042e7fcd01257fe1b71b12696ae279982aa9",
+    "lean/.lake/build/lib/lean/S11D5Invariants/ConstraintBlock8.olean": "d031f7be20eb991837e5b57553b2b6b0738628bdfa3754009940c206ba2ceec2",
+    "lean/.lake/build/lib/lean/S11D5Invariants/ReconstructionBlock0.olean": "64c424465d7c3abe710c80253e9e2167905a255823bb7bb110df8a7bf8837ffc",
+    "lean/.lake/build/lib/lean/S11D5Invariants/BilinearExpansion.olean": "9ab875d15db9bac871e7b03dabc874f57ab4fe39602dc1d8ec477100b8d086ef",
+    "lean/.lake/build/lib/lean/S11D5Invariants/ConstraintBlock0.olean": "d4a1236c3488e3fece9bc841444b7b73c77b4626da3c95f1165c9d3bdb29274c",
+    "lean/.lake/build/lib/lean/S11D5Invariants/ReconstructionBlock7.olean": "3926e4ded38112d6eaa53ae7dcbd13f261fa2f9dff1de35c164eb712bd01f8d6",
+    "lean/.lake/build/lib/lean/S11D5Invariants/Rotation.olean": "0b8d9f6202655d54729edd2fcd960bc0bc0302bcd40632a60054e62b7c46dc54",
+    "lean/.lake/build/lib/lean/S11D5Invariants/ReconstructionBlock2.olean": "dfdfbd25435d7522e1e8bad155846058dc9f406e9196087cb0f893b6caaddb85",
+    "lean/.lake/build/lib/lean/S11D5Invariants/ConstraintBlock4.olean": "33397a5d7a251e828540c41a77f95278ea72a56c329d6c76116582c49038eb4f",
+    "lean/.lake/build/lib/lean/S11D5Invariants/Forms.olean": "b657f2be401f588db0f77d2848eddba2a3f3d3bd7daf8f63d791aa2f8d14bfdd",
+    "lean/.lake/build/lib/lean/S11D5Invariants/ConstraintBlock9.olean": "51777b228bf1aec298a880eae79181908446833772c183da22981c5735e634a1",
+    "lean/.lake/build/lib/lean/S11D5Invariants/Constraints.olean": "8ccf23238f13a861438d0d731f0cc365659c93f7440bbd05fda91b1bd1d8947a",
+    "lean/.lake/build/lib/lean/S11D5Invariants/ReconstructionBlock6.olean": "d4ff343a9976419ad4f1fb6926ad8ffe6f787a13ac84489340e7986806d5b701",
+    "lean/.lake/build/lib/lean/S11D5Invariants/ReconstructionBlock4.olean": "07af043936d24c6d0f5d2d392a50ecccc61b85e0df79b4233d742c0012129c20",
+    "lean/.lake/build/lib/lean/S11D5Invariants/ConstraintBlock6.olean": "08bffb69962974fb422b2353f5ddceb10e81c663f3a42199c684483e78167281",
+    "lean/.lake/build/lib/lean/S11D5Invariants/ConstraintBlock14.olean": "c110082af226f5da524d99651bd28a0fc2b362f9097d05980a2868e0171c14bc",
+    "lean/.lake/build/lib/lean/S11D5Invariants/ReconstructionBlock11.olean": "3761fab9fd2f232cc1f2d5e0a48c46d2f2eadfb16948b4ba0911bc868504f4b4",
+    "lean/.lake/build/lib/lean/S11D5Invariants/Quadratic.olean": "4f1361908ba731e6dbab1b42fdba22a480b94384f46a836295c5d92a80d0485d",
+    "lean/.lake/build/lib/lean/S11D5Invariants/ConstraintBlock16.olean": "7b63378d011246d2b7f8443b228d4f195b8fa769c7d100eceea0c8c4c63b9489",
+    "lean/.lake/build/lib/lean/S11D5Invariants/ConstraintBlock11.olean": "ba8818c376800b3a5de96c33c95e4d86dfb8300bceea4cce11d2e9398199b2bb",
+    "lean/.lake/build/lib/lean/S11D5Invariants/ConstraintBlock10.olean": "c2fbdc7a7a92658793a2e570d5847e6ece14fcc266ea337b5ade0c056d19c470",
+    "lean/.lake/build/lib/lean/S11D5Invariants/Census.olean": "850ad9c11671b25150be60db3d38bbfb98e84a051f727e0f27aca1877bc1402b",
+    "lean/.lake/build/lib/lean/S11D5Invariants/Controls.olean": "adbbcb3a472d3389595e9b2e3f983d78a66894d745f9bea09379e36b147ae904",
+    "lean/.lake/build/lib/lean/S11D5Invariants/ReconstructionBlock3.olean": "1a102d089a6017abfe07027a56e6fc02d4bc3c12892a4190727bd4284b6bc4d1",
+    "lean/.lake/build/lib/lean/S11D5Invariants/ConstraintBlock5.olean": "45f216ae5574a4bf56bb56dae4092273189471329db02f4d28ad67483b206ca6",
+    "lean/.lake/build/lib/lean/S11D5Invariants/ReconstructionBlock16.olean": "23a8f5584d4d54a07ebe506881d3362bf338da12dd34c8bee08d3bc8e60c82b5",
+    "lean/.lake/build/lib/lean/S11D5Invariants/Classification.olean": "f2c89c6f95cc38b28a88ad8d1cd8ee6cac1e004e355e5044a439d65604e7ad7d",
+    "lean/.lake/build/lib/lean/S11D5Invariants/ConstraintPolynomial.olean": "a20f217db130d7a6a8641e91c36e6b655283f80961e19052578fb0af8896a4f6",
+    "lean/.lake/build/lib/lean/S11D5Invariants/ReconstructionBlock14.olean": "d1de4295a621902dcb4271b09a954b7187b2fbcd32a2296fd242ae5051cf66f1",
+    "lean/.lake/build/lib/lean/S11D5Invariants/ReconstructionBlock5.olean": "7bc6ad14c0e590079709bfb6abaeeb562b08006886144e5c30c1faed8a499e46",
+    "lean/.lake/build/lib/lean/S11D5Invariants/ReconstructionBlock8.olean": "d2a95e3c8a2f044f18f5facd6cdd118ed980bfabfcf374227c8a581099778e73",
+    "lean/.lake/build/lib/lean/S11D5Invariants/ConstraintBlock1.olean": "3d7e0d4fb5a89eab5f788e27cf9fef8595129c8abdc5fd8eeeb6fd2dc537b7c9",
+    "lean/.lake/build/lib/lean/S11D5Invariants/ConstraintBlock3.olean": "aad2522cb6d598b3f8f648e4177fc3a1f137ec895531392439def19be9bb3751",
+    "lean/.lake/build/lib/lean/S11D5Invariants/ReconstructionBlock13.olean": "d8847b6c526732f2e04c15ca0b5f66994d572a09552ea4f2f64d8ea91f28a287",
+    "lean/.lake/build/lib/lean/S11D5Invariants/ReconstructionBlock15.olean": "ec0b7451062d12ead50f53f55174977c9e0d57a1ee51f476f70ad70320383233",
+    "lean/.lake/build/lib/lean/S11D5Invariants/CoordinateAlgebra.olean": "b64e95bdc984f17abdb5682931191a1b12818132ee055233a255415751be26f6",
+    "lean/.lake/build/lib/lean/S11D4Invariants/ConstraintBlock2.olean": "27dfb6ffa539087f020be2cd9da47ac6ebbbe3cfb83c5db3558d4f4ce989a8d7",
+    "lean/.lake/build/lib/lean/S11D4Invariants/Orientation.olean": "b7c3908a02ef887a9fa18f0fd8dba613a17c18c3038b4c0d298cfd5cb6358d67",
+    "lean/.lake/build/lib/lean/S11D4Invariants/ConstraintBlock0.olean": "ba6c12127d281349829eb82fc9876e51d63ce2daa8fbfbb5267ce954a6d18226",
+    "lean/.lake/build/lib/lean/S11D4Invariants/Rotation.olean": "0562cb2478f1881c42f46c3a590546f886c3a1b475e0eb656badd0cd62db98cc",
+    "lean/.lake/build/lib/lean/S11D4Invariants/Forms.olean": "13991521ee83b5460ce5461e729134f19505e8c862d3861215cc43867e4d54c1",
+    "lean/.lake/build/lib/lean/S11D4Invariants/Constraints.olean": "93e21a270430915462180ac86b2e1d229636f8c7a85a019bb4b200559c2d11a7",
+    "lean/.lake/build/lib/lean/S11D4Invariants/Quadratic.olean": "48361d3511e3f8a471577407190d37756eba773675f311dcbfd2c1606adba1a3",
+    "lean/.lake/build/lib/lean/S11D4Invariants/Census.olean": "4d4c1a6e6877e372a9ab669d0b2ada76f3c9a34447aa7238344ccadf09ea0082",
+    "lean/.lake/build/lib/lean/S11D4Invariants/Controls.olean": "028dfc14163252fbd1c57704f44076359b33c65e95f77e3aa37f5887fe2447c2",
+    "lean/.lake/build/lib/lean/S11D4Invariants/Classification.olean": "556ead212a046b381b6b6789eb957d17fc987f0266a1b56f4752cc3490e808de",
+    "lean/.lake/build/lib/lean/S11D4Invariants/ConstraintPolynomial.olean": "a54a630545b7b6714ec3c71be9cac38b664eb66f2f781311d61eef4d7b01bb6e",
+    "lean/.lake/build/lib/lean/S11D4Invariants/ConstraintBlock1.olean": "5b616443dcc909cfe38da17d11f1aca2763a428e9e18658ecf6e91d2e6a44c2c",
+    "lean/.lake/build/lib/lean/S11D4Invariants/ConstraintBlock3.olean": "e30d85d353325f9b86e8d8dcd14e29231aaf0f584dc0245ff5b945ff70161c79",
+    "lean/.lake/build/lib/lean/S11Homogeneous/Threshold.olean": "15bd9bce4a53465425e802a846052f275518f025d854465eb1132daf96222e2e",
+    "lean/.lake/build/lib/lean/S11Homogeneous/Spectrum.olean": "1517fbd8940d36e4116105c228038234f58a838b3b766248bc65c01540751860",
+    "lean/.lake/build/lib/lean/S11Homogeneous/Action.olean": "1d75ed6bc81eef456cfce6c31a7bd35c753159e90d22453881660b462396111e",
+    "lean/.lake/build/lib/lean/S11VariableCoefficients/Interface.olean": "b080e91453bef0627aa85a3dcbec007409c0d7a3b8c02652746587f0edca8b97",
+    "lean/.lake/build/lib/lean/S11VariableCoefficients/D4.olean": "1ea68964efd3985dd07197a9ce40541dcfc18e0715f0b01cb5e978a90d7e0ff0",
+    "lean/.lake/build/lib/lean/S11VariableCoefficients/D3.olean": "abe6bcc935f3fdfaf0578ef30845164207752acabf69cea122ed5226d100e715",
+    "lean/.lake/build/lib/lean/S11VariableCoefficients/Controls.olean": "3f48be471adcd6bf353ee565f56c19ad3cacb890fc6292de489cf31426c71d91",
+    "lean/.lake/build/lib/lean/S11VariableCoefficients/Common.olean": "c14f01e7591fc0348c6969c6617cfbc146d5fa8db6377a0460ab17e85cbc9eff",
+    "lean/.lake/build/lib/lean/S11D4Odd/Boundary.olean": "8a4351fa6f9dba60578a8c7764aa2ce9654f6eb5e2bcfc97c0ec0c91baca25ec",
+    "lean/.lake/build/lib/lean/S11D4Odd/Action.olean": "a65aef95ed828d2e4f211393720cf4d15e8106ab3d743d2fc5384d177681ec97",
+    "lean/.lake/build/lib/lean/S11D4Odd/Calculus.olean": "17a981fa8a51641be48dd7fa533c7dc458aaf2ce8d485fa8e04a39dd49086ad6",
+    "lean/.lake/build/lib/lean/S11D4Odd/Variation.olean": "31f397ac9ba6935cf3a2f4f20ba652844ef4a87fb067964eddc0de4926dcae7e",
+    "lean/.lake/build/lib/lean/S11AnalyticError/Tail.olean": "5eddc6d95a35f6b84aaaa5ea68ab139104de7b75bedf0001e9abc54589241a5e",
+    "lean/.lake/build/lib/lean/S11AnalyticError/Abel.olean": "d2075d6a52b160c6337504144165ae331130a42f61ac97426788feebe47f6062",
+    "lean/.lake/build/lib/lean/S11AnalyticError/Stability.olean": "222699b74d19abb91f80edc83dfd4b1438c69837ea9674c9bc3e2fb61ea50131",
+    "lean/.lake/build/lib/lean/S11AnalyticError/Controls.olean": "379664a68cf5e6c343ed54583c036a9164cf7cc85ae3f9ffe428ca4da78f5012",
+    "lean/.lake/build/lib/lean/S11D4Bulk/Bulk.olean": "ee01afb7a7af85d528bb6530ef08e3e9a5ccfe054b3acafdac389c9e018cceb9",
+    "lean/.lake/build/lib/lean/S11D4Bulk/Action.olean": "ac10dfc382a133433b7208b32a605bb7477c7baf1297cdd33b82f74f84dda1c7",
+    "lean/.lake/build/lib/lean/S11D4Bulk/Census.olean": "c7bd912c5002da80b0f0224ebf9709eb39dd1f0418dbb94d86d220d6e9ef92a3",
+    "lean/.lake/build/lib/lean/S11D4Bulk/Controls.olean": "aad7fa9ba1ba2d7375117de1f612cd5480dcfd1a3d605294c354bb8fe80556bf",
+    "lean/.lake/build/lib/lean/S11D4Bulk/Even.olean": "978ba7db58d534274f62b04ff2f7981fe3dad37cf0c4e5e5c8d255abaacbc90d",
+    "lean/.lake/build/lib/lean/S11D4Bulk/Variation.olean": "19c01c0682aea26dda30b5965cfc11cbe82818092c61a73e026cff6cf4de3d59",
+    "lean/.lake/build/lib/lean/S11Invariants/Rotation.olean": "9bd5d3b501c3b31069d9d4f05948c9ae67d79951685ec16d37e9e8bbbaca3cc5",
+    "lean/.lake/build/lib/lean/S11Invariants/Quadratic.olean": "f2d3ec53c652731bca388b9c4e73a4caf390f52bc192761ecab4fbf00c5b5a50",
+    "lean/.lake/build/lib/lean/S11Invariants/Census.olean": "734701d4d8bf90b7b348ee5165fbaff1be91fb11c15178f251d4a681086e6faa",
+    "lean/.lake/build/lib/lean/S11Invariants/Controls.olean": "6c5a093e61576a8b562bb81defa6184277a4c41ef13e1b4337ad3072b69b7b31",
+    "lean/.lake/build/lib/lean/S11Invariants/Classification.olean": "4447a49a63613a07dc05cb14587dc829fbeb4d1e0463a043e400f24d4a98c9a4",
+    "lean/.lake/build/lib/lean/S11D3Invariants/Rotation.olean": "1f23a7517dc5075d86914a05ce90f92b9fa8e3780bef99e53970686a9958d553",
+    "lean/.lake/build/lib/lean/S11D3Invariants/Constraints.olean": "5d86c2d145cabc4181e3b474c7ffc9cafcbd889ab190da01d53149ad2a3134ca",
+    "lean/.lake/build/lib/lean/S11D3Invariants/Quadratic.olean": "814b4bd7f2520f5dcb2e92be13d5edea4db87b1442917a5ddb1705297bbe1023",
+    "lean/.lake/build/lib/lean/S11D3Invariants/Census.olean": "93755b10cee8e1b52c8033158a87badf9d227e837ee39632470cb281d81798a7",
+    "lean/.lake/build/lib/lean/S11D3Invariants/Controls.olean": "52e98125f4ee05d5a3fcf5ebcef6355d73296382f2f116dc42ff20262c0a00fa",
+    "lean/.lake/build/lib/lean/S11D3Invariants/Classification.olean": "8debe95d1cb11b440b1be97c5d9786a6405ed3bbca319b358cebd8c1155980d4",
+    "lean/.lake/build/lib/lean/S10Pilot/Specialization.olean": "fab0362827a7b55726c0d45a0c8aab828fdc8ea3aca32a20bf1955a7f52236f8",
+    "lean/.lake/build/lib/lean/S10Pilot/EdgeCases.olean": "53969280bdf7450e4c0b3420a6f442009f38dd2699af5540d14fe6e88be23260",
+    "lean/.lake/build/lib/lean/S10Pilot/Spectrum.olean": "5d818cd14aa32f6d3b5cdfc00c6a56fff3f080b6499e088f113aee0104aa6c22",
+    "lean/.lake/build/lib/lean/S10Pilot/FiniteAction.olean": "4b03a3975a719c395689430809f2b6084de5e87679d0ad3a347cd0fb962f4832",
+    "lean/.lake/build/lib/lean/S10Pilot/Certificate.olean": "c74e51c0c3d381c8d3cc17b654b85cba8098d1a82a3fafa778a62fec3e42f961",
+    "lean/.lake/build/lib/lean/S10Pilot/PhaseAverage.olean": "16fec04f6fce2983d3353cc643b8881ef91f9ba43fe3d3a5868e539eac3aec5f",
+    "lean/.lake/build/lib/lean/S10Pilot/PlaneWave.olean": "0d66b90ba63086dceddbae3b9cdeae947fcc286b6fa2d3bcd9c9dc033e0608b4",
+    "lean/.lake/build/lib/lean/S10Pilot/Action.olean": "1be8c3c4196dd7d4ec3eab5adeec1ad4efd799f37bea3169a7b2396a59efc3bb",
+    "lean/.lake/build/lib/lean/S10Pilot/VariationalCertificate.olean": "e58182a3bc63cc13f4676b367e854ed012962c635c85e581688345c2f0bb234d",
+    "lean/.lake/build/lib/lean/S10Pilot/Analytic.olean": "9734d5342b5ee8d0683ce8e04b29e063554c4481f6db0e0cc5e418b68a9bebc6",
+    "lean/.lake/build/lib/lean/S10Pilot/Variation.olean": "d2ae9c5944f74e9581b1a82893f65c7d715811b6407427ed997440c6033b36eb",
+    "lean/.lake/build/lib/lean/S11NonlinearPole/Scalar.olean": "ff2ace393554768f459dbe47ec57d75232736ab8726c8998d5b33ce6091f280c",
+    "lean/.lake/build/lib/lean/S11NonlinearPole/Laurent.olean": "9b9161b70081e330921f879c3048515ad88f190ba48066deae140a743b164a75",
+    "lean/.lake/build/lib/lean/S11NonlinearPole/Controls.olean": "5a4a8dcf98b942150cdaa88505dd139e0f70fddacc7a04ffdee4602ff804bfbf",
+    "lean/.lake/build/lib/lean/S11NonlinearPole/Modal.olean": "bad7c031a7a2dba6fda6b1b10b6e7bb9392fb545b4f016efc3b71f3c778f5af7",
+    "lean/.lake/build/lib/lean/S11NonlinearPole/Jordan.olean": "10bd18cba0edd88a3a8ea7937af7cdcbb7ffc409735a8a3036117afa470cf861",
+    "lean/.lake/build/lib/lean/S11NonlinearPole/Moments.olean": "1e42c5ba6de549b6e3f5bb10f40d18c569a8ad593ba72eef824b6fa4e0ce6300",
+    "lean/.lake/build/lib/lean/S10Controls/Scalar.olean": "db646af5c45991bed1a0429c8532bce03a96cd6c5aba788989a5d34e65d958d7",
+    "lean/.lake/build/lib/lean/S10Controls/Spectrum.olean": "d6910c0c1e0c3926688264dec47d4583c187e7b9d827708d0f40a9797c30c6c0",
+    "lean/.lake/build/lib/lean/S10Controls/FiniteAction.olean": "078fd61d3516291567d9aaff486bdee0faac80fef9ff4b0d47893b50a12e9d64",
+    "lean/.lake/build/lib/lean/S10Controls/Certificate.olean": "0dfd058330056080e723cd2a32b6fda2b4aa873a0d150ce33941b0df3a3d7656",
+    "lean/.lake/build/lib/lean/S10Controls/PhaseAverage.olean": "dc0472a02f0909c9026828c3f15946132c8ddaeefcc7fa3a57b00d21ca38440a",
+    "lean/.lake/build/lib/lean/S10Controls/PlaneWave.olean": "2e15e57ea63854fba96383e24788881ae509d1743618f8017eb1cbcb3e56a2a7",
+    "lean/.lake/build/lib/lean/S10Controls/Action.olean": "da96a6b32e4cd34392e44aac2da19ea3368f1063c2cc5c20257e455d0c404e49",
+    "lean/.lake/build/lib/lean/S10Controls/Analytic.olean": "716adf3a25d5b3fe03307f1275266e39eb50d3dae176e6c23c73935870c2a730",
+    "lean/.lake/build/lib/lean/S10Controls/Checks.olean": "093ce6baf121410cab3a87ab9e4b3312548c3432a24c2a142f31c0dc0d84938a",
+    "lean/.lake/build/lib/lean/S10Controls/Variation.olean": "3a0060269a368cbd43feb1548ae3c594520ebf684147438330f9bc53dbbaa5b7",
+    "lean/.lake/build/lib/lean/S11OddDynamics/Action.olean": "660174e3b314e2a399acbd987c42842478b9a8be34054cbdc8d2c4305fae15d0",
+    "lean/.lake/build/lib/lean/S11OddDynamics/Mixing.olean": "5338fd200bb3d85911c730a6075b8bdc43d0d8b0c65d875d3a20c712c7080213",
+    "lean/.lake/build/lib/lean/S11OddDynamics/Variation.olean": "9ec671349ae972426ba15825a7ea358ce433ce00b4db289c80838c09a613d4d0",
+    "lean/.lake/build/lib/lean/S11D3Bulk/Bulk.olean": "faebec5079c0b12f4f8eb329935a426410f7c09c21b045b9a6a1425253a88a74",
+    "lean/.lake/build/lib/lean/S11D3Bulk/Action.olean": "2d88ab3c827c4d1cdc4e7443582f32bed6d14e70ff596ecea87cd8e376584c41",
+    "lean/.lake/build/lib/lean/S11D3Bulk/Census.olean": "9fa3a976181e3def9370063905bf42705f5173ce59ed0ae4d325f8a3d70bac0e",
+    "lean/.lake/build/lib/lean/S11D3Bulk/Calculus.olean": "44b23067db3fda0756963461a817b38efb5fb149c92e343e5c8beaec68ada7bf",
+    "lean/.lake/build/lib/lean/S11D3Bulk/Variation.olean": "30d58e4c912568074b47c33795e8adbf20783e66cc8cc004a1cfefca55fa186c",
+    "lean/.lake/build/lib/lean/S10Anisotropic/Spectrum.olean": "774e3c88a265cba1bcccbdf27f9c3ef990b59d4091a8978c18be19fe1ae482b4",
+    "lean/.lake/build/lib/lean/S10Anisotropic/Scaling.olean": "99d882f783711b42e09bb109bccf4b341fc771d81d84a4cc528824bc7b34d7b7",
+    "lean/.lake/build/lib/lean/S10Anisotropic/Geometry.olean": "c369db0b93b341dce7980ad86996d153b636a91e4e764f39b8d7825cfed21af0",
+    "lean/.lake/build/lib/lean/S10Anisotropic/FiniteAction.olean": "4fccad6e20c78eb0f8288dad615a53c7a36de7631d604d167b9e763c812e36db",
+    "lean/.lake/build/lib/lean/S10Anisotropic/Certificate.olean": "122c3feeb26476ddfeee5710b8fd08ce8ae28756f8e1078f65f370d9029f9869",
+    "lean/.lake/build/lib/lean/S10Anisotropic/PhaseAverage.olean": "bce1acfa61df448340956c68f528a75a453b3327c401ddc777a1830b954e916f",
+    "lean/.lake/build/lib/lean/S10Anisotropic/PlaneWave.olean": "d0720e29067b907da314d33919fd39cd4224f2251fdce161aee4ad7fac18cbaf",
+    "lean/.lake/build/lib/lean/S10Anisotropic/Action.olean": "eba029a9c70410259b7f93c1aa8e5f29dcbcf8095521e1a300f0369cb18dcc35",
+    "lean/.lake/build/lib/lean/S10Anisotropic/Census.olean": "d9b6ff509ba069fed32b0f1d7692713694d21a229f598bb0b3e76aa7c0265c7b",
+    "lean/.lake/build/lib/lean/S10Anisotropic/Analytic.olean": "65f328e61040061353f3971115512e10f1044ba458e0c8646eed154794444479",
+    "lean/.lake/build/lib/lean/S10Anisotropic/Checks.olean": "fb63a123844e239846140f4e2561f4745a043f1c5ece7730415c9671bdfafc94",
+    "lean/.lake/build/lib/lean/S10Anisotropic/Variation.olean": "a5087b2a2debec0bb3478ff17f1e96f1aed154f7a3e35c163e19bd93e6aa1ff2",
+    "lean/.lake/build/lib/lean/S10Audit/Dimensions.olean": "4d3175e55cd0732d192ccbcbc873c00404001d9fb8ecfc3a6db727bd648404cd",
+    "lean/.lake/build/lib/lean/S10Audit/ResidualTrees.olean": "7ba0fe249409f631016a046a6170edf45f361914bdc787dea61b540a16d04d1e",
+    "lean/.lake/build/lib/lean/S10Audit/BasisTrees.olean": "95c7e242883ac4dd1e7db05ef2b570f12f9acb9bafe9964e394128bb5ca941bd",
+    "lean/.lake/build/lib/lean/S10Audit/MatrixCovariance.olean": "4dbb5940786ebecaeea8089ae54c34e9fc4aaf39def991ef4fede72e62a566cc",
+    "lean/.lake/build/lib/lean/S10Audit/Curl.olean": "704dc8c3a9db47880814df8765a2a2757effb2cd42ac1d9c79d789f880b4e4ce",
+    "lean/.lake/build/lib/lean/S10Audit/DimensionSolve.olean": "ce261c058da010b869a8d9fcc01b44d3e67d4b4207daa80347268f97a76f0287",
+    "lean/.lake/build/lib/lean/S10Audit/MinorTrees.olean": "72425ca7a0b4579081bcc3c1491976b630d72df35cfa59e1003a5cc82634dec0",
+    "lean/.lake/build/lib/lean/S10Audit/Packages.olean": "95f84d5f35f811e2ede9b42899483849cfabb53815a7653f5b970f522267c297",
+    "lean/.lake/build/lib/lean/S10Audit/CoefficientInventory.olean": "f1f41c03933501f05075200cd1300483298c51cbc6fd39427447bc0453e66cc5",
+    "lean/.lake/build/lib/lean/S10Audit/Checks.olean": "28e80122e7664bc5483eba03e997807a23a8665eb02882e48aa2b43aeb2694a6",
+    "lean/.lake/build/lib/lean/S10Audit/MatrixTrees.olean": "52dbafe860de01d4856a98f4b89935cb269be8f42592275ed029fab925dd339d",
+    "lean/.lake/build/lib/lean/S10Audit/ActionTrees.olean": "d922bece639cb24e1ffabdfecc261bb6fbfc3e7c089d8dbcef2098888c2a4cab",
+    "lean/.lake/build/lib/lean/S10Audit/RootDimensions.olean": "84730d91617b0a626ee9c77cba6131d45ef73010d1720350a4c38ab9b55dc559",
+    "lean/.lake/build/lib/lean/S10Audit/NormalizedTrees.olean": "bbd6504c42aa069ce20c7a2de87d4e6e95def05b3a976fcddc0ba0d66bef4d73",
+    "lean/.lake/build/lib/lean/S10Audit/CAS/RerunSupport.olean": "dbaec7682cedde73b6ff7a00989f66fe6b856a55bb547f8477afc4d483aa649d",
+    "lean/.lake/build/lib/lean/S10Audit/CAS/CountSupport.olean": "ce164303bade918f915e18c38da52737150a1848f386a436087934c8c47bbda6",
+    "lean/.lake/build/lib/lean/S10Audit/CAS/GenericCountSupport.olean": "7d34c33139baa718553711fb9efd3147fbb43e44da894dabaa5237af8e11d5e3",
+    "lean/.lake/build/lib/lean/S10Audit/CAS/GenericCountBindings.olean": "e2573c286403a9cde57d76dc338c23e486ebbe3c561abf6df19371b8cf48f965",
+    "lean/.lake/build/lib/lean/S10Audit/CAS/PYCoincidenceArithmeticParallel.olean": "1e457115cfe86b9b32745a44aa0ae1cc472fe3941b502d5f8b18aac9357f55d5",
+    "lean/.lake/build/lib/lean/S10Audit/CAS/CountBindings.olean": "38bde873b5ebe464d27f0219406ed9612c5308f2105ec0ef4e862e33329b0530",
+    "lean/.lake/build/lib/lean/S10Audit/CAS/RootSupport.olean": "7fe841faac6c496616794cee3d66b3af4a7f503e0fe6003b762eb70e13c260df",
+    "lean/.lake/build/lib/lean/S10Audit/CAS/WLGenericCounts.olean": "462da142f62a64d72b8e604e55d3345a74e2ffdfca87adc3e7533235a61fbb1e",
+    "lean/.lake/build/lib/lean/S10Audit/CAS/CountReference.olean": "f39fbbaad08fce948ea29b2c091f014ba1e89dd90218b7cdd86167f9cd4d6a15",
+    "lean/.lake/build/lib/lean/S10Audit/CAS/PYGenericCounts.olean": "c9442d0fbc030200b678a1b708de48f4ee7b460e89636939cb814bb1ba028f55",
+    "lean/.lake/build/lib/lean/S10Audit/CAS/RootBindings.olean": "9cba9ed189ca7d05b24c00e7d5caf57a75175574b08cefb5a8faa43892bdc061",
+    "lean/.lake/build/lib/lean/S10Audit/CAS/WLRecordsParallel.olean": "90ed48bdf1b85cde186a363806ee55ab6a94474130c88c9eae011c5a5ef90443",
+    "lean/.lake/build/lib/lean/S10Audit/CAS/WLRootsGeneric.olean": "85f7b6b23c1026005a5f75952e33610c887881076aa1494897f21403cb2f87e5",
+    "lean/.lake/build/lib/lean/S10Audit/CAS/CoincidenceBindings.olean": "5965920c9b3e06b3901feb2c27d9d9a11a8473576c72f691e032f51a3a363e6e",
+    "lean/.lake/build/lib/lean/S10Audit/CAS/WLMinors.olean": "41e189232e72004b269e3b782823139e24e2b7f7683c4d2cea980910dee619a2",
+    "lean/.lake/build/lib/lean/S10Audit/CAS/Bindings.olean": "96249e886e26269db386ee90b826aa749b260f1e634e52ec26550efc785db64c",
+    "lean/.lake/build/lib/lean/S10Audit/CAS/MinorReference.olean": "52d2016fad512c35cc97741f0c709ee1b343cedb1c0c2742b227f13bb297beb4",
+    "lean/.lake/build/lib/lean/S10Audit/CAS/GenericCountReference.olean": "fa6d9ed848548bc4eac4526ec26677ed00f862c0a99b6daa6a4f4a43ed861e11",
+    "lean/.lake/build/lib/lean/S10Audit/CAS/PYCounts.olean": "302b4a6c92bf72d90fc6fe8045d05c8bb11499ade24f529a59499544c1d9403f",
+    "lean/.lake/build/lib/lean/S10Audit/CAS/StatusBindings.olean": "b862c0e1cee751b02f0b5308c50f20b245cde4de1d2e2318e18d55fa2104d280",
+    "lean/.lake/build/lib/lean/S10Audit/CAS/PYLoci.olean": "70a2b4657dadd95b5d3ee083a2073465d3644e96845f34c802b50ef021e194f7",
+    "lean/.lake/build/lib/lean/S10Audit/CAS/RerunBindings.olean": "847df72bdfd8d49c88de73fc6b6f152967464eebf691d6dce58dca72b8bc74e9",
+    "lean/.lake/build/lib/lean/S10Audit/CAS/MinorSupport.olean": "3af8278080b2a9f3ae02eb70459d721ca9ec63c81b0d2816fcdb4054c37c8314",
+    "lean/.lake/build/lib/lean/S10Audit/CAS/PYRecordsGeneric.olean": "3edae88126546296e10ed1256a19bd6a60552cf600fd28f5cbebc2f204857228",
+    "lean/.lake/build/lib/lean/S10Audit/CAS/Support.olean": "ae779a8c666d12deee8bcfac0d491cb4b6e5a99a53b7171afb455ce2a948a92b",
+    "lean/.lake/build/lib/lean/S10Audit/CAS/BasisCompletion.olean": "b74439c31fd03e80e470abfef8d64ee7aac3667b137cb5dfcb8cd7fd9e1a104c",
+    "lean/.lake/build/lib/lean/S10Audit/CAS/WL.olean": "1a62724fbff1fbf05ecc09d6f1d919fb808a81df36238a6693191b0ad954b19c",
+    "lean/.lake/build/lib/lean/S10Audit/CAS/WLRecordsPerpendicular.olean": "6102f9035ba8dd492342c3434c760ba6c263f46b35ace725e6769912639fdfc8",
+    "lean/.lake/build/lib/lean/S10Audit/CAS/WLCounts.olean": "8f48ca97c161d7b49a23ee0dac4f625f7883441a5c9669a03ca45e5143384b04",
+    "lean/.lake/build/lib/lean/S10Audit/CAS/WLRerun.olean": "32e31fa4b2755922e86904fd851fcd22adfbc16611d7024e4ddfa0c60f7f47b3",
+    "lean/.lake/build/lib/lean/S10Audit/CAS/Audit.olean": "9c0822a4d59ebf01e2227e34f13dab4deec7209f889d31bb3779a1f68f81f571",
+    "lean/.lake/build/lib/lean/S10Audit/CAS/PYCoincidenceArithmeticPerpendicular.olean": "09e4d77ae21c21450ac507d275a809dcde98884c9bdd060d92f56e726f24e765",
+    "lean/.lake/build/lib/lean/S10Audit/CAS/PYRootsPerpendicular.olean": "4b1168d2bb4ce297ddcc4471b9e0504cba26b828792001e985808769e82867cc",
+    "lean/.lake/build/lib/lean/S10Audit/CAS/WLCoincidenceArithmeticGeneric.olean": "40c23a4bc869d62d44fe03413bb8fc79c19802e14503c1c22318a3b9303a8873",
+    "lean/.lake/build/lib/lean/S10Audit/CAS/PYRecordsParallel.olean": "996ea94c58229ff526deaf0764cd32b9fea41266e86fd8cad44fc2eaa1b03f97",
+    "lean/.lake/build/lib/lean/S10Audit/CAS/WLRootsParallel.olean": "4aafaf4612e986810fc389eb0a79daae9c5506d1ad0a49ed93740debe04f668b",
+    "lean/.lake/build/lib/lean/S10Audit/CAS/CoincidenceSupport.olean": "7791c7bcbb42d6cfb3d6c11621df22f81ce728dfbe8a059a9a440ba112af0635",
+    "lean/.lake/build/lib/lean/S10Audit/CAS/WLLoci.olean": "3d46c3986b34c24fc600d7f447c0c2d17f3ff1c136e06652691151155cd41506",
+    "lean/.lake/build/lib/lean/S10Audit/CAS/LocusBindings.olean": "b9b814df3822bd97bcfd13ee6f62f08d150643417fe929882501c4b45d324425",
+    "lean/.lake/build/lib/lean/S10Audit/CAS/PYRootsGeneric.olean": "1d38aa672ae7f137034467ee549410b5a0330ac4b24021c441119593802e4f05",
+    "lean/.lake/build/lib/lean/S10Audit/CAS/WLRootsPerpendicular.olean": "d41d6cb0629d2a696e164fa93be1d45f02766a711b3743996c1275ee1b79ae57",
+    "lean/.lake/build/lib/lean/S10Audit/CAS/PYRecordsPerpendicular.olean": "37ef64abdab3f0ddf0b21e395e397826c07ec4a5ced4e00ea5d595813178b575",
+    "lean/.lake/build/lib/lean/S10Audit/CAS/RecordSupport.olean": "e959b7773606adfe511d57dfe0a2402c212e2d34eaae75b3e296ef507b2991cb",
+    "lean/.lake/build/lib/lean/S10Audit/CAS/WLCoincidenceArithmeticPerpendicular.olean": "b954e6eba2769da622851df4ef6971527a82ae5f1970f769620cf8f60686bf0c",
+    "lean/.lake/build/lib/lean/S10Audit/CAS/PYMinors.olean": "eb2fa685871374896ac1827a28558ec8665c6594c3fc7731b7e7726a6bdb307c",
+    "lean/.lake/build/lib/lean/S10Audit/CAS/WLRecordsGeneric.olean": "107a1a086e6db6783d016a1601a9e53ba2b394d5a78282c75ef49729eb9b6538",
+    "lean/.lake/build/lib/lean/S10Audit/CAS/PYRootsParallel.olean": "373d185567b5903fe55767314f5bc4cebaaa030876dfbcde5a6efbc4366a7b76",
+    "lean/.lake/build/lib/lean/S10Audit/CAS/RecordBindings.olean": "1fb62277e564c82b87b546fae8e372243ff83dba1ae50518452e2107652a4ffc",
+    "lean/.lake/build/lib/lean/S10Audit/CAS/MinorLoci.olean": "ddf7fce902cc2061cb70011b10732a3c4f6138b8693688b50a1c598ec2d49829",
+    "lean/.lake/build/lib/lean/S10Audit/CAS/PY.olean": "51cb31c0a0f8f81272fdd6a6fc1d5d0479e08c857c21b03f2ed837885c119b5b",
+    "lean/.lake/build/lib/lean/S10Audit/CAS/PYCoincidenceArithmeticGeneric.olean": "9e77d983c7ad1b19f01ee9b415fa7b4f81ffe921e1fbe7377c70f230f598cb61",
+    "lean/.lake/build/lib/lean/S10Audit/CAS/RerunReference.olean": "fb2c55f1debc369697c38705e3066b5458ae6b134546de9a5564de79a83c9f65",
+    "lean/.lake/build/lib/lean/S10Audit/CAS/MinorBindings.olean": "2cdec043bbffd0d2d371ab31766bf34215fb46bade9464d2bb3e7b9cce268418",
+    "lean/.lake/build/lib/lean/S10Audit/CAS/PYRerun.olean": "160ed930d4a3d014a4e421c6053609ea7d59499021045631e8229dc18f684c2d",
+    "lean/.lake/build/lib/lean/S10Audit/CAS/WLCoincidenceArithmeticParallel.olean": "c8635974b2824594f5c5873eb9d81b67645a2ecddfce45196dd1ad84a71c1ae3"
+  },
+  "preserved_read_only_inputs": {
+    "scripts/S11_stray_longitudinal_sympy_audit.py": "dc77f30b3e0b2b72aa13c7531a586e6ef50167949e645d99378de8527e06bfe2",
+    "mathematica/S11_stray_longitudinal_mathematica_audit.wl": "133bacbcbc2dd192ba64a82b94a1cde6b4359bfdf0748c59584b6a3e90683237"
+  },
+  "installation_validation_sha256": "f3d14dc57df21e59398c8f01b84cfd0614058362bac93cb62102dee9df2d5d8f",
+  "guarded_reuse_validated": true,
+  "all_controls_fresh": true,
+  "limits": [
+    "Statement-paired controls; no canonical source-replacement mutants.",
+    "Independent review remains pending.",
+    "Existing clean pinned transitive Mathlib cache; direct source/object imports checked, no full cache rebuild.",
+    "Selected native helpers only; translation outside the kernel; no production execution."
+  ]
+}

@@ -63,7 +63,12 @@ export PATH="${ELAN_HOME:-$HOME/.elan}/bin:$PATH"
 and runs compact native checks for all **completed** contracts, including S11.
 It uses one worker and separate objects/logs under `_scratch/lean_portable/`.
 Use `--list`, `--plan`, or a contract name such as `analytic-error` to select a
-smaller run. D5 remains outside the completed set.
+smaller run. The completed D5 density classification is included as `d5`;
+its fresh portable replay passed, as recorded in
+[INSTALL_D5_VALIDATION.json](INSTALL_D5_VALIDATION.json). The new D5 bulk
+contract is complete with its own recorded suite and two CLEAR fidelity
+reviews; it is not yet registered in the portable catalog. See
+[s11/D5_BULK_FIDELITY_REVIEW.md](s11/D5_BULK_FIDELITY_REVIEW.md).
 
 For ordinary shared-cache builds after installation:
 

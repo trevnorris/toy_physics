@@ -27,7 +27,7 @@ class EvidenceTests(unittest.TestCase):
                         (name, control['name']))
                     self.assertFalse(verify.adjudicate(124, original['output'], control['source'],
                         control['required'], control['source_mutation']))
-        self.assertEqual(total, 319)
+        self.assertEqual(total, 349)
 
     def test_mutation_source_drift_is_not_reconstructed_silently(self):
         record = {'name': 'drift', 'source': 'theorem x : True := by trivial\n',
@@ -70,12 +70,17 @@ class EvidenceTests(unittest.TestCase):
             with self.assertRaises(ValueError):
                 verify.inside(root, 'escape/passwd')
 
-    def test_completed_targets_include_s11_but_not_unfinished_d5(self):
+    def test_completed_targets_include_d5_but_not_unfinished_bulk(self):
         roots = [r for _, rs in verify.CONTRACTS.values() for r in rs]
         order = verify.build_order(roots)
         self.assertIn('S11D4Bulk', order)
         self.assertIn('S11NonlinearPole', order)
-        self.assertNotIn('S11D5Invariants', order)
+        self.assertIn('S11D5Invariants', order)
+        self.assertNotIn('S11D5Bulk', order)
+        self.assertEqual(len(verify.build_order(['S11D5Invariants'])), 45)
+        spec = verify.specifications(['d5'])['d5']
+        self.assertEqual(len(spec['controls']), 30)
+        self.assertEqual(sum(c['expected'] == 'REJECTED' for c in spec['controls']), 13)
         self.assertEqual(len(order), len(set(order)))
 
     @unittest.skipUnless(sys.platform == 'linux', 'checks Linux process state')

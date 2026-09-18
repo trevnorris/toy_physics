@@ -1,3 +1,4 @@
 .lake/
 setup.log
-
+.venv/
+__pycache__/

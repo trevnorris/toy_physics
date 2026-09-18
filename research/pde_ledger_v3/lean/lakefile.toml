@@ -86,3 +86,8 @@ leanOptions = { warningAsError = true }
 name = "S11D4Bulk"
 srcDir = "s11"
 leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "S11D5Invariants"
+srcDir = "s11"
+leanOptions = { warningAsError = true }

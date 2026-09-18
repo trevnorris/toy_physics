@@ -1,0 +1,168 @@
+{
+  "schema_version": 1,
+  "status": "PASS",
+  "validated_utc": "2026-09-17T21:34:43.227561+00:00",
+  "scope": "Installation/replay tooling validation; no new formal claim or fidelity-review clearance.",
+  "python_version": "3.10.12",
+  "source_sha256": {
+    "lean/setup.sh": "1824ab884a84c4727ffd886e1b564f4f80a9de246f9a4f9cc954ef8cdc40e728",
+    "lean/verify.py": "842537bf7b119f137c17b37897b2a2495c3677c2adc391eb59efce56788baad6",
+    "lean/test_setup.py": "9864b85cb15000f77ac61cec516e9e40e041962e58ee8c7ca767c98125c9b971",
+    "lean/test_verify.py": "433fa164c40d528de7ce563e23e0e5606dcd2734d2b031d3d1ca6a70db207ecf",
+    "lean/requirements.txt": "6d7d73ad83b15ccc569f609d8c556e93b56d8eda70146448671cdc0f641f34a4",
+    "lean/lean-toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+    "lean/lake-manifest.json": "91fd5318cdc35e4044d6e059c6ef73d94b955d27adf8a5860b07ec92add9377e",
+    "lean/lakefile.toml": "76dc0a3190962fd642e938bd7a53a7f9886ae9983f9caef1b271647092572664",
+    "lean/INSTALL.md": "f37380a306c19672a8dbf34a260dc65deecf3608c8b284bc03f545b87ed356a9",
+    "lean/README.md": "bce5f5b083addf1425d0f51958eb57d419300a0a3afca41dd51767ef2bde4c7f",
+    "lean/.gitignore": "86b146f58ab6b344db3ed8698c97a121d018cd3f0bc575ee14df330f1934c0be"
+  },
+  "unit_regressions": {
+    "count": 10,
+    "passed": true,
+    "log": "_scratch/lean_setup_validation/run2/unit_tests.log",
+    "log_sha256": "3dfb717abcda8346f5ca930dd3bc8907147e857259a0de66a5cf2eff6270efa1",
+    "bootstrap_downloads": "Stubbed at command boundaries; no fresh OS/network install is claimed."
+  },
+  "portable_smokes": [
+    {
+      "case": "native_all",
+      "status": "PASS",
+      "report": "_scratch/lean_portable/20260917T212118Z_1ad39xgo/report.json",
+      "report_sha256": "3cee7edc9ed9a5182fc8e61bdd37e6ea3bea6420935fff2cff0ee22bcad601a2",
+      "records": 12,
+      "fresh_local_objects": 0,
+      "axiom_audits": 0,
+      "mathematical_rejections": 0,
+      "positive_controls": 0,
+      "native_results": [
+        {
+          "instrument": "S11_lean_d3_bulk",
+          "output_sha256": "06adca46c0937b7ef228c261f76e6f4c3ae95c84c6c3640e25431ee32b15a385",
+          "fresh_output": true
+        },
+        {
+          "instrument": "S11_lean_d4_odd",
+          "output_sha256": "8ac334fd562ee56a1f40fd110caf47770e539044091bbfe6a8a598fa61929276",
+          "fresh_output": true
+        },
+        {
+          "instrument": "S9_lean",
+          "output_sha256": "e746ff9a94407f0a732e539dc8cd0b1bc73afd2fe9ba035100cf6f84f9510e7e",
+          "fresh_output": true
+        },
+        {
+          "instrument": "S11_lean",
+          "output_sha256": "b6bac39d634ebd52c45b2f1dd8e644b1c8e77b4c00967c03a0d2b65750115700",
+          "fresh_output": true
+        },
+        {
+          "instrument": "S11_lean_invariant",
+          "output_sha256": "4ecec288314823e25bda39e52e6e785b1d43fae99f5c3655b647ad58b02ce86f",
+          "fresh_output": true
+        },
+        {
+          "instrument": "S11_lean_dynamics",
+          "output_sha256": "5ba6057a2a06251e1938ebab13f3d127f852f064a392150e591c05a66703d75c",
+          "fresh_output": true
+        },
+        {
+          "instrument": "S11_lean_d3",
+          "output_sha256": "fe19e34d3267692564e64806d45eda86f648a92898f7290dd2a28ff299ba9e19",
+          "fresh_output": true
+        },
+        {
+          "instrument": "S11_lean_d4",
+          "output_sha256": "524bf35f64f6e69830fec8a5a2ccd8b8fc2650505c3717daff0f2317cf00f09f",
+          "fresh_output": true
+        },
+        {
+          "instrument": "S11_lean_analytic_error",
+          "output_sha256": "5240aaec0e09cad676ff06f41354fea1c062620c0f2525f91f27474ea427e0ef",
+          "fresh_output": true
+        },
+        {
+          "instrument": "S11_lean_variable",
+          "output_sha256": "09abf0c41e4f087516ac60850d1210be9ce5df772f94cf6c721cdae16775fab0",
+          "fresh_output": true
+        },
+        {
+          "instrument": "S11_lean_pole",
+          "output_sha256": "44d67afa1fd5573c6e857dae113a66b8a6d7bce0eb775046dfa46bca4ce1e67c",
+          "fresh_output": true
+        },
+        {
+          "instrument": "S11_lean_d4_bulk",
+          "output_sha256": "a15a4895f1ac024421aa5066380923c5f517ab7e8f950b2a0712c0544bc14e3f",
+          "fresh_output": true
+        }
+      ],
+      "wall_seconds": 104.447
+    },
+    {
+      "case": "analytic_error",
+      "status": "PASS",
+      "report": "_scratch/lean_portable/20260917T212307Z_vgscpb_c/report.json",
+      "report_sha256": "ac5b56c460e6ba5b775a06ca48652423a4a132e8455b3191c0c19284e7072c08",
+      "records": 34,
+      "fresh_local_objects": 5,
+      "axiom_audits": 41,
+      "mathematical_rejections": 12,
+      "positive_controls": 16,
+      "native_results": [
+        {
+          "instrument": "S11_lean_analytic_error",
+          "output_sha256": "3bcbc31d9552d32038e47f4c649ebb57787846fb887a152293ca6a8f906c1a50",
+          "fresh_output": true
+        }
+      ],
+      "wall_seconds": 288.528
+    },
+    {
+      "case": "s9",
+      "status": "PASS",
+      "report": "_scratch/lean_portable/20260917T212801Z_hwfap6y_/report.json",
+      "report_sha256": "7e866dafec811ab222940a230f76ca462470387487f994582260c0ad9d24e8d3",
+      "records": 25,
+      "fresh_local_objects": 10,
+      "axiom_audits": 32,
+      "mathematical_rejections": 9,
+      "positive_controls": 5,
+      "native_results": [
+        {
+          "instrument": "S9_lean",
+          "output_sha256": "e746ff9a94407f0a732e539dc8cd0b1bc73afd2fe9ba035100cf6f84f9510e7e",
+          "fresh_output": true
+        }
+      ],
+      "wall_seconds": 220.558
+    }
+  ],
+  "preservation": {
+    "manifest": "_measurements/S11_lean_d5_preserved_inputs.json",
+    "manifest_sha256": "bb1dfaf553e2b571bec345fd7ee8bb4251d5adea5aa1ecec45828c7295e5b33b",
+    "groups": {
+      "historical_sources": {
+        "matched": true,
+        "count": 383
+      },
+      "preserved_objects": {
+        "matched": true,
+        "count": 51
+      },
+      "read_only_inputs": {
+        "matched": true,
+        "count": 2
+      }
+    }
+  },
+  "limits": [
+    "Local proof objects rebuilt from scratch; existing pinned external package caches were reused.",
+    "Only the S9 and analytic-error full proof/control suites were smoke-tested; all twelve compact native suites were executed.",
+    "All completed control source inputs and historical diagnostic formats were checked by unit regressions; this is not a fresh execution of all 187 local modules and 319 controls.",
+    "Network/bootstrap operations were stubbed in setup tests, not redownloaded onto a new OS.",
+    "No macOS or native Windows validation.",
+    "Detailed local logs and snapshots live in ignored _scratch directories; this compact record retains their hashes.",
+    "D5 remains separate, in progress and excluded from the completed portable target catalog."
+  ]
+}

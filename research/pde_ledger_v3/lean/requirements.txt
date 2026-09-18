@@ -1,0 +1,3 @@
+# Tested compact native checks and certificate generators; no production CAS.
+sympy==1.14.0
+mpmath==1.3.0

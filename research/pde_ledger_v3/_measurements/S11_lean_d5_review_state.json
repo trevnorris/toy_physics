@@ -1,0 +1,63 @@
+{
+  "status": "COMPLETE",
+  "scope": "Bounded S11 D5.1\u2013D5.4 independent fidelity review",
+  "packet_revision": "S11 D5 quadratic invariant D5.1\u2013D5.4 fidelity contract v1",
+  "packet_sha256": "ff8aa6e60d1403128615212ccbf601fc0c038ef82d0f64690144d9a9457c081c",
+  "file_count": 64,
+  "archive": "research/pde_ledger_v3/_measurements/S11_lean_d5_review_packet_v1.tar.gz",
+  "archive_sha256": "e716fd68b6f6f0875925efdb5816e6e23e25dfac7aa31a10b34c56d341622cb5",
+  "archive_bytes": 205779,
+  "packet_directory": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_d5/review_packet_v1",
+  "manifest": "research/pde_ledger_v3/_measurements/S11_lean_d5_review_packet.json",
+  "manifest_sha256": "93ee2409464d4b01ece6ad073e14ea64f1587713b07a9d146e98e0ef173b3e5a",
+  "destinations": [
+    "Claude",
+    "Grok"
+  ],
+  "external_reviews_started": true,
+  "local_verification": "PASS: 45 canonical objects built in recorded runs9/10 and reused under full guards in run11; 51 standard-axiom audits; 13 fresh mathematical rejections and 17 fresh positives; native complete SO/O/odd spans 3/3/0, reflection identity and P_D=0, two wrong-span controls; live sources, pins, input/output objects, build lineage, logs and protected historical files/objects match",
+  "prepared_utc": "2026-09-18T01:04:36.572912+00:00",
+  "snapshot_validation": "PASS: live files, snapshot and archive member hashes agree",
+  "review_verdicts": {
+    "claude": "CLEAR",
+    "grok": "CLEAR"
+  },
+  "completion_claimed": true,
+  "committed": false,
+  "authorization_context": "The user approved this exact 64-file D5 packet in reply to the immediately preceding transfer request.",
+  "pinned_export_constraint": "No S11c sources or exports are included or modified. Native inputs are the existing S11 Q9 SymPy/Wolfram sources and the D5 certificate generator; only selected native helpers were executed, with no production run. The historical preservation manifest contains hashes, not copies of all historical files.",
+  "authorization_quote": "I approve",
+  "authorized_utc": "2026-09-18T01:28:59.586707+00:00",
+  "authorization_record": "research/pde_ledger_v3/_scratch/S11_lean_d5/review_run1/transfer_authorization_context.json",
+  "authorization_record_sha256": "ee36fece055249bad16e77ca6362657d4e5c2a3f795f363dc1228b37529c1d01",
+  "review_started_utc": "2026-09-18T01:31:19.781011+00:00",
+  "transport_directory": "/tmp/s11-lean-d5-fidelity-n0xnofwz/packet",
+  "launch_preflight": {
+    "status": "PASS",
+    "packet_sha256": "ff8aa6e60d1403128615212ccbf601fc0c038ef82d0f64690144d9a9457c081c",
+    "file_count": 64,
+    "compiled_objects": 45,
+    "preserved_historical_objects": 51,
+    "read_only_native_inputs": 2,
+    "historical_source_records": 383,
+    "axiom_audits": 51,
+    "mathematical_rejections": 13,
+    "positives": 17,
+    "checked": "Authorization, archive/snapshot/live files; sources/instruments/reports/logs/build-lineage/input/output objects; package pins/direct Mathlib bytes; preservation and installation records"
+  },
+  "supervisor_pid": 2206062,
+  "review_supervisor_sha256": "886b502d088f992d2a730a0202ce0f42de1c4dda244b8b773721b0189abd9563",
+  "review_supervisor_finished_utc": "2026-09-18T01:43:33.822199+00:00",
+  "live_files_changed_since_packet": [],
+  "completed_utc": "2026-09-18T01:50:52.692019+00:00",
+  "required_next_input": null,
+  "fidelity_review": "research/pde_ledger_v3/lean/s11/D5_FIDELITY_REVIEW.md",
+  "closure_validation": "research/pde_ledger_v3/_measurements/S11_lean_d5_closure_validation.json",
+  "post_review_document_changes": [
+    "lean/s11/D5_COVERAGE.md",
+    "lean/s11/D5_FIDELITY.md",
+    "lean/s11/D5_VERIFICATION.txt",
+    "lean/s11/README.md"
+  ],
+  "commit_authorized": false
+}

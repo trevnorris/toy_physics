@@ -11,6 +11,13 @@ One pinned Lean environment serves the step-specific source directories:
 - [s9/](s9/README.md): the original D=3 action, integrated variation, and mode census.
 - [s10/](s10/README.md): the arbitrary-dimensional baseline, all five controls,
   expression-tree dimensions, complete basis constructions and Levi-Civita comparisons.
+- [s11/](s11/README.md): the completed bounded homogeneous, invariant, bulk and
+  analytic contracts, plus the separately identified work still in progress.
+
+For a fresh checkout, start with [INSTALL.md](INSTALL.md). It covers elan/Lean,
+the pinned Python environment, dependency caches, and the portable proof/control
+runner. The original author verification scripts retain historical workspace
+guards; the portable runner creates new evidence without changing those records.
 
 See [CHECKPOINT.md](CHECKPOINT.md) for the original S9/S10 checkpoint and
 [s10/CAS_CHECKPOINT.md](s10/CAS_CHECKPOINT.md) for the subsequent CAS bridge
@@ -46,16 +53,33 @@ keeping each step's proofs and reports under its own directory.
 Run from `research/pde_ledger_v3/lean/`:
 
 ```sh
+bash setup.sh
+export PATH="${ELAN_HOME:-$HOME/.elan}/bin:$PATH"
+.venv/bin/python verify.py --doctor
+.venv/bin/python verify.py all
+```
+
+`verify.py all` freshly builds the local proofs, checks the recorded controls
+and runs compact native checks for all **completed** contracts, including S11.
+It uses one worker and separate objects/logs under `_scratch/lean_portable/`.
+Use `--list`, `--plan`, or a contract name such as `analytic-error` to select a
+smaller run. D5 remains outside the completed set.
+
+For ordinary shared-cache builds after installation:
+
+```sh
 LAKE_CACHE_DIR=.lake/cache lake build
 lake build S9Pilot
 lake build S10Pilot
 lake build S10Controls
 lake build S10Anisotropic
 LAKE_CACHE_DIR=.lake/cache lake build S10Audit
+lake build S11D4Bulk
 ```
 
-The first command checks all libraries. The others select one target. Their
-modules treat warnings as errors. To print the root theorem audits directly:
+Bare `lake build` checks the default **S9/S10** targets; it does not build S11.
+The other commands select one target. They treat warnings as errors but do not
+run the mutation/native suites. To print the root theorem audits directly:
 
 ```sh
 lake env lean s9/S9Pilot.lean
@@ -72,11 +96,12 @@ lake env lean s10/S10Audit.lean
 - Physlib commit `8b2b23701c07409f882c49e0bd290a214e44450c`.
 - Mathlib v4.33.0, commit `db584cd6d46c92f209a44c0f1c829460d327499d`.
 
-`bash setup.sh` installs the project-selected toolchain, fetches cached library
-artifacts, and builds the project. It uses the locked dependencies when the
-manifest exists and does not change elan's global default. Setup needs network
-access and writes to elan's installation and library cache locations. Git, curl,
-and zstd are needed; VS Code with the Lean extension is optional for editing.
+`bash setup.sh` installs elan if needed, the project-selected toolchain and a
+pinned Python virtual environment, fetches cached library artifacts and builds
+the required Physlib imports. It requires the committed dependency manifest
+and does not change elan's global default. Run `verify.py` afterwards for proofs
+and controls. Setup needs network access; see [INSTALL.md](INSTALL.md) for system
+packages, exact commands, resource limits and troubleshooting.
 
 The proof reports state their assumptions and exclusions. These formalizations
 use Mathlib directly and Physlib's dimensional algebra and Levi-Civita symbol;

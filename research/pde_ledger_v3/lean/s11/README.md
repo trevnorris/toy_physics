@@ -231,3 +231,19 @@ objects and protected historical inputs. See
 [D4_BULK_FIDELITY_REVIEW.md](D4_BULK_FIDELITY_REVIEW.md) and
 [D4_BULK_FIDELITY.md](D4_BULK_FIDELITY.md). This adds no D5 or S11c calculation
 scope and does not assert absence of boundary effects.
+
+## D5 invariant completeness (complete)
+
+The authorized [D5.1–D5.4 contract](D5_COVERAGE.md) targets the complete
+SO(5)/O(5)/reflection-odd quadratic density classification on all real 5×5
+gradients, with census 3/3/0. It uses the odd-dimensional conjugation identity,
+an exhaustive finite quadratic representation and checked necessary rotation
+constraints, with separate full-group sufficiency. See
+[D5_FIDELITY.md](D5_FIDELITY.md) for conventions and the compact native span
+check. Local verification passes: 45 guarded canonical objects, 51 standard-axiom
+audits, thirteen mathematical rejections and seventeen positives. Native complete
+spans/reflection and live-source/preservation checks pass. Claude and Grok both
+returned CLEAR with no required fix; the bounded contract is complete. See
+[D5_FIDELITY_REVIEW.md](D5_FIDELITY_REVIEW.md) and
+[D5_VERIFICATION.txt](D5_VERIFICATION.txt).
+This increment does not include D5 bulk variation or S11c calculations.

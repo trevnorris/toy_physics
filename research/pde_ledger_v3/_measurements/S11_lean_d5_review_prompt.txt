@@ -1,0 +1,118 @@
+Independent non-author statement-fidelity review: bounded D5 quadratic invariant
+classification D5.1–D5.4. Author: Codex. Review this declared increment only.
+
+Read MANIFEST.json, lean/FORMALIZATION_POLICY.md and lean/s11/D5_COVERAGE.md,
+D5_FIDELITY.md and D5_VERIFICATION.txt. The packet contains all 44 local modules
+and the S11D5Invariants audit root, their generator, verification instruments,
+reports, author validation and the two original native sources. No old local
+Lean proof is imported. Mathlib and compiled objects are not packaged: pins
+and direct source/object hashes are recorded. The preservation manifest pins
+historical files/objects; those are not all copied into this packet. Reported
+build and hash checks are author evidence unless independently verified.
+
+Check definitions, assumptions, quantifiers, coordinate conventions, full
+classification, native fidelity and interpretation. Compilation and dimension
+counts alone are not clearance. Distinguish required fixes to D5.1–D5.4 from
+optional stronger results. State your own verification limits; do not claim
+execution, hash recomputation or access to unpackaged material you did not have.
+
+D5.1: the object is every real homogeneous quadratic form on all real 5x5
+matrices G, G_ij=partial_i u_j, under G -> R G R^T. Quad is an actual
+QuadraticForm, with no symmetric-gradient, transverse, positivity, field
+equation or nonzero restriction. This is pointwise density classification
+before any Euler–Lagrange/total-divergence quotient. Dimension five is supplied;
+no kinetic action, unit conversion or first-variation theorem is claimed.
+The conclusion is the unique representation
+  Q(G)=a(tr G)^2+b tr(G^2)+c tr(G G^T)
+for arbitrary real a,b,c, including zero and negative values.
+
+Check CoordinateAlgebra's 25 row-major coordinates and frame expansion,
+BilinearExpansion and Quadratic.quadratic_representation: all 325 unordered
+quadratic coefficients must represent an arbitrary actual quadratic form,
+not an assumed three-parameter ansatz. The associated bilinear expansion is
+split into 24 mixed rows and 25 tails for memory; final association uses the
+existing Mathlib List.foldl1_eq_foldr1 identity. Inspect normalization of square
+and mixed monomials and the exact coefficient witness.
+
+The generator independently selects 322 necessary equations from four adjacent
+quarter-turns and a rational plane rotation (3/5,4/5). Lean checks them under
+quantified O invariance in seventeen ConstraintBlock modules, then checks all
+322 coefficient targets with exact rational linear combinations in seventeen
+ReconstructionBlock modules. Every retained necessary equation is used.
+Constraints.invariant_polynomial assembles reconstruction with free slots
+6,29,25 corresponding to a=c6/2,b=c29/2,c=c25. Inspect the generated proof
+chain, not just the generator's rank assertion. The generator is not trusted
+as a theorem oracle. Forms proves full-group sufficiency separately using
+trace identities; the five rotations do not define full-group invariance.
+SO_classification, O_classification, invariantForm_injective and SO_unique
+must yield existence and uniqueness for the whole stated domain.
+
+D5.2: Rotation proves conjugate(-R,G)=conjugate(R,G), and negation reverses
+determinant in dimension five. Orthogonal determinants are +/-1. Check
+SO_iff_O carefully: this establishes equality of invariance notions, not the
+three-dimensional classification by itself. ReflectionOdd is oddness under
+the explicit determinant -1 reflection. The odd subspace is SO invariance
+intersected with this oddness condition. Check odd_classification, so_eq_o,
+odd_eq_bot, the actual linear equivalence R^3 -> soSpace and census 3/3/0.
+A nonzero odd invariant must be impossible; zero remains admissible. These
+are dimensions of density subspaces, not counts of independent bulk responses.
+
+D5.3: the compact native instrument extracts selected original compute_q9,
+derivative_placeholders, matrix_from_rows, q9_row_to_poly and q9_vector AST
+helpers without importing the production module or invoking its driver.
+It compares the entire computed V1/V2/V6 spaces to the trace basis in the
+actual native row-major monomial ordering, not only the dimensions. Native
+SO/O/odd dimensions and full-span comparisons are 3/3/0, reflection acts as
+the identity, and native P_D=0. Inspect the reflection and coefficient-action
+orientation. A same-count control substitutes G00^2 into the target basis;
+a second restores the historical wrong coefficient-action orientation only
+in memory. The latter retains 3/3/0 counts but fails span comparison. Both
+controls must be detected. Original engine files remain unchanged. Wolfram
+Transpose[actionRows] is a source anchor only, not an executed second engine.
+This artifact translation is tested outside Lean's kernel, not kernel-certified.
+No claim is made about V5, native EL, production exports or the comparator.
+
+D5.4: the 13 paired false statements target SO/O/odd dimensions, nonzero odd
+existence, omission of each basis direction, G00^2 invariance, three nonzero
+normalizations, reflection determinant sign and SO/O equality. Every false
+statement has one contract_control diagnostic and one unsolved False, with
+no warnings or instrument errors. Its true counterpart compiles. Four extra
+positives cover zero, nonzero existence, arbitrary coefficients and unique
+coefficients, making 17 positives. Inspect these as sensitivity controls, not
+proof of exhaustive mistranslation detection. No canonical source-replacement
+mutations are claimed. A compiler/import/resource failure is not rejection.
+
+Author evidence: all 45 canonical objects passed (44 modules plus root), with
+51 selected standard-axiom audits and 30 fresh control executions in accepted
+run11, giving 75 check records. The first 43 canonical modules were built in
+recorded run9; Controls/root in run10. Run11 reuses all 45 with transitive local
+source/pin/generator, exact-command, input/output object and external-dependency
+guards. Focused objects never supplied recorded reuse evidence. Standard
+axioms are propext, Classical.choice, Quot.sound or empty sets; no admissions
+or custom physics axioms. Fifteen clean pinned package repositories and five
+direct Mathlib source/object pairs match. The transitive Mathlib cache remains
+the pinned baseline, not freshly rebuilt here.
+
+Earlier memory/simplification failures prompted bounded proof construction and
+module splits; public statements, definitions, final coefficient witness and
+rational certificate remained unchanged. All 322 necessary equations and exact
+reconstruction combinations were retained. Run10's final mutant was not
+accepted because it left oSpace != oSpace rather than literal False. Run11
+adds ne_self_iff_false only to that paired instrument proof. Canonical sources,
+objects, generator, acceptance/reuse/timeout code were unchanged; all controls
+then passed. No failed preliminary validation or instrument run is clearance.
+
+The author validation checks current sources, generator, instruments, saved
+logs, build lineage and input/output objects. All 383 historical proof/evidence
+files, two native inputs and 51 completed D4C/NP/T1/VC objects remain unchanged.
+The installation/replay work is separately validated and outside this review.
+No S11c source/calculation/export is run or modified. One Lean worker,
+-j1 -M4096, strict warnings, 600-second process limit and tested process-group
+cleanup were retained; allocator limit is not an OS RSS cap.
+
+No edits or production runs. No D5 bulk variation, general-dimensional or
+general null-Lagrangian classification, interface/spectrum/scattering/pole
+work, or systematic CAS bridge. Return a substantive terminal report: CLEAR
+or NOT CLEAR; packet identifier (as supplied unless recomputed); checked
+assumptions/conventions; findings with theorem/file references; and verification
+limits. Partial, plan-only, errored or unsupported approval is not clearance.

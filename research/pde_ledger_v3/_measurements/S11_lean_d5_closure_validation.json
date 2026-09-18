@@ -1,0 +1,189 @@
+{
+  "status": "PASS",
+  "closed_utc": "2026-09-18T01:50:52.692019+00:00",
+  "scope": "Bounded D5.1–D5.4 D5 quadratic invariant density contract complete; not completion of S11 or CAS production.",
+  "packet_sha256": "ff8aa6e60d1403128615212ccbf601fc0c038ef82d0f64690144d9a9457c081c",
+  "archive_sha256": "e716fd68b6f6f0875925efdb5816e6e23e25dfac7aa31a10b34c56d341622cb5",
+  "manifest_sha256": "93ee2409464d4b01ece6ad073e14ea64f1587713b07a9d146e98e0ef173b3e5a",
+  "pre_closure_validation_sha256": "adf152b4aa66e16d68d62f22e4797d29bc4ca4ddce9bcd5e4b440f5ae82b31fe",
+  "before_closure": {
+    "status": "PASS",
+    "validated_utc": "2026-09-18T01:47:20.978559+00:00",
+    "packet_sha256": "ff8aa6e60d1403128615212ccbf601fc0c038ef82d0f64690144d9a9457c081c",
+    "payload_files": 64,
+    "archive_snapshot_live_preflight": {
+      "status": "PASS",
+      "packet_sha256": "ff8aa6e60d1403128615212ccbf601fc0c038ef82d0f64690144d9a9457c081c",
+      "file_count": 64,
+      "compiled_objects": 45,
+      "preserved_historical_objects": 51,
+      "read_only_native_inputs": 2,
+      "historical_source_records": 383,
+      "axiom_audits": 51,
+      "mathematical_rejections": 13,
+      "positives": 17,
+      "checked": "Authorization, archive/snapshot/live files; sources/instruments/reports/logs/build-lineage/input/output objects; package pins/direct Mathlib bytes; preservation and installation records"
+    },
+    "transport_correspondence": "PASS",
+    "reviews": {
+      "claude": {
+        "session_id": "0cdefacf-bdcc-4371-8840-862f65657d85",
+        "verdict": "CLEAR",
+        "terminal": "success/end_turn/completed",
+        "models": [
+          "claude-haiku-4-5-20251001",
+          "claude-opus-5[1m]"
+        ],
+        "raw_sha256": "b622901179c8e136788f54e3730113cb81690c2b94972653ea4e9819436ee53d",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "run_record_sha256": "388c41eb9684f02976cdf25ed00491fdf803a4ec4bb79be4c9377cd987dcb6a8",
+        "report_sha256": "26e672d6a86efebc7a781b018707483d4ecb20e37e788543878dbd563627416f",
+        "text_field": "result",
+        "terminal_report_offset": 0,
+        "started_utc": "2026-09-18T01:31:19.801942+00:00",
+        "finished_utc": "2026-09-18T01:33:57.423443+00:00",
+        "review_limit": "Independent source reading and hand algebra; no independent Lean/native/hash execution."
+      },
+      "grok": {
+        "session_id": "e31a560b-073b-4a76-bd6f-bcd9e2f5f425",
+        "verdict": "CLEAR",
+        "terminal": "end_turn",
+        "models": [
+          "grok-4.6-build"
+        ],
+        "raw_sha256": "bdd4f101d0d6c40d1d1f34f4e47390047d51f3c12bf3c0d4b45d1ba216cb6f84",
+        "stderr_sha256": "ecbaee93fa46f739932551d26fc356ad10743af859a132b5c45c5a51cbff99a1",
+        "run_record_sha256": "97a0d65b1747549b811e2fef2c0ba2352847d10b51e127c024e0cbaa2447b186",
+        "report_sha256": "95785121caeb51666c1fdc8a3dcfc00e1d82bae04e925477e5d928d3e8446584",
+        "text_field": "text",
+        "terminal_report_offset": 1008,
+        "started_utc": "2026-09-18T01:33:57.447248+00:00",
+        "finished_utc": "2026-09-18T01:43:33.803765+00:00",
+        "review_limit": "Independent source reading and hand algebra; no independent Lean/native/hash execution."
+      }
+    },
+    "no_shared_source_drift": true,
+    "adjudication": "Both substantive terminal reports are CLEAR with no required mathematical correction. Optional notes are dispositioned in D5_FIDELITY_REVIEW.md; no canonical source change is required.",
+    "review_notes_validation": {
+      "status": "PASS",
+      "grok_read_error": {
+        "target": {
+          "target_file": "/tmp/s11-lean-d5-fidelity-n0xnofwz/packet/lean/s11/S11D5Invariants/BilinearExpansion.lean",
+          "offset": -80
+        },
+        "failure": {
+          "type": "ReadFile",
+          "FileTooLarge": "The requested line range (offset=-80, limit=to end) contains 28857 tokens, which exceeds the maximum allowed tokens (25000 tokens).\nTry a smaller `limit`, a different starting `offset`, or use the '' tool to search for specific content."
+        },
+        "later_successful_reads": [
+          {
+            "tool_call_id": "call-6257a76e-ed03-4283-b475-d6fd8eba7e11-18",
+            "input": {
+              "target_file": "/tmp/s11-lean-d5-fidelity-n0xnofwz/packet/lean/s11/S11D5Invariants/BilinearExpansion.lean",
+              "limit": 80
+            },
+            "status": "completed"
+          },
+          {
+            "tool_call_id": "call-d4b04e07-4e90-4139-9e36-f13e724574bf-33",
+            "input": {
+              "target_file": "/tmp/s11-lean-d5-fidelity-n0xnofwz/packet/lean/s11/S11D5Invariants/BilinearExpansion.lean",
+              "offset": 1,
+              "limit": 15
+            },
+            "status": "completed"
+          },
+          {
+            "tool_call_id": "call-c211d14f-9d30-4a0f-af84-f99fe9a872f8-42",
+            "input": {
+              "target_file": "/tmp/s11-lean-d5-fidelity-n0xnofwz/packet/lean/s11/S11D5Invariants/BilinearExpansion.lean",
+              "offset": 270,
+              "limit": 40
+            },
+            "status": "completed"
+          },
+          {
+            "tool_call_id": "call-77fa945f-891e-49be-b180-9a260d81c151-46",
+            "input": {
+              "target_file": "/tmp/s11-lean-d5-fidelity-n0xnofwz/packet/lean/s11/S11D5Invariants/BilinearExpansion.lean",
+              "offset": 430,
+              "limit": 30
+            },
+            "status": "completed"
+          },
+          {
+            "tool_call_id": "call-8d811f82-57f9-459d-8abe-817e992aad8c-50",
+            "input": {
+              "target_file": "/tmp/s11-lean-d5-fidelity-n0xnofwz/packet/lean/s11/S11D5Invariants/BilinearExpansion.lean",
+              "offset": 385,
+              "limit": 30
+            },
+            "status": "completed"
+          }
+        ],
+        "adjudication": "One oversized line-range request was refused. Subsequent smaller reads of the same module completed, including its final public tail declaration. The complete terminal review explicitly limits its source sampling; this is not a failed or partial terminal response.",
+        "session_updates_sha256": "ff36062bfdd748e9a562abd7a31ceae445bd3a94ecd32098a592f72007ac4ffc"
+      },
+      "claude_prose_count_correction": {
+        "total_necessary_equations": 322,
+        "quarter_turn_instances": 321,
+        "rational_rotation_instances": 1,
+        "note": "The reviewer reports 320 quarter-turn instances in one sentence. Source inspection confirms 321 plus one rational instance. Review text is preserved verbatim; no proof or contract correction is needed."
+      }
+    },
+    "review_notes_validation_sha256": "acb6e476423a49eee0d5f1c3810a1e7905de57a6f7fb52deab99e8799f4da02a",
+    "stderr_adjudication": "Claude stderr empty. Grok startup plugin/hook/repository warnings and one oversized line-range read error are retained. Subsequent smaller reads of BilinearExpansion completed; the terminal report is substantive with end_turn and exit 0. The failed read is not review clearance; its recovery and explicit source-sampling limits were inspected. Only final text, not the separate thought field or intermediate commentary, is accepted. No partial or plan-only response is accepted."
+  },
+  "reviews_complete": true,
+  "required_findings_unresolved": [],
+  "canonical_sources_changed": false,
+  "instruments_changed": false,
+  "reviewed_snapshot_archive_transport_unchanged": true,
+  "canonical_object_count": 45,
+  "protected_object_count": 51,
+  "read_only_native_input_count": 2,
+  "historical_source_records": 383,
+  "local_check_records": 75,
+  "axiom_audits": 51,
+  "mathematical_rejections": 13,
+  "positive_executions": 17,
+  "distinct_positive_sources": 17,
+  "native_census": {
+    "SO": 3,
+    "O": 3,
+    "odd": 0
+  },
+  "native_reflection_identity": true,
+  "native_PD_zero": true,
+  "native_wrong_span_controls": 2,
+  "package_pin_count": 15,
+  "direct_Mathlib_source_object_pairs": 5,
+  "post_review_live_document_differences": {
+    "lean/s11/D5_COVERAGE.md": {
+      "reviewed_sha256": "049dd41213529f7863586c3f65fbf79ffb022f41c25e4f3eebd4c6081685f31e",
+      "closure_sha256": "61cec3cc8ad4e1e2e4d50156a884de33986330d2dd87bbd25ec8d42a72f7ee37"
+    },
+    "lean/s11/D5_FIDELITY.md": {
+      "reviewed_sha256": "255dfcf00892ed5cdab900245e92bcde16451f1ec7db049cba3e9edde68e4ffa",
+      "closure_sha256": "d8f9433ea64b398c19c8796eba0b994bc78eb2fdc1c0f80b63c1d904029ed5fb"
+    },
+    "lean/s11/D5_VERIFICATION.txt": {
+      "reviewed_sha256": "491bd4402c63458d3ef6f21058b218313318b45c183a00e8e3cbbd8748e65e23",
+      "closure_sha256": "0992fe4b29542cb04c43823a0fbe493f744f0b2f1a77f7ffc4ed9cd6030a106e"
+    },
+    "lean/s11/README.md": {
+      "reviewed_sha256": "c248f9d8c41187fcd8e95c7640400e4ab700bd4c3f8154ae4281ad0e98c5491a",
+      "closure_sha256": "0a32e2b7412255d8eba0f3cfb1cc81adb669c3b12801216de61a52bc51930dc3"
+    }
+  },
+  "closure_document_sha256": {
+    "lean/s11/D5_COVERAGE.md": "61cec3cc8ad4e1e2e4d50156a884de33986330d2dd87bbd25ec8d42a72f7ee37",
+    "lean/s11/D5_FIDELITY.md": "d8f9433ea64b398c19c8796eba0b994bc78eb2fdc1c0f80b63c1d904029ed5fb",
+    "lean/s11/D5_FIDELITY_REVIEW.md": "0dff40b33504e50f13663845f3bbfd9896e9865393f355496d23a17330b4a988",
+    "lean/s11/D5_VERIFICATION.txt": "0992fe4b29542cb04c43823a0fbe493f744f0b2f1a77f7ffc4ed9cd6030a106e",
+    "lean/s11/README.md": "0a32e2b7412255d8eba0f3cfb1cc81adb669c3b12801216de61a52bc51930dc3"
+  },
+  "reverification_decision": "Only status/evidence-clarification documents changed; proofs, instruments and all objects match. No rebuild, mutation rerun or substantive re-review required under the policy.",
+  "commit_authorized": false,
+  "committed": false
+}

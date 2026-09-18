@@ -1,5 +1,5 @@
 {
-  "status": "PRODUCTION_RUNNING",
+  "status": "PUBLISHED_ANNEX_VERIFIED",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-wide-three-20260916",
   "checker": "S11c_d_wide_three_momentum.py",
   "plan": "S11c_d_wide_three_momentum_plan.md",
@@ -11,7 +11,7 @@
   "workerAddressSpaceBytes": 2147483648,
   "preflightRunRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-wide-three-20260916/preflight",
   "launcherSha256": "b61932fe6e0a79bd8ad12a3213e56055653a93cbcebbbf94537694c51b526d0c",
-  "next": "Silent local watcher owns completion/error wake-up. Validate and publish the full fixed-wide-box triple refinement against its original frozen sources, then read the accepted nonlinear-pole repair checkpoint and carry the corrected authority into new stages before selecting further independent triple or physical tail checks from actual evidence.",
+  "next": "Commit annex-verified triple refinement and prepare independent adaptive outer quadrature on inner32/32 at both wider boxes, with the effective nonlinearPoleV2 authority and explicit unchanged-physics disposition.",
   "implementationCommit": "a70c4ca3",
   "launch": {
     "launchedUtc": "2026-09-16T18:38:53.235234+00:00",
@@ -168,5 +168,38 @@
     "applicationPlan": "_measurements/S11c_d_nonlinear_pole_repair_plan.md",
     "applicationPlanSha256": "682b2c2ed98f3e634490a2094da2fa7f6e2a83a1083fac2b7fc9e497fa4f64d5",
     "disposition": "No current input/helper/export changes or numerical rerun; validate current finite-action production on its original frozen inventory when its watcher wakes the session."
-  }
+  },
+  "productionOutcome": {
+    "stage": "three_construct",
+    "command": [
+      "python",
+      "-u",
+      "_measurements/S11c_d_wide_three_momentum.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-wide-three-20260916/production/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-wide-three-20260916/production/three_construct.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-wide-three-20260916/production/three_construct.stderr",
+    "startedUtc": "2026-09-16T18:45:50.951768+00:00",
+    "childPid": 367373,
+    "status": "completed",
+    "exitCode": 0,
+    "wallSeconds": 158602.48113116343,
+    "stderrBytes": 0,
+    "finishedUtc": "2026-09-18T14:49:13.433525+00:00"
+  },
+  "acceptedCheckpoint": "S11c_d_wide_three_momentum_checkpoint.json",
+  "publication": {
+    "verifiedUtc": "2026-09-18T14:53:57.876182+00:00",
+    "path": "scripts/out/S11c_d_wide_three_momentum.out",
+    "sha256": "61c531c071907d199d68a7665b55e72d5ba087ce637aba4bec811c37d76a39f2",
+    "md5": "6c3dde08cb419f39d85dbdb3573931fe",
+    "bytes": 5135198,
+    "annexKey": "MD5E-s5135198--6c3dde08cb419f39d85dbdb3573931fe.out",
+    "symlink": "../../../../.git/annex/objects/k5/6g/MD5E-s5135198--6c3dde08cb419f39d85dbdb3573931fe.out/MD5E-s5135198--6c3dde08cb419f39d85dbdb3573931fe.out",
+    "gitMode": "120000",
+    "publicationCommit": "d128768cf120cb77a70e0eb042365cd905cbf2a2",
+    "backendNote": "Repository annex selected MD5E; exact key MD5/size and independent full SHA256 both verified."
+  },
+  "acceptedCheckpointSha256": "54c0ec2b9e2989e2347ee50e9a45dafb77a6f58097d25fefb660c58e398e0536"
 }

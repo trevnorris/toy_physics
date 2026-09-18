@@ -1,51 +1,43 @@
 # S11c-d wider-box three-momentum refinement
 
-The instrument preflight completed cleanly in 114.51 seconds. All four
-original 16,384-node prefix comparisons agree exactly in values, mutations,
-masses and native row/node/field/limit coordinates. Four finest-rule prefixes
-complete with exact read-only caches; these are bounded cost probes, not
-completed integrals. Twelve production-setting changes isolate one coordinate
-at a time. Four coarse workers, all twelve serial/native group comparisons
-and twelve independent native-cell contractions agree exactly.
+The complete fixed-box refinement is validated: four workers and the supervisor
+exited zero with empty stderr after 158,602.48 seconds (44h03m). The run evaluated
+1,048,960,640 new momentum nodes across twelve grids; all sixteen full-action
+records retain every 40 single, 30 pair and 10 triple row. Single/pair values
+remain explicitly held at the independently checked Gauss rules.
 
-Saved-operand acceptance verifies 87 current/frozen sources, 32 worker artifacts,
-16 records, 24 exact cache records and 5,040 zero held-term scalars. The 19,762
-tags, 9,879 fresh keys and 75,886 metadata paths replay. All worker/supervisor
-exits, empty stderr, checks/stdout and pre/post packet hashes pass. No numerical
-integration was repeated for acceptance. Peak worker RSS was 132,800 KiB.
-The 5,069,969-byte smoke transcript remains instrument evidence in scratch,
-SHA256 `2a51825cb57964e548070d973be798d121587c2616a99cf4ff00442c62f7e7a3`.
+Raw integral changes from outer144 to216, innermost24 to32 and middle24 to32
+reach 3.67575e-10, 3.91669e-18 and 1.55497e-14 respectively. Corresponding maximum
+native-term changes are 3.67575e-15, 3.91619e-23 and 1.55497e-19; complete-action
+changes are 3.06712e-15, zero in saved arithmetic and 1.69407e-21. The refined
+cutoff3-to4 complete-action change remains 1.13467310948e-7. The zero rounded
+complete-action difference does not erase the nonzero raw integral/term changes.
+These are finite samples in the declared unit frame, not uniform error bounds.
 
-Production uses four single-thread workers with 2 GiB address-space ceilings.
-Retain each accepted 144/24/24 triple baseline, then compute 216/24/24,
-216/32/24 and 216/32/32 in outer/innermost/middle order. Source/profile rules
-256/512, position bounds 48/14, regulator 0.2 and momentum cutoffs 3/4 stay
-fixed. The independently checked 40 single and 30 paired Gauss rows stay
-explicitly held in every full action. The native engine and inputs are unchanged;
-whole-function reverse AST joins constrain the adapter changes.
+Saved-operand acceptance checks 87 current/frozen sources, all 64,048 worker
+artifacts including 64,016 partial sums, complete original row/source/profile/
+field/ordered-limit identities, all actual measure controls and finite masses,
+24 exact read-only caches and 5,040 zero held-term scalars. Native emission replay
+passed 19,762 tags, 9,879 write keys and 134,254 metadata paths. Checks/stdout and
+all pre/post packet hashes match; no numerical integration was repeated for
+acceptance. Peak worker RSS was 133,848 KiB; coordinator peak was 316,972 KiB.
 
-The measured finest prefixes took 3.44–3.51 seconds per 16,384 nodes. Combining
-those timings with the accepted baseline node counts and quadrature-order
-ratios estimates about 14.6–16.4 hours per worker for the three-grid sweep.
-This is a rough extrapolation: initialization, panel topology, cache reuse and
-concurrent load can change actual time. Save each group/record and every
-64-batch partial; retain all original nine-hour grids and upstream factorization.
+The canonical 5,135,198-byte transcript is `scripts/out/S11c_d_wide_three_momentum.out`,
+SHA256 `61c531c071907d199d68a7665b55e72d5ba087ce637aba4bec811c37d76a39f2`.
+Publication and annex identity are recorded in the execution/checkpoint files.
+The earlier 14.6–16.4-hour timing estimate came from short prefixes; the full
+measured runtime supersedes it for future cost planning. All original operands,
+frozen inputs, worker groups/records/partials and logs remain in repository scratch.
 
-Independent single/pair outer integration remains published/annex-verified at
-f3bc5754/acf00f65, with raw discrepancies 4.83e-15 / 7.71e-16 and sampled
-cutoff 3-to-4 action change 1.134674e-7. No new full triple refinement is yet
-accepted. Uniform/independent-grade/global exceptional coverage, infinite
-tails, Abel limits, scattering and poles remain open.
+Next: independent adaptive outer integration of all ten triple rows on both
+cutoffs3/4 and both fields, holding accepted inner32/32 and source/profile256/512,
+position bounds48/14 and regulator0.2. Keep the complete single/pair contributions
+explicit. A tested conditioned native recursion already exists; validate its
+wide-triple application before production. Do not repeat the completed grids.
+No uniform/independent-grade/global exceptional coverage, infinite-tail or Abel
+limit, scattering or physical pole result is established by this refinement.
 
-Preflight acceptance is committed at `8ac0caaf`. Production launched at
-18:45:50 UTC on 2026-09-16. Startup verifies all four workers with one native
-thread and a 2 GiB address-space ceiling each, all 87 current/frozen sources,
-empty strict stderr and the silent completion/error watcher. No production
-result is yet accepted.
-
-The user-approved [nonlinear-pole contract repair](S11c_d_nonlinear_pole_repair_report.md)
-is effective for new work through its governing addendum. Acceptance verifies
-all 87 current/frozen production sources unchanged; this action quadrature does
-not execute the repaired pole construction. Complete its original validation
-and publication normally, then include the correction and its dependency
-disposition explicitly in the next stage's provenance.
+The user-approved nonlinearPoleV2 addendum governs new work. The current run's
+v10 authority, engine and imported exports remain byte-identical. New stages
+must pin the addendum with an explicit dependency disposition; old results are
+not relabeled. The retained solver/export suffix remains unchanged.

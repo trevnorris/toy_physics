@@ -1,5 +1,12 @@
 # S11c-d SymPy builder checkpoint
 
+The [wider-box triple refinement](S11c_d_wide_three_momentum_report.md) is validated:
+1.049 billion new nodes in 44h03m, four clean workers, 64,016 preserved partials
+and 134,254 metadata paths. Outer/innermost/middle raw changes reach
+3.68e-10 / 3.92e-18 / 1.55e-14. The finite cutoff3-to4 action change remains
+1.13467e-7. Next is independent triple outer quadrature on the accepted finest
+inner rules; physical tail/Abel and inverse-bound obligations remain open.
+
 The user-approved [nonlinear pole correction](../directives/S11c_d_NONLINEAR_POLE_CONTRACT.md)
 now governs the remaining pole work and its export requirements. It replaces the
 unrestricted projector prescription with full Laurent data, conditional modal

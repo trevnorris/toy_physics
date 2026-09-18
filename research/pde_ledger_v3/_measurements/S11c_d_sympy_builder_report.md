@@ -1,11 +1,29 @@
 # S11c-d SymPy builder checkpoint
 
+The user approved a [practical numerical acceptance standard](../directives/S11c_d_EXPLORATORY_ACCEPTANCE.md)
+on 2026-09-18. After the current run, follow the
+[focused completion plan](S11c_d_focused_completion_plan.md): construct the first
+complete two-ended numerical scattering response, then check its important
+observables at stated precision. Rigorous operator/infinite-limit certificates
+move to optional follow-up. Equations, required outputs, units, source joins,
+continuum grades and nonlinearPoleV2 remain intact. No numerical or physical
+result is newly accepted by this planning change.
+
+The wide-triple adaptive production launched at `b5597574` continues unchanged,
+with its original guards and silent watcher. After acceptance/publication, do
+not automatically queue further fixed-box, tail or regulator sweeps; implement
+the finite matching solve and select later checks from its observable sensitivity.
+The older checkpoint narrative below records history, not the current task
+queue. The retained solver/export suffix remains byte-identical, interpreted
+under the new acceptance addendum and the approved pole correction.
+
 The [wider-box triple refinement](S11c_d_wide_three_momentum_report.md) is validated:
 1.049 billion new nodes in 44h03m, four clean workers, 64,016 preserved partials
 and 134,254 metadata paths. Outer/innermost/middle raw changes reach
 3.68e-10 / 3.92e-18 / 1.55e-14. The finite cutoff3-to4 action change remains
-1.13467e-7. Next is independent triple outer quadrature on the accepted finest
-inner rules; physical tail/Abel and inverse-bound obligations remain open.
+1.13467e-7. Independent triple outer quadrature is running on the accepted finest
+inner rules; physical tail/Abel and inverse-bound certificates remain open on
+the optional rigorous track.
 
 The user-approved [nonlinear pole correction](../directives/S11c_d_NONLINEAR_POLE_CONTRACT.md)
 now governs the remaining pole work and its export requirements. It replaces the

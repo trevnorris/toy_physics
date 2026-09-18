@@ -1,0 +1,37 @@
+{
+  "status": "USER_APPROVED_ACCEPTANCE_CHANGE",
+  "version": "exploratoryAcceptanceV1",
+  "approvedDate": "2026-09-18",
+  "userInstruction": "let's do that, and refocus our future work to fit this new criteria. No reason to stop the existing runs, but after this let's stay more focused.",
+  "authority": "directives/S11c_d_EXPLORATORY_ACCEPTANCE.md",
+  "authoritySha256": "5c1e560a78d40739af8b1318c0487e20bf2b816c41109889e12004266c72840c",
+  "plan": "_measurements/S11c_d_focused_completion_plan.md",
+  "planSha256": "1917ffd7bab9d1da0a355228b865e6ba5c6bbdad009bdfbff18296492b81fcaa",
+  "priorCommit": "b5597574a1f485bd0d9a6b17951297df5a56827b",
+  "activeRunRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-wide-three-adaptive-20260918/production",
+  "activeSourceManifest": "/var/projects/toy_physics/_scratch/s11c/s11c-wide-three-adaptive-20260918/production/complete/preflight.json",
+  "activeSourceManifestSha256": "3452c61271eee75dde8fd6c68aadda3d459e43067ea728d4ecb3414593df8a50",
+  "activeSourceCount": 92,
+  "validation": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-exploratory-acceptance-20260918/validation.json",
+    "sha256": "dcc9c45c0ff11a7c0bc50bc16738171d13eeed6a27ed3e11395fc8407f2773da"
+  },
+  "retainedBuilderSuffixSha256": "f01024512c9a028e7e524e5a95b5c455be42e125d10c36f94e20493109b013c2",
+  "physicalRepair": false,
+  "newNumericalResultAccepted": false,
+  "firstPriorityAfterRun": "Complete finite two-ended scattering construction and observable-focused numerical checks.",
+  "optionalCertification": [
+    "Uniform operator error and outgoing-inverse bounds",
+    "Rigorous infinite-tail and Abel-limit proofs",
+    "Global exceptional-locus and general analytic spectral certification"
+  ],
+  "requiredWorkPreserved": [
+    "Correct reduced equations, complete couplings and approved inputs",
+    "Complete both-end response and retained continuum grades",
+    "Correct nonlinear-pole, principal-part and physical-response distinctions",
+    "Required bookkeeping, controls, case integration and exports"
+  ],
+  "existingRuns": "Continue unchanged; accept against original pins and guards.",
+  "watcherContinuation": "Existing watcher message remains unchanged; its requested execution/report reads now supply this approval.",
+  "scopeLimit": "Empirical numerical stability is not a rigorous error bound; unresolved regimes and uncomputed required objects remain explicit."
+}

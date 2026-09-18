@@ -1,5 +1,16 @@
 # S11c-d quadrature and limit checks
 
+**Current priority, approved 2026-09-18:** follow
+[`S11c_d_EXPLORATORY_ACCEPTANCE.md`](../directives/S11c_d_EXPLORATORY_ACCEPTANCE.md)
+and the [focused completion plan](S11c_d_focused_completion_plan.md).
+The active triple adaptive run finishes unchanged. Then build the complete
+finite numerical scattering problem and assess its observables with selected
+resolution/domain/regulator comparisons. The rigorous operator-norm, tail/Abel
+and inverse-bound application below is an optional certification track; it is
+no longer a prerequisite for attempting the numerical solve. Mathematical
+hypotheses still limit any theorem or certified claim. Earlier prerequisite
+language in source-pinned plans is superseded for future scheduling only.
+
 The complete bounded action check is published at `009667f7`. Source and
 assembled actions agree to 2.49e-16, but changing the two quadrature grids
 changes the action by up to 0.04670 in the declared unit frame. Continue step 5
@@ -31,10 +42,12 @@ reduced source or the test-field substitutions.
    variables, Jacobian and source action joins. Reuse all saved direct and
    assembled test operands. Refine spatial/momentum domains and regulator only
    after resolving each fixed-regulator quadrature.
-5. Establish the needed action-level tail and Abel weak limits before boundary
-   matching. Elementary kernel/profile tests supply numerical operands and
-   resolution evidence; they do not establish the full physical operator limit
-   or an S-matrix. Retain exceptional domains and failures explicitly.
+5. Proceed to the finite numerical boundary problem using the accepted action
+   machinery, with cutoffs and regulator explicitly recorded. Check the actual
+   scattering observables before stronger numerical limit claims. Elementary
+   kernel/profile tests alone establish neither a physical operator limit nor
+   an S-matrix. Retain exceptional domains and failures explicitly; rigorous
+   full-operator limit proofs are optional under the approved acceptance change.
 
 ## Applying the Lean T1–T4 handoff
 
@@ -57,8 +70,9 @@ solution and fixed-observation errors. The compact native check retains physical
 width `a/L_W`, the constant contribution and both even and odd/PV step terms.
 It is a selected source identity, not a formalization of all native integrals.
 
-Advance step 5 through the following application obligations, reusing accepted
-assembly and quadrature operands:
+For optional rigorous certification, the following application obligations
+remain, reusing accepted assembly and quadrature operands. They do not all have
+to be discharged before a scoped numerical scattering calculation:
 
 1. **Identify the realization and norm.** Give the complete retained reduced
    operator a fixed outgoing/graph-space map `A: X -> Y` on a named spectral

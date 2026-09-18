@@ -13,7 +13,7 @@
   "workerAddressSpaceBytes": 2147483648,
   "inputAuthority": "directives/S11c_d_NONLINEAR_POLE_CONTRACT.md",
   "dependencyDisposition": "New stage records v10 plus nonlinearPoleV2; no physical operands or prior pinned sources change and no pole constructor is called.",
-  "next": "Await the local completion/error wake-up without model polling. Validate all saved production operands and full emission/metadata evidence, then publish through DataLad/git-annex, verify hashes and commit before selecting further physical domain/tail work.",
+  "next": "Await the existing silent completion/error hook. Validate this run under its original source pins and guards, publish accepted output through DataLad/git-annex, verify hashes and commit. Then follow exploratoryAcceptanceV1 and S11c_d_focused_completion_plan.md: construct the first complete finite two-ended scattering solve and check actual observables at practical stated precision. Do not automatically launch another fixed-box/domain/regulator sweep or block the numerical solve on optional rigorous operator/tail/Abel/inverse certification.",
   "implementationCommit": "6f6e94f4",
   "launch": {
     "launchedUtc": "2026-09-18T15:00:09.449749+00:00",
@@ -98,5 +98,13 @@
   "productionLaunchVerification": {
     "path": "/var/projects/toy_physics/_scratch/s11c/s11c-wide-three-adaptive-20260918/production/launch-verification.json",
     "sha256": "6e04781d5a800ca0e15f221757a8aa852e7978abcb1ede62b7c174e040cf0cc6"
+  },
+  "futureAcceptance": {
+    "version": "exploratoryAcceptanceV1",
+    "authority": "directives/S11c_d_EXPLORATORY_ACCEPTANCE.md",
+    "approvedDate": "2026-09-18",
+    "plan": "_measurements/S11c_d_focused_completion_plan.md",
+    "checkpoint": "_measurements/S11c_d_exploratory_acceptance_checkpoint.json",
+    "appliesTo": "Future work after original active-run validation; no active source, tolerance or guard change."
   }
 }

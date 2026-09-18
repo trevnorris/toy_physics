@@ -1,5 +1,14 @@
 # S11c-d — SymPy build directive (profile-conditioned transverse↔thickness scattering; SymPy engine)
 
+The user-approved `S11c_d_EXPLORATORY_ACCEPTANCE.md` (2026-09-18) now governs
+future numerical acceptance and sequencing. It permits scoped numerical
+scattering with observable-focused checks before optional rigorous operator
+and infinite-limit certification. It does not alter the physical objects,
+import/export semantics or source-derived computation rules below. Follow
+`../_measurements/S11c_d_focused_completion_plan.md`; active runs and source-pinned
+historical plans remain unchanged. The user's standing authority permits
+stepwise commits and autonomous continuation in this builder lane.
+
 ⭐ **THIN directive.** Physics comes from `directives/S11c_d_SHARED_PHYSICS.md` (v10, historical cleared baseline
 `399a8516`) together with the user-approved `directives/S11c_d_NONLINEAR_POLE_CONTRACT.md` (`nonlinearPoleV2`).
 The addendum supersedes the identified pole/projector and promotion clauses; its approval is not an independent

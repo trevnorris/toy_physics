@@ -6,6 +6,13 @@ written. ⛔ Do NOT restart from scratch. ⛔ Do NOT fake, empty-substitute, or 
 When a turn ends before completion, stop at a **runnable checkpoint** and state exactly what remains.
 
 ## Authorities (read both — they bind; this brief only frames the program + state + discipline)
+- **User-approved practical acceptance:** `directives/S11c_d_EXPLORATORY_ACCEPTANCE.md`
+  (`exploratoryAcceptanceV1`, 2026-09-18) governs future numerical completion and
+  priorities. Obtain the first complete scattering result and test its important
+  observables; rigorous full-operator/infinite-limit certification is optional
+  follow-up. Read `_measurements/S11c_d_focused_completion_plan.md` for the next
+  steps. Existing runs finish under their original pins and guards. This changes
+  acceptance and sequencing, not equations, required outputs or honest scope.
 - **Physics authority:** `directives/S11c_d_SHARED_PHYSICS.md` (cleared v10, committed `399a8516`). Every equation,
   premise, object, control, and the reduced-representation rule come from here.
 - **Approved pole correction:** `directives/S11c_d_NONLINEAR_POLE_CONTRACT.md` (`nonlinearPoleV2`) supersedes v10's
@@ -124,6 +131,15 @@ project's governing lesson (full-symbolic impractical ⇒ **carrier-first + nume
   comparator are the orchestrator's, run separately.) ⛔ No commits.
 
 ## 5 · ITERATION EFFICIENCY (the 7–11 min full run per iteration is the bottleneck)
+- **Current operational override:** the historical per-turn full-run rule below
+  predates the multi-hour numerical stages. Reuse accepted operands, finish the
+  one-case scattering path, and regenerate other cases/final exports after
+  integration under `exploratoryAcceptanceV1`. Each new multi-hour job needs a
+  scientific question, an observable-precision target, a measured cost estimate
+  and a stopping decision; no automatic sequence of ever-finer grids. The user
+  authorizes stepwise commits and autonomous continuation with silent local
+  completion/error hooks. Builder-only restrictions on reviews/downstream work
+  remain. No new permission is needed for routine work in this approved scope.
 - The reduction (Stage A) is stable. During development, iterate on a **single `(α,ρ)` case** (e.g.
   `LAB_HELD × RHO4_CONSTANT`) — a small case/section selector (argv/env) is fine — then do the **full 4-case run once
   at the end** of a turn to regenerate the complete `.out`.

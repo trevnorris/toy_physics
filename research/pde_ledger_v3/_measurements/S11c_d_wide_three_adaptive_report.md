@@ -1,5 +1,12 @@
 # S11c-d independent wider-box triple outer quadrature
 
+The user approved `../directives/S11c_d_EXPLORATORY_ACCEPTANCE.md` on 2026-09-18.
+This running calculation and its original validation remain unchanged. After
+publication follow `S11c_d_focused_completion_plan.md`: build the first complete
+finite scattering solve, then check its observables. Further quadrature/domain
+sweeps require a material question and cost/precision/stopping record. Rigorous
+operator/infinite-limit certificates are optional follow-up, not a solve gate.
+
 Implementation preserves the native engine and reuses its previously checked
 conditional recursion. Whole-function reverse AST joins restrict the worker to
 one triple adaptive stage and retain the complete single/pair contribution.

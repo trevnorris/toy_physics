@@ -1,5 +1,5 @@
 {
-  "status": "IMPLEMENTATION_READY_FOR_PREFLIGHT",
+  "status": "PREFLIGHT_RUNNING",
   "checker": "S11c_d_wide_three_adaptive.py",
   "plan": "S11c_d_wide_three_adaptive_plan.md",
   "report": "S11c_d_wide_three_adaptive_report.md",
@@ -13,5 +13,37 @@
   "workerAddressSpaceBytes": 2147483648,
   "inputAuthority": "directives/S11c_d_NONLINEAR_POLE_CONTRACT.md",
   "dependencyDisposition": "New stage records v10 plus nonlinearPoleV2; no physical operands or prior pinned sources change and no pole constructor is called.",
-  "next": "Commit implementation, launch the instrument preflight under the existing supervisor and silent local completion/error watcher, validate saved evidence before any full-resolution adaptive production."
+  "next": "Silent local completion/error watcher owns the preflight wake-up. Validate saved prefix/coarse/adaptive, source, metadata and packet evidence on completion, commit acceptance, then launch the full-resolution independent outer check.",
+  "implementationCommit": "6f6e94f4",
+  "launch": {
+    "launchedUtc": "2026-09-18T15:00:09.449749+00:00",
+    "command": [
+      "/usr/bin/python",
+      "_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-wide-three-adaptive-20260918/preflight",
+      "--stage",
+      "adaptive_preflight",
+      "--",
+      "python",
+      "-u",
+      "_measurements/S11c_d_wide_three_adaptive.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-wide-three-adaptive-20260918/preflight/complete",
+      "--preflight"
+    ],
+    "supervisorPid": 3466923,
+    "watcherPid": 3466924,
+    "watcherDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-wide-three-adaptive-20260918/preflight/completion-watcher",
+    "threadEnvironment": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1"
+    }
+  },
+  "launchVerification": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-wide-three-adaptive-20260918/preflight/launch-verification.json",
+    "sha256": "72df17f0aa57dfb554a46ea3211b382caf20b56584b97374d06f3925607216fb"
+  }
 }

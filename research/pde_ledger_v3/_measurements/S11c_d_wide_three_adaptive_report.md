@@ -28,3 +28,7 @@ checkpoint alongside the unchanged v10 baseline, with an unchanged-physics
 statement. No pole constructor is used here. Uniform operator bounds, physical
 tails, Abel limits, scattering and pole calculations remain separate application
 work under the Lean handoffs and retained solver/export contract.
+
+Implementation is committed at `6f6e94f4`. Preflight launched at15:00:09 UTC
+on2026-09-18 under the existing supervisor and silent watcher. Startup checks
+all92 current/frozen sources and empty strict stderr. Production has not started.

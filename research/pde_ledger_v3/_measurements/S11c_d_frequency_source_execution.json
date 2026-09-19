@@ -1,5 +1,5 @@
 {
-  "status": "THRESHOLD_REPAIR_ACCEPTED_FINISH_PREPARED",
+  "status": "FINISH_RUNNING",
   "checker": "S11c_d_frequency_source.py",
   "plan": "S11c_d_frequency_source_plan.md",
   "report": "S11c_d_frequency_source_report.md",
@@ -193,5 +193,43 @@
   },
   "thresholdRepair": "S11c_d_frequency_source_threshold_repair.json",
   "thresholdAcceptance": "S11c_d_frequency_source_threshold_acceptance.json",
-  "finishRunRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-source-20260919/finish-01"
+  "finishRunRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-source-20260919/finish-01",
+  "thresholdRepairCommit": "c9857f02",
+  "finishLaunch": {
+    "launchedUtc": "2026-09-19T20:54:14.849673+00:00",
+    "command": [
+      "/usr/bin/python",
+      "_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-source-20260919/finish-01",
+      "--stage",
+      "frequency_finish",
+      "--",
+      "python",
+      "-u",
+      "_measurements/S11c_d_frequency_source_finish.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-source-20260919/finish-01/complete"
+    ],
+    "supervisorPid": 738548,
+    "watcherPid": 738549,
+    "watcherDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-source-20260919/finish-01/completion-watcher",
+    "threadEnvironment": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1"
+    }
+  },
+  "finishStartup": {
+    "status": "running",
+    "childPid": 738550,
+    "strictStderrBytes": 0,
+    "watcherStderrBytes": 0,
+    "inspection": "One startup inspection; silent local completion/error watcher owns continuation."
+  },
+  "finishLauncher": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-source-20260919/finish-01/launch.py",
+    "sha256": "329a5a5ee5fc5d4384afbd096d351f22332337d9d6f578aad52e51686ee4b4f3"
+  }
 }

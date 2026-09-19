@@ -71,3 +71,13 @@ signals remain unresolved. This is not a transparent-boundary or regulator-limit
 result. Next target a finite boundary/source-domain comparison and a separate
 regulator comparison, removing known propagation phases before comparing complex
 amplitudes. Keep continuum expansion, physical controls and pole work distinct.
+
+The selected boundary/regulator study is now validated in170.14 seconds. All
+three645-unknown systems are full rank. Matching-basis, common-phase boundary
+and regulator amplitude changes are1.2813e-7,2.1422e-6 and5.100e-12; total-current
+changes are1.8494e-7,2.6116e-7 and1.0950e-11. Complete saved-operand, native-row,
+source/limit/unit/measure, phase-current and independent-solve checks pass.
+See [the domain report](S11c_d_finite_scattering_domain_report.md).
+The dominant finite response meets the chosen practical reporting precision;
+tiny reflection/loss remains unresolved. Move to the required continuum grade
+construction and physical controls, retaining finite-boundary/regulator scope.

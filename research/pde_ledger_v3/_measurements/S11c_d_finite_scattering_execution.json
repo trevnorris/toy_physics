@@ -28,7 +28,7 @@
   },
   "purpose": "Measure feasibility and inspect residuals/conditioning of the complete finite operator and all-incident solve before choosing practical observable checks.",
   "scope": "Instrument/cost pilot; no physical observable or continuum re-expansion accepted.",
-  "next": "Compare a matching-resolution finite boundary/source domain change and a separate regulator change, with actual mode phases referenced to a common origin.",
+  "next": "Retain the practically stable finite response; construct independent eta/sigma operator grades and their response/physical-control dependencies. No further broad quadrature sweep.",
   "implementationCommit": "efc61982",
   "originalAttempt": {
     "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-finite-scattering-20260919/pilot",
@@ -268,7 +268,7 @@
     "checkpoint": "S11c_d_finite_scattering_resolution_checkpoint.json"
   },
   "domainComparison": {
-    "status": "RUNNING",
+    "status": "VALIDATED_FINITE_BOUNDARY_REGULATOR_RESPONSE",
     "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-finite-domain-20260919/production",
     "checker": "S11c_d_finite_scattering_domain.py",
     "plan": "S11c_d_finite_scattering_domain_plan.md",
@@ -330,6 +330,26 @@
     "launchVerification": {
       "path": "/var/projects/toy_physics/_scratch/s11c/s11c-finite-domain-20260919/production/launch-verification.json",
       "sha256": "f4a1e13b45f9de7af8c78b1232caad81ce4b77a9eac3249e54cce4e5e379c619"
-    }
+    },
+    "outcome": {
+      "stage": "domain_construct",
+      "command": [
+        "python",
+        "-u",
+        "_measurements/S11c_d_finite_scattering_domain.py",
+        "--run-directory",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-finite-domain-20260919/production/complete"
+      ],
+      "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-finite-domain-20260919/production/domain_construct.stdout",
+      "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-finite-domain-20260919/production/domain_construct.stderr",
+      "startedUtc": "2026-09-19T15:10:54.799505+00:00",
+      "childPid": 585449,
+      "status": "completed",
+      "exitCode": 0,
+      "wallSeconds": 170.14068826194853,
+      "stderrBytes": 0,
+      "finishedUtc": "2026-09-19T15:13:44.940240+00:00"
+    },
+    "checkpoint": "S11c_d_finite_scattering_domain_checkpoint.json"
   }
 }

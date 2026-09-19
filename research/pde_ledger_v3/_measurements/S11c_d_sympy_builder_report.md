@@ -23,7 +23,12 @@ resolution checks now pass: transform, collocation and momentum amplitude change
 are2.96e-10,2.13e-5 and1.99e-6. The final485-unknown solve is full rank; the
 recovered last comparison took43.90 seconds. Dominant response is stable at the
 stated practical precision; tiny reflected/lost current remains unresolved.
-Next compare boundary/source placement and regulator with a common phase origin.
+The selected boundary/regulator set now passes in170.14 seconds: all645-unknown
+systems full rank, scaled residuals below6.60e-16. Matching-basis, common-phase
+boundary and regulator amplitude changes are1.2813e-7,2.1422e-6 and5.100e-12.
+The dominant finite response meets practical precision; tiny reflection/loss is
+unresolved. Next build independent continuum grades and physical controls from
+the saved symbolic operands. No broad quadrature sweep is queued.
 The older checkpoint narrative below records history, not the current task
 queue. The retained solver/export suffix remains byte-identical, interpreted
 under the new acceptance addendum and the approved pole correction.

@@ -1,0 +1,14 @@
+{
+  "status": "FOCUSED_READY",
+  "checker": "S11c_d_coordinate_response.py",
+  "plan": "S11c_d_coordinate_response_plan.md",
+  "report": "S11c_d_coordinate_response_report.md",
+  "acceptedCoordinateSourceCommit": "9c4382c6",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-coordinate-response-20260919/focused",
+  "limits": {
+    "wallSeconds": 900,
+    "nativeThreads": 1,
+    "addressSpaceBytes": 2147483648
+  },
+  "next": "Validate focused transformed integrand and boundary/current joins, commit, then implement full material quadrature and continuum response from saved bindings."
+}

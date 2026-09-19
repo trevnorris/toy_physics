@@ -36,7 +36,13 @@ term responds. The [boundary/current coefficients](S11c_d_continuum_boundary_rep
 pass:10 complete clusters,52 derivative tables,100 exact saved current-pair
 replays and5291 metadata paths. Invariant-pair residuals are below3.86e-15.
 The right finite-versus-Taylor trace difference0.00567 remains a truncation
-diagnostic. Next solve the complete continuum response from these coefficients. No broad quadrature sweep is queued.
+diagnostic. The [complete finite continuum coefficient response](S11c_d_continuum_response_report.md)
+now passes:645 unknowns, all four incident directions and all independent/mixed
+coefficients, scaled equation residual3.80e-14 and independent solve difference
+2.11e-12. Actual boundary/current/phase normalization is included;506 tags and
+45731 metadata paths replay. The202-second solve reuses accepted quadratures.
+Current bookkeeping, physical controls, frequency poles and final integration
+remain; tiny reflection/loss is unresolved. No broad quadrature sweep is queued.
 The older checkpoint narrative below records history, not the current task
 queue. The retained solver/export suffix remains byte-identical, interpreted
 under the new acceptance addendum and the approved pole correction.

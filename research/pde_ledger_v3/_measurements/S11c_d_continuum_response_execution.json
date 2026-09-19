@@ -1,5 +1,5 @@
 {
-  "status": "RUNNING",
+  "status": "PUBLISHED_ANNEX_VERIFIED",
   "checker": "S11c_d_continuum_response.py",
   "plan": "S11c_d_continuum_response_plan.md",
   "report": "S11c_d_continuum_response_report.md",
@@ -12,7 +12,7 @@
     "nativeThreads": 1,
     "addressSpaceBytes": 2147483648
   },
-  "next": "Compute and validate the complete finite coefficient response with actual boundary/current dependence; no new quadrature.",
+  "next": "Compute channel-resolved slab/bulk currents and retained amplitude/weak bookkeeping from accepted response; keep evanescent channels distinct from propagating flux.",
   "implementationCommit": "42c43fdf",
   "launch": {
     "launchedUtc": "2026-09-19T17:05:34.991050+00:00",
@@ -44,5 +44,56 @@
     "status": "running",
     "stderrBytes": 0,
     "watcherStderrBytes": 0
+  },
+  "checkpoint": "S11c_d_continuum_response_checkpoint.json",
+  "publication": {
+    "path": "scripts/out/S11c_d_continuum_response.out",
+    "bytes": 5789704,
+    "sha256": "85d7d33212a58d5bf7e9c4e0dfb3d023add3933819151330c1ffb4226fd8e3ad",
+    "annexKey": "MD5E-s5789704--a6168de812c24844e128280cc5be910c.out",
+    "symlink": "../../../../.git/annex/objects/jp/j0/MD5E-s5789704--a6168de812c24844e128280cc5be910c.out/MD5E-s5789704--a6168de812c24844e128280cc5be910c.out",
+    "publicationCommit": "be2d5b3a45630448d530abaef2321a7555945b3e"
+  },
+  "outcome": {
+    "stage": "response_construct",
+    "command": [
+      "python",
+      "-u",
+      "_measurements/S11c_d_continuum_response.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-response-20260919/production/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-response-20260919/production/response_construct.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-response-20260919/production/response_construct.stderr",
+    "startedUtc": "2026-09-19T17:05:35.022116+00:00",
+    "childPid": 638776,
+    "status": "completed",
+    "exitCode": 0,
+    "wallSeconds": 202.1594265019521,
+    "stderrBytes": 0,
+    "finishedUtc": "2026-09-19T17:08:57.181597+00:00"
+  },
+  "verification": {
+    "sources": 40,
+    "inputPackets": 5,
+    "interiorFieldGradeJoins": 20,
+    "endpointFieldGradeJoins": 40,
+    "literalCoefficientResiduals": {
+      "(0, 0)": 9.521241569546644e-16,
+      "(1, 0)": 1.8421950163044196e-14,
+      "(0, 1)": 2.8995506288241435e-15,
+      "(1, 1)": 3.795848137203454e-14
+    },
+    "literalHomotopyContractionResiduals": {
+      "0": 1.0097419586828951e-28,
+      "1": 2.220446049250313e-16,
+      "2": 4.440894216082489e-16,
+      "3": 2.5204620255275203e-16,
+      "4": 5.421010862427522e-20,
+      "5": 2.7284424296154007e-23,
+      "6": 0.0
+    },
+    "tagCount": 506,
+    "metadataPaths": 45731
   }
 }

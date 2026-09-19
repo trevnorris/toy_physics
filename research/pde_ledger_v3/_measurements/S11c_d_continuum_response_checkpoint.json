@@ -1,0 +1,625 @@
+{
+  "status": "PUBLISHED_ANNEX_VERIFIED",
+  "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-response-20260919/production/complete",
+  "outcome": {
+    "stage": "response_construct",
+    "command": [
+      "python",
+      "-u",
+      "_measurements/S11c_d_continuum_response.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-response-20260919/production/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-response-20260919/production/response_construct.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-response-20260919/production/response_construct.stderr",
+    "startedUtc": "2026-09-19T17:05:35.022116+00:00",
+    "childPid": 638776,
+    "status": "completed",
+    "exitCode": 0,
+    "wallSeconds": 202.1594265019521,
+    "stderrBytes": 0,
+    "finishedUtc": "2026-09-19T17:08:57.181597+00:00"
+  },
+  "checksSha256": "a5c44bfa496c7da8694ac8d4a16a15c0e3eee168b4cf330df5815fdd0d3aec86",
+  "checks": {
+    "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-response-20260919/production/complete",
+    "sourceFiles": {
+      "_measurements/S11c_d_continuum_grades.py": "0443c3adbeaf813ad66c60af0a50c96e9a841277d51f9c23bf1c601d2fdf329d",
+      "_measurements/S11c_d_continuum_grade_plan.md": "693546373ea2c8c5eec4ef3c8c93732fc7440a1eb1a2cdb1a6cf9d0f5b469040",
+      "_measurements/S11c_d_reduced_action_assembly_checkpoint.json": "b4afb727b1a1ad2a468b0bab9a6ab369dbe4dd35bc46acd7150b7fa581cd984f",
+      "_measurements/S11c_d_source_fourier_factorization_checkpoint.json": "fcf6f1c5598b63c11d4f8a76d2d94c2b5bace590e83d4beea3e52e82f44158a6",
+      "_measurements/S11c_d_reduced_action_source_checkpoint.json": "b6dcd36ee6cf8ed3b3943e207012dd165fce62ec39cb8f53ca3c23f4715d094b",
+      "scripts/S11c_d_mixing_scattering_sympy_audit.py": "5bf77729682960bb59f10c672a5fe3f67a98b0a9533da7c6189a37183596050f",
+      "_measurements/S11c_d_reduced_action_source_check.py": "aae3b2402e1707ef27f217b917dc10592f38acbe35d18356fbc4886ed854f754",
+      "directives/S11c_d_EXPLORATORY_ACCEPTANCE.md": "5c1e560a78d40739af8b1318c0487e20bf2b816c41109889e12004266c72840c",
+      "_measurements/S11c_d_finite_scattering_domain_checkpoint.json": "2286978066ad6e0c8b9558a950b40521c61ac2cdfec58a9694f890c70c90280c",
+      "_measurements/S11c_d_variable_profile_development_input.json": "660b2b0b54494dce964c7f5fbd722a76a7e894d8ed92b18b5eb6290c3c10f1d5",
+      "directives/S11c_d_NONLINEAR_POLE_CONTRACT.md": "2b6018faf0d5ca772bf9c980174d8ebe7545127a3bf43ba01d1b3c0b6a5be423",
+      "scripts/S11c_b_exports.py": "3c6555f90a85382a5e96f3f961f0e36a4875d9259fe1be947fa8e683669b7084",
+      "scripts/S11c_c1_exports.py": "a5353b86dc526fd1b56734fdbdf7dc7f42387a3195ab4de84e8994f751871cdc",
+      "scripts/S11c_c2_exports.py": "2ba5ed487b84ecb98290df6f1650fa6210fe2784cfa02a0f3cff96cd718411cd",
+      "directives/S11c_d_SHARED_PHYSICS.md": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5",
+      "directives/S11b_SHARED_PHYSICS.md": "9ea9e388e9d6421a841eaf851d12e1793527bba9a24aeeface3bfac2f4b40078",
+      "scripts/ledger_fold.py": "97da78c6631c09e5575dd14511760506f1ac08771cf07948978004e92f0b2333",
+      "_measurements/S11c_d_continuum_matrices.py": "33a0e5a2fa136a55875541e15bc410159c94f56f25adc4a02589d0c704223987",
+      "_measurements/S11c_d_continuum_matrix_plan.md": "c571bf7adb9e7b4cbedd8ac80813a590d4087bebfd02da6b2615e1cc82914612",
+      "_measurements/S11c_d_continuum_grade_checkpoint.json": "3987ff4abb782050fffc767065ed9b3126da49215aa0df41320abef7fdec4692",
+      "_measurements/S11c_d_finite_scattering_domain.py": "73341408d0f6c1eb517e435dea986e180ff53615a6102697a8e3ba6747bd35aa",
+      "_measurements/S11c_d_finite_scattering.py": "f187d9426be8069342a363a0466c175d32a8cb46101e32a14c433ccb9118e469",
+      "_measurements/S11c_d_finite_scattering_resolution.py": "8e101517fde113c5f0a372bab531e63ebdcee3fff03c270ff98a7590e5a7b981",
+      "_measurements/S11c_d_end_normalization_reference_thickness_repair_checkpoint.json": "5c9456ddacd573865d00a0527b1b73b1060c613ccfe50ed89e41613fa3d9658f",
+      "_measurements/S11c_d_end_pairing_reference_thickness_repair_checkpoint.json": "1ea765d293138847a23ff7768fdba770a031659f9c978f582aff27391bf11232",
+      "_measurements/S11c_d_end_normalization_left_thickness_repair_checkpoint.json": "5871a84b7584eb35de8b8a5c450e8d0adadb41340abcbfe028ac16b360befcdb",
+      "_measurements/S11c_d_end_pairing_left_thickness_repair_checkpoint.json": "205e13614c41c504faae85cad9ee104ab51d1f1a5830b5b9e802e5fe3bc1ac9d",
+      "_measurements/S11c_d_end_normalization_right_thickness_repair_checkpoint.json": "7267d068580ecade68ce95abd599c1f5c59a95b4d7f359f9518452218c9f9a05",
+      "_measurements/S11c_d_end_pairing_right_thickness_repair_checkpoint.json": "e8e0d0771bd4365055351bdc041f0a45020f5252bdb5ff5793592d1c9c388605",
+      "_measurements/S11c_d_continuum_boundary.py": "ed3a6539d3151c52d25f12308b121897baf3bd6a5a626a598ab728988ab933a0",
+      "_measurements/S11c_d_continuum_boundary_plan.md": "08dd0c80757d2a2203b237e47957fd4e3bc1b970abfb2dad4cb3b07cf1a3c27f",
+      "_measurements/S11c_d_continuum_matrix_checkpoint.json": "4fe0e0214a5f51a6ab18c9266aa369dde4cf2b60eb51beabf3257754f91d942d",
+      "_measurements/S11c_d_matching_channels_checkpoint.json": "c4ad9b9051f9c3fadb076593dd35ec12d1779fad6d1558c691c3b735fe4d3eeb",
+      "_measurements/S11c_d_continuum_boundary_recover.py": "156252a37a9aaba207fa06ce23ca34cc7286601c8f76cdfe1a63a9e40a2f1839",
+      "_measurements/S11c_d_continuum_boundary_recovery_plan.md": "4d91587d5a202a2d9dbdedb8f9b6340cded59a08518df173ac012e49f51db2ea",
+      "_measurements/S11c_d_continuum_boundary_finish.py": "988e3248d634dd3d6a48279d198c682a9637082ddcd735207d5506c01b0af052",
+      "_measurements/S11c_d_continuum_boundary_finish_plan.md": "674e363bf4427f9c367cdc309bb336a584e332e83cb1ee7143e8c831876063da",
+      "_measurements/S11c_d_continuum_response.py": "0fe30a9c4771671e9fa139b0557f185f55d351887f2ba8b9fa4ed1abfb616db2",
+      "_measurements/S11c_d_continuum_response_plan.md": "7250a3fb303a3a3e6e89d0372d7720dd5eeae16dc01714d43d4898ea1faf0834",
+      "_measurements/S11c_d_continuum_boundary_checkpoint.json": "b2614b74b4ec68de6d9f270bdf115833eea26a9baf168643663f21314a141d2d"
+    },
+    "inputPackets": {
+      "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-matrices-20260919/production/complete/continuum-matrices.pickle": "1db95fb176c970298b33005a94e25f8ada3ba1423fad605231be66d8a711954e",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/finish-02/complete/continuum-boundary.pickle": "8e3e53c3b7b06e3e81f961f013b77b4b87dfede081db75b4de458503b062eed0",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-finite-domain-20260919/production/complete/regulator/complete/finite-system.pickle": "2a043895b5e8a203cc4dd0b517ba3feec61300ab812a0404f19195cc39c0319a",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-end-normalization-20260914/reference/modal.pickle": "69668d29e11af4ca89c667f1ff39e7f646366eba7cb596dde39e74fcbefe3cd7",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-reduced-action-source-20260914/complete/reduced-action.pickle": "e9062c3455c7e59fe816f47172062a0c118b201d03809ec0826575dac22872b0"
+    },
+    "unknowns": 645,
+    "grades": [
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        0
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        1
+      ]
+    ],
+    "incidentChannels": 4,
+    "rank": 645,
+    "condition": 3731.2887868592843,
+    "maximumScaledEquationResidual": 3.795848137203454e-14,
+    "maximumIndependentCoefficientDifference": 2.1075592095823913e-12,
+    "mixedForcingMutationMaximum": 0.0004936008309660906,
+    "normalizationResidualMaximum": 7.141979374872701e-15,
+    "formalRemainderMaxima": {
+      "(0.01, 0.001)": 0.008823280624830808,
+      "(0.005, 0.0005)": 0.0022120202533605945,
+      "(0.0025, 0.00025)": 0.0005536174393166079
+    },
+    "tagCount": 506,
+    "writeKeys": 251,
+    "metadataPaths": 45731,
+    "packetSha256BeforeEmission": "a6678ad8fd7b4adf01aa3470834dcc0a918d2f7269fa1e273a980ea67c5b84f3",
+    "packetSha256AfterEmission": "a6678ad8fd7b4adf01aa3470834dcc0a918d2f7269fa1e273a980ea67c5b84f3",
+    "artifacts": {
+      "continuum-response.pickle": {
+        "bytes": 1786256,
+        "sha256": "a6678ad8fd7b4adf01aa3470834dcc0a918d2f7269fa1e273a980ea67c5b84f3"
+      },
+      "channel-response.pickle": {
+        "bytes": 200617,
+        "sha256": "1c6e2e0e93fbcdb38928043990cc3a92e05ef6ce448850e85c23ec1b558f7a2d"
+      },
+      "full.out": {
+        "bytes": 5789704,
+        "sha256": "85d7d33212a58d5bf7e9c4e0dfb3d023add3933819151330c1ffb4226fd8e3ad"
+      },
+      "coefficient-solutions.pickle": {
+        "bytes": 1048846,
+        "sha256": "696cabe9611ccd3ac428b97d58f73112d19d567564e44890445024b53149a66d"
+      },
+      "coefficient-systems.pickle": {
+        "bytes": 26791200,
+        "sha256": "dea61c01931093a726c49062bc340505cd3e58ed7b867f780fd90bc4857d74ae"
+      },
+      "formal-remainders.pickle": {
+        "bytes": 496059,
+        "sha256": "2cb1b1cbc4dd4514d4daa2318563ee0ffbb187fd7f0d386d9e96a68e55d99df6"
+      }
+    },
+    "wallSeconds": 200.10208672098815,
+    "peakRssKiB": 572784,
+    "scope": "Finite continuum coefficient response with actual end/current variation; approximate modal boundaries, positive regulator and retained rectangle."
+  },
+  "sourceFiles": {
+    "_measurements/S11c_d_continuum_grades.py": "0443c3adbeaf813ad66c60af0a50c96e9a841277d51f9c23bf1c601d2fdf329d",
+    "_measurements/S11c_d_continuum_grade_plan.md": "693546373ea2c8c5eec4ef3c8c93732fc7440a1eb1a2cdb1a6cf9d0f5b469040",
+    "_measurements/S11c_d_reduced_action_assembly_checkpoint.json": "b4afb727b1a1ad2a468b0bab9a6ab369dbe4dd35bc46acd7150b7fa581cd984f",
+    "_measurements/S11c_d_source_fourier_factorization_checkpoint.json": "fcf6f1c5598b63c11d4f8a76d2d94c2b5bace590e83d4beea3e52e82f44158a6",
+    "_measurements/S11c_d_reduced_action_source_checkpoint.json": "b6dcd36ee6cf8ed3b3943e207012dd165fce62ec39cb8f53ca3c23f4715d094b",
+    "scripts/S11c_d_mixing_scattering_sympy_audit.py": "5bf77729682960bb59f10c672a5fe3f67a98b0a9533da7c6189a37183596050f",
+    "_measurements/S11c_d_reduced_action_source_check.py": "aae3b2402e1707ef27f217b917dc10592f38acbe35d18356fbc4886ed854f754",
+    "directives/S11c_d_EXPLORATORY_ACCEPTANCE.md": "5c1e560a78d40739af8b1318c0487e20bf2b816c41109889e12004266c72840c",
+    "_measurements/S11c_d_finite_scattering_domain_checkpoint.json": "2286978066ad6e0c8b9558a950b40521c61ac2cdfec58a9694f890c70c90280c",
+    "_measurements/S11c_d_variable_profile_development_input.json": "660b2b0b54494dce964c7f5fbd722a76a7e894d8ed92b18b5eb6290c3c10f1d5",
+    "directives/S11c_d_NONLINEAR_POLE_CONTRACT.md": "2b6018faf0d5ca772bf9c980174d8ebe7545127a3bf43ba01d1b3c0b6a5be423",
+    "scripts/S11c_b_exports.py": "3c6555f90a85382a5e96f3f961f0e36a4875d9259fe1be947fa8e683669b7084",
+    "scripts/S11c_c1_exports.py": "a5353b86dc526fd1b56734fdbdf7dc7f42387a3195ab4de84e8994f751871cdc",
+    "scripts/S11c_c2_exports.py": "2ba5ed487b84ecb98290df6f1650fa6210fe2784cfa02a0f3cff96cd718411cd",
+    "directives/S11c_d_SHARED_PHYSICS.md": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5",
+    "directives/S11b_SHARED_PHYSICS.md": "9ea9e388e9d6421a841eaf851d12e1793527bba9a24aeeface3bfac2f4b40078",
+    "scripts/ledger_fold.py": "97da78c6631c09e5575dd14511760506f1ac08771cf07948978004e92f0b2333",
+    "_measurements/S11c_d_continuum_matrices.py": "33a0e5a2fa136a55875541e15bc410159c94f56f25adc4a02589d0c704223987",
+    "_measurements/S11c_d_continuum_matrix_plan.md": "c571bf7adb9e7b4cbedd8ac80813a590d4087bebfd02da6b2615e1cc82914612",
+    "_measurements/S11c_d_continuum_grade_checkpoint.json": "3987ff4abb782050fffc767065ed9b3126da49215aa0df41320abef7fdec4692",
+    "_measurements/S11c_d_finite_scattering_domain.py": "73341408d0f6c1eb517e435dea986e180ff53615a6102697a8e3ba6747bd35aa",
+    "_measurements/S11c_d_finite_scattering.py": "f187d9426be8069342a363a0466c175d32a8cb46101e32a14c433ccb9118e469",
+    "_measurements/S11c_d_finite_scattering_resolution.py": "8e101517fde113c5f0a372bab531e63ebdcee3fff03c270ff98a7590e5a7b981",
+    "_measurements/S11c_d_end_normalization_reference_thickness_repair_checkpoint.json": "5c9456ddacd573865d00a0527b1b73b1060c613ccfe50ed89e41613fa3d9658f",
+    "_measurements/S11c_d_end_pairing_reference_thickness_repair_checkpoint.json": "1ea765d293138847a23ff7768fdba770a031659f9c978f582aff27391bf11232",
+    "_measurements/S11c_d_end_normalization_left_thickness_repair_checkpoint.json": "5871a84b7584eb35de8b8a5c450e8d0adadb41340abcbfe028ac16b360befcdb",
+    "_measurements/S11c_d_end_pairing_left_thickness_repair_checkpoint.json": "205e13614c41c504faae85cad9ee104ab51d1f1a5830b5b9e802e5fe3bc1ac9d",
+    "_measurements/S11c_d_end_normalization_right_thickness_repair_checkpoint.json": "7267d068580ecade68ce95abd599c1f5c59a95b4d7f359f9518452218c9f9a05",
+    "_measurements/S11c_d_end_pairing_right_thickness_repair_checkpoint.json": "e8e0d0771bd4365055351bdc041f0a45020f5252bdb5ff5793592d1c9c388605",
+    "_measurements/S11c_d_continuum_boundary.py": "ed3a6539d3151c52d25f12308b121897baf3bd6a5a626a598ab728988ab933a0",
+    "_measurements/S11c_d_continuum_boundary_plan.md": "08dd0c80757d2a2203b237e47957fd4e3bc1b970abfb2dad4cb3b07cf1a3c27f",
+    "_measurements/S11c_d_continuum_matrix_checkpoint.json": "4fe0e0214a5f51a6ab18c9266aa369dde4cf2b60eb51beabf3257754f91d942d",
+    "_measurements/S11c_d_matching_channels_checkpoint.json": "c4ad9b9051f9c3fadb076593dd35ec12d1779fad6d1558c691c3b735fe4d3eeb",
+    "_measurements/S11c_d_continuum_boundary_recover.py": "156252a37a9aaba207fa06ce23ca34cc7286601c8f76cdfe1a63a9e40a2f1839",
+    "_measurements/S11c_d_continuum_boundary_recovery_plan.md": "4d91587d5a202a2d9dbdedb8f9b6340cded59a08518df173ac012e49f51db2ea",
+    "_measurements/S11c_d_continuum_boundary_finish.py": "988e3248d634dd3d6a48279d198c682a9637082ddcd735207d5506c01b0af052",
+    "_measurements/S11c_d_continuum_boundary_finish_plan.md": "674e363bf4427f9c367cdc309bb336a584e332e83cb1ee7143e8c831876063da",
+    "_measurements/S11c_d_continuum_response.py": "0fe30a9c4771671e9fa139b0557f185f55d351887f2ba8b9fa4ed1abfb616db2",
+    "_measurements/S11c_d_continuum_response_plan.md": "7250a3fb303a3a3e6e89d0372d7720dd5eeae16dc01714d43d4898ea1faf0834",
+    "_measurements/S11c_d_continuum_boundary_checkpoint.json": "b2614b74b4ec68de6d9f270bdf115833eea26a9baf168643663f21314a141d2d"
+  },
+  "artifacts": {
+    "continuum-response.pickle": {
+      "bytes": 1786256,
+      "sha256": "a6678ad8fd7b4adf01aa3470834dcc0a918d2f7269fa1e273a980ea67c5b84f3"
+    },
+    "channel-response.pickle": {
+      "bytes": 200617,
+      "sha256": "1c6e2e0e93fbcdb38928043990cc3a92e05ef6ce448850e85c23ec1b558f7a2d"
+    },
+    "full.out": {
+      "bytes": 5789704,
+      "sha256": "85d7d33212a58d5bf7e9c4e0dfb3d023add3933819151330c1ffb4226fd8e3ad"
+    },
+    "coefficient-solutions.pickle": {
+      "bytes": 1048846,
+      "sha256": "696cabe9611ccd3ac428b97d58f73112d19d567564e44890445024b53149a66d"
+    },
+    "coefficient-systems.pickle": {
+      "bytes": 26791200,
+      "sha256": "dea61c01931093a726c49062bc340505cd3e58ed7b867f780fd90bc4857d74ae"
+    },
+    "formal-remainders.pickle": {
+      "bytes": 496059,
+      "sha256": "2cb1b1cbc4dd4514d4daa2318563ee0ffbb187fd7f0d386d9e96a68e55d99df6"
+    }
+  },
+  "verification": {
+    "sources": 40,
+    "inputPackets": 5,
+    "interiorFieldGradeJoins": 20,
+    "endpointFieldGradeJoins": 40,
+    "literalCoefficientResiduals": {
+      "(0, 0)": 9.521241569546644e-16,
+      "(1, 0)": 1.8421950163044196e-14,
+      "(0, 1)": 2.8995506288241435e-15,
+      "(1, 1)": 3.795848137203454e-14
+    },
+    "literalHomotopyContractionResiduals": {
+      "0": 1.0097419586828951e-28,
+      "1": 2.220446049250313e-16,
+      "2": 4.440894216082489e-16,
+      "3": 2.5204620255275203e-16,
+      "4": 5.421010862427522e-20,
+      "5": 2.7284424296154007e-23,
+      "6": 0.0
+    },
+    "tagCount": 506,
+    "metadataPaths": 45731
+  },
+  "observables": {
+    "openOriginScattering": {
+      "coefficientMaxima": {
+        "(0, 0)": 1.000000000000284,
+        "(1, 0)": 1.9058650697922437,
+        "(0, 1)": 0.0004353406978791288,
+        "(1, 1)": 0.020938598851915055
+      },
+      "approvedRetainedReal": [
+        [
+          1.0574662400500227e-07,
+          2.4922645033286542e-08,
+          1.0027028273233576,
+          1.0656030207900446e-07
+        ],
+        [
+          -7.185198434962208e-09,
+          -1.0054048233449093e-07,
+          -8.988713621369919e-08,
+          1.002702724494415
+        ],
+        [
+          0.9972972810766936,
+          -3.8327410537370726e-08,
+          2.0848638238724226e-08,
+          -4.051990005761413e-09
+        ],
+        [
+          2.5920012650811042e-08,
+          0.997297204556018,
+          -8.863822866262075e-08,
+          -3.4563823630516156e-08
+        ]
+      ],
+      "approvedRetainedImag": [
+        [
+          -6.485163684539911e-10,
+          -2.511068984161984e-07,
+          -0.018865516900436693,
+          3.553267895618018e-08
+        ],
+        [
+          -4.4956454463631644e-08,
+          -3.277765661134673e-08,
+          -6.736448312877933e-08,
+          -0.01886532058316349
+        ],
+        [
+          -0.01886529257825534,
+          3.308046648186251e-08,
+          4.681056157083211e-08,
+          1.0475940335579036e-08
+        ],
+        [
+          -4.3490940169011445e-08,
+          -0.018865356783113546,
+          6.585171738796481e-08,
+          -3.7831714650810776e-08
+        ]
+      ],
+      "approvedRetainedAbsolute": [
+        [
+          1.0574861257688196e-07,
+          2.52340667883039e-07,
+          1.0028802858019374,
+          1.1232839913829294e-07
+        ],
+        [
+          4.552702356282881e-08,
+          1.0574858562166893e-07,
+          1.1232840621992153e-07,
+          1.0028801792982194
+        ],
+        [
+          0.9974756970006983,
+          5.062911870808918e-08,
+          5.1243481448725334e-08,
+          1.1232272651667703e-08
+        ],
+        [
+          5.062913126454707e-08,
+          0.9974756217080206,
+          1.10422752471542e-07,
+          5.124350239183303e-08
+        ]
+      ]
+    },
+    "fieldOriginScattering": {
+      "coefficientMaxima": {
+        "(0, 0)": 1.000000000000284,
+        "(1, 0)": 1.9058650697922435,
+        "(0, 1)": 0.0004353406978791289,
+        "(1, 1)": 0.020938598851915055
+      },
+      "approvedRetainedReal": [
+        [
+          2.4922645033286648e-08,
+          -1.4241803758287551e-08,
+          1.0027028273233576,
+          -5.017734550070191e-08
+        ],
+        [
+          -1.8300260939506927e-08,
+          -7.185198434962195e-09,
+          -5.404224138472815e-08,
+          1.002702724494415
+        ],
+        [
+          0.997297204556018,
+          3.940974527983125e-08,
+          -8.863822866262075e-08,
+          4.2319971942413726e-08
+        ],
+        [
+          3.814574763053216e-08,
+          0.9972972810766934,
+          4.34101175317091e-08,
+          -4.051990005761413e-09
+        ]
+      ],
+      "approvedRetainedImag": [
+        [
+          -2.511068984161984e-07,
+          1.0478520929809658e-07,
+          -0.018865516900436693,
+          1.004982748681531e-07
+        ],
+        [
+          1.0415307873764174e-07,
+          -4.4956454463631644e-08,
+          9.847388988976968e-08,
+          -0.01886532058316349
+        ],
+        [
+          -0.018865356783113546,
+          3.1783343272562677e-08,
+          6.585171738796481e-08,
+          -2.8894921909828962e-08
+        ],
+        [
+          3.3289782199130344e-08,
+          -0.018865292578255356,
+          -2.7229691273847767e-08,
+          1.0475940335579023e-08
+        ]
+      ],
+      "approvedRetainedAbsolute": [
+        [
+          2.52340667883039e-07,
+          1.0574861257688196e-07,
+          1.0028802858019374,
+          1.12328399138293e-07
+        ],
+        [
+          1.0574858562166892e-07,
+          4.5527023562828795e-08,
+          1.1232840621992153e-07,
+          1.0028801792982194
+        ],
+        [
+          0.9974756217080206,
+          5.0629131264547066e-08,
+          1.10422752471542e-07,
+          5.124350239183304e-08
+        ],
+        [
+          5.062911870808917e-08,
+          0.997475697000698,
+          5.124348144872535e-08,
+          1.123227265166769e-08
+        ]
+      ]
+    },
+    "fluxOriginScattering": {
+      "coefficientMaxima": {
+        "(0, 0)": 1.0000000000002838,
+        "(1, 0)": 1.8866040699151039,
+        "(0, 1)": 0.0004353406978791287,
+        "(1, 1)": 0.020918427669837276
+      },
+      "approvedRetainedReal": [
+        [
+          1.0574662400500225e-07,
+          2.4922645033286542e-08,
+          1.0000001243770245,
+          1.0701936773250477e-07
+        ],
+        [
+          -7.185198434962214e-09,
+          -1.0054048233449105e-07,
+          -9.037879666914993e-08,
+          1.000000021749106
+        ],
+        [
+          0.9999999839776648,
+          -3.820067929156239e-08,
+          2.084863823872423e-08,
+          -4.051990005761403e-09
+        ],
+        [
+          2.5944941062924472e-08,
+          0.999999908392325,
+          -8.863822866262072e-08,
+          -3.4563823630516136e-08
+        ]
+      ],
+      "approvedRetainedImag": [
+        [
+          -6.485163684539845e-10,
+          -2.511068984161984e-07,
+          -0.01886551805153263,
+          3.535507456839672e-08
+        ],
+        [
+          -4.495645446363169e-08,
+          -3.277765661134677e-08,
+          -6.734093153762273e-08,
+          -0.018865320784163343
+        ],
+        [
+          -0.01886529255708432,
+          3.262073644700008e-08,
+          4.681056157083209e-08,
+          1.0475940335579036e-08
+        ],
+        [
+          -4.3014714307752785e-08,
+          -0.018865356660207222,
+          6.585171738796479e-08,
+          -3.7831714650810756e-08
+        ]
+      ],
+      "approvedRetainedAbsolute": [
+        [
+          1.0574861257688194e-07,
+          2.52340667883039e-07,
+          1.0001780624095977,
+          1.1270814685550454e-07
+        ],
+        [
+          4.5527023562828855e-08,
+          1.0574858562166905e-07,
+          1.1270815386527427e-07,
+          1.000177956079068
+        ],
+        [
+          1.0001779177819285,
+          5.0233498232568305e-08,
+          5.124348144872533e-08,
+          1.1232272651667698e-08
+        ],
+        [
+          5.023351086412552e-08,
+          1.0001778434191466,
+          1.1042275247154194e-07,
+          5.1243502391833007e-08
+        ]
+      ]
+    },
+    "openFractionCoefficients": {
+      "0": {
+        "real": [
+          1.0000000000001514,
+          1.0000000000005675,
+          1.0000000000002793,
+          0.9999999999999827
+        ],
+        "imag": [
+          0.0,
+          1.96907077514151e-30,
+          5.145622588216041e-29,
+          0.0
+        ]
+      },
+      "1": {
+        "real": [
+          -2.651460900615632e-06,
+          -1.5156105431790579e-05,
+          2.0724579005593213e-05,
+          3.625379667804296e-06
+        ],
+        "imag": [
+          0.0,
+          -5.258330379381344e-23,
+          2.2204467682783095e-16,
+          -2.220446049250313e-16
+        ]
+      },
+      "2": {
+        "real": [
+          3.339868074755272,
+          3.339540889672933,
+          3.632574585929707,
+          3.6322005337596757
+        ],
+        "imag": [
+          2.220446049250313e-16,
+          1.1586359960600219e-17,
+          5.3359011267252156e-18,
+          1.1959042990129315e-16
+        ]
+      }
+    },
+    "labels": {
+      "LEFT": [
+        {
+          "record": 1,
+          "columns": [
+            0
+          ],
+          "kind": "evanescent",
+          "classifier": "THICKNESS_LIKE"
+        },
+        {
+          "record": 5,
+          "columns": [
+            1
+          ],
+          "kind": "evanescent",
+          "classifier": "THICKNESS_LIKE"
+        },
+        {
+          "record": 7,
+          "columns": [
+            2
+          ],
+          "kind": "evanescent",
+          "classifier": "THICKNESS_LIKE"
+        },
+        {
+          "record": 17,
+          "columns": [
+            3,
+            4
+          ],
+          "kind": "open",
+          "classifier": "TRANSVERSE_LIKE"
+        }
+      ],
+      "RIGHT": [
+        {
+          "record": 0,
+          "columns": [
+            0
+          ],
+          "kind": "evanescent",
+          "classifier": "THICKNESS_LIKE"
+        },
+        {
+          "record": 4,
+          "columns": [
+            1
+          ],
+          "kind": "evanescent",
+          "classifier": "THICKNESS_LIKE"
+        },
+        {
+          "record": 6,
+          "columns": [
+            2
+          ],
+          "kind": "evanescent",
+          "classifier": "THICKNESS_LIKE"
+        },
+        {
+          "record": 16,
+          "columns": [
+            3,
+            4
+          ],
+          "kind": "open",
+          "classifier": "TRANSVERSE_LIKE"
+        }
+      ]
+    },
+    "formalRemainderRatioOnHalving": [
+      3.9887883537350564,
+      3.9955754574695828
+    ]
+  },
+  "validator": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-response-20260919/validate-final.py",
+    "sha256": "a58e5b9dd1227c51301a237c86e73c1dbb54e6430a3c39c05c093aa1141fc065"
+  },
+  "scope": "Finite continuum coefficient response with actual end/current variation; approximate modal boundaries, positive regulator and retained rectangle.",
+  "publication": {
+    "path": "scripts/out/S11c_d_continuum_response.out",
+    "bytes": 5789704,
+    "sha256": "85d7d33212a58d5bf7e9c4e0dfb3d023add3933819151330c1ffb4226fd8e3ad",
+    "annexKey": "MD5E-s5789704--a6168de812c24844e128280cc5be910c.out",
+    "symlink": "../../../../.git/annex/objects/jp/j0/MD5E-s5789704--a6168de812c24844e128280cc5be910c.out/MD5E-s5789704--a6168de812c24844e128280cc5be910c.out",
+    "publicationCommit": "be2d5b3a45630448d530abaef2321a7555945b3e"
+  }
+}

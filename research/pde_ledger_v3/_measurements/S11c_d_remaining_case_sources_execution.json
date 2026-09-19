@@ -1,5 +1,5 @@
 {
-  "status": "REMAINING_VALIDATION_AND_OUTPUT_RUNNING",
+  "status": "PUBLISHED_ANNEX_VERIFIED",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-sources-20260919/finish-01",
   "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-sources-20260919/finish-01/complete",
   "helper": "_measurements/S11c_d_remaining_case_sources_finish.py",
@@ -234,5 +234,99 @@
     "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
     "messageSha256": "f492d00a13c7f42ef2175484d9fb05a0155c2f2ddbc49c91ba03e42187d1a31f",
     "notifications": {}
+  },
+  "finishOutcome": {
+    "stage": "cases_finish",
+    "command": [
+      "python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_sources_finish.py",
+      "--mode",
+      "finish",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-sources-20260919/finish-01/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-sources-20260919/finish-01/cases_finish.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-sources-20260919/finish-01/cases_finish.stderr",
+    "startedUtc": "2026-09-19T23:31:46.988129+00:00",
+    "childPid": 798921,
+    "status": "completed",
+    "exitCode": 0,
+    "wallSeconds": 381.6125175105408,
+    "stderrBytes": 0,
+    "finishedUtc": "2026-09-19T23:38:08.600692+00:00"
+  },
+  "acceptedCheckpoint": "_measurements/S11c_d_remaining_case_sources_checkpoint.json",
+  "publication": {
+    "path": "scripts/out/S11c_d_remaining_case_sources.out",
+    "sha256": "e38190f011adac82e4221b931b178d6ceda4f589415399f37eb5422c72055f29",
+    "bytes": 3357686,
+    "annexKey": "MD5E-s3357686--f0e72657d9f1fc4c0e77496ff9d3fa7b.out",
+    "symlink": "../../../../.git/annex/objects/7x/4p/MD5E-s3357686--f0e72657d9f1fc4c0e77496ff9d3fa7b.out/MD5E-s3357686--f0e72657d9f1fc4c0e77496ff9d3fa7b.out",
+    "actualBackend": "MD5E",
+    "verified": true,
+    "publicationCommit": "162618cef95b8bf4cef4b67ffbd001b052ff2c68"
+  },
+  "acceptance": {
+    "outcome": {
+      "stage": "cases_finish",
+      "command": [
+        "python",
+        "-u",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_sources_finish.py",
+        "--mode",
+        "finish",
+        "--run-directory",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-sources-20260919/finish-01/complete"
+      ],
+      "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-sources-20260919/finish-01/cases_finish.stdout",
+      "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-sources-20260919/finish-01/cases_finish.stderr",
+      "startedUtc": "2026-09-19T23:31:46.988129+00:00",
+      "childPid": 798921,
+      "status": "completed",
+      "exitCode": 0,
+      "wallSeconds": 381.6125175105408,
+      "stderrBytes": 0,
+      "finishedUtc": "2026-09-19T23:38:08.600692+00:00"
+    },
+    "checksSha256": "d118e48650e825dd72b6e9b2b54dd9f6b5f4fe3146e27a930871de338ba2c78e",
+    "sourceFilesVerified": 43,
+    "inputPacketsVerified": 127,
+    "artifactsVerified": 130,
+    "unchangedSourceCopies": 28,
+    "unchangedProofCopies": 75,
+    "newCellProofs": 25,
+    "cells": 100,
+    "coefficientScalars": 931,
+    "mutations": 100,
+    "cases": {
+      "LAB_HELD__RHOBR_CONSTANT": {
+        "integrals": 70,
+        "cellTerms": 140,
+        "exactBaselineMatches": 61
+      },
+      "MATERIAL_ADVECTED__RHO4_CONSTANT": {
+        "integrals": 80,
+        "cellTerms": 185,
+        "exactBaselineMatches": 61
+      },
+      "MATERIAL_ADVECTED__RHOBR_CONSTANT": {
+        "integrals": 70,
+        "cellTerms": 162,
+        "exactBaselineMatches": 46
+      }
+    },
+    "originalPrefixTagsIdentical": 170,
+    "emissionDifferences": [],
+    "tagCount": 686,
+    "writeKeys": 341,
+    "metadataPaths": 4595,
+    "fullOut": {
+      "bytes": 3357686,
+      "sha256": "e38190f011adac82e4221b931b178d6ceda4f589415399f37eb5422c72055f29"
+    },
+    "validator": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-sources-20260919/acceptance/validate.py",
+    "validatorSha256": "db0ada28f39e18241006e5557b2fd97ba8236f32a7a629d6799c349f497e3810",
+    "scope": "Saved-operand joins and existing proofs only; no construction or coefficient differentiation repeated."
   }
 }

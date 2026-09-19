@@ -407,6 +407,13 @@ The narrow context repair preserves both censuses and passes affected-cell
 coefficient reconstruction and mutation checks. Complete saved-packet validation
 and output follow without repeating source construction or numerical work.
 
+The [remaining case sources](S11c_d_remaining_case_sources_report.md) are now
+accepted and annex-published: all four native operators, 100 exact cell proofs,
+931 coefficient checks and 100 responding controls; 4595 metadata paths replay.
+The three new cases contain 70/80/70 integrals and 61/61/46 exact baseline
+matches. These permit operand reuse, not assumed response equality. Remaining
+case scattering/current/continuum/control/pole work and final exports continue.
+
 ## Retained user-approved solver/export contract
 
 

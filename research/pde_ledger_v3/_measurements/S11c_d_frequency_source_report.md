@@ -1,67 +1,45 @@
-# Frequency-dependent source preparation
+# Frequency-dependent reduced sources and end candidates
 
-The prior first-derivative response is accepted and annex-verified at31c008f5.
-The new source helper keeps frequency live through the original reduced local,
-cell, momentum and source-amplitude expressions, preserving the independent
-background grades. It checks the accepted omega=1 binding and an independent
-11/10 arithmetic rebinding, records frequency derivatives and all literal
-branch/denominator/nonanalytic operands, and derives a numerical-row dependency
-census. No earlier frequency-fixed matrix is used as a new pencil.
+The completed preparation is accepted. Its final stage took60.37seconds with
+empty stderr and reused all2,274 completed source/derivative/proof packets.
+All375 records,750 binding pairs,80 rows and35 source amplitudes pass, including
+400 original baseline coefficient joins and the exact accepted local matrix.
+The source packet remains byte-identical. All80 nonlocal rows depend on
+frequency; a fixed-frequency matrix cannot stand in for the frequency pencil.
 
-The same run binds all three accepted constant-end source symbols at live
-frequency and radical, checks their original pencils and frequency-wave
-transport, and computes zero-normal-momentum algebraic threshold candidates.
-Original matrix denominators and opposite-sheet possibilities remain explicit.
-These candidates are not profile-frequency poles.
+Actual first derivatives occur in16 local,80 cell,80 factor and21 source
+records. The197 frequency-freezing controls respond. Raw branch, denominator
+and nonanalytic operands remain explicit;80 records contain nonanalytic
+constructors. They still need an explicitly chosen analytic continuation.
 
-Construction and output validation are pending. The next bounded pole search
-requires an actual analytic outgoing boundary chart and full retained finite
-operator, followed by singular-part and separate physical-bound tests. Keep
-nonlinearPoleV2, positive-regulator/finite-boundary restrictions and the practical
-numerical criteria. No broad convergence campaign or upstream rerun is queued.
+All three end pencils reproduce their accepted frequency-one sources and
+radical relations with zero branch,seed and tangency residuals. Their complex
+degree22 eliminations are retained. Real candidates come from exact common
+real/imaginary factors, with decomposition,division,Bezout and factorization
+residuals zero. The common factors have degree8 and square-free degree2.
+REFERENCE/LEFT positive candidates lie near0.27386 and RIGHT near0.27250;
+the independently computed bulk branch frequencies are plus/minus sqrt(5).
+These are algebraic end candidates with denominator/opposite-sheet artifacts,
+not classified physical thresholds or profile-frequency poles.
 
-The first launch stopped in the source-checkpoint loader before construction.
-The accepted uniform-source inventory lives under checks.sourceFiles; the
-local lookup now follows that explicit schema. A whole-file reverse AST join
-and all16 current source hashes plus original artifact hashes validate. The
-original logs and script snapshot are preserved. No physics, binding or
-numerical computation was changed or repeated. The retry uses a fresh directory.
+Saved-operand acceptance verifies55 sources,2,306 inputs,2,284 artifacts,
+7,702 tags,3,849 fresh keys and14,863 unit/independent-grade/lambda metadata
+paths. The6,626,721-byte transcript is published via DataLad/git-annex;
+its actual MD5E key,symlink,size and independent SHA256 are verified in the
+checkpoint. Final packet hashes are unchanged. Acceptance repeats no source
+construction,quadrature or mode solve.
 
-The retry then stopped after 17.87 seconds on a noncanonical source-binding
-comparison. Its baseline and 16 source records are preserved. Restoring those
-pairs gives exact zero residuals; original live tree equality is not inferred.
-The focused repair re-evaluated 32 actual binding pairs in 14.70 seconds. Two
-unequal live forms and an expanded form of the failed operand have exact native
-certificates, with six zero proof scalars and responding coefficient mutations.
-All 32 restored pairs and byte-identical baseline/record reuse pass; a changed
-consumed input is rejected. No accepted physical computation was repeated.
+Earlier loader,representation and complex-polynomial diagnostic failures are
+preserved. Exact native binding certificates retain raw/live forms and detect
+coefficient mutations. The complex candidate selector retains all imaginary
+coefficients and its tested pure-real special case. The acceptance reader's
+inventory-path correction reads the preserved original JSON inventory and
+checks each copied packet; it changes no constructor or result.
 
-The saved-operand recovery will finish the remaining source/end construction.
-It retains raw/live forms, normalized certificates and denominator domains,
-and preserves the full source/derivative calculation, end helper, original
-physical emitter and final validation by AST joins. See the binding acceptance
-checkpoint and recovery plan. No frequency-source output is accepted yet.
-
-Recovery-01 completed all 375 source records, 750 binding comparisons and the
-80-row/35-source dependency census. Its 2,274 packets are preserved, including
-the REFERENCE end pencil. The candidate selector then stopped on an assumption
-that its polynomial had real coefficients. The actual degree-22 elimination
-has complex rational coefficients. A saved-pencil diagnostic retained them and
-computed an exact real/imaginary common factor of degree eight, with a degree-two
-square-free real candidate polynomial. Denominator and opposite-sheet artifacts
-are still unclassified; these are not profile-frequency poles.
-
-The next recovery retains the full complex polynomial and isolates only common
-real/imaginary zeros, with exact decomposition, division and Bezout identities.
-It will reuse all source calculations and the saved REFERENCE pencil/elimination,
-then complete the remaining two ends and output. A focused pure-real regression
-also exposed SymPy's gcdex division by zero for its zero imaginary polynomial;
-the explicit constant Bezout coefficients handle that case. Original diagnostic
-and failed focused evidence are preserved. No physical equation is changed.
-
-The corrected focused test passed in 47.36 seconds with empty stderr. It
-reused all 2,274 original packets, verified the actual complex polynomial and
-pure-real special case, and detected the imaginary-coefficient mutation.
-All 375 source records and reference diagnostics replay through 7,570 output
-tags with no dimension constraints. Full publication remains pending the
-remaining two end calculations and the original final output/hash guards.
+Next construct the actual local analytic kernel and outgoing end maps,then
+the finite frequency pencil and a bounded nonlinear pole search. Retain full
+degenerate subspaces,frequency-dependent forcing/observation maps,complete
+principal parts and separate physical-bound tests. Practical exploratory
+acceptance,finite positive regulator and approximate boundary scope apply;
+remaining cases and engine/export integration remain. No broad convergence
+campaign or inferred empty spectrum is queued.

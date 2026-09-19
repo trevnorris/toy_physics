@@ -97,6 +97,15 @@ implemented for the next bounded pole stage. It keeps actual frequency
 operands live, checks independent rebinding, and derives end-domain candidate
 polynomials from the original constant symbols. No new frequency pencil,
 profile pole, outgoing analytic chart or bound-channel result is accepted yet.
+The [frequency-source preparation](S11c_d_frequency_source_report.md) is accepted
+and annex-verified:375 records,750 binding pairs,all80 frequency-dependent
+nonlocal rows,35 source amplitudes and three actual live end pencils. Full
+complex eliminations and exact common real/imaginary candidate roots remain
+explicit,with no profile-pole claim. All55 sources,2,284 artifacts and14,863
+metadata paths validate. The final stage took60.37seconds and reused completed
+source work. A local analytic outgoing frequency pencil and bounded pole
+search are next,followed by remaining cases and final exports.
+
 The older checkpoint narrative below records history, not the current task
 queue. The retained solver/export suffix remains byte-identical, interpreted
 under the new acceptance addendum and the approved pole correction.

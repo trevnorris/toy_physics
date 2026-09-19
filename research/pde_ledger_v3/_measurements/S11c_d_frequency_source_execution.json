@@ -1,5 +1,5 @@
 {
-  "status": "FINISH_RUNNING",
+  "status": "PUBLISHED_ANNEX_VERIFIED",
   "checker": "S11c_d_frequency_source.py",
   "plan": "S11c_d_frequency_source_plan.md",
   "report": "S11c_d_frequency_source_report.md",
@@ -10,7 +10,7 @@
     "nativeThreads": 1,
     "addressSpaceBytes": 2147483648
   },
-  "next": "Reuse the completed 375 sources and REFERENCE pencil/elimination; finish LEFT/RIGHT candidate data and full output validation.",
+  "next": "Construct a source-derived local analytic frequency branch, continued complete outgoing end subspaces, actual finite frequency matrices and a targeted bounded pole search under nonlinearPoleV2.",
   "implementationCommit": "4b14f7cb",
   "launch": {
     "launchedUtc": "2026-09-19T20:25:09.909593+00:00",
@@ -231,5 +231,211 @@
   "finishLauncher": {
     "path": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-source-20260919/finish-01/launch.py",
     "sha256": "329a5a5ee5fc5d4384afbd096d351f22332337d9d6f578aad52e51686ee4b4f3"
+  },
+  "acceptedRunDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-source-20260919/finish-01/complete",
+  "finishOutcome": {
+    "stage": "frequency_finish",
+    "command": [
+      "python",
+      "-u",
+      "_measurements/S11c_d_frequency_source_finish.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-source-20260919/finish-01/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-source-20260919/finish-01/frequency_finish.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-source-20260919/finish-01/frequency_finish.stderr",
+    "startedUtc": "2026-09-19T20:54:14.881172+00:00",
+    "childPid": 738550,
+    "status": "completed",
+    "exitCode": 0,
+    "wallSeconds": 60.365986677818,
+    "stderrBytes": 0,
+    "finishedUtc": "2026-09-19T20:55:15.247219+00:00"
+  },
+  "publication": {
+    "path": "scripts/out/S11c_d_frequency_source.out",
+    "sha256": "8d1b28b501a652a677353870f75ce3b616b9f92452752d876d04501c2ea3cace",
+    "bytes": 6626721,
+    "annexKey": "MD5E-s6626721--f5066a63c7c310f2e5b72c457b14de36.out",
+    "symlink": "../../../../.git/annex/objects/8m/Mv/MD5E-s6626721--f5066a63c7c310f2e5b72c457b14de36.out/MD5E-s6626721--f5066a63c7c310f2e5b72c457b14de36.out",
+    "actualBackend": "MD5E",
+    "verified": true,
+    "publicationCommit": "602b3482a4357873cddb12028756144c941f0d2f"
+  },
+  "finalValidation": {
+    "status": "VALIDATED_FREQUENCY_SOURCE",
+    "supervisorWallSeconds": 60.365986677818,
+    "sources": 55,
+    "inputPackets": 2306,
+    "artifacts": 2284,
+    "copiedPackets": 2274,
+    "records": 375,
+    "bindingPairs": 750,
+    "certificates": 2,
+    "proofScalars": 4,
+    "rows": 80,
+    "sourceAmplitudes": 35,
+    "frequencyDependentRows": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50,
+      51,
+      52,
+      53,
+      54,
+      55,
+      56,
+      57,
+      58,
+      59,
+      60,
+      61,
+      62,
+      63,
+      64,
+      65,
+      66,
+      67,
+      68,
+      69,
+      70,
+      71,
+      72,
+      73,
+      74,
+      75,
+      76,
+      77,
+      78,
+      79
+    ],
+    "derivativeCounts": {
+      "local": 16,
+      "cell": 80,
+      "factor": 80,
+      "source": 21
+    },
+    "endCandidates": {
+      "REFERENCE": {
+        "complexDegree": 22,
+        "complexSquarefreeDegree": 16,
+        "realCommonDegree": 8,
+        "realSquarefreeDegree": 2,
+        "realIntervals": [
+          [
+            "-455006/1661447",
+            "-243409/888804"
+          ],
+          [
+            "243409/888804",
+            "455006/1661447"
+          ]
+        ],
+        "bulkBranchFrequencies": [
+          "-sqrt(5)",
+          "sqrt(5)"
+        ],
+        "scope": "Real roots are zero-normal-momentum algebraic candidates; retain opposite radical sheets and denominator artifacts. Not a profile-frequency pole set or completed physical threshold classification."
+      },
+      "LEFT": {
+        "complexDegree": 22,
+        "complexSquarefreeDegree": 16,
+        "realCommonDegree": 8,
+        "realSquarefreeDegree": 2,
+        "realIntervals": [
+          [
+            "-455006/1661447",
+            "-243409/888804"
+          ],
+          [
+            "243409/888804",
+            "455006/1661447"
+          ]
+        ],
+        "bulkBranchFrequencies": [
+          "-sqrt(5)",
+          "sqrt(5)"
+        ],
+        "scope": "Real roots are zero-normal-momentum algebraic candidates; retain opposite radical sheets and denominator artifacts. Not a profile-frequency pole set or completed physical threshold classification."
+      },
+      "RIGHT": {
+        "complexDegree": 22,
+        "complexSquarefreeDegree": 16,
+        "realCommonDegree": 8,
+        "realSquarefreeDegree": 2,
+        "realIntervals": [
+          [
+            "-535261/1964245",
+            "-263999/968796"
+          ],
+          [
+            "263999/968796",
+            "535261/1964245"
+          ]
+        ],
+        "bulkBranchFrequencies": [
+          "-sqrt(5)",
+          "sqrt(5)"
+        ],
+        "scope": "Real roots are zero-normal-momentum algebraic candidates; retain opposite radical sheets and denominator artifacts. Not a profile-frequency pole set or completed physical threshold classification."
+      }
+    },
+    "tags": 7702,
+    "keys": 3849,
+    "metadataPaths": 14863,
+    "checksSha256": "59bd9e9bc55b765a45105eac27e8c02c609ba138d1fc39eee3795a9da79e4cf2",
+    "validatorSha256": "202c75c03cb623d149bede7c9f285c6f407e828e43c9ccccf5508171825152a4",
+    "transcriptSha256": "8d1b28b501a652a677353870f75ce3b616b9f92452752d876d04501c2ea3cace",
+    "sourcePacketSha256": "f05a47ac413afad1d9f2945d629b8f6a423c1b12ebbf879517cc1a5ac906813a",
+    "packetHashesUnchanged": true,
+    "scope": "Frequency-live reduced sources and algebraic end-threshold candidates; no profile-pole solve, analytic outgoing boundary chart, full inverse or physical-bound classification."
   }
 }

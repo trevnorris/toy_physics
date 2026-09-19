@@ -17,7 +17,8 @@ q_depth squared = -k_normal squared -1/25, excluding real propagating bulk-depth
 momenta for real normal momentum. This is a computed kinematic restriction of
 this input, not a general absence result or a statement about bound poles.
 
-The full bookkeeping run is prepared with one native thread,2GiB and900seconds.
+The full bookkeeping run is active under the local completion/error hook,
+with one native thread,2GiB and900seconds.
 Its physical contractions and output replay are not yet accepted. Finite modal
 boundaries, regulator0.1, numerical resolution and retained-rectangle limitations
 remain explicit. A depth-integrated normal current is distinct from bulk escape;

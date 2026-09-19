@@ -14,7 +14,7 @@ PLAN=f.M/'S11c_d_frequency_source_plan.md';PREFIX='FREQUENCY_SOURCE_LAB_HELD_RHO
 def load(base):
     values=p.load(base);r,coefficients,ends,system,reference,baseline,packet,old,adapter,_,pins,operands=values
     uniform,ucp,up=f.accepted_packet(f.M/'S11c_d_uniform_source_checkpoint.json','uniform-source.pickle')
-    for n,h in ucp['sourceFiles'].items():
+    for n,h in ucp['checks']['sourceFiles'].items():
         f.require(f.digest(f.ROOT/n)==h,('unchanged uniform source',n))
         if n in pins:f.require(pins[n]==h,'common physical source')
         pins[n]=h

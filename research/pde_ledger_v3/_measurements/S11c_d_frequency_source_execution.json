@@ -1,5 +1,5 @@
 {
-  "status": "failed",
+  "status": "LOADER_REPAIRED_RETRY_PENDING",
   "checker": "S11c_d_frequency_source.py",
   "plan": "S11c_d_frequency_source_plan.md",
   "report": "S11c_d_frequency_source_report.md",
@@ -43,10 +43,31 @@
     "childPid": 727220,
     "strictStderrBytes": 621,
     "watcherStderrBytes": 0,
-    "inspection": "One clean startup inspection; silent local completion/error hook owns continuation."
+    "inspection": "Startup inspection detected the checkpoint lookup failure; no source construction had begun."
   },
   "launcher": {
     "path": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-source-20260919/production/launch.py",
     "sha256": "12f1cdbc2e97bef553eea2ff962336dc8a90626f3fe1c5ff030d346444c12679"
-  }
+  },
+  "originalOutcome": {
+    "stage": "frequency_construct",
+    "command": [
+      "python",
+      "-u",
+      "_measurements/S11c_d_frequency_source.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-source-20260919/production/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-source-20260919/production/frequency_construct.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-source-20260919/production/frequency_construct.stderr",
+    "startedUtc": "2026-09-19T20:25:09.941448+00:00",
+    "childPid": 727220,
+    "status": "failed",
+    "exitCode": 1,
+    "wallSeconds": 12.774927490390837,
+    "stderrBytes": 621,
+    "finishedUtc": "2026-09-19T20:25:22.716426+00:00"
+  },
+  "repair": "S11c_d_frequency_source_loader_repair.json",
+  "retryRunRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-source-20260919/retry-01"
 }

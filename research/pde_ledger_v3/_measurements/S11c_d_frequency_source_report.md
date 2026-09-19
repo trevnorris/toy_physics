@@ -19,3 +19,10 @@ requires an actual analytic outgoing boundary chart and full retained finite
 operator, followed by singular-part and separate physical-bound tests. Keep
 nonlinearPoleV2, positive-regulator/finite-boundary restrictions and the practical
 numerical criteria. No broad convergence campaign or upstream rerun is queued.
+
+The first launch stopped in the source-checkpoint loader before construction.
+The accepted uniform-source inventory lives under checks.sourceFiles; the
+local lookup now follows that explicit schema. A whole-file reverse AST join
+and all16 current source hashes plus original artifact hashes validate. The
+original logs and script snapshot are preserved. No physics, binding or
+numerical computation was changed or repeated. The retry uses a fresh directory.

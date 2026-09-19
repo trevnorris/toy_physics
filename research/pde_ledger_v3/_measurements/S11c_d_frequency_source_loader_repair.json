@@ -1,0 +1,15 @@
+{
+  "status": "VALIDATED_CHECKPOINT_LOOKUP_REPAIR",
+  "originalScriptSha256": "4a291e1894dd287e9b7385f9df803c70bf191a516b8d4e2511e9c86653945add",
+  "repairedScriptSha256": "53db1cdf091b7afb382b2fd523642d84bebe45827cb985629e6547c95f3fd4e8",
+  "wholeFileReverseAstJoin": true,
+  "changedExpressions": 1,
+  "actualCheckpoint": "S11c_d_uniform_source_checkpoint.json",
+  "sourceInventoryPath": [
+    "checks",
+    "sourceFiles"
+  ],
+  "sources": 16,
+  "artifacts": 21,
+  "scope": "One explicit checkpoint lookup; unchanged engine, binder, source construction, inputs and accepted artifacts. Original run stopped before source construction."
+}

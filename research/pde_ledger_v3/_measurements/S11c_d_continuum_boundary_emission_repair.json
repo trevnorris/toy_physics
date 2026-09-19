@@ -20,16 +20,19 @@
     "finishedUtc": "2026-09-19T16:35:29.822100+00:00"
   },
   "focused": {
-    "scriptSha256": "4822f78db483c82c10d13c62db35aad04132c6b2f6ff5de3bb50d61acae1053c",
-    "finishHelperSha256": "29db823e60c8c18f2d876ac6e8d253f71b28ab8e4dbe8f5f0da2b7258e721939",
+    "scriptSha256": "ed3a6539d3151c52d25f12308b121897baf3bd6a5a626a598ab728988ab933a0",
+    "finishHelperSha256": "988e3248d634dd3d6a48279d198c682a9637082ddcd735207d5506c01b0af052",
     "wholeCheckerJoin": {
       "wholeCheckerReverseAstJoin": true,
       "initialization": "(modes.eta, modes.sigma) = (eta, sigma)",
+      "booleanMetadataAdapter": "def structural_flags(name, value):\n    body = engine.cas(value)\n    engine.emit(name, body)\n    metadata_body = body.xreplace({sp.true: sp.S.One, sp.false: sp.S.Zero})\n    zeros = {p: (0, 0, 0) for (p, _) in engine.leaves(metadata_body)}\n    engine.emit('METADATA_' + name, engine.PHYSICAL_METADATA.record(metadata_body, zeros))",
+      "censusCalls": 1,
       "originalSha256": "0f24ad483b21ec79b87c7631b8a52324c66d38f1970ff8e8a8bfc63fc659affe",
-      "currentSha256": "4822f78db483c82c10d13c62db35aad04132c6b2f6ff5de3bb50d61acae1053c"
+      "currentSha256": "ed3a6539d3151c52d25f12308b121897baf3bd6a5a626a598ab728988ab933a0"
     },
-    "gradeFingerprintMutationResponds": true,
-    "scope": "Emitter initialization and unchanged saved validation-tail extraction only."
+    "booleanFlags": 54,
+    "unchangedFlagPayload": true,
+    "gradeFingerprintMutationResponds": true
   },
   "packetSha256": "8e3e53c3b7b06e3e81f961f013b77b4b87dfede081db75b4de458503b062eed0",
   "completeCurrentTables": 52,
@@ -54,5 +57,7 @@
     "stderrBytes": 1435,
     "finishedUtc": "2026-09-19T16:42:21.993614+00:00"
   },
-  "completedValidationReuse": "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/finish-01/complete/operand-validation.json"
+  "completedValidationReuse": "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/finish-01/complete/operand-validation.json",
+  "focusedPathCorrection": "Normalize decoded CAS metadata path atoms to their Python string/integer coordinates for the actual flag-path test.",
+  "launchGuard": "The first finish02 launch rejected the stale focused source hash before starting a supervisor; no calculation ran."
 }

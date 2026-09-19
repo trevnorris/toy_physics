@@ -56,3 +56,9 @@ an arithmetic metadata helper. The adapter preserves the flag payload and
 converts flags only for metadata calculation. Completed operand validation is
 reused with unchanged validator AST and exact source packets. No numerical or
 symbolic construction is repeated by the next output attempt.
+
+The flag-path test initially compared decoded CAS path atoms directly with
+Python strings. After normalizing path coordinates, all54 actual flag paths
+have dimensionless metadata and the Boolean payload is unchanged. The source
+hash launch guard rejected the stale focused record before starting a job;
+its outcome is preserved. The validated focused record now matches the source.

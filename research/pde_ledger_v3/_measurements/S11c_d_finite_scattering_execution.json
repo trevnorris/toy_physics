@@ -139,7 +139,7 @@
     "sha256": "1b93b0c4a1b8306b559faf57b1f6e51cab22cb6e539e55a3279445d72cae9e4a"
   },
   "resolutionComparison": {
-    "status": "CHECKPOINT_REPAIR_VALIDATED",
+    "status": "RECOVERY_RUNNING",
     "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-finite-scattering-20260919/resolution-01",
     "checker": "S11c_d_finite_scattering_resolution.py",
     "plan": "S11c_d_finite_scattering_resolution_plan.md",
@@ -206,10 +206,43 @@
     ],
     "repair": "S11c_d_finite_scattering_checkpoint_repair.json",
     "recovery": {
-      "status": "PREPARED",
+      "status": "RUNNING",
       "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-finite-scattering-20260919/resolution-recovery",
       "checker": "S11c_d_finite_scattering_resolution_recover.py",
-      "remainingChildBudgetSeconds": 800
-    }
+      "remainingChildBudgetSeconds": 800,
+      "launch": {
+        "launchedUtc": "2026-09-19T14:49:57.739487+00:00",
+        "command": [
+          "/usr/bin/python",
+          "_measurements/S11c_d_end_normalization_run.py",
+          "--run-root",
+          "/var/projects/toy_physics/_scratch/s11c/s11c-finite-scattering-20260919/resolution-recovery",
+          "--stage",
+          "resolution_recover",
+          "--",
+          "python",
+          "-u",
+          "_measurements/S11c_d_finite_scattering_resolution_recover.py",
+          "--run-directory",
+          "/var/projects/toy_physics/_scratch/s11c/s11c-finite-scattering-20260919/resolution-recovery/complete",
+          "--original",
+          "/var/projects/toy_physics/_scratch/s11c/s11c-finite-scattering-20260919/resolution-01/complete"
+        ],
+        "supervisorPid": 577292,
+        "watcherPid": 577293,
+        "watcherDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-finite-scattering-20260919/resolution-recovery/completion-watcher",
+        "threadEnvironment": {
+          "OPENBLAS_NUM_THREADS": "1",
+          "OMP_NUM_THREADS": "1",
+          "MKL_NUM_THREADS": "1",
+          "NUMEXPR_NUM_THREADS": "1"
+        }
+      },
+      "launchVerification": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-finite-scattering-20260919/resolution-recovery/launch-verification.json",
+        "sha256": "bd2fb0fc85211dd85f4244771c6bfb4672837839c3a89f5c9186f1698f860675"
+      }
+    },
+    "repairCommit": "6aec9eae"
   }
 }

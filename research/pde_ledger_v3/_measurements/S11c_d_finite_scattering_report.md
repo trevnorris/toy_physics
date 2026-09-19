@@ -59,6 +59,6 @@ direct actions, measure mutations, masses and counts after resume; an altered
 saved node count rejects. Its deliberately partial box is not accepted physical
 quadrature. Numerical-loop/constructor AST joins preserve arithmetic and the
 source-guard change admits only the recorded exact old/current helper pair.
-The recovery reuses17472 saved momentum nodes and both complete earlier cases,
+The recovery (`6aec9eae`) is running. It reuses17472 saved momentum nodes and both complete earlier cases,
 with an800-second remaining child budget. It computes only the unfinished case.
 No scattering convergence, tiny reflection/loss or continuum result is accepted.

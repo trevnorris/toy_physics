@@ -1,0 +1,14 @@
+{
+  "status": "IMPLEMENTATION_PREPARED",
+  "checker": "S11c_d_uniform_response.py",
+  "plan": "S11c_d_uniform_response_plan.md",
+  "report": "S11c_d_uniform_response_report.md",
+  "acceptedUniformSourceCommit": "c03fed65",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-uniform-response-20260919/production",
+  "limits": {
+    "wallSeconds": 900,
+    "nativeThreads": 1,
+    "addressSpaceBytes": 2147483648
+  },
+  "next": "Execute and validate all54 full nullspaces/current replays and three matched-constant response systems; then continue covariance and targeted poles."
+}

@@ -1,5 +1,5 @@
 {
-  "status": "LOADER_REPAIRED_RETRY_PENDING",
+  "status": "RETRY_RUNNING",
   "checker": "S11c_d_frequency_source.py",
   "plan": "S11c_d_frequency_source_plan.md",
   "report": "S11c_d_frequency_source_report.md",
@@ -69,5 +69,43 @@
     "finishedUtc": "2026-09-19T20:25:22.716426+00:00"
   },
   "repair": "S11c_d_frequency_source_loader_repair.json",
-  "retryRunRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-source-20260919/retry-01"
+  "retryRunRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-source-20260919/retry-01",
+  "repairCommit": "e615ec03",
+  "retryLaunch": {
+    "launchedUtc": "2026-09-19T20:27:29.637203+00:00",
+    "command": [
+      "/usr/bin/python",
+      "_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-source-20260919/retry-01",
+      "--stage",
+      "frequency_construct",
+      "--",
+      "python",
+      "-u",
+      "_measurements/S11c_d_frequency_source.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-source-20260919/retry-01/complete"
+    ],
+    "supervisorPid": 728738,
+    "watcherPid": 728739,
+    "watcherDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-source-20260919/retry-01/completion-watcher",
+    "threadEnvironment": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1"
+    }
+  },
+  "retryStartup": {
+    "status": "running",
+    "childPid": 728741,
+    "strictStderrBytes": 0,
+    "watcherStderrBytes": 0,
+    "inspection": "One startup inspection; silent local completion/error hook owns continuation."
+  },
+  "retryLauncher": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-source-20260919/retry-01/launch.py",
+    "sha256": "56a22f0825297ea32d7f2104d0276eecff3513fb1ede49f62d5544fb189beddd"
+  }
 }

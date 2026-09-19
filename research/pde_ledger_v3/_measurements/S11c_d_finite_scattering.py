@@ -1,10 +1,13 @@
 #!/usr/bin/env python3
 """Assemble a finite modal-boundary collocation pilot from accepted operands."""
 import argparse
+import ast
 import hashlib
 import json
+import operator
 import pickle
 import resource
+import shutil
 import signal
 import time
 from pathlib import Path
@@ -45,6 +48,9 @@ def accepted_packet(checkpoint, filename):
 
 
 def polynomial_basis(nodes, bound, size, order=0):
+    order = operator.index(order)
+    bound = float(bound)
+    require(order >= 0 and np.isfinite(bound) and bound > 0, 'numeric polynomial derivative domain')
     coefficients = np.polynomial.chebyshev.chebder(np.eye(size), m=order, axis=0)/bound**order
     return np.polynomial.chebyshev.chebval(np.asarray(nodes)/bound, coefficients).T
 
@@ -112,7 +118,30 @@ def source_jets(record, adapter, r):
             'amplitudeUnit':record['amplitudeUnit'], 'integralUnit':record['integralUnit']}
 
 
-def load(base):
+def reused_binding(directory):
+    original = json.loads((directory/'inputs.json').read_text())
+    name = str(Path(__file__).resolve().relative_to(ROOT))
+    for source, sha in original['sourceFiles'].items():
+        require(digest(directory/'source'/source)==sha, ('frozen binding source',source))
+        if source != name:
+            require(digest(ROOT/source)==sha, ('unchanged binding source',source))
+    for path, sha in original['operandHashes'].items():
+        require(digest(Path(path))==sha, ('unchanged binding operand',path))
+    before = ast.parse((directory/'source'/name).read_text())
+    after = ast.parse(Path(__file__).read_text())
+    functions = ('accepted_packet','boundary_map','source_jets')
+    for function in functions:
+        old = next(n for n in before.body if isinstance(n,ast.FunctionDef) and n.name==function)
+        new = next(n for n in after.body if isinstance(n,ast.FunctionDef) and n.name==function)
+        require(ast.dump(old)==ast.dump(new), ('unchanged binding helper',function))
+    path = directory/'source-binding.pickle'
+    return unpickle(path), original, {'directory':str(directory),
+        'inputsSha256':digest(directory/'inputs.json'), 'bindingSha256':digest(path),
+        'originalHelperSha256':original['sourceFiles'][name], 'unchangedHelpers':list(functions)}
+
+
+def load(base, resume_from=None):
+    reused, original, reuse = reused_binding(resume_from) if resume_from else (None,None,None)
     packet, accepted, path = accepted_packet(CHECKPOINT,'bound-wide-three-adaptive.pickle')
     for name, sha in accepted['sourceFiles'].items():
         require(digest(ROOT/name)==sha, ('current consumed source', name))
@@ -125,7 +154,7 @@ def load(base):
     operands = {str(path):digest(path),str(local_path):digest(local_path)}
     for end, sign in [('LEFT',-1),('RIGHT',1)]:
         data, _, channel_path = accepted_packet(CHANNELS,end.lower()+'.pickle')
-        channels[end] = boundary_map(data,sign)
+        channels[end] = boundary_map(data,sign) if reused is None else reused['channels'][end]
         operands[str(channel_path)] = digest(channel_path)
     source_record = json.loads((M/'S11c_d_reduced_action_source_checkpoint.json').read_text())
     source_path = Path(source_record['runDirectory'])/'reduced-action.pickle'
@@ -135,24 +164,33 @@ def load(base):
     specification = json.loads((M/'S11c_d_variable_profile_development_input.json').read_text())
     adapter = engine.NumericalReducedAction(SimpleNamespace(r=r),{},specification)
     require(local['input']==specification, 'approved input join')
-    jets = {i:source_jets(bound['sources'][(0,i)],adapter,r) for i in range(35)}
-    checks = []
-    sample = np.array([-21.,-7.,-1.,0.,2.,6.,19.])
-    for (ti,si),record in sorted(bound['sources'].items()):
-        jet = jets[si];width,momentum=bound['tests'][ti]
-        field = sp.exp(-(r.zp/width)**2+sp.I*momentum*r.zp)
-        actual = sum(a*sp.diff(field,r.zp,n) for n,a in enumerate(jet['coefficients']))
-        mutated_index=next(n for n,a in enumerate(jet['coefficients']) if a!=0)
-        changed=sum((sp.Rational(101,100)*a if n==mutated_index else a)*sp.diff(field,r.zp,n)
-                    for n,a in enumerate(jet['coefficients']))
-        a=np.broadcast_to(np.asarray(sp.lambdify(r.zp,actual,'numpy')(sample),complex),sample.shape)
-        b=np.broadcast_to(np.asarray(sp.lambdify(r.zp,record['boundAmplitude'],'numpy')(sample),complex),sample.shape)
-        mutated=np.broadcast_to(np.asarray(sp.lambdify(r.zp,changed,'numpy')(sample),complex),sample.shape)
-        checks.append({'test':ti,'source':si,'actual':a,'accepted':b,'residual':a-b,
-                       'scaled':float(np.max(abs(a-b))/(1+np.max(abs(b)))),
-                       'coefficientMutationIndex':mutated_index,'coefficientMutationValues':mutated,
-                       'coefficientMutationDifference':mutated-a})
-    atomic_pickle(base/'source-binding.pickle',{'jets':jets,'gaussianChecks':checks,'channels':channels})
+    if reused is None:
+        jets = {i:source_jets(bound['sources'][(0,i)],adapter,r) for i in range(35)}
+        checks = []
+        sample = np.array([-21.,-7.,-1.,0.,2.,6.,19.])
+        for (ti,si),record in sorted(bound['sources'].items()):
+            jet = jets[si];width,momentum=bound['tests'][ti]
+            field = sp.exp(-(r.zp/width)**2+sp.I*momentum*r.zp)
+            actual = sum(a*sp.diff(field,r.zp,n) for n,a in enumerate(jet['coefficients']))
+            mutated_index=next(n for n,a in enumerate(jet['coefficients']) if a!=0)
+            changed=sum((sp.Rational(101,100)*a if n==mutated_index else a)*sp.diff(field,r.zp,n)
+                        for n,a in enumerate(jet['coefficients']))
+            a=np.broadcast_to(np.asarray(sp.lambdify(r.zp,actual,'numpy')(sample),complex),sample.shape)
+            b=np.broadcast_to(np.asarray(sp.lambdify(r.zp,record['boundAmplitude'],'numpy')(sample),complex),sample.shape)
+            mutated=np.broadcast_to(np.asarray(sp.lambdify(r.zp,changed,'numpy')(sample),complex),sample.shape)
+            checks.append({'test':ti,'source':si,'actual':a,'accepted':b,'residual':a-b,
+                           'scaled':float(np.max(abs(a-b))/(1+np.max(abs(b)))),
+                           'coefficientMutationIndex':mutated_index,'coefficientMutationValues':mutated,
+                           'coefficientMutationDifference':mutated-a})
+        atomic_pickle(base/'source-binding.pickle',{'jets':jets,'gaussianChecks':checks,'channels':channels})
+    else:
+        require(original['input']==specification and original['operandHashes']==operands, 'binding input/operand joins')
+        jets, checks = reused['jets'], reused['gaussianChecks']
+        require(set(jets)==set(range(35)) and {(v['test'],v['source']) for v in checks}==set(bound['sources']), 'saved binding census')
+        shutil.copyfile(resume_from/'source-binding.pickle',base/'source-binding.pickle')
+        require(digest(base/'source-binding.pickle')==reuse['bindingSha256'], 'byte-identical saved binding')
+        operands[str(resume_from/'inputs.json')]=reuse['inputsSha256']
+        operands[str(resume_from/'source-binding.pickle')]=reuse['bindingSha256']
     require(max(v['scaled'] for v in checks)<1e-11, 'generic source jets reproduce accepted Gaussian bindings')
     require(all(np.max(abs(v['coefficientMutationDifference']))>0 for v in checks), 'source coefficient sensitivity')
     for row in bound['rows']:
@@ -171,7 +209,7 @@ def load(base):
         target.write_bytes((ROOT/name).read_bytes())
     field_units={v['column']:dimensions.measure(v['probe']) for v in jets.values()}
     require(set(field_units)==set(range(5)), 'all field-unit slots')
-    save(base/'inputs.json',{'sourceFiles':pins,'operandHashes':operands,'input':specification,
+    save(base/'inputs.json',{'sourceFiles':pins,'operandHashes':operands,'input':specification,'bindingReuse':reuse,
         'boundOrigin':{str(k):str(v) for k,v in adapter.input.origin.items()},
         'sourceJetCounts':{str(i):len(v['coefficients']) for i,v in jets.items()},
         'fieldUnits':{str(i):list(map(str,u)) for i,u in field_units.items()},
@@ -339,6 +377,7 @@ def construct(base,data,size,outer,panel,source_order,profile_order):
 
 def main():
     parser=argparse.ArgumentParser();parser.add_argument('--run-directory',type=Path,required=True)
+    parser.add_argument('--resume-binding',type=Path)
     parser.add_argument('--size',type=int,default=65);parser.add_argument('--outer',type=int,default=8)
     parser.add_argument('--panel',type=int,default=2);parser.add_argument('--source-order',type=int,default=128)
     parser.add_argument('--profile-order',type=int,default=128);parser.add_argument('--seconds',type=int,default=900)
@@ -346,7 +385,7 @@ def main():
     resource.setrlimit(resource.RLIMIT_AS,(2*1024**3,2*1024**3))
     def timeout(*_):raise TimeoutError('finite scattering pilot time budget; preserve saved operands')
     signal.signal(signal.SIGALRM,timeout);signal.alarm(args.seconds)
-    started=time.monotonic();data=load(base)
+    started=time.monotonic();data=load(base,args.resume_binding.resolve() if args.resume_binding else None)
     result,setting=construct(base,data,args.size,args.outer,args.panel,args.source_order,args.profile_order)
     require(all(digest(ROOT/n)==h for n,h in data[-2].items()), 'post-run sources unchanged')
     require(all(digest(Path(n))==h for n,h in data[-1].items()), 'post-run accepted operands unchanged')

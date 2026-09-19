@@ -1,9 +1,9 @@
 {
-  "status": "PILOT_RUNNING",
+  "status": "REPAIRED_PILOT_READY",
   "checker": "S11c_d_finite_scattering.py",
   "plan": "S11c_d_finite_scattering_plan.md",
   "report": "S11c_d_finite_scattering_report.md",
-  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-finite-scattering-20260919/pilot",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-finite-scattering-20260919/retry-01",
   "acceptance": "directives/S11c_d_EXPLORATORY_ACCEPTANCE.md",
   "acceptedQuadratureCommit": "a6bfb7a6",
   "settings": {
@@ -28,36 +28,59 @@
   },
   "purpose": "Measure feasibility and inspect residuals/conditioning of the complete finite operator and all-incident solve before choosing practical observable checks.",
   "scope": "Instrument/cost pilot; no physical observable or continuum re-expansion accepted.",
-  "next": "Run one bounded pilot with saved matrices and silent completion/error hook, inspect its actual evidence, then choose the next focused numerical step.",
+  "next": "Launch the same bounded pilot using verified saved bindings; inspect the finite solve before selecting observable checks.",
   "implementationCommit": "efc61982",
-  "launch": {
-    "launchedUtc": "2026-09-19T14:17:58.391195+00:00",
-    "command": [
-      "/usr/bin/python",
-      "_measurements/S11c_d_end_normalization_run.py",
-      "--run-root",
-      "/var/projects/toy_physics/_scratch/s11c/s11c-finite-scattering-20260919/pilot",
-      "--stage",
-      "finite_construct",
-      "--",
-      "python",
-      "-u",
-      "_measurements/S11c_d_finite_scattering.py",
-      "--run-directory",
-      "/var/projects/toy_physics/_scratch/s11c/s11c-finite-scattering-20260919/pilot/complete"
-    ],
-    "supervisorPid": 331404,
-    "watcherPid": 331405,
-    "watcherDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-finite-scattering-20260919/pilot/completion-watcher",
-    "threadEnvironment": {
-      "OPENBLAS_NUM_THREADS": "1",
-      "OMP_NUM_THREADS": "1",
-      "MKL_NUM_THREADS": "1",
-      "NUMEXPR_NUM_THREADS": "1"
+  "originalAttempt": {
+    "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-finite-scattering-20260919/pilot",
+    "launch": {
+      "launchedUtc": "2026-09-19T14:17:58.391195+00:00",
+      "command": [
+        "/usr/bin/python",
+        "_measurements/S11c_d_end_normalization_run.py",
+        "--run-root",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-finite-scattering-20260919/pilot",
+        "--stage",
+        "finite_construct",
+        "--",
+        "python",
+        "-u",
+        "_measurements/S11c_d_finite_scattering.py",
+        "--run-directory",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-finite-scattering-20260919/pilot/complete"
+      ],
+      "supervisorPid": 331404,
+      "watcherPid": 331405,
+      "watcherDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-finite-scattering-20260919/pilot/completion-watcher",
+      "threadEnvironment": {
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1"
+      }
+    },
+    "launchVerification": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-finite-scattering-20260919/pilot/launch-verification.json",
+      "sha256": "2e965a1bf53a1440462a158de2a48f2c0bcaa7ecd8d8d3b0fa2c4de2524f56d0"
+    },
+    "outcome": {
+      "stage": "finite_construct",
+      "command": [
+        "python",
+        "-u",
+        "_measurements/S11c_d_finite_scattering.py",
+        "--run-directory",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-finite-scattering-20260919/pilot/complete"
+      ],
+      "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-finite-scattering-20260919/pilot/finite_construct.stdout",
+      "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-finite-scattering-20260919/pilot/finite_construct.stderr",
+      "startedUtc": "2026-09-19T14:17:58.518863+00:00",
+      "childPid": 331494,
+      "status": "failed",
+      "exitCode": 1,
+      "wallSeconds": 89.06711111962795,
+      "stderrBytes": 772,
+      "finishedUtc": "2026-09-19T14:19:27.586072+00:00"
     }
   },
-  "launchVerification": {
-    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-finite-scattering-20260919/pilot/launch-verification.json",
-    "sha256": "2e965a1bf53a1440462a158de2a48f2c0bcaa7ecd8d8d3b0fa2c4de2524f56d0"
-  }
+  "repair": "S11c_d_finite_scattering_dtype_repair.json"
 }

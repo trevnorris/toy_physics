@@ -13,13 +13,22 @@ residuals are below4.47e-16. Independent polynomial checks through derivative
 order3 differ by at most3.56e-15. These checks validate the finite boundary
 instrument; they do not prove a transparent nonlocal boundary condition.
 
-Implementation is committed at `efc61982`. The325-unknown pilot has launched with a15-minute budget, one native numerical thread
-and2 GiB ceiling. Save complete operator matrices before solving all incoming
-columns together. Compare matrix actions with separate native-factor contractions
-and actual measure mutations. Inspect residuals, rank, conditioning and amplitudes
-before choosing more resolution. No physical scattering or continuum-grade
-expansion is accepted yet. The regulator, source/momentum cutoffs, modest
-quadrature and approximate modal boundary remain explicit numerical choices.
+The initial pilot (`efc61982`, launch `e7e81e01`) stopped after89 seconds
+before momentum integration: native SymPy integer derivative orders produced
+NumPy object arrays. Their exact conversion to Python integers restores float64
+basis matrices. All native orders0–3 now pass independent differentiation checks;
+the complete local low-degree action differs by at most1.34e-14. Negative and
+nonintegral orders are rejected. The binding constructor and consumed helpers
+are unchanged; all35 source jets,70 Gaussian checks and both boundary maps are
+reused byte-for-byte with97 source and6 operand joins. Original logs and packets
+remain under `pilot/`; the repair evidence is in
+`S11c_d_finite_scattering_dtype_repair.json`.
+
+The retry retains325 unknowns, four incoming columns, the15-minute budget, one
+native thread and2 GiB ceiling. No matrix solve or physical scattering result is
+accepted yet. Inspect saved matrices, action/measure controls, rank, residuals,
+conditioning and amplitudes before increasing resolution. Finite regulator,
+cutoffs, modest quadrature and approximate modal boundaries remain explicit.
 
 The completed adaptive sequence is published/annex-verified at4ba95bcf/a6bfb7a6.
 Future work follows exploratoryAcceptanceV1 and the focused completion plan;

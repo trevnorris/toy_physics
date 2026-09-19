@@ -1,0 +1,77 @@
+{
+  "orders": [
+    {
+      "order": 0,
+      "nativeType": "int",
+      "originalDtype": "float64",
+      "repairedDtype": "float64",
+      "maximumIndependentLowDegreeResidual": 3.552713678800501e-15
+    },
+    {
+      "order": 1,
+      "nativeType": "One",
+      "originalDtype": "object",
+      "repairedDtype": "float64",
+      "maximumIndependentLowDegreeResidual": 2.4424906541753444e-15
+    },
+    {
+      "order": 2,
+      "nativeType": "Integer",
+      "originalDtype": "object",
+      "repairedDtype": "float64",
+      "maximumIndependentLowDegreeResidual": 2.7755575615628914e-17
+    },
+    {
+      "order": 3,
+      "nativeType": "Integer",
+      "originalDtype": "object",
+      "repairedDtype": "float64",
+      "maximumIndependentLowDegreeResidual": 1.3877787807814457e-17
+    }
+  ],
+  "localMatrixDtype": "complex128",
+  "maximumLocalLowDegreeResidual": 1.3322676295501878e-14,
+  "rejectedOrders": [
+    "-1",
+    "1/2",
+    "1.5"
+  ],
+  "bindingConstructionAstUnchanged": true,
+  "originalBindingSha256": "35b60a56e031b53183ec6800ab84f5731e0ea79cbc96a94c9343cd5cc3a73e94",
+  "reusedBindingSha256": "35b60a56e031b53183ec6800ab84f5731e0ea79cbc96a94c9343cd5cc3a73e94",
+  "inputSourceJoins": 97,
+  "operandJoins": 6,
+  "gaussianRecords": 70,
+  "scriptSha256": "8ba15544e092e599edc8383e7aa7885753695dceea7bc7f3ae797dfb0543618b",
+  "originalRun": "/var/projects/toy_physics/_scratch/s11c/s11c-finite-scattering-20260919/pilot",
+  "originalOutcome": {
+    "stage": "finite_construct",
+    "command": [
+      "python",
+      "-u",
+      "_measurements/S11c_d_finite_scattering.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-finite-scattering-20260919/pilot/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-finite-scattering-20260919/pilot/finite_construct.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-finite-scattering-20260919/pilot/finite_construct.stderr",
+    "startedUtc": "2026-09-19T14:17:58.518863+00:00",
+    "childPid": 331494,
+    "status": "failed",
+    "exitCode": 1,
+    "wallSeconds": 89.06711111962795,
+    "stderrBytes": 772,
+    "finishedUtc": "2026-09-19T14:19:27.586072+00:00"
+  },
+  "originalArtifacts": {
+    "/var/projects/toy_physics/_scratch/s11c/s11c-finite-scattering-20260919/pilot/active.json": "958425d1d14ac855f7ac2a57ae8cdc68d16f47061416e9530fa3f96ca1a5a6dd",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-finite-scattering-20260919/pilot/finite_construct.stderr": "df9f61205262f48ba809f071edc71173d67a8404d0de1c136199355d91d6ec2d",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-finite-scattering-20260919/pilot/complete/inputs.json": "cf879e92ed328bdaaac323c349b7da9c185f2ea8eee290752729d088c7c71153",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-finite-scattering-20260919/pilot/complete/source-binding.pickle": "35b60a56e031b53183ec6800ab84f5731e0ea79cbc96a94c9343cd5cc3a73e94"
+  },
+  "validationScript": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-finite-scattering-20260919/repair-01/verify.py",
+    "sha256": "5e353d951fd6c635bf64e5386bbcfbc745f59ac9b7782bdccb8686a3c6cf6ccc"
+  },
+  "scope": "Numerical scalar conversion and saved-binding reuse only; no physics or momentum integration repeated."
+}

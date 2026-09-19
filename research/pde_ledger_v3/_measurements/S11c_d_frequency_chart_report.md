@@ -1,41 +1,31 @@
-# Local frequency branch for the reduced kernel
+# Local analytic frequency chart
 
-The frequency-source preparation is accepted and annex-verified at 9823b351
-(publication 602b3482). All 80 nonlocal rows depend on frequency. Their original
-real-axis sign/Piecewise and radical operands remain preserved.
+The full source chart completed cleanly in 118.20 seconds and is accepted.
+All 375 original records, 750 seed/control pairs, 400 Piecewise branch pairs,
+80 frequency-dependent rows and 35 sources are retained. Sixteen rational
+certificates, 852 zero pair-proof scalars and 260 explicit real-seed radical
+joins pass. Raw live expressions and normalized certificate operands remain
+separate, connected by their actual negative-real quadratic and positive-scale
+identities. Coefficient and wrong-root controls respond.
 
-The new chart uses |omega-1| <= 1/4 in the inherited coefficient frame. It
-derives the three actual acoustic radicals, continues their physical seeds
-without a principal-root sign jump, classifies every frequency-dependent
-denominator, and retains independent background grades and all original limits.
-The next run will construct all 375 analytic source records and their actual
-frequency derivatives, with seed/control certificates and original operands.
-Rational LEFT/RIGHT end coefficient tables prepare subsequent full-subspace
-continuation; no outgoing boundary chart or frequency inverse is claimed here.
+On |omega-1| <= 1/4 in the inherited coefficient frame, for real Fourier
+momenta, the three acoustic inner-radicand real parts are at least 55/16.
+The normalized relaxation modulus is at least 7/8. Each coupled denominator
+ratio is at most 8*sqrt(55)/77 < 1. All 25 actual denominator forms have exact
+factor joins and nonzero bounds. The 27 native path/ODE checks agree within
+3.52e-15; 18 lower-half-plane naive-principal-root controls respond.
 
-Focused construction passed in 16.56 seconds, with three actual radicals,
-25 denominator forms and 27 native path/ODE checks. The largest branch
-difference is 3.52e-15; all 18 lower-half-plane wrong-principal-root controls
-respond. The inner-radicand real-part lower bound is 55/16, the relaxation
-modulus lower bound is 7/8, and each coupled-denominator ratio is bounded by
-8*sqrt(55)/77 < 1 on this disk for real Fourier momenta.
+All 50 LEFT/RIGHT rational end entries reconstruct their actual pencils.
+Saved-operand validation verifies 58 sources, 15 inputs, 4592 artifacts,
+4678 tags, 2337 write keys and 8730 unit/grade/lambda metadata paths. The
+transcript is published through DataLad/git-annex; its actual MD5E key, symlink,
+size and independent SHA256 are recorded in the checkpoint. Packet hashes
+are unchanged. No source integration, mode solve or historical quadrature
+was repeated for acceptance.
 
-The original path call omitted its radical-coordinate argument. A later exact
-seed comparison required the explicit identity sqrt(B)=i*sqrt(-B) for the
-actual strictly negative real quadratic B. Both instrument changes have whole
-file reverse AST joins. The seed proof retains positive scale factors, original
-live pairs and raw residuals, and connects them to the unchanged rational
-certificate through a separate normalized pair. Four actual seed/control pairs
-pass, and a reversed acoustic-root sign fails. Completed root, denominator and
-native-path packets are reused byte-for-byte; neither native helper nor physics
-engine changed. All failed attempts and source snapshots remain preserved.
-
-The bounded search still requires actual continued end maps and finite
-frequency matrices, followed by singular-part and separate physical-bound
-tests. Practical exploratory acceptance, finite regulator and approximate
-boundaries remain. No previous quadrature or mode solve is repeated.
-
-The full source-chart constructor is launched from e2c60c4d under the standard
-supervisor and silent completion/error hook, with one native thread, a 2 GiB
-ceiling and a 900-second initial budget. The startup logs are clean. Full
-construction, metadata replay and final validation remain pending.
+This establishes the scalar-kernel branch and rational end operands on the
+stated domain. Full outgoing subspace continuation, frequency-dependent end
+maps, the finite frequency pencil and pole search remain. The real-momentum
+scalar disk does not establish a disk for complex end momenta or the outgoing
+inverse. Practical exploratory acceptance, positive regulator, approximate
+finite boundaries and the nonlinearPoleV2 response contract remain explicit.

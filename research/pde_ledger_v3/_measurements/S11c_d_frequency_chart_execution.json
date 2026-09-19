@@ -1,5 +1,5 @@
 {
-  "status": "RUNNING",
+  "status": "PUBLISHED_ANNEX_VERIFIED",
   "checker": "S11c_d_frequency_chart.py",
   "plan": "S11c_d_frequency_chart_plan.md",
   "report": "S11c_d_frequency_chart_report.md",
@@ -10,7 +10,7 @@
     "nativeThreads": 1,
     "addressSpaceBytes": 2147483648
   },
-  "next": "Validate scalar analytic sources and denominator domain; construct full outgoing end continuation and actual finite frequency matrices before bounded pole search.",
+  "next": "Continue full degenerate end invariant pairs and frequency-dependent boundary/forcing/observation maps, then construct actual finite frequency matrices and a bounded pole search.",
   "focusedCheckpoint": "S11c_d_frequency_chart_focused.json",
   "focusedValidation": {
     "sources": 58,
@@ -74,5 +74,64 @@
     "strictStderrBytes": 0,
     "watcherStderrBytes": 0,
     "inspection": "One startup inspection; subsequent continuation uses the local completion/error hook."
+  },
+  "outcome": {
+    "stage": "chart_construct",
+    "command": [
+      "python",
+      "-u",
+      "_measurements/S11c_d_frequency_chart.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-chart-20260919/production/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-chart-20260919/production/chart_construct.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-chart-20260919/production/chart_construct.stderr",
+    "startedUtc": "2026-09-19T21:27:03.951488+00:00",
+    "childPid": 748279,
+    "status": "completed",
+    "exitCode": 0,
+    "wallSeconds": 118.20337791927159,
+    "stderrBytes": 0,
+    "finishedUtc": "2026-09-19T21:29:02.154911+00:00"
+  },
+  "publication": {
+    "path": "scripts/out/S11c_d_frequency_chart.out",
+    "sha256": "cfa1b1d15f451f5329563ecd9ae8f9edbd6cf8557616cd4c1637ea73a53c4b0c",
+    "bytes": 2940503,
+    "annexKey": "MD5E-s2940503--3453bba89814a4ac45fcd6c0b9fc1b8a.out",
+    "symlink": "../../../../.git/annex/objects/Qj/z4/MD5E-s2940503--3453bba89814a4ac45fcd6c0b9fc1b8a.out/MD5E-s2940503--3453bba89814a4ac45fcd6c0b9fc1b8a.out",
+    "actualBackend": "MD5E",
+    "verified": true,
+    "publicationCommit": "75e262d578b7f2c9b5301fa6ccbb47e4641aa5ce"
+  },
+  "validation": {
+    "status": "VALIDATED_FREQUENCY_CHART",
+    "supervisorWallSeconds": 118.20337791927159,
+    "sources": 58,
+    "inputs": 15,
+    "artifacts": 4592,
+    "records": {
+      "local": 100,
+      "cell": 160,
+      "factor": 80,
+      "source": 35
+    },
+    "bindingPairs": 750,
+    "normalizedCertificates": 16,
+    "zeroPairProofScalars": 852,
+    "explicitRealSeedRootJoins": 260,
+    "branchPairs": 400,
+    "frequencyDependentRows": 80,
+    "sourceAmplitudes": 35,
+    "pathChecks": 27,
+    "wrongRootControls": 18,
+    "endEntries": 50,
+    "tags": 4678,
+    "keys": 2337,
+    "metadataPaths": 8730,
+    "transcriptSha256": "cfa1b1d15f451f5329563ecd9ae8f9edbd6cf8557616cd4c1637ea73a53c4b0c",
+    "packetHashesUnchanged": true,
+    "validatorSha256": "ca6ff20373534a1b70299a871e378c383fcba0fe3d126e31b8869662c45daeaa",
+    "scope": "Local scalar-kernel analytic continuation and end rational tables only; outgoing subspaces and frequency inverse remain unconstructed."
   }
 }

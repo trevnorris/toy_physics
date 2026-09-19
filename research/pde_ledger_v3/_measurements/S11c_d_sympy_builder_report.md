@@ -357,11 +357,11 @@ all momentum/source amplitudes are grade-independent. Reuse their saved finite
 matrices for numerical coefficient assembly, then expand boundary/channel/current
 maps and the response. No new quadrature or completed continuum response is claimed.
 
-The local acoustic frequency-chart preflight is accepted at e2c60c4d: all
-25 actual denominator forms, three radicals, 27 native path checks and four
-seed/control comparisons pass. The full 375-record analytic-source constructor
-is running under a 900-second budget. Continued outgoing subspaces, the actual
-finite frequency pencil and targeted poles remain uncomputed.
+The [local acoustic frequency chart](S11c_d_frequency_chart_report.md) is
+accepted and annex-verified: 375 records, 750 seed/control pairs, 25 actual
+denominator forms, three radicals, 27 native path checks and all 8730 metadata
+paths pass in 118.20 seconds. Continued outgoing subspaces, the actual finite
+frequency pencil and targeted poles remain uncomputed.
 
 ## Retained user-approved solver/export contract
 

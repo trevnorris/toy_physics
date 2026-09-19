@@ -1,5 +1,5 @@
 {
-  "status": "FOCUSED_ACCEPTED_READY_TO_LAUNCH",
+  "status": "RUNNING",
   "checker": "S11c_d_frequency_chart.py",
   "plan": "S11c_d_frequency_chart_plan.md",
   "report": "S11c_d_frequency_chart_report.md",
@@ -23,5 +23,56 @@
     "pathChecks": 27,
     "lowerHalfWrongRootControls": 18,
     "actualRootSignMutationNonzero": true
+  },
+  "implementationCommit": "e2c60c4d",
+  "launch": {
+    "launchedUtc": "2026-09-19T21:27:03.912752+00:00",
+    "command": [
+      "/usr/bin/python",
+      "_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-chart-20260919/production",
+      "--stage",
+      "chart_construct",
+      "--",
+      "python",
+      "-u",
+      "_measurements/S11c_d_frequency_chart.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-chart-20260919/production/complete"
+    ],
+    "supervisorPid": 748276,
+    "watcherPid": 748277,
+    "watcherDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-chart-20260919/production/completion-watcher",
+    "threadEnvironment": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1"
+    }
+  },
+  "launcher": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-chart-20260919/production/launch.py",
+    "sha256": "51f8e04024a89fef201de39e0529d5a5941c54ddeb05fbdcfffd755ed9eeb401"
+  },
+  "startup": {
+    "active": {
+      "stage": "chart_construct",
+      "command": [
+        "python",
+        "-u",
+        "_measurements/S11c_d_frequency_chart.py",
+        "--run-directory",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-chart-20260919/production/complete"
+      ],
+      "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-chart-20260919/production/chart_construct.stdout",
+      "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-chart-20260919/production/chart_construct.stderr",
+      "startedUtc": "2026-09-19T21:27:03.951488+00:00",
+      "childPid": 748279,
+      "status": "running"
+    },
+    "strictStderrBytes": 0,
+    "watcherStderrBytes": 0,
+    "inspection": "One startup inspection; subsequent continuation uses the local completion/error hook."
   }
 }

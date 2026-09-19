@@ -34,3 +34,8 @@ The bounded search still requires actual continued end maps and finite
 frequency matrices, followed by singular-part and separate physical-bound
 tests. Practical exploratory acceptance, finite regulator and approximate
 boundaries remain. No previous quadrature or mode solve is repeated.
+
+The full source-chart constructor is launched from e2c60c4d under the standard
+supervisor and silent completion/error hook, with one native thread, a 2 GiB
+ceiling and a 900-second initial budget. The startup logs are clean. Full
+construction, metadata replay and final validation remain pending.

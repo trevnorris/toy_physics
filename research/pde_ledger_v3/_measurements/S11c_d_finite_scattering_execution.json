@@ -28,7 +28,7 @@
   },
   "purpose": "Measure feasibility and inspect residuals/conditioning of the complete finite operator and all-incident solve before choosing practical observable checks.",
   "scope": "Instrument/cost pilot; no physical observable or continuum re-expansion accepted.",
-  "next": "Target finite-response resolution: source/profile rules, collocation size, then momentum rules. Keep domain and regulator fixed; do not infer resolved small reflection or loss from this pilot.",
+  "next": "Run one selected finite-response resolution set; inspect its actual amplitude/current changes before targeted boundary/regulator work.",
   "implementationCommit": "efc61982",
   "originalAttempt": {
     "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-finite-scattering-20260919/pilot",
@@ -137,5 +137,18 @@
   "launchVerification": {
     "path": "/var/projects/toy_physics/_scratch/s11c/s11c-finite-scattering-20260919/retry-01/launch-verification.json",
     "sha256": "1b93b0c4a1b8306b559faf57b1f6e51cab22cb6e539e55a3279445d72cae9e4a"
+  },
+  "resolutionComparison": {
+    "status": "PREPARED",
+    "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-finite-scattering-20260919/resolution-01",
+    "checker": "S11c_d_finite_scattering_resolution.py",
+    "plan": "S11c_d_finite_scattering_resolution_plan.md",
+    "baselineCommit": "f01636e9",
+    "scriptSha256": "0c61b63618d61ca0e0f5793504b43c59a7c9eb406c6ca00a7016a12cff920ce0",
+    "limits": {
+      "totalChildComputationSeconds": 900,
+      "nativeThreads": 1,
+      "childAddressSpaceBytes": 2147483648
+    }
   }
 }

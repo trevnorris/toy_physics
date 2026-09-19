@@ -43,3 +43,11 @@ resolution comparison on the actual response, preserving domain and regulator.
 The completed adaptive sequence is published/annex-verified at4ba95bcf/a6bfb7a6.
 Future work follows exploratoryAcceptanceV1 and the focused completion plan;
 no broad tail/regulator refinement campaign is queued.
+
+A [selected resolution set](S11c_d_finite_scattering_resolution_plan.md) is
+prepared: source/profile256/512, then97 coefficients per field, then momentum
+16/4/4, with physical domain/regulator/boundaries fixed. The reporting targets
+are declared before this comparison:1% for resolved outputs, absolute amplitude
+resolution1e-4 and normalized-current resolution1e-6. Compare the full response,
+not just integral residuals. One sequential900-second budget bounds this set;
+retain completed cases if the budget expires. No day-long sweep is queued.

@@ -1,0 +1,6 @@
+{
+  "scope": "Synthetic arithmetic/fingerprint smoke only; actual source/matrix comparisons run in the bounded constructor.",
+  "recombinationResidual": 0.0,
+  "mutationChangesHashAndProjections": true,
+  "scriptSha256": "33a0e5a2fa136a55875541e15bc410159c94f56f25adc4a02589d0c704223987"
+}

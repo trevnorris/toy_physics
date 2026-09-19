@@ -268,7 +268,7 @@
     "checkpoint": "S11c_d_finite_scattering_resolution_checkpoint.json"
   },
   "domainComparison": {
-    "status": "PREPARED",
+    "status": "RUNNING",
     "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-finite-domain-20260919/production",
     "checker": "S11c_d_finite_scattering_domain.py",
     "plan": "S11c_d_finite_scattering_domain_plan.md",
@@ -299,6 +299,37 @@
       "totalChildComputationSeconds": 900,
       "nativeThreads": 1,
       "childAddressSpaceBytes": 2147483648
+    },
+    "implementationCommit": "df37ef94",
+    "launch": {
+      "launchedUtc": "2026-09-19T15:10:54.734940+00:00",
+      "command": [
+        "/usr/bin/python",
+        "_measurements/S11c_d_end_normalization_run.py",
+        "--run-root",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-finite-domain-20260919/production",
+        "--stage",
+        "domain_construct",
+        "--",
+        "python",
+        "-u",
+        "_measurements/S11c_d_finite_scattering_domain.py",
+        "--run-directory",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-finite-domain-20260919/production/complete"
+      ],
+      "supervisorPid": 585443,
+      "watcherPid": 585444,
+      "watcherDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-finite-domain-20260919/production/completion-watcher",
+      "threadEnvironment": {
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1"
+      }
+    },
+    "launchVerification": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-finite-domain-20260919/production/launch-verification.json",
+      "sha256": "f4a1e13b45f9de7af8c78b1232caad81ce4b77a9eac3249e54cce4e5e379c619"
     }
   }
 }

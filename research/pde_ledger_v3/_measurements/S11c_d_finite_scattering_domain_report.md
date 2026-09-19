@@ -17,7 +17,7 @@ The initial focused checker compared SymPy integer cutoffs with Python floats;
 its corrected exact-rational comparison passes. Original logs are retained.
 No constructor or physical equation changed for that checker correction.
 
-Production is prepared with a900-second total child budget, one native thread
+Production (`df37ef94`) is running with a900-second total child budget, one native thread
 and2 GiB per child. Preserve every completed case and partial. The unchanged
 reporting targets are1% for resolved outputs, amplitude resolution1e-4 and
 normalized-current resolution1e-6. Actual domain/regulator results are pending;

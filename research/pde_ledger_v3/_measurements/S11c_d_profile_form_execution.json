@@ -1,5 +1,5 @@
 {
-  "status": "FOCUSED_RUNNING",
+  "status": "FOCUSED_ACCEPTED_PRODUCTION_PREPARED",
   "checker": "S11c_d_profile_form.py",
   "plan": "S11c_d_profile_form_plan.md",
   "report": "S11c_d_profile_form_report.md",
@@ -11,7 +11,7 @@
     "nativeThreads": 1,
     "addressSpaceBytes": 2147483648
   },
-  "next": "Validate exact source/form bindings and moments; then one changed-profile finite and continuum solve reusing accepted bindings.",
+  "next": "Run the single changed-form finite and continuum response using these exact saved bindings; no baseline quadrature.",
   "implementationCommit": "cb453ef4",
   "launch": {
     "launchedUtc": "2026-09-19T17:38:42.111467+00:00",
@@ -44,5 +44,32 @@
     "status": "running",
     "stderrBytes": 0,
     "watcherStderrBytes": 0
+  },
+  "focusedCheckpoint": "S11c_d_profile_form_focused.json",
+  "focusedRunRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-profile-form-20260919/focused",
+  "focusedOutcome": {
+    "stage": "profile_focused",
+    "command": [
+      "python",
+      "-u",
+      "_measurements/S11c_d_profile_form.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-profile-form-20260919/focused/complete",
+      "--focused"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-profile-form-20260919/focused/profile_focused.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-profile-form-20260919/focused/profile_focused.stderr",
+    "startedUtc": "2026-09-19T17:38:42.145559+00:00",
+    "childPid": 653063,
+    "status": "completed",
+    "exitCode": 0,
+    "wallSeconds": 17.517935387790203,
+    "stderrBytes": 0,
+    "finishedUtc": "2026-09-19T17:38:59.663532+00:00"
+  },
+  "productionRunRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-profile-form-20260919/production",
+  "preparedLauncher": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-profile-form-20260919/production/launch.py",
+    "sha256": "8602ab2f033b36873ea0ebba7686fdcda27b7c9532c2578c57cfea653d3d2b50"
   }
 }

@@ -1,0 +1,223 @@
+{
+  "status": "VALIDATED_FOCUSED_PROFILE_FORM_BINDING",
+  "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-profile-form-20260919/focused/complete",
+  "outcome": {
+    "stage": "profile_focused",
+    "command": [
+      "python",
+      "-u",
+      "_measurements/S11c_d_profile_form.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-profile-form-20260919/focused/complete",
+      "--focused"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-profile-form-20260919/focused/profile_focused.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-profile-form-20260919/focused/profile_focused.stderr",
+    "startedUtc": "2026-09-19T17:38:42.145559+00:00",
+    "childPid": 653063,
+    "status": "completed",
+    "exitCode": 0,
+    "wallSeconds": 17.517935387790203,
+    "stderrBytes": 0,
+    "finishedUtc": "2026-09-19T17:38:59.663532+00:00"
+  },
+  "checks": {
+    "scriptSha256": "41e113454f1ebce41c776468e1b04191933e7d21a1f9c9f65b4a75c82ca71efa",
+    "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-profile-form-20260919/focused/complete",
+    "exactBaselineCoefficients": 400,
+    "sourceAmplitudes": 35,
+    "nestedProfiles": 6,
+    "fullLocalOperatorResidual": 0.0,
+    "moments": {
+      "baseline_w": {
+        "zeroTransfer": "1",
+        "jump": "1",
+        "residual": "0"
+      },
+      "baseline_m": {
+        "zeroTransfer": "0",
+        "jump": "0",
+        "residual": "0"
+      },
+      "altered_w": {
+        "zeroTransfer": "1",
+        "jump": "1",
+        "residual": "0"
+      },
+      "altered_m": {
+        "zeroTransfer": "0",
+        "jump": "0",
+        "residual": "0"
+      },
+      "thickness_bump": {
+        "zeroTransfer": "0",
+        "jump": "0",
+        "residual": "0"
+      }
+    },
+    "artifacts": {
+      "baseline-binding.pickle": {
+        "bytes": 562616,
+        "sha256": "9ba746612fbbd2dd327733a48cd503da2caa46ac3661c3039525806a8727226c"
+      },
+      "altered-binding.pickle": {
+        "bytes": 566311,
+        "sha256": "b25f8969981f986c4b2cc6f288a242dbc91c7984423b3278857b7e66fbfb8f70"
+      },
+      "binding-checks.pickle": {
+        "bytes": 6658952,
+        "sha256": "27f7090efc0d95ce78aaac272fcf36893b32a4dfc75bd06f161a915f44209ecd"
+      }
+    },
+    "sourceFiles": {
+      "_measurements/S11c_d_continuum_grades.py": "0443c3adbeaf813ad66c60af0a50c96e9a841277d51f9c23bf1c601d2fdf329d",
+      "_measurements/S11c_d_continuum_grade_plan.md": "693546373ea2c8c5eec4ef3c8c93732fc7440a1eb1a2cdb1a6cf9d0f5b469040",
+      "_measurements/S11c_d_reduced_action_assembly_checkpoint.json": "b4afb727b1a1ad2a468b0bab9a6ab369dbe4dd35bc46acd7150b7fa581cd984f",
+      "_measurements/S11c_d_source_fourier_factorization_checkpoint.json": "fcf6f1c5598b63c11d4f8a76d2d94c2b5bace590e83d4beea3e52e82f44158a6",
+      "_measurements/S11c_d_reduced_action_source_checkpoint.json": "b6dcd36ee6cf8ed3b3943e207012dd165fce62ec39cb8f53ca3c23f4715d094b",
+      "scripts/S11c_d_mixing_scattering_sympy_audit.py": "5bf77729682960bb59f10c672a5fe3f67a98b0a9533da7c6189a37183596050f",
+      "_measurements/S11c_d_reduced_action_source_check.py": "aae3b2402e1707ef27f217b917dc10592f38acbe35d18356fbc4886ed854f754",
+      "directives/S11c_d_EXPLORATORY_ACCEPTANCE.md": "5c1e560a78d40739af8b1318c0487e20bf2b816c41109889e12004266c72840c",
+      "_measurements/S11c_d_finite_scattering_domain_checkpoint.json": "2286978066ad6e0c8b9558a950b40521c61ac2cdfec58a9694f890c70c90280c",
+      "_measurements/S11c_d_variable_profile_development_input.json": "660b2b0b54494dce964c7f5fbd722a76a7e894d8ed92b18b5eb6290c3c10f1d5",
+      "directives/S11c_d_NONLINEAR_POLE_CONTRACT.md": "2b6018faf0d5ca772bf9c980174d8ebe7545127a3bf43ba01d1b3c0b6a5be423",
+      "scripts/S11c_b_exports.py": "3c6555f90a85382a5e96f3f961f0e36a4875d9259fe1be947fa8e683669b7084",
+      "scripts/S11c_c1_exports.py": "a5353b86dc526fd1b56734fdbdf7dc7f42387a3195ab4de84e8994f751871cdc",
+      "scripts/S11c_c2_exports.py": "2ba5ed487b84ecb98290df6f1650fa6210fe2784cfa02a0f3cff96cd718411cd",
+      "directives/S11c_d_SHARED_PHYSICS.md": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5",
+      "directives/S11b_SHARED_PHYSICS.md": "9ea9e388e9d6421a841eaf851d12e1793527bba9a24aeeface3bfac2f4b40078",
+      "scripts/ledger_fold.py": "97da78c6631c09e5575dd14511760506f1ac08771cf07948978004e92f0b2333",
+      "_measurements/S11c_d_continuum_matrices.py": "33a0e5a2fa136a55875541e15bc410159c94f56f25adc4a02589d0c704223987",
+      "_measurements/S11c_d_continuum_matrix_plan.md": "c571bf7adb9e7b4cbedd8ac80813a590d4087bebfd02da6b2615e1cc82914612",
+      "_measurements/S11c_d_continuum_grade_checkpoint.json": "3987ff4abb782050fffc767065ed9b3126da49215aa0df41320abef7fdec4692",
+      "_measurements/S11c_d_finite_scattering_domain.py": "73341408d0f6c1eb517e435dea986e180ff53615a6102697a8e3ba6747bd35aa",
+      "_measurements/S11c_d_finite_scattering.py": "f187d9426be8069342a363a0466c175d32a8cb46101e32a14c433ccb9118e469",
+      "_measurements/S11c_d_finite_scattering_resolution.py": "8e101517fde113c5f0a372bab531e63ebdcee3fff03c270ff98a7590e5a7b981",
+      "_measurements/S11c_d_end_normalization_reference_thickness_repair_checkpoint.json": "5c9456ddacd573865d00a0527b1b73b1060c613ccfe50ed89e41613fa3d9658f",
+      "_measurements/S11c_d_end_pairing_reference_thickness_repair_checkpoint.json": "1ea765d293138847a23ff7768fdba770a031659f9c978f582aff27391bf11232",
+      "_measurements/S11c_d_end_normalization_left_thickness_repair_checkpoint.json": "5871a84b7584eb35de8b8a5c450e8d0adadb41340abcbfe028ac16b360befcdb",
+      "_measurements/S11c_d_end_pairing_left_thickness_repair_checkpoint.json": "205e13614c41c504faae85cad9ee104ab51d1f1a5830b5b9e802e5fe3bc1ac9d",
+      "_measurements/S11c_d_end_normalization_right_thickness_repair_checkpoint.json": "7267d068580ecade68ce95abd599c1f5c59a95b4d7f359f9518452218c9f9a05",
+      "_measurements/S11c_d_end_pairing_right_thickness_repair_checkpoint.json": "e8e0d0771bd4365055351bdc041f0a45020f5252bdb5ff5793592d1c9c388605",
+      "_measurements/S11c_d_continuum_boundary.py": "ed3a6539d3151c52d25f12308b121897baf3bd6a5a626a598ab728988ab933a0",
+      "_measurements/S11c_d_continuum_boundary_plan.md": "08dd0c80757d2a2203b237e47957fd4e3bc1b970abfb2dad4cb3b07cf1a3c27f",
+      "_measurements/S11c_d_continuum_matrix_checkpoint.json": "4fe0e0214a5f51a6ab18c9266aa369dde4cf2b60eb51beabf3257754f91d942d",
+      "_measurements/S11c_d_matching_channels_checkpoint.json": "c4ad9b9051f9c3fadb076593dd35ec12d1779fad6d1558c691c3b735fe4d3eeb",
+      "_measurements/S11c_d_continuum_boundary_recover.py": "156252a37a9aaba207fa06ce23ca34cc7286601c8f76cdfe1a63a9e40a2f1839",
+      "_measurements/S11c_d_continuum_boundary_recovery_plan.md": "4d91587d5a202a2d9dbdedb8f9b6340cded59a08518df173ac012e49f51db2ea",
+      "_measurements/S11c_d_continuum_boundary_finish.py": "988e3248d634dd3d6a48279d198c682a9637082ddcd735207d5506c01b0af052",
+      "_measurements/S11c_d_continuum_boundary_finish_plan.md": "674e363bf4427f9c367cdc309bb336a584e332e83cb1ee7143e8c831876063da",
+      "_measurements/S11c_d_continuum_response.py": "0fe30a9c4771671e9fa139b0557f185f55d351887f2ba8b9fa4ed1abfb616db2",
+      "_measurements/S11c_d_continuum_response_plan.md": "7250a3fb303a3a3e6e89d0372d7720dd5eeae16dc01714d43d4898ea1faf0834",
+      "_measurements/S11c_d_continuum_boundary_checkpoint.json": "b2614b74b4ec68de6d9f270bdf115833eea26a9baf168643663f21314a141d2d",
+      "_measurements/S11c_d_profile_form.py": "41e113454f1ebce41c776468e1b04191933e7d21a1f9c9f65b4a75c82ca71efa",
+      "_measurements/S11c_d_profile_form_plan.md": "ae0f08ab1aff8775133acfe716484f21aa610ef81c3261addd7af709c02d77f3",
+      "_measurements/S11c_d_continuum_response_checkpoint.json": "c29b71bc8adf8b98856d00d4586b7b060c0f6d5f42778ff231e03e0d45ba0139"
+    },
+    "inputPackets": {
+      "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-matrices-20260919/production/complete/continuum-matrices.pickle": "1db95fb176c970298b33005a94e25f8ada3ba1423fad605231be66d8a711954e",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/finish-02/complete/continuum-boundary.pickle": "8e3e53c3b7b06e3e81f961f013b77b4b87dfede081db75b4de458503b062eed0",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-finite-domain-20260919/production/complete/regulator/complete/finite-system.pickle": "2a043895b5e8a203cc4dd0b517ba3feec61300ab812a0404f19195cc39c0319a",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-end-normalization-20260914/reference/modal.pickle": "69668d29e11af4ca89c667f1ff39e7f646366eba7cb596dde39e74fcbefe3cd7",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-reduced-action-source-20260914/complete/reduced-action.pickle": "e9062c3455c7e59fe816f47172062a0c118b201d03809ec0826575dac22872b0",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-finite-domain-20260919/production/complete/regulator/complete/domain-binding.pickle": "723f4a8ed7e6844b4ed867a669ca23be34f00f5a7ea92ce7cca541cff1a9f475",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-finite-domain-20260919/production/complete/regulator/complete/source-binding.pickle": "35b60a56e031b53183ec6800ab84f5731e0ea79cbc96a94c9343cd5cc3a73e94",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-finite-domain-20260919/production/complete/regulator/complete/finite-solution.pickle": "f7abb7a0efc01720ef27c6a856b2809b827b8b7e0be8e62db3a8b2fcb346c296",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-response-20260919/production/complete/continuum-response.pickle": "a6678ad8fd7b4adf01aa3470834dcc0a918d2f7269fa1e273a980ea67c5b84f3",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-grades-20260919/production/complete/continuum-grades.pickle": "e39412750fe58734ba4db2bd84d40908d18706ae055f6ddd6e3f53f560aa9b71"
+    },
+    "wallSeconds": 16.218377608805895,
+    "scope": "Complete source/form binding and zero-transfer checks; no new scattering solve."
+  },
+  "validation": {
+    "status": "VALIDATED_FOCUSED_PROFILE_FORM_BINDING",
+    "supervisorWallSeconds": 17.517935387790203,
+    "sourceFiles": 43,
+    "inputPackets": 10,
+    "artifacts": {
+      "baseline-binding.pickle": {
+        "bytes": 562616,
+        "sha256": "9ba746612fbbd2dd327733a48cd503da2caa46ac3661c3039525806a8727226c"
+      },
+      "altered-binding.pickle": {
+        "bytes": 566311,
+        "sha256": "b25f8969981f986c4b2cc6f288a242dbc91c7984423b3278857b7e66fbfb8f70"
+      },
+      "binding-checks.pickle": {
+        "bytes": 6658952,
+        "sha256": "27f7090efc0d95ce78aaac272fcf36893b32a4dfc75bd06f161a915f44209ecd"
+      }
+    },
+    "exactBaselineCoefficients": 400,
+    "fullLocalOperatorResidual": 0.0,
+    "nativeRows": 80,
+    "sourceAmplitudes": 35,
+    "gaussianSourceOccurrences": 70,
+    "nestedProfiles": 6,
+    "changedFactorOccurrences": 40,
+    "changedCellOccurrences": 60,
+    "sameEndpointResiduals": {
+      "Limit(s11cdWProfile(s11cdProfileCoordinate), s11cdProfileCoordinate, -oo, dir='+')": "0",
+      "Limit(s11cdWProfile(s11cdProfileCoordinate), s11cdProfileCoordinate, oo, dir='-')": "0",
+      "Limit(s11cdMProfile(s11cdProfileCoordinate), s11cdProfileCoordinate, -oo, dir='+')": "0",
+      "Limit(s11cdMProfile(s11cdProfileCoordinate), s11cdProfileCoordinate, oo, dir='-')": "0"
+    },
+    "moments": {
+      "baseline_w": {
+        "zeroTransfer": "1",
+        "jump": "1",
+        "residual": "0",
+        "integrandResidual": "0"
+      },
+      "baseline_m": {
+        "zeroTransfer": "0",
+        "jump": "0",
+        "residual": "0",
+        "integrandResidual": "0"
+      },
+      "altered_w": {
+        "zeroTransfer": "1",
+        "jump": "1",
+        "residual": "0",
+        "integrandResidual": "0"
+      },
+      "altered_m": {
+        "zeroTransfer": "0",
+        "jump": "0",
+        "residual": "0",
+        "integrandResidual": "0"
+      },
+      "thickness_bump": {
+        "zeroTransfer": "0",
+        "jump": "0",
+        "residual": "0",
+        "integrandResidual": "0"
+      }
+    },
+    "checksSha256": "4875a9561b0e1257456df9412f4d33e93856e5b8d8b08cd3cc2c95f988f92937",
+    "inputsSha256": "ebb9dbb5e0669295a8979ed2dfc8ca937d217486e80071247f9a011a9943fc04",
+    "validatorSha256": "6f4bbfc3dc6179761f307278ca81648d5cf1acc20abf4250fff637258a95ed3f",
+    "packetHashesUnchanged": true,
+    "scope": "Source/form binding, original ordered-limit/field identities and exact derivative moments only. No new scattering solve."
+  },
+  "validationArtifacts": {
+    "validate-focused.py": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-profile-form-20260919/focused/validate-focused.py",
+      "sha256": "6f4bbfc3dc6179761f307278ca81648d5cf1acc20abf4250fff637258a95ed3f"
+    },
+    "validation.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-profile-form-20260919/focused/validation.json",
+      "sha256": "78578705c8b0d1ae233adf56a26076e9d8e59e8c8997d218bb8805edd44838c2"
+    },
+    "validation.stdout": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-profile-form-20260919/focused/validation.stdout",
+      "sha256": "78578705c8b0d1ae233adf56a26076e9d8e59e8c8997d218bb8805edd44838c2"
+    },
+    "validation.stderr": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-profile-form-20260919/focused/validation.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "acceptanceValidatorRepair": "The first local saved-packet validator used Python scalar equality on a NumPy source array. It was changed to array_equal for that actual array field only; original validator/logs are preserved. Production binding code and packets are unchanged.",
+  "next": "Run the single changed-form finite and continuum response using these exact saved bindings; no baseline quadrature."
+}

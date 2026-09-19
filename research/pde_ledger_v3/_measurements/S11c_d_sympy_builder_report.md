@@ -45,8 +45,15 @@ The [channel-current bookkeeping](S11c_d_continuum_currents_report.md) also pass
 open/full-end contraction residuals below4.45e-16/5.86e-14, all2632 tags and
 20032 metadata paths replay. This input has no open thickness channel and
 computed closed bulk-depth propagation; evanescent matching fields remain.
-Profile/uniform/covariance controls, frequency poles and final integration
-remain; tiny reflection/loss is unresolved. No broad quadrature sweep is queued.
+The [profile-FORM binding preflight](S11c_d_profile_form_report.md) passes:
+400 exact baseline coefficient joins, exact full local matrix replay and
+unchanged endpoint limits in17.52 seconds. All80 rows,35 sources and6 nested
+profiles are retained. Separate derivative integrals and endpoint jumps give
+1 for the old/new thickness edges and0 for the modulus shapes and thickness
+bump. A single changed-form finite/continuum solve is prepared; no new
+profile-response result is accepted yet. Uniform/covariance controls,
+frequency poles and final integration remain; tiny reflection/loss is
+unresolved. No broad quadrature sweep is queued.
 The older checkpoint narrative below records history, not the current task
 queue. The retained solver/export suffix remains byte-identical, interpreted
 under the new acceptance addendum and the approved pole correction.

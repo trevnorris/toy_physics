@@ -1,0 +1,46 @@
+{
+  "adapterProofs": {
+    "constructorReverseJoin": true,
+    "regulatorSites": 2,
+    "cutoffReverseJoin": true,
+    "cutoffSites": {
+      "32": 3,
+      "10": 3
+    },
+    "inspectorReverseJoin": true
+  },
+  "phaseControls": [
+    {
+      "interval": 48.0,
+      "literalPlaneWaveProjectionResidual": 2.3714374201337736e-16,
+      "wrongOutputSignResponse": 0.3217422806094517
+    },
+    {
+      "interval": 64.0,
+      "literalPlaneWaveProjectionResidual": 4.506008925723787e-16,
+      "wrongOutputSignResponse": 0.4268162385814879
+    }
+  ],
+  "rebindings": [
+    {
+      "interval": 48.0,
+      "rows": 80,
+      "coefficientReverseResidualCount": 80
+    },
+    {
+      "interval": 64.0,
+      "rows": 80,
+      "coefficientReverseResidualCount": 80
+    }
+  ],
+  "baselineInspectFieldsExact": true,
+  "baselineSingleLayoutExact": true,
+  "baselineSingleNodes": 16,
+  "actualCoefficientRegulatorResponse": 6.541012364447751e-05,
+  "scriptSha256": "73341408d0f6c1eb517e435dea986e180ff53615a6102697a8e3ba6747bd35aa",
+  "verificationScript": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-finite-domain-20260919/focused/verify.py",
+    "sha256": "4bd8c3c02fba618472cd7bb887097ec21c04cc0204e8e14dbbadefdb60e6249b"
+  },
+  "scope": "Focused parameter/phase wiring and one retained single-momentum layout; no new physical domain or regulator result."
+}

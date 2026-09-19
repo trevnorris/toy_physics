@@ -266,5 +266,39 @@
     },
     "repairCommit": "6aec9eae",
     "checkpoint": "S11c_d_finite_scattering_resolution_checkpoint.json"
+  },
+  "domainComparison": {
+    "status": "PREPARED",
+    "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-finite-domain-20260919/production",
+    "checker": "S11c_d_finite_scattering_domain.py",
+    "plan": "S11c_d_finite_scattering_domain_plan.md",
+    "report": "S11c_d_finite_scattering_domain_report.md",
+    "focused": "S11c_d_finite_scattering_domain_focused.json",
+    "baselineCommit": "c1d466e8",
+    "cases": [
+      {
+        "name": "matching_basis",
+        "size": 129,
+        "interval": 48,
+        "regulator": 0.2
+      },
+      {
+        "name": "boundary_source",
+        "size": 129,
+        "interval": 64,
+        "regulator": 0.2
+      },
+      {
+        "name": "regulator",
+        "size": 129,
+        "interval": 64,
+        "regulator": 0.1
+      }
+    ],
+    "limits": {
+      "totalChildComputationSeconds": 900,
+      "nativeThreads": 1,
+      "childAddressSpaceBytes": 2147483648
+    }
   }
 }

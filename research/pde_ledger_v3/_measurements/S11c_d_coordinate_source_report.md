@@ -25,7 +25,8 @@ jet-free carriers: raw reconstruction and exact carrier proofs are preserved,
 without an expensive cancellation of material-parameter rational functions.
 The initial failed checks and all accepted operands remain durable.
 
-The production constructor will transform375 records, preserve all80 native
+The production constructor is launched at620e24b1 with a clean startup and
+a silent local completion/error hook. It will transform375 records, preserve all80 native
 integral rows and35 source amplitudes, compute the literal first-w-derivative
 mutation and read the actual inherited rho4 density/advection operand. Every
 record is saved before guards, with full units, independent grades and source

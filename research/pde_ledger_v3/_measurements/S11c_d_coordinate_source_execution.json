@@ -1,5 +1,5 @@
 {
-  "status": "IMPLEMENTATION_PREPARED",
+  "status": "PRODUCTION_RUNNING",
   "checker": "S11c_d_coordinate_source.py",
   "plan": "S11c_d_coordinate_source_plan.md",
   "report": "S11c_d_coordinate_source_report.md",
@@ -11,5 +11,39 @@
     "nativeThreads": 1,
     "addressSpaceBytes": 2147483648
   },
-  "next": "Validate full source chart and one-sided mutation operands, then construct material/Eulerian scattering comparison with actual source/node/measure/channel/current joins."
+  "next": "Validate full source chart and one-sided mutation operands, then construct material/Eulerian scattering comparison with actual source/node/measure/channel/current joins.",
+  "implementationCommit": "620e24b1",
+  "launch": {
+    "launchedUtc": "2026-09-19T18:47:12.124195+00:00",
+    "command": [
+      "/usr/bin/python",
+      "_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-coordinate-control-20260919/production",
+      "--stage",
+      "coordinate_construct",
+      "--",
+      "python",
+      "-u",
+      "_measurements/S11c_d_coordinate_source.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-coordinate-control-20260919/production/complete"
+    ],
+    "supervisorPid": 681811,
+    "watcherPid": 681812,
+    "watcherDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-coordinate-control-20260919/production/completion-watcher",
+    "threadEnvironment": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1"
+    }
+  },
+  "startup": {
+    "supervisorStatus": "running",
+    "childPid": 681813,
+    "strictStderrBytes": 0,
+    "watcherStderrBytes": 0,
+    "inspection": "One clean startup inspection; source loading precedes the progress log. Completion/error hook owns continuation."
+  }
 }

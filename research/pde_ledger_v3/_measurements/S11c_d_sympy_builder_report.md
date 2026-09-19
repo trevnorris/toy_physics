@@ -363,11 +363,14 @@ denominator forms, three radicals, 27 native path checks and all 8730 metadata
 paths pass in 118.20 seconds. Continued outgoing subspaces, the actual finite
 frequency pencil and targeted poles remain uncomputed.
 
-The [full-subspace end continuation](S11c_d_frequency_end_report.md) focused
-check is launched from b6efa43f with a 900-second budget. It retains all ten
-selected clusters and 14 directions, fixed seed current coordinates and all
-36 candidate dispositions. Actual derivative, step-refinement and seed-boundary
-joins must pass before constructing the finite frequency pencil.
+The [full-subspace end continuation](S11c_d_frequency_end_report.md) is
+accepted at 86993760: ten clusters, 14 directions, all 36 candidate dispositions
+and 30 corrected points pass in 27.60 seconds. Step differences are below
+6.54e-14 and scaled Jacobian condition below 19.18. The first actual
+[finite complex-frequency pencil](S11c_d_frequency_matrix_report.md) is now
+running from e47df622 with a 900-second budget. All 80 rows and complete
+frequency-dependent end maps enter the new evaluation; no pole search has
+been performed yet.
 
 ## Retained user-approved solver/export contract
 

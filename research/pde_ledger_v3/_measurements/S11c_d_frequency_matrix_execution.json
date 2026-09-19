@@ -1,9 +1,64 @@
 {
-  "status": "PREPARED",
+  "status": "RUNNING",
   "checker": "S11c_d_frequency_matrix.py",
   "plan": "S11c_d_frequency_matrix_plan.md",
   "report": "S11c_d_frequency_matrix_report.md",
   "acceptedEndContinuationCommit": "86993760",
-  "limits": {"wallSeconds": 900, "nativeThreads": 1, "addressSpaceBytes": 2147483648},
-  "next": "Validate the first actual finite complex-frequency pencil, then choose a small bounded contour/search test from its cost and conditioning."
+  "limits": {
+    "wallSeconds": 900,
+    "nativeThreads": 1,
+    "addressSpaceBytes": 2147483648
+  },
+  "next": "Validate the first actual finite complex-frequency pencil, then choose a small bounded contour/search test from its cost and conditioning.",
+  "implementationCommit": "e47df622",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-matrix-20260919/production",
+  "launch": {
+    "launchedUtc": "2026-09-19T21:48:27.886339+00:00",
+    "command": [
+      "/usr/bin/python",
+      "_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-matrix-20260919/production",
+      "--stage",
+      "matrix_construct",
+      "--",
+      "python",
+      "-u",
+      "_measurements/S11c_d_frequency_matrix.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-matrix-20260919/production/complete"
+    ],
+    "supervisorPid": 757770,
+    "watcherPid": 757771,
+    "watcherDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-matrix-20260919/production/completion-watcher",
+    "threadEnvironment": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1"
+    }
+  },
+  "startup": {
+    "active": {
+      "stage": "matrix_construct",
+      "command": [
+        "python",
+        "-u",
+        "_measurements/S11c_d_frequency_matrix.py",
+        "--run-directory",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-matrix-20260919/production/complete"
+      ],
+      "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-matrix-20260919/production/matrix_construct.stdout",
+      "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-matrix-20260919/production/matrix_construct.stderr",
+      "startedUtc": "2026-09-19T21:48:27.928953+00:00",
+      "childPid": 757774,
+      "status": "running"
+    },
+    "strictStderrBytes": 0,
+    "watcherStderrBytes": 0
+  },
+  "launcher": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-matrix-20260919/production/launch.py",
+    "sha256": "1af6d5995146e880ef3deb3fa8de0a62fcba511a3ff88988be779a9767d287a9"
+  }
 }

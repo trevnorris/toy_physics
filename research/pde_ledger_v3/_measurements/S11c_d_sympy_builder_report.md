@@ -74,6 +74,11 @@ changes33 local,30 factor and12 source records; the actual constant-rho4
 source computes zero density gradient/advection. These source maps still need
 to enter a second scattering operator/boundary/channel/current route before
 coordinate agreement can be claimed. No c2 N3/N4/N6 closure follows.
+The [material-coordinate numerical adapter](S11c_d_coordinate_response_report.md)
+is committed atf9629960. Its focused run evaluates transformed source/profile
+and momentum measures, local coefficient matrices and both full end/current
+routes. Complete material quadrature and continuum scattering remain after
+that check; no new covariance result is accepted by the launch.
 The older checkpoint narrative below records history, not the current task
 queue. The retained solver/export suffix remains byte-identical, interpreted
 under the new acceptance addendum and the approved pole correction.

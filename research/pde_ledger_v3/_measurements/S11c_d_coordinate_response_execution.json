@@ -1,5 +1,5 @@
 {
-  "status": "FOCUSED_READY",
+  "status": "FOCUSED_RUNNING",
   "checker": "S11c_d_coordinate_response.py",
   "plan": "S11c_d_coordinate_response_plan.md",
   "report": "S11c_d_coordinate_response_report.md",
@@ -10,5 +10,40 @@
     "nativeThreads": 1,
     "addressSpaceBytes": 2147483648
   },
-  "next": "Validate focused transformed integrand and boundary/current joins, commit, then implement full material quadrature and continuum response from saved bindings."
+  "next": "Validate focused transformed integrand and boundary/current joins, commit, then implement full material quadrature and continuum response from saved bindings.",
+  "implementationCommit": "f9629960",
+  "launch": {
+    "launchedUtc": "2026-09-19T19:16:17.326311+00:00",
+    "command": [
+      "/usr/bin/python",
+      "_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-coordinate-response-20260919/focused",
+      "--stage",
+      "coordinate_focused",
+      "--",
+      "python",
+      "-u",
+      "_measurements/S11c_d_coordinate_response.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-coordinate-response-20260919/focused/complete",
+      "--focused"
+    ],
+    "supervisorPid": 697095,
+    "watcherPid": 697096,
+    "watcherDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-coordinate-response-20260919/focused/completion-watcher",
+    "threadEnvironment": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1"
+    }
+  },
+  "startup": {
+    "status": "running",
+    "childPid": 697098,
+    "strictStderrBytes": 0,
+    "watcherStderrBytes": 0,
+    "inspection": "One startup inspection; local completion/error hook owns continuation."
+  }
 }

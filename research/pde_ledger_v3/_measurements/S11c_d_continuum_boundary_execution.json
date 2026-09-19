@@ -1,0 +1,14 @@
+{
+  "status": "READY",
+  "checker": "S11c_d_continuum_boundary.py",
+  "plan": "S11c_d_continuum_boundary_plan.md",
+  "report": "S11c_d_continuum_boundary_report.md",
+  "focused": "S11c_d_continuum_boundary_focused.json",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/production",
+  "limits": {
+    "wallSeconds": 900,
+    "nativeThreads": 1,
+    "addressSpaceBytes": 2147483648
+  },
+  "next": "Validate full boundary/current coefficients, then solve the coefficient response."
+}

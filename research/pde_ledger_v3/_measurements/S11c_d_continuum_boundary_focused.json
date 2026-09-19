@@ -1,0 +1,13 @@
+{
+  "scriptSha256": "cdb2ff42024a4de53278aed756a2aef7daa1cdabaff0eed100b01379c86ea6c0",
+  "residuals": {
+    "(0, 0)": 0.0,
+    "(1, 0)": 0.0,
+    "(0, 1)": 0.0,
+    "(1, 1)": 0.0
+  },
+  "orderingMutation": 36.0,
+  "inverseLeftMaximum": 8.881784197001252e-16,
+  "inverseRightMaximum": 6.661338147750939e-16,
+  "scope": "Synthetic matrix arithmetic only; source preflight independently verified accepted end operands."
+}

@@ -1,5 +1,5 @@
 {
-  "status": "PRODUCTION_READY",
+  "status": "PRODUCTION_RUNNING",
   "checker": "S11c_d_coordinate_response.py",
   "plan": "S11c_d_coordinate_response_plan.md",
   "report": "S11c_d_coordinate_response_report.md",
@@ -148,5 +148,39 @@
   "productionChecker": "S11c_d_coordinate_response_production.py",
   "productionPlan": "S11c_d_coordinate_response_production_plan.md",
   "productionFocused": "S11c_d_coordinate_response_production_focused.json",
-  "productionRunRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-coordinate-response-20260919/production"
+  "productionRunRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-coordinate-response-20260919/production",
+  "productionImplementationCommit": "38e7574e",
+  "productionLaunch": {
+    "launchedUtc": "2026-09-19T19:36:40.974512+00:00",
+    "command": [
+      "/usr/bin/python",
+      "_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-coordinate-response-20260919/production",
+      "--stage",
+      "material_construct",
+      "--",
+      "python",
+      "-u",
+      "_measurements/S11c_d_coordinate_response_production.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-coordinate-response-20260919/production/complete"
+    ],
+    "supervisorPid": 707535,
+    "watcherPid": 707536,
+    "watcherDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-coordinate-response-20260919/production/completion-watcher",
+    "threadEnvironment": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1"
+    }
+  },
+  "productionStartup": {
+    "status": "running",
+    "childPid": 707540,
+    "strictStderrBytes": 0,
+    "watcherStderrBytes": 0,
+    "inspection": "One clean startup inspection; silent local completion/error hook owns continuation."
+  }
 }

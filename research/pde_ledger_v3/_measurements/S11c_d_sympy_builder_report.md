@@ -81,6 +81,12 @@ residuals are below8.34e-16/3.93e-16; boundary/current differences are below
 1.04e-13. All51 sources and90 saved artifacts validate. The complete material
 quadrature and independent-grade scattering solve are next; no new physical
 covariance claim follows from the bounded prefixes alone.
+The complete material-coordinate response implementation is committed at38e7574e
+and has launched under its silent completion hook. It reuses validated focused
+bindings/end data, evaluates all80 full material row matrices, and solves the
+645-unknown four-incident continuum response with all mixed coefficients.
+The actual material-volume adapter passes all80 rows in three coarse layouts;
+full production and emission validation remain pending.
 The older checkpoint narrative below records history, not the current task
 queue. The retained solver/export suffix remains byte-identical, interpreted
 under the new acceptance addendum and the approved pole correction.

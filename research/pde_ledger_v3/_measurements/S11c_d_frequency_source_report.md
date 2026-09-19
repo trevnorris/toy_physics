@@ -41,3 +41,27 @@ It retains raw/live forms, normalized certificates and denominator domains,
 and preserves the full source/derivative calculation, end helper, original
 physical emitter and final validation by AST joins. See the binding acceptance
 checkpoint and recovery plan. No frequency-source output is accepted yet.
+
+Recovery-01 completed all 375 source records, 750 binding comparisons and the
+80-row/35-source dependency census. Its 2,274 packets are preserved, including
+the REFERENCE end pencil. The candidate selector then stopped on an assumption
+that its polynomial had real coefficients. The actual degree-22 elimination
+has complex rational coefficients. A saved-pencil diagnostic retained them and
+computed an exact real/imaginary common factor of degree eight, with a degree-two
+square-free real candidate polynomial. Denominator and opposite-sheet artifacts
+are still unclassified; these are not profile-frequency poles.
+
+The next recovery retains the full complex polynomial and isolates only common
+real/imaginary zeros, with exact decomposition, division and Bezout identities.
+It will reuse all source calculations and the saved REFERENCE pencil/elimination,
+then complete the remaining two ends and output. A focused pure-real regression
+also exposed SymPy's gcdex division by zero for its zero imaginary polynomial;
+the explicit constant Bezout coefficients handle that case. Original diagnostic
+and failed focused evidence are preserved. No physical equation is changed.
+
+The corrected focused test passed in 47.36 seconds with empty stderr. It
+reused all 2,274 original packets, verified the actual complex polynomial and
+pure-real special case, and detected the imaginary-coefficient mutation.
+All 375 source records and reference diagnostics replay through 7,570 output
+tags with no dimension constraints. Full publication remains pending the
+remaining two end calculations and the original final output/hash guards.

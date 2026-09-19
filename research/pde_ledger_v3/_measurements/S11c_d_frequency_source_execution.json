@@ -1,5 +1,5 @@
 {
-  "status": "RECOVERY_RUNNING",
+  "status": "THRESHOLD_REPAIR_ACCEPTED_FINISH_PREPARED",
   "checker": "S11c_d_frequency_source.py",
   "plan": "S11c_d_frequency_source_plan.md",
   "report": "S11c_d_frequency_source_report.md",
@@ -10,7 +10,7 @@
     "nativeThreads": 1,
     "addressSpaceBytes": 2147483648
   },
-  "next": "Resume 16 completed records and saved baseline; complete remaining frequency sources and end-domain preparation.",
+  "next": "Reuse the completed 375 sources and REFERENCE pencil/elimination; finish LEFT/RIGHT candidate data and full output validation.",
   "implementationCommit": "4b14f7cb",
   "launch": {
     "launchedUtc": "2026-09-19T20:25:09.909593+00:00",
@@ -169,5 +169,29 @@
   "recoveryLauncher": {
     "path": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-source-20260919/recovery-01/launch.py",
     "sha256": "d775976f09147fc11e7c7f30c2cb208264b5b692f88cfca499f857cc04325f81"
-  }
+  },
+  "recoveryOutcome": {
+    "stage": "frequency_recover",
+    "command": [
+      "python",
+      "-u",
+      "_measurements/S11c_d_frequency_source.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-source-20260919/recovery-01/complete",
+      "--resume-from",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-source-20260919/retry-01/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-source-20260919/recovery-01/frequency_recover.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-source-20260919/recovery-01/frequency_recover.stderr",
+    "startedUtc": "2026-09-19T20:41:21.580884+00:00",
+    "childPid": 733660,
+    "status": "failed",
+    "exitCode": 1,
+    "wallSeconds": 126.8147122580558,
+    "stderrBytes": 1001,
+    "finishedUtc": "2026-09-19T20:43:28.395642+00:00"
+  },
+  "thresholdRepair": "S11c_d_frequency_source_threshold_repair.json",
+  "thresholdAcceptance": "S11c_d_frequency_source_threshold_acceptance.json",
+  "finishRunRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-source-20260919/finish-01"
 }

@@ -16,3 +16,10 @@ source/input and fixed-scale loader, and all simple/double/multiple/orientation
 controls. The zero-residue double inverse and degree16 alias remain explicit
 checks against false pole absence and false certified counts. No new numerical
 quadrature was computed by this focused acceptance.
+
+Implementation and focused acceptance are committed at `4b4e75e6`. Production
+launched on 2026-09-19 at 22:08:57 UTC under the existing single supervisor
+and silent completion/error watcher. The coordinator is configured for four
+single-thread workers, a 2 GiB ceiling per process and a 900-second initial
+budget. Startup has empty constructor, supervisor and watcher stderr. Completion
+will be validated before any contour result is accepted.

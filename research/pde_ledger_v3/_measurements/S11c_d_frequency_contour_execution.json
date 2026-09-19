@@ -1,5 +1,5 @@
 {
-  "status": "PREPARED_AFTER_FOCUSED_ACCEPTANCE",
+  "status": "RUNNING_FINITE_CONTOUR_DIAGNOSTIC",
   "checker": "S11c_d_frequency_contour.py",
   "plan": "S11c_d_frequency_contour_plan.md",
   "report": "S11c_d_frequency_contour_report.md",
@@ -19,5 +19,68 @@
       645,
       645
     ]
+  },
+  "implementationCommit": "4b4e75e6",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-contour-20260919/production",
+  "launch": {
+    "launchedUtc": "2026-09-19T22:08:57.189180+00:00",
+    "command": [
+      "/usr/bin/python",
+      "_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-contour-20260919/production",
+      "--stage",
+      "contour_construct",
+      "--",
+      "python",
+      "-u",
+      "_measurements/S11c_d_frequency_contour.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-contour-20260919/production/complete"
+    ],
+    "supervisorPid": 766931,
+    "watcherPid": 766932,
+    "watcherDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-contour-20260919/production/completion-watcher",
+    "threadEnvironment": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1"
+    }
+  },
+  "startup": {
+    "active": {
+      "stage": "contour_construct",
+      "command": [
+        "python",
+        "-u",
+        "_measurements/S11c_d_frequency_contour.py",
+        "--run-directory",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-contour-20260919/production/complete"
+      ],
+      "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-contour-20260919/production/contour_construct.stdout",
+      "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-contour-20260919/production/contour_construct.stderr",
+      "startedUtc": "2026-09-19T22:08:57.226322+00:00",
+      "childPid": 766939,
+      "status": "running"
+    },
+    "strictStderrBytes": 0,
+    "supervisorStderrBytes": 0,
+    "watcherStderrBytes": 0,
+    "preflight": null,
+    "processes": "",
+    "hostProcessVerification": {
+      "supervisorPid": 766931,
+      "watcherPid": 766932,
+      "constructorPid": 766939,
+      "allPresent": true,
+      "constructorRssKiB": 349524,
+      "elapsedSeconds": 30,
+      "note": "Detached processes verified in the host process view; sandbox ps cannot see them."
+    }
+  },
+  "launcher": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-contour-20260919/production/launch.py",
+    "sha256": "960b00a416ab616ca23797a0aa724b2ee13f4a13a7b304d2e8ed90482da71da7"
   }
 }

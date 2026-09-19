@@ -35,3 +35,6 @@ four-grade arithmetic and inverse checks still pass, and the ordering mutation
 responds. The recovery uses byte-identical copies of the six saved packets,
 reversible cache/checkpoint hooks and a separate derivative-entry inventory.
 The original failed logs and source snapshots remain preserved.
+
+Recovery launched at2026-09-19T16:33:30Z. Its supervisor, constructor and silent
+watcher passed startup verification with empty stderr. Acceptance is pending.

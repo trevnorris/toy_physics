@@ -1,5 +1,5 @@
 {
-  "status": "RECOVERY_READY",
+  "status": "RECOVERY_RUNNING",
   "checker": "S11c_d_continuum_boundary_recover.py",
   "plan": "S11c_d_continuum_boundary_plan.md",
   "report": "S11c_d_continuum_boundary_report.md",
@@ -130,5 +130,103 @@
     "finishedUtc": "2026-09-19T16:27:17.694513+00:00"
   },
   "repair": "S11c_d_continuum_boundary_cancellation_repair.json",
-  "recoveryPlan": "S11c_d_continuum_boundary_recovery_plan.md"
+  "recoveryPlan": "S11c_d_continuum_boundary_recovery_plan.md",
+  "repairCommit": "1403f729",
+  "recoveryLaunch": {
+    "launchedUtc": "2026-09-19T16:33:30.893016+00:00",
+    "command": [
+      "/usr/bin/python",
+      "_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/recovery-01",
+      "--stage",
+      "boundary_recover",
+      "--",
+      "python",
+      "-u",
+      "_measurements/S11c_d_continuum_boundary_recover.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/recovery-01/complete"
+    ],
+    "supervisorPid": 622709,
+    "watcherPid": 622710,
+    "watcherDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/recovery-01/completion-watcher",
+    "threadEnvironment": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1"
+    }
+  },
+  "recoveryLaunchVerification": {
+    "launch": {
+      "launchedUtc": "2026-09-19T16:33:30.893016+00:00",
+      "command": [
+        "/usr/bin/python",
+        "_measurements/S11c_d_end_normalization_run.py",
+        "--run-root",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/recovery-01",
+        "--stage",
+        "boundary_recover",
+        "--",
+        "python",
+        "-u",
+        "_measurements/S11c_d_continuum_boundary_recover.py",
+        "--run-directory",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/recovery-01/complete"
+      ],
+      "supervisorPid": 622709,
+      "watcherPid": 622710,
+      "watcherDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/recovery-01/completion-watcher",
+      "threadEnvironment": {
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1"
+      }
+    },
+    "active": {
+      "stage": "boundary_recover",
+      "command": [
+        "python",
+        "-u",
+        "_measurements/S11c_d_continuum_boundary_recover.py",
+        "--run-directory",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/recovery-01/complete"
+      ],
+      "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/recovery-01/boundary_recover.stdout",
+      "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/recovery-01/boundary_recover.stderr",
+      "startedUtc": "2026-09-19T16:33:30.955906+00:00",
+      "childPid": 622715,
+      "status": "running"
+    },
+    "watcher": {
+      "status": "waiting",
+      "watcherPid": 622710,
+      "jobPid": 622709,
+      "thread": "01a08c53-295c-70f0-baaf-353db1745867",
+      "startedUtc": "2026-09-19T16:33:30.985632+00:00",
+      "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
+      "messageSha256": "a1d737b9d3c045dee1eb12a152cca0052e49e9a69714c7d5ad0d99a12ed2d5e5",
+      "notifications": {}
+    },
+    "stderrBytes": 0,
+    "processes": {
+      "supervisor": {
+        "pid": 622709,
+        "exists": true,
+        "command": "/usr/bin/python _measurements/S11c_d_end_normalization_run.py --run-root /var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/recovery-01 --stage boundary_recover -- python -u _measurements/S11c_d_continuum_boundary_recover.py --run-directory /var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/recovery-01/complete "
+      },
+      "watcher": {
+        "pid": 622710,
+        "exists": true,
+        "command": "/usr/bin/python /var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/recovery-01/completion-watcher/watch.py --pid 622709 --thread 01a08c53-295c-70f0-baaf-353db1745867 --directory /var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/recovery-01/completion-watcher --message-file /var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/recovery-01/completion-watcher/continuation.txt --error-log /var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/recovery-01/boundary_recover.stderr --codex-bin /home/trevnorris/.npm-packages/bin/codex "
+      },
+      "constructor": {
+        "pid": 622715,
+        "exists": true,
+        "command": "python -u _measurements/S11c_d_continuum_boundary_recover.py --run-directory /var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/recovery-01/complete "
+      }
+    }
+  }
 }

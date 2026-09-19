@@ -1,5 +1,5 @@
 {
-  "status": "SOURCE_PREFLIGHT_ACCEPTED_PRODUCTION_PREPARED",
+  "status": "PRODUCTION_RUNNING",
   "checker": "S11c_d_uniform_source.py",
   "plan": "S11c_d_uniform_source_plan.md",
   "report": "S11c_d_uniform_source_report.md",
@@ -11,5 +11,37 @@
     "nativeThreads": 1,
     "addressSpaceBytes": 2147483648
   },
-  "next": "Compute and validate all three fresh constant reduced symbols and common-basis coupling triplets; then uniform modes/currents and response."
+  "next": "Compute and validate all three fresh constant reduced symbols and common-basis coupling triplets; then uniform modes/currents and response.",
+  "implementationCommit": "62738ea2",
+  "launch": {
+    "launchedUtc": "2026-09-19T18:05:10.749184+00:00",
+    "command": [
+      "/usr/bin/python",
+      "_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-uniform-source-20260919/production",
+      "--stage",
+      "uniform_construct",
+      "--",
+      "python",
+      "-u",
+      "_measurements/S11c_d_uniform_source.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-uniform-source-20260919/production/complete"
+    ],
+    "supervisorPid": 665675,
+    "watcherPid": 665676,
+    "watcherDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-uniform-source-20260919/production/completion-watcher",
+    "threadEnvironment": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1"
+    }
+  },
+  "startup": {
+    "status": "running",
+    "stderrBytes": 0,
+    "watcherStderrBytes": 0
+  }
 }

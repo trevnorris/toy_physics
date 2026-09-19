@@ -15,7 +15,7 @@ stopped before construction because later instrumentation had changed; that
 attempt and its logs are preserved. No upstream equation or accepted packet
 has changed. The altered Abel-sign source control is rejected.
 
-The bounded source run is prepared with one native thread,2GiB and900seconds.
+The bounded source run is running with one native thread,2GiB and900seconds.
 Each background/action/symbol and its original comparison operands are saved
 before subsequent guards. No quadrature, factorization or upstream reduction
 is repeated. The native constant-background distributional prescription stays

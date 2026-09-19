@@ -1,5 +1,5 @@
 {
-  "status": "BINDING_REPAIR_ACCEPTED_RECOVERY_PREPARED",
+  "status": "RECOVERY_RUNNING",
   "checker": "S11c_d_frequency_source.py",
   "plan": "S11c_d_frequency_source_plan.md",
   "report": "S11c_d_frequency_source_report.md",
@@ -129,5 +129,45 @@
   },
   "bindingRepair": "S11c_d_frequency_source_binding_repair.json",
   "bindingAcceptance": "S11c_d_frequency_source_binding_acceptance.json",
-  "recoveryRunRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-source-20260919/recovery-01"
+  "recoveryRunRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-source-20260919/recovery-01",
+  "bindingRepairCommit": "44a972f7",
+  "recoveryLaunch": {
+    "launchedUtc": "2026-09-19T20:41:21.549779+00:00",
+    "command": [
+      "/usr/bin/python",
+      "_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-source-20260919/recovery-01",
+      "--stage",
+      "frequency_recover",
+      "--",
+      "python",
+      "-u",
+      "_measurements/S11c_d_frequency_source.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-source-20260919/recovery-01/complete",
+      "--resume-from",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-source-20260919/retry-01/complete"
+    ],
+    "supervisorPid": 733658,
+    "watcherPid": 733659,
+    "watcherDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-source-20260919/recovery-01/completion-watcher",
+    "threadEnvironment": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1"
+    }
+  },
+  "recoveryStartup": {
+    "status": "running",
+    "childPid": 733660,
+    "strictStderrBytes": 0,
+    "watcherStderrBytes": 0,
+    "inspection": "One startup inspection; silent local completion/error watcher owns continuation."
+  },
+  "recoveryLauncher": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-source-20260919/recovery-01/launch.py",
+    "sha256": "d775976f09147fc11e7c7f30c2cb208264b5b692f88cfca499f857cc04325f81"
+  }
 }

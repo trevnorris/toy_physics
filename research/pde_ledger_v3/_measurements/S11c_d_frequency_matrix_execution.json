@@ -1,0 +1,9 @@
+{
+  "status": "PREPARED",
+  "checker": "S11c_d_frequency_matrix.py",
+  "plan": "S11c_d_frequency_matrix_plan.md",
+  "report": "S11c_d_frequency_matrix_report.md",
+  "acceptedEndContinuationCommit": "86993760",
+  "limits": {"wallSeconds": 900, "nativeThreads": 1, "addressSpaceBytes": 2147483648},
+  "next": "Validate the first actual finite complex-frequency pencil, then choose a small bounded contour/search test from its cost and conditioning."
+}

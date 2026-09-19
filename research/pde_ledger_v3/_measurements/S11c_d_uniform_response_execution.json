@@ -1,5 +1,5 @@
 {
-  "status": "IMPLEMENTATION_PREPARED",
+  "status": "PUBLISHED_ANNEX_VERIFIED",
   "checker": "S11c_d_uniform_response.py",
   "plan": "S11c_d_uniform_response_plan.md",
   "report": "S11c_d_uniform_response_report.md",
@@ -10,5 +10,35 @@
     "nativeThreads": 1,
     "addressSpaceBytes": 2147483648
   },
-  "next": "Execute and validate all54 full nullspaces/current replays and three matched-constant response systems; then continue covariance and targeted poles."
+  "next": "Source-derived material/Eulerian chart and one-sided shape-sensitivity controls, then targeted nonlinear frequency poles and final case/export integration.",
+  "checkpoint": "S11c_d_uniform_response_checkpoint.json",
+  "outcome": {
+    "stage": "uniform_response",
+    "command": [
+      "python",
+      "-u",
+      "_measurements/S11c_d_uniform_response.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-uniform-response-20260919/production/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-uniform-response-20260919/production/uniform_response.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-uniform-response-20260919/production/uniform_response.stderr",
+    "startedUtc": "2026-09-19T18:21:39.557352+00:00",
+    "childPid": 672597,
+    "status": "completed",
+    "exitCode": 0,
+    "wallSeconds": 41.7841860037297,
+    "stderrBytes": 0,
+    "finishedUtc": "2026-09-19T18:22:21.341599+00:00"
+  },
+  "publication": {
+    "path": "scripts/out/S11c_d_uniform_response.out",
+    "sha256": "83ba699f62dac31be369b02dafce826d5423111ac68c25011c6889d898a53f90",
+    "bytes": 537336,
+    "annexKey": "MD5E-s537336--a771fa951ae38a2fdc8daaf3310a3bdd.out",
+    "symlink": "../../../../.git/annex/objects/W8/Mx/MD5E-s537336--a771fa951ae38a2fdc8daaf3310a3bdd.out/MD5E-s537336--a771fa951ae38a2fdc8daaf3310a3bdd.out",
+    "actualBackend": "MD5E",
+    "verified": true,
+    "publicationCommit": "5db29fefb25cce93d31f48976ad46d92b97bb28c"
+  }
 }

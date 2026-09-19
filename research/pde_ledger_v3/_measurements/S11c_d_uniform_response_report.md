@@ -1,31 +1,33 @@
-# Uniform currents and matching response
+# Uniform subspaces, currents and matching response
 
-The source controls are accepted atc03fed65. The next bounded constructor will
-reuse each background's isolated root candidates only after exact source/input
-joins, evaluate the fresh full pencil and recompute both complete nullspaces,
-projectors and normal/frequency pairings. It will re-evaluate actual slab and
-bulk current operands, preserve all candidate dispositions and compute physical
-current normalization on the certified domain. Euclidean basis alignment is
-only a coordinate choice; it does not replace physical current contraction.
+The three constant-background controls completed in41.78seconds with empty
+stderr and253676KiB peak RSS. Each of LEFT, RIGHT and REFERENCE retains all18
+isolated root/lift candidates and22 full basis directions. Both nullspaces,
+projectors, normal/frequency pairings and actual slab/bulk currents were
+recomputed from fresh reduced symbols after exact original-root/input joins.
+Maximum mode/current replay residual is1.89e-15. Each selected end contains
+three evanescent and four open directions (two incoming, two outgoing).
 
-Each background then appears at both ends of its own interval. Ten homogeneous
-plane-wave directions give a10-by-10 boundary matching system for the four
-incoming columns. Closed-mode exponential anchors keep factors bounded. The
-response, common-origin phases, modal amplitudes and complete cross-mode end
-currents are computed. Direct trace/derivative checks, an independent SVD solve
-and a one-sided incident-sign mutation test the new matching assembly. No
-expected reflection/transmission value enters and no S-matrix is subtracted
-across different backgrounds' channel coordinates.
+Each10-by-10 matching system is full rank with condition7.23–7.67. Direct
+boundary/equation residuals are below3.84e-16; independent SVD solutions differ
+by at most2.42e-15. Computed reflection amplitudes are below4.44e-16 and both
+transmission blocks have singular values equal to one within6.7e-16. Closed
+matching amplitudes are below2.35e-16. Full outgoing/incoming/closed cross-mode
+current balances are below8.89e-16. Independent scalar current contractions
+agree within1e-31. No expected amplitude or current was inserted. These are
+separate same-background controls, not subtraction across unlike channels.
 
-The code is prepared with a one-thread,2GiB,900second initial budget and durable
-per-candidate, current-pair and system/solution packets. Source inspection
-confirmed the actual six current-leg variables and infinite-depth expression;
-an initial inspection used the repository root instead of the ledger working
-directory and stopped before calculation. Its logs are preserved. This did
-not change an instrument or physical source.
+Validation covers27 current/frozen sources,15 input packets,203 artifacts,
+1416 tags,706 fresh write keys and10519 dimension/grade metadata paths, with
+unchanged pre/post packets. The transcript is published through DataLad and
+verified against its actual MD5E key, symlink, size and independent SHA256;
+see the checkpoint for full inventories. The native engine and retained
+builder-report contract are unchanged. No quadrature, factorization, root
+isolation or upstream reduction was repeated.
 
-No uniform modal/current or matching result is accepted yet. These controls
-will not prove transparent variable-profile boundaries, global exceptional
-coverage or a profile-dependent pole. Covariance controls, targeted nonlinear
-frequency poles and final case/export integration remain. No quadrature,
-factorization, isolation or upstream reduction is rerun by this construction.
+This completes the development-case uniform source/mode/current/matching
+controls within the stated selected physical domain. It does not prove a
+transparent variable-profile boundary or global exceptional coverage. Tiny
+interface reflection/loss remains unresolved. Coordinate-covariance and
+shape-sensitivity controls, targeted nonlinear frequency poles, remaining
+cases and final exports are next under practical acceptance.

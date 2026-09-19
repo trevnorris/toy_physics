@@ -59,8 +59,12 @@ The [three uniform source controls](S11c_d_uniform_source_report.md) pass in
 Both transverse/thickness coupling blocks compute to zero in the three
 constant backgrounds; the full right symbol retains zero-jet contrast.
 This is the specified case and endpoint input, not a global decoupling claim.
-Uniform full-subspace currents and matching responses are next; they are not
-established by the source-symbol result alone.
+The [uniform full-subspace/current/matching controls](S11c_d_uniform_response_report.md)
+also pass in41.78seconds:54 candidates and66 full basis directions, three
+full-rank10-by-10 solves, reflection below4.44e-16 and unit transmission to
+roundoff. All10519 metadata paths and203 artifacts validate. This is a
+selected constant-background control, not variable-profile transparency.
+Coordinate-covariance controls, targeted poles and final integration remain.
 The older checkpoint narrative below records history, not the current task
 queue. The retained solver/export suffix remains byte-identical, interpreted
 under the new acceptance addendum and the approved pole correction.

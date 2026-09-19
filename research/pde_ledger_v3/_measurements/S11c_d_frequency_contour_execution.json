@@ -1,0 +1,23 @@
+{
+  "status": "PREPARED_AFTER_FOCUSED_ACCEPTANCE",
+  "checker": "S11c_d_frequency_contour.py",
+  "plan": "S11c_d_frequency_contour_plan.md",
+  "report": "S11c_d_frequency_contour_report.md",
+  "acceptedFiniteFrequencyCommit": "16b4da87",
+  "limits": {
+    "wallSeconds": 900,
+    "workers": 4,
+    "nativeThreadsPerWorker": 1,
+    "addressSpaceBytesPerProcess": 2147483648
+  },
+  "next": "Inspect actual nested contour winding, moments, conditioning and branch closure before one targeted refinement or candidate solve.",
+  "focusedAcceptance": "S11c_d_frequency_contour_focused.json",
+  "focusedCounts": {
+    "sources": 69,
+    "inputs": 20,
+    "fixedScaleSizes": [
+      645,
+      645
+    ]
+  }
+}

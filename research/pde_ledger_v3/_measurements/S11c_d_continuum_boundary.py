@@ -265,6 +265,13 @@ def construct_end(end,base,r,input_,modal,pairing,accepted,current_unit):
     f.atomic_pickle(base/(end.lower()+'-boundary.pickle'),result);return result
 
 
+def structural_flags(name,value):
+    body=engine.cas(value);engine.emit(name,body)
+    metadata_body=body.xreplace({sp.true:sp.S.One,sp.false:sp.S.Zero})
+    zeros={p:(0,0,0) for p,_ in engine.leaves(metadata_body)}
+    engine.emit('METADATA_'+name,engine.PHYSICAL_METADATA.record(metadata_body,zeros))
+
+
 def emit_result(result,r):
     modes=engine.FullPencilModes.__new__(engine.FullPencilModes);modes.r=r
     eta,sigma=(r.symbols[n] for n in ('eta_bg','sigma_W'));eps=r.symbols['epsilon_shape'];fields=result['fieldUnits'];cu=result['currentUnit']
@@ -319,7 +326,7 @@ def emit_result(result,r):
                 weight=eta**g[0]*sigma**g[1];body=sp.ImmutableMatrix(*array.shape,[engine.FullPencilModes.number(v)*weight for v in array.ravel()])
                 tag=PREFIX+'_'+end+'_RESIDUAL_'+name+'_'+''.join(map(str,g));engine.emit(tag,body)
                 engine.emit('METADATA_'+tag,modes.numeric_metadata(body,lambda p,u=units,n=array.shape[1]:u[p[0]//n][p[0]%n]))
-        grades.structural(PREFIX+'_'+end+'_CENSUS',{'candidates':data['census'],'traceCondition':data['traceCondition'],
+        structural_flags(PREFIX+'_'+end+'_CENSUS',{'candidates':data['census'],'traceCondition':data['traceCondition'],
             'gauge':data['coordinateGauge'],'currentPairCount':len(data['clusters'])**2})
     grades.structural(PREFIX+'_SOURCE_MANIFEST',{'sourceFiles':result['sourceFiles'],'inputPackets':result['inputPackets'],
         'scope':result['scope'],'grades':G})

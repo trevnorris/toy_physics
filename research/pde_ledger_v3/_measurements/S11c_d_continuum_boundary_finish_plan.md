@@ -30,3 +30,11 @@ continuum response has not yet been solved and this difference does not establis
 an observable error. After publication/annex verification and a checkpoint,
 combine the actual boundary/current coefficients with accepted interior matrices.
 Practical toy-model scope and the finite-boundary/regulator limitations remain.
+
+Finish01 replayed every saved current contraction exactly, then the census
+metadata handler attempted arithmetic on Boolean flags. Preserve the Boolean
+payload exactly and use integer indicators only in its dimension/grade metadata.
+The whole-checker reverse join also accounts for this single census adapter.
+All54 actual Boolean flag paths pass the focused unit test. Reuse the completed
+operand-validation packet through an unchanged validator AST and identical input
+packets; the next finish performs only emission and remaining validation.

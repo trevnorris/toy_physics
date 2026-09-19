@@ -18,6 +18,7 @@ import S11c_d_continuum_boundary_recover as recovery
 f=c.f
 SOURCE=f.STORE/'s11c-continuum-boundary-20260919/recovery-01/complete'
 PLAN=f.M/'S11c_d_continuum_boundary_finish_plan.md'
+VALIDATED=f.STORE/'s11c-continuum-boundary-20260919/finish-01/complete'
 
 
 def emission_join():
@@ -27,8 +28,19 @@ def emission_join():
     initialization=ast.dump(ast.parse('modes.eta,modes.sigma=eta,sigma').body[0])
     matches=[n for n in emitter.body if ast.dump(n)==initialization]
     f.require(len(matches)==1,'exact fingerprint parameter initialization')
-    emitter.body.remove(matches[0]);f.require(ast.dump(before)==ast.dump(after),'whole checker join beyond fingerprint initialization')
+    emitter.body.remove(matches[0])
+    helpers=[n for n in after.body if getattr(n,'name',None)=='structural_flags'];f.require(len(helpers)==1,'single Boolean metadata adapter')
+    after.body.remove(helpers[0]);calls=[]
+    class UndoFlags(ast.NodeTransformer):
+        def visit_Call(self,n):
+            self.generic_visit(n)
+            if isinstance(n.func,ast.Name) and n.func.id=='structural_flags':
+                calls.append(ast.dump(n));n.func=ast.parse('grades.structural',mode='eval').body
+            return n
+    UndoFlags().visit(emitter)
+    f.require(len(calls)==1 and ast.dump(before)==ast.dump(after),'whole checker join: fingerprint references and census metadata only')
     return {'wholeCheckerReverseAstJoin':True,'initialization':ast.unparse(matches[0]),
+            'booleanMetadataAdapter':ast.unparse(helpers[0]),'censusCalls':len(calls),
             'originalSha256':f.digest(SOURCE/'source'/name),'currentSha256':f.digest(Path(c.__file__))}
 
 
@@ -131,13 +143,35 @@ def finish_tail():
     return namespace['tail']
 
 
+def reuse_validation(result,base,pins,operands):
+    old_inputs=json.loads((VALIDATED/'inputs.json').read_text())
+    helper=str(Path(__file__).resolve().relative_to(f.ROOT))
+    before=next(n for n in ast.parse((VALIDATED/'source'/helper).read_text()).body if getattr(n,'name',None)=='validate_operands')
+    after=next(n for n in ast.parse(Path(__file__).read_text()).body if getattr(n,'name',None)=='validate_operands')
+    f.require(ast.dump(before)==ast.dump(after),'unchanged completed operand validator')
+    f.require(f.digest(VALIDATED/'source'/helper)==old_inputs['sourceFiles'][helper],'frozen completed validator source')
+    for name,item in old_inputs['copiedArtifacts'].items():
+        f.require(f.digest(VALIDATED/name)==f.digest(base/name)==item['sha256'],'exact completed validation input packets')
+    old_proofs=json.loads((VALIDATED/'operand-validation.json').read_text())
+    for end,v in result['ends'].items():
+        expected={'clusters':len(v['clusters']),'currentPairsByPart':2*len(v['clusters'])**2,'currentReplayMaximum':0.0,
+                  'residualMaxima':{k:c.norm(a) for k,a in v['residuals'].items()}}
+        f.require(old_proofs[end]==expected,'complete saved validation outcome')
+    shutil.copyfile(VALIDATED/'operand-validation.json',base/'operand-validation.json')
+    for p in (VALIDATED/'operand-validation.json',VALIDATED/'inputs.json',VALIDATED/'source'/helper):operands[str(p)]=f.digest(p)
+    inputs=json.loads((base/'inputs.json').read_text());inputs['inputPackets']=operands
+    inputs['completedValidationReuse']={'directory':str(VALIDATED),'validatorAstJoin':True,'packetIdentity':True,
+        'validationSha256':f.digest(VALIDATED/'operand-validation.json')};f.save(base/'inputs.json',inputs)
+    return old_proofs
+
+
 def main():
     parser=argparse.ArgumentParser();parser.add_argument('--run-directory',type=Path,required=True);args=parser.parse_args()
     base=args.run_directory.resolve();base.relative_to(f.STORE);base.mkdir(parents=True,exist_ok=False)
     resource.setrlimit(resource.RLIMIT_AS,(2*1024**3,2*1024**3))
     def timeout(*_):raise TimeoutError('saved boundary emission/validation budget')
     signal.signal(signal.SIGALRM,timeout);signal.alarm(900);started=time.monotonic()
-    r,result,pins,operands,manifest=load(base);proofs=validate_operands(result,base)
+    r,result,pins,operands,manifest=load(base);proofs=reuse_validation(result,base,pins,operands)
     before=f.digest(base/'continuum-boundary.pickle')
     summary=finish_tail()(base,result,r,pins,operands,before,started,result['ends'])
     original={}

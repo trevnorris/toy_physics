@@ -4,7 +4,7 @@
   "plan": "S11c_d_continuum_boundary_plan.md",
   "report": "S11c_d_continuum_boundary_report.md",
   "focused": "S11c_d_continuum_boundary_focused.json",
-  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/finish-01",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/finish-02",
   "limits": {
     "wallSeconds": 900,
     "nativeThreads": 1,
@@ -250,5 +250,25 @@
     "finishedUtc": "2026-09-19T16:35:29.822100+00:00"
   },
   "finishPlan": "S11c_d_continuum_boundary_finish_plan.md",
-  "emissionRepair": "S11c_d_continuum_boundary_emission_repair.json"
+  "emissionRepair": "S11c_d_continuum_boundary_emission_repair.json",
+  "firstFinishRunRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/finish-01",
+  "firstFinishOutcome": {
+    "stage": "boundary_finish",
+    "command": [
+      "python",
+      "-u",
+      "_measurements/S11c_d_continuum_boundary_finish.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/finish-01/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/finish-01/boundary_finish.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/finish-01/boundary_finish.stderr",
+    "startedUtc": "2026-09-19T16:42:06.829137+00:00",
+    "childPid": 628151,
+    "status": "failed",
+    "exitCode": 1,
+    "wallSeconds": 15.164369407109916,
+    "stderrBytes": 1435,
+    "finishedUtc": "2026-09-19T16:42:21.993614+00:00"
+  }
 }

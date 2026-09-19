@@ -49,3 +49,10 @@ The output-only repair initializes the actual grade references, with an exact
 whole-checker reverse AST join. Finish replays saved operands and emission;
 no mode solve, symbolic current differentiation or quadrature is repeated.
 A grade-dependent fingerprint and coefficient mutation pass focused testing.
+
+Finish01 validated every saved current contraction exactly (100 cluster pairs
+across both current parts and ends), then encountered Boolean census flags in
+an arithmetic metadata helper. The adapter preserves the flag payload and
+converts flags only for metadata calculation. Completed operand validation is
+reused with unchanged validator AST and exact source packets. No numerical or
+symbolic construction is repeated by the next output attempt.

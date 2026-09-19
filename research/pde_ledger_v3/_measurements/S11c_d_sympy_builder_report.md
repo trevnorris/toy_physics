@@ -379,12 +379,15 @@ reuse every accepted matrix and add 16 points. No physical pole set or
 certified empty spectrum is established.
 
 The [single contour midpoint comparison](S11c_d_frequency_contour_refine_report.md)
-is running with16 new points and all16 original matrices reused. A missing
-`--focused` launch flag started the numerical run in the directory named
-`focused`; its correct source/settings and completed preflight joins are
-recorded. The run is preserved, a completion hook is attached, and the duplicate
-launcher is disabled. No standalone focused or refined result is presumed
-accepted; final saved-operand validation remains required.
+now passes in10m40s:16 new points and all16 original matrices reused, four clean
+workers, full rank at all32 points. Winding remains numerically zero, maximum
+phase increment falls to1.36radians and the first inverse moment to2.67e-12.
+All original/new source and array joins, exact retained16 moments and post-run
+adapter checks pass. The recorded launch-mode and acceptance-summary mistakes
+changed no numerical operand. No candidate is resolved in the selected circle;
+this closes the bounded numerical search, not a certified empty spectrum.
+Remaining cases and final engine/own-row exports are next; no contour doubling
+or broad convergence campaign is queued.
 
 ## Retained user-approved solver/export contract
 

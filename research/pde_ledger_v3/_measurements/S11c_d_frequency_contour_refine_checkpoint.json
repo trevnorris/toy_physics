@@ -1,0 +1,785 @@
+{
+  "status": "VALIDATED_NUMERICAL_CONTOUR_REFINEMENT",
+  "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-contour-refine-20260919/focused",
+  "implementationCommit": "2f65fe78",
+  "outcome": {
+    "stage": "contour_refine",
+    "status": "completed",
+    "command": [
+      "python",
+      "research/pde_ledger_v3/_measurements/S11c_d_frequency_contour_refine.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-contour-refine-20260919/focused"
+    ],
+    "childPid": 774319,
+    "supervisingShellPid": 774318,
+    "toolSessionId": 8703,
+    "resultDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-contour-refine-20260919/focused",
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-contour-refine-20260919/focused.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-contour-refine-20260919/focused.stderr",
+    "startedUtcFromLogTimestamp": "2026-09-19T22:25:13.726816+00:00",
+    "adoptedUtc": "2026-09-19T22:29:45.906056+00:00",
+    "threadEnvironment": {
+      "MKL_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1"
+    },
+    "preflight": {
+      "joins": {
+        "wholeMidpointWorkerJoin": true,
+        "wholeMomentSummaryJoin": true,
+        "unchangedEndLoopBody": true,
+        "unchangedPointConstructorInverseAndMaps": true
+      },
+      "totalPoints": 32,
+      "reusedPoints": 16,
+      "newPoints": 16,
+      "center": "(1-0.01j)",
+      "radius": 0.02,
+      "workers": 4
+    },
+    "launchModeMistake": "--focused omitted; authorized numerical production already running under focused directory. Preserve and validate, never rerun.",
+    "standaloneFocusedChecks": "Not yet executed; perform saved-address/moment checks before final acceptance.",
+    "preparedUnusedLauncher": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-contour-refine-20260919/production/launch.prepared-unused.py",
+      "sha256": "16d5cb28bd58bcd2a5271987d7d6fcb81afe1ef9494d2dba6d41cac02c9c03f8"
+    },
+    "exitStatusSource": "Tool session8703; do not infer exit zero from checks.json.",
+    "watcherPid": 775671,
+    "watcherDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-contour-refine-20260919/completion-watcher",
+    "exitCode": 0,
+    "stderrBytes": 0,
+    "constructorWallSeconds": 639.8446240853518,
+    "exitEvidence": {
+      "tool": "write_stdin",
+      "sessionId": 8703,
+      "exitCode": 0,
+      "observedUtc": "2026-09-19T22:36:43.976053+00:00",
+      "note": "Actual completed tool-session result, not inferred from checks.json."
+    },
+    "finishedLogTimestampUtc": "2026-09-19T22:35:54.657031+00:00"
+  },
+  "sourceFiles": {
+    "_measurements/S11c_d_continuum_grades.py": "0443c3adbeaf813ad66c60af0a50c96e9a841277d51f9c23bf1c601d2fdf329d",
+    "_measurements/S11c_d_continuum_grade_plan.md": "693546373ea2c8c5eec4ef3c8c93732fc7440a1eb1a2cdb1a6cf9d0f5b469040",
+    "_measurements/S11c_d_reduced_action_assembly_checkpoint.json": "b4afb727b1a1ad2a468b0bab9a6ab369dbe4dd35bc46acd7150b7fa581cd984f",
+    "_measurements/S11c_d_source_fourier_factorization_checkpoint.json": "fcf6f1c5598b63c11d4f8a76d2d94c2b5bace590e83d4beea3e52e82f44158a6",
+    "_measurements/S11c_d_reduced_action_source_checkpoint.json": "b6dcd36ee6cf8ed3b3943e207012dd165fce62ec39cb8f53ca3c23f4715d094b",
+    "scripts/S11c_d_mixing_scattering_sympy_audit.py": "5bf77729682960bb59f10c672a5fe3f67a98b0a9533da7c6189a37183596050f",
+    "_measurements/S11c_d_reduced_action_source_check.py": "aae3b2402e1707ef27f217b917dc10592f38acbe35d18356fbc4886ed854f754",
+    "directives/S11c_d_EXPLORATORY_ACCEPTANCE.md": "5c1e560a78d40739af8b1318c0487e20bf2b816c41109889e12004266c72840c",
+    "_measurements/S11c_d_finite_scattering_domain_checkpoint.json": "2286978066ad6e0c8b9558a950b40521c61ac2cdfec58a9694f890c70c90280c",
+    "_measurements/S11c_d_variable_profile_development_input.json": "660b2b0b54494dce964c7f5fbd722a76a7e894d8ed92b18b5eb6290c3c10f1d5",
+    "directives/S11c_d_NONLINEAR_POLE_CONTRACT.md": "2b6018faf0d5ca772bf9c980174d8ebe7545127a3bf43ba01d1b3c0b6a5be423",
+    "scripts/S11c_b_exports.py": "3c6555f90a85382a5e96f3f961f0e36a4875d9259fe1be947fa8e683669b7084",
+    "scripts/S11c_c1_exports.py": "a5353b86dc526fd1b56734fdbdf7dc7f42387a3195ab4de84e8994f751871cdc",
+    "scripts/S11c_c2_exports.py": "2ba5ed487b84ecb98290df6f1650fa6210fe2784cfa02a0f3cff96cd718411cd",
+    "directives/S11c_d_SHARED_PHYSICS.md": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5",
+    "directives/S11b_SHARED_PHYSICS.md": "9ea9e388e9d6421a841eaf851d12e1793527bba9a24aeeface3bfac2f4b40078",
+    "scripts/ledger_fold.py": "97da78c6631c09e5575dd14511760506f1ac08771cf07948978004e92f0b2333",
+    "_measurements/S11c_d_continuum_matrices.py": "33a0e5a2fa136a55875541e15bc410159c94f56f25adc4a02589d0c704223987",
+    "_measurements/S11c_d_continuum_matrix_plan.md": "c571bf7adb9e7b4cbedd8ac80813a590d4087bebfd02da6b2615e1cc82914612",
+    "_measurements/S11c_d_continuum_grade_checkpoint.json": "3987ff4abb782050fffc767065ed9b3126da49215aa0df41320abef7fdec4692",
+    "_measurements/S11c_d_finite_scattering_domain.py": "73341408d0f6c1eb517e435dea986e180ff53615a6102697a8e3ba6747bd35aa",
+    "_measurements/S11c_d_finite_scattering.py": "f187d9426be8069342a363a0466c175d32a8cb46101e32a14c433ccb9118e469",
+    "_measurements/S11c_d_finite_scattering_resolution.py": "8e101517fde113c5f0a372bab531e63ebdcee3fff03c270ff98a7590e5a7b981",
+    "_measurements/S11c_d_end_normalization_reference_thickness_repair_checkpoint.json": "5c9456ddacd573865d00a0527b1b73b1060c613ccfe50ed89e41613fa3d9658f",
+    "_measurements/S11c_d_end_pairing_reference_thickness_repair_checkpoint.json": "1ea765d293138847a23ff7768fdba770a031659f9c978f582aff27391bf11232",
+    "_measurements/S11c_d_end_normalization_left_thickness_repair_checkpoint.json": "5871a84b7584eb35de8b8a5c450e8d0adadb41340abcbfe028ac16b360befcdb",
+    "_measurements/S11c_d_end_pairing_left_thickness_repair_checkpoint.json": "205e13614c41c504faae85cad9ee104ab51d1f1a5830b5b9e802e5fe3bc1ac9d",
+    "_measurements/S11c_d_end_normalization_right_thickness_repair_checkpoint.json": "7267d068580ecade68ce95abd599c1f5c59a95b4d7f359f9518452218c9f9a05",
+    "_measurements/S11c_d_end_pairing_right_thickness_repair_checkpoint.json": "e8e0d0771bd4365055351bdc041f0a45020f5252bdb5ff5793592d1c9c388605",
+    "_measurements/S11c_d_continuum_boundary.py": "ed3a6539d3151c52d25f12308b121897baf3bd6a5a626a598ab728988ab933a0",
+    "_measurements/S11c_d_continuum_boundary_plan.md": "08dd0c80757d2a2203b237e47957fd4e3bc1b970abfb2dad4cb3b07cf1a3c27f",
+    "_measurements/S11c_d_continuum_matrix_checkpoint.json": "4fe0e0214a5f51a6ab18c9266aa369dde4cf2b60eb51beabf3257754f91d942d",
+    "_measurements/S11c_d_matching_channels_checkpoint.json": "c4ad9b9051f9c3fadb076593dd35ec12d1779fad6d1558c691c3b735fe4d3eeb",
+    "_measurements/S11c_d_continuum_boundary_recover.py": "156252a37a9aaba207fa06ce23ca34cc7286601c8f76cdfe1a63a9e40a2f1839",
+    "_measurements/S11c_d_continuum_boundary_recovery_plan.md": "4d91587d5a202a2d9dbdedb8f9b6340cded59a08518df173ac012e49f51db2ea",
+    "_measurements/S11c_d_continuum_boundary_finish.py": "988e3248d634dd3d6a48279d198c682a9637082ddcd735207d5506c01b0af052",
+    "_measurements/S11c_d_continuum_boundary_finish_plan.md": "674e363bf4427f9c367cdc309bb336a584e332e83cb1ee7143e8c831876063da",
+    "_measurements/S11c_d_continuum_response.py": "0fe30a9c4771671e9fa139b0557f185f55d351887f2ba8b9fa4ed1abfb616db2",
+    "_measurements/S11c_d_continuum_response_plan.md": "7250a3fb303a3a3e6e89d0372d7720dd5eeae16dc01714d43d4898ea1faf0834",
+    "_measurements/S11c_d_continuum_boundary_checkpoint.json": "b2614b74b4ec68de6d9f270bdf115833eea26a9baf168643663f21314a141d2d",
+    "_measurements/S11c_d_profile_form.py": "41e113454f1ebce41c776468e1b04191933e7d21a1f9c9f65b4a75c82ca71efa",
+    "_measurements/S11c_d_profile_form_plan.md": "ae0f08ab1aff8775133acfe716484f21aa610ef81c3261addd7af709c02d77f3",
+    "_measurements/S11c_d_continuum_response_checkpoint.json": "c29b71bc8adf8b98856d00d4586b7b060c0f6d5f42778ff231e03e0d45ba0139",
+    "scripts/S11c_d_output_codec.py": "49873a2fa5c3184aab097263f0a6128379e094e42dbde5052456c5f3908bf717",
+    "_measurements/S11c_d_uniform_source.py": "2a135aea365c7b5e57bfff7683c7b927cda52c0d37f6a9bad3c961eb6205a2b2",
+    "_measurements/S11c_d_uniform_source_plan.md": "7b81e08568546585a11ce5ed6ebdd7b184bf4e38e55f8065440c7d4550610e33",
+    "_measurements/S11c_d_frequency_source.py": "9be20be462bc10bfcaa7af643b9301948dd79bc2e08eb24ebcd1386a81efcdac",
+    "_measurements/S11c_d_frequency_source_plan.md": "9224fc8b7feb37141b3613a549e146c0870d09eead211b6cf1898132d58c32a6",
+    "_measurements/S11c_d_first_jet_checkpoint.json": "6958e393383491b73a06d354a6b14e1b2c4495dacadd119a92ab5dd3fad02fe4",
+    "_measurements/S11c_d_uniform_source_checkpoint.json": "9d4b65ad07d1f403fd3aa4ec42da99db622a4d0a26d6ddce6c472148c7830085",
+    "_measurements/S11c_d_uniform_response_checkpoint.json": "74f5bd4da163dd6d78ad427fc5c4cd6926f414c961172f6854174131ea2fbc45",
+    "_measurements/S11c_d_frequency_source_binding_repair.json": "59c5d39538f67a215248b9664715385d9d601f5173e1643ac486eac7729f8b33",
+    "_measurements/S11c_d_frequency_source_finish.py": "f52846a89e6ace33fe1520b652ea913cfa148edd0114eb2ea202fbd813dff315",
+    "_measurements/S11c_d_frequency_source_threshold_recovery_plan.md": "0c570f60c057ef8c0f71873bb9729cef4f295188b26f5d968741c01b43369c24",
+    "_measurements/S11c_d_frequency_source_threshold_repair.json": "ceb82afceacaf7b649982dabc9b7ed6f743ed98a8c00d47c1b11ca1c62d2917b",
+    "_measurements/S11c_d_frequency_chart.py": "06b1e19ffd03349951488b13580f336dc7d12e15a6941191026697b5c413ed97",
+    "_measurements/S11c_d_frequency_chart_plan.md": "825829b3ad7368495b80c17bf19b008db1036b6fb2559724ab465b424d938fba",
+    "_measurements/S11c_d_frequency_source_checkpoint.json": "ca5a3fa0f33d4f5457f9c5adb46b7c9da9f935661d839d036f12b0de86692bfe",
+    "_measurements/S11c_d_uniform_response.py": "b65749ab0eaaeed372a5bf01077a030971fc3e05f05a11543443bd1de3f157d4",
+    "_measurements/S11c_d_uniform_response_plan.md": "499ba568757645642bd4a402e4aaaacb165b2a2d0904be6e5d352e6f025bfa9d",
+    "_measurements/S11c_d_frequency_end.py": "f7a698ed27872ed0594692dbf671136b079279c32f9198bd92fcee23e3303a32",
+    "_measurements/S11c_d_frequency_end_plan.md": "f92d52325fd98fc8694aeec4c7cfd52f409b0ae286bcfb6fcac6e2f6616f469a",
+    "_measurements/S11c_d_frequency_chart_checkpoint.json": "f389d9234e8aa24146e0f881fd1a9a28fb4705dbb047f9295310af03723a242d",
+    "_measurements/S11c_d_frequency_matrix.py": "97797ab676a58f16785bf4234d41eb5cd01abc0a42f39edc4e20f926b2c2b336",
+    "_measurements/S11c_d_frequency_matrix_plan.md": "09bf24902656fa38524cd745a4fe731c1d054d0a396536e2631fd63d1223319c",
+    "_measurements/S11c_d_frequency_end_focused.json": "99697cf6138594ab78263d235237b42262ec0496ef0ac4986517d4594a9e2872",
+    "_measurements/S11c_d_frequency_contour.py": "ad82270f55b60098bcc5cd52b63da67743dda7242ca600c4d500f46d32b7d981",
+    "_measurements/S11c_d_frequency_contour_plan.md": "87ce05fb93ce51211d42822024e60201345f488d121d0cec7ee7ebd96f1ef08e",
+    "_measurements/S11c_d_frequency_matrix_checkpoint.json": "0c350c5f9c554c2e585920745157be826daf51775e05676a0554d8670a750663",
+    "_measurements/S11c_d_frequency_contour_refine.py": "2e083d8a98feeb7ce9e4a442bd6ae3a3725d0d584e8f6da6b9f229ac3b6b1edb",
+    "_measurements/S11c_d_frequency_contour_refine_plan.md": "af6becf770ec4d57eb23cdca3c2d21ea7b6f0d3202370b6036d59e50ddda42e7",
+    "_measurements/S11c_d_frequency_contour_checkpoint.json": "ebd1b536129929aba8f24b80cce7df5de3220acdfae779eb077198fd8656259f"
+  },
+  "inputPackets": {
+    "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-matrices-20260919/production/complete/continuum-matrices.pickle": "1db95fb176c970298b33005a94e25f8ada3ba1423fad605231be66d8a711954e",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/finish-02/complete/continuum-boundary.pickle": "8e3e53c3b7b06e3e81f961f013b77b4b87dfede081db75b4de458503b062eed0",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-finite-domain-20260919/production/complete/regulator/complete/finite-system.pickle": "2a043895b5e8a203cc4dd0b517ba3feec61300ab812a0404f19195cc39c0319a",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-end-normalization-20260914/reference/modal.pickle": "69668d29e11af4ca89c667f1ff39e7f646366eba7cb596dde39e74fcbefe3cd7",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-reduced-action-source-20260914/complete/reduced-action.pickle": "e9062c3455c7e59fe816f47172062a0c118b201d03809ec0826575dac22872b0",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-finite-domain-20260919/production/complete/regulator/complete/domain-binding.pickle": "723f4a8ed7e6844b4ed867a669ca23be34f00f5a7ea92ce7cca541cff1a9f475",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-finite-domain-20260919/production/complete/regulator/complete/source-binding.pickle": "35b60a56e031b53183ec6800ab84f5731e0ea79cbc96a94c9343cd5cc3a73e94",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-finite-domain-20260919/production/complete/regulator/complete/finite-solution.pickle": "f7abb7a0efc01720ef27c6a856b2809b827b8b7e0be8e62db3a8b2fcb346c296",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-response-20260919/production/complete/continuum-response.pickle": "a6678ad8fd7b4adf01aa3470834dcc0a918d2f7269fa1e273a980ea67c5b84f3",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-grades-20260919/production/complete/continuum-grades.pickle": "e39412750fe58734ba4db2bd84d40908d18706ae055f6ddd6e3f53f560aa9b71",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-uniform-source-20260919/production/complete/uniform-source.pickle": "a482c5023d16558f52b20d0a347d6e38f33f0f06f780abd256c5220f922b5571",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-uniform-response-20260919/production/complete/reference-symbolic.pickle": "ec1166c45ca9ecf76a4894ede43cb8e2ce4319825edefab4539edc8dbe7985f0",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-uniform-response-20260919/production/complete/left-symbolic.pickle": "bff2376933d64dbb0ede9b6781556b3d5c160df70f7bfa8aad2573cb5af652dd",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-uniform-response-20260919/production/complete/right-symbolic.pickle": "9fad29b8fd898086c4d553256d917033cfaad191cab3fe8126e6618bd88dc751",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-source-20260919/finish-01/complete/frequency-source.pickle": "714a0011c6874b01d88969e8dbf02d75580639028024e04d81a4bb67a12b1cd8",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-chart-20260919/production/complete/frequency-chart.pickle": "ff629e38a98c099f0066cdbcddb1d7441d0b9948f9b2c13aef90d52a85f16866",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-uniform-response-20260919/production/complete/uniform-response.pickle": "1d5bd9967d08c5ad01eab8707ea25af01cfb9bf61bfd83073ed898c9d76a772f",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-end-20260919/focused/complete/end-seeds.pickle": "0ccb891d84ad3aefe800fc5c153c4699bb59e66c6569cceec47c8de361ce5d82",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-end-20260919/focused/complete/focused.pickle": "6b2cf0040c01c2406a4d6eda5f280ad690226e39f6dd77ab7a5766a9cc1bd4bf",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-matrix-20260919/production/complete/seed/frequency-system.pickle": "18d321a95559020c02486f0aa4671907cfac06bbc674d66f33d1d790d7e20a1c",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-contour-20260919/production/complete/checks.json": "f6e420e4bf8ac58fa423a309f075a02501c5a505c445660b03d852471cd8982c"
+  },
+  "artifactInventory": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-contour-refine-20260919/focused/checks.json",
+    "sha256": "8ff987aac1fb255b2697c921f801957904d409345261cb351edda9f0d495a6ff",
+    "key": "artifacts"
+  },
+  "checks": {
+    "status": "COMPLETED_NUMERICAL_CONTOUR_MIDPOINT_REFINEMENT",
+    "workers": [
+      {
+        "index": 0,
+        "pid": 4,
+        "exitCode": 0,
+        "stderrBytes": 0
+      },
+      {
+        "index": 1,
+        "pid": 5,
+        "exitCode": 0,
+        "stderrBytes": 0
+      },
+      {
+        "index": 2,
+        "pid": 6,
+        "exitCode": 0,
+        "stderrBytes": 0
+      },
+      {
+        "index": 3,
+        "pid": 7,
+        "exitCode": 0,
+        "stderrBytes": 0
+      }
+    ],
+    "joins": {
+      "wholeMidpointWorkerJoin": true,
+      "wholeMomentSummaryJoin": true,
+      "unchangedEndLoopBody": true,
+      "unchangedPointConstructorInverseAndMaps": true
+    },
+    "points": 32,
+    "reusedPoints": 16,
+    "newPoints": 16,
+    "center": "(1-0.01j)",
+    "radius": 0.02,
+    "winding": {
+      "16": {
+        "winding": 0.0,
+        "nearestInteger": 0,
+        "maximumPhaseIncrement": 2.70021603892287
+      },
+      "32": {
+        "winding": 4.417437057588218e-18,
+        "nearestInteger": 0,
+        "maximumPhaseIncrement": 1.3644707805736263
+      }
+    },
+    "inverseMomentNorms": {
+      "16": [
+        7.022411864988014e-06,
+        3.728279775940731e-07,
+        1.8302203590311785e-08,
+        9.724737168382023e-10
+      ],
+      "32": [
+        2.6662637579835496e-12,
+        6.247621459087987e-14,
+        3.293248916861586e-15,
+        1.747015972562231e-16
+      ]
+    },
+    "responseMomentNorms": {
+      "16": [
+        9.231970607090462e-14,
+        4.702751401430304e-15,
+        2.291935457327451e-16,
+        1.2354929576401346e-17
+      ],
+      "32": [
+        9.642312991529782e-16,
+        1.0078350958469194e-17,
+        1.580129629086394e-19,
+        4.0797824531165596e-21
+      ]
+    },
+    "inverseMomentChangeNorms": [
+      7.022412058702194e-06,
+      3.728279794334314e-07,
+      1.8302203756285185e-08,
+      9.724737584831706e-10
+    ],
+    "responseMomentChangeNorms": [
+      9.21312311006063e-14,
+      4.701904671542872e-15,
+      2.292310740866972e-16,
+      1.2354180292887838e-17
+    ],
+    "maximumPointCondition": 24087.671033549468,
+    "minimumPointSingularValue": 8.9709864427273e-05,
+    "maximumEndClosureDifference": 7.011711742568973e-12,
+    "newMomentumNodes": 2845568,
+    "unchangedAcceptedArtifacts": 936,
+    "wallSeconds": 639.8446240853518,
+    "peakCoordinatorRssKiB": 369688,
+    "scope": "One angular refinement to32 actual finite contour points, reusing every accepted even point and computing only16 midpoints. Numerical spectral evidence, not certified completeness or a physical bound-pole set.",
+    "limitations": [
+      "No certified contour-interior exceptional-locus or spectral completeness claim.",
+      "Inverse moments are not assumed projectors or simple residues.",
+      "No physical bound-pole set or global empty spectrum is supplied."
+    ]
+  },
+  "validation": {
+    "sources": 72,
+    "inputs": 21,
+    "newArtifacts": 1116,
+    "newArtifactBytes": 2646263327,
+    "unchangedOriginalArtifacts": 936,
+    "newPointValidation": [
+      {
+        "index": 1,
+        "rank": 645,
+        "condition": 5083.794191185727,
+        "equationResidual": 1.0897205862922453e-15,
+        "inverseResidual": 1.7548266367050276e-11,
+        "endResidual": 7.452656865416725e-13,
+        "boundaryResidual": 6.664335075760276e-14,
+        "nodes": 177848,
+        "measureResponses": 80,
+        "reused": false
+      },
+      {
+        "index": 3,
+        "rank": 645,
+        "condition": 3855.0223234506902,
+        "equationResidual": 1.0929035905316737e-15,
+        "inverseResidual": 4.49785898761669e-12,
+        "endResidual": 1.6437608632658036e-12,
+        "boundaryResidual": 6.741019433197582e-14,
+        "nodes": 177848,
+        "measureResponses": 80,
+        "reused": false
+      },
+      {
+        "index": 5,
+        "rank": 645,
+        "condition": 3262.848986089285,
+        "equationResidual": 1.2634328830617236e-15,
+        "inverseResidual": 7.490866883629593e-12,
+        "endResidual": 6.002341409758256e-13,
+        "boundaryResidual": 8.578770252104726e-14,
+        "nodes": 177848,
+        "measureResponses": 80,
+        "reused": false
+      },
+      {
+        "index": 7,
+        "rank": 645,
+        "condition": 2989.1444184868506,
+        "equationResidual": 1.5051827939376777e-15,
+        "inverseResidual": 8.30108932016497e-12,
+        "endResidual": 2.5011087177859613e-13,
+        "boundaryResidual": 4.474639550864097e-14,
+        "nodes": 177848,
+        "measureResponses": 80,
+        "reused": false
+      },
+      {
+        "index": 9,
+        "rank": 645,
+        "condition": 2922.479798234269,
+        "equationResidual": 1.155689142801248e-15,
+        "inverseResidual": 3.281629319338902e-12,
+        "endResidual": 2.5212657833189527e-13,
+        "boundaryResidual": 4.277730332530817e-14,
+        "nodes": 177848,
+        "measureResponses": 80,
+        "reused": false
+      },
+      {
+        "index": 11,
+        "rank": 645,
+        "condition": 3060.1422888320844,
+        "equationResidual": 1.083781340566364e-15,
+        "inverseResidual": 4.94441945540437e-12,
+        "endResidual": 6.139374399193377e-13,
+        "boundaryResidual": 5.758762252163395e-14,
+        "nodes": 177848,
+        "measureResponses": 80,
+        "reused": false
+      },
+      {
+        "index": 13,
+        "rank": 645,
+        "condition": 3506.1208532963806,
+        "equationResidual": 9.794057499986387e-16,
+        "inverseResidual": 7.55384868330182e-12,
+        "endResidual": 1.7008485217311213e-12,
+        "boundaryResidual": 6.876108739140701e-14,
+        "nodes": 177848,
+        "measureResponses": 80,
+        "reused": false
+      },
+      {
+        "index": 15,
+        "rank": 645,
+        "condition": 4572.238396011102,
+        "equationResidual": 9.96544726282439e-16,
+        "inverseResidual": 2.6288155627849283e-11,
+        "endResidual": 7.815328566822491e-13,
+        "boundaryResidual": 4.582983466479049e-14,
+        "nodes": 177848,
+        "measureResponses": 80,
+        "reused": false
+      },
+      {
+        "index": 17,
+        "rank": 645,
+        "condition": 6965.02457579724,
+        "equationResidual": 1.0291075577018917e-15,
+        "inverseResidual": 3.924466381937204e-11,
+        "endResidual": 1.4693323998980517e-12,
+        "boundaryResidual": 8.077093782681925e-14,
+        "nodes": 177848,
+        "measureResponses": 80,
+        "reused": false
+      },
+      {
+        "index": 19,
+        "rank": 645,
+        "condition": 11611.26434136368,
+        "equationResidual": 1.891706854716019e-15,
+        "inverseResidual": 2.5797303579874056e-10,
+        "endResidual": 6.113656111041066e-16,
+        "boundaryResidual": 1.0865221326154586e-13,
+        "nodes": 177848,
+        "measureResponses": 80,
+        "reused": false
+      },
+      {
+        "index": 21,
+        "rank": 645,
+        "condition": 18158.818286309623,
+        "equationResidual": 1.8079680369139856e-15,
+        "inverseResidual": 3.3928765704458236e-10,
+        "endResidual": 4.101800976788163e-16,
+        "boundaryResidual": 1.3597127604394546e-13,
+        "nodes": 177848,
+        "measureResponses": 80,
+        "reused": false
+      },
+      {
+        "index": 23,
+        "rank": 645,
+        "condition": 23321.229940665296,
+        "equationResidual": 1.9400662184842798e-15,
+        "inverseResidual": 3.032843910345247e-10,
+        "endResidual": 5.227628205963965e-16,
+        "boundaryResidual": 2.3472165465038247e-13,
+        "nodes": 177848,
+        "measureResponses": 80,
+        "reused": false
+      },
+      {
+        "index": 25,
+        "rank": 645,
+        "condition": 23364.386952763653,
+        "equationResidual": 1.9037004668159906e-15,
+        "inverseResidual": 2.377387218245348e-10,
+        "endResidual": 1.1381608557149825e-15,
+        "boundaryResidual": 1.4294310070929836e-13,
+        "nodes": 177848,
+        "measureResponses": 80,
+        "reused": false
+      },
+      {
+        "index": 27,
+        "rank": 645,
+        "condition": 18482.808756577873,
+        "equationResidual": 2.3064133323157325e-15,
+        "inverseResidual": 2.8646537159446823e-10,
+        "endResidual": 8.090599474671984e-16,
+        "boundaryResidual": 8.71139593189641e-14,
+        "nodes": 177848,
+        "measureResponses": 80,
+        "reused": false
+      },
+      {
+        "index": 29,
+        "rank": 645,
+        "condition": 12247.625204664257,
+        "equationResidual": 1.995847805769507e-15,
+        "inverseResidual": 6.152668892597867e-11,
+        "endResidual": 1.3027145033627505e-15,
+        "boundaryResidual": 1.1549393510648986e-13,
+        "nodes": 177848,
+        "measureResponses": 80,
+        "reused": false
+      },
+      {
+        "index": 31,
+        "rank": 645,
+        "condition": 7621.813824461951,
+        "equationResidual": 1.0224173179587546e-15,
+        "inverseResidual": 3.161977777254584e-11,
+        "endResidual": 1.4007442466120683e-12,
+        "boundaryResidual": 7.206922174154611e-14,
+        "nodes": 177848,
+        "measureResponses": 80,
+        "reused": false
+      }
+    ],
+    "reusedPointValidation": [
+      {
+        "index": 0,
+        "rank": 645,
+        "condition": 6133.257426669729,
+        "equationResidual": 1.3769142919957524e-15,
+        "inverseResidual": 4.256561263812907e-11,
+        "endResidual": 1.0467213224850288e-12,
+        "boundaryResidual": 4.134626908087862e-14,
+        "nodes": 177848,
+        "measureResponses": 80,
+        "originalIndex": 0,
+        "reused": true
+      },
+      {
+        "index": 2,
+        "rank": 645,
+        "condition": 4357.19309748354,
+        "equationResidual": 9.237296578016225e-16,
+        "inverseResidual": 7.076680738104451e-12,
+        "endResidual": 6.746436844387462e-16,
+        "boundaryResidual": 8.189866626351565e-14,
+        "nodes": 177848,
+        "measureResponses": 80,
+        "originalIndex": 1,
+        "reused": true
+      },
+      {
+        "index": 4,
+        "rank": 645,
+        "condition": 3505.9548298010177,
+        "equationResidual": 1.2387877509952531e-15,
+        "inverseResidual": 2.9810391400984703e-12,
+        "endResidual": 1.0069444208601425e-12,
+        "boundaryResidual": 7.692683984233703e-14,
+        "nodes": 177848,
+        "measureResponses": 80,
+        "originalIndex": 2,
+        "reused": true
+      },
+      {
+        "index": 6,
+        "rank": 645,
+        "condition": 3096.3406775473163,
+        "equationResidual": 1.0095046163567562e-15,
+        "inverseResidual": 5.3086815375079956e-12,
+        "endResidual": 3.659413624136025e-13,
+        "boundaryResidual": 1.3252919698974196e-13,
+        "nodes": 177848,
+        "measureResponses": 80,
+        "originalIndex": 3,
+        "reused": true
+      },
+      {
+        "index": 8,
+        "rank": 645,
+        "condition": 2932.189188584759,
+        "equationResidual": 9.787369795994562e-16,
+        "inverseResidual": 9.066866342630286e-12,
+        "endResidual": 5.410660725602912e-16,
+        "boundaryResidual": 6.524419037843428e-14,
+        "nodes": 177848,
+        "measureResponses": 80,
+        "originalIndex": 4,
+        "reused": true
+      },
+      {
+        "index": 10,
+        "rank": 645,
+        "condition": 2962.3724484160057,
+        "equationResidual": 1.1136488604755846e-15,
+        "inverseResidual": 2.565629535863942e-12,
+        "endResidual": 3.7149745933727314e-13,
+        "boundaryResidual": 6.432897012520641e-14,
+        "nodes": 177848,
+        "measureResponses": 80,
+        "originalIndex": 5,
+        "reused": true
+      },
+      {
+        "index": 12,
+        "rank": 645,
+        "condition": 3232.0173466201772,
+        "equationResidual": 1.064629407362554e-15,
+        "inverseResidual": 7.31189745841034e-12,
+        "endResidual": 1.0367124320550133e-12,
+        "boundaryResidual": 1.0102962422474491e-13,
+        "nodes": 177848,
+        "measureResponses": 80,
+        "originalIndex": 6,
+        "reused": true
+      },
+      {
+        "index": 14,
+        "rank": 645,
+        "condition": 3928.7330521159756,
+        "equationResidual": 9.578725167922522e-16,
+        "inverseResidual": 7.307836866257822e-12,
+        "endResidual": 8.108207989706154e-16,
+        "boundaryResidual": 4.6580430930631964e-14,
+        "nodes": 177848,
+        "measureResponses": 80,
+        "originalIndex": 7,
+        "reused": true
+      },
+      {
+        "index": 16,
+        "rank": 645,
+        "condition": 5540.898685887723,
+        "equationResidual": 1.1185937475585666e-15,
+        "inverseResidual": 2.618174803286363e-11,
+        "endResidual": 1.0986649678560437e-12,
+        "boundaryResidual": 8.494824152460342e-14,
+        "nodes": 177848,
+        "measureResponses": 80,
+        "originalIndex": 8,
+        "reused": true
+      },
+      {
+        "index": 18,
+        "rank": 645,
+        "condition": 8970.016927866363,
+        "equationResidual": 1.19030371082148e-15,
+        "inverseResidual": 8.41626705281124e-11,
+        "endResidual": 1.8744735233900604e-12,
+        "boundaryResidual": 5.5511470853138114e-14,
+        "nodes": 177848,
+        "measureResponses": 80,
+        "originalIndex": 9,
+        "reused": true
+      },
+      {
+        "index": 20,
+        "rank": 645,
+        "condition": 14784.759412855097,
+        "equationResidual": 1.5422537039686964e-15,
+        "inverseResidual": 2.0782819669402347e-10,
+        "endResidual": 8.464926934826266e-16,
+        "boundaryResidual": 1.1167189685988283e-13,
+        "nodes": 177848,
+        "measureResponses": 80,
+        "originalIndex": 10,
+        "reused": true
+      },
+      {
+        "index": 22,
+        "rank": 645,
+        "condition": 21199.75050714695,
+        "equationResidual": 2.7549798408310015e-15,
+        "inverseResidual": 4.691981094020577e-10,
+        "endResidual": 6.360601655350862e-16,
+        "boundaryResidual": 1.622959337112435e-13,
+        "nodes": 177848,
+        "measureResponses": 80,
+        "originalIndex": 11,
+        "reused": true
+      },
+      {
+        "index": 24,
+        "rank": 645,
+        "condition": 24087.671033549468,
+        "equationResidual": 2.5767363469154087e-15,
+        "inverseResidual": 5.329742305337644e-10,
+        "endResidual": 5.737818580222218e-16,
+        "boundaryResidual": 1.2361994375156144e-13,
+        "nodes": 177848,
+        "measureResponses": 80,
+        "originalIndex": 12,
+        "reused": true
+      },
+      {
+        "index": 26,
+        "rank": 645,
+        "condition": 21349.239541438048,
+        "equationResidual": 2.159837102947116e-15,
+        "inverseResidual": 3.7356756596435533e-10,
+        "endResidual": 4.663882024921568e-16,
+        "boundaryResidual": 1.4867617294925204e-13,
+        "nodes": 177848,
+        "measureResponses": 80,
+        "originalIndex": 13,
+        "reused": true
+      },
+      {
+        "index": 28,
+        "rank": 645,
+        "condition": 15293.408802092443,
+        "equationResidual": 2.4201043035100212e-15,
+        "inverseResidual": 1.1100709181283379e-10,
+        "endResidual": 4.540665013092545e-16,
+        "boundaryResidual": 1.3678019755596138e-13,
+        "nodes": 177848,
+        "measureResponses": 80,
+        "originalIndex": 14,
+        "reused": true
+      },
+      {
+        "index": 30,
+        "rank": 645,
+        "condition": 9650.958187661287,
+        "equationResidual": 2.2140618942193413e-15,
+        "inverseResidual": 1.070067579886891e-10,
+        "endResidual": 1.792090495335662e-12,
+        "boundaryResidual": 8.34906168819225e-14,
+        "nodes": 177848,
+        "measureResponses": 80,
+        "originalIndex": 15,
+        "reused": true
+      }
+    ],
+    "newMomentumNodes": 2845568,
+    "loopCorrectedPoints": 350,
+    "maximumRadialDifference": 9.341467171243005e-12,
+    "maximumLoopClosure": 7.011711742568973e-12,
+    "minimumRecordedEndDenominatorSingularValue": 1.0,
+    "maximumRecordedEndJacobianCondition": 19.245622368654182,
+    "postRunAdapterAcceptance": {
+      "status": "ACCEPTED_POST_RUN_MIDPOINT_ADAPTER",
+      "timing": "Performed after production; the standalone --focused invocation was omitted.",
+      "joins": {
+        "wholeMidpointWorkerJoin": true,
+        "wholeMomentSummaryJoin": true,
+        "unchangedEndLoopBody": true,
+        "unchangedPointConstructorInverseAndMaps": true
+      },
+      "reusedAddresses": 16,
+      "wrongAddressesRejected": 16,
+      "allMidpointOwnership": true,
+      "fullRetained16InverseAndResponseMomentsExact": true,
+      "noQuadratureOrSolveRepeated": true
+    },
+    "allOriginalAndNewArtifactHashesUnchanged": true,
+    "scope": "One angular refinement to32 actual finite contour points, reusing every accepted even point and computing only16 midpoints. Numerical spectral evidence, not certified completeness or a physical bound-pole set."
+  },
+  "searchOutcome": {
+    "status": "NO_CANDIDATE_RESOLVED_IN_BOUNDED_NUMERICAL_SEARCH",
+    "center": "(1-0.01j)",
+    "radius": 0.02,
+    "sampleCounts": [
+      8,
+      16,
+      32
+    ],
+    "realMomentumScalarChart": "|omega-1|<=1/4 with the accepted real momentum domain; not an entire complex end-momentum certificate",
+    "maximumSampledPhaseIncrement": 1.3644707805736263,
+    "sampledWinding": 4.417437057588218e-18,
+    "inverseMomentNorms": [
+      2.6662637579835496e-12,
+      6.247621459087987e-14,
+      3.293248916861586e-15,
+      1.747015972562231e-16
+    ],
+    "responseMomentNorms": [
+      9.642312991529782e-16,
+      1.0078350958469194e-17,
+      1.580129629086394e-19,
+      4.0797824531165596e-21
+    ],
+    "resolvedPhysicalPoleSet": "Not asserted; no candidate is resolved by this local finite search.",
+    "stoppingDecision": "Close the selected local numerical search and continue remaining cases and exports. No automatic contour doubling.",
+    "limitations": [
+      "No certified contour-interior exceptional-locus or spectral completeness claim.",
+      "Inverse moments are not assumed projectors or simple residues.",
+      "No physical bound-pole set or global empty spectrum is supplied."
+    ]
+  },
+  "validator": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-contour-refine-20260919/accept-final.py",
+    "sha256": "dc41835bb5f77c65313f319c5247a92a6eb4d7b501619f20cc5bbd278b89b974"
+  },
+  "next": "Remaining three anchoring/density cases and engine/own-row export integration, preserving this bounded numerical pole-search scope.",
+  "acceptanceOutcome": {
+    "stage": "refine_accept",
+    "command": [
+      "python",
+      "-u",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-contour-refine-20260919/accept-final.py"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-contour-refine-20260919/acceptance-retry/refine_accept.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-contour-refine-20260919/acceptance-retry/refine_accept.stderr",
+    "startedUtc": "2026-09-19T22:43:09.514572+00:00",
+    "childPid": 4,
+    "status": "completed",
+    "exitCode": 0,
+    "wallSeconds": 66.93424287531525,
+    "stderrBytes": 0,
+    "finishedUtc": "2026-09-19T22:44:16.448891+00:00"
+  },
+  "acceptanceSummaryRepair": {
+    "originalValidator": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-contour-refine-20260919/accept-final-before-summary-repair.py",
+    "originalSha256": "544c210bd66451b2c1f9979afc7391c43122d114717678db05c0e675b2348a95",
+    "repairedValidator": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-contour-refine-20260919/accept-final.py",
+    "repairedSha256": "dc41835bb5f77c65313f319c5247a92a6eb4d7b501619f20cc5bbd278b89b974",
+    "reverseWholeFileAstJoin": true,
+    "change": "Rename the moment-comparison loop variable so it cannot overwrite the list of completed per-point validation records.",
+    "originalFailure": {
+      "stage": "refine_accept",
+      "command": [
+        "python",
+        "-u",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-contour-refine-20260919/accept-final.py"
+      ],
+      "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-contour-refine-20260919/acceptance/refine_accept.stdout",
+      "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-contour-refine-20260919/acceptance/refine_accept.stderr",
+      "startedUtc": "2026-09-19T22:39:21.671570+00:00",
+      "childPid": 4,
+      "status": "failed",
+      "exitCode": 1,
+      "wallSeconds": 63.54469161480665,
+      "stderrBytes": 1840,
+      "finishedUtc": "2026-09-19T22:40:25.216308+00:00"
+    },
+    "repeatedWork": "Saved-array validation only; no quadrature, end continuation, inverse construction or solve.",
+    "productionPacketsUnchanged": true
+  }
+}

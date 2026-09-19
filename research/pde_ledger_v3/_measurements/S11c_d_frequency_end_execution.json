@@ -1,9 +1,66 @@
 {
-  "status": "FOCUSED_PREPARATION",
+  "status": "RUNNING",
   "checker": "S11c_d_frequency_end.py",
   "plan": "S11c_d_frequency_end_plan.md",
   "report": "S11c_d_frequency_end_report.md",
   "acceptedScalarChartCommit": "6775844c",
-  "limits": {"wallSeconds": 900, "nativeThreads": 1, "addressSpaceBytes": 2147483648},
-  "next": "Validate actual full-subspace continuation before constructing the finite frequency pencil and a targeted pole search."
+  "limits": {
+    "wallSeconds": 900,
+    "nativeThreads": 1,
+    "addressSpaceBytes": 2147483648
+  },
+  "next": "Validate actual full-subspace continuation before constructing the finite frequency pencil and a targeted pole search.",
+  "implementationCommit": "b6efa43f",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-end-20260919/focused",
+  "launch": {
+    "launchedUtc": "2026-09-19T21:38:08.819198+00:00",
+    "command": [
+      "/usr/bin/python",
+      "_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-end-20260919/focused",
+      "--stage",
+      "end_focused",
+      "--",
+      "python",
+      "-u",
+      "_measurements/S11c_d_frequency_end.py",
+      "--focused",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-end-20260919/focused/complete"
+    ],
+    "supervisorPid": 752820,
+    "watcherPid": 752821,
+    "watcherDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-end-20260919/focused/completion-watcher",
+    "threadEnvironment": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1"
+    }
+  },
+  "startup": {
+    "active": {
+      "stage": "end_focused",
+      "command": [
+        "python",
+        "-u",
+        "_measurements/S11c_d_frequency_end.py",
+        "--focused",
+        "--run-directory",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-end-20260919/focused/complete"
+      ],
+      "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-end-20260919/focused/end_focused.stdout",
+      "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-end-20260919/focused/end_focused.stderr",
+      "startedUtc": "2026-09-19T21:38:08.862551+00:00",
+      "childPid": 752822,
+      "status": "running"
+    },
+    "strictStderrBytes": 0,
+    "watcherStderrBytes": 0
+  },
+  "launcher": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-end-20260919/focused/launch.py",
+    "sha256": "2bb59930f71eba2f6034825ec1a807a0a3daa97da32569ae2bb016cce6066aa9"
+  }
 }

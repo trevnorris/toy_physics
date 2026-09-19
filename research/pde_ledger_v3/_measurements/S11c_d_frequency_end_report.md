@@ -10,3 +10,7 @@ The new helper continues R,K,Q using full invariant-pair, radical and constant
 gauge equations. It derives frequency-dependent trace, forcing, observation
 and phase maps in those coordinates. Focused checks are pending. No end chart,
 finite frequency pencil, inverse or pole result is accepted yet.
+
+The focused check is launched from b6efa43f with one native thread, a 2 GiB
+ceiling and a 900-second budget. The single startup inspection found clean
+child and watcher logs. The local completion/error hook will resume validation.

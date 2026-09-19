@@ -20,3 +20,7 @@ each end pencil and mode cluster before later guards. No numerical integration
 or upstream physics is repeated. Full boundary/current results remain pending.
 The continuum solve, physical controls, flux bookkeeping, poles and final
 cases/exports follow under exploratory acceptance.
+
+Production launched at2026-09-19T16:12:15Z under the existing supervisor and
+silent completion/error watcher. Startup verified both processes and the
+constructor, with empty stderr. No production result is accepted yet.

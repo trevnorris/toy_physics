@@ -1,5 +1,5 @@
 {
-  "status": "READY",
+  "status": "RUNNING",
   "checker": "S11c_d_continuum_boundary.py",
   "plan": "S11c_d_continuum_boundary_plan.md",
   "report": "S11c_d_continuum_boundary_report.md",
@@ -10,5 +10,103 @@
     "nativeThreads": 1,
     "addressSpaceBytes": 2147483648
   },
-  "next": "Validate full boundary/current coefficients, then solve the coefficient response."
+  "next": "Validate full boundary/current coefficients, then solve the coefficient response.",
+  "implementationCommit": "27f51b92",
+  "launch": {
+    "launchedUtc": "2026-09-19T16:12:15.995145+00:00",
+    "command": [
+      "/usr/bin/python",
+      "_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/production",
+      "--stage",
+      "boundary_construct",
+      "--",
+      "python",
+      "-u",
+      "_measurements/S11c_d_continuum_boundary.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/production/complete"
+    ],
+    "supervisorPid": 613214,
+    "watcherPid": 613215,
+    "watcherDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/production/completion-watcher",
+    "threadEnvironment": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1"
+    }
+  },
+  "launchVerification": {
+    "launch": {
+      "launchedUtc": "2026-09-19T16:12:15.995145+00:00",
+      "command": [
+        "/usr/bin/python",
+        "_measurements/S11c_d_end_normalization_run.py",
+        "--run-root",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/production",
+        "--stage",
+        "boundary_construct",
+        "--",
+        "python",
+        "-u",
+        "_measurements/S11c_d_continuum_boundary.py",
+        "--run-directory",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/production/complete"
+      ],
+      "supervisorPid": 613214,
+      "watcherPid": 613215,
+      "watcherDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/production/completion-watcher",
+      "threadEnvironment": {
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1"
+      }
+    },
+    "active": {
+      "stage": "boundary_construct",
+      "command": [
+        "python",
+        "-u",
+        "_measurements/S11c_d_continuum_boundary.py",
+        "--run-directory",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/production/complete"
+      ],
+      "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/production/boundary_construct.stdout",
+      "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/production/boundary_construct.stderr",
+      "startedUtc": "2026-09-19T16:12:16.038573+00:00",
+      "childPid": 613220,
+      "status": "running"
+    },
+    "watcher": {
+      "status": "waiting",
+      "watcherPid": 613215,
+      "jobPid": 613214,
+      "thread": "01a08c53-295c-70f0-baaf-353db1745867",
+      "startedUtc": "2026-09-19T16:12:16.043979+00:00",
+      "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
+      "messageSha256": "2b46ce3d5ea621df352e1b53e536bf894d29962945c951d5c22ac4f194ccee00",
+      "notifications": {}
+    },
+    "stderrBytes": 0,
+    "processes": {
+      "supervisor": {
+        "pid": 613214,
+        "exists": true,
+        "command": "/usr/bin/python _measurements/S11c_d_end_normalization_run.py --run-root /var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/production --stage boundary_construct -- python -u _measurements/S11c_d_continuum_boundary.py --run-directory /var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/production/complete "
+      },
+      "watcher": {
+        "pid": 613215,
+        "exists": true,
+        "command": "/usr/bin/python /var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/production/completion-watcher/watch.py --pid 613214 --thread 01a08c53-295c-70f0-baaf-353db1745867 --directory /var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/production/completion-watcher --message-file /var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/production/completion-watcher/continuation.txt --error-log /var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/production/boundary_construct.stderr --codex-bin /home/trevnorris/.npm-packages/bin/codex "
+      },
+      "constructor": {
+        "pid": 613220,
+        "exists": true,
+        "command": "python -u _measurements/S11c_d_continuum_boundary.py --run-directory /var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/production/complete "
+      }
+    }
+  }
 }

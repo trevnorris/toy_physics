@@ -1,5 +1,5 @@
 {
-  "status": "FOCUSED_BINDING_RUNNING",
+  "status": "ACCEPTED_FOCUSED_BINDING",
   "checker": "S11c_d_first_jet.py",
   "plan": "S11c_d_first_jet_plan.md",
   "report": "S11c_d_first_jet_report.md",
@@ -10,7 +10,7 @@
     "nativeThreads": 1,
     "addressSpaceBytes": 2147483648
   },
-  "next": "Validate source-driven mutation and exact unchanged-row partition, commit, then integrate only affected rows and solve the complete continuum response.",
+  "next": "Reuse all binding packets and30 source-identical rows; integrate50 changed rows and solve the complete independent-grade response.",
   "implementationCommit": "5f90d23a",
   "launch": {
     "launchedUtc": "2026-09-19T19:59:51.641436+00:00",
@@ -49,5 +49,54 @@
   "launcher": {
     "path": "/var/projects/toy_physics/_scratch/s11c/s11c-first-jet-20260919/focused/launch.py",
     "sha256": "bea6e8994575bdefa1ed13aff586f183aaf6a9e009e50369475ecf8cf38b448d"
+  },
+  "acceptedFocusedDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-first-jet-20260919/focused/complete",
+  "focusedOutcome": {
+    "stage": "first_jet_bind",
+    "command": [
+      "python",
+      "-u",
+      "_measurements/S11c_d_first_jet.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-first-jet-20260919/focused/complete",
+      "--focused"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-first-jet-20260919/focused/first_jet_bind.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-first-jet-20260919/focused/first_jet_bind.stderr",
+    "startedUtc": "2026-09-19T19:59:51.672015+00:00",
+    "childPid": 716429,
+    "status": "completed",
+    "exitCode": 0,
+    "wallSeconds": 23.50808493513614,
+    "stderrBytes": 0,
+    "finishedUtc": "2026-09-19T20:00:15.180143+00:00"
+  },
+  "focusedValidation": {
+    "status": "ACCEPTED_FOCUSED_BINDING",
+    "supervisorWallSeconds": 23.50808493513614,
+    "sources": 54,
+    "inputPackets": 12,
+    "artifacts": 377,
+    "records": 375,
+    "exactGradeProofScalars": 1628,
+    "involutionChecks": 375,
+    "omittedReversalControls": 75,
+    "baselineCoefficientJoins": 400,
+    "baselineLocalResidual": 0,
+    "changedRows": 50,
+    "reusedRows": 30,
+    "changedSources": 12,
+    "changedLayoutCounts": {
+      "1": 16,
+      "2": 24,
+      "3": 10
+    },
+    "sameEndpointLimits": true,
+    "gradeGeneratorsSource": "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-grades-20260919/production/complete/continuum-grades.pickle",
+    "settingsSerializationJoin": "Only native innerOrders tuple becomes its same ordered JSON list; all settings compared exactly.",
+    "checksSha256": "f9ec2dd88445ec2a2330a33ebbbc0dad5732388f5b46de1e17893f787f898bef",
+    "bindingSha256": "30690e3f0fcd9871cf546f6e02a3032bdac648a058e9c4bdda06d103627f9d9f",
+    "validatorSha256": "6240ba8f8ddddc58c49b725c141bf440be4e76261b29297ee50726be535ce968",
+    "scope": "Source/grade binding and exact numerical row reuse only; no new scattering result."
   }
 }

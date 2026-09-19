@@ -1,5 +1,5 @@
 {
-  "status": "IMPLEMENTED_NOT_RUN",
+  "status": "failed",
   "checker": "S11c_d_frequency_source.py",
   "plan": "S11c_d_frequency_source_plan.md",
   "report": "S11c_d_frequency_source_report.md",
@@ -10,5 +10,43 @@
     "nativeThreads": 1,
     "addressSpaceBytes": 2147483648
   },
-  "next": "Validate frequency-dependent reduced sources and end-domain candidates; construct an analytic outgoing finite pencil and a targeted bounded pole search."
+  "next": "Validate frequency-dependent reduced sources and end-domain candidates; construct an analytic outgoing finite pencil and a targeted bounded pole search.",
+  "implementationCommit": "4b14f7cb",
+  "launch": {
+    "launchedUtc": "2026-09-19T20:25:09.909593+00:00",
+    "command": [
+      "/usr/bin/python",
+      "_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-source-20260919/production",
+      "--stage",
+      "frequency_construct",
+      "--",
+      "python",
+      "-u",
+      "_measurements/S11c_d_frequency_source.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-source-20260919/production/complete"
+    ],
+    "supervisorPid": 727218,
+    "watcherPid": 727219,
+    "watcherDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-source-20260919/production/completion-watcher",
+    "threadEnvironment": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1"
+    }
+  },
+  "startup": {
+    "status": "failed",
+    "childPid": 727220,
+    "strictStderrBytes": 621,
+    "watcherStderrBytes": 0,
+    "inspection": "One clean startup inspection; silent local completion/error hook owns continuation."
+  },
+  "launcher": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-source-20260919/production/launch.py",
+    "sha256": "12f1cdbc2e97bef553eea2ff962336dc8a90626f3fe1c5ff030d346444c12679"
+  }
 }

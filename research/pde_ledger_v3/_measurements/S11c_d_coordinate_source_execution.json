@@ -1,0 +1,15 @@
+{
+  "status": "IMPLEMENTATION_PREPARED",
+  "checker": "S11c_d_coordinate_source.py",
+  "plan": "S11c_d_coordinate_source_plan.md",
+  "report": "S11c_d_coordinate_source_report.md",
+  "focused": "S11c_d_coordinate_source_focused.json",
+  "acceptedUniformControlCommit": "7b388dac",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-coordinate-control-20260919/production",
+  "limits": {
+    "wallSeconds": 900,
+    "nativeThreads": 1,
+    "addressSpaceBytes": 2147483648
+  },
+  "next": "Validate full source chart and one-sided mutation operands, then construct material/Eulerian scattering comparison with actual source/node/measure/channel/current joins."
+}

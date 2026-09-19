@@ -1,0 +1,143 @@
+{
+  "status": "VALIDATED_FOCUSED_SOURCE_CHART",
+  "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-coordinate-control-20260919/focused-03",
+  "checksSha256": "52bab1621f8cb85571881306cb72004a09f290ab77af4b4c7e24396f4fa90f6c",
+  "checks": {
+    "wallSeconds": 10.19771889038384,
+    "records": [
+      {
+        "kind": "local",
+        "address": [
+          "local",
+          0,
+          0,
+          0
+        ],
+        "shapeOccurrenceCount": 0
+      },
+      {
+        "kind": "cell",
+        "address": [
+          "cell",
+          3,
+          0,
+          0
+        ],
+        "shapeOccurrenceCount": 0
+      },
+      {
+        "kind": "factor",
+        "address": [
+          "factor",
+          0,
+          0
+        ],
+        "shapeOccurrenceCount": 0
+      },
+      {
+        "kind": "nested",
+        "address": [
+          "factor",
+          79,
+          0
+        ],
+        "shapeOccurrenceCount": 16
+      },
+      {
+        "kind": "source",
+        "address": [
+          "source",
+          0
+        ],
+        "shapeOccurrenceCount": 0
+      }
+    ],
+    "jetProofScalars": 650,
+    "jacobian": "6/5",
+    "tangentialJacobian": "24/25",
+    "normalJacobian": "5/4",
+    "measureMutation": "-sqrt(pi)/5",
+    "sourceFiles": {
+      "_measurements/S11c_d_continuum_grades.py": "0443c3adbeaf813ad66c60af0a50c96e9a841277d51f9c23bf1c601d2fdf329d",
+      "_measurements/S11c_d_continuum_grade_plan.md": "693546373ea2c8c5eec4ef3c8c93732fc7440a1eb1a2cdb1a6cf9d0f5b469040",
+      "_measurements/S11c_d_reduced_action_assembly_checkpoint.json": "b4afb727b1a1ad2a468b0bab9a6ab369dbe4dd35bc46acd7150b7fa581cd984f",
+      "_measurements/S11c_d_source_fourier_factorization_checkpoint.json": "fcf6f1c5598b63c11d4f8a76d2d94c2b5bace590e83d4beea3e52e82f44158a6",
+      "_measurements/S11c_d_reduced_action_source_checkpoint.json": "b6dcd36ee6cf8ed3b3943e207012dd165fce62ec39cb8f53ca3c23f4715d094b",
+      "scripts/S11c_d_mixing_scattering_sympy_audit.py": "5bf77729682960bb59f10c672a5fe3f67a98b0a9533da7c6189a37183596050f",
+      "_measurements/S11c_d_reduced_action_source_check.py": "aae3b2402e1707ef27f217b917dc10592f38acbe35d18356fbc4886ed854f754",
+      "directives/S11c_d_EXPLORATORY_ACCEPTANCE.md": "5c1e560a78d40739af8b1318c0487e20bf2b816c41109889e12004266c72840c",
+      "_measurements/S11c_d_finite_scattering_domain_checkpoint.json": "2286978066ad6e0c8b9558a950b40521c61ac2cdfec58a9694f890c70c90280c",
+      "_measurements/S11c_d_variable_profile_development_input.json": "660b2b0b54494dce964c7f5fbd722a76a7e894d8ed92b18b5eb6290c3c10f1d5",
+      "directives/S11c_d_NONLINEAR_POLE_CONTRACT.md": "2b6018faf0d5ca772bf9c980174d8ebe7545127a3bf43ba01d1b3c0b6a5be423",
+      "scripts/S11c_b_exports.py": "3c6555f90a85382a5e96f3f961f0e36a4875d9259fe1be947fa8e683669b7084",
+      "scripts/S11c_c1_exports.py": "a5353b86dc526fd1b56734fdbdf7dc7f42387a3195ab4de84e8994f751871cdc",
+      "scripts/S11c_c2_exports.py": "2ba5ed487b84ecb98290df6f1650fa6210fe2784cfa02a0f3cff96cd718411cd",
+      "directives/S11c_d_SHARED_PHYSICS.md": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5",
+      "directives/S11b_SHARED_PHYSICS.md": "9ea9e388e9d6421a841eaf851d12e1793527bba9a24aeeface3bfac2f4b40078",
+      "scripts/ledger_fold.py": "97da78c6631c09e5575dd14511760506f1ac08771cf07948978004e92f0b2333",
+      "_measurements/S11c_d_coordinate_source.py": "78f72ba8f51d7081551bf97f3caca2e090e5a4aecea6fe8c6e598b844555f159",
+      "_measurements/S11c_d_coordinate_source_plan.md": "2f2798d112fe3184beb0a173c28763c9fc9c83bb57a88c6b591e4e12ad207f6c",
+      "_measurements/S11c_d_continuum_grade_checkpoint.json": "3987ff4abb782050fffc767065ed9b3126da49215aa0df41320abef7fdec4692",
+      "_measurements/S11c_d_uniform_response_checkpoint.json": "74f5bd4da163dd6d78ad427fc5c4cd6926f414c961172f6854174131ea2fbc45",
+      "_measurements/S11c_d_continuum_boundary.py": "ed3a6539d3151c52d25f12308b121897baf3bd6a5a626a598ab728988ab933a0"
+    },
+    "inputPackets": {
+      "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-grades-20260919/production/complete/continuum-grades.pickle": "e39412750fe58734ba4db2bd84d40908d18706ae055f6ddd6e3f53f560aa9b71",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-reduced-action-source-20260914/complete/reduced-action.pickle": "e9062c3455c7e59fe816f47172062a0c118b201d03809ec0826575dac22872b0"
+    },
+    "artifacts": {
+      "jets.pickle": {
+        "sha256": "dbe1f67c6b0e54295d51448aa2b21723b48d66a6f695b83136dcbbff41191c3b",
+        "bytes": 5436
+      },
+      "cell.pickle": {
+        "sha256": "cee676d2fb10f52fd7c5a1d8933c35988c5d2abdfe5f7e629115aa475c966f99",
+        "bytes": 1005
+      },
+      "local.pickle": {
+        "sha256": "8440003c0a6109d307fffd284eb3416427376755687dd24899c3d29291a443cd",
+        "bytes": 2223
+      },
+      "nested.pickle": {
+        "sha256": "f658b3c686fd82871df242d584b24c6cf7bf029a51828a4feec21317a2b3c775",
+        "bytes": 16187
+      },
+      "chart.pickle": {
+        "sha256": "017d7a0916531cac1d841e2cbbd1f0f0d9ae5f8b44e29c49f52a1cb2e030d003",
+        "bytes": 4015
+      },
+      "factor.pickle": {
+        "sha256": "f46a14963d7e399da9905ad9d5e0989922dade8648443c4a161c9dfdb0ac859f",
+        "bytes": 2101
+      },
+      "measure-control.pickle": {
+        "sha256": "e861bd84f4779338bbca96266e26a25ffc507c079a063e2347e07d54ca19fa68",
+        "bytes": 244
+      },
+      "source.pickle": {
+        "sha256": "11dc5ffc6697f1c415773dd0f49e0456a8dad90db82e1bd60f00ddb0bceff5f9",
+        "bytes": 3819
+      }
+    }
+  },
+  "currentSourceSha256": "98eb9d90229e575c624e716fca6d73e433ee039d27f71e5e5af811f45b12018c",
+  "functionJoins": {
+    "selected_exports": true,
+    "load": true,
+    "chart": true,
+    "coordinate_change": true,
+    "jets": true,
+    "linear_source": true,
+    "first_jet_mutation": true,
+    "construct": true,
+    "emit_result": false,
+    "main": true
+  },
+  "emitterChange": "Add saved source raw/carrier proof residual emissions; every constructor/map/loader/helper unchanged.",
+  "originalFailures": [
+    "inspection.stdlib_shadow",
+    "focused.full_parent_loader_memory",
+    "focused-02.raw_source_polynomial_representation"
+  ],
+  "scope": "Focused affine coordinate and derivative/measure checks only; full source census and scattering route remain."
+}

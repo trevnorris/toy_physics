@@ -1,0 +1,15 @@
+{
+  "status": "READY",
+  "checker": "S11c_d_continuum_grades.py",
+  "plan": "S11c_d_continuum_grade_plan.md",
+  "report": "S11c_d_continuum_grade_report.md",
+  "focused": "S11c_d_continuum_grade_focused.json",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-grades-20260919/production",
+  "acceptedFiniteResponseCommit": "15ff4e74",
+  "limits": {
+    "wallSeconds": 900,
+    "nativeThreads": 1,
+    "addressSpaceBytes": 2147483648
+  },
+  "next": "Extract complete independent coefficient operators; then build the response expansion with actual boundary/channel/current derivatives."
+}

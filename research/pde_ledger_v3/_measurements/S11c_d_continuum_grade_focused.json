@@ -1,0 +1,97 @@
+{
+  "status": "VALIDATED_FOCUSED_GRADE_EXTRACTION",
+  "scriptSha256": "0443c3adbeaf813ad66c60af0a50c96e9a841277d51f9c23bf1c601d2fdf329d",
+  "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-grades-20260919/focused-02",
+  "checksSha256": "ebed5d8dd00a7e4ee60cfb8b518c4df430912d128255ab1b7aff1cf69aa215cf",
+  "checks": {
+    "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-grades-20260919/focused-02",
+    "focused": true,
+    "sourceFiles": {
+      "_measurements/S11c_d_continuum_grades.py": "0443c3adbeaf813ad66c60af0a50c96e9a841277d51f9c23bf1c601d2fdf329d",
+      "_measurements/S11c_d_continuum_grade_plan.md": "693546373ea2c8c5eec4ef3c8c93732fc7440a1eb1a2cdb1a6cf9d0f5b469040",
+      "_measurements/S11c_d_reduced_action_assembly_checkpoint.json": "b4afb727b1a1ad2a468b0bab9a6ab369dbe4dd35bc46acd7150b7fa581cd984f",
+      "_measurements/S11c_d_source_fourier_factorization_checkpoint.json": "fcf6f1c5598b63c11d4f8a76d2d94c2b5bace590e83d4beea3e52e82f44158a6",
+      "_measurements/S11c_d_reduced_action_source_checkpoint.json": "b6dcd36ee6cf8ed3b3943e207012dd165fce62ec39cb8f53ca3c23f4715d094b",
+      "scripts/S11c_d_mixing_scattering_sympy_audit.py": "5bf77729682960bb59f10c672a5fe3f67a98b0a9533da7c6189a37183596050f",
+      "_measurements/S11c_d_reduced_action_source_check.py": "aae3b2402e1707ef27f217b917dc10592f38acbe35d18356fbc4886ed854f754",
+      "directives/S11c_d_EXPLORATORY_ACCEPTANCE.md": "5c1e560a78d40739af8b1318c0487e20bf2b816c41109889e12004266c72840c",
+      "_measurements/S11c_d_finite_scattering_domain_checkpoint.json": "2286978066ad6e0c8b9558a950b40521c61ac2cdfec58a9694f890c70c90280c",
+      "_measurements/S11c_d_variable_profile_development_input.json": "660b2b0b54494dce964c7f5fbd722a76a7e894d8ed92b18b5eb6290c3c10f1d5",
+      "directives/S11c_d_NONLINEAR_POLE_CONTRACT.md": "2b6018faf0d5ca772bf9c980174d8ebe7545127a3bf43ba01d1b3c0b6a5be423",
+      "scripts/S11c_b_exports.py": "3c6555f90a85382a5e96f3f961f0e36a4875d9259fe1be947fa8e683669b7084",
+      "scripts/S11c_c1_exports.py": "a5353b86dc526fd1b56734fdbdf7dc7f42387a3195ab4de84e8994f751871cdc",
+      "scripts/S11c_c2_exports.py": "2ba5ed487b84ecb98290df6f1650fa6210fe2784cfa02a0f3cff96cd718411cd",
+      "directives/S11c_d_SHARED_PHYSICS.md": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5",
+      "directives/S11b_SHARED_PHYSICS.md": "9ea9e388e9d6421a841eaf851d12e1793527bba9a24aeeface3bfac2f4b40078",
+      "scripts/ledger_fold.py": "97da78c6631c09e5575dd14511760506f1ac08771cf07948978004e92f0b2333"
+    },
+    "inputPackets": {
+      "/var/projects/toy_physics/_scratch/s11c/s11c-reduced-action-assembly-20260914/recovery-01/complete/assembly.pickle": "8eda57998285137d99cce9564757627a57f8d5bc9b27091c86a65a9cc59230a0",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-source-fourier-20260914/recovery-01/complete/source-factorization.pickle": "4ad4e99de3f13a8bf3e42374f1425a84521e27634635063adb497cdc94651033",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-reduced-action-source-20260914/complete/reduced-action.pickle": "e9062c3455c7e59fe816f47172062a0c118b201d03809ec0826575dac22872b0",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-reduced-action-source-20260914/complete/actions.pickle": "4c2372a7102d1db9f21a049ab3104465e8d9245ab832be88c900bc8519b46e02"
+    },
+    "records": 4,
+    "nativeTermJoins": 0,
+    "sourceIntegrals": 35,
+    "recordKinds": {
+      "local": 1,
+      "cell": 1,
+      "factor": 1,
+      "source": 1
+    },
+    "coefficientControls": 4,
+    "tagCount": 30,
+    "writeKeys": 13,
+    "metadataPaths": 89,
+    "allGrades": [
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        1
+      ],
+      [
+        0,
+        1,
+        0
+      ],
+      [
+        0,
+        1,
+        1
+      ]
+    ],
+    "combinedTermGrades": [],
+    "outsideRectangleFactorGrades": 0,
+    "packetSha256BeforeEmission": "6af4a8af0829b210beae7ca33a5f9af736ed231326ae6e7a7feee8a7016f0ec5",
+    "packetSha256AfterEmission": "6af4a8af0829b210beae7ca33a5f9af736ed231326ae6e7a7feee8a7016f0ec5",
+    "artifacts": {
+      "continuum-grades.pickle": {
+        "bytes": 29267,
+        "sha256": "6af4a8af0829b210beae7ca33a5f9af736ed231326ae6e7a7feee8a7016f0ec5"
+      },
+      "mixed-control.pickle": {
+        "bytes": 624,
+        "sha256": "ccaa86d0569b5d546d07774a99aad761e00714b488a5ecebdfb8f807a62fbe42"
+      },
+      "full.out": {
+        "bytes": 50931,
+        "sha256": "15fa802fc40f083f296e5679f2bd96fd09ba844a6be8d4da92b9b3d00ba6b0e2"
+      },
+      "coefficient-controls.pickle": {
+        "bytes": 621,
+        "sha256": "5aca7460a5dae55bf9d12f852561451327969255c09dd6e8d47af3bbf54eedd3"
+      }
+    },
+    "wallSeconds": 26.37678246293217,
+    "peakRssKiB": 264396,
+    "scope": "Unintegrated native coefficient operators; continuum solution and channel-map expansion remain."
+  },
+  "controls": "Four actual local/cell/momentum/source operands; coefficient mutations and a separately labelled synthetic missing-mixed-slot control respond.",
+  "instrumentNotes": "Original focused selection incorrectly required every factor family to contain grades; actual momentum factors have none. Selection now preserves that computed absence. Second focused guard exposed zero structural grade indices without explicit dimensionless metadata; those indices now use the lossless structural emitter. Original snapshots, logs and operands remain. No factorization, numerical integration or upstream physics was rebuilt."
+}

@@ -1,5 +1,5 @@
 {
-  "status": "PRODUCTION_RUNNING",
+  "status": "PUBLISHED_ANNEX_VERIFIED",
   "checker": "S11c_d_first_jet.py",
   "plan": "S11c_d_first_jet_plan.md",
   "report": "S11c_d_first_jet_report.md",
@@ -10,7 +10,7 @@
     "nativeThreads": 1,
     "addressSpaceBytes": 2147483648
   },
-  "next": "Validate complete changed-row scattering and emitted metadata/source hashes, publish through DataLad/git-annex and commit; then targeted nonlinear frequency poles and remaining case/export integration.",
+  "next": "Build the actual frequency-dependent reduced operator and analytic end-domain bookkeeping, then a bounded nonlinear frequency-pole search; remaining cases and exports follow.",
   "implementationCommit": "5f90d23a",
   "launch": {
     "launchedUtc": "2026-09-19T19:59:51.641436+00:00",
@@ -139,5 +139,59 @@
   "productionLauncher": {
     "path": "/var/projects/toy_physics/_scratch/s11c/s11c-first-jet-20260919/production/launch.py",
     "sha256": "bd96dc3b15c40e69544f95b69d7b44430d659fe8978fa1c46523276505b205e9"
+  },
+  "acceptedRunDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-first-jet-20260919/production/complete",
+  "productionOutcome": {
+    "stage": "first_jet_construct",
+    "command": [
+      "python",
+      "-u",
+      "_measurements/S11c_d_first_jet.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-first-jet-20260919/production/complete",
+      "--resume-binding",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-first-jet-20260919/focused/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-first-jet-20260919/production/first_jet_construct.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-first-jet-20260919/production/first_jet_construct.stderr",
+    "startedUtc": "2026-09-19T20:05:47.459719+00:00",
+    "childPid": 720539,
+    "status": "completed",
+    "exitCode": 0,
+    "wallSeconds": 285.221879738383,
+    "stderrBytes": 0,
+    "finishedUtc": "2026-09-19T20:10:32.681659+00:00"
+  },
+  "publication": {
+    "path": "scripts/out/S11c_d_first_jet.out",
+    "sha256": "f4ee0aeafac391a0806e6af361823eecb4de385b3acecaa307d3038845903228",
+    "bytes": 10064174,
+    "annexKey": "MD5E-s10064174--88a2868d4fcd94d64eaf089d62e17ce3.out",
+    "symlink": "../../../../.git/annex/objects/5X/32/MD5E-s10064174--88a2868d4fcd94d64eaf089d62e17ce3.out/MD5E-s10064174--88a2868d4fcd94d64eaf089d62e17ce3.out",
+    "actualBackend": "MD5E",
+    "verified": true,
+    "publicationCommit": "1982b72521458a6beb25e546323a9a31e8067cb1"
+  },
+  "productionValidation": {
+    "status": "VALIDATED_FIRST_JET_RESPONSE",
+    "supervisorWallSeconds": 285.221879738383,
+    "sources": 54,
+    "inputPackets": 12,
+    "artifacts": 398,
+    "focusedCopies": 377,
+    "rows": 80,
+    "changedRows": 50,
+    "reusedRows": 30,
+    "nativeTerms": 160,
+    "unknowns": 645,
+    "incidentChannels": 4,
+    "tags": 2994,
+    "keys": 1495,
+    "metadataPaths": 73663,
+    "checksSha256": "8efeef4a7ca019420bdc80ba281e592afa98878a62f037d4cc0349db51a6371b",
+    "validatorSha256": "28ea306f55454d129588edbcd6529197dba6ad070efe41d2a3ecbf0610ebd8c3",
+    "transcriptSha256": "f4ee0aeafac391a0806e6af361823eecb4de385b3acecaa307d3038845903228",
+    "packetHashesUnchanged": true,
+    "scope": "Literal first-w-derivative reversal on the Eulerian route. Finite positive regulator and approximate modal boundaries; no isolated tilt channel, new physical profile, nonaffine covariance or c2 source-origin closure."
   }
 }

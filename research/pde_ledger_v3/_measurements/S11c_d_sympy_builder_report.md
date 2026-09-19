@@ -83,13 +83,15 @@ transcript is annex-verified. This completes the selected affine finite-space
 coordinate control, not arbitrary nonaffine covariance or c2 source-origin
 closure. One-sided first-w-derivative sensitivity, targeted frequency poles,
 remaining cases and exports are next under practical acceptance.
-The [one-sided first-derivative control](S11c_d_first_jet_report.md) passes its
-source/grade binding in23.51seconds:375 records,400 exact baseline coefficient
-joins and a zero full local residual. Actual source/factor changes select50
-rows for integration and30 for exact reuse, retaining every native term.
-All54 sources,12 inputs,377 artifacts and derivative endpoint checks validate.
-The full scattering sensitivity is next. This remains a closed-operator
-probe, with no isolated tilt/advection or new physical profile claim.
+The [one-sided first-derivative control](S11c_d_first_jet_report.md) is accepted:
+285.22seconds,50 newly integrated rows and30 exact reused rows, all160 cell
+terms and645 unknowns. Operator recombination agrees to4.04e-16; the mixed
+solve residual is4.79e-14. Evaluated amplitude/current sensitivities6.02e-7/
+4.57e-7 remain below the existing absolute reporting resolutions. All54 sources,
+398 artifacts and73663 metadata paths validate; its transcript is annex-verified.
+This closes the selected first-derivative probe, not isolated channel physics
+or c2 source-origin debt. The actual frequency-dependent operator and targeted
+nonlinear pole search, remaining cases and exports are next.
 The older checkpoint narrative below records history, not the current task
 queue. The retained solver/export suffix remains byte-identical, interpreted
 under the new acceptance addendum and the approved pole correction.

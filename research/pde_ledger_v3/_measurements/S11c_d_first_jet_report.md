@@ -1,30 +1,35 @@
 # First-thickness-derivative scattering sensitivity
 
-The source/grade binding passes in23.51seconds with empty stderr. All375
-records and400 original coefficient joins validate, and the independently
-assembled baseline local matrix is exactly unchanged. The literal mutation
-changes33 local records,zero cells,30 factors and12 source amplitudes. Actual
-factor/source consumption selects50 changed numerical rows (16 single,24 pair,
-10 triple) and30 exactly reusable rows. All80 rows and160 cell terms remain.
+The complete one-sided sensitivity run passes in285.22seconds with empty
+stderr. It integrates50 changed rows and reuses30 source-identical rows,
+retaining all80 rows and160 cell terms. The full-rank645-unknown four-incident
+mixed response has condition3731, scaled equation residual4.79e-14 and
+independent coefficient difference1.43e-12. Direct unsplit versus grade
+operator recombination agrees to4.04e-16.
 
-The saved-operand validator checks54 sources,12 inputs,377 artifacts,375
-involution identities and75 responding omitted-reversal controls. Every
-independent-grade reconstruction and derivative proof passes. Actual first
-thickness-derivative limits vanish at both ends before mode/current reuse.
-The acceptance reader initially compared a native tuple with its JSON list;
-it now compares those same ordered values and reads the grade generators
-from the accepted source packet instead of uninitialized live state. Original validator/logs remain
-preserved. The constructor, binding and physics were unchanged and not rerun.
+The evaluated flux-coordinate amplitude changes6.02e-7; the normalized-current
+ratio from the retained polynomials changes4.57e-7. Both are below the declared
+amplitude1e-4/current1e-6 reporting resolutions. These are computed finite
+sensitivities, not resolved small physical effects or a proof of absence.
+Incoming/outgoing current maps remain exactly unchanged. The unchanged
+material route is retained as a separate comparison operand.
 
-Production next integrates only the50 changed rows, reuses the verified
-binding packets byte-for-byte and constructs all independent-grade and unsplit
-operators before the unchanged645-unknown four-incident response solve.
-Native accumulators, end/current/phase maps and channel normalization stay
-unchanged. Full sensitivity and emission results are still pending.
+Saved-operand acceptance verifies54 sources,12 inputs,398 artifacts and all377
+byte-identical focused copies. All2994 tags,1495 fresh keys and73663 restored
+unit/independent-grade/lambda metadata paths replay. The transcript is published
+through DataLad/git-annex with its actual MD5E key, symlink, size and independent
+SHA256 verified in the checkpoint. Packet hashes are unchanged; acceptance
+repeated no integration or solve.
 
-This is a one-sided closed-operator sensitivity probe, not a consistent new
-profile or isolated tilt/advection mechanism. Constant-rho4 advection absence
-remains its separately computed source operand. Finite settings, approximate
-boundaries, positive regulator and practical amplitude/current resolutions
-stay fixed. Targeted nonlinear frequency poles, remaining cases and final
-exports follow; no broad sweep.
+The focused23.51second source check retains375 records,1628 exact grade-proof
+residuals,375 reversal identities,75 responding omission controls and400
+baseline coefficient joins. Its acceptance-reader tuple/list and live-metadata
+initialization failures are preserved; neither changed the constructor.
+
+This remains a one-sided probe of the closed operator, not a consistent new
+profile or isolated tilt/advection mechanism. The actual constant-rho4 advection
+absence remains its separate source operand. Finite regulator, approximate
+modal boundaries, unresolved tiny reflection/loss and omitted parent
+pure-second-order scope stay explicit. Next build the frequency-dependent
+operator and bounded nonlinear frequency-pole search; remaining cases and
+exports follow under practical acceptance. No broad convergence campaign.

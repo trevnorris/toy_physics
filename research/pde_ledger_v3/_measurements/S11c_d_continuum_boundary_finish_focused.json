@@ -1,0 +1,12 @@
+{
+  "scriptSha256": "4822f78db483c82c10d13c62db35aad04132c6b2f6ff5de3bb50d61acae1053c",
+  "finishHelperSha256": "29db823e60c8c18f2d876ac6e8d253f71b28ab8e4dbe8f5f0da2b7258e721939",
+  "wholeCheckerJoin": {
+    "wholeCheckerReverseAstJoin": true,
+    "initialization": "(modes.eta, modes.sigma) = (eta, sigma)",
+    "originalSha256": "0f24ad483b21ec79b87c7631b8a52324c66d38f1970ff8e8a8bfc63fc659affe",
+    "currentSha256": "4822f78db483c82c10d13c62db35aad04132c6b2f6ff5de3bb50d61acae1053c"
+  },
+  "gradeFingerprintMutationResponds": true,
+  "scope": "Emitter initialization and unchanged saved validation-tail extraction only."
+}

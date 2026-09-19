@@ -38,3 +38,14 @@ The original failed logs and source snapshots remain preserved.
 
 Recovery launched at2026-09-19T16:33:30Z. Its supervisor, constructor and silent
 watcher passed startup verification with empty stderr. Acceptance is pending.
+
+Recovery01 completed both ends, all10 clusters/14 directions and52 current
+coefficient tables in118.87seconds, then the fingerprint emitter lacked eta/sigma
+attributes. The complete427369-byte result is saved. Maximum invariant-pair
+residual is3.86e-15, current Hermitian residual9.09e-14 and signed-current join
+1.12e-16. The right finite-trace Taylor difference is0.00567 in the numerical
+frame; it remains a truncation diagnostic, not an observable error estimate.
+The output-only repair initializes the actual grade references, with an exact
+whole-checker reverse AST join. Finish replays saved operands and emission;
+no mode solve, symbolic current differentiation or quadrature is repeated.
+A grade-dependent fingerprint and coefficient mutation pass focused testing.

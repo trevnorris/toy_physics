@@ -1,0 +1,38 @@
+{
+  "status": "SAVED_PACKET_EMISSION_READY",
+  "outcome": {
+    "stage": "boundary_recover",
+    "command": [
+      "python",
+      "-u",
+      "_measurements/S11c_d_continuum_boundary_recover.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/recovery-01/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/recovery-01/boundary_recover.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/recovery-01/boundary_recover.stderr",
+    "startedUtc": "2026-09-19T16:33:30.955906+00:00",
+    "childPid": 622715,
+    "status": "failed",
+    "exitCode": 1,
+    "wallSeconds": 118.86610063631088,
+    "stderrBytes": 1393,
+    "finishedUtc": "2026-09-19T16:35:29.822100+00:00"
+  },
+  "focused": {
+    "scriptSha256": "4822f78db483c82c10d13c62db35aad04132c6b2f6ff5de3bb50d61acae1053c",
+    "finishHelperSha256": "29db823e60c8c18f2d876ac6e8d253f71b28ab8e4dbe8f5f0da2b7258e721939",
+    "wholeCheckerJoin": {
+      "wholeCheckerReverseAstJoin": true,
+      "initialization": "(modes.eta, modes.sigma) = (eta, sigma)",
+      "originalSha256": "0f24ad483b21ec79b87c7631b8a52324c66d38f1970ff8e8a8bfc63fc659affe",
+      "currentSha256": "4822f78db483c82c10d13c62db35aad04132c6b2f6ff5de3bb50d61acae1053c"
+    },
+    "gradeFingerprintMutationResponds": true,
+    "scope": "Emitter initialization and unchanged saved validation-tail extraction only."
+  },
+  "packetSha256": "8e3e53c3b7b06e3e81f961f013b77b4b87dfede081db75b4de458503b062eed0",
+  "completeCurrentTables": 52,
+  "completeModeClusters": 10,
+  "scope": "Initialize grade references in emitter; all numerical and symbolic coefficient construction is already saved."
+}

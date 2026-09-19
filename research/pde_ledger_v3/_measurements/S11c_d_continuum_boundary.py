@@ -268,6 +268,7 @@ def construct_end(end,base,r,input_,modal,pairing,accepted,current_unit):
 def emit_result(result,r):
     modes=engine.FullPencilModes.__new__(engine.FullPencilModes);modes.r=r
     eta,sigma=(r.symbols[n] for n in ('eta_bg','sigma_W'));eps=r.symbols['epsilon_shape'];fields=result['fieldUnits'];cu=result['currentUnit']
+    modes.eta,modes.sigma=eta,sigma
     zero=(0,0,0);length=(1,0,0)
     def tensor(name,array,units,grade=(0,0),quadratic=False,literal=False):
         # Scalar entries are small here; fingerprints retain the complete tensor

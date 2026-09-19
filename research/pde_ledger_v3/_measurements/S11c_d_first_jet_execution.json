@@ -1,5 +1,5 @@
 {
-  "status": "ACCEPTED_FOCUSED_BINDING",
+  "status": "PRODUCTION_RUNNING",
   "checker": "S11c_d_first_jet.py",
   "plan": "S11c_d_first_jet_plan.md",
   "report": "S11c_d_first_jet_report.md",
@@ -10,7 +10,7 @@
     "nativeThreads": 1,
     "addressSpaceBytes": 2147483648
   },
-  "next": "Reuse all binding packets and30 source-identical rows; integrate50 changed rows and solve the complete independent-grade response.",
+  "next": "Validate complete changed-row scattering and emitted metadata/source hashes, publish through DataLad/git-annex and commit; then targeted nonlinear frequency poles and remaining case/export integration.",
   "implementationCommit": "5f90d23a",
   "launch": {
     "launchedUtc": "2026-09-19T19:59:51.641436+00:00",
@@ -98,5 +98,46 @@
     "bindingSha256": "30690e3f0fcd9871cf546f6e02a3032bdac648a058e9c4bdda06d103627f9d9f",
     "validatorSha256": "6240ba8f8ddddc58c49b725c141bf440be4e76261b29297ee50726be535ce968",
     "scope": "Source/grade binding and exact numerical row reuse only; no new scattering result."
+  },
+  "focusedAcceptanceCommit": "f4001220",
+  "productionRunRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-first-jet-20260919/production",
+  "productionLaunch": {
+    "launchedUtc": "2026-09-19T20:05:47.428583+00:00",
+    "command": [
+      "/usr/bin/python",
+      "_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-first-jet-20260919/production",
+      "--stage",
+      "first_jet_construct",
+      "--",
+      "python",
+      "-u",
+      "_measurements/S11c_d_first_jet.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-first-jet-20260919/production/complete",
+      "--resume-binding",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-first-jet-20260919/focused/complete"
+    ],
+    "supervisorPid": 720536,
+    "watcherPid": 720537,
+    "watcherDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-first-jet-20260919/production/completion-watcher",
+    "threadEnvironment": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1"
+    }
+  },
+  "productionStartup": {
+    "status": "running",
+    "childPid": 720539,
+    "strictStderrBytes": 0,
+    "watcherStderrBytes": 0,
+    "inspection": "One clean startup inspection; silent local completion/error hook owns continuation."
+  },
+  "productionLauncher": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-first-jet-20260919/production/launch.py",
+    "sha256": "bd96dc3b15c40e69544f95b69d7b44430d659fe8978fa1c46523276505b205e9"
   }
 }

@@ -139,7 +139,7 @@
     "sha256": "1b93b0c4a1b8306b559faf57b1f6e51cab22cb6e539e55a3279445d72cae9e4a"
   },
   "resolutionComparison": {
-    "status": "PREPARED",
+    "status": "RUNNING",
     "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-finite-scattering-20260919/resolution-01",
     "checker": "S11c_d_finite_scattering_resolution.py",
     "plan": "S11c_d_finite_scattering_resolution_plan.md",
@@ -149,6 +149,37 @@
       "totalChildComputationSeconds": 900,
       "nativeThreads": 1,
       "childAddressSpaceBytes": 2147483648
+    },
+    "implementationCommit": "bbf066ca",
+    "launch": {
+      "launchedUtc": "2026-09-19T14:37:09.126840+00:00",
+      "command": [
+        "/usr/bin/python",
+        "_measurements/S11c_d_end_normalization_run.py",
+        "--run-root",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-finite-scattering-20260919/resolution-01",
+        "--stage",
+        "resolution_construct",
+        "--",
+        "python",
+        "-u",
+        "_measurements/S11c_d_finite_scattering_resolution.py",
+        "--run-directory",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-finite-scattering-20260919/resolution-01/complete"
+      ],
+      "supervisorPid": 571430,
+      "watcherPid": 571431,
+      "watcherDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-finite-scattering-20260919/resolution-01/completion-watcher",
+      "threadEnvironment": {
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1"
+      }
+    },
+    "launchVerification": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-finite-scattering-20260919/resolution-01/launch-verification.json",
+      "sha256": "c9b1c245d30c8f14ac5950f47bcb1f2a74424f2590827ceacf2a4060768738cb"
     }
   }
 }

@@ -44,8 +44,8 @@ The completed adaptive sequence is published/annex-verified at4ba95bcf/a6bfb7a6.
 Future work follows exploratoryAcceptanceV1 and the focused completion plan;
 no broad tail/regulator refinement campaign is queued.
 
-A [selected resolution set](S11c_d_finite_scattering_resolution_plan.md) is
-prepared: source/profile256/512, then97 coefficients per field, then momentum
+A [selected resolution set](S11c_d_finite_scattering_resolution_plan.md),
+implemented at `bbf066ca`, is running: source/profile256/512, then97 coefficients per field, then momentum
 16/4/4, with physical domain/regulator/boundaries fixed. The reporting targets
 are declared before this comparison:1% for resolved outputs, absolute amplitude
 resolution1e-4 and normalized-current resolution1e-6. Compare the full response,

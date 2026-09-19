@@ -65,14 +65,15 @@ full-rank10-by-10 solves, reflection below4.44e-16 and unit transmission to
 roundoff. All10519 metadata paths and203 artifacts validate. This is a
 selected constant-background control, not variable-profile transparency.
 Coordinate-covariance controls, targeted poles and final integration remain.
-The [coordinate-source preparation](S11c_d_coordinate_source_report.md) saved
-all375 records, chart/derivative proofs and density/advection operands, then
-output stopped on equality-node dimension metadata. A narrow emitter repair
-preserves the original carrier and assigns metadata to its actual physical
-sides; the conflicting-unit control rejects. Saved-packet validation/output
-recovery is now running, with no source or physics construction repeated.
-The second scattering route remains to be constructed. No c2 N3/N4/N6
-source-origin closure or new quadrature campaign follows from this control.
+The [coordinate-source preparation](S11c_d_coordinate_source_report.md) is
+accepted after saved-packet output recovery:375 records,80 integral rows,
+160 native terms and699 exact chart/field-jet proof scalars. All380 packets and
+7275 original prefix payloads are unchanged;8148 metadata paths replay.
+Its3.59MB transcript is annex-verified. Literal first-w-derivative reversal
+changes33 local,30 factor and12 source records; the actual constant-rho4
+source computes zero density gradient/advection. These source maps still need
+to enter a second scattering operator/boundary/channel/current route before
+coordinate agreement can be claimed. No c2 N3/N4/N6 closure follows.
 The older checkpoint narrative below records history, not the current task
 queue. The retained solver/export suffix remains byte-identical, interpreted
 under the new acceptance addendum and the approved pole correction.

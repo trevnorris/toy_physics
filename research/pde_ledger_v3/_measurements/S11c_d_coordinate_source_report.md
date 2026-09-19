@@ -1,56 +1,35 @@
 # Coordinate-source and shape-control preparation
 
-Uniform source/mode/current/matching controls are accepted at7b388dac. The next
-source adapter derives a fixed nonorthogonal affine chart from x=X+u_chart,
-with volume/tangential/normal Jacobians6/5,24/25,5/4. It preserves the physical
-interface, approved parameters and LAB_HELD/RHO4_CONSTANT anchoring. Complete
-field-derivative, Fourier phase/measure, covector and normal-current maps are
-computed; no constitutive Phi acts on scattering data.
+The saved-source recovery passed in44.69seconds with empty stderr. All375
+source records,160 native term-limit records,80 integral rows and35 source
+amplitudes validate. The affine chart and field-jet checks contain699 exact
+zero proof scalars. All380 original packets remain byte-identical; all7275
+original decoded transcript payloads match. The complete3.59MB transcript has
+7286 tags,3641 fresh write keys and8148 unit/independent-grade metadata paths.
+It is published through DataLad/git-annex with the actual MD5E key, symlink,
+size and independent SHA256 verified in the checkpoint.
 
-Focused checks pass in10.20seconds:650 exact derivative-composition/polynomial
-residuals and actual local/cell/factor/source/nested-integral coordinate round
-trips. Omitting the actual normal Jacobian changes an independent Gaussian
-mass by-sqrt(pi)/5. The source first-jet mutation reaches16 occurrences in the
-selected nested-profile operand. This is instrument evidence, not the complete
-source census or a new scattering response.
+The original construction stopped only at Equality dimension metadata. The
+local emitter preserves its carrier and assigns physical metadata to the actual
+lhs/rhs, paths0/1. Both sides have unit[-4,0,1]; a conflicting unit rejects.
+The external acceptance script initially used the numerical metadata layout;
+its corrected path/field reader follows this source emitter's actual layout.
+Original failed acceptance logs remain preserved. No source construction,
+quadrature, factorization or modes were repeated for either output check.
 
-The initial read-only inspection named inspect.py shadowed Python's standard
-module; its original source and logs are retained under inspection-original.
-A subsequent focused loader exceeded the2GiB limit while importing complete
-parent exports. The replacement streams all actual ledger keys, evaluates only
-the required density/scalar rows with each producer's own restore helper, and
-joins the accepted reduced sources by their pinned hashes. No source equations
-were changed. Full symbolic field-jet collection also needed reversible
-jet-free carriers: raw reconstruction and exact carrier proofs are preserved,
-without an expensive cancellation of material-parameter rational functions.
-The initial failed checks and all accepted operands remain durable.
+The fixed chart has volume/tangential/normal Jacobians6/5,24/25,5/4. It retains
+the physical interface and approved LAB_HELD/RHO4_CONSTANT parameters. Full
+field, Fourier phase/measure, covector and current Piola maps are computed.
+Raw source reconstruction forms remain alongside exact reversible carrier
+certificates;23 raw expanded forms are nonzero without implying disagreement.
+Literal first-w-derivative reversal changes33 local,30 factor and12 source
+records, with no changed cell record. The inherited density equation computes
+a zero gradient and advection factor on this constant-rho4 background.
 
-Production620e24b1 completed and saved all375 source records,160 native term
-limit records, chart/derivative proofs and density/advection operands. The
-last source record completed at29.13seconds. At52.91seconds output stopped:
-the dimension walker does not accept an Equality node. The524472-byte main
-packet and2.63MB original partial transcript are preserved; no result has yet
-been accepted through the final output checks.
-
-The local repair keeps the original density equation carrier and derives
-metadata from its actual left/right operands, with an explicit paths0/1
-convention and a conflicting-unit control. A reverse whole-file AST join
-limits the change to that emitter call and helper. Recovery copies every
-completed packet byte-for-byte, validates sources/records/limits/jet proofs,
-then runs the original emission/validation tail and compares every original
-decoded prefix payload. It does not repeat source construction, quadrature,
-factorization, modes or any physics solve. The same900second, one-thread,
-2GiB budget and silent local completion/error hook apply.
-
-A second scattering route is still required: these maps must act inside its
+The second scattering route remains required. Apply these maps inside its
 operator, boundary/channel and current construction before comparing common
-Eulerian data. The shape mutation must likewise be evaluated on its changed
-sources. This affine regression does not establish arbitrary nonaffine
-covariance or close c2's N3/N4/N6 source-origin debt. Targeted frequency poles,
-remaining cases and final exports follow under practical acceptance.
-
-The equality-output repair is committed at632afe92. Its focused check retains
-the original equation fingerprint, computes the side unit[-4,0,1], and rejects
-a conflicting known unit. The saved-packet recovery has launched with clean
-stderr and its own silent completion/error hook. Full final validation remains
-pending; no accepted source or scattering result is newly claimed.
+Eulerian data. Evaluate the first-jet sensitivity on changed operands. This
+source stage establishes neither scattering covariance nor arbitrary
+nonaffine covariance, and closes none of c2's N3/N4/N6 source-origin debt.
+Targeted nonlinear frequency poles, remaining cases and final exports follow
+under practical exploratory acceptance; no broad convergence campaign.

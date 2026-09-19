@@ -1,5 +1,5 @@
 {
-  "status": "OUTPUT_RECOVERY_RUNNING",
+  "status": "PUBLISHED_ANNEX_VERIFIED",
   "checker": "S11c_d_coordinate_source.py",
   "plan": "S11c_d_coordinate_source_plan.md",
   "report": "S11c_d_coordinate_source_report.md",
@@ -11,7 +11,7 @@
     "nativeThreads": 1,
     "addressSpaceBytes": 2147483648
   },
-  "next": "Finish saved-source validation/emission, verify all original prefix payloads and packet identities, publish and commit; then construct actual material scattering route.",
+  "next": "Construct actual material operator, boundary/channel and current route in common Eulerian coordinates, then evaluate changed first-jet sources.",
   "implementationCommit": "620e24b1",
   "launch": {
     "launchedUtc": "2026-09-19T18:47:12.124195+00:00",
@@ -102,5 +102,93 @@
     "strictStderrBytes": 0,
     "watcherStderrBytes": 0,
     "inspection": "One clean startup inspection; local hook owns completion/error continuation."
+  },
+  "acceptedRunDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-coordinate-control-20260919/recovery-01/complete",
+  "recoveryOutcome": {
+    "stage": "coordinate_recover",
+    "command": [
+      "python",
+      "-u",
+      "_measurements/S11c_d_coordinate_source_recover.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-coordinate-control-20260919/recovery-01/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-coordinate-control-20260919/recovery-01/coordinate_recover.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-coordinate-control-20260919/recovery-01/coordinate_recover.stderr",
+    "startedUtc": "2026-09-19T18:56:23.925425+00:00",
+    "childPid": 686303,
+    "status": "completed",
+    "exitCode": 0,
+    "wallSeconds": 44.69407341256738,
+    "stderrBytes": 0,
+    "finishedUtc": "2026-09-19T18:57:08.619546+00:00"
+  },
+  "publication": {
+    "path": "scripts/out/S11c_d_coordinate_source.out",
+    "sha256": "9ff3b18a386a9ea6f1eb61f23d45966492249b0b30d72c2fd21fa61aad72bdf2",
+    "bytes": 3594270,
+    "annexKey": "MD5E-s3594270--d66e2288e23b291ecca70091b94182d2.out",
+    "symlink": "../../../../.git/annex/objects/x5/09/MD5E-s3594270--d66e2288e23b291ecca70091b94182d2.out/MD5E-s3594270--d66e2288e23b291ecca70091b94182d2.out",
+    "actualBackend": "MD5E",
+    "verified": true,
+    "publicationCommit": "e8bf272bd306d90afe03e0f7a5bd2a56c7dca9c9"
+  },
+  "validation": {
+    "status": "VALIDATED_COORDINATE_SOURCE",
+    "supervisorWallSeconds": 44.69407341256738,
+    "sources": 24,
+    "inputPackets": 387,
+    "artifacts": 381,
+    "copiedOriginalPackets": 380,
+    "originalPrefixPayloads": 7275,
+    "operandValidation": {
+      "recordCensus": {
+        "local": 100,
+        "cell": 160,
+        "factor": 80,
+        "source": 35
+      },
+      "nativeTerms": 160,
+      "nativeIntegralRows": 80,
+      "exactChartJetProofScalars": 699,
+      "rawSourceReconstructionFormsNonzero": 23,
+      "densityEquation": "Eq(rho_4D_bg_rho4_constant, rho_br/W_0)",
+      "densityGradient": [
+        "0",
+        "0",
+        "0"
+      ],
+      "densityAdvectionFactor": "0",
+      "shapeChangedRecords": {
+        "local": 33,
+        "cell": 0,
+        "factor": 30,
+        "source": 12
+      }
+    },
+    "equationMetadataControls": {
+      "carrierIdentity": true,
+      "sidePaths": [
+        [
+          0
+        ],
+        [
+          1
+        ]
+      ],
+      "unit": [
+        "-4",
+        "0",
+        "1"
+      ],
+      "changedUnitRejected": true
+    },
+    "tags": 7286,
+    "keys": 3641,
+    "metadataPaths": 8148,
+    "checksSha256": "fa89f06b27b29aef84921a3f8ed24c65698054c937df8a87c27a15e86bdcc479",
+    "validatorSha256": "288eedc090f71ff44de0fe650dc07a49f43859906d9afb10805c49e4db3d882d",
+    "packetHashesUnchanged": true,
+    "scope": "One nonorthogonal affine material/Eulerian chart, native source-coordinate and derivative maps, literal first-jet mutation and computed constant-rho4 advection operand. No second scattering route or kernel N3/N4/N6 closure yet."
   }
 }

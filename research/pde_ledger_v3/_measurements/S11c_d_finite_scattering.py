@@ -251,14 +251,43 @@ class BasisMomentum(engine.BoundedSourceFourierQuadrature.ThreeMomentum):
             cache[key]=np.exp(-1j*unique[:,None]*self.source_nodes[None,:])@self.amplitudes[si]
         return cache[key][inverse]
 
-    def matrix_group(self,variables,setting,pairs,width,positions,base):
+    def matrix_group(self,variables,setting,pairs,width,positions,base,resume=None):
         rows=[v for v in self.rows if tuple(l[0] for l in v['limits'])==variables]
         result=np.zeros((len(rows),len(positions),self.size),complex)
         direct=np.zeros((len(rows),len(positions)),complex)
         mutated_direct=np.zeros_like(direct)
         vector=np.asarray([complex(1/(j+1)**2,(-1)**j/(j+2)**2) for j in range(self.size)])
         mass=0.;nodes=0;count=0;started=time.monotonic()
+        prefix=None;skipped_nodes=0;skipped_mass=0.;remaining=0
+        if resume:
+            completed=resume/f'layout-{len(variables)}.pickle'
+            partial=resume/f'partial-layout-{len(variables)}.pickle'
+            if not partial.exists():
+                candidates=sorted(resume.glob(f'partial-layout-{len(variables)}-*.pickle'))
+                if candidates:partial=candidates[-1]
+            saved=completed if completed.exists() else partial
+            require(saved.exists(), 'available saved finite layout')
+            prefix=unpickle(saved)
+            require(prefix['setting']==setting and prefix['variables']==variables and
+                    prefix['matrices'].shape==result.shape, 'saved layout settings/shape')
+            if completed.exists():
+                require(prefix['rowIndices']==[v['index'] for v in rows] and
+                        np.array_equal(prefix['controlVector'],vector), 'saved layout row/control join')
+                require(np.max(abs(prefix['actionResidual']))/(1+np.max(abs(prefix['direct'])))<1e-10 and
+                        abs(prefix['massResidual'])<1e-9*(1+abs(prefix['mass'])), 'saved layout residuals')
+                shutil.copyfile(completed,base/completed.name)
+                require(digest(completed)==digest(base/completed.name), 'byte-identical completed layout')
+                return prefix
+            result=prefix['matrices'].copy();direct=prefix['direct'].copy()
+            mutated_direct=prefix['mutatedDirect'].copy()
+            mass=prefix['mass'];nodes=prefix['nodes'];count=prefix['batches'];remaining=count
+            require(count>0 and count%64==0, 'completed saved prefix batches')
         for points,weights in self.batches(variables,setting,pairs,width):
+            if remaining:
+                skipped_nodes+=len(weights);skipped_mass+=float(np.sum(weights));remaining-=1
+                if remaining==0:
+                    require(skipped_nodes==prefix['nodes'] and skipped_mass==prefix['mass'], 'literal saved prefix census')
+                continue
             environment={v:points[:,j] for j,v in enumerate(variables)}
             environment[self.r.regulator]=np.full(len(weights),setting['regulator'])
             profiles={};sources={}
@@ -272,8 +301,9 @@ class BasisMomentum(engine.BoundedSourceFourierQuadrature.ThreeMomentum):
                     mutated_direct[index]+=np.sum(c*(s@vector)[:,None]*mutated_weights[:,None],axis=0)
             mass+=float(np.sum(weights));nodes+=len(weights);count+=1
             if count%64==0:
-                atomic_pickle(base/f'partial-layout-{len(variables)}.pickle',{'matrices':result,'direct':direct,'mutatedDirect':mutated_direct,
+                atomic_pickle(base/f'partial-layout-{len(variables)}-{count:08d}.pickle',{'matrices':result,'direct':direct,'mutatedDirect':mutated_direct,
                     'nodes':nodes,'batches':count,'mass':mass,'setting':setting,'variables':variables})
+        require(remaining==0, 'saved prefix within complete native layout')
         residual=result@vector-direct
         packet={'rowIndices':[v['index'] for v in rows],'matrices':result,'direct':direct,
                 'actionResidual':residual,'controlVector':vector,'mutatedDirect':mutated_direct,
@@ -289,7 +319,7 @@ class BasisMomentum(engine.BoundedSourceFourierQuadrature.ThreeMomentum):
         return packet
 
 
-def construct(base,data,size,outer,panel,source_order,profile_order):
+def construct(base,data,size,outer,panel,source_order,profile_order,resume_layouts=None):
     r,bound,local,jets,channels,pins,operands=data
     interval=48.;x=np.sort(interval*np.cos(np.arange(size)*np.pi/(size-1)))
     derivative={n:polynomial_basis(x,interval,size,n) for n in local}
@@ -316,7 +346,7 @@ def construct(base,data,size,outer,panel,source_order,profile_order):
     width=float(bound['abel']['width'].subs(r.regulator,setting['regulator']))
     groups=[];row_matrices={}
     for variables in sorted({tuple(l[0] for l in row['limits']) for row in bound['rows']},key=len):
-        group=worker.matrix_group(variables,setting,bound['pairs'],width,x,base);groups.append(group)
+        group=worker.matrix_group(variables,setting,bound['pairs'],width,x,base,resume_layouts);groups.append(group)
         row_matrices.update(zip(group['rowIndices'],group['matrices']))
     require(set(row_matrices)==set(range(80)), 'complete nonlocal row matrix census')
     for cell in bound['cells']:
@@ -375,9 +405,34 @@ def construct(base,data,size,outer,panel,source_order,profile_order):
     return result,setting
 
 
+def join_layout_resume(base,data,directory):
+    manifest_path=M/'S11c_d_finite_scattering_checkpoint_repair.json'
+    manifest=json.loads(manifest_path.read_text())
+    original=json.loads((directory/'inputs.json').read_text())
+    helper=str(Path(__file__).resolve().relative_to(ROOT))
+    require(digest(Path(__file__))==manifest['newFiniteSha256'] and
+            original['sourceFiles'][helper]==manifest['oldFiniteSha256'], 'tested layout helper transition')
+    for name,sha in original['sourceFiles'].items():
+        require(digest(directory/'source'/name)==sha, ('original layout source',name))
+        if name!=helper:
+            require(data[-2][name]==sha==digest(ROOT/name), ('unchanged layout source',name))
+    require(original['operandHashes']==data[-1], 'same layout physical inputs')
+    require(digest(directory/'source-binding.pickle')==digest(base/'source-binding.pickle'), 'same layout source binding')
+    for path,record in manifest['savedArtifacts'].items():
+        require(digest(Path(path))==record['sha256'], ('saved repair operand',path))
+        data[-1][path]=record['sha256']
+    data[-1][str(manifest_path)]=digest(manifest_path)
+    inputs=json.loads((base/'inputs.json').read_text())
+    inputs['operandHashes']=data[-1];inputs['layoutResume']={'directory':str(directory),'manifestSha256':digest(manifest_path)}
+    save(base/'inputs.json',inputs)
+    shutil.copyfile(manifest_path,base/'layout-resume-manifest.json')
+    return manifest['savedMomentumNodes']
+
+
 def main():
     parser=argparse.ArgumentParser();parser.add_argument('--run-directory',type=Path,required=True)
     parser.add_argument('--resume-binding',type=Path)
+    parser.add_argument('--resume-layouts',type=Path)
     parser.add_argument('--size',type=int,default=65);parser.add_argument('--outer',type=int,default=8)
     parser.add_argument('--panel',type=int,default=2);parser.add_argument('--source-order',type=int,default=128)
     parser.add_argument('--profile-order',type=int,default=128);parser.add_argument('--seconds',type=int,default=900)
@@ -386,7 +441,9 @@ def main():
     def timeout(*_):raise TimeoutError('finite scattering pilot time budget; preserve saved operands')
     signal.signal(signal.SIGALRM,timeout);signal.alarm(args.seconds)
     started=time.monotonic();data=load(base,args.resume_binding.resolve() if args.resume_binding else None)
-    result,setting=construct(base,data,args.size,args.outer,args.panel,args.source_order,args.profile_order)
+    resume=args.resume_layouts.resolve() if args.resume_layouts else None
+    reused_nodes=join_layout_resume(base,data,resume) if resume else 0
+    result,setting=construct(base,data,args.size,args.outer,args.panel,args.source_order,args.profile_order,resume)
     require(all(digest(ROOT/n)==h for n,h in data[-2].items()), 'post-run sources unchanged')
     require(all(digest(Path(n))==h for n,h in data[-1].items()), 'post-run accepted operands unchanged')
     summary={'runDirectory':str(base),'unknowns':5*args.size,'incidentChannels':result['boundaryAnchoredFluxBasisScattering'].shape[1],
@@ -396,7 +453,8 @@ def main():
         'maximumScaledEquationResidual':float(np.max(abs(result['scaledEquationResidual']))),
         'outgoingFlux':result['outgoingFlux'].tolist(),'incomingFlux':result['incomingFlux'].tolist(),
         'outgoingFluxRatio':result['outgoingFluxRatio'].tolist(),'settings':setting,
-        'newMomentumNodes':sum(g['nodes'] for g in result['groups']),
+        'newMomentumNodes':sum(g['nodes'] for g in result['groups'])-reused_nodes,
+        'resumedMomentumNodes':reused_nodes,'totalMomentumNodes':sum(g['nodes'] for g in result['groups']),
         'maximumMatrixActionResidual':max(float(np.max(abs(g['actionResidual']))) for g in result['groups']),
         'wallSeconds':time.monotonic()-started,'peakRssKiB':resource.getrusage(resource.RUSAGE_SELF).ru_maxrss,
         'artifacts':{p.name:{'bytes':p.stat().st_size,'sha256':digest(p)} for p in base.glob('*.pickle')},

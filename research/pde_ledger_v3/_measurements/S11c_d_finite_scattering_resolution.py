@@ -16,10 +16,12 @@ PLAN=f.M/'S11c_d_finite_scattering_resolution_plan.md'
 CASES=(('source_profile',65,8,2),('collocation',97,8,2),('momentum',97,16,4))
 
 
-def inspect(directory):
+def inspect(directory,source_joins=None):
     checks=json.loads((directory/'checks.json').read_text())
     for name,sha in checks['sourceFiles'].items():
-        f.require(f.digest(f.ROOT/name)==sha==f.digest(directory/'source'/name),('case source',name))
+        current=f.digest(f.ROOT/name)
+        joined=source_joins is not None and name in source_joins and (sha,current)==tuple(source_joins[name])
+        f.require(sha==f.digest(directory/'source'/name) and (current==sha or joined),('case source',name))
     for name,sha in checks['operandHashes'].items():
         f.require(f.digest(Path(name))==sha,('case input',name))
     for name,record in checks['artifacts'].items():

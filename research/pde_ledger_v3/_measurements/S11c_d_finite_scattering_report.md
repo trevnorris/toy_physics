@@ -44,10 +44,21 @@ The completed adaptive sequence is published/annex-verified at4ba95bcf/a6bfb7a6.
 Future work follows exploratoryAcceptanceV1 and the focused completion plan;
 no broad tail/regulator refinement campaign is queued.
 
-A [selected resolution set](S11c_d_finite_scattering_resolution_plan.md),
-implemented at `bbf066ca`, is running: source/profile256/512, then97 coefficients per field, then momentum
-16/4/4, with physical domain/regulator/boundaries fixed. The reporting targets
-are declared before this comparison:1% for resolved outputs, absolute amplitude
-resolution1e-4 and normalized-current resolution1e-6. Compare the full response,
-not just integral residuals. One sequential900-second budget bounds this set;
-retain completed cases if the budget expires. No day-long sweep is queued.
+The [selected resolution set](S11c_d_finite_scattering_resolution_plan.md)
+completed its transform and collocation comparisons. Source/profile256/512
+changes amplitudes by2.96e-10 and total current by4.61e-10. Increasing65 to97
+coefficients changes amplitudes by2.13e-5 and total current by3.81e-5. Current
+ratios become0.99999944–1.00000118: the earlier apparent small deficit is not a
+resolved physical loss. These completed cases and their independent solves are
+validated and preserved. The stated reporting targets are unchanged.
+
+The momentum16/4/4 case stopped on a duplicate partial-checkpoint filename.
+The repair adds the batch number and reuses completed layouts plus the native
+partial accumulator. A65-batch16640-node regression gives exact matrices,
+direct actions, measure mutations, masses and counts after resume; an altered
+saved node count rejects. Its deliberately partial box is not accepted physical
+quadrature. Numerical-loop/constructor AST joins preserve arithmetic and the
+source-guard change admits only the recorded exact old/current helper pair.
+The recovery reuses17472 saved momentum nodes and both complete earlier cases,
+with an800-second remaining child budget. It computes only the unfinished case.
+No scattering convergence, tiny reflection/loss or continuum result is accepted.

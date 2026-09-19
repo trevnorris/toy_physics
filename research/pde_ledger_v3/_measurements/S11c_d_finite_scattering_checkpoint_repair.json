@@ -1,0 +1,72 @@
+{
+  "completedCases": [
+    "source_profile",
+    "collocation"
+  ],
+  "savedArtifacts": {
+    "/var/projects/toy_physics/_scratch/s11c/s11c-finite-scattering-20260919/resolution-01/complete/inventory.json": {
+      "bytes": 34569,
+      "sha256": "2d6601f6e73aba1c8bb7a8fd623749ebff3586033cb0ef747c545babe10e538b"
+    },
+    "/var/projects/toy_physics/_scratch/s11c/s11c-finite-scattering-20260919/resolution-01/complete/inputs.json": {
+      "bytes": 1117,
+      "sha256": "181f81b7848aa708deec5782e183fd5d01e695221bb8a7941600e1f1b5426b5c"
+    },
+    "/var/projects/toy_physics/_scratch/s11c/s11c-finite-scattering-20260919/resolution-01/complete/momentum/complete/layout-1.pickle": {
+      "bytes": 6272500,
+      "sha256": "27c2f87aaecc2834bdd0c0b7d1e7211431c8994e940824e3c46f2c721c2726e3"
+    },
+    "/var/projects/toy_physics/_scratch/s11c/s11c-finite-scattering-20260919/resolution-01/complete/momentum/complete/layout-2.pickle": {
+      "bytes": 4704996,
+      "sha256": "b3a81adf7a5a85c21703e8dc954529028e7a082953bc57c2593b615fc817961b"
+    },
+    "/var/projects/toy_physics/_scratch/s11c/s11c-finite-scattering-20260919/resolution-01/complete/momentum/complete/source-binding.pickle": {
+      "bytes": 74839,
+      "sha256": "35b60a56e031b53183ec6800ab84f5731e0ea79cbc96a94c9343cd5cc3a73e94"
+    },
+    "/var/projects/toy_physics/_scratch/s11c/s11c-finite-scattering-20260919/resolution-01/complete/momentum/complete/partial-layout-3.pickle": {
+      "bytes": 1537119,
+      "sha256": "04f78e657cd5cb611f484217fedbec84648c501d7c979175f6619660c85304fd"
+    },
+    "/var/projects/toy_physics/_scratch/s11c/s11c-finite-scattering-20260919/resolution-01/complete/momentum/complete/inputs.json": {
+      "bytes": 18791,
+      "sha256": "83d5bdb5848d342901512f7bb8e9b277c5ff4ba00c576fc023c380ca75327e7a"
+    }
+  },
+  "oldFiniteSha256": "8ba15544e092e599edc8383e7aa7885753695dceea7bc7f3ae797dfb0543618b",
+  "oldStudySha256": "0c61b63618d61ca0e0f5793504b43c59a7c9eb406c6ca00a7016a12cff920ce0",
+  "newFiniteSha256": "f187d9426be8069342a363a0466c175d32a8cb46101e32a14c433ccb9118e469",
+  "newStudySha256": "8e101517fde113c5f0a372bab531e63ebdcee3fff03c270ff98a7590e5a7b981",
+  "unchangedHelpers": [
+    "require",
+    "accepted_packet",
+    "polynomial_basis",
+    "boundary_map",
+    "source_jets",
+    "reused_binding",
+    "load",
+    "prepare_basis",
+    "source_basis",
+    "timeout"
+  ],
+  "nativeLoopAstUnchangedExceptCheckpointPath": true,
+  "constructorReverseAstJoin": true,
+  "prefixRegression": {
+    "batches": 65,
+    "nodes": 16640,
+    "valueAndActionDifferences": 0,
+    "mutationAndMassDifferences": 0,
+    "alteredNodeCountRejected": true,
+    "scope": "Real native 65-batch prefix only; its full-box mass guard correctly rejects."
+  },
+  "savedMomentumNodes": 17472,
+  "validationScript": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-finite-scattering-20260919/checkpoint-repair/verify.py",
+    "sha256": "65998140ba9a18741e37c6ca69a285cdf9c12d5503a082eba725faf2cb73387f"
+  },
+  "studyReverseAstJoin": "Only the optional exact old/current source-hash pair guard changes; numerical inspection and comparisons are unchanged.",
+  "studyGuardProof": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-finite-scattering-20260919/checkpoint-repair/guard_join.py",
+    "sha256": "a5fc508f510f58867dfbafc2c69ae1a6f37082fef51de59992cd1c3d469c02e0"
+  }
+}

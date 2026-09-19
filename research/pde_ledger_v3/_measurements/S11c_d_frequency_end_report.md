@@ -1,16 +1,23 @@
-# Outgoing end continuation
+# Complete outgoing end continuation
 
-The scalar frequency chart is accepted and annex-verified at 6775844c.
-The next bounded instrument check uses its actual rational end entries and
-the accepted complete uniform end subspaces. It retains ten clusters and
-14 selected directions, including both complete transverse doublets at each
-end, with all 36 seed candidate dispositions.
+The focused full-subspace continuation is accepted. All ten clusters and
+14 selected directions pass, with all 36 seed candidate dispositions retained.
+The 30 completed correction points took 27.60 seconds; no accepted seed root
+or mode was recomputed. End residuals are at most 2.17e-13, scaled Jacobian
+condition at most 19.18, and tangent residuals at most 9.49e-16. The two step
+sizes agree within 6.54e-14. Independent centered Frechet derivative checks
+agree within 7.19e-11; six actual closed-sector wrong-sheet controls respond.
 
-The new helper continues R,K,Q using full invariant-pair, radical and constant
-gauge equations. It derives frequency-dependent trace, forcing, observation
-and phase maps in those coordinates. Focused checks are pending. No end chart,
-finite frequency pencil, inverse or pole result is accepted yet.
+Saved-point acceptance verifies 63 sources, 17 inputs, 54 packets and complete
+seed trace/insertion/field maps. The minimum recorded denominator singular
+value is 1; K,Q commutators are below 1.28e-32. The fixed left gauge preserves
+full transverse doublets and does not conjugate live frequency. Incoming and
+outgoing phase maps are analytic in these fixed seed coordinates; closed
+amplitudes remain at their finite boundaries. Complex-frequency maps are not
+new physical Hermitian flux-normalized states.
 
-The focused check is launched from b6efa43f with one native thread, a 2 GiB
-ceiling and a 900-second budget. The single startup inspection found clean
-child and watcher logs. The local completion/error hook will resume validation.
+Next assemble the actual finite frequency pencil from all original local,
+cell, source and momentum operands and these continued end maps. This focused
+path is an instrument check, not a whole-disk analytic certificate, finite
+inverse or pole result. Keep finite regulator, approximate boundaries,
+practical exploratory acceptance and the nonlinearPoleV2 contract explicit.

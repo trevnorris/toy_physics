@@ -1,5 +1,5 @@
 {
-  "status": "RUNNING",
+  "status": "ACCEPTED_FOCUSED_END_CONTINUATION",
   "checker": "S11c_d_frequency_end.py",
   "plan": "S11c_d_frequency_end_plan.md",
   "report": "S11c_d_frequency_end_report.md",
@@ -9,7 +9,7 @@
     "nativeThreads": 1,
     "addressSpaceBytes": 2147483648
   },
-  "next": "Validate actual full-subspace continuation before constructing the finite frequency pencil and a targeted pole search.",
+  "next": "Construct actual finite frequency matrices with these complete continued end maps; retain fixed spaces and full frequency-dependent forcing and observation.",
   "implementationCommit": "b6efa43f",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-end-20260919/focused",
   "launch": {
@@ -62,5 +62,39 @@
   "launcher": {
     "path": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-end-20260919/focused/launch.py",
     "sha256": "2bb59930f71eba2f6034825ec1a807a0a3daa97da32569ae2bb016cce6066aa9"
+  },
+  "focusedOutcome": {
+    "stage": "end_focused",
+    "command": [
+      "python",
+      "-u",
+      "_measurements/S11c_d_frequency_end.py",
+      "--focused",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-end-20260919/focused/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-end-20260919/focused/end_focused.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-end-20260919/focused/end_focused.stderr",
+    "startedUtc": "2026-09-19T21:38:08.862551+00:00",
+    "childPid": 752822,
+    "status": "completed",
+    "exitCode": 0,
+    "wallSeconds": 27.602948173880577,
+    "stderrBytes": 0,
+    "finishedUtc": "2026-09-19T21:38:36.465557+00:00"
+  },
+  "focusedValidation": {
+    "sources": 63,
+    "inputs": 17,
+    "artifacts": 54,
+    "clusters": 10,
+    "directions": 14,
+    "candidateDispositions": 36,
+    "completedPoints": 30,
+    "minimumDenominatorSingularValue": 1.0,
+    "maxTangentResidual": 9.485749680535094e-16,
+    "maxCommutator": 1.2705300141197633e-32,
+    "sourceAndPacketHashesUnchanged": true,
+    "scope": "Numerical continuation of complete end invariant pairs and analytic trace/forcing/observation maps near the approved seed. No finite interior frequency matrix, inverse or pole result."
   }
 }

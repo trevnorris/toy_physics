@@ -1,5 +1,5 @@
 {
-  "status": "FOCUSED_RETRY_RUNNING",
+  "status": "FOCUSED_ACCEPTED_PRODUCTION_PREPARING",
   "checker": "S11c_d_coordinate_response.py",
   "plan": "S11c_d_coordinate_response_plan.md",
   "report": "S11c_d_coordinate_response_report.md",
@@ -10,7 +10,7 @@
     "nativeThreads": 1,
     "addressSpaceBytes": 2147483648
   },
-  "next": "Validate focused transformed integrand and boundary/current joins, commit, then implement full material quadrature and continuum response from saved bindings.",
+  "next": "Use exact saved focused bindings and end/current routes in one complete finite material quadrature and independent-grade scattering solve.",
   "implementationCommit": "f9629960",
   "launch": {
     "launchedUtc": "2026-09-19T19:16:17.326311+00:00",
@@ -102,5 +102,46 @@
     "strictStderrBytes": 0,
     "watcherStderrBytes": 0,
     "inspection": "One startup inspection; silent local completion/error hook owns continuation."
+  },
+  "acceptedFocused": "/var/projects/toy_physics/_scratch/s11c/s11c-coordinate-response-20260919/focused-retry-01/complete",
+  "focusedOutcome": {
+    "stage": "coordinate_focused",
+    "command": [
+      "python",
+      "-u",
+      "_measurements/S11c_d_coordinate_response.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-coordinate-response-20260919/focused-retry-01/complete",
+      "--focused"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-coordinate-response-20260919/focused-retry-01/coordinate_focused.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-coordinate-response-20260919/focused-retry-01/coordinate_focused.stderr",
+    "startedUtc": "2026-09-19T19:20:08.433100+00:00",
+    "childPid": 699627,
+    "status": "completed",
+    "exitCode": 0,
+    "wallSeconds": 32.87033112347126,
+    "stderrBytes": 0,
+    "finishedUtc": "2026-09-19T19:20:41.303481+00:00"
+  },
+  "focusedValidation": {
+    "status": "ACCEPTED_FOCUSED_INSTRUMENT",
+    "supervisorWallSeconds": 32.87033112347126,
+    "sources": 51,
+    "inputPackets": 11,
+    "artifacts": 90,
+    "rows": 80,
+    "sourceAmplitudes": 35,
+    "endCandidates": 36,
+    "selectedBasisDirections": 14,
+    "currentTables": 52,
+    "prefixResidual": 8.33313696081978e-16,
+    "localResidual": 3.9288741014591184e-16,
+    "sourceBasisResidual": 6.763021582679036e-16,
+    "boundaryCurrentResidual": 1.0361697645229585e-13,
+    "sourceAndPacketHashesUnchanged": true,
+    "checksSha256": "697a1e89fa0242738f634beb71bd6cc23146929f3b845236c6ce6be655d749ae",
+    "validatorSha256": "d25acc1a8299438d5eba1a0f0a08c1d47c2a76a63e698e2964d51cfc36d5d7d8",
+    "scope": "Bounded actual material integrand/source/local operator and complete boundary/current route check; full material quadrature and scattering solve remain."
   }
 }

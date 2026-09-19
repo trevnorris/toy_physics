@@ -75,11 +75,12 @@ source computes zero density gradient/advection. These source maps still need
 to enter a second scattering operator/boundary/channel/current route before
 coordinate agreement can be claimed. No c2 N3/N4/N6 closure follows.
 The [material-coordinate numerical adapter](S11c_d_coordinate_response_report.md)
-stopped before integration on mutable matrices passed to a cached binder.
-The two-call-site immutable conversion passes500 scalar-entry comparisons
-and all10 derivative composition maps, with a nonzero mutation control.
-The bounded focused run will resume in a fresh directory; the complete material
-quadrature and continuum scattering remain after its integrand/end-current checks.
+now passes its focused check in32.87seconds: all80 row prefixes,35 source
+amplitudes, full local matrices and52 transformed current tables. Row/local
+residuals are below8.34e-16/3.93e-16; boundary/current differences are below
+1.04e-13. All51 sources and90 saved artifacts validate. The complete material
+quadrature and independent-grade scattering solve are next; no new physical
+covariance claim follows from the bounded prefixes alone.
 The older checkpoint narrative below records history, not the current task
 queue. The retained solver/export suffix remains byte-identical, interpreted
 under the new acceptance addendum and the approved pole correction.

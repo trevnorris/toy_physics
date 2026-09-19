@@ -1,0 +1,45 @@
+{
+  "scriptSha256": "44ead83416dd8baa4fb0dedf16ef26a33fd810308112b6aa333dfc53fe75b8e0",
+  "focusedSha256": "7c6be1bbcf3d1707d7d911666997f271bf7978333342a08f04fd19fb7fa12c1c",
+  "independentCurrentResidual": 2.6407442894293542e-14,
+  "currentMutation": 115.93795582530427,
+  "quotientDifference": 1.1102230246251565e-16,
+  "quotientResidual": 0.0,
+  "actualOpenRanks": {
+    "transverse": 4,
+    "thickness": 0,
+    "allOpen": 4
+  },
+  "actualMetricResidual": 3.552822097363439e-15,
+  "actualCandidateRecords": 36,
+  "actualSelectedClusters": 10,
+  "actualSelectedDirections": 14,
+  "bulkDepthSquared": {
+    "LEFT": [
+      "-s11cdCurrentRightMomentum**2 - 1/25",
+      "-s11cdCurrentLeftMomentum**2 - 1/25"
+    ],
+    "RIGHT": [
+      "-s11cdCurrentRightMomentum**2 - 1/25",
+      "-s11cdCurrentLeftMomentum**2 - 1/25"
+    ]
+  },
+  "bulkRealPropagationSets": {
+    "LEFT": [
+      "EmptySet",
+      "EmptySet"
+    ],
+    "RIGHT": [
+      "EmptySet",
+      "EmptySet"
+    ]
+  },
+  "inputPackets": {
+    "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-response-20260919/production/complete/continuum-response.pickle": "a6678ad8fd7b4adf01aa3470834dcc0a918d2f7269fa1e273a980ea67c5b84f3",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/finish-02/complete/continuum-boundary.pickle": "8e3e53c3b7b06e3e81f961f013b77b4b87dfede081db75b4de458503b062eed0",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-end-normalization-20260914/reference/modal.pickle": "69668d29e11af4ca89c667f1ff39e7f646366eba7cb596dde39e74fcbefe3cd7",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/finish-02/complete/left-pencil.pickle": "66bd1e5ccbf08fb7a3c11df461232783850062090fb4500d3a7c0f6ec6253174",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/finish-02/complete/right-pencil.pickle": "170aa9cfa44630fe7900c33c2259960dff1c964cac50b5c931a0733cffa457a5"
+  },
+  "scope": "Arithmetic controls plus actual source/classifier and acoustic-domain joins; complete physical contractions remain in production."
+}

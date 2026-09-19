@@ -1,0 +1,15 @@
+{
+  "status": "PREPARED",
+  "checker": "S11c_d_continuum_currents.py",
+  "plan": "S11c_d_continuum_currents_plan.md",
+  "report": "S11c_d_continuum_currents_report.md",
+  "focused": "S11c_d_continuum_currents_focused.json",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-currents-20260919/production",
+  "acceptedResponseCommit": "a86bcb0a",
+  "limits": {
+    "wallSeconds": 900,
+    "nativeThreads": 1,
+    "addressSpaceBytes": 2147483648
+  },
+  "next": "Compute full channel/finite-end currents, amplitude and weak bookkeeping without new quadrature; then physical controls and targeted poles."
+}

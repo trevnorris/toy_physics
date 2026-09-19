@@ -65,12 +65,14 @@ full-rank10-by-10 solves, reflection below4.44e-16 and unit transmission to
 roundoff. All10519 metadata paths and203 artifacts validate. This is a
 selected constant-background control, not variable-profile transparency.
 Coordinate-covariance controls, targeted poles and final integration remain.
-The [coordinate-source preparation](S11c_d_coordinate_source_report.md) is
-running after650 exact derivative/polynomial checks and representative native
-coordinate round trips. It derives actual affine chart measures, field maps,
-source mutations and density-gradient operands; the second scattering route
-remains to be constructed. This is a bounded source run, not a new quadrature
-campaign or a claim that c2 covariance/source-origin debt is closed.
+The [coordinate-source preparation](S11c_d_coordinate_source_report.md) saved
+all375 records, chart/derivative proofs and density/advection operands, then
+output stopped on equality-node dimension metadata. A narrow emitter repair
+preserves the original carrier and assigns metadata to its actual physical
+sides; the conflicting-unit control rejects. Saved-packet validation/output
+recovery is now running, with no source or physics construction repeated.
+The second scattering route remains to be constructed. No c2 N3/N4/N6
+source-origin closure or new quadrature campaign follows from this control.
 The older checkpoint narrative below records history, not the current task
 queue. The retained solver/export suffix remains byte-identical, interpreted
 under the new acceptance addendum and the approved pole correction.

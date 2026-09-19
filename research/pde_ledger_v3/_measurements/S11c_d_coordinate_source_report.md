@@ -48,3 +48,9 @@ Eulerian data. The shape mutation must likewise be evaluated on its changed
 sources. This affine regression does not establish arbitrary nonaffine
 covariance or close c2's N3/N4/N6 source-origin debt. Targeted frequency poles,
 remaining cases and final exports follow under practical acceptance.
+
+The equality-output repair is committed at632afe92. Its focused check retains
+the original equation fingerprint, computes the side unit[-4,0,1], and rejects
+a conflicting known unit. The saved-packet recovery has launched with clean
+stderr and its own silent completion/error hook. Full final validation remains
+pending; no accepted source or scattering result is newly claimed.

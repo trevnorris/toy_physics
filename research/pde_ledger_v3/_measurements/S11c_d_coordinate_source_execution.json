@@ -1,5 +1,5 @@
 {
-  "status": "OUTPUT_RECOVERY_PREPARED",
+  "status": "OUTPUT_RECOVERY_RUNNING",
   "checker": "S11c_d_coordinate_source.py",
   "plan": "S11c_d_coordinate_source_plan.md",
   "report": "S11c_d_coordinate_source_report.md",
@@ -68,5 +68,39 @@
   "originalSourcePacketSha256": "b822833b60cff10d6901a16a29005a5185362f9559487c947184341949b0611c",
   "recoveryChecker": "S11c_d_coordinate_source_recover.py",
   "recoveryPlan": "S11c_d_coordinate_source_recovery_plan.md",
-  "recoveryRunRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-coordinate-control-20260919/recovery-01"
+  "recoveryRunRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-coordinate-control-20260919/recovery-01",
+  "recoveryImplementationCommit": "632afe92",
+  "recoveryLaunch": {
+    "launchedUtc": "2026-09-19T18:56:23.895136+00:00",
+    "command": [
+      "/usr/bin/python",
+      "_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-coordinate-control-20260919/recovery-01",
+      "--stage",
+      "coordinate_recover",
+      "--",
+      "python",
+      "-u",
+      "_measurements/S11c_d_coordinate_source_recover.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-coordinate-control-20260919/recovery-01/complete"
+    ],
+    "supervisorPid": 686301,
+    "watcherPid": 686302,
+    "watcherDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-coordinate-control-20260919/recovery-01/completion-watcher",
+    "threadEnvironment": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1"
+    }
+  },
+  "recoveryStartup": {
+    "status": "running",
+    "childPid": 686303,
+    "strictStderrBytes": 0,
+    "watcherStderrBytes": 0,
+    "inspection": "One clean startup inspection; local hook owns completion/error continuation."
+  }
 }

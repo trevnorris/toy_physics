@@ -1,0 +1,555 @@
+{
+  "status": "FOCUSED_REPAIR_ACCEPTED",
+  "originalOutcome": {
+    "stage": "cases_construct",
+    "command": [
+      "python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_sources.py",
+      "--mode",
+      "construct",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-sources-20260919/production/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-sources-20260919/production/cases_construct.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-sources-20260919/production/cases_construct.stderr",
+    "startedUtc": "2026-09-19T23:02:45.545205+00:00",
+    "childPid": 785253,
+    "status": "failed",
+    "exitCode": 1,
+    "wallSeconds": 223.68238273542374,
+    "stderrBytes": 1308,
+    "finishedUtc": "2026-09-19T23:06:29.227644+00:00"
+  },
+  "originalCatalogueSha256": "23b98c40936f195664246baae6ae8fa69e645cca4bee60ac09775141bd060aa0",
+  "originalPacketInventory": {
+    "accepted-assembly.pickle": "8eda57998285137d99cce9564757627a57f8d5bc9b27091c86a65a9cc59230a0",
+    "accepted-reduced-action.pickle": "e9062c3455c7e59fe816f47172062a0c118b201d03809ec0826575dac22872b0",
+    "accepted-actions.pickle": "4c2372a7102d1db9f21a049ab3104465e8d9245ab832be88c900bc8519b46e02",
+    "remaining-case-sources.pickle": "23b98c40936f195664246baae6ae8fa69e645cca4bee60ac09775141bd060aa0",
+    "cases/LAB_HELD__RHOBR_CONSTANT/reduction-0.pickle": "2dce355da2bb6c51bcc2d5377481c006a3b1189f0ce28bba9e0ec0bd8f43510a",
+    "cases/LAB_HELD__RHOBR_CONSTANT/comparisons.pickle": "f4cb9999a17b1b71b08df8940eb024b3b5266fc755bbc1a11cd366a3949c5bf8",
+    "cases/LAB_HELD__RHOBR_CONSTANT/payload-1.pickle": "30cc748cbc29c5471b282be56acb97e20d6c6501186d5196ead8ddcd6b285289",
+    "cases/LAB_HELD__RHOBR_CONSTANT/actions.pickle": "56e8111829a8f4cb1afaf40edc43d7dbc42d2196b181b984dfddd7015d89f918",
+    "cases/LAB_HELD__RHOBR_CONSTANT/reduction-1.pickle": "2144954350f3e8989b0930911c37ffe8748e57414cf6945a59e627681bea9c5c",
+    "cases/LAB_HELD__RHOBR_CONSTANT/assembly.pickle": "53a1d577e0f568b381148e9d4190434a709f633d769defe1899b94e8b474f690",
+    "cases/LAB_HELD__RHOBR_CONSTANT/payload-0.pickle": "4a2b08ad7ee23d249efdd382159b67c1e9e0d6491af0ea02cc4b1c356c53538e",
+    "cases/LAB_HELD__RHOBR_CONSTANT/reduced-action.pickle": "95dbb6b5cb833b16edf3f64177b2df54af2e91379a9ee43d43021d1872aa9106",
+    "cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/reduction-0.pickle": "bfa9eee323a6959c8b60fa43a63ba0b3cd66d847157af7849fac0e0c93ae1124",
+    "cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/comparisons.pickle": "4ad696c8ebec777de88bc79169ed05820fd6255aa4369918253e141566ac978c",
+    "cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/payload-1.pickle": "c8ef09df214bb2f6ccc9aab9fabd8d1ed7919dba425ca3ef73da838e6672afb4",
+    "cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/actions.pickle": "75cc4419411903d36cb6f4be73652694de3bc69ff19c6117a564f331503de410",
+    "cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/reduction-1.pickle": "e9cff54061bf7150c81a80bd7eeb6a7e4941c9beb6f2868dcbba888f16ed4327",
+    "cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/assembly.pickle": "15b54c2237f5951aba15616f3062d29d5748fcedf5fc4fedea802a5dec04bf0f",
+    "cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/payload-0.pickle": "9af5355aacc448b7cc4ef6cba483a29b34aae6406f6fd2815bb5e5e8ecfc707d",
+    "cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/reduced-action.pickle": "6add07e5f8fd992204e79985b1dec0ce4e641b5d34d2f7aeaeffccd9e53207a2",
+    "cases/MATERIAL_ADVECTED__RHO4_CONSTANT/reduction-0.pickle": "88b84245a38a5f3e60653b875af7b1a7ef3f3ef6ef121123c6c7253411950954",
+    "cases/MATERIAL_ADVECTED__RHO4_CONSTANT/comparisons.pickle": "18f924d3d0a64e1991bb30a4f202e2965dae4f1b099b6b197129fe298a51f3e1",
+    "cases/MATERIAL_ADVECTED__RHO4_CONSTANT/payload-1.pickle": "17375507931238a5888f4da8e47818a982f33063dd4ab3840999a2a0c66049ca",
+    "cases/MATERIAL_ADVECTED__RHO4_CONSTANT/actions.pickle": "c8b64088556034a465bea39bea751c62a77e3850897257dc81de1a70c8282689",
+    "cases/MATERIAL_ADVECTED__RHO4_CONSTANT/reduction-1.pickle": "e0dd89e8c21843bea2cc63a0a6b07ef73c6856d7f13c6c0829ecdbf71fca4a88",
+    "cases/MATERIAL_ADVECTED__RHO4_CONSTANT/assembly.pickle": "49dac40608b2b44e0a01d10e9f15cb758ef10015157b4d29cd47dff1b6f35c40",
+    "cases/MATERIAL_ADVECTED__RHO4_CONSTANT/payload-0.pickle": "a2787ac941f92067d85a716e1333e572db8d2fee5f0b7bf450686d2ba6568647",
+    "cases/MATERIAL_ADVECTED__RHO4_CONSTANT/reduced-action.pickle": "b103e83e61ddffcf8a320fe5f91ef433e1571551654f91749bed5665b5d537b9"
+  },
+  "diagnosticDifferences": {
+    "LAB_HELD__RHO4_CONSTANT": {
+      "sourceIdentity": true,
+      "differences": []
+    },
+    "LAB_HELD__RHOBR_CONSTANT": {
+      "sourceIdentity": true,
+      "differences": [
+        {
+          "column": 0,
+          "row": 3,
+          "changes": {
+            "DISTINCT_DERIVATIVES": {
+              "live": 10,
+              "restored": 11
+            }
+          }
+        },
+        {
+          "column": 0,
+          "row": 4,
+          "changes": {
+            "DAG_NODES": {
+              "live": 684,
+              "restored": 689
+            },
+            "DISTINCT_DERIVATIVES": {
+              "live": 10,
+              "restored": 11
+            }
+          }
+        },
+        {
+          "column": 1,
+          "row": 3,
+          "changes": {
+            "DISTINCT_DERIVATIVES": {
+              "live": 10,
+              "restored": 11
+            }
+          }
+        },
+        {
+          "column": 1,
+          "row": 4,
+          "changes": {
+            "DAG_NODES": {
+              "live": 684,
+              "restored": 689
+            },
+            "DISTINCT_DERIVATIVES": {
+              "live": 10,
+              "restored": 11
+            }
+          }
+        },
+        {
+          "column": 2,
+          "row": 3,
+          "changes": {
+            "DISTINCT_DERIVATIVES": {
+              "live": 12,
+              "restored": 13
+            }
+          }
+        },
+        {
+          "column": 2,
+          "row": 4,
+          "changes": {
+            "DAG_NODES": {
+              "live": 766,
+              "restored": 771
+            },
+            "DISTINCT_DERIVATIVES": {
+              "live": 12,
+              "restored": 13
+            }
+          }
+        },
+        {
+          "column": 3,
+          "row": 3,
+          "changes": {
+            "DAG_NODES": {
+              "live": 637,
+              "restored": 640
+            },
+            "DISTINCT_DERIVATIVES": {
+              "live": 7,
+              "restored": 8
+            }
+          }
+        },
+        {
+          "column": 3,
+          "row": 4,
+          "changes": {
+            "DAG_NODES": {
+              "live": 699,
+              "restored": 702
+            },
+            "DISTINCT_DERIVATIVES": {
+              "live": 10,
+              "restored": 11
+            }
+          }
+        },
+        {
+          "column": 4,
+          "row": 3,
+          "changes": {
+            "DAG_NODES": {
+              "live": 760,
+              "restored": 765
+            },
+            "DISTINCT_DERIVATIVES": {
+              "live": 12,
+              "restored": 13
+            }
+          }
+        },
+        {
+          "column": 4,
+          "row": 4,
+          "changes": {
+            "DAG_NODES": {
+              "live": 822,
+              "restored": 827
+            },
+            "DISTINCT_DERIVATIVES": {
+              "live": 12,
+              "restored": 13
+            }
+          }
+        }
+      ]
+    },
+    "MATERIAL_ADVECTED__RHO4_CONSTANT": {
+      "sourceIdentity": true,
+      "differences": [
+        {
+          "column": 0,
+          "row": 3,
+          "changes": {
+            "DAG_NODES": {
+              "live": 693,
+              "restored": 698
+            },
+            "DISTINCT_DERIVATIVES": {
+              "live": 10,
+              "restored": 11
+            }
+          }
+        },
+        {
+          "column": 0,
+          "row": 4,
+          "changes": {
+            "DAG_NODES": {
+              "live": 747,
+              "restored": 752
+            },
+            "DISTINCT_DERIVATIVES": {
+              "live": 10,
+              "restored": 11
+            }
+          }
+        },
+        {
+          "column": 1,
+          "row": 3,
+          "changes": {
+            "DAG_NODES": {
+              "live": 693,
+              "restored": 698
+            },
+            "DISTINCT_DERIVATIVES": {
+              "live": 10,
+              "restored": 11
+            }
+          }
+        },
+        {
+          "column": 1,
+          "row": 4,
+          "changes": {
+            "DAG_NODES": {
+              "live": 747,
+              "restored": 752
+            },
+            "DISTINCT_DERIVATIVES": {
+              "live": 10,
+              "restored": 11
+            }
+          }
+        },
+        {
+          "column": 2,
+          "row": 3,
+          "changes": {
+            "DAG_NODES": {
+              "live": 773,
+              "restored": 778
+            },
+            "DISTINCT_DERIVATIVES": {
+              "live": 12,
+              "restored": 13
+            }
+          }
+        },
+        {
+          "column": 2,
+          "row": 4,
+          "changes": {
+            "DAG_NODES": {
+              "live": 873,
+              "restored": 878
+            },
+            "DISTINCT_DERIVATIVES": {
+              "live": 12,
+              "restored": 13
+            }
+          }
+        },
+        {
+          "column": 3,
+          "row": 3,
+          "changes": {
+            "DAG_NODES": {
+              "live": 663,
+              "restored": 666
+            },
+            "DISTINCT_DERIVATIVES": {
+              "live": 7,
+              "restored": 8
+            }
+          }
+        },
+        {
+          "column": 3,
+          "row": 4,
+          "changes": {
+            "DAG_NODES": {
+              "live": 724,
+              "restored": 727
+            },
+            "DISTINCT_DERIVATIVES": {
+              "live": 10,
+              "restored": 11
+            }
+          }
+        },
+        {
+          "column": 4,
+          "row": 3,
+          "changes": {
+            "DAG_NODES": {
+              "live": 805,
+              "restored": 810
+            },
+            "DISTINCT_DERIVATIVES": {
+              "live": 12,
+              "restored": 13
+            }
+          }
+        },
+        {
+          "column": 4,
+          "row": 4,
+          "changes": {
+            "DAG_NODES": {
+              "live": 863,
+              "restored": 868
+            },
+            "DISTINCT_DERIVATIVES": {
+              "live": 12,
+              "restored": 13
+            }
+          }
+        }
+      ]
+    },
+    "MATERIAL_ADVECTED__RHOBR_CONSTANT": {
+      "sourceIdentity": true,
+      "differences": [
+        {
+          "column": 0,
+          "row": 3,
+          "changes": {
+            "DAG_NODES": {
+              "live": 636,
+              "restored": 641
+            },
+            "DISTINCT_DERIVATIVES": {
+              "live": 10,
+              "restored": 11
+            }
+          }
+        },
+        {
+          "column": 0,
+          "row": 4,
+          "changes": {
+            "DAG_NODES": {
+              "live": 693,
+              "restored": 698
+            },
+            "DISTINCT_DERIVATIVES": {
+              "live": 10,
+              "restored": 11
+            }
+          }
+        },
+        {
+          "column": 1,
+          "row": 3,
+          "changes": {
+            "DAG_NODES": {
+              "live": 636,
+              "restored": 641
+            },
+            "DISTINCT_DERIVATIVES": {
+              "live": 10,
+              "restored": 11
+            }
+          }
+        },
+        {
+          "column": 1,
+          "row": 4,
+          "changes": {
+            "DAG_NODES": {
+              "live": 693,
+              "restored": 698
+            },
+            "DISTINCT_DERIVATIVES": {
+              "live": 10,
+              "restored": 11
+            }
+          }
+        },
+        {
+          "column": 2,
+          "row": 3,
+          "changes": {
+            "DAG_NODES": {
+              "live": 697,
+              "restored": 702
+            },
+            "DISTINCT_DERIVATIVES": {
+              "live": 12,
+              "restored": 13
+            }
+          }
+        },
+        {
+          "column": 2,
+          "row": 4,
+          "changes": {
+            "DAG_NODES": {
+              "live": 792,
+              "restored": 797
+            },
+            "DISTINCT_DERIVATIVES": {
+              "live": 12,
+              "restored": 13
+            }
+          }
+        },
+        {
+          "column": 3,
+          "row": 3,
+          "changes": {
+            "DAG_NODES": {
+              "live": 637,
+              "restored": 640
+            },
+            "DISTINCT_DERIVATIVES": {
+              "live": 7,
+              "restored": 8
+            }
+          }
+        },
+        {
+          "column": 3,
+          "row": 4,
+          "changes": {
+            "DAG_NODES": {
+              "live": 699,
+              "restored": 702
+            },
+            "DISTINCT_DERIVATIVES": {
+              "live": 10,
+              "restored": 11
+            }
+          }
+        },
+        {
+          "column": 4,
+          "row": 3,
+          "changes": {
+            "DAG_NODES": {
+              "live": 770,
+              "restored": 775
+            },
+            "DISTINCT_DERIVATIVES": {
+              "live": 12,
+              "restored": 13
+            }
+          }
+        },
+        {
+          "column": 4,
+          "row": 4,
+          "changes": {
+            "DAG_NODES": {
+              "live": 832,
+              "restored": 837
+            },
+            "DISTINCT_DERIVATIVES": {
+              "live": 12,
+              "restored": 13
+            }
+          }
+        }
+      ]
+    }
+  },
+  "diagnosticFiles": {
+    "MATERIAL_ADVECTED__RHO4_CONSTANT.pickle": "e21ea6e4d79053436f4f37585d7f2b470568c6add8ed9f567473b953e26cd234",
+    "differences.json": "8bac5b2e40128b11f533ade8919db0a35932f802c91291872a84ad123f1782d9",
+    "MATERIAL_ADVECTED__RHOBR_CONSTANT.pickle": "8403317f6120ee9f95707efec1369282fba57d7584168a594b348d61061c1d5e",
+    "LAB_HELD__RHO4_CONSTANT.pickle": "9c327ef423f0b24e514338692d9c20cd6707c68beceafcdf16413ef38d6cc3d1",
+    "LAB_HELD__RHOBR_CONSTANT.pickle": "e423a0ff6c3a747ba5ddff940f0ac51f1828bef57a4e07f3d2b860240f853e63"
+  },
+  "repair": "Retain exact live/restored census transitions; independently reconstruct every restored column from its saved native coefficient/generator data with differentiation and coefficient mutations. Adapt only the context census guard under a reverse function AST join. No source construction or quadrature rerun.",
+  "liveRepresentationStringsAvailable": false,
+  "focusedCheckpoint": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_sources_recovery_focused.json",
+  "contextJoin": {
+    "wholeContextReverseAstJoin": true,
+    "originalAstSha256": "82aed2e1c0eb159d13c560cbde2d872c76d8ad58163872073d42dfb6ca6b7012",
+    "adapterAstSha256": "e1aa69bfb71439b9944b86b18a28c973c714306a30231618c78a2618f89e0a1c"
+  },
+  "focusedCases": {
+    "LAB_HELD__RHO4_CONSTANT": {
+      "cellsCertified": 1,
+      "normalizedResidualScalars": 1,
+      "coefficientResidualScalars": 18,
+      "respondingCoefficientMutations": 1,
+      "rawNonzeroForms": 1,
+      "constraintResidualScalars": 0,
+      "wrongAddressRejected": true
+    },
+    "LAB_HELD__RHOBR_CONSTANT": {
+      "cellsCertified": 1,
+      "normalizedResidualScalars": 1,
+      "coefficientResidualScalars": 15,
+      "respondingCoefficientMutations": 1,
+      "rawNonzeroForms": 1,
+      "constraintResidualScalars": 0,
+      "wrongAddressRejected": true
+    },
+    "MATERIAL_ADVECTED__RHO4_CONSTANT": {
+      "cellsCertified": 1,
+      "normalizedResidualScalars": 1,
+      "coefficientResidualScalars": 18,
+      "respondingCoefficientMutations": 1,
+      "rawNonzeroForms": 1,
+      "constraintResidualScalars": 0,
+      "wrongAddressRejected": true
+    },
+    "MATERIAL_ADVECTED__RHOBR_CONSTANT": {
+      "cellsCertified": 1,
+      "normalizedResidualScalars": 1,
+      "coefficientResidualScalars": 15,
+      "respondingCoefficientMutations": 1,
+      "rawNonzeroForms": 1,
+      "constraintResidualScalars": 0,
+      "wrongAddressRejected": true
+    }
+  },
+  "adapterControls": {
+    "LAB_HELD__RHO4_CONSTANT": {
+      "actualContextAccepted": true,
+      "unrecordedCensusChangeRejected": true
+    },
+    "LAB_HELD__RHOBR_CONSTANT": {
+      "actualContextAccepted": true,
+      "unrecordedCensusChangeRejected": true
+    },
+    "MATERIAL_ADVECTED__RHO4_CONSTANT": {
+      "actualContextAccepted": true,
+      "unrecordedCensusChangeRejected": true
+    },
+    "MATERIAL_ADVECTED__RHOBR_CONSTANT": {
+      "actualContextAccepted": true,
+      "unrecordedCensusChangeRejected": true
+    }
+  }
+}

@@ -399,6 +399,14 @@ It will materialize the three missing full source/assembly packets and identify
 exact integral reuse before the remaining responses. No historical quadrature
 repeat or additional contour doubling is queued.
 
+## Saved case output recovery (2026-09-19)
+
+All three remaining reduced operators and assemblies are saved. Output hit a
+live/restored expression-census mismatch; source/action identities remain exact.
+The narrow context repair preserves both censuses and passes affected-cell
+coefficient reconstruction and mutation checks. Complete saved-packet validation
+and output follow without repeating source construction or numerical work.
+
 ## Retained user-approved solver/export contract
 
 

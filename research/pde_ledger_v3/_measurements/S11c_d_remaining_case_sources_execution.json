@@ -1,5 +1,5 @@
 {
-  "status": "RUNNING",
+  "status": "SAVED_CASE_RECOVERY_PREPARED",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-sources-20260919/production",
   "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-sources-20260919/production/complete",
   "helper": "_measurements/S11c_d_remaining_case_sources.py",
@@ -67,5 +67,30 @@
     "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
     "messageSha256": "3654763dd042eb4b62f38b8b78354ba577a7027e5c23c5e075ee193b360c1810",
     "notifications": {}
-  }
+  },
+  "originalOutcome": {
+    "stage": "cases_construct",
+    "command": [
+      "python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_sources.py",
+      "--mode",
+      "construct",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-sources-20260919/production/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-sources-20260919/production/cases_construct.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-sources-20260919/production/cases_construct.stderr",
+    "startedUtc": "2026-09-19T23:02:45.545205+00:00",
+    "childPid": 785253,
+    "status": "failed",
+    "exitCode": 1,
+    "wallSeconds": 223.68238273542374,
+    "stderrBytes": 1308,
+    "finishedUtc": "2026-09-19T23:06:29.227644+00:00"
+  },
+  "recoveryHelper": "_measurements/S11c_d_remaining_case_sources_recover.py",
+  "recoveryPlan": "_measurements/S11c_d_remaining_case_sources_recovery_plan.md",
+  "recoveryRunDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-sources-20260919/recovery-01/complete",
+  "recoveryFocused": "_measurements/S11c_d_remaining_case_sources_recovery_focused.json"
 }

@@ -1,0 +1,15 @@
+{
+  "status": "FOCUSED_PREPARED",
+  "checker": "S11c_d_profile_form.py",
+  "plan": "S11c_d_profile_form_plan.md",
+  "report": "S11c_d_profile_form_report.md",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-profile-form-20260919/focused",
+  "acceptedResponseCommit": "a86bcb0a",
+  "acceptedCurrentsCommit": "60da6fc2",
+  "limits": {
+    "wallSeconds": 900,
+    "nativeThreads": 1,
+    "addressSpaceBytes": 2147483648
+  },
+  "next": "Validate exact source/form bindings and moments; then one changed-profile finite and continuum solve reusing accepted bindings."
+}

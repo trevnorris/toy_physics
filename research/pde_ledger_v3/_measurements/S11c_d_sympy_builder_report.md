@@ -1,7 +1,7 @@
 # S11c-d SymPy builder checkpoint
 
 The user approved a [practical numerical acceptance standard](../directives/S11c_d_EXPLORATORY_ACCEPTANCE.md)
-on 2026-09-18. After the current run, follow the
+on 2026-09-18. Follow the
 [focused completion plan](S11c_d_focused_completion_plan.md): construct the first
 complete two-ended numerical scattering response, then check its important
 observables at stated precision. Rigorous operator/infinite-limit certificates
@@ -13,8 +13,13 @@ The wide-triple adaptive production launched at `b5597574` is now accepted and
 annex-published at `4ba95bcf`:22h45m, four clean workers,1260 adaptive points,
 raw differences2.18e-13 and complete-action differences1.39e-17. All56185 metadata
 paths and saved-source/operand joins pass. This ends the fixed-box quadrature
-sequence. Next implement the finite matching solve and select later checks
-from its observable sensitivity, without automatically queueing more sweeps.
+sequence. The first [finite scattering pilot](S11c_d_finite_scattering_report.md)
+now computes all four incident columns, all80 nonlocal rows and325 field
+coefficients in13.24 seconds. The full-rank system has condition1600, scaled
+equation residual1.40e-15 and independent-solve difference9.19e-14. Its coarse
+quadrature and approximate modal boundaries make this an instrument milestone,
+not converged scattering or a continuum expansion. Next compare actual-response
+resolution before targeted boundary/regulator checks.
 The older checkpoint narrative below records history, not the current task
 queue. The retained solver/export suffix remains byte-identical, interpreted
 under the new acceptance addendum and the approved pole correction.

@@ -24,11 +24,21 @@ reused byte-for-byte with97 source and6 operand joins. Original logs and packets
 remain under `pilot/`; the repair evidence is in
 `S11c_d_finite_scattering_dtype_repair.json`.
 
-The retry retains325 unknowns, four incoming columns, the15-minute budget, one
-native thread and2 GiB ceiling. No matrix solve or physical scattering result is
-accepted yet. Inspect saved matrices, action/measure controls, rank, residuals,
-conditioning and amplitudes before increasing resolution. Finite regulator,
-cutoffs, modest quadrature and approximate modal boundaries remain explicit.
+The repaired retry completed in13.24 seconds (constructor11.91 seconds), with
+empty stderr,17944 momentum nodes and216.3 MiB peak RSS (221500 KiB). Its325x325
+system has rank325 and balanced condition number1600; all four incident columns
+were solved. Maximum raw/scaled equation residuals are1.97e-12/1.40e-15,
+boundary residuals4.48e-14 and matrix/direct-action residual3.54e-17. An independent
+unscaled direct solve agrees in coefficients to9.19e-14. Every80 row,35 source,
+70 Gaussian record,97 source pin,6 input operand and saved artifact hash passes.
+Full matrices, fields, modal amplitudes and physical currents are preserved.
+
+Computed outgoing/incident current ratios range0.9999630–0.9999931, with small
+reflected amplitudes in this coarse pilot. Neither the apparent small loss nor
+reflection is yet resolved physically. Finite regulator, cutoffs, modest
+quadrature and approximate modal boundaries remain explicit. No continuum
+expansion or converged physical scattering result is claimed. Next use a small
+resolution comparison on the actual response, preserving domain and regulator.
 
 The completed adaptive sequence is published/annex-verified at4ba95bcf/a6bfb7a6.
 Future work follows exploratoryAcceptanceV1 and the focused completion plan;

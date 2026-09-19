@@ -1,5 +1,5 @@
 {
-  "status": "REPAIRED_PILOT_READY",
+  "status": "VALIDATED_FINITE_INSTRUMENT_PILOT",
   "checker": "S11c_d_finite_scattering.py",
   "plan": "S11c_d_finite_scattering_plan.md",
   "report": "S11c_d_finite_scattering_report.md",
@@ -28,7 +28,7 @@
   },
   "purpose": "Measure feasibility and inspect residuals/conditioning of the complete finite operator and all-incident solve before choosing practical observable checks.",
   "scope": "Instrument/cost pilot; no physical observable or continuum re-expansion accepted.",
-  "next": "Launch the same bounded pilot using verified saved bindings; inspect the finite solve before selecting observable checks.",
+  "next": "Target finite-response resolution: source/profile rules, collocation size, then momentum rules. Keep domain and regulator fixed; do not infer resolved small reflection or loss from this pilot.",
   "implementationCommit": "efc61982",
   "originalAttempt": {
     "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-finite-scattering-20260919/pilot",
@@ -82,5 +82,60 @@
       "finishedUtc": "2026-09-19T14:19:27.586072+00:00"
     }
   },
-  "repair": "S11c_d_finite_scattering_dtype_repair.json"
+  "repair": "S11c_d_finite_scattering_dtype_repair.json",
+  "repairCommit": "7845c0c7",
+  "checkpoint": "S11c_d_finite_scattering_checkpoint.json",
+  "launch": {
+    "launchedUtc": "2026-09-19T14:28:40.095747+00:00",
+    "command": [
+      "/usr/bin/python",
+      "_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-finite-scattering-20260919/retry-01",
+      "--stage",
+      "finite_construct",
+      "--",
+      "python",
+      "-u",
+      "_measurements/S11c_d_finite_scattering.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-finite-scattering-20260919/retry-01/complete",
+      "--resume-binding",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-finite-scattering-20260919/pilot/complete"
+    ],
+    "supervisorPid": 567451,
+    "watcherPid": 567452,
+    "watcherDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-finite-scattering-20260919/retry-01/completion-watcher",
+    "threadEnvironment": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1"
+    }
+  },
+  "outcome": {
+    "stage": "finite_construct",
+    "command": [
+      "python",
+      "-u",
+      "_measurements/S11c_d_finite_scattering.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-finite-scattering-20260919/retry-01/complete",
+      "--resume-binding",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-finite-scattering-20260919/pilot/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-finite-scattering-20260919/retry-01/finite_construct.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-finite-scattering-20260919/retry-01/finite_construct.stderr",
+    "startedUtc": "2026-09-19T14:28:40.126187+00:00",
+    "childPid": 567453,
+    "status": "completed",
+    "exitCode": 0,
+    "wallSeconds": 13.240605340339243,
+    "stderrBytes": 0,
+    "finishedUtc": "2026-09-19T14:28:53.366837+00:00"
+  },
+  "launchVerification": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-finite-scattering-20260919/retry-01/launch-verification.json",
+    "sha256": "1b93b0c4a1b8306b559faf57b1f6e51cab22cb6e539e55a3279445d72cae9e4a"
+  }
 }

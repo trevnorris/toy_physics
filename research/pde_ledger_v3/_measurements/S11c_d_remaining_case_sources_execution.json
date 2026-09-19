@@ -1,5 +1,5 @@
 {
-  "status": "PREFLIGHT_ACCEPTED_PRODUCTION_PREPARED",
+  "status": "RUNNING",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-sources-20260919/production",
   "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-sources-20260919/production/complete",
   "helper": "_measurements/S11c_d_remaining_case_sources.py",
@@ -9,5 +9,63 @@
   "nativeThreads": 1,
   "addressSpaceBytes": 2147483648,
   "initialWallBudgetSeconds": 900,
-  "scope": "Three missing full reduced source/assembly cases from saved original parent operands; accepted baseline reused. No numerical quadrature or scattering solve."
+  "scope": "Three missing full reduced source/assembly cases from saved original parent operands; accepted baseline reused. No numerical quadrature or scattering solve.",
+  "implementationCommit": "3a9d9c38",
+  "launch": {
+    "launchedUtc": "2026-09-19T23:02:45.507928+00:00",
+    "command": [
+      "/usr/bin/python",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-sources-20260919/production",
+      "--stage",
+      "cases_construct",
+      "--",
+      "python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_sources.py",
+      "--mode",
+      "construct",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-sources-20260919/production/complete"
+    ],
+    "mode": "construct",
+    "supervisorPid": 785247,
+    "watcherPid": 785248,
+    "watcherDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-sources-20260919/production/completion-watcher",
+    "threadEnvironment": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1"
+    },
+    "implementationCommit": "3a9d9c38"
+  },
+  "activeAtLaunch": {
+    "stage": "cases_construct",
+    "command": [
+      "python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_sources.py",
+      "--mode",
+      "construct",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-sources-20260919/production/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-sources-20260919/production/cases_construct.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-sources-20260919/production/cases_construct.stderr",
+    "startedUtc": "2026-09-19T23:02:45.545205+00:00",
+    "childPid": 785253,
+    "status": "running"
+  },
+  "watcherStateAtLaunch": {
+    "status": "waiting",
+    "watcherPid": 785248,
+    "jobPid": 785247,
+    "thread": "01a08c53-295c-70f0-baaf-353db1745867",
+    "startedUtc": "2026-09-19T23:02:45.545401+00:00",
+    "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
+    "messageSha256": "3654763dd042eb4b62f38b8b78354ba577a7027e5c23c5e075ee193b360c1810",
+    "notifications": {}
+  }
 }

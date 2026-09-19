@@ -20,3 +20,7 @@ with its limited numerical scope preserved. The remaining cases and final
 engine/export integration are now the focus. No broad quadrature sequence or
 additional contour doubling is queued. This source stage does not complete the
 remaining scattering, continuum, current, control or bounded pole outputs.
+
+Construction launched with explicit --mode construct under one supervisor and
+one silent completion/error hook. The initial budget is 900 seconds and 2 GiB
+with one native numerical thread. This is a budget, not a measured finish estimate.

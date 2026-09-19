@@ -1,5 +1,5 @@
 {
-  "status": "PRODUCTION_RUNNING",
+  "status": "OUTPUT_RECOVERY_PREPARED",
   "checker": "S11c_d_coordinate_source.py",
   "plan": "S11c_d_coordinate_source_plan.md",
   "report": "S11c_d_coordinate_source_report.md",
@@ -11,7 +11,7 @@
     "nativeThreads": 1,
     "addressSpaceBytes": 2147483648
   },
-  "next": "Validate full source chart and one-sided mutation operands, then construct material/Eulerian scattering comparison with actual source/node/measure/channel/current joins.",
+  "next": "Finish saved-source validation/emission, verify all original prefix payloads and packet identities, publish and commit; then construct actual material scattering route.",
   "implementationCommit": "620e24b1",
   "launch": {
     "launchedUtc": "2026-09-19T18:47:12.124195+00:00",
@@ -45,5 +45,28 @@
     "strictStderrBytes": 0,
     "watcherStderrBytes": 0,
     "inspection": "One clean startup inspection; source loading precedes the progress log. Completion/error hook owns continuation."
-  }
+  },
+  "originalOutcome": {
+    "stage": "coordinate_construct",
+    "command": [
+      "python",
+      "-u",
+      "_measurements/S11c_d_coordinate_source.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-coordinate-control-20260919/production/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-coordinate-control-20260919/production/coordinate_construct.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-coordinate-control-20260919/production/coordinate_construct.stderr",
+    "startedUtc": "2026-09-19T18:47:12.154010+00:00",
+    "childPid": 681813,
+    "status": "failed",
+    "exitCode": 1,
+    "wallSeconds": 52.90949955396354,
+    "stderrBytes": 1978,
+    "finishedUtc": "2026-09-19T18:48:05.063571+00:00"
+  },
+  "originalSourcePacketSha256": "b822833b60cff10d6901a16a29005a5185362f9559487c947184341949b0611c",
+  "recoveryChecker": "S11c_d_coordinate_source_recover.py",
+  "recoveryPlan": "S11c_d_coordinate_source_recovery_plan.md",
+  "recoveryRunRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-coordinate-control-20260919/recovery-01"
 }

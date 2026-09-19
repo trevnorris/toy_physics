@@ -25,13 +25,22 @@ jet-free carriers: raw reconstruction and exact carrier proofs are preserved,
 without an expensive cancellation of material-parameter rational functions.
 The initial failed checks and all accepted operands remain durable.
 
-The production constructor is launched at620e24b1 with a clean startup and
-a silent local completion/error hook. It will transform375 records, preserve all80 native
-integral rows and35 source amplitudes, compute the literal first-w-derivative
-mutation and read the actual inherited rho4 density/advection operand. Every
-record is saved before guards, with full units, independent grades and source
-joins. Its source budget is900seconds, one thread and2GiB. No numerical grid,
-factorization, mode or scattering solve is repeated here.
+Production620e24b1 completed and saved all375 source records,160 native term
+limit records, chart/derivative proofs and density/advection operands. The
+last source record completed at29.13seconds. At52.91seconds output stopped:
+the dimension walker does not accept an Equality node. The524472-byte main
+packet and2.63MB original partial transcript are preserved; no result has yet
+been accepted through the final output checks.
+
+The local repair keeps the original density equation carrier and derives
+metadata from its actual left/right operands, with an explicit paths0/1
+convention and a conflicting-unit control. A reverse whole-file AST join
+limits the change to that emitter call and helper. Recovery copies every
+completed packet byte-for-byte, validates sources/records/limits/jet proofs,
+then runs the original emission/validation tail and compares every original
+decoded prefix payload. It does not repeat source construction, quadrature,
+factorization, modes or any physics solve. The same900second, one-thread,
+2GiB budget and silent local completion/error hook apply.
 
 A second scattering route is still required: these maps must act inside its
 operator, boundary/channel and current construction before comparing common

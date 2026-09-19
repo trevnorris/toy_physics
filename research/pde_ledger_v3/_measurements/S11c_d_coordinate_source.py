@@ -223,6 +223,22 @@ def construct(base,r,packet,density,progress):
     return {'chart':geometry,'fieldJets':jet,'records':records,'densityAdvection':absence,'orderedLimits':limits,'fieldUnits':packet['fieldUnits'],'equationUnits':packet['equationUnits'],'dimensionState':dict(vars(engine.PHYSICAL_METADATA.dimensions))}
 
 
+
+def emit_density_equation(name,equation):
+    """Keep the equation carrier; derive metadata on its two physical sides."""
+    f.require(isinstance(equation,sp.Equality),'actual density source equality')
+    dimensions=engine.PHYSICAL_METADATA.dimensions
+    unit=dimensions.measure(equation.rhs)
+    f.require(unit is not None and all(not v.free_symbols for v in unit),'resolved source density unit')
+    if equation.lhs in dimensions.known:
+        f.require(dimensions.known[equation.lhs]==unit,'density equality side dimensions')
+    else:
+        dimensions.known[equation.lhs]=unit
+    operands=sp.Tuple(equation.lhs,equation.rhs)
+    engine.emit(PREFIX+'_'+name,engine.carrier_fingerprint(equation))
+    engine.emit('METADATA_'+PREFIX+'_'+name,engine.PHYSICAL_METADATA.record(operands,{(0,):unit,(1,):unit}))
+
+
 def emit_result(result):
     def put(name,value,unit):engine.fingerprinted(PREFIX+'_'+name,value,{p:unit(p) if callable(unit) else unit for p,_ in engine.leaves(engine.cas(value))})
     g=result['chart'];zero=(0,0,0)
@@ -245,7 +261,7 @@ def emit_result(result):
         for name in ('originalLimits','materialLimits'):put(f'ORDERED_LIMITS_{i}_'+name,rec[name],(-1,0,0))
         for name in ('originalSourceLimit','materialSourceLimit'):put(f'SOURCE_LIMITS_{i}_'+name,rec[name],(1,0,0))
         put(f'SOURCE_JACOBIAN_{i}',rec['sourceJacobian'],zero)
-    d=result['densityAdvection'];unit=engine.PHYSICAL_METADATA.dimensions.measure(d['densityEquation'].rhs);put('RHO4_DENSITY_EQUATION',d['densityEquation'],unit);put('RHO4_DENSITY_GRADIENT',d['gradient'],tuple(a-b for a,b in zip(unit,(1,0,0))));put('RHO4_ADVECTION_FACTOR',d['factor'],zero)
+    d=result['densityAdvection'];unit=engine.PHYSICAL_METADATA.dimensions.measure(d['densityEquation'].rhs);emit_density_equation('RHO4_DENSITY_EQUATION',d['densityEquation']);put('RHO4_DENSITY_GRADIENT',d['gradient'],tuple(a-b for a,b in zip(unit,(1,0,0))));put('RHO4_ADVECTION_FACTOR',d['factor'],zero)
     boundary.structural_flags(PREFIX+'_MANIFEST',{'sourceFiles':result['sourceFiles'],'inputPackets':result['inputPackets'],'records':{k:{'address':v['address'],'shapeOccurrences':v['shape']['count']} for k,v in result['records'].items()},'scope':result['scope'],'densityExtraInput':'background_density_map','independentPhysicalGrades':tuple(map(str,engine.PHYSICAL_METADATA.generators))})
 
 

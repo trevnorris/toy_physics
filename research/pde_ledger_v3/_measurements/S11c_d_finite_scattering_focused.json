@@ -1,0 +1,37 @@
+{
+  "boundary": {
+    "LEFT": {
+      "incoming": 2,
+      "outgoing": 5,
+      "evanescent": 3,
+      "condition": 5.93875367189009,
+      "maximumReconstructionResidual": 4.303381850723564e-16
+    },
+    "RIGHT": {
+      "incoming": 2,
+      "outgoing": 5,
+      "evanescent": 3,
+      "condition": 5.830877106842872,
+      "maximumReconstructionResidual": 4.460365043975677e-16
+    }
+  },
+  "polynomials": [
+    {
+      "derivativeOrder": 0,
+      "maximumDifference": 3.552713678800501e-15
+    },
+    {
+      "derivativeOrder": 1,
+      "maximumDifference": 2.4424906541753444e-15
+    },
+    {
+      "derivativeOrder": 2,
+      "maximumDifference": 2.7755575615628914e-17
+    },
+    {
+      "derivativeOrder": 3,
+      "maximumDifference": 1.3877787807814457e-17
+    }
+  ],
+  "scriptSha256": "b3e67c28425c44c3fbec1cafda9b33d2cec138d090e15c00b5bd0865c27309d1"
+}

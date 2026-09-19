@@ -1,0 +1,32 @@
+{
+  "status": "PILOT_PREPARED",
+  "checker": "S11c_d_finite_scattering.py",
+  "plan": "S11c_d_finite_scattering_plan.md",
+  "report": "S11c_d_finite_scattering_report.md",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-finite-scattering-20260919/pilot",
+  "acceptance": "directives/S11c_d_EXPLORATORY_ACCEPTANCE.md",
+  "acceptedQuadratureCommit": "a6bfb7a6",
+  "settings": {
+    "collocationCoefficientsPerField": 65,
+    "unknowns": 325,
+    "incomingColumns": 4,
+    "spatialSourceBound": 48,
+    "momentumBound": 4,
+    "regulator": 0.2,
+    "outerOrder": 8,
+    "innerOrders": [
+      2,
+      2
+    ],
+    "sourceOrder": 128,
+    "profileOrder": 128
+  },
+  "limits": {
+    "nativeThreads": 1,
+    "addressSpaceBytes": 2147483648,
+    "wallSeconds": 900
+  },
+  "purpose": "Measure feasibility and inspect residuals/conditioning of the complete finite operator and all-incident solve before choosing practical observable checks.",
+  "scope": "Instrument/cost pilot; no physical observable or continuum re-expansion accepted.",
+  "next": "Run one bounded pilot with saved matrices and silent completion/error hook, inspect its actual evidence, then choose the next focused numerical step."
+}

@@ -371,10 +371,12 @@ and 30 corrected points pass in 27.60 seconds. Step differences are below
 accepted: 89.88 seconds, all 80 rows and 160 cell terms, full rank 645 and
 complex equation residual 1.11e-15. Complete source and end maps vary with
 frequency in fixed seed coordinates. The [small contour diagnostic](S11c_d_frequency_contour_report.md)
-is now launched at `4b4e75e6`: 16 actual points, four single-thread workers,
-nested 8/16 winding and full inverse/response moments, plus numerical end-loop
-closure. Focused adapter/source/scale and nonlinear-pole controls pass; the
-900-second production has no accepted contour or pole result yet.
+now passes in 8m37s: 16 full-rank matrices, four clean workers and
+2,845,568 new nodes. Sampled 8/16 windings are both zero; the phase increment
+reaches 2.70 radians. The first full inverse moment drops from 8.74e-2 to
+7.02e-6, with end-loop closure within 4.26e-13. One midpoint refinement will
+reuse every accepted matrix and add 16 points. No physical pole set or
+certified empty spectrum is established.
 
 ## Retained user-approved solver/export contract
 

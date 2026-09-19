@@ -1,25 +1,34 @@
 # Local finite-pencil contour diagnostic
 
-The first actual finite complex-frequency pencil is accepted at 16b4da87.
-The next selected test evaluates 16 points on the circle centred at 1-0.01i
-with radius 0.02, using four single-thread workers and the unchanged finite
-quadrature rules. Nested 8/16 phase winding and full inverse/response moments
-will guide the next targeted search step. No contour result is accepted yet.
+The complete 16-point contour passed in **517.42 seconds (8m37s)**, with four
+clean single-thread workers and empty stderr. All 16 matrices have full rank
+645. Every point includes all 80 rows, 160 terms, 35 sources and four incoming
+columns; 2,845,568 new momentum nodes were evaluated. The native rules and
+physical input remain unchanged. Worker peak RSS was at most 669,808 KiB.
 
-All sources, complete end clusters and frequency-dependent maps remain in the
-construction. Numerical winding and loop closure retain their sampled-domain
-limitations; no physical pole set, certified empty spectrum or projector is
-assumed. The initial time budget is 900 seconds.
+On the circle centred at 1-0.01i with radius 0.02, both sampled 8/16 determinant
+windings are zero. The maximum 16-node phase increment is **2.70022 radians**;
+this still motivates one midpoint refinement. Zero sampled winding is not a
+certified empty spectrum, as the saved degree16 alias control demonstrates.
 
-Focused acceptance now passes all three reverse AST joins, the actual accepted
-source/input and fixed-scale loader, and all simple/double/multiple/orientation
-controls. The zero-residue double inverse and degree16 alias remain explicit
-checks against false pole absence and false certified counts. No new numerical
-quadrature was computed by this focused acceptance.
+Full inverse moment norms (orders 0–3) decrease from
+8.73872e-2, 5.75245e-3, 3.21324e-4, 1.48556e-5 at 8 points to
+7.02241e-6, 3.72828e-7, 1.83022e-8, 9.72474e-10 at 16 points.
+The actual open-response moment norms at 16 points are at most 9.23198e-14.
+Moments use the fixed recorded coefficient frames and are not assumed to be
+projectors or simple-pole residues. Small source-to-observation moments alone
+do not establish absence of an inverse pole.
 
-Implementation and focused acceptance are committed at `4b4e75e6`. Production
-launched on 2026-09-19 at 22:08:57 UTC under the existing single supervisor
-and silent completion/error watcher. The coordinator is configured for four
-single-thread workers, a 2 GiB ceiling per process and a 900-second initial
-budget. Startup has empty constructor, supervisor and watcher stderr. Completion
-will be validated before any contour result is accepted.
+The maximum sampled matrix condition is 24,087.7 and minimum singular value
+8.97099e-5 in the fixed seed frames. Ten complete end clusters close numerically
+within 4.25579e-13, while all frequency-dependent forcing/observation and phase
+maps remain in construction. Complex-frequency amplitudes are analytic
+coordinates, not physical gain/loss measurements.
+
+Saved-operand acceptance checks every source/input/worker/artifact hash, all
+16 source and 80-row censuses, actual measures and direct actions, independent
+solves and both inverse identities, end maps and full moment arrays. Complete
+original packets and logs remain preserved. No quadrature or solve was repeated
+for acceptance. The next selected comparison adds only the 16 angular midpoints
+for a 32-point contour. No physical pole set, principal-part classification,
+global completeness or certified empty spectrum has been computed.

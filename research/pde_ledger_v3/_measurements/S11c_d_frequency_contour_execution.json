@@ -1,5 +1,5 @@
 {
-  "status": "RUNNING_FINITE_CONTOUR_DIAGNOSTIC",
+  "status": "VALIDATED_NUMERICAL_CONTOUR_DIAGNOSTIC",
   "checker": "S11c_d_frequency_contour.py",
   "plan": "S11c_d_frequency_contour_plan.md",
   "report": "S11c_d_frequency_contour_report.md",
@@ -10,7 +10,7 @@
     "nativeThreadsPerWorker": 1,
     "addressSpaceBytesPerProcess": 2147483648
   },
-  "next": "Inspect actual nested contour winding, moments, conditioning and branch closure before one targeted refinement or candidate solve.",
+  "next": "One angular midpoint refinement to32 points, with all16 accepted matrices reused and16 new points. Inspect actual phase increments and full moments before any candidate or absence interpretation.",
   "focusedAcceptance": "S11c_d_frequency_contour_focused.json",
   "focusedCounts": {
     "sources": 69,
@@ -82,5 +82,243 @@
   "launcher": {
     "path": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-contour-20260919/production/launch.py",
     "sha256": "960b00a416ab616ca23797a0aa724b2ee13f4a13a7b304d2e8ed90482da71da7"
+  },
+  "outcome": {
+    "stage": "contour_construct",
+    "command": [
+      "python",
+      "-u",
+      "_measurements/S11c_d_frequency_contour.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-contour-20260919/production/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-contour-20260919/production/contour_construct.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-contour-20260919/production/contour_construct.stderr",
+    "startedUtc": "2026-09-19T22:08:57.226322+00:00",
+    "childPid": 766939,
+    "status": "completed",
+    "exitCode": 0,
+    "wallSeconds": 517.4165368471295,
+    "stderrBytes": 0,
+    "finishedUtc": "2026-09-19T22:17:34.643513+00:00"
+  },
+  "validation": {
+    "sources": 69,
+    "inputs": 20,
+    "artifacts": 936,
+    "artifactBytes": 2645332635,
+    "points": [
+      {
+        "index": 0,
+        "rank": 645,
+        "condition": 6133.257426669729,
+        "equationResidual": 1.3769142919957524e-15,
+        "inverseResidual": 4.256561263812907e-11,
+        "endResidual": 1.0467213224850288e-12,
+        "boundaryResidual": 4.134626908087862e-14,
+        "nodes": 177848,
+        "measureResponses": 80
+      },
+      {
+        "index": 1,
+        "rank": 645,
+        "condition": 4357.19309748354,
+        "equationResidual": 9.237296578016225e-16,
+        "inverseResidual": 7.076680738104451e-12,
+        "endResidual": 6.746436844387462e-16,
+        "boundaryResidual": 8.189866626351565e-14,
+        "nodes": 177848,
+        "measureResponses": 80
+      },
+      {
+        "index": 2,
+        "rank": 645,
+        "condition": 3505.9548298010177,
+        "equationResidual": 1.2387877509952531e-15,
+        "inverseResidual": 2.9810391400984703e-12,
+        "endResidual": 1.0069444208601425e-12,
+        "boundaryResidual": 7.692683984233703e-14,
+        "nodes": 177848,
+        "measureResponses": 80
+      },
+      {
+        "index": 3,
+        "rank": 645,
+        "condition": 3096.3406775473163,
+        "equationResidual": 1.0095046163567562e-15,
+        "inverseResidual": 5.3086815375079956e-12,
+        "endResidual": 3.659413624136025e-13,
+        "boundaryResidual": 1.3252919698974196e-13,
+        "nodes": 177848,
+        "measureResponses": 80
+      },
+      {
+        "index": 4,
+        "rank": 645,
+        "condition": 2932.189188584759,
+        "equationResidual": 9.787369795994562e-16,
+        "inverseResidual": 9.066866342630286e-12,
+        "endResidual": 5.410660725602912e-16,
+        "boundaryResidual": 6.524419037843428e-14,
+        "nodes": 177848,
+        "measureResponses": 80
+      },
+      {
+        "index": 5,
+        "rank": 645,
+        "condition": 2962.3724484160057,
+        "equationResidual": 1.1136488604755846e-15,
+        "inverseResidual": 2.565629535863942e-12,
+        "endResidual": 3.7149745933727314e-13,
+        "boundaryResidual": 6.432897012520641e-14,
+        "nodes": 177848,
+        "measureResponses": 80
+      },
+      {
+        "index": 6,
+        "rank": 645,
+        "condition": 3232.0173466201772,
+        "equationResidual": 1.064629407362554e-15,
+        "inverseResidual": 7.31189745841034e-12,
+        "endResidual": 1.0367124320550133e-12,
+        "boundaryResidual": 1.0102962422474491e-13,
+        "nodes": 177848,
+        "measureResponses": 80
+      },
+      {
+        "index": 7,
+        "rank": 645,
+        "condition": 3928.7330521159756,
+        "equationResidual": 9.578725167922522e-16,
+        "inverseResidual": 7.307836866257822e-12,
+        "endResidual": 8.108207989706154e-16,
+        "boundaryResidual": 4.6580430930631964e-14,
+        "nodes": 177848,
+        "measureResponses": 80
+      },
+      {
+        "index": 8,
+        "rank": 645,
+        "condition": 5540.898685887723,
+        "equationResidual": 1.1185937475585666e-15,
+        "inverseResidual": 2.618174803286363e-11,
+        "endResidual": 1.0986649678560437e-12,
+        "boundaryResidual": 8.494824152460342e-14,
+        "nodes": 177848,
+        "measureResponses": 80
+      },
+      {
+        "index": 9,
+        "rank": 645,
+        "condition": 8970.016927866363,
+        "equationResidual": 1.19030371082148e-15,
+        "inverseResidual": 8.41626705281124e-11,
+        "endResidual": 1.8744735233900604e-12,
+        "boundaryResidual": 5.5511470853138114e-14,
+        "nodes": 177848,
+        "measureResponses": 80
+      },
+      {
+        "index": 10,
+        "rank": 645,
+        "condition": 14784.759412855097,
+        "equationResidual": 1.5422537039686964e-15,
+        "inverseResidual": 2.0782819669402347e-10,
+        "endResidual": 8.464926934826266e-16,
+        "boundaryResidual": 1.1167189685988283e-13,
+        "nodes": 177848,
+        "measureResponses": 80
+      },
+      {
+        "index": 11,
+        "rank": 645,
+        "condition": 21199.75050714695,
+        "equationResidual": 2.7549798408310015e-15,
+        "inverseResidual": 4.691981094020577e-10,
+        "endResidual": 6.360601655350862e-16,
+        "boundaryResidual": 1.622959337112435e-13,
+        "nodes": 177848,
+        "measureResponses": 80
+      },
+      {
+        "index": 12,
+        "rank": 645,
+        "condition": 24087.671033549468,
+        "equationResidual": 2.5767363469154087e-15,
+        "inverseResidual": 5.329742305337644e-10,
+        "endResidual": 5.737818580222218e-16,
+        "boundaryResidual": 1.2361994375156144e-13,
+        "nodes": 177848,
+        "measureResponses": 80
+      },
+      {
+        "index": 13,
+        "rank": 645,
+        "condition": 21349.239541438048,
+        "equationResidual": 2.159837102947116e-15,
+        "inverseResidual": 3.7356756596435533e-10,
+        "endResidual": 4.663882024921568e-16,
+        "boundaryResidual": 1.4867617294925204e-13,
+        "nodes": 177848,
+        "measureResponses": 80
+      },
+      {
+        "index": 14,
+        "rank": 645,
+        "condition": 15293.408802092443,
+        "equationResidual": 2.4201043035100212e-15,
+        "inverseResidual": 1.1100709181283379e-10,
+        "endResidual": 4.540665013092545e-16,
+        "boundaryResidual": 1.3678019755596138e-13,
+        "nodes": 177848,
+        "measureResponses": 80
+      },
+      {
+        "index": 15,
+        "rank": 645,
+        "condition": 9650.958187661287,
+        "equationResidual": 2.2140618942193413e-15,
+        "inverseResidual": 1.070067579886891e-10,
+        "endResidual": 1.792090495335662e-12,
+        "boundaryResidual": 8.34906168819225e-14,
+        "nodes": 177848,
+        "measureResponses": 80
+      }
+    ],
+    "loopCorrectedPoints": 190,
+    "maximumRadialDifference": 8.550127776667616e-13,
+    "maximumLoopClosure": 4.255782162474761e-13,
+    "momentNorms": {
+      "8": {
+        "inverse": [
+          0.08738724102793964,
+          0.005752446512864632,
+          0.00032132396445830314,
+          1.4855590561182002e-05
+        ],
+        "response": [
+          1.7666865497956174e-10,
+          1.3237821222633211e-11,
+          9.8436203727343e-13,
+          5.5154879321679336e-14
+        ]
+      },
+      "16": {
+        "inverse": [
+          7.022411864988014e-06,
+          3.728279775940731e-07,
+          1.8302203590311785e-08,
+          9.724737168382023e-10
+        ],
+        "response": [
+          9.231970607090462e-14,
+          4.702751401430304e-15,
+          2.291935457327451e-16,
+          1.2354929576401346e-17
+        ]
+      }
+    },
+    "allArtifactHashesUnchanged": true,
+    "scope": "Sixteen actual finite-pencil samples on omega=1-0.01i+0.02 exp(i theta), nested8/16 winding and inverse/response moments. Numerical contour evidence, not certified spectral completeness or a physical bound-pole set."
   }
 }

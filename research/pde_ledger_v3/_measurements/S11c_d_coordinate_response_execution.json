@@ -1,5 +1,5 @@
 {
-  "status": "PRODUCTION_RUNNING",
+  "status": "PUBLISHED_ANNEX_VERIFIED",
   "checker": "S11c_d_coordinate_response.py",
   "plan": "S11c_d_coordinate_response_plan.md",
   "report": "S11c_d_coordinate_response_report.md",
@@ -10,7 +10,7 @@
     "nativeThreads": 1,
     "addressSpaceBytes": 2147483648
   },
-  "next": "Run full material quadratures and mixed continuum response, validate complete emitted results, publish and commit, then evaluate one-sided shape scattering sensitivity.",
+  "next": "Compute the literal first-w-derivative scattering sensitivity using changed rows only; targeted nonlinear frequency poles, remaining cases and exports follow.",
   "implementationCommit": "f9629960",
   "launch": {
     "launchedUtc": "2026-09-19T19:16:17.326311+00:00",
@@ -182,5 +182,58 @@
     "strictStderrBytes": 0,
     "watcherStderrBytes": 0,
     "inspection": "One clean startup inspection; silent local completion/error hook owns continuation."
+  },
+  "acceptedRunDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-coordinate-response-20260919/production/complete",
+  "productionOutcome": {
+    "stage": "material_construct",
+    "command": [
+      "python",
+      "-u",
+      "_measurements/S11c_d_coordinate_response_production.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-coordinate-response-20260919/production/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-coordinate-response-20260919/production/material_construct.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-coordinate-response-20260919/production/material_construct.stderr",
+    "startedUtc": "2026-09-19T19:36:41.016918+00:00",
+    "childPid": 707540,
+    "status": "completed",
+    "exitCode": 0,
+    "wallSeconds": 443.0998866148293,
+    "stderrBytes": 0,
+    "finishedUtc": "2026-09-19T19:44:04.116872+00:00"
+  },
+  "publication": {
+    "path": "scripts/out/S11c_d_coordinate_response.out",
+    "sha256": "ab5c606966553bc3571d0a819549f02f189d2d548d46b4dad33d20117ef61d4e",
+    "bytes": 7453598,
+    "annexKey": "MD5E-s7453598--21a59046b0d1059add3cfcb6e99d7fb7.out",
+    "symlink": "../../../../.git/annex/objects/Gg/6X/MD5E-s7453598--21a59046b0d1059add3cfcb6e99d7fb7.out/MD5E-s7453598--21a59046b0d1059add3cfcb6e99d7fb7.out",
+    "actualBackend": "MD5E",
+    "verified": true,
+    "publicationCommit": "273d0c3ba6d1fda3546df863981a2d3dd6005dc8"
+  },
+  "productionValidation": {
+    "status": "VALIDATED_FINITE_AFFINE_COORDINATE_RESPONSE",
+    "supervisorWallSeconds": 443.0998866148293,
+    "sources": 54,
+    "inputPackets": 102,
+    "artifacts": 29,
+    "focusedCopies": 7,
+    "rows": 80,
+    "sourceAmplitudes": 35,
+    "nativeTerms": 160,
+    "currentTables": 52,
+    "unknowns": 645,
+    "incidentChannels": 4,
+    "rank": 645,
+    "tags": 2834,
+    "writeKeys": 1415,
+    "metadataPaths": 72760,
+    "packetHashesUnchanged": true,
+    "checksSha256": "23495f230f9164920d5c8dbebe0b58730ecdb11ff9b279aeb1b8a2b89cb4753b",
+    "validatorSha256": "b68644498766975f983885dcf0d20b3e55a2a12ceed3648ac7c24c91631531c4",
+    "transcriptSha256": "ab5c606966553bc3571d0a819549f02f189d2d548d46b4dad33d20117ef61d4e",
+    "scope": "Complete finite material route in the same transported trial space, common Eulerian operator/boundary/current data constructed before solving. One affine chart; approximate modal boundaries and positive regulator. No general nonaffine or c2 N3/N4/N6 closure."
   }
 }

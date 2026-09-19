@@ -1,45 +1,35 @@
-# Affine material scattering route
+# Finite affine material-coordinate response
 
-The focused material route passes in32.87seconds with empty stderr. All80
-integral rows,35 source amplitudes and six nested profiles enter actual mapped
-momentum/source/profile quadratures. Maximum row/local/source-basis differences
-are8.34e-16/3.93e-16/6.77e-16. Complete end trace, phase and current comparisons
-are below1.04e-13, using all52 transformed polarized-current derivative tables,
-36 candidate dispositions and14 selected basis directions. Wrong phase and
-omitted momentum/tangential measure controls respond.
+The complete material route passes in443.10seconds with empty stderr. It newly
+evaluates all80 native row matrices at177848 momentum nodes, assembles all160
+cell terms and every local coefficient, and solves all645 unknowns for four
+incident directions and four independent background grades. The focused source,
+local and boundary/current packets are reused byte-for-byte.
 
-The final saved-operand validator checks all51 sources,11 original inputs and
-90 artifacts, exact node/weight maps, complete source/field/limit census,
-full-rank selected subspaces and actual current-table transformations. Its
-first attempt parsed an exact rational input as a float string; the corrected
-reader uses Rational. Original logs are preserved. The physics adapter and
-successful focused computation were unchanged and were not rerun.
+Material/Eulerian row and full coefficient-operator differences reach1.17e-14
+and6.22e-15. The full-rank mixed solve has condition3731, scaled equation
+residual4.59e-14 and independent coefficient difference2.67e-12. Common-origin
+channel coefficient differences reach5.54e-12; evaluated at the approved
+eta/sigma they reach4.62e-14. Both full boundary/current routes enter the same
+Eulerian coordinates before the solve. No constitutive Phi or post-hoc
+S-matrix conjugation constructs the answer.
 
-The earlier mutable-matrix binder mismatch is repaired at26b258ef, with a
-reverse whole-file AST join and500 exact entry comparisons. No engine, physical
-input, anchoring or density representative changed. Coordinate source maps
-remain accepted and annex-verified at9c4382c6.
+Saved-operand acceptance verifies54 sources,102 input packets,29 artifacts,
+all seven focused copies,52 transformed current tables, actual momentum
+measures/direct actions and responding measure controls. All2834 tags,1415
+fresh keys and72760 dimension/independent-grade/lambda metadata paths replay.
+The7.45MB transcript is published through DataLad/git-annex; actual MD5E key,
+size, symlink and independent SHA256 are verified in the checkpoint. Main
+packet hashes remain unchanged. Acceptance repeated no integration or solve.
 
-The next production helper reuses focused binding, local and end/current
-packets byte-for-byte, computes all80 full material row quadratures, assembles
-all160 nonlocal cell terms and all independent local coefficients, then solves
-the645-unknown four-incident continuum response. Its native accumulator changes
-only the expected volume to the product of actual material limit widths.
-It compares common Eulerian operators and channels constructed before solving;
-no constitutive Phi or post-hoc S-matrix conjugation is used.
+This is a successful coordinate control for one affine chart in the same
+transported finite trial space. Approximate modal boundaries, positive regulator,
+unresolved tiny reflection/loss and omitted parent pure-second-order terms
+remain explicit. General nonaffine covariance and c2 N3/N4/N6 source-origin
+closure do not follow. The earlier mutable-matrix binding repair at26b258ef
+and original logs remain preserved.
 
-Full material scattering is pending. This is one affine chart in the same
-transported finite trial space, with approximate modal boundaries and positive
-regulator. General nonaffine covariance and c2 N3/N4/N6 closure do not follow.
-One-sided first-w-derivative scattering sensitivity, targeted frequency poles,
-remaining cases and final exports remain under practical toy-model acceptance.
-No broad convergence campaign is queued.
-
-The production accumulator adapter passes its focused execution check. Its
-whole function reverses to the native matrix accumulator after restoring only
-the expected-volume expression. Three coarse complete material/Eulerian layouts
-cover all80 rows at1500 total nodes, with differences below8.45e-15. Material
-box measures10/100/1000 and physical measures8/64/512 agree through the actual
-Jacobians; incorrect physical-volume guards respond. These coarse layouts
-validate the adapter only, not physical convergence. The new full constructor,
-coefficient solve and emission path are ready for the bounded production run.
+Next compute the one-sided first-w-derivative scattering sensitivity, reusing
+unchanged rows and integrating only changed operands. Targeted nonlinear
+frequency poles, remaining cases and exports follow under practical toy-model
+acceptance; no broad convergence campaign is queued.

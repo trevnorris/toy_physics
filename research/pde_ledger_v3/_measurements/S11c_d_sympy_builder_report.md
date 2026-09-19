@@ -71,22 +71,18 @@ accepted after saved-packet output recovery:375 records,80 integral rows,
 7275 original prefix payloads are unchanged;8148 metadata paths replay.
 Its3.59MB transcript is annex-verified. Literal first-w-derivative reversal
 changes33 local,30 factor and12 source records; the actual constant-rho4
-source computes zero density gradient/advection. These source maps still need
-to enter a second scattering operator/boundary/channel/current route before
-coordinate agreement can be claimed. No c2 N3/N4/N6 closure follows.
-The [material-coordinate numerical adapter](S11c_d_coordinate_response_report.md)
-now passes its focused check in32.87seconds: all80 row prefixes,35 source
-amplitudes, full local matrices and52 transformed current tables. Row/local
-residuals are below8.34e-16/3.93e-16; boundary/current differences are below
-1.04e-13. All51 sources and90 saved artifacts validate. The complete material
-quadrature and independent-grade scattering solve are next; no new physical
-covariance claim follows from the bounded prefixes alone.
-The complete material-coordinate response implementation is committed at38e7574e
-and has launched under its silent completion hook. It reuses validated focused
-bindings/end data, evaluates all80 full material row matrices, and solves the
-645-unknown four-incident continuum response with all mixed coefficients.
-The actual material-volume adapter passes all80 rows in three coarse layouts;
-full production and emission validation remain pending.
+source computes zero density gradient/advection. The source maps now enter the complete material response described below.
+No c2 N3/N4/N6 closure follows.
+The [complete material-coordinate response](S11c_d_coordinate_response_report.md)
+is accepted:443.10seconds, all80 new row quadratures,160 cell terms and the
+645-unknown four-incident mixed continuum solve. Common Eulerian operators
+agree within6.22e-15; evaluated channel differences reach4.62e-14. Both
+boundary/current routes enter the common basis before solving. All54 sources,
+102 input packets,29 artifacts and72760 metadata paths validate; the7.45MB
+transcript is annex-verified. This completes the selected affine finite-space
+coordinate control, not arbitrary nonaffine covariance or c2 source-origin
+closure. One-sided first-w-derivative sensitivity, targeted frequency poles,
+remaining cases and exports are next under practical acceptance.
 The older checkpoint narrative below records history, not the current task
 queue. The retained solver/export suffix remains byte-identical, interpreted
 under the new acceptance addendum and the approved pole correction.

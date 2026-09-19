@@ -1,5 +1,5 @@
 {
-  "status": "FOCUSED_PREPARED",
+  "status": "FOCUSED_RUNNING",
   "checker": "S11c_d_profile_form.py",
   "plan": "S11c_d_profile_form_plan.md",
   "report": "S11c_d_profile_form_report.md",
@@ -11,5 +11,38 @@
     "nativeThreads": 1,
     "addressSpaceBytes": 2147483648
   },
-  "next": "Validate exact source/form bindings and moments; then one changed-profile finite and continuum solve reusing accepted bindings."
+  "next": "Validate exact source/form bindings and moments; then one changed-profile finite and continuum solve reusing accepted bindings.",
+  "implementationCommit": "cb453ef4",
+  "launch": {
+    "launchedUtc": "2026-09-19T17:38:42.111467+00:00",
+    "command": [
+      "/usr/bin/python",
+      "_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-profile-form-20260919/focused",
+      "--stage",
+      "profile_focused",
+      "--",
+      "python",
+      "-u",
+      "_measurements/S11c_d_profile_form.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-profile-form-20260919/focused/complete",
+      "--focused"
+    ],
+    "supervisorPid": 653058,
+    "watcherPid": 653059,
+    "watcherDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-profile-form-20260919/focused/completion-watcher",
+    "threadEnvironment": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1"
+    }
+  },
+  "startup": {
+    "status": "running",
+    "stderrBytes": 0,
+    "watcherStderrBytes": 0
+  }
 }

@@ -8,7 +8,7 @@ accepted mode/boundary/current data. Every original local/cell coefficient,
 through the unchanged numerical binder. Baseline replay and separate
 zero-transfer/end-jump operands are checked before a new solve.
 
-The focused binding run is prepared. On acceptance, one changed-profile case
+The focused binding run is active under the silent local completion/error hook. On acceptance, one changed-profile case
 will use the existing129-coefficient basis, finite bounds64/4/14, regulator0.1
 and momentum16/4/4 with source/profile256/512. New quadrature rows will also
 supply the independent continuum coefficient solve. No baseline quadrature or

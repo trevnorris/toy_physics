@@ -18,8 +18,12 @@ now computes all four incident columns, all80 nonlocal rows and325 field
 coefficients in13.24 seconds. The full-rank system has condition1600, scaled
 equation residual1.40e-15 and independent-solve difference9.19e-14. Its coarse
 quadrature and approximate modal boundaries make this an instrument milestone,
-not converged scattering or a continuum expansion. Next compare actual-response
-resolution before targeted boundary/regulator checks.
+not converged scattering or a continuum expansion. The selected response
+resolution checks now pass: transform, collocation and momentum amplitude changes
+are2.96e-10,2.13e-5 and1.99e-6. The final485-unknown solve is full rank; the
+recovered last comparison took43.90 seconds. Dominant response is stable at the
+stated practical precision; tiny reflected/lost current remains unresolved.
+Next compare boundary/source placement and regulator with a common phase origin.
 The older checkpoint narrative below records history, not the current task
 queue. The retained solver/export suffix remains byte-identical, interpreted
 under the new acceptance addendum and the approved pole correction.

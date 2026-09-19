@@ -28,7 +28,7 @@
   },
   "purpose": "Measure feasibility and inspect residuals/conditioning of the complete finite operator and all-incident solve before choosing practical observable checks.",
   "scope": "Instrument/cost pilot; no physical observable or continuum re-expansion accepted.",
-  "next": "Resume only the saved final momentum case; retain the two completed comparisons and inspect the complete selected response study.",
+  "next": "Compare a matching-resolution finite boundary/source domain change and a separate regulator change, with actual mode phases referenced to a common origin.",
   "implementationCommit": "efc61982",
   "originalAttempt": {
     "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-finite-scattering-20260919/pilot",
@@ -139,7 +139,7 @@
     "sha256": "1b93b0c4a1b8306b559faf57b1f6e51cab22cb6e539e55a3279445d72cae9e4a"
   },
   "resolutionComparison": {
-    "status": "RECOVERY_RUNNING",
+    "status": "VALIDATED_FINITE_RESPONSE_RESOLUTION",
     "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-finite-scattering-20260919/resolution-01",
     "checker": "S11c_d_finite_scattering_resolution.py",
     "plan": "S11c_d_finite_scattering_resolution_plan.md",
@@ -206,7 +206,7 @@
     ],
     "repair": "S11c_d_finite_scattering_checkpoint_repair.json",
     "recovery": {
-      "status": "RUNNING",
+      "status": "COMPLETED",
       "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-finite-scattering-20260919/resolution-recovery",
       "checker": "S11c_d_finite_scattering_resolution_recover.py",
       "remainingChildBudgetSeconds": 800,
@@ -241,8 +241,30 @@
       "launchVerification": {
         "path": "/var/projects/toy_physics/_scratch/s11c/s11c-finite-scattering-20260919/resolution-recovery/launch-verification.json",
         "sha256": "bd2fb0fc85211dd85f4244771c6bfb4672837839c3a89f5c9186f1698f860675"
+      },
+      "outcome": {
+        "stage": "resolution_recover",
+        "command": [
+          "python",
+          "-u",
+          "_measurements/S11c_d_finite_scattering_resolution_recover.py",
+          "--run-directory",
+          "/var/projects/toy_physics/_scratch/s11c/s11c-finite-scattering-20260919/resolution-recovery/complete",
+          "--original",
+          "/var/projects/toy_physics/_scratch/s11c/s11c-finite-scattering-20260919/resolution-01/complete"
+        ],
+        "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-finite-scattering-20260919/resolution-recovery/resolution_recover.stdout",
+        "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-finite-scattering-20260919/resolution-recovery/resolution_recover.stderr",
+        "startedUtc": "2026-09-19T14:49:57.774548+00:00",
+        "childPid": 577312,
+        "status": "completed",
+        "exitCode": 0,
+        "wallSeconds": 43.89967278391123,
+        "stderrBytes": 0,
+        "finishedUtc": "2026-09-19T14:50:41.674287+00:00"
       }
     },
-    "repairCommit": "6aec9eae"
+    "repairCommit": "6aec9eae",
+    "checkpoint": "S11c_d_finite_scattering_resolution_checkpoint.json"
   }
 }

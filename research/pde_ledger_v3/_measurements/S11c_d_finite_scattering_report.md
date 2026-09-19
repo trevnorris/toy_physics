@@ -52,13 +52,22 @@ ratios become0.99999944–1.00000118: the earlier apparent small deficit is not 
 resolved physical loss. These completed cases and their independent solves are
 validated and preserved. The stated reporting targets are unchanged.
 
-The momentum16/4/4 case stopped on a duplicate partial-checkpoint filename.
-The repair adds the batch number and reuses completed layouts plus the native
-partial accumulator. A65-batch16640-node regression gives exact matrices,
-direct actions, measure mutations, masses and counts after resume; an altered
-saved node count rejects. Its deliberately partial box is not accepted physical
-quadrature. Numerical-loop/constructor AST joins preserve arithmetic and the
-source-guard change admits only the recorded exact old/current helper pair.
-The recovery (`6aec9eae`) is running. It reuses17472 saved momentum nodes and both complete earlier cases,
-with an800-second remaining child budget. It computes only the unfinished case.
-No scattering convergence, tiny reflection/loss or continuum result is accepted.
+The recovered momentum16/4/4 comparison is validated:43.90 seconds overall,
+124552 new momentum nodes plus17472 retained nodes, empty stderr and full rank485.
+Amplitudes change by1.99e-6 (3.47e-6 relative for the large entries), total current
+by1.33e-6. Scaled equation residual is6.42e-16, boundary residual below5.82e-14,
+and an independent direct solve differs by9.06e-14 in coefficients. All original
+and new packet/source hashes, native rows, measures and comparisons pass.
+
+The saving repair (`6aec9eae`) used unique batch filenames and preserved the
+native summation order. Its focused16640-node prefix comparison is exact and
+rejects a changed node count. The two completed cases and complete final-case
+layouts were not reintegrated. Every original failed log and partial is retained.
+
+The dominant finite response is stable within the predeclared1%/1e-4 amplitude
+reporting target in this selected set. Current ratios now range
+0.9999998577–1.0000000300; their tiny deviations from one and small reflected
+signals remain unresolved. This is not a transparent-boundary or regulator-limit
+result. Next target a finite boundary/source-domain comparison and a separate
+regulator comparison, removing known propagation phases before comparing complex
+amplitudes. Keep continuum expansion, physical controls and pole work distinct.

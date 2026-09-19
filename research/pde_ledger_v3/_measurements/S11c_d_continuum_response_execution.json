@@ -1,0 +1,16 @@
+{
+  "status": "PREPARED",
+  "checker": "S11c_d_continuum_response.py",
+  "plan": "S11c_d_continuum_response_plan.md",
+  "report": "S11c_d_continuum_response_report.md",
+  "focused": "S11c_d_continuum_response_focused.json",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-response-20260919/production",
+  "acceptedBoundaryCommit": "894420f6",
+  "acceptedInteriorCommit": "7d1082df",
+  "limits": {
+    "wallSeconds": 900,
+    "nativeThreads": 1,
+    "addressSpaceBytes": 2147483648
+  },
+  "next": "Compute and validate the complete finite coefficient response with actual boundary/current dependence; no new quadrature."
+}

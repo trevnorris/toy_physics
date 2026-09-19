@@ -1,0 +1,13 @@
+{
+  "scriptSha256": "0fe30a9c4771671e9fa139b0557f185f55d351887f2ba8b9fa4ed1abfb616db2",
+  "focusedSha256": "afbee186551f69e0aa685132d37e56481056ed1cf792c4f86256fbdb27d6f5d8",
+  "coefficientDifference": 1.1322097734007353e-15,
+  "independentDifference": 3.1577990563142797e-15,
+  "mixedForcingMutation": 0.49763177532962505,
+  "squareRootDifference": 8.88455932101742e-15,
+  "squareResidual": 2.274586610110067e-13,
+  "mixedOrderingMutation": 10.506167156653518,
+  "phaseCoordinateResidual": 0.0,
+  "wrongPhaseCoordinateResponse": 21.0,
+  "scope": "Noncommuting finite-matrix arithmetic controls; no physical response."
+}

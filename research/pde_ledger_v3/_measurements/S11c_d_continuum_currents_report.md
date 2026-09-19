@@ -1,26 +1,37 @@
 # Continuum channel-current bookkeeping
 
-The accepted continuum response supplies all four independent coefficient
-systems and actual boundary/current dependence. The next constructor computes
-amplitude components and complete slab/bulk normal-current contractions in field
-coordinates, including finite-boundary evanescent and interference terms.
-No quadrature, end-mode construction or solve is repeated.
+The complete channel-current and amplitude bookkeeping is now computed for the
+approved LAB_HELD/RHO4_CONSTANT input. All four incoming/open transverse
+directions and all six decaying thickness directions remain present. The
+thickness open selector has computed rank zero, giving zero open-thickness
+amplitude/current/fraction coefficients on this domain. The original acoustic
+polynomials independently give q_depth squared = -k_normal squared -1/25 for
+real normal momentum, so bulk-depth propagation is kinematically closed here.
+Neither statement is a general absence theorem or a bound-pole result.
 
-Focused checks pass: independent dense-current contractions2.65e-14,
-quotient recovery1.12e-16, actual current/phase joins3.56e-15 and responding
-current-coefficient mutation. The actual candidate/classifier census retains
-36 candidate records and14 selected basis directions. Four open directions are
-transverse-like; the open thickness subspace has rank zero, while six decaying
-thickness directions remain in the matching solution. At the approved real
-frequency/tangential momentum the actual acoustic polynomials give
-q_depth squared = -k_normal squared -1/25, excluding real propagating bulk-depth
-momenta for real normal momentum. This is a computed kinematic restriction of
-this input, not a general absence result or a statement about bound poles.
+Baseline, zero-jet contrast, first-jet, induced amplitudes, complete current
+interference, incident denominators and weak quotient coefficients are saved.
+Outgoing/incoming/evanescent and all cross-mode finite-end currents are retained,
+separately for slab and depth-integrated bulk normal current. The latter is not
+a bulk-depth escape flux. Computed finite-boundary thickness amplitudes reach
+1.084e-4 on the left and9.092e-5 on the right in the reference field coordinates;
+these matching coefficients are not outgoing propagating conversion fractions.
+Their precision and finite-boundary dependence remain explicit.
 
-The full bookkeeping run is active under the local completion/error hook,
-with one native thread,2GiB and900seconds.
-Its physical contractions and output replay are not yet accepted. Finite modal
-boundaries, regulator0.1, numerical resolution and retained-rectangle limitations
-remain explicit. A depth-integrated normal current is distinct from bulk escape;
-nonzero-baseline quadratic terms do not establish tiny physical gain or loss.
-Physical controls, targeted nonlinear poles, remaining cases and exports remain.
+Independent scalar current contractions agree within4.45e-16 for open channels
+and5.86e-14 for complete finite-end currents. The actual one-sided current
+coefficient mutation responds2.14. All36 candidate records,14 selected basis
+directions,43 current/frozen sources,six accepted input packets and all packet
+joins pass. Independent quotient multiplication residuals are below6.2e-34.
+All2632 tags,1314 fresh keys and20032 metadata paths replay without unresolved
+dimensions. The supervised run completed in68.96seconds, exit zero and empty
+stderr, peak RSS201944KiB; it repeated no solve, mode construction or quadrature.
+The1174720-byte transcript is annex-published with actual backend key, symlink,
+MD5 and independent SHA256 verified in the checkpoint.
+
+The retained rectangle does not provide omitted pure second-order terms that
+can interfere with a nonzero baseline; its quadratic transverse-current terms
+are not a physical tiny gain/loss claim. Tiny reflection/loss remains unresolved.
+Next run actual profile-FORM controls, then uniform/covariance controls,
+targeted frequency poles, remaining cases and final export integration. No
+broad quadrature or rigorous-limit campaign is queued.

@@ -1,5 +1,5 @@
 {
-  "status": "RUNNING",
+  "status": "PUBLISHED_ANNEX_VERIFIED",
   "checker": "S11c_d_continuum_currents.py",
   "plan": "S11c_d_continuum_currents_plan.md",
   "report": "S11c_d_continuum_currents_report.md",
@@ -11,7 +11,7 @@
     "nativeThreads": 1,
     "addressSpaceBytes": 2147483648
   },
-  "next": "Compute full channel/finite-end currents, amplitude and weak bookkeeping without new quadrature; then physical controls and targeted poles.",
+  "next": "Run source-driven profile-FORM controls with unchanged endpoints, then uniform/covariance controls, targeted poles and final integration.",
   "implementationCommit": "65bcc24c",
   "launch": {
     "launchedUtc": "2026-09-19T17:22:10.070025+00:00",
@@ -43,5 +43,72 @@
     "status": "running",
     "stderrBytes": 0,
     "watcherStderrBytes": 0
+  },
+  "checkpoint": "S11c_d_continuum_currents_checkpoint.json",
+  "publication": {
+    "path": "scripts/out/S11c_d_continuum_currents.out",
+    "bytes": 1174720,
+    "sha256": "32134060a3e0799d16208b4e595d809ce33ed8aa5adcdf9a24f8fd8092c14e37",
+    "annexKey": "MD5E-s1174720--124325c9c238eeb1d99ca3987f04badc.out",
+    "symlink": "../../../../.git/annex/objects/6z/fP/MD5E-s1174720--124325c9c238eeb1d99ca3987f04badc.out/MD5E-s1174720--124325c9c238eeb1d99ca3987f04badc.out",
+    "publicationCommit": "5d7f29ba146e3ebd884f50dc8147b8777231e723"
+  },
+  "outcome": {
+    "stage": "currents_construct",
+    "command": [
+      "python",
+      "-u",
+      "_measurements/S11c_d_continuum_currents.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-currents-20260919/production/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-currents-20260919/production/currents_construct.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-currents-20260919/production/currents_construct.stderr",
+    "startedUtc": "2026-09-19T17:22:10.110402+00:00",
+    "childPid": 646831,
+    "status": "completed",
+    "exitCode": 0,
+    "wallSeconds": 68.96483093872666,
+    "stderrBytes": 0,
+    "finishedUtc": "2026-09-19T17:23:19.075288+00:00"
+  },
+  "verification": {
+    "sourceCount": 43,
+    "inputPackets": 6,
+    "candidateRecords": 36,
+    "basisDirections": 14,
+    "openRanks": {
+      "transverse": 4,
+      "thickness": 0,
+      "allOpen": 4
+    },
+    "independentQuotientResiduals": {
+      "transverse": {
+        "('totalFraction', 0)": 0.0,
+        "('totalFraction', 1)": 6.163351980231418e-34,
+        "('totalFraction', 2)": 5.868067799304859e-34,
+        "('inducedFraction', 0)": 0.0,
+        "('inducedFraction', 1)": 0.0,
+        "('inducedFraction', 2)": 2.7079439194695158e-34
+      },
+      "thickness": {
+        "('totalFraction', 0)": 0.0,
+        "('totalFraction', 1)": 0.0,
+        "('totalFraction', 2)": 0.0,
+        "('inducedFraction', 0)": 0.0,
+        "('inducedFraction', 1)": 0.0,
+        "('inducedFraction', 2)": 0.0
+      },
+      "allOpen": {
+        "('totalFraction', 0)": 0.0,
+        "('totalFraction', 1)": 6.163351980231418e-34,
+        "('totalFraction', 2)": 5.868067799304859e-34,
+        "('inducedFraction', 0)": 0.0,
+        "('inducedFraction', 1)": 0.0,
+        "('inducedFraction', 2)": 2.7079439194695158e-34
+      }
+    },
+    "tagCount": 2632,
+    "metadataPaths": 20032
   }
 }

@@ -1,0 +1,396 @@
+{
+  "status": "PUBLISHED_ANNEX_VERIFIED",
+  "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-currents-20260919/production/complete",
+  "outcome": {
+    "stage": "currents_construct",
+    "command": [
+      "python",
+      "-u",
+      "_measurements/S11c_d_continuum_currents.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-currents-20260919/production/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-currents-20260919/production/currents_construct.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-currents-20260919/production/currents_construct.stderr",
+    "startedUtc": "2026-09-19T17:22:10.110402+00:00",
+    "childPid": 646831,
+    "status": "completed",
+    "exitCode": 0,
+    "wallSeconds": 68.96483093872666,
+    "stderrBytes": 0,
+    "finishedUtc": "2026-09-19T17:23:19.075288+00:00"
+  },
+  "checksSha256": "9051760069e75e7901bec5d15e5e6f9feefa731360c5ad6bc60f5b8262c0ab7d",
+  "checks": {
+    "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-currents-20260919/production/complete",
+    "sourceFiles": {
+      "_measurements/S11c_d_continuum_grades.py": "0443c3adbeaf813ad66c60af0a50c96e9a841277d51f9c23bf1c601d2fdf329d",
+      "_measurements/S11c_d_continuum_grade_plan.md": "693546373ea2c8c5eec4ef3c8c93732fc7440a1eb1a2cdb1a6cf9d0f5b469040",
+      "_measurements/S11c_d_reduced_action_assembly_checkpoint.json": "b4afb727b1a1ad2a468b0bab9a6ab369dbe4dd35bc46acd7150b7fa581cd984f",
+      "_measurements/S11c_d_source_fourier_factorization_checkpoint.json": "fcf6f1c5598b63c11d4f8a76d2d94c2b5bace590e83d4beea3e52e82f44158a6",
+      "_measurements/S11c_d_reduced_action_source_checkpoint.json": "b6dcd36ee6cf8ed3b3943e207012dd165fce62ec39cb8f53ca3c23f4715d094b",
+      "scripts/S11c_d_mixing_scattering_sympy_audit.py": "5bf77729682960bb59f10c672a5fe3f67a98b0a9533da7c6189a37183596050f",
+      "_measurements/S11c_d_reduced_action_source_check.py": "aae3b2402e1707ef27f217b917dc10592f38acbe35d18356fbc4886ed854f754",
+      "directives/S11c_d_EXPLORATORY_ACCEPTANCE.md": "5c1e560a78d40739af8b1318c0487e20bf2b816c41109889e12004266c72840c",
+      "_measurements/S11c_d_finite_scattering_domain_checkpoint.json": "2286978066ad6e0c8b9558a950b40521c61ac2cdfec58a9694f890c70c90280c",
+      "_measurements/S11c_d_variable_profile_development_input.json": "660b2b0b54494dce964c7f5fbd722a76a7e894d8ed92b18b5eb6290c3c10f1d5",
+      "directives/S11c_d_NONLINEAR_POLE_CONTRACT.md": "2b6018faf0d5ca772bf9c980174d8ebe7545127a3bf43ba01d1b3c0b6a5be423",
+      "scripts/S11c_b_exports.py": "3c6555f90a85382a5e96f3f961f0e36a4875d9259fe1be947fa8e683669b7084",
+      "scripts/S11c_c1_exports.py": "a5353b86dc526fd1b56734fdbdf7dc7f42387a3195ab4de84e8994f751871cdc",
+      "scripts/S11c_c2_exports.py": "2ba5ed487b84ecb98290df6f1650fa6210fe2784cfa02a0f3cff96cd718411cd",
+      "directives/S11c_d_SHARED_PHYSICS.md": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5",
+      "directives/S11b_SHARED_PHYSICS.md": "9ea9e388e9d6421a841eaf851d12e1793527bba9a24aeeface3bfac2f4b40078",
+      "scripts/ledger_fold.py": "97da78c6631c09e5575dd14511760506f1ac08771cf07948978004e92f0b2333",
+      "_measurements/S11c_d_continuum_matrices.py": "33a0e5a2fa136a55875541e15bc410159c94f56f25adc4a02589d0c704223987",
+      "_measurements/S11c_d_continuum_matrix_plan.md": "c571bf7adb9e7b4cbedd8ac80813a590d4087bebfd02da6b2615e1cc82914612",
+      "_measurements/S11c_d_continuum_grade_checkpoint.json": "3987ff4abb782050fffc767065ed9b3126da49215aa0df41320abef7fdec4692",
+      "_measurements/S11c_d_finite_scattering_domain.py": "73341408d0f6c1eb517e435dea986e180ff53615a6102697a8e3ba6747bd35aa",
+      "_measurements/S11c_d_finite_scattering.py": "f187d9426be8069342a363a0466c175d32a8cb46101e32a14c433ccb9118e469",
+      "_measurements/S11c_d_finite_scattering_resolution.py": "8e101517fde113c5f0a372bab531e63ebdcee3fff03c270ff98a7590e5a7b981",
+      "_measurements/S11c_d_end_normalization_reference_thickness_repair_checkpoint.json": "5c9456ddacd573865d00a0527b1b73b1060c613ccfe50ed89e41613fa3d9658f",
+      "_measurements/S11c_d_end_pairing_reference_thickness_repair_checkpoint.json": "1ea765d293138847a23ff7768fdba770a031659f9c978f582aff27391bf11232",
+      "_measurements/S11c_d_end_normalization_left_thickness_repair_checkpoint.json": "5871a84b7584eb35de8b8a5c450e8d0adadb41340abcbfe028ac16b360befcdb",
+      "_measurements/S11c_d_end_pairing_left_thickness_repair_checkpoint.json": "205e13614c41c504faae85cad9ee104ab51d1f1a5830b5b9e802e5fe3bc1ac9d",
+      "_measurements/S11c_d_end_normalization_right_thickness_repair_checkpoint.json": "7267d068580ecade68ce95abd599c1f5c59a95b4d7f359f9518452218c9f9a05",
+      "_measurements/S11c_d_end_pairing_right_thickness_repair_checkpoint.json": "e8e0d0771bd4365055351bdc041f0a45020f5252bdb5ff5793592d1c9c388605",
+      "_measurements/S11c_d_continuum_boundary.py": "ed3a6539d3151c52d25f12308b121897baf3bd6a5a626a598ab728988ab933a0",
+      "_measurements/S11c_d_continuum_boundary_plan.md": "08dd0c80757d2a2203b237e47957fd4e3bc1b970abfb2dad4cb3b07cf1a3c27f",
+      "_measurements/S11c_d_continuum_matrix_checkpoint.json": "4fe0e0214a5f51a6ab18c9266aa369dde4cf2b60eb51beabf3257754f91d942d",
+      "_measurements/S11c_d_matching_channels_checkpoint.json": "c4ad9b9051f9c3fadb076593dd35ec12d1779fad6d1558c691c3b735fe4d3eeb",
+      "_measurements/S11c_d_continuum_boundary_recover.py": "156252a37a9aaba207fa06ce23ca34cc7286601c8f76cdfe1a63a9e40a2f1839",
+      "_measurements/S11c_d_continuum_boundary_recovery_plan.md": "4d91587d5a202a2d9dbdedb8f9b6340cded59a08518df173ac012e49f51db2ea",
+      "_measurements/S11c_d_continuum_boundary_finish.py": "988e3248d634dd3d6a48279d198c682a9637082ddcd735207d5506c01b0af052",
+      "_measurements/S11c_d_continuum_boundary_finish_plan.md": "674e363bf4427f9c367cdc309bb336a584e332e83cb1ee7143e8c831876063da",
+      "_measurements/S11c_d_continuum_response.py": "0fe30a9c4771671e9fa139b0557f185f55d351887f2ba8b9fa4ed1abfb616db2",
+      "_measurements/S11c_d_continuum_response_plan.md": "7250a3fb303a3a3e6e89d0372d7720dd5eeae16dc01714d43d4898ea1faf0834",
+      "_measurements/S11c_d_continuum_boundary_checkpoint.json": "b2614b74b4ec68de6d9f270bdf115833eea26a9baf168643663f21314a141d2d",
+      "_measurements/S11c_d_continuum_currents.py": "44ead83416dd8baa4fb0dedf16ef26a33fd810308112b6aa333dfc53fe75b8e0",
+      "_measurements/S11c_d_continuum_currents_plan.md": "e85ea926d076d39be7102c21c1dd8254648a91cbd17b823c92806e32dbc956f3",
+      "_measurements/S11c_d_continuum_response_checkpoint.json": "c29b71bc8adf8b98856d00d4586b7b060c0f6d5f42778ff231e03e0d45ba0139"
+    },
+    "inputPackets": {
+      "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-response-20260919/production/complete/continuum-response.pickle": "a6678ad8fd7b4adf01aa3470834dcc0a918d2f7269fa1e273a980ea67c5b84f3",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/finish-02/complete/continuum-boundary.pickle": "8e3e53c3b7b06e3e81f961f013b77b4b87dfede081db75b4de458503b062eed0",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-end-normalization-20260914/reference/modal.pickle": "69668d29e11af4ca89c667f1ff39e7f646366eba7cb596dde39e74fcbefe3cd7",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/finish-02/complete/left-pencil.pickle": "66bd1e5ccbf08fb7a3c11df461232783850062090fb4500d3a7c0f6ec6253174",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/finish-02/complete/right-pencil.pickle": "170aa9cfa44630fe7900c33c2259960dff1c964cac50b5c931a0733cffa457a5",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-reduced-action-source-20260914/complete/reduced-action.pickle": "e9062c3455c7e59fe816f47172062a0c118b201d03809ec0826575dac22872b0"
+    },
+    "openRanks": {
+      "transverse": 4,
+      "thickness": 0,
+      "allOpen": 4
+    },
+    "bulkRealPropagationSets": {
+      "LEFT": [
+        "EmptySet",
+        "EmptySet"
+      ],
+      "RIGHT": [
+        "EmptySet",
+        "EmptySet"
+      ]
+    },
+    "bulkMaximumDepthSquared": {
+      "LEFT": [
+        "-1/25",
+        "-1/25"
+      ],
+      "RIGHT": [
+        "-1/25",
+        "-1/25"
+      ]
+    },
+    "openResidualMaximum": 4.441138119139177e-16,
+    "finiteEndResidualMaximum": 5.859285884700733e-14,
+    "currentMutationMaximum": 2.139295618348289,
+    "tagCount": 2632,
+    "writeKeys": 1314,
+    "metadataPaths": 20032,
+    "packetSha256BeforeEmission": "d4d3866112e671697863e78bb53d086bbfe5404761a8093583128fe5b96cb291",
+    "packetSha256AfterEmission": "d4d3866112e671697863e78bb53d086bbfe5404761a8093583128fe5b96cb291",
+    "artifacts": {
+      "continuum-currents.pickle": {
+        "bytes": 414337,
+        "sha256": "d4d3866112e671697863e78bb53d086bbfe5404761a8093583128fe5b96cb291"
+      },
+      "channel-selectors.pickle": {
+        "bytes": 1372,
+        "sha256": "92c363698407b741275f498d3a4ba00bfcae473e656dbcf33cd87e94443aa134"
+      },
+      "open-channel-currents.pickle": {
+        "bytes": 190561,
+        "sha256": "0818d5f940f306a3ed27cad101548458ac1329dd6b44f62b7b8b61d53eb942a4"
+      },
+      "bulk-kinematics.pickle": {
+        "bytes": 963,
+        "sha256": "e6696b2db9d19aea6dbb22184b9e7a3451d109e73ec9f221bc074337038096d7"
+      },
+      "full.out": {
+        "bytes": 1174720,
+        "sha256": "32134060a3e0799d16208b4e595d809ce33ed8aa5adcdf9a24f8fd8092c14e37"
+      },
+      "finite-end-currents.pickle": {
+        "bytes": 170660,
+        "sha256": "b096fb16a72ae68d92774b9da548ffe621c1ac2a92742c3f30c721297eda3000"
+      }
+    },
+    "wallSeconds": 67.45488813705742,
+    "peakRssKiB": 201944,
+    "scope": "Finite retained-rectangle open-channel and closed matching response; full finite-end normal current is distinct from bulk-depth radiation. No physical gain/loss inferred from omitted pure second-order terms; no pole solve."
+  },
+  "sourceFiles": {
+    "_measurements/S11c_d_continuum_grades.py": "0443c3adbeaf813ad66c60af0a50c96e9a841277d51f9c23bf1c601d2fdf329d",
+    "_measurements/S11c_d_continuum_grade_plan.md": "693546373ea2c8c5eec4ef3c8c93732fc7440a1eb1a2cdb1a6cf9d0f5b469040",
+    "_measurements/S11c_d_reduced_action_assembly_checkpoint.json": "b4afb727b1a1ad2a468b0bab9a6ab369dbe4dd35bc46acd7150b7fa581cd984f",
+    "_measurements/S11c_d_source_fourier_factorization_checkpoint.json": "fcf6f1c5598b63c11d4f8a76d2d94c2b5bace590e83d4beea3e52e82f44158a6",
+    "_measurements/S11c_d_reduced_action_source_checkpoint.json": "b6dcd36ee6cf8ed3b3943e207012dd165fce62ec39cb8f53ca3c23f4715d094b",
+    "scripts/S11c_d_mixing_scattering_sympy_audit.py": "5bf77729682960bb59f10c672a5fe3f67a98b0a9533da7c6189a37183596050f",
+    "_measurements/S11c_d_reduced_action_source_check.py": "aae3b2402e1707ef27f217b917dc10592f38acbe35d18356fbc4886ed854f754",
+    "directives/S11c_d_EXPLORATORY_ACCEPTANCE.md": "5c1e560a78d40739af8b1318c0487e20bf2b816c41109889e12004266c72840c",
+    "_measurements/S11c_d_finite_scattering_domain_checkpoint.json": "2286978066ad6e0c8b9558a950b40521c61ac2cdfec58a9694f890c70c90280c",
+    "_measurements/S11c_d_variable_profile_development_input.json": "660b2b0b54494dce964c7f5fbd722a76a7e894d8ed92b18b5eb6290c3c10f1d5",
+    "directives/S11c_d_NONLINEAR_POLE_CONTRACT.md": "2b6018faf0d5ca772bf9c980174d8ebe7545127a3bf43ba01d1b3c0b6a5be423",
+    "scripts/S11c_b_exports.py": "3c6555f90a85382a5e96f3f961f0e36a4875d9259fe1be947fa8e683669b7084",
+    "scripts/S11c_c1_exports.py": "a5353b86dc526fd1b56734fdbdf7dc7f42387a3195ab4de84e8994f751871cdc",
+    "scripts/S11c_c2_exports.py": "2ba5ed487b84ecb98290df6f1650fa6210fe2784cfa02a0f3cff96cd718411cd",
+    "directives/S11c_d_SHARED_PHYSICS.md": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5",
+    "directives/S11b_SHARED_PHYSICS.md": "9ea9e388e9d6421a841eaf851d12e1793527bba9a24aeeface3bfac2f4b40078",
+    "scripts/ledger_fold.py": "97da78c6631c09e5575dd14511760506f1ac08771cf07948978004e92f0b2333",
+    "_measurements/S11c_d_continuum_matrices.py": "33a0e5a2fa136a55875541e15bc410159c94f56f25adc4a02589d0c704223987",
+    "_measurements/S11c_d_continuum_matrix_plan.md": "c571bf7adb9e7b4cbedd8ac80813a590d4087bebfd02da6b2615e1cc82914612",
+    "_measurements/S11c_d_continuum_grade_checkpoint.json": "3987ff4abb782050fffc767065ed9b3126da49215aa0df41320abef7fdec4692",
+    "_measurements/S11c_d_finite_scattering_domain.py": "73341408d0f6c1eb517e435dea986e180ff53615a6102697a8e3ba6747bd35aa",
+    "_measurements/S11c_d_finite_scattering.py": "f187d9426be8069342a363a0466c175d32a8cb46101e32a14c433ccb9118e469",
+    "_measurements/S11c_d_finite_scattering_resolution.py": "8e101517fde113c5f0a372bab531e63ebdcee3fff03c270ff98a7590e5a7b981",
+    "_measurements/S11c_d_end_normalization_reference_thickness_repair_checkpoint.json": "5c9456ddacd573865d00a0527b1b73b1060c613ccfe50ed89e41613fa3d9658f",
+    "_measurements/S11c_d_end_pairing_reference_thickness_repair_checkpoint.json": "1ea765d293138847a23ff7768fdba770a031659f9c978f582aff27391bf11232",
+    "_measurements/S11c_d_end_normalization_left_thickness_repair_checkpoint.json": "5871a84b7584eb35de8b8a5c450e8d0adadb41340abcbfe028ac16b360befcdb",
+    "_measurements/S11c_d_end_pairing_left_thickness_repair_checkpoint.json": "205e13614c41c504faae85cad9ee104ab51d1f1a5830b5b9e802e5fe3bc1ac9d",
+    "_measurements/S11c_d_end_normalization_right_thickness_repair_checkpoint.json": "7267d068580ecade68ce95abd599c1f5c59a95b4d7f359f9518452218c9f9a05",
+    "_measurements/S11c_d_end_pairing_right_thickness_repair_checkpoint.json": "e8e0d0771bd4365055351bdc041f0a45020f5252bdb5ff5793592d1c9c388605",
+    "_measurements/S11c_d_continuum_boundary.py": "ed3a6539d3151c52d25f12308b121897baf3bd6a5a626a598ab728988ab933a0",
+    "_measurements/S11c_d_continuum_boundary_plan.md": "08dd0c80757d2a2203b237e47957fd4e3bc1b970abfb2dad4cb3b07cf1a3c27f",
+    "_measurements/S11c_d_continuum_matrix_checkpoint.json": "4fe0e0214a5f51a6ab18c9266aa369dde4cf2b60eb51beabf3257754f91d942d",
+    "_measurements/S11c_d_matching_channels_checkpoint.json": "c4ad9b9051f9c3fadb076593dd35ec12d1779fad6d1558c691c3b735fe4d3eeb",
+    "_measurements/S11c_d_continuum_boundary_recover.py": "156252a37a9aaba207fa06ce23ca34cc7286601c8f76cdfe1a63a9e40a2f1839",
+    "_measurements/S11c_d_continuum_boundary_recovery_plan.md": "4d91587d5a202a2d9dbdedb8f9b6340cded59a08518df173ac012e49f51db2ea",
+    "_measurements/S11c_d_continuum_boundary_finish.py": "988e3248d634dd3d6a48279d198c682a9637082ddcd735207d5506c01b0af052",
+    "_measurements/S11c_d_continuum_boundary_finish_plan.md": "674e363bf4427f9c367cdc309bb336a584e332e83cb1ee7143e8c831876063da",
+    "_measurements/S11c_d_continuum_response.py": "0fe30a9c4771671e9fa139b0557f185f55d351887f2ba8b9fa4ed1abfb616db2",
+    "_measurements/S11c_d_continuum_response_plan.md": "7250a3fb303a3a3e6e89d0372d7720dd5eeae16dc01714d43d4898ea1faf0834",
+    "_measurements/S11c_d_continuum_boundary_checkpoint.json": "b2614b74b4ec68de6d9f270bdf115833eea26a9baf168643663f21314a141d2d",
+    "_measurements/S11c_d_continuum_currents.py": "44ead83416dd8baa4fb0dedf16ef26a33fd810308112b6aa333dfc53fe75b8e0",
+    "_measurements/S11c_d_continuum_currents_plan.md": "e85ea926d076d39be7102c21c1dd8254648a91cbd17b823c92806e32dbc956f3",
+    "_measurements/S11c_d_continuum_response_checkpoint.json": "c29b71bc8adf8b98856d00d4586b7b060c0f6d5f42778ff231e03e0d45ba0139"
+  },
+  "artifacts": {
+    "continuum-currents.pickle": {
+      "bytes": 414337,
+      "sha256": "d4d3866112e671697863e78bb53d086bbfe5404761a8093583128fe5b96cb291"
+    },
+    "channel-selectors.pickle": {
+      "bytes": 1372,
+      "sha256": "92c363698407b741275f498d3a4ba00bfcae473e656dbcf33cd87e94443aa134"
+    },
+    "open-channel-currents.pickle": {
+      "bytes": 190561,
+      "sha256": "0818d5f940f306a3ed27cad101548458ac1329dd6b44f62b7b8b61d53eb942a4"
+    },
+    "bulk-kinematics.pickle": {
+      "bytes": 963,
+      "sha256": "e6696b2db9d19aea6dbb22184b9e7a3451d109e73ec9f221bc074337038096d7"
+    },
+    "full.out": {
+      "bytes": 1174720,
+      "sha256": "32134060a3e0799d16208b4e595d809ce33ed8aa5adcdf9a24f8fd8092c14e37"
+    },
+    "finite-end-currents.pickle": {
+      "bytes": 170660,
+      "sha256": "b096fb16a72ae68d92774b9da548ffe621c1ac2a92742c3f30c721297eda3000"
+    }
+  },
+  "verification": {
+    "sourceCount": 43,
+    "inputPackets": 6,
+    "candidateRecords": 36,
+    "basisDirections": 14,
+    "openRanks": {
+      "transverse": 4,
+      "thickness": 0,
+      "allOpen": 4
+    },
+    "independentQuotientResiduals": {
+      "transverse": {
+        "('totalFraction', 0)": 0.0,
+        "('totalFraction', 1)": 6.163351980231418e-34,
+        "('totalFraction', 2)": 5.868067799304859e-34,
+        "('inducedFraction', 0)": 0.0,
+        "('inducedFraction', 1)": 0.0,
+        "('inducedFraction', 2)": 2.7079439194695158e-34
+      },
+      "thickness": {
+        "('totalFraction', 0)": 0.0,
+        "('totalFraction', 1)": 0.0,
+        "('totalFraction', 2)": 0.0,
+        "('inducedFraction', 0)": 0.0,
+        "('inducedFraction', 1)": 0.0,
+        "('inducedFraction', 2)": 0.0
+      },
+      "allOpen": {
+        "('totalFraction', 0)": 0.0,
+        "('totalFraction', 1)": 6.163351980231418e-34,
+        "('totalFraction', 2)": 5.868067799304859e-34,
+        "('inducedFraction', 0)": 0.0,
+        "('inducedFraction', 1)": 0.0,
+        "('inducedFraction', 2)": 2.7079439194695158e-34
+      }
+    },
+    "tagCount": 2632,
+    "metadataPaths": 20032
+  },
+  "observables": {
+    "transverse": {
+      "amplitudeMaxima": {
+        "(0, 0)": 1.000000000000284,
+        "(1, 0)": 1.9058650697922435,
+        "(0, 1)": 0.0004353406978791289,
+        "(1, 1)": 0.020938598851915055
+      },
+      "approvedRetainedAmplitudeMaximum": 1.0028802858019374,
+      "fractionTaylorReal": {
+        "0": [
+          1.000000000000568,
+          1.000000000000151,
+          1.0000000000002796,
+          0.9999999999999825
+        ],
+        "1": [
+          -1.5156105431917944e-05,
+          -2.6514609007486276e-06,
+          2.072457900560378e-05,
+          3.625379667988301e-06
+        ],
+        "2": [
+          3.339540889672933,
+          3.3398680747552705,
+          3.6325745859297065,
+          3.6322005337596757
+        ]
+      },
+      "inducedQuadraticReal": [
+        3.6320723787613005,
+        3.6321128513609056,
+        3.632165835897797,
+        3.632129196877692
+      ],
+      "baselineCurrentMaximum": 0.5889609494698217,
+      "inducedVsTotalMinusBaselineMaximum": 0.31841560231399746
+    },
+    "thickness": {
+      "amplitudeMaxima": {
+        "(0, 0)": 0.0,
+        "(1, 0)": 0.0,
+        "(0, 1)": 0.0,
+        "(1, 1)": 0.0
+      },
+      "approvedRetainedAmplitudeMaximum": 0.0,
+      "fractionTaylorReal": {
+        "0": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "1": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "2": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "inducedQuadraticReal": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "baselineCurrentMaximum": 0.0,
+      "inducedVsTotalMinusBaselineMaximum": 0.0
+    },
+    "allOpen": {
+      "amplitudeMaxima": {
+        "(0, 0)": 1.000000000000284,
+        "(1, 0)": 1.9058650697922435,
+        "(0, 1)": 0.0004353406978791289,
+        "(1, 1)": 0.020938598851915055
+      },
+      "approvedRetainedAmplitudeMaximum": 1.0028802858019374,
+      "fractionTaylorReal": {
+        "0": [
+          1.000000000000568,
+          1.000000000000151,
+          1.0000000000002796,
+          0.9999999999999825
+        ],
+        "1": [
+          -1.5156105431917944e-05,
+          -2.6514609007486276e-06,
+          2.072457900560378e-05,
+          3.625379667988301e-06
+        ],
+        "2": [
+          3.339540889672933,
+          3.3398680747552705,
+          3.6325745859297065,
+          3.6322005337596757
+        ]
+      },
+      "inducedQuadraticReal": [
+        3.6320723787613005,
+        3.6321128513609056,
+        3.632165835897797,
+        3.632129196877692
+      ],
+      "baselineCurrentMaximum": 0.5889609494698217,
+      "inducedVsTotalMinusBaselineMaximum": 0.31841560231399746
+    },
+    "LEFTClosedMatching": {
+      "amplitudeMaxima": {
+        "(0, 0)": 2.9644451750226533e-13,
+        "(1, 0)": 0.03189364751303413,
+        "(0, 1)": 0.2632766572853232,
+        "(1, 1)": 0.9281852859384904
+      },
+      "approvedRetainedMaximum": 0.00010839908270751025
+    },
+    "RIGHTClosedMatching": {
+      "amplitudeMaxima": {
+        "(0, 0)": 3.7376785331950296e-13,
+        "(1, 0)": 0.03358819208585458,
+        "(0, 1)": 0.2733812185347541,
+        "(1, 1)": 1.48041222390947
+      },
+      "approvedRetainedMaximum": 9.09202038852115e-05
+    }
+  },
+  "validator": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-currents-20260919/validate-final.py",
+    "sha256": "8b08ae028b4490bb99eff491e607cfa71873b695838bf2349ca77c80956c63d4"
+  },
+  "scope": "Finite retained-rectangle open-channel and closed matching response; full finite-end normal current is distinct from bulk-depth radiation. No physical gain/loss inferred from omitted pure second-order terms; no pole solve.",
+  "publication": {
+    "path": "scripts/out/S11c_d_continuum_currents.out",
+    "bytes": 1174720,
+    "sha256": "32134060a3e0799d16208b4e595d809ce33ed8aa5adcdf9a24f8fd8092c14e37",
+    "annexKey": "MD5E-s1174720--124325c9c238eeb1d99ca3987f04badc.out",
+    "symlink": "../../../../.git/annex/objects/6z/fP/MD5E-s1174720--124325c9c238eeb1d99ca3987f04badc.out/MD5E-s1174720--124325c9c238eeb1d99ca3987f04badc.out",
+    "publicationCommit": "5d7f29ba146e3ebd884f50dc8147b8777231e723"
+  }
+}

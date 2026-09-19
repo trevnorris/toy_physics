@@ -41,7 +41,11 @@ now passes:645 unknowns, all four incident directions and all independent/mixed
 coefficients, scaled equation residual3.80e-14 and independent solve difference
 2.11e-12. Actual boundary/current/phase normalization is included;506 tags and
 45731 metadata paths replay. The202-second solve reuses accepted quadratures.
-Current bookkeeping, physical controls, frequency poles and final integration
+The [channel-current bookkeeping](S11c_d_continuum_currents_report.md) also passes:
+open/full-end contraction residuals below4.45e-16/5.86e-14, all2632 tags and
+20032 metadata paths replay. This input has no open thickness channel and
+computed closed bulk-depth propagation; evanescent matching fields remain.
+Profile/uniform/covariance controls, frequency poles and final integration
 remain; tiny reflection/loss is unresolved. No broad quadrature sweep is queued.
 The older checkpoint narrative below records history, not the current task
 queue. The retained solver/export suffix remains byte-identical, interpreted

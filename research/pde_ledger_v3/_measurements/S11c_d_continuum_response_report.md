@@ -11,7 +11,8 @@ Mixed-forcing and matrix-order mutations respond; the field-coordinate phase
 control rejects applying a phase in the wrong basis. These are instrument
 checks, not an accepted physical response.
 
-Production is prepared with one native thread,2GiB and900seconds. It will save
+Production is running under the local completion/error hook with one native
+thread,2GiB and900seconds. It saves
 all systems, solutions, currents, phase/normalization maps and formal truncation
 diagnostics before output replay. Approximate modal boundaries and finite
 regulator remain explicit. Open-current bookkeeping is distinct from thickness

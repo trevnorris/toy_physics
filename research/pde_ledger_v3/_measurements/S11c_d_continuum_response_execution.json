@@ -1,5 +1,5 @@
 {
-  "status": "PREPARED",
+  "status": "RUNNING",
   "checker": "S11c_d_continuum_response.py",
   "plan": "S11c_d_continuum_response_plan.md",
   "report": "S11c_d_continuum_response_report.md",
@@ -12,5 +12,37 @@
     "nativeThreads": 1,
     "addressSpaceBytes": 2147483648
   },
-  "next": "Compute and validate the complete finite coefficient response with actual boundary/current dependence; no new quadrature."
+  "next": "Compute and validate the complete finite coefficient response with actual boundary/current dependence; no new quadrature.",
+  "implementationCommit": "42c43fdf",
+  "launch": {
+    "launchedUtc": "2026-09-19T17:05:34.991050+00:00",
+    "command": [
+      "/usr/bin/python",
+      "_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-response-20260919/production",
+      "--stage",
+      "response_construct",
+      "--",
+      "python",
+      "-u",
+      "_measurements/S11c_d_continuum_response.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-response-20260919/production/complete"
+    ],
+    "supervisorPid": 638772,
+    "watcherPid": 638773,
+    "watcherDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-response-20260919/production/completion-watcher",
+    "threadEnvironment": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1"
+    }
+  },
+  "startup": {
+    "status": "running",
+    "stderrBytes": 0,
+    "watcherStderrBytes": 0
+  }
 }

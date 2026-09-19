@@ -32,8 +32,11 @@ unresolved. Independent symbolic continuum coefficients are accepted at24961b20:
 The complete finite interior matrices are now published at9471a10f: four
 645-by-645 grades in18.68 seconds, reusing accepted quadratures with zero new
 nodes. Approved-operator recombination agrees to4.79e-16; omitting the mixed
-term responds. Next expand actual end modes, boundary/channel and current maps,
-then the complete response. No broad quadrature sweep is queued.
+term responds. The [boundary/current coefficients](S11c_d_continuum_boundary_report.md) now
+pass:10 complete clusters,52 derivative tables,100 exact saved current-pair
+replays and5291 metadata paths. Invariant-pair residuals are below3.86e-15.
+The right finite-versus-Taylor trace difference0.00567 remains a truncation
+diagnostic. Next solve the complete continuum response from these coefficients. No broad quadrature sweep is queued.
 The older checkpoint narrative below records history, not the current task
 queue. The retained solver/export suffix remains byte-identical, interpreted
 under the new acceptance addendum and the approved pole correction.

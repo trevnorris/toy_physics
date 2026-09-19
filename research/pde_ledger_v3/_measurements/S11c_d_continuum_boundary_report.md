@@ -1,64 +1,41 @@
-# Continuum boundary coefficient construction
+# Continuum boundary and current coefficients
 
-Interior coefficient matrices are accepted at7d1082df. The adapter consumes
-accepted reference/end modes and polarized current operands, retaining every
-required complete subspace. It computes eta/sigma mode, boundary and current
-coefficients in reference-anchored coordinates. Open bases are flux-normalized
-at zero only; current variation remains explicit.
+Both ends now have complete independent mode, boundary and polarized current
+coefficients. Each retains18 candidate dispositions and five selected clusters:
+five outgoing trace directions (two open, three evanescent) and two incoming
+directions. Both transverse directions in each degenerate cluster are retained.
+The coordinate gauge uses reference flux normalization; actual current variation
+is explicit. End sigma coefficients vanish by differentiation of the supplied
+operands; the interior sigma and mixed coefficients remain present.
 
-The source preflight joined all three saved end pencils and current operands,
-18 candidates per end,24 current sources and14 accepted input packets. The
-independent two-sided matrix-polynomial test agrees exactly in all four grades.
-Its multiplication-order mutation responds in the mixed coefficient; the first
-attempt tested first order, where the scalar reference momentum commutes, and
-was correctly rejected as insensitive. Original test logs remain preserved.
-Both recursive inverse products agree to floating precision. These are
-instrument tests, not a new physical scattering result.
+Maximum invariant-pair residual is3.86e-15, inverse/boundary residual1.42e-15,
+Hermitian current residual9.09e-14 and reference signed-current join1.12e-16.
+All52 symbolic derivative tables and100 current-part cluster-pair contractions
+join their saved operands exactly. Source, isolated-root/lift, full-subspace,
+phase and mutation checks pass. The right eta-forcing omission responds13.66.
+The right finite-end trace versus retained Taylor approximation differs0.00567
+in the numerical frame; this is a truncation diagnostic, not an observable
+error estimate. The left difference is1.84e-15.
 
-The production attempt has900seconds, one numerical thread and2GiB. It saves
-each end pencil and mode cluster before later guards. No numerical integration
-or upstream physics is repeated. Full boundary/current results remain pending.
-The continuum solve, physical controls, flux bookkeeping, poles and final
-cases/exports follow under exploratory acceptance.
+The original900-second attempt stopped in optional rational cancellation.
+Recovery removed only that simplification and reused six saved left packets;
+both ends and all derivative tables completed in118.87seconds. Subsequent
+output repairs initialized grade references and handled Boolean census metadata
+without changing the flag payload. Their whole-source joins and focused controls
+pass. All original attempts remain preserved. Finish02 reused the completed
+operand validator and completed output/validation in14.70seconds, exit zero and
+empty stderr. No accepted numerical quadrature was repeated.
 
-Production launched at2026-09-19T16:12:15Z under the existing supervisor and
-silent completion/error watcher. Startup verified both processes and the
-constructor, with empty stderr. No production result is accepted yet.
+The423280-byte transcript is published through DataLad/git-annex. All674 tags,
+335 write keys and5291 metadata paths replay, including all72 original completed
+prefix tags. The actual MD5E key, symlink, MD5 and independent SHA256 are verified
+in S11c_d_continuum_boundary_checkpoint.json. The complete construction packet
+remains byte-identical with SHA256
+8e3e53c3b7b06e3e81f961f013b77b4b87dfede081db75b4de458503b062eed0.
 
-The first production stopped at its900-second budget inside multivariate GCD
-for an optional `cancel` in current-table simplification. It saved the left
-pencil and five complete subspaces (seven basis directions). No boundary/current
-result was accepted. The narrow repair retains the raw differentiated operands.
-A whole-checker AST join removes exactly that one final simplification call.
-All five saved mode coefficient/gauge residuals replay exactly; the independent
-four-grade arithmetic and inverse checks still pass, and the ordering mutation
-responds. The recovery uses byte-identical copies of the six saved packets,
-reversible cache/checkpoint hooks and a separate derivative-entry inventory.
-The original failed logs and source snapshots remain preserved.
-
-Recovery launched at2026-09-19T16:33:30Z. Its supervisor, constructor and silent
-watcher passed startup verification with empty stderr. Acceptance is pending.
-
-Recovery01 completed both ends, all10 clusters/14 directions and52 current
-coefficient tables in118.87seconds, then the fingerprint emitter lacked eta/sigma
-attributes. The complete427369-byte result is saved. Maximum invariant-pair
-residual is3.86e-15, current Hermitian residual9.09e-14 and signed-current join
-1.12e-16. The right finite-trace Taylor difference is0.00567 in the numerical
-frame; it remains a truncation diagnostic, not an observable error estimate.
-The output-only repair initializes the actual grade references, with an exact
-whole-checker reverse AST join. Finish replays saved operands and emission;
-no mode solve, symbolic current differentiation or quadrature is repeated.
-A grade-dependent fingerprint and coefficient mutation pass focused testing.
-
-Finish01 validated every saved current contraction exactly (100 cluster pairs
-across both current parts and ends), then encountered Boolean census flags in
-an arithmetic metadata helper. The adapter preserves the flag payload and
-converts flags only for metadata calculation. Completed operand validation is
-reused with unchanged validator AST and exact source packets. No numerical or
-symbolic construction is repeated by the next output attempt.
-
-The flag-path test initially compared decoded CAS path atoms directly with
-Python strings. After normalizing path coordinates, all54 actual flag paths
-have dimensionless metadata and the Boolean payload is unchanged. The source
-hash launch guard rejected the stale focused record before starting a job;
-its outcome is preserved. The validated focused record now matches the source.
+Next combine these actual boundary/current coefficients with the accepted
+interior matrices and solve the continuum response, including baseline and
+mixed inverse terms and current normalization. Finite modal boundaries remain
+approximate. No physical pole, transparent-boundary or rigorous limit result
+follows, and tiny reflection/loss remains unresolved. Physical controls,
+thickness/bulk flux, remaining cases and exports remain program work.

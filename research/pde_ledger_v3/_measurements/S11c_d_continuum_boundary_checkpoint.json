@@ -1,0 +1,710 @@
+{
+  "status": "PUBLISHED_ANNEX_VERIFIED",
+  "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/finish-02/complete",
+  "outcome": {
+    "stage": "boundary_finish",
+    "command": [
+      "python",
+      "-u",
+      "_measurements/S11c_d_continuum_boundary_finish.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/finish-02/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/finish-02/boundary_finish.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/finish-02/boundary_finish.stderr",
+    "startedUtc": "2026-09-19T16:47:42.172990+00:00",
+    "childPid": 632439,
+    "status": "completed",
+    "exitCode": 0,
+    "wallSeconds": 14.70265221875161,
+    "stderrBytes": 0,
+    "finishedUtc": "2026-09-19T16:47:56.875692+00:00"
+  },
+  "checksSha256": "9f23ed5b332bcd0a5802db3336d03d9f3c43120b3793bd9fa80a07510c0944ca",
+  "checks": {
+    "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/finish-02/complete",
+    "sourceFiles": {
+      "_measurements/S11c_d_end_normalization_reference_thickness_repair_checkpoint.json": "5c9456ddacd573865d00a0527b1b73b1060c613ccfe50ed89e41613fa3d9658f",
+      "_measurements/S11c_d_end_pairing_reference_thickness_repair_checkpoint.json": "1ea765d293138847a23ff7768fdba770a031659f9c978f582aff27391bf11232",
+      "_measurements/S11c_d_end_normalization_left_thickness_repair_checkpoint.json": "5871a84b7584eb35de8b8a5c450e8d0adadb41340abcbfe028ac16b360befcdb",
+      "_measurements/S11c_d_end_pairing_left_thickness_repair_checkpoint.json": "205e13614c41c504faae85cad9ee104ab51d1f1a5830b5b9e802e5fe3bc1ac9d",
+      "_measurements/S11c_d_end_normalization_right_thickness_repair_checkpoint.json": "7267d068580ecade68ce95abd599c1f5c59a95b4d7f359f9518452218c9f9a05",
+      "_measurements/S11c_d_end_pairing_right_thickness_repair_checkpoint.json": "e8e0d0771bd4365055351bdc041f0a45020f5252bdb5ff5793592d1c9c388605",
+      "_measurements/S11c_d_continuum_boundary.py": "ed3a6539d3151c52d25f12308b121897baf3bd6a5a626a598ab728988ab933a0",
+      "_measurements/S11c_d_continuum_boundary_plan.md": "08dd0c80757d2a2203b237e47957fd4e3bc1b970abfb2dad4cb3b07cf1a3c27f",
+      "scripts/S11c_d_mixing_scattering_sympy_audit.py": "5bf77729682960bb59f10c672a5fe3f67a98b0a9533da7c6189a37183596050f",
+      "_measurements/S11c_d_finite_scattering.py": "f187d9426be8069342a363a0466c175d32a8cb46101e32a14c433ccb9118e469",
+      "_measurements/S11c_d_continuum_grades.py": "0443c3adbeaf813ad66c60af0a50c96e9a841277d51f9c23bf1c601d2fdf329d",
+      "_measurements/S11c_d_continuum_matrices.py": "33a0e5a2fa136a55875541e15bc410159c94f56f25adc4a02589d0c704223987",
+      "directives/S11c_d_EXPLORATORY_ACCEPTANCE.md": "5c1e560a78d40739af8b1318c0487e20bf2b816c41109889e12004266c72840c",
+      "_measurements/S11c_d_continuum_grade_checkpoint.json": "3987ff4abb782050fffc767065ed9b3126da49215aa0df41320abef7fdec4692",
+      "_measurements/S11c_d_continuum_matrix_checkpoint.json": "4fe0e0214a5f51a6ab18c9266aa369dde4cf2b60eb51beabf3257754f91d942d",
+      "_measurements/S11c_d_variable_profile_development_input.json": "660b2b0b54494dce964c7f5fbd722a76a7e894d8ed92b18b5eb6290c3c10f1d5",
+      "directives/S11c_d_SHARED_PHYSICS.md": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5",
+      "directives/S11c_d_NONLINEAR_POLE_CONTRACT.md": "2b6018faf0d5ca772bf9c980174d8ebe7545127a3bf43ba01d1b3c0b6a5be423",
+      "scripts/S11c_b_exports.py": "3c6555f90a85382a5e96f3f961f0e36a4875d9259fe1be947fa8e683669b7084",
+      "scripts/S11c_c1_exports.py": "a5353b86dc526fd1b56734fdbdf7dc7f42387a3195ab4de84e8994f751871cdc",
+      "scripts/S11c_c2_exports.py": "2ba5ed487b84ecb98290df6f1650fa6210fe2784cfa02a0f3cff96cd718411cd",
+      "directives/S11b_SHARED_PHYSICS.md": "9ea9e388e9d6421a841eaf851d12e1793527bba9a24aeeface3bfac2f4b40078",
+      "scripts/ledger_fold.py": "97da78c6631c09e5575dd14511760506f1ac08771cf07948978004e92f0b2333",
+      "_measurements/S11c_d_matching_channels_checkpoint.json": "c4ad9b9051f9c3fadb076593dd35ec12d1779fad6d1558c691c3b735fe4d3eeb",
+      "_measurements/S11c_d_continuum_boundary_recover.py": "156252a37a9aaba207fa06ce23ca34cc7286601c8f76cdfe1a63a9e40a2f1839",
+      "_measurements/S11c_d_continuum_boundary_recovery_plan.md": "4d91587d5a202a2d9dbdedb8f9b6340cded59a08518df173ac012e49f51db2ea",
+      "_measurements/S11c_d_continuum_boundary_finish.py": "988e3248d634dd3d6a48279d198c682a9637082ddcd735207d5506c01b0af052",
+      "_measurements/S11c_d_continuum_boundary_finish_plan.md": "674e363bf4427f9c367cdc309bb336a584e332e83cb1ee7143e8c831876063da"
+    },
+    "inputPackets": {
+      "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-matrices-20260919/production/complete/bound-coefficients.pickle": "1798808544e1544793367fc915189cc1899a5c73682d48d74c97af8d3a24c4e5",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-grades-20260919/production/complete/continuum-grades.pickle": "e39412750fe58734ba4db2bd84d40908d18706ae055f6ddd6e3f53f560aa9b71",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-reduced-action-source-20260914/complete/reduced-action.pickle": "e9062c3455c7e59fe816f47172062a0c118b201d03809ec0826575dac22872b0",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-end-normalization-20260914/reference/modal.pickle": "69668d29e11af4ca89c667f1ff39e7f646366eba7cb596dde39e74fcbefe3cd7",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-thickness-coordinate-20260914/end_pairing_reference/complete.pickle": "9838c5057ff36c9289cad6beb958d254097d8b18384e8c5f7d7b1a34b0062aa2",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-end-normalization-20260914/reference/arguments.json": "bd9001ebddcdaad019dbd99ed3435fc2630f04918e4c4ed58202e30874a42daf",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-end-normalization-20260914/left/modal.pickle": "ed645d29c0633c60585ad79bf2918dedc9500a8558873bbe148cb2b1de851312",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-thickness-coordinate-20260914/end_pairing_left/complete.pickle": "6399da59a971434aae54a95ed4c823c4b029029dbe50aed2913bcc48747b9259",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-end-normalization-20260914/left/arguments.json": "c256cb0e2c97a6bb03226ef96d7b9093a0847839cd4183d18774d58deb25652e",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-end-normalization-20260914/right/modal.pickle": "bd968b271b68d6bf9ec18bf75307594d8a5d0ca779541b40486cf299cb0c5497",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-thickness-coordinate-20260914/end_pairing_right/complete.pickle": "690ceb5c452de298f67ec929cacb76d7d16e182efcd321f9692ecf1cbd28b628",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-end-normalization-20260914/right/arguments.json": "144b8d36b27d40830415f1c3a05d61afd33cbd48cd0b4e92529b702aebcf65f0",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-matching-channels-20260914/retry-02/complete/left.pickle": "cfbdbb2968f73d9063e187de7055c15d4faaedcb6560f7b8b6ab0370a8342f21",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-matching-channels-20260914/retry-02/complete/right.pickle": "2144e7a856bf96ce272d35c2bed7e32c9eaa372526b62d635169c564717dd2e1",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/production/complete/left-mode-5.pickle": "5262868d1c120b99ec4100eb3f25d84165982d2d0c8037b831f3646295132d4b",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/production/complete/left-pencil.pickle": "66bd1e5ccbf08fb7a3c11df461232783850062090fb4500d3a7c0f6ec6253174",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/production/complete/left-mode-17.pickle": "23feab53b8b61d9c13c3d15b2c2fec8602eab0d73c72adaf8090487b9530606c",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/production/complete/left-mode-7.pickle": "4f3618881032fad507a17460cf49ec025abfcc0ce327d11642ba32336b65b6ee",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/production/complete/left-mode-1.pickle": "7086447e567b7842218fa41d0209f7fdc3ee32c91fb23e9f2ee581a20beaf3bc",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/production/complete/left-mode-16.pickle": "7f5eb226f0e751c1f08be8e125e261c1c72ec7aa7bb2e592d644fb10be8e0a21",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/production/complete/inputs.json": "adaa6d1c892b0bfaad6a4ca652daeacafdc5a1c4f9f690d347cf28b824ec9f45",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/recovery-01/complete/continuum-boundary.pickle": "8e3e53c3b7b06e3e81f961f013b77b4b87dfede081db75b4de458503b062eed0",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/recovery-01/complete/right-mode-0.pickle": "04ca365978781449eab5bbe3c66fa11e1ec59d7a02e2ea89fcdc6c421f60ebf9",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/recovery-01/complete/left-mode-5.pickle": "5262868d1c120b99ec4100eb3f25d84165982d2d0c8037b831f3646295132d4b",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/recovery-01/complete/left-pencil.pickle": "66bd1e5ccbf08fb7a3c11df461232783850062090fb4500d3a7c0f6ec6253174",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/recovery-01/complete/left-mode-17.pickle": "23feab53b8b61d9c13c3d15b2c2fec8602eab0d73c72adaf8090487b9530606c",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/recovery-01/complete/right-boundary.pickle": "a4c69e869624bdc51265a2cee310cf03b9491e4bf742a2a328828c1670c07b40",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/recovery-01/complete/left-mode-7.pickle": "4f3618881032fad507a17460cf49ec025abfcc0ce327d11642ba32336b65b6ee",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/recovery-01/complete/right-mode-6.pickle": "debecb805a6209c41b7c749353fcfd997410f35c3672feca8edfcaccd576bfb1",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/recovery-01/complete/left-boundary.pickle": "a4173390f35b2e3058e16213b413267cc994d2d8d4d5fd81ba4884f0613527d8",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/recovery-01/complete/right-pencil.pickle": "170aa9cfa44630fe7900c33c2259960dff1c964cac50b5c931a0733cffa457a5",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/recovery-01/complete/right-mode-4.pickle": "4ded8c01a2aa21fb990eb2e6cafed8833093e770a38b8724ffbd135d080049e9",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/recovery-01/complete/right-mode-17.pickle": "800e186f0911f98034ae6b2074ce4c390ce73193690d294f712797d64c1a2b30",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/recovery-01/complete/right-mode-16.pickle": "1a8e79900fd71f9c810f2783606e1fed2929883c1363a8e4c127797d9c3d8833",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/recovery-01/complete/left-mode-1.pickle": "7086447e567b7842218fa41d0209f7fdc3ee32c91fb23e9f2ee581a20beaf3bc",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/recovery-01/complete/left-mode-16.pickle": "7f5eb226f0e751c1f08be8e125e261c1c72ec7aa7bb2e592d644fb10be8e0a21",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/recovery-01/complete/current-tables/right-slab-0110.pickle": "dd46fca65d52baa0b4f96f060aed5196157c1b732a23ef03dbcdec5a9af382ed",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/recovery-01/complete/current-tables/left-bulk-0020.pickle": "77f57355854e5328349e6b70eeb5575fb38e5b3923f743a3ed727c912d30056a",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/recovery-01/complete/current-tables/left-bulk-0100.pickle": "46575b68e15181795fd05e07dc84917bb9644cb75f56b32662504eafb27cab07",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/recovery-01/complete/current-tables/right-slab-0011.pickle": "2c175bd5a7306e689af212db8f091b6b15b0bab79a0af3e6cbcf3355287b867f",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/recovery-01/complete/current-tables/right-bulk-0001.pickle": "61930dc3799f8647d673beca5bbbde245c547def47022eba6c978458f9e77210",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/recovery-01/complete/current-tables/left-bulk-0000.pickle": "df3768e19b8923c431632863bbe03d6f0244f627884ed799b65975a3dad20fb6",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/recovery-01/complete/current-tables/left-bulk-0011.pickle": "0556d2ac86f2de8b33fe62d00cc6054331a5a6629f80bbdef612992cf69360e2",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/recovery-01/complete/current-tables/left-bulk-0001.pickle": "61930dc3799f8647d673beca5bbbde245c547def47022eba6c978458f9e77210",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/recovery-01/complete/current-tables/right-bulk-1000.pickle": "e2129cf165cc26aa94e8d8db946d20277ed441d513a7f1559e3f6761f7c075c4",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/recovery-01/complete/current-tables/left-bulk-0110.pickle": "dd46fca65d52baa0b4f96f060aed5196157c1b732a23ef03dbcdec5a9af382ed",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/recovery-01/complete/current-tables/right-bulk-0002.pickle": "4e9691ac7e0ddd693b33d44d990bb86f9d88ebe3f529197ffac7966fe096d8f7",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/recovery-01/complete/current-tables/right-bulk-1100.pickle": "0166e8866bab321370e12e827f5f924eeeb8fdac30d5518074a2f1d00fb1b1ed",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/recovery-01/complete/current-tables/right-slab-1010.pickle": "6c8e561ebf22ab10e6db93f3d5a0c418561de6a837a3accd29d47df658003760",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/recovery-01/complete/current-tables/right-bulk-1001.pickle": "8b71622bf7865b21a2b0201d26a828f9f68bf43f21511b5d61a15e96ac18afc8",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/recovery-01/complete/current-tables/left-slab-0011.pickle": "2c175bd5a7306e689af212db8f091b6b15b0bab79a0af3e6cbcf3355287b867f",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/recovery-01/complete/current-tables/left-bulk-1010.pickle": "69797125fa1edc003c4801161a0806f7d7c94af29f04b612f83f453ea5d4b8ee",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/recovery-01/complete/current-tables/right-bulk-0020.pickle": "56cbece6745fa63deae36f2cf7d6fa25ba910cf184bda30ca77c3fef362f922b",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/recovery-01/complete/current-tables/left-bulk-1100.pickle": "0166e8866bab321370e12e827f5f924eeeb8fdac30d5518074a2f1d00fb1b1ed",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/recovery-01/complete/current-tables/left-slab-1100.pickle": "0166e8866bab321370e12e827f5f924eeeb8fdac30d5518074a2f1d00fb1b1ed",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/recovery-01/complete/current-tables/right-bulk-0110.pickle": "dd46fca65d52baa0b4f96f060aed5196157c1b732a23ef03dbcdec5a9af382ed",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/recovery-01/complete/current-tables/left-slab-1010.pickle": "69797125fa1edc003c4801161a0806f7d7c94af29f04b612f83f453ea5d4b8ee",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/recovery-01/complete/current-tables/right-bulk-0100.pickle": "46575b68e15181795fd05e07dc84917bb9644cb75f56b32662504eafb27cab07",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/recovery-01/complete/current-tables/left-slab-0010.pickle": "d2f76979904e49c1b3488239043b1a79eab20f6580d9b7ef90e1f0c71f6c9218",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/recovery-01/complete/current-tables/left-slab-0110.pickle": "dd46fca65d52baa0b4f96f060aed5196157c1b732a23ef03dbcdec5a9af382ed",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/recovery-01/complete/current-tables/left-slab-0000.pickle": "601a33ee1d89a6f367f3626db7be7e15a8ef941bda9fc2ff9bbcc5acab38f75b",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/recovery-01/complete/current-tables/right-bulk-1010.pickle": "ef8221ed3dbdf78fbdb5ac04930fdf4fae5cb7431186ce934ecebc9e85d5a502",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/recovery-01/complete/current-tables/right-bulk-0000.pickle": "df3768e19b8923c431632863bbe03d6f0244f627884ed799b65975a3dad20fb6",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/recovery-01/complete/current-tables/right-slab-0100.pickle": "46575b68e15181795fd05e07dc84917bb9644cb75f56b32662504eafb27cab07",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/recovery-01/complete/current-tables/right-slab-0010.pickle": "d2f76979904e49c1b3488239043b1a79eab20f6580d9b7ef90e1f0c71f6c9218",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/recovery-01/complete/current-tables/left-slab-0002.pickle": "e88367b772a85e00bce78ee2e40f665ba64abfb5a07aa5da296b512c60743512",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/recovery-01/complete/current-tables/left-bulk-0002.pickle": "5070667061deb818e5800b88f29ba143a1741870fb96949b6bdf072680ff1bd2",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/recovery-01/complete/current-tables/right-slab-1100.pickle": "0166e8866bab321370e12e827f5f924eeeb8fdac30d5518074a2f1d00fb1b1ed",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/recovery-01/complete/current-tables/right-slab-0101.pickle": "e8cd270c94effc86ac3fcbb1ae5c59822cc11d03529a95c5df39f7319075c321",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/recovery-01/complete/current-tables/right-bulk-0010.pickle": "9add1efd03da0726b3ded269e8d41590755d97760c5812e70d14b319130054e9",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/recovery-01/complete/current-tables/right-slab-0020.pickle": "f7ce820fb081b9253d0003644d8f598d6d61cf45e4dcefd139656f34c5eccbe2",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/recovery-01/complete/current-tables/right-slab-1001.pickle": "2137033845a4b068a753c3608fdfd7aa7fc7c210ca295e1b7c7a9ef7bd55dada",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/recovery-01/complete/current-tables/right-slab-0000.pickle": "601a33ee1d89a6f367f3626db7be7e15a8ef941bda9fc2ff9bbcc5acab38f75b",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/recovery-01/complete/current-tables/left-bulk-1001.pickle": "6c15e6035829407914ba2dd68c93fd4c83a8597ed16fd09c7cde3247e9c71063",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/recovery-01/complete/current-tables/right-slab-0002.pickle": "e88367b772a85e00bce78ee2e40f665ba64abfb5a07aa5da296b512c60743512",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/recovery-01/complete/current-tables/left-bulk-0010.pickle": "9add1efd03da0726b3ded269e8d41590755d97760c5812e70d14b319130054e9",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/recovery-01/complete/current-tables/left-slab-1000.pickle": "02385093a30689b67bbd1cca94b3f2e86589716e0d0393eb46b8d06454879dd6",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/recovery-01/complete/current-tables/left-slab-0001.pickle": "fa0d293e733eb95df0a9946af0fce3b7ee674c6841260baf6f50bd89df2077b2",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/recovery-01/complete/current-tables/left-bulk-1000.pickle": "02385093a30689b67bbd1cca94b3f2e86589716e0d0393eb46b8d06454879dd6",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/recovery-01/complete/current-tables/left-slab-1001.pickle": "6c15e6035829407914ba2dd68c93fd4c83a8597ed16fd09c7cde3247e9c71063",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/recovery-01/complete/current-tables/left-bulk-0101.pickle": "e8cd270c94effc86ac3fcbb1ae5c59822cc11d03529a95c5df39f7319075c321",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/recovery-01/complete/current-tables/left-slab-0100.pickle": "46575b68e15181795fd05e07dc84917bb9644cb75f56b32662504eafb27cab07",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/recovery-01/complete/current-tables/right-bulk-0101.pickle": "e8cd270c94effc86ac3fcbb1ae5c59822cc11d03529a95c5df39f7319075c321",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/recovery-01/complete/current-tables/right-slab-0001.pickle": "fa0d293e733eb95df0a9946af0fce3b7ee674c6841260baf6f50bd89df2077b2",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/recovery-01/complete/current-tables/right-slab-1000.pickle": "e20e76509af23bc85b6ecc7277993746a729e6b7efd703507f46dd173babe239",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/recovery-01/complete/current-tables/left-slab-0020.pickle": "f7ce820fb081b9253d0003644d8f598d6d61cf45e4dcefd139656f34c5eccbe2",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/recovery-01/complete/current-tables/left-slab-0101.pickle": "e8cd270c94effc86ac3fcbb1ae5c59822cc11d03529a95c5df39f7319075c321",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/recovery-01/complete/current-tables/right-bulk-0011.pickle": "812df2ddf59e6def885df88ad976a0388086a79ef1e03184ec145096f1091393",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/recovery-01/complete/inputs.json": "6be4e35607af3c107931c9e0b119452e30fce3fd0ed84b53956338c11f7bc1f8",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/recovery-01/complete/full.out": "8cc7c8a2d45b75b65465c32dfcaa685be87269712d87cba9bd452c6b310cdd5a",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/finish-01/complete/operand-validation.json": "457cf9f5bb8f55bbaa7ecca004a91c2645bf7c153968275da39a6d778faf4212",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/finish-01/complete/inputs.json": "659db6a45681abd2423e84f8296fe06ceceef89550bcc812fcaff97a3cab75cb",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/finish-01/complete/source/_measurements/S11c_d_continuum_boundary_finish.py": "29db823e60c8c18f2d876ac6e8d253f71b28ab8e4dbe8f5f0da2b7258e721939"
+    },
+    "ends": {
+      "LEFT": {
+        "candidates": 18,
+        "clusters": 5,
+        "directions": 7,
+        "residualMaxima": {
+          "invariantPair": 2.673771110915334e-15,
+          "inverse": 4.47545209131181e-16,
+          "boundary": 1.0488752702216785e-15,
+          "currentHermitian": 1.0007415106216804e-16,
+          "referenceSignedCurrent": 1.1102230246251575e-16,
+          "finitePencilReplay": 4.021398830883446e-15
+        },
+        "etaMutationMaximum": 0.0,
+        "finiteTraceTruncationMaximum": 1.831026719408895e-15,
+        "traceCondition": 5.93875367189009
+      },
+      "RIGHT": {
+        "candidates": 18,
+        "clusters": 5,
+        "directions": 7,
+        "residualMaxima": {
+          "invariantPair": 3.853929388444262e-15,
+          "inverse": 8.994905055847326e-16,
+          "boundary": 1.412064909445121e-15,
+          "currentHermitian": 9.0829633311168e-14,
+          "referenceSignedCurrent": 1.1102230246251575e-16,
+          "finitePencilReplay": 3.66205343881779e-15
+        },
+        "etaMutationMaximum": 13.660838062862947,
+        "finiteTraceTruncationMaximum": 0.005665442705741818,
+        "traceCondition": 5.9387536718900895
+      }
+    },
+    "tagCount": 674,
+    "writeKeys": 335,
+    "metadataPaths": 5291,
+    "packetSha256BeforeEmission": "8e3e53c3b7b06e3e81f961f013b77b4b87dfede081db75b4de458503b062eed0",
+    "packetSha256AfterEmission": "8e3e53c3b7b06e3e81f961f013b77b4b87dfede081db75b4de458503b062eed0",
+    "artifacts": {
+      "continuum-boundary.pickle": {
+        "bytes": 427369,
+        "sha256": "8e3e53c3b7b06e3e81f961f013b77b4b87dfede081db75b4de458503b062eed0"
+      },
+      "right-mode-0.pickle": {
+        "bytes": 6647,
+        "sha256": "04ca365978781449eab5bbe3c66fa11e1ec59d7a02e2ea89fcdc6c421f60ebf9"
+      },
+      "left-mode-5.pickle": {
+        "bytes": 6650,
+        "sha256": "5262868d1c120b99ec4100eb3f25d84165982d2d0c8037b831f3646295132d4b"
+      },
+      "left-pencil.pickle": {
+        "bytes": 9936,
+        "sha256": "66bd1e5ccbf08fb7a3c11df461232783850062090fb4500d3a7c0f6ec6253174"
+      },
+      "left-mode-17.pickle": {
+        "bytes": 10751,
+        "sha256": "23feab53b8b61d9c13c3d15b2c2fec8602eab0d73c72adaf8090487b9530606c"
+      },
+      "right-boundary.pickle": {
+        "bytes": 229136,
+        "sha256": "a4c69e869624bdc51265a2cee310cf03b9491e4bf742a2a328828c1670c07b40"
+      },
+      "left-mode-7.pickle": {
+        "bytes": 6650,
+        "sha256": "4f3618881032fad507a17460cf49ec025abfcc0ce327d11642ba32336b65b6ee"
+      },
+      "right-mode-6.pickle": {
+        "bytes": 6647,
+        "sha256": "debecb805a6209c41b7c749353fcfd997410f35c3672feca8edfcaccd576bfb1"
+      },
+      "full.out": {
+        "bytes": 423280,
+        "sha256": "70aa19a64b67bedc70533f7778a94cd08ca131e34fc3dcaa5a9c7ab655c1a2f0"
+      },
+      "left-boundary.pickle": {
+        "bytes": 163375,
+        "sha256": "a4173390f35b2e3058e16213b413267cc994d2d8d4d5fd81ba4884f0613527d8"
+      },
+      "right-pencil.pickle": {
+        "bytes": 13576,
+        "sha256": "170aa9cfa44630fe7900c33c2259960dff1c964cac50b5c931a0733cffa457a5"
+      },
+      "right-mode-4.pickle": {
+        "bytes": 6647,
+        "sha256": "4ded8c01a2aa21fb990eb2e6cafed8833093e770a38b8724ffbd135d080049e9"
+      },
+      "right-mode-17.pickle": {
+        "bytes": 10751,
+        "sha256": "800e186f0911f98034ae6b2074ce4c390ce73193690d294f712797d64c1a2b30"
+      },
+      "right-mode-16.pickle": {
+        "bytes": 10748,
+        "sha256": "1a8e79900fd71f9c810f2783606e1fed2929883c1363a8e4c127797d9c3d8833"
+      },
+      "left-mode-1.pickle": {
+        "bytes": 6650,
+        "sha256": "7086447e567b7842218fa41d0209f7fdc3ee32c91fb23e9f2ee581a20beaf3bc"
+      },
+      "left-mode-16.pickle": {
+        "bytes": 10748,
+        "sha256": "7f5eb226f0e751c1f08be8e125e261c1c72ec7aa7bb2e592d644fb10be8e0a21"
+      }
+    },
+    "wallSeconds": 13.35233758483082,
+    "peakRssKiB": 142608,
+    "scope": "Complete finite modal-boundary and current coefficients in reference-anchored channel coordinates; no continuum solve yet."
+  },
+  "sourceFiles": {
+    "_measurements/S11c_d_end_normalization_reference_thickness_repair_checkpoint.json": "5c9456ddacd573865d00a0527b1b73b1060c613ccfe50ed89e41613fa3d9658f",
+    "_measurements/S11c_d_end_pairing_reference_thickness_repair_checkpoint.json": "1ea765d293138847a23ff7768fdba770a031659f9c978f582aff27391bf11232",
+    "_measurements/S11c_d_end_normalization_left_thickness_repair_checkpoint.json": "5871a84b7584eb35de8b8a5c450e8d0adadb41340abcbfe028ac16b360befcdb",
+    "_measurements/S11c_d_end_pairing_left_thickness_repair_checkpoint.json": "205e13614c41c504faae85cad9ee104ab51d1f1a5830b5b9e802e5fe3bc1ac9d",
+    "_measurements/S11c_d_end_normalization_right_thickness_repair_checkpoint.json": "7267d068580ecade68ce95abd599c1f5c59a95b4d7f359f9518452218c9f9a05",
+    "_measurements/S11c_d_end_pairing_right_thickness_repair_checkpoint.json": "e8e0d0771bd4365055351bdc041f0a45020f5252bdb5ff5793592d1c9c388605",
+    "_measurements/S11c_d_continuum_boundary.py": "ed3a6539d3151c52d25f12308b121897baf3bd6a5a626a598ab728988ab933a0",
+    "_measurements/S11c_d_continuum_boundary_plan.md": "08dd0c80757d2a2203b237e47957fd4e3bc1b970abfb2dad4cb3b07cf1a3c27f",
+    "scripts/S11c_d_mixing_scattering_sympy_audit.py": "5bf77729682960bb59f10c672a5fe3f67a98b0a9533da7c6189a37183596050f",
+    "_measurements/S11c_d_finite_scattering.py": "f187d9426be8069342a363a0466c175d32a8cb46101e32a14c433ccb9118e469",
+    "_measurements/S11c_d_continuum_grades.py": "0443c3adbeaf813ad66c60af0a50c96e9a841277d51f9c23bf1c601d2fdf329d",
+    "_measurements/S11c_d_continuum_matrices.py": "33a0e5a2fa136a55875541e15bc410159c94f56f25adc4a02589d0c704223987",
+    "directives/S11c_d_EXPLORATORY_ACCEPTANCE.md": "5c1e560a78d40739af8b1318c0487e20bf2b816c41109889e12004266c72840c",
+    "_measurements/S11c_d_continuum_grade_checkpoint.json": "3987ff4abb782050fffc767065ed9b3126da49215aa0df41320abef7fdec4692",
+    "_measurements/S11c_d_continuum_matrix_checkpoint.json": "4fe0e0214a5f51a6ab18c9266aa369dde4cf2b60eb51beabf3257754f91d942d",
+    "_measurements/S11c_d_variable_profile_development_input.json": "660b2b0b54494dce964c7f5fbd722a76a7e894d8ed92b18b5eb6290c3c10f1d5",
+    "directives/S11c_d_SHARED_PHYSICS.md": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5",
+    "directives/S11c_d_NONLINEAR_POLE_CONTRACT.md": "2b6018faf0d5ca772bf9c980174d8ebe7545127a3bf43ba01d1b3c0b6a5be423",
+    "scripts/S11c_b_exports.py": "3c6555f90a85382a5e96f3f961f0e36a4875d9259fe1be947fa8e683669b7084",
+    "scripts/S11c_c1_exports.py": "a5353b86dc526fd1b56734fdbdf7dc7f42387a3195ab4de84e8994f751871cdc",
+    "scripts/S11c_c2_exports.py": "2ba5ed487b84ecb98290df6f1650fa6210fe2784cfa02a0f3cff96cd718411cd",
+    "directives/S11b_SHARED_PHYSICS.md": "9ea9e388e9d6421a841eaf851d12e1793527bba9a24aeeface3bfac2f4b40078",
+    "scripts/ledger_fold.py": "97da78c6631c09e5575dd14511760506f1ac08771cf07948978004e92f0b2333",
+    "_measurements/S11c_d_matching_channels_checkpoint.json": "c4ad9b9051f9c3fadb076593dd35ec12d1779fad6d1558c691c3b735fe4d3eeb",
+    "_measurements/S11c_d_continuum_boundary_recover.py": "156252a37a9aaba207fa06ce23ca34cc7286601c8f76cdfe1a63a9e40a2f1839",
+    "_measurements/S11c_d_continuum_boundary_recovery_plan.md": "4d91587d5a202a2d9dbdedb8f9b6340cded59a08518df173ac012e49f51db2ea",
+    "_measurements/S11c_d_continuum_boundary_finish.py": "988e3248d634dd3d6a48279d198c682a9637082ddcd735207d5506c01b0af052",
+    "_measurements/S11c_d_continuum_boundary_finish_plan.md": "674e363bf4427f9c367cdc309bb336a584e332e83cb1ee7143e8c831876063da"
+  },
+  "artifacts": {
+    "continuum-boundary.pickle": {
+      "bytes": 427369,
+      "sha256": "8e3e53c3b7b06e3e81f961f013b77b4b87dfede081db75b4de458503b062eed0"
+    },
+    "right-mode-0.pickle": {
+      "bytes": 6647,
+      "sha256": "04ca365978781449eab5bbe3c66fa11e1ec59d7a02e2ea89fcdc6c421f60ebf9"
+    },
+    "left-mode-5.pickle": {
+      "bytes": 6650,
+      "sha256": "5262868d1c120b99ec4100eb3f25d84165982d2d0c8037b831f3646295132d4b"
+    },
+    "left-pencil.pickle": {
+      "bytes": 9936,
+      "sha256": "66bd1e5ccbf08fb7a3c11df461232783850062090fb4500d3a7c0f6ec6253174"
+    },
+    "left-mode-17.pickle": {
+      "bytes": 10751,
+      "sha256": "23feab53b8b61d9c13c3d15b2c2fec8602eab0d73c72adaf8090487b9530606c"
+    },
+    "right-boundary.pickle": {
+      "bytes": 229136,
+      "sha256": "a4c69e869624bdc51265a2cee310cf03b9491e4bf742a2a328828c1670c07b40"
+    },
+    "left-mode-7.pickle": {
+      "bytes": 6650,
+      "sha256": "4f3618881032fad507a17460cf49ec025abfcc0ce327d11642ba32336b65b6ee"
+    },
+    "right-mode-6.pickle": {
+      "bytes": 6647,
+      "sha256": "debecb805a6209c41b7c749353fcfd997410f35c3672feca8edfcaccd576bfb1"
+    },
+    "full.out": {
+      "bytes": 423280,
+      "sha256": "70aa19a64b67bedc70533f7778a94cd08ca131e34fc3dcaa5a9c7ab655c1a2f0"
+    },
+    "left-boundary.pickle": {
+      "bytes": 163375,
+      "sha256": "a4173390f35b2e3058e16213b413267cc994d2d8d4d5fd81ba4884f0613527d8"
+    },
+    "right-pencil.pickle": {
+      "bytes": 13576,
+      "sha256": "170aa9cfa44630fe7900c33c2259960dff1c964cac50b5c931a0733cffa457a5"
+    },
+    "right-mode-4.pickle": {
+      "bytes": 6647,
+      "sha256": "4ded8c01a2aa21fb990eb2e6cafed8833093e770a38b8724ffbd135d080049e9"
+    },
+    "right-mode-17.pickle": {
+      "bytes": 10751,
+      "sha256": "800e186f0911f98034ae6b2074ce4c390ce73193690d294f712797d64c1a2b30"
+    },
+    "right-mode-16.pickle": {
+      "bytes": 10748,
+      "sha256": "1a8e79900fd71f9c810f2783606e1fed2929883c1363a8e4c127797d9c3d8833"
+    },
+    "left-mode-1.pickle": {
+      "bytes": 6650,
+      "sha256": "7086447e567b7842218fa41d0209f7fdc3ee32c91fb23e9f2ee581a20beaf3bc"
+    },
+    "left-mode-16.pickle": {
+      "bytes": 10748,
+      "sha256": "7f5eb226f0e751c1f08be8e125e261c1c72ec7aa7bb2e592d644fb10be8e0a21"
+    }
+  },
+  "recoverySha256": "f88c7449b7543b89ec72bc816e0fcdb1f7b718f89b235b152c601e4ab7939ccb",
+  "recovery": {
+    "sourceDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/recovery-01/complete",
+    "emissionRepairJoin": {
+      "wholeCheckerReverseAstJoin": true,
+      "initialization": "(modes.eta, modes.sigma) = (eta, sigma)",
+      "booleanMetadataAdapter": "def structural_flags(name, value):\n    body = engine.cas(value)\n    engine.emit(name, body)\n    metadata_body = body.xreplace({sp.true: sp.S.One, sp.false: sp.S.Zero})\n    zeros = {p: (0, 0, 0) for (p, _) in engine.leaves(metadata_body)}\n    engine.emit('METADATA_' + name, engine.PHYSICAL_METADATA.record(metadata_body, zeros))",
+      "censusCalls": 1,
+      "originalSha256": "0f24ad483b21ec79b87c7631b8a52324c66d38f1970ff8e8a8bfc63fc659affe",
+      "currentSha256": "ed3a6539d3151c52d25f12308b121897baf3bd6a5a626a598ab728988ab933a0"
+    },
+    "originalPrefixTags": 72,
+    "operandValidation": {
+      "LEFT": {
+        "clusters": 5,
+        "currentPairsByPart": 50,
+        "currentReplayMaximum": 0.0,
+        "residualMaxima": {
+          "invariantPair": 2.673771110915334e-15,
+          "inverse": 4.47545209131181e-16,
+          "boundary": 1.0488752702216785e-15,
+          "currentHermitian": 1.0007415106216804e-16,
+          "referenceSignedCurrent": 1.1102230246251575e-16,
+          "finitePencilReplay": 4.021398830883446e-15
+        }
+      },
+      "RIGHT": {
+        "clusters": 5,
+        "currentPairsByPart": 50,
+        "currentReplayMaximum": 0.0,
+        "residualMaxima": {
+          "invariantPair": 3.853929388444262e-15,
+          "inverse": 8.994905055847326e-16,
+          "boundary": 1.412064909445121e-15,
+          "currentHermitian": 9.0829633311168e-14,
+          "referenceSignedCurrent": 1.1102230246251575e-16,
+          "finitePencilReplay": 3.66205343881779e-15
+        }
+      }
+    },
+    "copiedArtifacts": {
+      "continuum-boundary.pickle": {
+        "bytes": 427369,
+        "sha256": "8e3e53c3b7b06e3e81f961f013b77b4b87dfede081db75b4de458503b062eed0"
+      },
+      "right-mode-0.pickle": {
+        "bytes": 6647,
+        "sha256": "04ca365978781449eab5bbe3c66fa11e1ec59d7a02e2ea89fcdc6c421f60ebf9"
+      },
+      "left-mode-5.pickle": {
+        "bytes": 6650,
+        "sha256": "5262868d1c120b99ec4100eb3f25d84165982d2d0c8037b831f3646295132d4b"
+      },
+      "left-pencil.pickle": {
+        "bytes": 9936,
+        "sha256": "66bd1e5ccbf08fb7a3c11df461232783850062090fb4500d3a7c0f6ec6253174"
+      },
+      "left-mode-17.pickle": {
+        "bytes": 10751,
+        "sha256": "23feab53b8b61d9c13c3d15b2c2fec8602eab0d73c72adaf8090487b9530606c"
+      },
+      "right-boundary.pickle": {
+        "bytes": 229136,
+        "sha256": "a4c69e869624bdc51265a2cee310cf03b9491e4bf742a2a328828c1670c07b40"
+      },
+      "left-mode-7.pickle": {
+        "bytes": 6650,
+        "sha256": "4f3618881032fad507a17460cf49ec025abfcc0ce327d11642ba32336b65b6ee"
+      },
+      "right-mode-6.pickle": {
+        "bytes": 6647,
+        "sha256": "debecb805a6209c41b7c749353fcfd997410f35c3672feca8edfcaccd576bfb1"
+      },
+      "left-boundary.pickle": {
+        "bytes": 163375,
+        "sha256": "a4173390f35b2e3058e16213b413267cc994d2d8d4d5fd81ba4884f0613527d8"
+      },
+      "right-pencil.pickle": {
+        "bytes": 13576,
+        "sha256": "170aa9cfa44630fe7900c33c2259960dff1c964cac50b5c931a0733cffa457a5"
+      },
+      "right-mode-4.pickle": {
+        "bytes": 6647,
+        "sha256": "4ded8c01a2aa21fb990eb2e6cafed8833093e770a38b8724ffbd135d080049e9"
+      },
+      "right-mode-17.pickle": {
+        "bytes": 10751,
+        "sha256": "800e186f0911f98034ae6b2074ce4c390ce73193690d294f712797d64c1a2b30"
+      },
+      "right-mode-16.pickle": {
+        "bytes": 10748,
+        "sha256": "1a8e79900fd71f9c810f2783606e1fed2929883c1363a8e4c127797d9c3d8833"
+      },
+      "left-mode-1.pickle": {
+        "bytes": 6650,
+        "sha256": "7086447e567b7842218fa41d0209f7fdc3ee32c91fb23e9f2ee581a20beaf3bc"
+      },
+      "left-mode-16.pickle": {
+        "bytes": 10748,
+        "sha256": "7f5eb226f0e751c1f08be8e125e261c1c72ec7aa7bb2e592d644fb10be8e0a21"
+      },
+      "current-tables/right-slab-0110.pickle": {
+        "bytes": 241,
+        "sha256": "dd46fca65d52baa0b4f96f060aed5196157c1b732a23ef03dbcdec5a9af382ed"
+      },
+      "current-tables/left-bulk-0020.pickle": {
+        "bytes": 19477,
+        "sha256": "77f57355854e5328349e6b70eeb5575fb38e5b3923f743a3ed727c912d30056a"
+      },
+      "current-tables/left-bulk-0100.pickle": {
+        "bytes": 241,
+        "sha256": "46575b68e15181795fd05e07dc84917bb9644cb75f56b32662504eafb27cab07"
+      },
+      "current-tables/right-slab-0011.pickle": {
+        "bytes": 241,
+        "sha256": "2c175bd5a7306e689af212db8f091b6b15b0bab79a0af3e6cbcf3355287b867f"
+      },
+      "current-tables/right-bulk-0001.pickle": {
+        "bytes": 7802,
+        "sha256": "61930dc3799f8647d673beca5bbbde245c547def47022eba6c978458f9e77210"
+      },
+      "current-tables/left-bulk-0000.pickle": {
+        "bytes": 3029,
+        "sha256": "df3768e19b8923c431632863bbe03d6f0244f627884ed799b65975a3dad20fb6"
+      },
+      "current-tables/left-bulk-0011.pickle": {
+        "bytes": 19879,
+        "sha256": "0556d2ac86f2de8b33fe62d00cc6054331a5a6629f80bbdef612992cf69360e2"
+      },
+      "current-tables/left-bulk-0001.pickle": {
+        "bytes": 7802,
+        "sha256": "61930dc3799f8647d673beca5bbbde245c547def47022eba6c978458f9e77210"
+      },
+      "current-tables/right-bulk-1000.pickle": {
+        "bytes": 6662,
+        "sha256": "e2129cf165cc26aa94e8d8db946d20277ed441d513a7f1559e3f6761f7c075c4"
+      },
+      "current-tables/left-bulk-0110.pickle": {
+        "bytes": 241,
+        "sha256": "dd46fca65d52baa0b4f96f060aed5196157c1b732a23ef03dbcdec5a9af382ed"
+      },
+      "current-tables/right-bulk-0002.pickle": {
+        "bytes": 17711,
+        "sha256": "4e9691ac7e0ddd693b33d44d990bb86f9d88ebe3f529197ffac7966fe096d8f7"
+      },
+      "current-tables/right-bulk-1100.pickle": {
+        "bytes": 241,
+        "sha256": "0166e8866bab321370e12e827f5f924eeeb8fdac30d5518074a2f1d00fb1b1ed"
+      },
+      "current-tables/right-slab-1010.pickle": {
+        "bytes": 406,
+        "sha256": "6c8e561ebf22ab10e6db93f3d5a0c418561de6a837a3accd29d47df658003760"
+      },
+      "current-tables/right-bulk-1001.pickle": {
+        "bytes": 16565,
+        "sha256": "8b71622bf7865b21a2b0201d26a828f9f68bf43f21511b5d61a15e96ac18afc8"
+      },
+      "current-tables/left-slab-0011.pickle": {
+        "bytes": 241,
+        "sha256": "2c175bd5a7306e689af212db8f091b6b15b0bab79a0af3e6cbcf3355287b867f"
+      },
+      "current-tables/left-bulk-1010.pickle": {
+        "bytes": 241,
+        "sha256": "69797125fa1edc003c4801161a0806f7d7c94af29f04b612f83f453ea5d4b8ee"
+      },
+      "current-tables/right-bulk-0020.pickle": {
+        "bytes": 17937,
+        "sha256": "56cbece6745fa63deae36f2cf7d6fa25ba910cf184bda30ca77c3fef362f922b"
+      },
+      "current-tables/left-bulk-1100.pickle": {
+        "bytes": 241,
+        "sha256": "0166e8866bab321370e12e827f5f924eeeb8fdac30d5518074a2f1d00fb1b1ed"
+      },
+      "current-tables/left-slab-1100.pickle": {
+        "bytes": 241,
+        "sha256": "0166e8866bab321370e12e827f5f924eeeb8fdac30d5518074a2f1d00fb1b1ed"
+      },
+      "current-tables/right-bulk-0110.pickle": {
+        "bytes": 241,
+        "sha256": "dd46fca65d52baa0b4f96f060aed5196157c1b732a23ef03dbcdec5a9af382ed"
+      },
+      "current-tables/left-slab-1010.pickle": {
+        "bytes": 241,
+        "sha256": "69797125fa1edc003c4801161a0806f7d7c94af29f04b612f83f453ea5d4b8ee"
+      },
+      "current-tables/right-bulk-0100.pickle": {
+        "bytes": 241,
+        "sha256": "46575b68e15181795fd05e07dc84917bb9644cb75f56b32662504eafb27cab07"
+      },
+      "current-tables/left-slab-0010.pickle": {
+        "bytes": 451,
+        "sha256": "d2f76979904e49c1b3488239043b1a79eab20f6580d9b7ef90e1f0c71f6c9218"
+      },
+      "current-tables/left-slab-0110.pickle": {
+        "bytes": 241,
+        "sha256": "dd46fca65d52baa0b4f96f060aed5196157c1b732a23ef03dbcdec5a9af382ed"
+      },
+      "current-tables/left-slab-0000.pickle": {
+        "bytes": 908,
+        "sha256": "601a33ee1d89a6f367f3626db7be7e15a8ef941bda9fc2ff9bbcc5acab38f75b"
+      },
+      "current-tables/right-bulk-1010.pickle": {
+        "bytes": 16980,
+        "sha256": "ef8221ed3dbdf78fbdb5ac04930fdf4fae5cb7431186ce934ecebc9e85d5a502"
+      },
+      "current-tables/right-bulk-0000.pickle": {
+        "bytes": 3029,
+        "sha256": "df3768e19b8923c431632863bbe03d6f0244f627884ed799b65975a3dad20fb6"
+      },
+      "current-tables/right-slab-0100.pickle": {
+        "bytes": 241,
+        "sha256": "46575b68e15181795fd05e07dc84917bb9644cb75f56b32662504eafb27cab07"
+      },
+      "current-tables/right-slab-0010.pickle": {
+        "bytes": 451,
+        "sha256": "d2f76979904e49c1b3488239043b1a79eab20f6580d9b7ef90e1f0c71f6c9218"
+      },
+      "current-tables/left-slab-0002.pickle": {
+        "bytes": 330,
+        "sha256": "e88367b772a85e00bce78ee2e40f665ba64abfb5a07aa5da296b512c60743512"
+      },
+      "current-tables/left-bulk-0002.pickle": {
+        "bytes": 19277,
+        "sha256": "5070667061deb818e5800b88f29ba143a1741870fb96949b6bdf072680ff1bd2"
+      },
+      "current-tables/right-slab-1100.pickle": {
+        "bytes": 241,
+        "sha256": "0166e8866bab321370e12e827f5f924eeeb8fdac30d5518074a2f1d00fb1b1ed"
+      },
+      "current-tables/right-slab-0101.pickle": {
+        "bytes": 241,
+        "sha256": "e8cd270c94effc86ac3fcbb1ae5c59822cc11d03529a95c5df39f7319075c321"
+      },
+      "current-tables/right-bulk-0010.pickle": {
+        "bytes": 7827,
+        "sha256": "9add1efd03da0726b3ded269e8d41590755d97760c5812e70d14b319130054e9"
+      },
+      "current-tables/right-slab-0020.pickle": {
+        "bytes": 336,
+        "sha256": "f7ce820fb081b9253d0003644d8f598d6d61cf45e4dcefd139656f34c5eccbe2"
+      },
+      "current-tables/right-slab-1001.pickle": {
+        "bytes": 410,
+        "sha256": "2137033845a4b068a753c3608fdfd7aa7fc7c210ca295e1b7c7a9ef7bd55dada"
+      },
+      "current-tables/right-slab-0000.pickle": {
+        "bytes": 908,
+        "sha256": "601a33ee1d89a6f367f3626db7be7e15a8ef941bda9fc2ff9bbcc5acab38f75b"
+      },
+      "current-tables/left-bulk-1001.pickle": {
+        "bytes": 241,
+        "sha256": "6c15e6035829407914ba2dd68c93fd4c83a8597ed16fd09c7cde3247e9c71063"
+      },
+      "current-tables/right-slab-0002.pickle": {
+        "bytes": 330,
+        "sha256": "e88367b772a85e00bce78ee2e40f665ba64abfb5a07aa5da296b512c60743512"
+      },
+      "current-tables/left-bulk-0010.pickle": {
+        "bytes": 7827,
+        "sha256": "9add1efd03da0726b3ded269e8d41590755d97760c5812e70d14b319130054e9"
+      },
+      "current-tables/left-slab-1000.pickle": {
+        "bytes": 241,
+        "sha256": "02385093a30689b67bbd1cca94b3f2e86589716e0d0393eb46b8d06454879dd6"
+      },
+      "current-tables/left-slab-0001.pickle": {
+        "bytes": 446,
+        "sha256": "fa0d293e733eb95df0a9946af0fce3b7ee674c6841260baf6f50bd89df2077b2"
+      },
+      "current-tables/left-bulk-1000.pickle": {
+        "bytes": 241,
+        "sha256": "02385093a30689b67bbd1cca94b3f2e86589716e0d0393eb46b8d06454879dd6"
+      },
+      "current-tables/left-slab-1001.pickle": {
+        "bytes": 241,
+        "sha256": "6c15e6035829407914ba2dd68c93fd4c83a8597ed16fd09c7cde3247e9c71063"
+      },
+      "current-tables/left-bulk-0101.pickle": {
+        "bytes": 241,
+        "sha256": "e8cd270c94effc86ac3fcbb1ae5c59822cc11d03529a95c5df39f7319075c321"
+      },
+      "current-tables/left-slab-0100.pickle": {
+        "bytes": 241,
+        "sha256": "46575b68e15181795fd05e07dc84917bb9644cb75f56b32662504eafb27cab07"
+      },
+      "current-tables/right-bulk-0101.pickle": {
+        "bytes": 241,
+        "sha256": "e8cd270c94effc86ac3fcbb1ae5c59822cc11d03529a95c5df39f7319075c321"
+      },
+      "current-tables/right-slab-0001.pickle": {
+        "bytes": 446,
+        "sha256": "fa0d293e733eb95df0a9946af0fce3b7ee674c6841260baf6f50bd89df2077b2"
+      },
+      "current-tables/right-slab-1000.pickle": {
+        "bytes": 692,
+        "sha256": "e20e76509af23bc85b6ecc7277993746a729e6b7efd703507f46dd173babe239"
+      },
+      "current-tables/left-slab-0020.pickle": {
+        "bytes": 336,
+        "sha256": "f7ce820fb081b9253d0003644d8f598d6d61cf45e4dcefd139656f34c5eccbe2"
+      },
+      "current-tables/left-slab-0101.pickle": {
+        "bytes": 241,
+        "sha256": "e8cd270c94effc86ac3fcbb1ae5c59822cc11d03529a95c5df39f7319075c321"
+      },
+      "current-tables/right-bulk-0011.pickle": {
+        "bytes": 19972,
+        "sha256": "812df2ddf59e6def885df88ad976a0388086a79ef1e03184ec145096f1091393"
+      }
+    },
+    "constructionPacketSha256": "8e3e53c3b7b06e3e81f961f013b77b4b87dfede081db75b4de458503b062eed0",
+    "scope": "Saved-operand validation and emission only; no mode solves or symbolic derivative construction."
+  },
+  "phaseChecks": {
+    "LEFTincomingOriginPhase": {
+      "residual": 0.0,
+      "signMutation": 0.014962732497906861
+    },
+    "LEFToutgoingOriginPhase": {
+      "residual": 0.0,
+      "signMutation": 0.014962732497906861
+    },
+    "RIGHTincomingOriginPhase": {
+      "residual": 0.0,
+      "signMutation": 54.33145352478295
+    },
+    "RIGHToutgoingOriginPhase": {
+      "residual": 0.0,
+      "signMutation": 54.331453524782965
+    }
+  },
+  "verification": {
+    "originalPrefixTags": 72,
+    "currentDerivativeTables": 52,
+    "completeModeClusters": 10,
+    "basisDirections": 14,
+    "candidateRecords": 36,
+    "currentClusterPartPairs": 100,
+    "tags": 674,
+    "metadataPaths": 5291
+  },
+  "validator": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/validate-final.py",
+    "sha256": "a1b01266ef9b3fbf82ebf5677997fad794f69201061bdb18a2b0271938a5c622"
+  },
+  "scope": "Complete finite modal-boundary and current coefficients in reference-anchored channel coordinates; no continuum solve yet.",
+  "publication": {
+    "path": "scripts/out/S11c_d_continuum_boundary.out",
+    "bytes": 423280,
+    "sha256": "70aa19a64b67bedc70533f7778a94cd08ca131e34fc3dcaa5a9c7ab655c1a2f0",
+    "annexKey": "MD5E-s423280--a2492003f79ca709a8171732c7835dbf.out",
+    "symlink": "../../../../.git/annex/objects/pk/8F/MD5E-s423280--a2492003f79ca709a8171732c7835dbf.out/MD5E-s423280--a2492003f79ca709a8171732c7835dbf.out",
+    "publicationCommit": "270d0661c23c433958629d2f0ced69dae5369d1c"
+  }
+}

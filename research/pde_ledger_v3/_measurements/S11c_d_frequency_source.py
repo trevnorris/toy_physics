@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Keep the actual reduced frequency dependence and end threshold operands."""
-import argparse,contextlib,copy,json,resource,shutil,signal,time
+import argparse,contextlib,copy,hashlib,json,resource,shutil,signal,time
 from pathlib import Path
 from types import SimpleNamespace
 import numpy as np
@@ -55,9 +55,67 @@ def census(expression,frequency):
             'integralLimits':tuple(sorted({tuple(v.limits) for v in expression.atoms(sp.Integral)},key=sp.default_sort_key))}
 
 
-def sources(base,data):
+def binding_comparison(base,left,right,unit,*,restored=False):
+    """Certify actual pairs on their original domains, retaining live trees."""
+    base.mkdir(parents=True,exist_ok=False)
+    raw=left-right;forms=tuple(sp.srepr(v) for v in (left,right,raw))
+    operands={'left':left,'right':right,'rawResidual':raw,'unit':unit,
+      'representationStrings':forms,'representationSha256':tuple(hashlib.sha256(v.encode()).hexdigest() for v in forms),
+      'exactEqualLive':left==right,'restoredPair':restored,
+      'originalLiveRepresentationAvailable':not restored}
+    f.atomic_pickle(base/'operands.pickle',operands)
+    certificate=None;proofs=();normalized=raw;mutation=None
+    if raw!=0:
+        certificate=engine.BoundedSourceFourierAssembly.reconstruction_certificate(left,right,shared=False)
+        f.atomic_pickle(base/'certificate.pickle',certificate)
+        normalized=certificate['RESIDUAL']
+        proofs=tuple(certificate['REPLAY_RESIDUALS'])+tuple(v[1] for v in certificate['PHASE_SPLITS'].values())+tuple(v[2] for v in certificate['RADICAL_POWERS'].values())
+        # A unit-sized coefficient in the inherited reference frame also tests
+        # an algebraically zero right operand without a zero-times-two control.
+        mutation=engine.BoundedSourceFourierAssembly.reconstruction_certificate(left+1,right,shared=False)
+        f.atomic_pickle(base/'mutation.pickle',mutation)
+    result={'operands':operands,'rawResidual':raw,'normalizedResidual':normalized,'proofResiduals':proofs,
+      'certificate':certificate,'mutation':mutation,'scope':'Exact identity on retained operand domains; no extension through denominator zeros.'}
+    f.atomic_pickle(base/'comparison.pickle',result)
+    f.require(normalized==0 and all(v==0 for v in proofs),'exact frequency binding certificate')
+    f.require(mutation is None or mutation['RESIDUAL']!=0,'actual binding coefficient mutation')
+    return result
+
+
+def resume_sources(base,data,previous):
+    """Join and copy completed operands; no old binding/derivative recompute."""
+    previous=previous.resolve();previous.relative_to(f.STORE)
+    repair_path=f.M/'S11c_d_frequency_source_binding_repair.json';repair=json.loads(repair_path.read_text())
+    f.require(f.digest(Path(__file__))==repair['repairedScriptSha256'],'tested frequency binding instrument')
+    old=json.loads((previous/'inputs.json').read_text());own=str(Path(__file__).resolve().relative_to(f.ROOT))
+    f.require(old['sourceFiles'][own]==repair['originalScriptSha256'],'original failed constructor source')
+    f.require(set(old['sourceFiles'])==set(data['pins']),'exact consumed source inventory')
+    for name,value in old['sourceFiles'].items():
+        f.require(f.digest(previous/'source'/name)==value,'original frozen source')
+        if name!=own:f.require(data['pins'][name]==value,'unchanged consumed helper')
+    f.require(old['inputPackets']==data['operands'] and old['input']==data['manifest']['input'] and old['settings']==json.loads(json.dumps(data['manifest']['settings'])),'unchanged inputs and finite settings')
+    inventory=json.loads((previous/'record-inventory.json').read_text())
+    f.require(inventory==repair['originalRecordInventory'],'record inventory at failed guard')
+    reuse=base/'reused-original';reuse.mkdir();records={};copies={}
+    paths={'baseline-binding.pickle':repair['baselineBindingSha256'],**{v['path']:v['sha256'] for v in inventory.values()}}
+    for name,sha in paths.items():
+        src=previous/name;dest=reuse/name;dest.parent.mkdir(parents=True,exist_ok=True)
+        f.require(f.digest(src)==sha,'original completed packet hash');shutil.copyfile(src,dest);f.require(f.digest(dest)==sha,'byte-identical completed packet copy');copies[name]=sha
+        data['operands'][str(src)]=sha
+    for key,value in inventory.items():
+        record=f.unpickle(reuse/value['path']);original=data['packet']['records'][key]
+        f.require(record['original']==original['record']['ORIGINAL'] and record['address']==tuple(original['address']) and record['unit']==original['record']['UNIT'],'saved original source/field/unit join')
+        records[key]=record
+    shutil.copyfile(reuse/'baseline-binding.pickle',base/'baseline-binding.pickle')
+    data['pins'][str(repair_path.relative_to(f.ROOT))]=f.digest(repair_path);shutil.copyfile(repair_path,base/'source'/repair_path.relative_to(f.ROOT))
+    data['manifest']['completedOperandReuse']={'source':str(previous),'copies':copies,'scope':'Original live forms were not saved by the failed checker; restored raw zeros are not evidence of original live tree equality.'}
+    f.save(base/'inputs.json',data['manifest']);f.save(base/'binding-reuse.json',data['manifest']['completedOperandReuse'])
+    return records
+
+
+def sources(base,data,completed=None):
     r=data['r'];w=data['frequency'];origin=data['adapter'].input.origin;w0=data['adapter'].input.parameters['omega'];bound=data['old']['domain-binding.pickle']['bound'];cuts=bound['cutoffBindings']
-    native=p.rebind(base/'baseline-binding.pickle',r,bound,data['packet'],data['adapter'])
+    native=f.unpickle(base/'baseline-binding.pickle') if completed is not None else p.rebind(base/'baseline-binding.pickle',r,bound,data['packet'],data['adapter'])
     replay=p.baseline_check(native,data['old']['source-binding.pickle']);size=len(data['system']['nodes'])
     local=np.zeros_like(data['system']['localMatrix'])
     for n,m in native['local'].items():
@@ -66,17 +124,26 @@ def sources(base,data):
     local_residual=local-data['system']['localMatrix'];f.require(boundary.norm(local_residual)==0,'actual accepted baseline local matrix')
     records={};inventory={};directory=base/'records';directory.mkdir();derivative_counts={};addresses={};frequency_controls=0
     for key,item in data['packet']['records'].items():
-        original=item['record']['ORIGINAL'];live=engine.memo_xreplace(data['live'].bind(original),cuts)
-        expected=engine.memo_xreplace(data['adapter'].bind(original),cuts);actual=live.subs({w:w0,**origin},simultaneous=True);residual=actual-expected
-        control_frequency=data['control'].input.parameters['omega'];control_expected=engine.memo_xreplace(data['control'].bind(original),cuts);control_actual=live.subs({w:control_frequency,**origin},simultaneous=True)
-        control_residual=control_actual-control_expected;frozen_difference=control_actual-expected;frequency_controls+=int(frozen_difference!=0)
-        address=tuple(item['address']);first=sp.diff(live,w);second=sp.diff(first,w)
-        record={'address':address,'original':original,'liveFrequencyAndGrades':live,'retainedFrequency':live.subs(origin),
-          'firstFrequencyDerivative':first,'secondFrequencyDerivative':second,'boundAtReference':actual,'acceptedBinding':expected,'bindingResidual':residual,
-          'controlFrequency':control_frequency,'controlExpected':control_expected,'controlActual':control_actual,'controlResidual':control_residual,'frozenFrequencyDifference':frozen_difference,
-          'unit':item['record']['UNIT'],'census':census(live,w),'firstDerivativeCensus':census(first,w),'secondDerivativeCensus':census(second,w)}
+        if completed is not None and key in completed:
+            record=dict(completed[key]);expected=record['acceptedBinding'];address=record['address'];first=record['firstFrequencyDerivative']
+        else:
+            original=item['record']['ORIGINAL'];live=engine.memo_xreplace(data['live'].bind(original),cuts)
+            expected=engine.memo_xreplace(data['adapter'].bind(original),cuts);actual=live.subs({w:w0,**origin},simultaneous=True);residual=actual-expected
+            control_frequency=data['control'].input.parameters['omega'];control_expected=engine.memo_xreplace(data['control'].bind(original),cuts);control_actual=live.subs({w:control_frequency,**origin},simultaneous=True)
+            control_residual=control_actual-control_expected;frozen_difference=control_actual-expected
+            address=tuple(item['address']);first=sp.diff(live,w);second=sp.diff(first,w)
+            record={'address':address,'original':original,'liveFrequencyAndGrades':live,'retainedFrequency':live.subs(origin),
+              'firstFrequencyDerivative':first,'secondFrequencyDerivative':second,'boundAtReference':actual,'acceptedBinding':expected,'bindingResidual':residual,
+              'controlFrequency':control_frequency,'controlExpected':control_expected,'controlActual':control_actual,'controlResidual':control_residual,'frozenFrequencyDifference':frozen_difference,
+              'unit':item['record']['UNIT'],'census':census(live,w),'firstDerivativeCensus':census(first,w),'secondDerivativeCensus':census(second,w)}
+        raw_path=base/'raw-records'/(key+'.pickle');raw_path.parent.mkdir(exist_ok=True);f.atomic_pickle(raw_path,record)
+        comparisons={}
+        for name,left,right in (('seed',record['boundAtReference'],record['acceptedBinding']),('control',record['controlActual'],record['controlExpected'])):
+            comparisons[name]=binding_comparison(base/'binding-comparisons'/key/name,left,right,record['unit'],restored=completed is not None and key in completed)
+        record['bindingComparisons']=comparisons
+        frequency_controls+=int(record['frozenFrequencyDifference']!=0)
         path=directory/(key+'.pickle');f.atomic_pickle(path,record);inventory[key]={'path':str(path.relative_to(base)),'sha256':f.digest(path),'bytes':path.stat().st_size};f.save(base/'record-inventory.json',inventory)
-        f.require(residual==0 and control_residual==0,('exact reference and independent frequency source binding',key))
+        f.require(all(v['normalizedResidual']==0 and all(p==0 for p in v['proofResiduals']) for v in comparisons.values()),('exact reference and independent frequency source binding',key))
         old_limits=census(expected,w)['integralLimits'];new_limits=tuple(sorted({tuple(sp.Tuple(*(v.subs({w:w0,**origin},simultaneous=True) if isinstance(v,sp.Basic) else v for v in limit)) for limit in limits) for limits in record['census']['integralLimits']},key=sp.default_sort_key))
         f.require(new_limits==old_limits,'complete original ordered integration limits')
         records[key]=record;addresses[address]=record;derivative_counts[address[0]]=derivative_counts.get(address[0],0)+int(first!=0)
@@ -147,6 +214,9 @@ def emit_result(result,r):
         for order,name in ((1,'firstFrequencyDerivative'),(2,'secondFrequencyDerivative')):put(key+'_DERIVATIVE_'+str(order),v[name],tuple(a+(order if i==1 else 0) for i,a in enumerate(v['unit'])))
         put(key+'_SEED',sp.Tuple(v['boundAtReference'],v['acceptedBinding'],v['bindingResidual']),v['unit'])
         put(key+'_FREQUENCY_CONTROL',sp.Tuple(v['controlActual'],v['controlExpected'],v['controlResidual'],v['frozenFrequencyDifference']),v['unit'])
+        for name,comparison in v['bindingComparisons'].items():
+            put(key+'_CERTIFIED_'+name,sp.Tuple(comparison['rawResidual'],comparison['normalizedResidual']),v['unit'])
+            boundary.structural_flags(PREFIX+'_'+key+'_'+name+'_DOMAIN',{'proofResiduals':comparison['proofResiduals'],'representationSha256':comparison['operands']['representationSha256'],'restoredPair':comparison['operands']['restoredPair'],'exactEqualLive':comparison['operands']['exactEqualLive'],'scope':comparison['scope']})
         # Domains are operands, not a single generic certificate. Each node's
         # original frequency-live expression is retained in the source packet.
         boundary.structural_flags(PREFIX+'_'+key+'_DOMAIN',{'frequencyDependent':v['census']['frequencyDependent'],'nonanalyticNodes':tuple(map(str,v['census']['nonanalyticNodes'])),'literalDenominatorBases':tuple(map(str,v['census']['literalDenominatorBases'])),'fractionalPowers':tuple(map(str,v['census']['fractionalPowers'])),'scope':'Literal expression census; branches, zeros and global operator domains remain to be resolved.'})
@@ -168,10 +238,10 @@ def emit_result(result,r):
 
 
 def main():
-    ap=argparse.ArgumentParser();ap.add_argument('--run-directory',type=Path,required=True);args=ap.parse_args();base=args.run_directory.resolve();base.relative_to(f.STORE);base.mkdir(parents=True,exist_ok=False)
+    ap=argparse.ArgumentParser();ap.add_argument('--run-directory',type=Path,required=True);ap.add_argument('--resume-from',type=Path);args=ap.parse_args();base=args.run_directory.resolve();base.relative_to(f.STORE);base.mkdir(parents=True,exist_ok=False)
     resource.setrlimit(resource.RLIMIT_AS,(2*1024**3,2*1024**3));started=time.monotonic()
     def timeout(*_):raise TimeoutError('frequency-source budget; preserve completed records and end packets')
-    signal.signal(signal.SIGALRM,timeout);signal.alarm(900);data=load(base);src=sources(base,data);ends=end_sources(base,data)
+    signal.signal(signal.SIGALRM,timeout);signal.alarm(900);data=load(base);completed=resume_sources(base,data,args.resume_from) if args.resume_from else None;src=sources(base,data,completed);ends=end_sources(base,data)
     result={'sources':src,'ends':ends,'fieldUnits':data['ends']['fieldUnits'],'rowUnits':data['ends']['rowUnits'],'sourceFiles':data['pins'],'inputPackets':data['operands'],
       'dimensionState':dict(vars(engine.PHYSICAL_METADATA.dimensions)),'scope':'Frequency-live reduced sources and algebraic end-threshold candidates; no profile-pole solve, analytic outgoing boundary chart, full inverse or physical-bound classification.'}
     f.atomic_pickle(base/'frequency-source.pickle',result);before=f.digest(base/'frequency-source.pickle');engine.EMISSION_LINES.clear();engine.PAYLOAD_ENCODER=grades.PayloadEncoder()

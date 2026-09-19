@@ -26,3 +26,18 @@ local lookup now follows that explicit schema. A whole-file reverse AST join
 and all16 current source hashes plus original artifact hashes validate. The
 original logs and script snapshot are preserved. No physics, binding or
 numerical computation was changed or repeated. The retry uses a fresh directory.
+
+The retry then stopped after 17.87 seconds on a noncanonical source-binding
+comparison. Its baseline and 16 source records are preserved. Restoring those
+pairs gives exact zero residuals; original live tree equality is not inferred.
+The focused repair re-evaluated 32 actual binding pairs in 14.70 seconds. Two
+unequal live forms and an expanded form of the failed operand have exact native
+certificates, with six zero proof scalars and responding coefficient mutations.
+All 32 restored pairs and byte-identical baseline/record reuse pass; a changed
+consumed input is rejected. No accepted physical computation was repeated.
+
+The saved-operand recovery will finish the remaining source/end construction.
+It retains raw/live forms, normalized certificates and denominator domains,
+and preserves the full source/derivative calculation, end helper, original
+physical emitter and final validation by AST joins. See the binding acceptance
+checkpoint and recovery plan. No frequency-source output is accepted yet.

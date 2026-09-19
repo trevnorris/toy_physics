@@ -1,5 +1,5 @@
 {
-  "status": "RETRY_RUNNING",
+  "status": "BINDING_REPAIR_ACCEPTED_RECOVERY_PREPARED",
   "checker": "S11c_d_frequency_source.py",
   "plan": "S11c_d_frequency_source_plan.md",
   "report": "S11c_d_frequency_source_report.md",
@@ -10,7 +10,7 @@
     "nativeThreads": 1,
     "addressSpaceBytes": 2147483648
   },
-  "next": "Validate frequency-dependent reduced sources and end-domain candidates; construct an analytic outgoing finite pencil and a targeted bounded pole search.",
+  "next": "Resume 16 completed records and saved baseline; complete remaining frequency sources and end-domain preparation.",
   "implementationCommit": "4b14f7cb",
   "launch": {
     "launchedUtc": "2026-09-19T20:25:09.909593+00:00",
@@ -107,5 +107,27 @@
   "retryLauncher": {
     "path": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-source-20260919/retry-01/launch.py",
     "sha256": "56a22f0825297ea32d7f2104d0276eecff3513fb1ede49f62d5544fb189beddd"
-  }
+  },
+  "retryOutcome": {
+    "stage": "frequency_construct",
+    "command": [
+      "python",
+      "-u",
+      "_measurements/S11c_d_frequency_source.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-source-20260919/retry-01/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-source-20260919/retry-01/frequency_construct.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-source-20260919/retry-01/frequency_construct.stderr",
+    "startedUtc": "2026-09-19T20:27:29.667978+00:00",
+    "childPid": 728741,
+    "status": "failed",
+    "exitCode": 1,
+    "wallSeconds": 17.87330560013652,
+    "stderrBytes": 916,
+    "finishedUtc": "2026-09-19T20:27:47.541331+00:00"
+  },
+  "bindingRepair": "S11c_d_frequency_source_binding_repair.json",
+  "bindingAcceptance": "S11c_d_frequency_source_binding_acceptance.json",
+  "recoveryRunRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-source-20260919/recovery-01"
 }

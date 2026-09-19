@@ -1,0 +1,111 @@
+{
+  "status": "FOCUSED_VALIDATION_PENDING",
+  "originalScriptSha256": "53db1cdf091b7afb382b2fd523642d84bebe45827cb985629e6547c95f3fd4e8",
+  "repairedScriptSha256": "9be20be462bc10bfcaa7af643b9301948dd79bc2e08eb24ebcd1386a81efcdac",
+  "originalScript": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-source-20260919/binding-repair/original.py",
+  "originalRun": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-source-20260919/retry-01/complete",
+  "originalOutcome": {
+    "stage": "frequency_construct",
+    "command": [
+      "python",
+      "-u",
+      "_measurements/S11c_d_frequency_source.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-source-20260919/retry-01/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-source-20260919/retry-01/frequency_construct.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-source-20260919/retry-01/frequency_construct.stderr",
+    "startedUtc": "2026-09-19T20:27:29.667978+00:00",
+    "childPid": 728741,
+    "status": "failed",
+    "exitCode": 1,
+    "wallSeconds": 17.87330560013652,
+    "stderrBytes": 916,
+    "finishedUtc": "2026-09-19T20:27:47.541331+00:00"
+  },
+  "baselineBindingSha256": "817bd0957aebe706c1a565a5a0878b0779be30485235f934df879162c34ad99b",
+  "originalRecordInventory": {
+    "local0Row0Column0": {
+      "path": "records/local0Row0Column0.pickle",
+      "sha256": "c926278596017d14913be086aa7b5a7f4e31c2e81647361fd57915d4ee36a480",
+      "bytes": 2642
+    },
+    "local0Row0Column1": {
+      "path": "records/local0Row0Column1.pickle",
+      "sha256": "432bc4cbdd7b0d93fb837373604ace390d7b1548ed3ae4cd3866f64474e1718d",
+      "bytes": 2078
+    },
+    "local0Row0Column2": {
+      "path": "records/local0Row0Column2.pickle",
+      "sha256": "5da84b006459afbe1da2525e9d169318c648ee111f5026e1cc89636e8c8008b3",
+      "bytes": 2357
+    },
+    "local0Row0Column3": {
+      "path": "records/local0Row0Column3.pickle",
+      "sha256": "a5fea0af790386fcd5c84e334317d76b6c3e5c4e39995a9a3af9f7443c5f8755",
+      "bytes": 2309
+    },
+    "local0Row0Column4": {
+      "path": "records/local0Row0Column4.pickle",
+      "sha256": "285e4963929b5fe55a34045ddd3b245e7d4e42e936b0dc932634dc1a2eef098c",
+      "bytes": 2620
+    },
+    "local0Row1Column0": {
+      "path": "records/local0Row1Column0.pickle",
+      "sha256": "9961a6f4f348353c5fd4874b5a622282b35f3ecc69a6b1a3fa0f527dddad4d23",
+      "bytes": 2078
+    },
+    "local0Row1Column1": {
+      "path": "records/local0Row1Column1.pickle",
+      "sha256": "8b6044fc86e2179b820f9fd7e530ea82bfca5a9a53cee4f392399fe4d207ea06",
+      "bytes": 2755
+    },
+    "local0Row1Column2": {
+      "path": "records/local0Row1Column2.pickle",
+      "sha256": "0e8edec62986c5463223340d88e5895fc2b4a071a6bb6cffcdddcfe3f4fc7b8d",
+      "bytes": 2357
+    },
+    "local0Row1Column3": {
+      "path": "records/local0Row1Column3.pickle",
+      "sha256": "22e905ebdcf9c2c43b0a815fad35842e91757d3c6aa849a8edb1609b83c44294",
+      "bytes": 2317
+    },
+    "local0Row1Column4": {
+      "path": "records/local0Row1Column4.pickle",
+      "sha256": "e4076ba4411a6679d7eb3ee64a2417a0b4cd9f05eb0ba8d86543f7a0b60ed620",
+      "bytes": 2628
+    },
+    "local0Row2Column0": {
+      "path": "records/local0Row2Column0.pickle",
+      "sha256": "11af716689729968e2061bfc445c66cc181d25484d2c5195022615b1dcf49c35",
+      "bytes": 2389
+    },
+    "local0Row2Column1": {
+      "path": "records/local0Row2Column1.pickle",
+      "sha256": "ae27a0017e98bfc6c152dc5f3fdebe04c610347bf2293af930253c4a6870d1a6",
+      "bytes": 2436
+    },
+    "local0Row2Column2": {
+      "path": "records/local0Row2Column2.pickle",
+      "sha256": "4108e37ffa465fcaa99dbc0371f28fba0441b9f6c1e5bf75c52b25cc138356f5",
+      "bytes": 3042
+    },
+    "local0Row2Column3": {
+      "path": "records/local0Row2Column3.pickle",
+      "sha256": "8dd3eec537092e889131caa9bc08ac54f3d6cec9403c6683121eef012dd5a155",
+      "bytes": 2604
+    },
+    "local0Row2Column4": {
+      "path": "records/local0Row2Column4.pickle",
+      "sha256": "112c1bc231a17171d464af1e713986368eec414c7ba91c9b01a3abcd961aafd1",
+      "bytes": 3181
+    },
+    "local0Row3Column0": {
+      "path": "records/local0Row3Column0.pickle",
+      "sha256": "256c862f9bedbe791410fca14de3870de81177d5b6801da43cae9831bc706570",
+      "bytes": 4248
+    }
+  },
+  "repair": "Exact actual-pair certificates use the unchanged native shared=False path. Keep raw and normalized expressions, live strings/hashes and all proof/denominator operands. Resume 16 completed source records and baseline binding under exact source/input/hash joins. No physics or numerical constructor changed.",
+  "representationDistinction": "Failed live comparison at local0Row3Column0 canonicalizes to exact equality after pickle; original live strings were not saved. Do not claim original tree equality."
+}

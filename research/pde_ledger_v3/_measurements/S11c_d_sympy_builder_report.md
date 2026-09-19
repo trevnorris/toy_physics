@@ -83,6 +83,11 @@ transcript is annex-verified. This completes the selected affine finite-space
 coordinate control, not arbitrary nonaffine covariance or c2 source-origin
 closure. One-sided first-w-derivative sensitivity, targeted frequency poles,
 remaining cases and exports are next under practical acceptance.
+The [one-sided first-derivative control](S11c_d_first_jet_report.md) is now
+implemented with source-derived row reuse and unchanged numerical machinery.
+Its focused binding and production results remain pending. Reverse only the
+explicit first thickness derivative; retain the actual density/advection
+absence and do not claim an isolated channel or a new physical profile.
 The older checkpoint narrative below records history, not the current task
 queue. The retained solver/export suffix remains byte-identical, interpreted
 under the new acceptance addendum and the approved pole correction.

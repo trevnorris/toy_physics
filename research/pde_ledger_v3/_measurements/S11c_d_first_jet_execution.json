@@ -1,0 +1,14 @@
+{
+  "status": "IMPLEMENTED_FOCUSED_BINDING_PENDING",
+  "checker": "S11c_d_first_jet.py",
+  "plan": "S11c_d_first_jet_plan.md",
+  "report": "S11c_d_first_jet_report.md",
+  "acceptedMaterialControlCommit": "19a9f5a1",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-first-jet-20260919/focused",
+  "limits": {
+    "wallSeconds": 900,
+    "nativeThreads": 1,
+    "addressSpaceBytes": 2147483648
+  },
+  "next": "Validate source-driven mutation and exact unchanged-row partition, commit, then integrate only affected rows and solve the complete continuum response."
+}

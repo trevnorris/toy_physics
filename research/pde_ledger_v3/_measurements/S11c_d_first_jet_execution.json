@@ -1,5 +1,5 @@
 {
-  "status": "IMPLEMENTED_FOCUSED_BINDING_PENDING",
+  "status": "FOCUSED_BINDING_RUNNING",
   "checker": "S11c_d_first_jet.py",
   "plan": "S11c_d_first_jet_plan.md",
   "report": "S11c_d_first_jet_report.md",
@@ -10,5 +10,44 @@
     "nativeThreads": 1,
     "addressSpaceBytes": 2147483648
   },
-  "next": "Validate source-driven mutation and exact unchanged-row partition, commit, then integrate only affected rows and solve the complete continuum response."
+  "next": "Validate source-driven mutation and exact unchanged-row partition, commit, then integrate only affected rows and solve the complete continuum response.",
+  "implementationCommit": "5f90d23a",
+  "launch": {
+    "launchedUtc": "2026-09-19T19:59:51.641436+00:00",
+    "command": [
+      "/usr/bin/python",
+      "_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-first-jet-20260919/focused",
+      "--stage",
+      "first_jet_bind",
+      "--",
+      "python",
+      "-u",
+      "_measurements/S11c_d_first_jet.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-first-jet-20260919/focused/complete",
+      "--focused"
+    ],
+    "supervisorPid": 716427,
+    "watcherPid": 716428,
+    "watcherDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-first-jet-20260919/focused/completion-watcher",
+    "threadEnvironment": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1"
+    }
+  },
+  "startup": {
+    "status": "running",
+    "childPid": 716429,
+    "strictStderrBytes": 0,
+    "watcherStderrBytes": 0,
+    "inspection": "One startup inspection; silent local completion/error hook owns continuation."
+  },
+  "launcher": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-first-jet-20260919/focused/launch.py",
+    "sha256": "bea6e8994575bdefa1ed13aff586f183aaf6a9e009e50369475ecf8cf38b448d"
+  }
 }

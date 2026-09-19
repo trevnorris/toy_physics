@@ -1,41 +1,35 @@
-# Remaining anchoring/density cases
+# Remaining case source preparation
 
-The saved-operand preflight passed in 12.12 seconds with 214,564 KiB peak RSS
-and empty stderr. It verifies 39 current/frozen sources, five input packets,
-three byte-identical baseline copies and the unchanged native reduction and
-assembly definition closures. The saved baseline retains all five fields,
-25 cells, 281 zero assembly residuals and 80 exact integral addresses. An actual
-changed integration limit is rejected by the reuse-address check. No new case
-or numerical quadrature was computed by this preflight.
+All three missing native source/assembly cases were saved by 173.24 seconds.
+The accepted LAB_HELD/RHO4_CONSTANT case is copied unchanged. The saved new
+case counts are:
 
-The constructor will materialize the other three complete reduced sources and
-assemblies from the four-case parent operands already in the accepted cache.
-It preserves full coefficients, source fields and ordered integrals and records
-which integrals are exactly identical to the baseline. Integral identity permits
-later reuse of corresponding numerical operands; it does not imply identical
-cell coefficients, boundary maps or scattering responses.
+| Case | Integral operands | Nonlocal cell terms | Exact baseline integral matches |
+| --- | ---: | ---: | ---: |
+| LAB_HELD / RHOBR_CONSTANT | 70 | 140 | 61 |
+| MATERIAL_ADVECTED / RHO4_CONSTANT | 80 | 185 | 61 |
+| MATERIAL_ADVECTED / RHOBR_CONSTANT | 70 | 162 | 46 |
 
-The selected 32-point pole diagnostic is closed without a resolved candidate,
-with its limited numerical scope preserved. The remaining cases and final
-engine/export integration are now the focus. No broad quadrature sequence or
-additional contour doubling is queued. This source stage does not complete the
-remaining scattering, continuum, current, control or bounded pole outputs.
+These are source counts, not new scattering results. Every coefficient and
+ordered integral remains available; an identical integral does not imply an
+identical complete operator or response.
 
-Construction launched with explicit --mode construct under one supervisor and
-one silent completion/error hook. The initial budget is 900 seconds and 2 GiB
-with one native numerical thread. This is a budget, not a measured finish estimate.
+Final acceptance is pending output validation. Two guards incorrectly required
+expression representation counts to stay fixed across serialization/calculation
+contexts. Both live and reconstructed statistics remain preserved. Only DAG-node
+and distinct-derivative counts differ; physical census fields remain exact.
+Acceptance uses the complete source/coefficient identities and exact semantic
+proofs, with no nonzero residual waived.
 
-All three new source/assembly cases were saved by 173.24 seconds. Final output
-stopped at 223.68 seconds because restored expression counts differ from live
-counts. The diagnostic confines these transitions to DAG node and derivative
-counts in 30 cells; source/action identities and all other census fields agree.
-Both censuses and all original packets remain preserved. Recovery independently
-checks the restored columns against the saved coefficients before completing
-output. No new case result is accepted until this validation finishes.
+The first recovery completed 75 cells, 698 independent coefficient derivatives
+and 75 responding coefficient mutations, plus those cases' source/limit checks.
+The final validator reuses that work, validates the last 25 cells, and completes
+the unchanged output and metadata replay. The narrow scheduling/statistics
+adapter has a reverse whole-function AST join and rejects all 12 tested physical
+census mutations. No source construction, integration or solve is repeated.
 
-The focused census repair passed in 62.75 seconds at 175,936 KiB peak RSS.
-Four actual reference/affected cells have zero normalized reconstruction and
-66 zero coefficient-derivative residuals; all four one-sided coefficient controls
-respond. All four actual restored contexts pass, while changed addresses and
-unrecorded census changes reject. The original engine and output function are
-unchanged. Full recovery will validate all 100 cells and finish saved output.
+After full validation, publish the source transcript and use the exact matches
+to reuse numerical operands for the remaining responses. Their continuum,
+current, control, scoped pole and final export work remains. The selected
+32-point pole diagnostic is closed without a resolved candidate; no additional
+angular doubling or broad quadrature campaign is queued.

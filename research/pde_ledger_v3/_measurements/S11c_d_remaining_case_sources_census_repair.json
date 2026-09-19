@@ -1,5 +1,5 @@
 {
-  "status": "FOCUSED_REPAIR_ACCEPTED",
+  "status": "LAST_CASE_VALIDATOR_WIRING_ACCEPTED",
   "originalOutcome": {
     "stage": "cases_construct",
     "command": [
@@ -551,5 +551,2079 @@
       "actualContextAccepted": true,
       "unrecordedCensusChangeRejected": true
     }
+  },
+  "previousRecoveryOutcome": {
+    "stage": "cases_recover",
+    "command": [
+      "python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_sources_recover.py",
+      "--mode",
+      "finish",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-sources-20260919/recovery-01/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-sources-20260919/recovery-01/cases_recover.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-sources-20260919/recovery-01/cases_recover.stderr",
+    "startedUtc": "2026-09-19T23:18:30.814284+00:00",
+    "childPid": 792513,
+    "status": "failed",
+    "exitCode": 1,
+    "wallSeconds": 101.7750986488536,
+    "stderrBytes": 816,
+    "finishedUtc": "2026-09-19T23:20:12.589434+00:00"
+  },
+  "completedValidationCases": {
+    "validation-LAB_HELD__RHOBR_CONSTANT.json": {
+      "liveCensus": [
+        {
+          "COLUMN": 0,
+          "ROW": 0,
+          "DAG_NODES": 79,
+          "TOP_LEVEL_ADDENDS": 6,
+          "DISTINCT_INTEGRALS": 0,
+          "DISTINCT_DERIVATIVES": 6,
+          "PROBE_APPLICATIONS": 1,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 0,
+          "ROW": 1,
+          "DAG_NODES": 60,
+          "TOP_LEVEL_ADDENDS": 3,
+          "DISTINCT_INTEGRALS": 0,
+          "DISTINCT_DERIVATIVES": 5,
+          "PROBE_APPLICATIONS": 1,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 0,
+          "ROW": 2,
+          "DAG_NODES": 83,
+          "TOP_LEVEL_ADDENDS": 3,
+          "DISTINCT_INTEGRALS": 0,
+          "DISTINCT_DERIVATIVES": 8,
+          "PROBE_APPLICATIONS": 1,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 0,
+          "ROW": 3,
+          "DAG_NODES": 627,
+          "TOP_LEVEL_ADDENDS": 6,
+          "DISTINCT_INTEGRALS": 19,
+          "DISTINCT_DERIVATIVES": 10,
+          "PROBE_APPLICATIONS": 2,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 0,
+          "ROW": 4,
+          "DAG_NODES": 684,
+          "TOP_LEVEL_ADDENDS": 6,
+          "DISTINCT_INTEGRALS": 19,
+          "DISTINCT_DERIVATIVES": 10,
+          "PROBE_APPLICATIONS": 2,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 1,
+          "ROW": 0,
+          "DAG_NODES": 60,
+          "TOP_LEVEL_ADDENDS": 3,
+          "DISTINCT_INTEGRALS": 0,
+          "DISTINCT_DERIVATIVES": 5,
+          "PROBE_APPLICATIONS": 1,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 1,
+          "ROW": 1,
+          "DAG_NODES": 79,
+          "TOP_LEVEL_ADDENDS": 6,
+          "DISTINCT_INTEGRALS": 0,
+          "DISTINCT_DERIVATIVES": 6,
+          "PROBE_APPLICATIONS": 1,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 1,
+          "ROW": 2,
+          "DAG_NODES": 83,
+          "TOP_LEVEL_ADDENDS": 3,
+          "DISTINCT_INTEGRALS": 0,
+          "DISTINCT_DERIVATIVES": 8,
+          "PROBE_APPLICATIONS": 1,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 1,
+          "ROW": 3,
+          "DAG_NODES": 627,
+          "TOP_LEVEL_ADDENDS": 6,
+          "DISTINCT_INTEGRALS": 19,
+          "DISTINCT_DERIVATIVES": 10,
+          "PROBE_APPLICATIONS": 2,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 1,
+          "ROW": 4,
+          "DAG_NODES": 684,
+          "TOP_LEVEL_ADDENDS": 6,
+          "DISTINCT_INTEGRALS": 19,
+          "DISTINCT_DERIVATIVES": 10,
+          "PROBE_APPLICATIONS": 2,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 2,
+          "ROW": 0,
+          "DAG_NODES": 91,
+          "TOP_LEVEL_ADDENDS": 3,
+          "DISTINCT_INTEGRALS": 0,
+          "DISTINCT_DERIVATIVES": 6,
+          "PROBE_APPLICATIONS": 1,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 2,
+          "ROW": 1,
+          "DAG_NODES": 91,
+          "TOP_LEVEL_ADDENDS": 3,
+          "DISTINCT_INTEGRALS": 0,
+          "DISTINCT_DERIVATIVES": 6,
+          "PROBE_APPLICATIONS": 1,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 2,
+          "ROW": 2,
+          "DAG_NODES": 125,
+          "TOP_LEVEL_ADDENDS": 6,
+          "DISTINCT_INTEGRALS": 0,
+          "DISTINCT_DERIVATIVES": 9,
+          "PROBE_APPLICATIONS": 1,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 2,
+          "ROW": 3,
+          "DAG_NODES": 667,
+          "TOP_LEVEL_ADDENDS": 6,
+          "DISTINCT_INTEGRALS": 19,
+          "DISTINCT_DERIVATIVES": 12,
+          "PROBE_APPLICATIONS": 2,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 2,
+          "ROW": 4,
+          "DAG_NODES": 766,
+          "TOP_LEVEL_ADDENDS": 6,
+          "DISTINCT_INTEGRALS": 19,
+          "DISTINCT_DERIVATIVES": 12,
+          "PROBE_APPLICATIONS": 2,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 3,
+          "ROW": 0,
+          "DAG_NODES": 70,
+          "TOP_LEVEL_ADDENDS": 6,
+          "DISTINCT_INTEGRALS": 0,
+          "DISTINCT_DERIVATIVES": 6,
+          "PROBE_APPLICATIONS": 1,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 3,
+          "ROW": 1,
+          "DAG_NODES": 70,
+          "TOP_LEVEL_ADDENDS": 6,
+          "DISTINCT_INTEGRALS": 0,
+          "DISTINCT_DERIVATIVES": 6,
+          "PROBE_APPLICATIONS": 1,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 3,
+          "ROW": 2,
+          "DAG_NODES": 98,
+          "TOP_LEVEL_ADDENDS": 6,
+          "DISTINCT_INTEGRALS": 0,
+          "DISTINCT_DERIVATIVES": 9,
+          "PROBE_APPLICATIONS": 1,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 3,
+          "ROW": 3,
+          "DAG_NODES": 637,
+          "TOP_LEVEL_ADDENDS": 7,
+          "DISTINCT_INTEGRALS": 21,
+          "DISTINCT_DERIVATIVES": 7,
+          "PROBE_APPLICATIONS": 2,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 3,
+          "ROW": 4,
+          "DAG_NODES": 699,
+          "TOP_LEVEL_ADDENDS": 10,
+          "DISTINCT_INTEGRALS": 21,
+          "DISTINCT_DERIVATIVES": 10,
+          "PROBE_APPLICATIONS": 2,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 4,
+          "ROW": 0,
+          "DAG_NODES": 106,
+          "TOP_LEVEL_ADDENDS": 7,
+          "DISTINCT_INTEGRALS": 0,
+          "DISTINCT_DERIVATIVES": 6,
+          "PROBE_APPLICATIONS": 1,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 4,
+          "ROW": 1,
+          "DAG_NODES": 106,
+          "TOP_LEVEL_ADDENDS": 7,
+          "DISTINCT_INTEGRALS": 0,
+          "DISTINCT_DERIVATIVES": 6,
+          "PROBE_APPLICATIONS": 1,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 4,
+          "ROW": 2,
+          "DAG_NODES": 157,
+          "TOP_LEVEL_ADDENDS": 7,
+          "DISTINCT_INTEGRALS": 0,
+          "DISTINCT_DERIVATIVES": 9,
+          "PROBE_APPLICATIONS": 1,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 4,
+          "ROW": 3,
+          "DAG_NODES": 760,
+          "TOP_LEVEL_ADDENDS": 9,
+          "DISTINCT_INTEGRALS": 22,
+          "DISTINCT_DERIVATIVES": 12,
+          "PROBE_APPLICATIONS": 2,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 4,
+          "ROW": 4,
+          "DAG_NODES": 822,
+          "TOP_LEVEL_ADDENDS": 10,
+          "DISTINCT_INTEGRALS": 22,
+          "DISTINCT_DERIVATIVES": 12,
+          "PROBE_APPLICATIONS": 2,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        }
+      ],
+      "restoredCensus": [
+        {
+          "COLUMN": 0,
+          "ROW": 0,
+          "DAG_NODES": 79,
+          "TOP_LEVEL_ADDENDS": 6,
+          "DISTINCT_INTEGRALS": 0,
+          "DISTINCT_DERIVATIVES": 6,
+          "PROBE_APPLICATIONS": 1,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 0,
+          "ROW": 1,
+          "DAG_NODES": 60,
+          "TOP_LEVEL_ADDENDS": 3,
+          "DISTINCT_INTEGRALS": 0,
+          "DISTINCT_DERIVATIVES": 5,
+          "PROBE_APPLICATIONS": 1,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 0,
+          "ROW": 2,
+          "DAG_NODES": 83,
+          "TOP_LEVEL_ADDENDS": 3,
+          "DISTINCT_INTEGRALS": 0,
+          "DISTINCT_DERIVATIVES": 8,
+          "PROBE_APPLICATIONS": 1,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 0,
+          "ROW": 3,
+          "DAG_NODES": 627,
+          "TOP_LEVEL_ADDENDS": 6,
+          "DISTINCT_INTEGRALS": 19,
+          "DISTINCT_DERIVATIVES": 11,
+          "PROBE_APPLICATIONS": 2,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 0,
+          "ROW": 4,
+          "DAG_NODES": 689,
+          "TOP_LEVEL_ADDENDS": 6,
+          "DISTINCT_INTEGRALS": 19,
+          "DISTINCT_DERIVATIVES": 11,
+          "PROBE_APPLICATIONS": 2,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 1,
+          "ROW": 0,
+          "DAG_NODES": 60,
+          "TOP_LEVEL_ADDENDS": 3,
+          "DISTINCT_INTEGRALS": 0,
+          "DISTINCT_DERIVATIVES": 5,
+          "PROBE_APPLICATIONS": 1,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 1,
+          "ROW": 1,
+          "DAG_NODES": 79,
+          "TOP_LEVEL_ADDENDS": 6,
+          "DISTINCT_INTEGRALS": 0,
+          "DISTINCT_DERIVATIVES": 6,
+          "PROBE_APPLICATIONS": 1,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 1,
+          "ROW": 2,
+          "DAG_NODES": 83,
+          "TOP_LEVEL_ADDENDS": 3,
+          "DISTINCT_INTEGRALS": 0,
+          "DISTINCT_DERIVATIVES": 8,
+          "PROBE_APPLICATIONS": 1,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 1,
+          "ROW": 3,
+          "DAG_NODES": 627,
+          "TOP_LEVEL_ADDENDS": 6,
+          "DISTINCT_INTEGRALS": 19,
+          "DISTINCT_DERIVATIVES": 11,
+          "PROBE_APPLICATIONS": 2,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 1,
+          "ROW": 4,
+          "DAG_NODES": 689,
+          "TOP_LEVEL_ADDENDS": 6,
+          "DISTINCT_INTEGRALS": 19,
+          "DISTINCT_DERIVATIVES": 11,
+          "PROBE_APPLICATIONS": 2,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 2,
+          "ROW": 0,
+          "DAG_NODES": 91,
+          "TOP_LEVEL_ADDENDS": 3,
+          "DISTINCT_INTEGRALS": 0,
+          "DISTINCT_DERIVATIVES": 6,
+          "PROBE_APPLICATIONS": 1,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 2,
+          "ROW": 1,
+          "DAG_NODES": 91,
+          "TOP_LEVEL_ADDENDS": 3,
+          "DISTINCT_INTEGRALS": 0,
+          "DISTINCT_DERIVATIVES": 6,
+          "PROBE_APPLICATIONS": 1,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 2,
+          "ROW": 2,
+          "DAG_NODES": 125,
+          "TOP_LEVEL_ADDENDS": 6,
+          "DISTINCT_INTEGRALS": 0,
+          "DISTINCT_DERIVATIVES": 9,
+          "PROBE_APPLICATIONS": 1,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 2,
+          "ROW": 3,
+          "DAG_NODES": 667,
+          "TOP_LEVEL_ADDENDS": 6,
+          "DISTINCT_INTEGRALS": 19,
+          "DISTINCT_DERIVATIVES": 13,
+          "PROBE_APPLICATIONS": 2,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 2,
+          "ROW": 4,
+          "DAG_NODES": 771,
+          "TOP_LEVEL_ADDENDS": 6,
+          "DISTINCT_INTEGRALS": 19,
+          "DISTINCT_DERIVATIVES": 13,
+          "PROBE_APPLICATIONS": 2,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 3,
+          "ROW": 0,
+          "DAG_NODES": 70,
+          "TOP_LEVEL_ADDENDS": 6,
+          "DISTINCT_INTEGRALS": 0,
+          "DISTINCT_DERIVATIVES": 6,
+          "PROBE_APPLICATIONS": 1,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 3,
+          "ROW": 1,
+          "DAG_NODES": 70,
+          "TOP_LEVEL_ADDENDS": 6,
+          "DISTINCT_INTEGRALS": 0,
+          "DISTINCT_DERIVATIVES": 6,
+          "PROBE_APPLICATIONS": 1,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 3,
+          "ROW": 2,
+          "DAG_NODES": 98,
+          "TOP_LEVEL_ADDENDS": 6,
+          "DISTINCT_INTEGRALS": 0,
+          "DISTINCT_DERIVATIVES": 9,
+          "PROBE_APPLICATIONS": 1,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 3,
+          "ROW": 3,
+          "DAG_NODES": 640,
+          "TOP_LEVEL_ADDENDS": 7,
+          "DISTINCT_INTEGRALS": 21,
+          "DISTINCT_DERIVATIVES": 8,
+          "PROBE_APPLICATIONS": 2,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 3,
+          "ROW": 4,
+          "DAG_NODES": 702,
+          "TOP_LEVEL_ADDENDS": 10,
+          "DISTINCT_INTEGRALS": 21,
+          "DISTINCT_DERIVATIVES": 11,
+          "PROBE_APPLICATIONS": 2,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 4,
+          "ROW": 0,
+          "DAG_NODES": 106,
+          "TOP_LEVEL_ADDENDS": 7,
+          "DISTINCT_INTEGRALS": 0,
+          "DISTINCT_DERIVATIVES": 6,
+          "PROBE_APPLICATIONS": 1,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 4,
+          "ROW": 1,
+          "DAG_NODES": 106,
+          "TOP_LEVEL_ADDENDS": 7,
+          "DISTINCT_INTEGRALS": 0,
+          "DISTINCT_DERIVATIVES": 6,
+          "PROBE_APPLICATIONS": 1,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 4,
+          "ROW": 2,
+          "DAG_NODES": 157,
+          "TOP_LEVEL_ADDENDS": 7,
+          "DISTINCT_INTEGRALS": 0,
+          "DISTINCT_DERIVATIVES": 9,
+          "PROBE_APPLICATIONS": 1,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 4,
+          "ROW": 3,
+          "DAG_NODES": 765,
+          "TOP_LEVEL_ADDENDS": 9,
+          "DISTINCT_INTEGRALS": 22,
+          "DISTINCT_DERIVATIVES": 13,
+          "PROBE_APPLICATIONS": 2,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 4,
+          "ROW": 4,
+          "DAG_NODES": 827,
+          "TOP_LEVEL_ADDENDS": 10,
+          "DISTINCT_INTEGRALS": 22,
+          "DISTINCT_DERIVATIVES": 13,
+          "PROBE_APPLICATIONS": 2,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        }
+      ],
+      "differences": [
+        {
+          "column": 0,
+          "row": 3,
+          "changes": {
+            "DISTINCT_DERIVATIVES": {
+              "live": 10,
+              "restored": 11
+            }
+          }
+        },
+        {
+          "column": 0,
+          "row": 4,
+          "changes": {
+            "DAG_NODES": {
+              "live": 684,
+              "restored": 689
+            },
+            "DISTINCT_DERIVATIVES": {
+              "live": 10,
+              "restored": 11
+            }
+          }
+        },
+        {
+          "column": 1,
+          "row": 3,
+          "changes": {
+            "DISTINCT_DERIVATIVES": {
+              "live": 10,
+              "restored": 11
+            }
+          }
+        },
+        {
+          "column": 1,
+          "row": 4,
+          "changes": {
+            "DAG_NODES": {
+              "live": 684,
+              "restored": 689
+            },
+            "DISTINCT_DERIVATIVES": {
+              "live": 10,
+              "restored": 11
+            }
+          }
+        },
+        {
+          "column": 2,
+          "row": 3,
+          "changes": {
+            "DISTINCT_DERIVATIVES": {
+              "live": 12,
+              "restored": 13
+            }
+          }
+        },
+        {
+          "column": 2,
+          "row": 4,
+          "changes": {
+            "DAG_NODES": {
+              "live": 766,
+              "restored": 771
+            },
+            "DISTINCT_DERIVATIVES": {
+              "live": 12,
+              "restored": 13
+            }
+          }
+        },
+        {
+          "column": 3,
+          "row": 3,
+          "changes": {
+            "DAG_NODES": {
+              "live": 637,
+              "restored": 640
+            },
+            "DISTINCT_DERIVATIVES": {
+              "live": 7,
+              "restored": 8
+            }
+          }
+        },
+        {
+          "column": 3,
+          "row": 4,
+          "changes": {
+            "DAG_NODES": {
+              "live": 699,
+              "restored": 702
+            },
+            "DISTINCT_DERIVATIVES": {
+              "live": 10,
+              "restored": 11
+            }
+          }
+        },
+        {
+          "column": 4,
+          "row": 3,
+          "changes": {
+            "DAG_NODES": {
+              "live": 760,
+              "restored": 765
+            },
+            "DISTINCT_DERIVATIVES": {
+              "live": 12,
+              "restored": 13
+            }
+          }
+        },
+        {
+          "column": 4,
+          "row": 4,
+          "changes": {
+            "DAG_NODES": {
+              "live": 822,
+              "restored": 827
+            },
+            "DISTINCT_DERIVATIVES": {
+              "live": 12,
+              "restored": 13
+            }
+          }
+        }
+      ],
+      "cellsCertified": 25,
+      "normalizedResidualScalars": 25,
+      "coefficientResidualScalars": 211,
+      "respondingCoefficientMutations": 25,
+      "rawNonzeroForms": 25,
+      "constraintResidualScalars": 125,
+      "wrongAddressRejected": true
+    },
+    "validation-MATERIAL_ADVECTED__RHO4_CONSTANT.json": {
+      "liveCensus": [
+        {
+          "COLUMN": 0,
+          "ROW": 0,
+          "DAG_NODES": 81,
+          "TOP_LEVEL_ADDENDS": 6,
+          "DISTINCT_INTEGRALS": 0,
+          "DISTINCT_DERIVATIVES": 6,
+          "PROBE_APPLICATIONS": 1,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 0,
+          "ROW": 1,
+          "DAG_NODES": 60,
+          "TOP_LEVEL_ADDENDS": 3,
+          "DISTINCT_INTEGRALS": 0,
+          "DISTINCT_DERIVATIVES": 5,
+          "PROBE_APPLICATIONS": 1,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 0,
+          "ROW": 2,
+          "DAG_NODES": 306,
+          "TOP_LEVEL_ADDENDS": 4,
+          "DISTINCT_INTEGRALS": 6,
+          "DISTINCT_DERIVATIVES": 8,
+          "PROBE_APPLICATIONS": 2,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 0,
+          "ROW": 3,
+          "DAG_NODES": 693,
+          "TOP_LEVEL_ADDENDS": 6,
+          "DISTINCT_INTEGRALS": 22,
+          "DISTINCT_DERIVATIVES": 10,
+          "PROBE_APPLICATIONS": 2,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 0,
+          "ROW": 4,
+          "DAG_NODES": 747,
+          "TOP_LEVEL_ADDENDS": 6,
+          "DISTINCT_INTEGRALS": 22,
+          "DISTINCT_DERIVATIVES": 10,
+          "PROBE_APPLICATIONS": 2,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 1,
+          "ROW": 0,
+          "DAG_NODES": 60,
+          "TOP_LEVEL_ADDENDS": 3,
+          "DISTINCT_INTEGRALS": 0,
+          "DISTINCT_DERIVATIVES": 5,
+          "PROBE_APPLICATIONS": 1,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 1,
+          "ROW": 1,
+          "DAG_NODES": 81,
+          "TOP_LEVEL_ADDENDS": 6,
+          "DISTINCT_INTEGRALS": 0,
+          "DISTINCT_DERIVATIVES": 6,
+          "PROBE_APPLICATIONS": 1,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 1,
+          "ROW": 2,
+          "DAG_NODES": 306,
+          "TOP_LEVEL_ADDENDS": 4,
+          "DISTINCT_INTEGRALS": 6,
+          "DISTINCT_DERIVATIVES": 8,
+          "PROBE_APPLICATIONS": 2,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 1,
+          "ROW": 3,
+          "DAG_NODES": 693,
+          "TOP_LEVEL_ADDENDS": 6,
+          "DISTINCT_INTEGRALS": 22,
+          "DISTINCT_DERIVATIVES": 10,
+          "PROBE_APPLICATIONS": 2,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 1,
+          "ROW": 4,
+          "DAG_NODES": 747,
+          "TOP_LEVEL_ADDENDS": 6,
+          "DISTINCT_INTEGRALS": 22,
+          "DISTINCT_DERIVATIVES": 10,
+          "PROBE_APPLICATIONS": 2,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 2,
+          "ROW": 0,
+          "DAG_NODES": 91,
+          "TOP_LEVEL_ADDENDS": 3,
+          "DISTINCT_INTEGRALS": 0,
+          "DISTINCT_DERIVATIVES": 6,
+          "PROBE_APPLICATIONS": 1,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 2,
+          "ROW": 1,
+          "DAG_NODES": 91,
+          "TOP_LEVEL_ADDENDS": 3,
+          "DISTINCT_INTEGRALS": 0,
+          "DISTINCT_DERIVATIVES": 6,
+          "PROBE_APPLICATIONS": 1,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 2,
+          "ROW": 2,
+          "DAG_NODES": 345,
+          "TOP_LEVEL_ADDENDS": 7,
+          "DISTINCT_INTEGRALS": 6,
+          "DISTINCT_DERIVATIVES": 10,
+          "PROBE_APPLICATIONS": 2,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 2,
+          "ROW": 3,
+          "DAG_NODES": 773,
+          "TOP_LEVEL_ADDENDS": 6,
+          "DISTINCT_INTEGRALS": 22,
+          "DISTINCT_DERIVATIVES": 12,
+          "PROBE_APPLICATIONS": 2,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 2,
+          "ROW": 4,
+          "DAG_NODES": 873,
+          "TOP_LEVEL_ADDENDS": 6,
+          "DISTINCT_INTEGRALS": 22,
+          "DISTINCT_DERIVATIVES": 12,
+          "PROBE_APPLICATIONS": 2,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 3,
+          "ROW": 0,
+          "DAG_NODES": 70,
+          "TOP_LEVEL_ADDENDS": 6,
+          "DISTINCT_INTEGRALS": 0,
+          "DISTINCT_DERIVATIVES": 6,
+          "PROBE_APPLICATIONS": 1,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 3,
+          "ROW": 1,
+          "DAG_NODES": 70,
+          "TOP_LEVEL_ADDENDS": 6,
+          "DISTINCT_INTEGRALS": 0,
+          "DISTINCT_DERIVATIVES": 6,
+          "PROBE_APPLICATIONS": 1,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 3,
+          "ROW": 2,
+          "DAG_NODES": 339,
+          "TOP_LEVEL_ADDENDS": 7,
+          "DISTINCT_INTEGRALS": 6,
+          "DISTINCT_DERIVATIVES": 10,
+          "PROBE_APPLICATIONS": 2,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 3,
+          "ROW": 3,
+          "DAG_NODES": 663,
+          "TOP_LEVEL_ADDENDS": 7,
+          "DISTINCT_INTEGRALS": 22,
+          "DISTINCT_DERIVATIVES": 7,
+          "PROBE_APPLICATIONS": 2,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 3,
+          "ROW": 4,
+          "DAG_NODES": 724,
+          "TOP_LEVEL_ADDENDS": 10,
+          "DISTINCT_INTEGRALS": 22,
+          "DISTINCT_DERIVATIVES": 10,
+          "PROBE_APPLICATIONS": 2,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 4,
+          "ROW": 0,
+          "DAG_NODES": 108,
+          "TOP_LEVEL_ADDENDS": 7,
+          "DISTINCT_INTEGRALS": 0,
+          "DISTINCT_DERIVATIVES": 6,
+          "PROBE_APPLICATIONS": 1,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 4,
+          "ROW": 1,
+          "DAG_NODES": 108,
+          "TOP_LEVEL_ADDENDS": 7,
+          "DISTINCT_INTEGRALS": 0,
+          "DISTINCT_DERIVATIVES": 6,
+          "PROBE_APPLICATIONS": 1,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 4,
+          "ROW": 2,
+          "DAG_NODES": 417,
+          "TOP_LEVEL_ADDENDS": 7,
+          "DISTINCT_INTEGRALS": 6,
+          "DISTINCT_DERIVATIVES": 10,
+          "PROBE_APPLICATIONS": 2,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 4,
+          "ROW": 3,
+          "DAG_NODES": 805,
+          "TOP_LEVEL_ADDENDS": 10,
+          "DISTINCT_INTEGRALS": 22,
+          "DISTINCT_DERIVATIVES": 12,
+          "PROBE_APPLICATIONS": 2,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 4,
+          "ROW": 4,
+          "DAG_NODES": 863,
+          "TOP_LEVEL_ADDENDS": 10,
+          "DISTINCT_INTEGRALS": 22,
+          "DISTINCT_DERIVATIVES": 12,
+          "PROBE_APPLICATIONS": 2,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        }
+      ],
+      "restoredCensus": [
+        {
+          "COLUMN": 0,
+          "ROW": 0,
+          "DAG_NODES": 81,
+          "TOP_LEVEL_ADDENDS": 6,
+          "DISTINCT_INTEGRALS": 0,
+          "DISTINCT_DERIVATIVES": 6,
+          "PROBE_APPLICATIONS": 1,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 0,
+          "ROW": 1,
+          "DAG_NODES": 60,
+          "TOP_LEVEL_ADDENDS": 3,
+          "DISTINCT_INTEGRALS": 0,
+          "DISTINCT_DERIVATIVES": 5,
+          "PROBE_APPLICATIONS": 1,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 0,
+          "ROW": 2,
+          "DAG_NODES": 306,
+          "TOP_LEVEL_ADDENDS": 4,
+          "DISTINCT_INTEGRALS": 6,
+          "DISTINCT_DERIVATIVES": 8,
+          "PROBE_APPLICATIONS": 2,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 0,
+          "ROW": 3,
+          "DAG_NODES": 698,
+          "TOP_LEVEL_ADDENDS": 6,
+          "DISTINCT_INTEGRALS": 22,
+          "DISTINCT_DERIVATIVES": 11,
+          "PROBE_APPLICATIONS": 2,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 0,
+          "ROW": 4,
+          "DAG_NODES": 752,
+          "TOP_LEVEL_ADDENDS": 6,
+          "DISTINCT_INTEGRALS": 22,
+          "DISTINCT_DERIVATIVES": 11,
+          "PROBE_APPLICATIONS": 2,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 1,
+          "ROW": 0,
+          "DAG_NODES": 60,
+          "TOP_LEVEL_ADDENDS": 3,
+          "DISTINCT_INTEGRALS": 0,
+          "DISTINCT_DERIVATIVES": 5,
+          "PROBE_APPLICATIONS": 1,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 1,
+          "ROW": 1,
+          "DAG_NODES": 81,
+          "TOP_LEVEL_ADDENDS": 6,
+          "DISTINCT_INTEGRALS": 0,
+          "DISTINCT_DERIVATIVES": 6,
+          "PROBE_APPLICATIONS": 1,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 1,
+          "ROW": 2,
+          "DAG_NODES": 306,
+          "TOP_LEVEL_ADDENDS": 4,
+          "DISTINCT_INTEGRALS": 6,
+          "DISTINCT_DERIVATIVES": 8,
+          "PROBE_APPLICATIONS": 2,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 1,
+          "ROW": 3,
+          "DAG_NODES": 698,
+          "TOP_LEVEL_ADDENDS": 6,
+          "DISTINCT_INTEGRALS": 22,
+          "DISTINCT_DERIVATIVES": 11,
+          "PROBE_APPLICATIONS": 2,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 1,
+          "ROW": 4,
+          "DAG_NODES": 752,
+          "TOP_LEVEL_ADDENDS": 6,
+          "DISTINCT_INTEGRALS": 22,
+          "DISTINCT_DERIVATIVES": 11,
+          "PROBE_APPLICATIONS": 2,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 2,
+          "ROW": 0,
+          "DAG_NODES": 91,
+          "TOP_LEVEL_ADDENDS": 3,
+          "DISTINCT_INTEGRALS": 0,
+          "DISTINCT_DERIVATIVES": 6,
+          "PROBE_APPLICATIONS": 1,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 2,
+          "ROW": 1,
+          "DAG_NODES": 91,
+          "TOP_LEVEL_ADDENDS": 3,
+          "DISTINCT_INTEGRALS": 0,
+          "DISTINCT_DERIVATIVES": 6,
+          "PROBE_APPLICATIONS": 1,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 2,
+          "ROW": 2,
+          "DAG_NODES": 345,
+          "TOP_LEVEL_ADDENDS": 7,
+          "DISTINCT_INTEGRALS": 6,
+          "DISTINCT_DERIVATIVES": 10,
+          "PROBE_APPLICATIONS": 2,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 2,
+          "ROW": 3,
+          "DAG_NODES": 778,
+          "TOP_LEVEL_ADDENDS": 6,
+          "DISTINCT_INTEGRALS": 22,
+          "DISTINCT_DERIVATIVES": 13,
+          "PROBE_APPLICATIONS": 2,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 2,
+          "ROW": 4,
+          "DAG_NODES": 878,
+          "TOP_LEVEL_ADDENDS": 6,
+          "DISTINCT_INTEGRALS": 22,
+          "DISTINCT_DERIVATIVES": 13,
+          "PROBE_APPLICATIONS": 2,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 3,
+          "ROW": 0,
+          "DAG_NODES": 70,
+          "TOP_LEVEL_ADDENDS": 6,
+          "DISTINCT_INTEGRALS": 0,
+          "DISTINCT_DERIVATIVES": 6,
+          "PROBE_APPLICATIONS": 1,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 3,
+          "ROW": 1,
+          "DAG_NODES": 70,
+          "TOP_LEVEL_ADDENDS": 6,
+          "DISTINCT_INTEGRALS": 0,
+          "DISTINCT_DERIVATIVES": 6,
+          "PROBE_APPLICATIONS": 1,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 3,
+          "ROW": 2,
+          "DAG_NODES": 339,
+          "TOP_LEVEL_ADDENDS": 7,
+          "DISTINCT_INTEGRALS": 6,
+          "DISTINCT_DERIVATIVES": 10,
+          "PROBE_APPLICATIONS": 2,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 3,
+          "ROW": 3,
+          "DAG_NODES": 666,
+          "TOP_LEVEL_ADDENDS": 7,
+          "DISTINCT_INTEGRALS": 22,
+          "DISTINCT_DERIVATIVES": 8,
+          "PROBE_APPLICATIONS": 2,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 3,
+          "ROW": 4,
+          "DAG_NODES": 727,
+          "TOP_LEVEL_ADDENDS": 10,
+          "DISTINCT_INTEGRALS": 22,
+          "DISTINCT_DERIVATIVES": 11,
+          "PROBE_APPLICATIONS": 2,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 4,
+          "ROW": 0,
+          "DAG_NODES": 108,
+          "TOP_LEVEL_ADDENDS": 7,
+          "DISTINCT_INTEGRALS": 0,
+          "DISTINCT_DERIVATIVES": 6,
+          "PROBE_APPLICATIONS": 1,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 4,
+          "ROW": 1,
+          "DAG_NODES": 108,
+          "TOP_LEVEL_ADDENDS": 7,
+          "DISTINCT_INTEGRALS": 0,
+          "DISTINCT_DERIVATIVES": 6,
+          "PROBE_APPLICATIONS": 1,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 4,
+          "ROW": 2,
+          "DAG_NODES": 417,
+          "TOP_LEVEL_ADDENDS": 7,
+          "DISTINCT_INTEGRALS": 6,
+          "DISTINCT_DERIVATIVES": 10,
+          "PROBE_APPLICATIONS": 2,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 4,
+          "ROW": 3,
+          "DAG_NODES": 810,
+          "TOP_LEVEL_ADDENDS": 10,
+          "DISTINCT_INTEGRALS": 22,
+          "DISTINCT_DERIVATIVES": 13,
+          "PROBE_APPLICATIONS": 2,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 4,
+          "ROW": 4,
+          "DAG_NODES": 868,
+          "TOP_LEVEL_ADDENDS": 10,
+          "DISTINCT_INTEGRALS": 22,
+          "DISTINCT_DERIVATIVES": 13,
+          "PROBE_APPLICATIONS": 2,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        }
+      ],
+      "differences": [
+        {
+          "column": 0,
+          "row": 3,
+          "changes": {
+            "DAG_NODES": {
+              "live": 693,
+              "restored": 698
+            },
+            "DISTINCT_DERIVATIVES": {
+              "live": 10,
+              "restored": 11
+            }
+          }
+        },
+        {
+          "column": 0,
+          "row": 4,
+          "changes": {
+            "DAG_NODES": {
+              "live": 747,
+              "restored": 752
+            },
+            "DISTINCT_DERIVATIVES": {
+              "live": 10,
+              "restored": 11
+            }
+          }
+        },
+        {
+          "column": 1,
+          "row": 3,
+          "changes": {
+            "DAG_NODES": {
+              "live": 693,
+              "restored": 698
+            },
+            "DISTINCT_DERIVATIVES": {
+              "live": 10,
+              "restored": 11
+            }
+          }
+        },
+        {
+          "column": 1,
+          "row": 4,
+          "changes": {
+            "DAG_NODES": {
+              "live": 747,
+              "restored": 752
+            },
+            "DISTINCT_DERIVATIVES": {
+              "live": 10,
+              "restored": 11
+            }
+          }
+        },
+        {
+          "column": 2,
+          "row": 3,
+          "changes": {
+            "DAG_NODES": {
+              "live": 773,
+              "restored": 778
+            },
+            "DISTINCT_DERIVATIVES": {
+              "live": 12,
+              "restored": 13
+            }
+          }
+        },
+        {
+          "column": 2,
+          "row": 4,
+          "changes": {
+            "DAG_NODES": {
+              "live": 873,
+              "restored": 878
+            },
+            "DISTINCT_DERIVATIVES": {
+              "live": 12,
+              "restored": 13
+            }
+          }
+        },
+        {
+          "column": 3,
+          "row": 3,
+          "changes": {
+            "DAG_NODES": {
+              "live": 663,
+              "restored": 666
+            },
+            "DISTINCT_DERIVATIVES": {
+              "live": 7,
+              "restored": 8
+            }
+          }
+        },
+        {
+          "column": 3,
+          "row": 4,
+          "changes": {
+            "DAG_NODES": {
+              "live": 724,
+              "restored": 727
+            },
+            "DISTINCT_DERIVATIVES": {
+              "live": 10,
+              "restored": 11
+            }
+          }
+        },
+        {
+          "column": 4,
+          "row": 3,
+          "changes": {
+            "DAG_NODES": {
+              "live": 805,
+              "restored": 810
+            },
+            "DISTINCT_DERIVATIVES": {
+              "live": 12,
+              "restored": 13
+            }
+          }
+        },
+        {
+          "column": 4,
+          "row": 4,
+          "changes": {
+            "DAG_NODES": {
+              "live": 863,
+              "restored": 868
+            },
+            "DISTINCT_DERIVATIVES": {
+              "live": 12,
+              "restored": 13
+            }
+          }
+        }
+      ],
+      "cellsCertified": 25,
+      "normalizedResidualScalars": 25,
+      "coefficientResidualScalars": 256,
+      "respondingCoefficientMutations": 25,
+      "rawNonzeroForms": 25,
+      "constraintResidualScalars": 340,
+      "wrongAddressRejected": true
+    },
+    "validation-LAB_HELD__RHO4_CONSTANT.json": {
+      "liveCensus": [
+        {
+          "COLUMN": 0,
+          "ROW": 0,
+          "DAG_NODES": 81,
+          "TOP_LEVEL_ADDENDS": 6,
+          "DISTINCT_INTEGRALS": 0,
+          "DISTINCT_DERIVATIVES": 6,
+          "PROBE_APPLICATIONS": 1,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 0,
+          "ROW": 1,
+          "DAG_NODES": 60,
+          "TOP_LEVEL_ADDENDS": 3,
+          "DISTINCT_INTEGRALS": 0,
+          "DISTINCT_DERIVATIVES": 5,
+          "PROBE_APPLICATIONS": 1,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 0,
+          "ROW": 2,
+          "DAG_NODES": 86,
+          "TOP_LEVEL_ADDENDS": 4,
+          "DISTINCT_INTEGRALS": 0,
+          "DISTINCT_DERIVATIVES": 8,
+          "PROBE_APPLICATIONS": 1,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 0,
+          "ROW": 3,
+          "DAG_NODES": 687,
+          "TOP_LEVEL_ADDENDS": 6,
+          "DISTINCT_INTEGRALS": 22,
+          "DISTINCT_DERIVATIVES": 10,
+          "PROBE_APPLICATIONS": 2,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 0,
+          "ROW": 4,
+          "DAG_NODES": 741,
+          "TOP_LEVEL_ADDENDS": 6,
+          "DISTINCT_INTEGRALS": 22,
+          "DISTINCT_DERIVATIVES": 10,
+          "PROBE_APPLICATIONS": 2,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 1,
+          "ROW": 0,
+          "DAG_NODES": 60,
+          "TOP_LEVEL_ADDENDS": 3,
+          "DISTINCT_INTEGRALS": 0,
+          "DISTINCT_DERIVATIVES": 5,
+          "PROBE_APPLICATIONS": 1,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 1,
+          "ROW": 1,
+          "DAG_NODES": 81,
+          "TOP_LEVEL_ADDENDS": 6,
+          "DISTINCT_INTEGRALS": 0,
+          "DISTINCT_DERIVATIVES": 6,
+          "PROBE_APPLICATIONS": 1,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 1,
+          "ROW": 2,
+          "DAG_NODES": 86,
+          "TOP_LEVEL_ADDENDS": 4,
+          "DISTINCT_INTEGRALS": 0,
+          "DISTINCT_DERIVATIVES": 8,
+          "PROBE_APPLICATIONS": 1,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 1,
+          "ROW": 3,
+          "DAG_NODES": 687,
+          "TOP_LEVEL_ADDENDS": 6,
+          "DISTINCT_INTEGRALS": 22,
+          "DISTINCT_DERIVATIVES": 10,
+          "PROBE_APPLICATIONS": 2,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 1,
+          "ROW": 4,
+          "DAG_NODES": 741,
+          "TOP_LEVEL_ADDENDS": 6,
+          "DISTINCT_INTEGRALS": 22,
+          "DISTINCT_DERIVATIVES": 10,
+          "PROBE_APPLICATIONS": 2,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 2,
+          "ROW": 0,
+          "DAG_NODES": 91,
+          "TOP_LEVEL_ADDENDS": 3,
+          "DISTINCT_INTEGRALS": 0,
+          "DISTINCT_DERIVATIVES": 6,
+          "PROBE_APPLICATIONS": 1,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 2,
+          "ROW": 1,
+          "DAG_NODES": 91,
+          "TOP_LEVEL_ADDENDS": 3,
+          "DISTINCT_INTEGRALS": 0,
+          "DISTINCT_DERIVATIVES": 6,
+          "PROBE_APPLICATIONS": 1,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 2,
+          "ROW": 2,
+          "DAG_NODES": 129,
+          "TOP_LEVEL_ADDENDS": 7,
+          "DISTINCT_INTEGRALS": 0,
+          "DISTINCT_DERIVATIVES": 9,
+          "PROBE_APPLICATIONS": 1,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 2,
+          "ROW": 3,
+          "DAG_NODES": 748,
+          "TOP_LEVEL_ADDENDS": 6,
+          "DISTINCT_INTEGRALS": 22,
+          "DISTINCT_DERIVATIVES": 12,
+          "PROBE_APPLICATIONS": 2,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 2,
+          "ROW": 4,
+          "DAG_NODES": 850,
+          "TOP_LEVEL_ADDENDS": 6,
+          "DISTINCT_INTEGRALS": 22,
+          "DISTINCT_DERIVATIVES": 12,
+          "PROBE_APPLICATIONS": 2,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 3,
+          "ROW": 0,
+          "DAG_NODES": 70,
+          "TOP_LEVEL_ADDENDS": 6,
+          "DISTINCT_INTEGRALS": 0,
+          "DISTINCT_DERIVATIVES": 6,
+          "PROBE_APPLICATIONS": 1,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 3,
+          "ROW": 1,
+          "DAG_NODES": 70,
+          "TOP_LEVEL_ADDENDS": 6,
+          "DISTINCT_INTEGRALS": 0,
+          "DISTINCT_DERIVATIVES": 6,
+          "PROBE_APPLICATIONS": 1,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 3,
+          "ROW": 2,
+          "DAG_NODES": 103,
+          "TOP_LEVEL_ADDENDS": 7,
+          "DISTINCT_INTEGRALS": 0,
+          "DISTINCT_DERIVATIVES": 9,
+          "PROBE_APPLICATIONS": 1,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 3,
+          "ROW": 3,
+          "DAG_NODES": 663,
+          "TOP_LEVEL_ADDENDS": 7,
+          "DISTINCT_INTEGRALS": 22,
+          "DISTINCT_DERIVATIVES": 7,
+          "PROBE_APPLICATIONS": 2,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 3,
+          "ROW": 4,
+          "DAG_NODES": 724,
+          "TOP_LEVEL_ADDENDS": 10,
+          "DISTINCT_INTEGRALS": 22,
+          "DISTINCT_DERIVATIVES": 10,
+          "PROBE_APPLICATIONS": 2,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 4,
+          "ROW": 0,
+          "DAG_NODES": 106,
+          "TOP_LEVEL_ADDENDS": 7,
+          "DISTINCT_INTEGRALS": 0,
+          "DISTINCT_DERIVATIVES": 6,
+          "PROBE_APPLICATIONS": 1,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 4,
+          "ROW": 1,
+          "DAG_NODES": 106,
+          "TOP_LEVEL_ADDENDS": 7,
+          "DISTINCT_INTEGRALS": 0,
+          "DISTINCT_DERIVATIVES": 6,
+          "PROBE_APPLICATIONS": 1,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 4,
+          "ROW": 2,
+          "DAG_NODES": 162,
+          "TOP_LEVEL_ADDENDS": 7,
+          "DISTINCT_INTEGRALS": 0,
+          "DISTINCT_DERIVATIVES": 9,
+          "PROBE_APPLICATIONS": 1,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 4,
+          "ROW": 3,
+          "DAG_NODES": 799,
+          "TOP_LEVEL_ADDENDS": 9,
+          "DISTINCT_INTEGRALS": 22,
+          "DISTINCT_DERIVATIVES": 12,
+          "PROBE_APPLICATIONS": 2,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 4,
+          "ROW": 4,
+          "DAG_NODES": 856,
+          "TOP_LEVEL_ADDENDS": 10,
+          "DISTINCT_INTEGRALS": 22,
+          "DISTINCT_DERIVATIVES": 12,
+          "PROBE_APPLICATIONS": 2,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        }
+      ],
+      "restoredCensus": [
+        {
+          "COLUMN": 0,
+          "ROW": 0,
+          "DAG_NODES": 81,
+          "TOP_LEVEL_ADDENDS": 6,
+          "DISTINCT_INTEGRALS": 0,
+          "DISTINCT_DERIVATIVES": 6,
+          "PROBE_APPLICATIONS": 1,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 0,
+          "ROW": 1,
+          "DAG_NODES": 60,
+          "TOP_LEVEL_ADDENDS": 3,
+          "DISTINCT_INTEGRALS": 0,
+          "DISTINCT_DERIVATIVES": 5,
+          "PROBE_APPLICATIONS": 1,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 0,
+          "ROW": 2,
+          "DAG_NODES": 86,
+          "TOP_LEVEL_ADDENDS": 4,
+          "DISTINCT_INTEGRALS": 0,
+          "DISTINCT_DERIVATIVES": 8,
+          "PROBE_APPLICATIONS": 1,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 0,
+          "ROW": 3,
+          "DAG_NODES": 687,
+          "TOP_LEVEL_ADDENDS": 6,
+          "DISTINCT_INTEGRALS": 22,
+          "DISTINCT_DERIVATIVES": 10,
+          "PROBE_APPLICATIONS": 2,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 0,
+          "ROW": 4,
+          "DAG_NODES": 741,
+          "TOP_LEVEL_ADDENDS": 6,
+          "DISTINCT_INTEGRALS": 22,
+          "DISTINCT_DERIVATIVES": 10,
+          "PROBE_APPLICATIONS": 2,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 1,
+          "ROW": 0,
+          "DAG_NODES": 60,
+          "TOP_LEVEL_ADDENDS": 3,
+          "DISTINCT_INTEGRALS": 0,
+          "DISTINCT_DERIVATIVES": 5,
+          "PROBE_APPLICATIONS": 1,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 1,
+          "ROW": 1,
+          "DAG_NODES": 81,
+          "TOP_LEVEL_ADDENDS": 6,
+          "DISTINCT_INTEGRALS": 0,
+          "DISTINCT_DERIVATIVES": 6,
+          "PROBE_APPLICATIONS": 1,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 1,
+          "ROW": 2,
+          "DAG_NODES": 86,
+          "TOP_LEVEL_ADDENDS": 4,
+          "DISTINCT_INTEGRALS": 0,
+          "DISTINCT_DERIVATIVES": 8,
+          "PROBE_APPLICATIONS": 1,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 1,
+          "ROW": 3,
+          "DAG_NODES": 687,
+          "TOP_LEVEL_ADDENDS": 6,
+          "DISTINCT_INTEGRALS": 22,
+          "DISTINCT_DERIVATIVES": 10,
+          "PROBE_APPLICATIONS": 2,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 1,
+          "ROW": 4,
+          "DAG_NODES": 741,
+          "TOP_LEVEL_ADDENDS": 6,
+          "DISTINCT_INTEGRALS": 22,
+          "DISTINCT_DERIVATIVES": 10,
+          "PROBE_APPLICATIONS": 2,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 2,
+          "ROW": 0,
+          "DAG_NODES": 91,
+          "TOP_LEVEL_ADDENDS": 3,
+          "DISTINCT_INTEGRALS": 0,
+          "DISTINCT_DERIVATIVES": 6,
+          "PROBE_APPLICATIONS": 1,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 2,
+          "ROW": 1,
+          "DAG_NODES": 91,
+          "TOP_LEVEL_ADDENDS": 3,
+          "DISTINCT_INTEGRALS": 0,
+          "DISTINCT_DERIVATIVES": 6,
+          "PROBE_APPLICATIONS": 1,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 2,
+          "ROW": 2,
+          "DAG_NODES": 129,
+          "TOP_LEVEL_ADDENDS": 7,
+          "DISTINCT_INTEGRALS": 0,
+          "DISTINCT_DERIVATIVES": 9,
+          "PROBE_APPLICATIONS": 1,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 2,
+          "ROW": 3,
+          "DAG_NODES": 748,
+          "TOP_LEVEL_ADDENDS": 6,
+          "DISTINCT_INTEGRALS": 22,
+          "DISTINCT_DERIVATIVES": 12,
+          "PROBE_APPLICATIONS": 2,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 2,
+          "ROW": 4,
+          "DAG_NODES": 850,
+          "TOP_LEVEL_ADDENDS": 6,
+          "DISTINCT_INTEGRALS": 22,
+          "DISTINCT_DERIVATIVES": 12,
+          "PROBE_APPLICATIONS": 2,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 3,
+          "ROW": 0,
+          "DAG_NODES": 70,
+          "TOP_LEVEL_ADDENDS": 6,
+          "DISTINCT_INTEGRALS": 0,
+          "DISTINCT_DERIVATIVES": 6,
+          "PROBE_APPLICATIONS": 1,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 3,
+          "ROW": 1,
+          "DAG_NODES": 70,
+          "TOP_LEVEL_ADDENDS": 6,
+          "DISTINCT_INTEGRALS": 0,
+          "DISTINCT_DERIVATIVES": 6,
+          "PROBE_APPLICATIONS": 1,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 3,
+          "ROW": 2,
+          "DAG_NODES": 103,
+          "TOP_LEVEL_ADDENDS": 7,
+          "DISTINCT_INTEGRALS": 0,
+          "DISTINCT_DERIVATIVES": 9,
+          "PROBE_APPLICATIONS": 1,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 3,
+          "ROW": 3,
+          "DAG_NODES": 663,
+          "TOP_LEVEL_ADDENDS": 7,
+          "DISTINCT_INTEGRALS": 22,
+          "DISTINCT_DERIVATIVES": 7,
+          "PROBE_APPLICATIONS": 2,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 3,
+          "ROW": 4,
+          "DAG_NODES": 724,
+          "TOP_LEVEL_ADDENDS": 10,
+          "DISTINCT_INTEGRALS": 22,
+          "DISTINCT_DERIVATIVES": 10,
+          "PROBE_APPLICATIONS": 2,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 4,
+          "ROW": 0,
+          "DAG_NODES": 106,
+          "TOP_LEVEL_ADDENDS": 7,
+          "DISTINCT_INTEGRALS": 0,
+          "DISTINCT_DERIVATIVES": 6,
+          "PROBE_APPLICATIONS": 1,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 4,
+          "ROW": 1,
+          "DAG_NODES": 106,
+          "TOP_LEVEL_ADDENDS": 7,
+          "DISTINCT_INTEGRALS": 0,
+          "DISTINCT_DERIVATIVES": 6,
+          "PROBE_APPLICATIONS": 1,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 4,
+          "ROW": 2,
+          "DAG_NODES": 162,
+          "TOP_LEVEL_ADDENDS": 7,
+          "DISTINCT_INTEGRALS": 0,
+          "DISTINCT_DERIVATIVES": 9,
+          "PROBE_APPLICATIONS": 1,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 4,
+          "ROW": 3,
+          "DAG_NODES": 799,
+          "TOP_LEVEL_ADDENDS": 9,
+          "DISTINCT_INTEGRALS": 22,
+          "DISTINCT_DERIVATIVES": 12,
+          "PROBE_APPLICATIONS": 2,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        },
+        {
+          "COLUMN": 4,
+          "ROW": 4,
+          "DAG_NODES": 856,
+          "TOP_LEVEL_ADDENDS": 10,
+          "DISTINCT_INTEGRALS": 22,
+          "DISTINCT_DERIVATIVES": 12,
+          "PROBE_APPLICATIONS": 2,
+          "FOREIGN_PROBES": 0,
+          "UNSUBSTITUTED_FIELDS": 0
+        }
+      ],
+      "differences": [],
+      "cellsCertified": 25,
+      "normalizedResidualScalars": 25,
+      "coefficientResidualScalars": 231,
+      "respondingCoefficientMutations": 25,
+      "rawNonzeroForms": 25,
+      "constraintResidualScalars": 0,
+      "wrongAddressRejected": true
+    }
+  },
+  "completedProofHashes": {
+    "restored-cell-proofs/LAB_HELD__RHOBR_CONSTANT/cell-1-2.pickle": "37a7653f83a37de584c5e73e4c5803cff5e4da96d69910a674b2cfe4102625d1",
+    "restored-cell-proofs/LAB_HELD__RHOBR_CONSTANT/cell-1-3.pickle": "49725660b9c0a3032187bc8326261457c394e34b33d12cd29201da37c3afb1d1",
+    "restored-cell-proofs/LAB_HELD__RHOBR_CONSTANT/cell-0-3.pickle": "55f9e2143fac53727150257e07a0542db1485f7b70cda31113638d057f9a28fc",
+    "restored-cell-proofs/LAB_HELD__RHOBR_CONSTANT/cell-1-0.pickle": "36af958c375cc7de1b0bcd884bd1dce55b5dfa4fc2319203e78ca233a7092e04",
+    "restored-cell-proofs/LAB_HELD__RHOBR_CONSTANT/cell-0-1.pickle": "f8df6e8f9521d6ce1258be0efde2ac0c8f46f839d5f911a88aa60879e47fc695",
+    "restored-cell-proofs/LAB_HELD__RHOBR_CONSTANT/cell-3-2.pickle": "56b69a8e2ed4cdcb0dc4ab9a483e2e5286699c7b8cf5dad7495ed165a156446c",
+    "restored-cell-proofs/LAB_HELD__RHOBR_CONSTANT/cell-2-1.pickle": "c50cad363a2cc6e69fb5cc61525730b76b37145b3df76cbf4afb2f77fdbf0e91",
+    "restored-cell-proofs/LAB_HELD__RHOBR_CONSTANT/cell-4-3.pickle": "b0e73a16d8f0471c09276fda655b4b680f1eb5d4f2a24ff067184862df420265",
+    "restored-cell-proofs/LAB_HELD__RHOBR_CONSTANT/cell-1-1.pickle": "7338960a8c9515e34d36d4271f51f84db1490db21ad0c2b9121914684f2950fb",
+    "restored-cell-proofs/LAB_HELD__RHOBR_CONSTANT/cell-0-0.pickle": "707993ebec1ab7ea15911388934b7322490e63e09909d71918900c0705be0750",
+    "restored-cell-proofs/LAB_HELD__RHOBR_CONSTANT/cell-0-2.pickle": "993b5a10d114693288bf3b215faf15e2e5818209c8ebd3eb2b03f9adb94a5bd7",
+    "restored-cell-proofs/LAB_HELD__RHOBR_CONSTANT/cell-4-0.pickle": "e014f9112d581b7be7ae0c3be57af76e31fed9bdbb4d5c379f2b48d9be0ff5fc",
+    "restored-cell-proofs/LAB_HELD__RHOBR_CONSTANT/cell-3-4.pickle": "3de452abd02bf0228198b46f5d27f979b3b47792f1435de7f2eb8b351a972c02",
+    "restored-cell-proofs/LAB_HELD__RHOBR_CONSTANT/cell-3-1.pickle": "307b1bbd18871dd169cd3e4d1b20cf49a9adc6e32a93de3b153a40f23a9b194b",
+    "restored-cell-proofs/LAB_HELD__RHOBR_CONSTANT/cell-3-3.pickle": "f75c073cd7b6ad3c315bc7a4d10b54df149ee058e8182b16b6b915d286d70b3b",
+    "restored-cell-proofs/LAB_HELD__RHOBR_CONSTANT/cell-4-2.pickle": "1fa0a27ec28bcabfaaf17a7711816701cf7f78f24afbefa8848c607589831263",
+    "restored-cell-proofs/LAB_HELD__RHOBR_CONSTANT/cell-0-4.pickle": "3f137873b93dcf694289a718ef69a27dcb3670ba5b3309a4b1f6c34a9bc0ef23",
+    "restored-cell-proofs/LAB_HELD__RHOBR_CONSTANT/cell-2-4.pickle": "bdc690d4fcea8166a8faaff24f88c4e6a3862b78305a8a53e815f478ef603e61",
+    "restored-cell-proofs/LAB_HELD__RHOBR_CONSTANT/cell-2-2.pickle": "1b9c320881ef68984cddeb5ed4977d16439ebb4729fe529023329fa174555095",
+    "restored-cell-proofs/LAB_HELD__RHOBR_CONSTANT/cell-1-4.pickle": "a2663b597960c875a1bacc59dbeb41751cd3ad25854ecbdcacc7360db72c285b",
+    "restored-cell-proofs/LAB_HELD__RHOBR_CONSTANT/cell-3-0.pickle": "753afe6df92c2f27e3ddea7c166bd7131b45f513af0f2f77e1444646960f230d",
+    "restored-cell-proofs/LAB_HELD__RHOBR_CONSTANT/cell-2-3.pickle": "351ab37b5e5828bc5c26e882ae45e00756c17fa1df6dd31c3b2f3d5f83f7feac",
+    "restored-cell-proofs/LAB_HELD__RHOBR_CONSTANT/cell-2-0.pickle": "3e0931d21a7809749378edb1b4ff98578f9a010c5ee3db42a02595147075a9d4",
+    "restored-cell-proofs/LAB_HELD__RHOBR_CONSTANT/cell-4-4.pickle": "fc8ba1f29a08e3d97203dc5ec250f823496978e6223f4a388b26a9a940d046e0",
+    "restored-cell-proofs/LAB_HELD__RHOBR_CONSTANT/cell-4-1.pickle": "f6936e78daaec096f0d8c61c52bbde774c26e26ec10b33128390e53b090f0815",
+    "restored-cell-proofs/LAB_HELD__RHO4_CONSTANT/cell-1-2.pickle": "8a5c46941744cfadf667c4ead7c2b97dd165bc36ed22884d751e964b834a302d",
+    "restored-cell-proofs/LAB_HELD__RHO4_CONSTANT/cell-1-3.pickle": "5b8fd1983a57908e2215fb56fc43d94c3c0f2cc56e4328d7096ce2cca08deb83",
+    "restored-cell-proofs/LAB_HELD__RHO4_CONSTANT/cell-0-3.pickle": "4bdbc1afaec22c3b64ffcd0716c5986ece55c96f46bb1b9ffd4a8a11b7d304d0",
+    "restored-cell-proofs/LAB_HELD__RHO4_CONSTANT/cell-1-0.pickle": "20e4350064a08cd2b43b89ac02d13a6a2f102e7fa2f21161ab8fb90cc745be06",
+    "restored-cell-proofs/LAB_HELD__RHO4_CONSTANT/cell-0-1.pickle": "11a437528a58f7c031025d29441f68b797caa39e79433015231707aa6e75cb9e",
+    "restored-cell-proofs/LAB_HELD__RHO4_CONSTANT/cell-3-2.pickle": "434d8e8f2ff6bcaa7ca5fe8896b825ab1352009cd4eca1683cd36db77798e9a6",
+    "restored-cell-proofs/LAB_HELD__RHO4_CONSTANT/cell-2-1.pickle": "dc7bed56a9aec18f13513f2ed8ad53fbf4c857546863be04165f8d79b0cb6abe",
+    "restored-cell-proofs/LAB_HELD__RHO4_CONSTANT/cell-4-3.pickle": "b2998778619d6eb0e12f3da69d27d4a68a9f3da5fb4c050b2de720bd2f453039",
+    "restored-cell-proofs/LAB_HELD__RHO4_CONSTANT/cell-1-1.pickle": "bcfbbe1b191afe9509ff6505f46013fbb42bf72a0c355d6958521a5d1283b1e3",
+    "restored-cell-proofs/LAB_HELD__RHO4_CONSTANT/cell-0-0.pickle": "5c9a30ed1d728ecd67073caa7112bfd0a2f45af6cd412b3616b475f510e0de81",
+    "restored-cell-proofs/LAB_HELD__RHO4_CONSTANT/cell-0-2.pickle": "fdb0f2df2bb302678bc3dbcf898230eec8008fb4de5ea40a2c39229872e26d35",
+    "restored-cell-proofs/LAB_HELD__RHO4_CONSTANT/cell-4-0.pickle": "28f5ffdaaf18ba028946ffc2494bd0d01e16192523f0b96404e2d8a651fec255",
+    "restored-cell-proofs/LAB_HELD__RHO4_CONSTANT/cell-3-4.pickle": "b833d866fcf84de41eac743c9e311a78d4448ca9a25bf926d5285302db76b9bc",
+    "restored-cell-proofs/LAB_HELD__RHO4_CONSTANT/cell-3-1.pickle": "9c864b8da54d5d44a2495c539d527cddbeeaf8176a30f6a59a5122ecb77d948f",
+    "restored-cell-proofs/LAB_HELD__RHO4_CONSTANT/cell-3-3.pickle": "dc74895cd84c7ac751e941d328ae8564dd4680b729674b97b969260684eccd05",
+    "restored-cell-proofs/LAB_HELD__RHO4_CONSTANT/cell-4-2.pickle": "2da6f2123b313ed068f1bb1d21cdde07b02ee7d76cfbf8f52b87a69ec70ed070",
+    "restored-cell-proofs/LAB_HELD__RHO4_CONSTANT/cell-0-4.pickle": "090466a132f0413d89921803e58b9086492e2d06081ed388c98f13e5dcff64c8",
+    "restored-cell-proofs/LAB_HELD__RHO4_CONSTANT/cell-2-4.pickle": "a7eaaa3c7a4a4f5183064b282b71d9f52c4446dd5a0c89605f00e951d48f8ea3",
+    "restored-cell-proofs/LAB_HELD__RHO4_CONSTANT/cell-2-2.pickle": "a818481420605d430fccbc50610133900f44c60eb492c6a49460627d5a623ebf",
+    "restored-cell-proofs/LAB_HELD__RHO4_CONSTANT/cell-1-4.pickle": "2dfb23ede3dd313b3d1aa242a8b628cf3021a6be92c7775f64e01d7a0436e165",
+    "restored-cell-proofs/LAB_HELD__RHO4_CONSTANT/cell-3-0.pickle": "31cd104ec821442d3b8672694f78ff03adde9be21695d97a095ec946bb090e40",
+    "restored-cell-proofs/LAB_HELD__RHO4_CONSTANT/cell-2-3.pickle": "1b7e0b9a8dcc28720e66fd66537243863b506621b9b76276d03556e68e3a0ad2",
+    "restored-cell-proofs/LAB_HELD__RHO4_CONSTANT/cell-2-0.pickle": "399ee81998496e2fadfd28382bfb4dba0a58bd74b32ce9bfa4ee3cfabd266944",
+    "restored-cell-proofs/LAB_HELD__RHO4_CONSTANT/cell-4-4.pickle": "f86a1b4d29525dd3853fda78e0ff05a6900f90b36a821f2b3fe3b91fc1ee1708",
+    "restored-cell-proofs/LAB_HELD__RHO4_CONSTANT/cell-4-1.pickle": "cd2de3efb8277bd2dfa68bb4ccdbd7d5994749118619c9b437565699e330daa1",
+    "restored-cell-proofs/MATERIAL_ADVECTED__RHO4_CONSTANT/cell-1-2.pickle": "0ff1678b3831d2e436fe05f3aedab196250ad8acef20c6bc42d5beae015ae308",
+    "restored-cell-proofs/MATERIAL_ADVECTED__RHO4_CONSTANT/cell-1-3.pickle": "1b84d33ec6dc2c3139d22d1873ca893c4af332e6cec7059534055a1208dc92b1",
+    "restored-cell-proofs/MATERIAL_ADVECTED__RHO4_CONSTANT/cell-0-3.pickle": "1717244ee7657d54ef01090c701578a1e6eb84338dd85d896d7d841870a4dfa5",
+    "restored-cell-proofs/MATERIAL_ADVECTED__RHO4_CONSTANT/cell-1-0.pickle": "4d3b4b24f2a3a8ebcee47c8b3aeb15f567fa65026f9415e35ae8b835d95fd259",
+    "restored-cell-proofs/MATERIAL_ADVECTED__RHO4_CONSTANT/cell-0-1.pickle": "0f5edf7249504006b2c2cbbe4d31019f0257793b150e492580110060b76efca3",
+    "restored-cell-proofs/MATERIAL_ADVECTED__RHO4_CONSTANT/cell-3-2.pickle": "fa6a3be7b0209e5ea32f1f0f87afa50324a30f604a4e6f83b41bd211e6cae5d3",
+    "restored-cell-proofs/MATERIAL_ADVECTED__RHO4_CONSTANT/cell-2-1.pickle": "7ffe123f42ee5b11688edc62a9be77077e2cd1a460f892163287d7b27c6d7c87",
+    "restored-cell-proofs/MATERIAL_ADVECTED__RHO4_CONSTANT/cell-4-3.pickle": "20cb6b2eeb2ae4c9f0fee82b24d405fc8af5fc6597df3368be7fe00f8f0f9bb8",
+    "restored-cell-proofs/MATERIAL_ADVECTED__RHO4_CONSTANT/cell-1-1.pickle": "7cdab158a05e31cdda39f103ec3ff24f405fbf61ab91058ab2d3d79a24379382",
+    "restored-cell-proofs/MATERIAL_ADVECTED__RHO4_CONSTANT/cell-0-0.pickle": "6ae93ecb539b5791561f9e2b0ab9d29e5bf328915b15e40c76e94fafb77cb955",
+    "restored-cell-proofs/MATERIAL_ADVECTED__RHO4_CONSTANT/cell-0-2.pickle": "54440d47fd6957eddcd3282ba7914ae91027b162f1ea763dea9f1e9eaa9e6f2f",
+    "restored-cell-proofs/MATERIAL_ADVECTED__RHO4_CONSTANT/cell-4-0.pickle": "d2a4fecd8e41c17c7e9149da2674b8c0ca116bd5d8430ad7f5d7c7cba85792be",
+    "restored-cell-proofs/MATERIAL_ADVECTED__RHO4_CONSTANT/cell-3-4.pickle": "db775b62545ef1531da964a6fe40f3b85dda3c1f879ebf3bca58568cf291f279",
+    "restored-cell-proofs/MATERIAL_ADVECTED__RHO4_CONSTANT/cell-3-1.pickle": "71950b37b55d35a4fa11835a1c21cd382ef8cbb7589c3f4190ef275e9210d4db",
+    "restored-cell-proofs/MATERIAL_ADVECTED__RHO4_CONSTANT/cell-3-3.pickle": "2b81a4feac2ed6a216597d8f63f5c64d5049801d7a5ec345ad9381064c26985e",
+    "restored-cell-proofs/MATERIAL_ADVECTED__RHO4_CONSTANT/cell-4-2.pickle": "cea53d919d27f28f4aba318a87ba5b421e572d7c246f8ca4f7fb130e849d689e",
+    "restored-cell-proofs/MATERIAL_ADVECTED__RHO4_CONSTANT/cell-0-4.pickle": "26abe9ca47be437cf97ff4a7ff7775fb3f68d6ff8793da3d1568fc831d358462",
+    "restored-cell-proofs/MATERIAL_ADVECTED__RHO4_CONSTANT/cell-2-4.pickle": "71b71998402667633e990a97dc46ec58eb7d15d8fff31302810e79ad35584315",
+    "restored-cell-proofs/MATERIAL_ADVECTED__RHO4_CONSTANT/cell-2-2.pickle": "d115dfc78a8cce7f561ee331e5da3a24c72fd582b99e66676ea966963a655487",
+    "restored-cell-proofs/MATERIAL_ADVECTED__RHO4_CONSTANT/cell-1-4.pickle": "609e14c8295ff89b5f60d2eeba6fce4c43fd0a02ac352dbda4722ae70e4f018a",
+    "restored-cell-proofs/MATERIAL_ADVECTED__RHO4_CONSTANT/cell-3-0.pickle": "ecafd875a0844eff31250497215d284d5c75c818142827d52dbe444811fbe2d9",
+    "restored-cell-proofs/MATERIAL_ADVECTED__RHO4_CONSTANT/cell-2-3.pickle": "d2187931773b7cc1da916fb817ecb0915921c0b0f05e19d11d976eb70d8e2c96",
+    "restored-cell-proofs/MATERIAL_ADVECTED__RHO4_CONSTANT/cell-2-0.pickle": "ded313e08561d21c7826638544796ffc567b6fe9e9b97c989303cbabecd72166",
+    "restored-cell-proofs/MATERIAL_ADVECTED__RHO4_CONSTANT/cell-4-4.pickle": "c44066edccc1bc9a35f7667244d56581dbcefcee026a140058d00ecd5bfc664f",
+    "restored-cell-proofs/MATERIAL_ADVECTED__RHO4_CONSTANT/cell-4-1.pickle": "a2cc12737bb9a08a00a29c6efd35f17b78177fefc2f6a486caaa52b1249dd8cd"
+  },
+  "remainingValidator": "_measurements/S11c_d_remaining_case_sources_finish.py",
+  "finishFocused": "_measurements/S11c_d_remaining_case_sources_finish_focused.json",
+  "validatorJoin": {
+    "wholeValidatorReverseAstJoin": true,
+    "changes": {
+      "cases": 1,
+      "snapshot": 1,
+      "prior": 1
+    },
+    "originalAstSha256": "82c8e77662bcf31e45f51f947d537edc9e6d6d750208b18d7c6d615640229082",
+    "derivedAstSha256": "741d2f3e2fd4023c35a8080e79d3257507e608ee9b8b4bafbe22a5edde6e7e84"
   }
 }

@@ -54,11 +54,13 @@ joins pass. Separate derivative moments/end jumps remain explicit. This is
 one selected form control, not profile independence. Uniform/covariance
 controls, frequency poles and final integration remain; tiny reflection/loss
 is unresolved. No broad quadrature sweep is queued.
-The [three uniform source controls](S11c_d_uniform_source_report.md) are now
-running from the accepted reduced rows, with exact native-constructor/input
-joins. They compute separate LEFT, RIGHT and REFERENCE symbols and common-basis
-coupling triplets. Uniform modes/currents and response remain the next stage;
-this source run does not claim their completion.
+The [three uniform source controls](S11c_d_uniform_source_report.md) pass in
+50.67 seconds: all210 source residual scalars and509 metadata paths check.
+Both transverse/thickness coupling blocks compute to zero in the three
+constant backgrounds; the full right symbol retains zero-jet contrast.
+This is the specified case and endpoint input, not a global decoupling claim.
+Uniform full-subspace currents and matching responses are next; they are not
+established by the source-symbol result alone.
 The older checkpoint narrative below records history, not the current task
 queue. The retained solver/export suffix remains byte-identical, interpreted
 under the new acceptance addendum and the approved pole correction.

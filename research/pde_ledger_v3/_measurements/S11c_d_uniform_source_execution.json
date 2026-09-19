@@ -1,5 +1,5 @@
 {
-  "status": "PRODUCTION_RUNNING",
+  "status": "PUBLISHED_ANNEX_VERIFIED",
   "checker": "S11c_d_uniform_source.py",
   "plan": "S11c_d_uniform_source_plan.md",
   "report": "S11c_d_uniform_source_report.md",
@@ -11,7 +11,7 @@
     "nativeThreads": 1,
     "addressSpaceBytes": 2147483648
   },
-  "next": "Compute and validate all three fresh constant reduced symbols and common-basis coupling triplets; then uniform modes/currents and response.",
+  "next": "Re-evaluate complete uniform nullspaces/current matrices at the joined isolated roots and compute each matched-constant channel response.",
   "implementationCommit": "62738ea2",
   "launch": {
     "launchedUtc": "2026-09-19T18:05:10.749184+00:00",
@@ -43,5 +43,34 @@
     "status": "running",
     "stderrBytes": 0,
     "watcherStderrBytes": 0
+  },
+  "checkpoint": "S11c_d_uniform_source_checkpoint.json",
+  "outcome": {
+    "stage": "uniform_construct",
+    "command": [
+      "python",
+      "-u",
+      "_measurements/S11c_d_uniform_source.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-uniform-source-20260919/production/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-uniform-source-20260919/production/uniform_construct.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-uniform-source-20260919/production/uniform_construct.stderr",
+    "startedUtc": "2026-09-19T18:05:10.793417+00:00",
+    "childPid": 665680,
+    "status": "completed",
+    "exitCode": 0,
+    "wallSeconds": 50.6652318527922,
+    "stderrBytes": 0,
+    "finishedUtc": "2026-09-19T18:06:01.458705+00:00"
+  },
+  "publication": {
+    "path": "scripts/out/S11c_d_uniform_source.out",
+    "bytes": 175510,
+    "sha256": "5e9cbf0b5c0ee54c2290f3e273bc4d2b17439078318ea3c78fd26e274559b6f3",
+    "annexKey": "MD5E-s175510--a5768e63b60ddb2f9d32e7cc62acdbe5.out",
+    "symlink": "../../../../.git/annex/objects/0M/1g/MD5E-s175510--a5768e63b60ddb2f9d32e7cc62acdbe5.out/MD5E-s175510--a5768e63b60ddb2f9d32e7cc62acdbe5.out",
+    "md5": "a5768e63b60ddb2f9d32e7cc62acdbe5",
+    "commit": "63c4c480e06f3a7ee6c4a66e783f279b0921556c"
   }
 }

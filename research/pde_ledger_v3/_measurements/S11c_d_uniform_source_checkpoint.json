@@ -1,0 +1,311 @@
+{
+  "status": "PUBLISHED_ANNEX_VERIFIED",
+  "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-uniform-source-20260919/production/complete",
+  "outcome": {
+    "stage": "uniform_construct",
+    "command": [
+      "python",
+      "-u",
+      "_measurements/S11c_d_uniform_source.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-uniform-source-20260919/production/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-uniform-source-20260919/production/uniform_construct.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-uniform-source-20260919/production/uniform_construct.stderr",
+    "startedUtc": "2026-09-19T18:05:10.793417+00:00",
+    "childPid": 665680,
+    "status": "completed",
+    "exitCode": 0,
+    "wallSeconds": 50.6652318527922,
+    "stderrBytes": 0,
+    "finishedUtc": "2026-09-19T18:06:01.458705+00:00"
+  },
+  "checksSha256": "02ec92b2634ccdc29e159e1d308cb537c7cdbcea7c3a37e17516f15981ee8b2b",
+  "checks": {
+    "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-uniform-source-20260919/production/complete",
+    "sourceFiles": {
+      "scripts/S11c_d_mixing_scattering_sympy_audit.py": "5bf77729682960bb59f10c672a5fe3f67a98b0a9533da7c6189a37183596050f",
+      "scripts/S11c_b_exports.py": "3c6555f90a85382a5e96f3f961f0e36a4875d9259fe1be947fa8e683669b7084",
+      "scripts/S11c_c1_exports.py": "a5353b86dc526fd1b56734fdbdf7dc7f42387a3195ab4de84e8994f751871cdc",
+      "scripts/S11c_c2_exports.py": "2ba5ed487b84ecb98290df6f1650fa6210fe2784cfa02a0f3cff96cd718411cd",
+      "directives/S11c_d_SHARED_PHYSICS.md": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5",
+      "scripts/ledger_fold.py": "97da78c6631c09e5575dd14511760506f1ac08771cf07948978004e92f0b2333",
+      "directives/S11b_SHARED_PHYSICS.md": "9ea9e388e9d6421a841eaf851d12e1793527bba9a24aeeface3bfac2f4b40078",
+      "scripts/S11c_d_output_codec.py": "49873a2fa5c3184aab097263f0a6128379e094e42dbde5052456c5f3908bf717",
+      "_measurements/S11c_d_uniform_source.py": "2a135aea365c7b5e57bfff7683c7b927cda52c0d37f6a9bad3c961eb6205a2b2",
+      "_measurements/S11c_d_uniform_source_plan.md": "7b81e08568546585a11ce5ed6ebdd7b184bf4e38e55f8065440c7d4550610e33",
+      "_measurements/S11c_d_continuum_grades.py": "0443c3adbeaf813ad66c60af0a50c96e9a841277d51f9c23bf1c601d2fdf329d",
+      "_measurements/S11c_d_continuum_boundary.py": "ed3a6539d3151c52d25f12308b121897baf3bd6a5a626a598ab728988ab933a0",
+      "_measurements/S11c_d_reduced_action_source_checkpoint.json": "b6dcd36ee6cf8ed3b3943e207012dd165fce62ec39cb8f53ca3c23f4715d094b",
+      "_measurements/S11c_d_variable_profile_development_input.json": "660b2b0b54494dce964c7f5fbd722a76a7e894d8ed92b18b5eb6290c3c10f1d5",
+      "directives/S11c_d_EXPLORATORY_ACCEPTANCE.md": "5c1e560a78d40739af8b1318c0487e20bf2b816c41109889e12004266c72840c",
+      "directives/S11c_d_NONLINEAR_POLE_CONTRACT.md": "2b6018faf0d5ca772bf9c980174d8ebe7545127a3bf43ba01d1b3c0b6a5be423"
+    },
+    "inputPackets": {
+      "/var/projects/toy_physics/_scratch/s11c/s11c-reduced-action-source-20260914/complete/reduced-action.pickle": "e9062c3455c7e59fe816f47172062a0c118b201d03809ec0826575dac22872b0",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-thickness-coordinate-20260914/d_full/manifest.json": "7ba5c4aee54860f3665099ef33fc048602a53c742f41360ce46bcc1e75b82421",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-thickness-coordinate-20260914/d_full/source/scripts/S11c_d_mixing_scattering_sympy_audit.py": "7926ec3bb2e456f49b33fd025b901ecf836ca690178fb7f0d3d335a37874a0f1",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-reduced-action-source-20260914/complete/source/scripts/S11c_d_mixing_scattering_sympy_audit.py": "0d0ef5da7136f8a2033bd0fb076c56523d9097f972748b652b93b8778adc5101",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-thickness-coordinate-20260914/d_full/symbols/REFERENCE_LAB_HELD_RHO4_CONSTANT.pickle": "b453f91c68e6f9281716805de18081cee7bdc348f4cd32ca40ed66a3e2225fbd",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-thickness-coordinate-20260914/d_full/symbols/LEFT_LAB_HELD_RHO4_CONSTANT.pickle": "35e5dba88a3d367a3be84d148e9fe3aee2c85d34076b269219ca0e10fa0a27f4",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-thickness-coordinate-20260914/d_full/symbols/RIGHT_LAB_HELD_RHO4_CONSTANT.pickle": "1d52bed28683e0736324e3cf46b3a69cdc092df6368b1036595b40dc4aaae8e2"
+    },
+    "sourceResidualScalars": 210,
+    "unresolved": {
+      "REFERENCE": {
+        "integrals": false,
+        "normalCoordinates": false,
+        "regulator": false,
+        "profiles": false
+      },
+      "LEFT": {
+        "integrals": false,
+        "normalCoordinates": false,
+        "regulator": false,
+        "profiles": false
+      },
+      "RIGHT": {
+        "integrals": false,
+        "normalCoordinates": false,
+        "regulator": false,
+        "profiles": false
+      }
+    },
+    "tagCount": 58,
+    "writeKeys": 27,
+    "metadataPaths": 509,
+    "packetSha256BeforeEmission": "a482c5023d16558f52b20d0a347d6e38f33f0f06f780abd256c5220f922b5571",
+    "packetSha256AfterEmission": "a482c5023d16558f52b20d0a347d6e38f33f0f06f780abd256c5220f922b5571",
+    "artifacts": {
+      "left-source-residuals.pickle": {
+        "bytes": 373,
+        "sha256": "f00e989fd994f123f6c8439ee0cbeba8434a52c16745b64162751d250ae81653"
+      },
+      "right-source-pairs.pickle": {
+        "bytes": 45947,
+        "sha256": "12f51fae98f4d0af1ef2e76d19cfa714d9476657e72330cb564300f22c7ccbe0"
+      },
+      "reference-source-residuals.pickle": {
+        "bytes": 373,
+        "sha256": "f00e989fd994f123f6c8439ee0cbeba8434a52c16745b64162751d250ae81653"
+      },
+      "right-strong.pickle": {
+        "bytes": 14466,
+        "sha256": "24a7235ddee45a3c5727df2700b49accb764e48fda7e86c39be86620821d2a14"
+      },
+      "right-source-residuals.pickle": {
+        "bytes": 373,
+        "sha256": "f00e989fd994f123f6c8439ee0cbeba8434a52c16745b64162751d250ae81653"
+      },
+      "common.pickle": {
+        "bytes": 152330,
+        "sha256": "f05e16309a6b1d2aa841703092be69408f2a57247aca020ea92383d011a38ebb"
+      },
+      "left-weak.pickle": {
+        "bytes": 13015,
+        "sha256": "ac4b9fb0bdfdbbf45c2162f2532d40b02916010db711239f30e2d4750b186d92"
+      },
+      "left-strong.pickle": {
+        "bytes": 14497,
+        "sha256": "d3ffafc2d49f868c729c8a568e15f41ec47176aa8fbbeda5b76e426953aed20c"
+      },
+      "left-source-pairs.pickle": {
+        "bytes": 45989,
+        "sha256": "a9f2bfa406e3bc76c98d2d655f2f663e872bdc30a119e294afeb232a4f6ea768"
+      },
+      "reference-weak.pickle": {
+        "bytes": 5055,
+        "sha256": "c74295e2dd622ca52d7a424308454f328a371667f23a076ed08eb1f3d6538a75"
+      },
+      "right-weak.pickle": {
+        "bytes": 12999,
+        "sha256": "05e07897af630e30e054d86ee3b8f08cfc373108c875b65e62f76cc9f09f46f6"
+      },
+      "right.pickle": {
+        "bytes": 54961,
+        "sha256": "96bb89c7016f25572b03462a4ab54d94975181b6c29e2b21f7c1ef5bfb7e83aa"
+      },
+      "reference-source-pairs.pickle": {
+        "bytes": 13864,
+        "sha256": "19db7479172c0ddd79ca73f2b602e6e94506674bf49f8641eeebf3862f5bf7b3"
+      },
+      "uniform-source.pickle": {
+        "bytes": 109308,
+        "sha256": "a482c5023d16558f52b20d0a347d6e38f33f0f06f780abd256c5220f922b5571"
+      },
+      "reference.pickle": {
+        "bytes": 22499,
+        "sha256": "bd26038d3530b64449ab6a4cba1f10a66bc82e7c49b1f8261ae3fe77e6ae05d2"
+      },
+      "full.out": {
+        "bytes": 175510,
+        "sha256": "5e9cbf0b5c0ee54c2290f3e273bc4d2b17439078318ea3c78fd26e274559b6f3"
+      },
+      "reference-strong.pickle": {
+        "bytes": 4240,
+        "sha256": "88332cb4dfb4e88f0b0a849d486fc7d6685c82889b2ec112e87af2ef9468a4e7"
+      },
+      "reference-background.pickle": {
+        "bytes": 14035,
+        "sha256": "c96f0164c81e68db07288b19227beb53cfe786f19a7c07200b1d9062c34387ba"
+      },
+      "left-background.pickle": {
+        "bytes": 31260,
+        "sha256": "064ada16fc86d9ffb039fccc1538a6f9584db8875339f27d67a2731b0e56e091"
+      },
+      "right-background.pickle": {
+        "bytes": 31260,
+        "sha256": "b8a4b684af183d7e0f3591b2cd53d49767feb95cdb9f4365b6478a884f6e2318"
+      },
+      "left.pickle": {
+        "bytes": 39630,
+        "sha256": "9c3a1f82a7e27d9a08b3f9b91666af2724a3f930d2195bc2f61de7b90fd52592"
+      }
+    },
+    "wallSeconds": 49.29977138340473,
+    "peakRssKiB": 227580,
+    "scope": "Three separate constant reduced operator/coupling sources. Native distributional constant-background prescription; no new modal/current/scattering construction or global decoupling claim."
+  },
+  "artifacts": {
+    "left-source-residuals.pickle": {
+      "bytes": 373,
+      "sha256": "f00e989fd994f123f6c8439ee0cbeba8434a52c16745b64162751d250ae81653"
+    },
+    "right-source-pairs.pickle": {
+      "bytes": 45947,
+      "sha256": "12f51fae98f4d0af1ef2e76d19cfa714d9476657e72330cb564300f22c7ccbe0"
+    },
+    "reference-source-residuals.pickle": {
+      "bytes": 373,
+      "sha256": "f00e989fd994f123f6c8439ee0cbeba8434a52c16745b64162751d250ae81653"
+    },
+    "right-strong.pickle": {
+      "bytes": 14466,
+      "sha256": "24a7235ddee45a3c5727df2700b49accb764e48fda7e86c39be86620821d2a14"
+    },
+    "right-source-residuals.pickle": {
+      "bytes": 373,
+      "sha256": "f00e989fd994f123f6c8439ee0cbeba8434a52c16745b64162751d250ae81653"
+    },
+    "common.pickle": {
+      "bytes": 152330,
+      "sha256": "f05e16309a6b1d2aa841703092be69408f2a57247aca020ea92383d011a38ebb"
+    },
+    "left-weak.pickle": {
+      "bytes": 13015,
+      "sha256": "ac4b9fb0bdfdbbf45c2162f2532d40b02916010db711239f30e2d4750b186d92"
+    },
+    "left-strong.pickle": {
+      "bytes": 14497,
+      "sha256": "d3ffafc2d49f868c729c8a568e15f41ec47176aa8fbbeda5b76e426953aed20c"
+    },
+    "left-source-pairs.pickle": {
+      "bytes": 45989,
+      "sha256": "a9f2bfa406e3bc76c98d2d655f2f663e872bdc30a119e294afeb232a4f6ea768"
+    },
+    "reference-weak.pickle": {
+      "bytes": 5055,
+      "sha256": "c74295e2dd622ca52d7a424308454f328a371667f23a076ed08eb1f3d6538a75"
+    },
+    "right-weak.pickle": {
+      "bytes": 12999,
+      "sha256": "05e07897af630e30e054d86ee3b8f08cfc373108c875b65e62f76cc9f09f46f6"
+    },
+    "right.pickle": {
+      "bytes": 54961,
+      "sha256": "96bb89c7016f25572b03462a4ab54d94975181b6c29e2b21f7c1ef5bfb7e83aa"
+    },
+    "reference-source-pairs.pickle": {
+      "bytes": 13864,
+      "sha256": "19db7479172c0ddd79ca73f2b602e6e94506674bf49f8641eeebf3862f5bf7b3"
+    },
+    "uniform-source.pickle": {
+      "bytes": 109308,
+      "sha256": "a482c5023d16558f52b20d0a347d6e38f33f0f06f780abd256c5220f922b5571"
+    },
+    "reference.pickle": {
+      "bytes": 22499,
+      "sha256": "bd26038d3530b64449ab6a4cba1f10a66bc82e7c49b1f8261ae3fe77e6ae05d2"
+    },
+    "full.out": {
+      "bytes": 175510,
+      "sha256": "5e9cbf0b5c0ee54c2290f3e273bc4d2b17439078318ea3c78fd26e274559b6f3"
+    },
+    "reference-strong.pickle": {
+      "bytes": 4240,
+      "sha256": "88332cb4dfb4e88f0b0a849d486fc7d6685c82889b2ec112e87af2ef9468a4e7"
+    },
+    "reference-background.pickle": {
+      "bytes": 14035,
+      "sha256": "c96f0164c81e68db07288b19227beb53cfe786f19a7c07200b1d9062c34387ba"
+    },
+    "left-background.pickle": {
+      "bytes": 31260,
+      "sha256": "064ada16fc86d9ffb039fccc1538a6f9584db8875339f27d67a2731b0e56e091"
+    },
+    "right-background.pickle": {
+      "bytes": 31260,
+      "sha256": "b8a4b684af183d7e0f3591b2cd53d49767feb95cdb9f4365b6478a884f6e2318"
+    },
+    "left.pickle": {
+      "bytes": 39630,
+      "sha256": "9c3a1f82a7e27d9a08b3f9b91666af2724a3f930d2195bc2f61de7b90fd52592"
+    }
+  },
+  "validation": {
+    "status": "VALIDATED_UNIFORM_REDUCED_SOURCES",
+    "supervisorWallSeconds": 50.6652318527922,
+    "sources": 16,
+    "inputPackets": 7,
+    "artifacts": 21,
+    "zeroSourceResidualScalars": 210,
+    "computedCouplingNonzeroCounts": {
+      "REFERENCE": {
+        "TH": 0,
+        "HT": 0
+      },
+      "LEFT": {
+        "TH": 0,
+        "HT": 0
+      },
+      "RIGHT": {
+        "TH": 0,
+        "HT": 0
+      }
+    },
+    "computedFullSymbolContrastNonzeroCounts": {
+      "REFERENCE": {
+        "strong": 0,
+        "weak": 0
+      },
+      "LEFT": {
+        "strong": 0,
+        "weak": 2
+      },
+      "RIGHT": {
+        "strong": 19,
+        "weak": 18
+      }
+    },
+    "tags": 58,
+    "keys": 27,
+    "metadataPaths": 509,
+    "checksSha256": "02ec92b2634ccdc29e159e1d308cb537c7cdbcea7c3a37e17516f15981ee8b2b",
+    "validatorSha256": "76379343078795ed25d61c10b69fd79f91b72fb811be7eeccc3a014d57ad5ede",
+    "packetHashesUnchanged": true,
+    "scope": "Three computed constant-background full symbols and common-basis coupling blocks; no new modal/current/scattering or global decoupling assertion."
+  },
+  "publication": {
+    "path": "scripts/out/S11c_d_uniform_source.out",
+    "bytes": 175510,
+    "sha256": "5e9cbf0b5c0ee54c2290f3e273bc4d2b17439078318ea3c78fd26e274559b6f3",
+    "annexKey": "MD5E-s175510--a5768e63b60ddb2f9d32e7cc62acdbe5.out",
+    "symlink": "../../../../.git/annex/objects/0M/1g/MD5E-s175510--a5768e63b60ddb2f9d32e7cc62acdbe5.out/MD5E-s175510--a5768e63b60ddb2f9d32e7cc62acdbe5.out",
+    "md5": "a5768e63b60ddb2f9d32e7cc62acdbe5",
+    "commit": "63c4c480e06f3a7ee6c4a66e783f279b0921556c"
+  },
+  "validator": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-uniform-source-20260919/validate-final.py",
+    "sha256": "76379343078795ed25d61c10b69fd79f91b72fb811be7eeccc3a014d57ad5ede"
+  }
+}

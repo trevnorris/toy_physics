@@ -1,28 +1,32 @@
 # Uniform-background source control
 
-The next section5b construction uses three separate backgrounds: the computed
-left constant values everywhere, right constant values everywhere, and the
-eta=sigma=0 reference. Every background retains its own actual density/material
-map and live zero-jet contrast. It will recompute the complete reduced strong
-and weak Fourier symbols and both canonical off-diagonal coupling blocks in
-the common inherited basis. No coupling value is assumed.
+All three separate reduced-source constructions pass and are annex-published:
+50.67 seconds, clean exit and empty stderr. LEFT and RIGHT use their computed
+profile constants everywhere with live zero-jet contrast; REFERENCE sets
+eta=sigma=0. The complete5-by-5 strong and6-by-6 weak symbols agree with their
+accepted source operands in210 exact zero residual scalars. Both canonical
+transverse/thickness off-diagonal blocks compute to zero in each background,
+and their common-basis end-minus-reference differences are zero. These are
+computed results for this anchoring/density case and the approved endpoint
+values, not supplied decoupling assumptions or a global model statement.
 
-Source preflight passes. The accepted reduced row pair and all three saved
-5-by-5 strong/6-by-6 weak source layouts are present. Exact transitive native
-constructor/helper AST joins pass against both original producers; all other
-physical inputs remain byte-identical. The initial whole-engine hash check
-stopped before construction because later instrumentation had changed; that
-attempt and its logs are preserved. No upstream equation or accepted packet
-has changed. The altered Abel-sign source control is rejected.
+The full right-background symbol retains its zero-jet contrast. Complete
+symbol differences remain in the saved packets; raw expanded-expression
+nonzero counts are representation diagnostics, not separate physical effects.
+No profile, normal integration variable, unresolved integral or Abel regulator
+remains in the computed constant symbols. Their native distributional
+constant-background prescription stays separate from positive-regulator
+finite-domain scattering quadrature.
 
-The bounded source run is running with one native thread,2GiB and900seconds.
-Each background/action/symbol and its original comparison operands are saved
-before subsequent guards. No quadrature, factorization or upstream reduction
-is repeated. The native constant-background distributional prescription stays
-separate from the positive-regulator finite scattering example.
+All16 current/frozen sources, seven input packets and21 artifacts pass, as do
+58 tags,27 fresh write keys and509 full unit/grade metadata paths. The175510-byte
+transcript's backend key, symlink, size and independent SHA256 are verified.
+Exact transitive joins cover18 native definitions against both original
+producers; no imported physical input or reduced equation changed. No numerical
+quadrature, factorization or upstream reduction was repeated.
 
-No uniform modal/current or response result is newly computed by this source
-preflight. After accepting fresh operator/coupling sources, continue the actual
-complete-subspace/current and matched-constant response controls. Coordinate
-covariance, targeted frequency poles and final case/export integration remain.
-No broad quadrature or rigorous-limit campaign is queued.
+Next re-evaluate the full root subspaces and polarized currents using exact
+fresh-pencil/input joins, then compute the uniform matched-background responses.
+The source result alone is not a completed uniform scattering control.
+Coordinate covariance, targeted frequency poles and final case/export
+integration remain, under the existing practical acceptance standard.

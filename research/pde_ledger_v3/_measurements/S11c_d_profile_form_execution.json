@@ -1,5 +1,5 @@
 {
-  "status": "PRODUCTION_RUNNING",
+  "status": "PUBLISHED_ANNEX_VERIFIED",
   "checker": "S11c_d_profile_form.py",
   "plan": "S11c_d_profile_form_plan.md",
   "report": "S11c_d_profile_form_report.md",
@@ -11,7 +11,7 @@
     "nativeThreads": 1,
     "addressSpaceBytes": 2147483648
   },
-  "next": "Validate the changed-profile finite/continuum result on completion; publish via DataLad/git-annex and continue focused physical controls.",
+  "next": "Construct the three separate jet-zero uniform regressions from the reduced operator, retaining complete end modes/currents and coupling objects.",
   "implementationCommit": "cb453ef4",
   "launch": {
     "launchedUtc": "2026-09-19T17:48:35.007605+00:00",
@@ -73,5 +73,36 @@
     "path": "/var/projects/toy_physics/_scratch/s11c/s11c-profile-form-20260919/production/launch.py",
     "sha256": "8602ab2f033b36873ea0ebba7686fdcda27b7c9532c2578c57cfea653d3d2b50"
   },
-  "focusedAcceptanceCommit": "6e6df53e"
+  "focusedAcceptanceCommit": "6e6df53e",
+  "checkpoint": "S11c_d_profile_form_checkpoint.json",
+  "outcome": {
+    "stage": "profile_construct",
+    "command": [
+      "python",
+      "-u",
+      "_measurements/S11c_d_profile_form.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-profile-form-20260919/production/complete",
+      "--resume-binding",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-profile-form-20260919/focused/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-profile-form-20260919/production/profile_construct.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-profile-form-20260919/production/profile_construct.stderr",
+    "startedUtc": "2026-09-19T17:48:35.037943+00:00",
+    "childPid": 658785,
+    "status": "completed",
+    "exitCode": 0,
+    "wallSeconds": 111.60265931580216,
+    "stderrBytes": 0,
+    "finishedUtc": "2026-09-19T17:50:26.640666+00:00"
+  },
+  "publication": {
+    "path": "scripts/out/S11c_d_profile_form.out",
+    "bytes": 1772354,
+    "sha256": "89ba7daacafcfcfe20ab3a37a982f08d31f08503d95d9722754e3cf525900c80",
+    "annexKey": "MD5E-s1772354--0bd6cb6a85d9adee5e5a0e7b96c0cb7f.out",
+    "symlink": "../../../../.git/annex/objects/7v/Jg/MD5E-s1772354--0bd6cb6a85d9adee5e5a0e7b96c0cb7f.out/MD5E-s1772354--0bd6cb6a85d9adee5e5a0e7b96c0cb7f.out",
+    "md5": "0bd6cb6a85d9adee5e5a0e7b96c0cb7f",
+    "commit": "8a6d01f641f602c63383268b8f85ae26ae219539"
+  }
 }

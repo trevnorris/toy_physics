@@ -1,28 +1,39 @@
 # Profile-FORM scattering control
 
-The source binding preflight is accepted:17.52 seconds, clean exit and empty
-stderr. All400 original baseline coefficient occurrences and the independent
-full local matrix replay exactly. All80 native rows,35 generic sources,70
-Gaussian occurrences and6 nested profiles retain their actual field and
-ordered-limit identities;43 frozen/current sources,10 input packets and every
-saved binding hash pass. The new form changes40 factor and60 cell occurrences.
-All material values and all four computed endpoint limits stay identical.
+The complete changed-form finite and continuum calculation is accepted and
+annex-published. It took111.60 seconds with one numerical thread, clean exit
+and empty stderr. All80 native nonlocal rows and35 generic sources contribute
+to the645-unknown, four-incident-column response. Matrix/direct-action agreement
+is1.04e-16 scaled; finite and continuum equation residuals are5.72e-16 and
+4.53e-14. Independent continuum solve agreement is1.46e-12; actual
+boundary/current/phase residuals are below7.33e-15. Full-operator grade
+recombination agrees to5.36e-16. All43 source snapshots,10 input packets,
+25 artifacts and13572 metadata paths pass. The1.77MB transcript has228 tags
+and112 fresh write keys; backend key, symlink, size and SHA256 are verified.
 
-The new thickness edge is (1+tanh(xi)^3)/2; the new modulus shape is
-(1-tanh(xi)^2)*(1+tanh(xi)/2)/3. Computed zero-transfer derivative integrals
-and independent endpoint jumps are1 for both thickness edges and0 for both
-modulus shapes and the separate thickness bump. Every change-of-variable and
-jump residual is zero. The bump check computes its moment only, not scattering.
+The cubed-tanh thickness edge and asymmetric modulus bump preserve the
+material values and computed endpoints. Their finite complex scattering
+amplitude change is2.2254e-5 and normalized-current change3.5625e-8, below the
+predeclared1e-4 amplitude and1e-6 current resolutions. The retained-continuum
+flux-normalized amplitude change at eta=.01,sigma=.001 is2.80e-7. Independent
+coefficient changes remain explicit, including the mixed coefficient0.01899;
+coefficient magnitudes are not finite-contrast observable differences. These
+results show no resolved scattering change at our stated precision for this
+selected form control, not profile independence. Interior field changes are
+retained separately by field slot; they are not bounded by the scattering
+amplitude comparison.
 
-One changed-profile finite and retained-continuum solve is running with129
-coefficients per field, bounds64/4/14, regulator0.1, momentum16/4/4 and
-source/profile256/512. It reuses all verified binding packets byte-for-byte
-and reuses the unchanged complete endpoint/current maps. Every nonlocal matrix
-will be computed for the changed form; its saved rows also supply all independent
-continuum coefficients. No baseline quadrature or factorization is repeated.
-No changed-profile response has yet been accepted.
+The accepted binding preflight at6e6df53e replayed400 baseline coefficient
+occurrences and the independent full local matrix exactly, preserving all
+native fields and ordered limits. The production reused its three binding
+packets byte-for-byte; no baseline quadrature, factorization or mode solve was
+repeated. Separate transformed derivative integrals and endpoint jumps are1
+for both thickness edges and0 for both modulus shapes and the separate
+thickness bump, with zero Jacobian/jump residuals. The bump control computes
+its moment only, not a bump scattering response.
 
-This section5c control uses the existing1percent/amplitude1e-4/current1e-6
-practical targets. Tiny changes remain unresolved. Uniform and coordinate
-covariance controls, targeted frequency poles and final case/export integration
-remain. No broad quadrature, profile grid or rigorous-limit campaign is queued.
+Approximate modal boundaries, finite domains and regulator0.1 remain explicit.
+Tiny reflection/loss remains unresolved. Next are the three separate uniform
+regressions, coordinate covariance controls, targeted nonlinear frequency poles
+and final case/export integration. No broad profile/quadrature grid or rigorous
+operator-limit campaign is queued.

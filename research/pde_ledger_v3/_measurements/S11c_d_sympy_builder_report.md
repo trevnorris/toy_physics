@@ -367,10 +367,11 @@ The [full-subspace end continuation](S11c_d_frequency_end_report.md) is
 accepted at 86993760: ten clusters, 14 directions, all 36 candidate dispositions
 and 30 corrected points pass in 27.60 seconds. Step differences are below
 6.54e-14 and scaled Jacobian condition below 19.18. The first actual
-[finite complex-frequency pencil](S11c_d_frequency_matrix_report.md) is now
-running from e47df622 with a 900-second budget. All 80 rows and complete
-frequency-dependent end maps enter the new evaluation; no pole search has
-been performed yet.
+[finite complex-frequency pencil](S11c_d_frequency_matrix_report.md) is
+accepted: 89.88 seconds, all 80 rows and 160 cell terms, full rank 645 and
+complex equation residual 1.11e-15. Complete source and end maps vary with
+frequency in fixed seed coordinates. A small contour diagnostic is next;
+no pole search result is accepted yet.
 
 ## Retained user-approved solver/export contract
 

@@ -1,0 +1,1130 @@
+{
+  "status": "VALIDATED_FIRST_FINITE_FREQUENCY_MATRIX",
+  "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-matrix-20260919/production/complete",
+  "implementationCommit": "e47df622",
+  "outcome": {
+    "stage": "matrix_construct",
+    "command": [
+      "python",
+      "-u",
+      "_measurements/S11c_d_frequency_matrix.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-matrix-20260919/production/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-matrix-20260919/production/matrix_construct.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-matrix-20260919/production/matrix_construct.stderr",
+    "startedUtc": "2026-09-19T21:48:27.928953+00:00",
+    "childPid": 757774,
+    "status": "completed",
+    "exitCode": 0,
+    "wallSeconds": 89.87986055389047,
+    "stderrBytes": 0,
+    "finishedUtc": "2026-09-19T21:49:57.808852+00:00"
+  },
+  "checks": {
+    "status": "COMPLETE_FIRST_FINITE_FREQUENCY_MATRIX",
+    "sourceFiles": {
+      "_measurements/S11c_d_continuum_grades.py": "0443c3adbeaf813ad66c60af0a50c96e9a841277d51f9c23bf1c601d2fdf329d",
+      "_measurements/S11c_d_continuum_grade_plan.md": "693546373ea2c8c5eec4ef3c8c93732fc7440a1eb1a2cdb1a6cf9d0f5b469040",
+      "_measurements/S11c_d_reduced_action_assembly_checkpoint.json": "b4afb727b1a1ad2a468b0bab9a6ab369dbe4dd35bc46acd7150b7fa581cd984f",
+      "_measurements/S11c_d_source_fourier_factorization_checkpoint.json": "fcf6f1c5598b63c11d4f8a76d2d94c2b5bace590e83d4beea3e52e82f44158a6",
+      "_measurements/S11c_d_reduced_action_source_checkpoint.json": "b6dcd36ee6cf8ed3b3943e207012dd165fce62ec39cb8f53ca3c23f4715d094b",
+      "scripts/S11c_d_mixing_scattering_sympy_audit.py": "5bf77729682960bb59f10c672a5fe3f67a98b0a9533da7c6189a37183596050f",
+      "_measurements/S11c_d_reduced_action_source_check.py": "aae3b2402e1707ef27f217b917dc10592f38acbe35d18356fbc4886ed854f754",
+      "directives/S11c_d_EXPLORATORY_ACCEPTANCE.md": "5c1e560a78d40739af8b1318c0487e20bf2b816c41109889e12004266c72840c",
+      "_measurements/S11c_d_finite_scattering_domain_checkpoint.json": "2286978066ad6e0c8b9558a950b40521c61ac2cdfec58a9694f890c70c90280c",
+      "_measurements/S11c_d_variable_profile_development_input.json": "660b2b0b54494dce964c7f5fbd722a76a7e894d8ed92b18b5eb6290c3c10f1d5",
+      "directives/S11c_d_NONLINEAR_POLE_CONTRACT.md": "2b6018faf0d5ca772bf9c980174d8ebe7545127a3bf43ba01d1b3c0b6a5be423",
+      "scripts/S11c_b_exports.py": "3c6555f90a85382a5e96f3f961f0e36a4875d9259fe1be947fa8e683669b7084",
+      "scripts/S11c_c1_exports.py": "a5353b86dc526fd1b56734fdbdf7dc7f42387a3195ab4de84e8994f751871cdc",
+      "scripts/S11c_c2_exports.py": "2ba5ed487b84ecb98290df6f1650fa6210fe2784cfa02a0f3cff96cd718411cd",
+      "directives/S11c_d_SHARED_PHYSICS.md": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5",
+      "directives/S11b_SHARED_PHYSICS.md": "9ea9e388e9d6421a841eaf851d12e1793527bba9a24aeeface3bfac2f4b40078",
+      "scripts/ledger_fold.py": "97da78c6631c09e5575dd14511760506f1ac08771cf07948978004e92f0b2333",
+      "_measurements/S11c_d_continuum_matrices.py": "33a0e5a2fa136a55875541e15bc410159c94f56f25adc4a02589d0c704223987",
+      "_measurements/S11c_d_continuum_matrix_plan.md": "c571bf7adb9e7b4cbedd8ac80813a590d4087bebfd02da6b2615e1cc82914612",
+      "_measurements/S11c_d_continuum_grade_checkpoint.json": "3987ff4abb782050fffc767065ed9b3126da49215aa0df41320abef7fdec4692",
+      "_measurements/S11c_d_finite_scattering_domain.py": "73341408d0f6c1eb517e435dea986e180ff53615a6102697a8e3ba6747bd35aa",
+      "_measurements/S11c_d_finite_scattering.py": "f187d9426be8069342a363a0466c175d32a8cb46101e32a14c433ccb9118e469",
+      "_measurements/S11c_d_finite_scattering_resolution.py": "8e101517fde113c5f0a372bab531e63ebdcee3fff03c270ff98a7590e5a7b981",
+      "_measurements/S11c_d_end_normalization_reference_thickness_repair_checkpoint.json": "5c9456ddacd573865d00a0527b1b73b1060c613ccfe50ed89e41613fa3d9658f",
+      "_measurements/S11c_d_end_pairing_reference_thickness_repair_checkpoint.json": "1ea765d293138847a23ff7768fdba770a031659f9c978f582aff27391bf11232",
+      "_measurements/S11c_d_end_normalization_left_thickness_repair_checkpoint.json": "5871a84b7584eb35de8b8a5c450e8d0adadb41340abcbfe028ac16b360befcdb",
+      "_measurements/S11c_d_end_pairing_left_thickness_repair_checkpoint.json": "205e13614c41c504faae85cad9ee104ab51d1f1a5830b5b9e802e5fe3bc1ac9d",
+      "_measurements/S11c_d_end_normalization_right_thickness_repair_checkpoint.json": "7267d068580ecade68ce95abd599c1f5c59a95b4d7f359f9518452218c9f9a05",
+      "_measurements/S11c_d_end_pairing_right_thickness_repair_checkpoint.json": "e8e0d0771bd4365055351bdc041f0a45020f5252bdb5ff5793592d1c9c388605",
+      "_measurements/S11c_d_continuum_boundary.py": "ed3a6539d3151c52d25f12308b121897baf3bd6a5a626a598ab728988ab933a0",
+      "_measurements/S11c_d_continuum_boundary_plan.md": "08dd0c80757d2a2203b237e47957fd4e3bc1b970abfb2dad4cb3b07cf1a3c27f",
+      "_measurements/S11c_d_continuum_matrix_checkpoint.json": "4fe0e0214a5f51a6ab18c9266aa369dde4cf2b60eb51beabf3257754f91d942d",
+      "_measurements/S11c_d_matching_channels_checkpoint.json": "c4ad9b9051f9c3fadb076593dd35ec12d1779fad6d1558c691c3b735fe4d3eeb",
+      "_measurements/S11c_d_continuum_boundary_recover.py": "156252a37a9aaba207fa06ce23ca34cc7286601c8f76cdfe1a63a9e40a2f1839",
+      "_measurements/S11c_d_continuum_boundary_recovery_plan.md": "4d91587d5a202a2d9dbdedb8f9b6340cded59a08518df173ac012e49f51db2ea",
+      "_measurements/S11c_d_continuum_boundary_finish.py": "988e3248d634dd3d6a48279d198c682a9637082ddcd735207d5506c01b0af052",
+      "_measurements/S11c_d_continuum_boundary_finish_plan.md": "674e363bf4427f9c367cdc309bb336a584e332e83cb1ee7143e8c831876063da",
+      "_measurements/S11c_d_continuum_response.py": "0fe30a9c4771671e9fa139b0557f185f55d351887f2ba8b9fa4ed1abfb616db2",
+      "_measurements/S11c_d_continuum_response_plan.md": "7250a3fb303a3a3e6e89d0372d7720dd5eeae16dc01714d43d4898ea1faf0834",
+      "_measurements/S11c_d_continuum_boundary_checkpoint.json": "b2614b74b4ec68de6d9f270bdf115833eea26a9baf168643663f21314a141d2d",
+      "_measurements/S11c_d_profile_form.py": "41e113454f1ebce41c776468e1b04191933e7d21a1f9c9f65b4a75c82ca71efa",
+      "_measurements/S11c_d_profile_form_plan.md": "ae0f08ab1aff8775133acfe716484f21aa610ef81c3261addd7af709c02d77f3",
+      "_measurements/S11c_d_continuum_response_checkpoint.json": "c29b71bc8adf8b98856d00d4586b7b060c0f6d5f42778ff231e03e0d45ba0139",
+      "scripts/S11c_d_output_codec.py": "49873a2fa5c3184aab097263f0a6128379e094e42dbde5052456c5f3908bf717",
+      "_measurements/S11c_d_uniform_source.py": "2a135aea365c7b5e57bfff7683c7b927cda52c0d37f6a9bad3c961eb6205a2b2",
+      "_measurements/S11c_d_uniform_source_plan.md": "7b81e08568546585a11ce5ed6ebdd7b184bf4e38e55f8065440c7d4550610e33",
+      "_measurements/S11c_d_frequency_source.py": "9be20be462bc10bfcaa7af643b9301948dd79bc2e08eb24ebcd1386a81efcdac",
+      "_measurements/S11c_d_frequency_source_plan.md": "9224fc8b7feb37141b3613a549e146c0870d09eead211b6cf1898132d58c32a6",
+      "_measurements/S11c_d_first_jet_checkpoint.json": "6958e393383491b73a06d354a6b14e1b2c4495dacadd119a92ab5dd3fad02fe4",
+      "_measurements/S11c_d_uniform_source_checkpoint.json": "9d4b65ad07d1f403fd3aa4ec42da99db622a4d0a26d6ddce6c472148c7830085",
+      "_measurements/S11c_d_uniform_response_checkpoint.json": "74f5bd4da163dd6d78ad427fc5c4cd6926f414c961172f6854174131ea2fbc45",
+      "_measurements/S11c_d_frequency_source_binding_repair.json": "59c5d39538f67a215248b9664715385d9d601f5173e1643ac486eac7729f8b33",
+      "_measurements/S11c_d_frequency_source_finish.py": "f52846a89e6ace33fe1520b652ea913cfa148edd0114eb2ea202fbd813dff315",
+      "_measurements/S11c_d_frequency_source_threshold_recovery_plan.md": "0c570f60c057ef8c0f71873bb9729cef4f295188b26f5d968741c01b43369c24",
+      "_measurements/S11c_d_frequency_source_threshold_repair.json": "ceb82afceacaf7b649982dabc9b7ed6f743ed98a8c00d47c1b11ca1c62d2917b",
+      "_measurements/S11c_d_frequency_chart.py": "06b1e19ffd03349951488b13580f336dc7d12e15a6941191026697b5c413ed97",
+      "_measurements/S11c_d_frequency_chart_plan.md": "825829b3ad7368495b80c17bf19b008db1036b6fb2559724ab465b424d938fba",
+      "_measurements/S11c_d_frequency_source_checkpoint.json": "ca5a3fa0f33d4f5457f9c5adb46b7c9da9f935661d839d036f12b0de86692bfe",
+      "_measurements/S11c_d_uniform_response.py": "b65749ab0eaaeed372a5bf01077a030971fc3e05f05a11543443bd1de3f157d4",
+      "_measurements/S11c_d_uniform_response_plan.md": "499ba568757645642bd4a402e4aaaacb165b2a2d0904be6e5d352e6f025bfa9d",
+      "_measurements/S11c_d_frequency_end.py": "f7a698ed27872ed0594692dbf671136b079279c32f9198bd92fcee23e3303a32",
+      "_measurements/S11c_d_frequency_end_plan.md": "f92d52325fd98fc8694aeec4c7cfd52f409b0ae286bcfb6fcac6e2f6616f469a",
+      "_measurements/S11c_d_frequency_chart_checkpoint.json": "f389d9234e8aa24146e0f881fd1a9a28fb4705dbb047f9295310af03723a242d",
+      "_measurements/S11c_d_frequency_matrix.py": "97797ab676a58f16785bf4234d41eb5cd01abc0a42f39edc4e20f926b2c2b336",
+      "_measurements/S11c_d_frequency_matrix_plan.md": "09bf24902656fa38524cd745a4fe731c1d054d0a396536e2631fd63d1223319c",
+      "_measurements/S11c_d_frequency_end_focused.json": "99697cf6138594ab78263d235237b42262ec0496ef0ac4986517d4594a9e2872"
+    },
+    "inputPackets": {
+      "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-matrices-20260919/production/complete/continuum-matrices.pickle": "1db95fb176c970298b33005a94e25f8ada3ba1423fad605231be66d8a711954e",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/finish-02/complete/continuum-boundary.pickle": "8e3e53c3b7b06e3e81f961f013b77b4b87dfede081db75b4de458503b062eed0",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-finite-domain-20260919/production/complete/regulator/complete/finite-system.pickle": "2a043895b5e8a203cc4dd0b517ba3feec61300ab812a0404f19195cc39c0319a",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-end-normalization-20260914/reference/modal.pickle": "69668d29e11af4ca89c667f1ff39e7f646366eba7cb596dde39e74fcbefe3cd7",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-reduced-action-source-20260914/complete/reduced-action.pickle": "e9062c3455c7e59fe816f47172062a0c118b201d03809ec0826575dac22872b0",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-finite-domain-20260919/production/complete/regulator/complete/domain-binding.pickle": "723f4a8ed7e6844b4ed867a669ca23be34f00f5a7ea92ce7cca541cff1a9f475",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-finite-domain-20260919/production/complete/regulator/complete/source-binding.pickle": "35b60a56e031b53183ec6800ab84f5731e0ea79cbc96a94c9343cd5cc3a73e94",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-finite-domain-20260919/production/complete/regulator/complete/finite-solution.pickle": "f7abb7a0efc01720ef27c6a856b2809b827b8b7e0be8e62db3a8b2fcb346c296",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-response-20260919/production/complete/continuum-response.pickle": "a6678ad8fd7b4adf01aa3470834dcc0a918d2f7269fa1e273a980ea67c5b84f3",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-grades-20260919/production/complete/continuum-grades.pickle": "e39412750fe58734ba4db2bd84d40908d18706ae055f6ddd6e3f53f560aa9b71",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-uniform-source-20260919/production/complete/uniform-source.pickle": "a482c5023d16558f52b20d0a347d6e38f33f0f06f780abd256c5220f922b5571",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-uniform-response-20260919/production/complete/reference-symbolic.pickle": "ec1166c45ca9ecf76a4894ede43cb8e2ce4319825edefab4539edc8dbe7985f0",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-uniform-response-20260919/production/complete/left-symbolic.pickle": "bff2376933d64dbb0ede9b6781556b3d5c160df70f7bfa8aad2573cb5af652dd",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-uniform-response-20260919/production/complete/right-symbolic.pickle": "9fad29b8fd898086c4d553256d917033cfaad191cab3fe8126e6618bd88dc751",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-source-20260919/finish-01/complete/frequency-source.pickle": "714a0011c6874b01d88969e8dbf02d75580639028024e04d81a4bb67a12b1cd8",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-chart-20260919/production/complete/frequency-chart.pickle": "ff629e38a98c099f0066cdbcddb1d7441d0b9948f9b2c13aef90d52a85f16866",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-uniform-response-20260919/production/complete/uniform-response.pickle": "1d5bd9967d08c5ad01eab8707ea25af01cfb9bf61bfd83073ed898c9d76a772f",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-end-20260919/focused/complete/end-seeds.pickle": "0ccb891d84ad3aefe800fc5c153c4699bb59e66c6569cceec47c8de361ce5d82",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-end-20260919/focused/complete/focused.pickle": "6b2cf0040c01c2406a4d6eda5f280ad690226e39f6dd77ab7a5766a9cc1bd4bf"
+    },
+    "unknowns": 645,
+    "incidentDirections": 4,
+    "nativeRows": 80,
+    "nativeTerms": 160,
+    "sourceAmplitudes": 35,
+    "seedPrefixRows": 80,
+    "maximumSeedPrefixScaled": 1.059142613886377e-16,
+    "seedOperatorScaled": 4.043085623167775e-16,
+    "seedCoefficientDifference": 8.348974146109918e-14,
+    "seedRank": 645,
+    "complexRank": 645,
+    "seedCondition": 3772.559178628836,
+    "complexCondition": 5717.29666617146,
+    "complexScaledEquationResidual": 1.1085058977966623e-15,
+    "complexIndependentDifference": 1.5687732476999212e-13,
+    "complexFrequency": "1-I/100",
+    "newMomentumNodes": 177848,
+    "matrixFrequencyChange": 0.47665105805485736,
+    "forcingFrequencyChange": 0.8317572725754947,
+    "amplitudeFrequencyChange": 0.00017154748584151443,
+    "artifacts": {
+      "frequency-comparison.pickle": {
+        "sha256": "0f8038f1908b6634b349d0b3b2d561f07ae53af8836817ee165f0ffd283a84f9",
+        "bytes": 6739501
+      },
+      "accepted-end-seeds.pickle": {
+        "sha256": "0ccb891d84ad3aefe800fc5c153c4699bb59e66c6569cceec47c8de361ce5d82",
+        "bytes": 255570
+      },
+      "accepted-focused.pickle": {
+        "sha256": "6b2cf0040c01c2406a4d6eda5f280ad690226e39f6dd77ab7a5766a9cc1bd4bf",
+        "bytes": 205290
+      },
+      "seed/seed-prefix-58.pickle": {
+        "sha256": "6651c231d5d119df502ddad0736432863cd74b14b30918549182c925f90aa31e",
+        "bytes": 19825
+      },
+      "seed/seed-prefix-63.pickle": {
+        "sha256": "d8b918125867379358e4e8c406298d46bdd35a02468b60582ceb826867ef05bd",
+        "bytes": 19825
+      },
+      "seed/frequency-solution.pickle": {
+        "sha256": "09b3e1cb40c5ea97ba46b24738455d27ac5c2751dc629df501dc039c2707a90f",
+        "bytes": 167364
+      },
+      "seed/seed-prefix-30.pickle": {
+        "sha256": "017cc537429acbd5decde68b7c53697484e6e9fa58b0ef217c4b65037c10716d",
+        "bytes": 19278
+      },
+      "seed/seed-prefix-4.pickle": {
+        "sha256": "4c5966b939089a37719b5ac7e6138c2cdcdd54d082127ab0f8458812874aecd1",
+        "bytes": 19278
+      },
+      "seed/seed-prefix-19.pickle": {
+        "sha256": "ba4e5e65c4307e2c9ad5167726ffbb3031965157cd26201e0a0272d2ee2ccd64",
+        "bytes": 19278
+      },
+      "seed/seed-prefix-18.pickle": {
+        "sha256": "72b013d682efcfbc67717ce6da51741b1cea8a3769f395371ee9432ed5574ae7",
+        "bytes": 19278
+      },
+      "seed/seed-prefix-60.pickle": {
+        "sha256": "fd75d8c6d1bd25f6c391399349bf3870ff96cbfaef988e23a6562cfd69b07cc8",
+        "bytes": 19825
+      },
+      "seed/seed-prefix-14.pickle": {
+        "sha256": "528fac59e8c91f6f7e81ddfe258ac73555f449b656059a100fc855d6c8715994",
+        "bytes": 19278
+      },
+      "seed/seed-prefix-8.pickle": {
+        "sha256": "36c95eaad55e82de9944fd039e3ffc9bdb60de5b17e177654ac6c03a47aab4a4",
+        "bytes": 19278
+      },
+      "seed/seed-prefix-50.pickle": {
+        "sha256": "e5db5b2b87025e1aa8051f7c78b926cc395500aedde38ff4006eb6d29a5e773e",
+        "bytes": 19825
+      },
+      "seed/seed-prefix-53.pickle": {
+        "sha256": "902fd0d3db4e7cd7b12e580204b81a6dec54805a0ad9f84f7fb65fd72476f91c",
+        "bytes": 19825
+      },
+      "seed/seed-prefix-75.pickle": {
+        "sha256": "f83d258a94425287290a588a705f5be193ee5557365ef98977bb0978793b98b6",
+        "bytes": 20117
+      },
+      "seed/seed-prefix-1.pickle": {
+        "sha256": "6a13cc9c7bc29c4a1187f98ec2f04d25471135bf862fc710b5e683e9e4467e63",
+        "bytes": 19278
+      },
+      "seed/seed-prefix-66.pickle": {
+        "sha256": "a926e422b4fc733abbd8774131f772d7f8719e7e8bdd05ee4b4cd4f4ceca9479",
+        "bytes": 19825
+      },
+      "seed/frequency-interior.pickle": {
+        "sha256": "10457554d86ad1908c469046c1836c02d2f5fa0b9864001b5c78376245dae2b3",
+        "bytes": 33283332
+      },
+      "seed/seed-comparisons.pickle": {
+        "sha256": "76c16edb1b5ef1cfae01b126168e35a40c13d02a037f085bf6f7470c5569d8a0",
+        "bytes": 6741125
+      },
+      "seed/seed-prefix-45.pickle": {
+        "sha256": "f3a9123471437a06ffcd2c407aa1d6ba0b155d49e514e6391ef5a6e26b7990b5",
+        "bytes": 19825
+      },
+      "seed/seed-prefix-15.pickle": {
+        "sha256": "39f8094bf94cd43a5c648c47bad9672705b2a8aefded75713967c190e9b8e01e",
+        "bytes": 19278
+      },
+      "seed/seed-prefix-68.pickle": {
+        "sha256": "f8316a08cd62d52206f9c582539da88a57a25a9b47d79e458453178d366d5653",
+        "bytes": 19825
+      },
+      "seed/seed-prefix-38.pickle": {
+        "sha256": "9c8cd06d38637696ad083d3f521867dcfc295f147cbb4f417b84e745ba2d188a",
+        "bytes": 19278
+      },
+      "seed/seed-prefix-69.pickle": {
+        "sha256": "bf585d813cd6ba16c6c8c1fa6aa032ab78b4e35215d081a36fce8010ab806de3",
+        "bytes": 19825
+      },
+      "seed/seed-prefix-78.pickle": {
+        "sha256": "914f4fd8f84ec1cd5c66a0fb37a9b9c2903b7971129de0760dfaec0cdb70c4d6",
+        "bytes": 20117
+      },
+      "seed/seed-prefix-71.pickle": {
+        "sha256": "a255784b603ef440ec2aea7f3529dff5b13781d7dde36345d1f7fd156d0f8c16",
+        "bytes": 20117
+      },
+      "seed/seed-prefix-27.pickle": {
+        "sha256": "9029d1bd1796d8d3fce8bc2ee0406283942f7efb9d8508328b552ee17213b9c7",
+        "bytes": 19278
+      },
+      "seed/frequency-binding.pickle": {
+        "sha256": "0f55ea688bef9bf0dc51fb8d67549a1619ca177ddb3690711ab85fa1e67587f2",
+        "bytes": 749275
+      },
+      "seed/seed-prefix-11.pickle": {
+        "sha256": "b89aabccd2f269ced070dccefc883010aa2e0d60ad10b00ec792b0cea5985cbc",
+        "bytes": 19278
+      },
+      "seed/seed-prefix-74.pickle": {
+        "sha256": "7dabbf9a732055457cbb1556663484ad329c90a13be2935c7cbc39d4ec150f2a",
+        "bytes": 20117
+      },
+      "seed/seed-prefix-48.pickle": {
+        "sha256": "61c2783136ee3f28312869a36c6e7abb7ed8eeddced5019d8d260f57c65da376",
+        "bytes": 19825
+      },
+      "seed/seed-prefix-0.pickle": {
+        "sha256": "c139e088f292cfce457c99dbae62570898ba0560b6af93ba8ac64b0dd6f4aef8",
+        "bytes": 19278
+      },
+      "seed/seed-prefix-13.pickle": {
+        "sha256": "7a362d69809602c51eb8baad2cf4cbf68e760d5b3614748555bc9910b1908ba9",
+        "bytes": 19278
+      },
+      "seed/seed-prefix-44.pickle": {
+        "sha256": "4e435bcac2870e2a318b9bac60ac7fe5db5b2a0b49258072485613a1ace09ddc",
+        "bytes": 19825
+      },
+      "seed/seed-prefix-51.pickle": {
+        "sha256": "7a7209a3c611e5cdfed53950c4f2ea37991921319be965066166b32e4ef8c5ad",
+        "bytes": 19825
+      },
+      "seed/seed-prefix-65.pickle": {
+        "sha256": "cd256e3d57ab63cc7b340b9523aee2066994b2cecce73a329b3b95a193b5c173",
+        "bytes": 19825
+      },
+      "seed/frequency-system.pickle": {
+        "sha256": "18d321a95559020c02486f0aa4671907cfac06bbc674d66f33d1d790d7e20a1c",
+        "bytes": 13372218
+      },
+      "seed/seed-prefix-17.pickle": {
+        "sha256": "c22bf00a15ccaf53b83b2fdcd9724ec4a3482c2b98df91a30c1ce279f169c1d5",
+        "bytes": 19278
+      },
+      "seed/seed-prefix-24.pickle": {
+        "sha256": "1706015b1eeaa5bc94775392bad18c95f8cafb8ec384e2a7931ede0054d73d53",
+        "bytes": 19278
+      },
+      "seed/seed-prefix-49.pickle": {
+        "sha256": "5b3dbeaa715b1c42e9ed36b241c61a256be37a74b6d1e905ea8d2e560efddb40",
+        "bytes": 19825
+      },
+      "seed/seed-prefix-67.pickle": {
+        "sha256": "35533a6fc98e051a89054f64c33315c58cb2ed82b1eaa98fc186062f3ab09d91",
+        "bytes": 19825
+      },
+      "seed/seed-prefix-72.pickle": {
+        "sha256": "474cdff198730e36dddc1935c20e129ceb3a54640e504c12b6ff8122a054c7f4",
+        "bytes": 20117
+      },
+      "seed/seed-prefix-56.pickle": {
+        "sha256": "b3c6188e178c90a9763deb778b1912703943c4e19c2857dd483189f2af9566aa",
+        "bytes": 19825
+      },
+      "seed/seed-prefix-21.pickle": {
+        "sha256": "0cbe2cbdb88f396926711a3d8bc0aec471ce204238efbc4b12f286d35b2fa0e4",
+        "bytes": 19278
+      },
+      "seed/seed-prefix-10.pickle": {
+        "sha256": "909c2d3c6e9560d9afc3e284b06fd303604cc26515dff6a44d1bfe704528fa3a",
+        "bytes": 19278
+      },
+      "seed/seed-prefix-7.pickle": {
+        "sha256": "7fee9156ccf6623666e42afc13a32d1ad8ccb95973fc87ff8c7219200e004167",
+        "bytes": 19278
+      },
+      "seed/seed-prefix-40.pickle": {
+        "sha256": "9da806870b498891616846e34373a31c1ecb6382c6c0714b25bd556e3404c9b8",
+        "bytes": 19825
+      },
+      "seed/seed-prefix-61.pickle": {
+        "sha256": "0dcd6ae0f7896de0c536b4602264673a3e939726593abf0ba38cba01dc5915eb",
+        "bytes": 19825
+      },
+      "seed/seed-prefix-31.pickle": {
+        "sha256": "8323815ae8c2fbda5b4c090a6cd9da9d3049de5da555902f82273e8b824f4552",
+        "bytes": 19278
+      },
+      "seed/seed-prefix-41.pickle": {
+        "sha256": "92e51f16887bbd9998cf6633efc3427798ea3a7bcc0970f1ee69d8cb1b0f2a5d",
+        "bytes": 19825
+      },
+      "seed/seed-prefix-23.pickle": {
+        "sha256": "459da36a466d119febe85aafe301753354539d9b37ee58709082b186f60f8317",
+        "bytes": 19278
+      },
+      "seed/seed-prefix-33.pickle": {
+        "sha256": "4aa4b1128801c9309ef62f2bfb3cb0434c3b200a584e3b955188012e5d45134c",
+        "bytes": 19278
+      },
+      "seed/seed-prefix-62.pickle": {
+        "sha256": "e9a2c5cebb4af26f077755363848d1d94d5829838fb04a5e094ffd88ac4d08c4",
+        "bytes": 19825
+      },
+      "seed/seed-prefix-28.pickle": {
+        "sha256": "fde049f04eadc4bfdae7501fdbc8c2a4acc26da2b23a0671c5e39c55f7f7ef8e",
+        "bytes": 19278
+      },
+      "seed/seed-prefix-43.pickle": {
+        "sha256": "230af90f14ff0b91a7d98e6a2de5346199831437eb193748f69a0b5dd5d3820a",
+        "bytes": 19825
+      },
+      "seed/seed-prefix-46.pickle": {
+        "sha256": "ed1fef583c85af8a46f4509b1e787df4b39dc413b04fc381caadb3ac4c3a454e",
+        "bytes": 19825
+      },
+      "seed/seed-prefix-76.pickle": {
+        "sha256": "12dc372be4dcd30df0d46fc8c3a99a20fc38c64bba84f85489d2b3db6119d720",
+        "bytes": 20117
+      },
+      "seed/seed-prefix-20.pickle": {
+        "sha256": "a5045b31435343224c0812b9c1530cb19240ac5eb1b177436efecce0a420c20a",
+        "bytes": 19278
+      },
+      "seed/seed-prefix-9.pickle": {
+        "sha256": "d7ae8e9ed7946d1f26365339a82fabbf9dc4c7a191cbe702ead440bbc7db5209",
+        "bytes": 19278
+      },
+      "seed/seed-prefix-59.pickle": {
+        "sha256": "e8a65bde68ea28c2aaa162fd5bdacc1a00bde87169320bc5988693ceff6d430b",
+        "bytes": 19825
+      },
+      "seed/seed-prefix-70.pickle": {
+        "sha256": "525b4e02c03c3cc29cc5c0347f5115e1ab806f67fe7669c6325a620900d2fb21",
+        "bytes": 20117
+      },
+      "seed/seed-prefix-35.pickle": {
+        "sha256": "98a024361d826c679dce96bcb125b79f7d3eca39837f8179933ace61180be30f",
+        "bytes": 19278
+      },
+      "seed/seed-prefix-3.pickle": {
+        "sha256": "38daa5a0a98a54ac87d31707fa4565957aa82bd0566523af50b4df2e521eab27",
+        "bytes": 19278
+      },
+      "seed/seed-prefix-2.pickle": {
+        "sha256": "ca9f20ba09170c3a400dcb49f18ac90fcff60142c8728728b85dbc2b1aab8bc9",
+        "bytes": 19278
+      },
+      "seed/seed-prefix-79.pickle": {
+        "sha256": "8c263b1114aab3b5aa69e4c8ebdf147a5d7940f92059166c7a4ad2374c36bb13",
+        "bytes": 20117
+      },
+      "seed/seed-prefix-32.pickle": {
+        "sha256": "3d11861a9ca9fafa6ce1235b59c37933609bd0d2bdf4ecdf42ed3ac4e8b9bb03",
+        "bytes": 19278
+      },
+      "seed/seed-prefix-54.pickle": {
+        "sha256": "a9b8827b1170f2967ca40f63ee406876cd04ac74da377d30afd33b5b4f5fd5de",
+        "bytes": 19825
+      },
+      "seed/seed-prefix-16.pickle": {
+        "sha256": "c41c41beb5d6c6ed0aa28fa478709127fd3c8fdd6c0753724c7bd0fd8e527a52",
+        "bytes": 19278
+      },
+      "seed/seed-prefix-37.pickle": {
+        "sha256": "c29fba93958393d77aea1754b70b4cf761a42cb89a0cf26c72087a5c634a28b0",
+        "bytes": 19278
+      },
+      "seed/frequency-end-maps.pickle": {
+        "sha256": "3166c42841c90517172711fdba15cd411c2c6970aafcd28702b2b8e0bbf683cf",
+        "bytes": 123427
+      },
+      "seed/seed-prefix-29.pickle": {
+        "sha256": "4837eee64c26081fb948bd743668fe7db5ea4bbbd2844e53f856b23a1629f877",
+        "bytes": 19278
+      },
+      "seed/seed-prefix-5.pickle": {
+        "sha256": "0db7ed6c68c1baa45b1acdaa364c9394a309f4e11133cd93d31b16bdf40cfd81",
+        "bytes": 19278
+      },
+      "seed/seed-prefix-55.pickle": {
+        "sha256": "afca6dbc41ddbded01dd530ac92a40a4e7bc15a0d9f4f3c3fd98de9ff046a1eb",
+        "bytes": 19825
+      },
+      "seed/seed-prefix-39.pickle": {
+        "sha256": "1aec5a7eafa50801481e4004851a1ffcf7dd03a5d5674e23857a46ed64d12ccb",
+        "bytes": 19278
+      },
+      "seed/seed-prefix-57.pickle": {
+        "sha256": "65dd55bbbe870a3f683c23826a2f9238429367d9fa53cacbc802b4d978763da7",
+        "bytes": 19825
+      },
+      "seed/seed-prefix-22.pickle": {
+        "sha256": "291db43d76969ec37bcb3e41f43adfc27b8d6dbcc42847d6cb7129bc791cafe1",
+        "bytes": 19278
+      },
+      "seed/seed-prefix-73.pickle": {
+        "sha256": "defd1897c0b48048410ca87fc1865927ceb3dfbc5ae1711dc2d9fe57753e73e2",
+        "bytes": 20117
+      },
+      "seed/seed-prefix-52.pickle": {
+        "sha256": "9f11e4f2338f73f62854bc702ff60e61736601cf36b91b776ddd835fa669f8b6",
+        "bytes": 19825
+      },
+      "seed/seed-prefix-42.pickle": {
+        "sha256": "7814ba70a885b66cb60375a1ef3f58f1dd70ebe31e07d4e7c67bb31476f60d6d",
+        "bytes": 19825
+      },
+      "seed/seed-prefix-25.pickle": {
+        "sha256": "a24c5b278a4d28485cd471fbfcdd8a448dc50b808430e93da84d1451ccf796b6",
+        "bytes": 19278
+      },
+      "seed/seed-prefix-36.pickle": {
+        "sha256": "ccadce5c69f4453f3ea1bf85701bc8ec28f12834d54571c6e5b7e2d41c8c2202",
+        "bytes": 19278
+      },
+      "seed/seed-prefix-64.pickle": {
+        "sha256": "b38e79bbb62b1113577c24b41c9d86e16742917b1ca2a2bac43282f1dcd4679a",
+        "bytes": 19825
+      },
+      "seed/seed-prefix-47.pickle": {
+        "sha256": "79eb0c17e4b5d28a6d4f9f7c54f7efc6d16d59baf5f631b612aa03c3e749266d",
+        "bytes": 19825
+      },
+      "seed/seed-prefix-26.pickle": {
+        "sha256": "5d22c7741bd58b6655698db8d6b95d7086e40c61f9792d79317bbe1241a29a4b",
+        "bytes": 19278
+      },
+      "seed/seed-prefix-77.pickle": {
+        "sha256": "11367026e376b17ee21294e7c7d0d530ce2395b3434e8bb97032f5d0161344ae",
+        "bytes": 20117
+      },
+      "seed/seed-prefix-6.pickle": {
+        "sha256": "46593ec0c8fceb42aecfa396481c79dee9f3671afdac6c1e3d267697f7cdf775",
+        "bytes": 19278
+      },
+      "seed/seed-prefix-12.pickle": {
+        "sha256": "ad6c7a615c636a0c1f54282fe4fb3e820a3805ace4e7f4ba5b32a75c459801f1",
+        "bytes": 19278
+      },
+      "seed/seed-prefix-34.pickle": {
+        "sha256": "ea893b64311956425add7dd6c15a183e30eb35e75af79b1dbababff2eceb41fa",
+        "bytes": 19278
+      },
+      "complex/frequency-solution.pickle": {
+        "sha256": "6213b2b0fa194d51166a68541fb0a3cfce95cfdec1771c9583b58e970d13d889",
+        "bytes": 167364
+      },
+      "complex/partial-layout-3-00000128.pickle": {
+        "sha256": "1bfeb4ddfcbd095a076375225fc39834bceedfaf21dae9310065e8db6e85f591",
+        "bytes": 2704479
+      },
+      "complex/partial-layout-3-00000448.pickle": {
+        "sha256": "b6ccfc5206a2f139373905718c762a65674a5c3f03b2dc069022394c4b5d74d0",
+        "bytes": 2704482
+      },
+      "complex/layout-3.pickle": {
+        "sha256": "75d9ab9ed735667974a9be2c1dd1386f3da31d407ef4ade5a1e2605e5693e67a",
+        "bytes": 2748058
+      },
+      "complex/partial-layout-3-00000576.pickle": {
+        "sha256": "e5f95f687b8607e5c5b8e944973fb58f1b4eef927b386fedf49f0ee4b0f96ac3",
+        "bytes": 2704482
+      },
+      "complex/frequency-interior.pickle": {
+        "sha256": "b5118fb3a26249bf1337c8f9643eb848e58e79efc938cc1fd8e7a379ee10a28e",
+        "bytes": 33283332
+      },
+      "complex/partial-layout-3-00000640.pickle": {
+        "sha256": "03861300fca2c3c13127a06c4e6a08605c8a1c3c3423e63617d5c142cfaef54f",
+        "bytes": 2704482
+      },
+      "complex/frequency-binding.pickle": {
+        "sha256": "4bb45b4bd8816830646f10e59e53ec5622ee00ef674ddcb4f0dc7281f720638a",
+        "bytes": 750616
+      },
+      "complex/layout-1.pickle": {
+        "sha256": "2a493eaee91ea3daacba59134a099a0e7ad1523d4527105d799a9760b050ef80",
+        "bytes": 10983430
+      },
+      "complex/frequency-system.pickle": {
+        "sha256": "47c8a86422df1fe49e21003c40c55961095c27b418b06ca16db9e09ec39d05c1",
+        "bytes": 13372312
+      },
+      "complex/partial-layout-3-00000320.pickle": {
+        "sha256": "5cf1eac124419de2b60ebacf4fcb1ba0768edcd378358851762ba91ecf065af1",
+        "bytes": 2704482
+      },
+      "complex/layout-2.pickle": {
+        "sha256": "be238ed7b1aef18a2fb35a2f741db79ddee06f16ec5afe3ba88cb9dae81142b0",
+        "bytes": 8238308
+      },
+      "complex/partial-layout-3-00000384.pickle": {
+        "sha256": "c6783d967efc965f6c399aded97f2d288af8b03c948c561d2295aea882a0b5ad",
+        "bytes": 2704482
+      },
+      "complex/partial-layout-3-00000256.pickle": {
+        "sha256": "9dd727e69ef9a440bf7b401f7f21cafd9d97b6705dba6b4ba50bc04474246902",
+        "bytes": 2704482
+      },
+      "complex/partial-layout-3-00000512.pickle": {
+        "sha256": "8220850cd9caa51f23bb35145e8da7f01cf313fa081b0ead01edfa801624ce66",
+        "bytes": 2704482
+      },
+      "complex/frequency-end-maps.pickle": {
+        "sha256": "af3572872de3f12232d2a1813fa15d69590661ce50f3b2ffb505b6669d8a9f3b",
+        "bytes": 164926
+      },
+      "complex/partial-layout-3-00000192.pickle": {
+        "sha256": "137a9b560ef61f0aaeb107fbb1efd9f047f6043a7d9f3cbf0aae9c6b8e39b65e",
+        "bytes": 2704479
+      },
+      "complex/frequency-rows.pickle": {
+        "sha256": "d85d35a923ad05e64e48f66de38276f8f04cb624fd6d87afa1995c5666a41bf6",
+        "bytes": 43272370
+      },
+      "complex/partial-layout-3-00000064.pickle": {
+        "sha256": "53569533404c8687792f72af035d22990f381d3d2f063dac3f9959a0e3f4ead1",
+        "bytes": 2704479
+      }
+    },
+    "wallSeconds": 88.50296957511455,
+    "peakRssKiB": 698964,
+    "scope": "First actual finite analytic-frequency matrix and four-column response at 1-0.01i. Finite rules and approximate modal ends; no pole search or physical complex-frequency current."
+  },
+  "checksSha256": "d7139777286cdbd35bfe70a8e1c8935ba88be6fbf22be1c242e89b3fa3824a6a",
+  "sourceFiles": {
+    "_measurements/S11c_d_continuum_grades.py": "0443c3adbeaf813ad66c60af0a50c96e9a841277d51f9c23bf1c601d2fdf329d",
+    "_measurements/S11c_d_continuum_grade_plan.md": "693546373ea2c8c5eec4ef3c8c93732fc7440a1eb1a2cdb1a6cf9d0f5b469040",
+    "_measurements/S11c_d_reduced_action_assembly_checkpoint.json": "b4afb727b1a1ad2a468b0bab9a6ab369dbe4dd35bc46acd7150b7fa581cd984f",
+    "_measurements/S11c_d_source_fourier_factorization_checkpoint.json": "fcf6f1c5598b63c11d4f8a76d2d94c2b5bace590e83d4beea3e52e82f44158a6",
+    "_measurements/S11c_d_reduced_action_source_checkpoint.json": "b6dcd36ee6cf8ed3b3943e207012dd165fce62ec39cb8f53ca3c23f4715d094b",
+    "scripts/S11c_d_mixing_scattering_sympy_audit.py": "5bf77729682960bb59f10c672a5fe3f67a98b0a9533da7c6189a37183596050f",
+    "_measurements/S11c_d_reduced_action_source_check.py": "aae3b2402e1707ef27f217b917dc10592f38acbe35d18356fbc4886ed854f754",
+    "directives/S11c_d_EXPLORATORY_ACCEPTANCE.md": "5c1e560a78d40739af8b1318c0487e20bf2b816c41109889e12004266c72840c",
+    "_measurements/S11c_d_finite_scattering_domain_checkpoint.json": "2286978066ad6e0c8b9558a950b40521c61ac2cdfec58a9694f890c70c90280c",
+    "_measurements/S11c_d_variable_profile_development_input.json": "660b2b0b54494dce964c7f5fbd722a76a7e894d8ed92b18b5eb6290c3c10f1d5",
+    "directives/S11c_d_NONLINEAR_POLE_CONTRACT.md": "2b6018faf0d5ca772bf9c980174d8ebe7545127a3bf43ba01d1b3c0b6a5be423",
+    "scripts/S11c_b_exports.py": "3c6555f90a85382a5e96f3f961f0e36a4875d9259fe1be947fa8e683669b7084",
+    "scripts/S11c_c1_exports.py": "a5353b86dc526fd1b56734fdbdf7dc7f42387a3195ab4de84e8994f751871cdc",
+    "scripts/S11c_c2_exports.py": "2ba5ed487b84ecb98290df6f1650fa6210fe2784cfa02a0f3cff96cd718411cd",
+    "directives/S11c_d_SHARED_PHYSICS.md": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5",
+    "directives/S11b_SHARED_PHYSICS.md": "9ea9e388e9d6421a841eaf851d12e1793527bba9a24aeeface3bfac2f4b40078",
+    "scripts/ledger_fold.py": "97da78c6631c09e5575dd14511760506f1ac08771cf07948978004e92f0b2333",
+    "_measurements/S11c_d_continuum_matrices.py": "33a0e5a2fa136a55875541e15bc410159c94f56f25adc4a02589d0c704223987",
+    "_measurements/S11c_d_continuum_matrix_plan.md": "c571bf7adb9e7b4cbedd8ac80813a590d4087bebfd02da6b2615e1cc82914612",
+    "_measurements/S11c_d_continuum_grade_checkpoint.json": "3987ff4abb782050fffc767065ed9b3126da49215aa0df41320abef7fdec4692",
+    "_measurements/S11c_d_finite_scattering_domain.py": "73341408d0f6c1eb517e435dea986e180ff53615a6102697a8e3ba6747bd35aa",
+    "_measurements/S11c_d_finite_scattering.py": "f187d9426be8069342a363a0466c175d32a8cb46101e32a14c433ccb9118e469",
+    "_measurements/S11c_d_finite_scattering_resolution.py": "8e101517fde113c5f0a372bab531e63ebdcee3fff03c270ff98a7590e5a7b981",
+    "_measurements/S11c_d_end_normalization_reference_thickness_repair_checkpoint.json": "5c9456ddacd573865d00a0527b1b73b1060c613ccfe50ed89e41613fa3d9658f",
+    "_measurements/S11c_d_end_pairing_reference_thickness_repair_checkpoint.json": "1ea765d293138847a23ff7768fdba770a031659f9c978f582aff27391bf11232",
+    "_measurements/S11c_d_end_normalization_left_thickness_repair_checkpoint.json": "5871a84b7584eb35de8b8a5c450e8d0adadb41340abcbfe028ac16b360befcdb",
+    "_measurements/S11c_d_end_pairing_left_thickness_repair_checkpoint.json": "205e13614c41c504faae85cad9ee104ab51d1f1a5830b5b9e802e5fe3bc1ac9d",
+    "_measurements/S11c_d_end_normalization_right_thickness_repair_checkpoint.json": "7267d068580ecade68ce95abd599c1f5c59a95b4d7f359f9518452218c9f9a05",
+    "_measurements/S11c_d_end_pairing_right_thickness_repair_checkpoint.json": "e8e0d0771bd4365055351bdc041f0a45020f5252bdb5ff5793592d1c9c388605",
+    "_measurements/S11c_d_continuum_boundary.py": "ed3a6539d3151c52d25f12308b121897baf3bd6a5a626a598ab728988ab933a0",
+    "_measurements/S11c_d_continuum_boundary_plan.md": "08dd0c80757d2a2203b237e47957fd4e3bc1b970abfb2dad4cb3b07cf1a3c27f",
+    "_measurements/S11c_d_continuum_matrix_checkpoint.json": "4fe0e0214a5f51a6ab18c9266aa369dde4cf2b60eb51beabf3257754f91d942d",
+    "_measurements/S11c_d_matching_channels_checkpoint.json": "c4ad9b9051f9c3fadb076593dd35ec12d1779fad6d1558c691c3b735fe4d3eeb",
+    "_measurements/S11c_d_continuum_boundary_recover.py": "156252a37a9aaba207fa06ce23ca34cc7286601c8f76cdfe1a63a9e40a2f1839",
+    "_measurements/S11c_d_continuum_boundary_recovery_plan.md": "4d91587d5a202a2d9dbdedb8f9b6340cded59a08518df173ac012e49f51db2ea",
+    "_measurements/S11c_d_continuum_boundary_finish.py": "988e3248d634dd3d6a48279d198c682a9637082ddcd735207d5506c01b0af052",
+    "_measurements/S11c_d_continuum_boundary_finish_plan.md": "674e363bf4427f9c367cdc309bb336a584e332e83cb1ee7143e8c831876063da",
+    "_measurements/S11c_d_continuum_response.py": "0fe30a9c4771671e9fa139b0557f185f55d351887f2ba8b9fa4ed1abfb616db2",
+    "_measurements/S11c_d_continuum_response_plan.md": "7250a3fb303a3a3e6e89d0372d7720dd5eeae16dc01714d43d4898ea1faf0834",
+    "_measurements/S11c_d_continuum_boundary_checkpoint.json": "b2614b74b4ec68de6d9f270bdf115833eea26a9baf168643663f21314a141d2d",
+    "_measurements/S11c_d_profile_form.py": "41e113454f1ebce41c776468e1b04191933e7d21a1f9c9f65b4a75c82ca71efa",
+    "_measurements/S11c_d_profile_form_plan.md": "ae0f08ab1aff8775133acfe716484f21aa610ef81c3261addd7af709c02d77f3",
+    "_measurements/S11c_d_continuum_response_checkpoint.json": "c29b71bc8adf8b98856d00d4586b7b060c0f6d5f42778ff231e03e0d45ba0139",
+    "scripts/S11c_d_output_codec.py": "49873a2fa5c3184aab097263f0a6128379e094e42dbde5052456c5f3908bf717",
+    "_measurements/S11c_d_uniform_source.py": "2a135aea365c7b5e57bfff7683c7b927cda52c0d37f6a9bad3c961eb6205a2b2",
+    "_measurements/S11c_d_uniform_source_plan.md": "7b81e08568546585a11ce5ed6ebdd7b184bf4e38e55f8065440c7d4550610e33",
+    "_measurements/S11c_d_frequency_source.py": "9be20be462bc10bfcaa7af643b9301948dd79bc2e08eb24ebcd1386a81efcdac",
+    "_measurements/S11c_d_frequency_source_plan.md": "9224fc8b7feb37141b3613a549e146c0870d09eead211b6cf1898132d58c32a6",
+    "_measurements/S11c_d_first_jet_checkpoint.json": "6958e393383491b73a06d354a6b14e1b2c4495dacadd119a92ab5dd3fad02fe4",
+    "_measurements/S11c_d_uniform_source_checkpoint.json": "9d4b65ad07d1f403fd3aa4ec42da99db622a4d0a26d6ddce6c472148c7830085",
+    "_measurements/S11c_d_uniform_response_checkpoint.json": "74f5bd4da163dd6d78ad427fc5c4cd6926f414c961172f6854174131ea2fbc45",
+    "_measurements/S11c_d_frequency_source_binding_repair.json": "59c5d39538f67a215248b9664715385d9d601f5173e1643ac486eac7729f8b33",
+    "_measurements/S11c_d_frequency_source_finish.py": "f52846a89e6ace33fe1520b652ea913cfa148edd0114eb2ea202fbd813dff315",
+    "_measurements/S11c_d_frequency_source_threshold_recovery_plan.md": "0c570f60c057ef8c0f71873bb9729cef4f295188b26f5d968741c01b43369c24",
+    "_measurements/S11c_d_frequency_source_threshold_repair.json": "ceb82afceacaf7b649982dabc9b7ed6f743ed98a8c00d47c1b11ca1c62d2917b",
+    "_measurements/S11c_d_frequency_chart.py": "06b1e19ffd03349951488b13580f336dc7d12e15a6941191026697b5c413ed97",
+    "_measurements/S11c_d_frequency_chart_plan.md": "825829b3ad7368495b80c17bf19b008db1036b6fb2559724ab465b424d938fba",
+    "_measurements/S11c_d_frequency_source_checkpoint.json": "ca5a3fa0f33d4f5457f9c5adb46b7c9da9f935661d839d036f12b0de86692bfe",
+    "_measurements/S11c_d_uniform_response.py": "b65749ab0eaaeed372a5bf01077a030971fc3e05f05a11543443bd1de3f157d4",
+    "_measurements/S11c_d_uniform_response_plan.md": "499ba568757645642bd4a402e4aaaacb165b2a2d0904be6e5d352e6f025bfa9d",
+    "_measurements/S11c_d_frequency_end.py": "f7a698ed27872ed0594692dbf671136b079279c32f9198bd92fcee23e3303a32",
+    "_measurements/S11c_d_frequency_end_plan.md": "f92d52325fd98fc8694aeec4c7cfd52f409b0ae286bcfb6fcac6e2f6616f469a",
+    "_measurements/S11c_d_frequency_chart_checkpoint.json": "f389d9234e8aa24146e0f881fd1a9a28fb4705dbb047f9295310af03723a242d",
+    "_measurements/S11c_d_frequency_matrix.py": "97797ab676a58f16785bf4234d41eb5cd01abc0a42f39edc4e20f926b2c2b336",
+    "_measurements/S11c_d_frequency_matrix_plan.md": "09bf24902656fa38524cd745a4fe731c1d054d0a396536e2631fd63d1223319c",
+    "_measurements/S11c_d_frequency_end_focused.json": "99697cf6138594ab78263d235237b42262ec0496ef0ac4986517d4594a9e2872"
+  },
+  "inputPackets": {
+    "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-matrices-20260919/production/complete/continuum-matrices.pickle": "1db95fb176c970298b33005a94e25f8ada3ba1423fad605231be66d8a711954e",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/finish-02/complete/continuum-boundary.pickle": "8e3e53c3b7b06e3e81f961f013b77b4b87dfede081db75b4de458503b062eed0",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-finite-domain-20260919/production/complete/regulator/complete/finite-system.pickle": "2a043895b5e8a203cc4dd0b517ba3feec61300ab812a0404f19195cc39c0319a",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-end-normalization-20260914/reference/modal.pickle": "69668d29e11af4ca89c667f1ff39e7f646366eba7cb596dde39e74fcbefe3cd7",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-reduced-action-source-20260914/complete/reduced-action.pickle": "e9062c3455c7e59fe816f47172062a0c118b201d03809ec0826575dac22872b0",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-finite-domain-20260919/production/complete/regulator/complete/domain-binding.pickle": "723f4a8ed7e6844b4ed867a669ca23be34f00f5a7ea92ce7cca541cff1a9f475",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-finite-domain-20260919/production/complete/regulator/complete/source-binding.pickle": "35b60a56e031b53183ec6800ab84f5731e0ea79cbc96a94c9343cd5cc3a73e94",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-finite-domain-20260919/production/complete/regulator/complete/finite-solution.pickle": "f7abb7a0efc01720ef27c6a856b2809b827b8b7e0be8e62db3a8b2fcb346c296",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-response-20260919/production/complete/continuum-response.pickle": "a6678ad8fd7b4adf01aa3470834dcc0a918d2f7269fa1e273a980ea67c5b84f3",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-grades-20260919/production/complete/continuum-grades.pickle": "e39412750fe58734ba4db2bd84d40908d18706ae055f6ddd6e3f53f560aa9b71",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-uniform-source-20260919/production/complete/uniform-source.pickle": "a482c5023d16558f52b20d0a347d6e38f33f0f06f780abd256c5220f922b5571",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-uniform-response-20260919/production/complete/reference-symbolic.pickle": "ec1166c45ca9ecf76a4894ede43cb8e2ce4319825edefab4539edc8dbe7985f0",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-uniform-response-20260919/production/complete/left-symbolic.pickle": "bff2376933d64dbb0ede9b6781556b3d5c160df70f7bfa8aad2573cb5af652dd",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-uniform-response-20260919/production/complete/right-symbolic.pickle": "9fad29b8fd898086c4d553256d917033cfaad191cab3fe8126e6618bd88dc751",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-source-20260919/finish-01/complete/frequency-source.pickle": "714a0011c6874b01d88969e8dbf02d75580639028024e04d81a4bb67a12b1cd8",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-chart-20260919/production/complete/frequency-chart.pickle": "ff629e38a98c099f0066cdbcddb1d7441d0b9948f9b2c13aef90d52a85f16866",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-uniform-response-20260919/production/complete/uniform-response.pickle": "1d5bd9967d08c5ad01eab8707ea25af01cfb9bf61bfd83073ed898c9d76a772f",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-end-20260919/focused/complete/end-seeds.pickle": "0ccb891d84ad3aefe800fc5c153c4699bb59e66c6569cceec47c8de361ce5d82",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-end-20260919/focused/complete/focused.pickle": "6b2cf0040c01c2406a4d6eda5f280ad690226e39f6dd77ab7a5766a9cc1bd4bf"
+  },
+  "artifacts": {
+    "frequency-comparison.pickle": {
+      "sha256": "0f8038f1908b6634b349d0b3b2d561f07ae53af8836817ee165f0ffd283a84f9",
+      "bytes": 6739501
+    },
+    "accepted-end-seeds.pickle": {
+      "sha256": "0ccb891d84ad3aefe800fc5c153c4699bb59e66c6569cceec47c8de361ce5d82",
+      "bytes": 255570
+    },
+    "accepted-focused.pickle": {
+      "sha256": "6b2cf0040c01c2406a4d6eda5f280ad690226e39f6dd77ab7a5766a9cc1bd4bf",
+      "bytes": 205290
+    },
+    "seed/seed-prefix-58.pickle": {
+      "sha256": "6651c231d5d119df502ddad0736432863cd74b14b30918549182c925f90aa31e",
+      "bytes": 19825
+    },
+    "seed/seed-prefix-63.pickle": {
+      "sha256": "d8b918125867379358e4e8c406298d46bdd35a02468b60582ceb826867ef05bd",
+      "bytes": 19825
+    },
+    "seed/frequency-solution.pickle": {
+      "sha256": "09b3e1cb40c5ea97ba46b24738455d27ac5c2751dc629df501dc039c2707a90f",
+      "bytes": 167364
+    },
+    "seed/seed-prefix-30.pickle": {
+      "sha256": "017cc537429acbd5decde68b7c53697484e6e9fa58b0ef217c4b65037c10716d",
+      "bytes": 19278
+    },
+    "seed/seed-prefix-4.pickle": {
+      "sha256": "4c5966b939089a37719b5ac7e6138c2cdcdd54d082127ab0f8458812874aecd1",
+      "bytes": 19278
+    },
+    "seed/seed-prefix-19.pickle": {
+      "sha256": "ba4e5e65c4307e2c9ad5167726ffbb3031965157cd26201e0a0272d2ee2ccd64",
+      "bytes": 19278
+    },
+    "seed/seed-prefix-18.pickle": {
+      "sha256": "72b013d682efcfbc67717ce6da51741b1cea8a3769f395371ee9432ed5574ae7",
+      "bytes": 19278
+    },
+    "seed/seed-prefix-60.pickle": {
+      "sha256": "fd75d8c6d1bd25f6c391399349bf3870ff96cbfaef988e23a6562cfd69b07cc8",
+      "bytes": 19825
+    },
+    "seed/seed-prefix-14.pickle": {
+      "sha256": "528fac59e8c91f6f7e81ddfe258ac73555f449b656059a100fc855d6c8715994",
+      "bytes": 19278
+    },
+    "seed/seed-prefix-8.pickle": {
+      "sha256": "36c95eaad55e82de9944fd039e3ffc9bdb60de5b17e177654ac6c03a47aab4a4",
+      "bytes": 19278
+    },
+    "seed/seed-prefix-50.pickle": {
+      "sha256": "e5db5b2b87025e1aa8051f7c78b926cc395500aedde38ff4006eb6d29a5e773e",
+      "bytes": 19825
+    },
+    "seed/seed-prefix-53.pickle": {
+      "sha256": "902fd0d3db4e7cd7b12e580204b81a6dec54805a0ad9f84f7fb65fd72476f91c",
+      "bytes": 19825
+    },
+    "seed/seed-prefix-75.pickle": {
+      "sha256": "f83d258a94425287290a588a705f5be193ee5557365ef98977bb0978793b98b6",
+      "bytes": 20117
+    },
+    "seed/seed-prefix-1.pickle": {
+      "sha256": "6a13cc9c7bc29c4a1187f98ec2f04d25471135bf862fc710b5e683e9e4467e63",
+      "bytes": 19278
+    },
+    "seed/seed-prefix-66.pickle": {
+      "sha256": "a926e422b4fc733abbd8774131f772d7f8719e7e8bdd05ee4b4cd4f4ceca9479",
+      "bytes": 19825
+    },
+    "seed/frequency-interior.pickle": {
+      "sha256": "10457554d86ad1908c469046c1836c02d2f5fa0b9864001b5c78376245dae2b3",
+      "bytes": 33283332
+    },
+    "seed/seed-comparisons.pickle": {
+      "sha256": "76c16edb1b5ef1cfae01b126168e35a40c13d02a037f085bf6f7470c5569d8a0",
+      "bytes": 6741125
+    },
+    "seed/seed-prefix-45.pickle": {
+      "sha256": "f3a9123471437a06ffcd2c407aa1d6ba0b155d49e514e6391ef5a6e26b7990b5",
+      "bytes": 19825
+    },
+    "seed/seed-prefix-15.pickle": {
+      "sha256": "39f8094bf94cd43a5c648c47bad9672705b2a8aefded75713967c190e9b8e01e",
+      "bytes": 19278
+    },
+    "seed/seed-prefix-68.pickle": {
+      "sha256": "f8316a08cd62d52206f9c582539da88a57a25a9b47d79e458453178d366d5653",
+      "bytes": 19825
+    },
+    "seed/seed-prefix-38.pickle": {
+      "sha256": "9c8cd06d38637696ad083d3f521867dcfc295f147cbb4f417b84e745ba2d188a",
+      "bytes": 19278
+    },
+    "seed/seed-prefix-69.pickle": {
+      "sha256": "bf585d813cd6ba16c6c8c1fa6aa032ab78b4e35215d081a36fce8010ab806de3",
+      "bytes": 19825
+    },
+    "seed/seed-prefix-78.pickle": {
+      "sha256": "914f4fd8f84ec1cd5c66a0fb37a9b9c2903b7971129de0760dfaec0cdb70c4d6",
+      "bytes": 20117
+    },
+    "seed/seed-prefix-71.pickle": {
+      "sha256": "a255784b603ef440ec2aea7f3529dff5b13781d7dde36345d1f7fd156d0f8c16",
+      "bytes": 20117
+    },
+    "seed/seed-prefix-27.pickle": {
+      "sha256": "9029d1bd1796d8d3fce8bc2ee0406283942f7efb9d8508328b552ee17213b9c7",
+      "bytes": 19278
+    },
+    "seed/frequency-binding.pickle": {
+      "sha256": "0f55ea688bef9bf0dc51fb8d67549a1619ca177ddb3690711ab85fa1e67587f2",
+      "bytes": 749275
+    },
+    "seed/seed-prefix-11.pickle": {
+      "sha256": "b89aabccd2f269ced070dccefc883010aa2e0d60ad10b00ec792b0cea5985cbc",
+      "bytes": 19278
+    },
+    "seed/seed-prefix-74.pickle": {
+      "sha256": "7dabbf9a732055457cbb1556663484ad329c90a13be2935c7cbc39d4ec150f2a",
+      "bytes": 20117
+    },
+    "seed/seed-prefix-48.pickle": {
+      "sha256": "61c2783136ee3f28312869a36c6e7abb7ed8eeddced5019d8d260f57c65da376",
+      "bytes": 19825
+    },
+    "seed/seed-prefix-0.pickle": {
+      "sha256": "c139e088f292cfce457c99dbae62570898ba0560b6af93ba8ac64b0dd6f4aef8",
+      "bytes": 19278
+    },
+    "seed/seed-prefix-13.pickle": {
+      "sha256": "7a362d69809602c51eb8baad2cf4cbf68e760d5b3614748555bc9910b1908ba9",
+      "bytes": 19278
+    },
+    "seed/seed-prefix-44.pickle": {
+      "sha256": "4e435bcac2870e2a318b9bac60ac7fe5db5b2a0b49258072485613a1ace09ddc",
+      "bytes": 19825
+    },
+    "seed/seed-prefix-51.pickle": {
+      "sha256": "7a7209a3c611e5cdfed53950c4f2ea37991921319be965066166b32e4ef8c5ad",
+      "bytes": 19825
+    },
+    "seed/seed-prefix-65.pickle": {
+      "sha256": "cd256e3d57ab63cc7b340b9523aee2066994b2cecce73a329b3b95a193b5c173",
+      "bytes": 19825
+    },
+    "seed/frequency-system.pickle": {
+      "sha256": "18d321a95559020c02486f0aa4671907cfac06bbc674d66f33d1d790d7e20a1c",
+      "bytes": 13372218
+    },
+    "seed/seed-prefix-17.pickle": {
+      "sha256": "c22bf00a15ccaf53b83b2fdcd9724ec4a3482c2b98df91a30c1ce279f169c1d5",
+      "bytes": 19278
+    },
+    "seed/seed-prefix-24.pickle": {
+      "sha256": "1706015b1eeaa5bc94775392bad18c95f8cafb8ec384e2a7931ede0054d73d53",
+      "bytes": 19278
+    },
+    "seed/seed-prefix-49.pickle": {
+      "sha256": "5b3dbeaa715b1c42e9ed36b241c61a256be37a74b6d1e905ea8d2e560efddb40",
+      "bytes": 19825
+    },
+    "seed/seed-prefix-67.pickle": {
+      "sha256": "35533a6fc98e051a89054f64c33315c58cb2ed82b1eaa98fc186062f3ab09d91",
+      "bytes": 19825
+    },
+    "seed/seed-prefix-72.pickle": {
+      "sha256": "474cdff198730e36dddc1935c20e129ceb3a54640e504c12b6ff8122a054c7f4",
+      "bytes": 20117
+    },
+    "seed/seed-prefix-56.pickle": {
+      "sha256": "b3c6188e178c90a9763deb778b1912703943c4e19c2857dd483189f2af9566aa",
+      "bytes": 19825
+    },
+    "seed/seed-prefix-21.pickle": {
+      "sha256": "0cbe2cbdb88f396926711a3d8bc0aec471ce204238efbc4b12f286d35b2fa0e4",
+      "bytes": 19278
+    },
+    "seed/seed-prefix-10.pickle": {
+      "sha256": "909c2d3c6e9560d9afc3e284b06fd303604cc26515dff6a44d1bfe704528fa3a",
+      "bytes": 19278
+    },
+    "seed/seed-prefix-7.pickle": {
+      "sha256": "7fee9156ccf6623666e42afc13a32d1ad8ccb95973fc87ff8c7219200e004167",
+      "bytes": 19278
+    },
+    "seed/seed-prefix-40.pickle": {
+      "sha256": "9da806870b498891616846e34373a31c1ecb6382c6c0714b25bd556e3404c9b8",
+      "bytes": 19825
+    },
+    "seed/seed-prefix-61.pickle": {
+      "sha256": "0dcd6ae0f7896de0c536b4602264673a3e939726593abf0ba38cba01dc5915eb",
+      "bytes": 19825
+    },
+    "seed/seed-prefix-31.pickle": {
+      "sha256": "8323815ae8c2fbda5b4c090a6cd9da9d3049de5da555902f82273e8b824f4552",
+      "bytes": 19278
+    },
+    "seed/seed-prefix-41.pickle": {
+      "sha256": "92e51f16887bbd9998cf6633efc3427798ea3a7bcc0970f1ee69d8cb1b0f2a5d",
+      "bytes": 19825
+    },
+    "seed/seed-prefix-23.pickle": {
+      "sha256": "459da36a466d119febe85aafe301753354539d9b37ee58709082b186f60f8317",
+      "bytes": 19278
+    },
+    "seed/seed-prefix-33.pickle": {
+      "sha256": "4aa4b1128801c9309ef62f2bfb3cb0434c3b200a584e3b955188012e5d45134c",
+      "bytes": 19278
+    },
+    "seed/seed-prefix-62.pickle": {
+      "sha256": "e9a2c5cebb4af26f077755363848d1d94d5829838fb04a5e094ffd88ac4d08c4",
+      "bytes": 19825
+    },
+    "seed/seed-prefix-28.pickle": {
+      "sha256": "fde049f04eadc4bfdae7501fdbc8c2a4acc26da2b23a0671c5e39c55f7f7ef8e",
+      "bytes": 19278
+    },
+    "seed/seed-prefix-43.pickle": {
+      "sha256": "230af90f14ff0b91a7d98e6a2de5346199831437eb193748f69a0b5dd5d3820a",
+      "bytes": 19825
+    },
+    "seed/seed-prefix-46.pickle": {
+      "sha256": "ed1fef583c85af8a46f4509b1e787df4b39dc413b04fc381caadb3ac4c3a454e",
+      "bytes": 19825
+    },
+    "seed/seed-prefix-76.pickle": {
+      "sha256": "12dc372be4dcd30df0d46fc8c3a99a20fc38c64bba84f85489d2b3db6119d720",
+      "bytes": 20117
+    },
+    "seed/seed-prefix-20.pickle": {
+      "sha256": "a5045b31435343224c0812b9c1530cb19240ac5eb1b177436efecce0a420c20a",
+      "bytes": 19278
+    },
+    "seed/seed-prefix-9.pickle": {
+      "sha256": "d7ae8e9ed7946d1f26365339a82fabbf9dc4c7a191cbe702ead440bbc7db5209",
+      "bytes": 19278
+    },
+    "seed/seed-prefix-59.pickle": {
+      "sha256": "e8a65bde68ea28c2aaa162fd5bdacc1a00bde87169320bc5988693ceff6d430b",
+      "bytes": 19825
+    },
+    "seed/seed-prefix-70.pickle": {
+      "sha256": "525b4e02c03c3cc29cc5c0347f5115e1ab806f67fe7669c6325a620900d2fb21",
+      "bytes": 20117
+    },
+    "seed/seed-prefix-35.pickle": {
+      "sha256": "98a024361d826c679dce96bcb125b79f7d3eca39837f8179933ace61180be30f",
+      "bytes": 19278
+    },
+    "seed/seed-prefix-3.pickle": {
+      "sha256": "38daa5a0a98a54ac87d31707fa4565957aa82bd0566523af50b4df2e521eab27",
+      "bytes": 19278
+    },
+    "seed/seed-prefix-2.pickle": {
+      "sha256": "ca9f20ba09170c3a400dcb49f18ac90fcff60142c8728728b85dbc2b1aab8bc9",
+      "bytes": 19278
+    },
+    "seed/seed-prefix-79.pickle": {
+      "sha256": "8c263b1114aab3b5aa69e4c8ebdf147a5d7940f92059166c7a4ad2374c36bb13",
+      "bytes": 20117
+    },
+    "seed/seed-prefix-32.pickle": {
+      "sha256": "3d11861a9ca9fafa6ce1235b59c37933609bd0d2bdf4ecdf42ed3ac4e8b9bb03",
+      "bytes": 19278
+    },
+    "seed/seed-prefix-54.pickle": {
+      "sha256": "a9b8827b1170f2967ca40f63ee406876cd04ac74da377d30afd33b5b4f5fd5de",
+      "bytes": 19825
+    },
+    "seed/seed-prefix-16.pickle": {
+      "sha256": "c41c41beb5d6c6ed0aa28fa478709127fd3c8fdd6c0753724c7bd0fd8e527a52",
+      "bytes": 19278
+    },
+    "seed/seed-prefix-37.pickle": {
+      "sha256": "c29fba93958393d77aea1754b70b4cf761a42cb89a0cf26c72087a5c634a28b0",
+      "bytes": 19278
+    },
+    "seed/frequency-end-maps.pickle": {
+      "sha256": "3166c42841c90517172711fdba15cd411c2c6970aafcd28702b2b8e0bbf683cf",
+      "bytes": 123427
+    },
+    "seed/seed-prefix-29.pickle": {
+      "sha256": "4837eee64c26081fb948bd743668fe7db5ea4bbbd2844e53f856b23a1629f877",
+      "bytes": 19278
+    },
+    "seed/seed-prefix-5.pickle": {
+      "sha256": "0db7ed6c68c1baa45b1acdaa364c9394a309f4e11133cd93d31b16bdf40cfd81",
+      "bytes": 19278
+    },
+    "seed/seed-prefix-55.pickle": {
+      "sha256": "afca6dbc41ddbded01dd530ac92a40a4e7bc15a0d9f4f3c3fd98de9ff046a1eb",
+      "bytes": 19825
+    },
+    "seed/seed-prefix-39.pickle": {
+      "sha256": "1aec5a7eafa50801481e4004851a1ffcf7dd03a5d5674e23857a46ed64d12ccb",
+      "bytes": 19278
+    },
+    "seed/seed-prefix-57.pickle": {
+      "sha256": "65dd55bbbe870a3f683c23826a2f9238429367d9fa53cacbc802b4d978763da7",
+      "bytes": 19825
+    },
+    "seed/seed-prefix-22.pickle": {
+      "sha256": "291db43d76969ec37bcb3e41f43adfc27b8d6dbcc42847d6cb7129bc791cafe1",
+      "bytes": 19278
+    },
+    "seed/seed-prefix-73.pickle": {
+      "sha256": "defd1897c0b48048410ca87fc1865927ceb3dfbc5ae1711dc2d9fe57753e73e2",
+      "bytes": 20117
+    },
+    "seed/seed-prefix-52.pickle": {
+      "sha256": "9f11e4f2338f73f62854bc702ff60e61736601cf36b91b776ddd835fa669f8b6",
+      "bytes": 19825
+    },
+    "seed/seed-prefix-42.pickle": {
+      "sha256": "7814ba70a885b66cb60375a1ef3f58f1dd70ebe31e07d4e7c67bb31476f60d6d",
+      "bytes": 19825
+    },
+    "seed/seed-prefix-25.pickle": {
+      "sha256": "a24c5b278a4d28485cd471fbfcdd8a448dc50b808430e93da84d1451ccf796b6",
+      "bytes": 19278
+    },
+    "seed/seed-prefix-36.pickle": {
+      "sha256": "ccadce5c69f4453f3ea1bf85701bc8ec28f12834d54571c6e5b7e2d41c8c2202",
+      "bytes": 19278
+    },
+    "seed/seed-prefix-64.pickle": {
+      "sha256": "b38e79bbb62b1113577c24b41c9d86e16742917b1ca2a2bac43282f1dcd4679a",
+      "bytes": 19825
+    },
+    "seed/seed-prefix-47.pickle": {
+      "sha256": "79eb0c17e4b5d28a6d4f9f7c54f7efc6d16d59baf5f631b612aa03c3e749266d",
+      "bytes": 19825
+    },
+    "seed/seed-prefix-26.pickle": {
+      "sha256": "5d22c7741bd58b6655698db8d6b95d7086e40c61f9792d79317bbe1241a29a4b",
+      "bytes": 19278
+    },
+    "seed/seed-prefix-77.pickle": {
+      "sha256": "11367026e376b17ee21294e7c7d0d530ce2395b3434e8bb97032f5d0161344ae",
+      "bytes": 20117
+    },
+    "seed/seed-prefix-6.pickle": {
+      "sha256": "46593ec0c8fceb42aecfa396481c79dee9f3671afdac6c1e3d267697f7cdf775",
+      "bytes": 19278
+    },
+    "seed/seed-prefix-12.pickle": {
+      "sha256": "ad6c7a615c636a0c1f54282fe4fb3e820a3805ace4e7f4ba5b32a75c459801f1",
+      "bytes": 19278
+    },
+    "seed/seed-prefix-34.pickle": {
+      "sha256": "ea893b64311956425add7dd6c15a183e30eb35e75af79b1dbababff2eceb41fa",
+      "bytes": 19278
+    },
+    "complex/frequency-solution.pickle": {
+      "sha256": "6213b2b0fa194d51166a68541fb0a3cfce95cfdec1771c9583b58e970d13d889",
+      "bytes": 167364
+    },
+    "complex/partial-layout-3-00000128.pickle": {
+      "sha256": "1bfeb4ddfcbd095a076375225fc39834bceedfaf21dae9310065e8db6e85f591",
+      "bytes": 2704479
+    },
+    "complex/partial-layout-3-00000448.pickle": {
+      "sha256": "b6ccfc5206a2f139373905718c762a65674a5c3f03b2dc069022394c4b5d74d0",
+      "bytes": 2704482
+    },
+    "complex/layout-3.pickle": {
+      "sha256": "75d9ab9ed735667974a9be2c1dd1386f3da31d407ef4ade5a1e2605e5693e67a",
+      "bytes": 2748058
+    },
+    "complex/partial-layout-3-00000576.pickle": {
+      "sha256": "e5f95f687b8607e5c5b8e944973fb58f1b4eef927b386fedf49f0ee4b0f96ac3",
+      "bytes": 2704482
+    },
+    "complex/frequency-interior.pickle": {
+      "sha256": "b5118fb3a26249bf1337c8f9643eb848e58e79efc938cc1fd8e7a379ee10a28e",
+      "bytes": 33283332
+    },
+    "complex/partial-layout-3-00000640.pickle": {
+      "sha256": "03861300fca2c3c13127a06c4e6a08605c8a1c3c3423e63617d5c142cfaef54f",
+      "bytes": 2704482
+    },
+    "complex/frequency-binding.pickle": {
+      "sha256": "4bb45b4bd8816830646f10e59e53ec5622ee00ef674ddcb4f0dc7281f720638a",
+      "bytes": 750616
+    },
+    "complex/layout-1.pickle": {
+      "sha256": "2a493eaee91ea3daacba59134a099a0e7ad1523d4527105d799a9760b050ef80",
+      "bytes": 10983430
+    },
+    "complex/frequency-system.pickle": {
+      "sha256": "47c8a86422df1fe49e21003c40c55961095c27b418b06ca16db9e09ec39d05c1",
+      "bytes": 13372312
+    },
+    "complex/partial-layout-3-00000320.pickle": {
+      "sha256": "5cf1eac124419de2b60ebacf4fcb1ba0768edcd378358851762ba91ecf065af1",
+      "bytes": 2704482
+    },
+    "complex/layout-2.pickle": {
+      "sha256": "be238ed7b1aef18a2fb35a2f741db79ddee06f16ec5afe3ba88cb9dae81142b0",
+      "bytes": 8238308
+    },
+    "complex/partial-layout-3-00000384.pickle": {
+      "sha256": "c6783d967efc965f6c399aded97f2d288af8b03c948c561d2295aea882a0b5ad",
+      "bytes": 2704482
+    },
+    "complex/partial-layout-3-00000256.pickle": {
+      "sha256": "9dd727e69ef9a440bf7b401f7f21cafd9d97b6705dba6b4ba50bc04474246902",
+      "bytes": 2704482
+    },
+    "complex/partial-layout-3-00000512.pickle": {
+      "sha256": "8220850cd9caa51f23bb35145e8da7f01cf313fa081b0ead01edfa801624ce66",
+      "bytes": 2704482
+    },
+    "complex/frequency-end-maps.pickle": {
+      "sha256": "af3572872de3f12232d2a1813fa15d69590661ce50f3b2ffb505b6669d8a9f3b",
+      "bytes": 164926
+    },
+    "complex/partial-layout-3-00000192.pickle": {
+      "sha256": "137a9b560ef61f0aaeb107fbb1efd9f047f6043a7d9f3cbf0aae9c6b8e39b65e",
+      "bytes": 2704479
+    },
+    "complex/frequency-rows.pickle": {
+      "sha256": "d85d35a923ad05e64e48f66de38276f8f04cb624fd6d87afa1995c5666a41bf6",
+      "bytes": 43272370
+    },
+    "complex/partial-layout-3-00000064.pickle": {
+      "sha256": "53569533404c8687792f72af035d22990f381d3d2f063dac3f9959a0e3f4ead1",
+      "bytes": 2704479
+    }
+  },
+  "validation": {
+    "sources": 66,
+    "inputs": 19,
+    "artifacts": 108,
+    "cases": {
+      "seed": {
+        "sourceRecords": 375,
+        "rows": 80,
+        "terms": 160,
+        "sources": 35,
+        "rank": 645,
+        "condition": 3772.559178628836
+      },
+      "complex": {
+        "sourceRecords": 375,
+        "rows": 80,
+        "terms": 160,
+        "sources": 35,
+        "rank": 645,
+        "condition": 5717.29666617146
+      }
+    },
+    "newMomentumNodes": 177848,
+    "respondingRowMeasures": 80,
+    "maximumUnscaledBoundaryResidual": 6.554900563013456e-14,
+    "allArtifactHashesUnchanged": true,
+    "scope": "First actual finite analytic-frequency matrix and four-column response at 1-0.01i. Finite rules and approximate modal ends; no pole search or physical complex-frequency current."
+  },
+  "validator": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-matrix-20260919/accept-final.py",
+    "sha256": "35eb31aa9bfaed424d4e699fc3cc735f6a4c4bdcc7077410dffbaaea9025c89a"
+  },
+  "next": "A small finite-pencil contour diagnostic with fixed coordinate scales and complete end continuation; retain numerical-domain limitations and full nonlinearPoleV2 singular data for any candidates."
+}

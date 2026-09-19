@@ -1,5 +1,5 @@
 {
-  "status": "RUNNING",
+  "status": "VALIDATED_FIRST_FINITE_FREQUENCY_MATRIX",
   "checker": "S11c_d_frequency_matrix.py",
   "plan": "S11c_d_frequency_matrix_plan.md",
   "report": "S11c_d_frequency_matrix_report.md",
@@ -9,7 +9,7 @@
     "nativeThreads": 1,
     "addressSpaceBytes": 2147483648
   },
-  "next": "Validate the first actual finite complex-frequency pencil, then choose a small bounded contour/search test from its cost and conditioning.",
+  "next": "A small finite-pencil contour diagnostic with fixed coordinate scales and complete end continuation; retain numerical-domain limitations and full nonlinearPoleV2 singular data for any candidates.",
   "implementationCommit": "e47df622",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-matrix-20260919/production",
   "launch": {
@@ -60,5 +60,52 @@
   "launcher": {
     "path": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-matrix-20260919/production/launch.py",
     "sha256": "1af6d5995146e880ef3deb3fa8de0a62fcba511a3ff88988be779a9767d287a9"
+  },
+  "outcome": {
+    "stage": "matrix_construct",
+    "command": [
+      "python",
+      "-u",
+      "_measurements/S11c_d_frequency_matrix.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-matrix-20260919/production/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-matrix-20260919/production/matrix_construct.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-matrix-20260919/production/matrix_construct.stderr",
+    "startedUtc": "2026-09-19T21:48:27.928953+00:00",
+    "childPid": 757774,
+    "status": "completed",
+    "exitCode": 0,
+    "wallSeconds": 89.87986055389047,
+    "stderrBytes": 0,
+    "finishedUtc": "2026-09-19T21:49:57.808852+00:00"
+  },
+  "validation": {
+    "sources": 66,
+    "inputs": 19,
+    "artifacts": 108,
+    "cases": {
+      "seed": {
+        "sourceRecords": 375,
+        "rows": 80,
+        "terms": 160,
+        "sources": 35,
+        "rank": 645,
+        "condition": 3772.559178628836
+      },
+      "complex": {
+        "sourceRecords": 375,
+        "rows": 80,
+        "terms": 160,
+        "sources": 35,
+        "rank": 645,
+        "condition": 5717.29666617146
+      }
+    },
+    "newMomentumNodes": 177848,
+    "respondingRowMeasures": 80,
+    "maximumUnscaledBoundaryResidual": 6.554900563013456e-14,
+    "allArtifactHashesUnchanged": true,
+    "scope": "First actual finite analytic-frequency matrix and four-column response at 1-0.01i. Finite rules and approximate modal ends; no pole search or physical complex-frequency current."
   }
 }

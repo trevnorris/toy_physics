@@ -1,0 +1,8 @@
+{
+  "scope": "Correct only the missing radical-coordinate argument to the unchanged native path helper. Completed root and denominator packets are reused; no physics change.",
+  "originalSourceSha256": "d1612557365ec4519bf20f0aa4b78eb58433b3e7cc00aa979a5ef588307f8ccf",
+  "repairedSourceSha256": "3d2a129e6cb0994cfa356657654dba0a2e85c609702abe0f49da59cb164954fa",
+  "wholeFileReverseAstJoin": true,
+  "rootPacketSha256": "b7e610f5870ea064e085066056822f1fa116420b4495341cdcfc4b38ed064ea5",
+  "denominatorPacketSha256": "d32d55d122de7a925239d899ff5b0ab76512c51cfb9d1df5d1790b9a07d2057d"
+}

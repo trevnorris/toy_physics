@@ -1,0 +1,27 @@
+{
+  "status": "FOCUSED_ACCEPTED_READY_TO_LAUNCH",
+  "checker": "S11c_d_frequency_chart.py",
+  "plan": "S11c_d_frequency_chart_plan.md",
+  "report": "S11c_d_frequency_chart_report.md",
+  "acceptedFrequencySourceCommit": "9823b351",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-chart-20260919/production",
+  "limits": {
+    "wallSeconds": 900,
+    "nativeThreads": 1,
+    "addressSpaceBytes": 2147483648
+  },
+  "next": "Validate scalar analytic sources and denominator domain; construct full outgoing end continuation and actual finite frequency matrices before bounded pole search.",
+  "focusedCheckpoint": "S11c_d_frequency_chart_focused.json",
+  "focusedValidation": {
+    "sources": 58,
+    "inputs": 15,
+    "artifacts": 29,
+    "seedControlPairs": 4,
+    "normalizedCertificates": 2,
+    "zeroProofScalars": 10,
+    "explicitRealSeedRootJoins": 2,
+    "pathChecks": 27,
+    "lowerHalfWrongRootControls": 18,
+    "actualRootSignMutationNonzero": true
+  }
+}

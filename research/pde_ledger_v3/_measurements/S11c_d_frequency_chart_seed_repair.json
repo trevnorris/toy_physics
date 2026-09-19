@@ -1,0 +1,8 @@
+{
+  "scope": "Explicit seed sqrt(B)=i sqrt(-B) for strictly negative real quadratic B and real momentum; positive rescalings retained. This supplements the unchanged rational identity certificate with actual branch hypotheses, without a global root rewrite.",
+  "originalSourceSha256": "3d2a129e6cb0994cfa356657654dba0a2e85c609702abe0f49da59cb164954fa",
+  "repairedSourceSha256": "06b1e19ffd03349951488b13580f336dc7d12e15a6941191026697b5c413ed97",
+  "wholeFileReverseAstJoin": true,
+  "completedPathsSha256": "13d2f5fb537a860e624d4a737dd790257fd844ab2e758fd0f189adb9204a79a2",
+  "failedComparison": "focused-retry-01/comparisons/integral0Factor0Coefficient/seed/comparison.pickle"
+}

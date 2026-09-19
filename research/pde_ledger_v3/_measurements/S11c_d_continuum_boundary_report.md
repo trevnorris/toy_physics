@@ -24,3 +24,14 @@ cases/exports follow under exploratory acceptance.
 Production launched at2026-09-19T16:12:15Z under the existing supervisor and
 silent completion/error watcher. Startup verified both processes and the
 constructor, with empty stderr. No production result is accepted yet.
+
+The first production stopped at its900-second budget inside multivariate GCD
+for an optional `cancel` in current-table simplification. It saved the left
+pencil and five complete subspaces (seven basis directions). No boundary/current
+result was accepted. The narrow repair retains the raw differentiated operands.
+A whole-checker AST join removes exactly that one final simplification call.
+All five saved mode coefficient/gauge residuals replay exactly; the independent
+four-grade arithmetic and inverse checks still pass, and the ordering mutation
+responds. The recovery uses byte-identical copies of the six saved packets,
+reversible cache/checkpoint hooks and a separate derivative-entry inventory.
+The original failed logs and source snapshots remain preserved.

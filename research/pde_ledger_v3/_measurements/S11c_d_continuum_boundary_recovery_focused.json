@@ -1,0 +1,82 @@
+{
+  "original": {
+    "originalDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/production/complete",
+    "originalInputsSha256": "adaa6d1c892b0bfaad6a4ca652daeacafdc5a1c4f9f690d347cf28b824ec9f45",
+    "removedCalls": [
+      "Call(func=Attribute(value=BinOp(left=Call(func=Attribute(value=Name(id='value', ctx=Load()), attr='subs', ctx=Load()), args=[Dict(keys=[Name(id='eta', ctx=Load()), Name(id='sigma', ctx=Load())], values=[Constant(value=0), Constant(value=0)])], keywords=[]), op=Div(), right=BinOp(left=Call(func=Attribute(value=Name(id='math', ctx=Load()), attr='factorial', ctx=Load()), args=[Name(id='jl', ctx=Load())], keywords=[]), op=Mult(), right=Call(func=Attribute(value=Name(id='math', ctx=Load()), attr='factorial', ctx=Load()), args=[Name(id='jr', ctx=Load())], keywords=[]))), attr='applyfunc', ctx=Load()), args=[Attribute(value=Name(id='sp', ctx=Load()), attr='cancel', ctx=Load())], keywords=[])"
+    ],
+    "artifacts": {
+      "left-mode-5.pickle": {
+        "bytes": 6650,
+        "sha256": "5262868d1c120b99ec4100eb3f25d84165982d2d0c8037b831f3646295132d4b"
+      },
+      "left-pencil.pickle": {
+        "bytes": 9936,
+        "sha256": "66bd1e5ccbf08fb7a3c11df461232783850062090fb4500d3a7c0f6ec6253174"
+      },
+      "left-mode-17.pickle": {
+        "bytes": 10751,
+        "sha256": "23feab53b8b61d9c13c3d15b2c2fec8602eab0d73c72adaf8090487b9530606c"
+      },
+      "left-mode-7.pickle": {
+        "bytes": 6650,
+        "sha256": "4f3618881032fad507a17460cf49ec025abfcc0ce327d11642ba32336b65b6ee"
+      },
+      "left-mode-1.pickle": {
+        "bytes": 6650,
+        "sha256": "7086447e567b7842218fa41d0209f7fdc3ee32c91fb23e9f2ee581a20beaf3bc"
+      },
+      "left-mode-16.pickle": {
+        "bytes": 10748,
+        "sha256": "7f5eb226f0e751c1f08be8e125e261c1c72ec7aa7bb2e592d644fb10be8e0a21"
+      }
+    },
+    "wholeCheckerJoin": true
+  },
+  "joins": {
+    "constructEndReverseAstJoin": true,
+    "currentTablesReverseAstJoin": true,
+    "hooks": [
+      "J",
+      "f.atomic_pickle",
+      "J.pair",
+      "f.atomic_pickle",
+      "current_tables",
+      "f.atomic_pickle"
+    ]
+  },
+  "cacheReplays": {
+    "left-mode-5.pickle": {
+      "sourceSha256": "5262868d1c120b99ec4100eb3f25d84165982d2d0c8037b831f3646295132d4b",
+      "coefficientsJoin": true,
+      "basisJoin": true,
+      "fullResidualReplay": true
+    },
+    "left-mode-17.pickle": {
+      "sourceSha256": "23feab53b8b61d9c13c3d15b2c2fec8602eab0d73c72adaf8090487b9530606c",
+      "coefficientsJoin": true,
+      "basisJoin": true,
+      "fullResidualReplay": true
+    },
+    "left-mode-7.pickle": {
+      "sourceSha256": "4f3618881032fad507a17460cf49ec025abfcc0ce327d11642ba32336b65b6ee",
+      "coefficientsJoin": true,
+      "basisJoin": true,
+      "fullResidualReplay": true
+    },
+    "left-mode-1.pickle": {
+      "sourceSha256": "7086447e567b7842218fa41d0209f7fdc3ee32c91fb23e9f2ee581a20beaf3bc",
+      "coefficientsJoin": true,
+      "basisJoin": true,
+      "fullResidualReplay": true
+    },
+    "left-mode-16.pickle": {
+      "sourceSha256": "7f5eb226f0e751c1f08be8e125e261c1c72ec7aa7bb2e592d644fb10be8e0a21",
+      "coefficientsJoin": true,
+      "basisJoin": true,
+      "fullResidualReplay": true
+    }
+  },
+  "recoveryHelperSha256": "156252a37a9aaba207fa06ce23ca34cc7286601c8f76cdfe1a63a9e40a2f1839",
+  "constructorSha256": "0f24ad483b21ec79b87c7631b8a52324c66d38f1970ff8e8a8bfc63fc659affe"
+}

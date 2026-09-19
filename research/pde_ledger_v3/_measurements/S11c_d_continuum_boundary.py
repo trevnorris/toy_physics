@@ -136,7 +136,7 @@ def current_tables(expression,waves,variables,eta,sigma):
                 value=expression.diff(eta,a).diff(sigma,b)
                 for _ in range(jl):value=derivative(value,kl,ql)
                 for _ in range(jr):value=derivative(value,kr,qr)
-                table[(a,b,jl,jr)]=(value.subs({eta:0,sigma:0})/(math.factorial(jl)*math.factorial(jr))).applyfunc(sp.cancel)
+                table[(a,b,jl,jr)]=value.subs({eta:0,sigma:0})/(math.factorial(jl)*math.factorial(jr))
     return table,parameter_proofs
 
 

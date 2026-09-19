@@ -1,5 +1,5 @@
 {
-  "status": "FOCUSED_RUNNING",
+  "status": "MATRIX_BINDING_REPAIR_VALIDATED",
   "checker": "S11c_d_coordinate_response.py",
   "plan": "S11c_d_coordinate_response_plan.md",
   "report": "S11c_d_coordinate_response_report.md",
@@ -45,5 +45,27 @@
     "strictStderrBytes": 0,
     "watcherStderrBytes": 0,
     "inspection": "One startup inspection; local completion/error hook owns continuation."
-  }
+  },
+  "originalOutcome": {
+    "stage": "coordinate_focused",
+    "command": [
+      "python",
+      "-u",
+      "_measurements/S11c_d_coordinate_response.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-coordinate-response-20260919/focused/complete",
+      "--focused"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-coordinate-response-20260919/focused/coordinate_focused.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-coordinate-response-20260919/focused/coordinate_focused.stderr",
+    "startedUtc": "2026-09-19T19:16:17.360793+00:00",
+    "childPid": 697098,
+    "status": "failed",
+    "exitCode": 1,
+    "wallSeconds": 19.648824905976653,
+    "stderrBytes": 1166,
+    "finishedUtc": "2026-09-19T19:16:37.009663+00:00"
+  },
+  "repair": "S11c_d_coordinate_response_matrix_repair.json",
+  "retryRunRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-coordinate-response-20260919/focused-retry-01"
 }

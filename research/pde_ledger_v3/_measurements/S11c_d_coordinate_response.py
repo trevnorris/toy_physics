@@ -51,8 +51,8 @@ class Chart:
         for key,value in self.adapter.input.limits.items():
             image=source.coordinate_change(key,self.g['definitions'],self.g['forward']);self.material.input.limits[image]=value
         self.cuts=data['old']['domain-binding.pickle']['bound']['cutoffBindings']
-        self.forward={n:{j:self.adapter.bind(m) for j,m in v.items()} for n,v in self.jets['forwardWithoutPhase'].items()}
-        self.inverse={n:{j:self.adapter.bind(m) for j,m in v.items()} for n,v in self.jets['inverseWithoutPhase'].items()}
+        self.forward={n:{j:self.adapter.bind(sp.ImmutableMatrix(m)) for j,m in v.items()} for n,v in self.jets['forwardWithoutPhase'].items()}
+        self.inverse={n:{j:self.adapter.bind(sp.ImmutableMatrix(m)) for j,m in v.items()} for n,v in self.jets['inverseWithoutPhase'].items()}
         self.composition={}
         for n in self.forward:
             for q in range(n+1):

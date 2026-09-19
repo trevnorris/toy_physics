@@ -28,7 +28,7 @@
   },
   "purpose": "Measure feasibility and inspect residuals/conditioning of the complete finite operator and all-incident solve before choosing practical observable checks.",
   "scope": "Instrument/cost pilot; no physical observable or continuum re-expansion accepted.",
-  "next": "Retain the practically stable finite response; construct independent eta/sigma operator grades and their response/physical-control dependencies. No further broad quadrature sweep.",
+  "next": "Independent continuum operator-grade extraction is running; see S11c_d_continuum_grade_execution.json. Then assemble coefficient response including boundary/mode/current dependence.",
   "implementationCommit": "efc61982",
   "originalAttempt": {
     "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-finite-scattering-20260919/pilot",

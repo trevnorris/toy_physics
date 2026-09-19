@@ -21,7 +21,7 @@ zero structural grade indices needed explicit dimensionless metadata. The
 selection and structural emitter now handle these data faithfully. No upstream
 factorization or numerical integration was repeated.
 
-Full extraction is prepared with a900-second budget, one native thread and
+Full extraction (`4bd2ab19`) is running with a900-second budget, one native thread and
 2 GiB address-space ceiling. Each record is saved before guards. Complete
 operator grades remain pending until that run passes. This stage produces
 unintegrated coefficient operators; boundary/mode/current response expansion,

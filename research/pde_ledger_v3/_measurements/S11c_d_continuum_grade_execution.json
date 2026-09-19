@@ -1,5 +1,5 @@
 {
-  "status": "READY",
+  "status": "RUNNING",
   "checker": "S11c_d_continuum_grades.py",
   "plan": "S11c_d_continuum_grade_plan.md",
   "report": "S11c_d_continuum_grade_report.md",
@@ -11,5 +11,36 @@
     "nativeThreads": 1,
     "addressSpaceBytes": 2147483648
   },
-  "next": "Extract complete independent coefficient operators; then build the response expansion with actual boundary/channel/current derivatives."
+  "next": "Extract complete independent coefficient operators; then build the response expansion with actual boundary/channel/current derivatives.",
+  "implementationCommit": "4bd2ab19",
+  "launch": {
+    "launchedUtc": "2026-09-19T15:35:07.796527+00:00",
+    "command": [
+      "/usr/bin/python",
+      "_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-grades-20260919/production",
+      "--stage",
+      "grades_construct",
+      "--",
+      "python",
+      "-u",
+      "_measurements/S11c_d_continuum_grades.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-grades-20260919/production/complete"
+    ],
+    "supervisorPid": 593944,
+    "watcherPid": 593945,
+    "watcherDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-grades-20260919/production/completion-watcher",
+    "threadEnvironment": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1"
+    }
+  },
+  "launchVerification": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-grades-20260919/production/launch-verification.json",
+    "sha256": "bd43ad548573ef05e1a787db8b59d7487358882786261abf89ad40534f3e010e"
+  }
 }

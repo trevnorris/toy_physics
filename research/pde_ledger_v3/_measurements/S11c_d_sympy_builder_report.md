@@ -378,6 +378,14 @@ reaches 2.70 radians. The first full inverse moment drops from 8.74e-2 to
 reuse every accepted matrix and add 16 points. No physical pole set or
 certified empty spectrum is established.
 
+The [single contour midpoint comparison](S11c_d_frequency_contour_refine_report.md)
+is running with16 new points and all16 original matrices reused. A missing
+`--focused` launch flag started the numerical run in the directory named
+`focused`; its correct source/settings and completed preflight joins are
+recorded. The run is preserved, a completion hook is attached, and the duplicate
+launcher is disabled. No standalone focused or refined result is presumed
+accepted; final saved-operand validation remains required.
+
 ## Retained user-approved solver/export contract
 
 

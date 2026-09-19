@@ -1,0 +1,75 @@
+{
+  "status": "RUNNING_MIDPOINT_PRODUCTION_ADOPTED_FROM_TOOL_SESSION",
+  "checker": "S11c_d_frequency_contour_refine.py",
+  "plan": "S11c_d_frequency_contour_refine_plan.md",
+  "report": "S11c_d_frequency_contour_refine_report.md",
+  "acceptedContourCommit": "395e4ea9",
+  "limits": {
+    "wallSeconds": 900,
+    "workers": 4,
+    "nativeThreadsPerWorker": 1,
+    "addressSpaceBytesPerProcess": 2147483648
+  },
+  "next": "Inspect the single16/32 angular comparison; record a scoped numerical outcome or target an actual candidate, without automatic contour doubling.",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-contour-refine-20260919",
+  "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-contour-refine-20260919/focused",
+  "toolSessionId": 8703,
+  "launchCorrection": "S11c_d_frequency_contour_refine_launch_correction.json",
+  "launch": {
+    "stage": "contour_refine",
+    "status": "running_adopted_tool_session",
+    "command": [
+      "python",
+      "research/pde_ledger_v3/_measurements/S11c_d_frequency_contour_refine.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-contour-refine-20260919/focused"
+    ],
+    "childPid": 774319,
+    "supervisingShellPid": 774318,
+    "toolSessionId": 8703,
+    "resultDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-contour-refine-20260919/focused",
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-contour-refine-20260919/focused.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-contour-refine-20260919/focused.stderr",
+    "startedUtcFromLogTimestamp": "2026-09-19T22:25:13.726816+00:00",
+    "adoptedUtc": "2026-09-19T22:29:45.906056+00:00",
+    "threadEnvironment": {
+      "MKL_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1"
+    },
+    "preflight": {
+      "joins": {
+        "wholeMidpointWorkerJoin": true,
+        "wholeMomentSummaryJoin": true,
+        "unchangedEndLoopBody": true,
+        "unchangedPointConstructorInverseAndMaps": true
+      },
+      "totalPoints": 32,
+      "reusedPoints": 16,
+      "newPoints": 16,
+      "center": "(1-0.01j)",
+      "radius": 0.02,
+      "workers": 4
+    },
+    "launchModeMistake": "--focused omitted; authorized numerical production already running under focused directory. Preserve and validate, never rerun.",
+    "standaloneFocusedChecks": "Not yet executed; perform saved-address/moment checks before final acceptance.",
+    "preparedUnusedLauncher": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-contour-refine-20260919/production/launch.prepared-unused.py",
+      "sha256": "16d5cb28bd58bcd2a5271987d7d6fcb81afe1ef9494d2dba6d41cac02c9c03f8"
+    },
+    "exitStatusSource": "Tool session8703; do not infer exit zero from checks.json.",
+    "watcherPid": 775671,
+    "watcherDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-contour-refine-20260919/completion-watcher",
+    "currentAndFrozenSourceIdentity": true,
+    "sourceCount": 72,
+    "inputCount": 21,
+    "numericalSourceChanged": false,
+    "restartAuthorized": false,
+    "correctionScript": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-contour-refine-20260919/attach-completion.py",
+      "sha256": "21c394ea7b68ac80f10a59048e162e4edc06c2cdddda841f826a28a69fb44590"
+    },
+    "preliminaryTestDisposition": "Standalone focused CLI checks were not run. Actual production preflight completed reverse AST joins, accepted hashes and all reused addresses. Exact saved16 moments and source/index mutation checks remain acceptance work; no test is presumed passed."
+  }
+}

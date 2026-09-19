@@ -1,0 +1,9 @@
+{
+  "status": "FOCUSED_PREPARATION",
+  "checker": "S11c_d_frequency_end.py",
+  "plan": "S11c_d_frequency_end_plan.md",
+  "report": "S11c_d_frequency_end_report.md",
+  "acceptedScalarChartCommit": "6775844c",
+  "limits": {"wallSeconds": 900, "nativeThreads": 1, "addressSpaceBytes": 2147483648},
+  "next": "Validate actual full-subspace continuation before constructing the finite frequency pencil and a targeted pole search."
+}

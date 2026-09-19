@@ -1,5 +1,5 @@
 {
-  "status": "FOCUSED_ACCEPTED_PRODUCTION_PREPARING",
+  "status": "PRODUCTION_READY",
   "checker": "S11c_d_coordinate_response.py",
   "plan": "S11c_d_coordinate_response_plan.md",
   "report": "S11c_d_coordinate_response_report.md",
@@ -10,7 +10,7 @@
     "nativeThreads": 1,
     "addressSpaceBytes": 2147483648
   },
-  "next": "Use exact saved focused bindings and end/current routes in one complete finite material quadrature and independent-grade scattering solve.",
+  "next": "Run full material quadratures and mixed continuum response, validate complete emitted results, publish and commit, then evaluate one-sided shape scattering sensitivity.",
   "implementationCommit": "f9629960",
   "launch": {
     "launchedUtc": "2026-09-19T19:16:17.326311+00:00",
@@ -143,5 +143,10 @@
     "checksSha256": "697a1e89fa0242738f634beb71bd6cc23146929f3b845236c6ce6be655d749ae",
     "validatorSha256": "d25acc1a8299438d5eba1a0f0a08c1d47c2a76a63e698e2964d51cfc36d5d7d8",
     "scope": "Bounded actual material integrand/source/local operator and complete boundary/current route check; full material quadrature and scattering solve remain."
-  }
+  },
+  "focusedAcceptanceCommit": "0eb1c4df",
+  "productionChecker": "S11c_d_coordinate_response_production.py",
+  "productionPlan": "S11c_d_coordinate_response_production_plan.md",
+  "productionFocused": "S11c_d_coordinate_response_production_focused.json",
+  "productionRunRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-coordinate-response-20260919/production"
 }

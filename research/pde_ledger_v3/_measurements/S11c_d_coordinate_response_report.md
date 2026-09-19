@@ -34,3 +34,12 @@ regulator. General nonaffine covariance and c2 N3/N4/N6 closure do not follow.
 One-sided first-w-derivative scattering sensitivity, targeted frequency poles,
 remaining cases and final exports remain under practical toy-model acceptance.
 No broad convergence campaign is queued.
+
+The production accumulator adapter passes its focused execution check. Its
+whole function reverses to the native matrix accumulator after restoring only
+the expected-volume expression. Three coarse complete material/Eulerian layouts
+cover all80 rows at1500 total nodes, with differences below8.45e-15. Material
+box measures10/100/1000 and physical measures8/64/512 agree through the actual
+Jacobians; incorrect physical-volume guards respond. These coarse layouts
+validate the adapter only, not physical convergence. The new full constructor,
+coefficient solve and emission path are ready for the bounded production run.

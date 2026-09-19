@@ -92,6 +92,11 @@ solve residual is4.79e-14. Evaluated amplitude/current sensitivities6.02e-7/
 This closes the selected first-derivative probe, not isolated channel physics
 or c2 source-origin debt. The actual frequency-dependent operator and targeted
 nonlinear pole search, remaining cases and exports are next.
+The [frequency-source preparation](S11c_d_frequency_source_report.md) is
+implemented for the next bounded pole stage. It keeps actual frequency
+operands live, checks independent rebinding, and derives end-domain candidate
+polynomials from the original constant symbols. No new frequency pencil,
+profile pole, outgoing analytic chart or bound-channel result is accepted yet.
 The older checkpoint narrative below records history, not the current task
 queue. The retained solver/export suffix remains byte-identical, interpreted
 under the new acceptance addendum and the approved pole correction.

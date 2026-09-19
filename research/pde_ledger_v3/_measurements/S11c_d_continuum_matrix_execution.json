@@ -1,5 +1,5 @@
 {
-  "status": "READY",
+  "status": "PUBLISHED_ANNEX_VERIFIED",
   "checker": "S11c_d_continuum_matrices.py",
   "plan": "S11c_d_continuum_matrix_plan.md",
   "report": "S11c_d_continuum_matrix_report.md",
@@ -12,5 +12,107 @@
     "nativeThreads": 1,
     "addressSpaceBytes": 2147483648
   },
-  "next": "Validate all interior coefficient matrices, then construct boundary/channel/current coefficients and the continuum response."
+  "next": "Validate all interior coefficient matrices, then construct boundary/channel/current coefficients and the continuum response.",
+  "checkpoint": "S11c_d_continuum_matrix_checkpoint.json",
+  "publication": {
+    "path": "scripts/out/S11c_d_continuum_interior_matrices.out",
+    "bytes": 399729,
+    "sha256": "1c62ad7ee14c556eed325a7d261154555e757b01be12891558f0ce7b232572a1",
+    "annexKey": "MD5E-s399729--9230dbff9a14abb1ffc4201dbe8965d0.out",
+    "symlink": "../../../../.git/annex/objects/zg/kJ/MD5E-s399729--9230dbff9a14abb1ffc4201dbe8965d0.out/MD5E-s399729--9230dbff9a14abb1ffc4201dbe8965d0.out",
+    "publicationCommit": "9471a10f38d8b04af0ada5b4268309b7e3b33339"
+  },
+  "outcome": {
+    "stage": "matrices_construct",
+    "command": [
+      "python",
+      "-u",
+      "_measurements/S11c_d_continuum_matrices.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-matrices-20260919/production/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-matrices-20260919/production/matrices_construct.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-matrices-20260919/production/matrices_construct.stderr",
+    "startedUtc": "2026-09-19T15:51:28.445644+00:00",
+    "childPid": 605407,
+    "status": "completed",
+    "exitCode": 0,
+    "wallSeconds": 18.681718677282333,
+    "stderrBytes": 0,
+    "finishedUtc": "2026-09-19T15:51:47.127415+00:00"
+  },
+  "verification": {
+    "completeGrades": 4,
+    "unknowns": 645,
+    "fieldBlocksPerGrade": 25,
+    "savedMatrixComponents": 12,
+    "reusedMomentumRows": 80,
+    "nativeTerms": 160,
+    "newIntegrationNodes": 0,
+    "tags": 858,
+    "metadataPaths": 4179
+  },
+  "launch": {
+    "launchedUtc": "2026-09-19T15:51:28.416292+00:00",
+    "command": [
+      "/usr/bin/python",
+      "_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-matrices-20260919/production",
+      "--stage",
+      "matrices_construct",
+      "--",
+      "python",
+      "-u",
+      "_measurements/S11c_d_continuum_matrices.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-matrices-20260919/production/complete"
+    ],
+    "supervisorPid": 605405,
+    "watcherPid": 605406,
+    "watcherDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-matrices-20260919/production/completion-watcher",
+    "threadEnvironment": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1"
+    }
+  },
+  "launchVerification": {
+    "active": {
+      "stage": "matrices_construct",
+      "command": [
+        "python",
+        "-u",
+        "_measurements/S11c_d_continuum_matrices.py",
+        "--run-directory",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-matrices-20260919/production/complete"
+      ],
+      "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-matrices-20260919/production/matrices_construct.stdout",
+      "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-matrices-20260919/production/matrices_construct.stderr",
+      "startedUtc": "2026-09-19T15:51:28.445644+00:00",
+      "childPid": 605407,
+      "status": "completed",
+      "exitCode": 0,
+      "wallSeconds": 18.681718677282333,
+      "stderrBytes": 0,
+      "finishedUtc": "2026-09-19T15:51:47.127415+00:00"
+    },
+    "processes": {
+      "supervisor": {
+        "pid": 605405,
+        "live": false
+      },
+      "watcher": {
+        "pid": 605406,
+        "live": false
+      },
+      "constructor": {
+        "pid": 605407,
+        "live": false
+      }
+    },
+    "stderrBytes": 0,
+    "engineSha256": "5bf77729682960bb59f10c672a5fe3f67a98b0a9533da7c6189a37183596050f"
+  }
 }

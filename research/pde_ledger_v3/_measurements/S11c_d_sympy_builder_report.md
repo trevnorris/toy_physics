@@ -27,8 +27,13 @@ The selected boundary/regulator set now passes in170.14 seconds: all645-unknown
 systems full rank, scaled residuals below6.60e-16. Matching-basis, common-phase
 boundary and regulator amplitude changes are1.2813e-7,2.1422e-6 and5.100e-12.
 The dominant finite response meets practical precision; tiny reflection/loss is
-unresolved. Next build independent continuum grades and physical controls from
-the saved symbolic operands. No broad quadrature sweep is queued.
+unresolved. Independent symbolic continuum coefficients are accepted at24961b20:
+375 records, 1628 zero residuals, all original factors and limits retained.
+The complete finite interior matrices are now published at9471a10f: four
+645-by-645 grades in18.68 seconds, reusing accepted quadratures with zero new
+nodes. Approved-operator recombination agrees to4.79e-16; omitting the mixed
+term responds. Next expand actual end modes, boundary/channel and current maps,
+then the complete response. No broad quadrature sweep is queued.
 The older checkpoint narrative below records history, not the current task
 queue. The retained solver/export suffix remains byte-identical, interpreted
 under the new acceptance addendum and the approved pole correction.

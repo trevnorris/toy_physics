@@ -1,0 +1,119 @@
+{
+  "status": "VALIDATED_UNIFORM_SOURCE_INPUTS",
+  "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-uniform-source-20260919/preflight-02/complete",
+  "checksSha256": "2bd3fc1e1046e7332bc31848385f7c6e3643de461de8fbecc6a699ce966346e6",
+  "checks": {
+    "sourceFiles": {
+      "scripts/S11c_d_mixing_scattering_sympy_audit.py": "5bf77729682960bb59f10c672a5fe3f67a98b0a9533da7c6189a37183596050f",
+      "scripts/S11c_b_exports.py": "3c6555f90a85382a5e96f3f961f0e36a4875d9259fe1be947fa8e683669b7084",
+      "scripts/S11c_c1_exports.py": "a5353b86dc526fd1b56734fdbdf7dc7f42387a3195ab4de84e8994f751871cdc",
+      "scripts/S11c_c2_exports.py": "2ba5ed487b84ecb98290df6f1650fa6210fe2784cfa02a0f3cff96cd718411cd",
+      "directives/S11c_d_SHARED_PHYSICS.md": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5",
+      "scripts/ledger_fold.py": "97da78c6631c09e5575dd14511760506f1ac08771cf07948978004e92f0b2333",
+      "directives/S11b_SHARED_PHYSICS.md": "9ea9e388e9d6421a841eaf851d12e1793527bba9a24aeeface3bfac2f4b40078",
+      "scripts/S11c_d_output_codec.py": "49873a2fa5c3184aab097263f0a6128379e094e42dbde5052456c5f3908bf717",
+      "_measurements/S11c_d_uniform_source.py": "2a135aea365c7b5e57bfff7683c7b927cda52c0d37f6a9bad3c961eb6205a2b2",
+      "_measurements/S11c_d_uniform_source_plan.md": "7b81e08568546585a11ce5ed6ebdd7b184bf4e38e55f8065440c7d4550610e33",
+      "_measurements/S11c_d_continuum_grades.py": "0443c3adbeaf813ad66c60af0a50c96e9a841277d51f9c23bf1c601d2fdf329d",
+      "_measurements/S11c_d_continuum_boundary.py": "ed3a6539d3151c52d25f12308b121897baf3bd6a5a626a598ab728988ab933a0",
+      "_measurements/S11c_d_reduced_action_source_checkpoint.json": "b6dcd36ee6cf8ed3b3943e207012dd165fce62ec39cb8f53ca3c23f4715d094b",
+      "_measurements/S11c_d_variable_profile_development_input.json": "660b2b0b54494dce964c7f5fbd722a76a7e894d8ed92b18b5eb6290c3c10f1d5",
+      "directives/S11c_d_EXPLORATORY_ACCEPTANCE.md": "5c1e560a78d40739af8b1318c0487e20bf2b816c41109889e12004266c72840c",
+      "directives/S11c_d_NONLINEAR_POLE_CONTRACT.md": "2b6018faf0d5ca772bf9c980174d8ebe7545127a3bf43ba01d1b3c0b6a5be423"
+    },
+    "inputPackets": {
+      "/var/projects/toy_physics/_scratch/s11c/s11c-reduced-action-source-20260914/complete/reduced-action.pickle": "e9062c3455c7e59fe816f47172062a0c118b201d03809ec0826575dac22872b0",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-thickness-coordinate-20260914/d_full/manifest.json": "7ba5c4aee54860f3665099ef33fc048602a53c742f41360ce46bcc1e75b82421",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-thickness-coordinate-20260914/d_full/source/scripts/S11c_d_mixing_scattering_sympy_audit.py": "7926ec3bb2e456f49b33fd025b901ecf836ca690178fb7f0d3d335a37874a0f1",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-reduced-action-source-20260914/complete/source/scripts/S11c_d_mixing_scattering_sympy_audit.py": "0d0ef5da7136f8a2033bd0fb076c56523d9097f972748b652b93b8778adc5101",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-thickness-coordinate-20260914/d_full/symbols/REFERENCE_LAB_HELD_RHO4_CONSTANT.pickle": "b453f91c68e6f9281716805de18081cee7bdc348f4cd32ca40ed66a3e2225fbd",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-thickness-coordinate-20260914/d_full/symbols/LEFT_LAB_HELD_RHO4_CONSTANT.pickle": "35e5dba88a3d367a3be84d148e9fe3aee2c85d34076b269219ca0e10fa0a27f4",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-thickness-coordinate-20260914/d_full/symbols/RIGHT_LAB_HELD_RHO4_CONSTANT.pickle": "1d52bed28683e0736324e3cf46b3a69cdc092df6368b1036595b40dc4aaae8e2"
+    },
+    "nativeHelperJoins": {
+      "reduction": {
+        "ChannelInput": true,
+        "ConstantEndPencil": true,
+        "DimensionAnalysis": true,
+        "EdgeReduction": true,
+        "PhysicalMetadata": true,
+        "ReducedPencil": true,
+        "carrier_fingerprint": true,
+        "cas": true,
+        "dag_free_symbols": true,
+        "dag_size": true,
+        "dag_substitute": true,
+        "emit": true,
+        "leaves": true,
+        "map_leaves": true,
+        "memo_xreplace": true,
+        "named": true,
+        "physical": true,
+        "polynomial_terms": true
+      },
+      "endSymbols": {
+        "ChannelInput": true,
+        "ConstantEndPencil": true,
+        "DimensionAnalysis": true,
+        "EdgeReduction": true,
+        "PhysicalMetadata": true,
+        "ReducedPencil": true,
+        "carrier_fingerprint": true,
+        "cas": true,
+        "dag_free_symbols": true,
+        "dag_size": true,
+        "dag_substitute": true,
+        "emit": true,
+        "leaves": true,
+        "map_leaves": true,
+        "memo_xreplace": true,
+        "named": true,
+        "physical": true,
+        "polynomial_terms": true
+      }
+    },
+    "endSymbolShapes": {
+      "REFERENCE": [
+        [
+          5,
+          5
+        ],
+        [
+          6,
+          6
+        ]
+      ],
+      "LEFT": [
+        [
+          5,
+          5
+        ],
+        [
+          6,
+          6
+        ]
+      ],
+      "RIGHT": [
+        [
+          5,
+          5
+        ],
+        [
+          6,
+          6
+        ]
+      ]
+    },
+    "sourceRows": 5,
+    "profileEndpointValues": {
+      "Limit(s11cdWProfile(s11cdProfileCoordinate), s11cdProfileCoordinate, -oo, dir='+')": "0",
+      "Limit(s11cdWProfile(s11cdProfileCoordinate), s11cdProfileCoordinate, oo, dir='-')": "1",
+      "Limit(s11cdMProfile(s11cdProfileCoordinate), s11cdProfileCoordinate, -oo, dir='+')": "0",
+      "Limit(s11cdMProfile(s11cdProfileCoordinate), s11cdProfileCoordinate, oo, dir='-')": "0"
+    },
+    "sourceMutationRejected": true,
+    "wallSeconds": 18.389860621653497,
+    "scope": "Source/layout/native-constructor join only; no constant symbols or scattering recomputed."
+  },
+  "originalAttempt": "The first preflight stopped at a whole-engine hash comparison before constructing symbols. The accepted reduction and current engine differ in later instrumentation. Exact transitive native definition joins now compare all consumed constructors/helpers to both the frozen reduction and constant-end producer; all other physical inputs remain byte-identical. Original logs are preserved. No upstream repair or rebase is performed."
+}

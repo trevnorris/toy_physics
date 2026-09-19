@@ -1,0 +1,15 @@
+{
+  "status": "SOURCE_PREFLIGHT_ACCEPTED_PRODUCTION_PREPARED",
+  "checker": "S11c_d_uniform_source.py",
+  "plan": "S11c_d_uniform_source_plan.md",
+  "report": "S11c_d_uniform_source_report.md",
+  "focusedCheckpoint": "S11c_d_uniform_source_focused.json",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-uniform-source-20260919/production",
+  "acceptedProfileFormCommit": "8d0a6ed2",
+  "limits": {
+    "wallSeconds": 900,
+    "nativeThreads": 1,
+    "addressSpaceBytes": 2147483648
+  },
+  "next": "Compute and validate all three fresh constant reduced symbols and common-basis coupling triplets; then uniform modes/currents and response."
+}

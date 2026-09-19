@@ -13,7 +13,7 @@ residuals are below4.47e-16. Independent polynomial checks through derivative
 order3 differ by at most3.56e-15. These checks validate the finite boundary
 instrument; they do not prove a transparent nonlocal boundary condition.
 
-Next run one325-unknown pilot with a15-minute budget, one native numerical thread
+Implementation is committed at `efc61982`. The325-unknown pilot has launched with a15-minute budget, one native numerical thread
 and2 GiB ceiling. Save complete operator matrices before solving all incoming
 columns together. Compare matrix actions with separate native-factor contractions
 and actual measure mutations. Inspect residuals, rank, conditioning and amplitudes

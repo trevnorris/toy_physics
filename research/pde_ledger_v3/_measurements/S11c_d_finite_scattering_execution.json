@@ -1,5 +1,5 @@
 {
-  "status": "PILOT_PREPARED",
+  "status": "PILOT_RUNNING",
   "checker": "S11c_d_finite_scattering.py",
   "plan": "S11c_d_finite_scattering_plan.md",
   "report": "S11c_d_finite_scattering_report.md",
@@ -28,5 +28,36 @@
   },
   "purpose": "Measure feasibility and inspect residuals/conditioning of the complete finite operator and all-incident solve before choosing practical observable checks.",
   "scope": "Instrument/cost pilot; no physical observable or continuum re-expansion accepted.",
-  "next": "Run one bounded pilot with saved matrices and silent completion/error hook, inspect its actual evidence, then choose the next focused numerical step."
+  "next": "Run one bounded pilot with saved matrices and silent completion/error hook, inspect its actual evidence, then choose the next focused numerical step.",
+  "implementationCommit": "efc61982",
+  "launch": {
+    "launchedUtc": "2026-09-19T14:17:58.391195+00:00",
+    "command": [
+      "/usr/bin/python",
+      "_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-finite-scattering-20260919/pilot",
+      "--stage",
+      "finite_construct",
+      "--",
+      "python",
+      "-u",
+      "_measurements/S11c_d_finite_scattering.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-finite-scattering-20260919/pilot/complete"
+    ],
+    "supervisorPid": 331404,
+    "watcherPid": 331405,
+    "watcherDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-finite-scattering-20260919/pilot/completion-watcher",
+    "threadEnvironment": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1"
+    }
+  },
+  "launchVerification": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-finite-scattering-20260919/pilot/launch-verification.json",
+    "sha256": "2e965a1bf53a1440462a158de2a48f2c0bcaa7ecd8d8d3b0fa2c4de2524f56d0"
+  }
 }

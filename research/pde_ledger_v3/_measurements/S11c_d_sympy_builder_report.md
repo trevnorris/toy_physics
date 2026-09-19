@@ -9,10 +9,12 @@ move to optional follow-up. Equations, required outputs, units, source joins,
 continuum grades and nonlinearPoleV2 remain intact. No numerical or physical
 result is newly accepted by this planning change.
 
-The wide-triple adaptive production launched at `b5597574` continues unchanged,
-with its original guards and silent watcher. After acceptance/publication, do
-not automatically queue further fixed-box, tail or regulator sweeps; implement
-the finite matching solve and select later checks from its observable sensitivity.
+The wide-triple adaptive production launched at `b5597574` is now accepted and
+annex-published at `4ba95bcf`:22h45m, four clean workers,1260 adaptive points,
+raw differences2.18e-13 and complete-action differences1.39e-17. All56185 metadata
+paths and saved-source/operand joins pass. This ends the fixed-box quadrature
+sequence. Next implement the finite matching solve and select later checks
+from its observable sensitivity, without automatically queueing more sweeps.
 The older checkpoint narrative below records history, not the current task
 queue. The retained solver/export suffix remains byte-identical, interpreted
 under the new acceptance addendum and the approved pole correction.
@@ -21,7 +23,7 @@ The [wider-box triple refinement](S11c_d_wide_three_momentum_report.md) is valid
 1.049 billion new nodes in 44h03m, four clean workers, 64,016 preserved partials
 and 134,254 metadata paths. Outer/innermost/middle raw changes reach
 3.68e-10 / 3.92e-18 / 1.55e-14. The finite cutoff3-to4 action change remains
-1.13467e-7. Independent triple outer quadrature is running on the accepted finest
+1.13467e-7. Independent triple outer quadrature is accepted on the finest
 inner rules; physical tail/Abel and inverse-bound certificates remain open on
 the optional rigorous track.
 

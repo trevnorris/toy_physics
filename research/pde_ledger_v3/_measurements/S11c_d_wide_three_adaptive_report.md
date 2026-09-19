@@ -1,53 +1,38 @@
 # S11c-d independent wider-box triple outer quadrature
 
-The user approved `../directives/S11c_d_EXPLORATORY_ACCEPTANCE.md` on 2026-09-18.
-This running calculation and its original validation remain unchanged. After
-publication follow `S11c_d_focused_completion_plan.md`: build the first complete
-finite scattering solve, then check its observables. Further quadrature/domain
-sweeps require a material question and cost/precision/stopping record. Rigorous
-operator/infinite-limit certificates are optional follow-up, not a solve gate.
+Production is accepted and annex-verified. All four workers and the supervisor
+exited zero with empty stderr after **22h45m**. Independent adaptive GK21
+replaced only the outer Gauss216 rule at cutoffs3/4 on both approved fields.
+Inner32/32, source/profile256/512, position bounds48/14 and regulator0.2 stayed
+fixed; all40 single/all30 paired rows were held in every80-row action.
 
-Implementation preserves the native engine and reuses its previously checked
-conditional recursion. Whole-function reverse AST joins restrict the worker to
-one triple adaptive stage and retain the complete single/pair contribution.
-The finish adapter changes its packet name and scope; full adaptive emission
-and metadata replay are reused with fresh stage keys. Import and reverse-AST
-checks pass. The numerical instrument preflight is accepted; full-resolution
-adaptive production is running under its local completion/error watcher.
+Each adaptive solve completed after315 points,1260 in total. The largest raw
+integral difference from Gauss was2.18e-13 and the largest complete-action
+difference1.39e-17. Reported adaptive unit-frame error estimates reach3.24e-11
+against requested1e-10; these are numerical estimates, not rigorous bounds.
+The sampled cutoff3-to4 action change remains1.13467310948e-7.
 
-The completed reference is published/annex-verified at d128768c/a25e727b:
-1,048,960,640 new nodes in44h03m, raw outer/innermost/middle changes
-3.68e-10 /3.92e-18 /1.55e-14. This stage keeps its finest inner32/32 and
-source/profile256/512 rules, cutoffs3/4, position bounds48/14 and regulator0.2.
-Four single-thread workers replace only outer Gauss216 by adaptive GK21,
-absolute tolerance1e-10 and relativezero. Every complete action includes all80
-rows; all70 single/pair rows remain explicitly held at independently checked rules.
+Saved-operand acceptance verifies all92 current/frozen sources,46266 worker
+artifacts including44990 partials, eight exact caches and1680 zero held-term
+scalars. All56185 metadata paths,9258 tags,4627 write keys, native row/source/
+profile/field/ordered-limit/current-setting joins and pre/post packet hashes
+pass. Actual measure mutations, adaptive interval partitions and saved sums
+pass. Checks/stdout are identical; acceptance repeats no numerical integration.
+Peak worker/coordinator RSS was133008/252144 KiB.
 
-Preflight completed in 171.30 seconds with four clean workers and empty strict
-stderr. Eight actual 16384-node conditional/native prefixes agree exactly in
-nodes, weights, values, mutations and mass; four complete coarse conditional
-groups and four independent original-cell actions agree exactly. All four
-adaptive smoke groups completed, saving 1554 conditional points. The smoke uses
-inner1/1 and source/profile16 with tolerance1e-3; it validates instrumentation
-only. Do not extrapolate a precise production runtime from short prefixes.
+The2.81 MB transcript is `scripts/out/S11c_d_wide_three_adaptive.out`, published
+at `4ba95bcf`. Its MD5E annex key, symlink and independent SHA256 are verified:
+`5045909379429de3ee29153db4af1c4cdc05544d679df6f1e4b000d0040e3ce3`.
+The full accepted record is `S11c_d_wide_three_adaptive_checkpoint.json`.
+Preflight acceptance remains `bdb86303`; its coarse smoke is instrument evidence.
+The native engine, approved inputs, prior operands and retained contract suffix
+remain unchanged. New-stage provenance includes v10 plus nonlinearPoleV2;
+this numerical-action calculation invokes no pole constructor.
 
-Saved-operand acceptance verifies all 92 current/frozen sources, 1570 worker
-artifacts, 20 unchanged pre/post packets, 37177 metadata paths, full native
-source/profile/field/limit and unit joins, exact read-only caches, adaptive
-intervals/errors/statuses, and 1680 zero held-term scalars. Checks and stdout
-match exactly. Worker peak RSS was 143852 KiB. The 2.81 MB smoke transcript
-remains in durable scratch; acceptance repeats no numerical integration.
-
-The new source manifest explicitly adds nonlinearPoleV2 and its accepted repair
-checkpoint alongside the unchanged v10 baseline, with an unchanged-physics
-statement. No pole constructor is used here. Uniform operator bounds, physical
-tails, Abel limits, scattering and pole calculations remain separate application
-work under the Lean handoffs and retained solver/export contract.
-
-Implementation is committed at `6f6e94f4`. Acceptance is committed at `bdb86303`, with its full record in
-`S11c_d_wide_three_adaptive_preflight.json`. Production launched at 15:10:46 UTC
-on 2026-09-18. One startup check verifies the supervisor, waiting completion
-watcher, all four single-thread workers with 2 GiB ceilings, 92 current/frozen
-source pins and empty strict stderr. The watcher owns continuation; no physical
-adaptive result is accepted before final validation. Logs, points, partials and
-source snapshots remain under the production run root.
+The user-approved `exploratoryAcceptanceV1` at `30440cac` governs future work.
+This result closes the planned fixed-box quadrature sequence. Next follow
+`S11c_d_focused_completion_plan.md` to build the first complete finite scattering
+solve, then check its important observables at practical stated precision.
+Finite Gaussian action checks alone establish no scattering error bound,
+infinite tail, Abel limit or pole result. Rigorous full-operator certification
+is optional follow-up; no additional broad refinement sweep is queued.

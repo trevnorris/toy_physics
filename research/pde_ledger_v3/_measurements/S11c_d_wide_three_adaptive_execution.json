@@ -1,5 +1,5 @@
 {
-  "status": "PRODUCTION_RUNNING",
+  "status": "PUBLISHED_ANNEX_VERIFIED",
   "checker": "S11c_d_wide_three_adaptive.py",
   "plan": "S11c_d_wide_three_adaptive_plan.md",
   "report": "S11c_d_wide_three_adaptive_report.md",
@@ -13,7 +13,7 @@
   "workerAddressSpaceBytes": 2147483648,
   "inputAuthority": "directives/S11c_d_NONLINEAR_POLE_CONTRACT.md",
   "dependencyDisposition": "New stage records v10 plus nonlinearPoleV2; no physical operands or prior pinned sources change and no pole constructor is called.",
-  "next": "Await the existing silent completion/error hook. Validate this run under its original source pins and guards, publish accepted output through DataLad/git-annex, verify hashes and commit. Then follow exploratoryAcceptanceV1 and S11c_d_focused_completion_plan.md: construct the first complete finite two-ended scattering solve and check actual observables at practical stated precision. Do not automatically launch another fixed-box/domain/regulator sweep or block the numerical solve on optional rigorous operator/tail/Abel/inverse certification.",
+  "next": "Implement the small finite two-ended scattering discretization using the complete accepted reduced operator, channels and current matrices, under exploratoryAcceptanceV1 and the focused completion plan. No new fixed-box/domain/regulator sweep is queued.",
   "implementationCommit": "6f6e94f4",
   "launch": {
     "launchedUtc": "2026-09-18T15:00:09.449749+00:00",
@@ -106,5 +106,35 @@
     "plan": "_measurements/S11c_d_focused_completion_plan.md",
     "checkpoint": "_measurements/S11c_d_exploratory_acceptance_checkpoint.json",
     "appliesTo": "Future work after original active-run validation; no active source, tolerance or guard change."
+  },
+  "productionOutcome": {
+    "stage": "adaptive_construct",
+    "command": [
+      "python",
+      "-u",
+      "_measurements/S11c_d_wide_three_adaptive.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-wide-three-adaptive-20260918/production/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-wide-three-adaptive-20260918/production/adaptive_construct.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-wide-three-adaptive-20260918/production/adaptive_construct.stderr",
+    "startedUtc": "2026-09-18T15:10:46.209174+00:00",
+    "childPid": 3470452,
+    "status": "completed",
+    "exitCode": 0,
+    "wallSeconds": 81893.03501956724,
+    "stderrBytes": 0,
+    "finishedUtc": "2026-09-19T13:55:39.245411+00:00"
+  },
+  "acceptedCheckpoint": "S11c_d_wide_three_adaptive_checkpoint.json",
+  "publicationCommit": "4ba95bcf2c3a3cb3a34a4f5a688a8ed8054241dd",
+  "annexVerification": {
+    "verifiedUtc": "2026-09-19T14:00:58.255964+00:00",
+    "key": "MD5E-s2811566--270de14207492dc71d7be1fcd7267eef.out",
+    "symlink": "../../../../.git/annex/objects/Z7/w0/MD5E-s2811566--270de14207492dc71d7be1fcd7267eef.out/MD5E-s2811566--270de14207492dc71d7be1fcd7267eef.out",
+    "sha256": "5045909379429de3ee29153db4af1c4cdc05544d679df6f1e4b000d0040e3ce3",
+    "bytes": 2811566,
+    "backendChecksumVerified": true,
+    "publicationCommit": "4ba95bcf2c3a3cb3a34a4f5a688a8ed8054241dd"
   }
 }

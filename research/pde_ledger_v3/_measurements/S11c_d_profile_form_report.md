@@ -14,7 +14,7 @@ and independent endpoint jumps are1 for both thickness edges and0 for both
 modulus shapes and the separate thickness bump. Every change-of-variable and
 jump residual is zero. The bump check computes its moment only, not scattering.
 
-One changed-profile finite and retained-continuum solve is prepared with129
+One changed-profile finite and retained-continuum solve is running with129
 coefficients per field, bounds64/4/14, regulator0.1, momentum16/4/4 and
 source/profile256/512. It reuses all verified binding packets byte-for-byte
 and reuses the unchanged complete endpoint/current maps. Every nonlocal matrix

@@ -50,7 +50,7 @@ The [profile-FORM binding preflight](S11c_d_profile_form_report.md) passes:
 unchanged endpoint limits in17.52 seconds. All80 rows,35 sources and6 nested
 profiles are retained. Separate derivative integrals and endpoint jumps give
 1 for the old/new thickness edges and0 for the modulus shapes and thickness
-bump. A single changed-form finite/continuum solve is prepared; no new
+bump. A single changed-form finite/continuum solve is running; no new
 profile-response result is accepted yet. Uniform/covariance controls,
 frequency poles and final integration remain; tiny reflection/loss is
 unresolved. No broad quadrature sweep is queued.

@@ -1,9 +1,9 @@
 {
-  "status": "FOCUSED_ACCEPTED_PRODUCTION_PREPARED",
+  "status": "PRODUCTION_RUNNING",
   "checker": "S11c_d_profile_form.py",
   "plan": "S11c_d_profile_form_plan.md",
   "report": "S11c_d_profile_form_report.md",
-  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-profile-form-20260919/focused",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-profile-form-20260919/production",
   "acceptedResponseCommit": "a86bcb0a",
   "acceptedCurrentsCommit": "60da6fc2",
   "limits": {
@@ -11,28 +11,29 @@
     "nativeThreads": 1,
     "addressSpaceBytes": 2147483648
   },
-  "next": "Run the single changed-form finite and continuum response using these exact saved bindings; no baseline quadrature.",
+  "next": "Validate the changed-profile finite/continuum result on completion; publish via DataLad/git-annex and continue focused physical controls.",
   "implementationCommit": "cb453ef4",
   "launch": {
-    "launchedUtc": "2026-09-19T17:38:42.111467+00:00",
+    "launchedUtc": "2026-09-19T17:48:35.007605+00:00",
     "command": [
       "/usr/bin/python",
       "_measurements/S11c_d_end_normalization_run.py",
       "--run-root",
-      "/var/projects/toy_physics/_scratch/s11c/s11c-profile-form-20260919/focused",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-profile-form-20260919/production",
       "--stage",
-      "profile_focused",
+      "profile_construct",
       "--",
       "python",
       "-u",
       "_measurements/S11c_d_profile_form.py",
       "--run-directory",
-      "/var/projects/toy_physics/_scratch/s11c/s11c-profile-form-20260919/focused/complete",
-      "--focused"
+      "/var/projects/toy_physics/_scratch/s11c/s11c-profile-form-20260919/production/complete",
+      "--resume-binding",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-profile-form-20260919/focused/complete"
     ],
-    "supervisorPid": 653058,
-    "watcherPid": 653059,
-    "watcherDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-profile-form-20260919/focused/completion-watcher",
+    "supervisorPid": 658783,
+    "watcherPid": 658784,
+    "watcherDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-profile-form-20260919/production/completion-watcher",
     "threadEnvironment": {
       "OPENBLAS_NUM_THREADS": "1",
       "OMP_NUM_THREADS": "1",
@@ -71,5 +72,6 @@
   "preparedLauncher": {
     "path": "/var/projects/toy_physics/_scratch/s11c/s11c-profile-form-20260919/production/launch.py",
     "sha256": "8602ab2f033b36873ea0ebba7686fdcda27b7c9532c2578c57cfea653d3d2b50"
-  }
+  },
+  "focusedAcceptanceCommit": "6e6df53e"
 }

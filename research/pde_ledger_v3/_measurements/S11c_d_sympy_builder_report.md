@@ -389,6 +389,16 @@ this closes the bounded numerical search, not a certified empty spectrum.
 Remaining cases and final engine/own-row exports are next; no contour doubling
 or broad convergence campaign is queued.
 
+## Remaining case source preparation (2026-09-19)
+
+The bounded contour search is closed at d10667f1 without a resolved candidate;
+this is not a certified empty spectrum. The saved parent cache contains all
+four original cases. The new remaining-case loader passes its exact native
+definition, baseline field/action, 281 residual and 80 integral-address checks.
+It will materialize the three missing full source/assembly packets and identify
+exact integral reuse before the remaining responses. No historical quadrature
+repeat or additional contour doubling is queued.
+
 ## Retained user-approved solver/export contract
 
 

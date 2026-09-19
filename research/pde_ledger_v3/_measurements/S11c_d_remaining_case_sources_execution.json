@@ -1,0 +1,13 @@
+{
+  "status": "PREFLIGHT_ACCEPTED_PRODUCTION_PREPARED",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-sources-20260919/production",
+  "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-sources-20260919/production/complete",
+  "helper": "_measurements/S11c_d_remaining_case_sources.py",
+  "mode": "construct",
+  "preflight": "_measurements/S11c_d_remaining_case_sources_focused.json",
+  "plan": "_measurements/S11c_d_remaining_case_sources_plan.md",
+  "nativeThreads": 1,
+  "addressSpaceBytes": 2147483648,
+  "initialWallBudgetSeconds": 900,
+  "scope": "Three missing full reduced source/assembly cases from saved original parent operands; accepted baseline reused. No numerical quadrature or scattering solve."
+}

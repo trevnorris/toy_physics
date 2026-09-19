@@ -1,0 +1,205 @@
+{
+  "status": "ACCEPTED_REMAINING_CASE_SOURCE_PREFLIGHT",
+  "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-sources-20260919/preflight/complete",
+  "checkerSha256": "49db070d97ba3b15bf4e94929341fb5f4a6882ff8b2e16ee07f3fd16502064b5",
+  "outcome": {
+    "stage": "case_preflight",
+    "command": [
+      "python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_sources.py",
+      "--mode",
+      "preflight",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-sources-20260919/preflight/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-sources-20260919/preflight/case_preflight.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-sources-20260919/preflight/case_preflight.stderr",
+    "startedUtc": "2026-09-19T22:59:01.717235+00:00",
+    "childPid": 9,
+    "status": "completed",
+    "exitCode": 0,
+    "wallSeconds": 13.42864234931767,
+    "stderrBytes": 0,
+    "finishedUtc": "2026-09-19T22:59:15.145940+00:00"
+  },
+  "checks": {
+    "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-sources-20260919/preflight/complete",
+    "mode": "preflight",
+    "sourceFiles": {
+      "_measurements/S11c_d_continuum_boundary.py": "ed3a6539d3151c52d25f12308b121897baf3bd6a5a626a598ab728988ab933a0",
+      "_measurements/S11c_d_continuum_grades.py": "0443c3adbeaf813ad66c60af0a50c96e9a841277d51f9c23bf1c601d2fdf329d",
+      "_measurements/S11c_d_continuum_matrices.py": "33a0e5a2fa136a55875541e15bc410159c94f56f25adc4a02589d0c704223987",
+      "_measurements/S11c_d_finite_scattering.py": "f187d9426be8069342a363a0466c175d32a8cb46101e32a14c433ccb9118e469",
+      "_measurements/S11c_d_finite_scattering_domain.py": "73341408d0f6c1eb517e435dea986e180ff53615a6102697a8e3ba6747bd35aa",
+      "_measurements/S11c_d_finite_scattering_resolution.py": "8e101517fde113c5f0a372bab531e63ebdcee3fff03c270ff98a7590e5a7b981",
+      "_measurements/S11c_d_focused_completion_plan.md": "1917ffd7bab9d1da0a355228b865e6ba5c6bbdad009bdfbff18296492b81fcaa",
+      "_measurements/S11c_d_momentum_action_check.py": "247d2ee6b7004888eca1d653b53f8be773c68041d7254389c4d14328d0001ff3",
+      "_measurements/S11c_d_momentum_domain_action.py": "db37d83a74ebd0fc82b903285a69a9a04ce9c7bb62341539a3b4c5f12f4956cf",
+      "_measurements/S11c_d_momentum_domain_prepare.py": "195c26b062d6bff63520a823f6dbf1b89d4973c4f93b004fae81f3e67800762e",
+      "_measurements/S11c_d_numerical_action_check.py": "86d5b373df8825c1e6dca198555b2a65e62822a3d9ba32868a89ca135bb7968f",
+      "_measurements/S11c_d_parallel_momentum.py": "ecc9c93c89f4e670b8cccf213a57c6380ac73fe37bedefedb25a3e8dabfb536c",
+      "_measurements/S11c_d_position_domain.py": "d056a00e7500cd27a0d824b0b6f9b66ca9bbb2dd412b2b8c490d621afcf71b46",
+      "_measurements/S11c_d_reduced_action_assembly_check.py": "f620a643c761474aeaa181ad34a368bc35c1f9e81fb528a81744c2a32af364a8",
+      "_measurements/S11c_d_reduced_action_assembly_checkpoint.json": "b4afb727b1a1ad2a468b0bab9a6ab369dbe4dd35bc46acd7150b7fa581cd984f",
+      "_measurements/S11c_d_reduced_action_source_check.py": "aae3b2402e1707ef27f217b917dc10592f38acbe35d18356fbc4886ed854f754",
+      "_measurements/S11c_d_reduced_action_source_checkpoint.json": "b6dcd36ee6cf8ed3b3943e207012dd165fce62ec39cb8f53ca3c23f4715d094b",
+      "_measurements/S11c_d_remaining_case_sources.py": "49db070d97ba3b15bf4e94929341fb5f4a6882ff8b2e16ee07f3fd16502064b5",
+      "_measurements/S11c_d_remaining_case_sources_plan.md": "563cf68c58a1c63f0fad34a5a5d4554a99c8e701ab6615de39d41fbc7d8f379f",
+      "_measurements/S11c_d_source_fourier_quadrature_check.py": "d52747cba3e5cbdf4cbff6816ccd07d79564032d0a64d57bf80aef5815430323",
+      "_measurements/S11c_d_three_momentum_adaptive.py": "a028e76029f8386c900c88c8edaf02766b821c29c179c5c26d7ce3d7860fc1c2",
+      "_measurements/S11c_d_three_momentum_source_check.py": "1753567b20d5739787aedf3269c783f172777043dfe92fd989525c21fadee487",
+      "_measurements/S11c_d_variable_profile_development_input.json": "660b2b0b54494dce964c7f5fbd722a76a7e894d8ed92b18b5eb6290c3c10f1d5",
+      "_measurements/S11c_d_variable_profile_input_check.py": "70cdf2811f2ccd92380be24a80bb7af49f4e1a01504b09a9dbb47f8d3cbbb3b2",
+      "_measurements/S11c_d_wide_momentum_adaptive.py": "4c40be5eae12631a33213b38a044de24d44d2a486c82b3e6d53b2ed8795bfdcc",
+      "_measurements/S11c_d_wide_momentum_refinement.py": "d80d2c2ff303e23309a4b453ab4ca565c41cb804e029e58f1b2cfe6e11dd567b",
+      "_measurements/S11c_d_wide_three_adaptive.py": "af123066766700f40d71843d36a7b94513dcaf3b35fcef17af1fd4843ec8413a",
+      "_measurements/S11c_d_wide_three_momentum.py": "455ba3aaf4481a101c6e3e3b7e23b7160ef7afa453c201c9e0e0b57b5d7afc3e",
+      "directives/S11b_SHARED_PHYSICS.md": "9ea9e388e9d6421a841eaf851d12e1793527bba9a24aeeface3bfac2f4b40078",
+      "directives/S11c_d_EXPLORATORY_ACCEPTANCE.md": "5c1e560a78d40739af8b1318c0487e20bf2b816c41109889e12004266c72840c",
+      "directives/S11c_d_NONLINEAR_POLE_CONTRACT.md": "2b6018faf0d5ca772bf9c980174d8ebe7545127a3bf43ba01d1b3c0b6a5be423",
+      "directives/S11c_d_SHARED_PHYSICS.md": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5",
+      "directives/S11c_d_sympy_build_PROGRAM_BRIEF.md": "1d9a48a043c68a6b38a1951f69b82a3ea8e97f4b7bb1d8e3f4c028f03290b380",
+      "scripts/S11c_b_exports.py": "3c6555f90a85382a5e96f3f961f0e36a4875d9259fe1be947fa8e683669b7084",
+      "scripts/S11c_c1_exports.py": "a5353b86dc526fd1b56734fdbdf7dc7f42387a3195ab4de84e8994f751871cdc",
+      "scripts/S11c_c2_exports.py": "2ba5ed487b84ecb98290df6f1650fa6210fe2784cfa02a0f3cff96cd718411cd",
+      "scripts/S11c_d_mixing_scattering_sympy_audit.py": "5bf77729682960bb59f10c672a5fe3f67a98b0a9533da7c6189a37183596050f",
+      "scripts/S11c_d_output_codec.py": "49873a2fa5c3184aab097263f0a6128379e094e42dbde5052456c5f3908bf717",
+      "scripts/ledger_fold.py": "97da78c6631c09e5575dd14511760506f1ac08771cf07948978004e92f0b2333"
+    },
+    "inputPackets": {
+      "/var/projects/toy_physics/_scratch/s11c/s11c-reduced-action-source-20260914/complete/reduced-action.pickle": "e9062c3455c7e59fe816f47172062a0c118b201d03809ec0826575dac22872b0",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-reduced-action-source-20260914/complete/actions.pickle": "4c2372a7102d1db9f21a049ab3104465e8d9245ab832be88c900bc8519b46e02",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-reduced-action-assembly-20260914/recovery-01/complete/assembly.pickle": "8eda57998285137d99cce9564757627a57f8d5bc9b27091c86a65a9cc59230a0",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-reduced-action-source-20260914/complete/source/scripts/S11c_d_mixing_scattering_sympy_audit.py": "0d0ef5da7136f8a2033bd0fb076c56523d9097f972748b652b93b8778adc5101",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-reduced-action-assembly-20260914/recovery-01/complete/source/scripts/S11c_d_mixing_scattering_sympy_audit.py": "147f1bc1df4ce4b3ea9c131a0684afe4ee0016153cd1f71bd8b74f6eedace970"
+    },
+    "preflight": {
+      "mode": "preflight",
+      "baselineResidualScalars": 281,
+      "baselineIntegralAddresses": 80,
+      "cases": [
+        [
+          "LAB_HELD",
+          "RHO4_CONSTANT"
+        ],
+        [
+          "LAB_HELD",
+          "RHOBR_CONSTANT"
+        ],
+        [
+          "MATERIAL_ADVECTED",
+          "RHO4_CONSTANT"
+        ],
+        [
+          "MATERIAL_ADVECTED",
+          "RHOBR_CONSTANT"
+        ]
+      ],
+      "baselinePacketsCopiedExactly": true,
+      "newNumericalNodes": 0
+    },
+    "cases": [],
+    "artifacts": {
+      "accepted-actions.pickle": {
+        "bytes": 176671,
+        "sha256": "4c2372a7102d1db9f21a049ab3104465e8d9245ab832be88c900bc8519b46e02"
+      },
+      "accepted-assembly.pickle": {
+        "bytes": 111081,
+        "sha256": "8eda57998285137d99cce9564757627a57f8d5bc9b27091c86a65a9cc59230a0"
+      },
+      "accepted-reduced-action.pickle": {
+        "bytes": 1146420,
+        "sha256": "e9062c3455c7e59fe816f47172062a0c118b201d03809ec0826575dac22872b0"
+      }
+    },
+    "wallSeconds": 12.115601811558008,
+    "peakRssKiB": 214564,
+    "scope": "Complete native reduced sources and local/intact-integral assemblies for all four cases. The accepted first case is reused. Exact integral identities are reuse eligibility only; new case scattering, continuum responses, controls, pole diagnostics and exports remain."
+  },
+  "nativeHelperJoins": {
+    "reduction": {
+      "ChannelInput": true,
+      "DimensionAnalysis": true,
+      "EdgeReduction": true,
+      "PhysicalMetadata": true,
+      "ReducedPencil": true,
+      "carrier_fingerprint": true,
+      "cas": true,
+      "dag_free_symbols": true,
+      "dag_size": true,
+      "dag_substitute": true,
+      "emit": true,
+      "leaves": true,
+      "map_leaves": true,
+      "memo_xreplace": true,
+      "named": true,
+      "physical": true,
+      "polynomial_terms": true
+    },
+    "assembly": {
+      "DimensionAnalysis": true,
+      "PhysicalMetadata": true,
+      "ReducedActionAssembly": true,
+      "ReducedPencil": true,
+      "cas": true,
+      "dag_substitute": true,
+      "emit": true,
+      "leaves": true,
+      "map_leaves": true,
+      "memo_xreplace": true,
+      "named": true,
+      "polynomial_terms": true
+    }
+  },
+  "sourceFiles": {
+    "_measurements/S11c_d_continuum_boundary.py": "ed3a6539d3151c52d25f12308b121897baf3bd6a5a626a598ab728988ab933a0",
+    "_measurements/S11c_d_continuum_grades.py": "0443c3adbeaf813ad66c60af0a50c96e9a841277d51f9c23bf1c601d2fdf329d",
+    "_measurements/S11c_d_continuum_matrices.py": "33a0e5a2fa136a55875541e15bc410159c94f56f25adc4a02589d0c704223987",
+    "_measurements/S11c_d_finite_scattering.py": "f187d9426be8069342a363a0466c175d32a8cb46101e32a14c433ccb9118e469",
+    "_measurements/S11c_d_finite_scattering_domain.py": "73341408d0f6c1eb517e435dea986e180ff53615a6102697a8e3ba6747bd35aa",
+    "_measurements/S11c_d_finite_scattering_resolution.py": "8e101517fde113c5f0a372bab531e63ebdcee3fff03c270ff98a7590e5a7b981",
+    "_measurements/S11c_d_focused_completion_plan.md": "1917ffd7bab9d1da0a355228b865e6ba5c6bbdad009bdfbff18296492b81fcaa",
+    "_measurements/S11c_d_momentum_action_check.py": "247d2ee6b7004888eca1d653b53f8be773c68041d7254389c4d14328d0001ff3",
+    "_measurements/S11c_d_momentum_domain_action.py": "db37d83a74ebd0fc82b903285a69a9a04ce9c7bb62341539a3b4c5f12f4956cf",
+    "_measurements/S11c_d_momentum_domain_prepare.py": "195c26b062d6bff63520a823f6dbf1b89d4973c4f93b004fae81f3e67800762e",
+    "_measurements/S11c_d_numerical_action_check.py": "86d5b373df8825c1e6dca198555b2a65e62822a3d9ba32868a89ca135bb7968f",
+    "_measurements/S11c_d_parallel_momentum.py": "ecc9c93c89f4e670b8cccf213a57c6380ac73fe37bedefedb25a3e8dabfb536c",
+    "_measurements/S11c_d_position_domain.py": "d056a00e7500cd27a0d824b0b6f9b66ca9bbb2dd412b2b8c490d621afcf71b46",
+    "_measurements/S11c_d_reduced_action_assembly_check.py": "f620a643c761474aeaa181ad34a368bc35c1f9e81fb528a81744c2a32af364a8",
+    "_measurements/S11c_d_reduced_action_assembly_checkpoint.json": "b4afb727b1a1ad2a468b0bab9a6ab369dbe4dd35bc46acd7150b7fa581cd984f",
+    "_measurements/S11c_d_reduced_action_source_check.py": "aae3b2402e1707ef27f217b917dc10592f38acbe35d18356fbc4886ed854f754",
+    "_measurements/S11c_d_reduced_action_source_checkpoint.json": "b6dcd36ee6cf8ed3b3943e207012dd165fce62ec39cb8f53ca3c23f4715d094b",
+    "_measurements/S11c_d_remaining_case_sources.py": "49db070d97ba3b15bf4e94929341fb5f4a6882ff8b2e16ee07f3fd16502064b5",
+    "_measurements/S11c_d_remaining_case_sources_plan.md": "563cf68c58a1c63f0fad34a5a5d4554a99c8e701ab6615de39d41fbc7d8f379f",
+    "_measurements/S11c_d_source_fourier_quadrature_check.py": "d52747cba3e5cbdf4cbff6816ccd07d79564032d0a64d57bf80aef5815430323",
+    "_measurements/S11c_d_three_momentum_adaptive.py": "a028e76029f8386c900c88c8edaf02766b821c29c179c5c26d7ce3d7860fc1c2",
+    "_measurements/S11c_d_three_momentum_source_check.py": "1753567b20d5739787aedf3269c783f172777043dfe92fd989525c21fadee487",
+    "_measurements/S11c_d_variable_profile_development_input.json": "660b2b0b54494dce964c7f5fbd722a76a7e894d8ed92b18b5eb6290c3c10f1d5",
+    "_measurements/S11c_d_variable_profile_input_check.py": "70cdf2811f2ccd92380be24a80bb7af49f4e1a01504b09a9dbb47f8d3cbbb3b2",
+    "_measurements/S11c_d_wide_momentum_adaptive.py": "4c40be5eae12631a33213b38a044de24d44d2a486c82b3e6d53b2ed8795bfdcc",
+    "_measurements/S11c_d_wide_momentum_refinement.py": "d80d2c2ff303e23309a4b453ab4ca565c41cb804e029e58f1b2cfe6e11dd567b",
+    "_measurements/S11c_d_wide_three_adaptive.py": "af123066766700f40d71843d36a7b94513dcaf3b35fcef17af1fd4843ec8413a",
+    "_measurements/S11c_d_wide_three_momentum.py": "455ba3aaf4481a101c6e3e3b7e23b7160ef7afa453c201c9e0e0b57b5d7afc3e",
+    "directives/S11b_SHARED_PHYSICS.md": "9ea9e388e9d6421a841eaf851d12e1793527bba9a24aeeface3bfac2f4b40078",
+    "directives/S11c_d_EXPLORATORY_ACCEPTANCE.md": "5c1e560a78d40739af8b1318c0487e20bf2b816c41109889e12004266c72840c",
+    "directives/S11c_d_NONLINEAR_POLE_CONTRACT.md": "2b6018faf0d5ca772bf9c980174d8ebe7545127a3bf43ba01d1b3c0b6a5be423",
+    "directives/S11c_d_SHARED_PHYSICS.md": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5",
+    "directives/S11c_d_sympy_build_PROGRAM_BRIEF.md": "1d9a48a043c68a6b38a1951f69b82a3ea8e97f4b7bb1d8e3f4c028f03290b380",
+    "scripts/S11c_b_exports.py": "3c6555f90a85382a5e96f3f961f0e36a4875d9259fe1be947fa8e683669b7084",
+    "scripts/S11c_c1_exports.py": "a5353b86dc526fd1b56734fdbdf7dc7f42387a3195ab4de84e8994f751871cdc",
+    "scripts/S11c_c2_exports.py": "2ba5ed487b84ecb98290df6f1650fa6210fe2784cfa02a0f3cff96cd718411cd",
+    "scripts/S11c_d_mixing_scattering_sympy_audit.py": "5bf77729682960bb59f10c672a5fe3f67a98b0a9533da7c6189a37183596050f",
+    "scripts/S11c_d_output_codec.py": "49873a2fa5c3184aab097263f0a6128379e094e42dbde5052456c5f3908bf717",
+    "scripts/ledger_fold.py": "97da78c6631c09e5575dd14511760506f1ac08771cf07948978004e92f0b2333"
+  },
+  "inputPackets": {
+    "/var/projects/toy_physics/_scratch/s11c/s11c-reduced-action-source-20260914/complete/reduced-action.pickle": "e9062c3455c7e59fe816f47172062a0c118b201d03809ec0826575dac22872b0",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-reduced-action-source-20260914/complete/actions.pickle": "4c2372a7102d1db9f21a049ab3104465e8d9245ab832be88c900bc8519b46e02",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-reduced-action-assembly-20260914/recovery-01/complete/assembly.pickle": "8eda57998285137d99cce9564757627a57f8d5bc9b27091c86a65a9cc59230a0",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-reduced-action-source-20260914/complete/source/scripts/S11c_d_mixing_scattering_sympy_audit.py": "0d0ef5da7136f8a2033bd0fb076c56523d9097f972748b652b93b8778adc5101",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-reduced-action-assembly-20260914/recovery-01/complete/source/scripts/S11c_d_mixing_scattering_sympy_audit.py": "147f1bc1df4ce4b3ea9c131a0684afe4ee0016153cd1f71bd8b74f6eedace970"
+  },
+  "validation": "All current/frozen sources and original/copied packets verified; checks/stdout identity; exact baseline field/action census, 281 zero residuals, 80 exact integral addresses and changed-limit rejection. No new case construction or numerical integration."
+}

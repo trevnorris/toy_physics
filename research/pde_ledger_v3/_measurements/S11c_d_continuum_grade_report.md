@@ -21,8 +21,24 @@ zero structural grade indices needed explicit dimensionless metadata. The
 selection and structural emitter now handle these data faithfully. No upstream
 factorization or numerical integration was repeated.
 
-Full extraction (`4bd2ab19`) is running with a900-second budget, one native thread and
-2 GiB address-space ceiling. Each record is saved before guards. Complete
-operator grades remain pending until that run passes. This stage produces
-unintegrated coefficient operators; boundary/mode/current response expansion,
-physical controls, continuum flux, targeted poles and exports remain.
+Full extraction completed in44.87 seconds, empty stderr,284016 KiB peak RSS.
+All375 coefficient records pass:100 local,160 native cell,80 momentum factor,
+and35 source amplitudes. All160 native terms and80 original integrals join;
+1628 reconstruction/round-trip/derivative/native-collector residuals vanish,
+and346 coefficient controls respond. All2256 tags,1126 keys and8106 metadata
+paths replay. The packet SHA256 is unchanged before/after emission and validation.
+
+The full factor convolution has exactly the retained background support
+00,10,01,11 and no outside-rectangle terms. All80 momentum factors and35 source
+amplitudes have only grade00. This computed result permits reuse of their
+accepted finite matrices when assembling numerical coefficient operators at the
+same cutoffs/regulator and basis. Grade dependence remains in local and cell
+coefficients; keep all baseline and mixed terms.
+
+The8.64 MB transcript is published through DataLad/git-annex atd46e00ee;
+its symlink, actual MD5E key and independent SHA256 are verified. Full symbolic
+coefficients and source/limit records remain in the durable307486-byte packet.
+Next assemble numerical coefficient operators using saved momentum matrices,
+then include actual boundary/mode/current derivatives in the continuum response.
+No scattering expansion, new flux, uniform/profile control or pole result is
+claimed by the coefficient extraction alone.

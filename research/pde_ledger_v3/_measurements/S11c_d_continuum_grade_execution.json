@@ -1,5 +1,5 @@
 {
-  "status": "RUNNING",
+  "status": "PUBLISHED_ANNEX_VERIFIED",
   "checker": "S11c_d_continuum_grades.py",
   "plan": "S11c_d_continuum_grade_plan.md",
   "report": "S11c_d_continuum_grade_report.md",
@@ -11,7 +11,7 @@
     "nativeThreads": 1,
     "addressSpaceBytes": 2147483648
   },
-  "next": "Extract complete independent coefficient operators; then build the response expansion with actual boundary/channel/current derivatives.",
+  "next": "Reuse the proven grade-independent momentum/source matrices to assemble numerical coefficient operators, then expand actual boundary/channel maps and the response.",
   "implementationCommit": "4bd2ab19",
   "launch": {
     "launchedUtc": "2026-09-19T15:35:07.796527+00:00",
@@ -42,5 +42,33 @@
   "launchVerification": {
     "path": "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-grades-20260919/production/launch-verification.json",
     "sha256": "bd43ad548573ef05e1a787db8b59d7487358882786261abf89ad40534f3e010e"
-  }
+  },
+  "outcome": {
+    "stage": "grades_construct",
+    "command": [
+      "python",
+      "-u",
+      "_measurements/S11c_d_continuum_grades.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-grades-20260919/production/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-grades-20260919/production/grades_construct.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-grades-20260919/production/grades_construct.stderr",
+    "startedUtc": "2026-09-19T15:35:07.828134+00:00",
+    "childPid": 593947,
+    "status": "completed",
+    "exitCode": 0,
+    "wallSeconds": 44.871845294721425,
+    "stderrBytes": 0,
+    "finishedUtc": "2026-09-19T15:35:52.700023+00:00"
+  },
+  "publication": {
+    "path": "scripts/out/S11c_d_continuum_operator_grades.out",
+    "bytes": 8644179,
+    "sha256": "c12be9dfd2a8f0b7870b48d3b755935c87339995c024e8d8d5b6161787947880",
+    "annexKey": "MD5E-s8644179--548ae07f035dc7dcf77155ce0aeb56da.out",
+    "symlink": "../../../../.git/annex/objects/12/zg/MD5E-s8644179--548ae07f035dc7dcf77155ce0aeb56da.out/MD5E-s8644179--548ae07f035dc7dcf77155ce0aeb56da.out",
+    "publicationCommit": "d46e00ee5834b801b8fd6b9035f5c91b1a9242ff"
+  },
+  "checkpoint": "S11c_d_continuum_grade_checkpoint.json"
 }

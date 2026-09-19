@@ -1,0 +1,186 @@
+{
+  "status": "PUBLISHED_ANNEX_VERIFIED",
+  "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-grades-20260919/production/complete",
+  "outcome": {
+    "stage": "grades_construct",
+    "command": [
+      "python",
+      "-u",
+      "_measurements/S11c_d_continuum_grades.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-grades-20260919/production/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-grades-20260919/production/grades_construct.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-grades-20260919/production/grades_construct.stderr",
+    "startedUtc": "2026-09-19T15:35:07.828134+00:00",
+    "childPid": 593947,
+    "status": "completed",
+    "exitCode": 0,
+    "wallSeconds": 44.871845294721425,
+    "stderrBytes": 0,
+    "finishedUtc": "2026-09-19T15:35:52.700023+00:00"
+  },
+  "checksSha256": "a7b88e2e9a3308baa85c6cd20cff94175676c05b48e3baf9f4d4341370c30eab",
+  "checks": {
+    "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-grades-20260919/production/complete",
+    "focused": false,
+    "sourceFiles": {
+      "_measurements/S11c_d_continuum_grades.py": "0443c3adbeaf813ad66c60af0a50c96e9a841277d51f9c23bf1c601d2fdf329d",
+      "_measurements/S11c_d_continuum_grade_plan.md": "693546373ea2c8c5eec4ef3c8c93732fc7440a1eb1a2cdb1a6cf9d0f5b469040",
+      "_measurements/S11c_d_reduced_action_assembly_checkpoint.json": "b4afb727b1a1ad2a468b0bab9a6ab369dbe4dd35bc46acd7150b7fa581cd984f",
+      "_measurements/S11c_d_source_fourier_factorization_checkpoint.json": "fcf6f1c5598b63c11d4f8a76d2d94c2b5bace590e83d4beea3e52e82f44158a6",
+      "_measurements/S11c_d_reduced_action_source_checkpoint.json": "b6dcd36ee6cf8ed3b3943e207012dd165fce62ec39cb8f53ca3c23f4715d094b",
+      "scripts/S11c_d_mixing_scattering_sympy_audit.py": "5bf77729682960bb59f10c672a5fe3f67a98b0a9533da7c6189a37183596050f",
+      "_measurements/S11c_d_reduced_action_source_check.py": "aae3b2402e1707ef27f217b917dc10592f38acbe35d18356fbc4886ed854f754",
+      "directives/S11c_d_EXPLORATORY_ACCEPTANCE.md": "5c1e560a78d40739af8b1318c0487e20bf2b816c41109889e12004266c72840c",
+      "_measurements/S11c_d_finite_scattering_domain_checkpoint.json": "2286978066ad6e0c8b9558a950b40521c61ac2cdfec58a9694f890c70c90280c",
+      "_measurements/S11c_d_variable_profile_development_input.json": "660b2b0b54494dce964c7f5fbd722a76a7e894d8ed92b18b5eb6290c3c10f1d5",
+      "directives/S11c_d_NONLINEAR_POLE_CONTRACT.md": "2b6018faf0d5ca772bf9c980174d8ebe7545127a3bf43ba01d1b3c0b6a5be423",
+      "scripts/S11c_b_exports.py": "3c6555f90a85382a5e96f3f961f0e36a4875d9259fe1be947fa8e683669b7084",
+      "scripts/S11c_c1_exports.py": "a5353b86dc526fd1b56734fdbdf7dc7f42387a3195ab4de84e8994f751871cdc",
+      "scripts/S11c_c2_exports.py": "2ba5ed487b84ecb98290df6f1650fa6210fe2784cfa02a0f3cff96cd718411cd",
+      "directives/S11c_d_SHARED_PHYSICS.md": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5",
+      "directives/S11b_SHARED_PHYSICS.md": "9ea9e388e9d6421a841eaf851d12e1793527bba9a24aeeface3bfac2f4b40078",
+      "scripts/ledger_fold.py": "97da78c6631c09e5575dd14511760506f1ac08771cf07948978004e92f0b2333"
+    },
+    "inputPackets": {
+      "/var/projects/toy_physics/_scratch/s11c/s11c-reduced-action-assembly-20260914/recovery-01/complete/assembly.pickle": "8eda57998285137d99cce9564757627a57f8d5bc9b27091c86a65a9cc59230a0",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-source-fourier-20260914/recovery-01/complete/source-factorization.pickle": "4ad4e99de3f13a8bf3e42374f1425a84521e27634635063adb497cdc94651033",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-reduced-action-source-20260914/complete/reduced-action.pickle": "e9062c3455c7e59fe816f47172062a0c118b201d03809ec0826575dac22872b0",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-reduced-action-source-20260914/complete/actions.pickle": "4c2372a7102d1db9f21a049ab3104465e8d9245ab832be88c900bc8519b46e02"
+    },
+    "records": 375,
+    "nativeTermJoins": 160,
+    "sourceIntegrals": 35,
+    "recordKinds": {
+      "local": 100,
+      "cell": 160,
+      "factor": 80,
+      "source": 35
+    },
+    "coefficientControls": 346,
+    "tagCount": 2256,
+    "writeKeys": 1126,
+    "metadataPaths": 8106,
+    "allGrades": [
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        1
+      ],
+      [
+        0,
+        1,
+        0
+      ],
+      [
+        0,
+        1,
+        1
+      ]
+    ],
+    "combinedTermGrades": [
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        1
+      ],
+      [
+        0,
+        1,
+        0
+      ],
+      [
+        0,
+        1,
+        1
+      ]
+    ],
+    "outsideRectangleFactorGrades": 0,
+    "packetSha256BeforeEmission": "e39412750fe58734ba4db2bd84d40908d18706ae055f6ddd6e3f53f560aa9b71",
+    "packetSha256AfterEmission": "e39412750fe58734ba4db2bd84d40908d18706ae055f6ddd6e3f53f560aa9b71",
+    "artifacts": {
+      "continuum-grades.pickle": {
+        "bytes": 307486,
+        "sha256": "e39412750fe58734ba4db2bd84d40908d18706ae055f6ddd6e3f53f560aa9b71"
+      },
+      "full.out": {
+        "bytes": 8644179,
+        "sha256": "c12be9dfd2a8f0b7870b48d3b755935c87339995c024e8d8d5b6161787947880"
+      },
+      "coefficient-controls.pickle": {
+        "bytes": 41937,
+        "sha256": "3763e349b55fe00387703b0812c47dc43c79736a966defedcda77b100774d56d"
+      }
+    },
+    "wallSeconds": 43.3586733834818,
+    "peakRssKiB": 284016,
+    "scope": "Unintegrated native coefficient operators; continuum solution and channel-map expansion remain."
+  },
+  "artifacts": {
+    "continuum-grades.pickle": {
+      "bytes": 307486,
+      "sha256": "e39412750fe58734ba4db2bd84d40908d18706ae055f6ddd6e3f53f560aa9b71"
+    },
+    "full.out": {
+      "bytes": 8644179,
+      "sha256": "c12be9dfd2a8f0b7870b48d3b755935c87339995c024e8d8d5b6161787947880"
+    },
+    "coefficient-controls.pickle": {
+      "bytes": 41937,
+      "sha256": "3763e349b55fe00387703b0812c47dc43c79736a966defedcda77b100774d56d"
+    }
+  },
+  "sourceFiles": {
+    "_measurements/S11c_d_continuum_grades.py": "0443c3adbeaf813ad66c60af0a50c96e9a841277d51f9c23bf1c601d2fdf329d",
+    "_measurements/S11c_d_continuum_grade_plan.md": "693546373ea2c8c5eec4ef3c8c93732fc7440a1eb1a2cdb1a6cf9d0f5b469040",
+    "_measurements/S11c_d_reduced_action_assembly_checkpoint.json": "b4afb727b1a1ad2a468b0bab9a6ab369dbe4dd35bc46acd7150b7fa581cd984f",
+    "_measurements/S11c_d_source_fourier_factorization_checkpoint.json": "fcf6f1c5598b63c11d4f8a76d2d94c2b5bace590e83d4beea3e52e82f44158a6",
+    "_measurements/S11c_d_reduced_action_source_checkpoint.json": "b6dcd36ee6cf8ed3b3943e207012dd165fce62ec39cb8f53ca3c23f4715d094b",
+    "scripts/S11c_d_mixing_scattering_sympy_audit.py": "5bf77729682960bb59f10c672a5fe3f67a98b0a9533da7c6189a37183596050f",
+    "_measurements/S11c_d_reduced_action_source_check.py": "aae3b2402e1707ef27f217b917dc10592f38acbe35d18356fbc4886ed854f754",
+    "directives/S11c_d_EXPLORATORY_ACCEPTANCE.md": "5c1e560a78d40739af8b1318c0487e20bf2b816c41109889e12004266c72840c",
+    "_measurements/S11c_d_finite_scattering_domain_checkpoint.json": "2286978066ad6e0c8b9558a950b40521c61ac2cdfec58a9694f890c70c90280c",
+    "_measurements/S11c_d_variable_profile_development_input.json": "660b2b0b54494dce964c7f5fbd722a76a7e894d8ed92b18b5eb6290c3c10f1d5",
+    "directives/S11c_d_NONLINEAR_POLE_CONTRACT.md": "2b6018faf0d5ca772bf9c980174d8ebe7545127a3bf43ba01d1b3c0b6a5be423",
+    "scripts/S11c_b_exports.py": "3c6555f90a85382a5e96f3f961f0e36a4875d9259fe1be947fa8e683669b7084",
+    "scripts/S11c_c1_exports.py": "a5353b86dc526fd1b56734fdbdf7dc7f42387a3195ab4de84e8994f751871cdc",
+    "scripts/S11c_c2_exports.py": "2ba5ed487b84ecb98290df6f1650fa6210fe2784cfa02a0f3cff96cd718411cd",
+    "directives/S11c_d_SHARED_PHYSICS.md": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5",
+    "directives/S11b_SHARED_PHYSICS.md": "9ea9e388e9d6421a841eaf851d12e1793527bba9a24aeeface3bfac2f4b40078",
+    "scripts/ledger_fold.py": "97da78c6631c09e5575dd14511760506f1ac08771cf07948978004e92f0b2333"
+  },
+  "verification": {
+    "coefficientRecords": 375,
+    "nativeTerms": 160,
+    "originalIntegrals": 80,
+    "sourceIntegrals": 35,
+    "zeroResidualScalars": 1628,
+    "coefficientControls": 346,
+    "tags": 2256,
+    "metadataPaths": 8106
+  },
+  "validator": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-grades-20260919/validate.py",
+    "sha256": "1a9f5da5e42a58217f566978a31deac7dced681f1daa26e13d7066255b2ef495"
+  },
+  "scope": "Symbolic coefficient operators before numerical matrix, boundary/channel and response expansion.",
+  "publication": {
+    "path": "scripts/out/S11c_d_continuum_operator_grades.out",
+    "bytes": 8644179,
+    "sha256": "c12be9dfd2a8f0b7870b48d3b755935c87339995c024e8d8d5b6161787947880",
+    "annexKey": "MD5E-s8644179--548ae07f035dc7dcf77155ce0aeb56da.out",
+    "symlink": "../../../../.git/annex/objects/12/zg/MD5E-s8644179--548ae07f035dc7dcf77155ce0aeb56da.out/MD5E-s8644179--548ae07f035dc7dcf77155ce0aeb56da.out",
+    "publicationCommit": "d46e00ee5834b801b8fd6b9035f5c91b1a9242ff"
+  }
+}

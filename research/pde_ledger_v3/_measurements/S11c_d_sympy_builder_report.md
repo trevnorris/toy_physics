@@ -273,6 +273,13 @@ The 5.07 MB smoke stays instrument evidence in durable scratch. Production launc
 no production result is accepted yet.
 Prefix extrapolation suggests roughly 16 hours, with concurrent-load uncertainty.
 
+Independent operator-grade extraction is now published and annex-verified at
+`d46e00ee`:375 coefficient records,160 complete nonlocal term joins,1628 zero
+residuals and8106 metadata paths in44.87 seconds. Computed support is00,10,01,11;
+all momentum/source amplitudes are grade-independent. Reuse their saved finite
+matrices for numerical coefficient assembly, then expand boundary/channel/current
+maps and the response. No new quadrature or completed continuum response is claimed.
+
 ## Retained user-approved solver/export contract
 
 

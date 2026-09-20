@@ -1,0 +1,8 @@
+{
+  "status": "NATIVE_PREFIX_AST_CHECKED",
+  "helperSha256": "e2e97e5ec2525a35336a418df251f722c3371af3357db0910dbb3724d3cc7cf2",
+  "nativeFunctionSha256": "1e7348d229c65e43d62f2ff201b835c16e398e3b22853f766c1be9742f6a969e",
+  "nativePrefixAstSha256": "50ef593c113e7034b477ee8b8a42da1405a07aa785fd254f1cdf49ccce424649",
+  "nativePrefixStatements": 17,
+  "scope": "Exact native prefix wiring only; both actual baseline current-source comparisons execute before new-case use in the supervised constructor."
+}

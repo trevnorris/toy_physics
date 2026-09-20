@@ -1,0 +1,10 @@
+{
+  "status": "PREPARED",
+  "helper": "_measurements/S11c_d_remaining_case_end_sources.py",
+  "plan": "_measurements/S11c_d_remaining_case_end_sources_plan.md",
+  "matrixAcceptance": "2eed4150",
+  "nativeThreads": 1,
+  "addressSpaceBytes": 2147483648,
+  "initialWallBudgetSeconds": 900,
+  "scope": "Fresh case end symbols and current-generator inputs; no quadrature, modes, current matrices or scattering solves."
+}

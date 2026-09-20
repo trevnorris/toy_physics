@@ -38,3 +38,7 @@ second focused repair joins the whole helper file after undoing one new helper
 and one call site. All 85 original sources, 331 inputs and 287 original copies
 are verified; original logs and packets remain immutable. No physical repair,
 mode construction or accepted calculation is repeated.
+
+Repaired focus 721f4108 launched at 05:19 UTC under supervisor 930394 and
+silent watcher 930395. Final exit and complete source/operand guards remain
+required before acceptance or the single new homogeneous matching solve.

@@ -1,0 +1,265 @@
+{
+  "status": "PASSED_ACTUAL_FIRST_JET_BINDING_WIRING",
+  "sourceControlChecksSha256": "c15865e03f8308ed857349739a27e87926e480c73af343ce4ee855dc30b38700",
+  "bindingHelperSha256": "5ddc7128f0c747356768e4599a46f09d3f0e00954980bc25f28f33537d111c31",
+  "planSha256": "1c47a8dacb5bafa2c3cfb2a2d3978eaf74ddbc9ea2c0373b53a6937b73a52b04",
+  "nativeBodies": {
+    "bind": "5a07713fe33627a0d8e469a5baaf7af583cf3c141f4257efe6586ee025172830",
+    "sourceJets": "d8e8fa53b77c08ec07636054f22dc42f715e3877474707fc039bdeed6b45d472",
+    "sourceSubstitution": "8230c41f40a764e9b53e050f258ee396482083d84477b1f2e1d209c55c206401"
+  },
+  "cases": {
+    "LAB_HELD__RHO4_CONSTANT": {
+      "scalarAddresses": 340,
+      "rowSignatures": 80,
+      "sameCompleteContext": true
+    },
+    "LAB_HELD__RHOBR_CONSTANT": {
+      "scalarAddresses": 310,
+      "rowSignatures": 70,
+      "sameCompleteContext": true
+    },
+    "MATERIAL_ADVECTED__RHO4_CONSTANT": {
+      "scalarAddresses": 365,
+      "rowSignatures": 80,
+      "sameCompleteContext": true
+    },
+    "MATERIAL_ADVECTED__RHOBR_CONSTANT": {
+      "scalarAddresses": 332,
+      "rowSignatures": 70,
+      "sameCompleteContext": true
+    }
+  },
+  "actualWrongInputRejections": 12,
+  "baselineControlScalarAddresses": 340,
+  "baselineControlRows": 80,
+  "exactUnchangedBaselineRows": [
+    0,
+    1,
+    2,
+    3,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    26,
+    27,
+    28,
+    29,
+    30,
+    35,
+    36,
+    37,
+    38,
+    39,
+    60,
+    65,
+    66,
+    67,
+    68,
+    69
+  ],
+  "newNumericalBindings": 0,
+  "newSourceJets": 0,
+  "newQuadratureNodes": 0,
+  "newResponseSolves": 0,
+  "artifacts": {
+    "LAB_HELD__RHO4_CONSTANT-row-signatures.pickle": {
+      "sha256": "5123d2cfda2487c35be8f9ce3720250e1df0c111f207d1fffb22ff69bde79035",
+      "bytes": 184374
+    },
+    "LAB_HELD__RHOBR_CONSTANT-row-signatures.pickle": {
+      "sha256": "e3705721ee23fb29ef646cda81306cdd183de76c94e17d4b02640a638a0a0a7b",
+      "bytes": 172823
+    },
+    "baseline-control-row-signatures.pickle": {
+      "sha256": "ebf7503c0295378acf1c485032fe60965f6340dc2dfb05053b4789613b9cb2df",
+      "bytes": 195265
+    },
+    "MATERIAL_ADVECTED__RHO4_CONSTANT-scalar-entries.pickle": {
+      "sha256": "95ec64725d8ea2d86932f67bd9aa40da5b0af29d0dd38f6af8c84442b4efd27e",
+      "bytes": 93911
+    },
+    "MATERIAL_ADVECTED__RHO4_CONSTANT-row-signatures.pickle": {
+      "sha256": "d44c535e30bbc056a78b17c979a0bf7016f3bdfc6e174ac5f6ad13a5cfd5bfdd",
+      "bytes": 192874
+    },
+    "baseline-control-scalars.pickle": {
+      "sha256": "c0dc743ae7b531ef9a7cede3486e21bf9a93fc041593d8e836a2e34fde6905d1",
+      "bytes": 99167
+    },
+    "MATERIAL_ADVECTED__RHOBR_CONSTANT-row-signatures.pickle": {
+      "sha256": "4898c6328e450aa9f59dcf66b16ae448db8f88d14a316a8855be69e8d1bfa0d7",
+      "bytes": 179817
+    },
+    "LAB_HELD__RHOBR_CONSTANT-scalar-entries.pickle": {
+      "sha256": "e107c255436678d496dfeadf7813122cd15b44c10278780cc42f3c840bd59658",
+      "bytes": 82972
+    },
+    "LAB_HELD__RHO4_CONSTANT-context.pickle": {
+      "sha256": "e561946077002b4f3df5c0e971f57bb6f47f4538ca8940d19bac56dfa93fc6eb",
+      "bytes": 3156
+    },
+    "MATERIAL_ADVECTED__RHOBR_CONSTANT-scalar-entries.pickle": {
+      "sha256": "b2e915aa9580ff82ebbfe0bcdeb27f1c5d1ba6a2d8703e9d9776f1995883e8f8",
+      "bytes": 86053
+    },
+    "LAB_HELD__RHOBR_CONSTANT-context.pickle": {
+      "sha256": "e561946077002b4f3df5c0e971f57bb6f47f4538ca8940d19bac56dfa93fc6eb",
+      "bytes": 3156
+    },
+    "LAB_HELD__RHO4_CONSTANT-scalar-entries.pickle": {
+      "sha256": "19a992c338a88e3301b94bba5de9fff70939e0eb014c18bfe621954338a1de9e",
+      "bytes": 90065
+    },
+    "MATERIAL_ADVECTED__RHOBR_CONSTANT-context.pickle": {
+      "sha256": "e561946077002b4f3df5c0e971f57bb6f47f4538ca8940d19bac56dfa93fc6eb",
+      "bytes": 3156
+    },
+    "MATERIAL_ADVECTED__RHO4_CONSTANT-context.pickle": {
+      "sha256": "e561946077002b4f3df5c0e971f57bb6f47f4538ca8940d19bac56dfa93fc6eb",
+      "bytes": 3156
+    }
+  },
+  "validatorSha256": "b3587d28a8bdc993be53fd4c4e6eae844ef767687c047a59156c23e0383d1192",
+  "wallSeconds": 133.65561877004802,
+  "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/binding-wiring",
+  "checksSha256": "cc7ea4a40a0bf1c0d89621d8771d0ed5410cb5b3e268ab8a582b0c4c1e08d762",
+  "outcome": {
+    "exitCode": 0,
+    "stderrBytes": 0
+  },
+  "profileControls": {
+    "status": "PASSED_ACTUAL_CONSUMED_PROFILE_AND_CHARACTER_CONTROLS",
+    "bindingHelperSha256": "5ddc7128f0c747356768e4599a46f09d3f0e00954980bc25f28f33537d111c31",
+    "results": {
+      "LAB_HELD__RHO4_CONSTANT": {
+        "row": 40,
+        "changedUnitRejected": true,
+        "missingConsumedUnitRejected": true,
+        "changedCharacterRejected": true
+      },
+      "LAB_HELD__RHOBR_CONSTANT": {
+        "row": 33,
+        "changedUnitRejected": true,
+        "missingConsumedUnitRejected": true,
+        "changedCharacterRejected": true
+      },
+      "MATERIAL_ADVECTED__RHO4_CONSTANT": {
+        "row": 40,
+        "changedUnitRejected": true,
+        "missingConsumedUnitRejected": true,
+        "changedCharacterRejected": true
+      },
+      "MATERIAL_ADVECTED__RHOBR_CONSTANT": {
+        "row": 33,
+        "changedUnitRejected": true,
+        "missingConsumedUnitRejected": true,
+        "changedCharacterRejected": true
+      }
+    },
+    "rejections": 12,
+    "validatorSha256": "79a783578c620bac06162bca36b7bbec40f3b3ec15614b5d1b763d48181c8d40",
+    "artifacts": {
+      "MATERIAL_ADVECTED__RHOBR_CONSTANT-profile-controls.pickle": {
+        "sha256": "7b841cd43048ffe467631eef931b872efe15caa4f8215e5870fc972d977de1a7",
+        "bytes": 79093
+      },
+      "LAB_HELD__RHOBR_CONSTANT-profile-controls.pickle": {
+        "sha256": "7b841cd43048ffe467631eef931b872efe15caa4f8215e5870fc972d977de1a7",
+        "bytes": 79093
+      },
+      "MATERIAL_ADVECTED__RHO4_CONSTANT-profile-controls.pickle": {
+        "sha256": "43c0a6e70497355772112794a7a751a413849d010684bdaa85f0dfe64c3b7c5c",
+        "bytes": 79093
+      },
+      "LAB_HELD__RHO4_CONSTANT-profile-controls.pickle": {
+        "sha256": "ab02d689ce9d04fb2522989e32c4b8b92306ae6bd0ddbf9cf24ba39c9a0f1198",
+        "bytes": 79026
+      }
+    },
+    "wallSeconds": 10.946946552023292
+  },
+  "profileControlsChecksSha256": "5340d00a9a2b34634a291fd7c1ca90ffe3b09c1cb3aa76e64d51d9ebcb5f8150",
+  "allArtifacts": {
+    "LAB_HELD__RHO4_CONSTANT-row-signatures.pickle": {
+      "sha256": "5123d2cfda2487c35be8f9ce3720250e1df0c111f207d1fffb22ff69bde79035",
+      "bytes": 184374
+    },
+    "LAB_HELD__RHOBR_CONSTANT-row-signatures.pickle": {
+      "sha256": "e3705721ee23fb29ef646cda81306cdd183de76c94e17d4b02640a638a0a0a7b",
+      "bytes": 172823
+    },
+    "baseline-control-row-signatures.pickle": {
+      "sha256": "ebf7503c0295378acf1c485032fe60965f6340dc2dfb05053b4789613b9cb2df",
+      "bytes": 195265
+    },
+    "MATERIAL_ADVECTED__RHO4_CONSTANT-scalar-entries.pickle": {
+      "sha256": "95ec64725d8ea2d86932f67bd9aa40da5b0af29d0dd38f6af8c84442b4efd27e",
+      "bytes": 93911
+    },
+    "MATERIAL_ADVECTED__RHO4_CONSTANT-row-signatures.pickle": {
+      "sha256": "d44c535e30bbc056a78b17c979a0bf7016f3bdfc6e174ac5f6ad13a5cfd5bfdd",
+      "bytes": 192874
+    },
+    "baseline-control-scalars.pickle": {
+      "sha256": "c0dc743ae7b531ef9a7cede3486e21bf9a93fc041593d8e836a2e34fde6905d1",
+      "bytes": 99167
+    },
+    "MATERIAL_ADVECTED__RHOBR_CONSTANT-row-signatures.pickle": {
+      "sha256": "4898c6328e450aa9f59dcf66b16ae448db8f88d14a316a8855be69e8d1bfa0d7",
+      "bytes": 179817
+    },
+    "LAB_HELD__RHOBR_CONSTANT-scalar-entries.pickle": {
+      "sha256": "e107c255436678d496dfeadf7813122cd15b44c10278780cc42f3c840bd59658",
+      "bytes": 82972
+    },
+    "LAB_HELD__RHO4_CONSTANT-context.pickle": {
+      "sha256": "e561946077002b4f3df5c0e971f57bb6f47f4538ca8940d19bac56dfa93fc6eb",
+      "bytes": 3156
+    },
+    "MATERIAL_ADVECTED__RHOBR_CONSTANT-scalar-entries.pickle": {
+      "sha256": "b2e915aa9580ff82ebbfe0bcdeb27f1c5d1ba6a2d8703e9d9776f1995883e8f8",
+      "bytes": 86053
+    },
+    "LAB_HELD__RHOBR_CONSTANT-context.pickle": {
+      "sha256": "e561946077002b4f3df5c0e971f57bb6f47f4538ca8940d19bac56dfa93fc6eb",
+      "bytes": 3156
+    },
+    "LAB_HELD__RHO4_CONSTANT-scalar-entries.pickle": {
+      "sha256": "19a992c338a88e3301b94bba5de9fff70939e0eb014c18bfe621954338a1de9e",
+      "bytes": 90065
+    },
+    "MATERIAL_ADVECTED__RHOBR_CONSTANT-context.pickle": {
+      "sha256": "e561946077002b4f3df5c0e971f57bb6f47f4538ca8940d19bac56dfa93fc6eb",
+      "bytes": 3156
+    },
+    "MATERIAL_ADVECTED__RHO4_CONSTANT-context.pickle": {
+      "sha256": "e561946077002b4f3df5c0e971f57bb6f47f4538ca8940d19bac56dfa93fc6eb",
+      "bytes": 3156
+    },
+    "MATERIAL_ADVECTED__RHOBR_CONSTANT-profile-controls.pickle": {
+      "sha256": "7b841cd43048ffe467631eef931b872efe15caa4f8215e5870fc972d977de1a7",
+      "bytes": 79093
+    },
+    "LAB_HELD__RHOBR_CONSTANT-profile-controls.pickle": {
+      "sha256": "7b841cd43048ffe467631eef931b872efe15caa4f8215e5870fc972d977de1a7",
+      "bytes": 79093
+    },
+    "MATERIAL_ADVECTED__RHO4_CONSTANT-profile-controls.pickle": {
+      "sha256": "43c0a6e70497355772112794a7a751a413849d010684bdaa85f0dfe64c3b7c5c",
+      "bytes": 79093
+    },
+    "LAB_HELD__RHO4_CONSTANT-profile-controls.pickle": {
+      "sha256": "ab02d689ce9d04fb2522989e32c4b8b92306ae6bd0ddbf9cf24ba39c9a0f1198",
+      "bytes": 79026
+    }
+  },
+  "totalActualInputMutationsRejected": 24
+}

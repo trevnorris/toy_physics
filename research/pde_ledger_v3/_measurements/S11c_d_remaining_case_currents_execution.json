@@ -1,5 +1,5 @@
 {
-  "status": "FOCUSED_CURRENT_REUSE_RUNNING",
+  "status": "FOCUSED_STOPPED_UNIT_INITIALIZATION_REPAIRED",
   "helper": "_measurements/S11c_d_remaining_case_currents.py",
   "plan": "_measurements/S11c_d_remaining_case_currents_plan.md",
   "sourceAcceptance": "103c52d5",
@@ -69,5 +69,46 @@
     "exitCode": 1,
     "numericalChildrenStarted": 0,
     "reason": "Three-item focused suffix was checked against a two-item slice. Corrected only slice length to three."
-  }
+  },
+  "originalOutcome": {
+    "stage": "currents_focused",
+    "command": [
+      "python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_currents.py",
+      "--focused",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/focused/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/focused/currents_focused.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/focused/currents_focused.stderr",
+    "startedUtc": "2026-09-20T02:19:05.463974+00:00",
+    "childPid": 870154,
+    "status": "failed",
+    "exitCode": 1,
+    "wallSeconds": 22.003019092604518,
+    "stderrBytes": 822,
+    "finishedUtc": "2026-09-20T02:19:27.467041+00:00"
+  },
+  "originalActive": {
+    "stage": "currents_focused",
+    "command": [
+      "python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_currents.py",
+      "--focused",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/focused/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/focused/currents_focused.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/focused/currents_focused.stderr",
+    "startedUtc": "2026-09-20T02:19:05.463974+00:00",
+    "childPid": 870154,
+    "status": "failed",
+    "exitCode": 1,
+    "wallSeconds": 22.003019092604518,
+    "stderrBytes": 822,
+    "finishedUtc": "2026-09-20T02:19:27.467041+00:00"
+  },
+  "unitRepair": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_currents_unit_repair.json"
 }

@@ -75,6 +75,7 @@ def context(base,label,end,sources,manifest):
     data=sources['currentInputs'][label][end];inp=engine.ChannelInput(r,manifest['input'])
     state=copy.copy(r);state.end_values={key:inp.limits[value] for key,value in r.end_values.items()}
     e=engine.ConstantEndPencil.__new__(engine.ConstantEndPencil);e.r=state;e.kn=sp.Symbol('s11cdSpectralNormalMomentum',real=True)
+    dims.known[e.kn]=dims.measure(state.normal_map[state.momentum_groups[0][2]])
     result=sources['sources'][label];m=engine.FullPencilModes(e,result['curl'],result['units']['weak'])
     c=engine.UniformSlabCurrent(state,{'value':data['sourceEnergy']},e,data['strong'][3,:]);balance=engine.SlabEnergyBalance(c);acoustic=engine.ClosedAcousticEnergy(balance,m,data['strong'])
     f.require(same(data['profileBindings'],inp.limits) and tuple(c.field_units)==tuple(data['fieldUnits']),'actual profile and field-unit inputs')

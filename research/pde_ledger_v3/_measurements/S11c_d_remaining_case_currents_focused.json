@@ -1,6 +1,6 @@
 {
   "status": "NATIVE_CURRENT_CONSTRUCTOR_AST_CHECKED",
-  "helperSha256": "200daa2e34ae730728632c25cfb5f150bf18e54fb986d07ff7fdbbdbc7c0d67d",
+  "helperSha256": "0db940a3a94c5dfed4011fd1f86a34624698c59329daebc9bcae2bc8402c6639",
   "planSha256": "78a4e30e01f1789d99c3d10f08b5f772b1cbcf56cd69b5eb58cf104e72fbe2fd",
   "nativeConstructorJoins": {
     "left_current_source": {
@@ -24,5 +24,7 @@
       "ClosedCurrentPairing": true
     }
   },
-  "scope": "Static whole-native class joins only; actual case input and cache controls run in the focused job."
+  "scope": "Static whole-native class joins only; actual case input and cache controls run in the focused job.",
+  "unitInitializationRepair": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_currents_unit_repair.json",
+  "unitRepairChecksSha256": "fda63bf1a599995c143a34fec745494ea9432f38bc57284380c3aeb304a4c2fc"
 }

@@ -8,3 +8,5 @@ RHO4, so its acoustic face closure requires a new source-derived calculation.
 No new mode/current normalization or scattering result is accepted yet.
 
 Focused check launched under a0c09328 with supervisor 870147 and silent watcher 870148. One thread, 2 GiB and 900 seconds. A launch-only suffix-length assertion was corrected before any child started; the original preparation is preserved. No focused result is accepted until the final saved-operand validation.
+
+The focused run stopped after 22.00 seconds at the coordinate-unit guard, before any current construction. The local adapter had omitted the native normal-momentum unit registration, leaving symbolic unit variables on the two current legs; the other 30 coordinates and the saved energy/constraint comparisons agreed. A one-assignment repair reverses to the original whole-file AST and uses the exact native dimension expression. All twelve case/end contexts now pass 384 coordinate-unit comparisons and twelve wrong-unit controls. Original inputs, packets and logs are unchanged. No physical current or scattering result is accepted from this repair.

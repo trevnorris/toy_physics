@@ -61,3 +61,15 @@ approximate modal boundaries and omitted parent pure-second-order terms remain.
 No broad quadrature campaign or baseline contour doubling is queued. Remaining
 coordinate/advection controls, scoped case searches and final engine/exports
 follow independently of this control's numerical sensitivity.
+
+The focused input helper is `S11c_d_remaining_case_first_jet_response_inputs.py`.
+It copies the accepted numerical inputs and prepares the actual finite boundary
+matrices/forcing and independent-grade systems without solving. These prepared
+arrays remain reusable by production. It validates the accepted baseline
+continuum system and saved solution against the newly joined own-case end maps,
+retaining literal differences and residuals. Baseline storage views preserve the
+existing full unsplit and coefficient arrays; they do not create an independent
+native-cell proof or a finite solution that was not computed. Each case's actual
+incoming-sign control must respond. The original continuum emitter/replay tails
+compile with distinct first-derivative namespaces; new comparison/finite output
+still needs its actual adapter before production publication.

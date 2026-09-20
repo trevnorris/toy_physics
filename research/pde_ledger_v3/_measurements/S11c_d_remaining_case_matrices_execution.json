@@ -1,0 +1,28 @@
+{
+  "status": "FOCUSED_PREPARATION_RUNNING",
+  "helper": "_measurements/S11c_d_remaining_case_matrices.py",
+  "plan": "_measurements/S11c_d_remaining_case_matrices_plan.md",
+  "bindingAcceptance": "a8272c9d",
+  "focusedDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-matrices-20260920/focused/complete",
+  "nativeThreads": 1,
+  "addressSpaceBytes": 2147483648,
+  "initialWallBudgetSeconds": 900,
+  "newUnionRows": 32,
+  "caseRowAddresses": 300,
+  "nativeTerms": 647,
+  "newTripleRows": 0,
+  "scope": "Interior numerical coefficient matrices; fresh case-specific boundary/current/response remains.",
+  "watcherAttachment": {
+    "attachedUtc": "2026-09-20T01:21:50.977347+00:00",
+    "supervisorHostPid": 845632,
+    "childHostPid": 845641,
+    "supervisorToolSession": 1710,
+    "watcherPid": 846595,
+    "watcherDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-matrices-20260920/focused/completion-watcher",
+    "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77"
+  },
+  "unchangedNumericalFiles": {
+    "_measurements/S11c_d_finite_scattering.py": "f187d9426be8069342a363a0466c175d32a8cb46101e32a14c433ccb9118e469",
+    "_measurements/S11c_d_continuum_matrices.py": "33a0e5a2fa136a55875541e15bc410159c94f56f25adc4a02589d0c704223987"
+  }
+}

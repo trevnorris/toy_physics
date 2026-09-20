@@ -1,5 +1,5 @@
 {
-  "status": "ACCEPTED_FOCUSED_READY_FOR_ONE_NEW_MATCHING",
+  "status": "LAUNCHED_ONE_NEW_UNIFORM_MATCHING_AWAITING_SILENT_COMPLETION",
   "acceptedCurrent": "5f60149b",
   "currentPublication": "588a5383",
   "acceptedModes": "69dd0555",
@@ -12,47 +12,48 @@
   },
   "scope": "Full source/mode reuse preparation. No matching solve in focus; only one new RHOBR-right homogeneous response follows acceptance.",
   "launch": {
-    "launchedUtc": "2026-09-20T05:19:11.814053+00:00",
+    "launchedUtc": "2026-09-20T05:28:42.763374+00:00",
     "command": [
       "/usr/bin/python",
       "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
       "--run-root",
-      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-uniform-20260920/focused-retry-01",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-uniform-20260920/production",
       "--stage",
-      "uniform_focused",
+      "uniform_construct",
       "--",
       "python",
       "-u",
-      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_uniform.py",
-      "--focused",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_uniform_recover.py",
+      "--resume-focused",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-uniform-20260920/focused-recovery/complete",
       "--run-directory",
-      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-uniform-20260920/focused-retry-01/complete"
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-uniform-20260920/production/complete"
     ],
-    "mode": "focused-uniform-source-and-full-mode-reuse",
-    "supervisorPid": 930394,
-    "watcherPid": 930395,
-    "watcherDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-uniform-20260920/focused-retry-01/completion-watcher",
+    "mode": "one-new-uniform-matching-with-ten-response-reuses",
+    "supervisorPid": 935299,
+    "watcherPid": 935300,
+    "watcherDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-uniform-20260920/production/completion-watcher",
     "threadEnvironment": {
       "OPENBLAS_NUM_THREADS": "1",
       "OMP_NUM_THREADS": "1",
       "MKL_NUM_THREADS": "1",
       "NUMEXPR_NUM_THREADS": "1"
     },
-    "implementationCommit": "721f41086cd3f56e108bab15913aa580ad57cfb2"
+    "implementationCommit": "b90f55af8fb3ff96ee596832ff3e4500439ef683"
   },
-  "helperSha256": "9b2aa3ddd6f406e16718acbe1cc93d2594949ea990936416175f17697e45972d",
+  "helperSha256": "c1c256277ff749394fe0344f378e4e0f6df78a020c81df7dedafc4d99b955823",
   "launchArtifacts": {
     "launch.py": {
-      "sha256": "d6921f7a026fe973bb25bf9554607d8b191186878c5fea542dba79bde62d7376",
-      "bytes": 3744
+      "sha256": "99f0171192eaff3d4efa5f80ffba9d2da38907fde0735b4beab6b770dfabba47",
+      "bytes": 3706
     },
     "launch.json": {
-      "sha256": "c8219abaeb97f370be08e6f750b0cda58655605a645dfcd2d1fe287bab63224c",
-      "bytes": 1109
+      "sha256": "1d5c09c397b5540f9154261d9e8015e4efa8f8167972fdfd28c0f2d80df82b59",
+      "bytes": 1225
     },
     "continuation.txt": {
-      "sha256": "c3c1f6502f5d6f3309def56ffc8cffe0502d8f608f520ba70fa2ae1252ceab93",
-      "bytes": 5306
+      "sha256": "e46d798c65b54b408e9d539b1a9b20db4babad257a43f144819fcb35faf689e5",
+      "bytes": 4975
     }
   },
   "originalOutcome": {
@@ -120,5 +121,6 @@
   },
   "focusedCheckpoint": "S11c_d_remaining_case_uniform_focused.json",
   "productionRunRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-uniform-20260920/production",
-  "focusedChecksSha256": "c05f481b1564f26e353c570614b2eea8d36fee71156dd5acf7a96146f3ada014"
+  "focusedChecksSha256": "c05f481b1564f26e353c570614b2eea8d36fee71156dd5acf7a96146f3ada014",
+  "focusedAcceptanceCommit": "b90f55af8fb3ff96ee596832ff3e4500439ef683"
 }

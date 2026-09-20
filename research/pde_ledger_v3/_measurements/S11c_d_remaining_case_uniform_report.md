@@ -65,3 +65,7 @@ current replay residual is 1.11e-15 and both current mutations respond. The
 independent saved-array/hash validation takes 1.85 seconds. No matching solve,
 new mode or current closure occurred. Production will reuse all 354 artifacts
 and solve only the new RHOBR-right homogeneous control.
+
+Focused acceptance b90f55af precedes the production launch at 05:28 UTC,
+under supervisor 935299 and silent watcher 935300. Only one new homogeneous
+matching is scheduled; final numerical and output guards remain required.

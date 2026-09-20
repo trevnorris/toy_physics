@@ -1,4 +1,4 @@
-# First-derivative numerical responses completed; validation pending
+# First-derivative numerical responses accepted
 
 Production completed in 257.24 seconds with final supervisor/child exit zero,
 empty stderr and identical checks/stdout. It saved four genuinely new finite
@@ -11,8 +11,8 @@ packets and 205 artifacts, with all 300 row addresses and 647 terms retained.
 All four systems report rank 645 for four incoming columns. Maximum finite and
 continuum scaled residuals are 8.274e-16 and 4.795e-14; saved independent finite
 and continuum differences are at most 3.046e-13 and 1.386e-12. Current contraction
-residuals are at most 5.860e-14. These figures await independent saved-operand
-validation before numerical acceptance.
+residuals are at most 5.860e-14. Independent saved-operand validation passed in 162.42 seconds with final exit
+zero, empty stderr and identical checks/stdout.
 
 Own-case first-derivative amplitude changes are at most 8.243e-7 and retained
 polynomial current changes at most 5.482e-7, below the declared absolute goals
@@ -43,3 +43,9 @@ No broad campaign or baseline contour doubling is queued.
 Saved-result validation launched from 10afc98d under supervisor 2160922 and
 silent watcher 2160923, one thread, 2 GiB and a 900-second initial budget.
 The initial launch record is not validation acceptance.
+
+All four saved-response validators passed. Exact prepared systems, independent
+equations, full current/phase maps, own-case sensitivities and every source/input/
+artifact pre/post hash validate. No solve, inverse, SVD, quadrature or system
+assembly ran during validation. Numerical acceptance precedes physical transcript
+emission/replay and annex publication, which remain unfinished.

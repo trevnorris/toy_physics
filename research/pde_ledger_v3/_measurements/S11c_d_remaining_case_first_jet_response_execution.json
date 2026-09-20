@@ -1,5 +1,5 @@
 {
-  "status": "VALIDATING_SAVED_FIRST_JET_NUMERICAL_RESPONSES",
+  "status": "ACCEPTED_FIRST_JET_NUMERICAL_RESPONSES",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/response/focused",
   "acceptedMatrixCommit": "df5271b4",
   "implementationCommit": "57f05dae323126c0dc5a7acf54577d413c0495de",
@@ -813,5 +813,232 @@
       "messageSha256": "ab13860394d5511fd9f741186da472a15b0bd72a1ed96a1a9d82171e29a38fe4",
       "notifications": {}
     }
-  }
+  },
+  "numericalValidation": {
+    "status": "VALIDATED_FIRST_JET_NUMERICAL_RESPONSES",
+    "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/response/production/complete",
+    "checksSha256": "609121335d2e55e7dd821fdcb57668369e8921642b43c3dd79b9811ff2c0e0f9",
+    "outcome": {
+      "stage": "first_jet_response",
+      "command": [
+        "python",
+        "-u",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_first_jet_response.py",
+        "--run-directory",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/response/production/complete",
+        "--resume-focused",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/response/focused/complete"
+      ],
+      "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/response/production/first_jet_response.stdout",
+      "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/response/production/first_jet_response.stderr",
+      "startedUtc": "2026-09-20T22:38:53.668059+00:00",
+      "childPid": 2157311,
+      "status": "completed",
+      "exitCode": 0,
+      "wallSeconds": 257.2354411762208,
+      "stderrBytes": 0,
+      "finishedUtc": "2026-09-20T22:43:10.903612+00:00"
+    },
+    "sourceFiles": 138,
+    "inputPackets": 10536,
+    "copiedInputs": 150,
+    "focusedCopies": 121,
+    "artifacts": 205,
+    "cases": {
+      "LAB_HELD__RHO4_CONSTANT": {
+        "equationsAndMaps": {
+          "case": "LAB_HELD__RHO4_CONSTANT",
+          "finiteMatrixScaledDifference": 0.0,
+          "finiteRank": 645,
+          "continuumRank": 645,
+          "finiteScaledResidual": 8.273411975996833e-16,
+          "continuumScaledResidual": 4.794587538984703e-14,
+          "finiteCurrentRatios": [
+            0.9999999356743352,
+            0.9999996321456749,
+            1.000000210141049,
+            1.0000005239565684
+          ],
+          "continuumMapResidual": 7.141979374872701e-15,
+          "newSolves": 0,
+          "newQuadratureNodes": 0,
+          "wholeNativeFinitePrefix": {
+            "acceptedPreparedSystems": true,
+            "newSystemAssemblies": 0
+          }
+        },
+        "sensitivity": {
+          "finiteAmplitudeChange": 5.174437296495139e-07,
+          "finiteCurrentChange": 4.1769852310302724e-07,
+          "finiteFieldChange": 0.0007876385688475931,
+          "continuumAmplitudeChange": 6.021871409746378e-07,
+          "retainedPolynomialCurrentChange": 4.5659048653057255e-07,
+          "openCurrentResidual": 4.441138119139177e-16,
+          "endCurrentResidual": 5.859285884700733e-14,
+          "currentMutation": 2.139295618348289,
+          "finiteOpenEndCurrentResidual": 2.262477960348739e-16,
+          "amplitudeResolutionGoal": 0.0001,
+          "currentResolutionGoal": 1e-06,
+          "sameOwnCaseCoordinates": true,
+          "scope": "Four actual finite-contrast and independent-grade first-w-derivative controls in their own case coordinates. Four finite and three continuum solves are new; the baseline continuum is reused. Positive regulator, approximate modal boundaries and omitted parent pure-second-order terms remain. One-sided closed-operator sensitivity, not a consistent new profile or isolated advection channel. Full transcript validation/publication follows these saved numerical results.",
+          "finiteCurrentScope": "open-only 4-by-4; three closed amplitudes retained separately",
+          "continuumCurrentScope": "full seven directions with closed/cross terms",
+          "newSolves": 0,
+          "newCurrentPackets": 0
+        }
+      },
+      "LAB_HELD__RHOBR_CONSTANT": {
+        "equationsAndMaps": {
+          "case": "LAB_HELD__RHOBR_CONSTANT",
+          "finiteMatrixScaledDifference": 0.0,
+          "finiteRank": 645,
+          "continuumRank": 645,
+          "finiteScaledResidual": 6.023880097502996e-16,
+          "continuumScaledResidual": 2.5360736622746124e-14,
+          "finiteCurrentRatios": [
+            1.000000002502498,
+            1.000000014296728,
+            0.9999998465500892,
+            0.9999999737048016
+          ],
+          "continuumMapResidual": 2.6645352591003757e-15,
+          "newSolves": 0,
+          "newQuadratureNodes": 0,
+          "wholeNativeFinitePrefix": {
+            "acceptedPreparedSystems": true,
+            "newSystemAssemblies": 0
+          }
+        },
+        "sensitivity": {
+          "finiteAmplitudeChange": 2.776899864927754e-07,
+          "finiteCurrentChange": 2.434757486735606e-07,
+          "finiteFieldChange": 0.00020816066029521706,
+          "continuumAmplitudeChange": 2.447395323504632e-07,
+          "retainedPolynomialCurrentChange": 4.629015337709319e-07,
+          "openCurrentResidual": 4.440892098970627e-16,
+          "endCurrentResidual": 2.4147350785597155e-15,
+          "currentMutation": 2.0962045861593075,
+          "finiteOpenEndCurrentResidual": 2.228152113789896e-16,
+          "amplitudeResolutionGoal": 0.0001,
+          "currentResolutionGoal": 1e-06,
+          "sameOwnCaseCoordinates": true,
+          "scope": "Four actual finite-contrast and independent-grade first-w-derivative controls in their own case coordinates. Four finite and three continuum solves are new; the baseline continuum is reused. Positive regulator, approximate modal boundaries and omitted parent pure-second-order terms remain. One-sided closed-operator sensitivity, not a consistent new profile or isolated advection channel. Full transcript validation/publication follows these saved numerical results.",
+          "finiteCurrentScope": "open-only 4-by-4; three closed amplitudes retained separately",
+          "continuumCurrentScope": "full seven directions with closed/cross terms",
+          "newSolves": 0,
+          "newCurrentPackets": 0
+        }
+      },
+      "MATERIAL_ADVECTED__RHO4_CONSTANT": {
+        "equationsAndMaps": {
+          "case": "MATERIAL_ADVECTED__RHO4_CONSTANT",
+          "finiteMatrixScaledDifference": 0.0,
+          "finiteRank": 645,
+          "continuumRank": 645,
+          "finiteScaledResidual": 8.018854866152456e-16,
+          "continuumScaledResidual": 4.5471952704901426e-14,
+          "finiteCurrentRatios": [
+            0.9999999750958605,
+            0.9999998575424569,
+            1.000000197926236,
+            1.000000493501449
+          ],
+          "continuumMapResidual": 7.141979374872701e-15,
+          "newSolves": 0,
+          "newQuadratureNodes": 0,
+          "wholeNativeFinitePrefix": {
+            "acceptedPreparedSystems": true,
+            "newSystemAssemblies": 0
+          }
+        },
+        "sensitivity": {
+          "finiteAmplitudeChange": 8.011352942913593e-07,
+          "finiteCurrentChange": 4.473736219257063e-07,
+          "finiteFieldChange": 0.00020684345308540872,
+          "continuumAmplitudeChange": 8.242421640032983e-07,
+          "retainedPolynomialCurrentChange": 5.481180480604309e-07,
+          "openCurrentResidual": 4.441138119139177e-16,
+          "endCurrentResidual": 5.859285884700733e-14,
+          "currentMutation": 2.139295618348289,
+          "finiteOpenEndCurrentResidual": 4.445007005299083e-16,
+          "amplitudeResolutionGoal": 0.0001,
+          "currentResolutionGoal": 1e-06,
+          "sameOwnCaseCoordinates": true,
+          "scope": "Four actual finite-contrast and independent-grade first-w-derivative controls in their own case coordinates. Four finite and three continuum solves are new; the baseline continuum is reused. Positive regulator, approximate modal boundaries and omitted parent pure-second-order terms remain. One-sided closed-operator sensitivity, not a consistent new profile or isolated advection channel. Full transcript validation/publication follows these saved numerical results.",
+          "finiteCurrentScope": "open-only 4-by-4; three closed amplitudes retained separately",
+          "continuumCurrentScope": "full seven directions with closed/cross terms",
+          "newSolves": 0,
+          "newCurrentPackets": 0
+        }
+      },
+      "MATERIAL_ADVECTED__RHOBR_CONSTANT": {
+        "equationsAndMaps": {
+          "case": "MATERIAL_ADVECTED__RHOBR_CONSTANT",
+          "finiteMatrixScaledDifference": 0.0,
+          "finiteRank": 645,
+          "continuumRank": 645,
+          "finiteScaledResidual": 6.225612298071387e-16,
+          "continuumScaledResidual": 2.3105378329022314e-14,
+          "finiteCurrentRatios": [
+            0.9999999815345212,
+            0.9999998944103154,
+            0.9999999641007489,
+            0.9999999938467338
+          ],
+          "continuumMapResidual": 2.6645352591003757e-15,
+          "newSolves": 0,
+          "newQuadratureNodes": 0,
+          "wholeNativeFinitePrefix": {
+            "acceptedPreparedSystems": true,
+            "newSystemAssemblies": 0
+          }
+        },
+        "sensitivity": {
+          "finiteAmplitudeChange": 2.573439694505085e-07,
+          "finiteCurrentChange": 2.1004343220276667e-07,
+          "finiteFieldChange": 0.00020962878675799532,
+          "continuumAmplitudeChange": 1.5951985620073172e-07,
+          "retainedPolynomialCurrentChange": 2.2707007407696267e-07,
+          "openCurrentResidual": 4.440892098970627e-16,
+          "endCurrentResidual": 4.542766177132399e-15,
+          "currentMutation": 2.0962045861593075,
+          "finiteOpenEndCurrentResidual": 1.6667795129466247e-16,
+          "amplitudeResolutionGoal": 0.0001,
+          "currentResolutionGoal": 1e-06,
+          "sameOwnCaseCoordinates": true,
+          "scope": "Four actual finite-contrast and independent-grade first-w-derivative controls in their own case coordinates. Four finite and three continuum solves are new; the baseline continuum is reused. Positive regulator, approximate modal boundaries and omitted parent pure-second-order terms remain. One-sided closed-operator sensitivity, not a consistent new profile or isolated advection channel. Full transcript validation/publication follows these saved numerical results.",
+          "finiteCurrentScope": "open-only 4-by-4; three closed amplitudes retained separately",
+          "continuumCurrentScope": "full seven directions with closed/cross terms",
+          "newSolves": 0,
+          "newCurrentPackets": 0
+        }
+      }
+    },
+    "newSolves": 0,
+    "newQuadratureNodes": 0,
+    "newSystemAssemblies": 0,
+    "newCurrentPackets": 0,
+    "physicalTranscriptEmitted": false,
+    "validatorSha256": "27f9b33693c66f13fa40339ca17b6af32fa4a4fc12bf8f04e0138f49049a5c1e",
+    "validatorJoinSha256": "08540914241379b823fe2a8f4894ab575bfcbb5699e14f539757a3335fe3fdfa",
+    "wallSeconds": 161.1324076782912
+  },
+  "numericalValidationOutcome": {
+    "stage": "validate",
+    "command": [
+      "python",
+      "-u",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/response/production-acceptance/validate.py"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/response/production-acceptance/validate.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/response/production-acceptance/validate.stderr",
+    "startedUtc": "2026-09-20T22:50:42.624739+00:00",
+    "childPid": 2160925,
+    "status": "completed",
+    "exitCode": 0,
+    "wallSeconds": 162.41649617440999,
+    "stderrBytes": 0,
+    "finishedUtc": "2026-09-20T22:53:25.041275+00:00"
+  },
+  "numericalCheckpoint": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_first_jet_response_checkpoint.json"
 }

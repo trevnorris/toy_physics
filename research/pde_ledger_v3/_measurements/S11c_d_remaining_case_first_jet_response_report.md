@@ -92,3 +92,8 @@ reverse AST joins and unchanged coordinator bytecode pass; four actual changed
 tag/key/line controls reject. No individual transcript is emitted again. Durable
 validation progress and completed replay evidence precede later guards. Output
 acceptance and publication remain pending a clean final outcome.
+
+Saved-transcript validation launched from 68188f06 under supervisor 2176712
+and silent watcher 2176713, with one thread, 2 GiB and 900 seconds. The complete
+original sensitivity stream and bundle are immutable. This launch is not final
+output acceptance; the completion hook will continue after the actual outcome.

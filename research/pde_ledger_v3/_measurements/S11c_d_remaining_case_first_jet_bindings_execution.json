@@ -108,5 +108,17 @@
     "messageSha256": "0cff7e7c0d30b9dd2dfa9c3672f1f8bdf71c5e15020ba92a99a9bf958581b00d",
     "notifications": {}
   },
-  "launchRecordIsFinalAcceptance": false
+  "launchRecordIsFinalAcceptance": false,
+  "continuationStatus": "RESUMED_BY_USER",
+  "userPause": {
+    "requestedUtc": "2026-09-20T07:52:53.204101+00:00",
+    "record": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/pause.json",
+    "requireExplicitUserResume": true,
+    "runningComputationMayFinish": true
+  },
+  "userResume": {
+    "resumedUtc": "2026-09-20T21:36:03.004182+00:00",
+    "resumeRequest": "Looks good. Let's continue",
+    "priorPauseRecord": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/pause-history/pause-20260920.json"
+  }
 }

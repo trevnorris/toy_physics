@@ -1,5 +1,5 @@
 {
-  "status": "CASE_BINDINGS_RUNNING",
+  "status": "ACCEPTED_BINDINGS_AND_GRADES",
   "helper": "_measurements/S11c_d_remaining_case_bindings.py",
   "plan": "_measurements/S11c_d_remaining_case_bindings_plan.md",
   "focused": "_measurements/S11c_d_remaining_case_bindings_focused.json",
@@ -65,5 +65,33 @@
     "messageSha256": "2797fd9d16315aa32508bbf23a17c43b3888b9abb349064fc872f3aa1901e29e",
     "notifications": {}
   },
-  "implementationCommit": "64a54b86fb5c4c17b4456fde0be71dec71cbb1b9"
+  "implementationCommit": "64a54b86fb5c4c17b4456fde0be71dec71cbb1b9",
+  "outcome": {
+    "stage": "bindings_construct",
+    "command": [
+      "python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_bindings.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-bindings-20260920/production/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-bindings-20260920/production/bindings_construct.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-bindings-20260920/production/bindings_construct.stderr",
+    "startedUtc": "2026-09-20T01:04:07.165415+00:00",
+    "childPid": 841411,
+    "status": "completed",
+    "exitCode": 0,
+    "wallSeconds": 130.61986123211682,
+    "stderrBytes": 0,
+    "finishedUtc": "2026-09-20T01:06:17.785317+00:00"
+  },
+  "checksSha256": "c4c52b91708a5abdeea07f2b081a3204c59970aaa886a2d7c5ee31edf97096ad",
+  "acceptanceCheckpoint": "_measurements/S11c_d_remaining_case_bindings_checkpoint.json",
+  "acceptedSummary": {
+    "savedZeroResidualScalars": 6678,
+    "respondingCoefficientControls": 1351,
+    "exactReusedNumericalRows": 268,
+    "newNumericalRows": 32,
+    "baselineLocalMatrixResidual": 0
+  }
 }

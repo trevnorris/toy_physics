@@ -1,22 +1,32 @@
-# Remaining case bindings
+# Four-case bindings accepted
 
-The complete case factors are accepted at 885835a5 and published at 69b2259a.
-They contain 80/70/80/70 integral rows and 35/25/35/25 source amplitudes.
-The next constructor binds actual case operands and independent operator grades;
-no new quadrature, end modes or scattering solve is performed by this stage.
+All four source bindings and independent operator grades completed with exit zero
+and empty stderr in 130.62 seconds. The saved checks equal stdout. Acceptance
+verifies all 44 current/frozen sources, 23 original inputs, 21 copied inputs and
+2,045 artifacts, including unchanged pre/post packets. It replays 268 literal
+row reuse signatures and inspects 6,678 zero residual scalars and 1,351 responding
+coefficient controls. Both Gaussian derivative checks pass for all 120 sources.
+The independent full baseline local matrix is exactly identical.
 
-Focused wiring checks completed in 27.36 seconds on LAB_HELD/RHOBR_CONSTANT.
-Its actual generic source reproduces both approved Gaussian bindings and detects
-a coefficient mutation. The actual Abel source, transformed measure and density
-join the accepted width source. Twelve transitive native binder/metadata
-definitions are unchanged. The shared-expression comparator also passed the
-complete 300-address factor audit and changed-index/limit/assumption controls.
-These checks establish instrument wiring, not a new case response.
+The cases retain 80/70/80/70 rows, 35/25/35/25 source amplitudes and
+160/140/185/162 native cell terms. All six profiles remain in each binding.
+Their 1,467 grade records include 1,381 reused proofs and 86 new records;
+actual operator support is 00/10/01/11, while all source and momentum factors
+are grade-free. Complete term convolution establishes that distinction.
 
-Production is running under implementation 64a54b86. It first reproduces every baseline row/source signature and the full
-accepted local matrix. It then binds all three remaining cases, retaining every
-native term, source derivative and nested profile. Grade proofs and numerical
-rows are reusable only through exact expression/unit/field/limit joins. Every
-completed row, source pair, grade record and case packet is saved before later
-guards. The run has one native thread, a 2GiB ceiling and a 900-second initial
-budget. Runtime or representation errors are recovered from saved operands.
+Only 32 distinct numerical rows need integration: 9, 19 and 4 first appear in
+the three remaining cases. The final case reuses 20 of the other cases' new rows.
+No new row has three momentum variables. Reuse includes actual coefficients,
+source derivatives, fields, ordered limits, units and settings; wrong limits
+reject. Actual regulated denominator pairs and Abel width/measure joins pass.
+
+The supplemental acceptance reader initially compared a pickle tuple with its
+JSON list encoding. Its corrected comparison normalizes only JSON settings;
+original diagnostics remain saved. No binding, factor, proof or numerical grid
+was recomputed. Production and its physics were unchanged.
+
+This stage computes no quadrature, modes, currents or scattering response.
+Next evaluate the 32 new rows and assemble all four interior coefficient
+operators, preserving all 300 case addresses and 647 native terms. Fresh
+case-specific boundary/current joins and responses still follow. The positive
+regulator, approximate boundaries and practical reporting limits remain.

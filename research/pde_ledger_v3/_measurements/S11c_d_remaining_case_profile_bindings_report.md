@@ -27,3 +27,7 @@ completion/error watcher. Positive regulator, approximate boundaries and
 practical amplitude1e-4/current1e-6 resolution remain. The bump moment is not a
 bump scattering calculation. This is one selected form comparison per case,
 not a profile grid or broader numerical certification campaign.
+
+Implementation 275646e9 launched at 05:41 UTC under supervisor 940786 and
+silent watcher 940787. This is a dispatch record; final exit, complete saved
+bindings and all original/current source guards remain required.

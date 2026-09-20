@@ -1,5 +1,5 @@
 {
-  "status": "PREPARED_THREE_CASE_FORM_BINDINGS",
+  "status": "LAUNCHED_AWAITING_SILENT_COMPLETION",
   "acceptedUniform": "6a5b0872",
   "uniformPublication": "44de056f",
   "acceptedOriginalProfile": "8d0a6ed2",
@@ -10,5 +10,48 @@
     "addressSpaceBytes": 2147483648,
     "wallSeconds": 900
   },
-  "scope": "Three new case source bindings; baseline FORM packets and all symbolic grades reused. No integration or response yet."
+  "scope": "Three new case source bindings; baseline FORM packets and all symbolic grades reused. No integration or response yet.",
+  "launch": {
+    "launchedUtc": "2026-09-20T05:41:32.630387+00:00",
+    "command": [
+      "/usr/bin/python",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-profile-20260920/bindings",
+      "--stage",
+      "profile_bindings",
+      "--",
+      "python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_profile_bindings.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-profile-20260920/bindings/complete"
+    ],
+    "mode": "three-new-profile-form-bindings-with-baseline-reuse",
+    "supervisorPid": 940786,
+    "watcherPid": 940787,
+    "watcherDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-profile-20260920/bindings/completion-watcher",
+    "threadEnvironment": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1"
+    },
+    "implementationCommit": "275646e929da819d4d1d94b60835a66572ffe67a"
+  },
+  "helperSha256": "766e378679ebc942e5888927ea53fb6846368ce0b88eb730bc2f701ce7acba8e",
+  "launchArtifacts": {
+    "launch.py": {
+      "sha256": "925977ff6696265b6012896aed6881c9eba42f5d18a9166c5c2bac5f7cd5cd6a",
+      "bytes": 3229
+    },
+    "launch.json": {
+      "sha256": "e1f57a54cf7f30765c3a367edd408f8901c103f1b3014cf8108a2ce4f7bb7001",
+      "bytes": 1087
+    },
+    "continuation.txt": {
+      "sha256": "901ee507d9ac553970b901a29392d59cbfe6cbce020cb01a346090f506cde3f0",
+      "bytes": 4539
+    }
+  }
 }

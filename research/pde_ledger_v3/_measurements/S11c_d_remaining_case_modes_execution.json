@@ -1,5 +1,5 @@
 {
-  "status": "RUNNING",
+  "status": "ACCEPTED_FOUR_CASE_MODE_SUBSPACES",
   "helper": "_measurements/S11c_d_remaining_case_modes.py",
   "plan": "_measurements/S11c_d_remaining_case_modes_plan.md",
   "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-modes-20260920/production/complete",
@@ -9,7 +9,7 @@
     "memoryGiB": 2,
     "wallSeconds": 900
   },
-  "next": "Join all twelve actual root/current inputs, reuse exact accepted mode/adjoint packets, construct the missing RHOBR-right full subspaces and normalization. No new quadrature or current closure.",
+  "next": "Actual case-specific finite and independent-grade boundary/channel maps, followed by finite and continuum response solves using accepted interior matrices.",
   "launch": {
     "launchedUtc": "2026-09-20T03:20:26.033220+00:00",
     "command": [
@@ -62,5 +62,83 @@
     "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
     "messageSha256": "a50c55c06b7f4cbc6859ac53ea3d991c9c2af30017344dcdf85c12d4309de4fc",
     "notifications": {}
+  },
+  "acceptedCheckpoint": "_measurements/S11c_d_remaining_case_modes_checkpoint.json",
+  "finalOutcome": {
+    "stage": "modes_construct",
+    "command": [
+      "python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_modes.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-modes-20260920/production/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-modes-20260920/production/modes_construct.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-modes-20260920/production/modes_construct.stderr",
+    "startedUtc": "2026-09-20T03:20:26.066617+00:00",
+    "childPid": 890219,
+    "status": "completed",
+    "exitCode": 0,
+    "wallSeconds": 225.15382828190923,
+    "stderrBytes": 0,
+    "finishedUtc": "2026-09-20T03:24:11.220491+00:00"
+  },
+  "newModeSummary": {
+    "candidates": 18,
+    "basisDirections": 22,
+    "normalizedDirections": 4,
+    "signedCurrent": [
+      {
+        "index": 16,
+        "k": "0.78528126595931647",
+        "nullity": 2,
+        "signedCurrent": [
+          1.0,
+          1.0
+        ]
+      },
+      {
+        "index": 17,
+        "k": "-0.78528126595931647",
+        "nullity": 2,
+        "signedCurrent": [
+          -1.0,
+          -1.0
+        ]
+      }
+    ],
+    "arrayReplayMax": 0.0,
+    "residualMaxima": {
+      "RIGHT_KERNEL": 4.627844913952523e-15,
+      "LEFT_KERNEL": 6.1090729385603596e-15,
+      "RIGHT_BASIS": 1.1233024874091379e-15,
+      "LEFT_BASIS": 9.595296788550038e-16,
+      "RIGHT_PROJECTOR": 1.143049750917078e-15,
+      "LEFT_PROJECTOR": 9.988693832288384e-16,
+      "CONJUGATE_PENCIL": 4.965068432278558e-16,
+      "CONJUGATE_POWER_MAP": 0,
+      "FINITE_BALANCE": 5.3961032487586786e-05,
+      "CURRENT_HERMITIAN": 5.551115123125783e-17,
+      "ENERGY_HERMITIAN": 1.6700653894593713e-17,
+      "POWER_LEFT_SPLIT": 0,
+      "NORMAL_BALANCE_DERIVATIVE": 1.1802116302705774e-05,
+      "NORMAL_ROW_PAIRING_BRIDGE": 1.464821375527116e-14,
+      "NORMAL_CURRENT_ENERGY_RECONSTRUCTION": 1.1802116302753159e-05,
+      "FREQUENCY_BALANCE_DERIVATIVE": 3.038759521055387e-05,
+      "FREQUENCY_ROW_PAIRING_BRIDGE": 3.1401849173675503e-16,
+      "FREQUENCY_CURRENT_ENERGY_RECONSTRUCTION": 3.0387595211004093e-05,
+      "NORMALIZED_POWER_LEFT_SPLIT": 1.1632353773344954e-16,
+      "FREQUENCY_NORMALIZATION": 2.9253178497209164e-15,
+      "NORMALIZED_LEFT_KERNEL": 8.99166141104977e-14,
+      "INFINITE_CURRENT_HERMITIAN": 8.881784197001252e-16,
+      "CURRENT_DIAGONALIZATION": 4.440892098500626e-16,
+      "SIGNED_CURRENT_NORMALIZATION": 2.313991236616259e-16,
+      "FLUX_FREQUENCY_NORMALIZATION": 4.63573812755527e-16,
+      "FLUX_RIGHT_KERNEL": 8.917835839025965e-16,
+      "FLUX_LEFT_KERNEL": 4.748495350900344e-16
+    },
+    "unitPaths": 10528,
+    "pairingRetainedScalars": 802,
+    "remainderDiscrepancyMax": 5.822495566946322e-13
   }
 }

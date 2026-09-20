@@ -1,33 +1,42 @@
 # Remaining-case profile-FORM preparation
 
-All twelve uniform controls are accepted at 6a5b0872 and annex-published at
-44de056f. The next required form comparison holds the original material and
-case choices while applying the previously accepted w,m shape change to the
-three remaining cases. Baseline FORM is accepted at 8d0a6ed2 and published at
-8a6d01f6; none of its bindings, eighty numerical rows or responses is repeated.
+The original preparation failed after 7.78 seconds before any new binding or
+integration. Its final exit is 1 and stderr is preserved. The accepted native
+settings store innerOrders as the tuple (4,4), while JSON producer checks store
+[4,4]. The earlier input audit compared native packets but did not catch this
+manifest representation transition. All ten actual settings values agree.
 
-This source-only helper copies the four actual factor/grade/operator inputs and
-all original baseline FORM packets. It calls the unchanged accepted bind_case
-function only for the three missing shape bindings, preserving every generic
-source derivative, both Gaussian checks, Abel measure, actual field units and
-ordered limits. Independent symbolic grades are reused after complete original
-expression/address/unit joins; no grade extraction or fit is repeated.
+The local reader restores only that sequence representation, after complete
+key, ordered integer-value and literal remaining-setting checks. One helper and
+one manifest expression reverse exactly to the original whole-file AST. Sixteen
+actual changed-setting/type/key controls reject. No numerical setting, profile,
+physical input or native constructor changes.
 
-The read-only schema/input audit validates both actual producer check formats,
-all accepted source/input/artifact hashes, the full baseline field/equation
-units, quadrature settings and consumed signature shape. The helper compiles.
-The completed source, field, profile and settings signatures will determine
-which new numerical rows remain. Counts are inspected after the run rather than
-assumed from the unaltered profile census. No new quadrature, boundary map,
-mode/current closure or scattering solve occurs in this preparation.
+The 6.70-second saved-operand check passed with clean exit, empty stderr and
+checks/stdout identity: 74 original sources, 80 inputs and 49 unchanged copies;
+80 baseline FORM row matrices, 35 sources, the full local/binding operands,
+three complete layouts and their actual mass/direct-action/weight controls.
+The 129-node basis and all four derivative matrices exactly match the accepted
+finite system. No new binding, grade extraction, integration or solve occurred.
+The completed baseline view and row map are retained for the recovery.
 
-All partial rows, source comparisons and bindings are saved before later guards.
-Initial budget 900 seconds, one native thread and 2 GiB, with a silent local
-completion/error watcher. Positive regulator, approximate boundaries and
-practical amplitude1e-4/current1e-6 resolution remain. The bump moment is not a
-bump scattering calculation. This is one selected form comparison per case,
-not a profile grid or broader numerical certification campaign.
+The recovery copies the original 49 operands byte-for-byte and joins the exact
+helper/source transition. It reuses the completed baseline validation under the
+unchanged validator AST. Only loading and saved-baseline restoration are routed;
+the complete original coordinator bytecode and accepted native binder remain.
+It computes only the three unfinished FORM case bindings, retaining all source
+jets, Gaussian/Abel evidence, original grades, endpoint identities and actual
+row-reuse controls. Numerical production is not yet accepted or started.
 
-Implementation 275646e9 launched at 05:41 UTC under supervisor 940786 and
-silent watcher 940787. This is a dispatch record; final exit, complete saved
-bindings and all original/current source guards remain required.
+Baseline FORM remains accepted at 8d0a6ed2/published 8a6d01f6, and all twelve
+uniform controls at 6a5b0872/published 44de056f. No earlier binding, factorization,
+quadrature, mode/current construction or response is repeated. Inspect the
+actual new-row partition before constructing the remaining case FORM responses.
+Hold one native thread, 2 GiB, 900 seconds and a silent completion/error hook.
+Positive regulator, approximate boundaries, amplitude1e-4/current1e-6 resolution
+and the separate bump-moment limitation remain explicit.
+
+Recovery wiring passed in 12.13 seconds with clean final exit/stderr/checks
+identity: 77 sources, 136 inputs and 56 unchanged copies, including all 49
+original copies and both completed baseline outputs. All four case addresses
+remain; no new binding or other numerical construction ran in this check.

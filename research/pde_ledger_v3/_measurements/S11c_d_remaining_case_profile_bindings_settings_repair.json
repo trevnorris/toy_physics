@@ -1,0 +1,79 @@
+{
+  "status": "PASSED_ACTUAL_JSON_SETTINGS_RESTORE",
+  "wholeFileReverseAstJoin": true,
+  "changedCallSites": 1,
+  "oldHelperSha256": "766e378679ebc942e5888927ea53fb6846368ce0b88eb730bc2f701ce7acba8e",
+  "newHelperSha256": "9362bf715ab2c6a8f34dc56dd3fe72b47970d009520d5d01c3d1e948858fef7f",
+  "settingsMutationRejections": 16,
+  "settingsKeys": 10,
+  "originalSourceFiles": 74,
+  "originalInputPackets": 80,
+  "unchangedOriginalCopies": 49,
+  "baselineRows": 80,
+  "baselineSources": 35,
+  "fieldCoefficients": 129,
+  "sameDerivativeMatrices": 4,
+  "baselineViewSha256": "a8e0f046c736bffcd215290d1b2876051fa26a3cc2209fec904282dc2d0856e0",
+  "baselineRowsSha256": "ef9de13ab733d894af2eb63624ed5225d6ce808487d576a9e76dca5e7d72313e",
+  "baselineViewValidatorAstUnchanged": true,
+  "newBindings": 0,
+  "newQuadratureNodes": 0,
+  "newScatteringSolves": 0,
+  "wallSeconds": 6.702661640942097,
+  "checksSha256": "d7a1fc2d17f2aa07982289026af2fa49f2863938a627209c7daa3fc07030950b",
+  "diagnosticDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-profile-20260920/settings-repair",
+  "originalOutcome": {
+    "stage": "profile_bindings",
+    "command": [
+      "python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_profile_bindings.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-profile-20260920/bindings/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-profile-20260920/bindings/profile_bindings.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-profile-20260920/bindings/profile_bindings.stderr",
+    "startedUtc": "2026-09-20T05:41:32.662650+00:00",
+    "childPid": 940794,
+    "status": "failed",
+    "exitCode": 1,
+    "wallSeconds": 7.781591130420566,
+    "stderrBytes": 858,
+    "finishedUtc": "2026-09-20T05:41:40.444290+00:00"
+  },
+  "actualRegressionExitCode": 0,
+  "artifacts": {
+    "check.py": {
+      "sha256": "40711c95bba84b2c8e58278e468ab544eeaca24d8d810a12ab05b3969d25e8b2",
+      "bytes": 5672
+    },
+    "checks.json": {
+      "sha256": "d7a1fc2d17f2aa07982289026af2fa49f2863938a627209c7daa3fc07030950b",
+      "bytes": 888
+    },
+    "stdout": {
+      "sha256": "d7a1fc2d17f2aa07982289026af2fa49f2863938a627209c7daa3fc07030950b",
+      "bytes": 888
+    },
+    "stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "actual-settings.pickle": {
+      "sha256": "60b3e2c6c6709ceee6079c195ffeba3646f6200a0d2c20be0a53ac41a1f33fd0",
+      "bytes": 1974
+    },
+    "baseline-layout-evidence.pickle": {
+      "sha256": "6f8fccaa5ce788aee57c9a2311437454f69072008476186571a5b06d57b68b63",
+      "bytes": 331580
+    },
+    "baseline/baseline-binding-view.pickle": {
+      "sha256": "a8e0f046c736bffcd215290d1b2876051fa26a3cc2209fec904282dc2d0856e0",
+      "bytes": 568957
+    },
+    "baseline/baseline-profile-row-matrices.pickle": {
+      "sha256": "ef9de13ab733d894af2eb63624ed5225d6ce808487d576a9e76dca5e7d72313e",
+      "bytes": 21303723
+    }
+  }
+}

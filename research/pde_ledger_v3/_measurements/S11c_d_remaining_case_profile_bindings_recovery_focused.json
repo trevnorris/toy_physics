@@ -1,0 +1,44 @@
+{
+  "status": "PASSED_SAVED_PROFILE_BINDING_RECOVERY_WIRING",
+  "completeMainBytecodeIdentity": true,
+  "nativeBindCaseUnchanged": true,
+  "originalCopies": 49,
+  "allCopiedInputs": 56,
+  "sourceFiles": 77,
+  "inputPackets": 136,
+  "caseCount": 4,
+  "baselineRows": 80,
+  "baselineSources": 35,
+  "newBindings": 0,
+  "newQuadratures": 0,
+  "newModes": 0,
+  "newSolves": 0,
+  "helperSha256": "0145cce4358a7079d56b9238e4d72e868e5a610dc1feee60b4ecd91eb45c8249",
+  "manifestSha256": "f3f5f9e61eb4354d79aa68032ad36da280b355f0497ffe802d209240d477ba3b",
+  "wallSeconds": 12.133202174678445,
+  "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-profile-20260920/recovery-preflight",
+  "checksSha256": "aea89db637be41c45c980e8971c28962981773ed789d0f409a1a67ef59c41ed5",
+  "actualExitCode": 0,
+  "artifacts": {
+    "check.py": {
+      "sha256": "d4256faf870094be885dc2cf4bdf25a26db58d3ee3ed4eb5e7b5f071b87297a4",
+      "bytes": 1597
+    },
+    "checks.json": {
+      "sha256": "aea89db637be41c45c980e8971c28962981773ed789d0f409a1a67ef59c41ed5",
+      "bytes": 585
+    },
+    "stdout": {
+      "sha256": "aea89db637be41c45c980e8971c28962981773ed789d0f409a1a67ef59c41ed5",
+      "bytes": 585
+    },
+    "stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "complete/inputs.json": {
+      "sha256": "f3f5f9e61eb4354d79aa68032ad36da280b355f0497ffe802d209240d477ba3b",
+      "bytes": 51044
+    }
+  }
+}

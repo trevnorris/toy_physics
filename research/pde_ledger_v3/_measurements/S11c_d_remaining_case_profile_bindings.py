@@ -24,13 +24,24 @@ def accepted(path,status):
     return root,checks,cp
 
 
+def restore_settings(recorded, saved):
+    """Restore only the JSON sequence representation of actual inner orders."""
+    f.require(recorded.keys()==saved.keys(),'complete recorded/native settings keys')
+    orders=saved['innerOrders'];raw=recorded['innerOrders']
+    f.require(type(orders) is tuple and len(orders)==2 and all(type(v) is int and v>0 for v in orders),'actual native ordered inner quadrature')
+    f.require(type(raw) in (list,tuple) and len(raw)==2 and all(type(v) is int for v in raw) and tuple(raw)==orders,'same recorded ordered quadrature values')
+    restored=dict(recorded,innerOrders=tuple(raw))
+    f.require(native.same(restored,saved),'all actual restored settings identical')
+    return restored
+
+
 def load(base):
     origin,checks,bc=accepted(BCP,'ACCEPTED_BINDINGS_AND_GRADES');pr,pc,publication=accepted(PCP,'PUBLISHED_ANNEX_VERIFIED')
     pub=f.ROOT/publication['publication']['path'];f.require(pub.is_symlink() and f.digest(pub)==publication['publication']['sha256'],'actual accepted baseline FORM publication')
     pins=dict(checks['sourceFiles'])
     for n,v in pc['sourceFiles'].items():f.require(n not in pins or pins[n]==v,'same actual FORM source versions');pins[n]=v
     for p in (Path(__file__).resolve(),PLAN,BCP,PCP,Path(profile.__file__).resolve(),Path(matrices.__file__).resolve(),Path(modes.__file__).resolve()):pins[str(p.relative_to(f.ROOT))]=f.digest(p)
-    manifest={'runDirectory':str(base),'sourceFiles':pins,'inputPackets':{},'copiedInputs':{},'input':profile.shape_input(checks['input']),'baselineInput':checks['input'],'settings':checks['settings'],
+    manifest={'runDirectory':str(base),'sourceFiles':pins,'inputPackets':{},'copiedInputs':{},'input':profile.shape_input(checks['input']),'baselineInput':checks['input'],'settings':restore_settings(checks['settings'],f.unpickle(origin/'accepted-finite-system.pickle')['settings']),
       'scope':'Three new case profile-FORM source bindings; baseline FORM and original grades reused. No quadrature, modes or responses in this preparation.'}
     for root,source in ((origin,checks),(pr,pc)):
         manifest['inputPackets'][str(root/'checks.json')]=f.digest(root/'checks.json')

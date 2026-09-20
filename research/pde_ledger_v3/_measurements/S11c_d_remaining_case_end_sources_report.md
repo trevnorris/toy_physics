@@ -1,44 +1,33 @@
 # Remaining case end/current input sources
 
-All four interior operators are accepted at 2eed4150. The next source constructor
-computes the actual remaining-case end pencils and current-generator inputs
-before any mode or current reuse. It copies the accepted baseline source and
-uses unchanged native end-symbol methods on the three other source packets.
+Accepted: all four cases and twelve REFERENCE/LEFT/RIGHT backgrounds completed
+with exit zero, empty stderr and checks/stdout identity in 441.85 seconds.
+There are four exact generator-input families. All references agree, all left
+ends agree, and right ends split by density rule. Changing anchoring preserves
+the corresponding end inputs. Right RHOBR versus right RHO4 has 13 nonzero
+strong-symbol and 16 weak-symbol differences; its normalized virtual constraint
+and harmonic energy agree, but all five mass-row entries differ. Actual current
+closure therefore still needs the changed mass input.
 
-The current input wrapper contains the literal native constructor prefix through
-harmonic energy and the homogeneous material constraint. Its AST join and both
-accepted baseline current-input comparisons precede new-case use. No virtual
-variation, current matrix, root isolation, quadrature or scattering solve is
-performed by this stage. Complete current and boundary construction remains work.
+All fresh strong/weak/curl symbols join their own historical source packets,
+with full units and endpoint bindings. Both baseline current-prefix comparisons
+have 11 zero scalars and a responding energy mutation. Twelve coupling blocks
+per direction are computed zero for these backgrounds; this is not a general
+inhomogeneous decoupling result. No new modes, current matrices or scattering
+response is claimed by this source stage.
 
-The saved original-cache diagnostic retains all twelve actual symbol pairs.
-Anchoring-only differences vanish there; the density rule changes 13 strong and
-16 weak entries before actual endpoint substitution. The full stored energy
-source lists are identical, but selecting their anchoring component and deriving
-the mass constraint are still required. This diagnostic does not predetermine
-the final number of reusable current/end families.
+All current/frozen sources, original/copy hashes and physical pairs pass the
+saved-operand acceptance validator. The three new source snapshots precede
+current-field registration; each later unit dictionary adds exactly 60 entries.
+The validator reproduces those registrations from the native initializer and
+saved field/parameter maps, with every original unit unchanged. Earlier overly
+strict local snapshot comparisons and their logs remain preserved. No source
+construction or energy reduction was repeated for this check.
 
-The original production stopped before any end construction at 29.20 seconds.
-The historical producer guard rejected the brief's already-approved pole and
-practical-acceptance revisions. Thirteen copied input packets remain unchanged.
-The repair preserves original, pole-corrected and practical document versions,
-complete diffs, both approval checkpoints and exact native constructor/export
-joins. It changes provenance handling only; no equation or numerical input is
-rebased. Both historical accepted current-source packets remain available and
-must join the actual generator inputs before reuse.
-
-Focused provenance validation passed in 2.61 seconds with empty stderr and checks/stdout identity. It rejects five actual source/hash mutations, preserves all 33 original files, verifies both complete native current-class joins and the unchanged 17-statement prefix. No end or energy computation ran during this repair check. The retry is prepared with the original one-thread/2GiB/900-second limits.
-
-Retry launched under 359789ca with supervisor 861041 and silent watcher 861042. Source results remain unaccepted until the final outcome and saved-operand checks pass.
-
-Retry01 passed the historical/current provenance joins and copied all 27 inputs,
-then stopped at 37.07 seconds during the first native current-input prefix. The
-compiled wrapper had captured PHYSICAL_METADATA=None before restore_context
-installed the actual case's units. No current-input packet or new end symbol
-was completed. The baseline source copy remains byte-identical. A one-assignment
-routing repair refreshes that global from the live native context immediately
-before the unchanged prefix; original sources and all packets are preserved.
-
-The repair check passed in 34.28 seconds with empty stderr and checks/stdout identity. All four actual restored case contexts reach the wrapper through the same native units object; each stale-context control fails. The whole-file AST reverses exactly after removing the single assignment. All 105 original files, 27 copied inputs and the 13 earlier copies are unchanged. No end-symbol or energy construction was repeated by these routing checks.
-
-Retry02 launched under 80212f80 with supervisor 863504 and silent watcher 863505, one thread/2GiB/900seconds. No new end/current-input result is accepted until final validation.
+The original document-provenance stop and stale metadata-context stop are
+superseded by validated repairs 359789ca and 80212f80. All original files and
+27 copied inputs remain immutable, including the earlier 13 copies. The native
+engine, 17-statement current prefix, physical input and pinned exports remain
+unchanged. Complete native current closures, full subspaces, boundary/channel
+maps and remaining finite/continuum responses follow with exact input joins.
+Positive regulator, approximate boundaries and unresolved tiny signals remain.

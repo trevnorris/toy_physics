@@ -23,10 +23,12 @@ acoustic-density and pairing-matrix mutations. No new closure or pairing was
 computed. Exact existing/requested payload pairs and hashes are saved. Acceptance
 is recorded in `S11c_d_remaining_case_currents_checkpoint_focused.json`.
 
-The all-case recovery is prepared to compute only the one new RHOBR-right
+The all-case recovery is running under `e6979ff5` to compute only the one new RHOBR-right
 acoustic/pairing family, with one thread, 2 GiB, 900 seconds and a silent watcher.
 Full candidate subspaces, current normalization, boundary/channel maps,
 finite/continuum responses, controls, scoped case poles and final exports remain.
 Positive regulator, approximate boundaries and unresolved tiny signals stay
 explicit. The baseline 32-point contour is closed without a resolved candidate;
 no doubling or certified empty spectrum is claimed.
+
+Recovery supervisor 884066 and silent watcher 884067 own this attempt. The original production directory remains immutable. No new current result is accepted until the recovery supervisor and all final guards complete successfully.

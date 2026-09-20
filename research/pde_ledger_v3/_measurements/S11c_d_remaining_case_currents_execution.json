@@ -1,5 +1,5 @@
 {
-  "status": "CHECKPOINT_RECOVERY_READY",
+  "status": "SAVED_PACKET_CURRENT_RECOVERY_RUNNING",
   "helper": "_measurements/S11c_d_remaining_case_currents.py",
   "plan": "_measurements/S11c_d_remaining_case_currents_plan.md",
   "sourceAcceptance": "103c52d5",
@@ -8,7 +8,7 @@
   "addressSpaceBytes": 2147483648,
   "initialWallBudgetSeconds": 900,
   "scope": "Actual complete current-closure reuse joins before one new RHOBR-right closure and pairing; no quadrature or mode solve.",
-  "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/production/complete",
+  "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/recovery-01/complete",
   "launchGuardCorrection": {
     "status": "LAUNCH_ARGUMENT_GUARD_STOPPED_BEFORE_CHILD",
     "exitCode": 1,
@@ -161,59 +161,6 @@
     "messageSha256": "8e038f7efac614f86ea5a94f1bebe5d4ddf4861fc84739d6aba8f3cb8d175279",
     "notifications": {}
   },
-  "launch": {
-    "launchedUtc": "2026-09-20T02:48:23.807694+00:00",
-    "command": [
-      "/usr/bin/python",
-      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
-      "--run-root",
-      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/production",
-      "--stage",
-      "currents_construct",
-      "--",
-      "python",
-      "-u",
-      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_currents_production.py",
-      "--run-directory",
-      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/production/complete"
-    ],
-    "mode": "one-new-actual-acoustic-and-pairing-family",
-    "supervisorPid": 880140,
-    "watcherPid": 880141,
-    "watcherDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/production/completion-watcher",
-    "threadEnvironment": {
-      "OPENBLAS_NUM_THREADS": "1",
-      "OMP_NUM_THREADS": "1",
-      "MKL_NUM_THREADS": "1",
-      "NUMEXPR_NUM_THREADS": "1"
-    },
-    "implementationCommit": "6337fffa84217c3dc1ab31d835d83c3209b3fdeb"
-  },
-  "activeAtLaunch": {
-    "stage": "currents_construct",
-    "command": [
-      "python",
-      "-u",
-      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_currents_production.py",
-      "--run-directory",
-      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/production/complete"
-    ],
-    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/production/currents_construct.stdout",
-    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/production/currents_construct.stderr",
-    "startedUtc": "2026-09-20T02:48:23.839539+00:00",
-    "childPid": 880147,
-    "status": "running"
-  },
-  "watcherAtLaunch": {
-    "status": "waiting",
-    "watcherPid": 880141,
-    "jobPid": 880140,
-    "thread": "01a08c53-295c-70f0-baaf-353db1745867",
-    "startedUtc": "2026-09-20T02:48:23.843384+00:00",
-    "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
-    "messageSha256": "b8576a6c3594beb24bc2faa1212f71939d0267b636a4d667a9f4230cbe93ad89",
-    "notifications": {}
-  },
   "implementationCommit": "6337fffa84217c3dc1ab31d835d83c3209b3fdeb",
   "failedProductionOutcome": {
     "stage": "currents_construct",
@@ -257,5 +204,112 @@
   },
   "recoveryHelper": "_measurements/S11c_d_remaining_case_currents_checkpoint_recover.py",
   "recoveryPlan": "_measurements/S11c_d_remaining_case_currents_checkpoint_plan.md",
-  "recoveryDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/recovery-01/complete"
+  "recoveryDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/recovery-01/complete",
+  "originalProductionLaunch": {
+    "launchedUtc": "2026-09-20T02:48:23.807694+00:00",
+    "command": [
+      "/usr/bin/python",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/production",
+      "--stage",
+      "currents_construct",
+      "--",
+      "python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_currents_production.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/production/complete"
+    ],
+    "mode": "one-new-actual-acoustic-and-pairing-family",
+    "supervisorPid": 880140,
+    "watcherPid": 880141,
+    "watcherDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/production/completion-watcher",
+    "threadEnvironment": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1"
+    },
+    "implementationCommit": "6337fffa84217c3dc1ab31d835d83c3209b3fdeb"
+  },
+  "originalProductionActiveAtLaunch": {
+    "stage": "currents_construct",
+    "command": [
+      "python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_currents_production.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/production/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/production/currents_construct.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/production/currents_construct.stderr",
+    "startedUtc": "2026-09-20T02:48:23.839539+00:00",
+    "childPid": 880147,
+    "status": "running"
+  },
+  "originalProductionWatcherAtLaunch": {
+    "status": "waiting",
+    "watcherPid": 880141,
+    "jobPid": 880140,
+    "thread": "01a08c53-295c-70f0-baaf-353db1745867",
+    "startedUtc": "2026-09-20T02:48:23.843384+00:00",
+    "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
+    "messageSha256": "b8576a6c3594beb24bc2faa1212f71939d0267b636a4d667a9f4230cbe93ad89",
+    "notifications": {}
+  },
+  "launch": {
+    "launchedUtc": "2026-09-20T02:59:00.271982+00:00",
+    "command": [
+      "/usr/bin/python",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/recovery-01",
+      "--stage",
+      "currents_construct",
+      "--",
+      "python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_currents_checkpoint_recover.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/recovery-01/complete"
+    ],
+    "mode": "one-new-actual-acoustic-and-pairing-family",
+    "supervisorPid": 884066,
+    "watcherPid": 884067,
+    "watcherDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/recovery-01/completion-watcher",
+    "threadEnvironment": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1"
+    },
+    "implementationCommit": "e6979ff5f664a69d67f859ba27a86d309eb005b9"
+  },
+  "activeAtLaunch": {
+    "stage": "currents_construct",
+    "command": [
+      "python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_currents_checkpoint_recover.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/recovery-01/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/recovery-01/currents_construct.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/recovery-01/currents_construct.stderr",
+    "startedUtc": "2026-09-20T02:59:00.304090+00:00",
+    "childPid": 884072,
+    "status": "running"
+  },
+  "watcherAtLaunch": {
+    "status": "waiting",
+    "watcherPid": 884067,
+    "jobPid": 884066,
+    "thread": "01a08c53-295c-70f0-baaf-353db1745867",
+    "startedUtc": "2026-09-20T02:59:00.308042+00:00",
+    "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
+    "messageSha256": "f9ec2c3a4ba5d382cd8cdf2161e03364cbcffc80cf70698650755c0eb7b8c9e9",
+    "notifications": {}
+  },
+  "checkpointRepairCommit": "e6979ff5f664a69d67f859ba27a86d309eb005b9"
 }

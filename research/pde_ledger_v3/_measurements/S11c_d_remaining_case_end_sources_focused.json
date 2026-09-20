@@ -1,8 +1,10 @@
 {
   "status": "NATIVE_PREFIX_AST_CHECKED",
-  "helperSha256": "e2e97e5ec2525a35336a418df251f722c3371af3357db0910dbb3724d3cc7cf2",
+  "helperSha256": "c264f5641a7ce511abe802487655b7362eda87f5e6c3845e6f2c9b8ff37049d6",
   "nativeFunctionSha256": "1e7348d229c65e43d62f2ff201b835c16e398e3b22853f766c1be9742f6a969e",
   "nativePrefixAstSha256": "50ef593c113e7034b477ee8b8a42da1405a07aa785fd254f1cdf49ccce424649",
   "nativePrefixStatements": 17,
-  "scope": "Exact native prefix wiring only; both actual baseline current-source comparisons execute before new-case use in the supervised constructor."
+  "scope": "Exact native prefix wiring only; both actual baseline current-source comparisons execute before new-case use in the supervised constructor.",
+  "provenanceRepairChecksSha256": "701de3716c88a8bf800115a1a85718da51efb6f4a3e06f82ae83fb8fbc893141",
+  "provenanceRepairChecks": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-ends-20260920/provenance-repair/checks.json"
 }

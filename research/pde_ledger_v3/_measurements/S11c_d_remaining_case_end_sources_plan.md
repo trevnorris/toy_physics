@@ -58,3 +58,11 @@ for bounded pole work. The baseline 32-point search remains closed without a
 resolved candidate; no doubling campaign or certified empty-spectrum claim.
 Practical 1%/amplitude1e-4/current1e-6 targets, positive finite regulator,
 approximate modal boundaries and unresolved tiny reflection/loss remain.
+
+The provenance repair retains the historical producer documents and explicitly
+joins the authorized nonlinearPoleV2 and exploratoryAcceptanceV1 revisions.
+Complete original/intermediate/current texts and diffs remain in durable scratch.
+All physical exports and the transitive native constructor definitions must still
+match. Retry in a fresh directory; the failed run produced only thirteen copied
+inputs and no end symbols or energy-prefix operands. No completed physics is
+repeated by this retry.

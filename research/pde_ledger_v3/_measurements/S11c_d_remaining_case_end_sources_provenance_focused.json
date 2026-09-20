@@ -1,0 +1,162 @@
+{
+  "status": "PASSED_PROVENANCE_REPAIR",
+  "wholeFileReverseAstJoin": true,
+  "reversedLoadStatements": [
+    18,
+    28,
+    30
+  ],
+  "originalHelperSha256": "e2e97e5ec2525a35336a418df251f722c3371af3357db0910dbb3724d3cc7cf2",
+  "helperSha256": "c264f5641a7ce511abe802487655b7362eda87f5e6c3845e6f2c9b8ff37049d6",
+  "producerJoins": {
+    "sourceJoins": {
+      "scripts/ledger_fold.py": {
+        "originalSha256": "97da78c6631c09e5575dd14511760506f1ac08771cf07948978004e92f0b2333",
+        "currentSha256": "97da78c6631c09e5575dd14511760506f1ac08771cf07948978004e92f0b2333",
+        "approvedDocumentTransition": false
+      },
+      "directives/S11c_d_SHARED_PHYSICS.md": {
+        "originalSha256": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5",
+        "currentSha256": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5",
+        "approvedDocumentTransition": false
+      },
+      "scripts/S11c_b_exports.py": {
+        "originalSha256": "3c6555f90a85382a5e96f3f961f0e36a4875d9259fe1be947fa8e683669b7084",
+        "currentSha256": "3c6555f90a85382a5e96f3f961f0e36a4875d9259fe1be947fa8e683669b7084",
+        "approvedDocumentTransition": false
+      },
+      "scripts/S11c_c1_exports.py": {
+        "originalSha256": "a5353b86dc526fd1b56734fdbdf7dc7f42387a3195ab4de84e8994f751871cdc",
+        "currentSha256": "a5353b86dc526fd1b56734fdbdf7dc7f42387a3195ab4de84e8994f751871cdc",
+        "approvedDocumentTransition": false
+      },
+      "scripts/S11c_c2_exports.py": {
+        "originalSha256": "2ba5ed487b84ecb98290df6f1650fa6210fe2784cfa02a0f3cff96cd718411cd",
+        "currentSha256": "2ba5ed487b84ecb98290df6f1650fa6210fe2784cfa02a0f3cff96cd718411cd",
+        "approvedDocumentTransition": false
+      },
+      "directives/S11c_d_sympy_build_PROGRAM_BRIEF.md": {
+        "originalSha256": "64d4acaf2b207ef5f8d46dd9f0d4a2eccdb73a6ecce25e0f7d5afd0aee453bed",
+        "currentSha256": "1d9a48a043c68a6b38a1951f69b82a3ea8e97f4b7bb1d8e3f4c028f03290b380",
+        "approvedDocumentTransition": true
+      },
+      "directives/S11c_d_sympy_build_directive.md": {
+        "originalSha256": "455294b7fd0995bb1bb5fc9a3017c34b76dbb54f41fbbe93d6d4b82f86de8851",
+        "currentSha256": "0e0f8317cf4cbb9f0470a47323211ed6bc7dbcb20d1eff4a1ae79026f43fb6d7",
+        "approvedDocumentTransition": true
+      }
+    },
+    "documentTransitions": {
+      "directives/S11c_d_sympy_build_PROGRAM_BRIEF.md": {
+        "versions": {
+          "original": {
+            "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-ends-20260920/provenance-repair/original-S11c_d_sympy_build_PROGRAM_BRIEF.md",
+            "sha256": "64d4acaf2b207ef5f8d46dd9f0d4a2eccdb73a6ecce25e0f7d5afd0aee453bed",
+            "commit": "d9d4787ec3ea769fce8cb817985d00bdb2a4d971"
+          },
+          "pole": {
+            "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-ends-20260920/provenance-repair/pole-S11c_d_sympy_build_PROGRAM_BRIEF.md",
+            "sha256": "889e338feae14b5b1e81a36a706301566d2b3a8cc89024bd26afcd2ccfa51341",
+            "commit": "7c98b8ee4eb4d1e0ebecb2b3c192ae4d9a116464"
+          },
+          "practical": {
+            "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-ends-20260920/provenance-repair/practical-S11c_d_sympy_build_PROGRAM_BRIEF.md",
+            "sha256": "1d9a48a043c68a6b38a1951f69b82a3ea8e97f4b7bb1d8e3f4c028f03290b380",
+            "commit": "30440cacbcdf74d63ed53af9919823cddbc19397"
+          }
+        },
+        "diffs": {
+          "originalTopole": {
+            "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-ends-20260920/provenance-repair/original-to-pole-S11c_d_sympy_build_PROGRAM_BRIEF.md.diff",
+            "sha256": "bde8316aeee3e1beba5000fdaf37ecbeb4f6666a62017204aef3a6509f765a93"
+          },
+          "poleTopractical": {
+            "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-ends-20260920/provenance-repair/pole-to-practical-S11c_d_sympy_build_PROGRAM_BRIEF.md.diff",
+            "sha256": "dc867aae59d39bf086b57930de18db17cc4c379c0668d84afee3189512fb06d2"
+          }
+        }
+      },
+      "directives/S11c_d_sympy_build_directive.md": {
+        "versions": {
+          "original": {
+            "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-ends-20260920/provenance-repair/original-S11c_d_sympy_build_directive.md",
+            "sha256": "455294b7fd0995bb1bb5fc9a3017c34b76dbb54f41fbbe93d6d4b82f86de8851",
+            "commit": "d9d4787ec3ea769fce8cb817985d00bdb2a4d971"
+          },
+          "pole": {
+            "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-ends-20260920/provenance-repair/pole-S11c_d_sympy_build_directive.md",
+            "sha256": "5f64991f50803f3bd2728bc18859d536ec996166dafa994f197224d8b7213024",
+            "commit": "7c98b8ee4eb4d1e0ebecb2b3c192ae4d9a116464"
+          },
+          "practical": {
+            "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-ends-20260920/provenance-repair/practical-S11c_d_sympy_build_directive.md",
+            "sha256": "0e0f8317cf4cbb9f0470a47323211ed6bc7dbcb20d1eff4a1ae79026f43fb6d7",
+            "commit": "30440cacbcdf74d63ed53af9919823cddbc19397"
+          }
+        },
+        "diffs": {
+          "originalTopole": {
+            "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-ends-20260920/provenance-repair/original-to-pole-S11c_d_sympy_build_directive.md.diff",
+            "sha256": "d11f52215c63ea1a0ac0512717cacf01167ea312e3e5a321257c4f1cf0823211"
+          },
+          "poleTopractical": {
+            "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-ends-20260920/provenance-repair/pole-to-practical-S11c_d_sympy_build_directive.md.diff",
+            "sha256": "58fcde62b5a60b42eddd8b87e9a71891fa566bca9a7617b843cf4c8f83f9241c"
+          }
+        }
+      }
+    },
+    "authorityCheckpoints": {
+      "_measurements/S11c_d_nonlinear_pole_repair_checkpoint.json": "dd2b421e8605c680cc831b3ee67d0554a80b2ebbdc55fa839f2f33168d0f583f",
+      "_measurements/S11c_d_exploratory_acceptance_checkpoint.json": "43a912f717c4879994fe40a1302c1c3abd26601319226bd4c2216880e480d612"
+    },
+    "dependencyDisposition": "The original producer retains its historical documents and source hashes. New work carries the user-approved nonlinearPoleV2 correction and exploratoryAcceptanceV1 sequencing/precision change. The actual entry-point transitions are preserved as original, pole-corrected and practical revisions with complete diffs and accepted checkpoint joins. No physical equation, input or pinned export is replaced. Exact transitive native constructor joins remain mandatory. This end/current-input stage calls no pole constructor and constructs no current matrix or scattering response."
+  },
+  "nativeDefinitionJoins": {
+    "ChannelInput": true,
+    "ConstantEndPencil": true,
+    "ReducedPencil": true,
+    "UniformSlabCurrent": true,
+    "carrier_fingerprint": true,
+    "cas": true,
+    "dag_free_symbols": true,
+    "dag_size": true,
+    "dag_substitute": true,
+    "emit": true,
+    "leaves": true,
+    "map_leaves": true,
+    "memo_xreplace": true,
+    "named": true,
+    "physical": true,
+    "polynomial_terms": true
+  },
+  "currentSourceInputs": {
+    "left": {
+      "packet": "/tmp/s11c-thickness-coordinate-20260914/end_source_left/objects.pickle",
+      "sha256": "f3409cc92263880f0d0e2c941f1884ed5ae0aa984f8bf6ea97b169060edcd51d",
+      "wholeNativeClassAstIdentical": true
+    },
+    "right": {
+      "packet": "/tmp/s11c-thickness-coordinate-20260914/end_source_right/objects.pickle",
+      "sha256": "56825f670042c21e56ac6b02ce553b90227158704b4fb40c6b9f8f8c03071b1a",
+      "wholeNativeClassAstIdentical": true
+    }
+  },
+  "originalFilesUnchanged": 33,
+  "originalInputCopies": 13,
+  "rejectedActualSourceMutations": [
+    "directives/S11c_d_sympy_build_PROGRAM_BRIEF.md",
+    "directives/S11c_d_sympy_build_directive.md",
+    "scripts/S11c_c2_exports.py",
+    "directives/S11c_d_NONLINEAR_POLE_CONTRACT.md",
+    "original-producer-document"
+  ],
+  "prefixAst": {
+    "nativeFunctionSha256": "1e7348d229c65e43d62f2ff201b835c16e398e3b22853f766c1be9742f6a969e",
+    "nativePrefixAstSha256": "50ef593c113e7034b477ee8b8a42da1405a07aa785fd254f1cdf49ccce424649",
+    "nativePrefixStatements": 17,
+    "stopBefore": "virtual variation; no current matrix is reconstructed by this prefix"
+  },
+  "newSymbolOrEnergyConstructions": 0,
+  "wallSeconds": 2.60828095395118
+}

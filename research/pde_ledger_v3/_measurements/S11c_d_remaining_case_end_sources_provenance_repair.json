@@ -1,0 +1,139 @@
+{
+  "status": "DOCUMENT_TRANSITIONS_RECORDED",
+  "originalRun": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-ends-20260920/production",
+  "originalOutcome": {
+    "stage": "ends_construct",
+    "command": [
+      "python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_end_sources.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-ends-20260920/production/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-ends-20260920/production/ends_construct.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-ends-20260920/production/ends_construct.stderr",
+    "startedUtc": "2026-09-20T01:39:40.576559+00:00",
+    "childPid": 853355,
+    "status": "failed",
+    "exitCode": 1,
+    "wallSeconds": 29.204599340446293,
+    "stderrBytes": 919,
+    "finishedUtc": "2026-09-20T01:40:09.781197+00:00"
+  },
+  "originalHelper": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-ends-20260920/provenance-repair/original-helper.py",
+    "sha256": "e2e97e5ec2525a35336a418df251f722c3371af3357db0910dbb3724d3cc7cf2"
+  },
+  "documentTransitions": {
+    "directives/S11c_d_sympy_build_PROGRAM_BRIEF.md": {
+      "versions": {
+        "original": {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-ends-20260920/provenance-repair/original-S11c_d_sympy_build_PROGRAM_BRIEF.md",
+          "sha256": "64d4acaf2b207ef5f8d46dd9f0d4a2eccdb73a6ecce25e0f7d5afd0aee453bed",
+          "commit": "d9d4787ec3ea769fce8cb817985d00bdb2a4d971"
+        },
+        "pole": {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-ends-20260920/provenance-repair/pole-S11c_d_sympy_build_PROGRAM_BRIEF.md",
+          "sha256": "889e338feae14b5b1e81a36a706301566d2b3a8cc89024bd26afcd2ccfa51341",
+          "commit": "7c98b8ee4eb4d1e0ebecb2b3c192ae4d9a116464"
+        },
+        "practical": {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-ends-20260920/provenance-repair/practical-S11c_d_sympy_build_PROGRAM_BRIEF.md",
+          "sha256": "1d9a48a043c68a6b38a1951f69b82a3ea8e97f4b7bb1d8e3f4c028f03290b380",
+          "commit": "30440cacbcdf74d63ed53af9919823cddbc19397"
+        }
+      },
+      "diffs": {
+        "originalTopole": {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-ends-20260920/provenance-repair/original-to-pole-S11c_d_sympy_build_PROGRAM_BRIEF.md.diff",
+          "sha256": "bde8316aeee3e1beba5000fdaf37ecbeb4f6666a62017204aef3a6509f765a93"
+        },
+        "poleTopractical": {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-ends-20260920/provenance-repair/pole-to-practical-S11c_d_sympy_build_PROGRAM_BRIEF.md.diff",
+          "sha256": "dc867aae59d39bf086b57930de18db17cc4c379c0668d84afee3189512fb06d2"
+        }
+      }
+    },
+    "directives/S11c_d_sympy_build_directive.md": {
+      "versions": {
+        "original": {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-ends-20260920/provenance-repair/original-S11c_d_sympy_build_directive.md",
+          "sha256": "455294b7fd0995bb1bb5fc9a3017c34b76dbb54f41fbbe93d6d4b82f86de8851",
+          "commit": "d9d4787ec3ea769fce8cb817985d00bdb2a4d971"
+        },
+        "pole": {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-ends-20260920/provenance-repair/pole-S11c_d_sympy_build_directive.md",
+          "sha256": "5f64991f50803f3bd2728bc18859d536ec996166dafa994f197224d8b7213024",
+          "commit": "7c98b8ee4eb4d1e0ebecb2b3c192ae4d9a116464"
+        },
+        "practical": {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-ends-20260920/provenance-repair/practical-S11c_d_sympy_build_directive.md",
+          "sha256": "0e0f8317cf4cbb9f0470a47323211ed6bc7dbcb20d1eff4a1ae79026f43fb6d7",
+          "commit": "30440cacbcdf74d63ed53af9919823cddbc19397"
+        }
+      },
+      "diffs": {
+        "originalTopole": {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-ends-20260920/provenance-repair/original-to-pole-S11c_d_sympy_build_directive.md.diff",
+          "sha256": "d11f52215c63ea1a0ac0512717cacf01167ea312e3e5a321257c4f1cf0823211"
+        },
+        "poleTopractical": {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-ends-20260920/provenance-repair/pole-to-practical-S11c_d_sympy_build_directive.md.diff",
+          "sha256": "58fcde62b5a60b42eddd8b87e9a71891fa566bca9a7617b843cf4c8f83f9241c"
+        }
+      }
+    }
+  },
+  "evidenceFiles": {
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-ends-20260920/provenance-repair/original-S11c_d_sympy_build_PROGRAM_BRIEF.md": "64d4acaf2b207ef5f8d46dd9f0d4a2eccdb73a6ecce25e0f7d5afd0aee453bed",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-ends-20260920/provenance-repair/pole-S11c_d_sympy_build_PROGRAM_BRIEF.md": "889e338feae14b5b1e81a36a706301566d2b3a8cc89024bd26afcd2ccfa51341",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-ends-20260920/provenance-repair/practical-S11c_d_sympy_build_PROGRAM_BRIEF.md": "1d9a48a043c68a6b38a1951f69b82a3ea8e97f4b7bb1d8e3f4c028f03290b380",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-ends-20260920/provenance-repair/original-to-pole-S11c_d_sympy_build_PROGRAM_BRIEF.md.diff": "bde8316aeee3e1beba5000fdaf37ecbeb4f6666a62017204aef3a6509f765a93",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-ends-20260920/provenance-repair/pole-to-practical-S11c_d_sympy_build_PROGRAM_BRIEF.md.diff": "dc867aae59d39bf086b57930de18db17cc4c379c0668d84afee3189512fb06d2",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-ends-20260920/provenance-repair/original-S11c_d_sympy_build_directive.md": "455294b7fd0995bb1bb5fc9a3017c34b76dbb54f41fbbe93d6d4b82f86de8851",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-ends-20260920/provenance-repair/pole-S11c_d_sympy_build_directive.md": "5f64991f50803f3bd2728bc18859d536ec996166dafa994f197224d8b7213024",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-ends-20260920/provenance-repair/practical-S11c_d_sympy_build_directive.md": "0e0f8317cf4cbb9f0470a47323211ed6bc7dbcb20d1eff4a1ae79026f43fb6d7",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-ends-20260920/provenance-repair/original-to-pole-S11c_d_sympy_build_directive.md.diff": "d11f52215c63ea1a0ac0512717cacf01167ea312e3e5a321257c4f1cf0823211",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-ends-20260920/provenance-repair/pole-to-practical-S11c_d_sympy_build_directive.md.diff": "58fcde62b5a60b42eddd8b87e9a71891fa566bca9a7617b843cf4c8f83f9241c"
+  },
+  "originalFiles": {
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-ends-20260920/production/active.json": "7f4e1a85129387db6cca78531aaee08181c3cb1c6a2314f7d836e989ccd86ec5",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-ends-20260920/production/ends_construct.invocation.json": "7f4e1a85129387db6cca78531aaee08181c3cb1c6a2314f7d836e989ccd86ec5",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-ends-20260920/production/supervisor.stdout": "7f4e1a85129387db6cca78531aaee08181c3cb1c6a2314f7d836e989ccd86ec5",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-ends-20260920/production/normalization.lock": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-ends-20260920/production/ends_construct.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-ends-20260920/production/continuation.txt": "0a12634e160b51a9ce3b1e82ee11218ed5cea0c9407df57e751047b7c0ea176a",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-ends-20260920/production/process-census.txt": "826286f1d80efacd743c1389b578bc7d0088f3072c291a853f5e42e4d10e9f58",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-ends-20260920/production/supervisor.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-ends-20260920/production/launch.py": "2c41ccf0ac302422c4f0c0b062da9f90a1c646f2d0ca933e37b1eea1b98db757",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-ends-20260920/production/ends_construct.stderr": "62becab8fe58a509a961c2fa6c3df202778f204802f6759212d78c4a57ce2b6e",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-ends-20260920/production/launch.json": "9aef5e7592895e3624cf417d143c5086472f0f9dd3901dff30360752a93aa4c8",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-ends-20260920/production/complete/accepted-uniform-source.pickle": "a482c5023d16558f52b20d0a347d6e38f33f0f06f780abd256c5220f922b5571",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-ends-20260920/production/complete/accepted-cases/LAB_HELD__RHOBR_CONSTANT/actions.pickle": "56e8111829a8f4cb1afaf40edc43d7dbc42d2196b181b984dfddd7015d89f918",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-ends-20260920/production/complete/accepted-cases/LAB_HELD__RHOBR_CONSTANT/assembly.pickle": "53a1d577e0f568b381148e9d4190434a709f633d769defe1899b94e8b474f690",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-ends-20260920/production/complete/accepted-cases/LAB_HELD__RHOBR_CONSTANT/reduced-action.pickle": "95dbb6b5cb833b16edf3f64177b2df54af2e91379a9ee43d43021d1872aa9106",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-ends-20260920/production/complete/accepted-cases/LAB_HELD__RHO4_CONSTANT/actions.pickle": "4c2372a7102d1db9f21a049ab3104465e8d9245ab832be88c900bc8519b46e02",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-ends-20260920/production/complete/accepted-cases/LAB_HELD__RHO4_CONSTANT/assembly.pickle": "8eda57998285137d99cce9564757627a57f8d5bc9b27091c86a65a9cc59230a0",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-ends-20260920/production/complete/accepted-cases/LAB_HELD__RHO4_CONSTANT/reduced-action.pickle": "e9062c3455c7e59fe816f47172062a0c118b201d03809ec0826575dac22872b0",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-ends-20260920/production/complete/accepted-cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/actions.pickle": "75cc4419411903d36cb6f4be73652694de3bc69ff19c6117a564f331503de410",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-ends-20260920/production/complete/accepted-cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/assembly.pickle": "15b54c2237f5951aba15616f3062d29d5748fcedf5fc4fedea802a5dec04bf0f",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-ends-20260920/production/complete/accepted-cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/reduced-action.pickle": "6add07e5f8fd992204e79985b1dec0ce4e641b5d34d2f7aeaeffccd9e53207a2",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-ends-20260920/production/complete/accepted-cases/MATERIAL_ADVECTED__RHO4_CONSTANT/actions.pickle": "c8b64088556034a465bea39bea751c62a77e3850897257dc81de1a70c8282689",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-ends-20260920/production/complete/accepted-cases/MATERIAL_ADVECTED__RHO4_CONSTANT/assembly.pickle": "49dac40608b2b44e0a01d10e9f15cb758ef10015157b4d29cd47dff1b6f35c40",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-ends-20260920/production/complete/accepted-cases/MATERIAL_ADVECTED__RHO4_CONSTANT/reduced-action.pickle": "b103e83e61ddffcf8a320fe5f91ef433e1571551654f91749bed5665b5d537b9",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-ends-20260920/production/completion-watcher/state.json": "a1cb24204a53025a3a47ca6cd1eb001752a56dea5da3ab7ef5375f5efef5cdbd",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-ends-20260920/production/completion-watcher/completion.stdout": "e4646e3cbba00bbf146c5379b0f5e2f39c161c8fabc4a8e49d75c62aaf6c3156",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-ends-20260920/production/completion-watcher/stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-ends-20260920/production/completion-watcher/continuation.txt": "0a12634e160b51a9ce3b1e82ee11218ed5cea0c9407df57e751047b7c0ea176a",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-ends-20260920/production/completion-watcher/watcher.lock": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-ends-20260920/production/completion-watcher/completion.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-ends-20260920/production/completion-watcher/stdout.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-ends-20260920/production/completion-watcher/watch.py": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-ends-20260920/production/__pycache__/launch.cpython-310.pyc": "d241f40d7de138b88e95004189befaeaa5011adf0d04a86cd97ede08c9812813"
+  },
+  "authorityCheckpoints": {
+    "_measurements/S11c_d_nonlinear_pole_repair_checkpoint.json": "dd2b421e8605c680cc831b3ee67d0554a80b2ebbdc55fa839f2f33168d0f583f",
+    "_measurements/S11c_d_exploratory_acceptance_checkpoint.json": "43a912f717c4879994fe40a1302c1c3abd26601319226bd4c2216880e480d612"
+  },
+  "dependencyDisposition": "The original producer retains its historical documents and source hashes. New work carries the user-approved nonlinearPoleV2 correction and exploratoryAcceptanceV1 sequencing/precision change. The actual entry-point transitions are preserved as original, pole-corrected and practical revisions with complete diffs and accepted checkpoint joins. No physical equation, input or pinned export is replaced. Exact transitive native constructor joins remain mandatory. This end/current-input stage calls no pole constructor and constructs no current matrix or scattering response."
+}

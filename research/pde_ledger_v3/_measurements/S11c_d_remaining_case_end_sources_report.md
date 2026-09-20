@@ -18,4 +18,13 @@ source lists are identical, but selecting their anchoring component and deriving
 the mass constraint are still required. This diagnostic does not predetermine
 the final number of reusable current/end families.
 
-The single source job launched under eea9045c with supervisor 853352 and silent watcher 853353. It has one native thread,2GiB and900seconds. Final source results are not yet accepted.
+The original production stopped before any end construction at 29.20 seconds.
+The historical producer guard rejected the brief's already-approved pole and
+practical-acceptance revisions. Thirteen copied input packets remain unchanged.
+The repair preserves original, pole-corrected and practical document versions,
+complete diffs, both approval checkpoints and exact native constructor/export
+joins. It changes provenance handling only; no equation or numerical input is
+rebased. Both historical accepted current-source packets remain available and
+must join the actual generator inputs before reuse.
+
+Focused provenance validation passed in 2.61 seconds with empty stderr and checks/stdout identity. It rejects five actual source/hash mutations, preserves all 33 original files, verifies both complete native current-class joins and the unchanged 17-statement prefix. No end or energy computation ran during this repair check. The retry is prepared with the original one-thread/2GiB/900-second limits.

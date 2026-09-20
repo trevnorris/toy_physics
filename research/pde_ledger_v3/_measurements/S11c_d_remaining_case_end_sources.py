@@ -22,6 +22,42 @@ MATRICES=f.M/'S11c_d_remaining_case_matrices_checkpoint.json'
 UNIFORM=f.M/'S11c_d_uniform_source_checkpoint.json'
 PRODUCER=f.STORE/'s11c-thickness-coordinate-20260914/d_full'
 BASELINE=binding.BASELINE
+PROVENANCE_REPAIR=f.M/'S11c_d_remaining_case_end_sources_provenance_repair.json'
+
+
+def producer_source_joins(producer,accepted,inputs):
+    repair=json.loads(PROVENANCE_REPAIR.read_text())
+    checkpoints={}
+    for n,h in repair['authorityCheckpoints'].items():
+        f.require(f.digest(f.ROOT/n)==h,('accepted authority checkpoint',n))
+        checkpoints[n]=json.loads((f.ROOT/n).read_text());inputs[str(f.ROOT/n)]=h
+    pole=checkpoints['_measurements/S11c_d_nonlinear_pole_repair_checkpoint.json']
+    practical=checkpoints['_measurements/S11c_d_exploratory_acceptance_checkpoint.json']
+    f.require(pole['status']=='ACCEPTED_ADDITIVE_CONTRACT_REPAIR' and practical['status']=='USER_APPROVED_ACCEPTANCE_CHANGE','approved document transitions')
+    for c in (pole,practical):
+        p=f.ROOT/c['authority'];f.require(f.digest(p)==c['authoritySha256'],'actual approved authority');inputs[str(p)]=f.digest(p)
+    f.require(f.digest(f.ROOT/pole['baselineAuthority'])==pole['baselineAuthoritySha256'],'unchanged shared physical baseline')
+    for n,h in repair['evidenceFiles'].items():
+        f.require(f.digest(Path(n))==h,('actual historical document/diff',n));inputs[n]=h
+    result={};changed=set()
+    for n,h in producer['source_hashes_after'].items():
+        if n.endswith('_exports.py') or n.startswith('directives/') or n=='scripts/ledger_fold.py':
+            original=PRODUCER/'source'/n;current=f.digest(f.ROOT/n)
+            f.require(f.digest(original)==h,('original physical producer source',n));inputs[str(original)]=h
+            if n in repair['documentTransitions']:
+                versions=repair['documentTransitions'][n]['versions'];join=pole['entryPointJoins'][n]
+                f.require(h==join['baselineSha256']==versions['original']['sha256'],'original document join')
+                f.require(join['correctedSha256']==versions['pole']['sha256'],'approved nonlinear pole entry-point join')
+                f.require(current==versions['practical']['sha256'],'approved practical entry-point join')
+                if n in accepted:f.require(current==accepted[n],'accepted current input document')
+                for v in versions.values():f.require(f.digest(Path(v['path']))==v['sha256'],'actual document revision')
+                changed.add(n)
+            else:f.require(current==h,('unchanged original physical producer source',n))
+            inputs[str(f.ROOT/n)]=current
+            result[n]={'originalSha256':h,'currentSha256':current,'approvedDocumentTransition':n in changed}
+    f.require(changed==set(repair['documentTransitions']),'complete explicit document transitions')
+    return {'sourceJoins':result,'documentTransitions':repair['documentTransitions'],
+        'authorityCheckpoints':repair['authorityCheckpoints'],'dependencyDisposition':repair['dependencyDisposition']}
 
 
 def copy_input(path,target,sha,inputs):
@@ -51,9 +87,7 @@ def load(base):
     frozen=PRODUCER/'source/scripts/S11c_d_mixing_scattering_sympy_audit.py'
     f.require(f.digest(frozen)==producer['source_hashes_after']['scripts/S11c_d_mixing_scattering_sympy_audit.py'],'original native producer engine')
     joins=binding.factors.cases.definition_joins(frozen,{'ConstantEndPencil','ReducedPencil','UniformSlabCurrent','ChannelInput'})
-    for n,h in producer['source_hashes_after'].items():
-        if n.endswith('_exports.py') or n.startswith('directives/') or n=='scripts/ledger_fold.py':
-            f.require(f.digest(f.ROOT/n)==h,('original physical producer source',n))
+    producer_joins=producer_source_joins(producer,cp['sourceFiles'],inputs)
     inputs.update({str(PRODUCER/'manifest.json'):f.digest(PRODUCER/'manifest.json'),str(frozen):f.digest(frozen)})
     cached={}
     for label in cases:
@@ -73,11 +107,11 @@ def load(base):
     specification=json.loads((f.M/'S11c_d_variable_profile_development_input.json').read_text())
     f.require(specification==json.loads((origin/'inputs.json').read_text())['input'],'actual approved input')
     pins=dict(cp['sourceFiles'])
-    for p in (Path(__file__).resolve(),PLAN,MATRICES,UNIFORM,Path(uniform.__file__),*extra):pins[str(p.relative_to(f.ROOT))]=f.digest(p)
+    for p in (Path(__file__).resolve(),PLAN,MATRICES,UNIFORM,Path(uniform.__file__),PROVENANCE_REPAIR,*extra):pins[str(p.relative_to(f.ROOT))]=f.digest(p)
     for n,h in pins.items():
         target=base/'source'/n;target.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(f.ROOT/n,target)
         f.require(f.digest(target)==h,'frozen source identity')
-    manifest={'sourceFiles':pins,'inputPackets':inputs,'nativeDefinitionJoins':joins,'input':specification,
+    manifest={'sourceFiles':pins,'inputPackets':inputs,'nativeDefinitionJoins':joins,'input':specification,'producerSourceJoins':producer_joins,
         'scope':'Fresh constant-background end pencils and current-generator operands for all cases; no new mode/current matrix, scattering solve or physical pole result.'}
     manifest['copiedInputs']={str(p.relative_to(base)):f.digest(p) for p in base.rglob('*.pickle') if 'source' not in p.relative_to(base).parts}
     f.save(base/'inputs.json',manifest)

@@ -33,3 +33,7 @@ pure-second-order scope. This is a one-sided closed-operator sensitivity, not a
 consistent profile or isolated advection channel. Coordinate/advection controls,
 scoped case searches and final engine/exports remain; no broad campaign or
 baseline contour doubling is queued.
+
+Production launched from27e32f2b under supervisor2145508 and silent watcher
+2145509, one native thread,2GiB and900seconds. Focus remains accepted.
+This launch record is not completed numerical matrix acceptance.

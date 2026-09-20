@@ -1,5 +1,5 @@
 {
-  "status": "ACCEPTED_FIRST_JET_MATRIX_INPUTS",
+  "status": "RUNNING_CASE_FIRST_JET_INTERIORS",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/matrices",
   "bindingRunDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/bindings/complete",
   "validationRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/bindings-acceptance",
@@ -29,7 +29,7 @@
   "newQuadratureNodes": 0,
   "newMatrixAssemblies": 0,
   "newResponseSolves": 0,
-  "next": "Reuse all5276focused artifacts and integrate only27newrows with actual selected cell coefficients,then retain complete interior matrices before response.",
+  "next": "Inspect final production outcome and validate saved layouts/matrices; then finish actual own-case derivative response controls without repeating integration or assembly.",
   "acceptedBindings": "975a0cf0",
   "launch": {
     "launchedUtc": "2026-09-20T21:48:53.461432+00:00",
@@ -332,5 +332,65 @@
     "stderrBytes": 0,
     "checksStdoutIdentical": true,
     "acceptedUtc": "2026-09-20T21:59:28.143774+00:00"
+  },
+  "acceptedFocusedCommit": "27e32f2b",
+  "productionLaunch": {
+    "launchedUtc": "2026-09-20T21:59:57.116518+00:00",
+    "command": [
+      "/usr/bin/python",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/matrices/production",
+      "--stage",
+      "first_jet_matrices_construct",
+      "--",
+      "python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_first_jet_matrices.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/matrices/production/complete",
+      "--resume-focused",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/matrices/focused/complete"
+    ],
+    "mode": "first-derivative-interiors27-new-rows",
+    "supervisorPid": 2145508,
+    "watcherPid": 2145509,
+    "watcherDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/matrices/production/completion-watcher",
+    "threadEnvironment": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1"
+    },
+    "bindingChecksSha256": "ef3487df1304f195a69de4f03ed4bf6849bdf26622b04f23b355767a79a8b6e8",
+    "implementationCommit": "27e32f2bafa7fd587248f947be8a424fdda0130a"
+  },
+  "productionLaunchIsFinalAcceptance": false,
+  "productionLaunchActiveRecord": {
+    "stage": "first_jet_matrices_construct",
+    "command": [
+      "python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_first_jet_matrices.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/matrices/production/complete",
+      "--resume-focused",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/matrices/focused/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/matrices/production/first_jet_matrices_construct.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/matrices/production/first_jet_matrices_construct.stderr",
+    "startedUtc": "2026-09-20T21:59:57.158003+00:00",
+    "childPid": 2145514,
+    "status": "running"
+  },
+  "productionLaunchWatcherState": {
+    "status": "waiting",
+    "watcherPid": 2145509,
+    "jobPid": 2145508,
+    "thread": "01a08c53-295c-70f0-baaf-353db1745867",
+    "startedUtc": "2026-09-20T21:59:57.151059+00:00",
+    "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
+    "messageSha256": "e724d29adc37ae679611b30b49fd52ef79c5740913a259dc6d177e6888f6d36e",
+    "notifications": {}
   }
 }

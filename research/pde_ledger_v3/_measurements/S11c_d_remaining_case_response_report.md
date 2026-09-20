@@ -39,3 +39,8 @@ Practical 1%/amplitude 1e-4/current 1e-6 goals, finite positive regulator,
 approximate boundaries and unresolved tiny signals remain. Relevant controls,
 bounded case searches and final all-case engine/export integration follow.
 No baseline contour doubling or broad convergence campaign is queued.
+
+Production launched at 2026-09-20 04:08 UTC from df876c02 under supervisor
+904155, child 904162 and silent watcher 904156. It uses one numerical thread,
+2 GiB and a 900-second initial budget. The launch snapshot is not final
+completion or acceptance; validation follows the completion/error wake.

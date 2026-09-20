@@ -1,0 +1,137 @@
+{
+  "status": "ACCEPTED_SAVED_PIECEWISE_CERTIFICATE_REPAIR",
+  "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/repair-focused",
+  "checks": {
+    "certificateJoin": {
+      "wholeCertificateReverseAstJoin": true,
+      "changes": {
+        "branches": 1,
+        "normalizer": 1
+      },
+      "originalAstSha256": "78764db3a2d2e06855a534606e98e68742f2429fd140812081d293c476313f04",
+      "derivedAstSha256": "e9d3aeea2e6f5ca8b1a6c7c8950a3482345e1765796b09433fb33a3f083c3751"
+    },
+    "workerJoin": {
+      "wholeWorkerReverseAstJoin": true,
+      "changes": {
+        "construct": 1,
+        "certificate": 2
+      },
+      "originalAstSha256": "13219cd443c129a200d2a2f8824dfab3e3a368365527475e254754fc78597e81",
+      "derivedAstSha256": "cdf25933e94c474a74b7d29a6e0e6247d8e378829e927ef7593ba3e34ecfb895"
+    },
+    "cases": [
+      {
+        "index": 0,
+        "proofScalars": 6,
+        "shadowedBranches": 0,
+        "mutationNonzero": true,
+        "pairSha256": "42df010f2182ce5867219e0da440af83d6d310b147e896b3ff798f0175be5d51"
+      },
+      {
+        "index": 3,
+        "proofScalars": 7,
+        "shadowedBranches": 0,
+        "mutationNonzero": true,
+        "pairSha256": "7f84298b56c2f4a885434820dc3c410591ce584699a06082e33d52bbece1ce6d"
+      },
+      {
+        "index": 9,
+        "proofScalars": 6,
+        "shadowedBranches": 0,
+        "mutationNonzero": true,
+        "pairSha256": "75a5691f15595c90db30ecc2769cc5bf2dbbdf3559b82e2e16bb965d1202db5b"
+      },
+      {
+        "index": 28,
+        "proofScalars": 7,
+        "shadowedBranches": 1,
+        "mutationNonzero": true,
+        "pairSha256": "370a5a256db51ffc672a63af029c745fbdb1567851c9dcb4eb0c9ebf373ff1d8"
+      }
+    ],
+    "guardMutationRejected": true,
+    "wallSeconds": 6.295016852207482
+  },
+  "checkerSha256": "9a804945fef13ed62a5e517da782b8f3ac5355bab6f70f915aeac0da63457820",
+  "sourceFiles": {
+    "directives/S11b_SHARED_PHYSICS.md": "9ea9e388e9d6421a841eaf851d12e1793527bba9a24aeeface3bfac2f4b40078",
+    "_measurements/S11c_d_wide_three_adaptive.py": "af123066766700f40d71843d36a7b94513dcaf3b35fcef17af1fd4843ec8413a",
+    "_measurements/S11c_d_parallel_momentum.py": "ecc9c93c89f4e670b8cccf213a57c6380ac73fe37bedefedb25a3e8dabfb536c",
+    "scripts/S11c_b_exports.py": "3c6555f90a85382a5e96f3f961f0e36a4875d9259fe1be947fa8e683669b7084",
+    "_measurements/S11c_d_wide_momentum_refinement.py": "d80d2c2ff303e23309a4b453ab4ca565c41cb804e029e58f1b2cfe6e11dd567b",
+    "_measurements/S11c_d_momentum_domain_prepare.py": "195c26b062d6bff63520a823f6dbf1b89d4973c4f93b004fae81f3e67800762e",
+    "_measurements/S11c_d_source_fourier_residual_recover.py": "443953029c6848c9f0ea377b7cd3005f9f537d29b2431e2122cf2f8fda83e2b9",
+    "directives/S11c_d_sympy_build_PROGRAM_BRIEF.md": "1d9a48a043c68a6b38a1951f69b82a3ea8e97f4b7bb1d8e3f4c028f03290b380",
+    "_measurements/S11c_d_continuum_grades.py": "0443c3adbeaf813ad66c60af0a50c96e9a841277d51f9c23bf1c601d2fdf329d",
+    "_measurements/S11c_d_position_domain.py": "d056a00e7500cd27a0d824b0b6f9b66ca9bbb2dd412b2b8c490d621afcf71b46",
+    "_measurements/S11c_d_momentum_action_check.py": "247d2ee6b7004888eca1d653b53f8be773c68041d7254389c4d14328d0001ff3",
+    "_measurements/S11c_d_finite_scattering_domain.py": "73341408d0f6c1eb517e435dea986e180ff53615a6102697a8e3ba6747bd35aa",
+    "_measurements/S11c_d_reduced_action_source_check.py": "aae3b2402e1707ef27f217b917dc10592f38acbe35d18356fbc4886ed854f754",
+    "_measurements/S11c_d_numerical_action_check.py": "86d5b373df8825c1e6dca198555b2a65e62822a3d9ba32868a89ca135bb7968f",
+    "_measurements/S11c_d_remaining_case_factors_plan.md": "2a0b5c1ef252d677faa627fce45a7bbce2b015d537a5230b25bcf7a53daff45f",
+    "_measurements/S11c_d_source_fourier_quadrature_check.py": "d52747cba3e5cbdf4cbff6816ccd07d79564032d0a64d57bf80aef5815430323",
+    "_measurements/S11c_d_variable_profile_input_check.py": "70cdf2811f2ccd92380be24a80bb7af49f4e1a01504b09a9dbb47f8d3cbbb3b2",
+    "directives/S11c_d_EXPLORATORY_ACCEPTANCE.md": "5c1e560a78d40739af8b1318c0487e20bf2b816c41109889e12004266c72840c",
+    "scripts/S11c_d_output_codec.py": "49873a2fa5c3184aab097263f0a6128379e094e42dbde5052456c5f3908bf717",
+    "scripts/ledger_fold.py": "97da78c6631c09e5575dd14511760506f1ac08771cf07948978004e92f0b2333",
+    "_measurements/S11c_d_three_momentum_source_check.py": "1753567b20d5739787aedf3269c783f172777043dfe92fd989525c21fadee487",
+    "_measurements/S11c_d_finite_scattering.py": "f187d9426be8069342a363a0466c175d32a8cb46101e32a14c433ccb9118e469",
+    "_measurements/S11c_d_remaining_case_sources_checkpoint.json": "555a3217a09d5d4ca7c8ff307838714f278f3088be521d510c4c4b72a1dd0312",
+    "_measurements/S11c_d_source_fourier_factorization_checkpoint.json": "fcf6f1c5598b63c11d4f8a76d2d94c2b5bace590e83d4beea3e52e82f44158a6",
+    "_measurements/S11c_d_three_momentum_adaptive.py": "a028e76029f8386c900c88c8edaf02766b821c29c179c5c26d7ce3d7860fc1c2",
+    "_measurements/S11c_d_continuum_matrices.py": "33a0e5a2fa136a55875541e15bc410159c94f56f25adc4a02589d0c704223987",
+    "_measurements/S11c_d_focused_completion_plan.md": "1917ffd7bab9d1da0a355228b865e6ba5c6bbdad009bdfbff18296492b81fcaa",
+    "_measurements/S11c_d_source_fourier_factorization_check.py": "b6573d82198f262ac5eea8362fb478a93a1f9b8ea17bd0d4645c67cb40168f23",
+    "directives/S11c_d_SHARED_PHYSICS.md": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5",
+    "_measurements/S11c_d_continuum_boundary.py": "ed3a6539d3151c52d25f12308b121897baf3bd6a5a626a598ab728988ab933a0",
+    "_measurements/S11c_d_momentum_domain_action.py": "db37d83a74ebd0fc82b903285a69a9a04ce9c7bb62341539a3b4c5f12f4956cf",
+    "_measurements/S11c_d_variable_profile_development_input.json": "660b2b0b54494dce964c7f5fbd722a76a7e894d8ed92b18b5eb6290c3c10f1d5",
+    "_measurements/S11c_d_remaining_case_factors.py": "fb50c34f50ba1cf6e2aa788cde5f2d345ee8e93b7ccc5376e341c00a14490bfd",
+    "_measurements/S11c_d_wide_momentum_adaptive.py": "4c40be5eae12631a33213b38a044de24d44d2a486c82b3e6d53b2ed8795bfdcc",
+    "scripts/S11c_c2_exports.py": "2ba5ed487b84ecb98290df6f1650fa6210fe2784cfa02a0f3cff96cd718411cd",
+    "directives/S11c_d_NONLINEAR_POLE_CONTRACT.md": "2b6018faf0d5ca772bf9c980174d8ebe7545127a3bf43ba01d1b3c0b6a5be423",
+    "_measurements/S11c_d_wide_three_momentum.py": "455ba3aaf4481a101c6e3e3b7e23b7160ef7afa453c201c9e0e0b57b5d7afc3e",
+    "_measurements/S11c_d_remaining_case_sources.py": "49db070d97ba3b15bf4e94929341fb5f4a6882ff8b2e16ee07f3fd16502064b5",
+    "_measurements/S11c_d_reduced_action_assembly_check.py": "f620a643c761474aeaa181ad34a368bc35c1f9e81fb528a81744c2a32af364a8",
+    "scripts/S11c_d_mixing_scattering_sympy_audit.py": "5bf77729682960bb59f10c672a5fe3f67a98b0a9533da7c6189a37183596050f",
+    "scripts/S11c_c1_exports.py": "a5353b86dc526fd1b56734fdbdf7dc7f42387a3195ab4de84e8994f751871cdc",
+    "_measurements/S11c_d_finite_scattering_resolution.py": "8e101517fde113c5f0a372bab531e63ebdcee3fff03c270ff98a7590e5a7b981",
+    "_measurements/S11c_d_remaining_case_factor_recover.py": "9a804945fef13ed62a5e517da782b8f3ac5355bab6f70f915aeac0da63457820",
+    "_measurements/S11c_d_remaining_case_factor_recovery_plan.md": "53f0c1b31d8e0bbe3f0d35d3aa661eb688a64173dce6393dc6b7c81529b7b87c"
+  },
+  "inputPackets": {
+    "/var/projects/toy_physics/_scratch/s11c/s11c-source-fourier-20260914/recovery-01/complete/source-factorization.pickle": "4ad4e99de3f13a8bf3e42374f1425a84521e27634635063adb497cdc94651033",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-source-fourier-20260914/recovery-01/complete/reconstruction-certificates.pickle": "c69ed83e4a484a93d8f65e1389362943155e79157ba94a1f8c9ab2fed8fb2275",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-sources-20260919/finish-01/complete/checks.json": "d118e48650e825dd72b6e9b2b54dd9f6b5f4fe3146e27a930871de338ba2c78e",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-sources-20260919/finish-01/complete/accepted-reduced-action.pickle": "e9062c3455c7e59fe816f47172062a0c118b201d03809ec0826575dac22872b0",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-sources-20260919/finish-01/complete/accepted-actions.pickle": "4c2372a7102d1db9f21a049ab3104465e8d9245ab832be88c900bc8519b46e02",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-sources-20260919/finish-01/complete/accepted-assembly.pickle": "8eda57998285137d99cce9564757627a57f8d5bc9b27091c86a65a9cc59230a0",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-sources-20260919/finish-01/complete/cases/LAB_HELD__RHOBR_CONSTANT/reduced-action.pickle": "95dbb6b5cb833b16edf3f64177b2df54af2e91379a9ee43d43021d1872aa9106",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-sources-20260919/finish-01/complete/cases/LAB_HELD__RHOBR_CONSTANT/actions.pickle": "56e8111829a8f4cb1afaf40edc43d7dbc42d2196b181b984dfddd7015d89f918",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-sources-20260919/finish-01/complete/cases/LAB_HELD__RHOBR_CONSTANT/assembly.pickle": "53a1d577e0f568b381148e9d4190434a709f633d769defe1899b94e8b474f690",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-sources-20260919/finish-01/complete/cases/MATERIAL_ADVECTED__RHO4_CONSTANT/reduced-action.pickle": "b103e83e61ddffcf8a320fe5f91ef433e1571551654f91749bed5665b5d537b9",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-sources-20260919/finish-01/complete/cases/MATERIAL_ADVECTED__RHO4_CONSTANT/actions.pickle": "c8b64088556034a465bea39bea751c62a77e3850897257dc81de1a70c8282689",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-sources-20260919/finish-01/complete/cases/MATERIAL_ADVECTED__RHO4_CONSTANT/assembly.pickle": "49dac40608b2b44e0a01d10e9f15cb758ef10015157b4d29cd47dff1b6f35c40",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-sources-20260919/finish-01/complete/cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/reduced-action.pickle": "6add07e5f8fd992204e79985b1dec0ce4e641b5d34d2f7aeaeffccd9e53207a2",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-sources-20260919/finish-01/complete/cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/actions.pickle": "75cc4419411903d36cb6f4be73652694de3bc69ff19c6117a564f331503de410",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-sources-20260919/finish-01/complete/cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/assembly.pickle": "15b54c2237f5951aba15616f3062d29d5748fcedf5fc4fedea802a5dec04bf0f",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/repair-focused/009/mutation.pickle": "b3f138a380bfc1457ec3682bce4acf9a6f0ec9513844be3f9c3736106855e5f3",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/repair-focused/009/certificate.pickle": "7e2f4dea97c4cf76e49dc07bc3f0795884ce73ebcf5232344824e410b69a45e8",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/repair-focused/028/guard-mutation.pickle": "3bdce50f82e594653b94b99046ae0113080c71f73fd124c0bc9e17a5f1bfcf45",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/repair-focused/028/mutation.pickle": "8e5beb74be212d6df3e1c71d59964e779aee727c512f3915ebaac998cca1bb91",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/repair-focused/028/certificate.pickle": "40ffd70dd1d5a199fd6a626f68c7d8ea3b3346ae42bc36a380ae2bc97f26ac8d",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/repair-focused/003/mutation.pickle": "60150286cd7588041f9dce8593bea936830062f1bc7674395ba1e6a1e84729e9",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/repair-focused/003/certificate.pickle": "5b881e7817fc226a861f8ae9eed9a35ef3cd09291ac388a1f6241b1fccddd29d",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/repair-focused/000/mutation.pickle": "7bf79d41d0b759e05099a6ccad209ce4123a8df3b6772fa847ce7cf4134ae416",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/repair-focused/000/certificate.pickle": "153657fad49e23c7d41f5b50320c99b22a234973b815b7f033d526a438be4746"
+  },
+  "actualPairs": 4,
+  "zeroProofScalars": 26,
+  "respondingCoefficientMutations": 4,
+  "unreachableNonzeroBranchProofs": 1,
+  "guardMutationRejected": true,
+  "validator": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/certificate-diagnostic/accept_repair.py",
+  "validatorSha256": "f36d138c1823f7f069610c152d6c0d7fa2b355ac853f8964ee419571ba0f31ee",
+  "scope": "Exact saved-pair proof and worker wiring; complete preflight output remains unfinished."
+}

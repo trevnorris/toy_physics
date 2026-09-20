@@ -1,5 +1,5 @@
 {
-  "status": "LAUNCHED_AWAITING_SILENT_COMPLETION",
+  "status": "PUBLISHED_ANNEX_VERIFIED",
   "acceptedResponse": "2dd16688",
   "publication": "fa684a3a",
   "focusedRunRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-flux-20260920/focused-retry-01",
@@ -95,5 +95,37 @@
       "sha256": "5f78647e9844789000d211715f289f0d361f9f91cb6fcab1e219523333fea08c",
       "bytes": 4862
     }
+  },
+  "productionOutcome": {
+    "stage": "flux_construct",
+    "command": [
+      "python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_flux.py",
+      "--resume-focused",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-flux-20260920/focused-retry-01/complete",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-flux-20260920/production/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-flux-20260920/production/flux_construct.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-flux-20260920/production/flux_construct.stderr",
+    "startedUtc": "2026-09-20T04:49:26.992137+00:00",
+    "childPid": 917816,
+    "status": "completed",
+    "exitCode": 0,
+    "wallSeconds": 277.7937827222049,
+    "stderrBytes": 0,
+    "finishedUtc": "2026-09-20T04:54:04.785965+00:00"
+  },
+  "checkpoint": "S11c_d_remaining_case_flux_checkpoint.json",
+  "currentPublication": {
+    "path": "scripts/out/S11c_d_remaining_case_flux.out",
+    "sha256": "2f58cb7e4280f5765077e72151990c9203f5236ac7c67049d9124adab244f222",
+    "bytes": 4261891,
+    "md5": "8948953806ed64698a2c18441636f01c",
+    "annexKey": "MD5E-s4261891--8948953806ed64698a2c18441636f01c.out",
+    "symlink": "../../../../.git/annex/objects/Fg/V6/MD5E-s4261891--8948953806ed64698a2c18441636f01c.out/MD5E-s4261891--8948953806ed64698a2c18441636f01c.out",
+    "commit": "588a538390be92da8d228b61f23dc6ec2367e4b9",
+    "independentlyVerified": true
   }
 }

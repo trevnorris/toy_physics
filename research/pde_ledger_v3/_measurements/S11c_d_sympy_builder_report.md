@@ -428,6 +428,18 @@ regulator, approximate boundaries and unresolved tiny signals remain explicit.
 Case current bookkeeping, practical controls, scoped case searches and final
 all-case engine/exports remain. No baseline contour doubling is queued.
 
+## Four-case current completion (2026-09-20)
+
+The [four-case current bookkeeping](S11c_d_remaining_case_flux_report.md) is
+published at 588a5383 and annex-verified. Three new contractions took 277.79
+seconds; baseline bookkeeping, current closures and all solves were reused.
+The largest new current residual is 5.86e-14. All four approved inputs compute
+four open transverse and zero open thickness directions while retaining closed
+matching data and all current variation. All 10,528 decoded payloads and 80,128
+metadata paths pass. This does not resolve tiny loss/reflection or establish
+depth escape. Practical case controls, scoped searches and final engine/exports
+remain; no broad quadrature or baseline contour doubling is queued.
+
 ## Retained user-approved solver/export contract
 
 

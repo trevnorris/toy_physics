@@ -1,5 +1,5 @@
 {
-  "status": "NUMERICAL_ACCEPTED_OUTPUT_RECOVERY_PREPARED",
+  "status": "NUMERICAL_ACCEPTED_OUTPUT_RECOVERY_RUNNING",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/response/focused",
   "acceptedMatrixCommit": "df5271b4",
   "implementationCommit": "57f05dae323126c0dc5a7acf54577d413c0495de",
@@ -1361,5 +1361,64 @@
       "checksStdoutIdentical": true
     },
     "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/response/output/unit-repair"
-  }
+  },
+  "outputRecoveryLaunch": {
+    "launchedUtc": "2026-09-20T23:19:59.499560+00:00",
+    "supervisorPid": 2170119,
+    "watcherPid": 2170120,
+    "command": [
+      "/usr/bin/python",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/response/output/focused-recovery-01",
+      "--stage",
+      "first_jet_output",
+      "--",
+      "python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_first_jet_output_recover.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/response/output/focused-recovery-01/complete",
+      "--mode",
+      "focused"
+    ],
+    "threadEnvironment": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1"
+    },
+    "implementationCommit": "2de2033347ccdd2ed3112ed57c807ea92fe307bd",
+    "helperSha256": "f88ed7391c10911a51e691e3e570c2547acde689c158d32a4e79317c0f0419da",
+    "outputHelperSha256": "b27fc5bf3394f67a5e8c48deb8ee85e7bc39283749e9ecedfb3b3467106df69b",
+    "productionChecksSha256": "609121335d2e55e7dd821fdcb57668369e8921642b43c3dd79b9811ff2c0e0f9"
+  },
+  "outputRecoveryLaunchActiveRecord": {
+    "stage": "first_jet_output",
+    "command": [
+      "python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_first_jet_output_recover.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/response/output/focused-recovery-01/complete",
+      "--mode",
+      "focused"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/response/output/focused-recovery-01/first_jet_output.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/response/output/focused-recovery-01/first_jet_output.stderr",
+    "startedUtc": "2026-09-20T23:19:59.533181+00:00",
+    "childPid": 2170122,
+    "status": "running"
+  },
+  "outputRecoveryLaunchWatcherState": {
+    "status": "waiting",
+    "watcherPid": 2170120,
+    "jobPid": 2170119,
+    "thread": "01a08c53-295c-70f0-baaf-353db1745867",
+    "startedUtc": "2026-09-20T23:19:59.548969+00:00",
+    "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
+    "messageSha256": "8a15d58fed1c9213e669279c03e585a0e14fafe984ff99fe914478447841ec49",
+    "notifications": {}
+  },
+  "outputRecoveryLaunchIsAcceptance": false
 }

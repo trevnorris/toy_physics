@@ -74,3 +74,8 @@ identity, reached the first new field coefficient output, and left the complete
 bundle unchanged. Recovery copies all original evidence, reuses both completed
 new transcripts and the entire sensitivity bundle, then appends only remaining
 output and runs the original full replay. Numerical constructors remain disabled.
+
+Saved-output recovery launched from 2de20333 under supervisor 2170119 and
+silent watcher 2170120. The original main code object is unchanged. All 28
+original decoded payloads and encoded prefix lines passed the 12.52-second
+saved-bundle regression. Final output replay/acceptance remains pending.

@@ -1,5 +1,5 @@
 {
-  "status": "PREPARED_FIRST_JET_NUMERICAL_RESPONSES",
+  "status": "RUNNING_FIRST_JET_NUMERICAL_RESPONSES",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/response/focused",
   "acceptedMatrixCommit": "df5271b4",
   "implementationCommit": "57f05dae323126c0dc5a7acf54577d413c0495de",
@@ -61,7 +61,7 @@
   "remainingFiniteControlSolves": 4,
   "remainingContinuumControlSolves": 3,
   "scope": "Saved operators and own-case boundary/current/phase inputs; no new quadrature, interior assembly, modes, currents or response solve in this preparation.",
-  "next": "Launch four finite and three continuum control solves using saved systems. Complete physical transcript emission/publication afterward from saved numerical results.",
+  "next": "Validate completed numerical responses/current/sensitivity packets, then finish physical transcript emission and annex publication from saved results.",
   "focusedOutcome": {
     "stage": "response_inputs",
     "command": [
@@ -465,5 +465,63 @@
       "scope": "The snapshot was saved after the grade-origin evaluation correction and before the current-address correction; it is not claimed as a pre-run frozen source."
     },
     "currentScope": "Finite 4-by-4 open-current metric and closed amplitudes remain distinct. Retained continuum 7-by-7 metric includes closed and cross terms. No zero current assigned to an absent finite closed metric."
-  }
+  },
+  "productionLaunch": {
+    "launchedUtc": "2026-09-20T22:38:53.623616+00:00",
+    "supervisorPid": 2157308,
+    "watcherPid": 2157309,
+    "command": [
+      "/usr/bin/python",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/response/production",
+      "--stage",
+      "first_jet_response",
+      "--",
+      "python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_first_jet_response.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/response/production/complete",
+      "--resume-focused",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/response/focused/complete"
+    ],
+    "threadEnvironment": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1"
+    },
+    "implementationCommit": "5b2bf9ea63443bc8f23d3c581bdf0b5b681dafd8",
+    "helperSha256": "eeab82012db72fcc8443d0018aad6a5e9b0221c1d6cd96dc2d0a8e8a21dfd498",
+    "focusedChecksSha256": "9f7f7106db927f4b123b5eb4c6d2eb7339bed20e43410a524f578d053a5c99f5"
+  },
+  "productionLaunchActiveRecord": {
+    "stage": "first_jet_response",
+    "command": [
+      "python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_first_jet_response.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/response/production/complete",
+      "--resume-focused",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/response/focused/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/response/production/first_jet_response.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/response/production/first_jet_response.stderr",
+    "startedUtc": "2026-09-20T22:38:53.668059+00:00",
+    "childPid": 2157311,
+    "status": "running"
+  },
+  "productionLaunchWatcherState": {
+    "status": "waiting",
+    "watcherPid": 2157309,
+    "jobPid": 2157308,
+    "thread": "01a08c53-295c-70f0-baaf-353db1745867",
+    "startedUtc": "2026-09-20T22:38:53.672097+00:00",
+    "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
+    "messageSha256": "902587f9b82da960b1146277613720ca385e29f73a3ec82f7c1b1b169bcd1968",
+    "notifications": {}
+  },
+  "productionLaunchIsAcceptance": false
 }

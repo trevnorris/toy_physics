@@ -35,3 +35,9 @@ MATRIX_COLUMN; its logs and completed solver checks remain. Native finite
 metrics cover four open directions, with closed matching amplitudes retained
 separately. Full seven-direction closed/cross-mode current bookkeeping uses the
 actual retained continuum metric. No missing current is replaced by zero.
+
+Numerical production launched from5b2bf9ea under supervisor2157308
+and silent watcher2157309, one thread,2GiB and900seconds. It consumes
+prepared systems for four new finite controls and three new continuum controls.
+Baseline continuum packets/transcript remain unchanged. No new physical
+transcript is emitted by this job; its final numerical outcome is pending.

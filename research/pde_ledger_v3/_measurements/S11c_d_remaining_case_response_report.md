@@ -44,3 +44,12 @@ Production launched at 2026-09-20 04:08 UTC from df876c02 under supervisor
 904155, child 904162 and silent watcher 904156. It uses one numerical thread,
 2 GiB and a 900-second initial budget. The launch snapshot is not final
 completion or acceptance; validation follows the completion/error wake.
+
+The production run ended after 687.49 seconds at the combined-transcript
+decoder. All three finite and continuum solves and all three original
+individual emission/replay tails completed; their packets and transcripts
+remain immutable. Each part starts a separate shared-payload reference table,
+so their raw concatenation is not one valid encoded stream. The saved-packet
+finish validates the numerical operands without a new solve, then globally
+re-encodes the original decoded payloads. No individual emission is repeated.
+Current acceptance remains pending the clean final aggregation guards.

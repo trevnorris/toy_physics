@@ -1,5 +1,5 @@
 {
-  "status": "SAVED_PACKET_CURRENT_RECOVERY_RUNNING",
+  "status": "ACCEPTED_FOUR_CASE_CURRENT_SOURCES",
   "helper": "_measurements/S11c_d_remaining_case_currents.py",
   "plan": "_measurements/S11c_d_remaining_case_currents_plan.md",
   "sourceAcceptance": "103c52d5",
@@ -311,5 +311,44 @@
     "messageSha256": "f9ec2c3a4ba5d382cd8cdf2161e03364cbcffc80cf70698650755c0eb7b8c9e9",
     "notifications": {}
   },
-  "checkpointRepairCommit": "e6979ff5f664a69d67f859ba27a86d309eb005b9"
+  "checkpointRepairCommit": "e6979ff5f664a69d67f859ba27a86d309eb005b9",
+  "acceptedCheckpoint": "_measurements/S11c_d_remaining_case_currents_checkpoint.json",
+  "finalOutcome": {
+    "stage": "currents_construct",
+    "command": [
+      "python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_currents_checkpoint_recover.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/recovery-01/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/recovery-01/currents_construct.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/recovery-01/currents_construct.stderr",
+    "startedUtc": "2026-09-20T02:59:00.304090+00:00",
+    "childPid": 884072,
+    "status": "completed",
+    "exitCode": 0,
+    "wallSeconds": 237.294807581231,
+    "stderrBytes": 0,
+    "finishedUtc": "2026-09-20T03:02:57.598936+00:00"
+  },
+  "validationOutcome": {
+    "exitCode": 0,
+    "stderrBytes": 0,
+    "stdoutSha256": "7e40b58599222649249a6daa3de9fd1e03c5d8254f153ca1896531c7e3388314",
+    "note": "Validation manifest finalized after the validator closed its stdout/stderr; no source result or proof changed."
+  },
+  "summary": {
+    "familyCounts": {
+      "0": 8,
+      "1": 2,
+      "2": 2
+    },
+    "retainedAcousticResidualScalars": 180,
+    "newPairingRetainedResidualScalars": 718,
+    "rationalOperations": 101,
+    "newAcousticConstructions": 1,
+    "newTwoFrequencyConstructions": 1
+  },
+  "next": "Fresh case-specific root/current joins, complete degenerate modal subspaces and actual current normalization, then boundary/channel and finite/continuum responses."
 }

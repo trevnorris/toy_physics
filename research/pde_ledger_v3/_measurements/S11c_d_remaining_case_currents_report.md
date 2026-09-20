@@ -23,12 +23,28 @@ acoustic-density and pairing-matrix mutations. No new closure or pairing was
 computed. Exact existing/requested payload pairs and hashes are saved. Acceptance
 is recorded in `S11c_d_remaining_case_currents_checkpoint_focused.json`.
 
-The all-case recovery is running under `e6979ff5` to compute only the one new RHOBR-right
-acoustic/pairing family, with one thread, 2 GiB, 900 seconds and a silent watcher.
-Full candidate subspaces, current normalization, boundary/channel maps,
-finite/continuum responses, controls, scoped case poles and final exports remain.
-Positive regulator, approximate boundaries and unresolved tiny signals stay
-explicit. The baseline 32-point contour is closed without a resolved candidate;
-no doubling or certified empty spectrum is claimed.
+The all-case recovery completed in 237.29 seconds with exit zero, empty stderr
+and exact checks/stdout identity. It computed one RHOBR-right acoustic closure
+and one independent-frequency pairing, shared by the two anchorings through
+full input proofs. The other ten addresses reuse accepted original operands.
+All twelve addresses are complete: 180 zero retained acoustic scalars, 718 zero
+new pairing scalars, and 101 exact rational cross-product identities (six
+operations reused exact original results). The 66 current/frozen sources, 123
+inputs, 94 unchanged copies and 439 artifacts pass independent validation.
 
-Recovery supervisor 884066 and silent watcher 884067 own this attempt. The original production directory remains immutable. No new current result is accepted until the recovery supervisor and all final guards complete successfully.
+The actual right surface densities remain `rho_br` for RHOBR and
+`(1 + eta_bg) * rho_br` for RHO4. Full 5-by-5 independent-frequency current,
+energy and port matrices, original denominators, raw residuals, and requested/
+existing checkpoint pairs are retained. These are source current operands;
+new-case normalized modes and scattering responses have not yet been computed.
+Acceptance is in `S11c_d_remaining_case_currents_checkpoint.json`. The local
+acceptance reader corrected only tuple-to-JSON origin metadata comparison;
+its first log and every production packet remain preserved.
+
+Next: use fresh case pencils and complete current inputs to join original root
+candidates and any reusable modes, then compute the genuinely new full subspaces,
+current normalization and boundary/channel maps. Finite/continuum responses,
+controls, scoped case poles and final exports remain. Positive regulator,
+approximate boundaries and unresolved tiny signals stay explicit. The baseline
+32-point contour remains closed without a resolved candidate; no doubling or
+certified empty spectrum is claimed.

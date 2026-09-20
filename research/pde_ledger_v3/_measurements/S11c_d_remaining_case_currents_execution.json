@@ -1,5 +1,5 @@
 {
-  "status": "FOCUSED_CURRENT_REUSE_RETRY_RUNNING",
+  "status": "FOCUSED_ACCEPTED_PRODUCTION_PREPARING",
   "helper": "_measurements/S11c_d_remaining_case_currents.py",
   "plan": "_measurements/S11c_d_remaining_case_currents_plan.md",
   "sourceAcceptance": "103c52d5",
@@ -112,5 +112,28 @@
   },
   "unitRepair": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_currents_unit_repair.json",
   "unitRepairCommit": "0e5f55455b4557fdef080c9297d45fc7f2a2b939",
-  "nextAcceptanceNote": "Inspect MATERIAL_ADVECTED/RHO4 literal strong-input mismatches using saved actual pairs and accepted semantic family residuals before selecting acoustic reuse. No baseline current reconstruction for expression representation."
+  "nextAcceptanceNote": "Inspect MATERIAL_ADVECTED/RHO4 literal strong-input mismatches using saved actual pairs and accepted semantic family residuals before selecting acoustic reuse. No baseline current reconstruction for expression representation.",
+  "focusedAcceptance": "research/pde_ledger_v3/_measurements/S11c_d_remaining_case_currents_preflight.json",
+  "focusedOutcome": {
+    "stage": "currents_focused",
+    "command": [
+      "python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_currents.py",
+      "--focused",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/focused-retry-01/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/focused-retry-01/currents_focused.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/focused-retry-01/currents_focused.stderr",
+    "startedUtc": "2026-09-20T02:29:48.670005+00:00",
+    "childPid": 873964,
+    "status": "completed",
+    "exitCode": 0,
+    "wallSeconds": 109.18899932689965,
+    "stderrBytes": 0,
+    "finishedUtc": "2026-09-20T02:31:37.859059+00:00"
+  },
+  "semanticOriginalReuseCount": 10,
+  "newAcousticFamilyCount": 1
 }

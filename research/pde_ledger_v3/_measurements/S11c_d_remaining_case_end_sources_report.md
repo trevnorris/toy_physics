@@ -28,3 +28,5 @@ rebased. Both historical accepted current-source packets remain available and
 must join the actual generator inputs before reuse.
 
 Focused provenance validation passed in 2.61 seconds with empty stderr and checks/stdout identity. It rejects five actual source/hash mutations, preserves all 33 original files, verifies both complete native current-class joins and the unchanged 17-statement prefix. No end or energy computation ran during this repair check. The retry is prepared with the original one-thread/2GiB/900-second limits.
+
+Retry launched under 359789ca with supervisor 861041 and silent watcher 861042. Source results remain unaccepted until the final outcome and saved-operand checks pass.

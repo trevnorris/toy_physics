@@ -16,3 +16,6 @@ No new mode result is accepted until final validation. Complete boundary/channel
 maps, finite/continuum case responses, controls, bounded pole diagnostics and
 all-case exports remain. No historical quadrature, baseline modes or current
 closures repeat. Positive regulator and approximate boundary limitations remain.
+
+Production launched under `25db19e2`: supervisor 890211 and silent watcher
+890212. The launch checkpoint is not final acceptance.

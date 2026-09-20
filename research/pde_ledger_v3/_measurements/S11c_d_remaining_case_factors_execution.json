@@ -1,5 +1,5 @@
 {
-  "status": "REMAINING_FACTORS_PRODUCTION_RUNNING",
+  "status": "PUBLISHED_ANNEX_VERIFIED",
   "helper": "_measurements/S11c_d_remaining_case_factors.py",
   "implementationCommit": "e5b23312",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight",
@@ -290,7 +290,7 @@
     "stderrBytes": 0,
     "finishedUtc": "2026-09-20T00:26:39.651933+00:00"
   },
-  "remainingNativeFactors": 28,
+  "remainingNativeFactors": 0,
   "outputLaunch": {
     "launchedUtc": "2026-09-20T00:25:37.266127+00:00",
     "command": [
@@ -403,5 +403,39 @@
     9,
     28
   ],
-  "newFactorsToCompute": 28
+  "newFactorsToCompute": 28,
+  "productionOutcome": {
+    "stage": "factors_construct",
+    "command": [
+      "python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_factor_finish.py",
+      "--mode",
+      "construct",
+      "--resume-from",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight-finish/complete",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/production/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/production/factors_construct.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/production/factors_construct.stderr",
+    "startedUtc": "2026-09-20T00:29:10.275220+00:00",
+    "childPid": 828614,
+    "status": "completed",
+    "exitCode": 0,
+    "wallSeconds": 697.7959419619292,
+    "stderrBytes": 0,
+    "finishedUtc": "2026-09-20T00:40:48.071210+00:00"
+  },
+  "checkpoint": "_measurements/S11c_d_remaining_case_factors_checkpoint.json",
+  "publication": {
+    "path": "scripts/out/S11c_d_remaining_case_factors.out",
+    "bytes": 2508023,
+    "sha256": "1093040bb6fb42c2325aec3923846ac38694c9dd8cc8a2fda2ddfb9596c12e8d",
+    "md5": "2a177ac2472751b66348fcc982313cce",
+    "annexKey": "MD5E-s2508023--2a177ac2472751b66348fcc982313cce.out",
+    "symlink": "../../../../.git/annex/objects/9W/QQ/MD5E-s2508023--2a177ac2472751b66348fcc982313cce.out/MD5E-s2508023--2a177ac2472751b66348fcc982313cce.out",
+    "publicationCommit": "69b2259acd54a49dbd8f25b09941049efcb617e6"
+  },
+  "completedUnionFactors": 32
 }

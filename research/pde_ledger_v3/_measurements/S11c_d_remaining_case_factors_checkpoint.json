@@ -1,0 +1,1487 @@
+{
+  "status": "PUBLISHED_ANNEX_VERIFIED",
+  "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/production/complete",
+  "outcome": {
+    "stage": "factors_construct",
+    "command": [
+      "python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_factor_finish.py",
+      "--mode",
+      "construct",
+      "--resume-from",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight-finish/complete",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/production/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/production/factors_construct.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/production/factors_construct.stderr",
+    "startedUtc": "2026-09-20T00:29:10.275220+00:00",
+    "childPid": 828614,
+    "status": "completed",
+    "exitCode": 0,
+    "wallSeconds": 697.7959419619292,
+    "stderrBytes": 0,
+    "finishedUtc": "2026-09-20T00:40:48.071210+00:00"
+  },
+  "checksSha256": "d580ee0b3931440dd087d621d6199c35b297b13b1bd63c800f044bc921d138b2",
+  "sourceFiles": {
+    "directives/S11b_SHARED_PHYSICS.md": "9ea9e388e9d6421a841eaf851d12e1793527bba9a24aeeface3bfac2f4b40078",
+    "_measurements/S11c_d_wide_three_adaptive.py": "af123066766700f40d71843d36a7b94513dcaf3b35fcef17af1fd4843ec8413a",
+    "_measurements/S11c_d_parallel_momentum.py": "ecc9c93c89f4e670b8cccf213a57c6380ac73fe37bedefedb25a3e8dabfb536c",
+    "scripts/S11c_b_exports.py": "3c6555f90a85382a5e96f3f961f0e36a4875d9259fe1be947fa8e683669b7084",
+    "_measurements/S11c_d_wide_momentum_refinement.py": "d80d2c2ff303e23309a4b453ab4ca565c41cb804e029e58f1b2cfe6e11dd567b",
+    "_measurements/S11c_d_momentum_domain_prepare.py": "195c26b062d6bff63520a823f6dbf1b89d4973c4f93b004fae81f3e67800762e",
+    "_measurements/S11c_d_source_fourier_residual_recover.py": "443953029c6848c9f0ea377b7cd3005f9f537d29b2431e2122cf2f8fda83e2b9",
+    "directives/S11c_d_sympy_build_PROGRAM_BRIEF.md": "1d9a48a043c68a6b38a1951f69b82a3ea8e97f4b7bb1d8e3f4c028f03290b380",
+    "_measurements/S11c_d_continuum_grades.py": "0443c3adbeaf813ad66c60af0a50c96e9a841277d51f9c23bf1c601d2fdf329d",
+    "_measurements/S11c_d_position_domain.py": "d056a00e7500cd27a0d824b0b6f9b66ca9bbb2dd412b2b8c490d621afcf71b46",
+    "_measurements/S11c_d_momentum_action_check.py": "247d2ee6b7004888eca1d653b53f8be773c68041d7254389c4d14328d0001ff3",
+    "_measurements/S11c_d_finite_scattering_domain.py": "73341408d0f6c1eb517e435dea986e180ff53615a6102697a8e3ba6747bd35aa",
+    "_measurements/S11c_d_reduced_action_source_check.py": "aae3b2402e1707ef27f217b917dc10592f38acbe35d18356fbc4886ed854f754",
+    "_measurements/S11c_d_numerical_action_check.py": "86d5b373df8825c1e6dca198555b2a65e62822a3d9ba32868a89ca135bb7968f",
+    "_measurements/S11c_d_remaining_case_factors_plan.md": "2a0b5c1ef252d677faa627fce45a7bbce2b015d537a5230b25bcf7a53daff45f",
+    "_measurements/S11c_d_source_fourier_quadrature_check.py": "d52747cba3e5cbdf4cbff6816ccd07d79564032d0a64d57bf80aef5815430323",
+    "_measurements/S11c_d_variable_profile_input_check.py": "70cdf2811f2ccd92380be24a80bb7af49f4e1a01504b09a9dbb47f8d3cbbb3b2",
+    "directives/S11c_d_EXPLORATORY_ACCEPTANCE.md": "5c1e560a78d40739af8b1318c0487e20bf2b816c41109889e12004266c72840c",
+    "scripts/S11c_d_output_codec.py": "49873a2fa5c3184aab097263f0a6128379e094e42dbde5052456c5f3908bf717",
+    "scripts/ledger_fold.py": "97da78c6631c09e5575dd14511760506f1ac08771cf07948978004e92f0b2333",
+    "_measurements/S11c_d_three_momentum_source_check.py": "1753567b20d5739787aedf3269c783f172777043dfe92fd989525c21fadee487",
+    "_measurements/S11c_d_finite_scattering.py": "f187d9426be8069342a363a0466c175d32a8cb46101e32a14c433ccb9118e469",
+    "_measurements/S11c_d_remaining_case_sources_checkpoint.json": "555a3217a09d5d4ca7c8ff307838714f278f3088be521d510c4c4b72a1dd0312",
+    "_measurements/S11c_d_source_fourier_factorization_checkpoint.json": "fcf6f1c5598b63c11d4f8a76d2d94c2b5bace590e83d4beea3e52e82f44158a6",
+    "_measurements/S11c_d_three_momentum_adaptive.py": "a028e76029f8386c900c88c8edaf02766b821c29c179c5c26d7ce3d7860fc1c2",
+    "_measurements/S11c_d_continuum_matrices.py": "33a0e5a2fa136a55875541e15bc410159c94f56f25adc4a02589d0c704223987",
+    "_measurements/S11c_d_focused_completion_plan.md": "1917ffd7bab9d1da0a355228b865e6ba5c6bbdad009bdfbff18296492b81fcaa",
+    "_measurements/S11c_d_source_fourier_factorization_check.py": "b6573d82198f262ac5eea8362fb478a93a1f9b8ea17bd0d4645c67cb40168f23",
+    "directives/S11c_d_SHARED_PHYSICS.md": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5",
+    "_measurements/S11c_d_continuum_boundary.py": "ed3a6539d3151c52d25f12308b121897baf3bd6a5a626a598ab728988ab933a0",
+    "_measurements/S11c_d_momentum_domain_action.py": "db37d83a74ebd0fc82b903285a69a9a04ce9c7bb62341539a3b4c5f12f4956cf",
+    "_measurements/S11c_d_variable_profile_development_input.json": "660b2b0b54494dce964c7f5fbd722a76a7e894d8ed92b18b5eb6290c3c10f1d5",
+    "_measurements/S11c_d_remaining_case_factors.py": "fb50c34f50ba1cf6e2aa788cde5f2d345ee8e93b7ccc5376e341c00a14490bfd",
+    "_measurements/S11c_d_wide_momentum_adaptive.py": "4c40be5eae12631a33213b38a044de24d44d2a486c82b3e6d53b2ed8795bfdcc",
+    "scripts/S11c_c2_exports.py": "2ba5ed487b84ecb98290df6f1650fa6210fe2784cfa02a0f3cff96cd718411cd",
+    "directives/S11c_d_NONLINEAR_POLE_CONTRACT.md": "2b6018faf0d5ca772bf9c980174d8ebe7545127a3bf43ba01d1b3c0b6a5be423",
+    "_measurements/S11c_d_wide_three_momentum.py": "455ba3aaf4481a101c6e3e3b7e23b7160ef7afa453c201c9e0e0b57b5d7afc3e",
+    "_measurements/S11c_d_remaining_case_sources.py": "49db070d97ba3b15bf4e94929341fb5f4a6882ff8b2e16ee07f3fd16502064b5",
+    "_measurements/S11c_d_reduced_action_assembly_check.py": "f620a643c761474aeaa181ad34a368bc35c1f9e81fb528a81744c2a32af364a8",
+    "scripts/S11c_d_mixing_scattering_sympy_audit.py": "5bf77729682960bb59f10c672a5fe3f67a98b0a9533da7c6189a37183596050f",
+    "scripts/S11c_c1_exports.py": "a5353b86dc526fd1b56734fdbdf7dc7f42387a3195ab4de84e8994f751871cdc",
+    "_measurements/S11c_d_finite_scattering_resolution.py": "8e101517fde113c5f0a372bab531e63ebdcee3fff03c270ff98a7590e5a7b981",
+    "_measurements/S11c_d_remaining_case_factor_recover.py": "6f3f66c24064792d55941334fa793f09af4ff5b43f0f2c3e7aed5cb8aa9cb6bd",
+    "_measurements/S11c_d_remaining_case_factor_recovery_plan.md": "53f0c1b31d8e0bbe3f0d35d3aa661eb688a64173dce6393dc6b7c81529b7b87c",
+    "_measurements/S11c_d_remaining_case_factor_finish.py": "f2536777598afaa6cab18eaad6ae248f55de39e43ad0a2a5c0089384ead69715",
+    "_measurements/S11c_d_remaining_case_factor_output_plan.md": "623858d50babbc60735d50a59d117028c7eea37d81fd35512f6e516029171e6a"
+  },
+  "inputPackets": {
+    "/var/projects/toy_physics/_scratch/s11c/s11c-source-fourier-20260914/recovery-01/complete/source-factorization.pickle": "4ad4e99de3f13a8bf3e42374f1425a84521e27634635063adb497cdc94651033",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-source-fourier-20260914/recovery-01/complete/reconstruction-certificates.pickle": "c69ed83e4a484a93d8f65e1389362943155e79157ba94a1f8c9ab2fed8fb2275",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-sources-20260919/finish-01/complete/checks.json": "d118e48650e825dd72b6e9b2b54dd9f6b5f4fe3146e27a930871de338ba2c78e",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-sources-20260919/finish-01/complete/accepted-reduced-action.pickle": "e9062c3455c7e59fe816f47172062a0c118b201d03809ec0826575dac22872b0",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-sources-20260919/finish-01/complete/accepted-actions.pickle": "4c2372a7102d1db9f21a049ab3104465e8d9245ab832be88c900bc8519b46e02",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-sources-20260919/finish-01/complete/accepted-assembly.pickle": "8eda57998285137d99cce9564757627a57f8d5bc9b27091c86a65a9cc59230a0",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-sources-20260919/finish-01/complete/cases/LAB_HELD__RHOBR_CONSTANT/reduced-action.pickle": "95dbb6b5cb833b16edf3f64177b2df54af2e91379a9ee43d43021d1872aa9106",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-sources-20260919/finish-01/complete/cases/LAB_HELD__RHOBR_CONSTANT/actions.pickle": "56e8111829a8f4cb1afaf40edc43d7dbc42d2196b181b984dfddd7015d89f918",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-sources-20260919/finish-01/complete/cases/LAB_HELD__RHOBR_CONSTANT/assembly.pickle": "53a1d577e0f568b381148e9d4190434a709f633d769defe1899b94e8b474f690",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-sources-20260919/finish-01/complete/cases/MATERIAL_ADVECTED__RHO4_CONSTANT/reduced-action.pickle": "b103e83e61ddffcf8a320fe5f91ef433e1571551654f91749bed5665b5d537b9",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-sources-20260919/finish-01/complete/cases/MATERIAL_ADVECTED__RHO4_CONSTANT/actions.pickle": "c8b64088556034a465bea39bea751c62a77e3850897257dc81de1a70c8282689",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-sources-20260919/finish-01/complete/cases/MATERIAL_ADVECTED__RHO4_CONSTANT/assembly.pickle": "49dac40608b2b44e0a01d10e9f15cb758ef10015157b4d29cd47dff1b6f35c40",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-sources-20260919/finish-01/complete/cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/reduced-action.pickle": "6add07e5f8fd992204e79985b1dec0ce4e641b5d34d2f7aeaeffccd9e53207a2",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-sources-20260919/finish-01/complete/cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/actions.pickle": "75cc4419411903d36cb6f4be73652694de3bc69ff19c6117a564f331503de410",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-sources-20260919/finish-01/complete/cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/assembly.pickle": "15b54c2237f5951aba15616f3062d29d5748fcedf5fc4fedea802a5dec04bf0f",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight/complete/row-inventory.json": "af3d24ddafef7973a4d44398e7ecaccecc36ea273f006d117787cc4a7cc4d888",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight/complete/inputs.json": "3621e2388ec47b5746ba049bbdf3b3a2d1fafacfc783eedea6ea7f166fad86f7",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight/complete/preflight.json": "084a51be31933d6fa85909181e481ef3805e67d9e9701c9eb9e9103ec54f9b98",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight/complete/accepted-factorization.pickle": "4ad4e99de3f13a8bf3e42374f1425a84521e27634635063adb497cdc94651033",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight/complete/accepted-factor-certificates.pickle": "c69ed83e4a484a93d8f65e1389362943155e79157ba94a1f8c9ab2fed8fb2275",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight/complete/integral-catalogue.pickle": "1a20e7751bd504827351ba0f6864ab34784a9aa39e605dc1120c745fe727d227",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight/complete/accepted-cases/LAB_HELD__RHOBR_CONSTANT/actions.pickle": "56e8111829a8f4cb1afaf40edc43d7dbc42d2196b181b984dfddd7015d89f918",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight/complete/accepted-cases/LAB_HELD__RHOBR_CONSTANT/assembly.pickle": "53a1d577e0f568b381148e9d4190434a709f633d769defe1899b94e8b474f690",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight/complete/accepted-cases/LAB_HELD__RHOBR_CONSTANT/reduced-action.pickle": "95dbb6b5cb833b16edf3f64177b2df54af2e91379a9ee43d43021d1872aa9106",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight/complete/accepted-cases/LAB_HELD__RHO4_CONSTANT/actions.pickle": "4c2372a7102d1db9f21a049ab3104465e8d9245ab832be88c900bc8519b46e02",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight/complete/accepted-cases/LAB_HELD__RHO4_CONSTANT/assembly.pickle": "8eda57998285137d99cce9564757627a57f8d5bc9b27091c86a65a9cc59230a0",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight/complete/accepted-cases/LAB_HELD__RHO4_CONSTANT/reduced-action.pickle": "e9062c3455c7e59fe816f47172062a0c118b201d03809ec0826575dac22872b0",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight/complete/accepted-cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/actions.pickle": "75cc4419411903d36cb6f4be73652694de3bc69ff19c6117a564f331503de410",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight/complete/accepted-cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/assembly.pickle": "15b54c2237f5951aba15616f3062d29d5748fcedf5fc4fedea802a5dec04bf0f",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight/complete/accepted-cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/reduced-action.pickle": "6add07e5f8fd992204e79985b1dec0ce4e641b5d34d2f7aeaeffccd9e53207a2",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight/complete/accepted-cases/MATERIAL_ADVECTED__RHO4_CONSTANT/actions.pickle": "c8b64088556034a465bea39bea751c62a77e3850897257dc81de1a70c8282689",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight/complete/accepted-cases/MATERIAL_ADVECTED__RHO4_CONSTANT/assembly.pickle": "49dac40608b2b44e0a01d10e9f15cb758ef10015157b4d29cd47dff1b6f35c40",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight/complete/accepted-cases/MATERIAL_ADVECTED__RHO4_CONSTANT/reduced-action.pickle": "b103e83e61ddffcf8a320fe5f91ef433e1571551654f91749bed5665b5d537b9",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight/complete/rows/009/stdout": "b600e5a245fa1167d726a265c3e2b3d071d19c85e4430f7f4a2ef5f625c77c86",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight/complete/rows/009/checks.json": "9ac8a74e2bd6745a7f897a5165c0bcf72e37c372ff6e4b9b84074499f1e314ec",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight/complete/rows/009/coefficient-mutation.pickle": "820e5355ae8c2996bc6005a270aa02ef657183a78c8186d6c4a7d0ef3bade05f",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight/complete/rows/009/operands.pickle": "4b0978bd0651aee7ee789b5c879de8cca8bc6d83d35e8ef71190e2ba02033bac",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight/complete/rows/009/outcome.json": "31da90bfde8e50d8c4a3978f3a4a2892c61490cf2a1879996ed8e7cb80e23ed2",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight/complete/rows/009/amplitude_0-certificate.pickle": "188178f4c68dfea56df5ac83ebb35f1e915dbf4c8f885819ab6465bf2b36fab1",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight/complete/rows/009/stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight/complete/rows/009/factorization.pickle": "37148eb973d0119ad9097de449d915dee5d93b2964f6b077db4a8c5aaeceb002",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight/complete/rows/009/amplitude_0-pair.pickle": "f31acc94dd47094f0f35361b583621456135874f292c750852f9b3761aaad374",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight/complete/rows/009/integrand-pair.pickle": "75a5691f15595c90db30ecc2769cc5bf2dbbdf3559b82e2e16bb965d1202db5b",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight/complete/rows/009/raw-factorization.pickle": "f196da6c1e5a8d388680bb4a4a2d6d7af82a835449da1792cd122bba80c986bc",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight/complete/rows/009/integrand-certificate.pickle": "8bca111c3f139b2459ceea1fba68c71299876f4a1d61ffc529a183e74f64c437",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight/complete/rows/028/stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight/complete/rows/028/operands.pickle": "9263c08c68b4b4bc8d3600a2ad28404a9918f4bb758cbfd6bdafd7b6d9319cc0",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight/complete/rows/028/outcome.json": "63aef11d397e8f03c594a786d9bd1031d135edafddb2629314d85cd5b7b3c90f",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight/complete/rows/028/stderr": "375aea67d1fb8dd38b1498a2d9a9bee8d0c3acbfb680f0860cb3aeaf7ce5e445",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight/complete/rows/028/integrand-pair.pickle": "370a5a256db51ffc672a63af029c745fbdb1567851c9dcb4eb0c9ebf373ff1d8",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight/complete/rows/028/raw-factorization.pickle": "77bb2c5da3aec6ee93fd8b92a8d9945f8a9af69285ce32b8f7823b7e48822f03",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight/complete/rows/003/stdout": "e31bfc380669cd10ad9e74152c084dd5397505c99e5a4a6e3997cbf8ef6cc679",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight/complete/rows/003/checks.json": "7e76250e9e1126e9251ad71ba8a644b6fafe6f9de792bd27ec541a791c60f0d0",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight/complete/rows/003/coefficient-mutation.pickle": "a74a88c913767a776b117541410558c31a9261779462c2256181c7b230ebc2e0",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight/complete/rows/003/operands.pickle": "0b9f98fde6a9b032518ea3e36f7e4facd8299ced7f8a29c3ef8ae557b17f3c50",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight/complete/rows/003/outcome.json": "36e3d8c1ad7032f242540524af879929ddb5e6e5f591bd34a98c30ab0482e905",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight/complete/rows/003/amplitude_0-certificate.pickle": "44c39d7a3d9d79f07cf144cd08537fd7861e43d8e682a0bc88de558d401fa547",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight/complete/rows/003/stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight/complete/rows/003/factorization.pickle": "2d9f52b1ba03ec70defa1d0e07386240d382861ed31ecc488c7e87926eb9574d",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight/complete/rows/003/amplitude_0-pair.pickle": "ee694badf5e2fad2d245a5dd954633e614fa76da98b1e00cfdcc908b483c995c",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight/complete/rows/003/integrand-pair.pickle": "7f84298b56c2f4a885434820dc3c410591ce584699a06082e33d52bbece1ce6d",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight/complete/rows/003/raw-factorization.pickle": "0b982054d95b1352b612fe602a744755a9c0468f674f619ca52ae094b8458e4b",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight/complete/rows/003/integrand-certificate.pickle": "32996e9ba30d66c72aaf28721dd3c439a43720cb22bc6273e3ba2c3543e37aa4",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight/complete/rows/000/stdout": "62bb86f3571ef16483d4147715a6a4b67aaf68cd66454b4b7cbbbed2ff505b52",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight/complete/rows/000/checks.json": "a0d14c67ee07e91b6ff0789d853ff6daed7eb0bf780d6dbf04d9a8435b375972",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight/complete/rows/000/coefficient-mutation.pickle": "bba1566bc41aa2b17e5a69ebc11f110f92bfacfc78abf8b2ab05b9fcb849b038",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight/complete/rows/000/operands.pickle": "ab0cca240ae0ca8b3d2d7a659e25969ba95c16ea5404edcb03ebb9a4be56650d",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight/complete/rows/000/outcome.json": "5a61f81298d5994d856e5c268968c0e8fd0e3789b36012a617448131213e15ee",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight/complete/rows/000/amplitude_0-certificate.pickle": "224cb776e48d04088fc69fd2901e3d21132c0c83c85afc8243d9eb6dc7b68530",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight/complete/rows/000/stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight/complete/rows/000/factorization.pickle": "621c099aa951a41e4ba9d62f2875647feb4b3f616368337be850412e8b955f4d",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight/complete/rows/000/amplitude_0-pair.pickle": "ddcbc0ebc127f8520b4413e8f1fff0f49572d8574cfb60349744c205b84a9e37",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight/complete/rows/000/integrand-pair.pickle": "42df010f2182ce5867219e0da440af83d6d310b147e896b3ff798f0175be5d51",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight/complete/rows/000/raw-factorization.pickle": "af548d1f15fe549576624587d5ddc9d433193364f1ba9140c7e9375fd3bd8e38",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight/complete/rows/000/integrand-certificate.pickle": "e44561f0a388b679fa2ebe8516802fe78e285dc24709820c005e20e25347a568",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight/factors_preflight.invocation.json": "38e821b616bf500ca0a3c78cef0794f1df32a72722c0a25f4d6f8992c46170c6",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight/factors_preflight.stderr": "de34f24d33a3cc113d42b9f2ebf73481b323781562ff529a8b5532afc220282d",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight-recovery-02/complete/row-inventory.json": "d909367e1f7577b2f5eb394d50d6fb9972c8946a0df38e5bcce5c4829a27ee85",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight-recovery-02/complete/inputs.json": "5faea3368ee0e76c3ef7d6dddf6d8480c7d1c93cff2e53c1c39b775a058efba4",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight-recovery-02/complete/accepted-factorization.pickle": "4ad4e99de3f13a8bf3e42374f1425a84521e27634635063adb497cdc94651033",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight-recovery-02/complete/full.out": "c25d803fa2b4fe6115725f310798f55c5438156973f938a08b0dc8c8ed68d9bd",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight-recovery-02/complete/accepted-factor-certificates.pickle": "c69ed83e4a484a93d8f65e1389362943155e79157ba94a1f8c9ab2fed8fb2275",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight-recovery-02/complete/integral-catalogue.pickle": "1a20e7751bd504827351ba0f6864ab34784a9aa39e605dc1120c745fe727d227",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight-recovery-02/complete/accepted-cases/LAB_HELD__RHOBR_CONSTANT/actions.pickle": "56e8111829a8f4cb1afaf40edc43d7dbc42d2196b181b984dfddd7015d89f918",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight-recovery-02/complete/accepted-cases/LAB_HELD__RHOBR_CONSTANT/assembly.pickle": "53a1d577e0f568b381148e9d4190434a709f633d769defe1899b94e8b474f690",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight-recovery-02/complete/accepted-cases/LAB_HELD__RHOBR_CONSTANT/reduced-action.pickle": "95dbb6b5cb833b16edf3f64177b2df54af2e91379a9ee43d43021d1872aa9106",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight-recovery-02/complete/accepted-cases/LAB_HELD__RHO4_CONSTANT/actions.pickle": "4c2372a7102d1db9f21a049ab3104465e8d9245ab832be88c900bc8519b46e02",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight-recovery-02/complete/accepted-cases/LAB_HELD__RHO4_CONSTANT/assembly.pickle": "8eda57998285137d99cce9564757627a57f8d5bc9b27091c86a65a9cc59230a0",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight-recovery-02/complete/accepted-cases/LAB_HELD__RHO4_CONSTANT/reduced-action.pickle": "e9062c3455c7e59fe816f47172062a0c118b201d03809ec0826575dac22872b0",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight-recovery-02/complete/accepted-cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/actions.pickle": "75cc4419411903d36cb6f4be73652694de3bc69ff19c6117a564f331503de410",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight-recovery-02/complete/accepted-cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/assembly.pickle": "15b54c2237f5951aba15616f3062d29d5748fcedf5fc4fedea802a5dec04bf0f",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight-recovery-02/complete/accepted-cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/reduced-action.pickle": "6add07e5f8fd992204e79985b1dec0ce4e641b5d34d2f7aeaeffccd9e53207a2",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight-recovery-02/complete/accepted-cases/MATERIAL_ADVECTED__RHO4_CONSTANT/actions.pickle": "c8b64088556034a465bea39bea751c62a77e3850897257dc81de1a70c8282689",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight-recovery-02/complete/accepted-cases/MATERIAL_ADVECTED__RHO4_CONSTANT/assembly.pickle": "49dac40608b2b44e0a01d10e9f15cb758ef10015157b4d29cd47dff1b6f35c40",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight-recovery-02/complete/accepted-cases/MATERIAL_ADVECTED__RHO4_CONSTANT/reduced-action.pickle": "b103e83e61ddffcf8a320fe5f91ef433e1571551654f91749bed5665b5d537b9",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight-recovery-02/complete/rows/009/stdout": "b600e5a245fa1167d726a265c3e2b3d071d19c85e4430f7f4a2ef5f625c77c86",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight-recovery-02/complete/rows/009/checks.json": "9ac8a74e2bd6745a7f897a5165c0bcf72e37c372ff6e4b9b84074499f1e314ec",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight-recovery-02/complete/rows/009/coefficient-mutation.pickle": "820e5355ae8c2996bc6005a270aa02ef657183a78c8186d6c4a7d0ef3bade05f",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight-recovery-02/complete/rows/009/operands.pickle": "4b0978bd0651aee7ee789b5c879de8cca8bc6d83d35e8ef71190e2ba02033bac",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight-recovery-02/complete/rows/009/outcome.json": "31da90bfde8e50d8c4a3978f3a4a2892c61490cf2a1879996ed8e7cb80e23ed2",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight-recovery-02/complete/rows/009/amplitude_0-certificate.pickle": "188178f4c68dfea56df5ac83ebb35f1e915dbf4c8f885819ab6465bf2b36fab1",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight-recovery-02/complete/rows/009/stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight-recovery-02/complete/rows/009/factorization.pickle": "37148eb973d0119ad9097de449d915dee5d93b2964f6b077db4a8c5aaeceb002",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight-recovery-02/complete/rows/009/amplitude_0-pair.pickle": "f31acc94dd47094f0f35361b583621456135874f292c750852f9b3761aaad374",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight-recovery-02/complete/rows/009/integrand-pair.pickle": "75a5691f15595c90db30ecc2769cc5bf2dbbdf3559b82e2e16bb965d1202db5b",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight-recovery-02/complete/rows/009/raw-factorization.pickle": "f196da6c1e5a8d388680bb4a4a2d6d7af82a835449da1792cd122bba80c986bc",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight-recovery-02/complete/rows/009/integrand-certificate.pickle": "8bca111c3f139b2459ceea1fba68c71299876f4a1d61ffc529a183e74f64c437",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight-recovery-02/complete/rows/028/stdout": "e0b6964c5a53d2211c2d12e58ef9050eb904918d18c0a8605bcc50d0c2b67412",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight-recovery-02/complete/rows/028/checks.json": "d6b6705eab957d3de661e343d365398f00c3aa4eb81b61590b71e4010357b7f8",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight-recovery-02/complete/rows/028/coefficient-mutation.pickle": "c80424e6e2a3ca9bf9a0c1c43d2e8692fb0dc8eca570eb46ffeb03eb3018a164",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight-recovery-02/complete/rows/028/retained-raw-factorization.pickle": "77bb2c5da3aec6ee93fd8b92a8d9945f8a9af69285ce32b8f7823b7e48822f03",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight-recovery-02/complete/rows/028/operands.pickle": "9caf4db38538191ab182f846e2e2962ffca5fae460f963a4ec0afd5fbfd344fd",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight-recovery-02/complete/rows/028/outcome.json": "79713e60d702980d0f5aa3b7269cdc4bafbf9aaa77f5e9273050c1e9086adc14",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight-recovery-02/complete/rows/028/amplitude_0-certificate.pickle": "eaba96e2038c10dab512cc6877fc517dd98e5bf656635436555ae1fa8ec311ed",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight-recovery-02/complete/rows/028/stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight-recovery-02/complete/rows/028/factorization.pickle": "44b1e4ae3b7d121c743a6a276acda28e8facba1e00da558c8ccf186bf059207b",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight-recovery-02/complete/rows/028/amplitude_0-pair.pickle": "367fa608552083ffcc668de75a2d2dea92a1311e33c1c6bfd4a518323b90852b",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight-recovery-02/complete/rows/028/integrand-pair.pickle": "22ae725b51768813b62410a8d19732a5c4fc1e40534760cd8c44160e807d9f56",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight-recovery-02/complete/rows/028/integrand-certificate.pickle": "7d29350f1fe12b692f6bb4f7369a63efefe3f2ea7794a72a9230a1d04111eda2",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight-recovery-02/complete/rows/003/stdout": "e31bfc380669cd10ad9e74152c084dd5397505c99e5a4a6e3997cbf8ef6cc679",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight-recovery-02/complete/rows/003/checks.json": "7e76250e9e1126e9251ad71ba8a644b6fafe6f9de792bd27ec541a791c60f0d0",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight-recovery-02/complete/rows/003/coefficient-mutation.pickle": "a74a88c913767a776b117541410558c31a9261779462c2256181c7b230ebc2e0",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight-recovery-02/complete/rows/003/operands.pickle": "0b9f98fde6a9b032518ea3e36f7e4facd8299ced7f8a29c3ef8ae557b17f3c50",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight-recovery-02/complete/rows/003/outcome.json": "36e3d8c1ad7032f242540524af879929ddb5e6e5f591bd34a98c30ab0482e905",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight-recovery-02/complete/rows/003/amplitude_0-certificate.pickle": "44c39d7a3d9d79f07cf144cd08537fd7861e43d8e682a0bc88de558d401fa547",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight-recovery-02/complete/rows/003/stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight-recovery-02/complete/rows/003/factorization.pickle": "2d9f52b1ba03ec70defa1d0e07386240d382861ed31ecc488c7e87926eb9574d",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight-recovery-02/complete/rows/003/amplitude_0-pair.pickle": "ee694badf5e2fad2d245a5dd954633e614fa76da98b1e00cfdcc908b483c995c",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight-recovery-02/complete/rows/003/integrand-pair.pickle": "7f84298b56c2f4a885434820dc3c410591ce584699a06082e33d52bbece1ce6d",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight-recovery-02/complete/rows/003/raw-factorization.pickle": "0b982054d95b1352b612fe602a744755a9c0468f674f619ca52ae094b8458e4b",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight-recovery-02/complete/rows/003/integrand-certificate.pickle": "32996e9ba30d66c72aaf28721dd3c439a43720cb22bc6273e3ba2c3543e37aa4",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight-recovery-02/complete/rows/000/stdout": "62bb86f3571ef16483d4147715a6a4b67aaf68cd66454b4b7cbbbed2ff505b52",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight-recovery-02/complete/rows/000/checks.json": "a0d14c67ee07e91b6ff0789d853ff6daed7eb0bf780d6dbf04d9a8435b375972",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight-recovery-02/complete/rows/000/coefficient-mutation.pickle": "bba1566bc41aa2b17e5a69ebc11f110f92bfacfc78abf8b2ab05b9fcb849b038",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight-recovery-02/complete/rows/000/operands.pickle": "ab0cca240ae0ca8b3d2d7a659e25969ba95c16ea5404edcb03ebb9a4be56650d",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight-recovery-02/complete/rows/000/outcome.json": "5a61f81298d5994d856e5c268968c0e8fd0e3789b36012a617448131213e15ee",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight-recovery-02/complete/rows/000/amplitude_0-certificate.pickle": "224cb776e48d04088fc69fd2901e3d21132c0c83c85afc8243d9eb6dc7b68530",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight-recovery-02/complete/rows/000/stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight-recovery-02/complete/rows/000/factorization.pickle": "621c099aa951a41e4ba9d62f2875647feb4b3f616368337be850412e8b955f4d",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight-recovery-02/complete/rows/000/amplitude_0-pair.pickle": "ddcbc0ebc127f8520b4413e8f1fff0f49572d8574cfb60349744c205b84a9e37",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight-recovery-02/complete/rows/000/integrand-pair.pickle": "42df010f2182ce5867219e0da440af83d6d310b147e896b3ff798f0175be5d51",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight-recovery-02/complete/rows/000/raw-factorization.pickle": "af548d1f15fe549576624587d5ddc9d433193364f1ba9140c7e9375fd3bd8e38",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight-recovery-02/complete/rows/000/integrand-certificate.pickle": "e44561f0a388b679fa2ebe8516802fe78e285dc24709820c005e20e25347a568",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight-recovery-02/active.json": "df6a9c9ecbba3bc5897d5d77856bc9c9b2e6547b822e6257ef12e1d56db26dad",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight-recovery-02/factors_recover.invocation.json": "df6a9c9ecbba3bc5897d5d77856bc9c9b2e6547b822e6257ef12e1d56db26dad",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight-recovery-02/factors_recover.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight-recovery-02/factors_recover.stderr": "0880f624535d78fc6ddf1230103a47c3ef1e887413401c400edeba085cc211bd"
+  },
+  "artifacts": {
+    "accepted-factorization.pickle": {
+      "bytes": 6465424,
+      "sha256": "4ad4e99de3f13a8bf3e42374f1425a84521e27634635063adb497cdc94651033"
+    },
+    "full.out": {
+      "bytes": 2508023,
+      "sha256": "1093040bb6fb42c2325aec3923846ac38694c9dd8cc8a2fda2ddfb9596c12e8d"
+    },
+    "accepted-factor-certificates.pickle": {
+      "bytes": 6574042,
+      "sha256": "c69ed83e4a484a93d8f65e1389362943155e79157ba94a1f8c9ab2fed8fb2275"
+    },
+    "integral-catalogue.pickle": {
+      "bytes": 49832,
+      "sha256": "1a20e7751bd504827351ba0f6864ab34784a9aa39e605dc1120c745fe727d227"
+    },
+    "accepted-cases/LAB_HELD__RHOBR_CONSTANT/actions.pickle": {
+      "bytes": 148401,
+      "sha256": "56e8111829a8f4cb1afaf40edc43d7dbc42d2196b181b984dfddd7015d89f918"
+    },
+    "accepted-cases/LAB_HELD__RHOBR_CONSTANT/assembly.pickle": {
+      "bytes": 103044,
+      "sha256": "53a1d577e0f568b381148e9d4190434a709f633d769defe1899b94e8b474f690"
+    },
+    "accepted-cases/LAB_HELD__RHOBR_CONSTANT/reduced-action.pickle": {
+      "bytes": 1112717,
+      "sha256": "95dbb6b5cb833b16edf3f64177b2df54af2e91379a9ee43d43021d1872aa9106"
+    },
+    "accepted-cases/LAB_HELD__RHO4_CONSTANT/actions.pickle": {
+      "bytes": 176671,
+      "sha256": "4c2372a7102d1db9f21a049ab3104465e8d9245ab832be88c900bc8519b46e02"
+    },
+    "accepted-cases/LAB_HELD__RHO4_CONSTANT/assembly.pickle": {
+      "bytes": 111081,
+      "sha256": "8eda57998285137d99cce9564757627a57f8d5bc9b27091c86a65a9cc59230a0"
+    },
+    "accepted-cases/LAB_HELD__RHO4_CONSTANT/reduced-action.pickle": {
+      "bytes": 1146420,
+      "sha256": "e9062c3455c7e59fe816f47172062a0c118b201d03809ec0826575dac22872b0"
+    },
+    "accepted-cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/actions.pickle": {
+      "bytes": 195585,
+      "sha256": "75cc4419411903d36cb6f4be73652694de3bc69ff19c6117a564f331503de410"
+    },
+    "accepted-cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/assembly.pickle": {
+      "bytes": 135549,
+      "sha256": "15b54c2237f5951aba15616f3062d29d5748fcedf5fc4fedea802a5dec04bf0f"
+    },
+    "accepted-cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/reduced-action.pickle": {
+      "bytes": 1153587,
+      "sha256": "6add07e5f8fd992204e79985b1dec0ce4e641b5d34d2f7aeaeffccd9e53207a2"
+    },
+    "accepted-cases/MATERIAL_ADVECTED__RHO4_CONSTANT/actions.pickle": {
+      "bytes": 205667,
+      "sha256": "c8b64088556034a465bea39bea751c62a77e3850897257dc81de1a70c8282689"
+    },
+    "accepted-cases/MATERIAL_ADVECTED__RHO4_CONSTANT/assembly.pickle": {
+      "bytes": 139074,
+      "sha256": "49dac40608b2b44e0a01d10e9f15cb758ef10015157b4d29cd47dff1b6f35c40"
+    },
+    "accepted-cases/MATERIAL_ADVECTED__RHO4_CONSTANT/reduced-action.pickle": {
+      "bytes": 1151422,
+      "sha256": "b103e83e61ddffcf8a320fe5f91ef433e1571551654f91749bed5665b5d537b9"
+    },
+    "rows/006/coefficient-mutation.pickle": {
+      "bytes": 170605,
+      "sha256": "3e74cc870e27c39a8c12b2d39b63355e926eabb51da3c3dfbea24c8a0772968d"
+    },
+    "rows/006/operands.pickle": {
+      "bytes": 4882,
+      "sha256": "c7532a5bd81401cc306e4e3f034ca173e225d18167797da0a5ee18f9abe345c6"
+    },
+    "rows/006/amplitude_0-certificate.pickle": {
+      "bytes": 4561,
+      "sha256": "44540a4581b2dadf95268338af0bcfa5c9d2e96b2b25176afa0edda0a809bf3a"
+    },
+    "rows/006/factorization.pickle": {
+      "bytes": 242625,
+      "sha256": "5bcc1585d1a7e607bc0f37490029dcaa48fdd57e4931e0742c6bda774b4d0c99"
+    },
+    "rows/006/amplitude_0-pair.pickle": {
+      "bytes": 11142,
+      "sha256": "d0218725165a42c3991def33468031dd1ad05225972aab1998810e3f422529e2"
+    },
+    "rows/006/integrand-pair.pickle": {
+      "bytes": 387096,
+      "sha256": "d4ff313bf9516402da8ae01795cc919443f7afd386c0865302da2ad451173a09"
+    },
+    "rows/006/raw-factorization.pickle": {
+      "bytes": 235460,
+      "sha256": "0b0d52b6c8f6a3bb7562a3e17de0e27e940121d4955a1a755be341d8c116b78e"
+    },
+    "rows/006/integrand-certificate.pickle": {
+      "bytes": 151647,
+      "sha256": "8037b1380493c0338b733d8ee08551e77d3f8c1b82f2f075661c61ca61547a57"
+    },
+    "rows/011/coefficient-mutation.pickle": {
+      "bytes": 6062,
+      "sha256": "3e6fe9693b0c019dbfbf862b47276a9abb1995a29afa27f0cef87a3f2fde502e"
+    },
+    "rows/011/operands.pickle": {
+      "bytes": 2724,
+      "sha256": "89164ae3a225854a0c5d20bb82d6e0cb48a4600529fc71764a1d61d19714dfe9"
+    },
+    "rows/011/amplitude_0-certificate.pickle": {
+      "bytes": 4992,
+      "sha256": "4ce7393150b9788c135a38b3d9dc2eeede0fe9c747fea157f4e8f68957231547"
+    },
+    "rows/011/factorization.pickle": {
+      "bytes": 40136,
+      "sha256": "8503df02ab95838778bc4a5243ac16235404dbf433c277886988fb47e8a6c0e5"
+    },
+    "rows/011/amplitude_0-pair.pickle": {
+      "bytes": 13376,
+      "sha256": "5ab0c65d033c10d3ed4c6f71234586deaf2889de4fac9b4a40186ccf60cee255"
+    },
+    "rows/011/integrand-pair.pickle": {
+      "bytes": 23424,
+      "sha256": "aa570c39ff89b0276b172b2f5eebd4fb33904c526243f3b2b6a487fedb8093f9"
+    },
+    "rows/011/raw-factorization.pickle": {
+      "bytes": 35738,
+      "sha256": "414d4c8ab55d63c17306851b737deca2e368b5be871b2185070dae41a2ba5902"
+    },
+    "rows/011/integrand-certificate.pickle": {
+      "bytes": 4370,
+      "sha256": "c2782c1ac4ed86f509955db1e29df1ce04729e7f90beb48cc1b2e2192f3f518d"
+    },
+    "rows/031/coefficient-mutation.pickle": {
+      "bytes": 1074853,
+      "sha256": "fea29b94568a867b965f7001fb15592e31affd73cedb70a93828a64a9609349e"
+    },
+    "rows/031/operands.pickle": {
+      "bytes": 5557,
+      "sha256": "63ec1fde3a23d585bcf1721201a93fcab8221125b5264a6de2c84ef5e75dc7b6"
+    },
+    "rows/031/amplitude_0-certificate.pickle": {
+      "bytes": 9814,
+      "sha256": "53a94b43c1d7b97ee52413d8d6a5afafb51c555a479f8eb22bea128886607fb9"
+    },
+    "rows/031/factorization.pickle": {
+      "bytes": 334793,
+      "sha256": "7b51093c61440f9b29b6414f116ec798df92bbbdcf0bbca3121ddc72f05e0cac"
+    },
+    "rows/031/amplitude_0-pair.pickle": {
+      "bytes": 45803,
+      "sha256": "84799259390fee964d1d9575ef8f6975cf79005525f59824a62bad6d56c6a9cc"
+    },
+    "rows/031/integrand-pair.pickle": {
+      "bytes": 518769,
+      "sha256": "e1fb1ee7d9d43792d4b48afbac3c96e4bb6fc50367865db54566edf58434b86b"
+    },
+    "rows/031/raw-factorization.pickle": {
+      "bytes": 325221,
+      "sha256": "22910ec5711fe2f29b7e226a661411d0e7f562619891c9c73e39fb18be0c7410"
+    },
+    "rows/031/integrand-certificate.pickle": {
+      "bytes": 206584,
+      "sha256": "abd9cd6d7c641fc48b5313a203158724119797a98d2f9f2913cdef71ace3da53"
+    },
+    "rows/016/coefficient-mutation.pickle": {
+      "bytes": 6077,
+      "sha256": "a5dbb1083e9896e049cfb08cb3b58871290e545593eabb0f707ae6d41834d18f"
+    },
+    "rows/016/operands.pickle": {
+      "bytes": 2550,
+      "sha256": "734d2a5de73ba30ba28dea9d547bcdb78c016eb3ff3d2e6d86e132255ab847e8"
+    },
+    "rows/016/amplitude_0-certificate.pickle": {
+      "bytes": 5269,
+      "sha256": "5594b42793500b2daf74e1f154fdf034c520cd825d598bae84686e83310daac9"
+    },
+    "rows/016/factorization.pickle": {
+      "bytes": 40365,
+      "sha256": "082c98ce2f4961e6d9bccc93f5f220827d9d2793d589bed8270ba415ddc92bf1"
+    },
+    "rows/016/amplitude_0-pair.pickle": {
+      "bytes": 11656,
+      "sha256": "a23ebf2b7f29ed2b06294826b0a3f024cb3fa0c9473694f2e53c39cb4708168b"
+    },
+    "rows/016/integrand-pair.pickle": {
+      "bytes": 20844,
+      "sha256": "aab5036a045313d1d876dfec97b342bd80b88f85d55ba746a25c6a1564793200"
+    },
+    "rows/016/raw-factorization.pickle": {
+      "bytes": 35498,
+      "sha256": "1743be55a81b16a13995228cda7cd4bff82849e720e7c74fd273a1b4e77b5d8b"
+    },
+    "rows/016/integrand-certificate.pickle": {
+      "bytes": 4514,
+      "sha256": "b5837bdbc0d9cc681d5f40e463b3c24b838db25dcea993cf04f24c47f4fd76fd"
+    },
+    "rows/009/coefficient-mutation.pickle": {
+      "bytes": 3813,
+      "sha256": "820e5355ae8c2996bc6005a270aa02ef657183a78c8186d6c4a7d0ef3bade05f"
+    },
+    "rows/009/operands.pickle": {
+      "bytes": 2483,
+      "sha256": "4b0978bd0651aee7ee789b5c879de8cca8bc6d83d35e8ef71190e2ba02033bac"
+    },
+    "rows/009/amplitude_0-certificate.pickle": {
+      "bytes": 2237,
+      "sha256": "188178f4c68dfea56df5ac83ebb35f1e915dbf4c8f885819ab6465bf2b36fab1"
+    },
+    "rows/009/factorization.pickle": {
+      "bytes": 36630,
+      "sha256": "37148eb973d0119ad9097de449d915dee5d93b2964f6b077db4a8c5aaeceb002"
+    },
+    "rows/009/amplitude_0-pair.pickle": {
+      "bytes": 5195,
+      "sha256": "f31acc94dd47094f0f35361b583621456135874f292c750852f9b3761aaad374"
+    },
+    "rows/009/integrand-pair.pickle": {
+      "bytes": 12658,
+      "sha256": "75a5691f15595c90db30ecc2769cc5bf2dbbdf3559b82e2e16bb965d1202db5b"
+    },
+    "rows/009/raw-factorization.pickle": {
+      "bytes": 34223,
+      "sha256": "f196da6c1e5a8d388680bb4a4a2d6d7af82a835449da1792cd122bba80c986bc"
+    },
+    "rows/009/integrand-certificate.pickle": {
+      "bytes": 3068,
+      "sha256": "8bca111c3f139b2459ceea1fba68c71299876f4a1d61ffc529a183e74f64c437"
+    },
+    "rows/001/coefficient-mutation.pickle": {
+      "bytes": 4084,
+      "sha256": "1be626add0ba3ee2c497c5705aea7203bfa5c74b043464979fefe1c98ccd606c"
+    },
+    "rows/001/operands.pickle": {
+      "bytes": 1878,
+      "sha256": "61855d8e7c964b7822a283327524a621949e7c57ad11c23a0d2c49e020ebd884"
+    },
+    "rows/001/amplitude_0-certificate.pickle": {
+      "bytes": 1996,
+      "sha256": "03636e1381572235ddb29eac31d065f54d9c4bde581d03c8e240496fee73b438"
+    },
+    "rows/001/factorization.pickle": {
+      "bytes": 25277,
+      "sha256": "38a7a5a126e3e73d8e36a4a6601794f8ae78747a2b82986fd1b72879bd4baeea"
+    },
+    "rows/001/amplitude_0-pair.pickle": {
+      "bytes": 2943,
+      "sha256": "0b1a8bf8704ceb0a7aa54bca3af28f883b8e4bbdea4a5b82095c92df6cdd8d20"
+    },
+    "rows/001/integrand-pair.pickle": {
+      "bytes": 12252,
+      "sha256": "bc5cc7387842310c89c2a7d66d006907cae8049bb65f8084aeceac4aecc9f011"
+    },
+    "rows/001/raw-factorization.pickle": {
+      "bytes": 22401,
+      "sha256": "e1b898579ae2af4d4bc95f3e36e1876bed00770e28ce17afa02da2e9b0f574cf"
+    },
+    "rows/001/integrand-certificate.pickle": {
+      "bytes": 3210,
+      "sha256": "5f097f93f402850cd34fe862f74eae0a2919935f7bd36553e8e8647126b714a1"
+    },
+    "rows/029/coefficient-mutation.pickle": {
+      "bytes": 170545,
+      "sha256": "cb87a9c3cc18c569119e6539489ee5bc9175c3b74650d0841bade0155cd45baa"
+    },
+    "rows/029/operands.pickle": {
+      "bytes": 4946,
+      "sha256": "2be92d11a3981846dcf29168fcefb2f5996f05ae00080232f26516bc33c0c206"
+    },
+    "rows/029/amplitude_0-certificate.pickle": {
+      "bytes": 4692,
+      "sha256": "945ad7655c19b9d2c6050dfd3b0c002d2cf060bdf85e9577be754e679dc93b99"
+    },
+    "rows/029/factorization.pickle": {
+      "bytes": 263626,
+      "sha256": "d1cd5f028d98cbada5d37213eba612bda0ffe88e08ed0071d19a408e713848e2"
+    },
+    "rows/029/amplitude_0-pair.pickle": {
+      "bytes": 11679,
+      "sha256": "21c2fa8932f40f9c96d1dd178a58c352b89ec4ef1759ec330be4c4dfdbadf3a7"
+    },
+    "rows/029/integrand-pair.pickle": {
+      "bytes": 388477,
+      "sha256": "ce3d9c4b8db19a491741a28289cd3f32c83eb797674f7b91a84097a6a56f0e87"
+    },
+    "rows/029/raw-factorization.pickle": {
+      "bytes": 256434,
+      "sha256": "ae3c00f1049abcf9cd3b93a7f430e618e976af332a12cecee99338f9505e2533"
+    },
+    "rows/029/integrand-certificate.pickle": {
+      "bytes": 147218,
+      "sha256": "a21f5ed720730536e9486df302d2cb09b0a3e5b2d753c3f65a16c439ffa93cb0"
+    },
+    "rows/028/coefficient-mutation.pickle": {
+      "bytes": 170264,
+      "sha256": "c80424e6e2a3ca9bf9a0c1c43d2e8692fb0dc8eca570eb46ffeb03eb3018a164"
+    },
+    "rows/028/retained-raw-factorization.pickle": {
+      "bytes": 256264,
+      "sha256": "77bb2c5da3aec6ee93fd8b92a8d9945f8a9af69285ce32b8f7823b7e48822f03"
+    },
+    "rows/028/operands.pickle": {
+      "bytes": 4946,
+      "sha256": "9caf4db38538191ab182f846e2e2962ffca5fae460f963a4ec0afd5fbfd344fd"
+    },
+    "rows/028/amplitude_0-certificate.pickle": {
+      "bytes": 4928,
+      "sha256": "eaba96e2038c10dab512cc6877fc517dd98e5bf656635436555ae1fa8ec311ed"
+    },
+    "rows/028/factorization.pickle": {
+      "bytes": 264159,
+      "sha256": "44b1e4ae3b7d121c743a6a276acda28e8facba1e00da558c8ccf186bf059207b"
+    },
+    "rows/028/amplitude_0-pair.pickle": {
+      "bytes": 11943,
+      "sha256": "367fa608552083ffcc668de75a2d2dea92a1311e33c1c6bfd4a518323b90852b"
+    },
+    "rows/028/integrand-pair.pickle": {
+      "bytes": 389334,
+      "sha256": "22ae725b51768813b62410a8d19732a5c4fc1e40534760cd8c44160e807d9f56"
+    },
+    "rows/028/integrand-certificate.pickle": {
+      "bytes": 147246,
+      "sha256": "7d29350f1fe12b692f6bb4f7369a63efefe3f2ea7794a72a9230a1d04111eda2"
+    },
+    "rows/014/coefficient-mutation.pickle": {
+      "bytes": 6077,
+      "sha256": "623cb1b1c6075aec150dc36dba2fc68af44e77a2befad3fbf5e24c2e3ca1b27d"
+    },
+    "rows/014/operands.pickle": {
+      "bytes": 2550,
+      "sha256": "f4335577887d54abee1ce9265d9b7c7af0ff8ba42f13ad9291978dd30bd67681"
+    },
+    "rows/014/amplitude_0-certificate.pickle": {
+      "bytes": 5047,
+      "sha256": "742fba60de8743a6d111aefc5a9956ccf7959cf9f80ce86547b4f40b86acda74"
+    },
+    "rows/014/factorization.pickle": {
+      "bytes": 40143,
+      "sha256": "5cc79194d97db0103aa38969dea73ed32ac2d379f354278aea57e2fcfdc828a1"
+    },
+    "rows/014/amplitude_0-pair.pickle": {
+      "bytes": 11656,
+      "sha256": "af78dbc86213611a86a5c83a367903c7afdf06aea82a5cc02463cebe852a9163"
+    },
+    "rows/014/integrand-pair.pickle": {
+      "bytes": 20844,
+      "sha256": "9d73899cfe475a5c1249be653ccb29a585cf258a69ed6151aeaf3871395f8fef"
+    },
+    "rows/014/raw-factorization.pickle": {
+      "bytes": 35498,
+      "sha256": "66d736d90aa180fbc0529cf81915e3fb6e57a6c6bdf6c763bdc6158ed9a0e115"
+    },
+    "rows/014/integrand-certificate.pickle": {
+      "bytes": 4514,
+      "sha256": "45852d6bf44aa862534155511b0c7e63b196a0dea8648f07ad8d2d9926833524"
+    },
+    "rows/007/coefficient-mutation.pickle": {
+      "bytes": 212506,
+      "sha256": "91b7a76ac20973725a2f000b5a23beda2f7b0fda14b99e94f04d762708e4f0f0"
+    },
+    "rows/007/operands.pickle": {
+      "bytes": 4953,
+      "sha256": "60f7cfbb8facb9a96c90a63ed0d2999b75d8be50f9640cd0f58f9ee39e65af25"
+    },
+    "rows/007/amplitude_0-certificate.pickle": {
+      "bytes": 4834,
+      "sha256": "17163e596ebad8b44b85b8fe657369cd4afaf74663d06e362d0893208baaf571"
+    },
+    "rows/007/factorization.pickle": {
+      "bytes": 196705,
+      "sha256": "beb97c17fdc83bcbf997f6456245391f3c95deb0cf6e4f60148e338facb64f05"
+    },
+    "rows/007/amplitude_0-pair.pickle": {
+      "bytes": 13199,
+      "sha256": "240a1bcc9cf1007f2772f42e891ef52623f06eeeae01b9249d93e076df5bc328"
+    },
+    "rows/007/integrand-pair.pickle": {
+      "bytes": 350906,
+      "sha256": "e3600c9c09f48df17f0564392f99df8f1afe848009ebea6e63b88732335159b6"
+    },
+    "rows/007/raw-factorization.pickle": {
+      "bytes": 189051,
+      "sha256": "eaa737dbc621df59b17bed777860b74d8f60869996e6dc80b8c66efc4f86b447"
+    },
+    "rows/007/integrand-certificate.pickle": {
+      "bytes": 121261,
+      "sha256": "48da78ba5d2f7e94ebb3d6d7fae5c2a4e0e86bc6c2dea46427c15331ec4c185a"
+    },
+    "rows/024/coefficient-mutation.pickle": {
+      "bytes": 170460,
+      "sha256": "3731ee33cee7279f1906ed6b85f614604ad3dca38faa4f1128f131b5178bfa15"
+    },
+    "rows/024/operands.pickle": {
+      "bytes": 4927,
+      "sha256": "bc2ebeea6c44115375d2832b54bf0f17c47802eb23950812af6f1c1f50d6d6f8"
+    },
+    "rows/024/amplitude_0-certificate.pickle": {
+      "bytes": 4726,
+      "sha256": "b8980a148823ba08ac8aa0e0d87c02684a9b15cd305e4c468a4dc9e1d9372384"
+    },
+    "rows/024/factorization.pickle": {
+      "bytes": 255728,
+      "sha256": "76780f338f93435d640b63429fa7494217b1e92bbcd25962f24edb6e46a50e15"
+    },
+    "rows/024/amplitude_0-pair.pickle": {
+      "bytes": 11574,
+      "sha256": "311ecb498d1f8ec91b25fb77decbed1236e1caabc5027d4e4051582d54d9dce1"
+    },
+    "rows/024/integrand-pair.pickle": {
+      "bytes": 389094,
+      "sha256": "baa7d5e8782cf661fac8556319c4f1027c05c966579fcc5dda2611b9b717f61e"
+    },
+    "rows/024/raw-factorization.pickle": {
+      "bytes": 248547,
+      "sha256": "ccd15ac7aa1ca4bd4491142f958fc692eb9f4acca4a0d5560a1b3dd388d3d152"
+    },
+    "rows/024/integrand-certificate.pickle": {
+      "bytes": 147230,
+      "sha256": "ac6c6583e4b5e33939e3d21f66b082f630374d63bbd6d4f23585114f0df56665"
+    },
+    "rows/021/coefficient-mutation.pickle": {
+      "bytes": 5604,
+      "sha256": "d8f71160a6bb5b52c41cd7d9f1dd10407a3bfcc70c071cbb85a5dd655b277ec6"
+    },
+    "rows/021/operands.pickle": {
+      "bytes": 2556,
+      "sha256": "6c2a772347ce57fa33c55e74600121823e15a7fe58e9c970079e36daf0cad8ad"
+    },
+    "rows/021/amplitude_0-certificate.pickle": {
+      "bytes": 4736,
+      "sha256": "8d7e18b7ce2ddfc6ac090354bef794995120ef6b5bed8ef13eaed94d647a46a7"
+    },
+    "rows/021/factorization.pickle": {
+      "bytes": 39616,
+      "sha256": "67339c400f2377f6c51fe7f602271851b382514919931d0448023d1f5b1cfc66"
+    },
+    "rows/021/amplitude_0-pair.pickle": {
+      "bytes": 11572,
+      "sha256": "c23abca72c19c39708c408028386465dbeaecfd185d243810b6d60afef17caf0"
+    },
+    "rows/021/integrand-pair.pickle": {
+      "bytes": 22882,
+      "sha256": "2e193ae6203f65ed641e2600c1388adac0c12ee5aff6fe5c44620870bdc5f019"
+    },
+    "rows/021/raw-factorization.pickle": {
+      "bytes": 35396,
+      "sha256": "97aed14319a833abb6468b4dfc0e20993b3bf12a18e93949b301ebfa292976c7"
+    },
+    "rows/021/integrand-certificate.pickle": {
+      "bytes": 4292,
+      "sha256": "56967e47453ad8d54e786bd3dab71e8c59334999709ec618b51459110216a6fc"
+    },
+    "rows/019/coefficient-mutation.pickle": {
+      "bytes": 4536,
+      "sha256": "fdd9d3f79ca43c575faa2294c388664c0dd628d6405b387261c81cd3011999de"
+    },
+    "rows/019/operands.pickle": {
+      "bytes": 2212,
+      "sha256": "fb7301e4d1b1ad8c649686b1851e7ede28cc0500baa3eeddde665c4db04e9b31"
+    },
+    "rows/019/amplitude_0-certificate.pickle": {
+      "bytes": 3117,
+      "sha256": "3bbb0971985f2f16ac4df04e8ddbef9986a7b0e6c9a6af3011feac36cb136802"
+    },
+    "rows/019/factorization.pickle": {
+      "bytes": 37480,
+      "sha256": "04580e23d428a404cece682538c431fb2cf36a22fa7205ce0359e895ef8d8e67"
+    },
+    "rows/019/amplitude_0-pair.pickle": {
+      "bytes": 5195,
+      "sha256": "f31acc94dd47094f0f35361b583621456135874f292c750852f9b3761aaad374"
+    },
+    "rows/019/integrand-pair.pickle": {
+      "bytes": 14654,
+      "sha256": "25fe57a81eb7598ecd50bb1ea8b10bf4e7836fb87d661127e1dcf428635faa67"
+    },
+    "rows/019/raw-factorization.pickle": {
+      "bytes": 34171,
+      "sha256": "c245704ae9d71db755b5697c363936419ae3e957daf623d454a8f760f29df49d"
+    },
+    "rows/019/integrand-certificate.pickle": {
+      "bytes": 3618,
+      "sha256": "3b1adedccb02cd59779d370c642ca78e3eeb0d323d1a53b5a2e142faa61833b4"
+    },
+    "rows/002/coefficient-mutation.pickle": {
+      "bytes": 3641,
+      "sha256": "ee4d44064a5ab93d121d2abce533e16e0f1bdf2b8a639d0039c24af6b55bb689"
+    },
+    "rows/002/operands.pickle": {
+      "bytes": 1801,
+      "sha256": "cce761bf7b717f18b8ecacbb91538813a63b85e6766aa49cd93ee92c08398275"
+    },
+    "rows/002/amplitude_0-certificate.pickle": {
+      "bytes": 1532,
+      "sha256": "aa6690038ccfa3d29597b388899e1ae1c7d0c71d3a834deb28c1469dc87811b4"
+    },
+    "rows/002/factorization.pickle": {
+      "bytes": 24861,
+      "sha256": "9d1bbaf53da68186d3d9b8c695bb6fd80b0b3e0dbc3eb71d17c6e06b5c2a3cd4"
+    },
+    "rows/002/amplitude_0-pair.pickle": {
+      "bytes": 1349,
+      "sha256": "1f4c68e28d49936934e87522caedd454c71ae42bf221e2f0d0f9d6d0d1d73d08"
+    },
+    "rows/002/integrand-pair.pickle": {
+      "bytes": 10710,
+      "sha256": "cb9a8c7f1b63603a23a160914d9126bbec6b442362903721bcab43270702d113"
+    },
+    "rows/002/raw-factorization.pickle": {
+      "bytes": 22225,
+      "sha256": "5c73798a34ef5244070adf03a954f31b3cc404968b07a1805ce9c126b1880684"
+    },
+    "rows/002/integrand-certificate.pickle": {
+      "bytes": 3069,
+      "sha256": "a2e4696b58b6bbb3067433a1edbdfa6ee732d129095ddb9627ca192f73b494e2"
+    },
+    "rows/005/coefficient-mutation.pickle": {
+      "bytes": 170272,
+      "sha256": "e6a1e23cf7dbd02160f4bfa9bdc13ce1220009dbc45127b936d65ac4d9778108"
+    },
+    "rows/005/operands.pickle": {
+      "bytes": 4882,
+      "sha256": "2da3248fb98f7c51a6e3340bfb6dcd404cd4835e0778af99e77bc406ee89b879"
+    },
+    "rows/005/amplitude_0-certificate.pickle": {
+      "bytes": 4524,
+      "sha256": "ec92d9401799428bf114d28112c81a4816db28218e2e27afc67f09a583218888"
+    },
+    "rows/005/factorization.pickle": {
+      "bytes": 242482,
+      "sha256": "68a93eccca2301a9e186181189883119df80dfdbf23137805c415bba5082ddc1"
+    },
+    "rows/005/amplitude_0-pair.pickle": {
+      "bytes": 11142,
+      "sha256": "eb1c3fd2c8e65134ec2554208849c8d6d406d10bd887dc2b07062a410de7697a"
+    },
+    "rows/005/integrand-pair.pickle": {
+      "bytes": 387096,
+      "sha256": "0c32de4001fa54f041bdbf8f70145d784c2d8138bd7211a7acd673091e3d8e88"
+    },
+    "rows/005/raw-factorization.pickle": {
+      "bytes": 235460,
+      "sha256": "4bec0b1759394be0396f678aa8321e3651afbda8c8acbee92114ccda21c0d808"
+    },
+    "rows/005/integrand-certificate.pickle": {
+      "bytes": 151544,
+      "sha256": "c50dd5c9ca8bc8d6a6db27ddcb82566d30d1b7defec56f29f35d3997b3927815"
+    },
+    "rows/025/coefficient-mutation.pickle": {
+      "bytes": 170460,
+      "sha256": "7c1ac42f0d86dd4b2d4bf828ba1fa23c84f82827a7a30e0db1e7d97dce9808ae"
+    },
+    "rows/025/operands.pickle": {
+      "bytes": 4927,
+      "sha256": "8f666dda5b791fb49304ae4a2bbb820f0fda6b4b87735b43023a252d27bc0dc2"
+    },
+    "rows/025/amplitude_0-certificate.pickle": {
+      "bytes": 4726,
+      "sha256": "c0a0a84834a077bc5605e9045a6ad382825aa8f2d461f35434dd25c90db6c086"
+    },
+    "rows/025/factorization.pickle": {
+      "bytes": 255728,
+      "sha256": "9aebe3a9ba21a13c68f937a4da4e00db78994b1135b2e7b0877de9a211cd1446"
+    },
+    "rows/025/amplitude_0-pair.pickle": {
+      "bytes": 11574,
+      "sha256": "8ffecda630cf1ddc50945f4e9466669d27f460ba381727d3d3a6f40b552c92b3"
+    },
+    "rows/025/integrand-pair.pickle": {
+      "bytes": 389094,
+      "sha256": "65090eccdc372ee1bdc1898f066f16a3a317a11ec08659c313b9d9fe51aaa9f8"
+    },
+    "rows/025/raw-factorization.pickle": {
+      "bytes": 248547,
+      "sha256": "b1a8a25eed524b89061cccd4857146f3767c723f2ccb7a774a0ddef0391c13c2"
+    },
+    "rows/025/integrand-certificate.pickle": {
+      "bytes": 147230,
+      "sha256": "f2380952c76d3dd7e32ab640ee3367538d40c28187f520ea5d4e9ae64129e33e"
+    },
+    "rows/023/coefficient-mutation.pickle": {
+      "bytes": 8690,
+      "sha256": "7224db85bfc4ffa87eb930673b2f8a51f768b34f2e6e66e8de918674eb187b39"
+    },
+    "rows/023/operands.pickle": {
+      "bytes": 3090,
+      "sha256": "d9a378c2b4da5aaabda04ad91101313a24f6b3ef9ff4be9b4d99cc262f6f4022"
+    },
+    "rows/023/amplitude_0-certificate.pickle": {
+      "bytes": 10011,
+      "sha256": "f75806fe9d3e40a7f9d550f88e082e1134e4beb6f93b23ac5e6ea7de7e9d9b5b"
+    },
+    "rows/023/factorization.pickle": {
+      "bytes": 45428,
+      "sha256": "cac5bf2551331317c1c283859f79fdb036c70d96350a30189991423665f178ee"
+    },
+    "rows/023/amplitude_0-pair.pickle": {
+      "bytes": 45118,
+      "sha256": "e2d4d8c07ee99d09095da71f6d7d15c05fcf20104ce7e089d8df120d541a8c3a"
+    },
+    "rows/023/integrand-pair.pickle": {
+      "bytes": 43243,
+      "sha256": "aaeffa1a94e36e8070f7142f6b404fab93f4b2706da6aec473542fbbca1c478e"
+    },
+    "rows/023/raw-factorization.pickle": {
+      "bytes": 39085,
+      "sha256": "46a3c463d358e2bd3f98bfc584fdc219b6c8b226b393483456ec5536bcbcf2b3"
+    },
+    "rows/023/integrand-certificate.pickle": {
+      "bytes": 5227,
+      "sha256": "de0924bbf67c95b73f4329587af9a2d1a67f5832a5324c4cd6523b9ef578060f"
+    },
+    "rows/022/coefficient-mutation.pickle": {
+      "bytes": 5604,
+      "sha256": "dd8da81db5d2342e77d19b8dbc10fbc3ebfa9977d6c21998e0b040a7213e3894"
+    },
+    "rows/022/operands.pickle": {
+      "bytes": 2556,
+      "sha256": "7e01dc05f6cb6f4bdf55373482b7b14e33ae04b84aabc97232cf972abba55e1f"
+    },
+    "rows/022/amplitude_0-certificate.pickle": {
+      "bytes": 4958,
+      "sha256": "84403efa66da0c84e39a7006bf318eccec74d713198364723b2ecfbda7735443"
+    },
+    "rows/022/factorization.pickle": {
+      "bytes": 39838,
+      "sha256": "8c85f9d9536ed2a1b2f0d324b3c0631bbeeeca15f0da134eb98a1db3dbce1ca6"
+    },
+    "rows/022/amplitude_0-pair.pickle": {
+      "bytes": 11572,
+      "sha256": "6aafb644b7bc762c836205f7472e221653086ed8820c8c9c937299b099ef19d7"
+    },
+    "rows/022/integrand-pair.pickle": {
+      "bytes": 22882,
+      "sha256": "464bd5f0e91f58d958b1628efc945d6926494832ec259a96fc15aabb12c9941e"
+    },
+    "rows/022/raw-factorization.pickle": {
+      "bytes": 35396,
+      "sha256": "29d870d1694749d5e94412b4a2a4475dfda6aa2c87b3d27e6bf16354a0a6d6a7"
+    },
+    "rows/022/integrand-certificate.pickle": {
+      "bytes": 4292,
+      "sha256": "5e804a8bfabd8052c6e9c57aced808f0d416c21a42c0ab49e0b2ae4670618a7f"
+    },
+    "rows/026/coefficient-mutation.pickle": {
+      "bytes": 212376,
+      "sha256": "c53d3572d67123c1e145946ac82407e551622b8cf690ec290149f546f9cdbd49"
+    },
+    "rows/026/operands.pickle": {
+      "bytes": 5042,
+      "sha256": "11b07eb1ef55d8a9f2bc516cb818334bf64723682cbdc02b94be33125a4dce55"
+    },
+    "rows/026/amplitude_0-certificate.pickle": {
+      "bytes": 5119,
+      "sha256": "ac36c06cc5f3b0bcd8ea23ce75c2ab6cf800d827b8d4b30f19ca30031b2821b7"
+    },
+    "rows/026/factorization.pickle": {
+      "bytes": 260123,
+      "sha256": "b9498bd2de5ce60a14c783040157a4dcc0c24f3799ce8cef4bc69f65b53badae"
+    },
+    "rows/026/amplitude_0-pair.pickle": {
+      "bytes": 14177,
+      "sha256": "19818557784b0361adf0474608768b0c2cd75fa21110f9677a45a1e4bdb19fc9"
+    },
+    "rows/026/integrand-pair.pickle": {
+      "bytes": 406357,
+      "sha256": "0957a9c29bbe9112b2736a03e39547706b30e94a73c119d58e65fa127eae10a0"
+    },
+    "rows/026/raw-factorization.pickle": {
+      "bytes": 252718,
+      "sha256": "d4d1d65814854e578719f8fc76ebaa104d2b08a08376f6d660cd37c6a5855bb5"
+    },
+    "rows/026/integrand-certificate.pickle": {
+      "bytes": 149680,
+      "sha256": "a0ab955faeae345535efa0d9428107899cdea968a2b4e46fd1f0a5ff688d883c"
+    },
+    "rows/020/coefficient-mutation.pickle": {
+      "bytes": 5757,
+      "sha256": "2405f6c3e50716ff26de204a9d0f2d9e204915e9b249d1ca8f2b68b87c7450bc"
+    },
+    "rows/020/operands.pickle": {
+      "bytes": 2708,
+      "sha256": "ab44a025c0820ffbdd30b55bd0b27f55c7aa55dbc008b484ce0ff6cd4d464d81"
+    },
+    "rows/020/amplitude_0-certificate.pickle": {
+      "bytes": 5029,
+      "sha256": "7137fa1ac17a4f6fab5a4b161372c6feaf74c2fac4fd8d2ef497ba6af0845975"
+    },
+    "rows/020/factorization.pickle": {
+      "bytes": 40054,
+      "sha256": "43342021ac2255bc326f46b53f2dc50ad1574a17601287112e6ab348fede44bb"
+    },
+    "rows/020/amplitude_0-pair.pickle": {
+      "bytes": 13376,
+      "sha256": "5ab0c65d033c10d3ed4c6f71234586deaf2889de4fac9b4a40186ccf60cee255"
+    },
+    "rows/020/integrand-pair.pickle": {
+      "bytes": 25408,
+      "sha256": "67ca1c0e279d477446a52a6a115bebad2749dce70724298b16c472297fcdc13f"
+    },
+    "rows/020/raw-factorization.pickle": {
+      "bytes": 35668,
+      "sha256": "f3568dea5c1c7c11fe759b09813f08cc7f02b47c6db92d4dbc3ba6cf6c066d5d"
+    },
+    "rows/020/integrand-certificate.pickle": {
+      "bytes": 4361,
+      "sha256": "bc34fd7da75b2455d1031ca0655091c09f7052c9b8cb1c36523a7918065c19e2"
+    },
+    "rows/003/coefficient-mutation.pickle": {
+      "bytes": 7933,
+      "sha256": "a74a88c913767a776b117541410558c31a9261779462c2256181c7b230ebc2e0"
+    },
+    "rows/003/operands.pickle": {
+      "bytes": 3359,
+      "sha256": "0b9f98fde6a9b032518ea3e36f7e4facd8299ced7f8a29c3ef8ae557b17f3c50"
+    },
+    "rows/003/amplitude_0-certificate.pickle": {
+      "bytes": 1431,
+      "sha256": "44c39d7a3d9d79f07cf144cd08537fd7861e43d8e682a0bc88de558d401fa547"
+    },
+    "rows/003/factorization.pickle": {
+      "bytes": 27394,
+      "sha256": "2d9f52b1ba03ec70defa1d0e07386240d382861ed31ecc488c7e87926eb9574d"
+    },
+    "rows/003/amplitude_0-pair.pickle": {
+      "bytes": 2940,
+      "sha256": "ee694badf5e2fad2d245a5dd954633e614fa76da98b1e00cfdcc908b483c995c"
+    },
+    "rows/003/integrand-pair.pickle": {
+      "bytes": 46942,
+      "sha256": "7f84298b56c2f4a885434820dc3c410591ce584699a06082e33d52bbece1ce6d"
+    },
+    "rows/003/raw-factorization.pickle": {
+      "bytes": 24070,
+      "sha256": "0b982054d95b1352b612fe602a744755a9c0468f674f619ca52ae094b8458e4b"
+    },
+    "rows/003/integrand-certificate.pickle": {
+      "bytes": 4521,
+      "sha256": "32996e9ba30d66c72aaf28721dd3c439a43720cb22bc6273e3ba2c3543e37aa4"
+    },
+    "rows/015/coefficient-mutation.pickle": {
+      "bytes": 5881,
+      "sha256": "b16b9e00f4ecf0381cd64b73ed2ea9e849264e58e2f6d7962c9665612cac1b06"
+    },
+    "rows/015/operands.pickle": {
+      "bytes": 2572,
+      "sha256": "6123d64252c76d3f2967d2f0e019161b8a5ac8979494e86755fbde961f91bc1f"
+    },
+    "rows/015/amplitude_0-certificate.pickle": {
+      "bytes": 4958,
+      "sha256": "f970c15765e40563e56a2f3ee6e918bdc2b3a263a25bb0447b12d1082c48bf4c"
+    },
+    "rows/015/factorization.pickle": {
+      "bytes": 39919,
+      "sha256": "990f684e4d382a441c9083f1df0c06cb3db02a479faf4840ed619007ac6fc54b"
+    },
+    "rows/015/amplitude_0-pair.pickle": {
+      "bytes": 11572,
+      "sha256": "6aafb644b7bc762c836205f7472e221653086ed8820c8c9c937299b099ef19d7"
+    },
+    "rows/015/integrand-pair.pickle": {
+      "bytes": 20898,
+      "sha256": "d8595c07918b3b9753d962595e158eef249ead183268ec418b9e2dd4ac199f09"
+    },
+    "rows/015/raw-factorization.pickle": {
+      "bytes": 35460,
+      "sha256": "e46c3c9db8bf1b044f195874b64848b3219483a2c3c4b1ec13ae5c68801e2d68"
+    },
+    "rows/015/integrand-certificate.pickle": {
+      "bytes": 4338,
+      "sha256": "59520630604d44484aa486d547163819fdac2c7fb203551d67d1223807c43f55"
+    },
+    "rows/017/coefficient-mutation.pickle": {
+      "bytes": 10691,
+      "sha256": "77da4a78fbbdb06fb0f115809d50a43cce691554105190300747a2802fb66509"
+    },
+    "rows/017/operands.pickle": {
+      "bytes": 3112,
+      "sha256": "4ef374bf03182c919525ded4b31bd2110f366a50806393575abae9589de36ae3"
+    },
+    "rows/017/amplitude_0-certificate.pickle": {
+      "bytes": 9776,
+      "sha256": "d57ee989c85295c9f14f1edcb20d0d8302198c9ec52fd457488ebe8f3b064f7b"
+    },
+    "rows/017/factorization.pickle": {
+      "bytes": 45646,
+      "sha256": "2e09b617cc00c54f4d1125842f5ce48105ea7e575db72d276a6bc7d10dd40004"
+    },
+    "rows/017/amplitude_0-pair.pickle": {
+      "bytes": 45022,
+      "sha256": "52d00a9978f85efbc1d5917bee5d42468bae2e751497ca7914de22c5131e626d"
+    },
+    "rows/017/integrand-pair.pickle": {
+      "bytes": 41175,
+      "sha256": "8480a1a18f3c059c4fede22fb28265c5c532c9b423b66055619c88bb1774bfa2"
+    },
+    "rows/017/raw-factorization.pickle": {
+      "bytes": 39035,
+      "sha256": "2d7e7a6c7481f0f1e51e2ea8607fed7806b9f582422125d89c5904596fe7954b"
+    },
+    "rows/017/integrand-certificate.pickle": {
+      "bytes": 5174,
+      "sha256": "b14383fd85558d471181f99224b337fe20aa58b36613e02dd665051535bd191b"
+    },
+    "rows/018/coefficient-mutation.pickle": {
+      "bytes": 10875,
+      "sha256": "83bb696bce7d26c443eccf1810f3cfa6ecf92e28649ecb41e289a66da0fa4ca4"
+    },
+    "rows/018/operands.pickle": {
+      "bytes": 3084,
+      "sha256": "85d3fdd146cfe5a52595c8241975b42a1bbd78f0d30fb897f1211adecc77a25d"
+    },
+    "rows/018/amplitude_0-certificate.pickle": {
+      "bytes": 10011,
+      "sha256": "450af71dcaeaa112a595ba6ec41d3af86410871dad11a08fc90af8bb603cdff9"
+    },
+    "rows/018/factorization.pickle": {
+      "bytes": 45374,
+      "sha256": "8e88f6e550e5dcdbce908d1225192434771a7b8e6fc29650441d77ed941998ce"
+    },
+    "rows/018/amplitude_0-pair.pickle": {
+      "bytes": 45118,
+      "sha256": "e2d4d8c07ee99d09095da71f6d7d15c05fcf20104ce7e089d8df120d541a8c3a"
+    },
+    "rows/018/integrand-pair.pickle": {
+      "bytes": 41163,
+      "sha256": "9785e6722d96f26e9f65384e4ce9d1afbe92602a86e4277744aabcb5ed044741"
+    },
+    "rows/018/raw-factorization.pickle": {
+      "bytes": 39061,
+      "sha256": "2e7d0d4da0da45e94d2507a4be12a2de1855a7ce04729c367089e5049853696a"
+    },
+    "rows/018/integrand-certificate.pickle": {
+      "bytes": 5185,
+      "sha256": "bd356d69846b9441f901d54a1f6d5c27773e47a3e6b79b957755225b71ea0f38"
+    },
+    "rows/013/coefficient-mutation.pickle": {
+      "bytes": 5881,
+      "sha256": "b27e974c53dc978cf142733b02cae00044f09fc4e68cceae3609f404b9b358ab"
+    },
+    "rows/013/operands.pickle": {
+      "bytes": 2572,
+      "sha256": "6f98f3702b56c7f20364a814c4ea0cee6b061c5ae1d0de091c223cfb4a056a1e"
+    },
+    "rows/013/amplitude_0-certificate.pickle": {
+      "bytes": 4736,
+      "sha256": "9b779caf3c52147356649af0c10431a2b41daeef67bdc75a29233a6f5d81d89b"
+    },
+    "rows/013/factorization.pickle": {
+      "bytes": 39697,
+      "sha256": "466ba1cb5d61b4be891aeccabc85e7af6666e31784e1fc15ecbb254018c90db8"
+    },
+    "rows/013/amplitude_0-pair.pickle": {
+      "bytes": 11572,
+      "sha256": "c23abca72c19c39708c408028386465dbeaecfd185d243810b6d60afef17caf0"
+    },
+    "rows/013/integrand-pair.pickle": {
+      "bytes": 20898,
+      "sha256": "6c187d3413c08295f3934aef2b8ece491be569da37d8014e920f4d146df9685d"
+    },
+    "rows/013/raw-factorization.pickle": {
+      "bytes": 35460,
+      "sha256": "824c6c14b77a929421ee7920741fafd5cb3cf23e4c2ef2658fe19ab2676aeaea"
+    },
+    "rows/013/integrand-certificate.pickle": {
+      "bytes": 4338,
+      "sha256": "87e39b1326a9cd0b41dfb7d46351f8a7f4b551a76c26e409d2609f83ce8ceb59"
+    },
+    "rows/008/coefficient-mutation.pickle": {
+      "bytes": 463477,
+      "sha256": "fed111b224df97acd03549b86350a137643ad8c28d35cecb124684c894a064cf"
+    },
+    "rows/008/operands.pickle": {
+      "bytes": 5282,
+      "sha256": "556c99c3b30333ddef86032ec8cd38a68eaa406e16168e532441e5b04e8a5122"
+    },
+    "rows/008/amplitude_0-certificate.pickle": {
+      "bytes": 6768,
+      "sha256": "894c7cc0e3c0c2b6d86df18751f2c7bb64d508c7d9d2702a73117de9791be11d"
+    },
+    "rows/008/factorization.pickle": {
+      "bytes": 218226,
+      "sha256": "66805ec46c9d3388bff5404b66b99488a67a32cc09470c87c15976caf9996a03"
+    },
+    "rows/008/amplitude_0-pair.pickle": {
+      "bytes": 25433,
+      "sha256": "fa64363a50e3f28b5396ed96cbe0fb4ae807ebc26c0d5ea9a29ddcfbdeb96296"
+    },
+    "rows/008/integrand-pair.pickle": {
+      "bytes": 416827,
+      "sha256": "03ac4f842eee06e4ffa31e7f4ec96d5c1d2597abe923d4534bc363f5eba9da95"
+    },
+    "rows/008/raw-factorization.pickle": {
+      "bytes": 209615,
+      "sha256": "0f63a8adeea0cece02cd6584f7f165879c642bcc7222b91003ebd844407e9213"
+    },
+    "rows/008/integrand-certificate.pickle": {
+      "bytes": 140281,
+      "sha256": "8df8cdcbd8992f37f468b52427a3d17cfe4a0a0f6f841bfb665e70bb463713c5"
+    },
+    "rows/004/coefficient-mutation.pickle": {
+      "bytes": 7105,
+      "sha256": "6d75770122982b64b389e80103c0d1b2b2734f8cb51a3298a9e3352047a8fae5"
+    },
+    "rows/004/operands.pickle": {
+      "bytes": 2968,
+      "sha256": "4b4be3acc6df4184f4961c6d0d904dca9a5a6e587b9ff2fcfdaf8f36762ed389"
+    },
+    "rows/004/amplitude_0-certificate.pickle": {
+      "bytes": 1531,
+      "sha256": "39acb4468f1bd9b6eb55f5e0aac97a97e7de270115d2548feac758c760dcce11"
+    },
+    "rows/004/factorization.pickle": {
+      "bytes": 27739,
+      "sha256": "663409c809af6a236c0d83b286dc802f75c1ffe54c9b3f37375c7fb4f4ed20c5"
+    },
+    "rows/004/amplitude_0-pair.pickle": {
+      "bytes": 1346,
+      "sha256": "ea6e51bbdfc584e87294cce85e8180d15253f6a31a0a7014a3fa32ba17fc7fce"
+    },
+    "rows/004/integrand-pair.pickle": {
+      "bytes": 44513,
+      "sha256": "6efd19243df86e4807fd22a5fbce19107290cd3be565e7a6c37df4ac3852d0fa"
+    },
+    "rows/004/raw-factorization.pickle": {
+      "bytes": 23819,
+      "sha256": "2120d21a98834d435ccd6fc17603bd01326dd6a0f4cb534e29aa837e25275b78"
+    },
+    "rows/004/integrand-certificate.pickle": {
+      "bytes": 4956,
+      "sha256": "633b02f978f0f47f8d1617e68e5605cf85c3b26afb5b38b3a2dd1e3c995ceae5"
+    },
+    "rows/012/coefficient-mutation.pickle": {
+      "bytes": 6297,
+      "sha256": "b2223df66c605d1bd8e21183ce98dc1c2b665e3227f9674b171131842a78e690"
+    },
+    "rows/012/operands.pickle": {
+      "bytes": 2702,
+      "sha256": "ecd05786546d37d9bc9af8732cff0fb73f665154f9c153dd4b2eb07cd2cd8336"
+    },
+    "rows/012/amplitude_0-certificate.pickle": {
+      "bytes": 5414,
+      "sha256": "2f1f61fcc9c3207b68c526888e021f751b300fcf26081bc3bd7f245486f9cd9e"
+    },
+    "rows/012/factorization.pickle": {
+      "bytes": 40655,
+      "sha256": "2d8dc316b3d641377c2b2ab22e6408b25771821f22e0d7050967f97c0e484b26"
+    },
+    "rows/012/amplitude_0-pair.pickle": {
+      "bytes": 13567,
+      "sha256": "3f8e0ab8aec21d27b1dde7b0a595587372ee9f596e184b27477bc311c56d22bc"
+    },
+    "rows/012/integrand-pair.pickle": {
+      "bytes": 23450,
+      "sha256": "a92be7d662400511ac31306067558a73e55cf4d86664f5057e32eada1da8ab84"
+    },
+    "rows/012/raw-factorization.pickle": {
+      "bytes": 35844,
+      "sha256": "306ce8651116afe9a0bb55da86cb482e7b7c9b7b7bd52a1ce71dd5288889cc17"
+    },
+    "rows/012/integrand-certificate.pickle": {
+      "bytes": 4663,
+      "sha256": "988c03508d658b9913a9ab68e58b0d2c9477676be43d8a0394d7c11dc05d8360"
+    },
+    "rows/030/coefficient-mutation.pickle": {
+      "bytes": 212466,
+      "sha256": "fdfedc2d73afa8691b1045012461d63ce2cda4bd8f765750d1366806366f0840"
+    },
+    "rows/030/operands.pickle": {
+      "bytes": 5115,
+      "sha256": "f1b564f22530bd014d892f0d2ee06a185ff3c7541d3911e60809642f1782d13c"
+    },
+    "rows/030/amplitude_0-certificate.pickle": {
+      "bytes": 5027,
+      "sha256": "169f5844d5ccb2ede53459c3dbfb886576ca0228a96b5c64f2e640057bc80206"
+    },
+    "rows/030/factorization.pickle": {
+      "bytes": 217993,
+      "sha256": "1c0d9fe570423a751259127f1f179249e53170d9576ae42e919dd0874df1f11d"
+    },
+    "rows/030/amplitude_0-pair.pickle": {
+      "bytes": 13914,
+      "sha256": "a36503047d3a6a0cd5c162a61b91bb7e849849eb49115e74b1414a44f2bd209e"
+    },
+    "rows/030/integrand-pair.pickle": {
+      "bytes": 352717,
+      "sha256": "061c20888b3517c610ace238dfa67b64886e6e67f344cf1ae918cd78d90ecac3"
+    },
+    "rows/030/raw-factorization.pickle": {
+      "bytes": 210310,
+      "sha256": "501759d31568873004b1e69fddb98c6aa5a1fc18d8324dc375be33e698cc22d6"
+    },
+    "rows/030/integrand-certificate.pickle": {
+      "bytes": 115508,
+      "sha256": "58e91c1789c65265c1e8ccb63b1ed7dae36a63104ed86ae146cd3a466c14a9b1"
+    },
+    "rows/027/coefficient-mutation.pickle": {
+      "bytes": 1074812,
+      "sha256": "938dfcec64315dd685be9e130676a89748621a6b7316a970d0547c379bcd05cc"
+    },
+    "rows/027/operands.pickle": {
+      "bytes": 5589,
+      "sha256": "1cf1e716fcd320a7af24333661504a800c8f317a0cb804f60b246c1562adbfe1"
+    },
+    "rows/027/amplitude_0-certificate.pickle": {
+      "bytes": 9881,
+      "sha256": "d9f05edd537331f67d9e9ccb6b7aae0603e2f4724b152d7a44ddb5c98f272a7b"
+    },
+    "rows/027/factorization.pickle": {
+      "bytes": 377750,
+      "sha256": "97694c43c633be13f4931210be2590e1f14f34721d66e05d3884b19762bcbcd1"
+    },
+    "rows/027/amplitude_0-pair.pickle": {
+      "bytes": 47238,
+      "sha256": "05849945b9720b03ca9d2a0f6ec8659c96868e41073de9c9effb3e3df439666c"
+    },
+    "rows/027/integrand-pair.pickle": {
+      "bytes": 581943,
+      "sha256": "25b8901c3c96faabef959ccb39db98dd1a8abf3ccf2bb00d6ee8b3764b602dfe"
+    },
+    "rows/027/raw-factorization.pickle": {
+      "bytes": 368173,
+      "sha256": "ec2f8eb4ac5afc9e909941f6b40f5a3185f9ee2e5261fbff8db73254e6c5b7e5"
+    },
+    "rows/027/integrand-certificate.pickle": {
+      "bytes": 241929,
+      "sha256": "0953ee17236014cfb9087aea438c8319f71bf779035cf0546a404b5d28e9e2bc"
+    },
+    "rows/000/coefficient-mutation.pickle": {
+      "bytes": 4952,
+      "sha256": "bba1566bc41aa2b17e5a69ebc11f110f92bfacfc78abf8b2ab05b9fcb849b038"
+    },
+    "rows/000/operands.pickle": {
+      "bytes": 3225,
+      "sha256": "ab0cca240ae0ca8b3d2d7a659e25969ba95c16ea5404edcb03ebb9a4be56650d"
+    },
+    "rows/000/amplitude_0-certificate.pickle": {
+      "bytes": 3903,
+      "sha256": "224cb776e48d04088fc69fd2901e3d21132c0c83c85afc8243d9eb6dc7b68530"
+    },
+    "rows/000/factorization.pickle": {
+      "bytes": 28302,
+      "sha256": "621c099aa951a41e4ba9d62f2875647feb4b3f616368337be850412e8b955f4d"
+    },
+    "rows/000/amplitude_0-pair.pickle": {
+      "bytes": 15702,
+      "sha256": "ddcbc0ebc127f8520b4413e8f1fff0f49572d8574cfb60349744c205b84a9e37"
+    },
+    "rows/000/integrand-pair.pickle": {
+      "bytes": 30343,
+      "sha256": "42df010f2182ce5867219e0da440af83d6d310b147e896b3ff798f0175be5d51"
+    },
+    "rows/000/raw-factorization.pickle": {
+      "bytes": 25000,
+      "sha256": "af548d1f15fe549576624587d5ddc9d433193364f1ba9140c7e9375fd3bd8e38"
+    },
+    "rows/000/integrand-certificate.pickle": {
+      "bytes": 3854,
+      "sha256": "e44561f0a388b679fa2ebe8516802fe78e285dc24709820c005e20e25347a568"
+    },
+    "rows/010/coefficient-mutation.pickle": {
+      "bytes": 4676,
+      "sha256": "78230b412a2d0c4c04accb9f71ffed5b9f9ead5198c78f2981e9b0618a0dcad5"
+    },
+    "rows/010/operands.pickle": {
+      "bytes": 2206,
+      "sha256": "5bf0c11f62d16d52ae62e4ed8b3d141ce2372e612e581aa6c89222dbd672cd97"
+    },
+    "rows/010/amplitude_0-certificate.pickle": {
+      "bytes": 3143,
+      "sha256": "bee002fd0ff758b949ac4ce29617afbcd5c1643974cff87f48197a33c391a60c"
+    },
+    "rows/010/factorization.pickle": {
+      "bytes": 37442,
+      "sha256": "a66b800cf22f5eed802e7fdcac8f29cd78b7f0f81a7dbd47c1be0af53405d4b8"
+    },
+    "rows/010/amplitude_0-pair.pickle": {
+      "bytes": 5258,
+      "sha256": "b2d14432adee94112f627e0330676385667117be8be00fb57b754384df51a539"
+    },
+    "rows/010/integrand-pair.pickle": {
+      "bytes": 12619,
+      "sha256": "fb052cf7c5dbb064550238a0d0294275ee9b849822760a516404dfe58cf65d23"
+    },
+    "rows/010/raw-factorization.pickle": {
+      "bytes": 34237,
+      "sha256": "cdc2b277f14ffb4414706e3821dc07867cf9a18f8cae63d2a86a6487bee64204"
+    },
+    "rows/010/integrand-certificate.pickle": {
+      "bytes": 3581,
+      "sha256": "1ce13a4c69a58fd6f5cfdef61264553be08a67635b9d2ba957f84209abfb072a"
+    },
+    "cases/LAB_HELD__RHOBR_CONSTANT/factorization.pickle": {
+      "bytes": 6580040,
+      "sha256": "d4c82a696fc81f591afd4b42d5309b0eec7592adbf8d9620bbdda435f19e3b50"
+    },
+    "cases/LAB_HELD__RHO4_CONSTANT/factorization.pickle": {
+      "bytes": 6488579,
+      "sha256": "011184ab8f796872fec263558a5da6d7f478e4468c7dcacd2373a7df14e69723"
+    },
+    "cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/factorization.pickle": {
+      "bytes": 6757900,
+      "sha256": "956698db852c7e6066e6d42d3836449b271d2fcce16fdafbee586983abd02e5a"
+    },
+    "cases/MATERIAL_ADVECTED__RHO4_CONSTANT/factorization.pickle": {
+      "bytes": 6767840,
+      "sha256": "fcc2a59930d8f12726c1f9de02c407e2f08bd33cca4b4d4db31d0972ba371690"
+    }
+  },
+  "caseFactorPackets": {
+    "LAB_HELD__RHO4_CONSTANT": {
+      "integralRows": 80,
+      "sources": 35,
+      "cellTerms": 160,
+      "baselineRows": 80,
+      "newRows": 0,
+      "sourcePhaseJoins": 2,
+      "sha256": "011184ab8f796872fec263558a5da6d7f478e4468c7dcacd2373a7df14e69723"
+    },
+    "LAB_HELD__RHOBR_CONSTANT": {
+      "integralRows": 70,
+      "sources": 25,
+      "cellTerms": 140,
+      "baselineRows": 61,
+      "newRows": 9,
+      "sourcePhaseJoins": 2,
+      "sha256": "d4c82a696fc81f591afd4b42d5309b0eec7592adbf8d9620bbdda435f19e3b50"
+    },
+    "MATERIAL_ADVECTED__RHO4_CONSTANT": {
+      "integralRows": 80,
+      "sources": 35,
+      "cellTerms": 185,
+      "baselineRows": 61,
+      "newRows": 19,
+      "sourcePhaseJoins": 2,
+      "sha256": "fcc2a59930d8f12726c1f9de02c407e2f08bd33cca4b4d4db31d0972ba371690"
+    },
+    "MATERIAL_ADVECTED__RHOBR_CONSTANT": {
+      "integralRows": 70,
+      "sources": 25,
+      "cellTerms": 162,
+      "baselineRows": 46,
+      "newRows": 24,
+      "sourcePhaseJoins": 2,
+      "sha256": "956698db852c7e6066e6d42d3836449b271d2fcce16fdafbee586983abd02e5a"
+    }
+  },
+  "completedUniqueFactors": 32,
+  "newFactorsThisRun": 28,
+  "byteIdenticalReusedRows": {
+    "0": {
+      "stdout": "62bb86f3571ef16483d4147715a6a4b67aaf68cd66454b4b7cbbbed2ff505b52",
+      "checks.json": "a0d14c67ee07e91b6ff0789d853ff6daed7eb0bf780d6dbf04d9a8435b375972",
+      "coefficient-mutation.pickle": "bba1566bc41aa2b17e5a69ebc11f110f92bfacfc78abf8b2ab05b9fcb849b038",
+      "operands.pickle": "ab0cca240ae0ca8b3d2d7a659e25969ba95c16ea5404edcb03ebb9a4be56650d",
+      "outcome.json": "5a61f81298d5994d856e5c268968c0e8fd0e3789b36012a617448131213e15ee",
+      "amplitude_0-certificate.pickle": "224cb776e48d04088fc69fd2901e3d21132c0c83c85afc8243d9eb6dc7b68530",
+      "stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "factorization.pickle": "621c099aa951a41e4ba9d62f2875647feb4b3f616368337be850412e8b955f4d",
+      "amplitude_0-pair.pickle": "ddcbc0ebc127f8520b4413e8f1fff0f49572d8574cfb60349744c205b84a9e37",
+      "integrand-pair.pickle": "42df010f2182ce5867219e0da440af83d6d310b147e896b3ff798f0175be5d51",
+      "raw-factorization.pickle": "af548d1f15fe549576624587d5ddc9d433193364f1ba9140c7e9375fd3bd8e38",
+      "integrand-certificate.pickle": "e44561f0a388b679fa2ebe8516802fe78e285dc24709820c005e20e25347a568"
+    },
+    "3": {
+      "stdout": "e31bfc380669cd10ad9e74152c084dd5397505c99e5a4a6e3997cbf8ef6cc679",
+      "checks.json": "7e76250e9e1126e9251ad71ba8a644b6fafe6f9de792bd27ec541a791c60f0d0",
+      "coefficient-mutation.pickle": "a74a88c913767a776b117541410558c31a9261779462c2256181c7b230ebc2e0",
+      "operands.pickle": "0b9f98fde6a9b032518ea3e36f7e4facd8299ced7f8a29c3ef8ae557b17f3c50",
+      "outcome.json": "36e3d8c1ad7032f242540524af879929ddb5e6e5f591bd34a98c30ab0482e905",
+      "amplitude_0-certificate.pickle": "44c39d7a3d9d79f07cf144cd08537fd7861e43d8e682a0bc88de558d401fa547",
+      "stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "factorization.pickle": "2d9f52b1ba03ec70defa1d0e07386240d382861ed31ecc488c7e87926eb9574d",
+      "amplitude_0-pair.pickle": "ee694badf5e2fad2d245a5dd954633e614fa76da98b1e00cfdcc908b483c995c",
+      "integrand-pair.pickle": "7f84298b56c2f4a885434820dc3c410591ce584699a06082e33d52bbece1ce6d",
+      "raw-factorization.pickle": "0b982054d95b1352b612fe602a744755a9c0468f674f619ca52ae094b8458e4b",
+      "integrand-certificate.pickle": "32996e9ba30d66c72aaf28721dd3c439a43720cb22bc6273e3ba2c3543e37aa4"
+    },
+    "9": {
+      "stdout": "b600e5a245fa1167d726a265c3e2b3d071d19c85e4430f7f4a2ef5f625c77c86",
+      "checks.json": "9ac8a74e2bd6745a7f897a5165c0bcf72e37c372ff6e4b9b84074499f1e314ec",
+      "coefficient-mutation.pickle": "820e5355ae8c2996bc6005a270aa02ef657183a78c8186d6c4a7d0ef3bade05f",
+      "operands.pickle": "4b0978bd0651aee7ee789b5c879de8cca8bc6d83d35e8ef71190e2ba02033bac",
+      "outcome.json": "31da90bfde8e50d8c4a3978f3a4a2892c61490cf2a1879996ed8e7cb80e23ed2",
+      "amplitude_0-certificate.pickle": "188178f4c68dfea56df5ac83ebb35f1e915dbf4c8f885819ab6465bf2b36fab1",
+      "stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "factorization.pickle": "37148eb973d0119ad9097de449d915dee5d93b2964f6b077db4a8c5aaeceb002",
+      "amplitude_0-pair.pickle": "f31acc94dd47094f0f35361b583621456135874f292c750852f9b3761aaad374",
+      "integrand-pair.pickle": "75a5691f15595c90db30ecc2769cc5bf2dbbdf3559b82e2e16bb965d1202db5b",
+      "raw-factorization.pickle": "f196da6c1e5a8d388680bb4a4a2d6d7af82a835449da1792cd122bba80c986bc",
+      "integrand-certificate.pickle": "8bca111c3f139b2459ceea1fba68c71299876f4a1d61ffc529a183e74f64c437"
+    },
+    "28": {
+      "stdout": "e0b6964c5a53d2211c2d12e58ef9050eb904918d18c0a8605bcc50d0c2b67412",
+      "checks.json": "d6b6705eab957d3de661e343d365398f00c3aa4eb81b61590b71e4010357b7f8",
+      "coefficient-mutation.pickle": "c80424e6e2a3ca9bf9a0c1c43d2e8692fb0dc8eca570eb46ffeb03eb3018a164",
+      "retained-raw-factorization.pickle": "77bb2c5da3aec6ee93fd8b92a8d9945f8a9af69285ce32b8f7823b7e48822f03",
+      "operands.pickle": "9caf4db38538191ab182f846e2e2962ffca5fae460f963a4ec0afd5fbfd344fd",
+      "outcome.json": "79713e60d702980d0f5aa3b7269cdc4bafbf9aaa77f5e9273050c1e9086adc14",
+      "amplitude_0-certificate.pickle": "eaba96e2038c10dab512cc6877fc517dd98e5bf656635436555ae1fa8ec311ed",
+      "stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "factorization.pickle": "44b1e4ae3b7d121c743a6a276acda28e8facba1e00da558c8ccf186bf059207b",
+      "amplitude_0-pair.pickle": "367fa608552083ffcc668de75a2d2dea92a1311e33c1c6bfd4a518323b90852b",
+      "integrand-pair.pickle": "22ae725b51768813b62410a8d19732a5c4fc1e40534760cd8c44160e807d9f56",
+      "integrand-certificate.pickle": "7d29350f1fe12b692f6bb4f7369a63efefe3f2ea7794a72a9230a1d04111eda2"
+    }
+  },
+  "certificateCount": 64,
+  "zeroProofScalars": 302,
+  "zeroCharacterScalars": 128,
+  "mutationCount": 32,
+  "shadowedBranches": 12,
+  "caseAddressCount": 300,
+  "sourcePhaseJoinsComplete": true,
+  "metadataPaths": 4073,
+  "tagCount": 1224,
+  "writeKeys": 610,
+  "numericalIntegrations": 0,
+  "scope": "Complete source factors for four cases, not new case scattering results.",
+  "savedCaseGraphValidation": {
+    "caseAddresses": {
+      "LAB_HELD__RHO4_CONSTANT": 80,
+      "LAB_HELD__RHOBR_CONSTANT": 70,
+      "MATERIAL_ADVECTED__RHO4_CONSTANT": 80,
+      "MATERIAL_ADVECTED__RHOBR_CONSTANT": 70
+    },
+    "controlCases": [
+      "LAB_HELD__RHO4_CONSTANT",
+      "LAB_HELD__RHOBR_CONSTANT",
+      "MATERIAL_ADVECTED__RHO4_CONSTANT",
+      "MATERIAL_ADVECTED__RHOBR_CONSTANT"
+    ],
+    "nativeEqualityExamples": [
+      [
+        "1",
+        "1.00000000000000",
+        false
+      ],
+      [
+        "x",
+        "x",
+        false
+      ],
+      [
+        "x + 1",
+        "x + 1",
+        true
+      ]
+    ],
+    "memoRetainsOperands": true,
+    "comparatorSha256": "75c1427495f64e5fc6e6eac1faa441a667b9f13c9824252769afda61cb3dc5e3",
+    "wallSeconds": 104.89874354097992,
+    "noAlgebraOrFactorConstruction": true
+  },
+  "savedCaseGraphValidationSha256": "1a0909c6b9764446902ca46326a3f3ff15518a9ab9cc260bb0a8d9802aa2dfff",
+  "supplementalValidatorSha256": "3a9ac5e078a6e18b4c60079d29685e0b3ac28fe5ebe61fe7eee1c1e68ea9442d",
+  "publication": {
+    "path": "scripts/out/S11c_d_remaining_case_factors.out",
+    "bytes": 2508023,
+    "sha256": "1093040bb6fb42c2325aec3923846ac38694c9dd8cc8a2fda2ddfb9596c12e8d",
+    "md5": "2a177ac2472751b66348fcc982313cce",
+    "annexKey": "MD5E-s2508023--2a177ac2472751b66348fcc982313cce.out",
+    "symlink": "../../../../.git/annex/objects/9W/QQ/MD5E-s2508023--2a177ac2472751b66348fcc982313cce.out/MD5E-s2508023--2a177ac2472751b66348fcc982313cce.out",
+    "publicationCommit": "69b2259acd54a49dbd8f25b09941049efcb617e6"
+  }
+}

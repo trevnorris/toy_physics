@@ -1,5 +1,5 @@
 {
-  "status": "SAVED_ROW_PREFLIGHT_RECOVERY_RUNNING",
+  "status": "SAVED_ROW_OUTPUT_REPAIR_VALIDATED",
   "helper": "_measurements/S11c_d_remaining_case_factors.py",
   "implementationCommit": "e5b23312",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight",
@@ -98,7 +98,8 @@
   "completedRows": [
     0,
     3,
-    9
+    9,
+    28
   ],
   "savedRawRow": 28,
   "recoveryRunRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight-recovery-02",
@@ -239,5 +240,29 @@
     "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
     "messageSha256": "11ed7dab25b3e0aab77f070d95a332c35fc89e769b7a15dcbfebb323f39ed6a0",
     "notifications": {}
-  }
+  },
+  "lastRecoveryOutcome": {
+    "stage": "factors_recover",
+    "command": [
+      "python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_factor_recover.py",
+      "--mode",
+      "preflight",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight-recovery-02/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight-recovery-02/factors_recover.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight-recovery-02/factors_recover.stderr",
+    "startedUtc": "2026-09-20T00:14:45.094962+00:00",
+    "childPid": 821192,
+    "status": "failed",
+    "exitCode": 1,
+    "wallSeconds": 63.65198527742177,
+    "stderrBytes": 861,
+    "finishedUtc": "2026-09-20T00:15:48.747014+00:00"
+  },
+  "outputHelper": "_measurements/S11c_d_remaining_case_factor_finish.py",
+  "outputPlan": "_measurements/S11c_d_remaining_case_factor_output_plan.md",
+  "outputFocused": "_measurements/S11c_d_remaining_case_factor_output_focused.json"
 }

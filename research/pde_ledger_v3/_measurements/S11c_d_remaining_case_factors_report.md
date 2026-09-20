@@ -33,3 +33,16 @@ alias correction has a reverse whole-file AST join and two verified global
 call sites. The certificate algorithm and all three completed rows are unchanged;
 the fourth retained raw row remains byte-identical. Full execution/output is
 still pending, with the failed recovery logs and frozen sources preserved.
+
+All four workers now pass. Row 28 completed its saved-row certificates in 4.63
+seconds with two certificates, ten zero proof scalars, four zero character
+scalars and a responding mutation. The supervisor then rejected one metadata
+path: provenance unionIndex=0 lacked the dimensionless zero-unit annotation.
+All factor and proof packets are complete and remain unchanged.
+
+The output adapter supplies only that association path's dimensionless unit.
+The actual saved payload is unchanged; three changed-unit controls and a wrong
+path control reject. Its coordinator reverses exactly to the prior implementation
+after four output/provenance/resume wiring changes. The native factor, certificate
+and emitter/checker sources are unchanged. Full saved-row output acceptance is
+pending; no factor, certificate or integration will be recomputed for this repair.

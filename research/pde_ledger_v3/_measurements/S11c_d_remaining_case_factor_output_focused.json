@@ -1,0 +1,47 @@
+{
+  "status": "VALIDATED_ZERO_INDEX_METADATA_REPAIR",
+  "coordinatorJoin": {
+    "wholeCoordinatorReverseAstJoin": true,
+    "changes": {
+      "load": 1,
+      "checks": 1,
+      "manifest": 1,
+      "emit": 1
+    },
+    "originalAstSha256": "4bb5edb346b0027aef07e073e2d50a590752d5dd174191ff4dd37d8b72be5a14",
+    "derivedAstSha256": "669e5e8cda81387dd3429e72e3577c512e365da3754a6f70deff2e65d5794aa3"
+  },
+  "allOtherFunctionsUnchanged": true,
+  "originalHelperSha256": "6f3f66c24064792d55941334fa793f09af4ff5b43f0f2c3e7aed5cb8aa9cb6bd",
+  "outputHelperSha256": "f2536777598afaa6cab18eaad6ae248f55de39e43ad0a2a5c0089384ead69715",
+  "originalTranscriptSha256": "c25d803fa2b4fe6115725f310798f55c5438156973f938a08b0dc8c8ed68d9bd",
+  "actualOriginalPayloadEqual": true,
+  "actualCorrectedMetadataEqual": true,
+  "wrongUnitControlsRejected": [
+    [
+      1,
+      0,
+      0
+    ],
+    [
+      0,
+      1,
+      0
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  "wrongPathRejected": true,
+  "onlyUnitPath": [
+    "unionIndex"
+  ],
+  "completedRows": [
+    0,
+    3,
+    9,
+    28
+  ]
+}

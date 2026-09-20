@@ -18,3 +18,11 @@ The saved-binding validation completed cleanly and remains accepted; its first
 array-dispatch reader failure and original logs are preserved. No binding
 construction was repeated. The launch record is not focused acceptance.
 No response solve is claimed here.
+
+The focus completed in260.26seconds with final exit zero, empty stderr and
+byte-identical checks/stdout. Its95sources,9906inputs,5273copies and5276artifacts
+cover300rowaddresses,647terms,47changed cell coefficients,11saved layouts and
+five actual mutation controls. Independent saved-operand validation is running
+under a silent completion hook; these counts are not yet an acceptance record.
+Production remains unlaunched. The response plan explicitly distinguishes the
+reused baseline continuum control from its missing finite-contrast solve.

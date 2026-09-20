@@ -1,5 +1,5 @@
 {
-  "status": "FOCUSED_PREPARATION_RUNNING",
+  "status": "ACCEPTED_FOCUSED_ROW_REUSE_AND_ASSEMBLY",
   "helper": "_measurements/S11c_d_remaining_case_matrices.py",
   "plan": "_measurements/S11c_d_remaining_case_matrices_plan.md",
   "bindingAcceptance": "a8272c9d",
@@ -24,5 +24,26 @@
   "unchangedNumericalFiles": {
     "_measurements/S11c_d_finite_scattering.py": "f187d9426be8069342a363a0466c175d32a8cb46101e32a14c433ccb9118e469",
     "_measurements/S11c_d_continuum_matrices.py": "33a0e5a2fa136a55875541e15bc410159c94f56f25adc4a02589d0c704223987"
-  }
+  },
+  "focusedOutcome": {
+    "stage": "matrices_focused",
+    "command": [
+      "python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_matrices.py",
+      "--focused",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-matrices-20260920/focused/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-matrices-20260920/focused/matrices_focused.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-matrices-20260920/focused/matrices_focused.stderr",
+    "startedUtc": "2026-09-20T01:18:44.936139+00:00",
+    "childPid": 9,
+    "status": "completed",
+    "exitCode": 0,
+    "wallSeconds": 145.08928342629224,
+    "stderrBytes": 0,
+    "finishedUtc": "2026-09-20T01:21:10.025870+00:00"
+  },
+  "preflightCheckpoint": "_measurements/S11c_d_remaining_case_matrices_preflight.json"
 }

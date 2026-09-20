@@ -1,0 +1,1766 @@
+{
+  "status": "ACCEPTED_FOCUSED_ROW_REUSE_AND_ASSEMBLY",
+  "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-matrices-20260920/focused/complete",
+  "outcome": {
+    "stage": "matrices_focused",
+    "command": [
+      "python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_matrices.py",
+      "--focused",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-matrices-20260920/focused/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-matrices-20260920/focused/matrices_focused.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-matrices-20260920/focused/matrices_focused.stderr",
+    "startedUtc": "2026-09-20T01:18:44.936139+00:00",
+    "childPid": 9,
+    "status": "completed",
+    "exitCode": 0,
+    "wallSeconds": 145.08928342629224,
+    "stderrBytes": 0,
+    "finishedUtc": "2026-09-20T01:21:10.025870+00:00"
+  },
+  "checksSha256": "53c8d4af3f15005962da1aebed12bb515bc8b6e6adc9edf7004a005ffaa70555",
+  "sourceFiles": {
+    "_measurements/S11c_d_remaining_case_factors.py": "fb50c34f50ba1cf6e2aa788cde5f2d345ee8e93b7ccc5376e341c00a14490bfd",
+    "_measurements/S11c_d_numerical_action_check.py": "86d5b373df8825c1e6dca198555b2a65e62822a3d9ba32868a89ca135bb7968f",
+    "directives/S11b_SHARED_PHYSICS.md": "9ea9e388e9d6421a841eaf851d12e1793527bba9a24aeeface3bfac2f4b40078",
+    "scripts/S11c_c1_exports.py": "a5353b86dc526fd1b56734fdbdf7dc7f42387a3195ab4de84e8994f751871cdc",
+    "directives/S11c_d_SHARED_PHYSICS.md": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5",
+    "_measurements/S11c_d_momentum_domain_action.py": "db37d83a74ebd0fc82b903285a69a9a04ce9c7bb62341539a3b4c5f12f4956cf",
+    "_measurements/S11c_d_wide_three_momentum.py": "455ba3aaf4481a101c6e3e3b7e23b7160ef7afa453c201c9e0e0b57b5d7afc3e",
+    "_measurements/S11c_d_position_domain.py": "d056a00e7500cd27a0d824b0b6f9b66ca9bbb2dd412b2b8c490d621afcf71b46",
+    "directives/S11c_d_NONLINEAR_POLE_CONTRACT.md": "2b6018faf0d5ca772bf9c980174d8ebe7545127a3bf43ba01d1b3c0b6a5be423",
+    "_measurements/S11c_d_remaining_case_bindings_plan.md": "aa752f92dd4b9c8871ce0dd1e7f327a1f8bb3df75e701f492e98208bbcfe7cb9",
+    "scripts/S11c_d_mixing_scattering_sympy_audit.py": "5bf77729682960bb59f10c672a5fe3f67a98b0a9533da7c6189a37183596050f",
+    "_measurements/S11c_d_variable_profile_development_input.json": "660b2b0b54494dce964c7f5fbd722a76a7e894d8ed92b18b5eb6290c3c10f1d5",
+    "_measurements/S11c_d_momentum_domain_prepare.py": "195c26b062d6bff63520a823f6dbf1b89d4973c4f93b004fae81f3e67800762e",
+    "_measurements/S11c_d_three_momentum_adaptive.py": "a028e76029f8386c900c88c8edaf02766b821c29c179c5c26d7ce3d7860fc1c2",
+    "_measurements/S11c_d_continuum_matrices.py": "33a0e5a2fa136a55875541e15bc410159c94f56f25adc4a02589d0c704223987",
+    "_measurements/S11c_d_continuum_boundary.py": "ed3a6539d3151c52d25f12308b121897baf3bd6a5a626a598ab728988ab933a0",
+    "directives/S11c_d_sympy_build_PROGRAM_BRIEF.md": "1d9a48a043c68a6b38a1951f69b82a3ea8e97f4b7bb1d8e3f4c028f03290b380",
+    "_measurements/S11c_d_source_fourier_quadrature_check.py": "d52747cba3e5cbdf4cbff6816ccd07d79564032d0a64d57bf80aef5815430323",
+    "_measurements/S11c_d_source_fourier_residual_recover.py": "443953029c6848c9f0ea377b7cd3005f9f537d29b2431e2122cf2f8fda83e2b9",
+    "_measurements/S11c_d_parallel_momentum.py": "ecc9c93c89f4e670b8cccf213a57c6380ac73fe37bedefedb25a3e8dabfb536c",
+    "_measurements/S11c_d_wide_momentum_adaptive.py": "4c40be5eae12631a33213b38a044de24d44d2a486c82b3e6d53b2ed8795bfdcc",
+    "_measurements/S11c_d_finite_scattering_domain.py": "73341408d0f6c1eb517e435dea986e180ff53615a6102697a8e3ba6747bd35aa",
+    "_measurements/S11c_d_remaining_case_bindings.py": "a6c74b31269d4e2ace9b32d4757daeeecc6abe06119ef6ced61a21baeb881ef6",
+    "_measurements/S11c_d_variable_profile_input_check.py": "70cdf2811f2ccd92380be24a80bb7af49f4e1a01504b09a9dbb47f8d3cbbb3b2",
+    "_measurements/S11c_d_continuum_matrix_checkpoint.json": "4fe0e0214a5f51a6ab18c9266aa369dde4cf2b60eb51beabf3257754f91d942d",
+    "scripts/S11c_b_exports.py": "3c6555f90a85382a5e96f3f961f0e36a4875d9259fe1be947fa8e683669b7084",
+    "_measurements/S11c_d_reduced_action_assembly_check.py": "f620a643c761474aeaa181ad34a368bc35c1f9e81fb528a81744c2a32af364a8",
+    "_measurements/S11c_d_source_fourier_factorization_check.py": "b6573d82198f262ac5eea8362fb478a93a1f9b8ea17bd0d4645c67cb40168f23",
+    "directives/S11c_d_EXPLORATORY_ACCEPTANCE.md": "5c1e560a78d40739af8b1318c0487e20bf2b816c41109889e12004266c72840c",
+    "_measurements/S11c_d_continuum_grade_checkpoint.json": "3987ff4abb782050fffc767065ed9b3126da49215aa0df41320abef7fdec4692",
+    "_measurements/S11c_d_reduced_action_source_check.py": "aae3b2402e1707ef27f217b917dc10592f38acbe35d18356fbc4886ed854f754",
+    "_measurements/S11c_d_wide_three_adaptive.py": "af123066766700f40d71843d36a7b94513dcaf3b35fcef17af1fd4843ec8413a",
+    "scripts/S11c_d_output_codec.py": "49873a2fa5c3184aab097263f0a6128379e094e42dbde5052456c5f3908bf717",
+    "_measurements/S11c_d_remaining_case_factors_checkpoint.json": "5a1987cec82fdbc8c77eb978f259626fdd21d4d286cd16d2a32ff2db9325ad23",
+    "_measurements/S11c_d_finite_scattering_resolution.py": "8e101517fde113c5f0a372bab531e63ebdcee3fff03c270ff98a7590e5a7b981",
+    "_measurements/S11c_d_focused_completion_plan.md": "1917ffd7bab9d1da0a355228b865e6ba5c6bbdad009bdfbff18296492b81fcaa",
+    "_measurements/S11c_d_three_momentum_source_check.py": "1753567b20d5739787aedf3269c783f172777043dfe92fd989525c21fadee487",
+    "_measurements/S11c_d_continuum_grades.py": "0443c3adbeaf813ad66c60af0a50c96e9a841277d51f9c23bf1c601d2fdf329d",
+    "_measurements/S11c_d_momentum_action_check.py": "247d2ee6b7004888eca1d653b53f8be773c68041d7254389c4d14328d0001ff3",
+    "_measurements/S11c_d_finite_scattering.py": "f187d9426be8069342a363a0466c175d32a8cb46101e32a14c433ccb9118e469",
+    "scripts/ledger_fold.py": "97da78c6631c09e5575dd14511760506f1ac08771cf07948978004e92f0b2333",
+    "scripts/S11c_c2_exports.py": "2ba5ed487b84ecb98290df6f1650fa6210fe2784cfa02a0f3cff96cd718411cd",
+    "_measurements/S11c_d_wide_momentum_refinement.py": "d80d2c2ff303e23309a4b453ab4ca565c41cb804e029e58f1b2cfe6e11dd567b",
+    "_measurements/S11c_d_remaining_case_sources.py": "49db070d97ba3b15bf4e94929341fb5f4a6882ff8b2e16ee07f3fd16502064b5",
+    "_measurements/S11c_d_remaining_case_matrices.py": "e2890b0125189ab74a60a3e54cd1a181eee1efde5da5ef7f4ebd4d8d30e52879",
+    "_measurements/S11c_d_remaining_case_matrices_plan.md": "bfcfe3c419435fe0910659f2727b4d67d186ef8238e3578928a2139d47a98104",
+    "_measurements/S11c_d_remaining_case_bindings_checkpoint.json": "b687c168a55dd38ac46946ebedb80327ae8c8a4e7c7c823000b019ee8beca467"
+  },
+  "inputPackets": {
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-bindings-20260920/production/complete/checks.json": "c4c52b91708a5abdeea07f2b081a3204c59970aaa886a2d7c5ee31edf97096ad",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-bindings-20260920/production/complete/cases/LAB_HELD__RHO4_CONSTANT/case-binding.pickle": "0a157a87892a0428bc63caa92e233c2b4c6c958b5ad72e4052d2703c11cb80f7",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-bindings-20260920/production/complete/accepted-cases/LAB_HELD__RHO4_CONSTANT/reduced-action.pickle": "e9062c3455c7e59fe816f47172062a0c118b201d03809ec0826575dac22872b0",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-bindings-20260920/production/complete/accepted-cases/LAB_HELD__RHO4_CONSTANT/actions.pickle": "4c2372a7102d1db9f21a049ab3104465e8d9245ab832be88c900bc8519b46e02",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-bindings-20260920/production/complete/accepted-cases/LAB_HELD__RHO4_CONSTANT/assembly.pickle": "8eda57998285137d99cce9564757627a57f8d5bc9b27091c86a65a9cc59230a0",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-bindings-20260920/production/complete/cases/LAB_HELD__RHO4_CONSTANT/factorization.pickle": "011184ab8f796872fec263558a5da6d7f478e4468c7dcacd2373a7df14e69723",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-bindings-20260920/production/complete/cases/LAB_HELD__RHOBR_CONSTANT/case-binding.pickle": "6bc8ed97da17efbbbc05363f3cd22e9b110a26bf706475e903d67ced98f85554",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-bindings-20260920/production/complete/accepted-cases/LAB_HELD__RHOBR_CONSTANT/reduced-action.pickle": "95dbb6b5cb833b16edf3f64177b2df54af2e91379a9ee43d43021d1872aa9106",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-bindings-20260920/production/complete/accepted-cases/LAB_HELD__RHOBR_CONSTANT/actions.pickle": "56e8111829a8f4cb1afaf40edc43d7dbc42d2196b181b984dfddd7015d89f918",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-bindings-20260920/production/complete/accepted-cases/LAB_HELD__RHOBR_CONSTANT/assembly.pickle": "53a1d577e0f568b381148e9d4190434a709f633d769defe1899b94e8b474f690",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-bindings-20260920/production/complete/cases/LAB_HELD__RHOBR_CONSTANT/factorization.pickle": "d4c82a696fc81f591afd4b42d5309b0eec7592adbf8d9620bbdda435f19e3b50",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-bindings-20260920/production/complete/cases/MATERIAL_ADVECTED__RHO4_CONSTANT/case-binding.pickle": "fde53e682f7c33ecea2d02861ff1b5f664ee0d6176cccb32f4058f233b074383",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-bindings-20260920/production/complete/accepted-cases/MATERIAL_ADVECTED__RHO4_CONSTANT/reduced-action.pickle": "b103e83e61ddffcf8a320fe5f91ef433e1571551654f91749bed5665b5d537b9",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-bindings-20260920/production/complete/accepted-cases/MATERIAL_ADVECTED__RHO4_CONSTANT/actions.pickle": "c8b64088556034a465bea39bea751c62a77e3850897257dc81de1a70c8282689",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-bindings-20260920/production/complete/accepted-cases/MATERIAL_ADVECTED__RHO4_CONSTANT/assembly.pickle": "49dac40608b2b44e0a01d10e9f15cb758ef10015157b4d29cd47dff1b6f35c40",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-bindings-20260920/production/complete/cases/MATERIAL_ADVECTED__RHO4_CONSTANT/factorization.pickle": "fcc2a59930d8f12726c1f9de02c407e2f08bd33cca4b4d4db31d0972ba371690",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-bindings-20260920/production/complete/cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/case-binding.pickle": "9024b21ad5eb8de272f0021fcc26a49d308807e03a04862e6faf07a368f06ee6",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-bindings-20260920/production/complete/accepted-cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/reduced-action.pickle": "6add07e5f8fd992204e79985b1dec0ce4e641b5d34d2f7aeaeffccd9e53207a2",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-bindings-20260920/production/complete/accepted-cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/actions.pickle": "75cc4419411903d36cb6f4be73652694de3bc69ff19c6117a564f331503de410",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-bindings-20260920/production/complete/accepted-cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/assembly.pickle": "15b54c2237f5951aba15616f3062d29d5748fcedf5fc4fedea802a5dec04bf0f",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-bindings-20260920/production/complete/cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/factorization.pickle": "956698db852c7e6066e6d42d3836449b271d2fcce16fdafbee586983abd02e5a",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-bindings-20260920/production/complete/accepted-finite-system.pickle": "2a043895b5e8a203cc4dd0b517ba3feec61300ab812a0404f19195cc39c0319a",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-matrices-20260919/production/complete/continuum-matrices.pickle": "1db95fb176c970298b33005a94e25f8ada3ba1423fad605231be66d8a711954e",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-finite-domain-20260919/production/complete/regulator/complete/layout-1.pickle": "dd5522f82df3a8cca29040759fd4780f836f0b7cc2b35c4b545f4a66d4048106",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-finite-domain-20260919/production/complete/regulator/complete/layout-2.pickle": "340f322e6834f119555edde223c9b772ad274907d2671c4f8d4bf1646b81f7e9",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-finite-domain-20260919/production/complete/regulator/complete/layout-3.pickle": "9ec39d83c2624517a5a43e5bb6e9dfb2c0aa7e55566aa0dd11ad1d416ceadcbd"
+  },
+  "artifacts": {
+    "accepted-continuum-matrices.pickle": {
+      "bytes": 113195922,
+      "sha256": "1db95fb176c970298b33005a94e25f8ada3ba1423fad605231be66d8a711954e"
+    },
+    "accepted-finite-system.pickle": {
+      "bytes": 20567521,
+      "sha256": "2a043895b5e8a203cc4dd0b517ba3feec61300ab812a0404f19195cc39c0319a"
+    },
+    "accepted-row-matrices.pickle": {
+      "bytes": 21303723,
+      "sha256": "ca204c8f54121e728f0a2abcc9b42ce5140e324097d07f88095b0c788d80a3ff"
+    },
+    "accepted-cases/LAB_HELD__RHOBR_CONSTANT/actions.pickle": {
+      "bytes": 148401,
+      "sha256": "56e8111829a8f4cb1afaf40edc43d7dbc42d2196b181b984dfddd7015d89f918"
+    },
+    "accepted-cases/LAB_HELD__RHOBR_CONSTANT/factorization.pickle": {
+      "bytes": 6580040,
+      "sha256": "d4c82a696fc81f591afd4b42d5309b0eec7592adbf8d9620bbdda435f19e3b50"
+    },
+    "accepted-cases/LAB_HELD__RHOBR_CONSTANT/assembly.pickle": {
+      "bytes": 103044,
+      "sha256": "53a1d577e0f568b381148e9d4190434a709f633d769defe1899b94e8b474f690"
+    },
+    "accepted-cases/LAB_HELD__RHOBR_CONSTANT/reduced-action.pickle": {
+      "bytes": 1112717,
+      "sha256": "95dbb6b5cb833b16edf3f64177b2df54af2e91379a9ee43d43021d1872aa9106"
+    },
+    "accepted-cases/LAB_HELD__RHO4_CONSTANT/actions.pickle": {
+      "bytes": 176671,
+      "sha256": "4c2372a7102d1db9f21a049ab3104465e8d9245ab832be88c900bc8519b46e02"
+    },
+    "accepted-cases/LAB_HELD__RHO4_CONSTANT/factorization.pickle": {
+      "bytes": 6488579,
+      "sha256": "011184ab8f796872fec263558a5da6d7f478e4468c7dcacd2373a7df14e69723"
+    },
+    "accepted-cases/LAB_HELD__RHO4_CONSTANT/assembly.pickle": {
+      "bytes": 111081,
+      "sha256": "8eda57998285137d99cce9564757627a57f8d5bc9b27091c86a65a9cc59230a0"
+    },
+    "accepted-cases/LAB_HELD__RHO4_CONSTANT/reduced-action.pickle": {
+      "bytes": 1146420,
+      "sha256": "e9062c3455c7e59fe816f47172062a0c118b201d03809ec0826575dac22872b0"
+    },
+    "accepted-cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/actions.pickle": {
+      "bytes": 195585,
+      "sha256": "75cc4419411903d36cb6f4be73652694de3bc69ff19c6117a564f331503de410"
+    },
+    "accepted-cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/factorization.pickle": {
+      "bytes": 6757900,
+      "sha256": "956698db852c7e6066e6d42d3836449b271d2fcce16fdafbee586983abd02e5a"
+    },
+    "accepted-cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/assembly.pickle": {
+      "bytes": 135549,
+      "sha256": "15b54c2237f5951aba15616f3062d29d5748fcedf5fc4fedea802a5dec04bf0f"
+    },
+    "accepted-cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/reduced-action.pickle": {
+      "bytes": 1153587,
+      "sha256": "6add07e5f8fd992204e79985b1dec0ce4e641b5d34d2f7aeaeffccd9e53207a2"
+    },
+    "accepted-cases/MATERIAL_ADVECTED__RHO4_CONSTANT/actions.pickle": {
+      "bytes": 205667,
+      "sha256": "c8b64088556034a465bea39bea751c62a77e3850897257dc81de1a70c8282689"
+    },
+    "accepted-cases/MATERIAL_ADVECTED__RHO4_CONSTANT/factorization.pickle": {
+      "bytes": 6767840,
+      "sha256": "fcc2a59930d8f12726c1f9de02c407e2f08bd33cca4b4d4db31d0972ba371690"
+    },
+    "accepted-cases/MATERIAL_ADVECTED__RHO4_CONSTANT/assembly.pickle": {
+      "bytes": 139074,
+      "sha256": "49dac40608b2b44e0a01d10e9f15cb758ef10015157b4d29cd47dff1b6f35c40"
+    },
+    "accepted-cases/MATERIAL_ADVECTED__RHO4_CONSTANT/reduced-action.pickle": {
+      "bytes": 1151422,
+      "sha256": "b103e83e61ddffcf8a320fe5f91ef433e1571551654f91749bed5665b5d537b9"
+    },
+    "cases/LAB_HELD__RHO4_CONSTANT/direct-native-cells.pickle": {
+      "bytes": 19969457,
+      "sha256": "4d689490c4758173e48055e671dc7b1f8905a4980538ce26af570ab6f783e6b1"
+    },
+    "cases/LAB_HELD__RHO4_CONSTANT/direct-independent.pickle": {
+      "bytes": 19984051,
+      "sha256": "4ca956625bceaa6ef67313028641c6bed270c68a5bcb9591bc755f8ccc5b1696"
+    },
+    "cases/LAB_HELD__RHO4_CONSTANT/comparisons.pickle": {
+      "bytes": 133146885,
+      "sha256": "e17f3f54960d72a64608569aaaf15057eaee1a181d59b973bbea9ef699f73f88"
+    },
+    "cases/LAB_HELD__RHO4_CONSTANT/direct-unsplit.pickle": {
+      "bytes": 19984006,
+      "sha256": "3ce77f353da020861664ba6ebf230e34f12dbd75768f062e1af65222c2e3e5b0"
+    },
+    "cases/LAB_HELD__RHO4_CONSTANT/coefficient-matrices.pickle": {
+      "bytes": 79893021,
+      "sha256": "5021327ce7ab5f871db071ab2017f2e7b952cd479acdff06383130ad3b37a1af"
+    },
+    "cases/LAB_HELD__RHO4_CONSTANT/interior-matrices.pickle": {
+      "bytes": 233038876,
+      "sha256": "5ab7bdb8ac096875697bf57a5bc7bb020c44f099fbaf11011ae0bad2273d67b4"
+    },
+    "cases/LAB_HELD__RHO4_CONSTANT/row-matrices.pickle": {
+      "bytes": 21306246,
+      "sha256": "c403a2875f69da29ef9cddb57f07bafdb4ea068b6d60d4f125f75db82a9373c6"
+    },
+    "accepted-layouts/layout-3.pickle": {
+      "bytes": 2748058,
+      "sha256": "9ec39d83c2624517a5a43e5bb6e9dfb2c0aa7e55566aa0dd11ad1d416ceadcbd"
+    },
+    "accepted-layouts/layout-1.pickle": {
+      "bytes": 10983430,
+      "sha256": "dd5522f82df3a8cca29040759fd4780f836f0b7cc2b35c4b545f4a66d4048106"
+    },
+    "accepted-layouts/layout-2.pickle": {
+      "bytes": 8238308,
+      "sha256": "340f322e6834f119555edde223c9b772ad274907d2671c4f8d4bf1646b81f7e9"
+    },
+    "accepted-bindings/LAB_HELD__RHOBR_CONSTANT/case-binding.pickle": {
+      "bytes": 416084,
+      "sha256": "6bc8ed97da17efbbbc05363f3cd22e9b110a26bf706475e903d67ced98f85554"
+    },
+    "accepted-bindings/LAB_HELD__RHO4_CONSTANT/case-binding.pickle": {
+      "bytes": 456930,
+      "sha256": "0a157a87892a0428bc63caa92e233c2b4c6c958b5ad72e4052d2703c11cb80f7"
+    },
+    "accepted-bindings/MATERIAL_ADVECTED__RHOBR_CONSTANT/case-binding.pickle": {
+      "bytes": 476842,
+      "sha256": "9024b21ad5eb8de272f0021fcc26a49d308807e03a04862e6faf07a368f06ee6"
+    },
+    "accepted-bindings/MATERIAL_ADVECTED__RHO4_CONSTANT/case-binding.pickle": {
+      "bytes": 491423,
+      "sha256": "fde53e682f7c33ecea2d02861ff1b5f664ee0d6176cccb32f4058f233b074383"
+    }
+  },
+  "cases": {
+    "LAB_HELD__RHO4_CONSTANT": {
+      "nativeTerms": 160,
+      "grades": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          1,
+          1
+        ]
+      ],
+      "maximumComparison": 3.9040391507771244e-16,
+      "mixedOmission": 9.166760559174391e-07,
+      "unknowns": 645,
+      "rows": 80,
+      "newRows": [],
+      "newNodes": 0,
+      "layoutCount": 0,
+      "reusedRows": 80
+    }
+  },
+  "preflight": {
+    "cases": {
+      "LAB_HELD__RHO4_CONSTANT": {
+        "rows": 80,
+        "sources": 35,
+        "terms": 160,
+        "newRows": [],
+        "reusedRows": [
+          {
+            "row": 0,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 0
+          },
+          {
+            "row": 1,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 1
+          },
+          {
+            "row": 2,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 2
+          },
+          {
+            "row": 3,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 3
+          },
+          {
+            "row": 4,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 4
+          },
+          {
+            "row": 5,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 5
+          },
+          {
+            "row": 6,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 6
+          },
+          {
+            "row": 7,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 7
+          },
+          {
+            "row": 8,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 8
+          },
+          {
+            "row": 9,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 9
+          },
+          {
+            "row": 10,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 10
+          },
+          {
+            "row": 11,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 11
+          },
+          {
+            "row": 12,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 12
+          },
+          {
+            "row": 13,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 13
+          },
+          {
+            "row": 14,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 14
+          },
+          {
+            "row": 15,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 15
+          },
+          {
+            "row": 16,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 16
+          },
+          {
+            "row": 17,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 17
+          },
+          {
+            "row": 18,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 18
+          },
+          {
+            "row": 19,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 19
+          },
+          {
+            "row": 20,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 20
+          },
+          {
+            "row": 21,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 21
+          },
+          {
+            "row": 22,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 22
+          },
+          {
+            "row": 23,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 23
+          },
+          {
+            "row": 24,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 24
+          },
+          {
+            "row": 25,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 25
+          },
+          {
+            "row": 26,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 26
+          },
+          {
+            "row": 27,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 27
+          },
+          {
+            "row": 28,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 28
+          },
+          {
+            "row": 29,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 29
+          },
+          {
+            "row": 30,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 30
+          },
+          {
+            "row": 31,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 31
+          },
+          {
+            "row": 32,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 32
+          },
+          {
+            "row": 33,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 33
+          },
+          {
+            "row": 34,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 34
+          },
+          {
+            "row": 35,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 35
+          },
+          {
+            "row": 36,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 36
+          },
+          {
+            "row": 37,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 37
+          },
+          {
+            "row": 38,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 38
+          },
+          {
+            "row": 39,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 39
+          },
+          {
+            "row": 40,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 40
+          },
+          {
+            "row": 41,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 41
+          },
+          {
+            "row": 42,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 42
+          },
+          {
+            "row": 43,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 43
+          },
+          {
+            "row": 44,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 44
+          },
+          {
+            "row": 45,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 45
+          },
+          {
+            "row": 46,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 46
+          },
+          {
+            "row": 47,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 47
+          },
+          {
+            "row": 48,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 48
+          },
+          {
+            "row": 49,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 49
+          },
+          {
+            "row": 50,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 50
+          },
+          {
+            "row": 51,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 51
+          },
+          {
+            "row": 52,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 52
+          },
+          {
+            "row": 53,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 53
+          },
+          {
+            "row": 54,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 54
+          },
+          {
+            "row": 55,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 55
+          },
+          {
+            "row": 56,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 56
+          },
+          {
+            "row": 57,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 57
+          },
+          {
+            "row": 58,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 58
+          },
+          {
+            "row": 59,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 59
+          },
+          {
+            "row": 60,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 60
+          },
+          {
+            "row": 61,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 61
+          },
+          {
+            "row": 62,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 62
+          },
+          {
+            "row": 63,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 63
+          },
+          {
+            "row": 64,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 64
+          },
+          {
+            "row": 65,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 65
+          },
+          {
+            "row": 66,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 66
+          },
+          {
+            "row": 67,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 67
+          },
+          {
+            "row": 68,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 68
+          },
+          {
+            "row": 69,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 69
+          },
+          {
+            "row": 70,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 70
+          },
+          {
+            "row": 71,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 71
+          },
+          {
+            "row": 72,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 72
+          },
+          {
+            "row": 73,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 73
+          },
+          {
+            "row": 74,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 74
+          },
+          {
+            "row": 75,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 75
+          },
+          {
+            "row": 76,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 76
+          },
+          {
+            "row": 77,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 77
+          },
+          {
+            "row": 78,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 78
+          },
+          {
+            "row": 79,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 79
+          }
+        ],
+        "fieldUnits": [
+          "(1, 0, 0)",
+          "(1, 0, 0)",
+          "(1, 0, 0)",
+          "(0, 0, 0)",
+          "(0, 0, 0)"
+        ],
+        "equationUnits": [
+          "(-2, -2, 1)",
+          "(-2, -2, 1)",
+          "(-2, -2, 1)",
+          "(-3, -1, 1)",
+          "(-1, -2, 1)"
+        ]
+      },
+      "LAB_HELD__RHOBR_CONSTANT": {
+        "rows": 70,
+        "sources": 25,
+        "terms": 140,
+        "newRows": [
+          28,
+          29,
+          30,
+          46,
+          47,
+          51,
+          52,
+          53,
+          54
+        ],
+        "reusedRows": [
+          {
+            "row": 0,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 0
+          },
+          {
+            "row": 1,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 1
+          },
+          {
+            "row": 2,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 2
+          },
+          {
+            "row": 3,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 3
+          },
+          {
+            "row": 4,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 4
+          },
+          {
+            "row": 5,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 5
+          },
+          {
+            "row": 6,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 6
+          },
+          {
+            "row": 7,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 7
+          },
+          {
+            "row": 8,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 8
+          },
+          {
+            "row": 9,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 9
+          },
+          {
+            "row": 10,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 10
+          },
+          {
+            "row": 11,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 11
+          },
+          {
+            "row": 12,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 12
+          },
+          {
+            "row": 13,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 13
+          },
+          {
+            "row": 14,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 14
+          },
+          {
+            "row": 15,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 15
+          },
+          {
+            "row": 16,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 16
+          },
+          {
+            "row": 17,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 17
+          },
+          {
+            "row": 18,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 18
+          },
+          {
+            "row": 19,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 19
+          },
+          {
+            "row": 20,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 20
+          },
+          {
+            "row": 21,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 21
+          },
+          {
+            "row": 22,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 22
+          },
+          {
+            "row": 23,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 23
+          },
+          {
+            "row": 24,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 24
+          },
+          {
+            "row": 25,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 25
+          },
+          {
+            "row": 26,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 27
+          },
+          {
+            "row": 27,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 29
+          },
+          {
+            "row": 31,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 35
+          },
+          {
+            "row": 32,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 36
+          },
+          {
+            "row": 33,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 40
+          },
+          {
+            "row": 34,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 41
+          },
+          {
+            "row": 35,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 42
+          },
+          {
+            "row": 36,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 43
+          },
+          {
+            "row": 37,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 44
+          },
+          {
+            "row": 38,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 46
+          },
+          {
+            "row": 39,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 48
+          },
+          {
+            "row": 40,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 49
+          },
+          {
+            "row": 41,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 50
+          },
+          {
+            "row": 42,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 51
+          },
+          {
+            "row": 43,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 52
+          },
+          {
+            "row": 44,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 53
+          },
+          {
+            "row": 45,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 54
+          },
+          {
+            "row": 48,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 55
+          },
+          {
+            "row": 49,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 56
+          },
+          {
+            "row": 50,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 60
+          },
+          {
+            "row": 55,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 65
+          },
+          {
+            "row": 56,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 66
+          },
+          {
+            "row": 57,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 67
+          },
+          {
+            "row": 58,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 68
+          },
+          {
+            "row": 59,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 69
+          },
+          {
+            "row": 60,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 70
+          },
+          {
+            "row": 61,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 71
+          },
+          {
+            "row": 62,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 72
+          },
+          {
+            "row": 63,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 73
+          },
+          {
+            "row": 64,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 74
+          },
+          {
+            "row": 65,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 75
+          },
+          {
+            "row": 66,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 76
+          },
+          {
+            "row": 67,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 77
+          },
+          {
+            "row": 68,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 78
+          },
+          {
+            "row": 69,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 79
+          }
+        ],
+        "fieldUnits": [
+          "(1, 0, 0)",
+          "(1, 0, 0)",
+          "(1, 0, 0)",
+          "(0, 0, 0)",
+          "(0, 0, 0)"
+        ],
+        "equationUnits": [
+          "(-2, -2, 1)",
+          "(-2, -2, 1)",
+          "(-2, -2, 1)",
+          "(-3, -1, 1)",
+          "(-1, -2, 1)"
+        ]
+      },
+      "MATERIAL_ADVECTED__RHO4_CONSTANT": {
+        "rows": 80,
+        "sources": 35,
+        "terms": 185,
+        "newRows": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          21,
+          22,
+          23,
+          24,
+          25,
+          60,
+          61,
+          62,
+          63
+        ],
+        "reusedRows": [
+          {
+            "row": 0,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 0
+          },
+          {
+            "row": 1,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 1
+          },
+          {
+            "row": 12,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 12
+          },
+          {
+            "row": 13,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 13
+          },
+          {
+            "row": 14,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 14
+          },
+          {
+            "row": 15,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 15
+          },
+          {
+            "row": 16,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 16
+          },
+          {
+            "row": 17,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 17
+          },
+          {
+            "row": 18,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 18
+          },
+          {
+            "row": 19,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 19
+          },
+          {
+            "row": 20,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 20
+          },
+          {
+            "row": 26,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 26
+          },
+          {
+            "row": 27,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 27
+          },
+          {
+            "row": 28,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 28
+          },
+          {
+            "row": 29,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 29
+          },
+          {
+            "row": 30,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 30
+          },
+          {
+            "row": 31,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 31
+          },
+          {
+            "row": 32,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 32
+          },
+          {
+            "row": 33,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 33
+          },
+          {
+            "row": 34,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 34
+          },
+          {
+            "row": 35,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 35
+          },
+          {
+            "row": 36,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 36
+          },
+          {
+            "row": 37,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 37
+          },
+          {
+            "row": 38,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 38
+          },
+          {
+            "row": 39,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 39
+          },
+          {
+            "row": 40,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 40
+          },
+          {
+            "row": 41,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 41
+          },
+          {
+            "row": 42,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 42
+          },
+          {
+            "row": 43,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 43
+          },
+          {
+            "row": 44,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 44
+          },
+          {
+            "row": 45,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 45
+          },
+          {
+            "row": 46,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 46
+          },
+          {
+            "row": 47,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 47
+          },
+          {
+            "row": 48,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 48
+          },
+          {
+            "row": 49,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 49
+          },
+          {
+            "row": 50,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 50
+          },
+          {
+            "row": 51,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 51
+          },
+          {
+            "row": 52,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 52
+          },
+          {
+            "row": 53,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 53
+          },
+          {
+            "row": 54,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 54
+          },
+          {
+            "row": 55,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 55
+          },
+          {
+            "row": 56,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 56
+          },
+          {
+            "row": 57,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 57
+          },
+          {
+            "row": 58,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 58
+          },
+          {
+            "row": 59,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 59
+          },
+          {
+            "row": 64,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 60
+          },
+          {
+            "row": 65,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 65
+          },
+          {
+            "row": 66,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 66
+          },
+          {
+            "row": 67,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 67
+          },
+          {
+            "row": 68,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 68
+          },
+          {
+            "row": 69,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 69
+          },
+          {
+            "row": 70,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 70
+          },
+          {
+            "row": 71,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 71
+          },
+          {
+            "row": 72,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 72
+          },
+          {
+            "row": 73,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 73
+          },
+          {
+            "row": 74,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 74
+          },
+          {
+            "row": 75,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 75
+          },
+          {
+            "row": 76,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 76
+          },
+          {
+            "row": 77,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 77
+          },
+          {
+            "row": 78,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 78
+          },
+          {
+            "row": 79,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 79
+          }
+        ],
+        "fieldUnits": [
+          "(1, 0, 0)",
+          "(1, 0, 0)",
+          "(1, 0, 0)",
+          "(0, 0, 0)",
+          "(0, 0, 0)"
+        ],
+        "equationUnits": [
+          "(-2, -2, 1)",
+          "(-2, -2, 1)",
+          "(-2, -2, 1)",
+          "(-3, -1, 1)",
+          "(-1, -2, 1)"
+        ]
+      },
+      "MATERIAL_ADVECTED__RHOBR_CONSTANT": {
+        "rows": 70,
+        "sources": 25,
+        "terms": 162,
+        "newRows": [
+          50,
+          51,
+          52,
+          53
+        ],
+        "reusedRows": [
+          {
+            "row": 0,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 0
+          },
+          {
+            "row": 1,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 1
+          },
+          {
+            "row": 2,
+            "fromCase": "MATERIAL_ADVECTED__RHO4_CONSTANT",
+            "fromRow": 2
+          },
+          {
+            "row": 3,
+            "fromCase": "MATERIAL_ADVECTED__RHO4_CONSTANT",
+            "fromRow": 3
+          },
+          {
+            "row": 4,
+            "fromCase": "MATERIAL_ADVECTED__RHO4_CONSTANT",
+            "fromRow": 4
+          },
+          {
+            "row": 5,
+            "fromCase": "MATERIAL_ADVECTED__RHO4_CONSTANT",
+            "fromRow": 5
+          },
+          {
+            "row": 6,
+            "fromCase": "MATERIAL_ADVECTED__RHO4_CONSTANT",
+            "fromRow": 6
+          },
+          {
+            "row": 7,
+            "fromCase": "MATERIAL_ADVECTED__RHO4_CONSTANT",
+            "fromRow": 7
+          },
+          {
+            "row": 8,
+            "fromCase": "MATERIAL_ADVECTED__RHO4_CONSTANT",
+            "fromRow": 8
+          },
+          {
+            "row": 9,
+            "fromCase": "MATERIAL_ADVECTED__RHO4_CONSTANT",
+            "fromRow": 9
+          },
+          {
+            "row": 10,
+            "fromCase": "MATERIAL_ADVECTED__RHO4_CONSTANT",
+            "fromRow": 10
+          },
+          {
+            "row": 11,
+            "fromCase": "MATERIAL_ADVECTED__RHO4_CONSTANT",
+            "fromRow": 11
+          },
+          {
+            "row": 12,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 12
+          },
+          {
+            "row": 13,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 13
+          },
+          {
+            "row": 14,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 14
+          },
+          {
+            "row": 15,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 15
+          },
+          {
+            "row": 16,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 16
+          },
+          {
+            "row": 17,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 17
+          },
+          {
+            "row": 18,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 18
+          },
+          {
+            "row": 19,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 19
+          },
+          {
+            "row": 20,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 20
+          },
+          {
+            "row": 21,
+            "fromCase": "MATERIAL_ADVECTED__RHO4_CONSTANT",
+            "fromRow": 21
+          },
+          {
+            "row": 22,
+            "fromCase": "MATERIAL_ADVECTED__RHO4_CONSTANT",
+            "fromRow": 22
+          },
+          {
+            "row": 23,
+            "fromCase": "MATERIAL_ADVECTED__RHO4_CONSTANT",
+            "fromRow": 23
+          },
+          {
+            "row": 24,
+            "fromCase": "MATERIAL_ADVECTED__RHO4_CONSTANT",
+            "fromRow": 24
+          },
+          {
+            "row": 25,
+            "fromCase": "MATERIAL_ADVECTED__RHO4_CONSTANT",
+            "fromRow": 25
+          },
+          {
+            "row": 26,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 27
+          },
+          {
+            "row": 27,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 29
+          },
+          {
+            "row": 28,
+            "fromCase": "LAB_HELD__RHOBR_CONSTANT",
+            "fromRow": 28
+          },
+          {
+            "row": 29,
+            "fromCase": "LAB_HELD__RHOBR_CONSTANT",
+            "fromRow": 29
+          },
+          {
+            "row": 30,
+            "fromCase": "LAB_HELD__RHOBR_CONSTANT",
+            "fromRow": 30
+          },
+          {
+            "row": 31,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 35
+          },
+          {
+            "row": 32,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 36
+          },
+          {
+            "row": 33,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 40
+          },
+          {
+            "row": 34,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 41
+          },
+          {
+            "row": 35,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 42
+          },
+          {
+            "row": 36,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 43
+          },
+          {
+            "row": 37,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 44
+          },
+          {
+            "row": 38,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 46
+          },
+          {
+            "row": 39,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 48
+          },
+          {
+            "row": 40,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 49
+          },
+          {
+            "row": 41,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 50
+          },
+          {
+            "row": 42,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 51
+          },
+          {
+            "row": 43,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 52
+          },
+          {
+            "row": 44,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 53
+          },
+          {
+            "row": 45,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 54
+          },
+          {
+            "row": 46,
+            "fromCase": "LAB_HELD__RHOBR_CONSTANT",
+            "fromRow": 46
+          },
+          {
+            "row": 47,
+            "fromCase": "LAB_HELD__RHOBR_CONSTANT",
+            "fromRow": 47
+          },
+          {
+            "row": 48,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 55
+          },
+          {
+            "row": 49,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 56
+          },
+          {
+            "row": 54,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 60
+          },
+          {
+            "row": 55,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 65
+          },
+          {
+            "row": 56,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 66
+          },
+          {
+            "row": 57,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 67
+          },
+          {
+            "row": 58,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 68
+          },
+          {
+            "row": 59,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 69
+          },
+          {
+            "row": 60,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 70
+          },
+          {
+            "row": 61,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 71
+          },
+          {
+            "row": 62,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 72
+          },
+          {
+            "row": 63,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 73
+          },
+          {
+            "row": 64,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 74
+          },
+          {
+            "row": 65,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 75
+          },
+          {
+            "row": 66,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 76
+          },
+          {
+            "row": 67,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 77
+          },
+          {
+            "row": 68,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 78
+          },
+          {
+            "row": 69,
+            "fromCase": "LAB_HELD__RHO4_CONSTANT",
+            "fromRow": 79
+          }
+        ],
+        "fieldUnits": [
+          "(1, 0, 0)",
+          "(1, 0, 0)",
+          "(1, 0, 0)",
+          "(0, 0, 0)",
+          "(0, 0, 0)"
+        ],
+        "equationUnits": [
+          "(-2, -2, 1)",
+          "(-2, -2, 1)",
+          "(-2, -2, 1)",
+          "(-3, -1, 1)",
+          "(-1, -2, 1)"
+        ]
+      }
+    },
+    "newUnionRows": 32,
+    "reusedCaseRows": 268,
+    "nativeAccumulatorSha256": "16f039e8fc6ad1f0e66ee2a8f6744a3be738470c9be2a76e89e64c955e99b018",
+    "nativeAssemblySha256": "26a3c391bb3f7c3bf327daf8b8871af4201ccfc49b6ba06919a67350ea4a3a9a"
+  },
+  "matrixComparisons": {
+    "native_local": 0.0,
+    "approved_local": 3.570726651606738e-16,
+    "baseline_local(0, 0, 0)": 0.0,
+    "baseline_local(0, 0, 1)": 0.0,
+    "baseline_local(0, 1, 0)": 0.0,
+    "baseline_local(0, 1, 1)": 0.0,
+    "native_nonlocal": 0.0,
+    "approved_nonlocal": 3.177903244309862e-16,
+    "baseline_nonlocal(0, 0, 0)": 0.0,
+    "baseline_nonlocal(0, 0, 1)": 0.0,
+    "baseline_nonlocal(0, 1, 0)": 0.0,
+    "baseline_nonlocal(0, 1, 1)": 0.0,
+    "native_total": 0.0,
+    "approved_total": 3.9040391507771244e-16,
+    "baseline_total(0, 0, 0)": 0.0,
+    "baseline_total(0, 0, 1)": 0.0,
+    "baseline_total(0, 1, 0)": 0.0,
+    "baseline_total(0, 1, 1)": 0.0,
+    "independent": 3.898338458613434e-16
+  },
+  "mixedOmission": 9.166760559174391e-07,
+  "newNodes": 0,
+  "scope": "All four finite interior operators and independent grades, before fresh case-specific boundary replacement. No new modes, currents, scattering or pole search."
+}

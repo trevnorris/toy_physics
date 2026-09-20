@@ -1,0 +1,20 @@
+{
+  "status": "FOCUSED_PREPARATION_READY",
+  "acceptedBindings": "395732bb",
+  "acceptedResponses": "2dd16688",
+  "acceptedBoundary": "d8713012",
+  "originalProfile": "8d0a6ed2",
+  "focusedRunRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-profile-20260920/focused",
+  "productionRunRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-profile-20260920/production",
+  "actualNewUnionRows": 32,
+  "missingCaseRowReuses": 188,
+  "baselineFormRowsReused": 80,
+  "newFiniteCases": 3,
+  "newContinuumCases": 3,
+  "resourceLimits": {
+    "nativeThreads": 1,
+    "addressSpaceBytes": 2147483648,
+    "wallSeconds": 900
+  },
+  "scope": "One selected FORM comparison per case, with exact baseline reuse and case-specific actual end maps."
+}

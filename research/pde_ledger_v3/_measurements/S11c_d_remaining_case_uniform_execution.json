@@ -1,5 +1,5 @@
 {
-  "status": "PREPARED_FOCUSED_UNIFORM_INPUT_CHECK",
+  "status": "LAUNCHED_AWAITING_SILENT_COMPLETION",
   "acceptedCurrent": "5f60149b",
   "currentPublication": "588a5383",
   "acceptedModes": "69dd0555",
@@ -10,5 +10,49 @@
     "addressSpaceBytes": 2147483648,
     "wallSeconds": 900
   },
-  "scope": "Full source/mode reuse preparation. No matching solve in focus; only one new RHOBR-right homogeneous response follows acceptance."
+  "scope": "Full source/mode reuse preparation. No matching solve in focus; only one new RHOBR-right homogeneous response follows acceptance.",
+  "launch": {
+    "launchedUtc": "2026-09-20T05:14:46.678255+00:00",
+    "command": [
+      "/usr/bin/python",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-uniform-20260920/focused",
+      "--stage",
+      "uniform_focused",
+      "--",
+      "python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_uniform.py",
+      "--focused",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-uniform-20260920/focused/complete"
+    ],
+    "mode": "focused-uniform-source-and-full-mode-reuse",
+    "supervisorPid": 927964,
+    "watcherPid": 927965,
+    "watcherDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-uniform-20260920/focused/completion-watcher",
+    "threadEnvironment": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1"
+    },
+    "implementationCommit": "32af4c5d25e220061a0eabce033b56397201c786"
+  },
+  "helperSha256": "7c82962c83017daa04eeee3567acbea7a3ae9f1d39df502c39c4cebcb20fef66",
+  "launchArtifacts": {
+    "launch.py": {
+      "sha256": "dc55a8e2e52905f0d31af007d440c2088daacc882684deb6e04b815756cc9aa3",
+      "bytes": 3194
+    },
+    "launch.json": {
+      "sha256": "e75df492b209bdec1befc946fd5bcad40af72435db713f13da999e270df9aba1",
+      "bytes": 1082
+    },
+    "continuation.txt": {
+      "sha256": "28e535d351e9dc43868b7d9677b36bc77d2f4a80053f6ae9cf4b4e3da3e5a68e",
+      "bytes": 4325
+    }
+  }
 }

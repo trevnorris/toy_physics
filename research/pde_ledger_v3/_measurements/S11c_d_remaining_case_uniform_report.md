@@ -25,3 +25,6 @@ regulator profile responses, remaining case controls and bounded searches keep
 their separate domains. This control does not compare S matrices across density
 coordinates or establish global pole completeness. No accepted numerical grid,
 mode or current closure is queued for repetition.
+
+Focused implementation 32af4c5d launched at 05:14 UTC under supervisor 927964
+and silent watcher 927965. This records dispatch only, not final acceptance.

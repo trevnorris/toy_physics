@@ -1,5 +1,5 @@
 {
-  "status": "LIVE_METADATA_ROUTING_REPAIR_ACCEPTED_RETRY_PREPARED",
+  "status": "CASE_END_SOURCES_RETRY02_RUNNING",
   "helper": "_measurements/S11c_d_remaining_case_end_sources.py",
   "plan": "_measurements/S11c_d_remaining_case_end_sources_plan.md",
   "matrixAcceptance": "2eed4150",
@@ -118,5 +118,58 @@
     "exitCode": 0,
     "stderrBytes": 0,
     "checksStdoutIdentity": true
+  },
+  "launch": {
+    "launchedUtc": "2026-09-20T01:55:24.079735+00:00",
+    "command": [
+      "/usr/bin/python",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-ends-20260920/retry-02",
+      "--stage",
+      "ends_construct",
+      "--",
+      "python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_end_sources.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-ends-20260920/retry-02/complete"
+    ],
+    "mode": "case-end-and-current-input-sources",
+    "supervisorPid": 863504,
+    "watcherPid": 863505,
+    "watcherDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-ends-20260920/retry-02/completion-watcher",
+    "threadEnvironment": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1"
+    },
+    "implementationCommit": "80212f807b1c56a29b84344ec075f2830d587e25"
+  },
+  "activeAtLaunch": {
+    "stage": "ends_construct",
+    "command": [
+      "python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_end_sources.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-ends-20260920/retry-02/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-ends-20260920/retry-02/ends_construct.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-ends-20260920/retry-02/ends_construct.stderr",
+    "startedUtc": "2026-09-20T01:55:24.119057+00:00",
+    "childPid": 863513,
+    "status": "running"
+  },
+  "watcherAtLaunch": {
+    "status": "waiting",
+    "watcherPid": 863505,
+    "jobPid": 863504,
+    "thread": "01a08c53-295c-70f0-baaf-353db1745867",
+    "startedUtc": "2026-09-20T01:55:24.116988+00:00",
+    "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
+    "messageSha256": "a6c8d5d8fb8718ed80648b3e8db3804d873bb953c2d45d51a504f65322e708b6",
+    "notifications": {}
   }
 }

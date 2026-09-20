@@ -40,3 +40,5 @@ routing repair refreshes that global from the live native context immediately
 before the unchanged prefix; original sources and all packets are preserved.
 
 The repair check passed in 34.28 seconds with empty stderr and checks/stdout identity. All four actual restored case contexts reach the wrapper through the same native units object; each stale-context control fails. The whole-file AST reverses exactly after removing the single assignment. All 105 original files, 27 copied inputs and the 13 earlier copies are unchanged. No end-symbol or energy construction was repeated by these routing checks.
+
+Retry02 launched under 80212f80 with supervisor 863504 and silent watcher 863505, one thread/2GiB/900seconds. No new end/current-input result is accepted until final validation.

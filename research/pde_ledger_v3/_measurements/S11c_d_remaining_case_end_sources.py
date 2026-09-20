@@ -156,6 +156,8 @@ def current_inputs(target,label,end,r,inp,strong,energy,units,function):
     current=engine.UniformSlabCurrent(state,{'value':energy},ends,strong[3,:])
     endpoint={'REFERENCE':None,'LEFT':-sp.oo,'RIGHT':sp.oo}[end]
     anchoring=label.split('__')[0]
+    # restore_context installs this case's live units after prefix compilation.
+    function.__globals__['PHYSICAL_METADATA']=engine.PHYSICAL_METADATA
     data=function(current,anchoring,endpoint)
     data.update(strong=strong,fieldUnits=tuple(current.field_units),end=end,case=label,
         profileBindings=inp.limits,sourceEnergy=energy,anchoring=anchoring,

@@ -30,3 +30,13 @@ must join the actual generator inputs before reuse.
 Focused provenance validation passed in 2.61 seconds with empty stderr and checks/stdout identity. It rejects five actual source/hash mutations, preserves all 33 original files, verifies both complete native current-class joins and the unchanged 17-statement prefix. No end or energy computation ran during this repair check. The retry is prepared with the original one-thread/2GiB/900-second limits.
 
 Retry launched under 359789ca with supervisor 861041 and silent watcher 861042. Source results remain unaccepted until the final outcome and saved-operand checks pass.
+
+Retry01 passed the historical/current provenance joins and copied all 27 inputs,
+then stopped at 37.07 seconds during the first native current-input prefix. The
+compiled wrapper had captured PHYSICAL_METADATA=None before restore_context
+installed the actual case's units. No current-input packet or new end symbol
+was completed. The baseline source copy remains byte-identical. A one-assignment
+routing repair refreshes that global from the live native context immediately
+before the unchanged prefix; original sources and all packets are preserved.
+
+The repair check passed in 34.28 seconds with empty stderr and checks/stdout identity. All four actual restored case contexts reach the wrapper through the same native units object; each stale-context control fails. The whole-file AST reverses exactly after removing the single assignment. All 105 original files, 27 copied inputs and the 13 earlier copies are unchanged. No end-symbol or energy construction was repeated by these routing checks.

@@ -20,7 +20,15 @@ slot, verifies the full matrix decomposition and joins all four cases to their
 independent original-cell matrices. Four altered slot addresses reject. A
 whole-file reverse AST join permits only the reader and two call sites; the
 numerical tail is unchanged. All original copied packets and logs remain.
-The repaired implementation is awaiting its focused baseline wiring check. No new case
+The repaired focused run passed in 30.78 seconds with final exit zero, empty
+stderr and byte-identical checks/stdout. All 91 sources, 140 inputs, 138
+unchanged original copies and 140 artifacts validate. The baseline finite
+matrix differs by 6.122e-16 after row scaling; its existing solution satisfies
+the reconstructed equations to 6.241e-16. Every continuum coefficient matrix
+and forcing matches exactly. The incident-sign mutation responds by 3.9098;
+no baseline solve or integration was repeated. The three case emitter
+namespaces and original emission/validation tails join. Focused evidence is
+accepted; production is prepared to reuse all of its packets. No new case
 response is accepted. Every numerical system/solution is saved before later
 validation or emission; an output error will not justify a repeated solve.
 Actual same-coordinate anchoring differences, finite current ratios and formal

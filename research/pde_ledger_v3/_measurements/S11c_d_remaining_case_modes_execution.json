@@ -1,0 +1,13 @@
+{
+  "status": "PREPARED",
+  "helper": "_measurements/S11c_d_remaining_case_modes.py",
+  "plan": "_measurements/S11c_d_remaining_case_modes_plan.md",
+  "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-modes-20260920/production/complete",
+  "acceptedCurrentCommit": "b36b1f3d",
+  "resources": {
+    "nativeThreads": 1,
+    "memoryGiB": 2,
+    "wallSeconds": 900
+  },
+  "next": "Join all twelve actual root/current inputs, reuse exact accepted mode/adjoint packets, construct the missing RHOBR-right full subspaces and normalization. No new quadrature or current closure."
+}

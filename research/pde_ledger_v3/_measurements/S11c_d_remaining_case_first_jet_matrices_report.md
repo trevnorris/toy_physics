@@ -1,28 +1,35 @@
-# Remaining first-derivative interior adapter
+# First-derivative matrix inputs accepted
 
-Bindings are accepted at 975a0cf0. Matrix implementation is prepared. Their actual union is 27 new rows (7/16/4), 193 missing-case reused
-addresses and 80 baseline control rows. This is eligibility, not completed new
-quadrature or matrix acceptance.
+The focus completed in260.26seconds with final supervisor/child exit zero,
+empty stderr and identical checks/stdout. Independent saved-operand validation
+completed in178.76seconds, also clean. All95current/frozen sources,9906inputs,
+5273unchanged copies and5276artifacts pass before and after validation.
 
-The native numerical tail passes an exact source/bytecode and namespace check.
-The full manifest and selected-cell context resolve explicitly; the accumulator,
-independent native-cell contraction and coefficient assembler remain unchanged.
-The selected assembly view uses the accepted reversed cell operands, including
-25 and 22 changes in the material-advected cases. Focus will check all original
-layout/row chains and the actual 129-node basis before production. Production
-will integrate each new row once and preserve every completed matrix.
+All300case-row addresses and647native cell terms remain. The actual union is
+27new rows (7/16/4),193missing-case reuse addresses and80accepted baseline
+control rows. There are380exact array/layout joins across original and baseline
+control operands. Eleven complete saved layouts retain responding weight
+mutations; maximum mass residual is2.84e-13 and scaled direct-action residual
+1.24e-16. Five changed-limit/omitted-cell controls reject.
 
-Focused matrix preparation launched under supervisor 2141318 and silent watcher
-2141319, one thread, 2 GiB and 900 seconds. Production has not launched.
-The saved-binding validation completed cleanly and remains accepted; its first
-array-dispatch reader failure and original logs are preserved. No binding
-construction was repeated. The launch record is not focused acceptance.
-No response solve is claimed here.
+The material-advected cases reverse25and22cell coefficients. All47actual changed
+values enter the selected native assembly view and independent cell contraction;
+full original and selected operands remain saved. The complete native matrix
+integration tail bytecode, accumulator, direct_cells and assemble_case bodies
+are unchanged. Only the explicit manifest and source-joined selected context
+enter its namespace. No quadrature, matrix assembly, mode/current construction
+or response solve was performed by focus or its validator.
 
-The focus completed in260.26seconds with final exit zero, empty stderr and
-byte-identical checks/stdout. Its95sources,9906inputs,5273copies and5276artifacts
-cover300rowaddresses,647terms,47changed cell coefficients,11saved layouts and
-five actual mutation controls. Independent saved-operand validation is running
-under a silent completion hook; these counts are not yet an acceptance record.
-Production remains unlaunched. The response plan explicitly distinguishes the
-reused baseline continuum control from its missing finite-contrast solve.
+Production next reuses every focused artifact byte-for-byte and integrates only
+the27new single/pair rows. It saves all layouts, unique partials and full matrices
+before later guards. No accepted triple integral or baseline control assembly
+is repeated. The accepted baseline first-derivative result is a continuum
+control; the response plan explicitly treats any missing finite-contrast solve
+as new work from saved matrices.
+
+Keep the approved basis/settings, positive regulator, approximate modal
+boundaries, practical amplitude1e-4/current1e-6 resolutions and omitted parent
+pure-second-order scope. This is a one-sided closed-operator sensitivity, not a
+consistent profile or isolated advection channel. Coordinate/advection controls,
+scoped case searches and final engine/exports remain; no broad campaign or
+baseline contour doubling is queued.

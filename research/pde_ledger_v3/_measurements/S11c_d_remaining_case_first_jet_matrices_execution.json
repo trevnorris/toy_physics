@@ -1,5 +1,5 @@
 {
-  "status": "VALIDATING_COMPLETED_FIRST_JET_MATRIX_FOCUS",
+  "status": "ACCEPTED_FIRST_JET_MATRIX_INPUTS",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/matrices",
   "bindingRunDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/bindings/complete",
   "validationRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/bindings-acceptance",
@@ -29,7 +29,7 @@
   "newQuadratureNodes": 0,
   "newMatrixAssemblies": 0,
   "newResponseSolves": 0,
-  "next": "Accept saved bindings only after final clean validator outcome, then run focused matrix source/array/cell joins before production.",
+  "next": "Reuse all5276focused artifacts and integrate only27newrows with actual selected cell coefficients,then retain complete interior matrices before response.",
   "acceptedBindings": "975a0cf0",
   "launch": {
     "launchedUtc": "2026-09-20T21:48:53.461432+00:00",
@@ -208,5 +208,129 @@
     "watcherPid": 2143462,
     "toolSession": 61936
   },
-  "focusedAccepted": false
+  "focusedAccepted": true,
+  "focusedChecksSha256": "1d737c8186917c59bd6d329b3ef5f584a1963129b8768a3f8b106880f2795fcd",
+  "validation": {
+    "status": "VALIDATED_FIRST_JET_MATRIX_INPUTS",
+    "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/matrices/focused/complete",
+    "checksSha256": "1d737c8186917c59bd6d329b3ef5f584a1963129b8768a3f8b106880f2795fcd",
+    "outcome": {
+      "stage": "first_jet_matrices_focused",
+      "command": [
+        "python",
+        "-u",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_first_jet_matrices.py",
+        "--run-directory",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/matrices/focused/complete",
+        "--focused"
+      ],
+      "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/matrices/focused/first_jet_matrices_focused.stdout",
+      "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/matrices/focused/first_jet_matrices_focused.stderr",
+      "startedUtc": "2026-09-20T21:48:53.512652+00:00",
+      "childPid": 2141324,
+      "status": "completed",
+      "exitCode": 0,
+      "wallSeconds": 260.25560398586094,
+      "stderrBytes": 0,
+      "finishedUtc": "2026-09-20T21:53:13.768342+00:00"
+    },
+    "sourceFiles": 95,
+    "inputPackets": 9906,
+    "copiedInputs": 5273,
+    "artifacts": 5276,
+    "cases": {
+      "LAB_HELD__RHO4_CONSTANT": {
+        "rows": 80,
+        "sources": 35,
+        "terms": 160,
+        "changedCellCoefficients": 0,
+        "newRows": [],
+        "reusedRows": 0
+      },
+      "LAB_HELD__RHOBR_CONSTANT": {
+        "rows": 70,
+        "sources": 25,
+        "terms": 140,
+        "changedCellCoefficients": 0,
+        "newRows": [
+          28,
+          46,
+          47,
+          51,
+          52,
+          53,
+          54
+        ],
+        "reusedRows": 63
+      },
+      "MATERIAL_ADVECTED__RHO4_CONSTANT": {
+        "rows": 80,
+        "sources": 35,
+        "terms": 185,
+        "changedCellCoefficients": 25,
+        "newRows": [
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          22,
+          23,
+          24,
+          25,
+          60,
+          61,
+          62,
+          63
+        ],
+        "reusedRows": 64
+      },
+      "MATERIAL_ADVECTED__RHOBR_CONSTANT": {
+        "rows": 70,
+        "sources": 25,
+        "terms": 162,
+        "changedCellCoefficients": 22,
+        "newRows": [
+          50,
+          51,
+          52,
+          53
+        ],
+        "reusedRows": 66
+      }
+    },
+    "caseRowAddresses": 300,
+    "nativeTerms": 647,
+    "changedCellCoefficients": 47,
+    "rowAddressJoins": 193,
+    "layoutPackets": 11,
+    "arrayLayoutJoins": 380,
+    "weightMutationResponses": 11,
+    "maximumMassResidual": 2.8421709430404007e-13,
+    "maximumScaledDirectActionResidual": 1.2408164767348428e-16,
+    "actualMutationControls": 5,
+    "nativeTail": {
+      "wholeMatrixTailAstJoin": true,
+      "nativeAccumulatorUnchanged": true,
+      "nativeAssemblerUnchanged": true,
+      "wholeNativeTailBytecodeUnchanged": true,
+      "actualManifestIdentity": true,
+      "selectedContextSha256": "5f0c8745f6f4204bb8128a472f62b60f23297dfc5f9c588198ec5ac483e73aac",
+      "nativeContextSha256": "2765e9774a9a3bb83a74078be916c9b4d7fc671abf4462986be8e9d1a8348039",
+      "directCellsSha256": "2253e89fbdac3b8217090443eaf6b349bf13351b599b3d15cf7ba8531e874874",
+      "assembleCaseSha256": "26a976390902d185fe303a8c87bcd50c6ff1a220195df2a78fa9a68ce160c30b"
+    },
+    "validatorSha256": "09aa701127e55ac32e123a18040a1c65995f46f350f91540a39ce547fe6fe208",
+    "wallSeconds": 178.7591226864606
+  },
+  "validationOutcome": {
+    "exitCode": 0,
+    "toolSession": 61936,
+    "stderrBytes": 0,
+    "checksStdoutIdentical": true,
+    "acceptedUtc": "2026-09-20T21:59:28.143774+00:00"
+  }
 }

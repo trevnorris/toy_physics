@@ -1,5 +1,5 @@
 {
-  "status": "PREFLIGHT_ACCEPTED",
+  "status": "REMAINING_FACTORS_PRODUCTION_RUNNING",
   "helper": "_measurements/S11c_d_remaining_case_factors.py",
   "implementationCommit": "e5b23312",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight",
@@ -331,5 +331,77 @@
     "metadataPaths": 1059,
     "tagCount": 160,
     "writeKeys": 78
-  }
+  },
+  "productionRunRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/production",
+  "productionRunDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/production/complete",
+  "productionLaunch": {
+    "launchedUtc": "2026-09-20T00:29:10.237331+00:00",
+    "command": [
+      "/usr/bin/python",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/production",
+      "--stage",
+      "factors_construct",
+      "--",
+      "python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_factor_finish.py",
+      "--mode",
+      "construct",
+      "--resume-from",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight-finish/complete",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/production/complete"
+    ],
+    "mode": "construct",
+    "supervisorPid": 828607,
+    "watcherPid": 828608,
+    "watcherDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/production/completion-watcher",
+    "threadEnvironment": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1"
+    },
+    "implementationCommit": "288dd4b92b50ff07ea8847a89de9d91026c1b3dd"
+  },
+  "productionActiveAtLaunch": {
+    "stage": "factors_construct",
+    "command": [
+      "python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_factor_finish.py",
+      "--mode",
+      "construct",
+      "--resume-from",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/preflight-finish/complete",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/production/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/production/factors_construct.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/production/factors_construct.stderr",
+    "startedUtc": "2026-09-20T00:29:10.275220+00:00",
+    "childPid": 828614,
+    "status": "running"
+  },
+  "productionWatcherAtLaunch": {
+    "status": "waiting",
+    "watcherPid": 828608,
+    "jobPid": 828607,
+    "thread": "01a08c53-295c-70f0-baaf-353db1745867",
+    "startedUtc": "2026-09-20T00:29:10.273280+00:00",
+    "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
+    "messageSha256": "bee23c8556544dde07726c12a6f0e94719726155e9b8c1eeeb981a1f61aa3d4d",
+    "notifications": {}
+  },
+  "acceptedPreflightCommit": "288dd4b92b50ff07ea8847a89de9d91026c1b3dd",
+  "productionHelper": "_measurements/S11c_d_remaining_case_factor_finish.py",
+  "reusedRows": [
+    0,
+    3,
+    9,
+    28
+  ],
+  "newFactorsToCompute": 28
 }

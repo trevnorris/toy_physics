@@ -25,8 +25,8 @@ live pairs, certificates and transcripts remain preserved.
 The four-case source catalogue has 300 integral addresses and 32 distinct new
 operands beyond the accepted 80 baseline factors. Ownership is 9/19/4; the last
 case additionally uses 20 new operands shared with the others. No new operand
-has three momentum variables. Production will reuse all four completed rows and
-compute only the remaining 28, then assemble complete factor packets for every
+has three momentum variables. Production is running after acceptance commit 288dd4b9. It reuses all four
+completed rows and computes only the remaining 28, then assemble complete factor packets for every
 case. No new numerical integration or case response is accepted at this stage.
 Remaining case bindings, end/current/finite/continuum/control/scoped-pole results
 and final exports remain work under practical toy-model acceptance.

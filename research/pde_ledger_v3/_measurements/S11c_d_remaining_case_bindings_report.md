@@ -13,7 +13,7 @@ definitions are unchanged. The shared-expression comparator also passed the
 complete 300-address factor audit and changed-index/limit/assumption controls.
 These checks establish instrument wiring, not a new case response.
 
-Production first reproduces every baseline row/source signature and the full
+Production is running under implementation 64a54b86. It first reproduces every baseline row/source signature and the full
 accepted local matrix. It then binds all three remaining cases, retaining every
 native term, source derivative and nested profile. Grade proofs and numerical
 rows are reusable only through exact expression/unit/field/limit joins. Every

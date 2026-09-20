@@ -1,5 +1,5 @@
 {
-  "status": "IMPLEMENTED_FOCUSED_WIRING_VALIDATED",
+  "status": "CASE_BINDINGS_RUNNING",
   "helper": "_measurements/S11c_d_remaining_case_bindings.py",
   "plan": "_measurements/S11c_d_remaining_case_bindings_plan.md",
   "focused": "_measurements/S11c_d_remaining_case_bindings_focused.json",
@@ -11,5 +11,59 @@
   "initialWallBudgetSeconds": 900,
   "numericalIntegrations": 0,
   "modeSolves": 0,
-  "scope": "Four-case numerical source binding, independent operator grades and exact reuse eligibility; no new scattering response."
+  "scope": "Four-case numerical source binding, independent operator grades and exact reuse eligibility; no new scattering response.",
+  "launch": {
+    "launchedUtc": "2026-09-20T01:04:07.133745+00:00",
+    "command": [
+      "/usr/bin/python",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-bindings-20260920/production",
+      "--stage",
+      "bindings_construct",
+      "--",
+      "python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_bindings.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-bindings-20260920/production/complete"
+    ],
+    "mode": "case-bindings",
+    "supervisorPid": 841405,
+    "watcherPid": 841406,
+    "watcherDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-bindings-20260920/production/completion-watcher",
+    "threadEnvironment": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1"
+    },
+    "implementationCommit": "64a54b86fb5c4c17b4456fde0be71dec71cbb1b9"
+  },
+  "activeAtLaunch": {
+    "stage": "bindings_construct",
+    "command": [
+      "python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_bindings.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-bindings-20260920/production/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-bindings-20260920/production/bindings_construct.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-bindings-20260920/production/bindings_construct.stderr",
+    "startedUtc": "2026-09-20T01:04:07.165415+00:00",
+    "childPid": 841411,
+    "status": "running"
+  },
+  "watcherAtLaunch": {
+    "status": "waiting",
+    "watcherPid": 841406,
+    "jobPid": 841405,
+    "thread": "01a08c53-295c-70f0-baaf-353db1745867",
+    "startedUtc": "2026-09-20T01:04:07.169637+00:00",
+    "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
+    "messageSha256": "2797fd9d16315aa32508bbf23a17c43b3888b9abb349064fc872f3aa1901e29e",
+    "notifications": {}
+  },
+  "implementationCommit": "64a54b86fb5c4c17b4456fde0be71dec71cbb1b9"
 }

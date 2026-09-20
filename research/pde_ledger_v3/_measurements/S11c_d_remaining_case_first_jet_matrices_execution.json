@@ -1,5 +1,5 @@
 {
-  "status": "PREPARED_PENDING_BINDING_ACCEPTANCE",
+  "status": "RUNNING_FIRST_JET_MATRIX_INPUT_FOCUS",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/matrices",
   "bindingRunDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/bindings/complete",
   "validationRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/bindings-acceptance",
@@ -29,5 +29,63 @@
   "newQuadratureNodes": 0,
   "newMatrixAssemblies": 0,
   "newResponseSolves": 0,
-  "next": "Accept saved bindings only after final clean validator outcome, then run focused matrix source/array/cell joins before production."
+  "next": "Accept saved bindings only after final clean validator outcome, then run focused matrix source/array/cell joins before production.",
+  "acceptedBindings": "975a0cf0",
+  "launch": {
+    "launchedUtc": "2026-09-20T21:48:53.461432+00:00",
+    "command": [
+      "/usr/bin/python",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/matrices/focused",
+      "--stage",
+      "first_jet_matrices_focused",
+      "--",
+      "python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_first_jet_matrices.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/matrices/focused/complete",
+      "--focused"
+    ],
+    "mode": "first-derivative-matrix-input-focus-no-quadrature",
+    "supervisorPid": 2141318,
+    "watcherPid": 2141319,
+    "watcherDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/matrices/focused/completion-watcher",
+    "threadEnvironment": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1"
+    },
+    "bindingChecksSha256": "ef3487df1304f195a69de4f03ed4bf6849bdf26622b04f23b355767a79a8b6e8",
+    "implementationCommit": "975a0cf0910c70dddc69617c5d5d4fbbbebbf0a8"
+  },
+  "launchIsFinalAcceptance": false,
+  "launchActiveRecord": {
+    "stage": "first_jet_matrices_focused",
+    "command": [
+      "python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_first_jet_matrices.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/matrices/focused/complete",
+      "--focused"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/matrices/focused/first_jet_matrices_focused.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/matrices/focused/first_jet_matrices_focused.stderr",
+    "startedUtc": "2026-09-20T21:48:53.512652+00:00",
+    "childPid": 2141324,
+    "status": "running"
+  },
+  "launchWatcherState": {
+    "status": "waiting",
+    "watcherPid": 2141319,
+    "jobPid": 2141318,
+    "thread": "01a08c53-295c-70f0-baaf-353db1745867",
+    "startedUtc": "2026-09-20T21:48:53.506735+00:00",
+    "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
+    "messageSha256": "a7e4373b0060b39fe9aa5205b32039ed442cc472d6fbe8b138e0125976ab2747",
+    "notifications": {}
+  }
 }

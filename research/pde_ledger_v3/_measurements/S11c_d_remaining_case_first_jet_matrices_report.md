@@ -1,7 +1,6 @@
 # Remaining first-derivative interior adapter
 
-Implementation is prepared, pending acceptance of the completed derivative
-bindings. Their actual union is 27 new rows (7/16/4), 193 missing-case reused
+Bindings are accepted at 975a0cf0. Matrix implementation is prepared. Their actual union is 27 new rows (7/16/4), 193 missing-case reused
 addresses and 80 baseline control rows. This is eligibility, not completed new
 quadrature or matrix acceptance.
 
@@ -13,9 +12,9 @@ The selected assembly view uses the accepted reversed cell operands, including
 layout/row chains and the actual 129-node basis before production. Production
 will integrate each new row once and preserve every completed matrix.
 
-No focus or production has launched. The first-derivative binding validator is
-owned by its separate completion hook. Its first reader attempt stopped on
-NumPy array dispatch; that original script/log is preserved and the current
-reader uses the existing exact array-aware comparator. No binding construction
-was repeated. On clean saved-operand acceptance, commit the binding checkpoint,
-then launch focused matrix preparation. No response solve is claimed here.
+Focused matrix preparation launched under supervisor 2141318 and silent watcher
+2141319, one thread, 2 GiB and 900 seconds. Production has not launched.
+The saved-binding validation completed cleanly and remains accepted; its first
+array-dispatch reader failure and original logs are preserved. No binding
+construction was repeated. The launch record is not focused acceptance.
+No response solve is claimed here.

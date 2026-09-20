@@ -1,5 +1,5 @@
 {
-  "status": "FOCUSED_STOPPED_UNIT_INITIALIZATION_REPAIRED",
+  "status": "FOCUSED_CURRENT_REUSE_RETRY_RUNNING",
   "helper": "_measurements/S11c_d_remaining_case_currents.py",
   "plan": "_measurements/S11c_d_remaining_case_currents_plan.md",
   "sourceAcceptance": "103c52d5",
@@ -8,14 +8,14 @@
   "addressSpaceBytes": 2147483648,
   "initialWallBudgetSeconds": 900,
   "scope": "Actual complete current-closure reuse joins before one new RHOBR-right closure and pairing; no quadrature or mode solve.",
-  "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/focused/complete",
+  "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/focused-retry-01/complete",
   "launch": {
-    "launchedUtc": "2026-09-20T02:19:05.431755+00:00",
+    "launchedUtc": "2026-09-20T02:29:48.633233+00:00",
     "command": [
       "/usr/bin/python",
       "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
       "--run-root",
-      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/focused",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/focused-retry-01",
       "--stage",
       "currents_focused",
       "--",
@@ -24,19 +24,19 @@
       "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_currents.py",
       "--focused",
       "--run-directory",
-      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/focused/complete"
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/focused-retry-01/complete"
     ],
     "mode": "focused-case-current-reuse",
-    "supervisorPid": 870147,
-    "watcherPid": 870148,
-    "watcherDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/focused/completion-watcher",
+    "supervisorPid": 873957,
+    "watcherPid": 873958,
+    "watcherDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/focused-retry-01/completion-watcher",
     "threadEnvironment": {
       "OPENBLAS_NUM_THREADS": "1",
       "OMP_NUM_THREADS": "1",
       "MKL_NUM_THREADS": "1",
       "NUMEXPR_NUM_THREADS": "1"
     },
-    "implementationCommit": "a0c09328ce83238ee8c45333662d378957c03e53"
+    "implementationCommit": "0e5f55455b4557fdef080c9297d45fc7f2a2b939"
   },
   "activeAtLaunch": {
     "stage": "currents_focused",
@@ -46,22 +46,22 @@
       "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_currents.py",
       "--focused",
       "--run-directory",
-      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/focused/complete"
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/focused-retry-01/complete"
     ],
-    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/focused/currents_focused.stdout",
-    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/focused/currents_focused.stderr",
-    "startedUtc": "2026-09-20T02:19:05.463974+00:00",
-    "childPid": 870154,
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/focused-retry-01/currents_focused.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/focused-retry-01/currents_focused.stderr",
+    "startedUtc": "2026-09-20T02:29:48.670005+00:00",
+    "childPid": 873964,
     "status": "running"
   },
   "watcherAtLaunch": {
     "status": "waiting",
-    "watcherPid": 870148,
-    "jobPid": 870147,
+    "watcherPid": 873958,
+    "jobPid": 873957,
     "thread": "01a08c53-295c-70f0-baaf-353db1745867",
-    "startedUtc": "2026-09-20T02:19:05.467444+00:00",
+    "startedUtc": "2026-09-20T02:29:48.670180+00:00",
     "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
-    "messageSha256": "b9bfe2183903c02fa6e5498bd062d8aa27164576ff6fd20d1b6e84474fc17e74",
+    "messageSha256": "8e038f7efac614f86ea5a94f1bebe5d4ddf4861fc84739d6aba8f3cb8d175279",
     "notifications": {}
   },
   "launchGuardCorrection": {
@@ -110,5 +110,7 @@
     "stderrBytes": 822,
     "finishedUtc": "2026-09-20T02:19:27.467041+00:00"
   },
-  "unitRepair": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_currents_unit_repair.json"
+  "unitRepair": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_currents_unit_repair.json",
+  "unitRepairCommit": "0e5f55455b4557fdef080c9297d45fc7f2a2b939",
+  "nextAcceptanceNote": "Inspect MATERIAL_ADVECTED/RHO4 literal strong-input mismatches using saved actual pairs and accepted semantic family residuals before selecting acoustic reuse. No baseline current reconstruction for expression representation."
 }

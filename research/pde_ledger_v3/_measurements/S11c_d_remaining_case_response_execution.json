@@ -1,0 +1,14 @@
+{
+  "status": "PREPARED_FOCUSED_BASELINE_REPLAY",
+  "helperSha256": "5b5d8b91237bca77320e70332bf479f2b38e47bbf2303987e5290c8b9717c3a3",
+  "acceptedBoundary": "d8713012",
+  "acceptedInteriors": "2eed4150",
+  "focusedRunRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-response-20260920/focused",
+  "productionRunRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-response-20260920/production",
+  "resourceLimits": {
+    "nativeThreads": 1,
+    "addressSpaceBytes": 2147483648,
+    "wallSeconds": 900
+  },
+  "scope": "Three new finite and continuum responses; accepted baseline copies, no quadrature or modes."
+}

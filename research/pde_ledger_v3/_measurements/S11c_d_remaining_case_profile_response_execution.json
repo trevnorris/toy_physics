@@ -1,11 +1,11 @@
 {
-  "status": "ACCEPTED_FOCUSED_READY_FOR_PRODUCTION",
+  "status": "ACCEPTED_MANIFEST_ROUTING_REPAIR_READY_TO_RESUME",
   "acceptedBindings": "395732bb",
   "acceptedResponses": "2dd16688",
   "acceptedBoundary": "d8713012",
   "originalProfile": "8d0a6ed2",
   "focusedRunRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-profile-20260920/focused-recovery-01",
-  "productionRunRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-profile-20260920/production",
+  "productionRunRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-profile-20260920/production-recovery-01",
   "actualNewUnionRows": 32,
   "missingCaseRowReuses": 188,
   "baselineFormRowsReused": 80,
@@ -85,49 +85,50 @@
   "repair": "S11c_d_remaining_case_profile_response_cache_repair.json",
   "recoveryHelperSha256": "55c52e02eefeb0c2cc421ee0747884acf890509a5f2c6c1821b472fdd8c3cc9e",
   "launch": {
-    "launchedUtc": "2026-09-20T06:24:18.100271+00:00",
+    "launchedUtc": "2026-09-20T06:39:22.565555+00:00",
     "command": [
       "/usr/bin/python",
       "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
       "--run-root",
-      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-profile-20260920/focused-recovery-01",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-profile-20260920/production",
       "--stage",
-      "profile_focused",
+      "profile_construct",
       "--",
       "python",
       "-u",
       "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_profile_response_recover.py",
-      "--focused",
+      "--resume-focused",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-profile-20260920/focused-recovery-01/complete",
       "--run-directory",
-      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-profile-20260920/focused-recovery-01/complete"
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-profile-20260920/production/complete"
     ],
-    "mode": "case-form-response-inputs-no-integration-or-solve",
-    "supervisorPid": 959255,
-    "watcherPid": 959256,
-    "watcherDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-profile-20260920/focused-recovery-01/completion-watcher",
+    "mode": "32-new-form-rows-three-case-responses",
+    "supervisorPid": 965513,
+    "watcherPid": 965514,
+    "watcherDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-profile-20260920/production/completion-watcher",
     "threadEnvironment": {
       "OPENBLAS_NUM_THREADS": "1",
       "OMP_NUM_THREADS": "1",
       "MKL_NUM_THREADS": "1",
       "NUMEXPR_NUM_THREADS": "1"
     },
-    "implementationCommit": "7a877cce6d6c4af76372b612dfa59b26f0b2b699"
+    "implementationCommit": "928be3fffec32fe35bf6152a18c2b052b3534ce0"
   },
   "launchArtifacts": {
     "launch.py": {
-      "sha256": "4e36d80637445a26cf6fcc0e2ae0d59f7a225a23f0f5981cf010e8ec86ed996c",
-      "bytes": 3891
+      "sha256": "a24b7abb25a77b1d087ffcb0995176d2a9d15e55ec804fb8151f5196ec4441b7",
+      "bytes": 4386
     },
     "launch.json": {
-      "sha256": "80e095851e4ca8dab4f99dba47ba7e1a3ee2462b379cd9ea3c0f0a4291b5153b",
-      "bytes": 1142
+      "sha256": "65e4870673f518ce54c7fbc11038915091098582671b533e0e8c8c2adad85935",
+      "bytes": 1225
     },
     "continuation.txt": {
-      "sha256": "9cafbf030f76583c01dcd981bb6bf9c9d2a4135912d09b454ad9b957fd8d996d",
-      "bytes": 5185
+      "sha256": "cf73af032a042f82da8868a43b69723f742066f0435b4152a0259382f27af4cb",
+      "bytes": 4760
     }
   },
-  "productionLauncherSha256": "a24b7abb25a77b1d087ffcb0995176d2a9d15e55ec804fb8151f5196ec4441b7",
+  "productionLauncherSha256": "ac6659b359167c787d396c12d7ef3cce7f8080b26734bdcd9db79557c3d76696",
   "focusedOutcome": {
     "stage": "profile_focused",
     "command": [
@@ -158,7 +159,8 @@
     "artifactCount": 611,
     "validator": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-profile-20260920/focused-recovery-01/acceptance-retry-02/validate.py",
     "validatorSha256": "78b7e96150e690c0e995e92e4b478e5e43bffd5263244f266b76d4c23069d9f3",
-    "validatorExitCode": 0
+    "validatorExitCode": 0,
+    "commit": "928be3ff"
   },
   "focusedLaunch": {
     "launchedUtc": "2026-09-20T06:24:18.100271+00:00",
@@ -188,5 +190,86 @@
       "NUMEXPR_NUM_THREADS": "1"
     },
     "implementationCommit": "7a877cce6d6c4af76372b612dfa59b26f0b2b699"
+  },
+  "originalProductionLaunch": {
+    "launchedUtc": "2026-09-20T06:39:22.565555+00:00",
+    "command": [
+      "/usr/bin/python",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-profile-20260920/production",
+      "--stage",
+      "profile_construct",
+      "--",
+      "python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_profile_response_recover.py",
+      "--resume-focused",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-profile-20260920/focused-recovery-01/complete",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-profile-20260920/production/complete"
+    ],
+    "mode": "32-new-form-rows-three-case-responses",
+    "supervisorPid": 965513,
+    "watcherPid": 965514,
+    "watcherDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-profile-20260920/production/completion-watcher",
+    "threadEnvironment": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1"
+    },
+    "implementationCommit": "928be3fffec32fe35bf6152a18c2b052b3534ce0"
+  },
+  "originalProductionLaunchArtifacts": {
+    "launch.py": {
+      "sha256": "a24b7abb25a77b1d087ffcb0995176d2a9d15e55ec804fb8151f5196ec4441b7",
+      "bytes": 4386
+    },
+    "launch.json": {
+      "sha256": "65e4870673f518ce54c7fbc11038915091098582671b533e0e8c8c2adad85935",
+      "bytes": 1225
+    },
+    "continuation.txt": {
+      "sha256": "cf73af032a042f82da8868a43b69723f742066f0435b4152a0259382f27af4cb",
+      "bytes": 4760
+    }
+  },
+  "originalProductionOutcome": {
+    "stage": "profile_construct",
+    "command": [
+      "python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_profile_response_recover.py",
+      "--resume-focused",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-profile-20260920/focused-recovery-01/complete",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-profile-20260920/production/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-profile-20260920/production/profile_construct.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-profile-20260920/production/profile_construct.stderr",
+    "startedUtc": "2026-09-20T06:39:22.603079+00:00",
+    "childPid": 965517,
+    "status": "failed",
+    "exitCode": 1,
+    "wallSeconds": 30.47415753826499,
+    "stderrBytes": 748,
+    "finishedUtc": "2026-09-20T06:39:53.077314+00:00"
+  },
+  "originalProductionRunRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-profile-20260920/production",
+  "productionRepair": "S11c_d_remaining_case_profile_response_manifest_repair.json",
+  "productionRepairChecksSha256": "22436ac09ae878e55ec59f57ed444471f2167f8800d6d5cb137af59efd7ee3b9",
+  "productionRecoveryHelperSha256": "37403b9b6c639d764045e8d0d49925a551c7cc485cf68a6f9bc0d98267686733",
+  "productionRepairFocused": {
+    "directory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-profile-20260920/manifest-repair-retry-02",
+    "wallSeconds": 34.477776588872075,
+    "actualCaseCalls": 3,
+    "actualManifestControlsRejected": 3,
+    "originalArtifacts": 611,
+    "sourceCount": 116,
+    "inputCount": 1565,
+    "exitCode": 0,
+    "stderrBytes": 0,
+    "checksStdoutByteIdentity": true
   }
 }

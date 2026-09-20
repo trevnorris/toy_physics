@@ -1,5 +1,5 @@
 {
-  "status": "RUNNING_FIRST_JET_CASE_BINDINGS",
+  "status": "ACCEPTED_CASE_FIRST_JET_BINDINGS",
   "acceptedSources": "ae5682fd",
   "acceptedOriginalBindings": "a8272c9d",
   "acceptedBaselineFirstJet": "31c008f5",
@@ -53,7 +53,7 @@
     "addressSpaceBytes": 2147483648,
     "wallSeconds": 900
   },
-  "next": "Bind only missing selected expressions/jets, preserve actual changed cell terms, and determine complete numerical reuse eligibility before new integration.",
+  "next": "Join actual saved numerical rows, trial bases and layout measures, then integrate only27new rows and construct own-case derivative controls.",
   "launch": {
     "launchedUtc": "2026-09-20T07:49:53.861993+00:00",
     "command": [
@@ -120,5 +120,161 @@
     "resumedUtc": "2026-09-20T21:36:03.004182+00:00",
     "resumeRequest": "Looks good. Let's continue",
     "priorPauseRecord": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/pause-history/pause-20260920.json"
+  },
+  "outcome": {
+    "stage": "first_jet_bindings",
+    "command": [
+      "python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_first_jet_bindings.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/bindings/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/bindings/first_jet_bindings.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/bindings/first_jet_bindings.stderr",
+    "startedUtc": "2026-09-20T07:49:53.913493+00:00",
+    "childPid": 988653,
+    "status": "completed",
+    "exitCode": 0,
+    "wallSeconds": 256.5771995000541,
+    "stderrBytes": 0,
+    "finishedUtc": "2026-09-20T07:54:10.490770+00:00"
+  },
+  "checksSha256": "ef3487df1304f195a69de4f03ed4bf6849bdf26622b04f23b355767a79a8b6e8",
+  "validation": {
+    "status": "VALIDATED_CASE_FIRST_JET_BINDINGS",
+    "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/bindings/complete",
+    "checksSha256": "ef3487df1304f195a69de4f03ed4bf6849bdf26622b04f23b355767a79a8b6e8",
+    "outcome": {
+      "stage": "first_jet_bindings",
+      "command": [
+        "python",
+        "-u",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_first_jet_bindings.py",
+        "--run-directory",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/bindings/complete"
+      ],
+      "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/bindings/first_jet_bindings.stdout",
+      "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/bindings/first_jet_bindings.stderr",
+      "startedUtc": "2026-09-20T07:49:53.913493+00:00",
+      "childPid": 988653,
+      "status": "completed",
+      "exitCode": 0,
+      "wallSeconds": 256.5771995000541,
+      "stderrBytes": 0,
+      "finishedUtc": "2026-09-20T07:54:10.490770+00:00"
+    },
+    "sourceFiles": 89,
+    "inputPackets": 4614,
+    "copiedInputs": 3732,
+    "artifacts": 5243,
+    "cases": {
+      "LAB_HELD__RHOBR_CONSTANT": {
+        "rows": 70,
+        "sources": 25,
+        "terms": 140,
+        "changedSourceRecordCounts": {
+          "local": 33,
+          "cell": 0,
+          "factor": 27,
+          "source": 9
+        },
+        "newScalarBindings": 17,
+        "reusedScalarBindings": 293,
+        "newSourceJets": 1,
+        "newGaussianChecks": 10,
+        "gaussianChecks": 50,
+        "nestedProfiles": 6,
+        "newRows": [
+          28,
+          46,
+          47,
+          51,
+          52,
+          53,
+          54
+        ],
+        "reusedRows": 63,
+        "rowMutationsRejected": 2
+      },
+      "MATERIAL_ADVECTED__RHO4_CONSTANT": {
+        "rows": 80,
+        "sources": 35,
+        "terms": 185,
+        "changedSourceRecordCounts": {
+          "local": 33,
+          "cell": 25,
+          "factor": 30,
+          "source": 12
+        },
+        "newScalarBindings": 16,
+        "reusedScalarBindings": 349,
+        "newSourceJets": 8,
+        "newGaussianChecks": 24,
+        "gaussianChecks": 70,
+        "nestedProfiles": 6,
+        "newRows": [
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          22,
+          23,
+          24,
+          25,
+          60,
+          61,
+          62,
+          63
+        ],
+        "reusedRows": 64,
+        "rowMutationsRejected": 2
+      },
+      "MATERIAL_ADVECTED__RHOBR_CONSTANT": {
+        "rows": 70,
+        "sources": 25,
+        "terms": 162,
+        "changedSourceRecordCounts": {
+          "local": 33,
+          "cell": 22,
+          "factor": 27,
+          "source": 9
+        },
+        "newScalarBindings": 12,
+        "reusedScalarBindings": 320,
+        "newSourceJets": 0,
+        "newGaussianChecks": 0,
+        "gaussianChecks": 50,
+        "nestedProfiles": 6,
+        "newRows": [
+          50,
+          51,
+          52,
+          53
+        ],
+        "reusedRows": 66,
+        "rowMutationsRejected": 2
+      }
+    },
+    "scalarOperands": 1007,
+    "sourceJets": 85,
+    "gaussianProofs": 170,
+    "twoGaussianCellTerms": 974,
+    "rowReuseJoins": 193,
+    "rowMutationsRejected": 6,
+    "newUnionRows": 27,
+    "validatorSha256": "aa555b1c421899bd4e3139fa445f7a5b9308621f516f72ed3f143959b59c363b",
+    "wallSeconds": 224.19650676473975
+  },
+  "validationOutcome": {
+    "exitCode": 0,
+    "toolSession": 56571,
+    "stderrBytes": 0,
+    "checksStdoutIdentical": true,
+    "validatedUtc": "2026-09-20T21:47:11.329964+00:00"
   }
 }

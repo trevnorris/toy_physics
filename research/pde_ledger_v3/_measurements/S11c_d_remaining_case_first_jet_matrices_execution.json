@@ -1,5 +1,5 @@
 {
-  "status": "RUNNING_CASE_FIRST_JET_INTERIORS",
+  "status": "ACCEPTED_CASE_FIRST_JET_INTERIOR_MATRICES",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/matrices",
   "bindingRunDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/bindings/complete",
   "validationRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/bindings-acceptance",
@@ -26,10 +26,10 @@
   ],
   "missingCaseReusedRows": 193,
   "baselineControlRows": 80,
-  "newQuadratureNodes": 0,
-  "newMatrixAssemblies": 0,
+  "newQuadratureNodes": 3632,
+  "newMatrixAssemblies": 3,
   "newResponseSolves": 0,
-  "next": "Inspect final production outcome and validate saved layouts/matrices; then finish actual own-case derivative response controls without repeating integration or assembly.",
+  "next": "Focused own-case first-derivative response preparation; then four genuinely missing finite controls and three continuum controls from saved matrices. Reuse accepted baseline continuum.",
   "acceptedBindings": "975a0cf0",
   "launch": {
     "launchedUtc": "2026-09-20T21:48:53.461432+00:00",
@@ -392,5 +392,235 @@
     "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
     "messageSha256": "e724d29adc37ae679611b30b49fd52ef79c5740913a259dc6d177e6888f6d36e",
     "notifications": {}
+  },
+  "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/matrices/production/complete",
+  "productionOutcome": {
+    "stage": "first_jet_matrices_construct",
+    "command": [
+      "python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_first_jet_matrices.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/matrices/production/complete",
+      "--resume-focused",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/matrices/focused/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/matrices/production/first_jet_matrices_construct.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/matrices/production/first_jet_matrices_construct.stderr",
+    "startedUtc": "2026-09-20T21:59:57.158003+00:00",
+    "childPid": 2145514,
+    "status": "completed",
+    "exitCode": 0,
+    "wallSeconds": 236.98513632453978,
+    "stderrBytes": 0,
+    "finishedUtc": "2026-09-20T22:03:54.143175+00:00"
+  },
+  "productionCounts": {
+    "sourceFiles": 95,
+    "inputPackets": 9928,
+    "copiedInputs": 5276,
+    "artifacts": 5306
+  },
+  "productionValidation": {
+    "status": "ACCEPTED_CASE_FIRST_JET_INTERIOR_MATRICES",
+    "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/matrices/production/complete",
+    "outcome": {
+      "stage": "first_jet_matrices_construct",
+      "command": [
+        "python",
+        "-u",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_first_jet_matrices.py",
+        "--run-directory",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/matrices/production/complete",
+        "--resume-focused",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/matrices/focused/complete"
+      ],
+      "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/matrices/production/first_jet_matrices_construct.stdout",
+      "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/matrices/production/first_jet_matrices_construct.stderr",
+      "startedUtc": "2026-09-20T21:59:57.158003+00:00",
+      "childPid": 2145514,
+      "status": "completed",
+      "exitCode": 0,
+      "wallSeconds": 236.98513632453978,
+      "stderrBytes": 0,
+      "finishedUtc": "2026-09-20T22:03:54.143175+00:00"
+    },
+    "checksSha256": "ec4fa53b00efa39ccb16b974d8c28832966a3eb0902521e7e25abad70d1799cb",
+    "sourceFiles": 95,
+    "inputPackets": 9928,
+    "copiedInputs": 5276,
+    "artifacts": 5306,
+    "cases": {
+      "LAB_HELD__RHOBR_CONSTANT": {
+        "nativeTerms": 140,
+        "grades": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            1,
+            1
+          ]
+        ],
+        "maximumComparison": 4.0430853409594684e-16,
+        "mixedOmission": 1.720623829036527e-06,
+        "unknowns": 645,
+        "rows": 70,
+        "newRows": [
+          28,
+          46,
+          47,
+          51,
+          52,
+          53,
+          54
+        ],
+        "newNodes": 1216,
+        "layoutCount": 2,
+        "reusedRows": 63,
+        "independentSavedArrayReplay": true,
+        "newSolve": false
+      },
+      "MATERIAL_ADVECTED__RHO4_CONSTANT": {
+        "nativeTerms": 185,
+        "grades": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            1,
+            1
+          ]
+        ],
+        "maximumComparison": 5.844654551853951e-16,
+        "mixedOmission": 1.726492133344293e-06,
+        "unknowns": 645,
+        "rows": 80,
+        "newRows": [
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          22,
+          23,
+          24,
+          25,
+          60,
+          61,
+          62,
+          63
+        ],
+        "newNodes": 1216,
+        "layoutCount": 2,
+        "reusedRows": 64,
+        "independentSavedArrayReplay": true,
+        "newSolve": false
+      },
+      "MATERIAL_ADVECTED__RHOBR_CONSTANT": {
+        "nativeTerms": 162,
+        "grades": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            1,
+            1
+          ]
+        ],
+        "maximumComparison": 4.407821230899868e-16,
+        "mixedOmission": 1.7193789123375943e-06,
+        "unknowns": 645,
+        "rows": 70,
+        "newRows": [
+          50,
+          51,
+          52,
+          53
+        ],
+        "newNodes": 1200,
+        "layoutCount": 1,
+        "reusedRows": 66,
+        "independentSavedArrayReplay": true,
+        "newSolve": false
+      }
+    },
+    "newIntegrationNodes": 3632,
+    "newLayouts": 5,
+    "uniquePartials": 0,
+    "newUnionRows": 27,
+    "caseRowAddresses": 300,
+    "nativeTerms": 647,
+    "exactReusedMissingCaseRows": 193,
+    "baselineControlRows": 80,
+    "maximumMassResidual": 7.105427357601002e-15,
+    "maximumScaledDirectActionResidual": 2.4823345518140508e-17,
+    "maximumWeightMutation": 1.750809723828336e-05,
+    "maximumMatrixComparison": 5.844654551853951e-16,
+    "focusedArtifactCopies": 5276,
+    "newModeSolves": 0,
+    "newScatteringSolves": 0,
+    "validatorSha256": "38ada014b6bb5b74aab53de3e0d9874368c73e1e421804876790f16a832b3676",
+    "wallSeconds": 76.05422920361161,
+    "scope": "Actual one-sided first-w-derivative finite interior operators, including changed material-case cell coefficients. Original and baseline-control matrices are immutable reuse operands. No new modes, currents or response solve."
+  },
+  "productionValidationOutcome": {
+    "stage": "validate",
+    "command": [
+      "python",
+      "-u",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/matrices/production-acceptance/validate.py"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/matrices/production-acceptance/validate.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/matrices/production-acceptance/validate.stderr",
+    "startedUtc": "2026-09-20T22:11:42.900535+00:00",
+    "childPid": 2148486,
+    "status": "completed",
+    "exitCode": 0,
+    "wallSeconds": 77.71761142648757,
+    "stderrBytes": 0,
+    "finishedUtc": "2026-09-20T22:13:00.618208+00:00"
   }
 }

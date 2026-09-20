@@ -1,39 +1,34 @@
-# First-derivative matrix inputs accepted
+# First-derivative interior matrices accepted
 
-The focus completed in260.26seconds with final supervisor/child exit zero,
-empty stderr and identical checks/stdout. Independent saved-operand validation
-completed in178.76seconds, also clean. All95current/frozen sources,9906inputs,
-5273unchanged copies and5276artifacts pass before and after validation.
+Production completed in236.99seconds with final supervisor/child exit zero,
+empty stderr and identical checks/stdout. Independent saved-array validation
+completed in77.72seconds with the same clean outcome. All95current/frozen
+sources,9928inputs,5276unchanged focused copies and5306artifacts pass pre/post
+hash checks. Focus remains accepted at27e32f2b; bindings at975a0cf0.
 
-All300case-row addresses and647native cell terms remain. The actual union is
-27new rows (7/16/4),193missing-case reuse addresses and80accepted baseline
-control rows. There are380exact array/layout joins across original and baseline
-control operands. Eleven complete saved layouts retain responding weight
-mutations; maximum mass residual is2.84e-13 and scaled direct-action residual
-1.24e-16. Five changed-limit/omitted-cell controls reject.
+Only27new rows (7/16/4) were integrated in five single/pair layouts,3632nodes.
+All193missing-case reuse routes and80accepted baseline-control rows remain;
+the full four-case census is300row addresses and647native terms. These small
+layouts produced no64-batch partial checkpoint. All full arrays are preserved.
+No accepted baseline quadrature, binding, factor, grade, mode/current or matrix
+construction was repeated. No response solve was performed at this stage.
 
-The material-advected cases reverse25and22cell coefficients. All47actual changed
-values enter the selected native assembly view and independent cell contraction;
-full original and selected operands remain saved. The complete native matrix
-integration tail bytecode, accumulator, direct_cells and assemble_case bodies
-are unchanged. Only the explicit manifest and source-joined selected context
-enter its namespace. No quadrature, matrix assembly, mode/current construction
-or response solve was performed by focus or its validator.
+The material cases use their actual25and22reversed cell coefficients in both
+independent native-cell contraction and grade assembly. Whole native matrix-tail
+bytecode, accumulator and assembly helpers remain unchanged. Saved local,
+nonlocal and total arrays pass native-cell, approved-contrast and independent
+formal-point recombinations. Maximum matrix difference is5.845e-16; mass
+residual7.106e-15 and scaled direct-action residual2.482e-17. Actual weight
+mutations respond, as do all three mixed-term omission controls.
 
-Production next reuses every focused artifact byte-for-byte and integrates only
-the27new single/pair rows. It saves all layouts, unique partials and full matrices
-before later guards. No accepted triple integral or baseline control assembly
-is repeated. The accepted baseline first-derivative result is a continuum
-control; the response plan explicitly treats any missing finite-contrast solve
-as new work from saved matrices.
+Next construct own-case response controls using the accepted boundary/current/
+phase maps. The historical baseline first-derivative control is continuum only:
+four finite-contrast control solves and three remaining continuum solves are
+explicitly new work from saved operators. Preserve the accepted baseline
+continuum result and transcript without another solve or emission.
 
-Keep the approved basis/settings, positive regulator, approximate modal
-boundaries, practical amplitude1e-4/current1e-6 resolutions and omitted parent
-pure-second-order scope. This is a one-sided closed-operator sensitivity, not a
-consistent profile or isolated advection channel. Coordinate/advection controls,
-scoped case searches and final engine/exports remain; no broad campaign or
-baseline contour doubling is queued.
-
-Production launched from27e32f2b under supervisor2145508 and silent watcher
-2145509, one native thread,2GiB and900seconds. Focus remains accepted.
-This launch record is not completed numerical matrix acceptance.
+This is a one-sided closed-operator sensitivity, not a consistent profile or an
+isolated advection channel. Keep positive regulator, approximate boundaries,
+practical amplitude1e-4/current1e-6 resolution and omitted parent pure-second-order
+scope. Coordinate/advection controls, scoped case searches and final all-case
+engine/exports remain. No broad campaign or baseline contour doubling is queued.

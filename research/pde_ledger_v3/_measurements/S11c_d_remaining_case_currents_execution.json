@@ -1,5 +1,5 @@
 {
-  "status": "ONE_NEW_CURRENT_PAIRING_FAMILY_RUNNING",
+  "status": "CHECKPOINT_RECOVERY_READY",
   "helper": "_measurements/S11c_d_remaining_case_currents.py",
   "plan": "_measurements/S11c_d_remaining_case_currents_plan.md",
   "sourceAcceptance": "103c52d5",
@@ -214,5 +214,48 @@
     "messageSha256": "b8576a6c3594beb24bc2faa1212f71939d0267b636a4d667a9f4230cbe93ad89",
     "notifications": {}
   },
-  "implementationCommit": "6337fffa84217c3dc1ab31d835d83c3209b3fdeb"
+  "implementationCommit": "6337fffa84217c3dc1ab31d835d83c3209b3fdeb",
+  "failedProductionOutcome": {
+    "stage": "currents_construct",
+    "command": [
+      "python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_currents_production.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/production/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/production/currents_construct.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/production/currents_construct.stderr",
+    "startedUtc": "2026-09-20T02:48:23.839539+00:00",
+    "childPid": 880147,
+    "status": "failed",
+    "exitCode": 1,
+    "wallSeconds": 24.769304796122015,
+    "stderrBytes": 675,
+    "finishedUtc": "2026-09-20T02:48:48.608887+00:00"
+  },
+  "checkpointFocused": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_currents_checkpoint_focused.json",
+  "checkpointFocusedOutcome": {
+    "stage": "checkpoint_focused",
+    "command": [
+      "python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_currents_checkpoint_recover.py",
+      "--check-writes",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/checkpoint-focused/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/checkpoint-focused/checkpoint_focused.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/checkpoint-focused/checkpoint_focused.stderr",
+    "startedUtc": "2026-09-20T02:54:22.140892+00:00",
+    "childPid": 3,
+    "status": "completed",
+    "exitCode": 0,
+    "wallSeconds": 49.06775327771902,
+    "stderrBytes": 0,
+    "finishedUtc": "2026-09-20T02:55:11.208692+00:00"
+  },
+  "recoveryHelper": "_measurements/S11c_d_remaining_case_currents_checkpoint_recover.py",
+  "recoveryPlan": "_measurements/S11c_d_remaining_case_currents_checkpoint_plan.md",
+  "recoveryDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/recovery-01/complete"
 }

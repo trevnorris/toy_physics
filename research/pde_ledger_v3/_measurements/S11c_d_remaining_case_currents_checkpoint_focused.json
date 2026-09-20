@@ -1,0 +1,808 @@
+{
+  "status": "ACCEPTED_CURRENT_CHECKPOINT_WRITE_REPAIR",
+  "caseInventory": {
+    "LAB_HELD__RHO4_CONSTANT__REFERENCE": {
+      "family": 0,
+      "origin": [
+        "LAB_HELD__RHO4_CONSTANT",
+        "REFERENCE"
+      ],
+      "reuseMode": "accepted-original-current-source-and-pairing",
+      "retainedResidualScalars": 15
+    },
+    "LAB_HELD__RHO4_CONSTANT__LEFT": {
+      "family": 0,
+      "origin": [
+        "LAB_HELD__RHO4_CONSTANT",
+        "REFERENCE"
+      ],
+      "reuseMode": "same-full-input-family",
+      "retainedResidualScalars": 15
+    },
+    "LAB_HELD__RHO4_CONSTANT__RIGHT": {
+      "family": 1,
+      "origin": [
+        "LAB_HELD__RHO4_CONSTANT",
+        "RIGHT"
+      ],
+      "reuseMode": "accepted-original-current-source-and-pairing",
+      "retainedResidualScalars": 15
+    }
+  },
+  "mutations": [
+    "acoustic",
+    "pairing"
+  ],
+  "writeJoins": {
+    "cases/LAB_HELD__RHO4_CONSTANT/reference/acoustic.pickle": {
+      "sha256": "1b0f79f65b8fa42760fdb1e65742ab8b2db61b3909d2ddc85053e9b534bdf368",
+      "exactPayloadJoins": 2,
+      "proofSha256": "8f8e1cc3ef9de6b590548165212975eeb89978ad677adead93f49e61803de2d1"
+    },
+    "cases/LAB_HELD__RHO4_CONSTANT/right/acoustic.pickle": {
+      "sha256": "0ebeedf83ef36ec623afb3a5de3ae2ccb299c758255fc4481c300901b574ca27",
+      "exactPayloadJoins": 2,
+      "proofSha256": "a275f5334ea46730d41eb48f4d4c3acf103212b4c72e75bdd426b52ab981bee3"
+    },
+    "cases/LAB_HELD__RHO4_CONSTANT/right/pairing.pickle": {
+      "sha256": "161581d6930c90574235e4fb431dbb02125e1a587d348367651a19b8607af929",
+      "exactPayloadJoins": 1,
+      "proofSha256": "27c5c1c9452004234653b4365f09622e3a4e38055e6bc6ce0144d05e2c90b494"
+    }
+  },
+  "namespaceJoin": {
+    "wholeCoordinatorAstJoin": {
+      "wholeFunctionJoined": true,
+      "expressionEdits": 4,
+      "namespaceOverrides": [
+        "load",
+        "join_tail"
+      ],
+      "nativeHelperSha256": "0db940a3a94c5dfed4011fd1f86a34624698c59329daebc9bcae2bc8402c6639"
+    },
+    "wholeCoordinatorBytecodeSha256": "4929498105c3c08014b1c2eb4c3749262bba41899a2dfd816d57b124f1bd33d5",
+    "unchangedBytecode": true,
+    "namespaceOverrides": [
+      "f.atomic_pickle for complete acoustic/pairing packets only",
+      "load for exact saved original packet"
+    ],
+    "originalHelperSha256": "998f44811a3492a972d9fe514482e37f7a4ccc4f5ae3c67c76971383f789260e",
+    "originalAtomicPickleSource": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_reduced_action_source_check.py",
+    "originalAtomicPickleSourceSha256": "aae3b2402e1707ef27f217b917dc10592f38acbe35d18356fbc4886ed854f754"
+  },
+  "scope": "Only the three original LAB_HELD/RHO4 background current packets and validation paths were replayed; no new closure, pairing or all-case result.",
+  "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/checkpoint-focused/complete",
+  "checksSha256": "73c6fab2aa61e54edf3cca207e497b220bdd6bfbc1ba12a144baaf05aee02e7f",
+  "writeControlsSha256": "9222a80afddccf39cccb98c167ba7e9a12c733a1ffe4a95944c840a8797cc1ce",
+  "sourceFiles": {
+    "_measurements/S11c_d_remaining_case_factors.py": "fb50c34f50ba1cf6e2aa788cde5f2d345ee8e93b7ccc5376e341c00a14490bfd",
+    "_measurements/S11c_d_numerical_action_check.py": "86d5b373df8825c1e6dca198555b2a65e62822a3d9ba32868a89ca135bb7968f",
+    "directives/S11b_SHARED_PHYSICS.md": "9ea9e388e9d6421a841eaf851d12e1793527bba9a24aeeface3bfac2f4b40078",
+    "scripts/S11c_c1_exports.py": "a5353b86dc526fd1b56734fdbdf7dc7f42387a3195ab4de84e8994f751871cdc",
+    "directives/S11c_d_SHARED_PHYSICS.md": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5",
+    "_measurements/S11c_d_momentum_domain_action.py": "db37d83a74ebd0fc82b903285a69a9a04ce9c7bb62341539a3b4c5f12f4956cf",
+    "_measurements/S11c_d_wide_three_momentum.py": "455ba3aaf4481a101c6e3e3b7e23b7160ef7afa453c201c9e0e0b57b5d7afc3e",
+    "_measurements/S11c_d_position_domain.py": "d056a00e7500cd27a0d824b0b6f9b66ca9bbb2dd412b2b8c490d621afcf71b46",
+    "directives/S11c_d_NONLINEAR_POLE_CONTRACT.md": "2b6018faf0d5ca772bf9c980174d8ebe7545127a3bf43ba01d1b3c0b6a5be423",
+    "_measurements/S11c_d_remaining_case_bindings_plan.md": "aa752f92dd4b9c8871ce0dd1e7f327a1f8bb3df75e701f492e98208bbcfe7cb9",
+    "scripts/S11c_d_mixing_scattering_sympy_audit.py": "5bf77729682960bb59f10c672a5fe3f67a98b0a9533da7c6189a37183596050f",
+    "_measurements/S11c_d_variable_profile_development_input.json": "660b2b0b54494dce964c7f5fbd722a76a7e894d8ed92b18b5eb6290c3c10f1d5",
+    "_measurements/S11c_d_momentum_domain_prepare.py": "195c26b062d6bff63520a823f6dbf1b89d4973c4f93b004fae81f3e67800762e",
+    "_measurements/S11c_d_three_momentum_adaptive.py": "a028e76029f8386c900c88c8edaf02766b821c29c179c5c26d7ce3d7860fc1c2",
+    "_measurements/S11c_d_continuum_matrices.py": "33a0e5a2fa136a55875541e15bc410159c94f56f25adc4a02589d0c704223987",
+    "_measurements/S11c_d_continuum_boundary.py": "ed3a6539d3151c52d25f12308b121897baf3bd6a5a626a598ab728988ab933a0",
+    "directives/S11c_d_sympy_build_PROGRAM_BRIEF.md": "1d9a48a043c68a6b38a1951f69b82a3ea8e97f4b7bb1d8e3f4c028f03290b380",
+    "_measurements/S11c_d_source_fourier_quadrature_check.py": "d52747cba3e5cbdf4cbff6816ccd07d79564032d0a64d57bf80aef5815430323",
+    "_measurements/S11c_d_source_fourier_residual_recover.py": "443953029c6848c9f0ea377b7cd3005f9f537d29b2431e2122cf2f8fda83e2b9",
+    "_measurements/S11c_d_parallel_momentum.py": "ecc9c93c89f4e670b8cccf213a57c6380ac73fe37bedefedb25a3e8dabfb536c",
+    "_measurements/S11c_d_wide_momentum_adaptive.py": "4c40be5eae12631a33213b38a044de24d44d2a486c82b3e6d53b2ed8795bfdcc",
+    "_measurements/S11c_d_finite_scattering_domain.py": "73341408d0f6c1eb517e435dea986e180ff53615a6102697a8e3ba6747bd35aa",
+    "_measurements/S11c_d_remaining_case_bindings.py": "a6c74b31269d4e2ace9b32d4757daeeecc6abe06119ef6ced61a21baeb881ef6",
+    "_measurements/S11c_d_variable_profile_input_check.py": "70cdf2811f2ccd92380be24a80bb7af49f4e1a01504b09a9dbb47f8d3cbbb3b2",
+    "_measurements/S11c_d_continuum_matrix_checkpoint.json": "4fe0e0214a5f51a6ab18c9266aa369dde4cf2b60eb51beabf3257754f91d942d",
+    "scripts/S11c_b_exports.py": "3c6555f90a85382a5e96f3f961f0e36a4875d9259fe1be947fa8e683669b7084",
+    "_measurements/S11c_d_reduced_action_assembly_check.py": "f620a643c761474aeaa181ad34a368bc35c1f9e81fb528a81744c2a32af364a8",
+    "_measurements/S11c_d_source_fourier_factorization_check.py": "b6573d82198f262ac5eea8362fb478a93a1f9b8ea17bd0d4645c67cb40168f23",
+    "directives/S11c_d_EXPLORATORY_ACCEPTANCE.md": "5c1e560a78d40739af8b1318c0487e20bf2b816c41109889e12004266c72840c",
+    "_measurements/S11c_d_continuum_grade_checkpoint.json": "3987ff4abb782050fffc767065ed9b3126da49215aa0df41320abef7fdec4692",
+    "_measurements/S11c_d_reduced_action_source_check.py": "aae3b2402e1707ef27f217b917dc10592f38acbe35d18356fbc4886ed854f754",
+    "_measurements/S11c_d_wide_three_adaptive.py": "af123066766700f40d71843d36a7b94513dcaf3b35fcef17af1fd4843ec8413a",
+    "scripts/S11c_d_output_codec.py": "49873a2fa5c3184aab097263f0a6128379e094e42dbde5052456c5f3908bf717",
+    "_measurements/S11c_d_remaining_case_factors_checkpoint.json": "5a1987cec82fdbc8c77eb978f259626fdd21d4d286cd16d2a32ff2db9325ad23",
+    "_measurements/S11c_d_finite_scattering_resolution.py": "8e101517fde113c5f0a372bab531e63ebdcee3fff03c270ff98a7590e5a7b981",
+    "_measurements/S11c_d_focused_completion_plan.md": "1917ffd7bab9d1da0a355228b865e6ba5c6bbdad009bdfbff18296492b81fcaa",
+    "_measurements/S11c_d_three_momentum_source_check.py": "1753567b20d5739787aedf3269c783f172777043dfe92fd989525c21fadee487",
+    "_measurements/S11c_d_continuum_grades.py": "0443c3adbeaf813ad66c60af0a50c96e9a841277d51f9c23bf1c601d2fdf329d",
+    "_measurements/S11c_d_momentum_action_check.py": "247d2ee6b7004888eca1d653b53f8be773c68041d7254389c4d14328d0001ff3",
+    "_measurements/S11c_d_finite_scattering.py": "f187d9426be8069342a363a0466c175d32a8cb46101e32a14c433ccb9118e469",
+    "scripts/ledger_fold.py": "97da78c6631c09e5575dd14511760506f1ac08771cf07948978004e92f0b2333",
+    "scripts/S11c_c2_exports.py": "2ba5ed487b84ecb98290df6f1650fa6210fe2784cfa02a0f3cff96cd718411cd",
+    "_measurements/S11c_d_wide_momentum_refinement.py": "d80d2c2ff303e23309a4b453ab4ca565c41cb804e029e58f1b2cfe6e11dd567b",
+    "_measurements/S11c_d_remaining_case_sources.py": "49db070d97ba3b15bf4e94929341fb5f4a6882ff8b2e16ee07f3fd16502064b5",
+    "_measurements/S11c_d_remaining_case_matrices.py": "e2890b0125189ab74a60a3e54cd1a181eee1efde5da5ef7f4ebd4d8d30e52879",
+    "_measurements/S11c_d_remaining_case_matrices_plan.md": "bfcfe3c419435fe0910659f2727b4d67d186ef8238e3578928a2139d47a98104",
+    "_measurements/S11c_d_remaining_case_bindings_checkpoint.json": "b687c168a55dd38ac46946ebedb80327ae8c8a4e7c7c823000b019ee8beca467",
+    "_measurements/S11c_d_remaining_case_end_sources.py": "193ce6778151429b56a034910e16431c94cbd93055ec58177ceda92da8c7a7fb",
+    "_measurements/S11c_d_remaining_case_end_sources_plan.md": "99c8358190907d47013b7b15db128a1faeb8dad62c9ef811b104aa7175b29c9a",
+    "_measurements/S11c_d_remaining_case_matrices_checkpoint.json": "198fd1f1c9659fe47888368e6a598c477275811a70de4eb425a493eab2e41562",
+    "_measurements/S11c_d_uniform_source_checkpoint.json": "9d4b65ad07d1f403fd3aa4ec42da99db622a4d0a26d6ddce6c472148c7830085",
+    "_measurements/S11c_d_uniform_source.py": "2a135aea365c7b5e57bfff7683c7b927cda52c0d37f6a9bad3c961eb6205a2b2",
+    "_measurements/S11c_d_remaining_case_end_sources_provenance_repair.json": "8f3ccf6626217f57f0881397b679ed1bf9da382ad1d304e8e3c170729e64594c",
+    "_measurements/S11c_d_end_current_source_left_thickness_repair_checkpoint.json": "cac0e90a1d8fed39e4cc341124daad4cb1f3e83fb4eac5ba42d1dce583c7493a",
+    "_measurements/S11c_d_end_current_source_right_thickness_repair_checkpoint.json": "89f67d0cce6740c3e360c1523c0db5414664f9853fe130adfb3ce8373fa6686c",
+    "_measurements/S11c_d_remaining_case_currents.py": "0db940a3a94c5dfed4011fd1f86a34624698c59329daebc9bcae2bc8402c6639",
+    "_measurements/S11c_d_remaining_case_currents_plan.md": "78a4e30e01f1789d99c3d10f08b5f772b1cbcf56cd69b5eb58cf104e72fbe2fd",
+    "_measurements/S11c_d_remaining_case_end_sources_checkpoint.json": "abbb5fea9e85fdbe1e2b6fc56becf54e2892bae51efee64c3b9df055db01dff6",
+    "_measurements/S11c_d_end_current_resumable.py": "f7e2bcdfcaee6a0c190daaca1f1a268b1a9757addefb834e9c386de647047e98",
+    "_measurements/S11c_d_end_pairing_left_thickness_repair_checkpoint.json": "205e13614c41c504faae85cad9ee104ab51d1f1a5830b5b9e802e5fe3bc1ac9d",
+    "_measurements/S11c_d_end_pairing_right_thickness_repair_checkpoint.json": "e8e0d0771bd4365055351bdc041f0a45020f5252bdb5ff5793592d1c9c388605",
+    "_measurements/S11c_d_remaining_case_currents_production.py": "998f44811a3492a972d9fe514482e37f7a4ccc4f5ae3c67c76971383f789260e",
+    "_measurements/S11c_d_remaining_case_currents_production_plan.md": "e1bf5a3f786ab73460e4b757c087c738cfdcce842bb395ec683047282b1e8c78",
+    "_measurements/S11c_d_remaining_case_currents_preflight.json": "2a41470f3bf00b610de8c81dd0b5876911e8a6d82428a5ecf78cc38845b6170c",
+    "_measurements/S11c_d_remaining_case_currents_checkpoint_recover.py": "a1a13ca155600d6404e564ef43d965c33a535524bb5ee8862d344e2bdfcef14f",
+    "_measurements/S11c_d_remaining_case_currents_checkpoint_plan.md": "94581373faaf95d406f940041558dce430cab426d825e8d168028be108ee847b"
+  },
+  "inputPackets": {
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-ends-20260920/retry-02/complete/checks.json": "5f2a5d5434446d7dda890b05ea485855d0be217bceff57799b5884352d22761c",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-ends-20260920/retry-02/complete/accepted-cases/LAB_HELD__RHO4_CONSTANT/actions.pickle": "4c2372a7102d1db9f21a049ab3104465e8d9245ab832be88c900bc8519b46e02",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-ends-20260920/retry-02/complete/accepted-cases/LAB_HELD__RHO4_CONSTANT/assembly.pickle": "8eda57998285137d99cce9564757627a57f8d5bc9b27091c86a65a9cc59230a0",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-ends-20260920/retry-02/complete/accepted-cases/LAB_HELD__RHO4_CONSTANT/reduced-action.pickle": "e9062c3455c7e59fe816f47172062a0c118b201d03809ec0826575dac22872b0",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-ends-20260920/retry-02/complete/accepted-cases/LAB_HELD__RHOBR_CONSTANT/actions.pickle": "56e8111829a8f4cb1afaf40edc43d7dbc42d2196b181b984dfddd7015d89f918",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-ends-20260920/retry-02/complete/accepted-cases/LAB_HELD__RHOBR_CONSTANT/assembly.pickle": "53a1d577e0f568b381148e9d4190434a709f633d769defe1899b94e8b474f690",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-ends-20260920/retry-02/complete/accepted-cases/LAB_HELD__RHOBR_CONSTANT/reduced-action.pickle": "95dbb6b5cb833b16edf3f64177b2df54af2e91379a9ee43d43021d1872aa9106",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-ends-20260920/retry-02/complete/accepted-cases/MATERIAL_ADVECTED__RHO4_CONSTANT/actions.pickle": "c8b64088556034a465bea39bea751c62a77e3850897257dc81de1a70c8282689",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-ends-20260920/retry-02/complete/accepted-cases/MATERIAL_ADVECTED__RHO4_CONSTANT/assembly.pickle": "49dac40608b2b44e0a01d10e9f15cb758ef10015157b4d29cd47dff1b6f35c40",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-ends-20260920/retry-02/complete/accepted-cases/MATERIAL_ADVECTED__RHO4_CONSTANT/reduced-action.pickle": "b103e83e61ddffcf8a320fe5f91ef433e1571551654f91749bed5665b5d537b9",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-ends-20260920/retry-02/complete/accepted-cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/actions.pickle": "75cc4419411903d36cb6f4be73652694de3bc69ff19c6117a564f331503de410",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-ends-20260920/retry-02/complete/accepted-cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/assembly.pickle": "15b54c2237f5951aba15616f3062d29d5748fcedf5fc4fedea802a5dec04bf0f",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-ends-20260920/retry-02/complete/accepted-cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/reduced-action.pickle": "6add07e5f8fd992204e79985b1dec0ce4e641b5d34d2f7aeaeffccd9e53207a2",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-ends-20260920/retry-02/complete/accepted-left-current-source.pickle": "f3409cc92263880f0d0e2c941f1884ed5ae0aa984f8bf6ea97b169060edcd51d",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-ends-20260920/retry-02/complete/accepted-right-current-source.pickle": "56825f670042c21e56ac6b02ce553b90227158704b4fb40c6b9f8f8c03071b1a",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-ends-20260920/retry-02/complete/remaining-case-end-sources.pickle": "761190266f9261b4e4160a01f873cf1c9f5e56206558cb0f99f248f520e3d94a",
+    "/tmp/s11c-thickness-coordinate-20260914/end_source_left/source/scripts/S11c_d_mixing_scattering_sympy_audit.py": "7926ec3bb2e456f49b33fd025b901ecf836ca690178fb7f0d3d335a37874a0f1",
+    "/tmp/s11c-thickness-coordinate-20260914/end_pairing_left/complete.pickle": "6399da59a971434aae54a95ed4c823c4b029029dbe50aed2913bcc48747b9259",
+    "/tmp/s11c-thickness-coordinate-20260914/end_pairing_left/source/scripts/S11c_d_mixing_scattering_sympy_audit.py": "7926ec3bb2e456f49b33fd025b901ecf836ca690178fb7f0d3d335a37874a0f1",
+    "/tmp/s11c-thickness-coordinate-20260914/end_source_right/source/scripts/S11c_d_mixing_scattering_sympy_audit.py": "7926ec3bb2e456f49b33fd025b901ecf836ca690178fb7f0d3d335a37874a0f1",
+    "/tmp/s11c-thickness-coordinate-20260914/end_pairing_right/complete.pickle": "690ceb5c452de298f67ec929cacb76d7d16e182efcd321f9692ecf1cbd28b628",
+    "/tmp/s11c-thickness-coordinate-20260914/end_pairing_right/source/scripts/S11c_d_mixing_scattering_sympy_audit.py": "7926ec3bb2e456f49b33fd025b901ecf836ca690178fb7f0d3d335a37874a0f1",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/focused-retry-01/complete/accepted-right-pairing.pickle": "690ceb5c452de298f67ec929cacb76d7d16e182efcd321f9692ecf1cbd28b628",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/focused-retry-01/complete/accepted-right-current-source.pickle": "56825f670042c21e56ac6b02ce553b90227158704b4fb40c6b9f8f8c03071b1a",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/focused-retry-01/complete/accepted-left-current-source.pickle": "f3409cc92263880f0d0e2c941f1884ed5ae0aa984f8bf6ea97b169060edcd51d",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/focused-retry-01/complete/remaining-case-end-sources.pickle": "761190266f9261b4e4160a01f873cf1c9f5e56206558cb0f99f248f520e3d94a",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/focused-retry-01/complete/remaining-case-currents.pickle": "63011a630c6e099bd772ae37a5ef74aafa5cff38816ce753d8eac192d06a2502",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/focused-retry-01/complete/accepted-left-pairing.pickle": "6399da59a971434aae54a95ed4c823c4b029029dbe50aed2913bcc48747b9259",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/focused-retry-01/complete/accepted-cases/LAB_HELD__RHOBR_CONSTANT/actions.pickle": "56e8111829a8f4cb1afaf40edc43d7dbc42d2196b181b984dfddd7015d89f918",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/focused-retry-01/complete/accepted-cases/LAB_HELD__RHOBR_CONSTANT/assembly.pickle": "53a1d577e0f568b381148e9d4190434a709f633d769defe1899b94e8b474f690",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/focused-retry-01/complete/accepted-cases/LAB_HELD__RHOBR_CONSTANT/reduced-action.pickle": "95dbb6b5cb833b16edf3f64177b2df54af2e91379a9ee43d43021d1872aa9106",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/focused-retry-01/complete/accepted-cases/LAB_HELD__RHO4_CONSTANT/actions.pickle": "4c2372a7102d1db9f21a049ab3104465e8d9245ab832be88c900bc8519b46e02",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/focused-retry-01/complete/accepted-cases/LAB_HELD__RHO4_CONSTANT/assembly.pickle": "8eda57998285137d99cce9564757627a57f8d5bc9b27091c86a65a9cc59230a0",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/focused-retry-01/complete/accepted-cases/LAB_HELD__RHO4_CONSTANT/reduced-action.pickle": "e9062c3455c7e59fe816f47172062a0c118b201d03809ec0826575dac22872b0",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/focused-retry-01/complete/accepted-cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/actions.pickle": "75cc4419411903d36cb6f4be73652694de3bc69ff19c6117a564f331503de410",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/focused-retry-01/complete/accepted-cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/assembly.pickle": "15b54c2237f5951aba15616f3062d29d5748fcedf5fc4fedea802a5dec04bf0f",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/focused-retry-01/complete/accepted-cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/reduced-action.pickle": "6add07e5f8fd992204e79985b1dec0ce4e641b5d34d2f7aeaeffccd9e53207a2",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/focused-retry-01/complete/accepted-cases/MATERIAL_ADVECTED__RHO4_CONSTANT/actions.pickle": "c8b64088556034a465bea39bea751c62a77e3850897257dc81de1a70c8282689",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/focused-retry-01/complete/accepted-cases/MATERIAL_ADVECTED__RHO4_CONSTANT/assembly.pickle": "49dac40608b2b44e0a01d10e9f15cb758ef10015157b4d29cd47dff1b6f35c40",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/focused-retry-01/complete/accepted-cases/MATERIAL_ADVECTED__RHO4_CONSTANT/reduced-action.pickle": "b103e83e61ddffcf8a320fe5f91ef433e1571551654f91749bed5665b5d537b9",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/focused-retry-01/complete/cases/LAB_HELD__RHOBR_CONSTANT/left/tail-input-pairs.pickle": "3a6323f701da7a29521e9b8cbdd0dd3e86cc0ae40c266c0cd4c671bbd6e8d0d1",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/focused-retry-01/complete/cases/LAB_HELD__RHOBR_CONSTANT/left/tail-reuse.pickle": "ffe182b75228d7b0aece1fbc06a54eca18ddb29e6135cb1605d24732171d3339",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/focused-retry-01/complete/cases/LAB_HELD__RHOBR_CONSTANT/left/slab.pickle": "d5ca173582141863a968123b8e97c131186aa4c6b0c83c0d1bdb01b3dbb81397",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/focused-retry-01/complete/cases/LAB_HELD__RHOBR_CONSTANT/left/conservative.pickle": "86164f0080f01e5290c053312b61fcd03b51df012d65fd3e8d466672c8aa8e72",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/focused-retry-01/complete/cases/LAB_HELD__RHOBR_CONSTANT/right/tail-input-pairs.pickle": "f7d3180e221d72d069c9c2e7396a6a1f247c41bc7e54c32ddacf8bd6fa0fc7dd",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/focused-retry-01/complete/cases/LAB_HELD__RHOBR_CONSTANT/right/tail-reuse.pickle": "76f58248b3a7088918e0c44dbbf7f6f86716bdf01b7d23ed61ba53ccadf40506",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/focused-retry-01/complete/cases/LAB_HELD__RHOBR_CONSTANT/right/slab.pickle": "08cf63e2d434ec7ea941bdb24d3972e7c97fee74cdaf2de4073465a4c0f5d260",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/focused-retry-01/complete/cases/LAB_HELD__RHOBR_CONSTANT/right/energy-mutation.pickle": "864a30fcf1fd94c1910786127fe0b183d3c5ac267537989589a0523fbb507287",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/focused-retry-01/complete/cases/LAB_HELD__RHOBR_CONSTANT/right/conservative.pickle": "98d2fcfdf639457b312041a814dd6ef5808758615f9bc590a0e2433cd85dfbd2",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/focused-retry-01/complete/cases/LAB_HELD__RHOBR_CONSTANT/reference/tail-input-pairs.pickle": "3a6323f701da7a29521e9b8cbdd0dd3e86cc0ae40c266c0cd4c671bbd6e8d0d1",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/focused-retry-01/complete/cases/LAB_HELD__RHOBR_CONSTANT/reference/tail-reuse.pickle": "9a887d14b6bde3e440b7fe651b15b70ff20ab9f2e988756ad88ac4cb80e2041d",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/focused-retry-01/complete/cases/LAB_HELD__RHOBR_CONSTANT/reference/slab.pickle": "d5ca173582141863a968123b8e97c131186aa4c6b0c83c0d1bdb01b3dbb81397",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/focused-retry-01/complete/cases/LAB_HELD__RHOBR_CONSTANT/reference/conservative.pickle": "86164f0080f01e5290c053312b61fcd03b51df012d65fd3e8d466672c8aa8e72",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/focused-retry-01/complete/cases/LAB_HELD__RHO4_CONSTANT/left/tail-input-pairs.pickle": "3a6323f701da7a29521e9b8cbdd0dd3e86cc0ae40c266c0cd4c671bbd6e8d0d1",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/focused-retry-01/complete/cases/LAB_HELD__RHO4_CONSTANT/left/tail-reuse.pickle": "ecb0ae46aca4804beb5e2556ca4b4ff53c4e0864d7e5235000d4832d34198b30",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/focused-retry-01/complete/cases/LAB_HELD__RHO4_CONSTANT/left/slab.pickle": "d5ca173582141863a968123b8e97c131186aa4c6b0c83c0d1bdb01b3dbb81397",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/focused-retry-01/complete/cases/LAB_HELD__RHO4_CONSTANT/left/conservative.pickle": "86164f0080f01e5290c053312b61fcd03b51df012d65fd3e8d466672c8aa8e72",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/focused-retry-01/complete/cases/LAB_HELD__RHO4_CONSTANT/right/tail-input-pairs.pickle": "f7d3180e221d72d069c9c2e7396a6a1f247c41bc7e54c32ddacf8bd6fa0fc7dd",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/focused-retry-01/complete/cases/LAB_HELD__RHO4_CONSTANT/right/tail-reuse.pickle": "3cee2eb67d664831dd153ba9f60984d7fdd8b741d20a002f235aaa4711ae105e",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/focused-retry-01/complete/cases/LAB_HELD__RHO4_CONSTANT/right/slab.pickle": "08cf63e2d434ec7ea941bdb24d3972e7c97fee74cdaf2de4073465a4c0f5d260",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/focused-retry-01/complete/cases/LAB_HELD__RHO4_CONSTANT/right/conservative.pickle": "ed5847c7495d19ad95f6e5690dc9bea42fefec5a440b4edc5ba7ff34eac8eb21",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/focused-retry-01/complete/cases/LAB_HELD__RHO4_CONSTANT/reference/tail-input-pairs.pickle": "3a6323f701da7a29521e9b8cbdd0dd3e86cc0ae40c266c0cd4c671bbd6e8d0d1",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/focused-retry-01/complete/cases/LAB_HELD__RHO4_CONSTANT/reference/tail-reuse.pickle": "89e227acc5e4d376afc0b88689ea495b275592fbfc70dae35db5db500982c8a6",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/focused-retry-01/complete/cases/LAB_HELD__RHO4_CONSTANT/reference/slab.pickle": "d5ca173582141863a968123b8e97c131186aa4c6b0c83c0d1bdb01b3dbb81397",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/focused-retry-01/complete/cases/LAB_HELD__RHO4_CONSTANT/reference/conservative.pickle": "86164f0080f01e5290c053312b61fcd03b51df012d65fd3e8d466672c8aa8e72",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/focused-retry-01/complete/cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/left/tail-input-pairs.pickle": "3a6323f701da7a29521e9b8cbdd0dd3e86cc0ae40c266c0cd4c671bbd6e8d0d1",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/focused-retry-01/complete/cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/left/tail-reuse.pickle": "cbbf7a40c990a94be2f441e1bb4451800d1cbee003d8b72e0270527b8f446605",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/focused-retry-01/complete/cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/left/slab.pickle": "d5ca173582141863a968123b8e97c131186aa4c6b0c83c0d1bdb01b3dbb81397",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/focused-retry-01/complete/cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/left/conservative.pickle": "86164f0080f01e5290c053312b61fcd03b51df012d65fd3e8d466672c8aa8e72",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/focused-retry-01/complete/cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/right/tail-input-pairs.pickle": "f7d3180e221d72d069c9c2e7396a6a1f247c41bc7e54c32ddacf8bd6fa0fc7dd",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/focused-retry-01/complete/cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/right/tail-reuse.pickle": "9a2ccef38e2ce297944091321917af8dc65da123cba0ac74f33334e7fb42f047",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/focused-retry-01/complete/cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/right/slab.pickle": "08cf63e2d434ec7ea941bdb24d3972e7c97fee74cdaf2de4073465a4c0f5d260",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/focused-retry-01/complete/cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/right/conservative.pickle": "98d2fcfdf639457b312041a814dd6ef5808758615f9bc590a0e2433cd85dfbd2",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/focused-retry-01/complete/cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/reference/tail-input-pairs.pickle": "3a6323f701da7a29521e9b8cbdd0dd3e86cc0ae40c266c0cd4c671bbd6e8d0d1",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/focused-retry-01/complete/cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/reference/tail-reuse.pickle": "18b57b033d4da67b9796f395bd734627320fafeb7543afbc104d1919cab59afb",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/focused-retry-01/complete/cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/reference/slab.pickle": "d5ca173582141863a968123b8e97c131186aa4c6b0c83c0d1bdb01b3dbb81397",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/focused-retry-01/complete/cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/reference/conservative.pickle": "86164f0080f01e5290c053312b61fcd03b51df012d65fd3e8d466672c8aa8e72",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/focused-retry-01/complete/cases/MATERIAL_ADVECTED__RHO4_CONSTANT/left/tail-input-pairs.pickle": "3a6323f701da7a29521e9b8cbdd0dd3e86cc0ae40c266c0cd4c671bbd6e8d0d1",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/focused-retry-01/complete/cases/MATERIAL_ADVECTED__RHO4_CONSTANT/left/tail-reuse.pickle": "0d0b88d46c64d70d92612d99f03bd22c703efb123c1ac9f3ea7fcba2333143fe",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/focused-retry-01/complete/cases/MATERIAL_ADVECTED__RHO4_CONSTANT/left/slab.pickle": "d5ca173582141863a968123b8e97c131186aa4c6b0c83c0d1bdb01b3dbb81397",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/focused-retry-01/complete/cases/MATERIAL_ADVECTED__RHO4_CONSTANT/left/conservative.pickle": "86164f0080f01e5290c053312b61fcd03b51df012d65fd3e8d466672c8aa8e72",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/focused-retry-01/complete/cases/MATERIAL_ADVECTED__RHO4_CONSTANT/right/tail-input-pairs.pickle": "f7d3180e221d72d069c9c2e7396a6a1f247c41bc7e54c32ddacf8bd6fa0fc7dd",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/focused-retry-01/complete/cases/MATERIAL_ADVECTED__RHO4_CONSTANT/right/tail-reuse.pickle": "255ae418ff74c4bf1406eaf7206792cc81cae94f37a79c48feb84d6f7208e80c",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/focused-retry-01/complete/cases/MATERIAL_ADVECTED__RHO4_CONSTANT/right/slab.pickle": "08cf63e2d434ec7ea941bdb24d3972e7c97fee74cdaf2de4073465a4c0f5d260",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/focused-retry-01/complete/cases/MATERIAL_ADVECTED__RHO4_CONSTANT/right/conservative.pickle": "ed5847c7495d19ad95f6e5690dc9bea42fefec5a440b4edc5ba7ff34eac8eb21",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/focused-retry-01/complete/cases/MATERIAL_ADVECTED__RHO4_CONSTANT/reference/tail-input-pairs.pickle": "3a6323f701da7a29521e9b8cbdd0dd3e86cc0ae40c266c0cd4c671bbd6e8d0d1",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/focused-retry-01/complete/cases/MATERIAL_ADVECTED__RHO4_CONSTANT/reference/tail-reuse.pickle": "076fe7bd69c53748476a9b82dee3a3f0cc41605c40eaaf17f34057060714dff2",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/focused-retry-01/complete/cases/MATERIAL_ADVECTED__RHO4_CONSTANT/reference/slab.pickle": "d5ca173582141863a968123b8e97c131186aa4c6b0c83c0d1bdb01b3dbb81397",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/focused-retry-01/complete/cases/MATERIAL_ADVECTED__RHO4_CONSTANT/reference/conservative.pickle": "86164f0080f01e5290c053312b61fcd03b51df012d65fd3e8d466672c8aa8e72",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/focused-retry-01/acceptance/LAB_HELD__RHOBR_CONSTANT__REFERENCE.pickle": "7620b13f291801311787bc489c7b5176b9c6b5f24c7263682c7345541b6e842e",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/focused-retry-01/acceptance/LAB_HELD__RHOBR_CONSTANT__LEFT.pickle": "7620b13f291801311787bc489c7b5176b9c6b5f24c7263682c7345541b6e842e",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/focused-retry-01/acceptance/MATERIAL_ADVECTED__RHOBR_CONSTANT__LEFT.pickle": "13182dc62f2f5688af3da4893e869e6d7eccd4c41c1473447bc0171d042b7b4b",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/focused-retry-01/acceptance/LAB_HELD__RHO4_CONSTANT__RIGHT.pickle": "397757c577b28a0e7d75d5c250950263325acce2225d322fed3894c902b5fc31",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/focused-retry-01/acceptance/right-rhobr-cross-anchoring.pickle": "329840c298bd8017ff99fc95066f2760f036b4d62634eccd012d8d852bff8cf6",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/focused-retry-01/acceptance/LAB_HELD__RHO4_CONSTANT__REFERENCE.pickle": "ca611edc9737438692935c3000f267ffc09026353990c9c9a5043e2db0d1c21d",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/focused-retry-01/acceptance/LAB_HELD__RHOBR_CONSTANT__RIGHT.pickle": "0fc16d84c6ec9ddab247428da2119353a757aedb18e40830eed382b50a8e1508",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/focused-retry-01/acceptance/MATERIAL_ADVECTED__RHO4_CONSTANT__LEFT.pickle": "2d6c7de847e028521558aaae2bef27c6b775931ddb1a0c6fda0ef616b7daae5b",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/focused-retry-01/acceptance/MATERIAL_ADVECTED__RHO4_CONSTANT__RIGHT.pickle": "a597d237d96d7d5af158ab5b4129b3ca41bfad3cb581ef4d0428662f46d20e60",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/focused-retry-01/acceptance/reuse-coefficient-mutations.pickle": "2e6907784f216848a4faa7cfba68c4edeec2a6ad98dc09ef4b6b54c57b8b2b58",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/focused-retry-01/acceptance/MATERIAL_ADVECTED__RHO4_CONSTANT__REFERENCE.pickle": "9e8d6466a056793fd45abff50166c4fcac151ba9c7a43fa833426012da71c5b4",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/focused-retry-01/acceptance/MATERIAL_ADVECTED__RHOBR_CONSTANT__RIGHT.pickle": "a9d5bb2d21fbbfa9578bd925938a05fc7bcf1b65879600b09fdde57767c01e01",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/focused-retry-01/acceptance/LAB_HELD__RHO4_CONSTANT__LEFT.pickle": "527aff1e5ece093175876c15b2de79569f3f8869381ff76eff93dc37213f9d51",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/focused-retry-01/acceptance/MATERIAL_ADVECTED__RHOBR_CONSTANT__REFERENCE.pickle": "13182dc62f2f5688af3da4893e869e6d7eccd4c41c1473447bc0171d042b7b4b",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/focused-retry-01/complete/cases/LAB_HELD__RHO4_CONSTANT/reference/balance-reuse.json": "26968e18c8d44bb1b5459554a13354427c76b8c1aaf8dd71baf805467a14a3ea",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/focused-retry-01/complete/cases/LAB_HELD__RHO4_CONSTANT/left/balance-reuse.json": "26968e18c8d44bb1b5459554a13354427c76b8c1aaf8dd71baf805467a14a3ea",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/focused-retry-01/complete/cases/LAB_HELD__RHO4_CONSTANT/right/balance-reuse.json": "26968e18c8d44bb1b5459554a13354427c76b8c1aaf8dd71baf805467a14a3ea",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/focused-retry-01/complete/cases/LAB_HELD__RHOBR_CONSTANT/reference/balance-reuse.json": "26968e18c8d44bb1b5459554a13354427c76b8c1aaf8dd71baf805467a14a3ea",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/focused-retry-01/complete/cases/LAB_HELD__RHOBR_CONSTANT/left/balance-reuse.json": "26968e18c8d44bb1b5459554a13354427c76b8c1aaf8dd71baf805467a14a3ea",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/focused-retry-01/complete/cases/LAB_HELD__RHOBR_CONSTANT/right/balance-reuse.json": "26968e18c8d44bb1b5459554a13354427c76b8c1aaf8dd71baf805467a14a3ea",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/focused-retry-01/complete/cases/MATERIAL_ADVECTED__RHO4_CONSTANT/reference/balance-reuse.json": "26968e18c8d44bb1b5459554a13354427c76b8c1aaf8dd71baf805467a14a3ea",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/focused-retry-01/complete/cases/MATERIAL_ADVECTED__RHO4_CONSTANT/left/balance-reuse.json": "26968e18c8d44bb1b5459554a13354427c76b8c1aaf8dd71baf805467a14a3ea",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/focused-retry-01/complete/cases/MATERIAL_ADVECTED__RHO4_CONSTANT/right/balance-reuse.json": "26968e18c8d44bb1b5459554a13354427c76b8c1aaf8dd71baf805467a14a3ea",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/focused-retry-01/complete/cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/reference/balance-reuse.json": "26968e18c8d44bb1b5459554a13354427c76b8c1aaf8dd71baf805467a14a3ea",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/focused-retry-01/complete/cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/left/balance-reuse.json": "26968e18c8d44bb1b5459554a13354427c76b8c1aaf8dd71baf805467a14a3ea",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/focused-retry-01/complete/cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/right/balance-reuse.json": "26968e18c8d44bb1b5459554a13354427c76b8c1aaf8dd71baf805467a14a3ea",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/focused-retry-01/complete/checks.json": "3e5977ef0030acdf18cd98034ee4ddf7c21ad3c883baa9ef1d5d4ae46b5a1bce",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/focused-retry-01/accept_finish.py": "e8fe4cc803b4f300fb0a728472d9c181c3e727fbba37b8c465c18ba57b55e297",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/production/complete/cases/LAB_HELD__RHO4_CONSTANT/reference/acoustic.pickle": "1b0f79f65b8fa42760fdb1e65742ab8b2db61b3909d2ddc85053e9b534bdf368",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/production/complete/inputs.json": "9f15efadd92a9d0f7c45d4938fb5c02728ba86d4e345f3800d08b9971eb3a45f",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/production/active.json": "f20c7cb18ee0fc062af9bcafe2f70f2319a8ae9defb81e4a3a97fb37f8d70e74",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/production/currents_construct.invocation.json": "f20c7cb18ee0fc062af9bcafe2f70f2319a8ae9defb81e4a3a97fb37f8d70e74",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/production/currents_construct.stderr": "8b150677a0550662f81f4fae6e94bb9cf627fb7f1e070bc5d30fefd857f1c544",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/production/currents_construct.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "copiedInputs": {
+    "accepted-cases/LAB_HELD__RHO4_CONSTANT/actions.pickle": "4c2372a7102d1db9f21a049ab3104465e8d9245ab832be88c900bc8519b46e02",
+    "accepted-cases/LAB_HELD__RHO4_CONSTANT/assembly.pickle": "8eda57998285137d99cce9564757627a57f8d5bc9b27091c86a65a9cc59230a0",
+    "accepted-cases/LAB_HELD__RHO4_CONSTANT/reduced-action.pickle": "e9062c3455c7e59fe816f47172062a0c118b201d03809ec0826575dac22872b0",
+    "accepted-cases/LAB_HELD__RHOBR_CONSTANT/actions.pickle": "56e8111829a8f4cb1afaf40edc43d7dbc42d2196b181b984dfddd7015d89f918",
+    "accepted-cases/LAB_HELD__RHOBR_CONSTANT/assembly.pickle": "53a1d577e0f568b381148e9d4190434a709f633d769defe1899b94e8b474f690",
+    "accepted-cases/LAB_HELD__RHOBR_CONSTANT/reduced-action.pickle": "95dbb6b5cb833b16edf3f64177b2df54af2e91379a9ee43d43021d1872aa9106",
+    "accepted-cases/MATERIAL_ADVECTED__RHO4_CONSTANT/actions.pickle": "c8b64088556034a465bea39bea751c62a77e3850897257dc81de1a70c8282689",
+    "accepted-cases/MATERIAL_ADVECTED__RHO4_CONSTANT/assembly.pickle": "49dac40608b2b44e0a01d10e9f15cb758ef10015157b4d29cd47dff1b6f35c40",
+    "accepted-cases/MATERIAL_ADVECTED__RHO4_CONSTANT/reduced-action.pickle": "b103e83e61ddffcf8a320fe5f91ef433e1571551654f91749bed5665b5d537b9",
+    "accepted-cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/actions.pickle": "75cc4419411903d36cb6f4be73652694de3bc69ff19c6117a564f331503de410",
+    "accepted-cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/assembly.pickle": "15b54c2237f5951aba15616f3062d29d5748fcedf5fc4fedea802a5dec04bf0f",
+    "accepted-cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/reduced-action.pickle": "6add07e5f8fd992204e79985b1dec0ce4e641b5d34d2f7aeaeffccd9e53207a2",
+    "accepted-left-current-source.pickle": "f3409cc92263880f0d0e2c941f1884ed5ae0aa984f8bf6ea97b169060edcd51d",
+    "accepted-right-current-source.pickle": "56825f670042c21e56ac6b02ce553b90227158704b4fb40c6b9f8f8c03071b1a",
+    "remaining-case-end-sources.pickle": "761190266f9261b4e4160a01f873cf1c9f5e56206558cb0f99f248f520e3d94a",
+    "accepted-left-pairing.pickle": "6399da59a971434aae54a95ed4c823c4b029029dbe50aed2913bcc48747b9259",
+    "accepted-right-pairing.pickle": "690ceb5c452de298f67ec929cacb76d7d16e182efcd321f9692ecf1cbd28b628",
+    "accepted-focused/remaining-case-currents.pickle": "63011a630c6e099bd772ae37a5ef74aafa5cff38816ce753d8eac192d06a2502",
+    "cases/LAB_HELD__RHOBR_CONSTANT/left/tail-input-pairs.pickle": "3a6323f701da7a29521e9b8cbdd0dd3e86cc0ae40c266c0cd4c671bbd6e8d0d1",
+    "cases/LAB_HELD__RHOBR_CONSTANT/left/tail-reuse.pickle": "ffe182b75228d7b0aece1fbc06a54eca18ddb29e6135cb1605d24732171d3339",
+    "cases/LAB_HELD__RHOBR_CONSTANT/left/slab.pickle": "d5ca173582141863a968123b8e97c131186aa4c6b0c83c0d1bdb01b3dbb81397",
+    "cases/LAB_HELD__RHOBR_CONSTANT/left/conservative.pickle": "86164f0080f01e5290c053312b61fcd03b51df012d65fd3e8d466672c8aa8e72",
+    "cases/LAB_HELD__RHOBR_CONSTANT/right/tail-input-pairs.pickle": "f7d3180e221d72d069c9c2e7396a6a1f247c41bc7e54c32ddacf8bd6fa0fc7dd",
+    "cases/LAB_HELD__RHOBR_CONSTANT/right/tail-reuse.pickle": "76f58248b3a7088918e0c44dbbf7f6f86716bdf01b7d23ed61ba53ccadf40506",
+    "cases/LAB_HELD__RHOBR_CONSTANT/right/slab.pickle": "08cf63e2d434ec7ea941bdb24d3972e7c97fee74cdaf2de4073465a4c0f5d260",
+    "cases/LAB_HELD__RHOBR_CONSTANT/right/energy-mutation.pickle": "864a30fcf1fd94c1910786127fe0b183d3c5ac267537989589a0523fbb507287",
+    "cases/LAB_HELD__RHOBR_CONSTANT/right/conservative.pickle": "98d2fcfdf639457b312041a814dd6ef5808758615f9bc590a0e2433cd85dfbd2",
+    "cases/LAB_HELD__RHOBR_CONSTANT/reference/tail-input-pairs.pickle": "3a6323f701da7a29521e9b8cbdd0dd3e86cc0ae40c266c0cd4c671bbd6e8d0d1",
+    "cases/LAB_HELD__RHOBR_CONSTANT/reference/tail-reuse.pickle": "9a887d14b6bde3e440b7fe651b15b70ff20ab9f2e988756ad88ac4cb80e2041d",
+    "cases/LAB_HELD__RHOBR_CONSTANT/reference/slab.pickle": "d5ca173582141863a968123b8e97c131186aa4c6b0c83c0d1bdb01b3dbb81397",
+    "cases/LAB_HELD__RHOBR_CONSTANT/reference/conservative.pickle": "86164f0080f01e5290c053312b61fcd03b51df012d65fd3e8d466672c8aa8e72",
+    "cases/LAB_HELD__RHO4_CONSTANT/left/tail-input-pairs.pickle": "3a6323f701da7a29521e9b8cbdd0dd3e86cc0ae40c266c0cd4c671bbd6e8d0d1",
+    "cases/LAB_HELD__RHO4_CONSTANT/left/tail-reuse.pickle": "ecb0ae46aca4804beb5e2556ca4b4ff53c4e0864d7e5235000d4832d34198b30",
+    "cases/LAB_HELD__RHO4_CONSTANT/left/slab.pickle": "d5ca173582141863a968123b8e97c131186aa4c6b0c83c0d1bdb01b3dbb81397",
+    "cases/LAB_HELD__RHO4_CONSTANT/left/conservative.pickle": "86164f0080f01e5290c053312b61fcd03b51df012d65fd3e8d466672c8aa8e72",
+    "cases/LAB_HELD__RHO4_CONSTANT/right/tail-input-pairs.pickle": "f7d3180e221d72d069c9c2e7396a6a1f247c41bc7e54c32ddacf8bd6fa0fc7dd",
+    "cases/LAB_HELD__RHO4_CONSTANT/right/tail-reuse.pickle": "3cee2eb67d664831dd153ba9f60984d7fdd8b741d20a002f235aaa4711ae105e",
+    "cases/LAB_HELD__RHO4_CONSTANT/right/slab.pickle": "08cf63e2d434ec7ea941bdb24d3972e7c97fee74cdaf2de4073465a4c0f5d260",
+    "cases/LAB_HELD__RHO4_CONSTANT/right/conservative.pickle": "ed5847c7495d19ad95f6e5690dc9bea42fefec5a440b4edc5ba7ff34eac8eb21",
+    "cases/LAB_HELD__RHO4_CONSTANT/reference/tail-input-pairs.pickle": "3a6323f701da7a29521e9b8cbdd0dd3e86cc0ae40c266c0cd4c671bbd6e8d0d1",
+    "cases/LAB_HELD__RHO4_CONSTANT/reference/tail-reuse.pickle": "89e227acc5e4d376afc0b88689ea495b275592fbfc70dae35db5db500982c8a6",
+    "cases/LAB_HELD__RHO4_CONSTANT/reference/slab.pickle": "d5ca173582141863a968123b8e97c131186aa4c6b0c83c0d1bdb01b3dbb81397",
+    "cases/LAB_HELD__RHO4_CONSTANT/reference/conservative.pickle": "86164f0080f01e5290c053312b61fcd03b51df012d65fd3e8d466672c8aa8e72",
+    "cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/left/tail-input-pairs.pickle": "3a6323f701da7a29521e9b8cbdd0dd3e86cc0ae40c266c0cd4c671bbd6e8d0d1",
+    "cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/left/tail-reuse.pickle": "cbbf7a40c990a94be2f441e1bb4451800d1cbee003d8b72e0270527b8f446605",
+    "cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/left/slab.pickle": "d5ca173582141863a968123b8e97c131186aa4c6b0c83c0d1bdb01b3dbb81397",
+    "cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/left/conservative.pickle": "86164f0080f01e5290c053312b61fcd03b51df012d65fd3e8d466672c8aa8e72",
+    "cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/right/tail-input-pairs.pickle": "f7d3180e221d72d069c9c2e7396a6a1f247c41bc7e54c32ddacf8bd6fa0fc7dd",
+    "cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/right/tail-reuse.pickle": "9a2ccef38e2ce297944091321917af8dc65da123cba0ac74f33334e7fb42f047",
+    "cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/right/slab.pickle": "08cf63e2d434ec7ea941bdb24d3972e7c97fee74cdaf2de4073465a4c0f5d260",
+    "cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/right/conservative.pickle": "98d2fcfdf639457b312041a814dd6ef5808758615f9bc590a0e2433cd85dfbd2",
+    "cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/reference/tail-input-pairs.pickle": "3a6323f701da7a29521e9b8cbdd0dd3e86cc0ae40c266c0cd4c671bbd6e8d0d1",
+    "cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/reference/tail-reuse.pickle": "18b57b033d4da67b9796f395bd734627320fafeb7543afbc104d1919cab59afb",
+    "cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/reference/slab.pickle": "d5ca173582141863a968123b8e97c131186aa4c6b0c83c0d1bdb01b3dbb81397",
+    "cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/reference/conservative.pickle": "86164f0080f01e5290c053312b61fcd03b51df012d65fd3e8d466672c8aa8e72",
+    "cases/MATERIAL_ADVECTED__RHO4_CONSTANT/left/tail-input-pairs.pickle": "3a6323f701da7a29521e9b8cbdd0dd3e86cc0ae40c266c0cd4c671bbd6e8d0d1",
+    "cases/MATERIAL_ADVECTED__RHO4_CONSTANT/left/tail-reuse.pickle": "0d0b88d46c64d70d92612d99f03bd22c703efb123c1ac9f3ea7fcba2333143fe",
+    "cases/MATERIAL_ADVECTED__RHO4_CONSTANT/left/slab.pickle": "d5ca173582141863a968123b8e97c131186aa4c6b0c83c0d1bdb01b3dbb81397",
+    "cases/MATERIAL_ADVECTED__RHO4_CONSTANT/left/conservative.pickle": "86164f0080f01e5290c053312b61fcd03b51df012d65fd3e8d466672c8aa8e72",
+    "cases/MATERIAL_ADVECTED__RHO4_CONSTANT/right/tail-input-pairs.pickle": "f7d3180e221d72d069c9c2e7396a6a1f247c41bc7e54c32ddacf8bd6fa0fc7dd",
+    "cases/MATERIAL_ADVECTED__RHO4_CONSTANT/right/tail-reuse.pickle": "255ae418ff74c4bf1406eaf7206792cc81cae94f37a79c48feb84d6f7208e80c",
+    "cases/MATERIAL_ADVECTED__RHO4_CONSTANT/right/slab.pickle": "08cf63e2d434ec7ea941bdb24d3972e7c97fee74cdaf2de4073465a4c0f5d260",
+    "cases/MATERIAL_ADVECTED__RHO4_CONSTANT/right/conservative.pickle": "ed5847c7495d19ad95f6e5690dc9bea42fefec5a440b4edc5ba7ff34eac8eb21",
+    "cases/MATERIAL_ADVECTED__RHO4_CONSTANT/reference/tail-input-pairs.pickle": "3a6323f701da7a29521e9b8cbdd0dd3e86cc0ae40c266c0cd4c671bbd6e8d0d1",
+    "cases/MATERIAL_ADVECTED__RHO4_CONSTANT/reference/tail-reuse.pickle": "076fe7bd69c53748476a9b82dee3a3f0cc41605c40eaaf17f34057060714dff2",
+    "cases/MATERIAL_ADVECTED__RHO4_CONSTANT/reference/slab.pickle": "d5ca173582141863a968123b8e97c131186aa4c6b0c83c0d1bdb01b3dbb81397",
+    "cases/MATERIAL_ADVECTED__RHO4_CONSTANT/reference/conservative.pickle": "86164f0080f01e5290c053312b61fcd03b51df012d65fd3e8d466672c8aa8e72",
+    "accepted-reuse-proofs/LAB_HELD__RHOBR_CONSTANT__REFERENCE.pickle": "7620b13f291801311787bc489c7b5176b9c6b5f24c7263682c7345541b6e842e",
+    "accepted-reuse-proofs/LAB_HELD__RHOBR_CONSTANT__LEFT.pickle": "7620b13f291801311787bc489c7b5176b9c6b5f24c7263682c7345541b6e842e",
+    "accepted-reuse-proofs/MATERIAL_ADVECTED__RHOBR_CONSTANT__LEFT.pickle": "13182dc62f2f5688af3da4893e869e6d7eccd4c41c1473447bc0171d042b7b4b",
+    "accepted-reuse-proofs/LAB_HELD__RHO4_CONSTANT__RIGHT.pickle": "397757c577b28a0e7d75d5c250950263325acce2225d322fed3894c902b5fc31",
+    "accepted-reuse-proofs/right-rhobr-cross-anchoring.pickle": "329840c298bd8017ff99fc95066f2760f036b4d62634eccd012d8d852bff8cf6",
+    "accepted-reuse-proofs/LAB_HELD__RHO4_CONSTANT__REFERENCE.pickle": "ca611edc9737438692935c3000f267ffc09026353990c9c9a5043e2db0d1c21d",
+    "accepted-reuse-proofs/LAB_HELD__RHOBR_CONSTANT__RIGHT.pickle": "0fc16d84c6ec9ddab247428da2119353a757aedb18e40830eed382b50a8e1508",
+    "accepted-reuse-proofs/MATERIAL_ADVECTED__RHO4_CONSTANT__LEFT.pickle": "2d6c7de847e028521558aaae2bef27c6b775931ddb1a0c6fda0ef616b7daae5b",
+    "accepted-reuse-proofs/MATERIAL_ADVECTED__RHO4_CONSTANT__RIGHT.pickle": "a597d237d96d7d5af158ab5b4129b3ca41bfad3cb581ef4d0428662f46d20e60",
+    "accepted-reuse-proofs/reuse-coefficient-mutations.pickle": "2e6907784f216848a4faa7cfba68c4edeec2a6ad98dc09ef4b6b54c57b8b2b58",
+    "accepted-reuse-proofs/MATERIAL_ADVECTED__RHO4_CONSTANT__REFERENCE.pickle": "9e8d6466a056793fd45abff50166c4fcac151ba9c7a43fa833426012da71c5b4",
+    "accepted-reuse-proofs/MATERIAL_ADVECTED__RHOBR_CONSTANT__RIGHT.pickle": "a9d5bb2d21fbbfa9578bd925938a05fc7bcf1b65879600b09fdde57767c01e01",
+    "accepted-reuse-proofs/LAB_HELD__RHO4_CONSTANT__LEFT.pickle": "527aff1e5ece093175876c15b2de79569f3f8869381ff76eff93dc37213f9d51",
+    "accepted-reuse-proofs/MATERIAL_ADVECTED__RHOBR_CONSTANT__REFERENCE.pickle": "13182dc62f2f5688af3da4893e869e6d7eccd4c41c1473447bc0171d042b7b4b",
+    "cases/LAB_HELD__RHO4_CONSTANT/reference/balance-reuse.json": "26968e18c8d44bb1b5459554a13354427c76b8c1aaf8dd71baf805467a14a3ea",
+    "cases/LAB_HELD__RHO4_CONSTANT/left/balance-reuse.json": "26968e18c8d44bb1b5459554a13354427c76b8c1aaf8dd71baf805467a14a3ea",
+    "cases/LAB_HELD__RHO4_CONSTANT/right/balance-reuse.json": "26968e18c8d44bb1b5459554a13354427c76b8c1aaf8dd71baf805467a14a3ea",
+    "cases/LAB_HELD__RHOBR_CONSTANT/reference/balance-reuse.json": "26968e18c8d44bb1b5459554a13354427c76b8c1aaf8dd71baf805467a14a3ea",
+    "cases/LAB_HELD__RHOBR_CONSTANT/left/balance-reuse.json": "26968e18c8d44bb1b5459554a13354427c76b8c1aaf8dd71baf805467a14a3ea",
+    "cases/LAB_HELD__RHOBR_CONSTANT/right/balance-reuse.json": "26968e18c8d44bb1b5459554a13354427c76b8c1aaf8dd71baf805467a14a3ea",
+    "cases/MATERIAL_ADVECTED__RHO4_CONSTANT/reference/balance-reuse.json": "26968e18c8d44bb1b5459554a13354427c76b8c1aaf8dd71baf805467a14a3ea",
+    "cases/MATERIAL_ADVECTED__RHO4_CONSTANT/left/balance-reuse.json": "26968e18c8d44bb1b5459554a13354427c76b8c1aaf8dd71baf805467a14a3ea",
+    "cases/MATERIAL_ADVECTED__RHO4_CONSTANT/right/balance-reuse.json": "26968e18c8d44bb1b5459554a13354427c76b8c1aaf8dd71baf805467a14a3ea",
+    "cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/reference/balance-reuse.json": "26968e18c8d44bb1b5459554a13354427c76b8c1aaf8dd71baf805467a14a3ea",
+    "cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/left/balance-reuse.json": "26968e18c8d44bb1b5459554a13354427c76b8c1aaf8dd71baf805467a14a3ea",
+    "cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/right/balance-reuse.json": "26968e18c8d44bb1b5459554a13354427c76b8c1aaf8dd71baf805467a14a3ea",
+    "cases/LAB_HELD__RHO4_CONSTANT/reference/acoustic.pickle": "1b0f79f65b8fa42760fdb1e65742ab8b2db61b3909d2ddc85053e9b534bdf368"
+  },
+  "artifacts": {
+    "accepted-right-pairing.pickle": {
+      "bytes": 1065916,
+      "sha256": "690ceb5c452de298f67ec929cacb76d7d16e182efcd321f9692ecf1cbd28b628"
+    },
+    "accepted-right-current-source.pickle": {
+      "bytes": 764140,
+      "sha256": "56825f670042c21e56ac6b02ce553b90227158704b4fb40c6b9f8f8c03071b1a"
+    },
+    "pairing-write-mutation.pickle": {
+      "bytes": 560708,
+      "sha256": "60376a140493803655d44ad08b7ddd50a6518ff634e8d6b1cb52c7f3be19f39d"
+    },
+    "acoustic-write-mutation.pickle": {
+      "bytes": 152810,
+      "sha256": "1e04e4684c96c97238b818e7f3f2c60dd2d82e56d57bb744b03c37d789ff5457"
+    },
+    "accepted-left-current-source.pickle": {
+      "bytes": 187054,
+      "sha256": "f3409cc92263880f0d0e2c941f1884ed5ae0aa984f8bf6ea97b169060edcd51d"
+    },
+    "remaining-case-end-sources.pickle": {
+      "bytes": 1273916,
+      "sha256": "761190266f9261b4e4160a01f873cf1c9f5e56206558cb0f99f248f520e3d94a"
+    },
+    "remaining-case-currents.pickle": {
+      "bytes": 1313049,
+      "sha256": "25f861267df90df42167f93c4ee938b71c4b1a09f5cb00c4154ce5f434807cfa"
+    },
+    "accepted-left-pairing.pickle": {
+      "bytes": 318441,
+      "sha256": "6399da59a971434aae54a95ed4c823c4b029029dbe50aed2913bcc48747b9259"
+    },
+    "accepted-reuse-proofs/LAB_HELD__RHOBR_CONSTANT__REFERENCE.pickle": {
+      "bytes": 11960,
+      "sha256": "7620b13f291801311787bc489c7b5176b9c6b5f24c7263682c7345541b6e842e"
+    },
+    "accepted-reuse-proofs/LAB_HELD__RHOBR_CONSTANT__LEFT.pickle": {
+      "bytes": 11960,
+      "sha256": "7620b13f291801311787bc489c7b5176b9c6b5f24c7263682c7345541b6e842e"
+    },
+    "accepted-reuse-proofs/MATERIAL_ADVECTED__RHOBR_CONSTANT__LEFT.pickle": {
+      "bytes": 11952,
+      "sha256": "13182dc62f2f5688af3da4893e869e6d7eccd4c41c1473447bc0171d042b7b4b"
+    },
+    "accepted-reuse-proofs/LAB_HELD__RHO4_CONSTANT__RIGHT.pickle": {
+      "bytes": 30231,
+      "sha256": "397757c577b28a0e7d75d5c250950263325acce2225d322fed3894c902b5fc31"
+    },
+    "accepted-reuse-proofs/right-rhobr-cross-anchoring.pickle": {
+      "bytes": 23509,
+      "sha256": "329840c298bd8017ff99fc95066f2760f036b4d62634eccd012d8d852bff8cf6"
+    },
+    "accepted-reuse-proofs/LAB_HELD__RHO4_CONSTANT__REFERENCE.pickle": {
+      "bytes": 11592,
+      "sha256": "ca611edc9737438692935c3000f267ffc09026353990c9c9a5043e2db0d1c21d"
+    },
+    "accepted-reuse-proofs/LAB_HELD__RHOBR_CONSTANT__RIGHT.pickle": {
+      "bytes": 753857,
+      "sha256": "0fc16d84c6ec9ddab247428da2119353a757aedb18e40830eed382b50a8e1508"
+    },
+    "accepted-reuse-proofs/MATERIAL_ADVECTED__RHO4_CONSTANT__LEFT.pickle": {
+      "bytes": 71164,
+      "sha256": "2d6c7de847e028521558aaae2bef27c6b775931ddb1a0c6fda0ef616b7daae5b"
+    },
+    "accepted-reuse-proofs/MATERIAL_ADVECTED__RHO4_CONSTANT__RIGHT.pickle": {
+      "bytes": 442616,
+      "sha256": "a597d237d96d7d5af158ab5b4129b3ca41bfad3cb581ef4d0428662f46d20e60"
+    },
+    "accepted-reuse-proofs/reuse-coefficient-mutations.pickle": {
+      "bytes": 69222,
+      "sha256": "2e6907784f216848a4faa7cfba68c4edeec2a6ad98dc09ef4b6b54c57b8b2b58"
+    },
+    "accepted-reuse-proofs/MATERIAL_ADVECTED__RHO4_CONSTANT__REFERENCE.pickle": {
+      "bytes": 71861,
+      "sha256": "9e8d6466a056793fd45abff50166c4fcac151ba9c7a43fa833426012da71c5b4"
+    },
+    "accepted-reuse-proofs/MATERIAL_ADVECTED__RHOBR_CONSTANT__RIGHT.pickle": {
+      "bytes": 753907,
+      "sha256": "a9d5bb2d21fbbfa9578bd925938a05fc7bcf1b65879600b09fdde57767c01e01"
+    },
+    "accepted-reuse-proofs/LAB_HELD__RHO4_CONSTANT__LEFT.pickle": {
+      "bytes": 11657,
+      "sha256": "527aff1e5ece093175876c15b2de79569f3f8869381ff76eff93dc37213f9d51"
+    },
+    "accepted-reuse-proofs/MATERIAL_ADVECTED__RHOBR_CONSTANT__REFERENCE.pickle": {
+      "bytes": 11952,
+      "sha256": "13182dc62f2f5688af3da4893e869e6d7eccd4c41c1473447bc0171d042b7b4b"
+    },
+    "accepted-cases/LAB_HELD__RHOBR_CONSTANT/actions.pickle": {
+      "bytes": 148401,
+      "sha256": "56e8111829a8f4cb1afaf40edc43d7dbc42d2196b181b984dfddd7015d89f918"
+    },
+    "accepted-cases/LAB_HELD__RHOBR_CONSTANT/assembly.pickle": {
+      "bytes": 103044,
+      "sha256": "53a1d577e0f568b381148e9d4190434a709f633d769defe1899b94e8b474f690"
+    },
+    "accepted-cases/LAB_HELD__RHOBR_CONSTANT/reduced-action.pickle": {
+      "bytes": 1112717,
+      "sha256": "95dbb6b5cb833b16edf3f64177b2df54af2e91379a9ee43d43021d1872aa9106"
+    },
+    "accepted-cases/LAB_HELD__RHO4_CONSTANT/actions.pickle": {
+      "bytes": 176671,
+      "sha256": "4c2372a7102d1db9f21a049ab3104465e8d9245ab832be88c900bc8519b46e02"
+    },
+    "accepted-cases/LAB_HELD__RHO4_CONSTANT/assembly.pickle": {
+      "bytes": 111081,
+      "sha256": "8eda57998285137d99cce9564757627a57f8d5bc9b27091c86a65a9cc59230a0"
+    },
+    "accepted-cases/LAB_HELD__RHO4_CONSTANT/reduced-action.pickle": {
+      "bytes": 1146420,
+      "sha256": "e9062c3455c7e59fe816f47172062a0c118b201d03809ec0826575dac22872b0"
+    },
+    "accepted-cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/actions.pickle": {
+      "bytes": 195585,
+      "sha256": "75cc4419411903d36cb6f4be73652694de3bc69ff19c6117a564f331503de410"
+    },
+    "accepted-cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/assembly.pickle": {
+      "bytes": 135549,
+      "sha256": "15b54c2237f5951aba15616f3062d29d5748fcedf5fc4fedea802a5dec04bf0f"
+    },
+    "accepted-cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/reduced-action.pickle": {
+      "bytes": 1153587,
+      "sha256": "6add07e5f8fd992204e79985b1dec0ce4e641b5d34d2f7aeaeffccd9e53207a2"
+    },
+    "accepted-cases/MATERIAL_ADVECTED__RHO4_CONSTANT/actions.pickle": {
+      "bytes": 205667,
+      "sha256": "c8b64088556034a465bea39bea751c62a77e3850897257dc81de1a70c8282689"
+    },
+    "accepted-cases/MATERIAL_ADVECTED__RHO4_CONSTANT/assembly.pickle": {
+      "bytes": 139074,
+      "sha256": "49dac40608b2b44e0a01d10e9f15cb758ef10015157b4d29cd47dff1b6f35c40"
+    },
+    "accepted-cases/MATERIAL_ADVECTED__RHO4_CONSTANT/reduced-action.pickle": {
+      "bytes": 1151422,
+      "sha256": "b103e83e61ddffcf8a320fe5f91ef433e1571551654f91749bed5665b5d537b9"
+    },
+    "cases/LAB_HELD__RHOBR_CONSTANT/left/tail-input-pairs.pickle": {
+      "bytes": 5034,
+      "sha256": "3a6323f701da7a29521e9b8cbdd0dd3e86cc0ae40c266c0cd4c671bbd6e8d0d1"
+    },
+    "cases/LAB_HELD__RHOBR_CONSTANT/left/tail-reuse.pickle": {
+      "bytes": 5585,
+      "sha256": "ffe182b75228d7b0aece1fbc06a54eca18ddb29e6135cb1605d24732171d3339"
+    },
+    "cases/LAB_HELD__RHOBR_CONSTANT/left/slab.pickle": {
+      "bytes": 35492,
+      "sha256": "d5ca173582141863a968123b8e97c131186aa4c6b0c83c0d1bdb01b3dbb81397"
+    },
+    "cases/LAB_HELD__RHOBR_CONSTANT/left/conservative.pickle": {
+      "bytes": 33489,
+      "sha256": "86164f0080f01e5290c053312b61fcd03b51df012d65fd3e8d466672c8aa8e72"
+    },
+    "cases/LAB_HELD__RHOBR_CONSTANT/right/tail-input-pairs.pickle": {
+      "bytes": 6188,
+      "sha256": "f7d3180e221d72d069c9c2e7396a6a1f247c41bc7e54c32ddacf8bd6fa0fc7dd"
+    },
+    "cases/LAB_HELD__RHOBR_CONSTANT/right/tail-reuse.pickle": {
+      "bytes": 6737,
+      "sha256": "76f58248b3a7088918e0c44dbbf7f6f86716bdf01b7d23ed61ba53ccadf40506"
+    },
+    "cases/LAB_HELD__RHOBR_CONSTANT/right/slab.pickle": {
+      "bytes": 48574,
+      "sha256": "08cf63e2d434ec7ea941bdb24d3972e7c97fee74cdaf2de4073465a4c0f5d260"
+    },
+    "cases/LAB_HELD__RHOBR_CONSTANT/right/energy-mutation.pickle": {
+      "bytes": 7971,
+      "sha256": "864a30fcf1fd94c1910786127fe0b183d3c5ac267537989589a0523fbb507287"
+    },
+    "cases/LAB_HELD__RHOBR_CONSTANT/right/conservative.pickle": {
+      "bytes": 43823,
+      "sha256": "98d2fcfdf639457b312041a814dd6ef5808758615f9bc590a0e2433cd85dfbd2"
+    },
+    "cases/LAB_HELD__RHOBR_CONSTANT/reference/tail-input-pairs.pickle": {
+      "bytes": 5034,
+      "sha256": "3a6323f701da7a29521e9b8cbdd0dd3e86cc0ae40c266c0cd4c671bbd6e8d0d1"
+    },
+    "cases/LAB_HELD__RHOBR_CONSTANT/reference/tail-reuse.pickle": {
+      "bytes": 5590,
+      "sha256": "9a887d14b6bde3e440b7fe651b15b70ff20ab9f2e988756ad88ac4cb80e2041d"
+    },
+    "cases/LAB_HELD__RHOBR_CONSTANT/reference/slab.pickle": {
+      "bytes": 35492,
+      "sha256": "d5ca173582141863a968123b8e97c131186aa4c6b0c83c0d1bdb01b3dbb81397"
+    },
+    "cases/LAB_HELD__RHOBR_CONSTANT/reference/conservative.pickle": {
+      "bytes": 33489,
+      "sha256": "86164f0080f01e5290c053312b61fcd03b51df012d65fd3e8d466672c8aa8e72"
+    },
+    "cases/LAB_HELD__RHO4_CONSTANT/left/tail-input-pairs.pickle": {
+      "bytes": 5034,
+      "sha256": "3a6323f701da7a29521e9b8cbdd0dd3e86cc0ae40c266c0cd4c671bbd6e8d0d1"
+    },
+    "cases/LAB_HELD__RHO4_CONSTANT/left/acoustic-residuals.pickle": {
+      "bytes": 535,
+      "sha256": "81733298741da2cd2674ee0332df589bfba9983ea343ecc970f686949e68989f"
+    },
+    "cases/LAB_HELD__RHO4_CONSTANT/left/current-sources.pickle": {
+      "bytes": 274025,
+      "sha256": "8cc537765524f702b7674e1c39aa1adbbdbed16868d14555aa3f23a1191f8a85"
+    },
+    "cases/LAB_HELD__RHO4_CONSTANT/left/acoustic.pickle": {
+      "bytes": 28682,
+      "sha256": "1b0f79f65b8fa42760fdb1e65742ab8b2db61b3909d2ddc85053e9b534bdf368"
+    },
+    "cases/LAB_HELD__RHO4_CONSTANT/left/tail-reuse.pickle": {
+      "bytes": 5584,
+      "sha256": "ecb0ae46aca4804beb5e2556ca4b4ff53c4e0864d7e5235000d4832d34198b30"
+    },
+    "cases/LAB_HELD__RHO4_CONSTANT/left/slab.pickle": {
+      "bytes": 35492,
+      "sha256": "d5ca173582141863a968123b8e97c131186aa4c6b0c83c0d1bdb01b3dbb81397"
+    },
+    "cases/LAB_HELD__RHO4_CONSTANT/left/conservative.pickle": {
+      "bytes": 33489,
+      "sha256": "86164f0080f01e5290c053312b61fcd03b51df012d65fd3e8d466672c8aa8e72"
+    },
+    "cases/LAB_HELD__RHO4_CONSTANT/left/pairing.pickle": {
+      "bytes": 120479,
+      "sha256": "a0f53b85a47b9ca846d75403dc5833eeffa4b84c97dba8da43f2c4ef3852cb8e"
+    },
+    "cases/LAB_HELD__RHO4_CONSTANT/right/tail-input-pairs.pickle": {
+      "bytes": 6188,
+      "sha256": "f7d3180e221d72d069c9c2e7396a6a1f247c41bc7e54c32ddacf8bd6fa0fc7dd"
+    },
+    "cases/LAB_HELD__RHO4_CONSTANT/right/acoustic-residuals.pickle": {
+      "bytes": 535,
+      "sha256": "81733298741da2cd2674ee0332df589bfba9983ea343ecc970f686949e68989f"
+    },
+    "cases/LAB_HELD__RHO4_CONSTANT/right/current-sources.pickle": {
+      "bytes": 960895,
+      "sha256": "8d8c18f5450b137a1502985fcde8a457a8a6042ecacc45ddf4c800a1c83841b6"
+    },
+    "cases/LAB_HELD__RHO4_CONSTANT/right/acoustic.pickle": {
+      "bytes": 152373,
+      "sha256": "0ebeedf83ef36ec623afb3a5de3ae2ccb299c758255fc4481c300901b574ca27"
+    },
+    "cases/LAB_HELD__RHO4_CONSTANT/right/tail-reuse.pickle": {
+      "bytes": 6736,
+      "sha256": "3cee2eb67d664831dd153ba9f60984d7fdd8b741d20a002f235aaa4711ae105e"
+    },
+    "cases/LAB_HELD__RHO4_CONSTANT/right/slab.pickle": {
+      "bytes": 48574,
+      "sha256": "08cf63e2d434ec7ea941bdb24d3972e7c97fee74cdaf2de4073465a4c0f5d260"
+    },
+    "cases/LAB_HELD__RHO4_CONSTANT/right/acoustic-write-join.pickle": {
+      "bytes": 303042,
+      "sha256": "a275f5334ea46730d41eb48f4d4c3acf103212b4c72e75bdd426b52ab981bee3"
+    },
+    "cases/LAB_HELD__RHO4_CONSTANT/right/pairing-write-join.pickle": {
+      "bytes": 1114709,
+      "sha256": "27c5c1c9452004234653b4365f09622e3a4e38055e6bc6ce0144d05e2c90b494"
+    },
+    "cases/LAB_HELD__RHO4_CONSTANT/right/conservative.pickle": {
+      "bytes": 43946,
+      "sha256": "ed5847c7495d19ad95f6e5690dc9bea42fefec5a440b4edc5ba7ff34eac8eb21"
+    },
+    "cases/LAB_HELD__RHO4_CONSTANT/right/pairing.pickle": {
+      "bytes": 569029,
+      "sha256": "161581d6930c90574235e4fb431dbb02125e1a587d348367651a19b8607af929"
+    },
+    "cases/LAB_HELD__RHO4_CONSTANT/reference/tail-input-pairs.pickle": {
+      "bytes": 5034,
+      "sha256": "3a6323f701da7a29521e9b8cbdd0dd3e86cc0ae40c266c0cd4c671bbd6e8d0d1"
+    },
+    "cases/LAB_HELD__RHO4_CONSTANT/reference/acoustic-residuals.pickle": {
+      "bytes": 535,
+      "sha256": "81733298741da2cd2674ee0332df589bfba9983ea343ecc970f686949e68989f"
+    },
+    "cases/LAB_HELD__RHO4_CONSTANT/reference/current-sources.pickle": {
+      "bytes": 274037,
+      "sha256": "a5091537f794b42bdcd0f16b756d51197373f35ffe9d9b9ad478214abee0ec63"
+    },
+    "cases/LAB_HELD__RHO4_CONSTANT/reference/acoustic.pickle": {
+      "bytes": 28682,
+      "sha256": "1b0f79f65b8fa42760fdb1e65742ab8b2db61b3909d2ddc85053e9b534bdf368"
+    },
+    "cases/LAB_HELD__RHO4_CONSTANT/reference/tail-reuse.pickle": {
+      "bytes": 5589,
+      "sha256": "89e227acc5e4d376afc0b88689ea495b275592fbfc70dae35db5db500982c8a6"
+    },
+    "cases/LAB_HELD__RHO4_CONSTANT/reference/slab.pickle": {
+      "bytes": 35492,
+      "sha256": "d5ca173582141863a968123b8e97c131186aa4c6b0c83c0d1bdb01b3dbb81397"
+    },
+    "cases/LAB_HELD__RHO4_CONSTANT/reference/acoustic-write-join.pickle": {
+      "bytes": 55381,
+      "sha256": "8f8e1cc3ef9de6b590548165212975eeb89978ad677adead93f49e61803de2d1"
+    },
+    "cases/LAB_HELD__RHO4_CONSTANT/reference/conservative.pickle": {
+      "bytes": 33489,
+      "sha256": "86164f0080f01e5290c053312b61fcd03b51df012d65fd3e8d466672c8aa8e72"
+    },
+    "cases/LAB_HELD__RHO4_CONSTANT/reference/pairing.pickle": {
+      "bytes": 120479,
+      "sha256": "a0f53b85a47b9ca846d75403dc5833eeffa4b84c97dba8da43f2c4ef3852cb8e"
+    },
+    "cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/left/tail-input-pairs.pickle": {
+      "bytes": 5034,
+      "sha256": "3a6323f701da7a29521e9b8cbdd0dd3e86cc0ae40c266c0cd4c671bbd6e8d0d1"
+    },
+    "cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/left/tail-reuse.pickle": {
+      "bytes": 5594,
+      "sha256": "cbbf7a40c990a94be2f441e1bb4451800d1cbee003d8b72e0270527b8f446605"
+    },
+    "cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/left/slab.pickle": {
+      "bytes": 35492,
+      "sha256": "d5ca173582141863a968123b8e97c131186aa4c6b0c83c0d1bdb01b3dbb81397"
+    },
+    "cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/left/conservative.pickle": {
+      "bytes": 33489,
+      "sha256": "86164f0080f01e5290c053312b61fcd03b51df012d65fd3e8d466672c8aa8e72"
+    },
+    "cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/right/tail-input-pairs.pickle": {
+      "bytes": 6188,
+      "sha256": "f7d3180e221d72d069c9c2e7396a6a1f247c41bc7e54c32ddacf8bd6fa0fc7dd"
+    },
+    "cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/right/tail-reuse.pickle": {
+      "bytes": 6746,
+      "sha256": "9a2ccef38e2ce297944091321917af8dc65da123cba0ac74f33334e7fb42f047"
+    },
+    "cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/right/slab.pickle": {
+      "bytes": 48574,
+      "sha256": "08cf63e2d434ec7ea941bdb24d3972e7c97fee74cdaf2de4073465a4c0f5d260"
+    },
+    "cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/right/conservative.pickle": {
+      "bytes": 43823,
+      "sha256": "98d2fcfdf639457b312041a814dd6ef5808758615f9bc590a0e2433cd85dfbd2"
+    },
+    "cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/reference/tail-input-pairs.pickle": {
+      "bytes": 5034,
+      "sha256": "3a6323f701da7a29521e9b8cbdd0dd3e86cc0ae40c266c0cd4c671bbd6e8d0d1"
+    },
+    "cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/reference/tail-reuse.pickle": {
+      "bytes": 5599,
+      "sha256": "18b57b033d4da67b9796f395bd734627320fafeb7543afbc104d1919cab59afb"
+    },
+    "cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/reference/slab.pickle": {
+      "bytes": 35492,
+      "sha256": "d5ca173582141863a968123b8e97c131186aa4c6b0c83c0d1bdb01b3dbb81397"
+    },
+    "cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/reference/conservative.pickle": {
+      "bytes": 33489,
+      "sha256": "86164f0080f01e5290c053312b61fcd03b51df012d65fd3e8d466672c8aa8e72"
+    },
+    "cases/MATERIAL_ADVECTED__RHO4_CONSTANT/left/tail-input-pairs.pickle": {
+      "bytes": 5034,
+      "sha256": "3a6323f701da7a29521e9b8cbdd0dd3e86cc0ae40c266c0cd4c671bbd6e8d0d1"
+    },
+    "cases/MATERIAL_ADVECTED__RHO4_CONSTANT/left/tail-reuse.pickle": {
+      "bytes": 5593,
+      "sha256": "0d0b88d46c64d70d92612d99f03bd22c703efb123c1ac9f3ea7fcba2333143fe"
+    },
+    "cases/MATERIAL_ADVECTED__RHO4_CONSTANT/left/slab.pickle": {
+      "bytes": 35492,
+      "sha256": "d5ca173582141863a968123b8e97c131186aa4c6b0c83c0d1bdb01b3dbb81397"
+    },
+    "cases/MATERIAL_ADVECTED__RHO4_CONSTANT/left/conservative.pickle": {
+      "bytes": 33489,
+      "sha256": "86164f0080f01e5290c053312b61fcd03b51df012d65fd3e8d466672c8aa8e72"
+    },
+    "cases/MATERIAL_ADVECTED__RHO4_CONSTANT/right/tail-input-pairs.pickle": {
+      "bytes": 6188,
+      "sha256": "f7d3180e221d72d069c9c2e7396a6a1f247c41bc7e54c32ddacf8bd6fa0fc7dd"
+    },
+    "cases/MATERIAL_ADVECTED__RHO4_CONSTANT/right/tail-reuse.pickle": {
+      "bytes": 6745,
+      "sha256": "255ae418ff74c4bf1406eaf7206792cc81cae94f37a79c48feb84d6f7208e80c"
+    },
+    "cases/MATERIAL_ADVECTED__RHO4_CONSTANT/right/slab.pickle": {
+      "bytes": 48574,
+      "sha256": "08cf63e2d434ec7ea941bdb24d3972e7c97fee74cdaf2de4073465a4c0f5d260"
+    },
+    "cases/MATERIAL_ADVECTED__RHO4_CONSTANT/right/conservative.pickle": {
+      "bytes": 43946,
+      "sha256": "ed5847c7495d19ad95f6e5690dc9bea42fefec5a440b4edc5ba7ff34eac8eb21"
+    },
+    "cases/MATERIAL_ADVECTED__RHO4_CONSTANT/reference/tail-input-pairs.pickle": {
+      "bytes": 5034,
+      "sha256": "3a6323f701da7a29521e9b8cbdd0dd3e86cc0ae40c266c0cd4c671bbd6e8d0d1"
+    },
+    "cases/MATERIAL_ADVECTED__RHO4_CONSTANT/reference/tail-reuse.pickle": {
+      "bytes": 5598,
+      "sha256": "076fe7bd69c53748476a9b82dee3a3f0cc41605c40eaaf17f34057060714dff2"
+    },
+    "cases/MATERIAL_ADVECTED__RHO4_CONSTANT/reference/slab.pickle": {
+      "bytes": 35492,
+      "sha256": "d5ca173582141863a968123b8e97c131186aa4c6b0c83c0d1bdb01b3dbb81397"
+    },
+    "cases/MATERIAL_ADVECTED__RHO4_CONSTANT/reference/conservative.pickle": {
+      "bytes": 33489,
+      "sha256": "86164f0080f01e5290c053312b61fcd03b51df012d65fd3e8d466672c8aa8e72"
+    },
+    "accepted-focused/remaining-case-currents.pickle": {
+      "bytes": 13088,
+      "sha256": "63011a630c6e099bd772ae37a5ef74aafa5cff38816ce753d8eac192d06a2502"
+    }
+  },
+  "supervisorOutcome": {
+    "stage": "checkpoint_focused",
+    "command": [
+      "python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_currents_checkpoint_recover.py",
+      "--check-writes",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/checkpoint-focused/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/checkpoint-focused/checkpoint_focused.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/checkpoint-focused/checkpoint_focused.stderr",
+    "startedUtc": "2026-09-20T02:54:22.140892+00:00",
+    "childPid": 3,
+    "status": "completed",
+    "exitCode": 0,
+    "wallSeconds": 49.06775327771902,
+    "stderrBytes": 0,
+    "finishedUtc": "2026-09-20T02:55:11.208692+00:00"
+  },
+  "originalOutcome": {
+    "stage": "currents_construct",
+    "command": [
+      "python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_currents_production.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/production/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/production/currents_construct.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/production/currents_construct.stderr",
+    "startedUtc": "2026-09-20T02:48:23.839539+00:00",
+    "childPid": 880147,
+    "status": "failed",
+    "exitCode": 1,
+    "wallSeconds": 24.769304796122015,
+    "stderrBytes": 675,
+    "finishedUtc": "2026-09-20T02:48:48.608887+00:00"
+  },
+  "validator": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/checkpoint-focused/accept.py",
+  "validatorSha256": "fa2a66a933f577de8b7eace93d9d53a00aab3071c769bc7129211bbc9dc5eb3b",
+  "completedCurrentInputs": 3,
+  "retainedResidualScalars": 45,
+  "validationWallSeconds": 8.906738322228193
+}

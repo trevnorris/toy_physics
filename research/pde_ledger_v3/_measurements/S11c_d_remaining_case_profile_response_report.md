@@ -36,3 +36,7 @@ maps, positive regulator, approximate boundaries, amplitude1e-4/current1e-6
 practical resolution and omitted parent pure-second-order scope remain. The
 separate bump moment is not bump scattering. One native thread, 2 GiB,
 900 seconds and a silent local completion/error hook; no broad campaign.
+
+Recovery 7a877cce launched at 06:24 UTC under supervisor
+959255 and silent watcher 959256. This records dispatch only; final
+clean exit, full input guards and acceptance remain required before production.

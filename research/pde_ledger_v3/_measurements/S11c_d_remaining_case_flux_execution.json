@@ -1,5 +1,5 @@
 {
-  "status": "FOCUSED_ACCEPTED_PRODUCTION_PREPARED",
+  "status": "LAUNCHED_AWAITING_SILENT_COMPLETION",
   "acceptedResponse": "2dd16688",
   "publication": "fa684a3a",
   "focusedRunRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-flux-20260920/focused-retry-01",
@@ -50,5 +50,50 @@
     "addressSpaceBytes": 2147483648,
     "wallSeconds": 900
   },
-  "scope": "Three new current/amplitude contractions; no baseline repetition, quadrature, modes or scattering solves."
+  "scope": "Three new current/amplitude contractions; no baseline repetition, quadrature, modes or scattering solves.",
+  "launch": {
+    "launchedUtc": "2026-09-20T04:49:26.964562+00:00",
+    "command": [
+      "/usr/bin/python",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-flux-20260920/production",
+      "--stage",
+      "flux_construct",
+      "--",
+      "python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_flux.py",
+      "--resume-focused",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-flux-20260920/focused-retry-01/complete",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-flux-20260920/production/complete"
+    ],
+    "mode": "three-new-case-current-bookkeeping",
+    "supervisorPid": 917812,
+    "watcherPid": 917813,
+    "watcherDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-flux-20260920/production/completion-watcher",
+    "threadEnvironment": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1"
+    },
+    "implementationCommit": "bb986bafeb634fe038f5dca7b733aa0fe115100b"
+  },
+  "helperSha256": "864f9d670995f5dda54b1d6b5e9ba5b85ea1cbb12ab508f509361d127f7697a8",
+  "launchArtifacts": {
+    "launch.py": {
+      "sha256": "5de4fcd11afeab91c20bf265899b09a2e7a0273bfbc0038168fd8fff9852ed1e",
+      "bytes": 3493
+    },
+    "launch.json": {
+      "sha256": "9fd7d98ddd1b9e7a062d261965d6ff31b409b13c531fc5210e7965eb5dc883ff",
+      "bytes": 1184
+    },
+    "continuation.txt": {
+      "sha256": "5f78647e9844789000d211715f289f0d361f9f91cb6fcab1e219523333fea08c",
+      "bytes": 4862
+    }
+  }
 }

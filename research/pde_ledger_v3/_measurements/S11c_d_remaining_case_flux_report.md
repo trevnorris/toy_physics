@@ -28,3 +28,9 @@ and the original baseline checks explicitly. Keep positive regulator, finite
 modal boundaries, unresolved tiny signals and omitted parent pure-second-order
 terms. Bulk normal current integrated over depth is distinct from depth escape.
 Practical controls, scoped case searches and final all-case integration remain.
+
+Focused acceptance bb986baf verifies 107 sources, 107 inputs, 105 original
+unchanged copies and 112 artifacts. Production launched at 04:49 UTC under
+supervisor 917812 and silent watcher 917813. All focused operands are reused.
+This launch record is not final acceptance; validate the completed current
+packets and transcript after the completion/error wake.

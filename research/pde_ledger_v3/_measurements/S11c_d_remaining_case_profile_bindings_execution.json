@@ -1,5 +1,5 @@
 {
-  "status": "RECOVERY_LAUNCHED_AWAITING_SILENT_COMPLETION",
+  "status": "ACCEPTED_CASE_PROFILE_BINDINGS",
   "acceptedUniform": "6a5b0872",
   "uniformPublication": "44de056f",
   "acceptedOriginalProfile": "8d0a6ed2",
@@ -120,5 +120,101 @@
       "sha256": "7cababae9a76ba3813ecc414611c607afe8202a65e804d3b3117064f5b2f95c8",
       "bytes": 5782
     }
-  }
+  },
+  "outcome": {
+    "stage": "profile_bindings",
+    "command": [
+      "python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_profile_bindings_recover.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-profile-20260920/bindings-recovery-01/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-profile-20260920/bindings-recovery-01/profile_bindings.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-profile-20260920/bindings-recovery-01/profile_bindings.stderr",
+    "startedUtc": "2026-09-20T05:54:16.697924+00:00",
+    "childPid": 945886,
+    "status": "completed",
+    "exitCode": 0,
+    "wallSeconds": 115.04903877340257,
+    "stderrBytes": 0,
+    "finishedUtc": "2026-09-20T05:56:11.747008+00:00"
+  },
+  "acceptedRunDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-profile-20260920/bindings-recovery-01/complete",
+  "checksSha256": "85f75aafb35b3eb10607dd82558e55f79dcd7f9e60277e70d670279032b7bafd",
+  "validation": {
+    "status": "VALIDATED_CASE_PROFILE_BINDINGS",
+    "outcome": {
+      "stage": "profile_bindings",
+      "command": [
+        "python",
+        "-u",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_profile_bindings_recover.py",
+        "--run-directory",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-profile-20260920/bindings-recovery-01/complete"
+      ],
+      "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-profile-20260920/bindings-recovery-01/profile_bindings.stdout",
+      "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-profile-20260920/bindings-recovery-01/profile_bindings.stderr",
+      "startedUtc": "2026-09-20T05:54:16.697924+00:00",
+      "childPid": 945886,
+      "status": "completed",
+      "exitCode": 0,
+      "wallSeconds": 115.04903877340257,
+      "stderrBytes": 0,
+      "finishedUtc": "2026-09-20T05:56:11.747008+00:00"
+    },
+    "checksStdoutByteIdentity": true,
+    "sourceCount": 77,
+    "inputCount": 136,
+    "unchangedCopies": 56,
+    "artifacts": 463,
+    "baselineRowsReused": 80,
+    "newUnionRows": 32,
+    "reusedMissingCaseRows": 188,
+    "allCaseRowAddresses": 300,
+    "nativeTerms": 647,
+    "newGaussianResiduals": 170,
+    "originalGradeRecordsReused": 1092,
+    "cases": {
+      "LAB_HELD__RHOBR_CONSTANT": {
+        "rows": 70,
+        "sources": 25,
+        "terms": 140,
+        "gradeRecordsReused": 335,
+        "gaussianZeros": 50,
+        "reusedRows": 61,
+        "newRows": 9,
+        "endpointPairs": 4,
+        "nestedProfiles": 6
+      },
+      "MATERIAL_ADVECTED__RHO4_CONSTANT": {
+        "rows": 80,
+        "sources": 35,
+        "terms": 185,
+        "gradeRecordsReused": 400,
+        "gaussianZeros": 70,
+        "reusedRows": 61,
+        "newRows": 19,
+        "endpointPairs": 4,
+        "nestedProfiles": 6
+      },
+      "MATERIAL_ADVECTED__RHOBR_CONSTANT": {
+        "rows": 70,
+        "sources": 25,
+        "terms": 162,
+        "gradeRecordsReused": 357,
+        "gaussianZeros": 50,
+        "reusedRows": 66,
+        "newRows": 4,
+        "endpointPairs": 4,
+        "nestedProfiles": 6
+      }
+    },
+    "actualReuseControlsSha256": "51b65a08fa7db1869d17e70db36602722ea39ff34d4fec576b0d12f7406824ed",
+    "newQuadratures": 0,
+    "newModes": 0,
+    "newSolves": 0,
+    "wallSeconds": 115.18102231062949
+  },
+  "nextStage": "Three actual finite/continuum FORM responses, integrating only 32 new rows with own-case end maps"
 }

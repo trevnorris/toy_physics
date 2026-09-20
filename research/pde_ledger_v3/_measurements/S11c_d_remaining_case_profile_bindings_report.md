@@ -1,47 +1,38 @@
-# Remaining-case profile-FORM preparation
+# Accepted remaining-case profile-FORM bindings
 
-The original preparation failed after 7.78 seconds before any new binding or
-integration. Its final exit is 1 and stderr is preserved. The accepted native
-settings store innerOrders as the tuple (4,4), while JSON producer checks store
-[4,4]. The earlier input audit compared native packets but did not catch this
-manifest representation transition. All ten actual settings values agree.
+Recovery completed in 115.05 seconds with exit zero, empty stderr and exact
+checks/stdout identity. All 77 current/frozen sources, 136 inputs, 56 unchanged
+copies and 463 artifacts validate. All 49 original copied operands and the
+completed baseline view/row map remain byte-identical.
 
-The local reader restores only that sequence representation, after complete
-key, ordered integer-value and literal remaining-setting checks. One helper and
-one manifest expression reverse exactly to the original whole-file AST. Sixteen
-actual changed-setting/type/key controls reject. No numerical setting, profile,
-physical input or native constructor changes.
+The actual union has 32 new single/pair rows: first appearances 9/19/4 across
+the three remaining cases. Their row counts are 70/80/70, source counts25/35/25
+and native term counts140/185/162. They reuse61/61/66 FORM rows after complete
+source, derivative, character, field, ordered-limit, profile, Abel and settings
+identities. With the80 original FORM rows, all300 case addresses and647 native
+cell terms remain. There is no new triple-momentum operand.
 
-The 6.70-second saved-operand check passed with clean exit, empty stderr and
-checks/stdout identity: 74 original sources, 80 inputs and 49 unchanged copies;
-80 baseline FORM row matrices, 35 sources, the full local/binding operands,
-three complete layouts and their actual mass/direct-action/weight controls.
-The 129-node basis and all four derivative matrices exactly match the accepted
-finite system. No new binding, grade extraction, integration or solve occurred.
-The completed baseline view and row map are retained for the recovery.
+All170 new Gaussian residuals vanish, all actual Abel source/measure/width and
+four endpoint pairs per case join, and1092 original grade records are reused
+with exact expression/address/unit identities. Six actual changed-limit/source-
+coefficient controls respond. No factorization, grade extraction, numerical
+integration, mode/current construction or scattering solve ran in this stage.
 
-The recovery copies the original 49 operands byte-for-byte and joins the exact
-helper/source transition. It reuses the completed baseline validation under the
-unchanged validator AST. Only loading and saved-baseline restoration are routed;
-the complete original coordinator bytecode and accepted native binder remain.
-It computes only the three unfinished FORM case bindings, retaining all source
-jets, Gaussian/Abel evidence, original grades, endpoint identities and actual
-row-reuse controls. Numerical production is not yet accepted or started.
+The accepted source evidence supports the three missing finite/continuum FORM
+responses. Reuse all baseline FORM matrices and responses; integrate only the32
+new rows and compare each result with its own original response in identical
+case-specific end coordinates. Preserve the positive regulator, approximate
+boundaries and amplitude1e-4/current1e-6 practical resolution. The separate
+thickness-bump moment remains distinct from an uncomputed bump scattering case.
 
-Baseline FORM remains accepted at 8d0a6ed2/published 8a6d01f6, and all twelve
-uniform controls at 6a5b0872/published 44de056f. No earlier binding, factorization,
-quadrature, mode/current construction or response is repeated. Inspect the
-actual new-row partition before constructing the remaining case FORM responses.
-Hold one native thread, 2 GiB, 900 seconds and a silent completion/error hook.
-Positive regulator, approximate boundaries, amplitude1e-4/current1e-6 resolution
-and the separate bump-moment limitation remain explicit.
+Original failure and repair remain preserved: the original preparation stopped
+before binding because JSON [4,4] and native(4,4) were compared as different
+settings representations. A whole-file reverse AST permits one reader and one
+manifest call; sixteen changed-setting/type/key controls reject. Recovery used
+the unchanged native binder and complete original coordinator bytecode.
 
-Recovery wiring passed in 12.13 seconds with clean final exit/stderr/checks
-identity: 77 sources, 136 inputs and 56 unchanged copies, including all 49
-original copies and both completed baseline outputs. All four case addresses
-remain; no new binding or other numerical construction ran in this check.
-
-Recovery implementation b20a580a launched at 05:54 UTC
-under supervisor 945878 and silent watcher 945879. This is dispatch
-evidence only. Final exit, all three completed bindings and every source/input
-guard remain required before acceptance or new numerical integration.
+The independent acceptance validator's first attempt stopped on a Python
+iterator census call after validating the first case; its script/stdout/stderr
+are retained. The corrected census materializes that same iterator, preserving
+all physical comparisons. Complete saved-operand validation passed in115.18
+seconds without recomputing bindings, grades or numerical results.

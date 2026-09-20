@@ -49,3 +49,9 @@ equations, full current/phase maps, own-case sensitivities and every source/inpu
 artifact pre/post hash validate. No solve, inverse, SVD, quadrature or system
 assembly ran during validation. Numerical acceptance precedes physical transcript
 emission/replay and annex publication, which remain unfinished.
+
+Numerical acceptance is committed at 47384f68. All four native continuum/current
+output adapters and custom full-replay tails compile. The custom replay changes
+only namespace and packet address; its sensitivity emitter is new. Focused output
+will complete one actual RHOBR case, preserve each completed part, and require
+full metadata/payload replay before reuse by the remaining output stage.

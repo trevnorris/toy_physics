@@ -1,0 +1,21 @@
+{
+  "status": "COMPILED_FIRST_JET_OUTPUT_ADAPTERS",
+  "sourceSha256": "2ca8093eefbcf12cee3b41f90cda05ec929172231bf2f9e2cf03ebadf0e4ffea",
+  "planSha256": "6a0458cff94b29f47b92c943c15f1aed81fddf0ffaaa191ccb2b4fb3274117f9",
+  "numericalAcceptanceCommit": "47384f68",
+  "fourCaseNativeContinuumAndCurrentEmittersCompile": true,
+  "fourCustomReplayTailsCompile": true,
+  "customTailChanges": {
+    "namespace": 1,
+    "packetAddress": 1
+  },
+  "wholeCustomReplayTailReverseAST": true,
+  "focusedCase": "LAB_HELD__RHOBR_CONSTANT",
+  "focusNewParts": [
+    "continuum",
+    "current",
+    "sensitivity"
+  ],
+  "newNumericalWork": 0,
+  "scope": "Compilation and reverse AST joins only; actual emission and metadata replay are pending."
+}

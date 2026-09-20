@@ -1,5 +1,5 @@
 {
-  "status": "ACCEPTED_FIRST_JET_NUMERICAL_RESPONSES",
+  "status": "NUMERICAL_ACCEPTED_OUTPUT_FOCUS_PREPARED",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/response/focused",
   "acceptedMatrixCommit": "df5271b4",
   "implementationCommit": "57f05dae323126c0dc5a7acf54577d413c0495de",
@@ -1040,5 +1040,27 @@
     "stderrBytes": 0,
     "finishedUtc": "2026-09-20T22:53:25.041275+00:00"
   },
-  "numericalCheckpoint": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_first_jet_response_checkpoint.json"
+  "numericalCheckpoint": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_first_jet_response_checkpoint.json",
+  "acceptedNumericalCommit": "47384f68",
+  "outputPreparation": {
+    "status": "COMPILED_FIRST_JET_OUTPUT_ADAPTERS",
+    "sourceSha256": "2ca8093eefbcf12cee3b41f90cda05ec929172231bf2f9e2cf03ebadf0e4ffea",
+    "planSha256": "6a0458cff94b29f47b92c943c15f1aed81fddf0ffaaa191ccb2b4fb3274117f9",
+    "numericalAcceptanceCommit": "47384f68",
+    "fourCaseNativeContinuumAndCurrentEmittersCompile": true,
+    "fourCustomReplayTailsCompile": true,
+    "customTailChanges": {
+      "namespace": 1,
+      "packetAddress": 1
+    },
+    "wholeCustomReplayTailReverseAST": true,
+    "focusedCase": "LAB_HELD__RHOBR_CONSTANT",
+    "focusNewParts": [
+      "continuum",
+      "current",
+      "sensitivity"
+    ],
+    "newNumericalWork": 0,
+    "scope": "Compilation and reverse AST joins only; actual emission and metadata replay are pending."
+  }
 }

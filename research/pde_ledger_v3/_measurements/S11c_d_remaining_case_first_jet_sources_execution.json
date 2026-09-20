@@ -1,0 +1,44 @@
+{
+  "status": "READY_AFTER_ACCEPTED_SOURCE_PREFLIGHT",
+  "acceptedBindings": "a8272c9d",
+  "acceptedBaselineFirstJet": "31c008f5",
+  "publishedBaselineFirstJet": "1982b725",
+  "acceptedFourCaseForm": "64eb47fd",
+  "preflightRunRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/preflight",
+  "productionRunRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/production",
+  "preflightOutcome": {
+    "stage": "sources_preflight",
+    "command": [
+      "python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_first_jet_sources.py",
+      "--preflight",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/preflight/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/preflight/sources_preflight.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/preflight/sources_preflight.stderr",
+    "startedUtc": "2026-09-20T07:19:05.418278+00:00",
+    "childPid": 4,
+    "status": "completed",
+    "exitCode": 0,
+    "wallSeconds": 139.55683425068855,
+    "stderrBytes": 0,
+    "finishedUtc": "2026-09-20T07:21:24.975175+00:00"
+  },
+  "sourceRecords": 1467,
+  "sourceCount": 86,
+  "inputCount": 452,
+  "copiedCount": 419,
+  "artifactCount": 428,
+  "actualInputMutationsRejected": 12,
+  "newNumericalBindings": 0,
+  "newQuadratureNodes": 0,
+  "newResponseSolves": 0,
+  "resourceLimits": {
+    "nativeThreads": 1,
+    "addressSpaceBytes": 2147483648,
+    "wallSeconds": 900
+  },
+  "next": "Construct only the three missing case literal first-derivative source controls, reusing completed baseline and grade evidence; then select numerical reuse from actual new bindings."
+}

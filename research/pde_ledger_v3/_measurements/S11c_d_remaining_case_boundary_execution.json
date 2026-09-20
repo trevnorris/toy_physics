@@ -1,0 +1,27 @@
+{
+  "status": "PREPARED_NOT_LAUNCHED",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-boundary-20260920/production",
+  "helperSha256": "da981150e7241f2bc977edf5c3d6e0911eb1143059ced6b8bf8ca43e95c516eb",
+  "acceptedModes": "69dd0555",
+  "acceptedCurrents": "b36b1f3d",
+  "acceptedInteriors": "2eed4150",
+  "focusedCheckpointSha256": "99eacb0daccf2b9a0389c738a84e6bf2319768b391befa3f20c954bdd5b4cb90",
+  "originalPreparation": {
+    "exitCode": 0,
+    "stderrBytes": 0,
+    "checksStdoutIdentity": true,
+    "wallSeconds": 61.211049121804535
+  },
+  "metadataExtension": {
+    "exitCode": 0,
+    "stderrBytes": 0,
+    "checksStdoutIdentity": true,
+    "wallSeconds": 1.119696857407689
+  },
+  "resourceLimits": {
+    "nativeThreads": 1,
+    "addressSpaceBytes": 2147483648,
+    "wallSeconds": 900
+  },
+  "next": "Construct one new RHOBR-right finite/continuum boundary family; reuse six original end maps and share the second anchoring only after full actual inputs."
+}

@@ -54,3 +54,14 @@ call-site changes. All 287 original copied inputs remain byte-identical.
 Saved-packet recovery now reuses the completed input validation and symbolic
 preparation, then executes only the original remaining per-mode checks. No
 mode, current closure, derivative or matching solve is repeated.
+
+The saved-packet focused recovery is accepted: final exit zero, empty stderr
+and checks/stdout byte identity in 18.22 seconds. It reuses all twelve completed
+routes and 250 pencil certificates, the full symbolic preparation and all 287
+original input copies. Validation checks 88 sources, 661 inputs, 333 copies and
+354 artifacts. All 18 candidates and 22 full basis directions pass; four physical
+open-current directions retain their original normalization. Maximum mode/
+current replay residual is 1.11e-15 and both current mutations respond. The
+independent saved-array/hash validation takes 1.85 seconds. No matching solve,
+new mode or current closure occurred. Production will reuse all 354 artifacts
+and solve only the new RHOBR-right homogeneous control.

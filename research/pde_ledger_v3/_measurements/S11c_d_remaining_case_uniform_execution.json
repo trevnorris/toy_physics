@@ -1,5 +1,5 @@
 {
-  "status": "PREPARED_SAVED_EVALUATOR_RECOVERY",
+  "status": "ACCEPTED_FOCUSED_READY_FOR_ONE_NEW_MATCHING",
   "acceptedCurrent": "5f60149b",
   "currentPublication": "588a5383",
   "acceptedModes": "69dd0555",
@@ -97,5 +97,28 @@
     "finishedUtc": "2026-09-20T05:20:14.350565+00:00"
   },
   "evaluatorRepair": "S11c_d_remaining_case_uniform_evaluator_repair.json",
-  "recoveryHelper": "S11c_d_remaining_case_uniform_recover.py"
+  "recoveryHelper": "S11c_d_remaining_case_uniform_recover.py",
+  "focusedOutcome": {
+    "stage": "uniform_recover",
+    "command": [
+      "python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_uniform_recover.py",
+      "--focused",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-uniform-20260920/focused-recovery/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-uniform-20260920/focused-recovery/uniform_recover.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-uniform-20260920/focused-recovery/uniform_recover.stderr",
+    "startedUtc": "2026-09-20T05:25:05.054175+00:00",
+    "childPid": 8,
+    "status": "completed",
+    "exitCode": 0,
+    "wallSeconds": 18.22163473814726,
+    "stderrBytes": 0,
+    "finishedUtc": "2026-09-20T05:25:23.275855+00:00"
+  },
+  "focusedCheckpoint": "S11c_d_remaining_case_uniform_focused.json",
+  "productionRunRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-uniform-20260920/production",
+  "focusedChecksSha256": "c05f481b1564f26e353c570614b2eea8d36fee71156dd5acf7a96146f3ada014"
 }

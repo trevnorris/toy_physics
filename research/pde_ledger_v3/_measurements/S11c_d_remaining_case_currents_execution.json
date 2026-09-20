@@ -1,0 +1,11 @@
+{
+  "status": "FOCUSED_CURRENT_REUSE_PREPARED",
+  "helper": "_measurements/S11c_d_remaining_case_currents.py",
+  "plan": "_measurements/S11c_d_remaining_case_currents_plan.md",
+  "sourceAcceptance": "103c52d5",
+  "matrixAcceptance": "2eed4150",
+  "nativeThreads": 1,
+  "addressSpaceBytes": 2147483648,
+  "initialWallBudgetSeconds": 900,
+  "scope": "Actual complete current-closure reuse joins before one new RHOBR-right closure and pairing; no quadrature or mode solve."
+}

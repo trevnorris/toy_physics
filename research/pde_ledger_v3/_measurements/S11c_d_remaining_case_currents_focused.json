@@ -1,0 +1,28 @@
+{
+  "status": "NATIVE_CURRENT_CONSTRUCTOR_AST_CHECKED",
+  "helperSha256": "200daa2e34ae730728632c25cfb5f150bf18e54fb986d07ff7fdbbdbc7c0d67d",
+  "planSha256": "78a4e30e01f1789d99c3d10f08b5f772b1cbcf56cd69b5eb58cf104e72fbe2fd",
+  "nativeConstructorJoins": {
+    "left_current_source": {
+      "UniformSlabCurrent": true,
+      "SlabEnergyBalance": true,
+      "ClosedAcousticEnergy": true,
+      "ConstantEndPencil": true,
+      "polynomial_terms": true
+    },
+    "left_pairing": {
+      "ClosedCurrentPairing": true
+    },
+    "right_current_source": {
+      "UniformSlabCurrent": true,
+      "SlabEnergyBalance": true,
+      "ClosedAcousticEnergy": true,
+      "ConstantEndPencil": true,
+      "polynomial_terms": true
+    },
+    "right_pairing": {
+      "ClosedCurrentPairing": true
+    }
+  },
+  "scope": "Static whole-native class joins only; actual case input and cache controls run in the focused job."
+}

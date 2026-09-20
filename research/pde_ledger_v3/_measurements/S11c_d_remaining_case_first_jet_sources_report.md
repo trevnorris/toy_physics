@@ -24,3 +24,8 @@ approximate modal boundaries, practical amplitude1e-4/current1e-6 resolution and
 omitted parent pure-second-order scope remain. Other case coordinate controls,
 scoped frequency searches and final all-case engine/exports are still program
 work; no baseline contour doubling or broad campaign is queued.
+
+The three-case source constructor was launched from `dd4d1fcc`
+under supervisor 979810 and silent watcher 979811.
+The watcher owns the supervisor PID and wakes this thread only on completion or
+strict stderr. This launch record is not final source-control acceptance.

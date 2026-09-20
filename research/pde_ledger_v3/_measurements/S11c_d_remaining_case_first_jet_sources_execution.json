@@ -1,5 +1,5 @@
 {
-  "status": "READY_AFTER_ACCEPTED_SOURCE_PREFLIGHT",
+  "status": "RUNNING_THREE_CASE_FIRST_JET_SOURCE_CONTROL",
   "acceptedBindings": "a8272c9d",
   "acceptedBaselineFirstJet": "31c008f5",
   "publishedBaselineFirstJet": "1982b725",
@@ -40,5 +40,64 @@
     "addressSpaceBytes": 2147483648,
     "wallSeconds": 900
   },
-  "next": "Construct only the three missing case literal first-derivative source controls, reusing completed baseline and grade evidence; then select numerical reuse from actual new bindings."
+  "next": "Construct only the three missing case literal first-derivative source controls, reusing completed baseline and grade evidence; then select numerical reuse from actual new bindings.",
+  "implementationCommit": "dd4d1fcc78a41c8f91aa47a6aa0b71427143f52d",
+  "launch": {
+    "launchedUtc": "2026-09-20T07:24:14.948486+00:00",
+    "command": [
+      "/usr/bin/python",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/production",
+      "--stage",
+      "first_jet_sources",
+      "--",
+      "python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_first_jet_sources.py",
+      "--resume-from",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/preflight/complete",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/production/complete"
+    ],
+    "mode": "three-case-first-derivative-source-control",
+    "supervisorPid": 979810,
+    "watcherPid": 979811,
+    "watcherDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/production/completion-watcher",
+    "threadEnvironment": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1"
+    },
+    "implementationCommit": "dd4d1fcc78a41c8f91aa47a6aa0b71427143f52d"
+  },
+  "launchWatcherState": {
+    "status": "waiting",
+    "watcherPid": 979811,
+    "jobPid": 979810,
+    "thread": "01a08c53-295c-70f0-baaf-353db1745867",
+    "startedUtc": "2026-09-20T07:24:14.983871+00:00",
+    "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
+    "messageSha256": "ce904c713b4fbf6e332b7852e7784d7f51a5e8c8d85eeb8e8ac57f30ceaa5caf",
+    "notifications": {}
+  },
+  "launchActiveRecord": {
+    "stage": "first_jet_sources",
+    "command": [
+      "python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_first_jet_sources.py",
+      "--resume-from",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/preflight/complete",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/production/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/production/first_jet_sources.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/production/first_jet_sources.stderr",
+    "startedUtc": "2026-09-20T07:24:14.979576+00:00",
+    "childPid": 979814,
+    "status": "running"
+  },
+  "launchStatusIsFinalAcceptance": false
 }

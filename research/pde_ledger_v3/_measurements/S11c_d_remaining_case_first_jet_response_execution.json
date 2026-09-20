@@ -1,5 +1,5 @@
 {
-  "status": "RUNNING_FIRST_JET_RESPONSE_INPUT_PREPARATION",
+  "status": "ACCEPTED_FIRST_JET_RESPONSE_INPUTS",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/response/focused",
   "acceptedMatrixCommit": "df5271b4",
   "implementationCommit": "57f05dae323126c0dc5a7acf54577d413c0495de",
@@ -61,5 +61,136 @@
   "remainingFiniteControlSolves": 4,
   "remainingContinuumControlSolves": 3,
   "scope": "Saved operators and own-case boundary/current/phase inputs; no new quadrature, interior assembly, modes, currents or response solve in this preparation.",
-  "next": "Validate final focused outcome and saved input/prepared-system joins, then complete the response and output adapter using prepared arrays with original solver bodies."
+  "next": "Prepare the unchanged native solve suffix with saved systems, test its first write without solving, then compute four finite and three continuum controls. Full transcript emission/publication follows saved numerical validation.",
+  "focusedOutcome": {
+    "stage": "response_inputs",
+    "command": [
+      "python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_first_jet_response_inputs.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/response/focused/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/response/focused/response_inputs.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/response/focused/response_inputs.stderr",
+    "startedUtc": "2026-09-20T22:19:21.635118+00:00",
+    "childPid": 2151323,
+    "status": "completed",
+    "exitCode": 0,
+    "wallSeconds": 144.9802158176899,
+    "stderrBytes": 0,
+    "finishedUtc": "2026-09-20T22:21:46.615379+00:00"
+  },
+  "focusedValidation": {
+    "status": "ACCEPTED_FIRST_JET_RESPONSE_INPUTS",
+    "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/response/focused/complete",
+    "checksSha256": "9f7f7106db927f4b123b5eb4c6d2eb7339bed20e43410a524f578d053a5c99f5",
+    "outcome": {
+      "stage": "response_inputs",
+      "command": [
+        "python",
+        "-u",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_first_jet_response_inputs.py",
+        "--run-directory",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/response/focused/complete"
+      ],
+      "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/response/focused/response_inputs.stdout",
+      "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/response/focused/response_inputs.stderr",
+      "startedUtc": "2026-09-20T22:19:21.635118+00:00",
+      "childPid": 2151323,
+      "status": "completed",
+      "exitCode": 0,
+      "wallSeconds": 144.9802158176899,
+      "stderrBytes": 0,
+      "finishedUtc": "2026-09-20T22:21:46.615379+00:00"
+    },
+    "sourceFiles": 129,
+    "inputPackets": 10270,
+    "copiedInputs": 105,
+    "artifacts": 121,
+    "cases": {
+      "LAB_HELD__RHO4_CONSTANT": {
+        "rows": 80,
+        "terms": 160,
+        "sources": 35,
+        "unknowns": 645,
+        "incomingColumns": 4,
+        "sameCompleteEndInputs": true,
+        "endpointDerivativeZeros": true,
+        "incidentSignMutation": 3.7235544611257785,
+        "baselineContinuumReuse": true,
+        "missingFiniteControlSolve": true,
+        "missingContinuumControlSolve": false,
+        "savedBoundaryEntryJoins": true,
+        "ownCaseCompleteInputs": true
+      },
+      "LAB_HELD__RHOBR_CONSTANT": {
+        "rows": 70,
+        "terms": 140,
+        "sources": 25,
+        "unknowns": 645,
+        "incomingColumns": 4,
+        "sameCompleteEndInputs": true,
+        "endpointDerivativeZeros": true,
+        "incidentSignMutation": 3.7235544611257785,
+        "baselineContinuumReuse": false,
+        "missingFiniteControlSolve": true,
+        "missingContinuumControlSolve": true,
+        "savedBoundaryEntryJoins": true,
+        "ownCaseCompleteInputs": true
+      },
+      "MATERIAL_ADVECTED__RHO4_CONSTANT": {
+        "rows": 80,
+        "terms": 185,
+        "sources": 35,
+        "unknowns": 645,
+        "incomingColumns": 4,
+        "sameCompleteEndInputs": true,
+        "endpointDerivativeZeros": true,
+        "incidentSignMutation": 3.7235544611257785,
+        "baselineContinuumReuse": false,
+        "missingFiniteControlSolve": true,
+        "missingContinuumControlSolve": true,
+        "savedBoundaryEntryJoins": true,
+        "ownCaseCompleteInputs": true
+      },
+      "MATERIAL_ADVECTED__RHOBR_CONSTANT": {
+        "rows": 70,
+        "terms": 162,
+        "sources": 25,
+        "unknowns": 645,
+        "incomingColumns": 4,
+        "sameCompleteEndInputs": true,
+        "endpointDerivativeZeros": true,
+        "incidentSignMutation": 3.7235544611257785,
+        "baselineContinuumReuse": false,
+        "missingFiniteControlSolve": true,
+        "missingContinuumControlSolve": true,
+        "savedBoundaryEntryJoins": true,
+        "ownCaseCompleteInputs": true
+      }
+    },
+    "baselineScaledResidual": 4.794587538984703e-14,
+    "newSolves": 0,
+    "newQuadratureNodes": 0,
+    "validatorSha256": "bd839e168cacf5b000870464686c1fa034edccdf661635ab4e4b1e9d9d882f93",
+    "wallSeconds": 165.39733304269612
+  },
+  "validationOutcome": {
+    "stage": "validate",
+    "command": [
+      "python",
+      "-u",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/response/acceptance/validate.py"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/response/acceptance/validate.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/response/acceptance/validate.stderr",
+    "startedUtc": "2026-09-20T22:24:56.002353+00:00",
+    "childPid": 2153241,
+    "status": "completed",
+    "exitCode": 0,
+    "wallSeconds": 166.8396262396127,
+    "stderrBytes": 0,
+    "finishedUtc": "2026-09-20T22:27:42.842042+00:00"
+  }
 }

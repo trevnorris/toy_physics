@@ -1,26 +1,28 @@
-# First-derivative responses: input preparation
+# First-derivative response inputs accepted
 
-All first-derivative interior matrices are accepted atdf5271b4:27new rows,
-3632nodes, all300addresses647terms and47changed material cell coefficients.
-Saved-array validation passed with maximum matrix difference5.845e-16.
+Focused preparation completed in144.98seconds with final supervisor/child exit
+zero, empty stderr and identical checks/stdout. Independent saved-input validation
+completed in166.84seconds, also clean. All129current/frozen sources,10270inputs,
+105unchanged copies and121artifacts pass. The four cases retain300row addresses,
+647native terms,645unknowns and four incoming columns.
 
-The focused input helper copies accepted case bindings/operators and actual
-own-case boundary/current/phase maps. It prepares finite and independent-grade
-boundary systems without solving and checks the old baseline continuum solution.
-No quadrature, interior assembly, source binding, modes or currents are repeated.
-All inputs and prepared arrays are saved for production.
+Every prepared finite and independent-grade matrix/forcing entry joins its saved
+interior operator and own-case full boundary/current/phase maps. Actual derivative
+endpoints remain zero. All four one-sided incident-sign mutations respond at
+3.72355. Baseline continuum matrices/forcing match its accepted systems exactly;
+the saved solution's scaled residual is4.795e-14. No new solve, quadrature,
+interior assembly, source binding, mode or current closure was performed.
 
-Four finite-contrast controls are still new solves, including the baseline.
-Only three continuum controls are new: the accepted baseline continuum control
-and transcript must remain unchanged. Comparisons use each case's own channel
-coordinates. The actual finite/comparison emission adapter and full output replay
-will precede publication; input preparation alone is not a response result.
+Interior matrices remain accepted atdf5271b4. Four finite-contrast controls are
+explicitly new solves, including the baseline; only three continuum controls are
+new. Reuse the historical baseline continuum packets and transcript unchanged.
+The numerical adapter will use saved prepared systems and unchanged native solve
+bodies, save all solutions before comparisons, then contract full physical
+currents including closed and cross-mode terms. Full transcript validation and
+annex publication follow from saved results; this input acceptance is not a
+completed first-derivative response or publication.
 
 Coordinate/advection controls, scoped case searches and final all-case engine/
-exports remain. No broad numerical campaign or baseline contour doubling is
-queued. Keep the approved finite settings and practical amplitude1e-4/current1e-6
-resolution, positive regulator, approximate boundaries and parent truncation scope.
-
-Focused preparation launched under supervisor2151317 and silent
-watcher2151318, one native thread,2GiB and900seconds. Its final
-outcome is pending; this launch does not establish focused acceptance.
+exports remain. Keep approved settings, practical amplitude1e-4/current1e-6
+resolution, positive regulator, approximate boundaries and omitted parent
+pure-second-order scope. No broad campaign or baseline contour doubling.

@@ -18,6 +18,18 @@ DCP=f.M/'S11c_d_finite_scattering_domain_checkpoint.json'
 BASELINE=m.BASELINE
 
 
+def unsplit_arrays(packet):
+    # The native direct binding has already evaluated the physical contrasts.
+    # Its sole collection slot is storage for that full unsplit matrix, not
+    # the independent zero-contrast coefficient of the operator.
+    keys=('local','nonlocal','total')
+    f.require(all(set(packet[k])=={(0,0,0)} for k in keys),'one actual fully bound unsplit slot')
+    result={k:packet[k][(0,0,0)] for k in keys}
+    f.require(all(isinstance(v,np.ndarray) and v.shape==(645,645) and np.isfinite(v).all() for v in result.values()),'complete actual unsplit matrices')
+    f.require(np.array_equal(result['local']+result['nonlocal'],result['total']),'literal full unsplit decomposition')
+    return {**packet,**result}
+
+
 def function(tree,name):return next(n for n in tree.body if isinstance(n,ast.FunctionDef) and n.name==name)
 
 
@@ -116,6 +128,7 @@ def finite_view(system,solution,independent):
 
 def baseline_check(base,manifest):
     target=base/'cases'/BASELINE;system=f.unpickle(target/'finite/finite-system.pickle');solution=f.unpickle(target/'finite/finite-solution.pickle');basis=f.unpickle(base/'interiors/accepted-finite-system.pickle');ends=f.unpickle(base/'boundary-cases'/BASELINE/'case-boundary.pickle');coefficients=f.unpickle(base/'interiors/cases'/BASELINE/'interior-matrices.pickle');direct=f.unpickle(base/'interiors/cases'/BASELINE/'direct-unsplit.pickle')
+    direct=unsplit_arrays(direct)
     f.require(m.same(basis,system) and m.same(system['channels'],ends['finite']),'full accepted finite basis and actual boundary input')
     finish,prepare,join=finite_tail();a,rhs,original=prepare(target/'finite',direct['total'].copy(),ends['finite'],len(basis['nodes']),basis['derivativeMatrices'],basis['nodes'],direct['local'],basis['settings'],manifest['sourceFiles'],manifest['inputPackets'],solution['polynomialDerivativeResiduals'],solution['groups'])
     ar=(a-system['matrix'])/solution['rowScale'][:,None];rr=rhs-system['rhs'];actual=(a@solution['coefficients']-rhs)/solution['rowScale'][:,None]
@@ -133,6 +146,7 @@ def baseline_check(base,manifest):
 def construct_case(base,label,manifest):
     target=base/'cases'/label;finite_dir=target/'finite';cont_dir=target/'continuum';finite_dir.mkdir(parents=True);cont_dir.mkdir()
     basis=f.unpickle(base/'interiors/accepted-finite-system.pickle');source=base/'interiors/cases'/label;coefficients=f.unpickle(source/'interior-matrices.pickle');direct=f.unpickle(source/'direct-unsplit.pickle');rows=f.unpickle(source/'row-matrices.pickle');binding=f.unpickle(base/'interiors/accepted-bindings'/label/'case-binding.pickle');ends=f.unpickle(base/'boundary-cases'/label/'case-boundary.pickle');reference=f.unpickle(base/'accepted-modes/reference/modal.pickle')[0]
+    direct=unsplit_arrays(direct)
     f.require(coefficients['settings']==rows['settings']==basis['settings']==binding['binding']['settings'],'complete finite setting identity')
     f.require(coefficients['fieldUnits']==ends['fieldUnits'] and coefficients['equationUnits']==ends['rowUnits'],'actual field and equation units')
     native=f.unpickle(source/'direct-native-cells.pickle')

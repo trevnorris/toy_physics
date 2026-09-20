@@ -1,14 +1,35 @@
 {
-  "status": "PREPARED_FOCUSED_BASELINE_REPLAY",
+  "status": "REPAIRED_FOCUSED_UNSPLIT_PACKET_READER",
   "helperSha256": "5b5d8b91237bca77320e70332bf479f2b38e47bbf2303987e5290c8b9717c3a3",
   "acceptedBoundary": "d8713012",
   "acceptedInteriors": "2eed4150",
-  "focusedRunRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-response-20260920/focused",
+  "focusedRunRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-response-20260920/focused-retry-01",
   "productionRunRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-response-20260920/production",
   "resourceLimits": {
     "nativeThreads": 1,
     "addressSpaceBytes": 2147483648,
     "wallSeconds": 900
   },
-  "scope": "Three new finite and continuum responses; accepted baseline copies, no quadrature or modes."
+  "scope": "Three new finite and continuum responses; accepted baseline copies, no quadrature or modes.",
+  "originalFocusedOutcome": {
+    "stage": "response_focused",
+    "command": [
+      "python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_response.py",
+      "--focused",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-response-20260920/focused/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-response-20260920/focused/response_focused.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-response-20260920/focused/response_focused.stderr",
+    "startedUtc": "2026-09-20T04:00:56.169498+00:00",
+    "childPid": 8,
+    "status": "failed",
+    "exitCode": 1,
+    "wallSeconds": 18.091601088643074,
+    "stderrBytes": 1144,
+    "finishedUtc": "2026-09-20T04:01:14.261139+00:00"
+  },
+  "schemaRepairSha256": "f236bc4180410c9237c25f9f7b8af2e8c6cb24c2f186e620d46aea92d40acdf9"
 }

@@ -13,7 +13,14 @@ the three missing responses. No quadrature, source/current construction or mode
 solve is performed. The finite solve/output tail and continuum numerical bodies
 are unchanged; full current/phase dependence and mixed inverse terms remain.
 
-This implementation is awaiting its focused baseline wiring check. No new case
+The first focused check stopped before any solve after 18.09 seconds: the
+fully bound unsplit matrices use a single collection slot (0,0,0), while the
+reader expected a bare array. A schema-only reader now selects that actual
+slot, verifies the full matrix decomposition and joins all four cases to their
+independent original-cell matrices. Four altered slot addresses reject. A
+whole-file reverse AST join permits only the reader and two call sites; the
+numerical tail is unchanged. All original copied packets and logs remain.
+The repaired implementation is awaiting its focused baseline wiring check. No new case
 response is accepted. Every numerical system/solution is saved before later
 validation or emission; an output error will not justify a repeated solve.
 Actual same-coordinate anchoring differences, finite current ratios and formal

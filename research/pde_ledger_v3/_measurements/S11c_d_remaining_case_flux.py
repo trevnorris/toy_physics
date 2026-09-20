@@ -65,6 +65,7 @@ def load(base,resume=None):
 
 
 def input_routes(base,labels,accepted):
+    accepted=json.loads((Path(accepted['runDirectory'])/'checks.json').read_text())
     reference=f.unpickle(base/'accepted-modes/reference/modal.pickle')[0]
     baseline=f.unpickle(base/'original-boundary.pickle');domains=f.unpickle(base/'cases'/h.BASELINE/'continuum/bulk-kinematics.pickle')
     old_source=next(Path(n) for n in accepted['inputPackets'] if Path(n).name=='continuum-response.pickle')

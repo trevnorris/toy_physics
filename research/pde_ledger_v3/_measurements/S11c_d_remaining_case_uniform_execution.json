@@ -1,0 +1,14 @@
+{
+  "status": "PREPARED_FOCUSED_UNIFORM_INPUT_CHECK",
+  "acceptedCurrent": "5f60149b",
+  "currentPublication": "588a5383",
+  "acceptedModes": "69dd0555",
+  "acceptedUniform": "7b388dac",
+  "focusedRunRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-uniform-20260920/focused",
+  "resourceLimits": {
+    "nativeThreads": 1,
+    "addressSpaceBytes": 2147483648,
+    "wallSeconds": 900
+  },
+  "scope": "Full source/mode reuse preparation. No matching solve in focus; only one new RHOBR-right homogeneous response follows acceptance."
+}

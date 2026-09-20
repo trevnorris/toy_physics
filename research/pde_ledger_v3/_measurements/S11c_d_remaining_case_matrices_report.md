@@ -22,3 +22,5 @@ case-specific end/current maps, finite/continuum responses, relevant controls,
 scoped pole diagnostics and all-case exports remain. No baseline boundary map or
 uncomputed response is substituted. Finite regulator and approximate-boundary
 limitations remain under the practical observable criteria.
+
+Production launched under dc2a46b5 with supervisor 848238 and silent watcher 848239. The accepted focused notice is superseded; no second production run is permitted. Final production results are not yet accepted.

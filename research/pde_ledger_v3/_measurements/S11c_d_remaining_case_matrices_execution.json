@@ -1,5 +1,5 @@
 {
-  "status": "ACCEPTED_FOCUSED_ROW_REUSE_AND_ASSEMBLY",
+  "status": "CASE_INTERIOR_MATRICES_RUNNING",
   "helper": "_measurements/S11c_d_remaining_case_matrices.py",
   "plan": "_measurements/S11c_d_remaining_case_matrices_plan.md",
   "bindingAcceptance": "a8272c9d",
@@ -45,5 +45,67 @@
     "stderrBytes": 0,
     "finishedUtc": "2026-09-20T01:21:10.025870+00:00"
   },
-  "preflightCheckpoint": "_measurements/S11c_d_remaining_case_matrices_preflight.json"
+  "preflightCheckpoint": "_measurements/S11c_d_remaining_case_matrices_preflight.json",
+  "preflightAcceptance": "dc2a46b5",
+  "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-matrices-20260920/production/complete",
+  "launch": {
+    "launchedUtc": "2026-09-20T01:24:44.447256+00:00",
+    "command": [
+      "/usr/bin/python",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-matrices-20260920/production",
+      "--stage",
+      "matrices_construct",
+      "--",
+      "python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_matrices.py",
+      "--resume-from",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-matrices-20260920/focused/complete",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-matrices-20260920/production/complete"
+    ],
+    "mode": "case-interior-matrices",
+    "supervisorPid": 848238,
+    "watcherPid": 848239,
+    "watcherDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-matrices-20260920/production/completion-watcher",
+    "threadEnvironment": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1"
+    },
+    "implementationCommit": "dc2a46b564fc5dc83265c58247b428f3101e96f1"
+  },
+  "activeAtLaunch": {
+    "stage": "matrices_construct",
+    "command": [
+      "python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_matrices.py",
+      "--resume-from",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-matrices-20260920/focused/complete",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-matrices-20260920/production/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-matrices-20260920/production/matrices_construct.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-matrices-20260920/production/matrices_construct.stderr",
+    "startedUtc": "2026-09-20T01:24:44.483650+00:00",
+    "childPid": 848242,
+    "status": "running"
+  },
+  "watcherAtLaunch": {
+    "status": "waiting",
+    "watcherPid": 848239,
+    "jobPid": 848238,
+    "thread": "01a08c53-295c-70f0-baaf-353db1745867",
+    "startedUtc": "2026-09-20T01:24:44.483195+00:00",
+    "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
+    "messageSha256": "c959103f26afd27462d262544f2eadf7ca9233153fd8fb2652e2b85d57d3e3f0",
+    "notifications": {}
+  },
+  "supersededNotifications": [
+    "focused preparation accepted; production launched once"
+  ]
 }

@@ -1,5 +1,5 @@
 {
-  "status": "PRODUCTION_RECOVERY_LAUNCHED_AWAITING_SILENT_COMPLETION",
+  "status": "ACCEPTED_FOUR_CASE_FORM_ANNEX_VERIFIED",
   "acceptedBindings": "395732bb",
   "acceptedResponses": "2dd16688",
   "acceptedBoundary": "d8713012",
@@ -272,5 +272,40 @@
     "stderrBytes": 0,
     "checksStdoutByteIdentity": true
   },
-  "productionRepairCommit": "9d6bb392"
+  "productionRepairCommit": "9d6bb392",
+  "productionOutcome": {
+    "stage": "profile_construct",
+    "command": [
+      "python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_profile_response_production_recover.py",
+      "--resume-focused",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-profile-20260920/focused-recovery-01/complete",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-profile-20260920/production-recovery-01/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-profile-20260920/production-recovery-01/profile_construct.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-profile-20260920/production-recovery-01/profile_construct.stderr",
+    "startedUtc": "2026-09-20T06:48:09.884519+00:00",
+    "childPid": 969758,
+    "status": "completed",
+    "exitCode": 0,
+    "wallSeconds": 431.52987806871533,
+    "stderrBytes": 0,
+    "finishedUtc": "2026-09-20T06:55:21.415112+00:00"
+  },
+  "publication": {
+    "path": "scripts/out/S11c_d_remaining_case_profile_form.out",
+    "bytes": 5500114,
+    "sha256": "66c1fe573d48b6a71fe7a0835215b3f1e058f5dacef85ba5428d04b83a8ff994",
+    "md5": "c339c61ccd6e347b475933e29e410264",
+    "backend": "MD5E",
+    "key": "MD5E-s5500114--c339c61ccd6e347b475933e29e410264.out",
+    "symlink": "../../../../.git/annex/objects/mx/JF/MD5E-s5500114--c339c61ccd6e347b475933e29e410264.out/MD5E-s5500114--c339c61ccd6e347b475933e29e410264.out",
+    "annexObject": "/var/projects/toy_physics/.git/annex/objects/mx/JF/MD5E-s5500114--c339c61ccd6e347b475933e29e410264.out/MD5E-s5500114--c339c61ccd6e347b475933e29e410264.out",
+    "independentSha256Verified": true,
+    "independentMd5Verified": true
+  },
+  "acceptedChecksSha256": "79104208152fa0420426bd42b383c837ae23142fe6ca18f846e5af4221a5635c",
+  "next": "Remaining-case literal first-w-derivative control sources, then actual response/control/search and final engine/export integration."
 }

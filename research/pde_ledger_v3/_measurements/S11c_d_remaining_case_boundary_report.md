@@ -31,7 +31,10 @@ end shares only the completed matching family. All current derivative entries,
 pencils, clusters and maps are retained. No quadrature, root isolation, current
 closure or response solve is run by this stage. Production acceptance requires
 its final exit and all actual source, subspace, current, phase, unit and packet
-checks; no production boundary result is accepted yet.
+checks; no production boundary result is accepted yet. Implementation eafad0b4
+was launched at 2026-09-20 03:47 UTC under supervisor 897407 and silent watcher
+897408, with one numerical thread, 2 GiB and a 900-second initial budget. The
+launch snapshot is not a final exit or acceptance record.
 
 Finite-versus-Taylor trace differences remain truncation diagnostics. Open
 coordinates are flux-normalized at reference only, with current coefficients

@@ -1,5 +1,5 @@
 {
-  "status": "PREPARED_NOT_LAUNCHED",
+  "status": "LAUNCHED_AWAITING_SILENT_COMPLETION",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-boundary-20260920/production",
   "helperSha256": "da981150e7241f2bc977edf5c3d6e0911eb1143059ced6b8bf8ca43e95c516eb",
   "acceptedModes": "69dd0555",
@@ -23,5 +23,74 @@
     "addressSpaceBytes": 2147483648,
     "wallSeconds": 900
   },
-  "next": "Construct one new RHOBR-right finite/continuum boundary family; reuse six original end maps and share the second anchoring only after full actual inputs."
+  "next": "Construct one new RHOBR-right finite/continuum boundary family; reuse six original end maps and share the second anchoring only after full actual inputs.",
+  "launch": {
+    "launchedUtc": "2026-09-20T03:47:22.916243+00:00",
+    "command": [
+      "/usr/bin/python",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-boundary-20260920/production",
+      "--stage",
+      "boundary_construct",
+      "--",
+      "python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_boundary.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-boundary-20260920/production/complete"
+    ],
+    "mode": "one-new-finite-and-continuum-boundary-family",
+    "supervisorPid": 897407,
+    "watcherPid": 897408,
+    "watcherDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-boundary-20260920/production/completion-watcher",
+    "threadEnvironment": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1"
+    },
+    "implementationCommit": "eafad0b490a042a774adc294d73cc123c801cd8f"
+  },
+  "activeAtLaunch": {
+    "stage": "boundary_construct",
+    "command": [
+      "python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_boundary.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-boundary-20260920/production/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-boundary-20260920/production/boundary_construct.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-boundary-20260920/production/boundary_construct.stderr",
+    "startedUtc": "2026-09-20T03:47:22.948125+00:00",
+    "childPid": 897415,
+    "status": "running"
+  },
+  "launchArtifacts": {
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-boundary-20260920/production/launch.py": {
+      "sha256": "bb2faba60a03883923eab3187863a48d052637bb9732b89342a8ec8480efe1c7",
+      "bytes": 3479
+    },
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-boundary-20260920/production/launch.json": {
+      "sha256": "4d5ba5c8d83eb735317c0a970b36a38f88602ccefbcd640c2ae6fcd1bebfdad5",
+      "bytes": 1083
+    },
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-boundary-20260920/production/continuation.txt": {
+      "sha256": "61bce39a63a9e94bcecd7809dab79ff704a6f6954c9ca06e196f88ec07f8f23b",
+      "bytes": 4202
+    },
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-boundary-20260920/production/process-census.txt": {
+      "sha256": "1390e57c86363509b6d7fdd6170b6f028ca431ec34ed36347e7feb1d5735b184",
+      "bytes": 44632
+    },
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-boundary-20260920/production/completion-watcher/watch.py": {
+      "sha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
+      "bytes": 4301
+    },
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-boundary-20260920/production/completion-watcher/continuation.txt": {
+      "sha256": "61bce39a63a9e94bcecd7809dab79ff704a6f6954c9ca06e196f88ec07f8f23b",
+      "bytes": 4202
+    }
+  }
 }

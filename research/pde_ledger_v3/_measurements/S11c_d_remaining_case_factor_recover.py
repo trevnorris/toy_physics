@@ -120,7 +120,7 @@ def worker_adapter():
                 counts['construct'] += 1
                 return ast.parse('resumed_factorization(builder, checkpoint, directory, entry)', mode='eval').body
             if ast.unparse(node.func) == 'engine.BoundedSourceFourierAssembly.reconstruction_certificate':
-                counts['certificate'] += 1; node.func = ast.Name(id='certificate', ctx=ast.Load())
+                counts['certificate'] += 1; node.func = ast.Name(id='build_exact_certificate', ctx=ast.Load())
             return node
     Forward().visit(changed)
     class Reverse(ast.NodeTransformer):
@@ -128,12 +128,12 @@ def worker_adapter():
             self.generic_visit(node)
             if isinstance(node.func, ast.Name) and node.func.id == 'resumed_factorization':
                 return ast.parse('builder.construct(checkpoint=checkpoint)', mode='eval').body
-            if isinstance(node.func, ast.Name) and node.func.id == 'certificate':
+            if isinstance(node.func, ast.Name) and node.func.id == 'build_exact_certificate':
                 node.func = ast.parse('engine.BoundedSourceFourierAssembly.reconstruction_certificate', mode='eval').body
             return node
     f.require(counts == {'construct': 1, 'certificate': 2} and ast.dump(Reverse().visit(copy.deepcopy(changed))) == ast.dump(original),
               'whole worker reverse AST join')
-    namespace = dict(vars(c), certificate=certificate, resumed_factorization=resumed_factorization)
+    namespace = dict(vars(c), build_exact_certificate=certificate, resumed_factorization=resumed_factorization)
     exec(compile(ast.fix_missing_locations(ast.Module(body=[changed], type_ignores=[])), str(Path(__file__)), 'exec'), namespace)
     return namespace['worker'], {'wholeWorkerReverseAstJoin': True, 'changes': counts,
         'originalAstSha256': hashlib.sha256(ast.dump(original).encode()).hexdigest(),

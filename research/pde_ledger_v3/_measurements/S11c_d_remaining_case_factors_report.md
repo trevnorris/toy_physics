@@ -26,3 +26,10 @@ row, computes only its missing certificates and then finishes output/metadata
 validation. No source reduction, factor construction, numerical integration,
 mode or solve repeats. The remaining 28 unique factors will follow only after
 this preflight passes. Remaining case responses and final exports are still work.
+
+The first recovery stopped before certification because its generated global
+helper name collided with the worker local `certificate` variable. A three-site
+alias correction has a reverse whole-file AST join and two verified global
+call sites. The certificate algorithm and all three completed rows are unchanged;
+the fourth retained raw row remains byte-identical. Full execution/output is
+still pending, with the failed recovery logs and frozen sources preserved.

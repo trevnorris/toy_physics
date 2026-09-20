@@ -1,5 +1,5 @@
 {
-  "status": "ACCEPTED_FIRST_JET_RESPONSE_INPUTS",
+  "status": "PREPARED_FIRST_JET_NUMERICAL_RESPONSES",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/response/focused",
   "acceptedMatrixCommit": "df5271b4",
   "implementationCommit": "57f05dae323126c0dc5a7acf54577d413c0495de",
@@ -61,7 +61,7 @@
   "remainingFiniteControlSolves": 4,
   "remainingContinuumControlSolves": 3,
   "scope": "Saved operators and own-case boundary/current/phase inputs; no new quadrature, interior assembly, modes, currents or response solve in this preparation.",
-  "next": "Prepare the unchanged native solve suffix with saved systems, test its first write without solving, then compute four finite and three continuum controls. Full transcript emission/publication follows saved numerical validation.",
+  "next": "Launch four finite and three continuum control solves using saved systems. Complete physical transcript emission/publication afterward from saved numerical results.",
   "focusedOutcome": {
     "stage": "response_inputs",
     "command": [
@@ -192,5 +192,278 @@
     "wallSeconds": 166.8396262396127,
     "stderrBytes": 0,
     "finishedUtc": "2026-09-20T22:27:42.842042+00:00"
+  },
+  "acceptedFocusedCommit": "cec249e7",
+  "solverWiring": {
+    "status": "PASSED_PREPARED_RESPONSE_SOLVER_WIRING",
+    "wiring": {
+      "finiteTail": {
+        "wholeNativeFiniteSolveTail": true,
+        "firstStatement": 24,
+        "changedNumericalStatements": 0,
+        "nativeFileSha256": "f187d9426be8069342a363a0466c175d32a8cb46101e32a14c433ccb9118e469"
+      },
+      "continuumTail": {
+        "wholeNativeContinuumSolveTail": true,
+        "firstStatement": 27,
+        "changedNumericalStatements": 0,
+        "nativeFileSha256": "0709c7a2770a2094db31cf913b79e2ee7416b3d6d75465670a0ab151a5322728"
+      },
+      "comparisonPrefix": {
+        "wholeOwnCaseComparisonPrefix": true,
+        "packetAddressChanges": 1,
+        "changedNumericalStatements": 0,
+        "nativeFileSha256": "9558285317d9256a46e02d9a059dda73d3ad174c13de712e37fad9709ea65c7f"
+      },
+      "routes": {
+        "LAB_HELD__RHO4_CONSTANT": {
+          "firstWriteCapturedBeforeSolve": true,
+          "preparedMatrixShape": [
+            645,
+            645
+          ],
+          "preparedForcingShape": [
+            645,
+            4
+          ],
+          "changedForcingRejected": true
+        },
+        "LAB_HELD__RHOBR_CONSTANT": {
+          "firstWriteCapturedBeforeSolve": true,
+          "preparedMatrixShape": [
+            645,
+            645
+          ],
+          "preparedForcingShape": [
+            645,
+            4
+          ],
+          "changedForcingRejected": true
+        },
+        "MATERIAL_ADVECTED__RHO4_CONSTANT": {
+          "firstWriteCapturedBeforeSolve": true,
+          "preparedMatrixShape": [
+            645,
+            645
+          ],
+          "preparedForcingShape": [
+            645,
+            4
+          ],
+          "changedForcingRejected": true
+        },
+        "MATERIAL_ADVECTED__RHOBR_CONSTANT": {
+          "firstWriteCapturedBeforeSolve": true,
+          "preparedMatrixShape": [
+            645,
+            645
+          ],
+          "preparedForcingShape": [
+            645,
+            4
+          ],
+          "changedForcingRejected": true
+        }
+      },
+      "newSolves": 0,
+      "newQuadratureNodes": 0
+    },
+    "sources": {
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_first_jet_response.py": "eeab82012db72fcc8443d0018aad6a5e9b0221c1d6cd96dc2d0a8e8a21dfd498",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_response.py": "0709c7a2770a2094db31cf913b79e2ee7416b3d6d75465670a0ab151a5322728",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_profile_response.py": "9558285317d9256a46e02d9a059dda73d3ad174c13de712e37fad9709ea65c7f",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_continuum_currents.py": "44ead83416dd8baa4fb0dedf16ef26a33fd810308112b6aa333dfc53fe75b8e0",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_first_jet_response_inputs.py": "62175ce99fbf64bd1911f387e16e1efd94b24ec158a7e550f55ab768044fa107",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_finite_scattering.py": "f187d9426be8069342a363a0466c175d32a8cb46101e32a14c433ccb9118e469"
+    },
+    "consumedPackets": {
+      "interiors/accepted-finite-system.pickle": "2a043895b5e8a203cc4dd0b517ba3feec61300ab812a0404f19195cc39c0319a",
+      "preparation/LAB_HELD__RHO4_CONSTANT/finite-prepared.pickle": "d920966842a65dfcdfb322b410f44ea887db38685203e21518e89f3a5bb71d10",
+      "boundary-cases/LAB_HELD__RHO4_CONSTANT/case-boundary.pickle": "e108a8bb8642e8be14574362db2776b0340fec4b503eeb54c75b9c1bcf67cdbb",
+      "interiors/cases/LAB_HELD__RHO4_CONSTANT/direct-unsplit.pickle": "10d9e3c072b870acf7825386666f81e705ddffaf6ac55453ecb68cf046f88f79",
+      "interiors/cases/LAB_HELD__RHO4_CONSTANT/row-matrices.pickle": "df98c093b684b2705f1c4d28f191cb7f0a1c79b9cdb0e5c3338dda822475bc93",
+      "unchanged-response/cases/LAB_HELD__RHO4_CONSTANT/finite/finite-solution.pickle": "f7abb7a0efc01720ef27c6a856b2809b827b8b7e0be8e62db3a8b2fcb346c296",
+      "preparation/LAB_HELD__RHOBR_CONSTANT/finite-prepared.pickle": "db127f7d7b2e76b523b7c9b736dd6eb91ac115fffc910e6ef84fb9a1002b0bfd",
+      "boundary-cases/LAB_HELD__RHOBR_CONSTANT/case-boundary.pickle": "3a83ae69d1183ce59b3c9bfc81b78e40f3685a843e4ae41c4c948a43e3e84966",
+      "interiors/cases/LAB_HELD__RHOBR_CONSTANT/direct-unsplit.pickle": "0fee28919af55b22310ecb35b3b8886a4e32cf71a96153b7725b5d0a7c4bd757",
+      "interiors/cases/LAB_HELD__RHOBR_CONSTANT/row-matrices.pickle": "b756d383e01d9fb50820cfb83fb65bb6bbce6ad2ab3e123d8f42e07680b3b81b",
+      "unchanged-response/cases/LAB_HELD__RHOBR_CONSTANT/finite/finite-solution.pickle": "6c21ab39e364adb6f5f175665071d9fdd4b1013c2ba5f97194270d28eaeeab20",
+      "preparation/MATERIAL_ADVECTED__RHO4_CONSTANT/finite-prepared.pickle": "3b0c19122f8949f0b9f6e109acd3cf0af7d28700ec33a8f01da1a5d0103854f6",
+      "boundary-cases/MATERIAL_ADVECTED__RHO4_CONSTANT/case-boundary.pickle": "30a85392e8a186bd8aedf61fbe356380d34c9d23648546e4f7fa0d50ac6499d7",
+      "interiors/cases/MATERIAL_ADVECTED__RHO4_CONSTANT/direct-unsplit.pickle": "ce006b44809bf39f59d01d434ef7c021fba47311a602c17326d0410d3d33221a",
+      "interiors/cases/MATERIAL_ADVECTED__RHO4_CONSTANT/row-matrices.pickle": "839320ee0f97f6162f5d7f8000b850e7408cd69d9c2796e664c74665b42b2406",
+      "unchanged-response/cases/MATERIAL_ADVECTED__RHO4_CONSTANT/finite/finite-solution.pickle": "08d575804a8d90f71c58b97a3476ac77bd73c19ccdcbd34081b2ddb79925214a",
+      "preparation/MATERIAL_ADVECTED__RHOBR_CONSTANT/finite-prepared.pickle": "d2fc4963967fc07b524b5f48906d8846e8c2cb7e705b64956311b952f1c92507",
+      "boundary-cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/case-boundary.pickle": "b7e23a5a56ac2ca4418441910fd1954415f2ffff53e636850141189741b998e2",
+      "interiors/cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/direct-unsplit.pickle": "9960e611910ce62f907cfb0c8148285292443fb244a251afb04e1aaef18cdde3",
+      "interiors/cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/row-matrices.pickle": "410850c5e210bf9b75117b9ae566e086f50d4e3ea3b4692b7b8821095c14096b",
+      "unchanged-response/cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/finite/finite-solution.pickle": "698c5429b3cb589457fc57ac866dca68cd3a476e763328dd2e82dbde5139431c"
+    },
+    "currentBasis": {
+      "LAB_HELD__RHO4_CONSTANT": {
+        "LEFT": {
+          "shape": [
+            4,
+            4
+          ],
+          "openOutgoing": [
+            2,
+            3
+          ],
+          "incoming": [
+            0,
+            1
+          ],
+          "closedMatchingCount": 3,
+          "currentMutationReal": 0.3199999999999976,
+          "currentMutationImag": 2.7755575615628914e-17
+        },
+        "RIGHT": {
+          "shape": [
+            4,
+            4
+          ],
+          "openOutgoing": [
+            0,
+            1
+          ],
+          "incoming": [
+            2,
+            3
+          ],
+          "closedMatchingCount": 3,
+          "currentMutationReal": -0.3200000000000003,
+          "currentMutationImag": 0.0
+        }
+      },
+      "LAB_HELD__RHOBR_CONSTANT": {
+        "LEFT": {
+          "shape": [
+            4,
+            4
+          ],
+          "openOutgoing": [
+            2,
+            3
+          ],
+          "incoming": [
+            0,
+            1
+          ],
+          "closedMatchingCount": 3,
+          "currentMutationReal": 0.3199999999999976,
+          "currentMutationImag": 2.7755575615628914e-17
+        },
+        "RIGHT": {
+          "shape": [
+            4,
+            4
+          ],
+          "openOutgoing": [
+            0,
+            1
+          ],
+          "incoming": [
+            2,
+            3
+          ],
+          "closedMatchingCount": 3,
+          "currentMutationReal": -0.3200000000000003,
+          "currentMutationImag": 0.0
+        }
+      },
+      "MATERIAL_ADVECTED__RHO4_CONSTANT": {
+        "LEFT": {
+          "shape": [
+            4,
+            4
+          ],
+          "openOutgoing": [
+            2,
+            3
+          ],
+          "incoming": [
+            0,
+            1
+          ],
+          "closedMatchingCount": 3,
+          "currentMutationReal": 0.3199999999999976,
+          "currentMutationImag": 2.7755575615628914e-17
+        },
+        "RIGHT": {
+          "shape": [
+            4,
+            4
+          ],
+          "openOutgoing": [
+            0,
+            1
+          ],
+          "incoming": [
+            2,
+            3
+          ],
+          "closedMatchingCount": 3,
+          "currentMutationReal": -0.3200000000000003,
+          "currentMutationImag": 0.0
+        }
+      },
+      "MATERIAL_ADVECTED__RHOBR_CONSTANT": {
+        "LEFT": {
+          "shape": [
+            4,
+            4
+          ],
+          "openOutgoing": [
+            2,
+            3
+          ],
+          "incoming": [
+            0,
+            1
+          ],
+          "closedMatchingCount": 3,
+          "currentMutationReal": 0.3199999999999976,
+          "currentMutationImag": 2.7755575615628914e-17
+        },
+        "RIGHT": {
+          "shape": [
+            4,
+            4
+          ],
+          "openOutgoing": [
+            0,
+            1
+          ],
+          "incoming": [
+            2,
+            3
+          ],
+          "closedMatchingCount": 3,
+          "currentMutationReal": -0.3200000000000003,
+          "currentMutationImag": 0.0
+        }
+      }
+    },
+    "newSolves": 0,
+    "newQuadratureNodes": 0,
+    "scriptSha256": "6b972a60babc929215c4dc97c43cb388853a47c0f8ef53e8fad5be2cf4df1693",
+    "wallSeconds": 12.1737119294703,
+    "outcome": {
+      "exitCode": 0,
+      "toolSession": 18100,
+      "stderrBytes": 0,
+      "checksStdoutIdentical": true
+    },
+    "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/response/wiring-02",
+    "helperSha256": "eeab82012db72fcc8443d0018aad6a5e9b0221c1d6cd96dc2d0a8e8a21dfd498",
+    "planSha256": "7262ff88271084ae5a26bcba3d578858c4206dabf3239f4130cc18414cc42cd6",
+    "previousFailedCheck": {
+      "directory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/response/wiring",
+      "error": "KeyError MATRIX_COLUMN on an evanescent channel; native finite current is an open-only 4-by-4 form. All four native first-write captures completed before this check. No solve began.",
+      "preservedPreAddressFixHelper": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/response/wiring/pre-current-address-fix.py",
+      "scope": "The snapshot was saved after the grade-origin evaluation correction and before the current-address correction; it is not claimed as a pre-run frozen source."
+    },
+    "currentScope": "Finite 4-by-4 open-current metric and closed amplitudes remain distinct. Retained continuum 7-by-7 metric includes closed and cross terms. No zero current assigned to an absent finite closed metric."
   }
 }

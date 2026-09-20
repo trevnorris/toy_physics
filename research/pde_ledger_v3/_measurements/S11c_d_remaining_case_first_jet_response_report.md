@@ -26,3 +26,12 @@ Coordinate/advection controls, scoped case searches and final all-case engine/
 exports remain. Keep approved settings, practical amplitude1e-4/current1e-6
 resolution, positive regulator, approximate boundaries and omitted parent
 pure-second-order scope. No broad campaign or baseline contour doubling.
+
+Solver wiring passed in12.17seconds: unchanged whole finite/continuum solve
+suffixes, all four actual first writes captured before solving, four changed
+forcing rejections and eight actual open-current basis/mutation checks. The
+first current-address check found that evanescent records have no open-current
+MATRIX_COLUMN; its logs and completed solver checks remain. Native finite
+metrics cover four open directions, with closed matching amplitudes retained
+separately. Full seven-direction closed/cross-mode current bookkeeping uses the
+actual retained continuum metric. No missing current is replaced by zero.

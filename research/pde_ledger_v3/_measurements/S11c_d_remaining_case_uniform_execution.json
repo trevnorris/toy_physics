@@ -1,10 +1,10 @@
 {
-  "status": "LAUNCHED_AWAITING_SILENT_COMPLETION",
+  "status": "PREPARED_RATIONAL_PENCIL_COMPARISON_RETRY",
   "acceptedCurrent": "5f60149b",
   "currentPublication": "588a5383",
   "acceptedModes": "69dd0555",
   "acceptedUniform": "7b388dac",
-  "focusedRunRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-uniform-20260920/focused",
+  "focusedRunRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-uniform-20260920/focused-retry-01",
   "resourceLimits": {
     "nativeThreads": 1,
     "addressSpaceBytes": 2147483648,
@@ -54,5 +54,26 @@
       "sha256": "28e535d351e9dc43868b7d9677b36bc77d2f4a80053f6ae9cf4b4e3da3e5a68e",
       "bytes": 4325
     }
-  }
+  },
+  "originalOutcome": {
+    "stage": "uniform_focused",
+    "command": [
+      "python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_uniform.py",
+      "--focused",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-uniform-20260920/focused/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-uniform-20260920/focused/uniform_focused.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-uniform-20260920/focused/uniform_focused.stderr",
+    "startedUtc": "2026-09-20T05:14:46.718849+00:00",
+    "childPid": 927972,
+    "status": "failed",
+    "exitCode": 1,
+    "wallSeconds": 6.592316227033734,
+    "stderrBytes": 1036,
+    "finishedUtc": "2026-09-20T05:14:53.311261+00:00"
+  },
+  "pencilRepair": "S11c_d_remaining_case_uniform_pencil_repair.json"
 }

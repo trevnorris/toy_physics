@@ -83,6 +83,22 @@ def root_equal(a,c):
     return m.same(*copies)
 
 
+def rational_pencil_pair(target,pair):
+    # The two native forms may have differently grouped rational denominators.
+    # Save full original expressions and raw difference before exact numerator
+    # certificates. No branch, root equation or numerical tolerance is used.
+    a,c=pair;f.require(a.shape==c.shape,'actual rational pencil dimensions')
+    f.atomic_pickle(target/'uniform-original-pencil-raw.pickle',{'pair':pair,'liveStrings':(str(a),str(c)),'rawDifference':a-c})
+    entries=[]
+    for index,(left,right) in enumerate(zip(a,c)):
+        together=sp.together(left-right);numerator,denominator=together.as_numer_denom();expanded=sp.expand(numerator)
+        original_denominators=tuple((v.base,v.exp) for source in (left,right) for v in sp.preorder_traversal(source) if isinstance(v,sp.Pow) and v.exp.is_negative)
+        entries.append({'index':index,'left':left,'right':right,'together':together,'numerator':numerator,'denominator':denominator,'expandedNumerator':expanded,'originalDenominators':original_denominators})
+    f.atomic_pickle(target/'uniform-original-pencil-certificate.pickle',entries)
+    f.require(all(v['expandedNumerator']==0 for v in entries),'exact rational pencil numerator identity')
+    return sp.ImmutableMatrix(a.rows,a.cols,[v['expandedNumerator'] for v in entries])
+
+
 def input_routes(base):
     values=f.unpickle(base/'remaining-case-currents.pickle');old=f.unpickle(base/'accepted-uniform/uniform-response.pickle');old_inputs=json.loads((base/'accepted-uniform/inputs.json').read_text())
     inventory={};controls=[];labels=tuple(values['cases'])
@@ -106,7 +122,7 @@ def input_routes(base):
                 original=next(Path(n) for n in old_inputs['inputPackets'] if n.endswith('/'+end.lower()+'/modal.pickle'))
                 f.require(f.digest(original)==old_inputs['inputPackets'][str(original)]==f.digest(base/'accepted-modes'/end.lower()/'modal.pickle')==f.digest(target/'modal.pickle'),'same actual original full modal input')
                 symbolic=f.unpickle(base/'accepted-uniform'/(end.lower()+'-symbolic.pickle'))
-                pair=(inp['physical'],symbolic['freshPencil']);residual=m.currents.zero_difference(*pair)
+                pair=(inp['physical'],symbolic['freshPencil']);residual=rational_pencil_pair(target,pair)
                 f.atomic_pickle(target/'uniform-original-pencil-pair.pickle',{'pair':pair,'residual':residual})
                 f.require(len(old['backgrounds'][end]['modes'])==len(modal['RECORDS']),'original homogeneous full candidate census')
             inventory[label+'__'+end]={'owner':owner+'__'+end,'reusedOriginalUniformResponse':reuse,'candidates':len(modal['RECORDS']),'basisDirections':sum(r['NULLITY'] for r in modal['RECORDS']),'inputSha256':f.digest(target/'mode-inputs.pickle'),'modalSha256':f.digest(target/'modal.pickle')}

@@ -1,0 +1,161 @@
+{
+  "status": "PASSED_ACTUAL_RATIONAL_PENCIL_REPAIR",
+  "wholeFileReverseAstJoin": true,
+  "newHelper": 1,
+  "changedCallSites": 1,
+  "oldHelperSha256": "7c82962c83017daa04eeee3567acbea7a3ae9f1d39df502c39c4cebcb20fef66",
+  "newHelperSha256": "9b2aa3ddd6f406e16718acbe1cc93d2594949ea990936416175f17697e45972d",
+  "cases": {
+    "REFERENCE": {
+      "zeroNumerators": 25,
+      "changedActualCoefficientRejected": true,
+      "actualOriginalDenominatorOccurrences": 40,
+      "mutationIndex": 0
+    },
+    "LEFT": {
+      "zeroNumerators": 25,
+      "changedActualCoefficientRejected": true,
+      "actualOriginalDenominatorOccurrences": 40,
+      "mutationIndex": 0
+    },
+    "RIGHT": {
+      "zeroNumerators": 25,
+      "changedActualCoefficientRejected": true,
+      "actualOriginalDenominatorOccurrences": 170,
+      "mutationIndex": 0
+    }
+  },
+  "originalSources": 85,
+  "originalInputs": 331,
+  "unchangedOriginalCopies": 287,
+  "wallSeconds": 1.9298351667821407,
+  "diagnosticDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-uniform-20260920/pencil-diagnostic",
+  "validatorSha256": "9a4d9aa96442f385974bfe810b09b4678c2e15f93af55be1dfc3b3401554165a",
+  "artifacts": {
+    "stdout": {
+      "sha256": "3ca841cd80eb5e5e304476e2a2424b50885af800d7390235afacd4f91cf9ba05",
+      "bytes": 55450
+    },
+    "rational.stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "left-fractions.pickle": {
+      "sha256": "ed779a1b5000aaa20895c67627bb067838c61ffbcbdc8338fefb0be3d7ca05ae",
+      "bytes": 627
+    },
+    "repair.stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "right-fractions.pickle": {
+      "sha256": "b408cfd871191e317dc8af653d4da36c068e691a2a2e21542993fd5ee4522a2d",
+      "bytes": 634
+    },
+    "repair-checks.json": {
+      "sha256": "670732c09f156255b49760aa6f12a9b5e7dcd031f4517edbc652d00f7c471467",
+      "bytes": 972
+    },
+    "reference-fractions.pickle": {
+      "sha256": "ed779a1b5000aaa20895c67627bb067838c61ffbcbdc8338fefb0be3d7ca05ae",
+      "bytes": 627
+    },
+    "stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "left-pair.pickle": {
+      "sha256": "19457bcb2aed715276dff4bb7a164278defce072c84f50ebb7caf2e678e94b93",
+      "bytes": 11190
+    },
+    "rational.stdout": {
+      "sha256": "50604add93a5ee9c176093d30f30dc66397ffaf1488f507686a42d4914ee7b58",
+      "bytes": 489
+    },
+    "right-pair.pickle": {
+      "sha256": "224ca0dc8912e6f08b1e4a28ed94d0af6682facef775c19a54b437e61c830846",
+      "bytes": 35426
+    },
+    "validate_repair.py": {
+      "sha256": "9a4d9aa96442f385974bfe810b09b4678c2e15f93af55be1dfc3b3401554165a",
+      "bytes": 2639
+    },
+    "reference-pair.pickle": {
+      "sha256": "5912e1c3c7ef55219d36c566837792b55ce5ea0fc439ffa6e7171aa2cbf1fb49",
+      "bytes": 10956
+    },
+    "repair.stdout": {
+      "sha256": "670732c09f156255b49760aa6f12a9b5e7dcd031f4517edbc652d00f7c471467",
+      "bytes": 972
+    },
+    "repair-left/uniform-original-pencil-certificate.pickle": {
+      "sha256": "38cb47e20957198c778395527934e5d93064faf7f9060abaf1a89ed2a27ba298",
+      "bytes": 5819
+    },
+    "repair-left/uniform-original-pencil-raw.pickle": {
+      "sha256": "f56f7fefa2da7944ea3754d298e7446cc6d14ee528f45fd2a2b5ebfa96ebbb79",
+      "bytes": 8350
+    },
+    "repair-left/mutation/uniform-original-pencil-certificate.pickle": {
+      "sha256": "2e5205cf02d26dc04a922e17e19b18415c0a74b11e96a8f3693b5c5f03a0892d",
+      "bytes": 6262
+    },
+    "repair-left/mutation/uniform-original-pencil-raw.pickle": {
+      "sha256": "17edd7afda0c63929efd08d4ba13f50b3e33d9f05b378daca35ab379ab1de94f",
+      "bytes": 8393
+    },
+    "repair-right/uniform-original-pencil-certificate.pickle": {
+      "sha256": "bcc4efdc37304f786d2d933af934e60700a5bad0e14f3cdaef4ea39847db6772",
+      "bytes": 10389
+    },
+    "repair-right/uniform-original-pencil-raw.pickle": {
+      "sha256": "f5ef096da4bfa131299d74623165c5ea4ef4c18ec607a8b97d71f7fad2cdc5f9",
+      "bytes": 16939
+    },
+    "repair-right/mutation/uniform-original-pencil-certificate.pickle": {
+      "sha256": "7b8fa3925be7239a4d32d58f5447c0100c94dbdcdee14dcff05e51c6df123d1a",
+      "bytes": 10778
+    },
+    "repair-right/mutation/uniform-original-pencil-raw.pickle": {
+      "sha256": "6e94d5c7442da73991d9c00e10e7c6dd163f57e4993c55e99321e7ae7262d1a8",
+      "bytes": 16998
+    },
+    "repair-reference/uniform-original-pencil-certificate.pickle": {
+      "sha256": "4963b8e9a29f2c8920728e212b70b6a4ee7a28ee3d57baa9035b857768030876",
+      "bytes": 5744
+    },
+    "repair-reference/uniform-original-pencil-raw.pickle": {
+      "sha256": "d79bd111ef16a7585c53c08e3455a6a249a448e0fbdce9ca048bf3ea4a88f8a8",
+      "bytes": 7878
+    },
+    "repair-reference/mutation/uniform-original-pencil-certificate.pickle": {
+      "sha256": "ac25405177e779dff3b1af580de97bae04f24f2f081c26324ab1fcd156e3435c",
+      "bytes": 6275
+    },
+    "repair-reference/mutation/uniform-original-pencil-raw.pickle": {
+      "sha256": "c4709a6636de22f1363ff2091f6ca99275ef61ddc4329fa94bdab77100d17b9c",
+      "bytes": 7937
+    }
+  },
+  "originalOutcome": {
+    "stage": "uniform_focused",
+    "command": [
+      "python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_uniform.py",
+      "--focused",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-uniform-20260920/focused/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-uniform-20260920/focused/uniform_focused.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-uniform-20260920/focused/uniform_focused.stderr",
+    "startedUtc": "2026-09-20T05:14:46.718849+00:00",
+    "childPid": 927972,
+    "status": "failed",
+    "exitCode": 1,
+    "wallSeconds": 6.592316227033734,
+    "stderrBytes": 1036,
+    "finishedUtc": "2026-09-20T05:14:53.311261+00:00"
+  },
+  "scope": "One comparison helper/call change only. Actual rational numerator certificates replace expansion-only equality; original pairs and all denominators retained. No source, mode/current or matching construction changes."
+}

@@ -28,3 +28,13 @@ mode or current closure is queued for repetition.
 
 Focused implementation 32af4c5d launched at 05:14 UTC under supervisor 927964
 and silent watcher 927965. This records dispatch only, not final acceptance.
+
+The original focus stopped after 6.59 seconds before new preparation or any
+solve. The expansion-only pencil comparator could not combine the differently
+grouped rational denominators. Actual REFERENCE/LEFT/RIGHT saved pairs give
+75 exact zero numerators after rational combination, retaining 250 original
+denominator occurrences. Three actual coefficient changes reject. The 1.93-
+second focused repair joins the whole helper file after undoing one new helper
+and one call site. All 85 original sources, 331 inputs and 287 original copies
+are verified; original logs and packets remain immutable. No physical repair,
+mode construction or accepted calculation is repeated.

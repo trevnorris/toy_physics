@@ -1,31 +1,38 @@
-# Remaining-case FORM response preparation
+# Remaining-case FORM response input recovery
 
-The bindings are accepted at 395732bb: all 300 row addresses and 647 native
-terms, with 32 actual new single/pair rows and 268 existing or shared row uses.
-The three new bindings passed 170 Gaussian comparisons and reused 1092 exact
-independent-grade records. The baseline FORM matrices and responses are reused.
+The original focused check stopped after 30.32 seconds before integration,
+matrix assembly or solves. All 595 copied inputs and the generated baseline
+binding view remain intact. The guard compared profile-cache list order. Three
+actual case-pair lists contain the same six full integrals and units with their
+last two entries swapped. All settings, field units, Abel operands and complete
+profile-unit maps agree exactly; no ordered limit inside an integral differs.
 
-This constructor connects those bindings to the unchanged native numerical
-row/assembly and finite/continuum response tails. A focused input stage joins
-every actual case end/current packet, field basis, source/limit/profile/measure
-reuse record and output namespace before production. It performs no integration,
-mode/current construction or solve. The production path then computes only the
-32 new rows and three missing FORM responses, preserving complete numerical
-packets before comparison and output. Final results are not yet accepted.
+The local adapter changes only that cache comparison under a whole-function
+reverse AST join. It requires unique actual cache keys, full literal expression
+and unit equality, a bijection and exact entry-to-unit-map joins. Both original
+lists, maps and permutations remain saved. All other source, field, grade,
+physical-limit, measure and settings guards are unchanged. Native numerical
+construction, solve and emission functions are unchanged.
 
-The actual case comparisons retain common-origin amplitudes, physical current
-quotients, finite/common-grid fields, independent-grade channels, closed matching
-data and homotopy currents. All phase/current maps vary with their actual grades;
-each changed form is compared within its own unchanged end-coordinate basis.
-The original FORM emitter/replay and global codec aggregation retain full source,
-unit, grade and payload provenance. Original baseline output remains unchanged.
+The 12.94-second actual-operand check passes with clean exit, empty stderr and
+checks/stdout identity: 113 original sources, 951 inputs, all 595 unchanged
+copies, six actual cache pairs and 36 literal profile-entry matches. Thirty-six
+actual coefficient/endpoint/unit/duplicate/missing/schema mutations reject;
+pure cache permutations pass. The complete original FORM coordinator and outer
+input-check bytecode remain unchanged. The first local diagnostic failed at
+import because its filename shadowed Python inspect; it constructed nothing,
+and its original script and logs remain preserved separately.
 
-Keep the selected finite settings, positive regulator, approximate boundaries,
-amplitude1e-4/current1e-6 practical resolution and omitted parent second-order
-scope. This is one FORM comparison per case, not a broad profile or grid study.
-Use one native thread, 2 GiB, 900 seconds and the silent completion/error hook.
+Recovery copies every completed original input artifact, including the saved
+baseline view, without reconstructing it. It runs only the unfinished focused
+checks with this exact adapter and explicit source/helper joins. After clean
+acceptance, production uses the same recovery helper and all focused inputs,
+integrates only the 32 new rows and computes the three missing FORM responses.
+All 300 case addresses and 647 native terms remain. Baseline FORM matrices,
+responses and transcript are reused without calculation or emission.
 
-Implementation b4eb8c34 launched the focused input check
-at 06:13 UTC under supervisor 954626 and silent watcher 954627.
-This is dispatch evidence; final clean exit and all source/input guards remain
-required. The prepared production launcher waits for accepted focused evidence.
+Bindings remain accepted at 395732bb. Actual own-case boundary/current/phase
+maps, positive regulator, approximate boundaries, amplitude1e-4/current1e-6
+practical resolution and omitted parent pure-second-order scope remain. The
+separate bump moment is not bump scattering. One native thread, 2 GiB,
+900 seconds and a silent local completion/error hook; no broad campaign.

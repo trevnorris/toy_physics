@@ -1,10 +1,10 @@
 {
-  "status": "FOCUSED_LAUNCHED_AWAITING_SILENT_COMPLETION",
+  "status": "PROFILE_CACHE_REPAIR_VALIDATED_RECOVERY_READY",
   "acceptedBindings": "395732bb",
   "acceptedResponses": "2dd16688",
   "acceptedBoundary": "d8713012",
   "originalProfile": "8d0a6ed2",
-  "focusedRunRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-profile-20260920/focused",
+  "focusedRunRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-profile-20260920/focused-recovery-01",
   "productionRunRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-profile-20260920/production",
   "actualNewUnionRows": 32,
   "missingCaseRowReuses": 188,
@@ -17,7 +17,8 @@
     "wallSeconds": 900
   },
   "scope": "One selected FORM comparison per case, with exact baseline reuse and case-specific actual end maps.",
-  "launch": {
+  "helperSha256": "9558285317d9256a46e02d9a059dda73d3ad174c13de712e37fad9709ea65c7f",
+  "originalFocusedLaunch": {
     "launchedUtc": "2026-09-20T06:13:33.977808+00:00",
     "command": [
       "/usr/bin/python",
@@ -46,8 +47,27 @@
     },
     "implementationCommit": "b4eb8c344c7e6554d1a7c340f2b8d8162889a6a0"
   },
-  "helperSha256": "9558285317d9256a46e02d9a059dda73d3ad174c13de712e37fad9709ea65c7f",
-  "launchArtifacts": {
+  "originalFocusedOutcome": {
+    "stage": "profile_focused",
+    "command": [
+      "python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_profile_response.py",
+      "--focused",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-profile-20260920/focused/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-profile-20260920/focused/profile_focused.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-profile-20260920/focused/profile_focused.stderr",
+    "startedUtc": "2026-09-20T06:13:34.007392+00:00",
+    "childPid": 954634,
+    "status": "failed",
+    "exitCode": 1,
+    "wallSeconds": 30.32071977108717,
+    "stderrBytes": 1096,
+    "finishedUtc": "2026-09-20T06:14:04.328152+00:00"
+  },
+  "originalFocusedLaunchArtifacts": {
     "launch.py": {
       "sha256": "19b03a0c95051e51b8ffda0d7c9c481c2bd0aa456f0ac9acc7580931789ba637",
       "bytes": 3311
@@ -60,5 +80,8 @@
       "sha256": "eef0b59eff54311dac3bec4001bbaf99f3d83ef62e489d692ee5569f6626f256",
       "bytes": 3994
     }
-  }
+  },
+  "originalFocusedRunRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-profile-20260920/focused",
+  "repair": "S11c_d_remaining_case_profile_response_cache_repair.json",
+  "recoveryHelperSha256": "55c52e02eefeb0c2cc421ee0747884acf890509a5f2c6c1821b472fdd8c3cc9e"
 }

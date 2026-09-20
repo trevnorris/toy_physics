@@ -1,5 +1,5 @@
 {
-  "status": "SAVED_RESPONSES_COMPLETE_AGGREGATION_INCOMPLETE",
+  "status": "SAVED_RESULT_FINISH_LAUNCHED",
   "helperSha256": "0709c7a2770a2094db31cf913b79e2ee7416b3d6d75465670a0ab151a5322728",
   "acceptedBoundary": "d8713012",
   "acceptedInteriors": "2eed4150",
@@ -191,5 +191,37 @@
     "stderrBytes": 773,
     "finishedUtc": "2026-09-20T04:19:32.745070+00:00"
   },
-  "recoveryPlan": "S11c_d_remaining_case_response_finish_plan.md"
+  "recoveryPlan": "S11c_d_remaining_case_response_finish_plan.md",
+  "finishRunRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-response-20260920/finish-01",
+  "finishLaunch": {
+    "launchedUtc": "2026-09-20T04:30:09.412806+00:00",
+    "command": [
+      "/usr/bin/python",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-response-20260920/finish-01",
+      "--stage",
+      "response_finish",
+      "--",
+      "python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_response_finish.py",
+      "--resume-from",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-response-20260920/production/complete",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-response-20260920/finish-01/complete"
+    ],
+    "mode": "saved-numerical-validation-and-transcript-aggregation",
+    "supervisorPid": 909879,
+    "watcherPid": 909880,
+    "watcherDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-response-20260920/finish-01/completion-watcher",
+    "threadEnvironment": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1"
+    },
+    "implementationCommit": "79d3ba2c681b41c96340a7ec96d5c5d97b1057cf"
+  },
+  "finishHelperSha256": "528379bfa78738f5e13ce67f66ab58581baf9cc8107b0ed621bfe5de66f00f80"
 }

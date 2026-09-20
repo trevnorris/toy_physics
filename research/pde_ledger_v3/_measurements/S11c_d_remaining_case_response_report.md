@@ -53,3 +53,8 @@ so their raw concatenation is not one valid encoded stream. The saved-packet
 finish validates the numerical operands without a new solve, then globally
 re-encodes the original decoded payloads. No individual emission is repeated.
 Current acceptance remains pending the clean final aggregation guards.
+
+The aggregation finish launched under supervisor 909879 and silent watcher
+909880 at 04:30 UTC. It reuses the saved numerical results and each completed
+individual transcript. Its final outcome must be checked after the completion
+wake; the launch record does not establish acceptance.

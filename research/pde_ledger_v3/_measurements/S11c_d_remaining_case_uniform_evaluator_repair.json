@@ -1,0 +1,56 @@
+{
+  "status": "PASSED_NATIVE_UNIFORM_EVALUATOR_ARITY",
+  "wholeFileReverseAstJoin": true,
+  "changedEvaluatorCallSites": 2,
+  "oldHelperSha256": "9b2aa3ddd6f406e16718acbe1cc93d2594949ea990936416175f17697e45972d",
+  "newHelperSha256": "9b393a41bcc7b94fc5d366a03231c0c7a2159550ebe2c5cc91cd69c6ba7fbe47",
+  "actualArrayComparisons": 98,
+  "cutoffDependentMutationRejected": true,
+  "completedRoutes": 12,
+  "unchangedOriginalCopies": 287,
+  "wallSeconds": 2.740439433604479,
+  "diagnosticDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-uniform-20260920/evaluator-repair",
+  "validatorSha256": "3b5911e36d902cfc5d40b762511bacde52948373e6b7c1f9b05fa4c93e1c54e7",
+  "artifacts": {
+    "stdout": {
+      "sha256": "33475c92598cd03b61234a3d715656059a3ee060c3ec4ee840902634d9321397",
+      "bytes": 473
+    },
+    "checks.json": {
+      "sha256": "33475c92598cd03b61234a3d715656059a3ee060c3ec4ee840902634d9321397",
+      "bytes": 473
+    },
+    "check.py": {
+      "sha256": "3b5911e36d902cfc5d40b762511bacde52948373e6b7c1f9b05fa4c93e1c54e7",
+      "bytes": 3526
+    },
+    "comparisons.pickle": {
+      "sha256": "92ff910f57a68714ef42898ea30f70985264d55cd90151d6bed48309b137ddf8",
+      "bytes": 118224
+    },
+    "stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    }
+  },
+  "originalOutcome": {
+    "stage": "uniform_focused",
+    "command": [
+      "python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_uniform.py",
+      "--focused",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-uniform-20260920/focused-retry-01/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-uniform-20260920/focused-retry-01/uniform_focused.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-uniform-20260920/focused-retry-01/uniform_focused.stderr",
+    "startedUtc": "2026-09-20T05:19:11.845757+00:00",
+    "childPid": 930401,
+    "status": "failed",
+    "exitCode": 1,
+    "wallSeconds": 62.504759991541505,
+    "stderrBytes": 947,
+    "finishedUtc": "2026-09-20T05:20:14.350565+00:00"
+  }
+}

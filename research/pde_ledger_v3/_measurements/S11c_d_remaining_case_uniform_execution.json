@@ -1,10 +1,10 @@
 {
-  "status": "LAUNCHED_REPAIRED_FOCUS_AWAITING_SILENT_COMPLETION",
+  "status": "PREPARED_SAVED_EVALUATOR_RECOVERY",
   "acceptedCurrent": "5f60149b",
   "currentPublication": "588a5383",
   "acceptedModes": "69dd0555",
   "acceptedUniform": "7b388dac",
-  "focusedRunRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-uniform-20260920/focused-retry-01",
+  "focusedRunRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-uniform-20260920/focused-recovery",
   "resourceLimits": {
     "nativeThreads": 1,
     "addressSpaceBytes": 2147483648,
@@ -75,5 +75,27 @@
     "stderrBytes": 1036,
     "finishedUtc": "2026-09-20T05:14:53.311261+00:00"
   },
-  "pencilRepair": "S11c_d_remaining_case_uniform_pencil_repair.json"
+  "pencilRepair": "S11c_d_remaining_case_uniform_pencil_repair.json",
+  "retryOutcome": {
+    "stage": "uniform_focused",
+    "command": [
+      "python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_uniform.py",
+      "--focused",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-uniform-20260920/focused-retry-01/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-uniform-20260920/focused-retry-01/uniform_focused.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-uniform-20260920/focused-retry-01/uniform_focused.stderr",
+    "startedUtc": "2026-09-20T05:19:11.845757+00:00",
+    "childPid": 930401,
+    "status": "failed",
+    "exitCode": 1,
+    "wallSeconds": 62.504759991541505,
+    "stderrBytes": 947,
+    "finishedUtc": "2026-09-20T05:20:14.350565+00:00"
+  },
+  "evaluatorRepair": "S11c_d_remaining_case_uniform_evaluator_repair.json",
+  "recoveryHelper": "S11c_d_remaining_case_uniform_recover.py"
 }

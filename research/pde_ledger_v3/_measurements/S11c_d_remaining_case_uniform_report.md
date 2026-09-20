@@ -42,3 +42,15 @@ mode construction or accepted calculation is repeated.
 Repaired focus 721f4108 launched at 05:19 UTC under supervisor 930394 and
 silent watcher 930395. Final exit and complete source/operand guards remain
 required before acceptance or the single new homogeneous matching solve.
+
+Retry01 completed all twelve input routes, 250 exact rational coefficient
+certificates and the new family's symbolic evaluator packet in 62.50 seconds.
+It stopped before the first mode replay: the general evaluator expected a
+seventh depth-cutoff argument, which none of the six consumed expressions uses.
+The 2.74-second actual arity regression verifies 98 array comparisons against
+the original evaluator at two cutoff values exactly and rejects a genuinely
+cutoff-dependent current. The whole helper reverses after one factory and two
+call-site changes. All 287 original copied inputs remain byte-identical.
+Saved-packet recovery now reuses the completed input validation and symbolic
+preparation, then executes only the original remaining per-mode checks. No
+mode, current closure, derivative or matching solve is repeated.

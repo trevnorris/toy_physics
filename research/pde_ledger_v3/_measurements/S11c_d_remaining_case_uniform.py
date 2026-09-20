@@ -140,6 +140,13 @@ def input_routes(base):
     result={'routes':inventory,'wrongInputControls':controls,'labels':labels};f.save(base/'input-routes.json',result);return result
 
 
+def uniform_evaluator(saved):
+    variables=tuple(saved['variables']);cutoff=variables[-1]
+    f.require(len(variables)==7 and str(cutoff)=='s11cdAcousticDepthCutoff','actual native seven-coordinate evaluator')
+    f.require(all(cutoff not in value.free_symbols and value.free_symbols<=set(variables[:-1]) for value in saved['bound'].values()),'actual uniform expressions independent of finite-depth cutoff')
+    return {name:sp.lambdify(variables[:-1],value,'numpy',cse=True) for name,value in saved['bound'].items()}
+
+
 def prepare(base,manifest):
     target=base/'new-uniform';target.mkdir()
     sources=f.unpickle(base/'remaining-case-end-sources.pickle');values=f.unpickle(base/'remaining-case-currents.pickle')
@@ -151,7 +158,7 @@ def prepare(base,manifest):
     symbolic={**builder.symbolic_operands,**builder.scalar_operands};bound={k:symbolic[k].xreplace(inputs['binding']) for k in keys}
     saved={'variables':builder.variables,'bound':bound,'physical':inputs['physical'],'relation':inputs['relation'],'binding':inputs['binding'],'sourceModalSha256':f.digest(base/'cases'/NEW/'right/modal.pickle'),'dimensionState':dict(engine.PHYSICAL_METADATA.dimensions.__dict__)}
     f.atomic_pickle(target/'prepared-evaluation.pickle',saved)
-    evaluate={k:builder.evaluate[k] for k in keys};fresh=sp.lambdify((pair.modes.k,pair.modes.q),inputs['physical'],'numpy',cse=True)
+    evaluate=uniform_evaluator(saved);fresh=sp.lambdify((pair.modes.k,pair.modes.q),inputs['physical'],'numpy',cse=True)
     curve=sp.lambdify((pair.modes.k,pair.modes.q),inputs['relation'].xreplace(inputs['binding']),'numpy',cse=True)
     records=[];controls=[]
     for old in modal['RECORDS']:
@@ -188,7 +195,7 @@ def prepare(base,manifest):
 
 def construct(base,manifest,routes):
     target=base/'new-uniform';prepared=f.unpickle(target/'prepared-evaluation.pickle');records=f.unpickle(target/'prepared-modes.pickle')
-    evaluate={k:sp.lambdify(prepared['variables'],v,'numpy',cse=True) for k,v in prepared['bound'].items()}
+    evaluate=uniform_evaluator(prepared)
     result=native.match(target,'RIGHT',records,evaluate)
     old=f.unpickle(base/'accepted-uniform/uniform-response.pickle');cases={}
     for label in routes['labels']:

@@ -1,10 +1,64 @@
 {
-  "status": "PREPARED",
+  "status": "CASE_END_SOURCES_RUNNING",
   "helper": "_measurements/S11c_d_remaining_case_end_sources.py",
   "plan": "_measurements/S11c_d_remaining_case_end_sources_plan.md",
   "matrixAcceptance": "2eed4150",
   "nativeThreads": 1,
   "addressSpaceBytes": 2147483648,
   "initialWallBudgetSeconds": 900,
-  "scope": "Fresh case end symbols and current-generator inputs; no quadrature, modes, current matrices or scattering solves."
+  "scope": "Fresh case end symbols and current-generator inputs; no quadrature, modes, current matrices or scattering solves.",
+  "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-ends-20260920/production/complete",
+  "launch": {
+    "launchedUtc": "2026-09-20T01:39:40.546289+00:00",
+    "command": [
+      "/usr/bin/python",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-ends-20260920/production",
+      "--stage",
+      "ends_construct",
+      "--",
+      "python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_end_sources.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-ends-20260920/production/complete"
+    ],
+    "mode": "case-end-and-current-input-sources",
+    "supervisorPid": 853352,
+    "watcherPid": 853353,
+    "watcherDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-ends-20260920/production/completion-watcher",
+    "threadEnvironment": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1"
+    },
+    "implementationCommit": "eea9045c7796bd9b1281d7934863fffa365afd7f"
+  },
+  "activeAtLaunch": {
+    "stage": "ends_construct",
+    "command": [
+      "python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_end_sources.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-ends-20260920/production/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-ends-20260920/production/ends_construct.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-ends-20260920/production/ends_construct.stderr",
+    "startedUtc": "2026-09-20T01:39:40.576559+00:00",
+    "childPid": 853355,
+    "status": "running"
+  },
+  "watcherAtLaunch": {
+    "status": "waiting",
+    "watcherPid": 853353,
+    "jobPid": 853352,
+    "thread": "01a08c53-295c-70f0-baaf-353db1745867",
+    "startedUtc": "2026-09-20T01:39:40.593188+00:00",
+    "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
+    "messageSha256": "0a12634e160b51a9ce3b1e82ee11218ed5cea0c9407df57e751047b7c0ea176a",
+    "notifications": {}
+  }
 }

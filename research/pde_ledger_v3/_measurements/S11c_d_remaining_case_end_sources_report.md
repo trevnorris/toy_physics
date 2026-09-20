@@ -17,3 +17,5 @@ Anchoring-only differences vanish there; the density rule changes 13 strong and
 source lists are identical, but selecting their anchoring component and deriving
 the mass constraint are still required. This diagnostic does not predetermine
 the final number of reusable current/end families.
+
+The single source job launched under eea9045c with supervisor 853352 and silent watcher 853353. It has one native thread,2GiB and900seconds. Final source results are not yet accepted.

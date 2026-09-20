@@ -1,0 +1,54 @@
+{
+  "status": "FOCUSED_ACCEPTED_PRODUCTION_PREPARED",
+  "acceptedResponse": "2dd16688",
+  "publication": "fa684a3a",
+  "focusedRunRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-flux-20260920/focused-retry-01",
+  "productionRunRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-flux-20260920/production",
+  "focusedOutcome": {
+    "stage": "flux_focused",
+    "command": [
+      "python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_flux.py",
+      "--focused",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-flux-20260920/focused-retry-01/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-flux-20260920/focused-retry-01/flux_focused.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-flux-20260920/focused-retry-01/flux_focused.stderr",
+    "startedUtc": "2026-09-20T04:45:35.261878+00:00",
+    "childPid": 3,
+    "status": "completed",
+    "exitCode": 0,
+    "wallSeconds": 11.42615894600749,
+    "stderrBytes": 0,
+    "finishedUtc": "2026-09-20T04:45:46.688080+00:00"
+  },
+  "originalOutcome": {
+    "stage": "flux_focused",
+    "command": [
+      "python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_flux.py",
+      "--focused",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-flux-20260920/focused/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-flux-20260920/focused/flux_focused.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-flux-20260920/focused/flux_focused.stderr",
+    "startedUtc": "2026-09-20T04:44:27.872988+00:00",
+    "childPid": 3,
+    "status": "failed",
+    "exitCode": 1,
+    "wallSeconds": 9.174674030393362,
+    "stderrBytes": 717,
+    "finishedUtc": "2026-09-20T04:44:37.047707+00:00"
+  },
+  "focusedCheckpoint": "S11c_d_remaining_case_flux_focused.json",
+  "resourceLimits": {
+    "nativeThreads": 1,
+    "addressSpaceBytes": 2147483648,
+    "wallSeconds": 900
+  },
+  "scope": "Three new current/amplitude contractions; no baseline repetition, quadrature, modes or scattering solves."
+}

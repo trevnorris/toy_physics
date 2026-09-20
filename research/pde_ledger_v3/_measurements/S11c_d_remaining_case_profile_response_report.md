@@ -48,3 +48,5 @@ original helper files remain unchanged. A bounded actual-call check precedes
 resumption in production-recovery-01; no accepted preflight is repeated.
 
 The saved-input routing check passed in 34.48 seconds with clean exit, empty stderr and checks/stdout identity. All three actual case calls receive their exact manifest/input/address before construction; changed profile, settings and missing-input controls reject. All 116 sources, 1565 inputs and 611 original artifacts validate. The complete native matrix-tail bytecode is unchanged and all globals resolve. Recovery is ready; no new bindings, integration, matrix assembly or solves were performed by this check.
+
+Manifest routing repair is committed at 9d6bb392. Production recovery was dispatched at 2026-09-20T06:48:09.849872+00:00 under supervisor 969755 and silent watcher 969756. It reuses accepted focus 928be3ff and all 611 original copies. This records dispatch only; numerical results await final clean exit and validation.

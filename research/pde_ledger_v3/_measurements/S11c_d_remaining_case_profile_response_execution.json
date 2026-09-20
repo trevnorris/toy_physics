@@ -1,5 +1,5 @@
 {
-  "status": "ACCEPTED_MANIFEST_ROUTING_REPAIR_READY_TO_RESUME",
+  "status": "PRODUCTION_RECOVERY_LAUNCHED_AWAITING_SILENT_COMPLETION",
   "acceptedBindings": "395732bb",
   "acceptedResponses": "2dd16688",
   "acceptedBoundary": "d8713012",
@@ -85,47 +85,47 @@
   "repair": "S11c_d_remaining_case_profile_response_cache_repair.json",
   "recoveryHelperSha256": "55c52e02eefeb0c2cc421ee0747884acf890509a5f2c6c1821b472fdd8c3cc9e",
   "launch": {
-    "launchedUtc": "2026-09-20T06:39:22.565555+00:00",
+    "launchedUtc": "2026-09-20T06:48:09.849872+00:00",
     "command": [
       "/usr/bin/python",
       "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
       "--run-root",
-      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-profile-20260920/production",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-profile-20260920/production-recovery-01",
       "--stage",
       "profile_construct",
       "--",
       "python",
       "-u",
-      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_profile_response_recover.py",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_profile_response_production_recover.py",
       "--resume-focused",
       "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-profile-20260920/focused-recovery-01/complete",
       "--run-directory",
-      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-profile-20260920/production/complete"
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-profile-20260920/production-recovery-01/complete"
     ],
     "mode": "32-new-form-rows-three-case-responses",
-    "supervisorPid": 965513,
-    "watcherPid": 965514,
-    "watcherDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-profile-20260920/production/completion-watcher",
+    "supervisorPid": 969755,
+    "watcherPid": 969756,
+    "watcherDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-profile-20260920/production-recovery-01/completion-watcher",
     "threadEnvironment": {
       "OPENBLAS_NUM_THREADS": "1",
       "OMP_NUM_THREADS": "1",
       "MKL_NUM_THREADS": "1",
       "NUMEXPR_NUM_THREADS": "1"
     },
-    "implementationCommit": "928be3fffec32fe35bf6152a18c2b052b3534ce0"
+    "implementationCommit": "9d6bb3929eff0633c5bf96f96b69d1779d704d76"
   },
   "launchArtifacts": {
     "launch.py": {
-      "sha256": "a24b7abb25a77b1d087ffcb0995176d2a9d15e55ec804fb8151f5196ec4441b7",
-      "bytes": 4386
+      "sha256": "ac6659b359167c787d396c12d7ef3cce7f8080b26734bdcd9db79557c3d76696",
+      "bytes": 5072
     },
     "launch.json": {
-      "sha256": "65e4870673f518ce54c7fbc11038915091098582671b533e0e8c8c2adad85935",
-      "bytes": 1225
+      "sha256": "168d98171e1fb1a0c36ce2901e16ed6847bdf9eab1e1e85ec6cbabcdf56a8a33",
+      "bytes": 1272
     },
     "continuation.txt": {
-      "sha256": "cf73af032a042f82da8868a43b69723f742066f0435b4152a0259382f27af4cb",
-      "bytes": 4760
+      "sha256": "1b59782f656cf481d19e62be344de498e60ea9f19e80c41e906a178cded30f95",
+      "bytes": 5766
     }
   },
   "productionLauncherSha256": "ac6659b359167c787d396c12d7ef3cce7f8080b26734bdcd9db79557c3d76696",
@@ -271,5 +271,6 @@
     "exitCode": 0,
     "stderrBytes": 0,
     "checksStdoutByteIdentity": true
-  }
+  },
+  "productionRepairCommit": "9d6bb392"
 }

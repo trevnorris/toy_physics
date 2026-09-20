@@ -1,33 +1,40 @@
-# Four-case uniform-background control preparation
+# Four-case uniform-background controls
 
-Current bookkeeping is accepted at 5f60149b and annex-published at 588a5383.
-This next section 5 control uses accepted case-specific end/current sources
-and full modes. Ten background inputs support reuse of the original uniform
-responses. The two RHOBR-right inputs agree completely and need one new
-homogeneous matching control, shared only after actual joins.
+All twelve case/background uniform controls are complete and published at
+44de056f. Production took 53.34 seconds with final exit zero, empty stderr and
+checks/stdout byte identity. Ten original uniform responses and all 354 focused
+artifacts were reused. Only one new RHOBR-right homogeneous matching was solved,
+shared between anchorings after complete input joins. No root isolation, mode,
+current closure, derivative construction or profile quadrature was repeated.
 
-The bounded focused helper copies all original modes, root packets, source
-currents and uniform results, validates all twelve addresses, then replays the
-new family's saved pencil/current operands and full normalized bases. No root
-isolation, source/current closure, mode construction or solve occurs in focus.
-The original native uniform matching function will perform only the new small
-homogeneous response in production. Expected work is minutes, with one native
-thread, 2 GiB and a 900-second initial budget.
+The new 10-by-10 system has rank 10, four incident columns and balanced condition
+7.33. Matching and boundary residuals are 2.61e-16 and 2.28e-16; the independent
+solution differs by 1.27e-15. The actual incident-sign mutation responds at 2.0.
+All 46 new full cross-current packets replay against their saved source
+expressions and all open/closed finite-end quadratic forms agree. All eighteen
+candidate dispositions and twenty-two basis directions remain represented in
+each background. The accepted physical normalization is reused exactly.
 
-A preparation audit found three BOUND_CARRIERS tuple orders differ across
-otherwise identical root inputs. The actual unique key/value mappings and all
-other root fields agree. Both original tuples stay saved; the comparator changes
-only that documented mapping interpretation, not roots, values or physical
-addresses. Current/pencil/field/root mutations must still reject.
+Within each background's own common-origin coordinates, the computed reflected
+amplitudes are below 4.44e-16 and transmitted amplitudes agree with the actual
+same-background channel identity to 4.57e-16. This closes the selected uniform
+consistency control for all four cases. It is not a cross-density S-matrix
+comparison, a transparent variable-profile boundary proof, a new continuum
+expansion or a global pole result. Constant-background distributional symbols
+remain distinct from positive-regulator finite profile quadratures.
 
-No uniform response is yet accepted by this new helper. Finite positive-
-regulator profile responses, remaining case controls and bounded searches keep
-their separate domains. This control does not compare S matrices across density
-coordinates or establish global pole completeness. No accepted numerical grid,
-mode or current closure is queued for repetition.
+Validation checks 88 sources, 686 inputs, 354 unchanged focused copies and 415
+artifacts. All 5,872 decoded payloads, 2,928 unique keys, 42,240 metadata paths
+and four original local source-line indices pass. The 2,195,306-byte transcript
+has SHA256 `84e01ea6d15679c84c4a51ee8ee640badfb8b1da976e71bd9c6efac90e07aeec`,
+MD5 `5510d6714ae491a3ab7b4e6374b9871f` and independently verified actual key
+`MD5E-s2195306--5510d6714ae491a3ab7b4e6374b9871f.out` and symlink.
 
-Focused implementation 32af4c5d launched at 05:14 UTC under supervisor 927964
-and silent watcher 927965. This records dispatch only, not final acceptance.
+Focused acceptance b90f55af completed in 18.22 seconds by reusing all twelve
+completed input routes and symbolic preparation. Its maximum mode/current
+residual is 1.11e-15. Original failed logs, snapshots, rational pairs and all
+287 original copied inputs remain immutable. The native matching, complete
+coordinator bytecode and original emitter/replay stay unchanged.
 
 The original focus stopped after 6.59 seconds before new preparation or any
 solve. The expansion-only pencil comparator could not combine the differently
@@ -55,17 +62,8 @@ Saved-packet recovery now reuses the completed input validation and symbolic
 preparation, then executes only the original remaining per-mode checks. No
 mode, current closure, derivative or matching solve is repeated.
 
-The saved-packet focused recovery is accepted: final exit zero, empty stderr
-and checks/stdout byte identity in 18.22 seconds. It reuses all twelve completed
-routes and 250 pencil certificates, the full symbolic preparation and all 287
-original input copies. Validation checks 88 sources, 661 inputs, 333 copies and
-354 artifacts. All 18 candidates and 22 full basis directions pass; four physical
-open-current directions retain their original normalization. Maximum mode/
-current replay residual is 1.11e-15 and both current mutations respond. The
-independent saved-array/hash validation takes 1.85 seconds. No matching solve,
-new mode or current closure occurred. Production will reuse all 354 artifacts
-and solve only the new RHOBR-right homogeneous control.
 
-Focused acceptance b90f55af precedes the production launch at 05:28 UTC,
-under supervisor 935299 and silent watcher 935300. Only one new homogeneous
-matching is scheduled; final numerical and output guards remain required.
+Practical per-case profile/shape/coordinate controls, scoped case searches and
+final all-case engine/exports remain. Keep positive regulator, approximate
+variable-profile boundaries, unresolved tiny signals and omitted parent pure-
+second-order scope. No baseline contour doubling or broad campaign is queued.

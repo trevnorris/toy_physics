@@ -1,5 +1,5 @@
 {
-  "status": "LAUNCHED_ONE_NEW_UNIFORM_MATCHING_AWAITING_SILENT_COMPLETION",
+  "status": "PUBLISHED_ANNEX_VERIFIED",
   "acceptedCurrent": "5f60149b",
   "currentPublication": "588a5383",
   "acceptedModes": "69dd0555",
@@ -122,5 +122,37 @@
   "focusedCheckpoint": "S11c_d_remaining_case_uniform_focused.json",
   "productionRunRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-uniform-20260920/production",
   "focusedChecksSha256": "c05f481b1564f26e353c570614b2eea8d36fee71156dd5acf7a96146f3ada014",
-  "focusedAcceptanceCommit": "b90f55af8fb3ff96ee596832ff3e4500439ef683"
+  "focusedAcceptanceCommit": "b90f55af8fb3ff96ee596832ff3e4500439ef683",
+  "productionOutcome": {
+    "stage": "uniform_construct",
+    "command": [
+      "python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_uniform_recover.py",
+      "--resume-focused",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-uniform-20260920/focused-recovery/complete",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-uniform-20260920/production/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-uniform-20260920/production/uniform_construct.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-uniform-20260920/production/uniform_construct.stderr",
+    "startedUtc": "2026-09-20T05:28:42.796098+00:00",
+    "childPid": 935307,
+    "status": "completed",
+    "exitCode": 0,
+    "wallSeconds": 53.339862793684006,
+    "stderrBytes": 0,
+    "finishedUtc": "2026-09-20T05:29:36.136041+00:00"
+  },
+  "checkpoint": "S11c_d_remaining_case_uniform_checkpoint.json",
+  "publication": {
+    "path": "scripts/out/S11c_d_remaining_case_uniform.out",
+    "bytes": 2195306,
+    "sha256": "84e01ea6d15679c84c4a51ee8ee640badfb8b1da976e71bd9c6efac90e07aeec",
+    "md5": "5510d6714ae491a3ab7b4e6374b9871f",
+    "annexKey": "MD5E-s2195306--5510d6714ae491a3ab7b4e6374b9871f.out",
+    "symlink": "../../../../.git/annex/objects/m4/fm/MD5E-s2195306--5510d6714ae491a3ab7b4e6374b9871f.out/MD5E-s2195306--5510d6714ae491a3ab7b4e6374b9871f.out",
+    "commit": "44de056fdf5ecd23bd1c625bd0e17c133cabfb70",
+    "independentlyVerified": true
+  }
 }

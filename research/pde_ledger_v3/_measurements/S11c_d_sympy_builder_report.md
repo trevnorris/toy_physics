@@ -440,6 +440,18 @@ metadata paths pass. This does not resolve tiny loss/reflection or establish
 depth escape. Practical case controls, scoped searches and final engine/exports
 remain; no broad quadrature or baseline contour doubling is queued.
 
+## Four-case uniform controls (2026-09-20)
+
+The [four-case uniform controls](S11c_d_remaining_case_uniform_report.md) are
+published at 44de056f and annex-verified. One new RHOBR-right homogeneous solve
+and ten complete original reuses cover all twelve backgrounds. Production took
+53.34 seconds; the new full-rank 10-by-10 system has residual 2.61e-16. Computed
+reflections are below 4.44e-16 and same-background transmission agrees to 4.57e-16.
+All 5,872 decoded payloads and 42,240 metadata paths pass. This closes the selected
+uniform consistency controls, with each background's own coordinates and
+constant-symbol domain retained. Other practical case controls, scoped searches
+and final engine/exports remain; no broad campaign is queued.
+
 ## Retained user-approved solver/export contract
 
 

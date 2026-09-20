@@ -55,3 +55,7 @@ output adapters and custom full-replay tails compile. The custom replay changes
 only namespace and packet address; its sensitivity emitter is new. Focused output
 will complete one actual RHOBR case, preserve each completed part, and require
 full metadata/payload replay before reuse by the remaining output stage.
+
+Focused saved-packet output launched from e68cd0a4 under supervisor 2165664
+and silent watcher 2165665. Final emission/replay guards remain pending; the
+launch record is not output acceptance. Numerical inputs are immutable.

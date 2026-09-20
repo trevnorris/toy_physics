@@ -1,5 +1,5 @@
 {
-  "status": "NUMERICAL_ACCEPTED_OUTPUT_FOCUS_PREPARED",
+  "status": "NUMERICAL_ACCEPTED_OUTPUT_FOCUS_RUNNING",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/response/focused",
   "acceptedMatrixCommit": "df5271b4",
   "implementationCommit": "57f05dae323126c0dc5a7acf54577d413c0495de",
@@ -1062,5 +1062,63 @@
     ],
     "newNumericalWork": 0,
     "scope": "Compilation and reverse AST joins only; actual emission and metadata replay are pending."
-  }
+  },
+  "outputFocusLaunch": {
+    "launchedUtc": "2026-09-20T23:05:32.159258+00:00",
+    "supervisorPid": 2165664,
+    "watcherPid": 2165665,
+    "command": [
+      "/usr/bin/python",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/response/output/focused",
+      "--stage",
+      "first_jet_output",
+      "--",
+      "python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_first_jet_output.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/response/output/focused/complete",
+      "--mode",
+      "focused"
+    ],
+    "threadEnvironment": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1"
+    },
+    "implementationCommit": "e68cd0a44c5924ba01610a441c491ab0c9f26523",
+    "helperSha256": "2ca8093eefbcf12cee3b41f90cda05ec929172231bf2f9e2cf03ebadf0e4ffea",
+    "productionChecksSha256": "609121335d2e55e7dd821fdcb57668369e8921642b43c3dd79b9811ff2c0e0f9"
+  },
+  "outputFocusLaunchActiveRecord": {
+    "stage": "first_jet_output",
+    "command": [
+      "python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_first_jet_output.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/response/output/focused/complete",
+      "--mode",
+      "focused"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/response/output/focused/first_jet_output.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/response/output/focused/first_jet_output.stderr",
+    "startedUtc": "2026-09-20T23:05:32.180775+00:00",
+    "childPid": 2165667,
+    "status": "running"
+  },
+  "outputFocusLaunchWatcherState": {
+    "status": "waiting",
+    "watcherPid": 2165665,
+    "jobPid": 2165664,
+    "thread": "01a08c53-295c-70f0-baaf-353db1745867",
+    "startedUtc": "2026-09-20T23:05:32.195548+00:00",
+    "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
+    "messageSha256": "468416d6e781b66be474093059c627728da2992ff42ad477bc6e1ca6c2a3d877",
+    "notifications": {}
+  },
+  "outputFocusLaunchIsAcceptance": false
 }

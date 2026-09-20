@@ -39,3 +39,7 @@ Coordinate/advection controls, scoped case searches and final all-case engine/
 exports remain. Keep approved settings, positive regulator, approximate
 boundaries, unresolved tiny signals and omitted parent pure-second-order scope.
 No broad campaign or baseline contour doubling is queued.
+
+Saved-result validation launched from 10afc98d under supervisor 2160922 and
+silent watcher 2160923, one thread, 2 GiB and a 900-second initial budget.
+The initial launch record is not validation acceptance.

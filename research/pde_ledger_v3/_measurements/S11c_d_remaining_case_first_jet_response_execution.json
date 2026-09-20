@@ -1,5 +1,5 @@
 {
-  "status": "COMPLETED_NUMERICAL_RESPONSES_PENDING_SAVED_VALIDATION",
+  "status": "VALIDATING_SAVED_FIRST_JET_NUMERICAL_RESPONSES",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/response/focused",
   "acceptedMatrixCommit": "df5271b4",
   "implementationCommit": "57f05dae323126c0dc5a7acf54577d413c0495de",
@@ -752,7 +752,7 @@
   "savedNumericalValidation": {
     "directory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/response/production-acceptance",
     "validatorSha256": "27f9b33693c66f13fa40339ca17b6af32fa4a4fc12bf8f04e0138f49049a5c1e",
-    "status": "PREPARED_NOT_RUN",
+    "status": "LAUNCHED_PENDING_FINAL_OUTCOME",
     "forbiddenDuringValidation": [
       "solve",
       "inverse",
@@ -763,6 +763,55 @@
       "quadrature"
     ],
     "adaptedSavedValidatorSites": 8,
-    "wholeReverseAST": true
+    "wholeReverseAST": true,
+    "launch": {
+      "launchedUtc": "2026-09-20T22:50:42.623825+00:00",
+      "supervisorPid": 2160922,
+      "watcherPid": 2160923,
+      "command": [
+        "/usr/bin/python",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+        "--run-root",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/response/production-acceptance",
+        "--stage",
+        "validate",
+        "--",
+        "python",
+        "-u",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/response/production-acceptance/validate.py"
+      ],
+      "threadEnvironment": {
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1"
+      },
+      "implementationCommit": "10afc98da583172d15c3d0f3f627dabe4110a280",
+      "validatorSha256": "27f9b33693c66f13fa40339ca17b6af32fa4a4fc12bf8f04e0138f49049a5c1e",
+      "productionChecksSha256": "609121335d2e55e7dd821fdcb57668369e8921642b43c3dd79b9811ff2c0e0f9"
+    },
+    "launchActiveRecord": {
+      "stage": "validate",
+      "command": [
+        "python",
+        "-u",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/response/production-acceptance/validate.py"
+      ],
+      "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/response/production-acceptance/validate.stdout",
+      "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/response/production-acceptance/validate.stderr",
+      "startedUtc": "2026-09-20T22:50:42.624739+00:00",
+      "childPid": 2160925,
+      "status": "running"
+    },
+    "launchWatcherState": {
+      "status": "waiting",
+      "watcherPid": 2160923,
+      "jobPid": 2160922,
+      "thread": "01a08c53-295c-70f0-baaf-353db1745867",
+      "startedUtc": "2026-09-20T22:50:42.659080+00:00",
+      "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
+      "messageSha256": "ab13860394d5511fd9f741186da472a15b0bd72a1ed96a1a9d82171e29a38fe4",
+      "notifications": {}
+    }
   }
 }

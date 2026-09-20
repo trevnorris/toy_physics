@@ -1,5 +1,5 @@
 {
-  "status": "READY_AFTER_ACTUAL_BINDING_WIRING",
+  "status": "RUNNING_FIRST_JET_CASE_BINDINGS",
   "acceptedSources": "ae5682fd",
   "acceptedOriginalBindings": "a8272c9d",
   "acceptedBaselineFirstJet": "31c008f5",
@@ -53,5 +53,60 @@
     "addressSpaceBytes": 2147483648,
     "wallSeconds": 900
   },
-  "next": "Bind only missing selected expressions/jets, preserve actual changed cell terms, and determine complete numerical reuse eligibility before new integration."
+  "next": "Bind only missing selected expressions/jets, preserve actual changed cell terms, and determine complete numerical reuse eligibility before new integration.",
+  "launch": {
+    "launchedUtc": "2026-09-20T07:49:53.861993+00:00",
+    "command": [
+      "/usr/bin/python",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/bindings",
+      "--stage",
+      "first_jet_bindings",
+      "--",
+      "python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_first_jet_bindings.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/bindings/complete"
+    ],
+    "mode": "remaining-case-first-derivative-bindings-no-quadrature",
+    "supervisorPid": 988649,
+    "watcherPid": 988650,
+    "watcherDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/bindings/completion-watcher",
+    "threadEnvironment": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1"
+    },
+    "focusedCheckpointSha256": "e11c267fbfb256535aef1b0e599e4f81df792cb4ee788da943e360e016e3e0fb",
+    "implementationCommit": "37474acaa0b595dcde69c49bacec1c632c5beb88"
+  },
+  "launchActiveRecord": {
+    "stage": "first_jet_bindings",
+    "command": [
+      "python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_first_jet_bindings.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/bindings/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/bindings/first_jet_bindings.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/bindings/first_jet_bindings.stderr",
+    "startedUtc": "2026-09-20T07:49:53.913493+00:00",
+    "childPid": 988653,
+    "status": "running"
+  },
+  "launchWatcherState": {
+    "status": "waiting",
+    "watcherPid": 988650,
+    "jobPid": 988649,
+    "thread": "01a08c53-295c-70f0-baaf-353db1745867",
+    "startedUtc": "2026-09-20T07:49:53.918336+00:00",
+    "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
+    "messageSha256": "0cff7e7c0d30b9dd2dfa9c3672f1f8bdf71c5e15020ba92a99a9bf958581b00d",
+    "notifications": {}
+  },
+  "launchRecordIsFinalAcceptance": false
 }

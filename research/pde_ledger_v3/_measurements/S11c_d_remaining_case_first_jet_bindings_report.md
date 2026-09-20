@@ -32,3 +32,7 @@ pure-second-order scope remain. This is a one-sided closed-operator control,
 not a consistent new profile or isolated advection channel. Coordinate controls,
 scoped case searches and final engine/exports remain. No broad campaign or
 further baseline contour doubling is queued.
+
+The binding constructor is launched from `37474aca` under
+supervisor 988649 and silent watcher 988650. The watcher
+owns that supervisor PID. This launch record is not final binding acceptance.

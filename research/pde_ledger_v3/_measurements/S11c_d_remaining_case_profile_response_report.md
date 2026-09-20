@@ -24,3 +24,8 @@ Keep the selected finite settings, positive regulator, approximate boundaries,
 amplitude1e-4/current1e-6 practical resolution and omitted parent second-order
 scope. This is one FORM comparison per case, not a broad profile or grid study.
 Use one native thread, 2 GiB, 900 seconds and the silent completion/error hook.
+
+Implementation b4eb8c34 launched the focused input check
+at 06:13 UTC under supervisor 954626 and silent watcher 954627.
+This is dispatch evidence; final clean exit and all source/input guards remain
+required. The prepared production launcher waits for accepted focused evidence.

@@ -1,0 +1,30 @@
+{
+  "status": "PASSED_SAVED_PREFIX_AND_INTEGER_UNIT_REPAIR",
+  "identicalDecodedPrefixPayloads": 28,
+  "identicalRawPrefixLines": 28,
+  "firstNewTag": "FIRST_JET_LAB_HELD_RHOBR_CONSTANT_SENSITIVITY_FINITE_REVERSED_FIELD_COEFFICIENT_0",
+  "savedBundleSha256": "79b47c4a2ab1d616b6468c0e66c262ce3621b2b81505cef64d63185b9af93318",
+  "savedBundleBytes": 271799333,
+  "bundlePrePostIdentical": true,
+  "wholeOriginalPartFinishTail": true,
+  "unitRepairSha256": "6cefae7e7625134a7cf2f066fec1a8f6d57ab237d05eae4746d8b174943c1208",
+  "outputHelperSha256": "b27fc5bf3394f67a5e8c48deb8ee85e7bc39283749e9ecedfb3b3467106df69b",
+  "recoveryHelperSha256": "f88ed7391c10911a51e691e3e570c2547acde689c158d32a4e79317c0f0419da",
+  "scriptSha256": "fa3a3955728d0810a894b0716adce2d3e4a4e53a4d5688d12a089ac7bcbc6cbb",
+  "newSolves": 0,
+  "newEmissions": 0,
+  "wallSeconds": 12.516636870801449,
+  "actualToolOutcome": {
+    "exitCode": 0,
+    "session": 72789,
+    "stderrBytes": 0,
+    "checksStdoutIdentical": true
+  },
+  "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/response/output/unit-repair",
+  "mainJoin": {
+    "wholeMainCodeObjectUnchanged": true,
+    "marshalSha256": "4e5d4fb370d3730bd036cf6e4ce484f4102c0c42482687b34efb140fea1d7f4b",
+    "originalSha256": "2ca8093eefbcf12cee3b41f90cda05ec929172231bf2f9e2cf03ebadf0e4ffea",
+    "currentSha256": "b27fc5bf3394f67a5e8c48deb8ee85e7bc39283749e9ecedfb3b3467106df69b"
+  }
+}

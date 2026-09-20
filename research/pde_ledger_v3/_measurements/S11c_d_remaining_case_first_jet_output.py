@@ -98,7 +98,7 @@ def emit_sensitivity(result,r):
         for end,values in sol['modalAmplitudes'].items():tensor('FINITE_'+name+'_'+end+'_MODAL',values,epsilon=1,literal=True)
         tensor('FINITE_'+name+'_POSITIONS',view['positions'],(1,0,0),literal=True)
         for i in range(5):
-            unit=field[i];equation=tuple(a-b/2 for a,b in zip(result['rowUnits'][i],result['currentUnit']));trace=tuple(v-(j==0) for j,v in enumerate(unit));sl=slice(i*size,(i+1)*size)
+            unit=field[i];equation=tuple(a-b/2 for a,b in zip(result['rowUnits'][i],result['currentUnit']));trace=tuple(v-(1 if j==0 else 0) for j,v in enumerate(unit));sl=slice(i*size,(i+1)*size)
             tensor('FINITE_'+name+'_FIELD_COEFFICIENT_'+str(i),sol['coefficients'][sl],unit,epsilon=1)
             tensor('FINITE_'+name+'_FIELD_NODES_'+str(i),sol['fields'][i],unit,epsilon=1)
             tensor('FINITE_'+name+'_FIELD_GRID_'+str(i),view['originFields'][i],unit,epsilon=1)
@@ -113,7 +113,7 @@ def emit_sensitivity(result,r):
         for i in range(5):
             for j in range(5):
                 block=system['matrix'][i*size:(i+1)*size,j*size:(j+1)*size]
-                iu=tuple(a-z for a,z in zip(result['rowUnits'][i],result['fieldUnits'][j]));tu=tuple(a-z-(k==0) for k,(a,z) in enumerate(zip(result['fieldUnits'][i],result['fieldUnits'][j])))
+                iu=tuple(a-z for a,z in zip(result['rowUnits'][i],result['fieldUnits'][j]));tu=tuple(a-z-(1 if k==0 else 0) for k,(a,z) in enumerate(zip(result['fieldUnits'][i],result['fieldUnits'][j])))
                 fingerprint('FINITE_'+name+'_MATRIX_INTERIOR_'+str(i)+'_'+str(j),block[1:-1],iu)
                 fingerprint('FINITE_'+name+'_MATRIX_BOUNDARY_'+str(i)+'_'+str(j),block[[0,-1]],tu)
     s=result['sensitivity'];difference=s['finiteAndCommonGrid']
@@ -123,7 +123,7 @@ def emit_sensitivity(result,r):
         for name,values in difference['continuumOriginFields'].items():
             for g,a in values.items():tensor('CONTINUUM_GRID_'+name+'_'+str(i)+'_'+str(g),a[i],field[i],g,1)
         for g,a in s['fieldCoefficientDifference'].items():tensor('CONTINUUM_COEFFICIENT_DIFFERENCE_'+str(i)+'_'+str(g),a[i*size:(i+1)*size],field[i],g,1)
-        trace=tuple(v-(j==0) for j,v in enumerate(field[i]));tensor('INCIDENT_SIGN_MUTATION_'+str(i),result['prepared']['incidentSignMutation'][i*size:(i+1)*size][[0,-1]],trace,epsilon=1,literal=True)
+        trace=tuple(v-(1 if j==0 else 0) for j,v in enumerate(field[i]));tensor('INCIDENT_SIGN_MUTATION_'+str(i),result['prepared']['incidentSignMutation'][i*size:(i+1)*size][[0,-1]],trace,epsilon=1,literal=True)
     for key,series in s['channelCoefficients'].items():
         for name,packet in result['continuum'].items():
             for g,a in packet['response'][key].items():tensor(key+'_'+name+'_'+str(g),a,g=g,literal=True)

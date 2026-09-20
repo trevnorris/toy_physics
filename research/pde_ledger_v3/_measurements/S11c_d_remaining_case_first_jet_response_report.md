@@ -59,3 +59,18 @@ full metadata/payload replay before reuse by the remaining output stage.
 Focused saved-packet output launched from e68cd0a4 under supervisor 2165664
 and silent watcher 2165665. Final emission/replay guards remain pending; the
 launch record is not output acceptance. Numerical inputs are immutable.
+
+Original focus stopped after 388.37 seconds at a Python/SymPy type mismatch in a
+derivative-unit offset. Before that, both native RHOBR continuum and current
+transcripts completed full replay: 506/2632 tags and 45731/20032 metadata paths.
+They remain immutable. The saved sensitivity bundle is 271799333 bytes and its
+partial transcript is 34927 bytes. This is output plumbing, with no numerical
+failure or change in physical units.
+
+The repair changes only three Boolean unit offsets to explicit integer 1/0,
+with whole-file reverse AST identity, 120 actual unit joins and 20 changed-unit
+rejections. Saved-prefix regression passed with exact decoded and raw prefix
+identity, reached the first new field coefficient output, and left the complete
+bundle unchanged. Recovery copies all original evidence, reuses both completed
+new transcripts and the entire sensitivity bundle, then appends only remaining
+output and runs the original full replay. Numerical constructors remain disabled.

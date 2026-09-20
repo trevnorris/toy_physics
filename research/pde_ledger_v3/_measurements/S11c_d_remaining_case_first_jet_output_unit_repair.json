@@ -1,0 +1,164 @@
+{
+  "originalSha256": "2ca8093eefbcf12cee3b41f90cda05ec929172231bf2f9e2cf03ebadf0e4ffea",
+  "repairedSha256": "b27fc5bf3394f67a5e8c48deb8ee85e7bc39283749e9ecedfb3b3467106df69b",
+  "wholeFileReverseAST": true,
+  "changes": {
+    "fieldTraceOffsets": 2,
+    "matrixTraceOffset": 1
+  },
+  "nativeEngineChanged": false,
+  "emitterAlgorithmsChanged": "Only Python Boolean to explicit integer derivative-unit offsets. No physical or numerical operand changes.",
+  "originalDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/response/output/focused/complete",
+  "actualUnitJoins": 120,
+  "cases": {
+    "LAB_HELD__RHO4_CONSTANT": {
+      "traceUnits": [
+        [
+          "0",
+          "3/2",
+          "-1/2"
+        ],
+        [
+          "0",
+          "3/2",
+          "-1/2"
+        ],
+        [
+          "0",
+          "3/2",
+          "-1/2"
+        ],
+        [
+          "-1",
+          "3/2",
+          "-1/2"
+        ],
+        [
+          "-1",
+          "3/2",
+          "-1/2"
+        ]
+      ],
+      "blockUnitJoins": 25,
+      "changedDerivativeUnitRejected": true,
+      "wholeReplayTail": {
+        "wholeNativeReplayTail": true,
+        "namespaceEdits": 1,
+        "packetAddressEdits": 1,
+        "customEmitterSha256": "9886df873beafa730568aa5099b88d9e3c240ac7b81fc309be3b3ee3f9f27473"
+      }
+    },
+    "LAB_HELD__RHOBR_CONSTANT": {
+      "traceUnits": [
+        [
+          "0",
+          "3/2",
+          "-1/2"
+        ],
+        [
+          "0",
+          "3/2",
+          "-1/2"
+        ],
+        [
+          "0",
+          "3/2",
+          "-1/2"
+        ],
+        [
+          "-1",
+          "3/2",
+          "-1/2"
+        ],
+        [
+          "-1",
+          "3/2",
+          "-1/2"
+        ]
+      ],
+      "blockUnitJoins": 25,
+      "changedDerivativeUnitRejected": true,
+      "wholeReplayTail": {
+        "wholeNativeReplayTail": true,
+        "namespaceEdits": 1,
+        "packetAddressEdits": 1,
+        "customEmitterSha256": "9886df873beafa730568aa5099b88d9e3c240ac7b81fc309be3b3ee3f9f27473"
+      }
+    },
+    "MATERIAL_ADVECTED__RHO4_CONSTANT": {
+      "traceUnits": [
+        [
+          "0",
+          "3/2",
+          "-1/2"
+        ],
+        [
+          "0",
+          "3/2",
+          "-1/2"
+        ],
+        [
+          "0",
+          "3/2",
+          "-1/2"
+        ],
+        [
+          "-1",
+          "3/2",
+          "-1/2"
+        ],
+        [
+          "-1",
+          "3/2",
+          "-1/2"
+        ]
+      ],
+      "blockUnitJoins": 25,
+      "changedDerivativeUnitRejected": true,
+      "wholeReplayTail": {
+        "wholeNativeReplayTail": true,
+        "namespaceEdits": 1,
+        "packetAddressEdits": 1,
+        "customEmitterSha256": "9886df873beafa730568aa5099b88d9e3c240ac7b81fc309be3b3ee3f9f27473"
+      }
+    },
+    "MATERIAL_ADVECTED__RHOBR_CONSTANT": {
+      "traceUnits": [
+        [
+          "0",
+          "3/2",
+          "-1/2"
+        ],
+        [
+          "0",
+          "3/2",
+          "-1/2"
+        ],
+        [
+          "0",
+          "3/2",
+          "-1/2"
+        ],
+        [
+          "-1",
+          "3/2",
+          "-1/2"
+        ],
+        [
+          "-1",
+          "3/2",
+          "-1/2"
+        ]
+      ],
+      "blockUnitJoins": 25,
+      "changedDerivativeUnitRejected": true,
+      "wholeReplayTail": {
+        "wholeNativeReplayTail": true,
+        "namespaceEdits": 1,
+        "packetAddressEdits": 1,
+        "customEmitterSha256": "9886df873beafa730568aa5099b88d9e3c240ac7b81fc309be3b3ee3f9f27473"
+      }
+    }
+  },
+  "scope": "Actual saved physical unit vectors; no solve, contraction or emission repeated."
+}

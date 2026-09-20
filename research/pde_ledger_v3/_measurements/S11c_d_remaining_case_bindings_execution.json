@@ -1,0 +1,15 @@
+{
+  "status": "IMPLEMENTED_FOCUSED_WIRING_VALIDATED",
+  "helper": "_measurements/S11c_d_remaining_case_bindings.py",
+  "plan": "_measurements/S11c_d_remaining_case_bindings_plan.md",
+  "focused": "_measurements/S11c_d_remaining_case_bindings_focused.json",
+  "factorAcceptance": "885835a5",
+  "factorPublication": "69b2259a",
+  "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-bindings-20260920/production/complete",
+  "nativeThreads": 1,
+  "addressSpaceBytes": 2147483648,
+  "initialWallBudgetSeconds": 900,
+  "numericalIntegrations": 0,
+  "modeSolves": 0,
+  "scope": "Four-case numerical source binding, independent operator grades and exact reuse eligibility; no new scattering response."
+}

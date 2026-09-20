@@ -1,0 +1,45 @@
+{
+  "status": "VALIDATED_ACTUAL_BINDING_WIRING",
+  "case": "LAB_HELD__RHOBR_CONSTANT",
+  "actualSources": 25,
+  "actualRows": 70,
+  "actualGenericSourceColumn": 4,
+  "gaussianPairs": 2,
+  "coefficientMutationsRespond": true,
+  "actualAbelSourceMeasureDensityJoin": true,
+  "nativeBindingDefinitionJoins": {
+    "ChannelInput": true,
+    "NumericalReducedAction": true,
+    "PhysicalMetadata": true,
+    "carrier_fingerprint": true,
+    "cas": true,
+    "dag_free_symbols": true,
+    "dag_size": true,
+    "dag_substitute": true,
+    "emit": true,
+    "leaves": true,
+    "map_leaves": true,
+    "physical": true
+  },
+  "comparatorSha256": "75c1427495f64e5fc6e6eac1faa441a667b9f13c9824252769afda61cb3dc5e3",
+  "helperSha256": "a6c74b31269d4e2ace9b32d4757daeeecc6abe06119ef6ced61a21baeb881ef6",
+  "planSha256": "aa752f92dd4b9c8871ce0dd1e7f327a1f8bb3df75e701f492e98208bbcfe7cb9",
+  "factorCheckpointSha256": "5a1987cec82fdbc8c77eb978f259626fdd21d4d286cd16d2a32ff2db9325ad23",
+  "settings": {
+    "kind": "split",
+    "momentumBound": 4.0,
+    "sourceBound": 64.0,
+    "profileBound": 14.0,
+    "regulator": 0.1,
+    "outerOrder": 16,
+    "panelOrder": 4,
+    "innerOrders": [
+      4,
+      4
+    ],
+    "sourceNodes": 256,
+    "profileNodes": 512
+  },
+  "wallSeconds": 27.359665628522635,
+  "actualPairsSha256": "6c4db2a3474a28627f880b1f47ab157ea3c25c2ce180e8842dd7bac79b35f93c"
+}

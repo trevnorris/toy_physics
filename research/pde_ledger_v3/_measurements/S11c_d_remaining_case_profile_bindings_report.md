@@ -40,3 +40,8 @@ Recovery wiring passed in 12.13 seconds with clean final exit/stderr/checks
 identity: 77 sources, 136 inputs and 56 unchanged copies, including all 49
 original copies and both completed baseline outputs. All four case addresses
 remain; no new binding or other numerical construction ran in this check.
+
+Recovery implementation b20a580a launched at 05:54 UTC
+under supervisor 945878 and silent watcher 945879. This is dispatch
+evidence only. Final exit, all three completed bindings and every source/input
+guard remain required before acceptance or new numerical integration.

@@ -1,5 +1,5 @@
 {
-  "status": "RUNNING_THREE_CASE_FIRST_JET_SOURCE_CONTROL",
+  "status": "ACCEPTED_CASE_FIRST_JET_SOURCE_CONTROLS",
   "acceptedBindings": "a8272c9d",
   "acceptedBaselineFirstJet": "31c008f5",
   "publishedBaselineFirstJet": "1982b725",
@@ -40,7 +40,7 @@
     "addressSpaceBytes": 2147483648,
     "wallSeconds": 900
   },
-  "next": "Construct only the three missing case literal first-derivative source controls, reusing completed baseline and grade evidence; then select numerical reuse from actual new bindings.",
+  "next": "Bind only genuinely new selected local/cell/factor/source operands, then determine exact original/baseline-control row reuse before any new integration.",
   "implementationCommit": "dd4d1fcc78a41c8f91aa47a6aa0b71427143f52d",
   "launch": {
     "launchedUtc": "2026-09-20T07:24:14.948486+00:00",
@@ -99,5 +99,113 @@
     "childPid": 979814,
     "status": "running"
   },
-  "launchStatusIsFinalAcceptance": false
+  "launchStatusIsFinalAcceptance": false,
+  "finalOutcome": {
+    "stage": "first_jet_sources",
+    "command": [
+      "python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_first_jet_sources.py",
+      "--resume-from",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/preflight/complete",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/production/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/production/first_jet_sources.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/production/first_jet_sources.stderr",
+    "startedUtc": "2026-09-20T07:24:14.979576+00:00",
+    "childPid": 979814,
+    "status": "completed",
+    "exitCode": 0,
+    "wallSeconds": 123.45227794349194,
+    "stderrBytes": 0,
+    "finishedUtc": "2026-09-20T07:26:18.431902+00:00"
+  },
+  "checksSha256": "c15865e03f8308ed857349739a27e87926e480c73af343ce4ee855dc30b38700",
+  "validation": {
+    "status": "VALIDATED_CASE_FIRST_JET_SOURCE_CONTROLS",
+    "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/production/complete",
+    "checksSha256": "c15865e03f8308ed857349739a27e87926e480c73af343ce4ee855dc30b38700",
+    "outcome": {
+      "stage": "first_jet_sources",
+      "command": [
+        "python",
+        "-u",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_first_jet_sources.py",
+        "--resume-from",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/preflight/complete",
+        "--run-directory",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/production/complete"
+      ],
+      "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/production/first_jet_sources.stdout",
+      "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/production/first_jet_sources.stderr",
+      "startedUtc": "2026-09-20T07:24:14.979576+00:00",
+      "childPid": 979814,
+      "status": "completed",
+      "exitCode": 0,
+      "wallSeconds": 123.45227794349194,
+      "stderrBytes": 0,
+      "finishedUtc": "2026-09-20T07:26:18.431902+00:00"
+    },
+    "sourceFiles": 86,
+    "inputPackets": 882,
+    "copiedInputs": 430,
+    "artifacts": 3730,
+    "cases": {
+      "LAB_HELD__RHOBR_CONSTANT": {
+        "records": 335,
+        "newGradeProofs": 18,
+        "reusedGradeProofs": 317,
+        "changedRecords": {
+          "local": 33,
+          "cell": 0,
+          "factor": 27,
+          "source": 9
+        },
+        "terms": 140,
+        "coefficientControls": 306,
+        "omittedReversalControls": 69,
+        "endpointZeros": 4
+      },
+      "MATERIAL_ADVECTED__RHO4_CONSTANT": {
+        "records": 400,
+        "newGradeProofs": 24,
+        "reusedGradeProofs": 376,
+        "changedRecords": {
+          "local": 33,
+          "cell": 25,
+          "factor": 30,
+          "source": 12
+        },
+        "terms": 185,
+        "coefficientControls": 371,
+        "omittedReversalControls": 100,
+        "endpointZeros": 4
+      },
+      "MATERIAL_ADVECTED__RHOBR_CONSTANT": {
+        "records": 357,
+        "newGradeProofs": 12,
+        "reusedGradeProofs": 345,
+        "changedRecords": {
+          "local": 33,
+          "cell": 22,
+          "factor": 27,
+          "source": 9
+        },
+        "terms": 162,
+        "coefficientControls": 328,
+        "omittedReversalControls": 91,
+        "endpointZeros": 4
+      }
+    },
+    "newGradeProofs": 54,
+    "exactReusedGradeProofs": 1038,
+    "zeroProofScalars": 5790,
+    "omittedReversalControls": 260,
+    "coefficientControls": 1005,
+    "actualOccurrenceUnitJoins": 260,
+    "newCaseTermJoins": 487,
+    "validatorSha256": "c84aef19977aad75864c10c14e02f6f750e4601208c3935ae3c23f09a44fc563",
+    "wallSeconds": 198.75612232461572
+  }
 }

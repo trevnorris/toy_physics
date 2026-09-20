@@ -1,5 +1,5 @@
 {
-  "status": "FOCUSED_ACCEPTED_PRODUCTION_PREPARING",
+  "status": "PRODUCTION_READY_SAVED_CURRENT_INPUTS",
   "helper": "_measurements/S11c_d_remaining_case_currents.py",
   "plan": "_measurements/S11c_d_remaining_case_currents_plan.md",
   "sourceAcceptance": "103c52d5",
@@ -135,5 +135,30 @@
     "finishedUtc": "2026-09-20T02:31:37.859059+00:00"
   },
   "semanticOriginalReuseCount": 10,
-  "newAcousticFamilyCount": 1
+  "newAcousticFamilyCount": 1,
+  "focusedAcceptanceCommit": "ee46f607",
+  "productionHelper": "_measurements/S11c_d_remaining_case_currents_production.py",
+  "productionPlan": "_measurements/S11c_d_remaining_case_currents_production_plan.md",
+  "productionFocused": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_currents_production_focused.json",
+  "productionRunDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/production/complete",
+  "routingOutcome": {
+    "stage": "currents_routing",
+    "command": [
+      "python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_currents_production.py",
+      "--check-reuse",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/routing-check/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/routing-check/currents_routing.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-currents-20260920/routing-check/currents_routing.stderr",
+    "startedUtc": "2026-09-20T02:43:49.218890+00:00",
+    "childPid": 3,
+    "status": "completed",
+    "exitCode": 0,
+    "wallSeconds": 16.049380029551685,
+    "stderrBytes": 0,
+    "finishedUtc": "2026-09-20T02:44:05.268313+00:00"
+  }
 }

@@ -31,3 +31,5 @@ controls, scoped case poles and all-case exports remain subsequent work.
 Positive regulator, approximate boundaries and unresolved tiny signals remain
 explicit. The baseline 32-point search is closed without a resolved candidate;
 no contour doubling or certified empty spectrum is claimed.
+
+Focused acceptance is committed at `ee46f607`. The production routing check completed in 16.05 seconds with clean exit, stderr and checks identity. Four coordinator expressions reverse exactly to the original AST; six changed source/address controls reject. Two actual current contexts restore complete saved tails and slab operands, retain the correct original/new selection, and reject incorrect momentum units. Production is ready to compute one new current/pairing family from these preserved operands.

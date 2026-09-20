@@ -1,0 +1,65 @@
+{
+  "status": "RUNNING_FIRST_JET_RESPONSE_INPUT_PREPARATION",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/response/focused",
+  "acceptedMatrixCommit": "df5271b4",
+  "implementationCommit": "57f05dae323126c0dc5a7acf54577d413c0495de",
+  "launch": {
+    "launchedUtc": "2026-09-20T22:19:21.591062+00:00",
+    "supervisorPid": 2151317,
+    "watcherPid": 2151318,
+    "command": [
+      "/usr/bin/python",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/response/focused",
+      "--stage",
+      "response_inputs",
+      "--",
+      "python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_first_jet_response_inputs.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/response/focused/complete"
+    ],
+    "threadEnvironment": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1"
+    },
+    "implementationCommit": "57f05dae323126c0dc5a7acf54577d413c0495de",
+    "helperSha256": "62175ce99fbf64bd1911f387e16e1efd94b24ec158a7e550f55ab768044fa107",
+    "matrixChecksSha256": "ec4fa53b00efa39ccb16b974d8c28832966a3eb0902521e7e25abad70d1799cb"
+  },
+  "launchActiveRecord": {
+    "stage": "response_inputs",
+    "command": [
+      "python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_first_jet_response_inputs.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/response/focused/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/response/focused/response_inputs.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/response/focused/response_inputs.stderr",
+    "startedUtc": "2026-09-20T22:19:21.635118+00:00",
+    "childPid": 2151323,
+    "status": "running"
+  },
+  "launchWatcherState": {
+    "status": "waiting",
+    "watcherPid": 2151318,
+    "jobPid": 2151317,
+    "thread": "01a08c53-295c-70f0-baaf-353db1745867",
+    "startedUtc": "2026-09-20T22:19:21.639285+00:00",
+    "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
+    "messageSha256": "fee8749a73cfdbcd96f05a5e98248da2bbf1a2455f53d2bf43a2134f58196335",
+    "notifications": {}
+  },
+  "launchIsAcceptance": false,
+  "newResponseSolves": 0,
+  "remainingFiniteControlSolves": 4,
+  "remainingContinuumControlSolves": 3,
+  "scope": "Saved operators and own-case boundary/current/phase inputs; no new quadrature, interior assembly, modes, currents or response solve in this preparation.",
+  "next": "Validate final focused outcome and saved input/prepared-system joins, then complete the response and output adapter using prepared arrays with original solver bodies."
+}

@@ -20,3 +20,7 @@ Coordinate/advection controls, scoped case searches and final all-case engine/
 exports remain. No broad numerical campaign or baseline contour doubling is
 queued. Keep the approved finite settings and practical amplitude1e-4/current1e-6
 resolution, positive regulator, approximate boundaries and parent truncation scope.
+
+Focused preparation launched under supervisor2151317 and silent
+watcher2151318, one native thread,2GiB and900seconds. Its final
+outcome is pending; this launch does not establish focused acceptance.

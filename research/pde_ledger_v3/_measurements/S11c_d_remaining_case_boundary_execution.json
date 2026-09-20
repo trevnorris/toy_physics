@@ -1,5 +1,5 @@
 {
-  "status": "LAUNCHED_AWAITING_SILENT_COMPLETION",
+  "status": "ACCEPTED_FOUR_CASE_BOUNDARY_MAPS",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-boundary-20260920/production",
   "helperSha256": "da981150e7241f2bc977edf5c3d6e0911eb1143059ced6b8bf8ca43e95c516eb",
   "acceptedModes": "69dd0555",
@@ -92,5 +92,179 @@
       "sha256": "61bce39a63a9e94bcecd7809dab79ff704a6f6954c9ca06e196f88ec07f8f23b",
       "bytes": 4202
     }
+  },
+  "outcome": {
+    "stage": "boundary_construct",
+    "command": [
+      "python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_boundary.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-boundary-20260920/production/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-boundary-20260920/production/boundary_construct.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-boundary-20260920/production/boundary_construct.stderr",
+    "startedUtc": "2026-09-20T03:47:22.948125+00:00",
+    "childPid": 897415,
+    "status": "completed",
+    "exitCode": 0,
+    "wallSeconds": 88.92530281934887,
+    "stderrBytes": 0,
+    "finishedUtc": "2026-09-20T03:48:51.873479+00:00"
+  },
+  "checksSha256": "3b02f5bdd244d6d0eb0c0c192a8dc49b101e622f2edbd211f6d05ee52bed33bb",
+  "validation": {
+    "status": "VALIDATED_SAVED_CASE_BOUNDARY_MAPS",
+    "sourceCount": 85,
+    "inputCount": 88,
+    "copiedCount": 90,
+    "artifactCount": 153,
+    "scalarUnitPaths": 13160,
+    "newCurrentTableEntries": 26,
+    "currentContractionsExact": true,
+    "slabCoefficientMutation": 1.0000000000000002,
+    "etaForcingMutation": 13.447934339432164,
+    "inventory": {
+      "LAB_HELD__RHO4_CONSTANT__LEFT": {
+        "candidateCount": 18,
+        "finiteCounts": {
+          "CANDIDATES": 18,
+          "BASIS_DIRECTIONS": 22,
+          "OPEN_RECORDS": 2,
+          "OPEN_BASIS_DIRECTIONS": 4,
+          "INCOMING": 2,
+          "OUTGOING": 2,
+          "EVALUATED_RECORD_PAIRS": 4
+        },
+        "continuumDirections": 7,
+        "residual": 4.021398830883446e-15,
+        "traceTruncationDiagnostic": 1.831026719408895e-15
+      },
+      "LAB_HELD__RHO4_CONSTANT__RIGHT": {
+        "candidateCount": 18,
+        "finiteCounts": {
+          "CANDIDATES": 18,
+          "BASIS_DIRECTIONS": 22,
+          "OPEN_RECORDS": 2,
+          "OPEN_BASIS_DIRECTIONS": 4,
+          "INCOMING": 2,
+          "OUTGOING": 2,
+          "EVALUATED_RECORD_PAIRS": 4
+        },
+        "continuumDirections": 7,
+        "residual": 9.0829633311168e-14,
+        "traceTruncationDiagnostic": 0.005665442705741818
+      },
+      "LAB_HELD__RHOBR_CONSTANT__LEFT": {
+        "candidateCount": 18,
+        "finiteCounts": {
+          "CANDIDATES": 18,
+          "BASIS_DIRECTIONS": 22,
+          "OPEN_RECORDS": 2,
+          "OPEN_BASIS_DIRECTIONS": 4,
+          "INCOMING": 2,
+          "OUTGOING": 2,
+          "EVALUATED_RECORD_PAIRS": 4
+        },
+        "continuumDirections": 7,
+        "residual": 4.021398830883446e-15,
+        "traceTruncationDiagnostic": 1.831026719408895e-15
+      },
+      "LAB_HELD__RHOBR_CONSTANT__RIGHT": {
+        "candidateCount": 18,
+        "finiteCounts": {
+          "CANDIDATES": 18,
+          "BASIS_DIRECTIONS": 22,
+          "OPEN_RECORDS": 2,
+          "OPEN_BASIS_DIRECTIONS": 4,
+          "INCOMING": 2,
+          "OUTGOING": 2,
+          "EVALUATED_RECORD_PAIRS": 4
+        },
+        "continuumDirections": 7,
+        "residual": 1.6012598148471002e-13,
+        "traceTruncationDiagnostic": 0.004955725631131654
+      },
+      "MATERIAL_ADVECTED__RHO4_CONSTANT__LEFT": {
+        "candidateCount": 18,
+        "finiteCounts": {
+          "CANDIDATES": 18,
+          "BASIS_DIRECTIONS": 22,
+          "OPEN_RECORDS": 2,
+          "OPEN_BASIS_DIRECTIONS": 4,
+          "INCOMING": 2,
+          "OUTGOING": 2,
+          "EVALUATED_RECORD_PAIRS": 4
+        },
+        "continuumDirections": 7,
+        "residual": 4.021398830883446e-15,
+        "traceTruncationDiagnostic": 1.831026719408895e-15
+      },
+      "MATERIAL_ADVECTED__RHO4_CONSTANT__RIGHT": {
+        "candidateCount": 18,
+        "finiteCounts": {
+          "CANDIDATES": 18,
+          "BASIS_DIRECTIONS": 22,
+          "OPEN_RECORDS": 2,
+          "OPEN_BASIS_DIRECTIONS": 4,
+          "INCOMING": 2,
+          "OUTGOING": 2,
+          "EVALUATED_RECORD_PAIRS": 4
+        },
+        "continuumDirections": 7,
+        "residual": 9.0829633311168e-14,
+        "traceTruncationDiagnostic": 0.005665442705741818
+      },
+      "MATERIAL_ADVECTED__RHOBR_CONSTANT__LEFT": {
+        "candidateCount": 18,
+        "finiteCounts": {
+          "CANDIDATES": 18,
+          "BASIS_DIRECTIONS": 22,
+          "OPEN_RECORDS": 2,
+          "OPEN_BASIS_DIRECTIONS": 4,
+          "INCOMING": 2,
+          "OUTGOING": 2,
+          "EVALUATED_RECORD_PAIRS": 4
+        },
+        "continuumDirections": 7,
+        "residual": 4.021398830883446e-15,
+        "traceTruncationDiagnostic": 1.831026719408895e-15
+      },
+      "MATERIAL_ADVECTED__RHOBR_CONSTANT__RIGHT": {
+        "candidateCount": 18,
+        "finiteCounts": {
+          "CANDIDATES": 18,
+          "BASIS_DIRECTIONS": 22,
+          "OPEN_RECORDS": 2,
+          "OPEN_BASIS_DIRECTIONS": 4,
+          "INCOMING": 2,
+          "OUTGOING": 2,
+          "EVALUATED_RECORD_PAIRS": 4
+        },
+        "continuumDirections": 7,
+        "residual": 1.6012598148471002e-13,
+        "traceTruncationDiagnostic": 0.004955725631131654
+      }
+    },
+    "supervisorOutcome": {
+      "stage": "boundary_construct",
+      "command": [
+        "python",
+        "-u",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_boundary.py",
+        "--run-directory",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-boundary-20260920/production/complete"
+      ],
+      "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-boundary-20260920/production/boundary_construct.stdout",
+      "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-boundary-20260920/production/boundary_construct.stderr",
+      "startedUtc": "2026-09-20T03:47:22.948125+00:00",
+      "childPid": 897415,
+      "status": "completed",
+      "exitCode": 0,
+      "wallSeconds": 88.92530281934887,
+      "stderrBytes": 0,
+      "finishedUtc": "2026-09-20T03:48:51.873479+00:00"
+    },
+    "wallSeconds": 20.43013501446694
   }
 }

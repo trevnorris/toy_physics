@@ -24,17 +24,26 @@ metadata test assumed its first current column was open; it actually belonged
 to an evanescent cluster. Selecting the recorded open-cluster offset repairs
 that test only, preserving the completed unit packet and original logs.
 
-Production computes the actual RHOBR-right finite cross-mode channel currents
-and the independent-grade invariant-pair boundary/current coefficients. Six
-original end maps are reused after full source identity; the second RHOBR-right
-end shares only the completed matching family. All current derivative entries,
-pencils, clusters and maps are retained. No quadrature, root isolation, current
-closure or response solve is run by this stage. Production acceptance requires
-its final exit and all actual source, subspace, current, phase, unit and packet
-checks; no production boundary result is accepted yet. Implementation eafad0b4
-was launched at 2026-09-20 03:47 UTC under supervisor 897407 and silent watcher
-897408, with one numerical thread, 2 GiB and a 900-second initial budget. The
-launch snapshot is not a final exit or acceptance record.
+Production completed in 88.93 seconds with final supervisor exit zero, empty
+stderr and byte-identical checks/stdout. All eight physical ends retain 18
+candidate records and 22 complete finite basis directions each. Every continuum
+end retains five clusters/seven directions. Six original maps are reused; one
+new RHOBR-right finite/current/continuum family is shared by the two anchorings.
+All 26 new saved current derivative entries join their original table operands.
+
+The saved-map validator completed in 20.43 seconds. It replays full invariant-pair,
+inverse, trace, insertion, common-origin phase and open/closed current
+contractions, with no repeated mode or derivative construction. All new saved
+current contractions reproduce exactly; actual slab coefficient and eta forcing
+mutations respond. All 85 sources, 88 input packets, 90 unchanged copies,
+153 artifacts and 13160 scalar unit paths pass. The maximum new-family
+residual is 1.6013e-13. Its finite-versus-Taylor trace difference is 0.00495573,
+retained solely as a truncation diagnostic. The corresponding RHO4-right value
+remains 0.00566544. Neither is a scattering observable error estimate.
+
+These boundary operands are accepted. The next stage computes the three missing
+finite and continuum case responses from the accepted interior matrices. No
+quadrature, current closure, root isolation or accepted baseline solve repeats.
 
 Finite-versus-Taylor trace differences remain truncation diagnostics. Open
 coordinates are flux-normalized at reference only, with current coefficients

@@ -1,0 +1,14 @@
+{
+  "status": "PREPARED_THREE_CASE_FORM_BINDINGS",
+  "acceptedUniform": "6a5b0872",
+  "uniformPublication": "44de056f",
+  "acceptedOriginalProfile": "8d0a6ed2",
+  "acceptedCaseBindings": "a8272c9d",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-profile-20260920/bindings",
+  "resourceLimits": {
+    "nativeThreads": 1,
+    "addressSpaceBytes": 2147483648,
+    "wallSeconds": 900
+  },
+  "scope": "Three new case source bindings; baseline FORM packets and all symbolic grades reused. No integration or response yet."
+}

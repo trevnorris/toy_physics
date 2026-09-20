@@ -1,5 +1,5 @@
 {
-  "status": "RUNNING_FIRST_JET_NUMERICAL_RESPONSES",
+  "status": "COMPLETED_NUMERICAL_RESPONSES_PENDING_SAVED_VALIDATION",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/response/focused",
   "acceptedMatrixCommit": "df5271b4",
   "implementationCommit": "57f05dae323126c0dc5a7acf54577d413c0495de",
@@ -523,5 +523,246 @@
     "messageSha256": "902587f9b82da960b1146277613720ca385e29f73a3ec82f7c1b1b169bcd1968",
     "notifications": {}
   },
-  "productionLaunchIsAcceptance": false
+  "productionLaunchIsAcceptance": false,
+  "productionOutcome": {
+    "stage": "first_jet_response",
+    "command": [
+      "python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_first_jet_response.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/response/production/complete",
+      "--resume-focused",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/response/focused/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/response/production/first_jet_response.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/response/production/first_jet_response.stderr",
+    "startedUtc": "2026-09-20T22:38:53.668059+00:00",
+    "childPid": 2157311,
+    "status": "completed",
+    "exitCode": 0,
+    "wallSeconds": 257.2354411762208,
+    "stderrBytes": 0,
+    "finishedUtc": "2026-09-20T22:43:10.903612+00:00"
+  },
+  "productionChecksSha256": "609121335d2e55e7dd821fdcb57668369e8921642b43c3dd79b9811ff2c0e0f9",
+  "productionSummary": {
+    "cases": {
+      "LAB_HELD__RHO4_CONSTANT": {
+        "case": "LAB_HELD__RHO4_CONSTANT",
+        "rows": 80,
+        "terms": 160,
+        "sources": 35,
+        "unknowns": 645,
+        "incidentColumns": 4,
+        "finiteRank": 645,
+        "finiteCondition": 3772.2319832099074,
+        "finiteScaledResidual": 8.273411975996833e-16,
+        "finiteIndependentDifference": 3.0456455551587324e-13,
+        "finiteBoundaryResidual": 1.5883272137291543e-13,
+        "finiteCurrentRatios": [
+          0.9999999356743352,
+          0.9999996321456749,
+          1.000000210141049,
+          1.0000005239565684
+        ],
+        "continuumRank": 645,
+        "continuumScaledResidual": 4.794587538984703e-14,
+        "newFiniteControl": true,
+        "newContinuumControl": false,
+        "reusedHistoricalContinuum": true,
+        "formalRemainders": "Historical baseline first-derivative control did not compute direct formal-point solves; none is invented here."
+      },
+      "LAB_HELD__RHOBR_CONSTANT": {
+        "case": "LAB_HELD__RHOBR_CONSTANT",
+        "rows": 70,
+        "terms": 140,
+        "sources": 25,
+        "unknowns": 645,
+        "incidentColumns": 4,
+        "finiteRank": 645,
+        "finiteCondition": 3753.277919475421,
+        "finiteScaledResidual": 6.023880097502996e-16,
+        "finiteIndependentDifference": 1.88979662596915e-13,
+        "finiteBoundaryResidual": 8.177514227171064e-14,
+        "finiteCurrentRatios": [
+          1.000000002502498,
+          1.000000014296728,
+          0.9999998465500892,
+          0.9999999737048016
+        ],
+        "continuumRank": 645,
+        "continuumCondition": 3731.2887868592843,
+        "continuumScaledResidual": 2.5360736622746124e-14,
+        "continuumIndependentDifference": 9.693204866783027e-13,
+        "continuumMapResidual": 2.6645352591003757e-15,
+        "mixedForcingMutation": 0.0006394853005667859,
+        "formalRemainderMaxima": {
+          "(0.01, 0.001)": 3.220371379663148e-05,
+          "(0.005, 0.0005)": 8.056250826062483e-06,
+          "(0.0025, 0.00025)": 2.0147258633084274e-06
+        },
+        "newQuadratureNodes": 0,
+        "newFiniteControl": true,
+        "newContinuumControl": true,
+        "reusedHistoricalContinuum": false
+      },
+      "MATERIAL_ADVECTED__RHO4_CONSTANT": {
+        "case": "MATERIAL_ADVECTED__RHO4_CONSTANT",
+        "rows": 80,
+        "terms": 185,
+        "sources": 35,
+        "unknowns": 645,
+        "incidentColumns": 4,
+        "finiteRank": 645,
+        "finiteCondition": 3772.258097673305,
+        "finiteScaledResidual": 8.018854866152456e-16,
+        "finiteIndependentDifference": 2.990607825316872e-13,
+        "finiteBoundaryResidual": 9.880381450861532e-14,
+        "finiteCurrentRatios": [
+          0.9999999750958605,
+          0.9999998575424569,
+          1.000000197926236,
+          1.000000493501449
+        ],
+        "continuumRank": 645,
+        "continuumCondition": 3731.2887868592843,
+        "continuumScaledResidual": 4.5471952704901426e-14,
+        "continuumIndependentDifference": 1.3856349142633793e-12,
+        "continuumMapResidual": 7.141979374872701e-15,
+        "mixedForcingMutation": 0.0008358257517154508,
+        "formalRemainderMaxima": {
+          "(0.01, 0.001)": 0.00882330024934845,
+          "(0.005, 0.0005)": 0.0022120238283353296,
+          "(0.0025, 0.00025)": 0.000553618166202979
+        },
+        "newQuadratureNodes": 0,
+        "newFiniteControl": true,
+        "newContinuumControl": true,
+        "reusedHistoricalContinuum": false
+      },
+      "MATERIAL_ADVECTED__RHOBR_CONSTANT": {
+        "case": "MATERIAL_ADVECTED__RHOBR_CONSTANT",
+        "rows": 70,
+        "terms": 162,
+        "sources": 25,
+        "unknowns": 645,
+        "incidentColumns": 4,
+        "finiteRank": 645,
+        "finiteCondition": 3753.289212029629,
+        "finiteScaledResidual": 6.225612298071387e-16,
+        "finiteIndependentDifference": 1.7213839852003194e-13,
+        "finiteBoundaryResidual": 9.737862937809009e-14,
+        "finiteCurrentRatios": [
+          0.9999999815345212,
+          0.9999998944103154,
+          0.9999999641007489,
+          0.9999999938467338
+        ],
+        "continuumRank": 645,
+        "continuumCondition": 3731.2887868592843,
+        "continuumScaledResidual": 2.3105378329022314e-14,
+        "continuumIndependentDifference": 1.0650378607478306e-12,
+        "continuumMapResidual": 2.6645352591003757e-15,
+        "mixedForcingMutation": 0.0006390868086734855,
+        "formalRemainderMaxima": {
+          "(0.01, 0.001)": 3.220370636915156e-05,
+          "(0.005, 0.0005)": 8.05625009268399e-06,
+          "(0.0025, 0.00025)": 2.0147258193734553e-06
+        },
+        "newQuadratureNodes": 0,
+        "newFiniteControl": true,
+        "newContinuumControl": true,
+        "reusedHistoricalContinuum": false
+      }
+    },
+    "comparisons": {
+      "LAB_HELD__RHO4_CONSTANT": {
+        "finiteAmplitudeChange": 5.174437296495139e-07,
+        "finiteCurrentChange": 4.1769852310302724e-07,
+        "finiteFieldChange": 0.0007876385688475931,
+        "continuumAmplitudeChange": 6.021871409746378e-07,
+        "retainedPolynomialCurrentChange": 4.5659048653057255e-07,
+        "openCurrentResidual": 4.441138119139177e-16,
+        "endCurrentResidual": 5.859285884700733e-14,
+        "currentMutation": 2.139295618348289,
+        "finiteOpenEndCurrentResidual": 2.262477960348739e-16,
+        "amplitudeResolutionGoal": 0.0001,
+        "currentResolutionGoal": 1e-06,
+        "sameOwnCaseCoordinates": true,
+        "scope": "Four actual finite-contrast and independent-grade first-w-derivative controls in their own case coordinates. Four finite and three continuum solves are new; the baseline continuum is reused. Positive regulator, approximate modal boundaries and omitted parent pure-second-order terms remain. One-sided closed-operator sensitivity, not a consistent new profile or isolated advection channel. Full transcript validation/publication follows these saved numerical results."
+      },
+      "LAB_HELD__RHOBR_CONSTANT": {
+        "finiteAmplitudeChange": 2.776899864927754e-07,
+        "finiteCurrentChange": 2.434757486735606e-07,
+        "finiteFieldChange": 0.00020816066029521706,
+        "continuumAmplitudeChange": 2.447395323504632e-07,
+        "retainedPolynomialCurrentChange": 4.629015337709319e-07,
+        "openCurrentResidual": 4.440892098970627e-16,
+        "endCurrentResidual": 2.4147350785597155e-15,
+        "currentMutation": 2.0962045861593075,
+        "finiteOpenEndCurrentResidual": 2.228152113789896e-16,
+        "amplitudeResolutionGoal": 0.0001,
+        "currentResolutionGoal": 1e-06,
+        "sameOwnCaseCoordinates": true,
+        "scope": "Four actual finite-contrast and independent-grade first-w-derivative controls in their own case coordinates. Four finite and three continuum solves are new; the baseline continuum is reused. Positive regulator, approximate modal boundaries and omitted parent pure-second-order terms remain. One-sided closed-operator sensitivity, not a consistent new profile or isolated advection channel. Full transcript validation/publication follows these saved numerical results."
+      },
+      "MATERIAL_ADVECTED__RHO4_CONSTANT": {
+        "finiteAmplitudeChange": 8.011352942913593e-07,
+        "finiteCurrentChange": 4.473736219257063e-07,
+        "finiteFieldChange": 0.00020684345308540872,
+        "continuumAmplitudeChange": 8.242421640032983e-07,
+        "retainedPolynomialCurrentChange": 5.481180480604309e-07,
+        "openCurrentResidual": 4.441138119139177e-16,
+        "endCurrentResidual": 5.859285884700733e-14,
+        "currentMutation": 2.139295618348289,
+        "finiteOpenEndCurrentResidual": 4.445007005299083e-16,
+        "amplitudeResolutionGoal": 0.0001,
+        "currentResolutionGoal": 1e-06,
+        "sameOwnCaseCoordinates": true,
+        "scope": "Four actual finite-contrast and independent-grade first-w-derivative controls in their own case coordinates. Four finite and three continuum solves are new; the baseline continuum is reused. Positive regulator, approximate modal boundaries and omitted parent pure-second-order terms remain. One-sided closed-operator sensitivity, not a consistent new profile or isolated advection channel. Full transcript validation/publication follows these saved numerical results."
+      },
+      "MATERIAL_ADVECTED__RHOBR_CONSTANT": {
+        "finiteAmplitudeChange": 2.573439694505085e-07,
+        "finiteCurrentChange": 2.1004343220276667e-07,
+        "finiteFieldChange": 0.00020962878675799532,
+        "continuumAmplitudeChange": 1.5951985620073172e-07,
+        "retainedPolynomialCurrentChange": 2.2707007407696267e-07,
+        "openCurrentResidual": 4.440892098970627e-16,
+        "endCurrentResidual": 4.542766177132399e-15,
+        "currentMutation": 2.0962045861593075,
+        "finiteOpenEndCurrentResidual": 1.6667795129466247e-16,
+        "amplitudeResolutionGoal": 0.0001,
+        "currentResolutionGoal": 1e-06,
+        "sameOwnCaseCoordinates": true,
+        "scope": "Four actual finite-contrast and independent-grade first-w-derivative controls in their own case coordinates. Four finite and three continuum solves are new; the baseline continuum is reused. Positive regulator, approximate modal boundaries and omitted parent pure-second-order terms remain. One-sided closed-operator sensitivity, not a consistent new profile or isolated advection channel. Full transcript validation/publication follows these saved numerical results."
+      }
+    },
+    "newFiniteControlSolves": 4,
+    "newContinuumControlSolves": 3,
+    "reusedBaselineContinuum": true,
+    "physicalTranscriptEmitted": false
+  },
+  "productionCounts": {
+    "sourceFiles": 138,
+    "inputPackets": 10536,
+    "copiedInputs": 150,
+    "artifacts": 205
+  },
+  "savedNumericalValidation": {
+    "directory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/response/production-acceptance",
+    "validatorSha256": "27f9b33693c66f13fa40339ca17b6af32fa4a4fc12bf8f04e0138f49049a5c1e",
+    "status": "PREPARED_NOT_RUN",
+    "forbiddenDuringValidation": [
+      "solve",
+      "inverse",
+      "SVD",
+      "eigensolve",
+      "new assembly",
+      "new current packet",
+      "quadrature"
+    ],
+    "adaptedSavedValidatorSites": 8,
+    "wholeReverseAST": true
+  }
 }

@@ -1,60 +1,60 @@
-# Remaining-case finite and continuum responses
+# Four-case finite and continuum responses
 
-The complete case boundary/current maps are accepted at d8713012. Production
-completed in 88.93 seconds; all eight physical ends retain full candidates and
-complete degenerate subspaces. One new RHOBR-right family supplies both
-anchorings after exact input joins. The maximum new map residual is 1.60e-13.
-Finite interiors remain accepted at 2eed4150.
+All four approved cases now have complete finite and independent-grade
+responses, each with 645 unknowns and four incident columns. The three new
+cases use their actual 70/80/70 rows, 140/185/162 native terms, 25/35/25 source
+amplitudes and case-specific end/current maps. The baseline is copied from its
+accepted result. No quadrature, mode or baseline response was repeated.
 
-The next helper consumes these accepted matrices and actual case-specific maps.
-It copies the original baseline finite/continuum results, checks their complete
-boundary-replaced systems against the actual case operands, and computes only
-the three missing responses. No quadrature, source/current construction or mode
-solve is performed. The finite solve/output tail and continuum numerical bodies
-are unchanged; full current/phase dependence and mixed inverse terms remain.
+All systems have full rank. Maximum finite scaled equation residual is
+8.04e-16; maximum continuum residual is 3.80e-14 including the baseline.
+The largest new independent coefficient difference is 1.78e-12. Actual
+baseline, mixed inverse/forcing terms, open/closed amplitudes, current
+denominators and phase/normalization maps are retained.
 
-The first focused check stopped before any solve after 18.09 seconds: the
-fully bound unsplit matrices use a single collection slot (0,0,0), while the
-reader expected a bare array. A schema-only reader now selects that actual
-slot, verifies the full matrix decomposition and joins all four cases to their
-independent original-cell matrices. Four altered slot addresses reject. A
-whole-file reverse AST join permits only the reader and two call sites; the
-numerical tail is unchanged. All original copied packets and logs remain.
-The repaired focused run passed in 30.78 seconds with final exit zero, empty
-stderr and byte-identical checks/stdout. All 91 sources, 140 inputs, 138
-unchanged original copies and 140 artifacts validate. The baseline finite
-matrix differs by 6.122e-16 after row scaling; its existing solution satisfies
-the reconstructed equations to 6.241e-16. Every continuum coefficient matrix
-and forcing matches exactly. The incident-sign mutation responds by 3.9098;
-no baseline solve or integration was repeated. The three case emitter
-namespaces and original emission/validation tails join. Focused evidence is
-accepted; production is prepared to reuse all of its packets. No new case
-response is accepted. Every numerical system/solution is saved before later
-validation or emission; an output error will not justify a repeated solve.
-Actual same-coordinate anchoring differences, finite current ratios and formal
-Taylor remainders will be inspected before interpretation. Cross-density S
-matrices are not subtracted without a coordinate join.
+Same-density anchoring comparisons use identical end coordinates:
 
-Practical 1%/amplitude 1e-4/current 1e-6 goals, finite positive regulator,
-approximate boundaries and unresolved tiny signals remain. Relevant controls,
-bounded case searches and final all-case engine/export integration follow.
-No baseline contour doubling or broad convergence campaign is queued.
+| Density rule | Finite amplitude change | Finite current-ratio change | Evaluated continuum amplitude change |
+| --- | ---: | ---: | ---: |
+| RHO4_CONSTANT | 7.44e-7 | 3.36e-7 | 6.87e-7 |
+| RHOBR_CONSTANT | 5.99e-8 | 1.19e-7 | 6.02e-8 |
 
-Production launched at 2026-09-20 04:08 UTC from df876c02 under supervisor
-904155, child 904162 and silent watcher 904156. It uses one numerical thread,
-2 GiB and a 900-second initial budget. The launch snapshot is not final
-completion or acceptance; validation follows the completion/error wake.
+These are below the declared amplitude 1e-4/current 1e-6 absolute resolution.
+No resolved tiny reflection, loss or anchoring effect is inferred. Full common
+grid field differences are 4.95e-4 and 1.55e-6 in the inherited coefficient
+frame; these are retained separately from channel amplitudes. Cross-density
+S matrices were not subtracted. New finite total-current ratios lie between
+0.9999995945 and 1.0000001045.
 
-The production run ended after 687.49 seconds at the combined-transcript
-decoder. All three finite and continuum solves and all three original
-individual emission/replay tails completed; their packets and transcripts
-remain immutable. Each part starts a separate shared-payload reference table,
-so their raw concatenation is not one valid encoded stream. The saved-packet
-finish validates the numerical operands without a new solve, then globally
-re-encodes the original decoded payloads. No individual emission is repeated.
-Current acceptance remains pending the clean final aggregation guards.
+Formal coefficient-polynomial remainder maxima decrease by about four on
+halving both parameters. At (eta,sigma)=(0.01,0.001), the new LAB/RHOBR and
+MAT/RHOBR field-coefficient differences are 3.22e-5; MAT/RHO4 is 8.82e-3.
+These are Taylor truncation diagnostics, not physical observable error bounds
+or accuracy for omitted parent pure-second-order terms.
 
-The aggregation finish launched under supervisor 909879 and silent watcher
-909880 at 04:30 UTC. It reuses the saved numerical results and each completed
-individual transcript. Its final outcome must be checked after the completion
-wake; the launch record does not establish acceptance.
+The original 687.49-second run completed all numerical packets and all three
+individual emission/replay tails. Raw concatenation then failed because each
+part starts its own codec reference table. Finish01 completed all four saved
+numerical validations in 32.62 seconds, then found that baseline checks remain
+in the original accepted producer. Finish02 joined those checks to all six
+baseline artifacts, reused every completed numerical validation, and globally
+re-encoded the original decoded payloads. It completed in 62.54 seconds with
+exit zero, empty stderr and checks/stdout byte identity. Neither repair repeated
+a solve, integration or individual emission.
+
+Final acceptance verifies 95 current/frozen sources, 158 inputs, 275 unchanged
+copies, all 269 original artifacts and 188 final artifacts. All 2,024 decoded
+payloads, four local source-line indices and 182,924 metadata paths are retained;
+1,004 export keys are unique. Publication fa684a3a is annex-verified:
+
+- Output: scripts/out/S11c_d_remaining_case_response.out, 16,310,842 bytes.
+- MD5E key: MD5E-s16310842--14c206142892fae92f3f6c5ca247e8f9.out.
+- SHA256: c30b166b9dfa31123cdd753a430b2d14c0ce978e2eaffda605151ac74786e1c3.
+
+The numerical settings remain 129 coefficients per field, interval/source 64,
+momentum 4, profile 14, regulator 0.1, momentum orders 16/4/4 and source/profile
+256/512. Positive regulator and approximate modal boundaries remain explicit.
+Case current bookkeeping, relevant practical controls, bounded case searches
+and final all-case engine/exports remain work. The baseline 32-point search is
+closed without a resolved candidate, not a certified empty spectrum. No broad
+quadrature campaign or further angular doubling is queued.

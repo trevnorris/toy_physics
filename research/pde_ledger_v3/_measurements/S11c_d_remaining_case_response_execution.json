@@ -1,5 +1,5 @@
 {
-  "status": "SAVED_RESULT_FINISH_LAUNCHED",
+  "status": "PUBLISHED_ANNEX_VERIFIED",
   "helperSha256": "0709c7a2770a2094db31cf913b79e2ee7416b3d6d75465670a0ab151a5322728",
   "acceptedBoundary": "d8713012",
   "acceptedInteriors": "2eed4150",
@@ -223,5 +223,59 @@
     },
     "implementationCommit": "79d3ba2c681b41c96340a7ec96d5c5d97b1057cf"
   },
-  "finishHelperSha256": "528379bfa78738f5e13ce67f66ab58581baf9cc8107b0ed621bfe5de66f00f80"
+  "finishHelperSha256": "528379bfa78738f5e13ce67f66ab58581baf9cc8107b0ed621bfe5de66f00f80",
+  "finish01Outcome": {
+    "stage": "response_finish",
+    "command": [
+      "python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_response_finish.py",
+      "--resume-from",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-response-20260920/production/complete",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-response-20260920/finish-01/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-response-20260920/finish-01/response_finish.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-response-20260920/finish-01/response_finish.stderr",
+    "startedUtc": "2026-09-20T04:30:09.450794+00:00",
+    "childPid": 909887,
+    "status": "failed",
+    "exitCode": 1,
+    "wallSeconds": 32.61943690478802,
+    "stderrBytes": 1168,
+    "finishedUtc": "2026-09-20T04:30:42.070272+00:00"
+  },
+  "finalOutcome": {
+    "stage": "response_output",
+    "command": [
+      "python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_response_output.py",
+      "--resume-validation",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-response-20260920/finish-01/complete",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-response-20260920/finish-02/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-response-20260920/finish-02/response_output.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-response-20260920/finish-02/response_output.stderr",
+    "startedUtc": "2026-09-20T04:33:34.697976+00:00",
+    "childPid": 3,
+    "status": "completed",
+    "exitCode": 0,
+    "wallSeconds": 62.54017710313201,
+    "stderrBytes": 0,
+    "finishedUtc": "2026-09-20T04:34:37.238195+00:00"
+  },
+  "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-response-20260920/finish-02/complete",
+  "checkpoint": "S11c_d_remaining_case_response_checkpoint.json",
+  "publication": {
+    "path": "scripts/out/S11c_d_remaining_case_response.out",
+    "sha256": "c30b166b9dfa31123cdd753a430b2d14c0ce978e2eaffda605151ac74786e1c3",
+    "bytes": 16310842,
+    "md5": "14c206142892fae92f3f6c5ca247e8f9",
+    "annexKey": "MD5E-s16310842--14c206142892fae92f3f6c5ca247e8f9.out",
+    "symlink": "../../../../.git/annex/objects/4Z/Z6/MD5E-s16310842--14c206142892fae92f3f6c5ca247e8f9.out/MD5E-s16310842--14c206142892fae92f3f6c5ca247e8f9.out",
+    "publicationCommit": "fa684a3a14b133da5d5c342c5997bf9d759677dd"
+  },
+  "next": "Construct remaining case current/amplitude bookkeeping from accepted response and actual case end currents; preserve baseline bookkeeping without repetition. Then practical controls, scoped searches and final all-case integration."
 }

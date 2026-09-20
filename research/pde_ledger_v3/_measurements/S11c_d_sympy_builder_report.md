@@ -414,6 +414,20 @@ The three new cases contain 70/80/70 integrals and 61/61/46 exact baseline
 matches. These permit operand reuse, not assumed response equality. Remaining
 case scattering/current/continuum/control/pole work and final exports continue.
 
+## Four-case response completion (2026-09-20)
+
+The [four-case finite and continuum responses](S11c_d_remaining_case_response_report.md)
+are now published at fa684a3a and annex-verified. All four cases have full-rank
+645-unknown systems and four incident directions, with actual case-specific
+boundary/current maps and complete independent/mixed grades. Three new solves
+reuse accepted interior matrices; no quadrature or baseline solve repeats.
+All 2,024 decoded payloads and 182,924 metadata paths survive the lossless
+combined output. Same-density anchoring amplitude changes are below 7.45e-7
+and current changes below 3.37e-7, below declared absolute resolution. Positive
+regulator, approximate boundaries and unresolved tiny signals remain explicit.
+Case current bookkeeping, practical controls, scoped case searches and final
+all-case engine/exports remain. No baseline contour doubling is queued.
+
 ## Retained user-approved solver/export contract
 
 

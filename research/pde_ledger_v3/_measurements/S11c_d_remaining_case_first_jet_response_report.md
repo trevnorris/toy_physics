@@ -79,3 +79,16 @@ Saved-output recovery launched from 2de20333 under supervisor 2170119 and
 silent watcher 2170120. The original main code object is unchanged. All 28
 original decoded payloads and encoded prefix lines passed the 12.52-second
 saved-bundle regression. Final output replay/acceptance remains pending.
+
+The recovery reached its 900-second budget with exit -14 and empty stderr.
+It saved the complete 7,639,434-byte sensitivity transcript: 4,092 unique tags,
+2,044 export keys and the full terminal source-line index. Final replay was not
+accepted, and no final checks file exists. All numerical packets, historical
+output and both previously validated native parts remain unchanged.
+
+The saved-transcript completion runs only the native decode/replay/metadata/hash
+suffix, reconstructing its original keys and saved line index. Whole-suffix
+reverse AST joins and unchanged coordinator bytecode pass; four actual changed
+tag/key/line controls reject. No individual transcript is emitted again. Durable
+validation progress and completed replay evidence precede later guards. Output
+acceptance and publication remain pending a clean final outcome.

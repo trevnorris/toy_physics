@@ -61,7 +61,7 @@
   "remainingFiniteControlSolves": 4,
   "remainingContinuumControlSolves": 3,
   "scope": "Saved operators and own-case boundary/current/phase inputs; no new quadrature, interior assembly, modes, currents or response solve in this preparation.",
-  "next": "Validate completed numerical responses/current/sensitivity packets, then finish physical transcript emission and annex publication from saved results.",
+  "next": "Validate complete saved sensitivity stream without re-emission, then accept focus and finish remaining output parts.",
   "focusedOutcome": {
     "stage": "response_inputs",
     "command": [
@@ -1420,5 +1420,58 @@
     "messageSha256": "8a15d58fed1c9213e669279c03e585a0e14fafe984ff99fe914478447841ec49",
     "notifications": {}
   },
-  "outputRecoveryLaunchIsAcceptance": false
+  "outputRecoveryLaunchIsAcceptance": false,
+  "outputRecoveryTimeout": {
+    "stage": "first_jet_output",
+    "command": [
+      "python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_first_jet_output_recover.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/response/output/focused-recovery-01/complete",
+      "--mode",
+      "focused"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/response/output/focused-recovery-01/first_jet_output.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/response/output/focused-recovery-01/first_jet_output.stderr",
+    "startedUtc": "2026-09-20T23:19:59.533181+00:00",
+    "childPid": 2170122,
+    "status": "failed",
+    "exitCode": -14,
+    "wallSeconds": 901.3824961129576,
+    "stderrBytes": 0,
+    "finishedUtc": "2026-09-20T23:35:00.915725+00:00"
+  },
+  "outputSavedTranscriptValidationWiring": {
+    "status": "PASSED_SAVED_TRANSCRIPT_VALIDATION_WIRING",
+    "tags": 4092,
+    "keys": 2044,
+    "originalTranscriptBytes": 7639434,
+    "originalTranscriptSha256": "431794657942b0013e71c4a4ba57e7a5f088fca70fb8300f7797a9c3355dc63c",
+    "decodedSha256": "93243c86bdba7ab1a11b463dcfbf4c8a6e6b84b65c6c680d67c4db8ca337aa51",
+    "wrongAddressKeyLineControls": 4,
+    "validationJoin": {
+      "wholeNativeValidationSuffix": true,
+      "packetAddressEdits": 1,
+      "savedKeysAndIndexOnly": true,
+      "progressObserversOnly": true,
+      "sourceSha256": "0fe30a9c4771671e9fa139b0557f185f55d351887f2ba8b9fa4ed1abfb616db2",
+      "emitterSha256": "9886df873beafa730568aa5099b88d9e3c240ac7b81fc309be3b3ee3f9f27473",
+      "nativeOutputMainBytecodeUnchanged": true
+    },
+    "originalMainBytecodeSha256": "6037bdb00cb92f9dc8596a3a8f0fff0f203421e9d8c2ffb415b9fd795f460bac",
+    "helperSha256": "94e9b11c8b5298e256aab31c3dd1aa265ba3225e7974c13e8341c55bae9ad755",
+    "outputHelperSha256": "b27fc5bf3394f67a5e8c48deb8ee85e7bc39283749e9ecedfb3b3467106df69b",
+    "scriptSha256": "18c7e9de7b7006e72b0e5cd1693ea36b3bcb641f92976216c439d959ea898692",
+    "newEmissions": 0,
+    "newSolves": 0,
+    "wallSeconds": 0.277973348274827,
+    "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/response/output/validation-repair",
+    "actualToolOutcome": {
+      "exitCode": 0,
+      "session": 66300,
+      "stderrBytes": 0,
+      "checksStdoutIdentical": true
+    }
+  }
 }

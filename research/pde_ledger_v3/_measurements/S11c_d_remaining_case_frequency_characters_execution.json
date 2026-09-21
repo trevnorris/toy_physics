@@ -1,5 +1,5 @@
 {
-  "status": "FAILED_SAVED_AMPLITUDE_GUARD_AWAITING_DIAGNOSTIC",
+  "status": "PREPARED_CERTIFICATE_READER_RECOVERY",
   "sourceAcceptanceCommit": "ed3ac234",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/characters",
   "helperSha256": "d373807160f996877c8a2962a16e53214da723a5c48aa83298ce2ac1820ff03c",
@@ -151,6 +151,228 @@
         "BLIS_NUM_THREADS": "1"
       }
     },
-    "scope": "Saved failed-source and accepted certificate/schema reader only; no binding/diff/certificate construction."
+    "scope": "Saved failed-source and accepted certificate/schema reader only; no binding/diff/certificate construction.",
+    "status": "COMPLETED_CLEAN_SAVED_DIAGNOSTIC",
+    "checksSha256": "b325ef2013bd89751e80e6395f0c0b749f3c40c452b333c8e006cc26ef585524",
+    "guard": {
+      "supervisor": {
+        "stage": "diagnose",
+        "command": [
+          "/usr/bin/python",
+          "-u",
+          "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/characters-proof-diagnostic/diagnose.py"
+        ],
+        "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/characters-proof-diagnostic/diagnose.stdout",
+        "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/characters-proof-diagnostic/diagnose.stderr",
+        "startedUtc": "2026-09-21T22:15:35.553904+00:00",
+        "childPid": 930476,
+        "status": "completed",
+        "exitCode": 0,
+        "wallSeconds": 242.741113038006,
+        "stderrBytes": 0,
+        "finishedUtc": "2026-09-21T22:19:38.295064+00:00"
+      },
+      "guard": {
+        "exitCode": 0,
+        "wallSeconds": 242.91913497399946,
+        "unit": "s11c-guard-383d7c442e32",
+        "stderrBytes": 0,
+        "limitsVerified": true,
+        "childOutcome": {
+          "exitCode": 0,
+          "guardReason": null,
+          "wallSeconds": 242.84959631499078,
+          "childPid": 930475
+        }
+      },
+      "limits": {
+        "memory.max": "2147483648",
+        "memory.swap.max": "0",
+        "pids.max": "32",
+        "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-383d7c442e32.service",
+        "nice": 15,
+        "affinity": [
+          15
+        ],
+        "threads": {
+          "OPENBLAS_NUM_THREADS": "1",
+          "OMP_NUM_THREADS": "1",
+          "MKL_NUM_THREADS": "1",
+          "NUMEXPR_NUM_THREADS": "1",
+          "VECLIB_MAXIMUM_THREADS": "1",
+          "BLIS_NUM_THREADS": "1"
+        }
+      },
+      "memoryPeakBytes": 203206656,
+      "swapBytes": 0,
+      "capReclaims": 0,
+      "minimumHostAvailableBytes": 23479341056,
+      "oomEvents": 0
+    },
+    "summary": {
+      "status": "SAVED_CHARACTER_PROOF_DIAGNOSTIC",
+      "failedSource": [
+        {
+          "row": 40,
+          "factor": 0,
+          "owner": {
+            "caseIndex": 40,
+            "kind": "accepted",
+            "index": 40
+          },
+          "amplitudeSourceSame": true,
+          "frequencySourceSame": true,
+          "characterEquationZero": true,
+          "normalizationZero": true,
+          "rawAmplitudeZero": false,
+          "certificateRawSame": true,
+          "certificateLeftSame": true,
+          "certificateRightSame": true,
+          "certificateResidualZero": true,
+          "proofScalarsZero": true
+        },
+        {
+          "row": 41,
+          "factor": 0,
+          "owner": {
+            "caseIndex": 41,
+            "kind": "accepted",
+            "index": 41
+          },
+          "amplitudeSourceSame": true,
+          "frequencySourceSame": true,
+          "characterEquationZero": true,
+          "normalizationZero": true,
+          "rawAmplitudeZero": false,
+          "certificateRawSame": true,
+          "certificateLeftSame": true,
+          "certificateRightSame": true,
+          "certificateResidualZero": true,
+          "proofScalarsZero": true
+        },
+        {
+          "row": 42,
+          "factor": 0,
+          "owner": {
+            "caseIndex": 42,
+            "kind": "accepted",
+            "index": 42
+          },
+          "amplitudeSourceSame": true,
+          "frequencySourceSame": true,
+          "characterEquationZero": true,
+          "normalizationZero": true,
+          "rawAmplitudeZero": false,
+          "certificateRawSame": true,
+          "certificateLeftSame": true,
+          "certificateRightSame": true,
+          "certificateResidualZero": true,
+          "proofScalarsZero": true
+        },
+        {
+          "row": 60,
+          "factor": 0,
+          "owner": {
+            "caseIndex": 60,
+            "kind": "accepted",
+            "index": 60
+          },
+          "amplitudeSourceSame": true,
+          "frequencySourceSame": true,
+          "characterEquationZero": true,
+          "normalizationZero": true,
+          "rawAmplitudeZero": false,
+          "certificateRawSame": true,
+          "certificateLeftSame": true,
+          "certificateRightSame": true,
+          "certificateResidualZero": true,
+          "proofScalarsZero": true
+        },
+        {
+          "row": 70,
+          "factor": 0,
+          "owner": {
+            "caseIndex": 70,
+            "kind": "accepted",
+            "index": 70
+          },
+          "amplitudeSourceSame": true,
+          "frequencySourceSame": true,
+          "characterEquationZero": true,
+          "normalizationZero": true,
+          "rawAmplitudeZero": false,
+          "certificateRawSame": true,
+          "certificateLeftSame": true,
+          "certificateRightSame": true,
+          "certificateResidualZero": true,
+          "proofScalarsZero": true
+        },
+        {
+          "row": 71,
+          "factor": 0,
+          "owner": {
+            "caseIndex": 71,
+            "kind": "accepted",
+            "index": 71
+          },
+          "amplitudeSourceSame": true,
+          "frequencySourceSame": true,
+          "characterEquationZero": true,
+          "normalizationZero": true,
+          "rawAmplitudeZero": false,
+          "certificateRawSame": true,
+          "certificateLeftSame": true,
+          "certificateRightSame": true,
+          "certificateResidualZero": true,
+          "proofScalarsZero": true
+        }
+      ],
+      "baselineRows": 80,
+      "baselineRowsExact": true,
+      "baselineJetsExact": true,
+      "certificatePacketKeys": [
+        "records",
+        "sourcePacketSha256",
+        "provenance",
+        "dimensionState"
+      ],
+      "originalFactorKeys": [
+        "result",
+        "provenance",
+        "dimensionState"
+      ],
+      "paths": {
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/characters/complete/character-cases/LAB_HELD__RHO4_CONSTANT/source-inputs/000.pickle": "f6989cd4418c509b21c42fd878d03e48b0d7cc681ff52c5368a1dbf2d795ff9c",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_factors_checkpoint.json": "5a1987cec82fdbc8c77eb978f259626fdd21d4d286cd16d2a32ff2db9325ad23",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/production/complete/accepted-factor-certificates.pickle": "c69ed83e4a484a93d8f65e1389362943155e79157ba94a1f8c9ab2fed8fb2275",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-factors-20260919/production/complete/accepted-factorization.pickle": "4ad4e99de3f13a8bf3e42374f1425a84521e27634635063adb497cdc94651033",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/characters/complete/accepted/accepted-cases/LAB_HELD__RHO4_CONSTANT/factorization.pickle": "011184ab8f796872fec263558a5da6d7f478e4468c7dcacd2373a7df14e69723",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/characters/complete/accepted/accepted-frequency/baseline-binding.pickle": "817bd0957aebe706c1a565a5a0878b0779be30485235f934df879162c34ad99b",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/characters/complete/accepted/accepted-bindings/LAB_HELD__RHO4_CONSTANT/case-binding.pickle": "0a157a87892a0428bc63caa92e233c2b4c6c958b5ad72e4052d2703c11cb80f7"
+      },
+      "scienceCalls": 0,
+      "wallSeconds": 241.06977876501333
+    }
+  },
+  "recovery": {
+    "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/characters-recovery-01",
+    "status": "PREPARED",
+    "helperSha256": "5e4f50224d1bf40626f2d8b36e62a33d93e947dc7093ed567515a5c41ada5c44",
+    "planSha256": "75a0c02f85c0587df964453a2c461a61ecf08be8e73e20c35252d2a79d395b66",
+    "repairSha256": "09eeedfb7154a69d9d4a872cdf2f05b6c5e0c91ffe131f3b7c4138e296c8bf74",
+    "staticReview": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/characters-recovery-01/static-review.json",
+    "staticJoins": {
+      "wholePrepareReverseAST": true,
+      "proofReaderReplacements": 1,
+      "completedBaselineGuardReuses": 1,
+      "directoryKeywordEdits": 1,
+      "originalPrepareSha256": "c76dfe0720d87b9c74c34bf794ce87febc0f0901be5a40c56dbd77ce4403ac74",
+      "originalMainSha256": "468a6f5decd6b167c08a36d7ecf410273e216c75223fa63e5be6fab5d62ad74f",
+      "originalRowConstructorSha256": "7ed5685582c345c1b317db28f0071c93b7d5ffe825471c51bd80db5f519fbf03",
+      "nativeFactorPairsSha256": "de4698ef926af4596b70493de3e769f137ba6fddf43aaf9acbc77c3bf607278b",
+      "nativeProofScalarsSha256": "7eb8299da3ac12e3aee5c1245d5fa6f558ae4ebbf119242917a0b8bede95cc04"
+    },
+    "completedFilesReused": 1578,
+    "newScientificConstruction": false
   }
 }

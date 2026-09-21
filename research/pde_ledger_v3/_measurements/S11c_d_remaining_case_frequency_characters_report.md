@@ -37,3 +37,20 @@ which part of the assertion failed, joins the original certificate and checks
 baseline row schema. It enables no scientific constructor. The original run
 is not restarted, and no result is accepted. Its silent hook will continue
 only after the diagnostic's actual outcome and preserved evidence are read.
+
+The diagnostic finished cleanly in 241.07 worker / 242.74 native seconds.
+All six actual source uses match the accepted certificates, whose residuals
+and saved proof scalars are zero; the raw amplitude residuals are nonzero.
+Both source frequency and amplitude match, and native character equation and
+normalization residuals are zero. All 80 baseline rows and full jets agree.
+Peak memory was 203,206,656 bytes with no cap/OOM/swap events.
+
+A separate recovery now references all 1,578 completed files unchanged and
+uses the accepted amplitude-certificate reader. Whole-prepare reverse AST
+permits that reader, exact reuse of the diagnostic's baseline comparison,
+and the existing baseline directory. Original main and native row census
+remain unchanged. Every reused write requires full requested/saved identity;
+all reference writes are otherwise prohibited. Thirty-seven actual factor
+proof/case paths and original/frozen native proof bodies pass static review.
+The diagnostic and original worker will not run again. Recovery is prepared,
+not yet accepted; it still requires clean execution and saved validation.

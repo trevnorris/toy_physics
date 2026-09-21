@@ -109,3 +109,14 @@ zero OOM/swap and minimum host available memory 23.61 GB. The separate
 ACCEPTED_CASE_MATERIAL_NUMERICAL_RESPONSES checkpoint now accepts the four finite,
 three new continuum and four current bookkeeping controls. Historical baseline
 continuum stays unchanged. Full physical transcript/replay/publication is next.
+
+Numerical acceptance is committed at e12df5cd. A saved-output input focus is
+prepared to copy all 655 numerical artifacts and the historical baseline output,
+save four complete coordinate output bundles, join actual boundary array units
+and compile all eleven new emitter/replay routes. Native continuum/current
+emitters and the complete finite output loop remain joined; coordinate-specific
+fields have an explicit whole-function reverse adapter. The six accepted current
+unit declarations remain a separate view over unchanged original dimension
+states. First-payload samples are instrument checks, not complete transcripts.
+No scientific constructor or solve is enabled. Full emission and saved-stream
+replay will run in separate bounded phases after focused input acceptance.

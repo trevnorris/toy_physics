@@ -1,0 +1,69 @@
+{
+  "originalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_first_jet_output.py",
+  "originalSha256": "b27fc5bf3394f67a5e8c48deb8ee85e7bc39283749e9ecedfb3b3467106df69b",
+  "edits": [
+    [
+      "def emit_sensitivity(result,r):",
+      "def emit_coordinate(result,r):"
+    ],
+    [
+      "prefix='FIRST_JET_'+result['case'].replace('__','_')+'_SENSITIVITY'",
+      "prefix='MATERIAL_COORDINATE_'+result['case'].replace('__','_')+'_CONTROL'"
+    ],
+    [
+      "mode.numeric_metadata(body,lambda p:unit)",
+      "mode.numeric_metadata(body,lambda p:unit(p[0]//a.shape[1],p[0]%a.shape[1]) if callable(unit) else unit)"
+    ],
+    [
+      "s=result['sensitivity'];difference=s['finiteAndCommonGrid']",
+      "s=result['comparison'];difference=s"
+    ],
+    [
+      "difference['continuumOriginFields']",
+      "difference['continuumFields']"
+    ],
+    [
+      "s['fieldCoefficientDifference']",
+      "s['continuumFieldCoefficients']"
+    ],
+    [
+      "result['prepared']['incidentSignMutation']",
+      "result['forcingControls']['incidentSign']"
+    ],
+    [
+      "s['channelCoefficients']",
+      "s['continuumChannels']"
+    ],
+    [
+      "s['retainedPolynomialCurrent']",
+      "s['retainedPolynomialCurrents']"
+    ],
+    [
+      "s['openCurrentDifference']",
+      "result['currentDifferences']['open']"
+    ],
+    [
+      "s['endCurrentDifference']",
+      "result['currentDifferences']['ends']"
+    ],
+    [
+      "    for key,series in difference['continuumCurrent'].items():\n        for power,a in series.items():tensor('HOMOTOPY_DIFFERENCE_'+key+'_'+str(power),a,homotopy=power,literal=True)\n",
+      ""
+    ],
+    [
+      "    # Actual saved symbolic operands and proof scalars; no grade splitter or derivative runs.\n    records=result['caseBinding']['grades']['records'];originals=result['originalRecords']\n    for key,item in records.items():\n        rec=item['record'];old=originals[key]['record'];f.require(tuple(rec['UNIT'])==tuple(old['UNIT']) and m.same(item['address'],originals[key]['address']),'source address/unit before output')\n        body=sp.Tuple(old['ORIGINAL'],rec['ORIGINAL'],rec['ORIGINAL']-old['ORIGINAL'],*rec['COMPONENTS'].values());name=prefix+'_SOURCE_'+key\n        engine.emit(name,engine.carrier_fingerprint(body));engine.emit('METADATA_'+name,mode.numeric_metadata(body,lambda p,u=rec['UNIT']:u))\n        proofs=sp.Tuple(rec['ROUND_TRIP_RESIDUAL'],rec['RECONSTRUCTION_RESIDUAL'],*rec['DERIVATIVE_RESIDUALS'].values(),*rec['NATIVE_COLLECTOR_RESIDUALS'].values())\n        engine.emit(name+'_RESIDUALS',proofs);engine.emit('METADATA_'+name+'_RESIDUALS',mode.numeric_metadata(proofs,lambda p,u=rec['UNIT']:u))\n",
+      "    emit_boundary_maps(result,tensor)\n"
+    ],
+    [
+      "    b.structural_flags(prefix+'_MANIFEST',{'sourceFiles':result['sourceFiles'],'inputPackets':result['inputPackets'],'case':result['case'],'settings':{k:str(v) for k,v in result['settings'].items()},'evaluatedGradeOrigin':s['evaluatedGradeOrigin'],'materialComparison':s['materialComparison'],'scope':result['scope'],'sourceRecords':len(records),'physicalCurrentUnit':tuple(map(str,result['currentUnit'])),'finiteCurrentConvention':'Current forms divided by squared reference incoming flux-amplitude unit; closed finite amplitudes are not currents.','formalPoints':'Arithmetic truncation diagnostics, not additional physical inputs. Baseline has no invented direct formal-point comparison.','matrices':'Full arrays retained in pinned numerical packets; fingerprints include actual shape, bytes and physical block projection units.'})",
+      "    b.structural_flags(prefix+'_MANIFEST',{'sourceFiles':result['sourceFiles'],'inputPackets':result['inputPackets'],'case':result['case'],'settings':{k:str(v) for k,v in result['settings'].items()},'evaluatedGradeOrigin':result['gradeOriginNumerical'],'scope':result['scope'],'sourceRows':result['sourceCensus']['rows'],'nativeTerms':result['sourceCensus']['terms'],'sourceAmplitudes':result['sourceCensus']['sources'],'physicalCurrentUnit':tuple(map(str,result['currentUnit'])),'materialUnitSupplementRequired':True,'finiteCurrentConvention':'Open-current forms divided by squared reference incoming flux-amplitude unit; closed matching amplitudes are separate.','formalPoints':'Saved arithmetic truncation diagnostics; none invented for historical baseline.','coordinateRoute':'Actual material then common Eulerian maps precede response construction; every full input and source proof is pinned.','matrices':'Full arrays remain in pinned numerical packets; physical entry units and shape/byte fingerprints retained.'})"
+    ],
+    [
+      "    for name,record in result['openFiniteCurrent'].items():",
+      "    for i in range(5):\n        trace=tuple(v-(1 if j==0 else 0) for j,v in enumerate(field[i]))\n        tensor('OMITTED_INCOMING_COVECTOR_'+str(i),result['forcingControls']['omittedIncomingCovector'][i*size:(i+1)*size][[0,-1]],trace,epsilon=1,literal=True)\n    for name,record in result['openFiniteCurrent'].items():"
+    ]
+  ],
+  "wholeReverseAST": true,
+  "nativeFiniteOutputBodyUnchanged": true,
+  "coordinateOutputUsesSavedOperandsOnly": true
+}

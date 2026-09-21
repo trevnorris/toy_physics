@@ -1276,5 +1276,29 @@
     }
   },
   "acceptedNumericalCheckpoint": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_coordinate_response_checkpoint.json",
-  "acceptedNumericalCheckpointSha256": "70f300013d3ee486f55bf8c0d87a821eaa501f005647023b525d0834e37d6fe8"
+  "acceptedNumericalCheckpointSha256": "70f300013d3ee486f55bf8c0d87a821eaa501f005647023b525d0834e37d6fe8",
+  "outputPreparation": {
+    "status": "PREPARED_GUARDED_OUTPUT_INPUT_FOCUS",
+    "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/response/output/focused",
+    "helperSha256": "7cd38cb2149fd7d94d51c0cbc069718a90bf231f28c1eb6dc786b6e6ff3e1be5",
+    "planSha256": "37b6aacf122a49b939d9fe8e1122b7f6409a92a6821a117f39a32ad7f586328b",
+    "wiringSha256": "936d38acfa5d0572f1f770389ef3caf6161a188212431a4f6c5aedbcbeac78ed",
+    "emitterAdapterSha256": "b2395af9a503dcf36b3831faf94e7930fc97e95db11464edae9bfa4e8a723cef",
+    "acceptedNumericalCommit": "e12df5cd",
+    "copiesRequired": 655,
+    "bundlesRequired": 4,
+    "nativeContinuumParts": 3,
+    "nativeCurrentParts": 4,
+    "coordinateParts": 4,
+    "reusedHistoricalParts": 1,
+    "newScientificOperations": 0,
+    "focusedSamplesArePhysicalTranscripts": false,
+    "emissionAndReplaySeparate": true,
+    "guard": "scripts/s11c_guarded_run.py",
+    "seconds": 900,
+    "wholeJobMemoryBytes": 2147483648,
+    "swapBytes": 0,
+    "nativeThreads": 1,
+    "launchIsAcceptance": false
+  }
 }

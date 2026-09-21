@@ -54,3 +54,8 @@ all reference writes are otherwise prohibited. Thirty-seven actual factor
 proof/case paths and original/frozen native proof bodies pass static review.
 The diagnostic and original worker will not run again. Recovery is prepared,
 not yet accepted; it still requires clean execution and saved validation.
+
+Recovery launched at 2026-09-21T22:29:37Z from c0860fda. Initial actual
+2-GiB/zero-swap/one-CPU/nice-15/32-task/single-thread limits are verified,
+with empty stderr. Its silent local hook handles completion/error; no model
+polling or automatic retry is scheduled. Launch is not acceptance.

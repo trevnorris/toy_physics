@@ -1,5 +1,5 @@
 {
-  "status": "PREPARED_CERTIFICATE_READER_RECOVERY",
+  "status": "RUNNING_SAVED_CERTIFICATE_READER_RECOVERY",
   "sourceAcceptanceCommit": "ed3ac234",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/characters",
   "helperSha256": "d373807160f996877c8a2962a16e53214da723a5c48aa83298ce2ac1820ff03c",
@@ -356,7 +356,7 @@
   },
   "recovery": {
     "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/characters-recovery-01",
-    "status": "PREPARED",
+    "status": "RUNNING",
     "helperSha256": "5e4f50224d1bf40626f2d8b36e62a33d93e947dc7093ed567515a5c41ada5c44",
     "planSha256": "75a0c02f85c0587df964453a2c461a61ecf08be8e73e20c35252d2a79d395b66",
     "repairSha256": "09eeedfb7154a69d9d4a872cdf2f05b6c5e0c91ffe131f3b7c4138e296c8bf74",
@@ -373,6 +373,55 @@
       "nativeProofScalarsSha256": "7eb8299da3ac12e3aee5c1245d5fa6f558ae4ebbf119242917a0b8bede95cc04"
     },
     "completedFilesReused": 1578,
-    "newScientificConstruction": false
+    "newScientificConstruction": false,
+    "launch": {
+      "launchedUtc": "2026-09-21T22:29:37.876812+00:00",
+      "guardPid": 935679,
+      "watcherPid": 935680,
+      "command": [
+        "/usr/bin/python",
+        "/var/projects/toy_physics/scripts/s11c_guarded_run.py",
+        "--log-directory",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/characters-recovery-01/resource-guard",
+        "--seconds",
+        "900",
+        "--",
+        "/usr/bin/python",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+        "--run-root",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/characters-recovery-01",
+        "--stage",
+        "frequency_characters_recover",
+        "--",
+        "/usr/bin/python",
+        "-u",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_characters_recover.py",
+        "--run-directory",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/characters-recovery-01/complete"
+      ],
+      "scriptSha256": "5e4f50224d1bf40626f2d8b36e62a33d93e947dc7093ed567515a5c41ada5c44",
+      "guardSha256": "6492f5ab11dc2ab2f80bbfcc96d7eb6b8632afea07100dd8f74a7954f3ffe542",
+      "implementationCommit": "c0860fda10eebf8b576b118efe58bb08853b64ef",
+      "launchIsAcceptance": false,
+      "newScientificConstruction": false
+    },
+    "initialVerifiedLimits": {
+      "memory.max": "2147483648",
+      "memory.swap.max": "0",
+      "pids.max": "32",
+      "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-974218f6c57a.service",
+      "nice": 15,
+      "affinity": [
+        15
+      ],
+      "threads": {
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "VECLIB_MAXIMUM_THREADS": "1",
+        "BLIS_NUM_THREADS": "1"
+      }
+    }
   }
 }

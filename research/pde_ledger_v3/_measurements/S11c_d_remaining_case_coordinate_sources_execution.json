@@ -1,5 +1,5 @@
 {
-  "status": "CASE_COORDINATE_SOURCES_LAUNCHED",
+  "status": "ACCEPTED_CASE_COORDINATE_SOURCES",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260920/sources",
   "acceptedInputCommit": "4365f2b1",
   "acceptedFirstJetSourceCommit": "ae5682fd",
@@ -10,7 +10,7 @@
     "newFieldJetMaps": 0,
     "newNumericalWork": 0
   },
-  "next": "Construct only missing union images using unchanged native coordinate/source helpers; validate all actual source/alias/ordered-limit/unit joins and save every operand before guards.",
+  "next": "Bind only missing material operands, derive exact numerical reuse routes, then construct own-case material operators and responses in common Eulerian coordinates.",
   "launch": {
     "launchedUtc": "2026-09-21T02:03:18.367349+00:00",
     "supervisorPid": 2212575,
@@ -41,5 +41,35 @@
   },
   "launchIsAcceptance": false,
   "launchActiveRecord": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260920/sources/active.json",
-  "watcherState": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260920/sources/completion-watcher/state.json"
+  "watcherState": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260920/sources/completion-watcher/state.json",
+  "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260920/sources/complete",
+  "checksSha256": "8df34d53ad45f7d19c4127d59355fff5276589e64725e6659684484e900a1891",
+  "actualOutcome": {
+    "stage": "coordinate_sources",
+    "command": [
+      "python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_coordinate_sources.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260920/sources/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260920/sources/coordinate_sources.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260920/sources/coordinate_sources.stderr",
+    "startedUtc": "2026-09-21T02:03:18.384331+00:00",
+    "childPid": 2212578,
+    "status": "completed",
+    "exitCode": 0,
+    "wallSeconds": 91.51941405795515,
+    "stderrBytes": 0,
+    "finishedUtc": "2026-09-21T02:04:49.903794+00:00"
+  },
+  "validation": {
+    "exitCode": 0,
+    "stderrBytes": 0,
+    "toolSession": 85792,
+    "checksStdoutIdentical": true,
+    "checksSha256": "e74645bc7ddef19d7cbc72db790b490f3e4f6bc5dd3f0db4ecac3a271c264a59",
+    "scriptSha256": "9a6fe5239b1b74fe1d0d31390dcc48fc3688e478b5b45e63b9b78cea4bfa942b",
+    "wallSeconds": 47.5320155788213
+  }
 }

@@ -1,23 +1,30 @@
-# Remaining coordinate-source preparation
+# Remaining coordinate inputs accepted
 
-First-derivative numerical responses and all twelve output parts are complete;
-output acceptance e4d805f6, annex 46796940 and verification 332cc046 preserve the
-original numerical checkpoint 47384f68. No prior numerical or output work is
-queued for repetition.
+Construction completed in 65.13 seconds with actual supervisor/child exit zero,
+empty stderr and identical checks/stdout. Independent saved-operand validation
+passed in 19.05 seconds with the same clean outcome. All 89 sources, 1248 inputs,
+410 copies and 443 artifacts validate; 1865 distinct paths remain unchanged.
 
-The next bounded preparation joins the saved four-case native source/address
-proofs to the accepted baseline chart, field-jet maps and coordinate records.
-It computes the literal source-transform reuse census and preserves every
-physical address, source, field, unit and ordered limit. It selectively reads
-the original density map and retains the live RHOBR volume-density gradient,
-while reusing computed constant-rho4 absence. These source factors do not yet
-identify an isolated operator term or supply another material scattering route.
+All four cases retain 1467 source/coefficient records, 300 row addresses, 647
+native terms and 120 source amplitudes. The literal source-transform census has
+1269 accepted-coordinate record uses, 86 genuinely new union operands and 112
+additional uses of those new operands. The 86 comprise 64 local coefficients,
+4 cell coefficients, 6 factors and 12 source amplitudes (first appearances
+38/31/17). These are symbolic coordinate-operation identities, not numerical
+row-reuse approval. Actual physical addresses, units and internal limits remain.
 
-Implementation compiles. Construction, final validation and actual numerical
-reuse counts remain pending. One native thread, 2 GiB and 900 seconds with a
-silent completion/error hook; no new source reduction, binding, factorization,
-grade extraction, quadrature, current/mode construction or response solve.
+The constant-rho4 source/gradient absence is reused exactly. RHOBR volume density
+rho_br/W_bg keeps its actual normal profile live; its physical gradient has one
+nonzero entry and six chain/covector proof scalars vanish. The dimensionless
+chart-advection factor responds to literal reversal and omission. Full source
+and profile identities permit sharing these density operands between anchorings.
+Sixteen record/address/unit/limit controls and actual density-family/unit controls
+respond. Raw operands, original denominators and normalized proofs are retained.
 
-The source-input job launched from f8808ef3 under supervisor 2203957 and
-silent watcher 2203958. The hook owns the actual supervisor PID. Final source
-reuse/density checks and clean completion remain pending; launch is not acceptance.
+No source transform, source-jet extraction, numerical binding, grade extraction,
+factorization, quadrature, current/mode construction, matrix assembly or response
+solve ran. No uniquely isolated closed-operator advection term or new material
+scattering route is claimed. Construct the 86 missing coordinate images next,
+then actual own-case operators and common-Eulerian boundary/current/phase routes.
+Scoped case searches and final engine/exports remain; no baseline contour doubling
+or broad campaign. Prior accepted outputs and physical inputs remain unchanged.

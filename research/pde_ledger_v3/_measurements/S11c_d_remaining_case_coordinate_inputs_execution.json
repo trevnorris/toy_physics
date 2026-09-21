@@ -1,5 +1,5 @@
 {
-  "status": "CASE_COORDINATE_INPUT_PREPARATION_LAUNCHED",
+  "status": "ACCEPTED_CASE_COORDINATE_SOURCE_INPUTS",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260920/inputs",
   "firstJetOutputAcceptance": "e4d805f6",
   "firstJetAnnex": "46796940",
@@ -7,7 +7,7 @@
   "acceptedBaselineCoordinateSource": "9c4382c6",
   "acceptedBaselineCoordinateResponse": "19a9f5a1",
   "continuationStatus": "RESUMED_BY_USER",
-  "next": "Run saved source/chart reuse and density input preparation, validate the actual final outcome, then construct only missing material source transforms and own-case response routes.",
+  "next": "Construct only 86 missing union coordinate record images (64 local,4 cell,6 factor,12 source); retain accepted chart/field jets, baseline records and completed density/control operands. Then own-case material response routes.",
   "implementationCommit": "f8808ef3e33362787a6073861cc76048680cd086",
   "launch": {
     "launchedUtc": "2026-09-21T01:49:32.895856+00:00",
@@ -39,5 +39,196 @@
   },
   "launchActiveRecord": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260920/inputs/active.json",
   "watcherState": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260920/inputs/completion-watcher/state.json",
-  "launchIsAcceptance": false
+  "launchIsAcceptance": false,
+  "outcome": {
+    "stage": "coordinate_inputs",
+    "command": [
+      "python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_coordinate_inputs.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260920/inputs/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260920/inputs/coordinate_inputs.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260920/inputs/coordinate_inputs.stderr",
+    "startedUtc": "2026-09-21T01:49:32.928475+00:00",
+    "childPid": 2203965,
+    "status": "completed",
+    "exitCode": 0,
+    "wallSeconds": 65.13278123736382,
+    "stderrBytes": 0,
+    "finishedUtc": "2026-09-21T01:50:38.062246+00:00"
+  },
+  "validation": {
+    "status": "VALIDATED_CASE_COORDINATE_SOURCE_INPUTS",
+    "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260920/inputs/complete",
+    "checksSha256": "e03d2721112fb27a64fd960fb986347bfd1965718907d50fbcb9819073382550",
+    "sourceFiles": 89,
+    "inputPackets": 1248,
+    "copies": 410,
+    "artifacts": 443,
+    "checkedPaths": 1865,
+    "cases": {
+      "LAB_HELD__RHO4_CONSTANT": {
+        "records": 375,
+        "rows": 80,
+        "terms": 160,
+        "sources": 35,
+        "acceptedCoordinateRecordReuses": 375,
+        "newUnionOperands": 0,
+        "unmappedSharedOperands": 0,
+        "controls": {
+          "changedAddress": true,
+          "changedCoefficient": true,
+          "changedUnit": true,
+          "changedSourceLimit": true
+        },
+        "density": {
+          "rule": "RHO4_CONSTANT",
+          "structuralAbsence": true,
+          "gradientNonzeroEntries": 0,
+          "controls": {
+            "changedDensityFamily": true,
+            "changedDensityUnit": true,
+            "ignoredThicknessChainResponds": null
+          },
+          "proofScalars": 0
+        },
+        "savedSourcePairsValidated": 375,
+        "densityPacketSha256": "48864989889c68df2c33d222e559fcbd8f183461c5eae5f9265c390e8b7cdfac"
+      },
+      "LAB_HELD__RHOBR_CONSTANT": {
+        "records": 335,
+        "rows": 70,
+        "terms": 140,
+        "sources": 25,
+        "acceptedCoordinateRecordReuses": 295,
+        "newUnionOperands": 38,
+        "unmappedSharedOperands": 2,
+        "controls": {
+          "changedAddress": true,
+          "changedCoefficient": true,
+          "changedUnit": true,
+          "changedSourceLimit": true
+        },
+        "density": {
+          "rule": "RHOBR_CONSTANT",
+          "structuralAbsence": false,
+          "gradientNonzeroEntries": 1,
+          "controls": {
+            "changedDensityFamily": true,
+            "changedDensityUnit": true,
+            "ignoredThicknessChainResponds": true
+          },
+          "proofScalars": 6
+        },
+        "savedSourcePairsValidated": 335,
+        "densityPacketSha256": "0193c403fd72a52cc9cbac99e70f2509da728aea9b79f38da7d4765ce98602ef"
+      },
+      "MATERIAL_ADVECTED__RHO4_CONSTANT": {
+        "records": 400,
+        "rows": 80,
+        "terms": 185,
+        "sources": 35,
+        "acceptedCoordinateRecordReuses": 333,
+        "newUnionOperands": 31,
+        "unmappedSharedOperands": 36,
+        "controls": {
+          "changedAddress": true,
+          "changedCoefficient": true,
+          "changedUnit": true,
+          "changedSourceLimit": true
+        },
+        "density": {
+          "rule": "RHO4_CONSTANT",
+          "structuralAbsence": true,
+          "gradientNonzeroEntries": 0,
+          "controls": {
+            "changedDensityFamily": true,
+            "changedDensityUnit": true,
+            "ignoredThicknessChainResponds": null
+          },
+          "proofScalars": 0
+        },
+        "savedSourcePairsValidated": 400,
+        "densityPacketSha256": "48864989889c68df2c33d222e559fcbd8f183461c5eae5f9265c390e8b7cdfac"
+      },
+      "MATERIAL_ADVECTED__RHOBR_CONSTANT": {
+        "records": 357,
+        "rows": 70,
+        "terms": 162,
+        "sources": 25,
+        "acceptedCoordinateRecordReuses": 266,
+        "newUnionOperands": 17,
+        "unmappedSharedOperands": 74,
+        "controls": {
+          "changedAddress": true,
+          "changedCoefficient": true,
+          "changedUnit": true,
+          "changedSourceLimit": true
+        },
+        "density": {
+          "rule": "RHOBR_CONSTANT",
+          "structuralAbsence": false,
+          "gradientNonzeroEntries": 1,
+          "controls": {
+            "changedDensityFamily": true,
+            "changedDensityUnit": true,
+            "ignoredThicknessChainResponds": true
+          },
+          "proofScalars": 6
+        },
+        "savedSourcePairsValidated": 357,
+        "densityPacketSha256": "0193c403fd72a52cc9cbac99e70f2509da728aea9b79f38da7d4765ce98602ef"
+      }
+    },
+    "totals": {
+      "records": 1467,
+      "rows": 300,
+      "terms": 647,
+      "sources": 120,
+      "acceptedCoordinateRecordReuses": 1269,
+      "newUnionOperands": 86,
+      "unmappedSharedOperands": 112
+    },
+    "newUnionKinds": {
+      "cell": 4,
+      "factor": 6,
+      "local": 64,
+      "source": 12
+    },
+    "actualConstructionOutcome": {
+      "stage": "coordinate_inputs",
+      "command": [
+        "python",
+        "-u",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_coordinate_inputs.py",
+        "--run-directory",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260920/inputs/complete"
+      ],
+      "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260920/inputs/coordinate_inputs.stdout",
+      "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260920/inputs/coordinate_inputs.stderr",
+      "startedUtc": "2026-09-21T01:49:32.928475+00:00",
+      "childPid": 2203965,
+      "status": "completed",
+      "exitCode": 0,
+      "wallSeconds": 65.13278123736382,
+      "stderrBytes": 0,
+      "finishedUtc": "2026-09-21T01:50:38.062246+00:00"
+    },
+    "scriptSha256": "f5f9430717ebee0a8db7f732365ce492b6e15cd9bc00a6b7931fea9884f36437",
+    "newCoordinateImages": 0,
+    "newDensityDerivatives": 0,
+    "newNumericalWork": 0,
+    "wallSeconds": 19.051984030753374,
+    "validationDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260920/input-acceptance",
+    "validationChecksSha256": "3ee5e9108f698c962b09ff81fb18a0807a6ece0ec2bc45007ff8e0c41cc33b61",
+    "actualValidatorOutcome": {
+      "session": 45834,
+      "exitCode": 0,
+      "stderrBytes": 0,
+      "checksStdoutIdentical": true
+    }
+  },
+  "checkpoint": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_coordinate_inputs_checkpoint.json"
 }

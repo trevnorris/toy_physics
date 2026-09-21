@@ -1398,12 +1398,84 @@
       "minHostAvailableBytes": 20506263552
     },
     "recovery": {
-      "status": "PREPARED_SAVED_OUTPUT_INPUT_CONTINUATION",
+      "status": "RUNNING_GUARDED_SAVED_OUTPUT_CONTINUATION",
       "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/response/output/focused-recovery-01",
       "helperSha256": "4c85c65520f0e5b211bf509bd87b14395c84eb0cbc028e47622a3c3994ea6fe7",
       "repairSha256": "66baa74cc44a3e552b39853c2108a8c5ce017d34e1426d4ba24fe4cef55b7d12",
       "originalBaselineBundleReused": true,
-      "noScientificReconstruction": true
+      "noScientificReconstruction": true,
+      "launch": {
+        "launchedUtc": "2026-09-21T16:12:55.538583+00:00",
+        "guardPid": 821513,
+        "watcherPid": 821514,
+        "command": [
+          "/usr/bin/python",
+          "/var/projects/toy_physics/scripts/s11c_guarded_run.py",
+          "--log-directory",
+          "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/response/output/focused-recovery-01/resource-guard",
+          "--seconds",
+          "900",
+          "--",
+          "/usr/bin/python",
+          "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+          "--run-root",
+          "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/response/output/focused-recovery-01",
+          "--stage",
+          "coordinate_output_recover",
+          "--",
+          "/usr/bin/python",
+          "-u",
+          "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_coordinate_output_recover.py",
+          "--run-directory",
+          "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/response/output/focused-recovery-01/complete",
+          "--stage",
+          "focused"
+        ],
+        "threadEnvironment": {
+          "OPENBLAS_NUM_THREADS": "1",
+          "OMP_NUM_THREADS": "1",
+          "MKL_NUM_THREADS": "1",
+          "NUMEXPR_NUM_THREADS": "1",
+          "VECLIB_MAXIMUM_THREADS": "1",
+          "BLIS_NUM_THREADS": "1"
+        },
+        "helperSha256": "4c85c65520f0e5b211bf509bd87b14395c84eb0cbc028e47622a3c3994ea6fe7",
+        "planSha256": "78d46e2cabb04d64660af56a98a84063dd1c5acc44305f06c17751f34bb913d6",
+        "wiringSha256": "936d38acfa5d0572f1f770389ef3caf6161a188212431a4f6c5aedbcbeac78ed",
+        "adapterSha256": "b2395af9a503dcf36b3831faf94e7930fc97e95db11464edae9bfa4e8a723cef",
+        "guardSha256": "6492f5ab11dc2ab2f80bbfcc96d7eb6b8632afea07100dd8f74a7954f3ffe542",
+        "numericalChecksSha256": "a67635eda94ccb1ceac2e7eeff06e447e3515c2ce2549604865a3d69f7b63f5d",
+        "validatorChecksSha256": "6bcb878967e046ad75d8312538080c1fd31e3ee2c38bfd0394febfd8d4a83650",
+        "implementationCommit": "f1d474bfa5043f734bc3c49ddc3879c19c815ca9",
+        "acceptedNumericalArtifactCopies": 655,
+        "launchIsAcceptance": false,
+        "newScientificConstruction": false,
+        "newPhysicalTranscript": false,
+        "originalFailedFocus": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/response/output/focused/complete",
+        "completedBaselineBundleReused": true,
+        "repairSha256": "66baa74cc44a3e552b39853c2108a8c5ce017d34e1426d4ba24fe4cef55b7d12"
+      },
+      "actualLimitValidation": {
+        "verified": true,
+        "actual": {
+          "memory.max": "2147483648",
+          "memory.swap.max": "0",
+          "pids.max": "32",
+          "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-dfeccb188e9d.service",
+          "nice": 15,
+          "affinity": [
+            15
+          ],
+          "threads": {
+            "OPENBLAS_NUM_THREADS": "1",
+            "OMP_NUM_THREADS": "1",
+            "MKL_NUM_THREADS": "1",
+            "NUMEXPR_NUM_THREADS": "1",
+            "VECLIB_MAXIMUM_THREADS": "1",
+            "BLIS_NUM_THREADS": "1"
+          }
+        }
+      }
     }
   }
 }

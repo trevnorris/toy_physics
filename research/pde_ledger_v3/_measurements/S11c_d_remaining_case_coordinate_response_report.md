@@ -139,3 +139,9 @@ The original focus/main/native output remain source-joined. Recovery reuses
 the complete baseline bundle and passed prefix; only three unstarted bundles
 and unfinished unit/emitter checks remain. Actual unit/address mutation guards
 run under the same resource containment. No numerical reconstruction is enabled.
+
+Saved-output continuation launched from f1d474bf at 16:12:55 UTC with actual
+verified whole-job 2 GiB, zero swap, one CPU, nice 15 and 32-task limits, all
+native threads one. One 900-second supervisor and silent completion/error hook
+own continuation. It reuses the saved baseline bundle and preserves the failed
+focus; the unit-reader repair and remaining output inputs await final guards.

@@ -244,3 +244,13 @@ OOM or swap and minimum host available memory 23.58 GB. Remaining replays and
 aggregation each have separate work and final-audit workers. One silent local
 hook owns completion/error notification; no polling or automatic retries.
 Original failed receipts and completed streams remain unchanged.
+
+The nine continuation phases completed cleanly in 2290.52 seconds, with all
+actual worker/coordinator exits zero, empty stderr and checks/stdout identity.
+The longest guarded worker was 786.50 seconds; no OOM or swap occurred, and
+minimum host available memory was 22.85 GB. All twelve parts now form a
+93,126,403-byte transcript with 28,780 decoded payloads, 14,366 keys and 903,142
+metadata paths. The original failed phase remains recorded alongside its
+accepted audit continuation. No completed stream or scientific work repeated.
+Independent saved metadata/codec/raw-concatenation/hash validation is prepared;
+annex publication and final output acceptance await its clean result.

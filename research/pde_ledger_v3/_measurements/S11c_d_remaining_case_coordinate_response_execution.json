@@ -1972,7 +1972,7 @@
     "wholeOutputAccepted": false
   },
   "materialOutputRemainingSequence": {
-    "status": "RUNNING_NINE_SPLIT_PHASES",
+    "status": "COMPLETED_AWAITING_INDEPENDENT_SAVED_OUTPUT_VALIDATION",
     "acceptedAuditCommit": "f6be0aad",
     "acceptedAuditChecksSha256": "b63de30240c6417f193515aedb5b1636d06713f25e7ef0c771e06d477c5a0749",
     "schedule": [
@@ -2193,6 +2193,67 @@
       "stdoutSha256": "2a55723c8f63705d432e427d88e2a70e5674156bd26c056fe8be01c410275832",
       "finalAuditPending": false
     },
-    "launchIsWholeOutputAcceptance": false
+    "launchIsWholeOutputAcceptance": false,
+    "outcome": {
+      "checksSha256": "64a2f56f93e9d7a29c4c59fe1e2018eec628c7ba7cdc1e0772475a9239ee438f",
+      "outcome": {
+        "stage": "coordinate_output_continue",
+        "command": [
+          "/usr/bin/python",
+          "-u",
+          "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_coordinate_output_continue_staged.py",
+          "--run-directory",
+          "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/response/output/production-continuation-01/complete"
+        ],
+        "startedUtc": "2026-09-21T20:05:29.709736+00:00",
+        "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/response/output/production-continuation-01/coordinate_output_continue.stdout",
+        "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/response/output/production-continuation-01/coordinate_output_continue.stderr",
+        "status": "completed",
+        "scientificWorkersGuardedIndividually": true,
+        "childPid": 886474,
+        "exitCode": 0,
+        "stderrBytes": 0,
+        "wallSeconds": 2290.518462189997,
+        "finishedUtc": "2026-09-21T20:43:40.228245+00:00"
+      },
+      "sourceFiles": 211,
+      "inputPackets": 37113,
+      "copiedInputs": 949,
+      "artifacts": 1090,
+      "parts": 12,
+      "aggregate": {
+        "tags": 28780,
+        "keys": 14366,
+        "parts": 12,
+        "localIndicesPreserved": 12,
+        "identicalDecodedPayloads": 28780,
+        "decodedSha256": "d84268b0fcc011b377eeade6bb6cd66100736e30c557a9f5c345d686098de799",
+        "metadataPaths": 903142,
+        "malformedReferenceRejected": true,
+        "changedPayloadRejected": true,
+        "nativeCodecUnchanged": true
+      },
+      "transcript": {
+        "sha256": "fe6cd0224ec8d9a232b8a9abbffa296e2092a88921c2ab8c5e32c9b5b4a3a6d8",
+        "bytes": 93126403
+      },
+      "maximumGuardedSeconds": 786.5041470069991,
+      "minimumHostAvailableBytes": 22853693440,
+      "maximumMemoryBytes": 2147483648,
+      "capReclaims": 1015021,
+      "oomEvents": 0,
+      "swapBytes": 0,
+      "independentValidationPending": true
+    },
+    "validator": {
+      "validatorSha256": "ae2b982c17c332a9f71b4a802839e9a2d2a1e8856eb411e74916268cb2260965",
+      "validatorPath": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/response/output/production-acceptance/validate.py",
+      "planSha256": "8524385040f1d280cdcec39a244caa4ed4af0a7a3d3f73cbb5bf21bf413a0f94",
+      "originalChecksSha256": "64a2f56f93e9d7a29c4c59fe1e2018eec628c7ba7cdc1e0772475a9239ee438f",
+      "stdlibOnly": true,
+      "literalReaderRejectedControls": 4,
+      "scientificImports": false,
+      "emitterOrPhysicalReplayInvoked": false
+    }
   }
 }

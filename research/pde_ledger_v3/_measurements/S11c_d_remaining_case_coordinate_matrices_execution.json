@@ -1,5 +1,5 @@
 {
-  "status": "MATERIAL_INTERIOR_QUADRATURE_DEPENDENCY_REPAIR_PREPARED",
+  "status": "GUARDED_NATIVE_GAUSS_RULE_REPAIR_LAUNCHED",
   "acceptedBindings": "4757b38b",
   "acceptedEulerianInteriors": "2eed4150",
   "acceptedBaselineMaterial": "19a9f5a1",
@@ -879,7 +879,7 @@
     "helperSha256": "84c3f45195e94933b266e6cd2d9b02c2aa59a7081f8af7e59d0553d3f31860b7",
     "plan": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_coordinate_matrices_recovery_plan.md",
     "planSha256": "b8ec118e8742bdfb220b6412de35cd2f65cd53d52d86724041a2f687e79c676e",
-    "status": "PREPARED_NOT_ACCEPTED",
+    "status": "LAUNCHED_NOT_ACCEPTED",
     "nativeRuleOrders": [
       4,
       16,
@@ -887,6 +887,66 @@
       512
     ],
     "physicalEigensolversRemainBlocked": true,
-    "newPhysicalIntegration": false
+    "newPhysicalIntegration": false,
+    "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/rule-repair",
+    "launch": {
+      "launchedUtc": "2026-09-21T12:12:28.574829+00:00",
+      "guardPid": 176812,
+      "watcherPid": 176813,
+      "command": [
+        "/usr/bin/python",
+        "/var/projects/toy_physics/scripts/s11c_guarded_run.py",
+        "--log-directory",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/rule-repair/resource-guard",
+        "--seconds",
+        "900",
+        "--",
+        "/usr/bin/python",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+        "--run-root",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/rule-repair",
+        "--stage",
+        "quadrature_rule_focused",
+        "--",
+        "/usr/bin/python",
+        "-u",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_coordinate_matrices_recover.py",
+        "--rule-focus",
+        "--run-directory",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/rule-repair/complete"
+      ],
+      "threadEnvironment": {
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1"
+      },
+      "implementationCommit": "3f40cf06f4add6ceee0cfae5391a1aa7080162fa",
+      "helperSha256": "84c3f45195e94933b266e6cd2d9b02c2aa59a7081f8af7e59d0553d3f31860b7",
+      "guardSha256": "6492f5ab11dc2ab2f80bbfcc96d7eb6b8632afea07100dd8f74a7954f3ffe542",
+      "focusChecksSha256": "720cff0a9fd7f04313616141ba38ccd7f875bcbb4539d6411faacefa8645466b",
+      "launchIsAcceptance": false,
+      "acceptedFocusArtifacts": 3870,
+      "scope": "Native standard-interval node/weight repair; no physical source, basis, integral, operator or solve."
+    },
+    "effectiveResourceLimits": {
+      "memory.max": "2147483648",
+      "memory.swap.max": "0",
+      "pids.max": "32",
+      "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-a93bcfce5aad.service",
+      "nice": 15,
+      "affinity": [
+        15
+      ],
+      "threads": {
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "VECLIB_MAXIMUM_THREADS": "1",
+        "BLIS_NUM_THREADS": "1"
+      }
+    },
+    "watcherState": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/rule-repair/completion-watcher/state.json"
   }
 }

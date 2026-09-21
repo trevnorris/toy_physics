@@ -120,3 +120,10 @@ unit declarations remain a separate view over unchanged original dimension
 states. First-payload samples are instrument checks, not complete transcripts.
 No scientific constructor or solve is enabled. Full emission and saved-stream
 replay will run in separate bounded phases after focused input acceptance.
+
+The saved-output input focus launched from fbdff98b at 16:03:11 UTC under
+verified whole-job 2 GiB, zero swap, one CPU, nice 15 and 32-task limits,
+with all native threads one. One 900-second supervisor and silent local
+completion/error hook own continuation. It checks saved bundles and output
+wiring; no new physical transcript or scientific construction is enabled.
+Focused acceptance awaits the actual final outcome.

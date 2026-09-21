@@ -1278,7 +1278,7 @@
   "acceptedNumericalCheckpoint": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_coordinate_response_checkpoint.json",
   "acceptedNumericalCheckpointSha256": "70f300013d3ee486f55bf8c0d87a821eaa501f005647023b525d0834e37d6fe8",
   "outputPreparation": {
-    "status": "PREPARED_GUARDED_OUTPUT_INPUT_FOCUS",
+    "status": "RUNNING_GUARDED_OUTPUT_INPUT_FOCUS",
     "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/response/output/focused",
     "helperSha256": "7cd38cb2149fd7d94d51c0cbc069718a90bf231f28c1eb6dc786b6e6ff3e1be5",
     "planSha256": "37b6aacf122a49b939d9fe8e1122b7f6409a92a6821a117f39a32ad7f586328b",
@@ -1299,6 +1299,75 @@
     "wholeJobMemoryBytes": 2147483648,
     "swapBytes": 0,
     "nativeThreads": 1,
-    "launchIsAcceptance": false
+    "launchIsAcceptance": false,
+    "launch": {
+      "launchedUtc": "2026-09-21T16:03:11.607526+00:00",
+      "guardPid": 788726,
+      "watcherPid": 788727,
+      "command": [
+        "/usr/bin/python",
+        "/var/projects/toy_physics/scripts/s11c_guarded_run.py",
+        "--log-directory",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/response/output/focused/resource-guard",
+        "--seconds",
+        "900",
+        "--",
+        "/usr/bin/python",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+        "--run-root",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/response/output/focused",
+        "--stage",
+        "coordinate_output_inputs",
+        "--",
+        "/usr/bin/python",
+        "-u",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_coordinate_output.py",
+        "--run-directory",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/response/output/focused/complete",
+        "--stage",
+        "focused"
+      ],
+      "threadEnvironment": {
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "VECLIB_MAXIMUM_THREADS": "1",
+        "BLIS_NUM_THREADS": "1"
+      },
+      "helperSha256": "7cd38cb2149fd7d94d51c0cbc069718a90bf231f28c1eb6dc786b6e6ff3e1be5",
+      "planSha256": "37b6aacf122a49b939d9fe8e1122b7f6409a92a6821a117f39a32ad7f586328b",
+      "wiringSha256": "936d38acfa5d0572f1f770389ef3caf6161a188212431a4f6c5aedbcbeac78ed",
+      "adapterSha256": "b2395af9a503dcf36b3831faf94e7930fc97e95db11464edae9bfa4e8a723cef",
+      "guardSha256": "6492f5ab11dc2ab2f80bbfcc96d7eb6b8632afea07100dd8f74a7954f3ffe542",
+      "numericalChecksSha256": "a67635eda94ccb1ceac2e7eeff06e447e3515c2ce2549604865a3d69f7b63f5d",
+      "validatorChecksSha256": "6bcb878967e046ad75d8312538080c1fd31e3ee2c38bfd0394febfd8d4a83650",
+      "implementationCommit": "fbdff98b9ed3a281d1504b6747e55fb7784f5b34",
+      "acceptedNumericalArtifactCopies": 655,
+      "launchIsAcceptance": false,
+      "newScientificConstruction": false,
+      "newPhysicalTranscript": false
+    },
+    "actualLimitValidation": {
+      "verified": true,
+      "actual": {
+        "memory.max": "2147483648",
+        "memory.swap.max": "0",
+        "pids.max": "32",
+        "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-58f368f06604.service",
+        "nice": 15,
+        "affinity": [
+          15
+        ],
+        "threads": {
+          "OPENBLAS_NUM_THREADS": "1",
+          "OMP_NUM_THREADS": "1",
+          "MKL_NUM_THREADS": "1",
+          "NUMEXPR_NUM_THREADS": "1",
+          "VECLIB_MAXIMUM_THREADS": "1",
+          "BLIS_NUM_THREADS": "1"
+        }
+      }
+    }
   }
 }

@@ -878,7 +878,60 @@
     "validatorPrepared": {
       "directory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/boundary/production-acceptance",
       "scriptSha256": "2a4068a6cd2033c509479801142b0dde259fcede9901d267d663095c69615a35",
-      "planSha256": "3a407795cf9796b18b3aa83d1a1ee8acca12c40a49ae4b061354aad79409b502"
+      "planSha256": "3a407795cf9796b18b3aa83d1a1ee8acca12c40a49ae4b061354aad79409b502",
+      "status": "LAUNCHED_GUARDED_PENDING_FINAL_OUTCOME",
+      "launch": {
+        "launchedUtc": "2026-09-21T14:01:39.011444+00:00",
+        "guardPid": 732292,
+        "watcherPid": 732293,
+        "command": [
+          "/usr/bin/python",
+          "/var/projects/toy_physics/scripts/s11c_guarded_run.py",
+          "--log-directory",
+          "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/boundary/production-acceptance/resource-guard",
+          "--seconds",
+          "900",
+          "--",
+          "/usr/bin/python",
+          "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+          "--run-root",
+          "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/boundary/production-acceptance",
+          "--stage",
+          "validate",
+          "--",
+          "/usr/bin/python",
+          "-u",
+          "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/boundary/production-acceptance/validate.py"
+        ],
+        "validatorSha256": "2a4068a6cd2033c509479801142b0dde259fcede9901d267d663095c69615a35",
+        "guardSha256": "6492f5ab11dc2ab2f80bbfcc96d7eb6b8632afea07100dd8f74a7954f3ffe542",
+        "productionChecksSha256": "6755d95b096f43d0eb7eaeb547826e98705b7861bc438b12308d43b9930825fa",
+        "implementationCommit": "d1b52b236314c10c453550fd611453872256d68d",
+        "launchIsAcceptance": false,
+        "newScientificConstruction": false
+      },
+      "verifiedLimits": {
+        "verified": true,
+        "actual": {
+          "memory.max": "2147483648",
+          "memory.swap.max": "0",
+          "pids.max": "32",
+          "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-1baa9786fc0e.service",
+          "nice": 15,
+          "affinity": [
+            15
+          ],
+          "threads": {
+            "OPENBLAS_NUM_THREADS": "1",
+            "OMP_NUM_THREADS": "1",
+            "MKL_NUM_THREADS": "1",
+            "NUMEXPR_NUM_THREADS": "1",
+            "VECLIB_MAXIMUM_THREADS": "1",
+            "BLIS_NUM_THREADS": "1"
+          }
+        }
+      },
+      "limitValidationSha256": "75ed475c6fc44c1029a1aaff2cb9bba5544a4122b508f99b0ecf673a9b49a7d5"
     }
   }
 }

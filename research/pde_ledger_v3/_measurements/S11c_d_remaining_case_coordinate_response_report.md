@@ -80,3 +80,16 @@ packets; historical baseline continuum and original Eulerian current operands
 remain exact reuses. Actual whole-job limits are verified: 2 GiB, zero swap, one
 CPU, nice 15, 32 tasks and one native thread. A single 900-second supervisor and
 silent completion/error hook own continuation. Launch is not numerical acceptance.
+
+Numerical production completed in 279.53 seconds (280.94 with startup), final
+guard/supervisor/child exit zero, empty stderr and checks/stdout byte identity.
+It retains 190 sources, 31,561 inputs, 584 unchanged preflight copies and 655
+artifacts. Four finite controls, three continuum controls and four material
+current bookkeeping packets are complete. All ranks are 645 with four incidents;
+finite/continuum scaled residuals are at most 8.44e-16/4.59e-14. Actual own-case
+finite amplitude/current differences are at most 2.22e-13/2.97e-13, continuum
+amplitude/current differences 5.54e-14/3.27e-14; these test coordinate consistency
+and do not resolve tiny physical loss/reflection. The guard reached 2 GiB with
+228,675 cap/reclaim events, zero OOM/swap and minimum host available memory 23.56 GB.
+Saved-result validation is prepared with all scientific constructors and solvers
+disabled; final numerical acceptance and physical output remain pending.

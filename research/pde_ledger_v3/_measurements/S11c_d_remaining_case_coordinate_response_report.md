@@ -145,3 +145,14 @@ verified whole-job 2 GiB, zero swap, one CPU, nice 15 and 32-task limits, all
 native threads one. One 900-second supervisor and silent completion/error hook
 own continuation. It reuses the saved baseline bundle and preserves the failed
 focus; the unit-reader repair and remaining output inputs await final guards.
+
+Saved-output input recovery completed in 781.36 worker seconds (788.34 with
+startup), final guard/supervisor/child exit zero, empty stderr and checks/stdout
+byte identity. All 201 sources, 33,097 inputs, 875 copies and 938 artifacts remain,
+including every numerical artifact and the original 471,601,607-byte baseline
+bundle. Four bundles, 1,408 boundary array views, eleven input samples and 48
+actual coordinate-unit mutations pass. No new physical transcript was emitted.
+The guard recorded 334,488 cap/reclaims, zero OOM/swap and minimum host available
+memory 18.42 GB. An independent saved-bundle/source/unit/wiring validator is
+prepared with all scientific and emission constructors disabled; acceptance
+awaits its final outcome.

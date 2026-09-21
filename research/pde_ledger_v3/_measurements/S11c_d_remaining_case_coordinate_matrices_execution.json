@@ -1,5 +1,5 @@
 {
-  "status": "GUARDED_NATIVE_GAUSS_RULE_REPAIR_LAUNCHED",
+  "status": "ACCEPTED_NATIVE_GAUSS_RULE_REPAIR",
   "acceptedBindings": "4757b38b",
   "acceptedEulerianInteriors": "2eed4150",
   "acceptedBaselineMaterial": "19a9f5a1",
@@ -16,7 +16,7 @@
     19,
     4
   ],
-  "next": "Guarded native unit-rule and unchanged-caller regression, then accept saved rules before resuming unstarted material production from completed inputs.",
+  "next": "Launch saved-input material production recovery with accepted native Gauss rules; only 32 unstarted rows and three missing case interior assemblies.",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/focused",
   "launch": {
     "launchedUtc": "2026-09-21T11:30:32.441127+00:00",
@@ -879,7 +879,7 @@
     "helperSha256": "84c3f45195e94933b266e6cd2d9b02c2aa59a7081f8af7e59d0553d3f31860b7",
     "plan": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_coordinate_matrices_recovery_plan.md",
     "planSha256": "b8ec118e8742bdfb220b6412de35cd2f65cd53d52d86724041a2f687e79c676e",
-    "status": "LAUNCHED_NOT_ACCEPTED",
+    "status": "ACCEPTED_NATIVE_QUADRATURE_RULE_REUSE",
     "nativeRuleOrders": [
       4,
       16,
@@ -947,6 +947,270 @@
         "BLIS_NUM_THREADS": "1"
       }
     },
-    "watcherState": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/rule-repair/completion-watcher/state.json"
+    "watcherState": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/rule-repair/completion-watcher/state.json",
+    "checkpoint": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_coordinate_matrices_rule_repair.json",
+    "checkpointSha256": "32ea8b04885550cb44ebb7040583721b2ba71dc18bc623af07a81c0c223022ea",
+    "checksSha256": "5603adc7bd2edbe7edfdead7fb9c27bc5630c6036f366b205af77865703494e1",
+    "result": {
+      "orders": [
+        4,
+        16,
+        256,
+        512
+      ],
+      "momentResiduals": {
+        "4": 2.220446049250313e-16,
+        "16": 5.551115123125783e-16,
+        "256": 3.1780134079895106e-15,
+        "512": 1.6167622796103842e-14
+      },
+      "controls": 15,
+      "physicalSolverRejections": {
+        "solve": true,
+        "inv": true,
+        "pinv": true,
+        "svd": true,
+        "eig": true,
+        "eigh": true,
+        "eigvals": true,
+        "eigvalsh": true
+      },
+      "wallSeconds": 27.222786906000692
+    },
+    "constructionGuard": {
+      "invocation": {
+        "stage": "quadrature_rule_focused",
+        "command": [
+          "/usr/bin/python",
+          "-u",
+          "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_coordinate_matrices_recover.py",
+          "--rule-focus",
+          "--run-directory",
+          "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/rule-repair/complete"
+        ],
+        "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/rule-repair/quadrature_rule_focused.stdout",
+        "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/rule-repair/quadrature_rule_focused.stderr",
+        "startedUtc": "2026-09-21T12:12:28.760846+00:00",
+        "childPid": 176827,
+        "status": "completed",
+        "exitCode": 0,
+        "wallSeconds": 29.195478339002875,
+        "stderrBytes": 0,
+        "finishedUtc": "2026-09-21T12:12:57.956397+00:00"
+      },
+      "outcome": {
+        "exitCode": 0,
+        "wallSeconds": 29.38133176699921,
+        "unit": "s11c-guard-a93bcfce5aad",
+        "stderrBytes": 0,
+        "limitsVerified": true,
+        "childOutcome": {
+          "exitCode": 0,
+          "guardReason": null,
+          "wallSeconds": 29.29485322799883,
+          "childPid": 176825
+        }
+      },
+      "limits": {
+        "memory.max": "2147483648",
+        "memory.swap.max": "0",
+        "pids.max": "32",
+        "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-a93bcfce5aad.service",
+        "nice": 15,
+        "affinity": [
+          15
+        ],
+        "threads": {
+          "OPENBLAS_NUM_THREADS": "1",
+          "OMP_NUM_THREADS": "1",
+          "MKL_NUM_THREADS": "1",
+          "NUMEXPR_NUM_THREADS": "1",
+          "VECLIB_MAXIMUM_THREADS": "1",
+          "BLIS_NUM_THREADS": "1"
+        }
+      },
+      "samples": 16,
+      "peakBytes": 440111104,
+      "minimumHostAvailableBytes": 23833276416,
+      "finalMemoryEvents": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0",
+      "artifacts": {
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/rule-repair/active.json": {
+          "sha256": "5fedb0c7c68571fdafe36c1572ea322a7057a1de7c86ef8df3415e651f20389d",
+          "bytes": 896
+        },
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/rule-repair/quadrature_rule_focused.invocation.json": {
+          "sha256": "5fedb0c7c68571fdafe36c1572ea322a7057a1de7c86ef8df3415e651f20389d",
+          "bytes": 896
+        },
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/rule-repair/quadrature_rule_focused.stdout": {
+          "sha256": "5603adc7bd2edbe7edfdead7fb9c27bc5630c6036f366b205af77865703494e1",
+          "bytes": 1132756
+        },
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/rule-repair/quadrature_rule_focused.stderr": {
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/rule-repair/guard.stdout": {
+          "sha256": "4cc98198d77e542bbad96db4bc9e2a45ba33d931989749e4fda67e3b9b0f9c9c",
+          "bytes": 269
+        },
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/rule-repair/guard.stderr": {
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/rule-repair/resource-guard/outcome.json": {
+          "sha256": "4cc98198d77e542bbad96db4bc9e2a45ba33d931989749e4fda67e3b9b0f9c9c",
+          "bytes": 269
+        },
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/rule-repair/resource-guard/child-outcome.json": {
+          "sha256": "9daaf25ecd6361aa067ccbe39cc2d5fe8413c391149c2942b514c935edc6f523",
+          "bytes": 101
+        },
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/rule-repair/resource-guard/effective-limits.json": {
+          "sha256": "b7b10a6a8eb288009355c973213e6cefcffd12371e34a1f7c02ebfc31e3e5111",
+          "bytes": 441
+        },
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/rule-repair/resource-guard/limit-validation.json": {
+          "sha256": "2ef21ba15dc3a2f18a960233a39bc83807fb4e9d774c60bffbd0de9cea53d168",
+          "bytes": 511
+        },
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/rule-repair/resource-guard/resource-samples.jsonl": {
+          "sha256": "0b36ca6704d61eb2c2f1b968ea397176f4efa238340731bda8f647d1bc17b167",
+          "bytes": 6396
+        },
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/rule-repair/launch.json": {
+          "sha256": "68abf2a294f245e7c6b3551b68c4310013cf900bb686138d5ef747fe66bdf5fc",
+          "bytes": 1674
+        }
+      }
+    },
+    "validator": {
+      "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/rule-validation",
+      "scriptSha256": "93e21fd95b8a718473a1225e9b603bd9fd06638acee9d0a1b970ba350adb751c",
+      "checksSha256": "675825e220e353668e2f394eb37cbbda8d3e14c82e4ee826cfe43abd7a9ac847",
+      "result": {
+        "status": "VALIDATED_SAVED_NATIVE_GAUSS_RULE_EVIDENCE",
+        "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/rule-repair/complete",
+        "checksSha256": "5603adc7bd2edbe7edfdead7fb9c27bc5630c6036f366b205af77865703494e1",
+        "validatorSha256": "93e21fd95b8a718473a1225e9b603bd9fd06638acee9d0a1b970ba350adb751c",
+        "hashPaths": 4137,
+        "inputPackets": 4115,
+        "sourceFiles": 3,
+        "artifacts": 16,
+        "rules": 4,
+        "moments": 1576,
+        "maximumMomentResidual": 1.6167622796103842e-14,
+        "panelPackets": 6,
+        "mutationControls": 15,
+        "physicalSolverRejections": 8,
+        "allPrePostHashes": true,
+        "newRuleGenerationIntegrationsBindingsMatricesModesCurrentsSolves": 0,
+        "wallSeconds": 20.14830154000083
+      },
+      "guard": {
+        "invocation": {
+          "stage": "validate",
+          "command": [
+            "/usr/bin/python",
+            "-u",
+            "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/rule-validation/validate.py"
+          ],
+          "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/rule-validation/validate.stdout",
+          "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/rule-validation/validate.stderr",
+          "startedUtc": "2026-09-21T12:16:53.909886+00:00",
+          "childPid": 179192,
+          "status": "completed",
+          "exitCode": 0,
+          "wallSeconds": 20.43351001299743,
+          "stderrBytes": 0,
+          "finishedUtc": "2026-09-21T12:17:14.343468+00:00"
+        },
+        "outcome": {
+          "exitCode": 0,
+          "wallSeconds": 20.708273884003574,
+          "unit": "s11c-guard-2a88ee6e50c4",
+          "stderrBytes": 0,
+          "limitsVerified": true,
+          "childOutcome": {
+            "exitCode": 0,
+            "guardReason": null,
+            "wallSeconds": 20.582488796004327,
+            "childPid": 179191
+          }
+        },
+        "limits": {
+          "memory.max": "2147483648",
+          "memory.swap.max": "0",
+          "pids.max": "32",
+          "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-2a88ee6e50c4.service",
+          "nice": 15,
+          "affinity": [
+            15
+          ],
+          "threads": {
+            "OPENBLAS_NUM_THREADS": "1",
+            "OMP_NUM_THREADS": "1",
+            "MKL_NUM_THREADS": "1",
+            "NUMEXPR_NUM_THREADS": "1",
+            "VECLIB_MAXIMUM_THREADS": "1",
+            "BLIS_NUM_THREADS": "1"
+          }
+        },
+        "samples": 12,
+        "peakBytes": 44478464,
+        "minimumHostAvailableBytes": 24431464448,
+        "finalMemoryEvents": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0",
+        "artifacts": {
+          "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/rule-validation/active.json": {
+            "sha256": "bb1fc5115226f5196ff0f511610ff48dc1f178765ae87c70c6b8925b3fc3110a",
+            "bytes": 699
+          },
+          "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/rule-validation/validate.invocation.json": {
+            "sha256": "bb1fc5115226f5196ff0f511610ff48dc1f178765ae87c70c6b8925b3fc3110a",
+            "bytes": 699
+          },
+          "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/rule-validation/validate.stdout": {
+            "sha256": "675825e220e353668e2f394eb37cbbda8d3e14c82e4ee826cfe43abd7a9ac847",
+            "bytes": 752
+          },
+          "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/rule-validation/validate.stderr": {
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "bytes": 0
+          },
+          "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/rule-validation/guard.stdout": {
+            "sha256": "11dbf408015527c2c1a983d8fec47903a279c609fefa8dbcb36934fa162cdd47",
+            "bytes": 271
+          },
+          "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/rule-validation/guard.stderr": {
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "bytes": 0
+          },
+          "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/rule-validation/resource-guard/outcome.json": {
+            "sha256": "11dbf408015527c2c1a983d8fec47903a279c609fefa8dbcb36934fa162cdd47",
+            "bytes": 271
+          },
+          "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/rule-validation/resource-guard/child-outcome.json": {
+            "sha256": "1c0c97fe878360b6d6a3bfe93147d4ec576478fe5ff9322b9750e0774334ae9c",
+            "bytes": 102
+          },
+          "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/rule-validation/resource-guard/effective-limits.json": {
+            "sha256": "b49ed5ee01599c57af89e9b830a25dacfbb09745c58dfc5a087361e9a6162c61",
+            "bytes": 441
+          },
+          "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/rule-validation/resource-guard/limit-validation.json": {
+            "sha256": "07136a128e97e8f2dae91d04bcff660a19e0747e51916456d1f85e62da81e0d3",
+            "bytes": 511
+          },
+          "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/rule-validation/resource-guard/resource-samples.jsonl": {
+            "sha256": "ea768e2f39bde65847c9471599df1e3cb6eedae67879b094959959c560718920",
+            "bytes": 4773
+          },
+          "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/rule-validation/launch.json": {
+            "sha256": "01fcd59ab373b4958d653b5f2eaaca32d8850659ab0a50dcea863a3f5fef236d",
+            "bytes": 1051
+          }
+        }
+      }
+    }
   }
 }

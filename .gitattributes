@@ -61,3 +61,4 @@ research/pde_ledger_v3/scripts/S11c_c2_exports.py -diff
 research/pde_ledger_v3/_measurements/S11c_d_remaining_case_coordinate_bindings_focused.json -diff
 research/pde_ledger_v3/_measurements/S11c_d_remaining_case_coordinate_bindings_checkpoint.json -diff
 research/pde_ledger_v3/_measurements/S11c_d_remaining_case_coordinate_matrices_focused.json -diff
+research/pde_ledger_v3/_measurements/S11c_d_remaining_case_coordinate_matrices_rule_repair.json -diff

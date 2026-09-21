@@ -127,3 +127,15 @@ with all native threads one. One 900-second supervisor and silent local
 completion/error hook own continuation. It checks saved bundles and output
 wiring; no new physical transcript or scientific construction is enabled.
 Focused acceptance awaits the actual final outcome.
+
+The output input focus stopped after 154.75 seconds at a missing material-X1
+entry in the response dimension state. All 655 numerical artifacts, 658 copies
+and the complete 471,601,607-byte baseline bundle were saved; no new physical
+stream or final checks exists. The guard recorded 41,276 cap/reclaims, zero
+OOM/swap and minimum host available memory 20.51 GB. The native chart owns
+these declarations. A saved-packet continuation joins its actual full chart,
+frame, case address and known units while preserving the raw response state.
+The original focus/main/native output remain source-joined. Recovery reuses
+the complete baseline bundle and passed prefix; only three unstarted bundles
+and unfinished unit/emitter checks remain. Actual unit/address mutation guards
+run under the same resource containment. No numerical reconstruction is enabled.

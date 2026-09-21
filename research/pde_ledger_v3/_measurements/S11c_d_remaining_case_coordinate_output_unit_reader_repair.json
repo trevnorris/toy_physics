@@ -1,0 +1,45 @@
+{
+  "status": "PREPARED_SAVED_CHART_UNIT_READER_REPAIR",
+  "originalHelperSha256": "7cd38cb2149fd7d94d51c0cbc069718a90bf231f28c1eb6dc786b6e6ff3e1be5",
+  "originalInputsSha256": "9598bc124d126424cb5c4961fc53b011b152a53e7d0dbdd0c9b41079fd1dd5e4",
+  "originalStderrSha256": "a2c2303efe1dc58de336e90320ef5ef7f0e19672cd7b9edecfff0fe420fb416c",
+  "recoveryHelperSha256": "4c85c65520f0e5b211bf509bd87b14395c84eb0cbc028e47622a3c3994ea6fe7",
+  "planSha256": "78d46e2cabb04d64660af56a98a84063dd1c5acc44305f06c17751f34bb913d6",
+  "originalRunDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/response/output/focused/complete",
+  "originalOutcome": {
+    "stage": "coordinate_output_inputs",
+    "command": [
+      "/usr/bin/python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_coordinate_output.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/response/output/focused/complete",
+      "--stage",
+      "focused"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/response/output/focused/coordinate_output_inputs.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/response/output/focused/coordinate_output_inputs.stderr",
+    "startedUtc": "2026-09-21T16:03:12.190044+00:00",
+    "childPid": 788742,
+    "status": "failed",
+    "exitCode": 1,
+    "wallSeconds": 154.753232862,
+    "stderrBytes": 687,
+    "finishedUtc": "2026-09-21T16:05:46.943480+00:00"
+  },
+  "completedBundle": {
+    "path": "bundles/LAB_HELD__RHO4_CONSTANT/coordinate-output.pickle",
+    "sha256": "2183c468e06945d06a9ec4000849bbde4d25a6534ee54a0e9584b8a03ba3cf52",
+    "bytes": 471601607
+  },
+  "join": {
+    "wholeFocusReverseAST": true,
+    "savedBaselinePrefixOnly": true,
+    "coordinateUnitReaderOnly": true,
+    "allUnfinishedEmitterSampleAndHashGuardsUnchanged": true,
+    "originalHelperSha256": "7cd38cb2149fd7d94d51c0cbc069718a90bf231f28c1eb6dc786b6e6ff3e1be5",
+    "originalMainUnchanged": true
+  },
+  "actualUnitRegressionPending": true,
+  "newScientificOperations": 0
+}

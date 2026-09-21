@@ -1278,7 +1278,7 @@
   "acceptedNumericalCheckpoint": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_coordinate_response_checkpoint.json",
   "acceptedNumericalCheckpointSha256": "70f300013d3ee486f55bf8c0d87a821eaa501f005647023b525d0834e37d6fe8",
   "outputPreparation": {
-    "status": "RUNNING_GUARDED_OUTPUT_INPUT_FOCUS",
+    "status": "FAILED_OUTPUT_COORDINATE_UNIT_READER",
     "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/response/output/focused",
     "helperSha256": "7cd38cb2149fd7d94d51c0cbc069718a90bf231f28c1eb6dc786b6e6ff3e1be5",
     "planSha256": "37b6aacf122a49b939d9fe8e1122b7f6409a92a6821a117f39a32ad7f586328b",
@@ -1368,6 +1368,42 @@
           "BLIS_NUM_THREADS": "1"
         }
       }
+    },
+    "outcome": {
+      "stage": "coordinate_output_inputs",
+      "command": [
+        "/usr/bin/python",
+        "-u",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_coordinate_output.py",
+        "--run-directory",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/response/output/focused/complete",
+        "--stage",
+        "focused"
+      ],
+      "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/response/output/focused/coordinate_output_inputs.stdout",
+      "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/response/output/focused/coordinate_output_inputs.stderr",
+      "startedUtc": "2026-09-21T16:03:12.190044+00:00",
+      "childPid": 788742,
+      "status": "failed",
+      "exitCode": 1,
+      "wallSeconds": 154.753232862,
+      "stderrBytes": 687,
+      "finishedUtc": "2026-09-21T16:05:46.943480+00:00"
+    },
+    "finalResourceEvidence": {
+      "peakBytes": 2147483648,
+      "capReclaims": 41276,
+      "oomEvents": 0,
+      "swapBytes": 0,
+      "minHostAvailableBytes": 20506263552
+    },
+    "recovery": {
+      "status": "PREPARED_SAVED_OUTPUT_INPUT_CONTINUATION",
+      "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/response/output/focused-recovery-01",
+      "helperSha256": "4c85c65520f0e5b211bf509bd87b14395c84eb0cbc028e47622a3c3994ea6fe7",
+      "repairSha256": "66baa74cc44a3e552b39853c2108a8c5ce017d34e1426d4ba24fe4cef55b7d12",
+      "originalBaselineBundleReused": true,
+      "noScientificReconstruction": true
     }
   }
 }

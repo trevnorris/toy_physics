@@ -100,3 +100,9 @@ The prior nonzero reader and mutation tail, original main, prepare adapter
 and native row census remain joined by whole-body reverse AST. Standard-
 library review passed without importing scientific modules. The recovery
 still requires a clean guarded outcome and independent saved validation.
+
+The continuation launched at 2026-09-21T22:56:23Z from b0e38a15. Initial
+actual 2-GiB/zero-swap/one-CPU/nice-15/32-task/native-single-thread limits
+are verified and stderr is empty. Its silent local hook handles completion
+or error; no polling or automatic retry is scheduled. Launch is not
+acceptance.

@@ -71,3 +71,12 @@ No solve or current contraction ran. Its guard reached 2 GiB with 187,268 reclai
 events, zero OOM/swap and minimum host available memory 23.57 GB. Separate
 ACCEPTED_MATERIAL_RESPONSE_SOLVER_WIRING acceptance records the final outcome
 and saved source/copy/wiring review without repeating prior validation.
+
+Solver-routing acceptance is committed at 96b8b763. Numerical production
+launched on 2026-09-21 at 15:20:29 UTC, reusing all 584 preflight artifacts and
+the accepted prepared systems. It computes four missing finite controls, three
+missing continuum controls and four new material amplitude/current bookkeeping
+packets; historical baseline continuum and original Eulerian current operands
+remain exact reuses. Actual whole-job limits are verified: 2 GiB, zero swap, one
+CPU, nice 15, 32 tasks and one native thread. A single 900-second supervisor and
+silent completion/error hook own continuation. Launch is not numerical acceptance.

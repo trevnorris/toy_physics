@@ -1,5 +1,5 @@
 {
-  "status": "ACCEPTED_MATERIAL_RESPONSE_SOLVER_WIRING",
+  "status": "MATERIAL_RESPONSE_PRODUCTION_LAUNCHED",
   "acceptedBoundary": "2e1e4a3c",
   "acceptedMaterialInteriors": "a95a0c0d",
   "helperSha256": "95fe5fc75462f68780150fce954ffc2ac2f59c8f8a69672255bfaf2ca4fdf89a",
@@ -603,5 +603,88 @@
       "swapBytes": 0,
       "hostAvailableMinimumBytes": 23566344192
     }
+  },
+  "numericalProduction": {
+    "status": "LAUNCHED_NOT_ACCEPTED",
+    "root": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/response/production",
+    "launch": {
+      "launchedUtc": "2026-09-21T15:20:29.773330+00:00",
+      "guardPid": 761249,
+      "watcherPid": 761250,
+      "command": [
+        "/usr/bin/python",
+        "/var/projects/toy_physics/scripts/s11c_guarded_run.py",
+        "--log-directory",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/response/production/resource-guard",
+        "--seconds",
+        "900",
+        "--",
+        "/usr/bin/python",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+        "--run-root",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/response/production",
+        "--stage",
+        "coordinate_response_construct",
+        "--",
+        "/usr/bin/python",
+        "-u",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_coordinate_response.py",
+        "--run-directory",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/response/production/complete",
+        "--resume-focused",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/response/focused/complete",
+        "--resume-preflight",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/response/solver-preflight/complete"
+      ],
+      "helperSha256": "856b9b800a7443415c9b82ad6ea3a1e63979d886317fa99fbda2b435e8ad46e2",
+      "planSha256": "513dad0ccb55ab58780f5a283bf246710ccdd3b34c47e513812dee8e559a8b98",
+      "guardSha256": "6492f5ab11dc2ab2f80bbfcc96d7eb6b8632afea07100dd8f74a7954f3ffe542",
+      "focusChecksSha256": "05bdefce12c8adc5d2cc1a58c3b0e4c746e5effe7517cdd86be89dc36d56c725",
+      "focusValidatorChecksSha256": "b733ef066d4ef5e8eadc6b4ab0d79a938a8e2b11cbcacd6b05f6d632ade53361",
+      "implementationCommit": "96b8b7639b93cec1540a9f52becc5d41847d6f6f",
+      "launchIsAcceptance": false,
+      "plannedNewFiniteControls": 4,
+      "plannedNewContinuumControls": 3,
+      "acceptedPreflightArtifacts": 584,
+      "preflightChecksSha256": "ffa4812e14c9ff20891228ab65ec224393504091cb08c9c5816949801bd2e7db",
+      "threadEnvironment": {
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "VECLIB_MAXIMUM_THREADS": "1",
+        "BLIS_NUM_THREADS": "1"
+      }
+    },
+    "verifiedLimits": {
+      "verified": true,
+      "actual": {
+        "memory.max": "2147483648",
+        "memory.swap.max": "0",
+        "pids.max": "32",
+        "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-fcedb6b9e49d.service",
+        "nice": 15,
+        "affinity": [
+          15
+        ],
+        "threads": {
+          "OPENBLAS_NUM_THREADS": "1",
+          "OMP_NUM_THREADS": "1",
+          "MKL_NUM_THREADS": "1",
+          "NUMEXPR_NUM_THREADS": "1",
+          "VECLIB_MAXIMUM_THREADS": "1",
+          "BLIS_NUM_THREADS": "1"
+        }
+      }
+    },
+    "limitValidationSha256": "86b9eee9e2dfac4107453387259b4f503f99eb1ae7e90481d76732ba1272111f",
+    "acceptedPreflightCommit": "96b8b763",
+    "acceptedPreflightArtifacts": 584,
+    "newFiniteControlSolves": 4,
+    "newContinuumControlSolves": 3,
+    "newMaterialAmplitudeBookkeeping": 4,
+    "historicalBaselineContinuumReused": true,
+    "physicalTranscriptEmitted": false,
+    "continuation": "Silent local completion/error hook; no polling or automatic retry."
   }
 }

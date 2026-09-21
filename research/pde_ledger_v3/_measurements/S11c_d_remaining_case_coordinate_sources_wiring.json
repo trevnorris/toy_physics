@@ -1,0 +1,29 @@
+{
+  "status": "COMPILED_NATIVE_COORDINATE_SOURCE_WIRING",
+  "recordJoin": {
+    "wholeNativeRecordLoopReverseAst": true,
+    "savedMutationRoutingEdits": 1,
+    "liveOperandObserverEdits": 1,
+    "nativeConstructAstSha256": "889c140e415a0dcee35e376fd758d484439ac222a4f13af35d0cf4bc43be5bb0",
+    "nativeCoordinateChangeAstSha256": "b5babe3e97ed45f7505394198096ff924f818455f3126cd254084a9f251a2491",
+    "nativeSourceJetsAstSha256": "21aed03e4e47faf642e0332f763ec07a1a828d3e8eabd0d15a104723b2255af7"
+  },
+  "limitJoin": {
+    "wholeNativeLimitBodyUnchanged": true
+  },
+  "helperSha256": "abfef36c7c5058631cadd32a1fca60316f1cad7b5876ac62af56cb2c4c6d71ea",
+  "acceptedInputChecksSha256": "e03d2721112fb27a64fd960fb986347bfd1965718907d50fbcb9819073382550",
+  "savedMaximumDerivativeOrder": 3,
+  "newUnionOperands": 86,
+  "newSourceConstructions": 0,
+  "newCoordinateImages": 0,
+  "newNumericalWork": 0,
+  "actualToolOutcome": {
+    "session": 44588,
+    "exitCode": 0,
+    "stderrBytes": 0,
+    "checksStdoutIdentical": true
+  },
+  "originalCompileChecksSha256": "f25a5f3dd5dd13c4db9f67f49cd6f163bca72d8bddec7d02e46be97fafc3dfb1",
+  "helperChange": "Only pin and compare the actual completed wiring evidence; native extracted bodies unchanged."
+}

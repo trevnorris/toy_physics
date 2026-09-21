@@ -1,0 +1,14 @@
+{
+  "status": "PREPARED_CASE_COORDINATE_SOURCES",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260920/sources",
+  "acceptedInputCommit": "4365f2b1",
+  "acceptedFirstJetSourceCommit": "ae5682fd",
+  "acceptedFirstJetNumericalCommit": "47384f68",
+  "sourceCounts": {
+    "newUnionImages": 86,
+    "newSourceJets": 12,
+    "newFieldJetMaps": 0,
+    "newNumericalWork": 0
+  },
+  "next": "Construct only missing union images using unchanged native coordinate/source helpers; validate all actual source/alias/ordered-limit/unit joins and save every operand before guards."
+}

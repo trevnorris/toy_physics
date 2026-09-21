@@ -108,3 +108,15 @@ and 295834 metadata paths. Sensitivity alone has 4092 tags, 2044 keys and
 Eight output parts and final aggregation/publication remain. Measured replay
 cost requires separate bounded emission and validation phases. Numerical
 responses/checkpoint 47384f68 remain immutable.
+
+Focused output acceptance is aca44282. The remaining-output adapter passes
+whole native emission-prefix and final audit-tail AST joins, all eleven compiled
+namespaces and twelve changed part-address controls. Its first actual saved
+payload matches exactly; no new transcript or numerical operation ran during
+the 17.18-second wiring check. The fixed 13-phase sequence uses one worker at a
+time, a 900-second budget for each phase, and no automatic retry. Separate
+sensitivity emission and replay retain complete streams before validation.
+
+The actual copied four-part inventory has a separate immutable address before
+the new inventory grows. Its original bytes/hash are retained and the actual
+wrong-hash control rejects; final copied-input guards remain exact.

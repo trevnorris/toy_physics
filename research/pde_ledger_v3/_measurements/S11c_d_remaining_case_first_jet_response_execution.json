@@ -61,7 +61,7 @@
   "remainingFiniteControlSolves": 4,
   "remainingContinuumControlSolves": 3,
   "scope": "Saved operators and own-case boundary/current/phase inputs; no new quadrature, interior assembly, modes, currents or response solve in this preparation.",
-  "next": "Complete exactly eight remaining saved-output parts with bounded sequential emission/replay phases, then global codec aggregation and annex publication.",
+  "next": "Launch the fixed 13-phase saved-output sequence: one native worker at a time, 900 seconds per phase, no automatic retries; finish all eight remaining parts and aggregate.",
   "focusedOutcome": {
     "stage": "response_inputs",
     "command": [
@@ -1657,6 +1657,180 @@
         "stderrBytes": 0,
         "checksStdoutIdentical": true
       }
+    }
+  },
+  "outputStagedWiring": {
+    "status": "PASSED_STAGED_SAVED_OUTPUT_WIRING",
+    "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/response/output/staged-wiring",
+    "helperSha256": "7d03567d41ca495d6bb182564cf7a92e5930a0c4425e0aa82f5445e74b7b4ccb",
+    "focusChecksSha256": "dd9051ebce677f98c5f4fbdfea575ecf9e3dcee71ba367b2a0eb5ef2741deec1",
+    "plannedPhases": [
+      {
+        "phase": "prepare"
+      },
+      {
+        "phase": "native",
+        "case": "LAB_HELD__RHO4_CONSTANT",
+        "kind": "current",
+        "part": "current_LAB_HELD__RHO4_CONSTANT"
+      },
+      {
+        "phase": "emit",
+        "case": "LAB_HELD__RHO4_CONSTANT",
+        "kind": "sensitivity",
+        "part": "sensitivity_LAB_HELD__RHO4_CONSTANT"
+      },
+      {
+        "phase": "validate",
+        "case": "LAB_HELD__RHO4_CONSTANT",
+        "kind": "sensitivity",
+        "part": "sensitivity_LAB_HELD__RHO4_CONSTANT"
+      },
+      {
+        "phase": "native",
+        "case": "MATERIAL_ADVECTED__RHO4_CONSTANT",
+        "kind": "continuum",
+        "part": "continuum_MATERIAL_ADVECTED__RHO4_CONSTANT"
+      },
+      {
+        "phase": "native",
+        "case": "MATERIAL_ADVECTED__RHO4_CONSTANT",
+        "kind": "current",
+        "part": "current_MATERIAL_ADVECTED__RHO4_CONSTANT"
+      },
+      {
+        "phase": "emit",
+        "case": "MATERIAL_ADVECTED__RHO4_CONSTANT",
+        "kind": "sensitivity",
+        "part": "sensitivity_MATERIAL_ADVECTED__RHO4_CONSTANT"
+      },
+      {
+        "phase": "validate",
+        "case": "MATERIAL_ADVECTED__RHO4_CONSTANT",
+        "kind": "sensitivity",
+        "part": "sensitivity_MATERIAL_ADVECTED__RHO4_CONSTANT"
+      },
+      {
+        "phase": "native",
+        "case": "MATERIAL_ADVECTED__RHOBR_CONSTANT",
+        "kind": "continuum",
+        "part": "continuum_MATERIAL_ADVECTED__RHOBR_CONSTANT"
+      },
+      {
+        "phase": "native",
+        "case": "MATERIAL_ADVECTED__RHOBR_CONSTANT",
+        "kind": "current",
+        "part": "current_MATERIAL_ADVECTED__RHOBR_CONSTANT"
+      },
+      {
+        "phase": "emit",
+        "case": "MATERIAL_ADVECTED__RHOBR_CONSTANT",
+        "kind": "sensitivity",
+        "part": "sensitivity_MATERIAL_ADVECTED__RHOBR_CONSTANT"
+      },
+      {
+        "phase": "validate",
+        "case": "MATERIAL_ADVECTED__RHOBR_CONSTANT",
+        "kind": "sensitivity",
+        "part": "sensitivity_MATERIAL_ADVECTED__RHOBR_CONSTANT"
+      },
+      {
+        "phase": "aggregate"
+      }
+    ],
+    "newParts": 8,
+    "reusedParts": 4,
+    "maximumNativeWorkers": 1,
+    "automaticRetries": 0,
+    "nativeJoins": {
+      "wholeNumericalProhibitionBody": true,
+      "wholeFinalHashArtifactCheckStdoutTail": true,
+      "sourceSha256": "b27fc5bf3394f67a5e8c48deb8ee85e7bc39283749e9ecedfb3b3467106df69b"
+    },
+    "emissionJoins": {
+      "LAB_HELD__RHO4_CONSTANT": {
+        "wholeNativeEmissionPrefix": true,
+        "namespaceEdits": 1,
+        "emitterUnchanged": true,
+        "emitterSha256": "9886df873beafa730568aa5099b88d9e3c240ac7b81fc309be3b3ee3f9f27473",
+        "nativeSourceSha256": "0fe30a9c4771671e9fa139b0557f185f55d351887f2ba8b9fa4ed1abfb616db2"
+      },
+      "LAB_HELD__RHOBR_CONSTANT": {
+        "wholeNativeEmissionPrefix": true,
+        "namespaceEdits": 1,
+        "emitterUnchanged": true,
+        "emitterSha256": "9886df873beafa730568aa5099b88d9e3c240ac7b81fc309be3b3ee3f9f27473",
+        "nativeSourceSha256": "0fe30a9c4771671e9fa139b0557f185f55d351887f2ba8b9fa4ed1abfb616db2"
+      },
+      "MATERIAL_ADVECTED__RHO4_CONSTANT": {
+        "wholeNativeEmissionPrefix": true,
+        "namespaceEdits": 1,
+        "emitterUnchanged": true,
+        "emitterSha256": "9886df873beafa730568aa5099b88d9e3c240ac7b81fc309be3b3ee3f9f27473",
+        "nativeSourceSha256": "0fe30a9c4771671e9fa139b0557f185f55d351887f2ba8b9fa4ed1abfb616db2"
+      },
+      "MATERIAL_ADVECTED__RHOBR_CONSTANT": {
+        "wholeNativeEmissionPrefix": true,
+        "namespaceEdits": 1,
+        "emitterUnchanged": true,
+        "emitterSha256": "9886df873beafa730568aa5099b88d9e3c240ac7b81fc309be3b3ee3f9f27473",
+        "nativeSourceSha256": "0fe30a9c4771671e9fa139b0557f185f55d351887f2ba8b9fa4ed1abfb616db2"
+      }
+    },
+    "validationJoins": {
+      "LAB_HELD__RHO4_CONSTANT": {
+        "wholeNativeValidationSuffix": true,
+        "packetAddressEdits": 1,
+        "savedKeysAndIndexOnly": true,
+        "progressObserversOnly": true,
+        "sourceSha256": "0fe30a9c4771671e9fa139b0557f185f55d351887f2ba8b9fa4ed1abfb616db2",
+        "emitterSha256": "9886df873beafa730568aa5099b88d9e3c240ac7b81fc309be3b3ee3f9f27473",
+        "nativeOutputMainBytecodeUnchanged": true
+      },
+      "LAB_HELD__RHOBR_CONSTANT": {
+        "wholeNativeValidationSuffix": true,
+        "packetAddressEdits": 1,
+        "savedKeysAndIndexOnly": true,
+        "progressObserversOnly": true,
+        "sourceSha256": "0fe30a9c4771671e9fa139b0557f185f55d351887f2ba8b9fa4ed1abfb616db2",
+        "emitterSha256": "9886df873beafa730568aa5099b88d9e3c240ac7b81fc309be3b3ee3f9f27473",
+        "nativeOutputMainBytecodeUnchanged": true
+      },
+      "MATERIAL_ADVECTED__RHO4_CONSTANT": {
+        "wholeNativeValidationSuffix": true,
+        "packetAddressEdits": 1,
+        "savedKeysAndIndexOnly": true,
+        "progressObserversOnly": true,
+        "sourceSha256": "0fe30a9c4771671e9fa139b0557f185f55d351887f2ba8b9fa4ed1abfb616db2",
+        "emitterSha256": "9886df873beafa730568aa5099b88d9e3c240ac7b81fc309be3b3ee3f9f27473",
+        "nativeOutputMainBytecodeUnchanged": true
+      },
+      "MATERIAL_ADVECTED__RHOBR_CONSTANT": {
+        "wholeNativeValidationSuffix": true,
+        "packetAddressEdits": 1,
+        "savedKeysAndIndexOnly": true,
+        "progressObserversOnly": true,
+        "sourceSha256": "0fe30a9c4771671e9fa139b0557f185f55d351887f2ba8b9fa4ed1abfb616db2",
+        "emitterSha256": "9886df873beafa730568aa5099b88d9e3c240ac7b81fc309be3b3ee3f9f27473",
+        "nativeOutputMainBytecodeUnchanged": true
+      }
+    },
+    "completeNamespaces": 11,
+    "changedPhysicalPartAddressesRejected": 12,
+    "copiedInventoryPreservedWithExplicitAddress": true,
+    "wrongInventoryHashRejected": true,
+    "actualFirstSavedPayload": "PY_S11CD_FIRST_JET_LAB_HELD_RHOBR_CONSTANT_SENSITIVITY_FINITE_REVERSED_originScattering",
+    "savedBundleSha256": "79b47c4a2ab1d616b6468c0e66c262ce3621b2b81505cef64d63185b9af93318",
+    "savedBundlePrePostIdentical": true,
+    "newEmissions": 0,
+    "newNumericalWork": 0,
+    "scriptSha256": "96165fd8ecf416c91610541659b215a5976e1d653b840beb0ae9146a9a4dae7b",
+    "wallSeconds": 17.178495222702622,
+    "actualToolOutcome": {
+      "exitCode": 0,
+      "session": 31726,
+      "stderrBytes": 0,
+      "checksStdoutIdentical": true
     }
   }
 }

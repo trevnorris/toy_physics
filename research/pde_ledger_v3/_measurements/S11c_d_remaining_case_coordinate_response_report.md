@@ -254,3 +254,10 @@ metadata paths. The original failed phase remains recorded alongside its
 accepted audit continuation. No completed stream or scientific work repeated.
 Independent saved metadata/codec/raw-concatenation/hash validation is prepared;
 annex publication and final output acceptance await its clean result.
+
+Independent saved-output validation launched from 4c514c8a at 20:52:48 UTC.
+Actual whole-job 2 GiB, zero-swap, one-CPU, nice-15 and 32-task limits are
+verified, with all native threads one. The validator imports no scientific
+modules or packet deserializer and cannot invoke an emitter or physical replay.
+One 900-second guarded worker and silent local completion/error hook own this
+validation; final output acceptance and publication await its clean outcome.

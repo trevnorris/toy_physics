@@ -131,3 +131,19 @@ adapter-compilation routes. Initial actual 2-GiB/zero-swap/one-CPU/nice-15/
 32-task/native-single-thread containment is verified with empty stderr.
 The silent completion/error hook will continue the task; no polling or
 automatic retry is scheduled. Acceptance remains pending final validation.
+
+Character inputs are now accepted after 208.00 worker /
+209.41 native seconds of independent saved validation. Final guard,
+supervisor and child exits are zero; stderr is empty and checks/stdout are
+byte-identical. All 10,977 pre/post paths, 144 certificate pairs, 156 native
+raw-zero pairs, 432 saved proof scalars and 60 actual mutations pass.
+The full 1,467 records, 300 rows, 647 terms and 120 sources are retained.
+No new binding, derivative, certificate or native row census was executed.
+Validator peak memory was 392,097,792 bytes, with no cap/OOM/swap
+events and minimum host availability 23.61 GB.
+
+All 120 source-character uses are covered by saved values; none is pending.
+Only missing analytic images, actual denominator/radical domain joins and
+end-family continuation remain before the own-case frequency pencils.
+Numerical row reuse is still unclassified. The baseline search and every
+accepted scientific result remain immutable.

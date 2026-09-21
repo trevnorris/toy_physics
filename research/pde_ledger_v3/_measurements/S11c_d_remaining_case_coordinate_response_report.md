@@ -162,3 +162,13 @@ with actual verified whole-job 2 GiB, zero swap, one CPU, nice 15 and 32-task
 limits, all native threads one. One 900-second supervisor and silent local
 completion/error hook own continuation. No bundle, sample emission or scientific
 operation is reconstructed. Output input acceptance awaits the final outcome.
+
+Independent saved-output validation completed in 339.39 worker seconds (341.59
+with startup), final guard/supervisor/child exit zero, empty stderr and checks/stdout
+byte identity. All 34,329 pre/post paths, four full bundles, 1,408 map/unit routes,
+eleven saved samples, 48 coordinate-unit controls and original historical stream
+pass. No bundle, emission or scientific operand was reconstructed. Its guard
+reached 2 GiB with 313,951 cap/reclaims, zero OOM/swap and minimum host available
+memory 22.15 GB. The separate ACCEPTED_CASE_MATERIAL_OUTPUT_INPUTS checkpoint
+retains full provenance. The physical output sequence can now consume the
+accepted bundles under separate guarded emission and saved-stream replay phases.

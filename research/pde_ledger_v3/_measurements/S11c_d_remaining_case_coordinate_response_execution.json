@@ -1537,7 +1537,7 @@
         "acceptancePendingIndependentValidation": true
       },
       "independentValidation": {
-        "status": "RUNNING_GUARDED_SAVED_OUTPUT_INPUT_VALIDATION",
+        "status": "VALIDATED_SAVED_MATERIAL_OUTPUT_INPUTS",
         "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/response/output/acceptance",
         "validatorSha256": "24854a9cc99f33e5c78ab7ce29688f94d958911bc3da73598d5b8242dd52d6ef",
         "planSha256": "25e3cb4d0e1711f9021db6ca6ac4e8d703c3291e8da970893c0dba3dfa88597f",
@@ -1594,8 +1594,132 @@
               "BLIS_NUM_THREADS": "1"
             }
           }
+        },
+        "outcome": {
+          "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/response/output/acceptance",
+          "checksSha256": "2314605057a180cc368fea07881d2ed0546698ab397a26c3097c43da66969940",
+          "validatorSha256": "24854a9cc99f33e5c78ab7ce29688f94d958911bc3da73598d5b8242dd52d6ef",
+          "validatorJoinSha256": "09169093c53d8a177b63724440a05e785361d6317618fd93948ee5b59751bbe6",
+          "planSha256": "25e3cb4d0e1711f9021db6ca6ac4e8d703c3291e8da970893c0dba3dfa88597f",
+          "outcome": {
+            "stage": "validate",
+            "command": [
+              "/usr/bin/python",
+              "-u",
+              "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/response/output/acceptance/validate.py"
+            ],
+            "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/response/output/acceptance/validate.stdout",
+            "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/response/output/acceptance/validate.stderr",
+            "startedUtc": "2026-09-21T16:34:08.020067+00:00",
+            "childPid": 833198,
+            "status": "completed",
+            "exitCode": 0,
+            "wallSeconds": 341.58715959300025,
+            "stderrBytes": 0,
+            "finishedUtc": "2026-09-21T16:39:49.607295+00:00"
+          },
+          "guard": {
+            "exitCode": 0,
+            "wallSeconds": 341.7794093179982,
+            "unit": "s11c-guard-0dcb0f5237ba",
+            "stderrBytes": 0,
+            "limitsVerified": true,
+            "childOutcome": {
+              "exitCode": 0,
+              "guardReason": null,
+              "wallSeconds": 341.6887760289974,
+              "childPid": 833192
+            }
+          },
+          "limits": {
+            "verified": true,
+            "actual": {
+              "memory.max": "2147483648",
+              "memory.swap.max": "0",
+              "pids.max": "32",
+              "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-0dcb0f5237ba.service",
+              "nice": 15,
+              "affinity": [
+                15
+              ],
+              "threads": {
+                "OPENBLAS_NUM_THREADS": "1",
+                "OMP_NUM_THREADS": "1",
+                "MKL_NUM_THREADS": "1",
+                "NUMEXPR_NUM_THREADS": "1",
+                "VECLIB_MAXIMUM_THREADS": "1",
+                "BLIS_NUM_THREADS": "1"
+              }
+            }
+          },
+          "uniquePrePostHashPaths": 34329,
+          "cases": {
+            "LAB_HELD__RHO4_CONSTANT": {
+              "case": "LAB_HELD__RHO4_CONSTANT",
+              "completeBundleSha256": "2183c468e06945d06a9ec4000849bbde4d25a6534ee54a0e9584b8a03ba3cf52",
+              "bundleBytes": 471601607,
+              "boundaryArrayViews": 352,
+              "savedSamples": 2,
+              "coordinateUnitMutations": 12,
+              "currentSupplementEntries": 6,
+              "allProducerPacketJoins": true,
+              "newScientificOperations": 0,
+              "newEmissions": 0,
+              "newBundles": 0
+            },
+            "LAB_HELD__RHOBR_CONSTANT": {
+              "case": "LAB_HELD__RHOBR_CONSTANT",
+              "completeBundleSha256": "f237f3d802e0564221719015e115a327d587660e1f2915b071ff626bc1381935",
+              "bundleBytes": 357436150,
+              "boundaryArrayViews": 352,
+              "savedSamples": 3,
+              "coordinateUnitMutations": 12,
+              "currentSupplementEntries": 6,
+              "allProducerPacketJoins": true,
+              "newScientificOperations": 0,
+              "newEmissions": 0,
+              "newBundles": 0
+            },
+            "MATERIAL_ADVECTED__RHO4_CONSTANT": {
+              "case": "MATERIAL_ADVECTED__RHO4_CONSTANT",
+              "completeBundleSha256": "f6bda7b3276aae5e50e4c15f409ca79d283eeb9814995cd4002d8a95b38fd9ef",
+              "bundleBytes": 368365895,
+              "boundaryArrayViews": 352,
+              "savedSamples": 3,
+              "coordinateUnitMutations": 12,
+              "currentSupplementEntries": 6,
+              "allProducerPacketJoins": true,
+              "newScientificOperations": 0,
+              "newEmissions": 0,
+              "newBundles": 0
+            },
+            "MATERIAL_ADVECTED__RHOBR_CONSTANT": {
+              "case": "MATERIAL_ADVECTED__RHOBR_CONSTANT",
+              "completeBundleSha256": "0564d19a15a0f6373410c45a8204d677786428c9c91f502369e928d3dfcf6a0f",
+              "bundleBytes": 354801566,
+              "boundaryArrayViews": 352,
+              "savedSamples": 3,
+              "coordinateUnitMutations": 12,
+              "currentSupplementEntries": 6,
+              "allProducerPacketJoins": true,
+              "newScientificOperations": 0,
+              "newEmissions": 0,
+              "newBundles": 0
+            }
+          },
+          "noScientificReconstruction": true,
+          "noEmission": true
         }
       }
     }
+  },
+  "outputInputAcceptance": {
+    "status": "ACCEPTED_CASE_MATERIAL_OUTPUT_INPUTS",
+    "checkpoint": "research/pde_ledger_v3/_measurements/S11c_d_remaining_case_coordinate_output_focused.json",
+    "checksSha256": "c0a0cd908b8a2da38c96a13e552251ac3c25f778b5d49f52c30a4a3b74cdc89a",
+    "validatorChecksSha256": "2314605057a180cc368fea07881d2ed0546698ab397a26c3097c43da66969940",
+    "bundles": 4,
+    "artifacts": 938,
+    "physicalOutputPending": true
   }
 }

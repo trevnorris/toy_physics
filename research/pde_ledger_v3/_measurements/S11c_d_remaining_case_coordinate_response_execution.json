@@ -2254,7 +2254,7 @@
       "literalReaderRejectedControls": 4,
       "scientificImports": false,
       "emitterOrPhysicalReplayInvoked": false,
-      "status": "RUNNING_GUARDED_SAVED_OUTPUT_VALIDATION",
+      "status": "ACCEPTED_SAVED_OUTPUT_VALIDATION",
       "launch": {
         "launchedUtc": "2026-09-21T20:52:48.519519+00:00",
         "guardPid": 898065,
@@ -2307,5 +2307,87 @@
         }
       }
     }
+  },
+  "materialOutputAcceptance": {
+    "status": "ACCEPTED_CASE_MATERIAL_OUTPUT",
+    "checkpoint": "research/pde_ledger_v3/_measurements/S11c_d_remaining_case_coordinate_output_checkpoint.json",
+    "checksSha256": "64a2f56f93e9d7a29c4c59fe1e2018eec628c7ba7cdc1e0772475a9239ee438f",
+    "validationChecksSha256": "3dd8ec8de9c29b69dadfa535306ffadba02340647298a6294841d9126939cd83",
+    "validationSeconds": 440.7615984660006,
+    "checkedPaths": 38546,
+    "parts": 12,
+    "aggregate": {
+      "tags": 28780,
+      "keys": 14366,
+      "parts": 12,
+      "localIndicesPreserved": 12,
+      "identicalDecodedPayloads": 28780,
+      "decodedSha256": "d84268b0fcc011b377eeade6bb6cd66100736e30c557a9f5c345d686098de799",
+      "metadataPaths": 903142,
+      "malformedReferenceRejected": true,
+      "changedPayloadRejected": true,
+      "nativeCodecUnchanged": true
+    },
+    "transcript": {
+      "bytes": 93126403,
+      "sha256": "fe6cd0224ec8d9a232b8a9abbffa296e2092a88921c2ab8c5e32c9b5b4a3a6d8",
+      "md5": "7f9d8d6cc7f247f70c6d2eff99c61896"
+    },
+    "resourceGuard": {
+      "supervisor": {
+        "stage": "validate",
+        "command": [
+          "/usr/bin/python",
+          "-u",
+          "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/response/output/production-acceptance/validate.py"
+        ],
+        "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/response/output/production-acceptance/validate.stdout",
+        "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/response/output/production-acceptance/validate.stderr",
+        "startedUtc": "2026-09-21T20:52:48.712441+00:00",
+        "childPid": 898075,
+        "status": "completed",
+        "exitCode": 0,
+        "wallSeconds": 440.89287694899394,
+        "stderrBytes": 0,
+        "finishedUtc": "2026-09-21T21:00:09.605385+00:00"
+      },
+      "guard": {
+        "exitCode": 0,
+        "wallSeconds": 441.0804010669963,
+        "unit": "s11c-guard-acef9e09dd2b",
+        "stderrBytes": 0,
+        "limitsVerified": true,
+        "childOutcome": {
+          "exitCode": 0,
+          "guardReason": null,
+          "wallSeconds": 440.9908970559991,
+          "childPid": 898074
+        }
+      },
+      "limits": {
+        "memory.max": "2147483648",
+        "memory.swap.max": "0",
+        "pids.max": "32",
+        "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-acef9e09dd2b.service",
+        "nice": 15,
+        "affinity": [
+          15
+        ],
+        "threads": {
+          "OPENBLAS_NUM_THREADS": "1",
+          "OMP_NUM_THREADS": "1",
+          "MKL_NUM_THREADS": "1",
+          "NUMEXPR_NUM_THREADS": "1",
+          "VECLIB_MAXIMUM_THREADS": "1",
+          "BLIS_NUM_THREADS": "1"
+        }
+      },
+      "memoryPeakBytes": 2147483648,
+      "swapBytes": 0,
+      "capReclaims": 325852,
+      "minimumHostAvailableBytes": 23609540608,
+      "oomEvents": 0
+    },
+    "publicationPending": true
   }
 }

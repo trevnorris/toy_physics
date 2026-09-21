@@ -261,3 +261,12 @@ verified, with all native threads one. The validator imports no scientific
 modules or packet deserializer and cannot invoke an emitter or physical replay.
 One 900-second guarded worker and silent local completion/error hook own this
 validation; final output acceptance and publication await its clean outcome.
+
+Independent saved-output validation passed in 440.76 worker seconds (440.89
+with native startup), final guard/supervisor/child exit zero, empty stderr and
+checks/stdout identity. All 38,546 pre/post paths, twelve decoded parts, 903,142
+actual metadata paths, 14,366 keys, local source-line indices and raw/global
+codec payloads pass. The separate ACCEPTED_CASE_MATERIAL_OUTPUT checkpoint
+retains original phase failures and clean continuation/validator provenance.
+No scientific packet, emitter or physical replay was invoked. Annex publication
+of the accepted 93,126,403-byte transcript is next.

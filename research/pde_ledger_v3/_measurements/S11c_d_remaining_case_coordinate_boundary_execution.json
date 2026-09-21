@@ -611,11 +611,83 @@
     }
   },
   "boundaryLoaderRecovery": {
-    "status": "PREPARED_NOT_RUN",
+    "status": "LAUNCHED_GUARDED_PENDING_FINAL_OUTCOME",
     "helperSha256": "d3d11b21d95b8c396a7a5bd105e0ebe13ba2905094ef6ef600dc3ff7749f15ef",
     "repairSha256": "9ab18f48bc06fa33a9db3d0b094152931c5fe41665b910ccf95c71fcbc824c8f",
     "intactCopies": 220,
     "restoredInheritedMetadata": 1,
-    "newScienceInPriorRecovery": 0
+    "newScienceInPriorRecovery": 0,
+    "launch": {
+      "launchedUtc": "2026-09-21T13:46:46.470077+00:00",
+      "guardPid": 714767,
+      "watcherPid": 714768,
+      "command": [
+        "/usr/bin/python",
+        "/var/projects/toy_physics/scripts/s11c_guarded_run.py",
+        "--log-directory",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/boundary/production-recovery-02/resource-guard",
+        "--seconds",
+        "900",
+        "--",
+        "/usr/bin/python",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+        "--run-root",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/boundary/production-recovery-02",
+        "--stage",
+        "coordinate_boundary_loader_recover",
+        "--",
+        "/usr/bin/python",
+        "-u",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_coordinate_boundary_loader_recover.py",
+        "--resume-focused",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/boundary/focused-recovery-01/complete",
+        "--run-directory",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/boundary/production-recovery-02/complete"
+      ],
+      "threadEnvironment": {
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "VECLIB_MAXIMUM_THREADS": "1",
+        "BLIS_NUM_THREADS": "1"
+      },
+      "implementationCommit": "3aed2164b021e32ad545821e536914354a9c9393",
+      "helperSha256": "d3d11b21d95b8c396a7a5bd105e0ebe13ba2905094ef6ef600dc3ff7749f15ef",
+      "guardSha256": "6492f5ab11dc2ab2f80bbfcc96d7eb6b8632afea07100dd8f74a7954f3ffe542",
+      "wiringSha256": "9ab18f48bc06fa33a9db3d0b094152931c5fe41665b910ccf95c71fcbc824c8f",
+      "acceptedFocusChecksSha256": "ef16c56c024e77d5856b81224f124b34aad8bcb00e8d9c491e15e74dcacb2f92",
+      "copiedFocusArtifacts": 191,
+      "originalCompletedFiles": 197,
+      "intactPreviousCopies": 220,
+      "restoredInheritedMetadata": 1,
+      "savedInputWriteJoins": 3,
+      "launchIsAcceptance": false,
+      "newContinuumFamilies": 1,
+      "newFiniteFamilies": 3,
+      "newResponseSolves": 0
+    },
+    "verifiedLimits": {
+      "verified": true,
+      "actual": {
+        "memory.max": "2147483648",
+        "memory.swap.max": "0",
+        "pids.max": "32",
+        "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-4f2920d55c80.service",
+        "nice": 15,
+        "affinity": [
+          15
+        ],
+        "threads": {
+          "OPENBLAS_NUM_THREADS": "1",
+          "OMP_NUM_THREADS": "1",
+          "MKL_NUM_THREADS": "1",
+          "NUMEXPR_NUM_THREADS": "1",
+          "VECLIB_MAXIMUM_THREADS": "1",
+          "BLIS_NUM_THREADS": "1"
+        }
+      }
+    },
+    "limitValidationSha256": "73d0260a3a37e5fb2e1dfd76d40260bb4ec83ed3d2794492a7e97642d71a10ff"
   }
 }

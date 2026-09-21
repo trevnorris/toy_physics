@@ -1,0 +1,87 @@
+{
+  "status": "ACCEPTED_SAVED_SOURCE_VIEW_REPAIR",
+  "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/bindings/schema-repair/complete",
+  "checksSha256": "6c1209e2a81c2be98b92a66d5881f97c8af67e517eb354aabc0d0f0c10477051",
+  "helperSha256": "75c7b3865249634848aab760030901f797e0b8dd34fec1b3352a7d9f7375b4bb",
+  "originalHelperSha256": "6797b240964693e17528b7aae5d5957377d2b20ecb1dc71b38c76e51c80a8bd4",
+  "sourcePairs": 70,
+  "retainedHistoricalDiagnostics": 280,
+  "respondingControls": 12,
+  "wiring": {
+    "wholeFocusReverseAst": true,
+    "prefixStatementsReplaced": 17,
+    "wholeUnfinishedTailIdentical": true,
+    "originalMainUnchanged": true,
+    "originalNativeBinderUnchanged": true,
+    "nativeBinderCallsInRecovery": 0,
+    "focusAstSha256": "e21aa5180a07a7399c4006ac416bb2a44e6bd56136c4b928c4109b5b2f6a20b0",
+    "mainAstSha256": "f384158bdab2fcfd70ed73d87d31443339030e0b401fc60bb34cf12ec17eacb4",
+    "constructAstSha256": "380997b3ef1cee1162d7e7e9baffbbca44ca6fba5368260e7142e7952ada49c9"
+  },
+  "actualOutcome": {
+    "exitCode": 0,
+    "wallSeconds": 8.960171921997244,
+    "unit": "s11c-guard-a741045fda0c",
+    "stderrBytes": 0,
+    "limitsVerified": true,
+    "childOutcome": {
+      "exitCode": 0,
+      "guardReason": null,
+      "wallSeconds": 8.876420123000571,
+      "childPid": 104551
+    }
+  },
+  "nativeOutcome": {
+    "stage": "schema_repair",
+    "command": [
+      "/usr/bin/python",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_coordinate_bindings_recover.py",
+      "--regression-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/bindings/schema-repair/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/bindings/schema-repair/schema_repair.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/bindings/schema-repair/schema_repair.stderr",
+    "startedUtc": "2026-09-21T10:32:25.311373+00:00",
+    "childPid": 104552,
+    "status": "completed",
+    "exitCode": 0,
+    "wallSeconds": 8.754663986001106,
+    "stderrBytes": 0,
+    "finishedUtc": "2026-09-21T10:32:34.066151+00:00"
+  },
+  "checksStdoutByteIdentity": true,
+  "resourceGuard": {
+    "directory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/bindings/schema-repair/resource-guard",
+    "files": {
+      "stdout": "18eeab73eb394fdb277b13006f034f675e1bbee87f16e7285120f13b0faaede0",
+      "child-outcome.json": "64a41650ebd93fa3c059dd58928a273f88a74be181c13b59165d56057ed57a85",
+      "invocation.json": "32357f79da4a84579d45e6a3585a57bed886e04f6f7fd0dc89ab37e55a052563",
+      "outcome.json": "dbe70026e1858b9c55e32999fe568208d3e0d1b712217d77961c3f2b7bdf3b1c",
+      "resource-samples.jsonl": "f14e7c05876fa2dead004605c4e111304f9682e9ba179d80634e9243c89b9731",
+      "stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "limit-validation.json": "e0e39e146fd6d762df9bcde4c32275f763641c9f99a7e5593e510eb348ad9318",
+      "effective-limits.json": "35694c1b3823e69bc88a74c99b88adb60229884bf75acb515fa15474f3f09a85"
+    }
+  },
+  "scope": "Saved source/schema comparison only. No native binding or scientific constructor executed. Full recovered focus acceptance remains pending.",
+  "originalFailure": {
+    "stage": "coordinate_bindings_focused",
+    "command": [
+      "/usr/bin/python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_coordinate_bindings.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/bindings/focused/complete",
+      "--focused"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/bindings/focused/coordinate_bindings_focused.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/bindings/focused/coordinate_bindings_focused.stderr",
+    "startedUtc": "2026-09-21T10:18:23.980074+00:00",
+    "childPid": 100190,
+    "status": "failed",
+    "exitCode": 1,
+    "wallSeconds": 203.8112089239985,
+    "stderrBytes": 959,
+    "finishedUtc": "2026-09-21T10:21:47.791367+00:00"
+  }
+}

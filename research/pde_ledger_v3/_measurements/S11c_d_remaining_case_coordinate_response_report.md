@@ -156,3 +156,9 @@ The guard recorded 334,488 cap/reclaims, zero OOM/swap and minimum host availabl
 memory 18.42 GB. An independent saved-bundle/source/unit/wiring validator is
 prepared with all scientific and emission constructors disabled; acceptance
 awaits its final outcome.
+
+Independent saved-output input validation launched from 0f0d5841 at 16:34:07 UTC
+with actual verified whole-job 2 GiB, zero swap, one CPU, nice 15 and 32-task
+limits, all native threads one. One 900-second supervisor and silent local
+completion/error hook own continuation. No bundle, sample emission or scientific
+operation is reconstructed. Output input acceptance awaits the final outcome.

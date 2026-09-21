@@ -382,5 +382,16 @@
         "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/boundary/acceptance/launch.json": "a9a1e24a70902f13850eb5ca617a1d7362a893411c57434ec589fc5f677bbc1d"
       }
     }
+  },
+  "boundaryConstructionPreparation": {
+    "status": "PREPARED_NOT_RUN",
+    "helper": "S11c_d_remaining_case_coordinate_boundary.py",
+    "helperSha256": "e45d7666510ceb55ea8783c1458074eaac9be057460a2d00f962f888e8f84fa7",
+    "plan": "4eb709656f57c5c6678c6a656ec99f85f2f7dd26da34e51acf47ddc1f8c3f4a0",
+    "wiringSha256": "e3ec13b6c512625d6de47f1e7f430187e3da50da9a0a199474463948b33a297c",
+    "acceptedInputCommit": "f8f56ac3",
+    "newContinuumFamilies": 1,
+    "newFiniteFamilies": 3,
+    "newResponseSolves": 0
   }
 }

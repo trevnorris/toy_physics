@@ -1,0 +1,23 @@
+{
+  "status": "STATIC_ADAPTER_SOURCE_REVIEW",
+  "helperSha256": "e45d7666510ceb55ea8783c1458074eaac9be057460a2d00f962f888e8f84fa7",
+  "planSha256": "4eb709656f57c5c6678c6a656ec99f85f2f7dd26da34e51acf47ddc1f8c3f4a0",
+  "inputCheckpointSha256": "c4d6c9863aa81fc774c7d03c7a948b6dec4b917fb58b555dc4746f35f1e1d0dd",
+  "nativeSources": {
+    "S11c_d_coordinate_response.py": "c602be26c91c3a3369005eb0f7e83895a20133df989622d6200823db284fa3e5",
+    "S11c_d_finite_scattering.py": "f187d9426be8069342a363a0466c175d32a8cb46101e32a14c433ccb9118e469",
+    "S11c_d_continuum_boundary.py": "ed3a6539d3151c52d25f12308b121897baf3bd6a5a626a598ab728988ab933a0",
+    "S11c_d_finite_scattering_domain.py": "73341408d0f6c1eb517e435dea986e180ff53615a6102697a8e3ba6747bd35aa",
+    "S11c_d_remaining_case_boundary.py": "da981150e7241f2bc977edf5c3d6e0911eb1143059ced6b8bf8ca43e95c516eb"
+  },
+  "finiteNativeTailStatements": 8,
+  "materialConstructorStatements": 12,
+  "syntaxCompiledWithoutScientificImports": true,
+  "runtimeReverseASTAndActualControlsRequired": true,
+  "newContinuumFamilies": 1,
+  "newFiniteFamilies": 3,
+  "newResponseSolves": 0,
+  "staticWholeMaterialReverseAST": true,
+  "observerStatements": 4,
+  "staticNativeFiniteTailCompiled": true
+}

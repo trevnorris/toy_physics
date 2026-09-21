@@ -2199,5 +2199,13 @@
     "independentMd5Verified": true,
     "gitMode": "120000",
     "annexCommit": "46796940"
+  },
+  "nextStage": {
+    "name": "remaining-case coordinate source inputs",
+    "implementationCommit": "f8808ef3",
+    "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260920/inputs",
+    "supervisorPid": 2203957,
+    "watcherPid": 2203958,
+    "acceptancePending": true
   }
 }

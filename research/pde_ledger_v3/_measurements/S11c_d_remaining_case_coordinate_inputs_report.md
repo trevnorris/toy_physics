@@ -17,3 +17,7 @@ Implementation compiles. Construction, final validation and actual numerical
 reuse counts remain pending. One native thread, 2 GiB and 900 seconds with a
 silent completion/error hook; no new source reduction, binding, factorization,
 grade extraction, quadrature, current/mode construction or response solve.
+
+The source-input job launched from f8808ef3 under supervisor 2203957 and
+silent watcher 2203958. The hook owns the actual supervisor PID. Final source
+reuse/density checks and clean completion remain pending; launch is not acceptance.

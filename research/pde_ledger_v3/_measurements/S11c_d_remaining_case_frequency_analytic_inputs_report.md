@@ -61,3 +61,18 @@ The independent saved validator launched at 2026-09-21T23:38:52.673110+00:00 fro
 is verified with empty stderr. Its silent completion/error hook continues the
 task; no polling or automatic retry is scheduled. Acceptance awaits the final
 clean saved validation.
+
+Analytic inputs are accepted after 107.09 worker /
+108.33 native seconds of independent saved validation. Actual
+final guard/supervisor/child exits are zero, stderr is empty and checks/stdout
+are byte-identical. All 15,038 pre/post paths, 1,467 source/owner routes,
+494 radical uses, 2,818 denominator uses and 44 actual mutations pass. Peak
+memory was 429,944,832 bytes, with no cap/OOM/swap events and
+minimum host availability 23.67 GB. No science was repeated.
+
+The next construction is exactly 63 missing analytic images (29/24/10) and
+two new denominator classifications. Their saved polynomials are constant
+multiples of the squared relaxation form; that inference still needs the native
+exact factor identity and bound. The 375 baseline analytic records and existing
+root/domain/path/seed-root proofs remain saved inputs. Actual end-family
+continuation and complete frequency-dependent numerical operators follow.

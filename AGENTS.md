@@ -1,8 +1,9 @@
 # Local execution safeguards
 
-S11c-d scientific work is paused following the September 20, 2026 desktop
-freeze and forced reboot. Diagnose and document the incident before resuming;
-do not replay a completed job to reproduce the freeze.
+The user explicitly resumed S11c-d on September 21, 2026 after the desktop
+freeze investigation and resource-guard tests. The freeze cause remains
+unconfirmed. Preserve the incident record; do not replay completed jobs to
+reproduce the freeze. All resumed scientific work must use the guard below.
 
 For future S11c Python constructors, validators and export jobs, use
 `scripts/s11c_guarded_run.py` around the existing supervisor. It requires a

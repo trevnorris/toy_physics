@@ -1,0 +1,36 @@
+{
+  "status": "COMPILED_NATIVE_MATERIAL_BINDING_REUSE",
+  "joins": {
+    "wholeNativeBinderReverseAst": true,
+    "edits": [
+      1,
+      2,
+      1,
+      1,
+      1,
+      1
+    ],
+    "nativeBinderAstSha256": "013541441e9ed719650634235e4178cea4d9a977bdee55500736c5f6a7403471",
+    "nativeChartAstSha256": "117e5fcc22ac48b062ddbe892c9a905a7170d51417eaffb227ae4e1bf7f8c3dd",
+    "nativeNumericalBindAstSha256": "5a07713fe33627a0d8e469a5baaf7af583cf3c141f4257efe6586ee025172830",
+    "cacheComparisonAstSha256": "3583400ba4fc3098eaf1b5f0d54b3113afdaa02280e21f76fd0e092391c5656d",
+    "profileCacheJoinAstSha256": "af3273c6a568327050cf4a4bcee2b586b89ce64865496a220e1c24f1839f688e"
+  },
+  "helperSha256": "6797b240964693e17528b7aae5d5957377d2b20ecb1dc71b38c76e51c80a8bd4",
+  "newBindingOrNumericalWork": 0,
+  "actualOutcome": {
+    "exitCode": 0,
+    "wallSeconds": 3.7558275609990233,
+    "unit": "s11c-guard-3dfb3dab6f64",
+    "stderrBytes": 0,
+    "limitsVerified": true,
+    "childOutcome": {
+      "exitCode": 0,
+      "guardReason": null,
+      "wallSeconds": 3.630892268000025,
+      "childPid": 98972
+    }
+  },
+  "resourceLogDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/binding-design/wiring-guard-02",
+  "scope": "Native whole-binding reverse AST compilation only; actual saved input focus follows."
+}

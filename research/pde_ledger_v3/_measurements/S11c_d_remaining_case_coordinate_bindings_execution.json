@@ -1,0 +1,12 @@
+{
+  "status": "MATERIAL_BINDING_FOCUS_PREPARED",
+  "acceptedCoordinateSources": "3e167144",
+  "acceptedBaselineMaterial": "19a9f5a1",
+  "continuationStatus": "RESUMED_BY_USER",
+  "resumeRecord": "/var/projects/toy_physics/_scratch/s11c/host-freeze-20260920/user-resumed-20260921.json",
+  "helperSha256": "6797b240964693e17528b7aae5d5957377d2b20ecb1dc71b38c76e51c80a8bd4",
+  "resourceGuard": "scripts/s11c_guarded_run.py",
+  "initialBudgetSeconds": 900,
+  "focus": "Saved scalar/frame/row/layout joins and full native baseline replay with zero new source bindings or numerical work.",
+  "next": "Accept actual focus before constructing missing material bindings; no production launch before focus acceptance."
+}

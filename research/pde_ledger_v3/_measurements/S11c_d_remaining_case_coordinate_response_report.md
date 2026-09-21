@@ -270,3 +270,14 @@ codec payloads pass. The separate ACCEPTED_CASE_MATERIAL_OUTPUT checkpoint
 retains original phase failures and clean continuation/validator provenance.
 No scientific packet, emitter or physical replay was invoked. Annex publication
 of the accepted 93,126,403-byte transcript is next.
+
+Output acceptance is committed at 50911879. The transcript is published via
+DataLad/git-annex at 998c4023: 93,126,403 bytes, actual key
+`MD5E-s93126403--7f9d8d6cc7f247f70c6d2eff99c61896.out`. The locked symlink,
+annex object, size and independent MD5/SHA256 agree. SHA256 is
+`fe6cd0224ec8d9a232b8a9abbffa296e2092a88921c2ab8c5e32c9b5b4a3a6d8`.
+All four selected coordinate controls are complete. Agreement at roughly
+1e-13 is coordinate consistency; it does not resolve tiny reflection/loss or
+remove the positive regulator, approximate boundaries or omitted parent
+second-order limitation. Scoped case frequency work and final engine/exports
+remain; the closed baseline search will not be doubled.

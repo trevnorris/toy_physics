@@ -1,5 +1,5 @@
 {
-  "status": "ACCEPTED_CASE_MATERIAL_OUTPUT",
+  "status": "PUBLISHED_ANNEX_VERIFIED",
   "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/response/output/production-continuation-01/complete",
   "checksSha256": "64a2f56f93e9d7a29c4c59fe1e2018eec628c7ba7cdc1e0772475a9239ee438f",
   "sourceFiles": {
@@ -44544,5 +44544,21 @@
   "acceptedFocusCommit": "64fc436f",
   "acceptedPhase19AuditCommit": "f6be0aad",
   "originalFailedPhasePreserved": true,
-  "publication": null
+  "publication": {
+    "status": "PUBLISHED_ANNEX_VERIFIED",
+    "path": "research/pde_ledger_v3/scripts/out/S11c_d_remaining_case_coordinate.out",
+    "bytes": 93126403,
+    "sha256": "fe6cd0224ec8d9a232b8a9abbffa296e2092a88921c2ab8c5e32c9b5b4a3a6d8",
+    "md5": "7f9d8d6cc7f247f70c6d2eff99c61896",
+    "backend": "MD5E",
+    "key": "MD5E-s93126403--7f9d8d6cc7f247f70c6d2eff99c61896.out",
+    "symlink": "../../../../.git/annex/objects/X3/vj/MD5E-s93126403--7f9d8d6cc7f247f70c6d2eff99c61896.out/MD5E-s93126403--7f9d8d6cc7f247f70c6d2eff99c61896.out",
+    "annexObject": "/var/projects/toy_physics/.git/annex/objects/X3/vj/MD5E-s93126403--7f9d8d6cc7f247f70c6d2eff99c61896.out/MD5E-s93126403--7f9d8d6cc7f247f70c6d2eff99c61896.out",
+    "independentSha256Verified": true,
+    "independentMd5Verified": true,
+    "gitMode": "120000",
+    "annexCommit": "998c4023631f954c363d2ae4acdb2809b9d321b3"
+  },
+  "acceptanceStatus": "ACCEPTED_CASE_MATERIAL_OUTPUT",
+  "acceptanceCommit": "50911879"
 }

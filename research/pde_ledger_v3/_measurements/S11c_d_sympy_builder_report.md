@@ -467,8 +467,23 @@ are accepted at 4365f2b1: 65.13 seconds plus 19.05 seconds independent validatio
 all 1467 records/300 rows/647 terms/120 sources. Only 86 union source images are
 new; accepted images and explicit aliases cover the other uses. Constant-rho4
 absence and the actual live RHOBR volume-density gradient are separately retained.
-Construction of the missing images is running from 53317767; no new numerical
-or material scattering result is accepted by the input preparation.
+Those source images and their numerical material routes have since been
+completed and independently accepted as recorded below.
+
+The [four-case material-coordinate controls](S11c_d_remaining_case_coordinate_response_report.md)
+are accepted at 50911879 and annex-published at 998c4023. All four finite
+controls and three new continuum controls use their own material end/current/
+phase maps transformed into common Eulerian coordinates before solving; the
+historical baseline continuum is reused. Finite amplitude/current differences
+are at most 2.213e-13/2.963e-13, continuum differences 5.532e-14/3.265e-14.
+These are coordinate consistency checks, not resolved tiny reflection or loss.
+The twelve-part 93,126,403-byte transcript retains 28,780 decoded payloads,
+14,366 keys and 903,142 metadata paths. Independent saved validation took
+440.76 seconds; all guards recorded zero OOM/swap. The original output timeout
+and clean audit continuation remain explicit. Actual MD5E/symlink/size/MD5/
+SHA256 publication checks pass. Scoped remaining-case frequency work and
+final all-case engine/export integration remain, with no baseline contour
+doubling or inferred empty spectrum.
 
 ## Retained user-approved solver/export contract
 

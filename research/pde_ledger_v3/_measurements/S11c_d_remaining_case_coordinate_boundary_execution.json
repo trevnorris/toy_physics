@@ -1,5 +1,5 @@
 {
-  "status": "RUNNING_GUARDED_SCHEMA_RECOVERY",
+  "status": "COMPLETED_INPUTS_PENDING_INDEPENDENT_VALIDATION",
   "acceptedMaterialInteriors": "a95a0c0d",
   "acceptedCaseBoundaryMaps": "d8713012",
   "acceptedBaselineMaterial": "19a9f5a1",
@@ -13,7 +13,7 @@
   "initialBudgetSeconds": 900,
   "newFocusPhysicalConstructions": 0,
   "baselineMaterialControlIsContinuumOnly": true,
-  "next": "Resume all seven original input copies and complete the original saved-operand focus under guard.",
+  "next": "Independently validate saved full input/family/physical-address/field/current/phase/unit/control evidence before accepting material boundary inputs.",
   "launchIsAcceptance": false,
   "previousAttempts": [
     {
@@ -160,5 +160,54 @@
       }
     }
   },
-  "guardLimitsSha256": "613cbb70f3868476bb78eef9f92a022b52f38fb8f68e913d5c134972f922780d"
+  "guardLimitsSha256": "613cbb70f3868476bb78eef9f92a022b52f38fb8f68e913d5c134972f922780d",
+  "focusOutcome": {
+    "stage": "coordinate_boundary_recover",
+    "command": [
+      "/usr/bin/python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_coordinate_boundary_inputs_recover.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/boundary/focused-recovery-01/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/boundary/focused-recovery-01/coordinate_boundary_recover.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/boundary/focused-recovery-01/coordinate_boundary_recover.stderr",
+    "startedUtc": "2026-09-21T13:03:29.620661+00:00",
+    "childPid": 700598,
+    "status": "completed",
+    "exitCode": 0,
+    "wallSeconds": 114.13782063899998,
+    "stderrBytes": 0,
+    "finishedUtc": "2026-09-21T13:05:23.758533+00:00"
+  },
+  "focusGuardOutcome": {
+    "exitCode": 0,
+    "wallSeconds": 114.2775775629998,
+    "unit": "s11c-guard-f69352351c73",
+    "stderrBytes": 0,
+    "limitsVerified": true,
+    "childOutcome": {
+      "exitCode": 0,
+      "guardReason": null,
+      "wallSeconds": 114.211350906,
+      "childPid": 700597
+    }
+  },
+  "focusChecksSha256": "ef16c56c024e77d5856b81224f124b34aad8bcb00e8d9c491e15e74dcacb2f92",
+  "focusCounts": {
+    "sourceFiles": 144,
+    "inputPackets": 21926,
+    "copiedInputs": 101,
+    "artifacts": 191
+  },
+  "actualNewMaterialFamilies": [
+    "LAB_HELD__RHOBR_CONSTANT__RIGHT"
+  ],
+  "inputMutationControls": 64,
+  "validator": {
+    "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/boundary/acceptance",
+    "scriptSha256": "4d246b45c7226722dfbb7df62aab7b79386793321cb8ab34ce6624ba16c40e7f",
+    "plan": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_coordinate_boundary_validation_plan.md",
+    "status": "PREPARED"
+  }
 }

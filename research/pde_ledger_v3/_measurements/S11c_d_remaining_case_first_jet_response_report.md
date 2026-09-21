@@ -9,7 +9,8 @@ checks/stdout. The twelve parts preserve 31816 decoded payloads, 15884 keys,
 validate. The raw concatenation and native global codec preserve every payload.
 The complete transcript is 60930340 bytes, SHA256
 `4957b1d9905affcd4116c95e7bc1bd6987c87fd9edaca1c8b7eaa66820247b4a`.
-Annex publication is the remaining output step.
+Annex publication is verified at 46796940: actual MD5E key, symlink, size, MD5
+and independent SHA256 agree. Output acceptance is e4d805f6.
 
 Numerical acceptance 47384f68 remains immutable: four new finite controls,
 including baseline, and three new continuum controls; the historical baseline

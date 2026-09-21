@@ -457,8 +457,10 @@ is accepted: all thirteen bounded phases passed, followed by 403.80 seconds of
 independent saved-hash/codec validation. Twelve parts retain 31816 payloads,
 15884 keys and 898801 metadata paths. Four finite and three new continuum
 controls are complete; historical baseline continuum is reused. Amplitude/current
-sensitivities stay below 1e-4/1e-6. Annex publication, remaining coordinate/advection
-controls, scoped case searches and final all-case engine/exports follow.
+sensitivities stay below 1e-4/1e-6. The 60930340-byte transcript is annex-verified
+at 46796940, with independent MD5/SHA256 and actual symlink/backend checks.
+Remaining coordinate/advection controls, scoped case searches and final all-case
+engine/exports follow.
 
 ## Retained user-approved solver/export contract
 

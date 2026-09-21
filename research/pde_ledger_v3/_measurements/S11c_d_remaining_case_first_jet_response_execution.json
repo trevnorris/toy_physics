@@ -1,5 +1,5 @@
 {
-  "status": "FIRST_JET_NUMERICAL_AND_OUTPUT_ACCEPTED",
+  "status": "FIRST_JET_RESPONSES_AND_TRANSCRIPT_PUBLISHED",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/response/focused",
   "acceptedMatrixCommit": "df5271b4",
   "implementationCommit": "57f05dae323126c0dc5a7acf54577d413c0495de",
@@ -61,7 +61,7 @@
   "remainingFiniteControlSolves": 4,
   "remainingContinuumControlSolves": 3,
   "scope": "Saved operators and own-case boundary/current/phase inputs; no new quadrature, interior assembly, modes, currents or response solve in this preparation.",
-  "next": "Publish the validated twelve-part output through DataLad/git-annex, then construct remaining coordinate/advection controls, scoped case searches and final engine/exports.",
+  "next": "Construct remaining actual material-coordinate and density-advection controls from accepted saved case sources, then scoped case frequency searches and final all-case engine/exports.",
   "focusedOutcome": {
     "stage": "response_inputs",
     "command": [
@@ -2184,5 +2184,20 @@
       "checksStdoutIdentical": true
     }
   },
-  "outputCheckpoint": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_first_jet_output_checkpoint.json"
+  "outputCheckpoint": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_first_jet_output_checkpoint.json",
+  "outputAcceptanceCommit": "e4d805f6",
+  "outputPublication": {
+    "path": "scripts/out/S11c_d_remaining_case_first_jet.out",
+    "bytes": 60930340,
+    "sha256": "4957b1d9905affcd4116c95e7bc1bd6987c87fd9edaca1c8b7eaa66820247b4a",
+    "md5": "5b3f8908ec1156ea5d045a050d027de2",
+    "backend": "MD5E",
+    "key": "MD5E-s60930340--5b3f8908ec1156ea5d045a050d027de2.out",
+    "symlink": "../../../../.git/annex/objects/kV/P5/MD5E-s60930340--5b3f8908ec1156ea5d045a050d027de2.out/MD5E-s60930340--5b3f8908ec1156ea5d045a050d027de2.out",
+    "annexObject": "/var/projects/toy_physics/.git/annex/objects/kV/P5/MD5E-s60930340--5b3f8908ec1156ea5d045a050d027de2.out/MD5E-s60930340--5b3f8908ec1156ea5d045a050d027de2.out",
+    "independentSha256Verified": true,
+    "independentMd5Verified": true,
+    "gitMode": "120000",
+    "annexCommit": "46796940"
+  }
 }

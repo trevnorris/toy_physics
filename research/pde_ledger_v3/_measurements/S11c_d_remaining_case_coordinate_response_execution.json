@@ -1,5 +1,5 @@
 {
-  "status": "LAUNCHED_GUARDED_MATERIAL_RESPONSE_INPUT_FOCUS",
+  "status": "MATERIAL_RESPONSE_FOCUS_COMPLETE_VALIDATOR_PREPARED",
   "acceptedBoundary": "2e1e4a3c",
   "acceptedMaterialInteriors": "a95a0c0d",
   "helperSha256": "95fe5fc75462f68780150fce954ffc2ac2f59c8f8a69672255bfaf2ca4fdf89a",
@@ -81,5 +81,142 @@
       }
     }
   },
-  "limitValidationSha256": "42db2053780c3fb1c19d71f7f89ff1e4dabcf642255e6c724c1c0e090c9b8980"
+  "limitValidationSha256": "42db2053780c3fb1c19d71f7f89ff1e4dabcf642255e6c724c1c0e090c9b8980",
+  "focusCompletion": {
+    "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/response/focused/complete",
+    "checksSha256": "05bdefce12c8adc5d2cc1a58c3b0e4c746e5effe7517cdd86be89dc36d56c725",
+    "nativeWallSeconds": 226.7553088900022,
+    "supervisor": {
+      "stage": "coordinate_response_inputs",
+      "command": [
+        "/usr/bin/python",
+        "-u",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_coordinate_response_inputs.py",
+        "--run-directory",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/response/focused/complete"
+      ],
+      "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/response/focused/coordinate_response_inputs.stdout",
+      "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/response/focused/coordinate_response_inputs.stderr",
+      "startedUtc": "2026-09-21T14:35:25.950380+00:00",
+      "childPid": 745076,
+      "status": "completed",
+      "exitCode": 0,
+      "wallSeconds": 227.92651986599958,
+      "stderrBytes": 0,
+      "finishedUtc": "2026-09-21T14:39:13.876943+00:00"
+    },
+    "guard": {
+      "exitCode": 0,
+      "wallSeconds": 228.0868805190039,
+      "unit": "s11c-guard-0e20e0346791",
+      "stderrBytes": 0,
+      "limitsVerified": true,
+      "childOutcome": {
+        "exitCode": 0,
+        "guardReason": null,
+        "wallSeconds": 228.01530549000017,
+        "childPid": 745074
+      }
+    },
+    "strictStderrEmpty": true,
+    "checksStdoutByteIdentity": true,
+    "counts": {
+      "sourceFiles": 169,
+      "inputPackets": 23248,
+      "copiedInputs": 522,
+      "artifacts": 556
+    },
+    "cases": {
+      "LAB_HELD__RHO4_CONSTANT": {
+        "rows": 80,
+        "terms": 160,
+        "sources": 35,
+        "unknowns": 645,
+        "incidentColumns": 4,
+        "nativeFirstWriteCaptured": true,
+        "newFiniteSolveRequired": true,
+        "newContinuumSolveRequired": false,
+        "baselineContinuumReplay": {
+          "matrixMaximum": 0.0,
+          "forcingMaximum": 0.0,
+          "scaledResidual": 4.5872791835133006e-14
+        },
+        "incidentSignMutation": 3.7235544611257785,
+        "covectorOmission": 0.022172100930910533,
+        "materialFamilies": {
+          "LEFT": "LEFT",
+          "RIGHT": "RIGHT"
+        },
+        "fullCurrentAndPhaseInputJoins": true
+      },
+      "LAB_HELD__RHOBR_CONSTANT": {
+        "rows": 70,
+        "terms": 140,
+        "sources": 25,
+        "unknowns": 645,
+        "incidentColumns": 4,
+        "nativeFirstWriteCaptured": true,
+        "newFiniteSolveRequired": true,
+        "newContinuumSolveRequired": true,
+        "baselineContinuumReplay": null,
+        "incidentSignMutation": 3.7235544611257785,
+        "covectorOmission": 0.022172100930910533,
+        "materialFamilies": {
+          "LEFT": "LEFT",
+          "RIGHT": "LAB_HELD__RHOBR_CONSTANT__RIGHT"
+        },
+        "fullCurrentAndPhaseInputJoins": true
+      },
+      "MATERIAL_ADVECTED__RHO4_CONSTANT": {
+        "rows": 80,
+        "terms": 185,
+        "sources": 35,
+        "unknowns": 645,
+        "incidentColumns": 4,
+        "nativeFirstWriteCaptured": true,
+        "newFiniteSolveRequired": true,
+        "newContinuumSolveRequired": true,
+        "baselineContinuumReplay": null,
+        "incidentSignMutation": 3.7235544611257785,
+        "covectorOmission": 0.022172100930910533,
+        "materialFamilies": {
+          "LEFT": "LEFT",
+          "RIGHT": "RIGHT"
+        },
+        "fullCurrentAndPhaseInputJoins": true
+      },
+      "MATERIAL_ADVECTED__RHOBR_CONSTANT": {
+        "rows": 70,
+        "terms": 162,
+        "sources": 25,
+        "unknowns": 645,
+        "incidentColumns": 4,
+        "nativeFirstWriteCaptured": true,
+        "newFiniteSolveRequired": true,
+        "newContinuumSolveRequired": true,
+        "baselineContinuumReplay": null,
+        "incidentSignMutation": 3.7235544611257785,
+        "covectorOmission": 0.022172100930910533,
+        "materialFamilies": {
+          "LEFT": "LEFT",
+          "RIGHT": "LAB_HELD__RHOBR_CONSTANT__RIGHT"
+        },
+        "fullCurrentAndPhaseInputJoins": true
+      }
+    },
+    "peakCgroupBytes": 2147483648,
+    "capReclaimEvents": 115423,
+    "oomEvents": 0,
+    "oomKills": 0,
+    "swapBytes": 0,
+    "hostAvailableMinimumBytes": 23618252800,
+    "independentValidationPending": true
+  },
+  "independentValidation": {
+    "root": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/response/acceptance",
+    "validatorSha256": "bde5a09e3c46ad0d045b6677e99c012afacbb38abefd3fbecde6c8846d60fe94",
+    "planSha256": "de77860ca5548ee1a882efc7a407e7f75de7d54a3d6f4789a10e4e512b180df1",
+    "status": "PREPARED_NOT_LAUNCHED",
+    "newScientificConstructions": 0
+  }
 }

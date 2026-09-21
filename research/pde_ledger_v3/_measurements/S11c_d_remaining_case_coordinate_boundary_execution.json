@@ -384,7 +384,7 @@
     }
   },
   "boundaryConstructionPreparation": {
-    "status": "RUNNING_GUARDED_PENDING_FINAL_OUTCOME",
+    "status": "FAILED_BEFORE_CURRENT_OR_BOUNDARY_SOLVE",
     "helper": "S11c_d_remaining_case_coordinate_boundary.py",
     "helperSha256": "e45d7666510ceb55ea8783c1458074eaac9be057460a2d00f962f888e8f84fa7",
     "plan": "4eb709656f57c5c6678c6a656ec99f85f2f7dd26da34e51acf47ddc1f8c3f4a0",
@@ -461,5 +461,49 @@
       }
     }
   },
-  "boundaryConstructionLimitValidationSha256": "faf6bbe2a37ba6078bae35c2d0a5629ced1c1d0ed497df30a82769ca7618cb87"
+  "boundaryConstructionLimitValidationSha256": "faf6bbe2a37ba6078bae35c2d0a5629ced1c1d0ed497df30a82769ca7618cb87",
+  "boundaryConstructionOutcome": {
+    "stage": "coordinate_boundary_construct",
+    "command": [
+      "/usr/bin/python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_coordinate_boundary.py",
+      "--resume-focused",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/boundary/focused-recovery-01/complete",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/boundary/production/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/boundary/production/coordinate_boundary_construct.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/boundary/production/coordinate_boundary_construct.stderr",
+    "startedUtc": "2026-09-21T13:32:17.696925+00:00",
+    "childPid": 709236,
+    "status": "failed",
+    "exitCode": 1,
+    "wallSeconds": 39.46220213599736,
+    "stderrBytes": 1535,
+    "finishedUtc": "2026-09-21T13:32:57.159170+00:00"
+  },
+  "boundaryConstructionGuardOutcome": {
+    "exitCode": 1,
+    "wallSeconds": 39.6114169890061,
+    "unit": "s11c-guard-3931f91d14aa",
+    "stderrBytes": 0,
+    "limitsVerified": true,
+    "childOutcome": {
+      "exitCode": 1,
+      "guardReason": null,
+      "wallSeconds": 39.545642359997146,
+      "childPid": 709235
+    }
+  },
+  "boundaryBasisRecovery": {
+    "status": "PREPARED_NOT_RUN",
+    "repair": "S11c_d_remaining_case_coordinate_boundary_basis_repair.json",
+    "repairSha256": "f5fb70b11d6a4f4d144cbcd8a5f26aaa532bd747d2f189e6fc9cc7a07e959b05",
+    "helperSha256": "062323b2df7235366a0794ba9209c61aeec970f838090235de38292cc2b20f83",
+    "retainedFiles": 197,
+    "savedInputPackets": 3,
+    "newCompletedScientificResults": 0,
+    "savedChartSourceAddressJoin": true
+  }
 }

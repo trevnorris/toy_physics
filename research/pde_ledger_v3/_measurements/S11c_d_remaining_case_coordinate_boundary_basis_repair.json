@@ -1,0 +1,846 @@
+{
+  "status": "PREPARED_SINGLE_MATRIX_PRODUCT_REPAIR",
+  "originalHelperSha256": "e45d7666510ceb55ea8783c1458074eaac9be057460a2d00f962f888e8f84fa7",
+  "recoveryHelperSha256": "062323b2df7235366a0794ba9209c61aeec970f838090235de38292cc2b20f83",
+  "recoveryPlanSha256": "eb0af32e4239ee680725de3d4e39f584addbac6c73e1b6b854b4d1010c7c40b7",
+  "originalManifestSha256": "99b1a4cdd88a11b9e3432c1cb2a20946588dba8f5552dfecb591554b55751d57",
+  "completedFiles": {
+    "material-constructor-joins.json": {
+      "sha256": "a9de6aa71552d4610897fa4512fa5647d2add9cf988ec68baf99df10c473cdd2",
+      "bytes": 2003
+    },
+    "completed-input-reuse.json": {
+      "sha256": "027c9934e492a075e7a10251b87a02a09b356e3b58ef446b6577fcdac11d0e03",
+      "bytes": 4037
+    },
+    "accepted-focus-checks.json": {
+      "sha256": "ef16c56c024e77d5856b81224f124b34aad8bcb00e8d9c491e15e74dcacb2f92",
+      "bytes": 5927766
+    },
+    "preflight.json": {
+      "sha256": "39d193a5a5ebbdea9a9fc4a1d23c62dc75330143045071e0e0f4d528545184a5",
+      "bytes": 7161
+    },
+    "accepted-focus-inputs.json": {
+      "sha256": "8bcf13efb29d582f6c57526d3071e15970778a31d9eb52a4179c94bea536ce8b",
+      "bytes": 5884059
+    },
+    "accepted-matrices-checks.json": {
+      "sha256": "6b910f5bce94b0c17d1d8c3d8c037e2ec7447aa406cd5c453a3561b71ce3b060",
+      "bytes": 7321905
+    },
+    "accepted-s11c-coordinate-response-20260919-checks.json": {
+      "sha256": "23495f230f9164920d5c8dbebe0b58730ecdb11ff9b279aeb1b8a2b89cb4753b",
+      "bytes": 33192
+    },
+    "native-boundary-joins.json": {
+      "sha256": "31fcdbc17139e7341161a0ce3999ef30ca0c26cde80f69ac50349b09ff404f32",
+      "bytes": 594
+    },
+    "baseline-material-reuse.json": {
+      "sha256": "f2c8a466191a6b867d6220f1d11f22d47ac5cddd33b6a46a45ce61dc80c139e3",
+      "bytes": 1603
+    },
+    "accepted-continuum-boundary.pickle": {
+      "sha256": "8e3e53c3b7b06e3e81f961f013b77b4b87dfede081db75b4de458503b062eed0",
+      "bytes": 427369
+    },
+    "accepted-s11c-remaining-case-boundary-20260920-checks.json": {
+      "sha256": "3b02f5bdd244d6d0eb0c0c192a8dc49b101e622f2edbd211f6d05ee52bed33bb",
+      "bytes": 78107
+    },
+    "end-inventory.json": {
+      "sha256": "a682c220d67cc13dc661caeebecc0d79570d39e5f30863f26c68c10523a3269b",
+      "bytes": 3828
+    },
+    "original-input-source.py": {
+      "sha256": "7b0402a770b11b8a5dd36aae91140423a664531b9279526f79f97979899ef1eb",
+      "bytes": 20997
+    },
+    "case-inventory.json": {
+      "sha256": "15142c6d09a11695cec7b3128c7b74147f76de342dd82e1dfc5034fd3a1591e9",
+      "bytes": 879
+    },
+    "interiors/LAB_HELD__RHOBR_CONSTANT/interior-matrices.pickle": {
+      "sha256": "2b0f7ba72f9d408fd4ddf1e96d909ac74cb2e211a51944886f07333d122333aa",
+      "bytes": 233037992
+    },
+    "interiors/MATERIAL_ADVECTED__RHOBR_CONSTANT/interior-matrices.pickle": {
+      "sha256": "47f03786e58b43896943a2b1e9381c8cd38d6aef85473ebf08b878f5bbf808d7",
+      "bytes": 233060231
+    },
+    "interiors/MATERIAL_ADVECTED__RHO4_CONSTANT/interior-matrices.pickle": {
+      "sha256": "e3dab24bc422192195fc87bad77c14badc2a2810e1202e7cc7f486b0b8b280cd",
+      "bytes": 233051917
+    },
+    "baseline-material/left-slab-material-current-tables.pickle": {
+      "sha256": "504b73ec2973976001764271457bd9eac798205dedd1eb1ced7aeb3bd49789d0",
+      "bytes": 4813
+    },
+    "baseline-material/material-boundary.pickle": {
+      "sha256": "136b554e2e1de5de4ddc8b45aaf48c771548d33c71ac1c7cfa2ae0fd555e9ffb",
+      "bytes": 520928
+    },
+    "baseline-material/left-bulk-material-current-tables.pickle": {
+      "sha256": "0025cac38005905658f2da0d0d760cf7e9606208b305b025b44c157ce8dba0c1",
+      "bytes": 127820
+    },
+    "baseline-material/right-material-boundary.pickle": {
+      "sha256": "8f8d2b55f2baad5e410eb3a8364f8df3b78e08938c6a2a94312712aac12dec61",
+      "bytes": 264383
+    },
+    "baseline-material/right-slab-material-current-tables.pickle": {
+      "sha256": "691b4f5b607dd9d7dacb70bed36e3c0e25a87aff53608f399311906ba5959ab8",
+      "bytes": 5555
+    },
+    "baseline-material/material-binding.pickle": {
+      "sha256": "20ffd9eb362e4f44c059c3d1e13851fc0ae8a0ecd247e0ed4a034acc24f06225",
+      "bytes": 420303
+    },
+    "baseline-material/left-material-boundary.pickle": {
+      "sha256": "2317ac1e18fd05b5987b98c2ceb4fb3f05edeed06e5dd9879367f33dbcf36b9b",
+      "bytes": 221933
+    },
+    "baseline-material/right-bulk-material-current-tables.pickle": {
+      "sha256": "8714299cd5aad4854b2decf71c8d90cb47eddc3c396318c3dc417e3c0bf32322",
+      "bytes": 192626
+    },
+    "preparation/LAB_HELD__RHOBR_CONSTANT/chart-input-pairs.pickle": {
+      "sha256": "f05222f5039394e578a4408669f4a1a8c6ff6cba6c0c0f6834a4701ac84b6d03",
+      "bytes": 113264
+    },
+    "preparation/LAB_HELD__RHOBR_CONSTANT/left/mutation-controls.pickle": {
+      "sha256": "4593e14dcbb9bf35c3433fd4a71a80013e50bf7120baf89f426b0b05c9c1e4f9",
+      "bytes": 2006
+    },
+    "preparation/LAB_HELD__RHOBR_CONSTANT/left/end-inputs.pickle": {
+      "sha256": "3a46924efcfbac0c94d822eb2bdb28b5648cffdce729c5f6f6c73c62398d7045",
+      "bytes": 184652
+    },
+    "preparation/LAB_HELD__RHOBR_CONSTANT/left/source-reuse-pairs.pickle": {
+      "sha256": "7531f360693a3aa60b0f9761c6dcc656efada44ccc3bec1d268c1a7a3506f2fd",
+      "bytes": 553120
+    },
+    "preparation/LAB_HELD__RHOBR_CONSTANT/left/controls/2.pickle": {
+      "sha256": "aab61e7fe4771e5afd781115eb651744180aea72fd47fa88bd8b36104287c38e",
+      "bytes": 231
+    },
+    "preparation/LAB_HELD__RHOBR_CONSTANT/left/controls/3.pickle": {
+      "sha256": "24e369965e3a4806ba74a2de607de53d3bc514dfe22a72b5396ad5bbbcd844e7",
+      "bytes": 236
+    },
+    "preparation/LAB_HELD__RHOBR_CONSTANT/left/controls/5.pickle": {
+      "sha256": "572abc476262f4652abb1e9e3d08c5863fbd7dc576ece3da79a98fce760bf283",
+      "bytes": 232
+    },
+    "preparation/LAB_HELD__RHOBR_CONSTANT/left/controls/6.pickle": {
+      "sha256": "346a379ee4050818986cfa770398cacce60eaac82b7dddd5f744aca8ed9f814d",
+      "bytes": 135
+    },
+    "preparation/LAB_HELD__RHOBR_CONSTANT/left/controls/1.pickle": {
+      "sha256": "945081ba3db07d5bcd18fbd9b06a669ad0e23344dfd976163344a04b369236d2",
+      "bytes": 241
+    },
+    "preparation/LAB_HELD__RHOBR_CONSTANT/left/controls/7.pickle": {
+      "sha256": "617965219b5f155b27c9d5687b9e9f11ea94c341b73fe7f97433cb28eb251109",
+      "bytes": 157
+    },
+    "preparation/LAB_HELD__RHOBR_CONSTANT/left/controls/4.pickle": {
+      "sha256": "1042f5971fc8535fb7414cfc58fc7f62c6a24b4cccb5b4ae00837793cc174aef",
+      "bytes": 1333
+    },
+    "preparation/LAB_HELD__RHOBR_CONSTANT/right/mutation-controls.pickle": {
+      "sha256": "18139ec23d029bad3bf98746a6587b71ac07ba6dc2c52854d73a1df03a480721",
+      "bytes": 2007
+    },
+    "preparation/LAB_HELD__RHOBR_CONSTANT/right/end-inputs.pickle": {
+      "sha256": "c96c602fc6671ee65ddc8d5828eb5b8b0da03f030a1cf975542eb6a562e022dd",
+      "bytes": 200452
+    },
+    "preparation/LAB_HELD__RHOBR_CONSTANT/right/source-reuse-pairs.pickle": {
+      "sha256": "a2acf77ee95ec907e168d7d5a51e4eaee660e6d0a0b4adcd3a3e07bd11c04baa",
+      "bytes": 568881
+    },
+    "preparation/LAB_HELD__RHOBR_CONSTANT/right/controls/2.pickle": {
+      "sha256": "827a7b00097a7d6e2a6fd26c3c1672f43039c082cf781e530c56bbd7c0cc73c3",
+      "bytes": 231
+    },
+    "preparation/LAB_HELD__RHOBR_CONSTANT/right/controls/3.pickle": {
+      "sha256": "69a6f161861c83b8290b5afccd109057043ea7238fae1d1ebfcc5634f80cb0ee",
+      "bytes": 236
+    },
+    "preparation/LAB_HELD__RHOBR_CONSTANT/right/controls/5.pickle": {
+      "sha256": "bd3c4b1f704a6bb82952be5965d283c2a2496609b8ed5f9e44ee0c7106c0f259",
+      "bytes": 232
+    },
+    "preparation/LAB_HELD__RHOBR_CONSTANT/right/controls/6.pickle": {
+      "sha256": "346a379ee4050818986cfa770398cacce60eaac82b7dddd5f744aca8ed9f814d",
+      "bytes": 135
+    },
+    "preparation/LAB_HELD__RHOBR_CONSTANT/right/controls/1.pickle": {
+      "sha256": "945081ba3db07d5bcd18fbd9b06a669ad0e23344dfd976163344a04b369236d2",
+      "bytes": 241
+    },
+    "preparation/LAB_HELD__RHOBR_CONSTANT/right/controls/7.pickle": {
+      "sha256": "617965219b5f155b27c9d5687b9e9f11ea94c341b73fe7f97433cb28eb251109",
+      "bytes": 157
+    },
+    "preparation/LAB_HELD__RHOBR_CONSTANT/right/controls/4.pickle": {
+      "sha256": "1042f5971fc8535fb7414cfc58fc7f62c6a24b4cccb5b4ae00837793cc174aef",
+      "bytes": 1333
+    },
+    "preparation/LAB_HELD__RHO4_CONSTANT/chart-input-pairs.pickle": {
+      "sha256": "f05222f5039394e578a4408669f4a1a8c6ff6cba6c0c0f6834a4701ac84b6d03",
+      "bytes": 113264
+    },
+    "preparation/LAB_HELD__RHO4_CONSTANT/left/mutation-controls.pickle": {
+      "sha256": "f2f54f9ee385ba88c8337c8627f031c4e2997a4cbc08cbe77b962b5175a1f93f",
+      "bytes": 2005
+    },
+    "preparation/LAB_HELD__RHO4_CONSTANT/left/end-inputs.pickle": {
+      "sha256": "3a46924efcfbac0c94d822eb2bdb28b5648cffdce729c5f6f6c73c62398d7045",
+      "bytes": 184652
+    },
+    "preparation/LAB_HELD__RHO4_CONSTANT/left/source-reuse-pairs.pickle": {
+      "sha256": "7531f360693a3aa60b0f9761c6dcc656efada44ccc3bec1d268c1a7a3506f2fd",
+      "bytes": 553120
+    },
+    "preparation/LAB_HELD__RHO4_CONSTANT/left/controls/2.pickle": {
+      "sha256": "aab61e7fe4771e5afd781115eb651744180aea72fd47fa88bd8b36104287c38e",
+      "bytes": 231
+    },
+    "preparation/LAB_HELD__RHO4_CONSTANT/left/controls/3.pickle": {
+      "sha256": "24e369965e3a4806ba74a2de607de53d3bc514dfe22a72b5396ad5bbbcd844e7",
+      "bytes": 236
+    },
+    "preparation/LAB_HELD__RHO4_CONSTANT/left/controls/5.pickle": {
+      "sha256": "572abc476262f4652abb1e9e3d08c5863fbd7dc576ece3da79a98fce760bf283",
+      "bytes": 232
+    },
+    "preparation/LAB_HELD__RHO4_CONSTANT/left/controls/6.pickle": {
+      "sha256": "346a379ee4050818986cfa770398cacce60eaac82b7dddd5f744aca8ed9f814d",
+      "bytes": 135
+    },
+    "preparation/LAB_HELD__RHO4_CONSTANT/left/controls/1.pickle": {
+      "sha256": "945081ba3db07d5bcd18fbd9b06a669ad0e23344dfd976163344a04b369236d2",
+      "bytes": 241
+    },
+    "preparation/LAB_HELD__RHO4_CONSTANT/left/controls/7.pickle": {
+      "sha256": "617965219b5f155b27c9d5687b9e9f11ea94c341b73fe7f97433cb28eb251109",
+      "bytes": 157
+    },
+    "preparation/LAB_HELD__RHO4_CONSTANT/left/controls/4.pickle": {
+      "sha256": "1042f5971fc8535fb7414cfc58fc7f62c6a24b4cccb5b4ae00837793cc174aef",
+      "bytes": 1333
+    },
+    "preparation/LAB_HELD__RHO4_CONSTANT/right/mutation-controls.pickle": {
+      "sha256": "fd3d9b1461ba982020e18d7de138099b6378b870c681913d71a29447bac28e43",
+      "bytes": 2006
+    },
+    "preparation/LAB_HELD__RHO4_CONSTANT/right/end-inputs.pickle": {
+      "sha256": "540e7121b9f28aff23da3a1c2d3ee1c2c00162cf701f2b0e1e02826e091a750f",
+      "bytes": 226109
+    },
+    "preparation/LAB_HELD__RHO4_CONSTANT/right/source-reuse-pairs.pickle": {
+      "sha256": "a09c5515052ae0fd2bd374e0167f825a5ede550e40ec64432976b4a8224ccb45",
+      "bytes": 594085
+    },
+    "preparation/LAB_HELD__RHO4_CONSTANT/right/controls/2.pickle": {
+      "sha256": "827a7b00097a7d6e2a6fd26c3c1672f43039c082cf781e530c56bbd7c0cc73c3",
+      "bytes": 231
+    },
+    "preparation/LAB_HELD__RHO4_CONSTANT/right/controls/3.pickle": {
+      "sha256": "69a6f161861c83b8290b5afccd109057043ea7238fae1d1ebfcc5634f80cb0ee",
+      "bytes": 236
+    },
+    "preparation/LAB_HELD__RHO4_CONSTANT/right/controls/5.pickle": {
+      "sha256": "a89e0df23304b04d2979785f20dad106af4986086cb2527b85a61d9fbd2144ff",
+      "bytes": 232
+    },
+    "preparation/LAB_HELD__RHO4_CONSTANT/right/controls/6.pickle": {
+      "sha256": "346a379ee4050818986cfa770398cacce60eaac82b7dddd5f744aca8ed9f814d",
+      "bytes": 135
+    },
+    "preparation/LAB_HELD__RHO4_CONSTANT/right/controls/1.pickle": {
+      "sha256": "945081ba3db07d5bcd18fbd9b06a669ad0e23344dfd976163344a04b369236d2",
+      "bytes": 241
+    },
+    "preparation/LAB_HELD__RHO4_CONSTANT/right/controls/7.pickle": {
+      "sha256": "617965219b5f155b27c9d5687b9e9f11ea94c341b73fe7f97433cb28eb251109",
+      "bytes": 157
+    },
+    "preparation/LAB_HELD__RHO4_CONSTANT/right/controls/4.pickle": {
+      "sha256": "1042f5971fc8535fb7414cfc58fc7f62c6a24b4cccb5b4ae00837793cc174aef",
+      "bytes": 1333
+    },
+    "preparation/MATERIAL_ADVECTED__RHOBR_CONSTANT/chart-input-pairs.pickle": {
+      "sha256": "f05222f5039394e578a4408669f4a1a8c6ff6cba6c0c0f6834a4701ac84b6d03",
+      "bytes": 113264
+    },
+    "preparation/MATERIAL_ADVECTED__RHOBR_CONSTANT/left/mutation-controls.pickle": {
+      "sha256": "bf6d7fc572864cc4e16c9269c70a6c29e99da819e4f71c34ea9ec6440a2fa03b",
+      "bytes": 2015
+    },
+    "preparation/MATERIAL_ADVECTED__RHOBR_CONSTANT/left/end-inputs.pickle": {
+      "sha256": "3a46924efcfbac0c94d822eb2bdb28b5648cffdce729c5f6f6c73c62398d7045",
+      "bytes": 184652
+    },
+    "preparation/MATERIAL_ADVECTED__RHOBR_CONSTANT/left/source-reuse-pairs.pickle": {
+      "sha256": "4087af18866e97782d33380d6c73e678b852282b194a3135d049a1e53c73e725",
+      "bytes": 733393
+    },
+    "preparation/MATERIAL_ADVECTED__RHOBR_CONSTANT/left/controls/2.pickle": {
+      "sha256": "aab61e7fe4771e5afd781115eb651744180aea72fd47fa88bd8b36104287c38e",
+      "bytes": 231
+    },
+    "preparation/MATERIAL_ADVECTED__RHOBR_CONSTANT/left/controls/3.pickle": {
+      "sha256": "24e369965e3a4806ba74a2de607de53d3bc514dfe22a72b5396ad5bbbcd844e7",
+      "bytes": 236
+    },
+    "preparation/MATERIAL_ADVECTED__RHOBR_CONSTANT/left/controls/5.pickle": {
+      "sha256": "572abc476262f4652abb1e9e3d08c5863fbd7dc576ece3da79a98fce760bf283",
+      "bytes": 232
+    },
+    "preparation/MATERIAL_ADVECTED__RHOBR_CONSTANT/left/controls/6.pickle": {
+      "sha256": "346a379ee4050818986cfa770398cacce60eaac82b7dddd5f744aca8ed9f814d",
+      "bytes": 135
+    },
+    "preparation/MATERIAL_ADVECTED__RHOBR_CONSTANT/left/controls/1.pickle": {
+      "sha256": "945081ba3db07d5bcd18fbd9b06a669ad0e23344dfd976163344a04b369236d2",
+      "bytes": 241
+    },
+    "preparation/MATERIAL_ADVECTED__RHOBR_CONSTANT/left/controls/7.pickle": {
+      "sha256": "617965219b5f155b27c9d5687b9e9f11ea94c341b73fe7f97433cb28eb251109",
+      "bytes": 157
+    },
+    "preparation/MATERIAL_ADVECTED__RHOBR_CONSTANT/left/controls/4.pickle": {
+      "sha256": "1042f5971fc8535fb7414cfc58fc7f62c6a24b4cccb5b4ae00837793cc174aef",
+      "bytes": 1333
+    },
+    "preparation/MATERIAL_ADVECTED__RHOBR_CONSTANT/right/mutation-controls.pickle": {
+      "sha256": "828524d705e322953c816e13705fc0e102e39703cb350df0eaa4cea9cfe34eb8",
+      "bytes": 2016
+    },
+    "preparation/MATERIAL_ADVECTED__RHOBR_CONSTANT/right/end-inputs.pickle": {
+      "sha256": "c96c602fc6671ee65ddc8d5828eb5b8b0da03f030a1cf975542eb6a562e022dd",
+      "bytes": 200452
+    },
+    "preparation/MATERIAL_ADVECTED__RHOBR_CONSTANT/right/source-reuse-pairs.pickle": {
+      "sha256": "cef5bc3c65e2220249d91736bd235fd204ea1634da108c4fdb62898e480c8537",
+      "bytes": 749154
+    },
+    "preparation/MATERIAL_ADVECTED__RHOBR_CONSTANT/right/controls/2.pickle": {
+      "sha256": "827a7b00097a7d6e2a6fd26c3c1672f43039c082cf781e530c56bbd7c0cc73c3",
+      "bytes": 231
+    },
+    "preparation/MATERIAL_ADVECTED__RHOBR_CONSTANT/right/controls/3.pickle": {
+      "sha256": "69a6f161861c83b8290b5afccd109057043ea7238fae1d1ebfcc5634f80cb0ee",
+      "bytes": 236
+    },
+    "preparation/MATERIAL_ADVECTED__RHOBR_CONSTANT/right/controls/5.pickle": {
+      "sha256": "bd3c4b1f704a6bb82952be5965d283c2a2496609b8ed5f9e44ee0c7106c0f259",
+      "bytes": 232
+    },
+    "preparation/MATERIAL_ADVECTED__RHOBR_CONSTANT/right/controls/6.pickle": {
+      "sha256": "346a379ee4050818986cfa770398cacce60eaac82b7dddd5f744aca8ed9f814d",
+      "bytes": 135
+    },
+    "preparation/MATERIAL_ADVECTED__RHOBR_CONSTANT/right/controls/1.pickle": {
+      "sha256": "945081ba3db07d5bcd18fbd9b06a669ad0e23344dfd976163344a04b369236d2",
+      "bytes": 241
+    },
+    "preparation/MATERIAL_ADVECTED__RHOBR_CONSTANT/right/controls/7.pickle": {
+      "sha256": "617965219b5f155b27c9d5687b9e9f11ea94c341b73fe7f97433cb28eb251109",
+      "bytes": 157
+    },
+    "preparation/MATERIAL_ADVECTED__RHOBR_CONSTANT/right/controls/4.pickle": {
+      "sha256": "1042f5971fc8535fb7414cfc58fc7f62c6a24b4cccb5b4ae00837793cc174aef",
+      "bytes": 1333
+    },
+    "preparation/MATERIAL_ADVECTED__RHO4_CONSTANT/chart-input-pairs.pickle": {
+      "sha256": "f05222f5039394e578a4408669f4a1a8c6ff6cba6c0c0f6834a4701ac84b6d03",
+      "bytes": 113264
+    },
+    "preparation/MATERIAL_ADVECTED__RHO4_CONSTANT/left/mutation-controls.pickle": {
+      "sha256": "641f23db0275f9b82a5ce3649535d47f2dff79ffa627cb273854e91add34d3cd",
+      "bytes": 2014
+    },
+    "preparation/MATERIAL_ADVECTED__RHO4_CONSTANT/left/end-inputs.pickle": {
+      "sha256": "21bfa3db96e5edd76741c246d6caa59e158901db9114110d32f585fe95cffc3f",
+      "bytes": 185413
+    },
+    "preparation/MATERIAL_ADVECTED__RHO4_CONSTANT/left/source-reuse-pairs.pickle": {
+      "sha256": "51b9224b7ad555b5e231568fd60621521adefb2600107e423cc149c0a404fc73",
+      "bytes": 734154
+    },
+    "preparation/MATERIAL_ADVECTED__RHO4_CONSTANT/left/controls/2.pickle": {
+      "sha256": "aab61e7fe4771e5afd781115eb651744180aea72fd47fa88bd8b36104287c38e",
+      "bytes": 231
+    },
+    "preparation/MATERIAL_ADVECTED__RHO4_CONSTANT/left/controls/3.pickle": {
+      "sha256": "24e369965e3a4806ba74a2de607de53d3bc514dfe22a72b5396ad5bbbcd844e7",
+      "bytes": 236
+    },
+    "preparation/MATERIAL_ADVECTED__RHO4_CONSTANT/left/controls/5.pickle": {
+      "sha256": "572abc476262f4652abb1e9e3d08c5863fbd7dc576ece3da79a98fce760bf283",
+      "bytes": 232
+    },
+    "preparation/MATERIAL_ADVECTED__RHO4_CONSTANT/left/controls/6.pickle": {
+      "sha256": "346a379ee4050818986cfa770398cacce60eaac82b7dddd5f744aca8ed9f814d",
+      "bytes": 135
+    },
+    "preparation/MATERIAL_ADVECTED__RHO4_CONSTANT/left/controls/1.pickle": {
+      "sha256": "945081ba3db07d5bcd18fbd9b06a669ad0e23344dfd976163344a04b369236d2",
+      "bytes": 241
+    },
+    "preparation/MATERIAL_ADVECTED__RHO4_CONSTANT/left/controls/7.pickle": {
+      "sha256": "617965219b5f155b27c9d5687b9e9f11ea94c341b73fe7f97433cb28eb251109",
+      "bytes": 157
+    },
+    "preparation/MATERIAL_ADVECTED__RHO4_CONSTANT/left/controls/4.pickle": {
+      "sha256": "1042f5971fc8535fb7414cfc58fc7f62c6a24b4cccb5b4ae00837793cc174aef",
+      "bytes": 1333
+    },
+    "preparation/MATERIAL_ADVECTED__RHO4_CONSTANT/right/mutation-controls.pickle": {
+      "sha256": "3e930fef165146c21092675b5b1a11888cb4a4aa2a70a0a5bbe7a8cd8a06654d",
+      "bytes": 2015
+    },
+    "preparation/MATERIAL_ADVECTED__RHO4_CONSTANT/right/end-inputs.pickle": {
+      "sha256": "540e7121b9f28aff23da3a1c2d3ee1c2c00162cf701f2b0e1e02826e091a750f",
+      "bytes": 226109
+    },
+    "preparation/MATERIAL_ADVECTED__RHO4_CONSTANT/right/source-reuse-pairs.pickle": {
+      "sha256": "9d2a8567b0431eb9128f9a52d307d0328bf5ad1d4fdc03ec02a19865e8453d74",
+      "bytes": 774349
+    },
+    "preparation/MATERIAL_ADVECTED__RHO4_CONSTANT/right/controls/2.pickle": {
+      "sha256": "827a7b00097a7d6e2a6fd26c3c1672f43039c082cf781e530c56bbd7c0cc73c3",
+      "bytes": 231
+    },
+    "preparation/MATERIAL_ADVECTED__RHO4_CONSTANT/right/controls/3.pickle": {
+      "sha256": "69a6f161861c83b8290b5afccd109057043ea7238fae1d1ebfcc5634f80cb0ee",
+      "bytes": 236
+    },
+    "preparation/MATERIAL_ADVECTED__RHO4_CONSTANT/right/controls/5.pickle": {
+      "sha256": "a89e0df23304b04d2979785f20dad106af4986086cb2527b85a61d9fbd2144ff",
+      "bytes": 232
+    },
+    "preparation/MATERIAL_ADVECTED__RHO4_CONSTANT/right/controls/6.pickle": {
+      "sha256": "346a379ee4050818986cfa770398cacce60eaac82b7dddd5f744aca8ed9f814d",
+      "bytes": 135
+    },
+    "preparation/MATERIAL_ADVECTED__RHO4_CONSTANT/right/controls/1.pickle": {
+      "sha256": "945081ba3db07d5bcd18fbd9b06a669ad0e23344dfd976163344a04b369236d2",
+      "bytes": 241
+    },
+    "preparation/MATERIAL_ADVECTED__RHO4_CONSTANT/right/controls/7.pickle": {
+      "sha256": "617965219b5f155b27c9d5687b9e9f11ea94c341b73fe7f97433cb28eb251109",
+      "bytes": 157
+    },
+    "preparation/MATERIAL_ADVECTED__RHO4_CONSTANT/right/controls/4.pickle": {
+      "sha256": "1042f5971fc8535fb7414cfc58fc7f62c6a24b4cccb5b4ae00837793cc174aef",
+      "bytes": 1333
+    },
+    "bindings/chart-state.pickle": {
+      "sha256": "eaf81dfe538f6b6361df1c8a970155ed45519ea51dd3c862fc3a1492510c4619",
+      "bytes": 18242
+    },
+    "bindings/contexts/LAB_HELD__RHOBR_CONSTANT/profile-cache-pair.pickle": {
+      "sha256": "4e1638e3ef55016deffe59cea63d17f9edb74021980fc737458bdbbd696e6b1c",
+      "bytes": 1686
+    },
+    "bindings/contexts/LAB_HELD__RHOBR_CONSTANT/input-state.pickle": {
+      "sha256": "24a2c51c24d43275632175fe74d82f266e8081ad6b64237c6b012a23c38c2ad1",
+      "bytes": 2789
+    },
+    "bindings/contexts/LAB_HELD__RHOBR_CONSTANT/frame.pickle": {
+      "sha256": "3dce379a469fa33283175974e5bf55dd4cfd8f26f7943dc5cad263dc93a06cf6",
+      "bytes": 88711
+    },
+    "bindings/contexts/LAB_HELD__RHO4_CONSTANT/input-state.pickle": {
+      "sha256": "24a2c51c24d43275632175fe74d82f266e8081ad6b64237c6b012a23c38c2ad1",
+      "bytes": 2789
+    },
+    "bindings/contexts/LAB_HELD__RHO4_CONSTANT/frame.pickle": {
+      "sha256": "3dce379a469fa33283175974e5bf55dd4cfd8f26f7943dc5cad263dc93a06cf6",
+      "bytes": 88711
+    },
+    "bindings/contexts/MATERIAL_ADVECTED__RHOBR_CONSTANT/profile-cache-pair.pickle": {
+      "sha256": "4e1638e3ef55016deffe59cea63d17f9edb74021980fc737458bdbbd696e6b1c",
+      "bytes": 1686
+    },
+    "bindings/contexts/MATERIAL_ADVECTED__RHOBR_CONSTANT/input-state.pickle": {
+      "sha256": "24a2c51c24d43275632175fe74d82f266e8081ad6b64237c6b012a23c38c2ad1",
+      "bytes": 2789
+    },
+    "bindings/contexts/MATERIAL_ADVECTED__RHOBR_CONSTANT/frame.pickle": {
+      "sha256": "3dce379a469fa33283175974e5bf55dd4cfd8f26f7943dc5cad263dc93a06cf6",
+      "bytes": 88711
+    },
+    "bindings/contexts/MATERIAL_ADVECTED__RHO4_CONSTANT/profile-cache-pair.pickle": {
+      "sha256": "4e1638e3ef55016deffe59cea63d17f9edb74021980fc737458bdbbd696e6b1c",
+      "bytes": 1686
+    },
+    "bindings/contexts/MATERIAL_ADVECTED__RHO4_CONSTANT/input-state.pickle": {
+      "sha256": "24a2c51c24d43275632175fe74d82f266e8081ad6b64237c6b012a23c38c2ad1",
+      "bytes": 2789
+    },
+    "bindings/contexts/MATERIAL_ADVECTED__RHO4_CONSTANT/frame.pickle": {
+      "sha256": "3dce379a469fa33283175974e5bf55dd4cfd8f26f7943dc5cad263dc93a06cf6",
+      "bytes": 88711
+    },
+    "bindings/sources/accepted-cases/LAB_HELD__RHOBR_CONSTANT/actions.pickle": {
+      "sha256": "56e8111829a8f4cb1afaf40edc43d7dbc42d2196b181b984dfddd7015d89f918",
+      "bytes": 148401
+    },
+    "bindings/sources/accepted-cases/LAB_HELD__RHOBR_CONSTANT/factorization.pickle": {
+      "sha256": "d4c82a696fc81f591afd4b42d5309b0eec7592adbf8d9620bbdda435f19e3b50",
+      "bytes": 6580040
+    },
+    "bindings/sources/accepted-cases/LAB_HELD__RHOBR_CONSTANT/assembly.pickle": {
+      "sha256": "53a1d577e0f568b381148e9d4190434a709f633d769defe1899b94e8b474f690",
+      "bytes": 103044
+    },
+    "bindings/sources/accepted-cases/LAB_HELD__RHOBR_CONSTANT/reduced-action.pickle": {
+      "sha256": "95dbb6b5cb833b16edf3f64177b2df54af2e91379a9ee43d43021d1872aa9106",
+      "bytes": 1112717
+    },
+    "bindings/sources/accepted-cases/LAB_HELD__RHO4_CONSTANT/actions.pickle": {
+      "sha256": "4c2372a7102d1db9f21a049ab3104465e8d9245ab832be88c900bc8519b46e02",
+      "bytes": 176671
+    },
+    "bindings/sources/accepted-cases/LAB_HELD__RHO4_CONSTANT/factorization.pickle": {
+      "sha256": "011184ab8f796872fec263558a5da6d7f478e4468c7dcacd2373a7df14e69723",
+      "bytes": 6488579
+    },
+    "bindings/sources/accepted-cases/LAB_HELD__RHO4_CONSTANT/assembly.pickle": {
+      "sha256": "8eda57998285137d99cce9564757627a57f8d5bc9b27091c86a65a9cc59230a0",
+      "bytes": 111081
+    },
+    "bindings/sources/accepted-cases/LAB_HELD__RHO4_CONSTANT/reduced-action.pickle": {
+      "sha256": "e9062c3455c7e59fe816f47172062a0c118b201d03809ec0826575dac22872b0",
+      "bytes": 1146420
+    },
+    "bindings/sources/accepted-cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/actions.pickle": {
+      "sha256": "75cc4419411903d36cb6f4be73652694de3bc69ff19c6117a564f331503de410",
+      "bytes": 195585
+    },
+    "bindings/sources/accepted-cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/factorization.pickle": {
+      "sha256": "956698db852c7e6066e6d42d3836449b271d2fcce16fdafbee586983abd02e5a",
+      "bytes": 6757900
+    },
+    "bindings/sources/accepted-cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/assembly.pickle": {
+      "sha256": "15b54c2237f5951aba15616f3062d29d5748fcedf5fc4fedea802a5dec04bf0f",
+      "bytes": 135549
+    },
+    "bindings/sources/accepted-cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/reduced-action.pickle": {
+      "sha256": "6add07e5f8fd992204e79985b1dec0ce4e641b5d34d2f7aeaeffccd9e53207a2",
+      "bytes": 1153587
+    },
+    "bindings/sources/accepted-cases/MATERIAL_ADVECTED__RHO4_CONSTANT/actions.pickle": {
+      "sha256": "c8b64088556034a465bea39bea751c62a77e3850897257dc81de1a70c8282689",
+      "bytes": 205667
+    },
+    "bindings/sources/accepted-cases/MATERIAL_ADVECTED__RHO4_CONSTANT/factorization.pickle": {
+      "sha256": "fcc2a59930d8f12726c1f9de02c407e2f08bd33cca4b4d4db31d0972ba371690",
+      "bytes": 6767840
+    },
+    "bindings/sources/accepted-cases/MATERIAL_ADVECTED__RHO4_CONSTANT/assembly.pickle": {
+      "sha256": "49dac40608b2b44e0a01d10e9f15cb758ef10015157b4d29cd47dff1b6f35c40",
+      "bytes": 139074
+    },
+    "bindings/sources/accepted-cases/MATERIAL_ADVECTED__RHO4_CONSTANT/reduced-action.pickle": {
+      "sha256": "b103e83e61ddffcf8a320fe5f91ef433e1571551654f91749bed5665b5d537b9",
+      "bytes": 1151422
+    },
+    "bindings/sources/accepted-bindings/LAB_HELD__RHOBR_CONSTANT/case-binding.pickle": {
+      "sha256": "6bc8ed97da17efbbbc05363f3cd22e9b110a26bf706475e903d67ced98f85554",
+      "bytes": 416084
+    },
+    "bindings/sources/accepted-bindings/LAB_HELD__RHO4_CONSTANT/case-binding.pickle": {
+      "sha256": "0a157a87892a0428bc63caa92e233c2b4c6c958b5ad72e4052d2703c11cb80f7",
+      "bytes": 456930
+    },
+    "bindings/sources/accepted-bindings/MATERIAL_ADVECTED__RHOBR_CONSTANT/case-binding.pickle": {
+      "sha256": "9024b21ad5eb8de272f0021fcc26a49d308807e03a04862e6faf07a368f06ee6",
+      "bytes": 476842
+    },
+    "bindings/sources/accepted-bindings/MATERIAL_ADVECTED__RHO4_CONSTANT/case-binding.pickle": {
+      "sha256": "fde53e682f7c33ecea2d02861ff1b5f664ee0d6176cccb32f4058f233b074383",
+      "bytes": 491423
+    },
+    "bindings/sources/coordinate-cases/LAB_HELD__RHOBR_CONSTANT/coordinate-source.pickle": {
+      "sha256": "f997269261b1035d02c0850a1464fa4edceab96dd730f9eb4048f99a8c89e177",
+      "bytes": 1357049
+    },
+    "bindings/sources/coordinate-cases/LAB_HELD__RHO4_CONSTANT/coordinate-source.pickle": {
+      "sha256": "b822833b60cff10d6901a16a29005a5185362f9559487c947184341949b0611c",
+      "bytes": 524472
+    },
+    "bindings/sources/coordinate-cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/coordinate-source.pickle": {
+      "sha256": "c860fefe47ef7409cdf19f4c2d2d1222a79fb34a100354968c1e2cb531e8b2ab",
+      "bytes": 1466038
+    },
+    "bindings/sources/coordinate-cases/MATERIAL_ADVECTED__RHO4_CONSTANT/coordinate-source.pickle": {
+      "sha256": "c227e8bb19bcfb397956d97b9b570dd2aafb905047ee08cf720b541cdb8c9573",
+      "bytes": 1483778
+    },
+    "eulerian/accepted-finite-system.pickle": {
+      "sha256": "2a043895b5e8a203cc4dd0b517ba3feec61300ab812a0404f19195cc39c0319a",
+      "bytes": 20567521
+    },
+    "boundary-cases/LAB_HELD__RHOBR_CONSTANT/case-boundary.pickle": {
+      "sha256": "3a83ae69d1183ce59b3c9bfc81b78e40f3685a843e4ae41c4c948a43e3e84966",
+      "bytes": 388982
+    },
+    "boundary-cases/LAB_HELD__RHOBR_CONSTANT/left/array-units.pickle": {
+      "sha256": "038297b39ed482304df499e3c1f181eaa81c290beb2572ed073c88d842489a5c",
+      "bytes": 32800
+    },
+    "boundary-cases/LAB_HELD__RHOBR_CONSTANT/left/continuum-boundary.pickle": {
+      "sha256": "150a9463d94c24a265890349c1c4e40b51195057b8465216ece093b9b6b5aaa3",
+      "bytes": 158380
+    },
+    "boundary-cases/LAB_HELD__RHOBR_CONSTANT/left/channels.pickle": {
+      "sha256": "cfbdbb2968f73d9063e187de7055c15d4faaedcb6560f7b8b6ab0370a8342f21",
+      "bytes": 28421
+    },
+    "boundary-cases/LAB_HELD__RHOBR_CONSTANT/left/finite-boundary.pickle": {
+      "sha256": "631c1b742ad6abc92dc5eb7a218cb8524498de18f48cd04eb286a71cefe1b0b9",
+      "bytes": 4942
+    },
+    "boundary-cases/LAB_HELD__RHOBR_CONSTANT/right/array-units.pickle": {
+      "sha256": "8549ce2224c978077d5a981ad067d6168b4f5b4d9914ed2fa0be486ed9b73ca2",
+      "bytes": 32721
+    },
+    "boundary-cases/LAB_HELD__RHOBR_CONSTANT/right/continuum-boundary.pickle": {
+      "sha256": "a6999b0849c8ae734fe14dbf8edbbfd7d9957ea256c7a9dcc905c01b3eb3d092",
+      "bytes": 189883
+    },
+    "boundary-cases/LAB_HELD__RHOBR_CONSTANT/right/channels.pickle": {
+      "sha256": "fe66b289ebdd2bfd4a83204305db8e68ba201b40c0b778ca14f5e39ab12a5279",
+      "bytes": 28297
+    },
+    "boundary-cases/LAB_HELD__RHOBR_CONSTANT/right/finite-boundary.pickle": {
+      "sha256": "6516a411fdbf8f2f0e494b58563e14603586b33919b465ce529e19c1a0ff193d",
+      "bytes": 4879
+    },
+    "boundary-cases/LAB_HELD__RHO4_CONSTANT/case-boundary.pickle": {
+      "sha256": "e108a8bb8642e8be14574362db2776b0340fec4b503eeb54c75b9c1bcf67cdbb",
+      "bytes": 397188
+    },
+    "boundary-cases/LAB_HELD__RHO4_CONSTANT/left/array-units.pickle": {
+      "sha256": "038297b39ed482304df499e3c1f181eaa81c290beb2572ed073c88d842489a5c",
+      "bytes": 32800
+    },
+    "boundary-cases/LAB_HELD__RHO4_CONSTANT/left/continuum-boundary.pickle": {
+      "sha256": "150a9463d94c24a265890349c1c4e40b51195057b8465216ece093b9b6b5aaa3",
+      "bytes": 158380
+    },
+    "boundary-cases/LAB_HELD__RHO4_CONSTANT/left/channels.pickle": {
+      "sha256": "cfbdbb2968f73d9063e187de7055c15d4faaedcb6560f7b8b6ab0370a8342f21",
+      "bytes": 28421
+    },
+    "boundary-cases/LAB_HELD__RHO4_CONSTANT/left/finite-boundary.pickle": {
+      "sha256": "631c1b742ad6abc92dc5eb7a218cb8524498de18f48cd04eb286a71cefe1b0b9",
+      "bytes": 4942
+    },
+    "boundary-cases/LAB_HELD__RHO4_CONSTANT/right/array-units.pickle": {
+      "sha256": "8549ce2224c978077d5a981ad067d6168b4f5b4d9914ed2fa0be486ed9b73ca2",
+      "bytes": 32721
+    },
+    "boundary-cases/LAB_HELD__RHO4_CONSTANT/right/continuum-boundary.pickle": {
+      "sha256": "5b45b974a79a99dfceec8bbaefb5a48623b803c98b3eac7a2253dd202efdf667",
+      "bytes": 200701
+    },
+    "boundary-cases/LAB_HELD__RHO4_CONSTANT/right/channels.pickle": {
+      "sha256": "2144e7a856bf96ce272d35c2bed7e32c9eaa372526b62d635169c564717dd2e1",
+      "bytes": 28319
+    },
+    "boundary-cases/LAB_HELD__RHO4_CONSTANT/right/finite-boundary.pickle": {
+      "sha256": "566d570f9ad059a775ebe7177e213f8c07978575d66be3b3b3363af00609f0d6",
+      "bytes": 4940
+    },
+    "boundary-cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/case-boundary.pickle": {
+      "sha256": "b7e23a5a56ac2ca4418441910fd1954415f2ffff53e636850141189741b998e2",
+      "bytes": 389459
+    },
+    "boundary-cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/left/array-units.pickle": {
+      "sha256": "038297b39ed482304df499e3c1f181eaa81c290beb2572ed073c88d842489a5c",
+      "bytes": 32800
+    },
+    "boundary-cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/left/continuum-boundary.pickle": {
+      "sha256": "150a9463d94c24a265890349c1c4e40b51195057b8465216ece093b9b6b5aaa3",
+      "bytes": 158380
+    },
+    "boundary-cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/left/channels.pickle": {
+      "sha256": "cfbdbb2968f73d9063e187de7055c15d4faaedcb6560f7b8b6ab0370a8342f21",
+      "bytes": 28421
+    },
+    "boundary-cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/left/finite-boundary.pickle": {
+      "sha256": "631c1b742ad6abc92dc5eb7a218cb8524498de18f48cd04eb286a71cefe1b0b9",
+      "bytes": 4942
+    },
+    "boundary-cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/right/array-units.pickle": {
+      "sha256": "8549ce2224c978077d5a981ad067d6168b4f5b4d9914ed2fa0be486ed9b73ca2",
+      "bytes": 32721
+    },
+    "boundary-cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/right/continuum-boundary.pickle": {
+      "sha256": "a6999b0849c8ae734fe14dbf8edbbfd7d9957ea256c7a9dcc905c01b3eb3d092",
+      "bytes": 189883
+    },
+    "boundary-cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/right/channels.pickle": {
+      "sha256": "fe66b289ebdd2bfd4a83204305db8e68ba201b40c0b778ca14f5e39ab12a5279",
+      "bytes": 28297
+    },
+    "boundary-cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/right/finite-boundary.pickle": {
+      "sha256": "6516a411fdbf8f2f0e494b58563e14603586b33919b465ce529e19c1a0ff193d",
+      "bytes": 4879
+    },
+    "boundary-cases/MATERIAL_ADVECTED__RHO4_CONSTANT/case-boundary.pickle": {
+      "sha256": "30a85392e8a186bd8aedf61fbe356380d34c9d23648546e4f7fa0d50ac6499d7",
+      "bytes": 397197
+    },
+    "boundary-cases/MATERIAL_ADVECTED__RHO4_CONSTANT/left/array-units.pickle": {
+      "sha256": "038297b39ed482304df499e3c1f181eaa81c290beb2572ed073c88d842489a5c",
+      "bytes": 32800
+    },
+    "boundary-cases/MATERIAL_ADVECTED__RHO4_CONSTANT/left/continuum-boundary.pickle": {
+      "sha256": "150a9463d94c24a265890349c1c4e40b51195057b8465216ece093b9b6b5aaa3",
+      "bytes": 158380
+    },
+    "boundary-cases/MATERIAL_ADVECTED__RHO4_CONSTANT/left/channels.pickle": {
+      "sha256": "cfbdbb2968f73d9063e187de7055c15d4faaedcb6560f7b8b6ab0370a8342f21",
+      "bytes": 28421
+    },
+    "boundary-cases/MATERIAL_ADVECTED__RHO4_CONSTANT/left/finite-boundary.pickle": {
+      "sha256": "631c1b742ad6abc92dc5eb7a218cb8524498de18f48cd04eb286a71cefe1b0b9",
+      "bytes": 4942
+    },
+    "boundary-cases/MATERIAL_ADVECTED__RHO4_CONSTANT/right/array-units.pickle": {
+      "sha256": "8549ce2224c978077d5a981ad067d6168b4f5b4d9914ed2fa0be486ed9b73ca2",
+      "bytes": 32721
+    },
+    "boundary-cases/MATERIAL_ADVECTED__RHO4_CONSTANT/right/continuum-boundary.pickle": {
+      "sha256": "5b45b974a79a99dfceec8bbaefb5a48623b803c98b3eac7a2253dd202efdf667",
+      "bytes": 200701
+    },
+    "boundary-cases/MATERIAL_ADVECTED__RHO4_CONSTANT/right/channels.pickle": {
+      "sha256": "2144e7a856bf96ce272d35c2bed7e32c9eaa372526b62d635169c564717dd2e1",
+      "bytes": 28319
+    },
+    "boundary-cases/MATERIAL_ADVECTED__RHO4_CONSTANT/right/finite-boundary.pickle": {
+      "sha256": "566d570f9ad059a775ebe7177e213f8c07978575d66be3b3b3363af00609f0d6",
+      "bytes": 4940
+    },
+    "material-families/LEFT/saved-chart-map-reuse.pickle": {
+      "sha256": "0882b75751dcf243ba5af5fe4dfe788170ce3b9052cd05d8751f7fddcb117960",
+      "bytes": 19611
+    },
+    "material-families/LEFT/input.pickle": {
+      "sha256": "b4f54e915237ece88851e6cd1acab96aa12a9d5705fd2edd2e7e58e02992acfc",
+      "bytes": 184734
+    },
+    "material-families/LEFT/finite/input.pickle": {
+      "sha256": "e1881b7b24ca2e5807f1c28364c9420613ab54f8a2a43d4bd88ef41995208882",
+      "bytes": 57351
+    },
+    "original-focus-logs/coordinate_boundary_inputs.stdout": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "original-focus-logs/guard.stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "original-focus-logs/coordinate_boundary_inputs.invocation.json": {
+      "sha256": "a00e1a5c184159d968371d076da45c077f7595efa783db0da6e08bd556542b9d",
+      "bytes": 870
+    },
+    "original-focus-logs/active.json": {
+      "sha256": "a00e1a5c184159d968371d076da45c077f7595efa783db0da6e08bd556542b9d",
+      "bytes": 870
+    },
+    "original-focus-logs/guard.stdout": {
+      "sha256": "30b1244e28cb39b267dad9f85c54f94d5d7381124ffe75823d02d960b1e84b4e",
+      "bytes": 270
+    },
+    "original-focus-logs/launch.json": {
+      "sha256": "56543f7e0bdb7d48a5687a2c3a22130241dd2e0aed10afa61248c304720d8773",
+      "bytes": 1775
+    },
+    "original-focus-logs/coordinate_boundary_inputs.stderr": {
+      "sha256": "a953d8862a7c73f45e3605471eb5bd4bb2de16ad57778347b542bf80dcf4baa6",
+      "bytes": 956
+    },
+    "original-focus-logs/resource-guard/child-outcome.json": {
+      "sha256": "b5506f0a53e38ed9f8881b698f96fc18f3ba8a6e1865a15ddbcda983578f6fcf",
+      "bytes": 102
+    },
+    "original-focus-logs/resource-guard/outcome.json": {
+      "sha256": "30b1244e28cb39b267dad9f85c54f94d5d7381124ffe75823d02d960b1e84b4e",
+      "bytes": 270
+    },
+    "original-focus-logs/resource-guard/resource-samples.jsonl": {
+      "sha256": "9e567e0b47e281ca40d84ac09f9cecaf6434fdd3b253a99a7c5fce8b55e20cbd",
+      "bytes": 1196
+    },
+    "original-focus-logs/resource-guard/limit-validation.json": {
+      "sha256": "34d4a30891dba6e037644f2679fe1bec19e3fc093cec732ca54ab1b53a85aebf",
+      "bytes": 511
+    },
+    "original-focus-logs/resource-guard/effective-limits.json": {
+      "sha256": "dbc60d5cdf60331d1eeeea7166ffbfd80bd57d7d1a1d68d22f1d5ae38ce7d59f",
+      "bytes": 441
+    }
+  },
+  "originalLogs": {
+    "guard.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "coordinate_boundary_construct.invocation.json": "6f07cceed1ca269bd9a27c7e5795cd61202dc63d0859da4775adb643ed26f549",
+    "active.json": "6f07cceed1ca269bd9a27c7e5795cd61202dc63d0859da4775adb643ed26f549",
+    "coordinate_boundary_construct.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "normalization.lock": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "continuation.txt": "3e968f189f64c56e13a707780423912b1ba37e7209021cbd38b366d6fc3cb5c4",
+    "process-census.txt": "35fd3f53a9722412235a5704bef1b6f00120e7d2d2f3471031fbd0edc7b0c796",
+    "launch.py": "903c0a843ce27679bd776df397b78343ca6123272e0129af3ed5d42c4ef12980",
+    "accepted-focus-checkpoint.json": "c4d6c9863aa81fc774c7d03c7a948b6dec4b917fb58b555dc4746f35f1e1d0dd",
+    "coordinate_boundary_construct.stderr": "2fc802e81185f86ff1b8b2a8325eb4ad6975509dbe8b439d1898fc9df8727ce2",
+    "guard.stdout": "d7a82b7c3fd6be0685eae67c8ab09a10dc84f0c59665992fe64d8aa53496731f",
+    "launch.json": "797f1804d90a1be0e31b795ca2179426f17bda73157e6498dbe149f188152cb4",
+    "wiring.json": "e3ec13b6c512625d6de47f1e7f430187e3da50da9a0a199474463948b33a297c",
+    "guard-source.py": "6492f5ab11dc2ab2f80bbfcc96d7eb6b8632afea07100dd8f74a7954f3ffe542",
+    "resource-guard/stdout": "6f07cceed1ca269bd9a27c7e5795cd61202dc63d0859da4775adb643ed26f549",
+    "resource-guard/child-outcome.json": "5398b6203ac28efa024518144d8a6f8ad9ca7fbd3d9e37551f890db6c0778bda",
+    "resource-guard/invocation.json": "91578f759bcd7b4b673a419ee068ba86fac419e92f8058bffe52bbe15fa3ed9b",
+    "resource-guard/outcome.json": "d7a82b7c3fd6be0685eae67c8ab09a10dc84f0c59665992fe64d8aa53496731f",
+    "resource-guard/resource-samples.jsonl": "67e3a967789dd44d64ed731ee464173fc001f62684b7763a03d0605f69b4313f",
+    "resource-guard/stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "resource-guard/limit-validation.json": "faf6bbe2a37ba6078bae35c2d0a5629ced1c1d0ed497df30a82769ca7618cb87",
+    "resource-guard/effective-limits.json": "a4d6cc0f8d07d72c513f2e0b46e41eb7b5cb1c2be56370cc816a0495d2e2e521"
+  },
+  "singleProductEdit": "U*a -> U@a",
+  "staticCompilation": true,
+  "savedInputPackets": [
+    "material-families/LEFT/input.pickle",
+    "material-families/LEFT/saved-chart-map-reuse.pickle",
+    "material-families/LEFT/finite/input.pickle"
+  ],
+  "originalCompletedScientificResults": 0,
+  "staticReverseAST": {
+    "finiteOriginalAST": "adf80efc5a2fb92a0a3655f6c2e88082df92a62d6c6c9152381281ae38321154",
+    "finiteRepairedAST": "9abb5649a4d3e285e97e335dfb0494e053189d04ce56bb8165f98720b222aa0e",
+    "finiteReverseAST": true,
+    "constructOriginalAST": "06a8515afd152ea4fc7874fc2f503e6fd78db59d447d126395ff160df837bf3b",
+    "constructResumedAST": "893fda13fbe3493cc0c22191ff12d873b0c48e175b2ac8acddbc9f40ce1a3048",
+    "constructReverseAST": true,
+    "productEdits": 1,
+    "savedDirectoryEdits": 2,
+    "nativeAdaptersUnchanged": "ce641bcf71954857ca5a1a913f4c6a24b8cfd5df75e644899928cc2db3dfdea8",
+    "originalMainUnchanged": "8eed83d4399dbf63824ad9fcf5564939a0686f75dda29e64c41a481237d9b15b"
+  },
+  "savedChartProducerPathJoin": {
+    "original": "baseline-material/left-material-boundary.pickle",
+    "sha256": "2317ac1e18fd05b5987b98c2ceb4fb3f05edeed06e5dd9879367f33dbcf36b9b",
+    "onlyProvenanceStringRouted": true
+  }
+}

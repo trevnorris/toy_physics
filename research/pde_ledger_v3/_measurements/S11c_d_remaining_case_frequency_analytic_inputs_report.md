@@ -38,3 +38,19 @@ actual 2-GiB/zero-swap/one-CPU/nice-15/32-task/native-single-thread limits
 are verified and strict stderr is empty. The existing silent local hook handles
 completion or error. No polling or automatic retry is scheduled; launch is not
 acceptance.
+
+The catalogue completed cleanly in 69.25 worker /
+70.79 native seconds. Final guard/supervisor/child exits
+are zero, strict stderr is empty and checks/stdout are byte-identical. Actual
+full native inputs yield 63 pending analytic images (29/24/10), 1,290 accepted
+analytic uses and 114 additional new-image uses. No radical is pending; two
+actual denominator operands still need domain work. All 1,467 records, 300 rows,
+647 terms and 120 sources remain. The 140 sources, 10,697 inputs, 2,552 references
+and 4,050 artifacts include every 2,548 accepted character artifact unchanged.
+Peak memory was 345,485,312 bytes, with no cap/OOM/swap events
+and minimum host availability 23.63 GB.
+
+An independent saved-only validator is prepared to check every source, owner,
+chart, domain, context, unit, route, actual mutation and pre/post hash. It imports
+no producer into execution and performs no binding, derivative, analytic lift
+or domain construction. Acceptance remains pending its final clean outcome.

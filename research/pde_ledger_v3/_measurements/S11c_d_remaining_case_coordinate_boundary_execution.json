@@ -1,5 +1,5 @@
 {
-  "status": "RUNNING_INDEPENDENT_SAVED_INPUT_VALIDATION",
+  "status": "ACCEPTED_CASE_MATERIAL_BOUNDARY_INPUTS",
   "acceptedMaterialInteriors": "a95a0c0d",
   "acceptedCaseBoundaryMaps": "d8713012",
   "acceptedBaselineMaterial": "19a9f5a1",
@@ -13,7 +13,7 @@
   "initialBudgetSeconds": 900,
   "newFocusPhysicalConstructions": 0,
   "baselineMaterialControlIsContinuumOnly": true,
-  "next": "Independently validate saved full input/family/physical-address/field/current/phase/unit/control evidence before accepting material boundary inputs.",
+  "next": "Construct the one new RHOBR-right continuum material-end family and actual finite material boundary/current/phase routes before coordinate response solves.",
   "launchIsAcceptance": false,
   "previousAttempts": [
     {
@@ -206,42 +206,145 @@
   "inputMutationControls": 64,
   "validator": {
     "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/boundary/acceptance",
+    "checksSha256": "1965c9a0cb1e1ed1fb391d7ad059d672f6f9ef9e928ff4c7eb12a8b684d8817c",
     "scriptSha256": "4d246b45c7226722dfbb7df62aab7b79386793321cb8ab34ce6624ba16c40e7f",
-    "plan": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_coordinate_boundary_validation_plan.md",
-    "status": "RUNNING_GUARDED",
-    "launch": {
-      "launchedUtc": "2026-09-21T13:12:01.471500+00:00",
-      "guardPid": 703504,
-      "watcherPid": 703505,
-      "command": [
-        "/usr/bin/python",
-        "/var/projects/toy_physics/scripts/s11c_guarded_run.py",
-        "--log-directory",
-        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/boundary/acceptance/resource-guard",
-        "--seconds",
-        "900",
-        "--",
-        "/usr/bin/python",
-        "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
-        "--run-root",
-        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/boundary/acceptance",
-        "--stage",
-        "validate",
-        "--",
-        "/usr/bin/python",
-        "-u",
-        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/boundary/acceptance/validate.py"
-      ],
-      "validatorSha256": "4d246b45c7226722dfbb7df62aab7b79386793321cb8ab34ce6624ba16c40e7f",
-      "guardSha256": "6492f5ab11dc2ab2f80bbfcc96d7eb6b8632afea07100dd8f74a7954f3ffe542",
-      "productionChecksSha256": "ef16c56c024e77d5856b81224f124b34aad8bcb00e8d9c491e15e74dcacb2f92",
-      "implementationCommit": "c6c6618bbbc96575e266a8a3c73d86997f421a52",
-      "launchIsAcceptance": false,
-      "newScientificConstruction": false
+    "status": "VALIDATED_SAVED_MATERIAL_BOUNDARY_INPUTS",
+    "wallSeconds": 76.66306182699918,
+    "counts": {
+      "rows": 300,
+      "terms": 647,
+      "sourceAmplitudes": 120,
+      "endAddresses": 8,
+      "candidateAddresses": 144,
+      "directions": 56,
+      "controls": 64,
+      "unitArrayRecords": 968,
+      "baselineMaterialReuseAddresses": 6
     },
-    "verifiedActualLimits": {
-      "verified": true,
-      "actual": {
+    "newMaterialFamilies": [
+      "LAB_HELD__RHOBR_CONSTANT__RIGHT"
+    ],
+    "uniquePrePostPaths": 22296,
+    "files": {
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/boundary/acceptance/active.json": "2eb41c0e050c384b271ce8bd5c4a134b734dba16ca6df5990e38c3174ee86e95",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/boundary/acceptance/validate.invocation.json": "2eb41c0e050c384b271ce8bd5c4a134b734dba16ca6df5990e38c3174ee86e95",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/boundary/acceptance/validated-MATERIAL_ADVECTED__RHO4_CONSTANT.json": "409d0af3325ef28df1d59e0bb4de30c833f7cb4d62263700d4050901ee1f3949",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/boundary/acceptance/validator-join.json": "bc5221c242060b2afc8d16d15401af8f28fe5fdf97118d639f5bb7a5b43a1797",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/boundary/acceptance/hash-preflight.json": "d8e583643ac46b7008b5a4e66cbcf5c9364a86c955e03dce81284695b4530e02",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/boundary/acceptance/validated-MATERIAL_ADVECTED__RHOBR_CONSTANT.json": "afe6f3acb58d598f625402fbc5a01d676e78b058e54e63328c4ddba239fe05f1",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/boundary/acceptance/validated-LAB_HELD__RHO4_CONSTANT.json": "4876197984e8c527c667b1cf510979dde07d5b447e186b6402236d1f1f4c5285",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/boundary/acceptance/validated-LAB_HELD__RHOBR_CONSTANT.json": "966f426238e2ee096cf50b9b9192dc0859e425d4ac0a7912cbc8650142c20739",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/boundary/acceptance/launch.json": "a9a1e24a70902f13850eb5ca617a1d7362a893411c57434ec589fc5f677bbc1d"
+    }
+  },
+  "acceptedCheckpoint": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_coordinate_boundary_focused.json",
+  "acceptedCheckpointSha256": "c4d6c9863aa81fc774c7d03c7a948b6dec4b917fb58b555dc4746f35f1e1d0dd",
+  "resourceAcceptance": {
+    "focus": {
+      "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/boundary/focused-recovery-01",
+      "invocation": {
+        "stage": "coordinate_boundary_recover",
+        "command": [
+          "/usr/bin/python",
+          "-u",
+          "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_coordinate_boundary_inputs_recover.py",
+          "--run-directory",
+          "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/boundary/focused-recovery-01/complete"
+        ],
+        "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/boundary/focused-recovery-01/coordinate_boundary_recover.stdout",
+        "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/boundary/focused-recovery-01/coordinate_boundary_recover.stderr",
+        "startedUtc": "2026-09-21T13:03:29.620661+00:00",
+        "childPid": 700598,
+        "status": "completed",
+        "exitCode": 0,
+        "wallSeconds": 114.13782063899998,
+        "stderrBytes": 0,
+        "finishedUtc": "2026-09-21T13:05:23.758533+00:00"
+      },
+      "guardOutcome": {
+        "exitCode": 0,
+        "wallSeconds": 114.2775775629998,
+        "unit": "s11c-guard-f69352351c73",
+        "stderrBytes": 0,
+        "limitsVerified": true,
+        "childOutcome": {
+          "exitCode": 0,
+          "guardReason": null,
+          "wallSeconds": 114.211350906,
+          "childPid": 700597
+        }
+      },
+      "effectiveLimits": {
+        "memory.max": "2147483648",
+        "memory.swap.max": "0",
+        "pids.max": "32",
+        "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-f69352351c73.service",
+        "nice": 15,
+        "affinity": [
+          15
+        ],
+        "threads": {
+          "OPENBLAS_NUM_THREADS": "1",
+          "OMP_NUM_THREADS": "1",
+          "MKL_NUM_THREADS": "1",
+          "NUMEXPR_NUM_THREADS": "1",
+          "VECLIB_MAXIMUM_THREADS": "1",
+          "BLIS_NUM_THREADS": "1"
+        }
+      },
+      "peakBytes": 2147483648,
+      "capReclaimEvents": 49537,
+      "oomEvents": 0,
+      "swapBytes": 0,
+      "minimumHostAvailableBytes": 23850754048,
+      "files": {
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/boundary/focused-recovery-01/coordinate_boundary_recover.invocation.json": "e2d89ac405af6cdb7ca08969876d5bf3e41efdf65593abc328ec0cc1a4aad135",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/boundary/focused-recovery-01/coordinate_boundary_recover.stdout": "ef16c56c024e77d5856b81224f124b34aad8bcb00e8d9c491e15e74dcacb2f92",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/boundary/focused-recovery-01/coordinate_boundary_recover.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/boundary/focused-recovery-01/active.json": "e2d89ac405af6cdb7ca08969876d5bf3e41efdf65593abc328ec0cc1a4aad135",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/boundary/focused-recovery-01/guard.stdout": "0e0c8478225ee59525b6f189076a071c62bcdb11214e0cfc398adbb7ecab36a0",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/boundary/focused-recovery-01/guard.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/boundary/focused-recovery-01/resource-guard/outcome.json": "0e0c8478225ee59525b6f189076a071c62bcdb11214e0cfc398adbb7ecab36a0",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/boundary/focused-recovery-01/resource-guard/child-outcome.json": "aaab20dcde5dd19b099365a1a59b27756c5dc8017dd049db9e91493754a43fdb",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/boundary/focused-recovery-01/resource-guard/effective-limits.json": "5fe419f77d0a936f6946f13f99c8c20a668d4740fee0baeefad083c8f1d4cdaa",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/boundary/focused-recovery-01/resource-guard/limit-validation.json": "613cbb70f3868476bb78eef9f92a022b52f38fb8f68e913d5c134972f922780d",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/boundary/focused-recovery-01/resource-guard/resource-samples.jsonl": "2b6f2197028ab61205fdbc2ab53a021b9098e79724156c1ffae8ecd761239439",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/boundary/focused-recovery-01/launch.json": "eb4f86118f7c8af2371033edb67c775d669ffd714204691affdfcfadcdd1bea9"
+      }
+    },
+    "validator": {
+      "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/boundary/acceptance",
+      "invocation": {
+        "stage": "validate",
+        "command": [
+          "/usr/bin/python",
+          "-u",
+          "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/boundary/acceptance/validate.py"
+        ],
+        "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/boundary/acceptance/validate.stdout",
+        "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/boundary/acceptance/validate.stderr",
+        "startedUtc": "2026-09-21T13:12:01.613615+00:00",
+        "childPid": 703516,
+        "status": "completed",
+        "exitCode": 0,
+        "wallSeconds": 77.99939794500096,
+        "stderrBytes": 0,
+        "finishedUtc": "2026-09-21T13:13:19.613050+00:00"
+      },
+      "guardOutcome": {
+        "exitCode": 0,
+        "wallSeconds": 78.1324331959986,
+        "unit": "s11c-guard-ffaf8fc7a331",
+        "stderrBytes": 0,
+        "limitsVerified": true,
+        "childOutcome": {
+          "exitCode": 0,
+          "guardReason": null,
+          "wallSeconds": 78.06850090499938,
+          "childPid": 703513
+        }
+      },
+      "effectiveLimits": {
         "memory.max": "2147483648",
         "memory.swap.max": "0",
         "pids.max": "32",
@@ -258,6 +361,25 @@
           "VECLIB_MAXIMUM_THREADS": "1",
           "BLIS_NUM_THREADS": "1"
         }
+      },
+      "peakBytes": 2147483648,
+      "capReclaimEvents": 23993,
+      "oomEvents": 0,
+      "swapBytes": 0,
+      "minimumHostAvailableBytes": 23694856192,
+      "files": {
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/boundary/acceptance/validate.invocation.json": "2eb41c0e050c384b271ce8bd5c4a134b734dba16ca6df5990e38c3174ee86e95",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/boundary/acceptance/validate.stdout": "1965c9a0cb1e1ed1fb391d7ad059d672f6f9ef9e928ff4c7eb12a8b684d8817c",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/boundary/acceptance/validate.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/boundary/acceptance/active.json": "2eb41c0e050c384b271ce8bd5c4a134b734dba16ca6df5990e38c3174ee86e95",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/boundary/acceptance/guard.stdout": "26e6267daf0c372c593f17e0d2d7ab4765be8547fa3a7d3ce4fbefcc57657812",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/boundary/acceptance/guard.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/boundary/acceptance/resource-guard/outcome.json": "26e6267daf0c372c593f17e0d2d7ab4765be8547fa3a7d3ce4fbefcc57657812",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/boundary/acceptance/resource-guard/child-outcome.json": "2d4a0e7e1ce1bf01e850084cf9cdfd27d6559ace9a5133b662005d0437fe7136",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/boundary/acceptance/resource-guard/effective-limits.json": "d11a63aa372882d8e7919892c6ad6bedbfe4adc59522e08f2955d4f1cc6b1893",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/boundary/acceptance/resource-guard/limit-validation.json": "c3aee7584a6df491f852a545e78e61bc47afc69f1f9ef8bb11dd914be9a7d9d3",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/boundary/acceptance/resource-guard/resource-samples.jsonl": "a6f31f61228e3ed8543028d6365fc4b4e7b8dfd7b01a880d881ce54e04113b02",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/boundary/acceptance/launch.json": "a9a1e24a70902f13850eb5ca617a1d7362a893411c57434ec589fc5f677bbc1d"
       }
     }
   }

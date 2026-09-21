@@ -60,3 +60,14 @@ whole-job 2 GiB, zero-swap, one-CPU, nice-15 and 32-task limits, with all native
 threads set to one. A single 900-second supervisor and silent local completion/
 error hook own continuation. Numerical solves are disabled; production is not
 launched until this routing check completes cleanly.
+
+The solver-routing preflight completed in 225.57 seconds (226.80 seconds including
+startup), with final guard/supervisor/child exit zero, empty stderr and checks/stdout
+byte identity. It retained 190 sources, 30,976 inputs, 583 unchanged copies and
+584 artifacts, including all 556 accepted input-focus artifacts. All four actual
+finite first-write routes, changed-forcing controls, four open-current columns
+and three separate closed directions pass under unchanged native solver bodies.
+No solve or current contraction ran. Its guard reached 2 GiB with 187,268 reclaim
+events, zero OOM/swap and minimum host available memory 23.57 GB. Separate
+ACCEPTED_MATERIAL_RESPONSE_SOLVER_WIRING acceptance records the final outcome
+and saved source/copy/wiring review without repeating prior validation.

@@ -1,5 +1,5 @@
 {
-  "status": "LAUNCHED_GUARDED_MATERIAL_RESPONSE_SOLVER_PREFLIGHT",
+  "status": "ACCEPTED_MATERIAL_RESPONSE_SOLVER_WIRING",
   "acceptedBoundary": "2e1e4a3c",
   "acceptedMaterialInteriors": "a95a0c0d",
   "helperSha256": "95fe5fc75462f68780150fce954ffc2ac2f59c8f8a69672255bfaf2ca4fdf89a",
@@ -451,7 +451,7 @@
     "planSha256": "513dad0ccb55ab58780f5a283bf246710ccdd3b34c47e513812dee8e559a8b98",
     "wiringSha256": "adf49525299224437999e914b019738d3eab8603c455d7de9a646e5674d578ef",
     "preflightRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/response/solver-preflight",
-    "preflightStatus": "RUNNING_UNDER_VERIFIED_GUARD",
+    "preflightStatus": "ACCEPTED_CLEAN",
     "newFiniteControls": 4,
     "newContinuumControls": 3,
     "newMaterialAmplitudeBookkeeping": 4,
@@ -524,6 +524,84 @@
         }
       }
     },
-    "limitValidationSha256": "d1ddf8f6368ab62d994abd60ca8e311c8d70f9c3b8062764316a25ddbfa34868"
+    "limitValidationSha256": "d1ddf8f6368ab62d994abd60ca8e311c8d70f9c3b8062764316a25ddbfa34868",
+    "preflightCheckpoint": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_coordinate_response_solver_focused.json",
+    "preflightChecksSha256": "ffa4812e14c9ff20891228ab65ec224393504091cb08c9c5816949801bd2e7db",
+    "preflightReview": {
+      "finalExitAndStderrAndChecksIdentity": true,
+      "allOriginalFocusArtifactManifestJoins": 556,
+      "actualCapturedFirstWrites": 4,
+      "changedForcingControls": 4,
+      "nativeSolveBodiesUnchanged": true,
+      "nativeFinalPrePostHashChecksCompleted": true,
+      "newScientificWork": false,
+      "priorIndependentInputValidationReused": "b733ef066d4ef5e8eadc6b4ab0d79a938a8e2b11cbcacd6b05f6d632ade53361",
+      "sourceHelperSha256": "856b9b800a7443415c9b82ad6ea3a1e63979d886317fa99fbda2b435e8ad46e2",
+      "planSha256": "513dad0ccb55ab58780f5a283bf246710ccdd3b34c47e513812dee8e559a8b98",
+      "scope": "Final outcome, saved wiring and exact accepted-copy/source manifest review; no scientific constructor or prior validator repeated."
+    },
+    "preflightOutcome": {
+      "outcome": {
+        "exitCode": 0,
+        "wallSeconds": 226.95424839099724,
+        "unit": "s11c-guard-f79a63715c32",
+        "stderrBytes": 0,
+        "limitsVerified": true,
+        "childOutcome": {
+          "exitCode": 0,
+          "guardReason": null,
+          "wallSeconds": 226.87005252100062,
+          "childPid": 758292
+        }
+      },
+      "supervisor": {
+        "stage": "coordinate_response_wiring",
+        "command": [
+          "/usr/bin/python",
+          "-u",
+          "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_coordinate_response.py",
+          "--run-directory",
+          "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/response/solver-preflight/complete",
+          "--resume-focused",
+          "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/response/focused/complete",
+          "--preflight"
+        ],
+        "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/response/solver-preflight/coordinate_response_wiring.stdout",
+        "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/response/solver-preflight/coordinate_response_wiring.stderr",
+        "startedUtc": "2026-09-21T15:09:35.372359+00:00",
+        "childPid": 758293,
+        "status": "completed",
+        "exitCode": 0,
+        "wallSeconds": 226.7967812930001,
+        "stderrBytes": 0,
+        "finishedUtc": "2026-09-21T15:13:22.169195+00:00"
+      },
+      "verifiedLimits": {
+        "verified": true,
+        "actual": {
+          "memory.max": "2147483648",
+          "memory.swap.max": "0",
+          "pids.max": "32",
+          "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-f79a63715c32.service",
+          "nice": 15,
+          "affinity": [
+            15
+          ],
+          "threads": {
+            "OPENBLAS_NUM_THREADS": "1",
+            "OMP_NUM_THREADS": "1",
+            "MKL_NUM_THREADS": "1",
+            "NUMEXPR_NUM_THREADS": "1",
+            "VECLIB_MAXIMUM_THREADS": "1",
+            "BLIS_NUM_THREADS": "1"
+          }
+        }
+      },
+      "peakBytes": 2147483648,
+      "capReclaimEvents": 187268,
+      "oomEvents": 0,
+      "swapBytes": 0,
+      "hostAvailableMinimumBytes": 23566344192
+    }
   }
 }

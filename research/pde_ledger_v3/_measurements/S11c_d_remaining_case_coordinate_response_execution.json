@@ -1797,5 +1797,59 @@
         }
       }
     }
+  },
+  "materialOutputAuditContinuation": {
+    "status": "PREPARED_ONLY_UNFINISHED_FINAL_HASH_AUDIT",
+    "originalSequence": {
+      "stage": "coordinate_output_construct",
+      "command": [
+        "/usr/bin/python",
+        "-u",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_coordinate_output_staged.py",
+        "--run-directory",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/response/output/production/complete",
+        "--focus",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/response/output/focused-recovery-01/complete"
+      ],
+      "startedUtc": "2026-09-21T16:54:54.397706+00:00",
+      "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/response/output/production/coordinate_output_construct.stdout",
+      "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/response/output/production/coordinate_output_construct.stderr",
+      "status": "failed",
+      "scientificWorkersGuardedIndividually": true,
+      "childPid": 841161,
+      "exitCode": 1,
+      "stderrBytes": 2168,
+      "wallSeconds": 9771.596031357003,
+      "finishedUtc": "2026-09-21T19:37:45.993775+00:00"
+    },
+    "passedOriginalPhases": 19,
+    "failedOriginalPhase": 19,
+    "guardReason": "wall-time limit",
+    "originalOomEvents": 0,
+    "originalJobSwapBytes": 0,
+    "originalCapReclaims": 286183,
+    "originalMinimumHostAvailableBytes": 21938794496,
+    "allElevenNewEmissionsComplete": true,
+    "completedPhase19Replay": {
+      "tags": 3500,
+      "keys": 1748,
+      "metadataPaths": 159716,
+      "completedPostControls": true,
+      "earlyPartIsNotFinalAcceptance": true
+    },
+    "remainingOriginalPhases": [
+      20,
+      21,
+      22,
+      23
+    ],
+    "helper": "S11c_d_remaining_case_coordinate_output_audit_finish.py",
+    "plan": "S11c_d_remaining_case_coordinate_output_audit_finish_plan.md",
+    "wiring": "S11c_d_remaining_case_coordinate_output_audit_finish_wiring.json",
+    "freshDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/response/output/production-audit-finish-01",
+    "newScientificWork": 0,
+    "newIndividualEmission": 0,
+    "newPayloadReplay": 0,
+    "fileReuse": "Explicit hashed symlink references preserve original bytes and paths; new mutable state is separate."
   }
 }

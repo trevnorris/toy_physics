@@ -193,3 +193,19 @@ audit before advancing. The stdlib coordinator sequences one worker at a time
 and stops on the first error. One silent local completion/error hook owns
 continuation; no model polling or automatic retries. Numerical and focused
 acceptance remain immutable; transcript acceptance awaits the final sequence.
+
+The sequence stopped at phase 19 after its 900.44-second budget, with zero OOM
+events or job swap. Nineteen earlier phases passed. All eleven individual streams
+are saved. Phase 19 also completed its 3,500-payload replay, 1,748 keys, 159,716
+metadata paths and actual unit/payload controls, saving the part inventory before
+the final hash audit. The incomplete phase is not accepted. Its guard recorded
+286,183 cap/reclaims and minimum host available memory 21.94 GB.
+
+A stdlib-only continuation preserves the failed run and executes only the literal
+original final hash/artifact/checks suffix under a whole-main reverse AST join.
+Sixteen changed actual receipt operands reject. A fresh workspace references
+completed files by explicit path/hash/size, avoiding another large data copy;
+original files remain untouched and writes through references are prohibited.
+The same 2 GiB/zero-swap/single-CPU/900-second guard remains. No emission, payload
+replay or scientific construction is repeated. The remaining three replays and
+aggregation will separate their work from final file audits to fit bounded phases.

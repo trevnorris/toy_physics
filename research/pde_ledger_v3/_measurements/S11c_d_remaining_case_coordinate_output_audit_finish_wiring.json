@@ -1,0 +1,110 @@
+{
+  "status": "PASSED_SAVED_PART_AUDIT_CONTINUATION_WIRING",
+  "helperSha256": "14908ab4f97855771f1b9d2476a86461870f442477d09c239bfd9bf08f7123a0",
+  "planSha256": "8aa3b7152d8b4ff541c9a79a75ed0b51cce72a3fdceffc4b1338b9dad197f8e8",
+  "nativeJoin": {
+    "wholeMainReversePartition": true,
+    "nativeFinalAuditUnchanged": true,
+    "nativeHashesUnchanged": true,
+    "splitStatement": 17,
+    "mainAstSha256": "f15100dba06a0ee3cb53e7d10a1ada7c41ea6102982530b8a6352e5760efc07d",
+    "suffixAstSha256": "1320669101c5c51542fecbc094e1595cd2484bda8e9bb8da7095ba724a0652ec",
+    "originalOutputSha256": "7cd38cb2149fd7d94d51c0cbc069718a90bf231f28c1eb6dc786b6e6ff3e1be5",
+    "noNativeEmissionReplayOrScientificImports": true
+  },
+  "actualSavedReceiptMutations": [
+    {
+      "kind": "case",
+      "rejected": true
+    },
+    {
+      "kind": "kind",
+      "rejected": true
+    },
+    {
+      "kind": "address",
+      "rejected": true
+    },
+    {
+      "kind": "stream",
+      "rejected": true
+    },
+    {
+      "kind": "tags",
+      "rejected": true
+    },
+    {
+      "kind": "keys",
+      "rejected": true
+    },
+    {
+      "kind": "metadata",
+      "rejected": true
+    },
+    {
+      "kind": "packet",
+      "rejected": true
+    },
+    {
+      "kind": "seen",
+      "rejected": true
+    },
+    {
+      "kind": "predicate",
+      "rejected": true
+    },
+    {
+      "kind": "helper",
+      "rejected": true
+    },
+    {
+      "kind": "unit",
+      "rejected": true
+    },
+    {
+      "kind": "missing-control",
+      "rejected": true
+    },
+    {
+      "kind": "join",
+      "rejected": true
+    },
+    {
+      "kind": "emission-state",
+      "rejected": true
+    },
+    {
+      "kind": "duplicate-key",
+      "rejected": true
+    }
+  ],
+  "rejectedMutations": 16,
+  "imports": [
+    "argparse",
+    "ast",
+    "copy",
+    "hashlib",
+    "json",
+    "os",
+    "resource",
+    "shutil",
+    "signal",
+    "time",
+    "pathlib",
+    "types"
+  ],
+  "scientificOrEmissionWork": 0,
+  "originalManifestSha256": "1d5fcf5f39aee93f863a2470c298bdc28e90c3ef79ec16147f6cb3b26a4a8ded",
+  "originalPartInventorySha256": "86dd4e152ba167fc3ea9967a2ef7be37e79b5dcccb27d9effe6d2c30c9ac0c55",
+  "actualCompletedPart": {
+    "directory": "parts/coordinate_MATERIAL_ADVECTED__RHO4_CONSTANT",
+    "case": "MATERIAL_ADVECTED__RHO4_CONSTANT",
+    "kind": "coordinate",
+    "sha256": "e47ffd0012aa81e82474540c7022678bd1b407117df00a6d20f9521535721e95",
+    "tags": 3500,
+    "keys": 1748,
+    "metadataPaths": 159716,
+    "reusedOriginalEmission": false
+  },
+  "originalCompletedChecksSha256": "e92dfd86ab1b1820db0d6e7826a25224a3a16721f5f6997e2742f6c579050f98"
+}

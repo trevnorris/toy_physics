@@ -1,0 +1,45 @@
+{
+  "status": "STATIC_MATERIAL_MATRIX_WIRING_PREPARED",
+  "helperSha256": "3fd2e5ed4a0a7b1b8516818a779d803f4b5b6c7768b5fe8b55505adf6f062d2c",
+  "planSha256": "af8dc1c6632674eecbf8abcc40133e6e5e1edef2817227ff897dba446cab56c9",
+  "wholeNativeAccumulatorReverseAst": true,
+  "expectedVolumeEdits": 1,
+  "nativeDefinitions": {
+    "S11c_d_coordinate_response_production.py": {
+      "sha256": "097fbac399ba3f0adb426b962b1814e7736cf1ab1e64d18dde8fa19b421c1b1a",
+      "definitions": {
+        "MaterialProduction": "56c8c260d85f2b88da7f44001b5a7837f2170b652b067ed9fcd609ab55c0f576",
+        "native_accumulator": "90fd6cdecf02729deaff6755e61499fb96e5bdea768e07b7a5029890471de1f8",
+        "mass_controls": "599eab3727ac953e02eb7f93e9b4339bf40d4ea1260e2e451af5d73a565f57ed"
+      }
+    },
+    "S11c_d_coordinate_response.py": {
+      "sha256": "c602be26c91c3a3369005eb0f7e83895a20133df989622d6200823db284fa3e5",
+      "definitions": {
+        "Chart": "55bcbe4c837b34b5def31769c85c5a5ecc06f098fca493ba0dbe450a794574ad",
+        "MaterialMomentum": "64e4c35a990aa584b26bebab685fe98cc186e0a40f1083a2e838e2494ee323a0"
+      }
+    },
+    "S11c_d_continuum_matrices.py": {
+      "sha256": "33a0e5a2fa136a55875541e15bc410159c94f56f25adc4a02589d0c704223987",
+      "definitions": {
+        "assemble": "0c9e3dc6d2caea52dd4620a9262fd3ad683e774270ca7a2dc4ec00c639361fe4",
+        "values": "f36702fee0e6888aac2de6dc8f6ab5d3c22308dff5bd09208cfbaf6fa9372804",
+        "recombine": "050576b86d15a20e7059d66a9647c7ed823413bf58513e1c34a6d98ed67e6c59"
+      }
+    },
+    "S11c_d_remaining_case_matrices.py": {
+      "sha256": "e2890b0125189ab74a60a3e54cd1a181eee1efde5da5ef7f4ebd4d8d30e52879",
+      "definitions": {
+        "direct_cells": "90585f4fcd43e5412887949c507e83a4f8944e3d7ec047ed2c7f1ce40658a591"
+      }
+    }
+  },
+  "scientificRuntimeExecuted": false,
+  "inputAcceptance": "4757b38b",
+  "newNumericalRows": 32,
+  "missingCaseReuses": 188,
+  "acceptedBaselineRows": 80,
+  "focusScope": "Saved typed call sequences, source/row/measure/trial/unit joins and responding controls. No matrix/basis/integration/solve.",
+  "productionScope": "Only missing material rows and actual own-case interiors; full native accumulator/assembly bodies unchanged."
+}

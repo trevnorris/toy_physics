@@ -1,0 +1,17 @@
+{
+  "status": "PREPARED_CASE_MATERIAL_BOUNDARY_INPUTS",
+  "acceptedMaterialInteriors": "a95a0c0d",
+  "acceptedCaseBoundaryMaps": "d8713012",
+  "acceptedBaselineMaterial": "19a9f5a1",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/boundary/focused",
+  "helperSha256": "7b0402a770b11b8a5dd36aae91140423a664531b9279526f79f97979899ef1eb",
+  "planSha256": "5c844065c78ca8c3c9c804758af73704265ea90e365f494a4903593544739c69",
+  "resourceGuard": "scripts/s11c_guarded_run.py",
+  "wholeJobMemoryBytes": 2147483648,
+  "swapBytes": 0,
+  "threads": 1,
+  "initialBudgetSeconds": 900,
+  "newFocusPhysicalConstructions": 0,
+  "baselineMaterialControlIsContinuumOnly": true,
+  "next": "Validate full saved material chart/end/current/phase inputs and derive exact reuse families before new boundary and response construction."
+}

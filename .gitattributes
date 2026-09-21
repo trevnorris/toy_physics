@@ -58,3 +58,4 @@ research/pde_ledger_v3/scripts/S11b_exports.py -diff
 research/pde_ledger_v3/scripts/S11c_a_exports.py -diff
 research/pde_ledger_v3/scripts/S11c_b_exports.py -diff
 research/pde_ledger_v3/scripts/S11c_c2_exports.py -diff
+research/pde_ledger_v3/_measurements/S11c_d_remaining_case_coordinate_bindings_focused.json -diff

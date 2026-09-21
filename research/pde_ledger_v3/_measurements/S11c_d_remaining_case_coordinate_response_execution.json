@@ -1799,7 +1799,7 @@
     }
   },
   "materialOutputAuditContinuation": {
-    "status": "RUNNING_GUARDED_FINAL_AUDIT",
+    "status": "ACCEPTED_MATERIAL_OUTPUT_PHASE19_AUDIT_CONTINUATION",
     "originalSequence": {
       "stage": "coordinate_output_construct",
       "command": [
@@ -1908,6 +1908,67 @@
           "BLIS_NUM_THREADS": "1"
         }
       }
-    }
+    },
+    "checksSha256": "b63de30240c6417f193515aedb5b1636d06713f25e7ef0c771e06d477c5a0749",
+    "resourceGuard": {
+      "supervisor": {
+        "stage": "coordinate_output_audit",
+        "command": [
+          "/usr/bin/python",
+          "-u",
+          "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_coordinate_output_audit_finish.py",
+          "--run-directory",
+          "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/response/output/production-audit-finish-01/complete"
+        ],
+        "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/response/output/production-audit-finish-01/coordinate_output_audit.stdout",
+        "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/response/output/production-audit-finish-01/coordinate_output_audit.stderr",
+        "startedUtc": "2026-09-21T19:48:09.557957+00:00",
+        "childPid": 879677,
+        "status": "completed",
+        "exitCode": 0,
+        "wallSeconds": 262.5401786459988,
+        "stderrBytes": 0,
+        "finishedUtc": "2026-09-21T19:52:32.098226+00:00"
+      },
+      "guard": {
+        "exitCode": 0,
+        "wallSeconds": 262.7345165949955,
+        "unit": "s11c-guard-16325379e18a",
+        "stderrBytes": 0,
+        "limitsVerified": true,
+        "childOutcome": {
+          "exitCode": 0,
+          "guardReason": null,
+          "wallSeconds": 262.6433212089978,
+          "childPid": 879676
+        }
+      },
+      "limits": {
+        "memory.max": "2147483648",
+        "memory.swap.max": "0",
+        "pids.max": "32",
+        "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-16325379e18a.service",
+        "nice": 15,
+        "affinity": [
+          15
+        ],
+        "threads": {
+          "OPENBLAS_NUM_THREADS": "1",
+          "OMP_NUM_THREADS": "1",
+          "MKL_NUM_THREADS": "1",
+          "NUMEXPR_NUM_THREADS": "1",
+          "VECLIB_MAXIMUM_THREADS": "1",
+          "BLIS_NUM_THREADS": "1"
+        }
+      },
+      "memoryPeakBytes": 2147483648,
+      "swapBytes": 0,
+      "capReclaims": 205116,
+      "minimumHostAvailableBytes": 23280164864,
+      "oomEvents": 0
+    },
+    "referenceFiles": 1261,
+    "referenceBytes": 8110003519,
+    "wholeOutputAccepted": false
   }
 }

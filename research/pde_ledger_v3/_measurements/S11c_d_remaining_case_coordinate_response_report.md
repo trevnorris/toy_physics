@@ -214,3 +214,13 @@ The audit-only continuation launched from 992c02af at 19:48:09 UTC. Its actual
 whole-job 2 GiB, zero-swap, one-CPU, nice-15 and 32-task limits are verified;
 the stdlib worker also has a 512 MiB address-space bound. One silent local hook
 will report its final outcome. No completed replay or scientific work repeats.
+
+The final-audit continuation completed cleanly in 262.37 worker seconds (262.54
+with native startup): actual guard/supervisor/child exit zero, empty stderr and
+checks/stdout identity. All 207 sources, 35,684 inputs, 949 copied-input routes,
+1,061 artifacts and nine completed parts pass. The 1,261 exact file references
+preserve 8,110,003,519 bytes without duplication. Original phase 19 remains a
+recorded timeout; its completed replay is now paired with a clean final audit.
+The separate continuation checkpoint is not whole-output acceptance. Three
+saved-stream replays and native aggregation remain, each with a separate final
+file-audit worker. No output or scientific construction was repeated.

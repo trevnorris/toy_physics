@@ -1,5 +1,5 @@
 {
-  "status": "COMPLETED_CATALOGUE_VALIDATION_PREPARED",
+  "status": "RUNNING_INDEPENDENT_SAVED_ANALYTIC_INPUT_VALIDATION",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/analytic-inputs",
   "stage": "frequency_analytic_inputs",
   "helperSha256": "d228921f1733757fde46765134618340b2dabd14c19992972bd5326aebef6379",
@@ -241,6 +241,57 @@
     "scriptSha256": "590cb853b770850a3d7347feab0c11ad4f19120bc499016deeadb22e5e0e0cc9",
     "planSha256": "e618ef142ce3e719d7c7855b860969aa44e228fa6c17156dc74771041f2a7ab7",
     "staticReviewSha256": "004c3aa56a842f16ce81240f859ba865d3a3b26889d37245d0af1fba2cf607fd",
-    "launched": false
+    "launched": true,
+    "launch": {
+      "launchedUtc": "2026-09-21T23:38:52.673110+00:00",
+      "guardPid": 959942,
+      "watcherPid": 959943,
+      "command": [
+        "/usr/bin/python",
+        "/var/projects/toy_physics/scripts/s11c_guarded_run.py",
+        "--log-directory",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/analytic-input-acceptance/resource-guard",
+        "--seconds",
+        "900",
+        "--",
+        "/usr/bin/python",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+        "--run-root",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/analytic-input-acceptance",
+        "--stage",
+        "validate",
+        "--",
+        "/usr/bin/python",
+        "-u",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/analytic-input-acceptance/validate.py"
+      ],
+      "scriptSha256": "590cb853b770850a3d7347feab0c11ad4f19120bc499016deeadb22e5e0e0cc9",
+      "guardSha256": "6492f5ab11dc2ab2f80bbfcc96d7eb6b8632afea07100dd8f74a7954f3ffe542",
+      "implementationCommit": "1ce70fcc78b887167d77bc52eb7cfc05de009c13",
+      "launchIsAcceptance": false,
+      "newScientificConstruction": false
+    },
+    "initialContainment": {
+      "verified": true,
+      "actual": {
+        "memory.max": "2147483648",
+        "memory.swap.max": "0",
+        "pids.max": "32",
+        "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-a2181452ba01.service",
+        "nice": 15,
+        "affinity": [
+          15
+        ],
+        "threads": {
+          "OPENBLAS_NUM_THREADS": "1",
+          "OMP_NUM_THREADS": "1",
+          "MKL_NUM_THREADS": "1",
+          "NUMEXPR_NUM_THREADS": "1",
+          "VECLIB_MAXIMUM_THREADS": "1",
+          "BLIS_NUM_THREADS": "1"
+        }
+      }
+    },
+    "initialStrictStderrBytes": 0
   }
 }

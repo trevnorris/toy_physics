@@ -54,3 +54,10 @@ An independent saved-only validator is prepared to check every source, owner,
 chart, domain, context, unit, route, actual mutation and pre/post hash. It imports
 no producer into execution and performs no binding, derivative, analytic lift
 or domain construction. Acceptance remains pending its final clean outcome.
+
+The independent saved validator launched at 2026-09-21T23:38:52.673110+00:00 from
+1ce70fcc after static review of 1,501 actual packet paths. Initial actual
+2-GiB/zero-swap/one-CPU/nice-15/32-task/native-single-thread containment
+is verified with empty stderr. Its silent completion/error hook continues the
+task; no polling or automatic retry is scheduled. Acceptance awaits the final
+clean saved validation.

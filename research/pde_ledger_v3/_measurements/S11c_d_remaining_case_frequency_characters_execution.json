@@ -1,5 +1,5 @@
 {
-  "status": "PREPARED_SAVED_CHARACTER_INPUTS",
+  "status": "RUNNING_GUARDED_CHARACTER_INPUTS",
   "sourceAcceptanceCommit": "ed3ac234",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/characters",
   "helperSha256": "d373807160f996877c8a2962a16e53214da723a5c48aa83298ce2ac1820ff03c",
@@ -29,5 +29,54 @@
   "newDerivatives": 0,
   "newNumericalWork": 0,
   "automaticRetries": 0,
-  "silentCompletionHookOnly": true
+  "silentCompletionHookOnly": true,
+  "launch": {
+    "launchedUtc": "2026-09-21T22:11:48.196301+00:00",
+    "guardPid": 928453,
+    "watcherPid": 928454,
+    "command": [
+      "/usr/bin/python",
+      "/var/projects/toy_physics/scripts/s11c_guarded_run.py",
+      "--log-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/characters/resource-guard",
+      "--seconds",
+      "900",
+      "--",
+      "/usr/bin/python",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/characters",
+      "--stage",
+      "frequency_characters",
+      "--",
+      "/usr/bin/python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_characters.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/characters/complete"
+    ],
+    "scriptSha256": "d373807160f996877c8a2962a16e53214da723a5c48aa83298ce2ac1820ff03c",
+    "guardSha256": "6492f5ab11dc2ab2f80bbfcc96d7eb6b8632afea07100dd8f74a7954f3ffe542",
+    "implementationCommit": "9bee15b6c5c83fe1f48162505e0c189009bac676",
+    "launchIsAcceptance": false,
+    "newScientificConstruction": false
+  },
+  "initialVerifiedLimits": {
+    "memory.max": "2147483648",
+    "memory.swap.max": "0",
+    "pids.max": "32",
+    "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-5753021a55d3.service",
+    "nice": 15,
+    "affinity": [
+      15
+    ],
+    "threads": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1",
+      "VECLIB_MAXIMUM_THREADS": "1",
+      "BLIS_NUM_THREADS": "1"
+    }
+  }
 }

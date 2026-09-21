@@ -17,3 +17,8 @@ Standard-library-only review passed source/row AST and all accepted hash joins.
 This is not yet a completed or accepted run. The next step is one guarded
 900-second worker with silent completion/error handling. Numerical row reuse,
 analytic domains, end-family continuation and remaining-case searches follow.
+
+The worker launched at 2026-09-21T22:11:48Z from implementation 9bee15b6.
+Initial actual 2-GiB/zero-swap/one-CPU/nice-15/single-thread containment is
+verified and stderr is empty. Its durable local hook reports completion or
+error; no polling or automatic retry is scheduled. Launch is not acceptance.

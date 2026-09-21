@@ -184,3 +184,12 @@ source namespace; its original code/diagnostic are retained. No physical worker
 ran during scheduling review. Completed streams and packets are preserved on
 the first error without retries. All original numerical/focused inputs remain
 immutable; only explicit coordinator source and phase receipts are added.
+
+The 24-phase physical output sequence launched from 10d86997 at 16:54:54 UTC.
+The first worker has actual verified whole-job 2 GiB, zero-swap, single-CPU,
+nice-15 and 32-task limits, all native threads one. Every later worker must
+pass the same guard before computation and the complete final exit/log/checks
+audit before advancing. The stdlib coordinator sequences one worker at a time
+and stops on the first error. One silent local completion/error hook owns
+continuation; no model polling or automatic retries. Numerical and focused
+acceptance remain immutable; transcript acceptance awaits the final sequence.

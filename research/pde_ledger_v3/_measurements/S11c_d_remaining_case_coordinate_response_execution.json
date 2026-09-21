@@ -1723,7 +1723,7 @@
     "physicalOutputPending": true
   },
   "outputProduction": {
-    "status": "PREPARED_GUARDED_STAGED_OUTPUT",
+    "status": "RUNNING_GUARDED_STAGED_OUTPUT",
     "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/response/output/production",
     "acceptedFocusCommit": "64fc436f",
     "coordinatorSha256": "ec0c56f8b6295866c0ad11a393e713abe31533ee1c8a8ab509d9c9a772510c3a",
@@ -1740,6 +1740,62 @@
     "wholeScientificJobMemoryBytes": 2147483648,
     "swapBytes": 0,
     "silentHookOnly": true,
-    "launchIsAcceptance": false
+    "launchIsAcceptance": false,
+    "launch": {
+      "launchedUtc": "2026-09-21T16:54:54.331161+00:00",
+      "supervisorPid": 841156,
+      "watcherPid": 841157,
+      "command": [
+        "/usr/bin/python",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_coordinate_output_staged.py",
+        "--supervise",
+        "--run-directory",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/response/output/production/complete",
+        "--focus",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/response/output/focused-recovery-01/complete"
+      ],
+      "threadEnvironment": {
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "VECLIB_MAXIMUM_THREADS": "1",
+        "BLIS_NUM_THREADS": "1"
+      },
+      "implementationCommit": "10d86997d7b9c9e23f2fe31157aa61cc408c0103",
+      "coordinatorSha256": "ec0c56f8b6295866c0ad11a393e713abe31533ee1c8a8ab509d9c9a772510c3a",
+      "guardSha256": "6492f5ab11dc2ab2f80bbfcc96d7eb6b8632afea07100dd8f74a7954f3ffe542",
+      "focusChecksSha256": "c0a0cd908b8a2da38c96a13e552251ac3c25f778b5d49f52c30a4a3b74cdc89a",
+      "validatorChecksSha256": "2314605057a180cc368fea07881d2ed0546698ab397a26c3097c43da66969940",
+      "fixedPhases": 24,
+      "maximumScientificWorkers": 1,
+      "guardedPhaseSeconds": 900,
+      "wholeScientificJobMemoryBytes": 2147483648,
+      "jobSwapBytes": 0,
+      "coordinatorIsStdlibOnly": true,
+      "noAutomaticRetries": true,
+      "launchIsAcceptance": false
+    },
+    "actualFirstPhaseLimits": {
+      "verified": true,
+      "actual": {
+        "memory.max": "2147483648",
+        "memory.swap.max": "0",
+        "pids.max": "32",
+        "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-efa455532566.service",
+        "nice": 15,
+        "affinity": [
+          15
+        ],
+        "threads": {
+          "OPENBLAS_NUM_THREADS": "1",
+          "OMP_NUM_THREADS": "1",
+          "MKL_NUM_THREADS": "1",
+          "NUMEXPR_NUM_THREADS": "1",
+          "VECLIB_MAXIMUM_THREADS": "1",
+          "BLIS_NUM_THREADS": "1"
+        }
+      }
+    }
   }
 }

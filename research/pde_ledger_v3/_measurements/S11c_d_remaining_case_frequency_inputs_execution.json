@@ -1,0 +1,24 @@
+{
+  "status": "PREPARED_GUARDED_FREQUENCY_SOURCE_INPUTS",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/inputs",
+  "helperSha256": "3be9bf51d603b36c78f27cf1f168bc096cf911ea4626730f8f468b77b919a1d1",
+  "planSha256": "61398fe5b1aab2aa09faed78a1a4d3154e4cebac2198e92e32898b2bb91bb410",
+  "staticReview": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/inputs/static-review.json",
+  "requestCount": 34,
+  "precedingCoordinatePublicationCommit": "40ca302b",
+  "baselineSearchClosedWithoutResolvedCandidate": true,
+  "newBindingOrDerivative": false,
+  "newNumericalWork": false,
+  "numericalReusePartition": "not yet classified",
+  "guard": {
+    "memoryBytes": 2147483648,
+    "swapBytes": 0,
+    "cpus": 1,
+    "nativeThreads": 1,
+    "pids": 32,
+    "nice": 15,
+    "seconds": 900
+  },
+  "automaticRetries": 0,
+  "silentCompletionHookOnly": true
+}

@@ -99,3 +99,13 @@ whole-job 2 GiB, zero swap, one CPU, nice 15 and 32-task limits, all native
 threads one. One 900-second supervisor and silent completion/error hook own
 continuation. Numerical acceptance awaits final validation; no scientific
 constructor, solve or new current packet is enabled.
+
+Independent numerical validation completed in 205.87 seconds (207.30 including
+startup), final guard/supervisor/child exit zero, empty stderr and checks/stdout
+byte identity. All 32,490 pre/post paths, four full equation/map/current/coordinate
+cases and mandatory supplemental units pass. No solve, new current packet,
+quadrature or assembly ran. Its guard reached 2 GiB with 183,558 reclaim events,
+zero OOM/swap and minimum host available memory 23.61 GB. The separate
+ACCEPTED_CASE_MATERIAL_NUMERICAL_RESPONSES checkpoint now accepts the four finite,
+three new continuum and four current bookkeeping controls. Historical baseline
+continuum stays unchanged. Full physical transcript/replay/publication is next.

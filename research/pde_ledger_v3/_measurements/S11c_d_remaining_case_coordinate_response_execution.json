@@ -1,5 +1,5 @@
 {
-  "status": "MATERIAL_RESPONSE_SAVED_VALIDATION_RUNNING",
+  "status": "ACCEPTED_CASE_MATERIAL_NUMERICAL_RESPONSES",
   "acceptedBoundary": "2e1e4a3c",
   "acceptedMaterialInteriors": "a95a0c0d",
   "helperSha256": "95fe5fc75462f68780150fce954ffc2ac2f59c8f8a69672255bfaf2ca4fdf89a",
@@ -605,7 +605,7 @@
     }
   },
   "numericalProduction": {
-    "status": "COMPLETED_CLEAN_PENDING_VALIDATION",
+    "status": "ACCEPTED_NUMERICAL_RESULTS",
     "root": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/response/production",
     "launch": {
       "launchedUtc": "2026-09-21T15:20:29.773330+00:00",
@@ -933,7 +933,7 @@
   },
   "numericalValidation": {
     "root": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/response/production-acceptance",
-    "status": "LAUNCHED_NOT_ACCEPTED",
+    "status": "COMPLETED_CLEAN",
     "planSha256": "7dcdbc580c6f920be82434a144a0e516201884b948e74b3fb8beb6f235fe690e",
     "validatorSha256": "f06644c3c094456fe8ddc403a55f7583def3a45e0ace76cc2ed86f58656337fd",
     "newScientificConstruction": false,
@@ -988,6 +988,293 @@
         }
       }
     },
-    "limitValidationSha256": "c366a2a2d22b6cdac44f2c12521a6ca45beeef68788f86cf1860163f88ce2a38"
-  }
+    "limitValidationSha256": "c366a2a2d22b6cdac44f2c12521a6ca45beeef68788f86cf1860163f88ce2a38",
+    "completion": {
+      "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/response/production-acceptance",
+      "checksSha256": "6bcb878967e046ad75d8312538080c1fd31e3ee2c38bfd0394febfd8d4a83650",
+      "validatorSha256": "f06644c3c094456fe8ddc403a55f7583def3a45e0ace76cc2ed86f58656337fd",
+      "validatorJoinSha256": "0fb6ccc109aa1c585425bfb1953e79de70cf775e50cfd726ae8efa962f2230fd",
+      "currentValidatorJoinSha256": "9d656879638b4a665440a7d67712b1474a582c59cb49d976f7e69a67009bb26e",
+      "planSha256": "7dcdbc580c6f920be82434a144a0e516201884b948e74b3fb8beb6f235fe690e",
+      "outcome": {
+        "stage": "validate",
+        "command": [
+          "/usr/bin/python",
+          "-u",
+          "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/response/production-acceptance/validate.py"
+        ],
+        "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/response/production-acceptance/validate.stdout",
+        "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/response/production-acceptance/validate.stderr",
+        "startedUtc": "2026-09-21T15:35:19.695149+00:00",
+        "childPid": 765670,
+        "status": "completed",
+        "exitCode": 0,
+        "wallSeconds": 207.29723074099456,
+        "stderrBytes": 0,
+        "finishedUtc": "2026-09-21T15:38:46.992434+00:00"
+      },
+      "checks": {
+        "status": "VALIDATED_CASE_MATERIAL_NUMERICAL_RESPONSES",
+        "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/response/production/complete",
+        "checksSha256": "a67635eda94ccb1ceac2e7eeff06e447e3515c2ce2549604865a3d69f7b63f5d",
+        "productionOutcome": {
+          "stage": "coordinate_response_construct",
+          "command": [
+            "/usr/bin/python",
+            "-u",
+            "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_coordinate_response.py",
+            "--run-directory",
+            "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/response/production/complete",
+            "--resume-focused",
+            "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/response/focused/complete",
+            "--resume-preflight",
+            "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/response/solver-preflight/complete"
+          ],
+          "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/response/production/coordinate_response_construct.stdout",
+          "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/response/production/coordinate_response_construct.stderr",
+          "startedUtc": "2026-09-21T15:20:29.938996+00:00",
+          "childPid": 761263,
+          "status": "completed",
+          "exitCode": 0,
+          "wallSeconds": 280.9353203840001,
+          "stderrBytes": 0,
+          "finishedUtc": "2026-09-21T15:25:10.874369+00:00"
+        },
+        "sourceFiles": 190,
+        "inputPackets": 31561,
+        "copiedInputs": 584,
+        "preflightCopies": 584,
+        "artifacts": 655,
+        "prePostHashPaths": 32490,
+        "cases": {
+          "LAB_HELD__RHO4_CONSTANT": {
+            "equationsAndMaps": {
+              "case": "LAB_HELD__RHO4_CONSTANT",
+              "finiteMatrixScaledDifference": 0.0,
+              "finiteRank": 645,
+              "continuumRank": 645,
+              "finiteScaledResidual": 6.496076988820188e-16,
+              "continuumScaledResidual": 4.5872791835133006e-14,
+              "finiteCurrentRatios": [
+                0.9999999879053136,
+                0.9999999307817352,
+                1.0000000426097642,
+                1.0000001062578248
+              ],
+              "continuumMapResidual": 1.0667388882858398e-14,
+              "newSolves": 0,
+              "newQuadratureNodes": 0,
+              "wholeNativeFinitePrefix": {
+                "acceptedPreparedSystems": true,
+                "newSystemAssemblies": 0
+              }
+            },
+            "coordinateAndCurrents": {
+              "commonCoordinateResidual": 7.106294666405892e-15,
+              "finiteAmplitudeDifference": 2.212465371338336e-13,
+              "finiteCurrentDifference": 2.9620750296999176e-13,
+              "finiteFieldDifferenceDescriptive": 2.8305175621572905e-13,
+              "continuumAmplitudeDifference": 4.5206767163165256e-14,
+              "retainedPolynomialCurrentDifference": 3.2640615036944095e-14,
+              "openCurrentResidual": 4.441133644133352e-16,
+              "endCurrentResidual": 5.687116766346677e-14,
+              "finiteOpenCurrentResidual": 2.2214103089222097e-16,
+              "currentMutation": 2.139295618348198,
+              "amplitudeGoal": 0.0001,
+              "currentGoal": 1e-06,
+              "scope": "Own-case material-coordinate controls constructed in common Eulerian coordinates before solving. Four new finite controls and three new continuum controls; historical baseline continuum reused unchanged. Positive regulator, approximate boundaries, unresolved tiny signals and omitted parent pure-second-order scope. Finite open-only current and separate closed matching amplitudes; full seven-direction continuum currents. No post-hoc S conjugation, unlike-density subtraction, isolated advection or c2 closure claim.",
+              "finiteCurrentScope": "open-only 4-by-4; three closed amplitudes separate",
+              "continuumCurrentScope": "full seven directions including closed/cross terms",
+              "sourceMetricEquationCheckedWithoutInverse": true,
+              "newSolves": 0,
+              "newCurrentPackets": 0
+            }
+          },
+          "LAB_HELD__RHOBR_CONSTANT": {
+            "equationsAndMaps": {
+              "case": "LAB_HELD__RHOBR_CONSTANT",
+              "finiteMatrixScaledDifference": 0.0,
+              "finiteRank": 645,
+              "continuumRank": 645,
+              "finiteScaledResidual": 8.431217017073252e-16,
+              "continuumScaledResidual": 1.6481382656420913e-14,
+              "finiteCurrentRatios": [
+                0.9999999973883366,
+                0.9999999850558478,
+                1.0000000900256123,
+                1.000000015423532
+              ],
+              "continuumMapResidual": 1.3506446028928517e-15,
+              "newSolves": 0,
+              "newQuadratureNodes": 0,
+              "wholeNativeFinitePrefix": {
+                "acceptedPreparedSystems": true,
+                "newSystemAssemblies": 0
+              }
+            },
+            "coordinateAndCurrents": {
+              "commonCoordinateResidual": 7.106294666405892e-15,
+              "finiteAmplitudeDifference": 1.537302281440162e-13,
+              "finiteCurrentDifference": 2.255973186038318e-13,
+              "finiteFieldDifferenceDescriptive": 2.298881852245286e-13,
+              "continuumAmplitudeDifference": 4.74517929806089e-14,
+              "retainedPolynomialCurrentDifference": 2.1094259327949776e-14,
+              "openCurrentResidual": 4.440892098505128e-16,
+              "endCurrentResidual": 4.103697288266033e-15,
+              "finiteOpenCurrentResidual": 1.6653345369377348e-16,
+              "currentMutation": 2.0962045861590486,
+              "amplitudeGoal": 0.0001,
+              "currentGoal": 1e-06,
+              "scope": "Own-case material-coordinate controls constructed in common Eulerian coordinates before solving. Four new finite controls and three new continuum controls; historical baseline continuum reused unchanged. Positive regulator, approximate boundaries, unresolved tiny signals and omitted parent pure-second-order scope. Finite open-only current and separate closed matching amplitudes; full seven-direction continuum currents. No post-hoc S conjugation, unlike-density subtraction, isolated advection or c2 closure claim.",
+              "finiteCurrentScope": "open-only 4-by-4; three closed amplitudes separate",
+              "continuumCurrentScope": "full seven directions including closed/cross terms",
+              "sourceMetricEquationCheckedWithoutInverse": true,
+              "newSolves": 0,
+              "newCurrentPackets": 0
+            }
+          },
+          "MATERIAL_ADVECTED__RHO4_CONSTANT": {
+            "equationsAndMaps": {
+              "case": "MATERIAL_ADVECTED__RHO4_CONSTANT",
+              "finiteMatrixScaledDifference": 0.0,
+              "finiteRank": 645,
+              "continuumRank": 645,
+              "finiteScaledResidual": 6.321723671543724e-16,
+              "continuumScaledResidual": 3.6392267570393115e-14,
+              "finiteCurrentRatios": [
+                0.9999999290876689,
+                0.999999594486137,
+                1.0000000184925961,
+                1.0000000461277152
+              ],
+              "continuumMapResidual": 7.113229329843195e-15,
+              "newSolves": 0,
+              "newQuadratureNodes": 0,
+              "wholeNativeFinitePrefix": {
+                "acceptedPreparedSystems": true,
+                "newSystemAssemblies": 0
+              }
+            },
+            "coordinateAndCurrents": {
+              "commonCoordinateResidual": 7.106294666405892e-15,
+              "finiteAmplitudeDifference": 2.1513489716254948e-13,
+              "finiteCurrentDifference": 1.283417816466681e-13,
+              "finiteFieldDifferenceDescriptive": 4.0450531494426437e-13,
+              "continuumAmplitudeDifference": 5.531101433315975e-14,
+              "retainedPolynomialCurrentDifference": 2.065014942422823e-14,
+              "openCurrentResidual": 4.577566798522237e-16,
+              "endCurrentResidual": 5.709267256288867e-14,
+              "finiteOpenCurrentResidual": 2.220449551372683e-16,
+              "currentMutation": 2.1392956183482665,
+              "amplitudeGoal": 0.0001,
+              "currentGoal": 1e-06,
+              "scope": "Own-case material-coordinate controls constructed in common Eulerian coordinates before solving. Four new finite controls and three new continuum controls; historical baseline continuum reused unchanged. Positive regulator, approximate boundaries, unresolved tiny signals and omitted parent pure-second-order scope. Finite open-only current and separate closed matching amplitudes; full seven-direction continuum currents. No post-hoc S conjugation, unlike-density subtraction, isolated advection or c2 closure claim.",
+              "finiteCurrentScope": "open-only 4-by-4; three closed amplitudes separate",
+              "continuumCurrentScope": "full seven directions including closed/cross terms",
+              "sourceMetricEquationCheckedWithoutInverse": true,
+              "newSolves": 0,
+              "newCurrentPackets": 0
+            }
+          },
+          "MATERIAL_ADVECTED__RHOBR_CONSTANT": {
+            "equationsAndMaps": {
+              "case": "MATERIAL_ADVECTED__RHOBR_CONSTANT",
+              "finiteMatrixScaledDifference": 0.0,
+              "finiteRank": 645,
+              "continuumRank": 645,
+              "finiteScaledResidual": 5.815636720194478e-16,
+              "continuumScaledResidual": 1.8536794887576295e-14,
+              "finiteCurrentRatios": [
+                1.0000000182709066,
+                1.0000001044536106,
+                0.9999999719774357,
+                0.9999999951964127
+              ],
+              "continuumMapResidual": 1.0006005458908991e-15,
+              "newSolves": 0,
+              "newQuadratureNodes": 0,
+              "wholeNativeFinitePrefix": {
+                "acceptedPreparedSystems": true,
+                "newSystemAssemblies": 0
+              }
+            },
+            "coordinateAndCurrents": {
+              "commonCoordinateResidual": 7.106294666405892e-15,
+              "finiteAmplitudeDifference": 1.7964694536213142e-13,
+              "finiteCurrentDifference": 1.9118040484045196e-13,
+              "finiteFieldDifferenceDescriptive": 3.0700276447490814e-13,
+              "continuumAmplitudeDifference": 4.7275464852040186e-14,
+              "retainedPolynomialCurrentDifference": 2.0872206013097935e-14,
+              "openCurrentResidual": 4.440892098505128e-16,
+              "endCurrentResidual": 4.9464142581768705e-15,
+              "finiteOpenCurrentResidual": 2.221244339154587e-16,
+              "currentMutation": 2.0962045861590486,
+              "amplitudeGoal": 0.0001,
+              "currentGoal": 1e-06,
+              "scope": "Own-case material-coordinate controls constructed in common Eulerian coordinates before solving. Four new finite controls and three new continuum controls; historical baseline continuum reused unchanged. Positive regulator, approximate boundaries, unresolved tiny signals and omitted parent pure-second-order scope. Finite open-only current and separate closed matching amplitudes; full seven-direction continuum currents. No post-hoc S conjugation, unlike-density subtraction, isolated advection or c2 closure claim.",
+              "finiteCurrentScope": "open-only 4-by-4; three closed amplitudes separate",
+              "continuumCurrentScope": "full seven directions including closed/cross terms",
+              "sourceMetricEquationCheckedWithoutInverse": true,
+              "newSolves": 0,
+              "newCurrentPackets": 0
+            }
+          }
+        },
+        "newSolves": 0,
+        "newQuadratureNodes": 0,
+        "newSystemAssemblies": 0,
+        "newCurrentPackets": 0,
+        "physicalTranscriptEmitted": false,
+        "mandatoryUnitSupplementChecked": true,
+        "validatorSha256": "f06644c3c094456fe8ddc403a55f7583def3a45e0ace76cc2ed86f58656337fd",
+        "validatorJoinSha256": "0fb6ccc109aa1c585425bfb1953e79de70cf775e50cfd726ae8efa962f2230fd",
+        "currentValidatorJoinSha256": "9d656879638b4a665440a7d67712b1474a582c59cb49d976f7e69a67009bb26e",
+        "wallSeconds": 205.86695582899847,
+        "maximumRssKiB": 705428
+      },
+      "resourceGuard": {
+        "outcome": {
+          "exitCode": 0,
+          "wallSeconds": 207.47091979399556,
+          "unit": "s11c-guard-c487ba13aca0",
+          "stderrBytes": 0,
+          "limitsVerified": true,
+          "childOutcome": {
+            "exitCode": 0,
+            "guardReason": null,
+            "wallSeconds": 207.39760429199669,
+            "childPid": 765668
+          }
+        },
+        "verifiedLimits": {
+          "verified": true,
+          "actual": {
+            "memory.max": "2147483648",
+            "memory.swap.max": "0",
+            "pids.max": "32",
+            "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-c487ba13aca0.service",
+            "nice": 15,
+            "affinity": [
+              15
+            ],
+            "threads": {
+              "OPENBLAS_NUM_THREADS": "1",
+              "OMP_NUM_THREADS": "1",
+              "MKL_NUM_THREADS": "1",
+              "NUMEXPR_NUM_THREADS": "1",
+              "VECLIB_MAXIMUM_THREADS": "1",
+              "BLIS_NUM_THREADS": "1"
+            }
+          }
+        },
+        "peakBytes": 2147483648,
+        "capReclaimEvents": 183558,
+        "oomEvents": 0,
+        "swapBytes": 0,
+        "hostAvailableMinimumBytes": 23612997632
+      }
+    }
+  },
+  "acceptedNumericalCheckpoint": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_coordinate_response_checkpoint.json",
+  "acceptedNumericalCheckpointSha256": "70f300013d3ee486f55bf8c0d87a821eaa501f005647023b525d0834e37d6fe8"
 }

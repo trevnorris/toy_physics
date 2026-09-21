@@ -32,3 +32,9 @@ this is not certified empty spectrum. No doubling or broad campaign. All prior
 science, published coordinate output and the builder retained suffix remain
 immutable. The positive-regulator, approximate-boundary, unresolved-tiny-signal
 and omitted parent pure-second-order limitations remain.
+
+The worker launched at 2026-09-21T23:30:33.691802+00:00 from 31716d33. Initial
+actual 2-GiB/zero-swap/one-CPU/nice-15/32-task/native-single-thread limits
+are verified and strict stderr is empty. The existing silent local hook handles
+completion or error. No polling or automatic retry is scheduled; launch is not
+acceptance.

@@ -23,3 +23,9 @@ explicit. Source characters, analytic domains and end-family joins follow this
 record stage before any numerical frequency pencil. One guarded 900-second
 production is prepared; acceptance requires its final clean outcome and saved
 independent validation. No numerical constructor or physical output runs here.
+
+The missing-record worker launched at 2026-09-21T21:45:38Z from committed
+implementation 1d98315c. Actual initial containment is verified at whole-job
+2 GiB, zero swap, one CPU, nice 15 and one native thread. Durable logs and the
+silent completion/error hook are in frequency-20260921/sources. Launch is
+not acceptance; no automatic retry or model polling is scheduled.

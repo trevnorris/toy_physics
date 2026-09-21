@@ -39,3 +39,14 @@ The saved-input validator launched under implementation 21537fe7 at
 zero swap, one CPU, nice 15 and one native thread. Its durable logs and silent
 completion/error hook are under frequency-20260921/input-acceptance. Launch
 and empty initial stderr do not establish acceptance.
+
+Input acceptance is complete after 54.26 worker / 55.70 native seconds of
+independent saved-only validation. All 3,196 pre/post paths, 43 reference
+addresses, 1,467 record pairs, 300 rows, 647 terms, 120 sources and twenty
+actual mutations pass. The 86 union operands comprise 64 local, four cell,
+six factor and twelve source operands; first appearances remain 38/31/17.
+All 375 baseline frequency/analytic records join unchanged. The validator
+used 840,163,328 peak bytes with zero cap/OOM/swap events and minimum host
+availability 23.63 GB. No scientific construction or numerical row reuse was
+performed. Next prepare exact saved binding contexts and construct only
+missing live-frequency operands and derivatives, retaining all raw proofs.

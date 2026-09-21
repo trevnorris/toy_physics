@@ -1,0 +1,40 @@
+{
+  "status": "PREPARED_MISSING_FREQUENCY_SOURCE_RECORDS",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/sources",
+  "inputAcceptanceCommit": "d9252d9f",
+  "helperSha256": "6afd6df8619cb37f8e35a79312304ab976c12bf5ee1e67fa2ebaa560b576f464",
+  "planSha256": "2d59fb8ce2a7e719f7106acc3a7cb6458fd7b47c7e218390ce3e6fbe1907443b",
+  "staticReview": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/sources/static-review.json",
+  "staticReviewSha256": "a968c678952a35b6dc1cd7d0dab8878b26ca359f30e837af8f7ef4923b879dd3",
+  "nativeJoins": {
+    "wholeNativeRecordLoopReverseAST": true,
+    "addedOperandCheckpointSlots": 8,
+    "nativeLoopAstSha256": "d2d3db68e313941d72495c8aeaf9c5d5813de9eaf590cc5c4333c279e3643849",
+    "wholeNativeSourcesSha256": "dc9704a26214b8d1798c1a6230775de7aa46ebdceb556de67c397f9e044b59d7",
+    "nativeBindingComparisonSha256": "e1d4b28477bd6101449ae3dcd45b89273edc263216034188f2c48f0cfc4689f7",
+    "nativeBinderSha256": "5a07713fe33627a0d8e469a5baaf7af583cf3c141f4257efe6586ee025172830",
+    "nativeCensusSha256": "dfde40fa026611151cddb449ed37c801c59e8a75222de26615136f2d2915b19c",
+    "excludedCompletedPrefix": "Baseline rebinding/local matrix replay and source-character construction are not called."
+  },
+  "uncomputedUnionOperands": 86,
+  "firstAppearances": [
+    38,
+    31,
+    17
+  ],
+  "baselineRecordsReused": 375,
+  "newSeedBindings": 0,
+  "newNumericalWork": 0,
+  "sourceCharactersAndAnalyticEndJoinsPending": true,
+  "guard": {
+    "memoryBytes": 2147483648,
+    "swapBytes": 0,
+    "cpus": 1,
+    "nice": 15,
+    "pids": 32,
+    "nativeThreads": 1,
+    "seconds": 900
+  },
+  "automaticRetries": 0,
+  "silentCompletionHookOnly": true
+}

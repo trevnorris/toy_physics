@@ -611,7 +611,7 @@
     }
   },
   "boundaryLoaderRecovery": {
-    "status": "LAUNCHED_GUARDED_PENDING_FINAL_OUTCOME",
+    "status": "COMPLETED_PENDING_INDEPENDENT_VALIDATION",
     "helperSha256": "d3d11b21d95b8c396a7a5bd105e0ebe13ba2905094ef6ef600dc3ff7749f15ef",
     "repairSha256": "9ab18f48bc06fa33a9db3d0b094152931c5fe41665b910ccf95c71fcbc824c8f",
     "intactCopies": 220,
@@ -688,6 +688,197 @@
         }
       }
     },
-    "limitValidationSha256": "73d0260a3a37e5fb2e1dfd76d40260bb4ec83ed3d2794492a7e97642d71a10ff"
+    "limitValidationSha256": "73d0260a3a37e5fb2e1dfd76d40260bb4ec83ed3d2794492a7e97642d71a10ff",
+    "outcome": {
+      "stage": "coordinate_boundary_loader_recover",
+      "command": [
+        "/usr/bin/python",
+        "-u",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_coordinate_boundary_loader_recover.py",
+        "--resume-focused",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/boundary/focused-recovery-01/complete",
+        "--run-directory",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/boundary/production-recovery-02/complete"
+      ],
+      "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/boundary/production-recovery-02/coordinate_boundary_loader_recover.stdout",
+      "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/boundary/production-recovery-02/coordinate_boundary_loader_recover.stderr",
+      "startedUtc": "2026-09-21T13:46:46.605783+00:00",
+      "childPid": 714776,
+      "status": "completed",
+      "exitCode": 0,
+      "wallSeconds": 155.73781446000066,
+      "stderrBytes": 0,
+      "finishedUtc": "2026-09-21T13:49:22.343677+00:00"
+    },
+    "guardOutcome": {
+      "exitCode": 0,
+      "wallSeconds": 155.84178491900093,
+      "unit": "s11c-guard-4f2920d55c80",
+      "stderrBytes": 0,
+      "limitsVerified": true,
+      "childOutcome": {
+        "exitCode": 0,
+        "guardReason": null,
+        "wallSeconds": 155.78191897399665,
+        "childPid": 714775
+      }
+    },
+    "checksSha256": "6755d95b096f43d0eb7eaeb547826e98705b7861bc438b12308d43b9930825fa",
+    "counts": {
+      "sourceFiles": 154,
+      "inputPackets": 22590,
+      "copiedInputs": 251,
+      "artifacts": 437
+    },
+    "result": {
+      "cases": [
+        "LAB_HELD__RHO4_CONSTANT",
+        "LAB_HELD__RHOBR_CONSTANT",
+        "MATERIAL_ADVECTED__RHO4_CONSTANT",
+        "MATERIAL_ADVECTED__RHOBR_CONSTANT"
+      ],
+      "addresses": {
+        "LAB_HELD__RHO4_CONSTANT__LEFT": {
+          "owner": "LEFT",
+          "sourceLabel": "LAB_HELD__RHO4_CONSTANT",
+          "sourceEnd": "LEFT",
+          "inputSha256": "3a46924efcfbac0c94d822eb2bdb28b5648cffdce729c5f6f6c73c62398d7045",
+          "familyInputSha256": "b4f54e915237ece88851e6cd1acab96aa12a9d5705fd2edd2e7e58e02992acfc",
+          "finitePacketSha256": "a81275548e8c00d5971edf99bdea04605464c9849e9dad72b9a4086a84574bbd",
+          "continuumPacketSha256": "2317ac1e18fd05b5987b98c2ceb4fb3f05edeed06e5dd9879367f33dbcf36b9b",
+          "finiteIncoming": 2,
+          "finiteOutgoing": 5,
+          "finiteCurrentShape": [
+            4,
+            4
+          ],
+          "continuumDirections": 7
+        },
+        "LAB_HELD__RHO4_CONSTANT__RIGHT": {
+          "owner": "RIGHT",
+          "sourceLabel": "LAB_HELD__RHO4_CONSTANT",
+          "sourceEnd": "RIGHT",
+          "inputSha256": "540e7121b9f28aff23da3a1c2d3ee1c2c00162cf701f2b0e1e02826e091a750f",
+          "familyInputSha256": "163d24fead540acc3fd663abb420c442dcc1e31101cc9973062be22f3fd18329",
+          "finitePacketSha256": "b48e525e9f842f6d944ff4cda47e04045dd0d81b5b9015fd33ab8c02b351ef57",
+          "continuumPacketSha256": "8f8d2b55f2baad5e410eb3a8364f8df3b78e08938c6a2a94312712aac12dec61",
+          "finiteIncoming": 2,
+          "finiteOutgoing": 5,
+          "finiteCurrentShape": [
+            4,
+            4
+          ],
+          "continuumDirections": 7
+        },
+        "LAB_HELD__RHOBR_CONSTANT__LEFT": {
+          "owner": "LEFT",
+          "sourceLabel": "LAB_HELD__RHO4_CONSTANT",
+          "sourceEnd": "LEFT",
+          "inputSha256": "3a46924efcfbac0c94d822eb2bdb28b5648cffdce729c5f6f6c73c62398d7045",
+          "familyInputSha256": "b4f54e915237ece88851e6cd1acab96aa12a9d5705fd2edd2e7e58e02992acfc",
+          "finitePacketSha256": "a81275548e8c00d5971edf99bdea04605464c9849e9dad72b9a4086a84574bbd",
+          "continuumPacketSha256": "2317ac1e18fd05b5987b98c2ceb4fb3f05edeed06e5dd9879367f33dbcf36b9b",
+          "finiteIncoming": 2,
+          "finiteOutgoing": 5,
+          "finiteCurrentShape": [
+            4,
+            4
+          ],
+          "continuumDirections": 7
+        },
+        "LAB_HELD__RHOBR_CONSTANT__RIGHT": {
+          "owner": "LAB_HELD__RHOBR_CONSTANT__RIGHT",
+          "sourceLabel": "LAB_HELD__RHOBR_CONSTANT",
+          "sourceEnd": "RIGHT",
+          "inputSha256": "c96c602fc6671ee65ddc8d5828eb5b8b0da03f030a1cf975542eb6a562e022dd",
+          "familyInputSha256": "5c52f5170b4beca067e8b9ad268b0fae765f543907dd09f6cc497a27b4212076",
+          "finitePacketSha256": "42a6b7c81bebfb2c8270abf4b644584b95de98595c3f39f9d1c8b6c7dc89c874",
+          "continuumPacketSha256": "bf5f5837490adeb0f87e9802a41506b4679accdfb0f86ba45c97edf39038810e",
+          "finiteIncoming": 2,
+          "finiteOutgoing": 5,
+          "finiteCurrentShape": [
+            4,
+            4
+          ],
+          "continuumDirections": 7
+        },
+        "MATERIAL_ADVECTED__RHO4_CONSTANT__LEFT": {
+          "owner": "LEFT",
+          "sourceLabel": "LAB_HELD__RHO4_CONSTANT",
+          "sourceEnd": "LEFT",
+          "inputSha256": "21bfa3db96e5edd76741c246d6caa59e158901db9114110d32f585fe95cffc3f",
+          "familyInputSha256": "b4f54e915237ece88851e6cd1acab96aa12a9d5705fd2edd2e7e58e02992acfc",
+          "finitePacketSha256": "a81275548e8c00d5971edf99bdea04605464c9849e9dad72b9a4086a84574bbd",
+          "continuumPacketSha256": "2317ac1e18fd05b5987b98c2ceb4fb3f05edeed06e5dd9879367f33dbcf36b9b",
+          "finiteIncoming": 2,
+          "finiteOutgoing": 5,
+          "finiteCurrentShape": [
+            4,
+            4
+          ],
+          "continuumDirections": 7
+        },
+        "MATERIAL_ADVECTED__RHO4_CONSTANT__RIGHT": {
+          "owner": "RIGHT",
+          "sourceLabel": "LAB_HELD__RHO4_CONSTANT",
+          "sourceEnd": "RIGHT",
+          "inputSha256": "540e7121b9f28aff23da3a1c2d3ee1c2c00162cf701f2b0e1e02826e091a750f",
+          "familyInputSha256": "163d24fead540acc3fd663abb420c442dcc1e31101cc9973062be22f3fd18329",
+          "finitePacketSha256": "b48e525e9f842f6d944ff4cda47e04045dd0d81b5b9015fd33ab8c02b351ef57",
+          "continuumPacketSha256": "8f8d2b55f2baad5e410eb3a8364f8df3b78e08938c6a2a94312712aac12dec61",
+          "finiteIncoming": 2,
+          "finiteOutgoing": 5,
+          "finiteCurrentShape": [
+            4,
+            4
+          ],
+          "continuumDirections": 7
+        },
+        "MATERIAL_ADVECTED__RHOBR_CONSTANT__LEFT": {
+          "owner": "LEFT",
+          "sourceLabel": "LAB_HELD__RHO4_CONSTANT",
+          "sourceEnd": "LEFT",
+          "inputSha256": "3a46924efcfbac0c94d822eb2bdb28b5648cffdce729c5f6f6c73c62398d7045",
+          "familyInputSha256": "b4f54e915237ece88851e6cd1acab96aa12a9d5705fd2edd2e7e58e02992acfc",
+          "finitePacketSha256": "a81275548e8c00d5971edf99bdea04605464c9849e9dad72b9a4086a84574bbd",
+          "continuumPacketSha256": "2317ac1e18fd05b5987b98c2ceb4fb3f05edeed06e5dd9879367f33dbcf36b9b",
+          "finiteIncoming": 2,
+          "finiteOutgoing": 5,
+          "finiteCurrentShape": [
+            4,
+            4
+          ],
+          "continuumDirections": 7
+        },
+        "MATERIAL_ADVECTED__RHOBR_CONSTANT__RIGHT": {
+          "owner": "LAB_HELD__RHOBR_CONSTANT__RIGHT",
+          "sourceLabel": "LAB_HELD__RHOBR_CONSTANT",
+          "sourceEnd": "RIGHT",
+          "inputSha256": "c96c602fc6671ee65ddc8d5828eb5b8b0da03f030a1cf975542eb6a562e022dd",
+          "familyInputSha256": "5c52f5170b4beca067e8b9ad268b0fae765f543907dd09f6cc497a27b4212076",
+          "finitePacketSha256": "42a6b7c81bebfb2c8270abf4b644584b95de98595c3f39f9d1c8b6c7dc89c874",
+          "continuumPacketSha256": "bf5f5837490adeb0f87e9802a41506b4679accdfb0f86ba45c97edf39038810e",
+          "finiteIncoming": 2,
+          "finiteOutgoing": 5,
+          "finiteCurrentShape": [
+            4,
+            4
+          ],
+          "continuumDirections": 7
+        }
+      },
+      "newContinuumFamilies": 1,
+      "newFiniteFamilies": 3,
+      "originalContinuumReuseAddresses": 6,
+      "newResponseSolves": 0,
+      "baselineMaterialResponseIsContinuumOnly": true,
+      "finiteMaximum": 3.797547027170515e-15,
+      "continuumMaximum": 1.528293012951136e-13
+    },
+    "validatorPrepared": {
+      "directory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/boundary/production-acceptance",
+      "scriptSha256": "2a4068a6cd2033c509479801142b0dde259fcede9901d267d663095c69615a35",
+      "planSha256": "3a407795cf9796b18b3aa83d1a1ee8acca12c40a49ae4b061354aad79409b502"
+    }
   }
 }

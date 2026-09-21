@@ -1,5 +1,5 @@
 {
-  "status": "NUMERICAL_ACCEPTED_OUTPUT_RECOVERY_RUNNING",
+  "status": "FIRST_JET_NUMERICAL_AND_OUTPUT_ACCEPTED",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/response/focused",
   "acceptedMatrixCommit": "df5271b4",
   "implementationCommit": "57f05dae323126c0dc5a7acf54577d413c0495de",
@@ -61,7 +61,7 @@
   "remainingFiniteControlSolves": 4,
   "remainingContinuumControlSolves": 3,
   "scope": "Saved operators and own-case boundary/current/phase inputs; no new quadrature, interior assembly, modes, currents or response solve in this preparation.",
-  "next": "Launch the fixed 13-phase saved-output sequence: one native worker at a time, 900 seconds per phase, no automatic retries; finish all eight remaining parts and aggregate.",
+  "next": "Publish the validated twelve-part output through DataLad/git-annex, then construct remaining coordinate/advection controls, scoped case searches and final engine/exports.",
   "focusedOutcome": {
     "stage": "response_inputs",
     "command": [
@@ -1863,5 +1863,326 @@
     "helperSha256": "7d03567d41ca495d6bb182564cf7a92e5930a0c4425e0aa82f5445e74b7b4ccb",
     "outputHelperSha256": "b27fc5bf3394f67a5e8c48deb8ee85e7bc39283749e9ecedfb3b3467106df69b",
     "productionChecksSha256": "609121335d2e55e7dd821fdcb57668369e8921642b43c3dd79b9811ff2c0e0f9"
-  }
+  },
+  "outputProductionOutcome": {
+    "stage": "first_jet_output_construct",
+    "command": [
+      "python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_first_jet_output_staged.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/response/output/production/complete",
+      "--focus",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/response/output/focused-finish-01/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/response/output/production/first_jet_output_construct.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/response/output/production/first_jet_output_construct.stderr",
+    "startedUtc": "2026-09-21T00:16:00.276175+00:00",
+    "childPid": 2184839,
+    "status": "completed",
+    "exitCode": 0,
+    "wallSeconds": 4247.093333758414,
+    "stderrBytes": 0,
+    "finishedUtc": "2026-09-21T01:26:47.370196+00:00"
+  },
+  "outputProductionValidation": {
+    "status": "VALIDATED_COMPLETE_FOUR_CASE_FIRST_JET_OUTPUT",
+    "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/response/output/production/complete",
+    "checksSha256": "0066c3546c1aa1c38195e960506f3a10d78ee9067778b13649542c7348df9b19",
+    "outcome": {
+      "stage": "first_jet_output_construct",
+      "command": [
+        "python",
+        "-u",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_first_jet_output_staged.py",
+        "--run-directory",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/response/output/production/complete",
+        "--focus",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/response/output/focused-finish-01/complete"
+      ],
+      "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/response/output/production/first_jet_output_construct.stdout",
+      "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/response/output/production/first_jet_output_construct.stderr",
+      "startedUtc": "2026-09-21T00:16:00.276175+00:00",
+      "childPid": 2184839,
+      "status": "completed",
+      "exitCode": 0,
+      "wallSeconds": 4247.093333758414,
+      "stderrBytes": 0,
+      "finishedUtc": "2026-09-21T01:26:47.370196+00:00"
+    },
+    "sourceFiles": 150,
+    "inputPackets": 12261,
+    "copies": 538,
+    "focusedCopies": 533,
+    "artifacts": 605,
+    "checkedPaths": 13167,
+    "phases": [
+      {
+        "phase": {
+          "phase": "prepare"
+        },
+        "wallSeconds": 47.142445899546146,
+        "exitCode": 0,
+        "stderrBytes": 0,
+        "checksStdoutIdentical": true
+      },
+      {
+        "phase": {
+          "phase": "native",
+          "case": "LAB_HELD__RHO4_CONSTANT",
+          "kind": "current",
+          "part": "current_LAB_HELD__RHO4_CONSTANT"
+        },
+        "wallSeconds": 138.93474012613297,
+        "exitCode": 0,
+        "stderrBytes": 0,
+        "checksStdoutIdentical": true
+      },
+      {
+        "phase": {
+          "phase": "emit",
+          "case": "LAB_HELD__RHO4_CONSTANT",
+          "kind": "sensitivity",
+          "part": "sensitivity_LAB_HELD__RHO4_CONSTANT"
+        },
+        "wallSeconds": 452.96096130274236,
+        "exitCode": 0,
+        "stderrBytes": 0,
+        "checksStdoutIdentical": true
+      },
+      {
+        "phase": {
+          "phase": "validate",
+          "case": "LAB_HELD__RHO4_CONSTANT",
+          "kind": "sensitivity",
+          "part": "sensitivity_LAB_HELD__RHO4_CONSTANT"
+        },
+        "wallSeconds": 482.6127959545702,
+        "exitCode": 0,
+        "stderrBytes": 0,
+        "checksStdoutIdentical": true
+      },
+      {
+        "phase": {
+          "phase": "native",
+          "case": "MATERIAL_ADVECTED__RHO4_CONSTANT",
+          "kind": "continuum",
+          "part": "continuum_MATERIAL_ADVECTED__RHO4_CONSTANT"
+        },
+        "wallSeconds": 262.4365903325379,
+        "exitCode": 0,
+        "stderrBytes": 0,
+        "checksStdoutIdentical": true
+      },
+      {
+        "phase": {
+          "phase": "native",
+          "case": "MATERIAL_ADVECTED__RHO4_CONSTANT",
+          "kind": "current",
+          "part": "current_MATERIAL_ADVECTED__RHO4_CONSTANT"
+        },
+        "wallSeconds": 137.24677016586065,
+        "exitCode": 0,
+        "stderrBytes": 0,
+        "checksStdoutIdentical": true
+      },
+      {
+        "phase": {
+          "phase": "emit",
+          "case": "MATERIAL_ADVECTED__RHO4_CONSTANT",
+          "kind": "sensitivity",
+          "part": "sensitivity_MATERIAL_ADVECTED__RHO4_CONSTANT"
+        },
+        "wallSeconds": 533.1894420012832,
+        "exitCode": 0,
+        "stderrBytes": 0,
+        "checksStdoutIdentical": true
+      },
+      {
+        "phase": {
+          "phase": "validate",
+          "case": "MATERIAL_ADVECTED__RHO4_CONSTANT",
+          "kind": "sensitivity",
+          "part": "sensitivity_MATERIAL_ADVECTED__RHO4_CONSTANT"
+        },
+        "wallSeconds": 583.2049394138157,
+        "exitCode": 0,
+        "stderrBytes": 0,
+        "checksStdoutIdentical": true
+      },
+      {
+        "phase": {
+          "phase": "native",
+          "case": "MATERIAL_ADVECTED__RHOBR_CONSTANT",
+          "kind": "continuum",
+          "part": "continuum_MATERIAL_ADVECTED__RHOBR_CONSTANT"
+        },
+        "wallSeconds": 258.0392068568617,
+        "exitCode": 0,
+        "stderrBytes": 0,
+        "checksStdoutIdentical": true
+      },
+      {
+        "phase": {
+          "phase": "native",
+          "case": "MATERIAL_ADVECTED__RHOBR_CONSTANT",
+          "kind": "current",
+          "part": "current_MATERIAL_ADVECTED__RHOBR_CONSTANT"
+        },
+        "wallSeconds": 130.4700276143849,
+        "exitCode": 0,
+        "stderrBytes": 0,
+        "checksStdoutIdentical": true
+      },
+      {
+        "phase": {
+          "phase": "emit",
+          "case": "MATERIAL_ADVECTED__RHOBR_CONSTANT",
+          "kind": "sensitivity",
+          "part": "sensitivity_MATERIAL_ADVECTED__RHOBR_CONSTANT"
+        },
+        "wallSeconds": 526.6781750582159,
+        "exitCode": 0,
+        "stderrBytes": 0,
+        "checksStdoutIdentical": true
+      },
+      {
+        "phase": {
+          "phase": "validate",
+          "case": "MATERIAL_ADVECTED__RHOBR_CONSTANT",
+          "kind": "sensitivity",
+          "part": "sensitivity_MATERIAL_ADVECTED__RHOBR_CONSTANT"
+        },
+        "wallSeconds": 584.1145133525133,
+        "exitCode": 0,
+        "stderrBytes": 0,
+        "checksStdoutIdentical": true
+      },
+      {
+        "phase": {
+          "phase": "aggregate"
+        },
+        "wallSeconds": 109.33918187953532,
+        "exitCode": 0,
+        "stderrBytes": 0,
+        "checksStdoutIdentical": true
+      }
+    ],
+    "parts": {
+      "historical_LAB_HELD__RHO4_CONSTANT": {
+        "tags": 2994,
+        "keys": 1495,
+        "metadataPaths": 73663,
+        "decodedSha256": "60123c908a2a5e86ebf825fdf7390f2d5e3e50e9bf3f6b7bba9bfe9d09b3d8fd",
+        "bytes": 10064174
+      },
+      "continuum_LAB_HELD__RHOBR_CONSTANT": {
+        "tags": 506,
+        "keys": 251,
+        "metadataPaths": 45731,
+        "decodedSha256": "531c1a3c200d63da4ed0e044cdb8e90b6c9fcec5695a24bf02eece91ee575d04",
+        "bytes": 8655233
+      },
+      "current_LAB_HELD__RHOBR_CONSTANT": {
+        "tags": 2632,
+        "keys": 1314,
+        "metadataPaths": 20032,
+        "decodedSha256": "4e0bfc225f0393d43c4ee8fcef51a5f09d2da6694fb3ff6bfde36ccca5e6bc16",
+        "bytes": 4106416
+      },
+      "sensitivity_LAB_HELD__RHOBR_CONSTANT": {
+        "tags": 4092,
+        "keys": 2044,
+        "metadataPaths": 156408,
+        "decodedSha256": "93243c86bdba7ab1a11b463dcfbf4c8a6e6b84b65c6c680d67c4db8ca337aa51",
+        "bytes": 7639434
+      },
+      "current_LAB_HELD__RHO4_CONSTANT": {
+        "tags": 2632,
+        "keys": 1314,
+        "metadataPaths": 20032,
+        "decodedSha256": "ff89c911778043a9018938c21d5fc902082e5d4e1353b6708ffda41247d374f0",
+        "bytes": 4101851
+      },
+      "sensitivity_LAB_HELD__RHO4_CONSTANT": {
+        "tags": 4152,
+        "keys": 2074,
+        "metadataPaths": 133251,
+        "decodedSha256": "660d6759c6edfb1fbae96376afee5750d6f3abe5ab00257face81c99e8988aaf",
+        "bytes": 8510101
+      },
+      "continuum_MATERIAL_ADVECTED__RHO4_CONSTANT": {
+        "tags": 506,
+        "keys": 251,
+        "metadataPaths": 45731,
+        "decodedSha256": "62a5710484e37e4f545bc56c5bb497380ce71fb8caafd556d016b12558d7b534",
+        "bytes": 8664112
+      },
+      "current_MATERIAL_ADVECTED__RHO4_CONSTANT": {
+        "tags": 2632,
+        "keys": 1314,
+        "metadataPaths": 20032,
+        "decodedSha256": "178c0020aebbe5e452e25390a340b1b020c585f94947a637cc22857ea2748d3b",
+        "bytes": 4147117
+      },
+      "sensitivity_MATERIAL_ADVECTED__RHO4_CONSTANT": {
+        "tags": 4352,
+        "keys": 2174,
+        "metadataPaths": 159404,
+        "decodedSha256": "7388e8882af91321d38d55a1349877768940c430dc5e637eda1086d9129a0b40",
+        "bytes": 9175747
+      },
+      "continuum_MATERIAL_ADVECTED__RHOBR_CONSTANT": {
+        "tags": 506,
+        "keys": 251,
+        "metadataPaths": 45731,
+        "decodedSha256": "08d5f3f6b772eea3516e0621cd5282bac96feec15b81c668848578e5458405a9",
+        "bytes": 8664124
+      },
+      "current_MATERIAL_ADVECTED__RHOBR_CONSTANT": {
+        "tags": 2632,
+        "keys": 1314,
+        "metadataPaths": 20032,
+        "decodedSha256": "3af3ee46946a8a431abed68ce2bc120d7942be719377618b680a21b80631fff0",
+        "bytes": 4157437
+      },
+      "sensitivity_MATERIAL_ADVECTED__RHOBR_CONSTANT": {
+        "tags": 4180,
+        "keys": 2088,
+        "metadataPaths": 158754,
+        "decodedSha256": "7c20795b5ae0e413ba416150518df0571abb1ea55dbe24c0b1665c079b769929",
+        "bytes": 8991193
+      }
+    },
+    "aggregate": {
+      "tags": 31816,
+      "keys": 15884,
+      "parts": 12,
+      "localIndicesPreserved": 12,
+      "identicalDecodedPayloads": 31816,
+      "decodedSha256": "2d1ab05e3879332d578a229abea7231ae1c5e4072e6a8d2456039f31a63d438e",
+      "metadataPaths": 898801,
+      "malformedReferenceRejected": true,
+      "changedPayloadRejected": true,
+      "nativeCodecUnchanged": true
+    },
+    "transcript": {
+      "bytes": 60930340,
+      "sha256": "4957b1d9905affcd4116c95e7bc1bd6987c87fd9edaca1c8b7eaa66820247b4a",
+      "md5": "5b3f8908ec1156ea5d045a050d027de2"
+    },
+    "scriptSha256": "72d9a19d6332aaaac2e1f8b28a5e883ca0dc45e5ce0c2f94a1b051e4e94a5fc9",
+    "newEmissions": 0,
+    "newNumericalWork": 0,
+    "wallSeconds": 403.7999987490475,
+    "validationDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/response/output/production-acceptance",
+    "validationChecksSha256": "31ff349dd9cbda411fe5daedc6839177c1eb9322cfac618072de1e6dee5107f4",
+    "actualValidatorToolOutcome": {
+      "exitCode": 0,
+      "session": 70350,
+      "stderrBytes": 0,
+      "checksStdoutIdentical": true
+    }
+  },
+  "outputCheckpoint": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_first_jet_output_checkpoint.json"
 }

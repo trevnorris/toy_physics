@@ -452,6 +452,14 @@ uniform consistency controls, with each background's own coordinates and
 constant-symbol domain retained. Other practical case controls, scoped searches
 and final engine/exports remain; no broad campaign is queued.
 
+The [four-case first-derivative response output](S11c_d_remaining_case_first_jet_response_report.md)
+is accepted: all thirteen bounded phases passed, followed by 403.80 seconds of
+independent saved-hash/codec validation. Twelve parts retain 31816 payloads,
+15884 keys and 898801 metadata paths. Four finite and three new continuum
+controls are complete; historical baseline continuum is reused. Amplitude/current
+sensitivities stay below 1e-4/1e-6. Annex publication, remaining coordinate/advection
+controls, scoped case searches and final all-case engine/exports follow.
+
 ## Retained user-approved solver/export contract
 
 

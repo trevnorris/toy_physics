@@ -1,127 +1,39 @@
-# First-derivative numerical responses accepted
+# Four-case first-derivative responses and output accepted
 
-Production completed in 257.24 seconds with final supervisor/child exit zero,
-empty stderr and identical checks/stdout. It saved four genuinely new finite
-controls, including baseline, and three new continuum controls. The historical
-baseline continuum response and transcript remain byte-identical. All 121
-focused artifacts were reused; no quadrature, interior assembly, mode or current
-closure was repeated. The manifest records 138 sources, 10536 inputs, 150 copied
-packets and 205 artifacts, with all 300 row addresses and 647 terms retained.
+All thirteen output phases completed with zero exits and empty stderr in
+4247.09 seconds, one bounded worker at a time. Independent saved-hash/codec
+validation passed in 403.80 seconds with exit zero, empty stderr and identical
+checks/stdout. The twelve parts preserve 31816 decoded payloads, 15884 keys,
+898801 metadata paths and all twelve local emission indices. All 150 sources,
+12261 inputs, 538 copies (including all 533 focused artifacts) and 605 artifacts
+validate. The raw concatenation and native global codec preserve every payload.
+The complete transcript is 60930340 bytes, SHA256
+`4957b1d9905affcd4116c95e7bc1bd6987c87fd9edaca1c8b7eaa66820247b4a`.
+Annex publication is the remaining output step.
 
-All four systems report rank 645 for four incoming columns. Maximum finite and
-continuum scaled residuals are 8.274e-16 and 4.795e-14; saved independent finite
-and continuum differences are at most 3.046e-13 and 1.386e-12. Current contraction
-residuals are at most 5.860e-14. Independent saved-operand validation passed in 162.42 seconds with final exit
-zero, empty stderr and identical checks/stdout.
+Numerical acceptance 47384f68 remains immutable: four new finite controls,
+including baseline, and three new continuum controls; the historical baseline
+continuum and transcript are reused unchanged. All 300 row addresses and 647
+terms remain, with 645 unknowns and four incidents per case. Maximum finite,
+continuum and current residuals are 8.274e-16, 4.795e-14 and 5.860e-14.
+No numerical solve, quadrature, current contraction, grade extraction or
+previously completed individual emission was repeated for output completion.
 
-Own-case first-derivative amplitude changes are at most 8.243e-7 and retained
-polynomial current changes at most 5.482e-7, below the declared absolute goals
-1e-4 and 1e-6. Finite common-grid field changes range from 2.068e-4 to 7.877e-4
-in their inherited component units; this mixed-unit maximum is descriptive, not
-a physical norm or common resolution claim. Formal-point differences are
-truncation diagnostics, not additional physical instances or parent-order
-accuracy. No physical gain/loss resolution follows from numerical residuals.
+Own-case amplitude and retained-polynomial current sensitivities are at most
+8.243e-7 and 5.482e-7, below the declared absolute goals 1e-4 and 1e-6. Mixed-unit
+field maxima are descriptive. The finite current metric is open-only 4-by-4,
+with three closed matching amplitudes retained separately. Continuum packets
+retain all seven directions and full closed/cross-current terms. There is no
+cross-density channel subtraction or missing-current zero substitution.
 
-The native finite metric covers four open directions. Its three closed matching
-amplitudes are retained separately; no absent closed-current metric is replaced
-by zero. The distinct continuum current packet retains seven directions and
-full closed/cross terms. Actual own-case phase/current coordinates are used.
+This one-sided closed-operator probe does not define a consistent new profile,
+isolated advection or c2 source closure. Positive regulator, approximate finite
+boundaries, unresolved tiny signals and omitted parent pure-second-order scope
+remain. Baseline material-coordinate results exist; the other material routes,
+applicable advection controls, scoped case frequency searches and final all-case
+engine/exports remain. No baseline contour doubling or broad campaign is queued.
 
-The independent validator reads saved prepared systems and full solution,
-current, field and comparison arrays. It checks equations and independent
-solutions, exact focused reuse, source/field/unit routes, full current and
-literal sensitivity operands, and all current/frozen/input/pre-post hashes.
-Solvers, inverses and eigensolvers are disabled inside validation. No production
-packet is rewritten. Complete physical transcript emission/replay/publication
-remains mandatory after numerical acceptance; this job emitted no new transcript.
-
-Coordinate/advection controls, scoped case searches and final all-case engine/
-exports remain. Keep approved settings, positive regulator, approximate
-boundaries, unresolved tiny signals and omitted parent pure-second-order scope.
-No broad campaign or baseline contour doubling is queued.
-
-Saved-result validation launched from 10afc98d under supervisor 2160922 and
-silent watcher 2160923, one thread, 2 GiB and a 900-second initial budget.
-The initial launch record is not validation acceptance.
-
-All four saved-response validators passed. Exact prepared systems, independent
-equations, full current/phase maps, own-case sensitivities and every source/input/
-artifact pre/post hash validate. No solve, inverse, SVD, quadrature or system
-assembly ran during validation. Numerical acceptance precedes physical transcript
-emission/replay and annex publication, which remain unfinished.
-
-Numerical acceptance is committed at 47384f68. All four native continuum/current
-output adapters and custom full-replay tails compile. The custom replay changes
-only namespace and packet address; its sensitivity emitter is new. Focused output
-will complete one actual RHOBR case, preserve each completed part, and require
-full metadata/payload replay before reuse by the remaining output stage.
-
-Focused saved-packet output launched from e68cd0a4 under supervisor 2165664
-and silent watcher 2165665. Final emission/replay guards remain pending; the
-launch record is not output acceptance. Numerical inputs are immutable.
-
-Original focus stopped after 388.37 seconds at a Python/SymPy type mismatch in a
-derivative-unit offset. Before that, both native RHOBR continuum and current
-transcripts completed full replay: 506/2632 tags and 45731/20032 metadata paths.
-They remain immutable. The saved sensitivity bundle is 271799333 bytes and its
-partial transcript is 34927 bytes. This is output plumbing, with no numerical
-failure or change in physical units.
-
-The repair changes only three Boolean unit offsets to explicit integer 1/0,
-with whole-file reverse AST identity, 120 actual unit joins and 20 changed-unit
-rejections. Saved-prefix regression passed with exact decoded and raw prefix
-identity, reached the first new field coefficient output, and left the complete
-bundle unchanged. Recovery copies all original evidence, reuses both completed
-new transcripts and the entire sensitivity bundle, then appends only remaining
-output and runs the original full replay. Numerical constructors remain disabled.
-
-Saved-output recovery launched from 2de20333 under supervisor 2170119 and
-silent watcher 2170120. The original main code object is unchanged. All 28
-original decoded payloads and encoded prefix lines passed the 12.52-second
-saved-bundle regression. Final output replay/acceptance remains pending.
-
-The recovery reached its 900-second budget with exit -14 and empty stderr.
-It saved the complete 7,639,434-byte sensitivity transcript: 4,092 unique tags,
-2,044 export keys and the full terminal source-line index. Final replay was not
-accepted, and no final checks file exists. All numerical packets, historical
-output and both previously validated native parts remain unchanged.
-
-The saved-transcript completion runs only the native decode/replay/metadata/hash
-suffix, reconstructing its original keys and saved line index. Whole-suffix
-reverse AST joins and unchanged coordinator bytecode pass; four actual changed
-tag/key/line controls reject. No individual transcript is emitted again. Durable
-validation progress and completed replay evidence precede later guards. Output
-acceptance and publication remain pending a clean final outcome.
-
-Saved-transcript validation launched from 68188f06 under supervisor 2176712
-and silent watcher 2176713, with one thread, 2 GiB and 900 seconds. The complete
-original sensitivity stream and bundle are immutable. This launch is not final
-output acceptance; the completion hook will continue after the actual outcome.
-
-Focused output is accepted after final exit zero, empty stderr and identical
-checks/stdout: 739.30 seconds plus 288.16 seconds of independent
-saved-hash/codec validation. All 147 sources, 11646 inputs, 526 unchanged copies
-and 533 artifacts pass. The four complete parts retain 10224 tags, 5104 keys
-and 295834 metadata paths. Sensitivity alone has 4092 tags, 2044 keys and
-156408 paths; its original 7639434-byte stream was never re-emitted.
-
-Eight output parts and final aggregation/publication remain. Measured replay
-cost requires separate bounded emission and validation phases. Numerical
-responses/checkpoint 47384f68 remain immutable.
-
-Focused output acceptance is aca44282. The remaining-output adapter passes
-whole native emission-prefix and final audit-tail AST joins, all eleven compiled
-namespaces and twelve changed part-address controls. Its first actual saved
-payload matches exactly; no new transcript or numerical operation ran during
-the 17.18-second wiring check. The fixed 13-phase sequence uses one worker at a
-time, a 900-second budget for each phase, and no automatic retry. Separate
-sensitivity emission and replay retain complete streams before validation.
-
-The actual copied four-part inventory has a separate immutable address before
-the new inventory grows. Its original bytes/hash are retained and the actual
-wrong-hash control rejects; final copied-input guards remain exact.
-
-The fixed remaining-output sequence launched from 480c273c under supervisor
-2184833 and silent watcher 2184834. One worker runs at a time, each bounded to
-900 seconds and 2 GiB; completed parts and streams are retained before the next
-phase. Final aggregate acceptance/publication awaits the actual clean outcome.
+Original failed output runs, complete streams, partial prefixes and repair
+proofs remain immutable in scratch. The separate output checkpoint records the
+full phase and validation provenance; numerical and focused checkpoints are
+unchanged.

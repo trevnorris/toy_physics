@@ -1721,5 +1721,25 @@
     "bundles": 4,
     "artifacts": 938,
     "physicalOutputPending": true
+  },
+  "outputProduction": {
+    "status": "PREPARED_GUARDED_STAGED_OUTPUT",
+    "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/response/output/production",
+    "acceptedFocusCommit": "64fc436f",
+    "coordinatorSha256": "ec0c56f8b6295866c0ad11a393e713abe31533ee1c8a8ab509d9c9a772510c3a",
+    "planSha256": "901e7836a8812c2aa54607474db0f9a1c3eeaeb1e7ea32ba1d83ba877f2bc774",
+    "wiringSha256": "80d7a7d058f51090224e0ddfa48ecc39abe5b1725a8fe723029ad0bef771c9fb",
+    "phases": 24,
+    "emissions": 11,
+    "savedStreamReplays": 11,
+    "reusedHistoricalParts": 1,
+    "focusedArtifactCopies": 938,
+    "newNumericalWork": 0,
+    "maximumScientificWorkers": 1,
+    "guardedPhaseSeconds": 900,
+    "wholeScientificJobMemoryBytes": 2147483648,
+    "swapBytes": 0,
+    "silentHookOnly": true,
+    "launchIsAcceptance": false
   }
 }

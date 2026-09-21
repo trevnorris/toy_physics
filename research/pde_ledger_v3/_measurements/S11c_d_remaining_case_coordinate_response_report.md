@@ -172,3 +172,15 @@ reached 2 GiB with 313,951 cap/reclaims, zero OOM/swap and minimum host availabl
 memory 22.15 GB. The separate ACCEPTED_CASE_MATERIAL_OUTPUT_INPUTS checkpoint
 retains full provenance. The physical output sequence can now consume the
 accepted bundles under separate guarded emission and saved-stream replay phases.
+
+Output input acceptance is committed at 64fc436f. The prepared stdlib coordinator
+has a fixed 24-phase schedule: prepare, eleven emissions, eleven saved-stream
+replays and aggregate. Each scientific worker has its own mandatory guard and
+native supervisor; the lightweight outer supervisor uses a separate sequence
+lock. The static review joins all 203 worker/guard source pins, all CLI routes
+and the actual accepted guard receipt, and rejects 31 changed schedules. An
+unlaunched source-root path mistake was corrected against the actual ledger
+source namespace; its original code/diagnostic are retained. No physical worker
+ran during scheduling review. Completed streams and packets are preserved on
+the first error without retries. All original numerical/focused inputs remain
+immutable; only explicit coordinator source and phase receipts are added.

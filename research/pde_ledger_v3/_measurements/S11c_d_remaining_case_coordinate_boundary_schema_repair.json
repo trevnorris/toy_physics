@@ -1,0 +1,427 @@
+{
+  "status": "REVIEWED_BOUNDARY_INPUT_SCHEMA_REPAIR",
+  "originalHelperSha256": "7b0402a770b11b8a5dd36aae91140423a664531b9279526f79f97979899ef1eb",
+  "recoveryHelperSha256": "c27e59860b6718e91137bce8863e77e83d73f870d5b224304950de679912ee5c",
+  "recoveryPlanSha256": "8591d83ade31440cedd7170b180c60faa40a296b0b22f5c8111bc39b90e52012",
+  "astJoin": {
+    "wholeFileReverseAst": true,
+    "copyEnumerationEdits": 1,
+    "rowCensusAddressEdits": 1,
+    "originalAstSha256": "fa5138bcc8db672ebab677d828aa10a8546bd3ab5b70161740a8b5c62548f923",
+    "adaptedAstSha256": "6c2a2cbaf9e809bb8045bb132696fe37081beae702e6c8c3444f4623ede8a4ec"
+  },
+  "originalCompletedCopies": {
+    "accepted-matrices-checks.json": "6b910f5bce94b0c17d1d8c3d8c037e2ec7447aa406cd5c453a3561b71ce3b060",
+    "accepted-s11c-coordinate-response-20260919-checks.json": "23495f230f9164920d5c8dbebe0b58730ecdb11ff9b279aeb1b8a2b89cb4753b",
+    "accepted-s11c-remaining-case-boundary-20260920-checks.json": "3b02f5bdd244d6d0eb0c0c192a8dc49b101e622f2edbd211f6d05ee52bed33bb",
+    "bindings/chart-state.pickle": "eaf81dfe538f6b6361df1c8a970155ed45519ea51dd3c862fc3a1492510c4619",
+    "bindings/contexts/LAB_HELD__RHO4_CONSTANT/input-state.pickle": "24a2c51c24d43275632175fe74d82f266e8081ad6b64237c6b012a23c38c2ad1",
+    "bindings/contexts/LAB_HELD__RHO4_CONSTANT/frame.pickle": "3dce379a469fa33283175974e5bf55dd4cfd8f26f7943dc5cad263dc93a06cf6",
+    "eulerian/accepted-finite-system.pickle": "2a043895b5e8a203cc4dd0b517ba3feec61300ab812a0404f19195cc39c0319a"
+  },
+  "originalLogs": {
+    "active.json": "a00e1a5c184159d968371d076da45c077f7595efa783db0da6e08bd556542b9d",
+    "coordinate_boundary_inputs.invocation.json": "a00e1a5c184159d968371d076da45c077f7595efa783db0da6e08bd556542b9d",
+    "coordinate_boundary_inputs.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "coordinate_boundary_inputs.stderr": "a953d8862a7c73f45e3605471eb5bd4bb2de16ad57778347b542bf80dcf4baa6",
+    "guard.stdout": "30b1244e28cb39b267dad9f85c54f94d5d7381124ffe75823d02d960b1e84b4e",
+    "guard.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "launch.json": "56543f7e0bdb7d48a5687a2c3a22130241dd2e0aed10afa61248c304720d8773",
+    "resource-guard/outcome.json": "30b1244e28cb39b267dad9f85c54f94d5d7381124ffe75823d02d960b1e84b4e",
+    "resource-guard/child-outcome.json": "b5506f0a53e38ed9f8881b698f96fc18f3ba8a6e1865a15ddbcda983578f6fcf",
+    "resource-guard/effective-limits.json": "dbc60d5cdf60331d1eeeea7166ffbfd80bd57d7d1a1d68d22f1d5ae38ce7d59f",
+    "resource-guard/limit-validation.json": "34d4a30891dba6e037644f2679fe1bec19e3fc093cec732ca54ab1b53a85aebf",
+    "resource-guard/resource-samples.jsonl": "9e567e0b47e281ca40d84ac09f9cecaf6434fdd3b253a99a7c5fce8b55e20cbd"
+  },
+  "acceptedCheckpoints": {
+    "S11c_d_remaining_case_coordinate_matrices_checkpoint.json": "e70defdffa5bf30e0affb2c030d7d53e3295664e8602cf592ec1620ebbcbb7cc",
+    "S11c_d_remaining_case_boundary_checkpoint.json": "51f7a9458895d15fa4347c124e8127598b9967c55f0ebf246096d4933c81b009",
+    "S11c_d_coordinate_response_checkpoint.json": "3a5c3078c42033b5c6dee665a070b0170bd892fa0b274775893542916e148095"
+  },
+  "resolvedCopyRequests": {
+    "accepted-matrices-checks.json": {
+      "original": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/production-recovery-01/complete/checks.json",
+      "sha256": "6b910f5bce94b0c17d1d8c3d8c037e2ec7447aa406cd5c453a3561b71ce3b060"
+    },
+    "accepted-s11c-remaining-case-boundary-20260920-checks.json": {
+      "original": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-boundary-20260920/production/complete/checks.json",
+      "sha256": "3b02f5bdd244d6d0eb0c0c192a8dc49b101e622f2edbd211f6d05ee52bed33bb"
+    },
+    "accepted-s11c-coordinate-response-20260919-checks.json": {
+      "original": "/var/projects/toy_physics/_scratch/s11c/s11c-coordinate-response-20260919/production/complete/checks.json",
+      "sha256": "23495f230f9164920d5c8dbebe0b58730ecdb11ff9b279aeb1b8a2b89cb4753b"
+    },
+    "bindings/chart-state.pickle": {
+      "original": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/production-recovery-01/complete/bindings/chart-state.pickle",
+      "sha256": "eaf81dfe538f6b6361df1c8a970155ed45519ea51dd3c862fc3a1492510c4619"
+    },
+    "eulerian/accepted-finite-system.pickle": {
+      "original": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/production-recovery-01/complete/eulerian/accepted-finite-system.pickle",
+      "sha256": "2a043895b5e8a203cc4dd0b517ba3feec61300ab812a0404f19195cc39c0319a"
+    },
+    "bindings/contexts/LAB_HELD__RHO4_CONSTANT/input-state.pickle": {
+      "original": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/production-recovery-01/complete/bindings/contexts/LAB_HELD__RHO4_CONSTANT/input-state.pickle",
+      "sha256": "24a2c51c24d43275632175fe74d82f266e8081ad6b64237c6b012a23c38c2ad1"
+    },
+    "bindings/contexts/LAB_HELD__RHO4_CONSTANT/frame.pickle": {
+      "original": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/production-recovery-01/complete/bindings/contexts/LAB_HELD__RHO4_CONSTANT/frame.pickle",
+      "sha256": "3dce379a469fa33283175974e5bf55dd4cfd8f26f7943dc5cad263dc93a06cf6"
+    },
+    "bindings/sources/accepted-bindings/LAB_HELD__RHO4_CONSTANT/case-binding.pickle": {
+      "original": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/production-recovery-01/complete/bindings/sources/accepted-bindings/LAB_HELD__RHO4_CONSTANT/case-binding.pickle",
+      "sha256": "0a157a87892a0428bc63caa92e233c2b4c6c958b5ad72e4052d2703c11cb80f7"
+    },
+    "bindings/sources/coordinate-cases/LAB_HELD__RHO4_CONSTANT/coordinate-source.pickle": {
+      "original": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/production-recovery-01/complete/bindings/sources/coordinate-cases/LAB_HELD__RHO4_CONSTANT/coordinate-source.pickle",
+      "sha256": "b822833b60cff10d6901a16a29005a5185362f9559487c947184341949b0611c"
+    },
+    "bindings/sources/accepted-cases/LAB_HELD__RHO4_CONSTANT/reduced-action.pickle": {
+      "original": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/production-recovery-01/complete/bindings/sources/accepted-cases/LAB_HELD__RHO4_CONSTANT/reduced-action.pickle",
+      "sha256": "e9062c3455c7e59fe816f47172062a0c118b201d03809ec0826575dac22872b0"
+    },
+    "bindings/sources/accepted-cases/LAB_HELD__RHO4_CONSTANT/actions.pickle": {
+      "original": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/production-recovery-01/complete/bindings/sources/accepted-cases/LAB_HELD__RHO4_CONSTANT/actions.pickle",
+      "sha256": "4c2372a7102d1db9f21a049ab3104465e8d9245ab832be88c900bc8519b46e02"
+    },
+    "bindings/sources/accepted-cases/LAB_HELD__RHO4_CONSTANT/assembly.pickle": {
+      "original": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/production-recovery-01/complete/bindings/sources/accepted-cases/LAB_HELD__RHO4_CONSTANT/assembly.pickle",
+      "sha256": "8eda57998285137d99cce9564757627a57f8d5bc9b27091c86a65a9cc59230a0"
+    },
+    "bindings/sources/accepted-cases/LAB_HELD__RHO4_CONSTANT/factorization.pickle": {
+      "original": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/production-recovery-01/complete/bindings/sources/accepted-cases/LAB_HELD__RHO4_CONSTANT/factorization.pickle",
+      "sha256": "011184ab8f796872fec263558a5da6d7f478e4468c7dcacd2373a7df14e69723"
+    },
+    "boundary-cases/LAB_HELD__RHO4_CONSTANT/case-boundary.pickle": {
+      "original": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-boundary-20260920/production/complete/boundary-cases/LAB_HELD__RHO4_CONSTANT/case-boundary.pickle",
+      "sha256": "e108a8bb8642e8be14574362db2776b0340fec4b503eeb54c75b9c1bcf67cdbb"
+    },
+    "boundary-cases/LAB_HELD__RHO4_CONSTANT/left/continuum-boundary.pickle": {
+      "original": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-boundary-20260920/production/complete/boundary-cases/LAB_HELD__RHO4_CONSTANT/left/continuum-boundary.pickle",
+      "sha256": "150a9463d94c24a265890349c1c4e40b51195057b8465216ece093b9b6b5aaa3"
+    },
+    "boundary-cases/LAB_HELD__RHO4_CONSTANT/left/finite-boundary.pickle": {
+      "original": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-boundary-20260920/production/complete/boundary-cases/LAB_HELD__RHO4_CONSTANT/left/finite-boundary.pickle",
+      "sha256": "631c1b742ad6abc92dc5eb7a218cb8524498de18f48cd04eb286a71cefe1b0b9"
+    },
+    "boundary-cases/LAB_HELD__RHO4_CONSTANT/left/channels.pickle": {
+      "original": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-boundary-20260920/production/complete/boundary-cases/LAB_HELD__RHO4_CONSTANT/left/channels.pickle",
+      "sha256": "cfbdbb2968f73d9063e187de7055c15d4faaedcb6560f7b8b6ab0370a8342f21"
+    },
+    "boundary-cases/LAB_HELD__RHO4_CONSTANT/left/array-units.pickle": {
+      "original": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-boundary-20260920/production/complete/boundary-cases/LAB_HELD__RHO4_CONSTANT/left/array-units.pickle",
+      "sha256": "038297b39ed482304df499e3c1f181eaa81c290beb2572ed073c88d842489a5c"
+    },
+    "boundary-cases/LAB_HELD__RHO4_CONSTANT/right/continuum-boundary.pickle": {
+      "original": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-boundary-20260920/production/complete/boundary-cases/LAB_HELD__RHO4_CONSTANT/right/continuum-boundary.pickle",
+      "sha256": "5b45b974a79a99dfceec8bbaefb5a48623b803c98b3eac7a2253dd202efdf667"
+    },
+    "boundary-cases/LAB_HELD__RHO4_CONSTANT/right/finite-boundary.pickle": {
+      "original": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-boundary-20260920/production/complete/boundary-cases/LAB_HELD__RHO4_CONSTANT/right/finite-boundary.pickle",
+      "sha256": "566d570f9ad059a775ebe7177e213f8c07978575d66be3b3b3363af00609f0d6"
+    },
+    "boundary-cases/LAB_HELD__RHO4_CONSTANT/right/channels.pickle": {
+      "original": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-boundary-20260920/production/complete/boundary-cases/LAB_HELD__RHO4_CONSTANT/right/channels.pickle",
+      "sha256": "2144e7a856bf96ce272d35c2bed7e32c9eaa372526b62d635169c564717dd2e1"
+    },
+    "boundary-cases/LAB_HELD__RHO4_CONSTANT/right/array-units.pickle": {
+      "original": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-boundary-20260920/production/complete/boundary-cases/LAB_HELD__RHO4_CONSTANT/right/array-units.pickle",
+      "sha256": "8549ce2224c978077d5a981ad067d6168b4f5b4d9914ed2fa0be486ed9b73ca2"
+    },
+    "bindings/contexts/LAB_HELD__RHOBR_CONSTANT/input-state.pickle": {
+      "original": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/production-recovery-01/complete/bindings/contexts/LAB_HELD__RHOBR_CONSTANT/input-state.pickle",
+      "sha256": "24a2c51c24d43275632175fe74d82f266e8081ad6b64237c6b012a23c38c2ad1"
+    },
+    "bindings/contexts/LAB_HELD__RHOBR_CONSTANT/frame.pickle": {
+      "original": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/production-recovery-01/complete/bindings/contexts/LAB_HELD__RHOBR_CONSTANT/frame.pickle",
+      "sha256": "3dce379a469fa33283175974e5bf55dd4cfd8f26f7943dc5cad263dc93a06cf6"
+    },
+    "bindings/contexts/LAB_HELD__RHOBR_CONSTANT/profile-cache-pair.pickle": {
+      "original": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/production-recovery-01/complete/bindings/contexts/LAB_HELD__RHOBR_CONSTANT/profile-cache-pair.pickle",
+      "sha256": "4e1638e3ef55016deffe59cea63d17f9edb74021980fc737458bdbbd696e6b1c"
+    },
+    "bindings/sources/accepted-bindings/LAB_HELD__RHOBR_CONSTANT/case-binding.pickle": {
+      "original": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/production-recovery-01/complete/bindings/sources/accepted-bindings/LAB_HELD__RHOBR_CONSTANT/case-binding.pickle",
+      "sha256": "6bc8ed97da17efbbbc05363f3cd22e9b110a26bf706475e903d67ced98f85554"
+    },
+    "bindings/sources/coordinate-cases/LAB_HELD__RHOBR_CONSTANT/coordinate-source.pickle": {
+      "original": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/production-recovery-01/complete/bindings/sources/coordinate-cases/LAB_HELD__RHOBR_CONSTANT/coordinate-source.pickle",
+      "sha256": "f997269261b1035d02c0850a1464fa4edceab96dd730f9eb4048f99a8c89e177"
+    },
+    "bindings/sources/accepted-cases/LAB_HELD__RHOBR_CONSTANT/reduced-action.pickle": {
+      "original": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/production-recovery-01/complete/bindings/sources/accepted-cases/LAB_HELD__RHOBR_CONSTANT/reduced-action.pickle",
+      "sha256": "95dbb6b5cb833b16edf3f64177b2df54af2e91379a9ee43d43021d1872aa9106"
+    },
+    "bindings/sources/accepted-cases/LAB_HELD__RHOBR_CONSTANT/actions.pickle": {
+      "original": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/production-recovery-01/complete/bindings/sources/accepted-cases/LAB_HELD__RHOBR_CONSTANT/actions.pickle",
+      "sha256": "56e8111829a8f4cb1afaf40edc43d7dbc42d2196b181b984dfddd7015d89f918"
+    },
+    "bindings/sources/accepted-cases/LAB_HELD__RHOBR_CONSTANT/assembly.pickle": {
+      "original": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/production-recovery-01/complete/bindings/sources/accepted-cases/LAB_HELD__RHOBR_CONSTANT/assembly.pickle",
+      "sha256": "53a1d577e0f568b381148e9d4190434a709f633d769defe1899b94e8b474f690"
+    },
+    "bindings/sources/accepted-cases/LAB_HELD__RHOBR_CONSTANT/factorization.pickle": {
+      "original": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/production-recovery-01/complete/bindings/sources/accepted-cases/LAB_HELD__RHOBR_CONSTANT/factorization.pickle",
+      "sha256": "d4c82a696fc81f591afd4b42d5309b0eec7592adbf8d9620bbdda435f19e3b50"
+    },
+    "interiors/LAB_HELD__RHOBR_CONSTANT/interior-matrices.pickle": {
+      "original": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/production-recovery-01/complete/cases/LAB_HELD__RHOBR_CONSTANT/interior-matrices.pickle",
+      "sha256": "2b0f7ba72f9d408fd4ddf1e96d909ac74cb2e211a51944886f07333d122333aa"
+    },
+    "boundary-cases/LAB_HELD__RHOBR_CONSTANT/case-boundary.pickle": {
+      "original": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-boundary-20260920/production/complete/boundary-cases/LAB_HELD__RHOBR_CONSTANT/case-boundary.pickle",
+      "sha256": "3a83ae69d1183ce59b3c9bfc81b78e40f3685a843e4ae41c4c948a43e3e84966"
+    },
+    "boundary-cases/LAB_HELD__RHOBR_CONSTANT/left/continuum-boundary.pickle": {
+      "original": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-boundary-20260920/production/complete/boundary-cases/LAB_HELD__RHOBR_CONSTANT/left/continuum-boundary.pickle",
+      "sha256": "150a9463d94c24a265890349c1c4e40b51195057b8465216ece093b9b6b5aaa3"
+    },
+    "boundary-cases/LAB_HELD__RHOBR_CONSTANT/left/finite-boundary.pickle": {
+      "original": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-boundary-20260920/production/complete/boundary-cases/LAB_HELD__RHOBR_CONSTANT/left/finite-boundary.pickle",
+      "sha256": "631c1b742ad6abc92dc5eb7a218cb8524498de18f48cd04eb286a71cefe1b0b9"
+    },
+    "boundary-cases/LAB_HELD__RHOBR_CONSTANT/left/channels.pickle": {
+      "original": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-boundary-20260920/production/complete/boundary-cases/LAB_HELD__RHOBR_CONSTANT/left/channels.pickle",
+      "sha256": "cfbdbb2968f73d9063e187de7055c15d4faaedcb6560f7b8b6ab0370a8342f21"
+    },
+    "boundary-cases/LAB_HELD__RHOBR_CONSTANT/left/array-units.pickle": {
+      "original": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-boundary-20260920/production/complete/boundary-cases/LAB_HELD__RHOBR_CONSTANT/left/array-units.pickle",
+      "sha256": "038297b39ed482304df499e3c1f181eaa81c290beb2572ed073c88d842489a5c"
+    },
+    "boundary-cases/LAB_HELD__RHOBR_CONSTANT/right/continuum-boundary.pickle": {
+      "original": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-boundary-20260920/production/complete/boundary-cases/LAB_HELD__RHOBR_CONSTANT/right/continuum-boundary.pickle",
+      "sha256": "a6999b0849c8ae734fe14dbf8edbbfd7d9957ea256c7a9dcc905c01b3eb3d092"
+    },
+    "boundary-cases/LAB_HELD__RHOBR_CONSTANT/right/finite-boundary.pickle": {
+      "original": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-boundary-20260920/production/complete/boundary-cases/LAB_HELD__RHOBR_CONSTANT/right/finite-boundary.pickle",
+      "sha256": "6516a411fdbf8f2f0e494b58563e14603586b33919b465ce529e19c1a0ff193d"
+    },
+    "boundary-cases/LAB_HELD__RHOBR_CONSTANT/right/channels.pickle": {
+      "original": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-boundary-20260920/production/complete/boundary-cases/LAB_HELD__RHOBR_CONSTANT/right/channels.pickle",
+      "sha256": "fe66b289ebdd2bfd4a83204305db8e68ba201b40c0b778ca14f5e39ab12a5279"
+    },
+    "boundary-cases/LAB_HELD__RHOBR_CONSTANT/right/array-units.pickle": {
+      "original": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-boundary-20260920/production/complete/boundary-cases/LAB_HELD__RHOBR_CONSTANT/right/array-units.pickle",
+      "sha256": "8549ce2224c978077d5a981ad067d6168b4f5b4d9914ed2fa0be486ed9b73ca2"
+    },
+    "bindings/contexts/MATERIAL_ADVECTED__RHO4_CONSTANT/input-state.pickle": {
+      "original": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/production-recovery-01/complete/bindings/contexts/MATERIAL_ADVECTED__RHO4_CONSTANT/input-state.pickle",
+      "sha256": "24a2c51c24d43275632175fe74d82f266e8081ad6b64237c6b012a23c38c2ad1"
+    },
+    "bindings/contexts/MATERIAL_ADVECTED__RHO4_CONSTANT/frame.pickle": {
+      "original": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/production-recovery-01/complete/bindings/contexts/MATERIAL_ADVECTED__RHO4_CONSTANT/frame.pickle",
+      "sha256": "3dce379a469fa33283175974e5bf55dd4cfd8f26f7943dc5cad263dc93a06cf6"
+    },
+    "bindings/contexts/MATERIAL_ADVECTED__RHO4_CONSTANT/profile-cache-pair.pickle": {
+      "original": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/production-recovery-01/complete/bindings/contexts/MATERIAL_ADVECTED__RHO4_CONSTANT/profile-cache-pair.pickle",
+      "sha256": "4e1638e3ef55016deffe59cea63d17f9edb74021980fc737458bdbbd696e6b1c"
+    },
+    "bindings/sources/accepted-bindings/MATERIAL_ADVECTED__RHO4_CONSTANT/case-binding.pickle": {
+      "original": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/production-recovery-01/complete/bindings/sources/accepted-bindings/MATERIAL_ADVECTED__RHO4_CONSTANT/case-binding.pickle",
+      "sha256": "fde53e682f7c33ecea2d02861ff1b5f664ee0d6176cccb32f4058f233b074383"
+    },
+    "bindings/sources/coordinate-cases/MATERIAL_ADVECTED__RHO4_CONSTANT/coordinate-source.pickle": {
+      "original": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/production-recovery-01/complete/bindings/sources/coordinate-cases/MATERIAL_ADVECTED__RHO4_CONSTANT/coordinate-source.pickle",
+      "sha256": "c227e8bb19bcfb397956d97b9b570dd2aafb905047ee08cf720b541cdb8c9573"
+    },
+    "bindings/sources/accepted-cases/MATERIAL_ADVECTED__RHO4_CONSTANT/reduced-action.pickle": {
+      "original": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/production-recovery-01/complete/bindings/sources/accepted-cases/MATERIAL_ADVECTED__RHO4_CONSTANT/reduced-action.pickle",
+      "sha256": "b103e83e61ddffcf8a320fe5f91ef433e1571551654f91749bed5665b5d537b9"
+    },
+    "bindings/sources/accepted-cases/MATERIAL_ADVECTED__RHO4_CONSTANT/actions.pickle": {
+      "original": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/production-recovery-01/complete/bindings/sources/accepted-cases/MATERIAL_ADVECTED__RHO4_CONSTANT/actions.pickle",
+      "sha256": "c8b64088556034a465bea39bea751c62a77e3850897257dc81de1a70c8282689"
+    },
+    "bindings/sources/accepted-cases/MATERIAL_ADVECTED__RHO4_CONSTANT/assembly.pickle": {
+      "original": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/production-recovery-01/complete/bindings/sources/accepted-cases/MATERIAL_ADVECTED__RHO4_CONSTANT/assembly.pickle",
+      "sha256": "49dac40608b2b44e0a01d10e9f15cb758ef10015157b4d29cd47dff1b6f35c40"
+    },
+    "bindings/sources/accepted-cases/MATERIAL_ADVECTED__RHO4_CONSTANT/factorization.pickle": {
+      "original": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/production-recovery-01/complete/bindings/sources/accepted-cases/MATERIAL_ADVECTED__RHO4_CONSTANT/factorization.pickle",
+      "sha256": "fcc2a59930d8f12726c1f9de02c407e2f08bd33cca4b4d4db31d0972ba371690"
+    },
+    "interiors/MATERIAL_ADVECTED__RHO4_CONSTANT/interior-matrices.pickle": {
+      "original": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/production-recovery-01/complete/cases/MATERIAL_ADVECTED__RHO4_CONSTANT/interior-matrices.pickle",
+      "sha256": "e3dab24bc422192195fc87bad77c14badc2a2810e1202e7cc7f486b0b8b280cd"
+    },
+    "boundary-cases/MATERIAL_ADVECTED__RHO4_CONSTANT/case-boundary.pickle": {
+      "original": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-boundary-20260920/production/complete/boundary-cases/MATERIAL_ADVECTED__RHO4_CONSTANT/case-boundary.pickle",
+      "sha256": "30a85392e8a186bd8aedf61fbe356380d34c9d23648546e4f7fa0d50ac6499d7"
+    },
+    "boundary-cases/MATERIAL_ADVECTED__RHO4_CONSTANT/left/continuum-boundary.pickle": {
+      "original": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-boundary-20260920/production/complete/boundary-cases/MATERIAL_ADVECTED__RHO4_CONSTANT/left/continuum-boundary.pickle",
+      "sha256": "150a9463d94c24a265890349c1c4e40b51195057b8465216ece093b9b6b5aaa3"
+    },
+    "boundary-cases/MATERIAL_ADVECTED__RHO4_CONSTANT/left/finite-boundary.pickle": {
+      "original": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-boundary-20260920/production/complete/boundary-cases/MATERIAL_ADVECTED__RHO4_CONSTANT/left/finite-boundary.pickle",
+      "sha256": "631c1b742ad6abc92dc5eb7a218cb8524498de18f48cd04eb286a71cefe1b0b9"
+    },
+    "boundary-cases/MATERIAL_ADVECTED__RHO4_CONSTANT/left/channels.pickle": {
+      "original": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-boundary-20260920/production/complete/boundary-cases/MATERIAL_ADVECTED__RHO4_CONSTANT/left/channels.pickle",
+      "sha256": "cfbdbb2968f73d9063e187de7055c15d4faaedcb6560f7b8b6ab0370a8342f21"
+    },
+    "boundary-cases/MATERIAL_ADVECTED__RHO4_CONSTANT/left/array-units.pickle": {
+      "original": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-boundary-20260920/production/complete/boundary-cases/MATERIAL_ADVECTED__RHO4_CONSTANT/left/array-units.pickle",
+      "sha256": "038297b39ed482304df499e3c1f181eaa81c290beb2572ed073c88d842489a5c"
+    },
+    "boundary-cases/MATERIAL_ADVECTED__RHO4_CONSTANT/right/continuum-boundary.pickle": {
+      "original": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-boundary-20260920/production/complete/boundary-cases/MATERIAL_ADVECTED__RHO4_CONSTANT/right/continuum-boundary.pickle",
+      "sha256": "5b45b974a79a99dfceec8bbaefb5a48623b803c98b3eac7a2253dd202efdf667"
+    },
+    "boundary-cases/MATERIAL_ADVECTED__RHO4_CONSTANT/right/finite-boundary.pickle": {
+      "original": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-boundary-20260920/production/complete/boundary-cases/MATERIAL_ADVECTED__RHO4_CONSTANT/right/finite-boundary.pickle",
+      "sha256": "566d570f9ad059a775ebe7177e213f8c07978575d66be3b3b3363af00609f0d6"
+    },
+    "boundary-cases/MATERIAL_ADVECTED__RHO4_CONSTANT/right/channels.pickle": {
+      "original": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-boundary-20260920/production/complete/boundary-cases/MATERIAL_ADVECTED__RHO4_CONSTANT/right/channels.pickle",
+      "sha256": "2144e7a856bf96ce272d35c2bed7e32c9eaa372526b62d635169c564717dd2e1"
+    },
+    "boundary-cases/MATERIAL_ADVECTED__RHO4_CONSTANT/right/array-units.pickle": {
+      "original": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-boundary-20260920/production/complete/boundary-cases/MATERIAL_ADVECTED__RHO4_CONSTANT/right/array-units.pickle",
+      "sha256": "8549ce2224c978077d5a981ad067d6168b4f5b4d9914ed2fa0be486ed9b73ca2"
+    },
+    "bindings/contexts/MATERIAL_ADVECTED__RHOBR_CONSTANT/input-state.pickle": {
+      "original": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/production-recovery-01/complete/bindings/contexts/MATERIAL_ADVECTED__RHOBR_CONSTANT/input-state.pickle",
+      "sha256": "24a2c51c24d43275632175fe74d82f266e8081ad6b64237c6b012a23c38c2ad1"
+    },
+    "bindings/contexts/MATERIAL_ADVECTED__RHOBR_CONSTANT/frame.pickle": {
+      "original": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/production-recovery-01/complete/bindings/contexts/MATERIAL_ADVECTED__RHOBR_CONSTANT/frame.pickle",
+      "sha256": "3dce379a469fa33283175974e5bf55dd4cfd8f26f7943dc5cad263dc93a06cf6"
+    },
+    "bindings/contexts/MATERIAL_ADVECTED__RHOBR_CONSTANT/profile-cache-pair.pickle": {
+      "original": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/production-recovery-01/complete/bindings/contexts/MATERIAL_ADVECTED__RHOBR_CONSTANT/profile-cache-pair.pickle",
+      "sha256": "4e1638e3ef55016deffe59cea63d17f9edb74021980fc737458bdbbd696e6b1c"
+    },
+    "bindings/sources/accepted-bindings/MATERIAL_ADVECTED__RHOBR_CONSTANT/case-binding.pickle": {
+      "original": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/production-recovery-01/complete/bindings/sources/accepted-bindings/MATERIAL_ADVECTED__RHOBR_CONSTANT/case-binding.pickle",
+      "sha256": "9024b21ad5eb8de272f0021fcc26a49d308807e03a04862e6faf07a368f06ee6"
+    },
+    "bindings/sources/coordinate-cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/coordinate-source.pickle": {
+      "original": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/production-recovery-01/complete/bindings/sources/coordinate-cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/coordinate-source.pickle",
+      "sha256": "c860fefe47ef7409cdf19f4c2d2d1222a79fb34a100354968c1e2cb531e8b2ab"
+    },
+    "bindings/sources/accepted-cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/reduced-action.pickle": {
+      "original": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/production-recovery-01/complete/bindings/sources/accepted-cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/reduced-action.pickle",
+      "sha256": "6add07e5f8fd992204e79985b1dec0ce4e641b5d34d2f7aeaeffccd9e53207a2"
+    },
+    "bindings/sources/accepted-cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/actions.pickle": {
+      "original": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/production-recovery-01/complete/bindings/sources/accepted-cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/actions.pickle",
+      "sha256": "75cc4419411903d36cb6f4be73652694de3bc69ff19c6117a564f331503de410"
+    },
+    "bindings/sources/accepted-cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/assembly.pickle": {
+      "original": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/production-recovery-01/complete/bindings/sources/accepted-cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/assembly.pickle",
+      "sha256": "15b54c2237f5951aba15616f3062d29d5748fcedf5fc4fedea802a5dec04bf0f"
+    },
+    "bindings/sources/accepted-cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/factorization.pickle": {
+      "original": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/production-recovery-01/complete/bindings/sources/accepted-cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/factorization.pickle",
+      "sha256": "956698db852c7e6066e6d42d3836449b271d2fcce16fdafbee586983abd02e5a"
+    },
+    "interiors/MATERIAL_ADVECTED__RHOBR_CONSTANT/interior-matrices.pickle": {
+      "original": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/production-recovery-01/complete/cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/interior-matrices.pickle",
+      "sha256": "47f03786e58b43896943a2b1e9381c8cd38d6aef85473ebf08b878f5bbf808d7"
+    },
+    "boundary-cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/case-boundary.pickle": {
+      "original": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-boundary-20260920/production/complete/boundary-cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/case-boundary.pickle",
+      "sha256": "b7e23a5a56ac2ca4418441910fd1954415f2ffff53e636850141189741b998e2"
+    },
+    "boundary-cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/left/continuum-boundary.pickle": {
+      "original": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-boundary-20260920/production/complete/boundary-cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/left/continuum-boundary.pickle",
+      "sha256": "150a9463d94c24a265890349c1c4e40b51195057b8465216ece093b9b6b5aaa3"
+    },
+    "boundary-cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/left/finite-boundary.pickle": {
+      "original": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-boundary-20260920/production/complete/boundary-cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/left/finite-boundary.pickle",
+      "sha256": "631c1b742ad6abc92dc5eb7a218cb8524498de18f48cd04eb286a71cefe1b0b9"
+    },
+    "boundary-cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/left/channels.pickle": {
+      "original": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-boundary-20260920/production/complete/boundary-cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/left/channels.pickle",
+      "sha256": "cfbdbb2968f73d9063e187de7055c15d4faaedcb6560f7b8b6ab0370a8342f21"
+    },
+    "boundary-cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/left/array-units.pickle": {
+      "original": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-boundary-20260920/production/complete/boundary-cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/left/array-units.pickle",
+      "sha256": "038297b39ed482304df499e3c1f181eaa81c290beb2572ed073c88d842489a5c"
+    },
+    "boundary-cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/right/continuum-boundary.pickle": {
+      "original": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-boundary-20260920/production/complete/boundary-cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/right/continuum-boundary.pickle",
+      "sha256": "a6999b0849c8ae734fe14dbf8edbbfd7d9957ea256c7a9dcc905c01b3eb3d092"
+    },
+    "boundary-cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/right/finite-boundary.pickle": {
+      "original": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-boundary-20260920/production/complete/boundary-cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/right/finite-boundary.pickle",
+      "sha256": "6516a411fdbf8f2f0e494b58563e14603586b33919b465ce529e19c1a0ff193d"
+    },
+    "boundary-cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/right/channels.pickle": {
+      "original": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-boundary-20260920/production/complete/boundary-cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/right/channels.pickle",
+      "sha256": "fe66b289ebdd2bfd4a83204305db8e68ba201b40c0b778ca14f5e39ab12a5279"
+    },
+    "boundary-cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/right/array-units.pickle": {
+      "original": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-boundary-20260920/production/complete/boundary-cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/right/array-units.pickle",
+      "sha256": "8549ce2224c978077d5a981ad067d6168b4f5b4d9914ed2fa0be486ed9b73ca2"
+    },
+    "accepted-continuum-boundary.pickle": {
+      "original": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-boundary-20260920/production/complete/accepted-continuum-boundary.pickle",
+      "sha256": "8e3e53c3b7b06e3e81f961f013b77b4b87dfede081db75b4de458503b062eed0"
+    },
+    "baseline-material/material-boundary.pickle": {
+      "original": "/var/projects/toy_physics/_scratch/s11c/s11c-coordinate-response-20260919/production/complete/material-boundary.pickle",
+      "sha256": "136b554e2e1de5de4ddc8b45aaf48c771548d33c71ac1c7cfa2ae0fd555e9ffb"
+    },
+    "baseline-material/material-binding.pickle": {
+      "original": "/var/projects/toy_physics/_scratch/s11c/s11c-coordinate-response-20260919/production/complete/material-binding.pickle",
+      "sha256": "20ffd9eb362e4f44c059c3d1e13851fc0ae8a0ecd247e0ed4a034acc24f06225"
+    },
+    "baseline-material/left-slab-material-current-tables.pickle": {
+      "original": "/var/projects/toy_physics/_scratch/s11c/s11c-coordinate-response-20260919/production/complete/left-slab-material-current-tables.pickle",
+      "sha256": "504b73ec2973976001764271457bd9eac798205dedd1eb1ced7aeb3bd49789d0"
+    },
+    "baseline-material/left-bulk-material-current-tables.pickle": {
+      "original": "/var/projects/toy_physics/_scratch/s11c/s11c-coordinate-response-20260919/production/complete/left-bulk-material-current-tables.pickle",
+      "sha256": "0025cac38005905658f2da0d0d760cf7e9606208b305b025b44c157ce8dba0c1"
+    },
+    "baseline-material/left-material-boundary.pickle": {
+      "original": "/var/projects/toy_physics/_scratch/s11c/s11c-coordinate-response-20260919/focused-retry-01/complete/left-material-boundary.pickle",
+      "sha256": "2317ac1e18fd05b5987b98c2ceb4fb3f05edeed06e5dd9879367f33dbcf36b9b"
+    },
+    "baseline-material/right-slab-material-current-tables.pickle": {
+      "original": "/var/projects/toy_physics/_scratch/s11c/s11c-coordinate-response-20260919/production/complete/right-slab-material-current-tables.pickle",
+      "sha256": "691b4f5b607dd9d7dacb70bed36e3c0e25a87aff53608f399311906ba5959ab8"
+    },
+    "baseline-material/right-bulk-material-current-tables.pickle": {
+      "original": "/var/projects/toy_physics/_scratch/s11c/s11c-coordinate-response-20260919/production/complete/right-bulk-material-current-tables.pickle",
+      "sha256": "8714299cd5aad4854b2decf71c8d90cb47eddc3c396318c3dc417e3c0bf32322"
+    },
+    "baseline-material/right-material-boundary.pickle": {
+      "original": "/var/projects/toy_physics/_scratch/s11c/s11c-coordinate-response-20260919/focused-retry-01/complete/right-material-boundary.pickle",
+      "sha256": "8f8d2b55f2baad5e410eb3a8364f8df3b78e08938c6a2a94312712aac12dec61"
+    }
+  },
+  "contexts": {
+    "LAB_HELD__RHO4_CONSTANT": [
+      "input-state",
+      "frame"
+    ],
+    "LAB_HELD__RHOBR_CONSTANT": [
+      "input-state",
+      "frame",
+      "profile-cache-pair"
+    ],
+    "MATERIAL_ADVECTED__RHO4_CONSTANT": [
+      "input-state",
+      "frame",
+      "profile-cache-pair"
+    ],
+    "MATERIAL_ADVECTED__RHOBR_CONSTANT": [
+      "input-state",
+      "frame",
+      "profile-cache-pair"
+    ]
+  },
+  "actualProducerEvidence": {
+    "bindingFocusSourceSha256": "6797b240964693e17528b7aae5d5957377d2b20ecb1dc71b38c76e51c80a8bd4",
+    "baselineHasNoPairComparison": true,
+    "nonbaselineHasThreePairComparisons": true,
+    "nativeBinderSourceSha256": "a6c74b31269d4e2ace9b32d4757daeeecc6abe06119ef6ced61a21baeb881ef6",
+    "rowAddress": "binding.bound.rows"
+  },
+  "allRequestedFilesExistAndMatchProducerHashes": true,
+  "resolvedRequestCount": 88,
+  "originalMainAndNativeAlgorithmsUnchanged": true,
+  "noScientificExecutionInStaticAudit": true
+}

@@ -933,5 +933,64 @@
       },
       "limitValidationSha256": "75ed475c6fc44c1029a1aaff2cb9bba5544a4122b508f99b0ecf673a9b49a7d5"
     }
+  },
+  "boundaryUnitValidationContinuation": {
+    "status": "PREPARED_PENDING_FINAL_VALIDATION",
+    "failedValidatorDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/boundary/production-acceptance",
+    "failedValidatorInvocation": {
+      "stage": "validate",
+      "command": [
+        "/usr/bin/python",
+        "-u",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/boundary/production-acceptance/validate.py"
+      ],
+      "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/boundary/production-acceptance/validate.stdout",
+      "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/boundary/production-acceptance/validate.stderr",
+      "startedUtc": "2026-09-21T14:01:39.626484+00:00",
+      "childPid": 732337,
+      "status": "failed",
+      "exitCode": 1,
+      "wallSeconds": 105.49148642599903,
+      "stderrBytes": 644,
+      "finishedUtc": "2026-09-21T14:03:25.118149+00:00"
+    },
+    "failedGuardOutcome": {
+      "exitCode": 1,
+      "wallSeconds": 105.9946615029985,
+      "unit": "s11c-guard-1baa9786fc0e",
+      "stderrBytes": 0,
+      "limitsVerified": true,
+      "childOutcome": {
+        "exitCode": 1,
+        "guardReason": null,
+        "wallSeconds": 105.73463840500335,
+        "childPid": 732332
+      }
+    },
+    "savedUnitDiagnostic": {
+      "directory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/boundary/unit-diagnostic-01",
+      "checksSha256": "a3202e943ae4658a016d4624252de4f12a5dba1fce63deab8311403d84f0e9e0",
+      "outcome": {
+        "exitCode": 0,
+        "wallSeconds": 3.5597945119952783,
+        "unit": "s11c-guard-3eec5fd46cd6",
+        "stderrBytes": 0,
+        "limitsVerified": true,
+        "childOutcome": {
+          "exitCode": 0,
+          "guardReason": null,
+          "wallSeconds": 3.477363748002972,
+          "childPid": 736579
+        }
+      }
+    },
+    "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/boundary/production-acceptance-recovery-01",
+    "helperSha256": "1fdff1c1ed9268adb35dd5b1c931fc2c97601a6a286665c53b82d1fff1a9b6c5",
+    "planSha256": "93bfa9c177745cbef18e51207dcc17adbd39467efae76a487cc4267cf60f2d43",
+    "repairSha256": "d8bbab46ea63fe79d8362707d890d30d50ba6cefe56bb832f4cb6dc99b2aade9",
+    "originalProducerChecksSha256": "6755d95b096f43d0eb7eaeb547826e98705b7861bc438b12308d43b9930825fa",
+    "originalPhysicalPacketsChanged": 0,
+    "newScientificConstructions": 0,
+    "metadataSupplementRequiredByDownstream": true
   }
 }

@@ -1,5 +1,5 @@
 {
-  "status": "ACCEPTED_CASE_MATERIAL_RESPONSE_INPUTS",
+  "status": "MATERIAL_RESPONSE_NUMERICAL_ADAPTER_PREPARED",
   "acceptedBoundary": "2e1e4a3c",
   "acceptedMaterialInteriors": "a95a0c0d",
   "helperSha256": "95fe5fc75462f68780150fce954ffc2ac2f59c8f8a69672255bfaf2ca4fdf89a",
@@ -444,5 +444,18 @@
     }
   },
   "acceptedFocus": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_coordinate_response_focused.json",
-  "acceptedFocusSha256": "a0856b862cc97d31c366f0a3af20c1f9a67748452a489531020f3ea3cf1a3974"
+  "acceptedFocusSha256": "a0856b862cc97d31c366f0a3af20c1f9a67748452a489531020f3ea3cf1a3974",
+  "acceptedFocusCommit": "96da7147",
+  "numericalAdapter": {
+    "helperSha256": "856b9b800a7443415c9b82ad6ea3a1e63979d886317fa99fbda2b435e8ad46e2",
+    "planSha256": "513dad0ccb55ab58780f5a283bf246710ccdd3b34c47e513812dee8e559a8b98",
+    "wiringSha256": "adf49525299224437999e914b019738d3eab8603c455d7de9a646e5674d578ef",
+    "preflightRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/response/solver-preflight",
+    "preflightStatus": "PREPARED_NOT_LAUNCHED",
+    "newFiniteControls": 4,
+    "newContinuumControls": 3,
+    "newMaterialAmplitudeBookkeeping": 4,
+    "historicalBaselineContinuumReused": true,
+    "physicalTranscriptEmitted": false
+  }
 }

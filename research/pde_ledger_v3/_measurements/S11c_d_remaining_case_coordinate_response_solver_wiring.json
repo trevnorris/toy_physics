@@ -1,0 +1,16 @@
+{
+  "helperSha256": "856b9b800a7443415c9b82ad6ea3a1e63979d886317fa99fbda2b435e8ad46e2",
+  "planSha256": "513dad0ccb55ab58780f5a283bf246710ccdd3b34c47e513812dee8e559a8b98",
+  "wholeHelperCompiles": true,
+  "actualFiniteCallMatchesFirstWriteCapture": true,
+  "nativeFiniteAndContinuumAdapter": {
+    "path": "research/pde_ledger_v3/_measurements/S11c_d_remaining_case_first_jet_response.py",
+    "sha256": "eeab82012db72fcc8443d0018aad6a5e9b0221c1d6cd96dc2d0a8e8a21dfd498",
+    "nativeBodiesEdited": false
+  },
+  "acceptedFocusCommit": "96da7147",
+  "newFiniteControls": 4,
+  "newContinuumControls": 3,
+  "repeatedScientificConstruction": false,
+  "preflightRequiredBeforeProduction": true
+}

@@ -40,3 +40,17 @@ events, zero OOM/swap and minimum host available memory 23.32 GB. The separate
 ACCEPTED_CASE_MATERIAL_RESPONSE_INPUTS checkpoint retains all original inputs
 and explicit validator/resource provenance. Four finite controls and three
 continuum controls remain genuinely new numerical work.
+
+Input acceptance is committed at 96da7147. The numerical adapter now consumes
+the accepted prepared systems through unchanged native finite and continuum
+solver suffixes. Four finite controls and three continuum controls are new;
+the full historical baseline continuum packet and transcript remain byte-identical.
+Original Eulerian current packets and completed finite-current operands join
+their actual accepted input hashes and are reused rather than re-contracted.
+
+A guarded solver-routing preflight is prepared to capture all four actual
+finite first writes with numerical linear algebra disabled. Static AST checks
+join those captured calls to the production calls. Production will reuse all
+completed preflight copies and wiring, save all seven missing numerical controls
+before comparisons, then compute each material response's actual amplitude/current
+bookkeeping. Full physical output/replay/publication follows numerical acceptance.

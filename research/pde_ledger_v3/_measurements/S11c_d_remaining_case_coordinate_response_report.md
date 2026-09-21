@@ -30,3 +30,13 @@ The independent saved-input validator launched from 9d3515ed with actual
 verified 2 GiB, zero-swap, one-CPU, nice-15 and 32-task limits. One 900-second
 supervisor and silent completion/error hook own the run. No preparation or
 response solve is enabled. Acceptance awaits its final clean outcome.
+
+Independent saved-input validation completed in 123.75 seconds (125.13 seconds
+including startup), final guard/supervisor/child exit zero, empty stderr and
+checks/stdout byte identity. All 24,034 pre/post paths, four full system/forcing
+entry sets, source/unit/chart/current/phase routes and actual omission controls
+pass. No constructors or solves ran. Its guard reached 2 GiB with 74,839 reclaim
+events, zero OOM/swap and minimum host available memory 23.32 GB. The separate
+ACCEPTED_CASE_MATERIAL_RESPONSE_INPUTS checkpoint retains all original inputs
+and explicit validator/resource provenance. Four finite controls and three
+continuum controls remain genuinely new numerical work.

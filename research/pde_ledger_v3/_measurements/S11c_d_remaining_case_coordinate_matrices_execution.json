@@ -1,5 +1,5 @@
 {
-  "status": "GUARDED_SAVED_INPUT_MATERIAL_INTERIOR_RECOVERY_LAUNCHED",
+  "status": "MATERIAL_INTERIORS_COMPLETED_SAVED_VALIDATION_PREPARED",
   "acceptedBindings": "4757b38b",
   "acceptedEulerianInteriors": "2eed4150",
   "acceptedBaselineMaterial": "19a9f5a1",
@@ -16,7 +16,7 @@
     19,
     4
   ],
-  "next": "Use final completion/error hook; validate saved material basis/layout/rows/matrices only after actual final exit. Preserve completed science on any failure; no automatic retry.",
+  "next": "Guarded independent validation of saved material rows/interior arrays; then acceptance and own-case material boundary/current/phase responses.",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/focused",
   "launch": {
     "launchedUtc": "2026-09-21T11:30:32.441127+00:00",
@@ -1286,6 +1286,181 @@
       }
     },
     "watcherState": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/production-recovery-01/completion-watcher/state.json",
-    "launchIsAcceptance": false
+    "launchIsAcceptance": false,
+    "finalOutcome": {
+      "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/production-recovery-01/complete",
+      "checksSha256": "6b910f5bce94b0c17d1d8c3d8c037e2ec7447aa406cd5c453a3561b71ce3b060",
+      "invocation": {
+        "stage": "coordinate_matrices_recover",
+        "command": [
+          "/usr/bin/python",
+          "-u",
+          "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_coordinate_matrices_recover.py",
+          "--run-directory",
+          "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/production-recovery-01/complete",
+          "--resume-focused",
+          "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/focused/complete"
+        ],
+        "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/production-recovery-01/coordinate_matrices_recover.stdout",
+        "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/production-recovery-01/coordinate_matrices_recover.stderr",
+        "startedUtc": "2026-09-21T12:20:56.394233+00:00",
+        "childPid": 181675,
+        "status": "completed",
+        "exitCode": 0,
+        "wallSeconds": 344.0408871699983,
+        "stderrBytes": 0,
+        "finishedUtc": "2026-09-21T12:26:40.435191+00:00"
+      },
+      "guard": {
+        "exitCode": 0,
+        "wallSeconds": 344.1890102649995,
+        "unit": "s11c-guard-73d358807b21",
+        "stderrBytes": 0,
+        "limitsVerified": true,
+        "childOutcome": {
+          "exitCode": 0,
+          "guardReason": null,
+          "wallSeconds": 344.1136583789994,
+          "childPid": 181673
+        }
+      },
+      "limits": {
+        "memory.max": "2147483648",
+        "memory.swap.max": "0",
+        "pids.max": "32",
+        "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-73d358807b21.service",
+        "nice": 15,
+        "affinity": [
+          15
+        ],
+        "threads": {
+          "OPENBLAS_NUM_THREADS": "1",
+          "OMP_NUM_THREADS": "1",
+          "MKL_NUM_THREADS": "1",
+          "NUMEXPR_NUM_THREADS": "1",
+          "VECLIB_MAXIMUM_THREADS": "1",
+          "BLIS_NUM_THREADS": "1"
+        }
+      },
+      "peakBytes": 2147483648,
+      "minimumHostAvailableBytes": 22190673920,
+      "finalMemoryEvents": "low 0\nhigh 0\nmax 37676\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0",
+      "sourceFiles": 114,
+      "inputPackets": 21742,
+      "copiedInputs": 3904,
+      "artifacts": 3939,
+      "result": {
+        "cases": {
+          "LAB_HELD__RHO4_CONSTANT": {
+            "rows": 80,
+            "newRows": [],
+            "newNodes": 0,
+            "wholeMaterialOperatorReused": true
+          },
+          "LAB_HELD__RHOBR_CONSTANT": {
+            "maximumComparison": 6.219177675779308e-15,
+            "mixedOmission": 9.105782167926234e-07,
+            "nativeTerms": 140,
+            "rows": 70,
+            "newRows": [
+              28,
+              29,
+              30,
+              46,
+              47,
+              51,
+              52,
+              53,
+              54
+            ],
+            "reusedRows": 61,
+            "layouts": 2,
+            "newNodes": 1216,
+            "rowMaximum": 1.1676029688642185e-14
+          },
+          "MATERIAL_ADVECTED__RHO4_CONSTANT": {
+            "maximumComparison": 6.219177675779308e-15,
+            "mixedOmission": 9.163232560642882e-07,
+            "nativeTerms": 185,
+            "rows": 80,
+            "newRows": [
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              21,
+              22,
+              23,
+              24,
+              25,
+              60,
+              61,
+              62,
+              63
+            ],
+            "reusedRows": 61,
+            "layouts": 2,
+            "newNodes": 1216,
+            "rowMaximum": 1.1676029688642185e-14
+          },
+          "MATERIAL_ADVECTED__RHOBR_CONSTANT": {
+            "maximumComparison": 6.219177675779308e-15,
+            "mixedOmission": 9.102211262431651e-07,
+            "nativeTerms": 162,
+            "rows": 70,
+            "newRows": [
+              50,
+              51,
+              52,
+              53
+            ],
+            "reusedRows": 66,
+            "layouts": 1,
+            "newNodes": 1200,
+            "rowMaximum": 1.1676029688642185e-14
+          }
+        },
+        "newNodes": 3632,
+        "newRows": 32,
+        "nativeJoins": {
+          "accumulator": {
+            "wholeAccumulatorReverseAstJoin": true,
+            "changedExpectedVolumeExpressions": 1,
+            "originalExpression": "(2 * setting['momentumBound']) ** len(variables)",
+            "materialExpression": "self.material_box_volume(variables)",
+            "nativeHelperSha256": "f187d9426be8069342a363a0466c175d32a8cb46101e32a14c433ccb9118e469"
+          },
+          "bodies": {
+            "MaterialProduction": "c52aa5dbdbc3c4d10d77721d42d93eea2bc15ec9571806075ed98adca04f1a43",
+            "MaterialMomentum": "a209a6c16305cede5b6382d72b9f8eb42a8e54072f17b898ea4a083a4fd99a81",
+            "Chart": "117e5fcc22ac48b062ddbe892c9a905a7170d51417eaffb227ae4e1bf7f8c3dd",
+            "BasisMomentum": "48709e1dd6e3c6b6058817019c4f05112d0ca376ddc04da0b8ca79312251bd90",
+            "assemble": "8b6fcf1472d44d734b5f3a91ed492285a919a610d1f996a4ee4c42db45cda421",
+            "direct_cells": "2253e89fbdac3b8217090443eaf6b349bf13351b599b3d15cf7ba8531e874874",
+            "values": "f7b5587a5fb4e86948ba75baa7db893beecf8cdbe1b313fe5ce1ab0b024a6aaa",
+            "recombine": "bcb2cda88876448ef2d6f8ee8f3839ec95db626d2b0ac5b6ae1c5c797023e4b6",
+            "mass_controls": "cd765471f03df6369ec9a53e82a3a62f47d39745197261c636e64cafe314fc54",
+            "restore": "6cbffd0c1f20b7bd6db7818814346ed9d6c84956c3b46ea4d4b198a1cc2239f2",
+            "restore_chart": "780bf39d6d094af42d0d0b0880177265f064cc99bb12f1647d908ed3fe632f38"
+          }
+        }
+      },
+      "nativeWallSeconds": 341.8797787430012,
+      "acceptance": "PENDING_INDEPENDENT_SAVED_ARRAY_VALIDATION"
+    }
+  },
+  "productionValidation": {
+    "status": "PREPARED_NOT_LAUNCHED",
+    "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/production-acceptance",
+    "scriptSha256": "662f29f57bff9ec0a4fe1040e3ee5de034d26d983d2bc828bd07253e9c35e9ee",
+    "plan": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_coordinate_matrices_production_validation_plan.md",
+    "planSha256": "91831ecf1be8b0123790a29980c7ca628e18511c8f039b6edff58453013b0f31",
+    "newScientificConstruction": false
   }
 }

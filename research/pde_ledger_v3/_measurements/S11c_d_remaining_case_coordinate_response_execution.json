@@ -1970,5 +1970,75 @@
     "referenceFiles": 1261,
     "referenceBytes": 8110003519,
     "wholeOutputAccepted": false
+  },
+  "materialOutputRemainingSequence": {
+    "status": "PREPARED_NINE_SPLIT_PHASES",
+    "acceptedAuditCommit": "f6be0aad",
+    "acceptedAuditChecksSha256": "b63de30240c6417f193515aedb5b1636d06713f25e7ef0c771e06d477c5a0749",
+    "schedule": [
+      {
+        "mode": "prepare"
+      },
+      {
+        "stage": "replay",
+        "case": "MATERIAL_ADVECTED__RHOBR_CONSTANT",
+        "kind": "continuum",
+        "mode": "work"
+      },
+      {
+        "stage": "replay",
+        "case": "MATERIAL_ADVECTED__RHOBR_CONSTANT",
+        "kind": "continuum",
+        "mode": "audit"
+      },
+      {
+        "stage": "replay",
+        "case": "MATERIAL_ADVECTED__RHOBR_CONSTANT",
+        "kind": "current",
+        "mode": "work"
+      },
+      {
+        "stage": "replay",
+        "case": "MATERIAL_ADVECTED__RHOBR_CONSTANT",
+        "kind": "current",
+        "mode": "audit"
+      },
+      {
+        "stage": "replay",
+        "case": "MATERIAL_ADVECTED__RHOBR_CONSTANT",
+        "kind": "coordinate",
+        "mode": "work"
+      },
+      {
+        "stage": "replay",
+        "case": "MATERIAL_ADVECTED__RHOBR_CONSTANT",
+        "kind": "coordinate",
+        "mode": "audit"
+      },
+      {
+        "stage": "aggregate",
+        "mode": "work"
+      },
+      {
+        "stage": "aggregate",
+        "mode": "audit"
+      }
+    ],
+    "workerSha256": "989ef01c4d0163b51c72ad35a748fb5cea490006db39608155ef8689ade54941",
+    "coordinatorSha256": "0aeb06beb6ddc7dd62c3a588723c60b247cf57e52a71bbdbab422ee27796850c",
+    "planSha256": "b9f57b19661e5a6315658c030541357f24d8f1c6c0e0b30fabf4842ebcfc3007",
+    "rejectedChangedSchedules": 41,
+    "actualAcceptedGuardReceiptRead": {
+      "exitCode": 0,
+      "checksStdoutIdentical": true,
+      "oomEvents": 0
+    },
+    "originalSourcePins": 209,
+    "noCompletedEmissionOrReplayRepeated": true,
+    "maximumConcurrentWorkers": 1,
+    "guardedPhaseSeconds": 900,
+    "wholeJobMemoryBytes": 2147483648,
+    "sourceAddressReferencesExplicit": true,
+    "writesThroughPreservedReferencesForbidden": true
   }
 }

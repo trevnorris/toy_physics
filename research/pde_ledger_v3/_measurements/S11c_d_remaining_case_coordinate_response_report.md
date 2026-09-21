@@ -224,3 +224,13 @@ recorded timeout; its completed replay is now paired with a clean final audit.
 The separate continuation checkpoint is not whole-output acceptance. Three
 saved-stream replays and native aggregation remain, each with a separate final
 file-audit worker. No output or scientific construction was repeated.
+
+Prepared nine continuation phases: reference preparation, then separate work
+and final-audit workers for the three remaining MATERIAL_ADVECTED/RHOBR replays
+and native aggregation. The original whole main reverses exactly from its
+unchanged prefix/suffix; the only work addition returns saved locals. Native
+replay/post-control/codec bodies remain unchanged. Context source paths join
+original actual producers and proof hashes explicitly; writes through preserved
+references are forbidden. Static review verifies 209 original source pins, all
+nine commands and the accepted guard receipt, rejecting 41 changed schedules.
+No completed emission, replay or scientific calculation is repeated.

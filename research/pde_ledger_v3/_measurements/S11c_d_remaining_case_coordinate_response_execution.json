@@ -1,0 +1,19 @@
+{
+  "status": "PREPARED_CASE_MATERIAL_RESPONSE_INPUTS",
+  "acceptedBoundary": "2e1e4a3c",
+  "acceptedMaterialInteriors": "a95a0c0d",
+  "helperSha256": "95fe5fc75462f68780150fce954ffc2ac2f59c8f8a69672255bfaf2ca4fdf89a",
+  "planSha256": "ac35d15eed60cc24191caf21bad9c692af9ecd2cabfa9f0689b7dd478f816d07",
+  "wiringSha256": "ab7c6a61067c3eb4091244705db4f6f6d0f5dca6b5013a555fd8a827bdd71bab",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/response/focused",
+  "acceptedInputCopies": 522,
+  "newFiniteControlSolvesRequired": 4,
+  "newContinuumControlSolvesRequired": 3,
+  "newFocusSolves": 0,
+  "resourceGuard": "scripts/s11c_guarded_run.py",
+  "wholeJobMemoryBytes": 2147483648,
+  "swapBytes": 0,
+  "threads": 1,
+  "initialBudgetSeconds": 900,
+  "launchIsAcceptance": false
+}

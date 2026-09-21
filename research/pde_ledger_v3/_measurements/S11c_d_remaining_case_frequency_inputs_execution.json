@@ -1,5 +1,5 @@
 {
-  "status": "PREPARED_PUBLICATION_ADDRESS_RECOVERY",
+  "status": "COMPLETED_INPUTS_AWAITING_INDEPENDENT_VALIDATION",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/inputs",
   "helperSha256": "3be9bf51d603b36c78f27cf1f168bc096cf911ea4626730f8f468b77b919a1d1",
   "planSha256": "61398fe5b1aab2aa09faed78a1a4d3154e4cebac2198e92e32898b2bb91bb410",
@@ -97,6 +97,203 @@
     "helperSha256": "bcfc2b83f54693d9c56fd0ce22b659f7d1088ee517a6a8cd478f2e69c7d1e19f",
     "repairSha256": "6046a60d7f898d2ba59a2e39c63e2821bb938bc6d86a943288ab0d9dc861d6a3",
     "completedReferences": 40,
-    "wholeOriginalMainUnchanged": true
+    "wholeOriginalMainUnchanged": true,
+    "launch": {
+      "launchedUtc": "2026-09-21T21:18:57.723220+00:00",
+      "guardPid": 907855,
+      "watcherPid": 907856,
+      "command": [
+        "/usr/bin/python",
+        "/var/projects/toy_physics/scripts/s11c_guarded_run.py",
+        "--log-directory",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/inputs-recovery-01/resource-guard",
+        "--seconds",
+        "900",
+        "--",
+        "/usr/bin/python",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+        "--run-root",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/inputs-recovery-01",
+        "--stage",
+        "frequency_inputs_recover",
+        "--",
+        "/usr/bin/python",
+        "-u",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_inputs_recover.py",
+        "--run-directory",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/inputs-recovery-01/complete"
+      ],
+      "helperSha256": "bcfc2b83f54693d9c56fd0ce22b659f7d1088ee517a6a8cd478f2e69c7d1e19f",
+      "guardSha256": "6492f5ab11dc2ab2f80bbfcc96d7eb6b8632afea07100dd8f74a7954f3ffe542",
+      "precedingOutputChecksSha256": "64a2f56f93e9d7a29c4c59fe1e2018eec628c7ba7cdc1e0772475a9239ee438f",
+      "implementationCommit": "44154862b23b7b3fa2402bb9b3cff121c23317c6",
+      "launchIsAcceptance": false,
+      "newScientificConstruction": false
+    },
+    "outcomeInspection": {
+      "checksSha256": "ed6f7a427189f6d309b4dc294075104929b8def60a200361fd38893c3a07e3a0",
+      "checksStdoutByteIdentity": true,
+      "resourceGuard": {
+        "supervisor": {
+          "stage": "frequency_inputs_recover",
+          "command": [
+            "/usr/bin/python",
+            "-u",
+            "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_inputs_recover.py",
+            "--run-directory",
+            "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/inputs-recovery-01/complete"
+          ],
+          "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/inputs-recovery-01/frequency_inputs_recover.stdout",
+          "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/inputs-recovery-01/frequency_inputs_recover.stderr",
+          "startedUtc": "2026-09-21T21:18:57.914299+00:00",
+          "childPid": 907867,
+          "status": "completed",
+          "exitCode": 0,
+          "wallSeconds": 35.141071456993814,
+          "stderrBytes": 0,
+          "finishedUtc": "2026-09-21T21:19:33.055482+00:00"
+        },
+        "guard": {
+          "exitCode": 0,
+          "wallSeconds": 35.33810929700849,
+          "unit": "s11c-guard-ab7489cdeacb",
+          "stderrBytes": 0,
+          "limitsVerified": true,
+          "childOutcome": {
+            "exitCode": 0,
+            "guardReason": null,
+            "wallSeconds": 35.24340158799896,
+            "childPid": 907866
+          }
+        },
+        "limits": {
+          "memory.max": "2147483648",
+          "memory.swap.max": "0",
+          "pids.max": "32",
+          "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-ab7489cdeacb.service",
+          "nice": 15,
+          "affinity": [
+            15
+          ],
+          "threads": {
+            "OPENBLAS_NUM_THREADS": "1",
+            "OMP_NUM_THREADS": "1",
+            "MKL_NUM_THREADS": "1",
+            "NUMEXPR_NUM_THREADS": "1",
+            "VECLIB_MAXIMUM_THREADS": "1",
+            "BLIS_NUM_THREADS": "1"
+          }
+        },
+        "memoryPeakBytes": 858206208,
+        "swapBytes": 0,
+        "capReclaims": 0,
+        "minimumHostAvailableBytes": 23973838848,
+        "oomEvents": 0
+      },
+      "sourceFiles": 105,
+      "inputPackets": 2862,
+      "references": 43,
+      "artifacts": 104,
+      "cases": {
+        "LAB_HELD__RHO4_CONSTANT": {
+          "records": 375,
+          "recordKinds": {
+            "local": 100,
+            "cell": 160,
+            "factor": 80,
+            "source": 35
+          },
+          "rows": 80,
+          "terms": 160,
+          "sources": 35,
+          "newUnionOperands": 0,
+          "baselineFrequencyCandidates": 375,
+          "additionalNewOperandUses": 0,
+          "controls": {
+            "coefficient": true,
+            "address": true,
+            "unit": true,
+            "orderedLimit": true,
+            "frequency": true
+          },
+          "newNumericalRows": "not classified; requires full live frequency signatures"
+        },
+        "LAB_HELD__RHOBR_CONSTANT": {
+          "records": 335,
+          "recordKinds": {
+            "local": 100,
+            "cell": 140,
+            "factor": 70,
+            "source": 25
+          },
+          "rows": 70,
+          "terms": 140,
+          "sources": 25,
+          "newUnionOperands": 38,
+          "baselineFrequencyCandidates": 295,
+          "additionalNewOperandUses": 2,
+          "controls": {
+            "coefficient": true,
+            "address": true,
+            "unit": true,
+            "orderedLimit": true,
+            "frequency": true
+          },
+          "newNumericalRows": "not classified; requires full live frequency signatures"
+        },
+        "MATERIAL_ADVECTED__RHO4_CONSTANT": {
+          "records": 400,
+          "recordKinds": {
+            "local": 100,
+            "cell": 185,
+            "factor": 80,
+            "source": 35
+          },
+          "rows": 80,
+          "terms": 185,
+          "sources": 35,
+          "newUnionOperands": 31,
+          "baselineFrequencyCandidates": 333,
+          "additionalNewOperandUses": 36,
+          "controls": {
+            "coefficient": true,
+            "address": true,
+            "unit": true,
+            "orderedLimit": true,
+            "frequency": true
+          },
+          "newNumericalRows": "not classified; requires full live frequency signatures"
+        },
+        "MATERIAL_ADVECTED__RHOBR_CONSTANT": {
+          "records": 357,
+          "recordKinds": {
+            "local": 100,
+            "cell": 162,
+            "factor": 70,
+            "source": 25
+          },
+          "rows": 70,
+          "terms": 162,
+          "sources": 25,
+          "newUnionOperands": 17,
+          "baselineFrequencyCandidates": 266,
+          "additionalNewOperandUses": 74,
+          "controls": {
+            "coefficient": true,
+            "address": true,
+            "unit": true,
+            "orderedLimit": true,
+            "frequency": true
+          },
+          "newNumericalRows": "not classified; requires full live frequency signatures"
+        }
+      }
+    }
+  },
+  "validation": {
+    "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/input-acceptance",
+    "scriptSha256": "277f6bed394f00546632bb5f85d2877ecef8e5fe5d10436e7b2b9c9280ebb64b",
+    "planSha256": "428a87f699579a207e4ed765006aba9221de2887e85e0cc612423ecde77df358",
+    "status": "PREPARED_SAVED_ONLY_VALIDATION"
   }
 }

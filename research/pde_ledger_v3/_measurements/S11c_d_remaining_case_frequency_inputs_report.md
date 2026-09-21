@@ -21,3 +21,15 @@ available memory 24.05 GB. A separate wrapper corrects one publication root
 under whole-loader reverse AST identity, reuses the exact saved references,
 and finishes only the previously unstarted loading/catalogue. The complete
 original main and scientific algorithms remain unchanged.
+
+Recovered inputs completed in 33.64 worker / 35.14 native seconds with final
+guard/supervisor/child exit zero, empty stderr and checks/stdout identity.
+All 105 sources, 2,862 inputs, 43 references and 104 artifacts remain; forty
+references from the failed loader are reused exactly. The actual catalogue
+contains 1,467 records, 300 rows, 647 terms and 120 sources, with 86 new union
+operands (38/31/17), 1,269 baseline-frequency candidates and 112 further uses
+of new operands. Twenty saved mutation controls respond. These counts license
+no numerical row reuse. Guard peak was 858,206,208 bytes, with zero cap/OOM/
+swap events and minimum host availability 23.97 GB. An independent saved-only
+validator is prepared; no binding, derivative, chart or numerical construction
+will run in it. Acceptance awaits its actual clean final outcome.

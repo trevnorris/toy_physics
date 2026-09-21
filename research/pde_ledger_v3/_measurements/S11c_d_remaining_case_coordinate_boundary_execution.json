@@ -1,5 +1,5 @@
 {
-  "status": "ACCEPTED_CASE_MATERIAL_BOUNDARY_INPUTS",
+  "status": "ACCEPTED_CASE_MATERIAL_BOUNDARY_MAPS",
   "acceptedMaterialInteriors": "a95a0c0d",
   "acceptedCaseBoundaryMaps": "d8713012",
   "acceptedBaselineMaterial": "19a9f5a1",
@@ -13,7 +13,7 @@
   "initialBudgetSeconds": 900,
   "newFocusPhysicalConstructions": 0,
   "baselineMaterialControlIsContinuumOnly": true,
-  "next": "Construct the one new RHOBR-right continuum material-end family and actual finite material boundary/current/phase routes before coordinate response solves.",
+  "next": "Prepare four genuine finite and three new continuum coordinate-control response systems from accepted material interiors and own-case common-Eulerian boundaries; historical baseline continuum response remains reused.",
   "launchIsAcceptance": false,
   "previousAttempts": [
     {
@@ -935,7 +935,7 @@
     }
   },
   "boundaryUnitValidationContinuation": {
-    "status": "LAUNCHED_GUARDED_PENDING_FINAL_OUTCOME",
+    "status": "ACCEPTED_WITH_EXPLICIT_UNIT_METADATA_JOIN",
     "failedValidatorDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/boundary/production-acceptance",
     "failedValidatorInvocation": {
       "stage": "validate",
@@ -1044,5 +1044,207 @@
       }
     },
     "limitValidationSha256": "fabedaae9f1a7514c03f0f512a7a533d781401a16564fdfe78ec23a3a58c96f6"
+  },
+  "boundaryAcceptance": {
+    "checkpoint": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_coordinate_boundary_checkpoint.json",
+    "sha256": "2ef3725326e0dc115f2a377a6c5359db8e2b532fb40199870123757bcb590f01",
+    "checksSha256": "6755d95b096f43d0eb7eaeb547826e98705b7861bc438b12308d43b9930825fa",
+    "validatorChecksSha256": "fc651924a1f0e1028d4c19d5566e7a2047d3f1b861db0ad3c82e947274e1277b",
+    "result": {
+      "cases": [
+        "LAB_HELD__RHO4_CONSTANT",
+        "LAB_HELD__RHOBR_CONSTANT",
+        "MATERIAL_ADVECTED__RHO4_CONSTANT",
+        "MATERIAL_ADVECTED__RHOBR_CONSTANT"
+      ],
+      "addresses": {
+        "LAB_HELD__RHO4_CONSTANT__LEFT": {
+          "owner": "LEFT",
+          "sourceLabel": "LAB_HELD__RHO4_CONSTANT",
+          "sourceEnd": "LEFT",
+          "inputSha256": "3a46924efcfbac0c94d822eb2bdb28b5648cffdce729c5f6f6c73c62398d7045",
+          "familyInputSha256": "b4f54e915237ece88851e6cd1acab96aa12a9d5705fd2edd2e7e58e02992acfc",
+          "finitePacketSha256": "a81275548e8c00d5971edf99bdea04605464c9849e9dad72b9a4086a84574bbd",
+          "continuumPacketSha256": "2317ac1e18fd05b5987b98c2ceb4fb3f05edeed06e5dd9879367f33dbcf36b9b",
+          "finiteIncoming": 2,
+          "finiteOutgoing": 5,
+          "finiteCurrentShape": [
+            4,
+            4
+          ],
+          "continuumDirections": 7
+        },
+        "LAB_HELD__RHO4_CONSTANT__RIGHT": {
+          "owner": "RIGHT",
+          "sourceLabel": "LAB_HELD__RHO4_CONSTANT",
+          "sourceEnd": "RIGHT",
+          "inputSha256": "540e7121b9f28aff23da3a1c2d3ee1c2c00162cf701f2b0e1e02826e091a750f",
+          "familyInputSha256": "163d24fead540acc3fd663abb420c442dcc1e31101cc9973062be22f3fd18329",
+          "finitePacketSha256": "b48e525e9f842f6d944ff4cda47e04045dd0d81b5b9015fd33ab8c02b351ef57",
+          "continuumPacketSha256": "8f8d2b55f2baad5e410eb3a8364f8df3b78e08938c6a2a94312712aac12dec61",
+          "finiteIncoming": 2,
+          "finiteOutgoing": 5,
+          "finiteCurrentShape": [
+            4,
+            4
+          ],
+          "continuumDirections": 7
+        },
+        "LAB_HELD__RHOBR_CONSTANT__LEFT": {
+          "owner": "LEFT",
+          "sourceLabel": "LAB_HELD__RHO4_CONSTANT",
+          "sourceEnd": "LEFT",
+          "inputSha256": "3a46924efcfbac0c94d822eb2bdb28b5648cffdce729c5f6f6c73c62398d7045",
+          "familyInputSha256": "b4f54e915237ece88851e6cd1acab96aa12a9d5705fd2edd2e7e58e02992acfc",
+          "finitePacketSha256": "a81275548e8c00d5971edf99bdea04605464c9849e9dad72b9a4086a84574bbd",
+          "continuumPacketSha256": "2317ac1e18fd05b5987b98c2ceb4fb3f05edeed06e5dd9879367f33dbcf36b9b",
+          "finiteIncoming": 2,
+          "finiteOutgoing": 5,
+          "finiteCurrentShape": [
+            4,
+            4
+          ],
+          "continuumDirections": 7
+        },
+        "LAB_HELD__RHOBR_CONSTANT__RIGHT": {
+          "owner": "LAB_HELD__RHOBR_CONSTANT__RIGHT",
+          "sourceLabel": "LAB_HELD__RHOBR_CONSTANT",
+          "sourceEnd": "RIGHT",
+          "inputSha256": "c96c602fc6671ee65ddc8d5828eb5b8b0da03f030a1cf975542eb6a562e022dd",
+          "familyInputSha256": "5c52f5170b4beca067e8b9ad268b0fae765f543907dd09f6cc497a27b4212076",
+          "finitePacketSha256": "42a6b7c81bebfb2c8270abf4b644584b95de98595c3f39f9d1c8b6c7dc89c874",
+          "continuumPacketSha256": "bf5f5837490adeb0f87e9802a41506b4679accdfb0f86ba45c97edf39038810e",
+          "finiteIncoming": 2,
+          "finiteOutgoing": 5,
+          "finiteCurrentShape": [
+            4,
+            4
+          ],
+          "continuumDirections": 7
+        },
+        "MATERIAL_ADVECTED__RHO4_CONSTANT__LEFT": {
+          "owner": "LEFT",
+          "sourceLabel": "LAB_HELD__RHO4_CONSTANT",
+          "sourceEnd": "LEFT",
+          "inputSha256": "21bfa3db96e5edd76741c246d6caa59e158901db9114110d32f585fe95cffc3f",
+          "familyInputSha256": "b4f54e915237ece88851e6cd1acab96aa12a9d5705fd2edd2e7e58e02992acfc",
+          "finitePacketSha256": "a81275548e8c00d5971edf99bdea04605464c9849e9dad72b9a4086a84574bbd",
+          "continuumPacketSha256": "2317ac1e18fd05b5987b98c2ceb4fb3f05edeed06e5dd9879367f33dbcf36b9b",
+          "finiteIncoming": 2,
+          "finiteOutgoing": 5,
+          "finiteCurrentShape": [
+            4,
+            4
+          ],
+          "continuumDirections": 7
+        },
+        "MATERIAL_ADVECTED__RHO4_CONSTANT__RIGHT": {
+          "owner": "RIGHT",
+          "sourceLabel": "LAB_HELD__RHO4_CONSTANT",
+          "sourceEnd": "RIGHT",
+          "inputSha256": "540e7121b9f28aff23da3a1c2d3ee1c2c00162cf701f2b0e1e02826e091a750f",
+          "familyInputSha256": "163d24fead540acc3fd663abb420c442dcc1e31101cc9973062be22f3fd18329",
+          "finitePacketSha256": "b48e525e9f842f6d944ff4cda47e04045dd0d81b5b9015fd33ab8c02b351ef57",
+          "continuumPacketSha256": "8f8d2b55f2baad5e410eb3a8364f8df3b78e08938c6a2a94312712aac12dec61",
+          "finiteIncoming": 2,
+          "finiteOutgoing": 5,
+          "finiteCurrentShape": [
+            4,
+            4
+          ],
+          "continuumDirections": 7
+        },
+        "MATERIAL_ADVECTED__RHOBR_CONSTANT__LEFT": {
+          "owner": "LEFT",
+          "sourceLabel": "LAB_HELD__RHO4_CONSTANT",
+          "sourceEnd": "LEFT",
+          "inputSha256": "3a46924efcfbac0c94d822eb2bdb28b5648cffdce729c5f6f6c73c62398d7045",
+          "familyInputSha256": "b4f54e915237ece88851e6cd1acab96aa12a9d5705fd2edd2e7e58e02992acfc",
+          "finitePacketSha256": "a81275548e8c00d5971edf99bdea04605464c9849e9dad72b9a4086a84574bbd",
+          "continuumPacketSha256": "2317ac1e18fd05b5987b98c2ceb4fb3f05edeed06e5dd9879367f33dbcf36b9b",
+          "finiteIncoming": 2,
+          "finiteOutgoing": 5,
+          "finiteCurrentShape": [
+            4,
+            4
+          ],
+          "continuumDirections": 7
+        },
+        "MATERIAL_ADVECTED__RHOBR_CONSTANT__RIGHT": {
+          "owner": "LAB_HELD__RHOBR_CONSTANT__RIGHT",
+          "sourceLabel": "LAB_HELD__RHOBR_CONSTANT",
+          "sourceEnd": "RIGHT",
+          "inputSha256": "c96c602fc6671ee65ddc8d5828eb5b8b0da03f030a1cf975542eb6a562e022dd",
+          "familyInputSha256": "5c52f5170b4beca067e8b9ad268b0fae765f543907dd09f6cc497a27b4212076",
+          "finitePacketSha256": "42a6b7c81bebfb2c8270abf4b644584b95de98595c3f39f9d1c8b6c7dc89c874",
+          "continuumPacketSha256": "bf5f5837490adeb0f87e9802a41506b4679accdfb0f86ba45c97edf39038810e",
+          "finiteIncoming": 2,
+          "finiteOutgoing": 5,
+          "finiteCurrentShape": [
+            4,
+            4
+          ],
+          "continuumDirections": 7
+        }
+      },
+      "newContinuumFamilies": 1,
+      "newFiniteFamilies": 3,
+      "originalContinuumReuseAddresses": 6,
+      "newResponseSolves": 0,
+      "baselineMaterialResponseIsContinuumOnly": true,
+      "finiteMaximum": 3.797547027170515e-15,
+      "continuumMaximum": 1.528293012951136e-13
+    },
+    "validatorCounts": {
+      "families": 3,
+      "finiteCandidates": 54,
+      "finiteBasisDirections": 66,
+      "finiteSourcePairs": 12,
+      "finitePairEntries": 48,
+      "finiteControls": 12,
+      "newContinuumPairPackets": 50,
+      "newContinuumTableEntries": 26,
+      "unitArrays": 363,
+      "endAddresses": 8
+    },
+    "metadataSupplement": {
+      "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/boundary/production-acceptance-recovery-01",
+      "artifacts": {
+        "unit-overlay/checks.json": {
+          "sha256": "9ce84aecccb3b5b6fd4584c650a15b2a0eb655852c12350736af23a5ee9a1b11",
+          "bytes": 1305
+        },
+        "unit-overlay/mutation-controls.pickle": {
+          "sha256": "314b60e737bdc782e5c2f2a23ba56b13a5b00f98a3972ecd45c837d17a986d41",
+          "bytes": 947
+        },
+        "unit-overlay/dimension-state-view.pickle": {
+          "sha256": "0fbbc927e959278d3ba053c01a94c57987c7d770c346a85a67817e068c6ebc55",
+          "bytes": 35659
+        },
+        "unit-overlay/unit-source-pairs.pickle": {
+          "sha256": "d5d7c09db6a9bbc8a4196f5f31471d41768d8fa82ad9199558e8704e8233016e",
+          "bytes": 1200
+        }
+      },
+      "scope": "Four accepted current momentum declarations and their two exact native material aliases; raw producer metadata and all physical operands remain immutable.",
+      "mandatoryForDownstreamUnitConsumers": true
+    },
+    "guardSummary": {
+      "construction": {
+        "peakBytes": 2147483648,
+        "maximumCapReclaimEvents": 34312,
+        "oomEvents": 0,
+        "swapBytes": 0,
+        "minimumHostAvailableBytes": 23956119552
+      },
+      "validation": {
+        "peakBytes": 2147483648,
+        "maximumCapReclaimEvents": 18577,
+        "oomEvents": 0,
+        "swapBytes": 0,
+        "minimumHostAvailableBytes": 23737225216
+      }
+    }
   }
 }

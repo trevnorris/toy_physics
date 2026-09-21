@@ -1,5 +1,5 @@
 {
-  "status": "MATERIAL_RESPONSE_NUMERICAL_ADAPTER_PREPARED",
+  "status": "LAUNCHED_GUARDED_MATERIAL_RESPONSE_SOLVER_PREFLIGHT",
   "acceptedBoundary": "2e1e4a3c",
   "acceptedMaterialInteriors": "a95a0c0d",
   "helperSha256": "95fe5fc75462f68780150fce954ffc2ac2f59c8f8a69672255bfaf2ca4fdf89a",
@@ -451,11 +451,79 @@
     "planSha256": "513dad0ccb55ab58780f5a283bf246710ccdd3b34c47e513812dee8e559a8b98",
     "wiringSha256": "adf49525299224437999e914b019738d3eab8603c455d7de9a646e5674d578ef",
     "preflightRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/response/solver-preflight",
-    "preflightStatus": "PREPARED_NOT_LAUNCHED",
+    "preflightStatus": "RUNNING_UNDER_VERIFIED_GUARD",
     "newFiniteControls": 4,
     "newContinuumControls": 3,
     "newMaterialAmplitudeBookkeeping": 4,
     "historicalBaselineContinuumReused": true,
-    "physicalTranscriptEmitted": false
+    "physicalTranscriptEmitted": false,
+    "implementationCommit": "c7695257",
+    "launch": {
+      "launchedUtc": "2026-09-21T15:09:35.222353+00:00",
+      "guardPid": 758283,
+      "watcherPid": 758284,
+      "command": [
+        "/usr/bin/python",
+        "/var/projects/toy_physics/scripts/s11c_guarded_run.py",
+        "--log-directory",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/response/solver-preflight/resource-guard",
+        "--seconds",
+        "900",
+        "--",
+        "/usr/bin/python",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+        "--run-root",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/response/solver-preflight",
+        "--stage",
+        "coordinate_response_wiring",
+        "--",
+        "/usr/bin/python",
+        "-u",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_coordinate_response.py",
+        "--run-directory",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/response/solver-preflight/complete",
+        "--resume-focused",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/response/focused/complete",
+        "--preflight"
+      ],
+      "helperSha256": "856b9b800a7443415c9b82ad6ea3a1e63979d886317fa99fbda2b435e8ad46e2",
+      "planSha256": "513dad0ccb55ab58780f5a283bf246710ccdd3b34c47e513812dee8e559a8b98",
+      "guardSha256": "6492f5ab11dc2ab2f80bbfcc96d7eb6b8632afea07100dd8f74a7954f3ffe542",
+      "focusChecksSha256": "05bdefce12c8adc5d2cc1a58c3b0e4c746e5effe7517cdd86be89dc36d56c725",
+      "focusValidatorChecksSha256": "b733ef066d4ef5e8eadc6b4ab0d79a938a8e2b11cbcacd6b05f6d632ade53361",
+      "implementationCommit": "c76952573ea32fffe448eb28126b34a21818b25d",
+      "launchIsAcceptance": false,
+      "newSolves": 0,
+      "threadEnvironment": {
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "VECLIB_MAXIMUM_THREADS": "1",
+        "BLIS_NUM_THREADS": "1"
+      }
+    },
+    "verifiedLimits": {
+      "verified": true,
+      "actual": {
+        "memory.max": "2147483648",
+        "memory.swap.max": "0",
+        "pids.max": "32",
+        "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-f79a63715c32.service",
+        "nice": 15,
+        "affinity": [
+          15
+        ],
+        "threads": {
+          "OPENBLAS_NUM_THREADS": "1",
+          "OMP_NUM_THREADS": "1",
+          "MKL_NUM_THREADS": "1",
+          "NUMEXPR_NUM_THREADS": "1",
+          "VECLIB_MAXIMUM_THREADS": "1",
+          "BLIS_NUM_THREADS": "1"
+        }
+      }
+    },
+    "limitValidationSha256": "d1ddf8f6368ab62d994abd60ca8e311c8d70f9c3b8062764316a25ddbfa34868"
   }
 }

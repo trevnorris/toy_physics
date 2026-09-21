@@ -54,3 +54,9 @@ join those captured calls to the production calls. Production will reuse all
 completed preflight copies and wiring, save all seven missing numerical controls
 before comparisons, then compute each material response's actual amplitude/current
 bookkeeping. Full physical output/replay/publication follows numerical acceptance.
+
+The solver-routing preflight launched from c7695257 under actual verified
+whole-job 2 GiB, zero-swap, one-CPU, nice-15 and 32-task limits, with all native
+threads set to one. A single 900-second supervisor and silent local completion/
+error hook own continuation. Numerical solves are disabled; production is not
+launched until this routing check completes cleanly.

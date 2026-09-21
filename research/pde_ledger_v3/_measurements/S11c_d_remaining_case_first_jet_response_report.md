@@ -97,3 +97,14 @@ Saved-transcript validation launched from 68188f06 under supervisor 2176712
 and silent watcher 2176713, with one thread, 2 GiB and 900 seconds. The complete
 original sensitivity stream and bundle are immutable. This launch is not final
 output acceptance; the completion hook will continue after the actual outcome.
+
+Focused output is accepted after final exit zero, empty stderr and identical
+checks/stdout: 739.30 seconds plus 288.16 seconds of independent
+saved-hash/codec validation. All 147 sources, 11646 inputs, 526 unchanged copies
+and 533 artifacts pass. The four complete parts retain 10224 tags, 5104 keys
+and 295834 metadata paths. Sensitivity alone has 4092 tags, 2044 keys and
+156408 paths; its original 7639434-byte stream was never re-emitted.
+
+Eight output parts and final aggregation/publication remain. Measured replay
+cost requires separate bounded emission and validation phases. Numerical
+responses/checkpoint 47384f68 remain immutable.

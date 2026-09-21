@@ -61,7 +61,7 @@
   "remainingFiniteControlSolves": 4,
   "remainingContinuumControlSolves": 3,
   "scope": "Saved operators and own-case boundary/current/phase inputs; no new quadrature, interior assembly, modes, currents or response solve in this preparation.",
-  "next": "Validate complete saved sensitivity stream without re-emission, then accept focus and finish remaining output parts.",
+  "next": "Complete exactly eight remaining saved-output parts with bounded sequential emission/replay phases, then global codec aggregation and annex publication.",
   "focusedOutcome": {
     "stage": "response_inputs",
     "command": [
@@ -1504,5 +1504,159 @@
     "helperSha256": "94e9b11c8b5298e256aab31c3dd1aa265ba3225e7974c13e8341c55bae9ad755",
     "outputHelperSha256": "b27fc5bf3394f67a5e8c48deb8ee85e7bc39283749e9ecedfb3b3467106df69b",
     "productionChecksSha256": "609121335d2e55e7dd821fdcb57668369e8921642b43c3dd79b9811ff2c0e0f9"
+  },
+  "outputFocusedAcceptance": {
+    "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/response/output/focused-finish-01/complete",
+    "checksSha256": "dd9051ebce677f98c5f4fbdfea575ecf9e3dcee71ba367b2a0eb5ef2741deec1",
+    "status": "ACCEPTED_FIRST_JET_OUTPUT_FOCUS",
+    "parts": {
+      "historical_LAB_HELD__RHO4_CONSTANT": {
+        "directory": "parts/historical_LAB_HELD__RHO4_CONSTANT",
+        "kind": "historical",
+        "case": "LAB_HELD__RHO4_CONSTANT",
+        "sha256": "f4ee0aeafac391a0806e6af361823eecb4de385b3acecaa307d3038845903228",
+        "tags": 2994,
+        "keys": 1495,
+        "metadataPaths": 73663,
+        "reusedOriginalEmission": true
+      },
+      "continuum_LAB_HELD__RHOBR_CONSTANT": {
+        "directory": "parts/continuum_LAB_HELD__RHOBR_CONSTANT",
+        "case": "LAB_HELD__RHOBR_CONSTANT",
+        "kind": "continuum",
+        "sha256": "ea50ce3aa51914c6a1864cf5405ca30c91958c1f826454e88a217ae2de71e04a",
+        "tags": 506,
+        "keys": 251,
+        "metadataPaths": 45731,
+        "reusedOriginalEmission": false
+      },
+      "current_LAB_HELD__RHOBR_CONSTANT": {
+        "directory": "parts/current_LAB_HELD__RHOBR_CONSTANT",
+        "case": "LAB_HELD__RHOBR_CONSTANT",
+        "kind": "current",
+        "sha256": "08e8b1a9a94428e5bf23361bf8fcfe092b5eff43c969630103bfd5c7deed1c85",
+        "tags": 2632,
+        "keys": 1314,
+        "metadataPaths": 20032,
+        "reusedOriginalEmission": false
+      },
+      "sensitivity_LAB_HELD__RHOBR_CONSTANT": {
+        "directory": "parts/sensitivity_LAB_HELD__RHOBR_CONSTANT",
+        "case": "LAB_HELD__RHOBR_CONSTANT",
+        "kind": "sensitivity",
+        "sha256": "431794657942b0013e71c4a4ba57e7a5f088fca70fb8300f7797a9c3355dc63c",
+        "tags": 4092,
+        "keys": 2044,
+        "metadataPaths": 156408,
+        "reusedOriginalEmission": false
+      }
+    },
+    "outcome": {
+      "stage": "first_jet_output",
+      "command": [
+        "python",
+        "-u",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_first_jet_output_finish.py",
+        "--run-directory",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/response/output/focused-finish-01/complete",
+        "--mode",
+        "focused"
+      ],
+      "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/response/output/focused-finish-01/first_jet_output.stdout",
+      "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/response/output/focused-finish-01/first_jet_output.stderr",
+      "startedUtc": "2026-09-20T23:46:51.921150+00:00",
+      "childPid": 2176715,
+      "status": "completed",
+      "exitCode": 0,
+      "wallSeconds": 739.297150535509,
+      "stderrBytes": 0,
+      "finishedUtc": "2026-09-20T23:59:11.218346+00:00"
+    },
+    "validation": {
+      "status": "VALIDATED_COMPLETED_FIRST_JET_OUTPUT_FOCUS",
+      "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/response/output/focused-finish-01/complete",
+      "checksSha256": "dd9051ebce677f98c5f4fbdfea575ecf9e3dcee71ba367b2a0eb5ef2741deec1",
+      "outcome": {
+        "stage": "first_jet_output",
+        "command": [
+          "python",
+          "-u",
+          "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_first_jet_output_finish.py",
+          "--run-directory",
+          "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/response/output/focused-finish-01/complete",
+          "--mode",
+          "focused"
+        ],
+        "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/response/output/focused-finish-01/first_jet_output.stdout",
+        "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/response/output/focused-finish-01/first_jet_output.stderr",
+        "startedUtc": "2026-09-20T23:46:51.921150+00:00",
+        "childPid": 2176715,
+        "status": "completed",
+        "exitCode": 0,
+        "wallSeconds": 739.297150535509,
+        "stderrBytes": 0,
+        "finishedUtc": "2026-09-20T23:59:11.218346+00:00"
+      },
+      "sourceFiles": 147,
+      "inputPackets": 11646,
+      "copies": 526,
+      "artifacts": 533,
+      "checkedPaths": 12473,
+      "parts": {
+        "historical_LAB_HELD__RHO4_CONSTANT": {
+          "tags": 2994,
+          "keys": 1495,
+          "metadataPaths": 73663,
+          "localIndex": 1,
+          "decodedSha256": "60123c908a2a5e86ebf825fdf7390f2d5e3e50e9bf3f6b7bba9bfe9d09b3d8fd",
+          "bytes": 10064174
+        },
+        "continuum_LAB_HELD__RHOBR_CONSTANT": {
+          "tags": 506,
+          "keys": 251,
+          "metadataPaths": 45731,
+          "localIndex": 1,
+          "decodedSha256": "531c1a3c200d63da4ed0e044cdb8e90b6c9fcec5695a24bf02eece91ee575d04",
+          "bytes": 8655233
+        },
+        "current_LAB_HELD__RHOBR_CONSTANT": {
+          "tags": 2632,
+          "keys": 1314,
+          "metadataPaths": 20032,
+          "localIndex": 1,
+          "decodedSha256": "4e0bfc225f0393d43c4ee8fcef51a5f09d2da6694fb3ff6bfde36ccca5e6bc16",
+          "bytes": 4106416
+        },
+        "sensitivity_LAB_HELD__RHOBR_CONSTANT": {
+          "tags": 4092,
+          "keys": 2044,
+          "metadataPaths": 156408,
+          "localIndex": 1,
+          "decodedSha256": "93243c86bdba7ab1a11b463dcfbf4c8a6e6b84b65c6c680d67c4db8ca337aa51",
+          "bytes": 7639434
+        }
+      },
+      "validationJoin": {
+        "wholeNativeValidationSuffix": true,
+        "packetAddressEdits": 1,
+        "savedKeysAndIndexOnly": true,
+        "progressObserversOnly": true,
+        "sourceSha256": "0fe30a9c4771671e9fa139b0557f185f55d351887f2ba8b9fa4ed1abfb616db2",
+        "emitterSha256": "9886df873beafa730568aa5099b88d9e3c240ac7b81fc309be3b3ee3f9f27473",
+        "nativeOutputMainBytecodeUnchanged": true
+      },
+      "scriptSha256": "d88933d302d556ddebea916ed2f7a8afa172eaf2361bc2c8df745461d6a3762f",
+      "newEmissions": 0,
+      "newNumericalWork": 0,
+      "wallSeconds": 288.1573264449835,
+      "validationDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/response/output/focus-acceptance",
+      "validationChecksSha256": "9ba5baa378f2d8e5391574b5c2adb9e56e77375328e63264fa8bae207a6e801f",
+      "actualValidatorToolOutcome": {
+        "exitCode": 0,
+        "session": 69772,
+        "stderrBytes": 0,
+        "checksStdoutIdentical": true
+      }
+    }
   }
 }

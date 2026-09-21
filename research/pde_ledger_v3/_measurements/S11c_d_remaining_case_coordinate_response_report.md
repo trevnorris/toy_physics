@@ -25,3 +25,8 @@ is prepared to inspect saved system entries, full source/unit/chart/own-case
 routes, actual forcing controls and every pre/post hash, with preparation and
 scientific constructors disabled. Input acceptance remains pending its clean
 final outcome.
+
+The independent saved-input validator launched from 9d3515ed with actual
+verified 2 GiB, zero-swap, one-CPU, nice-15 and 32-task limits. One 900-second
+supervisor and silent completion/error hook own the run. No preparation or
+response solve is enabled. Acceptance awaits its final clean outcome.

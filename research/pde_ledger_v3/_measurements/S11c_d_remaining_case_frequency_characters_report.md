@@ -59,3 +59,18 @@ Recovery launched at 2026-09-21T22:29:37Z from c0860fda. Initial actual
 2-GiB/zero-swap/one-CPU/nice-15/32-task/single-thread limits are verified,
 with empty stderr. Its silent local hook handles completion/error; no model
 polling or automatic retry is scheduled. Launch is not acceptance.
+
+Recovery stopped after 104.10 native / 104.30 guard seconds at a missing
+baseline certificate lookup for source 005. Five source proof checks,
+14 complete pairs, the first source mutation controls and source inputs
+000–005 are preserved. No row census or scientific construction ran.
+Peak memory was 456,167,424 bytes, with zero cap/OOM/swap events and minimum
+host availability 23.68 GB. No output is accepted.
+
+The original certificate producer deliberately omits records whose actual
+saved raw residual is already zero. The recovery reader assumed every
+amplitude had a certificate. A separate guarded saved-operand diagnostic
+is prepared to inspect the failed source and all four case coverage tables,
+joining missing entries to their actual original owner factors and literal
+raw-zero branch. It repeats no completed certificate checks or scientific
+operations. The prior directory and every completed proof remain immutable.

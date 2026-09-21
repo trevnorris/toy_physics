@@ -1,5 +1,5 @@
 {
-  "status": "GUARDED_CASE_MATERIAL_INTERIOR_PRODUCTION_LAUNCHED",
+  "status": "MATERIAL_INTERIOR_QUADRATURE_DEPENDENCY_REPAIR_PREPARED",
   "acceptedBindings": "4757b38b",
   "acceptedEulerianInteriors": "2eed4150",
   "acceptedBaselineMaterial": "19a9f5a1",
@@ -16,7 +16,7 @@
     19,
     4
   ],
-  "next": "Validate only saved material rows/interiors after final completion; on trouble preserve all partial/full packets and resume only unfinished work.",
+  "next": "Guarded native unit-rule and unchanged-caller regression, then accept saved rules before resuming unstarted material production from completed inputs.",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/focused",
   "launch": {
     "launchedUtc": "2026-09-21T11:30:32.441127+00:00",
@@ -793,6 +793,100 @@
       }
     },
     "watcherState": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/production/completion-watcher/state.json",
-    "launchIsAcceptance": false
+    "launchIsAcceptance": false,
+    "finalOutcome": {
+      "status": "FAILED_BEFORE_FIRST_BASIS_ON_NATIVE_GAUSS_DEPENDENCY",
+      "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/production",
+      "outcome": {
+        "stage": "coordinate_matrices_construct",
+        "command": [
+          "/usr/bin/python",
+          "-u",
+          "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_coordinate_matrices_production.py",
+          "--run-directory",
+          "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/production/complete",
+          "--resume-focused",
+          "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/focused/complete"
+        ],
+        "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/production/coordinate_matrices_construct.stdout",
+        "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/production/coordinate_matrices_construct.stderr",
+        "startedUtc": "2026-09-21T11:55:30.094382+00:00",
+        "childPid": 168222,
+        "status": "failed",
+        "exitCode": 1,
+        "wallSeconds": 70.3361794299999,
+        "stderrBytes": 1621,
+        "finishedUtc": "2026-09-21T11:56:40.430607+00:00"
+      },
+      "guard": {
+        "exitCode": 1,
+        "wallSeconds": 70.4592442649955,
+        "unit": "s11c-guard-cfe739b29511",
+        "stderrBytes": 0,
+        "limitsVerified": true,
+        "childOutcome": {
+          "exitCode": 1,
+          "guardReason": null,
+          "wallSeconds": 70.39483039399784,
+          "childPid": 168220
+        }
+      },
+      "effectiveLimits": {
+        "memory.max": "2147483648",
+        "memory.swap.max": "0",
+        "pids.max": "32",
+        "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-cfe739b29511.service",
+        "nice": 15,
+        "affinity": [
+          15
+        ],
+        "threads": {
+          "OPENBLAS_NUM_THREADS": "1",
+          "OMP_NUM_THREADS": "1",
+          "MKL_NUM_THREADS": "1",
+          "NUMEXPR_NUM_THREADS": "1",
+          "VECLIB_MAXIMUM_THREADS": "1",
+          "BLIS_NUM_THREADS": "1"
+        }
+      },
+      "samples": 37,
+      "peakBytes": 2147483648,
+      "minimumHostAvailableBytes": 23861780480,
+      "finalMemoryEvents": "low 0\nhigh 0\nmax 4769\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0",
+      "sourceFiles": 111,
+      "inputPackets": 17711,
+      "copiedInputs": 3872,
+      "completedNewScientificPackets": 0,
+      "failure": "Global physical eigensolver prohibition blocked unchanged native NumPy leggauss(256) node generation.",
+      "logHashes": {
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/production/active.json": "1b5c319ae58b677833eb8efad8de4c170d9a8f08c9829d2f01e9cb46c6417786",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/production/coordinate_matrices_construct.invocation.json": "1b5c319ae58b677833eb8efad8de4c170d9a8f08c9829d2f01e9cb46c6417786",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/production/coordinate_matrices_construct.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/production/coordinate_matrices_construct.stderr": "b433f51942711135b6b95d9986a29f692e88a56010353006d8eec97c4303f4a7",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/production/guard.stdout": "e60bb8f5ed3073762ac0920c0328c890ffe744db81011621ca4b62f89a98e29a",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/production/guard.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/production/resource-guard/outcome.json": "e60bb8f5ed3073762ac0920c0328c890ffe744db81011621ca4b62f89a98e29a",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/production/resource-guard/child-outcome.json": "d95d3fc003427c7ef07a782df435895d6a59ef4d1e2b524f0d7fc9bfe7b34dc6",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/production/resource-guard/effective-limits.json": "97fd87f6fffaf1160c68aaf618c3f9bc54ed52b21ad8e3763c121df34c8f01f9",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/production/resource-guard/limit-validation.json": "41f2f30146e214d2bb6ddeb297cf63353192b092821a9f5852280c14f58f9283",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/production/resource-guard/resource-samples.jsonl": "fd9aecd1c7d3757be811c382d1b9496cd4002bb75c8ef9d8e56c3491203f10d1",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/production/complete/inputs.json": "cabe180fb67b5edc26b088b87606a87f2671cc59e177305f6f0ff11349e1f066"
+      }
+    }
+  },
+  "quadratureRuleRepair": {
+    "helper": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_coordinate_matrices_recover.py",
+    "helperSha256": "84c3f45195e94933b266e6cd2d9b02c2aa59a7081f8af7e59d0553d3f31860b7",
+    "plan": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_coordinate_matrices_recovery_plan.md",
+    "planSha256": "b8ec118e8742bdfb220b6412de35cd2f65cd53d52d86724041a2f687e79c676e",
+    "status": "PREPARED_NOT_ACCEPTED",
+    "nativeRuleOrders": [
+      4,
+      16,
+      256,
+      512
+    ],
+    "physicalEigensolversRemainBlocked": true,
+    "newPhysicalIntegration": false
   }
 }

@@ -1,5 +1,5 @@
 {
-  "status": "FOCUS_RECOVERY_COMPLETE_INDEPENDENT_VALIDATION_RUNNING",
+  "status": "ACCEPTED_CASE_MATERIAL_BINDING_INPUTS",
   "acceptedCoordinateSources": "3e167144",
   "acceptedBaselineMaterial": "19a9f5a1",
   "continuationStatus": "RESUMED_BY_USER",
@@ -8,7 +8,7 @@
   "resourceGuard": "scripts/s11c_guarded_run.py",
   "initialBudgetSeconds": 900,
   "focus": "Saved scalar/frame/row/layout joins and full native baseline replay with zero new source bindings or numerical work.",
-  "next": "Await silent validator completion; accept focus only after actual final clean outcome, then guarded production of missing bindings.",
+  "next": "Launch prepared guarded production; compute only missing material scalar/source/grade bindings and derive the actual numerical row partition.",
   "launch": {
     "launchedUtc": "2026-09-21T10:18:23.702482+00:00",
     "guardPid": 100174,
@@ -356,6 +356,288 @@
       "NUMEXPR_NUM_THREADS": "1",
       "VECLIB_MAXIMUM_THREADS": "1",
       "BLIS_NUM_THREADS": "1"
+    }
+  },
+  "focusAcceptance": {
+    "checkpoint": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_coordinate_bindings_focused.json",
+    "checksSha256": "1dfbc53a989f30939e8b0152bd655b213b50bc2ffc2c7c4cc7dcaed4e85ebe9d",
+    "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/bindings/focused-recovery-01/complete"
+  },
+  "independentValidation": {
+    "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/bindings/acceptance",
+    "checksSha256": "475dc3f41687a4ed3a9c7ca577a3f89b46301be602a9ab134a80f146de6924f6",
+    "scriptSha256": "5d39b34750caa1b4adbcd1607f8be696847fb38ad2501a7629ec69922f488efc",
+    "result": {
+      "status": "VALIDATED_SAVED_MATERIAL_BINDING_FOCUS",
+      "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/bindings/focused-recovery-01/complete",
+      "checksSha256": "1dfbc53a989f30939e8b0152bd655b213b50bc2ffc2c7c4cc7dcaed4e85ebe9d",
+      "validatorSha256": "5d39b34750caa1b4adbcd1607f8be696847fb38ad2501a7629ec69922f488efc",
+      "sourceFiles": 104,
+      "inputPackets": 10608,
+      "copiedInputs": 3188,
+      "artifacts": 3092,
+      "uniqueHashPaths": 13908,
+      "allPrePostHashes": true,
+      "cases": {
+        "LAB_HELD__RHO4_CONSTANT": {
+          "records": 375,
+          "rows": 80,
+          "sources": 35,
+          "terms": 160,
+          "savedOriginalScalarUses": 260,
+          "fullFrameAndInputJoins": true
+        },
+        "LAB_HELD__RHOBR_CONSTANT": {
+          "records": 335,
+          "rows": 70,
+          "sources": 25,
+          "terms": 140,
+          "savedOriginalScalarUses": 240,
+          "fullFrameAndInputJoins": true
+        },
+        "MATERIAL_ADVECTED__RHO4_CONSTANT": {
+          "records": 400,
+          "rows": 80,
+          "sources": 35,
+          "terms": 185,
+          "savedOriginalScalarUses": 285,
+          "fullFrameAndInputJoins": true
+        },
+        "MATERIAL_ADVECTED__RHOBR_CONSTANT": {
+          "records": 357,
+          "rows": 70,
+          "sources": 25,
+          "terms": 162,
+          "savedOriginalScalarUses": 262,
+          "fullFrameAndInputJoins": true
+        }
+      },
+      "records": 1467,
+      "rows": 300,
+      "terms": 647,
+      "sources": 120,
+      "sourceViewPairs": 70,
+      "historicalDiagnosticFields": 280,
+      "scalarCacheEntries": 501,
+      "completeSavedRoutes": 1064,
+      "originalScalarUses": 1047,
+      "profileCacheEntryJoins": 18,
+      "baselineRowArrayJoins": 80,
+      "baselineLayouts": 3,
+      "massResidualMaximum": 6.821210263296962e-13,
+      "scaledDirectActionMaximum": 9.033280303059541e-17,
+      "respondingFocusControls": 6,
+      "schemaRepairControls": 12,
+      "nativeJoins": {
+        "wholeNativeBinderReverseAst": true,
+        "edits": [
+          1,
+          2,
+          1,
+          1,
+          1,
+          1
+        ],
+        "nativeBinderAstSha256": "013541441e9ed719650634235e4178cea4d9a977bdee55500736c5f6a7403471",
+        "nativeChartAstSha256": "117e5fcc22ac48b062ddbe892c9a905a7170d51417eaffb227ae4e1bf7f8c3dd",
+        "nativeNumericalBindAstSha256": "5a07713fe33627a0d8e469a5baaf7af583cf3c141f4257efe6586ee025172830",
+        "cacheComparisonAstSha256": "3583400ba4fc3098eaf1b5f0d54b3113afdaa02280e21f76fd0e092391c5656d",
+        "profileCacheJoinAstSha256": "af3273c6a568327050cf4a4bcee2b586b89ce64865496a220e1c24f1839f688e"
+      },
+      "recoveryWiring": {
+        "wholeFocusReverseAst": true,
+        "prefixStatementsReplaced": 17,
+        "wholeUnfinishedTailIdentical": true,
+        "originalMainUnchanged": true,
+        "originalNativeBinderUnchanged": true,
+        "nativeBinderCallsInRecovery": 0,
+        "focusAstSha256": "e21aa5180a07a7399c4006ac416bb2a44e6bd56136c4b928c4109b5b2f6a20b0",
+        "mainAstSha256": "f384158bdab2fcfd70ed73d87d31443339030e0b401fc60bb34cf12ec17eacb4",
+        "constructAstSha256": "380997b3ef1cee1162d7e7e9baffbbca44ca6fba5368260e7142e7952ada49c9"
+      },
+      "newBindings": 0,
+      "newQuadrature": 0,
+      "newModesOrCurrents": 0,
+      "newMatricesOrSolves": 0,
+      "constructionGuard": {
+        "outcome": {
+          "exitCode": 0,
+          "wallSeconds": 351.884672553002,
+          "unit": "s11c-guard-3dea051f6670",
+          "stderrBytes": 0,
+          "limitsVerified": true,
+          "childOutcome": {
+            "exitCode": 0,
+            "guardReason": null,
+            "wallSeconds": 351.71485589099757,
+            "childPid": 106178
+          }
+        },
+        "limits": {
+          "memory.max": "2147483648",
+          "memory.swap.max": "0",
+          "pids.max": "32",
+          "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-3dea051f6670.service",
+          "nice": 15,
+          "affinity": [
+            15
+          ],
+          "threads": {
+            "OPENBLAS_NUM_THREADS": "1",
+            "OMP_NUM_THREADS": "1",
+            "MKL_NUM_THREADS": "1",
+            "NUMEXPR_NUM_THREADS": "1",
+            "VECLIB_MAXIMUM_THREADS": "1",
+            "BLIS_NUM_THREADS": "1"
+          }
+        },
+        "peakBytes": 2088161280,
+        "minimumHostAvailableBytes": 20349685760,
+        "finalMemoryEvents": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0"
+      },
+      "wallSeconds": 496.7886907100001
+    },
+    "guard": {
+      "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/bindings/acceptance",
+      "outcome": {
+        "exitCode": 0,
+        "wallSeconds": 504.41463918500085,
+        "unit": "s11c-guard-89d3dd0886c9",
+        "stderrBytes": 0,
+        "limitsVerified": true,
+        "childOutcome": {
+          "exitCode": 0,
+          "guardReason": null,
+          "wallSeconds": 504.1632056189992,
+          "childPid": 120785
+        }
+      },
+      "nativeOutcome": {
+        "stage": "validate",
+        "command": [
+          "/usr/bin/python",
+          "-u",
+          "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/bindings/acceptance/validate.py"
+        ],
+        "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/bindings/acceptance/validate.stdout",
+        "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/bindings/acceptance/validate.stderr",
+        "startedUtc": "2026-09-21T10:46:00.810477+00:00",
+        "childPid": 120788,
+        "status": "completed",
+        "exitCode": 0,
+        "wallSeconds": 503.9565036569984,
+        "stderrBytes": 0,
+        "finishedUtc": "2026-09-21T10:54:24.767127+00:00"
+      },
+      "effectiveLimits": {
+        "memory.max": "2147483648",
+        "memory.swap.max": "0",
+        "pids.max": "32",
+        "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-89d3dd0886c9.service",
+        "nice": 15,
+        "affinity": [
+          15
+        ],
+        "threads": {
+          "OPENBLAS_NUM_THREADS": "1",
+          "OMP_NUM_THREADS": "1",
+          "MKL_NUM_THREADS": "1",
+          "NUMEXPR_NUM_THREADS": "1",
+          "VECLIB_MAXIMUM_THREADS": "1",
+          "BLIS_NUM_THREADS": "1"
+        }
+      },
+      "peakBytes": 319574016,
+      "minimumHostAvailableBytes": 18962640896,
+      "finalMemoryEvents": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0",
+      "provenance": {
+        "resource-guard/stdout": "5ff4d2ea6aeea737b8508a2b15e66e6e7c6aafd48aedec3f1b4d27f204352f89",
+        "resource-guard/child-outcome.json": "b2365bda344286ca023082e7cd99ba27f8eff9009f4a286960173c1ee04a23b9",
+        "resource-guard/invocation.json": "773f0a9015e0ad932b4614d2722b9e523b8cc29053416b1dc0cf85b822dcc160",
+        "resource-guard/outcome.json": "30ab7dad4b016aaec277d017a978408924dcf57c25d576460d68dd1d8635b5cc",
+        "resource-guard/resource-samples.jsonl": "89fa275c8bc24d9741b830891cf0ee54a2a2d1c7d3001c1d33deec7530fe19ef",
+        "resource-guard/stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "resource-guard/limit-validation.json": "9c85a5deb50681b4fe026d5a8e2c5098f8c2d387eaf5547d5b164173847136a9",
+        "resource-guard/effective-limits.json": "124dd77f5ee4ff51b7e644d79ebb1392f4cd6157d2be346720713e9340bd2b6b"
+      }
+    },
+    "artifacts": {
+      "checks.json": {
+        "sha256": "475dc3f41687a4ed3a9c7ca577a3f89b46301be602a9ab134a80f146de6924f6",
+        "bytes": 4173
+      },
+      "guard.stderr": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "validate.stdout": {
+        "sha256": "475dc3f41687a4ed3a9c7ca577a3f89b46301be602a9ab134a80f146de6924f6",
+        "bytes": 4173
+      },
+      "validate.py": {
+        "sha256": "5d39b34750caa1b4adbcd1607f8be696847fb38ad2501a7629ec69922f488efc",
+        "bytes": 14208
+      },
+      "active.json": {
+        "sha256": "5ff4d2ea6aeea737b8508a2b15e66e6e7c6aafd48aedec3f1b4d27f204352f89",
+        "bytes": 684
+      },
+      "validate.invocation.json": {
+        "sha256": "5ff4d2ea6aeea737b8508a2b15e66e6e7c6aafd48aedec3f1b4d27f204352f89",
+        "bytes": 684
+      },
+      "normalization.lock": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "validated-MATERIAL_ADVECTED__RHO4_CONSTANT.json": {
+        "sha256": "8a3f70e06e7484bb85b2d4ced500086f8bc9342993dc89aa9a928fe44a42fda0",
+        "bytes": 136
+      },
+      "continuation.txt": {
+        "sha256": "0a0663e49709677cbaf18ca97c52fdf582411c2b11d68ff589e20c3c64519650",
+        "bytes": 3697
+      },
+      "process-census.txt": {
+        "sha256": "7bb282871d490f5c7015e5dea2986584a1e91621cf953bf48c61b28b87204b7e",
+        "bytes": 60039
+      },
+      "validate.stderr": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "launch.py": {
+        "sha256": "eba2c738c0cbac92181b2514cb81399fea2c3d1a3772a27824619f807a64c39a",
+        "bytes": 2945
+      },
+      "hash-preflight.json": {
+        "sha256": "90db56cd88dd4398939e4812679c910d859dfe3075fa7ed90d19cd78ad83fb22",
+        "bytes": 113
+      },
+      "validated-MATERIAL_ADVECTED__RHOBR_CONSTANT.json": {
+        "sha256": "4f6e11b4fb1e3dff753d1da5af5bdb085a66eec21a6498167cbc07ca721399f4",
+        "bytes": 136
+      },
+      "validated-LAB_HELD__RHO4_CONSTANT.json": {
+        "sha256": "568e66ad738e8269856143f9124a37e878f42875b6b7d08cef5f51675c0d0a03",
+        "bytes": 136
+      },
+      "validated-LAB_HELD__RHOBR_CONSTANT.json": {
+        "sha256": "93de275c22cf3945eec115b83467fe5c148478104d8bbe83b80d478a4c8d9a3c",
+        "bytes": 136
+      },
+      "guard.stdout": {
+        "sha256": "30ab7dad4b016aaec277d017a978408924dcf57c25d576460d68dd1d8635b5cc",
+        "bytes": 270
+      },
+      "launch.json": {
+        "sha256": "75117a7f982eef4c63a30556ac19ff20bb83098403d4f066ea62eb9c67725b5b",
+        "bytes": 1345
+      },
+      "guard-source.py": {
+        "sha256": "6492f5ab11dc2ab2f80bbfcc96d7eb6b8632afea07100dd8f74a7954f3ffe542",
+        "bytes": 8783
+      }
     }
   }
 }

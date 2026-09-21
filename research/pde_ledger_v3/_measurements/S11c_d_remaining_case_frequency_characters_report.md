@@ -124,3 +124,10 @@ certificate pairs, 156 native raw-zero pairs and all actual mutation operands,
 without executing producers, the native classifier or scientific constructors.
 Character-input acceptance and analytic/domain/end-family work follow only
 a clean final validation.
+
+The independent saved validator launched at 2026-09-21T23:10:53Z from
+cf3e53cd after static review of 821 actual packet paths and all three
+adapter-compilation routes. Initial actual 2-GiB/zero-swap/one-CPU/nice-15/
+32-task/native-single-thread containment is verified with empty stderr.
+The silent completion/error hook will continue the task; no polling or
+automatic retry is scheduled. Acceptance remains pending final validation.

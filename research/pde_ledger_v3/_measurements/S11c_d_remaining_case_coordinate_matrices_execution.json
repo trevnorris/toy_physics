@@ -1,5 +1,5 @@
 {
-  "status": "GUARDED_SAVED_MATERIAL_MATRIX_INPUT_VALIDATION_LAUNCHED",
+  "status": "ACCEPTED_CASE_MATERIAL_MATRIX_INPUTS",
   "acceptedBindings": "4757b38b",
   "acceptedEulerianInteriors": "2eed4150",
   "acceptedBaselineMaterial": "19a9f5a1",
@@ -16,7 +16,7 @@
     19,
     4
   ],
-  "next": "Accept focus after actual clean guarded outcome and independent saved evidence validation; only then launch new material integrations/interior assembly.",
+  "next": "Only 32 new material rows and own-case common-Eulerian interiors using the separately joined production inventory wrapper.",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/focused",
   "launch": {
     "launchedUtc": "2026-09-21T11:30:32.441127+00:00",
@@ -410,5 +410,311 @@
     "helper": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_coordinate_matrices_production.py",
     "sha256": "ae42439c69938969294056c421d4e55c3099fc31924354ae202af7d04b149055",
     "reason": "Preserve copied focus inventory; one output filename constant only; original helper unchanged."
+  },
+  "acceptedFocus": {
+    "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/focused/complete",
+    "checksSha256": "720cff0a9fd7f04313616141ba38ccd7f875bcbb4539d6411faacefa8645466b",
+    "checkpoint": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_coordinate_matrices_focused.json",
+    "checkpointSha256": "119b2b29b3aae3cb80c0776276ade31d7ea99190f89b8533a60f4ea908e8d2e0"
+  },
+  "independentValidation": {
+    "outcome": {
+      "stage": "validate",
+      "command": [
+        "/usr/bin/python",
+        "-u",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/acceptance/validate.py"
+      ],
+      "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/acceptance/validate.stdout",
+      "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/acceptance/validate.stderr",
+      "startedUtc": "2026-09-21T11:47:05.897663+00:00",
+      "childPid": 165005,
+      "status": "completed",
+      "exitCode": 0,
+      "wallSeconds": 213.075179063002,
+      "stderrBytes": 0,
+      "finishedUtc": "2026-09-21T11:50:38.972896+00:00"
+    },
+    "checksSha256": "82d54ca151a1d790e57999de3f6ffac66b4210446642fc7ed0d31f493d716e25",
+    "result": {
+      "status": "VALIDATED_SAVED_CASE_MATERIAL_MATRIX_INPUTS",
+      "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/focused/complete",
+      "checksSha256": "720cff0a9fd7f04313616141ba38ccd7f875bcbb4539d6411faacefa8645466b",
+      "validatorSha256": "6898ed4c8fd3a250c28bf1d21dde4308a24c6e37b6335eff219465d5fb696b4f",
+      "sourceFiles": 109,
+      "inputPackets": 17674,
+      "copiedInputs": 3837,
+      "artifacts": 3870,
+      "acceptedBindingArtifactCopies": 3816,
+      "uniqueHashPaths": 21666,
+      "allPrePostHashes": true,
+      "cases": {
+        "LAB_HELD__RHO4_CONSTANT": {
+          "rows": 80,
+          "sources": 35,
+          "terms": 160,
+          "records": 375,
+          "newRows": [],
+          "reusedRows": 80,
+          "layouts": 0,
+          "coefficientRoutes": 584,
+          "controls": 6
+        },
+        "LAB_HELD__RHOBR_CONSTANT": {
+          "rows": 70,
+          "sources": 25,
+          "terms": 140,
+          "records": 335,
+          "newRows": [
+            28,
+            29,
+            30,
+            46,
+            47,
+            51,
+            52,
+            53,
+            54
+          ],
+          "reusedRows": 61,
+          "layouts": 2,
+          "coefficientRoutes": 527,
+          "controls": 6
+        },
+        "MATERIAL_ADVECTED__RHO4_CONSTANT": {
+          "rows": 80,
+          "sources": 35,
+          "terms": 185,
+          "records": 400,
+          "newRows": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            21,
+            22,
+            23,
+            24,
+            25,
+            60,
+            61,
+            62,
+            63
+          ],
+          "reusedRows": 61,
+          "layouts": 2,
+          "coefficientRoutes": 634,
+          "controls": 6
+        },
+        "MATERIAL_ADVECTED__RHOBR_CONSTANT": {
+          "rows": 70,
+          "sources": 25,
+          "terms": 162,
+          "records": 357,
+          "newRows": [
+            50,
+            51,
+            52,
+            53
+          ],
+          "reusedRows": 66,
+          "layouts": 1,
+          "coefficientRoutes": 572,
+          "controls": 6
+        }
+      },
+      "counts": {
+        "routes": 2317,
+        "nativeTerms": 647,
+        "rows": 300,
+        "sources": 120,
+        "newRows": 32,
+        "reuses": 268,
+        "controls": 24,
+        "sequenceControls": 16
+      },
+      "nativeJoins": {
+        "accumulator": {
+          "wholeAccumulatorReverseAstJoin": true,
+          "changedExpectedVolumeExpressions": 1,
+          "originalExpression": "(2 * setting['momentumBound']) ** len(variables)",
+          "materialExpression": "self.material_box_volume(variables)",
+          "nativeHelperSha256": "f187d9426be8069342a363a0466c175d32a8cb46101e32a14c433ccb9118e469"
+        },
+        "bodies": {
+          "MaterialProduction": "c52aa5dbdbc3c4d10d77721d42d93eea2bc15ec9571806075ed98adca04f1a43",
+          "MaterialMomentum": "a209a6c16305cede5b6382d72b9f8eb42a8e54072f17b898ea4a083a4fd99a81",
+          "Chart": "117e5fcc22ac48b062ddbe892c9a905a7170d51417eaffb227ae4e1bf7f8c3dd",
+          "BasisMomentum": "48709e1dd6e3c6b6058817019c4f05112d0ca376ddc04da0b8ca79312251bd90",
+          "assemble": "8b6fcf1472d44d734b5f3a91ed492285a919a610d1f996a4ee4c42db45cda421",
+          "direct_cells": "2253e89fbdac3b8217090443eaf6b349bf13351b599b3d15cf7ba8531e874874",
+          "values": "f7b5587a5fb4e86948ba75baa7db893beecf8cdbe1b313fe5ce1ab0b024a6aaa",
+          "recombine": "bcb2cda88876448ef2d6f8ee8f3839ec95db626d2b0ac5b6ae1c5c797023e4b6",
+          "mass_controls": "cd765471f03df6369ec9a53e82a3a62f47d39745197261c636e64cafe314fc54",
+          "restore": "6cbffd0c1f20b7bd6db7818814346ed9d6c84956c3b46ea4d4b198a1cc2239f2",
+          "restore_chart": "780bf39d6d094af42d0d0b0880177265f064cc99bb12f1647d908ed3fe632f38"
+        }
+      },
+      "productionInventoryJoin": {
+        "wholeCoordinatorReverseAst": true,
+        "changedConstants": 1,
+        "old": "case-inventory.json",
+        "new": "production-case-inventory.json",
+        "originalCoordinatorAstSha256": "88da1ba8ec73454aaf84e6aecaa734532bd3d3513d2e887c0cfb5eb41b4690ac",
+        "originalMainAstSha256": "ac58161c6f52e0b53a973de8cdd6eb1b6718c0c3a58e7c65845930dafa664d1b",
+        "nativeBodiesUnchanged": true
+      },
+      "maximumSavedMassResidual": 6.821210263296962e-13,
+      "maximumSavedActionResidual": 1.0103182026100664e-16,
+      "maximumSavedTransportedDerivativeResidual": 2.350586373466101e-10,
+      "newBindingBasisQuadratureMatricesModesCurrentsSolves": 0,
+      "constructionGuard": {
+        "outcome": {
+          "exitCode": 0,
+          "wallSeconds": 461.43996640099795,
+          "unit": "s11c-guard-fb0a2ca553a7",
+          "stderrBytes": 0,
+          "limitsVerified": true,
+          "childOutcome": {
+            "exitCode": 0,
+            "guardReason": null,
+            "wallSeconds": 461.3462099339995,
+            "childPid": 145359
+          }
+        },
+        "limits": {
+          "memory.max": "2147483648",
+          "memory.swap.max": "0",
+          "pids.max": "32",
+          "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-fb0a2ca553a7.service",
+          "nice": 15,
+          "affinity": [
+            15
+          ],
+          "threads": {
+            "OPENBLAS_NUM_THREADS": "1",
+            "OMP_NUM_THREADS": "1",
+            "MKL_NUM_THREADS": "1",
+            "NUMEXPR_NUM_THREADS": "1",
+            "VECLIB_MAXIMUM_THREADS": "1",
+            "BLIS_NUM_THREADS": "1"
+          }
+        },
+        "peakBytes": 2147483648,
+        "minimumHostAvailableBytes": 21275901952,
+        "finalMemoryEvents": "low 0\nhigh 0\nmax 35022\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0"
+      },
+      "wallSeconds": 210.79456885200125,
+      "peakRssKiB": 341660
+    },
+    "guard": {
+      "outcome": {
+        "exitCode": 0,
+        "wallSeconds": 213.2414183969995,
+        "unit": "s11c-guard-7729befcd8e4",
+        "stderrBytes": 0,
+        "limitsVerified": true,
+        "childOutcome": {
+          "exitCode": 0,
+          "guardReason": null,
+          "wallSeconds": 213.1564080260032,
+          "childPid": 165002
+        }
+      },
+      "invocation": {
+        "stage": "validate",
+        "command": [
+          "/usr/bin/python",
+          "-u",
+          "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/acceptance/validate.py"
+        ],
+        "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/acceptance/validate.stdout",
+        "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/acceptance/validate.stderr",
+        "startedUtc": "2026-09-21T11:47:05.897663+00:00",
+        "childPid": 165005,
+        "status": "completed",
+        "exitCode": 0,
+        "wallSeconds": 213.075179063002,
+        "stderrBytes": 0,
+        "finishedUtc": "2026-09-21T11:50:38.972896+00:00"
+      },
+      "limits": {
+        "memory.max": "2147483648",
+        "memory.swap.max": "0",
+        "pids.max": "32",
+        "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-7729befcd8e4.service",
+        "nice": 15,
+        "affinity": [
+          15
+        ],
+        "threads": {
+          "OPENBLAS_NUM_THREADS": "1",
+          "OMP_NUM_THREADS": "1",
+          "MKL_NUM_THREADS": "1",
+          "NUMEXPR_NUM_THREADS": "1",
+          "VECLIB_MAXIMUM_THREADS": "1",
+          "BLIS_NUM_THREADS": "1"
+        }
+      },
+      "peakBytes": 2147483648,
+      "minimumHostAvailableBytes": 23095418880,
+      "finalMemoryEvents": "low 0\nhigh 0\nmax 7297\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0",
+      "artifacts": {
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/acceptance/active.json": {
+          "sha256": "2d4180d4b50dc064d30e56fc0b4930d028e4d50131a03fc390ddcfc36c99c6fa",
+          "bytes": 683
+        },
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/acceptance/validate.invocation.json": {
+          "sha256": "2d4180d4b50dc064d30e56fc0b4930d028e4d50131a03fc390ddcfc36c99c6fa",
+          "bytes": 683
+        },
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/acceptance/validate.stdout": {
+          "sha256": "82d54ca151a1d790e57999de3f6ffac66b4210446642fc7ed0d31f493d716e25",
+          "bytes": 5293
+        },
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/acceptance/validate.stderr": {
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/acceptance/guard.stdout": {
+          "sha256": "c9e501571985448474176b67037aa465b232680414a821e63570cf8cfd3f819f",
+          "bytes": 269
+        },
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/acceptance/guard.stderr": {
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/acceptance/resource-guard/outcome.json": {
+          "sha256": "c9e501571985448474176b67037aa465b232680414a821e63570cf8cfd3f819f",
+          "bytes": 269
+        },
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/acceptance/resource-guard/child-outcome.json": {
+          "sha256": "90ca746adbc2e3a286dd5be05b2bf8722f35c14d561990570a1bd20c4d1166ef",
+          "bytes": 101
+        },
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/acceptance/resource-guard/effective-limits.json": {
+          "sha256": "6389a3e738b6561854a28e6e27ab613208306d03a9f2c3539b225f4dc034bf18",
+          "bytes": 441
+        },
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/acceptance/resource-guard/limit-validation.json": {
+          "sha256": "b32ab7ebb17a28487a182abc0c9e9a1e773f4db682f562934a23f93256567a8d",
+          "bytes": 511
+        },
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/acceptance/resource-guard/resource-samples.jsonl": {
+          "sha256": "096dedb475079c541b155c2651971e7470b11e1efc1a7b2a42167617b9202e4b",
+          "bytes": 43853
+        },
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/acceptance/launch.json": {
+          "sha256": "01b5d39198b04e04f8d7a0cfafa89220bea5a24e25764de05f3c945268514688",
+          "bytes": 1345
+        }
+      }
+    }
   }
 }

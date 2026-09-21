@@ -22,3 +22,18 @@ The worker launched at 2026-09-21T22:11:48Z from implementation 9bee15b6.
 Initial actual 2-GiB/zero-swap/one-CPU/nice-15/single-thread containment is
 verified and stderr is empty. Its durable local hook reports completion or
 error; no polling or automatic retry is scheduled. Launch is not acceptance.
+
+The worker stopped after 78.11 native seconds at the first baseline source's
+amplitude proof guard. No character binding, derivative or row census ran.
+The manifest, 1,571 accepted references, baseline character owner table,
+context/unit/row/term inputs and first source packet are preserved. Peak
+memory was 349,290,496 bytes, with zero cap/OOM/swap events and minimum host
+availability 23.67 GB. This was an assertion failure, not a resource failure.
+
+Source review shows that the new reader demands a zero raw amplitude residual,
+while the accepted native factor producer checks separate saved exact
+reconstruction certificates. A guarded saved-operand diagnostic now checks
+which part of the assertion failed, joins the original certificate and checks
+baseline row schema. It enables no scientific constructor. The original run
+is not restarted, and no result is accepted. Its silent hook will continue
+only after the diagnostic's actual outcome and preserved evidence are read.

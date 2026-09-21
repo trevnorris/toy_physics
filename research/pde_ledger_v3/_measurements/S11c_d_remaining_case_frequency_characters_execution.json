@@ -1,5 +1,5 @@
 {
-  "status": "RUNNING_GUARDED_CHARACTER_INPUTS",
+  "status": "FAILED_SAVED_AMPLITUDE_GUARD_AWAITING_DIAGNOSTIC",
   "sourceAcceptanceCommit": "ed3ac234",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/characters",
   "helperSha256": "d373807160f996877c8a2962a16e53214da723a5c48aa83298ce2ac1820ff03c",
@@ -78,5 +78,79 @@
       "VECLIB_MAXIMUM_THREADS": "1",
       "BLIS_NUM_THREADS": "1"
     }
+  },
+  "failedOutcome": {
+    "supervisor": {
+      "stage": "frequency_characters",
+      "command": [
+        "/usr/bin/python",
+        "-u",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_characters.py",
+        "--run-directory",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/characters/complete"
+      ],
+      "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/characters/frequency_characters.stdout",
+      "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/characters/frequency_characters.stderr",
+      "startedUtc": "2026-09-21T22:11:48.365231+00:00",
+      "childPid": 928463,
+      "status": "failed",
+      "exitCode": 1,
+      "wallSeconds": 78.11471898299351,
+      "stderrBytes": 880,
+      "finishedUtc": "2026-09-21T22:13:06.480009+00:00"
+    },
+    "guard": {
+      "exitCode": 1,
+      "wallSeconds": 78.28049834599369,
+      "unit": "s11c-guard-5753021a55d3",
+      "stderrBytes": 0,
+      "limitsVerified": true,
+      "childOutcome": {
+        "exitCode": 1,
+        "guardReason": null,
+        "wallSeconds": 78.20518971599813,
+        "childPid": 928459
+      }
+    },
+    "resources": {
+      "peakBytes": 349290496,
+      "minHostBytes": 23665274880,
+      "lastEvents": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0",
+      "maxSwap": 0
+    },
+    "stderrSha256": "9bdd012c3e03570e301edc4f0d9c5aa8ac132079916004443b1be912da5b5fd8",
+    "guardLocation": "prepare: complete saved actual Fourier character/amplitude equations",
+    "scientificConstructionCompleted": false,
+    "rowCensusStarted": false
+  },
+  "diagnostic": {
+    "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/characters-proof-diagnostic",
+    "scriptSha256": "a39173539cc1e7dbf0840b2c7e91ceb48365dc989e83346ae363d330b1a71ac9",
+    "watcher": {
+      "armedUtc": "2026-09-21T22:18:13.979813+00:00",
+      "guardPid": 930470,
+      "watcherPid": 931124,
+      "diagnosticOnly": true,
+      "noAutomaticRetry": true
+    },
+    "actualLimits": {
+      "memory.max": "2147483648",
+      "memory.swap.max": "0",
+      "pids.max": "32",
+      "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-383d7c442e32.service",
+      "nice": 15,
+      "affinity": [
+        15
+      ],
+      "threads": {
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "VECLIB_MAXIMUM_THREADS": "1",
+        "BLIS_NUM_THREADS": "1"
+      }
+    },
+    "scope": "Saved failed-source and accepted certificate/schema reader only; no binding/diff/certificate construction."
   }
 }

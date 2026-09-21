@@ -209,3 +209,8 @@ original files remain untouched and writes through references are prohibited.
 The same 2 GiB/zero-swap/single-CPU/900-second guard remains. No emission, payload
 replay or scientific construction is repeated. The remaining three replays and
 aggregation will separate their work from final file audits to fit bounded phases.
+
+The audit-only continuation launched from 992c02af at 19:48:09 UTC. Its actual
+whole-job 2 GiB, zero-swap, one-CPU, nice-15 and 32-task limits are verified;
+the stdlib worker also has a 512 MiB address-space bound. One silent local hook
+will report its final outcome. No completed replay or scientific work repeats.

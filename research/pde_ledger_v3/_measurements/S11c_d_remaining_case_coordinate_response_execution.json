@@ -1799,7 +1799,7 @@
     }
   },
   "materialOutputAuditContinuation": {
-    "status": "PREPARED_ONLY_UNFINISHED_FINAL_HASH_AUDIT",
+    "status": "RUNNING_GUARDED_FINAL_AUDIT",
     "originalSequence": {
       "stage": "coordinate_output_construct",
       "command": [
@@ -1850,6 +1850,64 @@
     "newScientificWork": 0,
     "newIndividualEmission": 0,
     "newPayloadReplay": 0,
-    "fileReuse": "Explicit hashed symlink references preserve original bytes and paths; new mutable state is separate."
+    "fileReuse": "Explicit hashed symlink references preserve original bytes and paths; new mutable state is separate.",
+    "launch": {
+      "launchedUtc": "2026-09-21T19:48:09.361798+00:00",
+      "guardPid": 879667,
+      "watcherPid": 879668,
+      "command": [
+        "/usr/bin/python",
+        "/var/projects/toy_physics/scripts/s11c_guarded_run.py",
+        "--log-directory",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/response/output/production-audit-finish-01/resource-guard",
+        "--seconds",
+        "900",
+        "--",
+        "/usr/bin/python",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+        "--run-root",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/response/output/production-audit-finish-01",
+        "--stage",
+        "coordinate_output_audit",
+        "--",
+        "/usr/bin/python",
+        "-u",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_coordinate_output_audit_finish.py",
+        "--run-directory",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/response/output/production-audit-finish-01/complete"
+      ],
+      "helperSha256": "14908ab4f97855771f1b9d2476a86461870f442477d09c239bfd9bf08f7123a0",
+      "guardSha256": "6492f5ab11dc2ab2f80bbfcc96d7eb6b8632afea07100dd8f74a7954f3ffe542",
+      "originalManifestSha256": "1d5fcf5f39aee93f863a2470c298bdc28e90c3ef79ec16147f6cb3b26a4a8ded",
+      "implementationCommit": "992c02af16af3dd9989b1c6757f393aecd1531cd",
+      "launchIsAcceptance": false,
+      "newScientificConstruction": false,
+      "newPayloadReplay": false,
+      "newPhysicalEmission": false,
+      "wholeJobMemoryBytes": 2147483648,
+      "workerAddressSpaceBytes": 536870912,
+      "fileReuse": "explicit immutable original references with fresh mutable state"
+    },
+    "actualLimits": {
+      "verified": true,
+      "actual": {
+        "memory.max": "2147483648",
+        "memory.swap.max": "0",
+        "pids.max": "32",
+        "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-16325379e18a.service",
+        "nice": 15,
+        "affinity": [
+          15
+        ],
+        "threads": {
+          "OPENBLAS_NUM_THREADS": "1",
+          "OMP_NUM_THREADS": "1",
+          "MKL_NUM_THREADS": "1",
+          "NUMEXPR_NUM_THREADS": "1",
+          "VECLIB_MAXIMUM_THREADS": "1",
+          "BLIS_NUM_THREADS": "1"
+        }
+      }
+    }
   }
 }

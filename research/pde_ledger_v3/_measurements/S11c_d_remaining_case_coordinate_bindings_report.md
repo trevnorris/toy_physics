@@ -9,3 +9,5 @@ The saved-pair regression completed cleanly in 8.96 seconds under the whole-job 
 Recovery restores saved contexts one at a time, reconstructs only cache bookkeeping from saved operands, and joins each recovered route to the saved baseline value. It does not rerun the binder or chart constructor. Reconstructed route order is explicitly not claimed to be the original lost in-memory call order. Full recovered focus and independent acceptance remain pending; production is not authorized to pass this checkpoint early.
 
 The original job reached its 2 GiB cgroup cap and recorded reclaim/limit events, but zero swap and zero OOM events; minimum host available memory was over 21 GiB. The small schema regression peaked below 100 MiB with no cap/OOM events. Containment remains mandatory. The earlier laptop freeze cause remains unconfirmed.
+
+Recovery launched from ff068ffe under guard 106164 and silent watcher 106165. Effective whole-job limits were independently read and verified: 2 GiB, zero swap, one CPU, 32 tasks and nice 15. This launch is not scientific acceptance.

@@ -106,3 +106,21 @@ actual 2-GiB/zero-swap/one-CPU/nice-15/32-task/native-single-thread limits
 are verified and stderr is empty. Its silent local hook handles completion
 or error; no polling or automatic retry is scheduled. Launch is not
 acceptance.
+
+Recovery completed cleanly in 175.77 worker /
+177.63 native seconds. All 120 own source characters reuse saved
+baseline values; none is pending. All 300 row records are complete and
+frequency dependent, while the scalar characters are frequency independent.
+The 1,467 records, 647 terms and 120 sources remain explicit; numerical
+row reuse is not established. The run retained 137 sources, 8,145 inputs,
+1,751 references and 2,548 artifacts, including all 1,690 prior files.
+Five completed source proofs and their mutations were reused. Peak memory
+was 293,011,456 bytes, with 0 cap/reclaim events, zero OOM/swap and
+minimum host availability 23.56 GB.
+
+An independent saved-only validator is prepared to join all source/unit/
+character/row/proof operands and every pre/post hash. It checks 144 saved
+certificate pairs, 156 native raw-zero pairs and all actual mutation operands,
+without executing producers, the native classifier or scientific constructors.
+Character-input acceptance and analytic/domain/end-family work follow only
+a clean final validation.

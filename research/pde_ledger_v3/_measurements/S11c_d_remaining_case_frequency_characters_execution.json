@@ -1,5 +1,5 @@
 {
-  "status": "RUNNING_NATIVE_RAW_ZERO_PROOF_CONTINUATION",
+  "status": "PREPARED_INDEPENDENT_SAVED_CHARACTER_VALIDATION",
   "sourceAcceptanceCommit": "ed3ac234",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/characters",
   "helperSha256": "d373807160f996877c8a2962a16e53214da723a5c48aa83298ce2ac1820ff03c",
@@ -647,7 +647,7 @@
     "workerSeconds": 128.7362117550074
   },
   "zeroRecovery": {
-    "status": "RUNNING",
+    "status": "COMPLETED_AWAITING_VALIDATION",
     "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/characters-recovery-02",
     "helperSha256": "d013e48ebb118d408c7540c985e70b39c3228ec76996cd5a858848df9b2a80a8",
     "planSha256": "6629fe3e00289882491c6e4a35eb65be416ec4928211ad44df63d63d18c602c7",
@@ -723,6 +723,85 @@
         "VECLIB_MAXIMUM_THREADS": "1",
         "BLIS_NUM_THREADS": "1"
       }
+    },
+    "checksSha256": "be5701a0932bd070cd0c7008e78de4b01bbf273c31f7a7ae524c45f5528c9f0f",
+    "outcomeInspection": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/character-acceptance/prelaunch-production-inspection.json",
+    "actualOutcome": {
+      "checksSha256": "be5701a0932bd070cd0c7008e78de4b01bbf273c31f7a7ae524c45f5528c9f0f",
+      "guard": {
+        "supervisor": {
+          "stage": "frequency_characters_zero_recover",
+          "command": [
+            "/usr/bin/python",
+            "-u",
+            "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_characters_zero_recover.py",
+            "--run-directory",
+            "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/characters-recovery-02/complete"
+          ],
+          "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/characters-recovery-02/frequency_characters_zero_recover.stdout",
+          "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/characters-recovery-02/frequency_characters_zero_recover.stderr",
+          "startedUtc": "2026-09-21T22:56:23.529534+00:00",
+          "childPid": 945264,
+          "status": "completed",
+          "exitCode": 0,
+          "wallSeconds": 177.63097047699557,
+          "stderrBytes": 0,
+          "finishedUtc": "2026-09-21T22:59:21.160568+00:00"
+        },
+        "guard": {
+          "exitCode": 0,
+          "wallSeconds": 177.81285566999577,
+          "unit": "s11c-guard-3e09348ffb6d",
+          "stderrBytes": 0,
+          "limitsVerified": true,
+          "childOutcome": {
+            "exitCode": 0,
+            "guardReason": null,
+            "wallSeconds": 177.73619030800182,
+            "childPid": 945259
+          }
+        },
+        "limits": {
+          "memory.max": "2147483648",
+          "memory.swap.max": "0",
+          "pids.max": "32",
+          "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-3e09348ffb6d.service",
+          "nice": 15,
+          "affinity": [
+            15
+          ],
+          "threads": {
+            "OPENBLAS_NUM_THREADS": "1",
+            "OMP_NUM_THREADS": "1",
+            "MKL_NUM_THREADS": "1",
+            "NUMEXPR_NUM_THREADS": "1",
+            "VECLIB_MAXIMUM_THREADS": "1",
+            "BLIS_NUM_THREADS": "1"
+          }
+        },
+        "memoryPeakBytes": 293011456,
+        "swapBytes": 0,
+        "capReclaims": 0,
+        "minimumHostAvailableBytes": 23564533760,
+        "oomEvents": 0
+      },
+      "workerSeconds": 175.77335343799496,
+      "counts": {
+        "sourceFiles": 137,
+        "inputPackets": 8145,
+        "referencedInputs": 1751,
+        "artifacts": 2548
+      },
+      "savedCharacterUses": 120,
+      "pendingCharacters": 0
     }
+  },
+  "validation": {
+    "status": "PREPARED",
+    "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/character-acceptance",
+    "planSha256": "e0ef61479c4b895b14b4c1bd8b46dfc96a89abcd6c9bc01bf1853b84f33349af",
+    "validatorSha256": "66737a5e87e27a41dd827db633dab59fe7ebedc8d7e09d86823e4e4d024ab89b",
+    "staticReviewSha256": "710892700582680826ddbe60bde1529392d9d785fe59a70d608cb72235a988fa",
+    "actualPacketPathsReviewed": 821
   }
 }

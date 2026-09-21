@@ -1,5 +1,5 @@
 {
-  "status": "ACCEPTED_NATIVE_GAUSS_RULE_REPAIR",
+  "status": "GUARDED_SAVED_INPUT_MATERIAL_INTERIOR_RECOVERY_LAUNCHED",
   "acceptedBindings": "4757b38b",
   "acceptedEulerianInteriors": "2eed4150",
   "acceptedBaselineMaterial": "19a9f5a1",
@@ -16,7 +16,7 @@
     19,
     4
   ],
-  "next": "Launch saved-input material production recovery with accepted native Gauss rules; only 32 unstarted rows and three missing case interior assemblies.",
+  "next": "Use final completion/error hook; validate saved material basis/layout/rows/matrices only after actual final exit. Preserve completed science on any failure; no automatic retry.",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/focused",
   "launch": {
     "launchedUtc": "2026-09-21T11:30:32.441127+00:00",
@@ -1212,5 +1212,80 @@
         }
       }
     }
+  },
+  "acceptedQuadratureRuleRepairCommit": "19335699",
+  "productionRecovery": {
+    "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/production-recovery-01",
+    "launch": {
+      "launchedUtc": "2026-09-21T12:20:56.236654+00:00",
+      "guardPid": 181662,
+      "watcherPid": 181663,
+      "command": [
+        "/usr/bin/python",
+        "/var/projects/toy_physics/scripts/s11c_guarded_run.py",
+        "--log-directory",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/production-recovery-01/resource-guard",
+        "--seconds",
+        "900",
+        "--",
+        "/usr/bin/python",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+        "--run-root",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/production-recovery-01",
+        "--stage",
+        "coordinate_matrices_recover",
+        "--",
+        "/usr/bin/python",
+        "-u",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_coordinate_matrices_recover.py",
+        "--run-directory",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/production-recovery-01/complete",
+        "--resume-focused",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/focused/complete"
+      ],
+      "threadEnvironment": {
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1"
+      },
+      "implementationCommit": "1933569996c2244ea8ec264fad2106652ea31154",
+      "helperSha256": "84c3f45195e94933b266e6cd2d9b02c2aa59a7081f8af7e59d0553d3f31860b7",
+      "guardSha256": "6492f5ab11dc2ab2f80bbfcc96d7eb6b8632afea07100dd8f74a7954f3ffe542",
+      "focusChecksSha256": "720cff0a9fd7f04313616141ba38ccd7f875bcbb4539d6411faacefa8645466b",
+      "ruleChecksSha256": "5603adc7bd2edbe7edfdead7fb9c27bc5630c6036f366b205af77865703494e1",
+      "ruleCheckpointSha256": "32ea8b04885550cb44ebb7040583721b2ba71dc18bc623af07a81c0c223022ea",
+      "validatorChecksSha256": "675825e220e353668e2f394eb37cbbda8d3e14c82e4ee826cfe43abd7a9ac847",
+      "launchIsAcceptance": false,
+      "acceptedFocusArtifacts": 3870,
+      "newRows": [
+        9,
+        19,
+        4
+      ],
+      "newLayouts": 5,
+      "oldCompletedLoader": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/production/complete",
+      "physicalEigensolversRemainBlocked": true
+    },
+    "effectiveResourceLimits": {
+      "memory.max": "2147483648",
+      "memory.swap.max": "0",
+      "pids.max": "32",
+      "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-73d358807b21.service",
+      "nice": 15,
+      "affinity": [
+        15
+      ],
+      "threads": {
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "VECLIB_MAXIMUM_THREADS": "1",
+        "BLIS_NUM_THREADS": "1"
+      }
+    },
+    "watcherState": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/matrices/production-recovery-01/completion-watcher/state.json",
+    "launchIsAcceptance": false
   }
 }

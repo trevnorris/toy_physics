@@ -120,3 +120,8 @@ sensitivity emission and replay retain complete streams before validation.
 The actual copied four-part inventory has a separate immutable address before
 the new inventory grows. Its original bytes/hash are retained and the actual
 wrong-hash control rejects; final copied-input guards remain exact.
+
+The fixed remaining-output sequence launched from 480c273c under supervisor
+2184833 and silent watcher 2184834. One worker runs at a time, each bounded to
+900 seconds and 2 GiB; completed parts and streams are retained before the next
+phase. Final aggregate acceptance/publication awaits the actual clean outcome.

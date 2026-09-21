@@ -1832,5 +1832,36 @@
       "stderrBytes": 0,
       "checksStdoutIdentical": true
     }
+  },
+  "outputStagedLaunch": {
+    "launchedUtc": "2026-09-21T00:16:00.226861+00:00",
+    "supervisorPid": 2184833,
+    "watcherPid": 2184834,
+    "command": [
+      "/usr/bin/python",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/response/output/production",
+      "--stage",
+      "first_jet_output_construct",
+      "--",
+      "python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_first_jet_output_staged.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/response/output/production/complete",
+      "--focus",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/response/output/focused-finish-01/complete"
+    ],
+    "threadEnvironment": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1"
+    },
+    "implementationCommit": "480c273c886d395f7a9352a4b6a2162e25ce0c2f",
+    "helperSha256": "7d03567d41ca495d6bb182564cf7a92e5930a0c4425e0aa82f5445e74b7b4ccb",
+    "outputHelperSha256": "b27fc5bf3394f67a5e8c48deb8ee85e7bc39283749e9ecedfb3b3467106df69b",
+    "productionChecksSha256": "609121335d2e55e7dd821fdcb57668369e8921642b43c3dd79b9811ff2c0e0f9"
   }
 }

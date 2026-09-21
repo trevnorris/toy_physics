@@ -1,5 +1,5 @@
 {
-  "status": "PREPARED_SCHEMA_RECOVERY",
+  "status": "RUNNING_GUARDED_SCHEMA_RECOVERY",
   "acceptedMaterialInteriors": "a95a0c0d",
   "acceptedCaseBoundaryMaps": "d8713012",
   "acceptedBaselineMaterial": "19a9f5a1",
@@ -97,5 +97,68 @@
   ],
   "recoveryHelper": "S11c_d_remaining_case_coordinate_boundary_inputs_recover.py",
   "schemaRepair": "S11c_d_remaining_case_coordinate_boundary_schema_repair.json",
-  "resolvedCopyRequests": 88
+  "resolvedCopyRequests": 88,
+  "launch": {
+    "launchedUtc": "2026-09-21T13:03:29.484369+00:00",
+    "guardPid": 700589,
+    "watcherPid": 700590,
+    "command": [
+      "/usr/bin/python",
+      "/var/projects/toy_physics/scripts/s11c_guarded_run.py",
+      "--log-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/boundary/focused-recovery-01/resource-guard",
+      "--seconds",
+      "900",
+      "--",
+      "/usr/bin/python",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/boundary/focused-recovery-01",
+      "--stage",
+      "coordinate_boundary_recover",
+      "--",
+      "/usr/bin/python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_coordinate_boundary_inputs_recover.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/boundary/focused-recovery-01/complete"
+    ],
+    "threadEnvironment": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1",
+      "VECLIB_MAXIMUM_THREADS": "1",
+      "BLIS_NUM_THREADS": "1"
+    },
+    "implementationCommit": "d49a5789ec2b33702dab6c12e2530a815b6310cb",
+    "helperSha256": "c27e59860b6718e91137bce8863e77e83d73f870d5b224304950de679912ee5c",
+    "guardSha256": "6492f5ab11dc2ab2f80bbfcc96d7eb6b8632afea07100dd8f74a7954f3ffe542",
+    "schemaRepairSha256": "409dd58e3654dde18d4ffd386a479c10384f96f9d8743de9f8a33c181a6f73a5",
+    "interiorChecksSha256": "6b910f5bce94b0c17d1d8c3d8c037e2ec7447aa406cd5c453a3561b71ce3b060",
+    "launchIsAcceptance": false,
+    "retainedOriginalCopies": 7
+  },
+  "verifiedActualLimits": {
+    "verified": true,
+    "actual": {
+      "memory.max": "2147483648",
+      "memory.swap.max": "0",
+      "pids.max": "32",
+      "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-f69352351c73.service",
+      "nice": 15,
+      "affinity": [
+        15
+      ],
+      "threads": {
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "VECLIB_MAXIMUM_THREADS": "1",
+        "BLIS_NUM_THREADS": "1"
+      }
+    }
+  },
+  "guardLimitsSha256": "613cbb70f3868476bb78eef9f92a022b52f38fb8f68e913d5c134972f922780d"
 }

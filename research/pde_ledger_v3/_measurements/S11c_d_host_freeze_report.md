@@ -4,6 +4,14 @@ The user reported a prolonged whole-computer freeze requiring a forced reboot.
 The cause is **unconfirmed**. No scientific workload was restarted to reproduce
 the incident. Accepted coordinate-source work remains at commit 3e167144.
 
+The user subsequently confirmed that remote access also became unavailable,
+preventing inspection while the laptop was frozen. Treat this as host-wide
+unresponsiveness, not merely a frozen application window. A desktop workload
+could still cause system-wide resource pressure, but an application-only
+rendering stall is not an adequate diagnosis. The local cgroup limits and
+runtime supervisor do not rely on a live remote/model connection; they cannot
+guarantee recovery from a kernel or hardware lockup.
+
 ## Recorded timeline (America/Denver)
 
 | Time | Evidence |

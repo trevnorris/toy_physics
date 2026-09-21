@@ -1,0 +1,50 @@
+{
+  "status": "PREPARED_MISSING_NATIVE_ANALYTIC_CONSTRUCTION",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/analytic-sources",
+  "stage": "frequency_analytic",
+  "acceptedAnalyticInputsCommit": "a7a53fa8",
+  "helperSha256": "638aac00b89a92e9a75c6c5e0aacdecf585ebb09975ec91e607040d0056ebb99",
+  "planSha256": "af7994a61dfc582da89e00c1222b1c39d8a14eb0fa289c109f6c4e1aa52bbfcb",
+  "staticReview": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/analytic-sources/static-review.json",
+    "sha256": "cd62120e7aab65a89223e4065a1f0a14a7dbb1f8d69b3be899ea9705d00b371c"
+  },
+  "nativeJoins": {
+    "nativeSource": {
+      "wholeSourceChartReverseAST": true,
+      "originalSha256": "63224a14fbc848e476b00c807b070f01faf46d763a33462be96563f5f3257c5f",
+      "changes": "Input, algebraic/analytic, individual derivative and seed/control value persistence only."
+    },
+    "nativeLift": {
+      "wholeLiftReverseAST": true,
+      "originalSha256": "38292fb3179ebd8191df8c0d8e2a2c00f64cc45ac5cc75224c176da71c6ad17f",
+      "branchObservers": 1
+    },
+    "nativeDenominator": {
+      "wholeDenominatorLoopReverseAST": true,
+      "originalFunctionSha256": "ee96d1b7a0d2c1d6de37f5227bfb4c3afeccd32e84269afea0c8a7b2179a66bb",
+      "originalLoopSha256": "7a6464f24b425fe6a2c3aa94cafa1dfe24d951624430faddd0295a513b950cbc",
+      "familyLoopReverseAST": true,
+      "savedRatioSubstitutions": 1,
+      "baselineRootOrDenominatorConstruction": false
+    },
+    "actualDerivativeCalls": [
+      "sp.diff(analytic, w)",
+      "sp.diff(analytic, w, 2)"
+    ]
+  },
+  "newImageRecords": 63,
+  "newDenominators": 2,
+  "newRadicals": 0,
+  "operationCountsPending": true,
+  "acceptancePending": true,
+  "limits": {
+    "wallSeconds": 900,
+    "wholeJobMemoryBytes": 2147483648,
+    "swapBytes": 0,
+    "cpus": 1,
+    "nice": 15,
+    "tasks": 32,
+    "nativeThreads": 1
+  }
+}

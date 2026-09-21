@@ -17,3 +17,7 @@ Compilation joins pass. Actual source images and final acceptance remain pending
 this is source preparation, with no numerical binding, quadrature, current/mode
 construction, matrix assembly or solve. Full own-case material routes, output,
 scoped case searches and final engine/exports follow under practical acceptance.
+
+The bounded constructor launched from 53317767 under supervisor 2212575
+and silent watcher 2212576. One native thread, 2 GiB and 900 seconds; actual
+final source guards and clean completion remain pending. Launch is not acceptance.

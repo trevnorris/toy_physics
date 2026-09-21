@@ -462,6 +462,14 @@ at 46796940, with independent MD5/SHA256 and actual symlink/backend checks.
 Remaining coordinate/advection controls, scoped case searches and final all-case
 engine/exports follow.
 
+The [remaining coordinate inputs](S11c_d_remaining_case_coordinate_inputs_report.md)
+are accepted at 4365f2b1: 65.13 seconds plus 19.05 seconds independent validation,
+all 1467 records/300 rows/647 terms/120 sources. Only 86 union source images are
+new; accepted images and explicit aliases cover the other uses. Constant-rho4
+absence and the actual live RHOBR volume-density gradient are separately retained.
+Construction of the missing images is running from 53317767; no new numerical
+or material scattering result is accepted by the input preparation.
+
 ## Retained user-approved solver/export contract
 
 

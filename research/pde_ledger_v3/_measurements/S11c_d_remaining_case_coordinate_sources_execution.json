@@ -1,5 +1,5 @@
 {
-  "status": "PREPARED_CASE_COORDINATE_SOURCES",
+  "status": "CASE_COORDINATE_SOURCES_LAUNCHED",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260920/sources",
   "acceptedInputCommit": "4365f2b1",
   "acceptedFirstJetSourceCommit": "ae5682fd",
@@ -10,5 +10,36 @@
     "newFieldJetMaps": 0,
     "newNumericalWork": 0
   },
-  "next": "Construct only missing union images using unchanged native coordinate/source helpers; validate all actual source/alias/ordered-limit/unit joins and save every operand before guards."
+  "next": "Construct only missing union images using unchanged native coordinate/source helpers; validate all actual source/alias/ordered-limit/unit joins and save every operand before guards.",
+  "launch": {
+    "launchedUtc": "2026-09-21T02:03:18.367349+00:00",
+    "supervisorPid": 2212575,
+    "watcherPid": 2212576,
+    "command": [
+      "/usr/bin/python",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260920/sources",
+      "--stage",
+      "coordinate_sources",
+      "--",
+      "python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_coordinate_sources.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260920/sources/complete"
+    ],
+    "threadEnvironment": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1"
+    },
+    "implementationCommit": "53317767a31c131a46350c906d1a43486d96a117",
+    "helperSha256": "abfef36c7c5058631cadd32a1fca60316f1cad7b5876ac62af56cb2c4c6d71ea",
+    "productionChecksSha256": "e03d2721112fb27a64fd960fb986347bfd1965718907d50fbcb9819073382550"
+  },
+  "launchIsAcceptance": false,
+  "launchActiveRecord": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260920/sources/active.json",
+  "watcherState": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260920/sources/completion-watcher/state.json"
 }

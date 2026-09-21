@@ -230,5 +230,13 @@
       "checksStdoutIdentical": true
     }
   },
-  "checkpoint": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_coordinate_inputs_checkpoint.json"
+  "checkpoint": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_coordinate_inputs_checkpoint.json",
+  "acceptanceCommit": "4365f2b1",
+  "nextStage": {
+    "implementationCommit": "53317767",
+    "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260920/sources",
+    "supervisorPid": 2212575,
+    "watcherPid": 2212576,
+    "acceptancePending": true
+  }
 }

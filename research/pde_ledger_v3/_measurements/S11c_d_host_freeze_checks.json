@@ -1,0 +1,361 @@
+{
+  "status": "GUARD_VERIFIED_SCIENTIFIC_WORK_PAUSED",
+  "cause": "UNCONFIRMED",
+  "guard": "scripts/s11c_guarded_run.py",
+  "guardSha256": "6492f5ab11dc2ab2f80bbfcc96d7eb6b8632afea07100dd8f74a7954f3ffe542",
+  "evidenceDirectory": "/var/projects/toy_physics/_scratch/s11c/host-freeze-20260920",
+  "finalSmoke": {
+    "exitCode": 0,
+    "wallSeconds": 0.09189452800001163,
+    "unit": "s11c-guard-69e01b7ee1ef",
+    "stderrBytes": 0,
+    "limitsVerified": true,
+    "childOutcome": {
+      "exitCode": 0,
+      "guardReason": null,
+      "wallSeconds": 0.033794435999993766,
+      "childPid": 16295
+    }
+  },
+  "controls": {
+    "guard-smoke": {
+      "exitCode": 0,
+      "wallSeconds": 0.10291226599997572,
+      "unit": "s11c-guard-e831ad0f82cc",
+      "stderrBytes": 0,
+      "limitsVerified": true,
+      "childOutcome": {
+        "exitCode": 0,
+        "guardReason": null,
+        "wallSeconds": 0.034276619000024766,
+        "childPid": 15001
+      },
+      "limits": {
+        "memory.max": "2147483648",
+        "memory.swap.max": "0",
+        "pids.max": "32",
+        "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-e831ad0f82cc.service",
+        "nice": 15,
+        "affinity": [
+          15
+        ],
+        "threads": {
+          "OPENBLAS_NUM_THREADS": "1",
+          "OMP_NUM_THREADS": "1",
+          "MKL_NUM_THREADS": "1",
+          "NUMEXPR_NUM_THREADS": "1",
+          "VECLIB_MAXIMUM_THREADS": "1",
+          "BLIS_NUM_THREADS": "1"
+        }
+      },
+      "files": {
+        "stdout": "8a4f900da3fb0407b0c06e93adadc3b7f6371a1114980959d600ec8cc3df7798",
+        "child-outcome.json": "55734425c614d03ea9fda7fd797f17de01f14d1238c4dafd84b295511f870a9f",
+        "invocation.json": "8b126cb4ee7c10de391d0c0d4af19d406e8cf0033f926bf1483789545458359e",
+        "outcome.json": "691c87012753d1885b68c3e219f951a013b76b0d531ff2af836c6542f4a974a6",
+        "resource-samples.jsonl": "159cfa8830f39d2c871272aa44168e3ccf5ecf6bd90a617f0f9fe3dc95ba446e",
+        "stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "limit-validation.json": "ef5f764a734a4aecc354ba9edec8512afdc7ab98060d606715871e1e9d698331",
+        "effective-limits.json": "52e486306e11f894cafc3859bb20ed4385e6aa85fd3a47aba407c38e3d78f287"
+      }
+    },
+    "guard-exit-control": {
+      "exitCode": 7,
+      "wallSeconds": 0.12495925000007446,
+      "unit": "s11c-guard-b77c5b6c4fa3",
+      "stderrBytes": 0,
+      "limitsVerified": true,
+      "childOutcome": {
+        "exitCode": 7,
+        "guardReason": null,
+        "wallSeconds": 0.03417807799996808,
+        "childPid": 15120
+      },
+      "limits": {
+        "memory.max": "2147483648",
+        "memory.swap.max": "0",
+        "pids.max": "32",
+        "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-b77c5b6c4fa3.service",
+        "nice": 15,
+        "affinity": [
+          15
+        ],
+        "threads": {
+          "OPENBLAS_NUM_THREADS": "1",
+          "OMP_NUM_THREADS": "1",
+          "MKL_NUM_THREADS": "1",
+          "NUMEXPR_NUM_THREADS": "1",
+          "VECLIB_MAXIMUM_THREADS": "1",
+          "BLIS_NUM_THREADS": "1"
+        }
+      },
+      "files": {
+        "stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "child-outcome.json": "df56a66e90386e07f8e2d9008b76a702e2d7dfc5343d0b73c7ec7a030ebae18f",
+        "invocation.json": "70204818c80f505ed44b48fc7018009246b478336bfdf2c8099335e7e3fbd0a9",
+        "outcome.json": "45da9ec953972dd099718a07f2eabbe65fefbcf33167356c57dcfd86caf64afa",
+        "resource-samples.jsonl": "3aef869e22f787e11d46f0a9041492ebfc8118ed8f4053a0212ecc9152da9365",
+        "stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "limit-validation.json": "68d0a33728266fe481689fca6e195e8fb465ab761d175379817d76fa22bae634",
+        "effective-limits.json": "12c5c36b53c50eb2d4436eeee096466dee0b28aed970c37d55cb4a51caf0bf5d"
+      }
+    },
+    "guard-timeout-control": {
+      "exitCode": 124,
+      "wallSeconds": 2.1157650989999865,
+      "unit": "s11c-guard-4edfaaa15837",
+      "stderrBytes": 0,
+      "limitsVerified": true,
+      "childOutcome": {
+        "exitCode": 124,
+        "guardReason": "wall-time limit",
+        "wallSeconds": 2.008833773000106,
+        "childPid": 15166
+      },
+      "limits": {
+        "memory.max": "2147483648",
+        "memory.swap.max": "0",
+        "pids.max": "32",
+        "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-4edfaaa15837.service",
+        "nice": 15,
+        "affinity": [
+          15
+        ],
+        "threads": {
+          "OPENBLAS_NUM_THREADS": "1",
+          "OMP_NUM_THREADS": "1",
+          "MKL_NUM_THREADS": "1",
+          "NUMEXPR_NUM_THREADS": "1",
+          "VECLIB_MAXIMUM_THREADS": "1",
+          "BLIS_NUM_THREADS": "1"
+        }
+      },
+      "files": {
+        "stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "child-outcome.json": "be43dc9521421c30b338cba12e110215c8053ed74f4e163645242c43c8f37ec5",
+        "invocation.json": "fa1fba4cda19be90b2f70834e997007668fd91f41333f02489a6167da0f09e90",
+        "outcome.json": "000da5dd72af03e149df07c5520b020022a0fbd4d69f3bd5a28a87e4ef2fd2d6",
+        "resource-samples.jsonl": "7abde37d588db22339b725f1186094fee579f2612aa5ea12102d9ebfc4edc0cc",
+        "stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "limit-validation.json": "f63bcb4281c48aeadf4f090c6cc065693c2996fcd492b98a49829edd6e1e095c",
+        "effective-limits.json": "99ddcb8d37acc9cacc15fef1e4fa0eb3f5eb56a56c03fdafc337fe149b1efd5a"
+      }
+    }
+  },
+  "diffExclusions": {
+    "files": [
+      [
+        "research/pde_ledger_v3/_measurements/S10_lean_cas_bridge_manifest.json",
+        2106903
+      ],
+      [
+        "research/pde_ledger_v3/_measurements/S11c_c2_trace_repair_d_exceptional_inventory.json",
+        6909007
+      ],
+      [
+        "research/pde_ledger_v3/_measurements/S11c_c2_trace_repair_d_joint_inventory.json",
+        2854672
+      ],
+      [
+        "research/pde_ledger_v3/_measurements/S11c_c2_trace_repair_d_resolvent_inventory.json",
+        3911886
+      ],
+      [
+        "research/pde_ledger_v3/_measurements/S11c_c2_trace_repair_d_threshold_modes_inventory.json",
+        3562643
+      ],
+      [
+        "research/pde_ledger_v3/_measurements/S11c_d_bulk_exceptional_focused_inventory.json",
+        1727113
+      ],
+      [
+        "research/pde_ledger_v3/_measurements/S11c_d_bulk_full_exceptional_inventory.json",
+        7086480
+      ],
+      [
+        "research/pde_ledger_v3/_measurements/S11c_d_bulk_full_joint_inventory.json",
+        3016184
+      ],
+      [
+        "research/pde_ledger_v3/_measurements/S11c_d_bulk_full_payload_inventory.json",
+        2187603
+      ],
+      [
+        "research/pde_ledger_v3/_measurements/S11c_d_bulk_full_resolvent_inventory.json",
+        3895780
+      ],
+      [
+        "research/pde_ledger_v3/_measurements/S11c_d_end_resolvent_inventory.json",
+        3895881
+      ],
+      [
+        "research/pde_ledger_v3/_measurements/S11c_d_end_resolvent_joint_inventory.json",
+        2702032
+      ],
+      [
+        "research/pde_ledger_v3/_measurements/S11c_d_frequency_chart_checkpoint.json",
+        1687396
+      ],
+      [
+        "research/pde_ledger_v3/_measurements/S11c_d_frequency_source_checkpoint.json",
+        1877129
+      ],
+      [
+        "research/pde_ledger_v3/_measurements/S11c_d_joint_sheet_inventory.json",
+        2702028
+      ],
+      [
+        "research/pde_ledger_v3/_measurements/S11c_d_momentum_domain_action_checkpoint.json",
+        2537353
+      ],
+      [
+        "research/pde_ledger_v3/_measurements/S11c_d_position_domain_checkpoint.json",
+        1474385
+      ],
+      [
+        "research/pde_ledger_v3/_measurements/S11c_d_remaining_case_coordinate_sources_checkpoint.json",
+        3862335
+      ],
+      [
+        "research/pde_ledger_v3/_measurements/S11c_d_remaining_case_first_jet_bindings_checkpoint.json",
+        2218632
+      ],
+      [
+        "research/pde_ledger_v3/_measurements/S11c_d_remaining_case_first_jet_matrices_checkpoint.json",
+        4558461
+      ],
+      [
+        "research/pde_ledger_v3/_measurements/S11c_d_remaining_case_first_jet_matrices_focused.json",
+        3549196
+      ],
+      [
+        "research/pde_ledger_v3/_measurements/S11c_d_remaining_case_first_jet_output_checkpoint.json",
+        6727413
+      ],
+      [
+        "research/pde_ledger_v3/_measurements/S11c_d_remaining_case_first_jet_output_focused.json",
+        6446677
+      ],
+      [
+        "research/pde_ledger_v3/_measurements/S11c_d_remaining_case_first_jet_response_checkpoint.json",
+        5580093
+      ],
+      [
+        "research/pde_ledger_v3/_measurements/S11c_d_remaining_case_first_jet_response_focused.json",
+        2699490
+      ],
+      [
+        "research/pde_ledger_v3/_measurements/S11c_d_three_momentum_adaptive_checkpoint.json",
+        1265842
+      ],
+      [
+        "research/pde_ledger_v3/_measurements/S11c_d_three_momentum_checkpoint.json",
+        1657542
+      ],
+      [
+        "research/pde_ledger_v3/_measurements/S11c_d_three_momentum_source_checkpoint.json",
+        2586788
+      ],
+      [
+        "research/pde_ledger_v3/_measurements/S11c_d_threshold_full_exceptional_inventory.json",
+        6912091
+      ],
+      [
+        "research/pde_ledger_v3/_measurements/S11c_d_threshold_full_joint_inventory.json",
+        2858205
+      ],
+      [
+        "research/pde_ledger_v3/_measurements/S11c_d_threshold_full_modes_inventory.json",
+        3562874
+      ],
+      [
+        "research/pde_ledger_v3/_measurements/S11c_d_threshold_full_payload_inventory.json",
+        15402178
+      ],
+      [
+        "research/pde_ledger_v3/_measurements/S11c_d_threshold_full_resolvent_inventory.json",
+        3895776
+      ],
+      [
+        "research/pde_ledger_v3/_measurements/S11c_d_wide_three_adaptive_checkpoint.json",
+        8202868
+      ],
+      [
+        "research/pde_ledger_v3/_measurements/S11c_d_wide_three_momentum_checkpoint.json",
+        10978620
+      ],
+      [
+        "research/pde_ledger_v3/_measurements/S11c_mechanical_repair_d_exceptional_inventory.json",
+        6909040
+      ],
+      [
+        "research/pde_ledger_v3/_measurements/S11c_mechanical_repair_d_joint_inventory.json",
+        2854694
+      ],
+      [
+        "research/pde_ledger_v3/_measurements/S11c_mechanical_repair_d_resolvent_inventory.json",
+        3911984
+      ],
+      [
+        "research/pde_ledger_v3/_measurements/S11c_mechanical_repair_d_threshold_modes_inventory.json",
+        3562615
+      ],
+      [
+        "research/pde_ledger_v3/_measurements/S11c_thickness_coordinate_d_exceptional_inventory.json",
+        6908900
+      ],
+      [
+        "research/pde_ledger_v3/_measurements/S11c_thickness_coordinate_d_joint_inventory.json",
+        2854677
+      ],
+      [
+        "research/pde_ledger_v3/_measurements/S11c_thickness_coordinate_d_resolvent_inventory.json",
+        3915538
+      ],
+      [
+        "research/pde_ledger_v3/_measurements/S11c_thickness_coordinate_d_threshold_modes_inventory.json",
+        3562619
+      ],
+      [
+        "research/pde_ledger_v3/scripts/S10_exports.py",
+        1284971
+      ],
+      [
+        "research/pde_ledger_v3/scripts/S11_exports.py",
+        5004408
+      ],
+      [
+        "research/pde_ledger_v3/scripts/S11b_exports.py",
+        14838784
+      ],
+      [
+        "research/pde_ledger_v3/scripts/S11c_a_exports.py",
+        17217022
+      ],
+      [
+        "research/pde_ledger_v3/scripts/S11c_b_exports.py",
+        61624077
+      ],
+      [
+        "research/pde_ledger_v3/scripts/S11c_c2_exports.py",
+        30671111
+      ]
+    ],
+    "bytes": 312219996,
+    "scope": "Automatic text diff only; no file content or annex policy changed"
+  },
+  "kernelLogs": {
+    "s11c-freeze-kernel.log": "19c4e28b2f54ea8f217db4e622b0a5c758efa7b77ce2dc0394b6d159568c0b2e",
+    "s11c-freeze-kernel-text.log": "f554feebddc5fe53148023d4bcff8eaf71f7cd0504bfb57d474ef972308bdf02"
+  },
+  "previousBoot": "17b3f36b320b42f7a94c54d3cfe0ab8c",
+  "newBoot": "c8304a64451a49f4b454d113d706e731",
+  "acceptedScienceCommit": "3e167144",
+  "noScientificReplay": true,
+  "limitations": [
+    "No pre-freeze peak RSS, swap or pressure samples were captured.",
+    "Previous-boot kernel journal is empty; text kernel log has no incident-time entry.",
+    "Automatic app branch-diff refresh is a plausible load source, not proven cause.",
+    "The job guard does not cap the desktop application itself."
+  ]
+}

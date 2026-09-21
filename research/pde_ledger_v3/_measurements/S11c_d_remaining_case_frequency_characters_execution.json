@@ -1,0 +1,33 @@
+{
+  "status": "PREPARED_SAVED_CHARACTER_INPUTS",
+  "sourceAcceptanceCommit": "ed3ac234",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/characters",
+  "helperSha256": "d373807160f996877c8a2962a16e53214da723a5c48aa83298ce2ac1820ff03c",
+  "planSha256": "1ae5a7769039924956340c413f1402f315ecaa820f4e51a0d5da5d5cc9902c91",
+  "staticReview": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/characters/static-review.json",
+  "staticReviewSha256": "3b13a6537704d9bbc41d84dd9145532c505604a4919355956857c7076297b83e",
+  "nativeJoins": {
+    "wholeNativeRowLoopReverseAST": true,
+    "persistenceObservers": 1,
+    "nativeRowLoopSha256": "7b755bbe3ba698a9d71d506a44792ff3bb1bd41726b99a054275fbd09e6ecbcd",
+    "nativeCharacterLoopSha256": "c561ab74c10c9d35a934ab5c9388a83665d4232db37aa0e2c58be40e272996ed",
+    "wholeNativeSourcesSha256": "dc9704a26214b8d1798c1a6230775de7aa46ebdceb556de67c397f9e044b59d7",
+    "characterBindingInputs": "Only symbolicFrequency, complete saved live binder context and cutoff substitution; full physical aliases retained separately.",
+    "newCharacterBindingCalls": 0,
+    "newDerivativeCalls": 0
+  },
+  "guard": {
+    "memoryBytes": 2147483648,
+    "swapBytes": 0,
+    "cpus": 1,
+    "nice": 15,
+    "pids": 32,
+    "nativeThreads": 1,
+    "seconds": 900
+  },
+  "newBindings": 0,
+  "newDerivatives": 0,
+  "newNumericalWork": 0,
+  "automaticRetries": 0,
+  "silentCompletionHookOnly": true
+}

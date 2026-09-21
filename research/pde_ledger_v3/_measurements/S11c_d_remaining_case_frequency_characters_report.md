@@ -80,3 +80,23 @@ The saved coverage diagnostic launched at 2026-09-21T22:41:59Z from
 single-thread containment is verified with empty stderr. The existing
 local hook reports completion/error without model polling. No character
 recovery is relaunched until this saved evidence is inspected.
+
+The coverage diagnostic finished cleanly in 128.74 worker /
+130.28 native seconds. All 300 factor pairs are accounted for: 144
+have saved certificates and 156 (42/36/42/36 by case) were deliberately
+omitted because their exact original raw residuals are zero. There are no
+unexplained gaps. All six failed source-005 uses match their original owner
+factors and source/character proofs. Peak memory was 235,929,600
+bytes, with no cap/OOM/swap events and minimum host availability
+23.67 GB. This is saved proof-reader evidence, not new physics.
+
+A separate continuation is prepared with 1,690 unchanged previous files,
+five completed source-proof checks, 14 full proof pairs and their saved
+mutations reused. Twelve prior input writes require complete requested/saved
+identity; all other reference writes are prohibited. The new raw-zero reader
+retains actual original factors and source/owner addresses without inventing
+a certificate. Three owner/raw/coefficient mutations per case must reject.
+The prior nonzero reader and mutation tail, original main, prepare adapter
+and native row census remain joined by whole-body reverse AST. Standard-
+library review passed without importing scientific modules. The recovery
+still requires a clean guarded outcome and independent saved validation.

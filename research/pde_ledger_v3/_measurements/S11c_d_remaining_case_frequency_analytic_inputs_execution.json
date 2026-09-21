@@ -1,0 +1,24 @@
+{
+  "status": "PREPARED_SAVED_ANALYTIC_INPUT_CATALOGUE",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/analytic-inputs",
+  "stage": "frequency_analytic_inputs",
+  "helperSha256": "d228921f1733757fde46765134618340b2dabd14c19992972bd5326aebef6379",
+  "planSha256": "2fcbac267016c0109bd8a8d2ad27a752e526b549abc499227001b906c9bd4b63",
+  "acceptedCharacterCommit": "aed0ba1d",
+  "staticReview": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/analytic-inputs/static-review.json",
+    "sha256": "7ae62e79b1f88453ab31feec1d449a9366c394813edb5160a41e0f6ce3d3ec06"
+  },
+  "newScientificConstruction": false,
+  "acceptancePending": true,
+  "limits": {
+    "wallSeconds": 900,
+    "wholeJobMemoryBytes": 2147483648,
+    "swapBytes": 0,
+    "cpus": 1,
+    "nice": 15,
+    "tasks": 32,
+    "nativeThreads": 1
+  },
+  "completion": "Silent local completion/error hook; no model polling or automatic retry."
+}

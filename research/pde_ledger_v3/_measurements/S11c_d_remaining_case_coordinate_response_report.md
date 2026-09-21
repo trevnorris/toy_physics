@@ -93,3 +93,9 @@ and do not resolve tiny physical loss/reflection. The guard reached 2 GiB with
 228,675 cap/reclaim events, zero OOM/swap and minimum host available memory 23.56 GB.
 Saved-result validation is prepared with all scientific constructors and solvers
 disabled; final numerical acceptance and physical output remain pending.
+
+Independent saved-result validation launched from 0c6587fe with actual verified
+whole-job 2 GiB, zero swap, one CPU, nice 15 and 32-task limits, all native
+threads one. One 900-second supervisor and silent completion/error hook own
+continuation. Numerical acceptance awaits final validation; no scientific
+constructor, solve or new current packet is enabled.

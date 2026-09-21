@@ -1,5 +1,5 @@
 {
-  "status": "MATERIAL_NUMERICAL_PRODUCTION_COMPLETE_VALIDATION_PENDING",
+  "status": "MATERIAL_RESPONSE_SAVED_VALIDATION_RUNNING",
   "acceptedBoundary": "2e1e4a3c",
   "acceptedMaterialInteriors": "a95a0c0d",
   "helperSha256": "95fe5fc75462f68780150fce954ffc2ac2f59c8f8a69672255bfaf2ca4fdf89a",
@@ -933,9 +933,61 @@
   },
   "numericalValidation": {
     "root": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/response/production-acceptance",
-    "status": "PREPARED",
+    "status": "LAUNCHED_NOT_ACCEPTED",
     "planSha256": "7dcdbc580c6f920be82434a144a0e516201884b948e74b3fb8beb6f235fe690e",
     "validatorSha256": "f06644c3c094456fe8ddc403a55f7583def3a45e0ace76cc2ed86f58656337fd",
-    "newScientificConstruction": false
+    "newScientificConstruction": false,
+    "launch": {
+      "launchedUtc": "2026-09-21T15:35:19.534315+00:00",
+      "guardPid": 765656,
+      "watcherPid": 765657,
+      "command": [
+        "/usr/bin/python",
+        "/var/projects/toy_physics/scripts/s11c_guarded_run.py",
+        "--log-directory",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/response/production-acceptance/resource-guard",
+        "--seconds",
+        "900",
+        "--",
+        "/usr/bin/python",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+        "--run-root",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/response/production-acceptance",
+        "--stage",
+        "validate",
+        "--",
+        "/usr/bin/python",
+        "-u",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/response/production-acceptance/validate.py"
+      ],
+      "validatorSha256": "f06644c3c094456fe8ddc403a55f7583def3a45e0ace76cc2ed86f58656337fd",
+      "guardSha256": "6492f5ab11dc2ab2f80bbfcc96d7eb6b8632afea07100dd8f74a7954f3ffe542",
+      "productionChecksSha256": "a67635eda94ccb1ceac2e7eeff06e447e3515c2ce2549604865a3d69f7b63f5d",
+      "implementationCommit": "0c6587fee8fee9b3da9085c64f57f06a63c9f9e0",
+      "launchIsAcceptance": false,
+      "newScientificConstruction": false
+    },
+    "verifiedLimits": {
+      "verified": true,
+      "actual": {
+        "memory.max": "2147483648",
+        "memory.swap.max": "0",
+        "pids.max": "32",
+        "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-c487ba13aca0.service",
+        "nice": 15,
+        "affinity": [
+          15
+        ],
+        "threads": {
+          "OPENBLAS_NUM_THREADS": "1",
+          "OMP_NUM_THREADS": "1",
+          "MKL_NUM_THREADS": "1",
+          "NUMEXPR_NUM_THREADS": "1",
+          "VECLIB_MAXIMUM_THREADS": "1",
+          "BLIS_NUM_THREADS": "1"
+        }
+      }
+    },
+    "limitValidationSha256": "c366a2a2d22b6cdac44f2c12521a6ca45beeef68788f86cf1860163f88ce2a38"
   }
 }

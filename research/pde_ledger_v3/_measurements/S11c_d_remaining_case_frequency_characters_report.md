@@ -74,3 +74,9 @@ is prepared to inspect the failed source and all four case coverage tables,
 joining missing entries to their actual original owner factors and literal
 raw-zero branch. It repeats no completed certificate checks or scientific
 operations. The prior directory and every completed proof remain immutable.
+
+The saved coverage diagnostic launched at 2026-09-21T22:41:59Z from
+474a1310. Initial actual 2-GiB/zero-swap/one-CPU/nice-15/32-task/native
+single-thread containment is verified with empty stderr. The existing
+local hook reports completion/error without model polling. No character
+recovery is relaunched until this saved evidence is inspected.

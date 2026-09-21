@@ -234,3 +234,13 @@ original actual producers and proof hashes explicitly; writes through preserved
 references are forbidden. Static review verifies 209 original source pins, all
 nine commands and the accepted guard receipt, rejecting 41 changed schedules.
 No completed emission, replay or scientific calculation is repeated.
+
+The nine-phase continuation launched from 5c1c4455 at 20:05:29 UTC. Reference
+preparation finished cleanly in 26.23 native seconds with guard/supervisor/child
+exit zero, empty stderr and checks/stdout identity. Actual whole-job 2 GiB,
+zero-swap, single-CPU, nice-15 and 32-task limits are verified; all native threads
+are one. Preparation peak memory was 1,876,221,952 bytes, with zero cap/reclaims,
+OOM or swap and minimum host available memory 23.58 GB. Remaining replays and
+aggregation each have separate work and final-audit workers. One silent local
+hook owns completion/error notification; no polling or automatic retries.
+Original failed receipts and completed streams remain unchanged.

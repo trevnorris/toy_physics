@@ -33,3 +33,9 @@ no numerical row reuse. Guard peak was 858,206,208 bytes, with zero cap/OOM/
 swap events and minimum host availability 23.97 GB. An independent saved-only
 validator is prepared; no binding, derivative, chart or numerical construction
 will run in it. Acceptance awaits its actual clean final outcome.
+
+The saved-input validator launched under implementation 21537fe7 at
+2026-09-21T21:29:43Z. Actual initial containment is verified: whole-job 2 GiB,
+zero swap, one CPU, nice 15 and one native thread. Its durable logs and silent
+completion/error hook are under frequency-20260921/input-acceptance. Launch
+and empty initial stderr do not establish acceptance.

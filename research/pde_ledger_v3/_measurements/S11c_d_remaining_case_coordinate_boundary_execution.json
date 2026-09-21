@@ -497,7 +497,7 @@
     }
   },
   "boundaryBasisRecovery": {
-    "status": "LAUNCHED_GUARDED_PENDING_FINAL_OUTCOME",
+    "status": "FAILED_DURING_LOADER_HASH_CHECK",
     "repair": "S11c_d_remaining_case_coordinate_boundary_basis_repair.json",
     "repairSha256": "f5fb70b11d6a4f4d144cbcd8a5f26aaa532bd747d2f189e6fc9cc7a07e959b05",
     "helperSha256": "062323b2df7235366a0794ba9209c61aeec970f838090235de38292cc2b20f83",
@@ -574,6 +574,48 @@
         }
       }
     },
-    "limitsSha256": "b68e285d80f013055f96f4e46e10c45e0c90852d894b40921bccdf72755b0f92"
+    "limitsSha256": "b68e285d80f013055f96f4e46e10c45e0c90852d894b40921bccdf72755b0f92",
+    "outcome": {
+      "stage": "coordinate_boundary_recover",
+      "command": [
+        "/usr/bin/python",
+        "-u",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_coordinate_boundary_recover.py",
+        "--resume-focused",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/boundary/focused-recovery-01/complete",
+        "--run-directory",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/boundary/production-recovery-01/complete"
+      ],
+      "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/boundary/production-recovery-01/coordinate_boundary_recover.stdout",
+      "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/boundary/production-recovery-01/coordinate_boundary_recover.stderr",
+      "startedUtc": "2026-09-21T13:40:23.689713+00:00",
+      "childPid": 712417,
+      "status": "failed",
+      "exitCode": 1,
+      "wallSeconds": 34.71628726700146,
+      "stderrBytes": 1236,
+      "finishedUtc": "2026-09-21T13:40:58.406040+00:00"
+    },
+    "guardOutcome": {
+      "exitCode": 1,
+      "wallSeconds": 34.859373819999746,
+      "unit": "s11c-guard-b29328c0a9be",
+      "stderrBytes": 0,
+      "limitsVerified": true,
+      "childOutcome": {
+        "exitCode": 1,
+        "guardReason": null,
+        "wallSeconds": 34.79127958200115,
+        "childPid": 712416
+      }
+    }
+  },
+  "boundaryLoaderRecovery": {
+    "status": "PREPARED_NOT_RUN",
+    "helperSha256": "d3d11b21d95b8c396a7a5bd105e0ebe13ba2905094ef6ef600dc3ff7749f15ef",
+    "repairSha256": "9ab18f48bc06fa33a9db3d0b094152931c5fe41665b910ccf95c71fcbc824c8f",
+    "intactCopies": 220,
+    "restoredInheritedMetadata": 1,
+    "newScienceInPriorRecovery": 0
   }
 }

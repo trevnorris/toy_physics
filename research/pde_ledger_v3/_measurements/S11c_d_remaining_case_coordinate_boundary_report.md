@@ -7,3 +7,5 @@ Focus performs no chart/source transform, current contraction, mode construction
 The historical material control is continuum only. Finite material routes and four finite coordinate-control solves remain new work; three continuum controls remain, with baseline continuum reuse only after full input joins. The finite adapter is not yet implemented or accepted. No scattering agreement follows from accepted interior equality alone.
 
 Use the mandatory whole-job 2 GiB, zero-swap, one-CPU, low-priority guard and silent local completion hook. No automatic retry, model polling, overlapping CAS or unguarded fallback. Hold practical precision, positive-regulator/approximate-boundary/tiny-signal and omitted-parent-second-order limitations. No isolated advection/c2 closure, post-hoc S conjugation, cross-density subtraction, broad campaign or baseline contour doubling.
+
+The saved-input focus launched from implementation 6f7ab9c8. Actual whole-job limits were verified: 2 GiB, zero swap, one CPU, nice 15 and 32 tasks, with every native thread limit set to one. Its 900-second supervisor and silent completion/error hook own continuation. Launch is not input acceptance.

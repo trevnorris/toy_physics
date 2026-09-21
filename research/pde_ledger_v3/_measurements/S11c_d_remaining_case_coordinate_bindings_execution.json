@@ -1,5 +1,5 @@
 {
-  "status": "ACCEPTED_CASE_MATERIAL_BINDING_INPUTS",
+  "status": "MISSING_MATERIAL_BINDINGS_PRODUCTION_LAUNCHED",
   "acceptedCoordinateSources": "3e167144",
   "acceptedBaselineMaterial": "19a9f5a1",
   "continuationStatus": "RESUMED_BY_USER",
@@ -8,7 +8,7 @@
   "resourceGuard": "scripts/s11c_guarded_run.py",
   "initialBudgetSeconds": 900,
   "focus": "Saved scalar/frame/row/layout joins and full native baseline replay with zero new source bindings or numerical work.",
-  "next": "Launch prepared guarded production; compute only missing material scalar/source/grade bindings and derive the actual numerical row partition.",
+  "next": "Await silent completion/error hook. Validate actual new material bindings and numerical reuse partition; launch itself is not acceptance.",
   "launch": {
     "launchedUtc": "2026-09-21T10:18:23.702482+00:00",
     "guardPid": 100174,
@@ -639,5 +639,77 @@
         "bytes": 8783
       }
     }
+  },
+  "focusAcceptanceCommit": "3a063d875a9520338b7779372964d46abfa45f62",
+  "productionLaunch": {
+    "launchedUtc": "2026-09-21T10:57:20.158664+00:00",
+    "guardPid": 128181,
+    "watcherPid": 128182,
+    "command": [
+      "/usr/bin/python",
+      "/var/projects/toy_physics/scripts/s11c_guarded_run.py",
+      "--log-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/bindings/production/resource-guard",
+      "--seconds",
+      "900",
+      "--",
+      "/usr/bin/python",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/bindings/production",
+      "--stage",
+      "coordinate_bindings_construct",
+      "--",
+      "/usr/bin/python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_coordinate_bindings_recover.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/bindings/production/complete",
+      "--resume-focused",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/bindings/focused-recovery-01/complete"
+    ],
+    "threadEnvironment": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1"
+    },
+    "implementationCommit": "3a063d875a9520338b7779372964d46abfa45f62",
+    "helperSha256": "75c7b3865249634848aab760030901f797e0b8dd34fec1b3352a7d9f7375b4bb",
+    "guardSha256": "6492f5ab11dc2ab2f80bbfcc96d7eb6b8632afea07100dd8f74a7954f3ffe542",
+    "sourceChecksSha256": "8df34d53ad45f7d19c4127d59355fff5276589e64725e6659684484e900a1891",
+    "launchIsAcceptance": false,
+    "acceptedFocusCheckpointSha256": "1ccb352afc941ea74757e793e1949b15509a244d04a85d1450a0ffa37e529a9a",
+    "acceptedFocusChecksSha256": "1dfbc53a989f30939e8b0152bd655b213b50bc2ffc2c7c4cc7dcaed4e85ebe9d",
+    "independentValidationChecksSha256": "475dc3f41687a4ed3a9c7ca577a3f89b46301be602a9ab134a80f146de6924f6"
+  },
+  "productionEffectiveLimits": {
+    "memory.max": "2147483648",
+    "memory.swap.max": "0",
+    "pids.max": "32",
+    "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-7c8b91619e25.service",
+    "nice": 15,
+    "affinity": [
+      15
+    ],
+    "threads": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1",
+      "VECLIB_MAXIMUM_THREADS": "1",
+      "BLIS_NUM_THREADS": "1"
+    }
+  },
+  "productionRunRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/bindings/production",
+  "productionWatcherState": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/bindings/production/completion-watcher/state.json",
+  "productionLauncherPathCheck": {
+    "status": "UNUSED_LAUNCHER_PATH_CORRECTED_BEFORE_LAUNCH",
+    "originalSha256": "a86423cd91fddd2d6f077eb0f70b0216de5791351f9b2046f3e4940ef27cefd1",
+    "correctedSha256": "569ed1b6329c61fed0efe633e648ff5097171a507c12ff7ab13a20d57c20089c",
+    "singleHelperPathReverseAst": true,
+    "workerAlgorithmChanged": false,
+    "helper": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_coordinate_bindings_recover.py",
+    "helperSha256": "75c7b3865249634848aab760030901f797e0b8dd34fec1b3352a7d9f7375b4bb"
   }
 }

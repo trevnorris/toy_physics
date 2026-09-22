@@ -18,3 +18,5 @@ no intermediate is reconstructed. Eight physical aliases and four actual
 mutations preserve full own RHOBR source/unit/context/grade evidence. Independent
 saved validation precedes elimination acceptance and later complex-threshold
 construction. Domains, continuation and numerical reuse remain pending.
+
+Construction launched from `300af08f`. The single initial containment check verified all mandatory limits and empty strict stderr. The silent local completion/error hook handles waiting. Launch and early files do not establish elimination acceptance.

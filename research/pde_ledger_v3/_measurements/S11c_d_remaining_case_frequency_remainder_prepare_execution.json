@@ -1,0 +1,8 @@
+{
+  "status": "PREPARED_NOT_LAUNCHED",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/remainder-preparation",
+  "stage": "frequency_remainder_prepare",
+  "helperSha256": "685b35715c212ea8cc5a050db276bd849de8c992c3285647d583fac5c201ee9e",
+  "planSha256": "9bac963c584b42d795a08cc5032ec599e9dd4d025865df26941c10da4d42977d",
+  "inputInspectionSha256": "ecd3be27aedb8f6fa99744b1da51ed4e80a0a555175ee0464092cc8d4a15fbde"
+}

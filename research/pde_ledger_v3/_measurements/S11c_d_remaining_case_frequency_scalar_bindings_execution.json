@@ -1,5 +1,5 @@
 {
-  "status": "CLEAN_SCALAR_BINDINGS_REQUIRES_BOUNDED_SAVED_REVIEW",
+  "status": "ACCEPTED_CASE_FREQUENCY_SCALAR_BINDINGS",
   "root": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/scalar-bindings",
   "staticReview": {
     "status": "PASSED_STDLIB_NATIVE_SCALAR_LOOP_REVIEW",
@@ -98,5 +98,278 @@
     "physicalRecords": 1467,
     "newEndMapCalls": 0,
     "completedArtifacts": 222
+  },
+  "checkpoint": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_scalar_bindings_checkpoint.json",
+    "canonical": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_scalar_bindings_checkpoint.json",
+    "sha256": "d1961c25f725959e896e62e49c45d389fdd503575d27803a89055175f6308b50",
+    "bytes": 251563
+  },
+  "savedReviewCompletion": {
+    "status": "CLEAN_BOUNDED_SAVED_SCALAR_REVIEW",
+    "producer": {
+      "actualExits": [
+        0,
+        0,
+        0
+      ],
+      "workerWallSeconds": 15.815129920010804,
+      "nativeWallSeconds": 17.365336468996247,
+      "guardWallSeconds": 17.55982963499264,
+      "emptyStrictStderr": true,
+      "checksStdoutIdentity": true,
+      "checksSha256": "87a03a6ec9d2f89e9a0cb9e146d0d3f5d616bd3975e9723878c36c8ff8d17b46",
+      "peakBytes": 163860480,
+      "minimumHostAvailableBytes": 22643527680,
+      "zeroCapOOMSwap": true,
+      "evidence": {
+        "active.json": {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/scalar-bindings/active.json",
+          "canonical": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/scalar-bindings/active.json",
+          "sha256": "e58f98184d6dbb2df88c4931da5a41a7110cdd02e2530278beb694f87205b1a6",
+          "bytes": 863
+        },
+        "frequency_scalar_bindings.invocation.json": {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/scalar-bindings/frequency_scalar_bindings.invocation.json",
+          "canonical": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/scalar-bindings/frequency_scalar_bindings.invocation.json",
+          "sha256": "e58f98184d6dbb2df88c4931da5a41a7110cdd02e2530278beb694f87205b1a6",
+          "bytes": 863
+        },
+        "frequency_scalar_bindings.stdout": {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/scalar-bindings/frequency_scalar_bindings.stdout",
+          "canonical": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/scalar-bindings/frequency_scalar_bindings.stdout",
+          "sha256": "87a03a6ec9d2f89e9a0cb9e146d0d3f5d616bd3975e9723878c36c8ff8d17b46",
+          "bytes": 72921
+        },
+        "frequency_scalar_bindings.stderr": {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/scalar-bindings/frequency_scalar_bindings.stderr",
+          "canonical": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/scalar-bindings/frequency_scalar_bindings.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        "guard.stdout": {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/scalar-bindings/guard.stdout",
+          "canonical": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/scalar-bindings/guard.stdout",
+          "sha256": "ec754c4c45404c186f691e12a95c9d865513a46d30f9ae83bb6c03fe339664c9",
+          "bytes": 271
+        },
+        "guard.stderr": {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/scalar-bindings/guard.stderr",
+          "canonical": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/scalar-bindings/guard.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        "resource-guard/outcome.json": {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/scalar-bindings/resource-guard/outcome.json",
+          "canonical": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/scalar-bindings/resource-guard/outcome.json",
+          "sha256": "ec754c4c45404c186f691e12a95c9d865513a46d30f9ae83bb6c03fe339664c9",
+          "bytes": 271
+        },
+        "resource-guard/child-outcome.json": {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/scalar-bindings/resource-guard/child-outcome.json",
+          "canonical": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/scalar-bindings/resource-guard/child-outcome.json",
+          "sha256": "1040d42922db42c20fa51f121d209d1b67452f70c24b0ce39b4c8b66d0cd042e",
+          "bytes": 103
+        },
+        "resource-guard/effective-limits.json": {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/scalar-bindings/resource-guard/effective-limits.json",
+          "canonical": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/scalar-bindings/resource-guard/effective-limits.json",
+          "sha256": "2054957d460a8c776d1df03aa1bb1292728ca68afc6294816919e57d7e0ebca0",
+          "bytes": 441
+        },
+        "resource-guard/limit-validation.json": {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/scalar-bindings/resource-guard/limit-validation.json",
+          "canonical": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/scalar-bindings/resource-guard/limit-validation.json",
+          "sha256": "717f2f06e9f66791228b02eb30e8266bf668c2223cf9a8e7ec7ab21616d73100",
+          "bytes": 511
+        },
+        "resource-guard/resource-samples.jsonl": {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/scalar-bindings/resource-guard/resource-samples.jsonl",
+          "canonical": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/scalar-bindings/resource-guard/resource-samples.jsonl",
+          "sha256": "7a8e1f46835a0076cc8247019c3da5c74993908dc3a1a721b0dcc16967ff8dec",
+          "bytes": 3995
+        },
+        "resource-guard/stderr": {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/scalar-bindings/resource-guard/stderr",
+          "canonical": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/scalar-bindings/resource-guard/stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        "launch.json": {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/scalar-bindings/launch.json",
+          "canonical": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/scalar-bindings/launch.json",
+          "sha256": "6acf3b5d04f4eadbc98efe3e46af82f8ef852646cbf1e43c1e3852a2a545caeb",
+          "bytes": 1672
+        },
+        "static-review.json": {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/scalar-bindings/static-review.json",
+          "canonical": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/scalar-bindings/static-review.json",
+          "sha256": "1b0332a6f7b7b2bffd026ca155e9552c6a05020d2276e3eac5e8b13588c8701d",
+          "bytes": 5549
+        },
+        "initial-containment-inspection.json": {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/scalar-bindings/initial-containment-inspection.json",
+          "canonical": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/scalar-bindings/initial-containment-inspection.json",
+          "sha256": "736445b3dfe4ba7bedfae9e6e845562d908dc85ad0fd30a29b4665dd203ce002",
+          "bytes": 743
+        }
+      }
+    },
+    "review": {
+      "actualExits": [
+        0,
+        0,
+        0
+      ],
+      "workerWallSeconds": 12.620845511002699,
+      "nativeWallSeconds": 14.072679310003878,
+      "guardWallSeconds": 14.257894188995124,
+      "emptyStrictStderr": true,
+      "checksStdoutIdentity": true,
+      "checksSha256": "8d008989d7df7481f491f86015bf33d5252a0b5b80aa4403be3ee6d3370f9494",
+      "peakBytes": 146673664,
+      "minimumHostAvailableBytes": 22382428160,
+      "zeroCapOOMSwap": true,
+      "evidence": {
+        "active.json": {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/scalar-binding-review/active.json",
+          "canonical": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/scalar-binding-review/active.json",
+          "sha256": "79a5bf602d2cab6e9b056f9771f49d2980947e096097d88cd118d625b13e02f3",
+          "bytes": 828
+        },
+        "validate.invocation.json": {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/scalar-binding-review/validate.invocation.json",
+          "canonical": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/scalar-binding-review/validate.invocation.json",
+          "sha256": "79a5bf602d2cab6e9b056f9771f49d2980947e096097d88cd118d625b13e02f3",
+          "bytes": 828
+        },
+        "validate.stdout": {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/scalar-binding-review/validate.stdout",
+          "canonical": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/scalar-binding-review/validate.stdout",
+          "sha256": "8d008989d7df7481f491f86015bf33d5252a0b5b80aa4403be3ee6d3370f9494",
+          "bytes": 1353
+        },
+        "validate.stderr": {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/scalar-binding-review/validate.stderr",
+          "canonical": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/scalar-binding-review/validate.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        "guard.stdout": {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/scalar-binding-review/guard.stdout",
+          "canonical": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/scalar-binding-review/guard.stdout",
+          "sha256": "b908579cf58b27f48bc8601a5d90c22279e465fe01dc4f2c594b1929495a94ef",
+          "bytes": 271
+        },
+        "guard.stderr": {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/scalar-binding-review/guard.stderr",
+          "canonical": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/scalar-binding-review/guard.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        "resource-guard/outcome.json": {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/scalar-binding-review/resource-guard/outcome.json",
+          "canonical": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/scalar-binding-review/resource-guard/outcome.json",
+          "sha256": "b908579cf58b27f48bc8601a5d90c22279e465fe01dc4f2c594b1929495a94ef",
+          "bytes": 271
+        },
+        "resource-guard/child-outcome.json": {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/scalar-binding-review/resource-guard/child-outcome.json",
+          "canonical": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/scalar-binding-review/resource-guard/child-outcome.json",
+          "sha256": "211c6f6c1560fe63ea5bef9cc97fad4c6227538d3406e3cf83b0a0320df74dd9",
+          "bytes": 102
+        },
+        "resource-guard/effective-limits.json": {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/scalar-binding-review/resource-guard/effective-limits.json",
+          "canonical": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/scalar-binding-review/resource-guard/effective-limits.json",
+          "sha256": "8d8f9f9e5739e088471b257e775b596e8f0050ffab19dc284a753f74a8bd8d2c",
+          "bytes": 441
+        },
+        "resource-guard/limit-validation.json": {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/scalar-binding-review/resource-guard/limit-validation.json",
+          "canonical": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/scalar-binding-review/resource-guard/limit-validation.json",
+          "sha256": "ab65d2ee257fa929116a27c9f4f014bf7fb8f8844d872addc2ed74de68d70879",
+          "bytes": 511
+        },
+        "resource-guard/resource-samples.jsonl": {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/scalar-binding-review/resource-guard/resource-samples.jsonl",
+          "canonical": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/scalar-binding-review/resource-guard/resource-samples.jsonl",
+          "sha256": "caa1b95b0710e322e09ec7d54c382e9dc39f850b21271aafaefa05bd83a22a16",
+          "bytes": 3594
+        },
+        "resource-guard/stderr": {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/scalar-binding-review/resource-guard/stderr",
+          "canonical": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/scalar-binding-review/resource-guard/stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        "launch.json": {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/scalar-binding-review/launch.json",
+          "canonical": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/scalar-binding-review/launch.json",
+          "sha256": "0dc8fd89e937d6f869126729824727ce754728fe33eaaa0d0c63da6dd17683ff",
+          "bytes": 1613
+        },
+        "static-review.json": {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/scalar-binding-review/static-review.json",
+          "canonical": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/scalar-binding-review/static-review.json",
+          "sha256": "4e88cbed5c7cfab5537b8885812694f5d619deb238c3816a00d5a6da8ab8619b",
+          "bytes": 337
+        },
+        "initial-containment-inspection.json": {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/scalar-binding-review/initial-containment-inspection.json",
+          "canonical": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/scalar-binding-review/initial-containment-inspection.json",
+          "sha256": "38d4d535dff51f7a1f02614951075072dfc9c0c2c669ca2d24c97a45b7857250",
+          "bytes": 695
+        }
+      }
+    },
+    "savedReview": {
+      "status": "PASSED_BOUNDED_SCALAR_BINDINGS_REVIEW_AND_JET_INPUTS",
+      "producerChecksSha256": "87a03a6ec9d2f89e9a0cb9e146d0d3f5d616bd3975e9723878c36c8ff8d17b46",
+      "cases": {
+        "LAB_HELD__RHO4_CONSTANT": {
+          "records": 375,
+          "newUses": 0,
+          "reusedUses": 375,
+          "sourceJets": 35,
+          "savedJetUses": 35,
+          "unmatchedJetUses": 0
+        },
+        "LAB_HELD__RHOBR_CONSTANT": {
+          "records": 335,
+          "newUses": 29,
+          "reusedUses": 306,
+          "sourceJets": 25,
+          "savedJetUses": 24,
+          "unmatchedJetUses": 1
+        },
+        "MATERIAL_ADVECTED__RHO4_CONSTANT": {
+          "records": 400,
+          "newUses": 24,
+          "reusedUses": 376,
+          "sourceJets": 35,
+          "savedJetUses": 26,
+          "unmatchedJetUses": 9
+        },
+        "MATERIAL_ADVECTED__RHOBR_CONSTANT": {
+          "records": 357,
+          "newUses": 10,
+          "reusedUses": 347,
+          "sourceJets": 25,
+          "savedJetUses": 15,
+          "unmatchedJetUses": 10
+        }
+      },
+      "newScalarCallsReviewed": 63,
+      "physicalScalarRecords": 1467,
+      "endRoutes": 8,
+      "newScientificCalls": 0,
+      "allConsumedHashesUnchanged": true,
+      "consumedLogicalPaths": 313,
+      "consumedPhysicalFiles": 313,
+      "wallSeconds": 12.620845511002699,
+      "scope": "Saved scalar bindings and existing source-jet routing at1-0.01i. No jet extraction, quadrature, matrix, solve, pole or full response acceptance."
+    },
+    "postAcceptanceMetadataHashesUnchanged": true
   }
 }

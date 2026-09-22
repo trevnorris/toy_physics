@@ -1,5 +1,5 @@
 {
-  "status": "PREPARED_BOUNDED_FREQUENCY_ROW_PILOT",
+  "status": "FAILED_FIRST_COEFFICIENT_BRANCH_GUARD",
   "root": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-pilot",
   "staticReview": {
     "status": "PASSED_BOUNDED_ROW_PILOT_STATIC_REVIEW",
@@ -19,5 +19,110 @@
     "explicitNewIntegrationMethod": "GK21 and GK15 on same actual finite domain, native source rule nodes/weights reused",
     "staticReviewNotScientificAcceptance": true
   },
-  "launchIsAcceptance": false
+  "launchIsAcceptance": false,
+  "launch": {
+    "launchedUtc": "2026-09-22T12:39:39.116597+00:00",
+    "guardPid": 1721327,
+    "watcherPid": 1721328,
+    "stage": "frequency_row_pilot",
+    "command": [
+      "/usr/bin/python",
+      "/var/projects/toy_physics/scripts/s11c_guarded_run.py",
+      "--log-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-pilot/resource-guard",
+      "--seconds",
+      "900",
+      "--",
+      "/usr/bin/python",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-pilot",
+      "--stage",
+      "frequency_row_pilot",
+      "--",
+      "/usr/bin/python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_row_pilot.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-pilot/complete"
+    ],
+    "helperSha256": "c579b8881e890f0257fb7cebb5b50ca30dce356b3b2141f622f0b35deb7ad2ec",
+    "planSha256": "bb1657664a55265cf9d9c569bde18c34bb8351e3b0807737656805f7ba139e88",
+    "staticReviewSha256": "db000f32abac355fa7ab96408c63838ce00bc0b851b218826bf2aa9a845fae79",
+    "guardSha256": "6492f5ab11dc2ab2f80bbfcc96d7eb6b8632afea07100dd8f74a7954f3ffe542",
+    "implementationCommit": "ba89cd032199fca9108555127442e0b4d32ed791",
+    "scope": "One new full129x129 source row, bounded new numerical source action and GK21/GK15 pilot under exploratoryAcceptanceV1. No scattering or global certification claim.",
+    "launchIsAcceptance": false
+  },
+  "initialContainmentInspection": {
+    "status": "INITIAL_CONTAINMENT_VERIFIED",
+    "limits": {
+      "memory.max": "2147483648",
+      "memory.swap.max": "0",
+      "pids.max": "32",
+      "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-3e22e20dce29.service",
+      "nice": 15,
+      "affinity": [
+        15
+      ],
+      "threads": {
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "VECLIB_MAXIMUM_THREADS": "1",
+        "BLIS_NUM_THREADS": "1"
+      }
+    },
+    "active": {
+      "stage": "frequency_row_pilot",
+      "command": [
+        "/usr/bin/python",
+        "-u",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_row_pilot.py",
+        "--run-directory",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-pilot/complete"
+      ],
+      "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-pilot/frequency_row_pilot.stdout",
+      "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-pilot/frequency_row_pilot.stderr",
+      "startedUtc": "2026-09-22T12:39:39.266393+00:00",
+      "childPid": 1721334,
+      "status": "failed",
+      "exitCode": 1,
+      "wallSeconds": 3.603247929000645,
+      "stderrBytes": 2284,
+      "finishedUtc": "2026-09-22T12:39:42.869733+00:00"
+    },
+    "strictStderrBytes": 2284,
+    "oneInitialCheckOnly": true
+  },
+  "failure": {
+    "status": "FAILED_FIRST_COEFFICIENT_BRANCH_GUARD",
+    "actualExits": [
+      1,
+      1,
+      1
+    ],
+    "nativeWallSeconds": 3.603247929000645,
+    "guardWallSeconds": 3.7477499489905313,
+    "guardInterruption": null,
+    "strictStderrBytes": 2284,
+    "peakBytes": 217513984,
+    "zeroCapOOMSwap": true,
+    "preservedFileCount": 17,
+    "firstCoefficientCompleted": false,
+    "integrandCompleted": false,
+    "quadratureStarted": false,
+    "sourceActionCompleted": true,
+    "sourceComparison": {
+      "maximumScaledDifference": 3.513496265283723e-16,
+      "tolerance": 2e-10
+    },
+    "inventory": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-pilot/completed-file-inventory.json",
+      "sha256": "4ac6401a41ad9865d62773865b724a74c2b292dd0b06a3d34fc99be176f6a5b3",
+      "bytes": 5001
+    },
+    "scope": "First coefficient input saved; complex noninteger power rejected by explicit evaluator restriction. No accepted physics or numerical source result invalidated; inspect actual branch before unfinished-call continuation."
+  }
 }

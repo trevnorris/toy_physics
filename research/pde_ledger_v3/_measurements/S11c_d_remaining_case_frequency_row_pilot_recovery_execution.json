@@ -1,0 +1,57 @@
+{
+  "status": "PREPARED_SAVED_ROW_PILOT_CONTINUATION",
+  "root": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-pilot-recovery-01",
+  "staticReview": {
+    "status": "PASSED_STDLIB_SAVED_ROW_CONTINUATION_REVIEW",
+    "helperSha256": "7d9d446165f6e3301dabd5dc225f1585930f5879a1feb65fa58e96ba24f82a40",
+    "planSha256": "59355d55894e5e463ce898ad89fdd8b729cb797df1afbe3b71f7a6b9a185ff72",
+    "repairSha256": "a7c7006c17301f4411278cf4af3235f8d924c1ca565402120d04d5489a9eec36",
+    "originalHelperSha256": "c579b8881e890f0257fb7cebb5b50ca30dce356b3b2141f622f0b35deb7ad2ec",
+    "nativeEngineSha256": "5bf77729682960bb59f10c672a5fe3f67a98b0a9533da7c6189a37183596050f",
+    "joins": {
+      "prefixStatementRange": [
+        9,
+        83
+      ],
+      "restoredLocals": [
+        "coefficient",
+        "source",
+        "variable",
+        "positions",
+        "context",
+        "settings",
+        "source_output",
+        "selected",
+        "matrix",
+        "nodes",
+        "si",
+        "source_spread"
+      ],
+      "wholeOriginalMainReverseAST": true,
+      "wholeEvaluatorReverseAST": true,
+      "completedSourcePrefixReexecuted": false,
+      "pointJournalStartsAt": 1
+    },
+    "independentSuffixLocalsAnalysis": [
+      "coefficient",
+      "context",
+      "matrix",
+      "nodes",
+      "positions",
+      "selected",
+      "settings",
+      "si",
+      "source",
+      "source_output",
+      "source_spread",
+      "variable"
+    ],
+    "fakePrincipalPowerHarnessPassed": true,
+    "scientificImports": 0,
+    "scientificPacketReads": 0,
+    "noCompletedSourcePrefixReexecution": true,
+    "noOldCompilerInvocation": true,
+    "noAutomaticRetry": true
+  },
+  "launchIsAcceptance": false
+}

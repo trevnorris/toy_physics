@@ -1,5 +1,5 @@
 {
-  "status": "COMPLETED_PENDING_INDEPENDENT_SAVED_VALIDATION",
+  "status": "ACCEPTED_CASE_FREQUENCY_END_COMPLEX_THRESHOLD_CANDIDATES",
   "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-complex-threshold-recovery-03",
   "helper": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_end_complex_threshold_link_finish.py",
   "staticReview": {
@@ -446,5 +446,12 @@
       "swapBytes": 0
     },
     "acceptance": false
+  },
+  "independentAcceptance": {
+    "checkpoint": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_end_complex_threshold_checkpoint.json",
+    "checkpointSha256": "38c47b224f9c192aed3cec1d677bbb2e64b1ce4ac7a9efacb975dbb26a6029e7",
+    "validatorChecksSha256": "2738410689c598bd6e3eb5e99f10ffe543758cb12ed85a51007df4bac35e93c9",
+    "finalPathsVerified": 138004,
+    "finalOriginalLinkHopsVerified": 115555
   }
 }

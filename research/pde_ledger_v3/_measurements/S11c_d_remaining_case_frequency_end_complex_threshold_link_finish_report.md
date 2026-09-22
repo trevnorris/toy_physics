@@ -36,3 +36,9 @@ actual controls passed. The saved squarefree common factor is frequency
 coordinate squared minus 3/40, with two native algebraic candidate intervals.
 This is not physical threshold/domain acceptance. Independent saved validation
 is next; no completed calculation will repeat.
+
+Independent saved validation subsequently passed with final clean guards and
+138,004 paths / 115,555 original link hops unchanged. The separate complex
+threshold candidate checkpoint is accepted; all earlier failed outcomes and
+completed operation/packet bytes remain preserved. This accepts algebraic
+candidates only, with outgoing domains and continuation still unaccepted.

@@ -29,3 +29,5 @@ independently derives all three whole complex-analysis input comparisons,
 and checks eight physical aliases and four actual controls. Resultant, Poly,
 normalization, analysis and all earlier science remain disabled. Full original
 source/input/reference hashes bracket the saved checks.
+
+Independent saved validation launched from `1bd46f14`. Its single initial containment check verified all mandatory limits and empty strict stderr. The local completion/error hook handles waiting. No launch or early file establishes elimination acceptance.

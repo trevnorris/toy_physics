@@ -1,5 +1,5 @@
 {
-  "status": "IMPLEMENTED_NOT_LAUNCHED",
+  "status": "LAUNCHED_PENDING_FINAL_INSPECTION",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/material-inputs-recovery-01",
   "stage": "frequency_material_inputs_recover",
   "helperSha256": "ff874c3bd4ca65170c1968cb6f8c47a195e4670dc92e576602394a2b7e4a322b",
@@ -9,5 +9,40 @@
   "canonicalMetadataBoundaryHarness": true,
   "wrongCanonicalRejected": true,
   "completedNativeSummaryReferenced": true,
-  "scientificImportsOrDeserialization": 0
+  "scientificImportsOrDeserialization": 0,
+  "launch": {
+    "launchedUtc": "2026-09-22T16:53:22.461226+00:00",
+    "guardPid": 1828294,
+    "watcherPid": 1828295,
+    "stage": "frequency_material_inputs_recover",
+    "command": [
+      "/usr/bin/python",
+      "/var/projects/toy_physics/scripts/s11c_guarded_run.py",
+      "--log-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/material-inputs-recovery-01/resource-guard",
+      "--seconds",
+      "900",
+      "--",
+      "/usr/bin/python",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/material-inputs-recovery-01",
+      "--stage",
+      "frequency_material_inputs_recover",
+      "--",
+      "/usr/bin/python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_material_inputs_recover.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/material-inputs-recovery-01/complete"
+    ],
+    "helperSha256": "ff874c3bd4ca65170c1968cb6f8c47a195e4670dc92e576602394a2b7e4a322b",
+    "planSha256": "1a3e697f3bf1394e875661683667a5066a1cd524d6d0b8fc4f652b511843d235",
+    "staticReviewSha256": "a4ddf3950f1a05a8cd12002a26b528b27ea52590967087fb4a97d116299a4410",
+    "guardSha256": "6492f5ab11dc2ab2f80bbfcc96d7eb6b8632afea07100dd8f74a7954f3ffe542",
+    "implementationCommit": "29be2df22383bea6db57ddad0f1640d3f70cee96",
+    "scope": "Read23 remaining material row/source inputs and actual saved source-call matches only; no scientific operation or physical pickle writer.",
+    "launchIsAcceptance": false
+  },
+  "initialContainment": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/material-inputs-recovery-01/initial-containment-inspection.json"
 }

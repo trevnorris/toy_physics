@@ -11,3 +11,5 @@ preserves the whole original reader after reverse-AST checks. The stdlib
 boundary harness accepts distinct logical links to the same file and rejects
 a different canonical file. No science or pickle deserialization was used in
 the harness. Await the single guarded result before using material metadata.
+
+Fresh continuation launched under verified mandatory containment with the silent completion/error hook. The original reader was not restarted. Final outcome and saved metadata inspection remain required.

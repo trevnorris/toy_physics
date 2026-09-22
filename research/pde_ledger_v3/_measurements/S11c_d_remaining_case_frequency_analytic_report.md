@@ -124,3 +124,8 @@ controls. Whole-function reverse AST preserves every physical typed check and
 restores the completed initial atlas/unit prefix through exact input/source
 hashes and the original failure location. No unavailable summary is invented.
 The unfinished physical validation suffix and final hashes must pass cleanly.
+
+The saved validation continuation launched at 2026-09-22T00:41:49Z from
+6679ede7. Initial whole-job 2 GiB, zero-swap, one-CPU, nice-15, 32-task and
+one-native-thread limits verified with empty strict stderr. Its silent
+completion/error hook will resume the task. Final acceptance is pending.

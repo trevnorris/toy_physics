@@ -1,0 +1,36 @@
+{
+  "status": "READY_FOR_GUARDED_SAVED_CALL_INPUTS",
+  "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-call-inputs",
+  "helper": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_end_calls.py",
+  "staticReview": {
+    "status": "STATIC_REVIEWED_SAVED_END_CALL_INPUTS",
+    "helperSha256": "cde2b285d43f830bc6d1ac88abb9183252a4cce2647953687ad4357e008de6fb",
+    "planSha256": "dc45beccd9e4a65864e1a42f95e1a9840b93e9be58e2d81ba6be68222757d7c2",
+    "acceptedCheckpointSha256": "d18aed1270a2f784cd0df4abd75cefe3504e3e56ec912b81f6dd2aee39197f15",
+    "acceptedInputCommit": "113c4e3b",
+    "acceptedValidatorChecksSha256": "edbec2afaab018a301091e2c4a6746dcc32918ce9028cf2cf244779564f17c3b",
+    "exactCurrentFrozenSourcePins": 187,
+    "sourceReferenceBytesAvoidingCopy": 146412192,
+    "compileOnlyPassed": true,
+    "wholeNativeConsumedStateFieldsPassed": true,
+    "actualRequestsReviewed": 30,
+    "modalOpcodeFieldInventoryPassed": true,
+    "scientificImportsOrPacketDeserialization": false,
+    "constructorCallScanPassed": true,
+    "actualNativeBaselineUniformInputJoin": true,
+    "freshReferenceProtectedWorkspace": true,
+    "newScientificCalls": 0,
+    "frequencyEndReuseAccepted": false
+  },
+  "guard": {
+    "wallSeconds": 900,
+    "memoryBytes": 2147483648,
+    "swapBytes": 0,
+    "cpuCount": 1,
+    "nice": 15,
+    "tasks": 32,
+    "nativeThreads": 1
+  },
+  "launchIsAcceptance": false,
+  "scope": "Saved call inputs and completed frequency-leg operands only; no scientific construction."
+}

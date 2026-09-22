@@ -19,3 +19,8 @@ consumer row/column metadata remains distinct. Eight physical routes and five
 changed-input/value controls will be saved. Only the ten pending native entry
 bodies may execute. Independent saved validation must precede table acceptance;
 end domains, threshold analysis and whole-cluster continuation remain pending.
+
+Construction launched from `181637bc`. The single initial containment check
+verified all mandatory limits and empty strict stderr. The silent local
+completion/error hook handles waiting. No construction or table acceptance
+is inferred from launch or early files.

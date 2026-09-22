@@ -15,3 +15,18 @@ zero cap/OOM/swap. This does not establish scattering accuracy or a pole.
 All original failures and previous two-row producer176cap contacts remain
 explicit in upstream checkpoints. The four profile-remainder/Abel rows51--54
 remain separate work; no absent old source-basis return is recreated here.
+
+Launched with implementation 2df23fbb1fd01eb0f2b58b765d1586b1f64b166e and the silent
+local completion/error hook. Actual memory/swap/CPU/nice/tasks/thread limits
+were verified; no model polling is configured. The actual final outcome and
+saved result review remain required before acceptance.
+
+Both full grids completed cleanly in7.14s guarded, all actual
+exits0, empty stderr/stdout-checks identity, peak577028096bytes,
+zero cap/OOM/swap events. Actual counts:16 new factor batches (full unit
+arguments govern reuse),756 new/269 accepted Fourier returns; zero new
+source actions/profile/rule calls. Fine row norm0.011502248644406738, absolute
+refinement spread9.162225554603579e-7, relative7.965595109143243e-5.
+Await bounded saved review before acceptance; no scattering error claim.
+
+Producer checks SHAf8e31e662d0f812047bb23fc50da9594853b967e5d5914aa2847e21259afb156.

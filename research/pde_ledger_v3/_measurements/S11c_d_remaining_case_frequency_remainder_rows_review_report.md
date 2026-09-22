@@ -6,3 +6,8 @@ peak646586368bytes, zero cap/OOM/swap. Row relative spreads6.4704e-5,
 6.4704e-5,6.5067e-5,6.4697e-5 meet the selected fixed-row target. No scattering
 error bound or pole/domain result is claimed. Review only actual saved full
 inputs/arrays/receipts/source/units/consumer element routes and controls.
+
+Launched implementation e314d69c5b3c193cceddacb1756205ff88a5f690 under verified
+mandatory900s2GiBzero-swaponeCPUnice15pids32nativeThreads1 containment.
+Silent local completion/error hook active; no model polling. Final actual
+clean outcome is required before accepting these four rows.

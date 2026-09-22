@@ -1,0 +1,9 @@
+{
+  "status": "IMPLEMENTED_NOT_LAUNCHED",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/remainder-rows-review-recovery-01",
+  "stage": "validate",
+  "helperSha256": "f47ba57c123ed1d6590e4bcca4f7a1d2f97e50bf9fe0b241a9fe3a7b27cc346b",
+  "planSha256": "8441a53e11222163dff38ccfb68b93c0e7a7938cde9baba8cbadeaabd46531ce",
+  "originalFailure": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/remainder-rows-review-recovery-01/failed-review-outcome.json",
+  "noAcceptanceBeforeFinalCleanOutcome": true
+}

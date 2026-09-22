@@ -24,3 +24,5 @@ The guarded worker launched from `867a4246`. Its single initial containment
 inspection verified 900 seconds, 2 GiB, zero swap, one CPU, nice15, 32 tasks
 and nativeThreads1 with empty strict stderr. The silent local completion/error
 hook handles waiting. No launch or early output establishes acceptance.
+
+The worker stopped after 93.88316198 native / 94.04501500 guard seconds at the first JSON guard-receipt write: its parent directory did not exist. Actual guard/supervisor/child exits are one, without guard interruption; strict stderr has 2,119 bytes. Peak memory was 371,437,568 bytes, zero cap/OOM/swap; minimum host availability 23,263,285,248 bytes. All 8,706 files, 206 source pins, 108,605 original inputs and 8,695 reference routes remain unchanged. The initial Poly input/value/completion and local are saved; the native nonzero comparison preceded the failed receipt write. No complex analysis operation began, no final checks or acceptance exist. A fresh explicit continuation will create checked JSON parents and restore this completed prefix; it will not rerun the Poly or nonzero comparison.

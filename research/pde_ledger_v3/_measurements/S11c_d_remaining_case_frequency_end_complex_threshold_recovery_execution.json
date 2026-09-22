@@ -1,0 +1,151 @@
+{
+  "status": "STATIC_REVIEWED_NOT_LAUNCHED",
+  "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-complex-threshold-recovery-01",
+  "helper": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_end_complex_threshold_recover.py",
+  "staticReview": {
+    "status": "STATIC_REVIEWED_SAVED_COMPLEX_PREFIX_DIRECTORY_CONTINUATION",
+    "helperSha256": "73b607c13ef0539f5fcca678ec475f0935ed88595036308dd622acf208edc2f0",
+    "planSha256": "740404ff4a7664bf2612d1de6982f14b8d4962d5ee349a275f43ed784ccf43d8",
+    "repairSha256": "efef5f98335296dc3c476adc43c6ce76c3809f1d15e96b9da9152a927f837d65",
+    "originalHelperSha256": "90137f3e6598149700c9279e39ec2ae36847caa75a52fc76c27451fa8498d213",
+    "wholeConstructJoin": {
+      "entireOriginalConstructReverseAST": true,
+      "originalConstructAST": "3a1947731156247eaa300202ea6b2dea6f79c439d078e441e58af6e99b95302d",
+      "completedPrefixStatements": 19,
+      "restoredLocals": [
+        "analyze",
+        "branch_pairs",
+        "elimination",
+        "own",
+        "packet",
+        "pairs",
+        "poly",
+        "previous_result",
+        "router"
+      ],
+      "allLaterStatementsAndNativeGuardsUnchanged": true,
+      "adapterSource": "def construct(base, cp, functions, joins, dispatch):\n    (own, elimination, pairs, branch_pairs, router, analyze, packet, poly, previous_result) = restore_prefix(base, functions, joins, dispatch)\n    analysis = analyze(poly, own['frequencyCoordinate'], router)\n    f.atomic_pickle(base / 'new-complex-analysis.pickle', analysis)\n    matches = branch_pairs['matches']\n    f.require(matches and (not previous_result['pending']['branches']), 'all actual branch inputs have saved full returns')\n    branches = matches[0]['value']\n    for item in matches:\n        same(item['input'], branch_pairs['requested'])\n        same(item['value'], branches)\n    f.atomic_pickle(base / 'complex-accepted-branch-return.pickle', {'requested': branch_pairs['requested'], 'matches': matches, 'value': branches})\n    det = elimination['determinant']\n    cm = own['coordinateMap']\n    inp = SimpleNamespace(frame=cm['unitFrame'])\n    data = {'ends': {'fieldUnits': cm['fieldReferenceUnits'], 'rowUnits': cm['equationReferenceUnits']}}\n    threshold = packet(own['coefficientMatrix'], det['clearedMatrix'], det['rowDenominators'], det['numerator'], det['denominator'], own['wave'], elimination['elimination'], analysis['normalized'], analysis['complexSquarefree'], analysis['factorization'], analysis['factorReconstructionResidual'], analysis['intervals'], branches, own['frequencyCoordinate'], own['radicalCoordinate'], inp, data, analysis, router)\n    f.atomic_pickle(base / 'new-end-threshold/right-threshold-candidates.pickle', threshold)\n    same(threshold['coordinateMap'], cm)\n    aliases = {}\n    for (label, case) in own['aliases'].items():\n        aliases[label] = {}\n        for (end, prior) in case.items():\n            shared = tuple(prior['owner']) == OWNER\n            item = {'address': (label, end), 'owner': prior['owner'], 'fullInputRoute': prior, 'thresholdPath': str(base / 'new-end-threshold/right-threshold-candidates.pickle') if shared else prior['thresholdPath'], 'mode': 'shared-new-complex-threshold-candidates' if shared else 'accepted-baseline-threshold-return', 'physicalThresholdOrEndDomainOrNumericalReuseAccepted': False}\n            folder = base / 'complex-threshold-cases' / label / end.lower()\n            folder.mkdir(parents=True)\n            f.save(folder / 'route.json', item)\n            aliases[label][end] = item\n        f.save(base / 'complex-threshold-cases' / label / 'case-summary.json', aliases[label])\n    mutations = {'actualInput': pairs['requested'], 'changedInput': dict(pairs['requested'], elimination=pairs['requested']['elimination'] + 1), 'changedUnit': dict(pairs['requested'], coefficientUnit=(1, 0, 0)), 'actualOwner': OWNER, 'changedOwner': (OWNER[0], 'LEFT'), 'actualAnalysis': analysis, 'changedRealPart': dict(analysis, realPart=analysis['realPart'] + 1), 'changedBezoutResidual': dict(analysis, bezoutResidual=analysis['bezoutResidual'] + 1)}\n    f.atomic_pickle(base / 'complex-threshold-mutation-operands.pickle', mutations)\n    controls = {'eliminationCoefficient': not equal(mutations['actualInput'], mutations['changedInput']), 'coefficientUnit': not equal(mutations['actualInput'], mutations['changedUnit']), 'owner': OWNER != mutations['changedOwner'], 'realPart': not equal(analysis, mutations['changedRealPart']), 'bezoutResidual': not equal(analysis, mutations['changedBezoutResidual'])}\n    f.save(base / 'complex-threshold-mutation-controls.json', controls)\n    f.require(all(controls.values()), 'actual saved complex threshold input/owner/proof changes')\n    counts = {}\n    for receipt in router.receipts:\n        item = counts.setdefault(receipt['function'], {'new': 0, 'reused': 0})\n        item['reused' if receipt['reused'] else 'new'] += 1\n    f.save(base / 'complex-operation-inventory.json', {'calls': router.receipts, 'counts': counts, 'methodSources': router.native_sources})\n    f.atomic_pickle(base / 'remaining-case-end-complex-threshold.pickle', {'owner': OWNER, 'sourceInput': own, 'eliminationInput': elimination, 'analysis': analysis, 'threshold': threshold, 'operations': router.receipts, 'aliases': aliases, 'physicalThresholdsComplexEndDomainsAndContinuationUnaccepted': True})\n    return ({'physicalEnds': 8, 'sharedNewUses': 2, 'baselineAliases': 6, 'newEndOwners': 1, 'cases': aliases, 'operationCounts': counts, 'actualOperationCalls': len(router.receipts), 'actualMutationControls': len(controls), 'realCommonRootIntervals': len(analysis['intervals']), 'newComplexAnalysisPipelines': 1, 'newBranchCalls': 0, 'physicalThresholdOrEndDomainContinuationOrNumericalReuseAccepted': False}, router)"
+    },
+    "wholeOriginalMainAndRouterUnchanged": true,
+    "completedPolyReusedWithoutConstructorOrNonzeroGuard": true,
+    "nativeJSONWriterAndRejectionHarness": true,
+    "allNineRequiredSuffixLocalsVerified": true,
+    "firstUnfinishedAnalysisOpaqueFixture": true,
+    "scientificImportsOrCalls": false,
+    "originalFiles": 8706,
+    "originalLogs": 22,
+    "noInProgressWorker": true,
+    "retainedBuilderSuffixUnchanged": true
+  },
+  "previousOutcome": {
+    "status": "FAILED_METADATA_DIRECTORY_AFTER_COMPLETED_INITIAL_POLY",
+    "supervisor": {
+      "stage": "frequency_end_complex_threshold",
+      "command": [
+        "/usr/bin/python",
+        "-u",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_end_complex_threshold.py",
+        "--run-directory",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-complex-threshold/complete"
+      ],
+      "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-complex-threshold/frequency_end_complex_threshold.stdout",
+      "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-complex-threshold/frequency_end_complex_threshold.stderr",
+      "startedUtc": "2026-09-22T06:40:13.091701+00:00",
+      "childPid": 1114561,
+      "status": "failed",
+      "exitCode": 1,
+      "wallSeconds": 93.88316198499524,
+      "stderrBytes": 2119,
+      "finishedUtc": "2026-09-22T06:41:46.974919+00:00"
+    },
+    "guard": {
+      "exitCode": 1,
+      "wallSeconds": 94.04501500100014,
+      "unit": "s11c-guard-f9e34888bbd6",
+      "stderrBytes": 0,
+      "limitsVerified": true,
+      "childOutcome": {
+        "exitCode": 1,
+        "guardReason": null,
+        "wallSeconds": 93.97251383699768,
+        "childPid": 1114560
+      }
+    },
+    "child": {
+      "exitCode": 1,
+      "guardReason": null,
+      "wallSeconds": 93.97251383699768,
+      "childPid": 1114560
+    },
+    "effectiveLimits": {
+      "memory.max": "2147483648",
+      "memory.swap.max": "0",
+      "pids.max": "32",
+      "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-f9e34888bbd6.service",
+      "nice": 15,
+      "affinity": [
+        15
+      ],
+      "threads": {
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "VECLIB_MAXIMUM_THREADS": "1",
+        "BLIS_NUM_THREADS": "1"
+      }
+    },
+    "stderrBytes": 2119,
+    "originalFiles": 8706,
+    "sources": 206,
+    "inputPackets": 108605,
+    "referenceRoutes": 8695,
+    "completedInitialOperation": {
+      "site": "initial-0",
+      "function": "sp.Poly",
+      "reused": false,
+      "owner": {
+        "owner": [
+          "LAB_HELD__RHOBR_CONSTANT",
+          "RIGHT"
+        ],
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-complex-threshold/complete/complex-operations/0/value.pickle",
+        "call": 0
+      },
+      "inputSha256": "78bcb3692419b34ce7989b52f638b0e747bfa1bd3687d119df738a0ba9e75085",
+      "valueSha256": "83d9803ca0a199510ef870dfeb22170cb1c49a56f286d0c3032ebf71bb977bbb"
+    },
+    "completedInitialPolySha256": "83d9803ca0a199510ef870dfeb22170cb1c49a56f286d0c3032ebf71bb977bbb",
+    "completedInitialNonzeroGuard": "Exact native f.require precedes AnalysisRouter.guard; traceback is inside JSON writer after comparison returned. No old independent guard receipt existed.",
+    "newAnalysisCallsBeforeFailure": 0,
+    "oldFinalChecksOrAcceptance": false,
+    "allOriginalInputSourceReferenceHashesRechecked": true,
+    "resourceSamples": {
+      "utc": "2026-09-22T06:41:46.991283+00:00",
+      "hostAvailableBytes": 24404164608,
+      "memory.current": "122970112",
+      "memory.peak": "371437568",
+      "memory.swap.current": "0",
+      "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0",
+      "memory.pressure": "some avg10=0.00 avg60=0.00 avg300=0.00 total=8998\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=8998",
+      "pids.current": "1"
+    },
+    "resources": {
+      "memoryPeakBytes": 371437568,
+      "minimumHostAvailableBytes": 23263285248,
+      "capReclaims": 0,
+      "oomEvents": 0,
+      "swapBytes": 0
+    }
+  },
+  "guard": {
+    "wallSeconds": 900,
+    "memoryBytes": 2147483648,
+    "swapBytes": 0,
+    "cpuCount": 1,
+    "nice": 15,
+    "tasks": 32,
+    "nativeThreads": 1
+  },
+  "launchIsAcceptance": false
+}

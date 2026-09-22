@@ -14,3 +14,7 @@ Saved input inspection finished cleanly in4.537s guarded after three preserved
 source-metadata failures; no scientific call ran in any reader. Its checks
 are ecd3be27aedb8f6fa99744b1da51ed4e80a0a555175ee0464092cc8d4a15fbde.
 All original failed logs and completed native caller metadata remain immutable.
+
+Launched with implementation 7a80135101ecf90e46106133fa386021a0268720; actual
+containment verified, silent completion/error hook installed, no model polling.
+Completed cleanly; bounded saved result review remains before acceptance.

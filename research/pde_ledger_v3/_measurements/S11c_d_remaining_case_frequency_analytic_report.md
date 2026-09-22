@@ -146,3 +146,26 @@ unit exponent was a SymPy Integer. No pair or science was written. A fresh
 saved-only continuation preserves its logs and completed source/outcome joins;
 whole-main reverse AST changes only the metadata unit view to literal strings
 and restores that completed prefix. Original typed unit packets remain exact.
+
+The saved diagnostic continuation launched at 2026-09-22T00:54:57Z from
+28a89ac7 with verified whole-job containment and empty strict stderr. Its
+silent local completion/error hook resumes the task; launch is not acceptance.
+
+The diagnostic continuation finished cleanly in 7.26 worker / 8.87 native
+seconds: all 252 raw/normalized operand views, 647 used paths and original
+string hashes passed, with 20 live/restored differences and zero restored
+residual-equation differences. Peak memory was 111,153,152 bytes, zero
+cap/OOM/swap and minimum host availability 23.92 GB. The first differing
+saved pair is local0Row3Column0, not the first record in the case; its live
+unevaluated scalar constants combine on restoration, while its original
+nonzero raw expression and exact certificate remain saved. No independent
+algebraic reconstruction was performed.
+
+A fresh validation continuation preserves both forms and the original live
+equality flags, with exact diagnostic/source/unit/address/hash and certificate
+joins. Whole comparison reverse AST changes only two representation-reader
+calls. Completed routes, denominator checks, baseline case, 191 owner views
+and controls are reused. The unfinished cases and final certificate/seed/hash
+checks remain original. No scientific constructor is enabled. All actual
+previous/diagnostic reference paths and whole reversed functions passed static
+review; this preparation is not analytic acceptance.

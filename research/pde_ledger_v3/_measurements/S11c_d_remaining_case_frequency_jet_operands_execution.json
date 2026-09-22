@@ -1,0 +1,12 @@
+{
+  "status": "PREPARED_SAVED_OPERAND_READER",
+  "root": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/source-jet-operands",
+  "staticReview": {
+    "status": "PASSED_STATIC_OPERAND_READER_REVIEW",
+    "helperSha256": "3c94ca05cfec8bb89ae20aa56a78d76d54bf52877be81e7a3a90881744b5e779",
+    "planSha256": "5c554f6151dd4d920701ff6e9a19462453a78a722f7b3c9c36967864b7e67719",
+    "noDerivativeBindingPolyNumericalOrPickleWriterCalls": true,
+    "nativeCodecIntact": true
+  },
+  "launchIsAcceptance": false
+}

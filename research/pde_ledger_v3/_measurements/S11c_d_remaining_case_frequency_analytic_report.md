@@ -226,3 +226,7 @@ and hashes pass static review. Completed metadata writes require full typed
 and native serialized byte identity before reuse; all physical operands and
 final guards stay unchanged. No scientific work or completed case validation
 is repeated. Analytic acceptance still requires the final clean outcome.
+
+The path-reader continuation launched at 2026-09-22T01:32:47Z from
+09872513 under verified mandatory containment. The silent completion/error
+hook resumes the task; launch is not analytic acceptance.

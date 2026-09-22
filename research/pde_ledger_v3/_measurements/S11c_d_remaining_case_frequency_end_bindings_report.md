@@ -36,3 +36,7 @@ consumers, raw units, eight case routes and four mutation controls. It
 compiles the whole-body adapter only and disables all scientific operations.
 No binding, coordinate conversion, seed arithmetic or cancellation is
 recomputed. Per-operation and case summaries precede final hash guards.
+
+Saved-only validation launched from `cc4ad6d0`. The single initial inspection
+verified all mandatory limits and empty strict stderr. The silent local
+completion/error hook handles waiting; validation is not yet accepted.

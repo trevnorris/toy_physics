@@ -25,3 +25,13 @@ Construction launched from `287f4ef1`. The single initial containment check
 verified all mandatory limits and empty strict stderr. The silent local
 completion/error hook handles waiting. No determinant acceptance is inferred
 from launch or early files.
+
+Construction completed 109.91 worker / 111.65 native / 111.79 guard seconds, with all actual exits zero, empty strict stderr and checks/stdout identity. Peak memory was 471,539,712 bytes, zero cap/OOM/swap, minimum host availability 22.96 GB. Four new and one reused complete row produced one new cleared matrix and determinant. Sixty-nine actual calls record 31 new/10 reused cancel, 16 new/4 reused denom, four new LCM, and one new ImmutableMatrix, determinant, product and fraction each. The full tail was new. The actual resultant input has no accepted match; complex analysis is deferred, while all three branch calls match saved returns. Eight physical routes and four actual controls completed. The determinant remains unaccepted until independent saved validation; thresholds, end domains and continuation remain pending.
+
+Independent saved validation is statically reviewed. It joins all 69 native
+operation receipts, four new and one reused complete row, the full new
+matrix/determinant/fraction tail, actual physical units/source/caller evidence,
+eight physical routes and four saved mutations. Live cache decisions remain
+their captured receipts. Matrix assembly, row-clearing multiplication,
+determinant/product/quotient/cancellation and threshold operations remain
+disabled. Full source/input/reference hashes bracket all saved checks.

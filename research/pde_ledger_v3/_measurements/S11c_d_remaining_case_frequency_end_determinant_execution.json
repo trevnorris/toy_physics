@@ -1,5 +1,5 @@
 {
-  "status": "GUARDED_RUNNING_WITH_SILENT_COMPLETION_HOOK",
+  "status": "COMPLETED_DETERMINANT_PENDING_SAVED_VALIDATION",
   "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-determinant",
   "helper": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_end_determinant.py",
   "staticReview": {
@@ -172,5 +172,152 @@
     },
     "guardOutcome": null,
     "singleInitialInspection": true
+  },
+  "finalOutcome": {
+    "status": "COMPLETED_CASE_FREQUENCY_END_DETERMINANT",
+    "checksSha256": "b6c4b8ea5c7f3e98f686d7670ec58380ecfd97bbef8e796fb903964129a306d1",
+    "workerSeconds": 109.90779004999786,
+    "resourceGuard": {
+      "supervisor": {
+        "stage": "frequency_end_determinant",
+        "command": [
+          "/usr/bin/python",
+          "-u",
+          "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_end_determinant.py",
+          "--run-directory",
+          "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-determinant/complete"
+        ],
+        "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-determinant/frequency_end_determinant.stdout",
+        "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-determinant/frequency_end_determinant.stderr",
+        "startedUtc": "2026-09-22T05:35:45.149547+00:00",
+        "childPid": 1092582,
+        "status": "completed",
+        "exitCode": 0,
+        "wallSeconds": 111.6485943650041,
+        "stderrBytes": 0,
+        "finishedUtc": "2026-09-22T05:37:36.798210+00:00"
+      },
+      "guard": {
+        "exitCode": 0,
+        "wallSeconds": 111.78872807598964,
+        "unit": "s11c-guard-65a774b15465",
+        "stderrBytes": 0,
+        "limitsVerified": true,
+        "childOutcome": {
+          "exitCode": 0,
+          "guardReason": null,
+          "wallSeconds": 111.71738252000068,
+          "childPid": 1092581
+        }
+      },
+      "limits": {
+        "memory.max": "2147483648",
+        "memory.swap.max": "0",
+        "pids.max": "32",
+        "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-65a774b15465.service",
+        "nice": 15,
+        "affinity": [
+          15
+        ],
+        "threads": {
+          "OPENBLAS_NUM_THREADS": "1",
+          "OMP_NUM_THREADS": "1",
+          "MKL_NUM_THREADS": "1",
+          "NUMEXPR_NUM_THREADS": "1",
+          "VECLIB_MAXIMUM_THREADS": "1",
+          "BLIS_NUM_THREADS": "1"
+        }
+      },
+      "memoryPeakBytes": 471539712,
+      "capReclaims": 0,
+      "minimumHostAvailableBytes": 22955958272,
+      "oomEvents": 0,
+      "swapBytes": 0
+    },
+    "checksStdoutByteIdentity": true,
+    "inventories": {
+      "sourceFiles": 202,
+      "inputPackets": 91299,
+      "referencedInputs": 8223,
+      "artifacts": 8287
+    },
+    "counts": {
+      "physicalEnds": 8,
+      "sharedNewUses": 2,
+      "baselineAliases": 6,
+      "newEndOwners": 1,
+      "newNativeRowCalls": 4,
+      "reusedNativeRowCalls": 1,
+      "tailReused": false,
+      "operationCounts": {
+        "cancel": {
+          "new": 31,
+          "reused": 10
+        },
+        "denom": {
+          "new": 16,
+          "reused": 4
+        },
+        "lcm": {
+          "new": 4,
+          "reused": 0
+        },
+        "ImmutableMatrix": {
+          "new": 1,
+          "reused": 0
+        },
+        "prod": {
+          "new": 1,
+          "reused": 0
+        },
+        "fraction": {
+          "new": 1,
+          "reused": 0
+        },
+        "det": {
+          "new": 1,
+          "reused": 0
+        }
+      },
+      "thresholdRoutes": {
+        "eliminationCandidateOwners": [],
+        "analysisCandidateOwners": [],
+        "branchCandidateOwners": [
+          "REFERENCE",
+          "LEFT",
+          "RIGHT"
+        ],
+        "analysisDeferredUntilElimination": true,
+        "newEliminationAnalysisRootCalls": 0
+      },
+      "actualMutationControls": 4,
+      "newEliminationAnalysisBindingDerivativeModeCurrentCalls": 0,
+      "thresholdDomainContinuationOrNumericalReuseAccepted": false
+    },
+    "operationReceiptCount": 69,
+    "rowReceiptCount": 5
+  },
+  "independentValidation": {
+    "status": "STATIC_REVIEWED_NOT_LAUNCHED",
+    "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-determinant-acceptance",
+    "validator": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-determinant-acceptance/validate.py",
+    "staticReview": {
+      "status": "STATIC_REVIEWED_SAVED_NATIVE_DETERMINANT_VALIDATION",
+      "validatorSha256": "6732e76eb07fc7fe1c1ac54f2ad1f268d44c182a75a9111fe301c535c928228e",
+      "planSha256": "1b9440b86bf27455e40fb7567a2414515e891a589685ccf797daa8ec8d3cb9bf",
+      "producerChecksSha256": "b6c4b8ea5c7f3e98f686d7670ec58380ecfd97bbef8e796fb903964129a306d1",
+      "producerHelperSha256": "8b73b0e48069a23c470101bf08176996fd4c3a3f878e9a5c37884444302d9f4c",
+      "compileOnlyPassed": true,
+      "scientificImportsOrPacketDeserialization": false,
+      "forbiddenOperationASTScanPassed": true,
+      "actualRequestsAndPins": 676,
+      "all69Operations5RowsFullTail8EndRoutesExist": true,
+      "wholeRowAndUnitContextSchemaJoined": true,
+      "rawTypedOwnerAndNativeJsonBoundaryReviewed": true,
+      "actualLiveCacheReceiptsPreservedWithoutReplayingMembership": true,
+      "rowClearingMatrixDeterminantProductQuotientFractionReadOnly": true,
+      "actualUnmatchedEliminationAndDeferredAnalysis": true
+    },
+    "launchIsAcceptance": false
   }
 }

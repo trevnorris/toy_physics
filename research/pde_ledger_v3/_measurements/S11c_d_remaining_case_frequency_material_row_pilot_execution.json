@@ -1,0 +1,15 @@
+{
+  "status": "IMPLEMENTED_NOT_LAUNCHED",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/material-row-pilot",
+  "stage": "frequency_material_row_pilot",
+  "helperSha256": "f8db96abc7cb38c7133786b52431c8939676d8c314376c6b9d63a6fe5fdd9b9b",
+  "planSha256": "73f43503fffbd9a67ae199e61df9c8460c4239108ad5e1570e9f987b9f849222",
+  "syntax": true,
+  "actualRowSourceAndNativeSchemasRead": true,
+  "nativeSingleMeasureTransposeAndMinusPhaseJoined": true,
+  "newFineCallsOnlyOddIndices": true,
+  "opaqueFullSlotAndWeightedSumHarness": true,
+  "scientificImportsDeserializationOrModelEvaluation": 0,
+  "forbiddenOldScientificCallSites": 0,
+  "newMethodFocusedChecksPlanned": true
+}

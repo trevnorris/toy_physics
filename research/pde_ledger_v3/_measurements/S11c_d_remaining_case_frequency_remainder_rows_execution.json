@@ -1,8 +1,66 @@
 {
-  "status": "PREPARED_NOT_LAUNCHED",
+  "status": "EXITED_REQUIRES_ACTUAL_OUTCOME_INSPECTION",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/remainder-rows",
   "stage": "frequency_remainder_rows",
   "helperSha256": "79704fbe36e5d2acbc62f218b655b6958e7a3d91b152113991d51107a9d93a84",
   "planSha256": "ae102fd74767408d34bb00a2d641e65b3c27c7ae1afea99cfdcdf4ce5c8dde0d",
-  "acceptedPreparationSha256": "3df3fb8b3bf9796eb32f22b8d86ab68f3708811bc24119e2757b93866a3a3a25"
+  "acceptedPreparationSha256": "3df3fb8b3bf9796eb32f22b8d86ab68f3708811bc24119e2757b93866a3a3a25",
+  "launch": {
+    "launchedUtc": "2026-09-22T15:16:41.204741+00:00",
+    "guardPid": 1790329,
+    "watcherPid": 1790330,
+    "stage": "frequency_remainder_rows",
+    "command": [
+      "/usr/bin/python",
+      "/var/projects/toy_physics/scripts/s11c_guarded_run.py",
+      "--log-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/remainder-rows/resource-guard",
+      "--seconds",
+      "900",
+      "--",
+      "/usr/bin/python",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/remainder-rows",
+      "--stage",
+      "frequency_remainder_rows",
+      "--",
+      "/usr/bin/python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_remainder_rows.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/remainder-rows/complete"
+    ],
+    "helperSha256": "79704fbe36e5d2acbc62f218b655b6958e7a3d91b152113991d51107a9d93a84",
+    "planSha256": "ae102fd74767408d34bb00a2d641e65b3c27c7ae1afea99cfdcdf4ce5c8dde0d",
+    "staticReviewSha256": "d7901f6fc28b770c8d86216c11106b6c1c55a2e7eee7d98ea04136563eb56795",
+    "guardSha256": "6492f5ab11dc2ab2f80bbfcc96d7eb6b8632afea07100dd8f74a7954f3ffe542",
+    "implementationCommit": "6fed000b97260289fdc4ecbeb07879119896227c",
+    "scope": "Four missing own remainder/Abel rows with accepted source/profile values and one fixed1024/2048-panel comparison; no completed science replay.",
+    "launchIsAcceptance": false
+  },
+  "initialContainment": {
+    "verified": true,
+    "actualLimits": {
+      "memory.max": "2147483648",
+      "memory.swap.max": "0",
+      "pids.max": "32",
+      "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-7508500c6c6e.service",
+      "nice": 15,
+      "affinity": [
+        15
+      ],
+      "threads": {
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "VECLIB_MAXIMUM_THREADS": "1",
+        "BLIS_NUM_THREADS": "1"
+      }
+    },
+    "workerAlreadyCompletedAtFirstInspection": true,
+    "strictStderrBytes": 0,
+    "noModelPolling": true
+  }
 }

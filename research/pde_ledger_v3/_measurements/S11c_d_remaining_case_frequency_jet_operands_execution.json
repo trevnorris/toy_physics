@@ -1,5 +1,5 @@
 {
-  "status": "PREPARED_SAVED_OPERAND_READER",
+  "status": "LAUNCHED_GUARDED_SAVED_OPERAND_READER",
   "root": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/source-jet-operands",
   "staticReview": {
     "status": "PASSED_STATIC_OPERAND_READER_REVIEW",
@@ -8,5 +8,65 @@
     "noDerivativeBindingPolyNumericalOrPickleWriterCalls": true,
     "nativeCodecIntact": true
   },
-  "launchIsAcceptance": false
+  "launchIsAcceptance": false,
+  "launch": {
+    "launchedUtc": "2026-09-22T11:51:53.927060+00:00",
+    "guardPid": 1204760,
+    "watcherPid": 1204761,
+    "stage": "frequency_jet_operands",
+    "command": [
+      "/usr/bin/python",
+      "/var/projects/toy_physics/scripts/s11c_guarded_run.py",
+      "--log-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/source-jet-operands/resource-guard",
+      "--seconds",
+      "900",
+      "--",
+      "/usr/bin/python",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/source-jet-operands",
+      "--stage",
+      "frequency_jet_operands",
+      "--",
+      "/usr/bin/python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_jet_operands.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/source-jet-operands/complete"
+    ],
+    "helperSha256": "3c94ca05cfec8bb89ae20aa56a78d76d54bf52877be81e7a3a90881744b5e779",
+    "planSha256": "5c554f6151dd4d920701ff6e9a19462453a78a722f7b3c9c36967864b7e67719",
+    "staticReviewSha256": "9fd552bda9032292cbf2e01476488f05526d48f2151242d1c41916036d992700",
+    "guardSha256": "6492f5ab11dc2ab2f80bbfcc96d7eb6b8632afea07100dd8f74a7954f3ffe542",
+    "implementationCommit": "95cf620c96adf903172390b41b613061194581fa",
+    "scope": "Saved unmatched source-jet operands only; inspect actual derivative and coefficient nodes without any construction or acceptance.",
+    "launchIsAcceptance": false
+  },
+  "initialContainmentInspection": {
+    "status": "INITIAL_CONTAINMENT_VERIFIED",
+    "limits": {
+      "memory.max": "2147483648",
+      "memory.swap.max": "0",
+      "pids.max": "32",
+      "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-e5d7a662c599.service",
+      "nice": 15,
+      "affinity": [
+        15
+      ],
+      "threads": {
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "VECLIB_MAXIMUM_THREADS": "1",
+        "BLIS_NUM_THREADS": "1"
+      }
+    },
+    "observedStage": "frequency_jet_operands",
+    "observedStatus": "failed",
+    "observedStrictStderrBytes": 1294,
+    "oneInitialCheckOnly": true,
+    "launchIsAcceptance": false
+  }
 }

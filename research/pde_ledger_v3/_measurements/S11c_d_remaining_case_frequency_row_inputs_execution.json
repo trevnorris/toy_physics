@@ -1,0 +1,14 @@
+{
+  "status": "PREPARED_SAVED_ROW_INPUT_INSPECTION",
+  "root": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-inputs",
+  "staticReview": {
+    "status": "PASSED_STDLIB_SAVED_ROW_INPUT_REVIEW",
+    "helperSha256": "e58861dcb1a3c0c873606de4783929d0452b9e2df0a2a1a4bed5a52885fc8505",
+    "planSha256": "4aea9d320f4297c0c8cd0eeb5129c7d9483b24e3383d78796a14fbabf5c399a0",
+    "noScientificImportInStaticReview": true,
+    "noScientificConstructorEvaluatorOrPickleWriter": true,
+    "fullSourceAndUnitSignatureFields": true,
+    "sourceBasisCandidatesNotAcceptedReuse": true
+  },
+  "launchIsAcceptance": false
+}

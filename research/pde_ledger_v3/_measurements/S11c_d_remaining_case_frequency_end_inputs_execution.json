@@ -1,5 +1,5 @@
 {
-  "status": "LAUNCHED_CASE_FREQUENCY_END_INPUT_SUMMARY_CONTINUATION",
+  "status": "COMPLETED_CASE_FREQUENCY_END_INPUTS_AWAITING_INDEPENDENT_VALIDATION",
   "helper": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_end_inputs.py",
   "plan": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_end_inputs_plan.md",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-inputs",
@@ -514,5 +514,105 @@
       },
       "isAcceptance": false
     }
+  },
+  "productionOutcome": {
+    "supervisor": {
+      "stage": "frequency_end_inputs_finish",
+      "command": [
+        "/usr/bin/python",
+        "-u",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_end_inputs_finish.py",
+        "--run-directory",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-inputs-recovery-02/complete"
+      ],
+      "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-inputs-recovery-02/frequency_end_inputs_finish.stdout",
+      "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-inputs-recovery-02/frequency_end_inputs_finish.stderr",
+      "startedUtc": "2026-09-22T02:13:15.720892+00:00",
+      "childPid": 1016345,
+      "status": "completed",
+      "exitCode": 0,
+      "wallSeconds": 81.45238348799467,
+      "stderrBytes": 0,
+      "finishedUtc": "2026-09-22T02:14:37.173333+00:00"
+    },
+    "guard": {
+      "exitCode": 0,
+      "wallSeconds": 81.653675508991,
+      "unit": "s11c-guard-a072f313da31",
+      "stderrBytes": 0,
+      "limitsVerified": true,
+      "childOutcome": {
+        "exitCode": 0,
+        "guardReason": null,
+        "wallSeconds": 81.56414213300741,
+        "childPid": 1016341
+      }
+    },
+    "limits": {
+      "verified": true,
+      "actual": {
+        "memory.max": "2147483648",
+        "memory.swap.max": "0",
+        "pids.max": "32",
+        "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-a072f313da31.service",
+        "nice": 15,
+        "affinity": [
+          15
+        ],
+        "threads": {
+          "OPENBLAS_NUM_THREADS": "1",
+          "OMP_NUM_THREADS": "1",
+          "MKL_NUM_THREADS": "1",
+          "NUMEXPR_NUM_THREADS": "1",
+          "VECLIB_MAXIMUM_THREADS": "1",
+          "BLIS_NUM_THREADS": "1"
+        }
+      }
+    },
+    "checksSha256": "277fa77f7790d6e94e40af71972085a85f4ac513cac347bd3fe472d626b0a1c9",
+    "checksStdoutByteIdentity": true,
+    "memoryPeakBytes": 808058880,
+    "minimumHostAvailableBytes": 23550369792,
+    "capEvents": 0,
+    "oomEvents": 0,
+    "swapBytes": 0,
+    "counts": {
+      "sourceFiles": 187,
+      "inputPackets": 39625,
+      "artifacts": 6799,
+      "referencedInputs": 6747
+    },
+    "actualEnds": 8,
+    "sourceInputFamilies": 6,
+    "baselineSourceCandidates": 2,
+    "unmatchedEndUses": 6,
+    "independentAcceptance": false
+  },
+  "validation": {
+    "status": "REVIEWED_SAVED_VALIDATOR",
+    "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-input-acceptance",
+    "script": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-input-acceptance/validate.py",
+    "plan": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_end_inputs_validation_plan.md",
+    "staticReview": {
+      "scriptSha256": "da3ae75a3647be53e58e699e7c937785d7be4ccfc2f751538d679dc10b212c6e",
+      "planSha256": "6ba6fd74c377ccbaebce8eae8e47e834c45aed32818708ddb534e7bc300dcaa5",
+      "productionChecksSha256": "277fa77f7790d6e94e40af71972085a85f4ac513cac347bd3fe472d626b0a1c9",
+      "currentFrozenSourcePins": 187,
+      "compileOnlyPassed": true,
+      "scientificImportsOrPacketReadsDuringStaticReview": false,
+      "constructorCallScanPassed": true,
+      "literalPathReviewPassed": true,
+      "exactSelectedArtifactSchemasPassed": true,
+      "arrayComparatorMemoRetainsObjects": true,
+      "metadataAddressJSONOnly": true,
+      "scientificPickleWriterDisabled": true,
+      "sourceAdaptersCompileOnly": [
+        "finish.adapter",
+        "prior.prepare_adapter"
+      ],
+      "independentFamilyDerivation": true,
+      "partialEndAndCaseSummariesBeforeLaterGuards": true
+    },
+    "newScientificConstruction": false
   }
 }

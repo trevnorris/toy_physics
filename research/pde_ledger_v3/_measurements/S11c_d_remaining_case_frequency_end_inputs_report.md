@@ -1,35 +1,36 @@
 # Remaining-case frequency end inputs
 
-Analytic sources remain accepted at da5d7c52. The original saved-input
-catalogue stopped at an array-reader boundary after 46.30 native seconds.
-The first continuation passed six exact array-reader controls and the full
-baseline LEFT proof/mutation guards, then stopped after 48.84 native seconds
-because its summary lacked the restored `selected` local. No end/case summary
-or final acceptance exists. Both failure directories and helpers remain
-immutable.
+The saved input catalogue completed cleanly in 79.52 worker / 81.45 native /
+81.65 guard seconds. Actual guard/supervisor/child exited zero, strict stderr
+is empty, and checks and stdout are byte-identical. Peak memory was 808,058,880
+bytes, with zero cap events, OOM or swap; host available memory stayed above
+23.55 GB. Checks SHA256 is
+`277fa77f7790d6e94e40af71972085a85f4ac513cac347bd3fe472d626b0a1c9`.
 
-The latest failure used 586,321,920 bytes peak, with zero cap events, OOM
-or swap and at least 23.44 GB host memory available. It is a continuation
-bookkeeping error. All 6,905 files, 184 source pins, 32,878 inputs and 6,710
-reference routes remain intact, including completed LEFT proof operands and
-five responding mutation controls.
+All 187 current/frozen sources, 39,625 input paths, 6,747 references and 6,799
+artifacts passed the producer's final audit. All 6,561 accepted analytic
+artifacts and 98 selected end-source/current/modal/uniform/frequency/table/
+continuation artifacts remain unchanged. Every physical end retains 18
+candidate dispositions, five complete selected clusters and seven directions;
+all 40 input mutations respond. No scientific construction or continuation
+point was executed.
 
-The reviewed fresh continuation restores all eight variables consumed by
-the unchanged summary/signature suffix. A static AST dependency check and
-metadata-only suffix harness verify the complete local list. The selected
-items come directly from their saved list. Completed case-prefix, LEFT proof,
-selection and mutation checks and array controls are reused through their
-actual source/input/hash/receipt joins; none is executed again. The original
-main, remaining seven end-input paths and final hash guards are unchanged.
+The eight physical ends form six full source-input families. Only the two
+baseline ends match their baseline inputs; six uses remain unmatched to the
+baseline. The LAB_HELD and MATERIAL_ADVECTED RHOBR_CONSTANT cases share their
+corresponding LEFT and RIGHT source families. These are input-catalogue candidates, not accepted frequency-end
+operators, domains, continuation or numerical row reuse.
 
-Reference storage avoids large copies. Final clean guard/supervisor/child
-outcomes, empty stderr and checks/stdout identity must precede independent
-saved validation and separate end-input acceptance. Source-input candidate
-counts do not establish numerical reuse. Actual end-domain continuation,
-own frequency pencils, scoped searches and final all-case engine/exports
-remain pending under the approved settings and limitations.
+Both failed readers and all inputs/logs remain immutable. The original array
+boundary failure used 353 MiB; the first continuation's missing summary local
+used 559 MiB. The successful continuation reused the completed baseline LEFT
+proofs and controls, restored all eight summary locals and finished the
+remaining input checks. No prior scientific work was repeated.
 
-The reviewed summary continuation launched at 2026-09-22T02:13:15Z from
-2b77441e. Initial containment verified 2 GiB, zero swap, one CPU, nice 15,
-32 tasks and one native thread, with empty strict stderr and silent hook
-armed. Launch does not establish acceptance.
+Independent saved-only validation is reviewed and remains required before a
+separate end-input checkpoint. It will join full sources/units/contexts,
+whole cluster selections, family owners, mutation operands and all pre/post
+hashes without calling producers. Analytic da5d7c52 and older science remain
+accepted and unchanged. Actual end-domain continuation, own frequency pencils,
+scoped searches and final all-case engine/exports still follow under approved
+settings and limitations.

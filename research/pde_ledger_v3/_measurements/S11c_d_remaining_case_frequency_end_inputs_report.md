@@ -12,3 +12,7 @@ limit inputs and complete candidate/selected mode spaces. Fixed-frequency
 mode reuse does not establish frequency-dependent reuse. Actual end-domain
 construction/continuation, own-case frequency pencils, scoped searches and
 final all-case engine/exports remain pending.
+
+The saved-input worker launched at 2026-09-22T01:47:53Z from 1801fc32
+under verified mandatory containment. Its silent completion/error hook
+resumes this task. Launch does not establish input acceptance.

@@ -1,5 +1,5 @@
 {
-  "status": "PREPARED_CASE_FREQUENCY_END_INPUTS",
+  "status": "LAUNCHED_CASE_FREQUENCY_END_INPUTS",
   "helper": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_end_inputs.py",
   "plan": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_end_inputs_plan.md",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-inputs",
@@ -17,5 +17,81 @@
     "wallSeconds": 900
   },
   "scope": "Saved full source/context/end/current/mode input candidates only; no new science or numerical reuse accepted.",
-  "next": "On actual clean completion independently validate saved input evidence, then accept a separate end-input checkpoint before missing native end construction."
+  "next": "On actual clean completion independently validate saved input evidence, then accept a separate end-input checkpoint before missing native end construction.",
+  "launch": {
+    "launchedUtc": "2026-09-22T01:47:53.618497+00:00",
+    "guardPid": 1007191,
+    "watcherPid": 1007192,
+    "command": [
+      "/usr/bin/python",
+      "/var/projects/toy_physics/scripts/s11c_guarded_run.py",
+      "--log-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-inputs/resource-guard",
+      "--seconds",
+      "900",
+      "--",
+      "/usr/bin/python",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-inputs",
+      "--stage",
+      "frequency_end_inputs",
+      "--",
+      "/usr/bin/python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_end_inputs.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-inputs/complete"
+    ],
+    "helperSha256": "b244bbb80ec715f0978dd27c109f4cccd94d6e1ccac381e96d9cabaf4c478b12",
+    "guardSha256": "6492f5ab11dc2ab2f80bbfcc96d7eb6b8632afea07100dd8f74a7954f3ffe542",
+    "implementationCommit": "1801fc32f785a647dc9347340fa8e78937ce4dfa",
+    "launchIsAcceptance": false,
+    "newScientificConstruction": false
+  },
+  "initialContainment": {
+    "status": "VERIFIED_CONTAINED",
+    "active": {
+      "stage": "frequency_end_inputs",
+      "command": [
+        "/usr/bin/python",
+        "-u",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_end_inputs.py",
+        "--run-directory",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-inputs/complete"
+      ],
+      "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-inputs/frequency_end_inputs.stdout",
+      "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-inputs/frequency_end_inputs.stderr",
+      "startedUtc": "2026-09-22T01:47:53.788641+00:00",
+      "childPid": 1007199,
+      "status": "running"
+    },
+    "limits": {
+      "verified": true,
+      "actual": {
+        "memory.max": "2147483648",
+        "memory.swap.max": "0",
+        "pids.max": "32",
+        "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-3ad274e53057.service",
+        "nice": 15,
+        "affinity": [
+          15
+        ],
+        "threads": {
+          "OPENBLAS_NUM_THREADS": "1",
+          "OMP_NUM_THREADS": "1",
+          "MKL_NUM_THREADS": "1",
+          "NUMEXPR_NUM_THREADS": "1",
+          "VECLIB_MAXIMUM_THREADS": "1",
+          "BLIS_NUM_THREADS": "1"
+        }
+      }
+    },
+    "stderrBytes": {
+      "frequency_end_inputs.stderr": 0,
+      "guard.stderr": 0,
+      "watcher.stderr": 0
+    },
+    "isAcceptance": false
+  }
 }

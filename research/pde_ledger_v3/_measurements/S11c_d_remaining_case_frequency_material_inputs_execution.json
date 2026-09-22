@@ -1,5 +1,5 @@
 {
-  "status": "LAUNCHED_PENDING_FINAL_INSPECTION",
+  "status": "FAILED_REFERENCE_ADDRESS_EQUALITY_NO_SCIENCE",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/material-inputs",
   "stage": "frequency_material_inputs",
   "helperSha256": "b6a3e4411142822b037b436f4a8c6e381862593c5225062a1c8e2aab36843e20",
@@ -45,5 +45,57 @@
     "scope": "Read23 remaining material row/source inputs and actual saved source-call matches only; no scientific operation or physical pickle writer.",
     "launchIsAcceptance": false
   },
-  "initialContainment": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/material-inputs/initial-containment-inspection.json"
+  "initialContainment": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/material-inputs/initial-containment-inspection.json",
+  "failure": {
+    "actualExits": [
+      1,
+      1,
+      1
+    ],
+    "guardReason": null,
+    "nativeWallSeconds": 1.9647127650096081,
+    "guardWallSeconds": 2.055414174014004,
+    "strictStderrBytes": 694,
+    "peakBytes": 301617152,
+    "zeroCapOOMSwap": true,
+    "completedMetadata": [
+      "native-callers-and-prior-preparation.json"
+    ],
+    "completedRowOrSourceSummaries": 0,
+    "newScientificCalls": 0,
+    "newPhysicalPickleWrites": 0,
+    "originalReceipt": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-pilot/complete/source-action/value.pickle",
+      "sha256": "f39e2e8a04602ae1bfae572f0b8b3fd8aee721295346aa1d81999700d53a3468",
+      "bytes": 2113675
+    },
+    "acceptedManifest": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-pilot-recovery-01/complete/source-action/value.pickle",
+      "sha256": "f39e2e8a04602ae1bfae572f0b8b3fd8aee721295346aa1d81999700d53a3468",
+      "bytes": 2113675
+    },
+    "originalRoute": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-pilot/complete/source-action/value.pickle",
+      "canonical": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-pilot/complete/source-action/value.pickle",
+      "sha256": "f39e2e8a04602ae1bfae572f0b8b3fd8aee721295346aa1d81999700d53a3468",
+      "bytes": 2113675,
+      "directLink": null
+    },
+    "acceptedRoute": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-pilot-recovery-01/complete/source-action/value.pickle",
+      "canonical": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-pilot/complete/source-action/value.pickle",
+      "sha256": "f39e2e8a04602ae1bfae572f0b8b3fd8aee721295346aa1d81999700d53a3468",
+      "bytes": 2113675,
+      "directLink": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-pilot/complete/source-action/value.pickle"
+    },
+    "sameCanonicalBytes": true,
+    "failure": "Metadata whole-record equality rejected an original source22 value address versus its accepted canonical-linked recovery address; actual full file is the same."
+  },
+  "failedInventory": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/material-inputs-recovery-01/failed-file-inventory.json",
+    "canonical": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/material-inputs-recovery-01/failed-file-inventory.json",
+    "sha256": "2235a35a6c54f365120cb58445ac39544c9e363208d6943bb5e49ba669641f19",
+    "bytes": 14500,
+    "directLink": null
+  }
 }

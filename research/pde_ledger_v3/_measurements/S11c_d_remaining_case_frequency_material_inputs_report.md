@@ -17,3 +17,5 @@ analog toy-model acceptance and all own physical inputs; no global domain
 certification or ancestral revalidation campaign is added.
 
 Launched under verified mandatory containment with a silent local completion/error hook. Final actual outcomes and saved metadata remain to inspect.
+
+The reader failed before its first source/row summary: original source22 completion receipt names the original file; the accepted manifest names an unchanged canonical link. Exact full-record equality rejected these distinct logical addresses despite identical resolved file, SHA and size. All exits1/no interruption,694-byte stderr, native1.9647127650096081s/guard2.055414174014004s,peak301617152bytes/zero cap/OOM/swap. One native-caller metadata summary and all logs are preserved. No new science or physical pickle was written. A fresh source-joined metadata continuation may compare canonical bytes while retaining both full routes; no old source value may be reconstructed.

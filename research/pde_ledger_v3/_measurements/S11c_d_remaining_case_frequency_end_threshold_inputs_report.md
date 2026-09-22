@@ -43,3 +43,7 @@ repeated. Per-operation/entry/case summaries precede final hash guards.
 Saved-only validation launched from `3376b51e`. The single initial inspection
 verified all mandatory limits and empty strict stderr. The silent local
 completion/error hook handles waiting; threshold inputs are not yet accepted.
+
+The threshold coefficient inputs and saved call routes are accepted after independent saved validation in 116.46 worker / 117.82 native / 118.00 guard seconds. All actual exits are zero, strict stderr is empty, and checks/stdout are byte-identical. All 83,205 paths pass final identity; peak memory was 567,148,544 bytes, with zero cap/OOM/swap and 22.97 GB minimum host availability. One new coefficient matrix, one reused wave image, all 25 rational-entry inputs, eight source routes and five actual controls passed without repeating conversion or other science. Fifteen entry calls have exact saved matches; ten distinct entry inputs and the full determinant remain pending. Branch-call inputs match all three baselines; elimination and analysis are deferred.
+
+The separate checkpoint retains full producer inventories and operation/caller/unit evidence plus independent validation and both resource guards. Thresholds, rational tables, outgoing-end domains and whole-cluster continuation remain. This checkpoint accepts coefficient inputs and saved call routes only.

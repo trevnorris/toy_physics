@@ -17,3 +17,5 @@ Static review read the actual13 input schemas and source orders, joined both
 numerical source bodies, checked cache field/unit/context/rule discrimination,
 and checked that old scientific entry points have no call sites. No scientific
 import, deserialization or calculation was executed by this review.
+
+The launched worker stopped before its first numerical call:3.047099294native/3.182334845guard seconds, actualexits1 with800bytesstrictstderr, no interruption, peak303628288bytes andzero cap/OOM/swap. Two completed metadata files and all sources/logs remain immutable; no physicalpickle or coefficient/action call completed. The guard compared native settings containing tuple innerOrders with their JSON view containing a list. Static pickle-opcode inspection and the original metadata-writer body establish this boundary mismatch. A fresh continuation will preserve strict native context/basis/settings equality, compare only the separate JSON settings view, and save native typed settings in new inputs.

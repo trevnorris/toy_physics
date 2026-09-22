@@ -1,0 +1,16 @@
+{
+  "status": "IMPLEMENTED_NOT_LAUNCHED",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/material-sources-recovery-01",
+  "stage": "frequency_material_sources_recover",
+  "helperSha256": "f19cbd0ffae89fa15874c165b44599ecebe3d09541e43172b31a12958ffb47e5",
+  "wholeMainReverseAST": true,
+  "twoCompletedMetadataReferences": true,
+  "separateJSONSettingsBoundary": true,
+  "physicalSettingsTypesRetained": true,
+  "fourChangedInputRejections": true,
+  "oldScientificCallsBeforeFailure": 0,
+  "scientificImportsDeserializationOrExecution": 0,
+  "syntaxAndCompiledAdaptedMain": true,
+  "planSha256": "a34bbc29d4704bff9450af6bf0f9919422c98f48f010fa7dec7fead3a634b21e",
+  "failedInventorySha256": "4f89011c80748828e73f9c5301f2174a44d8a47b9cc79d3267c75b65590e0d0c"
+}

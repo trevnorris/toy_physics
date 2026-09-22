@@ -1,0 +1,16 @@
+{
+  "status": "PREPARED_SAVED_REVIEW",
+  "root": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-pilot-review",
+  "staticReview": {
+    "status": "PASSED_STATIC_BOUNDED_SAVED_REVIEW",
+    "helperSha256": "908dc11373592bf5473a6b72677aa6bf2d55038375eae51e8f802aecf9dd89d1",
+    "planSha256": "8ea3055f12dec241c444a364185876269ef55e28362ccff6cd6969dce735616d",
+    "sourceCompiles": true,
+    "noScientificProducerImports": true,
+    "noSolverMapSymbolicOrMatrixProductCalls": true,
+    "nativePickleCodecUnpatched": true,
+    "noPhysicalPickleWriter": true,
+    "scope": "New pilot saved outputs and consumed paths only; no ancestral science revalidation."
+  },
+  "launchIsAcceptance": false
+}

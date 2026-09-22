@@ -1,5 +1,5 @@
 {
-  "status": "PREPARED_BOUNDED_NUMERICAL_END_PILOT",
+  "status": "CLEAN_BOUNDED_NUMERICAL_PILOT_REQUIRES_SAVED_REVIEW",
   "root": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-pilot",
   "stage": "frequency_end_pilot",
   "staticReview": {
@@ -28,5 +28,123 @@
   },
   "inputInspectionChecksSha256": "7374e0187c8aefca5817e182c06bb7785ec7eb13ab069b66f815d6b246db0263",
   "scope": "Analog toy model; one small numerical path and step comparison for five distinct own clusters. No old symbolic science replay.",
-  "launchIsAcceptance": false
+  "launchIsAcceptance": false,
+  "launch": {
+    "launchedUtc": "2026-09-22T11:17:49.089493+00:00",
+    "guardPid": 1189760,
+    "watcherPid": 1189761,
+    "stage": "frequency_end_pilot",
+    "command": [
+      "/usr/bin/python",
+      "/var/projects/toy_physics/scripts/s11c_guarded_run.py",
+      "--log-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-pilot/resource-guard",
+      "--seconds",
+      "900",
+      "--",
+      "/usr/bin/python",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-pilot",
+      "--stage",
+      "frequency_end_pilot",
+      "--",
+      "/usr/bin/python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_end_pilot.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-pilot/complete"
+    ],
+    "helperSha256": "1d66333a4d11bba2a2198b7f93ae0ba03687659ef3a09a7f4a7d994b2e155e51",
+    "planSha256": "0521c56777f9bce8ca8a41854502529c36bc4ae0971c4d6904a3893ef4bec54c",
+    "staticReviewSha256": "8747bcf087a54cda6646c91910b5b2453b7bb5815c406013c5de2c0728c31894",
+    "guardSha256": "6492f5ab11dc2ab2f80bbfcc96d7eb6b8632afea07100dd8f74a7954f3ffe542",
+    "implementationCommit": "8cee34a56acf940dcc3ad343f22864020931bebf",
+    "scope": "One bounded numerical pilot for five distinct RHOBR right-end clusters; numerical dual evaluator with focused checks, native invariant-pair solver and maps. No baseline or symbolic science replay; no acceptance at launch.",
+    "launchIsAcceptance": false
+  },
+  "initialContainmentInspection": {
+    "status": "INITIAL_CONTAINMENT_VERIFIED",
+    "limits": {
+      "memory.max": "2147483648",
+      "memory.swap.max": "0",
+      "pids.max": "32",
+      "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-75a995b7e629.service",
+      "nice": 15,
+      "affinity": [
+        15
+      ],
+      "threads": {
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "VECLIB_MAXIMUM_THREADS": "1",
+        "BLIS_NUM_THREADS": "1"
+      }
+    },
+    "limitValidationSha256": "e33fb703ad6fd25e8ecc07838c8cfc26727263d6ec5701cd1f9bae0c0cb4c75e",
+    "observedStage": "frequency_end_pilot",
+    "observedChildPid": 1189768,
+    "observedStatus": "completed",
+    "observedStrictStderrBytes": 0,
+    "oneInitialCheckOnly": true,
+    "launchIsAcceptance": false
+  },
+  "completion": {
+    "status": "CLEAN_BOUNDED_NUMERICAL_PILOT_REQUIRES_SAVED_REVIEW",
+    "checksSha256": "85dc47fc086ed1a25e3aae0dac954472d3dad042e8cccd14e7a2761476e5dd8e",
+    "workerWallSeconds": 5.198822687001666,
+    "nativeWallSeconds": 6.602166433993261,
+    "guardWallSeconds": 6.813571924998541,
+    "actualExits": [
+      0,
+      0,
+      0
+    ],
+    "emptyStrictStderr": true,
+    "checksStdoutIdentical": true,
+    "peakBytes": 192700416,
+    "minimumHostAvailableBytes": 22956728320,
+    "zeroCapOOMSwap": true,
+    "completedArtifacts": 199,
+    "allArtifactHashesUnchanged": true,
+    "summary": {
+      "status": "COMPLETED_BOUNDED_RHOBR_RIGHT_END_PILOT",
+      "owner": [
+        "LAB_HELD__RHOBR_CONSTANT",
+        "RIGHT"
+      ],
+      "clusters": 5,
+      "directions": 7,
+      "newCorrectedStates": 20,
+      "newNonseedPathPoints": 15,
+      "frequency": "(1-0.01j)",
+      "newSymbolicDerivativesOrLambdify": 0,
+      "coefficientFrequencyEvaluations": 4,
+      "evaluatorCheck": {
+        "savedTangentRelativeDifference": 1.358347846857834e-16,
+        "finiteDifferenceResidual": 5.00984223098635e-11,
+        "rationalValueRelativeDifference": 1.085298330606013e-16,
+        "rationalTangentRelativeDifference": 1.5987090594759097e-16,
+        "waveFrechetResidual": 3.812894584446965e-11,
+        "coefficientMutationResponded": true
+      },
+      "maximumStepDifference": 6.079533938616446e-14,
+      "mapRelativeDifferences": {
+        "trace": 2.7284523354157852e-14,
+        "forcingAtCommonOrigin": 1.6216866284250902e-14,
+        "observationAtCommonOrigin": 3.5233429788045885e-14,
+        "directIncomingSubtraction": 1.7956646445108223e-14
+      },
+      "maximumEndResidual": 2.1325562790246852e-13,
+      "maximumCondition": 18.874245115582486,
+      "minimumDenominatorSingularValue": 1.0,
+      "fineMapCondition": 5.796157239186108,
+      "sourceAndInputsUnchanged": true,
+      "wallSeconds": 5.198822687001666,
+      "peakRssKiB": 210912,
+      "scope": "Bounded analog toy-model end continuation and maps at one complex frequency. No scattering result, pole, certified complex domain or numerical reuse partition is accepted here."
+    }
+  }
 }

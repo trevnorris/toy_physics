@@ -1,5 +1,5 @@
 {
-  "status": "IMPLEMENTED_NOT_LAUNCHED",
+  "status": "LAUNCHED_PENDING_FINAL_INSPECTION",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/material-rows-1d",
   "stage": "frequency_material_rows_1d",
   "helperSha256": "c252fd849c870c8518f5e6868b5f405815e2f2aa16ee93ca7baac7e410e86dde",
@@ -87,5 +87,15 @@
   ],
   "scientificImportsDeserializationOrExecution": 0,
   "planSha256": "45ba2611d1a95cc0b2758ae66f36da27a18d94cd249a14496c4c022c4dbef332",
-  "allNewRowArtifactsIncludedInFinalPostchecks": true
+  "allNewRowArtifactsIncludedInFinalPostchecks": true,
+  "launch": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/material-rows-1d/launch.json",
+    "sha256": "fc0f3a05dd500bfb57b93b26af32300d05c4173bd76d04652a1fa3eba7cf2595",
+    "bytes": 1690
+  },
+  "containment": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/material-rows-1d/initial-containment-inspection.json",
+    "sha256": "0794f419179b3abca9979e82e85ea9b8bd98105376cd1516b90dc255c98b7093",
+    "bytes": 2368
+  }
 }

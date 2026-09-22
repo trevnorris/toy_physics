@@ -16,3 +16,5 @@ material response. No source, profile, rule or end map is computed.
 The stdlib-only loader reverse-AST/schema/cache harness passed; no scientific
 import or numerical calculation occurred before launch. Await final guard
 outcome and bounded saved inspection before acceptance.
+
+Launched with one guarded worker and silent local completion/error hook. Initial inspection verified2GiBmemory/zeroSwap/oneCPU/nice15/pids32/nativeThreads1. Actual state completed; strictstderr0bytes at inspection. Final outcomes, all row manifests and saved result checks remain required; launch is not acceptance.

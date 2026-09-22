@@ -1,5 +1,5 @@
 {
-  "status": "FAILED_SAVED_DERIVATIVE_CACHE_PREPARATION",
+  "status": "PREPARED_EXACT_NATIVE_DERIVATIVE_CALL_RECOVERY",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/analytic-sources",
   "stage": "frequency_analytic",
   "acceptedAnalyticInputsCommit": "a7a53fa8",
@@ -215,6 +215,81 @@
       "workerStderrBytes": 0,
       "guardStderrBytes": 0,
       "isAcceptance": false
+    },
+    "outcome": {
+      "status": "ACCEPTED_SAVED_DERIVATIVE_ROUTING_DIAGNOSTIC",
+      "checksSha256": "69add4f2d5f88fdde4f4cb51fb98d943a8434c533a32d2725f1dd3ecbc22e1e3",
+      "workerSeconds": 49.626593467008206,
+      "supervisor": {
+        "stage": "diagnose",
+        "command": [
+          "/usr/bin/python",
+          "-u",
+          "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/analytic-derivative-routing/diagnose.py"
+        ],
+        "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/analytic-derivative-routing/diagnose.stdout",
+        "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/analytic-derivative-routing/diagnose.stderr",
+        "startedUtc": "2026-09-22T00:08:15.628723+00:00",
+        "childPid": 969578,
+        "status": "completed",
+        "exitCode": 0,
+        "wallSeconds": 51.05989652698918,
+        "stderrBytes": 0,
+        "finishedUtc": "2026-09-22T00:09:06.688690+00:00"
+      },
+      "guard": {
+        "exitCode": 0,
+        "wallSeconds": 51.22194737600512,
+        "unit": "s11c-guard-7576d0305192",
+        "stderrBytes": 0,
+        "limitsVerified": true,
+        "childOutcome": {
+          "exitCode": 0,
+          "guardReason": null,
+          "wallSeconds": 51.15194664799492,
+          "childPid": 969574
+        }
+      },
+      "limits": {
+        "verified": true,
+        "actual": {
+          "memory.max": "2147483648",
+          "memory.swap.max": "0",
+          "pids.max": "32",
+          "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-7576d0305192.service",
+          "nice": 15,
+          "affinity": [
+            15
+          ],
+          "threads": {
+            "OPENBLAS_NUM_THREADS": "1",
+            "OMP_NUM_THREADS": "1",
+            "MKL_NUM_THREADS": "1",
+            "NUMEXPR_NUM_THREADS": "1",
+            "VECLIB_MAXIMUM_THREADS": "1",
+            "BLIS_NUM_THREADS": "1"
+          }
+        }
+      },
+      "peakMemoryBytes": 204103680,
+      "capReclaims": 0,
+      "oomEvents": 0,
+      "swapBytes": 0,
+      "minimumHostAvailableBytes": 23677063168,
+      "checkedPaths": 19365,
+      "actualInputCollisions": 0,
+      "differentNativeCallCollisions": 372
     }
+  },
+  "recovery": {
+    "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/analytic-sources-recovery-01",
+    "helperSha256": "8bb0553e2db4cb933d6397977a2614fab6a934e854b5bc031c7734b0967ebf1c",
+    "planSha256": "3b9b28da220db994a2c0c4832a668e9c80d0074afe7fc11a74472df3abbf3d1e",
+    "repairSha256": "2b0ed1b0262d37db959e9dffcf740e2d6f36497b92a63b85b399c31311368d40",
+    "staticReviewSha256": "29ef3a826122cda37622c7cdf099ece730f43658450547cef09f4a3c6e5624ba",
+    "launched": false,
+    "completedFilesReused": 4317,
+    "newImages": 63,
+    "newDenominators": 2
   }
 }

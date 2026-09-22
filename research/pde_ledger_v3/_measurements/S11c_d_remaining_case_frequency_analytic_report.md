@@ -62,3 +62,23 @@ The saved-call diagnostic launched at 2026-09-22T00:08:15Z from 8e3f0eb9.
 Initial whole-job limits verified 2 GiB, zero swap, one CPU, nice 15 and
 32 tasks with native threads fixed to one; strict stderr was empty. Its
 completion/error hook will resume this task. This launch is not acceptance.
+
+The saved diagnostic finished cleanly: 49.63 worker / 51.06 native seconds,
+actual guard/supervisor/child zero, empty stderr and checks/stdout identity.
+It joined 750 analytic and 2,934 source derivative values and 19,365 paths.
+All 372 coarse-key conflicts have different native call arguments; identical
+actual calls have no conflicting saved values. Peak memory was 204,103,680
+bytes, zero cap/OOM/swap, minimum host availability 23.68 GB. No derivative,
+lift, certificate or seed proof was repeated.
+
+A separate recovery helper now registers the source chained second derivative
+with its actual saved first-derivative argument, shifted input unit and (w,)
+call; the analytic direct second derivative retains (w,2). It preserves 4,317
+completed files including all 4,050 accepted artifacts and 260 seed inputs.
+Whole initializer/constructor reverse ASTs restrict changes to saved-prefix
+restoration, source call registration and one existing-directory keyword.
+Original main and native scientific bodies remain unchanged. The original
+join file is preserved while new route metadata has a separate filename.
+Static source, actual-path and write-route review passed; the fresh recovery
+is prepared, not launched or accepted. Only 63 missing images and two pending
+denominator classifications remain in this constructor.

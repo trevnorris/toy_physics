@@ -1,16 +1,17 @@
 {
   "status": "DRAFT_SCOPE_INVENTORY_EVIDENCE_NOT_SCIENTIFIC_ACCEPTANCE",
-  "createdUtc": "2026-09-22T20:39:12.575560+00:00",
-  "head": "2e8ec5a35ef428908df9b44a24cab16c2546f9bc",
+  "createdUtc": "2026-09-22T21:09:55.757874+00:00",
+  "head": "75086f8affe794f1b86061536d0f295468069b66",
   "scientificStateSnapshotCommit": "0d77af53561968d4593b49261589e2ee259eadbb",
-  "reviewedDraftPreservationCommit": "2e8ec5a35ef428908df9b44a24cab16c2546f9bc",
+  "reviewedDraftPreservationCommit": "75086f8affe794f1b86061536d0f295468069b66",
   "round1ReviewRecord": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_scattering_form_review_round01.json",
+  "round2ReviewRecord": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_scattering_form_review_round02.json",
   "method": "Read-only source text, report and JSON metadata inspection. No scientific module import, unpickling, numerical/symbolic operation, production validator, review leg or export execution.",
   "coverage": "Selected scientific workstream evidence and governing/review records; not a line-by-line audit of every commit or an ancestral validation campaign.",
   "inventory": {
     "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_scope_inventory_20260922.md",
-    "bytes": 37302,
-    "sha256": "70e23904cb121704db26a8fa7afde04952f0673d503329ed1ef998466c887d27"
+    "bytes": 41933,
+    "sha256": "8ab162fb72ae6767c457a1e32d5d5e481f33ebf2ba27f179559f1ea7713fc36a"
   },
   "links": [
     {
@@ -212,6 +213,16 @@
       "label": "amendment",
       "path": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_SCATTERING_FORM_AMENDMENT.md",
       "line": null
+    },
+    {
+      "label": "thickness-repair",
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_thickness_coordinate_repair_report.md",
+      "line": 387
+    },
+    {
+      "label": "bulk-accounting",
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11b_SHARED_PHYSICS.md",
+      "line": 452
     }
   ],
   "selectedEvidence": [
@@ -646,6 +657,12 @@
       "sha256": "9304a4dce1d0f1129a367ae9456d5010403e7d6e657540c5553fce288a5a4b12"
     },
     {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11b_SHARED_PHYSICS.md",
+      "resolvedPath": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11b_SHARED_PHYSICS.md",
+      "bytes": 76540,
+      "sha256": "9ea9e388e9d6421a841eaf851d12e1793527bba9a24aeeface3bfac2f4b40078"
+    },
+    {
       "path": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_EXPLORATORY_ACCEPTANCE.md",
       "resolvedPath": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_EXPLORATORY_ACCEPTANCE.md",
       "bytes": 7083,
@@ -660,8 +677,8 @@
     {
       "path": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_SCATTERING_FORM_AMENDMENT.md",
       "resolvedPath": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_SCATTERING_FORM_AMENDMENT.md",
-      "bytes": 32959,
-      "sha256": "3b23bfa37bacf97b25a2cbbf946dd61234d3ead804d33c89ff8bf725a0851c2b"
+      "bytes": 39625,
+      "sha256": "0f44a2a33cde185d1deb459addeb9c591746ebb6b7084db468c3aa24d23f15ef"
     },
     {
       "path": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_SHARED_PHYSICS.md",
@@ -739,7 +756,7 @@
     "exploratoryAcceptanceChange": "User approved; separate two-leg clearance not established by inspected evidence.",
     "boundedLeanNP1toNP4": "CLEAR by Claude and Grok for identified packet; excludes physical application and analytic existence theory.",
     "savedResultValidators": "Do not count as two non-author physics-review legs.",
-    "thisInventory": "Revised after two round-1 NEEDS REVISION verdicts; not cleared or effective for production."
+    "thisInventory": "Draft3 after round2: one amendment CLEAR, one NEEDS REVISION, both inventories NEEDS REVISION. Not cleared or effective for production."
   },
   "costEstimateStatus": "Planning judgment, not measured end-to-end forecasts; worker benchmarks are separate and review/provider delay or findings are not bounded."
 }

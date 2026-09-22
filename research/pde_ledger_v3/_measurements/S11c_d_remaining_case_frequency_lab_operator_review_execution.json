@@ -1,0 +1,14 @@
+{
+  "status": "IMPLEMENTED_NOT_LAUNCHED",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/lab-operator-review",
+  "stage": "validate",
+  "helperSha256": "6f37c1fe553132e17784857ec558c4ba863f5814fd8b88ed650da37ba0a1667b",
+  "planSha256": "55458f082bde33b8ea276ccd74e8ad1d1a7b8ee4887c8cbe397a1571118cb557",
+  "producerChecksSha256": "6b599efce28034bb45a7c5542cb509c0c5d97955d9863e2f04af8c612215f003",
+  "stdlibStaticReviewOnly": true,
+  "noScientificImportOrCall": true,
+  "noMatrixMultiplicationOrNumericalSolverCall": true,
+  "nativeClassesForCodecRetained": true,
+  "newScienceDisabled": true,
+  "scope": "Bounded actual saved inputs/values/receipts/local/full-response review, no ancestral replay."
+}

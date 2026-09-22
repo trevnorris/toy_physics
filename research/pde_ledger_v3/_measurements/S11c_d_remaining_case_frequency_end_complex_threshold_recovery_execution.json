@@ -1,5 +1,5 @@
 {
-  "status": "GUARDED_SAVED_COMPLEX_CONTINUATION_RUNNING",
+  "status": "FAILED_PACKET_DIRECTORY_AFTER_COMPLETED_COMPLEX_ANALYSIS",
   "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-complex-threshold-recovery-01",
   "helper": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_end_complex_threshold_recover.py",
   "staticReview": {
@@ -207,5 +207,309 @@
     "observedStrictStderrBytes": 0,
     "oneInitialCheckOnly": true,
     "launchIsAcceptance": false
-  }
+  },
+  "finalOutcome": {
+    "status": "FAILED_FINAL_PACKET_PARENT_AFTER_COMPLETED_COMPLEX_ANALYSIS",
+    "supervisor": {
+      "stage": "frequency_end_complex_threshold_recover",
+      "command": [
+        "/usr/bin/python",
+        "-u",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_end_complex_threshold_recover.py",
+        "--run-directory",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-complex-threshold-recovery-01/complete"
+      ],
+      "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-complex-threshold-recovery-01/frequency_end_complex_threshold_recover.stdout",
+      "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-complex-threshold-recovery-01/frequency_end_complex_threshold_recover.stderr",
+      "startedUtc": "2026-09-22T06:53:56.742226+00:00",
+      "childPid": 1119657,
+      "status": "failed",
+      "exitCode": 1,
+      "wallSeconds": 101.16327189499862,
+      "stderrBytes": 1771,
+      "finishedUtc": "2026-09-22T06:55:37.905566+00:00"
+    },
+    "guard": {
+      "exitCode": 1,
+      "wallSeconds": 101.35250494300271,
+      "unit": "s11c-guard-7ed1cf2f7cd5",
+      "stderrBytes": 0,
+      "limitsVerified": true,
+      "childOutcome": {
+        "exitCode": 1,
+        "guardReason": null,
+        "wallSeconds": 101.27416624300531,
+        "childPid": 1119656
+      }
+    },
+    "child": {
+      "exitCode": 1,
+      "guardReason": null,
+      "wallSeconds": 101.27416624300531,
+      "childPid": 1119656
+    },
+    "effectiveLimits": {
+      "memory.max": "2147483648",
+      "memory.swap.max": "0",
+      "pids.max": "32",
+      "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-7ed1cf2f7cd5.service",
+      "nice": 15,
+      "affinity": [
+        15
+      ],
+      "threads": {
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "VECLIB_MAXIMUM_THREADS": "1",
+        "BLIS_NUM_THREADS": "1"
+      }
+    },
+    "resources": {
+      "memoryPeakBytes": 625119232,
+      "minimumHostAvailableBytes": 23269511168,
+      "capReclaims": 0,
+      "oomEvents": 0,
+      "swapBytes": 0
+    },
+    "stderrBytes": 1771,
+    "originalFiles": 8963,
+    "sources": 209,
+    "inputPackets": 117335,
+    "referenceRoutes": 8730,
+    "completedOperationCount": 58,
+    "operationCounts": {
+      "sp.Poly": {
+        "new": 4,
+        "reused": 0
+      },
+      "method.monic": {
+        "new": 1,
+        "reused": 0
+      },
+      "method.as_expr": {
+        "new": 11,
+        "reused": 10
+      },
+      "sp.re": {
+        "new": 1,
+        "reused": 0
+      },
+      "method.expand": {
+        "new": 2,
+        "reused": 0
+      },
+      "sp.im": {
+        "new": 1,
+        "reused": 0
+      },
+      "operator.Sub": {
+        "new": 4,
+        "reused": 0
+      },
+      "operator.Mult": {
+        "new": 4,
+        "reused": 0
+      },
+      "sp.expand": {
+        "new": 3,
+        "reused": 0
+      },
+      "sp.gcd": {
+        "new": 1,
+        "reused": 0
+      },
+      "method.sqf_part": {
+        "new": 2,
+        "reused": 0
+      },
+      "sp.div": {
+        "new": 2,
+        "reused": 0
+      },
+      "sp.gcdex": {
+        "new": 1,
+        "reused": 0
+      },
+      "operator.Add": {
+        "new": 1,
+        "reused": 0
+      },
+      "operator.Pow": {
+        "new": 3,
+        "reused": 0
+      },
+      "sp.Rational": {
+        "new": 1,
+        "reused": 0
+      },
+      "method.intervals": {
+        "new": 1,
+        "reused": 0
+      },
+      "sp.factor_list": {
+        "new": 1,
+        "reused": 0
+      },
+      "sp.prod": {
+        "new": 1,
+        "reused": 0
+      },
+      "method.count_roots": {
+        "new": 3,
+        "reused": 0
+      }
+    },
+    "completedLocals": {
+      "complex-locals/analysis-observation19/0": {
+        "site": "analysis-observation19",
+        "name": "factorization",
+        "valueSha256": "c8771d2a40ba1df6d137251420be24c837cf6fdeb4d0ff5cb0026da5a71b1478"
+      },
+      "complex-locals/analysis-observation10/0": {
+        "site": "analysis-observation10",
+        "name": "imag_remainder",
+        "valueSha256": "7c26034090804dd2d9cb59ce60180d3c425515cfce9e4ddc5275381eff9ea10b"
+      },
+      "complex-locals/analysis-observation3/0": {
+        "site": "analysis-observation3",
+        "name": "imag",
+        "valueSha256": "2805b35f6818ac2e5c6b9f9a991c732a6313c0cc3dc9ff71bd50aa728a93314e"
+      },
+      "complex-locals/analysis-observation6/0": {
+        "site": "analysis-observation6",
+        "name": "squarefree",
+        "valueSha256": "65a60d0f463ce9b819ded4888643c4a349841ae79aef7d1af0430ca2ec326caa"
+      },
+      "complex-locals/analysis-observation1/0": {
+        "site": "analysis-observation1",
+        "name": "expression",
+        "valueSha256": "e6153ed1d274b510c1d5d9c49350b36c6587ca524fd65a276360b966601c93eb"
+      },
+      "complex-locals/analysis-observation14/0": {
+        "site": "analysis-observation14",
+        "name": "bezout_real",
+        "valueSha256": "96293e8679079585d64249a1a7792a301e7b47f15ad02b77e56ae2bd3e9a73bf"
+      },
+      "complex-locals/analysis-observation18/0": {
+        "site": "analysis-observation18",
+        "name": "intervals",
+        "valueSha256": "e6fcb98a051e0e167f8d101d94c755fd99ddb6310355388d0b56281d74250ec3"
+      },
+      "complex-locals/analysis-observation21/0": {
+        "site": "analysis-observation21",
+        "name": "result",
+        "valueSha256": "9db798474146c1622260c2eeac5f80df98415080effab45a72c403b24a2daff0"
+      },
+      "complex-locals/analysis-observation17/0": {
+        "site": "analysis-observation17",
+        "name": "bezout_residual",
+        "valueSha256": "2ba1dc86eb150b57caa1b672b15a3e85aaf7307f0d21d38dfa7e82880ec23f3f"
+      },
+      "complex-locals/analysis-observation9/0": {
+        "site": "analysis-observation9",
+        "name": "imag_quotient",
+        "valueSha256": "cc3a069d6bcf46ed08e21549cde215b17a6ff4910bb65519760f60d756234923"
+      },
+      "complex-locals/analysis-observation15/0": {
+        "site": "analysis-observation15",
+        "name": "bezout_imag",
+        "valueSha256": "ca19058d30d07facc727884c10ff97519bc7812eab97ec4b8e9e8d7132c53fc9"
+      },
+      "complex-locals/initial-observation0/0": {
+        "site": "initial-observation0",
+        "name": "poly",
+        "valueSha256": "83d9803ca0a199510ef870dfeb22170cb1c49a56f286d0c3032ebf71bb977bbb"
+      },
+      "complex-locals/analysis-observation7/0": {
+        "site": "analysis-observation7",
+        "name": "real_quotient",
+        "valueSha256": "911f254cdb42d10177062e5de3475770b8713a98a2937e2b12590c28aae16665"
+      },
+      "complex-locals/analysis-observation5/0": {
+        "site": "analysis-observation5",
+        "name": "common",
+        "valueSha256": "537ee978a1cadd999ceeeec51735244fe17e05f7cb07ca7429eb785419f7118d"
+      },
+      "complex-locals/analysis-observation16/0": {
+        "site": "analysis-observation16",
+        "name": "gcd",
+        "valueSha256": "537ee978a1cadd999ceeeec51735244fe17e05f7cb07ca7429eb785419f7118d"
+      },
+      "complex-locals/analysis-observation20/0": {
+        "site": "analysis-observation20",
+        "name": "reconstruction",
+        "valueSha256": "2ba1dc86eb150b57caa1b672b15a3e85aaf7307f0d21d38dfa7e82880ec23f3f"
+      },
+      "complex-locals/analysis-observation2/0": {
+        "site": "analysis-observation2",
+        "name": "real",
+        "valueSha256": "bef8b1e5af107a223b191bc4a11fa88e86f3b75f5d89a0cad100d94e47474025"
+      },
+      "complex-locals/packet-observation1/0": {
+        "site": "packet-observation1",
+        "name": "threshold",
+        "valueSha256": "3f692075647949f9790f2650762ca9d8c24cdd0583dd642a8abd4aa61df86d39"
+      },
+      "complex-locals/analysis-observation8/0": {
+        "site": "analysis-observation8",
+        "name": "real_remainder",
+        "valueSha256": "7c26034090804dd2d9cb59ce60180d3c425515cfce9e4ddc5275381eff9ea10b"
+      },
+      "complex-locals/packet-observation0/0": {
+        "site": "packet-observation0",
+        "name": "threshold",
+        "valueSha256": "7681a56ce2c22faa9ce32dfe73b74cbe1bd406bc1a0e00c5238bb2fdec9f2d49"
+      },
+      "complex-locals/analysis-observation0/0": {
+        "site": "analysis-observation0",
+        "name": "normalized",
+        "valueSha256": "110a3fc4eee6e7b02effff341251b0fdd54c08504f7f52c6af688d34a9604d72"
+      },
+      "complex-locals/analysis-observation4/0": {
+        "site": "analysis-observation4",
+        "name": "decomposition",
+        "valueSha256": "2ba1dc86eb150b57caa1b672b15a3e85aaf7307f0d21d38dfa7e82880ec23f3f"
+      }
+    },
+    "completedNativeGuards": {
+      "analysis-guard24-0.json": {
+        "passed": true,
+        "site": "analysis-guard24",
+        "completedOperationCount": 55
+      },
+      "analysis-guard24-1.json": {
+        "passed": true,
+        "site": "analysis-guard24",
+        "completedOperationCount": 56
+      },
+      "analysis-guard22-0.json": {
+        "passed": true,
+        "site": "analysis-guard22",
+        "completedOperationCount": 53
+      },
+      "analysis-guard23-0.json": {
+        "passed": true,
+        "site": "analysis-guard23",
+        "completedOperationCount": 54
+      }
+    },
+    "actualAnalysisSha256": "9db798474146c1622260c2eeac5f80df98415080effab45a72c403b24a2daff0",
+    "actualThresholdPacketSha256": "3f692075647949f9790f2650762ca9d8c24cdd0583dd642a8abd4aa61df86d39",
+    "allOriginalInputSourceReferenceHashesRechecked": true,
+    "completedCases": 0,
+    "completedMutationControls": 0,
+    "oldFinalChecksOrAcceptance": false,
+    "continuationBoundary": "Full analysis, native proof/root guards, saved branch return and exact threshold packet observations completed. Native output write failed before opening its missing-parent temporary file. Resume that output by exact saved-byte reference, then only unfinished aliases/controls/final hashes."
+  },
+  "finalOutcomeInspection": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-complex-threshold-recovery-02/failed-complex-packet-outcome.json",
+    "sha256": "2e981e1b952bd45fdc1c9d89d3280e2419b291b14327087f4343c1c2a40d48e2"
+  },
+  "completedFileInventory": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-complex-threshold-recovery-02/completed-complex-recovery-file-inventory.json",
+    "sha256": "3d4dd8820f92af4472e3baa6d566720328c4cde7423eae0bccc3b654841920d3"
+  },
+  "acceptance": false
 }

@@ -20,3 +20,16 @@ The explicit saved continuation launched from `e042eb6e`. Its one initial
 containment inspection verified900s/2GiB/zero swap/oneCPU/nice15/32tasks/
 nativeThreads1 and empty strict stderr. The silent local completion/error
 hook handles waiting. No launch or early output establishes acceptance.
+
+Final outcome: the first recovery completed the entire native complex analysis,
+58 cumulative routed calls and four native proof/root guards, then stopped at
+101.163271895 native / 101.352504943 guard seconds because the final threshold
+packet output parent did not exist. Actual exits were one; stderr 1,771 bytes;
+no guard interruption, cap/OOM/swap event. Peak 625,119,232 bytes, minimum host
+availability 23,269,511,168 bytes. The complete analysis and final threshold
+packet are saved as actual local checkpoints. No case, mutation-control or
+final-check summary completed. All 8,963 files, 209 sources, 117,335 inputs,
+8,730 reference routes and 24 logs are preserved unchanged. This outcome is
+not acceptance. Fresh recovery-02 consumes the exact saved final packet bytes
+and restores only bookkeeping for the unfinished alias/control/hash suffix;
+no native analysis or completed proof guard may run again.

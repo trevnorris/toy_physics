@@ -1,5 +1,5 @@
 {
-  "status": "PREPARED_NOT_LAUNCHED",
+  "status": "FAILED_ANNOTATED_SOURCE_METADATA_BEFORE_FIRST_SUMMARY_NO_SCIENCE",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/remainder-inputs-recovery-01",
   "stage": "frequency_remainder_inputs_recover",
   "helperSha256": "63fbcfed6328fba72aef58108352aca0a0d29087f06c41183b13e234a8f1a987",
@@ -28,5 +28,76 @@
     "completedMetadataFiles": 0,
     "newScientificCalls": 0,
     "failure": "inspect.getsource(None): NumPyPrinter has no active Heaviside-specific method; actual NumPy namespace translates Heaviside to heaviside."
+  },
+  "launch": {
+    "launchedUtc": "2026-09-22T14:46:56.208120+00:00",
+    "guardPid": 1778851,
+    "watcherPid": 1778852,
+    "stage": "frequency_remainder_inputs_recover",
+    "command": [
+      "/usr/bin/python",
+      "/var/projects/toy_physics/scripts/s11c_guarded_run.py",
+      "--log-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/remainder-inputs-recovery-01/resource-guard",
+      "--seconds",
+      "900",
+      "--",
+      "/usr/bin/python",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/remainder-inputs-recovery-01",
+      "--stage",
+      "frequency_remainder_inputs_recover",
+      "--",
+      "/usr/bin/python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_remainder_inputs_recover.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/remainder-inputs-recovery-01/complete"
+    ],
+    "helperSha256": "63fbcfed6328fba72aef58108352aca0a0d29087f06c41183b13e234a8f1a987",
+    "planSha256": "4eccc89f13ba8158df44b3dac7c766f3fe46cafbcd5bfb90699bb34f0812e7a8",
+    "staticReviewSha256": "e028dbc8b6627c5d95d963ad01cef7be64c1e490abfbfbd005082828424c8c28",
+    "guardSha256": "6492f5ab11dc2ab2f80bbfcc96d7eb6b8632afea07100dd8f74a7954f3ffe542",
+    "implementationCommit": "25c946dfa168afa14be8bc9067d5aa45c12829a7",
+    "scope": "Saved source/profile operands only for unfinished rows51--54, no science or physical packet writes.",
+    "launchIsAcceptance": false
+  },
+  "failure": {
+    "actualExits": [
+      1,
+      1,
+      1
+    ],
+    "nativeSeconds": 1.4497336380009074,
+    "guardSeconds": 1.5928808109892998,
+    "guardReason": null,
+    "strictStderrBytes": 788,
+    "peakBytes": 89849856,
+    "resourceSamples": [
+      {
+        "utc": "2026-09-22T14:46:56.315095+00:00",
+        "hostAvailableBytes": 23170625536,
+        "memory.current": "7098368",
+        "memory.peak": "7098368",
+        "memory.swap.current": "0",
+        "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0",
+        "memory.pressure": "some avg10=0.00 avg60=0.00 avg300=0.00 total=0\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0",
+        "pids.current": "1"
+      },
+      {
+        "utc": "2026-09-22T14:46:57.838607+00:00",
+        "hostAvailableBytes": 23390556160,
+        "memory.current": "7471104",
+        "memory.peak": "89849856",
+        "memory.swap.current": "0",
+        "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0",
+        "memory.pressure": "some avg10=0.00 avg60=0.00 avg300=0.00 total=0\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0",
+        "pids.current": "1"
+      }
+    ],
+    "completedMetadataFiles": 0,
+    "newScientificCalls": 0,
+    "failure": "Namespace is AnnAssign in actual user-local SymPy; initial static fixture was system SymPy Assign. No algorithm ran."
   }
 }

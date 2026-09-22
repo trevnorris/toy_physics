@@ -1,0 +1,44 @@
+{
+  "status": "PREPARED_NOT_LAUNCHED",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/remainder-inputs-recovery-02",
+  "stage": "frequency_remainder_inputs_recover02",
+  "helperSha256": "01f8834240d367b5653a99e1c290391fa49305dca166f11a7af00e6a03dd2c63",
+  "planSha256": "c9859c2f032af8de681c1a9f5d7e2ab4776f46426436f9a0f965ea2595c2af2f",
+  "priorFailure": {
+    "actualExits": [
+      1,
+      1,
+      1
+    ],
+    "nativeSeconds": 1.4497336380009074,
+    "guardSeconds": 1.5928808109892998,
+    "guardReason": null,
+    "strictStderrBytes": 788,
+    "peakBytes": 89849856,
+    "resourceSamples": [
+      {
+        "utc": "2026-09-22T14:46:56.315095+00:00",
+        "hostAvailableBytes": 23170625536,
+        "memory.current": "7098368",
+        "memory.peak": "7098368",
+        "memory.swap.current": "0",
+        "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0",
+        "memory.pressure": "some avg10=0.00 avg60=0.00 avg300=0.00 total=0\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0",
+        "pids.current": "1"
+      },
+      {
+        "utc": "2026-09-22T14:46:57.838607+00:00",
+        "hostAvailableBytes": 23390556160,
+        "memory.current": "7471104",
+        "memory.peak": "89849856",
+        "memory.swap.current": "0",
+        "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0",
+        "memory.pressure": "some avg10=0.00 avg60=0.00 avg300=0.00 total=0\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0",
+        "pids.current": "1"
+      }
+    ],
+    "completedMetadataFiles": 0,
+    "newScientificCalls": 0,
+    "failure": "Namespace is AnnAssign in actual user-local SymPy; initial static fixture was system SymPy Assign. No algorithm ran."
+  }
+}

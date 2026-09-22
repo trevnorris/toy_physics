@@ -129,3 +129,14 @@ The saved validation continuation launched at 2026-09-22T00:41:49Z from
 6679ede7. Initial whole-job 2 GiB, zero-swap, one-CPU, nice-15, 32-task and
 one-native-thread limits verified with empty strict stderr. Its silent
 completion/error hook will resume the task. Final acceptance is pending.
+
+The owner continuation stopped after 45.08 native seconds at the first new
+seed comparison: restored srepr differs from the original live string. Peak
+memory was 259,452,928 bytes, zero cap/OOM/swap, minimum host availability
+23.74 GB. All derivative/lift routes, both denominator classifications and
+the complete baseline case passed and remain saved, along with 191 owner
+views and their controls. The denominators are relaxationSquared with
+constants -10/-20 and positive bounds 245/32 and 245/16 on the declared disk.
+A separate saved representation diagnostic will inspect actual live/restored
+strings and typed packet joins without evaluating strings or recomputing
+science. No acceptance or automatic restart is claimed.

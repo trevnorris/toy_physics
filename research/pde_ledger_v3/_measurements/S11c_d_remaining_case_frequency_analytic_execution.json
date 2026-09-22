@@ -1,5 +1,5 @@
 {
-  "status": "LAUNCHED_OWNER_JSON_VALIDATION_CONTINUATION",
+  "status": "PREPARED_SAVED_REPRESENTATION_DIAGNOSTIC",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/analytic-sources",
   "stage": "frequency_analytic",
   "acceptedAnalyticInputsCommit": "a7a53fa8",
@@ -663,5 +663,33 @@
       "guardStderrBytes": 0,
       "isAcceptance": false
     }
+  },
+  "representationDiagnostic": {
+    "directory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/analytic-representation-diagnostic",
+    "scriptSha256": "17f77f63a4d76e21e9193550e802796d843a4e470af1245e542016fc5d46f35a",
+    "planSha256": "444f9102c350b9e5d2939d469120c8436685ae16d4a160fb13a827e312a04d7e",
+    "staticReviewSha256": "a18ca9f61e56ded5b0601584739f1f9c48fcb94a23f77d416a9e672c71f93be0",
+    "failedContinuationOutcome": {
+      "exitCode": 1,
+      "wallSeconds": 45.21916206700553,
+      "unit": "s11c-guard-32ea9400439f",
+      "stderrBytes": 0,
+      "limitsVerified": true,
+      "childOutcome": {
+        "exitCode": 1,
+        "guardReason": null,
+        "wallSeconds": 45.14476914900297,
+        "childPid": 982028
+      }
+    },
+    "peakBytes": 259452928,
+    "minimumHostAvailableBytes": 23739076608,
+    "completedSummaries": [
+      "validated-new-denominators.json",
+      "validated-new-records-LAB_HELD__RHO4_CONSTANT.json",
+      "validated-derivative-lift-routes.json",
+      "validated-case-LAB_HELD__RHO4_CONSTANT.json"
+    ],
+    "priorAcceptance": false
   }
 }

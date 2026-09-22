@@ -1,5 +1,5 @@
 {
-  "status": "GUARDED_SAVED_CALL_INPUTS_LAUNCHED",
+  "status": "SOURCE_FILE_READER_FAILED_CONTINUATION_REVIEWED",
   "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-call-inputs",
   "helper": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_end_calls.py",
   "staticReview": {
@@ -103,6 +103,97 @@
       "notifications": {}
     },
     "outcomeAtInitialInspection": null,
+    "launchIsAcceptance": false
+  },
+  "originalOutcome": {
+    "supervisor": {
+      "stage": "frequency_end_calls",
+      "command": [
+        "/usr/bin/python",
+        "-u",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_end_calls.py",
+        "--run-directory",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-call-inputs/complete"
+      ],
+      "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-call-inputs/frequency_end_calls.stdout",
+      "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-call-inputs/frequency_end_calls.stderr",
+      "startedUtc": "2026-09-22T02:47:21.567914+00:00",
+      "childPid": 1032017,
+      "status": "failed",
+      "exitCode": 1,
+      "wallSeconds": 41.67399185699469,
+      "stderrBytes": 1418,
+      "finishedUtc": "2026-09-22T02:48:03.241961+00:00"
+    },
+    "guard": {
+      "exitCode": 1,
+      "wallSeconds": 41.81861076000496,
+      "unit": "s11c-guard-4c5ca2151f62",
+      "stderrBytes": 0,
+      "limitsVerified": true,
+      "childOutcome": {
+        "exitCode": 1,
+        "guardReason": null,
+        "wallSeconds": 41.748235307997675,
+        "childPid": 1032016
+      }
+    },
+    "limits": {
+      "verified": true,
+      "actual": {
+        "memory.max": "2147483648",
+        "memory.swap.max": "0",
+        "pids.max": "32",
+        "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-4c5ca2151f62.service",
+        "nice": 15,
+        "affinity": [
+          15
+        ],
+        "threads": {
+          "OPENBLAS_NUM_THREADS": "1",
+          "OMP_NUM_THREADS": "1",
+          "MKL_NUM_THREADS": "1",
+          "NUMEXPR_NUM_THREADS": "1",
+          "VECLIB_MAXIMUM_THREADS": "1",
+          "BLIS_NUM_THREADS": "1"
+        }
+      }
+    },
+    "memoryPeakBytes": 565596160,
+    "minimumHostAvailableBytes": 23603777536,
+    "capEvents": 0,
+    "oomEvents": 0,
+    "swapBytes": 0,
+    "completedFiles": 6995,
+    "completedCatalogueCalls": 0,
+    "newScientificCalls": 0,
+    "noEarlyAcceptance": true
+  },
+  "continuation": {
+    "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-call-inputs-recovery-01",
+    "staticReview": {
+      "helperSha256": "1e8680786a64959e38eb301938d210371112a5980d9f28fb01604d867860b953",
+      "planSha256": "28013c0089860ce543c458398770cd1777322d226a94c916c6a162d2dfcca506",
+      "repairSha256": "c87af4bdaa12c0ff21ab9a8628cde9edc93788f9976f60e4558eb5eac1c451d7",
+      "wholeReaderReverseAST": {
+        "wholeOriginalBodyAST": "7306e244d7e2add99392725ca446db0fd0af379177e61a59dc60a1692264e151",
+        "onlyChange": "inspect.getsourcefile(inspect.unwrap(value))",
+        "wholeBodyReverseAST": true,
+        "sourceTextIncludingDecoratorsUnchanged": true
+      },
+      "actualCachedMethodDefinitionHarnessPassed": true,
+      "ordinaryFunctionAndClassBoundariesPassed": true,
+      "sourceDecoratorAndBodyPreserved": true,
+      "nativeConstructorCalled": false,
+      "scientificImportsOrPacketDeserialization": false,
+      "originalMainPrepareUnchanged": true,
+      "completedFiles": 6995,
+      "originalSourcePins": 189,
+      "completedCatalogueOperations": 0,
+      "previousOutcomeSha256": "1f5c534c6d892eaaeac9e0fc1697c5f57f6eeea53bd8085b57efd14cf1c931e1",
+      "oldLoaderCallDisabledByReplacement": true,
+      "freshReferencesAndUniqueMetadataNames": true
+    },
     "launchIsAcceptance": false
   }
 }

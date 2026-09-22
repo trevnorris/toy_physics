@@ -1,0 +1,163 @@
+{
+  "originalHelperSha256": "cde2b285d43f830bc6d1ac88abb9183252a4cce2647953687ad4357e008de6fb",
+  "originalInputsSha256": "d8b42372faa76ee83888d0a3b88c12845a4e889282d339bf3d695c10c5e972e9",
+  "completedInventory": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-call-inputs-recovery-01/completed-file-inventory.json",
+    "sha256": "fc95b4fad49f4613862772f810cf307ab727dd5c30db7244ac3d8750a174a871"
+  },
+  "outcomeInspection": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-call-inputs-recovery-01/failed-end-call-outcome.json",
+    "sha256": "1f5c534c6d892eaaeac9e0fc1697c5f57f6eeea53bd8085b57efd14cf1c931e1"
+  },
+  "previousLogs": {
+    "guard.stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "frequency_end_calls.stderr": {
+      "sha256": "1f6a0965d9fd744c9b1ffaf8b6609a345ce31375c8759dc17f90cf1cdaaf77d0",
+      "bytes": 1418
+    },
+    "active.json": {
+      "sha256": "d4701e038c07443fc40f1b6392c6980dd262a1c23ddc8d03aaedbed8198c20a2",
+      "bytes": 838
+    },
+    "initial-inspection.json": {
+      "sha256": "d18ca17273f8c32bd4df62e4949e4311524ba154de7ca57036f9d36cc0b5cc63",
+      "bytes": 1160
+    },
+    "frequency_end_calls.invocation.json": {
+      "sha256": "d4701e038c07443fc40f1b6392c6980dd262a1c23ddc8d03aaedbed8198c20a2",
+      "bytes": 838
+    },
+    "static-review.json": {
+      "sha256": "4481feb45749383de1fd5834f9e8dc81816901f96d9ce85660f6c2a80490b164",
+      "bytes": 951
+    },
+    "normalization.lock": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "frequency_end_calls.stdout": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "completion-message.txt": {
+      "sha256": "24d6aa99bfb450e80773e4fcfd6414470341f3a418e7078be58afbd88c3b79f3",
+      "bytes": 7577
+    },
+    "guard.stdout": {
+      "sha256": "7258f8d5606a863813f481db5f6bfcf44b7241b9bf30ab56a9b42573f84c4ad9",
+      "bytes": 271
+    },
+    "launch.json": {
+      "sha256": "5e832e42a96a968f3fea35c5d7a38534f49c4f9d59402e973dd9e4e6241b224a",
+      "bytes": 1366
+    },
+    "guard-source.py": {
+      "sha256": "6492f5ab11dc2ab2f80bbfcc96d7eb6b8632afea07100dd8f74a7954f3ffe542",
+      "bytes": 8783
+    },
+    "resource-guard/stdout": {
+      "sha256": "d4701e038c07443fc40f1b6392c6980dd262a1c23ddc8d03aaedbed8198c20a2",
+      "bytes": 838
+    },
+    "resource-guard/child-outcome.json": {
+      "sha256": "b9a10bfd6d44b88d3e63eb9445a09f453c4faf90127fedda181c681980c8d19a",
+      "bytes": 103
+    },
+    "resource-guard/invocation.json": {
+      "sha256": "33421ac3fc2898b7529342e90ce1b43e7e7ccf159d27ed7ad6a3470545f22be8",
+      "bytes": 863
+    },
+    "resource-guard/outcome.json": {
+      "sha256": "7258f8d5606a863813f481db5f6bfcf44b7241b9bf30ab56a9b42573f84c4ad9",
+      "bytes": 271
+    },
+    "resource-guard/resource-samples.jsonl": {
+      "sha256": "5edbfa06823c70ebe46a7737c86d668b611b03639f69fb1014c20b43b2de5a91",
+      "bytes": 8796
+    },
+    "resource-guard/stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "resource-guard/limit-validation.json": {
+      "sha256": "9605dbdb4003d961757caa2862447904ff28708a554e1ec020f7b73bbb4957f4",
+      "bytes": 511
+    },
+    "resource-guard/effective-limits.json": {
+      "sha256": "746855a51dba96a6cdebe173ff8a51b3b642aa72078daed18ab234e68f854602",
+      "bytes": 441
+    }
+  },
+  "previousOutcome": {
+    "supervisor": {
+      "stage": "frequency_end_calls",
+      "command": [
+        "/usr/bin/python",
+        "-u",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_end_calls.py",
+        "--run-directory",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-call-inputs/complete"
+      ],
+      "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-call-inputs/frequency_end_calls.stdout",
+      "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-call-inputs/frequency_end_calls.stderr",
+      "startedUtc": "2026-09-22T02:47:21.567914+00:00",
+      "childPid": 1032017,
+      "status": "failed",
+      "exitCode": 1,
+      "wallSeconds": 41.67399185699469,
+      "stderrBytes": 1418,
+      "finishedUtc": "2026-09-22T02:48:03.241961+00:00"
+    },
+    "guard": {
+      "exitCode": 1,
+      "wallSeconds": 41.81861076000496,
+      "unit": "s11c-guard-4c5ca2151f62",
+      "stderrBytes": 0,
+      "limitsVerified": true,
+      "childOutcome": {
+        "exitCode": 1,
+        "guardReason": null,
+        "wallSeconds": 41.748235307997675,
+        "childPid": 1032016
+      }
+    },
+    "limits": {
+      "verified": true,
+      "actual": {
+        "memory.max": "2147483648",
+        "memory.swap.max": "0",
+        "pids.max": "32",
+        "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-4c5ca2151f62.service",
+        "nice": 15,
+        "affinity": [
+          15
+        ],
+        "threads": {
+          "OPENBLAS_NUM_THREADS": "1",
+          "OMP_NUM_THREADS": "1",
+          "MKL_NUM_THREADS": "1",
+          "NUMEXPR_NUM_THREADS": "1",
+          "VECLIB_MAXIMUM_THREADS": "1",
+          "BLIS_NUM_THREADS": "1"
+        }
+      }
+    },
+    "memoryPeakBytes": 565596160,
+    "minimumHostAvailableBytes": 23603777536,
+    "capEvents": 0,
+    "oomEvents": 0,
+    "swapBytes": 0,
+    "completedFiles": 6995,
+    "completedCatalogueCalls": 0,
+    "newScientificCalls": 0,
+    "noEarlyAcceptance": true
+  },
+  "originalMainAST": "37d8547e60036b9a22d4a69ddb98f210db8247acfe9df1cf67cd20f652b419f8",
+  "originalPrepareAST": "ff1936d2a78f2e8f287a45a61f27e36b06899dd932f713525dbe9d517b82c5b7",
+  "onlyReaderChange": "inspect.getsourcefile(inspect.unwrap(value))",
+  "originalLoaderReused": true,
+  "nativeAlgorithmsChanged": false
+}

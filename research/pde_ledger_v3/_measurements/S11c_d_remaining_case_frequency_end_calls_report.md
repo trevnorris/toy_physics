@@ -1,22 +1,29 @@
 # Saved frequency-end call input routing
 
-End inputs are accepted at `113c4e3b`: eight ends, six full source-input
-families, two baseline candidates and six unmatched uses. Independent saved
-validation checked 47,488 paths in 118.42 native seconds, with a 577,036,288
-byte peak and zero cap/OOM/swap events.
+End inputs remain accepted at `113c4e3b`: eight ends and six source-input
+families, independently validated across 47,488 paths. This does not yet
+accept frequency operators, domains, continuation or numerical reuse.
 
-The next guarded worker joins complete native analytic/mapping inputs to
-actual saved baseline returns and inventories existing full frequency-leg
-pencils/derivatives. It performs no scientific construction. Unmatched
-returns stay explicit; fixed-frequency results and six input families do
-not establish frequency-operator or numerical reuse. Frozen inherited
-sources are references, avoiding another 146 MB copy.
+The first saved-call worker stopped after 41.67 native / 41.82 guard seconds
+in source metadata inspection. `inspect.getsourcefile` was given a cached
+method wrapper. No call comparison, mutation or scientific operation had
+started. All 6,995 completed files, 189 source pins, 46,616 inputs and 6,992
+reference routes remain unchanged. Peak was 565,596,160 bytes, zero cap/OOM/
+swap, minimum host available 23.60 GB. All actual process exits were one;
+there was no guard interruption or acceptance.
 
-Final guarded completion and hash checks are required before these routing
-results can guide missing native end operations. All previous accepted
-science, failed readers and logs remain immutable.
+A fresh continuation restores the completed loader manifest and references.
+Its only source-reader change unwraps the cached callable for its filename;
+full decorated source text, original main, catalogue and final guards remain
+unchanged. The whole-body reverse AST and a stdlib metadata harness covering
+the actual native cached-method definition and ordinary function/class
+boundaries passed. An AST argument-list alias caught during unlaunched static
+review was corrected; its source and diagnosis are preserved. No scientific
+imports or operations ran during that review.
 
-The reviewed worker was launched from `ca1c75a3` under verified whole-job
-2 GiB, zero-swap, one-CPU, nice-15, 32-task, one-native-thread limits.
-The single initial inspection found empty strict stderr; the silent local
-completion/error hook is active. Launch does not establish acceptance.
+The continuation will finish only the unstarted saved-call catalogue under
+the same mandatory guard and silent completion hook. Whole frequency-leg
+pencils and derivatives remain saved operands; unmatched returns stay explicit.
+All accepted science and failed histories are immutable. References avoid
+another 146 MB frozen-source copy. Actual missing native end work follows only
+a clean final result and complete input/caller joins.

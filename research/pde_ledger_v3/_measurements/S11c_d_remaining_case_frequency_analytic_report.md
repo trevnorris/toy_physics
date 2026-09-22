@@ -103,3 +103,8 @@ Independent saved validation is prepared. It checks each actual input/value/
 proof/caller, raw units and complete aliases with all hashes and native source
 joins. It does not differentiate, lift, normalize or reconstruct certificates.
 No analytic acceptance is claimed before its clean final guard outcome.
+
+Independent saved validation launched at 2026-09-22T00:32:07Z from f9dc315e.
+Initial 2 GiB/zero-swap/one-CPU/nice-15/32-task/one-native-thread containment
+verified with empty strict stderr. The silent completion/error hook will
+resume this task; launch does not establish acceptance.

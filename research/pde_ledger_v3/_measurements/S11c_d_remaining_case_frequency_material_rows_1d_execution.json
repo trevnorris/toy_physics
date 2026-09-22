@@ -1,0 +1,91 @@
+{
+  "status": "IMPLEMENTED_NOT_LAUNCHED",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/material-rows-1d",
+  "stage": "frequency_material_rows_1d",
+  "helperSha256": "c252fd849c870c8518f5e6868b5f405815e2f2aa16ee93ca7baac7e410e86dde",
+  "syntax": true,
+  "wholePilotLoaderPrefixReverseAST": true,
+  "sourceSelectionUsesActualView": true,
+  "actual14RowSchemasRead": [
+    {
+      "row": 3,
+      "source": 2,
+      "sourceOrder": 0
+    },
+    {
+      "row": 4,
+      "source": 7,
+      "sourceOrder": 1
+    },
+    {
+      "row": 5,
+      "source": 7,
+      "sourceOrder": 1
+    },
+    {
+      "row": 6,
+      "source": 9,
+      "sourceOrder": 1
+    },
+    {
+      "row": 7,
+      "source": 9,
+      "sourceOrder": 1
+    },
+    {
+      "row": 8,
+      "source": 10,
+      "sourceOrder": 1
+    },
+    {
+      "row": 9,
+      "source": 10,
+      "sourceOrder": 1
+    },
+    {
+      "row": 10,
+      "source": 11,
+      "sourceOrder": 2
+    },
+    {
+      "row": 11,
+      "source": 11,
+      "sourceOrder": 2
+    },
+    {
+      "row": 21,
+      "source": 2,
+      "sourceOrder": 0
+    },
+    {
+      "row": 22,
+      "source": 7,
+      "sourceOrder": 1
+    },
+    {
+      "row": 23,
+      "source": 9,
+      "sourceOrder": 1
+    },
+    {
+      "row": 24,
+      "source": 10,
+      "sourceOrder": 1
+    },
+    {
+      "row": 25,
+      "source": 11,
+      "sourceOrder": 2
+    }
+  ],
+  "scientificTailExcludedFromLoader": true,
+  "fullCacheExpressionEnvironmentUnitPhysicalDiscrimination": true,
+  "sourceActionsUseCanonicalHashSizeAndFullSourceUnitContext": true,
+  "selectedComparisons": [
+    11,
+    25
+  ],
+  "scientificImportsDeserializationOrExecution": 0,
+  "planSha256": "45ba2611d1a95cc0b2758ae66f36da27a18d94cd249a14496c4c022c4dbef332",
+  "allNewRowArtifactsIncludedInFinalPostchecks": true
+}

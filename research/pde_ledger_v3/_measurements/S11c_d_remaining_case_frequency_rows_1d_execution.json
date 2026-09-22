@@ -1,5 +1,5 @@
 {
-  "status": "LAUNCHED_GUARDED",
+  "status": "COMPLETED_WITH_MEMORY_CAP_CONTACTS_PENDING_SAVED_REVIEW",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/rows-1d",
   "stage": "frequency_rows_1d",
   "helperSha256": "45085deed3cb1bbec5bd0b9e5a573f2ce855b3a7cd4f8c54f9673f6e20886c90",
@@ -95,5 +95,32 @@
     "guardStderrBytes": 0,
     "outcomePresent": false,
     "oneInitialInspectionOnly": true
+  },
+  "completionInspection": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/rows-1d/completion-inspection.json",
+    "sha256": "da4a8492129a4d09648b0f5081776f093f50bf3cb2982e32729468138e5e5069",
+    "bytes": 5097
+  },
+  "actualOutcome": {
+    "status": "COMPLETED_WITH_MEMORY_CAP_CONTACTS_PENDING_SAVED_REVIEW",
+    "actualExits": [
+      0,
+      0,
+      0
+    ],
+    "guardInterruption": null,
+    "workerWallSeconds": 109.37138298100035,
+    "nativeWallSeconds": 113.96750256299856,
+    "guardWallSeconds": 114.17284686499625,
+    "emptyStrictStderr": true,
+    "checksStdoutIdentity": true,
+    "checksSha256": "d0c508a88fa9196e196072be1cb8b354ab82eedc1d1e5e96eeafecee2e86a194",
+    "artifacts": 109085,
+    "peakBytes": 2147483648,
+    "maximumMemoryMaxEvents": 176,
+    "zeroOOMSwap": true,
+    "zeroCapEvents": false,
+    "minimumHostAvailableBytes": 22616952832,
+    "observation": "Hard2GiB containment held and all final exits0. memory.events.max reached176; no OOM/OOM-kill/swap or guard interruption. Do not label this zero-event execution. Existing telemetry does not separate resident and file-cache contributions; no cause is asserted. Scientific outputs remain unaccepted pending saved review; no rerun authorized."
   }
 }

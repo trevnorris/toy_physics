@@ -1,0 +1,11 @@
+{
+  "status": "IMPLEMENTED_UNLAUNCHED",
+  "root": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/rows-1d-review",
+  "helperSha256": "0583d464df9bdbad1cb09eea240c3b5cf7e685a397998dbd6e4a9641483c1391",
+  "planSha256": "0303001f797fc56aae020c8eaf60d6250afe9e884c07d7b1369053d9a02ec2c7",
+  "staticReviewSha256": "362432f00dc0695e39fa9b804cd8905280968476cdf0dcb96a84dea77cd26753",
+  "producerChecksSha256": "d0c508a88fa9196e196072be1cb8b354ab82eedc1d1e5e96eeafecee2e86a194",
+  "producerMemoryMaxEvents": 176,
+  "producerNoOOMSwap": true,
+  "scope": "Bounded streaming saved result review only, preserving memory-cap qualification and all exact own inputs; no science replay."
+}

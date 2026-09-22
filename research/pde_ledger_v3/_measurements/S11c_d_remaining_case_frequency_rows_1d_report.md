@@ -24,3 +24,17 @@ outcomes and bounded saved-result review precede acceptance.
 Launched implementation1f835933 under the verified900s whole-job2GiB zero-swap
 oneCPU nice15 pids32 nativeThreads1 guard. One initial containment inspection
 and silent completion/error hook recorded. Final outcome remains required.
+
+The batch completed109.371s worker/113.968s native/114.173s guard, all actual
+exits0, empty strictstderr and checks/stdout identity. It produced both full rows
+and the selected comparison: norms.28350525193892145/.17223752493069072,
+row30 absolute rule spread2.7894008272968645e-16. There were10498 new point
+returns,1360 new frequency evaluations and9138 saved scalar uses; both source
+actions were saved arrays. No source/basis/end operation was repeated.
+
+Resource qualification: memory.peak reached2147483648bytes and memory.events.max
+reached176. No OOM, OOM-kill, swap or guard interruption occurred; the hard cap
+held. This is not a zero-cap-event run. The saved telemetry does not distinguish
+resident and file-cache causes. Preserve all evidence and review only saved
+results, with streaming reads and clean-page cache advice under the same guard.
+Do not rerun the numerical batch. Final scoped acceptance remains pending.

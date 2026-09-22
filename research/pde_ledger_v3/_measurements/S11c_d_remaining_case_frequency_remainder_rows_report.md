@@ -16,3 +16,7 @@ Launched implementation 6fed000b97260289fdc4ecbeb07879119896227c under verified
 900s2GiBzero-swaponeCPUnice15pids32nativeThreads1 containment. Silent local
 completion/error hook is active. No model polling; final actual outcome and
 bounded saved result review remain required before accepting the rows.
+
+All eight row returns completed in12.883s guarded with actual all0/empty/
+checksstdout identity. Checkpoint acceptance awaits bounded saved review.
+Actual comparison and operation counts remain in checks and execution.

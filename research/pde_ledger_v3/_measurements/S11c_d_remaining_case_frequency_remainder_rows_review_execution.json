@@ -1,0 +1,8 @@
+{
+  "status": "PREPARED_NOT_LAUNCHED",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/remainder-rows-review",
+  "stage": "validate",
+  "helperSha256": "750a519a144462a304e024287902679bfa2dc2f475b04c4e8770bcef79d23ae6",
+  "planSha256": "58fd761310954af66d68023e6226354194c1b982ec735e658d8ffe8313380e45",
+  "producerChecksSha256": "7b1166e22be054dac47ce59804bf376c77d5963d4f7b7b6a97bfabf327041618"
+}

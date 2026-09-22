@@ -10,3 +10,7 @@ Whole main/evaluator reverse-AST checks and a separate12-local suffix analysis
 passed with no scientific import or packet read. The source-action comparison
 is reused; the original integration/controls/cost/posthash suffix is unchanged.
 A clean guarded result and bounded saved review remain required.
+
+Launched implementation877e7630 under the mandatory verified900s whole-job,
+2GiB, zero swap, oneCPU, nice15, pids32, nativeThreads1 guard. Silent completion/
+error hook armed. One initial containment inspection recorded; no health polling.

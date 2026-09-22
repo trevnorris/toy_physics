@@ -1,0 +1,19 @@
+{
+  "status": "IMPLEMENTED_UNLAUNCHED",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/rows-1d",
+  "stage": "frequency_rows_1d",
+  "helperSha256": "45085deed3cb1bbec5bd0b9e5a573f2ce855b3a7cd4f8c54f9673f6e20886c90",
+  "planSha256": "268c1752e2433a71a3ac8d2c0795559cd522e7af8f0af3bac47fd74976b03d48",
+  "staticReviewSha256": "b8c288ab0819b307fb92da25949fa75e8c7739382ec22af5bc8013cf20444a96",
+  "acceptedPilot": "0c2448600fbd33b82b5e9c1a0d6b16ddbf5dbb423decff540ceec7d221098e15",
+  "scope": "Two missing LAB_HELD__RHOBR_CONSTANT full1D rows29/30, saved source actions, three new integrations at1-0.01i. No scattering or domain acceptance.",
+  "guard": {
+    "wholeJobSeconds": 900,
+    "memoryBytes": 2147483648,
+    "swapBytes": 0,
+    "cpus": 1,
+    "nice": 15,
+    "tasks": 32,
+    "nativeThreads": 1
+  }
+}

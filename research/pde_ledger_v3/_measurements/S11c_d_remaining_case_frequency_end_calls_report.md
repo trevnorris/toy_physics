@@ -27,3 +27,7 @@ pencils and derivatives remain saved operands; unmatched returns stay explicit.
 All accepted science and failed histories are immutable. References avoid
 another 146 MB frozen-source copy. Actual missing native end work follows only
 a clean final result and complete input/caller joins.
+
+The continuation was launched from `849456f0`. The single initial inspection
+verified all mandatory limits and empty strict stderr; the silent local hook
+is waiting for completion or an issue. Launch does not establish acceptance.

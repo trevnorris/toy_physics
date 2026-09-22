@@ -693,7 +693,7 @@
     }
   },
   "independentValidation": {
-    "status": "STATIC_REVIEWED_NOT_LAUNCHED",
+    "status": "GUARDED_RUNNING_WITH_SILENT_COMPLETION_HOOK",
     "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-threshold-input-acceptance",
     "validator": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-threshold-input-acceptance/validate.py",
     "staticReview": {
@@ -711,6 +711,89 @@
       "rawTypedOwnerAndNativeJsonViewBoundaryReviewed": true,
       "actualMissingDeterminantAndDeferredPolynomialSlotsPreserved": true
     },
-    "launchIsAcceptance": false
+    "launchIsAcceptance": false,
+    "launch": {
+      "launchedUtc": "2026-09-22T04:45:33.191311+00:00",
+      "guardPid": 1075315,
+      "watcherPid": 1075316,
+      "command": [
+        "/usr/bin/python",
+        "/var/projects/toy_physics/scripts/s11c_guarded_run.py",
+        "--log-directory",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-threshold-input-acceptance/resource-guard",
+        "--seconds",
+        "900",
+        "--",
+        "/usr/bin/python",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+        "--run-root",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-threshold-input-acceptance",
+        "--stage",
+        "validate",
+        "--",
+        "/usr/bin/python",
+        "-u",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-threshold-input-acceptance/validate.py"
+      ],
+      "helperSha256": "cc3052066d2cf7bbd71b7434f299c7768419bce97655a5562f040d0f9196b4c0",
+      "guardSha256": "6492f5ab11dc2ab2f80bbfcc96d7eb6b8632afea07100dd8f74a7954f3ffe542",
+      "implementationCommit": "3376b51e3c4dd4601a7f414c982c44b6a7abce6e",
+      "staticReviewSha256": "207b5aff00c1b9aafec75a4758b2a51980f1d813f72a1df47b53efa3972273ae",
+      "newScientificConstruction": false,
+      "launchIsAcceptance": false
+    },
+    "initialInspection": {
+      "limits": {
+        "verified": true,
+        "actual": {
+          "memory.max": "2147483648",
+          "memory.swap.max": "0",
+          "pids.max": "32",
+          "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-fd1f6eab26f5.service",
+          "nice": 15,
+          "affinity": [
+            15
+          ],
+          "threads": {
+            "OPENBLAS_NUM_THREADS": "1",
+            "OMP_NUM_THREADS": "1",
+            "MKL_NUM_THREADS": "1",
+            "NUMEXPR_NUM_THREADS": "1",
+            "VECLIB_MAXIMUM_THREADS": "1",
+            "BLIS_NUM_THREADS": "1"
+          }
+        }
+      },
+      "stderrBytes": {
+        "validate.stderr": 0,
+        "guard.stderr": 0,
+        "resource-guard/stderr": 0
+      },
+      "active": {
+        "stage": "validate",
+        "command": [
+          "/usr/bin/python",
+          "-u",
+          "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-threshold-input-acceptance/validate.py"
+        ],
+        "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-threshold-input-acceptance/validate.stdout",
+        "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-threshold-input-acceptance/validate.stderr",
+        "startedUtc": "2026-09-22T04:45:33.393573+00:00",
+        "childPid": 1075323,
+        "status": "running"
+      },
+      "watcher": {
+        "status": "waiting",
+        "watcherPid": 1075316,
+        "jobPid": 1075315,
+        "thread": "01a08c53-295c-70f0-baaf-353db1745867",
+        "startedUtc": "2026-09-22T04:45:33.239750+00:00",
+        "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
+        "messageSha256": "27e9562f3ad46354c3d67b04b24304ca323cd3e9f56aa1290f97c88ff474df0f",
+        "notifications": {}
+      },
+      "guardOutcome": null,
+      "singleInitialInspection": true
+    }
   }
 }

@@ -39,3 +39,7 @@ first owners, eight case routes and five actual mutations. It compiles only
 the native adapter and preserves typed owners separately from their JSON
 views. No conversion, determinant, cancellation, table or root operation is
 repeated. Per-operation/entry/case summaries precede final hash guards.
+
+Saved-only validation launched from `3376b51e`. The single initial inspection
+verified all mandatory limits and empty strict stderr. The silent local
+completion/error hook handles waiting; threshold inputs are not yet accepted.

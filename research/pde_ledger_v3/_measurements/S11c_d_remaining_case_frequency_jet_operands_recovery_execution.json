@@ -1,5 +1,5 @@
 {
-  "status": "LAUNCHED_GUARDED_SAVED_READER_CONTINUATION",
+  "status": "CLEAN_SAVED_JET_OPERAND_INSPECTION",
   "root": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/source-jet-operands-recovery-01",
   "staticReview": {
     "status": "PASSED_STDLIB_SINGLE_METADATA_CAST_REVIEW",
@@ -71,5 +71,26 @@
     "observedStrictStderrBytes": 0,
     "oneInitialCheckOnly": true,
     "launchIsAcceptance": false
+  },
+  "completion": {
+    "status": "CLEAN_SAVED_JET_OPERAND_INSPECTION",
+    "checksSha256": "11fb53943accfa0a500edbb8422e1a1cef11a0d35d14e72bf84878c9e546f8d0",
+    "actualExits": [
+      0,
+      0,
+      0
+    ],
+    "emptyStrictStderr": true,
+    "checksStdoutIdentity": true,
+    "workerWallSeconds": 8.336618707005982,
+    "nativeWallSeconds": 9.500692365996656,
+    "guardWallSeconds": 9.633013011000003,
+    "peakBytes": 109465600,
+    "zeroCapOOMSwap": true,
+    "allConsumedHashesUnchanged": true,
+    "unmatchedUses": 20,
+    "literalInputFamilies": 10,
+    "existingJetValuesInspected": 155,
+    "newScientificCalls": 0
   }
 }

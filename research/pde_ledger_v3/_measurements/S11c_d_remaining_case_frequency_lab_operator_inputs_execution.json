@@ -1,7 +1,64 @@
 {
-  "status": "IMPLEMENTED_NOT_LAUNCHED",
+  "status": "GUARDED_RUNNING",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/lab-operator-inputs",
   "stage": "frequency_lab_operator_inputs",
   "helperSha256": "9ee5165cce2654ecbe7112420221a2c39c3b3ad8b5a33405d0da631f11d4e39d",
-  "planSha256": "11dffdd2e18e6370679873c671954e54b93a7a0e012fcca5826f5c7ffdc4fd13"
+  "planSha256": "11dffdd2e18e6370679873c671954e54b93a7a0e012fcca5826f5c7ffdc4fd13",
+  "launch": {
+    "launchedUtc": "2026-09-22T15:43:52.345709+00:00",
+    "guardPid": 1801436,
+    "watcherPid": 1801437,
+    "stage": "frequency_lab_operator_inputs",
+    "command": [
+      "/usr/bin/python",
+      "/var/projects/toy_physics/scripts/s11c_guarded_run.py",
+      "--log-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/lab-operator-inputs/resource-guard",
+      "--seconds",
+      "900",
+      "--",
+      "/usr/bin/python",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/lab-operator-inputs",
+      "--stage",
+      "frequency_lab_operator_inputs",
+      "--",
+      "/usr/bin/python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_lab_operator_inputs.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/lab-operator-inputs/complete"
+    ],
+    "helperSha256": "9ee5165cce2654ecbe7112420221a2c39c3b3ad8b5a33405d0da631f11d4e39d",
+    "planSha256": "11dffdd2e18e6370679873c671954e54b93a7a0e012fcca5826f5c7ffdc4fd13",
+    "staticReviewSha256": "87c3dfffb1cb87d83e2d2c979d8847d2782bd4e858de47f409fe06b601cdd1a5",
+    "guardSha256": "6492f5ab11dc2ab2f80bbfcc96d7eb6b8632afea07100dd8f74a7954f3ffe542",
+    "implementationCommit": "2bf398f5ecf9174974e1a8baeb11b3a196e597f5",
+    "scope": "Read full LAB operator/scalar/grade/row/end caller inputs and saved whole returns only; no numerical or symbolic science.",
+    "launchIsAcceptance": false
+  },
+  "initialContainment": {
+    "actualLimits": {
+      "memory.max": "2147483648",
+      "memory.swap.max": "0",
+      "pids.max": "32",
+      "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-70660590b37b.service",
+      "nice": 15,
+      "affinity": [
+        15
+      ],
+      "threads": {
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "VECLIB_MAXIMUM_THREADS": "1",
+        "BLIS_NUM_THREADS": "1"
+      }
+    },
+    "workerAlreadyCompletedAtFirstInspection": false,
+    "strictStderrBytes": 0,
+    "noModelPolling": true
+  }
 }

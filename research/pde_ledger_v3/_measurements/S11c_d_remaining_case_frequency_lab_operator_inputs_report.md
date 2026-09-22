@@ -6,3 +6,7 @@ and saved forcing/observation/end maps. This is a saved-input reader only,
 with no repeated row science, old compiler internals or matrix construction.
 The baseline full operator/response returns remain candidate inputs until
 the entire native caller and physical context join.
+
+Launched implementation2bf398f5 under verified900s2GiBzero-swaponeCPU
+nice15pids32nativeThreads1 containment and a silent local completion/error
+hook. Final actual outcome and consumed hashes are required before use.

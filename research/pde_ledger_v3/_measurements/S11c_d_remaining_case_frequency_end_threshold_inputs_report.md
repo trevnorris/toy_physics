@@ -25,3 +25,7 @@ Compile-only, whole-body reversal, opaque argument threading, actual accepted
 paths/source pins, native unit-frame producer and prohibited-call inspection
 passed without importing science. All old sources and artifacts are exact
 references; the mandatory guard and silent completion hook will be used.
+
+Launched from `5f3c9037`. The single initial inspection verified all mandatory
+limits and empty strict stderr. The silent local completion/error hook is
+active. Launch does not establish coefficient-input or scientific acceptance.

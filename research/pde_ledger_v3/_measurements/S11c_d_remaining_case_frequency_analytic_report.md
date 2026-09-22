@@ -189,3 +189,22 @@ with original live strings retained where available. It does not rebuild
 live expressions or certificates. The completed seed-loop/initial-atlas
 prefix is evidenced by the source and traceback; no independent checkpoint
 for it is invented. Final certificate-route and hash checks remain unfinished.
+
+The certificate-route diagnostic launched at 2026-09-22T01:12:00Z from
+848d6413 with verified mandatory containment and empty strict stderr. A silent
+local completion/error hook resumes the task. This is not analytic acceptance.
+
+The certificate diagnostic finished cleanly in 1.29 worker / 2.82 native
+seconds. All twenty native calls join their exact own comparison/mutation
+consumers. Eighteen acquire restored cache hits, but none equals the cached
+certificate in full: ENCODED_PAIR and REDUCED_PAIR remain distinct. It checked
+978 paths, peaked at 93,335,552 bytes, with zero cap/OOM/swap and minimum host
+availability 24.11 GB. No live lookup or mutation expression was reconstructed.
+
+A final saved-validation continuation is prepared. It restores all completed
+case/count/consumer locals and the completed seed/initial-atlas prefix, then
+finishes certificate-route accounting and the unchanged final audit. Native
+live decisions are joined to actual before/after packets, owners, consumers
+and whole producer bodies, without replaying them on restored cache keys.
+Whole original proof/main reverse AST checks and all reference addresses pass.
+Original operands, distinct certificates and raw live history remain intact.

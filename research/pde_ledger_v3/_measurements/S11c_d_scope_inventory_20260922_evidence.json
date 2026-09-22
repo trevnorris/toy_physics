@@ -1,17 +1,18 @@
 {
   "status": "DRAFT_SCOPE_INVENTORY_EVIDENCE_NOT_SCIENTIFIC_ACCEPTANCE",
-  "createdUtc": "2026-09-22T21:09:55.757874+00:00",
-  "head": "75086f8affe794f1b86061536d0f295468069b66",
+  "createdUtc": "2026-09-22T22:33:08.219370+00:00",
+  "head": "134d033dfee2bc80b24e1816a528fd0cb889d719",
   "scientificStateSnapshotCommit": "0d77af53561968d4593b49261589e2ee259eadbb",
-  "reviewedDraftPreservationCommit": "75086f8affe794f1b86061536d0f295468069b66",
+  "reviewedDraftPreservationCommit": "134d033dfee2bc80b24e1816a528fd0cb889d719",
   "round1ReviewRecord": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_scattering_form_review_round01.json",
   "round2ReviewRecord": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_scattering_form_review_round02.json",
+  "round3ReviewRecord": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_scattering_form_review_round03.json",
   "method": "Read-only source text, report and JSON metadata inspection. No scientific module import, unpickling, numerical/symbolic operation, production validator, review leg or export execution.",
   "coverage": "Selected scientific workstream evidence and governing/review records; not a line-by-line audit of every commit or an ancestral validation campaign.",
   "inventory": {
     "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_scope_inventory_20260922.md",
-    "bytes": 41933,
-    "sha256": "8ab162fb72ae6767c457a1e32d5d5e481f33ebf2ba27f179559f1ea7713fc36a"
+    "bytes": 47006,
+    "sha256": "fc57e088dce4bc4a7cc13ab58bd521e25830f8b77cd2a6ca89bb2f269bad2558"
   },
   "links": [
     {
@@ -223,6 +224,31 @@
       "label": "bulk-accounting",
       "path": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11b_SHARED_PHYSICS.md",
       "line": 452
+    },
+    {
+      "label": "rest-source",
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/steps/S11b_interface_coupling_law.md",
+      "line": 155
+    },
+    {
+      "label": "c1-validity",
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c1_SHARED_PHYSICS.md",
+      "line": 204
+    },
+    {
+      "label": "frequency-source",
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_frequency_source_report.md",
+      "line": null
+    },
+    {
+      "label": "lab-remainder",
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_remainder_rows_report.md",
+      "line": null
+    },
+    {
+      "label": "lab-remainder-cp",
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_remainder_rows_checkpoint.json",
+      "line": null
     }
   ],
   "selectedEvidence": [
@@ -292,6 +318,12 @@
       "resolvedPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_frequency_matrix_report.md",
       "bytes": 1887,
       "sha256": "0f52b0217f657a1d995f0ef32fcf8b7b1d5b3ed6b2578e3333d463aa56047777"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_frequency_source_report.md",
+      "resolvedPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_frequency_source_report.md",
+      "bytes": 2842,
+      "sha256": "46b91c1e159f6b467809c0119511b24bef270e4c960edf0755d2034fd93fa421"
     },
     {
       "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_nonlinear_pole_repair_report.md",
@@ -524,6 +556,12 @@
       }
     },
     {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_remainder_rows_report.md",
+      "resolvedPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_remainder_rows_report.md",
+      "bytes": 1994,
+      "sha256": "ccb103c0e8f0bfb0e39d94a84673606408aba6c681943048cadba196851ec95c"
+    },
+    {
       "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_scalar_bindings_checkpoint.json",
       "resolvedPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_scalar_bindings_checkpoint.json",
       "bytes": 251563,
@@ -663,6 +701,12 @@
       "sha256": "9ea9e388e9d6421a841eaf851d12e1793527bba9a24aeeface3bfac2f4b40078"
     },
     {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c1_SHARED_PHYSICS.md",
+      "resolvedPath": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c1_SHARED_PHYSICS.md",
+      "bytes": 50376,
+      "sha256": "47554c8c9cf2fd070c1048a7ae0ca36b1315bf50a48ed07a51019ff3e72987ad"
+    },
+    {
       "path": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_EXPLORATORY_ACCEPTANCE.md",
       "resolvedPath": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_EXPLORATORY_ACCEPTANCE.md",
       "bytes": 7083,
@@ -677,8 +721,8 @@
     {
       "path": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_SCATTERING_FORM_AMENDMENT.md",
       "resolvedPath": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_SCATTERING_FORM_AMENDMENT.md",
-      "bytes": 39625,
-      "sha256": "0f44a2a33cde185d1deb459addeb9c591746ebb6b7084db468c3aa24d23f15ef"
+      "bytes": 46245,
+      "sha256": "9fd35216d79a00d754de25b5ce10a7c0b600f2e7d1d53d988345b9332231b02c"
     },
     {
       "path": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_SHARED_PHYSICS.md",
@@ -733,6 +777,12 @@
       "resolvedPath": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_d_mixing_scattering_sympy_audit.py",
       "bytes": 545480,
       "sha256": "5bf77729682960bb59f10c672a5fe3f67a98b0a9533da7c6189a37183596050f"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/steps/S11b_interface_coupling_law.md",
+      "resolvedPath": "/var/projects/toy_physics/research/pde_ledger_v3/steps/S11b_interface_coupling_law.md",
+      "bytes": 15348,
+      "sha256": "b670035ea431ab8a74743a8d603735dad7e320824d00377664e4bb38e24d8608"
     }
   ],
   "directStateChecks": {
@@ -756,7 +806,7 @@
     "exploratoryAcceptanceChange": "User approved; separate two-leg clearance not established by inspected evidence.",
     "boundedLeanNP1toNP4": "CLEAR by Claude and Grok for identified packet; excludes physical application and analytic existence theory.",
     "savedResultValidators": "Do not count as two non-author physics-review legs.",
-    "thisInventory": "Draft3 after round2: one amendment CLEAR, one NEEDS REVISION, both inventories NEEDS REVISION. Not cleared or effective for production."
+    "thisInventory": "Draft4 after round3: one amendment CLEAR, one NEEDS REVISION, both inventories NEEDS REVISION. User requested Codex retain authorship; third substantive fold awaiting fresh Claude/Grok reviews. Not cleared or effective for production."
   },
   "costEstimateStatus": "Planning judgment, not measured end-to-end forecasts; worker benchmarks are separate and review/provider delay or findings are not bounded."
 }

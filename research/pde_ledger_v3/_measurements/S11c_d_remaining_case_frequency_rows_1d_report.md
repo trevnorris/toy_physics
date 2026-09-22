@@ -38,3 +38,15 @@ held. This is not a zero-cap-event run. The saved telemetry does not distinguish
 resident and file-cache causes. Preserve all evidence and review only saved
 results, with streaming reads and clean-page cache advice under the same guard.
 Do not rerun the numerical batch. Final scoped acceptance remains pending.
+
+Accepted a separate small two-row checkpoint after the saved review passed:
+99.015s guarded,10498 full point receipts,121821 consumed logical paths,
+zero new scientific calls. Review peak1081999360bytes, zero cap/OOM/swap
+events; all final exits0, empty strictstderr and checks/stdout byte identity.
+All consumed bytes/links remain unchanged. The producer's176 memory.max events
+remain explicit. This is scoped row acceptance, not scattering accuracy or a
+domain result. Full inventories are referenced rather than recursively copied.
+
+Checkpoint SHA 2907d7da91fb048b345e0c4e4aa238a182b90e021672f81ecb453f7cf1fac2d5. The next saved2D row46 includes an actual
+bounded profile Fourier integral with unit(1,0,0); no profile computation has
+yet been performed by this review. Continue a small measured numerical pilot.

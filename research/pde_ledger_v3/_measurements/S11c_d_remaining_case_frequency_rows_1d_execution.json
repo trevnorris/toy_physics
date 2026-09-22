@@ -1,5 +1,5 @@
 {
-  "status": "COMPLETED_WITH_MEMORY_CAP_CONTACTS_PENDING_SAVED_REVIEW",
+  "status": "ACCEPTED_BOUNDED_CASE_FREQUENCY_1D_ROWS",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/rows-1d",
   "stage": "frequency_rows_1d",
   "helperSha256": "45085deed3cb1bbec5bd0b9e5a573f2ce855b3a7cd4f8c54f9673f6e20886c90",
@@ -122,5 +122,27 @@
     "zeroCapEvents": false,
     "minimumHostAvailableBytes": 22616952832,
     "observation": "Hard2GiB containment held and all final exits0. memory.events.max reached176; no OOM/OOM-kill/swap or guard interruption. Do not label this zero-event execution. Existing telemetry does not separate resident and file-cache contributions; no cause is asserted. Scientific outputs remain unaccepted pending saved review; no rerun authorized."
+  },
+  "checkpoint": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_rows_1d_checkpoint.json",
+    "canonical": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_rows_1d_checkpoint.json",
+    "sha256": "2907d7da91fb048b345e0c4e4aa238a182b90e021672f81ecb453f7cf1fac2d5",
+    "bytes": 27920
+  },
+  "savedReviewGuard": {
+    "actualExits": [
+      0,
+      0,
+      0
+    ],
+    "workerWallSeconds": 97.51609418999578,
+    "nativeWallSeconds": 98.848143153009,
+    "guardWallSeconds": 99.0154617310036,
+    "emptyStrictStderr": true,
+    "checksStdoutIdentity": true,
+    "checksSha256": "3ee22c02b0abd5fdabad798a78a583b6839184adeaee4c6cd153ac43625a42cb",
+    "peakBytes": 1081999360,
+    "minimumHostAvailableBytes": 22381694976,
+    "zeroCapOOMSwap": true
   }
 }

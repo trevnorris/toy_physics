@@ -1,5 +1,5 @@
 {
-  "status": "LAUNCHED_GUARDED",
+  "status": "ACCEPTED_BOUNDED_CASE_FREQUENCY_1D_ROWS",
   "root": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/rows-1d-review",
   "helperSha256": "0583d464df9bdbad1cb09eea240c3b5cf7e685a397998dbd6e4a9641483c1391",
   "planSha256": "0303001f797fc56aae020c8eaf60d6250afe9e884c07d7b1369053d9a02ec2c7",
@@ -87,5 +87,27 @@
     "guardStderrBytes": 0,
     "outcomePresent": false,
     "oneInitialInspectionOnly": true
+  },
+  "checkpoint": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_rows_1d_checkpoint.json",
+    "canonical": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_rows_1d_checkpoint.json",
+    "sha256": "2907d7da91fb048b345e0c4e4aa238a182b90e021672f81ecb453f7cf1fac2d5",
+    "bytes": 27920
+  },
+  "savedReviewGuard": {
+    "actualExits": [
+      0,
+      0,
+      0
+    ],
+    "workerWallSeconds": 97.51609418999578,
+    "nativeWallSeconds": 98.848143153009,
+    "guardWallSeconds": 99.0154617310036,
+    "emptyStrictStderr": true,
+    "checksStdoutIdentity": true,
+    "checksSha256": "3ee22c02b0abd5fdabad798a78a583b6839184adeaee4c6cd153ac43625a42cb",
+    "peakBytes": 1081999360,
+    "minimumHostAvailableBytes": 22381694976,
+    "zeroCapOOMSwap": true
   }
 }

@@ -1,5 +1,5 @@
 {
-  "status": "LAUNCHED_CERTIFICATE_RECEIPT_VALIDATION_CONTINUATION",
+  "status": "PREPARED_PATH_READER_VALIDATION_CONTINUATION",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/analytic-sources",
   "stage": "frequency_analytic",
   "acceptedAnalyticInputsCommit": "a7a53fa8",
@@ -1189,6 +1189,68 @@
       "workerStderrBytes": 0,
       "guardStderrBytes": 0,
       "isAcceptance": false
+    },
+    "finalInspection": {
+      "supervisor": {
+        "stage": "validate",
+        "command": [
+          "/usr/bin/python",
+          "-u",
+          "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_analytic_certificate_finish.py"
+        ],
+        "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/analytic-acceptance-recovery-03/validate.stdout",
+        "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/analytic-acceptance-recovery-03/validate.stderr",
+        "startedUtc": "2026-09-22T01:20:24.388799+00:00",
+        "childPid": 996670,
+        "status": "failed",
+        "exitCode": 1,
+        "wallSeconds": 20.675051965998136,
+        "stderrBytes": 1183,
+        "finishedUtc": "2026-09-22T01:20:45.063929+00:00"
+      },
+      "guard": {
+        "exitCode": 1,
+        "wallSeconds": 20.864566025004024,
+        "unit": "s11c-guard-e95799b7ae22",
+        "stderrBytes": 0,
+        "limitsVerified": true,
+        "childOutcome": {
+          "exitCode": 1,
+          "guardReason": null,
+          "wallSeconds": 20.783924022995052,
+          "childPid": 996669
+        }
+      },
+      "peakBytes": 187232256,
+      "minimumHostAvailableBytes": 23836332032,
+      "events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0",
+      "swapPeak": 0,
+      "checksWritten": false,
+      "completedFiles": 983,
+      "failedReader": "v.packet(consumer['path'])",
+      "reason": "JSON string passed to Path-only f.unpickle; no scientific operation failed."
     }
+  },
+  "pathReaderValidationContinuation": {
+    "directory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/analytic-acceptance-recovery-04",
+    "helperSha256": "63c6cd638bcc836d2a7f0b6c6b803ed658fadbc6b2b1f9a0562ea07d344ae497",
+    "planSha256": "aedb68a367c87aa7f5d8e49c5ee29e25df897fc5a8e3e577e3099c0d75991d87",
+    "repairSha256": "f1abcb1c0e926b5286301d899e35050a9f4e3bd15a3e6f753aadf24b0f965546",
+    "readerJoin": {
+      "wholeFunctionReverseAST": true,
+      "pathFields": [
+        "path",
+        "operandPath"
+      ],
+      "originalAST": "7e9237a57c3023a491fa5139a8d303e2213bf0a1ac16610649544c434424e398",
+      "physicalOperandsOrGuardsChanged": false
+    },
+    "previousFiles": 983,
+    "actualConsumerPathRequests": 40,
+    "staticOnly": true,
+    "scientificImports": false,
+    "originalMainAndProofAdapterUnchanged": true,
+    "freshWorkspace": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/analytic-acceptance-recovery-04",
+    "isAcceptance": false
   }
 }

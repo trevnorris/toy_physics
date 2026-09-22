@@ -213,3 +213,16 @@ The final saved-validation continuation launched at 2026-09-22T01:20:24Z
 from f70a0696 with verified mandatory containment and empty strict stderr.
 Its silent local completion/error hook resumes the task. Launch is not
 analytic acceptance.
+
+The certificate continuation stopped after 20.68 native / 20.86 guard seconds
+when a JSON consumer path string reached a Path-only reader. Peak memory was
+187,232,256 bytes, with zero cap/OOM/swap and minimum host availability
+23.84 GB. Its 983 files, four completed metadata views and all earlier case
+validations remain immutable; final certificate guards are still unfinished.
+
+A fresh continuation wraps only the two actual consumer path arguments in
+Path under whole-function reverse AST identity. Forty actual saved addresses
+and hashes pass static review. Completed metadata writes require full typed
+and native serialized byte identity before reuse; all physical operands and
+final guards stay unchanged. No scientific work or completed case validation
+is repeated. Analytic acceptance still requires the final clean outcome.

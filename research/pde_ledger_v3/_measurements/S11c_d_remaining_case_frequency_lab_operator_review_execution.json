@@ -1,5 +1,5 @@
 {
-  "status": "LAUNCHED_AWAITING_FINAL_OUTCOME",
+  "status": "FAILED_SAVED_SVD_RETURN_CONTAINER_CHECK",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/lab-operator-review",
   "stage": "validate",
   "helperSha256": "6f37c1fe553132e17784857ec558c4ba863f5814fd8b88ed650da37ba0a1667b",
@@ -45,5 +45,39 @@
     "scope": "Bounded saved LAB response review only: actual native full inputs/results/receipts/units/cases; no numerical or symbolic recomputation.",
     "launchIsAcceptance": false
   },
-  "initialContainment": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/lab-operator-review/initial-containment-inspection.json"
+  "initialContainment": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/lab-operator-review/initial-containment-inspection.json",
+  "nativeOutcome": {
+    "stage": "validate",
+    "command": [
+      "/usr/bin/python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_lab_operator_review.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/lab-operator-review/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/lab-operator-review/validate.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/lab-operator-review/validate.stderr",
+    "startedUtc": "2026-09-22T16:16:55.336805+00:00",
+    "childPid": 1814271,
+    "status": "failed",
+    "exitCode": 1,
+    "wallSeconds": 20.188887558004353,
+    "stderrBytes": 810,
+    "finishedUtc": "2026-09-22T16:17:15.525734+00:00"
+  },
+  "guardOutcome": {
+    "exitCode": 1,
+    "wallSeconds": 20.342045840981882,
+    "unit": "s11c-guard-1c55ae77ef2b",
+    "stderrBytes": 0,
+    "limitsVerified": true,
+    "childOutcome": {
+      "exitCode": 1,
+      "guardReason": null,
+      "wallSeconds": 20.27397327302606,
+      "childPid": 1814270
+    }
+  },
+  "completedSummaries": 191,
+  "newScientificCalls": 0
 }

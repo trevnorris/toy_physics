@@ -1,0 +1,13 @@
+{
+  "status": "IMPLEMENTED_NOT_LAUNCHED",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/lab-operator-review-recovery-01",
+  "stage": "validate",
+  "helperSha256": "89b22a3f9f59eb4f1e490ef26d1094a7d71d22d312fff35f0185cc274cbe6858",
+  "planSha256": "b55104b2be95256fd4b2504273285585f3898d769d9165bef9400b0abce24869",
+  "originalReviewerSha256": "6f37c1fe553132e17784857ec558c4ba863f5814fd8b88ed650da37ba0a1667b",
+  "wholeReviewReverseAST": true,
+  "completedSummariesRetained": 191,
+  "stdlibNamedResultPositiveAndNegativeHarness": true,
+  "scientificImportsOrCalls": 0,
+  "physicalTupleCoercion": false
+}

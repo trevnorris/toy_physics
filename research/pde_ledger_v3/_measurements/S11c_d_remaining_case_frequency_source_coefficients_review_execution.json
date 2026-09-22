@@ -1,0 +1,14 @@
+{
+  "status": "PREPARED_BOUNDED_SAVED_REVIEW",
+  "root": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/source-coefficients-review",
+  "staticReview": {
+    "status": "PASSED_STDLIB_SAVED_WIRING_REVIEW",
+    "helperSha256": "bc3c8f58fe6d4a5f80df3c5b57be6af3de6ba18e288636b5d006212a8fa6c524",
+    "planSha256": "078f2c2d405eeb61703855aa554409e9bfb2945248160a2a5dac6db04418aec3",
+    "noScientificImportInStaticReview": true,
+    "noCoefficientOrNumericReconstructionCalls": true,
+    "rawUnitAndSourceTypesPreserved": true,
+    "nativeClassesRetainedForPickle": true
+  },
+  "launchIsAcceptance": false
+}

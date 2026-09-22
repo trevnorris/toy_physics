@@ -1,0 +1,20 @@
+{
+  "status": "IMPLEMENTED_NOT_LAUNCHED",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/material-sources",
+  "stage": "frequency_material_sources",
+  "helperSha256": "7a9b4804868c38992d8b5895a242a38f440b4dc1fe49483346d3c5036ddc4e2b",
+  "planSha256": "afdf7a59387e9bbcc56d68dafc57d78d4b550383c7e6a4ef3a99efe8cc59b566",
+  "syntax": true,
+  "actual13SourceViewSchemasRead": true,
+  "orders": [
+    0,
+    1,
+    2
+  ],
+  "wholeReviewedNumericalSourceBodiesEqual": true,
+  "fullInputCacheIncludesUnitsFieldContextAndRule": true,
+  "oldNativeBasisDerivativeCompilerCallSites": 0,
+  "scientificImportsDeserializationOrExecution": 0,
+  "linkedOldCoefficientReceiptsUseCanonicalHashSize": true,
+  "immutableCompletedValues": true
+}

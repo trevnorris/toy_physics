@@ -1,5 +1,5 @@
 {
-  "status": "GUARDED_MISSING_COORDINATE_IMAGES_LAUNCHED",
+  "status": "COMPLETED_COORDINATE_IMAGES_PENDING_SAVED_VALIDATION",
   "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-coordinates",
   "helper": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_end_coordinates.py",
   "staticReview": {
@@ -96,6 +96,105 @@
       "notifications": {}
     },
     "outcomeAtInitialInspection": null,
+    "launchIsAcceptance": false
+  },
+  "finalOutcome": {
+    "status": "COMPLETED_CASE_FREQUENCY_END_COORDINATE_IMAGES",
+    "checksSha256": "1e3f15b6110841cf344b54f1265f4838a959d3412ed0d3422b8485c9f0909faf",
+    "workerSeconds": 74.87082530499902,
+    "resourceGuard": {
+      "supervisor": {
+        "stage": "frequency_end_coordinates",
+        "command": [
+          "/usr/bin/python",
+          "-u",
+          "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_end_coordinates.py",
+          "--run-directory",
+          "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-coordinates/complete"
+        ],
+        "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-coordinates/frequency_end_coordinates.stdout",
+        "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-coordinates/frequency_end_coordinates.stderr",
+        "startedUtc": "2026-09-22T03:28:17.983434+00:00",
+        "childPid": 1047356,
+        "status": "completed",
+        "exitCode": 0,
+        "wallSeconds": 76.41799682599958,
+        "stderrBytes": 0,
+        "finishedUtc": "2026-09-22T03:29:34.401498+00:00"
+      },
+      "guard": {
+        "exitCode": 0,
+        "wallSeconds": 76.58378261799226,
+        "unit": "s11c-guard-6f7591baa25f",
+        "stderrBytes": 0,
+        "limitsVerified": true,
+        "childOutcome": {
+          "exitCode": 0,
+          "guardReason": null,
+          "wallSeconds": 76.50255216799269,
+          "childPid": 1047355
+        }
+      },
+      "limits": {
+        "memory.max": "2147483648",
+        "memory.swap.max": "0",
+        "pids.max": "32",
+        "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-6f7591baa25f.service",
+        "nice": 15,
+        "affinity": [
+          15
+        ],
+        "threads": {
+          "OPENBLAS_NUM_THREADS": "1",
+          "OMP_NUM_THREADS": "1",
+          "MKL_NUM_THREADS": "1",
+          "NUMEXPR_NUM_THREADS": "1",
+          "VECLIB_MAXIMUM_THREADS": "1",
+          "BLIS_NUM_THREADS": "1"
+        }
+      },
+      "memoryPeakBytes": 394551296,
+      "capReclaims": 0,
+      "minimumHostAvailableBytes": 23332753408,
+      "oomEvents": 0,
+      "swapBytes": 0
+    },
+    "checksStdoutByteIdentity": true,
+    "inventories": {
+      "sourceFiles": 194,
+      "inputPackets": 60797,
+      "artifacts": 7021,
+      "referencedInputs": 7165
+    },
+    "counts": {
+      "physicalEnds": 8,
+      "baselineSourceAliases": 6,
+      "newCoordinateOwners": 1,
+      "sharedNewCoordinateUses": 2,
+      "newCoordinateImages": 5,
+      "roundtripResidualScalars": 77,
+      "savedNativeMappingReused": true,
+      "actualMutationControls": 4,
+      "newDerivativeBindingAnalyticCurrentModeCalls": 0,
+      "frequencyEndOperatorOrDomainAccepted": false
+    }
+  },
+  "independentValidation": {
+    "status": "STATIC_REVIEWED_NOT_LAUNCHED",
+    "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-coordinate-acceptance",
+    "validator": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-coordinate-acceptance/validate.py",
+    "staticReview": {
+      "status": "STATIC_REVIEWED_SAVED_END_COORDINATE_VALIDATION",
+      "validatorSha256": "5e342819d5b9576bded5270da60215b4ff76b74e9a3fc838f7920914c6aac8f6",
+      "planSha256": "b529d5efed14b955674a9a5277aa75890ffdea6270edda9f78a53d4e9c9709da",
+      "producerChecksSha256": "1e3f15b6110841cf344b54f1265f4838a959d3412ed0d3422b8485c9f0909faf",
+      "producerHelperSha256": "27a40e1d3c6c9818823382660b62d06982f94bc98f122c84c86ab7aa621cf845",
+      "compileOnlyPassed": true,
+      "scientificImportsOrPacketDeserialization": false,
+      "forbiddenOperationASTScanPassed": true,
+      "actualRequestsAndPins": 442,
+      "allFiveOperationSlotsAndEightCaseRoutesExist": true
+    },
     "launchIsAcceptance": false
   }
 }

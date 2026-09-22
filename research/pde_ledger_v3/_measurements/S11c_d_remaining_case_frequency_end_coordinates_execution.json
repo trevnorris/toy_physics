@@ -1,5 +1,5 @@
 {
-  "status": "COMPLETED_COORDINATE_IMAGES_PENDING_SAVED_VALIDATION",
+  "status": "ACCEPTED_CASE_FREQUENCY_END_COORDINATE_IMAGES",
   "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-coordinates",
   "helper": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_end_coordinates.py",
   "staticReview": {
@@ -180,7 +180,7 @@
     }
   },
   "independentValidation": {
-    "status": "GUARDED_SAVED_VALIDATION_LAUNCHED",
+    "status": "VALIDATED_FINAL_CLEAN",
     "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-coordinate-acceptance",
     "validator": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-coordinate-acceptance/validate.py",
     "staticReview": {
@@ -265,6 +265,186 @@
       },
       "outcomeAtInitialInspection": null,
       "launchIsAcceptance": false
+    },
+    "checksSha256": "df23e477d4aa39579669c46cc1586b0be88613cb354d015a386c3078f39f7b0f",
+    "resourceGuard": {
+      "supervisor": {
+        "stage": "validate",
+        "command": [
+          "/usr/bin/python",
+          "-u",
+          "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-coordinate-acceptance/validate.py"
+        ],
+        "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-coordinate-acceptance/validate.stdout",
+        "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-coordinate-acceptance/validate.stderr",
+        "startedUtc": "2026-09-22T03:41:40.852398+00:00",
+        "childPid": 1051615,
+        "status": "completed",
+        "exitCode": 0,
+        "wallSeconds": 116.79675889600185,
+        "stderrBytes": 0,
+        "finishedUtc": "2026-09-22T03:43:37.649207+00:00"
+      },
+      "guard": {
+        "exitCode": 0,
+        "wallSeconds": 116.94672983700002,
+        "unit": "s11c-guard-2f61dc2d1f59",
+        "stderrBytes": 0,
+        "limitsVerified": true,
+        "childOutcome": {
+          "exitCode": 0,
+          "guardReason": null,
+          "wallSeconds": 116.86628083299729,
+          "childPid": 1051614
+        }
+      },
+      "limits": {
+        "memory.max": "2147483648",
+        "memory.swap.max": "0",
+        "pids.max": "32",
+        "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-2f61dc2d1f59.service",
+        "nice": 15,
+        "affinity": [
+          15
+        ],
+        "threads": {
+          "OPENBLAS_NUM_THREADS": "1",
+          "OMP_NUM_THREADS": "1",
+          "MKL_NUM_THREADS": "1",
+          "NUMEXPR_NUM_THREADS": "1",
+          "VECLIB_MAXIMUM_THREADS": "1",
+          "BLIS_NUM_THREADS": "1"
+        }
+      },
+      "memoryPeakBytes": 692752384,
+      "capReclaims": 0,
+      "minimumHostAvailableBytes": 23203921920,
+      "oomEvents": 0,
+      "swapBytes": 0
     }
+  },
+  "acceptance": {
+    "status": "ACCEPTED_CASE_FREQUENCY_END_COORDINATE_IMAGES",
+    "checkpoint": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_end_coordinates_checkpoint.json",
+    "checkpointSha256": "3a7811b4bf3584ea071f338aca105645d6e36786b2cfe0642bec41a10f743141",
+    "checkpointBytes": 22207111,
+    "producerChecksSha256": "1e3f15b6110841cf344b54f1265f4838a959d3412ed0d3422b8485c9f0909faf",
+    "validatorChecksSha256": "df23e477d4aa39579669c46cc1586b0be88613cb354d015a386c3078f39f7b0f",
+    "finalPathsVerified": 68284,
+    "productionGuard": {
+      "supervisor": {
+        "stage": "frequency_end_coordinates",
+        "command": [
+          "/usr/bin/python",
+          "-u",
+          "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_end_coordinates.py",
+          "--run-directory",
+          "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-coordinates/complete"
+        ],
+        "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-coordinates/frequency_end_coordinates.stdout",
+        "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-coordinates/frequency_end_coordinates.stderr",
+        "startedUtc": "2026-09-22T03:28:17.983434+00:00",
+        "childPid": 1047356,
+        "status": "completed",
+        "exitCode": 0,
+        "wallSeconds": 76.41799682599958,
+        "stderrBytes": 0,
+        "finishedUtc": "2026-09-22T03:29:34.401498+00:00"
+      },
+      "guard": {
+        "exitCode": 0,
+        "wallSeconds": 76.58378261799226,
+        "unit": "s11c-guard-6f7591baa25f",
+        "stderrBytes": 0,
+        "limitsVerified": true,
+        "childOutcome": {
+          "exitCode": 0,
+          "guardReason": null,
+          "wallSeconds": 76.50255216799269,
+          "childPid": 1047355
+        }
+      },
+      "limits": {
+        "memory.max": "2147483648",
+        "memory.swap.max": "0",
+        "pids.max": "32",
+        "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-6f7591baa25f.service",
+        "nice": 15,
+        "affinity": [
+          15
+        ],
+        "threads": {
+          "OPENBLAS_NUM_THREADS": "1",
+          "OMP_NUM_THREADS": "1",
+          "MKL_NUM_THREADS": "1",
+          "NUMEXPR_NUM_THREADS": "1",
+          "VECLIB_MAXIMUM_THREADS": "1",
+          "BLIS_NUM_THREADS": "1"
+        }
+      },
+      "memoryPeakBytes": 394551296,
+      "capReclaims": 0,
+      "minimumHostAvailableBytes": 23332753408,
+      "oomEvents": 0,
+      "swapBytes": 0
+    },
+    "validatorGuard": {
+      "supervisor": {
+        "stage": "validate",
+        "command": [
+          "/usr/bin/python",
+          "-u",
+          "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-coordinate-acceptance/validate.py"
+        ],
+        "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-coordinate-acceptance/validate.stdout",
+        "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-coordinate-acceptance/validate.stderr",
+        "startedUtc": "2026-09-22T03:41:40.852398+00:00",
+        "childPid": 1051615,
+        "status": "completed",
+        "exitCode": 0,
+        "wallSeconds": 116.79675889600185,
+        "stderrBytes": 0,
+        "finishedUtc": "2026-09-22T03:43:37.649207+00:00"
+      },
+      "guard": {
+        "exitCode": 0,
+        "wallSeconds": 116.94672983700002,
+        "unit": "s11c-guard-2f61dc2d1f59",
+        "stderrBytes": 0,
+        "limitsVerified": true,
+        "childOutcome": {
+          "exitCode": 0,
+          "guardReason": null,
+          "wallSeconds": 116.86628083299729,
+          "childPid": 1051614
+        }
+      },
+      "limits": {
+        "memory.max": "2147483648",
+        "memory.swap.max": "0",
+        "pids.max": "32",
+        "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-2f61dc2d1f59.service",
+        "nice": 15,
+        "affinity": [
+          15
+        ],
+        "threads": {
+          "OPENBLAS_NUM_THREADS": "1",
+          "OMP_NUM_THREADS": "1",
+          "MKL_NUM_THREADS": "1",
+          "NUMEXPR_NUM_THREADS": "1",
+          "VECLIB_MAXIMUM_THREADS": "1",
+          "BLIS_NUM_THREADS": "1"
+        }
+      },
+      "memoryPeakBytes": 692752384,
+      "capReclaims": 0,
+      "minimumHostAvailableBytes": 23203921920,
+      "oomEvents": 0,
+      "swapBytes": 0
+    },
+    "fullOriginalInventoriesPreserved": true,
+    "coordinateOperationCallerAndUnitEvidencePreserved": true,
+    "frequencyOperatorOrNumericalReuseAccepted": false
   }
 }

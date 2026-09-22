@@ -41,3 +41,7 @@ summaries before final checks and retains complete pre/post hash evidence.
 Saved-only validation launched from `fc272ab8`. The single initial inspection
 verified the mandatory limits and empty strict stderr. The local hook will
 wake the session on completion or an issue; validation is not yet accepted.
+
+The five coordinate images are accepted after independent saved validation in 115.47 worker / 116.80 native / 116.95 guard seconds. All actual exits are zero, strict stderr is empty, and checks/stdout are byte-identical. All 68,284 paths pass final identity; peak memory was 692,752,384 bytes, with zero cap/OOM/swap and 23.20 GB minimum host availability. All eight source routes, five full reverse/source identities, 77 zero residuals, the 23-atom saved mapping return and four actual controls passed without repeating a coordinate transform or scientific operation.
+
+The separate checkpoint retains full producer inventories and operation/caller/unit evidence plus independent validation and both resource guards. Own live-frequency binding, thresholds, rational tables, outgoing-end domains and whole-cluster continuation remain. This checkpoint accepts coordinate images only.

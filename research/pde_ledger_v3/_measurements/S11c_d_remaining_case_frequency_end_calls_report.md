@@ -57,3 +57,8 @@ proofs and native caller bodies; it performs no normalization, coordinate
 substitution or new science. Source equivalence and full frequency-end reuse
 remain separate decisions. Per-end and per-case summaries precede later
 checks, and all final process and hash receipts are required.
+
+Independent saved validation launched from `c62762a2`. The single initial
+inspection confirmed the required containment and empty strict stderr. The
+local hook will wake this session on completion or error; no model polling
+is scheduled. Launch does not establish acceptance.

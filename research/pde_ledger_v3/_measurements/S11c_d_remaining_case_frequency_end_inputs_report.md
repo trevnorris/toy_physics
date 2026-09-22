@@ -28,3 +28,8 @@ saved validation and separate end-input acceptance. Source-input candidate
 counts do not establish numerical reuse. Actual end-domain continuation,
 own frequency pencils, scoped searches and final all-case engine/exports
 remain pending under the approved settings and limitations.
+
+The reviewed summary continuation launched at 2026-09-22T02:13:15Z from
+2b77441e. Initial containment verified 2 GiB, zero swap, one CPU, nice 15,
+32 tasks and one native thread, with empty strict stderr and silent hook
+armed. Launch does not establish acceptance.

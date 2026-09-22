@@ -1,0 +1,17 @@
+{
+  "status": "PREPARED_NOT_LAUNCHED",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-47",
+  "stage": "frequency_row_47",
+  "helperSha256": "fc4a90c73245caaa5c55d78d2dd059c9e73a234a8fddbcbeab25f1eaee399b74",
+  "planSha256": "aef629cea49a44cb3907487e10eecf16021b169c6993917b00a289e57e902b08",
+  "accepted2DCheckpointSha256": "a4e1a9cc50f126a40730dac2d5f8886ad527f8d5b667be5ee3be83ccd8706229",
+  "limits": {
+    "seconds": 900,
+    "memoryBytes": 2147483648,
+    "swapBytes": 0,
+    "cpu": 1,
+    "nice": 15,
+    "pids": 32,
+    "nativeThreads": 1
+  }
+}

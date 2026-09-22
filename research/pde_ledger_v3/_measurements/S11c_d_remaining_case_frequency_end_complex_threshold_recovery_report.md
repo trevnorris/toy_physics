@@ -15,3 +15,8 @@ an old independent receipt. Original main, router, native science and all later
 guards remain unchanged. Original journals are references; new operations start
 after the completed first call. The missing analysis remains independently
 unaccepted until construction and saved validation both finish cleanly.
+
+The explicit saved continuation launched from `e042eb6e`. Its one initial
+containment inspection verified900s/2GiB/zero swap/oneCPU/nice15/32tasks/
+nativeThreads1 and empty strict stderr. The silent local completion/error
+hook handles waiting. No launch or early output establishes acceptance.

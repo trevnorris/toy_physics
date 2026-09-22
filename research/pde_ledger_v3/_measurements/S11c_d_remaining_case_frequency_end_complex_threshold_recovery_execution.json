@@ -1,5 +1,5 @@
 {
-  "status": "STATIC_REVIEWED_NOT_LAUNCHED",
+  "status": "GUARDED_SAVED_COMPLEX_CONTINUATION_RUNNING",
   "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-complex-threshold-recovery-01",
   "helper": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_end_complex_threshold_recover.py",
   "staticReview": {
@@ -147,5 +147,65 @@
     "tasks": 32,
     "nativeThreads": 1
   },
-  "launchIsAcceptance": false
+  "launchIsAcceptance": false,
+  "launch": {
+    "launchedUtc": "2026-09-22T06:53:56.554280+00:00",
+    "guardPid": 1119650,
+    "watcherPid": 1119651,
+    "command": [
+      "/usr/bin/python",
+      "/var/projects/toy_physics/scripts/s11c_guarded_run.py",
+      "--log-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-complex-threshold-recovery-01/resource-guard",
+      "--seconds",
+      "900",
+      "--",
+      "/usr/bin/python",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-complex-threshold-recovery-01",
+      "--stage",
+      "frequency_end_complex_threshold_recover",
+      "--",
+      "/usr/bin/python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_end_complex_threshold_recover.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-complex-threshold-recovery-01/complete"
+    ],
+    "helperSha256": "73b607c13ef0539f5fcca678ec475f0935ed88595036308dd622acf208edc2f0",
+    "guardSha256": "6492f5ab11dc2ab2f80bbfcc96d7eb6b8632afea07100dd8f74a7954f3ffe542",
+    "implementationCommit": "e042eb6e3ce87746d0663bcfc4486d86593ac0ff",
+    "staticReviewSha256": "7434a61a2c01d2e10f682111f217730712f92e748121f7120fb9102b8c076e2d",
+    "newScientificConstruction": "Explicit saved complex-analysis continuation after metadata-parent fault; restore completed initial Poly/cache/nonzero prefix, fix only fresh checked JSON parents, original remaining complex analysis and guards unchanged",
+    "launchIsAcceptance": false
+  },
+  "initialContainmentInspection": {
+    "status": "INITIAL_CONTAINMENT_VERIFIED",
+    "limits": {
+      "memory.max": "2147483648",
+      "memory.swap.max": "0",
+      "pids.max": "32",
+      "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-7ed1cf2f7cd5.service",
+      "nice": 15,
+      "affinity": [
+        15
+      ],
+      "threads": {
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "VECLIB_MAXIMUM_THREADS": "1",
+        "BLIS_NUM_THREADS": "1"
+      }
+    },
+    "limitValidationSha256": "e4e0573e9a347a0bbc3dc437d9944fb0f73228fcca35d2ad03c80fabb553e5e8",
+    "observedStage": "frequency_end_complex_threshold_recover",
+    "observedChildPid": 1119657,
+    "observedStatus": "running",
+    "observedStrictStderrBytes": 0,
+    "oneInitialCheckOnly": true,
+    "launchIsAcceptance": false
+  }
 }

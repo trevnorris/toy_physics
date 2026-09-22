@@ -94,3 +94,5 @@ research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_end_binding
 research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_end_threshold_inputs_checkpoint.json -diff
 
 research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_end_rational_checkpoint.json -diff
+
+research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_end_determinant_checkpoint.json -diff

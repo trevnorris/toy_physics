@@ -37,3 +37,7 @@ determinant/product/quotient/cancellation and threshold operations remain
 disabled. Full source/input/reference hashes bracket all saved checks.
 
 Independent saved validation launched from `59892513`. Its single initial containment check verified all mandatory limits and empty strict stderr. The local completion/error hook handles waiting; no early file or launch establishes determinant acceptance.
+
+The native end determinant is accepted after independent saved validation in 151.51 worker / 152.91 native / 153.11 guard seconds. All actual exits are zero, strict stderr is empty, and checks/stdout are byte-identical. All 99,998 paths pass final identity; peak memory was 957,931,520 bytes, with zero cap/OOM/swap and 23.34 GB minimum host availability. Four new and one reused complete row, all 69 operation receipts, the full new determinant tail, eight physical source routes and four actual controls passed without repeating science. The actual resultant input remains unmatched; all three branch calls match existing full returns. Live cache decisions and raw typed operands remain separate from metadata JSON views.
+
+The separate checkpoint retains full producer inventories, actual native caller/unit/operation evidence and independent validation with both resource guards. The missing resultant, accepted complex threshold pipeline, outgoing-end domains and whole-cluster continuation remain. This checkpoint does not accept numerical reuse.

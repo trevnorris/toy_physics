@@ -22,3 +22,7 @@ OOM/swap; the saved review had zero cap/OOM/swap events. This new job retains
 the same900s/2GiB/zero-swap/one-CPU/nice15/pids32/nativeThreads1 limits and uses
 compact packets plus clean-page advice. No claim is made about the old cap
 contacts' cause. All older results and failed histories stay immutable.
+
+Completed both grids before the first containment inspection: 7.956704819007427s guarded, actualguard/supervisor/child0, empty strict stderr, checks/stdout byteidentity. Peak548794368 bytes; zero cap/OOM/swap events. Producer checks SHA5c7b7e222e5b4c5863050dfef9a6621858c52516d6a48cd38a627c91fc0b31b5.
+
+The full row norm is0.00029680840630422054;512/1024-panel absolute spread1.780666487574767e-6 (0.599938% of row norm). The finite-profile selected comparison is2.6496520577636443e-14. Each complete grid took about1.5s.842 new Fourier calls and183 exact accepted saved returns supplied1025 frequencies; no source action/basis/compiler/end map repeated. All native-source/field-unit/full-row joins and focused controls passed. These are row-level fixed-setting observations, not scattering error bounds. Await bounded saved review before acceptance.

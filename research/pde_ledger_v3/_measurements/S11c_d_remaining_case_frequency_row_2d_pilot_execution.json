@@ -1,5 +1,5 @@
 {
-  "status": "PREPARED_NOT_LAUNCHED",
+  "status": "COMPLETED_PENDING_BOUNDED_SAVED_REVIEW",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-2d-pilot",
   "stage": "frequency_row_2d_pilot",
   "helperSha256": "bd0328d418ed191e882d2817f2a10b926bab0ea74707de365e2eeeccd9585b47",
@@ -18,5 +18,218 @@
     "pids": 32,
     "nativeThreads": 1
   },
-  "noAcceptanceBeforeFinalOutcomeAndSavedReview": true
+  "noAcceptanceBeforeFinalOutcomeAndSavedReview": true,
+  "launch": {
+    "launchedUtc": "2026-09-22T14:03:37.513094+00:00",
+    "guardPid": 1759178,
+    "watcherPid": 1759179,
+    "stage": "frequency_row_2d_pilot",
+    "command": [
+      "/usr/bin/python",
+      "/var/projects/toy_physics/scripts/s11c_guarded_run.py",
+      "--log-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-2d-pilot/resource-guard",
+      "--seconds",
+      "900",
+      "--",
+      "/usr/bin/python",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-2d-pilot",
+      "--stage",
+      "frequency_row_2d_pilot",
+      "--",
+      "/usr/bin/python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_row_2d_pilot.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-2d-pilot/complete"
+    ],
+    "helperSha256": "bd0328d418ed191e882d2817f2a10b926bab0ea74707de365e2eeeccd9585b47",
+    "planSha256": "236f5738c0229880643737a32dad836b9b841eb90a5913648e60e1a5433e290e",
+    "staticReviewSha256": "82be109840ffe32a5b2d149a4a46c6d3f703cc46f444a6479ff2d3d701f53d34",
+    "guardSha256": "6492f5ab11dc2ab2f80bbfcc96d7eb6b8632afea07100dd8f74a7954f3ffe542",
+    "implementationCommit": "79354a187b3bab57fb8a74664a79d08acd639422",
+    "scope": "One missing own2D row46 at1-0.01i; literal coefficient factors, finite profile and compact two-grid contraction, exact saved source/Fourier reuse. No old compiler/basis/source/rule/end/science replay.",
+    "launchIsAcceptance": false
+  },
+  "outcome": {
+    "actualExits": [
+      0,
+      0,
+      0
+    ],
+    "workerWallSeconds": 6.464080662990455,
+    "nativeWallSeconds": 7.784705843005213,
+    "guardWallSeconds": 7.956704819007427,
+    "emptyStrictStderr": true,
+    "checksStdoutIdentity": true,
+    "checksSha256": "5c7b7e222e5b4c5863050dfef9a6621858c52516d6a48cd38a627c91fc0b31b5",
+    "peakBytes": 548794368,
+    "minimumHostAvailableBytes": 22828093440,
+    "zeroCapOOMSwap": true,
+    "evidence": {
+      "active.json": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-2d-pilot/active.json",
+        "canonical": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-2d-pilot/active.json",
+        "sha256": "6f2f6b388448ad26b8bde770bec54758aaeed846ae6616bf0e4aa8f32cdb92e9",
+        "bytes": 841
+      },
+      "frequency_row_2d_pilot.invocation.json": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-2d-pilot/frequency_row_2d_pilot.invocation.json",
+        "canonical": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-2d-pilot/frequency_row_2d_pilot.invocation.json",
+        "sha256": "6f2f6b388448ad26b8bde770bec54758aaeed846ae6616bf0e4aa8f32cdb92e9",
+        "bytes": 841
+      },
+      "frequency_row_2d_pilot.stdout": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-2d-pilot/frequency_row_2d_pilot.stdout",
+        "canonical": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-2d-pilot/frequency_row_2d_pilot.stdout",
+        "sha256": "5c7b7e222e5b4c5863050dfef9a6621858c52516d6a48cd38a627c91fc0b31b5",
+        "bytes": 860961
+      },
+      "frequency_row_2d_pilot.stderr": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-2d-pilot/frequency_row_2d_pilot.stderr",
+        "canonical": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-2d-pilot/frequency_row_2d_pilot.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "guard.stdout": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-2d-pilot/guard.stdout",
+        "canonical": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-2d-pilot/guard.stdout",
+        "sha256": "c493e5cf744bb43e246d9488101813ccb5d00563420c5b6095417319d9cc567a",
+        "bytes": 270
+      },
+      "guard.stderr": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-2d-pilot/guard.stderr",
+        "canonical": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-2d-pilot/guard.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "resource-guard/outcome.json": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-2d-pilot/resource-guard/outcome.json",
+        "canonical": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-2d-pilot/resource-guard/outcome.json",
+        "sha256": "c493e5cf744bb43e246d9488101813ccb5d00563420c5b6095417319d9cc567a",
+        "bytes": 270
+      },
+      "resource-guard/child-outcome.json": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-2d-pilot/resource-guard/child-outcome.json",
+        "canonical": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-2d-pilot/resource-guard/child-outcome.json",
+        "sha256": "10db604eefeff62ba22006af53bef6e76bde1b68a15cf320ff99f0f8a5e5c944",
+        "bytes": 102
+      },
+      "resource-guard/effective-limits.json": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-2d-pilot/resource-guard/effective-limits.json",
+        "canonical": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-2d-pilot/resource-guard/effective-limits.json",
+        "sha256": "398f20b1b3ddb0c1c2a367eb91a7f00cc630ed38c367dfcf41e94329b5622b38",
+        "bytes": 441
+      },
+      "resource-guard/limit-validation.json": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-2d-pilot/resource-guard/limit-validation.json",
+        "canonical": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-2d-pilot/resource-guard/limit-validation.json",
+        "sha256": "b249794706a9a8fb4ca3ba9061edec87d26298182bf5e39953e88b881560d86f",
+        "bytes": 511
+      },
+      "resource-guard/resource-samples.jsonl": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-2d-pilot/resource-guard/resource-samples.jsonl",
+        "canonical": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-2d-pilot/resource-guard/resource-samples.jsonl",
+        "sha256": "9f86db676ee07fae558f4a9ef0b30525831723c43f1dd0a211304bee51a255e9",
+        "bytes": 1993
+      },
+      "resource-guard/stderr": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-2d-pilot/resource-guard/stderr",
+        "canonical": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-2d-pilot/resource-guard/stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "launch.json": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-2d-pilot/launch.json",
+        "canonical": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-2d-pilot/launch.json",
+        "sha256": "ed173115e3ebf274c86f7ea2295c00b2dd077f32609ffca75e95efeb2e4940d6",
+        "bytes": 1661
+      },
+      "static-review.json": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-2d-pilot/static-review.json",
+        "canonical": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-2d-pilot/static-review.json",
+        "sha256": "82be109840ffe32a5b2d149a4a46c6d3f703cc46f444a6479ff2d3d701f53d34",
+        "bytes": 1253
+      },
+      "initial-containment-inspection.json": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-2d-pilot/initial-containment-inspection.json",
+        "canonical": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-2d-pilot/initial-containment-inspection.json",
+        "sha256": "352573eabc2d6f48f72ba45f6e90eb14fad5d01e3c98ed885217d7a36aba2173",
+        "bytes": 620
+      }
+    }
+  },
+  "numericalSummary": {
+    "status": "COMPLETED_BOUNDED_2D_ROW_PILOT",
+    "case": "LAB_HELD__RHOBR_CONSTANT",
+    "rowIndex": 46,
+    "sourceIndex": 20,
+    "rows": [
+      {
+        "panels": 512,
+        "rowInput": {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-2d-pilot/complete/row-input.pickle",
+          "sha256": "1d86d504da65a9e5d1010906d175d61f68f5b33fb093a4b8736bdd3a802094fb",
+          "bytes": 89292
+        },
+        "grid": {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-2d-pilot/complete/momentum-grids/512/rule/value.pickle",
+          "sha256": "8e50c077dcd02c0487143ebf1f5b84767485028c552559bf8c47ac42d6bb79ca",
+          "bytes": 8383
+        },
+        "rowReturn": {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-2d-pilot/complete/momentum-grids/512/row-value.pickle",
+          "sha256": "43bc6fce0daea098aa2e87a9f3305870dae12942aa7e71258b70ad6856a5047b",
+          "bytes": 266394
+        },
+        "wallSeconds": 1.5093248880002648,
+        "rowMaxNorm": 0.00029570616230174655,
+        "newFourierCallsCumulative": 330,
+        "profileBatchesCumulative": 18
+      },
+      {
+        "panels": 1024,
+        "rowInput": {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-2d-pilot/complete/row-input.pickle",
+          "sha256": "1d86d504da65a9e5d1010906d175d61f68f5b33fb093a4b8736bdd3a802094fb",
+          "bytes": 89292
+        },
+        "grid": {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-2d-pilot/complete/momentum-grids/1024/rule/value.pickle",
+          "sha256": "a663ef436f773705d20b8576d6ac25390ac456798cfbb51946cab4387ba4a105",
+          "bytes": 16575
+        },
+        "rowReturn": {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-2d-pilot/complete/momentum-grids/1024/row-value.pickle",
+          "sha256": "b912dcde08ac7fa9060438304c9d07141b3ac449f83b02875bcb3d0f152f01f0",
+          "bytes": 266394
+        },
+        "wallSeconds": 1.5236331930063898,
+        "rowMaxNorm": 0.00029680840630422054,
+        "newFourierCallsCumulative": 842,
+        "profileBatchesCumulative": 34
+      }
+    ],
+    "comparison": {
+      "rowMaxNorm": 0.00029680840630422054,
+      "absoluteDifference": 1.780666487574767e-06,
+      "relativeDifference": 0.005999380239081343,
+      "pilotTargetMet": true,
+      "targetAbsolute": 0.0001,
+      "targetRelative": 0.01,
+      "scope": "Fixed finite-setting row refinement, not scattering/source-rule error bound. No automatic extension if unresolved."
+    },
+    "profileComparisonAbsolute": 2.6496520577636443e-14,
+    "newSourceActions": 0,
+    "newNativeBasisCompilerRuleEndMapCalls": 0,
+    "newSourceFourierCalls": 842,
+    "acceptedSavedFourierCalls": 183,
+    "uniqueProfileCalls": 2056,
+    "profileBatches": 34,
+    "allConsumedHashesUnchanged": true,
+    "wallSeconds": 6.464080662990455,
+    "scope": "One practical analog toy-model finite2D row pilot. New explicit alternative grid, not native16/4/4/profile512 rule completion. No scattering error bound, tiny-effect, pole or domain result; no automatic grid extension."
+  }
 }

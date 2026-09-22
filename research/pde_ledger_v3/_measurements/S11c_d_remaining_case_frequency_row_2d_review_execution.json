@@ -1,0 +1,21 @@
+{
+  "status": "PREPARED_NOT_LAUNCHED",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-2d-review",
+  "stage": "validate",
+  "helperSha256": "e13795f274442b21adcb900ce483c45cf8ce2291fd3f30aa8baa59cb87fbfcde",
+  "planSha256": "61c6ee2238737e373bc27aac06ccee962b4836ceeaa9305399f43066057571a0",
+  "producerChecksSha256": "5c7b7e222e5b4c5863050dfef9a6621858c52516d6a48cd38a627c91fc0b31b5",
+  "producerInspection": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-2d-pilot/completion-inspection.json",
+    "sha256": "510240c28aa9df0ab773485e1ff80803f1d8c14c4688e5313d2acbf206a0eefc"
+  },
+  "mandatoryLimits": {
+    "seconds": 900,
+    "memoryBytes": 2147483648,
+    "swapBytes": 0,
+    "cpu": 1,
+    "nice": 15,
+    "pids": 32,
+    "nativeThreads": 1
+  }
+}

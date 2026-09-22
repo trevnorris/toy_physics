@@ -1,0 +1,19 @@
+{
+  "status": "IMPLEMENTED_NOT_LAUNCHED",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/material-rows-1d-review",
+  "stage": "validate",
+  "helperSha256": "a99f0cea096b29ca33b963b7d6c91d819093b441268fe68060aa7f1fe8aa347d",
+  "planSha256": "648710415b4102a08c9647e6007e456a1625e469efcfe548b6baa47ff280f366",
+  "syntax": true,
+  "all14ActualResultAndReceiptSchemasRead": true,
+  "actualReceiptDispositions": {
+    "NEW": 10,
+    "REUSED_ACCEPTED_MERGED_GRID": 6,
+    "REUSED_ACCEPTED": 4,
+    "REUSED_COMPLETED_NEW": 24
+  },
+  "new10Reuse34MetadataCount": true,
+  "nativeSourceAndAcceptedMergeSchemasRead": true,
+  "scientificImportsDeserializationOrExecution": 0,
+  "oldScientificFunctionCallSites": 0
+}

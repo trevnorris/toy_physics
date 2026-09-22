@@ -18,3 +18,5 @@ import or numerical calculation occurred before launch. Await final guard
 outcome and bounded saved inspection before acceptance.
 
 Launched with one guarded worker and silent local completion/error hook. Initial inspection verified2GiBmemory/zeroSwap/oneCPU/nice15/pids32/nativeThreads1. Actual state completed; strictstderr0bytes at inspection. Final outcomes, all row manifests and saved result checks remain required; launch is not acceptance.
+
+Final producer completed19.569worker20.781native20.881guard seconds,actualall0/emptystrictstderr/checksstdout identity;peak649949184bytes,zero cap/OOM/swap. Actual2new coefficient batches/12savedgriduses,4newFourier/10saved,4newweighted/12saved,16full row contractions. Selected row11/25 absolute spreads1.4084205717475185e-8/3.5153466792797204e-9; all fullrows are finite. Bounded saved reuse review is prepared, with no arithmetic replay. Acceptance remains pending its final outcome.

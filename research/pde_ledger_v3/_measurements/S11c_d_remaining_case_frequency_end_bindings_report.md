@@ -40,3 +40,7 @@ recomputed. Per-operation and case summaries precede final hash guards.
 Saved-only validation launched from `cc4ad6d0`. The single initial inspection
 verified all mandatory limits and empty strict stderr. The silent local
 completion/error hook handles waiting; validation is not yet accepted.
+
+The native live-frequency end bindings are accepted after independent saved validation in 115.09 worker / 116.41 native / 116.61 guard seconds. All actual exits are zero, strict stderr is empty, and checks/stdout are byte-identical. All 75,628 paths pass final identity; peak memory was 668,004,352 bytes, with zero cap/OOM/swap and 23.38 GB minimum host availability. All eight source routes, five new binding chains, one reused wave binding, eleven actual scalar normalization receipts, 25 zero own-seed residuals, saved wave/tangent/native guards and four actual controls passed without repeating binding, coordinate conversion, differentiation, cancellation or other science.
+
+The separate checkpoint retains full producer inventories and operation/caller/unit evidence plus independent validation and both resource guards. Thresholds, rational tables, outgoing-end domains and whole-cluster continuation remain. This checkpoint accepts the native binding prefix only.

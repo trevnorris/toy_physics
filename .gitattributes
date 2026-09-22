@@ -88,3 +88,5 @@ research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_end_inputs_
 research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_end_calls_checkpoint.json -diff
 
 research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_end_coordinates_checkpoint.json -diff
+
+research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_end_bindings_checkpoint.json -diff

@@ -1,0 +1,24 @@
+{
+  "status": "PREPARED_MISSING_SOURCE_COEFFICIENTS",
+  "root": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/source-coefficients",
+  "staticReview": {
+    "status": "PASSED_STDLIB_STRUCTURAL_PROJECTION_REVIEW",
+    "helperSha256": "4de3ca63d765bb97bb7e3e87d33464d5df3f1cdb37d0bba5a808cf273495be05",
+    "planSha256": "947ef6c450546b59383acd8e4fdfded71867c4f53042c85afec504e0aa99c4cd",
+    "opaqueNestedCoefficientResult": [
+      10,
+      -15,
+      5
+    ],
+    "rejected": {
+      "nonlinear-product": true,
+      "affine-source": true,
+      "unsupported-dependent-node": true
+    },
+    "derivativeUnitCacheIsolation": true,
+    "noScientificImportOrExecution": true,
+    "noForbiddenCASCalls": true,
+    "existingNativeSourceJetsBodyUnchanged": true
+  },
+  "launchIsAcceptance": false
+}

@@ -208,3 +208,8 @@ live decisions are joined to actual before/after packets, owners, consumers
 and whole producer bodies, without replaying them on restored cache keys.
 Whole original proof/main reverse AST checks and all reference addresses pass.
 Original operands, distinct certificates and raw live history remain intact.
+
+The final saved-validation continuation launched at 2026-09-22T01:20:24Z
+from f70a0696 with verified mandatory containment and empty strict stderr.
+Its silent local completion/error hook resumes the task. Launch is not
+analytic acceptance.

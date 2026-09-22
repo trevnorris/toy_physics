@@ -1,0 +1,29 @@
+{
+  "status": "STATIC_REVIEWED_NOT_LAUNCHED",
+  "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-coordinates",
+  "helper": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_end_coordinates.py",
+  "staticReview": {
+    "status": "STATIC_REVIEWED_MISSING_END_COORDINATE_IMAGES",
+    "helperSha256": "27a40e1d3c6c9818823382660b62d06982f94bc98f122c84c86ab7aa621cf845",
+    "planSha256": "9308f9511af7d52d89556d920ef0a699406a9f7c285f5c8dedfc70c7b66f925f",
+    "acceptedCheckpointSha256": "5b2b392b0d7d4637aef02f7f604f85a7d1af31cb2f4df1f06a1472c99bb9a869",
+    "sourceRequests": 7117,
+    "compileOnlyPassed": true,
+    "scientificImportsOrPickleDeserialization": false,
+    "forbiddenNativeCallASTScanPassed": true,
+    "wholeNativeForwardCoordinateCallsitesPassed": true,
+    "savedMappingPacketSchemaPassed": true,
+    "exactSourcePinsAgree": true,
+    "newOperations": "Five coordinate images of one distinct saved family; baseline operands untouched; zero new analytic/binding/diff/current/mode calls."
+  },
+  "guard": {
+    "wallSeconds": 900,
+    "memoryBytes": 2147483648,
+    "swapBytes": 0,
+    "cpuCount": 1,
+    "nice": 15,
+    "tasks": 32,
+    "nativeThreads": 1
+  },
+  "launchIsAcceptance": false
+}

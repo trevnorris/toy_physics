@@ -1,5 +1,5 @@
 {
-  "status": "PREPARED_BOUNDED_SAVED_ROW_REVIEW",
+  "status": "GUARDED_SAVED_ROW_REVIEW_LAUNCHED",
   "root": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-pilot-review",
   "staticReview": {
     "status": "PASSED_BOUNDED_SAVED_ROW_REVIEW_STATIC_INSPECTION",
@@ -13,5 +13,77 @@
     "savedReceiptMetadataSchemasJoined": true,
     "scope": "One pilot only; no ancestral science campaign or numerical acceptance in static review."
   },
-  "launchIsAcceptance": false
+  "launchIsAcceptance": false,
+  "launch": {
+    "launchedUtc": "2026-09-22T13:07:46.737707+00:00",
+    "guardPid": 1734729,
+    "watcherPid": 1734730,
+    "stage": "validate",
+    "command": [
+      "/usr/bin/python",
+      "/var/projects/toy_physics/scripts/s11c_guarded_run.py",
+      "--log-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-pilot-review/resource-guard",
+      "--seconds",
+      "900",
+      "--",
+      "/usr/bin/python",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-pilot-review",
+      "--stage",
+      "validate",
+      "--",
+      "/usr/bin/python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_row_pilot_review.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-pilot-review/complete"
+    ],
+    "helperSha256": "49cf661b915598849e3c0ed2c67bfb3b058cee9bc8c94cf05be63aa31a7cb3e8",
+    "planSha256": "ca86a59e0909025da7a0c6fe6b372d58ef5c38e4376440461703d77e50647f03",
+    "staticReviewSha256": "adbd03b062943f17ca73cd7816ac3e4594c3f1f7e31178d2a40550ebdc263fb1",
+    "guardSha256": "6492f5ab11dc2ab2f80bbfcc96d7eb6b8632afea07100dd8f74a7954f3ffe542",
+    "implementationCommit": "0d70bbf2c76a04e64739397685d8b538eaf11f54",
+    "scope": "Bounded SAVED one-row review only: complete typed input/value/receipt/unit/source/hash joins. No numerical/symbolic evaluator/source/quadrature or map recomputation.",
+    "launchIsAcceptance": false
+  },
+  "initialContainmentInspection": {
+    "status": "INITIAL_CONTAINMENT_VERIFIED",
+    "limits": {
+      "memory.max": "2147483648",
+      "memory.swap.max": "0",
+      "pids.max": "32",
+      "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-3dc5489de63b.service",
+      "nice": 15,
+      "affinity": [
+        15
+      ],
+      "threads": {
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "VECLIB_MAXIMUM_THREADS": "1",
+        "BLIS_NUM_THREADS": "1"
+      }
+    },
+    "active": {
+      "stage": "validate",
+      "command": [
+        "/usr/bin/python",
+        "-u",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_row_pilot_review.py",
+        "--run-directory",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-pilot-review/complete"
+      ],
+      "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-pilot-review/validate.stdout",
+      "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-pilot-review/validate.stderr",
+      "startedUtc": "2026-09-22T13:07:46.854903+00:00",
+      "childPid": 1734736,
+      "status": "running"
+    },
+    "strictStderrBytes": 0,
+    "oneInitialCheckOnly": true
+  }
 }

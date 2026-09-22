@@ -1,5 +1,5 @@
 {
-  "status": "COMPLETED_PENDING_BOUNDED_SAVED_REVIEW",
+  "status": "ACCEPTED_BOUNDED_CASE_FREQUENCY_REMAINDER_ROWS",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/remainder-rows",
   "stage": "frequency_remainder_rows",
   "helperSha256": "79704fbe36e5d2acbc62f218b655b6958e7a3d91b152113991d51107a9d93a84",
@@ -258,5 +258,27 @@
     "allConsumedHashesUnchanged": true,
     "wallSeconds": 11.607083977025468,
     "scope": "Four fixed finite-frequency rows only; no scattering error bound, tiny effect, physical pole, outgoing domain or regulator limit claim."
+  },
+  "checkpoint": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_remainder_rows_checkpoint.json",
+    "canonical": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_remainder_rows_checkpoint.json",
+    "sha256": "d6c9ec1e6492a87782caeebfb36ce60134c682dad2d5967662cd773b0b619e3a",
+    "bytes": 51009
+  },
+  "savedReviewGuard": {
+    "actualExits": [
+      0,
+      0,
+      0
+    ],
+    "workerWallSeconds": 5.238506658002734,
+    "nativeWallSeconds": 6.4609386259980965,
+    "guardWallSeconds": 6.582085328991525,
+    "emptyStrictStderr": true,
+    "checksStdoutIdentity": true,
+    "checksSha256": "65578a8c116059151199fa479f515753e98dc72aa9fa747a0bf95f9ee48d17e7",
+    "peakBytes": 236408832,
+    "minimumHostAvailableBytes": 22996529152,
+    "zeroCapOOMSwap": true
   }
 }

@@ -1,9 +1,100 @@
 {
-  "status": "IMPLEMENTED_NOT_LAUNCHED",
+  "status": "ACCEPTED_BOUNDED_CASE_FREQUENCY_REMAINDER_ROWS",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/remainder-rows-review-recovery-01",
   "stage": "validate",
   "helperSha256": "f47ba57c123ed1d6590e4bcca4f7a1d2f97e50bf9fe0b241a9fe3a7b27cc346b",
   "planSha256": "8441a53e11222163dff38ccfb68b93c0e7a7938cde9baba8cbadeaabd46531ce",
   "originalFailure": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/remainder-rows-review-recovery-01/failed-review-outcome.json",
-  "noAcceptanceBeforeFinalCleanOutcome": true
+  "noAcceptanceBeforeFinalCleanOutcome": true,
+  "checkpoint": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_remainder_rows_checkpoint.json",
+    "canonical": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_remainder_rows_checkpoint.json",
+    "sha256": "d6c9ec1e6492a87782caeebfb36ce60134c682dad2d5967662cd773b0b619e3a",
+    "bytes": 51009
+  },
+  "savedReviewGuard": {
+    "actualExits": [
+      0,
+      0,
+      0
+    ],
+    "workerWallSeconds": 5.238506658002734,
+    "nativeWallSeconds": 6.4609386259980965,
+    "guardWallSeconds": 6.582085328991525,
+    "emptyStrictStderr": true,
+    "checksStdoutIdentity": true,
+    "checksSha256": "65578a8c116059151199fa479f515753e98dc72aa9fa747a0bf95f9ee48d17e7",
+    "peakBytes": 236408832,
+    "minimumHostAvailableBytes": 22996529152,
+    "zeroCapOOMSwap": true
+  },
+  "launch": {
+    "launchedUtc": "2026-09-22T15:35:40.704181+00:00",
+    "guardPid": 1798241,
+    "watcherPid": 1798242,
+    "stage": "validate",
+    "command": [
+      "/usr/bin/python",
+      "/var/projects/toy_physics/scripts/s11c_guarded_run.py",
+      "--log-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/remainder-rows-review-recovery-01/resource-guard",
+      "--seconds",
+      "900",
+      "--",
+      "/usr/bin/python",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/remainder-rows-review-recovery-01",
+      "--stage",
+      "validate",
+      "--",
+      "/usr/bin/python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_remainder_rows_review_finish.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/remainder-rows-review-recovery-01/complete"
+    ],
+    "helperSha256": "f47ba57c123ed1d6590e4bcca4f7a1d2f97e50bf9fe0b241a9fe3a7b27cc346b",
+    "planSha256": "8441a53e11222163dff38ccfb68b93c0e7a7938cde9baba8cbadeaabd46531ce",
+    "staticReviewSha256": "19d0e8bde084d793dcf8cb018ea0ecc1f33e990a0900945d92ddf9d08e830efd",
+    "guardSha256": "6492f5ab11dc2ab2f80bbfcc96d7eb6b8632afea07100dd8f74a7954f3ffe542",
+    "implementationCommit": "3b06d5667162fb51704058816ab7279d3f4f9314",
+    "scope": "Fresh finish of unfinished scalar/product/row checks using222 completed summaries; no science or completed validation replay.",
+    "launchIsAcceptance": false
+  },
+  "initialContainment": {
+    "limits": {
+      "memory.max": "2147483648",
+      "memory.swap.max": "0",
+      "pids.max": "32",
+      "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-dddea41b7d63.service",
+      "nice": 15,
+      "affinity": [
+        15
+      ],
+      "threads": {
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "VECLIB_MAXIMUM_THREADS": "1",
+        "BLIS_NUM_THREADS": "1"
+      }
+    },
+    "outcome": {
+      "exitCode": 0,
+      "wallSeconds": 6.582085328991525,
+      "unit": "s11c-guard-dddea41b7d63",
+      "stderrBytes": 0,
+      "limitsVerified": true,
+      "childOutcome": {
+        "exitCode": 0,
+        "guardReason": null,
+        "wallSeconds": 6.524464488000376,
+        "childPid": 1798247
+      }
+    },
+    "strictStderrBytes": 0,
+    "noModelPolling": true
+  }
 }

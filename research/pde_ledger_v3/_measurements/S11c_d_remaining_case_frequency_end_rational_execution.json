@@ -1,5 +1,5 @@
 {
-  "status": "GUARDED_RUNNING_WITH_SILENT_COMPLETION_HOOK",
+  "status": "COMPLETED_RATIONAL_ENTRIES_PENDING_SAVED_VALIDATION",
   "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-rational",
   "helper": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_end_rational.py",
   "staticReview": {
@@ -216,5 +216,129 @@
     },
     "guardOutcome": null,
     "singleInitialInspection": true
+  },
+  "finalOutcome": {
+    "status": "COMPLETED_CASE_FREQUENCY_END_RATIONAL_ENTRIES",
+    "checksSha256": "3b9a800886af784dcc284f3d68af43f51d40d6c223ecbf2f4904e6de6d76d451",
+    "workerSeconds": 114.4680182299926,
+    "resourceGuard": {
+      "supervisor": {
+        "stage": "frequency_end_rational",
+        "command": [
+          "/usr/bin/python",
+          "-u",
+          "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_end_rational.py",
+          "--run-directory",
+          "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-rational/complete"
+        ],
+        "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-rational/frequency_end_rational.stdout",
+        "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-rational/frequency_end_rational.stderr",
+        "startedUtc": "2026-09-22T05:04:22.709744+00:00",
+        "childPid": 1082032,
+        "status": "completed",
+        "exitCode": 0,
+        "wallSeconds": 116.3277540239942,
+        "stderrBytes": 0,
+        "finishedUtc": "2026-09-22T05:06:19.037571+00:00"
+      },
+      "guard": {
+        "exitCode": 0,
+        "wallSeconds": 116.49891664499592,
+        "unit": "s11c-guard-9f04c828586c",
+        "stderrBytes": 0,
+        "limitsVerified": true,
+        "childOutcome": {
+          "exitCode": 0,
+          "guardReason": null,
+          "wallSeconds": 116.41845915699378,
+          "childPid": 1082030
+        }
+      },
+      "limits": {
+        "memory.max": "2147483648",
+        "memory.swap.max": "0",
+        "pids.max": "32",
+        "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-9f04c828586c.service",
+        "nice": 15,
+        "affinity": [
+          15
+        ],
+        "threads": {
+          "OPENBLAS_NUM_THREADS": "1",
+          "OMP_NUM_THREADS": "1",
+          "MKL_NUM_THREADS": "1",
+          "NUMEXPR_NUM_THREADS": "1",
+          "VECLIB_MAXIMUM_THREADS": "1",
+          "BLIS_NUM_THREADS": "1"
+        }
+      },
+      "memoryPeakBytes": 412655616,
+      "capReclaims": 0,
+      "minimumHostAvailableBytes": 23392104448,
+      "oomEvents": 0,
+      "swapBytes": 0
+    },
+    "checksStdoutByteIdentity": true,
+    "inventories": {
+      "sourceFiles": 200,
+      "inputPackets": 83078,
+      "referencedInputs": 7587,
+      "artifacts": 7848
+    },
+    "counts": {
+      "physicalEnds": 8,
+      "sharedNewUses": 2,
+      "baselineAliases": 6,
+      "newEndOwners": 1,
+      "rationalEntries": 25,
+      "newEntryCalls": 10,
+      "acceptedEntryUses": 15,
+      "operationCounts": {
+        "cancel": {
+          "new": 20,
+          "reused": 0
+        },
+        "fraction": {
+          "new": 10,
+          "reused": 0
+        },
+        "Poly": {
+          "new": 18,
+          "reused": 2
+        },
+        "terms": {
+          "new": 18,
+          "reused": 22
+        }
+      },
+      "actualMutationControls": 5,
+      "newDeterminantThresholdBindingDerivativeModeCurrentCalls": 0,
+      "endDomainContinuationOrNumericalReuseAccepted": false
+    },
+    "operationReceiptCount": 90,
+    "entryReceiptCount": 25,
+    "acceptedSeedScalarUses": 0
+  },
+  "independentValidation": {
+    "status": "STATIC_REVIEWED_NOT_LAUNCHED",
+    "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-rational-acceptance",
+    "validator": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-rational-acceptance/validate.py",
+    "staticReview": {
+      "status": "STATIC_REVIEWED_SAVED_RATIONAL_ENTRY_VALIDATION",
+      "validatorSha256": "216bdd69d8cd1515de94e2f06f804e36d09809443ac73ef66c77561bc05ee219",
+      "planSha256": "f2caec6dac29b333d58b4ccff4d0ff261c0c860603aa5562dde84343ae0d4def",
+      "producerChecksSha256": "3b9a800886af784dcc284f3d68af43f51d40d6c223ecbf2f4904e6de6d76d451",
+      "producerHelperSha256": "33e058d6f53d2ff05e38e70292ea3c178404de44a5970f4cab51d087267ca6f0",
+      "compileOnlyPassed": true,
+      "scientificImportsOrPacketDeserialization": false,
+      "forbiddenOperationASTScanPassed": true,
+      "actualRequestsAndPins": 904,
+      "all90Operations25Entries8EndRoutesExist": true,
+      "wholeCallArgumentSchemaJoined": true,
+      "rawTypedOwnerAndNativeJsonBoundaryReviewed": true,
+      "actualLiveCacheReceiptsPreservedWithoutReplayingMembership": true,
+      "rawReconstructionDifferenceAndZeroReadOnly": true
+    },
+    "launchIsAcceptance": false
   }
 }

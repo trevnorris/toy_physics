@@ -24,3 +24,13 @@ Construction launched from `181637bc`. The single initial containment check
 verified all mandatory limits and empty strict stderr. The silent local
 completion/error hook handles waiting. No construction or table acceptance
 is inferred from launch or early files.
+
+Construction completed 114.47 worker / 116.33 native / 116.50 guard seconds, with all actual exits zero, empty strict stderr and checks/stdout identity. Peak memory was 412,655,616 bytes, zero cap/OOM/swap, minimum host availability 23.39 GB. Ten missing full entries and fifteen accepted uses produced the complete own table. Ninety actual operation receipts record 20 new cancels, 10 new fractions, 18 new and 2 reused Poly calls, and 18 new and 22 reused terms calls. No accepted seed scalar call matched. All eight physical routes and five actual controls completed. The table remains unaccepted until independent saved validation; determinants, thresholds, end domains and continuation remain pending.
+
+Independent saved validation is statically reviewed. It joins all 90 native
+operation input/value receipts, ten per-entry native operand sequences, fifteen
+accepted full returns, actual physical units/source/caller evidence, eight
+physical routes and five saved mutations. Live cache decisions remain their
+actual captured receipts; restored-key membership is not replayed. All
+reconstruction arithmetic, cancellation, fraction, Poly and terms operations
+remain disabled. Per-operation/entry/case summaries precede final hashes.

@@ -1,0 +1,21 @@
+{
+  "status": "PREPARED_CASE_FREQUENCY_END_INPUTS",
+  "helper": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_end_inputs.py",
+  "plan": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_end_inputs_plan.md",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-inputs",
+  "acceptedAnalyticCommit": "da5d7c52",
+  "helperSha256": "b244bbb80ec715f0978dd27c109f4cccd94d6e1ccac381e96d9cabaf4c478b12",
+  "planSha256": "a3340933f273adc7839f20fe304d91e63eb4701746b22e61f0226f0cbb323a00",
+  "staticReviewSha256": "696ece7f586e131ed84f295ced6b7552c87b9ec2392c3894fc95bbb9dd3111aa",
+  "limits": {
+    "wholeJobMemoryBytes": 2147483648,
+    "swapBytes": 0,
+    "cpus": 1,
+    "nice": 15,
+    "tasks": 32,
+    "nativeThreads": 1,
+    "wallSeconds": 900
+  },
+  "scope": "Saved full source/context/end/current/mode input candidates only; no new science or numerical reuse accepted.",
+  "next": "On actual clean completion independently validate saved input evidence, then accept a separate end-input checkpoint before missing native end construction."
+}

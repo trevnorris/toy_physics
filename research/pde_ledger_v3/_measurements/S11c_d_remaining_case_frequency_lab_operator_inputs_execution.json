@@ -1,5 +1,5 @@
 {
-  "status": "GUARDED_RUNNING",
+  "status": "COMPLETED_INPUTS_FINAL_JSON_IDENTITY_MISMATCH",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/lab-operator-inputs",
   "stage": "frequency_lab_operator_inputs",
   "helperSha256": "9ee5165cce2654ecbe7112420221a2c39c3b3ad8b5a33405d0da631f11d4e39d",
@@ -60,5 +60,13 @@
     "workerAlreadyCompletedAtFirstInspection": false,
     "strictStderrBytes": 0,
     "noModelPolling": true
-  }
+  },
+  "actualExits": [
+    0,
+    0,
+    0
+  ],
+  "strictStderrBytes": 0,
+  "checksStdoutIdentity": false,
+  "finalMetadataDefect": "Only printed artifacts includes the checks.json record appended by Journal.json after its bytes were serialized. No input/result changed."
 }

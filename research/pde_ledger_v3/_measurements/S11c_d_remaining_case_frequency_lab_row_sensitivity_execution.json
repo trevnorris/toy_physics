@@ -1,0 +1,21 @@
+{
+  "status": "IMPLEMENTED_NOT_LAUNCHED",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/lab-row46-sensitivity",
+  "stage": "frequency_lab_row_sensitivity",
+  "staticReview": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/lab-row46-sensitivity/static-review.json",
+  "helperSha256": "4bac65226cfef0a00420057b04d488b381ad16646462c6ed69cee2487a88340b",
+  "planSha256": "252de24d7f6181f980691880a514ba07b2fab806e41306746e37af02d9ebedad",
+  "syntax": true,
+  "wholeAcceptedNativeSolveAdapterEqual": true,
+  "opaqueChangedBlockHarness": {
+    "reusedPrefixAndZeroPrefix": true,
+    "orderedUnchangedProductsPreserved": true,
+    "oneNewTwoReusedFullProducts": true,
+    "fiveOrderedAdditions": true,
+    "typedReceiptReferences": true
+  },
+  "scientificImportsOrDeserialization": 0,
+  "nativeMethodsOrNumericalScienceExecuted": 0,
+  "producerAndRowCheckpointSchemasRead": true,
+  "prelaunchCorrections": "Journal.json is a metadata writer with no return; receipt references are taken from its actual artifact entry before reuse. This was corrected before scientific import/launch."
+}

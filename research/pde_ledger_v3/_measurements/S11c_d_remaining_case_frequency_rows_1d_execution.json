@@ -1,5 +1,5 @@
 {
-  "status": "IMPLEMENTED_UNLAUNCHED",
+  "status": "LAUNCHED_GUARDED",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/rows-1d",
   "stage": "frequency_rows_1d",
   "helperSha256": "45085deed3cb1bbec5bd0b9e5a573f2ce855b3a7cd4f8c54f9673f6e20886c90",
@@ -15,5 +15,85 @@
     "nice": 15,
     "tasks": 32,
     "nativeThreads": 1
+  },
+  "launch": {
+    "launchedUtc": "2026-09-22T13:25:51.676401+00:00",
+    "guardPid": 1743121,
+    "watcherPid": 1743122,
+    "stage": "frequency_rows_1d",
+    "command": [
+      "/usr/bin/python",
+      "/var/projects/toy_physics/scripts/s11c_guarded_run.py",
+      "--log-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/rows-1d/resource-guard",
+      "--seconds",
+      "900",
+      "--",
+      "/usr/bin/python",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/rows-1d",
+      "--stage",
+      "frequency_rows_1d",
+      "--",
+      "/usr/bin/python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_rows_1d.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/rows-1d/complete"
+    ],
+    "helperSha256": "45085deed3cb1bbec5bd0b9e5a573f2ce855b3a7cd4f8c54f9673f6e20886c90",
+    "planSha256": "268c1752e2433a71a3ac8d2c0795559cd522e7af8f0af3bac47fd74976b03d48",
+    "staticReviewSha256": "b8c288ab0819b307fb92da25949fa75e8c7739382ec22af5bc8013cf20444a96",
+    "guardSha256": "6492f5ab11dc2ab2f80bbfcc96d7eb6b8632afea07100dd8f74a7954f3ffe542",
+    "implementationCommit": "1f8359333ebaba5f215f909ef3167e53f005ba3a",
+    "scope": "Two missing own1D rows29/30 at1-0.01i; reuse full saved source actions and matching scalar values, only missing numerical row calls, one selected GK comparison. No old basis/source/end/science replay.",
+    "launchIsAcceptance": false
+  },
+  "initialContainment": {
+    "limitsVerified": true,
+    "effectiveLimits": {
+      "memory.max": "2147483648",
+      "memory.swap.max": "0",
+      "pids.max": "32",
+      "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-25720c226570.service",
+      "nice": 15,
+      "affinity": [
+        15
+      ],
+      "threads": {
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "VECLIB_MAXIMUM_THREADS": "1",
+        "BLIS_NUM_THREADS": "1"
+      }
+    },
+    "limitValidation": {
+      "verified": true,
+      "actual": {
+        "memory.max": "2147483648",
+        "memory.swap.max": "0",
+        "pids.max": "32",
+        "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-25720c226570.service",
+        "nice": 15,
+        "affinity": [
+          15
+        ],
+        "threads": {
+          "OPENBLAS_NUM_THREADS": "1",
+          "OMP_NUM_THREADS": "1",
+          "MKL_NUM_THREADS": "1",
+          "NUMEXPR_NUM_THREADS": "1",
+          "VECLIB_MAXIMUM_THREADS": "1",
+          "BLIS_NUM_THREADS": "1"
+        }
+      }
+    },
+    "strictStderrBytes": 0,
+    "guardStderrBytes": 0,
+    "outcomePresent": false,
+    "oneInitialInspectionOnly": true
   }
 }

@@ -20,3 +20,7 @@ preserved. No physical expression or guard changed.
 This remains fixed-setting analog toy-model row work. Full four-case systems,
 observable accuracy, targeted searches and exports remain. Final actual clean
 outcomes and bounded saved-result review precede acceptance.
+
+Launched implementation1f835933 under the verified900s whole-job2GiB zero-swap
+oneCPU nice15 pids32 nativeThreads1 guard. One initial containment inspection
+and silent completion/error hook recorded. Final outcome remains required.

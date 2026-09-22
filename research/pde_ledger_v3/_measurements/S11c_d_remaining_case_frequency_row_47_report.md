@@ -30,3 +30,14 @@ refinement spread9.162225554603579e-7, relative7.965595109143243e-5.
 Await bounded saved review before acceptance; no scattering error claim.
 
 Producer checks SHAf8e31e662d0f812047bb23fc50da9594853b967e5d5914aa2847e21259afb156.
+
+Accepted separate row47 checkpoint after a clean saved review: 6.63s
+guarded,3332 consumed logical paths, zero science replay; peak571465728
+bytes, zero cap/OOM/swap. Actual final exits0/empty stderr/stdout-checks
+identity and all consumed bytes/links unchanged. Checkpoint SHA
+2d2c98959f64f2edf48c10decd7f25051f8ac660bcd96ff4855966987eb7ad18. Full original input/result/manifest addresses and both guards
+are retained. Five originally missing row-family owners are now accepted:
+28/29/30/46/47. This is not numerical reuse for other inputs and does not
+complete scattering. Next actual missing LAB_RHOBR rows51--54 retain their
+profile remainder and positive-regulator Abel term and require inspection of
+actual source-coefficient/action routes before genuinely new preparation.

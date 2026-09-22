@@ -1,5 +1,5 @@
 {
-  "status": "PREPARED_NOT_LAUNCHED",
+  "status": "ACCEPTED_BOUNDED_CASE_FREQUENCY_ROW_47",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-47-review",
   "stage": "validate",
   "helperSha256": "61f2ef9a00202c707209c8f595ee49a11d764465f10517a7fd3126d568848d20",
@@ -13,5 +13,85 @@
     "nice": 15,
     "pids": 32,
     "nativeThreads": 1
+  },
+  "launch": {
+    "launchedUtc": "2026-09-22T14:31:27.694927+00:00",
+    "guardPid": 1768742,
+    "watcherPid": 1768743,
+    "stage": "validate",
+    "command": [
+      "/usr/bin/python",
+      "/var/projects/toy_physics/scripts/s11c_guarded_run.py",
+      "--log-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-47-review/resource-guard",
+      "--seconds",
+      "900",
+      "--",
+      "/usr/bin/python",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-47-review",
+      "--stage",
+      "validate",
+      "--",
+      "/usr/bin/python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_row_47_review.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-47-review/complete"
+    ],
+    "helperSha256": "61f2ef9a00202c707209c8f595ee49a11d764465f10517a7fd3126d568848d20",
+    "planSha256": "65e7d6240faa11cb38824966780e65c5917045af59eb5a338bcf9c9616900e9a",
+    "staticReviewSha256": "cddad7aa480f395a6fd908c48dac2af223df6182249043549d4e7c4a607187a7",
+    "guardSha256": "6492f5ab11dc2ab2f80bbfcc96d7eb6b8632afea07100dd8f74a7954f3ffe542",
+    "implementationCommit": "9514e5c34d077e71615f9b2a34f1a4a41eebc415",
+    "scope": "Saved-only bounded full input/value/source/unit/receipt review of paired2D row47; no scientific calls repeated.",
+    "launchIsAcceptance": false
+  },
+  "initialContainment": {
+    "verified": true,
+    "actualLimits": {
+      "memory.max": "2147483648",
+      "memory.swap.max": "0",
+      "pids.max": "32",
+      "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-93e3f7771dc1.service",
+      "nice": 15,
+      "affinity": [
+        15
+      ],
+      "threads": {
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "VECLIB_MAXIMUM_THREADS": "1",
+        "BLIS_NUM_THREADS": "1"
+      }
+    },
+    "workerAlreadyCompletedAtFirstInspection": true,
+    "strictStderrBytes": 0,
+    "noModelPolling": true
+  },
+  "checkpoint": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_row_47_checkpoint.json",
+    "canonical": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_row_47_checkpoint.json",
+    "sha256": "2d2c98959f64f2edf48c10decd7f25051f8ac660bcd96ff4855966987eb7ad18",
+    "bytes": 23759
+  },
+  "savedReviewGuard": {
+    "actualExits": [
+      0,
+      0,
+      0
+    ],
+    "workerWallSeconds": 5.449970763002057,
+    "nativeWallSeconds": 6.4913492539926665,
+    "guardWallSeconds": 6.629721602002974,
+    "emptyStrictStderr": true,
+    "checksStdoutIdentity": true,
+    "checksSha256": "92a67ee029afd74398c110cbcf98798d553e379496502d9c953a2c33d4715b51",
+    "peakBytes": 571465728,
+    "minimumHostAvailableBytes": 22825816064,
+    "zeroCapOOMSwap": true
   }
 }

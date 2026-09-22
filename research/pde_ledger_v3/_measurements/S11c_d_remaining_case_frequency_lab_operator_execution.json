@@ -1,0 +1,8 @@
+{
+  "status": "IMPLEMENTED_NOT_LAUNCHED",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/lab-operator",
+  "stage": "frequency_lab_operator",
+  "helperSha256": "06aa307c7b43c97db370cbebbb7a179042d41a374203ca16ee76bc31bf5869db",
+  "planSha256": "e8238c0a48ebfc130fe2679e0db6a079f56b8a3a587b9f2c60ba670f3f8f25b9",
+  "acceptance": false
+}

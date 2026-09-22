@@ -18,3 +18,10 @@ share20 uses;100 prior complete jets remain referenced.100 actual arithmetic
 calls comprise83 new and17 exact new-call reuses. Maximum direct comparison
 2.94e-17; all20 changed coefficient/order controls responded. All381 artifacts
 and consumed source/input routes unchanged. Pending bounded saved review.
+
+Accepted after clean bounded saved review: 8.856s worker/10.302s native/10.44s guard; all actual exits0,
+empty stderr, checks/stdout identity and zero cap/OOM/swap events.
+All422 consumed paths unchanged.100 arithmetic receipts,10 full structural
+projections and all120 source consumers joined without science recomputation.
+This accepts only source coefficients, not quadrature or scattering.
+Checkpoint SHA 4330b4ed945b3cf6f64f74e08e850ee33676fdce163945a899e832c441370782.

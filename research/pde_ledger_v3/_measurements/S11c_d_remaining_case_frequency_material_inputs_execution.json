@@ -1,0 +1,14 @@
+{
+  "status": "IMPLEMENTED_NOT_LAUNCHED",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/material-inputs",
+  "stage": "frequency_material_inputs",
+  "helperSha256": "b6a3e4411142822b037b436f4a8c6e381862593c5225062a1c8e2aab36843e20",
+  "planSha256": "1b0b652f2205a5d9d635229ecfa7f0f7120b9f420ea8d83f1304a0931d45c901",
+  "syntax": true,
+  "actual23SelectedUnmatchedInputs": true,
+  "wholeSourceCandidateSchemaRead": true,
+  "literalOpaqueTreeView": true,
+  "noScientificCallOrPhysicalWriterSites": true,
+  "scientificImportsOrDeserialization": 0,
+  "metadataScalarWriter": "Existing corrected MetadataJournal, native pickle codec unchanged"
+}

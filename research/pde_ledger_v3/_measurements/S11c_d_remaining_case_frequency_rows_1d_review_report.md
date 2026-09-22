@@ -20,3 +20,7 @@ optional diagnostic cache eviction markers; it never reconstructs missing
 diagnostics or mathematical values. A small saved input view of pending2D row46
 will inform the next pilot without constructing profile transforms or rules.
 Final guarded saved review remains required before scoped acceptance.
+
+Launched implementationcb592956 under unchanged verified900s whole-job2GiB
+zero-swaponeCPU nice15pids32nativeThreads1 guard. One initial containment check
+and silent local completion/error hook recorded. Acceptance remains pending.

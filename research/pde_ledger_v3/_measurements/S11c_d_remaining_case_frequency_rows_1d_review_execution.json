@@ -1,5 +1,5 @@
 {
-  "status": "IMPLEMENTED_UNLAUNCHED",
+  "status": "LAUNCHED_GUARDED",
   "root": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/rows-1d-review",
   "helperSha256": "0583d464df9bdbad1cb09eea240c3b5cf7e685a397998dbd6e4a9641483c1391",
   "planSha256": "0303001f797fc56aae020c8eaf60d6250afe9e884c07d7b1369053d9a02ec2c7",
@@ -7,5 +7,85 @@
   "producerChecksSha256": "d0c508a88fa9196e196072be1cb8b354ab82eedc1d1e5e96eeafecee2e86a194",
   "producerMemoryMaxEvents": 176,
   "producerNoOOMSwap": true,
-  "scope": "Bounded streaming saved result review only, preserving memory-cap qualification and all exact own inputs; no science replay."
+  "scope": "Bounded streaming saved result review only, preserving memory-cap qualification and all exact own inputs; no science replay.",
+  "launch": {
+    "launchedUtc": "2026-09-22T13:37:52.015210+00:00",
+    "guardPid": 1749590,
+    "watcherPid": 1749591,
+    "stage": "validate",
+    "command": [
+      "/usr/bin/python",
+      "/var/projects/toy_physics/scripts/s11c_guarded_run.py",
+      "--log-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/rows-1d-review/resource-guard",
+      "--seconds",
+      "900",
+      "--",
+      "/usr/bin/python",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/rows-1d-review",
+      "--stage",
+      "validate",
+      "--",
+      "/usr/bin/python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_rows_1d_review.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/rows-1d-review/complete"
+    ],
+    "helperSha256": "0583d464df9bdbad1cb09eea240c3b5cf7e685a397998dbd6e4a9641483c1391",
+    "planSha256": "0303001f797fc56aae020c8eaf60d6250afe9e884c07d7b1369053d9a02ec2c7",
+    "staticReviewSha256": "362432f00dc0695e39fa9b804cd8905280968476cdf0dcb96a84dea77cd26753",
+    "guardSha256": "6492f5ab11dc2ab2f80bbfcc96d7eb6b8632afea07100dd8f74a7954f3ffe542",
+    "implementationCommit": "cb5929563ce01adf3985a3dd57b1fa58f5ce0267",
+    "scope": "Bounded streaming SAVED two-row review only, full typed input/value/native source/unit/receipt joins, explicit producer memory-cap qualification. No science replay or raised limits.",
+    "launchIsAcceptance": false
+  },
+  "initialContainment": {
+    "limitsVerified": true,
+    "effectiveLimits": {
+      "memory.max": "2147483648",
+      "memory.swap.max": "0",
+      "pids.max": "32",
+      "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-be6379f063c8.service",
+      "nice": 15,
+      "affinity": [
+        15
+      ],
+      "threads": {
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "VECLIB_MAXIMUM_THREADS": "1",
+        "BLIS_NUM_THREADS": "1"
+      }
+    },
+    "limitValidation": {
+      "verified": true,
+      "actual": {
+        "memory.max": "2147483648",
+        "memory.swap.max": "0",
+        "pids.max": "32",
+        "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-be6379f063c8.service",
+        "nice": 15,
+        "affinity": [
+          15
+        ],
+        "threads": {
+          "OPENBLAS_NUM_THREADS": "1",
+          "OMP_NUM_THREADS": "1",
+          "MKL_NUM_THREADS": "1",
+          "NUMEXPR_NUM_THREADS": "1",
+          "VECLIB_MAXIMUM_THREADS": "1",
+          "BLIS_NUM_THREADS": "1"
+        }
+      }
+    },
+    "strictStderrBytes": 0,
+    "guardStderrBytes": 0,
+    "outcomePresent": false,
+    "oneInitialInspectionOnly": true
+  }
 }

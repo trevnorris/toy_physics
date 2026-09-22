@@ -1,0 +1,135 @@
+{
+  "status": "STATIC_REVIEWED_NOT_LAUNCHED",
+  "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-rational",
+  "helper": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_end_rational.py",
+  "staticReview": {
+    "status": "STATIC_REVIEWED_MISSING_NATIVE_RATIONAL_END_ENTRIES",
+    "helperSha256": "33e058d6f53d2ff05e38e70292ea3c178404de44a5970f4cab51d087267ca6f0",
+    "planSha256": "3c5a6cdc01c2eb0d7972ce3c6314a5c1f88a993bfb245dc5afc94d248e366f95",
+    "acceptedThresholdInputCheckpointSha256": "557215f6c1cb16d75b89ecad85e00a2deea723f9ed33887c7a31ab8cfe5aeb59",
+    "compileOnlyPassed": true,
+    "scientificImportsOrPacketDeserialization": false,
+    "wholeNativeBodyReverseAST": {
+      "wholeNativeAST": "cf464d210668ddea9c7f6e4e0baa4bbaf18c9f2af67cbb14d6dccbd713787f50",
+      "entireOriginalBodyReverseAST": true,
+      "nativeEntryStatements": 8,
+      "sites": [
+        {
+          "site": 0,
+          "call": "sp.cancel(original)",
+          "nativeAST": "Call(func=Attribute(value=Name(id='sp', ctx=Load()), attr='cancel', ctx=Load()), args=[Name(id='original', ctx=Load())], keywords=[])"
+        },
+        {
+          "site": 1,
+          "call": "sp.fraction(sp.cancel(original))",
+          "nativeAST": "Call(func=Attribute(value=Name(id='sp', ctx=Load()), attr='fraction', ctx=Load()), args=[Call(func=Attribute(value=Name(id='sp', ctx=Load()), attr='cancel', ctx=Load()), args=[Name(id='original', ctx=Load())], keywords=[])], keywords=[])"
+        },
+        {
+          "site": 2,
+          "call": "sp.Poly(num, k, z)",
+          "nativeAST": "Call(func=Attribute(value=Name(id='sp', ctx=Load()), attr='Poly', ctx=Load()), args=[Name(id='num', ctx=Load()), Name(id='k', ctx=Load()), Name(id='z', ctx=Load())], keywords=[])"
+        },
+        {
+          "site": 3,
+          "call": "sp.Poly(den, k, z)",
+          "nativeAST": "Call(func=Attribute(value=Name(id='sp', ctx=Load()), attr='Poly', ctx=Load()), args=[Name(id='den', ctx=Load()), Name(id='k', ctx=Load()), Name(id='z', ctx=Load())], keywords=[])"
+        },
+        {
+          "site": 4,
+          "call": "a.terms()",
+          "nativeAST": "Call(func=Attribute(value=Name(id='a', ctx=Load()), attr='terms', ctx=Load()), args=[], keywords=[])"
+        },
+        {
+          "site": 5,
+          "call": "b.terms()",
+          "nativeAST": "Call(func=Attribute(value=Name(id='b', ctx=Load()), attr='terms', ctx=Load()), args=[], keywords=[])"
+        },
+        {
+          "site": 6,
+          "call": "sp.cancel(reconstructed - original)",
+          "nativeAST": "Call(func=Attribute(value=Name(id='sp', ctx=Load()), attr='cancel', ctx=Load()), args=[BinOp(left=Name(id='reconstructed', ctx=Load()), op=Sub(), right=Name(id='original', ctx=Load()))], keywords=[])"
+        },
+        {
+          "site": 7,
+          "call": "a.terms()",
+          "nativeAST": "Call(func=Attribute(value=Name(id='a', ctx=Load()), attr='terms', ctx=Load()), args=[], keywords=[])"
+        },
+        {
+          "site": 8,
+          "call": "b.terms()",
+          "nativeAST": "Call(func=Attribute(value=Name(id='b', ctx=Load()), attr='terms', ctx=Load()), args=[], keywords=[])"
+        }
+      ],
+      "observedAssignments": [
+        "original",
+        "num",
+        "den",
+        "a",
+        "b",
+        "reconstructed",
+        "residual"
+      ],
+      "adapterSource": "def native_entry(source, i, j, router):\n    (k, z) = (source['momentum'], source['radical'])\n    rows = []\n    original = source['livePencil'][i, j]\n    router.observe('original', original)\n    (num, den) = router.operation('fraction', 1, router.operation('cancel', 0, original))\n    router.observe('num', num)\n    router.observe('den', den)\n    a = router.operation('Poly', 2, num, k, z)\n    router.observe('a', a)\n    b = router.operation('Poly', 3, den, k, z)\n    router.observe('b', b)\n    reconstructed = sum((v * k ** p * z ** t for ((p, t), v) in router.operation('terms', 4, a))) / sum((v * k ** p * z ** t for ((p, t), v) in router.operation('terms', 5, b)))\n    router.observe('reconstructed', reconstructed)\n    residual = router.operation('cancel', 6, reconstructed - original)\n    router.observe('residual', residual)\n    f.require(residual == 0, 'full rational end entry reconstruction')\n    rows.append({'row': i, 'column': j, 'original': original, 'numeratorTerms': router.operation('terms', 7, a), 'denominatorTerms': router.operation('terms', 8, b), 'reconstructionResidual': residual})\n    router.observe('entry', rows[-1])\n    return rows[0]"
+    },
+    "purePythonCallOrderAndPreGuardPersistenceHarnessPassed": true,
+    "actualExistingRequestsAndSourcePins": 7781,
+    "actualNewIndices": [
+      [
+        3,
+        0
+      ],
+      [
+        3,
+        1
+      ],
+      [
+        3,
+        2
+      ],
+      [
+        3,
+        3
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        4,
+        0
+      ],
+      [
+        4,
+        1
+      ],
+      [
+        4,
+        2
+      ],
+      [
+        4,
+        3
+      ],
+      [
+        4,
+        4
+      ]
+    ],
+    "acceptedEntryUses": 15,
+    "acceptedSeedScalarReceiptsHashJoined": 11,
+    "forbiddenScientificCallASTScanPassed": true,
+    "onlyMissingNativeEntryBodiesEnabled": true,
+    "noInProgressWorker": true,
+    "retainedBuilderSuffixUnchanged": true
+  },
+  "guard": {
+    "wallSeconds": 900,
+    "memoryBytes": 2147483648,
+    "swapBytes": 0,
+    "cpuCount": 1,
+    "nice": 15,
+    "tasks": 32,
+    "nativeThreads": 1
+  },
+  "launchIsAcceptance": false
+}

@@ -1,0 +1,21 @@
+# Remaining rational end entries
+
+Threshold coefficient inputs are accepted at `ebb6ebdc`, with independent saved
+validation of all 83,205 paths and clean actual guards. Fifteen rational-entry
+calls have full accepted matches; ten actual pending calls occupy zero-based
+physical rows 3 and 4. The missing determinant and complex threshold analysis
+remain separate unfinished operations.
+
+The new constructor preserves the entire native per-entry body. Whole-body
+reverse AST, a pure Python call-order/persistence harness, the actual native
+residual rejection, accepted input paths and frozen source pins passed static
+review without importing science. Every native cancel/fraction/Poly/terms
+input and return is persisted; exact completed-call cache routes preserve
+actual owners, units and source evidence. The accepted seed scalar calls can
+supply values only after complete captured-input/unit/receipt joins.
+
+Matched full entries retain their original computational owners and values;
+consumer row/column metadata remains distinct. Eight physical routes and five
+changed-input/value controls will be saved. Only the ten pending native entry
+bodies may execute. Independent saved validation must precede table acceptance;
+end domains, threshold analysis and whole-cluster continuation remain pending.

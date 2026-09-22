@@ -18,3 +18,13 @@ All original failed logs and completed native caller metadata remain immutable.
 Launched with implementation 7a80135101ecf90e46106133fa386021a0268720; actual
 containment verified, silent completion/error hook installed, no model polling.
 Completed cleanly; bounded saved result review remains before acceptance.
+
+Accepted a separate numerical preparation checkpoint after the saved review:
+16.298s guarded,530 consumed paths, no science replay; actual all0/empty/
+checksstdout identity, peak299331584bytes and zero cap/OOM/swap. All consumed
+bytes/links unchanged. Checkpoint SHA3df3fb8b3bf9796eb32f22b8d86ab68f3708811bc24119e2757b93866a3a3a25.
+Four full1024x129 source actions and4097 finite-profile returns are available
+at their exact saved addresses. The two selected source comparisons are
+1.2074e-16/1.8589e-15; five profile comparisons at3.9083e-14. These are fixed
+preparation checks, not scattering error bounds. Next: the four missing LAB
+RHOBR rows51--54, preserving the full positive-regulator Abel coefficient.

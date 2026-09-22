@@ -1,5 +1,5 @@
 {
-  "status": "GUARDED_RUNNING_WITH_SILENT_COMPLETION_HOOK",
+  "status": "COMPLETED_THRESHOLD_INPUTS_PENDING_SAVED_VALIDATION",
   "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-threshold-inputs",
   "helper": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_end_threshold_inputs.py",
   "staticReview": {
@@ -136,5 +136,581 @@
     },
     "guardOutcome": null,
     "singleInitialInspection": true
+  },
+  "finalOutcome": {
+    "status": "COMPLETED_CASE_FREQUENCY_END_THRESHOLD_INPUTS",
+    "checksSha256": "822de92c0180afcdf3619ae174d189e6653b260325c9bd1bb6f62a817bcbdba8",
+    "workerSeconds": 81.8616914209997,
+    "resourceGuard": {
+      "supervisor": {
+        "stage": "frequency_end_threshold_inputs",
+        "command": [
+          "/usr/bin/python",
+          "-u",
+          "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_end_threshold_inputs.py",
+          "--run-directory",
+          "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-threshold-inputs/complete"
+        ],
+        "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-threshold-inputs/frequency_end_threshold_inputs.stdout",
+        "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-threshold-inputs/frequency_end_threshold_inputs.stderr",
+        "startedUtc": "2026-09-22T04:33:29.245727+00:00",
+        "childPid": 1071162,
+        "status": "completed",
+        "exitCode": 0,
+        "wallSeconds": 83.83830078899337,
+        "stderrBytes": 0,
+        "finishedUtc": "2026-09-22T04:34:53.084100+00:00"
+      },
+      "guard": {
+        "exitCode": 0,
+        "wallSeconds": 84.03733420099888,
+        "unit": "s11c-guard-708a72d2e485",
+        "stderrBytes": 0,
+        "limitsVerified": true,
+        "childOutcome": {
+          "exitCode": 0,
+          "guardReason": null,
+          "wallSeconds": 83.9624984760012,
+          "childPid": 1071160
+        }
+      },
+      "limits": {
+        "memory.max": "2147483648",
+        "memory.swap.max": "0",
+        "pids.max": "32",
+        "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-708a72d2e485.service",
+        "nice": 15,
+        "affinity": [
+          15
+        ],
+        "threads": {
+          "OPENBLAS_NUM_THREADS": "1",
+          "OMP_NUM_THREADS": "1",
+          "MKL_NUM_THREADS": "1",
+          "NUMEXPR_NUM_THREADS": "1",
+          "VECLIB_MAXIMUM_THREADS": "1",
+          "BLIS_NUM_THREADS": "1"
+        }
+      },
+      "memoryPeakBytes": 391139328,
+      "capReclaims": 0,
+      "minimumHostAvailableBytes": 23471132672,
+      "oomEvents": 0,
+      "swapBytes": 0
+    },
+    "checksStdoutByteIdentity": true,
+    "inventories": {
+      "sourceFiles": 198,
+      "inputPackets": 75492,
+      "referencedInputs": 7429,
+      "artifacts": 7314
+    },
+    "counts": {
+      "physicalEnds": 8,
+      "newOwnerUses": 2,
+      "baselineAliases": 6,
+      "coefficientCalls": 2,
+      "newCoefficientImages": 1,
+      "reusedCoefficientImages": 1,
+      "rationalEntryUses": 25,
+      "acceptedRationalEntryUses": 15,
+      "pendingRationalEntryUses": 10,
+      "pendingRationalEntryFamilies": 10,
+      "actualMutationControls": 5,
+      "newBindingDerivativeDeterminantEliminationTableRootCalls": 0,
+      "thresholdsTablesDomainsAndContinuationUnaccepted": true
+    },
+    "coefficientReceipts": {
+      "coefficientMatrix": {
+        "name": "coefficientMatrix",
+        "reused": false,
+        "owner": {
+          "end": [
+            "LAB_HELD__RHOBR_CONSTANT",
+            "RIGHT"
+          ],
+          "field": "coefficientMatrix",
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-threshold-inputs/complete/coefficient-operations/coefficientMatrix/value.pickle"
+        },
+        "inputSha256": "22fd9295cfdd25410b70047da8c1dee9c60413d82d0311aed9f472c4767fa658",
+        "valueSha256": "e49e0606461e88c6f927a81d9d7fbae6702717e302e3e13eedd54343e6144701",
+        "nativeOperations": [
+          "subs(normalMomentum,0)",
+          "xreplace(actual frequency/radical coefficient coordinates)"
+        ]
+      },
+      "wave": {
+        "name": "wave",
+        "reused": true,
+        "owner": {
+          "end": "REFERENCE",
+          "field": "wave",
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-threshold-inputs/complete/end-accepted/frequency/reference-threshold-candidates.pickle",
+          "sourcePath": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-threshold-inputs/complete/end-accepted/frequency/reference-frequency-pencil.pickle"
+        },
+        "inputSha256": "54c06b0f254eb2a7309a56131d36cfa033bdeb0ae64b29879228f7721dc38c61",
+        "valueSha256": "0651118bf94dd9d51f1cf35bb327cd2c649c3ee516db6dee197272a31a184dbf",
+        "nativeOperations": []
+      }
+    },
+    "thresholdRoutes": {
+      "determinantCandidateOwners": [],
+      "branchCandidateOwners": [
+        "REFERENCE",
+        "LEFT",
+        "RIGHT"
+      ],
+      "eliminationCandidateOwners": [],
+      "analysisCandidateOwners": [],
+      "eliminationDeferredUntilDeterminant": true,
+      "analysisDeferredUntilElimination": true,
+      "newThresholdOrRootOperations": 0,
+      "completeEndDomainAccepted": false
+    },
+    "rationalRoutes": {
+      "entries": 25,
+      "acceptedUses": 15,
+      "pendingUses": 10,
+      "pendingFamilies": 10,
+      "routes": [
+        {
+          "index": [
+            0,
+            0
+          ],
+          "inputPath": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-threshold-inputs/complete/rational-entry-inputs/0-0.pickle",
+          "inputSha256": "69699ac95ebcc269a98e1407f65afd25fef7989b2ac273a84226901ec330d456",
+          "acceptedOwners": [
+            [
+              "LEFT",
+              0,
+              0
+            ]
+          ]
+        },
+        {
+          "index": [
+            0,
+            1
+          ],
+          "inputPath": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-threshold-inputs/complete/rational-entry-inputs/0-1.pickle",
+          "inputSha256": "204ab365369a44eb465a73fc574158fc3559ca211ab29caaeddecf7a1f506340",
+          "acceptedOwners": [
+            [
+              "LEFT",
+              0,
+              1
+            ],
+            [
+              "LEFT",
+              1,
+              0
+            ],
+            [
+              "RIGHT",
+              0,
+              1
+            ],
+            [
+              "RIGHT",
+              1,
+              0
+            ]
+          ]
+        },
+        {
+          "index": [
+            0,
+            2
+          ],
+          "inputPath": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-threshold-inputs/complete/rational-entry-inputs/0-2.pickle",
+          "inputSha256": "e3615bf427c27c6ebec9d61851a402d610605fdad67440d575c9e149a63a4761",
+          "acceptedOwners": [
+            [
+              "LEFT",
+              0,
+              2
+            ],
+            [
+              "LEFT",
+              2,
+              0
+            ],
+            [
+              "RIGHT",
+              0,
+              2
+            ],
+            [
+              "RIGHT",
+              2,
+              0
+            ]
+          ]
+        },
+        {
+          "index": [
+            0,
+            3
+          ],
+          "inputPath": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-threshold-inputs/complete/rational-entry-inputs/0-3.pickle",
+          "inputSha256": "a7c20a411efb6914ce2188c825a6b5afd45ef0908915ce807ffb9e7be28e3aa8",
+          "acceptedOwners": [
+            [
+              "RIGHT",
+              0,
+              3
+            ]
+          ]
+        },
+        {
+          "index": [
+            0,
+            4
+          ],
+          "inputPath": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-threshold-inputs/complete/rational-entry-inputs/0-4.pickle",
+          "inputSha256": "a1538ef1bf404ff24fe69e1432daf0f23f76706211851068f1df361ce85f5396",
+          "acceptedOwners": [
+            [
+              "RIGHT",
+              0,
+              4
+            ]
+          ]
+        },
+        {
+          "index": [
+            1,
+            0
+          ],
+          "inputPath": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-threshold-inputs/complete/rational-entry-inputs/1-0.pickle",
+          "inputSha256": "2c466188895061f5f6c105d445040d2874ecaffd7f18fd27e1795e3afe702453",
+          "acceptedOwners": [
+            [
+              "LEFT",
+              0,
+              1
+            ],
+            [
+              "LEFT",
+              1,
+              0
+            ],
+            [
+              "RIGHT",
+              0,
+              1
+            ],
+            [
+              "RIGHT",
+              1,
+              0
+            ]
+          ]
+        },
+        {
+          "index": [
+            1,
+            1
+          ],
+          "inputPath": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-threshold-inputs/complete/rational-entry-inputs/1-1.pickle",
+          "inputSha256": "88ae52eb540ec2bf4473e1b4528bfe837fa574dc2352107fb91ec3dfd26984f1",
+          "acceptedOwners": [
+            [
+              "LEFT",
+              1,
+              1
+            ]
+          ]
+        },
+        {
+          "index": [
+            1,
+            2
+          ],
+          "inputPath": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-threshold-inputs/complete/rational-entry-inputs/1-2.pickle",
+          "inputSha256": "34b8e12ca32cca9e734741d7e2c930d5ee580d6fc07a04e36d0df250b2154130",
+          "acceptedOwners": [
+            [
+              "LEFT",
+              1,
+              2
+            ],
+            [
+              "LEFT",
+              2,
+              1
+            ],
+            [
+              "RIGHT",
+              1,
+              2
+            ],
+            [
+              "RIGHT",
+              2,
+              1
+            ]
+          ]
+        },
+        {
+          "index": [
+            1,
+            3
+          ],
+          "inputPath": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-threshold-inputs/complete/rational-entry-inputs/1-3.pickle",
+          "inputSha256": "e546415b5bd6c7b3b97d096afd8ba350cd22607f99fa7a5564bd9ad8e53522bd",
+          "acceptedOwners": [
+            [
+              "RIGHT",
+              1,
+              3
+            ]
+          ]
+        },
+        {
+          "index": [
+            1,
+            4
+          ],
+          "inputPath": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-threshold-inputs/complete/rational-entry-inputs/1-4.pickle",
+          "inputSha256": "d09a1816752667e5ba5aa495ce0ff8c419897dda4d8e69583b87caac598a2691",
+          "acceptedOwners": [
+            [
+              "RIGHT",
+              1,
+              4
+            ]
+          ]
+        },
+        {
+          "index": [
+            2,
+            0
+          ],
+          "inputPath": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-threshold-inputs/complete/rational-entry-inputs/2-0.pickle",
+          "inputSha256": "76db85636b92d91b1fca47987c3d091895f382de71982c4aa9fc61215339ea76",
+          "acceptedOwners": [
+            [
+              "LEFT",
+              0,
+              2
+            ],
+            [
+              "LEFT",
+              2,
+              0
+            ],
+            [
+              "RIGHT",
+              0,
+              2
+            ],
+            [
+              "RIGHT",
+              2,
+              0
+            ]
+          ]
+        },
+        {
+          "index": [
+            2,
+            1
+          ],
+          "inputPath": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-threshold-inputs/complete/rational-entry-inputs/2-1.pickle",
+          "inputSha256": "4d542080af0b810ca65f0085995e0791516e5cb030b1b1237d684f738bff50ac",
+          "acceptedOwners": [
+            [
+              "LEFT",
+              1,
+              2
+            ],
+            [
+              "LEFT",
+              2,
+              1
+            ],
+            [
+              "RIGHT",
+              1,
+              2
+            ],
+            [
+              "RIGHT",
+              2,
+              1
+            ]
+          ]
+        },
+        {
+          "index": [
+            2,
+            2
+          ],
+          "inputPath": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-threshold-inputs/complete/rational-entry-inputs/2-2.pickle",
+          "inputSha256": "5b4b6e65b43659029a900eea4616a1f40065fabba8a32e734b5b1f58269aa188",
+          "acceptedOwners": [
+            [
+              "LEFT",
+              2,
+              2
+            ]
+          ]
+        },
+        {
+          "index": [
+            2,
+            3
+          ],
+          "inputPath": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-threshold-inputs/complete/rational-entry-inputs/2-3.pickle",
+          "inputSha256": "071b2897c2993a96c1f9c83d27bd87d10e0e398223fcf3f49f9343c629560da0",
+          "acceptedOwners": [
+            [
+              "RIGHT",
+              2,
+              3
+            ]
+          ]
+        },
+        {
+          "index": [
+            2,
+            4
+          ],
+          "inputPath": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-threshold-inputs/complete/rational-entry-inputs/2-4.pickle",
+          "inputSha256": "cb842a1924af0f216b955712fd7b9066c16507eeb620a50003d0280cf7895443",
+          "acceptedOwners": [
+            [
+              "RIGHT",
+              2,
+              4
+            ]
+          ]
+        },
+        {
+          "index": [
+            3,
+            0
+          ],
+          "inputPath": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-threshold-inputs/complete/rational-entry-inputs/3-0.pickle",
+          "inputSha256": "19067c1774115745847f3280dd2aed36a19675b3917b718455c318b3addaa91b",
+          "acceptedOwners": [],
+          "pendingFamily": 0
+        },
+        {
+          "index": [
+            3,
+            1
+          ],
+          "inputPath": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-threshold-inputs/complete/rational-entry-inputs/3-1.pickle",
+          "inputSha256": "4a102d2b28809009acebe99d08e90a9e3a6ddf6258348e682a62c096091f50a7",
+          "acceptedOwners": [],
+          "pendingFamily": 1
+        },
+        {
+          "index": [
+            3,
+            2
+          ],
+          "inputPath": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-threshold-inputs/complete/rational-entry-inputs/3-2.pickle",
+          "inputSha256": "6fda00c62eac0c482eac817c9b7d825955a5ef551e379b177049dfc19e451553",
+          "acceptedOwners": [],
+          "pendingFamily": 2
+        },
+        {
+          "index": [
+            3,
+            3
+          ],
+          "inputPath": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-threshold-inputs/complete/rational-entry-inputs/3-3.pickle",
+          "inputSha256": "1abe051dbfe8c2096cebe3c906833fb05471efdac21c5bcc653c0397b74de7d4",
+          "acceptedOwners": [],
+          "pendingFamily": 3
+        },
+        {
+          "index": [
+            3,
+            4
+          ],
+          "inputPath": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-threshold-inputs/complete/rational-entry-inputs/3-4.pickle",
+          "inputSha256": "586f12788a6bb11bda703c15f9d3cb865725355b52e362f1fd123dcc25e8ee1d",
+          "acceptedOwners": [],
+          "pendingFamily": 4
+        },
+        {
+          "index": [
+            4,
+            0
+          ],
+          "inputPath": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-threshold-inputs/complete/rational-entry-inputs/4-0.pickle",
+          "inputSha256": "383993dd9c4da8937e804fad168b7c6b75dd6003dcf7586515ce8b2641b6dd1a",
+          "acceptedOwners": [],
+          "pendingFamily": 5
+        },
+        {
+          "index": [
+            4,
+            1
+          ],
+          "inputPath": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-threshold-inputs/complete/rational-entry-inputs/4-1.pickle",
+          "inputSha256": "93865b695a13f907a45293c23041ea52692a588350d7826c98bc6711ac9dc0a1",
+          "acceptedOwners": [],
+          "pendingFamily": 6
+        },
+        {
+          "index": [
+            4,
+            2
+          ],
+          "inputPath": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-threshold-inputs/complete/rational-entry-inputs/4-2.pickle",
+          "inputSha256": "cc3e4a076ca5a6ee9cb27e68332ebf1fe7476f9cf7ff05cb0cac959852c5b653",
+          "acceptedOwners": [],
+          "pendingFamily": 7
+        },
+        {
+          "index": [
+            4,
+            3
+          ],
+          "inputPath": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-threshold-inputs/complete/rational-entry-inputs/4-3.pickle",
+          "inputSha256": "4b423edab70d6d93edf3ba570ade33e400605d06d5dc42ef59d245240124d332",
+          "acceptedOwners": [],
+          "pendingFamily": 8
+        },
+        {
+          "index": [
+            4,
+            4
+          ],
+          "inputPath": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-threshold-inputs/complete/rational-entry-inputs/4-4.pickle",
+          "inputSha256": "7410376035fa8f4b987f2dfa008bb19b56cb145e1199d1b9023d88f7fbbdeba0",
+          "acceptedOwners": [],
+          "pendingFamily": 9
+        }
+      ],
+      "newTableConstructionCalls": 0
+    }
+  },
+  "independentValidation": {
+    "status": "STATIC_REVIEWED_NOT_LAUNCHED",
+    "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-threshold-input-acceptance",
+    "validator": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-threshold-input-acceptance/validate.py",
+    "staticReview": {
+      "status": "STATIC_REVIEWED_SAVED_THRESHOLD_INPUT_VALIDATION",
+      "validatorSha256": "cc3052066d2cf7bbd71b7434f299c7768419bce97655a5562f040d0f9196b4c0",
+      "planSha256": "2633569a9e7dd58728b6d854cda0786707fd0914b3d8e1e69fcb5d84d658c6ee",
+      "producerChecksSha256": "822de92c0180afcdf3619ae174d189e6653b260325c9bd1bb6f62a817bcbdba8",
+      "producerHelperSha256": "8527b6c3f2a3e6e3dd45e1f813f6abf7d34cbb88c072302594ad9fc759a2f82a",
+      "compileOnlyPassed": true,
+      "scientificImportsOrPacketDeserialization": false,
+      "forbiddenOperationASTScanPassed": true,
+      "actualRequestsAndPins": 491,
+      "twoCoefficientSlots25EntryPairs8EndRoutesExist": true,
+      "wholeCallArgumentSchemaJoined": true,
+      "rawTypedOwnerAndNativeJsonViewBoundaryReviewed": true,
+      "actualMissingDeterminantAndDeferredPolynomialSlotsPreserved": true
+    },
+    "launchIsAcceptance": false
   }
 }

@@ -29,3 +29,13 @@ references; the mandatory guard and silent completion hook will be used.
 Launched from `5f3c9037`. The single initial inspection verified all mandatory
 limits and empty strict stderr. The silent local completion/error hook is
 active. Launch does not establish coefficient-input or scientific acceptance.
+
+The stage completed 81.86 worker / 83.84 native / 84.04 guard seconds, with actual exits zero, empty stderr and checks/stdout identity. Peak was 391,139,328 bytes, zero cap/OOM/swap, minimum host availability 23.47 GB. One new coefficient matrix and one reused wave image were saved. Fifteen of 25 rational-entry inputs match accepted calls; ten distinct entries remain pending, all in physical rows 3 and 4. The full determinant has no saved match; elimination and analysis remain deferred. All three accepted branch-call inputs match. Five actual mutations passed. These are operation-input routes, not numerical row reuse or complex-domain acceptance. Independent saved validation remains required.
+
+Independent saved validation is statically reviewed. It derives the full
+coefficient-call and rational-entry catalogues separately, checks actual
+input/intermediate/value/native receipts, all source and unit joins, pending
+first owners, eight case routes and five actual mutations. It compiles only
+the native adapter and preserves typed owners separately from their JSON
+views. No conversion, determinant, cancellation, table or root operation is
+repeated. Per-operation/entry/case summaries precede final hash guards.

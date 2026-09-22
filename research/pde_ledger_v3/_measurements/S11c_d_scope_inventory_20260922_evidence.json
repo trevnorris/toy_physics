@@ -1,0 +1,753 @@
+{
+  "status": "DRAFT_SCOPE_INVENTORY_EVIDENCE_NOT_SCIENTIFIC_ACCEPTANCE",
+  "createdUtc": "2026-09-22T20:08:19.610462+00:00",
+  "head": "0d77af53561968d4593b49261589e2ee259eadbb",
+  "method": "Read-only source text, report and JSON metadata inspection. No scientific module import, unpickling, numerical/symbolic operation, production validator, review leg or export execution.",
+  "coverage": "Selected scientific workstream evidence and governing/review records; not a line-by-line audit of every commit or an ancestral validation campaign.",
+  "inventory": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_scope_inventory_20260922.md",
+    "bytes": 34452,
+    "sha256": "d753110c81fffcdb9ca938fabc72f7c311bcf107a891a1d11e020fc7a286724d"
+  },
+  "links": [
+    {
+      "label": "decisions",
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_decisions.md",
+      "line": 47
+    },
+    {
+      "label": "s1b",
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_SHARED_PHYSICS.md",
+      "line": 132
+    },
+    {
+      "label": "s1c",
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_SHARED_PHYSICS.md",
+      "line": 183
+    },
+    {
+      "label": "s2",
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_SHARED_PHYSICS.md",
+      "line": 332
+    },
+    {
+      "label": "s3a",
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_SHARED_PHYSICS.md",
+      "line": 421
+    },
+    {
+      "label": "s3b",
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_SHARED_PHYSICS.md",
+      "line": 479
+    },
+    {
+      "label": "s3c",
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_SHARED_PHYSICS.md",
+      "line": 545
+    },
+    {
+      "label": "s3d",
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_SHARED_PHYSICS.md",
+      "line": 631
+    },
+    {
+      "label": "s4",
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_SHARED_PHYSICS.md",
+      "line": 681
+    },
+    {
+      "label": "s5a",
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_SHARED_PHYSICS.md",
+      "line": 711
+    },
+    {
+      "label": "s5b",
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_SHARED_PHYSICS.md",
+      "line": 766
+    },
+    {
+      "label": "s5c",
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_SHARED_PHYSICS.md",
+      "line": 791
+    },
+    {
+      "label": "s5d",
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_SHARED_PHYSICS.md",
+      "line": 813
+    },
+    {
+      "label": "s6",
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_SHARED_PHYSICS.md",
+      "line": 827
+    },
+    {
+      "label": "s7",
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_SHARED_PHYSICS.md",
+      "line": 857
+    },
+    {
+      "label": "s8",
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_SHARED_PHYSICS.md",
+      "line": 909
+    },
+    {
+      "label": "pole",
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_NONLINEAR_POLE_CONTRACT.md",
+      "line": 3
+    },
+    {
+      "label": "pole-data",
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_NONLINEAR_POLE_CONTRACT.md",
+      "line": 44
+    },
+    {
+      "label": "acceptance",
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_EXPLORATORY_ACCEPTANCE.md",
+      "line": 8
+    },
+    {
+      "label": "retained",
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_sympy_builder_report.md",
+      "line": 488
+    },
+    {
+      "label": "review-policy",
+      "path": "/var/projects/toy_physics/CLAUDE.md",
+      "line": 47
+    },
+    {
+      "label": "spec-opus",
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/directives/_legs/S11c_d_shared_physics_review_r10_opus.md",
+      "line": null
+    },
+    {
+      "label": "spec-grok",
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/directives/_legs/S11c_d_shared_physics_review_r10_grok.md",
+      "line": null
+    },
+    {
+      "label": "lean-review",
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/lean/s11/POLE_FIDELITY_REVIEW.md",
+      "line": null
+    },
+    {
+      "label": "wl-audit",
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_wolfram_repair_audit_report.md",
+      "line": null
+    },
+    {
+      "label": "wl-repair",
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_wolfram_pressure_trace_repair_report.md",
+      "line": null
+    },
+    {
+      "label": "real-response",
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_response_report.md",
+      "line": null
+    },
+    {
+      "label": "flux",
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_flux_report.md",
+      "line": null
+    },
+    {
+      "label": "coordinate",
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_coordinate_response_report.md",
+      "line": 274
+    },
+    {
+      "label": "uniform",
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_uniform_report.md",
+      "line": null
+    },
+    {
+      "label": "profile",
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_profile_response_report.md",
+      "line": null
+    },
+    {
+      "label": "first-jet",
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_first_jet_response_report.md",
+      "line": null
+    },
+    {
+      "label": "domain",
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_finite_scattering_domain_report.md",
+      "line": null
+    },
+    {
+      "label": "material1d",
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_material_rows_1d_checkpoint.json",
+      "line": null
+    },
+    {
+      "label": "pause",
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/material-2d-routes/paused-for-scope-assessment.json",
+      "line": null
+    },
+    {
+      "label": "lab",
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_lab_operator_recover_report.md",
+      "line": null
+    },
+    {
+      "label": "sensitivity",
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_lab_row_sensitivity_report.md",
+      "line": null
+    },
+    {
+      "label": "contour",
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_frequency_contour_refine_report.md",
+      "line": null
+    },
+    {
+      "label": "brief-export",
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_sympy_build_PROGRAM_BRIEF.md",
+      "line": 92
+    },
+    {
+      "label": "agents",
+      "path": "/var/projects/toy_physics/AGENTS.md",
+      "line": null
+    },
+    {
+      "label": "amendment",
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_SCATTERING_FORM_AMENDMENT.md",
+      "line": null
+    }
+  ],
+  "selectedEvidence": [
+    {
+      "path": "/var/projects/toy_physics/AGENTS.md",
+      "resolvedPath": "/var/projects/toy_physics/AGENTS.md",
+      "bytes": 1599,
+      "sha256": "034a5c94084399f5155849db4d30d27be91f6482bd3ca2c089b543baac9bccdb"
+    },
+    {
+      "path": "/var/projects/toy_physics/CLAUDE.md",
+      "resolvedPath": "/var/projects/toy_physics/CLAUDE.md",
+      "bytes": 29280,
+      "sha256": "676cf93794a50075946dffa7d32d88b18f8fd3a78c47117a5b79877b2c6d1814"
+    },
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/material-2d-routes/paused-for-scope-assessment.json",
+      "resolvedPath": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/material-2d-routes/paused-for-scope-assessment.json",
+      "bytes": 2878,
+      "sha256": "2863b338246903006f31680284ea600520a9cea3cb06c8c0a501c1b76f4130ff",
+      "topLevelStatusFields": {
+        "status": "PAUSED_NOT_LAUNCHED_FOR_SCOPE_AND_REVIEW_ASSESSMENT"
+      }
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11_lean_pole_fidelity_claude_v1.md",
+      "resolvedPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11_lean_pole_fidelity_claude_v1.md",
+      "bytes": 9862,
+      "sha256": "df2ea653e9447c67d6afa8f0ebde268e66b36733b3e66ef6b5fe96a0fa10b535"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11_lean_pole_fidelity_grok_v1.md",
+      "resolvedPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11_lean_pole_fidelity_grok_v1.md",
+      "bytes": 13459,
+      "sha256": "9f5a8f98e7f4bbc977cba96601fe665a57f60b386817bf4e6593b030e6d7108f"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11_lean_pole_review_state.json",
+      "resolvedPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11_lean_pole_review_state.json",
+      "bytes": 4295,
+      "sha256": "b7b4a38a4eb100ae26ea2a03624aaa126a97f3368451ca524b31adce2965b274",
+      "topLevelStatusFields": {
+        "status": "COMPLETE",
+        "scope": "Bounded S11 NP1–NP4 independent fidelity review"
+      }
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_c2_trace_repair_report.md",
+      "resolvedPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_c2_trace_repair_report.md",
+      "bytes": 11758,
+      "sha256": "d648b243b662e4e8bed1fde9504c4fac4ed3bb0db7019f6c9f9509df575aa7f9"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_finite_scattering_domain_report.md",
+      "resolvedPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_finite_scattering_domain_report.md",
+      "bytes": 3017,
+      "sha256": "f5f34fb9a6c6e7bb4eb9598a52c6713508fe383a6f575430a8a5b1daf14529b3"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_frequency_contour_refine_report.md",
+      "resolvedPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_frequency_contour_refine_report.md",
+      "bytes": 2721,
+      "sha256": "041e15fd82e1077f206502719a0d00e953cf4ce6f858b0774ee8f562f0dd4b51"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_frequency_matrix_report.md",
+      "resolvedPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_frequency_matrix_report.md",
+      "bytes": 1887,
+      "sha256": "0f52b0217f657a1d995f0ef32fcf8b7b1d5b3ed6b2578e3333d463aa56047777"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_nonlinear_pole_repair_report.md",
+      "resolvedPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_nonlinear_pole_repair_report.md",
+      "bytes": 4386,
+      "sha256": "20c0093317631499213e94fc377715f30a148415de31dd1f7f648d1cfa184209"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_coordinate_output_checkpoint.json",
+      "resolvedPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_coordinate_output_checkpoint.json",
+      "bytes": 10392097,
+      "sha256": "c4820d0a1be839384f9291023492a4b2e4f04bb0b17b20383136e4e9ae5281b0",
+      "topLevelStatusFields": {
+        "status": "PUBLISHED_ANNEX_VERIFIED",
+        "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/response/output/production-continuation-01/complete",
+        "checksSha256": "64a2f56f93e9d7a29c4c59fe1e2018eec628c7ba7cdc1e0772475a9239ee438f"
+      }
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_coordinate_response_checkpoint.json",
+      "resolvedPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_coordinate_response_checkpoint.json",
+      "bytes": 17286323,
+      "sha256": "70f300013d3ee486f55bf8c0d87a821eaa501f005647023b525d0834e37d6fe8",
+      "topLevelStatusFields": {
+        "status": "ACCEPTED_CASE_MATERIAL_NUMERICAL_RESPONSES",
+        "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-coordinate-20260921/response/production/complete",
+        "checksSha256": "a67635eda94ccb1ceac2e7eeff06e447e3515c2ce2549604865a3d69f7b63f5d",
+        "acceptedUtc": "2026-09-21T15:40:48.259577+00:00"
+      }
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_coordinate_response_report.md",
+      "resolvedPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_coordinate_response_report.md",
+      "bytes": 20626,
+      "sha256": "7f99ffe09606810a75e29c081cc79742b11b013c6abf8e76baebb83bbd00a332"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_first_jet_output_checkpoint.json",
+      "resolvedPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_first_jet_output_checkpoint.json",
+      "bytes": 6727413,
+      "sha256": "2a8f6f91327706bcdcf8ec1176636b6f96fe9cac76976b70fbc6e5f78039cc59",
+      "topLevelStatusFields": {
+        "status": "PUBLISHED_ANNEX_VERIFIED",
+        "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/response/output/production/complete",
+        "checksSha256": "0066c3546c1aa1c38195e960506f3a10d78ee9067778b13649542c7348df9b19"
+      }
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_first_jet_response_checkpoint.json",
+      "resolvedPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_first_jet_response_checkpoint.json",
+      "bytes": 5580093,
+      "sha256": "ae26d0f4e730da64db8f3698b4e3a541945e1d012a0a9885c2f610b03a3516db",
+      "topLevelStatusFields": {
+        "status": "ACCEPTED_FIRST_JET_NUMERICAL_RESPONSES",
+        "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-first-jet-20260920/response/production/complete",
+        "checksSha256": "609121335d2e55e7dd821fdcb57668369e8921642b43c3dd79b9811ff2c0e0f9"
+      }
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_first_jet_response_report.md",
+      "resolvedPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_first_jet_response_report.md",
+      "bytes": 2578,
+      "sha256": "eecfeab869487e9887969716a271b1e32b2f7cd419dd2d95ac6d149aefa1a908"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_flux_checkpoint.json",
+      "resolvedPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_flux_checkpoint.json",
+      "bytes": 748911,
+      "sha256": "e22329ee7fb5e328d374b9d538bb04c833dc33285c78826b37b0b5ba1f1c3b8a",
+      "topLevelStatusFields": {
+        "status": "PUBLISHED_ANNEX_VERIFIED",
+        "scope": "Actual four-case finite continuum current/amplitude bookkeeping, positive regulator and approximate boundaries.",
+        "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-flux-20260920/production/complete",
+        "checksSha256": "ad880b70145c99ccc7394a918c83c734fdc603f6fafd3228f57e2bfaba67cc2b",
+        "acceptedUtc": "2026-09-20T04:57:12.505214+00:00"
+      }
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_flux_report.md",
+      "resolvedPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_flux_report.md",
+      "bytes": 2627,
+      "sha256": "0e295a8fbda71c9d4c6957a04724375005af687e26700c71525f46f1bcf027a9"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_analytic_checkpoint.json",
+      "resolvedPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_analytic_checkpoint.json",
+      "bytes": 10477995,
+      "sha256": "cdf2472a5882b8e999bfce73c6ffefcd1fdf996b1faf0761d9b49e388dac61bb",
+      "topLevelStatusFields": {
+        "status": "ACCEPTED_CASE_FREQUENCY_ANALYTIC_SOURCES",
+        "scope": "Only missing native scalar analytic images, their derivatives and new denominator identities. Saved baseline chart/images/root/seed proofs remain inputs. Real Fourier momenta on the declared scalar disk only; no outgoing-end domain, numerical pencil, pole or physical output.",
+        "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/analytic-sources-recovery-01/complete",
+        "checksSha256": "8d9c85126735e991acde138bb4cab7e79066eba217134e609da6b8f020c44784"
+      }
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_end_complex_threshold_checkpoint.json",
+      "resolvedPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_end_complex_threshold_checkpoint.json",
+      "bytes": 39229686,
+      "sha256": "38c47b224f9c192aed3cec1d677bbb2e64b1ce4ac7a9efacb975dbb26a6029e7",
+      "topLevelStatusFields": {
+        "status": "ACCEPTED_CASE_FREQUENCY_END_COMPLEX_THRESHOLD_CANDIDATES",
+        "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-complex-threshold-recovery-03/complete",
+        "checksSha256": "79c5e547fcfa100596acb91011f1752f049d22842b01defd431e182c82ff9b67"
+      }
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_end_pilot_checkpoint.json",
+      "resolvedPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_end_pilot_checkpoint.json",
+      "bytes": 733456,
+      "sha256": "df9ebba15ab7c4e02bd438a70675fac1bfb13924914384dea727e560b541cf2d",
+      "topLevelStatusFields": {
+        "status": "ACCEPTED_BOUNDED_CASE_FREQUENCY_END_CONTINUATION",
+        "scope": "One bounded analog toy-model end continuation to1-0.01i and one coarse/fine comparison for five whole clusters/seven directions. Source and units remain own RHOBR RIGHT. This is not a pole, physical threshold, global domain, full scattering result, error bound or arbitrary-frequency reuse. Other case reuse requires actual complete saved caller joins.",
+        "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-pilot/complete",
+        "checksSha256": "85dc47fc086ed1a25e3aae0dac954472d3dad042e8cccd14e7a2761476e5dd8e",
+        "frequency": "(1-0.01j)"
+      }
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_lab_operator_checkpoint.json",
+      "resolvedPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_lab_operator_checkpoint.json",
+      "bytes": 39332,
+      "sha256": "992b97501ed1ef96d45a66d67d6d451e8b97d338d71216872283bc176e127d30",
+      "topLevelStatusFields": {
+        "status": "ACCEPTED_BOUNDED_LAB_CASE_FREQUENCY_RESPONSE",
+        "scope": "Practical analog toy-model finite complex LAB two-ended response at1-0.01i, positive regulator0.1 and approximate modal boundaries. Complete exact baseline RHO4 caller reused; own RHOBR assembled and solved. Native rank/equation/boundary/independent-solve checks pass. Observable1%/amplitude1e-4/current1e-6 stability remains a separate selected comparison; these are not Hermitian complex-frequency flux probabilities, rigorous error bounds, continuum expansion completion or pole/domain/search/export completion.23 material row families and the material cases remain.",
+        "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/lab-operator-recovery-01/complete",
+        "checksSha256": "6b599efce28034bb45a7c5542cb509c0c5d97955d9863e2f04af8c612215f003",
+        "frequency": {
+          "real": 1.0,
+          "imag": -0.01
+        }
+      }
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_lab_operator_recover_report.md",
+      "resolvedPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_lab_operator_recover_report.md",
+      "bytes": 2281,
+      "sha256": "8548bc0df3a604ef5bbcda22a5bc6e935a0a5cdb47acdb9f54e7646aa1f93f36"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_lab_row_sensitivity_checkpoint.json",
+      "resolvedPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_lab_row_sensitivity_checkpoint.json",
+      "bytes": 29881,
+      "sha256": "cf12257fe054d83e35fa48db566db8a98698596d29cac017df5552152df5d580",
+      "topLevelStatusFields": {
+        "status": "ACCEPTED_BOUNDED_LAB_ROW46_RESPONSE_SENSITIVITY",
+        "scope": "Only the effect of the accepted512-versus1024-panel row46 difference on one four-incident complex frequency response. No total error bound, source/domain/regulator sensitivity completion, Hermitian flux probability, physical pole/domain certificate or whole-program completion. Material23rowfamilies/ownresponses and selected independent comparisons/continuum/search/exports remain. All earlier failures and full physical source/unit/grade/end provenance are retained by referenced checkpoints.",
+        "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/lab-row46-sensitivity/complete",
+        "checksSha256": "3dff4c643e23da2faaaf3f702cb963ec72b26b2e8469c75abcaed13a69e2b070",
+        "frequency": {
+          "real": 1.0,
+          "imag": -0.01
+        }
+      }
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_lab_row_sensitivity_report.md",
+      "resolvedPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_lab_row_sensitivity_report.md",
+      "bytes": 2470,
+      "sha256": "648fdf29ad399a1c54b69b6584fc422594e7ecf8ca4d378bc2e93a4ced262e0d"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_material_row_pilot_checkpoint.json",
+      "resolvedPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_material_row_pilot_checkpoint.json",
+      "bytes": 23795,
+      "sha256": "529f4943c8da52dfc153716e4acadc753ca611fe3e0507135cf54cb91aee7e56",
+      "topLevelStatusFields": {
+        "status": "ACCEPTED_BOUNDED_MATERIAL_1D_ROW_PILOT",
+        "scope": "One materialRHO4 row2/source2, full129x129 at1-0.01i on512/1024 saved finite alternative rules. No source/rule/profile/end calls. The observed row-grid spread is not scattering accuracy, source-rule uncertainty, a tiny-effect or pole/domain claim. Remaining22materialrow owners, ownresponses and selected sensitivity/continuum/search/exports remain.",
+        "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/material-row-pilot/complete",
+        "checksSha256": "26d25e14065b097bee37327e1d8d7bb1c0500fb655bc41b0da4d9481534247c4"
+      }
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_material_rows_1d_checkpoint.json",
+      "resolvedPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_material_rows_1d_checkpoint.json",
+      "bytes": 90586,
+      "sha256": "265a0b8eeb8a804067f579016f86d8cbc7ad4dacbcba80e42dc0c0ae5e6a6ced",
+      "topLevelStatusFields": {
+        "status": "ACCEPTED_BOUNDED_MATERIAL_1D_ROWS",
+        "scope": "Fourteen materialRHO4 one-dimensional row owners3--11,21--25 at1-0.01i, full129x129. Actual saved/new full-grid operation receipts checked; zero new source/profile/rule/end calls. Two selected512/1024 row comparisons, not scattering error bounds or source/domain/regulator uncertainty. The earlier row2 pilot remains distinct and accepted. Eight material2D owners and own645x645/fourincident material responses, selected sensitivities/continuum/scopedsearches/finalexports remain. No global domain certification or numerical family reuse inferred.",
+        "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/material-rows-1d/complete",
+        "checksSha256": "f8060cefb519519972059abd57ad6d126aabadc990f25a47933ab5e70ed1f7dc",
+        "frequency": {
+          "real": 1.0,
+          "imag": -0.01
+        }
+      }
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_material_rows_1d_report.md",
+      "resolvedPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_material_rows_1d_report.md",
+      "bytes": 2855,
+      "sha256": "1413fe1a36b89942f0196fd8370989a2ed524539a390176db125158710053680"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_material_rows_1d_review_report.md",
+      "resolvedPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_material_rows_1d_review_report.md",
+      "bytes": 1956,
+      "sha256": "6038d9a8f65a2c6fe4fcb94121dfef2be237ef1681849e079a24fe7698366274"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_material_sources_checkpoint.json",
+      "resolvedPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_material_sources_checkpoint.json",
+      "bytes": 58160,
+      "sha256": "866bf623bae5bc054bb2c603bd5de10bd7c839f8ce7e0afaacb675e3fe32a809",
+      "topLevelStatusFields": {
+        "status": "ACCEPTED_BOUNDED_MATERIAL_NUMERICAL_SOURCES",
+        "scope": "Thirteen own material source uses at1-0.01i with nine new numerical actions and four full-input aliases. Native source/context/units/grades/settings remain exact. Selected order0/1/2 recurrence comparisons are method checks, not scattering accuracy or pole/domain/numerical-row-reuse claims. No native derivative/compiler/basis or row/Fourier/profile/rule/end/map/response call. Twenty-three material row first owners and remaining case responses, sensitivity/continuum/search/exports remain.",
+        "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/material-sources-recovery-01/complete",
+        "checksSha256": "85f5adf614127c1d7b75778dbf4ff295613685674b52b68c50e5807a17894b17",
+        "frequency": {
+          "real": 1.0,
+          "imag": -0.01
+        }
+      }
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_remainder_rows_checkpoint.json",
+      "resolvedPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_remainder_rows_checkpoint.json",
+      "bytes": 51009,
+      "sha256": "d6c9ec1e6492a87782caeebfb36ce60134c682dad2d5967662cd773b0b619e3a",
+      "topLevelStatusFields": {
+        "status": "ACCEPTED_BOUNDED_CASE_FREQUENCY_REMAINDER_ROWS",
+        "scope": "Four own full129x129 LAB RHOBR rows51--54 at1-0.01i,1024/2048 finite momentum panels and accepted finite source/profile preparations under exploratoryAcceptanceV1. Full positive-regulator Abel coefficient, own sources/units/grades/context/settings/ordered limits retained. Fixed-row spread is not a scattering error bound, tiny-effect evidence, physical pole/domain or Abel-limit result. Nine initially missing LAB RHOBR family owners now have accepted results; material rows/full four-case scattering/searches/exports remain.",
+        "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/remainder-rows/complete",
+        "checksSha256": "7b1166e22be054dac47ce59804bf376c77d5963d4f7b7b6a97bfabf327041618"
+      }
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_scalar_bindings_checkpoint.json",
+      "resolvedPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_scalar_bindings_checkpoint.json",
+      "bytes": 251563,
+      "sha256": "d1961c25f725959e896e62e49c45d389fdd503575d27803a89055175f6308b50",
+      "topLevelStatusFields": {
+        "status": "ACCEPTED_CASE_FREQUENCY_SCALAR_BINDINGS",
+        "scope": "Native scalar frequency bindings at1-0.01i and eight exact saved end-map routes under exploratoryAcceptanceV1. Full source-jet/row/interior/matrix/response/search/export work remains. No global domain/pole/full scattering acceptance.",
+        "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/scalar-bindings/complete",
+        "checksSha256": "87a03a6ec9d2f89e9a0cb9e146d0d3f5d616bd3975e9723878c36c8ff8d17b46"
+      }
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_source_coefficients_checkpoint.json",
+      "resolvedPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_source_coefficients_checkpoint.json",
+      "bytes": 178935,
+      "sha256": "4330b4ed945b3cf6f64f74e08e850ee33676fdce163945a899e832c441370782",
+      "topLevelStatusFields": {
+        "status": "ACCEPTED_CASE_FREQUENCY_SOURCE_COEFFICIENTS",
+        "scope": "Source coefficients at1-0.01i only under exploratoryAcceptanceV1.100 full saved jets referenced,10 explicit new linear-tree projections shared20uses. No native derivative/dummy symbol/Poly/intermediate reconstructed. Full response/pole/domain/search/export work remains.",
+        "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/source-coefficients/complete",
+        "checksSha256": "a0e113b4f52c5a4d388a85d2d3cf1a6e326edb5ef587ab79c708e85c2e824b35"
+      }
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_profile_response_checkpoint.json",
+      "resolvedPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_profile_response_checkpoint.json",
+      "bytes": 739181,
+      "sha256": "f14eeb302bf881eaab0e04ae3feca640d809e0fd7decc6dbdb442d04539691d2",
+      "topLevelStatusFields": {
+        "status": "PUBLISHED_ANNEX_VERIFIED",
+        "scope": "One actual FORM comparison per case, with full finite/independent-grade response and unchanged own-case end coordinates. Positive regulator, approximate boundaries and omitted parent pure-second-order terms remain.",
+        "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-profile-20260920/production-recovery-01/complete",
+        "checksSha256": "79104208152fa0420426bd42b383c837ae23142fe6ca18f846e5af4221a5635c"
+      }
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_profile_response_report.md",
+      "resolvedPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_profile_response_report.md",
+      "bytes": 3682,
+      "sha256": "a9573495af313cb5fd07f7e5fc113a2e20553256feb5f867e775f4ad69114c98"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_response_checkpoint.json",
+      "resolvedPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_response_checkpoint.json",
+      "bytes": 212218,
+      "sha256": "e7c0c56b03d4acf5b6f7fe5d6a4a08ecccbc430a49d2e4c4cb354a1afc5851ea",
+      "topLevelStatusFields": {
+        "status": "PUBLISHED_ANNEX_VERIFIED",
+        "scope": "Four actual case finite and independent-grade responses; finite regulator and approximate modal boundaries.",
+        "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-response-20260920/finish-02/complete",
+        "checksSha256": "e489c144ec8787bee13ca3e3216255f2750fc6639728d2ebe8f58a0ae0442d1f",
+        "acceptedUtc": "2026-09-20T04:36:22.387757+00:00"
+      }
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_response_report.md",
+      "resolvedPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_response_report.md",
+      "bytes": 3572,
+      "sha256": "ff9fd68bdefdefedd2dd9ceddfe9bc3f1c1e0977936037fde599f345cae004ea"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_uniform_checkpoint.json",
+      "resolvedPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_uniform_checkpoint.json",
+      "bytes": 657498,
+      "sha256": "f96aacd5d22e1a45eecd36c1e7ea011c17ed1c9ac3a7cc16afe68f2153e7ee51",
+      "topLevelStatusFields": {
+        "status": "PUBLISHED_ANNEX_VERIFIED",
+        "scope": "Four case-specific three-background homogeneous controls; ten original response reuses and one new RHOBR-right matching shared after full input joins. No profile quadrature, mode/current closure or continuum expansion.",
+        "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-uniform-20260920/production/complete",
+        "checksSha256": "ad2ab8555444d8dd35dc93028b8b1f5b7e72c2c0c37469cb2370a71054e57268"
+      }
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_uniform_report.md",
+      "resolvedPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_uniform_report.md",
+      "bytes": 4462,
+      "sha256": "d1b3d35ea8236fa436b21ca85581a475565f9675464bbaf591804a76e74eafc6"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_sympy_builder_report.md",
+      "resolvedPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_sympy_builder_report.md",
+      "bytes": 36895,
+      "sha256": "4b083fe7b78a4357bc27495a1ea5bb34eeffffe1134158e24f2fdfcb66394599"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_inertia_repair_report.md",
+      "resolvedPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_inertia_repair_report.md",
+      "bytes": 6202,
+      "sha256": "23b540a5783153fd9cb8725d80ae2e77c8fc9f653d347464df01c7f4431634aa"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_mechanical_repair_report.md",
+      "resolvedPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_mechanical_repair_report.md",
+      "bytes": 10025,
+      "sha256": "57bec0e90fdaa4ada674f56cca37f53b7f2d83cce1a8ef70c82e3ee103ecae33"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_thickness_coordinate_repair_report.md",
+      "resolvedPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_thickness_coordinate_repair_report.md",
+      "bytes": 25758,
+      "sha256": "c863583f9ea50bf48d51f48ee41ea4c6e065cb5225dce0e49d9cdf938ca1c262"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_wolfram_pressure_trace_native_checkpoint.json",
+      "resolvedPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_wolfram_pressure_trace_native_checkpoint.json",
+      "bytes": 36021,
+      "sha256": "be2e5e8f7067c085d141f8943d30bb06a60d36d6ce4c92a69f7e6ac5538dc1fa",
+      "topLevelStatusFields": {
+        "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-wolfram-pressure-repair-20260914/native-full"
+      }
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_wolfram_pressure_trace_repair_report.md",
+      "resolvedPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_wolfram_pressure_trace_repair_report.md",
+      "bytes": 5709,
+      "sha256": "e5f1db838686c18e70a53d4347c98df227998198ad83c693d5df58ca255ac2d8"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_wolfram_repair_audit_checkpoint.json",
+      "resolvedPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_wolfram_repair_audit_checkpoint.json",
+      "bytes": 24022,
+      "sha256": "3b3240ca8eb2c0916f5020610884666eca43c66b4b593d352bec4bc4d1ca32cd",
+      "topLevelStatusFields": {
+        "status": "AUDITED_DEFECT_REQUIRES_USER_APPROVAL"
+      }
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_wolfram_repair_audit_report.md",
+      "resolvedPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_wolfram_repair_audit_report.md",
+      "bytes": 4298,
+      "sha256": "9304a4dce1d0f1129a367ae9456d5010403e7d6e657540c5553fce288a5a4b12"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_EXPLORATORY_ACCEPTANCE.md",
+      "resolvedPath": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_EXPLORATORY_ACCEPTANCE.md",
+      "bytes": 7083,
+      "sha256": "5c1e560a78d40739af8b1318c0487e20bf2b816c41109889e12004266c72840c"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_NONLINEAR_POLE_CONTRACT.md",
+      "resolvedPath": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_NONLINEAR_POLE_CONTRACT.md",
+      "bytes": 12669,
+      "sha256": "2b6018faf0d5ca772bf9c980174d8ebe7545127a3bf43ba01d1b3c0b6a5be423"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_SCATTERING_FORM_AMENDMENT.md",
+      "resolvedPath": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_SCATTERING_FORM_AMENDMENT.md",
+      "bytes": 27624,
+      "sha256": "b76f6fd0500ce50e04dc1aa0870b9982a6057ea4cde3dfe0793d0f52a8a5d2a9"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_SHARED_PHYSICS.md",
+      "resolvedPath": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_SHARED_PHYSICS.md",
+      "bytes": 67800,
+      "sha256": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_sympy_build_PROGRAM_BRIEF.md",
+      "resolvedPath": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_sympy_build_PROGRAM_BRIEF.md",
+      "bytes": 13217,
+      "sha256": "1d9a48a043c68a6b38a1951f69b82a3ea8e97f4b7bb1d8e3f4c028f03290b380"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_sympy_build_directive.md",
+      "resolvedPath": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_sympy_build_directive.md",
+      "bytes": 34573,
+      "sha256": "0e0f8317cf4cbb9f0470a47323211ed6bc7dbcb20d1eff4a1ae79026f43fb6d7"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_decisions.md",
+      "resolvedPath": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_decisions.md",
+      "bytes": 17582,
+      "sha256": "039766533928d2f5c94c397bac683127b1ad69c042e2c7cd787c1bc29d256e3f"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/directives/_legs/S11c_d_shared_physics_review_r10_grok.md",
+      "resolvedPath": "/var/projects/toy_physics/research/pde_ledger_v3/directives/_legs/S11c_d_shared_physics_review_r10_grok.md",
+      "bytes": 18051,
+      "sha256": "c0a0044610b043db238fd6bcca6dcd556264bc2d51a9fc8a11b712b733515d4b"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/directives/_legs/S11c_d_shared_physics_review_r10_opus.md",
+      "resolvedPath": "/var/projects/toy_physics/research/pde_ledger_v3/directives/_legs/S11c_d_shared_physics_review_r10_opus.md",
+      "bytes": 1312,
+      "sha256": "e8c243f23a7aa7265f4fafd7a4a0f2b8d5ae70fd1c337b57c3245c05f5730a17"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/directives/_measurements/S11c_d_sympy_build_directive_decision_review.md",
+      "resolvedPath": "/var/projects/toy_physics/research/pde_ledger_v3/directives/_measurements/S11c_d_sympy_build_directive_decision_review.md",
+      "bytes": 8452,
+      "sha256": "984305e7e01d50b4762a199af12611cbe24a150b3990c0407d87b94f7ae6cb17"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/lean/s11/POLE_FIDELITY_REVIEW.md",
+      "resolvedPath": "/var/projects/toy_physics/research/pde_ledger_v3/lean/s11/POLE_FIDELITY_REVIEW.md",
+      "bytes": 7929,
+      "sha256": "cd3a0f6c121c522c989a67f5f794a4bd21cb6dd2e64452ac7ed77d09313e379f"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/lean/s11/POLE_HANDOFF.md",
+      "resolvedPath": "/var/projects/toy_physics/research/pde_ledger_v3/lean/s11/POLE_HANDOFF.md",
+      "bytes": 9841,
+      "sha256": "f0f16bf4f8370abc073f0c7b479da32a7069841312edb5fdbd370e65a337ff5c"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_d_mixing_scattering_sympy_audit.py",
+      "resolvedPath": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_d_mixing_scattering_sympy_audit.py",
+      "bytes": 545480,
+      "sha256": "5bf77729682960bb59f10c672a5fe3f67a98b0a9533da7c6189a37183596050f"
+    }
+  ],
+  "directStateChecks": {
+    "originalRealFrequency": "1",
+    "originalRealResponseScope": "Four actual case finite and independent-grade responses; finite regulator and approximate modal boundaries.",
+    "latestComplexMaterialFrequency": {
+      "real": 1.0,
+      "imag": -0.01
+    },
+    "latestComplexMaterialStatus": "ACCEPTED_BOUNDED_MATERIAL_1D_ROWS",
+    "absentExactPaths": [
+      "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_d_exports.py"
+    ],
+    "wolframTopLevelFilesMatchingS11c_d": [],
+    "retainedSuffixSha256": "f01024512c9a028e7e524e5a95b5c455be42e125d10c36f94e20493109b013c2",
+    "pausedDraftRecord": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/material-2d-routes/paused-for-scope-assessment.json"
+  },
+  "reviewInterpretation": {
+    "physicsSpecV10": "Identified round-10 Opus/Grok clearance; does not clear later changes or builds.",
+    "nonlinearPoleV2WholePhysicalDirective": "Two current-version non-author clearances not established by inspected evidence; directive explicitly disclaims independent review.",
+    "exploratoryAcceptanceChange": "User approved; separate two-leg clearance not established by inspected evidence.",
+    "boundedLeanNP1toNP4": "CLEAR by Claude and Grok for identified packet; excludes physical application and analytic existence theory.",
+    "savedResultValidators": "Do not count as two non-author physics-review legs.",
+    "thisInventory": "Unreviewed draft; no governing scope change."
+  },
+  "costEstimateStatus": "Planning judgment, not measured end-to-end forecasts; worker benchmarks are separate and review/provider delay or findings are not bounded."
+}

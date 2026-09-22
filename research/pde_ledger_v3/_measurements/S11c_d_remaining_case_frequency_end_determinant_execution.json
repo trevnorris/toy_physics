@@ -1,0 +1,91 @@
+{
+  "status": "STATIC_REVIEWED_NOT_LAUNCHED",
+  "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-determinant",
+  "helper": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_end_determinant.py",
+  "staticReview": {
+    "status": "STATIC_REVIEWED_MISSING_NATIVE_END_DETERMINANT",
+    "helperSha256": "8b73b0e48069a23c470101bf08176996fd4c3a3f878e9a5c37884444302d9f4c",
+    "planSha256": "2cb46629e207958bd63c42decf9de2d87ca6798ca269ef3348078acb9b706f7f",
+    "acceptedRationalCheckpointSha256": "d9f275cc6c266698d421ca91d0b2e895ff654d506b5243eb48d86bc1b2f4f2d7",
+    "compileOnlyPassed": true,
+    "scientificImportsOrPacketDeserialization": false,
+    "wholeNativeBodyReverseAST": {
+      "wholeNativeAST": "7b95c9f1ba6298680b15c0956eddf77ef96f5be4bd368d77883f73f9f00b60d6",
+      "entireOriginalBodyReverseAST": true,
+      "nativeOperationSites": [
+        {
+          "site": 0,
+          "call": "sp.cancel(matrix[i, j])",
+          "nativeAST": "Call(func=Attribute(value=Name(id='sp', ctx=Load()), attr='cancel', ctx=Load()), args=[Subscript(value=Name(id='matrix', ctx=Load()), slice=Tuple(elts=[Name(id='i', ctx=Load()), Name(id='j', ctx=Load())], ctx=Load()), ctx=Load())], keywords=[])"
+        },
+        {
+          "site": 1,
+          "call": "sp.denom(e)",
+          "nativeAST": "Call(func=Attribute(value=Name(id='sp', ctx=Load()), attr='denom', ctx=Load()), args=[Name(id='e', ctx=Load())], keywords=[])"
+        },
+        {
+          "site": 2,
+          "call": "sp.lcm([sp.denom(e) for e in entries])",
+          "nativeAST": "Call(func=Attribute(value=Name(id='sp', ctx=Load()), attr='lcm', ctx=Load()), args=[ListComp(elt=Call(func=Attribute(value=Name(id='sp', ctx=Load()), attr='denom', ctx=Load()), args=[Name(id='e', ctx=Load())], keywords=[]), generators=[comprehension(target=Name(id='e', ctx=Store()), iter=Name(id='entries', ctx=Load()), ifs=[], is_async=0)])], keywords=[])"
+        },
+        {
+          "site": 3,
+          "call": "sp.cancel(e * denominator)",
+          "nativeAST": "Call(func=Attribute(value=Name(id='sp', ctx=Load()), attr='cancel', ctx=Load()), args=[BinOp(left=Name(id='e', ctx=Load()), op=Mult(), right=Name(id='denominator', ctx=Load()))], keywords=[])"
+        },
+        {
+          "site": 4,
+          "call": "sp.ImmutableMatrix(rows)",
+          "nativeAST": "Call(func=Attribute(value=Name(id='sp', ctx=Load()), attr='ImmutableMatrix', ctx=Load()), args=[Name(id='rows', ctx=Load())], keywords=[])"
+        },
+        {
+          "site": 5,
+          "call": "polynomial_matrix.det(method='domain-ge')",
+          "nativeAST": "Call(func=Attribute(value=Name(id='polynomial_matrix', ctx=Load()), attr='det', ctx=Load()), args=[], keywords=[keyword(arg='method', value=Constant(value='domain-ge'))])"
+        },
+        {
+          "site": 6,
+          "call": "sp.prod(denominators)",
+          "nativeAST": "Call(func=Attribute(value=Name(id='sp', ctx=Load()), attr='prod', ctx=Load()), args=[Name(id='denominators', ctx=Load())], keywords=[])"
+        },
+        {
+          "site": 7,
+          "call": "sp.cancel(determinant / sp.prod(denominators))",
+          "nativeAST": "Call(func=Attribute(value=Name(id='sp', ctx=Load()), attr='cancel', ctx=Load()), args=[BinOp(left=Name(id='determinant', ctx=Load()), op=Div(), right=Call(func=Attribute(value=Name(id='sp', ctx=Load()), attr='prod', ctx=Load()), args=[Name(id='denominators', ctx=Load())], keywords=[]))], keywords=[])"
+        },
+        {
+          "site": 8,
+          "call": "sp.fraction(rational)",
+          "nativeAST": "Call(func=Attribute(value=Name(id='sp', ctx=Load()), attr='fraction', ctx=Load()), args=[Name(id='rational', ctx=Load())], keywords=[])"
+        }
+      ],
+      "rowReuseGuard": "full literal row/unit/coordinate/caller input",
+      "tailReuseGuard": "full literal cleared matrix/denominators/unit/coordinate/caller input",
+      "adapterSource": "def native_determinant(matrix, router):\n    \"\"\"Clear row denominators before the small exact determinant.\"\"\"\n    (denominators, rows) = ([], [])\n    for i in range(matrix.rows):\n        if router.restore_row(matrix, i, rows, denominators):\n            pass\n        else:\n            entries = [router.call(0, 'cancel', matrix[i, j]) for j in range(matrix.cols)]\n            router.observe('entries', entries)\n            denominator = router.call(2, 'lcm', [router.call(1, 'denom', e) for e in entries])\n            router.observe('denominator', denominator)\n            rows.append([router.call(3, 'cancel', e * denominator) for e in entries])\n            router.observe('clearedRow', rows[-1])\n            denominators.append(denominator)\n            router.row_complete(i, rows[-1], denominators[-1])\n    polynomial_matrix = router.call(4, 'ImmutableMatrix', rows)\n    router.observe('polynomial_matrix', polynomial_matrix)\n    if router.restore_tail(polynomial_matrix, denominators):\n        return router.finish(router.saved_tail)\n    else:\n        determinant = router.call(5, 'det', polynomial_matrix, method='domain-ge')\n        router.observe('determinant', determinant)\n        rational = router.call(7, 'cancel', determinant / router.call(6, 'prod', denominators))\n        router.observe('rational', rational)\n        return router.finish((router.call(8, 'fraction', rational), polynomial_matrix, tuple(denominators)))"
+    },
+    "purePythonNewAndSavedRowAndTailHarnessPassed": true,
+    "actualExistingRequestsAndSourcePins": 8418,
+    "acceptedOriginalDiagnosticSha256": "e27be9461983fcb9a3bfc9e531d9479c9df85ec6f7f68a1fe2502ea39155ff27",
+    "historicalDiagnosticSourceInspected": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-source-20260919/threshold-repair/diagnose.py",
+      "sha256": "1b9b3692499bc6ece29a37456c299e73b5d8945bc3d488654f2930c5259343f0"
+    },
+    "standaloneOldDeterminantValueNotFabricated": true,
+    "acceptedComplexAnalysisSourceJoined": true,
+    "actualRowTailCountsNotPrescribed": true,
+    "forbiddenScientificCallASTScanPassed": true,
+    "nativeDeterminantOperationRoutesOnly": true,
+    "noInProgressWorker": true,
+    "retainedBuilderSuffixUnchanged": true
+  },
+  "guard": {
+    "wallSeconds": 900,
+    "memoryBytes": 2147483648,
+    "swapBytes": 0,
+    "cpuCount": 1,
+    "nice": 15,
+    "tasks": 32,
+    "nativeThreads": 1
+  },
+  "launchIsAcceptance": false
+}

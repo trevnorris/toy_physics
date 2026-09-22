@@ -1,0 +1,42 @@
+{
+  "status": "STATIC_REVIEWED_NOT_LAUNCHED",
+  "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-elimination",
+  "helper": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_end_elimination.py",
+  "staticReview": {
+    "status": "STATIC_REVIEWED_MISSING_NATIVE_END_ELIMINATION",
+    "helperSha256": "c5be54b0ba2db5447307eb9e28b02ba9cb88c54aac827e5447c9fa3c878451c3",
+    "planSha256": "cfcb2d657083f77b68e23cabc9b6a74b5fa8f5ae235f85a36ce7a5516973dc30",
+    "acceptedDeterminantCheckpointSha256": "358f2f3ff6451ee419c40d9ef2befd48bfa01eb862cd3d47d55617990fc4b51c",
+    "compileOnlyPassed": true,
+    "scientificImportsOrPacketDeserialization": false,
+    "wholeNativeBodyReverseAST": {
+      "wholeNativeAST": "9671d8dc52a62500cea551a09830e1103fd7b2dcfb41a3fe949942b62a5cda41",
+      "entireOriginalBodyReverseAST": true,
+      "nativeAssignmentIndex": 19,
+      "nativeAssignmentAST": "Assign(targets=[Name(id='elimination', ctx=Store())], value=Call(func=Attribute(value=Name(id='sp', ctx=Load()), attr='resultant', ctx=Load()), args=[Name(id='numerator', ctx=Load()), Name(id='curve', ctx=Load()), Name(id='radical_coordinate', ctx=Load())], keywords=[]))",
+      "nativeCall": "sp.resultant(numerator, curve, radical_coordinate)",
+      "nativeCallAST": "Call(func=Attribute(value=Name(id='sp', ctx=Load()), attr='resultant', ctx=Load()), args=[Name(id='numerator', ctx=Load()), Name(id='curve', ctx=Load()), Name(id='radical_coordinate', ctx=Load())], keywords=[])",
+      "adapterSource": "def native_elimination(numerator, curve, radical_coordinate, router):\n    elimination = router.resultant(numerator, curve, radical_coordinate)\n    return elimination",
+      "allOtherNativeStatementsUnchangedAndUnexecuted": true
+    },
+    "purePythonNewAndSavedPersistenceHarnessPassed": true,
+    "actualExistingRequestsAndSourcePins": 8811,
+    "acceptedComplexAnalysisSourceJoined": true,
+    "fullResultantInputProvedPending": true,
+    "actualFullAnalysisCallMatchesNotAssumed": true,
+    "forbiddenScientificCallASTScanPassed": true,
+    "originalResultantOnlyScientificDispatch": true,
+    "noInProgressWorker": true,
+    "retainedBuilderSuffixUnchanged": true
+  },
+  "guard": {
+    "wallSeconds": 900,
+    "memoryBytes": 2147483648,
+    "swapBytes": 0,
+    "cpuCount": 1,
+    "nice": 15,
+    "tasks": 32,
+    "nativeThreads": 1
+  },
+  "launchIsAcceptance": false
+}

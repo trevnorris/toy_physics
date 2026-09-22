@@ -1,5 +1,5 @@
 {
-  "status": "PREPARED_SAVED_POINT_ROW_FINISH",
+  "status": "GUARDED_SAVED_POINT_FINISH_LAUNCHED",
   "root": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-pilot-recovery-02",
   "staticReview": {
     "status": "PASSED_STDLIB_SAVED_POINT_FINISH_REVIEW",
@@ -94,5 +94,77 @@
     "scientificPacketReads": 0,
     "numericalAcceptance": false
   },
-  "launchIsAcceptance": false
+  "launchIsAcceptance": false,
+  "launch": {
+    "launchedUtc": "2026-09-22T12:58:06.376766+00:00",
+    "guardPid": 1729714,
+    "watcherPid": 1729715,
+    "stage": "frequency_row_pilot_finish",
+    "command": [
+      "/usr/bin/python",
+      "/var/projects/toy_physics/scripts/s11c_guarded_run.py",
+      "--log-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-pilot-recovery-02/resource-guard",
+      "--seconds",
+      "900",
+      "--",
+      "/usr/bin/python",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-pilot-recovery-02",
+      "--stage",
+      "frequency_row_pilot_finish",
+      "--",
+      "/usr/bin/python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_row_pilot_finish.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-pilot-recovery-02/complete"
+    ],
+    "helperSha256": "8d53210471fce736e399eac96fa955eb386e413f8c8be7d14a57a93296ffa03d",
+    "planSha256": "e8f776ff67a9afd80bcb19ddac3ea671c5f1e2f0bd0b1890e2c371a797c36010",
+    "staticReviewSha256": "b273bf1178d09e8ddfc8adfc2b666de69fc5f63ea1fe7ec47967535e19d3976e",
+    "guardSha256": "6492f5ab11dc2ab2f80bbfcc96d7eb6b8632afea07100dd8f74a7954f3ffe542",
+    "implementationCommit": "abc3d782ae5b65399132134da2fb9f6aca8b8a3d",
+    "scope": "Finish only the incomplete GK15 comparison using4096saved fullpoints and completedGK21/source/control returns. Additionalpointallowance4096 basedactualmeasuredcost; no frequency/domain/tolerance change.",
+    "launchIsAcceptance": false
+  },
+  "initialContainmentInspection": {
+    "status": "INITIAL_CONTAINMENT_VERIFIED",
+    "limits": {
+      "memory.max": "2147483648",
+      "memory.swap.max": "0",
+      "pids.max": "32",
+      "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-a1fbe5b154e8.service",
+      "nice": 15,
+      "affinity": [
+        15
+      ],
+      "threads": {
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "VECLIB_MAXIMUM_THREADS": "1",
+        "BLIS_NUM_THREADS": "1"
+      }
+    },
+    "active": {
+      "stage": "frequency_row_pilot_finish",
+      "command": [
+        "/usr/bin/python",
+        "-u",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_row_pilot_finish.py",
+        "--run-directory",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-pilot-recovery-02/complete"
+      ],
+      "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-pilot-recovery-02/frequency_row_pilot_finish.stdout",
+      "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-pilot-recovery-02/frequency_row_pilot_finish.stderr",
+      "startedUtc": "2026-09-22T12:58:06.533073+00:00",
+      "childPid": 1729721,
+      "status": "running"
+    },
+    "strictStderrBytes": 0,
+    "oneInitialCheckOnly": true
+  }
 }

@@ -11,3 +11,7 @@ Another4096 unique-point allowance is based on the measured15.935s first rule;
 frequency, physical domains, tolerances and interval cap remain unchanged.
 No first-rule, coefficient, Fourier or integrand replay at a completed point.
 A clean guarded result and bounded saved review are required before acceptance.
+
+Launched implementationabc3d782 under the verified900s whole-job2GiB zero-swap
+oneCPU nice15 pids32 nativeThreads1 guard. One initial containment check and
+silent completion/error hook recorded; no repeated health polling.

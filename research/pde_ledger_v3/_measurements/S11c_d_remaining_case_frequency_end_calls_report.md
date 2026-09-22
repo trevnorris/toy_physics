@@ -15,3 +15,8 @@ sources are references, avoiding another 146 MB copy.
 Final guarded completion and hash checks are required before these routing
 results can guide missing native end operations. All previous accepted
 science, failed readers and logs remain immutable.
+
+The reviewed worker was launched from `ca1c75a3` under verified whole-job
+2 GiB, zero-swap, one-CPU, nice-15, 32-task, one-native-thread limits.
+The single initial inspection found empty strict stderr; the silent local
+completion/error hook is active. Launch does not establish acceptance.

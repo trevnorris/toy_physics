@@ -1,5 +1,5 @@
 {
-  "status": "PREPARED_MISSING_SCALAR_BINDINGS",
+  "status": "CLEAN_SCALAR_BINDINGS_REQUIRES_BOUNDED_SAVED_REVIEW",
   "root": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/scalar-bindings",
   "staticReview": {
     "status": "PASSED_STDLIB_NATIVE_SCALAR_LOOP_REVIEW",
@@ -17,5 +17,86 @@
     "unexecutedSourceJetsAndNumericalSuffix": true,
     "baselineAndPilotMapBodiesNeverCalled": true
   },
-  "launchIsAcceptance": false
+  "launchIsAcceptance": false,
+  "launch": {
+    "launchedUtc": "2026-09-22T11:41:13.472288+00:00",
+    "guardPid": 1198419,
+    "watcherPid": 1198420,
+    "stage": "frequency_scalar_bindings",
+    "command": [
+      "/usr/bin/python",
+      "/var/projects/toy_physics/scripts/s11c_guarded_run.py",
+      "--log-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/scalar-bindings/resource-guard",
+      "--seconds",
+      "900",
+      "--",
+      "/usr/bin/python",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/scalar-bindings",
+      "--stage",
+      "frequency_scalar_bindings",
+      "--",
+      "/usr/bin/python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_scalar_bindings.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/scalar-bindings/complete"
+    ],
+    "helperSha256": "ba3fb0ee77dd0003b6139d63824e568b4b9ae1a6781f2fc8e70182232443d74f",
+    "planSha256": "2e0512ecc89442267e772f0c1fdb405c5c755c328c22dac9fa61b42088000d9b",
+    "staticReviewSha256": "1b0332a6f7b7b2bffd026ca155e9552c6a05020d2276e3eac5e8b13588c8701d",
+    "guardSha256": "6492f5ab11dc2ab2f80bbfcc96d7eb6b8632afea07100dd8f74a7954f3ffe542",
+    "implementationCommit": "b49e76a5b3765976b52eb8664fba6ff006728dfd",
+    "scope": "Only missing complete native scalar frequency substitutions at1-0.01i plus exact saved end-map routes. No old binding, derivative, end, map, quadrature or solve replay; no acceptance at launch.",
+    "launchIsAcceptance": false
+  },
+  "initialContainmentInspection": {
+    "status": "INITIAL_CONTAINMENT_VERIFIED",
+    "limits": {
+      "memory.max": "2147483648",
+      "memory.swap.max": "0",
+      "pids.max": "32",
+      "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-493218bc7bee.service",
+      "nice": 15,
+      "affinity": [
+        15
+      ],
+      "threads": {
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "VECLIB_MAXIMUM_THREADS": "1",
+        "BLIS_NUM_THREADS": "1"
+      }
+    },
+    "observedStage": "frequency_scalar_bindings",
+    "observedChildPid": 1198426,
+    "observedStatus": "completed",
+    "observedStrictStderrBytes": 0,
+    "oneInitialCheckOnly": true,
+    "launchIsAcceptance": false
+  },
+  "completion": {
+    "status": "CLEAN_SCALAR_BINDINGS_REQUIRES_BOUNDED_SAVED_REVIEW",
+    "actualExits": [
+      0,
+      0,
+      0
+    ],
+    "checksSha256": "87a03a6ec9d2f89e9a0cb9e146d0d3f5d616bd3975e9723878c36c8ff8d17b46",
+    "workerWallSeconds": 15.815129920010804,
+    "nativeWallSeconds": 17.365336468996247,
+    "guardWallSeconds": 17.55982963499264,
+    "emptyStrictStderr": true,
+    "checksStdoutIdentity": true,
+    "peakBytes": 163860480,
+    "zeroCapOOMSwap": true,
+    "newCalls": 63,
+    "physicalRecords": 1467,
+    "newEndMapCalls": 0,
+    "completedArtifacts": 222
+  }
 }

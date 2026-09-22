@@ -1,0 +1,13 @@
+{
+  "status": "PREPARED_BOUNDED_SAVED_REVIEW",
+  "root": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/scalar-binding-review",
+  "staticReview": {
+    "status": "PASSED_STATIC_SAVED_SCALAR_REVIEW",
+    "helperSha256": "514cf4454b2732d6e85b523593330334917b7c98f178a4b3b89bd7de8c94ecf9",
+    "planSha256": "c2904c1766eab857994c120c6b2c600a4aaed9ce343822fdde9c7eff69020eac",
+    "sourceCompiles": true,
+    "noScientificCallsOrPhysicalPickleWrites": true,
+    "nativePickleCodecUnchanged": true
+  },
+  "launchIsAcceptance": false
+}

@@ -1,5 +1,5 @@
 {
-  "status": "GUARDED_SAVED_REFERENCE_CONTINUATION_RUNNING",
+  "status": "COMPLETED_PENDING_INDEPENDENT_SAVED_VALIDATION",
   "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-complex-threshold-recovery-03",
   "helper": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_end_complex_threshold_link_finish.py",
   "staticReview": {
@@ -282,5 +282,169 @@
     "observedStrictStderrBytes": 0,
     "oneInitialCheckOnly": true,
     "launchIsAcceptance": false
+  },
+  "finalOutcome": {
+    "status": "CLEAN_SAVED_COMPLEX_THRESHOLD_CONTINUATION_REQUIRES_INDEPENDENT_VALIDATION",
+    "producerRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-complex-threshold-recovery-03",
+    "checksSha256": "79c5e547fcfa100596acb91011f1752f049d22842b01defd431e182c82ff9b67",
+    "workerSeconds": 167.37518544400518,
+    "supervisor": {
+      "stage": "frequency_end_complex_threshold_link_finish",
+      "command": [
+        "/usr/bin/python",
+        "-u",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_end_complex_threshold_link_finish.py",
+        "--run-directory",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-complex-threshold-recovery-03/complete"
+      ],
+      "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-complex-threshold-recovery-03/frequency_end_complex_threshold_link_finish.stdout",
+      "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-complex-threshold-recovery-03/frequency_end_complex_threshold_link_finish.stderr",
+      "startedUtc": "2026-09-22T07:32:19.518891+00:00",
+      "childPid": 1131911,
+      "status": "completed",
+      "exitCode": 0,
+      "wallSeconds": 169.4828829629987,
+      "stderrBytes": 0,
+      "finishedUtc": "2026-09-22T07:35:09.001818+00:00"
+    },
+    "guard": {
+      "exitCode": 0,
+      "wallSeconds": 169.63793199200882,
+      "unit": "s11c-guard-21ec9d6477d4",
+      "stderrBytes": 0,
+      "limitsVerified": true,
+      "childOutcome": {
+        "exitCode": 0,
+        "guardReason": null,
+        "wallSeconds": 169.55534421899938,
+        "childPid": 1131910
+      }
+    },
+    "child": {
+      "exitCode": 0,
+      "guardReason": null,
+      "wallSeconds": 169.55534421899938,
+      "childPid": 1131910
+    },
+    "effectiveLimits": {
+      "memory.max": "2147483648",
+      "memory.swap.max": "0",
+      "pids.max": "32",
+      "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-21ec9d6477d4.service",
+      "nice": 15,
+      "affinity": [
+        15
+      ],
+      "threads": {
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "VECLIB_MAXIMUM_THREADS": "1",
+        "BLIS_NUM_THREADS": "1"
+      }
+    },
+    "inventories": {
+      "sourceFiles": 215,
+      "inputPackets": 117632,
+      "referencedInputs": 10200,
+      "artifacts": 9806
+    },
+    "actualOperationCalls": 58,
+    "operationCounts": {
+      "sp.Poly": {
+        "new": 4,
+        "reused": 0
+      },
+      "method.monic": {
+        "new": 1,
+        "reused": 0
+      },
+      "method.as_expr": {
+        "new": 11,
+        "reused": 10
+      },
+      "sp.re": {
+        "new": 1,
+        "reused": 0
+      },
+      "method.expand": {
+        "new": 2,
+        "reused": 0
+      },
+      "sp.im": {
+        "new": 1,
+        "reused": 0
+      },
+      "operator.Sub": {
+        "new": 4,
+        "reused": 0
+      },
+      "operator.Mult": {
+        "new": 4,
+        "reused": 0
+      },
+      "sp.expand": {
+        "new": 3,
+        "reused": 0
+      },
+      "sp.gcd": {
+        "new": 1,
+        "reused": 0
+      },
+      "method.sqf_part": {
+        "new": 2,
+        "reused": 0
+      },
+      "sp.div": {
+        "new": 2,
+        "reused": 0
+      },
+      "sp.gcdex": {
+        "new": 1,
+        "reused": 0
+      },
+      "operator.Add": {
+        "new": 1,
+        "reused": 0
+      },
+      "operator.Pow": {
+        "new": 3,
+        "reused": 0
+      },
+      "sp.Rational": {
+        "new": 1,
+        "reused": 0
+      },
+      "method.intervals": {
+        "new": 1,
+        "reused": 0
+      },
+      "sp.factor_list": {
+        "new": 1,
+        "reused": 0
+      },
+      "sp.prod": {
+        "new": 1,
+        "reused": 0
+      },
+      "method.count_roots": {
+        "new": 3,
+        "reused": 0
+      }
+    },
+    "newNativeAnalysisOrProofCalls": 0,
+    "realCommonRootIntervals": 2,
+    "actualMutationControls": 5,
+    "allSourceInputArtifactReferenceHashesRechecked": true,
+    "checksStdoutByteIdentity": true,
+    "resources": {
+      "peakBytes": 762892288,
+      "minimumHostAvailableBytes": 23248478208,
+      "capReclaims": 0,
+      "oomEvents": 0,
+      "swapBytes": 0
+    },
+    "acceptance": false
   }
 }

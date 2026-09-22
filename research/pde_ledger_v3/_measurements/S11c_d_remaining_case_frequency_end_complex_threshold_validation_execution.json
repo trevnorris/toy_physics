@@ -1,0 +1,33 @@
+{
+  "status": "SAVED_VALIDATOR_STATIC_REVIEW_PASSED",
+  "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-complex-threshold-acceptance",
+  "producerRunDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-complex-threshold-recovery-03/complete",
+  "producerChecksSha256": "79c5e547fcfa100596acb91011f1752f049d22842b01defd431e182c82ff9b67",
+  "validator": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-complex-threshold-acceptance/validate.py",
+    "sha256": "0e2dd119a77c094265ae6a9417ba7d28d2836253ac7b92e3db415f29bf24fccf"
+  },
+  "plan": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_end_complex_threshold_validation_plan.md",
+    "sha256": "77bb7fa47e55ac46efc9ec9ab241d608d87f9f049943d498d46846e7c2e7709e"
+  },
+  "staticReview": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-complex-threshold-acceptance/static-review.json",
+    "sha256": "ab1b32215f71c40a3cca189a43f7558f11b9ff32c228c9f181779f4e93bf154f"
+  },
+  "metadataHarness": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-complex-threshold-acceptance/metadata-dataflow-harness.json",
+    "sha256": "d9d3b5bf330cfc3b78eea9f183251bf6372376a20f68713bdb19e075e641c048"
+  },
+  "guard": {
+    "seconds": 900,
+    "memoryBytes": 2147483648,
+    "swapBytes": 0,
+    "cpus": 1,
+    "nice": 15,
+    "tasks": 32,
+    "nativeThreads": 1
+  },
+  "scientificOperationOrProofArithmeticToRepeat": false,
+  "launchIsAcceptance": false
+}

@@ -23,3 +23,16 @@ inspection verified 900 seconds, 2 GiB, zero swap, one CPU, nice 15, 32 tasks
 and one native thread. At inspection its status was running with 0
 strict-stderr bytes. The local completion/error hook handles waiting silently.
 Final guard completion and independent saved validation remain required.
+
+Final completion: 167.375185444 worker / 169.482882963 native /
+169.637931992 guard seconds, all actual exits zero, empty strict stderr and
+checks/stdout byte identity. Checks SHA
+79c5e547fcfa100596acb91011f1752f049d22842b01defd431e182c82ff9b67.
+All 215 sources, 117,632 inputs, 10,200 references and 9,806 artifacts passed
+pre/post identities. Peak 762,892,288 bytes, zero cap/OOM/swap, minimum host
+availability 23,248,478,208 bytes. All 58 completed receipts/four native guards
+were reused; zero new analysis/proof calls. Eight routes, four cases and five
+actual controls passed. The saved squarefree common factor is frequency
+coordinate squared minus 3/40, with two native algebraic candidate intervals.
+This is not physical threshold/domain acceptance. Independent saved validation
+is next; no completed calculation will repeat.

@@ -88,3 +88,18 @@ containment is verified with empty strict stderr: 2 GiB, zero swap, one CPU,
 nice 15, 32 tasks and one native thread. A silent local completion/error hook
 will resume this task. The original failed run remains untouched; launch is
 not scientific acceptance.
+
+Recovery completed in 79.32 worker / 81.13 native seconds with actual final
+guard/supervisor/child zero, empty strict stderr and checks/stdout identity.
+It retained all 4,317 prior files and produced the 63 missing analytic records
+(29/24/10), two denominator classifications and four complete case packets.
+Actual proof routes contain 69 new / 57 reused derivatives, 65 new lifts,
+20 new certificates and 40 seed-root calls to six saved identities. All
+1,467 records, 300 rows, 647 terms and 120 sources remain. Inventories contain
+146 sources, 19,499 inputs, 4,748 references and 6,561 artifacts. Peak memory
+402,722,816 bytes; zero cap/OOM/swap, minimum host availability 23.84 GB.
+
+Independent saved validation is prepared. It checks each actual input/value/
+proof/caller, raw units and complete aliases with all hashes and native source
+joins. It does not differentiate, lift, normalize or reconstruct certificates.
+No analytic acceptance is claimed before its clean final guard outcome.

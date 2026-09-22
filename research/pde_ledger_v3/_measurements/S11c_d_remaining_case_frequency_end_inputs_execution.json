@@ -1,5 +1,5 @@
 {
-  "status": "LAUNCHED_CASE_FREQUENCY_END_INPUT_ARRAY_READER_CONTINUATION",
+  "status": "REVIEWED_CASE_FREQUENCY_END_INPUT_SUMMARY_CONTINUATION",
   "helper": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_end_inputs.py",
   "plan": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_end_inputs_plan.md",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-inputs",
@@ -254,7 +254,7 @@
     "failure": "Scalar comparator bool(ndarray == ndarray) inside first baseline proof group; no completed end/case or mutations.",
     "originalCaseOrEndChecksRepeated": false
   },
-  "recovery": {
+  "firstArrayReaderContinuation": {
     "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-inputs-recovery-01",
     "helper": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_end_inputs_recover.py",
     "plan": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_end_inputs_recovery_plan.md",
@@ -349,5 +349,83 @@
       },
       "isAcceptance": false
     }
+  },
+  "summaryContinuation": {
+    "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-inputs-recovery-02",
+    "helper": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_end_inputs_finish.py",
+    "plan": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_end_inputs_finish_plan.md",
+    "staticReview": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-inputs-recovery-02/static-review.json",
+    "previousFailure": {
+      "invocation": {
+        "stage": "frequency_end_inputs_recover",
+        "command": [
+          "/usr/bin/python",
+          "-u",
+          "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_end_inputs_recover.py",
+          "--run-directory",
+          "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-inputs-recovery-01/complete"
+        ],
+        "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-inputs-recovery-01/frequency_end_inputs_recover.stdout",
+        "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-inputs-recovery-01/frequency_end_inputs_recover.stderr",
+        "startedUtc": "2026-09-22T02:03:57.014844+00:00",
+        "childPid": 1012621,
+        "status": "failed",
+        "exitCode": 1,
+        "wallSeconds": 48.84030352499394,
+        "stderrBytes": 589,
+        "finishedUtc": "2026-09-22T02:04:45.855197+00:00"
+      },
+      "guard": {
+        "exitCode": 1,
+        "wallSeconds": 49.033555997986696,
+        "unit": "s11c-guard-e0e36782ffd8",
+        "stderrBytes": 0,
+        "limitsVerified": true,
+        "childOutcome": {
+          "exitCode": 1,
+          "guardReason": null,
+          "wallSeconds": 48.94720880499517,
+          "childPid": 1012620
+        }
+      },
+      "limits": {
+        "verified": true,
+        "actual": {
+          "memory.max": "2147483648",
+          "memory.swap.max": "0",
+          "pids.max": "32",
+          "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-e0e36782ffd8.service",
+          "nice": 15,
+          "affinity": [
+            15
+          ],
+          "threads": {
+            "OPENBLAS_NUM_THREADS": "1",
+            "OMP_NUM_THREADS": "1",
+            "MKL_NUM_THREADS": "1",
+            "NUMEXPR_NUM_THREADS": "1",
+            "VECLIB_MAXIMUM_THREADS": "1",
+            "BLIS_NUM_THREADS": "1"
+          }
+        }
+      },
+      "memoryPeakBytes": 586321920,
+      "minimumHostAvailableBytes": 23443075072,
+      "capEvents": 0,
+      "oomEvents": 0,
+      "swapBytes": 0,
+      "finalChecksExist": false,
+      "failure": "UnboundLocalError selected at unchanged summary line95 after completed first LEFT proof/control guards.",
+      "completedEndSummaryExists": false,
+      "completedLeftControlReceipt": {
+        "coefficient": true,
+        "unit": true,
+        "frequency": true,
+        "address": true,
+        "selectedVector": true
+      }
+    },
+    "completedLeftProofAndControlsReused": true,
+    "newScience": false
   }
 }

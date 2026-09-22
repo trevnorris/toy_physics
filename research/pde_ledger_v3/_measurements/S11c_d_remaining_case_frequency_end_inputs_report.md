@@ -1,31 +1,30 @@
 # Remaining-case frequency end inputs
 
-Analytic sources remain accepted at da5d7c52. The saved end-input catalogue
-stopped after 46.30 native seconds at its first baseline proof group: the
-scalar comparator tried to convert a NumPy array comparison to Boolean.
-Guard/supervisor/child exited 1. Peak memory was 369,737,728 bytes, with no
-cap events, OOM or swap; the host retained at least 23.73 GB available.
+Analytic sources remain accepted at da5d7c52. The original saved-input
+catalogue stopped at an array-reader boundary after 46.30 native seconds.
+The first continuation passed six exact array-reader controls and the full
+baseline LEFT proof/mutation guards, then stopped after 48.84 native seconds
+because its summary lacked the restored `selected` local. No end/case summary
+or final acceptance exists. Both failure directories and helpers remain
+immutable.
 
-All 6,866 completed files, including 6,678 accepted references and five
-baseline context/end input packets, remain immutable. No end/case summary,
-mutation controls, new scientific construction or acceptance completed.
-The reviewed recovery uses the existing exact array-aware comparator and
-restores the completed context/selection prefix from saved packets and exact
-source/hash routes. It retains the entire unfinished baseline proof group
-and every subsequent guard, with whole original prepare/main source joins.
+The latest failure used 586,321,920 bytes peak, with zero cap events, OOM
+or swap and at least 23.44 GB host memory available. It is a continuation
+bookkeeping error. All 6,905 files, 184 source pins, 32,878 inputs and 6,710
+reference routes remain intact, including completed LEFT proof operands and
+five responding mutation controls.
 
-A fresh reference workspace avoids large copies. Reader controls explicitly
-check changed dtype, shape, value and container using an actual saved vector.
-After a clean guarded completion, independent saved-only validation and a
-separate end-input checkpoint remain required. Source-input candidate counts
-must come from saved results and do not establish numerical reuse.
+The reviewed fresh continuation restores all eight variables consumed by
+the unchanged summary/signature suffix. A static AST dependency check and
+metadata-only suffix harness verify the complete local list. The selected
+items come directly from their saved list. Completed case-prefix, LEFT proof,
+selection and mutation checks and array controls are reused through their
+actual source/input/hash/receipt joins; none is executed again. The original
+main, remaining seven end-input paths and final hash guards are unchanged.
 
-Actual end-domain construction and continuation, own frequency pencils,
-scoped searches and final all-case engine/exports remain pending. Fixed
-omega=1 matrices and scalar real-Fourier-momentum chart bounds cannot supply
-complex outgoing-end domains. Approved scope and earlier science stay fixed.
-
-The reviewed continuation launched at 2026-09-22T02:03:56Z from 50f0589f.
-The initial check verified 2 GiB, zero swap, one CPU, nice 15, 32 tasks and
-one native thread, with empty strict stderr and the silent hook armed.
-Launch does not establish acceptance.
+Reference storage avoids large copies. Final clean guard/supervisor/child
+outcomes, empty stderr and checks/stdout identity must precede independent
+saved validation and separate end-input acceptance. Source-input candidate
+counts do not establish numerical reuse. Actual end-domain continuation,
+own frequency pencils, scoped searches and final all-case engine/exports
+remain pending under the approved settings and limitations.

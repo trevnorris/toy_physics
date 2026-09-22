@@ -19,3 +19,8 @@ Five saved input/owner/proof changes respond without rerunning analysis. Final
 clean guard/hash checks and independent saved validation precede acceptance.
 Physical threshold classification, outgoing complex domains, whole-cluster
 continuation and numerical reuse remain pending.
+
+The guarded worker launched from `867a4246`. Its single initial containment
+inspection verified 900 seconds, 2 GiB, zero swap, one CPU, nice15, 32 tasks
+and nativeThreads1 with empty strict stderr. The silent local completion/error
+hook handles waiting. No launch or early output establishes acceptance.

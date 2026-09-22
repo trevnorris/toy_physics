@@ -1,5 +1,5 @@
 {
-  "status": "PREPARED_SAVED_ROW_INPUT_INSPECTION",
+  "status": "GUARDED_SAVED_ROW_INPUT_READER_LAUNCHED",
   "root": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-inputs",
   "staticReview": {
     "status": "PASSED_STDLIB_SAVED_ROW_INPUT_REVIEW",
@@ -10,5 +10,77 @@
     "fullSourceAndUnitSignatureFields": true,
     "sourceBasisCandidatesNotAcceptedReuse": true
   },
-  "launchIsAcceptance": false
+  "launchIsAcceptance": false,
+  "launch": {
+    "launchedUtc": "2026-09-22T12:20:29.636359+00:00",
+    "guardPid": 1217859,
+    "watcherPid": 1217860,
+    "stage": "frequency_row_inputs",
+    "command": [
+      "/usr/bin/python",
+      "/var/projects/toy_physics/scripts/s11c_guarded_run.py",
+      "--log-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-inputs/resource-guard",
+      "--seconds",
+      "900",
+      "--",
+      "/usr/bin/python",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-inputs",
+      "--stage",
+      "frequency_row_inputs",
+      "--",
+      "/usr/bin/python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_row_inputs.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-inputs/complete"
+    ],
+    "helperSha256": "e58861dcb1a3c0c873606de4783929d0452b9e2df0a2a1a4bed5a52885fc8505",
+    "planSha256": "4aea9d320f4297c0c8cd0eeb5129c7d9483b24e3383d78796a14fbabf5c399a0",
+    "staticReviewSha256": "08f4b7578f696293f54ccba0d04defb9435fc8a60cbe260ff18cc898c8b3b266",
+    "guardSha256": "6492f5ab11dc2ab2f80bbfcc96d7eb6b8632afea07100dd8f74a7954f3ffe542",
+    "implementationCommit": "96b9a9522acdd484aedfe25f6145478b1f1a70dd",
+    "scope": "Saved full row inputs and source-basis arrays only. No new numerical/symbolic science or reuse acceptance.",
+    "launchIsAcceptance": false
+  },
+  "initialContainmentInspection": {
+    "status": "INITIAL_CONTAINMENT_VERIFIED",
+    "limits": {
+      "memory.max": "2147483648",
+      "memory.swap.max": "0",
+      "pids.max": "32",
+      "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-68ef8f9ae927.service",
+      "nice": 15,
+      "affinity": [
+        15
+      ],
+      "threads": {
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "VECLIB_MAXIMUM_THREADS": "1",
+        "BLIS_NUM_THREADS": "1"
+      }
+    },
+    "active": {
+      "stage": "frequency_row_inputs",
+      "command": [
+        "/usr/bin/python",
+        "-u",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_row_inputs.py",
+        "--run-directory",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-inputs/complete"
+      ],
+      "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-inputs/frequency_row_inputs.stdout",
+      "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-inputs/frequency_row_inputs.stderr",
+      "startedUtc": "2026-09-22T12:20:29.792598+00:00",
+      "childPid": 1217866,
+      "status": "running"
+    },
+    "strictStderrBytes": 0,
+    "oneInitialCheckOnly": true
+  }
 }

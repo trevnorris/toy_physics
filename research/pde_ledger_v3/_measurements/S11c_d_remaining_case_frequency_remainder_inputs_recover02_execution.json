@@ -1,5 +1,5 @@
 {
-  "status": "PREPARED_NOT_LAUNCHED",
+  "status": "FAILED_INTEGER_METADATA_SERIALIZATION_NO_SCIENCE",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/remainder-inputs-recovery-02",
   "stage": "frequency_remainder_inputs_recover02",
   "helperSha256": "01f8834240d367b5653a99e1c290391fa49305dca166f11a7af00e6a03dd2c63",
@@ -40,5 +40,101 @@
     "completedMetadataFiles": 0,
     "newScientificCalls": 0,
     "failure": "Namespace is AnnAssign in actual user-local SymPy; initial static fixture was system SymPy Assign. No algorithm ran."
+  },
+  "launch": {
+    "launchedUtc": "2026-09-22T14:49:51.777936+00:00",
+    "guardPid": 1780325,
+    "watcherPid": 1780326,
+    "stage": "frequency_remainder_inputs_recover02",
+    "command": [
+      "/usr/bin/python",
+      "/var/projects/toy_physics/scripts/s11c_guarded_run.py",
+      "--log-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/remainder-inputs-recovery-02/resource-guard",
+      "--seconds",
+      "900",
+      "--",
+      "/usr/bin/python",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/remainder-inputs-recovery-02",
+      "--stage",
+      "frequency_remainder_inputs_recover02",
+      "--",
+      "/usr/bin/python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_remainder_inputs_recover02.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/remainder-inputs-recovery-02/complete"
+    ],
+    "helperSha256": "01f8834240d367b5653a99e1c290391fa49305dca166f11a7af00e6a03dd2c63",
+    "planSha256": "c9859c2f032af8de681c1a9f5d7e2ab4776f46426436f9a0f965ea2595c2af2f",
+    "staticReviewSha256": "696c274f5916f21810df47a1c8ec58b27f3823347ff858f0b9cb605e7d4c0822",
+    "guardSha256": "6492f5ab11dc2ab2f80bbfcc96d7eb6b8632afea07100dd8f74a7954f3ffe542",
+    "implementationCommit": "bc2be014cea45221bfddf5c85786beffa93208ff",
+    "scope": "Saved source/profile operands only for unfinished rows51--54, no science or physical packet writes.",
+    "launchIsAcceptance": false
+  },
+  "failure": {
+    "actualExits": [
+      1,
+      1,
+      1
+    ],
+    "nativeSeconds": 4.22570572400582,
+    "guardSeconds": 4.373540813001455,
+    "guardReason": null,
+    "strictStderrBytes": 1801,
+    "peakBytes": 101056512,
+    "resourceSamples": [
+      {
+        "utc": "2026-09-22T14:49:51.860800+00:00",
+        "hostAvailableBytes": 23218061312,
+        "memory.current": "7090176",
+        "memory.peak": "7090176",
+        "memory.swap.current": "0",
+        "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0",
+        "memory.pressure": "some avg10=0.00 avg60=0.00 avg300=0.00 total=0\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0",
+        "pids.current": "1"
+      },
+      {
+        "utc": "2026-09-22T14:49:53.862973+00:00",
+        "hostAvailableBytes": 23215407104,
+        "memory.current": "91070464",
+        "memory.peak": "91070464",
+        "memory.swap.current": "0",
+        "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0",
+        "memory.pressure": "some avg10=0.00 avg60=0.00 avg300=0.00 total=0\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0",
+        "pids.current": "3"
+      },
+      {
+        "utc": "2026-09-22T14:49:55.863560+00:00",
+        "hostAvailableBytes": 23206277120,
+        "memory.current": "100532224",
+        "memory.peak": "100532224",
+        "memory.swap.current": "0",
+        "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0",
+        "memory.pressure": "some avg10=0.00 avg60=0.00 avg300=0.00 total=0\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0",
+        "pids.current": "3"
+      },
+      {
+        "utc": "2026-09-22T14:49:56.178802+00:00",
+        "hostAvailableBytes": 23293906944,
+        "memory.current": "7860224",
+        "memory.peak": "101056512",
+        "memory.swap.current": "0",
+        "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0",
+        "memory.pressure": "some avg10=0.00 avg60=0.00 avg300=0.00 total=0\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0",
+        "pids.current": "1"
+      }
+    ],
+    "completedMetadata": [
+      "native-caller-and-unsaved-internal-history.json"
+    ],
+    "partialEmptyMetadata": [
+      "rows/51.json"
+    ],
+    "newScientificCalls": 0,
+    "failure": "Native SymPy Integer in unit metadata is not handled by stdlib JSON; actual physical source/value unaffected."
   }
 }

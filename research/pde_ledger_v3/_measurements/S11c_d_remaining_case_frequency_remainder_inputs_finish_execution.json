@@ -1,0 +1,27 @@
+{
+  "status": "PREPARED_NOT_LAUNCHED",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/remainder-inputs-recovery-03",
+  "stage": "frequency_remainder_inputs_finish",
+  "helperSha256": "c821f16117bcefe7f4e8d238179edfb0e3091cba3a93c0eed96021b676e199df",
+  "planSha256": "9103ccfdc9a2ae9a6998d0d2adb907969ca5a679a69bece839d26cc46d71e5e5",
+  "priorFailure": {
+    "actualExits": [
+      1,
+      1,
+      1
+    ],
+    "nativeSeconds": 4.22570572400582,
+    "guardSeconds": 4.373540813001455,
+    "guardReason": null,
+    "strictStderrBytes": 1801,
+    "peakBytes": 101056512,
+    "completedMetadata": [
+      "native-caller-and-unsaved-internal-history.json"
+    ],
+    "partialEmptyMetadata": [
+      "rows/51.json"
+    ],
+    "newScientificCalls": 0,
+    "failure": "Native SymPy Integer in unit metadata is not handled by stdlib JSON; actual physical source/value unaffected."
+  }
+}

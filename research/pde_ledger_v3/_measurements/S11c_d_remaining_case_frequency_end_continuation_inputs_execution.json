@@ -1,0 +1,20 @@
+{
+  "status": "PREPARED_SAVED_INPUT_INSPECTION",
+  "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-continuation-inputs/complete",
+  "root": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-continuation-inputs",
+  "stage": "frequency_end_continuation_inputs",
+  "staticReview": {
+    "status": "PASSED_STDLIB_ONLY_METADATA_HARNESS",
+    "helperSha256": "9192296c7d060e176c321b4c0db4af888a038027a364e655ec489208f42a238f",
+    "planSha256": "5eb3369d0316dc0152012d8ebe842a0d1515d2f400675c2c00124a7f6842be1c",
+    "opaqueFullInputFixture": true,
+    "noScientificImportsOrDeserialization": true,
+    "actualSameComparatorRejectsChangedColumnDtypeContainer": true,
+    "existingAndSymlinkParentWritesRejected": true,
+    "nativeFunctionsExecuted": false,
+    "newScope": "saved input inspection, not a science construction or acceptance"
+  },
+  "practicalAcceptance": "exploratoryAcceptanceV1",
+  "newScientificCalls": 0,
+  "launchIsAcceptance": false
+}

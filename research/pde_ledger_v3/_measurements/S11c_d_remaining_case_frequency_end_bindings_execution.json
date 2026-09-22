@@ -1,0 +1,69 @@
+{
+  "status": "STATIC_REVIEWED_NOT_LAUNCHED",
+  "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-bindings",
+  "helper": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_end_bindings.py",
+  "staticReview": {
+    "status": "STATIC_REVIEWED_MISSING_NATIVE_END_BINDING_PREFIX",
+    "helperSha256": "797db4cdb3b5c0778c0334933d1a89034b837e72e7e0ff8691a703436918ed2c",
+    "planSha256": "c0860e67dc06ba607e457985240b47e29ce471f6a55ab55ff42f153216fd0a40",
+    "acceptedCoordinateCheckpointSha256": "3a7811b4bf3584ea071f338aca105645d6e36786b2cfe0642bec41a10f743141",
+    "compileOnlyPassed": true,
+    "scientificImportsOrPacketDeserialization": false,
+    "wholeNativeBodyReverseAST": {
+      "wholeNativeAST": "9671d8dc52a62500cea551a09830e1103fd7b2dcfb41a3fe949942b62a5cda41",
+      "routes": {
+        "modes.analytic(uniform['records'][label]['strong'])": "router.algebraic(uniform['records'][label]['strong'])",
+        "inp.mapping(algebraic, relation, (r.omega, modes.k, modes.q, *inp.origin))": "router.mapping(algebraic, relation, (r.omega, modes.k, modes.q, *inp.origin))",
+        "algebraic.xreplace(mapping).subs(origin).xreplace({r.omega: frequency})": "router.bind('PENCIL_PLUS', algebraic, mapping, origin, r.omega, frequency)",
+        "relation.xreplace(mapping).subs(origin).xreplace({r.omega: frequency})": "router.wave(relation, mapping, origin, r.omega, frequency)",
+        "(live.subs(frequency, inp.parameters['omega']) - old['freshPencil']).applyfunc(sp.cancel)": "router.seed_matrix(live, frequency, inp.parameters['omega'], old['freshPencil'])",
+        "sp.cancel(wave.subs(frequency, inp.parameters['omega']) - old['curve'])": "router.seed_wave(wave, frequency, inp.parameters['omega'], old['curve'])",
+        "-sp.diff(wave, frequency) / sp.diff(wave, modes.q)": "router.transport(wave, frequency, modes.q)",
+        "live.diff(frequency) + live.diff(modes.q) * transport": "router.derivative(live, frequency, modes.q, transport)",
+        "sp.cancel(wave.diff(frequency) + wave.diff(modes.q) * transport)": "router.tangency(wave, frequency, modes.q, transport)"
+      },
+      "counts": {
+        "modes.analytic(uniform['records'][label]['strong'])": 1,
+        "inp.mapping(algebraic, relation, (r.omega, modes.k, modes.q, *inp.origin))": 1,
+        "algebraic.xreplace(mapping).subs(origin).xreplace({r.omega: frequency})": 1,
+        "relation.xreplace(mapping).subs(origin).xreplace({r.omega: frequency})": 1,
+        "(live.subs(frequency, inp.parameters['omega']) - old['freshPencil']).applyfunc(sp.cancel)": 1,
+        "sp.cancel(wave.subs(frequency, inp.parameters['omega']) - old['curve'])": 1,
+        "-sp.diff(wave, frequency) / sp.diff(wave, modes.q)": 1,
+        "live.diff(frequency) + live.diff(modes.q) * transport": 1,
+        "sp.cancel(wave.diff(frequency) + wave.diff(modes.q) * transport)": 1
+      },
+      "prefixStatements": 16,
+      "pendingThresholdStatements": 19,
+      "entireOriginalBodyReverseAST": true,
+      "unchangedNativeSeedBranchFreeSymbolGuards": true,
+      "thresholdSuffixExecuted": false,
+      "adapterSource": "def native_prefix(base, data, r, frequency, inp, uniform, modes, label, router):\n    (algebraic, relation, branch) = router.algebraic(uniform['records'][label]['strong'])\n    mapping = router.mapping(algebraic, relation, (r.omega, modes.k, modes.q, *inp.origin))\n    origin = {s: sp.S.Zero if label == 'REFERENCE' else v for (s, v) in inp.origin.items()}\n    live = router.bind('PENCIL_PLUS', algebraic, mapping, origin, r.omega, frequency)\n    wave = router.wave(relation, mapping, origin, r.omega, frequency)\n    old = data['acceptedEnds'][label]\n    matrix_residual = router.seed_matrix(live, frequency, inp.parameters['omega'], old['freshPencil'])\n    wave_residual = router.seed_wave(wave, frequency, inp.parameters['omega'], old['curve'])\n    transport = router.transport(wave, frequency, modes.q)\n    derivative = router.derivative(live, frequency, modes.q, transport)\n    tangency = router.tangency(wave, frequency, modes.q, transport)\n    packet = {'livePencil': live, 'wave': wave, 'originalAlgebraic': algebraic, 'originalRelation': relation, 'mapping': mapping, 'origin': origin, 'branchResiduals': branch, 'referencePencilResidual': matrix_residual, 'referenceWaveResidual': wave_residual, 'radicalFrequencyTransport': transport, 'frequencyDerivative': derivative, 'waveTangencyResidual': tangency, 'frequency': frequency, 'momentum': modes.k, 'radical': modes.q, 'unitConvention': 'Entry units inherit physical row/field ratios; no continuum inverse expansion is used.'}\n    path = base / (label.lower() + '-frequency-pencil.pickle')\n    f.atomic_pickle(path, packet)\n    f.require(all((v == 0 for v in branch)) and all((v == 0 for v in matrix_residual)) and (wave_residual == tangency == 0), 'actual end branch/frequency seed/tangency joins')\n    f.require(not (live.free_symbols | wave.free_symbols) - {frequency, modes.k, modes.q}, 'complete fixed material/tangential binding')\n    return packet"
+    },
+    "actualExistingRequestsAndSourcePins": 7460,
+    "actualOriginalSeedRoutes": {
+      "left": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-uniform-response-20260919/production/complete/left-symbolic.pickle",
+        "sha256": "bff2376933d64dbb0ede9b6781556b3d5c160df70f7bfa8aad2573cb5af652dd"
+      },
+      "right": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-uniform-response-20260919/production/complete/right-symbolic.pickle",
+        "sha256": "9fad29b8fd898086c4d553256d917033cfaad191cab3fe8126e6618bd88dc751"
+      }
+    },
+    "acceptedOwnSeedWriterSchemaJoined": true,
+    "forbiddenScientificCallASTScanPassed": true,
+    "noInProgressWorker": true,
+    "retainedBuilderSuffixUnchanged": true
+  },
+  "guard": {
+    "wallSeconds": 900,
+    "memoryBytes": 2147483648,
+    "swapBytes": 0,
+    "cpuCount": 1,
+    "nice": 15,
+    "tasks": 32,
+    "nativeThreads": 1
+  },
+  "launchIsAcceptance": false
+}

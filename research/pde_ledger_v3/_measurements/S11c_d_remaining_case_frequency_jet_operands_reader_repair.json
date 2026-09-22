@@ -1,0 +1,103 @@
+{
+  "originalHelper": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_jet_operands.py",
+  "originalHelperSha256": "3c94ca05cfec8bb89ae20aa56a78d76d54bf52877be81e7a3a90881744b5e779",
+  "originalFiles": {
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/source-jet-operands/guard.stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/source-jet-operands/active.json": {
+      "sha256": "f154f1bc71da4fbf4d40d93c7b5131c51fc243bb50d5c41a93c78d4dfe571e1a",
+      "bytes": 862
+    },
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/source-jet-operands/initial-containment-inspection.json": {
+      "sha256": "b09bfc2653c3333fbbccae48b4ecb0ef03569a26912a0359e60c7ac3ca148bd7",
+      "bytes": 709
+    },
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/source-jet-operands/static-review.json": {
+      "sha256": "9fd552bda9032292cbf2e01476488f05526d48f2151242d1c41916036d992700",
+      "bytes": 316
+    },
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/source-jet-operands/frequency_jet_operands.invocation.json": {
+      "sha256": "f154f1bc71da4fbf4d40d93c7b5131c51fc243bb50d5c41a93c78d4dfe571e1a",
+      "bytes": 862
+    },
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/source-jet-operands/normalization.lock": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/source-jet-operands/completion-message.txt": {
+      "sha256": "d668eb88a6af15de77230f36227088b89622df3a4f4844a3905004087011c158",
+      "bytes": 2875
+    },
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/source-jet-operands/frequency_jet_operands.stderr": {
+      "sha256": "c1f05e97aade8d8a3af7b62949f4a32b6e81866f06db82fd3c928bf95c513d6d",
+      "bytes": 1294
+    },
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/source-jet-operands/guard.stdout": {
+      "sha256": "2546111506fb2f0e68b888b9d17eb957274761e2bb66c42ee85c2c656eb62cb1",
+      "bytes": 270
+    },
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/source-jet-operands/launch.json": {
+      "sha256": "70c4947ec06ae5c0d09b86ef65e6208086912d8dbb6500e0c6cea3e00e1574d5",
+      "bytes": 1611
+    },
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/source-jet-operands/frequency_jet_operands.stdout": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/source-jet-operands/complete/cases/LAB_HELD__RHOBR_CONSTANT/source-22.json": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/source-jet-operands/resource-guard/stdout": {
+      "sha256": "f154f1bc71da4fbf4d40d93c7b5131c51fc243bb50d5c41a93c78d4dfe571e1a",
+      "bytes": 862
+    },
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/source-jet-operands/resource-guard/child-outcome.json": {
+      "sha256": "b4c5c8a3ce7ab62ef8685c711c297077559f1f932f54e18b4995dc2fa4236191",
+      "bytes": 102
+    },
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/source-jet-operands/resource-guard/invocation.json": {
+      "sha256": "8a10e3c1504221dd4f17cfa6461168b1c6edcff0bdb6e21e0fdf100f6aafdf63",
+      "bytes": 877
+    },
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/source-jet-operands/resource-guard/outcome.json": {
+      "sha256": "2546111506fb2f0e68b888b9d17eb957274761e2bb66c42ee85c2c656eb62cb1",
+      "bytes": 270
+    },
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/source-jet-operands/resource-guard/resource-samples.jsonl": {
+      "sha256": "298cc17e30ca89fa7fc42efde1460874330617169e60715d45246ff0fa11ffb8",
+      "bytes": 2388
+    },
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/source-jet-operands/resource-guard/stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/source-jet-operands/resource-guard/limit-validation.json": {
+      "sha256": "7799142622cac0a4825df20eb3ae553b87cc18d68f1762f28a1e461faf4489bd",
+      "bytes": 511
+    },
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/source-jet-operands/resource-guard/effective-limits.json": {
+      "sha256": "b590e7d85f73af59c7a8c15e1027d9473ce00e8f2a5bd323150a655f986110a5",
+      "bytes": 441
+    }
+  },
+  "originalFailure": {
+    "actualExits": [
+      1,
+      1,
+      1
+    ],
+    "guardInterruption": null,
+    "nativeWallSeconds": 8.471186761002173,
+    "guardWallSeconds": 8.646049339004094,
+    "strictStderrBytes": 1294,
+    "peakBytes": 102203392,
+    "zeroCapOOMSwap": true,
+    "completedMetadataSummaries": 0,
+    "emptyPartialOutput": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/source-jet-operands/complete/cases/LAB_HELD__RHOBR_CONSTANT/source-22.json",
+    "newScientificCalls": 0
+  },
+  "change": "Convert only the JSON derivative-order metadata scalar to Python int. Physical expressions/probes/units/derivative nodes remain unchanged. Add explicit failed/source provenance pins; original main/source reads and comparisons otherwise unchanged."
+}

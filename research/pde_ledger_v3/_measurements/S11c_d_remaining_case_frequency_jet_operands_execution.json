@@ -1,5 +1,5 @@
 {
-  "status": "LAUNCHED_GUARDED_SAVED_OPERAND_READER",
+  "status": "FAILED_METADATA_JSON_DEGREE_BEFORE_FIRST_SUMMARY",
   "root": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/source-jet-operands",
   "staticReview": {
     "status": "PASSED_STATIC_OPERAND_READER_REVIEW",
@@ -68,5 +68,22 @@
     "observedStrictStderrBytes": 1294,
     "oneInitialCheckOnly": true,
     "launchIsAcceptance": false
-  }
+  },
+  "failure": {
+    "actualExits": [
+      1,
+      1,
+      1
+    ],
+    "guardInterruption": null,
+    "nativeWallSeconds": 8.471186761002173,
+    "guardWallSeconds": 8.646049339004094,
+    "strictStderrBytes": 1294,
+    "peakBytes": 102203392,
+    "zeroCapOOMSwap": true,
+    "completedMetadataSummaries": 0,
+    "emptyPartialOutput": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/source-jet-operands/complete/cases/LAB_HELD__RHOBR_CONSTANT/source-22.json",
+    "newScientificCalls": 0
+  },
+  "continuation": "source-jet-operands-recovery-01"
 }

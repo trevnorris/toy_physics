@@ -1,0 +1,32 @@
+{
+  "status": "PREPARED_NOT_LAUNCHED",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/remainder-inputs-recovery-01",
+  "stage": "frequency_remainder_inputs_recover",
+  "helperSha256": "63fbcfed6328fba72aef58108352aca0a0d29087f06c41183b13e234a8f1a987",
+  "planSha256": "4eccc89f13ba8158df44b3dac7c766f3fe46cafbcd5bfb90699bb34f0812e7a8",
+  "priorFailure": {
+    "actualExits": [
+      1,
+      1,
+      1
+    ],
+    "nativeSeconds": 1.0448106010007905,
+    "guardSeconds": 1.1811337940016529,
+    "guardReason": null,
+    "strictStderrBytes": 1142,
+    "peakBytes": 89513984,
+    "capOOMSwapEvents": [
+      {
+        "events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0",
+        "swap": "0"
+      },
+      {
+        "events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0",
+        "swap": "0"
+      }
+    ],
+    "completedMetadataFiles": 0,
+    "newScientificCalls": 0,
+    "failure": "inspect.getsource(None): NumPyPrinter has no active Heaviside-specific method; actual NumPy namespace translates Heaviside to heaviside."
+  }
+}

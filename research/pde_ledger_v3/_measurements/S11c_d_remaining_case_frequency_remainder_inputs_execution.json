@@ -1,7 +1,66 @@
 {
-  "status": "PREPARED_NOT_LAUNCHED",
+  "status": "FAILED_SOURCE_METADATA_BEFORE_FIRST_SUMMARY_NO_SCIENCE",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/remainder-inputs",
   "stage": "frequency_remainder_inputs",
   "helperSha256": "59983753e436d655f7ff48a6e7860462d06442a696aecdd7d3cf12741438765e",
-  "planSha256": "dcfe94a24170f5508a79d0b98bfe09987b7799762c70eced90645630537aa196"
+  "planSha256": "dcfe94a24170f5508a79d0b98bfe09987b7799762c70eced90645630537aa196",
+  "launch": {
+    "launchedUtc": "2026-09-22T14:44:18.847415+00:00",
+    "guardPid": 1773485,
+    "watcherPid": 1773486,
+    "stage": "frequency_remainder_inputs",
+    "command": [
+      "/usr/bin/python",
+      "/var/projects/toy_physics/scripts/s11c_guarded_run.py",
+      "--log-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/remainder-inputs/resource-guard",
+      "--seconds",
+      "900",
+      "--",
+      "/usr/bin/python",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/remainder-inputs",
+      "--stage",
+      "frequency_remainder_inputs",
+      "--",
+      "/usr/bin/python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_remainder_inputs.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/remainder-inputs/complete"
+    ],
+    "helperSha256": "59983753e436d655f7ff48a6e7860462d06442a696aecdd7d3cf12741438765e",
+    "planSha256": "dcfe94a24170f5508a79d0b98bfe09987b7799762c70eced90645630537aa196",
+    "staticReviewSha256": "fe42bf9a5235e3774d6dcf18841a8a3b32ce17019c1bec09f099ec4e13958095",
+    "guardSha256": "6492f5ab11dc2ab2f80bbfcc96d7eb6b8632afea07100dd8f74a7954f3ffe542",
+    "implementationCommit": "94d340b3ac36f7315b46b57388eec4966bc0017e",
+    "scope": "Saved source/profile operands only for unfinished rows51--54, no science or physical packet writes.",
+    "launchIsAcceptance": false
+  },
+  "failure": {
+    "actualExits": [
+      1,
+      1,
+      1
+    ],
+    "nativeSeconds": 1.0448106010007905,
+    "guardSeconds": 1.1811337940016529,
+    "guardReason": null,
+    "strictStderrBytes": 1142,
+    "peakBytes": 89513984,
+    "capOOMSwapEvents": [
+      {
+        "events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0",
+        "swap": "0"
+      },
+      {
+        "events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0",
+        "swap": "0"
+      }
+    ],
+    "completedMetadataFiles": 0,
+    "newScientificCalls": 0,
+    "failure": "inspect.getsource(None): NumPyPrinter has no active Heaviside-specific method; actual NumPy namespace translates Heaviside to heaviside."
+  }
 }

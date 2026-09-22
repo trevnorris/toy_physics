@@ -1,0 +1,23 @@
+{
+  "status": "PREPARED_BOUNDED_FREQUENCY_ROW_PILOT",
+  "root": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-pilot",
+  "staticReview": {
+    "status": "PASSED_BOUNDED_ROW_PILOT_STATIC_REVIEW",
+    "helperSha256": "c579b8881e890f0257fb7cebb5b50ca30dce356b3b2141f622f0b35deb7ad2ec",
+    "planSha256": "bb1657664a55265cf9d9c569bde18c34bb8351e3b0807737656805f7ba139e88",
+    "noScientificImportOrPacketReadInReview": true,
+    "fakeExpressionReaderHarness": {
+      "cases": 4,
+      "sharedNodeMemoObserved": true,
+      "unsupportedNodeRejected": true
+    },
+    "actualBeforeAfterPersistenceOrder": true,
+    "controlUsesSavedCoefficientAndFrequencyValues": true,
+    "priorNativeConstructorsAndScienceNotCalled": true,
+    "full129x129RowNoProfileIntegration": true,
+    "sourceRecurrenceReview": "T0=1,T1=x/bound; T[n+1]=2*x/bound*T[n]-T[n-1]; derivative order d adds2*d/bound*T[n] derivative d-1. Full new action compared to independent trig formula inside guarded worker.",
+    "explicitNewIntegrationMethod": "GK21 and GK15 on same actual finite domain, native source rule nodes/weights reused",
+    "staticReviewNotScientificAcceptance": true
+  },
+  "launchIsAcceptance": false
+}

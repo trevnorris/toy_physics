@@ -1,5 +1,5 @@
 {
-  "status": "SAVED_VALIDATOR_STATIC_REVIEW_PASSED",
+  "status": "GUARDED_SAVED_VALIDATOR_RUNNING",
   "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-complex-threshold-acceptance",
   "producerRunDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-complex-threshold-recovery-03/complete",
   "producerChecksSha256": "79c5e547fcfa100596acb91011f1752f049d22842b01defd431e182c82ff9b67",
@@ -29,5 +29,65 @@
     "nativeThreads": 1
   },
   "scientificOperationOrProofArithmeticToRepeat": false,
-  "launchIsAcceptance": false
+  "launchIsAcceptance": false,
+  "launch": {
+    "launchedUtc": "2026-09-22T08:10:50.357290+00:00",
+    "guardPid": 1142892,
+    "watcherPid": 1142893,
+    "command": [
+      "/usr/bin/python",
+      "/var/projects/toy_physics/scripts/s11c_guarded_run.py",
+      "--log-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-complex-threshold-acceptance/resource-guard",
+      "--seconds",
+      "900",
+      "--",
+      "/usr/bin/python",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-complex-threshold-acceptance",
+      "--stage",
+      "validate",
+      "--",
+      "/usr/bin/python",
+      "-u",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-complex-threshold-acceptance/validate.py"
+    ],
+    "validatorSha256": "0e2dd119a77c094265ae6a9417ba7d28d2836253ac7b92e3db415f29bf24fccf",
+    "planSha256": "77bb7fa47e55ac46efc9ec9ab241d608d87f9f049943d498d46846e7c2e7709e",
+    "guardSha256": "6492f5ab11dc2ab2f80bbfcc96d7eb6b8632afea07100dd8f74a7954f3ffe542",
+    "implementationCommit": "c01578e9c69737999b85c1259494f340e7eb4d81",
+    "staticReviewSha256": "ab1b32215f71c40a3cca189a43f7558f11b9ff32c228c9f181779f4e93bf154f",
+    "scope": "Independent saved-only full native argument/return/local/guard/source/unit/alias/control/hash joins; no scientific or proof arithmetic operation executes",
+    "constructionAndAllThreeFailureProvenanceRequired": true,
+    "launchIsAcceptance": false
+  },
+  "initialContainmentInspection": {
+    "status": "INITIAL_CONTAINMENT_VERIFIED",
+    "limits": {
+      "memory.max": "2147483648",
+      "memory.swap.max": "0",
+      "pids.max": "32",
+      "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-eef7d17f53be.service",
+      "nice": 15,
+      "affinity": [
+        15
+      ],
+      "threads": {
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "VECLIB_MAXIMUM_THREADS": "1",
+        "BLIS_NUM_THREADS": "1"
+      }
+    },
+    "limitValidationSha256": "7835433436bcaa9ee04ba31beb066f627874a71e164d6ade249fd2c703a5de13",
+    "observedStage": "validate",
+    "observedChildPid": 1142899,
+    "observedStatus": "running",
+    "observedStrictStderrBytes": 0,
+    "oneInitialCheckOnly": true,
+    "launchIsAcceptance": false
+  }
 }

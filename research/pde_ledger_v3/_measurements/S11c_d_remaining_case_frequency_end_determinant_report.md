@@ -35,3 +35,5 @@ eight physical routes and four saved mutations. Live cache decisions remain
 their captured receipts. Matrix assembly, row-clearing multiplication,
 determinant/product/quotient/cancellation and threshold operations remain
 disabled. Full source/input/reference hashes bracket all saved checks.
+
+Independent saved validation launched from `59892513`. Its single initial containment check verified all mandatory limits and empty strict stderr. The local completion/error hook handles waiting; no early file or launch establishes determinant acceptance.

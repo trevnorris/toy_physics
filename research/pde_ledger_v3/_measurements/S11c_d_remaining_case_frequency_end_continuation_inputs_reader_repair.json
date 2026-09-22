@@ -1,0 +1,154 @@
+{
+  "originalHelperSha256": "9192296c7d060e176c321b4c0db4af888a038027a364e655ec489208f42a238f",
+  "failure": {
+    "nativeWallSeconds": 3.5643394319922663,
+    "guardWallSeconds": 3.7728294810076477,
+    "strictStderrBytes": 1831,
+    "actualExits": [
+      1,
+      1,
+      1
+    ],
+    "guardReason": null,
+    "peakBytes": 201965568,
+    "zeroCapOOMSwap": true,
+    "site": "pickle.load -> Integral.__new__ -> _common_new -> Basic.xreplace blocked by overbroad reader restriction",
+    "completedCaseComparisons": 0,
+    "newScientificCalls": 0,
+    "completedMapFiles": {
+      "focused": 0,
+      "matrix": 2,
+      "contour16": 16,
+      "contour32": 16
+    }
+  },
+  "completedMetadata": {
+    "native-callers.json": {
+      "sha256": "e293f94f78f7a8009f60e0682c0d0b78b87797760b3224074917a5d683f8b0ef",
+      "bytes": 23368
+    },
+    "saved-binding-and-tangent-routes.json": {
+      "sha256": "8a818dcda1dd40bf4e292c2a25787102977c32dda3c3c0bedf7ebcc914d7e9fc",
+      "bytes": 465513
+    },
+    "baseline/focused.json": {
+      "sha256": "176aa0c2fd89d052e39e9509d8074312c5851a7e71a5e10ac483ccbc5314c13e",
+      "bytes": 26681
+    },
+    "baseline/contour32.json": {
+      "sha256": "650a8ffb8c3f03e6049d771592108294cc6ce8232d5fd56d3bb0ff7815c63cc2",
+      "bytes": 116414
+    },
+    "baseline/contour16.json": {
+      "sha256": "e8fe81881ac5ca470d7afdabc9ee9c610812ebf8f5574329f903760a7df1ed83",
+      "bytes": 105848
+    },
+    "baseline/matrix.json": {
+      "sha256": "eda0482fe9e574cf5fb2bd01e570a0b5d5dfa6f6cd3a7234ad524f3349c2ecf7",
+      "bytes": 11079
+    }
+  },
+  "preservedFiles": {
+    "guard.stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "active.json": {
+      "sha256": "8fac0e002b4b8ccb80b0b63eac983fd07f904bbcbe4a87e14b836cacc470b96a",
+      "bytes": 919
+    },
+    "initial-containment-inspection.json": {
+      "sha256": "c1b23fb9caddaef9eadc1f9bea03dd5686169252c01996b4a56acabfe0ae5195",
+      "bytes": 846
+    },
+    "frequency_end_continuation_inputs.stdout": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "static-review.json": {
+      "sha256": "59bf9de398aefe6cbfd61a750350351ba01ec294a8cc315f289ad27d898792be",
+      "bytes": 540
+    },
+    "normalization.lock": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "completion-message.txt": {
+      "sha256": "813196d4767556c4ab75d2da14e035b9c396c302b710d5bbe1c3b07050367242",
+      "bytes": 5086
+    },
+    "frequency_end_continuation_inputs.invocation.json": {
+      "sha256": "8fac0e002b4b8ccb80b0b63eac983fd07f904bbcbe4a87e14b836cacc470b96a",
+      "bytes": 919
+    },
+    "guard.stdout": {
+      "sha256": "fd7447db5bdb06e1f2c6d5742e864d6c8f75e891c612f7cbe02b9de2001e8891",
+      "bytes": 271
+    },
+    "launch.json": {
+      "sha256": "d37a340481ba062e78c6213903f1e601065ae4b9d23cf5bfbfc7d85af1f5f58b",
+      "bytes": 1696
+    },
+    "frequency_end_continuation_inputs.stderr": {
+      "sha256": "65c15687c7d49bbddf7f8ecf25c8e7ee1f5ab433680bd43eb7c1dc9b5b6f844b",
+      "bytes": 1831
+    },
+    "complete/native-callers.json": {
+      "sha256": "e293f94f78f7a8009f60e0682c0d0b78b87797760b3224074917a5d683f8b0ef",
+      "bytes": 23368
+    },
+    "complete/saved-binding-and-tangent-routes.json": {
+      "sha256": "8a818dcda1dd40bf4e292c2a25787102977c32dda3c3c0bedf7ebcc914d7e9fc",
+      "bytes": 465513
+    },
+    "complete/baseline/focused.json": {
+      "sha256": "176aa0c2fd89d052e39e9509d8074312c5851a7e71a5e10ac483ccbc5314c13e",
+      "bytes": 26681
+    },
+    "complete/baseline/contour32.json": {
+      "sha256": "650a8ffb8c3f03e6049d771592108294cc6ce8232d5fd56d3bb0ff7815c63cc2",
+      "bytes": 116414
+    },
+    "complete/baseline/contour16.json": {
+      "sha256": "e8fe81881ac5ca470d7afdabc9ee9c610812ebf8f5574329f903760a7df1ed83",
+      "bytes": 105848
+    },
+    "complete/baseline/matrix.json": {
+      "sha256": "eda0482fe9e574cf5fb2bd01e570a0b5d5dfa6f6cd3a7234ad524f3349c2ecf7",
+      "bytes": 11079
+    },
+    "resource-guard/stdout": {
+      "sha256": "8fac0e002b4b8ccb80b0b63eac983fd07f904bbcbe4a87e14b836cacc470b96a",
+      "bytes": 919
+    },
+    "resource-guard/child-outcome.json": {
+      "sha256": "c43f151beff19998338e6bf90f0a485939f5e78a2a08a7568771036ac9b9f794",
+      "bytes": 102
+    },
+    "resource-guard/invocation.json": {
+      "sha256": "bd66d325fe421b67bcfbae2fd6f61583ad4b397389ab6d861f280decc72a5320",
+      "bytes": 907
+    },
+    "resource-guard/outcome.json": {
+      "sha256": "fd7447db5bdb06e1f2c6d5742e864d6c8f75e891c612f7cbe02b9de2001e8891",
+      "bytes": 271
+    },
+    "resource-guard/resource-samples.jsonl": {
+      "sha256": "4973e997a888bc61dc66f802b3e96c31ca54123eaecc315d4fcda5ac448433dc",
+      "bytes": 1195
+    },
+    "resource-guard/stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "resource-guard/limit-validation.json": {
+      "sha256": "cfe6a37cc72838b203fd1a58184520bd48ddc51927fd684afe5177bd499f863e",
+      "bytes": 511
+    },
+    "resource-guard/effective-limits.json": {
+      "sha256": "38dc305f8e8e79af2ee99bb933899f9c695f07c4a2530059ee49994daeba3b0b",
+      "bytes": 441
+    }
+  },
+  "repair": "Keep native pickle-class methods intact; whole reader restriction differs only by removal of the Basic method-patching loop. Restore completed baseline and binding metadata; finish cases only."
+}

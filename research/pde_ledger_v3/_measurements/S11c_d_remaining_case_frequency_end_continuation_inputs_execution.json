@@ -1,5 +1,5 @@
 {
-  "status": "PREPARED_SAVED_INPUT_INSPECTION",
+  "status": "FAILED_SAVED_CONTEXT_CODEC_NO_SCIENCE",
   "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-continuation-inputs/complete",
   "root": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-continuation-inputs",
   "stage": "frequency_end_continuation_inputs",
@@ -16,5 +16,89 @@
   },
   "practicalAcceptance": "exploratoryAcceptanceV1",
   "newScientificCalls": 0,
-  "launchIsAcceptance": false
+  "launchIsAcceptance": false,
+  "launch": {
+    "launchedUtc": "2026-09-22T10:52:05.482196+00:00",
+    "guardPid": 1179499,
+    "watcherPid": 1179500,
+    "stage": "frequency_end_continuation_inputs",
+    "command": [
+      "/usr/bin/python",
+      "/var/projects/toy_physics/scripts/s11c_guarded_run.py",
+      "--log-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-continuation-inputs/resource-guard",
+      "--seconds",
+      "900",
+      "--",
+      "/usr/bin/python",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-continuation-inputs",
+      "--stage",
+      "frequency_end_continuation_inputs",
+      "--",
+      "/usr/bin/python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_end_continuation_inputs.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-continuation-inputs/complete"
+    ],
+    "helperSha256": "9192296c7d060e176c321b4c0db4af888a038027a364e655ec489208f42a238f",
+    "planSha256": "5eb3369d0316dc0152012d8ebe842a0d1515d2f400675c2c00124a7f6842be1c",
+    "staticReviewSha256": "59bf9de398aefe6cbfd61a750350351ba01ec294a8cc315f289ad27d898792be",
+    "guardSha256": "6492f5ab11dc2ab2f80bbfcc96d7eb6b8632afea07100dd8f74a7954f3ffe542",
+    "implementationCommit": "dc81ccae911e42aa608a9721e9dc489c5fd004dc",
+    "scope": "Saved full end inputs and completed numerical result routes only; no scientific call or new acceptance. Practical analog toy model; prepare one small continuation pilot.",
+    "launchIsAcceptance": false
+  },
+  "initialContainmentInspection": {
+    "status": "INITIAL_CONTAINMENT_VERIFIED",
+    "limits": {
+      "memory.max": "2147483648",
+      "memory.swap.max": "0",
+      "pids.max": "32",
+      "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-bbe25adf01a9.service",
+      "nice": 15,
+      "affinity": [
+        15
+      ],
+      "threads": {
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "VECLIB_MAXIMUM_THREADS": "1",
+        "BLIS_NUM_THREADS": "1"
+      }
+    },
+    "limitValidationSha256": "cfe6a37cc72838b203fd1a58184520bd48ddc51927fd684afe5177bd499f863e",
+    "observedStage": "frequency_end_continuation_inputs",
+    "observedChildPid": 1179519,
+    "observedStatus": "failed",
+    "observedStrictStderrBytes": 1831,
+    "oneInitialCheckOnly": true,
+    "launchIsAcceptance": false
+  },
+  "failure": {
+    "nativeWallSeconds": 3.5643394319922663,
+    "guardWallSeconds": 3.7728294810076477,
+    "strictStderrBytes": 1831,
+    "actualExits": [
+      1,
+      1,
+      1
+    ],
+    "guardReason": null,
+    "peakBytes": 201965568,
+    "zeroCapOOMSwap": true,
+    "site": "pickle.load -> Integral.__new__ -> _common_new -> Basic.xreplace blocked by overbroad reader restriction",
+    "completedCaseComparisons": 0,
+    "newScientificCalls": 0,
+    "completedMapFiles": {
+      "focused": 0,
+      "matrix": 2,
+      "contour16": 16,
+      "contour32": 16
+    }
+  }
 }

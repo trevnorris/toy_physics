@@ -1,0 +1,27 @@
+{
+  "status": "PREPARED_SAVED_INPUT_CONTINUATION",
+  "root": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-continuation-inputs-recovery-01",
+  "stage": "frequency_end_continuation_inputs_recover",
+  "staticReview": {
+    "status": "PASSED_STDLIB_METADATA_CONTINUATION_REVIEW",
+    "helperSha256": "79e81ab4e52a336b71a85ed0a96d0ec0d74190c9ef3e4f2fb16bcdea697636be",
+    "planSha256": "122fdf544a992f4d997dc51e79d862633b3d8bd2c8ba4cdb2393538af87262c3",
+    "repairSha256": "d051e314604efa7149b3388546a225f813030eb1d70f292559978fbf604b0b53",
+    "wholeBodyJoins": {
+      "wholeProhibitReverseAST": true,
+      "wholeInspectionReverseAST": true,
+      "removedOnlyBasicMethodPatching": true,
+      "originalMainAndComparisonBodiesUnchanged": true,
+      "completedBindingMetadataRestored": true
+    },
+    "completedBaselineMapPacketsNotDeserializedAgain": 34,
+    "sixBindingRoutesRestoredWithoutDeserialization": true,
+    "nativeBasicCodecMethodsKept": true,
+    "applicationScienceCallsRemainDisabled": true,
+    "noScientificImportsOrDeserializationInHarness": true,
+    "restoredReferenceRoutesPosthashed": 119
+  },
+  "originalFailureRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-continuation-inputs",
+  "newScientificCalls": 0,
+  "launchIsAcceptance": false
+}

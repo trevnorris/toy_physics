@@ -24,3 +24,8 @@ Actual end-domain construction and continuation, own frequency pencils,
 scoped searches and final all-case engine/exports remain pending. Fixed
 omega=1 matrices and scalar real-Fourier-momentum chart bounds cannot supply
 complex outgoing-end domains. Approved scope and earlier science stay fixed.
+
+The reviewed continuation launched at 2026-09-22T02:03:56Z from 50f0589f.
+The initial check verified 2 GiB, zero swap, one CPU, nice 15, 32 tasks and
+one native thread, with empty strict stderr and the silent hook armed.
+Launch does not establish acceptance.

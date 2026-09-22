@@ -1,0 +1,27 @@
+# Threshold coefficient inputs and saved rational routes
+
+End bindings are accepted at `979d58f5` after independent saved validation
+of all 75,628 paths, with clean final guards and no scientific reconstruction.
+The next bounded stage creates only coefficient-frame images whose complete
+native inputs have no saved match. Each input/intermediate/value/receipt is
+persisted before guards. Completed wave, binding, derivative and seed values
+remain untouched.
+
+The whole original end_sources reverse AST permits two routed coefficient
+expressions only; its completed 16-statement prefix and 17 later threshold
+statements remain unchanged and unexecuted. Static review also joins the
+actual accepted complex-polynomial threshold adapter and real-axis analysis;
+the old real-only coefficient gate will not be restarted.
+
+Full saved determinant/branch/analysis candidates and all 25 own rational
+entry inputs retain exact source, physical unit and owner routes. Actual
+pending counts come from complete typed comparisons. No determinant,
+polynomial analysis, rational table, root or continuation is executed here.
+Eight physical source routes and five changed-input controls remain explicit.
+Neither scalar-call matches nor coefficient images establish numerical reuse
+or a complex outgoing-end domain. Independent saved validation is required.
+
+Compile-only, whole-body reversal, opaque argument threading, actual accepted
+paths/source pins, native unit-frame producer and prohibited-call inspection
+passed without importing science. All old sources and artifacts are exact
+references; the mandatory guard and silent completion hook will be used.

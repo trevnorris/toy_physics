@@ -1,0 +1,53 @@
+{
+  "status": "STATIC_REVIEWED_NOT_LAUNCHED",
+  "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-threshold-inputs",
+  "helper": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_end_threshold_inputs.py",
+  "staticReview": {
+    "status": "STATIC_REVIEWED_MISSING_NATIVE_THRESHOLD_COEFFICIENT_INPUTS",
+    "helperSha256": "8527b6c3f2a3e6e3dd45e1f813f6abf7d34cbb88c072302594ad9fc759a2f82a",
+    "planSha256": "a71330bda207803fb9ee4d64425ad7731079455d03a4d3fccee1f0af741dfb41",
+    "acceptedBindingCheckpointSha256": "c556a8ebb82b839558d36946b0317fb671cb2929ef1e7d7af294cfbd700249e6",
+    "compileOnlyPassed": true,
+    "scientificImportsOrPacketDeserialization": false,
+    "wholeNativeBodyReverseAST": {
+      "wholeNativeAST": "9671d8dc52a62500cea551a09830e1103fd7b2dcfb41a3fe949942b62a5cda41",
+      "routes": {
+        "live.subs(modes.k, 0).xreplace({frequency: coordinate, modes.q: radical_coordinate})": "router.convert('coefficientMatrix', live, modes.k, frequency, modes.q, coordinate, radical_coordinate)",
+        "wave.subs(modes.k, 0).xreplace({frequency: coordinate, modes.q: radical_coordinate})": "router.convert('wave', wave, modes.k, frequency, modes.q, coordinate, radical_coordinate)"
+      },
+      "counts": {
+        "live.subs(modes.k, 0).xreplace({frequency: coordinate, modes.q: radical_coordinate})": 1,
+        "wave.subs(modes.k, 0).xreplace({frequency: coordinate, modes.q: radical_coordinate})": 1
+      },
+      "completedPrefixStatements": 16,
+      "coefficientStatements": 2,
+      "pendingNativeStatements": 17,
+      "entireOriginalBodyReverseAST": true,
+      "adapterSource": "def coefficient_images(live, wave, modes, frequency, coordinate, radical_coordinate, router):\n    zero = router.convert('coefficientMatrix', live, modes.k, frequency, modes.q, coordinate, radical_coordinate)\n    curve = router.convert('wave', wave, modes.k, frequency, modes.q, coordinate, radical_coordinate)\n    return (zero, curve)"
+    },
+    "opaqueArgumentHarnessPassed": true,
+    "actualExistingRequestsAndSourcePins": 7621,
+    "acceptedComplexThresholdHelper": {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_frequency_source_finish.py",
+      "sha256": "f52846a89e6ace33fe1520b652ea913cfa148edd0114eb2ea202fbd813dff315",
+      "adapterAST": "d1e6634e49d32133ff3439b2b6e6566be8d7a6623ac0fa82844303c6dc287638",
+      "analysisAST": "f1553f99e8ea171b683b980649c30c991ee33ae586c3bee503d94d535e25b6dd"
+    },
+    "nativeSeedFrameProducerJoined": true,
+    "allThreeThresholdAndTwoTablePathsExist": true,
+    "forbiddenScientificCallASTScanPassed": true,
+    "onlyTwoNativeConversionCallsEnabled": true,
+    "noInProgressWorker": true,
+    "retainedBuilderSuffixUnchanged": true
+  },
+  "guard": {
+    "wallSeconds": 900,
+    "memoryBytes": 2147483648,
+    "swapBytes": 0,
+    "cpuCount": 1,
+    "nice": 15,
+    "tasks": 32,
+    "nativeThreads": 1
+  },
+  "launchIsAcceptance": false
+}

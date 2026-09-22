@@ -1,0 +1,226 @@
+{
+  "newHelperSha256": "5aa73b2d621a931a86671d84cbb6e9c2962c8a2b52d3deffaf75482011844006",
+  "newPlanSha256": "657ea75c33230c036b734cbeb27a7907513e796e427f9d3e43638d712d33d6c3",
+  "originalValidatorSha256": "b162013080bbf047f3bc04e409d98672c7859bb0bc18a59bc85ddc98cf92f6f2",
+  "producerChecksSha256": "8d9c85126735e991acde138bb4cab7e79066eba217134e609da6b8f020c44784",
+  "failedOutcome": {
+    "supervisor": {
+      "stage": "validate",
+      "command": [
+        "/usr/bin/python",
+        "-u",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/analytic-acceptance/validate.py"
+      ],
+      "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/analytic-acceptance/validate.stdout",
+      "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/analytic-acceptance/validate.stderr",
+      "startedUtc": "2026-09-22T00:32:07.639941+00:00",
+      "childPid": 978283,
+      "status": "failed",
+      "exitCode": 1,
+      "wallSeconds": 53.96060243199463,
+      "stderrBytes": 1011,
+      "finishedUtc": "2026-09-22T00:33:01.600619+00:00"
+    },
+    "guard": {
+      "exitCode": 1,
+      "wallSeconds": 54.110374723997666,
+      "unit": "s11c-guard-582a3b58670b",
+      "stderrBytes": 0,
+      "limitsVerified": true,
+      "childOutcome": {
+        "exitCode": 1,
+        "guardReason": null,
+        "wallSeconds": 54.03402739900048,
+        "childPid": 978277
+      }
+    },
+    "limits": {
+      "verified": true,
+      "actual": {
+        "memory.max": "2147483648",
+        "memory.swap.max": "0",
+        "pids.max": "32",
+        "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-582a3b58670b.service",
+        "nice": 15,
+        "affinity": [
+          15
+        ],
+        "threads": {
+          "OPENBLAS_NUM_THREADS": "1",
+          "OMP_NUM_THREADS": "1",
+          "MKL_NUM_THREADS": "1",
+          "NUMEXPR_NUM_THREADS": "1",
+          "VECLIB_MAXIMUM_THREADS": "1",
+          "BLIS_NUM_THREADS": "1"
+        }
+      }
+    },
+    "peakMemoryBytes": 334876672,
+    "capReclaims": 0,
+    "oomEvents": 0,
+    "swapBytes": 0,
+    "minimumHostAvailableBytes": 23811031040,
+    "failedScriptSha256": "b162013080bbf047f3bc04e409d98672c7859bb0bc18a59bc85ddc98cf92f6f2",
+    "workerStderrBytes": 1011,
+    "completedInitialAtlasValidation": true,
+    "noCompletedCaseSummary": true,
+    "acceptance": false
+  },
+  "originalFiles": {
+    "guard.stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "validate.stdout": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "validate.py": {
+      "sha256": "b162013080bbf047f3bc04e409d98672c7859bb0bc18a59bc85ddc98cf92f6f2",
+      "bytes": 29604
+    },
+    "prelaunch-production-inspection.json": {
+      "sha256": "1f0c7688d262214d14896abb3ee6a5802aa64532203193e958f7cfe467bd0c20",
+      "bytes": 2574
+    },
+    "active.json": {
+      "sha256": "1d169374d0109a1bd06638f9647e52aeb3d77a3b7092a57b5c8249bb5a3f8634",
+      "bytes": 681
+    },
+    "prepared-source-hashes.json": {
+      "sha256": "c29c843186b7bdb40d38c8f56867cf4533ef3361f3a45cee3a846fcdc71099a2",
+      "bytes": 1922
+    },
+    "initial-containment-inspection.json": {
+      "sha256": "cb4054f4dd7905f200ebf44d1eff988935d465937ec0f0b3b3a387c8c360bdc6",
+      "bytes": 1275
+    },
+    "validate.invocation.json": {
+      "sha256": "1d169374d0109a1bd06638f9647e52aeb3d77a3b7092a57b5c8249bb5a3f8634",
+      "bytes": 681
+    },
+    "static-review.json": {
+      "sha256": "76de11119c74472162b03b9df0b68535253d0ba4a5aa1bd0a496d2e12bb14bd8",
+      "bytes": 2592
+    },
+    "normalization.lock": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "continuation.txt": {
+      "sha256": "7f2b81407fc070206cbde5292e56d941ab328e97a61c683127ccb372c6147f12",
+      "bytes": 6632
+    },
+    "process-census.txt": {
+      "sha256": "45b43c116ca5c4adf01f125f0bb2418da47805a7cf4000389dadf1b0faf1e090",
+      "bytes": 52184
+    },
+    "validate.stderr": {
+      "sha256": "a2a2230711a9426a878188237c5069ad27ad1f0076a7bfa743d431a5f8531a02",
+      "bytes": 1011
+    },
+    "launch.py": {
+      "sha256": "b488c6925f8d002db7cb3ddeb0a710557376fa97d99316aaab4f6c0c4e1245e4",
+      "bytes": 3132
+    },
+    "validator-join.json": {
+      "sha256": "3cd262dd78a6728abd5a411f9365fd31d8144cf58026f240299004639f15045f",
+      "bytes": 2860
+    },
+    "hash-preflight.json": {
+      "sha256": "3c2f6310a8bf9cf333ae7dbd458b72017551e775ac33bafd05389e58ff0d3eef",
+      "bytes": 107
+    },
+    "production-outcome-inspection.json": {
+      "sha256": "d6c6d31d98a1c5b4b400df5e471448c9edd25e4806b25b4ba793ea0cf1430d4a",
+      "bytes": 1885
+    },
+    "guard.stdout": {
+      "sha256": "fc9330f2c46b3d20fc5f66aaa077efdf512fafda8ce13a644eddff2966051fce",
+      "bytes": 270
+    },
+    "launch.json": {
+      "sha256": "8c59e4a2c3ac1fde7fcee9c16a1e6490cca46de45f19b3594af8a8235807e4df",
+      "bytes": 1138
+    },
+    "guard-source.py": {
+      "sha256": "6492f5ab11dc2ab2f80bbfcc96d7eb6b8632afea07100dd8f74a7954f3ffe542",
+      "bytes": 8783
+    },
+    "resource-guard/stdout": {
+      "sha256": "1d169374d0109a1bd06638f9647e52aeb3d77a3b7092a57b5c8249bb5a3f8634",
+      "bytes": 681
+    },
+    "resource-guard/child-outcome.json": {
+      "sha256": "4651e392266c703c6f343303a00eb764b4d1cc758551bffb396d53c80bfb7851",
+      "bytes": 101
+    },
+    "resource-guard/invocation.json": {
+      "sha256": "11693077208d70bc5bb2babb5de0613ac2220d37f60b8c62677e93df45f62f3e",
+      "bytes": 725
+    },
+    "resource-guard/outcome.json": {
+      "sha256": "fc9330f2c46b3d20fc5f66aaa077efdf512fafda8ce13a644eddff2966051fce",
+      "bytes": 270
+    },
+    "resource-guard/resource-samples.jsonl": {
+      "sha256": "38db28e19bc9fa9cd342a6591a9059e55bc2c9d8ee5f9f616ec029034096599d",
+      "bytes": 11196
+    },
+    "resource-guard/stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "resource-guard/limit-validation.json": {
+      "sha256": "513fd52b9b62b44a8ca82d83504978f9d9d15b105d93bd60fa8ee71b0d8ce4fc",
+      "bytes": 511
+    },
+    "resource-guard/effective-limits.json": {
+      "sha256": "ccaa6db73c9da1a624f75016676e8b4f7620b265bfa34e304daf012617b9a6a3",
+      "bytes": 441
+    }
+  },
+  "completedPrefixInputs": {
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/analytic-sources-recovery-01/complete/checks.json": "8d9c85126735e991acde138bb4cab7e79066eba217134e609da6b8f020c44784",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/analytic-sources-recovery-01/complete/accepted/accepted-chart/root-chart.pickle": "b7e610f5870ea064e085066056822f1fa116420b4495341cdcfc4b38ed064ea5",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/analytic-sources-recovery-01/complete/accepted/accepted-chart/denominator-chart.pickle": "d32d55d122de7a925239d899ff5b0ab76512c51cfb9d1df5d1790b9a07d2057d",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/analytic-sources-recovery-01/complete/accepted/accepted-chart/frequency-chart.pickle": "ff629e38a98c099f0066cdbcddb1d7441d0b9948f9b2c13aef90d52a85f16866",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/analytic-sources-recovery-01/complete/accepted/accepted-chart/analytic-sources.pickle": "f5b17ef1ad838149efb8a5645596faf030736208ae9e203c334cffd00bf76100",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/analytic-sources-recovery-01/complete/analytic-proof-reuse/saved-derivative-atlas.pickle": "5e835e3fde41bb9181950ca08a5592465691d4b76af5b2e452977054409a34b9",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/analytic-sources-recovery-01/complete/completed-seed-prefix-reuse.json": "3926be4c19f8977dbec108199638e8b660bcec9c25e8d7b798f55b7e2b3df14a",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/analytic-sources-recovery-01/complete/derivative-route-mutation-operands.pickle": "d9eac06963c9a3c00e7786f79c37cf6360b894e7224560d3d1ec90880b02aaac",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/analytic-sources-recovery-01/complete/derivative-route-mutation-controls.json": "13f27d70f940ca835a405ad6fdba26c80ef0a59d6c6c10d702a425aaeb8f98c3",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/analytic-sources-recovery-01/complete/accepted/frequency-cases/LAB_HELD__RHO4_CONSTANT/frequency-source.pickle": "b7864220c8edff46fe494e448051b116417fc0adccf939715ff692018379efa1",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/analytic-sources-recovery-01/complete/accepted/frequency-cases/LAB_HELD__RHOBR_CONSTANT/frequency-source.pickle": "8957a6596bb8cff0a7cc24ed179930dad5a3725cd617f3c0566a2fa0695e1898",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/analytic-sources-recovery-01/complete/accepted/frequency-cases/MATERIAL_ADVECTED__RHO4_CONSTANT/frequency-source.pickle": "c025e129e47978d7aa31a973a93d56f71aa7ec618d54decb21b95716dd0c346d",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/analytic-sources-recovery-01/complete/accepted/frequency-cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/frequency-source.pickle": "dedba80bff66c4f5afde499e7ad2aefa1b888ae171e83707e25c54599edd9bf3"
+  },
+  "serializerSource": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_reduced_action_source_check.py",
+  "serializerSourceSha256": "aae3b2402e1707ef27f217b917dc10592f38acbe35d18356fbc4886ed854f754",
+  "serializerAST": "e39370047050b880ff32950fc85c2ad28e5f8cdc75cd9856638db24ad9842072",
+  "adapterJoins": {
+    "routes": {
+      "wholeFunctionReverseAST": true,
+      "originalAST": "a0922c8ea1acd9e21c09bba85a88c22f8c830b78c30a99f88bd26e3fef52d6c3",
+      "ownerMetadataCalls": 2,
+      "completedPrefixRestorations": 1,
+      "removedPrefixAST": "b9c8dd593f1a3f3256df75f9eb1d91b7584ea87f7283a33790c7ea03d5cddf9a"
+    },
+    "proofs": {
+      "wholeFunctionReverseAST": true,
+      "originalAST": "63ce930a694f51b90146b22f3ca3cb904b9c502a146dfe0110b20ace97eb115c",
+      "ownerMetadataCalls": 1,
+      "completedPrefixRestorations": 0,
+      "removedPrefixAST": "3543b4693a36a1098850b8bc928887694ed59a6deb7d3dfd0339de01f55a77b6"
+    },
+    "main": {
+      "wholeFunctionReverseAST": true,
+      "originalAST": "cc4bd9495ac39544b7be1c59b17f330067550b4ac57a2e5eda4008ed1203c086",
+      "ownerMetadataCalls": 0,
+      "completedPrefixRestorations": 1,
+      "removedPrefixAST": "6d4bca44ec8b8a30fbc4f4a8261965a3fe30a8530fb938da4e01c2881f0bbe37"
+    }
+  },
+  "staticOwnerJsonRoundTrip": true,
+  "actualTypedOwnerJoinPendingGuardedContinuation": true
+}

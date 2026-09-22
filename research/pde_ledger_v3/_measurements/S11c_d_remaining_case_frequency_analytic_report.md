@@ -108,3 +108,19 @@ Independent saved validation launched at 2026-09-22T00:32:07Z from f9dc315e.
 Initial 2 GiB/zero-swap/one-CPU/nice-15/32-task/one-native-thread containment
 verified with empty strict stderr. The silent completion/error hook will
 resume this task; launch does not establish acceptance.
+
+The first validator stopped at its first derivative-owner comparison after
+53.96 native seconds. It had completed the initial source/analytic cache,
+unit and control checks, but no full route or case summary. Actual exits are
+1 with no guard interruption; peak memory 334,876,672 bytes, zero cap/OOM/swap.
+The original script, 28 source/log/provenance files and all scientific results
+remain unchanged. No analytic acceptance is claimed.
+
+The native JSON journal converts tuple addresses in owner metadata to lists;
+the validator used its strict typed comparator at that serialization boundary.
+A separate continuation is prepared to require the exact native JSON encoding
+for owner metadata only, retaining both raw views and responding wrong-owner
+controls. Whole-function reverse AST preserves every physical typed check and
+restores the completed initial atlas/unit prefix through exact input/source
+hashes and the original failure location. No unavailable summary is invented.
+The unfinished physical validation suffix and final hashes must pass cleanly.

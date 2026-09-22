@@ -1,41 +1,36 @@
-# Remaining-case frequency end inputs
+# Accepted remaining-case frequency end inputs
 
-The saved input catalogue completed cleanly in 79.52 worker / 81.45 native /
-81.65 guard seconds. Actual guard/supervisor/child exited zero, strict stderr
-is empty, and checks and stdout are byte-identical. Peak memory was 808,058,880
-bytes, with zero cap events, OOM or swap; host available memory stayed above
-23.55 GB. Checks SHA256 is
-`277fa77f7790d6e94e40af71972085a85f4ac513cac347bd3fe472d626b0a1c9`.
+The full saved end-input catalogue is accepted after 79.52 worker / 81.45
+native seconds of construction and 117.09 worker / 118.42 native seconds
+of independent saved validation. Both final guard/supervisor/child outcomes
+are zero with empty strict stderr and checks/stdout byte identity. Peaks
+were 808,058,880 / 577,036,288 bytes; neither run had cap events, OOM or swap.
+Minimum host available memory was 23.55 / 23.38 GB.
 
-All 187 current/frozen sources, 39,625 input paths, 6,747 references and 6,799
-artifacts passed the producer's final audit. All 6,561 accepted analytic
-artifacts and 98 selected end-source/current/modal/uniform/frequency/table/
-continuation artifacts remain unchanged. Every physical end retains 18
-candidate dispositions, five complete selected clusters and seven directions;
-all 40 input mutations respond. No scientific construction or continuation
-point was executed.
+The checkpoint preserves all 187 source pins, 39,625 input paths, 6,747
+reference routes and 6,799 artifacts, plus full guard/validator and prior
+failure/recovery provenance. Independent validation checked 47,488 paths,
+all 6,561 accepted analytic artifacts and 98 selected original end artifacts.
+Both original failed readers and all scientific files remain immutable.
 
-The eight physical ends form six full source-input families. Only the two
-baseline ends match their baseline inputs; six uses remain unmatched to the
-baseline. The LAB_HELD and MATERIAL_ADVECTED RHOBR_CONSTANT cases share their
-corresponding LEFT and RIGHT source families. These are input-catalogue candidates, not accepted frequency-end
-operators, domains, continuation or numerical row reuse.
+All eight physical ends retain 18 candidate dispositions, five complete
+selected clusters and seven ordered directions, including transverse
+doublets. All 40 end-input mutations and four changed array-reader operands
+pass. The independent catalogue confirms six full source-input families,
+two baseline candidates and six unmatched physical uses. The two
+RHOBR_CONSTANT cases share their corresponding LEFT/RIGHT input families.
+These are source-input candidates only, with no accepted frequency-operator,
+end-domain, continuation or numerical-row reuse claim.
 
-Both failed readers and all inputs/logs remain immutable. The original array
-boundary failure used 353 MiB; the first continuation's missing summary local
-used 559 MiB. The successful continuation reused the completed baseline LEFT
-proofs and controls, restored all eight summary locals and finished the
-remaining input checks. No prior scientific work was repeated.
+The successful continuation restored completed baseline LEFT proof/control
+work and all eight summary locals from saved evidence. Neither failed
+worker was restarted and no completed scientific construction was repeated.
+Analytic da5d7c52 and every older accepted checkpoint remain unchanged.
 
-Independent saved-only validation is reviewed and remains required before a
-separate end-input checkpoint. It will join full sources/units/contexts,
-whole cluster selections, family owners, mutation operands and all pre/post
-hashes without calling producers. Analytic da5d7c52 and older science remain
-accepted and unchanged. Actual end-domain continuation, own frequency pencils,
-scoped searches and final all-case engine/exports still follow under approved
-settings and limitations.
-
-The independent saved-input validator launched at 2026-09-22T02:28:22Z
-from 99fac74a. Initial containment verified the required limits, empty
-strict stderr and an armed silent completion/error hook. No input
-acceptance is claimed before its final clean outcome.
+Next, join complete native analytic/mapping/source/context/field/unit/profile/
+measure/Abel/settings/ordered-limit call inputs to accepted baseline results,
+then construct only missing frequency-end operands/tables/domains and continue
+actual end families. Fixed omega=1 matrices are not frequency pencils; scalar
+real-Fourier-momentum disk bounds do not establish complex outgoing ends.
+Own-case frequency pencils, scoped searches and final all-case engine/exports
+remain under the approved settings and practical limitations.

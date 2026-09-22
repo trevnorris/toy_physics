@@ -82,3 +82,5 @@ research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_analytic_ch
 research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_end_inputs_array_repair.json -diff
 
 research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_end_inputs_locals_repair.json -diff
+
+research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_end_inputs_checkpoint.json -diff

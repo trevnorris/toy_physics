@@ -1,5 +1,5 @@
 {
-  "status": "GUARDED_SAVED_ROW_CONTINUATION_LAUNCHED",
+  "status": "STOPPED_AT_DECLARED_CUMULATIVE_POINT_CAP",
   "root": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-pilot-recovery-01",
   "staticReview": {
     "status": "PASSED_STDLIB_SAVED_ROW_CONTINUATION_REVIEW",
@@ -125,5 +125,51 @@
     },
     "strictStderrBytes": 0,
     "oneInitialCheckOnly": true
+  },
+  "failure": {
+    "status": "STOPPED_AT_DECLARED_CUMULATIVE_POINT_CAP",
+    "actualExits": [
+      1,
+      1,
+      1
+    ],
+    "nativeWallSeconds": 26.528546945992275,
+    "guardWallSeconds": 26.703262203998747,
+    "guardInterruption": null,
+    "strictStderrBytes": 1491,
+    "peakBytes": 1335119872,
+    "minimumHostAvailableBytes": 23191027712,
+    "zeroCapOOMSwap": true,
+    "preservedFiles": 24605,
+    "completedIntegrandValues": 4096,
+    "completedFirstRule": {
+      "input": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-pilot-recovery-01/complete/quadrature/0/input.pickle",
+        "sha256": "3352935a9876fbfc841f59ac42e6024820cb08a037eb9f6266eaa0b9f21e83ad",
+        "bytes": 600
+      },
+      "value": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-pilot-recovery-01/complete/quadrature/0/value.pickle",
+        "sha256": "5fbe7b3a58d061826d513150ebf37bbce1d3c359acef81dd01e7c83f3f660504",
+        "bytes": 17308619
+      },
+      "newIntegrandEvaluations": 2668,
+      "reusedIntegrandEvaluations": 0
+    },
+    "secondRuleComplete": false,
+    "sourceAndControlsCompleted": true,
+    "measuredCost": {
+      "firstRouteSeconds": 15.934622110013152,
+      "remainingSeconds": 883.3740824770066,
+      "requiredReserveSeconds": 107.80386633003945
+    },
+    "inventory": {
+      "logical": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-pilot-recovery-01/completed-pilot-file-inventory.json",
+      "canonical": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-pilot-recovery-01/completed-pilot-file-inventory.json",
+      "directLink": null,
+      "sha256": "911817bd3382466caeb85e195f747be2995478964304376457f1fd3f81717171",
+      "bytes": 12054894
+    },
+    "scope": "Completed first full GK21 and controls retained. Only full GK15 comparison call is unfinished; all4096 complete full integrands are durable. This run is not accepted."
   }
 }

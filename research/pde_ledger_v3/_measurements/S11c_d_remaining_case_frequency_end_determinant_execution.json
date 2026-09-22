@@ -1,5 +1,5 @@
 {
-  "status": "STATIC_REVIEWED_NOT_LAUNCHED",
+  "status": "GUARDED_RUNNING_WITH_SILENT_COMPLETION_HOOK",
   "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-determinant",
   "helper": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_end_determinant.py",
   "staticReview": {
@@ -87,5 +87,90 @@
     "tasks": 32,
     "nativeThreads": 1
   },
-  "launchIsAcceptance": false
+  "launchIsAcceptance": false,
+  "launch": {
+    "launchedUtc": "2026-09-22T05:35:44.980488+00:00",
+    "guardPid": 1092575,
+    "watcherPid": 1092576,
+    "command": [
+      "/usr/bin/python",
+      "/var/projects/toy_physics/scripts/s11c_guarded_run.py",
+      "--log-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-determinant/resource-guard",
+      "--seconds",
+      "900",
+      "--",
+      "/usr/bin/python",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-determinant",
+      "--stage",
+      "frequency_end_determinant",
+      "--",
+      "/usr/bin/python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_end_determinant.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-determinant/complete"
+    ],
+    "helperSha256": "8b73b0e48069a23c470101bf08176996fd4c3a3f878e9a5c37884444302d9f4c",
+    "guardSha256": "6492f5ab11dc2ab2f80bbfcc96d7eb6b8632afea07100dd8f74a7954f3ffe542",
+    "implementationCommit": "287f4ef16c4c8c3d225d2144e7382edcc4eab23a",
+    "staticReviewSha256": "1a014ebf492bc0def6736b6720a7e9f36f219d349c40c93c85cd07aef24eb237",
+    "newScientificConstruction": "Only the actual missing native determinant with exact saved row/tail reuse and immediate operation receipts; saved downstream call routing, no threshold/root work",
+    "launchIsAcceptance": false
+  },
+  "initialInspection": {
+    "limitsVerified": true,
+    "actualLimits": {
+      "memory.max": "2147483648",
+      "memory.swap.max": "0",
+      "pids.max": "32",
+      "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-65a774b15465.service",
+      "nice": 15,
+      "affinity": [
+        15
+      ],
+      "threads": {
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "VECLIB_MAXIMUM_THREADS": "1",
+        "BLIS_NUM_THREADS": "1"
+      }
+    },
+    "stderrBytes": {
+      "guard.stderr": 0,
+      "frequency_end_determinant.stderr": 0,
+      "watcher.stderr": 0
+    },
+    "active": {
+      "stage": "frequency_end_determinant",
+      "command": [
+        "/usr/bin/python",
+        "-u",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_end_determinant.py",
+        "--run-directory",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-determinant/complete"
+      ],
+      "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-determinant/frequency_end_determinant.stdout",
+      "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-determinant/frequency_end_determinant.stderr",
+      "startedUtc": "2026-09-22T05:35:45.149547+00:00",
+      "childPid": 1092582,
+      "status": "running"
+    },
+    "watcher": {
+      "status": "waiting",
+      "watcherPid": 1092576,
+      "jobPid": 1092575,
+      "thread": "01a08c53-295c-70f0-baaf-353db1745867",
+      "startedUtc": "2026-09-22T05:35:45.029072+00:00",
+      "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
+      "messageSha256": "f0d13344c7890d3dbcd424ad0496280821a14fb759f2fa82371289a9dc420ed8",
+      "notifications": {}
+    },
+    "guardOutcome": null,
+    "singleInitialInspection": true
+  }
 }

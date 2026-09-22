@@ -20,3 +20,8 @@ analysis and branch inputs route only from actual saved outputs; no threshold
 analysis executes here. Actual row/operation reuse counts come from results.
 Eight own-source routes and four mutations remain explicit. Independent saved
 validation precedes determinant acceptance and later complex-threshold work.
+
+Construction launched from `287f4ef1`. The single initial containment check
+verified all mandatory limits and empty strict stderr. The silent local
+completion/error hook handles waiting. No determinant acceptance is inferred
+from launch or early files.

@@ -31,3 +31,7 @@ normalization, analysis and all earlier science remain disabled. Full original
 source/input/reference hashes bracket the saved checks.
 
 Independent saved validation launched from `1bd46f14`. Its single initial containment check verified all mandatory limits and empty strict stderr. The local completion/error hook handles waiting. No launch or early file establishes elimination acceptance.
+
+The native end resultant is accepted after independent saved validation in 168.39 worker / 169.74 native / 169.92 guard seconds. All actual exits are zero, strict stderr is empty, and checks/stdout are byte-identical. All 108,759 paths pass final identity; peak memory was 767,520,768 bytes, with zero cap/OOM/swap and 22.92 GB minimum host availability. One actual new resultant, its full native input/value receipt, all three complex-analysis input comparisons, eight physical routes and four actual controls passed without repeating science. One unmatched complete complex-analysis pipeline remains pending; all three branch calls retain accepted returns. Live cache decisions and raw typed operands remain separate from metadata JSON views.
+
+The separate checkpoint retains full producer inventories, actual native caller/unit/operation evidence and independent validation with both resource guards. The missing accepted complex threshold pipeline, outgoing-end domains and whole-cluster continuation remain. This checkpoint does not accept numerical reuse.

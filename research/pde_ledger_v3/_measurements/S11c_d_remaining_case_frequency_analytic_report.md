@@ -230,3 +230,18 @@ is repeated. Analytic acceptance still requires the final clean outcome.
 The path-reader continuation launched at 2026-09-22T01:32:47Z from
 09872513 under verified mandatory containment. The silent completion/error
 hook resumes the task; launch is not analytic acceptance.
+
+Analytic sources are accepted after the final saved continuation completed
+37.03 worker / 39.67 native seconds with final guard/supervisor/child zero,
+empty stderr and checks/stdout byte identity. All twenty certificate routes,
+consumer coverage, four mutations and 30,230 pre/post paths pass. Peak memory
+was 265,773,056 bytes, zero cap/OOM/swap and minimum host availability 23.60 GB.
+Completed cases and scientific construction were reused; all failed-reader
+outcomes and raw live/restored/certificate provenance remain explicit.
+
+The accepted producer retains 63 new images, 69 new/57 reused derivatives,
+65 lifts, twenty certificates and two denominator classifications. Both new
+denominators are relaxationSquared, with constants -10/-20 and positive
+bounds 245/32 and 245/16 on the declared real-Fourier-momentum scalar disk.
+This does not establish an outgoing-end domain or numerical pencil. Actual
+end-family input joins are next; all baseline proofs remain immutable.

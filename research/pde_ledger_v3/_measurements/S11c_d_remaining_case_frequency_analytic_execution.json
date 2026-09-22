@@ -1,5 +1,5 @@
 {
-  "status": "LAUNCHED_PATH_READER_VALIDATION_CONTINUATION",
+  "status": "ACCEPTED_CASE_FREQUENCY_ANALYTIC_SOURCES",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/analytic-sources",
   "stage": "frequency_analytic",
   "acceptedAnalyticInputsCommit": "a7a53fa8",
@@ -1323,6 +1323,144 @@
         "watcher.stderr": 0
       },
       "isAcceptance": false
+    },
+    "finalInspection": {
+      "acceptedAtUtc": "2026-09-22T01:35:58.590341+00:00",
+      "validatorChecksSha256": "319b9acc0e45ac13313281332d4a978c3b6c3010568710c1b6090546d70d8e77",
+      "producerChecksSha256": "8d9c85126735e991acde138bb4cab7e79066eba217134e609da6b8f020c44784",
+      "validatorGuard": {
+        "supervisor": {
+          "stage": "validate",
+          "command": [
+            "/usr/bin/python",
+            "-u",
+            "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_analytic_path_finish.py"
+          ],
+          "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/analytic-acceptance-recovery-04/validate.stdout",
+          "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/analytic-acceptance-recovery-04/validate.stderr",
+          "startedUtc": "2026-09-22T01:32:47.296282+00:00",
+          "childPid": 1001309,
+          "status": "completed",
+          "exitCode": 0,
+          "wallSeconds": 39.669923123990884,
+          "stderrBytes": 0,
+          "finishedUtc": "2026-09-22T01:33:26.966263+00:00"
+        },
+        "outcome": {
+          "exitCode": 0,
+          "wallSeconds": 39.87841909499548,
+          "unit": "s11c-guard-cbfaa7e0ab13",
+          "stderrBytes": 0,
+          "limitsVerified": true,
+          "childOutcome": {
+            "exitCode": 0,
+            "guardReason": null,
+            "wallSeconds": 39.79570130999491,
+            "childPid": 1001304
+          }
+        },
+        "effectiveLimits": {
+          "memory.max": "2147483648",
+          "memory.swap.max": "0",
+          "pids.max": "32",
+          "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-cbfaa7e0ab13.service",
+          "nice": 15,
+          "affinity": [
+            15
+          ],
+          "threads": {
+            "OPENBLAS_NUM_THREADS": "1",
+            "OMP_NUM_THREADS": "1",
+            "MKL_NUM_THREADS": "1",
+            "NUMEXPR_NUM_THREADS": "1",
+            "VECLIB_MAXIMUM_THREADS": "1",
+            "BLIS_NUM_THREADS": "1"
+          }
+        },
+        "resourceSamplesSha256": "64ec75ed950a151ce14c7a819573160b88dc346ec0bcb5f5007d935e2a3e9ea4",
+        "peakBytes": 265773056,
+        "minimumHostAvailableBytes": 23600599040,
+        "swapPeak": 0,
+        "events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0"
+      },
+      "producerGuard": {
+        "supervisor": {
+          "stage": "frequency_analytic_recover",
+          "command": [
+            "/usr/bin/python",
+            "-u",
+            "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_analytic_recover.py",
+            "--run-directory",
+            "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/analytic-sources-recovery-01/complete"
+          ],
+          "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/analytic-sources-recovery-01/frequency_analytic_recover.stdout",
+          "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/analytic-sources-recovery-01/frequency_analytic_recover.stderr",
+          "startedUtc": "2026-09-22T00:20:45.909167+00:00",
+          "childPid": 974439,
+          "status": "completed",
+          "exitCode": 0,
+          "wallSeconds": 81.12510350299999,
+          "stderrBytes": 0,
+          "finishedUtc": "2026-09-22T00:22:07.034347+00:00"
+        },
+        "outcome": {
+          "exitCode": 0,
+          "wallSeconds": 81.28843452800356,
+          "unit": "s11c-guard-c23aad0bdefc",
+          "stderrBytes": 0,
+          "limitsVerified": true,
+          "childOutcome": {
+            "exitCode": 0,
+            "guardReason": null,
+            "wallSeconds": 81.20834423899942,
+            "childPid": 974428
+          }
+        },
+        "effectiveLimits": {
+          "memory.max": "2147483648",
+          "memory.swap.max": "0",
+          "pids.max": "32",
+          "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-c23aad0bdefc.service",
+          "nice": 15,
+          "affinity": [
+            15
+          ],
+          "threads": {
+            "OPENBLAS_NUM_THREADS": "1",
+            "OMP_NUM_THREADS": "1",
+            "MKL_NUM_THREADS": "1",
+            "NUMEXPR_NUM_THREADS": "1",
+            "VECLIB_MAXIMUM_THREADS": "1",
+            "BLIS_NUM_THREADS": "1"
+          }
+        },
+        "resourceSamplesSha256": "9026ad57a65f501a52d96fcc371ac57b166d2ac7f6b1575606f29ce9c6aa5522",
+        "peakBytes": 402722816,
+        "minimumHostAvailableBytes": 23839367168,
+        "swapPeak": 0,
+        "events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0"
+      },
+      "validatedPathCount": 30230,
+      "savedPathInventorySha256": "2a638f75d0ca065f060c59c40e37df7e90003e82ecdcbfcf05f1dd8ef21f6aeb",
+      "originalInventories": {
+        "sourceFiles": 146,
+        "inputPackets": 19499,
+        "artifacts": 6561,
+        "referencedInputs": 4748
+      },
+      "allCaseSummariesJoined": true,
+      "allTwentyRouteViewsJoined": true,
+      "fourCompletedWriteReceiptsJoined": true,
+      "originalFailedOutcomesRetained": true,
+      "scienceOrValidatorRerun": false
     }
-  }
+  },
+  "acceptance": {
+    "checkpoint": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_analytic_checkpoint.json",
+    "sha256": "cdf2472a5882b8e999bfce73c6ffefcd1fdf996b1faf0761d9b49e388dac61bb",
+    "producerChecksSha256": "8d9c85126735e991acde138bb4cab7e79066eba217134e609da6b8f020c44784",
+    "validatorChecksSha256": "319b9acc0e45ac13313281332d4a978c3b6c3010568710c1b6090546d70d8e77",
+    "newScientificConstruction": false
+  },
+  "next": "Join actual own-case end-family source/context/field/unit/profile/measure/settings/ordered-limit inputs; reuse accepted baseline end/domain proofs only after full input identity."
 }

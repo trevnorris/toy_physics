@@ -1,5 +1,5 @@
 {
-  "status": "GUARDED_SAVED_POINT_FINISH_LAUNCHED",
+  "status": "CLEAN_SAVED_POINT_ROW_FINISH_PENDING_REVIEW",
   "root": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-pilot-recovery-02",
   "staticReview": {
     "status": "PASSED_STDLIB_SAVED_POINT_FINISH_REVIEW",
@@ -166,5 +166,152 @@
     },
     "strictStderrBytes": 0,
     "oneInitialCheckOnly": true
+  },
+  "completion": {
+    "actualExits": [
+      0,
+      0,
+      0
+    ],
+    "workerWallSeconds": 23.707526810001582,
+    "nativeWallSeconds": 25.96306252600334,
+    "guardWallSeconds": 26.092955216998234,
+    "emptyStrictStderr": true,
+    "checksStdoutIdentity": true,
+    "checksSha256": "5800400c5fd181d7bbeb08b97dc05f111b5623c1d8c30ef92229de15394b3a1c",
+    "peakBytes": 971268096,
+    "minimumHostAvailableBytes": 23045922816,
+    "zeroCapOOMSwap": true,
+    "evidence": {
+      "active.json": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-pilot-recovery-02/active.json",
+        "canonical": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-pilot-recovery-02/active.json",
+        "sha256": "4851c905ad1a62b907da930ad94cf02ae3998e6d72b29bab1320c2e9510cf98d",
+        "bytes": 884
+      },
+      "frequency_row_pilot_finish.invocation.json": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-pilot-recovery-02/frequency_row_pilot_finish.invocation.json",
+        "canonical": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-pilot-recovery-02/frequency_row_pilot_finish.invocation.json",
+        "sha256": "4851c905ad1a62b907da930ad94cf02ae3998e6d72b29bab1320c2e9510cf98d",
+        "bytes": 884
+      },
+      "frequency_row_pilot_finish.stdout": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-pilot-recovery-02/frequency_row_pilot_finish.stdout",
+        "canonical": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-pilot-recovery-02/frequency_row_pilot_finish.stdout",
+        "sha256": "5800400c5fd181d7bbeb08b97dc05f111b5623c1d8c30ef92229de15394b3a1c",
+        "bytes": 11835917
+      },
+      "frequency_row_pilot_finish.stderr": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-pilot-recovery-02/frequency_row_pilot_finish.stderr",
+        "canonical": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-pilot-recovery-02/frequency_row_pilot_finish.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "guard.stdout": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-pilot-recovery-02/guard.stdout",
+        "canonical": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-pilot-recovery-02/guard.stdout",
+        "sha256": "11ed6669f8a1c3e4363d5f7c495fe912e387e206e505702e91269bcfd85e28a0",
+        "bytes": 272
+      },
+      "guard.stderr": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-pilot-recovery-02/guard.stderr",
+        "canonical": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-pilot-recovery-02/guard.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "resource-guard/outcome.json": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-pilot-recovery-02/resource-guard/outcome.json",
+        "canonical": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-pilot-recovery-02/resource-guard/outcome.json",
+        "sha256": "11ed6669f8a1c3e4363d5f7c495fe912e387e206e505702e91269bcfd85e28a0",
+        "bytes": 272
+      },
+      "resource-guard/child-outcome.json": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-pilot-recovery-02/resource-guard/child-outcome.json",
+        "canonical": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-pilot-recovery-02/resource-guard/child-outcome.json",
+        "sha256": "e18046f331249776fada8d9f4da4fa27bb4be79d00ae48b5e944df13353b14a3",
+        "bytes": 103
+      },
+      "resource-guard/effective-limits.json": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-pilot-recovery-02/resource-guard/effective-limits.json",
+        "canonical": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-pilot-recovery-02/resource-guard/effective-limits.json",
+        "sha256": "fbd7e1a6c33cbcd442254774627b63c83b7d04a8b57c2c3cb029e7f8df0a2dd3",
+        "bytes": 441
+      },
+      "resource-guard/limit-validation.json": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-pilot-recovery-02/resource-guard/limit-validation.json",
+        "canonical": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-pilot-recovery-02/resource-guard/limit-validation.json",
+        "sha256": "846200819d92f10983a13a9592c0c6da168d73e769ae6e8789ae99131a9d2eef",
+        "bytes": 511
+      },
+      "resource-guard/resource-samples.jsonl": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-pilot-recovery-02/resource-guard/resource-samples.jsonl",
+        "canonical": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-pilot-recovery-02/resource-guard/resource-samples.jsonl",
+        "sha256": "ae78fa2bbc7f50d8292b949f2b2d69e435d293c2ca051dc0c4dd5dbd74c789fc",
+        "bytes": 5596
+      },
+      "resource-guard/stderr": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-pilot-recovery-02/resource-guard/stderr",
+        "canonical": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-pilot-recovery-02/resource-guard/stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "launch.json": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-pilot-recovery-02/launch.json",
+        "canonical": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-pilot-recovery-02/launch.json",
+        "sha256": "c94385542c77d546340f374da462a43817435be5a9a5e7c70163cccc5010d59c",
+        "bytes": 1702
+      },
+      "static-review.json": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-pilot-recovery-02/static-review.json",
+        "canonical": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-pilot-recovery-02/static-review.json",
+        "sha256": "b273bf1178d09e8ddfc8adfc2b666de69fc5f63ea1fe7ec47967535e19d3976e",
+        "bytes": 2304
+      },
+      "initial-containment-inspection.json": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-pilot-recovery-02/initial-containment-inspection.json",
+        "canonical": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-pilot-recovery-02/initial-containment-inspection.json",
+        "sha256": "28c8300de19e8408c827a8c07a3904d777129b86a9525ada5d32c7e6f294dfa1",
+        "bytes": 1389
+      }
+    }
+  },
+  "result": {
+    "status": "COMPLETED_BOUNDED_NEW_FREQUENCY_ROW_PILOT",
+    "case": "LAB_HELD__RHOBR_CONSTANT",
+    "rowIndex": 28,
+    "sourceIndex": 22,
+    "rowShape": [
+      129,
+      129
+    ],
+    "sourceBasisScaledDifference": 3.513496265283723e-16,
+    "rowScaledDifference": 2.804106880058489e-18,
+    "rowMaxNorm": 0.001153777445414375,
+    "rowAbsoluteDifference": 2.8073421953312323e-18,
+    "newIntegrandEvaluations": 6336,
+    "reusedIntegrandEvaluations": 1555,
+    "quadratureSeconds": [
+      15.934622110013152,
+      12.482678062006016
+    ],
+    "controlResponses": {
+      "sourcePhaseSignResponse": 0.0029434665240044206,
+      "measureResponse": 1.480682275724183e-06
+    },
+    "allConsumedHashesUnchanged": true,
+    "wallSeconds": 23.707526810001582,
+    "scope": "One genuinely missing full1D row at1-0.01i via two bounded adaptive rules. Observed numerical spread only, not a scattering error bound, pole/domain or full four-case response. No old native source basis/rule/evaluator/row/map recomputed.",
+    "completedSourceActionReused": true,
+    "newSourceActions": 0,
+    "acceptedPrincipalComplexPowerRule": true,
+    "originalFailurePreserved": true,
+    "priorCompletedIntegrands": 4096,
+    "newIntegrandsThisContinuation": 2240,
+    "savedPointLoadsThisContinuation": 1555,
+    "priorUnfinishedRuleReuseCountNotReconstructed": true,
+    "completedGK21Reused": true,
+    "completedControlsReused": true,
+    "cumulativeDistinctPointBudget": 8192,
+    "unfinishedGK15ControllerResumedFromSavedPointFunction": true
   }
 }

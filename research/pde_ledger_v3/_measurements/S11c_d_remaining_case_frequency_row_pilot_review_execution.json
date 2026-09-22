@@ -1,0 +1,17 @@
+{
+  "status": "PREPARED_BOUNDED_SAVED_ROW_REVIEW",
+  "root": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/row-pilot-review",
+  "staticReview": {
+    "status": "PASSED_BOUNDED_SAVED_ROW_REVIEW_STATIC_INSPECTION",
+    "helperSha256": "49cf661b915598849e3c0ed2c67bfb3b058cee9bc8c94cf05be63aa31a7cb3e8",
+    "planSha256": "ca86a59e0909025da7a0c6fe6b372d58ef5c38e4376440461703d77e50647f03",
+    "scientificImports": 0,
+    "scientificPacketReads": 0,
+    "noNumericalEvaluatorQuadratureOrSourceCalls": true,
+    "noMatrixProductsOrComparisonReconstruction": true,
+    "sourceHelperAdaptersCompileOnly": true,
+    "savedReceiptMetadataSchemasJoined": true,
+    "scope": "One pilot only; no ancestral science campaign or numerical acceptance in static review."
+  },
+  "launchIsAcceptance": false
+}

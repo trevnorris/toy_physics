@@ -82,3 +82,9 @@ join file is preserved while new route metadata has a separate filename.
 Static source, actual-path and write-route review passed; the fresh recovery
 is prepared, not launched or accepted. Only 63 missing images and two pending
 denominator classifications remain in this constructor.
+
+Recovery launched at 2026-09-22T00:20:45Z from 20ca7c1e. Initial guard
+containment is verified with empty strict stderr: 2 GiB, zero swap, one CPU,
+nice 15, 32 tasks and one native thread. A silent local completion/error hook
+will resume this task. The original failed run remains untouched; launch is
+not scientific acceptance.

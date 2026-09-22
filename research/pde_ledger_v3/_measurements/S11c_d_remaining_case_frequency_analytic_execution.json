@@ -1,5 +1,5 @@
 {
-  "status": "PREPARED_EXACT_NATIVE_DERIVATIVE_CALL_RECOVERY",
+  "status": "LAUNCHED_EXACT_NATIVE_DERIVATIVE_CALL_RECOVERY",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/analytic-sources",
   "stage": "frequency_analytic",
   "acceptedAnalyticInputsCommit": "a7a53fa8",
@@ -287,9 +287,82 @@
     "planSha256": "3b9b28da220db994a2c0c4832a668e9c80d0074afe7fc11a74472df3abbf3d1e",
     "repairSha256": "2b0ed1b0262d37db959e9dffcf740e2d6f36497b92a63b85b399c31311368d40",
     "staticReviewSha256": "29ef3a826122cda37622c7cdf099ece730f43658450547cef09f4a3c6e5624ba",
-    "launched": false,
+    "launched": true,
     "completedFilesReused": 4317,
     "newImages": 63,
-    "newDenominators": 2
+    "newDenominators": 2,
+    "launch": {
+      "launchedUtc": "2026-09-22T00:20:45.727378+00:00",
+      "guardPid": 974422,
+      "watcherPid": 974423,
+      "command": [
+        "/usr/bin/python",
+        "/var/projects/toy_physics/scripts/s11c_guarded_run.py",
+        "--log-directory",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/analytic-sources-recovery-01/resource-guard",
+        "--seconds",
+        "900",
+        "--",
+        "/usr/bin/python",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+        "--run-root",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/analytic-sources-recovery-01",
+        "--stage",
+        "frequency_analytic_recover",
+        "--",
+        "/usr/bin/python",
+        "-u",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_analytic_recover.py",
+        "--run-directory",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/analytic-sources-recovery-01/complete"
+      ],
+      "scriptSha256": "8bb0553e2db4cb933d6397977a2614fab6a934e854b5bc031c7734b0967ebf1c",
+      "guardSha256": "6492f5ab11dc2ab2f80bbfcc96d7eb6b8632afea07100dd8f74a7954f3ffe542",
+      "implementationCommit": "20ca7c1e3362aad93799f1f2e4af858b8ffcb11a",
+      "launchIsAcceptance": false,
+      "newScientificConstruction": true
+    },
+    "initialContainment": {
+      "status": "VERIFIED_RUNNING_CONTAINED",
+      "active": {
+        "stage": "frequency_analytic_recover",
+        "command": [
+          "/usr/bin/python",
+          "-u",
+          "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_analytic_recover.py",
+          "--run-directory",
+          "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/analytic-sources-recovery-01/complete"
+        ],
+        "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/analytic-sources-recovery-01/frequency_analytic_recover.stdout",
+        "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/analytic-sources-recovery-01/frequency_analytic_recover.stderr",
+        "startedUtc": "2026-09-22T00:20:45.909167+00:00",
+        "childPid": 974439,
+        "status": "running"
+      },
+      "limits": {
+        "verified": true,
+        "actual": {
+          "memory.max": "2147483648",
+          "memory.swap.max": "0",
+          "pids.max": "32",
+          "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-c23aad0bdefc.service",
+          "nice": 15,
+          "affinity": [
+            15
+          ],
+          "threads": {
+            "OPENBLAS_NUM_THREADS": "1",
+            "OMP_NUM_THREADS": "1",
+            "MKL_NUM_THREADS": "1",
+            "NUMEXPR_NUM_THREADS": "1",
+            "VECLIB_MAXIMUM_THREADS": "1",
+            "BLIS_NUM_THREADS": "1"
+          }
+        }
+      },
+      "workerStderrBytes": 0,
+      "guardStderrBytes": 0,
+      "isAcceptance": false
+    }
   }
 }

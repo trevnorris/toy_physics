@@ -1,5 +1,5 @@
 {
-  "status": "PREPARED_MISSING_NATIVE_ANALYTIC_CONSTRUCTION",
+  "status": "FAILED_SAVED_DERIVATIVE_CACHE_PREPARATION",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/analytic-sources",
   "stage": "frequency_analytic",
   "acceptedAnalyticInputsCommit": "a7a53fa8",
@@ -46,5 +46,106 @@
     "nice": 15,
     "tasks": 32,
     "nativeThreads": 1
+  },
+  "launch": {
+    "launchedUtc": "2026-09-21T23:58:13.815875+00:00",
+    "guardPid": 966381,
+    "watcherPid": 966382,
+    "command": [
+      "/usr/bin/python",
+      "/var/projects/toy_physics/scripts/s11c_guarded_run.py",
+      "--log-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/analytic-sources/resource-guard",
+      "--seconds",
+      "900",
+      "--",
+      "/usr/bin/python",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/analytic-sources",
+      "--stage",
+      "frequency_analytic",
+      "--",
+      "/usr/bin/python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_analytic.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/analytic-sources/complete"
+    ],
+    "scriptSha256": "638aac00b89a92e9a75c6c5e0aacdecf585ebb09975ec91e607040d0056ebb99",
+    "guardSha256": "6492f5ab11dc2ab2f80bbfcc96d7eb6b8632afea07100dd8f74a7954f3ffe542",
+    "implementationCommit": "b44179fd250ea96155429126ba56fa25c461bd4c",
+    "launchIsAcceptance": false,
+    "newScientificConstruction": true
+  },
+  "outcome": {
+    "supervisor": {
+      "stage": "frequency_analytic",
+      "command": [
+        "/usr/bin/python",
+        "-u",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_analytic.py",
+        "--run-directory",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/analytic-sources/complete"
+      ],
+      "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/analytic-sources/frequency_analytic.stdout",
+      "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/analytic-sources/frequency_analytic.stderr",
+      "startedUtc": "2026-09-21T23:58:13.993997+00:00",
+      "childPid": 966392,
+      "status": "failed",
+      "exitCode": 1,
+      "wallSeconds": 27.847476585011464,
+      "stderrBytes": 1131,
+      "finishedUtc": "2026-09-21T23:58:41.841573+00:00"
+    },
+    "guard": {
+      "exitCode": 1,
+      "wallSeconds": 28.10480245501094,
+      "unit": "s11c-guard-5187ed98bd3e",
+      "stderrBytes": 0,
+      "limitsVerified": true,
+      "childOutcome": {
+        "exitCode": 1,
+        "guardReason": null,
+        "wallSeconds": 27.99798665799608,
+        "childPid": 966387
+      }
+    },
+    "limits": {
+      "verified": true,
+      "actual": {
+        "memory.max": "2147483648",
+        "memory.swap.max": "0",
+        "pids.max": "32",
+        "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-5187ed98bd3e.service",
+        "nice": 15,
+        "affinity": [
+          15
+        ],
+        "threads": {
+          "OPENBLAS_NUM_THREADS": "1",
+          "OMP_NUM_THREADS": "1",
+          "MKL_NUM_THREADS": "1",
+          "NUMEXPR_NUM_THREADS": "1",
+          "VECLIB_MAXIMUM_THREADS": "1",
+          "BLIS_NUM_THREADS": "1"
+        }
+      }
+    },
+    "memoryPeakBytes": 303251456,
+    "capReclaims": 0,
+    "oomEvents": 0,
+    "swapBytes": 0,
+    "minimumHostAvailableBytes": 23805313024,
+    "newImageWorkStarted": false,
+    "newDenominatorWorkStarted": false,
+    "completedSeedInputPackets": 260,
+    "completeSeedRootAtlas": true
+  },
+  "diagnostic": {
+    "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/analytic-derivative-routing",
+    "scriptSha256": "ec623b8008dffdae127d19d2ac4157fd81951ea257df24250cc856513be26786",
+    "staticReviewSha256": "cc70fa8c06747e61b7b96a1ec12a42834e036918c308404dafe328d3d85989fe",
+    "launched": false
   }
 }

@@ -39,3 +39,21 @@ is closed without a resolved candidate, not certified empty; no doubling or
 broad campaign. Approved settings and practical amplitude/current resolution,
 positive regulator, approximate boundaries, unresolved tiny signals and omitted
 parent pure-second-order limitations remain.
+
+The constructor launched at 2026-09-21T23:58:13Z from b44179fd with verified
+initial containment and empty initial stderr. It stopped after 27.85 native
+seconds during saved derivative-cache preparation, before any new lift,
+denominator, derivative or certificate call. Actual guard/supervisor/child
+exits are 1 with no guard interruption. Peak memory was 303,251,456 bytes,
+with zero cap/OOM/swap events and minimum host availability 23.81 GB.
+All accepted references, 260 seed-input pairs and the completed six-identity
+seed-root atlas are preserved; the original directory and helper stay unchanged.
+
+The cache demanded literal equality for values indexed by formal derivative
+order. Source inspection shows distinct actual native calls: source second
+derivatives use diff(first, w), while analytic second derivatives use
+diff(analytic, w, 2). A guarded saved-operand diagnostic is prepared to inspect
+the actual failed pair and all call collisions without differentiation or
+algebraic equivalence reconstruction. It will retain raw values and exact
+producer call arguments before any routing repair. No result is accepted and
+the failed constructor is not restarted.

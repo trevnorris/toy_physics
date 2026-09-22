@@ -1,0 +1,130 @@
+{
+  "status": "BOTH_REPORTS_COMPLETE_NOT_CLEARED",
+  "inspectedUtc": "2026-09-22T21:04:12.110351+00:00",
+  "packetSha256": "36bda21bf0d0b6ded7351940145715055c98380130bd81510311072589846b8d",
+  "promptSha256": "05695f31a25501eb49df42e41c5dec02c6ecd63570fd34c40068060662e2b47d",
+  "fixedPacketArchive": "/var/projects/toy_physics/_scratch/s11c/s11c-d-scattering-form-review-20260922/round-02/packet.tar.gz",
+  "archiveSha256": "74f8079e9883050926cd543536df1ac85a3dac4256e3bcd2a02348105b6bfc52",
+  "packetAndLiveSourceHashesUnchanged": true,
+  "legs": [
+    {
+      "engine": "claude",
+      "modelUsage": {
+        "claude-opus-5-5[1m]": {
+          "inputTokens": 42,
+          "outputTokens": 39485,
+          "cacheReadInputTokens": 1968009,
+          "cacheCreationInputTokens": 170166,
+          "webSearchRequests": 0,
+          "costUSD": 2.5447978,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 26044,
+          "canonicalModel": "claude-opus-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "run": {
+        "engine": "claude",
+        "sessionId": "ff4de3db-8aa4-42d7-93fe-6071a7be0a81",
+        "command": [
+          "/home/trevnorris/.local/bin/claude",
+          "--print",
+          "--output-format",
+          "json",
+          "--safe-mode",
+          "--restricted",
+          "--tools",
+          "Read,Glob,Grep",
+          "--allowedTools",
+          "Read,Glob,Grep",
+          "--permission-mode",
+          "dontAsk",
+          "--strict-mcp-config",
+          "--mcp-config",
+          "{\"mcpServers\":{}}",
+          "--setting-sources",
+          "",
+          "--disable-slash-commands",
+          "--session-id",
+          "ff4de3db-8aa4-42d7-93fe-6071a7be0a81"
+        ],
+        "cwd": "/tmp/s11cd-scope-review-2cc1vxmo/packet",
+        "startedUtc": "2026-09-22T20:40:31.993980+00:00",
+        "promptSha256": "05695f31a25501eb49df42e41c5dec02c6ecd63570fd34c40068060662e2b47d",
+        "packetSha256": "36bda21bf0d0b6ded7351940145715055c98380130bd81510311072589846b8d",
+        "reviewVerdict": "NOT_ADJUDICATED",
+        "scientificExecutionEnabled": false,
+        "pid": 1903376,
+        "exitStatus": 0,
+        "finishedUtc": "2026-09-22T20:46:55.051836+00:00",
+        "wallSeconds": 383.05637599900365,
+        "outputSha256": "8dd232c3e25dad833ba6e67011dc87d4f3f13a5336740780d5a8d51e9e46b308",
+        "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderrBytes": 0
+      },
+      "report": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_scattering_form_review_round02_claude.md",
+      "reportSha256": "419dd5694f3a2a0d24893085236bd2ab48eff933c29246fd1c1c77e245230d38",
+      "amendmentVerdict": "NEEDS REVISION",
+      "inventoryVerdict": "NEEDS_REVISION"
+    },
+    {
+      "engine": "grok",
+      "modelUsage": {
+        "grok-4.7-build": {
+          "inputTokens": 609016,
+          "outputTokens": 59033,
+          "cacheReadInputTokens": 1070080,
+          "cacheCreationInputTokens": 0,
+          "modelCalls": 19,
+          "costUSD": 0.7164718
+        }
+      },
+      "run": {
+        "engine": "grok",
+        "sessionId": "d8ef81d1-12c0-4f9e-8846-1226c98dcc72",
+        "command": [
+          "/home/trevnorris/.local/bin/grok",
+          "--cwd",
+          "/tmp/s11cd-scope-review-2cc1vxmo/packet",
+          "--prompt-file",
+          "/tmp/s11cd-scope-review-2cc1vxmo/packet/review-prompt.md",
+          "--output-format",
+          "json",
+          "--permission-mode",
+          "dontAsk",
+          "--no-plan",
+          "--tools",
+          "Read",
+          "--no-subagents",
+          "--disable-web-search",
+          "--verbatim",
+          "--session-id",
+          "d8ef81d1-12c0-4f9e-8846-1226c98dcc72"
+        ],
+        "cwd": "/tmp/s11cd-scope-review-2cc1vxmo/packet",
+        "startedUtc": "2026-09-22T20:46:55.073709+00:00",
+        "promptSha256": "05695f31a25501eb49df42e41c5dec02c6ecd63570fd34c40068060662e2b47d",
+        "packetSha256": "36bda21bf0d0b6ded7351940145715055c98380130bd81510311072589846b8d",
+        "reviewVerdict": "NOT_ADJUDICATED",
+        "scientificExecutionEnabled": false,
+        "pid": 1908785,
+        "exitStatus": 0,
+        "finishedUtc": "2026-09-22T21:02:09.344716+00:00",
+        "wallSeconds": 914.2696195030003,
+        "outputSha256": "71cf78a653cca5805a5cc1202ce89490d7df6578664ad077e87636bfeef743f8",
+        "stderrSha256": "c3a81bea589d89877420239dd48a635ba67c2173dab3767048f9aac0a2adf8fe",
+        "stderrBytes": 1431
+      },
+      "report": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_scattering_form_review_round02_grok.md",
+      "reportSha256": "454f22a2dada7224cbc72759e7cfdb72f26fee8cbab71d9a354877dc61ea0d67",
+      "amendmentVerdict": "CLEAR",
+      "inventoryVerdict": "NEEDS_REVISION"
+    }
+  ],
+  "productionAuthorized": false,
+  "scienceExecuted": 0,
+  "stderrQualification": "Claude and coordinator stderr empty. Grok stderr contains 1431 bytes of startup plugin collision/settings-hook warnings. Actual CLI terminal end_turn and full report exist; warnings preserved, not an empty-stderr run.",
+  "preservation": "Exact draft2 and reports preserved before adjudicated edits. One amendment CLEAR is not two-leg clearance. Both inventories NEEDS REVISION."
+}

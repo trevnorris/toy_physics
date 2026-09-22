@@ -1,6 +1,6 @@
 # S11c-d scattering/FORM scope amendment — Option B draft
 
-Version: `scatteringFormScopeV1-draft1`, 2026-09-22. Author: Codex/Astra.
+Version: `scatteringFormScopeV1-draft2`, 2026-09-22. Author: Codex/Astra.
 
 **Status: Option B adopted by the user; amendment unreviewed and not yet
 effective for production.** On 2026-09-22 the user said, “if we've solidified
@@ -9,6 +9,8 @@ This authorizes proceeding with that decision and its fresh Claude and Grok
 reviews. It does not constitute independent clearance. The amendment requires
 two non-author reviews until clear; no scientific production resumes before
 that gate. Actual review launches and outcomes are recorded separately.
+Both round-1 reviewers requested revision. Their reports and the exact draft-1
+bytes are preserved at `2e8ec5a3`; this revision has not yet cleared review.
 
 The existing numerical work is paused at
 `0d77af53561968d4593b49261589e2ee259eadbb`. This draft changes no producer,
@@ -37,15 +39,18 @@ relabeled as built or reviewed under this amendment.
 | [v10 title, introduction and §0 items 2–5][spec-scope] | Retain the full mixing/scattering, continuum conversion, transverse survival, weak-order bookkeeping and controls. Move the separate bound-pole/spectral-overlap deliverable out of S11c-d. Do not claim the complete two-mechanism confinement question is settled. |
 | [v10 §2][spec-operator] | Retain the reduced full operator, both complete end pencils, derived currents, outgoing prescription and distorted-wave continuum expansion. The pole-solve exemption is relevant only to preserved historical records or later pole work; it does not authorize additional pole production in this step. |
 | [v10 §3a][spec-scattering], [§3c–§3d][spec-grades], [§5][spec-controls] | Retain these scattering, conversion/weak-coefficient and control requirements, including the named, unsolved strong-edge handoff. This amendment does not license a simpler Born matrix element without §2's computed reduction premises. |
-| [v10 §3b][spec-poles] | Retain continuum conversion and transverse survival. Defer new profile-frequency searches, candidate isolation, principal parts, projections, root chains, spectral overlaps and physical-bound classifications. Preserve their distinction from continuum current; no bound-state capture probability is introduced. |
-| [v10 §§4, 7, 8][spec-outputs] and [build directive §§4–5][build-outputs] | Revise required emission, export, comparator coverage and completion lists according to §5 below. Pole-result families become explicitly deferred capabilities, not missing required scattering rows or fabricated empty results. |
-| [nonlinearPoleV2 §§1–7][pole-contract] | Do not reinstate v10's incorrect unrestricted projector/residue prescriptions. For this step, replace the production mandate with the limited historical/claim safeguards in §4 below. Future pole work needs its own approved governing contract; this amendment does not clear the entire older directive by reference. |
+| [v10 §3b][spec-poles] | Retain continuum conversion and the transverse continuum-channel flux ratio, with the restricted survival interpretation in §5. It is not the complete N13 two-mechanism confinement object. Defer new profile-frequency searches, candidate isolation, principal parts, projections, root chains, spectral overlaps and physical-bound classifications. Preserve their distinction from continuum current; no bound-state capture probability is introduced. |
+| [v10 §§4, 7, 8][spec-outputs] | Revise required emission, export, comparator coverage and completion lists according to §5 below. Pole-result families become explicitly deferred capabilities, not missing required scattering rows or fabricated empty results. |
+| [nonlinearPoleV2 §§1–7][pole-contract] | Do not reinstate v10's incorrect unrestricted projector/residue prescriptions. Replace the frequency-pole production mandate with §4's limited claims, while retaining the applicable full-pairing and singular-pairing safeguards for scattering end modes. Future pole work needs its own approved governing contract; this amendment does not clear the entire older directive by reference. |
 | [exploratoryAcceptanceV1][old-acceptance] | Consolidate its practical numerical policy in §3 below. Supersede its statement that all original pole outputs remain current d work. Its earlier transition/run instructions are historical; the stricter current one-worker resource safeguards remain. |
-| [program brief A–F][brief] and [retained solver/export contract][retained] | Preserve scattering/FORM, transparent representations, supplied-domain honesty and reuse. Defer the pole-specific production/export obligations and the eight unfinished material complex rows/two material complex responses whose present purpose is that branch. Required real-frequency channel construction is not deferred. |
+| [Retained solver/export contract][retained] | Preserve scattering/FORM, transparent representations, supplied-domain honesty and reuse. Defer the pole-specific production/export obligations and the eight unfinished material complex rows/two material complex responses whose present purpose is that branch. Required real-frequency channel construction is not deferred. |
 | [decision list N2 and d/e handoff][decisions] | Use the permitted explicit boundary refinement: the present handoff is scattering/continuum/weak FORM plus a declared spectral-work deferral. S11c-e may not infer resonance/local-spectrum results from the absent capability. Its actual future import manifest must respect this boundary. |
 
 Approval must be reflected in a subsequent source-pinned build/coverage plan;
 an old launcher or watcher is not authority to resume a superseded task.
+Reconcile the actual build directive and program brief with that plan under
+their applicable review gate before production; this source-level amendment
+review does not claim a line-by-line build-directive reconciliation.
 Retain the original v10, pole correction, acceptance addendum and builder suffix
 unchanged as source history. The suffix SHA256 remains
 `f01024512c9a028e7e524e5a95b5c455be42e125d10c36f94e20493109b013c2`.
@@ -93,6 +98,11 @@ coefficients required by v10 §§2, 3a, 3c, 3d and 5d. In particular:
    checks. Preserve separate field- and flux-normalized objects. Do not repeat
    unchanged scientific constructors merely to generate export plumbing.
 
+The generic zero-jet step keeps v10 §1c's delta/principal-value distributional
+transform and its stated tail premises. A positive-regulator numerical binding
+is separately labelled with its regulator and limits; it does not silently
+replace that symbolic object or establish its phase-matched/zero-transfer limit.
+
 All four physical cases and the v10 §5 uniform, FORM, coordinate and one-sided
 controls remain. LAB_HELD versus MATERIAL_ADVECTED is a comparison of physical
 anchorings; Eulerian versus material-coordinate agreement is tested within a
@@ -109,7 +119,7 @@ coefficient supplies no general positive lower bound on strong-edge conversion.
 ### 3.1 Consolidated acceptance policy
 
 The numerical target is a practical analog toy-model result, with roughly 1%
-stability for well-resolved nonzero reported observables. Use the approved
+stability for well-resolved nonzero reported observables. Use the declared
 absolute reporting goals, amplitude `1e-4` and current `1e-6`, in their declared
 channel normalization/unit frame; do not apply those numbers indiscriminately
 to dimensionful source coefficients or arbitrary matrix entries.
@@ -120,6 +130,10 @@ sign/measure/indexing/omitted-term checks. Existing applicable evidence may be
 reused. Unchanged machinery does not need an exhaustive new instrumentation or
 ancestral validation campaign. Stop refining an intermediate once its effect
 on the reported observable is demonstrably irrelevant at the chosen precision.
+Include a different numerical route where informative and affordable, targeting
+the dominant uncertainty. Small effects that carry the physical claim need
+tighter targeted checks; the default absolute goals do not resolve such an
+effect by themselves.
 
 Report actual numerical spreads, conditioning, equations/boundary/current
 residuals, positive regulator, finite boundaries, source/profile rules and
@@ -168,28 +182,50 @@ This is an explicit proposed acceptance clarification, not a claim that v10
 already specified an additional numerical frequency:
 
 - Give the generic thickness projection, its current normalization and the
-  weak-order FORM a **non-vacuous check on an admissible nonempty channel
-  domain**, through an independently constructed symbolic/analytic comparison
-  or an actual physical numerical witness with relevant controls. Testing only
-  a zero-rank selector cannot pay for this coverage.
+  weak-order FORM a **non-vacuous check on an admissible physical domain with
+  an incoming transverse channel and a nonempty outgoing thickness-like
+  channel space of the full end pencils `𝓛_±^full`**. The object checked is
+  v10 §3a's `C_{T→H}=J_H,out/J_T,in`, with its derived end-channel currents and
+  nonzero incident denominator. Use an independently constructed symbolic/
+  analytic comparison on that domain or an actual numerical witness with
+  relevant controls. A zero-rank thickness selector, bulk-only radiation or
+  a total-current deficit cannot discharge this check.
 - After amendment clearance and A9 operand/form mapping, inspect existing full
   end relations, classifications and inherited validity conditions first. If
   they establish an admissible real-frequency witness with the required
-  incoming transverse and outgoing thickness/radiating channel, prefer **one
-  small physical response pilot and one selected comparison**. Record its
-  complete parameter/profile/unit map, actual own end modes/currents, relevant
-  radiation measure, precision, measured cost and stopping rule before any
-  batch. Retain all channels of that problem, not just the desired component.
+  incoming transverse and outgoing thickness-like end channels, prefer **one
+  bounded physical response pilot and one selected comparison**. Record its
+  complete parameter/profile/unit map, actual own end modes and `J_H` current,
+  precision, measured cost and stopping rule before any batch. Retain all
+  channels of that problem, not just the desired component. One frequency is
+  not necessarily a cheap call: all frequency-dependent rows and end/current
+  inputs must be available at its actual settings. Reuse only complete matching
+  inputs; measure the cost of missing construction before committing to it.
 - Changing frequency alone is not presumed sufficient. Stay within the
   approved model, retained-order/smallness domain and continuum regularity
   assumptions, away from a threshold/resonance/gap closure. Do not alter signs,
   constitutive parameters or boundary conditions simply to force leakage. A
   change to the approved physical input needs its applicable decision gate.
+  Establish the real-normal-wavenumber, flux-carrying asymptotic channels used
+  by this S-matrix; a leaky complex-wavenumber mode cannot be silently treated
+  as one of those channels. Any accompanying bulk-radiation calculation keeps
+  its distinct measure and [c1 §2b grazing restriction][c1-validity]: the stated
+  grazing limit is the strict `v_bulk_normal_0=0` result, and the off-grazing
+  smallness estimate is not a uniform justification over a radiating spectrum.
+  Local conditioning, modal separation and a selected observable-sensitivity
+  comparison provide practical evidence at the reported input; they are not a
+  proof of a pole-free continuum domain. Retain the actual weak-order/domain
+  premises, label unresolved enhancement and limit the claim if the evidence
+  does not support those premises. The historical contour is only limited
+  context, never a replacement for this local evidence.
 - Do not scan for a witness indefinitely. If a bounded admissibility inspection
   does not establish one, record exactly what failed or remains untested. A
-  valid independent generic-domain check can support a **symbolically checked
-  FORM with no open-channel numerical validation**; that limitation must be in
-  the reviewed handoff. If neither non-vacuous route is established, A9 remains
+  valid independent symbolic check can support a **symbolically checked FORM
+  with no open-channel numerical validation** only when the same nonempty
+  thickness end-channel branch, derived `J_H` current and admissible physical
+  domain are established. A mathematical continuation outside that physical
+  domain checks a construction only and cannot satisfy this coverage. State
+  the distinction in the handoff. If neither non-vacuous route is established, A9 remains
   incomplete. Seek a scope/parameter decision instead of declaring a zero
   result, proving a global absence by inference, or starting a broad sweep.
 
@@ -199,6 +235,14 @@ is required by this proposed amendment. An admissible open-channel numerical
 point is a preferred focused test, not a guaranteed available point or a new
 frequency campaign. The presence of an open channel does not itself imply a
 nonzero conversion amplitude.
+
+Bulk-depth radiation remains a separate availability/current question. Existing
+derived slab/bulk current terms and balance checks remain required. No standalone
+far-field bulk-escape FORM is introduced or claimed by this amendment: a current
+deficit does not separate escape from retained dissipation, forcing or truncation
+remainder. A separately claimed escape observable would require its own defined
+flux functional, far-field measure and approved scope. It cannot be substituted
+for the retained `J_H` conversion FORM.
 
 ## 4. Deferred pole branch and the claims that remain
 
@@ -216,6 +260,14 @@ This deferral does **not** remove the resolvent, closed modes, radiation/current
 construction or local branch/domain checks needed for the retained real-frequency
 scattering problem. An unresolved local singularity remains a limitation on
 that result; it cannot be hidden behind the pole deferral.
+For new scattering end-mode normalization, retain the applicable nonlinearPoleV2
+§3 full left/right pairing safeguards for the actual modal pencil and spectral
+parameter, including complete degenerate spaces and rejection of singular or
+unresolved pairing. Do not drop directions or invent a normalization to obtain
+an inverse. Do not apply a semisimple formula to a defective case. These local
+modal requirements are separate from independently derived energy-current/flux
+normalization; their applicability hypotheses must still hold. Deferring the
+profile-frequency pole study does not defer them.
 
 The following safeguards replace the pole-production mandate for this step:
 
@@ -224,7 +276,10 @@ The following safeguards replace the pole-production mandate for this step:
    selected 16/32-point diagnostic closed **without a resolved candidate**.
    This is not a certified empty spectrum, a global search, a no-bound-state
    conclusion or a completed four-case pole study. Do not rerun or double it
-   to make the status look stronger.
+   to make the status look stronger. The diagnostic used the recorded finite,
+   positive-regulator discretized pencil; it does not supply a contour-interior
+   holomorphy or exceptional-locus proof or validate an arbitrary analytic
+   continuation of the frequency-dependent rows.
 2. Retain the corrected mathematical distinctions when interpreting existing
    records: a nonlinear inverse residue or logarithmic count is not generally
    a projector; zero residue does not exclude a higher-order pole; a physical
@@ -246,6 +301,9 @@ The following safeguards replace the pole-production mandate for this step:
 The amendment review must assess these kept claims and their scope. It need not
 clear a new physical pole construction or all deferred Fredholm/realization
 theory. Those obligations belong to any later proposal that actually uses them.
+Later work must preserve the corrected mathematical distinctions and supply the
+hypotheses of the construction it actually uses; a deferral is not permission
+to revert to the invalid unrestricted v10 projector/residue formulas.
 
 ## 5. Emission, export, comparator and downstream boundary
 
@@ -256,12 +314,24 @@ component transcripts into a finished export.
 
 | Family | Proposed current S11c-d disposition |
 |---|---|
-| Complete channel S-matrix, conversion amplitude, continuum T-to-H flux and transverse survival | Required computed output and export according to the original membership rules. Carry valid domain and channel availability. |
+| Complete channel S-matrix, conversion amplitude, continuum T-to-H flux and transverse survival | Required computed output and export according to the original membership rules, with survival restricted to the continuum-channel flux ratio defined below. Carry valid domain and channel availability. |
 | Weak amplitude, total-fraction Taylor and induced-field weak quadratic coefficients | Required bindable exports; A9 is priority. Carry independent grades, baseline/interference disposition, units and retained-model limitations. |
 | Reduced operator/kernel, baselines, modes/current maps and other dependencies | Preserve required emissions and export only the recursive dependency closure required by retained downstream roots. Never replace an uncomputed dependency by a placeholder. |
 | Amplitude/flux bookkeeping and §5 control operands/residuals | Required emissions/review/comparison evidence. Their original emit-only status is unchanged unless the reviewed bind-closure design establishes a needed dependency. |
 | `S11CD_BOUND_POLE_SET_AND_RIESZ_DATA`, `S11CD_BOUND_SPECTRAL_OVERLAP` and their exclusively pole-specific dependency roots | **Deferred from current required physical output/export membership.** Do not export zero, an empty set, an empty result-bearing container or a generic pole function under these names. |
 | Pole-work disposition and preserved historical search provenance | Required **scope metadata**, separate from a physical pole-set value. State `DEFERRED_BY_SCOPE`, name the later work package, identify the cleared amendment and reference the existing limited search/complex records. This status says what was deferred, not that nothing exists. |
+
+`S11CD_TRANSVERSE_SURVIVAL_FUNCTIONAL` retains the computed ratio
+`P_T,surv=J_T,out/J_T,in`, summed over reflected and transmitted transverse
+channels on the declared `(omega,k_parallel,profile,channel-availability)`
+domain. Under this amendment its claim is **continuum-channel transverse flux
+survival**, not the complete N13 two-mechanism confinement object. Carry that
+meaning in the object's export definition and consumer contract, not merely in
+an accompanying prose warning. At the saved point with no open thickness end
+channel, the total open-output current ratio coincides with this transverse
+ratio because all open outputs are transverse; a near-unity value there does
+not establish confinement. No bound-overlap contribution is inferred or set to
+zero when the bound companion is deferred.
 
 The exact fresh metadata/write-key design must be settled against the real
 export schema in the amended build plan; the status label above is not an
@@ -274,7 +344,10 @@ confinement claims remain unavailable.
 
 The blind Wolfram **d** engine and T7 comparison remain required for the retained
 scattering/FORM objects. Their scope declarations must agree before numerical/
-symbolic joins. Pole families are recorded as outside the reviewed compared
+symbolic joins. In particular, v10 §7's both-operand reduced-operator/kernel
+join, reconstruction from those actual reduced rows, modal-current joins and
+retained conversion/survival/control operands remain in T7 coverage. Pole
+families are recorded as outside the reviewed compared
 domain; they are not residual zeros, evidence of equality or a fourth T7 truth
 value. Missing required scattering rows still fail the coverage gate. Historical
 one-engine pole diagnostics may be referenced as such, not reported as new
@@ -354,10 +427,8 @@ must be established by their actual subsequent records.
 [spec-grades]: /var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_SHARED_PHYSICS.md:545
 [spec-controls]: /var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_SHARED_PHYSICS.md:711
 [spec-outputs]: /var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_SHARED_PHYSICS.md:681
-[build-outputs]: /var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_sympy_build_directive.md:263
 [pole-contract]: /var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_NONLINEAR_POLE_CONTRACT.md
 [old-acceptance]: /var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_EXPLORATORY_ACCEPTANCE.md
-[brief]: /var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_sympy_build_PROGRAM_BRIEF.md:57
 [retained]: /var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_sympy_builder_report.md:488
 [decisions]: /var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_decisions.md:47
 [current-report]: /var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_flux_report.md
@@ -365,4 +436,5 @@ must be established by their actual subsequent records.
 [frequency-report]: /var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_frequency_source_report.md
 [search-report]: /var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_frequency_contour_refine_report.md
 [lean-review]: /var/projects/toy_physics/research/pde_ledger_v3/lean/s11/POLE_FIDELITY_REVIEW.md
+[c1-validity]: /var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c1_SHARED_PHYSICS.md:204
 [inventory]: /var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_scope_inventory_20260922.md

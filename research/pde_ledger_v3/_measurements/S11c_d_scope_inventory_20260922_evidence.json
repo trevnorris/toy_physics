@@ -1,13 +1,16 @@
 {
   "status": "DRAFT_SCOPE_INVENTORY_EVIDENCE_NOT_SCIENTIFIC_ACCEPTANCE",
-  "createdUtc": "2026-09-22T20:08:19.610462+00:00",
-  "head": "0d77af53561968d4593b49261589e2ee259eadbb",
+  "createdUtc": "2026-09-22T20:39:12.575560+00:00",
+  "head": "2e8ec5a35ef428908df9b44a24cab16c2546f9bc",
+  "scientificStateSnapshotCommit": "0d77af53561968d4593b49261589e2ee259eadbb",
+  "reviewedDraftPreservationCommit": "2e8ec5a35ef428908df9b44a24cab16c2546f9bc",
+  "round1ReviewRecord": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_scattering_form_review_round01.json",
   "method": "Read-only source text, report and JSON metadata inspection. No scientific module import, unpickling, numerical/symbolic operation, production validator, review leg or export execution.",
   "coverage": "Selected scientific workstream evidence and governing/review records; not a line-by-line audit of every commit or an ancestral validation campaign.",
   "inventory": {
     "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_scope_inventory_20260922.md",
-    "bytes": 34452,
-    "sha256": "d753110c81fffcdb9ca938fabc72f7c311bcf107a891a1d11e020fc7a286724d"
+    "bytes": 37302,
+    "sha256": "70e23904cb121704db26a8fa7afde04952f0673d503329ed1ef998466c887d27"
   },
   "links": [
     {
@@ -113,7 +116,7 @@
     {
       "label": "review-policy",
       "path": "/var/projects/toy_physics/CLAUDE.md",
-      "line": 47
+      "line": 140
     },
     {
       "label": "spec-opus",
@@ -199,11 +202,6 @@
       "label": "contour",
       "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_frequency_contour_refine_report.md",
       "line": null
-    },
-    {
-      "label": "brief-export",
-      "path": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_sympy_build_PROGRAM_BRIEF.md",
-      "line": 92
     },
     {
       "label": "agents",
@@ -662,20 +660,14 @@
     {
       "path": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_SCATTERING_FORM_AMENDMENT.md",
       "resolvedPath": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_SCATTERING_FORM_AMENDMENT.md",
-      "bytes": 27624,
-      "sha256": "b76f6fd0500ce50e04dc1aa0870b9982a6057ea4cde3dfe0793d0f52a8a5d2a9"
+      "bytes": 32959,
+      "sha256": "3b23bfa37bacf97b25a2cbbf946dd61234d3ead804d33c89ff8bf725a0851c2b"
     },
     {
       "path": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_SHARED_PHYSICS.md",
       "resolvedPath": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_SHARED_PHYSICS.md",
       "bytes": 67800,
       "sha256": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5"
-    },
-    {
-      "path": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_sympy_build_PROGRAM_BRIEF.md",
-      "resolvedPath": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_sympy_build_PROGRAM_BRIEF.md",
-      "bytes": 13217,
-      "sha256": "1d9a48a043c68a6b38a1951f69b82a3ea8e97f4b7bb1d8e3f4c028f03290b380"
     },
     {
       "path": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_sympy_build_directive.md",
@@ -742,12 +734,12 @@
     "pausedDraftRecord": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/material-2d-routes/paused-for-scope-assessment.json"
   },
   "reviewInterpretation": {
-    "physicsSpecV10": "Identified round-10 Opus/Grok clearance; does not clear later changes or builds.",
+    "physicsSpecV10": "Identified round-10 Opus/Grok clearance with recorded post-clearance wording folds; does not clear later changes or builds.",
     "nonlinearPoleV2WholePhysicalDirective": "Two current-version non-author clearances not established by inspected evidence; directive explicitly disclaims independent review.",
     "exploratoryAcceptanceChange": "User approved; separate two-leg clearance not established by inspected evidence.",
     "boundedLeanNP1toNP4": "CLEAR by Claude and Grok for identified packet; excludes physical application and analytic existence theory.",
     "savedResultValidators": "Do not count as two non-author physics-review legs.",
-    "thisInventory": "Unreviewed draft; no governing scope change."
+    "thisInventory": "Revised after two round-1 NEEDS REVISION verdicts; not cleared or effective for production."
   },
   "costEstimateStatus": "Planning judgment, not measured end-to-end forecasts; worker benchmarks are separate and review/provider delay or findings are not bounded."
 }

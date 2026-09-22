@@ -1,0 +1,489 @@
+{
+  "status": "STATIC_REVIEWED_NOT_LAUNCHED",
+  "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-complex-threshold",
+  "helper": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_end_complex_threshold.py",
+  "staticReview": {
+    "status": "STATIC_REVIEWED_MISSING_ACCEPTED_COMPLEX_THRESHOLD",
+    "helperSha256": "90137f3e6598149700c9279e39ec2ae36847caa75a52fc76c27451fa8498d213",
+    "planSha256": "1bcb972887033a51a74077ea659707b4681376b601257812a5773269c14f58c9",
+    "acceptedEliminationCheckpointSha256": "64bdd5aa0d56e5572815e8d314b059aab89d4547b3e5c2c658004496d53618fe",
+    "compileOnlyPassed": true,
+    "scientificImportsOrPacketDeserialization": false,
+    "wholeNativeBodyReverseAST": {
+      "wholeEndAST": "9671d8dc52a62500cea551a09830e1103fd7b2dcfb41a3fe949942b62a5cda41",
+      "allEarlierEndStatementsUnchangedAndUnexecuted": true,
+      "initial": {
+        "entireOriginalBodyReverseAST": true,
+        "originalAST": "c98bb0816c457f466f44334d22ae88e4906cc31fc3030dccf7d8b7a0cd841760",
+        "sites": {
+          "initial-0": {
+            "kind": "call",
+            "source": "sp.Poly(elimination, coordinate)",
+            "ast": "Call(func=Attribute(value=Name(id='sp', ctx=Load()), attr='Poly', ctx=Load()), args=[Name(id='elimination', ctx=Load()), Name(id='coordinate', ctx=Load())], keywords=[])"
+          }
+        },
+        "observations": [
+          {
+            "site": "initial-observation0",
+            "name": "poly"
+          },
+          {
+            "site": "initial-guard1",
+            "guard": "f.require(not poly.is_zero, 'nonzero actual zero-normal-momentum elimination')"
+          }
+        ],
+        "adapterSource": "def initial_poly(elimination, coordinate, router):\n    poly = router.call('initial-0', 'sp.Poly', None, (elimination, coordinate), {})\n    router.observe('initial-observation0', 'poly', poly)\n    f.require(not poly.is_zero, 'nonzero actual zero-normal-momentum elimination')\n    router.guard('initial-guard1')\n    return poly"
+      },
+      "analysis": {
+        "entireOriginalBodyReverseAST": true,
+        "originalAST": "f1553f99e8ea171b683b980649c30c991ee33ae586c3bee503d94d535e25b6dd",
+        "sites": {
+          "analysis-0": {
+            "kind": "call",
+            "source": "poly.monic()",
+            "ast": "Call(func=Attribute(value=Name(id='poly', ctx=Load()), attr='monic', ctx=Load()), args=[], keywords=[])"
+          },
+          "analysis-1": {
+            "kind": "call",
+            "source": "poly.monic().as_expr()",
+            "ast": "Call(func=Attribute(value=Call(func=Attribute(value=Name(id='poly', ctx=Load()), attr='monic', ctx=Load()), args=[], keywords=[]), attr='as_expr', ctx=Load()), args=[], keywords=[])"
+          },
+          "analysis-2": {
+            "kind": "call",
+            "source": "sp.Poly(poly.monic().as_expr(), coordinate, domain=sp.QQ_I)",
+            "ast": "Call(func=Attribute(value=Name(id='sp', ctx=Load()), attr='Poly', ctx=Load()), args=[Call(func=Attribute(value=Call(func=Attribute(value=Name(id='poly', ctx=Load()), attr='monic', ctx=Load()), args=[], keywords=[]), attr='as_expr', ctx=Load()), args=[], keywords=[]), Name(id='coordinate', ctx=Load())], keywords=[keyword(arg='domain', value=Attribute(value=Name(id='sp', ctx=Load()), attr='QQ_I', ctx=Load()))])"
+          },
+          "analysis-3": {
+            "kind": "call",
+            "source": "normalized.as_expr()",
+            "ast": "Call(func=Attribute(value=Name(id='normalized', ctx=Load()), attr='as_expr', ctx=Load()), args=[], keywords=[])"
+          },
+          "analysis-4": {
+            "kind": "call",
+            "source": "sp.re(expression)",
+            "ast": "Call(func=Attribute(value=Name(id='sp', ctx=Load()), attr='re', ctx=Load()), args=[Name(id='expression', ctx=Load())], keywords=[])"
+          },
+          "analysis-5": {
+            "kind": "call",
+            "source": "sp.re(expression).expand()",
+            "ast": "Call(func=Attribute(value=Call(func=Attribute(value=Name(id='sp', ctx=Load()), attr='re', ctx=Load()), args=[Name(id='expression', ctx=Load())], keywords=[]), attr='expand', ctx=Load()), args=[], keywords=[])"
+          },
+          "analysis-6": {
+            "kind": "call",
+            "source": "sp.Poly(sp.re(expression).expand(), coordinate, domain=sp.QQ)",
+            "ast": "Call(func=Attribute(value=Name(id='sp', ctx=Load()), attr='Poly', ctx=Load()), args=[Call(func=Attribute(value=Call(func=Attribute(value=Name(id='sp', ctx=Load()), attr='re', ctx=Load()), args=[Name(id='expression', ctx=Load())], keywords=[]), attr='expand', ctx=Load()), args=[], keywords=[]), Name(id='coordinate', ctx=Load())], keywords=[keyword(arg='domain', value=Attribute(value=Name(id='sp', ctx=Load()), attr='QQ', ctx=Load()))])"
+          },
+          "analysis-7": {
+            "kind": "call",
+            "source": "sp.im(expression)",
+            "ast": "Call(func=Attribute(value=Name(id='sp', ctx=Load()), attr='im', ctx=Load()), args=[Name(id='expression', ctx=Load())], keywords=[])"
+          },
+          "analysis-8": {
+            "kind": "call",
+            "source": "sp.im(expression).expand()",
+            "ast": "Call(func=Attribute(value=Call(func=Attribute(value=Name(id='sp', ctx=Load()), attr='im', ctx=Load()), args=[Name(id='expression', ctx=Load())], keywords=[]), attr='expand', ctx=Load()), args=[], keywords=[])"
+          },
+          "analysis-9": {
+            "kind": "call",
+            "source": "sp.Poly(sp.im(expression).expand(), coordinate, domain=sp.QQ)",
+            "ast": "Call(func=Attribute(value=Name(id='sp', ctx=Load()), attr='Poly', ctx=Load()), args=[Call(func=Attribute(value=Call(func=Attribute(value=Name(id='sp', ctx=Load()), attr='im', ctx=Load()), args=[Name(id='expression', ctx=Load())], keywords=[]), attr='expand', ctx=Load()), args=[], keywords=[]), Name(id='coordinate', ctx=Load())], keywords=[keyword(arg='domain', value=Attribute(value=Name(id='sp', ctx=Load()), attr='QQ', ctx=Load()))])"
+          },
+          "analysis-10": {
+            "kind": "call",
+            "source": "real.as_expr()",
+            "ast": "Call(func=Attribute(value=Name(id='real', ctx=Load()), attr='as_expr', ctx=Load()), args=[], keywords=[])"
+          },
+          "analysis-11": {
+            "kind": "arithmetic",
+            "source": "expression - real.as_expr()",
+            "ast": "BinOp(left=Name(id='expression', ctx=Load()), op=Sub(), right=Call(func=Attribute(value=Name(id='real', ctx=Load()), attr='as_expr', ctx=Load()), args=[], keywords=[]))"
+          },
+          "analysis-12": {
+            "kind": "call",
+            "source": "imag.as_expr()",
+            "ast": "Call(func=Attribute(value=Name(id='imag', ctx=Load()), attr='as_expr', ctx=Load()), args=[], keywords=[])"
+          },
+          "analysis-13": {
+            "kind": "arithmetic",
+            "source": "sp.I * imag.as_expr()",
+            "ast": "BinOp(left=Attribute(value=Name(id='sp', ctx=Load()), attr='I', ctx=Load()), op=Mult(), right=Call(func=Attribute(value=Name(id='imag', ctx=Load()), attr='as_expr', ctx=Load()), args=[], keywords=[]))"
+          },
+          "analysis-14": {
+            "kind": "arithmetic",
+            "source": "expression - real.as_expr() - sp.I * imag.as_expr()",
+            "ast": "BinOp(left=BinOp(left=Name(id='expression', ctx=Load()), op=Sub(), right=Call(func=Attribute(value=Name(id='real', ctx=Load()), attr='as_expr', ctx=Load()), args=[], keywords=[])), op=Sub(), right=BinOp(left=Attribute(value=Name(id='sp', ctx=Load()), attr='I', ctx=Load()), op=Mult(), right=Call(func=Attribute(value=Name(id='imag', ctx=Load()), attr='as_expr', ctx=Load()), args=[], keywords=[])))"
+          },
+          "analysis-15": {
+            "kind": "call",
+            "source": "sp.expand(expression - real.as_expr() - sp.I * imag.as_expr())",
+            "ast": "Call(func=Attribute(value=Name(id='sp', ctx=Load()), attr='expand', ctx=Load()), args=[BinOp(left=BinOp(left=Name(id='expression', ctx=Load()), op=Sub(), right=Call(func=Attribute(value=Name(id='real', ctx=Load()), attr='as_expr', ctx=Load()), args=[], keywords=[])), op=Sub(), right=BinOp(left=Attribute(value=Name(id='sp', ctx=Load()), attr='I', ctx=Load()), op=Mult(), right=Call(func=Attribute(value=Name(id='imag', ctx=Load()), attr='as_expr', ctx=Load()), args=[], keywords=[])))], keywords=[])"
+          },
+          "analysis-16": {
+            "kind": "call",
+            "source": "sp.gcd(real, imag)",
+            "ast": "Call(func=Attribute(value=Name(id='sp', ctx=Load()), attr='gcd', ctx=Load()), args=[Name(id='real', ctx=Load()), Name(id='imag', ctx=Load())], keywords=[])"
+          },
+          "analysis-17": {
+            "kind": "call",
+            "source": "common.sqf_part()",
+            "ast": "Call(func=Attribute(value=Name(id='common', ctx=Load()), attr='sqf_part', ctx=Load()), args=[], keywords=[])"
+          },
+          "analysis-18": {
+            "kind": "call",
+            "source": "sp.div(real, common)",
+            "ast": "Call(func=Attribute(value=Name(id='sp', ctx=Load()), attr='div', ctx=Load()), args=[Name(id='real', ctx=Load()), Name(id='common', ctx=Load())], keywords=[])"
+          },
+          "analysis-19": {
+            "kind": "call",
+            "source": "sp.div(imag, common)",
+            "ast": "Call(func=Attribute(value=Name(id='sp', ctx=Load()), attr='div', ctx=Load()), args=[Name(id='imag', ctx=Load()), Name(id='common', ctx=Load())], keywords=[])"
+          },
+          "analysis-20": {
+            "kind": "call",
+            "source": "real.LC()",
+            "ast": "Call(func=Attribute(value=Name(id='real', ctx=Load()), attr='LC', ctx=Load()), args=[], keywords=[])"
+          },
+          "analysis-21": {
+            "kind": "arithmetic",
+            "source": "1 / real.LC()",
+            "ast": "BinOp(left=Constant(value=1), op=Div(), right=Call(func=Attribute(value=Name(id='real', ctx=Load()), attr='LC', ctx=Load()), args=[], keywords=[]))"
+          },
+          "analysis-22": {
+            "kind": "call",
+            "source": "sp.Poly(1 / real.LC(), coordinate, domain=sp.QQ)",
+            "ast": "Call(func=Attribute(value=Name(id='sp', ctx=Load()), attr='Poly', ctx=Load()), args=[BinOp(left=Constant(value=1), op=Div(), right=Call(func=Attribute(value=Name(id='real', ctx=Load()), attr='LC', ctx=Load()), args=[], keywords=[])), Name(id='coordinate', ctx=Load())], keywords=[keyword(arg='domain', value=Attribute(value=Name(id='sp', ctx=Load()), attr='QQ', ctx=Load()))])"
+          },
+          "analysis-23": {
+            "kind": "call",
+            "source": "sp.Poly(0, coordinate, domain=sp.QQ)",
+            "ast": "Call(func=Attribute(value=Name(id='sp', ctx=Load()), attr='Poly', ctx=Load()), args=[Constant(value=0), Name(id='coordinate', ctx=Load())], keywords=[keyword(arg='domain', value=Attribute(value=Name(id='sp', ctx=Load()), attr='QQ', ctx=Load()))])"
+          },
+          "analysis-24": {
+            "kind": "call",
+            "source": "real.monic()",
+            "ast": "Call(func=Attribute(value=Name(id='real', ctx=Load()), attr='monic', ctx=Load()), args=[], keywords=[])"
+          },
+          "analysis-25": {
+            "kind": "call",
+            "source": "sp.gcdex(real, imag)",
+            "ast": "Call(func=Attribute(value=Name(id='sp', ctx=Load()), attr='gcdex', ctx=Load()), args=[Name(id='real', ctx=Load()), Name(id='imag', ctx=Load())], keywords=[])"
+          },
+          "analysis-26": {
+            "kind": "call",
+            "source": "bezout_real.as_expr()",
+            "ast": "Call(func=Attribute(value=Name(id='bezout_real', ctx=Load()), attr='as_expr', ctx=Load()), args=[], keywords=[])"
+          },
+          "analysis-27": {
+            "kind": "call",
+            "source": "real.as_expr()",
+            "ast": "Call(func=Attribute(value=Name(id='real', ctx=Load()), attr='as_expr', ctx=Load()), args=[], keywords=[])"
+          },
+          "analysis-28": {
+            "kind": "arithmetic",
+            "source": "bezout_real.as_expr() * real.as_expr()",
+            "ast": "BinOp(left=Call(func=Attribute(value=Name(id='bezout_real', ctx=Load()), attr='as_expr', ctx=Load()), args=[], keywords=[]), op=Mult(), right=Call(func=Attribute(value=Name(id='real', ctx=Load()), attr='as_expr', ctx=Load()), args=[], keywords=[]))"
+          },
+          "analysis-29": {
+            "kind": "call",
+            "source": "bezout_imag.as_expr()",
+            "ast": "Call(func=Attribute(value=Name(id='bezout_imag', ctx=Load()), attr='as_expr', ctx=Load()), args=[], keywords=[])"
+          },
+          "analysis-30": {
+            "kind": "call",
+            "source": "imag.as_expr()",
+            "ast": "Call(func=Attribute(value=Name(id='imag', ctx=Load()), attr='as_expr', ctx=Load()), args=[], keywords=[])"
+          },
+          "analysis-31": {
+            "kind": "arithmetic",
+            "source": "bezout_imag.as_expr() * imag.as_expr()",
+            "ast": "BinOp(left=Call(func=Attribute(value=Name(id='bezout_imag', ctx=Load()), attr='as_expr', ctx=Load()), args=[], keywords=[]), op=Mult(), right=Call(func=Attribute(value=Name(id='imag', ctx=Load()), attr='as_expr', ctx=Load()), args=[], keywords=[]))"
+          },
+          "analysis-32": {
+            "kind": "arithmetic",
+            "source": "bezout_real.as_expr() * real.as_expr() + bezout_imag.as_expr() * imag.as_expr()",
+            "ast": "BinOp(left=BinOp(left=Call(func=Attribute(value=Name(id='bezout_real', ctx=Load()), attr='as_expr', ctx=Load()), args=[], keywords=[]), op=Mult(), right=Call(func=Attribute(value=Name(id='real', ctx=Load()), attr='as_expr', ctx=Load()), args=[], keywords=[])), op=Add(), right=BinOp(left=Call(func=Attribute(value=Name(id='bezout_imag', ctx=Load()), attr='as_expr', ctx=Load()), args=[], keywords=[]), op=Mult(), right=Call(func=Attribute(value=Name(id='imag', ctx=Load()), attr='as_expr', ctx=Load()), args=[], keywords=[])))"
+          },
+          "analysis-33": {
+            "kind": "call",
+            "source": "common.as_expr()",
+            "ast": "Call(func=Attribute(value=Name(id='common', ctx=Load()), attr='as_expr', ctx=Load()), args=[], keywords=[])"
+          },
+          "analysis-34": {
+            "kind": "arithmetic",
+            "source": "bezout_real.as_expr() * real.as_expr() + bezout_imag.as_expr() * imag.as_expr() - common.as_expr()",
+            "ast": "BinOp(left=BinOp(left=BinOp(left=Call(func=Attribute(value=Name(id='bezout_real', ctx=Load()), attr='as_expr', ctx=Load()), args=[], keywords=[]), op=Mult(), right=Call(func=Attribute(value=Name(id='real', ctx=Load()), attr='as_expr', ctx=Load()), args=[], keywords=[])), op=Add(), right=BinOp(left=Call(func=Attribute(value=Name(id='bezout_imag', ctx=Load()), attr='as_expr', ctx=Load()), args=[], keywords=[]), op=Mult(), right=Call(func=Attribute(value=Name(id='imag', ctx=Load()), attr='as_expr', ctx=Load()), args=[], keywords=[]))), op=Sub(), right=Call(func=Attribute(value=Name(id='common', ctx=Load()), attr='as_expr', ctx=Load()), args=[], keywords=[]))"
+          },
+          "analysis-35": {
+            "kind": "call",
+            "source": "sp.expand(bezout_real.as_expr() * real.as_expr() + bezout_imag.as_expr() * imag.as_expr() - common.as_expr())",
+            "ast": "Call(func=Attribute(value=Name(id='sp', ctx=Load()), attr='expand', ctx=Load()), args=[BinOp(left=BinOp(left=BinOp(left=Call(func=Attribute(value=Name(id='bezout_real', ctx=Load()), attr='as_expr', ctx=Load()), args=[], keywords=[]), op=Mult(), right=Call(func=Attribute(value=Name(id='real', ctx=Load()), attr='as_expr', ctx=Load()), args=[], keywords=[])), op=Add(), right=BinOp(left=Call(func=Attribute(value=Name(id='bezout_imag', ctx=Load()), attr='as_expr', ctx=Load()), args=[], keywords=[]), op=Mult(), right=Call(func=Attribute(value=Name(id='imag', ctx=Load()), attr='as_expr', ctx=Load()), args=[], keywords=[]))), op=Sub(), right=Call(func=Attribute(value=Name(id='common', ctx=Load()), attr='as_expr', ctx=Load()), args=[], keywords=[]))], keywords=[])"
+          },
+          "analysis-36": {
+            "kind": "arithmetic",
+            "source": "10 ** 12",
+            "ast": "BinOp(left=Constant(value=10), op=Pow(), right=Constant(value=12))"
+          },
+          "analysis-37": {
+            "kind": "call",
+            "source": "sp.Rational(1, 10 ** 12)",
+            "ast": "Call(func=Attribute(value=Name(id='sp', ctx=Load()), attr='Rational', ctx=Load()), args=[Constant(value=1), BinOp(left=Constant(value=10), op=Pow(), right=Constant(value=12))], keywords=[])"
+          },
+          "analysis-38": {
+            "kind": "call",
+            "source": "squarefree.intervals(eps=sp.Rational(1, 10 ** 12))",
+            "ast": "Call(func=Attribute(value=Name(id='squarefree', ctx=Load()), attr='intervals', ctx=Load()), args=[], keywords=[keyword(arg='eps', value=Call(func=Attribute(value=Name(id='sp', ctx=Load()), attr='Rational', ctx=Load()), args=[Constant(value=1), BinOp(left=Constant(value=10), op=Pow(), right=Constant(value=12))], keywords=[]))])"
+          },
+          "analysis-39": {
+            "kind": "call",
+            "source": "sp.factor_list(expression, coordinate, extension=sp.I)",
+            "ast": "Call(func=Attribute(value=Name(id='sp', ctx=Load()), attr='factor_list', ctx=Load()), args=[Name(id='expression', ctx=Load()), Name(id='coordinate', ctx=Load())], keywords=[keyword(arg='extension', value=Attribute(value=Name(id='sp', ctx=Load()), attr='I', ctx=Load()))])"
+          },
+          "analysis-40": {
+            "kind": "arithmetic",
+            "source": "v ** n",
+            "ast": "BinOp(left=Name(id='v', ctx=Load()), op=Pow(), right=Name(id='n', ctx=Load()))"
+          },
+          "analysis-41": {
+            "kind": "call",
+            "source": "sp.prod((v ** n for (v, n) in factorization[1]))",
+            "ast": "Call(func=Attribute(value=Name(id='sp', ctx=Load()), attr='prod', ctx=Load()), args=[GeneratorExp(elt=BinOp(left=Name(id='v', ctx=Load()), op=Pow(), right=Name(id='n', ctx=Load())), generators=[comprehension(target=Tuple(elts=[Name(id='v', ctx=Store()), Name(id='n', ctx=Store())], ctx=Store()), iter=Subscript(value=Name(id='factorization', ctx=Load()), slice=Constant(value=1), ctx=Load()), ifs=[], is_async=0)])], keywords=[])"
+          },
+          "analysis-42": {
+            "kind": "arithmetic",
+            "source": "factorization[0] * sp.prod((v ** n for (v, n) in factorization[1]))",
+            "ast": "BinOp(left=Subscript(value=Name(id='factorization', ctx=Load()), slice=Constant(value=0), ctx=Load()), op=Mult(), right=Call(func=Attribute(value=Name(id='sp', ctx=Load()), attr='prod', ctx=Load()), args=[GeneratorExp(elt=BinOp(left=Name(id='v', ctx=Load()), op=Pow(), right=Name(id='n', ctx=Load())), generators=[comprehension(target=Tuple(elts=[Name(id='v', ctx=Store()), Name(id='n', ctx=Store())], ctx=Store()), iter=Subscript(value=Name(id='factorization', ctx=Load()), slice=Constant(value=1), ctx=Load()), ifs=[], is_async=0)])], keywords=[]))"
+          },
+          "analysis-43": {
+            "kind": "arithmetic",
+            "source": "factorization[0] * sp.prod((v ** n for (v, n) in factorization[1])) - expression",
+            "ast": "BinOp(left=BinOp(left=Subscript(value=Name(id='factorization', ctx=Load()), slice=Constant(value=0), ctx=Load()), op=Mult(), right=Call(func=Attribute(value=Name(id='sp', ctx=Load()), attr='prod', ctx=Load()), args=[GeneratorExp(elt=BinOp(left=Name(id='v', ctx=Load()), op=Pow(), right=Name(id='n', ctx=Load())), generators=[comprehension(target=Tuple(elts=[Name(id='v', ctx=Store()), Name(id='n', ctx=Store())], ctx=Store()), iter=Subscript(value=Name(id='factorization', ctx=Load()), slice=Constant(value=1), ctx=Load()), ifs=[], is_async=0)])], keywords=[])), op=Sub(), right=Name(id='expression', ctx=Load()))"
+          },
+          "analysis-44": {
+            "kind": "call",
+            "source": "sp.expand(factorization[0] * sp.prod((v ** n for (v, n) in factorization[1])) - expression)",
+            "ast": "Call(func=Attribute(value=Name(id='sp', ctx=Load()), attr='expand', ctx=Load()), args=[BinOp(left=BinOp(left=Subscript(value=Name(id='factorization', ctx=Load()), slice=Constant(value=0), ctx=Load()), op=Mult(), right=Call(func=Attribute(value=Name(id='sp', ctx=Load()), attr='prod', ctx=Load()), args=[GeneratorExp(elt=BinOp(left=Name(id='v', ctx=Load()), op=Pow(), right=Name(id='n', ctx=Load())), generators=[comprehension(target=Tuple(elts=[Name(id='v', ctx=Store()), Name(id='n', ctx=Store())], ctx=Store()), iter=Subscript(value=Name(id='factorization', ctx=Load()), slice=Constant(value=1), ctx=Load()), ifs=[], is_async=0)])], keywords=[])), op=Sub(), right=Name(id='expression', ctx=Load()))], keywords=[])"
+          },
+          "analysis-45": {
+            "kind": "call",
+            "source": "normalized.sqf_part()",
+            "ast": "Call(func=Attribute(value=Name(id='normalized', ctx=Load()), attr='sqf_part', ctx=Load()), args=[], keywords=[])"
+          },
+          "analysis-46": {
+            "kind": "call",
+            "source": "real.as_expr()",
+            "ast": "Call(func=Attribute(value=Name(id='real', ctx=Load()), attr='as_expr', ctx=Load()), args=[], keywords=[])"
+          },
+          "analysis-47": {
+            "kind": "call",
+            "source": "imag.as_expr()",
+            "ast": "Call(func=Attribute(value=Name(id='imag', ctx=Load()), attr='as_expr', ctx=Load()), args=[], keywords=[])"
+          },
+          "analysis-48": {
+            "kind": "call",
+            "source": "common.as_expr()",
+            "ast": "Call(func=Attribute(value=Name(id='common', ctx=Load()), attr='as_expr', ctx=Load()), args=[], keywords=[])"
+          },
+          "analysis-49": {
+            "kind": "call",
+            "source": "squarefree.as_expr()",
+            "ast": "Call(func=Attribute(value=Name(id='squarefree', ctx=Load()), attr='as_expr', ctx=Load()), args=[], keywords=[])"
+          },
+          "analysis-50": {
+            "kind": "call",
+            "source": "real_quotient.as_expr()",
+            "ast": "Call(func=Attribute(value=Name(id='real_quotient', ctx=Load()), attr='as_expr', ctx=Load()), args=[], keywords=[])"
+          },
+          "analysis-51": {
+            "kind": "call",
+            "source": "imag_quotient.as_expr()",
+            "ast": "Call(func=Attribute(value=Name(id='imag_quotient', ctx=Load()), attr='as_expr', ctx=Load()), args=[], keywords=[])"
+          },
+          "analysis-52": {
+            "kind": "call",
+            "source": "real_remainder.as_expr()",
+            "ast": "Call(func=Attribute(value=Name(id='real_remainder', ctx=Load()), attr='as_expr', ctx=Load()), args=[], keywords=[])"
+          },
+          "analysis-53": {
+            "kind": "call",
+            "source": "imag_remainder.as_expr()",
+            "ast": "Call(func=Attribute(value=Name(id='imag_remainder', ctx=Load()), attr='as_expr', ctx=Load()), args=[], keywords=[])"
+          },
+          "analysis-54": {
+            "kind": "call",
+            "source": "bezout_real.as_expr()",
+            "ast": "Call(func=Attribute(value=Name(id='bezout_real', ctx=Load()), attr='as_expr', ctx=Load()), args=[], keywords=[])"
+          },
+          "analysis-55": {
+            "kind": "call",
+            "source": "bezout_imag.as_expr()",
+            "ast": "Call(func=Attribute(value=Name(id='bezout_imag', ctx=Load()), attr='as_expr', ctx=Load()), args=[], keywords=[])"
+          },
+          "analysis-56": {
+            "kind": "call",
+            "source": "squarefree.count_roots(-sp.oo, sp.oo)",
+            "ast": "Call(func=Attribute(value=Name(id='squarefree', ctx=Load()), attr='count_roots', ctx=Load()), args=[UnaryOp(op=USub(), operand=Attribute(value=Name(id='sp', ctx=Load()), attr='oo', ctx=Load())), Attribute(value=Name(id='sp', ctx=Load()), attr='oo', ctx=Load())], keywords=[])"
+          },
+          "analysis-57": {
+            "kind": "call",
+            "source": "squarefree.count_roots(left, right)",
+            "ast": "Call(func=Attribute(value=Name(id='squarefree', ctx=Load()), attr='count_roots', ctx=Load()), args=[Name(id='left', ctx=Load()), Name(id='right', ctx=Load())], keywords=[])"
+          }
+        },
+        "observations": [
+          {
+            "site": "analysis-observation0",
+            "name": "normalized"
+          },
+          {
+            "site": "analysis-observation1",
+            "name": "expression"
+          },
+          {
+            "site": "analysis-observation2",
+            "name": "real"
+          },
+          {
+            "site": "analysis-observation3",
+            "name": "imag"
+          },
+          {
+            "site": "analysis-observation4",
+            "name": "decomposition"
+          },
+          {
+            "site": "analysis-observation5",
+            "name": "common"
+          },
+          {
+            "site": "analysis-observation6",
+            "name": "squarefree"
+          },
+          {
+            "site": "analysis-observation7",
+            "name": "real_quotient"
+          },
+          {
+            "site": "analysis-observation8",
+            "name": "real_remainder"
+          },
+          {
+            "site": "analysis-observation9",
+            "name": "imag_quotient"
+          },
+          {
+            "site": "analysis-observation10",
+            "name": "imag_remainder"
+          },
+          {
+            "site": "analysis-observation11",
+            "name": "bezout_real"
+          },
+          {
+            "site": "analysis-observation12",
+            "name": "bezout_imag"
+          },
+          {
+            "site": "analysis-observation13",
+            "name": "gcd"
+          },
+          {
+            "site": "analysis-observation14",
+            "name": "bezout_real"
+          },
+          {
+            "site": "analysis-observation15",
+            "name": "bezout_imag"
+          },
+          {
+            "site": "analysis-observation16",
+            "name": "gcd"
+          },
+          {
+            "site": "analysis-observation17",
+            "name": "bezout_residual"
+          },
+          {
+            "site": "analysis-observation18",
+            "name": "intervals"
+          },
+          {
+            "site": "analysis-observation19",
+            "name": "factorization"
+          },
+          {
+            "site": "analysis-observation20",
+            "name": "reconstruction"
+          },
+          {
+            "site": "analysis-observation21",
+            "name": "result"
+          },
+          {
+            "site": "analysis-guard22",
+            "guard": "f.require(decomposition == reconstruction == bezout_residual == 0 and real_remainder.is_zero and imag_remainder.is_zero and (gcd == common), 'exact real-axis polynomial decomposition/divisibility/Bezout joins')"
+          },
+          {
+            "site": "analysis-guard23",
+            "guard": "f.require(sum((n for (_, n) in intervals)) == router.call('analysis-56', 'method.count_roots', squarefree, (-sp.oo, sp.oo), {}), 'complete real isolation for computed common polynomial')"
+          },
+          {
+            "site": "analysis-guard24",
+            "guard": "f.require(multiplicity == 1 and router.call('analysis-57', 'method.count_roots', squarefree, (left, right), {}) == 1, 'individual real common-root interval')"
+          }
+        ],
+        "adapterSource": "def real_axis_analysis(poly, coordinate, router):\n    \"\"\"Keep the complex polynomial and isolate its exact real common roots.\"\"\"\n    normalized = router.call('analysis-2', 'sp.Poly', None, (router.call('analysis-1', 'method.as_expr', router.call('analysis-0', 'method.monic', poly, (), {}), (), {}), coordinate), {'domain': sp.QQ_I})\n    router.observe('analysis-observation0', 'normalized', normalized)\n    expression = router.call('analysis-3', 'method.as_expr', normalized, (), {})\n    router.observe('analysis-observation1', 'expression', expression)\n    real = router.call('analysis-6', 'sp.Poly', None, (router.call('analysis-5', 'method.expand', router.call('analysis-4', 'sp.re', None, (expression,), {}), (), {}), coordinate), {'domain': sp.QQ})\n    router.observe('analysis-observation2', 'real', real)\n    imag = router.call('analysis-9', 'sp.Poly', None, (router.call('analysis-8', 'method.expand', router.call('analysis-7', 'sp.im', None, (expression,), {}), (), {}), coordinate), {'domain': sp.QQ})\n    router.observe('analysis-observation3', 'imag', imag)\n    decomposition = router.call('analysis-15', 'sp.expand', None, (router.arithmetic('analysis-14', 'Sub', router.arithmetic('analysis-11', 'Sub', expression, router.call('analysis-10', 'method.as_expr', real, (), {})), router.arithmetic('analysis-13', 'Mult', sp.I, router.call('analysis-12', 'method.as_expr', imag, (), {}))),), {})\n    router.observe('analysis-observation4', 'decomposition', decomposition)\n    common = router.call('analysis-16', 'sp.gcd', None, (real, imag), {})\n    router.observe('analysis-observation5', 'common', common)\n    squarefree = router.call('analysis-17', 'method.sqf_part', common, (), {})\n    router.observe('analysis-observation6', 'squarefree', squarefree)\n    (real_quotient, real_remainder) = router.call('analysis-18', 'sp.div', None, (real, common), {})\n    router.observe('analysis-observation7', 'real_quotient', real_quotient)\n    router.observe('analysis-observation8', 'real_remainder', real_remainder)\n    (imag_quotient, imag_remainder) = router.call('analysis-19', 'sp.div', None, (imag, common), {})\n    router.observe('analysis-observation9', 'imag_quotient', imag_quotient)\n    router.observe('analysis-observation10', 'imag_remainder', imag_remainder)\n    if imag.is_zero:\n        bezout_real = router.call('analysis-22', 'sp.Poly', None, (router.arithmetic('analysis-21', 'Div', 1, router.call('analysis-20', 'method.LC', real, (), {})), coordinate), {'domain': sp.QQ})\n        router.observe('analysis-observation11', 'bezout_real', bezout_real)\n        bezout_imag = router.call('analysis-23', 'sp.Poly', None, (0, coordinate), {'domain': sp.QQ})\n        router.observe('analysis-observation12', 'bezout_imag', bezout_imag)\n        gcd = router.call('analysis-24', 'method.monic', real, (), {})\n        router.observe('analysis-observation13', 'gcd', gcd)\n    else:\n        (bezout_real, bezout_imag, gcd) = router.call('analysis-25', 'sp.gcdex', None, (real, imag), {})\n        router.observe('analysis-observation14', 'bezout_real', bezout_real)\n        router.observe('analysis-observation15', 'bezout_imag', bezout_imag)\n        router.observe('analysis-observation16', 'gcd', gcd)\n    bezout_residual = router.call('analysis-35', 'sp.expand', None, (router.arithmetic('analysis-34', 'Sub', router.arithmetic('analysis-32', 'Add', router.arithmetic('analysis-28', 'Mult', router.call('analysis-26', 'method.as_expr', bezout_real, (), {}), router.call('analysis-27', 'method.as_expr', real, (), {})), router.arithmetic('analysis-31', 'Mult', router.call('analysis-29', 'method.as_expr', bezout_imag, (), {}), router.call('analysis-30', 'method.as_expr', imag, (), {}))), router.call('analysis-33', 'method.as_expr', common, (), {})),), {})\n    router.observe('analysis-observation17', 'bezout_residual', bezout_residual)\n    intervals = router.call('analysis-38', 'method.intervals', squarefree, (), {'eps': router.call('analysis-37', 'sp.Rational', None, (1, router.arithmetic('analysis-36', 'Pow', 10, 12)), {})})\n    router.observe('analysis-observation18', 'intervals', intervals)\n    factorization = router.call('analysis-39', 'sp.factor_list', None, (expression, coordinate), {'extension': sp.I})\n    router.observe('analysis-observation19', 'factorization', factorization)\n    reconstruction = router.call('analysis-44', 'sp.expand', None, (router.arithmetic('analysis-43', 'Sub', router.arithmetic('analysis-42', 'Mult', factorization[0], router.call('analysis-41', 'sp.prod', None, ((router.arithmetic('analysis-40', 'Pow', v, n) for (v, n) in factorization[1]),), {})), expression),), {})\n    router.observe('analysis-observation20', 'reconstruction', reconstruction)\n    result = {'normalized': normalized, 'complexSquarefree': router.call('analysis-45', 'method.sqf_part', normalized, (), {}), 'realPart': router.call('analysis-46', 'method.as_expr', real, (), {}), 'imaginaryPart': router.call('analysis-47', 'method.as_expr', imag, (), {}), 'decompositionResidual': decomposition, 'realCommonFactor': router.call('analysis-48', 'method.as_expr', common, (), {}), 'realSquarefree': router.call('analysis-49', 'method.as_expr', squarefree, (), {}), 'realQuotient': router.call('analysis-50', 'method.as_expr', real_quotient, (), {}), 'imaginaryQuotient': router.call('analysis-51', 'method.as_expr', imag_quotient, (), {}), 'divisionResiduals': (router.call('analysis-52', 'method.as_expr', real_remainder, (), {}), router.call('analysis-53', 'method.as_expr', imag_remainder, (), {})), 'bezoutReal': router.call('analysis-54', 'method.as_expr', bezout_real, (), {}), 'bezoutImaginary': router.call('analysis-55', 'method.as_expr', bezout_imag, (), {}), 'bezoutResidual': bezout_residual, 'intervals': intervals, 'factorization': factorization, 'factorReconstructionResidual': reconstruction, 'scope': 'For real frequency coefficients, both actual real and imaginary polynomial parts must vanish. The complex polynomial, denominator and sheet artifacts are retained.'}\n    router.observe('analysis-observation21', 'result', result)\n    f.require(decomposition == reconstruction == bezout_residual == 0 and real_remainder.is_zero and imag_remainder.is_zero and (gcd == common), 'exact real-axis polynomial decomposition/divisibility/Bezout joins')\n    router.guard('analysis-guard22')\n    f.require(sum((n for (_, n) in intervals)) == router.call('analysis-56', 'method.count_roots', squarefree, (-sp.oo, sp.oo), {}), 'complete real isolation for computed common polynomial')\n    router.guard('analysis-guard23')\n    for ((left, right), multiplicity) in intervals:\n        f.require(multiplicity == 1 and router.call('analysis-57', 'method.count_roots', squarefree, (left, right), {}) == 1, 'individual real common-root interval')\n        router.guard('analysis-guard24')\n    return result"
+      },
+      "packet": {
+        "entireOriginalBodyReverseAST": true,
+        "originalAST": "4460c48521c7c4d2e3c3f5178847c88328b0ae02e22885571b46765521274116",
+        "sites": {
+          "packet-0": {
+            "kind": "call",
+            "source": "normalized.as_expr()",
+            "ast": "Call(func=Attribute(value=Name(id='normalized', ctx=Load()), attr='as_expr', ctx=Load()), args=[], keywords=[])"
+          },
+          "packet-1": {
+            "kind": "call",
+            "source": "squarefree.as_expr()",
+            "ast": "Call(func=Attribute(value=Name(id='squarefree', ctx=Load()), attr='as_expr', ctx=Load()), args=[], keywords=[])"
+          }
+        },
+        "observations": [
+          {
+            "site": "packet-observation0",
+            "name": "threshold"
+          },
+          {
+            "site": "packet-observation1",
+            "name": "threshold"
+          }
+        ],
+        "adapterSource": "def threshold_packet(zero, cleared, row_denominators, numerator, denominator, curve, elimination, normalized, squarefree, factorization, reconstruction, intervals, branches, coordinate, radical_coordinate, inp, data, analysis, router):\n    threshold = {'coefficientMatrix': zero, 'clearedMatrix': cleared, 'rowDenominators': row_denominators, 'numerator': numerator, 'denominator': denominator, 'wave': curve, 'elimination': elimination, 'normalizedElimination': router.call('packet-0', 'method.as_expr', normalized, (), {}), 'squarefreeElimination': router.call('packet-1', 'method.as_expr', squarefree, (), {}), 'factorization': factorization, 'factorReconstructionResidual': reconstruction, 'realRootIntervals': intervals, 'bulkBranchFrequencies': branches, 'frequencyCoordinate': coordinate, 'radicalCoordinate': radical_coordinate, 'coordinateMap': {'frequencyUnit': (0, -1, 0), 'radicalUnit': (0, -1, 0), 'normalMomentumUnit': (-1, 0, 0), 'normalMomentumCoefficient': 0, 'unitFrame': inp.frame, 'fieldReferenceUnits': data['ends']['fieldUnits'], 'equationReferenceUnits': data['ends']['rowUnits'], 'matrixConvention': 'Numerical coefficient matrix between equation and field reference-unit bases; entries and elimination coordinates are dimensionless.'}, 'scope': 'Real roots are zero-normal-momentum algebraic candidates; retain opposite radical sheets and denominator artifacts. Not a profile-frequency pole set or completed physical threshold classification.'}\n    router.observe('packet-observation0', 'threshold', threshold)\n    threshold['realAxisAnalysis'] = analysis\n    router.observe('packet-observation1', 'threshold', threshold)\n    return threshold"
+      },
+      "onlyAcceptedComplexAnalysisUsed": true,
+      "thresholdAddition": "threshold['realAxisAnalysis']=analysis"
+    },
+    "purePythonNewReuseUnavailablePersistenceHarness": true,
+    "nativeGeneratorOrderHarness": true,
+    "actualAcceptedArtifactRequests": 8481,
+    "inheritedSourcePins": 204,
+    "originalFocusedPacketsAndWholeCallerSourceJoined": true,
+    "actualFullPipelinePending": true,
+    "forbiddenScientificCallASTScanPassed": true,
+    "noInProgressWorker": true,
+    "retainedBuilderSuffixUnchanged": true,
+    "wholeOpaqueComplexAndPureRealBranchPlumbing": true,
+    "nativeThresholdPacketLocalHarness": true,
+    "unlaunchedHarnessReviewSha256": "6216dfe2c4b452eef595a3f5e1f6ce32604583f130d6931138dd4835367b746b"
+  },
+  "guard": {
+    "wallSeconds": 900,
+    "memoryBytes": 2147483648,
+    "swapBytes": 0,
+    "cpuCount": 1,
+    "nice": 15,
+    "tasks": 32,
+    "nativeThreads": 1
+  },
+  "launchIsAcceptance": false
+}

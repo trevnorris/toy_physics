@@ -39,3 +39,7 @@ Saved-only validation launched from `79876924`. The single initial inspection
 verified all mandatory limits and empty strict stderr. The silent local
 completion/error hook handles waiting; rational entries remain unaccepted
 until final independent validation and all guard outcomes pass.
+
+The rational end entries are accepted after independent saved validation in 129.57 worker / 130.98 native / 131.15 guard seconds. All actual exits are zero, strict stderr is empty, and checks/stdout are byte-identical. All 91,331 paths pass final identity; peak memory was 702,603,264 bytes, with zero cap/OOM/swap and 23.30 GB minimum host availability. Ten new entries, fifteen accepted entries, all ninety operation receipts, eight physical source routes and five actual controls passed without repeating science. Live cache decisions and raw typed operands remain separate from metadata JSON views.
+
+The separate checkpoint retains full producer inventories, actual native caller/unit/operation evidence and independent validation with both resource guards. The missing determinant, complex threshold pipeline, outgoing-end domains and whole-cluster continuation remain. This checkpoint does not accept numerical reuse.

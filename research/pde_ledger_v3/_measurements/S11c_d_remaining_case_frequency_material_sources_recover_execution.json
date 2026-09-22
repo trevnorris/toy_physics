@@ -1,5 +1,5 @@
 {
-  "status": "IMPLEMENTED_NOT_LAUNCHED",
+  "status": "ACCEPTED_BOUNDED_MATERIAL_NUMERICAL_SOURCES",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/material-sources-recovery-01",
   "stage": "frequency_material_sources_recover",
   "helperSha256": "f19cbd0ffae89fa15874c165b44599ecebe3d09541e43172b31a12958ffb47e5",
@@ -12,5 +12,135 @@
   "scientificImportsDeserializationOrExecution": 0,
   "syntaxAndCompiledAdaptedMain": true,
   "planSha256": "a34bbc29d4704bff9450af6bf0f9919422c98f48f010fa7dec7fead3a634b21e",
-  "failedInventorySha256": "4f89011c80748828e73f9c5301f2174a44d8a47b9cc79d3267c75b65590e0d0c"
+  "failedInventorySha256": "4f89011c80748828e73f9c5301f2174a44d8a47b9cc79d3267c75b65590e0d0c",
+  "launch": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/material-sources-recovery-01/launch.json",
+    "sha256": "d9818e587fb4bbf1a0784e140389f2289e906529f022661aa21d1982bb3f2df9",
+    "bytes": 1721
+  },
+  "containment": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/material-sources-recovery-01/initial-containment-inspection.json",
+    "sha256": "e85c64e2b213277a08c3fda6be0957a6e7ff3151198fecf3c53116f623c3c410",
+    "bytes": 2432
+  },
+  "checkpoint": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_material_sources_checkpoint.json",
+    "canonical": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_material_sources_checkpoint.json",
+    "sha256": "866bf623bae5bc054bb2c603bd5de10bd7c839f8ce7e0afaacb675e3fe32a809",
+    "bytes": 58160
+  },
+  "actualOutcome": {
+    "actualExits": [
+      0,
+      0,
+      0
+    ],
+    "workerWallSeconds": 6.09534807500313,
+    "nativeWallSeconds": 8.074247324984754,
+    "guardWallSeconds": 8.25955725100357,
+    "emptyStrictStderr": true,
+    "checksStdoutIdentity": true,
+    "checksSha256": "85f5adf614127c1d7b75778dbf4ff295613685674b52b68c50e5807a17894b17",
+    "peakBytes": 662249472,
+    "minimumHostAvailableBytes": 22843977728,
+    "zeroCapOOMSwap": true,
+    "evidence": {
+      "active.json": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/material-sources-recovery-01/active.json",
+        "canonical": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/material-sources-recovery-01/active.json",
+        "sha256": "52856d35f963f3d149dde95743ced67582eaaa69d4c4c1752dbafd8475035df6",
+        "bytes": 937
+      },
+      "frequency_material_sources_recover.invocation.json": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/material-sources-recovery-01/frequency_material_sources_recover.invocation.json",
+        "canonical": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/material-sources-recovery-01/frequency_material_sources_recover.invocation.json",
+        "sha256": "52856d35f963f3d149dde95743ced67582eaaa69d4c4c1752dbafd8475035df6",
+        "bytes": 937
+      },
+      "frequency_material_sources_recover.stdout": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/material-sources-recovery-01/frequency_material_sources_recover.stdout",
+        "canonical": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/material-sources-recovery-01/frequency_material_sources_recover.stdout",
+        "sha256": "85f5adf614127c1d7b75778dbf4ff295613685674b52b68c50e5807a17894b17",
+        "bytes": 176943
+      },
+      "frequency_material_sources_recover.stderr": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/material-sources-recovery-01/frequency_material_sources_recover.stderr",
+        "canonical": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/material-sources-recovery-01/frequency_material_sources_recover.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "guard.stdout": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/material-sources-recovery-01/guard.stdout",
+        "canonical": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/material-sources-recovery-01/guard.stdout",
+        "sha256": "5035ca7868189ba5c042da6bffbfdceb052e81b8f30a5f768b2729f72a202216",
+        "bytes": 269
+      },
+      "guard.stderr": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/material-sources-recovery-01/guard.stderr",
+        "canonical": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/material-sources-recovery-01/guard.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "resource-guard/outcome.json": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/material-sources-recovery-01/resource-guard/outcome.json",
+        "canonical": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/material-sources-recovery-01/resource-guard/outcome.json",
+        "sha256": "5035ca7868189ba5c042da6bffbfdceb052e81b8f30a5f768b2729f72a202216",
+        "bytes": 269
+      },
+      "resource-guard/child-outcome.json": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/material-sources-recovery-01/resource-guard/child-outcome.json",
+        "canonical": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/material-sources-recovery-01/resource-guard/child-outcome.json",
+        "sha256": "fea2e57ac76c91b449e21e82e2ce93b3e0d4da1293d2526026df8a1ef5cb1392",
+        "bytes": 102
+      },
+      "resource-guard/effective-limits.json": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/material-sources-recovery-01/resource-guard/effective-limits.json",
+        "canonical": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/material-sources-recovery-01/resource-guard/effective-limits.json",
+        "sha256": "3d49caf7d377cc760c6e4be4a90fc90c95bd1d60138e856004907ae5fc8d7207",
+        "bytes": 441
+      },
+      "resource-guard/limit-validation.json": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/material-sources-recovery-01/resource-guard/limit-validation.json",
+        "canonical": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/material-sources-recovery-01/resource-guard/limit-validation.json",
+        "sha256": "2267163f862150cf0fbdde820b7ab6ce9addee5c862b1ea99a067700d088e0e8",
+        "bytes": 511
+      },
+      "resource-guard/resource-samples.jsonl": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/material-sources-recovery-01/resource-guard/resource-samples.jsonl",
+        "canonical": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/material-sources-recovery-01/resource-guard/resource-samples.jsonl",
+        "sha256": "30ca8213a252f6b621786d96b9eb1d9a7bcec10c1b36ece42eaf9e06b9e1dab7",
+        "bytes": 2392
+      },
+      "resource-guard/stderr": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/material-sources-recovery-01/resource-guard/stderr",
+        "canonical": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/material-sources-recovery-01/resource-guard/stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "launch.json": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/material-sources-recovery-01/launch.json",
+        "canonical": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/material-sources-recovery-01/launch.json",
+        "sha256": "d9818e587fb4bbf1a0784e140389f2289e906529f022661aa21d1982bb3f2df9",
+        "bytes": 1721
+      },
+      "static-review.json": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/material-sources-recovery-01/static-review.json",
+        "canonical": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/material-sources-recovery-01/static-review.json",
+        "sha256": "7aac3639871542255ae7e15dad662a7bf5634d417e9215ce008a5a5c86a38ebf",
+        "bytes": 592
+      },
+      "initial-containment-inspection.json": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/material-sources-recovery-01/initial-containment-inspection.json",
+        "canonical": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/material-sources-recovery-01/initial-containment-inspection.json",
+        "sha256": "e85c64e2b213277a08c3fda6be0957a6e7ff3151198fecf3c53116f623c3c410",
+        "bytes": 2432
+      }
+    }
+  },
+  "completionInspection": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/material-sources-recovery-01/completion-inspection.json",
+    "canonical": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/material-sources-recovery-01/completion-inspection.json",
+    "sha256": "06fc634222148966ad9cc6ca7835dc5fa0575fb181a196b95976695fe53400dc",
+    "bytes": 11060
+  }
 }

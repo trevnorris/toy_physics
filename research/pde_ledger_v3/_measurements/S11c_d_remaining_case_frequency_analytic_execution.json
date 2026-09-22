@@ -146,6 +146,75 @@
     "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/analytic-derivative-routing",
     "scriptSha256": "ec623b8008dffdae127d19d2ac4157fd81951ea257df24250cc856513be26786",
     "staticReviewSha256": "cc70fa8c06747e61b7b96a1ec12a42834e036918c308404dafe328d3d85989fe",
-    "launched": false
+    "launched": true,
+    "launch": {
+      "launchedUtc": "2026-09-22T00:08:15.464375+00:00",
+      "guardPid": 969568,
+      "watcherPid": 969569,
+      "command": [
+        "/usr/bin/python",
+        "/var/projects/toy_physics/scripts/s11c_guarded_run.py",
+        "--log-directory",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/analytic-derivative-routing/resource-guard",
+        "--seconds",
+        "900",
+        "--",
+        "/usr/bin/python",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+        "--run-root",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/analytic-derivative-routing",
+        "--stage",
+        "diagnose",
+        "--",
+        "/usr/bin/python",
+        "-u",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/analytic-derivative-routing/diagnose.py"
+      ],
+      "scriptSha256": "ec623b8008dffdae127d19d2ac4157fd81951ea257df24250cc856513be26786",
+      "guardSha256": "6492f5ab11dc2ab2f80bbfcc96d7eb6b8632afea07100dd8f74a7954f3ffe542",
+      "implementationCommit": "8e3f0eb9392adffdf8f62bdf9a59af0cd7c700e1",
+      "launchIsAcceptance": false,
+      "newScientificConstruction": false
+    },
+    "initialContainment": {
+      "status": "VERIFIED_RUNNING_CONTAINED",
+      "active": {
+        "stage": "diagnose",
+        "command": [
+          "/usr/bin/python",
+          "-u",
+          "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/analytic-derivative-routing/diagnose.py"
+        ],
+        "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/analytic-derivative-routing/diagnose.stdout",
+        "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/analytic-derivative-routing/diagnose.stderr",
+        "startedUtc": "2026-09-22T00:08:15.628723+00:00",
+        "childPid": 969578,
+        "status": "running"
+      },
+      "limits": {
+        "verified": true,
+        "actual": {
+          "memory.max": "2147483648",
+          "memory.swap.max": "0",
+          "pids.max": "32",
+          "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-7576d0305192.service",
+          "nice": 15,
+          "affinity": [
+            15
+          ],
+          "threads": {
+            "OPENBLAS_NUM_THREADS": "1",
+            "OMP_NUM_THREADS": "1",
+            "MKL_NUM_THREADS": "1",
+            "NUMEXPR_NUM_THREADS": "1",
+            "VECLIB_MAXIMUM_THREADS": "1",
+            "BLIS_NUM_THREADS": "1"
+          }
+        }
+      },
+      "workerStderrBytes": 0,
+      "guardStderrBytes": 0,
+      "isAcceptance": false
+    }
   }
 }

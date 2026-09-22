@@ -57,3 +57,8 @@ the actual failed pair and all call collisions without differentiation or
 algebraic equivalence reconstruction. It will retain raw values and exact
 producer call arguments before any routing repair. No result is accepted and
 the failed constructor is not restarted.
+
+The saved-call diagnostic launched at 2026-09-22T00:08:15Z from 8e3f0eb9.
+Initial whole-job limits verified 2 GiB, zero swap, one CPU, nice 15 and
+32 tasks with native threads fixed to one; strict stderr was empty. Its
+completion/error hook will resume this task. This launch is not acceptance.

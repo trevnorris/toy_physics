@@ -17,3 +17,9 @@ Only the unfinished eight routes, four case summaries, five controls and
 final guards remain in this continuation. Independent saved validation must
 finish cleanly before any algebraic-candidate acceptance. Complex outgoing
 domains, whole-cluster continuation and numerical reuse remain unaccepted.
+
+The inspected continuation launched from `03d27fe7`. One initial containment
+inspection verified 900 seconds, 2 GiB, zero swap, one CPU, nice 15, 32 tasks
+and one native thread. At inspection its status was running with 0
+strict-stderr bytes. The local completion/error hook handles waiting silently.
+Final guard completion and independent saved validation remain required.

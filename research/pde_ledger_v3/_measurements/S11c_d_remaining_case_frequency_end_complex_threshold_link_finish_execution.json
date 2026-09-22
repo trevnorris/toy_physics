@@ -1,5 +1,5 @@
 {
-  "status": "STATIC_REVIEWED_NOT_LAUNCHED",
+  "status": "GUARDED_SAVED_REFERENCE_CONTINUATION_RUNNING",
   "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-complex-threshold-recovery-03",
   "helper": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_end_complex_threshold_link_finish.py",
   "staticReview": {
@@ -219,5 +219,68 @@
     "tasks": 32,
     "nativeThreads": 1
   },
-  "launchIsAcceptance": false
+  "launchIsAcceptance": false,
+  "launch": {
+    "launchedUtc": "2026-09-22T07:32:19.343970+00:00",
+    "guardPid": 1131904,
+    "watcherPid": 1131905,
+    "command": [
+      "/usr/bin/python",
+      "/var/projects/toy_physics/scripts/s11c_guarded_run.py",
+      "--log-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-complex-threshold-recovery-03/resource-guard",
+      "--seconds",
+      "900",
+      "--",
+      "/usr/bin/python",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-complex-threshold-recovery-03",
+      "--stage",
+      "frequency_end_complex_threshold_link_finish",
+      "--",
+      "/usr/bin/python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_end_complex_threshold_link_finish.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-complex-threshold-recovery-03/complete"
+    ],
+    "helperSha256": "70c8702fcc29ad5e5790aa52aa76edaaacabc642ca5027c21dab5506a0c04664",
+    "planSha256": "682de79fa1ed248f31ab8bf54ace612750eb51276cf6786ebddd5b863e0ecf70",
+    "repairSha256": "2b5e0ba69026629eb4a81d6264a0bf6b4abf8899072f88c81a6165a54deb72b4",
+    "guardSha256": "6492f5ab11dc2ab2f80bbfcc96d7eb6b8632afea07100dd8f74a7954f3ffe542",
+    "implementationCommit": "03d27fe7ee53d477d5f9af72c76a8ab101f41bf1",
+    "staticReviewSha256": "f58b1c8ff85778f9351dfca7a99a298a3cf4bbef2e65cf5c63cbfcb60c54d6f3",
+    "continuation": "Use exact canonical references with full original logical-chain provenance; consume saved threshold bytes and all completed58calls/4guards, run only unfinished aliases/controls/finalhashes",
+    "newNativeAnalysisOrProofCalls": 0,
+    "launchIsAcceptance": false
+  },
+  "initialContainmentInspection": {
+    "status": "INITIAL_CONTAINMENT_VERIFIED",
+    "limits": {
+      "memory.max": "2147483648",
+      "memory.swap.max": "0",
+      "pids.max": "32",
+      "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-21ec9d6477d4.service",
+      "nice": 15,
+      "affinity": [
+        15
+      ],
+      "threads": {
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "VECLIB_MAXIMUM_THREADS": "1",
+        "BLIS_NUM_THREADS": "1"
+      }
+    },
+    "limitValidationSha256": "32fd0e32955701e3869fa848f5ecfb6b1a941b894ada4d967b1e55a2929894b5",
+    "observedStage": "frequency_end_complex_threshold_link_finish",
+    "observedChildPid": 1131911,
+    "observedStatus": "running",
+    "observedStrictStderrBytes": 0,
+    "oneInitialCheckOnly": true,
+    "launchIsAcceptance": false
+  }
 }

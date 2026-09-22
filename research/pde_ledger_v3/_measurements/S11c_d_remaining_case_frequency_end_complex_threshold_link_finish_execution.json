@@ -1,0 +1,223 @@
+{
+  "status": "STATIC_REVIEWED_NOT_LAUNCHED",
+  "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-complex-threshold-recovery-03",
+  "helper": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_end_complex_threshold_link_finish.py",
+  "staticReview": {
+    "status": "STATIC_REVIEWED_CANONICAL_REFERENCE_SAVED_PACKET_CONTINUATION",
+    "helperSha256": "70c8702fcc29ad5e5790aa52aa76edaaacabc642ca5027c21dab5506a0c04664",
+    "planSha256": "682de79fa1ed248f31ab8bf54ace612750eb51276cf6786ebddd5b863e0ecf70",
+    "repairSha256": "2b5e0ba69026629eb4a81d6264a0bf6b4abf8899072f88c81a6165a54deb72b4",
+    "wholeFinishHelperSha256": "39225829928b91a741cd37dcc6239616c32c8675d299ae736114ea02050448ad",
+    "wholeLoadJoin": {
+      "entireFinishLoadReverseAST": true,
+      "originalLoadAST": "cf2bb7e0e756ae4bbd6ad3c23d27f79c15303d712ecbb974989e69c04310b815",
+      "originalLoaderNotCalled": true,
+      "originalDataChecksAndPacketOutputRouteUnchanged": true,
+      "adapterSource": "def load(base):\n    fresh_writers(base)\n    repair = json.loads(REPAIR.read_text())\n    old = PREVIOUS / 'complete'\n    inventory_path = Path(repair['completedInventory']['path'])\n    f.require(f.digest(Path(original.__file__)) == repair['originalHelperSha256'], 'immutable original complex helper')\n    f.require(f.digest(Path(previous.__file__)) == repair['previousHelperSha256'], 'immutable first continuation helper')\n    f.require(f.digest(old / 'inputs.json') == repair['originalInputsSha256'] and f.digest(inventory_path) == repair['completedInventory']['sha256'], 'completed original manifest/inventory hashes')\n    inventory = json.loads(inventory_path.read_text())\n    prior = json.loads((old / 'inputs.json').read_text())\n    manifest = copy.deepcopy(prior)\n    manifest['runDirectory'] = str(base)\n    manifest['referencedInputs'] = {}\n    ref = lambda p, n, s: canonical_reference(base, manifest, p, n, s)\n    for (name, item) in inventory.items():\n        path = old / name\n        f.require(f.digest(path) == item['sha256'] and path.stat().st_size == item['bytes'] and (str(path.resolve()) == item['resolved']) and ((str(path.readlink()) if path.is_symlink() else None) == item['rawLink']), ('immutable completed complex file', name))\n        ref(path, 'previous-complex-recovery-inputs.json' if name == 'inputs.json' else name, item['sha256'])\n    ref(old / 'complex-locals/packet-observation1/0/value.pickle', 'new-end-threshold/right-threshold-candidates.pickle', repair['previousOutcome']['actualThresholdPacketSha256'])\n    for (name, item) in prior['referencedInputs'].items():\n        saved = inventory[name]\n        f.require(saved['rawLink'] == item['original'] and saved['resolved'] == item['resolvedOriginal'] and (saved['sha256'] == item['sha256']) and (saved['bytes'] == item['bytes']), 'full original reference route')\n    for (name, item) in repair['previousLogs'].items():\n        ref(PREVIOUS / name, 'previous-complex-recovery-logs/' + name, item['sha256'])\n    for (key, name) in (('completedInventory', 'completed-complex-recovery-file-inventory.json'), ('outcomeInspection', 'failed-complex-packet-outcome.json')):\n        item = repair[key]\n        ref(Path(item['path']), name, item['sha256'])\n    for (name, value) in prior['sourceFiles'].items():\n        f.require(f.digest(f.ROOT / name) == f.digest(old / 'source' / name) == f.digest(base / 'source' / name) == value, 'original current/frozen source identity')\n    for path in (Path(__file__).resolve(), PLAN, REPAIR):\n        name = str(path.relative_to(f.ROOT))\n        f.require(name not in manifest['sourceFiles'], 'fresh recovery source pin')\n        value = f.digest(path)\n        manifest['sourceFiles'][name] = value\n        target = base / 'source' / name\n        target.parent.mkdir(parents=True, exist_ok=True)\n        f.require(not target.exists() and (not target.is_symlink()), 'fresh recovery frozen source')\n        target.write_bytes(path.read_bytes())\n    for (name, value) in manifest['inputPackets'].items():\n        f.require(f.digest(Path(name)) == value, 'fresh original input prehash')\n    cp = json.loads((base / 'accepted-elimination-checkpoint.json').read_text())\n    f.require(f.digest(base / 'accepted-elimination-checkpoint.json') == original.CP_SHA and cp['status'] == 'ACCEPTED_CASE_FREQUENCY_END_ELIMINATION', 'same accepted resultant input')\n    tree = ast.parse(Path(original.__file__).read_text())\n    for (name, sha) in repair['wholeOriginalBodies'].items():\n        node = next((n for n in tree.body if getattr(n, 'name', None) == name))\n        f.require(hashlib.sha256(ast.dump(node).encode()).hexdigest() == sha, ('whole immutable original helper body', name))\n    previous_tree = ast.parse(Path(previous.__file__).read_text())\n    for (name, sha) in repair['wholePreviousBodies'].items():\n        node = next((n for n in previous_tree.body if getattr(n, 'name', None) == name))\n        f.require(hashlib.sha256(ast.dump(node).encode()).hexdigest() == sha, ('whole first continuation helper body', name))\n    retain_boundary_evidence(base, manifest)\n    STATE.update(repair=repair, inventory=inventory, manifest=manifest)\n    manifest['complexPacketFinish'] = {'previousDirectory': str(PREVIOUS), 'originalHelperSha256': repair['originalHelperSha256'], 'previousHelperSha256': repair['previousHelperSha256'], 'originalInputsSha256': repair['originalInputsSha256'], 'completedFilesReferenced': len(inventory), 'previousOutcome': repair['previousOutcome'], 'oldLoaderCalled': False, 'completedNativeOperationReceipts': 58, 'newAnalysisOrNativeProofCalls': 0, 'originalFinalChecksOrAcceptance': False, 'thresholdOutputUsesExactSavedBytes': True, 'originalScientificValuesReconstructed': False}\n    f.save(base / 'completed-complex-packet-reference-reuse.json', manifest['complexPacketFinish'])\n    f.save(base / 'inputs.json', manifest)\n    return (cp, manifest)"
+    },
+    "wholePacketReaderJoin": {
+      "entireFinishPacketReaderReverseAST": true,
+      "originalPacketAST": "9b88136702a6d9b5178895a4fa3349a4c00336e369647ed13c73abc3447b9572",
+      "oneResolvedPathExpectation": true,
+      "allSizeHashValueAndSourceGuardsUnchanged": true,
+      "adapterSource": "def packet(base, name):\n    item = STATE['inventory'][name]\n    path = base / name\n    f.require(path.is_symlink() and path.readlink() == (PREVIOUS / 'complete' / name).resolve() and (str(path.resolve()) == item['resolved']) and (path.stat().st_size == item['bytes']) and (f.digest(path) == item['sha256']), ('actual completed packet address/hash', name))\n    return f.unpickle(path)"
+    },
+    "allWholeFinishBodiesJoined": true,
+    "originalMainAndConsumerSuffixUnchanged": true,
+    "synthetic65HopChainPreserved": true,
+    "directReferenceBytesHashAndStrictPacketReaderFixture": true,
+    "duplicateReferenceRejected": true,
+    "scientificImportsOrDeserialization": false,
+    "actualFailedJobNotReplayed": true,
+    "failedPartialFiles": 1185,
+    "failedLogs": 23,
+    "currentRawAndResolvedReadOutcomesSeparateFromGuardedFailure": true,
+    "noInProgressWorker": true,
+    "retainedBuilderSuffixUnchanged": true,
+    "harnessSha256": "f9800961307c4c0a84dc16718e7d30fede6c88cddb3c11072c3f21b9d569a02b"
+  },
+  "failedOutcome": {
+    "status": "FAILED_REFERENCE_LINK_DEPTH_BEFORE_SAVED_LOAD_COMPLETE",
+    "supervisor": {
+      "stage": "frequency_end_complex_threshold_finish",
+      "command": [
+        "/usr/bin/python",
+        "-u",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_end_complex_threshold_finish.py",
+        "--run-directory",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-complex-threshold-recovery-02/complete"
+      ],
+      "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-complex-threshold-recovery-02/frequency_end_complex_threshold_finish.stdout",
+      "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-complex-threshold-recovery-02/frequency_end_complex_threshold_finish.stderr",
+      "startedUtc": "2026-09-22T07:18:54.377128+00:00",
+      "childPid": 1127505,
+      "status": "failed",
+      "exitCode": 1,
+      "wallSeconds": 17.75112010000157,
+      "stderrBytes": 1727,
+      "finishedUtc": "2026-09-22T07:19:12.128357+00:00"
+    },
+    "guard": {
+      "exitCode": 1,
+      "wallSeconds": 17.91778947500279,
+      "unit": "s11c-guard-6010862b81b7",
+      "stderrBytes": 0,
+      "limitsVerified": true,
+      "childOutcome": {
+        "exitCode": 1,
+        "guardReason": null,
+        "wallSeconds": 17.83719459999702,
+        "childPid": 1127504
+      }
+    },
+    "child": {
+      "exitCode": 1,
+      "guardReason": null,
+      "wallSeconds": 17.83719459999702,
+      "childPid": 1127504
+    },
+    "effectiveLimits": {
+      "memory.max": "2147483648",
+      "memory.swap.max": "0",
+      "pids.max": "32",
+      "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-6010862b81b7.service",
+      "nice": 15,
+      "affinity": [
+        15
+      ],
+      "threads": {
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "VECLIB_MAXIMUM_THREADS": "1",
+        "BLIS_NUM_THREADS": "1"
+      }
+    },
+    "resources": {
+      "peakBytes": 199077888,
+      "minimumHostAvailableBytes": 23533707264,
+      "swapBytes": 0,
+      "capReclaims": 0,
+      "oomEvents": 0
+    },
+    "strictStderrBytes": 1727,
+    "partialReferenceFiles": 1185,
+    "currentUnreadableRawLinks": {},
+    "actualFailedPathCurrentRoute": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-complex-threshold-recovery-02/complete/accepted/accepted-frequency/inputs.json",
+      "rawLink": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-complex-threshold-recovery-01/complete/accepted/accepted-frequency/inputs.json",
+      "resolved": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-source-20260919/finish-01/complete/inputs.json",
+      "sha256": "910c3dc28bfa7e2ed9cabdef9bbe25221ba16b764ddc04b0c8e2b46b73ed1b8e",
+      "bytes": 827451,
+      "rawReadable": true,
+      "symlinkChain": [
+        {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-complex-threshold-recovery-02/complete/accepted/accepted-frequency/inputs.json",
+          "target": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-complex-threshold-recovery-01/complete/accepted/accepted-frequency/inputs.json"
+        },
+        {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-complex-threshold-recovery-01/complete/accepted/accepted-frequency/inputs.json",
+          "target": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-complex-threshold/complete/accepted/accepted-frequency/inputs.json"
+        },
+        {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-complex-threshold/complete/accepted/accepted-frequency/inputs.json",
+          "target": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-elimination/complete/accepted/accepted-frequency/inputs.json"
+        },
+        {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-elimination/complete/accepted/accepted-frequency/inputs.json",
+          "target": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-determinant/complete/accepted/accepted-frequency/inputs.json"
+        },
+        {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-determinant/complete/accepted/accepted-frequency/inputs.json",
+          "target": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-rational/complete/accepted/accepted-frequency/inputs.json"
+        },
+        {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-rational/complete/accepted/accepted-frequency/inputs.json",
+          "target": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-threshold-inputs/complete/accepted/accepted-frequency/inputs.json"
+        },
+        {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-threshold-inputs/complete/accepted/accepted-frequency/inputs.json",
+          "target": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-bindings/complete/accepted/accepted-frequency/inputs.json"
+        },
+        {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-bindings/complete/accepted/accepted-frequency/inputs.json",
+          "target": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-coordinates/complete/accepted/accepted-frequency/inputs.json"
+        },
+        {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-coordinates/complete/accepted/accepted-frequency/inputs.json",
+          "target": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-call-inputs-recovery-01/complete/accepted/accepted-frequency/inputs.json"
+        },
+        {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-call-inputs-recovery-01/complete/accepted/accepted-frequency/inputs.json",
+          "target": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-call-inputs/complete/accepted/accepted-frequency/inputs.json"
+        },
+        {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-call-inputs/complete/accepted/accepted-frequency/inputs.json",
+          "target": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-inputs-recovery-02/complete/accepted/accepted-frequency/inputs.json"
+        },
+        {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-inputs-recovery-02/complete/accepted/accepted-frequency/inputs.json",
+          "target": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-inputs-recovery-01/complete/accepted/accepted-frequency/inputs.json"
+        },
+        {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-inputs-recovery-01/complete/accepted/accepted-frequency/inputs.json",
+          "target": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-inputs/complete/accepted/accepted-frequency/inputs.json"
+        },
+        {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-inputs/complete/accepted/accepted-frequency/inputs.json",
+          "target": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/analytic-sources-recovery-01/complete/accepted/accepted-frequency/inputs.json"
+        },
+        {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/analytic-sources-recovery-01/complete/accepted/accepted-frequency/inputs.json",
+          "target": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/analytic-sources/complete/accepted/accepted-frequency/inputs.json"
+        },
+        {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/analytic-sources/complete/accepted/accepted-frequency/inputs.json",
+          "target": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/analytic-inputs/complete/accepted/accepted-frequency/inputs.json"
+        },
+        {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/analytic-inputs/complete/accepted/accepted-frequency/inputs.json",
+          "target": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/characters-recovery-02/complete/accepted/accepted-frequency/inputs.json"
+        },
+        {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/characters-recovery-02/complete/accepted/accepted-frequency/inputs.json",
+          "target": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/characters-recovery-01/complete/accepted/accepted-frequency/inputs.json"
+        },
+        {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/characters-recovery-01/complete/accepted/accepted-frequency/inputs.json",
+          "target": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/characters/complete/accepted/accepted-frequency/inputs.json"
+        },
+        {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/characters/complete/accepted/accepted-frequency/inputs.json",
+          "target": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/sources/complete/accepted-frequency/inputs.json"
+        },
+        {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/sources/complete/accepted-frequency/inputs.json",
+          "target": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/inputs-recovery-01/complete/accepted-frequency/inputs.json"
+        },
+        {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/inputs-recovery-01/complete/accepted-frequency/inputs.json",
+          "target": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-source-20260919/finish-01/complete/inputs.json"
+        }
+      ]
+    },
+    "logFiles": 23,
+    "originalInputManifestWritten": false,
+    "joinedSourcesOrOperandReadsStarted": false,
+    "newScientificOperations": 0,
+    "newAliasOrControlSummaries": 0,
+    "finalChecksOrAcceptance": false,
+    "boundary": "native reference created a further inherited link, then guarded digest(dest) raised ELOOP; current raw and resolved inspection is recorded separately, no cycle found and no failed read is replayed under a guard"
+  },
+  "guard": {
+    "wallSeconds": 900,
+    "memoryBytes": 2147483648,
+    "swapBytes": 0,
+    "cpuCount": 1,
+    "nice": 15,
+    "tasks": 32,
+    "nativeThreads": 1
+  },
+  "launchIsAcceptance": false
+}

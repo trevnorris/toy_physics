@@ -1,0 +1,415 @@
+{
+  "status": "EXPLICIT_RESOLVED_REFERENCE_BOUNDARY_CONTINUATION",
+  "failedDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-complex-threshold-recovery-02",
+  "originalFinishHelperSha256": "39225829928b91a741cd37dcc6239616c32c8675d299ae736114ea02050448ad",
+  "originalFinishPlanSha256": "89002f717588a89ff414718ff1cf8572e4fd6d7b7cf79df4c59704948992a461",
+  "originalFinishRepairSha256": "fafbc5d1aa90ebef1969fa80408f7d4d002b78bba77c1ff1c03b3ed121575255",
+  "fileInventory": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-complex-threshold-recovery-03/failed-link-file-inventory.json",
+    "sha256": "86053f8b7ffea7d6156f17de3f0d94b282337bf08f1002f8c74c9c7c108930d0"
+  },
+  "outcomeInspection": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-complex-threshold-recovery-03/failed-link-outcome.json",
+    "sha256": "be9b0bf64946ff951b6ef9df4caf5e0321bdbbed04cca93a43104152f670c669"
+  },
+  "failedLogs": {
+    "frequency_end_complex_threshold_finish.invocation.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-complex-threshold-recovery-02/frequency_end_complex_threshold_finish.invocation.json",
+      "rawLink": null,
+      "resolved": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-complex-threshold-recovery-02/frequency_end_complex_threshold_finish.invocation.json",
+      "sha256": "ac4d13355dd3d942a3bff0fb7a46f7877276387bef0ca06b7b7d49cb3cb2ad8b",
+      "bytes": 968,
+      "rawReadable": true,
+      "symlinkChain": []
+    },
+    "guard.stderr": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-complex-threshold-recovery-02/guard.stderr",
+      "rawLink": null,
+      "resolved": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-complex-threshold-recovery-02/guard.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "rawReadable": true,
+      "symlinkChain": []
+    },
+    "frequency_end_complex_threshold_finish.stderr": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-complex-threshold-recovery-02/frequency_end_complex_threshold_finish.stderr",
+      "rawLink": null,
+      "resolved": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-complex-threshold-recovery-02/frequency_end_complex_threshold_finish.stderr",
+      "sha256": "f1b2bd11a6e5f2baf8e91dc709f24696d5d057ebd61c4929ddf26b022b786fcf",
+      "bytes": 1727,
+      "rawReadable": true,
+      "symlinkChain": []
+    },
+    "active.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-complex-threshold-recovery-02/active.json",
+      "rawLink": null,
+      "resolved": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-complex-threshold-recovery-02/active.json",
+      "sha256": "ac4d13355dd3d942a3bff0fb7a46f7877276387bef0ca06b7b7d49cb3cb2ad8b",
+      "bytes": 968,
+      "rawReadable": true,
+      "symlinkChain": []
+    },
+    "completed-complex-recovery-file-inventory.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-complex-threshold-recovery-02/completed-complex-recovery-file-inventory.json",
+      "rawLink": null,
+      "resolved": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-complex-threshold-recovery-02/completed-complex-recovery-file-inventory.json",
+      "sha256": "3d4dd8820f92af4472e3baa6d566720328c4cde7423eae0bccc3b654841920d3",
+      "bytes": 5209046,
+      "rawReadable": true,
+      "symlinkChain": []
+    },
+    "static-review.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-complex-threshold-recovery-02/static-review.json",
+      "rawLink": null,
+      "resolved": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-complex-threshold-recovery-02/static-review.json",
+      "sha256": "04b747e65f22eac6025f5397a46e36ec12125cd64db7825363824a1de42ddf57",
+      "bytes": 5135,
+      "rawReadable": true,
+      "symlinkChain": []
+    },
+    "watcher.stderr": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-complex-threshold-recovery-02/watcher.stderr",
+      "rawLink": null,
+      "resolved": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-complex-threshold-recovery-02/watcher.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "rawReadable": true,
+      "symlinkChain": []
+    },
+    "normalization.lock": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-complex-threshold-recovery-02/normalization.lock",
+      "rawLink": null,
+      "resolved": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-complex-threshold-recovery-02/normalization.lock",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "rawReadable": true,
+      "symlinkChain": []
+    },
+    "frequency_end_complex_threshold_finish.stdout": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-complex-threshold-recovery-02/frequency_end_complex_threshold_finish.stdout",
+      "rawLink": null,
+      "resolved": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-complex-threshold-recovery-02/frequency_end_complex_threshold_finish.stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "rawReadable": true,
+      "symlinkChain": []
+    },
+    "watcher.stdout": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-complex-threshold-recovery-02/watcher.stdout",
+      "rawLink": null,
+      "resolved": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-complex-threshold-recovery-02/watcher.stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "rawReadable": true,
+      "symlinkChain": []
+    },
+    "failed-complex-packet-outcome.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-complex-threshold-recovery-02/failed-complex-packet-outcome.json",
+      "rawLink": null,
+      "resolved": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-complex-threshold-recovery-02/failed-complex-packet-outcome.json",
+      "sha256": "2e981e1b952bd45fdc1c9d89d3280e2419b291b14327087f4343c1c2a40d48e2",
+      "bytes": 9493,
+      "rawReadable": true,
+      "symlinkChain": []
+    },
+    "completion-message.txt": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-complex-threshold-recovery-02/completion-message.txt",
+      "rawLink": null,
+      "resolved": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-complex-threshold-recovery-02/completion-message.txt",
+      "sha256": "a20aa160ee08dc54be25af55c9e0c0a659123a606d83e5bb51d905adb306213a",
+      "bytes": 12936,
+      "rawReadable": true,
+      "symlinkChain": []
+    },
+    "metadata-harness-review.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-complex-threshold-recovery-02/metadata-harness-review.json",
+      "rawLink": null,
+      "resolved": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-complex-threshold-recovery-02/metadata-harness-review.json",
+      "sha256": "d5b427707389ca744a62747a34b73c85a637e412da34dcdf6643df01c08413e1",
+      "bytes": 4187,
+      "rawReadable": true,
+      "symlinkChain": []
+    },
+    "guard.stdout": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-complex-threshold-recovery-02/guard.stdout",
+      "rawLink": null,
+      "resolved": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-complex-threshold-recovery-02/guard.stdout",
+      "sha256": "3c06b5e0368c61109a490344b0f0c538d6f1fd2e516f21982a271ad42034f180",
+      "bytes": 270,
+      "rawReadable": true,
+      "symlinkChain": []
+    },
+    "launch.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-complex-threshold-recovery-02/launch.json",
+      "rawLink": null,
+      "resolved": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-complex-threshold-recovery-02/launch.json",
+      "sha256": "8e55081e517557ead7be267517f8727f50dd0b0b854431ffad5d9ef7e57a0d8a",
+      "bytes": 1840,
+      "rawReadable": true,
+      "symlinkChain": []
+    },
+    "resource-guard/stdout": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-complex-threshold-recovery-02/resource-guard/stdout",
+      "rawLink": null,
+      "resolved": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-complex-threshold-recovery-02/resource-guard/stdout",
+      "sha256": "ac4d13355dd3d942a3bff0fb7a46f7877276387bef0ca06b7b7d49cb3cb2ad8b",
+      "bytes": 968,
+      "rawReadable": true,
+      "symlinkChain": []
+    },
+    "resource-guard/child-outcome.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-complex-threshold-recovery-02/resource-guard/child-outcome.json",
+      "rawLink": null,
+      "resolved": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-complex-threshold-recovery-02/resource-guard/child-outcome.json",
+      "sha256": "a8a6b2aa934d194783713fa0117589215bb2bbb522f7d8748df22a8d722b7ad3",
+      "bytes": 102,
+      "rawReadable": true,
+      "symlinkChain": []
+    },
+    "resource-guard/invocation.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-complex-threshold-recovery-02/resource-guard/invocation.json",
+      "rawLink": null,
+      "resolved": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-complex-threshold-recovery-02/resource-guard/invocation.json",
+      "sha256": "7087ac184efd9cc18b0e65406d3be66431b7d9d3dcb6cbba88fa3d61356c8ea0",
+      "bytes": 937,
+      "rawReadable": true,
+      "symlinkChain": []
+    },
+    "resource-guard/outcome.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-complex-threshold-recovery-02/resource-guard/outcome.json",
+      "rawLink": null,
+      "resolved": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-complex-threshold-recovery-02/resource-guard/outcome.json",
+      "sha256": "3c06b5e0368c61109a490344b0f0c538d6f1fd2e516f21982a271ad42034f180",
+      "bytes": 270,
+      "rawReadable": true,
+      "symlinkChain": []
+    },
+    "resource-guard/resource-samples.jsonl": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-complex-threshold-recovery-02/resource-guard/resource-samples.jsonl",
+      "rawLink": null,
+      "resolved": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-complex-threshold-recovery-02/resource-guard/resource-samples.jsonl",
+      "sha256": "638a0f4c95a8943c2fb0a89253ad5334b2ae66ef3e37bd66b644f0956ca20a90",
+      "bytes": 3995,
+      "rawReadable": true,
+      "symlinkChain": []
+    },
+    "resource-guard/stderr": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-complex-threshold-recovery-02/resource-guard/stderr",
+      "rawLink": null,
+      "resolved": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-complex-threshold-recovery-02/resource-guard/stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "rawReadable": true,
+      "symlinkChain": []
+    },
+    "resource-guard/limit-validation.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-complex-threshold-recovery-02/resource-guard/limit-validation.json",
+      "rawLink": null,
+      "resolved": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-complex-threshold-recovery-02/resource-guard/limit-validation.json",
+      "sha256": "7cab91434e86e265576f162b8697937a1a46439fe7f2ffa1b59df1acab0d1fbf",
+      "bytes": 511,
+      "rawReadable": true,
+      "symlinkChain": []
+    },
+    "resource-guard/effective-limits.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-complex-threshold-recovery-02/resource-guard/effective-limits.json",
+      "rawLink": null,
+      "resolved": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-complex-threshold-recovery-02/resource-guard/effective-limits.json",
+      "sha256": "90091e0c14457284f6a641ad55fe09a622acc7e5c17a95fbfd7c3ce769e75dfc",
+      "bytes": 441,
+      "rawReadable": true,
+      "symlinkChain": []
+    }
+  },
+  "failedOutcome": {
+    "status": "FAILED_REFERENCE_LINK_DEPTH_BEFORE_SAVED_LOAD_COMPLETE",
+    "supervisor": {
+      "stage": "frequency_end_complex_threshold_finish",
+      "command": [
+        "/usr/bin/python",
+        "-u",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_end_complex_threshold_finish.py",
+        "--run-directory",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-complex-threshold-recovery-02/complete"
+      ],
+      "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-complex-threshold-recovery-02/frequency_end_complex_threshold_finish.stdout",
+      "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-complex-threshold-recovery-02/frequency_end_complex_threshold_finish.stderr",
+      "startedUtc": "2026-09-22T07:18:54.377128+00:00",
+      "childPid": 1127505,
+      "status": "failed",
+      "exitCode": 1,
+      "wallSeconds": 17.75112010000157,
+      "stderrBytes": 1727,
+      "finishedUtc": "2026-09-22T07:19:12.128357+00:00"
+    },
+    "guard": {
+      "exitCode": 1,
+      "wallSeconds": 17.91778947500279,
+      "unit": "s11c-guard-6010862b81b7",
+      "stderrBytes": 0,
+      "limitsVerified": true,
+      "childOutcome": {
+        "exitCode": 1,
+        "guardReason": null,
+        "wallSeconds": 17.83719459999702,
+        "childPid": 1127504
+      }
+    },
+    "child": {
+      "exitCode": 1,
+      "guardReason": null,
+      "wallSeconds": 17.83719459999702,
+      "childPid": 1127504
+    },
+    "effectiveLimits": {
+      "memory.max": "2147483648",
+      "memory.swap.max": "0",
+      "pids.max": "32",
+      "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-6010862b81b7.service",
+      "nice": 15,
+      "affinity": [
+        15
+      ],
+      "threads": {
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "VECLIB_MAXIMUM_THREADS": "1",
+        "BLIS_NUM_THREADS": "1"
+      }
+    },
+    "resources": {
+      "peakBytes": 199077888,
+      "minimumHostAvailableBytes": 23533707264,
+      "swapBytes": 0,
+      "capReclaims": 0,
+      "oomEvents": 0
+    },
+    "strictStderrBytes": 1727,
+    "partialReferenceFiles": 1185,
+    "currentUnreadableRawLinks": {},
+    "actualFailedPathCurrentRoute": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-complex-threshold-recovery-02/complete/accepted/accepted-frequency/inputs.json",
+      "rawLink": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-complex-threshold-recovery-01/complete/accepted/accepted-frequency/inputs.json",
+      "resolved": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-source-20260919/finish-01/complete/inputs.json",
+      "sha256": "910c3dc28bfa7e2ed9cabdef9bbe25221ba16b764ddc04b0c8e2b46b73ed1b8e",
+      "bytes": 827451,
+      "rawReadable": true,
+      "symlinkChain": [
+        {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-complex-threshold-recovery-02/complete/accepted/accepted-frequency/inputs.json",
+          "target": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-complex-threshold-recovery-01/complete/accepted/accepted-frequency/inputs.json"
+        },
+        {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-complex-threshold-recovery-01/complete/accepted/accepted-frequency/inputs.json",
+          "target": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-complex-threshold/complete/accepted/accepted-frequency/inputs.json"
+        },
+        {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-complex-threshold/complete/accepted/accepted-frequency/inputs.json",
+          "target": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-elimination/complete/accepted/accepted-frequency/inputs.json"
+        },
+        {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-elimination/complete/accepted/accepted-frequency/inputs.json",
+          "target": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-determinant/complete/accepted/accepted-frequency/inputs.json"
+        },
+        {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-determinant/complete/accepted/accepted-frequency/inputs.json",
+          "target": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-rational/complete/accepted/accepted-frequency/inputs.json"
+        },
+        {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-rational/complete/accepted/accepted-frequency/inputs.json",
+          "target": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-threshold-inputs/complete/accepted/accepted-frequency/inputs.json"
+        },
+        {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-threshold-inputs/complete/accepted/accepted-frequency/inputs.json",
+          "target": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-bindings/complete/accepted/accepted-frequency/inputs.json"
+        },
+        {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-bindings/complete/accepted/accepted-frequency/inputs.json",
+          "target": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-coordinates/complete/accepted/accepted-frequency/inputs.json"
+        },
+        {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-coordinates/complete/accepted/accepted-frequency/inputs.json",
+          "target": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-call-inputs-recovery-01/complete/accepted/accepted-frequency/inputs.json"
+        },
+        {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-call-inputs-recovery-01/complete/accepted/accepted-frequency/inputs.json",
+          "target": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-call-inputs/complete/accepted/accepted-frequency/inputs.json"
+        },
+        {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-call-inputs/complete/accepted/accepted-frequency/inputs.json",
+          "target": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-inputs-recovery-02/complete/accepted/accepted-frequency/inputs.json"
+        },
+        {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-inputs-recovery-02/complete/accepted/accepted-frequency/inputs.json",
+          "target": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-inputs-recovery-01/complete/accepted/accepted-frequency/inputs.json"
+        },
+        {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-inputs-recovery-01/complete/accepted/accepted-frequency/inputs.json",
+          "target": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-inputs/complete/accepted/accepted-frequency/inputs.json"
+        },
+        {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-inputs/complete/accepted/accepted-frequency/inputs.json",
+          "target": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/analytic-sources-recovery-01/complete/accepted/accepted-frequency/inputs.json"
+        },
+        {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/analytic-sources-recovery-01/complete/accepted/accepted-frequency/inputs.json",
+          "target": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/analytic-sources/complete/accepted/accepted-frequency/inputs.json"
+        },
+        {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/analytic-sources/complete/accepted/accepted-frequency/inputs.json",
+          "target": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/analytic-inputs/complete/accepted/accepted-frequency/inputs.json"
+        },
+        {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/analytic-inputs/complete/accepted/accepted-frequency/inputs.json",
+          "target": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/characters-recovery-02/complete/accepted/accepted-frequency/inputs.json"
+        },
+        {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/characters-recovery-02/complete/accepted/accepted-frequency/inputs.json",
+          "target": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/characters-recovery-01/complete/accepted/accepted-frequency/inputs.json"
+        },
+        {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/characters-recovery-01/complete/accepted/accepted-frequency/inputs.json",
+          "target": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/characters/complete/accepted/accepted-frequency/inputs.json"
+        },
+        {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/characters/complete/accepted/accepted-frequency/inputs.json",
+          "target": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/sources/complete/accepted-frequency/inputs.json"
+        },
+        {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/sources/complete/accepted-frequency/inputs.json",
+          "target": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/inputs-recovery-01/complete/accepted-frequency/inputs.json"
+        },
+        {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/inputs-recovery-01/complete/accepted-frequency/inputs.json",
+          "target": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-source-20260919/finish-01/complete/inputs.json"
+        }
+      ]
+    },
+    "logFiles": 23,
+    "originalInputManifestWritten": false,
+    "joinedSourcesOrOperandReadsStarted": false,
+    "newScientificOperations": 0,
+    "newAliasOrControlSummaries": 0,
+    "finalChecksOrAcceptance": false,
+    "boundary": "native reference created a further inherited link, then guarded digest(dest) raised ELOOP; current raw and resolved inspection is recorded separately, no cycle found and no failed read is replayed under a guard"
+  },
+  "wholeFinishBodies": {
+    "fresh_writers": "c9085ed7d47bafb5442cd78ae1a6779cbaa4e5f084151895e912cafe696b9757",
+    "load": "cf2bb7e0e756ae4bbd6ad3c23d27f79c15303d712ecbb974989e69c04310b815",
+    "packet": "9b88136702a6d9b5178895a4fa3349a4c00336e369647ed13c73abc3447b9572",
+    "restore_completed": "8ff8426ade5ea5846cc55b0ec5306e51ff889f56f58d2fca7d63e150124565ab",
+    "construct_adapter": "5f58bd617528286e62d76d94c60e507b960e07e6bda59902464f19d6ddf64e49",
+    "joined_sources": "d5438c3c7d82e0722ecf369ea2378c29ac16c1e1f5116871c55b73e61c448051",
+    "forbidden": "035d5321948caf3c710764ef878b0d43bb83ec5126f74d43c328a8842e716e20",
+    "prohibit": "1d9ce879a6a874cc0229834ae50fab5e712335cd17fc1a5c065bb043aafde5ba",
+    "construct": "0dc9a79d34924a5268394f43cb7d7e79be1cb79f99d6e7f8eb81400dfe9a1977",
+    "main": "1f6a1b9e8f4352450256be3e22a87cfd76a7b3aed23f454240cb7eebc0a6e42a"
+  },
+  "allowedChanges": [
+    "Keep original logical raw link chain as provenance; make new references directly to exact resolved files with unchanged hash/size.",
+    "Restore only path-reader expectation to exact canonical target; all saved operand/unit/source guards and original unfinished suffix remain unchanged.",
+    "Reference all partial failed files/logs and freeze new helper/plan/repair before fresh manifest; no old directory restart or science replay."
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "status": "PREPARED_BOUNDED_NUMERICAL_END_PILOT",
+  "root": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-pilot",
+  "stage": "frequency_end_pilot",
+  "staticReview": {
+    "status": "PASSED_STDLIB_NATIVE_ADAPTER_REVIEW",
+    "helperSha256": "1d66333a4d11bba2a2198b7f93ae0ba03687659ef3a09a7f4a7d994b2e155e51",
+    "planSha256": "0521c56777f9bce8ca8a41854502529c36bc4ae0971c4d6904a3893ef4bec54c",
+    "nativeEndSourceSha256": "f7a698ed27872ed0594692dbf671136b079279c32f9198bd92fcee23e3303a32",
+    "nativeWholeBodyJoins": {
+      "equationReverseAST": true,
+      "solveReverseAST": true,
+      "continuationReverseAST": true,
+      "exactFinalFrequencyAddress": true,
+      "adapterSource": "def equation(self, w, x, dx=None, dw=0.0):\n    (R, K, Q) = self.unpack(x)\n    n = self.n\n    zero = np.zeros_like(K)\n    (dR, dK, dQ) = (np.zeros_like(R), zero, zero) if dx is None else self.unpack(dx)\n    values = np.zeros_like(R)\n    delta = np.zeros_like(R)\n    minimum = np.inf\n    (entries, wave, dwave) = self.coefficients(w)\n    for (i, j, nt, dt, dnt, ddt) in entries:\n        (N, dN) = polynomial(nt, K, Q, dK, dQ)\n        (D, dD) = polynomial(dt, K, Q, dK, dQ)\n        if dw:\n            dN += dw * polynomial(dnt, K, Q)[0]\n            dD += dw * polynomial(ddt, K, Q)[0]\n        minimum = min(minimum, float(np.linalg.svd(D, compute_uv=False)[-1]))\n        inv = np.linalg.solve(D, self.I)\n        H = N @ inv\n        dH = dN @ inv - H @ dD @ inv\n        values[i] += R[j] @ H\n        delta[i] += dR[j] @ H + R[j] @ dH\n    (W, dW) = self.wave_equation(w, K, Q, dK, dQ, dw)\n    residual = self.pack(values / self.row_scale[:, None], self.gauge @ R - self.I, W / self.wave_scale)\n    derivative = self.pack(delta / self.row_scale[:, None], self.gauge @ dR, dW / self.wave_scale)\n    return (residual, derivative, minimum)\n\ndef solve(self, w, initial):\n    x = initial.copy()\n    history = []\n    for iteration in range(15):\n        (residual, _, minimum) = self.equation(w, x)\n        J = self.jacobian(w, x)\n        scaled = J * self.unknown_scale[None, :]\n        condition = float(np.linalg.cond(scaled))\n        history.append({'iteration': iteration, 'residual': norm(residual), 'scaledJacobianCondition': condition, 'minimumDenominatorSingularValue': minimum})\n        if norm(residual) < 2e-12:\n            break\n        step = np.linalg.solve(scaled, -residual) * self.unknown_scale\n        accepted = False\n        for damping in (1.0, 0.5, 0.25, 0.125, 0.0625):\n            trial = x + damping * step\n            if norm(self.equation(w, trial)[0]) < norm(residual):\n                x = trial\n                accepted = True\n                break\n        self.check(accepted, 'end invariant-pair Newton decrease', locals())\n    self.check(norm(residual) < 2e-12 and np.isfinite(condition) and (minimum > 1e-12), 'completed regular end invariant pair', locals())\n    tangent = np.linalg.solve(J, -self.equation(w, x, dw=1.0)[1])\n    (R, K, Q) = self.unpack(x)\n    commutator = K @ Q - Q @ K\n    self.check(norm(commutator) < 1e-09 * (1 + norm(K) * norm(Q)), 'commuting lifted end momenta', locals())\n    return {'frequency': w, 'x': x, 'R': R, 'K': K, 'Q': Q, 'tangent': tangent, 'residual': residual, 'commutator': commutator, 'jacobian': J, 'history': history, 'fixedGauge': self.gauge, 'unknownScale': self.unknown_scale, 'rowScale': self.row_scale, 'waveScale': self.wave_scale}\n\ndef continued(base, pair, seedstate, target, step, label):\n    count = max(1, int(np.ceil(abs(target - seedstate['frequency']) / step)))\n    state = seedstate\n    points = []\n    for j in range(1, count + 1):\n        w = target if j == count else seedstate['frequency'] + (target - seedstate['frequency']) * j / count\n        initial = state['x'] + (w - state['frequency']) * state['tangent']\n        state = pair.corrected(w, initial, label)\n        path = base / f'point-{j}.pickle'\n        pair.reference_point(path, state)\n        points.append({'path': str(path), 'sha256': f.digest(path)})\n    return (state, points)",
+      "coefficientAlgorithm": "numerical dual arithmetic of exact saved expressions",
+      "nativeJacobianPackUnpackPolynomialMapsUnchanged": true
+    },
+    "noScientificImportOrComputationInPrelaunchReview": true,
+    "runtimeNewEvaluatorChecksRequired": "25-entry/source/tangent/centered difference, coefficient mutation, 2x2 wave Frechet centered difference; each before physical continuation",
+    "runtimePointAndMapChecksRequired": true,
+    "oldSymbolicDerivativeAndLambdifyCallsAbsent": true,
+    "sourceInputInspectionChecksSha256": "7374e0187c8aefca5817e182c06bb7785ec7eb13ab069b66f815d6b246db0263",
+    "oneNewOwnerFiveWholeClustersOnly": true,
+    "completedInputMetadataInventorySha256": "bf7513d06f18e8271c59fecb51c0c27dfce1b24e67a51456ff06a7cbfa21f024",
+    "changeSinceAdapterReview": "Pin completed metadata inventory, add one 2x2 acoustic numerical Frechet check and a saved-state conditioning stopping guard. Native equation/Newton/continuation adapters unchanged and recompiled.",
+    "finalSourceCompilationPassed": true
+  },
+  "inputInspectionChecksSha256": "7374e0187c8aefca5817e182c06bb7785ec7eb13ab069b66f815d6b246db0263",
+  "scope": "Analog toy model; one small numerical path and step comparison for five distinct own clusters. No old symbolic science replay.",
+  "launchIsAcceptance": false
+}

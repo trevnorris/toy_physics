@@ -13,3 +13,10 @@ Launched from `eebf3e4f`; one initial inspection
 verified 900 seconds, 2 GiB, zero swap, one CPU, nice15, 32 tasks and
 one native thread. Observed running with 0 strict-stderr bytes.
 Silent local completion/error hook installed.
+
+Completed cleanly in 23.506 worker / 25.790 native / 25.979 guard seconds.
+All exits zero, empty strict stderr, checks/stdout identical, peak 191381504 bytes,
+zero cap/OOM/swap. All 610 consumed logical paths / 609 physical files
+passed final identity. Forty complete basis routes were found. Thirty whole
+baseline caller matches and five distinct new RHOBR right-end cluster inputs
+(shared by ten uses) are retained. No new science ran.

@@ -1,5 +1,5 @@
 {
-  "status": "GUARDED_SAVED_INPUT_CONTINUATION_RUNNING",
+  "status": "REVIEWED_CLEAN_SAVED_INPUT_INSPECTION",
   "root": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-continuation-inputs-recovery-01",
   "stage": "frequency_end_continuation_inputs_recover",
   "staticReview": {
@@ -85,5 +85,124 @@
     "observedStrictStderrBytes": 0,
     "oneInitialCheckOnly": true,
     "launchIsAcceptance": false
+  },
+  "completion": {
+    "status": "REVIEWED_CLEAN_SAVED_INPUT_INSPECTION",
+    "checksSha256": "7374e0187c8aefca5817e182c06bb7785ec7eb13ab069b66f815d6b246db0263",
+    "nativeWallSeconds": 25.790139256991097,
+    "guardWallSeconds": 25.97901917200943,
+    "workerWallSeconds": 23.505846469008247,
+    "actualExits": [
+      0,
+      0,
+      0
+    ],
+    "emptyStrictStderr": true,
+    "checksStdoutIdentical": true,
+    "peakBytes": 191381504,
+    "minimumHostAvailableBytes": 23334957056,
+    "zeroCapOOMSwap": true,
+    "summary": {
+      "status": "COMPLETED_SAVED_END_CONTINUATION_INPUT_INSPECTION",
+      "physicalEnds": 8,
+      "clusterUses": 40,
+      "literalFullInputFamilies": 15,
+      "familyOwners": [
+        [
+          "LAB_HELD__RHO4_CONSTANT",
+          "LEFT",
+          1
+        ],
+        [
+          "LAB_HELD__RHO4_CONSTANT",
+          "LEFT",
+          5
+        ],
+        [
+          "LAB_HELD__RHO4_CONSTANT",
+          "LEFT",
+          7
+        ],
+        [
+          "LAB_HELD__RHO4_CONSTANT",
+          "LEFT",
+          17
+        ],
+        [
+          "LAB_HELD__RHO4_CONSTANT",
+          "LEFT",
+          16
+        ],
+        [
+          "LAB_HELD__RHO4_CONSTANT",
+          "RIGHT",
+          0
+        ],
+        [
+          "LAB_HELD__RHO4_CONSTANT",
+          "RIGHT",
+          4
+        ],
+        [
+          "LAB_HELD__RHO4_CONSTANT",
+          "RIGHT",
+          6
+        ],
+        [
+          "LAB_HELD__RHO4_CONSTANT",
+          "RIGHT",
+          16
+        ],
+        [
+          "LAB_HELD__RHO4_CONSTANT",
+          "RIGHT",
+          17
+        ],
+        [
+          "LAB_HELD__RHOBR_CONSTANT",
+          "RIGHT",
+          0
+        ],
+        [
+          "LAB_HELD__RHOBR_CONSTANT",
+          "RIGHT",
+          4
+        ],
+        [
+          "LAB_HELD__RHOBR_CONSTANT",
+          "RIGHT",
+          6
+        ],
+        [
+          "LAB_HELD__RHOBR_CONSTANT",
+          "RIGHT",
+          16
+        ],
+        [
+          "LAB_HELD__RHOBR_CONSTANT",
+          "RIGHT",
+          17
+        ]
+      ],
+      "wholeBasisRoutesFound": 40,
+      "completeBaselineCallerCandidates": 30,
+      "savedMapFiles": {
+        "focused": 0,
+        "matrix": 2,
+        "contour16": 16,
+        "contour32": 16
+      },
+      "consumedLogicalPaths": 610,
+      "uniquePhysicalFiles": 609,
+      "allConsumedSourcesAndInputsUnchanged": true,
+      "newScientificCalls": 0,
+      "newPhysicalPickleWrites": 0,
+      "numericalReuseAccepted": false,
+      "next": "Use these actual saved full input routes for one bounded numerical end-continuation pilot near 1-0.01i. No global-domain survey or repeated baseline continuation.",
+      "scope": "Analog toy-model preparation only. Algebraic candidates are not physical thresholds or poles. No new continuation result is claimed.",
+      "wallSeconds": 23.505846469008247,
+      "peakRssKiB": 209116
+    },
+    "scope": "Saved-input inspection only; no new scientific acceptance or reuse declared."
   }
 }

@@ -1,5 +1,5 @@
 {
-  "status": "COMPLETED_CASE_FREQUENCY_END_INPUTS_AWAITING_INDEPENDENT_VALIDATION",
+  "status": "LAUNCHED_CASE_FREQUENCY_END_INPUT_VALIDATION",
   "helper": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_end_inputs.py",
   "plan": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_end_inputs_plan.md",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-inputs",
@@ -589,7 +589,7 @@
     "independentAcceptance": false
   },
   "validation": {
-    "status": "REVIEWED_SAVED_VALIDATOR",
+    "status": "LAUNCHED",
     "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-input-acceptance",
     "script": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-input-acceptance/validate.py",
     "plan": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_end_inputs_validation_plan.md",
@@ -613,6 +613,89 @@
       "independentFamilyDerivation": true,
       "partialEndAndCaseSummariesBeforeLaterGuards": true
     },
-    "newScientificConstruction": false
+    "newScientificConstruction": false,
+    "launch": {
+      "launchedUtc": "2026-09-22T02:28:22.192258+00:00",
+      "guardPid": 1021101,
+      "watcherPid": 1021102,
+      "command": [
+        "/usr/bin/python",
+        "/var/projects/toy_physics/scripts/s11c_guarded_run.py",
+        "--log-directory",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-input-acceptance/resource-guard",
+        "--seconds",
+        "900",
+        "--",
+        "/usr/bin/python",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+        "--run-root",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-input-acceptance",
+        "--stage",
+        "validate",
+        "--",
+        "/usr/bin/python",
+        "-u",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-input-acceptance/validate.py"
+      ],
+      "scriptSha256": "da3ae75a3647be53e58e699e7c937785d7be4ccfc2f751538d679dc10b212c6e",
+      "guardSha256": "6492f5ab11dc2ab2f80bbfcc96d7eb6b8632afea07100dd8f74a7954f3ffe542",
+      "implementationCommit": "99fac74a7db292d18b49e1ff1c523d27a7e15f82",
+      "staticReviewSha256": "20610bb8a854c69e5599db3ef34d6043c31bdb4e6dc81b620dc09217e9bdae57",
+      "newScientificConstruction": false,
+      "launchIsAcceptance": false
+    },
+    "initialContainment": {
+      "status": "VERIFIED_CONTAINED",
+      "active": {
+        "stage": "validate",
+        "command": [
+          "/usr/bin/python",
+          "-u",
+          "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-input-acceptance/validate.py"
+        ],
+        "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-input-acceptance/validate.stdout",
+        "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-input-acceptance/validate.stderr",
+        "startedUtc": "2026-09-22T02:28:22.360393+00:00",
+        "childPid": 1021108,
+        "status": "running"
+      },
+      "limits": {
+        "verified": true,
+        "actual": {
+          "memory.max": "2147483648",
+          "memory.swap.max": "0",
+          "pids.max": "32",
+          "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-1f8729d898f1.service",
+          "nice": 15,
+          "affinity": [
+            15
+          ],
+          "threads": {
+            "OPENBLAS_NUM_THREADS": "1",
+            "OMP_NUM_THREADS": "1",
+            "MKL_NUM_THREADS": "1",
+            "NUMEXPR_NUM_THREADS": "1",
+            "VECLIB_MAXIMUM_THREADS": "1",
+            "BLIS_NUM_THREADS": "1"
+          }
+        }
+      },
+      "stderrBytes": {
+        "validate.stderr": 0,
+        "guard.stderr": 0,
+        "watcher.stderr": 0
+      },
+      "watcher": {
+        "status": "waiting",
+        "watcherPid": 1021102,
+        "jobPid": 1021101,
+        "thread": "01a08c53-295c-70f0-baaf-353db1745867",
+        "startedUtc": "2026-09-22T02:28:22.239411+00:00",
+        "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
+        "messageSha256": "2e273b6e8c11c02c4fe4593988230f791b013fc82b0ae028cb301fb6d443a6d9",
+        "notifications": {}
+      },
+      "isAcceptance": false
+    }
   }
 }

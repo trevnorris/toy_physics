@@ -34,3 +34,8 @@ hashes without calling producers. Analytic da5d7c52 and older science remain
 accepted and unchanged. Actual end-domain continuation, own frequency pencils,
 scoped searches and final all-case engine/exports still follow under approved
 settings and limitations.
+
+The independent saved-input validator launched at 2026-09-22T02:28:22Z
+from 99fac74a. Initial containment verified the required limits, empty
+strict stderr and an armed silent completion/error hook. No input
+acceptance is claimed before its final clean outcome.

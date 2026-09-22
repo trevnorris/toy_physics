@@ -22,3 +22,7 @@ Compile-only, whole-body reverse AST, original seed-writer schema, actual
 requested paths/source pins and forbidden-native-call review passed without
 scientific imports. Mandatory resource guard and silent local completion
 hook will be used. Independent saved validation is required for acceptance.
+
+Launched from `2e466b98`. The single initial inspection verified all mandatory
+limits and empty strict stderr. The silent completion/error hook is active;
+launch does not establish scientific acceptance.

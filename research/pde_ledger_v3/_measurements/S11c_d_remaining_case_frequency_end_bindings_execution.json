@@ -1,5 +1,5 @@
 {
-  "status": "STATIC_REVIEWED_NOT_LAUNCHED",
+  "status": "GUARDED_NATIVE_END_BINDING_PREFIX_LAUNCHED",
   "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-bindings",
   "helper": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_end_bindings.py",
   "staticReview": {
@@ -65,5 +65,77 @@
     "tasks": 32,
     "nativeThreads": 1
   },
-  "launchIsAcceptance": false
+  "launchIsAcceptance": false,
+  "launch": {
+    "launchedUtc": "2026-09-22T03:59:44.051473+00:00",
+    "guardPid": 1059041,
+    "watcherPid": 1059042,
+    "command": [
+      "/usr/bin/python",
+      "/var/projects/toy_physics/scripts/s11c_guarded_run.py",
+      "--log-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-bindings/resource-guard",
+      "--seconds",
+      "900",
+      "--",
+      "/usr/bin/python",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-bindings",
+      "--stage",
+      "frequency_end_bindings",
+      "--",
+      "/usr/bin/python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_end_bindings.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-bindings/complete"
+    ],
+    "helperSha256": "797db4cdb3b5c0778c0334933d1a89034b837e72e7e0ff8691a703436918ed2c",
+    "guardSha256": "6492f5ab11dc2ab2f80bbfcc96d7eb6b8632afea07100dd8f74a7954f3ffe542",
+    "implementationCommit": "2e466b9800f9649cb729c54d1272420249cc8ece",
+    "staticReviewSha256": "f1d613c9196f8f3c1af8d2ab02f95b132122c60d1ebde7b97b8096dbe433a87c",
+    "newScientificConstruction": "Only genuinely missing native live bindings and own seed comparison; completed coordinate and derivative values routed",
+    "launchIsAcceptance": false
+  },
+  "initialInspection": {
+    "limits": {
+      "verified": true,
+      "actual": {
+        "memory.max": "2147483648",
+        "memory.swap.max": "0",
+        "pids.max": "32",
+        "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-6fcd69458586.service",
+        "nice": 15,
+        "affinity": [
+          15
+        ],
+        "threads": {
+          "OPENBLAS_NUM_THREADS": "1",
+          "OMP_NUM_THREADS": "1",
+          "MKL_NUM_THREADS": "1",
+          "NUMEXPR_NUM_THREADS": "1",
+          "VECLIB_MAXIMUM_THREADS": "1",
+          "BLIS_NUM_THREADS": "1"
+        }
+      }
+    },
+    "stderrBytes": {
+      "guard.stderr": 0,
+      "frequency_end_bindings.stderr": 0,
+      "resource-guard/stderr": 0
+    },
+    "watcherState": {
+      "status": "waiting",
+      "watcherPid": 1059042,
+      "jobPid": 1059041,
+      "thread": "01a08c53-295c-70f0-baaf-353db1745867",
+      "startedUtc": "2026-09-22T03:59:44.098787+00:00",
+      "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
+      "messageSha256": "7a73d66336c99ad62ef43cee80c7d4ccc31425d96b1ca6e01f4c6f1e8e82a4f1",
+      "notifications": {}
+    },
+    "outcomeAtInitialInspection": null,
+    "launchIsAcceptance": false
+  }
 }

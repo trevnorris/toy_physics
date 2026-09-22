@@ -1,5 +1,5 @@
 {
-  "status": "IMPLEMENTED_NOT_LAUNCHED",
+  "status": "ACCEPTED_BOUNDED_MATERIAL_1D_ROW_PILOT",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/material-row-pilot",
   "stage": "frequency_material_row_pilot",
   "helperSha256": "f8db96abc7cb38c7133786b52431c8939676d8c314376c6b9d63a6fe5fdd9b9b",
@@ -11,5 +11,135 @@
   "opaqueFullSlotAndWeightedSumHarness": true,
   "scientificImportsDeserializationOrModelEvaluation": 0,
   "forbiddenOldScientificCallSites": 0,
-  "newMethodFocusedChecksPlanned": true
+  "newMethodFocusedChecksPlanned": true,
+  "launch": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/material-row-pilot/launch.json",
+    "sha256": "806c132ddca814909693ce2261ad4b4feea315ae96098962a05f91782d0b4c07",
+    "bytes": 1696
+  },
+  "containment": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/material-row-pilot/initial-containment-inspection.json",
+    "sha256": "e5f78e0ef13a3c1f31618fa000a7f06d83421d6e98665cb7242d7b4b3eafe49c",
+    "bytes": 2379
+  },
+  "checkpoint": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_material_row_pilot_checkpoint.json",
+    "canonical": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_material_row_pilot_checkpoint.json",
+    "sha256": "529f4943c8da52dfc153716e4acadc753ca611fe3e0507135cf54cb91aee7e56",
+    "bytes": 23795
+  },
+  "actualOutcome": {
+    "actualExits": [
+      0,
+      0,
+      0
+    ],
+    "workerWallSeconds": 6.493540444003884,
+    "nativeWallSeconds": 8.819073102000402,
+    "guardWallSeconds": 9.028100452997023,
+    "emptyStrictStderr": true,
+    "checksStdoutIdentity": true,
+    "checksSha256": "26d25e14065b097bee37327e1d8d7bb1c0500fb655bc41b0da4d9481534247c4",
+    "peakBytes": 445071360,
+    "minimumHostAvailableBytes": 23005741056,
+    "zeroCapOOMSwap": true,
+    "evidence": {
+      "active.json": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/material-row-pilot/active.json",
+        "canonical": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/material-row-pilot/active.json",
+        "sha256": "c8ae7fd1e6d5363b272f0408d9840940457dbd91ab08ffdcf9df78485852ce02",
+        "bytes": 883
+      },
+      "frequency_material_row_pilot.invocation.json": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/material-row-pilot/frequency_material_row_pilot.invocation.json",
+        "canonical": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/material-row-pilot/frequency_material_row_pilot.invocation.json",
+        "sha256": "c8ae7fd1e6d5363b272f0408d9840940457dbd91ab08ffdcf9df78485852ce02",
+        "bytes": 883
+      },
+      "frequency_material_row_pilot.stdout": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/material-row-pilot/frequency_material_row_pilot.stdout",
+        "canonical": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/material-row-pilot/frequency_material_row_pilot.stdout",
+        "sha256": "26d25e14065b097bee37327e1d8d7bb1c0500fb655bc41b0da4d9481534247c4",
+        "bytes": 51944
+      },
+      "frequency_material_row_pilot.stderr": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/material-row-pilot/frequency_material_row_pilot.stderr",
+        "canonical": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/material-row-pilot/frequency_material_row_pilot.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "guard.stdout": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/material-row-pilot/guard.stdout",
+        "canonical": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/material-row-pilot/guard.stdout",
+        "sha256": "1087a9557f1948c7ed95466a5be3f0b5894dc3c648a492307e4b731b358d3874",
+        "bytes": 270
+      },
+      "guard.stderr": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/material-row-pilot/guard.stderr",
+        "canonical": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/material-row-pilot/guard.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "resource-guard/outcome.json": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/material-row-pilot/resource-guard/outcome.json",
+        "canonical": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/material-row-pilot/resource-guard/outcome.json",
+        "sha256": "1087a9557f1948c7ed95466a5be3f0b5894dc3c648a492307e4b731b358d3874",
+        "bytes": 270
+      },
+      "resource-guard/child-outcome.json": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/material-row-pilot/resource-guard/child-outcome.json",
+        "canonical": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/material-row-pilot/resource-guard/child-outcome.json",
+        "sha256": "165357353dcfe1457522076c1e04e505630e0109645d8ea72deef9753cf47dd8",
+        "bytes": 102
+      },
+      "resource-guard/effective-limits.json": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/material-row-pilot/resource-guard/effective-limits.json",
+        "canonical": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/material-row-pilot/resource-guard/effective-limits.json",
+        "sha256": "ce46d0ec4cce35c6629e84a6372205ace8936703b90cf87465183a941a14226f",
+        "bytes": 441
+      },
+      "resource-guard/limit-validation.json": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/material-row-pilot/resource-guard/limit-validation.json",
+        "canonical": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/material-row-pilot/resource-guard/limit-validation.json",
+        "sha256": "a0a7a03501eed88728ac60e92542f32103f85348f99801892e41afad7f031b0a",
+        "bytes": 511
+      },
+      "resource-guard/resource-samples.jsonl": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/material-row-pilot/resource-guard/resource-samples.jsonl",
+        "canonical": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/material-row-pilot/resource-guard/resource-samples.jsonl",
+        "sha256": "0899fcc4e5e959231bf7304305e6d70f64b6babdc6745510345d6a0ef07399bc",
+        "bytes": 2390
+      },
+      "resource-guard/stderr": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/material-row-pilot/resource-guard/stderr",
+        "canonical": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/material-row-pilot/resource-guard/stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "launch.json": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/material-row-pilot/launch.json",
+        "canonical": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/material-row-pilot/launch.json",
+        "sha256": "806c132ddca814909693ce2261ad4b4feea315ae96098962a05f91782d0b4c07",
+        "bytes": 1696
+      },
+      "static-review.json": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/material-row-pilot/static-review.json",
+        "canonical": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/material-row-pilot/static-review.json",
+        "sha256": "92b8f6ebe56171c7ad4bc69e4d2060fb5a165b62878dcfa8742a7b61bf13ffaf",
+        "bytes": 521
+      },
+      "initial-containment-inspection.json": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/material-row-pilot/initial-containment-inspection.json",
+        "canonical": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/material-row-pilot/initial-containment-inspection.json",
+        "sha256": "e5f78e0ef13a3c1f31618fa000a7f06d83421d6e98665cb7242d7b4b3eafe49c",
+        "bytes": 2379
+      }
+    }
+  },
+  "completionInspection": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/material-row-pilot/completion-inspection.json",
+    "canonical": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/material-row-pilot/completion-inspection.json",
+    "sha256": "b7d5a564ae30a03fb05b4f4922e1e98961f1b06d52eb951965a137afcc8988d1",
+    "bytes": 9119
+  }
 }

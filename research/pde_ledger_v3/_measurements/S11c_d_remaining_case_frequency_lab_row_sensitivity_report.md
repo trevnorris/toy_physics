@@ -16,3 +16,5 @@ artifact entry before scientific import or launch. No old science was run.
 
 Pending one guarded run and bounded saved result/outcome inspection. Material
 cases, independent sensitivity directions and continuum/search/exports remain.
+
+Launched with the mandatory verified resource guard and silent local completion/error hook. Launch and initial containment are recorded; final outcome and bounded saved inspection remain required.

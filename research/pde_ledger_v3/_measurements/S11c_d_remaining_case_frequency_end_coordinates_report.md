@@ -37,3 +37,7 @@ actual source/input/value checkpoint, full reverse operand, raw residual,
 unit declaration, native mapping return and mutation, without executing a
 coordinate transform or scientific producer. It saves operation and case
 summaries before final checks and retains complete pre/post hash evidence.
+
+Saved-only validation launched from `fc272ab8`. The single initial inspection
+verified the mandatory limits and empty strict stderr. The local hook will
+wake the session on completion or an issue; validation is not yet accepted.

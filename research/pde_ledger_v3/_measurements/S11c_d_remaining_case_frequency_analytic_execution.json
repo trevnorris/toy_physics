@@ -1,5 +1,5 @@
 {
-  "status": "LAUNCHED_LIVE_RESTORED_VALIDATION_CONTINUATION",
+  "status": "PREPARED_SAVED_CERTIFICATE_ROUTE_DIAGNOSTIC",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/analytic-sources",
   "stage": "frequency_analytic",
   "acceptedAnalyticInputsCommit": "a7a53fa8",
@@ -945,6 +945,54 @@
       "workerStderrBytes": 0,
       "guardStderrBytes": 0,
       "isAcceptance": false
+    },
+    "finalFailedOutcome": {
+      "guard": {
+        "exitCode": 1,
+        "wallSeconds": 67.77060397800233,
+        "unit": "s11c-guard-891be5cceca7",
+        "stderrBytes": 0,
+        "limitsVerified": true,
+        "childOutcome": {
+          "exitCode": 1,
+          "guardReason": null,
+          "wallSeconds": 67.6658066969976,
+          "childPid": 990307
+        }
+      },
+      "supervisor": {
+        "stage": "validate",
+        "command": [
+          "/usr/bin/python",
+          "-u",
+          "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_analytic_representation_finish.py"
+        ],
+        "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/analytic-acceptance-recovery-02/validate.stdout",
+        "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/analytic-acceptance-recovery-02/validate.stderr",
+        "startedUtc": "2026-09-22T01:03:59.354552+00:00",
+        "childPid": 990312,
+        "status": "failed",
+        "exitCode": 1,
+        "wallSeconds": 67.55377632599266,
+        "stderrBytes": 605,
+        "finishedUtc": "2026-09-22T01:05:06.908434+00:00"
+      },
+      "peakBytes": 223850496,
+      "minimumHostAvailableBytes": 23376654336,
+      "lastEvents": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0",
+      "swapPeak": 0
     }
+  },
+  "certificateRouteDiagnostic": {
+    "directory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/analytic-certificate-routing",
+    "scriptSha256": "8796e27a486f0bcaabcf396aa9ab9117799a8ee6601640d54fef4c34322ba19e",
+    "staticReviewSha256": "6fdb6a87c79bdad30695fb8b920773697c8e2fa4a7cbe54cb173b38212e9a730",
+    "completedCases": 4,
+    "completedNewRecords": 63,
+    "completedSeedControlComparisons": 126,
+    "completedSeedControlProofScalars": 68,
+    "completedLiveRestoredViews": 252,
+    "completedRepresentationControls": 12,
+    "isAcceptance": false
   }
 }

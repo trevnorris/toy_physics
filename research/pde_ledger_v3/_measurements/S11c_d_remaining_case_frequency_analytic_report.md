@@ -174,3 +174,18 @@ The saved validation continuation launched at 2026-09-22T01:03:59Z from
 8083277b. Initial containment verified 2 GiB, zero swap, one CPU, nice 15,
 32 tasks and one native thread; strict stderr was empty. Its silent local
 completion/error hook resumes the task. Launch is not analytic acceptance.
+
+The second continuation saved all four complete cases, 63 new-record checks,
+126 seed/control comparisons with 68 proof scalars, 252 representation views
+and twelve responding mutations. It stopped after 67.55 native seconds at
+final certificate-cache reuse accounting. The reader compares a restored
+LEFT/RIGHT cache key with the native live-process receipt. Peak memory was
+223,850,496 bytes, zero cap/OOM/swap and minimum host availability 23.38 GB.
+The completed cases and all original operands remain unchanged.
+
+A saved-only certificate-route diagnostic will inspect each actual restored
+cache candidate, full certificate and its exact binding/mutation consumer,
+with original live strings retained where available. It does not rebuild
+live expressions or certificates. The completed seed-loop/initial-atlas
+prefix is evidenced by the source and traceback; no independent checkpoint
+for it is invented. Final certificate-route and hash checks remain unfinished.

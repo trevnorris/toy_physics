@@ -26,3 +26,13 @@ hook will be used. Independent saved validation is required for acceptance.
 Launched from `2e466b98`. The single initial inspection verified all mandatory
 limits and empty strict stderr. The silent completion/error hook is active;
 launch does not establish scientific acceptance.
+
+The prefix completed 79.00 worker / 80.59 native / 81.83 guard seconds, with actual exits zero, empty strict stderr and byte-identical checks/stdout. Peak was 566,857,728 bytes, zero cap/OOM/swap and 23.20 GB minimum host availability. Five new full bindings and one saved wave binding completed. All native seed/branch/tangency/free-symbol guards and four actual route controls passed. The native matrix applyfunc consumed 11 actual scalar cancellation calls; all input/value receipts are retained. No derivative, analytic, mapping, current or mode call was repeated. Independent saved validation remains required; thresholds, rational tables, end domains and continuation remain pending.
+
+The independent saved-only validator is statically reviewed. It joins full
+call inputs, each mapped/retained/final checkpoint, the actual own seed
+matrix and all eleven scalar normalization receipts, saved wave/tangent
+consumers, raw units, eight case routes and four mutation controls. It
+compiles the whole-body adapter only and disables all scientific operations.
+No binding, coordinate conversion, seed arithmetic or cancellation is
+recomputed. Per-operation and case summaries precede final hash guards.

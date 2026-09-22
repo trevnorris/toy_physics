@@ -1,5 +1,5 @@
 {
-  "status": "GUARDED_SAVED_CALL_CONTINUATION_LAUNCHED",
+  "status": "COMPLETED_SAVED_END_CALL_CATALOGUE_PENDING_INDEPENDENT_VALIDATION",
   "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-call-inputs",
   "helper": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_end_calls.py",
   "staticReview": {
@@ -266,6 +266,206 @@
       },
       "outcomeAtInitialInspection": null,
       "launchIsAcceptance": false
+    },
+    "finalOutcome": {
+      "supervisor": {
+        "stage": "frequency_end_calls",
+        "command": [
+          "/usr/bin/python",
+          "-u",
+          "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_end_calls_recover.py",
+          "--run-directory",
+          "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-call-inputs-recovery-01/complete"
+        ],
+        "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-call-inputs-recovery-01/frequency_end_calls.stdout",
+        "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-call-inputs-recovery-01/frequency_end_calls.stderr",
+        "startedUtc": "2026-09-22T02:55:13.377901+00:00",
+        "childPid": 1036021,
+        "status": "completed",
+        "exitCode": 0,
+        "wallSeconds": 79.67182302899892,
+        "stderrBytes": 0,
+        "finishedUtc": "2026-09-22T02:56:33.049859+00:00"
+      },
+      "guard": {
+        "exitCode": 0,
+        "wallSeconds": 80.02858823200222,
+        "unit": "s11c-guard-150df5b069e4",
+        "stderrBytes": 0,
+        "limitsVerified": true,
+        "childOutcome": {
+          "exitCode": 0,
+          "guardReason": null,
+          "wallSeconds": 79.85938503900252,
+          "childPid": 1036016
+        }
+      },
+      "limits": {
+        "memory.max": "2147483648",
+        "memory.swap.max": "0",
+        "pids.max": "32",
+        "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-150df5b069e4.service",
+        "nice": 15,
+        "affinity": [
+          15
+        ],
+        "threads": {
+          "OPENBLAS_NUM_THREADS": "1",
+          "OMP_NUM_THREADS": "1",
+          "MKL_NUM_THREADS": "1",
+          "NUMEXPR_NUM_THREADS": "1",
+          "VECLIB_MAXIMUM_THREADS": "1",
+          "BLIS_NUM_THREADS": "1"
+        }
+      },
+      "checksSha256": "3f4d95b8107923af85d8e72caa0f990be597fe94dcfd164bfc1e26a84b81d9c4",
+      "workerSeconds": 76.61254589099553,
+      "memoryPeakBytes": 472064000,
+      "minimumHostAvailableBytes": 23377485824,
+      "capEvents": 0,
+      "oomEvents": 0,
+      "swapBytes": 0,
+      "checksStdoutByteIdentity": true,
+      "inventories": {
+        "sourceFiles": 192,
+        "inputPackets": 53633,
+        "referencedInputs": 7017,
+        "artifacts": 6879
+      },
+      "cases": {
+        "LAB_HELD__RHO4_CONSTANT": {
+          "LEFT": {
+            "analyticCandidateCount": 1,
+            "mappingCandidateCount": 1,
+            "family": 0,
+            "familyOwner": [
+              "LAB_HELD__RHO4_CONSTANT",
+              "LEFT"
+            ],
+            "fullSavedFrequencyLegOperands": true,
+            "actualMutations": 4,
+            "newScientificCalls": 0,
+            "frequencyEndReuseAccepted": false
+          },
+          "RIGHT": {
+            "analyticCandidateCount": 1,
+            "mappingCandidateCount": 1,
+            "family": 1,
+            "familyOwner": [
+              "LAB_HELD__RHO4_CONSTANT",
+              "RIGHT"
+            ],
+            "fullSavedFrequencyLegOperands": true,
+            "actualMutations": 4,
+            "newScientificCalls": 0,
+            "frequencyEndReuseAccepted": false
+          }
+        },
+        "LAB_HELD__RHOBR_CONSTANT": {
+          "LEFT": {
+            "analyticCandidateCount": 1,
+            "mappingCandidateCount": 1,
+            "family": 2,
+            "familyOwner": [
+              "LAB_HELD__RHOBR_CONSTANT",
+              "LEFT"
+            ],
+            "fullSavedFrequencyLegOperands": true,
+            "actualMutations": 4,
+            "newScientificCalls": 0,
+            "frequencyEndReuseAccepted": false
+          },
+          "RIGHT": {
+            "analyticCandidateCount": 0,
+            "mappingCandidateCount": 0,
+            "family": 3,
+            "familyOwner": [
+              "LAB_HELD__RHOBR_CONSTANT",
+              "RIGHT"
+            ],
+            "fullSavedFrequencyLegOperands": true,
+            "actualMutations": 4,
+            "newScientificCalls": 0,
+            "frequencyEndReuseAccepted": false
+          }
+        },
+        "MATERIAL_ADVECTED__RHO4_CONSTANT": {
+          "LEFT": {
+            "analyticCandidateCount": 0,
+            "mappingCandidateCount": 0,
+            "family": 4,
+            "familyOwner": [
+              "MATERIAL_ADVECTED__RHO4_CONSTANT",
+              "LEFT"
+            ],
+            "fullSavedFrequencyLegOperands": true,
+            "actualMutations": 4,
+            "newScientificCalls": 0,
+            "frequencyEndReuseAccepted": false
+          },
+          "RIGHT": {
+            "analyticCandidateCount": 0,
+            "mappingCandidateCount": 0,
+            "family": 5,
+            "familyOwner": [
+              "MATERIAL_ADVECTED__RHO4_CONSTANT",
+              "RIGHT"
+            ],
+            "fullSavedFrequencyLegOperands": true,
+            "actualMutations": 4,
+            "newScientificCalls": 0,
+            "frequencyEndReuseAccepted": false
+          }
+        },
+        "MATERIAL_ADVECTED__RHOBR_CONSTANT": {
+          "LEFT": {
+            "analyticCandidateCount": 1,
+            "mappingCandidateCount": 1,
+            "family": 2,
+            "familyOwner": [
+              "LAB_HELD__RHOBR_CONSTANT",
+              "LEFT"
+            ],
+            "fullSavedFrequencyLegOperands": true,
+            "actualMutations": 4,
+            "newScientificCalls": 0,
+            "frequencyEndReuseAccepted": false
+          },
+          "RIGHT": {
+            "analyticCandidateCount": 0,
+            "mappingCandidateCount": 0,
+            "family": 3,
+            "familyOwner": [
+              "LAB_HELD__RHOBR_CONSTANT",
+              "RIGHT"
+            ],
+            "fullSavedFrequencyLegOperands": true,
+            "actualMutations": 4,
+            "newScientificCalls": 0,
+            "frequencyEndReuseAccepted": false
+          }
+        }
+      },
+      "counts": {
+        "physicalEnds": 8,
+        "callInputFamilies": 6,
+        "pendingSavedReturnUses": 4,
+        "analyticCandidateUses": 4,
+        "mappingCandidateUses": 4,
+        "newScientificCalls": 0,
+        "frequencyEndReuseAccepted": false
+      }
     }
+  },
+  "independentValidation": {
+    "status": "STATIC_REVIEWED_NOT_LAUNCHED",
+    "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-call-acceptance",
+    "validator": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-call-acceptance/validate.py",
+    "validatorSha256": "3b7ec5ae5f03afa8ecd94a570a55606c38e428a1e2a0d234ac551267a552b61a",
+    "planSha256": "dc7ae6e6f80033c9c539f83ae44f99f63a44c0c38983521e643bc2b2251f497d",
+    "actualStaticRequestsAndPins": 214,
+    "acceptedProofReferenceExtension": true,
+    "newScientificOperations": false,
+    "launchIsAcceptance": false
   }
 }

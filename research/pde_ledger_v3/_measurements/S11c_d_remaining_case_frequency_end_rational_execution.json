@@ -320,7 +320,7 @@
     "acceptedSeedScalarUses": 0
   },
   "independentValidation": {
-    "status": "STATIC_REVIEWED_NOT_LAUNCHED",
+    "status": "GUARDED_RUNNING_WITH_SILENT_COMPLETION_HOOK",
     "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-rational-acceptance",
     "validator": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-rational-acceptance/validate.py",
     "staticReview": {
@@ -339,6 +339,87 @@
       "actualLiveCacheReceiptsPreservedWithoutReplayingMembership": true,
       "rawReconstructionDifferenceAndZeroReadOnly": true
     },
-    "launchIsAcceptance": false
+    "launchIsAcceptance": false,
+    "launch": {
+      "launchedUtc": "2026-09-22T05:17:59.090552+00:00",
+      "guardPid": 1086452,
+      "watcherPid": 1086453,
+      "command": [
+        "/usr/bin/python",
+        "/var/projects/toy_physics/scripts/s11c_guarded_run.py",
+        "--log-directory",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-rational-acceptance/resource-guard",
+        "--seconds",
+        "900",
+        "--",
+        "/usr/bin/python",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+        "--run-root",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-rational-acceptance",
+        "--stage",
+        "validate",
+        "--",
+        "/usr/bin/python",
+        "-u",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-rational-acceptance/validate.py"
+      ],
+      "helperSha256": "216bdd69d8cd1515de94e2f06f804e36d09809443ac73ef66c77561bc05ee219",
+      "guardSha256": "6492f5ab11dc2ab2f80bbfcc96d7eb6b8632afea07100dd8f74a7954f3ffe542",
+      "implementationCommit": "798769240875bca10f3b6035cbb203bb5336b753",
+      "staticReviewSha256": "9bff772e231ae25c3a37f6a54f150891b55a88357d9245223653d4bb6a74121d",
+      "newScientificConstruction": false,
+      "launchIsAcceptance": false
+    },
+    "initialInspection": {
+      "limitsVerified": true,
+      "actualLimits": {
+        "memory.max": "2147483648",
+        "memory.swap.max": "0",
+        "pids.max": "32",
+        "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-ef3406d0da8b.service",
+        "nice": 15,
+        "affinity": [
+          15
+        ],
+        "threads": {
+          "OPENBLAS_NUM_THREADS": "1",
+          "OMP_NUM_THREADS": "1",
+          "MKL_NUM_THREADS": "1",
+          "NUMEXPR_NUM_THREADS": "1",
+          "VECLIB_MAXIMUM_THREADS": "1",
+          "BLIS_NUM_THREADS": "1"
+        }
+      },
+      "stderrBytes": {
+        "guard.stderr": 0,
+        "validate.stderr": 0,
+        "watcher.stderr": 0
+      },
+      "active": {
+        "stage": "validate",
+        "command": [
+          "/usr/bin/python",
+          "-u",
+          "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-rational-acceptance/validate.py"
+        ],
+        "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-rational-acceptance/validate.stdout",
+        "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/end-rational-acceptance/validate.stderr",
+        "startedUtc": "2026-09-22T05:17:59.268285+00:00",
+        "childPid": 1086460,
+        "status": "running"
+      },
+      "watcher": {
+        "status": "waiting",
+        "watcherPid": 1086453,
+        "jobPid": 1086452,
+        "thread": "01a08c53-295c-70f0-baaf-353db1745867",
+        "startedUtc": "2026-09-22T05:17:59.140543+00:00",
+        "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
+        "messageSha256": "0504e01e6f3b408b21a820e65a2cd3f981549c0755538e49793feef6d7233739",
+        "notifications": {}
+      },
+      "guardOutcome": null,
+      "singleInitialInspection": true
+    }
   }
 }

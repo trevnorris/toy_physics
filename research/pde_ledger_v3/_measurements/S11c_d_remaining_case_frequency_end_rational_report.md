@@ -34,3 +34,8 @@ physical routes and five saved mutations. Live cache decisions remain their
 actual captured receipts; restored-key membership is not replayed. All
 reconstruction arithmetic, cancellation, fraction, Poly and terms operations
 remain disabled. Per-operation/entry/case summaries precede final hashes.
+
+Saved-only validation launched from `79876924`. The single initial inspection
+verified all mandatory limits and empty strict stderr. The silent local
+completion/error hook handles waiting; rational entries remain unaccepted
+until final independent validation and all guard outcomes pass.

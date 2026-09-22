@@ -1,5 +1,5 @@
 {
-  "status": "IMPLEMENTED_NOT_LAUNCHED",
+  "status": "LAUNCHED_AWAITING_FINAL_OUTCOME",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/lab-operator-recovery-01",
   "stage": "frequency_lab_operator_recover",
   "helperSha256": "c1b8fa71c4b5e9c666bf85c81707aef023aa1eae0068381af9e6aedf0f38ed27",
@@ -9,5 +9,40 @@
   "stdlibFakeDispatcherLookupPassed": true,
   "scientificImportCalls": 0,
   "oldCompleteFiles": 0,
-  "sourceLookupOnly": true
+  "sourceLookupOnly": true,
+  "launch": {
+    "launchedUtc": "2026-09-22T16:09:55.184066+00:00",
+    "guardPid": 1811141,
+    "watcherPid": 1811142,
+    "stage": "frequency_lab_operator_recover",
+    "command": [
+      "/usr/bin/python",
+      "/var/projects/toy_physics/scripts/s11c_guarded_run.py",
+      "--log-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/lab-operator-recovery-01/resource-guard",
+      "--seconds",
+      "900",
+      "--",
+      "/usr/bin/python",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/lab-operator-recovery-01",
+      "--stage",
+      "frequency_lab_operator_recover",
+      "--",
+      "/usr/bin/python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_lab_operator_recover.py",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/lab-operator-recovery-01/complete"
+    ],
+    "helperSha256": "c1b8fa71c4b5e9c666bf85c81707aef023aa1eae0068381af9e6aedf0f38ed27",
+    "planSha256": "ff04e1553925457692b9629b769d62a86ba9a1473053fcc92a271e5e708f51a0",
+    "staticReviewSha256": "a36b56bec1971608a2a6077d9ebd85b631b04519d070e1e61cac5c28adddd237",
+    "guardSha256": "6492f5ab11dc2ab2f80bbfcc96d7eb6b8632afea07100dd8f74a7954f3ffe542",
+    "implementationCommit": "b7c2e9e8697e30882924a80ea6fbdf4a8147c6b6",
+    "scope": "One own RHOBR645x645 four-incident response at1-0.01i; full exact baseline block/caller reuse, new missing block coefficient arithmetic and native solve only, all rows/maps already saved.",
+    "launchIsAcceptance": false
+  },
+  "initialContainment": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/lab-operator-recovery-01/initial-containment-inspection.json"
 }

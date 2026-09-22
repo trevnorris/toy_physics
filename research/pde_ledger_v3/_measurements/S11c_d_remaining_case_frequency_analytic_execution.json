@@ -1,5 +1,5 @@
 {
-  "status": "PREPARED_SAVED_REPRESENTATION_DIAGNOSTIC",
+  "status": "PREPARED_REPRESENTATION_DIAGNOSTIC_METADATA_CONTINUATION",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/analytic-sources",
   "stage": "frequency_analytic",
   "acceptedAnalyticInputsCommit": "a7a53fa8",
@@ -690,6 +690,61 @@
       "validated-derivative-lift-routes.json",
       "validated-case-LAB_HELD__RHO4_CONSTANT.json"
     ],
-    "priorAcceptance": false
+    "priorAcceptance": false,
+    "launch": {
+      "launchedUtc": "2026-09-22T00:52:12.357746+00:00",
+      "guardPid": 985710,
+      "watcherPid": 985711,
+      "command": [
+        "/usr/bin/python",
+        "/var/projects/toy_physics/scripts/s11c_guarded_run.py",
+        "--log-directory",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/analytic-representation-diagnostic/resource-guard",
+        "--seconds",
+        "900",
+        "--",
+        "/usr/bin/python",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+        "--run-root",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/analytic-representation-diagnostic",
+        "--stage",
+        "diagnose",
+        "--",
+        "/usr/bin/python",
+        "-u",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/analytic-representation-diagnostic/diagnose.py"
+      ],
+      "scriptSha256": "17f77f63a4d76e21e9193550e802796d843a4e470af1245e542016fc5d46f35a",
+      "guardSha256": "6492f5ab11dc2ab2f80bbfcc96d7eb6b8632afea07100dd8f74a7954f3ffe542",
+      "implementationCommit": "bbd9d82b8f61cb25013f26a13f35b3f4ee9eb373",
+      "launchIsAcceptance": false,
+      "newScientificConstruction": false
+    },
+    "outcome": {
+      "exitCode": 1,
+      "wallSeconds": 1.9188000040012412,
+      "unit": "s11c-guard-32283b578470",
+      "stderrBytes": 0,
+      "limitsVerified": true,
+      "childOutcome": {
+        "exitCode": 1,
+        "guardReason": null,
+        "wallSeconds": 1.8289549339970108,
+        "childPid": 985717
+      }
+    }
+  },
+  "representationDiagnosticContinuation": {
+    "directory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-frequency-20260921/analytic-representation-diagnostic-recovery-01",
+    "scriptSha256": "e6fd2ef48711852c624bbc76e4ec7d7769f4ee94cc488335896d054bfbb1a94a",
+    "repairSha256": "b3af21cf1e0e69074b015fedf794d103ea488f309f048865992eb90fa6089e53",
+    "adapter": {
+      "wholeOriginalMainReverseAST": true,
+      "originalAST": "6906bc567cf9c569b6b3e022b7cc28c5174be50ee4d857a6fc146d23be5152f5",
+      "removedPrefixAST": "e82bd292ca4ea89e64afe6e12d24cd1a448d8778a84044d5b76ad44d9a212ed4",
+      "unitMetadataViews": 1,
+      "physicalOperandChanges": 0
+    },
+    "originalFiles": 27
   }
 }

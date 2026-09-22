@@ -140,3 +140,9 @@ constants -10/-20 and positive bounds 245/32 and 245/16 on the declared disk.
 A separate saved representation diagnostic will inspect actual live/restored
 strings and typed packet joins without evaluating strings or recomputing
 science. No acceptance or automatic restart is claimed.
+
+The diagnostic stopped after 1.73 native seconds at its first JSON write: a
+unit exponent was a SymPy Integer. No pair or science was written. A fresh
+saved-only continuation preserves its logs and completed source/outcome joins;
+whole-main reverse AST changes only the metadata unit view to literal strings
+and restores that completed prefix. Original typed unit packets remain exact.

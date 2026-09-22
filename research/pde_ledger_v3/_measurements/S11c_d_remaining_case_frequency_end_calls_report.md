@@ -62,3 +62,27 @@ Independent saved validation launched from `c62762a2`. The single initial
 inspection confirmed the required containment and empty strict stderr. The
 local hook will wake this session on completion or error; no model polling
 is scheduled. Launch does not establish acceptance.
+
+The saved call inputs are now accepted after independent validation in
+108.57 worker / 109.83 native / 110.00 guard seconds.
+Actual guard/supervisor/child exits are zero, strict stderr is empty and
+checks/stdout are byte-identical. All 61,000 paths pass pre/post identity,
+with 689,995,776-byte peak, no cap/OOM/swap event and
+23.24 GB minimum host available memory. The separate checkpoint
+preserves the full producer inventories, original failure and reader repair,
+validator/guard evidence and accepted current-proof reference routes.
+
+Actual saved proofs connect six physical uses to the two baseline source
+operands; four of those six are literal strong-expression matches. Both
+RHOBR right uses retain the distinct third current family and its exact
+cross-anchoring proof. Every baseline candidate mapping input, original
+relation and branch receipt matches for all eight; this does not substitute
+a baseline pencil for the distinct RHOBR source. All 32 call mutations and
+five saved cross-anchoring coefficient controls are accounted for.
+
+All eight full frequency-leg pencils and saved normal/frequency derivatives
+retain actual frequency and momentum variables and unit declarations. The
+radical scale is the saved inverse sound speed. Exact native coordinate
+routing, missing end tables/domains and whole-cluster continuation remain;
+no analytic/mapping call, derivative, current or mode was reconstructed.
+This acceptance is limited to saved call inputs and proof-consumer joins.

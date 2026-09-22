@@ -169,3 +169,8 @@ and controls are reused. The unfinished cases and final certificate/seed/hash
 checks remain original. No scientific constructor is enabled. All actual
 previous/diagnostic reference paths and whole reversed functions passed static
 review; this preparation is not analytic acceptance.
+
+The saved validation continuation launched at 2026-09-22T01:03:59Z from
+8083277b. Initial containment verified 2 GiB, zero swap, one CPU, nice 15,
+32 tasks and one native thread; strict stderr was empty. Its silent local
+completion/error hook resumes the task. Launch is not analytic acceptance.

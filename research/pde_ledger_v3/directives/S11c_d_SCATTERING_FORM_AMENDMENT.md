@@ -1,6 +1,6 @@
 # S11c-d scattering/FORM scope amendment — Option B draft
 
-Version: `scatteringFormScopeV1-draft7`, 2026-09-22. Author: Codex/Astra.
+Version: `scatteringFormScopeV1-draft8`, 2026-09-22. Author: Codex/Astra.
 
 **Status: Option B adopted by the user; amendment unreviewed and not yet
 effective for production.** On 2026-09-22 the user said, “if we've solidified
@@ -9,24 +9,25 @@ This authorizes proceeding with that decision and its fresh Claude and Grok
 reviews. It does not constitute independent clearance. The amendment requires
 two non-author reviews until clear; no scientific production resumes before
 that gate. Actual review launches and outcomes are recorded separately.
-The exact drafts and both reports for rounds 1–6 are preserved, respectively,
-at `2e8ec5a3`, `75086f8a`, `134d033d`, `116f6b36`, `96fa1f27` and `60f70885`.
-After round 5 the user approved keeping supported leading d terms and leaving
-unsupported second-shape/threshold completion at the S11c-e boundary. That
-approved output boundary stands. Both round-6 amendment reports request
-revision; Claude also requests inventory revision, while Grok clears the
-inventory. This draft repairs debt accounting, pre-declared numerical precision
-and the current-construction wording. Neither report is a new physics result.
+The exact drafts and both reports for rounds 1–7 are preserved, respectively,
+at `2e8ec5a3`, `75086f8a`, `134d033d`, `116f6b36`, `96fa1f27`, `60f70885` and
+`3ba3367e`. After round 5 the user approved keeping supported leading d terms
+and leaving unsupported second-shape/threshold completion at the S11c-e boundary.
+That approved output boundary stands. Both round-7 amendment reports request
+revision; Claude requests inventory revision and Grok clears it. This draft
+clarifies inherited independence, deferral ownership and the allowed flux
+claims. Neither report is a new physics result.
 
 Codex/Astra remains the user's preferred author; the proposed external Claude
-authoring task never launched. This is the sixth substantive same-author fold,
-a further bounded departure from G4's author-change rule under that continuing
-preference. It is not a newly user-approved scope expansion or unlimited revision
-authority. The corrections restore existing requirements within the approved
-boundary; no new scientific campaign or changed saved value is authorized.
+authoring task never launched. This is the seventh substantive same-author
+fold, a bounded departure from G4 under that continuing preference. No new
+scientific construction or observable is added: in particular, a universal
+combined-loss partition is not assumed or made a new deliverable. The corrections
+limit claims and restore source/process qualifications within the approved
+boundary. They change no saved value and authorize no scientific campaign.
 Fresh Claude/Grok reviews remain required. A finding that actually broadens
 construction or changes the promised observable returns to an author/scope
-decision, rather than automatically authorizing another fold.
+decision; this is not unlimited same-author revision authority.
 
 The existing numerical work is paused at
 `0d77af53561968d4593b49261589e2ee259eadbb`. This draft changes no producer,
@@ -48,6 +49,12 @@ approved higher-order bulk deferral. That boundary follows c1's second-shape
 handoff and extends the present d disposition to unsupported threshold
 completion; it is not a claim that e's build plan, owner, budget or construction
 is already approved. The family roll-up must expose both distinct dispositions.
+Under N10, unassigned is interim only: every deferral, including a pending
+loss-attribution scope decision, needs a named owner before the S11c family
+card closes, unless the user explicitly records an exception to that owner duty.
+No such appointment or exception is supplied here. Ownership of a later decision
+does not authorize its production. Completion of this amended d step is distinct
+from family closure, and no owner-duty exception establishes physical confinement.
 
 This is a deliberate reduction of S11c-d's output obligations, not a claim of
 completion against unamended v10. On approval, this amendment governs the
@@ -70,6 +77,7 @@ relabeled as built or reviewed under this amendment.
 | [nonlinearPoleV2 §§1–7][pole-contract] | Do not reinstate v10's incorrect unrestricted projector/residue prescriptions. Replace the frequency-pole production mandate with §4's limited claims, while retaining the applicable full-pairing and singular-pairing safeguards for scattering end modes. Future pole work needs its own approved governing contract; this amendment does not clear the entire older directive by reference. |
 | [exploratoryAcceptanceV1][old-acceptance] | Consolidate its practical numerical policy in §3 below. Supersede its statement that all original pole outputs remain current d work. Its earlier transition/run instructions are historical; the stricter current one-worker resource safeguards remain. |
 | [Retained solver/export contract][retained] | Preserve scattering/FORM, transparent representations, supplied-domain honesty and reuse. Defer the pole-specific production/export obligations and the eight unfinished material complex rows/two material complex responses whose present purpose is that branch. Required real-frequency channel construction is not deferred. |
+| [decision list N10][deferral-owners] | Preserve the family-card duty to name every deferral’s owner. Unassigned is an interim status; family closure requires actual owners or an explicit recorded user exception to that duty. This is separate from d completion and does not settle confinement or authorize deferred production. |
 | [decision list N2 and d/e handoff][decisions] | Use the permitted explicit boundary refinement: the present handoff is scattering/continuum/weak FORM with declared spectral and unsupported second-shape/threshold bulk deferrals. S11c-e may consume supported coefficients within their stated domains, not infer absent resonance data or complete physical bulk power from a retained contribution. Its future import manifest must distinguish these capabilities; the missing bulk completion needs its own approved e plan. |
 
 Approval must be reflected in a subsequent source-pinned build/coverage plan;
@@ -158,8 +166,9 @@ not an existing `IMPORT_KEYS` row or a map already exported by the slab-only
 operator. Its scope is the supported retained-order/domain content below. The reviewed build plan must identify actual reusable c1 operands,
 any genuinely missing solution-map construction, its physical source/units/
 grades and its exact new import or construction roots. The existing c1 far-field
-energy construction has a specified restricted subcase; its presence alone does
-not establish the general solved-state map. Inspect saved outputs and full call
+energy construction uses equal input/output legs at one propagating `qprop`
+with a single impermeable velocity drive; its presence alone does not establish
+the general solved-state map. Inspect saved outputs and full call
 inputs before constructing anything missing; do not repeat completed bulk
 solves or manufacture an absent intermediate for packaging. Locate the actual
 c1/c2 map from the solved slab variables to the two physical-face drives,
@@ -185,7 +194,13 @@ debts. Per-engine-SOUND saved operands remain
 eligible for exact-input reuse under v10 §1b with their debt named; reuse or a
 downstream equality does not close it. Carry c2's inherited debt separately.
 The build/coverage plan must identify which claimed coefficient depends on each
-unresolved premise and keep its resulting status visible.
+unresolved premise and keep its resulting status visible. Also carry c1's
+separate [independence qualification][c1-independence] (step 157–163, 197–200):
+flat-symbol, rigid-shift and zero-jet agreements are partly fidelity to structure
+supplied by the spec, not independent confirmation of the general half-space
+map or bulk FORM. The two-momentum DtN kernel retains its recorded independent
+confirmation. The d blind construction/review and T7 records must preserve this
+scope; agreement alone cannot erase shared supplied premises.
 
 Two explicit checks tie supported map contributions to the scattering result.
 Emit both operands and literal residuals for (i) reconstructed pressure and
@@ -222,6 +237,17 @@ claim still needs an applicable independent construction/comparison at its
 claimed grade through the retained blind-engine/T7 process; if none is available,
 its coverage remains outstanding. This does not require constructing the
 deferred face terms or turn an absent check into a zero residual.
+
+The historical c1 [far-field integrand][c1-energy-source] is total Poynting
+through first shape: flat–flat and the two flat–scattered cross terms, without
+the scattered–scattered term. Preserve it as that restricted identity check.
+It must not stand in for the A12 functional at a grade containing the quadratic
+of the retained outgoing field. Construct A12's current bilinear on that actual
+field, retaining `B_0[a_1,a_1]` whenever the dependency/baseline disposition below
+supports the claimed leading coefficient. Omitting it from the old integrand
+does not make it an A14 deferral. Missing second-shape amplitude/operator/measure
+terms or threshold completion remain distinct dependencies; this paragraph
+supplies neither their values nor a physical-leading-power disposition.
 
 **Retained-order boundary and grade-specific claims.** Before declaring a
 bulk weak coefficient supported, map its actual amplitude, current/true-area
@@ -284,8 +310,22 @@ endpoint-pairing/current-adjoint-normalization coverage remains a locate-first
 obligation here; source-wiring inspection is not its completion. Outward
 bulk-depth flux is a distinct contribution; never add the interface-normal
 tail to that escape flux. Derive the geometries and balance before a total-loss
-interpretation is made. The retained
-d-level signed-balance duty follows v10's current identity and exploratory
+interpretation is made.
+
+The separate end-channel and exterior-depth FORMs are not two independent
+additive N13 loss mechanisms. A combined continuum accounting is permitted only
+on an actually derived common control volume: interface-normal end faces and
+exterior-depth faces must form disjoint parts of its oriented boundary, with
+matching admissible domains, grades, baselines, incident normalization, lateral
+terms and regulator/limit prescriptions. Include actual signed exchanges and
+unresolved remainders. The survival deficit is a dependent balance diagnostic,
+never a third outgoing flux to add. In particular, convergence of a saved
+infinite-depth end normalization is not established on a radiating bulk domain
+by its success on a decaying one. Without that joint accounting, retain the
+supported separate contributions and prohibit a combined-loss interpretation.
+This conditional claim restriction adds no total-loss construction requirement.
+
+The retained d-level signed-balance duty follows v10's current identity and exploratory
 acceptance item 2, using S11b's applicable discriminators as method. Per-face
 slab exchange and bulk acoustic power remain distinct signed operands even
 while a separately normalized absorption observable is deferred. Any required
@@ -635,7 +675,12 @@ closure dissipation as separately attributed losses; those processes may still
 affect the computed amplitudes through the full operator. They are not the
 total continuum-loss functional. The separately typed bulk-depth flux root
 carries the distinct obligation above; neither root may silently stand for the
-other or absorb an uncomputed dissipation/balance remainder.
+other or absorb an uncomputed dissipation/balance remainder. Their separate
+export types do not authorize addition as independent N13 mechanisms: §2's
+common-control-volume, disjoint-surface and normalization/limit conditions must
+first hold. If not established, a combined-loss claim is unavailable; retain
+the supported separate contributions. Never add the survival deficit to the
+outgoing fluxes. No new total-loss functional is required by this restriction.
 
 The named **“Closure/interface loss attribution — future scope decision”**
 records an additional observable-design question, not a computed positive
@@ -685,7 +730,9 @@ Separately attributed closure/interface loss remains
 a named future scope decision; required signed balance evidence remains with
 S11c-d. Neither missing bound data, an unfinished bulk observable nor unresolved
 exchange attribution is silently converted to zero. No complete confinement conclusion
-follows from the near-unity development-point ratio.
+follows from the near-unity development-point ratio. The family card must
+retain §1's N10 owner gate for every deferred package or decision; an unassigned
+interim handoff is not family closure.
 
 The blind Wolfram **d** engine and T7 comparison remain required for the retained
 scattering/FORM objects. Their scope declarations must agree before numerical/
@@ -702,7 +749,10 @@ outside current required comparison membership; their absence is not an
 equality or a zero residual. Compare the actual retained contributions and
 their domain/claim metadata. Direct c1 whole-DtN/flat-leg/ENERGY/traction/seal-5
 debts and all other applicable c1 statuses listed in §2 remain visible alongside
-c2's; the short list here does not replace the full consume-set debt accounting.
+c2's; the short list here does not replace the full consume-set accounting.
+That accounting includes §2's fidelity-scoped flat-symbol/rigid-shift/zero-jet
+status as distinct from the independently confirmed two-momentum kernel. T7
+agreement does not promote fidelity to independent construction.
 Pole families are outside the reviewed compared
 domain; they are not residual zeros, evidence of equality or a fourth T7 truth
 value. Missing required scattering rows still fail the coverage gate. Historical
@@ -824,3 +874,7 @@ acceptance commit must be established by their actual subsequent records.
 
 [saved-current-source]: /var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_d_mixing_scattering_sympy_audit.py:3383
 [saved-current-consumer]: /var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_continuum_currents.py:107
+
+[deferral-owners]: /var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_decisions.md:175
+[c1-independence]: /var/projects/toy_physics/research/pde_ledger_v3/steps/S11c_c1_curved_bulk_closure.md:157
+[c1-energy-source]: /var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_c1_bulk_closure_sympy_audit.py:807

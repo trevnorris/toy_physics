@@ -1,21 +1,22 @@
 {
   "status": "DRAFT_SCOPE_INVENTORY_EVIDENCE_NOT_SCIENTIFIC_ACCEPTANCE",
-  "createdUtc": "2026-09-23T01:34:38.471486+00:00",
-  "head": "60f708853d66d83c3fa90ca64b0907e7f5b7c462",
+  "createdUtc": "2026-09-23T03:29:06.469809+00:00",
+  "head": "3ba3367ebcea470dbbff68b852ad082159a0514d",
   "scientificStateSnapshotCommit": "0d77af53561968d4593b49261589e2ee259eadbb",
-  "reviewedDraftPreservationCommit": "60f708853d66d83c3fa90ca64b0907e7f5b7c462",
+  "reviewedDraftPreservationCommit": "3ba3367ebcea470dbbff68b852ad082159a0514d",
   "round1ReviewRecord": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_scattering_form_review_round01.json",
   "round2ReviewRecord": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_scattering_form_review_round02.json",
   "round3ReviewRecord": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_scattering_form_review_round03.json",
   "round4ReviewRecord": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_scattering_form_review_round04.json",
   "round5ReviewRecord": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_scattering_form_review_round05.json",
   "round6ReviewRecord": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_scattering_form_review_round06.json",
+  "round7ReviewRecord": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_scattering_form_review_round07.json",
   "method": "Read-only source text, report and JSON metadata inspection. No scientific module import, unpickling, numerical/symbolic operation, production validator, review leg or export execution.",
   "coverage": "Selected scientific workstream evidence and governing/review records; not a line-by-line audit of every commit or an ancestral validation campaign.",
   "inventory": {
     "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_scope_inventory_20260922.md",
-    "bytes": 51903,
-    "sha256": "39318d4e151c24e6fcd16d407b6e8084ea8ba5df221a863d878ea279fdd66902"
+    "bytes": 54601,
+    "sha256": "f3e0d9db965b34acdb9a51bd68f0dc1ac6cd6434846aa30e3c927f961d4db342"
   },
   "links": [
     {
@@ -161,7 +162,7 @@
     {
       "label": "coordinate",
       "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_coordinate_response_report.md",
-      "line": 274
+      "line": 89
     },
     {
       "label": "uniform",
@@ -256,12 +257,17 @@
     {
       "label": "c1-retained",
       "path": "/var/projects/toy_physics/research/pde_ledger_v3/steps/S11c_c1_curved_bulk_closure.md",
-      "line": 99
+      "line": 170
     },
     {
       "label": "c1-power-caveat",
       "path": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c1_SHARED_PHYSICS.md",
       "line": 332
+    },
+    {
+      "label": "c1-debt",
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/steps/S11c_c1_curved_bulk_closure.md",
+      "line": 99
     }
   ],
   "selectedEvidence": [
@@ -743,8 +749,8 @@
     {
       "path": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_SCATTERING_FORM_AMENDMENT.md",
       "resolvedPath": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_SCATTERING_FORM_AMENDMENT.md",
-      "bytes": 63596,
-      "sha256": "676f7748726ba5a9ecd951b1316978b979e1f099c0b1d757dc102cd8e1d0cd02"
+      "bytes": 67803,
+      "sha256": "b6f6812ef48b9b8d48fb44448a1dfb43391b75392e2bf635fa0ce6fd9efd8daf"
     },
     {
       "path": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_SHARED_PHYSICS.md",
@@ -834,7 +840,7 @@
     "exploratoryAcceptanceChange": "User approved; separate two-leg clearance not established by inspected evidence.",
     "boundedLeanNP1toNP4": "CLEAR by Claude and Grok for identified packet; excludes physical application and analytic existence theory.",
     "savedResultValidators": "Do not count as two non-author physics-review legs.",
-    "thisInventory": "Draft7 after round6: both amendments NEEDS REVISION; Claude inventory NEEDS REVISION, Grok inventory CLEAR. Approved retained-order boundary unchanged. Bounded debt/precision/current-join repairs with Codex authorship retained, sixth-fold G4 disposition explicit. Fresh reviews pending; no science/build clearance."
+    "thisInventory": "Draft8 after round7: both amendments NEEDS REVISION; Claude inventory NEEDS REVISION, Grok inventory CLEAR. Approved retained-order boundary unchanged. Bounded source-independence/ownership/diagnostic/claim corrections with Codex authorship retained, seventh-fold G4 disposition explicit. No new total-loss construction. Fresh reviews pending; no science/build clearance."
   },
   "costEstimateStatus": "Planning judgment, not measured end-to-end forecasts; worker benchmarks are separate and review/provider delay or findings are not bounded."
 }

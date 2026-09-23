@@ -24,6 +24,8 @@ and exploratory addenda do not override the consolidated amendment.
 
 Use the [initial map](../_measurements/S11c_d_A9_input_map.md) and
 [saved dependency routes](../_measurements/S11c_d_A9_saved_dependency_routes.json).
+The [completed saved-input inspection](../_measurements/S11c_d_A9_dependency_report.md)
+records what was located and the remaining exact consumer gaps; do not rerun it.
 Inspect the selected saved values with their actual source, unit, case, grade,
 profile, measure, normalization, branch and ordered-limit context. Never call
 old constructors to reconstruct an unsaved internal return. Source/manifest

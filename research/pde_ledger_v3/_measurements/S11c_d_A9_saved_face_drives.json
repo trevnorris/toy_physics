@@ -1,0 +1,175 @@
+{
+  "status": "LITERAL_SAVED_FACE_DRIVE_NAVIGATION_NOT_SCIENTIFIC_VALIDATION",
+  "method": "Read indexed transcript ranges and parse serialization source with Python ast only; no eval, scientific imports or physical computation.",
+  "sourceIndex": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_A9_saved_dependency_routes.json",
+    "sha256": "010b308f75d8f5a786f1e234a822390711166550a99459e5c8ba7b552a98f7f7"
+  },
+  "transcript": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/out/S11c_c2_selfenergy_fold_sympy_audit.out",
+    "sha256": "9712191e3af5e7bbc2eb65824ca283f0c5cb3a35d5e21632d0821412ec018864"
+  },
+  "records": [
+    {
+      "tag": "PY_S11CC2_FOLD_SYMBOL_MAP_LAB_HELD_RHO4_CONSTANT",
+      "face": 1,
+      "recordByteOffset": 34733988,
+      "recordBytes": 7332427,
+      "recordSha256": "1d8c08ac72c04fd906ac4a332fadd7da3deddc49609f1c9019bf6dac449f882c",
+      "selector": [
+        "VALUE",
+        1,
+        "IDENTIFICATIONS"
+      ],
+      "velocityIdentifications": [
+        {
+          "target": "s11cc1_V_lab_held_plus",
+          "savedValueSrepr": "Mul(Rational(1, 2), Symbol('W_0', positive=True), Symbol('e_W_t'))",
+          "literalSha256": "250ee5733e989962a14ca454fe0f6dc94b5205a4d67574f824286036f5e5ad5d"
+        }
+      ],
+      "sourceDerivedQualification": "This is the literal saved velocity identification for this face; no centre elimination or full bulk reconstruction is inferred."
+    },
+    {
+      "tag": "PY_S11CC2_FOLD_SYMBOL_MAP_LAB_HELD_RHO4_CONSTANT",
+      "face": -1,
+      "recordByteOffset": 34733988,
+      "recordBytes": 7332427,
+      "recordSha256": "1d8c08ac72c04fd906ac4a332fadd7da3deddc49609f1c9019bf6dac449f882c",
+      "selector": [
+        "VALUE",
+        -1,
+        "IDENTIFICATIONS"
+      ],
+      "velocityIdentifications": [
+        {
+          "target": "s11cc1_V_lab_held_minus",
+          "savedValueSrepr": "Mul(Rational(1, 2), Symbol('W_0', positive=True), Symbol('e_W_t'))",
+          "literalSha256": "250ee5733e989962a14ca454fe0f6dc94b5205a4d67574f824286036f5e5ad5d"
+        }
+      ],
+      "sourceDerivedQualification": "This is the literal saved velocity identification for this face; no centre elimination or full bulk reconstruction is inferred."
+    },
+    {
+      "tag": "PY_S11CC2_FOLD_SYMBOL_MAP_LAB_HELD_RHOBR_CONSTANT",
+      "face": 1,
+      "recordByteOffset": 161525018,
+      "recordBytes": 4705143,
+      "recordSha256": "4a57f6b1077303f7f1848a5102516326a28d6fe3c4fe120e456a7d08d4b04718",
+      "selector": [
+        "VALUE",
+        1,
+        "IDENTIFICATIONS"
+      ],
+      "velocityIdentifications": [
+        {
+          "target": "s11cc1_V_lab_held_plus",
+          "savedValueSrepr": "Mul(Rational(1, 2), Symbol('W_0', positive=True), Symbol('e_W_t'))",
+          "literalSha256": "250ee5733e989962a14ca454fe0f6dc94b5205a4d67574f824286036f5e5ad5d"
+        }
+      ],
+      "sourceDerivedQualification": "This is the literal saved velocity identification for this face; no centre elimination or full bulk reconstruction is inferred."
+    },
+    {
+      "tag": "PY_S11CC2_FOLD_SYMBOL_MAP_LAB_HELD_RHOBR_CONSTANT",
+      "face": -1,
+      "recordByteOffset": 161525018,
+      "recordBytes": 4705143,
+      "recordSha256": "4a57f6b1077303f7f1848a5102516326a28d6fe3c4fe120e456a7d08d4b04718",
+      "selector": [
+        "VALUE",
+        -1,
+        "IDENTIFICATIONS"
+      ],
+      "velocityIdentifications": [
+        {
+          "target": "s11cc1_V_lab_held_minus",
+          "savedValueSrepr": "Mul(Rational(1, 2), Symbol('W_0', positive=True), Symbol('e_W_t'))",
+          "literalSha256": "250ee5733e989962a14ca454fe0f6dc94b5205a4d67574f824286036f5e5ad5d"
+        }
+      ],
+      "sourceDerivedQualification": "This is the literal saved velocity identification for this face; no centre elimination or full bulk reconstruction is inferred."
+    },
+    {
+      "tag": "PY_S11CC2_FOLD_SYMBOL_MAP_MATERIAL_ADVECTED_RHO4_CONSTANT",
+      "face": 1,
+      "recordByteOffset": 283038192,
+      "recordBytes": 7421528,
+      "recordSha256": "765e3e2066c1ea6483869a28aa45b2b00750523422c02f0dd8a6e63cee172122",
+      "selector": [
+        "VALUE",
+        1,
+        "IDENTIFICATIONS"
+      ],
+      "velocityIdentifications": [
+        {
+          "target": "s11cc1_V_material_advected_plus",
+          "savedValueSrepr": "Add(Mul(Rational(1, 2), Symbol('W_0', positive=True), Symbol('e_W_t')), Mul(Integer(-1), Rational(1, 2), Symbol('sigma_W', real=True), Add(Mul(Symbol('u_1_t'), Symbol('w1_profile_d1', real=True)), Mul(Symbol('u_2_t'), Symbol('w1_profile_d2', real=True)), Mul(Symbol('u_3_t'), Symbol('w1_profile_d3', real=True)))))",
+          "literalSha256": "8a6b3ed61b7b7fd6713c24ca4bd6d9939b8d0b8679691723c35d8927009bb684"
+        }
+      ],
+      "sourceDerivedQualification": "This is the literal saved velocity identification for this face; no centre elimination or full bulk reconstruction is inferred."
+    },
+    {
+      "tag": "PY_S11CC2_FOLD_SYMBOL_MAP_MATERIAL_ADVECTED_RHO4_CONSTANT",
+      "face": -1,
+      "recordByteOffset": 283038192,
+      "recordBytes": 7421528,
+      "recordSha256": "765e3e2066c1ea6483869a28aa45b2b00750523422c02f0dd8a6e63cee172122",
+      "selector": [
+        "VALUE",
+        -1,
+        "IDENTIFICATIONS"
+      ],
+      "velocityIdentifications": [
+        {
+          "target": "s11cc1_V_material_advected_minus",
+          "savedValueSrepr": "Add(Mul(Rational(1, 2), Symbol('W_0', positive=True), Symbol('e_W_t')), Mul(Integer(-1), Rational(1, 2), Symbol('sigma_W', real=True), Add(Mul(Symbol('u_1_t'), Symbol('w1_profile_d1', real=True)), Mul(Symbol('u_2_t'), Symbol('w1_profile_d2', real=True)), Mul(Symbol('u_3_t'), Symbol('w1_profile_d3', real=True)))))",
+          "literalSha256": "8a6b3ed61b7b7fd6713c24ca4bd6d9939b8d0b8679691723c35d8927009bb684"
+        }
+      ],
+      "sourceDerivedQualification": "This is the literal saved velocity identification for this face; no centre elimination or full bulk reconstruction is inferred."
+    },
+    {
+      "tag": "PY_S11CC2_FOLD_SYMBOL_MAP_MATERIAL_ADVECTED_RHOBR_CONSTANT",
+      "face": 1,
+      "recordByteOffset": 437472291,
+      "recordBytes": 4794244,
+      "recordSha256": "8616499b1bc3a5143a54f5b451b8ed027ed0fb1cad86a17d4c8fa0802745606e",
+      "selector": [
+        "VALUE",
+        1,
+        "IDENTIFICATIONS"
+      ],
+      "velocityIdentifications": [
+        {
+          "target": "s11cc1_V_material_advected_plus",
+          "savedValueSrepr": "Add(Mul(Rational(1, 2), Symbol('W_0', positive=True), Symbol('e_W_t')), Mul(Integer(-1), Rational(1, 2), Symbol('sigma_W', real=True), Add(Mul(Symbol('u_1_t'), Symbol('w1_profile_d1', real=True)), Mul(Symbol('u_2_t'), Symbol('w1_profile_d2', real=True)), Mul(Symbol('u_3_t'), Symbol('w1_profile_d3', real=True)))))",
+          "literalSha256": "8a6b3ed61b7b7fd6713c24ca4bd6d9939b8d0b8679691723c35d8927009bb684"
+        }
+      ],
+      "sourceDerivedQualification": "This is the literal saved velocity identification for this face; no centre elimination or full bulk reconstruction is inferred."
+    },
+    {
+      "tag": "PY_S11CC2_FOLD_SYMBOL_MAP_MATERIAL_ADVECTED_RHOBR_CONSTANT",
+      "face": -1,
+      "recordByteOffset": 437472291,
+      "recordBytes": 4794244,
+      "recordSha256": "8616499b1bc3a5143a54f5b451b8ed027ed0fb1cad86a17d4c8fa0802745606e",
+      "selector": [
+        "VALUE",
+        -1,
+        "IDENTIFICATIONS"
+      ],
+      "velocityIdentifications": [
+        {
+          "target": "s11cc1_V_material_advected_minus",
+          "savedValueSrepr": "Add(Mul(Rational(1, 2), Symbol('W_0', positive=True), Symbol('e_W_t')), Mul(Integer(-1), Rational(1, 2), Symbol('sigma_W', real=True), Add(Mul(Symbol('u_1_t'), Symbol('w1_profile_d1', real=True)), Mul(Symbol('u_2_t'), Symbol('w1_profile_d2', real=True)), Mul(Symbol('u_3_t'), Symbol('w1_profile_d3', real=True)))))",
+          "literalSha256": "8a6b3ed61b7b7fd6713c24ca4bd6d9939b8d0b8679691723c35d8927009bb684"
+        }
+      ],
+      "sourceDerivedQualification": "This is the literal saved velocity identification for this face; no centre elimination or full bulk reconstruction is inferred."
+    }
+  ],
+  "scienceCalls": 0
+}

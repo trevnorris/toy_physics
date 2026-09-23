@@ -1,6 +1,6 @@
 # S11c-d scattering/FORM scope amendment — Option B draft
 
-Version: `scatteringFormScopeV1-draft6`, 2026-09-22. Author: Codex/Astra.
+Version: `scatteringFormScopeV1-draft7`, 2026-09-22. Author: Codex/Astra.
 
 **Status: Option B adopted by the user; amendment unreviewed and not yet
 effective for production.** On 2026-09-22 the user said, “if we've solidified
@@ -9,26 +9,24 @@ This authorizes proceeding with that decision and its fresh Claude and Grok
 reviews. It does not constitute independent clearance. The amendment requires
 two non-author reviews until clear; no scientific production resumes before
 that gate. Actual review launches and outcomes are recorded separately.
-The exact drafts and both reports for rounds 1–5 are preserved, respectively,
-at `2e8ec5a3`, `75086f8a`, `134d033d`, `116f6b36` and `96fa1f27`.
-Both round-5 reviewers requested amendment and inventory revision. Their
-findings identified a bulk retained-order/domain boundary and direct c1
-carry-forward duties, as well as stale inventory chronology; no clearance is
-claimed. The user has now replied **“Approved”** to the explicit recommendation
-to keep S11c-d at its retained order, compute supported leading terms, and
-leave unsupported second-shape/threshold completion at the S11c-e boundary.
-This is an additional output-scope decision, implemented below, rather than
-an assertion that draft 5 already met that boundary.
+The exact drafts and both reports for rounds 1–6 are preserved, respectively,
+at `2e8ec5a3`, `75086f8a`, `134d033d`, `116f6b36`, `96fa1f27` and `60f70885`.
+After round 5 the user approved keeping supported leading d terms and leaving
+unsupported second-shape/threshold completion at the S11c-e boundary. That
+approved output boundary stands. Both round-6 amendment reports request
+revision; Claude also requests inventory revision, while Grok clears the
+inventory. This draft repairs debt accounting, pre-declared numerical precision
+and the current-construction wording. Neither report is a new physics result.
 
-Codex/Astra remains the user's preferred author. The proposed external Claude
-authoring task never launched. Draft 5's fourth substantive same-author fold
-had an explicit scoped G4 exception; draft 6 is a fifth substantive fold under
-the user's newly approved scope decision and continuing authorship preference.
-This records a further scoped exception, not an unlimited same-author loop or
-a waiver of review. Repairs are limited to that boundary, source-grounded
-orientation/debt/consume-set clarifications and consistent status accounting.
-Fresh Claude and Grok remain the two non-author reviewers. Neither this decision
-nor document-review clearance alone authorizes scientific production.
+Codex/Astra remains the user's preferred author; the proposed external Claude
+authoring task never launched. This is the sixth substantive same-author fold,
+a further bounded departure from G4's author-change rule under that continuing
+preference. It is not a newly user-approved scope expansion or unlimited revision
+authority. The corrections restore existing requirements within the approved
+boundary; no new scientific campaign or changed saved value is authorized.
+Fresh Claude/Grok reviews remain required. A finding that actually broadens
+construction or changes the promised observable returns to an author/scope
+decision, rather than automatically authorizing another fold.
 
 The existing numerical work is paused at
 `0d77af53561968d4593b49261589e2ee259eadbb`. This draft changes no producer,
@@ -166,12 +164,24 @@ inputs before constructing anything missing; do not repeat completed bulk
 solves or manufacture an absent intermediate for packaging. Locate the actual
 c1/c2 map from the solved slab variables to the two physical-face drives,
 including any elimination of the independent centre displacement. A parity
-assumption or an invented extra degree of freedom is not a substitute.
+assumption or an invented extra degree of freedom is not a substitute. If no
+upstream map determines a required face drive, record an upstream c1/c2
+dependency finding and its implications for any affected end-channel result;
+do not close the gap by adding or fixing a mode in d.
 
 Direct c1 use carries its [actual unresolved cross-engine premises][c1-debt]:
-the whole-form `dtn_operator`, off-diagonal flat-resolvent momentum leg labels,
-ENERGY audit, `t_s` traction leaf and seal-5 density representation. A kernel
-agreement does not clear those objects. Per-engine-SOUND saved operands remain
+including the whole-form `dtn_operator`, off-diagonal flat-resolvent momentum
+leg labels, ENERGY audit, `t_s` traction leaf and seal-5 density representation.
+This is not an exhaustive list. Carry the full applicable c1 step 99–124 status:
+the UNMEASURED/DEFERRED `PERMEABLE_PORT_HERMITIAN`,
+`PERMEABLE_DISSIPATION_VS_OMEGA_TAU`, `UNIFORM_LIMIT_S11CC1_OPERAND` and
+`UNIFORM_LIMIT_RESIDUAL`; deferred full per-family residuals for
+REP_INVARIANCE/CONTROL_*/DEGENERATE/DIMENSIONS; first-order-only Hermitian/reactive
+agreement; and the HOMOGENEITY keying gap. Their actual dependency on a claimed
+object governs propagation, not inclusion in a short example list. Retain
+`K_a`'s recorded Hermitian label wherever it is consumed. No giant job or full
+symbolic campaign is newly mandated, and no inherited agreement closes these
+debts. Per-engine-SOUND saved operands remain
 eligible for exact-input reuse under v10 §1b with their debt named; reuse or a
 downstream equality does not close it. Carry c2's inherited debt separately.
 The build/coverage plan must identify which claimed coefficient depends on each
@@ -204,6 +214,14 @@ traction operand. Do not use acoustic pressure-work alone as that sign test,
 or extend the restricted traction identity to a general permeable slab closure.
 No result or successful check is supplied by these definitions. Unexplained
 residuals at supported grades remain findings, not deferred absorption.
+Coverage must reach the grade carrying the claimed coefficient: vanishing
+lower-grade balances cannot validate a higher-grade flux. If the face-side
+comparison at that grade needs deferred second-shape terms, mark that comparison
+unavailable and retain its supported lower-order status. A supported far-field
+claim still needs an applicable independent construction/comparison at its
+claimed grade through the retained blind-engine/T7 process; if none is available,
+its coverage remains outstanding. This does not require constructing the
+deferred face terms or turn an absent check into a zero residual.
 
 **Retained-order boundary and grade-specific claims.** Before declaring a
 bulk weak coefficient supported, map its actual amplitude, current/true-area
@@ -244,15 +262,36 @@ forcing separate. The independently constructed bulk-flux and slab pressure/
 current-balance operands must support the relevant sign, measure and closure
 checks; the [S11b pressure-work discriminator][bulk-accounting] applies only on
 its actual stated subcase, not as a blanket proof for every face closure.
-Do not infer bulk escape as `1−P_T,surv−C_{T→H}`. V10 §3a's end-channel current
-already includes its closed/nonlocal bulk contribution: the depth-integrated
-interface-normal bulk tail is a component of that current, not another loss to
-add to it. Outward bulk-depth flux is the separate contribution. Derive the
-geometries and balance before a total-loss interpretation is made. The retained
+Do not infer bulk escape as `1−P_T,surv−C_{T→H}`. Keep the slab modal-current
+operand, depth-integrated interface-normal bulk-current operand and their
+derived channel-current composition separately typed. V10's phrase
+“closed/nonlocal bulk contribution” alone is not a proof that a particular
+closed-operator bilinear equals an explicit bulk depth integral. The saved
+[current construction][saved-current-source] forms its total from the slab
+matrix plus the actual depth integral times the bulk-normal density matrix;
+its [continuum consumer][saved-current-consumer] keeps both parts, their sum,
+source joins and incident/outgoing contractions. These source observations do
+not clear their physics or establish a general-domain identity.
+
+For the generic FORM, identify the actual combined current used in the channel
+ratios, its depth pairing/factor, surface sum, orientation, units, convergence
+domain and correspondence to the source-derived modal/pencil current. Emit
+both operands and the applicable identity/residual evidence required by v10
+§3a, reusing actual saved evidence before constructing a genuinely missing
+check. Do not drop the tail because a name says “closed,” or add it again to a
+current that already contains it. The inventory's unestablished post-repair
+endpoint-pairing/current-adjoint-normalization coverage remains a locate-first
+obligation here; source-wiring inspection is not its completion. Outward
+bulk-depth flux is a distinct contribution; never add the interface-normal
+tail to that escape flux. Derive the geometries and balance before a total-loss
+interpretation is made. The retained
 d-level signed-balance duty follows v10's current identity and exploratory
 acceptance item 2, using S11b's applicable discriminators as method. Per-face
 slab exchange and bulk acoustic power remain distinct signed operands even
-while a separately normalized absorption observable is deferred.
+while a separately normalized absorption observable is deferred. Any required
+signed difference of slab exchange and acoustic bulk power remains a balance
+operand; only separately normalized observable design is deferred, with no
+positive-loss or exclusive-mechanism inference.
 
 **First-shape domain, independently of omitted flow.** The [c1 grazing
 record][c1-shape-domain] restricts the first-shape impedance expansion to the
@@ -355,7 +394,11 @@ The numerical target is a practical analog toy-model result, with roughly 1%
 stability for well-resolved nonzero reported observables. Use the declared
 absolute reporting goals, amplitude `1e-4` and current `1e-6`, in their declared
 channel normalization/unit frame; do not apply those numbers indiscriminately
-to dimensionful source coefficients or arbitrary matrix entries.
+to dimensionful source coefficients or arbitrary matrix entries. Before the
+acceptance comparisons for each newly reported observable, declare its intended
+reporting precision and absolute tolerance in its own units and normalization
+frame. This includes weak coefficients and supported bulk contributions; do not
+choose tolerances after seeing their comparison results.
 
 Use a small selected set of independent resolution, domain and regulator
 comparisons tied to the claimed observable. New numerical methods need focused
@@ -658,7 +701,9 @@ deferred second-shape/threshold families and any unsupported physical totals
 outside current required comparison membership; their absence is not an
 equality or a zero residual. Compare the actual retained contributions and
 their domain/claim metadata. Direct c1 whole-DtN/flat-leg/ENERGY/traction/seal-5
-debts remain visible alongside c2's. Pole families are outside the reviewed compared
+debts and all other applicable c1 statuses listed in §2 remain visible alongside
+c2's; the short list here does not replace the full consume-set debt accounting.
+Pole families are outside the reviewed compared
 domain; they are not residual zeros, evidence of equality or a fourth T7 truth
 value. Missing required scattering rows still fail the coverage gate. Historical
 one-engine pole diagnostics may be referenced as such, not reported as new
@@ -732,6 +777,11 @@ The two non-author reviewers should independently determine:
 - Are the historical search statement and corrected pole safeguards accurate,
   with no physical pole/capture/absence claim smuggled into the handoff?
 
+The A9/A11/A12/A14 labels are navigation cross-references to the inventory,
+not a delegation of governing content to a changing state document. The actual
+FORM, end-channel coverage, supported bulk contribution and deferred-completion
+requirements are defined in §§1–3 and 5–6 of this amendment.
+
 This is a specification review; no fictional not-yet-built control should be
 claimed to have been executed. Implementation ablations remain build-review
 work. The [inventory][inventory] and cited reports provide state/provenance;
@@ -771,3 +821,6 @@ acceptance commit must be established by their actual subsequent records.
 [c1-shape-domain]: /var/projects/toy_physics/research/pde_ledger_v3/steps/S11c_c1_curved_bulk_closure.md:146
 [c1-power]: /var/projects/toy_physics/research/pde_ledger_v3/steps/S11c_c1_curved_bulk_closure.md:174
 [c1-truncation]: /var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c1_SHARED_PHYSICS.md:332
+
+[saved-current-source]: /var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_d_mixing_scattering_sympy_audit.py:3383
+[saved-current-consumer]: /var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_continuum_currents.py:107

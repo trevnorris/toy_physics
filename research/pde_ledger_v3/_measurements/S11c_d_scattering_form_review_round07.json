@@ -1,0 +1,147 @@
+{
+  "status": "NOT_ACCEPTED_BOUNDED_DOCUMENT_CORRECTIONS_REQUIRED",
+  "recordedUtc": "2026-09-23T03:25:09.046533+00:00",
+  "packetSha256": "8e489316fa1926d2a9d9f99ae077a195ea4242579d7ea32c40bc196f63af9b39",
+  "promptSha256": "8cb17fd011c388e64605f3eeccdb909a38c4a6d259662feb1b45bb67274b4bbd",
+  "archive": "/var/projects/toy_physics/_scratch/s11c/s11c-d-scattering-form-review-20260922/round-07/packet.tar.gz",
+  "archiveSha256": "5e75354dee0be449a5244f61100887d2b015422437f64c80ef8032cc3026386e",
+  "packetArchiveAndLiveSourceHashesUnchanged": true,
+  "explicitUserPacketApproval": "/var/projects/toy_physics/_scratch/s11c/s11c-d-scattering-form-review-20260922/round-07/explicit-packet-approval.json",
+  "round07PriorLaunchAttempt": false,
+  "legs": [
+    {
+      "engine": "claude",
+      "run": {
+        "engine": "claude",
+        "sessionId": "33b4b77a-b6d9-4dea-944e-773b776d4ee3",
+        "command": [
+          "/home/trevnorris/.local/bin/claude",
+          "--print",
+          "--output-format",
+          "json",
+          "--safe-mode",
+          "--restricted",
+          "--tools",
+          "Read,Glob,Grep",
+          "--allowedTools",
+          "Read,Glob,Grep",
+          "--permission-mode",
+          "dontAsk",
+          "--strict-mcp-config",
+          "--mcp-config",
+          "{\"mcpServers\":{}}",
+          "--setting-sources",
+          "",
+          "--disable-slash-commands",
+          "--session-id",
+          "33b4b77a-b6d9-4dea-944e-773b776d4ee3"
+        ],
+        "cwd": "/tmp/s11cd-scope-review-hxoeko4a/packet",
+        "startedUtc": "2026-09-23T02:58:39.588860+00:00",
+        "promptSha256": "8cb17fd011c388e64605f3eeccdb909a38c4a6d259662feb1b45bb67274b4bbd",
+        "packetSha256": "8e489316fa1926d2a9d9f99ae077a195ea4242579d7ea32c40bc196f63af9b39",
+        "reviewVerdict": "NOT_ADJUDICATED",
+        "scientificExecutionEnabled": false,
+        "pid": 2005521,
+        "exitStatus": 0,
+        "finishedUtc": "2026-09-23T03:06:23.567041+00:00",
+        "wallSeconds": 463.9764546279912,
+        "outputSha256": "85e8dafd559240feb3065bcf187a45924392e7510b734d2bc6f84a7ccade6978",
+        "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderrBytes": 0
+      },
+      "modelUsage": {
+        "claude-opus-5-5[1m]": {
+          "inputTokens": 58,
+          "outputTokens": 47607,
+          "cacheReadInputTokens": 3858128,
+          "cacheCreationInputTokens": 217325,
+          "webSearchRequests": 0,
+          "costUSD": 3.4625976000000005,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 33485,
+          "canonicalModel": "claude-opus-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "terminal": {
+        "stop_reason": "end_turn",
+        "terminal_reason": "completed",
+        "subtype": "success",
+        "is_error": false,
+        "permission_denials": []
+      },
+      "literalReportField": "result",
+      "report": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_scattering_form_review_round07_claude.md",
+      "reportSha256": "e1661454b003f531bb8af95cb704729bd53cde1f42a2239cfc34d14989a16918",
+      "amendmentVerdict": "NEEDS REVISION",
+      "inventoryVerdict": "NEEDS REVISION"
+    },
+    {
+      "engine": "grok",
+      "run": {
+        "engine": "grok",
+        "sessionId": "701990fa-fb11-48b7-a696-bc0540e8f6e7",
+        "command": [
+          "/home/trevnorris/.local/bin/grok",
+          "--cwd",
+          "/tmp/s11cd-scope-review-hxoeko4a/packet",
+          "--prompt-file",
+          "/tmp/s11cd-scope-review-hxoeko4a/packet/review-prompt.md",
+          "--output-format",
+          "json",
+          "--permission-mode",
+          "dontAsk",
+          "--no-plan",
+          "--tools",
+          "Read",
+          "--no-subagents",
+          "--disable-web-search",
+          "--verbatim",
+          "--session-id",
+          "701990fa-fb11-48b7-a696-bc0540e8f6e7"
+        ],
+        "cwd": "/tmp/s11cd-scope-review-hxoeko4a/packet",
+        "startedUtc": "2026-09-23T03:06:23.598669+00:00",
+        "promptSha256": "8cb17fd011c388e64605f3eeccdb909a38c4a6d259662feb1b45bb67274b4bbd",
+        "packetSha256": "8e489316fa1926d2a9d9f99ae077a195ea4242579d7ea32c40bc196f63af9b39",
+        "reviewVerdict": "NOT_ADJUDICATED",
+        "scientificExecutionEnabled": false,
+        "pid": 2007281,
+        "exitStatus": 0,
+        "finishedUtc": "2026-09-23T03:18:33.612502+00:00",
+        "wallSeconds": 730.0121313749987,
+        "outputSha256": "45f6111464cf68977cde0f0d0601bb4f348abed18ecd99f25d69c4cf7287d062",
+        "stderrSha256": "3c7de4833ff57af9a715db2454130d05ea434fdb3d3e51d37b4f3fbda6abc194",
+        "stderrBytes": 1431
+      },
+      "modelUsage": {
+        "grok-4.6-build": {
+          "inputTokens": 205939,
+          "outputTokens": 38221,
+          "cacheReadInputTokens": 1596672,
+          "cacheCreationInputTokens": 0,
+          "modelCalls": 17,
+          "costUSD": 0.4894436
+        }
+      },
+      "terminal": {
+        "stopReason": "end_turn"
+      },
+      "literalReportField": "text",
+      "report": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_scattering_form_review_round07_grok.md",
+      "reportSha256": "8d430d1f6cbf142d35934d8581789a0208409c56611bb5c2317af18a3026d084",
+      "amendmentVerdict": "NEEDS REVISION",
+      "inventoryVerdict": "CLEAR"
+    }
+  ],
+  "stderrQualification": "Claude/coordinator stderr empty; Grok 1431 startup plugin/settings warnings retained. Both CLI0 with substantive terminal end_turn.",
+  "adjudication": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_scattering_form_review_round07_adjudication.md",
+  "sourceInspection": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_scattering_form_review_round07_source_inspection.json",
+  "productionAuthorized": false,
+  "scienceCalls": 0,
+  "newReviewLaunched": false,
+  "nextAction": "Preserve exact reviewed baseline before bounded independence/ownership/diagnostic/flux-claim wording corrections; retain approved scope, Codex authorship and independent review gates."
+}

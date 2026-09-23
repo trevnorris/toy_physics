@@ -1,20 +1,21 @@
 {
   "status": "DRAFT_SCOPE_INVENTORY_EVIDENCE_NOT_SCIENTIFIC_ACCEPTANCE",
-  "createdUtc": "2026-09-23T01:04:14.811793+00:00",
-  "head": "96fa1f2756af61170abcbb1dc7a5719a28c13fb3",
+  "createdUtc": "2026-09-23T01:34:38.471486+00:00",
+  "head": "60f708853d66d83c3fa90ca64b0907e7f5b7c462",
   "scientificStateSnapshotCommit": "0d77af53561968d4593b49261589e2ee259eadbb",
-  "reviewedDraftPreservationCommit": "96fa1f2756af61170abcbb1dc7a5719a28c13fb3",
+  "reviewedDraftPreservationCommit": "60f708853d66d83c3fa90ca64b0907e7f5b7c462",
   "round1ReviewRecord": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_scattering_form_review_round01.json",
   "round2ReviewRecord": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_scattering_form_review_round02.json",
   "round3ReviewRecord": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_scattering_form_review_round03.json",
   "round4ReviewRecord": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_scattering_form_review_round04.json",
   "round5ReviewRecord": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_scattering_form_review_round05.json",
+  "round6ReviewRecord": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_scattering_form_review_round06.json",
   "method": "Read-only source text, report and JSON metadata inspection. No scientific module import, unpickling, numerical/symbolic operation, production validator, review leg or export execution.",
   "coverage": "Selected scientific workstream evidence and governing/review records; not a line-by-line audit of every commit or an ancestral validation campaign.",
   "inventory": {
     "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_scope_inventory_20260922.md",
-    "bytes": 51030,
-    "sha256": "4ab30e8a8c57d2bf748b98af497bb28f0ddaee4f55933d04de5548f749f104c5"
+    "bytes": 51903,
+    "sha256": "39318d4e151c24e6fcd16d407b6e8084ea8ba5df221a863d878ea279fdd66902"
   },
   "links": [
     {
@@ -742,8 +743,8 @@
     {
       "path": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_SCATTERING_FORM_AMENDMENT.md",
       "resolvedPath": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_SCATTERING_FORM_AMENDMENT.md",
-      "bytes": 59839,
-      "sha256": "17c7f214432066b41e56fe8133ea55761f4bbba968946555877378f84f3d1201"
+      "bytes": 63596,
+      "sha256": "676f7748726ba5a9ecd951b1316978b979e1f099c0b1d757dc102cd8e1d0cd02"
     },
     {
       "path": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_SHARED_PHYSICS.md",
@@ -833,7 +834,7 @@
     "exploratoryAcceptanceChange": "User approved; separate two-leg clearance not established by inspected evidence.",
     "boundedLeanNP1toNP4": "CLEAR by Claude and Grok for identified packet; excludes physical application and analytic existence theory.",
     "savedResultValidators": "Do not count as two non-author physics-review legs.",
-    "thisInventory": "Draft6 after round5: both reviewers requested amendment/inventory revision. User approved supported retained-order d results and explicit deferral of unsupported second-shape/threshold completion at the S11c-e boundary. Codex retained as author; scoped fifth-fold G4 exception, fresh Claude/Grok reviews pending. Not cleared or effective for production."
+    "thisInventory": "Draft7 after round6: both amendments NEEDS REVISION; Claude inventory NEEDS REVISION, Grok inventory CLEAR. Approved retained-order boundary unchanged. Bounded debt/precision/current-join repairs with Codex authorship retained, sixth-fold G4 disposition explicit. Fresh reviews pending; no science/build clearance."
   },
   "costEstimateStatus": "Planning judgment, not measured end-to-end forecasts; worker benchmarks are separate and review/provider delay or findings are not bounded."
 }

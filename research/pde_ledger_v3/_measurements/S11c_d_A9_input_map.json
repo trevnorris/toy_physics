@@ -1,0 +1,1261 @@
+{
+  "status": "PARTIAL_A9_SOURCE_AND_METADATA_MAP_NOT_SCIENTIFIC_VALIDATION",
+  "createdUtc": "2026-09-23T05:42:35.196260+00:00",
+  "method": "Read six named JSON checkpoints and selected source text; record selected existing artifact addresses and compare stat sizes only. No scientific payload hashing/restoration, constructor, numerical operation, current/mode/solve/validator or review replay. Manifest hashes are inherited claims, not new verification.",
+  "checkpoints": [
+    {
+      "checkpoint": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_response_checkpoint.json",
+      "checkpointSha256": "e7c0c56b03d4acf5b6f7fe5d6a4a08ecccbc430a49d2e4c4cb354a1afc5851ea",
+      "statusAsStored": "PUBLISHED_ANNEX_VERIFIED",
+      "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-response-20260920/finish-02/complete",
+      "scopeAsStored": "Four actual case finite and independent-grade responses; finite regulator and approximate modal boundaries.",
+      "selectedArtifactRoutes": [
+        {
+          "manifestKey": "cases/LAB_HELD__RHO4_CONSTANT/continuum/coefficient-solutions.pickle",
+          "logicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-response-20260920/finish-02/complete/cases/LAB_HELD__RHO4_CONSTANT/continuum/coefficient-solutions.pickle",
+          "resolvedPath": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-response-20260920/finish-02/complete/cases/LAB_HELD__RHO4_CONSTANT/continuum/coefficient-solutions.pickle",
+          "manifestSha256": "696cabe9611ccd3ac428b97d58f73112d19d567564e44890445024b53149a66d",
+          "manifestBytes": 1048846,
+          "currentBytes": 1048846,
+          "payloadHashRecomputed": false,
+          "payloadDeserialized": false
+        },
+        {
+          "manifestKey": "cases/LAB_HELD__RHO4_CONSTANT/continuum/coefficient-systems.pickle",
+          "logicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-response-20260920/finish-02/complete/cases/LAB_HELD__RHO4_CONSTANT/continuum/coefficient-systems.pickle",
+          "resolvedPath": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-response-20260920/finish-02/complete/cases/LAB_HELD__RHO4_CONSTANT/continuum/coefficient-systems.pickle",
+          "manifestSha256": "dea61c01931093a726c49062bc340505cd3e58ed7b867f780fd90bc4857d74ae",
+          "manifestBytes": 26791200,
+          "currentBytes": 26791200,
+          "payloadHashRecomputed": false,
+          "payloadDeserialized": false
+        },
+        {
+          "manifestKey": "cases/LAB_HELD__RHO4_CONSTANT/continuum/continuum-response.pickle",
+          "logicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-response-20260920/finish-02/complete/cases/LAB_HELD__RHO4_CONSTANT/continuum/continuum-response.pickle",
+          "resolvedPath": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-response-20260920/finish-02/complete/cases/LAB_HELD__RHO4_CONSTANT/continuum/continuum-response.pickle",
+          "manifestSha256": "a6678ad8fd7b4adf01aa3470834dcc0a918d2f7269fa1e273a980ea67c5b84f3",
+          "manifestBytes": 1786256,
+          "currentBytes": 1786256,
+          "payloadHashRecomputed": false,
+          "payloadDeserialized": false
+        },
+        {
+          "manifestKey": "cases/LAB_HELD__RHOBR_CONSTANT/continuum/coefficient-solutions.pickle",
+          "logicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-response-20260920/finish-02/complete/cases/LAB_HELD__RHOBR_CONSTANT/continuum/coefficient-solutions.pickle",
+          "resolvedPath": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-response-20260920/finish-02/complete/cases/LAB_HELD__RHOBR_CONSTANT/continuum/coefficient-solutions.pickle",
+          "manifestSha256": "2b3355306f97c01d4e128bfed77c299ed722012b2c6a73d7942667e4052c2255",
+          "manifestBytes": 1048846,
+          "currentBytes": 1048846,
+          "payloadHashRecomputed": false,
+          "payloadDeserialized": false
+        },
+        {
+          "manifestKey": "cases/LAB_HELD__RHOBR_CONSTANT/continuum/coefficient-systems.pickle",
+          "logicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-response-20260920/finish-02/complete/cases/LAB_HELD__RHOBR_CONSTANT/continuum/coefficient-systems.pickle",
+          "resolvedPath": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-response-20260920/finish-02/complete/cases/LAB_HELD__RHOBR_CONSTANT/continuum/coefficient-systems.pickle",
+          "manifestSha256": "4eb6907b8abd110ec40ae91e52d3fa33e6c2baca8418295c923bd4a8b3d74017",
+          "manifestBytes": 26791200,
+          "currentBytes": 26791200,
+          "payloadHashRecomputed": false,
+          "payloadDeserialized": false
+        },
+        {
+          "manifestKey": "cases/LAB_HELD__RHOBR_CONSTANT/continuum/continuum-response.pickle",
+          "logicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-response-20260920/finish-02/complete/cases/LAB_HELD__RHOBR_CONSTANT/continuum/continuum-response.pickle",
+          "resolvedPath": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-response-20260920/finish-02/complete/cases/LAB_HELD__RHOBR_CONSTANT/continuum/continuum-response.pickle",
+          "manifestSha256": "ab4202b0e8e8a8d6e1bfe8d2b87b9d5e49282b3a3328f625213305dcd944009d",
+          "manifestBytes": 1820487,
+          "currentBytes": 1820487,
+          "payloadHashRecomputed": false,
+          "payloadDeserialized": false
+        },
+        {
+          "manifestKey": "cases/MATERIAL_ADVECTED__RHO4_CONSTANT/continuum/coefficient-solutions.pickle",
+          "logicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-response-20260920/finish-02/complete/cases/MATERIAL_ADVECTED__RHO4_CONSTANT/continuum/coefficient-solutions.pickle",
+          "resolvedPath": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-response-20260920/finish-02/complete/cases/MATERIAL_ADVECTED__RHO4_CONSTANT/continuum/coefficient-solutions.pickle",
+          "manifestSha256": "61fb574752bafbecf159dc8f7816da82c371984fec1e89f86648d85c52e91773",
+          "manifestBytes": 1048846,
+          "currentBytes": 1048846,
+          "payloadHashRecomputed": false,
+          "payloadDeserialized": false
+        },
+        {
+          "manifestKey": "cases/MATERIAL_ADVECTED__RHO4_CONSTANT/continuum/coefficient-systems.pickle",
+          "logicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-response-20260920/finish-02/complete/cases/MATERIAL_ADVECTED__RHO4_CONSTANT/continuum/coefficient-systems.pickle",
+          "resolvedPath": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-response-20260920/finish-02/complete/cases/MATERIAL_ADVECTED__RHO4_CONSTANT/continuum/coefficient-systems.pickle",
+          "manifestSha256": "d8338cdcc4eb913a705e21c5c7d80c34192efdff16fda44446559e9486d04328",
+          "manifestBytes": 26791200,
+          "currentBytes": 26791200,
+          "payloadHashRecomputed": false,
+          "payloadDeserialized": false
+        },
+        {
+          "manifestKey": "cases/MATERIAL_ADVECTED__RHO4_CONSTANT/continuum/continuum-response.pickle",
+          "logicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-response-20260920/finish-02/complete/cases/MATERIAL_ADVECTED__RHO4_CONSTANT/continuum/continuum-response.pickle",
+          "resolvedPath": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-response-20260920/finish-02/complete/cases/MATERIAL_ADVECTED__RHO4_CONSTANT/continuum/continuum-response.pickle",
+          "manifestSha256": "fca66e38b3ad344ac6061e0546c1c107cba0b134a9b3cde2b7dc3d47b08d2e33",
+          "manifestBytes": 1832648,
+          "currentBytes": 1832648,
+          "payloadHashRecomputed": false,
+          "payloadDeserialized": false
+        },
+        {
+          "manifestKey": "cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/continuum/coefficient-solutions.pickle",
+          "logicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-response-20260920/finish-02/complete/cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/continuum/coefficient-solutions.pickle",
+          "resolvedPath": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-response-20260920/finish-02/complete/cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/continuum/coefficient-solutions.pickle",
+          "manifestSha256": "1d9e5b14a2132010cfb8fb195c6555d6233f2f8286a1a0016a428c24b7e59b5b",
+          "manifestBytes": 1048846,
+          "currentBytes": 1048846,
+          "payloadHashRecomputed": false,
+          "payloadDeserialized": false
+        },
+        {
+          "manifestKey": "cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/continuum/coefficient-systems.pickle",
+          "logicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-response-20260920/finish-02/complete/cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/continuum/coefficient-systems.pickle",
+          "resolvedPath": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-response-20260920/finish-02/complete/cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/continuum/coefficient-systems.pickle",
+          "manifestSha256": "efc6c25fac03892a77de66c68210c38310a17cc5275dd27dc9d9bb4e432e3ea4",
+          "manifestBytes": 26791200,
+          "currentBytes": 26791200,
+          "payloadHashRecomputed": false,
+          "payloadDeserialized": false
+        },
+        {
+          "manifestKey": "cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/continuum/continuum-response.pickle",
+          "logicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-response-20260920/finish-02/complete/cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/continuum/continuum-response.pickle",
+          "resolvedPath": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-response-20260920/finish-02/complete/cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/continuum/continuum-response.pickle",
+          "manifestSha256": "e0e0f0f64ea332baf27e72b13fcb8234b7f07bb7c90b4efb6eaf3fe16aae4676",
+          "manifestBytes": 1843776,
+          "currentBytes": 1843776,
+          "payloadHashRecomputed": false,
+          "payloadDeserialized": false
+        }
+      ]
+    },
+    {
+      "checkpoint": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_flux_checkpoint.json",
+      "checkpointSha256": "e22329ee7fb5e328d374b9d538bb04c833dc33285c78826b37b0b5ba1f1c3b8a",
+      "statusAsStored": "PUBLISHED_ANNEX_VERIFIED",
+      "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-flux-20260920/production/complete",
+      "scopeAsStored": "Actual four-case finite continuum current/amplitude bookkeeping, positive regulator and approximate boundaries.",
+      "selectedArtifactRoutes": [
+        {
+          "manifestKey": "interiors/accepted-cases/LAB_HELD__RHOBR_CONSTANT/reduced-action.pickle",
+          "logicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-flux-20260920/production/complete/interiors/accepted-cases/LAB_HELD__RHOBR_CONSTANT/reduced-action.pickle",
+          "resolvedPath": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-flux-20260920/production/complete/interiors/accepted-cases/LAB_HELD__RHOBR_CONSTANT/reduced-action.pickle",
+          "manifestSha256": "95dbb6b5cb833b16edf3f64177b2df54af2e91379a9ee43d43021d1872aa9106",
+          "manifestBytes": 1112717,
+          "currentBytes": 1112717,
+          "payloadHashRecomputed": false,
+          "payloadDeserialized": false
+        },
+        {
+          "manifestKey": "interiors/accepted-cases/LAB_HELD__RHO4_CONSTANT/reduced-action.pickle",
+          "logicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-flux-20260920/production/complete/interiors/accepted-cases/LAB_HELD__RHO4_CONSTANT/reduced-action.pickle",
+          "resolvedPath": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-flux-20260920/production/complete/interiors/accepted-cases/LAB_HELD__RHO4_CONSTANT/reduced-action.pickle",
+          "manifestSha256": "e9062c3455c7e59fe816f47172062a0c118b201d03809ec0826575dac22872b0",
+          "manifestBytes": 1146420,
+          "currentBytes": 1146420,
+          "payloadHashRecomputed": false,
+          "payloadDeserialized": false
+        },
+        {
+          "manifestKey": "interiors/accepted-cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/reduced-action.pickle",
+          "logicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-flux-20260920/production/complete/interiors/accepted-cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/reduced-action.pickle",
+          "resolvedPath": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-flux-20260920/production/complete/interiors/accepted-cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/reduced-action.pickle",
+          "manifestSha256": "6add07e5f8fd992204e79985b1dec0ce4e641b5d34d2f7aeaeffccd9e53207a2",
+          "manifestBytes": 1153587,
+          "currentBytes": 1153587,
+          "payloadHashRecomputed": false,
+          "payloadDeserialized": false
+        },
+        {
+          "manifestKey": "interiors/accepted-cases/MATERIAL_ADVECTED__RHO4_CONSTANT/reduced-action.pickle",
+          "logicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-flux-20260920/production/complete/interiors/accepted-cases/MATERIAL_ADVECTED__RHO4_CONSTANT/reduced-action.pickle",
+          "resolvedPath": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-flux-20260920/production/complete/interiors/accepted-cases/MATERIAL_ADVECTED__RHO4_CONSTANT/reduced-action.pickle",
+          "manifestSha256": "b103e83e61ddffcf8a320fe5f91ef433e1571551654f91749bed5665b5d537b9",
+          "manifestBytes": 1151422,
+          "currentBytes": 1151422,
+          "payloadHashRecomputed": false,
+          "payloadDeserialized": false
+        },
+        {
+          "manifestKey": "interiors/accepted-bindings/LAB_HELD__RHOBR_CONSTANT/case-binding.pickle",
+          "logicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-flux-20260920/production/complete/interiors/accepted-bindings/LAB_HELD__RHOBR_CONSTANT/case-binding.pickle",
+          "resolvedPath": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-flux-20260920/production/complete/interiors/accepted-bindings/LAB_HELD__RHOBR_CONSTANT/case-binding.pickle",
+          "manifestSha256": "6bc8ed97da17efbbbc05363f3cd22e9b110a26bf706475e903d67ced98f85554",
+          "manifestBytes": 416084,
+          "currentBytes": 416084,
+          "payloadHashRecomputed": false,
+          "payloadDeserialized": false
+        },
+        {
+          "manifestKey": "interiors/accepted-bindings/LAB_HELD__RHO4_CONSTANT/case-binding.pickle",
+          "logicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-flux-20260920/production/complete/interiors/accepted-bindings/LAB_HELD__RHO4_CONSTANT/case-binding.pickle",
+          "resolvedPath": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-flux-20260920/production/complete/interiors/accepted-bindings/LAB_HELD__RHO4_CONSTANT/case-binding.pickle",
+          "manifestSha256": "0a157a87892a0428bc63caa92e233c2b4c6c958b5ad72e4052d2703c11cb80f7",
+          "manifestBytes": 456930,
+          "currentBytes": 456930,
+          "payloadHashRecomputed": false,
+          "payloadDeserialized": false
+        },
+        {
+          "manifestKey": "interiors/accepted-bindings/MATERIAL_ADVECTED__RHOBR_CONSTANT/case-binding.pickle",
+          "logicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-flux-20260920/production/complete/interiors/accepted-bindings/MATERIAL_ADVECTED__RHOBR_CONSTANT/case-binding.pickle",
+          "resolvedPath": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-flux-20260920/production/complete/interiors/accepted-bindings/MATERIAL_ADVECTED__RHOBR_CONSTANT/case-binding.pickle",
+          "manifestSha256": "9024b21ad5eb8de272f0021fcc26a49d308807e03a04862e6faf07a368f06ee6",
+          "manifestBytes": 476842,
+          "currentBytes": 476842,
+          "payloadHashRecomputed": false,
+          "payloadDeserialized": false
+        },
+        {
+          "manifestKey": "interiors/accepted-bindings/MATERIAL_ADVECTED__RHO4_CONSTANT/case-binding.pickle",
+          "logicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-flux-20260920/production/complete/interiors/accepted-bindings/MATERIAL_ADVECTED__RHO4_CONSTANT/case-binding.pickle",
+          "resolvedPath": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-flux-20260920/production/complete/interiors/accepted-bindings/MATERIAL_ADVECTED__RHO4_CONSTANT/case-binding.pickle",
+          "manifestSha256": "fde53e682f7c33ecea2d02861ff1b5f664ee0d6176cccb32f4058f233b074383",
+          "manifestBytes": 491423,
+          "currentBytes": 491423,
+          "payloadHashRecomputed": false,
+          "payloadDeserialized": false
+        },
+        {
+          "manifestKey": "cases/LAB_HELD__RHOBR_CONSTANT/continuum/continuum-currents.pickle",
+          "logicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-flux-20260920/production/complete/cases/LAB_HELD__RHOBR_CONSTANT/continuum/continuum-currents.pickle",
+          "resolvedPath": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-flux-20260920/production/complete/cases/LAB_HELD__RHOBR_CONSTANT/continuum/continuum-currents.pickle",
+          "manifestSha256": "333f7e999ac8449d9d6ba5feb3b62b3551ee4e76cd414ae2261da5c3584645b6",
+          "manifestBytes": 443088,
+          "currentBytes": 443088,
+          "payloadHashRecomputed": false,
+          "payloadDeserialized": false
+        },
+        {
+          "manifestKey": "cases/LAB_HELD__RHO4_CONSTANT/continuum/continuum-currents.pickle",
+          "logicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-flux-20260920/production/complete/cases/LAB_HELD__RHO4_CONSTANT/continuum/continuum-currents.pickle",
+          "resolvedPath": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-flux-20260920/production/complete/cases/LAB_HELD__RHO4_CONSTANT/continuum/continuum-currents.pickle",
+          "manifestSha256": "d4d3866112e671697863e78bb53d086bbfe5404761a8093583128fe5b96cb291",
+          "manifestBytes": 414337,
+          "currentBytes": 414337,
+          "payloadHashRecomputed": false,
+          "payloadDeserialized": false
+        },
+        {
+          "manifestKey": "cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/continuum/continuum-currents.pickle",
+          "logicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-flux-20260920/production/complete/cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/continuum/continuum-currents.pickle",
+          "resolvedPath": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-flux-20260920/production/complete/cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/continuum/continuum-currents.pickle",
+          "manifestSha256": "51d3ae79791c1ea31f495202df29687edb3b023f1e651298576dc9cd85794ce1",
+          "manifestBytes": 466386,
+          "currentBytes": 466386,
+          "payloadHashRecomputed": false,
+          "payloadDeserialized": false
+        },
+        {
+          "manifestKey": "cases/MATERIAL_ADVECTED__RHO4_CONSTANT/continuum/continuum-currents.pickle",
+          "logicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-flux-20260920/production/complete/cases/MATERIAL_ADVECTED__RHO4_CONSTANT/continuum/continuum-currents.pickle",
+          "resolvedPath": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-flux-20260920/production/complete/cases/MATERIAL_ADVECTED__RHO4_CONSTANT/continuum/continuum-currents.pickle",
+          "manifestSha256": "4a6c4fbcc4c8925fe499d94524b58eacb443e98cbd0569b97f93dcd78fdeef4b",
+          "manifestBytes": 455256,
+          "currentBytes": 455256,
+          "payloadHashRecomputed": false,
+          "payloadDeserialized": false
+        }
+      ]
+    },
+    {
+      "checkpoint": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_continuum_currents_checkpoint.json",
+      "checkpointSha256": "075bf9e9f70f38563ca28a45471e2e660115c70f64c2a81a7f4769042a9154ca",
+      "statusAsStored": "PUBLISHED_ANNEX_VERIFIED",
+      "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-currents-20260919/production/complete",
+      "scopeAsStored": "Finite retained-rectangle open-channel and closed matching response; full finite-end normal current is distinct from bulk-depth radiation. No physical gain/loss inferred from omitted pure second-order terms; no pole solve.",
+      "selectedArtifactRoutes": [
+        {
+          "manifestKey": "continuum-currents.pickle",
+          "logicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-currents-20260919/production/complete/continuum-currents.pickle",
+          "resolvedPath": "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-currents-20260919/production/complete/continuum-currents.pickle",
+          "manifestSha256": "d4d3866112e671697863e78bb53d086bbfe5404761a8093583128fe5b96cb291",
+          "manifestBytes": 414337,
+          "currentBytes": 414337,
+          "payloadHashRecomputed": false,
+          "payloadDeserialized": false
+        },
+        {
+          "manifestKey": "bulk-kinematics.pickle",
+          "logicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-currents-20260919/production/complete/bulk-kinematics.pickle",
+          "resolvedPath": "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-currents-20260919/production/complete/bulk-kinematics.pickle",
+          "manifestSha256": "e6696b2db9d19aea6dbb22184b9e7a3451d109e73ec9f221bc074337038096d7",
+          "manifestBytes": 963,
+          "currentBytes": 963,
+          "payloadHashRecomputed": false,
+          "payloadDeserialized": false
+        }
+      ]
+    },
+    {
+      "checkpoint": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_reference_thickness_repair_checkpoint.json",
+      "checkpointSha256": "5c9456ddacd573865d00a0527b1b73b1060c613ccfe50ed89e41613fa3d9658f",
+      "statusAsStored": null,
+      "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-end-normalization-20260914/reference",
+      "scopeAsStored": "One supplied case, complete isolated root/lift subspaces, zero-background reference evaluation; continuum re-expansion and global exceptional coverage remain open.",
+      "selectedArtifactRoutes": [
+        {
+          "manifestKey": "modal.pickle",
+          "logicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-end-normalization-20260914/reference/modal.pickle",
+          "resolvedPath": "/var/projects/toy_physics/_scratch/s11c/s11c-end-normalization-20260914/reference/modal.pickle",
+          "manifestSha256": "69668d29e11af4ca89c667f1ff39e7f646366eba7cb596dde39e74fcbefe3cd7",
+          "manifestBytes": 434483,
+          "currentBytes": 434483,
+          "payloadHashRecomputed": false,
+          "payloadDeserialized": false
+        },
+        {
+          "manifestKey": "adjoint.pickle",
+          "logicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-end-normalization-20260914/reference/adjoint.pickle",
+          "resolvedPath": "/var/projects/toy_physics/_scratch/s11c/s11c-end-normalization-20260914/reference/adjoint.pickle",
+          "manifestSha256": "5558d2e1b304a5cfdb3ea88be184d2a5394dd00bcfb38c361aeb5e9cd05dde7e",
+          "manifestBytes": 394194,
+          "currentBytes": 394194,
+          "payloadHashRecomputed": false,
+          "payloadDeserialized": false
+        },
+        {
+          "manifestKey": "arguments.json",
+          "logicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-end-normalization-20260914/reference/arguments.json",
+          "resolvedPath": "/var/projects/toy_physics/_scratch/s11c/s11c-end-normalization-20260914/reference/arguments.json",
+          "manifestSha256": "bd9001ebddcdaad019dbd99ed3435fc2630f04918e4c4ed58202e30874a42daf",
+          "manifestBytes": 602,
+          "currentBytes": 602,
+          "payloadHashRecomputed": false,
+          "payloadDeserialized": false
+        }
+      ],
+      "storedPairingMetadata": {
+        "recordCount": 18,
+        "unaccountedResidualNormsAboveDiagnosticThreshold": {},
+        "frequencyJoins": [],
+        "scopeCorrection": {
+          "reason": "The original validator copied the physical-end finite-contrast label into the REFERENCE inventory. The validated evaluation-domain operand already has REFERENCE and finite-contrast false. This corrects prose only.",
+          "previousScope": "One supplied case, complete isolated root/lift subspaces, finite-contrast retained-operator evaluation; continuum re-expansion and global exceptional coverage remain open.",
+          "correctedScope": "One supplied case, complete isolated root/lift subspaces, zero-background reference evaluation; continuum re-expansion and global exceptional coverage remain open.",
+          "originalValidationRecord": "/var/projects/toy_physics/_scratch/s11c/s11c-end-normalization-20260914/reference/scope-correction/S11c_d_end_normalization_reference_thickness_repair_checkpoint.json",
+          "originalValidationRecordSha256": "35d7fae5c13af6ed192fe658cadf7945f2522957f9ae51c174d48a67d0ceeeb5",
+          "correctionSourceSha256": "c8c2e28d10dcff145de2b6210ef03f63cd9734e62661204238afa82ce897dd34",
+          "correctedUtc": "2026-09-14T23:10:24.681852+00:00",
+          "scientificRerun": false
+        }
+      },
+      "storedPairingProvenance": {
+        "pairingCheckpointSha256": "1ea765d293138847a23ff7768fdba770a031659f9c978f582aff27391bf11232",
+        "pairingCacheSha256": "9838c5057ff36c9289cad6beb958d254097d8b18384e8c5f7d7b1a34b0062aa2",
+        "pairingRetainedResidualScalars": 802,
+        "pairingRetainedNonzeroScalars": 0
+      }
+    },
+    {
+      "checkpoint": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_left_thickness_repair_checkpoint.json",
+      "checkpointSha256": "5871a84b7584eb35de8b8a5c450e8d0adadb41340abcbfe028ac16b360befcdb",
+      "statusAsStored": null,
+      "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-end-normalization-20260914/left",
+      "scopeAsStored": "One supplied case, complete isolated root/lift subspaces, finite-contrast retained-operator evaluation; continuum re-expansion and global exceptional coverage remain open.",
+      "selectedArtifactRoutes": [
+        {
+          "manifestKey": "modal.pickle",
+          "logicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-end-normalization-20260914/left/modal.pickle",
+          "resolvedPath": "/var/projects/toy_physics/_scratch/s11c/s11c-end-normalization-20260914/left/modal.pickle",
+          "manifestSha256": "ed645d29c0633c60585ad79bf2918dedc9500a8558873bbe148cb2b1de851312",
+          "manifestBytes": 434521,
+          "currentBytes": 434521,
+          "payloadHashRecomputed": false,
+          "payloadDeserialized": false
+        },
+        {
+          "manifestKey": "adjoint.pickle",
+          "logicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-end-normalization-20260914/left/adjoint.pickle",
+          "resolvedPath": "/var/projects/toy_physics/_scratch/s11c/s11c-end-normalization-20260914/left/adjoint.pickle",
+          "manifestSha256": "8f8b7a516a4cefdb6ed597f138369a08907dd66d0984500940e28360e9cd89f1",
+          "manifestBytes": 394194,
+          "currentBytes": 394194,
+          "payloadHashRecomputed": false,
+          "payloadDeserialized": false
+        },
+        {
+          "manifestKey": "arguments.json",
+          "logicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-end-normalization-20260914/left/arguments.json",
+          "resolvedPath": "/var/projects/toy_physics/_scratch/s11c/s11c-end-normalization-20260914/left/arguments.json",
+          "manifestSha256": "c256cb0e2c97a6bb03226ef96d7b9093a0847839cd4183d18774d58deb25652e",
+          "manifestBytes": 628,
+          "currentBytes": 628,
+          "payloadHashRecomputed": false,
+          "payloadDeserialized": false
+        }
+      ],
+      "storedPairingMetadata": {
+        "recordCount": 18,
+        "unaccountedResidualNormsAboveDiagnosticThreshold": {},
+        "frequencyJoins": [
+          {
+            "index": 0,
+            "discreteResiduals": {
+              "INDEX": 0,
+              "ROOT_DISK_INDEX": 0,
+              "NORMAL_LIFT_SIGN": 0,
+              "NULLITY": 0,
+              "FREQUENCY_PAIRING_RANK": 0,
+              "RIGHT_BASIS_RANK": 0,
+              "LEFT_BASIS_RANK": 0
+            },
+            "residualNorms": {
+              "RIGHT_PROJECTOR": 1.0250141303214065e-15,
+              "LEFT_PROJECTOR": 1.019010873591491e-15,
+              "FREQUENCY_MATRIX": 1.0435538360487664e-15
+            },
+            "liftDifferenceNorms": {
+              "K": 1.354731260408192e-16,
+              "Q": 3.39519123747071e-15
+            }
+          },
+          {
+            "index": 1,
+            "discreteResiduals": {
+              "INDEX": 0,
+              "ROOT_DISK_INDEX": 0,
+              "NORMAL_LIFT_SIGN": 0,
+              "NULLITY": 0,
+              "FREQUENCY_PAIRING_RANK": 0,
+              "RIGHT_BASIS_RANK": 0,
+              "LEFT_BASIS_RANK": 0
+            },
+            "residualNorms": {
+              "RIGHT_PROJECTOR": 1.0250141303214065e-15,
+              "LEFT_PROJECTOR": 1.019010873591491e-15,
+              "FREQUENCY_MATRIX": 1.0435538360487664e-15
+            },
+            "liftDifferenceNorms": {
+              "K": 1.354731260408192e-16,
+              "Q": 3.39519123747071e-15
+            }
+          },
+          {
+            "index": 2,
+            "discreteResiduals": {
+              "INDEX": 0,
+              "ROOT_DISK_INDEX": 0,
+              "NORMAL_LIFT_SIGN": 0,
+              "NULLITY": 0,
+              "FREQUENCY_PAIRING_RANK": 0,
+              "RIGHT_BASIS_RANK": 0,
+              "LEFT_BASIS_RANK": 0
+            },
+            "residualNorms": {
+              "RIGHT_PROJECTOR": 9.234854988157279e-16,
+              "LEFT_PROJECTOR": 9.48240974534536e-16,
+              "FREQUENCY_MATRIX": 6.035504262816588e-16
+            },
+            "liftDifferenceNorms": {
+              "K": 7.720672559842618e-18,
+              "Q": 1.7502466756067179e-15
+            }
+          },
+          {
+            "index": 3,
+            "discreteResiduals": {
+              "INDEX": 0,
+              "ROOT_DISK_INDEX": 0,
+              "NORMAL_LIFT_SIGN": 0,
+              "NULLITY": 0,
+              "FREQUENCY_PAIRING_RANK": 0,
+              "RIGHT_BASIS_RANK": 0,
+              "LEFT_BASIS_RANK": 0
+            },
+            "residualNorms": {
+              "RIGHT_PROJECTOR": 9.234854988157279e-16,
+              "LEFT_PROJECTOR": 9.48240974534536e-16,
+              "FREQUENCY_MATRIX": 6.035504262816588e-16
+            },
+            "liftDifferenceNorms": {
+              "K": 7.720672559842618e-18,
+              "Q": 1.7502466756067179e-15
+            }
+          },
+          {
+            "index": 4,
+            "discreteResiduals": {
+              "INDEX": 0,
+              "ROOT_DISK_INDEX": 0,
+              "NORMAL_LIFT_SIGN": 0,
+              "NULLITY": 0,
+              "FREQUENCY_PAIRING_RANK": 0,
+              "RIGHT_BASIS_RANK": 0,
+              "LEFT_BASIS_RANK": 0
+            },
+            "residualNorms": {
+              "RIGHT_PROJECTOR": 2.7771422960403695e-15,
+              "LEFT_PROJECTOR": 2.237649055259269e-15,
+              "FREQUENCY_MATRIX": 1.1812764670942012e-13
+            },
+            "liftDifferenceNorms": {
+              "K": 1.2034532552183766e-17,
+              "Q": 2.3804087483426187e-17
+            }
+          },
+          {
+            "index": 5,
+            "discreteResiduals": {
+              "INDEX": 0,
+              "ROOT_DISK_INDEX": 0,
+              "NORMAL_LIFT_SIGN": 0,
+              "NULLITY": 0,
+              "FREQUENCY_PAIRING_RANK": 0,
+              "RIGHT_BASIS_RANK": 0,
+              "LEFT_BASIS_RANK": 0
+            },
+            "residualNorms": {
+              "RIGHT_PROJECTOR": 2.7771422960403695e-15,
+              "LEFT_PROJECTOR": 2.237649055259269e-15,
+              "FREQUENCY_MATRIX": 1.1812764670942012e-13
+            },
+            "liftDifferenceNorms": {
+              "K": 1.2034532552183766e-17,
+              "Q": 2.3804087483426187e-17
+            }
+          },
+          {
+            "index": 6,
+            "discreteResiduals": {
+              "INDEX": 0,
+              "ROOT_DISK_INDEX": 0,
+              "NORMAL_LIFT_SIGN": 0,
+              "NULLITY": 0,
+              "FREQUENCY_PAIRING_RANK": 0,
+              "RIGHT_BASIS_RANK": 0,
+              "LEFT_BASIS_RANK": 0
+            },
+            "residualNorms": {
+              "RIGHT_PROJECTOR": 7.928023838711748e-16,
+              "LEFT_PROJECTOR": 7.118562593970283e-16,
+              "FREQUENCY_MATRIX": 1.8913255784330518e-16
+            },
+            "liftDifferenceNorms": {
+              "K": 5.518516313916274e-17,
+              "Q": 2.923564494418365e-16
+            }
+          },
+          {
+            "index": 7,
+            "discreteResiduals": {
+              "INDEX": 0,
+              "ROOT_DISK_INDEX": 0,
+              "NORMAL_LIFT_SIGN": 0,
+              "NULLITY": 0,
+              "FREQUENCY_PAIRING_RANK": 0,
+              "RIGHT_BASIS_RANK": 0,
+              "LEFT_BASIS_RANK": 0
+            },
+            "residualNorms": {
+              "RIGHT_PROJECTOR": 7.928023838711748e-16,
+              "LEFT_PROJECTOR": 7.118562593970283e-16,
+              "FREQUENCY_MATRIX": 1.8913255784330518e-16
+            },
+            "liftDifferenceNorms": {
+              "K": 5.518516313916274e-17,
+              "Q": 2.923564494418365e-16
+            }
+          },
+          {
+            "index": 8,
+            "discreteResiduals": {
+              "INDEX": 0,
+              "ROOT_DISK_INDEX": 0,
+              "NORMAL_LIFT_SIGN": 0,
+              "NULLITY": 0,
+              "FREQUENCY_PAIRING_RANK": 0,
+              "RIGHT_BASIS_RANK": 0,
+              "LEFT_BASIS_RANK": 0
+            },
+            "residualNorms": {
+              "RIGHT_PROJECTOR": 1.2790284579781e-15,
+              "LEFT_PROJECTOR": 5.25004166320048e-16,
+              "FREQUENCY_MATRIX": 9.245876211204889e-16
+            },
+            "liftDifferenceNorms": {
+              "K": 4.609929796240959e-17,
+              "Q": 7.02706204454175e-17
+            }
+          },
+          {
+            "index": 9,
+            "discreteResiduals": {
+              "INDEX": 0,
+              "ROOT_DISK_INDEX": 0,
+              "NORMAL_LIFT_SIGN": 0,
+              "NULLITY": 0,
+              "FREQUENCY_PAIRING_RANK": 0,
+              "RIGHT_BASIS_RANK": 0,
+              "LEFT_BASIS_RANK": 0
+            },
+            "residualNorms": {
+              "RIGHT_PROJECTOR": 1.2790284579781e-15,
+              "LEFT_PROJECTOR": 5.25004166320048e-16,
+              "FREQUENCY_MATRIX": 9.245876211204889e-16
+            },
+            "liftDifferenceNorms": {
+              "K": 4.609929796240959e-17,
+              "Q": 7.02706204454175e-17
+            }
+          },
+          {
+            "index": 10,
+            "discreteResiduals": {
+              "INDEX": 0,
+              "ROOT_DISK_INDEX": 0,
+              "NORMAL_LIFT_SIGN": 0,
+              "NULLITY": 0,
+              "FREQUENCY_PAIRING_RANK": 0,
+              "RIGHT_BASIS_RANK": 0,
+              "LEFT_BASIS_RANK": 0
+            },
+            "residualNorms": {
+              "RIGHT_PROJECTOR": 6.633801883804063e-16,
+              "LEFT_PROJECTOR": 4.485263280926388e-16,
+              "FREQUENCY_MATRIX": 8.975430836140625e-16
+            },
+            "liftDifferenceNorms": {
+              "K": 1.4750569980135245e-17,
+              "Q": 7.060036344898344e-16
+            }
+          },
+          {
+            "index": 11,
+            "discreteResiduals": {
+              "INDEX": 0,
+              "ROOT_DISK_INDEX": 0,
+              "NORMAL_LIFT_SIGN": 0,
+              "NULLITY": 0,
+              "FREQUENCY_PAIRING_RANK": 0,
+              "RIGHT_BASIS_RANK": 0,
+              "LEFT_BASIS_RANK": 0
+            },
+            "residualNorms": {
+              "RIGHT_PROJECTOR": 6.633801883804063e-16,
+              "LEFT_PROJECTOR": 4.485263280926388e-16,
+              "FREQUENCY_MATRIX": 8.975430836140625e-16
+            },
+            "liftDifferenceNorms": {
+              "K": 1.4750569980135245e-17,
+              "Q": 7.060036344898344e-16
+            }
+          },
+          {
+            "index": 12,
+            "discreteResiduals": {
+              "INDEX": 0,
+              "ROOT_DISK_INDEX": 0,
+              "NORMAL_LIFT_SIGN": 0,
+              "NULLITY": 0,
+              "FREQUENCY_PAIRING_RANK": 0,
+              "RIGHT_BASIS_RANK": 0,
+              "LEFT_BASIS_RANK": 0
+            },
+            "residualNorms": {
+              "RIGHT_PROJECTOR": 6.278339389426071e-16,
+              "LEFT_PROJECTOR": 1.1977090593214744e-15,
+              "FREQUENCY_MATRIX": 6.902240892890605e-16
+            },
+            "liftDifferenceNorms": {
+              "K": 1.2531130228806662e-16,
+              "Q": 6.884037749647877e-16
+            }
+          },
+          {
+            "index": 13,
+            "discreteResiduals": {
+              "INDEX": 0,
+              "ROOT_DISK_INDEX": 0,
+              "NORMAL_LIFT_SIGN": 0,
+              "NULLITY": 0,
+              "FREQUENCY_PAIRING_RANK": 0,
+              "RIGHT_BASIS_RANK": 0,
+              "LEFT_BASIS_RANK": 0
+            },
+            "residualNorms": {
+              "RIGHT_PROJECTOR": 6.278339389426071e-16,
+              "LEFT_PROJECTOR": 1.1977090593214744e-15,
+              "FREQUENCY_MATRIX": 6.902240892890605e-16
+            },
+            "liftDifferenceNorms": {
+              "K": 1.2531130228806662e-16,
+              "Q": 6.884037749647877e-16
+            }
+          },
+          {
+            "index": 14,
+            "discreteResiduals": {
+              "INDEX": 0,
+              "ROOT_DISK_INDEX": 0,
+              "NORMAL_LIFT_SIGN": 0,
+              "NULLITY": 0,
+              "FREQUENCY_PAIRING_RANK": 0,
+              "RIGHT_BASIS_RANK": 0,
+              "LEFT_BASIS_RANK": 0
+            },
+            "residualNorms": {
+              "RIGHT_PROJECTOR": 2.8231105260409258e-15,
+              "LEFT_PROJECTOR": 1.396816261567899e-15,
+              "FREQUENCY_MATRIX": 7.115215517824174e-16
+            },
+            "liftDifferenceNorms": {
+              "K": 3.482132627276381e-17,
+              "Q": 9.13364011354948e-16
+            }
+          },
+          {
+            "index": 15,
+            "discreteResiduals": {
+              "INDEX": 0,
+              "ROOT_DISK_INDEX": 0,
+              "NORMAL_LIFT_SIGN": 0,
+              "NULLITY": 0,
+              "FREQUENCY_PAIRING_RANK": 0,
+              "RIGHT_BASIS_RANK": 0,
+              "LEFT_BASIS_RANK": 0
+            },
+            "residualNorms": {
+              "RIGHT_PROJECTOR": 2.8231105260409258e-15,
+              "LEFT_PROJECTOR": 1.396816261567899e-15,
+              "FREQUENCY_MATRIX": 7.115215517824174e-16
+            },
+            "liftDifferenceNorms": {
+              "K": 3.482132627276381e-17,
+              "Q": 9.13364011354948e-16
+            }
+          },
+          {
+            "index": 16,
+            "discreteResiduals": {
+              "INDEX": 0,
+              "ROOT_DISK_INDEX": 0,
+              "NORMAL_LIFT_SIGN": 0,
+              "NULLITY": 0,
+              "FREQUENCY_PAIRING_RANK": 0,
+              "RIGHT_BASIS_RANK": 0,
+              "LEFT_BASIS_RANK": 0
+            },
+            "residualNorms": {
+              "RIGHT_PROJECTOR": 1.0148525387033839e-15,
+              "LEFT_PROJECTOR": 1.62831319739922e-15,
+              "FREQUENCY_MATRIX": 4.634475588491038e-16
+            },
+            "liftDifferenceNorms": {
+              "K": 3.482132627276381e-17,
+              "Q": 9.13364011354948e-16
+            }
+          },
+          {
+            "index": 17,
+            "discreteResiduals": {
+              "INDEX": 0,
+              "ROOT_DISK_INDEX": 0,
+              "NORMAL_LIFT_SIGN": 0,
+              "NULLITY": 0,
+              "FREQUENCY_PAIRING_RANK": 0,
+              "RIGHT_BASIS_RANK": 0,
+              "LEFT_BASIS_RANK": 0
+            },
+            "residualNorms": {
+              "RIGHT_PROJECTOR": 1.0148525387033839e-15,
+              "LEFT_PROJECTOR": 1.62831319739922e-15,
+              "FREQUENCY_MATRIX": 4.634475588491038e-16
+            },
+            "liftDifferenceNorms": {
+              "K": 3.482132627276381e-17,
+              "Q": 9.13364011354948e-16
+            }
+          }
+        ],
+        "scopeCorrection": null
+      },
+      "storedPairingProvenance": {
+        "pairingCheckpointSha256": "205e13614c41c504faae85cad9ee104ab51d1f1a5830b5b9e802e5fe3bc1ac9d",
+        "pairingCacheSha256": "6399da59a971434aae54a95ed4c823c4b029029dbe50aed2913bcc48747b9259",
+        "pairingRetainedResidualScalars": 802,
+        "pairingRetainedNonzeroScalars": 0
+      }
+    },
+    {
+      "checkpoint": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_right_thickness_repair_checkpoint.json",
+      "checkpointSha256": "7267d068580ecade68ce95abd599c1f5c59a95b4d7f359f9518452218c9f9a05",
+      "statusAsStored": null,
+      "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-end-normalization-20260914/right",
+      "scopeAsStored": "One supplied case, complete isolated root/lift subspaces, finite-contrast retained-operator evaluation; continuum re-expansion and global exceptional coverage remain open.",
+      "selectedArtifactRoutes": [
+        {
+          "manifestKey": "modal.pickle",
+          "logicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-end-normalization-20260914/right/modal.pickle",
+          "resolvedPath": "/var/projects/toy_physics/_scratch/s11c/s11c-end-normalization-20260914/right/modal.pickle",
+          "manifestSha256": "bd968b271b68d6bf9ec18bf75307594d8a5d0ca779541b40486cf299cb0c5497",
+          "manifestBytes": 803192,
+          "currentBytes": 803192,
+          "payloadHashRecomputed": false,
+          "payloadDeserialized": false
+        },
+        {
+          "manifestKey": "adjoint.pickle",
+          "logicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-end-normalization-20260914/right/adjoint.pickle",
+          "resolvedPath": "/var/projects/toy_physics/_scratch/s11c/s11c-end-normalization-20260914/right/adjoint.pickle",
+          "manifestSha256": "26313fd4f061495547373a2a9ae131d24483e539cd52f054e6a7381d5bf89129",
+          "manifestBytes": 421735,
+          "currentBytes": 421735,
+          "payloadHashRecomputed": false,
+          "payloadDeserialized": false
+        },
+        {
+          "manifestKey": "arguments.json",
+          "logicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-end-normalization-20260914/right/arguments.json",
+          "resolvedPath": "/var/projects/toy_physics/_scratch/s11c/s11c-end-normalization-20260914/right/arguments.json",
+          "manifestSha256": "144b8d36b27d40830415f1c3a05d61afd33cbd48cd0b4e92529b702aebcf65f0",
+          "manifestBytes": 633,
+          "currentBytes": 633,
+          "payloadHashRecomputed": false,
+          "payloadDeserialized": false
+        }
+      ],
+      "storedPairingMetadata": {
+        "recordCount": 18,
+        "unaccountedResidualNormsAboveDiagnosticThreshold": {},
+        "frequencyJoins": [
+          {
+            "index": 0,
+            "discreteResiduals": {
+              "INDEX": 0,
+              "ROOT_DISK_INDEX": 0,
+              "NORMAL_LIFT_SIGN": 0,
+              "NULLITY": 0,
+              "FREQUENCY_PAIRING_RANK": 0,
+              "RIGHT_BASIS_RANK": 0,
+              "LEFT_BASIS_RANK": 0
+            },
+            "residualNorms": {
+              "RIGHT_PROJECTOR": 6.148540959017084e-16,
+              "LEFT_PROJECTOR": 4.5536918530173485e-16,
+              "FREQUENCY_MATRIX": 6.015151650916092e-16
+            },
+            "liftDifferenceNorms": {
+              "K": 1.8305014624533087e-16,
+              "Q": 8.182330069738499e-16
+            }
+          },
+          {
+            "index": 1,
+            "discreteResiduals": {
+              "INDEX": 0,
+              "ROOT_DISK_INDEX": 0,
+              "NORMAL_LIFT_SIGN": 0,
+              "NULLITY": 0,
+              "FREQUENCY_PAIRING_RANK": 0,
+              "RIGHT_BASIS_RANK": 0,
+              "LEFT_BASIS_RANK": 0
+            },
+            "residualNorms": {
+              "RIGHT_PROJECTOR": 6.148540959017084e-16,
+              "LEFT_PROJECTOR": 4.5536918530173485e-16,
+              "FREQUENCY_MATRIX": 6.015151650916092e-16
+            },
+            "liftDifferenceNorms": {
+              "K": 1.8305014624533087e-16,
+              "Q": 8.182330069738499e-16
+            }
+          },
+          {
+            "index": 2,
+            "discreteResiduals": {
+              "INDEX": 0,
+              "ROOT_DISK_INDEX": 0,
+              "NORMAL_LIFT_SIGN": 0,
+              "NULLITY": 0,
+              "FREQUENCY_PAIRING_RANK": 0,
+              "RIGHT_BASIS_RANK": 0,
+              "LEFT_BASIS_RANK": 0
+            },
+            "residualNorms": {
+              "RIGHT_PROJECTOR": 6.217050073642659e-16,
+              "LEFT_PROJECTOR": 8.221121110977332e-16,
+              "FREQUENCY_MATRIX": 4.932185106688458e-16
+            },
+            "liftDifferenceNorms": {
+              "K": 1.8614926822754936e-16,
+              "Q": 4.845408959633774e-16
+            }
+          },
+          {
+            "index": 3,
+            "discreteResiduals": {
+              "INDEX": 0,
+              "ROOT_DISK_INDEX": 0,
+              "NORMAL_LIFT_SIGN": 0,
+              "NULLITY": 0,
+              "FREQUENCY_PAIRING_RANK": 0,
+              "RIGHT_BASIS_RANK": 0,
+              "LEFT_BASIS_RANK": 0
+            },
+            "residualNorms": {
+              "RIGHT_PROJECTOR": 6.217050073642659e-16,
+              "LEFT_PROJECTOR": 8.221121110977332e-16,
+              "FREQUENCY_MATRIX": 4.932185106688458e-16
+            },
+            "liftDifferenceNorms": {
+              "K": 1.8614926822754936e-16,
+              "Q": 4.845408959633774e-16
+            }
+          },
+          {
+            "index": 4,
+            "discreteResiduals": {
+              "INDEX": 0,
+              "ROOT_DISK_INDEX": 0,
+              "NORMAL_LIFT_SIGN": 0,
+              "NULLITY": 0,
+              "FREQUENCY_PAIRING_RANK": 0,
+              "RIGHT_BASIS_RANK": 0,
+              "LEFT_BASIS_RANK": 0
+            },
+            "residualNorms": {
+              "RIGHT_PROJECTOR": 6.295138105113418e-16,
+              "LEFT_PROJECTOR": 8.4360906433854495e-16,
+              "FREQUENCY_MATRIX": 3.995382106136554e-14
+            },
+            "liftDifferenceNorms": {
+              "K": 1.222766083992805e-18,
+              "Q": 4.916095877805191e-17
+            }
+          },
+          {
+            "index": 5,
+            "discreteResiduals": {
+              "INDEX": 0,
+              "ROOT_DISK_INDEX": 0,
+              "NORMAL_LIFT_SIGN": 0,
+              "NULLITY": 0,
+              "FREQUENCY_PAIRING_RANK": 0,
+              "RIGHT_BASIS_RANK": 0,
+              "LEFT_BASIS_RANK": 0
+            },
+            "residualNorms": {
+              "RIGHT_PROJECTOR": 6.295138105113418e-16,
+              "LEFT_PROJECTOR": 8.4360906433854495e-16,
+              "FREQUENCY_MATRIX": 3.995382106136554e-14
+            },
+            "liftDifferenceNorms": {
+              "K": 1.222766083992805e-18,
+              "Q": 4.916095877805191e-17
+            }
+          },
+          {
+            "index": 6,
+            "discreteResiduals": {
+              "INDEX": 0,
+              "ROOT_DISK_INDEX": 0,
+              "NORMAL_LIFT_SIGN": 0,
+              "NULLITY": 0,
+              "FREQUENCY_PAIRING_RANK": 0,
+              "RIGHT_BASIS_RANK": 0,
+              "LEFT_BASIS_RANK": 0
+            },
+            "residualNorms": {
+              "RIGHT_PROJECTOR": 5.511782834569484e-16,
+              "LEFT_PROJECTOR": 5.689430213163507e-16,
+              "FREQUENCY_MATRIX": 2.447582644091524e-16
+            },
+            "liftDifferenceNorms": {
+              "K": 5.392511094487528e-17,
+              "Q": 2.484413358232556e-16
+            }
+          },
+          {
+            "index": 7,
+            "discreteResiduals": {
+              "INDEX": 0,
+              "ROOT_DISK_INDEX": 0,
+              "NORMAL_LIFT_SIGN": 0,
+              "NULLITY": 0,
+              "FREQUENCY_PAIRING_RANK": 0,
+              "RIGHT_BASIS_RANK": 0,
+              "LEFT_BASIS_RANK": 0
+            },
+            "residualNorms": {
+              "RIGHT_PROJECTOR": 5.511782834569484e-16,
+              "LEFT_PROJECTOR": 5.689430213163507e-16,
+              "FREQUENCY_MATRIX": 2.447582644091524e-16
+            },
+            "liftDifferenceNorms": {
+              "K": 5.392511094487528e-17,
+              "Q": 2.484413358232556e-16
+            }
+          },
+          {
+            "index": 8,
+            "discreteResiduals": {
+              "INDEX": 0,
+              "ROOT_DISK_INDEX": 0,
+              "NORMAL_LIFT_SIGN": 0,
+              "NULLITY": 0,
+              "FREQUENCY_PAIRING_RANK": 0,
+              "RIGHT_BASIS_RANK": 0,
+              "LEFT_BASIS_RANK": 0
+            },
+            "residualNorms": {
+              "RIGHT_PROJECTOR": 1.1944477038514177e-15,
+              "LEFT_PROJECTOR": 8.08454250347328e-16,
+              "FREQUENCY_MATRIX": 2.780799568681879e-16
+            },
+            "liftDifferenceNorms": {
+              "K": 1.4301859177058828e-17,
+              "Q": 2.389875959205201e-16
+            }
+          },
+          {
+            "index": 9,
+            "discreteResiduals": {
+              "INDEX": 0,
+              "ROOT_DISK_INDEX": 0,
+              "NORMAL_LIFT_SIGN": 0,
+              "NULLITY": 0,
+              "FREQUENCY_PAIRING_RANK": 0,
+              "RIGHT_BASIS_RANK": 0,
+              "LEFT_BASIS_RANK": 0
+            },
+            "residualNorms": {
+              "RIGHT_PROJECTOR": 1.1944477038514177e-15,
+              "LEFT_PROJECTOR": 8.08454250347328e-16,
+              "FREQUENCY_MATRIX": 2.780799568681879e-16
+            },
+            "liftDifferenceNorms": {
+              "K": 1.4301859177058828e-17,
+              "Q": 2.389875959205201e-16
+            }
+          },
+          {
+            "index": 10,
+            "discreteResiduals": {
+              "INDEX": 0,
+              "ROOT_DISK_INDEX": 0,
+              "NORMAL_LIFT_SIGN": 0,
+              "NULLITY": 0,
+              "FREQUENCY_PAIRING_RANK": 0,
+              "RIGHT_BASIS_RANK": 0,
+              "LEFT_BASIS_RANK": 0
+            },
+            "residualNorms": {
+              "RIGHT_PROJECTOR": 2.8745434471786387e-16,
+              "LEFT_PROJECTOR": 2.2484054495138425e-16,
+              "FREQUENCY_MATRIX": 4.5788059093331e-16
+            },
+            "liftDifferenceNorms": {
+              "K": 1.3207030900147393e-16,
+              "Q": 4.2543461745557663e-16
+            }
+          },
+          {
+            "index": 11,
+            "discreteResiduals": {
+              "INDEX": 0,
+              "ROOT_DISK_INDEX": 0,
+              "NORMAL_LIFT_SIGN": 0,
+              "NULLITY": 0,
+              "FREQUENCY_PAIRING_RANK": 0,
+              "RIGHT_BASIS_RANK": 0,
+              "LEFT_BASIS_RANK": 0
+            },
+            "residualNorms": {
+              "RIGHT_PROJECTOR": 2.8745434471786387e-16,
+              "LEFT_PROJECTOR": 2.2484054495138425e-16,
+              "FREQUENCY_MATRIX": 4.5788059093331e-16
+            },
+            "liftDifferenceNorms": {
+              "K": 1.3207030900147393e-16,
+              "Q": 4.2543461745557663e-16
+            }
+          },
+          {
+            "index": 12,
+            "discreteResiduals": {
+              "INDEX": 0,
+              "ROOT_DISK_INDEX": 0,
+              "NORMAL_LIFT_SIGN": 0,
+              "NULLITY": 0,
+              "FREQUENCY_PAIRING_RANK": 0,
+              "RIGHT_BASIS_RANK": 0,
+              "LEFT_BASIS_RANK": 0
+            },
+            "residualNorms": {
+              "RIGHT_PROJECTOR": 5.597845813092019e-16,
+              "LEFT_PROJECTOR": 6.371369122433721e-16,
+              "FREQUENCY_MATRIX": 5.154784088943445e-16
+            },
+            "liftDifferenceNorms": {
+              "K": 9.378768811937219e-17,
+              "Q": 2.9913902919103326e-15
+            }
+          },
+          {
+            "index": 13,
+            "discreteResiduals": {
+              "INDEX": 0,
+              "ROOT_DISK_INDEX": 0,
+              "NORMAL_LIFT_SIGN": 0,
+              "NULLITY": 0,
+              "FREQUENCY_PAIRING_RANK": 0,
+              "RIGHT_BASIS_RANK": 0,
+              "LEFT_BASIS_RANK": 0
+            },
+            "residualNorms": {
+              "RIGHT_PROJECTOR": 5.597845813092019e-16,
+              "LEFT_PROJECTOR": 6.371369122433721e-16,
+              "FREQUENCY_MATRIX": 5.154784088943445e-16
+            },
+            "liftDifferenceNorms": {
+              "K": 9.378768811937219e-17,
+              "Q": 2.9913902919103326e-15
+            }
+          },
+          {
+            "index": 14,
+            "discreteResiduals": {
+              "INDEX": 0,
+              "ROOT_DISK_INDEX": 0,
+              "NORMAL_LIFT_SIGN": 0,
+              "NULLITY": 0,
+              "FREQUENCY_PAIRING_RANK": 0,
+              "RIGHT_BASIS_RANK": 0,
+              "LEFT_BASIS_RANK": 0
+            },
+            "residualNorms": {
+              "RIGHT_PROJECTOR": 7.957484229206175e-16,
+              "LEFT_PROJECTOR": 1.1258579860024534e-15,
+              "FREQUENCY_MATRIX": 4.166484014393338e-16
+            },
+            "liftDifferenceNorms": {
+              "K": 8.963304498639304e-18,
+              "Q": 4.684777775118861e-16
+            }
+          },
+          {
+            "index": 15,
+            "discreteResiduals": {
+              "INDEX": 0,
+              "ROOT_DISK_INDEX": 0,
+              "NORMAL_LIFT_SIGN": 0,
+              "NULLITY": 0,
+              "FREQUENCY_PAIRING_RANK": 0,
+              "RIGHT_BASIS_RANK": 0,
+              "LEFT_BASIS_RANK": 0
+            },
+            "residualNorms": {
+              "RIGHT_PROJECTOR": 7.957484229206175e-16,
+              "LEFT_PROJECTOR": 1.1258579860024534e-15,
+              "FREQUENCY_MATRIX": 4.166484014393338e-16
+            },
+            "liftDifferenceNorms": {
+              "K": 8.963304498639304e-18,
+              "Q": 4.684777775118861e-16
+            }
+          },
+          {
+            "index": 16,
+            "discreteResiduals": {
+              "INDEX": 0,
+              "ROOT_DISK_INDEX": 0,
+              "NORMAL_LIFT_SIGN": 0,
+              "NULLITY": 0,
+              "FREQUENCY_PAIRING_RANK": 0,
+              "RIGHT_BASIS_RANK": 0,
+              "LEFT_BASIS_RANK": 0
+            },
+            "residualNorms": {
+              "RIGHT_PROJECTOR": 1.9066330807859352e-15,
+              "LEFT_PROJECTOR": 5.378533117511891e-16,
+              "FREQUENCY_MATRIX": 2.7916809299318436e-16
+            },
+            "liftDifferenceNorms": {
+              "K": 8.963304498639304e-18,
+              "Q": 4.684777775118861e-16
+            }
+          },
+          {
+            "index": 17,
+            "discreteResiduals": {
+              "INDEX": 0,
+              "ROOT_DISK_INDEX": 0,
+              "NORMAL_LIFT_SIGN": 0,
+              "NULLITY": 0,
+              "FREQUENCY_PAIRING_RANK": 0,
+              "RIGHT_BASIS_RANK": 0,
+              "LEFT_BASIS_RANK": 0
+            },
+            "residualNorms": {
+              "RIGHT_PROJECTOR": 1.9066330807859352e-15,
+              "LEFT_PROJECTOR": 5.378533117511891e-16,
+              "FREQUENCY_MATRIX": 2.7916809299318436e-16
+            },
+            "liftDifferenceNorms": {
+              "K": 8.963304498639304e-18,
+              "Q": 4.684777775118861e-16
+            }
+          }
+        ],
+        "scopeCorrection": null
+      },
+      "storedPairingProvenance": {
+        "pairingCheckpointSha256": "e8e0d0771bd4365055351bdc041f0a45020f5252bdb5ff5793592d1c9c388605",
+        "pairingCacheSha256": "690ceb5c452de298f67ec929cacb76d7d16e182efcd321f9692ecf1cbd28b628",
+        "pairingRetainedResidualScalars": 802,
+        "pairingRetainedNonzeroScalars": 0
+      }
+    }
+  ],
+  "sources": [
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_d_mixing_scattering_sympy_audit.py",
+      "sha256": "5bf77729682960bb59f10c672a5fe3f67a98b0a9533da7c6189a37183596050f",
+      "bytes": 545480
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_continuum_response.py",
+      "sha256": "0fe30a9c4771671e9fa139b0557f185f55d351887f2ba8b9fa4ed1abfb616db2",
+      "bytes": 23551
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_continuum_currents.py",
+      "sha256": "44ead83416dd8baa4fb0dedf16ef26a33fd810308112b6aa333dfc53fe75b8e0",
+      "bytes": 24261
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_continuum_boundary.py",
+      "sha256": "ed3a6539d3151c52d25f12308b121897baf3bd6a5a626a598ab728988ab933a0",
+      "bytes": 28349
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_response.py",
+      "sha256": "0709c7a2770a2094db31cf913b79e2ee7416b3d6d75465670a0ab151a5322728",
+      "bytes": 23993
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_flux.py",
+      "sha256": "864f9d670995f5dda54b1d6b5e9ba5b85ea1cbb12ab508f509361d127f7697a8",
+      "bytes": 14217
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_sympy_build_directive.md",
+      "sha256": "0e0f8317cf4cbb9f0470a47323211ed6bc7dbcb20d1eff4a1ae79026f43fb6d7",
+      "bytes": 34573
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_sympy_build_PROGRAM_BRIEF.md",
+      "sha256": "1d9a48a043c68a6b38a1951f69b82a3ea8e97f4b7bb1d8e3f4c028f03290b380",
+      "bytes": 13217
+    }
+  ],
+  "actualSelectedRoutes": 35,
+  "scientificImports": 0,
+  "scientificCalls": 0,
+  "finalExportExists": false,
+  "remaining": "Generic symbolic root/dependency inspection, exact controls, saved face-drive/map coverage and build reconciliation are not completed by this metadata map."
+}

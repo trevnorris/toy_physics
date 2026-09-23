@@ -1,0 +1,47 @@
+{
+  "status": "ACCEPTED_SCATTERING_FORM_SCOPE_V1_DOCUMENT_GATE_COMPLETE",
+  "acceptedUtc": "2026-09-23T05:43:56.075509+00:00",
+  "scopeVersion": "scatteringFormScopeV1",
+  "decision": "Option B; A9 retained weak FORM/export first; pole branch and unsupported second-shape/threshold bulk completion explicitly deferred. No new radiation boundary method authorized.",
+  "reviewedDraft9Commit": "19a7c6ed65a5f7197459116fc6c47dbadfd33aee",
+  "reviewRecord": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_scattering_form_review_round09.json",
+  "reviewRecordSha256": "024ec62cc2972b3c6eedf2f0f15608679e4c22f3b79125eeb46da417bd97e7dc",
+  "reviewedAmendmentSha256": "1f8b75b47a1248fe50ae85ece2e52f5524b3c33f10c5fa88195d9e5ad52acccd",
+  "reviewedInventorySha256": "0f8956f9e5e5ac1dae9ef7eb3390474c030e999856de07a1d0d6557c28dc41c2",
+  "acceptedAmendment": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_SCATTERING_FORM_AMENDMENT.md",
+    "sha256": "eb6f20a3fd0bce308e53901fa69fdf267b2917e5cc78b319a1e7700074a47560"
+  },
+  "acceptedInventory": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_scope_inventory_20260922.md",
+    "sha256": "804f1871d15d130f3df98ccbfd562ebd5dc01063acbb6fcfa3169dd21b02463e"
+  },
+  "editorialDisposition": "Removed review history/questions and unchosen-option clutter; updated acceptance status and source navigation. No retained physics requirement removed. Sections 2-5 byte-identical except three acceptance-status/table phrases. Original bytes remain at reviewed commit and immutable packet. Optional suggestions go into existing mapping/build tasks, not another spec cycle.",
+  "newDocumentReviewRequiredForTheseEdits": false,
+  "scopeChangesAfterReview": [],
+  "executionPlan": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_scattering_form_execution_plan.md",
+    "sha256": "fafb3984eeda2df02691e9d9c97c61e9ad79b75cb0e208b74c5b5846f47e11aa"
+  },
+  "A9InitialMap": {
+    "report": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_A9_input_map.md",
+    "reportSha256": "d3a90a2a0fa88038695ce5fa8604e0ede60bc366abdd2ff592f20edd5be3939b",
+    "metadata": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_A9_input_map.json",
+    "metadataSha256": "3b358fc7b726a4e153c19f0ab61317843dc4cda170e14e5d3322f69726a17ed4",
+    "selectedRoutes": 35,
+    "status": "PARTIAL_METADATA_LOOKUP_NOT_SCIENTIFIC_VALIDATION"
+  },
+  "verification": {
+    "documentLinks": 97,
+    "reviewReportsUnchanged": true,
+    "retainedBuilderSuffixSha256": "f01024512c9a028e7e524e5a95b5c455be42e125d10c36f94e20493109b013c2",
+    "selectedScientificSourcesAndCheckpointsUnchanged": true,
+    "allNewTrackedArtifactsUnder1MiB": true
+  },
+  "independentPhysicsResultsCleared": false,
+  "buildDirectiveReconciledAndCleared": false,
+  "numericalProductionAuthorized": false,
+  "newReviewLaunched": false,
+  "scientificCalls": 0,
+  "nextWork": "Complete bounded A9 symbolic/control/face-drive input coverage and reconcile the actual build directive/program brief. New scientific construction only after applicable build gates."
+}

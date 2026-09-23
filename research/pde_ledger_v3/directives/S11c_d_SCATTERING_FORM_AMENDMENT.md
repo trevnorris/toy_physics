@@ -1,39 +1,23 @@
-# S11c-d scattering/FORM scope amendment — Option B draft
+# S11c-d scattering/FORM scope amendment — Option B
 
-Version: `scatteringFormScopeV1-draft9`, 2026-09-22. Author: Codex/Astra.
+Version: `scatteringFormScopeV1`, accepted 2026-09-22. Author: Codex/Astra.
 
-**Status: Option B adopted by the user; amendment unreviewed and not yet
-effective for production.** On 2026-09-22 the user said, “if we've solidified
-the plan, then let's continue,” following the consolidated Option B proposal.
-This authorizes proceeding with that decision and its fresh Claude and Grok
-reviews. It does not constitute independent clearance. The amendment requires
-two non-author reviews until clear; no scientific production resumes before
-that gate. Actual review launches and outcomes are recorded separately.
-The exact drafts and both reports for rounds 1–8 are preserved, respectively,
-at `2e8ec5a3`, `75086f8a`, `134d033d`, `116f6b36`, `96fa1f27`, `60f70885`,
-`3ba3367e` and `acd8f75f`. Round 8 cleared the inventory in both legs; Grok
-cleared the amendment and Claude requested revision. Those verdicts apply to
-draft 8, not this revision. The retained-order boundary approved after round 5
-stands. After round 8 the user replied “approved” to the bounded disposition:
-density/survival clarifications, actual radiation-domain coverage with a stop
-before a new boundary method, and genuine-zero admissibility without treating
-zero-versus-zero agreement as sufficient validation. No physics result follows
-from that decision.
+**Scope accepted; document review complete.** Claude and Grok both cleared
+exact draft 9 and the inventory. Reviewed bytes and both literal reports are
+preserved at `19a7c6ed`; [round-9 adjudication][review09] records the source
+coverage and optional suggestions. This edition removes review-history clutter,
+updates status and tightens navigation; it changes no retained physics obligation.
+The earlier drafts, approvals and author exceptions remain in that history.
 
-Codex/Astra remains the user's preferred author; the external Claude authoring
-task never launched. This is the explicitly approved eighth substantive
-same-author fold, a scoped exception to G4. It authorizes neither a new
-radiation-continuum solver nor a mandatory positive leakage witness, and it
-changes no saved result. Fresh non-author review is still required; this is
-not independent clearance or unlimited future revision authority. Broader
-construction or changed observable requirements return to a scope/author
-decision before another fold or production.
+The user adopted Option B, approved its retained-order boundary, and authorized
+trimming redundant or unjustified plan requirements. The [execution plan][execution]
+is the short work queue; this document is the governing scope contract.
+Document clearance is not clearance of the build, scientific results or export.
+Numerical production awaits the applicable build gates. Completed work, failures
+and the paused scientific baseline `0d77af53561968d4593b49261589e2ee259eadbb`
+remain unchanged; no stale producer or pole watcher resumes.
 
-The existing numerical work is paused at
-`0d77af53561968d4593b49261589e2ee259eadbb`. This draft changes no producer,
-accepted result, historical input digest, old failure record or governing file.
-
-## 1. Proposed decision and authority
+## 1. Decision and authority
 
 Complete S11c-d as the **four-case, profile-conditioned two-ended scattering
 and retained weak-order conversion-FORM handoff**. Make the inventory's A9
@@ -57,19 +41,19 @@ does not authorize its production. Completion of this amended d step is distinct
 from family closure, and no owner-duty exception establishes physical confinement.
 
 This is a deliberate reduction of S11c-d's output obligations, not a claim of
-completion against unamended v10. On approval, this amendment governs the
+completion against unamended v10. This amendment governs the
 specified conflicts in the table below. All other physics and review duties
 remain. Future builds, comparison coverage and exports must pin the cleared
 amendment alongside the immutable authorities they consume. Existing artifacts
 remain governed by their actual original pins and cannot be retroactively
 relabeled as built or reviewed under this amendment.
 
-| Existing authority / exact clause | Effective change proposed here |
+| Existing authority / exact clause | Effective change |
 |---|---|
 | [v10 title, introduction and §0 items 2–5][spec-scope] | Retain the full mixing/scattering, continuum conversion, transverse survival, weak-order bookkeeping and controls. Move the separate bound-pole/spectral-overlap deliverable out of S11c-d. Do not claim the complete two-mechanism confinement question is settled. |
 | [v10 §2][spec-operator] | Retain the reduced full operator, both complete end pencils, derived currents, outgoing prescription and distorted-wave continuum expansion. The pole-solve exemption is relevant only to preserved historical records or later pole work; it does not authorize additional pole production in this step. |
 | [v10 §3a][spec-scattering], [§3c–§3d][spec-grades], [§5][spec-controls] | Retain these scattering, conversion/weak-coefficient and control requirements, including the named, unsolved strong-edge handoff. This amendment does not license a simpler Born matrix element without §2's computed reduction premises. |
-| [v10 §3b(ii), including its survival definition][spec-poles] | Retain the transverse continuum-channel flux ratio with §5's restricted interpretation. It is not a complete confinement answer. Defer new profile-frequency searches, candidate isolation, principal parts, projections, root chains, spectral overlaps and physical-bound classifications. Preserve their distinction from continuum current; no bound-state capture probability is introduced. |
+| [v10 §3b(ii) and its separate survival paragraph][spec-poles] | Retain the transverse continuum-channel flux ratio with §5's restricted interpretation. It is not a complete confinement answer. Defer new profile-frequency searches, candidate isolation, principal parts, projections, root chains, spectral overlaps and physical-bound classifications. Preserve their distinction from continuum current; no bound-state capture probability is introduced. |
 | [v10 §3b(i) and N13's bulk-escape language][spec-poles] | Retain a separately typed bulk-depth flux FORM with the supported retained-order contributions and claim limits in §2. Explicitly reduce the former unconditional bulk-escape promise: unsupported parent-theory second-shape power and degenerate-threshold completion are deferred to the named S11c-e boundary. Required supported contributions remain unfinished A9/A12 work. Neither end-channel `J_H`, a current deficit nor the closed development point supplies them; no complete physical bulk total is promised where required terms/domain completion are unavailable. |
 | [N11a][rest-decision], [v10 §6][spec-method], [c1 §2b][c1-validity] and the [S11b standing-limit record][rest-source] | Clarify the compressed “large wavenumber necessary” parenthesis using its actual S11b context: it concerns a large omitted flow correction in the stated high-wavenumber estimate, not a universal lower-wavenumber bound on valid radiation. The operative inherited restrictions are the explicit c1 §2b conditions in §2 below. No convective operator or new physical support classification is supplied. |
 | [S11b signed energy accounting][bulk-accounting] and N13's confinement question | Retain signed exchange/balance terms and applicable independent checks. Separately attributed closure/interface absorption is not a constructed result or a newly added production requirement here. Give that additional loss-attribution question the decision-pending disposition in §5; the retained end conversion, bulk escape and survival do not bound total N13 loss. |
@@ -530,7 +514,7 @@ status. No new frequency is selected by this amendment.
 
 ### 3.3 Proposed bounded coverage requirement — for review
 
-This is an explicit proposed acceptance clarification, not a claim that v10
+This is an explicit acceptance clarification, not a claim that v10
 already specified an additional numerical frequency:
 
 - Give the generic thickness projection, its current normalization and the
@@ -607,7 +591,7 @@ already specified an additional numerical frequency:
 
 Thus a second numerical frequency is **not an unconditional existing spec
 requirement**. Non-vacuous validation of the claimed generic conversion object
-is required by this proposed amendment. An admissible open-channel numerical
+is required by this amendment. An admissible open-channel numerical
 point is a preferred focused test, not a guaranteed available point or a new
 frequency campaign. The presence of an open channel does not itself imply a
 nonzero conversion amplitude.
@@ -706,7 +690,7 @@ minimal recursive bind closure, source digests and transparent compact/expanded
 equivalence obligations. This amendment does not turn already published
 component transcripts into a finished export.
 
-| Family | Proposed current S11c-d disposition |
+| Family | Current S11c-d disposition |
 |---|---|
 | Complete channel S-matrix, conversion amplitude, continuum T-to-H flux and transverse survival | Required computed output and export according to the original membership rules, with survival restricted to the continuum-channel flux ratio defined below. Carry valid domain and channel availability. |
 | Separately defined bulk-depth escape flux FORM and its retained weak coefficients | Required supported A9/A12 construction and bindable handoff under §2, with grade, domain, baseline/interference, measure and incident-normalization dependencies. Use a fresh separately typed root settled in the reviewed export design; a restricted contribution is not a complete physical total. No current deficit or zero placeholder is an acceptable value. |
@@ -821,16 +805,15 @@ not closed by agreement of a downstream scattering projection.
 
 ## 6. Review, sequencing and stop conditions
 
-1. **No scientific production before this amendment clears.** Read-only source/
-   metadata work and draft preparation may continue. All prior watchers and
-   the unlaunched material-2D draft remain paused. Deferral is not deletion;
-   preserve every completed input/value/receipt and failed run.
-2. Review this one consolidated physics amendment until clear by two non-author
-   reviewers, using the same packet. Cover the actual precedence/output changes,
-   practical acceptance, kept pole claims, non-vacuous FORM coverage and
-   downstream omission handling. This is **one consolidated review process,
-   not a promise of one round** and not clearance of the old directives in
-   their entirety.
+1. **The amendment document gate is complete.** Read-only source/metadata
+   mapping may proceed. Scientific production still requires the applicable
+   build/coverage gates. Prior watchers and the unlaunched material-2D draft
+   remain paused; preserve every completed input/value/receipt and failed run.
+2. Both non-author document reviews are complete on the same draft-9 packet.
+   No further full amendment cycle is scheduled for optional wording. A later
+   change that affects the computation or permitted claim needs its actual
+   scoped review disposition; a review label alone is not a new requirement.
+   Build and scientific review duties below remain separate.
 3. Review the repaired upstream producers/instruments under the applicable
    current-version process, using the existing Mathematica audit and repair
    evidence. No blanket rerun is prescribed. A later substantive finding may
@@ -864,40 +847,17 @@ not block the revised d deliverable, but the affected physical-total claim
 remains unavailable. A11's end-channel coverage is unchanged. Neither deferral
 licenses relabeling an unfinished retained construction as completed.
 
-## 7. Review questions and source boundary
-
-The two non-author reviewers should independently determine:
-
-- Does the precedence table remove the pole obligation consistently from scope,
-  emission, export, comparator and downstream expectations, without dropping
-  local scattering necessities or restoring the incorrect v10 pole formulas?
-- Does A9 still specify the actual full distorted-wave retained response and
-  computed physical FORM, without requiring an unjustified elementary formula
-  or accepting numerical tables/tautological symbolic placeholders instead?
-- Is §3.3's conditional open-channel numerical test and required non-vacuous
-  generic-domain coverage adequate, bounded and consistent with the inherited
-  validity regime? State any missing premise or stronger requirement explicitly.
-- Does the approved retained-order boundary separate supported leading physical
-  terms, retained-model coefficients and induced diagnostics without omitting
-  mandatory retained grades or implying complete bulk power? Are the c1 domain,
-  sign/debt and downstream capability restrictions sufficient and source-correct?
-- Are the practical tolerances, unresolved-result labels, current/radiation
-  distinctions and stop rules sufficient for the limited claims being retained?
-- Are the historical search statement and corrected pole safeguards accurate,
-  with no physical pole/capture/absence claim smuggled into the handoff?
+## 7. Authority and evidence boundary
 
 The A9/A11/A12/A14 labels are navigation cross-references to the inventory,
 not a delegation of governing content to a changing state document. The actual
 FORM, end-channel coverage, supported bulk contribution and deferred-completion
 requirements are defined in §§1–3 and 5–6 of this amendment.
 
-This is a specification review; no fictional not-yet-built control should be
-claimed to have been executed. Implementation ablations remain build-review
-work. The [inventory][inventory] and cited reports provide state/provenance;
-their numerical findings were not recomputed for this draft. Any observed
-review or input-coverage gap remains explicit. User adoption is recorded above;
-substantive two-leg clearance, production authorization after review and any
-acceptance commit must be established by their actual subsequent records.
+The [inventory][inventory] and reports provide provenance, not a new validation
+of their results. Implementation ablations remain build-review work. Round-9
+clearance covers document adequacy; it does not assert that a not-yet-built
+control ran or that the later scientific/engine/export gates are satisfied.
 
 [spec-scope]: /var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_SHARED_PHYSICS.md:34
 [spec-operator]: /var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_SHARED_PHYSICS.md:332
@@ -918,9 +878,9 @@ acceptance commit must be established by their actual subsequent records.
 [c1-validity]: /var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c1_SHARED_PHYSICS.md:204
 [bulk-accounting]: /var/projects/toy_physics/research/pde_ledger_v3/directives/S11b_SHARED_PHYSICS.md:452
 [inventory]: /var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_scope_inventory_20260922.md
-[rest-decision]: /var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_decisions.md:178
+[rest-decision]: /var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_decisions.md:179
 [spec-method]: /var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_SHARED_PHYSICS.md:838
-[rest-source]: /var/projects/toy_physics/research/pde_ledger_v3/steps/S11b_interface_coupling_law.md:155
+[rest-source]: /var/projects/toy_physics/research/pde_ledger_v3/steps/S11b_interface_coupling_law.md:158
 
 [c1-bulk]: /var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c1_SHARED_PHYSICS.md:88
 [c1-faces]: /var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c1_SHARED_PHYSICS.md:144
@@ -942,3 +902,6 @@ acceptance commit must be established by their actual subsequent records.
 [c2-density]: /var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c2_SHARED_PHYSICS.md:228
 [c2-density-record]: /var/projects/toy_physics/research/pde_ledger_v3/steps/S11c_c2_self_energy_fold.md:173
 [survival-order]: /var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_continuum_currents_report.md:32
+
+[review09]: /var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_scattering_form_review_round09_adjudication.md
+[execution]: /var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_scattering_form_execution_plan.md

@@ -1,34 +1,16 @@
-# S11c-d scope and review inventory — decision draft
+# S11c-d scope and review inventory — accepted Option B
 
-Prepared 2026-09-22 against `0d77af53561968d4593b49261589e2ee259eadbb`.
-**Draft for scope/review planning; not a revised specification, physics clearance,
-or S11c-d completion record.** Numerical work remains paused. This inventory was
-made from source text, saved reports and JSON metadata; no scientific operation,
-pickle deserialization, production validator or export job was run. Subsequent
-fresh Claude/Grok document reviews are preserved with exact drafts: rounds 1–8
-at `2e8ec5a3`, `75086f8a`, `134d033d`, `116f6b36`, `96fa1f27`, `60f70885`,
-`3ba3367e` and `acd8f75f`. Both round-8 inventory verdicts are CLEAR; the
-amendment is CLEAR from Grok and NEEDS REVISION from Claude. This is **draft 9**,
-pending fresh review, not a transfer of those clearances. The user approved
-the bounded post-round-8 disposition: density/survival qualifications,
-radiation-domain coverage with a stop before a new boundary method, and
-valid zero results without zero-versus-zero validation. The retained-order
-boundary stands. Codex remains the preferred author; this eighth substantive
-fold has explicit scoped G4 authorization, not an unlimited exception or
-approval of new scientific work.
+Scientific state snapshot: `0d77af53561968d4593b49261589e2ee259eadbb`.
+**Document fidelity cleared by Claude and Grok in round 9; scientific results
+and whole-step completion are not thereby cleared.** Exact reviewed draft 9,
+its evidence snapshot and both reports are preserved at `19a7c6ed`.
+This edition updates status and removes historical decision/review clutter.
 
-**Adopted direction, pending amendment review:** following the consolidated
-proposal, the user said on 2026-09-22, “if we've solidified the plan, then let's
-continue.” The decision is **Option B**, with A9 first. The [consolidated
-amendment draft][amendment] proposes pole deferral, practical acceptance and the
-kept pole claims together. It also addresses non-vacuous open-thickness FORM
-coverage. User adoption authorizes the two non-author reviews; it is not their
-clearance and production remains paused. The tables retain the original
-obligations and explicitly identify the amendment's added coverage item A11,
-the clarified retained bulk-depth flux obligation A12, the signed-balance versus
-additional loss-attribution disposition A13, the approved higher-order bulk
-boundary A14, and the pole deferral. None is
-silently marked complete.
+The [accepted amendment][amendment] governs the retained scattering/FORM scope,
+pole deferral and supported-order bulk boundary. A9 remains the priority.
+Use the [short execution plan][execution] for sequencing; the tables below map
+obligations and evidence, not one automatic production job per row. Numerical
+production awaits the applicable build gates. No completed science was repeated.
 
 ## What the decision actually concerns
 
@@ -64,15 +46,14 @@ Three other distinctions determine the remaining work:
   scratch is not the missing stabilization step. Current-version non-author
   review, and eventual full d cross-engine comparison, are separate obligations.
 
-**Updated recommendation:** use the consolidated Option B amendment to defer
+**Adopted scope:** use the accepted Option B amendment to defer
 the pole branch and unsupported second-shape/threshold bulk completion, and
 make the supported general weak-order FORM/export the first
 construction priority. Package the repaired upstream inputs and existing
 real-frequency evidence for their required reviews. Retain the full two-ended
 scattering calculation; do not replace it with an unjustified elementary Born
-matrix element. Keep production paused until the adopted amendment
-clears its two non-author reviews. The original inventory recommended retaining
-the numerical pole branch; this follow-up deliberately changes that recommendation.
+matrix element. The amendment has cleared both document reviews; applicable build gates remain.
+The earlier numerical-pole recommendation is superseded.
 
 ## Authority, scope and review status
 
@@ -81,7 +62,7 @@ the numerical pole branch; this follow-up deliberately changes that recommendati
 | [Decisions N2, N4–N6][decisions] | Named localized profile; retained weak-order form; separate profile anchoring from coordinate representation. N2 permits the later spec to refine the initial step boundary. | Starting decisions are not a replacement for the later spec. A general dispersion relation and order-unity physical leakage magnitude remain out of scope. |
 | [Shared physics v10 §§2–5][s2] | Complete two-ended distorted scattering; separate continuum re-expansion; conversion/survival; profile-conditional pole data and controls. The shortcut to a simple uniform-background matrix element needs computed premises. | Round-10 clearance is recorded at `399a8516`, with [Opus][spec-opus] and [Grok][spec-grok] reports; the pinned v10 includes their post-clearance wording folds. This historical status does not transfer automatically to later corrections or code. |
 | [nonlinearPoleV2 §§1–7][pole] | Correctly typed principal parts, multiplicity, source/observation maps, conditional projections and scoped pole claims. | User approved (`7c98b8ee`); the document explicitly disclaims independent review. Whole governing physical-contract clearance is **not established** by the records inspected. Review its interaction with the later acceptance policy before further pole production. |
-| [Exploratory acceptance, numerical sufficiency and optional follow-up][acceptance] | Roughly 1% stability of resolved observables, declared absolute resolution, selected independent comparisons and honest unresolved results. General certification is optional follow-up. | User approved 2026-09-18. No separate two-leg clearance of this change in completion criteria was located in the inspected evidence. Include it in the scope reconciliation; do not imply that user approval is a review report. |
+| [Exploratory acceptance, numerical sufficiency and optional follow-up][acceptance] | Roughly 1% stability of resolved observables, declared absolute resolution, selected independent comparisons and honest unresolved results. General certification is optional follow-up. | User approved 2026-09-18. No standalone two-leg clearance was located for this historical file. Its retained policy and changed pole membership are now covered by the round-9 amendment clearance; that does not retroactively clear the entire older file. |
 | [Retained solver/export contract, items 3–7][retained] | Real-frequency continuum bookkeeping stays separate from complex-frequency pole data. Transparent symbolic exports remain bindable; numerical records retain their input/domain/status. An unsuccessful search is unresolved. | Preserve the retained text and its SHA256 `f01024512c9a028e7e524e5a95b5c455be42e125d10c36f94e20493109b013c2`. A fixed-frequency table does not fulfill the generic symbolic handoff. |
 | [NP1–NP4 fidelity closure][lean-review] | Conditional algebra, finite Laurent contour identities and discriminating examples. | Two independent CLEAR reports for packet `9c7e8e41dd1820647c3dc787ad171043944038c70d37b873699d414f49396e57`. This bounded mathematical work is complete. Physical application hypotheses and the whole pole directive are outside its clearance. |
 | [Project review discipline][review-policy] and [spec §7][s7] | Non-author review of governing physics, builds/instruments and records; separate blind Wolfram engine and T7 comparison. | Saved-result validation, two numerical algorithms, two coordinate implementations and two non-author reviewers are four different kinds of evidence. One does not silently discharge another. |
@@ -102,9 +83,8 @@ all parameters.
 **Review status:** **V/P** means construction/validation evidence exists, but
 two current-version non-author physics clearances have not been established in
 this inventory. **P** means review remains pending. **CLEAR-scoped** means the
-specific identified packet is cleared, within its recorded scope. The first
-independent document-review round requested revision; it did not validate the
-underlying scientific calculations or clear the present revised document.
+specific identified packet is cleared, within its recorded scope. Both round-9 document reviews are CLEAR; they do not validate the underlying
+scientific calculations or clear later builds.
 
 Cost bands are rough **additional focused implementation/packaging effort**:
 **S: 0.5–2 hours; M: 2–8 hours; L: 1–3 working days; XL: more than 3 working days,
@@ -149,7 +129,7 @@ inputs remain valid. A substantive review finding can invalidate that assumption
 | ID / item | Exact clause served | Class | Finished / remaining | Independent review | Rough cost to finish |
 |---|---|---|---|---|---|
 | C1. Complete SymPy engine, own-rows delta, fresh keys, recursive bind closure and compact/expanded equivalence | [§7][s7], retained contract items 6–8; subsequent reviewed build reconciliation | D | Many component transcripts and checkpoints are published. The prototype engine exists; **`scripts/S11c_d_exports.py` does not exist at this checkpoint**. Final integration must map every required root to an actual computed expression or honestly scoped numerical record, preserve sources/units/grades and avoid replay of completed scientific work merely for output plumbing. | P for final engine/export; component V/P is not final build clearance. | **L–XL**, including A9 rather than additional to it. Output encoding and legacy helper integration have caused substantial historical overhead; a new all-ancestry audit is not the solution. |
-| C2. Non-author review of physical authorities, upstream repairs, d builds/instruments and final record | [project G1/G4 and artifact table][review-policy] | S, required review process | Original v10 has identified historical clearance. The actual build directive/program brief need reconciliation to the amended scope under their own review gate. The consolidated amendment, repaired upstream versions, accumulated d implementation/instruments and final physics-bearing prose need exact-version review accounting. Two non-author reviews of the bounded Lean core are complete and must not be scheduled again as if missing. | Mixed: identified packets CLEAR-scoped; outstanding physical versions P. Rounds 1–8 are preserved. Round 8: both inventories CLEAR, amendment Grok CLEAR / Claude NEEDS REVISION. The user approved draft 9’s bounded disposition and eighth Codex fold; revised bytes remain P and need fresh independent reviews. No new continuum solver or positive leakage requirement is authorized. | **L** to prepare dependency-scoped packets; external review/folds **XL/uncertain**. Applicable artifact/version clearance remains required; grouping does not waive checks. |
+| C2. Non-author review of physical authorities, upstream repairs, d builds/instruments and final record | [project G1/G4 and artifact table][review-policy] | S, required review process | Original v10 has identified historical clearance. The actual build directive/program brief need reconciliation to the amended scope under their own review gate. The consolidated amendment has cleared; repaired upstream versions, accumulated d implementation/instruments and final physics-bearing prose still need exact-version review accounting. Two non-author reviews of the bounded Lean core are complete and must not be scheduled again as if missing. | Mixed: identified packets CLEAR-scoped; outstanding physical versions P. Rounds 1–9 are preserved; both round-9 legs CLEAR for amendment and inventory. Optional suggestions are dispositioned without another full document cycle. No new continuum solver or positive leakage requirement is authorized. | **L** to prepare dependency-scoped packets; external review/folds **XL/uncertain**. Applicable artifact/version clearance remains required; grouping does not waive checks. |
 | C3. Blind Wolfram d engine and T7 cross-engine comparison | [§7, comparator and blind engine][s7]; amended retained/deferred coverage | D in whole-step process; outside current SymPy builder lane | The upstream Mathematica audit/repair exists. A complete blind **d** engine/result and completed d T7 comparison were not identified. Retained v10 coverage includes the both-operand reduced-operator/kernel joins and reconstruction from those rows, modal currents, signed balance and end-channel scattering/weak FORM/controls. The amendment adds the c1-sourced half-space solution map, physical-face trace residuals, independent acoustic-power/far-field check and supported bulk-depth flux/weak FORM to independent build and T7 coverage; these are not already inherited/completed payloads. Keep actual dimensions/grades/domains and every applicable c1 step 99–124 status (including A12’s giant-family/full-residual/first-order-only/keying qualifications) alongside c2 debt. Carry A12’s separate fidelity-versus-independent-construction qualification for c1 flat-symbol/rigid-shift/zero-jet versus two-momentum kernel evidence. Short debt lists do not exhaust the consume set. A14 unsupported completion is outside required current membership, never a zero residual or implied physical total. Under B, pole families are explicitly outside comparison membership, never fabricated zero residuals. | P. A same-code saved-result validator or upstream audit does not close it. | **XL**, no reliable detailed estimate before a scoped independent build plan. A fresh engine is more than replaying an existing audit. |
 | C4. Reviewed interpretation, downstream FORM handoff and S11c-d completion record | [§3d][s3d], [§5d][s5d], [§8][s8]; record review policy | D | Concise constituent reports exist. Final generic-vs-numerical scope, unresolved search records, practical resolution, inherited debts and S11c-e handoff still need consolidation after C1–C3 or an explicitly revised contract. The handoff must expose A14 unsupported power/threshold capabilities separately from supported retained contributions and pole deferral. N10’s family-card owner duty is unchanged: every unassigned deferral/decision is interim, and family closure requires named owners or an explicit user exception to that duty. Neither is established here; amended d completion is separate and grants no confinement conclusion. No complete physical bulk total, order-unity slit-edge leakage magnitude or physical falsification bound is implied by this toy-model step. | P for final record. | **M–L**, plus its own review/folds. Physical magnitude remains R1-blocked; it is not another numerical job to finish here. |
 | C5. Saved-input journals, completion hooks, guards, recovery adapters, validation and output inventories | [§6 script obligations][s6], [§7 provenance/output][s7], [local safeguards][agents] | S where needed for trustworthy execution/reuse; exhaustive repetition O | Existing evidence/failure histories are preserved. They support real outputs but are not extra physics deliverables. All future scientific jobs retain the one-worker guard; no old science is replayed for plumbing. Direct references replace recursive copying. Repeated exhaustive unchanged-source/ancestry validation is not the forward plan. | Operational checks exist; a physics-bearing instrument still belongs in C2. Hash identity alone is not physics review. | **S–M** to document the current consumer boundaries. Further machinery only for a concrete missing input/result/check; no open-ended journal/refactor project. |
@@ -162,7 +142,7 @@ indicators; they must not be conflated with the A4/A10 Taylor remainders.
 
 ## What to defer, and what cannot silently be cut
 
-The following require no new S11c-d production under the adopted Option-B direction (effective only after amendment clearance):
+The following require no new S11c-d production under accepted Option B:
 
 - B2's eight material complex rows and two material complex responses, B4's new
   casewise pole searches, and B5's candidate principal-part/overlap/classification
@@ -208,41 +188,33 @@ supported retained-order bulk-depth FORM obligations remain separately typed.
 The new explicit A14 boundary limits d’s physical-total promise; it does not
 remove end-channel A11 or authorize an uncomputed retained contribution.
 
-## The decision options
+## Adopted decision and remaining cost
 
-| Option | Deliverable and next work | Cost / contract consequence |
-|---|---|---|
-| **A. Retain the practical full S11c-d contract** | Preserve the already computed four-case real response/continuum/controls; resolve and independently review the pole/acceptance wording and upstream repair packets; package the existing outputs. Then finish only the eight material complex rows, two material responses and selected remaining bounded searches. Candidate work is conditional. Complete final engine/export and separate reviews/Wolfram/T7. | Numerical gaps appear modest relative to integration and review, but whole-step completion is still substantial. **Several focused working days plus independent review/engine cycles**, with no defensible fixed finish date. No new global certification campaign. |
-| **B. Scattering/FORM handoff with pole deferral — adopted direction, amendment pending review** | Finish the retained scattering/continuum/FORM deliverable; defer remaining casewise pole work to its named later package. Preserve existing results. Complete the locate-first A6–A8 control coverage, A9, new A11 nonempty-thickness-current coverage, supported A12 bulk-depth FORM, required A13 balance evidence/claim disposition, and explicit A14 higher-order/threshold deferral metadata. A11/A12 unresolved admissibility stops for a scoped decision; no forced witness or automatically added separate absorption calculation. | Saves unfinished production whose purpose is B1–B5 pole work, not A9–A12/C1–C4 or reviews. A11 can require frequency-dependent rows, modes and currents and can cost comparably to a response stage; A12 also has unresolved supported-construction cost; A14 removes an automatic second-order/threshold extension, not that retained work. Net savings are not guaranteed. Requires the **reviewed amendment** before production. No full original-scope completion claim. |
-| **C. Replace full scattering by a simple closed-form Born element** | Only legitimate under the computed shortcut premises in §2, or through an explicitly reviewed change of the physical problem. Existing full-scattering results should inform that assessment. | Not an automatic cost reduction or currently justified substitute. A new premise audit/spec revision could cost more than packaging existing results. Not recommended as the default. |
+Option B is accepted: retained scattering/weak FORM and supported bulk
+contributions, with explicit pole and unsupported higher-order/threshold
+completion deferrals. The unchosen alternatives and review chronology remain
+in the preserved inventory at `19a7c6ed`; they are not active work queues.
 
-The user adopted Option B and retained Codex authorship. The narrower
-retained-order bulk boundary approved after round 5 remains unchanged. Eight
-rounds are preserved, most recently draft 8 and both reports at `acd8f75f`.
-The user approved the bounded post-round-8 disposition. Draft 9 incorporates
-it; fresh two-leg clearance remains pending.
-No production or preserved material-row draft restarts on this record. User
-scope adoption, independent review and later build authorization are distinct.
+The savings are real but not a promise of cheap completion. A9/export and
+independent Wolfram/T7 work remain substantial; A11/A12 may reveal a missing
+boundary method requiring a separate scope/build decision. Existing worker
+benchmarks do not estimate that new work. The short execution plan consolidates
+shared support tasks so costs and reviews are not counted once per table row.
 
 ## Evidence boundary and preservation
 
-The accompanying [evidence index][evidence] records selected authority/report/
-checkpoint paths, current hashes and JSON status fields, review entry points,
+The preserved draft-9 [evidence snapshot][evidence] records selected authority/report/
+checkpoint paths and their hashes/status at review time, review entry points,
 the paused draft and the absent final export/engine paths. It is a navigation
 index, not a new scientific validation or a claim that every historical commit
 has been reviewed. In particular, formal clearance must come from the actual
 versioned review packet and reports, not an `ACCEPTED_*` checkpoint label.
 
-Source files, accepted outputs, failure histories and the retained builder suffix
-were not changed. The working tree was clean at `0d77af53` before this draft;
-no relevant scientific worker was running in the inspected process snapshot.
-The exact reviewed first draft was committed for preservation at `2e8ec5a3`,
-explicitly without clearance. Draft 2 and its reports are preserved at `75086f8a`,
-draft 3 and its reports at `134d033d`, draft 4 at `116f6b36`, and draft 5 at
-`96fa1f27`, draft 6 and its reports at `60f70885`, draft 7 at `3ba3367e`,
-and draft 8 at `acd8f75f`. Draft 9 and its refreshed evidence index remain
-pending fresh review. No science was rerun or validated by this document pass. Prior adjudications, pending-decision states,
-scope/packet approvals and launch rejections remain historical, not rewritten.
+Scientific source files, accepted outputs, failure histories and the retained
+builder suffix are unchanged. The exact draft-9 inventory/evidence and both
+CLEAR reports are preserved at `19a7c6ed`; previous drafts, approvals and launch
+rejections remain historical. Current status/navigation edits are recorded by
+the acceptance record, without revalidating the scientific ancestry.
 
 [decisions]: /var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_decisions.md:47
 [s1b]: /var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_SHARED_PHYSICS.md:132
@@ -300,3 +272,5 @@ scope/packet approvals and launch rejections remain historical, not rewritten.
 
 [c2-density]: /var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c2_SHARED_PHYSICS.md:228
 [survival-order]: /var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_continuum_currents_report.md:32
+
+[execution]: /var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_scattering_form_execution_plan.md

@@ -1,0 +1,40 @@
+{
+  "status": "COMPLETED_CONTROL_CONSUMER_MAPPING_NOT_BUILD_CLEARANCE",
+  "utc": "2026-09-23T07:27:43.663719+00:00",
+  "generator": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_A9_control_route_index.py",
+    "sha256": "42d6de45d60ddf3ea231c00cfe629a1b7f8a47a1dac69994f1535a19e5b7c845",
+    "bytes": 6140
+  },
+  "result": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_A9_control_consumer_routes.json",
+    "sha256": "13984285b09318024e3f7e86a14a6d86d3a0d6016edec570e050477208b13487",
+    "bytes": 35066
+  },
+  "implementationCoverage": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_FORM_implementation_coverage.md",
+    "sha256": "47ffa4180c74ac5668291256256d5bac2799e8e5c05cad6158879c3488bdb7d2",
+    "bytes": 8725
+  },
+  "command": [
+    "python",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_A9_control_route_index.py",
+    "--output",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_A9_control_consumer_routes.json"
+  ],
+  "observedExitCode": 0,
+  "observedWallSeconds": 0.897929357,
+  "scientificPacketRestorations": 0,
+  "scientificCalls": 0,
+  "independentPhysicsReview": false,
+  "reviewLaunched": false,
+  "numericalProductionLaunched": false,
+  "allSelectedArtifactBytesAndCallerSourcePinsMatched": true,
+  "scopeAndInventoryUnchanged": true,
+  "retainedBuilderSuffixSha256": "f01024512c9a028e7e524e5a95b5c455be42e125d10c36f94e20493109b013c2",
+  "staleNotifications": {
+    "original": "already handled by final saved-input execution record",
+    "finish": "already handled by same record"
+  },
+  "next": "Concrete generic outgoing-response/FORM implementation and coverage gate; no duplicate A6/A7 computations or input-reader campaign."
+}

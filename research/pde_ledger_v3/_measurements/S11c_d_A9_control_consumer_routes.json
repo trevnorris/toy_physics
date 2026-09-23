@@ -1,0 +1,963 @@
+{
+  "status": "COMPLETED_CONTROL_CONSUMER_NAVIGATION_NOT_PHYSICS_ACCEPTANCE",
+  "checkpoints": [
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_end_sources_checkpoint.json",
+      "resolvedPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_end_sources_checkpoint.json",
+      "bytes": 81086,
+      "sha256": "abbb5fea9e85fdbe1e2b6fc56becf54e2892bae51efee64c3b9df055db01dff6"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_profile_bindings_checkpoint.json",
+      "resolvedPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_profile_bindings_checkpoint.json",
+      "bytes": 160441,
+      "sha256": "0f444a9f0f704609a66f5c647b051cf07c0c107ac92a338b1d08d38752fc3148"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_profile_response_checkpoint.json",
+      "resolvedPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_profile_response_checkpoint.json",
+      "bytes": 739181,
+      "sha256": "f14eeb302bf881eaab0e04ae3feca640d809e0fd7decc6dbdb442d04539691d2"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_coordinate_sources_checkpoint.json",
+      "resolvedPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_coordinate_sources_checkpoint.json",
+      "bytes": 3862335,
+      "sha256": "d08f16f107272eeff7c9f14dab80841a120c4cdb36f214517dd9ad1330b4d1cf"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_profile_form_checkpoint.json",
+      "resolvedPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_profile_form_checkpoint.json",
+      "bytes": 21483,
+      "sha256": "3d2415f573a0c1604823ad03d666a7be40a36e8d2fd7f811d98a4b8a2ef456e8"
+    }
+  ],
+  "sources": [
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_uniform_source.py",
+      "resolvedPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_uniform_source.py",
+      "bytes": 14588,
+      "sha256": "2a135aea365c7b5e57bfff7683c7b927cda52c0d37f6a9bad3c961eb6205a2b2",
+      "functions": [
+        {
+          "name": "construct",
+          "line": 71,
+          "endLine": 118,
+          "sha256": "8bb7d37f7f668d322dce9f93a0bcff892353f1d56f8a52710c529e3adc416f11"
+        },
+        {
+          "name": "emit_result",
+          "line": 121,
+          "endLine": 137,
+          "sha256": "697e6b73ab69e61d57bcedb96d543645cd8c8a19ae221885039ce2ab0f49c8e6"
+        }
+      ]
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_end_sources.py",
+      "resolvedPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_end_sources.py",
+      "bytes": 18832,
+      "sha256": "193ce6778151429b56a034910e16431c94cbd93055ec58177ceda92da8c7a7fb",
+      "functions": [
+        {
+          "name": "main",
+          "line": 184,
+          "endLine": 249,
+          "sha256": "193434caad632ac3456b55783ff504dd0a8efdd96d13fc4f38e094b58746437e"
+        }
+      ]
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_profile_bindings.py",
+      "resolvedPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_profile_bindings.py",
+      "bytes": 13709,
+      "sha256": "9362bf715ab2c6a8f34dc56dd3fe72b47970d009520d5d01c3d1e948858fef7f",
+      "functions": [
+        {
+          "name": "load",
+          "line": 38,
+          "endLine": 64,
+          "sha256": "9383aea4926c3178aba2a9be2e6b2c0dd2174d54d61037a296c64eb2bb31573c"
+        },
+        {
+          "name": "main",
+          "line": 102,
+          "endLine": 139,
+          "sha256": "b26f2537fbc13920367bd6218b6e3ae00e5810ed9fa49fe5f777e7b418ef2f6c"
+        }
+      ]
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_profile_response.py",
+      "resolvedPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_profile_response.py",
+      "bytes": 20939,
+      "sha256": "9558285317d9256a46e02d9a059dda73d3ad174c13de712e37fad9709ea65c7f",
+      "functions": [
+        {
+          "name": "load",
+          "line": 21,
+          "endLine": 74,
+          "sha256": "28d3a8e09306dcfbedf327318e0adfb09d715bee964ec4fb87820e07299604ae"
+        },
+        {
+          "name": "compare_case",
+          "line": 133,
+          "endLine": 168,
+          "sha256": "763472f162962d3f371b5c2d05d53be29ad417797b7d6566bece449e84457b75"
+        }
+      ]
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_coordinate_source.py",
+      "resolvedPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_coordinate_source.py",
+      "bytes": 25605,
+      "sha256": "f3fcf67f7d436d0c9acb06cfdbb48953534c3082455f6a0cac569e9d7c617fd3",
+      "functions": [
+        {
+          "name": "first_jet_mutation",
+          "line": 171,
+          "endLine": 177,
+          "sha256": "78bd7f6872a4f4664de5959224369e5db3b795a8da15dece41f2a5e6a349bb86"
+        },
+        {
+          "name": "construct",
+          "line": 180,
+          "endLine": 223,
+          "sha256": "243fa78931defe25bd3bfa4b3f794ba74a7a394702728fd76eaf4f3842490870"
+        }
+      ]
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_coordinate_sources.py",
+      "resolvedPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_coordinate_sources.py",
+      "bytes": 17900,
+      "sha256": "abfef36c7c5058631cadd32a1fca60316f1cad7b5876ac62af56cb2c4c6d71ea",
+      "functions": [
+        {
+          "name": "native_record_body",
+          "line": 35,
+          "endLine": 67,
+          "sha256": "0fed54cea0004f14c6d5c9b02916044a8390c2e960eb7ebb4c4088332aad0ed7"
+        },
+        {
+          "name": "construct",
+          "line": 121,
+          "endLine": 232,
+          "sha256": "039c1e81a476e88c2cefb3ec521fa937ea668b90031b90254e0bae50a7db3a0e"
+        }
+      ]
+    }
+  ],
+  "A6": {
+    "cases": [
+      {
+        "case": "LAB_HELD__RHO4_CONSTANT",
+        "packet": {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-ends-20260920/retry-02/complete/cases/LAB_HELD__RHO4_CONSTANT/uniform-source.pickle",
+          "resolvedPath": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-ends-20260920/retry-02/complete/cases/LAB_HELD__RHO4_CONSTANT/uniform-source.pickle",
+          "bytes": 109308,
+          "sha256": "a482c5023d16558f52b20d0a347d6e38f33f0f06f780abd256c5220f922b5571",
+          "manifestKey": "cases/LAB_HELD__RHO4_CONSTANT/uniform-source.pickle",
+          "scientificPacketRestored": false
+        },
+        "savedFieldsFromConstructor": [
+          "records[REFERENCE|LEFT|RIGHT].coupling[TH|HT]",
+          "differences[LEFT|RIGHT][TH|HT]"
+        ],
+        "completedProducerInventory": {
+          "REFERENCE": {
+            "family": 0,
+            "origin": [
+              "LAB_HELD__RHO4_CONSTANT",
+              "REFERENCE"
+            ],
+            "comparisons": [],
+            "strongShape": [
+              5,
+              5
+            ],
+            "weakShape": [
+              6,
+              6
+            ],
+            "couplingNonzero": {
+              "TH": 0,
+              "HT": 0
+            },
+            "scope": "Exact symbolic generator-input family; no mode/current/boundary reuse has yet been performed."
+          },
+          "LEFT": {
+            "family": 1,
+            "origin": [
+              "LAB_HELD__RHO4_CONSTANT",
+              "LEFT"
+            ],
+            "comparisons": [
+              {
+                "family": 0,
+                "origin": [
+                  "LAB_HELD__RHO4_CONSTANT",
+                  "REFERENCE"
+                ],
+                "nonzeroScalars": {
+                  "strong": 0,
+                  "weak": 2,
+                  "curl": 0,
+                  "energy": 0,
+                  "constraint": 0,
+                  "mass": 0
+                },
+                "sameGeneratorInputs": false
+              }
+            ],
+            "strongShape": [
+              5,
+              5
+            ],
+            "weakShape": [
+              6,
+              6
+            ],
+            "couplingNonzero": {
+              "TH": 0,
+              "HT": 0
+            },
+            "scope": "Exact symbolic generator-input family; no mode/current/boundary reuse has yet been performed."
+          },
+          "RIGHT": {
+            "family": 2,
+            "origin": [
+              "LAB_HELD__RHO4_CONSTANT",
+              "RIGHT"
+            ],
+            "comparisons": [
+              {
+                "family": 0,
+                "origin": [
+                  "LAB_HELD__RHO4_CONSTANT",
+                  "REFERENCE"
+                ],
+                "nonzeroScalars": {
+                  "strong": 19,
+                  "weak": 18,
+                  "curl": 0,
+                  "energy": 1,
+                  "constraint": 1,
+                  "mass": 4
+                },
+                "sameGeneratorInputs": false
+              },
+              {
+                "family": 1,
+                "origin": [
+                  "LAB_HELD__RHO4_CONSTANT",
+                  "LEFT"
+                ],
+                "nonzeroScalars": {
+                  "strong": 19,
+                  "weak": 18,
+                  "curl": 0,
+                  "energy": 1,
+                  "constraint": 1,
+                  "mass": 4
+                },
+                "sameGeneratorInputs": false
+              }
+            ],
+            "strongShape": [
+              5,
+              5
+            ],
+            "weakShape": [
+              6,
+              6
+            ],
+            "couplingNonzero": {
+              "TH": 0,
+              "HT": 0
+            },
+            "scope": "Exact symbolic generator-input family; no mode/current/boundary reuse has yet been performed."
+          }
+        }
+      },
+      {
+        "case": "LAB_HELD__RHOBR_CONSTANT",
+        "packet": {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-ends-20260920/retry-02/complete/cases/LAB_HELD__RHOBR_CONSTANT/uniform-source.pickle",
+          "resolvedPath": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-ends-20260920/retry-02/complete/cases/LAB_HELD__RHOBR_CONSTANT/uniform-source.pickle",
+          "bytes": 107599,
+          "sha256": "5c4083a3329d37080714b4e804b7a6ff917b2f6ca6792b9e63950e5377d29535",
+          "manifestKey": "cases/LAB_HELD__RHOBR_CONSTANT/uniform-source.pickle",
+          "scientificPacketRestored": false
+        },
+        "savedFieldsFromConstructor": [
+          "records[REFERENCE|LEFT|RIGHT].coupling[TH|HT]",
+          "differences[LEFT|RIGHT][TH|HT]"
+        ],
+        "completedProducerInventory": {
+          "REFERENCE": {
+            "family": 0,
+            "origin": [
+              "LAB_HELD__RHO4_CONSTANT",
+              "REFERENCE"
+            ],
+            "comparisons": [
+              {
+                "family": 0,
+                "origin": [
+                  "LAB_HELD__RHO4_CONSTANT",
+                  "REFERENCE"
+                ],
+                "nonzeroScalars": {
+                  "strong": 0,
+                  "weak": 0,
+                  "curl": 0,
+                  "energy": 0,
+                  "constraint": 0,
+                  "mass": 0
+                },
+                "sameGeneratorInputs": true
+              }
+            ],
+            "strongShape": [
+              5,
+              5
+            ],
+            "weakShape": [
+              6,
+              6
+            ],
+            "couplingNonzero": {
+              "TH": 0,
+              "HT": 0
+            },
+            "scope": "Exact symbolic generator-input family; no mode/current/boundary reuse has yet been performed."
+          },
+          "LEFT": {
+            "family": 1,
+            "origin": [
+              "LAB_HELD__RHO4_CONSTANT",
+              "LEFT"
+            ],
+            "comparisons": [
+              {
+                "family": 0,
+                "origin": [
+                  "LAB_HELD__RHO4_CONSTANT",
+                  "REFERENCE"
+                ],
+                "nonzeroScalars": {
+                  "strong": 0,
+                  "weak": 2,
+                  "curl": 0,
+                  "energy": 0,
+                  "constraint": 0,
+                  "mass": 0
+                },
+                "sameGeneratorInputs": false
+              },
+              {
+                "family": 1,
+                "origin": [
+                  "LAB_HELD__RHO4_CONSTANT",
+                  "LEFT"
+                ],
+                "nonzeroScalars": {
+                  "strong": 0,
+                  "weak": 0,
+                  "curl": 0,
+                  "energy": 0,
+                  "constraint": 0,
+                  "mass": 0
+                },
+                "sameGeneratorInputs": true
+              }
+            ],
+            "strongShape": [
+              5,
+              5
+            ],
+            "weakShape": [
+              6,
+              6
+            ],
+            "couplingNonzero": {
+              "TH": 0,
+              "HT": 0
+            },
+            "scope": "Exact symbolic generator-input family; no mode/current/boundary reuse has yet been performed."
+          },
+          "RIGHT": {
+            "family": 3,
+            "origin": [
+              "LAB_HELD__RHOBR_CONSTANT",
+              "RIGHT"
+            ],
+            "comparisons": [
+              {
+                "family": 0,
+                "origin": [
+                  "LAB_HELD__RHO4_CONSTANT",
+                  "REFERENCE"
+                ],
+                "nonzeroScalars": {
+                  "strong": 16,
+                  "weak": 8,
+                  "curl": 0,
+                  "energy": 1,
+                  "constraint": 1,
+                  "mass": 1
+                },
+                "sameGeneratorInputs": false
+              },
+              {
+                "family": 1,
+                "origin": [
+                  "LAB_HELD__RHO4_CONSTANT",
+                  "LEFT"
+                ],
+                "nonzeroScalars": {
+                  "strong": 16,
+                  "weak": 8,
+                  "curl": 0,
+                  "energy": 1,
+                  "constraint": 1,
+                  "mass": 1
+                },
+                "sameGeneratorInputs": false
+              },
+              {
+                "family": 2,
+                "origin": [
+                  "LAB_HELD__RHO4_CONSTANT",
+                  "RIGHT"
+                ],
+                "nonzeroScalars": {
+                  "strong": 13,
+                  "weak": 16,
+                  "curl": 0,
+                  "energy": 0,
+                  "constraint": 0,
+                  "mass": 5
+                },
+                "sameGeneratorInputs": false
+              }
+            ],
+            "strongShape": [
+              5,
+              5
+            ],
+            "weakShape": [
+              6,
+              6
+            ],
+            "couplingNonzero": {
+              "TH": 0,
+              "HT": 0
+            },
+            "scope": "Exact symbolic generator-input family; no mode/current/boundary reuse has yet been performed."
+          }
+        }
+      },
+      {
+        "case": "MATERIAL_ADVECTED__RHO4_CONSTANT",
+        "packet": {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-ends-20260920/retry-02/complete/cases/MATERIAL_ADVECTED__RHO4_CONSTANT/uniform-source.pickle",
+          "resolvedPath": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-ends-20260920/retry-02/complete/cases/MATERIAL_ADVECTED__RHO4_CONSTANT/uniform-source.pickle",
+          "bytes": 128981,
+          "sha256": "7998b40aea10666c51cddba3a1171b12817c285a195142f9940da8b33369d1e6",
+          "manifestKey": "cases/MATERIAL_ADVECTED__RHO4_CONSTANT/uniform-source.pickle",
+          "scientificPacketRestored": false
+        },
+        "savedFieldsFromConstructor": [
+          "records[REFERENCE|LEFT|RIGHT].coupling[TH|HT]",
+          "differences[LEFT|RIGHT][TH|HT]"
+        ],
+        "completedProducerInventory": {
+          "REFERENCE": {
+            "family": 0,
+            "origin": [
+              "LAB_HELD__RHO4_CONSTANT",
+              "REFERENCE"
+            ],
+            "comparisons": [
+              {
+                "family": 0,
+                "origin": [
+                  "LAB_HELD__RHO4_CONSTANT",
+                  "REFERENCE"
+                ],
+                "nonzeroScalars": {
+                  "strong": 0,
+                  "weak": 0,
+                  "curl": 0,
+                  "energy": 0,
+                  "constraint": 0,
+                  "mass": 0
+                },
+                "sameGeneratorInputs": true
+              }
+            ],
+            "strongShape": [
+              5,
+              5
+            ],
+            "weakShape": [
+              6,
+              6
+            ],
+            "couplingNonzero": {
+              "TH": 0,
+              "HT": 0
+            },
+            "scope": "Exact symbolic generator-input family; no mode/current/boundary reuse has yet been performed."
+          },
+          "LEFT": {
+            "family": 1,
+            "origin": [
+              "LAB_HELD__RHO4_CONSTANT",
+              "LEFT"
+            ],
+            "comparisons": [
+              {
+                "family": 0,
+                "origin": [
+                  "LAB_HELD__RHO4_CONSTANT",
+                  "REFERENCE"
+                ],
+                "nonzeroScalars": {
+                  "strong": 0,
+                  "weak": 2,
+                  "curl": 0,
+                  "energy": 0,
+                  "constraint": 0,
+                  "mass": 0
+                },
+                "sameGeneratorInputs": false
+              },
+              {
+                "family": 1,
+                "origin": [
+                  "LAB_HELD__RHO4_CONSTANT",
+                  "LEFT"
+                ],
+                "nonzeroScalars": {
+                  "strong": 0,
+                  "weak": 0,
+                  "curl": 0,
+                  "energy": 0,
+                  "constraint": 0,
+                  "mass": 0
+                },
+                "sameGeneratorInputs": true
+              }
+            ],
+            "strongShape": [
+              5,
+              5
+            ],
+            "weakShape": [
+              6,
+              6
+            ],
+            "couplingNonzero": {
+              "TH": 0,
+              "HT": 0
+            },
+            "scope": "Exact symbolic generator-input family; no mode/current/boundary reuse has yet been performed."
+          },
+          "RIGHT": {
+            "family": 2,
+            "origin": [
+              "LAB_HELD__RHO4_CONSTANT",
+              "RIGHT"
+            ],
+            "comparisons": [
+              {
+                "family": 0,
+                "origin": [
+                  "LAB_HELD__RHO4_CONSTANT",
+                  "REFERENCE"
+                ],
+                "nonzeroScalars": {
+                  "strong": 19,
+                  "weak": 18,
+                  "curl": 0,
+                  "energy": 1,
+                  "constraint": 1,
+                  "mass": 4
+                },
+                "sameGeneratorInputs": false
+              },
+              {
+                "family": 1,
+                "origin": [
+                  "LAB_HELD__RHO4_CONSTANT",
+                  "LEFT"
+                ],
+                "nonzeroScalars": {
+                  "strong": 19,
+                  "weak": 18,
+                  "curl": 0,
+                  "energy": 1,
+                  "constraint": 1,
+                  "mass": 4
+                },
+                "sameGeneratorInputs": false
+              },
+              {
+                "family": 2,
+                "origin": [
+                  "LAB_HELD__RHO4_CONSTANT",
+                  "RIGHT"
+                ],
+                "nonzeroScalars": {
+                  "strong": 0,
+                  "weak": 0,
+                  "curl": 0,
+                  "energy": 0,
+                  "constraint": 0,
+                  "mass": 0
+                },
+                "sameGeneratorInputs": true
+              }
+            ],
+            "strongShape": [
+              5,
+              5
+            ],
+            "weakShape": [
+              6,
+              6
+            ],
+            "couplingNonzero": {
+              "TH": 0,
+              "HT": 0
+            },
+            "scope": "Exact symbolic generator-input family; no mode/current/boundary reuse has yet been performed."
+          }
+        }
+      },
+      {
+        "case": "MATERIAL_ADVECTED__RHOBR_CONSTANT",
+        "packet": {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-ends-20260920/retry-02/complete/cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/uniform-source.pickle",
+          "resolvedPath": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-ends-20260920/retry-02/complete/cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/uniform-source.pickle",
+          "bytes": 132974,
+          "sha256": "906e7b29c67974511da4d7d13e024030a022ab534b001be12293cea08db7caa7",
+          "manifestKey": "cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/uniform-source.pickle",
+          "scientificPacketRestored": false
+        },
+        "savedFieldsFromConstructor": [
+          "records[REFERENCE|LEFT|RIGHT].coupling[TH|HT]",
+          "differences[LEFT|RIGHT][TH|HT]"
+        ],
+        "completedProducerInventory": {
+          "REFERENCE": {
+            "family": 0,
+            "origin": [
+              "LAB_HELD__RHO4_CONSTANT",
+              "REFERENCE"
+            ],
+            "comparisons": [
+              {
+                "family": 0,
+                "origin": [
+                  "LAB_HELD__RHO4_CONSTANT",
+                  "REFERENCE"
+                ],
+                "nonzeroScalars": {
+                  "strong": 0,
+                  "weak": 0,
+                  "curl": 0,
+                  "energy": 0,
+                  "constraint": 0,
+                  "mass": 0
+                },
+                "sameGeneratorInputs": true
+              }
+            ],
+            "strongShape": [
+              5,
+              5
+            ],
+            "weakShape": [
+              6,
+              6
+            ],
+            "couplingNonzero": {
+              "TH": 0,
+              "HT": 0
+            },
+            "scope": "Exact symbolic generator-input family; no mode/current/boundary reuse has yet been performed."
+          },
+          "LEFT": {
+            "family": 1,
+            "origin": [
+              "LAB_HELD__RHO4_CONSTANT",
+              "LEFT"
+            ],
+            "comparisons": [
+              {
+                "family": 0,
+                "origin": [
+                  "LAB_HELD__RHO4_CONSTANT",
+                  "REFERENCE"
+                ],
+                "nonzeroScalars": {
+                  "strong": 0,
+                  "weak": 2,
+                  "curl": 0,
+                  "energy": 0,
+                  "constraint": 0,
+                  "mass": 0
+                },
+                "sameGeneratorInputs": false
+              },
+              {
+                "family": 1,
+                "origin": [
+                  "LAB_HELD__RHO4_CONSTANT",
+                  "LEFT"
+                ],
+                "nonzeroScalars": {
+                  "strong": 0,
+                  "weak": 0,
+                  "curl": 0,
+                  "energy": 0,
+                  "constraint": 0,
+                  "mass": 0
+                },
+                "sameGeneratorInputs": true
+              }
+            ],
+            "strongShape": [
+              5,
+              5
+            ],
+            "weakShape": [
+              6,
+              6
+            ],
+            "couplingNonzero": {
+              "TH": 0,
+              "HT": 0
+            },
+            "scope": "Exact symbolic generator-input family; no mode/current/boundary reuse has yet been performed."
+          },
+          "RIGHT": {
+            "family": 3,
+            "origin": [
+              "LAB_HELD__RHOBR_CONSTANT",
+              "RIGHT"
+            ],
+            "comparisons": [
+              {
+                "family": 0,
+                "origin": [
+                  "LAB_HELD__RHO4_CONSTANT",
+                  "REFERENCE"
+                ],
+                "nonzeroScalars": {
+                  "strong": 16,
+                  "weak": 8,
+                  "curl": 0,
+                  "energy": 1,
+                  "constraint": 1,
+                  "mass": 1
+                },
+                "sameGeneratorInputs": false
+              },
+              {
+                "family": 1,
+                "origin": [
+                  "LAB_HELD__RHO4_CONSTANT",
+                  "LEFT"
+                ],
+                "nonzeroScalars": {
+                  "strong": 16,
+                  "weak": 8,
+                  "curl": 0,
+                  "energy": 1,
+                  "constraint": 1,
+                  "mass": 1
+                },
+                "sameGeneratorInputs": false
+              },
+              {
+                "family": 2,
+                "origin": [
+                  "LAB_HELD__RHO4_CONSTANT",
+                  "RIGHT"
+                ],
+                "nonzeroScalars": {
+                  "strong": 13,
+                  "weak": 16,
+                  "curl": 0,
+                  "energy": 0,
+                  "constraint": 0,
+                  "mass": 5
+                },
+                "sameGeneratorInputs": false
+              },
+              {
+                "family": 3,
+                "origin": [
+                  "LAB_HELD__RHOBR_CONSTANT",
+                  "RIGHT"
+                ],
+                "nonzeroScalars": {
+                  "strong": 0,
+                  "weak": 0,
+                  "curl": 0,
+                  "energy": 0,
+                  "constraint": 0,
+                  "mass": 0
+                },
+                "sameGeneratorInputs": true
+              }
+            ],
+            "strongShape": [
+              5,
+              5
+            ],
+            "weakShape": [
+              6,
+              6
+            ],
+            "couplingNonzero": {
+              "TH": 0,
+              "HT": 0
+            },
+            "scope": "Exact symbolic generator-input family; no mode/current/boundary reuse has yet been performed."
+          }
+        }
+      }
+    ],
+    "disposition": "All four triplet packet routes located; no new uniform construction needed merely to obtain these operands."
+  },
+  "A7": {
+    "originalProfile": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-profile-form-20260919/production/complete/profile-form.pickle",
+      "resolvedPath": "/var/projects/toy_physics/_scratch/s11c/s11c-profile-form-20260919/production/complete/profile-form.pickle",
+      "bytes": 30400477,
+      "sha256": "f429082e8af3e4c8529a386aea2cce182439d733dfa4a63dfa229980841c14c1",
+      "manifestKey": "profile-form.pickle",
+      "scientificPacketRestored": false
+    },
+    "bindingInput": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-profile-20260920/bindings-recovery-01/complete/accepted-profile/profile-form.pickle",
+      "resolvedPath": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-profile-20260920/bindings-recovery-01/complete/accepted-profile/profile-form.pickle",
+      "bytes": 30400477,
+      "sha256": "f429082e8af3e4c8529a386aea2cce182439d733dfa4a63dfa229980841c14c1",
+      "manifestKey": "accepted-profile/profile-form.pickle",
+      "scientificPacketRestored": false
+    },
+    "responseInput": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-profile-20260920/production-recovery-01/complete/profile-inputs/accepted-profile/profile-form.pickle",
+      "resolvedPath": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-profile-20260920/production-recovery-01/complete/profile-inputs/accepted-profile/profile-form.pickle",
+      "bytes": 30400477,
+      "sha256": "f429082e8af3e4c8529a386aea2cce182439d733dfa4a63dfa229980841c14c1",
+      "manifestKey": "profile-inputs/accepted-profile/profile-form.pickle",
+      "scientificPacketRestored": false
+    },
+    "cases": [
+      {
+        "case": "LAB_HELD__RHO4_CONSTANT",
+        "wholeAcceptedProfile": {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-profile-form-20260919/production/complete/profile-form.pickle",
+          "resolvedPath": "/var/projects/toy_physics/_scratch/s11c/s11c-profile-form-20260919/production/complete/profile-form.pickle",
+          "bytes": 30400477,
+          "sha256": "f429082e8af3e4c8529a386aea2cce182439d733dfa4a63dfa229980841c14c1",
+          "manifestKey": "profile-form.pickle",
+          "scientificPacketRestored": false
+        }
+      },
+      {
+        "case": "LAB_HELD__RHOBR_CONSTANT",
+        "binding": {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-profile-20260920/bindings-recovery-01/complete/cases/LAB_HELD__RHOBR_CONSTANT/case-binding.pickle",
+          "resolvedPath": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-profile-20260920/bindings-recovery-01/complete/cases/LAB_HELD__RHOBR_CONSTANT/case-binding.pickle",
+          "bytes": 501127,
+          "sha256": "841a2379e5b62784855a4fee775e21441cc74f17eb022b7f5e9c577e358d1f1b",
+          "manifestKey": "cases/LAB_HELD__RHOBR_CONSTANT/case-binding.pickle",
+          "scientificPacketRestored": false
+        },
+        "response": {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-profile-20260920/production-recovery-01/complete/cases/LAB_HELD__RHOBR_CONSTANT/continuum/profile-form.pickle",
+          "resolvedPath": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-profile-20260920/production-recovery-01/complete/cases/LAB_HELD__RHOBR_CONSTANT/continuum/profile-form.pickle",
+          "bytes": 30964277,
+          "sha256": "87666a8f9e3fa1af6829ab60e5881526455be0fd5387d469d6d4cda05321bd67",
+          "manifestKey": "cases/LAB_HELD__RHOBR_CONSTANT/continuum/profile-form.pickle",
+          "scientificPacketRestored": false
+        },
+        "savedFieldsFromConstructor": [
+          "moments",
+          "baselineShapes",
+          "alteredShapes"
+        ]
+      },
+      {
+        "case": "MATERIAL_ADVECTED__RHO4_CONSTANT",
+        "binding": {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-profile-20260920/bindings-recovery-01/complete/cases/MATERIAL_ADVECTED__RHO4_CONSTANT/case-binding.pickle",
+          "resolvedPath": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-profile-20260920/bindings-recovery-01/complete/cases/MATERIAL_ADVECTED__RHO4_CONSTANT/case-binding.pickle",
+          "bytes": 602780,
+          "sha256": "c7d4b820a4b87f2b287c76b5e4cebeb9f843832c09aec381654b4f19a217e57c",
+          "manifestKey": "cases/MATERIAL_ADVECTED__RHO4_CONSTANT/case-binding.pickle",
+          "scientificPacketRestored": false
+        },
+        "response": {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-profile-20260920/production-recovery-01/complete/cases/MATERIAL_ADVECTED__RHO4_CONSTANT/continuum/profile-form.pickle",
+          "resolvedPath": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-profile-20260920/production-recovery-01/complete/cases/MATERIAL_ADVECTED__RHO4_CONSTANT/continuum/profile-form.pickle",
+          "bytes": 36372327,
+          "sha256": "5c9dcfda7a5f5e0738edd5cf06ef0e20d3920c7be1c1e4b0126b5385557f7526",
+          "manifestKey": "cases/MATERIAL_ADVECTED__RHO4_CONSTANT/continuum/profile-form.pickle",
+          "scientificPacketRestored": false
+        },
+        "savedFieldsFromConstructor": [
+          "moments",
+          "baselineShapes",
+          "alteredShapes"
+        ]
+      },
+      {
+        "case": "MATERIAL_ADVECTED__RHOBR_CONSTANT",
+        "binding": {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-profile-20260920/bindings-recovery-01/complete/cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/case-binding.pickle",
+          "resolvedPath": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-profile-20260920/bindings-recovery-01/complete/cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/case-binding.pickle",
+          "bytes": 583324,
+          "sha256": "4df3f5c71e10d6a382ddcf0d378589d60a980f4d05c5a720334db793eee9ddd2",
+          "manifestKey": "cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/case-binding.pickle",
+          "scientificPacketRestored": false
+        },
+        "response": {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-profile-20260920/production-recovery-01/complete/cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/continuum/profile-form.pickle",
+          "resolvedPath": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-profile-20260920/production-recovery-01/complete/cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/continuum/profile-form.pickle",
+          "bytes": 29589482,
+          "sha256": "355329cf8f8482d8820e63e0e5389d02cc3d5d54c5249e8e458b36a760fcbbcd",
+          "manifestKey": "cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/continuum/profile-form.pickle",
+          "scientificPacketRestored": false
+        },
+        "savedFieldsFromConstructor": [
+          "moments",
+          "baselineShapes",
+          "alteredShapes"
+        ]
+      }
+    ],
+    "disposition": "Same saved moment packet bytes; completed binding source checks actual original/altered profiles and endpoints before reuse, and response source carries those fields."
+  },
+  "A8": {
+    "disposition": "Completed literal first-jet mutations feed coordinate record shape fields with original/address/unit and saved involution joins. This does not supply the separately uncomputed density-factor closed-operator insertion.",
+    "coordinateCheckpoint": {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_coordinate_sources_checkpoint.json",
+      "resolvedPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_coordinate_sources_checkpoint.json",
+      "bytes": 3862335,
+      "sha256": "d08f16f107272eeff7c9f14dab80841a120c4cdb36f214517dd9ad1330b4d1cf"
+    }
+  },
+  "scientificPacketRestorations": 0,
+  "scientificCalls": 0,
+  "independentPhysicsReview": false
+}

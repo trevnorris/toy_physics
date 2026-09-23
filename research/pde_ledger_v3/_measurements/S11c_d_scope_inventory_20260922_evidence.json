@@ -1,18 +1,19 @@
 {
   "status": "DRAFT_SCOPE_INVENTORY_EVIDENCE_NOT_SCIENTIFIC_ACCEPTANCE",
-  "createdUtc": "2026-09-22T22:33:08.219370+00:00",
-  "head": "134d033dfee2bc80b24e1816a528fd0cb889d719",
+  "createdUtc": "2026-09-23T00:21:07.805656+00:00",
+  "head": "116f6b360d8054634b9bce301cd2ef050e3a8a25",
   "scientificStateSnapshotCommit": "0d77af53561968d4593b49261589e2ee259eadbb",
-  "reviewedDraftPreservationCommit": "134d033dfee2bc80b24e1816a528fd0cb889d719",
+  "reviewedDraftPreservationCommit": "116f6b360d8054634b9bce301cd2ef050e3a8a25",
   "round1ReviewRecord": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_scattering_form_review_round01.json",
   "round2ReviewRecord": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_scattering_form_review_round02.json",
   "round3ReviewRecord": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_scattering_form_review_round03.json",
+  "round4ReviewRecord": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_scattering_form_review_round04.json",
   "method": "Read-only source text, report and JSON metadata inspection. No scientific module import, unpickling, numerical/symbolic operation, production validator, review leg or export execution.",
   "coverage": "Selected scientific workstream evidence and governing/review records; not a line-by-line audit of every commit or an ancestral validation campaign.",
   "inventory": {
     "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_scope_inventory_20260922.md",
-    "bytes": 47006,
-    "sha256": "fc57e088dce4bc4a7cc13ab58bd521e25830f8b77cd2a6ca89bb2f269bad2558"
+    "bytes": 48533,
+    "sha256": "d902d6901026f4476b0735186a30b38a1489637490f41d2eff331aa9a63ae23d"
   },
   "links": [
     {
@@ -641,6 +642,15 @@
       "sha256": "d1b3d35ea8236fa436b21ca85581a475565f9675464bbaf591804a76e74eafc6"
     },
     {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_scattering_form_c1_export_key_index.json",
+      "resolvedPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_scattering_form_c1_export_key_index.json",
+      "bytes": 10302,
+      "sha256": "19da4db780ecff242bd98637763e15d6239e865dd86fc5087094167f65d54174",
+      "topLevelStatusFields": {
+        "scope": "All top-level _LEDGER key declarations; does not inspect or validate nested scientific payloads or establish absence from historical transcripts."
+      }
+    },
+    {
       "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_sympy_builder_report.md",
       "resolvedPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_sympy_builder_report.md",
       "bytes": 36895,
@@ -721,8 +731,8 @@
     {
       "path": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_SCATTERING_FORM_AMENDMENT.md",
       "resolvedPath": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_SCATTERING_FORM_AMENDMENT.md",
-      "bytes": 46245,
-      "sha256": "9fd35216d79a00d754de25b5ce10a7c0b600f2e7d1d53d988345b9332231b02c"
+      "bytes": 50497,
+      "sha256": "e44286749960799319c72767cc8e404c3ebc0c2e6aff2441300461140a71cdc4"
     },
     {
       "path": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_SHARED_PHYSICS.md",
@@ -806,7 +816,7 @@
     "exploratoryAcceptanceChange": "User approved; separate two-leg clearance not established by inspected evidence.",
     "boundedLeanNP1toNP4": "CLEAR by Claude and Grok for identified packet; excludes physical application and analytic existence theory.",
     "savedResultValidators": "Do not count as two non-author physics-review legs.",
-    "thisInventory": "Draft4 after round3: one amendment CLEAR, one NEEDS REVISION, both inventories NEEDS REVISION. User requested Codex retain authorship; third substantive fold awaiting fresh Claude/Grok reviews. Not cleared or effective for production."
+    "thisInventory": "Draft5 after round4: Grok cleared both documents; Claude requested bulk-map and inventory corrections. User resumed after pause and retains Codex authorship; explicit scoped G4 author-change exception, fresh Claude/Grok reviews pending. Not cleared or effective for production."
   },
   "costEstimateStatus": "Planning judgment, not measured end-to-end forecasts; worker benchmarks are separate and review/provider delay or findings are not bounded."
 }

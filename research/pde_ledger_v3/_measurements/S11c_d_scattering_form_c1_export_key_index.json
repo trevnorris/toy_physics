@@ -1,0 +1,317 @@
+{
+  "method": "stdlib AST declaration census only; no module import, expression restoration or science",
+  "source": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_c1_exports.py",
+  "sourceSha256": "a5353b86dc526fd1b56734fdbdf7dc7f42387a3195ab4de84e8994f751871cdc",
+  "sourceBytes": 906467,
+  "ledgerEntries": [
+    {
+      "key": "dtn_flat_symbol",
+      "line": 77,
+      "endLine": 84,
+      "literalDescription": null,
+      "valueExpressionNodeType": "Call"
+    },
+    {
+      "key": "dtn_kernel",
+      "line": 85,
+      "endLine": 92,
+      "literalDescription": null,
+      "valueExpressionNodeType": "Call"
+    },
+    {
+      "key": "dtn_operator",
+      "line": 93,
+      "endLine": 100,
+      "literalDescription": null,
+      "valueExpressionNodeType": "Call"
+    },
+    {
+      "key": "s11c_c1_face_response",
+      "line": 101,
+      "endLine": 109,
+      "literalDescription": null,
+      "valueExpressionNodeType": "Call"
+    },
+    {
+      "key": "s11c_c1_face_response_coeffs",
+      "line": 110,
+      "endLine": 118,
+      "literalDescription": null,
+      "valueExpressionNodeType": "Call"
+    },
+    {
+      "key": "s11cc1_V_lab_held_minus",
+      "line": 119,
+      "endLine": 127,
+      "literalDescription": "face-velocity input amplitude for LAB_HELD face minus",
+      "valueExpressionNodeType": "Call"
+    },
+    {
+      "key": "s11cc1_V_lab_held_plus",
+      "line": 128,
+      "endLine": 136,
+      "literalDescription": "face-velocity input amplitude for LAB_HELD face plus",
+      "valueExpressionNodeType": "Call"
+    },
+    {
+      "key": "s11cc1_V_material_advected_minus",
+      "line": 137,
+      "endLine": 145,
+      "literalDescription": "face-velocity input amplitude for MATERIAL_ADVECTED face minus",
+      "valueExpressionNodeType": "Call"
+    },
+    {
+      "key": "s11cc1_V_material_advected_plus",
+      "line": 146,
+      "endLine": 154,
+      "literalDescription": "face-velocity input amplitude for MATERIAL_ADVECTED face plus",
+      "valueExpressionNodeType": "Call"
+    },
+    {
+      "key": "s11cc1_div_height_grad_operator",
+      "line": 155,
+      "endLine": 163,
+      "literalDescription": "divergence of height times in-plane gradient",
+      "valueExpressionNodeType": "Call"
+    },
+    {
+      "key": "s11cc1_dtn_operator_lab_held_minus",
+      "line": 164,
+      "endLine": 172,
+      "literalDescription": "curved DtN operator for LAB_HELD face minus",
+      "valueExpressionNodeType": "Call"
+    },
+    {
+      "key": "s11cc1_dtn_operator_lab_held_plus",
+      "line": 173,
+      "endLine": 181,
+      "literalDescription": "curved DtN operator for LAB_HELD face plus",
+      "valueExpressionNodeType": "Call"
+    },
+    {
+      "key": "s11cc1_dtn_operator_material_advected_minus",
+      "line": 182,
+      "endLine": 190,
+      "literalDescription": "curved DtN operator for MATERIAL_ADVECTED face minus",
+      "valueExpressionNodeType": "Call"
+    },
+    {
+      "key": "s11cc1_dtn_operator_material_advected_plus",
+      "line": 191,
+      "endLine": 199,
+      "literalDescription": "curved DtN operator for MATERIAL_ADVECTED face plus",
+      "valueExpressionNodeType": "Call"
+    },
+    {
+      "key": "s11cc1_first_shape_impedance_operator",
+      "line": 200,
+      "endLine": 208,
+      "literalDescription": "first-shape-order impedance operator",
+      "valueExpressionNodeType": "Call"
+    },
+    {
+      "key": "s11cc1_flat_impedance_operator",
+      "line": 209,
+      "endLine": 217,
+      "literalDescription": "flat outgoing pressure-to-normal-velocity impedance operator",
+      "valueExpressionNodeType": "Call"
+    },
+    {
+      "key": "s11cc1_flat_normal_dtn_inverse",
+      "line": 218,
+      "endLine": 226,
+      "literalDescription": "inverse flat outgoing conormal operator",
+      "valueExpressionNodeType": "Call"
+    },
+    {
+      "key": "s11cc1_flat_normal_dtn_operator",
+      "line": 227,
+      "endLine": 235,
+      "literalDescription": "flat outgoing potential-to-conormal operator",
+      "valueExpressionNodeType": "Call"
+    },
+    {
+      "key": "s11cc1_height_multiplication_operator",
+      "line": 236,
+      "endLine": 244,
+      "literalDescription": "multiplication by outward background face height",
+      "valueExpressionNodeType": "Call"
+    },
+    {
+      "key": "s11cc1_identity_operator",
+      "line": 245,
+      "endLine": 253,
+      "literalDescription": "identity on one face-field Hilbert space",
+      "valueExpressionNodeType": "Call"
+    },
+    {
+      "key": "s11cc1_k_input_1",
+      "line": 254,
+      "endLine": 262,
+      "literalDescription": "DtN input momentum leg 1",
+      "valueExpressionNodeType": "Call"
+    },
+    {
+      "key": "s11cc1_k_input_2",
+      "line": 263,
+      "endLine": 271,
+      "literalDescription": "DtN input momentum leg 2",
+      "valueExpressionNodeType": "Call"
+    },
+    {
+      "key": "s11cc1_k_input_3",
+      "line": 272,
+      "endLine": 280,
+      "literalDescription": "DtN input momentum leg 3",
+      "valueExpressionNodeType": "Call"
+    },
+    {
+      "key": "s11cc1_k_output_1",
+      "line": 281,
+      "endLine": 289,
+      "literalDescription": "DtN output momentum leg 1",
+      "valueExpressionNodeType": "Call"
+    },
+    {
+      "key": "s11cc1_k_output_2",
+      "line": 290,
+      "endLine": 298,
+      "literalDescription": "DtN output momentum leg 2",
+      "valueExpressionNodeType": "Call"
+    },
+    {
+      "key": "s11cc1_k_output_3",
+      "line": 299,
+      "endLine": 307,
+      "literalDescription": "DtN output momentum leg 3",
+      "valueExpressionNodeType": "Call"
+    },
+    {
+      "key": "s11cc1_mu_theta_lab_held_minus",
+      "line": 308,
+      "endLine": 316,
+      "literalDescription": "opaque mu_theta input amplitude for LAB_HELD face minus",
+      "valueExpressionNodeType": "Call"
+    },
+    {
+      "key": "s11cc1_mu_theta_lab_held_plus",
+      "line": 317,
+      "endLine": 325,
+      "literalDescription": "opaque mu_theta input amplitude for LAB_HELD face plus",
+      "valueExpressionNodeType": "Call"
+    },
+    {
+      "key": "s11cc1_mu_theta_material_advected_minus",
+      "line": 326,
+      "endLine": 334,
+      "literalDescription": "opaque mu_theta input amplitude for MATERIAL_ADVECTED face minus",
+      "valueExpressionNodeType": "Call"
+    },
+    {
+      "key": "s11cc1_mu_theta_material_advected_plus",
+      "line": 335,
+      "endLine": 343,
+      "literalDescription": "opaque mu_theta input amplitude for MATERIAL_ADVECTED face plus",
+      "valueExpressionNodeType": "Call"
+    },
+    {
+      "key": "s11cc1_q_out_input",
+      "line": 344,
+      "endLine": 352,
+      "literalDescription": "radiation-selected input-leg normal momentum",
+      "valueExpressionNodeType": "Call"
+    },
+    {
+      "key": "s11cc1_q_out_output",
+      "line": 353,
+      "endLine": 361,
+      "literalDescription": "radiation-selected output-leg normal momentum",
+      "valueExpressionNodeType": "Call"
+    },
+    {
+      "key": "s11cc1_response_resolvent_lab_held_minus_rho4_constant",
+      "line": 362,
+      "endLine": 370,
+      "literalDescription": "closed-face response resolvent for LAB_HELD, face minus, RHO4_CONSTANT",
+      "valueExpressionNodeType": "Call"
+    },
+    {
+      "key": "s11cc1_response_resolvent_lab_held_minus_rhobr_constant",
+      "line": 371,
+      "endLine": 379,
+      "literalDescription": "closed-face response resolvent for LAB_HELD, face minus, RHOBR_CONSTANT",
+      "valueExpressionNodeType": "Call"
+    },
+    {
+      "key": "s11cc1_response_resolvent_lab_held_plus_rho4_constant",
+      "line": 380,
+      "endLine": 388,
+      "literalDescription": "closed-face response resolvent for LAB_HELD, face plus, RHO4_CONSTANT",
+      "valueExpressionNodeType": "Call"
+    },
+    {
+      "key": "s11cc1_response_resolvent_lab_held_plus_rhobr_constant",
+      "line": 389,
+      "endLine": 397,
+      "literalDescription": "closed-face response resolvent for LAB_HELD, face plus, RHOBR_CONSTANT",
+      "valueExpressionNodeType": "Call"
+    },
+    {
+      "key": "s11cc1_response_resolvent_material_advected_minus_rho4_constant",
+      "line": 398,
+      "endLine": 406,
+      "literalDescription": "closed-face response resolvent for MATERIAL_ADVECTED, face minus, RHO4_CONSTANT",
+      "valueExpressionNodeType": "Call"
+    },
+    {
+      "key": "s11cc1_response_resolvent_material_advected_minus_rhobr_constant",
+      "line": 407,
+      "endLine": 415,
+      "literalDescription": "closed-face response resolvent for MATERIAL_ADVECTED, face minus, RHOBR_CONSTANT",
+      "valueExpressionNodeType": "Call"
+    },
+    {
+      "key": "s11cc1_response_resolvent_material_advected_plus_rho4_constant",
+      "line": 416,
+      "endLine": 424,
+      "literalDescription": "closed-face response resolvent for MATERIAL_ADVECTED, face plus, RHO4_CONSTANT",
+      "valueExpressionNodeType": "Call"
+    },
+    {
+      "key": "s11cc1_response_resolvent_material_advected_plus_rhobr_constant",
+      "line": 425,
+      "endLine": 433,
+      "literalDescription": "closed-face response resolvent for MATERIAL_ADVECTED, face plus, RHOBR_CONSTANT",
+      "valueExpressionNodeType": "Call"
+    },
+    {
+      "key": "s11cc1_w1_profile_hat_transfer",
+      "line": 434,
+      "endLine": 442,
+      "literalDescription": "Fourier transform of the dimensionless thickness profile at output minus input momentum",
+      "valueExpressionNodeType": "Call"
+    },
+    {
+      "key": "s11cc1_w1_profile_jet_hat_1",
+      "line": 443,
+      "endLine": 451,
+      "literalDescription": "Fourier transform of the dimensionless face-tilt profile in direction 1",
+      "valueExpressionNodeType": "Call"
+    },
+    {
+      "key": "s11cc1_w1_profile_jet_hat_2",
+      "line": 452,
+      "endLine": 460,
+      "literalDescription": "Fourier transform of the dimensionless face-tilt profile in direction 2",
+      "valueExpressionNodeType": "Call"
+    },
+    {
+      "key": "s11cc1_w1_profile_jet_hat_3",
+      "line": 461,
+      "endLine": 469,
+      "literalDescription": "Fourier transform of the dimensionless face-tilt profile in direction 3",
+      "valueExpressionNodeType": "Call"
+    }
+  ],
+  "scope": "All top-level _LEDGER key declarations; does not inspect or validate nested scientific payloads or establish absence from historical transcripts."
+}

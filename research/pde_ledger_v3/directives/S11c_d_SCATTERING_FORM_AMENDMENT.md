@@ -1,6 +1,6 @@
 # S11c-d scattering/FORM scope amendment — Option B draft
 
-Version: `scatteringFormScopeV1-draft4`, 2026-09-22. Author: Codex/Astra.
+Version: `scatteringFormScopeV1-draft5`, 2026-09-22. Author: Codex/Astra.
 
 **Status: Option B adopted by the user; amendment unreviewed and not yet
 effective for production.** On 2026-09-22 the user said, “if we've solidified
@@ -15,10 +15,17 @@ Draft 2 and both round-2 reports are preserved at `75086f8a`: Grok cleared its
 amendment, Claude requested revision, and both requested inventory corrections.
 Draft 3 and both round-3 reports are preserved at `134d033d`: Grok cleared
 its amendment, Claude requested revision, and both requested inventory changes.
-The user then requested that Codex retain authorship; the proposed external
-Claude authoring task never launched. This is the third substantive Codex fold,
-pending fresh Claude/Grok review, not governing production. No fourth
-same-author fold is authorized by this document.
+The user requested that Codex retain authorship; the proposed external Claude
+authoring task never launched. Draft 4 and both round-4 reports are preserved
+at `116f6b36`: Grok cleared both documents; Claude identified the bulk-field
+reconstruction gap and inventory corrections. After the requested pause the
+user said, “K. Let's keep going. You have permission to continue.” Codex remains
+the author under that continuing user preference. This fourth substantive fold
+is an explicit exception to G4's author-change rule, confined to the verified
+bulk-reconstruction/source/check gap and associated claim/status corrections.
+It is not an independent review or permission to relax the clearance gate.
+Fresh Claude and Grok remain the two non-author reviewers; no production resumes
+on the strength of this author decision.
 
 The existing numerical work is paused at
 `0d77af53561968d4593b49261589e2ee259eadbb`. This draft changes no producer,
@@ -32,7 +39,9 @@ deliverable the first construction priority after the review gates. Defer the
 profile-dependent frequency-pole study to the named work package
 **“Localized-interface pole study — deferred from S11c-d.”** This name records a
 boundary, not an authorization to start a new stage or an assignment to S11c-e.
-A later approved plan must establish its schedule and governing scope.
+A later approved plan must establish its schedule and governing scope. The
+family roll-up must record this work package as unassigned until an owner is
+actually appointed; naming the package does not appoint one.
 
 This is a deliberate reduction of S11c-d's output obligations, not a claim of
 completion against unamended v10. On approval, this amendment governs the
@@ -124,10 +133,41 @@ non-pole leakage goal. Its functional must be constructed from the actual
 outgoing bulk fields on the two exterior half-spaces, their derived signed
 energy flux and far-field measure, with the Fourier normalization, tangential
 normalization and physical source/current units inherited from the reduced
-problem. The half-space field-reconstruction map is a construction operand
-of this reduced problem, with its actual dimensions and retained grades;
-unreduced three-dimensional content cannot bypass v10 §2's representation rule.
-No numerical value or closed expression for the flux is supplied here.
+problem. The slab-only reduced rows do not themselves supply the exterior
+field. Construct or consume its solution map from the [c1 §1b bulk acoustics
+and radiation condition][c1-bulk], driven by the same per-face kinematic/closure
+data as the solved slab state under [c1 §§1d, 2a and 3][c1-faces]. Keep the two
+exterior half-spaces disconnected and their outgoing branches fixed by that
+condition. Use the same retained shifted/tilted physical faces, outward normals,
+true-area measures and reference-to-physical pressure convention as the repaired
+closure. The [c1 carry-forward corrections][c1-record] distinguish graph height
+from outward shape displacement and impedance from the normal DtN operator.
+Only the in-plane content undergoes the §1c reduction; the exterior depth
+coordinate remains. The new map cannot bypass the in-plane Fourier/measure rules.
+
+This is an explicitly added d construction/consume-set and comparison duty,
+not an existing `IMPORT_KEYS` row or a map already exported by the slab-only
+operator. The reviewed build plan must identify actual reusable c1 operands,
+any genuinely missing solution-map construction, its physical source/units/
+grades and its exact new import or construction roots. The existing c1 far-field
+energy construction has a specified restricted subcase; its presence alone does
+not establish the general solved-state map. Inspect saved outputs and full call
+inputs before constructing anything missing; do not repeat completed bulk
+solves or manufacture an absent intermediate for packaging.
+
+Two explicit checks tie this map to the scattering result. Emit both operands
+and literal residuals for (i) the reconstructed pressure and outward-velocity
+traces on the physical faces versus the closure data actually used on the
+solved slab state, and (ii) the signed true-area acoustic face power versus
+independently evaluated outgoing bulk control-surface/far-field flux. Match the
+tangential normalization, control-volume boundaries, retained grades and limit
+premises; keep any nonvanishing lateral contribution explicit. The face operand
+in (ii) is built from the closure's face data, not defined by the far-field
+answer. Check the branch, measure and trace conventions through the applicable
+independent build controls. This acoustic identity does not identify general
+slab traction work with bulk radiation in a permeable closure. An unexplained
+trace/power residual cannot be assigned to deferred interface absorption.
+No numerical value or closed expression for the map or flux is supplied here.
 
 Normalize by the same applicable incident transverse current; keep the actual
 uniform baseline, interface-induced contribution, interference and independent
@@ -137,10 +177,15 @@ forcing separate. The independently constructed bulk-flux and slab pressure/
 current-balance operands must support the relevant sign, measure and closure
 checks; the [S11b pressure-work discriminator][bulk-accounting] applies only on
 its actual stated subcase, not as a blanket proof for every face closure.
-Do not infer bulk escape as `1−P_T,surv−C_{T→H}`. Do not count end-channel flux,
-depth-integrated interface-normal bulk current and outward bulk-depth flux as
-the same contribution. Their geometries and any balance/decomposition must be
-derived before a total-loss interpretation is made.
+Do not infer bulk escape as `1−P_T,surv−C_{T→H}`. V10 §3a's end-channel current
+already includes its closed/nonlocal bulk contribution: the depth-integrated
+interface-normal bulk tail is a component of that current, not another loss to
+add to it. Outward bulk-depth flux is the separate contribution. Derive the
+geometries and balance before a total-loss interpretation is made. The retained
+d-level signed-balance duty follows v10's current identity and exploratory
+acceptance item 2, using S11b's applicable discriminators as method. Per-face
+slab exchange and bulk acoustic power remain distinct signed operands even
+while a separately normalized absorption observable is deferred.
 
 **Inherited physical validity, not only integral definedness.** All retained
 FORMs and numerical bindings remain rest-frame results. Away from grazing,
@@ -175,7 +220,12 @@ nonempty radiating support and an applicable nonzero incident current; the
 closed `omega=1` support is not that check. An independent symbolic/analytic
 check can provide this coverage without an extra numerical frequency only if
 its physical support and validity premises are established. A formal
-continuation outside that domain cannot discharge it.
+continuation outside that domain cannot discharge it. Here physical admissibility
+requires the approved parameters, actual real propagating support and retained-
+order/regularity premises; c1's omitted-flow restrictions remain explicit
+conditional validity labels, not a demand to invent a measured value for
+`v_bulk_normal_0`. That conditional status does not waive the stated grazing
+and limit qualifications or establish nonempty support by itself.
 
 If the bounded inspection leaves such support or its validity unestablished,
 record the evidence and stop for a scope/domain disposition. Distinguish an
@@ -495,12 +545,14 @@ follows from the near-unity development-point ratio.
 
 The blind Wolfram **d** engine and T7 comparison remain required for the retained
 scattering/FORM objects. Their scope declarations must agree before numerical/
-symbolic joins. In particular, v10 §7's both-operand reduced-operator/kernel
-join, reconstruction from those actual reduced rows, the half-space
-field-reconstruction map and its bulk-depth flux/weak FORM, modal-current joins
-and retained conversion/survival/signed-balance/control operands remain in T7
-coverage with their actual dimensions and grades. Pole
-families are recorded as outside the reviewed compared
+symbolic joins. V10 §7's both-operand reduced-operator/kernel join and
+reconstruction from those actual reduced rows, modal-current joins and retained
+conversion/survival/signed-balance/control operands remain in T7 coverage with
+their actual dimensions and grades. This amendment **adds** the sourced
+half-space solution map, its physical-face trace and acoustic-power/far-field
+checks, and its bulk-depth flux/weak FORM to the independently built and compared
+coverage. These additions are not claimed as inherited v10 payloads or completed
+c1 results. Pole families are recorded as outside the reviewed compared
 domain; they are not residual zeros, evidence of equality or a fourth T7 truth
 value. Missing required scattering rows still fail the coverage gate. Historical
 one-engine pole diagnostics may be referenced as such, not reported as new
@@ -595,3 +647,7 @@ acceptance commit must be established by their actual subsequent records.
 [rest-decision]: /var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_decisions.md:178
 [spec-method]: /var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_SHARED_PHYSICS.md:838
 [rest-source]: /var/projects/toy_physics/research/pde_ledger_v3/steps/S11b_interface_coupling_law.md:155
+
+[c1-bulk]: /var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c1_SHARED_PHYSICS.md:88
+[c1-faces]: /var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c1_SHARED_PHYSICS.md:144
+[c1-record]: /var/projects/toy_physics/research/pde_ledger_v3/steps/S11c_c1_curved_bulk_closure.md:170

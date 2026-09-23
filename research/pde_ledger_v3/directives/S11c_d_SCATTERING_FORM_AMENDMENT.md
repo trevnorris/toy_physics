@@ -1,6 +1,6 @@
 # S11c-d scattering/FORM scope amendment — Option B draft
 
-Version: `scatteringFormScopeV1-draft8`, 2026-09-22. Author: Codex/Astra.
+Version: `scatteringFormScopeV1-draft9`, 2026-09-22. Author: Codex/Astra.
 
 **Status: Option B adopted by the user; amendment unreviewed and not yet
 effective for production.** On 2026-09-22 the user said, “if we've solidified
@@ -9,25 +9,25 @@ This authorizes proceeding with that decision and its fresh Claude and Grok
 reviews. It does not constitute independent clearance. The amendment requires
 two non-author reviews until clear; no scientific production resumes before
 that gate. Actual review launches and outcomes are recorded separately.
-The exact drafts and both reports for rounds 1–7 are preserved, respectively,
-at `2e8ec5a3`, `75086f8a`, `134d033d`, `116f6b36`, `96fa1f27`, `60f70885` and
-`3ba3367e`. After round 5 the user approved keeping supported leading d terms
-and leaving unsupported second-shape/threshold completion at the S11c-e boundary.
-That approved output boundary stands. Both round-7 amendment reports request
-revision; Claude requests inventory revision and Grok clears it. This draft
-clarifies inherited independence, deferral ownership and the allowed flux
-claims. Neither report is a new physics result.
+The exact drafts and both reports for rounds 1–8 are preserved, respectively,
+at `2e8ec5a3`, `75086f8a`, `134d033d`, `116f6b36`, `96fa1f27`, `60f70885`,
+`3ba3367e` and `acd8f75f`. Round 8 cleared the inventory in both legs; Grok
+cleared the amendment and Claude requested revision. Those verdicts apply to
+draft 8, not this revision. The retained-order boundary approved after round 5
+stands. After round 8 the user replied “approved” to the bounded disposition:
+density/survival clarifications, actual radiation-domain coverage with a stop
+before a new boundary method, and genuine-zero admissibility without treating
+zero-versus-zero agreement as sufficient validation. No physics result follows
+from that decision.
 
-Codex/Astra remains the user's preferred author; the proposed external Claude
-authoring task never launched. This is the seventh substantive same-author
-fold, a bounded departure from G4 under that continuing preference. No new
-scientific construction or observable is added: in particular, a universal
-combined-loss partition is not assumed or made a new deliverable. The corrections
-limit claims and restore source/process qualifications within the approved
-boundary. They change no saved value and authorize no scientific campaign.
-Fresh Claude/Grok reviews remain required. A finding that actually broadens
-construction or changes the promised observable returns to an author/scope
-decision; this is not unlimited same-author revision authority.
+Codex/Astra remains the user's preferred author; the external Claude authoring
+task never launched. This is the explicitly approved eighth substantive
+same-author fold, a scoped exception to G4. It authorizes neither a new
+radiation-continuum solver nor a mandatory positive leakage witness, and it
+changes no saved result. Fresh non-author review is still required; this is
+not independent clearance or unlimited future revision authority. Broader
+construction or changed observable requirements return to a scope/author
+decision before another fold or production.
 
 The existing numerical work is paused at
 `0d77af53561968d4593b49261589e2ee259eadbb`. This draft changes no producer,
@@ -101,8 +101,11 @@ coefficients required by v10 §§2, 3a, 3c, 3d and 5d. In particular:
 1. Preserve the full reduced local/nonlocal operator and coupling vertex,
    computed reference/left/right baselines, both-end channel spaces and derived
    signed current forms. Keep all required open incident/output channels and
-   evanescent matching contributions. If a sector classification fails at a
-   degeneracy, carry the domain limitation rather than a bare-sector label.
+   evanescent matching contributions. Establish the applicable outgoing
+   representation under the radiation-domain coverage rule below; a discrete
+   mode list alone is not a completeness argument on every domain. If a sector
+   classification fails at a degeneracy, carry the domain limitation rather
+   than a bare-sector label.
 2. Preserve independent epsilon/eta/sigma grades and the complete retained
    rectangle, including the mixed grade. Only the declared physical homotopy
    relates eta and sigma. Keep frequency, tangential momentum, profiles and
@@ -161,6 +164,28 @@ from outward shape displacement and impedance from the normal DtN operator.
 Only the in-plane content undergoes the §1c reduction; the exterior depth
 coordinate remains. The new map cannot bypass the in-plane Fourier/measure rules.
 
+**Radiation-domain coverage and construction boundary.** The outgoing end
+closure and current representation must cover the actual domain used by the
+claimed FORM or witness. On a radiating input, inspect the actual branch and
+continuous-spectrum content of the outgoing operator; a finite discrete-mode
+census or convergent depth pairing established on a decaying-bulk input does
+not supply that coverage. Establish which continuous contributions are included,
+or their irrelevance to the claimed observable at its declared precision,
+using applicable evidence. Preserve the distinction between bulk radiation
+and the thickness-like end-channel classifier. This is not a new classification
+of a saved input or a claim that a nonlocal outgoing operator must represent
+its continuum by a list of discrete modes.
+
+First locate existing saved constructions and their domains. If the required
+coverage calls for a new boundary or continuum method, record the missing
+object and a bounded cost estimate and stop for a scope/build decision. This
+amendment does not authorize that extension automatically. Restricting a
+calculation to an established decaying-bulk domain cannot satisfy A12's
+nonempty-radiating-support check; that obligation remains unresolved until
+covered or explicitly changed by a later reviewed scope decision. This rule
+also applies to A11 witnesses; it does not invalidate an existing result on
+its actual established domain or waive either coverage obligation.
+
 This is an explicitly added d construction/consume-set and comparison duty,
 not an existing `IMPORT_KEYS` row or a map already exported by the slab-only
 operator. Its scope is the supported retained-order/domain content below. The reviewed build plan must identify actual reusable c1 operands,
@@ -201,6 +226,15 @@ supplied by the spec, not independent confirmation of the general half-space
 map or bulk FORM. The two-momentum DtN kernel retains its recorded independent
 confirmation. The d blind construction/review and T7 records must preserve this
 scope; agreement alone cannot erase shared supplied premises.
+
+Carry the background-density multiplication operator with the actual case
+binding before the shape/closure operation, as required by [c1's carry-forward][c1-density]
+and [c2 §3d.1][c2-density]: `RHO4_CONSTANT` uses its live brane-density relation;
+`RHOBR_CONSTANT` retains its physically constant representative. Direct c1 reuse
+must preserve that binding or join the appropriately rebound c2 operand. A
+bare-constant substitution cannot stand for RHO4's live field, and correct
+RHOBR specialization is not a density freeze. The [c2 record][c2-density-record]
+is a locate-first lead, not new validation of a consumed operand.
 
 Two explicit checks tie supported map contributions to the scattering result.
 Emit both operands and literal residuals for (i) reconstructed pressure and
@@ -407,7 +441,9 @@ parameter, regulator change or broad radiation survey. Where the domain and
 needed construction are established, cost only genuinely missing work and
 complete it through the ordinary reviewed-build process. Symbolic/analytic
 evidence and any numerical witness must test the particular end-channel or
-bulk-depth observable they claim to test.
+bulk-depth observable they claim to test. The radiation-domain construction
+stop above and §3.3's zero-result coverage rule apply to these bulk checks as
+well; neither a closed support nor an insensitive zero comparison pays them.
 
 All four physical cases and the v10 §5 uniform, FORM, coordinate and one-sided
 controls remain. LAB_HELD versus MATERIAL_ADVECTED is a comparison of physical
@@ -505,7 +541,10 @@ already specified an additional numerical frequency:
   nonzero incident denominator. Use an independently constructed symbolic/
   analytic comparison on that domain or an actual numerical witness with
   relevant controls. A zero-rank thickness selector, bulk-only radiation or
-  a total-current deficit cannot discharge this check.
+  a total-current deficit cannot discharge this check. Its outgoing boundary
+  and current representation must meet §2's actual-domain coverage rule,
+  including relevant continuous contributions on a radiating input. A need
+  for a new boundary/continuum method triggers that rule's scope/build stop.
 - After amendment clearance and A9 operand/form mapping, inspect existing full
   end relations, classifications and inherited validity conditions first.
   Diagnose what the actual operands establish about closed thickness-like
@@ -572,6 +611,17 @@ is required by this proposed amendment. An admissible open-channel numerical
 point is a preferred focused test, not a guaranteed available point or a new
 frequency campaign. The presence of an open channel does not itself imply a
 nonzero conversion amplitude.
+
+For both A11 and A12, a zero-versus-zero response comparison alone does not
+validate a generic conversion coefficient, current sign, normalization or
+measure. A genuine zero on nonempty admissible channel/support is still a
+valid scoped result when its mechanism and relevant operands are independently
+established; distinguish that from an empty selector, an insensitive check or
+an unresolved tiny signal. Use the applicable independent construction and
+FORM evidence to state exactly what was tested. Do not require a nonzero
+physical response or vary parameters simply to obtain one. If the required
+coverage is still unestablished, retain the stop-for-scope rule; no zero result
+waives it or validates a generic object beyond the evidence's actual scope.
 
 Bulk-depth radiation remains a separate availability/current question. The
 bulk-escape FORM required in §2 has its own radiating-support, physical-validity,
@@ -706,6 +756,15 @@ channel, the total open-output current ratio coincides with this transverse
 ratio because all open outputs are transverse; a near-unity value there does
 not establish confinement. No bound-overlap contribution is inferred or set to
 zero when the bound companion is deferred.
+
+Apply §2's retained-model / justified-leading-physical / induced-diagnostic
+distinction to survival and its deficit and weak coefficients as well. Carry
+their actual amplitude, current, normalization and denominator dependencies.
+A nonzero transverse baseline can couple missing parent-order terms into a
+physical weak coefficient; the retained quadratic result alone is not a tiny
+gain/loss prediction, as the [saved continuum record][survival-order] states.
+State the actual supported order rather than assume a universal leading
+deficit or infer a complete loss from the survival ratio.
 
 The exact fresh metadata/write-key design must be settled against the real
 export schema in the amended build plan; the status label above is not an
@@ -878,3 +937,8 @@ acceptance commit must be established by their actual subsequent records.
 [deferral-owners]: /var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_decisions.md:175
 [c1-independence]: /var/projects/toy_physics/research/pde_ledger_v3/steps/S11c_c1_curved_bulk_closure.md:157
 [c1-energy-source]: /var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_c1_bulk_closure_sympy_audit.py:807
+
+[c1-density]: /var/projects/toy_physics/research/pde_ledger_v3/steps/S11c_c1_curved_bulk_closure.md:185
+[c2-density]: /var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c2_SHARED_PHYSICS.md:228
+[c2-density-record]: /var/projects/toy_physics/research/pde_ledger_v3/steps/S11c_c2_self_energy_fold.md:173
+[survival-order]: /var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_continuum_currents_report.md:32

@@ -18,22 +18,23 @@ failure histories. Use explicit references and complete only genuinely missing
 operations after inspecting actual inputs and returns.
 
 **Current disposition (2026-09-26):** input and A6/A7/first-jet consumer mapping
-is complete. The [concrete boundary finding](S11c_d_FORM_boundary_disposition.md)
-identifies an unresolved centre-drive/sector reduction in the consumed b/c2/d
-chain and the decaying-bulk restriction of the current finite end closure.
-The user approved that bounded compatibility task. Its
-[focused build plan](../directives/S11c_d_centre_compatibility_plan.md) and
-[exact saved-input map](S11c_d_centre_compatibility_inputs.json) are prepared.
-The proposed algebra uses the saved c2 per-face and parity returns, subject to
-a new source-derived relation with b's normalized face row; it does not repeat
-the acoustic closure. The necessary diagnostic remains distinct from a complete
-centre-sector reduction. The plan gate is running: after automatic approval
-review rejected the initial submission before process start, the user explicitly
-approved the unchanged 17-file private packet to Claude/Grok. The fresh read-only
-reviews launched sequentially with a local completion hook. Both reports must
-finish before adjudication or edits. No algebraic worker, new boundary method
-or response calculation has launched. This finding neither reopens the cleared
-amendment nor declares existing finite results incorrect.
+is complete. The user-approved bounded centre compatibility task has now
+completed cleanly. Its [result report](S11c_d_centre_compatibility_report.md)
+and [diagnostic checkpoint](S11c_d_centre_compatibility_checkpoint.json) record
+zero centre face load in all four existing retained thickness-driven closures,
+computed through the source-derived per-face relations. The final-assembly
+control responds; old closures and responses were not replayed.
+
+That necessary compatibility result does not select independent centre motion.
+The precise remaining input is an upstream centre balance/constraint and its
+drive/solution-selection conditions, or an explicitly prescribed independent
+centre drive with the scope it defines. The existing five-field results are
+not declared incorrect. This bounded task stops at that upstream disposition;
+it does not impose centre zero or authorize a new centre/radiation solver.
+The [separate decaying-bulk boundary finding](S11c_d_FORM_boundary_disposition.md)
+still limits the current finite end method. A general radiating method remains
+a separate concrete scope/build decision. No further document-review cycle,
+old pole/complex-row queue or numerical campaign is automatically scheduled.
 
 **Outside this execution queue:** the eight material complex rows, two material
 complex responses and new pole searches; global domain certification; broad

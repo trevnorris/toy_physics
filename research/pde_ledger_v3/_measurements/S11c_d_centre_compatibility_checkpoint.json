@@ -1,0 +1,628 @@
+{
+  "status": "ACCEPTED_BOUNDED_CENTRE_FACE_LOAD_DIAGNOSTIC_RECORD",
+  "acceptanceScope": "Clean producer and bounded saved-data/serialization inspection only. Necessary compatibility of the recorded thickness-driven face load; no complete centre reduction or independent upstream physical clearance.",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production",
+  "completeRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/complete",
+  "originalChecks": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/complete/checks.json",
+    "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/complete/checks.json",
+    "bytes": 26000,
+    "sha256": "c3145347bd889203d831c03f4c96a8cbd74766d3d8cc15e44712d6a690ba9099"
+  },
+  "fullConsumedSourceAndInputManifest": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_centre_compatibility_run_inputs.json",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_centre_compatibility_run_inputs.json",
+    "bytes": 26083,
+    "sha256": "844c3dacefb6378ac5d8c469dc173fa4453e4a37b9bef0c97618addb01da8193"
+  },
+  "fullArtifactManifest": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/complete/artifacts.json",
+    "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/complete/artifacts.json",
+    "bytes": 693451,
+    "sha256": "ef5d1215099e5c3fcb51459b613737a3467c407585baff0c76051ac600175fd9"
+  },
+  "fullOperationCatalogue": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/complete/operation-catalogue.json",
+    "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/complete/operation-catalogue.json",
+    "bytes": 804510,
+    "sha256": "76872200e557d77f3af78127bfff70bee9c1900967e88d56dafa827880e881db"
+  },
+  "finalConsumedPosthashes": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/complete/posthashes.json",
+    "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/complete/posthashes.json",
+    "bytes": 21072,
+    "sha256": "c3713ee8f755867026e7dc567c3d841fd231f57afc329a043420276024078933"
+  },
+  "runInputPrehash": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/complete/input-specification-route.json",
+    "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/complete/input-specification-route.json",
+    "bytes": 365,
+    "sha256": "4a215f480a3b1973bf8152e263a9c9e05758caee70295ffca784ec38ac048b69"
+  },
+  "runInputPosthash": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/complete/input-specification-posthash.json",
+    "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/complete/input-specification-posthash.json",
+    "bytes": 365,
+    "sha256": "4a215f480a3b1973bf8152e263a9c9e05758caee70295ffca784ec38ac048b69"
+  },
+  "savedInspection": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/saved-inspection.json",
+    "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/saved-inspection.json",
+    "bytes": 23378,
+    "sha256": "42c538dae4ec21330271b2ef03e6088f88fecbe1fd8dc9cacf9442731ae6cc03"
+  },
+  "nativeOutcome": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/centre_compatibility.invocation.json",
+    "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/centre_compatibility.invocation.json",
+    "bytes": 807,
+    "sha256": "97f3a121d5467bbd416603843e1af23093ca049e29dd1f9887c491d97463b14a"
+  },
+  "guardOutcome": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/resource-guard/outcome.json",
+    "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/resource-guard/outcome.json",
+    "bytes": 272,
+    "sha256": "19d3c7b942bcde2482abeff3bd7e549e7370cd9bf59522d19ecaafd03a39133a"
+  },
+  "childOutcome": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/resource-guard/child-outcome.json",
+    "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/resource-guard/child-outcome.json",
+    "bytes": 103,
+    "sha256": "bb0edc2d385c2b6f2dc5569c1a3a2004ec39ee7cf75398baf5c1185866810303"
+  },
+  "limits": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/resource-guard/effective-limits.json",
+    "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/resource-guard/effective-limits.json",
+    "bytes": 441,
+    "sha256": "4a76194db6f0435c8631788ad8b89a31d7634a1e3cc5a1339b4085066b1bca48"
+  },
+  "limitValidation": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/resource-guard/limit-validation.json",
+    "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/resource-guard/limit-validation.json",
+    "bytes": 511,
+    "sha256": "c203275866a83b2714c295e7849d7bb8c35e4f991c45fb20bec6f12392f97856"
+  },
+  "resourceSamples": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/resource-guard/resource-samples.jsonl",
+    "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/resource-guard/resource-samples.jsonl",
+    "bytes": 5995,
+    "sha256": "a90d66171deab6e925f3aa7577f0d36e97640558a34783b83ef6d49decb4c5b6"
+  },
+  "launch": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/launch.json",
+    "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/launch.json",
+    "bytes": 1539,
+    "sha256": "cca5c133a553244e999b1b246dd58a9786bc72b9443cf1240a8d0e9bfee350cd"
+  },
+  "staticReview": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/static-review.json",
+    "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/static-review.json",
+    "bytes": 2471,
+    "sha256": "9c31fe04f8d19a5f5d9711bbbe79b8a98dd474abb4e4262ba27f617e9f425c21"
+  },
+  "stdout": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/centre_compatibility.stdout",
+    "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/centre_compatibility.stdout",
+    "bytes": 26000,
+    "sha256": "c3145347bd889203d831c03f4c96a8cbd74766d3d8cc15e44712d6a690ba9099"
+  },
+  "strictStderr": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/centre_compatibility.stderr",
+    "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/centre_compatibility.stderr",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "guardStdout": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/guard.stdout",
+    "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/guard.stdout",
+    "bytes": 272,
+    "sha256": "19d3c7b942bcde2482abeff3bd7e549e7370cd9bf59522d19ecaafd03a39133a"
+  },
+  "guardStderr": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/guard.stderr",
+    "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/guard.stderr",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "guardResourceStdout": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/resource-guard/stdout",
+    "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/resource-guard/stdout",
+    "bytes": 807,
+    "sha256": "97f3a121d5467bbd416603843e1af23093ca049e29dd1f9887c491d97463b14a"
+  },
+  "guardResourceStderr": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/resource-guard/stderr",
+    "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/resource-guard/stderr",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "implementationCommit": "8470e88704a5d93f8753be7ff2829a7da6e64fe0",
+  "launchCommit": "7a6dd237cc0c27d51ed546ef949061591ac6280d",
+  "cases": [
+    {
+      "case": [
+        "LAB_HELD",
+        "RHO4_CONSTANT"
+      ],
+      "physicalInput": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/complete/cases/LAB_HELD__RHO4_CONSTANT/physical-input.json",
+        "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/complete/cases/LAB_HELD__RHO4_CONSTANT/physical-input.json",
+        "bytes": 74425,
+        "links": [],
+        "sha256": "af162dc05ef7cd57cc41d744f1ac4ad735601e312ae96e5682166d4205a2016c"
+      },
+      "summary": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/complete/cases/LAB_HELD__RHO4_CONSTANT/summary.json",
+        "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/complete/cases/LAB_HELD__RHO4_CONSTANT/summary.json",
+        "bytes": 11322,
+        "links": [],
+        "sha256": "f5e24fc5159dbae129857c8d70891513312bdec00693a6718a61a23a56c4163c"
+      },
+      "relation": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/complete/cases/LAB_HELD__RHO4_CONSTANT/baseline-relation.json",
+        "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/complete/cases/LAB_HELD__RHO4_CONSTANT/baseline-relation.json",
+        "bytes": 1933,
+        "sha256": "d7626a242cd089c07828fcbc5aa0f6f57386f0015d9a1bf55ee03d0eb137265b"
+      },
+      "nativeUnits": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/complete/cases/LAB_HELD__RHO4_CONSTANT/native-row-units.json",
+        "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/complete/cases/LAB_HELD__RHO4_CONSTANT/native-row-units.json",
+        "bytes": 214,
+        "sha256": "5cd4e26370fd926c34db9642e225fc566ff7475667492720b0a7b4d6e167342b"
+      },
+      "openRowJoin": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/complete/cases/LAB_HELD__RHO4_CONSTANT/open-row-input-join.json",
+        "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/complete/cases/LAB_HELD__RHO4_CONSTANT/open-row-input-join.json",
+        "bytes": 141,
+        "sha256": "c8a27f6499c032a2c2cf5be0febd2e1505fb051c49b2a5012ca754a039daece6"
+      },
+      "computedRatiosSrepr": [
+        "Mul(Integer(-1), Integer(2), Pow(Symbol('W_0', positive=True), Integer(-1)))",
+        "Mul(Integer(2), Pow(Symbol('W_0', positive=True), Integer(-1)))"
+      ],
+      "result": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/complete/cases/LAB_HELD__RHO4_CONSTANT/centre-slot-image.pickle",
+        "sha256": "bc69ecf7cea92ccc28b7ce153e1cab7fdcca79bc1ad0ebb4e5684e4778c80418",
+        "bytes": 45
+      },
+      "resultSrepr": "Integer(0)",
+      "selectedOperationReceipts": [
+        {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/complete/cases/LAB_HELD__RHO4_CONSTANT/operations/0061/completed.json",
+          "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/complete/cases/LAB_HELD__RHO4_CONSTANT/operations/0061/completed.json",
+          "bytes": 874,
+          "sha256": "a23de5f5cfcb90507a8975aaeda7dafd00f34a572f2c37ecd51115babdc09da0"
+        },
+        {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/complete/cases/LAB_HELD__RHO4_CONSTANT/operations/0099/completed.json",
+          "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/complete/cases/LAB_HELD__RHO4_CONSTANT/operations/0099/completed.json",
+          "bytes": 873,
+          "sha256": "3853810c9bf52fa31d39aaac155dd56162c53595aa1453208bdd3ca7c0d168d0"
+        },
+        {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/complete/cases/LAB_HELD__RHO4_CONSTANT/operations/0114/completed.json",
+          "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/complete/cases/LAB_HELD__RHO4_CONSTANT/operations/0114/completed.json",
+          "bytes": 873,
+          "sha256": "9f656ec048942a1f9f90a5e80a83238502732501eff6a63e673cc30430c0e50d"
+        },
+        {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/complete/cases/LAB_HELD__RHO4_CONSTANT/operations/0127/completed.json",
+          "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/complete/cases/LAB_HELD__RHO4_CONSTANT/operations/0127/completed.json",
+          "bytes": 865,
+          "sha256": "8d5883796b9ee20e1c41e943ba80759a43d259d92f3bf53a6720c7da86c03687"
+        },
+        {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/complete/cases/LAB_HELD__RHO4_CONSTANT/operations/0129/completed.json",
+          "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/complete/cases/LAB_HELD__RHO4_CONSTANT/operations/0129/completed.json",
+          "bytes": 873,
+          "sha256": "84b9993062e9500c8204ce84d603a7750ee7fada0d0b69737b705dfd014a5aaf"
+        },
+        {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/complete/cases/LAB_HELD__RHO4_CONSTANT/operations/0132/completed.json",
+          "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/complete/cases/LAB_HELD__RHO4_CONSTANT/operations/0132/completed.json",
+          "bytes": 861,
+          "sha256": "e6fb1714f7216b9d17f7c997c4252efaf9bcfef8bb9d9fc6aa9a730c1d154900"
+        }
+      ],
+      "controls": [
+        {
+          "name": "one-pressure-sign",
+          "summary": {
+            "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/complete/cases/LAB_HELD__RHO4_CONSTANT/controls/one-pressure-sign-summary.json",
+            "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/complete/cases/LAB_HELD__RHO4_CONSTANT/controls/one-pressure-sign-summary.json",
+            "bytes": 2038,
+            "sha256": "7111b52fbc882ad0ae25875313497dad16ff8eb105077f56bdd79de1183aac8c"
+          },
+          "result": null,
+          "assemblyEqualsBaseline": null,
+          "resultZeroProperty": null,
+          "importedInputUnchanged": false
+        },
+        {
+          "name": "exchange-face-jets",
+          "summary": {
+            "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/complete/cases/LAB_HELD__RHO4_CONSTANT/controls/exchange-face-jets-summary.json",
+            "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/complete/cases/LAB_HELD__RHO4_CONSTANT/controls/exchange-face-jets-summary.json",
+            "bytes": 2402,
+            "sha256": "d19ec41c9304564de28b459c21b48ae08fea73092e38217135a909d7ccc19cab"
+          },
+          "result": {
+            "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/complete/cases/LAB_HELD__RHO4_CONSTANT/controls/exchange-face-jets-result.pickle",
+            "sha256": "bc69ecf7cea92ccc28b7ce153e1cab7fdcca79bc1ad0ebb4e5684e4778c80418",
+            "bytes": 45
+          },
+          "assemblyEqualsBaseline": true,
+          "resultZeroProperty": true,
+          "importedInputUnchanged": true
+        },
+        {
+          "name": "whole-face-sign",
+          "summary": {
+            "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/complete/cases/LAB_HELD__RHO4_CONSTANT/controls/whole-face-sign-summary.json",
+            "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/complete/cases/LAB_HELD__RHO4_CONSTANT/controls/whole-face-sign-summary.json",
+            "bytes": 2395,
+            "sha256": "74e18d3b51c50edc53d0ef18c690e705187f85cd2bbbc13a59ef7f643d72bc11"
+          },
+          "result": {
+            "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/complete/cases/LAB_HELD__RHO4_CONSTANT/controls/whole-face-sign-result.pickle",
+            "sha256": "02915b483c976c352914a1ebe5db4ac3d5d438f59a24533463cd6839362bdcc9",
+            "bytes": 29394
+          },
+          "assemblyEqualsBaseline": false,
+          "resultZeroProperty": null,
+          "importedInputUnchanged": false
+        }
+      ]
+    },
+    {
+      "case": [
+        "LAB_HELD",
+        "RHOBR_CONSTANT"
+      ],
+      "physicalInput": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/complete/cases/LAB_HELD__RHOBR_CONSTANT/physical-input.json",
+        "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/complete/cases/LAB_HELD__RHOBR_CONSTANT/physical-input.json",
+        "bytes": 73100,
+        "links": [],
+        "sha256": "f7a144d51d2c5d50f73a1faeab832d379aac7564cd0c876cc4bf01501ba4c1c9"
+      },
+      "summary": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/complete/cases/LAB_HELD__RHOBR_CONSTANT/summary.json",
+        "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/complete/cases/LAB_HELD__RHOBR_CONSTANT/summary.json",
+        "bytes": 3531,
+        "links": [],
+        "sha256": "ad2c83dc2b1918c298d07e5c59efddf063a0d213c8b9dc298c0c47622458480f"
+      },
+      "relation": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/complete/cases/LAB_HELD__RHOBR_CONSTANT/baseline-relation.json",
+        "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/complete/cases/LAB_HELD__RHOBR_CONSTANT/baseline-relation.json",
+        "bytes": 1935,
+        "sha256": "29301819413a2c70ca9d69fe09cc180864dc126869aa38b4f46ec1c34061b264"
+      },
+      "nativeUnits": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/complete/cases/LAB_HELD__RHOBR_CONSTANT/native-row-units.json",
+        "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/complete/cases/LAB_HELD__RHOBR_CONSTANT/native-row-units.json",
+        "bytes": 214,
+        "sha256": "5cd4e26370fd926c34db9642e225fc566ff7475667492720b0a7b4d6e167342b"
+      },
+      "openRowJoin": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/complete/cases/LAB_HELD__RHOBR_CONSTANT/open-row-input-join.json",
+        "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/complete/cases/LAB_HELD__RHOBR_CONSTANT/open-row-input-join.json",
+        "bytes": 141,
+        "sha256": "c8a27f6499c032a2c2cf5be0febd2e1505fb051c49b2a5012ca754a039daece6"
+      },
+      "computedRatiosSrepr": [
+        "Mul(Integer(-1), Integer(2), Pow(Symbol('W_0', positive=True), Integer(-1)))",
+        "Mul(Integer(2), Pow(Symbol('W_0', positive=True), Integer(-1)))"
+      ],
+      "result": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/complete/cases/LAB_HELD__RHOBR_CONSTANT/centre-slot-image.pickle",
+        "sha256": "bc69ecf7cea92ccc28b7ce153e1cab7fdcca79bc1ad0ebb4e5684e4778c80418",
+        "bytes": 45
+      },
+      "resultSrepr": "Integer(0)",
+      "selectedOperationReceipts": [
+        {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/complete/cases/LAB_HELD__RHOBR_CONSTANT/operations/0061/completed.json",
+          "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/complete/cases/LAB_HELD__RHOBR_CONSTANT/operations/0061/completed.json",
+          "bytes": 877,
+          "sha256": "13d9d4c1e71d037c0e8a43897db815e092a63f86be718ecc1b20a449b8dac01f"
+        },
+        {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/complete/cases/LAB_HELD__RHOBR_CONSTANT/operations/0099/completed.json",
+          "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/complete/cases/LAB_HELD__RHOBR_CONSTANT/operations/0099/completed.json",
+          "bytes": 876,
+          "sha256": "593465c781e3731e2600a6e5ab47fcd0a04e211fe0bde760683a554875c2f211"
+        },
+        {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/complete/cases/LAB_HELD__RHOBR_CONSTANT/operations/0114/completed.json",
+          "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/complete/cases/LAB_HELD__RHOBR_CONSTANT/operations/0114/completed.json",
+          "bytes": 876,
+          "sha256": "de5894ed13f688b5c0caa0489e3299d2e0a1cb76b5f1693d6ab62f8a8982ef6f"
+        },
+        {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/complete/cases/LAB_HELD__RHOBR_CONSTANT/operations/0127/completed.json",
+          "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/complete/cases/LAB_HELD__RHOBR_CONSTANT/operations/0127/completed.json",
+          "bytes": 868,
+          "sha256": "0e4cd34da65e5b06f2ec318b436ce32a0f1fdd12b8c123fc3f50d187003bdd10"
+        },
+        {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/complete/cases/LAB_HELD__RHOBR_CONSTANT/operations/0129/completed.json",
+          "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/complete/cases/LAB_HELD__RHOBR_CONSTANT/operations/0129/completed.json",
+          "bytes": 876,
+          "sha256": "8733db892813ec5cf4cf6fbc2ab4cbec21304f24c62ba729a1034b68e0fefe2a"
+        },
+        {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/complete/cases/LAB_HELD__RHOBR_CONSTANT/operations/0132/completed.json",
+          "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/complete/cases/LAB_HELD__RHOBR_CONSTANT/operations/0132/completed.json",
+          "bytes": 864,
+          "sha256": "3d35ab4cae29711cd7352fc0c1edd389055d6ad1855dead6a683a1604c8c7690"
+        }
+      ],
+      "controls": []
+    },
+    {
+      "case": [
+        "MATERIAL_ADVECTED",
+        "RHO4_CONSTANT"
+      ],
+      "physicalInput": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/complete/cases/MATERIAL_ADVECTED__RHO4_CONSTANT/physical-input.json",
+        "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/complete/cases/MATERIAL_ADVECTED__RHO4_CONSTANT/physical-input.json",
+        "bytes": 74918,
+        "links": [],
+        "sha256": "6d104083f390573032fd5bd333df27514e2dbde320f1da3d582e891076dcdca9"
+      },
+      "summary": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/complete/cases/MATERIAL_ADVECTED__RHO4_CONSTANT/summary.json",
+        "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/complete/cases/MATERIAL_ADVECTED__RHO4_CONSTANT/summary.json",
+        "bytes": 3571,
+        "links": [],
+        "sha256": "3c6a51cc1c66a249bb5f7e558391572238ebbbbe7ddbfb7863a309453ed22e6c"
+      },
+      "relation": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/complete/cases/MATERIAL_ADVECTED__RHO4_CONSTANT/baseline-relation.json",
+        "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/complete/cases/MATERIAL_ADVECTED__RHO4_CONSTANT/baseline-relation.json",
+        "bytes": 1951,
+        "sha256": "5b42cf56f602ac71bd256932e7a040245d1f82fda8a8b5413791d3a43bc8de9d"
+      },
+      "nativeUnits": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/complete/cases/MATERIAL_ADVECTED__RHO4_CONSTANT/native-row-units.json",
+        "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/complete/cases/MATERIAL_ADVECTED__RHO4_CONSTANT/native-row-units.json",
+        "bytes": 214,
+        "sha256": "5cd4e26370fd926c34db9642e225fc566ff7475667492720b0a7b4d6e167342b"
+      },
+      "openRowJoin": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/complete/cases/MATERIAL_ADVECTED__RHO4_CONSTANT/open-row-input-join.json",
+        "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/complete/cases/MATERIAL_ADVECTED__RHO4_CONSTANT/open-row-input-join.json",
+        "bytes": 141,
+        "sha256": "c8a27f6499c032a2c2cf5be0febd2e1505fb051c49b2a5012ca754a039daece6"
+      },
+      "computedRatiosSrepr": [
+        "Mul(Integer(-1), Integer(2), Pow(Symbol('W_0', positive=True), Integer(-1)))",
+        "Mul(Integer(2), Pow(Symbol('W_0', positive=True), Integer(-1)))"
+      ],
+      "result": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/complete/cases/MATERIAL_ADVECTED__RHO4_CONSTANT/centre-slot-image.pickle",
+        "sha256": "bc69ecf7cea92ccc28b7ce153e1cab7fdcca79bc1ad0ebb4e5684e4778c80418",
+        "bytes": 45
+      },
+      "resultSrepr": "Integer(0)",
+      "selectedOperationReceipts": [
+        {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/complete/cases/MATERIAL_ADVECTED__RHO4_CONSTANT/operations/0061/completed.json",
+          "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/complete/cases/MATERIAL_ADVECTED__RHO4_CONSTANT/operations/0061/completed.json",
+          "bytes": 901,
+          "sha256": "82e756ad500402054a16f02ce02593a0acb74af51d0540cb89411573ef0d9718"
+        },
+        {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/complete/cases/MATERIAL_ADVECTED__RHO4_CONSTANT/operations/0099/completed.json",
+          "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/complete/cases/MATERIAL_ADVECTED__RHO4_CONSTANT/operations/0099/completed.json",
+          "bytes": 900,
+          "sha256": "48b45dc7f1a5f15dcb650601622d9fc3d97a1fe7a680d5b07a3e545891418d8c"
+        },
+        {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/complete/cases/MATERIAL_ADVECTED__RHO4_CONSTANT/operations/0114/completed.json",
+          "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/complete/cases/MATERIAL_ADVECTED__RHO4_CONSTANT/operations/0114/completed.json",
+          "bytes": 900,
+          "sha256": "b8f48c9583927695ab334b704a7f5490ac2a04fb1f94561386490294a3566a6f"
+        },
+        {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/complete/cases/MATERIAL_ADVECTED__RHO4_CONSTANT/operations/0127/completed.json",
+          "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/complete/cases/MATERIAL_ADVECTED__RHO4_CONSTANT/operations/0127/completed.json",
+          "bytes": 892,
+          "sha256": "fcd8b63af1a7aa183f6a77d2d61a47ef59eb98c8219e2b47085561f9892071f4"
+        },
+        {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/complete/cases/MATERIAL_ADVECTED__RHO4_CONSTANT/operations/0129/completed.json",
+          "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/complete/cases/MATERIAL_ADVECTED__RHO4_CONSTANT/operations/0129/completed.json",
+          "bytes": 900,
+          "sha256": "24d497159d4f7401631b4b36ed373c2f22e06d51b1a7d18cde23af6d4d15c89b"
+        },
+        {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/complete/cases/MATERIAL_ADVECTED__RHO4_CONSTANT/operations/0132/completed.json",
+          "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/complete/cases/MATERIAL_ADVECTED__RHO4_CONSTANT/operations/0132/completed.json",
+          "bytes": 888,
+          "sha256": "f6986b4b2171e77fc3943768c2e025c828d54886a1b581c751b9a6d0ccb4299c"
+        }
+      ],
+      "controls": []
+    },
+    {
+      "case": [
+        "MATERIAL_ADVECTED",
+        "RHOBR_CONSTANT"
+      ],
+      "physicalInput": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/complete/cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/physical-input.json",
+        "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/complete/cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/physical-input.json",
+        "bytes": 73502,
+        "links": [],
+        "sha256": "f491a40f4783f526ecedfe258a8371fd02141101f9a474e60abe31e3bbe1b74c"
+      },
+      "summary": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/complete/cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/summary.json",
+        "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/complete/cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/summary.json",
+        "bytes": 3576,
+        "links": [],
+        "sha256": "91b6b99d613511791f9d029e2b86e093f01ff9d99e2cce47ded47ef89dc7fe3f"
+      },
+      "relation": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/complete/cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/baseline-relation.json",
+        "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/complete/cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/baseline-relation.json",
+        "bytes": 1953,
+        "sha256": "0d513bf0c78e7e4768e282e0582b402f36bcf0865ca5b3448c5321a4a9bbbea5"
+      },
+      "nativeUnits": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/complete/cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/native-row-units.json",
+        "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/complete/cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/native-row-units.json",
+        "bytes": 214,
+        "sha256": "5cd4e26370fd926c34db9642e225fc566ff7475667492720b0a7b4d6e167342b"
+      },
+      "openRowJoin": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/complete/cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/open-row-input-join.json",
+        "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/complete/cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/open-row-input-join.json",
+        "bytes": 141,
+        "sha256": "c8a27f6499c032a2c2cf5be0febd2e1505fb051c49b2a5012ca754a039daece6"
+      },
+      "computedRatiosSrepr": [
+        "Mul(Integer(-1), Integer(2), Pow(Symbol('W_0', positive=True), Integer(-1)))",
+        "Mul(Integer(2), Pow(Symbol('W_0', positive=True), Integer(-1)))"
+      ],
+      "result": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/complete/cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/centre-slot-image.pickle",
+        "sha256": "bc69ecf7cea92ccc28b7ce153e1cab7fdcca79bc1ad0ebb4e5684e4778c80418",
+        "bytes": 45
+      },
+      "resultSrepr": "Integer(0)",
+      "selectedOperationReceipts": [
+        {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/complete/cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/operations/0061/completed.json",
+          "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/complete/cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/operations/0061/completed.json",
+          "bytes": 904,
+          "sha256": "bf78345a3e531832124b8f577ec53329a288cb597e009ff60aa300e7b9f3e657"
+        },
+        {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/complete/cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/operations/0099/completed.json",
+          "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/complete/cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/operations/0099/completed.json",
+          "bytes": 903,
+          "sha256": "c023257a964543b40484910a86c5b50f78f4c9036a33dc9a2011ff76f249cbb5"
+        },
+        {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/complete/cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/operations/0114/completed.json",
+          "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/complete/cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/operations/0114/completed.json",
+          "bytes": 903,
+          "sha256": "8d663fe3b92e368ea32d153ebde9975dfb8224f69924da36a93691d0ca429d38"
+        },
+        {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/complete/cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/operations/0127/completed.json",
+          "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/complete/cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/operations/0127/completed.json",
+          "bytes": 895,
+          "sha256": "40b6a7c1f952875d1a87d636c58b591cd8522c6e33b1580bd8179a4f2475e333"
+        },
+        {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/complete/cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/operations/0129/completed.json",
+          "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/complete/cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/operations/0129/completed.json",
+          "bytes": 903,
+          "sha256": "4e774530573aecd092d014f06d996fd7c55ab0adfc0cd23f816db3ec91e5731f"
+        },
+        {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/complete/cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/operations/0132/completed.json",
+          "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/production/complete/cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/operations/0132/completed.json",
+          "bytes": 891,
+          "sha256": "ee69c843b63f8c74d9664f004d3c1a9e9f13b3958c3a4671bfdf1591d7c9f0ee"
+        }
+      ],
+      "controls": []
+    }
+  ],
+  "counts": {
+    "consumedFiles": 43,
+    "manifestedArtifacts": 2447,
+    "completeFiles": 2449,
+    "operationReceipts": 791,
+    "newCalls": 387,
+    "exactPrecedingUses": 404
+  },
+  "timing": {
+    "workerSeconds": 25.64849159802543,
+    "nativeSeconds": 26.12016605999088,
+    "guardSeconds": 26.245858584996313
+  },
+  "resourceObservation": {
+    "peakBytes": 802721792,
+    "minimumHostAvailableBytes": 20265009152,
+    "memoryMaxEvents": 0,
+    "oomEvents": 0,
+    "oomKillEvents": 0,
+    "swapBytes": 0
+  },
+  "reviewAndFailureProvenance": [
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_centre_plan_review.json",
+      "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_centre_plan_review.json",
+      "bytes": 2269,
+      "sha256": "268c6cda0a78ace053a95368c90fd72478e6f22c1b7204eb7829070f150eb805"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_centre_plan_review_claude.md",
+      "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_centre_plan_review_claude.md",
+      "bytes": 8143,
+      "sha256": "11448a23bfdb683493075bd99c555bcf3a5fe1f507c3c520980f961a42380725"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_centre_plan_review_grok.md",
+      "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_centre_plan_review_grok.md",
+      "bytes": 12872,
+      "sha256": "a8c079382d55396256ef929ae476bfb728c48fa2bf8e75164b214c82c1f89157"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_centre_plan_adjudication.md",
+      "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_centre_plan_adjudication.md",
+      "bytes": 4747,
+      "sha256": "f62fd202e0ffb6280c769260368fdf6d7f3aedffb570bff784e1502e3e3451af"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_centre_compatibility_instrument.json",
+      "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_centre_compatibility_instrument.json",
+      "bytes": 1330,
+      "sha256": "f55d4331a15dea27fb605ae7bba403e7e2d21110bdfb43086555db69fe0d4052"
+    },
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/prepare/closure-index-failure.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/prepare/closure-index-failure.json",
+      "bytes": 486,
+      "sha256": "fc390eef754da98dc82764fd10ded9b676963887b65ff364cac6b49be0220e66"
+    },
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/prepare/source-join-metadata-failure.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/prepare/source-join-metadata-failure.json",
+      "bytes": 611,
+      "sha256": "f161994df8a6a20f29f6ad4afb16c736e8e2c5e313129f5c21d985d25c833c2f"
+    },
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/prepare/instrument-harness.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/prepare/instrument-harness.json",
+      "bytes": 1651,
+      "sha256": "1f1f8e4f026eb80dbe3588489baa90114938039a5690954f5f305606ac688f67"
+    },
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/prepare/instrument-harness.stderr",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/prepare/instrument-harness.stderr",
+      "bytes": 261,
+      "sha256": "7c4dd4c57f3811a27cb15af0222924cb703115dab0d929a163fc00529695c619"
+    }
+  ],
+  "qualification": {
+    "allFourRetainedCentreFaceImagesZero": true,
+    "inheritedSavedC2ParityZero": true,
+    "independentlyDerivedClosedForce": false,
+    "fullCentreDynamicsOrUniqueness": false,
+    "newRadiationMethodAuthorized": false,
+    "poleDeferralPreserved": true,
+    "wholeFaceControlStructurallyResponded": true,
+    "wholeFaceControlGenericZeroProperty": null,
+    "jetExchangeControlDegenerate": true,
+    "neededUpstream": "Centre balance/constraint and drive/solution-selection conditions, or explicit prescribed centre drive and its restricted problem; no imposed centre=0.",
+    "builderSuffixSha256": "f01024512c9a028e7e524e5a95b5c455be42e125d10c36f94e20493109b013c2"
+  }
+}

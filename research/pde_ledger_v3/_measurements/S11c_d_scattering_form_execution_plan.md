@@ -36,6 +36,14 @@ still limits the current finite end method. A general radiating method remains
 a separate concrete scope/build decision. No further document-review cycle,
 old pole/complex-row queue or numerical campaign is automatically scheduled.
 
+The subsequent [upstream source disposition](S11c_d_centre_upstream_disposition.md)
+locates the saved independent centre direction, generic prescribed-drive
+acoustic coefficients and restricted bare-DtN parity evidence. It recommends
+one bounded completion of the upstream balance/solution-selection statement,
+without adding centre mechanics or fixing centre zero. That next scope is
+pending; source navigation has not cleared new production. It must return a
+usable relation or a precise missing model input, not another diagnostic chain.
+
 **Outside this execution queue:** the eight material complex rows, two material
 complex responses and new pole searches; global domain certification; broad
 frequency/profile/grid sweeps; unsupported second-shape/threshold completion;

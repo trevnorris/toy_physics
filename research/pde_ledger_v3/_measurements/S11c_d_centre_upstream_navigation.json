@@ -1,0 +1,1168 @@
+{
+  "status": "READ_ONLY_UPSTREAM_CENTRE_DEPENDENCY_NAVIGATION",
+  "method": "Source AST and balanced literal navigation only; keys decoded with ast.literal_eval. No scientific packet restoration, constructor, arithmetic, proof, or solver.",
+  "scientificCalls": 0,
+  "scientificPacketRestorations": 0,
+  "sources": [
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_a_interface_geometry_sympy_audit.py",
+      "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_a_interface_geometry_sympy_audit.py",
+      "bytes": 101558,
+      "sha256": "f4da0f2224257381300e5e78cc74a1341485b82446ac98251ca25d4b3c1a6be7",
+      "definitions": [
+        {
+          "name": "dof_fields",
+          "line": 566,
+          "endLine": 575,
+          "sha256": "b5847308865fa80e068091a49e782029271951a7871f07ca6e76e42fb2c457bd"
+        },
+        {
+          "name": "build_material_face_source",
+          "line": 703,
+          "endLine": 815,
+          "sha256": "8846692dca664fbdf47b96fbbcbf5aaf1414ceead05ffb581ea8d1fd2dde52b3"
+        },
+        {
+          "name": "build_face_source",
+          "line": 818,
+          "endLine": 875,
+          "sha256": "ff88ee06e33004f98faca535ba2e44f3101cb35467a40914574d8a1010a240ff"
+        },
+        {
+          "name": "virtual_work_cases",
+          "line": 956,
+          "endLine": 985,
+          "sha256": "b7621c61900d95d1d5ffc156a1c618102810aefe765d58e6303b73383578bc9f"
+        }
+      ]
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_b_brane_operator_sympy_audit.py",
+      "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_b_brane_operator_sympy_audit.py",
+      "bytes": 203199,
+      "sha256": "666b4005b745dd29933561f701c6c1859a2b00e9855badcb08e2347308504472",
+      "definitions": [
+        {
+          "name": "face_generalized_force_rows",
+          "line": 2135,
+          "endLine": 2239,
+          "sha256": "6621bff9441b5743bcac6750a3f2e5ebf813ff0c7b1f4a80991464faaf589834"
+        },
+        {
+          "name": "kinetic_balance_from_energy",
+          "line": 2317,
+          "endLine": 2336,
+          "sha256": "2302e420b3fdc03567e4f5f6e5fee3c60f4e146b86cfffe28cc8545cab7858d2"
+        },
+        {
+          "name": "constraint_fold_from_source",
+          "line": 2494,
+          "endLine": 2631,
+          "sha256": "a7860d7a42df10fc2226e9b8f53446b57022b5a91a7bc12f674d430701a96a94"
+        }
+      ]
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_c1_bulk_closure_sympy_audit.py",
+      "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_c1_bulk_closure_sympy_audit.py",
+      "bytes": 101082,
+      "sha256": "02abfa93076efcb38a1b300daf9adedf5e3ad425ebf9d73555d730cea935ba20",
+      "definitions": [
+        {
+          "name": "response_operator_case",
+          "line": 834,
+          "endLine": 859,
+          "sha256": "5ac79cfe3b4bd83ff74ceb83cd8d9884b2143b2cb3f88c785f9728db51a3e2fb"
+        },
+        {
+          "name": "closed_coefficients",
+          "line": 723,
+          "endLine": 755,
+          "sha256": "216ef1f025a73ce72459fa8b6d2754ec957f4161bc964797b8e0bbd28d0135d8"
+        },
+        {
+          "name": "rederive_flat_face_response",
+          "line": 1023,
+          "endLine": 1043,
+          "sha256": "a3702d4f71ad8411a59a5e3be7e202909db0162103af27b46ed3db57fa0950cc"
+        }
+      ]
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_c2_selfenergy_fold_sympy_audit.py",
+      "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_c2_selfenergy_fold_sympy_audit.py",
+      "bytes": 102548,
+      "sha256": "0e90c751d36178a9846e75c38ac4ad0c8591b4b8ce11b6dc194218913265d434",
+      "definitions": [
+        {
+          "name": "build_face",
+          "line": 552,
+          "endLine": 607,
+          "sha256": "4b25ca499a316b4bb96f4504f6e4ee7b9001729426d5849f6a2f7d294350d81e"
+        },
+        {
+          "name": "expanded_rows",
+          "line": 610,
+          "endLine": 612,
+          "sha256": "a16c93d4bb11ae429bfa62fe81c91be64abc259c9e5f4c51ab9ae682bd159b4f"
+        },
+        {
+          "name": "build_case",
+          "line": 615,
+          "endLine": 661,
+          "sha256": "12a4fd09e2fa3f91c2d6512d64d2add006f38615882f7be831ede70547122b16"
+        }
+      ]
+    }
+  ],
+  "premises": [
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11b_SHARED_PHYSICS.md",
+      "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11b_SHARED_PHYSICS.md",
+      "bytes": 76540,
+      "sha256": "9ea9e388e9d6421a841eaf851d12e1793527bba9a24aeeface3bfac2f4b40078"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_b_SHARED_PHYSICS.md",
+      "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_b_SHARED_PHYSICS.md",
+      "bytes": 39529,
+      "sha256": "84d319141045522072bdbe944e72901ce78c70e73fdca31b5693d640f144ca89"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c1_SHARED_PHYSICS.md",
+      "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c1_SHARED_PHYSICS.md",
+      "bytes": 50376,
+      "sha256": "47554c8c9cf2fd070c1048a7ae0ca36b1315bf50a48ed07a51019ff3e72987ad"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_SCATTERING_FORM_AMENDMENT.md",
+      "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_SCATTERING_FORM_AMENDMENT.md",
+      "bytes": 69780,
+      "sha256": "eb6f20a3fd0bce308e53901fa69fdf267b2917e5cc78b319a1e7700074a47560"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_FORM_build_directive.md",
+      "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_FORM_build_directive.md",
+      "bytes": 8322,
+      "sha256": "2dfa2955b0d5943c4a641b3be8d1171dc8e63043ceac88d6e4abdab2d4222b82"
+    }
+  ],
+  "savedInputs": [
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/prepare/saved-operands.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/prepare/saved-operands.json",
+      "bytes": 157155,
+      "sha256": "1d0839f28d6466c651a5a697b1d4feaab0bb4f50735f4973a1c80a1690ae93fd"
+    },
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/prepare/index_inputs.py",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/prepare/index_inputs.py",
+      "bytes": 4743,
+      "sha256": "191969ddc739cd6c95b4a96bdc358eda251d19ed2b3a317d3d65cbf62217a6aa"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_centre_compatibility_checkpoint.json",
+      "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_centre_compatibility_checkpoint.json",
+      "bytes": 41866,
+      "sha256": "7703e26b44b521a95add34bc78b5e29f7400bcd29efc2071898424e83de00559"
+    }
+  ],
+  "c1Records": [
+    {
+      "record": {
+        "path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/out/S11c_c1_bulk_closure_sympy_audit.out",
+        "canonicalPath": "/var/projects/toy_physics/.git/annex/objects/gP/g8/MD5E-s90722854--082818754abeedb7b5a0d4e1e3b51215.out/MD5E-s90722854--082818754abeedb7b5a0d4e1e3b51215.out",
+        "tag": "PY_S11CC1_DTN_BY_PARITY",
+        "byteOffset": 107400,
+        "bytes": 10430,
+        "sha256": "483408d0e475109bae71c8e687c4c12aa6478872bf0825785c00e1ce3b152c35"
+      },
+      "views": [
+        {
+          "case": "LAB_HELD",
+          "label": "OFF_DIAGONAL_BLOCKS",
+          "values": [
+            {
+              "record": {
+                "path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/out/S11c_c1_bulk_closure_sympy_audit.out",
+                "canonicalPath": "/var/projects/toy_physics/.git/annex/objects/gP/g8/MD5E-s90722854--082818754abeedb7b5a0d4e1e3b51215.out/MD5E-s90722854--082818754abeedb7b5a0d4e1e3b51215.out",
+                "tag": "PY_S11CC1_DTN_BY_PARITY",
+                "byteOffset": 107400,
+                "bytes": 10430,
+                "sha256": "483408d0e475109bae71c8e687c4c12aa6478872bf0825785c00e1ce3b152c35"
+              },
+              "selector": [
+                "LAB_HELD",
+                "VALUE",
+                "OFF_DIAGONAL_BLOCKS",
+                0
+              ],
+              "byteOffset": 112379,
+              "bytes": 11,
+              "sha256": "7f4173211a68491cb946be0f7430c1c04b5cc366bc40150c9697369f9b605952",
+              "savedLiteral": " Integer(0)"
+            },
+            {
+              "record": {
+                "path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/out/S11c_c1_bulk_closure_sympy_audit.out",
+                "canonicalPath": "/var/projects/toy_physics/.git/annex/objects/gP/g8/MD5E-s90722854--082818754abeedb7b5a0d4e1e3b51215.out/MD5E-s90722854--082818754abeedb7b5a0d4e1e3b51215.out",
+                "tag": "PY_S11CC1_DTN_BY_PARITY",
+                "byteOffset": 107400,
+                "bytes": 10430,
+                "sha256": "483408d0e475109bae71c8e687c4c12aa6478872bf0825785c00e1ce3b152c35"
+              },
+              "selector": [
+                "LAB_HELD",
+                "VALUE",
+                "OFF_DIAGONAL_BLOCKS",
+                1
+              ],
+              "byteOffset": 112391,
+              "bytes": 11,
+              "sha256": "7f4173211a68491cb946be0f7430c1c04b5cc366bc40150c9697369f9b605952",
+              "savedLiteral": " Integer(0)"
+            }
+          ]
+        },
+        {
+          "case": "MATERIAL_ADVECTED",
+          "label": "OFF_DIAGONAL_BLOCKS",
+          "values": [
+            {
+              "record": {
+                "path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/out/S11c_c1_bulk_closure_sympy_audit.out",
+                "canonicalPath": "/var/projects/toy_physics/.git/annex/objects/gP/g8/MD5E-s90722854--082818754abeedb7b5a0d4e1e3b51215.out/MD5E-s90722854--082818754abeedb7b5a0d4e1e3b51215.out",
+                "tag": "PY_S11CC1_DTN_BY_PARITY",
+                "byteOffset": 107400,
+                "bytes": 10430,
+                "sha256": "483408d0e475109bae71c8e687c4c12aa6478872bf0825785c00e1ce3b152c35"
+              },
+              "selector": [
+                "MATERIAL_ADVECTED",
+                "VALUE",
+                "OFF_DIAGONAL_BLOCKS",
+                0
+              ],
+              "byteOffset": 117583,
+              "bytes": 11,
+              "sha256": "7f4173211a68491cb946be0f7430c1c04b5cc366bc40150c9697369f9b605952",
+              "savedLiteral": " Integer(0)"
+            },
+            {
+              "record": {
+                "path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/out/S11c_c1_bulk_closure_sympy_audit.out",
+                "canonicalPath": "/var/projects/toy_physics/.git/annex/objects/gP/g8/MD5E-s90722854--082818754abeedb7b5a0d4e1e3b51215.out/MD5E-s90722854--082818754abeedb7b5a0d4e1e3b51215.out",
+                "tag": "PY_S11CC1_DTN_BY_PARITY",
+                "byteOffset": 107400,
+                "bytes": 10430,
+                "sha256": "483408d0e475109bae71c8e687c4c12aa6478872bf0825785c00e1ce3b152c35"
+              },
+              "selector": [
+                "MATERIAL_ADVECTED",
+                "VALUE",
+                "OFF_DIAGONAL_BLOCKS",
+                1
+              ],
+              "byteOffset": 117595,
+              "bytes": 11,
+              "sha256": "7f4173211a68491cb946be0f7430c1c04b5cc366bc40150c9697369f9b605952",
+              "savedLiteral": " Integer(0)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "record": {
+        "path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/out/S11c_c1_bulk_closure_sympy_audit.out",
+        "canonicalPath": "/var/projects/toy_physics/.git/annex/objects/gP/g8/MD5E-s90722854--082818754abeedb7b5a0d4e1e3b51215.out/MD5E-s90722854--082818754abeedb7b5a0d4e1e3b51215.out",
+        "tag": "PY_S11CC1_FACE_RESPONSE",
+        "byteOffset": 313309,
+        "bytes": 206650,
+        "sha256": "3594bc0828cee3bad378f245d1fbf5e86c2eb9ec20e3fb636b93b72cdba2a35e"
+      },
+      "views": []
+    },
+    {
+      "record": {
+        "path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/out/S11c_c1_bulk_closure_sympy_audit.out",
+        "canonicalPath": "/var/projects/toy_physics/.git/annex/objects/gP/g8/MD5E-s90722854--082818754abeedb7b5a0d4e1e3b51215.out/MD5E-s90722854--082818754abeedb7b5a0d4e1e3b51215.out",
+        "tag": "PY_S11CC1_FACE_RESPONSE_COEFFS",
+        "byteOffset": 519959,
+        "bytes": 154450,
+        "sha256": "6e56851c5728a536721c86c0af8f92a476a1b14dd187c1bb33e128ed9fbd2b23"
+      },
+      "views": [
+        {
+          "case": [
+            "LAB_HELD",
+            1,
+            "RHO4_CONSTANT"
+          ],
+          "valueRoute": {
+            "record": {
+              "path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/out/S11c_c1_bulk_closure_sympy_audit.out",
+              "canonicalPath": "/var/projects/toy_physics/.git/annex/objects/gP/g8/MD5E-s90722854--082818754abeedb7b5a0d4e1e3b51215.out/MD5E-s90722854--082818754abeedb7b5a0d4e1e3b51215.out",
+              "tag": "PY_S11CC1_FACE_RESPONSE_COEFFS",
+              "byteOffset": 519959,
+              "bytes": 154450,
+              "sha256": "6e56851c5728a536721c86c0af8f92a476a1b14dd187c1bb33e128ed9fbd2b23"
+            },
+            "selector": [
+              [
+                "LAB_HELD",
+                1,
+                "RHO4_CONSTANT"
+              ],
+              "VALUE"
+            ],
+            "byteOffset": 520086,
+            "bytes": 18683,
+            "sha256": "0afdf1bf931c10afe69950b9b6359b0a487cb92a39c1a5f3c4c7b167174d6615"
+          },
+          "inputSlots": {
+            "record": {
+              "path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/out/S11c_c1_bulk_closure_sympy_audit.out",
+              "canonicalPath": "/var/projects/toy_physics/.git/annex/objects/gP/g8/MD5E-s90722854--082818754abeedb7b5a0d4e1e3b51215.out/MD5E-s90722854--082818754abeedb7b5a0d4e1e3b51215.out",
+              "tag": "PY_S11CC1_FACE_RESPONSE_COEFFS",
+              "byteOffset": 519959,
+              "bytes": 154450,
+              "sha256": "6e56851c5728a536721c86c0af8f92a476a1b14dd187c1bb33e128ed9fbd2b23"
+            },
+            "selector": [
+              [
+                "LAB_HELD",
+                1,
+                "RHO4_CONSTANT"
+              ],
+              "INPUTS"
+            ],
+            "byteOffset": 539261,
+            "bytes": 35,
+            "sha256": "7611dad19b0309c30d24a121d8d30c46ba67145684092c78207375929ffdd19f",
+            "savedLiteral": " Tuple(Str('V_S'), Str('MU_THETA'))"
+          }
+        },
+        {
+          "case": [
+            "LAB_HELD",
+            1,
+            "RHOBR_CONSTANT"
+          ],
+          "valueRoute": {
+            "record": {
+              "path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/out/S11c_c1_bulk_closure_sympy_audit.out",
+              "canonicalPath": "/var/projects/toy_physics/.git/annex/objects/gP/g8/MD5E-s90722854--082818754abeedb7b5a0d4e1e3b51215.out/MD5E-s90722854--082818754abeedb7b5a0d4e1e3b51215.out",
+              "tag": "PY_S11CC1_FACE_RESPONSE_COEFFS",
+              "byteOffset": 519959,
+              "bytes": 154450,
+              "sha256": "6e56851c5728a536721c86c0af8f92a476a1b14dd187c1bb33e128ed9fbd2b23"
+            },
+            "selector": [
+              [
+                "LAB_HELD",
+                1,
+                "RHOBR_CONSTANT"
+              ],
+              "VALUE"
+            ],
+            "byteOffset": 539391,
+            "bytes": 18667,
+            "sha256": "8dd4e638393672ef18f1c1dd73c3ce18a5438043e1d4f43fb614e27c2fd88436"
+          },
+          "inputSlots": {
+            "record": {
+              "path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/out/S11c_c1_bulk_closure_sympy_audit.out",
+              "canonicalPath": "/var/projects/toy_physics/.git/annex/objects/gP/g8/MD5E-s90722854--082818754abeedb7b5a0d4e1e3b51215.out/MD5E-s90722854--082818754abeedb7b5a0d4e1e3b51215.out",
+              "tag": "PY_S11CC1_FACE_RESPONSE_COEFFS",
+              "byteOffset": 519959,
+              "bytes": 154450,
+              "sha256": "6e56851c5728a536721c86c0af8f92a476a1b14dd187c1bb33e128ed9fbd2b23"
+            },
+            "selector": [
+              [
+                "LAB_HELD",
+                1,
+                "RHOBR_CONSTANT"
+              ],
+              "INPUTS"
+            ],
+            "byteOffset": 558550,
+            "bytes": 35,
+            "sha256": "7611dad19b0309c30d24a121d8d30c46ba67145684092c78207375929ffdd19f",
+            "savedLiteral": " Tuple(Str('V_S'), Str('MU_THETA'))"
+          }
+        },
+        {
+          "case": [
+            "LAB_HELD",
+            -1,
+            "RHO4_CONSTANT"
+          ],
+          "valueRoute": {
+            "record": {
+              "path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/out/S11c_c1_bulk_closure_sympy_audit.out",
+              "canonicalPath": "/var/projects/toy_physics/.git/annex/objects/gP/g8/MD5E-s90722854--082818754abeedb7b5a0d4e1e3b51215.out/MD5E-s90722854--082818754abeedb7b5a0d4e1e3b51215.out",
+              "tag": "PY_S11CC1_FACE_RESPONSE_COEFFS",
+              "byteOffset": 519959,
+              "bytes": 154450,
+              "sha256": "6e56851c5728a536721c86c0af8f92a476a1b14dd187c1bb33e128ed9fbd2b23"
+            },
+            "selector": [
+              [
+                "LAB_HELD",
+                -1,
+                "RHO4_CONSTANT"
+              ],
+              "VALUE"
+            ],
+            "byteOffset": 558680,
+            "bytes": 18683,
+            "sha256": "0afdf1bf931c10afe69950b9b6359b0a487cb92a39c1a5f3c4c7b167174d6615"
+          },
+          "inputSlots": {
+            "record": {
+              "path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/out/S11c_c1_bulk_closure_sympy_audit.out",
+              "canonicalPath": "/var/projects/toy_physics/.git/annex/objects/gP/g8/MD5E-s90722854--082818754abeedb7b5a0d4e1e3b51215.out/MD5E-s90722854--082818754abeedb7b5a0d4e1e3b51215.out",
+              "tag": "PY_S11CC1_FACE_RESPONSE_COEFFS",
+              "byteOffset": 519959,
+              "bytes": 154450,
+              "sha256": "6e56851c5728a536721c86c0af8f92a476a1b14dd187c1bb33e128ed9fbd2b23"
+            },
+            "selector": [
+              [
+                "LAB_HELD",
+                -1,
+                "RHO4_CONSTANT"
+              ],
+              "INPUTS"
+            ],
+            "byteOffset": 577855,
+            "bytes": 35,
+            "sha256": "7611dad19b0309c30d24a121d8d30c46ba67145684092c78207375929ffdd19f",
+            "savedLiteral": " Tuple(Str('V_S'), Str('MU_THETA'))"
+          }
+        },
+        {
+          "case": [
+            "LAB_HELD",
+            -1,
+            "RHOBR_CONSTANT"
+          ],
+          "valueRoute": {
+            "record": {
+              "path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/out/S11c_c1_bulk_closure_sympy_audit.out",
+              "canonicalPath": "/var/projects/toy_physics/.git/annex/objects/gP/g8/MD5E-s90722854--082818754abeedb7b5a0d4e1e3b51215.out/MD5E-s90722854--082818754abeedb7b5a0d4e1e3b51215.out",
+              "tag": "PY_S11CC1_FACE_RESPONSE_COEFFS",
+              "byteOffset": 519959,
+              "bytes": 154450,
+              "sha256": "6e56851c5728a536721c86c0af8f92a476a1b14dd187c1bb33e128ed9fbd2b23"
+            },
+            "selector": [
+              [
+                "LAB_HELD",
+                -1,
+                "RHOBR_CONSTANT"
+              ],
+              "VALUE"
+            ],
+            "byteOffset": 577986,
+            "bytes": 18667,
+            "sha256": "8dd4e638393672ef18f1c1dd73c3ce18a5438043e1d4f43fb614e27c2fd88436"
+          },
+          "inputSlots": {
+            "record": {
+              "path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/out/S11c_c1_bulk_closure_sympy_audit.out",
+              "canonicalPath": "/var/projects/toy_physics/.git/annex/objects/gP/g8/MD5E-s90722854--082818754abeedb7b5a0d4e1e3b51215.out/MD5E-s90722854--082818754abeedb7b5a0d4e1e3b51215.out",
+              "tag": "PY_S11CC1_FACE_RESPONSE_COEFFS",
+              "byteOffset": 519959,
+              "bytes": 154450,
+              "sha256": "6e56851c5728a536721c86c0af8f92a476a1b14dd187c1bb33e128ed9fbd2b23"
+            },
+            "selector": [
+              [
+                "LAB_HELD",
+                -1,
+                "RHOBR_CONSTANT"
+              ],
+              "INPUTS"
+            ],
+            "byteOffset": 597145,
+            "bytes": 35,
+            "sha256": "7611dad19b0309c30d24a121d8d30c46ba67145684092c78207375929ffdd19f",
+            "savedLiteral": " Tuple(Str('V_S'), Str('MU_THETA'))"
+          }
+        },
+        {
+          "case": [
+            "MATERIAL_ADVECTED",
+            1,
+            "RHO4_CONSTANT"
+          ],
+          "valueRoute": {
+            "record": {
+              "path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/out/S11c_c1_bulk_closure_sympy_audit.out",
+              "canonicalPath": "/var/projects/toy_physics/.git/annex/objects/gP/g8/MD5E-s90722854--082818754abeedb7b5a0d4e1e3b51215.out/MD5E-s90722854--082818754abeedb7b5a0d4e1e3b51215.out",
+              "tag": "PY_S11CC1_FACE_RESPONSE_COEFFS",
+              "byteOffset": 519959,
+              "bytes": 154450,
+              "sha256": "6e56851c5728a536721c86c0af8f92a476a1b14dd187c1bb33e128ed9fbd2b23"
+            },
+            "selector": [
+              [
+                "MATERIAL_ADVECTED",
+                1,
+                "RHO4_CONSTANT"
+              ],
+              "VALUE"
+            ],
+            "byteOffset": 597283,
+            "bytes": 18683,
+            "sha256": "0afdf1bf931c10afe69950b9b6359b0a487cb92a39c1a5f3c4c7b167174d6615"
+          },
+          "inputSlots": {
+            "record": {
+              "path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/out/S11c_c1_bulk_closure_sympy_audit.out",
+              "canonicalPath": "/var/projects/toy_physics/.git/annex/objects/gP/g8/MD5E-s90722854--082818754abeedb7b5a0d4e1e3b51215.out/MD5E-s90722854--082818754abeedb7b5a0d4e1e3b51215.out",
+              "tag": "PY_S11CC1_FACE_RESPONSE_COEFFS",
+              "byteOffset": 519959,
+              "bytes": 154450,
+              "sha256": "6e56851c5728a536721c86c0af8f92a476a1b14dd187c1bb33e128ed9fbd2b23"
+            },
+            "selector": [
+              [
+                "MATERIAL_ADVECTED",
+                1,
+                "RHO4_CONSTANT"
+              ],
+              "INPUTS"
+            ],
+            "byteOffset": 616458,
+            "bytes": 35,
+            "sha256": "7611dad19b0309c30d24a121d8d30c46ba67145684092c78207375929ffdd19f",
+            "savedLiteral": " Tuple(Str('V_S'), Str('MU_THETA'))"
+          }
+        },
+        {
+          "case": [
+            "MATERIAL_ADVECTED",
+            1,
+            "RHOBR_CONSTANT"
+          ],
+          "valueRoute": {
+            "record": {
+              "path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/out/S11c_c1_bulk_closure_sympy_audit.out",
+              "canonicalPath": "/var/projects/toy_physics/.git/annex/objects/gP/g8/MD5E-s90722854--082818754abeedb7b5a0d4e1e3b51215.out/MD5E-s90722854--082818754abeedb7b5a0d4e1e3b51215.out",
+              "tag": "PY_S11CC1_FACE_RESPONSE_COEFFS",
+              "byteOffset": 519959,
+              "bytes": 154450,
+              "sha256": "6e56851c5728a536721c86c0af8f92a476a1b14dd187c1bb33e128ed9fbd2b23"
+            },
+            "selector": [
+              [
+                "MATERIAL_ADVECTED",
+                1,
+                "RHOBR_CONSTANT"
+              ],
+              "VALUE"
+            ],
+            "byteOffset": 616597,
+            "bytes": 18667,
+            "sha256": "8dd4e638393672ef18f1c1dd73c3ce18a5438043e1d4f43fb614e27c2fd88436"
+          },
+          "inputSlots": {
+            "record": {
+              "path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/out/S11c_c1_bulk_closure_sympy_audit.out",
+              "canonicalPath": "/var/projects/toy_physics/.git/annex/objects/gP/g8/MD5E-s90722854--082818754abeedb7b5a0d4e1e3b51215.out/MD5E-s90722854--082818754abeedb7b5a0d4e1e3b51215.out",
+              "tag": "PY_S11CC1_FACE_RESPONSE_COEFFS",
+              "byteOffset": 519959,
+              "bytes": 154450,
+              "sha256": "6e56851c5728a536721c86c0af8f92a476a1b14dd187c1bb33e128ed9fbd2b23"
+            },
+            "selector": [
+              [
+                "MATERIAL_ADVECTED",
+                1,
+                "RHOBR_CONSTANT"
+              ],
+              "INPUTS"
+            ],
+            "byteOffset": 635756,
+            "bytes": 35,
+            "sha256": "7611dad19b0309c30d24a121d8d30c46ba67145684092c78207375929ffdd19f",
+            "savedLiteral": " Tuple(Str('V_S'), Str('MU_THETA'))"
+          }
+        },
+        {
+          "case": [
+            "MATERIAL_ADVECTED",
+            -1,
+            "RHO4_CONSTANT"
+          ],
+          "valueRoute": {
+            "record": {
+              "path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/out/S11c_c1_bulk_closure_sympy_audit.out",
+              "canonicalPath": "/var/projects/toy_physics/.git/annex/objects/gP/g8/MD5E-s90722854--082818754abeedb7b5a0d4e1e3b51215.out/MD5E-s90722854--082818754abeedb7b5a0d4e1e3b51215.out",
+              "tag": "PY_S11CC1_FACE_RESPONSE_COEFFS",
+              "byteOffset": 519959,
+              "bytes": 154450,
+              "sha256": "6e56851c5728a536721c86c0af8f92a476a1b14dd187c1bb33e128ed9fbd2b23"
+            },
+            "selector": [
+              [
+                "MATERIAL_ADVECTED",
+                -1,
+                "RHO4_CONSTANT"
+              ],
+              "VALUE"
+            ],
+            "byteOffset": 635895,
+            "bytes": 18683,
+            "sha256": "0afdf1bf931c10afe69950b9b6359b0a487cb92a39c1a5f3c4c7b167174d6615"
+          },
+          "inputSlots": {
+            "record": {
+              "path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/out/S11c_c1_bulk_closure_sympy_audit.out",
+              "canonicalPath": "/var/projects/toy_physics/.git/annex/objects/gP/g8/MD5E-s90722854--082818754abeedb7b5a0d4e1e3b51215.out/MD5E-s90722854--082818754abeedb7b5a0d4e1e3b51215.out",
+              "tag": "PY_S11CC1_FACE_RESPONSE_COEFFS",
+              "byteOffset": 519959,
+              "bytes": 154450,
+              "sha256": "6e56851c5728a536721c86c0af8f92a476a1b14dd187c1bb33e128ed9fbd2b23"
+            },
+            "selector": [
+              [
+                "MATERIAL_ADVECTED",
+                -1,
+                "RHO4_CONSTANT"
+              ],
+              "INPUTS"
+            ],
+            "byteOffset": 655070,
+            "bytes": 35,
+            "sha256": "7611dad19b0309c30d24a121d8d30c46ba67145684092c78207375929ffdd19f",
+            "savedLiteral": " Tuple(Str('V_S'), Str('MU_THETA'))"
+          }
+        },
+        {
+          "case": [
+            "MATERIAL_ADVECTED",
+            -1,
+            "RHOBR_CONSTANT"
+          ],
+          "valueRoute": {
+            "record": {
+              "path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/out/S11c_c1_bulk_closure_sympy_audit.out",
+              "canonicalPath": "/var/projects/toy_physics/.git/annex/objects/gP/g8/MD5E-s90722854--082818754abeedb7b5a0d4e1e3b51215.out/MD5E-s90722854--082818754abeedb7b5a0d4e1e3b51215.out",
+              "tag": "PY_S11CC1_FACE_RESPONSE_COEFFS",
+              "byteOffset": 519959,
+              "bytes": 154450,
+              "sha256": "6e56851c5728a536721c86c0af8f92a476a1b14dd187c1bb33e128ed9fbd2b23"
+            },
+            "selector": [
+              [
+                "MATERIAL_ADVECTED",
+                -1,
+                "RHOBR_CONSTANT"
+              ],
+              "VALUE"
+            ],
+            "byteOffset": 655210,
+            "bytes": 18667,
+            "sha256": "8dd4e638393672ef18f1c1dd73c3ce18a5438043e1d4f43fb614e27c2fd88436"
+          },
+          "inputSlots": {
+            "record": {
+              "path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/out/S11c_c1_bulk_closure_sympy_audit.out",
+              "canonicalPath": "/var/projects/toy_physics/.git/annex/objects/gP/g8/MD5E-s90722854--082818754abeedb7b5a0d4e1e3b51215.out/MD5E-s90722854--082818754abeedb7b5a0d4e1e3b51215.out",
+              "tag": "PY_S11CC1_FACE_RESPONSE_COEFFS",
+              "byteOffset": 519959,
+              "bytes": 154450,
+              "sha256": "6e56851c5728a536721c86c0af8f92a476a1b14dd187c1bb33e128ed9fbd2b23"
+            },
+            "selector": [
+              [
+                "MATERIAL_ADVECTED",
+                -1,
+                "RHOBR_CONSTANT"
+              ],
+              "INPUTS"
+            ],
+            "byteOffset": 674369,
+            "bytes": 35,
+            "sha256": "7611dad19b0309c30d24a121d8d30c46ba67145684092c78207375929ffdd19f",
+            "savedLiteral": " Tuple(Str('V_S'), Str('MU_THETA'))"
+          }
+        }
+      ]
+    },
+    {
+      "record": {
+        "path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/out/S11c_c1_bulk_closure_sympy_audit.out",
+        "canonicalPath": "/var/projects/toy_physics/.git/annex/objects/gP/g8/MD5E-s90722854--082818754abeedb7b5a0d4e1e3b51215.out/MD5E-s90722854--082818754abeedb7b5a0d4e1e3b51215.out",
+        "tag": "PY_S11CC1_NONINVERTIBILITY_CONDITION",
+        "byteOffset": 674409,
+        "bytes": 6188,
+        "sha256": "ee2a65b05a0879e4067f1132ecc72f32999d968fa553656e1173ad89f94cdfc0"
+      },
+      "views": [
+        {
+          "case": [
+            "LAB_HELD",
+            1
+          ],
+          "value": {
+            "record": {
+              "path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/out/S11c_c1_bulk_closure_sympy_audit.out",
+              "canonicalPath": "/var/projects/toy_physics/.git/annex/objects/gP/g8/MD5E-s90722854--082818754abeedb7b5a0d4e1e3b51215.out/MD5E-s90722854--082818754abeedb7b5a0d4e1e3b51215.out",
+              "tag": "PY_S11CC1_NONINVERTIBILITY_CONDITION",
+              "byteOffset": 674409,
+              "bytes": 6188,
+              "sha256": "ee2a65b05a0879e4067f1132ecc72f32999d968fa553656e1173ad89f94cdfc0"
+            },
+            "selector": [
+              [
+                "LAB_HELD",
+                1
+              ],
+              "VALUE"
+            ],
+            "byteOffset": 674520,
+            "bytes": 1190,
+            "sha256": "776d6601261dd2ef2ca92068a98db79cd6c39462958009d323708a1573e71955",
+            "savedLiteral": " Tuple(Tuple(Str('OPERATOR'), Add(Mul(Symbol('Lambda_A_0', real=True), Pow(Symbol('rho_m', positive=True), Integer(-2)), Pow(Add(Mul(Integer(-1), I, Symbol('omega', real=True), Symbol('tau_A', nonnegative=True)), Integer(1)), Integer(-1)), Symbol('s11cc1_dtn_operator_lab_held_plus', commutative=False)), Symbol('s11cc1_identity_operator', commutative=False))), Tuple(Str('NONINVERTIBILITY'), Equality(Function('S11CC1ZeroInSpectrum')(Add(Mul(Symbol('Lambda_A_0', real=True), Pow(Symbol('rho_m', positive=True), Integer(-2)), Pow(Add(Mul(Integer(-1), I, Symbol('omega', real=True), Symbol('tau_A', nonnegative=True)), Integer(1)), Integer(-1)), Symbol('s11cc1_dtn_operator_lab_held_plus', commutative=False)), Symbol('s11cc1_identity_operator', commutative=False))), Integer(1))), Tuple(Str('FLAT_DIAGONAL_SYMBOL'), Add(Mul(Symbol('Lambda_A_0', real=True), Symbol('omega', real=True), Pow(Symbol('rho_m', positive=True), Integer(-1)), Pow(Symbol('s11cc1_q_out_output'), Integer(-1)), Pow(Add(Mul(Integer(-1), I, Symbol('omega', real=True), Symbol('tau_A', nonnegative=True)), Integer(1)), Integer(-1))), Integer(1))), Tuple(Str('PROFILE_CONDITIONED_RESOLVENT'), Str('RESERVED_FOR_S11C_D')))"
+          }
+        },
+        {
+          "case": [
+            "LAB_HELD",
+            -1
+          ],
+          "value": {
+            "record": {
+              "path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/out/S11c_c1_bulk_closure_sympy_audit.out",
+              "canonicalPath": "/var/projects/toy_physics/.git/annex/objects/gP/g8/MD5E-s90722854--082818754abeedb7b5a0d4e1e3b51215.out/MD5E-s90722854--082818754abeedb7b5a0d4e1e3b51215.out",
+              "tag": "PY_S11CC1_NONINVERTIBILITY_CONDITION",
+              "byteOffset": 674409,
+              "bytes": 6188,
+              "sha256": "ee2a65b05a0879e4067f1132ecc72f32999d968fa553656e1173ad89f94cdfc0"
+            },
+            "selector": [
+              [
+                "LAB_HELD",
+                -1
+              ],
+              "VALUE"
+            ],
+            "byteOffset": 676042,
+            "bytes": 1192,
+            "sha256": "6514b5508a7298a7856bfc4edc33c75b29b05230aea4ba173c1276d04833420f",
+            "savedLiteral": " Tuple(Tuple(Str('OPERATOR'), Add(Mul(Symbol('Lambda_A_0', real=True), Pow(Symbol('rho_m', positive=True), Integer(-2)), Pow(Add(Mul(Integer(-1), I, Symbol('omega', real=True), Symbol('tau_A', nonnegative=True)), Integer(1)), Integer(-1)), Symbol('s11cc1_dtn_operator_lab_held_minus', commutative=False)), Symbol('s11cc1_identity_operator', commutative=False))), Tuple(Str('NONINVERTIBILITY'), Equality(Function('S11CC1ZeroInSpectrum')(Add(Mul(Symbol('Lambda_A_0', real=True), Pow(Symbol('rho_m', positive=True), Integer(-2)), Pow(Add(Mul(Integer(-1), I, Symbol('omega', real=True), Symbol('tau_A', nonnegative=True)), Integer(1)), Integer(-1)), Symbol('s11cc1_dtn_operator_lab_held_minus', commutative=False)), Symbol('s11cc1_identity_operator', commutative=False))), Integer(1))), Tuple(Str('FLAT_DIAGONAL_SYMBOL'), Add(Mul(Symbol('Lambda_A_0', real=True), Symbol('omega', real=True), Pow(Symbol('rho_m', positive=True), Integer(-1)), Pow(Symbol('s11cc1_q_out_output'), Integer(-1)), Pow(Add(Mul(Integer(-1), I, Symbol('omega', real=True), Symbol('tau_A', nonnegative=True)), Integer(1)), Integer(-1))), Integer(1))), Tuple(Str('PROFILE_CONDITIONED_RESOLVENT'), Str('RESERVED_FOR_S11C_D')))"
+          }
+        },
+        {
+          "case": [
+            "MATERIAL_ADVECTED",
+            1
+          ],
+          "value": {
+            "record": {
+              "path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/out/S11c_c1_bulk_closure_sympy_audit.out",
+              "canonicalPath": "/var/projects/toy_physics/.git/annex/objects/gP/g8/MD5E-s90722854--082818754abeedb7b5a0d4e1e3b51215.out/MD5E-s90722854--082818754abeedb7b5a0d4e1e3b51215.out",
+              "tag": "PY_S11CC1_NONINVERTIBILITY_CONDITION",
+              "byteOffset": 674409,
+              "bytes": 6188,
+              "sha256": "ee2a65b05a0879e4067f1132ecc72f32999d968fa553656e1173ad89f94cdfc0"
+            },
+            "selector": [
+              [
+                "MATERIAL_ADVECTED",
+                1
+              ],
+              "VALUE"
+            ],
+            "byteOffset": 677574,
+            "bytes": 1208,
+            "sha256": "6165b0bf329eb431829d8b874c240347d2dd2f7e8b9738a00e8dc433bde214aa",
+            "savedLiteral": " Tuple(Tuple(Str('OPERATOR'), Add(Mul(Symbol('Lambda_A_0', real=True), Pow(Symbol('rho_m', positive=True), Integer(-2)), Pow(Add(Mul(Integer(-1), I, Symbol('omega', real=True), Symbol('tau_A', nonnegative=True)), Integer(1)), Integer(-1)), Symbol('s11cc1_dtn_operator_material_advected_plus', commutative=False)), Symbol('s11cc1_identity_operator', commutative=False))), Tuple(Str('NONINVERTIBILITY'), Equality(Function('S11CC1ZeroInSpectrum')(Add(Mul(Symbol('Lambda_A_0', real=True), Pow(Symbol('rho_m', positive=True), Integer(-2)), Pow(Add(Mul(Integer(-1), I, Symbol('omega', real=True), Symbol('tau_A', nonnegative=True)), Integer(1)), Integer(-1)), Symbol('s11cc1_dtn_operator_material_advected_plus', commutative=False)), Symbol('s11cc1_identity_operator', commutative=False))), Integer(1))), Tuple(Str('FLAT_DIAGONAL_SYMBOL'), Add(Mul(Symbol('Lambda_A_0', real=True), Symbol('omega', real=True), Pow(Symbol('rho_m', positive=True), Integer(-1)), Pow(Symbol('s11cc1_q_out_output'), Integer(-1)), Pow(Add(Mul(Integer(-1), I, Symbol('omega', real=True), Symbol('tau_A', nonnegative=True)), Integer(1)), Integer(-1))), Integer(1))), Tuple(Str('PROFILE_CONDITIONED_RESOLVENT'), Str('RESERVED_FOR_S11C_D')))"
+          }
+        },
+        {
+          "case": [
+            "MATERIAL_ADVECTED",
+            -1
+          ],
+          "value": {
+            "record": {
+              "path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/out/S11c_c1_bulk_closure_sympy_audit.out",
+              "canonicalPath": "/var/projects/toy_physics/.git/annex/objects/gP/g8/MD5E-s90722854--082818754abeedb7b5a0d4e1e3b51215.out/MD5E-s90722854--082818754abeedb7b5a0d4e1e3b51215.out",
+              "tag": "PY_S11CC1_NONINVERTIBILITY_CONDITION",
+              "byteOffset": 674409,
+              "bytes": 6188,
+              "sha256": "ee2a65b05a0879e4067f1132ecc72f32999d968fa553656e1173ad89f94cdfc0"
+            },
+            "selector": [
+              [
+                "MATERIAL_ADVECTED",
+                -1
+              ],
+              "VALUE"
+            ],
+            "byteOffset": 679123,
+            "bytes": 1210,
+            "sha256": "f3ecbd5a80154acae965eb7f77e9ba734e2140cb011ea70ddca7cea1afb37fef",
+            "savedLiteral": " Tuple(Tuple(Str('OPERATOR'), Add(Mul(Symbol('Lambda_A_0', real=True), Pow(Symbol('rho_m', positive=True), Integer(-2)), Pow(Add(Mul(Integer(-1), I, Symbol('omega', real=True), Symbol('tau_A', nonnegative=True)), Integer(1)), Integer(-1)), Symbol('s11cc1_dtn_operator_material_advected_minus', commutative=False)), Symbol('s11cc1_identity_operator', commutative=False))), Tuple(Str('NONINVERTIBILITY'), Equality(Function('S11CC1ZeroInSpectrum')(Add(Mul(Symbol('Lambda_A_0', real=True), Pow(Symbol('rho_m', positive=True), Integer(-2)), Pow(Add(Mul(Integer(-1), I, Symbol('omega', real=True), Symbol('tau_A', nonnegative=True)), Integer(1)), Integer(-1)), Symbol('s11cc1_dtn_operator_material_advected_minus', commutative=False)), Symbol('s11cc1_identity_operator', commutative=False))), Integer(1))), Tuple(Str('FLAT_DIAGONAL_SYMBOL'), Add(Mul(Symbol('Lambda_A_0', real=True), Symbol('omega', real=True), Pow(Symbol('rho_m', positive=True), Integer(-1)), Pow(Symbol('s11cc1_q_out_output'), Integer(-1)), Pow(Add(Mul(Integer(-1), I, Symbol('omega', real=True), Symbol('tau_A', nonnegative=True)), Integer(1)), Integer(-1))), Integer(1))), Tuple(Str('PROFILE_CONDITIONED_RESOLVENT'), Str('RESERVED_FOR_S11C_D')))"
+          }
+        }
+      ]
+    }
+  ],
+  "priorInspectionDiagnostic": {
+    "operation": "Ad-hoc display of saved c1 DTN_BY_PARITY tuple fields",
+    "error": "ValueError: too many values to unpack (expected 2)",
+    "cause": "OFF_DIAGONAL_BLOCKS is a label plus two values, not a key/value pair.",
+    "completedDisplay": "LAB_HELD FACE_BASIS and THICKNESS_CENTRE_BASIS literal text",
+    "scienceCalls": 0,
+    "filesChanged": 0,
+    "disposition": "Navigation uses variadic labelled tuple fields; no physical data conversion or scientific retry."
+  },
+  "centreVelocityInputs": [
+    {
+      "case": [
+        "LAB_HELD",
+        1,
+        "ZETA_C"
+      ],
+      "route": {
+        "record": {
+          "path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/out/S11c_a_interface_geometry_sympy_audit.out",
+          "canonicalPath": "/var/projects/toy_physics/.git/annex/objects/mv/pZ/MD5E-s50354701--d8417e97718cb8e47e718d296c2eed16.out/MD5E-s50354701--d8417e97718cb8e47e718d296c2eed16.out",
+          "tag": "PY_S11CA_FACE_VELOCITY",
+          "byteOffset": 92086,
+          "bytes": 3881,
+          "sha256": "ce1eb059c8111cccacb01eb7e57c825686533fc3bb0af66a3f8751df99c2f5f2"
+        },
+        "selector": [
+          [
+            "LAB_HELD",
+            1,
+            "ZETA_C"
+          ],
+          "VALUE"
+        ],
+        "byteOffset": 92907,
+        "bytes": 49,
+        "sha256": "ec9a3b61f622935f621c2516fd29849cf4dd45f27e1df82ce424f2eae47eb3e0",
+        "savedLiteral": " Mul(Symbol('epsilon_shape'), Symbol('zeta_c_t'))"
+      }
+    },
+    {
+      "case": [
+        "LAB_HELD",
+        -1,
+        "ZETA_C"
+      ],
+      "route": {
+        "record": {
+          "path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/out/S11c_a_interface_geometry_sympy_audit.out",
+          "canonicalPath": "/var/projects/toy_physics/.git/annex/objects/mv/pZ/MD5E-s50354701--d8417e97718cb8e47e718d296c2eed16.out/MD5E-s50354701--d8417e97718cb8e47e718d296c2eed16.out",
+          "tag": "PY_S11CA_FACE_VELOCITY",
+          "byteOffset": 92086,
+          "bytes": 3881,
+          "sha256": "ce1eb059c8111cccacb01eb7e57c825686533fc3bb0af66a3f8751df99c2f5f2"
+        },
+        "selector": [
+          [
+            "LAB_HELD",
+            -1,
+            "ZETA_C"
+          ],
+          "VALUE"
+        ],
+        "byteOffset": 93218,
+        "bytes": 62,
+        "sha256": "429ea08c1ff4affa7e945eb12e3ed79ec8c51dc020d3def44b315c99fec2906a",
+        "savedLiteral": " Mul(Integer(-1), Symbol('epsilon_shape'), Symbol('zeta_c_t'))"
+      }
+    },
+    {
+      "case": [
+        "MATERIAL_ADVECTED",
+        1,
+        "ZETA_C"
+      ],
+      "route": {
+        "record": {
+          "path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/out/S11c_a_interface_geometry_sympy_audit.out",
+          "canonicalPath": "/var/projects/toy_physics/.git/annex/objects/mv/pZ/MD5E-s50354701--d8417e97718cb8e47e718d296c2eed16.out/MD5E-s50354701--d8417e97718cb8e47e718d296c2eed16.out",
+          "tag": "PY_S11CA_FACE_VELOCITY",
+          "byteOffset": 92086,
+          "bytes": 3881,
+          "sha256": "ce1eb059c8111cccacb01eb7e57c825686533fc3bb0af66a3f8751df99c2f5f2"
+        },
+        "selector": [
+          [
+            "MATERIAL_ADVECTED",
+            1,
+            "ZETA_C"
+          ],
+          "VALUE"
+        ],
+        "byteOffset": 94837,
+        "bytes": 297,
+        "sha256": "db4e36426fe4cec98174dda45491bb619d215ce33a40967638c864e54217b47d",
+        "savedLiteral": " Mul(Symbol('epsilon_shape'), Add(Mul(Integer(-1), Rational(1, 2), Symbol('sigma_W', real=True), Add(Mul(Symbol('u_1_t'), Symbol('w1_profile_d1', real=True)), Mul(Symbol('u_2_t'), Symbol('w1_profile_d2', real=True)), Mul(Symbol('u_3_t'), Symbol('w1_profile_d3', real=True)))), Symbol('zeta_c_t')))"
+      }
+    },
+    {
+      "case": [
+        "MATERIAL_ADVECTED",
+        -1,
+        "ZETA_C"
+      ],
+      "route": {
+        "record": {
+          "path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/out/S11c_a_interface_geometry_sympy_audit.out",
+          "canonicalPath": "/var/projects/toy_physics/.git/annex/objects/mv/pZ/MD5E-s50354701--d8417e97718cb8e47e718d296c2eed16.out/MD5E-s50354701--d8417e97718cb8e47e718d296c2eed16.out",
+          "tag": "PY_S11CA_FACE_VELOCITY",
+          "byteOffset": 92086,
+          "bytes": 3881,
+          "sha256": "ce1eb059c8111cccacb01eb7e57c825686533fc3bb0af66a3f8751df99c2f5f2"
+        },
+        "selector": [
+          [
+            "MATERIAL_ADVECTED",
+            -1,
+            "ZETA_C"
+          ],
+          "VALUE"
+        ],
+        "byteOffset": 95448,
+        "bytes": 297,
+        "sha256": "d4a5a852dbd625409f24da7d979c916d850d1acac94f7766db8ab91c33902b3c",
+        "savedLiteral": " Mul(Integer(-1), Symbol('epsilon_shape'), Add(Mul(Rational(1, 2), Symbol('sigma_W', real=True), Add(Mul(Symbol('u_1_t'), Symbol('w1_profile_d1', real=True)), Mul(Symbol('u_2_t'), Symbol('w1_profile_d2', real=True)), Mul(Symbol('u_3_t'), Symbol('w1_profile_d3', real=True)))), Symbol('zeta_c_t')))"
+      }
+    }
+  ],
+  "openWorkLiteralComparisons": [
+    {
+      "case": [
+        "LAB_HELD",
+        "RHO4_CONSTANT"
+      ],
+      "thicknessWaveRoute": {
+        "record": {
+          "path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/out/S11c_a_interface_geometry_sympy_audit.out",
+          "canonicalPath": "/var/projects/toy_physics/.git/annex/objects/mv/pZ/MD5E-s50354701--d8417e97718cb8e47e718d296c2eed16.out/MD5E-s50354701--d8417e97718cb8e47e718d296c2eed16.out",
+          "tag": "PY_S11CA_VIRTUAL_WORK_SHAPE_DERIV",
+          "byteOffset": 199972,
+          "bytes": 96525,
+          "sha256": "c193c8da6d297b9f0e399daba715808174d18a9af872bc8bf4a372d787528766"
+        },
+        "selector": [
+          [
+            "LAB_HELD",
+            "DELTA_W",
+            "ZETA_C",
+            "RHO4_CONSTANT"
+          ],
+          "VALUE"
+        ],
+        "byteOffset": 207840,
+        "bytes": 3623,
+        "sha256": "715e37e29dadf114f2c44bcd1f125ab9a7b81a7c3c9e14eb6e6310621f207db2"
+      },
+      "centreWaveRoute": {
+        "record": {
+          "path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/out/S11c_a_interface_geometry_sympy_audit.out",
+          "canonicalPath": "/var/projects/toy_physics/.git/annex/objects/mv/pZ/MD5E-s50354701--d8417e97718cb8e47e718d296c2eed16.out/MD5E-s50354701--d8417e97718cb8e47e718d296c2eed16.out",
+          "tag": "PY_S11CA_VIRTUAL_WORK_SHAPE_DERIV",
+          "byteOffset": 199972,
+          "bytes": 96525,
+          "sha256": "c193c8da6d297b9f0e399daba715808174d18a9af872bc8bf4a372d787528766"
+        },
+        "selector": [
+          [
+            "LAB_HELD",
+            "ZETA_C",
+            "ZETA_C",
+            "RHO4_CONSTANT"
+          ],
+          "VALUE"
+        ],
+        "byteOffset": 222920,
+        "bytes": 3623,
+        "sha256": "715e37e29dadf114f2c44bcd1f125ab9a7b81a7c3c9e14eb6e6310621f207db2"
+      },
+      "savedLiteralBytesEqual": true,
+      "meaning": "Equality of already indexed open pressure/jet virtual-work text; not a closed centre equation or a new scientific comparison."
+    },
+    {
+      "case": [
+        "LAB_HELD",
+        "RHOBR_CONSTANT"
+      ],
+      "thicknessWaveRoute": {
+        "record": {
+          "path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/out/S11c_a_interface_geometry_sympy_audit.out",
+          "canonicalPath": "/var/projects/toy_physics/.git/annex/objects/mv/pZ/MD5E-s50354701--d8417e97718cb8e47e718d296c2eed16.out/MD5E-s50354701--d8417e97718cb8e47e718d296c2eed16.out",
+          "tag": "PY_S11CA_VIRTUAL_WORK_SHAPE_DERIV",
+          "byteOffset": 199972,
+          "bytes": 96525,
+          "sha256": "c193c8da6d297b9f0e399daba715808174d18a9af872bc8bf4a372d787528766"
+        },
+        "selector": [
+          [
+            "LAB_HELD",
+            "DELTA_W",
+            "ZETA_C",
+            "RHOBR_CONSTANT"
+          ],
+          "VALUE"
+        ],
+        "byteOffset": 211838,
+        "bytes": 2992,
+        "sha256": "dbd98a9378f2644a8f62e74e92fb7088660488c80a791006e0c52261abc12e7e"
+      },
+      "centreWaveRoute": {
+        "record": {
+          "path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/out/S11c_a_interface_geometry_sympy_audit.out",
+          "canonicalPath": "/var/projects/toy_physics/.git/annex/objects/mv/pZ/MD5E-s50354701--d8417e97718cb8e47e718d296c2eed16.out/MD5E-s50354701--d8417e97718cb8e47e718d296c2eed16.out",
+          "tag": "PY_S11CA_VIRTUAL_WORK_SHAPE_DERIV",
+          "byteOffset": 199972,
+          "bytes": 96525,
+          "sha256": "c193c8da6d297b9f0e399daba715808174d18a9af872bc8bf4a372d787528766"
+        },
+        "selector": [
+          [
+            "LAB_HELD",
+            "ZETA_C",
+            "ZETA_C",
+            "RHOBR_CONSTANT"
+          ],
+          "VALUE"
+        ],
+        "byteOffset": 226917,
+        "bytes": 2992,
+        "sha256": "dbd98a9378f2644a8f62e74e92fb7088660488c80a791006e0c52261abc12e7e"
+      },
+      "savedLiteralBytesEqual": true,
+      "meaning": "Equality of already indexed open pressure/jet virtual-work text; not a closed centre equation or a new scientific comparison."
+    },
+    {
+      "case": [
+        "MATERIAL_ADVECTED",
+        "RHO4_CONSTANT"
+      ],
+      "thicknessWaveRoute": {
+        "record": {
+          "path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/out/S11c_a_interface_geometry_sympy_audit.out",
+          "canonicalPath": "/var/projects/toy_physics/.git/annex/objects/mv/pZ/MD5E-s50354701--d8417e97718cb8e47e718d296c2eed16.out/MD5E-s50354701--d8417e97718cb8e47e718d296c2eed16.out",
+          "tag": "PY_S11CA_VIRTUAL_WORK_SHAPE_DERIV",
+          "byteOffset": 199972,
+          "bytes": 96525,
+          "sha256": "c193c8da6d297b9f0e399daba715808174d18a9af872bc8bf4a372d787528766"
+        },
+        "selector": [
+          [
+            "MATERIAL_ADVECTED",
+            "DELTA_W",
+            "ZETA_C",
+            "RHO4_CONSTANT"
+          ],
+          "VALUE"
+        ],
+        "byteOffset": 247115,
+        "bytes": 8463,
+        "sha256": "45eed1eff6d27dffca2b493a4dbb6d2872300dc730b880f62cb19238ca61e32b"
+      },
+      "centreWaveRoute": {
+        "record": {
+          "path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/out/S11c_a_interface_geometry_sympy_audit.out",
+          "canonicalPath": "/var/projects/toy_physics/.git/annex/objects/mv/pZ/MD5E-s50354701--d8417e97718cb8e47e718d296c2eed16.out/MD5E-s50354701--d8417e97718cb8e47e718d296c2eed16.out",
+          "tag": "PY_S11CA_VIRTUAL_WORK_SHAPE_DERIV",
+          "byteOffset": 199972,
+          "bytes": 96525,
+          "sha256": "c193c8da6d297b9f0e399daba715808174d18a9af872bc8bf4a372d787528766"
+        },
+        "selector": [
+          [
+            "MATERIAL_ADVECTED",
+            "ZETA_C",
+            "ZETA_C",
+            "RHO4_CONSTANT"
+          ],
+          "VALUE"
+        ],
+        "byteOffset": 280275,
+        "bytes": 8463,
+        "sha256": "45eed1eff6d27dffca2b493a4dbb6d2872300dc730b880f62cb19238ca61e32b"
+      },
+      "savedLiteralBytesEqual": true,
+      "meaning": "Equality of already indexed open pressure/jet virtual-work text; not a closed centre equation or a new scientific comparison."
+    },
+    {
+      "case": [
+        "MATERIAL_ADVECTED",
+        "RHOBR_CONSTANT"
+      ],
+      "thicknessWaveRoute": {
+        "record": {
+          "path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/out/S11c_a_interface_geometry_sympy_audit.out",
+          "canonicalPath": "/var/projects/toy_physics/.git/annex/objects/mv/pZ/MD5E-s50354701--d8417e97718cb8e47e718d296c2eed16.out/MD5E-s50354701--d8417e97718cb8e47e718d296c2eed16.out",
+          "tag": "PY_S11CA_VIRTUAL_WORK_SHAPE_DERIV",
+          "byteOffset": 199972,
+          "bytes": 96525,
+          "sha256": "c193c8da6d297b9f0e399daba715808174d18a9af872bc8bf4a372d787528766"
+        },
+        "selector": [
+          [
+            "MATERIAL_ADVECTED",
+            "DELTA_W",
+            "ZETA_C",
+            "RHOBR_CONSTANT"
+          ],
+          "VALUE"
+        ],
+        "byteOffset": 256048,
+        "bytes": 6938,
+        "sha256": "88f5f47134a6611cece59c4179d119256bd7a5a401e2b3a7031195c1440b7eb7"
+      },
+      "centreWaveRoute": {
+        "record": {
+          "path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/out/S11c_a_interface_geometry_sympy_audit.out",
+          "canonicalPath": "/var/projects/toy_physics/.git/annex/objects/mv/pZ/MD5E-s50354701--d8417e97718cb8e47e718d296c2eed16.out/MD5E-s50354701--d8417e97718cb8e47e718d296c2eed16.out",
+          "tag": "PY_S11CA_VIRTUAL_WORK_SHAPE_DERIV",
+          "byteOffset": 199972,
+          "bytes": 96525,
+          "sha256": "c193c8da6d297b9f0e399daba715808174d18a9af872bc8bf4a372d787528766"
+        },
+        "selector": [
+          [
+            "MATERIAL_ADVECTED",
+            "ZETA_C",
+            "ZETA_C",
+            "RHOBR_CONSTANT"
+          ],
+          "VALUE"
+        ],
+        "byteOffset": 289207,
+        "bytes": 6938,
+        "sha256": "88f5f47134a6611cece59c4179d119256bd7a5a401e2b3a7031195c1440b7eb7"
+      },
+      "savedLiteralBytesEqual": true,
+      "meaning": "Equality of already indexed open pressure/jet virtual-work text; not a closed centre equation or a new scientific comparison."
+    }
+  ],
+  "limits": [
+    "Saved first-shape bare-DtN off-diagonal zeros do not establish the complete slab/constraint/current invariant sector.",
+    "Generic response coefficients take a prescribed face velocity; they do not select the independent centre velocity.",
+    "No incoming exterior bulk waves is not by itself an initial/incident condition for a homogeneous slab-centre solution.",
+    "Absence from the inspected kinetic construction does not authorize adding centre inertia or declaring a massless centre constraint.",
+    "No general radiation boundary, centre equation, centre solve, new model coefficient, or export clearance was constructed."
+  ],
+  "postchecks": {
+    "sourceAndMetadataFiles": 12,
+    "selectedLiteralRecords": 4,
+    "unchanged": true
+  }
+}

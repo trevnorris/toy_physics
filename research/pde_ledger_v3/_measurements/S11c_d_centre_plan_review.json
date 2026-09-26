@@ -1,0 +1,43 @@
+{
+  "status": "BOTH_REPORTS_COMPLETE_REVIEWED_BASELINE_PRESERVED_BEFORE_REPAIR",
+  "packetSha256": "367e9bec00016e79bfb912261821b8db9015d807c593883e175c89bbcb452485",
+  "planSha256": "d488d28b3eb5fe464b259db7e4bb9f81c13bc80902c125fed90892c20e2fc3d5",
+  "archive": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/build-plan-review/packet.tar.gz",
+  "archiveSha256": "06dd024ea4f395669d5c0812184812a341700a025f4d6855490d9c2dda000c92",
+  "legs": {
+    "claude": {
+      "actualCliExit": 0,
+      "terminal": "end_turn",
+      "wallSeconds": 390.8693782320479,
+      "rawVerdict": "NEEDS REVISION",
+      "rawReportPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/build-plan-review/claude.json",
+      "rawReportSha256": "a4e942ee8a77d350f1c9c9190b94084500896f58afa5c1e4f4bfb3fc9e5e885f",
+      "literalReportPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_centre_plan_review_claude.md",
+      "literalReportSha256": "11448a23bfdb683493075bd99c555bcf3a5fe1f507c3c520980f961a42380725",
+      "stderrBytes": 0,
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "actualModelUsageKeys": [
+        "claude-opus-5-5"
+      ]
+    },
+    "grok": {
+      "actualCliExit": 0,
+      "terminal": "end_turn",
+      "wallSeconds": 521.2409324740293,
+      "rawVerdict": "NEEDS REVISION",
+      "rawReportPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/build-plan-review/grok.json",
+      "rawReportSha256": "549d70eba44b12e3c9442e140def939cc87b1d86f35b24d33e6febc56f13b14f",
+      "literalReportPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_centre_plan_review_grok.md",
+      "literalReportSha256": "a8c079382d55396256ef929ae476bfb728c48fa2bf8e75164b214c82c1f89157",
+      "stderrBytes": 1431,
+      "stderrSha256": "05d218ba5497a2235cd9e38acc030df29fd4ed7054f51f7271e91d0a70b363c9",
+      "actualModelUsageKeys": [
+        "grok-4.6-build"
+      ]
+    }
+  },
+  "sourceAndPacketHashesUnchanged": true,
+  "scientificCalls": 0,
+  "productionClearance": false,
+  "adjudication": "Pending source-grounded correction closure; raw verdicts are not changed by local adjudication."
+}

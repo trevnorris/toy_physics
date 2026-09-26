@@ -21,10 +21,19 @@ operations after inspecting actual inputs and returns.
 is complete. The [concrete boundary finding](S11c_d_FORM_boundary_disposition.md)
 identifies an unresolved centre-drive/sector reduction in the consumed b/c2/d
 chain and the decaying-bulk restriction of the current finite end closure.
-It proposes one bounded compatibility task before a decision on a new generic
-radiating response. No new boundary method, response calculation or reviewer
-has launched. This source finding neither reopens the cleared amendment nor
-declares existing finite results incorrect.
+The user approved that bounded compatibility task. Its
+[focused build plan](../directives/S11c_d_centre_compatibility_plan.md) and
+[exact saved-input map](S11c_d_centre_compatibility_inputs.json) are prepared.
+The proposed algebra uses the saved c2 per-face and parity returns, subject to
+a new source-derived relation with b's normalized face row; it does not repeat
+the acoustic closure. The necessary diagnostic remains distinct from a complete
+centre-sector reduction. The plan gate is running: after automatic approval
+review rejected the initial submission before process start, the user explicitly
+approved the unchanged 17-file private packet to Claude/Grok. The fresh read-only
+reviews launched sequentially with a local completion hook. Both reports must
+finish before adjudication or edits. No algebraic worker, new boundary method
+or response calculation has launched. This finding neither reopens the cleared
+amendment nor declares existing finite results incorrect.
 
 **Outside this execution queue:** the eight material complex rows, two material
 complex responses and new pole searches; global domain certification; broad

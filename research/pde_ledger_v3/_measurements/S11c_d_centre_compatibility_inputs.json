@@ -1,0 +1,55 @@
+{
+  "status": "CENTRE_COMPATIBILITY_BUILD_INPUT_NAVIGATION_ONLY",
+  "createdUtc": "2026-09-26T18:31:46.132955+00:00",
+  "scientificCalls": 0,
+  "scientificRestorations": 0,
+  "newDiagnosticNotRun": true,
+  "navigation": [
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/prepare/saved-operands.json",
+      "sha256": "1d0839f28d6466c651a5a697b1d4feaab0bb4f50735f4973a1c80a1690ae93fd",
+      "bytes": 157155
+    },
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/prepare/closure-inputs.json",
+      "sha256": "5daecd0c48b25b81a58f2283774acdbf4b59cb1e1ba8d5dfe6dcad4407bf15b1",
+      "bytes": 159466
+    },
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/prepare/reuse-inputs.json",
+      "sha256": "a6b43e2f41fce1ea027374565e45ac6d7a658f55e30840950d62333f72567fd8",
+      "bytes": 55346
+    }
+  ],
+  "scope": "Four own cases, saved independent directions/centre load/kinetic/constraint/normalized face rows/closed face and parity returns. Per-field c2 dimensions and aggregate record grades are distinct.",
+  "sources": [
+    {
+      "path": "research/pde_ledger_v3/scripts/S11c_a_interface_geometry_sympy_audit.py",
+      "sourceSha256": "f4da0f2224257381300e5e78cc74a1341485b82446ac98251ca25d4b3c1a6be7",
+      "sourceBytes": 101558
+    },
+    {
+      "path": "research/pde_ledger_v3/scripts/S11c_b_brane_operator_sympy_audit.py",
+      "sourceSha256": "666b4005b745dd29933561f701c6c1859a2b00e9855badcb08e2347308504472",
+      "sourceBytes": 203199
+    },
+    {
+      "path": "research/pde_ledger_v3/scripts/S11c_c2_selfenergy_fold_sympy_audit.py",
+      "sourceSha256": "0e90c751d36178a9846e75c38ac4ad0c8591b4b8ce11b6dc194218913265d434",
+      "sourceBytes": 102548
+    }
+  ],
+  "metadataFailure": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/prepare/closure-index-failure.json",
+    "sha256": "fc390eef754da98dc82764fd10ded9b676963887b65ff364cac6b49be0220e66",
+    "completedSummaries": 0,
+    "scientificCalls": 0,
+    "repair": "Native MULTIGRADE aggregate retained, no invented per-face grade."
+  },
+  "sourceJoinNotes": [
+    "b kinetic/constraint records are context, not an independent centre elimination.",
+    "c2 main persists per-face rows and half sum/difference; build_case closes and restricts them before persistence.",
+    "Closure-map amplitudes precede row restriction. No old projection/kernel/derivative is rerun by this navigation.",
+    "Proportionality between normalized face row and centre row remains to be computed; no numerical or symbolic verdict inferred from the saved parity label."
+  ]
+}

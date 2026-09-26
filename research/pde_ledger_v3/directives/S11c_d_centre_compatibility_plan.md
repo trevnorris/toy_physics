@@ -1,10 +1,10 @@
 # S11c-d: bounded centre-motion compatibility check
 
-Status: **proposed implementation gate; no scientific job launched**.
+Status: **focused gate corrections and local instrument checks completed; ready for guarded launch**.
 The user approved the bounded task in the
 [boundary disposition](../_measurements/S11c_d_FORM_boundary_disposition.md).
 This plan implements that task under the accepted
-[Option B amendment](S11c_d_SCATTERING_FORM_AMENDMENT.md), especially §3.3's
+[Option B amendment](S11c_d_SCATTERING_FORM_AMENDMENT.md), especially §2's
 slab-to-face dependency rule. It does not revise the amendment or authorize
 the general radiation method. Codex is the author.
 
@@ -49,13 +49,14 @@ their original addresses.
 | Independent face directions | a `dof_fields`, `build_material_face_source`, `supplied_face_maps`; `PY_S11CA_FACE_VELOCITY` and `PY_S11CA_VIRTUAL_WORK_SHAPE_DERIV` | Distinguish the two directions, outward conventions and each anchoring. The material direction records contain shared background advection; adding them wholesale would double that term. No new velocity construction. |
 | Centre work and normalized slab face load | b `face_generalized_force_rows`, `mechanical_work_row_normalization`, `build_operator`; `LOCAL_SLAB_FACE_GENERALIZED_FORCE_ROWS` and `SLAB_OPERATOR_TERM_ORIGINS` | Restore the saved centre row and actual normalized `FACE_VIRTUAL_WORK/ROWS/E_W/EXPANDED`. Do not replace the latter with an unnormalized virtual-work coefficient. |
 | Kinetic and constraint context | b `kinetic_balance_from_energy`, `constraint_fold_from_source`; saved `KINETIC`, `VIRTUAL_CONSTRAINT_SOURCE`, `THETA_SOLUTION` | Determine which variables the supplied construction actually carries. Do not repeat variation, elimination or the old transcription residual. |
-| Completed closed face contributions | c2 `build_case`/`main`; `CLOSED_SLAB_OPERATOR_TERM_ORIGINS` and `CLOSED_SLAB_OPERATOR_PARITY_BLOCKS`, each case's `E_W` entries | Reuse the actual per-face contributions and already computed sum/difference combinations after the native weak restriction. Do not recompute these returns. |
+| Completed closed face contributions | c2 `build_case`/`main`; `CLOSED_SLAB_OPERATOR_TERM_ORIGINS` and `CLOSED_SLAB_OPERATOR_PARITY_BLOCKS`, each case's `E_W` entries | Reuse the post-closure, retained-shape, physical-field row returns and already computed half-sum/half-difference combinations. These are pre-`extract` rows, not weakly extracted coupling kernels. Do not recompute them. |
 | Closure provenance | c2 `build_face`; each `FOLD_SYMBOL_MAP`'s `REFERENCE_PRESSURE`, `NORMAL_JET`, `PRESSURE`, `DENSITY_BINDING`, `IDENTIFICATIONS` | Establish pressure-versus-reference-trace slots, global normal-derivative orientation, density binding, original source and common closure operator. This is not permission to rerun the kernel/trace map. |
 
 The saved `FOLD_SYMBOL_MAP` values precede the final row restriction. Their
 `MULTIGRADE` is the **whole record's aggregate support**, not a per-field
 grade declaration. The saved per-face row returns already follow the native
-restriction. Keep those two facts distinct. Preserve the actual amplitude,
+retained-shape projection and physical-field map, before `extract`. Keep those
+facts distinct. Preserve the actual amplitude,
 independent background/gradient grades, units, profile and coordinate/branch
 context; no common scalar or case count authorizes reuse across cases.
 
@@ -74,25 +75,39 @@ assumed proportionality or an expected residual value.
    global normal-derivative slots. This is new algebra on those complete
    supplied operands, not a repeat of their virtual-work derivation. Save
    the full rows, extraction arguments, coefficients and reconstruction
-   residuals before inspecting them. Account explicitly for any part outside
-   those slots; never drop an unjoined term.
-3. Determine from those coefficients whether a scalar multiplier maps the
+   residuals before inspecting them. Persist all terms outside those slots.
+   A non-slot remainder of the thickness row does not veto its slot-image
+   reuse: c2's per-face origin explicitly excludes that remainder. An unjoined
+   remainder of the centre row must remain separately reported and prevents
+   treating the slot diagnostic as the complete centre load.
+3. Determine from those coefficients whether a scalar multiplier **for each face** maps the
    actual normalized pressure/jet face load to the centre load. Derive a
    candidate from the coefficients, then check **both** slot relations and
    the full pressure-dependent rows. Record denominator restrictions without
    dividing by a physical field or silently excluding a parameter branch.
-   If a safe relation is unavailable, stop; do not construct a fresh c2
+   Test proportionality on the pressure/jet content, not on the entire
+   thickness row including its non-slot remainder. If a safe relation is unavailable, stop; do not construct a fresh c2
    closure as a fallback.
 4. Reuse the completed c2 face returns only after establishing that this
-   multiplier can pass through the original closure, physical-field map and
-   weak restriction. For this bounded route require a scalar independent of
+   face's multiplier can pass through the original closure substitution,
+   profile `xreplace`, `retained_shape` and `physical_fields`. There is no
+   `extract` operation here. For this bounded route require a scalar independent of
    the wave fields, integration variables, coordinates, profile fields and
    retained small parameters. Check its units against the saved row units.
-   Source b/c2 must join the pressure-dependent open rows to these exact
-   saved face returns. If the premise fails, record the obstruction and stop.
+   Join the actual b `slab_operator/E_W_BALANCE/EXPANDED` pressure-slot terms
+   to the normalized face-work row. Pin the b export consumed by c2's actual
+   successful manifest and compare its literal `slab_operator` value with
+   the b output record; a current filename alone is insufficient. Include
+   the saved row-normalization operand. The centre row remains in its original
+   action orientation; do not apply that multiplier a second time. If the
+   premise fails, record the obstruction and stop.
 5. Construct the new centre-load diagnostic from the computed multipliers
    and the **saved** c2 parity combinations, with the source-defined sum and
-   difference conventions. Do not recalculate the old face sum/difference.
+   difference conventions: with source-defined `S=(Fplus+Fminus)/2` and
+   `D=(Fplus-Fminus)/2`, assemble `(rplus+rminus)*S + (rplus-rminus)*D`.
+   The two multipliers are independently derived; there is no requirement
+   that they be equal and no common-scalar test gates this diagnostic.
+   Do not recalculate the old face sum/difference.
    Persist each new operation's full arguments and return, followed by the
    case result, actual support and any zero/nonzero/undecided disposition
    computed from it. Retain formal integrals, outgoing-domain qualifications
@@ -103,7 +118,7 @@ failure. A failed reuse premise is also a legitimate informative stop. An
 undecided simplification must stay undecided; no unbounded simplification
 campaign or numerical specialization is a substitute for the generic object.
 
-Two bounded controls act at this diagnostic's imported operand boundary:
+Two bounded routing controls act at this diagnostic's imported operand boundary:
 reverse one pressure-slot contribution, and exchange one face's normal-jet
 slot with the other face's slot while retaining its original context. Save
 the altered input and actual coefficient/reconstruction response. They test
@@ -112,10 +127,24 @@ the old acoustic solver or constitute an action-derived physics review.
 Do not mutate completed c2 values or rederive them. If a control is degenerate
 on the actual input, report that rather than manufacturing a response.
 
+Add one selected final-assembly control: reverse **both** pressure/jet
+contributions of one face in the imported centre row, then run the same
+coefficient/relation/assembly path. Save its actual multipliers and complete
+result even if a routing control stopped earlier. This tests the final parity
+assembly as well as the local join. Do not type a predicted control result,
+alter a saved parity return, or claim an independent acoustic derivation.
+Any zero result inherited through a saved parity return is identified as such
+and carries c2's face-sign and other upstream debts. For units, use the actual
+nonzero face-row and centre-row dimensions; a stored zero's `[0,0,0]` annotation
+does not set the dimension of the physical pairing.
+
 There is no second independent derivation of the closed centre load in this
 job. Import/reconstruction equalities and readback are plumbing checks, not
 independent physical confirmation. Applicable result/instrument review and
 upstream cross-engine debts remain visible; this diagnostic cannot close them.
+The [review adjudication](../_measurements/S11c_d_centre_plan_adjudication.md)
+retains both original NEEDS REVISION verdicts and records these bounded
+corrections. Local correction closure is not a new independent CLEAR verdict.
 
 ## Build mechanics and limits
 

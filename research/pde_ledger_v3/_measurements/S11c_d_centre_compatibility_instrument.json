@@ -1,0 +1,27 @@
+{
+  "status": "LOCAL_INSTRUMENT_CHECKS_PASSED_FOR_BOUNDED_DIAGNOSTIC_ONLY",
+  "helperSha256": "7098d25403c2336e92fb219d5256d2847cf63bf68c9fff59d4a2d137df24d97a",
+  "record": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/prepare/instrument-harness.json",
+    "sha256": "1f1f8e4f026eb80dbe3588489baa90114938039a5690954f5f305606ac688f67"
+  },
+  "fixtureReceipts": 246,
+  "fixtureExactReuse": 138,
+  "checks": [
+    "per-face unequal ratios accepted",
+    "non-slot thickness retained",
+    "final assembly control responds",
+    "one-slot corruption rejected",
+    "exact typed ordered/context cache joins",
+    "inputs persist before fixture exception",
+    "durable result readback before later guard",
+    "no prohibited producer imports/calls",
+    "assembly has only journaled physical operations"
+  ],
+  "scientificImports": 0,
+  "physicalRestorations": 0,
+  "scientificCalls": 0,
+  "qualification": "Corrected the AST label check. Did not repeat any completed fixture or import a scientific package.",
+  "independentMethodGate": "Both literal NEEDS REVISION reports retained; bounded correction closure in S11c_d_centre_plan_adjudication.md. No new independent CLEAR verdict claimed.",
+  "builderSuffixSha256": "f01024512c9a028e7e524e5a95b5c455be42e125d10c36f94e20493109b013c2"
+}

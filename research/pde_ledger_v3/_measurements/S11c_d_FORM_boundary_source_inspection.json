@@ -1,0 +1,307 @@
+{
+  "status": "SOURCE_DEPENDENCY_DISPOSITION_NOT_PHYSICS_OR_BUILD_CLEARANCE",
+  "utc": "2026-09-26T18:10:42.537064+00:00",
+  "baselineCommit": "4a80407b26859c80c1b1f63461a17be12e289688",
+  "method": "Standard-library source AST/literal inspection and byte hashes only. No project/scientific import, pickle restoration, expression evaluation, source constructor, mathematical guard or previous reader/reviewer was executed. The source selections cover the current consumed chain, not a proof of absence throughout the repository.",
+  "sources": [
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_a_interface_geometry_sympy_audit.py",
+      "resolvedPath": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_a_interface_geometry_sympy_audit.py",
+      "bytes": 101558,
+      "sha256": "f4da0f2224257381300e5e78cc74a1341485b82446ac98251ca25d4b3c1a6be7",
+      "sections": [
+        {
+          "name": "build_material_face_source",
+          "firstLine": 703,
+          "lastLine": 815,
+          "sourceSha256": "cc38b7057a558320dd91f0a8a018c2ed0dd1891d7ab8944d9679fe15dc0f5af3",
+          "literalOccurrences": [
+            {
+              "literal": "if dof == \"DELTA_W\":",
+              "line": 731
+            },
+            {
+              "literal": "centre_value = sp.Integer(0)",
+              "line": 732
+            },
+            {
+              "literal": "centre_time_derivative = zeta_t if dof == \"ZETA_C\" else sp.Integer(0)",
+              "line": 798
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_b_brane_operator_sympy_audit.py",
+      "resolvedPath": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_b_brane_operator_sympy_audit.py",
+      "bytes": 203199,
+      "sha256": "666b4005b745dd29933561f701c6c1859a2b00e9855badcb08e2347308504472",
+      "centreRowLiteralLines": [
+        2237,
+        3112,
+        3113
+      ],
+      "sections": [
+        {
+          "name": "face_generalized_force_rows",
+          "firstLine": 2135,
+          "lastLine": 2239,
+          "sourceSha256": "44c619dfc330573cde7550f923ea4f72e6224acf1224b578f7cbb9d7662b1f7f",
+          "literalOccurrences": [
+            {
+              "literal": "(branch, \"DELTA_W\", \"ZETA_C\", representative)",
+              "line": 2157
+            },
+            {
+              "literal": "\"CENTER_FACE_GENERALIZED_ROW\": center_face",
+              "line": 2237
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_c1_bulk_closure_sympy_audit.py",
+      "resolvedPath": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_c1_bulk_closure_sympy_audit.py",
+      "bytes": 101082,
+      "sha256": "02abfa93076efcb38a1b300daf9adedf5e3ad425ebf9d73555d730cea935ba20",
+      "sections": [
+        {
+          "name": "outgoing_farfield_poynting",
+          "firstLine": 765,
+          "lastLine": 831,
+          "sourceSha256": "17555921525c4ad6275e4ff1983bb57268b2cee3edfabeb56bfff5bfbd3d4649",
+          "literalOccurrences": []
+        }
+      ]
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_c2_selfenergy_fold_sympy_audit.py",
+      "resolvedPath": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_c2_selfenergy_fold_sympy_audit.py",
+      "bytes": 102548,
+      "sha256": "0e90c751d36178a9846e75c38ac4ad0c8591b4b8ce11b6dc194218913265d434",
+      "representationAssignment": {
+        "line": 47,
+        "literalValue": "DELTA_W"
+      },
+      "sections": [
+        {
+          "name": "build_face",
+          "firstLine": 552,
+          "lastLine": 607,
+          "sourceSha256": "2f57c9d5e86b34d1c1d6d1d2038b511cdd8fb018afd14e3d0a7f221bdbd0d295",
+          "literalOccurrences": [
+            {
+              "literal": "inputs.geometry['face_velocity'][(anchoring,face,REPRESENTATION)]",
+              "line": 569
+            }
+          ]
+        },
+        {
+          "name": "expanded_rows",
+          "firstLine": 610,
+          "lastLine": 612,
+          "sourceSha256": "016c573c674b2b8c0d5a07174ea3d8215f78399fe42da0baa65c3ad6db202758",
+          "literalOccurrences": [
+            {
+              "literal": "('U','U_BODY_BALANCE'),('THETA','THETA_BALANCE'),('E_W','E_W_BALANCE')",
+              "line": 612
+            }
+          ]
+        },
+        {
+          "name": "build_case",
+          "firstLine": 615,
+          "lastLine": 661,
+          "sourceSha256": "ea95ecb93c7a988ade37a7255e6657d553c39438cb93873b2141f8aec25fcdd1",
+          "literalOccurrences": [
+            {
+              "literal": "imported = expanded_rows(operator)",
+              "line": 625
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_d_mixing_scattering_sympy_audit.py",
+      "resolvedPath": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_d_mixing_scattering_sympy_audit.py",
+      "bytes": 545480,
+      "sha256": "5bf77729682960bb59f10c672a5fe3f67a98b0a9533da7c6189a37183596050f",
+      "sections": [
+        {
+          "name": "ReducedPencil.__init__",
+          "firstLine": 443,
+          "lastLine": 456,
+          "sourceSha256": "adec83dee2c0cbf91fa1a7868964878920d13f692023af49f050c0b5aecefa18",
+          "literalOccurrences": [
+            {
+              "literal": "('u1', 'u2', 'u3', 'theta', 'eW')",
+              "line": 446
+            }
+          ]
+        },
+        {
+          "name": "ClosedAcousticEnergy.construct",
+          "firstLine": 2992,
+          "lastLine": 3131,
+          "sourceSha256": "7053d33efdc86d560012a3efaa1e1895c9b3882d0d3a8ea0a69eb3af483cfb40",
+          "literalOccurrences": [
+            {
+              "literal": "displacement = sign*r.symbols['W_0']*c.amplitudes[0][4]*c.phase/2",
+              "line": 3065
+            }
+          ]
+        },
+        {
+          "name": "EndResolventAudit.__init__",
+          "firstLine": 7719,
+          "lastLine": 7725,
+          "sourceSha256": "8897448d4581bf455d88429162e66aad068d3c2638959c82d2855646be55b52e",
+          "literalOccurrences": []
+        }
+      ]
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_continuum_boundary.py",
+      "resolvedPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_continuum_boundary.py",
+      "bytes": 28349,
+      "sha256": "ed3a6539d3151c52d25f12308b121897baf3bd6a5a626a598ab728988ab933a0",
+      "sections": [
+        {
+          "name": "construct_end",
+          "firstLine": 174,
+          "lastLine": 265,
+          "sourceSha256": "fd144310004c1253a485f751db1ea899588773a886f174e50c69be689d04b63a",
+          "literalOccurrences": [
+            {
+              "literal": "if record['SHEET_MEMBERSHIP'] and record['BULK_DECAY_DISK_CERTIFIED']:",
+              "line": 198
+            },
+            {
+              "literal": "R[(0,0)].shape==(5,5) and I[(0,0)].shape==(5,2)",
+              "line": 225
+            },
+            {
+              "literal": "left['q'].imag>0 and right['q'].imag>0",
+              "line": 241
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_continuum_response.py",
+      "resolvedPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_continuum_response.py",
+      "bytes": 23551,
+      "sha256": "0fe30a9c4771671e9fa139b0557f185f55d351887f2ba8b9fa4ed1abfb616db2",
+      "sections": [
+        {
+          "name": "systems",
+          "firstLine": 73,
+          "lastLine": 85,
+          "sourceSha256": "38ee8dd2fe93c42e4a93dc00906a5280e0397eb4157811d0b4ab189dd42a5f5b",
+          "literalOccurrences": [
+            {
+              "literal": "np.zeros((5*size,4),complex)",
+              "line": 76
+            }
+          ]
+        },
+        {
+          "name": "solve",
+          "firstLine": 88,
+          "lastLine": 110,
+          "sourceSha256": "58435ec4938b1713d3b93f93fe714d45eebbb8bb342f09b1cb7d91d5708f3814",
+          "literalOccurrences": []
+        },
+        {
+          "name": "channels",
+          "firstLine": 113,
+          "lastLine": 172,
+          "sourceSha256": "c308ec9ee3728ed1f670c94f9bb9e15950763532b0e0266a27d8a023d92ef23c",
+          "literalOccurrences": []
+        }
+      ]
+    }
+  ],
+  "governingAndPriorEvidence": [
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_b_SHARED_PHYSICS.md",
+      "resolvedPath": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_b_SHARED_PHYSICS.md",
+      "bytes": 39529,
+      "sha256": "84d319141045522072bdbe944e72901ce78c70e73fdca31b5693d640f144ca89"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c1_SHARED_PHYSICS.md",
+      "resolvedPath": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c1_SHARED_PHYSICS.md",
+      "bytes": 50376,
+      "sha256": "47554c8c9cf2fd070c1048a7ae0ca36b1315bf50a48ed07a51019ff3e72987ad"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c2_SHARED_PHYSICS.md",
+      "resolvedPath": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c2_SHARED_PHYSICS.md",
+      "bytes": 41229,
+      "sha256": "656d55a36be5f7179934f187c106fdc942dd98b4533a683c99135d29ceb62cd1"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_SHARED_PHYSICS.md",
+      "resolvedPath": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_SHARED_PHYSICS.md",
+      "bytes": 67800,
+      "sha256": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_SCATTERING_FORM_AMENDMENT.md",
+      "resolvedPath": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_SCATTERING_FORM_AMENDMENT.md",
+      "bytes": 69780,
+      "sha256": "eb6f20a3fd0bce308e53901fa69fdf267b2917e5cc78b319a1e7700074a47560"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_FORM_build_directive.md",
+      "resolvedPath": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_FORM_build_directive.md",
+      "bytes": 8322,
+      "sha256": "2dfa2955b0d5943c4a641b3be8d1171dc8e63043ceac88d6e4abdab2d4222b82"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_FORM_implementation_coverage.md",
+      "resolvedPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_FORM_implementation_coverage.md",
+      "bytes": 8725,
+      "sha256": "47ffa4180c74ac5668291256256d5bac2799e8e5c05cad6158879c3488bdb7d2"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_A9_saved_face_drives.json",
+      "resolvedPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_A9_saved_face_drives.json",
+      "bytes": 8224,
+      "sha256": "057c9960aa1c721d1973de85cc48e5d6ac3bcb20a233cfc10f63d6f9207d6bf8"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_A9_saved_dependency_routes.json",
+      "resolvedPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_A9_saved_dependency_routes.json",
+      "bytes": 36864,
+      "sha256": "010b308f75d8f5a786f1e234a822390711166550a99459e5c8ba7b552a98f7f7"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_A9_control_consumer_routes.json",
+      "resolvedPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_A9_control_consumer_routes.json",
+      "bytes": 35066,
+      "sha256": "13984285b09318024e3f7e86a14a6d86d3a0d6016edec570e050477208b13487"
+    }
+  ],
+  "existingFaceIndex": {
+    "recordsRead": 8,
+    "originalTranscriptsReparsed": false
+  },
+  "dispositionReport": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_FORM_boundary_disposition.md",
+    "resolvedPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_FORM_boundary_disposition.md",
+    "bytes": 7484,
+    "sha256": "a23ba7a042bd255fc903d71f5d07ed3fa8e42b7464c21793749c340200133336"
+  },
+  "retainedBuilderSuffixSha256": "f01024512c9a028e7e524e5a95b5c455be42e125d10c36f94e20493109b013c2",
+  "scientificCalls": 0,
+  "scientificPacketRestorations": 0,
+  "externalReviewLaunched": false,
+  "newBoundaryMethodLaunched": false,
+  "decision": "Centre-drive/sector dependency unresolved by the inspected chain; current finite end method demonstrates decaying-bulk coverage only. Scoped compatibility resolution proposed before a generic radiating method; no existing result invalidated by this source inspection."
+}

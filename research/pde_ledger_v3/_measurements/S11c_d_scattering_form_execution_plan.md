@@ -17,6 +17,15 @@ existing evidence, not a reconstruction queue. Keep the original files and
 failure histories. Use explicit references and complete only genuinely missing
 operations after inspecting actual inputs and returns.
 
+**Current disposition (2026-09-26):** input and A6/A7/first-jet consumer mapping
+is complete. The [concrete boundary finding](S11c_d_FORM_boundary_disposition.md)
+identifies an unresolved centre-drive/sector reduction in the consumed b/c2/d
+chain and the decaying-bulk restriction of the current finite end closure.
+It proposes one bounded compatibility task before a decision on a new generic
+radiating response. No new boundary method, response calculation or reviewer
+has launched. This source finding neither reopens the cleared amendment nor
+declares existing finite results incorrect.
+
 **Outside this execution queue:** the eight material complex rows, two material
 complex responses and new pole searches; global domain certification; broad
 frequency/profile/grid sweeps; unsupported second-shape/threshold completion;
@@ -30,11 +39,12 @@ occurs, stop with the actual gap and alternatives rather than bury a solver
 project inside “support.” The retained export and independent Wolfram/T7 work
 are substantial even after the pole deferral; there is no reliable total runtime.
 
-Immediate progress and remaining lookup leads are in the
-[A9 source/metadata map](S11c_d_A9_input_map.md). It is a bounded inspection,
-not a scientific validator or a new acceptance gate. The current build directive
-and `S11c_d_sympy_build_PROGRAM_BRIEF.md` still contain superseded pole and
-full-rerun instructions; they must not launch as written.
+The initial [A9 source/metadata map](S11c_d_A9_input_map.md) and later source
+indices remain navigation evidence, not scientific validation. The current
+[FORM build instructions](../directives/S11c_d_FORM_build_directive.md)
+reconcile future work membership. The historical
+`S11c_d_sympy_build_directive.md` and `S11c_d_sympy_build_PROGRAM_BRIEF.md`
+remain pinned history; their superseded pole/full-rerun queue must not launch.
 
 Numerical production remains paused until its applicable build gates. Later
 jobs use the existing single guarded worker, 900 seconds, 2 GiB, zero swap,

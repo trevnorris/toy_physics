@@ -6,6 +6,12 @@ not reopen that amendment or authorize a numerical campaign. Use it with the
 [current build instructions](../directives/S11c_d_FORM_build_directive.md).
 The earlier input reports and execution records remain unchanged as history.
 
+The user-approved [centre claim disposition](S11c_d_centre_claim_disposition.md)
+now governs that dependency: the existing five-field `DELTA_W` specialization
+is available as a conditional problem. Completing general centre mechanics
+is not a prerequisite for every root below. No centre elimination, full
+reflection-invariant sector or arbitrary-centre total flux is thereby claimed.
+
 ## Reuse decisions now resolved
 
 The [control consumer index](S11c_d_A9_control_consumer_routes.json) checks
@@ -38,7 +44,7 @@ numerical response merely to obtain export inputs.
 | `s11cdRetainedScatteringForm` | Actual general two-ended response for all four physical cases, from full reduced local/nonlocal rows and coupling, both-end forcing/observation/channel maps and the outgoing prescription. Derive the independent retained grades including moving end modes, normalization and mixed forcing. Existing finite coefficient systems and their solutions are evaluated evidence, not a differentiable generic inverse. |
 | `s11cdEndChannelConversionForm` | Contract the constructed response with the actual outgoing thickness-channel current and incident transverse denominator; retain off-diagonal current terms, end orientation and both incident ends. Locate/consume the existing slab-plus-depth-pairing identity and normalization evidence on their actual domains. A11 nonempty-domain coverage remains required. |
 | `s11cdTransverseSurvivalForm` | Use the same response/current construction for the transverse outgoing channels. Preserve the amendment's restricted interpretation; no absorption, capture or total-loss inference. |
-| `s11cdSupportedBulkEscapeForm` | Use the located c1 outgoing fields and c2 face-drive/reference-trace/normal-jet maps with the solved slab state and actual in-plane reduction. Establish the centre/face constraint, retained measure/current/baseline dependencies and supported radiating domain. The historical three-term c1 check does not supply a missing scattered–scattered quadratic. A new boundary/continuum method triggers the accepted scope decision before construction. |
+| `s11cdSupportedBulkEscapeForm` | Use the located c1 outgoing fields and actual c2 face-drive/reference-trace/normal-jet maps with the solved slab state and in-plane reduction. Identify the selected five-field source problem; any stronger centre-independent claim needs its own evidence. Retained measure/current/baseline dependencies and supported radiating coverage remain necessary. The historical three-term c1 check does not supply a missing scattered–scattered quadratic. A new boundary/continuum method triggers the accepted scope decision before construction. |
 | `s11cdRetainedWeakCoefficients` | Derive the amplitude, total-fraction Taylor and induced-field quadratic coefficients from the constructed roots, retaining independent grades before the physical homotopy. Their current/measure/incident-denominator and baseline/interference dependencies remain explicit. No physical leading-power label is supplied as an expected result. |
 | `s11cdFormCapabilities` | Actual case, parameter/profile/domain/unit/grade bindings and supported versus unavailable claims, including the pole and A14 deferrals. Metadata cannot turn a missing retained root into a completed one. |
 
@@ -58,15 +64,14 @@ representations are allowed; naming an unconstructed action or inverse is not.
    forcing, observation and normalization dependencies, but their fixed array
    entries are not general formula operands. Do not hard-code their observed
    channel count into the general domain.
-2. Before promising A11/A12 on a radiating domain, resolve the actual outgoing
-   representation and slab-to-face/centre dependency from the located sources.
-   The current c2 face identifications contain thickness velocity and, for
-   material anchoring, profile advection; absence of an independent centre
-   velocity in that packet is not a proof of its elimination. If the saved
-   constructions cannot support the claimed domain and a new boundary or
-   continuum method is needed, stop with that specific missing object and
-   bounded alternatives. Do not expand the task silently or hide the gap by
-   choosing a closed channel.
+2. Carry the completed source/claim disposition into the actual face-map
+   consumer. Preserve thickness velocity and material profile advection;
+   neither eliminate independent centre motion by assumption nor reopen
+   general centre dynamics as an automatic task. Before promising A11/A12
+   on a radiating domain, resolve the actual outgoing representation. The
+   finite decaying-bulk method does not supply that coverage. A new boundary
+   or continuum method needs its specific scope/build decision; a closed
+   channel or a conditional five-field label cannot hide this remaining gap.
 3. Complete the supported weak forms, the genuinely missing density insertion
    control, export closure and claim-relevant binding checks. Reuse the located
    A6/A7/first-jet outputs and four-case numerical results. A selected new

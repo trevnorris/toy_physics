@@ -1,0 +1,584 @@
+{
+  "status": "BOUNDED_SOURCE_CLAIM_DISPOSITION_NOT_PHYSICS_CLEARANCE",
+  "userAuthorization": "sounds good. let's proceed that way.",
+  "sourceFiles": [
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_a_interface_geometry_sympy_audit.py",
+      "resolvedPath": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_a_interface_geometry_sympy_audit.py",
+      "sha256": "f4da0f2224257381300e5e78cc74a1341485b82446ac98251ca25d4b3c1a6be7",
+      "bytes": 101558,
+      "functions": {
+        "dof_fields": {
+          "line": 566,
+          "endLine": 575,
+          "sourceSha256": "f1b13365e380111cb8cb677f03f164b674fb1a40b15ead9c78ad7951119b06a2",
+          "substrateSelections": [],
+          "directCallNames": [
+            "range",
+            "tuple"
+          ]
+        },
+        "build_face_source": {
+          "line": 818,
+          "endLine": 875,
+          "sourceSha256": "d95af26d6d6b2150bf7bbdd85a92ba201a5358a3d844115ec82b2a2e643e3039",
+          "substrateSelections": [],
+          "directCallNames": [
+            "FaceSource",
+            "ValueError",
+            "branch_profile",
+            "build_material_face_source",
+            "density_pair",
+            "dof_fields",
+            "dot",
+            "dx",
+            "physical_trace_fields",
+            "range",
+            "source_jet_scales",
+            "tuple"
+          ]
+        },
+        "build_material_face_source": {
+          "line": 703,
+          "endLine": 815,
+          "sourceSha256": "cc38b7057a558320dd91f0a8a018c2ed0dd1891d7ab8944d9679fe15dc0f5af3",
+          "substrateSelections": [],
+          "directCallNames": [
+            "FaceSource",
+            "density_pair",
+            "dof_fields",
+            "dot",
+            "material_deformation_gradient",
+            "material_inverse_transpose",
+            "physical_trace_fields",
+            "range",
+            "shape",
+            "source_jet_scales",
+            "tuple"
+          ]
+        },
+        "flat_window_jets": {
+          "line": 1091,
+          "endLine": 1108,
+          "sourceSha256": "00e91521a01cca9da4a3095cc5ea1084d99d46bd7c6f9ef420791995d235c561",
+          "substrateSelections": [],
+          "directCallNames": [
+            "evaluated"
+          ]
+        },
+        "projection_terms": {
+          "line": 1114,
+          "endLine": 1174,
+          "sourceSha256": "ffdd4976eba112918e050e0c4dbe6bde3d4ac920f55c270e82e45127436a6a17",
+          "substrateSelections": [],
+          "directCallNames": [
+            "branch_profile",
+            "density_pair",
+            "dof_fields",
+            "dot",
+            "dt",
+            "finalize",
+            "range",
+            "shape",
+            "source_jet_scales",
+            "tuple"
+          ]
+        },
+        "virtual_constraint_route": {
+          "line": 1207,
+          "endLine": 1262,
+          "sourceSha256": "c8119262d4e74850c7395a885e4fb45bf100090fa181f321eb55a9673142eb0b",
+          "substrateSelections": [],
+          "directCallNames": [
+            "density_pair",
+            "determinant_jacobian",
+            "dot",
+            "material_deformation_gradient",
+            "range",
+            "shape",
+            "source_jet_scales",
+            "tuple"
+          ]
+        },
+        "evolution_route": {
+          "line": 1280,
+          "endLine": 1319,
+          "sourceSha256": "0b2c3ba186e3902f1c7f602c7c160677c3bfad085b1762638d2f902e281c37d6",
+          "substrateSelections": [],
+          "directCallNames": [
+            "branch_profile",
+            "build_face_source",
+            "density_pair",
+            "determinant_jacobian",
+            "dof_fields",
+            "dot",
+            "dt",
+            "dx",
+            "finalize",
+            "range",
+            "shape",
+            "source_jet_scales",
+            "trace_grad",
+            "true_area_flux_raw",
+            "tuple"
+          ]
+        }
+      }
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_b_brane_operator_sympy_audit.py",
+      "resolvedPath": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_b_brane_operator_sympy_audit.py",
+      "sha256": "666b4005b745dd29933561f701c6c1859a2b00e9855badcb08e2347308504472",
+      "bytes": 203199,
+      "functions": {
+        "substrate_bundle": {
+          "line": 2053,
+          "endLine": 2075,
+          "sourceSha256": "233f6ab2b6c6a106f9f2779d2b8fd0c068f8a59131960b979a36012865591692",
+          "substrateSelections": [],
+          "directCallNames": [
+            "Str",
+            "filtered_substrate"
+          ]
+        },
+        "selected_substrate_case": {
+          "line": 2078,
+          "endLine": 2095,
+          "sourceSha256": "dabf6cc81360076480b3b3ca31e9f819a4b5f9f9717df9b2c00d8c6256e0d8d5",
+          "substrateSelections": [],
+          "directCallNames": [
+            "KeyError",
+            "int",
+            "isinstance",
+            "str",
+            "tuple"
+          ]
+        },
+        "selected_substrate_axes": {
+          "line": 2098,
+          "endLine": 2114,
+          "sourceSha256": "2cbea326c5c522b2887ddcb0edfe36e917303b4b514f891bfc885ba78cf64a4b",
+          "substrateSelections": [],
+          "directCallNames": [
+            "KeyError",
+            "int",
+            "isinstance",
+            "str",
+            "tuple"
+          ]
+        },
+        "face_generalized_force_rows": {
+          "line": 2135,
+          "endLine": 2239,
+          "sourceSha256": "44c619dfc330573cde7550f923ea4f72e6224acf1224b578f7cbb9d7662b1f7f",
+          "substrateSelections": [
+            {
+              "line": 2149,
+              "call": "selected_substrate_axes(\n        bundle,\n        \"virtual_work_shape_deriv\",\n        (branch, \"DELTA_W\", \"DELTA_W\", representative),\n    )"
+            },
+            {
+              "line": 2154,
+              "call": "selected_substrate_axes(\n        bundle,\n        \"virtual_work_shape_deriv\",\n        (branch, \"DELTA_W\", \"ZETA_C\", representative),\n    )"
+            },
+            {
+              "line": 2189,
+              "call": "selected_substrate_axes(\n                                bundle,\n                                \"traction\",\n                                (branch, face, \"DELTA_W\", representative),\n                            )"
+            },
+            {
+              "line": 2212,
+              "call": "selected_substrate_axes(\n                                bundle,\n                                \"closure_shape_deriv\",\n                                (branch, face, \"DELTA_W\", representative),\n                            )"
+            }
+          ],
+          "directCallNames": [
+            "Str",
+            "bind_mu_theta_operand",
+            "casify",
+            "named_tuple_row",
+            "selected_substrate_axes",
+            "tuple"
+          ]
+        },
+        "kinetic_balance_from_energy": {
+          "line": 2317,
+          "endLine": 2336,
+          "sourceSha256": "f16d1936439f8849416f931db23d097ae2788d65f641b4c0416e72932bb16cb6",
+          "substrateSelections": [],
+          "directCallNames": [
+            "dot",
+            "local_thickness_map",
+            "sum",
+            "tuple",
+            "zip"
+          ]
+        },
+        "constraint_fold_from_source": {
+          "line": 2494,
+          "endLine": 2631,
+          "sourceSha256": "d4793212103c8a8bdc7565f036669e25a1372a332832d4bb75266b06a7bd4fa8",
+          "substrateSelections": [],
+          "directCallNames": [
+            "Str",
+            "ValueError",
+            "extract_rows",
+            "frozenset",
+            "interior_ibp_coefficient",
+            "len",
+            "tuple"
+          ]
+        },
+        "build_operator": {
+          "line": 2773,
+          "endLine": 3302,
+          "sourceSha256": "d1004eaafcea7048cced02bb7f729ba3c1f09e450e49f92c39c5b7f16fad7ed8",
+          "substrateSelections": [
+            {
+              "line": 2842,
+              "call": "selected_substrate_case(\n            faces,\n            \"virtual_constraint\",\n            branch,\n            representative,\n        )"
+            },
+            {
+              "line": 2850,
+              "call": "selected_substrate_case(\n            faces,\n            \"evolution_mass_balance\",\n            branch,\n            representative,\n        )"
+            },
+            {
+              "line": 2858,
+              "call": "selected_substrate_case(\n            faces,\n            \"evolution_term_origins\",\n            branch,\n            representative,\n        )"
+            },
+            {
+              "line": 2868,
+              "call": "selected_substrate_axes(\n                    faces,\n                    \"closure_shape_deriv\",\n                    (branch, face, \"DELTA_W\", representative),\n                )"
+            }
+          ],
+          "directCallNames": [
+            "Str",
+            "ValueError",
+            "ablated_jets",
+            "bind_mu_theta_operand",
+            "casify",
+            "constraint_fold_from_source",
+            "construct_energy",
+            "corrupt_evolution_origin_source",
+            "corrupt_virtual_constraint_source",
+            "density_pair",
+            "face_generalized_force_rows",
+            "first_jet_flux",
+            "frozenset",
+            "kinetic_balance_from_energy",
+            "material_pullback",
+            "mechanical_work_row_normalization",
+            "named_tuple_row",
+            "operator_from_density",
+            "replace_selected_substrate_case",
+            "routed_density",
+            "selected_substrate_axes",
+            "selected_substrate_case",
+            "str",
+            "substrate_bundle",
+            "tuple"
+          ]
+        }
+      }
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_c2_selfenergy_fold_sympy_audit.py",
+      "resolvedPath": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_c2_selfenergy_fold_sympy_audit.py",
+      "sha256": "0e90c751d36178a9846e75c38ac4ad0c8591b4b8ce11b6dc194218913265d434",
+      "bytes": 102548,
+      "functions": {
+        "build_face": {
+          "line": 552,
+          "endLine": 607,
+          "sourceSha256": "2f57c9d5e86b34d1c1d6d1d2038b511cdd8fb018afd14e3d0a7f221bdbd0d295",
+          "substrateSelections": [],
+          "directCallNames": [
+            "atom_named",
+            "isinstance",
+            "kernel_apply",
+            "kernel_bridge",
+            "mu_override",
+            "named",
+            "reference_pressure_kernels",
+            "velocity_override"
+          ]
+        },
+        "expanded_rows": {
+          "line": 610,
+          "endLine": 612,
+          "sourceSha256": "016c573c674b2b8c0d5a07174ea3d8215f78399fe42da0baa65c3ad6db202758",
+          "substrateSelections": [],
+          "directCallNames": [
+            "named"
+          ]
+        },
+        "build_case": {
+          "line": 615,
+          "endLine": 661,
+          "sourceSha256": "ea95ecb93c7a988ade37a7255e6657d553c39438cb93873b2141f8aec25fcdd1",
+          "substrateSelections": [],
+          "directCallNames": [
+            "build_face",
+            "difference",
+            "expanded_rows",
+            "extract",
+            "isinstance",
+            "named",
+            "retained_shape",
+            "str",
+            "tree",
+            "tuple",
+            "zip"
+          ]
+        }
+      }
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_d_mixing_scattering_sympy_audit.py",
+      "resolvedPath": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_d_mixing_scattering_sympy_audit.py",
+      "sha256": "5bf77729682960bb59f10c672a5fe3f67a98b0a9533da7c6189a37183596050f",
+      "bytes": 545480,
+      "functions": {
+        "ReducedPencil.__init__": {
+          "line": 443,
+          "endLine": 456,
+          "sourceSha256": "adec83dee2c0cbf91fa1a7868964878920d13f692023af49f050c0b5aecefa18",
+          "substrateSelections": [],
+          "directCallNames": [
+            "len",
+            "named",
+            "range",
+            "str",
+            "tuple",
+            "zip"
+          ]
+        },
+        "ClosedAcousticEnergy.construct": {
+          "line": 2992,
+          "endLine": 3131,
+          "sourceSha256": "7053d33efdc86d560012a3efaa1e1895c9b3882d0d3a8ea0a69eb3af483cfb40",
+          "substrateSelections": [],
+          "directCallNames": [
+            "average",
+            "enumerate",
+            "lru_cache",
+            "sorted",
+            "str",
+            "sum",
+            "tuple"
+          ]
+        }
+      }
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_continuum_response.py",
+      "resolvedPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_continuum_response.py",
+      "sha256": "0fe30a9c4771671e9fa139b0557f185f55d351887f2ba8b9fa4ed1abfb616db2",
+      "bytes": 23551,
+      "functions": {
+        "systems": {
+          "line": 73,
+          "endLine": 85,
+          "sourceSha256": "38ee8dd2fe93c42e4a93dc00906a5280e0397eb4157811d0b4ab189dd42a5f5b",
+          "substrateSelections": [],
+          "directCallNames": [
+            "enumerate",
+            "len",
+            "range"
+          ]
+        },
+        "solve": {
+          "line": 88,
+          "endLine": 110,
+          "sourceSha256": "58435ec4938b1713d3b93f93fe714d45eebbb8bb342f09b1cb7d91d5708f3814",
+          "substrateSelections": [],
+          "directCallNames": [
+            "abs",
+            "float",
+            "int",
+            "len",
+            "max"
+          ]
+        },
+        "channels": {
+          "line": 113,
+          "endLine": 172,
+          "sourceSha256": "c308ec9ee3728ed1f670c94f9bb9e15950763532b0e0266a27d8a023d92ef23c",
+          "substrateSelections": [],
+          "directCallNames": [
+            "adjoint",
+            "diagonal_series",
+            "enumerate",
+            "gram",
+            "len",
+            "list",
+            "range",
+            "sqrt_series",
+            "str"
+          ]
+        }
+      }
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_continuum_currents.py",
+      "resolvedPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_continuum_currents.py",
+      "sha256": "44ead83416dd8baa4fb0dedf16ef26a33fd810308112b6aa333dfc53fe75b8e0",
+      "bytes": 24261,
+      "functions": {
+        "selectors": {
+          "line": 87,
+          "endLine": 113,
+          "sourceSha256": "e66424d9e5d87a4c33806764aff4180b30d5490633b0235a579d40d0782e09ec",
+          "substrateSelections": [],
+          "directCallNames": [
+            "float",
+            "int",
+            "len",
+            "list",
+            "range",
+            "str"
+          ]
+        },
+        "open_metrics": {
+          "line": 116,
+          "endLine": 130,
+          "sourceSha256": "ba602c2318aa9a53727d55eb427f05699cfa3e04aed94035f0ef64454a19c310",
+          "substrateSelections": [],
+          "directCallNames": [
+            "subtract",
+            "zip"
+          ]
+        },
+        "construct_open": {
+          "line": 141,
+          "endLine": 164,
+          "sourceSha256": "b484457376e7a9b4431486355da5de1e7813ed643e94c3aa6b109bcfb866e777",
+          "substrateSelections": [],
+          "directCallNames": [
+            "amplitude_bookkeeping",
+            "direct_quadratic",
+            "quadratic",
+            "quotient",
+            "subtract"
+          ]
+        },
+        "end_currents": {
+          "line": 167,
+          "endLine": 186,
+          "sourceSha256": "a09edb03c7de9c7226d0884a40460501c23a15fc9ba82302050e528697af62bf",
+          "substrateSelections": [],
+          "directCallNames": [
+            "direct_quadratic",
+            "enumerate",
+            "float",
+            "multiply",
+            "quadratic",
+            "range",
+            "subtract"
+          ]
+        }
+      }
+    }
+  ],
+  "contextReferences": [
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_a_SHARED_PHYSICS.md",
+      "resolvedPath": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_a_SHARED_PHYSICS.md",
+      "sha256": "348bb3a3fa8f849139773096885a783ef46e8b24740ad1776eb21a4aa222e7f4",
+      "bytes": 28887
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_b_SHARED_PHYSICS.md",
+      "resolvedPath": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_b_SHARED_PHYSICS.md",
+      "sha256": "84d319141045522072bdbe944e72901ce78c70e73fdca31b5693d640f144ca89",
+      "bytes": 39529
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_SCATTERING_FORM_AMENDMENT.md",
+      "resolvedPath": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_SCATTERING_FORM_AMENDMENT.md",
+      "sha256": "eb6f20a3fd0bce308e53901fa69fdf267b2917e5cc78b319a1e7700074a47560",
+      "bytes": 69780
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_centre_compatibility_checkpoint.json",
+      "resolvedPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_centre_compatibility_checkpoint.json",
+      "sha256": "7703e26b44b521a95add34bc78b5e29f7400bcd29efc2071898424e83de00559",
+      "bytes": 41866
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_centre_options_synthesis.json",
+      "resolvedPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_centre_options_synthesis.json",
+      "sha256": "0c84db1a8b9bbf8da1e000efb069e4ee9a4a4c5f68724957d893607552a7e287",
+      "bytes": 7255
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_centre_upstream_navigation.json",
+      "resolvedPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_centre_upstream_navigation.json",
+      "sha256": "0137699fada8a15206c9c981becefeba87fb5889355b100c113dba20805837ee",
+      "bytes": 53126
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_FORM_boundary_source_inspection.json",
+      "resolvedPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_FORM_boundary_source_inspection.json",
+      "sha256": "0d98ba9cd3cf007574bd0563b7bbf10f14536b39cf23ea1142019bc47bc3fae6",
+      "bytes": 12962
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_A9_input_map.json",
+      "resolvedPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_A9_input_map.json",
+      "sha256": "3b358fc7b726a4e153c19f0ab61317843dc4cda170e14e5d3322f69726a17ed4",
+      "bytes": 58496
+    }
+  ],
+  "priorConsultationSourceMatches": [
+    "research/pde_ledger_v3/scripts/S11c_a_interface_geometry_sympy_audit.py",
+    "research/pde_ledger_v3/scripts/S11c_b_brane_operator_sympy_audit.py",
+    "research/pde_ledger_v3/scripts/S11c_c2_selfenergy_fold_sympy_audit.py"
+  ],
+  "literalChecks": {
+    "c2Representation": "DELTA_W",
+    "c2ClosedRows": [
+      "U",
+      "THETA",
+      "E_W"
+    ],
+    "dFields": [
+      "u1",
+      "u2",
+      "u3",
+      "theta",
+      "eW"
+    ],
+    "bSubstrateSelections": [
+      "selected_substrate_case(\n            faces,\n            \"virtual_constraint\",\n            branch,\n            representative,\n        )",
+      "selected_substrate_case(\n            faces,\n            \"evolution_mass_balance\",\n            branch,\n            representative,\n        )",
+      "selected_substrate_case(\n            faces,\n            \"evolution_term_origins\",\n            branch,\n            representative,\n        )",
+      "selected_substrate_axes(\n                    faces,\n                    \"closure_shape_deriv\",\n                    (branch, face, \"DELTA_W\", representative),\n                )",
+      "selected_substrate_axes(\n        bundle,\n        \"virtual_work_shape_deriv\",\n        (branch, \"DELTA_W\", \"DELTA_W\", representative),\n    )",
+      "selected_substrate_axes(\n        bundle,\n        \"virtual_work_shape_deriv\",\n        (branch, \"DELTA_W\", \"ZETA_C\", representative),\n    )",
+      "selected_substrate_axes(\n                                bundle,\n                                \"traction\",\n                                (branch, face, \"DELTA_W\", representative),\n                            )",
+      "selected_substrate_axes(\n                                bundle,\n                                \"closure_shape_deriv\",\n                                (branch, face, \"DELTA_W\", representative),\n                            )"
+    ],
+    "projectionCarriedInFullMetadataBundle": true,
+    "projectionSelectedIntoInspectedClosedRows": false,
+    "nativeGeneralWindowMadeSymmetric": false
+  },
+  "interpretation": "The existing computed object is the five-field problem consuming the DELTA_W face-direction specialization, with its actual finite domain and incident maps. No independent centre response was solved or eliminated.",
+  "windowDisposition": "The generic projection window has no explicit exchange-symmetry premise. Its bundle is retained upstream, but selected sources for the inspected closed U/THETA/E_W rows do not use the projection entries. This is source dataflow, not a full symbolic equivalence, automatic callgraph proof or general reflection theorem.",
+  "strongerClaimsNotEstablished": [
+    "full coupled reflection-invariant sector",
+    "unique independent centre motion",
+    "total bulk power for arbitrary centre additions",
+    "general outgoing/radiating response"
+  ],
+  "scientificImports": 0,
+  "scientificPacketRestorations": 0,
+  "scientificOperations": 0,
+  "reviewerCalls": 0,
+  "sourcePosthashesUnchanged": true,
+  "protectedBuilderSuffixSha256": "f01024512c9a028e7e524e5a95b5c455be42e125d10c36f94e20493109b013c2",
+  "implementationCoverageClearance": false,
+  "generator": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-claim-disposition-20260926/source_claim_check.py",
+    "resolvedPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-claim-disposition-20260926/source_claim_check.py",
+    "sha256": "706bc881b19199c12d2801bc5af624b033f60a6a27172b0751c77dccc3bf6c4e",
+    "bytes": 7565
+  }
+}

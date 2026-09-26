@@ -6,6 +6,10 @@ Option B is accepted. Both round-9 document reviews are CLEAR, preserved at
 physics spec or authority to bypass build review. Historical work queues and
 optional reviewer suggestions do not create extra jobs.
 
+**Paused at the user's request (2026-09-26), after completing the bounded
+centre source/claim disposition.** No further design, review, scientific run
+or export launch is scheduled until the user resumes this work.
+
 | Phase | Concrete deliverable | Stop or completion condition |
 |---|---|---|
 | **1. Map and reuse the A9 inputs** | One source/operand/export-root map: locate the actual reduced rows, baseline/end/current and weak-grade packets, exact A6–A8 controls, and any saved c1/c2 face-drive/reconstruction inputs. Reconcile the old build directive and program brief to accepted scope. | Distinguish saved results, genuinely missing retained work, and domain-dependent scope decisions. No science replay or broad ancestral audit. |
@@ -17,32 +21,22 @@ existing evidence, not a reconstruction queue. Keep the original files and
 failure histories. Use explicit references and complete only genuinely missing
 operations after inspecting actual inputs and returns.
 
-**Current disposition (2026-09-26):** input and A6/A7/first-jet consumer mapping
-is complete. The user-approved bounded centre compatibility task has now
-completed cleanly. Its [result report](S11c_d_centre_compatibility_report.md)
-and [diagnostic checkpoint](S11c_d_centre_compatibility_checkpoint.json) record
-zero centre face load in all four existing retained thickness-driven closures,
-computed through the source-derived per-face relations. The final-assembly
-control responds; old closures and responses were not replayed.
+**Current disposition (2026-09-26):** input and A6/A7/first-jet mapping and the
+bounded centre check are complete. The user adopted the
+[three-way recommendation](S11c_d_centre_options_synthesis.md), followed by the
+[source/claim disposition](S11c_d_centre_claim_disposition.md). The existing
+five-field `DELTA_W` problem can support conditional FORM work without first
+completing general centre mechanics. It is not relabelled as a centre-eliminated
+or unrestricted two-face solution. The older proposed centre-balance task is
+superseded; the completed diagnostic, its limitations and all reports remain.
 
-That necessary compatibility result does not select independent centre motion.
-The precise remaining input is an upstream centre balance/constraint and its
-drive/solution-selection conditions, or an explicitly prescribed independent
-centre drive with the scope it defines. The existing five-field results are
-not declared incorrect. This bounded task stops at that upstream disposition;
-it does not impose centre zero or authorize a new centre/radiation solver.
-The [separate decaying-bulk boundary finding](S11c_d_FORM_boundary_disposition.md)
-still limits the current finite end method. A general radiating method remains
-a separate concrete scope/build decision. No further document-review cycle,
-old pole/complex-row queue or numerical campaign is automatically scheduled.
-
-The subsequent [upstream source disposition](S11c_d_centre_upstream_disposition.md)
-locates the saved independent centre direction, generic prescribed-drive
-acoustic coefficients and restricted bare-DtN parity evidence. It recommends
-one bounded completion of the upstream balance/solution-selection statement,
-without adding centre mechanics or fixing centre zero. That next scope is
-pending; source navigation has not cleared new production. It must return a
-usable relation or a precise missing model input, not another diagnostic chain.
+**Next:** specify the actual transparent response representation and export
+dependencies under the [implementation coverage](S11c_d_FORM_implementation_coverage.md)
+gate. Saved symbolic operators are reusable; evaluated matrix/weak-current
+tables do not constitute a general FORM. No further centre diagnostic or
+universal reflection theorem is a prerequisite. The separate radiating-domain
+gap remains: a new boundary/continuum method needs its concrete scope/build
+decision, and supported A11/A12 claims are not silently waived.
 
 **Outside this execution queue:** the eight material complex rows, two material
 complex responses and new pole searches; global domain certification; broad

@@ -1,0 +1,523 @@
+{
+  "status": "FROZEN_BOUNDED_CENTRE_DIAGNOSTIC_INPUTS",
+  "implementationCommit": "8470e88704a5d93f8753be7ff2829a7da6e64fe0",
+  "files": [
+    {
+      "path": "/home/trevnorris/.local/lib/python3.10/site-packages/sympy/core/function.py",
+      "canonicalPath": "/home/trevnorris/.local/lib/python3.10/site-packages/sympy/core/function.py",
+      "bytes": 117102,
+      "links": [],
+      "sha256": "cb4bc47576940fcb613f75dab1956492882a5ce181d1cb362677c711ae033634"
+    },
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/build-plan-review/claude-run.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/build-plan-review/claude-run.json",
+      "bytes": 1230,
+      "links": [],
+      "sha256": "9e07491ad54b0a72a60d531633f2250995e8bf3bfed0659d0933ae5022870651"
+    },
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/build-plan-review/explicit-packet-approval.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/build-plan-review/explicit-packet-approval.json",
+      "bytes": 931,
+      "links": [],
+      "sha256": "fe8d7b9ad1ee184d47eb96cc9b98be8bf33a141de6f4a0f246e350bb22864843"
+    },
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/build-plan-review/grok-run.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/build-plan-review/grok-run.json",
+      "bytes": 1222,
+      "links": [],
+      "sha256": "15da4b9c47897ccd4cbf995bdc632651288f57db1c84ac1947defc06cc752708"
+    },
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/build-plan-review/launch-rejection.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/build-plan-review/launch-rejection.json",
+      "bytes": 1033,
+      "links": [],
+      "sha256": "cef76dd639a3542861ad2a583decd07e3bb71dfe16cad6fa960a3b0d3817fee6"
+    },
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/build-plan-review/launch.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/build-plan-review/launch.json",
+      "bytes": 415,
+      "links": [],
+      "sha256": "f2bd95c8e277f3af8ad4f95f9efde213b0cd604e9b083586e504970cbe6c33a7"
+    },
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/prepare/close_source_joins.py",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/prepare/close_source_joins.py",
+      "bytes": 4828,
+      "links": [],
+      "sha256": "be28f8e4d8f13acdc5f2c97035becab0356c261c599f7b0c609a2e69b2124ef8"
+    },
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/prepare/close_source_joins_finish.py",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/prepare/close_source_joins_finish.py",
+      "bytes": 5277,
+      "links": [],
+      "sha256": "dcaa747e5561f89952b308a7bd0bdfb574182431b88602761e7899a7b0329475"
+    },
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/prepare/closure-index-failure.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/prepare/closure-index-failure.json",
+      "bytes": 486,
+      "links": [],
+      "sha256": "fc390eef754da98dc82764fd10ded9b676963887b65ff364cac6b49be0220e66"
+    },
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/prepare/closure-inputs.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/prepare/closure-inputs.json",
+      "bytes": 159466,
+      "links": [],
+      "sha256": "5daecd0c48b25b81a58f2283774acdbf4b59cb1e1ba8d5dfe6dcad4407bf15b1"
+    },
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/prepare/instrument-harness.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/prepare/instrument-harness.json",
+      "bytes": 1651,
+      "links": [],
+      "sha256": "1f1f8e4f026eb80dbe3588489baa90114938039a5690954f5f305606ac688f67"
+    },
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/prepare/instrument-harness.stderr",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/prepare/instrument-harness.stderr",
+      "bytes": 261,
+      "links": [],
+      "sha256": "7c4dd4c57f3811a27cb15af0222924cb703115dab0d929a163fc00529695c619"
+    },
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/prepare/instrument_harness.py",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/prepare/instrument_harness.py",
+      "bytes": 6573,
+      "links": [],
+      "sha256": "07f4944a8cc36dfdfff765d92ead50e58f0850744f0bedc053abc70cef800853"
+    },
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/prepare/instrument_harness_finish.py",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/prepare/instrument_harness_finish.py",
+      "bytes": 3009,
+      "links": [],
+      "sha256": "b23413dfa31b26e14150eb0dd0fa601842288cc1138658bfc39e8b8fe6efc16c"
+    },
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/prepare/join-inputs.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/prepare/join-inputs.json",
+      "bytes": 19696,
+      "links": [],
+      "sha256": "07d6ce78ef36b825345b681403901db9a10d96c0de9cd829edd5462b95b7a546"
+    },
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/prepare/join.stderr",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/prepare/join.stderr",
+      "bytes": 656,
+      "links": [],
+      "sha256": "34b8081934ca57815560316c4d972cc0d459c11698a6574332f4273788980d82"
+    },
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/prepare/reuse-inputs.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/prepare/reuse-inputs.json",
+      "bytes": 55346,
+      "links": [],
+      "sha256": "a6b43e2f41fce1ea027374565e45ac6d7a658f55e30840950d62333f72567fd8"
+    },
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/prepare/saved-operands.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/prepare/saved-operands.json",
+      "bytes": 157155,
+      "links": [],
+      "sha256": "1d0839f28d6466c651a5a697b1d4feaab0bb4f50735f4973a1c80a1690ae93fd"
+    },
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/prepare/source-join-metadata-failure.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/prepare/source-join-metadata-failure.json",
+      "bytes": 611,
+      "links": [],
+      "sha256": "f161994df8a6a20f29f6ad4afb16c736e8e2c5e313129f5c21d985d25c833c2f"
+    },
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-thickness-coordinate-20260914/c2_full/manifest.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-thickness-coordinate-20260914/c2_full/manifest.json",
+      "bytes": 2693,
+      "links": [],
+      "sha256": "b3c6e3b088d7b8eb9ec525b795d2d5ab6f5912691d16b0188e8018f4490a761c"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_centre_compatibility.py",
+      "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_centre_compatibility.py",
+      "bytes": 21881,
+      "links": [],
+      "sha256": "7098d25403c2336e92fb219d5256d2847cf63bf68c9fff59d4a2d137df24d97a"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_centre_compatibility_inputs.json",
+      "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_centre_compatibility_inputs.json",
+      "bytes": 2719,
+      "links": [],
+      "sha256": "6ef1889c0b45da85dd90cc638e378a92a84a370dbc912dfc94124e5ac9cac12b"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_centre_compatibility_instrument.json",
+      "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_centre_compatibility_instrument.json",
+      "bytes": 1330,
+      "links": [],
+      "sha256": "f55d4331a15dea27fb605ae7bba403e7e2d21110bdfb43086555db69fe0d4052"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_centre_plan_adjudication.md",
+      "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_centre_plan_adjudication.md",
+      "bytes": 4747,
+      "links": [],
+      "sha256": "f62fd202e0ffb6280c769260368fdf6d7f3aedffb570bff784e1502e3e3451af"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_centre_plan_review.json",
+      "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_centre_plan_review.json",
+      "bytes": 2269,
+      "links": [],
+      "sha256": "268c6cda0a78ace053a95368c90fd72478e6f22c1b7204eb7829070f150eb805"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_centre_plan_review_claude.md",
+      "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_centre_plan_review_claude.md",
+      "bytes": 8143,
+      "links": [],
+      "sha256": "11448a23bfdb683493075bd99c555bcf3a5fe1f507c3c520980f961a42380725"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_centre_plan_review_grok.md",
+      "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_centre_plan_review_grok.md",
+      "bytes": 12872,
+      "links": [],
+      "sha256": "a8c079382d55396256ef929ae476bfb728c48fa2bf8e75164b214c82c1f89157"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+      "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+      "bytes": 3347,
+      "links": [],
+      "sha256": "45a16f7f952ca6b571362b1c386fec76cd86f1e0ad04113074adf49c683ec49c"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_a_SHARED_PHYSICS.md",
+      "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_a_SHARED_PHYSICS.md",
+      "bytes": 28887,
+      "links": [],
+      "sha256": "348bb3a3fa8f849139773096885a783ef46e8b24740ad1776eb21a4aa222e7f4"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_b_SHARED_PHYSICS.md",
+      "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_b_SHARED_PHYSICS.md",
+      "bytes": 39529,
+      "links": [],
+      "sha256": "84d319141045522072bdbe944e72901ce78c70e73fdca31b5693d640f144ca89"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c1_SHARED_PHYSICS.md",
+      "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c1_SHARED_PHYSICS.md",
+      "bytes": 50376,
+      "links": [],
+      "sha256": "47554c8c9cf2fd070c1048a7ae0ca36b1315bf50a48ed07a51019ff3e72987ad"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c2_SHARED_PHYSICS.md",
+      "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c2_SHARED_PHYSICS.md",
+      "bytes": 41229,
+      "links": [],
+      "sha256": "656d55a36be5f7179934f187c106fdc942dd98b4533a683c99135d29ceb62cd1"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_SCATTERING_FORM_AMENDMENT.md",
+      "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_SCATTERING_FORM_AMENDMENT.md",
+      "bytes": 69780,
+      "links": [],
+      "sha256": "eb6f20a3fd0bce308e53901fa69fdf267b2917e5cc78b319a1e7700074a47560"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_centre_compatibility_plan.md",
+      "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_centre_compatibility_plan.md",
+      "bytes": 13393,
+      "links": [],
+      "sha256": "e244d290282aed1a833354a8115d3fab7c3902f3efe9a34308f8a8a7e4348fc6"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_a_interface_geometry_sympy_audit.py",
+      "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_a_interface_geometry_sympy_audit.py",
+      "bytes": 101558,
+      "links": [],
+      "sha256": "f4da0f2224257381300e5e78cc74a1341485b82446ac98251ca25d4b3c1a6be7"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_b_brane_operator_sympy_audit.py",
+      "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_b_brane_operator_sympy_audit.py",
+      "bytes": 203199,
+      "links": [],
+      "sha256": "666b4005b745dd29933561f701c6c1859a2b00e9855badcb08e2347308504472"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_b_exports.py",
+      "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_b_exports.py",
+      "bytes": 61624077,
+      "links": [],
+      "sha256": "3c6555f90a85382a5e96f3f961f0e36a4875d9259fe1be947fa8e683669b7084"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_c2_selfenergy_fold_sympy_audit.py",
+      "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_c2_selfenergy_fold_sympy_audit.py",
+      "bytes": 102548,
+      "links": [],
+      "sha256": "0e90c751d36178a9846e75c38ac4ad0c8591b4b8ce11b6dc194218913265d434"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/out/S11c_a_interface_geometry_sympy_audit.out",
+      "canonicalPath": "/var/projects/toy_physics/.git/annex/objects/mv/pZ/MD5E-s50354701--d8417e97718cb8e47e718d296c2eed16.out/MD5E-s50354701--d8417e97718cb8e47e718d296c2eed16.out",
+      "bytes": 50354701,
+      "links": [
+        {
+          "path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/out/S11c_a_interface_geometry_sympy_audit.out",
+          "target": "../../../../.git/annex/objects/mv/pZ/MD5E-s50354701--d8417e97718cb8e47e718d296c2eed16.out/MD5E-s50354701--d8417e97718cb8e47e718d296c2eed16.out"
+        }
+      ],
+      "sha256": "a0757e9273e4b5cb6c11f27b4bf954c09afbfb0e04d764a6e840708fb617ca58"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/out/S11c_b_brane_operator_sympy_audit.out",
+      "canonicalPath": "/var/projects/toy_physics/.git/annex/objects/32/xw/MD5E-s183361030--9c557f4c708b8729945aecf869ae7ebd.out/MD5E-s183361030--9c557f4c708b8729945aecf869ae7ebd.out",
+      "bytes": 183361030,
+      "links": [
+        {
+          "path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/out/S11c_b_brane_operator_sympy_audit.out",
+          "target": "../../../../.git/annex/objects/32/xw/MD5E-s183361030--9c557f4c708b8729945aecf869ae7ebd.out/MD5E-s183361030--9c557f4c708b8729945aecf869ae7ebd.out"
+        }
+      ],
+      "sha256": "693f0e804ca5fc3e418406cd049aa3d4c56263e101a7f1ae3078172d674cf98f"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/out/S11c_c2_selfenergy_fold_sympy_audit.out",
+      "canonicalPath": "/var/projects/toy_physics/.git/annex/objects/pF/Kj/MD5E-s530883300--930e01eae744edfb2a7a57dbb881e0a1.out/MD5E-s530883300--930e01eae744edfb2a7a57dbb881e0a1.out",
+      "bytes": 530883300,
+      "links": [
+        {
+          "path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/out/S11c_c2_selfenergy_fold_sympy_audit.out",
+          "target": "../../../../.git/annex/objects/pF/Kj/MD5E-s530883300--930e01eae744edfb2a7a57dbb881e0a1.out/MD5E-s530883300--930e01eae744edfb2a7a57dbb881e0a1.out"
+        }
+      ],
+      "sha256": "9712191e3af5e7bbc2eb65824ca283f0c5cb3a35d5e21632d0821412ec018864"
+    },
+    {
+      "path": "/var/projects/toy_physics/scripts/codex_job_watch.py",
+      "canonicalPath": "/var/projects/toy_physics/scripts/codex_job_watch.py",
+      "bytes": 4301,
+      "links": [],
+      "sha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77"
+    },
+    {
+      "path": "/var/projects/toy_physics/scripts/s11c_guarded_run.py",
+      "canonicalPath": "/var/projects/toy_physics/scripts/s11c_guarded_run.py",
+      "bytes": 8783,
+      "links": [],
+      "sha256": "6492f5ab11dc2ab2f80bbfcc96d7eb6b8632afea07100dd8f74a7954f3ffe542"
+    }
+  ],
+  "navigation": {
+    "saved-operands": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/prepare/saved-operands.json",
+    "closure-inputs": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/prepare/closure-inputs.json",
+    "reuse-inputs": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/prepare/reuse-inputs.json",
+    "join-inputs": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-compatibility-20260926/prepare/join-inputs.json"
+  },
+  "bExport": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_b_exports.py",
+  "c2Source": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_c2_selfenergy_fold_sympy_audit.py",
+  "slotOrder": [
+    "delta_p_plus",
+    "d_w_delta_p_plus",
+    "delta_p_minus",
+    "d_w_delta_p_minus"
+  ],
+  "constantParameterRoles": [
+    "W_0",
+    "omega",
+    "rho_m",
+    "rho_br",
+    "c_s0",
+    "Lambda_A_0",
+    "Lambda_V_0",
+    "Lambda_X_0",
+    "tau_A",
+    "tau_V",
+    "tau_X"
+  ],
+  "nativeScalarRoleDeclarations": {
+    "Lambda_A_0": {
+      "line": 302,
+      "literalDeclaration": [
+        "    'Lambda_A_0':     {",
+        "        'display': 'Lambda_A_0',",
+        "        'value': _restore(\"Symbol('Lambda_A_0', real=True)\"),",
+        "        'value_kind': 'COMPUTED_OBJECT',",
+        "        'class': 'KNOB',",
+        "        'step': 'S11c-b',",
+        "        'description': 'inherited face-law knob Lambda_A_0',",
+        "        'f9_operands': _restore(\"Tuple(Symbol('Lambda_A_0', real=True), Symbol('Lambda_A_0', real=True))\"),",
+        "        'corroborated_steps': ('S11b', 'S11c-a', 'S11c-b'),",
+        "    },"
+      ]
+    },
+    "Lambda_V_0": {
+      "line": 312,
+      "literalDeclaration": [
+        "    'Lambda_V_0':     {",
+        "        'display': 'Lambda_V_0',",
+        "        'value': _restore(\"Symbol('Lambda_V_0', real=True)\"),",
+        "        'value_kind': 'COMPUTED_OBJECT',",
+        "        'class': 'KNOB',",
+        "        'step': 'S11c-b',",
+        "        'description': 'inherited face-law knob Lambda_V_0',",
+        "        'f9_operands': _restore(\"Tuple(Symbol('Lambda_V_0', real=True), Symbol('Lambda_V_0', real=True))\"),",
+        "        'corroborated_steps': ('S11b', 'S11c-a', 'S11c-b'),",
+        "    },"
+      ]
+    },
+    "Lambda_X_0": {
+      "line": 322,
+      "literalDeclaration": [
+        "    'Lambda_X_0':     {",
+        "        'display': 'Lambda_X_0',",
+        "        'value': _restore(\"Symbol('Lambda_X_0', real=True)\"),",
+        "        'value_kind': 'COMPUTED_OBJECT',",
+        "        'class': 'KNOB',",
+        "        'step': 'S11c-b',",
+        "        'description': 'inherited face-law knob Lambda_X_0',",
+        "        'f9_operands': _restore(\"Tuple(Symbol('Lambda_X_0', real=True), Symbol('Lambda_X_0', real=True))\"),",
+        "        'corroborated_steps': ('S11b', 'S11c-a', 'S11c-b'),",
+        "    },"
+      ]
+    },
+    "W_0": {
+      "line": 372,
+      "literalDeclaration": [
+        "    'W_0':     {",
+        "        'display': 'W_0',",
+        "        'value': _restore(\"Symbol('W_0', positive=True)\"),",
+        "        'value_kind': 'COMPUTED_OBJECT',",
+        "        'class': 'KNOB',",
+        "        'step': 'S11c-b',",
+        "        'description': 'uniform reference thickness',",
+        "        'f9_operands': _restore(\"Tuple(Symbol('W_0', positive=True), Symbol('W_0', positive=True))\"),",
+        "        'corroborated_steps': ('S11b', 'S11c-a', 'S11c-b'),",
+        "    },"
+      ]
+    },
+    "c_s0": {
+      "line": 746,
+      "literalDeclaration": [
+        "    'c_s0':     {",
+        "        'display': 'c_s0',",
+        "        'value': _restore(\"Symbol('c_s0', positive=True)\"),",
+        "        'value_kind': 'COMPUTED_OBJECT',",
+        "        'class': 'KNOB',",
+        "        'step': 'S11b',",
+        "        'dimension_key': 'dim_c_s0',",
+        "        'description': 'bulk sound speed',",
+        "        'f9_operands': _restore(\"Tuple(Symbol('c_s0', positive=True), Symbol('c_s0', positive=True))\"),",
+        "        'corroborated_steps': ('S11', 'S11b'),",
+        "    },"
+      ]
+    },
+    "omega": {
+      "line": 5635,
+      "literalDeclaration": [
+        "    'omega':     {",
+        "        'display': 'omega',",
+        "        'value': _restore(\"Symbol('omega', real=True)\"),",
+        "        'value_kind': 'COMPUTED_OBJECT',",
+        "        'class': 'COORDINATE',",
+        "        'step': 'S11c-b',",
+        "        'description': 'uniform-regression frequency',",
+        "        'f9_operands': _restore(\"Tuple(Symbol('omega', real=True), Symbol('omega', real=True))\"),",
+        "        'corroborated_steps': ('S9', 'S11c-a', 'S11c-b'),",
+        "    },"
+      ]
+    },
+    "rho_br": {
+      "line": 9274,
+      "literalDeclaration": [
+        "    'rho_br':     {",
+        "        'display': 'rho_br',",
+        "        'value': _restore(\"Symbol('rho_br', positive=True)\"),",
+        "        'value_kind': 'COMPUTED_OBJECT',",
+        "        'class': 'KNOB',",
+        "        'step': 'S11c-b',",
+        "        'description': 'uniform integrated brane density',",
+        "        'f9_operands': _restore(\"Tuple(Symbol('rho_br', positive=True), Symbol('rho_br', positive=True))\"),",
+        "        'corroborated_steps': ('S9', 'S11', 'S11b', 'S11c-a', 'S11c-b'),",
+        "    },"
+      ]
+    },
+    "rho_m": {
+      "line": 9300,
+      "literalDeclaration": [
+        "    'rho_m':     {",
+        "        'display': 'rho_m',",
+        "        'value': _restore(\"Symbol('rho_m', positive=True)\"),",
+        "        'value_kind': 'COMPUTED_OBJECT',",
+        "        'class': 'KNOB',",
+        "        'step': 'S11c-b',",
+        "        'description': 'bulk mass density',",
+        "        'f9_operands': _restore(\"Tuple(Symbol('rho_m', positive=True), Symbol('rho_m', positive=True))\"),",
+        "        'corroborated_steps': ('S11b', 'S11c-a', 'S11c-b'),",
+        "    },"
+      ]
+    },
+    "tau_A": {
+      "line": 15411,
+      "literalDeclaration": [
+        "    'tau_A':     {",
+        "        'display': 'tau_A',",
+        "        'value': _restore(\"Symbol('tau_A', nonnegative=True)\"),",
+        "        'value_kind': 'COMPUTED_OBJECT',",
+        "        'class': 'KNOB',",
+        "        'step': 'S11c-b',",
+        "        'description': 'inherited face-law knob tau_A',",
+        "        'f9_operands': _restore(\"Tuple(Symbol('tau_A', nonnegative=True), Symbol('tau_A', nonnegative=True))\"),",
+        "        'corroborated_steps': ('S11b', 'S11c-a', 'S11c-b'),",
+        "    },"
+      ]
+    },
+    "tau_V": {
+      "line": 15421,
+      "literalDeclaration": [
+        "    'tau_V':     {",
+        "        'display': 'tau_V',",
+        "        'value': _restore(\"Symbol('tau_V', nonnegative=True)\"),",
+        "        'value_kind': 'COMPUTED_OBJECT',",
+        "        'class': 'KNOB',",
+        "        'step': 'S11c-b',",
+        "        'description': 'inherited face-law knob tau_V',",
+        "        'f9_operands': _restore(\"Tuple(Symbol('tau_V', nonnegative=True), Symbol('tau_V', nonnegative=True))\"),",
+        "        'corroborated_steps': ('S11b', 'S11c-a', 'S11c-b'),",
+        "    },"
+      ]
+    },
+    "tau_X": {
+      "line": 15431,
+      "literalDeclaration": [
+        "    'tau_X':     {",
+        "        'display': 'tau_X',",
+        "        'value': _restore(\"Symbol('tau_X', nonnegative=True)\"),",
+        "        'value_kind': 'COMPUTED_OBJECT',",
+        "        'class': 'KNOB',",
+        "        'step': 'S11c-b',",
+        "        'description': 'inherited face-law knob tau_X',",
+        "        'f9_operands': _restore(\"Tuple(Symbol('tau_X', nonnegative=True), Symbol('tau_X', nonnegative=True))\"),",
+        "        'corroborated_steps': ('S11b', 'S11c-a', 'S11c-b'),",
+        "    },"
+      ]
+    }
+  },
+  "scalarRoleRestriction": "Source-defined constant coefficients/frequency only, held fixed through the selected substitution/projection/physical-field chain; no wave/profile/coordinate/retained small parameter.",
+  "sourceHashesJoinActualCompletedC2Consumer": true,
+  "bWholeExportOutputLiteralJoin": true,
+  "nativeSympyVersion": "1.14.0",
+  "nativeFunctionCodecSource": "/home/trevnorris/.local/lib/python3.10/site-packages/sympy/core/function.py",
+  "resultScope": "Necessary centre pressure-slot compatibility diagnostic only; no full centre dynamics, response or new radiation method."
+}

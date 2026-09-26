@@ -1,0 +1,72 @@
+{
+  "status": "CONSULTATION_LAUNCHED_OPINIONS_PENDING",
+  "requestedByUser": "Write up a doc of the options and ask Claude and Grok then report back to me what you three think.",
+  "recordedUtc": "2026-09-26T21:20:23.220214+00:00",
+  "memoCommit": "89ff8ae4",
+  "memo": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_centre_options.md",
+    "sha256": "d2e8c9f41027b23dc7a6b782f28a5e4c11b958708a5a122e5c94cba84da6d8be"
+  },
+  "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-options-20260926/consult",
+  "packetSha256": "d197a0b290bb54449365cc24aa389a58bac59686a711362578f5a1c5615bc157",
+  "packetFiles": 18,
+  "packetBytes": 407551,
+  "launch": {
+    "jobPid": 1635089,
+    "watcherPid": 1635090,
+    "reviewers": [
+      "Claude",
+      "Grok"
+    ],
+    "scope": "Centre options: fixed read-only advisory packet",
+    "packetSha256": "d197a0b290bb54449365cc24aa389a58bac59686a711362578f5a1c5615bc157",
+    "concurrentReviewWorkers": 1,
+    "scienceCalls": 0,
+    "runnerSha256": "09d0c4ac4e15bf7e60b8df78f0845afcf9da15169bbb9e4f37548a6c79774695"
+  },
+  "files": [
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-options-20260926/consult/launch.json",
+      "sha256": "f2c8998ab50016ab2d2eb3e18a6e5db72a7e811a376bc64f2512387516a88f63",
+      "bytes": 383
+    },
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-options-20260926/consult/static-review.json",
+      "sha256": "ccad4c17fee1c9050bc111568537eec12935d87b13e382e0674be7b665574826",
+      "bytes": 1029
+    },
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-options-20260926/consult/packet.tar.gz",
+      "sha256": "783c77e928300badd4e150af4d41c17533888cd265688b517ffa08d916a70697",
+      "bytes": 130748
+    },
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-options-20260926/consult/run_reviews.py",
+      "sha256": "09d0c4ac4e15bf7e60b8df78f0845afcf9da15169bbb9e4f37548a6c79774695",
+      "bytes": 4950
+    },
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-options-20260926/consult/launch.py",
+      "sha256": "875a7dbede56b2074c9730828d3747982b4d5ea78240ac9baf699a713cb1a68d",
+      "bytes": 2356
+    },
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-options-20260926/consult/completion_message.txt",
+      "sha256": "a54a02793613a2e6583e081ce13c30db54441e5817e772055355450a42632c07",
+      "bytes": 1853
+    }
+  ],
+  "reviewers": [
+    "Claude",
+    "Grok"
+  ],
+  "mode": "Fresh sequential independent read-only provider sessions; one opinion each.",
+  "peerReportSharing": false,
+  "scientificCalls": 0,
+  "automaticRetries": false,
+  "modelPolling": false,
+  "purpose": "Compare the four centre-motion options; challenge necessity/scope; report both views and Codex judgment to user.",
+  "nextAction": "On local completion hook inspect both terminal statuses and actual final reports before synthesizing. No automatic model choice, new review round, or production.",
+  "hookState": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-options-20260926/consult/completion-watcher/state.json",
+  "unlaunchedPreparationFailure": "/var/projects/toy_physics/_scratch/s11c/s11c-d-centre-options-20260926/unlaunched-prepare01/failure.json"
+}

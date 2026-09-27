@@ -1,0 +1,69 @@
+{
+  "engine": "grok",
+  "session_id": "40f0b524-f075-4cd8-a14e-4ea13a55b699",
+  "command": [
+    "/home/trevnorris/.local/bin/grok",
+    "--cwd",
+    "/tmp/s11-lean-bookkeeping-fidelity-fet26phx/packet",
+    "--prompt-file",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_bookkeeping/review_run3/continuation_prompt.txt",
+    "--output-format",
+    "json",
+    "--permission-mode",
+    "dontAsk",
+    "--no-plan",
+    "--tools",
+    "Read",
+    "--no-subagents",
+    "--disable-web-search",
+    "--verbatim",
+    "--resume",
+    "40f0b524-f075-4cd8-a14e-4ea13a55b699"
+  ],
+  "cwd": "/tmp/s11-lean-bookkeeping-fidelity-fet26phx/packet",
+  "packet_sha256": "5c0a6c321424ae09c70e61442f73d1982c9aba49ac7d33d0503b610cb2baa9de",
+  "prompt_sha256": "f5e0e502dc272b39bfdcb0fa876a35117ace2fb712f4da18ee45a7bb721f4580",
+  "status": "RETURNED",
+  "review_verdict": "NOT_ADJUDICATED",
+  "guard_directory": "/var/projects/toy_physics/_scratch/s11c/lean_bookkeeping_review3_grok",
+  "prior_attempt": "_measurements/S11_lean_bookkeeping_fidelity_grok_v1_run.json",
+  "prior_attempt_sha256": "016761fdaae9f2c6ffa6245fb7392dd967e3cd7d76acc1ab80a6d6b2bb59741f",
+  "runtime_env": {
+    "GROK_WORKER_THREADS": "1",
+    "GROK_SUBAGENT_WORKER_THREADS": "1",
+    "TOKIO_WORKER_THREADS": "1",
+    "RAYON_NUM_THREADS": "1"
+  },
+  "resource_limits": {
+    "tasks_max": 64,
+    "memory_gib": 2
+  },
+  "reviewer_sha256": "6ef84090ab55872a7c8ca0223ea48a55945e28cb36e54a9c815fc609fc0da208",
+  "continuation_prompt": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_bookkeeping/review_run3/continuation_prompt.txt",
+  "continuation_prompt_sha256": "29c180fb56beafb3fddc2ec9205bf8c101db6c3798506ebc2905e69a7d790aa0",
+  "session_resumed": true,
+  "prior_progress_record_sha256": "9919fb8402326cffba23dee53571083daa93afef592143ab0ebf7a186fb79a26",
+  "repair": "Deliberate continuation after inspected HTTP/DNS thread-creation failure with saved packet reads, using --resume on the existing independent session. Same fixed packet, original review prompt, read-only tools and resource limits; a short neutral continuation prompt is separately hashed. No automatic retry.",
+  "prepared_utc": "2026-09-26T23:21:50.552449+00:00",
+  "started_utc": "2026-09-26T23:21:50.800505+00:00",
+  "pid": 1778087,
+  "exit_status": 0,
+  "finished_utc": "2026-09-26T23:22:47.406323+00:00",
+  "wall_seconds": 56.605,
+  "output_sha256": "e29a45d38bf2dec9c9467dc8067926737189e55186b249f3b58d43e59d5b64ac",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "guard_outcome": {
+    "exitCode": 0,
+    "wallSeconds": 56.81005578296026,
+    "unit": "s11c-guard-9b7d4cb0bcc0",
+    "stderrBytes": 0,
+    "limitsVerified": true,
+    "childOutcome": {
+      "exitCode": 0,
+      "guardReason": null,
+      "wallSeconds": 56.704882625024766,
+      "childPid": 1778086
+    }
+  },
+  "guard_outcome_sha256": "699dbde8e7d805878fb0eed3654271e63a26bbc4019d37029027fb18d1a65f80"
+}

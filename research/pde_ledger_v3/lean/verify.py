@@ -39,6 +39,7 @@ CONTRACTS = {
     'poles': ('S11_lean_pole', ['S11NonlinearPole']),
     'd4-bulk': ('S11_lean_d4_bulk', ['S11D4Bulk']),
     'd5': ('S11_lean_d5', ['S11D5Invariants']),
+    'd5-bulk': ('S11_lean_d5_bulk', ['S11D5Bulk']),
 }
 IMPORT = re.compile(r'^import\s+([\w.]+)\s*$', re.M)
 LOCAL = re.compile(r'S(?:9|10|11)\w*(?:\.\w+)*\Z')

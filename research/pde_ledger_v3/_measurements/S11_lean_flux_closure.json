@@ -1,0 +1,81 @@
+{
+  "status": "COMPLETE",
+  "scope": "Bounded F1\u2013F4 only",
+  "packet_sha256": "5945c5b4b9d980613e7ff1c31261547a50f559799c14250173e325d0e02584ae",
+  "archive_sha256": "53d6171158c252c48a761404b6561db25fa1e06fa90ee9adadf35c3ffee32eca",
+  "pre_closure_validation": {
+    "status": "PASS",
+    "packet_sha256": "5945c5b4b9d980613e7ff1c31261547a50f559799c14250173e325d0e02584ae",
+    "payload_files": 26,
+    "objects": 4,
+    "axiom_audits": 34,
+    "mathematical_rejections": 11,
+    "positive_controls": 15,
+    "historical_files": 528,
+    "shared_objects": 232,
+    "checks": "Authorization; live/snapshot/archive; logs, instruments, objects, direct Mathlib pairs, clean pins and preservation. Read-only; no scientific rerun."
+  },
+  "reviews": {
+    "claude": {
+      "verdict": "CLEAR",
+      "blocking_findings": 0,
+      "independent_session": "618fcd0e-3ab3-4126-a752-308ca46acbe5",
+      "raw": "_measurements/S11_lean_flux_fidelity_claude_v1.json",
+      "raw_sha256": "91bcac4b234d5be47d5e579c996518abbf19f10684c0fd933a79eaf5c65d8adb",
+      "record": "_measurements/S11_lean_flux_fidelity_claude_v1_run.json",
+      "record_sha256": "6d128ee16268141a16b092c47ed9cef480e843ad6932561c7b4661ab0e5e3d3d",
+      "report": "_measurements/S11_lean_flux_fidelity_claude_v1.md",
+      "report_sha256": "5e2f9dca7f5d6359073b1d04ed8102a0de790e836c4daadd0c5c2d1899acfd9b",
+      "guard_outcome_sha256": "401ff1f9d8250c4a767779a4785350bf421f1bf3058b100655da314a00603452",
+      "independent_build": false
+    },
+    "grok": {
+      "verdict": "CLEAR",
+      "blocking_findings": 0,
+      "independent_session": "7456fb0d-7ef5-4dd0-a70f-213224a15e00",
+      "raw": "_measurements/S11_lean_flux_fidelity_grok_v1_attempt4.json",
+      "raw_sha256": "d0494b814b12e1ff5101dbdd1d80a3c578611080f1bc65828e7b289ecd5d90c2",
+      "record": "_measurements/S11_lean_flux_fidelity_grok_v1_attempt4_run.json",
+      "record_sha256": "31e737ab979d8c1b99f81365afed527d92b863e86dc5ef412f1a24543c9a9d8f",
+      "report": "_measurements/S11_lean_flux_fidelity_grok_v1.md",
+      "report_sha256": "9433b74674255d520a98cfac45c6a125413c6703f734fa40fd4883148c93eeb1",
+      "guard_outcome_sha256": "eb339de604485f7a0569a87c1c949329950e4896e94b390c601f6756c7b70694",
+      "independent_build": false
+    }
+  },
+  "documentation_deltas": {
+    "lean/s11/SCATTERING_OBSERVABLE_COVERAGE.md": {
+      "reviewed_sha256": "1d1fd6e4052adb33dd9c42dc52fcfe59c4cb3703f697f2568e9d817153902953",
+      "current_sha256": "900d70e933eb9ccafc820acd4d59f1eaf66a29146ca0d61bd8ad079722d821c3",
+      "reason": "Review status and documentation-only fidelity clarification; no mathematical change."
+    },
+    "lean/s11/SCATTERING_FLUX_FIDELITY.md": {
+      "reviewed_sha256": "79cb28592e73b6ee691f84f3ce2cc32908b39a29a31005126838e3d8b4fe7a25",
+      "current_sha256": "b71e1f311fd51eca0e9a898b9590b8c8e2455c1556bb0718c0e6e5abdee454f7",
+      "reason": "Review status and documentation-only fidelity clarification; no mathematical change."
+    },
+    "lean/s11/SCATTERING_FLUX_VERIFICATION.txt": {
+      "reviewed_sha256": "8f74c794c4a809bbcfde260796356a733aa839ce0fdec492fc8697ff6d2623f7",
+      "current_sha256": "a9f2e93278ebed3376defd3f08762dcff74cc07c201c3e9f7a15f7d01c5ee61e",
+      "reason": "Review status and documentation-only fidelity clarification; no mathematical change."
+    },
+    "lean/s11/README.md": {
+      "reviewed_sha256": "23187e0552e1319848a639dde155705528583581e7faeb402ea96f26b8ed3c7c",
+      "current_sha256": "15a0c85e649496f647f3dac0e3339de0a557c7dbf939318ca1b833ae4c6d11a1",
+      "reason": "Review status and documentation-only fidelity clarification; no mathematical change."
+    },
+    "lean/INSTALL_D5_BULK_REGISTRATION.json": {
+      "reviewed_sha256": "9278768cbaa0e9a3a46b6f0cce3a78830211eccc3416b8744e55717404d0475a",
+      "current_sha256": "d03eda5638ddd59bb060f496010a56a67ab52cf324d1096d818d8eeb8a116e16",
+      "reason": "Review status and documentation-only fidelity clarification; no mathematical change."
+    }
+  },
+  "canonical_proofs_instruments_evidence_objects_unchanged": true,
+  "snapshot_archive_transport_unchanged": true,
+  "no_proof_rerun_for_documentation": true,
+  "author_validation_historical": true,
+  "disposition_report": "lean/s11/SCATTERING_FLUX_FIDELITY_REVIEW.md",
+  "disposition_sha256": "6dc47ee0092857124148cc14c94e644777b1cbd3a599bfb1941a5fbf97b20afa",
+  "closed_utc": "2026-09-26T22:17:31.106575+00:00",
+  "commit_authorized": false
+}

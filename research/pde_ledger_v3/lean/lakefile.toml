@@ -95,3 +95,8 @@ leanOptions = { warningAsError = true }
 [[lean_lib]]
 name = "S11D5Bulk"
 srcDir = "s11"
+
+[[lean_lib]]
+name = "S11ScatteringFlux"
+srcDir = "s11"
+leanOptions = { warningAsError = true }

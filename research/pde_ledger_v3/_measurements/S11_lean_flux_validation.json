@@ -1,0 +1,196 @@
+{
+  "status": "PASS",
+  "validated_utc": "2026-09-26T21:20:50.397831+00:00",
+  "method": "Read-only current/snapshot/recorded-log/object/pin comparison and re-adjudication; no scientific rerun.",
+  "run": "_scratch/S11_lean_flux/verification_run8/evidence",
+  "checks": 31,
+  "canonical_objects": 4,
+  "standard_axiom_audits": 34,
+  "mathematical_rejections": 11,
+  "positive_controls": 15,
+  "native_identities_examples": 7,
+  "native_wrong_formula_controls": 5,
+  "source_sha256": {
+    "lean/lean-toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+    "lean/s11/S11ScatteringFlux/Current.lean": "bfd5266214299b650865b4d8f6f4f8da630380ef78f81ded0ba592c5fdb6c0d5",
+    "lean/verify.py": "83a61936bc0c9a49ec5337a27b263aff94f9a61779bd118937d1ccfb884458f7",
+    "lean/s11/S11ScatteringFlux/Balance.lean": "94007087744775780c970aa72e2d3eeff7ed9feed18949c7552ac23a0b8cea8e",
+    "_measurements/S11_lean_flux_source_check.py": "6ecf29c02438243f69ab7e9a2fb3cfc3b7062aa4fc3307a150c2822f6e7210eb",
+    "lean/s11/S11ScatteringFlux.lean": "af3321dbc629b3dc518f247c509c4ad07e3a3267650a7792fdee9cb9e510e41b",
+    "lean/lakefile.toml": "2dd99ce804fbeb5a4a07843d00a25c9c3d4f41052ff884b6b4bf8e04cf60a3a2",
+    "lean/s11/S11ScatteringFlux/Controls.lean": "45867fcb8a5486966fe8b666c86a35b21a48400ce4271747160e41bf2a952d9c",
+    "_measurements/S11_lean_flux_contract_check.py": "0771390270ad28fcdef43df5bcb545f628b81d94ca962aed6ec1ef98ced807a5",
+    "lean/lake-manifest.json": "91fd5318cdc35e4044d6e059c6ef73d94b955d27adf8a5860b07ec92add9377e"
+  },
+  "native_source_sha256": {
+    "_measurements/S11c_d_continuum_currents.py": "44ead83416dd8baa4fb0dedf16ef26a33fd810308112b6aa333dfc53fe75b8e0",
+    "_measurements/S11c_d_continuum_response.py": "0fe30a9c4771671e9fa139b0557f185f55d351887f2ba8b9fa4ed1abfb616db2",
+    "scripts/S11c_d_mixing_scattering_sympy_audit.py": "5bf77729682960bb59f10c672a5fe3f67a98b0a9533da7c6189a37183596050f",
+    "directives/S11c_d_SHARED_PHYSICS.md": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5"
+  },
+  "compiled_object_sha256": {
+    "_scratch/S11_lean_flux/verification_run8/evidence/objects/S11ScatteringFlux/Current.olean": "011606e4252ba015c630a0a3a69d9b184bee9e17ccf43603d4caa8cfce9f2358",
+    "_scratch/S11_lean_flux/verification_run8/evidence/objects/S11ScatteringFlux/Balance.olean": "3577c3ae490953aaf671751c5603ede4d52309e9af22a3dd7333d9a5e1143431",
+    "_scratch/S11_lean_flux/verification_run8/evidence/objects/S11ScatteringFlux/Controls.olean": "e996f4a154a453595ea9a616915e0b1f22bce5a862e886c2707ca6123e28a451",
+    "_scratch/S11_lean_flux/verification_run8/evidence/objects/S11ScatteringFlux.olean": "38542bb408ab43e6c183f753e49df28ba9e3e9173ac9ba874e421097eb56a9bf"
+  },
+  "log_sha256": {
+    "_scratch/S11_lean_flux/verification_run8/evidence/logs/native.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "_scratch/S11_lean_flux/verification_run8/evidence/logs/build_S11ScatteringFlux.Current.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "_scratch/S11_lean_flux/verification_run8/evidence/logs/build_S11ScatteringFlux.Balance.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "_scratch/S11_lean_flux/verification_run8/evidence/logs/build_S11ScatteringFlux.Controls.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "_scratch/S11_lean_flux/verification_run8/evidence/logs/build_S11ScatteringFlux.log": "4d85e5cdf55fae04805c871cbe60e3c8670e24c8995df01aba13e0a268f2199b",
+    "_scratch/S11_lean_flux/verification_run8/evidence/logs/interference_positive.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "_scratch/S11_lean_flux/verification_run8/evidence/logs/interference_mutant.log": "7657dad6aac5af500ca7bf10932b0006e5cbb4ebe6e1fb50a9e37a9e3c8ee4f5",
+    "_scratch/S11_lean_flux/verification_run8/evidence/logs/conjugation_positive.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "_scratch/S11_lean_flux/verification_run8/evidence/logs/conjugation_mutant.log": "7521e1671de72261c3d02e24fb5587f19face5cc14abf8ae090d7fde69c43b34",
+    "_scratch/S11_lean_flux/verification_run8/evidence/logs/basis_metric_positive.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "_scratch/S11_lean_flux/verification_run8/evidence/logs/basis_metric_mutant.log": "5f980c1ff053bdb5466e6c577257f751865a6f4eb455242a235a418c59ee3e46",
+    "_scratch/S11_lean_flux/verification_run8/evidence/logs/orientation_positive.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "_scratch/S11_lean_flux/verification_run8/evidence/logs/orientation_mutant.log": "69ae4cfbef1e45bd37c056f3c06d7c90de7304af494701a697b020b5cd1b2a2a",
+    "_scratch/S11_lean_flux/verification_run8/evidence/logs/signed_incident_positive.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "_scratch/S11_lean_flux/verification_run8/evidence/logs/signed_incident_mutant.log": "73e50b70e8bc64f84d1d3475de71e9ee4a2c6a93a212e6fd5785632e7d7449a4",
+    "_scratch/S11_lean_flux/verification_run8/evidence/logs/zero_denominator_positive.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "_scratch/S11_lean_flux/verification_run8/evidence/logs/zero_denominator_mutant.log": "ccaa86b9df10f6d4c0a7c137f474e01fa73a250ead232577a7e9ce49c7630261",
+    "_scratch/S11_lean_flux/verification_run8/evidence/logs/normalization_positive.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "_scratch/S11_lean_flux/verification_run8/evidence/logs/normalization_mutant.log": "950a7f94588225838f17c6bf311b0ff94b51a76379ba8288f33ffd880eb46068",
+    "_scratch/S11_lean_flux/verification_run8/evidence/logs/negative_domain_positive.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "_scratch/S11_lean_flux/verification_run8/evidence/logs/negative_domain_mutant.log": "fe1f43c5d63d31391ef0df4092cd78fa6f94833ad5b717090165f3abe2bdab2f",
+    "_scratch/S11_lean_flux/verification_run8/evidence/logs/no_unconditional_unit_bound_positive.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "_scratch/S11_lean_flux/verification_run8/evidence/logs/no_unconditional_unit_bound_mutant.log": "930574d80678a11ac4e53ad073dc934b55ccd9b145e9832fb0174aa6bd8a0ee4",
+    "_scratch/S11_lean_flux/verification_run8/evidence/logs/no_unconditional_conservation_positive.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "_scratch/S11_lean_flux/verification_run8/evidence/logs/no_unconditional_conservation_mutant.log": "b654b2bbc9cc5844248f8e55c367e3706e5c0a0352ccbc63a176d938fe35f8d1",
+    "_scratch/S11_lean_flux/verification_run8/evidence/logs/current_reality_premise_positive.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "_scratch/S11_lean_flux/verification_run8/evidence/logs/current_reality_premise_mutant.log": "20aeb24e13c36ca2044cb23938eb35d6cdf6d803ce222649b15a2e098bcb656e",
+    "_scratch/S11_lean_flux/verification_run8/evidence/logs/empty_positive.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "_scratch/S11_lean_flux/verification_run8/evidence/logs/indefinite_null_positive.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "_scratch/S11_lean_flux/verification_run8/evidence/logs/balance_positive.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "_scratch/S11_lean_flux/verification_run8/evidence/logs/zero_defect_positive.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "dependencies": {
+    "packages": [
+      {
+        "name": "Physlib",
+        "commit": "8b2b23701c07409f882c49e0bd290a214e44450c"
+      },
+      {
+        "name": "mathlib",
+        "commit": "db584cd6d46c92f209a44c0f1c829460d327499d"
+      },
+      {
+        "name": "\u00abdoc-gen4\u00bb",
+        "commit": "aceca4eeb5a79092eabefaa75fcb72b701d02205"
+      },
+      {
+        "name": "plausible",
+        "commit": "b7eb3304aeae834b12dda98993a37f6a41f6f0bb"
+      },
+      {
+        "name": "LeanSearchClient",
+        "commit": "5f4d51b81cbd3f6b32b156bfad9056621a040404"
+      },
+      {
+        "name": "importGraph",
+        "commit": "16f02aa7642864af59f1ff0e384a015994db9118"
+      },
+      {
+        "name": "proofwidgets",
+        "commit": "4be2e3d5087eeb272cf5a8853b8f9dd025ef5957"
+      },
+      {
+        "name": "aesop",
+        "commit": "3448c0bcc5ce01b2d1546e483ec3620e32df3d0e"
+      },
+      {
+        "name": "Qq",
+        "commit": "92c15be17b7caf78c2ad767ec40f89052d908d81"
+      },
+      {
+        "name": "batteries",
+        "commit": "4488d40d070b9700d4d5a6aa342f0d40c31b2a2d"
+      },
+      {
+        "name": "leansqlite",
+        "commit": "6168b7549738a19bc837a1625c60c5d1e5dd8aeb"
+      },
+      {
+        "name": "Cli",
+        "commit": "6130a47896ce867c6a4a55373441e59e565bad0f"
+      },
+      {
+        "name": "UnicodeBasic",
+        "commit": "37e7d8cb7316a88cd3e91208385c9ec6ae780019"
+      },
+      {
+        "name": "BibtexQuery",
+        "commit": "852edafa268eb038a7158551fd580ee8433847b0"
+      },
+      {
+        "name": "MD4Lean",
+        "commit": "31907cc18f48a95384f99cee5582c00fb39e0f67"
+      }
+    ],
+    "lean_version": "Lean (version 4.33.0, x86_64-unknown-linux-gnu, commit d8b18978322de05a8f3dba51ef03cf5461676c17, Release)"
+  },
+  "direct_imports": {
+    "Mathlib.LinearAlgebra.Matrix.ConjTranspose": {
+      "object_path": "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/LinearAlgebra/Matrix/ConjTranspose.olean",
+      "object_sha256": "1ac34e9f98f578907ac2620d109d45edb9faabc8a91b329ab0af4cc7cf356bbf",
+      "source_path": "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/packages/mathlib/Mathlib/LinearAlgebra/Matrix/ConjTranspose.lean",
+      "source_sha256": "10ace10899567db7c2ccd38c0e89e3bdca2261494975a42d3b1a5535c9e3b1b6"
+    },
+    "Mathlib.Data.Complex.Basic": {
+      "object_path": "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Data/Complex/Basic.olean",
+      "object_sha256": "f0dd349f6e747bb17cba310aed12ba9f0d4bd4a136baba6b576eb76146b0a992",
+      "source_path": "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/packages/mathlib/Mathlib/Data/Complex/Basic.lean",
+      "source_sha256": "e279bd6369e83ebf6716e17a8f38c81c812020753472cac5e7ae2a501790b760"
+    },
+    "Mathlib.Tactic.Ring": {
+      "object_path": "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Tactic/Ring.olean",
+      "object_sha256": "592377cbe645eff5792e1f62acbe0942fb9426841af93b4809cf468f3d79a99c",
+      "source_path": "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/packages/mathlib/Mathlib/Tactic/Ring.lean",
+      "source_sha256": "d3ef5c49ebbd1108ce3f935e5ad95485e143abf02f28c027dba4bb6f3be8196e"
+    },
+    "Mathlib.Tactic.Linarith": {
+      "object_path": "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Tactic/Linarith.olean",
+      "object_sha256": "d1d8e0c2d0421f98f32ac107c9a673d1254a6f53ce2f709f8a4a9d1ae9676bc3",
+      "source_path": "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/packages/mathlib/Mathlib/Tactic/Linarith.lean",
+      "source_sha256": "0581fd9f80f34d728ad628e7c1fb5a93d36cb9cb48d469fbc797869e83ebe0a6"
+    },
+    "Mathlib.Tactic.NormNum": {
+      "object_path": "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Tactic/NormNum.olean",
+      "object_sha256": "11db8a449ec7b0dd87d15412bf148df02af1d5bc27a339769227a06b6c66a5aa",
+      "source_path": "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/packages/mathlib/Mathlib/Tactic/NormNum.lean",
+      "source_sha256": "dca9500572c6d887000f3de17c7145b53bf35233afc1ad8026cca908cec7a2fe"
+    },
+    "Mathlib.LinearAlgebra.Matrix.Notation": {
+      "object_path": "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/LinearAlgebra/Matrix/Notation.olean",
+      "object_sha256": "cf02f4b30552c3a6ef4c98b91771a75c637de1fbf7428f1b9e88be0f5e43c536",
+      "source_path": "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/packages/mathlib/Mathlib/LinearAlgebra/Matrix/Notation.lean",
+      "source_sha256": "0a5b11bff151565fa33a4b7faf0e20d4bf2d27075f98f88a0a9e9e25b40e2940"
+    },
+    "Mathlib.Algebra.BigOperators.Fin": {
+      "object_path": "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Algebra/BigOperators/Fin.olean",
+      "object_sha256": "05c8903563ca8f8b875770b543bd3f1640c61d9f098ac808efd0e03c16c52beb",
+      "source_path": "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/packages/mathlib/Mathlib/Algebra/BigOperators/Fin.lean",
+      "source_sha256": "4fe78cba9cdeac4eb8badbdd6359b055031900906fb94f3e51aba6d81451dbd5"
+    }
+  },
+  "evidence_sha256": {
+    "_measurements/S11_lean_flux_contract_checks.json": "1c039d76f8fc8a2424e0cd5dd6a7fd323db2d146ad0b78c1723cf1edb66a7d09",
+    "_measurements/S11_lean_flux_source_checks.json": "725cfd5ebc5c23c945cc842ba38763e8fef7d26078d680f462e567a580a2ca8a",
+    "_measurements/S11_lean_flux_preserved_inputs.json": "28357c026fc972feb2d871792751bef67acc58e36e104a244cf0642dd1a98e3a",
+    "_measurements/S11_lean_flux_resource_receipt.json": "8c184a79df14f7db0940614ed7f1ae18e8dc53958d7a935afb2cb3ea48b4e073",
+    "lean/INSTALL_D5_BULK_REGISTRATION.json": "9278768cbaa0e9a3a46b6f0cce3a78830211eccc3416b8744e55717404d0475a"
+  },
+  "preserved_historical_files": 528,
+  "preserved_shared_objects": 232,
+  "portable_registration": "PASS_REGISTRATION_ONLY; ten tests, no new D5B proof replay",
+  "reviews_complete": false,
+  "limits": [
+    "No canonical source-replacement mutants.",
+    "Pinned external transitive cache baseline; seven direct source/object pairs explicitly revalidated.",
+    "Native Python/NumPy versions were not captured in the original native report; its selected small fixtures and source/AST hashes are recorded.",
+    "No physical scattering solve/conservation/current reality claim."
+  ]
+}

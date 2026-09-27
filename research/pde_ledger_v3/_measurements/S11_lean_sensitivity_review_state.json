@@ -1,0 +1,128 @@
+{
+  "status": "COMPLETE",
+  "scope": "Bounded S1\u2013S4 independent non-author fidelity review",
+  "packet_revision": "S11 conditional finite-solve sensitivity S1\u2013S4 fidelity contract v1",
+  "packet_sha256": "c9ffaf85dfdd5bfd9dd2e34840cddc22fe1e4df9afdcbf926dd02c8931eba938",
+  "file_count": 30,
+  "count_note": "Payload files; archive also includes MANIFEST.json.",
+  "archive": "research/pde_ledger_v3/_measurements/S11_lean_sensitivity_review_packet_v1.tar.gz",
+  "archive_sha256": "5fd4f6605d3838191089328d868b2a874f8fe8d0d0b029838fb3389815ce89ca",
+  "archive_bytes": 161841,
+  "packet_directory": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/review_packet_v1",
+  "manifest": "research/pde_ledger_v3/_measurements/S11_lean_sensitivity_review_packet.json",
+  "manifest_sha256": "82fb2719178ab95135f160c614b5d2e374f9a6296154f428a495798e3d993d7d",
+  "destinations": [
+    "Claude",
+    "Grok"
+  ],
+  "transfer_authorized": true,
+  "external_reviews_started": true,
+  "review_verdicts": {
+    "claude": {
+      "verdict": "CLEAR",
+      "blocking_findings": 0,
+      "independent_session": "7a126cce-7ce0-4fb8-9b8d-9bb3ff858ee1",
+      "model_identity": [
+        "claude-opus-5-5"
+      ],
+      "raw": "_measurements/S11_lean_sensitivity_fidelity_claude_v1.json",
+      "raw_sha256": "b956302ef6700b1cbdcfe6f00411926527d02a6eb927dc647635d0e56b2e807d",
+      "record": "_measurements/S11_lean_sensitivity_fidelity_claude_v1_run.json",
+      "record_sha256": "3c9de2673768ec6a55fb1206ee04e269d10add527b9a4d4a21e6a96867807c6b",
+      "report": "_measurements/S11_lean_sensitivity_fidelity_claude_v1.md",
+      "report_sha256": "75f1690bf92fdac2ac98fc3cef92660ed857c5d2631e2e60f13b4988a889742c",
+      "report_extraction": "Verbatim terminal result field.",
+      "independent_build": false,
+      "guard_receipt_sha256": {
+        "/var/projects/toy_physics/_scratch/s11c/lean_sensitivity_review1_claude/stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "/var/projects/toy_physics/_scratch/s11c/lean_sensitivity_review1_claude/child-outcome.json": "64b54c83815b4f3813f0a00a0ece2ded894410fa66b823b5670eebee88637c70",
+        "/var/projects/toy_physics/_scratch/s11c/lean_sensitivity_review1_claude/invocation.json": "f9e670cc2fec37ccb1e671d8ddd7b93254747de786fc8eb2192ee21717171246",
+        "/var/projects/toy_physics/_scratch/s11c/lean_sensitivity_review1_claude/outcome.json": "deaae0353a403059f2f7730093ea2d994b612e278e2cde744c77720c87b1615c",
+        "/var/projects/toy_physics/_scratch/s11c/lean_sensitivity_review1_claude/resource-samples.jsonl": "ed333ae582ec0c85806b09d0aea00beaafd765aa1f134b2f1bcdb7d678b814e0",
+        "/var/projects/toy_physics/_scratch/s11c/lean_sensitivity_review1_claude/stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "/var/projects/toy_physics/_scratch/s11c/lean_sensitivity_review1_claude/limit-validation.json": "7112f3b33e9c53334812e9a5ae8145ef095882801311721328858aa43aeb093c",
+        "/var/projects/toy_physics/_scratch/s11c/lean_sensitivity_review1_claude/effective-limits.json": "1763c02c9a5ece49aa826c6d59b4bf8daeac344c8509446fe0b8b280c4c91bd4"
+      },
+      "guard_peak_bytes": 193736704,
+      "sampled_tasks_peak": 11,
+      "max_oom_swap_events": false
+    },
+    "grok": {
+      "verdict": "CLEAR",
+      "blocking_findings": 0,
+      "independent_session": "4b0fbf38-71b8-4c09-90f0-46a14fce899a",
+      "model_identity": [
+        "grok-4.6-build"
+      ],
+      "raw": "_measurements/S11_lean_sensitivity_fidelity_grok_v1.json",
+      "raw_sha256": "56326dd02b9d341e672b97ce13fc2d40b0c626c20086fe85153d9c876b420ffd",
+      "record": "_measurements/S11_lean_sensitivity_fidelity_grok_v1_run.json",
+      "record_sha256": "7c9e7bd15c21e0729aa7102d0549c4ef80938fb464bc3d688a09f37fd3b8c92f",
+      "report": "_measurements/S11_lean_sensitivity_fidelity_grok_v1.md",
+      "report_sha256": "e1dbf1df466232159d6d077e0852f2c60bddca1df1237dd1c0fcd995efaa9bbe",
+      "report_extraction": "Verbatim substantive terminal text from # S1\u2013S4 fidelity review onward; progress preamble omitted. No thought field extracted.",
+      "independent_build": false,
+      "guard_receipt_sha256": {
+        "/var/projects/toy_physics/_scratch/s11c/lean_sensitivity_review1_grok/stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "/var/projects/toy_physics/_scratch/s11c/lean_sensitivity_review1_grok/child-outcome.json": "3cbc1bf683429f5e5d74001260c499a828738e162faa3a214d71f4b8788d4e1c",
+        "/var/projects/toy_physics/_scratch/s11c/lean_sensitivity_review1_grok/invocation.json": "f043e0948a304384f51eafe7f37579980fb103e083dfab3b7d70bc531169e1d6",
+        "/var/projects/toy_physics/_scratch/s11c/lean_sensitivity_review1_grok/outcome.json": "ce4c79ac5dd62b7464410fb95e8c370e66e761b311ff2bb38a89dd8792a8f4ea",
+        "/var/projects/toy_physics/_scratch/s11c/lean_sensitivity_review1_grok/resource-samples.jsonl": "5987982383fd39026015026134cbdd79a44f91c640e0e852f6e4749ce09ce49f",
+        "/var/projects/toy_physics/_scratch/s11c/lean_sensitivity_review1_grok/stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "/var/projects/toy_physics/_scratch/s11c/lean_sensitivity_review1_grok/limit-validation.json": "2222ad19d09818616dd2172956e39c4daaa5b22566b84ea4be3c37216288841e",
+        "/var/projects/toy_physics/_scratch/s11c/lean_sensitivity_review1_grok/effective-limits.json": "84578e8c92488373cf0a5d31bce46497b0dcd2a49f6f74453d036af0ec41e6b1"
+      },
+      "guard_peak_bytes": 211591168,
+      "sampled_tasks_peak": 64,
+      "max_oom_swap_events": false
+    }
+  },
+  "completion_claimed": true,
+  "committed": false,
+  "commit_authorized": false,
+  "prepared_utc": "2026-09-27T00:31:46.474884+00:00",
+  "snapshot_validation": "PASS at closure: original approved snapshot/archive/transport unchanged; three explicit live documentation deltas only.",
+  "local_verification": "PASS: eight fresh objects, 51 standard-axiom audits, 18 mathematical rejections, 24 positives (23 distinct), 36 compact native checks with execution/revalidation lineage and preservation validation.",
+  "preservation": "605 historical files and 243 old objects unchanged; every S11c source included is a read-only convention reference.",
+  "contents_note": "Private repository code: eight Lean modules, verification tools and reports, native source references, shared physics/amendment, policy, dependency pins and compact fidelity documents. No saved production operands/results or external cache archive.",
+  "authorization_requirement": "Satisfied by the recorded exact-packet user approval; no new transfer or commit authority is inferred.",
+  "authorization_record": "_scratch/S11_lean_sensitivity/review_run1/transfer_authorization_context.json",
+  "authorization_sha256": "8481791295c88d96cd8126edacb7b986a8616994afd2dd37ca2c8ee5a258bb21",
+  "authorized_utc": "2026-09-27T02:43:38.780120+00:00",
+  "authorization_quote": "Yes you can send them",
+  "resource_context": "_scratch/S11_lean_sensitivity/review_run1/resource_context.json",
+  "resource_context_sha256": "3e29278647a3833233f6201d80f63465a45d5fa7a743bf2dadeb9fc799410747",
+  "review_started_utc": "2026-09-27T02:45:04.094624+00:00",
+  "supervisor_pid": 2035688,
+  "transport_directory": "/tmp/s11-lean-sensitivity-fidelity-kd9iepe6/packet",
+  "launch_preflight": {
+    "status": "PASS",
+    "packet_sha256": "c9ffaf85dfdd5bfd9dd2e34840cddc22fe1e4df9afdcbf926dd02c8931eba938",
+    "files": 30,
+    "snapshot_archive_live_correspondence": true,
+    "local_correspondence": {
+      "status": "PASS",
+      "execution_status": "PASS",
+      "checks_seen": 51,
+      "report_sha256": "cf6ac94b0ece80e8a78a33c651105c1da79f9c763404ef9fb37a0e69ce062ff1",
+      "native_report_sha256": "2bc6a25e6dfa10cf50d942b47db539ea16356433287be5af1fb9cb483461f8e1",
+      "successful_objects": 8,
+      "historical_files": 605,
+      "historical_objects": 243,
+      "meaning": "Input/log/object/native/dependency/preservation correspondence; not a pass for failed proof execution."
+    },
+    "meaning": "Read-only preflight; no transfer, proof rerun or historical evidence rewrite."
+  },
+  "review_supervisor_sha256": "b28e8ba3b6c5b21ffa263a19ed7c9bf26b08b8bad780bf56ac714b658ce43a33",
+  "review_supervisor_finished_utc": "2026-09-27T02:57:10.302954+00:00",
+  "live_files_changed_since_packet": [],
+  "next_increment_authorized_to_start_now": false,
+  "closure_record": "_measurements/S11_lean_sensitivity_closure.json",
+  "closure_sha256": "ef7ac665e2e16c49f92835fabed02da97cd7ae211413fda6dc625a5804381429",
+  "closed_utc": "2026-09-27T03:02:23.603844+00:00",
+  "live_documentation_deltas": [
+    "lean/s11/SCATTERING_SENSITIVITY_COVERAGE.md",
+    "lean/s11/SCATTERING_SENSITIVITY_FIDELITY.md",
+    "lean/s11/SCATTERING_SENSITIVITY_VERIFICATION.txt"
+  ]
+}

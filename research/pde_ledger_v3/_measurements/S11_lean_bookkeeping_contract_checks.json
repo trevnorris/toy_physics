@@ -1,0 +1,1037 @@
+{
+  "status": "PASS",
+  "checks": [
+    {
+      "name": "native",
+      "expected": "PASS",
+      "passed": true,
+      "mode": "revalidated_recorded_native_evidence",
+      "report_sha256": "02ccf56aa4853699391b6fcd1c3f2d30c689008716ad7e79bd2d7a46e0ce1c19",
+      "original_run": "verification_run1; not rerun in this attempt"
+    },
+    {
+      "name": "build_S11ScatteringFlux.Current",
+      "command": [
+        "/home/trevnorris/.elan/toolchains/leanprover--lean4---v4.33.0/bin/lean",
+        "-j1",
+        "-M2048",
+        "-DwarningAsError=true",
+        "-o",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_bookkeeping/verification_run7/evidence/objects/S11ScatteringFlux/Current.olean",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_bookkeeping/verification_run7/evidence/snapshot/lean/s11/S11ScatteringFlux/Current.lean"
+      ],
+      "expected": "PASS",
+      "exit_status": 0,
+      "passed": true,
+      "seconds": 1.624,
+      "log": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_bookkeeping/verification_run7/evidence/logs/build_S11ScatteringFlux.Current.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output": "",
+      "object_path": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_bookkeeping/verification_run7/evidence/objects/S11ScatteringFlux/Current.olean",
+      "object_sha256": "011606e4252ba015c630a0a3a69d9b184bee9e17ccf43603d4caa8cfce9f2358",
+      "axiom_audits": 0
+    },
+    {
+      "name": "build_S11ScatteringBookkeeping.Path",
+      "command": [
+        "/home/trevnorris/.elan/toolchains/leanprover--lean4---v4.33.0/bin/lean",
+        "-j1",
+        "-M2048",
+        "-DwarningAsError=true",
+        "-o",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_bookkeeping/verification_run7/evidence/objects/S11ScatteringBookkeeping/Path.olean",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_bookkeeping/verification_run7/evidence/snapshot/lean/s11/S11ScatteringBookkeeping/Path.lean"
+      ],
+      "expected": "PASS",
+      "exit_status": 0,
+      "passed": true,
+      "seconds": 1.322,
+      "log": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_bookkeeping/verification_run7/evidence/logs/build_S11ScatteringBookkeeping.Path.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output": "",
+      "object_path": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_bookkeeping/verification_run7/evidence/objects/S11ScatteringBookkeeping/Path.olean",
+      "object_sha256": "e64f6b25e9f16925ba39d5fcb2dfa6d15193eed3038ee45cdcb78815128bf8d0",
+      "axiom_audits": 0
+    },
+    {
+      "name": "build_S11ScatteringBookkeeping.Quadratic",
+      "command": [
+        "/home/trevnorris/.elan/toolchains/leanprover--lean4---v4.33.0/bin/lean",
+        "-j1",
+        "-M2048",
+        "-DwarningAsError=true",
+        "-o",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_bookkeeping/verification_run7/evidence/objects/S11ScatteringBookkeeping/Quadratic.olean",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_bookkeeping/verification_run7/evidence/snapshot/lean/s11/S11ScatteringBookkeeping/Quadratic.lean"
+      ],
+      "expected": "PASS",
+      "exit_status": 0,
+      "passed": true,
+      "seconds": 1.724,
+      "log": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_bookkeeping/verification_run7/evidence/logs/build_S11ScatteringBookkeeping.Quadratic.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output": "",
+      "object_path": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_bookkeeping/verification_run7/evidence/objects/S11ScatteringBookkeeping/Quadratic.olean",
+      "object_sha256": "65e6bb5578253d7d1ce9f20b78ba17270b982244c2865991cf3a7d7aa3c45074",
+      "axiom_audits": 0
+    },
+    {
+      "name": "build_S11ScatteringBookkeeping.Observables",
+      "command": [
+        "/home/trevnorris/.elan/toolchains/leanprover--lean4---v4.33.0/bin/lean",
+        "-j1",
+        "-M2048",
+        "-DwarningAsError=true",
+        "-o",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_bookkeeping/verification_run7/evidence/objects/S11ScatteringBookkeeping/Observables.olean",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_bookkeeping/verification_run7/evidence/snapshot/lean/s11/S11ScatteringBookkeeping/Observables.lean"
+      ],
+      "expected": "PASS",
+      "exit_status": 0,
+      "passed": true,
+      "seconds": 1.372,
+      "log": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_bookkeeping/verification_run7/evidence/logs/build_S11ScatteringBookkeeping.Observables.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output": "",
+      "object_path": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_bookkeeping/verification_run7/evidence/objects/S11ScatteringBookkeeping/Observables.olean",
+      "object_sha256": "300d79b354dd863b130ffeedce59c1a433450976070e0e54e194cd3495aa658c",
+      "axiom_audits": 0
+    },
+    {
+      "name": "build_S11ScatteringBookkeeping.Quotient",
+      "command": [
+        "/home/trevnorris/.elan/toolchains/leanprover--lean4---v4.33.0/bin/lean",
+        "-j1",
+        "-M2048",
+        "-DwarningAsError=true",
+        "-o",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_bookkeeping/verification_run7/evidence/objects/S11ScatteringBookkeeping/Quotient.olean",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_bookkeeping/verification_run7/evidence/snapshot/lean/s11/S11ScatteringBookkeeping/Quotient.lean"
+      ],
+      "expected": "PASS",
+      "exit_status": 0,
+      "passed": true,
+      "seconds": 1.473,
+      "log": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_bookkeeping/verification_run7/evidence/logs/build_S11ScatteringBookkeeping.Quotient.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output": "",
+      "object_path": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_bookkeeping/verification_run7/evidence/objects/S11ScatteringBookkeeping/Quotient.olean",
+      "object_sha256": "53be4227028c03f6f4736aa05679307a28b7968d935f0db340f8c5507ddb3038",
+      "axiom_audits": 0
+    },
+    {
+      "name": "build_S11ScatteringBookkeeping.Controls",
+      "command": [
+        "/home/trevnorris/.elan/toolchains/leanprover--lean4---v4.33.0/bin/lean",
+        "-j1",
+        "-M2048",
+        "-DwarningAsError=true",
+        "-o",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_bookkeeping/verification_run7/evidence/objects/S11ScatteringBookkeeping/Controls.olean",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_bookkeeping/verification_run7/evidence/snapshot/lean/s11/S11ScatteringBookkeeping/Controls.lean"
+      ],
+      "expected": "PASS",
+      "exit_status": 0,
+      "passed": true,
+      "seconds": 1.673,
+      "log": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_bookkeeping/verification_run7/evidence/logs/build_S11ScatteringBookkeeping.Controls.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output": "",
+      "object_path": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_bookkeeping/verification_run7/evidence/objects/S11ScatteringBookkeeping/Controls.olean",
+      "object_sha256": "57024ae9c79cbdab4567beb1629b91c91d6a65005eacd811084470f680dde823",
+      "axiom_audits": 0
+    },
+    {
+      "name": "build_S11ScatteringBookkeeping",
+      "command": [
+        "/home/trevnorris/.elan/toolchains/leanprover--lean4---v4.33.0/bin/lean",
+        "-j1",
+        "-M2048",
+        "-DwarningAsError=true",
+        "-o",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_bookkeeping/verification_run7/evidence/objects/S11ScatteringBookkeeping.olean",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_bookkeeping/verification_run7/evidence/snapshot/lean/s11/S11ScatteringBookkeeping.lean"
+      ],
+      "expected": "PASS",
+      "exit_status": 0,
+      "passed": true,
+      "seconds": 1.172,
+      "log": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_bookkeeping/verification_run7/evidence/logs/build_S11ScatteringBookkeeping.log",
+      "log_sha256": "e7ac150c3c3a96fd3f403e746bc2204da1bc09895df1ef2b5ba0fd101576b8f4",
+      "output": "'S11ScatteringBookkeeping.rectangle_decomposition' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11ScatteringBookkeeping.rectangle_path' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11ScatteringBookkeeping.baseline_free' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11ScatteringBookkeeping.path_does_not_identify_rectangle' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11ScatteringBookkeeping.pair_smul_left' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11ScatteringBookkeeping.pair_smul_right' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11ScatteringBookkeeping.pair_smul_matrix' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11ScatteringBookkeeping.quadratic_exact' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11ScatteringBookkeeping.retained_with_remainder' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11ScatteringBookkeeping.real_flux_expansion' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11ScatteringBookkeeping.flux_epsilon_squared' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11ScatteringBookkeeping.quotient_equations' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11ScatteringBookkeeping.quotient_unique' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11ScatteringBookkeeping.quotient_residual' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11ScatteringBookkeeping.leading_denominator_cases' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11ScatteringBookkeeping.zero_leading_obstruction' depends on axioms: [propext, Quot.sound]\n'S11ScatteringBookkeeping.scaled_denominator_nonzero' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11ScatteringBookkeeping.epsilon_cancels' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11ScatteringBookkeeping.subtracted_total' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11ScatteringBookkeeping.subtracted_eq_induced_iff' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11ScatteringBookkeeping.baseline_zero_total' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11ScatteringBookkeeping.induced_coefficient' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11ScatteringBookkeeping.induced_low_coefficients' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11ScatteringBookkeeping.path_witness' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11ScatteringBookkeeping.delta_witness' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11ScatteringBookkeeping.second_witness' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11ScatteringBookkeeping.first_witness' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11ScatteringBookkeeping.higher_witness' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11ScatteringBookkeeping.induced_witness' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11ScatteringBookkeeping.subtracted_witness' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11ScatteringBookkeeping.parent_second_witness' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11ScatteringBookkeeping.epsilon_witness' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11ScatteringBookkeeping.zero_model_two_solutions' depends on axioms: [propext, Classical.choice, Quot.sound]\n",
+      "object_path": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_bookkeeping/verification_run7/evidence/objects/S11ScatteringBookkeeping.olean",
+      "object_sha256": "dcd09dc75ee632cc655599a07570829b1ef38e8ecd2e8bd3af7e2898f17ee55e",
+      "axiom_audits": 33
+    },
+    {
+      "name": "path_ratio_positive",
+      "command": [
+        "/home/trevnorris/.elan/toolchains/leanprover--lean4---v4.33.0/bin/lean",
+        "-j1",
+        "-M2048",
+        "-DwarningAsError=true",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_bookkeeping/verification_run7/evidence/snapshot/lean/path_ratio_positive.lean"
+      ],
+      "expected": "PASS",
+      "exit_status": 0,
+      "passed": true,
+      "seconds": 1.172,
+      "log": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_bookkeeping/verification_run7/evidence/logs/path_ratio_positive.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output": "",
+      "source": "import S11ScatteringBookkeeping\nopen S11ScatteringBookkeeping S11ScatteringFlux Matrix\ntheorem contract_control : rectangle (scalarA 1) (scalarA 2) (scalarA 3) (scalarA 4) 1 2 0 = 17 := by\n  norm_num only [path_witness]\n",
+      "source_sha256": "a59df9863b76274c2c0fe19af0b9cc3bb13d1e0e466c7de3fb39e53b32e4540a",
+      "required_failure_in": []
+    },
+    {
+      "name": "path_ratio_mutant",
+      "command": [
+        "/home/trevnorris/.elan/toolchains/leanprover--lean4---v4.33.0/bin/lean",
+        "-j1",
+        "-M2048",
+        "-DwarningAsError=true",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_bookkeeping/verification_run7/evidence/snapshot/lean/path_ratio_mutant.lean"
+      ],
+      "expected": "REJECTED",
+      "exit_status": 1,
+      "passed": true,
+      "seconds": 1.173,
+      "log": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_bookkeeping/verification_run7/evidence/logs/path_ratio_mutant.log",
+      "log_sha256": "3778b2428ba712a6639e7cfb0fdc6c2abffbb9bccab750999f2c63a507c9e5de",
+      "output": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_bookkeeping/verification_run7/evidence/snapshot/lean/path_ratio_mutant.lean:3:99: error: unsolved goals\n\u22a2 False\n",
+      "source": "import S11ScatteringBookkeeping\nopen S11ScatteringBookkeeping S11ScatteringFlux Matrix\ntheorem contract_control : rectangle (scalarA 1) (scalarA 2) (scalarA 3) (scalarA 4) 1 2 0 = 25 := by\n  norm_num only [path_witness]\n",
+      "source_sha256": "ed46654d6bcceeb1d5b6f5ac637103686534432df347e6c23a53d8577931aaa4",
+      "required_failure_in": "contract_control"
+    },
+    {
+      "name": "delta_zero_jet_positive",
+      "command": [
+        "/home/trevnorris/.elan/toolchains/leanprover--lean4---v4.33.0/bin/lean",
+        "-j1",
+        "-M2048",
+        "-DwarningAsError=true",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_bookkeeping/verification_run7/evidence/snapshot/lean/delta_zero_jet_positive.lean"
+      ],
+      "expected": "PASS",
+      "exit_status": 0,
+      "passed": true,
+      "seconds": 1.173,
+      "log": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_bookkeeping/verification_run7/evidence/logs/delta_zero_jet_positive.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output": "",
+      "source": "import S11ScatteringBookkeeping\nopen S11ScatteringBookkeeping S11ScatteringFlux Matrix\ntheorem contract_control : delta (scalarA 2) (scalarA 3) (scalarA 4) 1 2 0 = 16 := by\n  norm_num only [delta_witness]\n",
+      "source_sha256": "647c2f905520126601fed9d5dc14581f12864535b2c151bb7340e0d20e4d7c8a",
+      "required_failure_in": []
+    },
+    {
+      "name": "delta_zero_jet_mutant",
+      "command": [
+        "/home/trevnorris/.elan/toolchains/leanprover--lean4---v4.33.0/bin/lean",
+        "-j1",
+        "-M2048",
+        "-DwarningAsError=true",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_bookkeeping/verification_run7/evidence/snapshot/lean/delta_zero_jet_mutant.lean"
+      ],
+      "expected": "REJECTED",
+      "exit_status": 1,
+      "passed": true,
+      "seconds": 1.225,
+      "log": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_bookkeeping/verification_run7/evidence/logs/delta_zero_jet_mutant.log",
+      "log_sha256": "e14dc06eaa2b97f39a552b15c079a9ae4db21fa65208ae52f6fad5d900a26a79",
+      "output": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_bookkeeping/verification_run7/evidence/snapshot/lean/delta_zero_jet_mutant.lean:3:83: error: unsolved goals\n\u22a2 False\n",
+      "source": "import S11ScatteringBookkeeping\nopen S11ScatteringBookkeeping S11ScatteringFlux Matrix\ntheorem contract_control : delta (scalarA 2) (scalarA 3) (scalarA 4) 1 2 0 = 14 := by\n  norm_num only [delta_witness]\n",
+      "source_sha256": "41553c07bb4cbb9fd67df04c49c26c81d4aa4ac58c86a98b625c33ae5d763152",
+      "required_failure_in": "contract_control"
+    },
+    {
+      "name": "first_interference_positive",
+      "command": [
+        "/home/trevnorris/.elan/toolchains/leanprover--lean4---v4.33.0/bin/lean",
+        "-j1",
+        "-M2048",
+        "-DwarningAsError=true",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_bookkeeping/verification_run7/evidence/snapshot/lean/first_interference_positive.lean"
+      ],
+      "expected": "PASS",
+      "exit_status": 0,
+      "passed": true,
+      "seconds": 1.171,
+      "log": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_bookkeeping/verification_run7/evidence/logs/first_interference_positive.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output": "",
+      "source": "import S11ScatteringBookkeeping\nopen S11ScatteringBookkeeping S11ScatteringFlux Matrix\ntheorem contract_control : q1 (scalarB 1) (scalarB 4) (scalarB 5) (scalarA 1) (scalarA 2) (scalarA 3) = 8 := by\n  norm_num only [first_witness]\n",
+      "source_sha256": "bbb56f38e5fa5fccf9e09ab619e39abfa19ffe4982f4cb89e76305daa6040d1e",
+      "required_failure_in": []
+    },
+    {
+      "name": "first_interference_mutant",
+      "command": [
+        "/home/trevnorris/.elan/toolchains/leanprover--lean4---v4.33.0/bin/lean",
+        "-j1",
+        "-M2048",
+        "-DwarningAsError=true",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_bookkeeping/verification_run7/evidence/snapshot/lean/first_interference_mutant.lean"
+      ],
+      "expected": "REJECTED",
+      "exit_status": 1,
+      "passed": true,
+      "seconds": 1.171,
+      "log": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_bookkeeping/verification_run7/evidence/logs/first_interference_mutant.log",
+      "log_sha256": "53005128ec40cd6993a62bf5c2f53b723207fbc1931bb867770312ac61f4beb5",
+      "output": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_bookkeeping/verification_run7/evidence/snapshot/lean/first_interference_mutant.lean:3:109: error: unsolved goals\n\u22a2 False\n",
+      "source": "import S11ScatteringBookkeeping\nopen S11ScatteringBookkeeping S11ScatteringFlux Matrix\ntheorem contract_control : q1 (scalarB 1) (scalarB 4) (scalarB 5) (scalarA 1) (scalarA 2) (scalarA 3) = 4 := by\n  norm_num only [first_witness]\n",
+      "source_sha256": "8ff3c664f5726ff9cebc3cc008d03f4d1dd2865d5e518a5dc2ea1be6143522ac",
+      "required_failure_in": "contract_control"
+    },
+    {
+      "name": "current_variation_positive",
+      "command": [
+        "/home/trevnorris/.elan/toolchains/leanprover--lean4---v4.33.0/bin/lean",
+        "-j1",
+        "-M2048",
+        "-DwarningAsError=true",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_bookkeeping/verification_run7/evidence/snapshot/lean/current_variation_positive.lean"
+      ],
+      "expected": "PASS",
+      "exit_status": 0,
+      "passed": true,
+      "seconds": 1.172,
+      "log": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_bookkeeping/verification_run7/evidence/logs/current_variation_positive.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output": "",
+      "source": "import S11ScatteringBookkeeping\nopen S11ScatteringBookkeeping S11ScatteringFlux Matrix\ntheorem contract_control : q2 (scalarB 1) (scalarB 4) (scalarB 5) (scalarA 1) (scalarA 2) (scalarA 3) = 31 := by\n  norm_num only [second_witness]\n",
+      "source_sha256": "73b6d415809718a9137459a7881537ec9f9b1cee875733d00fd8a1dc0474d3b5",
+      "required_failure_in": []
+    },
+    {
+      "name": "current_variation_mutant",
+      "command": [
+        "/home/trevnorris/.elan/toolchains/leanprover--lean4---v4.33.0/bin/lean",
+        "-j1",
+        "-M2048",
+        "-DwarningAsError=true",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_bookkeeping/verification_run7/evidence/snapshot/lean/current_variation_mutant.lean"
+      ],
+      "expected": "REJECTED",
+      "exit_status": 1,
+      "passed": true,
+      "seconds": 1.171,
+      "log": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_bookkeeping/verification_run7/evidence/logs/current_variation_mutant.log",
+      "log_sha256": "a160a04de158efc443bb6230aee37e3a702bced02adc9133a760b813eee825e6",
+      "output": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_bookkeeping/verification_run7/evidence/snapshot/lean/current_variation_mutant.lean:3:110: error: unsolved goals\n\u22a2 False\n",
+      "source": "import S11ScatteringBookkeeping\nopen S11ScatteringBookkeeping S11ScatteringFlux Matrix\ntheorem contract_control : q2 (scalarB 1) (scalarB 4) (scalarB 5) (scalarA 1) (scalarA 2) (scalarA 3) = 10 := by\n  norm_num only [second_witness]\n",
+      "source_sha256": "41f34c62fa825939ca3bef19356c459efe6d3ce380cf934b5cdf3897547302fa",
+      "required_failure_in": "contract_control"
+    },
+    {
+      "name": "second_amplitude_positive",
+      "command": [
+        "/home/trevnorris/.elan/toolchains/leanprover--lean4---v4.33.0/bin/lean",
+        "-j1",
+        "-M2048",
+        "-DwarningAsError=true",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_bookkeeping/verification_run7/evidence/snapshot/lean/second_amplitude_positive.lean"
+      ],
+      "expected": "PASS",
+      "exit_status": 0,
+      "passed": true,
+      "seconds": 1.171,
+      "log": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_bookkeeping/verification_run7/evidence/logs/second_amplitude_positive.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output": "",
+      "source": "import S11ScatteringBookkeeping\nopen S11ScatteringBookkeeping S11ScatteringFlux Matrix\ntheorem contract_control : q2 (scalarB 1) (scalarB 4) (scalarB 5) (scalarA 1) (scalarA 2) (scalarA 3) = 31 := by\n  norm_num only [second_witness]\n",
+      "source_sha256": "73b6d415809718a9137459a7881537ec9f9b1cee875733d00fd8a1dc0474d3b5",
+      "required_failure_in": []
+    },
+    {
+      "name": "second_amplitude_mutant",
+      "command": [
+        "/home/trevnorris/.elan/toolchains/leanprover--lean4---v4.33.0/bin/lean",
+        "-j1",
+        "-M2048",
+        "-DwarningAsError=true",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_bookkeeping/verification_run7/evidence/snapshot/lean/second_amplitude_mutant.lean"
+      ],
+      "expected": "REJECTED",
+      "exit_status": 1,
+      "passed": true,
+      "seconds": 1.173,
+      "log": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_bookkeeping/verification_run7/evidence/logs/second_amplitude_mutant.log",
+      "log_sha256": "3b632dc3fc889e25d4c9b4e69947ed2678eb4e8f53259992cc48bfcdfa210918",
+      "output": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_bookkeeping/verification_run7/evidence/snapshot/lean/second_amplitude_mutant.lean:3:110: error: unsolved goals\n\u22a2 False\n",
+      "source": "import S11ScatteringBookkeeping\nopen S11ScatteringBookkeeping S11ScatteringFlux Matrix\ntheorem contract_control : q2 (scalarB 1) (scalarB 4) (scalarB 5) (scalarA 1) (scalarA 2) (scalarA 3) = 25 := by\n  norm_num only [second_witness]\n",
+      "source_sha256": "b79589880a772eb6f2451389352d904c693da938ebac23ec3722daa4b9b91a72",
+      "required_failure_in": "contract_control"
+    },
+    {
+      "name": "baseline_interference_positive",
+      "command": [
+        "/home/trevnorris/.elan/toolchains/leanprover--lean4---v4.33.0/bin/lean",
+        "-j1",
+        "-M2048",
+        "-DwarningAsError=true",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_bookkeeping/verification_run7/evidence/snapshot/lean/baseline_interference_positive.lean"
+      ],
+      "expected": "PASS",
+      "exit_status": 0,
+      "passed": true,
+      "seconds": 1.172,
+      "log": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_bookkeeping/verification_run7/evidence/logs/baseline_interference_positive.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output": "",
+      "source": "import S11ScatteringBookkeeping\nopen S11ScatteringBookkeeping S11ScatteringFlux Matrix\ntheorem contract_control : q2 (scalarB 1) (scalarB 4) (scalarB 5) (scalarA 1) (scalarA 2) (scalarA 3) = 31 := by\n  norm_num only [second_witness]\n",
+      "source_sha256": "73b6d415809718a9137459a7881537ec9f9b1cee875733d00fd8a1dc0474d3b5",
+      "required_failure_in": []
+    },
+    {
+      "name": "baseline_interference_mutant",
+      "command": [
+        "/home/trevnorris/.elan/toolchains/leanprover--lean4---v4.33.0/bin/lean",
+        "-j1",
+        "-M2048",
+        "-DwarningAsError=true",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_bookkeeping/verification_run7/evidence/snapshot/lean/baseline_interference_mutant.lean"
+      ],
+      "expected": "REJECTED",
+      "exit_status": 1,
+      "passed": true,
+      "seconds": 1.171,
+      "log": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_bookkeeping/verification_run7/evidence/logs/baseline_interference_mutant.log",
+      "log_sha256": "2eff49cc3ee63d73583f18b52f3348b731e91c2c6ea1493279b94b7243df6732",
+      "output": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_bookkeeping/verification_run7/evidence/snapshot/lean/baseline_interference_mutant.lean:3:109: error: unsolved goals\n\u22a2 False\n",
+      "source": "import S11ScatteringBookkeeping\nopen S11ScatteringBookkeeping S11ScatteringFlux Matrix\ntheorem contract_control : q2 (scalarB 1) (scalarB 4) (scalarB 5) (scalarA 1) (scalarA 2) (scalarA 3) = 9 := by\n  norm_num only [second_witness]\n",
+      "source_sha256": "23c9a41d93359d34f83e76b5a4a72b598362b575f54e5edbb8ba5acdb3afa873",
+      "required_failure_in": "contract_control"
+    },
+    {
+      "name": "higher_terms_positive",
+      "command": [
+        "/home/trevnorris/.elan/toolchains/leanprover--lean4---v4.33.0/bin/lean",
+        "-j1",
+        "-M2048",
+        "-DwarningAsError=true",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_bookkeeping/verification_run7/evidence/snapshot/lean/higher_terms_positive.lean"
+      ],
+      "expected": "PASS",
+      "exit_status": 0,
+      "passed": true,
+      "seconds": 1.171,
+      "log": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_bookkeeping/verification_run7/evidence/logs/higher_terms_positive.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output": "",
+      "source": "import S11ScatteringBookkeeping\nopen S11ScatteringBookkeeping S11ScatteringFlux Matrix\ntheorem contract_control : q3 (scalarB 1) (scalarB 4) (scalarB 5) (scalarA 1) (scalarA 2) (scalarA 3) = 72 := by\n  norm_num only [higher_witness]\n",
+      "source_sha256": "fc4f3d5c72c8be7020228fe757ba84acdcb0bc70c9937eeee9b57c3077d0bb1e",
+      "required_failure_in": []
+    },
+    {
+      "name": "higher_terms_mutant",
+      "command": [
+        "/home/trevnorris/.elan/toolchains/leanprover--lean4---v4.33.0/bin/lean",
+        "-j1",
+        "-M2048",
+        "-DwarningAsError=true",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_bookkeeping/verification_run7/evidence/snapshot/lean/higher_terms_mutant.lean"
+      ],
+      "expected": "REJECTED",
+      "exit_status": 1,
+      "passed": true,
+      "seconds": 1.172,
+      "log": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_bookkeeping/verification_run7/evidence/logs/higher_terms_mutant.log",
+      "log_sha256": "3171a4edcb689284083cf9e1a3341db3a9e1dddb3f2182b2a3fc7b6d32ebd2f2",
+      "output": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_bookkeeping/verification_run7/evidence/snapshot/lean/higher_terms_mutant.lean:3:109: error: unsolved goals\n\u22a2 False\n",
+      "source": "import S11ScatteringBookkeeping\nopen S11ScatteringBookkeeping S11ScatteringFlux Matrix\ntheorem contract_control : q3 (scalarB 1) (scalarB 4) (scalarB 5) (scalarA 1) (scalarA 2) (scalarA 3) = 0 := by\n  norm_num only [higher_witness]\n",
+      "source_sha256": "37a5af5aed5f2c8dc6c029566588e1641c41750368a5d61824322f9bd68c70b8",
+      "required_failure_in": "contract_control"
+    },
+    {
+      "name": "induced_leading_positive",
+      "command": [
+        "/home/trevnorris/.elan/toolchains/leanprover--lean4---v4.33.0/bin/lean",
+        "-j1",
+        "-M2048",
+        "-DwarningAsError=true",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_bookkeeping/verification_run7/evidence/snapshot/lean/induced_leading_positive.lean"
+      ],
+      "expected": "PASS",
+      "exit_status": 0,
+      "passed": true,
+      "seconds": 1.172,
+      "log": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_bookkeeping/verification_run7/evidence/logs/induced_leading_positive.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output": "",
+      "source": "import S11ScatteringBookkeeping\nopen S11ScatteringBookkeeping S11ScatteringFlux Matrix\ntheorem contract_control : q2 (scalarB 1) (scalarB 4) (scalarB 5) 0 (scalarA 2) (scalarA 3) = 4 := by\n  norm_num only [induced_witness]\n",
+      "source_sha256": "c55bf72d7ba5a4125dd04b5d81db71731bb3e6f813138b38d02ef536e5d91309",
+      "required_failure_in": []
+    },
+    {
+      "name": "induced_leading_mutant",
+      "command": [
+        "/home/trevnorris/.elan/toolchains/leanprover--lean4---v4.33.0/bin/lean",
+        "-j1",
+        "-M2048",
+        "-DwarningAsError=true",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_bookkeeping/verification_run7/evidence/snapshot/lean/induced_leading_mutant.lean"
+      ],
+      "expected": "REJECTED",
+      "exit_status": 1,
+      "passed": true,
+      "seconds": 1.172,
+      "log": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_bookkeeping/verification_run7/evidence/logs/induced_leading_mutant.log",
+      "log_sha256": "f96bb778527376a4a658f2ee456cd983eaf9610f0afd08cb04b69f19331d7136",
+      "output": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_bookkeeping/verification_run7/evidence/snapshot/lean/induced_leading_mutant.lean:3:100: error: unsolved goals\n\u22a2 False\n",
+      "source": "import S11ScatteringBookkeeping\nopen S11ScatteringBookkeeping S11ScatteringFlux Matrix\ntheorem contract_control : q2 (scalarB 1) (scalarB 4) (scalarB 5) 0 (scalarA 2) (scalarA 3) = 31 := by\n  norm_num only [induced_witness]\n",
+      "source_sha256": "b72d75bf1423e8e635e942248bc5ae69da7d6457e83e6e6ffc3077fd51fce152",
+      "required_failure_in": "contract_control"
+    },
+    {
+      "name": "subtracted_is_not_induced_positive",
+      "command": [
+        "/home/trevnorris/.elan/toolchains/leanprover--lean4---v4.33.0/bin/lean",
+        "-j1",
+        "-M2048",
+        "-DwarningAsError=true",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_bookkeeping/verification_run7/evidence/snapshot/lean/subtracted_is_not_induced_positive.lean"
+      ],
+      "expected": "PASS",
+      "exit_status": 0,
+      "passed": true,
+      "seconds": 1.172,
+      "log": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_bookkeeping/verification_run7/evidence/logs/subtracted_is_not_induced_positive.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output": "",
+      "source": "import S11ScatteringBookkeeping\nopen S11ScatteringBookkeeping S11ScatteringFlux Matrix\ntheorem contract_control : flux (scalarB 1) (scalarA 1 + scalarA 1) - flux (scalarB 1) (scalarA 1) = 3 := by\n  norm_num only [subtracted_witness]\n",
+      "source_sha256": "f0bc1935a5cc7df2f978b4d283d00a5a61dc50b7c51af67ef9f64264b0a7e3df",
+      "required_failure_in": []
+    },
+    {
+      "name": "subtracted_is_not_induced_mutant",
+      "command": [
+        "/home/trevnorris/.elan/toolchains/leanprover--lean4---v4.33.0/bin/lean",
+        "-j1",
+        "-M2048",
+        "-DwarningAsError=true",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_bookkeeping/verification_run7/evidence/snapshot/lean/subtracted_is_not_induced_mutant.lean"
+      ],
+      "expected": "REJECTED",
+      "exit_status": 1,
+      "passed": true,
+      "seconds": 1.224,
+      "log": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_bookkeeping/verification_run7/evidence/logs/subtracted_is_not_induced_mutant.log",
+      "log_sha256": "077482ddf074d161406b2604f27ec6e7e41b947c50281ca87efdfd04de70c985",
+      "output": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_bookkeeping/verification_run7/evidence/snapshot/lean/subtracted_is_not_induced_mutant.lean:3:106: error: unsolved goals\n\u22a2 False\n",
+      "source": "import S11ScatteringBookkeeping\nopen S11ScatteringBookkeeping S11ScatteringFlux Matrix\ntheorem contract_control : flux (scalarB 1) (scalarA 1 + scalarA 1) - flux (scalarB 1) (scalarA 1) = 1 := by\n  norm_num only [subtracted_witness]\n",
+      "source_sha256": "d774d6e122740c7144ece0559f0c7e43121a355b6380a6cac61acf435b9f4a87",
+      "required_failure_in": "contract_control"
+    },
+    {
+      "name": "omitted_parent_second_positive",
+      "command": [
+        "/home/trevnorris/.elan/toolchains/leanprover--lean4---v4.33.0/bin/lean",
+        "-j1",
+        "-M2048",
+        "-DwarningAsError=true",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_bookkeeping/verification_run7/evidence/snapshot/lean/omitted_parent_second_positive.lean"
+      ],
+      "expected": "PASS",
+      "exit_status": 0,
+      "passed": true,
+      "seconds": 1.171,
+      "log": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_bookkeeping/verification_run7/evidence/logs/omitted_parent_second_positive.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output": "",
+      "source": "import S11ScatteringBookkeeping\nopen S11ScatteringBookkeeping S11ScatteringFlux Matrix\ntheorem contract_control : q2 (scalarB 1) 0 0 (scalarA 1) 0 (scalarA 3) = 6 := by\n  norm_num only [parent_second_witness]\n",
+      "source_sha256": "6d0dab6b4c6fa47cc8d8419e0b43a3995322ada8c8609b178aac00d4132cdabe",
+      "required_failure_in": []
+    },
+    {
+      "name": "omitted_parent_second_mutant",
+      "command": [
+        "/home/trevnorris/.elan/toolchains/leanprover--lean4---v4.33.0/bin/lean",
+        "-j1",
+        "-M2048",
+        "-DwarningAsError=true",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_bookkeeping/verification_run7/evidence/snapshot/lean/omitted_parent_second_mutant.lean"
+      ],
+      "expected": "REJECTED",
+      "exit_status": 1,
+      "passed": true,
+      "seconds": 1.172,
+      "log": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_bookkeeping/verification_run7/evidence/logs/omitted_parent_second_mutant.log",
+      "log_sha256": "3638e3f592d354ae1fce213fc4b6553db17d7cb9c945d35e95e5294cc3999608",
+      "output": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_bookkeeping/verification_run7/evidence/snapshot/lean/omitted_parent_second_mutant.lean:3:79: error: unsolved goals\n\u22a2 False\n",
+      "source": "import S11ScatteringBookkeeping\nopen S11ScatteringBookkeeping S11ScatteringFlux Matrix\ntheorem contract_control : q2 (scalarB 1) 0 0 (scalarA 1) 0 (scalarA 3) = 0 := by\n  norm_num only [parent_second_witness]\n",
+      "source_sha256": "42c096f0048d318bab3c47edae4cf065f06bbb970dd7f5316fff3df3a3a0ffe3",
+      "required_failure_in": "contract_control"
+    },
+    {
+      "name": "epsilon_squared_positive",
+      "command": [
+        "/home/trevnorris/.elan/toolchains/leanprover--lean4---v4.33.0/bin/lean",
+        "-j1",
+        "-M2048",
+        "-DwarningAsError=true",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_bookkeeping/verification_run7/evidence/snapshot/lean/epsilon_squared_positive.lean"
+      ],
+      "expected": "PASS",
+      "exit_status": 0,
+      "passed": true,
+      "seconds": 1.172,
+      "log": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_bookkeeping/verification_run7/evidence/logs/epsilon_squared_positive.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output": "",
+      "source": "import S11ScatteringBookkeeping\nopen S11ScatteringBookkeeping S11ScatteringFlux Matrix\ntheorem contract_control : flux (scalarB 1) ((2 : \u2102) \u2022 scalarA 1) = 4 := by\n  norm_num only [epsilon_witness]\n",
+      "source_sha256": "ac650b92b052748e8f0a58ee109f6273d5b72cd79514d83a56e8f4eb18461e90",
+      "required_failure_in": []
+    },
+    {
+      "name": "epsilon_squared_mutant",
+      "command": [
+        "/home/trevnorris/.elan/toolchains/leanprover--lean4---v4.33.0/bin/lean",
+        "-j1",
+        "-M2048",
+        "-DwarningAsError=true",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_bookkeeping/verification_run7/evidence/snapshot/lean/epsilon_squared_mutant.lean"
+      ],
+      "expected": "REJECTED",
+      "exit_status": 1,
+      "passed": true,
+      "seconds": 1.172,
+      "log": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_bookkeeping/verification_run7/evidence/logs/epsilon_squared_mutant.log",
+      "log_sha256": "b79c74af5c6fdd3dd0bd40724df9f2e90acc775f87991bc46a8d7f3e797676f8",
+      "output": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_bookkeeping/verification_run7/evidence/snapshot/lean/epsilon_squared_mutant.lean:3:73: error: unsolved goals\n\u22a2 False\n",
+      "source": "import S11ScatteringBookkeeping\nopen S11ScatteringBookkeeping S11ScatteringFlux Matrix\ntheorem contract_control : flux (scalarB 1) ((2 : \u2102) \u2022 scalarA 1) = 2 := by\n  norm_num only [epsilon_witness]\n",
+      "source_sha256": "21969012bb20fbd92fb21a47e59925907def3e0f9182ece53072dbff6dc72d42",
+      "required_failure_in": "contract_control"
+    },
+    {
+      "name": "leading_normalization_positive",
+      "command": [
+        "/home/trevnorris/.elan/toolchains/leanprover--lean4---v4.33.0/bin/lean",
+        "-j1",
+        "-M2048",
+        "-DwarningAsError=true",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_bookkeeping/verification_run7/evidence/snapshot/lean/leading_normalization_positive.lean"
+      ],
+      "expected": "PASS",
+      "exit_status": 0,
+      "passed": true,
+      "seconds": 1.172,
+      "log": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_bookkeeping/verification_run7/evidence/logs/leading_normalization_positive.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output": "",
+      "source": "import S11ScatteringBookkeeping\nopen S11ScatteringBookkeeping S11ScatteringFlux Matrix\ntheorem contract_control : c0 (2 : \u211d) 2 = 1 := by\n  norm_num only [c0]\n",
+      "source_sha256": "ebfef651303c7bf2e9f1ab03e3221f0c6fd96f8b34c392da75cbed93ab9077a3",
+      "required_failure_in": []
+    },
+    {
+      "name": "leading_normalization_mutant",
+      "command": [
+        "/home/trevnorris/.elan/toolchains/leanprover--lean4---v4.33.0/bin/lean",
+        "-j1",
+        "-M2048",
+        "-DwarningAsError=true",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_bookkeeping/verification_run7/evidence/snapshot/lean/leading_normalization_mutant.lean"
+      ],
+      "expected": "REJECTED",
+      "exit_status": 1,
+      "passed": true,
+      "seconds": 1.172,
+      "log": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_bookkeeping/verification_run7/evidence/logs/leading_normalization_mutant.log",
+      "log_sha256": "23faef2cad029bf74bed9f214b2cf99cbed29d59330afdb273d77853f46f21fd",
+      "output": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_bookkeeping/verification_run7/evidence/snapshot/lean/leading_normalization_mutant.lean:3:47: error: unsolved goals\n\u22a2 False\n",
+      "source": "import S11ScatteringBookkeeping\nopen S11ScatteringBookkeeping S11ScatteringFlux Matrix\ntheorem contract_control : c0 (2 : \u211d) 2 = 2 := by\n  norm_num only [c0]\n",
+      "source_sha256": "cad6e4fcdb90e50166aeda866f47729cd6514c6f3165bc13a1f93984b2bcc3b2",
+      "required_failure_in": "contract_control"
+    },
+    {
+      "name": "incident_first_positive",
+      "command": [
+        "/home/trevnorris/.elan/toolchains/leanprover--lean4---v4.33.0/bin/lean",
+        "-j1",
+        "-M2048",
+        "-DwarningAsError=true",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_bookkeeping/verification_run7/evidence/snapshot/lean/incident_first_positive.lean"
+      ],
+      "expected": "PASS",
+      "exit_status": 0,
+      "passed": true,
+      "seconds": 1.172,
+      "log": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_bookkeeping/verification_run7/evidence/logs/incident_first_positive.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output": "",
+      "source": "import S11ScatteringBookkeeping\nopen S11ScatteringBookkeeping S11ScatteringFlux Matrix\ntheorem contract_control : c1 (2 : \u211d) 3 2 1 = 1 := by\n  norm_num only [c1, c0]\n",
+      "source_sha256": "459721a51cf6dff1ee32712f35ca9e09f9bc1a152c1e05692ea8cdf15607038d",
+      "required_failure_in": []
+    },
+    {
+      "name": "incident_first_mutant",
+      "command": [
+        "/home/trevnorris/.elan/toolchains/leanprover--lean4---v4.33.0/bin/lean",
+        "-j1",
+        "-M2048",
+        "-DwarningAsError=true",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_bookkeeping/verification_run7/evidence/snapshot/lean/incident_first_mutant.lean"
+      ],
+      "expected": "REJECTED",
+      "exit_status": 1,
+      "passed": true,
+      "seconds": 1.171,
+      "log": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_bookkeeping/verification_run7/evidence/logs/incident_first_mutant.log",
+      "log_sha256": "2f510a9046b4cbd655321d1ff38c738fb4fc3038357fb9b55ea8a61dd956c14c",
+      "output": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_bookkeeping/verification_run7/evidence/snapshot/lean/incident_first_mutant.lean:3:53: error: unsolved goals\n\u22a2 False\n",
+      "source": "import S11ScatteringBookkeeping\nopen S11ScatteringBookkeeping S11ScatteringFlux Matrix\ntheorem contract_control : c1 (2 : \u211d) 3 2 1 = 3/2 := by\n  norm_num only [c1, c0]\n",
+      "source_sha256": "431a044eced1e8112b109ef1ed830515054fc3270bbb41caf486fe7fe1a9623d",
+      "required_failure_in": "contract_control"
+    },
+    {
+      "name": "incident_second_positive",
+      "command": [
+        "/home/trevnorris/.elan/toolchains/leanprover--lean4---v4.33.0/bin/lean",
+        "-j1",
+        "-M2048",
+        "-DwarningAsError=true",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_bookkeeping/verification_run7/evidence/snapshot/lean/incident_second_positive.lean"
+      ],
+      "expected": "PASS",
+      "exit_status": 0,
+      "passed": true,
+      "seconds": 1.171,
+      "log": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_bookkeeping/verification_run7/evidence/logs/incident_second_positive.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output": "",
+      "source": "import S11ScatteringBookkeeping\nopen S11ScatteringBookkeeping S11ScatteringFlux Matrix\ntheorem contract_control : c2 (2 : \u211d) 3 5 2 1 2 = 1 := by\n  norm_num only [c2, c1, c0]\n",
+      "source_sha256": "d5cdcf90cb4920805c0487a36f5467f90e33673e824d6539ef89ba81efd182ad",
+      "required_failure_in": []
+    },
+    {
+      "name": "incident_second_mutant",
+      "command": [
+        "/home/trevnorris/.elan/toolchains/leanprover--lean4---v4.33.0/bin/lean",
+        "-j1",
+        "-M2048",
+        "-DwarningAsError=true",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_bookkeeping/verification_run7/evidence/snapshot/lean/incident_second_mutant.lean"
+      ],
+      "expected": "REJECTED",
+      "exit_status": 1,
+      "passed": true,
+      "seconds": 1.172,
+      "log": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_bookkeeping/verification_run7/evidence/logs/incident_second_mutant.log",
+      "log_sha256": "b902e8c0256f228645b3b47fcec2abeae68b3b18d4b3c757dec6a6fcd176a03b",
+      "output": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_bookkeeping/verification_run7/evidence/snapshot/lean/incident_second_mutant.lean:3:55: error: unsolved goals\n\u22a2 False\n",
+      "source": "import S11ScatteringBookkeeping\nopen S11ScatteringBookkeeping S11ScatteringFlux Matrix\ntheorem contract_control : c2 (2 : \u211d) 3 5 2 1 2 = 2 := by\n  norm_num only [c2, c1, c0]\n",
+      "source_sha256": "763b9e48f0bcf6299a5a799b6ea42578b5cf947dc2a9722d3d0433f0ef8c2ad0",
+      "required_failure_in": "contract_control"
+    },
+    {
+      "name": "negative_leading_positive",
+      "command": [
+        "/home/trevnorris/.elan/toolchains/leanprover--lean4---v4.33.0/bin/lean",
+        "-j1",
+        "-M2048",
+        "-DwarningAsError=true",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_bookkeeping/verification_run7/evidence/snapshot/lean/negative_leading_positive.lean"
+      ],
+      "expected": "PASS",
+      "exit_status": 0,
+      "passed": true,
+      "seconds": 1.173,
+      "log": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_bookkeeping/verification_run7/evidence/logs/negative_leading_positive.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output": "",
+      "source": "import S11ScatteringBookkeeping\nopen S11ScatteringBookkeeping S11ScatteringFlux Matrix\ntheorem contract_control : c0 (2 : \u211d) (-2) = -1 := by\n  norm_num only [c0]\n",
+      "source_sha256": "ae87c7167eb8c0b2892c13068df89ac07bd40891eb8ce918caae7c050388beae",
+      "required_failure_in": []
+    },
+    {
+      "name": "negative_leading_mutant",
+      "command": [
+        "/home/trevnorris/.elan/toolchains/leanprover--lean4---v4.33.0/bin/lean",
+        "-j1",
+        "-M2048",
+        "-DwarningAsError=true",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_bookkeeping/verification_run7/evidence/snapshot/lean/negative_leading_mutant.lean"
+      ],
+      "expected": "REJECTED",
+      "exit_status": 1,
+      "passed": true,
+      "seconds": 1.222,
+      "log": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_bookkeeping/verification_run7/evidence/logs/negative_leading_mutant.log",
+      "log_sha256": "fd5a7163494abb16579d42cae6b3e0ee62b5f5b6076cc5cce306211f3c7abe1a",
+      "output": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_bookkeeping/verification_run7/evidence/snapshot/lean/negative_leading_mutant.lean:3:50: error: unsolved goals\n\u22a2 False\n",
+      "source": "import S11ScatteringBookkeeping\nopen S11ScatteringBookkeeping S11ScatteringFlux Matrix\ntheorem contract_control : c0 (2 : \u211d) (-2) = 1 := by\n  norm_num only [c0]\n",
+      "source_sha256": "b8124b33e98f174ecadc3bf2decf0bf4a6bab8de1110b74ecc70fbbcab95ab12",
+      "required_failure_in": "contract_control"
+    },
+    {
+      "name": "zero_model_two_constants_positive",
+      "command": [
+        "/home/trevnorris/.elan/toolchains/leanprover--lean4---v4.33.0/bin/lean",
+        "-j1",
+        "-M2048",
+        "-DwarningAsError=true",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_bookkeeping/verification_run7/evidence/snapshot/lean/zero_model_two_constants_positive.lean"
+      ],
+      "expected": "PASS",
+      "exit_status": 0,
+      "passed": true,
+      "seconds": 1.173,
+      "log": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_bookkeeping/verification_run7/evidence/logs/zero_model_two_constants_positive.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output": "",
+      "source": "import S11ScatteringBookkeeping\nopen S11ScatteringBookkeeping S11ScatteringFlux Matrix\ntheorem contract_control : ((0 : \u211d) * 0 = 0 \u2227 (0 : \u211d) * 1 = 0) = True := by\n  norm_num only [true_and, eq_iff_iff, iff_self, true_iff_false]\n",
+      "source_sha256": "8ce283783635bb7655d8d68623a29269033121a21cb95ccde8e2ec4263459b27",
+      "required_failure_in": []
+    },
+    {
+      "name": "zero_model_two_constants_mutant",
+      "command": [
+        "/home/trevnorris/.elan/toolchains/leanprover--lean4---v4.33.0/bin/lean",
+        "-j1",
+        "-M2048",
+        "-DwarningAsError=true",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_bookkeeping/verification_run7/evidence/snapshot/lean/zero_model_two_constants_mutant.lean"
+      ],
+      "expected": "REJECTED",
+      "exit_status": 1,
+      "passed": true,
+      "seconds": 1.172,
+      "log": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_bookkeeping/verification_run7/evidence/logs/zero_model_two_constants_mutant.log",
+      "log_sha256": "62c8f18853210b0ba6ce58de6fb7e3a78e08f653a0df5e6a1725ed6af04ecb69",
+      "output": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_bookkeeping/verification_run7/evidence/snapshot/lean/zero_model_two_constants_mutant.lean:3:74: error: unsolved goals\n\u22a2 False\n",
+      "source": "import S11ScatteringBookkeeping\nopen S11ScatteringBookkeeping S11ScatteringFlux Matrix\ntheorem contract_control : ((0 : \u211d) * 0 = 0 \u2227 (0 : \u211d) * 1 = 0) = False := by\n  norm_num only [true_and, eq_iff_iff, iff_self, true_iff_false]\n",
+      "source_sha256": "fb18c7e5b38c51c2d04c58fba3a5b4dcaf17e4818acd06b369a663a8c50149ca",
+      "required_failure_in": "contract_control"
+    },
+    {
+      "name": "actual_quotient_equations_positive",
+      "command": [
+        "/home/trevnorris/.elan/toolchains/leanprover--lean4---v4.33.0/bin/lean",
+        "-j1",
+        "-M2048",
+        "-DwarningAsError=true",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_bookkeeping/verification_run7/evidence/snapshot/lean/actual_quotient_equations_positive.lean"
+      ],
+      "expected": "PASS",
+      "exit_status": 0,
+      "passed": true,
+      "seconds": 1.172,
+      "log": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_bookkeeping/verification_run7/evidence/logs/actual_quotient_equations_positive.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output": "",
+      "source": "import S11ScatteringBookkeeping\nopen S11ScatteringBookkeeping S11ScatteringFlux Matrix\nexample : (2:\u2102) * c0 2 2 = 2 \u2227 (2:\u2102)*c1 2 3 2 1 + 1*c0 2 2 = 3 \u2227 (2:\u2102)*c2 2 3 5 2 1 2 + 1*c1 2 3 2 1 + 2*c0 2 2 = 5 := quotient_equations 2 3 5 2 1 2 (by norm_num)\n",
+      "source_sha256": "b1fcb9a5da1afe33c555b1c4c0756a29093bd8a25ee7d99eb1e560eda97da7f1",
+      "required_failure_in": []
+    },
+    {
+      "name": "zero_obstruction_positive",
+      "command": [
+        "/home/trevnorris/.elan/toolchains/leanprover--lean4---v4.33.0/bin/lean",
+        "-j1",
+        "-M2048",
+        "-DwarningAsError=true",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_bookkeeping/verification_run7/evidence/snapshot/lean/zero_obstruction_positive.lean"
+      ],
+      "expected": "PASS",
+      "exit_status": 0,
+      "passed": true,
+      "seconds": 1.172,
+      "log": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_bookkeeping/verification_run7/evidence/logs/zero_obstruction_positive.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output": "",
+      "source": "import S11ScatteringBookkeeping\nopen S11ScatteringBookkeeping S11ScatteringFlux Matrix\nexample (u : \u211d) : (0 : \u211d) * u \u2260 1 := zero_leading_obstruction 1 (by norm_num) u\n",
+      "source_sha256": "c8032037eb65da1835ea0ed5fce03269ddf3680d4eaa48cb85c931b68c42c29a",
+      "required_failure_in": []
+    },
+    {
+      "name": "zero_nonunique_positive",
+      "command": [
+        "/home/trevnorris/.elan/toolchains/leanprover--lean4---v4.33.0/bin/lean",
+        "-j1",
+        "-M2048",
+        "-DwarningAsError=true",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_bookkeeping/verification_run7/evidence/snapshot/lean/zero_nonunique_positive.lean"
+      ],
+      "expected": "PASS",
+      "exit_status": 0,
+      "passed": true,
+      "seconds": 1.173,
+      "log": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_bookkeeping/verification_run7/evidence/logs/zero_nonunique_positive.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output": "",
+      "source": "import S11ScatteringBookkeeping\nopen S11ScatteringBookkeeping S11ScatteringFlux Matrix\nexample : (0 : \u211d) * 0 = 0 \u2227 (0 : \u211d) * 1 = 0 \u2227 (0 : \u211d) \u2260 1 := zero_model_two_solutions\n",
+      "source_sha256": "b79cf3f38f447fbab077987b19bb5c0940b60384471b39686042fa21fa330af1",
+      "required_failure_in": []
+    },
+    {
+      "name": "empty_amplitude_positive",
+      "command": [
+        "/home/trevnorris/.elan/toolchains/leanprover--lean4---v4.33.0/bin/lean",
+        "-j1",
+        "-M2048",
+        "-DwarningAsError=true",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_bookkeeping/verification_run7/evidence/snapshot/lean/empty_amplitude_positive.lean"
+      ],
+      "expected": "PASS",
+      "exit_status": 0,
+      "passed": true,
+      "seconds": 1.222,
+      "log": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_bookkeeping/verification_run7/evidence/logs/empty_amplitude_positive.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output": "",
+      "source": "import S11ScatteringBookkeeping\nopen S11ScatteringBookkeeping S11ScatteringFlux Matrix\nexample (B : Matrix (Fin 0) (Fin 0) \u2102) (a : Fin 0 \u2192 \u2102) : flux B a = 0 := by simp [flux, pair, dotProduct]\n",
+      "source_sha256": "be21a7cb93c24a6a5b7308e3cfb3b8c9e4c78f749f9ab326b60e354c33bf2058",
+      "required_failure_in": []
+    }
+  ],
+  "resources": {
+    "lean_workers": 1,
+    "lean_allocator_mib": 2048,
+    "per_process_seconds": 180,
+    "outer_guard": "2 GiB/no swap/one CPU; receipt in host guard directory"
+  },
+  "limits": [
+    "No canonical source-replacement mutations.",
+    "Fresh local objects; pinned external transitive cache baseline.",
+    "No physical scattering or parent-theory Taylor certificate."
+  ],
+  "source_sha256": {
+    "lean/s11/S11ScatteringBookkeeping/Controls.lean": "427a0a16cd91fb82997b0a3bb3033005360007e12cf0b916c371b0bd194c9a73",
+    "lean/lakefile.toml": "2dd99ce804fbeb5a4a07843d00a25c9c3d4f41052ff884b6b4bf8e04cf60a3a2",
+    "lean/s11/S11ScatteringBookkeeping/Path.lean": "0c64740892624259edd60d409772ad49d7089180558b187c5897666184abfd37",
+    "_measurements/S11_lean_bookkeeping_contract_check.py": "57857de623edcff77461b0225b88435bd093816e2e6b185e089ea9063932d86d",
+    "lean/s11/S11ScatteringBookkeeping/Quadratic.lean": "8ddc958e4c57b6cb59dd1bcf6c568d2914c4a9718945d1da1dca57ceb0679190",
+    "lean/s11/S11ScatteringBookkeeping.lean": "961bea1256a5acc2e37c8e7b44d2f52d9230c99aeb871036b7713962d109134f",
+    "lean/verify.py": "83a61936bc0c9a49ec5337a27b263aff94f9a61779bd118937d1ccfb884458f7",
+    "lean/s11/S11ScatteringFlux/Current.lean": "bfd5266214299b650865b4d8f6f4f8da630380ef78f81ded0ba592c5fdb6c0d5",
+    "lean/s11/S11ScatteringBookkeeping/Quotient.lean": "54c859ee3a9586c996fe3887f04cf0b0d2eb45dc283cce22411d5943b6d855bd",
+    "lean/lean-toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+    "lean/lake-manifest.json": "91fd5318cdc35e4044d6e059c6ef73d94b955d27adf8a5860b07ec92add9377e",
+    "lean/s11/S11ScatteringBookkeeping/Observables.lean": "af5d814c79344f39b885dd8f00a5cc5d9732fcbf9ca2bd09d638c93188e4c014",
+    "_measurements/S11_lean_bookkeeping_source_check.py": "aa7f9f6bb2fa0d15158450f69647dd425d60c2235b61f942359b5d6b6bc40c1b"
+  },
+  "dependencies": {
+    "packages": [
+      {
+        "name": "Physlib",
+        "commit": "8b2b23701c07409f882c49e0bd290a214e44450c"
+      },
+      {
+        "name": "mathlib",
+        "commit": "db584cd6d46c92f209a44c0f1c829460d327499d"
+      },
+      {
+        "name": "\u00abdoc-gen4\u00bb",
+        "commit": "aceca4eeb5a79092eabefaa75fcb72b701d02205"
+      },
+      {
+        "name": "plausible",
+        "commit": "b7eb3304aeae834b12dda98993a37f6a41f6f0bb"
+      },
+      {
+        "name": "LeanSearchClient",
+        "commit": "5f4d51b81cbd3f6b32b156bfad9056621a040404"
+      },
+      {
+        "name": "importGraph",
+        "commit": "16f02aa7642864af59f1ff0e384a015994db9118"
+      },
+      {
+        "name": "proofwidgets",
+        "commit": "4be2e3d5087eeb272cf5a8853b8f9dd025ef5957"
+      },
+      {
+        "name": "aesop",
+        "commit": "3448c0bcc5ce01b2d1546e483ec3620e32df3d0e"
+      },
+      {
+        "name": "Qq",
+        "commit": "92c15be17b7caf78c2ad767ec40f89052d908d81"
+      },
+      {
+        "name": "batteries",
+        "commit": "4488d40d070b9700d4d5a6aa342f0d40c31b2a2d"
+      },
+      {
+        "name": "leansqlite",
+        "commit": "6168b7549738a19bc837a1625c60c5d1e5dd8aeb"
+      },
+      {
+        "name": "Cli",
+        "commit": "6130a47896ce867c6a4a55373441e59e565bad0f"
+      },
+      {
+        "name": "UnicodeBasic",
+        "commit": "37e7d8cb7316a88cd3e91208385c9ec6ae780019"
+      },
+      {
+        "name": "BibtexQuery",
+        "commit": "852edafa268eb038a7158551fd580ee8433847b0"
+      },
+      {
+        "name": "MD4Lean",
+        "commit": "31907cc18f48a95384f99cee5582c00fb39e0f67"
+      }
+    ],
+    "lean_version": "Lean (version 4.33.0, x86_64-unknown-linux-gnu, commit d8b18978322de05a8f3dba51ef03cf5461676c17, Release)"
+  },
+  "direct_imports": {
+    "Mathlib.LinearAlgebra.Matrix.ConjTranspose": {
+      "object_path": "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/LinearAlgebra/Matrix/ConjTranspose.olean",
+      "object_sha256": "1ac34e9f98f578907ac2620d109d45edb9faabc8a91b329ab0af4cc7cf356bbf",
+      "source_path": "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/packages/mathlib/Mathlib/LinearAlgebra/Matrix/ConjTranspose.lean",
+      "source_sha256": "10ace10899567db7c2ccd38c0e89e3bdca2261494975a42d3b1a5535c9e3b1b6"
+    },
+    "Mathlib.Data.Complex.Basic": {
+      "object_path": "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Data/Complex/Basic.olean",
+      "object_sha256": "f0dd349f6e747bb17cba310aed12ba9f0d4bd4a136baba6b576eb76146b0a992",
+      "source_path": "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/packages/mathlib/Mathlib/Data/Complex/Basic.lean",
+      "source_sha256": "e279bd6369e83ebf6716e17a8f38c81c812020753472cac5e7ae2a501790b760"
+    },
+    "Mathlib.Tactic.Ring": {
+      "object_path": "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Tactic/Ring.olean",
+      "object_sha256": "592377cbe645eff5792e1f62acbe0942fb9426841af93b4809cf468f3d79a99c",
+      "source_path": "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/packages/mathlib/Mathlib/Tactic/Ring.lean",
+      "source_sha256": "d3ef5c49ebbd1108ce3f935e5ad95485e143abf02f28c027dba4bb6f3be8196e"
+    },
+    "Mathlib.Tactic.Linarith": {
+      "object_path": "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Tactic/Linarith.olean",
+      "object_sha256": "d1d8e0c2d0421f98f32ac107c9a673d1254a6f53ce2f709f8a4a9d1ae9676bc3",
+      "source_path": "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/packages/mathlib/Mathlib/Tactic/Linarith.lean",
+      "source_sha256": "0581fd9f80f34d728ad628e7c1fb5a93d36cb9cb48d469fbc797869e83ebe0a6"
+    },
+    "Mathlib.Tactic.NormNum": {
+      "object_path": "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Tactic/NormNum.olean",
+      "object_sha256": "11db8a449ec7b0dd87d15412bf148df02af1d5bc27a339769227a06b6c66a5aa",
+      "source_path": "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/packages/mathlib/Mathlib/Tactic/NormNum.lean",
+      "source_sha256": "dca9500572c6d887000f3de17c7145b53bf35233afc1ad8026cca908cec7a2fe"
+    },
+    "Mathlib.Algebra.BigOperators.Fin": {
+      "object_path": "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Algebra/BigOperators/Fin.olean",
+      "object_sha256": "05c8903563ca8f8b875770b543bd3f1640c61d9f098ac808efd0e03c16c52beb",
+      "source_path": "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/packages/mathlib/Mathlib/Algebra/BigOperators/Fin.lean",
+      "source_sha256": "4fe78cba9cdeac4eb8badbdd6359b055031900906fb94f3e51aba6d81451dbd5"
+    }
+  },
+  "order": [
+    "S11ScatteringFlux.Current",
+    "S11ScatteringBookkeeping.Path",
+    "S11ScatteringBookkeeping.Quadratic",
+    "S11ScatteringBookkeeping.Observables",
+    "S11ScatteringBookkeeping.Quotient",
+    "S11ScatteringBookkeeping.Controls",
+    "S11ScatteringBookkeeping"
+  ],
+  "run_directory": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_bookkeeping/verification_run7/evidence",
+  "native_report_sha256": "02ccf56aa4853699391b6fcd1c3f2d30c689008716ad7e79bd2d7a46e0ce1c19",
+  "axiom_audits": 33,
+  "objects": {
+    "S11ScatteringBookkeeping.olean": "dcd09dc75ee632cc655599a07570829b1ef38e8ecd2e8bd3af7e2898f17ee55e",
+    "S11ScatteringFlux/Current.olean": "011606e4252ba015c630a0a3a69d9b184bee9e17ccf43603d4caa8cfce9f2358",
+    "S11ScatteringBookkeeping/Path.olean": "e64f6b25e9f16925ba39d5fcb2dfa6d15193eed3038ee45cdcb78815128bf8d0",
+    "S11ScatteringBookkeeping/Quadratic.olean": "65e6bb5578253d7d1ce9f20b78ba17270b982244c2865991cf3a7d7aa3c45074",
+    "S11ScatteringBookkeeping/Controls.olean": "57024ae9c79cbdab4567beb1629b91c91d6a65005eacd811084470f680dde823",
+    "S11ScatteringBookkeeping/Quotient.olean": "53be4227028c03f6f4736aa05679307a28b7968d935f0db340f8c5507ddb3038",
+    "S11ScatteringBookkeeping/Observables.olean": "300d79b354dd863b130ffeedce59c1a433450976070e0e54e194cd3495aa658c"
+  }
+}

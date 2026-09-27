@@ -67,7 +67,9 @@ smaller run. The completed D5 density classification is included as `d5`;
 its fresh portable replay passed, as recorded in
 [INSTALL_D5_VALIDATION.json](INSTALL_D5_VALIDATION.json). The new D5 bulk
 contract is complete with its own recorded suite and two CLEAR fidelity
-reviews; it is not yet registered in the portable catalog. See
+reviews; it is registered as `d5-bulk`. Registration checks are recorded in
+`INSTALL_D5_BULK_REGISTRATION.json`; no new full D5 bulk portable replay is
+claimed. Observe the host resource safeguards in INSTALL.md. See
 [s11/D5_BULK_FIDELITY_REVIEW.md](s11/D5_BULK_FIDELITY_REVIEW.md).
 
 For ordinary shared-cache builds after installation:

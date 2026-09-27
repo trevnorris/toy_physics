@@ -260,5 +260,19 @@ boundaries. Local verification passed and both independent reviews returned
 CLEAR. See [D5_BULK_FIDELITY_REVIEW.md](D5_BULK_FIDELITY_REVIEW.md) for closure
 and optional-note dispositions.
 The completed D5 density suite is now selectable through `verify.py d5`;
-the bulk proof has its separate recorded suite and is not yet registered in
-that portable catalog.
+the bulk proof is registered as `verify.py d5-bulk` with its completed proof
+and review evidence preserved. The new registration validation does not claim
+a repeat of its full proof execution.
+
+## Scattering observables (in progress)
+
+[SCATTERING_OBSERVABLE_COVERAGE.md](SCATTERING_OBSERVABLE_COVERAGE.md) bounds
+the authorized current/flux algebra, subsequent retained-order bookkeeping and
+conditional finite-solve sensitivity work. The first increment F1–F4 has passed
+local verification: full finite complex current forms and interference, basis
+covariance, signed orientation, zero-denominator coverage and conditional balance.
+Claude and Grok both returned CLEAR with no blocking findings; F1–F4 is complete.
+See [SCATTERING_FLUX_FIDELITY.md](SCATTERING_FLUX_FIDELITY.md) and
+[review dispositions](SCATTERING_FLUX_FIDELITY_REVIEW.md). Retained-order
+bookkeeping P1–P4 is the next authorized increment; finite-solve sensitivity
+remains separate.

@@ -1,0 +1,1224 @@
+{
+  "status": "PASS",
+  "checks": [
+    {
+      "name": "native",
+      "expected": "PASS",
+      "passed": true,
+      "mode": "revalidated_recorded_native_evidence",
+      "report_sha256": "2bc6a25e6dfa10cf50d942b47db539ea16356433287be5af1fb9cb483461f8e1",
+      "original_run": "verification_run1; not rerun in this attempt"
+    },
+    {
+      "name": "build_S11AnalyticError.Stability",
+      "command": [
+        "/home/trevnorris/.elan/toolchains/leanprover--lean4---v4.33.0/bin/lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "-o",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/objects/S11AnalyticError/Stability.olean",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/snapshot/lean/s11/S11AnalyticError/Stability.lean"
+      ],
+      "expected": "PASS",
+      "exit_status": 0,
+      "passed": true,
+      "seconds": 4.891,
+      "log": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/logs/build_S11AnalyticError.Stability.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output": "",
+      "object_path": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/objects/S11AnalyticError/Stability.olean",
+      "object_sha256": "222699b74d19abb91f80edc83dfd4b1438c69837ea9674c9bc3e2fb61ea50131",
+      "axiom_audits": 0
+    },
+    {
+      "name": "build_S11ScatteringSensitivity.Residual",
+      "command": [
+        "/home/trevnorris/.elan/toolchains/leanprover--lean4---v4.33.0/bin/lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "-o",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/objects/S11ScatteringSensitivity/Residual.olean",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/snapshot/lean/s11/S11ScatteringSensitivity/Residual.lean"
+      ],
+      "expected": "PASS",
+      "exit_status": 0,
+      "passed": true,
+      "seconds": 3.333,
+      "log": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/logs/build_S11ScatteringSensitivity.Residual.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output": "",
+      "object_path": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/objects/S11ScatteringSensitivity/Residual.olean",
+      "object_sha256": "f9b4494f73fa7a5101677999c41d75ad132264a64af961d912d7b4b21f9c8e3d",
+      "axiom_audits": 0
+    },
+    {
+      "name": "build_S11ScatteringFlux.Current",
+      "command": [
+        "/home/trevnorris/.elan/toolchains/leanprover--lean4---v4.33.0/bin/lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "-o",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/objects/S11ScatteringFlux/Current.olean",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/snapshot/lean/s11/S11ScatteringFlux/Current.lean"
+      ],
+      "expected": "PASS",
+      "exit_status": 0,
+      "passed": true,
+      "seconds": 1.624,
+      "log": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/logs/build_S11ScatteringFlux.Current.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output": "",
+      "object_path": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/objects/S11ScatteringFlux/Current.olean",
+      "object_sha256": "011606e4252ba015c630a0a3a69d9b184bee9e17ccf43603d4caa8cfce9f2358",
+      "axiom_audits": 0
+    },
+    {
+      "name": "build_S11ScatteringSensitivity.Current",
+      "command": [
+        "/home/trevnorris/.elan/toolchains/leanprover--lean4---v4.33.0/bin/lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "-o",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/objects/S11ScatteringSensitivity/Current.olean",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/snapshot/lean/s11/S11ScatteringSensitivity/Current.lean"
+      ],
+      "expected": "PASS",
+      "exit_status": 0,
+      "passed": true,
+      "seconds": 2.277,
+      "log": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/logs/build_S11ScatteringSensitivity.Current.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output": "",
+      "object_path": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/objects/S11ScatteringSensitivity/Current.olean",
+      "object_sha256": "cd33956fc1280e4e8f07718a489d54af2e31af49c58d517006a5ad6abe2146d7",
+      "axiom_audits": 0
+    },
+    {
+      "name": "build_S11ScatteringSensitivity.Fraction",
+      "command": [
+        "/home/trevnorris/.elan/toolchains/leanprover--lean4---v4.33.0/bin/lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "-o",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/objects/S11ScatteringSensitivity/Fraction.olean",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/snapshot/lean/s11/S11ScatteringSensitivity/Fraction.lean"
+      ],
+      "expected": "PASS",
+      "exit_status": 0,
+      "passed": true,
+      "seconds": 1.372,
+      "log": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/logs/build_S11ScatteringSensitivity.Fraction.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output": "",
+      "object_path": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/objects/S11ScatteringSensitivity/Fraction.olean",
+      "object_sha256": "85f1b0903d6f7ca1ef7f88d6bc3924a240171b37508933f0e579691c962d5143",
+      "axiom_audits": 0
+    },
+    {
+      "name": "build_S11ScatteringSensitivity.Pipeline",
+      "command": [
+        "/home/trevnorris/.elan/toolchains/leanprover--lean4---v4.33.0/bin/lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "-o",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/objects/S11ScatteringSensitivity/Pipeline.olean",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/snapshot/lean/s11/S11ScatteringSensitivity/Pipeline.lean"
+      ],
+      "expected": "PASS",
+      "exit_status": 0,
+      "passed": true,
+      "seconds": 2.48,
+      "log": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/logs/build_S11ScatteringSensitivity.Pipeline.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output": "",
+      "object_path": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/objects/S11ScatteringSensitivity/Pipeline.olean",
+      "object_sha256": "1734ca7f9b03280676608bd36807dc24990dfba07194b37d788d1c81ecdfb7c3",
+      "axiom_audits": 0
+    },
+    {
+      "name": "build_S11ScatteringSensitivity.Controls",
+      "command": [
+        "/home/trevnorris/.elan/toolchains/leanprover--lean4---v4.33.0/bin/lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "-o",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/objects/S11ScatteringSensitivity/Controls.olean",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/snapshot/lean/s11/S11ScatteringSensitivity/Controls.lean"
+      ],
+      "expected": "PASS",
+      "exit_status": 0,
+      "passed": true,
+      "seconds": 2.885,
+      "log": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/logs/build_S11ScatteringSensitivity.Controls.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output": "",
+      "object_path": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/objects/S11ScatteringSensitivity/Controls.olean",
+      "object_sha256": "8cf749c89c33d88c73bdedf7001393799999ed89c42785537e94e668ae29f1b7",
+      "axiom_audits": 0
+    },
+    {
+      "name": "build_S11ScatteringSensitivity",
+      "command": [
+        "/home/trevnorris/.elan/toolchains/leanprover--lean4---v4.33.0/bin/lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "-o",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/objects/S11ScatteringSensitivity.olean",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/snapshot/lean/s11/S11ScatteringSensitivity.lean"
+      ],
+      "expected": "PASS",
+      "exit_status": 0,
+      "passed": true,
+      "seconds": 1.875,
+      "log": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/logs/build_S11ScatteringSensitivity.log",
+      "log_sha256": "25bc0b5598d688c3e4656b0cb1d304c86f35b21a9e83a71a766ab4580ac53b06",
+      "output": "'S11ScatteringSensitivity.residual_sign_witness' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11ScatteringSensitivity.inverse_factor_witness' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11ScatteringSensitivity.small_residual_large_error' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11ScatteringSensitivity.scaling_witness' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11ScatteringSensitivity.unscale_witness' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11ScatteringSensitivity.observed_error_witness' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11ScatteringSensitivity.affine_current_witness' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11ScatteringSensitivity.full_error_witness' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11ScatteringSensitivity.current_error_witness' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11ScatteringSensitivity.complex_current_witness' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11ScatteringSensitivity.normalized_error_witness' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11ScatteringSensitivity.denominator_only_witness' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11ScatteringSensitivity.denominator_scale_witness' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11ScatteringSensitivity.signed_fraction_witness' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11ScatteringSensitivity.positive_margin_witness' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11ScatteringSensitivity.zero_margin_witness' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11ScatteringSensitivity.critical_inverse_margin' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11ScatteringSensitivity.identity_residual_positive' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11ScatteringSensitivity.nonzero_margin_positive' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11ScatteringSensitivity.signed_fraction_positive' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11ScatteringSensitivity.mass_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11ScatteringSensitivity.mass_zero' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11ScatteringSensitivity.mass_add_le' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11ScatteringSensitivity.pair_bound' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11ScatteringSensitivity.flux_bound' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11ScatteringSensitivity.flux_change_bound' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11ScatteringSensitivity.flux_change_budget' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11ScatteringSensitivity.current_change_bound' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11ScatteringSensitivity.flux_and_current_change' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11ScatteringSensitivity.amplitude_difference' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11ScatteringSensitivity.observation_bound_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11ScatteringSensitivity.amplitude_error_bound' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11ScatteringSensitivity.denominator_margin' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11ScatteringSensitivity.denominator_nonzero' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11ScatteringSensitivity.fraction_difference' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11ScatteringSensitivity.fraction_error_bound' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11ScatteringSensitivity.fraction_error_budget' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11ScatteringSensitivity.denominator_cases' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11ScatteringSensitivity.observed_residual_bound' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11ScatteringSensitivity.observed_perturbed_residual_bound' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11ScatteringSensitivity.flux_distance_budget' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11ScatteringSensitivity.flux_residual_bound' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11ScatteringSensitivity.normalized_residual_bound' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11ScatteringSensitivity.residual_identity' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11ScatteringSensitivity.residual_bound' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11ScatteringSensitivity.exact_residual' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11ScatteringSensitivity.residual_zero_iff' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11ScatteringSensitivity.balanced_apply' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11ScatteringSensitivity.balanced_residual' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11ScatteringSensitivity.unscale_error' depends on axioms: [propext, Classical.choice, Quot.sound]\n'S11ScatteringSensitivity.perturbed_residual_bound' depends on axioms: [propext, Classical.choice, Quot.sound]\n",
+      "object_path": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/objects/S11ScatteringSensitivity.olean",
+      "object_sha256": "e6643ad75ce50772248c7d281fd360a91974eaf65576fef47f4aad86db9036e3",
+      "axiom_audits": 51
+    },
+    {
+      "name": "residual_sign_positive",
+      "command": [
+        "/home/trevnorris/.elan/toolchains/leanprover--lean4---v4.33.0/bin/lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/snapshot/lean/residual_sign_positive.lean"
+      ],
+      "expected": "PASS",
+      "exit_status": 0,
+      "passed": true,
+      "seconds": 1.525,
+      "log": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/logs/residual_sign_positive.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output": "",
+      "source": "import S11ScatteringSensitivity\nopen S11ScatteringSensitivity S11ScatteringFlux Matrix\ntheorem contract_control : residual quarter 1 0 = (-1 : \u2102) := by\n  norm_num only [residual_sign_witness]\n",
+      "source_sha256": "c1049d7d6aeb57cd9a0ca8a2643306dd114f687f3036523542c4fa94c6296e93",
+      "required_failure_in": []
+    },
+    {
+      "name": "residual_sign_mutant",
+      "command": [
+        "/home/trevnorris/.elan/toolchains/leanprover--lean4---v4.33.0/bin/lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/snapshot/lean/residual_sign_mutant.lean"
+      ],
+      "expected": "REJECTED",
+      "exit_status": 1,
+      "passed": true,
+      "seconds": 1.926,
+      "log": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/logs/residual_sign_mutant.log",
+      "log_sha256": "2a705e37fc6dbbb346e7edfe8715e928b08cd610ce1db99cafca0d4619947874",
+      "output": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/snapshot/lean/residual_sign_mutant.lean:3:61: error: unsolved goals\n\u22a2 False\n",
+      "source": "import S11ScatteringSensitivity\nopen S11ScatteringSensitivity S11ScatteringFlux Matrix\ntheorem contract_control : residual quarter 1 0 = (1 : \u2102) := by\n  norm_num only [residual_sign_witness]\n",
+      "source_sha256": "728d0c13b7ce7002ba26bdae52f64e4af95389a13f631250b66d67371bd59f1e",
+      "required_failure_in": "contract_control"
+    },
+    {
+      "name": "inverse_factor_positive",
+      "command": [
+        "/home/trevnorris/.elan/toolchains/leanprover--lean4---v4.33.0/bin/lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/snapshot/lean/inverse_factor_positive.lean"
+      ],
+      "expected": "PASS",
+      "exit_status": 0,
+      "passed": true,
+      "seconds": 1.775,
+      "log": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/logs/inverse_factor_positive.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output": "",
+      "source": "import S11ScatteringSensitivity\nopen S11ScatteringSensitivity S11ScatteringFlux Matrix\ntheorem contract_control : \u2016(4 : \u2102) - 0\u2016 = 4 := by\n  norm_num\n",
+      "source_sha256": "be913b4e10dfe42ec614fe49f257d780a36e4e37ba1fa95341f4fd72c478b38c",
+      "required_failure_in": []
+    },
+    {
+      "name": "inverse_factor_mutant",
+      "command": [
+        "/home/trevnorris/.elan/toolchains/leanprover--lean4---v4.33.0/bin/lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/snapshot/lean/inverse_factor_mutant.lean"
+      ],
+      "expected": "REJECTED",
+      "exit_status": 1,
+      "passed": true,
+      "seconds": 1.826,
+      "log": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/logs/inverse_factor_mutant.log",
+      "log_sha256": "c4f0c91b2ada5fc61ae6a7b28942bef2c0e4e849bf5481fbd0b4ba1aef99235f",
+      "output": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/snapshot/lean/inverse_factor_mutant.lean:3:48: error: unsolved goals\n\u22a2 False\n",
+      "source": "import S11ScatteringSensitivity\nopen S11ScatteringSensitivity S11ScatteringFlux Matrix\ntheorem contract_control : \u2016(4 : \u2102) - 0\u2016 = 1 := by\n  norm_num\n",
+      "source_sha256": "3d55301a44427dcc35c76c306ba9f16142058b1b41800ba25d0c4fbe01bf05e7",
+      "required_failure_in": "contract_control"
+    },
+    {
+      "name": "small_residual_large_error_positive",
+      "command": [
+        "/home/trevnorris/.elan/toolchains/leanprover--lean4---v4.33.0/bin/lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/snapshot/lean/small_residual_large_error_positive.lean"
+      ],
+      "expected": "PASS",
+      "exit_status": 0,
+      "passed": true,
+      "seconds": 1.826,
+      "log": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/logs/small_residual_large_error_positive.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output": "",
+      "source": "import S11ScatteringSensitivity\nopen S11ScatteringSensitivity S11ScatteringFlux Matrix\ntheorem contract_control : |(1 : \u211d) - 0| = 1 := by\n  norm_num\n",
+      "source_sha256": "1160c971342e6f435e45b0f3211d2e4c64f66fe19df71c0fa90c91b10add6832",
+      "required_failure_in": []
+    },
+    {
+      "name": "small_residual_large_error_mutant",
+      "command": [
+        "/home/trevnorris/.elan/toolchains/leanprover--lean4---v4.33.0/bin/lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/snapshot/lean/small_residual_large_error_mutant.lean"
+      ],
+      "expected": "REJECTED",
+      "exit_status": 1,
+      "passed": true,
+      "seconds": 1.826,
+      "log": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/logs/small_residual_large_error_mutant.log",
+      "log_sha256": "a2bb986a633e08d48449035290a3fc4d844d3c6f13f6a0d9d5c1bf75a1e21526",
+      "output": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/snapshot/lean/small_residual_large_error_mutant.lean:3:53: error: unsolved goals\n\u22a2 False\n",
+      "source": "import S11ScatteringSensitivity\nopen S11ScatteringSensitivity S11ScatteringFlux Matrix\ntheorem contract_control : |(1 : \u211d) - 0| = 1/1024 := by\n  norm_num\n",
+      "source_sha256": "7fce5b28b57f3cf072e089abd1920cdb42517a16658ee23b6ffc1f1861dfa060",
+      "required_failure_in": "contract_control"
+    },
+    {
+      "name": "row_column_scaling_positive",
+      "command": [
+        "/home/trevnorris/.elan/toolchains/leanprover--lean4---v4.33.0/bin/lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/snapshot/lean/row_column_scaling_positive.lean"
+      ],
+      "expected": "PASS",
+      "exit_status": 0,
+      "passed": true,
+      "seconds": 1.826,
+      "log": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/logs/row_column_scaling_positive.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output": "",
+      "source": "import S11ScatteringSensitivity\nopen S11ScatteringSensitivity S11ScatteringFlux Matrix\ntheorem contract_control : (1/2 : \u211d)*8*(3/4)-(1/2)*16 = -5 := by\n  norm_num only [scaling_witness]\n",
+      "source_sha256": "7cee5d2ce5ec678d59e581be8bd7aeb462768cf97376c7d2fa69424d3d89119e",
+      "required_failure_in": []
+    },
+    {
+      "name": "row_column_scaling_mutant",
+      "command": [
+        "/home/trevnorris/.elan/toolchains/leanprover--lean4---v4.33.0/bin/lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/snapshot/lean/row_column_scaling_mutant.lean"
+      ],
+      "expected": "REJECTED",
+      "exit_status": 1,
+      "passed": true,
+      "seconds": 1.824,
+      "log": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/logs/row_column_scaling_mutant.log",
+      "log_sha256": "4c75f2cf385b4302eea2771218457e2235b23cd8581cd3d42c07cfb4f6a3c525",
+      "output": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/snapshot/lean/row_column_scaling_mutant.lean:3:63: error: unsolved goals\n\u22a2 False\n",
+      "source": "import S11ScatteringSensitivity\nopen S11ScatteringSensitivity S11ScatteringFlux Matrix\ntheorem contract_control : (1/2 : \u211d)*8*(3/4)-(1/2)*16 = -10 := by\n  norm_num only [scaling_witness]\n",
+      "source_sha256": "527f7a0321d29ed018464e8ed4d3b3e895a210d688008ee49e623c46eacb8264",
+      "required_failure_in": "contract_control"
+    },
+    {
+      "name": "unscale_positive",
+      "command": [
+        "/home/trevnorris/.elan/toolchains/leanprover--lean4---v4.33.0/bin/lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/snapshot/lean/unscale_positive.lean"
+      ],
+      "expected": "PASS",
+      "exit_status": 0,
+      "passed": true,
+      "seconds": 1.775,
+      "log": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/logs/unscale_positive.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output": "",
+      "source": "import S11ScatteringSensitivity\nopen S11ScatteringSensitivity S11ScatteringFlux Matrix\ntheorem contract_control : (1/4 : \u211d)*(3-1) = 1/2 := by\n  norm_num only [unscale_witness]\n",
+      "source_sha256": "85a2837b2ff4d1f6aad8c3650bec00632ae185d5d0e5547f337dc50315972a5e",
+      "required_failure_in": []
+    },
+    {
+      "name": "unscale_mutant",
+      "command": [
+        "/home/trevnorris/.elan/toolchains/leanprover--lean4---v4.33.0/bin/lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/snapshot/lean/unscale_mutant.lean"
+      ],
+      "expected": "REJECTED",
+      "exit_status": 1,
+      "passed": true,
+      "seconds": 1.826,
+      "log": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/logs/unscale_mutant.log",
+      "log_sha256": "50bd6d52712f7d2c1192b1e016e85391700ac75ab26a9321d7cff63e37aa29f4",
+      "output": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/snapshot/lean/unscale_mutant.lean:3:50: error: unsolved goals\n\u22a2 False\n",
+      "source": "import S11ScatteringSensitivity\nopen S11ScatteringSensitivity S11ScatteringFlux Matrix\ntheorem contract_control : (1/4 : \u211d)*(3-1) = 2 := by\n  norm_num only [unscale_witness]\n",
+      "source_sha256": "28940263df47d31ed5e5ded658f3f79e950861d068316d3b9a1fb4e0c280528c",
+      "required_failure_in": "contract_control"
+    },
+    {
+      "name": "observation_factor_positive",
+      "command": [
+        "/home/trevnorris/.elan/toolchains/leanprover--lean4---v4.33.0/bin/lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/snapshot/lean/observation_factor_positive.lean"
+      ],
+      "expected": "PASS",
+      "exit_status": 0,
+      "passed": true,
+      "seconds": 1.778,
+      "log": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/logs/observation_factor_positive.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output": "",
+      "source": "import S11ScatteringSensitivity\nopen S11ScatteringSensitivity S11ScatteringFlux Matrix\ntheorem contract_control : mass (amplitude scalarC (scalarA 1) 1 - amplitude scalarC (scalarA 1) 0) = 3 := by\n  norm_num only [observed_error_witness]\n",
+      "source_sha256": "1e60e26f7e5daad197fda9145c7e7fd9317e34c5e2e143f818155e1bc70d9fd3",
+      "required_failure_in": []
+    },
+    {
+      "name": "observation_factor_mutant",
+      "command": [
+        "/home/trevnorris/.elan/toolchains/leanprover--lean4---v4.33.0/bin/lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/snapshot/lean/observation_factor_mutant.lean"
+      ],
+      "expected": "REJECTED",
+      "exit_status": 1,
+      "passed": true,
+      "seconds": 1.826,
+      "log": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/logs/observation_factor_mutant.log",
+      "log_sha256": "d5d83880ceeea7241a21fe4008b26d799536763cbf150e5c20d23eec75d59c3e",
+      "output": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/snapshot/lean/observation_factor_mutant.lean:3:107: error: unsolved goals\n\u22a2 False\n",
+      "source": "import S11ScatteringSensitivity\nopen S11ScatteringSensitivity S11ScatteringFlux Matrix\ntheorem contract_control : mass (amplitude scalarC (scalarA 1) 1 - amplitude scalarC (scalarA 1) 0) = 1 := by\n  norm_num only [observed_error_witness]\n",
+      "source_sha256": "1784a1ea158d38339b7bd678ff7ef3b613e13279097a6edd87105b80e5d4af58",
+      "required_failure_in": "contract_control"
+    },
+    {
+      "name": "affine_baseline_positive",
+      "command": [
+        "/home/trevnorris/.elan/toolchains/leanprover--lean4---v4.33.0/bin/lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/snapshot/lean/affine_baseline_positive.lean"
+      ],
+      "expected": "PASS",
+      "exit_status": 0,
+      "passed": true,
+      "seconds": 1.825,
+      "log": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/logs/affine_baseline_positive.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output": "",
+      "source": "import S11ScatteringSensitivity\nopen S11ScatteringSensitivity S11ScatteringFlux Matrix\ntheorem contract_control : flux (scalarJ 1) (amplitude scalarC (scalarA 1) 1) - flux (scalarJ 1) (amplitude scalarC (scalarA 1) 0) = 15 := by\n  norm_num only [affine_current_witness]\n",
+      "source_sha256": "717ac71fb96dfeef5cef7c5d03c5a0c8976d9996b46bff42cea86df1ea1308c4",
+      "required_failure_in": []
+    },
+    {
+      "name": "affine_baseline_mutant",
+      "command": [
+        "/home/trevnorris/.elan/toolchains/leanprover--lean4---v4.33.0/bin/lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/snapshot/lean/affine_baseline_mutant.lean"
+      ],
+      "expected": "REJECTED",
+      "exit_status": 1,
+      "passed": true,
+      "seconds": 1.825,
+      "log": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/logs/affine_baseline_mutant.log",
+      "log_sha256": "9cbb70e7d4d8734f76ac1fa3d302b29f5ff6ccc36efb93c7b434586a32e76fdf",
+      "output": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/snapshot/lean/affine_baseline_mutant.lean:3:138: error: unsolved goals\n\u22a2 False\n",
+      "source": "import S11ScatteringSensitivity\nopen S11ScatteringSensitivity S11ScatteringFlux Matrix\ntheorem contract_control : flux (scalarJ 1) (amplitude scalarC (scalarA 1) 1) - flux (scalarJ 1) (amplitude scalarC (scalarA 1) 0) = 9 := by\n  norm_num only [affine_current_witness]\n",
+      "source_sha256": "068d5c02fecb7cc42cea41fa00cf4b3c88a122b191c111b1d95a09500337fd1b",
+      "required_failure_in": "contract_control"
+    },
+    {
+      "name": "cross_term_positive",
+      "command": [
+        "/home/trevnorris/.elan/toolchains/leanprover--lean4---v4.33.0/bin/lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/snapshot/lean/cross_term_positive.lean"
+      ],
+      "expected": "PASS",
+      "exit_status": 0,
+      "passed": true,
+      "seconds": 1.827,
+      "log": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/logs/cross_term_positive.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output": "",
+      "source": "import S11ScatteringSensitivity\nopen S11ScatteringSensitivity S11ScatteringFlux Matrix\ntheorem contract_control : flux (scalarJ 1) (scalarA 3) - flux (scalarJ 1) (scalarA 2) = 5 := by\n  norm_num only [full_error_witness]\n",
+      "source_sha256": "b88c273f5c430640c315d2deb1f053965979e029ec070499a57b9c8e8674ecec",
+      "required_failure_in": []
+    },
+    {
+      "name": "cross_term_mutant",
+      "command": [
+        "/home/trevnorris/.elan/toolchains/leanprover--lean4---v4.33.0/bin/lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/snapshot/lean/cross_term_mutant.lean"
+      ],
+      "expected": "REJECTED",
+      "exit_status": 1,
+      "passed": true,
+      "seconds": 1.878,
+      "log": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/logs/cross_term_mutant.log",
+      "log_sha256": "fda5ac47c7e29496826105f070c09c5d876e962b26010fbf30a32a266d079da3",
+      "output": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/snapshot/lean/cross_term_mutant.lean:3:94: error: unsolved goals\n\u22a2 False\n",
+      "source": "import S11ScatteringSensitivity\nopen S11ScatteringSensitivity S11ScatteringFlux Matrix\ntheorem contract_control : flux (scalarJ 1) (scalarA 3) - flux (scalarJ 1) (scalarA 2) = 1 := by\n  norm_num only [full_error_witness]\n",
+      "source_sha256": "ef8793c0a023de460576441a3c34fddab62f54d866bcbdb74d357ca6495f3a3d",
+      "required_failure_in": "contract_control"
+    },
+    {
+      "name": "quadratic_error_positive",
+      "command": [
+        "/home/trevnorris/.elan/toolchains/leanprover--lean4---v4.33.0/bin/lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/snapshot/lean/quadratic_error_positive.lean"
+      ],
+      "expected": "PASS",
+      "exit_status": 0,
+      "passed": true,
+      "seconds": 1.876,
+      "log": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/logs/quadratic_error_positive.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output": "",
+      "source": "import S11ScatteringSensitivity\nopen S11ScatteringSensitivity S11ScatteringFlux Matrix\ntheorem contract_control : flux (scalarJ 1) (scalarA 3) - flux (scalarJ 1) (scalarA 2) = 5 := by\n  norm_num only [full_error_witness]\n",
+      "source_sha256": "b88c273f5c430640c315d2deb1f053965979e029ec070499a57b9c8e8674ecec",
+      "required_failure_in": []
+    },
+    {
+      "name": "quadratic_error_mutant",
+      "command": [
+        "/home/trevnorris/.elan/toolchains/leanprover--lean4---v4.33.0/bin/lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/snapshot/lean/quadratic_error_mutant.lean"
+      ],
+      "expected": "REJECTED",
+      "exit_status": 1,
+      "passed": true,
+      "seconds": 1.926,
+      "log": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/logs/quadratic_error_mutant.log",
+      "log_sha256": "fe8a6dd0fffdf14cb4751fcadc2b9d2622a099690dabc5c8a3f70802ca7ea7b8",
+      "output": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/snapshot/lean/quadratic_error_mutant.lean:3:94: error: unsolved goals\n\u22a2 False\n",
+      "source": "import S11ScatteringSensitivity\nopen S11ScatteringSensitivity S11ScatteringFlux Matrix\ntheorem contract_control : flux (scalarJ 1) (scalarA 3) - flux (scalarJ 1) (scalarA 2) = 4 := by\n  norm_num only [full_error_witness]\n",
+      "source_sha256": "8975883103437ebd0d4b0b4452ced290342f37272fe460086e81eadcb285412b",
+      "required_failure_in": "contract_control"
+    },
+    {
+      "name": "current_change_positive",
+      "command": [
+        "/home/trevnorris/.elan/toolchains/leanprover--lean4---v4.33.0/bin/lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/snapshot/lean/current_change_positive.lean"
+      ],
+      "expected": "PASS",
+      "exit_status": 0,
+      "passed": true,
+      "seconds": 1.876,
+      "log": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/logs/current_change_positive.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output": "",
+      "source": "import S11ScatteringSensitivity\nopen S11ScatteringSensitivity S11ScatteringFlux Matrix\ntheorem contract_control : flux (scalarJ 2) (scalarA 3) - flux (scalarJ 1) (scalarA 3) = 9 := by\n  norm_num only [current_error_witness]\n",
+      "source_sha256": "5f4480bebc7f76912eba7dd6ae99126bb928cceb104e54ec23d4d802e1d345b5",
+      "required_failure_in": []
+    },
+    {
+      "name": "current_change_mutant",
+      "command": [
+        "/home/trevnorris/.elan/toolchains/leanprover--lean4---v4.33.0/bin/lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/snapshot/lean/current_change_mutant.lean"
+      ],
+      "expected": "REJECTED",
+      "exit_status": 1,
+      "passed": true,
+      "seconds": 1.876,
+      "log": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/logs/current_change_mutant.log",
+      "log_sha256": "68c99243a4b90e17bdeb58e3bf6a43e5f87a65769854643fec21a2e4465d2546",
+      "output": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/snapshot/lean/current_change_mutant.lean:3:94: error: unsolved goals\n\u22a2 False\n",
+      "source": "import S11ScatteringSensitivity\nopen S11ScatteringSensitivity S11ScatteringFlux Matrix\ntheorem contract_control : flux (scalarJ 2) (scalarA 3) - flux (scalarJ 1) (scalarA 3) = 0 := by\n  norm_num only [current_error_witness]\n",
+      "source_sha256": "3f4994de1a2b6d765c9c7f45432f459e860ca7ca98474a2731edc8ce27367cd8",
+      "required_failure_in": "contract_control"
+    },
+    {
+      "name": "full_complex_current_positive",
+      "command": [
+        "/home/trevnorris/.elan/toolchains/leanprover--lean4---v4.33.0/bin/lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/snapshot/lean/full_complex_current_positive.lean"
+      ],
+      "expected": "PASS",
+      "exit_status": 0,
+      "passed": true,
+      "seconds": 1.875,
+      "log": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/logs/full_complex_current_positive.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output": "",
+      "source": "import S11ScatteringSensitivity\nopen S11ScatteringSensitivity S11ScatteringFlux Matrix\ntheorem contract_control : flux fullJ complexA = 4 := by\n  norm_num only [complex_current_witness]\n",
+      "source_sha256": "f1f813b673829fec8ff5851e794825625a44cb9f77523d42fc87cc75aa7be061",
+      "required_failure_in": []
+    },
+    {
+      "name": "full_complex_current_mutant",
+      "command": [
+        "/home/trevnorris/.elan/toolchains/leanprover--lean4---v4.33.0/bin/lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/snapshot/lean/full_complex_current_mutant.lean"
+      ],
+      "expected": "REJECTED",
+      "exit_status": 1,
+      "passed": true,
+      "seconds": 1.876,
+      "log": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/logs/full_complex_current_mutant.log",
+      "log_sha256": "e3c841c432959079098ea441e6360574851ed9573edf7ec7b87169eb7958eacf",
+      "output": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/snapshot/lean/full_complex_current_mutant.lean:3:54: error: unsolved goals\n\u22a2 False\n",
+      "source": "import S11ScatteringSensitivity\nopen S11ScatteringSensitivity S11ScatteringFlux Matrix\ntheorem contract_control : flux fullJ complexA = 2 := by\n  norm_num only [complex_current_witness]\n",
+      "source_sha256": "d22b24a0aad3a246ac219406d9a700f846f85b71ba58cc5617545c79bb3334bb",
+      "required_failure_in": "contract_control"
+    },
+    {
+      "name": "normalized_error_positive",
+      "command": [
+        "/home/trevnorris/.elan/toolchains/leanprover--lean4---v4.33.0/bin/lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/snapshot/lean/normalized_error_positive.lean"
+      ],
+      "expected": "PASS",
+      "exit_status": 0,
+      "passed": true,
+      "seconds": 1.927,
+      "log": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/logs/normalized_error_positive.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output": "",
+      "source": "import S11ScatteringSensitivity\nopen S11ScatteringSensitivity S11ScatteringFlux Matrix\ntheorem contract_control : |(3 : \u211d)/2-2/4| = 1 := by\n  norm_num only [normalized_error_witness]\n",
+      "source_sha256": "da77e013d8ed35fc8acbc643c147fe739c5a7312f95a9a1e4623de618558a7d3",
+      "required_failure_in": []
+    },
+    {
+      "name": "normalized_error_mutant",
+      "command": [
+        "/home/trevnorris/.elan/toolchains/leanprover--lean4---v4.33.0/bin/lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/snapshot/lean/normalized_error_mutant.lean"
+      ],
+      "expected": "REJECTED",
+      "exit_status": 1,
+      "passed": true,
+      "seconds": 1.876,
+      "log": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/logs/normalized_error_mutant.log",
+      "log_sha256": "a10e250288a4906dabf0b7b967f42452270caca21912f28e6a38395560a6448f",
+      "output": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/snapshot/lean/normalized_error_mutant.lean:3:52: error: unsolved goals\n\u22a2 False\n",
+      "source": "import S11ScatteringSensitivity\nopen S11ScatteringSensitivity S11ScatteringFlux Matrix\ntheorem contract_control : |(3 : \u211d)/2-2/4| = 1/2 := by\n  norm_num only [normalized_error_witness]\n",
+      "source_sha256": "f045b46424f9af6098372b92e05c01a00a52ada83fab491a6ed8fd9a1c711171",
+      "required_failure_in": "contract_control"
+    },
+    {
+      "name": "denominator_change_positive",
+      "command": [
+        "/home/trevnorris/.elan/toolchains/leanprover--lean4---v4.33.0/bin/lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/snapshot/lean/denominator_change_positive.lean"
+      ],
+      "expected": "PASS",
+      "exit_status": 0,
+      "passed": true,
+      "seconds": 1.875,
+      "log": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/logs/denominator_change_positive.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output": "",
+      "source": "import S11ScatteringSensitivity\nopen S11ScatteringSensitivity S11ScatteringFlux Matrix\ntheorem contract_control : |(2 : \u211d)/2-2/4| = 1/2 := by\n  norm_num only [denominator_only_witness]\n",
+      "source_sha256": "717b6a30c8be4491aa659f03ed010c34500c02e53b7b22366af39e8c650acd01",
+      "required_failure_in": []
+    },
+    {
+      "name": "denominator_change_mutant",
+      "command": [
+        "/home/trevnorris/.elan/toolchains/leanprover--lean4---v4.33.0/bin/lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/snapshot/lean/denominator_change_mutant.lean"
+      ],
+      "expected": "REJECTED",
+      "exit_status": 1,
+      "passed": true,
+      "seconds": 1.876,
+      "log": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/logs/denominator_change_mutant.log",
+      "log_sha256": "faf3330d7285f3d605abd9fa8e602e3ffda1ebd1e810596357cde56f668dd8e8",
+      "output": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/snapshot/lean/denominator_change_mutant.lean:3:50: error: unsolved goals\n\u22a2 False\n",
+      "source": "import S11ScatteringSensitivity\nopen S11ScatteringSensitivity S11ScatteringFlux Matrix\ntheorem contract_control : |(2 : \u211d)/2-2/4| = 0 := by\n  norm_num only [denominator_only_witness]\n",
+      "source_sha256": "f590c0c6a87e3f62d06e3721ed309a14a81fd6a6322a2f2aad772eb6ec2f5950",
+      "required_failure_in": "contract_control"
+    },
+    {
+      "name": "denominator_lower_bound_positive",
+      "command": [
+        "/home/trevnorris/.elan/toolchains/leanprover--lean4---v4.33.0/bin/lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/snapshot/lean/denominator_lower_bound_positive.lean"
+      ],
+      "expected": "PASS",
+      "exit_status": 0,
+      "passed": true,
+      "seconds": 1.875,
+      "log": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/logs/denominator_lower_bound_positive.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output": "",
+      "source": "import S11ScatteringSensitivity\nopen S11ScatteringSensitivity S11ScatteringFlux Matrix\ntheorem contract_control : |(1 : \u211d)/(1/4)-0/(1/4)| = 4 := by\n  norm_num only [denominator_scale_witness]\n",
+      "source_sha256": "5706a5d8ca63f86604110a8e1fb4f78bcbedf822143e7d5febc984dad37df71b",
+      "required_failure_in": []
+    },
+    {
+      "name": "denominator_lower_bound_mutant",
+      "command": [
+        "/home/trevnorris/.elan/toolchains/leanprover--lean4---v4.33.0/bin/lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/snapshot/lean/denominator_lower_bound_mutant.lean"
+      ],
+      "expected": "REJECTED",
+      "exit_status": 1,
+      "passed": true,
+      "seconds": 1.93,
+      "log": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/logs/denominator_lower_bound_mutant.log",
+      "log_sha256": "d1fcc53b304ca37a94aa39e98e7e160342cd54c32483989996d335a81bb0250c",
+      "output": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/snapshot/lean/denominator_lower_bound_mutant.lean:3:58: error: unsolved goals\n\u22a2 False\n",
+      "source": "import S11ScatteringSensitivity\nopen S11ScatteringSensitivity S11ScatteringFlux Matrix\ntheorem contract_control : |(1 : \u211d)/(1/4)-0/(1/4)| = 1 := by\n  norm_num only [denominator_scale_witness]\n",
+      "source_sha256": "6801ba41f2962911be1329f0bc5e567df4d25ed2cc9bc775c0c2333cd547559c",
+      "required_failure_in": "contract_control"
+    },
+    {
+      "name": "negative_denominator_positive",
+      "command": [
+        "/home/trevnorris/.elan/toolchains/leanprover--lean4---v4.33.0/bin/lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/snapshot/lean/negative_denominator_positive.lean"
+      ],
+      "expected": "PASS",
+      "exit_status": 0,
+      "passed": true,
+      "seconds": 1.927,
+      "log": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/logs/negative_denominator_positive.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output": "",
+      "source": "import S11ScatteringSensitivity\nopen S11ScatteringSensitivity S11ScatteringFlux Matrix\ntheorem contract_control : |(3 : \u211d)/(-2)-2/(-4)| = 1 := by\n  norm_num only [signed_fraction_witness]\n",
+      "source_sha256": "12284d02659c0929c6c2325338223fd091887bc3d449e994caa2b775a2d53643",
+      "required_failure_in": []
+    },
+    {
+      "name": "negative_denominator_mutant",
+      "command": [
+        "/home/trevnorris/.elan/toolchains/leanprover--lean4---v4.33.0/bin/lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/snapshot/lean/negative_denominator_mutant.lean"
+      ],
+      "expected": "REJECTED",
+      "exit_status": 1,
+      "passed": true,
+      "seconds": 1.927,
+      "log": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/logs/negative_denominator_mutant.log",
+      "log_sha256": "b80052e0286284b7edfe6a16277cc0c077b9365629dd33ec7a8f5611855c2604",
+      "output": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/snapshot/lean/negative_denominator_mutant.lean:3:56: error: unsolved goals\n\u22a2 False\n",
+      "source": "import S11ScatteringSensitivity\nopen S11ScatteringSensitivity S11ScatteringFlux Matrix\ntheorem contract_control : |(3 : \u211d)/(-2)-2/(-4)| = 0 := by\n  norm_num only [signed_fraction_witness]\n",
+      "source_sha256": "00e3305bea2c430c7039f7c0bfd00d1e732d9b6d63a2ddefadbd5704155851d2",
+      "required_failure_in": "contract_control"
+    },
+    {
+      "name": "denominator_margin_positive",
+      "command": [
+        "/home/trevnorris/.elan/toolchains/leanprover--lean4---v4.33.0/bin/lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/snapshot/lean/denominator_margin_positive.lean"
+      ],
+      "expected": "PASS",
+      "exit_status": 0,
+      "passed": true,
+      "seconds": 1.876,
+      "log": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/logs/denominator_margin_positive.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output": "",
+      "source": "import S11ScatteringSensitivity\nopen S11ScatteringSensitivity S11ScatteringFlux Matrix\ntheorem contract_control : |(2 : \u211d)|-1 = 1 := by\n  norm_num only [positive_margin_witness]\n",
+      "source_sha256": "75622c6276a2ca7167ee456d274ab14cae5f4c238beada57d1992456f500e042",
+      "required_failure_in": []
+    },
+    {
+      "name": "denominator_margin_mutant",
+      "command": [
+        "/home/trevnorris/.elan/toolchains/leanprover--lean4---v4.33.0/bin/lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/snapshot/lean/denominator_margin_mutant.lean"
+      ],
+      "expected": "REJECTED",
+      "exit_status": 1,
+      "passed": true,
+      "seconds": 1.876,
+      "log": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/logs/denominator_margin_mutant.log",
+      "log_sha256": "984a31c7efee002f11b6eb2724a01d3f2e83ee38e3967ab754790f2f99990518",
+      "output": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/snapshot/lean/denominator_margin_mutant.lean:3:46: error: unsolved goals\n\u22a2 False\n",
+      "source": "import S11ScatteringSensitivity\nopen S11ScatteringSensitivity S11ScatteringFlux Matrix\ntheorem contract_control : |(2 : \u211d)|-1 = 2 := by\n  norm_num only [positive_margin_witness]\n",
+      "source_sha256": "99a34a15c08b8d6b7b122d895f15c06208d9ab56b2b633b7b3718d7a0a476354",
+      "required_failure_in": "contract_control"
+    },
+    {
+      "name": "zero_margin_positive",
+      "command": [
+        "/home/trevnorris/.elan/toolchains/leanprover--lean4---v4.33.0/bin/lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/snapshot/lean/zero_margin_positive.lean"
+      ],
+      "expected": "PASS",
+      "exit_status": 0,
+      "passed": true,
+      "seconds": 1.977,
+      "log": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/logs/zero_margin_positive.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output": "",
+      "source": "import S11ScatteringSensitivity\nopen S11ScatteringSensitivity S11ScatteringFlux Matrix\ntheorem contract_control : |(0 : \u211d)-1| = 1 := by\n  norm_num only [zero_margin_witness]\n",
+      "source_sha256": "819b40002e23f09d9d2dbbf60571a590c88e5e7e795d9f396008f59b7d345691",
+      "required_failure_in": []
+    },
+    {
+      "name": "zero_margin_mutant",
+      "command": [
+        "/home/trevnorris/.elan/toolchains/leanprover--lean4---v4.33.0/bin/lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/snapshot/lean/zero_margin_mutant.lean"
+      ],
+      "expected": "REJECTED",
+      "exit_status": 1,
+      "passed": true,
+      "seconds": 1.876,
+      "log": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/logs/zero_margin_mutant.log",
+      "log_sha256": "48779afac97427086bb3afb8157bec63ea9f68c87c5944170918e695c439fa47",
+      "output": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/snapshot/lean/zero_margin_mutant.lean:3:46: error: unsolved goals\n\u22a2 False\n",
+      "source": "import S11ScatteringSensitivity\nopen S11ScatteringSensitivity S11ScatteringFlux Matrix\ntheorem contract_control : |(0 : \u211d)-1| = 0 := by\n  norm_num only [zero_margin_witness]\n",
+      "source_sha256": "ff857e9e4874e3240584f07cd037c253723e93a4f1939e27f9ccdbfa5ac2c1ab",
+      "required_failure_in": "contract_control"
+    },
+    {
+      "name": "critical_inverse_margin_positive",
+      "command": [
+        "/home/trevnorris/.elan/toolchains/leanprover--lean4---v4.33.0/bin/lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/snapshot/lean/critical_inverse_margin_positive.lean"
+      ],
+      "expected": "PASS",
+      "exit_status": 0,
+      "passed": true,
+      "seconds": 1.877,
+      "log": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/logs/critical_inverse_margin_positive.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output": "",
+      "source": "import S11ScatteringSensitivity\nopen S11ScatteringSensitivity S11ScatteringFlux Matrix\ntheorem contract_control : (1 : \u211d)-1 = 0 := by\n  norm_num\n",
+      "source_sha256": "321b61d9ab90962856c9ed6789eb629a743f5c498c734602e7f6dc16f78d6a65",
+      "required_failure_in": []
+    },
+    {
+      "name": "critical_inverse_margin_mutant",
+      "command": [
+        "/home/trevnorris/.elan/toolchains/leanprover--lean4---v4.33.0/bin/lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/snapshot/lean/critical_inverse_margin_mutant.lean"
+      ],
+      "expected": "REJECTED",
+      "exit_status": 1,
+      "passed": true,
+      "seconds": 1.825,
+      "log": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/logs/critical_inverse_margin_mutant.log",
+      "log_sha256": "ee59bc31b4b1d93f9b124e70b47f470521ffa056ab4e30fc46d1f98f6f7ccdde",
+      "output": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/snapshot/lean/critical_inverse_margin_mutant.lean:3:44: error: unsolved goals\n\u22a2 False\n",
+      "source": "import S11ScatteringSensitivity\nopen S11ScatteringSensitivity S11ScatteringFlux Matrix\ntheorem contract_control : (1 : \u211d)-1 = 1 := by\n  norm_num\n",
+      "source_sha256": "d2ccb8c4de58a9e750793fec0d19469388b38f6374bc9b7e80824a3ad57e6314",
+      "required_failure_in": "contract_control"
+    },
+    {
+      "name": "actual_residual_bound_positive",
+      "command": [
+        "/home/trevnorris/.elan/toolchains/leanprover--lean4---v4.33.0/bin/lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/snapshot/lean/actual_residual_bound_positive.lean"
+      ],
+      "expected": "PASS",
+      "exit_status": 0,
+      "passed": true,
+      "seconds": 1.928,
+      "log": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/logs/actual_residual_bound_positive.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output": "",
+      "source": "import S11ScatteringSensitivity\nopen S11ScatteringSensitivity S11ScatteringFlux Matrix\nexample (b x : \u2102) : \u2016x-b\u2016 \u2264 1*\u2016residual (ContinuousLinearMap.id \u2102 \u2102) b x\u2016 := identity_residual_positive b x\n",
+      "source_sha256": "891ccdeffe624b6f8faf7122278ad29f67a0e5eb3886c7efe1ab2d4e191c62b1",
+      "required_failure_in": []
+    },
+    {
+      "name": "actual_denominator_margin_positive",
+      "command": [
+        "/home/trevnorris/.elan/toolchains/leanprover--lean4---v4.33.0/bin/lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/snapshot/lean/actual_denominator_margin_positive.lean"
+      ],
+      "expected": "PASS",
+      "exit_status": 0,
+      "passed": true,
+      "seconds": 1.825,
+      "log": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/logs/actual_denominator_margin_positive.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output": "",
+      "source": "import S11ScatteringSensitivity\nopen S11ScatteringSensitivity S11ScatteringFlux Matrix\nexample : (1 : \u211d) \u2260 0 := nonzero_margin_positive\n",
+      "source_sha256": "d8bccce440f44803104753e5fa98011238dcebc78ab0101253468273dd7e86fe",
+      "required_failure_in": []
+    },
+    {
+      "name": "actual_signed_fraction_positive",
+      "command": [
+        "/home/trevnorris/.elan/toolchains/leanprover--lean4---v4.33.0/bin/lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/snapshot/lean/actual_signed_fraction_positive.lean"
+      ],
+      "expected": "PASS",
+      "exit_status": 0,
+      "passed": true,
+      "seconds": 1.825,
+      "log": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/logs/actual_signed_fraction_positive.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output": "",
+      "source": "import S11ScatteringSensitivity\nopen S11ScatteringSensitivity S11ScatteringFlux Matrix\nexample : |(3 : \u211d)/(-2)-2/(-4)| \u2264 |(3 : \u211d)-2|/2 + |(2 : \u211d)| * |(-2 : \u211d)-(-4)|/2^2 := signed_fraction_positive\n",
+      "source_sha256": "05f89e7af0d5395ad305e8effed9926eb7754971020cf4e16d828a6cb06841c0",
+      "required_failure_in": []
+    },
+    {
+      "name": "empty_amplitude_positive",
+      "command": [
+        "/home/trevnorris/.elan/toolchains/leanprover--lean4---v4.33.0/bin/lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/snapshot/lean/empty_amplitude_positive.lean"
+      ],
+      "expected": "PASS",
+      "exit_status": 0,
+      "passed": true,
+      "seconds": 1.825,
+      "log": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/logs/empty_amplitude_positive.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output": "",
+      "source": "import S11ScatteringSensitivity\nopen S11ScatteringSensitivity S11ScatteringFlux Matrix\nexample (a : Fin 0 \u2192 \u2102) : mass a = 0 := by simp [mass]\n",
+      "source_sha256": "b8c52fcb94c83eaa77b0330eb1942dc83de0108a1f38b1b62cd5a09244fb4207",
+      "required_failure_in": []
+    },
+    {
+      "name": "actual_zero_residual_positive",
+      "command": [
+        "/home/trevnorris/.elan/toolchains/leanprover--lean4---v4.33.0/bin/lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/snapshot/lean/actual_zero_residual_positive.lean"
+      ],
+      "expected": "PASS",
+      "exit_status": 0,
+      "passed": true,
+      "seconds": 2.027,
+      "log": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/logs/actual_zero_residual_positive.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output": "",
+      "source": "import S11ScatteringSensitivity\nopen S11ScatteringSensitivity S11ScatteringFlux Matrix\nexample (A : \u2102 \u2243L[\u2102] \u2102) (b : \u2102) : residual (A : \u2102 \u2192L[\u2102] \u2102) b (A.symm b) = 0 := exact_residual A b\n",
+      "source_sha256": "5bc64928ae8bbd91034689152c310806bfd98204e8db9c606ddacdf27e69a63e",
+      "required_failure_in": []
+    },
+    {
+      "name": "actual_flux_bound_positive",
+      "command": [
+        "/home/trevnorris/.elan/toolchains/leanprover--lean4---v4.33.0/bin/lean",
+        "-j1",
+        "-M4096",
+        "-DwarningAsError=true",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/snapshot/lean/actual_flux_bound_positive.lean"
+      ],
+      "expected": "PASS",
+      "exit_status": 0,
+      "passed": true,
+      "seconds": 1.825,
+      "log": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence/logs/actual_flux_bound_positive.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output": "",
+      "source": "import S11ScatteringSensitivity\nopen S11ScatteringSensitivity S11ScatteringFlux Matrix\nexample : |flux (scalarJ 1) (scalarA 3)-flux (scalarJ 1) (scalarA 1)| \u2264 currentBudget 1 (mass (scalarA 3 - scalarA 1)) (scalarA 1) := flux_distance_budget (scalarJ 1) (by norm_num) (by intro i j; norm_num [scalarJ]) _ _ (le_refl _)\n",
+      "source_sha256": "40233adf3d880b1a36f2458bc95d53bfcf24fa9de79a0a306e45eef91c3c25ab",
+      "required_failure_in": []
+    }
+  ],
+  "resources": {
+    "lean_workers": 1,
+    "lean_allocator_mib": 4096,
+    "per_process_seconds": 180,
+    "outer_guard": "2 GiB/no swap/one CPU; receipt in host guard directory"
+  },
+  "limits": [
+    "No canonical source-replacement mutations.",
+    "Fresh local objects; pinned external transitive cache baseline.",
+    "No physical inverse, continuum-error or scattering certificate."
+  ],
+  "source_sha256": {
+    "lean/lean-toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+    "lean/s11/S11AnalyticError/Stability.lean": "9395a1a1f574c85e8bdf6346657ec7575f2bba483e4e13fb5a648b33f93d07dd",
+    "lean/s11/S11ScatteringSensitivity/Fraction.lean": "5ab6f0d549a62c7175bfe5821b5934026e6a92c3a0f3e0942ffa16079432e106",
+    "_measurements/S11_lean_sensitivity_contract_check.py": "5f599887268e27452657e78820fb2cc3e9ef57bf4ac5a57faa030a3a4e46d112",
+    "lean/lakefile.toml": "2dd99ce804fbeb5a4a07843d00a25c9c3d4f41052ff884b6b4bf8e04cf60a3a2",
+    "lean/s11/S11ScatteringSensitivity/Controls.lean": "6cf8137b728e7e21ec929b32a73e8ea82560cddc5ad16302b36180788de0ef15",
+    "lean/s11/S11ScatteringSensitivity/Pipeline.lean": "40f3a10dd0b363836682fb5d17c1c597aa58ce8672de29acd784afc8f8f5ff04",
+    "lean/s11/S11ScatteringSensitivity/Residual.lean": "24fbb3e9392f9de8bdb3e7e520b218e5719d7a894c85a7c7b27563b64a0a3b23",
+    "lean/lake-manifest.json": "91fd5318cdc35e4044d6e059c6ef73d94b955d27adf8a5860b07ec92add9377e",
+    "_measurements/S11_lean_sensitivity_source_check.py": "e085831761d09d9c0bf7b2d2381d88521b661ec9bf48225b89c02ab621fe5204",
+    "lean/s11/S11ScatteringSensitivity/Current.lean": "f015de108eb163e7022bba23f95480f04917727aa52c09abda9955de9215dd1d",
+    "lean/verify.py": "83a61936bc0c9a49ec5337a27b263aff94f9a61779bd118937d1ccfb884458f7",
+    "lean/s11/S11ScatteringFlux/Current.lean": "bfd5266214299b650865b4d8f6f4f8da630380ef78f81ded0ba592c5fdb6c0d5",
+    "lean/s11/S11ScatteringSensitivity.lean": "e71b94849104835f3d826b6174ee86564e12689c22ec1f6fe608e830c8d10a6b"
+  },
+  "dependencies": {
+    "packages": [
+      {
+        "name": "Physlib",
+        "commit": "8b2b23701c07409f882c49e0bd290a214e44450c"
+      },
+      {
+        "name": "mathlib",
+        "commit": "db584cd6d46c92f209a44c0f1c829460d327499d"
+      },
+      {
+        "name": "\u00abdoc-gen4\u00bb",
+        "commit": "aceca4eeb5a79092eabefaa75fcb72b701d02205"
+      },
+      {
+        "name": "plausible",
+        "commit": "b7eb3304aeae834b12dda98993a37f6a41f6f0bb"
+      },
+      {
+        "name": "LeanSearchClient",
+        "commit": "5f4d51b81cbd3f6b32b156bfad9056621a040404"
+      },
+      {
+        "name": "importGraph",
+        "commit": "16f02aa7642864af59f1ff0e384a015994db9118"
+      },
+      {
+        "name": "proofwidgets",
+        "commit": "4be2e3d5087eeb272cf5a8853b8f9dd025ef5957"
+      },
+      {
+        "name": "aesop",
+        "commit": "3448c0bcc5ce01b2d1546e483ec3620e32df3d0e"
+      },
+      {
+        "name": "Qq",
+        "commit": "92c15be17b7caf78c2ad767ec40f89052d908d81"
+      },
+      {
+        "name": "batteries",
+        "commit": "4488d40d070b9700d4d5a6aa342f0d40c31b2a2d"
+      },
+      {
+        "name": "leansqlite",
+        "commit": "6168b7549738a19bc837a1625c60c5d1e5dd8aeb"
+      },
+      {
+        "name": "Cli",
+        "commit": "6130a47896ce867c6a4a55373441e59e565bad0f"
+      },
+      {
+        "name": "UnicodeBasic",
+        "commit": "37e7d8cb7316a88cd3e91208385c9ec6ae780019"
+      },
+      {
+        "name": "BibtexQuery",
+        "commit": "852edafa268eb038a7158551fd580ee8433847b0"
+      },
+      {
+        "name": "MD4Lean",
+        "commit": "31907cc18f48a95384f99cee5582c00fb39e0f67"
+      }
+    ],
+    "lean_version": "Lean (version 4.33.0, x86_64-unknown-linux-gnu, commit d8b18978322de05a8f3dba51ef03cf5461676c17, Release)"
+  },
+  "direct_imports": {
+    "Mathlib.Analysis.Normed.Operator.Banach": {
+      "object_path": "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/Normed/Operator/Banach.olean",
+      "object_sha256": "5364912dd7387f769bf95b6cd31e5771bd2635900b961624f83ed8e41d32aa6e",
+      "source_path": "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/packages/mathlib/Mathlib/Analysis/Normed/Operator/Banach.lean",
+      "source_sha256": "32f57311b073ae8832545b3265c90f5eb4147ceca326e371c77b0ac8dee6a2d7"
+    },
+    "Mathlib.Analysis.SpecificLimits.Normed": {
+      "object_path": "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/SpecificLimits/Normed.olean",
+      "object_sha256": "ddeafa6978d30e920710f39a336030c98c0f2af390c0f05ce7b961a612d28fc0",
+      "source_path": "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/packages/mathlib/Mathlib/Analysis/SpecificLimits/Normed.lean",
+      "source_sha256": "113aaf52a8970f3d5731b3bef38b5eb29be69585d68fdd5fc22f4868fa9f35e6"
+    },
+    "Mathlib.Tactic": {
+      "object_path": "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Tactic.olean",
+      "object_sha256": "c71aaaefb337826cd40ede82fd5f374299ece9c68476faca676474067b64ca7f",
+      "source_path": "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/packages/mathlib/Mathlib/Tactic.lean",
+      "source_sha256": "6ec9a1714e9fa472f7e5614792f1aa5a65f360ec56688b0dc765d1bee2e1bdd5"
+    },
+    "Mathlib.LinearAlgebra.Matrix.ConjTranspose": {
+      "object_path": "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/LinearAlgebra/Matrix/ConjTranspose.olean",
+      "object_sha256": "1ac34e9f98f578907ac2620d109d45edb9faabc8a91b329ab0af4cc7cf356bbf",
+      "source_path": "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/packages/mathlib/Mathlib/LinearAlgebra/Matrix/ConjTranspose.lean",
+      "source_sha256": "10ace10899567db7c2ccd38c0e89e3bdca2261494975a42d3b1a5535c9e3b1b6"
+    },
+    "Mathlib.Data.Complex.Basic": {
+      "object_path": "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Data/Complex/Basic.olean",
+      "object_sha256": "f0dd349f6e747bb17cba310aed12ba9f0d4bd4a136baba6b576eb76146b0a992",
+      "source_path": "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/packages/mathlib/Mathlib/Data/Complex/Basic.lean",
+      "source_sha256": "e279bd6369e83ebf6716e17a8f38c81c812020753472cac5e7ae2a501790b760"
+    },
+    "Mathlib.Tactic.Ring": {
+      "object_path": "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Tactic/Ring.olean",
+      "object_sha256": "592377cbe645eff5792e1f62acbe0942fb9426841af93b4809cf468f3d79a99c",
+      "source_path": "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/packages/mathlib/Mathlib/Tactic/Ring.lean",
+      "source_sha256": "d3ef5c49ebbd1108ce3f935e5ad95485e143abf02f28c027dba4bb6f3be8196e"
+    },
+    "Mathlib.Tactic.Linarith": {
+      "object_path": "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Tactic/Linarith.olean",
+      "object_sha256": "d1d8e0c2d0421f98f32ac107c9a673d1254a6f53ce2f709f8a4a9d1ae9676bc3",
+      "source_path": "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/packages/mathlib/Mathlib/Tactic/Linarith.lean",
+      "source_sha256": "0581fd9f80f34d728ad628e7c1fb5a93d36cb9cb48d469fbc797869e83ebe0a6"
+    },
+    "Mathlib.Analysis.Complex.Basic": {
+      "object_path": "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/Complex/Basic.olean",
+      "object_sha256": "1426b1a1a073fbdbf73c37f82a82f8cce3773b3a12a70389049e1f8aba412998",
+      "source_path": "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/packages/mathlib/Mathlib/Analysis/Complex/Basic.lean",
+      "source_sha256": "a3bcb36c68213d371e7a48bc84c2b70b6595fdf7de424fe1f84b98c95e2f39db"
+    },
+    "Mathlib.Analysis.Normed.Operator.Basic": {
+      "object_path": "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/Normed/Operator/Basic.olean",
+      "object_sha256": "6e05953e1b277eb8f362c902d5dfce730fde66371aab4d0b55a48adccffbbbcd",
+      "source_path": "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/packages/mathlib/Mathlib/Analysis/Normed/Operator/Basic.lean",
+      "source_sha256": "18f967ad36db74f73667ac7bdef2a404d77226a7d33cbdef33d415e5b3e4c389"
+    },
+    "Mathlib.Data.Real.Basic": {
+      "object_path": "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Data/Real/Basic.olean",
+      "object_sha256": "6c7095c3f9f475831b4cd10f28ba2e7cea04cdbda31309df15a47924eac06413",
+      "source_path": "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/packages/mathlib/Mathlib/Data/Real/Basic.lean",
+      "source_sha256": "b1dde0e82be30e8a9ca87b23c46d04afc92be61818622ba6d4603daa4d4a9f70"
+    },
+    "Mathlib.Tactic.FieldSimp": {
+      "object_path": "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Tactic/FieldSimp.olean",
+      "object_sha256": "77ba8e64c4d837ef6f1c55ab4d3aca329167afc6c1f8a11cc8b89b3a183f2e47",
+      "source_path": "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/packages/mathlib/Mathlib/Tactic/FieldSimp.lean",
+      "source_sha256": "924a11d74ca2851409f1d78284affbd60c21c9d54ac5bb4fb4676f17cbecb679"
+    },
+    "Mathlib.LinearAlgebra.Matrix.Notation": {
+      "object_path": "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/LinearAlgebra/Matrix/Notation.olean",
+      "object_sha256": "cf02f4b30552c3a6ef4c98b91771a75c637de1fbf7428f1b9e88be0f5e43c536",
+      "source_path": "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/packages/mathlib/Mathlib/LinearAlgebra/Matrix/Notation.lean",
+      "source_sha256": "0a5b11bff151565fa33a4b7faf0e20d4bf2d27075f98f88a0a9e9e25b40e2940"
+    },
+    "Mathlib.Algebra.BigOperators.Fin": {
+      "object_path": "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Algebra/BigOperators/Fin.olean",
+      "object_sha256": "05c8903563ca8f8b875770b543bd3f1640c61d9f098ac808efd0e03c16c52beb",
+      "source_path": "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/packages/mathlib/Mathlib/Algebra/BigOperators/Fin.lean",
+      "source_sha256": "4fe78cba9cdeac4eb8badbdd6359b055031900906fb94f3e51aba6d81451dbd5"
+    }
+  },
+  "order": [
+    "S11AnalyticError.Stability",
+    "S11ScatteringSensitivity.Residual",
+    "S11ScatteringFlux.Current",
+    "S11ScatteringSensitivity.Current",
+    "S11ScatteringSensitivity.Fraction",
+    "S11ScatteringSensitivity.Pipeline",
+    "S11ScatteringSensitivity.Controls",
+    "S11ScatteringSensitivity"
+  ],
+  "run_directory": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run6/evidence",
+  "native_report_sha256": "2bc6a25e6dfa10cf50d942b47db539ea16356433287be5af1fb9cb483461f8e1",
+  "axiom_audits": 51,
+  "objects": {
+    "S11ScatteringSensitivity.olean": "e6643ad75ce50772248c7d281fd360a91974eaf65576fef47f4aad86db9036e3",
+    "S11ScatteringSensitivity/Residual.olean": "f9b4494f73fa7a5101677999c41d75ad132264a64af961d912d7b4b21f9c8e3d",
+    "S11ScatteringSensitivity/Pipeline.olean": "1734ca7f9b03280676608bd36807dc24990dfba07194b37d788d1c81ecdfb7c3",
+    "S11ScatteringSensitivity/Controls.olean": "8cf749c89c33d88c73bdedf7001393799999ed89c42785537e94e668ae29f1b7",
+    "S11ScatteringSensitivity/Current.olean": "cd33956fc1280e4e8f07718a489d54af2e31af49c58d517006a5ad6abe2146d7",
+    "S11ScatteringSensitivity/Fraction.olean": "85f1b0903d6f7ca1ef7f88d6bc3924a240171b37508933f0e579691c962d5143",
+    "S11AnalyticError/Stability.olean": "222699b74d19abb91f80edc83dfd4b1438c69837ea9674c9bc3e2fb61ea50131",
+    "S11ScatteringFlux/Current.olean": "011606e4252ba015c630a0a3a69d9b184bee9e17ccf43603d4caa8cfce9f2358"
+  }
+}

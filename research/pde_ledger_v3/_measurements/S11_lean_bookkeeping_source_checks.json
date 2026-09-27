@@ -1,0 +1,237 @@
+{
+  "status": "PASS",
+  "source_sha256": {
+    "_measurements/S11c_d_continuum_currents.py": "44ead83416dd8baa4fb0dedf16ef26a33fd810308112b6aa333dfc53fe75b8e0",
+    "_measurements/S11c_d_continuum_response.py": "0fe30a9c4771671e9fa139b0557f185f55d351887f2ba8b9fa4ed1abfb616db2",
+    "directives/S11c_d_SHARED_PHYSICS.md": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5"
+  },
+  "instrument_sha256": "aa7f9f6bb2fa0d15158450f69647dd425d60c2235b61f942359b5d6b6bc40c1b",
+  "selected_ast_sha256": {
+    "response:adjoint,lambda_series": "39f2eb43b10ff661977c534f31ecba70e1a37a6d33f196f2d0dfb21180584de4",
+    "current:multiply,quadratic,subtract,amplitude_bookkeeping,quotient": "e3645a80328c582314958caaa0c0c52d2999f31233f207b2fe60854d840fb824"
+  },
+  "runtime": {
+    "python": "3.10.12",
+    "numpy": "1.26.4"
+  },
+  "checks": [
+    {
+      "name": "component_reconstruction_(0, 0)",
+      "kind": "identity",
+      "passed": true
+    },
+    {
+      "name": "delta_includes_zero_and_first_jets_(0, 0)",
+      "kind": "identity",
+      "passed": true
+    },
+    {
+      "name": "component_reconstruction_(1, 0)",
+      "kind": "identity",
+      "passed": true
+    },
+    {
+      "name": "delta_includes_zero_and_first_jets_(1, 0)",
+      "kind": "identity",
+      "passed": true
+    },
+    {
+      "name": "component_reconstruction_(0, 1)",
+      "kind": "identity",
+      "passed": true
+    },
+    {
+      "name": "delta_includes_zero_and_first_jets_(0, 1)",
+      "kind": "identity",
+      "passed": true
+    },
+    {
+      "name": "component_reconstruction_(1, 1)",
+      "kind": "identity",
+      "passed": true
+    },
+    {
+      "name": "delta_includes_zero_and_first_jets_(1, 1)",
+      "kind": "identity",
+      "passed": true
+    },
+    {
+      "name": "real_path_a0_a1_a2",
+      "kind": "identity",
+      "passed": true
+    },
+    {
+      "name": "wrong_mixed_ratio_power",
+      "kind": "wrong-formula control",
+      "passed": true
+    },
+    {
+      "name": "delta_omits_zero_jet",
+      "kind": "wrong-formula control",
+      "passed": true
+    },
+    {
+      "name": "all_full_current_terms_degree_0",
+      "kind": "identity",
+      "passed": true
+    },
+    {
+      "name": "all_full_current_terms_degree_1",
+      "kind": "identity",
+      "passed": true
+    },
+    {
+      "name": "all_full_current_terms_degree_2",
+      "kind": "identity",
+      "passed": true
+    },
+    {
+      "name": "all_full_current_terms_degree_3",
+      "kind": "identity",
+      "passed": true
+    },
+    {
+      "name": "all_full_current_terms_degree_4",
+      "kind": "identity",
+      "passed": true
+    },
+    {
+      "name": "all_full_current_terms_degree_5",
+      "kind": "identity",
+      "passed": true
+    },
+    {
+      "name": "all_full_current_terms_degree_6",
+      "kind": "identity",
+      "passed": true
+    },
+    {
+      "name": "actual_polynomial_contraction",
+      "kind": "identity",
+      "passed": true
+    },
+    {
+      "name": "explicit_higher_remainder",
+      "kind": "identity",
+      "passed": true
+    },
+    {
+      "name": "omit_offdiagonal_current",
+      "kind": "wrong-formula control",
+      "passed": true
+    },
+    {
+      "name": "scalar_degrees_0_to_6",
+      "kind": "identity",
+      "passed": true
+    },
+    {
+      "name": "omit_current_variation",
+      "kind": "wrong-formula control",
+      "passed": true
+    },
+    {
+      "name": "omit_a2",
+      "kind": "wrong-formula control",
+      "passed": true
+    },
+    {
+      "name": "omit_baseline_interference",
+      "kind": "wrong-formula control",
+      "passed": true
+    },
+    {
+      "name": "discard_higher_terms",
+      "kind": "wrong-formula control",
+      "passed": true
+    },
+    {
+      "name": "induced_second_coefficient",
+      "kind": "identity",
+      "passed": true
+    },
+    {
+      "name": "total_minus_baseline_second",
+      "kind": "identity",
+      "passed": true
+    },
+    {
+      "name": "conflate_subtracted_and_induced",
+      "kind": "wrong-formula control",
+      "passed": true
+    },
+    {
+      "name": "baseline_free_second",
+      "kind": "identity",
+      "passed": true
+    },
+    {
+      "name": "quotient_coefficient_0",
+      "kind": "identity",
+      "passed": true
+    },
+    {
+      "name": "quotient_equation_0",
+      "kind": "identity",
+      "passed": true
+    },
+    {
+      "name": "quotient_coefficient_1",
+      "kind": "identity",
+      "passed": true
+    },
+    {
+      "name": "quotient_equation_1",
+      "kind": "identity",
+      "passed": true
+    },
+    {
+      "name": "quotient_coefficient_2",
+      "kind": "identity",
+      "passed": true
+    },
+    {
+      "name": "quotient_equation_2",
+      "kind": "identity",
+      "passed": true
+    },
+    {
+      "name": "omit_incident_j1",
+      "kind": "wrong-formula control",
+      "passed": true
+    },
+    {
+      "name": "omit_incident_j2",
+      "kind": "wrong-formula control",
+      "passed": true
+    },
+    {
+      "name": "native_complex_quotient_retained",
+      "kind": "identity",
+      "passed": true
+    },
+    {
+      "name": "zero_leading_denominator_requires_external_guard",
+      "kind": "domain witness",
+      "passed": true,
+      "observed": "nonfinite original-helper output, outside correspondence domain"
+    },
+    {
+      "name": "epsilon_squared_flux",
+      "kind": "identity",
+      "passed": true
+    },
+    {
+      "name": "epsilon_linear_flux",
+      "kind": "wrong-formula control",
+      "passed": true
+    }
+  ],
+  "scope": "Supplied finite rectangle, unrestricted current convolution, real path, degree-six quadratic and nonzero-leading complex per-column quotient.",
+  "limits": [
+    "No production imports or saved scientific operands.",
+    "Small binary-exact synthetic fixtures; translation outside Lean kernel.",
+    "Native quotient retains complex values and has no zero guard; physical reality and admissible denominators are application obligations.",
+    "No parent-theory Taylor claim, numerical solve or strong-edge extrapolation."
+  ]
+}

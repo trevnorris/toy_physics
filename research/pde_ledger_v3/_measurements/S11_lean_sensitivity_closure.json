@@ -1,0 +1,129 @@
+{
+  "status": "COMPLETE",
+  "closed_utc": "2026-09-27T03:02:23.603844+00:00",
+  "scope": "Bounded S1\u2013S4 conditional finite-solve sensitivity only",
+  "packet_sha256": "c9ffaf85dfdd5bfd9dd2e34840cddc22fe1e4df9afdcbf926dd02c8931eba938",
+  "file_count": 30,
+  "archive_sha256": "5fd4f6605d3838191089328d868b2a874f8fe8d0d0b029838fb3389815ce89ca",
+  "reviews": {
+    "claude": {
+      "verdict": "CLEAR",
+      "blocking_findings": 0,
+      "independent_session": "7a126cce-7ce0-4fb8-9b8d-9bb3ff858ee1",
+      "model_identity": [
+        "claude-opus-5-5"
+      ],
+      "raw": "_measurements/S11_lean_sensitivity_fidelity_claude_v1.json",
+      "raw_sha256": "b956302ef6700b1cbdcfe6f00411926527d02a6eb927dc647635d0e56b2e807d",
+      "record": "_measurements/S11_lean_sensitivity_fidelity_claude_v1_run.json",
+      "record_sha256": "3c9de2673768ec6a55fb1206ee04e269d10add527b9a4d4a21e6a96867807c6b",
+      "report": "_measurements/S11_lean_sensitivity_fidelity_claude_v1.md",
+      "report_sha256": "75f1690bf92fdac2ac98fc3cef92660ed857c5d2631e2e60f13b4988a889742c",
+      "report_extraction": "Verbatim terminal result field.",
+      "independent_build": false,
+      "guard_receipt_sha256": {
+        "/var/projects/toy_physics/_scratch/s11c/lean_sensitivity_review1_claude/stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "/var/projects/toy_physics/_scratch/s11c/lean_sensitivity_review1_claude/child-outcome.json": "64b54c83815b4f3813f0a00a0ece2ded894410fa66b823b5670eebee88637c70",
+        "/var/projects/toy_physics/_scratch/s11c/lean_sensitivity_review1_claude/invocation.json": "f9e670cc2fec37ccb1e671d8ddd7b93254747de786fc8eb2192ee21717171246",
+        "/var/projects/toy_physics/_scratch/s11c/lean_sensitivity_review1_claude/outcome.json": "deaae0353a403059f2f7730093ea2d994b612e278e2cde744c77720c87b1615c",
+        "/var/projects/toy_physics/_scratch/s11c/lean_sensitivity_review1_claude/resource-samples.jsonl": "ed333ae582ec0c85806b09d0aea00beaafd765aa1f134b2f1bcdb7d678b814e0",
+        "/var/projects/toy_physics/_scratch/s11c/lean_sensitivity_review1_claude/stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "/var/projects/toy_physics/_scratch/s11c/lean_sensitivity_review1_claude/limit-validation.json": "7112f3b33e9c53334812e9a5ae8145ef095882801311721328858aa43aeb093c",
+        "/var/projects/toy_physics/_scratch/s11c/lean_sensitivity_review1_claude/effective-limits.json": "1763c02c9a5ece49aa826c6d59b4bf8daeac344c8509446fe0b8b280c4c91bd4"
+      },
+      "guard_peak_bytes": 193736704,
+      "sampled_tasks_peak": 11,
+      "max_oom_swap_events": false
+    },
+    "grok": {
+      "verdict": "CLEAR",
+      "blocking_findings": 0,
+      "independent_session": "4b0fbf38-71b8-4c09-90f0-46a14fce899a",
+      "model_identity": [
+        "grok-4.6-build"
+      ],
+      "raw": "_measurements/S11_lean_sensitivity_fidelity_grok_v1.json",
+      "raw_sha256": "56326dd02b9d341e672b97ce13fc2d40b0c626c20086fe85153d9c876b420ffd",
+      "record": "_measurements/S11_lean_sensitivity_fidelity_grok_v1_run.json",
+      "record_sha256": "7c9e7bd15c21e0729aa7102d0549c4ef80938fb464bc3d688a09f37fd3b8c92f",
+      "report": "_measurements/S11_lean_sensitivity_fidelity_grok_v1.md",
+      "report_sha256": "e1dbf1df466232159d6d077e0852f2c60bddca1df1237dd1c0fcd995efaa9bbe",
+      "report_extraction": "Verbatim substantive terminal text from # S1\u2013S4 fidelity review onward; progress preamble omitted. No thought field extracted.",
+      "independent_build": false,
+      "guard_receipt_sha256": {
+        "/var/projects/toy_physics/_scratch/s11c/lean_sensitivity_review1_grok/stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "/var/projects/toy_physics/_scratch/s11c/lean_sensitivity_review1_grok/child-outcome.json": "3cbc1bf683429f5e5d74001260c499a828738e162faa3a214d71f4b8788d4e1c",
+        "/var/projects/toy_physics/_scratch/s11c/lean_sensitivity_review1_grok/invocation.json": "f043e0948a304384f51eafe7f37579980fb103e083dfab3b7d70bc531169e1d6",
+        "/var/projects/toy_physics/_scratch/s11c/lean_sensitivity_review1_grok/outcome.json": "ce4c79ac5dd62b7464410fb95e8c370e66e761b311ff2bb38a89dd8792a8f4ea",
+        "/var/projects/toy_physics/_scratch/s11c/lean_sensitivity_review1_grok/resource-samples.jsonl": "5987982383fd39026015026134cbdd79a44f91c640e0e852f6e4749ce09ce49f",
+        "/var/projects/toy_physics/_scratch/s11c/lean_sensitivity_review1_grok/stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "/var/projects/toy_physics/_scratch/s11c/lean_sensitivity_review1_grok/limit-validation.json": "2222ad19d09818616dd2172956e39c4daaa5b22566b84ea4be3c37216288841e",
+        "/var/projects/toy_physics/_scratch/s11c/lean_sensitivity_review1_grok/effective-limits.json": "84578e8c92488373cf0a5d31bce46497b0dcd2a49f6f74453d036af0ec41e6b1"
+      },
+      "guard_peak_bytes": 211591168,
+      "sampled_tasks_peak": 64,
+      "max_oom_swap_events": false
+    }
+  },
+  "blocking_findings_remaining": 0,
+  "pre_closure_validation_record": "_scratch/S11_lean_sensitivity/review_run1/pre_closure_validation.json",
+  "pre_closure_validation_sha256": "0aa6ed68d296e9cd88d961d06ee5d09ca4482d6e70a816e38b297de22bf27de7",
+  "documentation_deltas": {
+    "lean/s11/SCATTERING_SENSITIVITY_COVERAGE.md": {
+      "reviewed_sha256": "7a6c9d8bbe97b24b3d03d3cee1ed36ed288fdaec151c7bace25c314535bdcda5",
+      "current_sha256": "7d294c3b5cd4dd2624e62895ef63ae1d2dffdae14c4d9551099b08e934d59c45",
+      "reason": "Review completion; clarify native open/same-end matrix and existing denominator-disjointness facts. No quantified statement or proof changed.",
+      "unified_diff": "--- reviewed/lean/s11/SCATTERING_SENSITIVITY_COVERAGE.md\n+++ live/lean/s11/SCATTERING_SENSITIVITY_COVERAGE.md\n@@ -6,8 +6,10 @@\n 51 selected standard-axiom audits, eighteen paired mathematical rejections and\n twenty-four positive executions (twenty-three distinct statements). The compact\n native record passed 36 checks in run1 and was hash-revalidated in run6.\n-Two independent fidelity reviews remain outstanding. F1\u2013F4 and P1\u2013P4 remain\n-complete, with their evidence unchanged.\n+Claude and Grok independently returned CLEAR with no blocking findings.\n+Bounded S1\u2013S4 is complete; optional dispositions and documentation-only closure\n+are recorded in SCATTERING_SENSITIVITY_FIDELITY_REVIEW.md. F1\u2013F4 and P1\u2013P4\n+remain complete, with their evidence unchanged.\n \n ## Supplied finite object\n \n@@ -23,7 +25,9 @@\n open-channel selection P give a = P V\u207b\u00b9(T D\u207b\u00b9 z - t_in). Thus observation is\n affine, a = C z + d, with the prescribed incoming trace subtracted. The fixed\n offset cancels in a difference, but not in the amplitude about which the\n-quadratic current is evaluated. The complete supplied outgoing matrix J gives\n+quadratic current is evaluated. Native J is restricted to selected open outgoing\n+channels, with same-end blocks and structurally zero cross-end entries.\n+The complete supplied outgoing matrix J gives\n q(a) = Re(conj(a)\u1d40 J a). The native numerator retains off-diagonal entries;\n the incident denominator is the signed incoming current, separately required\n positive in the native constructor. Origin rephasing transforms both amplitude\n@@ -69,7 +73,9 @@\n residual cases are characterized by residual_zero_iff. Empty/nonempty finite\n amplitude spaces are both admitted; the empty case has mass and current zero.\n Fraction denominators split disjointly into zero and positive absolute value\n-(denominator_cases), covering either sign. Estimates require positive margins;\n+(denominator_cases), covering either sign. Existing abs_pos/abs_zero give\n+disjointness; no separate local named disjointness lemma is claimed. Estimates\n+require positive margins;\n a zero margin can admit a zero denominator. The perturbation estimate is\n conditional on \u03ba\u03b5<1; \u03ba\u03b5\u22651 is an excluded estimate domain, not a theorem that\n every such operator is singular. The critical scalar witness shows why a\n@@ -101,11 +107,11 @@\n no max/OOM/swap events. No unguarded fallback or automatic retry.\n Use silent local completion/error hooks without healthy-job polling.\n \n-Local proof, correspondence, controls, audit and preservation obligations have\n-passed at the recorded scope. Completion still requires two independent reviews\n-with findings resolved. New packet transfer needs its\n-own user authorization. No commit is authorized. Portable-runner registration\n-is separate tooling work, not a claim of this contract.\n+Local proof, correspondence, controls, audit and preservation obligations passed\n+at the recorded scope, and both independent reviews cleared. The user authorized\n+this fixed packet transfer; the approved snapshot remains unchanged. The closure\n+record documents only live wording/status changes. No commit is authorized.\n+Portable-runner registration is separate tooling work, not a claim of this contract.\n \n Excluded: constructing physical inverse bounds, certified numerical intervals,\n full-operator discretization/quadrature/tail errors, transparent boundaries,\n"
+    },
+    "lean/s11/SCATTERING_SENSITIVITY_FIDELITY.md": {
+      "reviewed_sha256": "7348b28c803e700ac12033ea800ae5ca9bc6dad933947a90816b9e883194cbb1",
+      "current_sha256": "e93beb3a031932058fc01788f5c9cff8bd34526797f02b8c85fc95f77e6b7ee6",
+      "reason": "Review completion; distinguish native fixed denominator and Hermitian fixtures, arbitrary-matrix theorem, supplied perturbation/current uncertainty and uncomposed optional bounds.",
+      "unified_diff": "--- reviewed/lean/s11/SCATTERING_SENSITIVITY_FIDELITY.md\n+++ live/lean/s11/SCATTERING_SENSITIVITY_FIDELITY.md\n@@ -1,13 +1,15 @@\n # S1\u2013S4 sensitivity: fidelity record\n \n-Status: local PASS; independent fidelity reviews pending. Recorded run6 freshly\n-built eight isolated objects and passed 51 selected standard-axiom audits,\n+Status: bounded S1\u2013S4 COMPLETE; local PASS and independent Claude/Grok CLEAR.\n+Recorded run6 freshly built eight isolated objects and passed 51 selected standard-axiom audits,\n eighteen paired mathematical rejections and twenty-four positive executions\n (twenty-three distinct). Author validation re-adjudicated the recorded logs,\n source/snapshot/object bindings, native lineage, thirteen direct Mathlib import\n source/object pairs, fifteen clean package pins and historical preservation.\n The existing transitive external cache remains a pinned baseline; it was not\n-wholly rebuilt. No completion or external review clearance is claimed.\n+wholly rebuilt. Both reviewers found no blocking defect. Optional dispositions\n+and exact documentation-only deltas are recorded separately; proofs, instruments,\n+approved snapshot/archive/transport and historical evidence remain unchanged.\n \n Earlier attempts are retained as failures. Offline restoration validated 2999\n pinned local archives and unpacked nine without downloading or rebuilding old\n@@ -91,6 +93,21 @@\n no executed native zero-denominator-policy or physical ratio-validation claim\n follows from the generic Lean fraction theorem.\n \n+The native J selects open outgoing channels and fills only same-end entries;\n+cross-end blocks are zero. The theorem accepts arbitrary finite J without\n+certifying that physical channel selection. Existing complex fixtures are\n+Hermitian; no non-Hermitian or indefinite fixture execution is claimed. The\n+Lean fullJ witness is singular, so it must not be called positive definite.\n+\n+For fixed incident modes/current, incoming_flux is independent of the numerical\n+solution coefficients: residual-only perturbations use denominator error \u03b7=0.\n+Nonzero denominator error is separately supplied uncertainty; the signed scalar\n+examples exercise that algebra. Pipeline composes the fixed-operator/fixed-J\n+residual estimate into a fraction. Its perturbed-operator composition stops at\n+amplitude, and H/unscaling bounds remain separate application steps. No combined\n+perturbed/H fraction theorem is claimed. Existing denominator_margin can supply\n+a reference-based margin, but the pipeline still explicitly asks for both bounds.\n+\n The independent arithmetic checks compare the residual identity, scaling maps,\n affine observation and full quadratic current. Floating-point synthetic solves\n use a declared 1e-12 scaled absolute tolerance; they are not exact arithmetic\n@@ -116,8 +133,9 @@\n Scientific work stays under the default 2 GiB/no-swap/one-CPU/32-task guard;\n the previous Grok resource exception does not apply to proof jobs.\n \n-Canonical verification, controls and author source/object/pin validation passed.\n-Completion still requires two independent reviews of a newly approved fixed packet.\n-No transfer or commit is authorized. This conditional finite-model result does\n-not establish physical inverse bounds, full-operator approximation error,\n+Canonical verification, controls, author source/object/pin validation and two\n+independent source-fidelity reviews passed. Neither reviewer reran Lean/NumPy or\n+rehashed the external filesystem; those bindings are author-validated. The user\n+authorized this fixed-packet transfer. No commit or new increment is authorized.\n+This conditional finite-model result does not establish physical inverse bounds, full-operator approximation error,\n continuum convergence, channel completeness or conservation.\n"
+    },
+    "lean/s11/SCATTERING_SENSITIVITY_VERIFICATION.txt": {
+      "reviewed_sha256": "16baefaec5149e523e09287e2cff79f0811007453e18ae644f1f2e83713db8b8",
+      "current_sha256": "de997655cadc3ac5a2a6031af04f2a3b2e9ff235cb1543c1e1aa0d9b7b47027b",
+      "reason": "Record both CLEAR reviews and source-only review limits; retain all formal/native execution claims and historical bytes.",
+      "unified_diff": "--- reviewed/lean/s11/SCATTERING_SENSITIVITY_VERIFICATION.txt\n+++ live/lean/s11/SCATTERING_SENSITIVITY_VERIFICATION.txt\n@@ -1,4 +1,4 @@\n-S1\u2013S4 conditional finite-solve sensitivity \u2014 local PASS; fidelity reviews pending\n+S1\u2013S4 conditional finite-solve sensitivity \u2014 COMPLETE; local PASS, both reviews CLEAR\n \n Recorded formal run: _scratch/S11_lean_sensitivity/verification_run6/evidence\n Canonical builds, all fresh and isolated:\n@@ -71,5 +71,11 @@\n No certified physical error budget, continuum convergence, conservation,\n channel completeness, parent-theory Taylor bound or numerical interval proof.\n \n-Two independent non-author fidelity reviews are still required. New private\n-packet transfer needs explicit user approval. No commit is authorized.\n+Claude and Grok independently returned complete CLEAR reports with no blocking\n+findings on the approved fixed 30-file packet. Optional dispositions are in\n+SCATTERING_SENSITIVITY_FIDELITY_REVIEW.md. Neither independently rebuilt Lean,\n+executed native code or validated external filesystem hashes; author closure\n+checks retain those responsibilities. The approved packet, canonical sources,\n+instruments, objects and historical evidence remain unchanged. Exactly three\n+live documents received wording/status changes, pinned in the closure record.\n+No scientific rerun for documentation-only changes. No commit is authorized.\n"
+    }
+  },
+  "disposition_report": "lean/s11/SCATTERING_SENSITIVITY_FIDELITY_REVIEW.md",
+  "disposition_sha256": "a845308eea673fd25536ee52b117953bfd9ad3540315f1e690f4a120fe2a995a",
+  "handoff": "lean/s11/SCATTERING_SENSITIVITY_HANDOFF.md",
+  "handoff_sha256": "317282079ffdd3b879a555164f867cbbecb58bfcd4cb15312080163f68929832",
+  "final_correspondence": {
+    "status": "PASS",
+    "packet_sha256": "c9ffaf85dfdd5bfd9dd2e34840cddc22fe1e4df9afdcbf926dd02c8931eba938",
+    "documentation_deltas": 3,
+    "snapshot_archive_transport_unchanged": true,
+    "all_other_payload_files_unchanged": true,
+    "review_raw_records_receipts_unchanged": true,
+    "author_validation_unchanged": true,
+    "local_correspondence": {
+      "status": "PASS",
+      "execution_status": "PASS",
+      "checks_seen": 51,
+      "report_sha256": "cf6ac94b0ece80e8a78a33c651105c1da79f9c763404ef9fb37a0e69ce062ff1",
+      "native_report_sha256": "2bc6a25e6dfa10cf50d942b47db539ea16356433287be5af1fb9cb483461f8e1",
+      "successful_objects": 8,
+      "historical_files": 605,
+      "historical_objects": 243,
+      "meaning": "Input/log/object/native/dependency/preservation correspondence; not a pass for failed proof execution."
+    },
+    "scientific_execution": false
+  },
+  "substantive_changes": false,
+  "re_review_required": false,
+  "re_review_reason": "Both final reports CLEAR; only optional wording/status clarifications. All proofs, assumptions, instruments and fixed reviewed bytes unchanged.",
+  "scientific_rerun": false,
+  "historical_author_validation_unchanged": true,
+  "commit_authorized": false,
+  "committed": false,
+  "next_increment_started": false,
+  "limits": [
+    "Conditional supplied finite-operator/map/current/margin result.",
+    "Reviews read sources and embedded records, not independent Lean/native execution or external-filesystem hashes.",
+    "No physical inverse certificate, continuum convergence, conservation, channel completeness or certified numerical intervals."
+  ]
+}

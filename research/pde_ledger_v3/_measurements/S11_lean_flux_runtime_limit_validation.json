@@ -1,0 +1,44 @@
+{
+  "status": "PASS",
+  "scope": "Explicitly authorized Grok review runtime only; no proof, native or approved-packet change",
+  "guard_before_sha256": "6492f5ab11dc2ab2f80bbfcc96d7eb6b8632afea07100dd8f74a7954f3ffe542",
+  "guard_after_sha256": "9194b3e04b43d345828082e6312b0a2d7a9293f6296153f9c6ccea2defb931d2",
+  "regression_source_sha256": "eb6077efbec9ecf89415d3d1b717d9f255ac44325075baf84b7a51f73a024072",
+  "regressions": {
+    "status": "PASS",
+    "tests": 5,
+    "outcome_sha256": "73e6f038c4e9571d29765c4538cad704b39bb75abdd37293a14dbe9c37883527",
+    "stderr_sha256": "888a0c0ed615e57d32cf72be501b0c355f33b8613c81dfdaa99db33d7959487e",
+    "effective_limits": {
+      "memory.max": "2147483648",
+      "memory.swap.max": "0",
+      "pids.max": "64",
+      "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-e89375418f2d.service",
+      "nice": 15,
+      "affinity": [
+        15
+      ],
+      "threads": {
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "VECLIB_MAXIMUM_THREADS": "1",
+        "BLIS_NUM_THREADS": "1"
+      }
+    }
+  },
+  "authorization_record": "research/pde_ledger_v3/_scratch/S11_lean_flux/review_run3/resource_authorization.json",
+  "authorization_sha256": "1a7407b587b19536e60f9b6467d82f1cf1d490a37a10affcdb3631222d50f585",
+  "unchanged_defaults": {
+    "memory_gib": 2,
+    "tasks_max": 32
+  },
+  "review_selected": {
+    "memory_gib": 2,
+    "tasks_max": 64,
+    "cpu_count": 1,
+    "swap_max": 0
+  },
+  "review_memory_gib_authorized_ceiling": 4
+}

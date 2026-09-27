@@ -1,0 +1,327 @@
+{
+  "status": "PASS",
+  "validated_utc": "2026-09-27T00:27:24.891819+00:00",
+  "method": "Read-only current/snapshot/recorded-log/object/pin comparison and re-adjudication; no scientific rerun.",
+  "run": "_scratch/S11_lean_sensitivity/verification_run6/evidence",
+  "checks": 51,
+  "canonical_objects": 8,
+  "standard_axiom_audits": 51,
+  "distinct_positive_statements": 23,
+  "mathematical_rejections": 18,
+  "positive_controls": 24,
+  "native_check_kinds": {
+    "identity/example": 13,
+    "wrong-formula control": 14,
+    "conditional bound example": 9
+  },
+  "native_runtime": {
+    "python": "3.10.12",
+    "numpy": "1.26.4"
+  },
+  "native_execution_lineage": {
+    "execution": {
+      "name": "native",
+      "command": [
+        "/usr/bin/python",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11_lean_sensitivity_source_check.py"
+      ],
+      "expected": "PASS",
+      "exit_status": 0,
+      "passed": true,
+      "seconds": 0.167,
+      "log": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_sensitivity/verification_run1/evidence/logs/native.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output": ""
+    },
+    "original_failed_formal_run_sha256": "c8f6cef2fd3b073c6255108784906be50addf09c163e0ba429706a49b572e484",
+    "original_native_instrument_sha256": "e085831761d09d9c0bf7b2d2381d88521b661ec9bf48225b89c02ab621fe5204",
+    "native_report_sha256": "2bc6a25e6dfa10cf50d942b47db539ea16356433287be5af1fb9cb483461f8e1",
+    "guard_outcome": {
+      "exitCode": 1,
+      "wallSeconds": 6.233905142988078,
+      "unit": "s11c-guard-8d797b2d22eb",
+      "stderrBytes": 350,
+      "limitsVerified": true,
+      "childOutcome": {
+        "exitCode": 1,
+        "guardReason": null,
+        "wallSeconds": 6.171831979008857,
+        "childPid": 1901409
+      }
+    },
+    "effective_limits": {
+      "memory.max": "2147483648",
+      "memory.swap.max": "0",
+      "pids.max": "32",
+      "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-8d797b2d22eb.service",
+      "nice": 15,
+      "affinity": [
+        15
+      ],
+      "threads": {
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "VECLIB_MAXIMUM_THREADS": "1",
+        "BLIS_NUM_THREADS": "1"
+      }
+    },
+    "guard_receipt_sha256": {
+      "_scratch/s11c/lean_sensitivity_verification_run1/stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "_scratch/s11c/lean_sensitivity_verification_run1/child-outcome.json": "69aca3d20f44e07cf7bed9f605aa702c407f6fad61df8a43fcd50eda08a75a48",
+      "_scratch/s11c/lean_sensitivity_verification_run1/invocation.json": "9aad4d5e10976cd375951a9d8301375b2f54f97f5b7c1405dc1642f6eb522b40",
+      "_scratch/s11c/lean_sensitivity_verification_run1/outcome.json": "af2e41dbeb76a2fbc70a08b531628740a491d9469c9f8285144f513810dc2a5b",
+      "_scratch/s11c/lean_sensitivity_verification_run1/resource-samples.jsonl": "0b430aba97efee338adece2c908bdacd39064e03695824d2b2c5d705607ea9e6",
+      "_scratch/s11c/lean_sensitivity_verification_run1/stderr": "14d823a40e02f94ce316a67b678e5b6c790026959058b0ad4ebe18408378434f",
+      "_scratch/s11c/lean_sensitivity_verification_run1/limit-validation.json": "8908e588385de2df9f477dbe74a44f29fa8eec325f5293c9cea979a420cee894",
+      "_scratch/s11c/lean_sensitivity_verification_run1/effective-limits.json": "82abd4bc74f39679f7fea7b8b2da554533e6759d4a4e69ccfaf0364d1e24ec5d"
+    },
+    "meaning": "Native check actually passed before unrelated formal failure in run1; run6 revalidates this exact evidence, without claiming run1 as a formal pass."
+  },
+  "source_sha256": {
+    "lean/lean-toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+    "lean/s11/S11AnalyticError/Stability.lean": "9395a1a1f574c85e8bdf6346657ec7575f2bba483e4e13fb5a648b33f93d07dd",
+    "lean/s11/S11ScatteringSensitivity/Fraction.lean": "5ab6f0d549a62c7175bfe5821b5934026e6a92c3a0f3e0942ffa16079432e106",
+    "_measurements/S11_lean_sensitivity_contract_check.py": "5f599887268e27452657e78820fb2cc3e9ef57bf4ac5a57faa030a3a4e46d112",
+    "lean/lakefile.toml": "2dd99ce804fbeb5a4a07843d00a25c9c3d4f41052ff884b6b4bf8e04cf60a3a2",
+    "lean/s11/S11ScatteringSensitivity/Controls.lean": "6cf8137b728e7e21ec929b32a73e8ea82560cddc5ad16302b36180788de0ef15",
+    "lean/s11/S11ScatteringSensitivity/Pipeline.lean": "40f3a10dd0b363836682fb5d17c1c597aa58ce8672de29acd784afc8f8f5ff04",
+    "lean/s11/S11ScatteringSensitivity/Residual.lean": "24fbb3e9392f9de8bdb3e7e520b218e5719d7a894c85a7c7b27563b64a0a3b23",
+    "lean/lake-manifest.json": "91fd5318cdc35e4044d6e059c6ef73d94b955d27adf8a5860b07ec92add9377e",
+    "_measurements/S11_lean_sensitivity_source_check.py": "e085831761d09d9c0bf7b2d2381d88521b661ec9bf48225b89c02ab621fe5204",
+    "lean/s11/S11ScatteringSensitivity/Current.lean": "f015de108eb163e7022bba23f95480f04917727aa52c09abda9955de9215dd1d",
+    "lean/verify.py": "83a61936bc0c9a49ec5337a27b263aff94f9a61779bd118937d1ccfb884458f7",
+    "lean/s11/S11ScatteringFlux/Current.lean": "bfd5266214299b650865b4d8f6f4f8da630380ef78f81ded0ba592c5fdb6c0d5",
+    "lean/s11/S11ScatteringSensitivity.lean": "e71b94849104835f3d826b6174ee86564e12689c22ec1f6fe608e830c8d10a6b"
+  },
+  "native_source_sha256": {
+    "_measurements/S11c_d_finite_scattering.py": "f187d9426be8069342a363a0466c175d32a8cb46101e32a14c433ccb9118e469",
+    "_measurements/S11c_d_finite_scattering_resolution.py": "8e101517fde113c5f0a372bab531e63ebdcee3fff03c270ff98a7590e5a7b981",
+    "_measurements/S11c_d_finite_scattering_domain.py": "73341408d0f6c1eb517e435dea986e180ff53615a6102697a8e3ba6747bd35aa",
+    "directives/S11c_d_SHARED_PHYSICS.md": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5",
+    "directives/S11c_d_SCATTERING_FORM_AMENDMENT.md": "eb6f20a3fd0bce308e53901fa69fdf267b2917e5cc78b319a1e7700074a47560"
+  },
+  "compiled_object_sha256": {
+    "_scratch/S11_lean_sensitivity/verification_run6/evidence/objects/S11AnalyticError/Stability.olean": "222699b74d19abb91f80edc83dfd4b1438c69837ea9674c9bc3e2fb61ea50131",
+    "_scratch/S11_lean_sensitivity/verification_run6/evidence/objects/S11ScatteringSensitivity/Residual.olean": "f9b4494f73fa7a5101677999c41d75ad132264a64af961d912d7b4b21f9c8e3d",
+    "_scratch/S11_lean_sensitivity/verification_run6/evidence/objects/S11ScatteringFlux/Current.olean": "011606e4252ba015c630a0a3a69d9b184bee9e17ccf43603d4caa8cfce9f2358",
+    "_scratch/S11_lean_sensitivity/verification_run6/evidence/objects/S11ScatteringSensitivity/Current.olean": "cd33956fc1280e4e8f07718a489d54af2e31af49c58d517006a5ad6abe2146d7",
+    "_scratch/S11_lean_sensitivity/verification_run6/evidence/objects/S11ScatteringSensitivity/Fraction.olean": "85f1b0903d6f7ca1ef7f88d6bc3924a240171b37508933f0e579691c962d5143",
+    "_scratch/S11_lean_sensitivity/verification_run6/evidence/objects/S11ScatteringSensitivity/Pipeline.olean": "1734ca7f9b03280676608bd36807dc24990dfba07194b37d788d1c81ecdfb7c3",
+    "_scratch/S11_lean_sensitivity/verification_run6/evidence/objects/S11ScatteringSensitivity/Controls.olean": "8cf749c89c33d88c73bdedf7001393799999ed89c42785537e94e668ae29f1b7",
+    "_scratch/S11_lean_sensitivity/verification_run6/evidence/objects/S11ScatteringSensitivity.olean": "e6643ad75ce50772248c7d281fd360a91974eaf65576fef47f4aad86db9036e3"
+  },
+  "log_sha256": {
+    "_scratch/S11_lean_sensitivity/verification_run6/evidence/logs/build_S11AnalyticError.Stability.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "_scratch/S11_lean_sensitivity/verification_run6/evidence/logs/build_S11ScatteringSensitivity.Residual.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "_scratch/S11_lean_sensitivity/verification_run6/evidence/logs/build_S11ScatteringFlux.Current.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "_scratch/S11_lean_sensitivity/verification_run6/evidence/logs/build_S11ScatteringSensitivity.Current.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "_scratch/S11_lean_sensitivity/verification_run6/evidence/logs/build_S11ScatteringSensitivity.Fraction.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "_scratch/S11_lean_sensitivity/verification_run6/evidence/logs/build_S11ScatteringSensitivity.Pipeline.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "_scratch/S11_lean_sensitivity/verification_run6/evidence/logs/build_S11ScatteringSensitivity.Controls.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "_scratch/S11_lean_sensitivity/verification_run6/evidence/logs/build_S11ScatteringSensitivity.log": "25bc0b5598d688c3e4656b0cb1d304c86f35b21a9e83a71a766ab4580ac53b06",
+    "_scratch/S11_lean_sensitivity/verification_run6/evidence/logs/residual_sign_positive.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "_scratch/S11_lean_sensitivity/verification_run6/evidence/logs/residual_sign_mutant.log": "2a705e37fc6dbbb346e7edfe8715e928b08cd610ce1db99cafca0d4619947874",
+    "_scratch/S11_lean_sensitivity/verification_run6/evidence/logs/inverse_factor_positive.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "_scratch/S11_lean_sensitivity/verification_run6/evidence/logs/inverse_factor_mutant.log": "c4f0c91b2ada5fc61ae6a7b28942bef2c0e4e849bf5481fbd0b4ba1aef99235f",
+    "_scratch/S11_lean_sensitivity/verification_run6/evidence/logs/small_residual_large_error_positive.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "_scratch/S11_lean_sensitivity/verification_run6/evidence/logs/small_residual_large_error_mutant.log": "a2bb986a633e08d48449035290a3fc4d844d3c6f13f6a0d9d5c1bf75a1e21526",
+    "_scratch/S11_lean_sensitivity/verification_run6/evidence/logs/row_column_scaling_positive.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "_scratch/S11_lean_sensitivity/verification_run6/evidence/logs/row_column_scaling_mutant.log": "4c75f2cf385b4302eea2771218457e2235b23cd8581cd3d42c07cfb4f6a3c525",
+    "_scratch/S11_lean_sensitivity/verification_run6/evidence/logs/unscale_positive.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "_scratch/S11_lean_sensitivity/verification_run6/evidence/logs/unscale_mutant.log": "50bd6d52712f7d2c1192b1e016e85391700ac75ab26a9321d7cff63e37aa29f4",
+    "_scratch/S11_lean_sensitivity/verification_run6/evidence/logs/observation_factor_positive.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "_scratch/S11_lean_sensitivity/verification_run6/evidence/logs/observation_factor_mutant.log": "d5d83880ceeea7241a21fe4008b26d799536763cbf150e5c20d23eec75d59c3e",
+    "_scratch/S11_lean_sensitivity/verification_run6/evidence/logs/affine_baseline_positive.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "_scratch/S11_lean_sensitivity/verification_run6/evidence/logs/affine_baseline_mutant.log": "9cbb70e7d4d8734f76ac1fa3d302b29f5ff6ccc36efb93c7b434586a32e76fdf",
+    "_scratch/S11_lean_sensitivity/verification_run6/evidence/logs/cross_term_positive.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "_scratch/S11_lean_sensitivity/verification_run6/evidence/logs/cross_term_mutant.log": "fda5ac47c7e29496826105f070c09c5d876e962b26010fbf30a32a266d079da3",
+    "_scratch/S11_lean_sensitivity/verification_run6/evidence/logs/quadratic_error_positive.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "_scratch/S11_lean_sensitivity/verification_run6/evidence/logs/quadratic_error_mutant.log": "fe8a6dd0fffdf14cb4751fcadc2b9d2622a099690dabc5c8a3f70802ca7ea7b8",
+    "_scratch/S11_lean_sensitivity/verification_run6/evidence/logs/current_change_positive.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "_scratch/S11_lean_sensitivity/verification_run6/evidence/logs/current_change_mutant.log": "68c99243a4b90e17bdeb58e3bf6a43e5f87a65769854643fec21a2e4465d2546",
+    "_scratch/S11_lean_sensitivity/verification_run6/evidence/logs/full_complex_current_positive.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "_scratch/S11_lean_sensitivity/verification_run6/evidence/logs/full_complex_current_mutant.log": "e3c841c432959079098ea441e6360574851ed9573edf7ec7b87169eb7958eacf",
+    "_scratch/S11_lean_sensitivity/verification_run6/evidence/logs/normalized_error_positive.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "_scratch/S11_lean_sensitivity/verification_run6/evidence/logs/normalized_error_mutant.log": "a10e250288a4906dabf0b7b967f42452270caca21912f28e6a38395560a6448f",
+    "_scratch/S11_lean_sensitivity/verification_run6/evidence/logs/denominator_change_positive.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "_scratch/S11_lean_sensitivity/verification_run6/evidence/logs/denominator_change_mutant.log": "faf3330d7285f3d605abd9fa8e602e3ffda1ebd1e810596357cde56f668dd8e8",
+    "_scratch/S11_lean_sensitivity/verification_run6/evidence/logs/denominator_lower_bound_positive.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "_scratch/S11_lean_sensitivity/verification_run6/evidence/logs/denominator_lower_bound_mutant.log": "d1fcc53b304ca37a94aa39e98e7e160342cd54c32483989996d335a81bb0250c",
+    "_scratch/S11_lean_sensitivity/verification_run6/evidence/logs/negative_denominator_positive.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "_scratch/S11_lean_sensitivity/verification_run6/evidence/logs/negative_denominator_mutant.log": "b80052e0286284b7edfe6a16277cc0c077b9365629dd33ec7a8f5611855c2604",
+    "_scratch/S11_lean_sensitivity/verification_run6/evidence/logs/denominator_margin_positive.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "_scratch/S11_lean_sensitivity/verification_run6/evidence/logs/denominator_margin_mutant.log": "984a31c7efee002f11b6eb2724a01d3f2e83ee38e3967ab754790f2f99990518",
+    "_scratch/S11_lean_sensitivity/verification_run6/evidence/logs/zero_margin_positive.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "_scratch/S11_lean_sensitivity/verification_run6/evidence/logs/zero_margin_mutant.log": "48779afac97427086bb3afb8157bec63ea9f68c87c5944170918e695c439fa47",
+    "_scratch/S11_lean_sensitivity/verification_run6/evidence/logs/critical_inverse_margin_positive.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "_scratch/S11_lean_sensitivity/verification_run6/evidence/logs/critical_inverse_margin_mutant.log": "ee59bc31b4b1d93f9b124e70b47f470521ffa056ab4e30fc46d1f98f6f7ccdde",
+    "_scratch/S11_lean_sensitivity/verification_run6/evidence/logs/actual_residual_bound_positive.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "_scratch/S11_lean_sensitivity/verification_run6/evidence/logs/actual_denominator_margin_positive.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "_scratch/S11_lean_sensitivity/verification_run6/evidence/logs/actual_signed_fraction_positive.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "_scratch/S11_lean_sensitivity/verification_run6/evidence/logs/empty_amplitude_positive.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "_scratch/S11_lean_sensitivity/verification_run6/evidence/logs/actual_zero_residual_positive.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "_scratch/S11_lean_sensitivity/verification_run6/evidence/logs/actual_flux_bound_positive.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "dependencies": {
+    "packages": [
+      {
+        "name": "Physlib",
+        "commit": "8b2b23701c07409f882c49e0bd290a214e44450c"
+      },
+      {
+        "name": "mathlib",
+        "commit": "db584cd6d46c92f209a44c0f1c829460d327499d"
+      },
+      {
+        "name": "\u00abdoc-gen4\u00bb",
+        "commit": "aceca4eeb5a79092eabefaa75fcb72b701d02205"
+      },
+      {
+        "name": "plausible",
+        "commit": "b7eb3304aeae834b12dda98993a37f6a41f6f0bb"
+      },
+      {
+        "name": "LeanSearchClient",
+        "commit": "5f4d51b81cbd3f6b32b156bfad9056621a040404"
+      },
+      {
+        "name": "importGraph",
+        "commit": "16f02aa7642864af59f1ff0e384a015994db9118"
+      },
+      {
+        "name": "proofwidgets",
+        "commit": "4be2e3d5087eeb272cf5a8853b8f9dd025ef5957"
+      },
+      {
+        "name": "aesop",
+        "commit": "3448c0bcc5ce01b2d1546e483ec3620e32df3d0e"
+      },
+      {
+        "name": "Qq",
+        "commit": "92c15be17b7caf78c2ad767ec40f89052d908d81"
+      },
+      {
+        "name": "batteries",
+        "commit": "4488d40d070b9700d4d5a6aa342f0d40c31b2a2d"
+      },
+      {
+        "name": "leansqlite",
+        "commit": "6168b7549738a19bc837a1625c60c5d1e5dd8aeb"
+      },
+      {
+        "name": "Cli",
+        "commit": "6130a47896ce867c6a4a55373441e59e565bad0f"
+      },
+      {
+        "name": "UnicodeBasic",
+        "commit": "37e7d8cb7316a88cd3e91208385c9ec6ae780019"
+      },
+      {
+        "name": "BibtexQuery",
+        "commit": "852edafa268eb038a7158551fd580ee8433847b0"
+      },
+      {
+        "name": "MD4Lean",
+        "commit": "31907cc18f48a95384f99cee5582c00fb39e0f67"
+      }
+    ],
+    "lean_version": "Lean (version 4.33.0, x86_64-unknown-linux-gnu, commit d8b18978322de05a8f3dba51ef03cf5461676c17, Release)"
+  },
+  "direct_imports": {
+    "Mathlib.Analysis.Normed.Operator.Banach": {
+      "object_path": "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/Normed/Operator/Banach.olean",
+      "object_sha256": "5364912dd7387f769bf95b6cd31e5771bd2635900b961624f83ed8e41d32aa6e",
+      "source_path": "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/packages/mathlib/Mathlib/Analysis/Normed/Operator/Banach.lean",
+      "source_sha256": "32f57311b073ae8832545b3265c90f5eb4147ceca326e371c77b0ac8dee6a2d7"
+    },
+    "Mathlib.Analysis.SpecificLimits.Normed": {
+      "object_path": "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/SpecificLimits/Normed.olean",
+      "object_sha256": "ddeafa6978d30e920710f39a336030c98c0f2af390c0f05ce7b961a612d28fc0",
+      "source_path": "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/packages/mathlib/Mathlib/Analysis/SpecificLimits/Normed.lean",
+      "source_sha256": "113aaf52a8970f3d5731b3bef38b5eb29be69585d68fdd5fc22f4868fa9f35e6"
+    },
+    "Mathlib.Tactic": {
+      "object_path": "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Tactic.olean",
+      "object_sha256": "c71aaaefb337826cd40ede82fd5f374299ece9c68476faca676474067b64ca7f",
+      "source_path": "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/packages/mathlib/Mathlib/Tactic.lean",
+      "source_sha256": "6ec9a1714e9fa472f7e5614792f1aa5a65f360ec56688b0dc765d1bee2e1bdd5"
+    },
+    "Mathlib.LinearAlgebra.Matrix.ConjTranspose": {
+      "object_path": "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/LinearAlgebra/Matrix/ConjTranspose.olean",
+      "object_sha256": "1ac34e9f98f578907ac2620d109d45edb9faabc8a91b329ab0af4cc7cf356bbf",
+      "source_path": "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/packages/mathlib/Mathlib/LinearAlgebra/Matrix/ConjTranspose.lean",
+      "source_sha256": "10ace10899567db7c2ccd38c0e89e3bdca2261494975a42d3b1a5535c9e3b1b6"
+    },
+    "Mathlib.Data.Complex.Basic": {
+      "object_path": "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Data/Complex/Basic.olean",
+      "object_sha256": "f0dd349f6e747bb17cba310aed12ba9f0d4bd4a136baba6b576eb76146b0a992",
+      "source_path": "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/packages/mathlib/Mathlib/Data/Complex/Basic.lean",
+      "source_sha256": "e279bd6369e83ebf6716e17a8f38c81c812020753472cac5e7ae2a501790b760"
+    },
+    "Mathlib.Tactic.Ring": {
+      "object_path": "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Tactic/Ring.olean",
+      "object_sha256": "592377cbe645eff5792e1f62acbe0942fb9426841af93b4809cf468f3d79a99c",
+      "source_path": "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/packages/mathlib/Mathlib/Tactic/Ring.lean",
+      "source_sha256": "d3ef5c49ebbd1108ce3f935e5ad95485e143abf02f28c027dba4bb6f3be8196e"
+    },
+    "Mathlib.Tactic.Linarith": {
+      "object_path": "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Tactic/Linarith.olean",
+      "object_sha256": "d1d8e0c2d0421f98f32ac107c9a673d1254a6f53ce2f709f8a4a9d1ae9676bc3",
+      "source_path": "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/packages/mathlib/Mathlib/Tactic/Linarith.lean",
+      "source_sha256": "0581fd9f80f34d728ad628e7c1fb5a93d36cb9cb48d469fbc797869e83ebe0a6"
+    },
+    "Mathlib.Analysis.Complex.Basic": {
+      "object_path": "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/Complex/Basic.olean",
+      "object_sha256": "1426b1a1a073fbdbf73c37f82a82f8cce3773b3a12a70389049e1f8aba412998",
+      "source_path": "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/packages/mathlib/Mathlib/Analysis/Complex/Basic.lean",
+      "source_sha256": "a3bcb36c68213d371e7a48bc84c2b70b6595fdf7de424fe1f84b98c95e2f39db"
+    },
+    "Mathlib.Analysis.Normed.Operator.Basic": {
+      "object_path": "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Analysis/Normed/Operator/Basic.olean",
+      "object_sha256": "6e05953e1b277eb8f362c902d5dfce730fde66371aab4d0b55a48adccffbbbcd",
+      "source_path": "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/packages/mathlib/Mathlib/Analysis/Normed/Operator/Basic.lean",
+      "source_sha256": "18f967ad36db74f73667ac7bdef2a404d77226a7d33cbdef33d415e5b3e4c389"
+    },
+    "Mathlib.Data.Real.Basic": {
+      "object_path": "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Data/Real/Basic.olean",
+      "object_sha256": "6c7095c3f9f475831b4cd10f28ba2e7cea04cdbda31309df15a47924eac06413",
+      "source_path": "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/packages/mathlib/Mathlib/Data/Real/Basic.lean",
+      "source_sha256": "b1dde0e82be30e8a9ca87b23c46d04afc92be61818622ba6d4603daa4d4a9f70"
+    },
+    "Mathlib.Tactic.FieldSimp": {
+      "object_path": "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Tactic/FieldSimp.olean",
+      "object_sha256": "77ba8e64c4d837ef6f1c55ab4d3aca329167afc6c1f8a11cc8b89b3a183f2e47",
+      "source_path": "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/packages/mathlib/Mathlib/Tactic/FieldSimp.lean",
+      "source_sha256": "924a11d74ca2851409f1d78284affbd60c21c9d54ac5bb4fb4676f17cbecb679"
+    },
+    "Mathlib.LinearAlgebra.Matrix.Notation": {
+      "object_path": "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/LinearAlgebra/Matrix/Notation.olean",
+      "object_sha256": "cf02f4b30552c3a6ef4c98b91771a75c637de1fbf7428f1b9e88be0f5e43c536",
+      "source_path": "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/packages/mathlib/Mathlib/LinearAlgebra/Matrix/Notation.lean",
+      "source_sha256": "0a5b11bff151565fa33a4b7faf0e20d4bf2d27075f98f88a0a9e9e25b40e2940"
+    },
+    "Mathlib.Algebra.BigOperators.Fin": {
+      "object_path": "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Algebra/BigOperators/Fin.olean",
+      "object_sha256": "05c8903563ca8f8b875770b543bd3f1640c61d9f098ac808efd0e03c16c52beb",
+      "source_path": "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/packages/mathlib/Mathlib/Algebra/BigOperators/Fin.lean",
+      "source_sha256": "4fe78cba9cdeac4eb8badbdd6359b055031900906fb94f3e51aba6d81451dbd5"
+    }
+  },
+  "evidence_sha256": {
+    "_measurements/S11_lean_sensitivity_contract_checks.json": "cf6ac94b0ece80e8a78a33c651105c1da79f9c763404ef9fb37a0e69ce062ff1",
+    "_measurements/S11_lean_sensitivity_source_checks.json": "2bc6a25e6dfa10cf50d942b47db539ea16356433287be5af1fb9cb483461f8e1",
+    "_measurements/S11_lean_sensitivity_preserved_inputs.json": "471e46666c1eeadaf0ebfd73a32c3dc6411987ce016613b197f87e3d33d1cd91",
+    "_measurements/S11_lean_sensitivity_resource_receipt.json": "9b0d4c15362ab9f72bfda8952223b391fc4108db19cce6438dfc5ff45995bb90"
+  },
+  "preserved_historical_files": 605,
+  "preserved_shared_objects": 243,
+  "reviews_complete": false,
+  "limits": [
+    "No canonical source-replacement mutants.",
+    "Pinned external transitive cache baseline; all direct source/object pairs explicitly revalidated.",
+    "Native Python/NumPy versions, tiny synthetic fixtures with declared floating-point tolerances and source/AST hashes are recorded; source translation remains outside Lean kernel.",
+    "No physical inverse certificate, continuum convergence, conservation, channel completeness or certified numerical intervals."
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "engine": "grok",
+  "session_id": "7456fb0d-7ef5-4dd0-a70f-213224a15e00",
+  "command": [
+    "/home/trevnorris/.local/bin/grok",
+    "--cwd",
+    "/tmp/s11-lean-flux-fidelity-q_fjrf79/packet",
+    "--prompt-file",
+    "/tmp/s11-lean-flux-fidelity-q_fjrf79/packet/_measurements/S11_lean_flux_review_prompt.txt",
+    "--output-format",
+    "json",
+    "--permission-mode",
+    "dontAsk",
+    "--no-plan",
+    "--tools",
+    "Read",
+    "--no-subagents",
+    "--disable-web-search",
+    "--verbatim",
+    "--session-id",
+    "7456fb0d-7ef5-4dd0-a70f-213224a15e00"
+  ],
+  "cwd": "/tmp/s11-lean-flux-fidelity-q_fjrf79/packet",
+  "packet_sha256": "5945c5b4b9d980613e7ff1c31261547a50f559799c14250173e325d0e02584ae",
+  "prompt_sha256": "cebb61ac71decc2c0b67f6e4eddf2794891b47057eedad5087bf6f3c940a15a9",
+  "status": "ERROR",
+  "review_verdict": "NOT_ADJUDICATED",
+  "guard_directory": "/var/projects/toy_physics/_scratch/s11c/lean_flux_review3_grok",
+  "prior_attempt": "_measurements/S11_lean_flux_fidelity_grok_v1_attempt2_run.json",
+  "prior_attempt_sha256": "5ed1a73443b443b555002dc84f7de3f3270fd6fb4513d31e4da152f86c85a492",
+  "runtime_env": {
+    "GROK_WORKER_THREADS": "1",
+    "GROK_SUBAGENT_WORKER_THREADS": "1",
+    "TOKIO_WORKER_THREADS": "1",
+    "RAYON_NUM_THREADS": "1"
+  },
+  "repair": "User explicitly authorized 64 tasks and up to 4 GiB after two startup failures. This attempt uses 64 tasks and retains 2 GiB; five guard regressions and actual limit verification passed. Same unused original session ID retained.",
+  "prepared_utc": "2026-09-26T21:51:36.570757+00:00",
+  "started_utc": "2026-09-26T21:51:36.683094+00:00",
+  "pid": 1668616,
+  "error": "TimeoutExpired(['/home/trevnorris/.local/bin/grok', '--cwd', '/tmp/s11-lean-flux-fidelity-q_fjrf79/packet', '--prompt-file', '/tmp/s11-lean-flux-fidelity-q_fjrf79/packet/_measurements/S11_lean_flux_review_prompt.txt', '--output-format', 'json', '--permission-mode', 'dontAsk', '--no-plan', '--tools', 'Read', '--no-subagents', '--disable-web-search', '--verbatim', '--session-id', '7456fb0d-7ef5-4dd0-a70f-213224a15e00'], 799.9999861370306)",
+  "finished_utc": "2026-09-26T22:04:56.698849+00:00",
+  "wall_seconds": 800.016,
+  "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "guard_outcome": {
+    "exitCode": 1,
+    "wallSeconds": 800.1483133220463,
+    "unit": "s11c-guard-52f875e87bc5",
+    "stderrBytes": 0,
+    "limitsVerified": true,
+    "childOutcome": {
+      "exitCode": 1,
+      "guardReason": null,
+      "wallSeconds": 800.0893716849969,
+      "childPid": 1668615
+    }
+  },
+  "guard_outcome_sha256": "0bd8e0ed16533105982f068740edd7001b92acd2922109f208f95a69cfb7006e"
+}

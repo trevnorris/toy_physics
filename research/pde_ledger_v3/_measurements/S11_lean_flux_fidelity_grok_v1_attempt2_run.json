@@ -1,0 +1,60 @@
+{
+  "engine": "grok",
+  "session_id": "7456fb0d-7ef5-4dd0-a70f-213224a15e00",
+  "command": [
+    "/home/trevnorris/.local/bin/grok",
+    "--cwd",
+    "/tmp/s11-lean-flux-fidelity-q_fjrf79/packet",
+    "--prompt-file",
+    "/tmp/s11-lean-flux-fidelity-q_fjrf79/packet/_measurements/S11_lean_flux_review_prompt.txt",
+    "--output-format",
+    "json",
+    "--permission-mode",
+    "dontAsk",
+    "--no-plan",
+    "--tools",
+    "Read",
+    "--no-subagents",
+    "--disable-web-search",
+    "--verbatim",
+    "--session-id",
+    "7456fb0d-7ef5-4dd0-a70f-213224a15e00"
+  ],
+  "cwd": "/tmp/s11-lean-flux-fidelity-q_fjrf79/packet",
+  "packet_sha256": "5945c5b4b9d980613e7ff1c31261547a50f559799c14250173e325d0e02584ae",
+  "prompt_sha256": "cebb61ac71decc2c0b67f6e4eddf2794891b47057eedad5087bf6f3c940a15a9",
+  "status": "ERROR",
+  "review_verdict": "NOT_ADJUDICATED",
+  "guard_directory": "/var/projects/toy_physics/_scratch/s11c/lean_flux_review2_grok",
+  "prior_attempt": "_measurements/S11_lean_flux_fidelity_grok_v1_run.json",
+  "prior_attempt_sha256": "70a79f416869c662103ff8233fc3d12bf3bcab6cac6fffee4a426d321fbbbfa1",
+  "runtime_env": {
+    "GROK_WORKER_THREADS": "1",
+    "GROK_SUBAGENT_WORKER_THREADS": "1",
+    "TOKIO_WORKER_THREADS": "1",
+    "RAYON_NUM_THREADS": "1"
+  },
+  "repair": "Inspected startup thread failure; reduce runtime pools, retaining all guard limits. No existing persisted session was found, so the unused original session ID is retained.",
+  "prepared_utc": "2026-09-26T21:41:10.030208+00:00",
+  "started_utc": "2026-09-26T21:41:10.145289+00:00",
+  "pid": 1659485,
+  "exit_status": -6,
+  "finished_utc": "2026-09-26T21:41:15.250449+00:00",
+  "wall_seconds": 5.105,
+  "output_sha256": "17943f245411e038bfc157d4642dc88ee3e76b601fad0b32a75ccf904a395d9e",
+  "stderr_sha256": "5945a862a6327d2d06d9f60e409325ca143f449c192d64eefc82efb6dd34107a",
+  "guard_outcome": {
+    "exitCode": 1,
+    "wallSeconds": 5.2421252420172095,
+    "unit": "s11c-guard-b3e9055c6e82",
+    "stderrBytes": 0,
+    "limitsVerified": true,
+    "childOutcome": {
+      "exitCode": 1,
+      "guardReason": null,
+      "wallSeconds": 5.176808809977956,
+      "childPid": 1659484
+    }
+  },
+  "guard_outcome_sha256": "24f54766ae5e7f96ba299fda7390728d1c3eda238fd6282c5193ea35aa6142e1"
+}

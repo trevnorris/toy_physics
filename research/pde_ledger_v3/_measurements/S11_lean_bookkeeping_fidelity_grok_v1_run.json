@@ -1,0 +1,63 @@
+{
+  "engine": "grok",
+  "session_id": "40f0b524-f075-4cd8-a14e-4ea13a55b699",
+  "command": [
+    "/home/trevnorris/.local/bin/grok",
+    "--cwd",
+    "/tmp/s11-lean-bookkeeping-fidelity-fet26phx/packet",
+    "--prompt-file",
+    "/tmp/s11-lean-bookkeeping-fidelity-fet26phx/packet/_measurements/S11_lean_bookkeeping_review_prompt.txt",
+    "--output-format",
+    "json",
+    "--permission-mode",
+    "dontAsk",
+    "--no-plan",
+    "--tools",
+    "Read",
+    "--no-subagents",
+    "--disable-web-search",
+    "--verbatim",
+    "--session-id",
+    "40f0b524-f075-4cd8-a14e-4ea13a55b699"
+  ],
+  "cwd": "/tmp/s11-lean-bookkeeping-fidelity-fet26phx/packet",
+  "packet_sha256": "5c0a6c321424ae09c70e61442f73d1982c9aba49ac7d33d0503b610cb2baa9de",
+  "prompt_sha256": "f5e0e502dc272b39bfdcb0fa876a35117ace2fb712f4da18ee45a7bb721f4580",
+  "requested_scope": "Independent P1\u2013P4 source fidelity review; no scientific execution.",
+  "status": "ERROR",
+  "review_verdict": "NOT_ADJUDICATED",
+  "guard_directory": "/var/projects/toy_physics/_scratch/s11c/lean_bookkeeping_review1_grok",
+  "prepared_utc": "2026-09-26T23:05:43.368666+00:00",
+  "runtime_env": {
+    "GROK_WORKER_THREADS": "1",
+    "GROK_SUBAGENT_WORKER_THREADS": "1",
+    "TOKIO_WORKER_THREADS": "1",
+    "RAYON_NUM_THREADS": "1"
+  },
+  "resource_limits": {
+    "tasks_max": 64,
+    "memory_gib": 2
+  },
+  "reviewer_sha256": "ac0141831fe92f4a443eca62d56f6cb6d95e83e07a053c664f33e5781fe60c2e",
+  "started_utc": "2026-09-26T23:05:45.550368+00:00",
+  "pid": 1751767,
+  "exit_status": -6,
+  "finished_utc": "2026-09-26T23:15:46.354625+00:00",
+  "wall_seconds": 600.803,
+  "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stderr_sha256": "13731d208c5403a2cd4796ca2a89b79af9c776a7f30d4e26f15fe115214e794b",
+  "guard_outcome": {
+    "exitCode": 1,
+    "wallSeconds": 602.2299769429956,
+    "unit": "s11c-guard-7ff86ccf7206",
+    "stderrBytes": 0,
+    "limitsVerified": true,
+    "childOutcome": {
+      "exitCode": 1,
+      "guardReason": null,
+      "wallSeconds": 601.1425017020083,
+      "childPid": 1751717
+    }
+  },
+  "guard_outcome_sha256": "147a21b3be0db80b9cacde7781b439dd03c9cb357616feac50d06249f4159c76"
+}

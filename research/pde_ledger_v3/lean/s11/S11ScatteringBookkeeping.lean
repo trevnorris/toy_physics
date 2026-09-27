@@ -1,0 +1,35 @@
+import S11ScatteringBookkeeping.Controls
+
+#print axioms S11ScatteringBookkeeping.rectangle_decomposition
+#print axioms S11ScatteringBookkeeping.rectangle_path
+#print axioms S11ScatteringBookkeeping.baseline_free
+#print axioms S11ScatteringBookkeeping.path_does_not_identify_rectangle
+#print axioms S11ScatteringBookkeeping.pair_smul_left
+#print axioms S11ScatteringBookkeeping.pair_smul_right
+#print axioms S11ScatteringBookkeeping.pair_smul_matrix
+#print axioms S11ScatteringBookkeeping.quadratic_exact
+#print axioms S11ScatteringBookkeeping.retained_with_remainder
+#print axioms S11ScatteringBookkeeping.real_flux_expansion
+#print axioms S11ScatteringBookkeeping.flux_epsilon_squared
+#print axioms S11ScatteringBookkeeping.quotient_equations
+#print axioms S11ScatteringBookkeeping.quotient_unique
+#print axioms S11ScatteringBookkeeping.quotient_residual
+#print axioms S11ScatteringBookkeeping.leading_denominator_cases
+#print axioms S11ScatteringBookkeeping.zero_leading_obstruction
+#print axioms S11ScatteringBookkeeping.scaled_denominator_nonzero
+#print axioms S11ScatteringBookkeeping.epsilon_cancels
+#print axioms S11ScatteringBookkeeping.subtracted_total
+#print axioms S11ScatteringBookkeeping.subtracted_eq_induced_iff
+#print axioms S11ScatteringBookkeeping.baseline_zero_total
+#print axioms S11ScatteringBookkeeping.induced_coefficient
+#print axioms S11ScatteringBookkeeping.induced_low_coefficients
+#print axioms S11ScatteringBookkeeping.path_witness
+#print axioms S11ScatteringBookkeeping.delta_witness
+#print axioms S11ScatteringBookkeeping.second_witness
+#print axioms S11ScatteringBookkeeping.first_witness
+#print axioms S11ScatteringBookkeeping.higher_witness
+#print axioms S11ScatteringBookkeeping.induced_witness
+#print axioms S11ScatteringBookkeeping.subtracted_witness
+#print axioms S11ScatteringBookkeeping.parent_second_witness
+#print axioms S11ScatteringBookkeeping.epsilon_witness
+#print axioms S11ScatteringBookkeeping.zero_model_two_solutions

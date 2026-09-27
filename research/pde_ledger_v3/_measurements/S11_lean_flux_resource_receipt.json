@@ -1,0 +1,48 @@
+{
+  "status": "PASS",
+  "outcome": {
+    "exitCode": 0,
+    "wallSeconds": 67.90673917595996,
+    "unit": "s11c-guard-ab125fe525bd",
+    "stderrBytes": 0,
+    "limitsVerified": true,
+    "childOutcome": {
+      "exitCode": 0,
+      "guardReason": null,
+      "wallSeconds": 67.8290926470072,
+      "childPid": 1617437
+    }
+  },
+  "effective_limits": {
+    "memory.max": "2147483648",
+    "memory.swap.max": "0",
+    "pids.max": "32",
+    "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-ab125fe525bd.service",
+    "nice": 15,
+    "affinity": [
+      15
+    ],
+    "threads": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1",
+      "VECLIB_MAXIMUM_THREADS": "1",
+      "BLIS_NUM_THREADS": "1"
+    }
+  },
+  "observed_peak_bytes": 250314752,
+  "sample_count": 35,
+  "max_oom_swap_events": 0,
+  "receipt_sha256": {
+    "_scratch/s11c/lean_flux_verification_run8/stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "_scratch/s11c/lean_flux_verification_run8/child-outcome.json": "40f8ce09cf100018c9432f5e694f7489c1f790d5965f2a78c7fed3d5857bb243",
+    "_scratch/s11c/lean_flux_verification_run8/invocation.json": "46c7a7a6d2c59dd8b1e02ad89b2248a1df6602e28bddae2de7db9c566b960c08",
+    "_scratch/s11c/lean_flux_verification_run8/outcome.json": "f3e34abc050984d29859e910a06b2ada8d6390fdad319e9ac9fc81f063a8baf6",
+    "_scratch/s11c/lean_flux_verification_run8/resource-samples.jsonl": "26f0c4529bf5c83f06662c14d589787842c7bac11e4726497e1b88e886617f4b",
+    "_scratch/s11c/lean_flux_verification_run8/stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "_scratch/s11c/lean_flux_verification_run8/limit-validation.json": "80ca5a632bb71dd70f45f6115dd5256395a61569db630a5ede69a1a4eb7142cb",
+    "_scratch/s11c/lean_flux_verification_run8/effective-limits.json": "ebe3d8b9f6000bf7eb345c774afdca8c4653fc9209a0a864b1d11c4d5ac032c5"
+  },
+  "limit": "Peak/events from saved cgroup samples; no new job executed."
+}

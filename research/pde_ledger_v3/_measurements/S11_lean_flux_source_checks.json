@@ -1,0 +1,78 @@
+{
+  "status": "PASS",
+  "source_sha256": {
+    "_measurements/S11c_d_continuum_currents.py": "44ead83416dd8baa4fb0dedf16ef26a33fd810308112b6aa333dfc53fe75b8e0",
+    "_measurements/S11c_d_continuum_response.py": "0fe30a9c4771671e9fa139b0557f185f55d351887f2ba8b9fa4ed1abfb616db2",
+    "scripts/S11c_d_mixing_scattering_sympy_audit.py": "5bf77729682960bb59f10c672a5fe3f67a98b0a9533da7c6189a37183596050f",
+    "directives/S11c_d_SHARED_PHYSICS.md": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5"
+  },
+  "instrument_sha256": "6ecf29c02438243f69ab7e9a2fb3cfc3b7062aa4fc3307a150c2822f6e7210eb",
+  "selected_ast_sha256": {
+    "engine:multiply": "6de3b5ea984f47c51684beb6ba911d515f270430c5879b83a4d68768459b78de",
+    "response:adjoint,gram": "434c88762a642369bbdf59ee152f667285afaca5bb02e1a8bdfaec7f7533e59c",
+    "current:multiply,quadratic": "3082e61006f6f7bee2bef784b0ac956583a5f752ec23e5edcb6fc2b6fff6532e"
+  },
+  "checks": [
+    {
+      "name": "complex_current_with_cross_terms",
+      "passed": true
+    },
+    {
+      "name": "transpose_is_not_adjoint",
+      "passed": true,
+      "kind": "wrong-formula control"
+    },
+    {
+      "name": "diagonal_current_omits_interference",
+      "passed": true,
+      "kind": "wrong-formula control"
+    },
+    {
+      "name": "transposed_current_changes_form",
+      "passed": true,
+      "kind": "wrong-formula control"
+    },
+    {
+      "name": "full_boundary_decomposition",
+      "passed": true
+    },
+    {
+      "name": "native_gram_is_congruence",
+      "passed": true
+    },
+    {
+      "name": "basis_covariance",
+      "passed": true
+    },
+    {
+      "name": "basis_metric_not_updated",
+      "passed": true,
+      "kind": "wrong-formula control"
+    },
+    {
+      "name": "zero_amplitude",
+      "passed": true
+    },
+    {
+      "name": "indefinite_null_nonzero",
+      "passed": true
+    },
+    {
+      "name": "empty_amplitude_space",
+      "passed": true
+    },
+    {
+      "name": "mutated_original_adjoint_detected",
+      "passed": true,
+      "kind": "wrong-formula control"
+    }
+  ],
+  "orientation_anchor": "open_metrics: outgoing s*a, incoming -s*a; source inspection only",
+  "scope": "Grade-zero full complex current contractions and basis pullback, exact small fixtures.",
+  "limits": [
+    "Selected AST functions only; no production imports or saved physical operands.",
+    "No physical solve, current reality/positivity, numerical channel census or convergence certified.",
+    "Translation and NumPy arithmetic are outside the Lean kernel.",
+    "Full retained-grade bookkeeping belongs to the separate follow-on increment."
+  ]
+}

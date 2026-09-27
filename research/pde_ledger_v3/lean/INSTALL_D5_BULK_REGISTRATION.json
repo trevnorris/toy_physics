@@ -1,0 +1,42 @@
+{
+  "status": "PASS_REGISTRATION_ONLY",
+  "date": "2026-09-26",
+  "target": "d5-bulk",
+  "local_modules": 60,
+  "controls": 32,
+  "rejections": 14,
+  "positives": 18,
+  "native_prefixes": [
+    "S11_lean_d5_bulk"
+  ],
+  "generator": "S11_lean_d5_generate.py, selected by transitive import graph",
+  "tooling_regressions": 10,
+  "tooling_log": "_scratch/S11_lean_flux/focused_run1/tooling.log",
+  "tooling_log_sha256": "6a78fa2783b8353cd7da97cfb51abae8dbd5a22f5e7a8df61d1e9083ff9d3bf1",
+  "inputs": {
+    "verify.py": "83a61936bc0c9a49ec5337a27b263aff94f9a61779bd118937d1ccfb884458f7",
+    "test_verify.py": "229660f9ad5899644ee0256cc5e7c90ef36bbe0c3605c0e71f94239b5f55821c",
+    "test_setup.py": "9864b85cb15000f77ac61cec516e9e40e041962e58ee8c7ca767c98125c9b971",
+    "README.md": "b0933899fcb329f1c3639e69362bad15623a5c59a124bac3e233de3c26de7164",
+    "INSTALL.md": "37eade8c871e135e612dbcaceebe56b96eeaf9bd99c89676a7a291aa5c3b98bb",
+    "s11/README.md": "994a71d50bef514942c665bf389e65e7a45992bc4f9e55f940a1b066d51cba30"
+  },
+  "historical_unchanged": {
+    "INSTALL_VALIDATION.json": "118855cdee606c784b6533a12466c99e85ac417678ea43a653128b57b1cd8fc4",
+    "INSTALL_D5_VALIDATION.json": "f3d14dc57df21e59398c8f01b84cfd0614058362bac93cb62102dee9df2d5d8f"
+  },
+  "reviewed_contract_report_sha256": "7e69b7fe73333892f84fe980737f49c6aa3e41bd47484364a0d0bbb196bae429",
+  "limits": [
+    "Catalog/input/adjudication validation; no new fresh-object D5 bulk replay.",
+    "Original proof verification and two fidelity reviews remain at commit 2bd43667.",
+    "Guarded first new flux probe stopped before Lean proof checking because external caches were missing; unrelated to catalog validation."
+  ],
+  "documentation_updates": {
+    "s11/README.md": {
+      "registration_sha256": "994a71d50bef514942c665bf389e65e7a45992bc4f9e55f940a1b066d51cba30",
+      "current_sha256": "15a0c85e649496f647f3dac0e3339de0a557c7dbf939318ca1b833ae4c6d11a1",
+      "reason": "Documentation-only F1\u2013F4 review closure; both reviewers CLEAR. Original registration inputs and test evidence remain unchanged; no new D5B replay.",
+      "prior_documentation_sha256": "23187e0552e1319848a639dde155705528583581e7faeb402ea96f26b8ed3c7c"
+    }
+  }
+}

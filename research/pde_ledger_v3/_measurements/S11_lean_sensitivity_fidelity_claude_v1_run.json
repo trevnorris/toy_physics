@@ -1,0 +1,61 @@
+{
+  "engine": "claude",
+  "session_id": "7a126cce-7ce0-4fb8-9b8d-9bb3ff858ee1",
+  "command": [
+    "/home/trevnorris/.local/bin/claude",
+    "--print",
+    "--output-format",
+    "json",
+    "--safe-mode",
+    "--restricted",
+    "--tools",
+    "Read,Glob,Grep",
+    "--allowedTools",
+    "Read,Glob,Grep",
+    "--permission-mode",
+    "dontAsk",
+    "--strict-mcp-config",
+    "--mcp-config",
+    "{\"mcpServers\":{}}",
+    "--setting-sources",
+    "",
+    "--disable-slash-commands",
+    "--session-id",
+    "7a126cce-7ce0-4fb8-9b8d-9bb3ff858ee1"
+  ],
+  "cwd": "/tmp/s11-lean-sensitivity-fidelity-kd9iepe6/packet",
+  "packet_sha256": "c9ffaf85dfdd5bfd9dd2e34840cddc22fe1e4df9afdcbf926dd02c8931eba938",
+  "prompt_sha256": "b55b493ebaa5308916c8dc43418b07d1b915f1215a48bc049d08c1b46b19c813",
+  "requested_scope": "Independent S1\u2013S4 source fidelity review; no scientific execution.",
+  "status": "RETURNED",
+  "review_verdict": "NOT_ADJUDICATED",
+  "guard_directory": "/var/projects/toy_physics/_scratch/s11c/lean_sensitivity_review1_claude",
+  "prepared_utc": "2026-09-27T02:45:04.096913+00:00",
+  "runtime_env": {},
+  "resource_limits": {
+    "tasks_max": 32,
+    "memory_gib": 2
+  },
+  "reviewer_sha256": "925a3bdfcc2e53360c7c43b13fcee7abf2c1d9f38c8ed1f1540f84cce1ef2b5b",
+  "started_utc": "2026-09-27T02:45:04.207081+00:00",
+  "pid": 2035747,
+  "exit_status": 0,
+  "finished_utc": "2026-09-27T02:48:35.685365+00:00",
+  "wall_seconds": 211.478,
+  "output_sha256": "b956302ef6700b1cbdcfe6f00411926527d02a6eb927dc647635d0e56b2e807d",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "guard_outcome": {
+    "exitCode": 0,
+    "wallSeconds": 211.63702427601675,
+    "unit": "s11c-guard-a6e7d4261009",
+    "stderrBytes": 0,
+    "limitsVerified": true,
+    "childOutcome": {
+      "exitCode": 0,
+      "guardReason": null,
+      "wallSeconds": 211.56869727896992,
+      "childPid": 2035746
+    }
+  },
+  "guard_outcome_sha256": "deaae0353a403059f2f7730093ea2d994b612e278e2cde744c77720c87b1615c"
+}

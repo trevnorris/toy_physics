@@ -1,0 +1,273 @@
+{
+  "status": "PASS",
+  "validated_utc": "2026-09-26T22:53:37.576481+00:00",
+  "method": "Read-only current/snapshot/recorded-log/object/pin comparison and re-adjudication; no scientific rerun.",
+  "run": "_scratch/S11_lean_bookkeeping/verification_run7/evidence",
+  "checks": 44,
+  "canonical_objects": 7,
+  "standard_axiom_audits": 33,
+  "mathematical_rejections": 16,
+  "positive_controls": 20,
+  "native_check_kinds": {
+    "identity": 30,
+    "wrong-formula control": 11,
+    "domain witness": 1
+  },
+  "native_runtime": {
+    "python": "3.10.12",
+    "numpy": "1.26.4"
+  },
+  "native_execution_lineage": {
+    "execution": {
+      "name": "native",
+      "command": [
+        "/usr/bin/python3",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11_lean_bookkeeping_source_check.py"
+      ],
+      "expected": "PASS",
+      "exit_status": 0,
+      "passed": true,
+      "seconds": 0.116,
+      "log": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_bookkeeping/verification_run1/evidence/logs/native.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output": ""
+    },
+    "original_failed_formal_run_sha256": "d4424730f686ca46d263d585288389599d122196956e028f1d6819cd767e99fc",
+    "original_native_instrument_sha256": "aa7f9f6bb2fa0d15158450f69647dd425d60c2235b61f942359b5d6b6bc40c1b",
+    "native_report_sha256": "02ccf56aa4853699391b6fcd1c3f2d30c689008716ad7e79bd2d7a46e0ce1c19",
+    "guard_outcome": {
+      "exitCode": 1,
+      "wallSeconds": 7.133355503028724,
+      "unit": "s11c-guard-ba536f6ed7a2",
+      "stderrBytes": 350,
+      "limitsVerified": true,
+      "childOutcome": {
+        "exitCode": 1,
+        "guardReason": null,
+        "wallSeconds": 7.0752215050160885,
+        "childPid": 1698054
+      }
+    },
+    "effective_limits": {
+      "memory.max": "2147483648",
+      "memory.swap.max": "0",
+      "pids.max": "32",
+      "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-ba536f6ed7a2.service",
+      "nice": 15,
+      "affinity": [
+        15
+      ],
+      "threads": {
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "VECLIB_MAXIMUM_THREADS": "1",
+        "BLIS_NUM_THREADS": "1"
+      }
+    },
+    "guard_receipt_sha256": {
+      "_scratch/s11c/lean_bookkeeping_verification_run1/stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "_scratch/s11c/lean_bookkeeping_verification_run1/child-outcome.json": "f656758ab2cfa623ef518532648addc65ee5d53fe15f1d62eb0d289b420bcfb2",
+      "_scratch/s11c/lean_bookkeeping_verification_run1/invocation.json": "cf42c1e1952a4c1ba30dd838f2dfb5d4165e55aba20e92f71bcd1c7a2dd900f1",
+      "_scratch/s11c/lean_bookkeeping_verification_run1/outcome.json": "da65663e182376a2e1c7165829be05fbd51a765aa58a9631ac92d095ba87e76d",
+      "_scratch/s11c/lean_bookkeeping_verification_run1/resource-samples.jsonl": "29b4709bda5eab4e8a229b4295f201c74b947bf3c1b59a5ffe2e8bb5b103aee9",
+      "_scratch/s11c/lean_bookkeeping_verification_run1/stderr": "c1d74c2cb6630ecc0a521d99dd19c35c9e88a5324f30bb53a8ea910350c7e147",
+      "_scratch/s11c/lean_bookkeeping_verification_run1/limit-validation.json": "d9337464c10a98da42528d2a3c1c1b4bca145c7d08852ac467bb9d5c36435814",
+      "_scratch/s11c/lean_bookkeeping_verification_run1/effective-limits.json": "cb76750b0d294f7c71f8d37d6c5a96c8e7ae25b3ef25fc76f45afb1be5d28b77"
+    },
+    "meaning": "Native check actually passed before unrelated formal failure in run1; run7 revalidates this exact evidence, without claiming run1 as a formal pass."
+  },
+  "source_sha256": {
+    "lean/s11/S11ScatteringBookkeeping/Controls.lean": "427a0a16cd91fb82997b0a3bb3033005360007e12cf0b916c371b0bd194c9a73",
+    "lean/lakefile.toml": "2dd99ce804fbeb5a4a07843d00a25c9c3d4f41052ff884b6b4bf8e04cf60a3a2",
+    "lean/s11/S11ScatteringBookkeeping/Path.lean": "0c64740892624259edd60d409772ad49d7089180558b187c5897666184abfd37",
+    "_measurements/S11_lean_bookkeeping_contract_check.py": "57857de623edcff77461b0225b88435bd093816e2e6b185e089ea9063932d86d",
+    "lean/s11/S11ScatteringBookkeeping/Quadratic.lean": "8ddc958e4c57b6cb59dd1bcf6c568d2914c4a9718945d1da1dca57ceb0679190",
+    "lean/s11/S11ScatteringBookkeeping.lean": "961bea1256a5acc2e37c8e7b44d2f52d9230c99aeb871036b7713962d109134f",
+    "lean/verify.py": "83a61936bc0c9a49ec5337a27b263aff94f9a61779bd118937d1ccfb884458f7",
+    "lean/s11/S11ScatteringFlux/Current.lean": "bfd5266214299b650865b4d8f6f4f8da630380ef78f81ded0ba592c5fdb6c0d5",
+    "lean/s11/S11ScatteringBookkeeping/Quotient.lean": "54c859ee3a9586c996fe3887f04cf0b0d2eb45dc283cce22411d5943b6d855bd",
+    "lean/lean-toolchain": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+    "lean/lake-manifest.json": "91fd5318cdc35e4044d6e059c6ef73d94b955d27adf8a5860b07ec92add9377e",
+    "lean/s11/S11ScatteringBookkeeping/Observables.lean": "af5d814c79344f39b885dd8f00a5cc5d9732fcbf9ca2bd09d638c93188e4c014",
+    "_measurements/S11_lean_bookkeeping_source_check.py": "aa7f9f6bb2fa0d15158450f69647dd425d60c2235b61f942359b5d6b6bc40c1b"
+  },
+  "native_source_sha256": {
+    "_measurements/S11c_d_continuum_currents.py": "44ead83416dd8baa4fb0dedf16ef26a33fd810308112b6aa333dfc53fe75b8e0",
+    "_measurements/S11c_d_continuum_response.py": "0fe30a9c4771671e9fa139b0557f185f55d351887f2ba8b9fa4ed1abfb616db2",
+    "directives/S11c_d_SHARED_PHYSICS.md": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5"
+  },
+  "compiled_object_sha256": {
+    "_scratch/S11_lean_bookkeeping/verification_run7/evidence/objects/S11ScatteringFlux/Current.olean": "011606e4252ba015c630a0a3a69d9b184bee9e17ccf43603d4caa8cfce9f2358",
+    "_scratch/S11_lean_bookkeeping/verification_run7/evidence/objects/S11ScatteringBookkeeping/Path.olean": "e64f6b25e9f16925ba39d5fcb2dfa6d15193eed3038ee45cdcb78815128bf8d0",
+    "_scratch/S11_lean_bookkeeping/verification_run7/evidence/objects/S11ScatteringBookkeeping/Quadratic.olean": "65e6bb5578253d7d1ce9f20b78ba17270b982244c2865991cf3a7d7aa3c45074",
+    "_scratch/S11_lean_bookkeeping/verification_run7/evidence/objects/S11ScatteringBookkeeping/Observables.olean": "300d79b354dd863b130ffeedce59c1a433450976070e0e54e194cd3495aa658c",
+    "_scratch/S11_lean_bookkeeping/verification_run7/evidence/objects/S11ScatteringBookkeeping/Quotient.olean": "53be4227028c03f6f4736aa05679307a28b7968d935f0db340f8c5507ddb3038",
+    "_scratch/S11_lean_bookkeeping/verification_run7/evidence/objects/S11ScatteringBookkeeping/Controls.olean": "57024ae9c79cbdab4567beb1629b91c91d6a65005eacd811084470f680dde823",
+    "_scratch/S11_lean_bookkeeping/verification_run7/evidence/objects/S11ScatteringBookkeeping.olean": "dcd09dc75ee632cc655599a07570829b1ef38e8ecd2e8bd3af7e2898f17ee55e"
+  },
+  "log_sha256": {
+    "_scratch/S11_lean_bookkeeping/verification_run7/evidence/logs/build_S11ScatteringFlux.Current.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "_scratch/S11_lean_bookkeeping/verification_run7/evidence/logs/build_S11ScatteringBookkeeping.Path.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "_scratch/S11_lean_bookkeeping/verification_run7/evidence/logs/build_S11ScatteringBookkeeping.Quadratic.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "_scratch/S11_lean_bookkeeping/verification_run7/evidence/logs/build_S11ScatteringBookkeeping.Observables.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "_scratch/S11_lean_bookkeeping/verification_run7/evidence/logs/build_S11ScatteringBookkeeping.Quotient.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "_scratch/S11_lean_bookkeeping/verification_run7/evidence/logs/build_S11ScatteringBookkeeping.Controls.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "_scratch/S11_lean_bookkeeping/verification_run7/evidence/logs/build_S11ScatteringBookkeeping.log": "e7ac150c3c3a96fd3f403e746bc2204da1bc09895df1ef2b5ba0fd101576b8f4",
+    "_scratch/S11_lean_bookkeeping/verification_run7/evidence/logs/path_ratio_positive.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "_scratch/S11_lean_bookkeeping/verification_run7/evidence/logs/path_ratio_mutant.log": "3778b2428ba712a6639e7cfb0fdc6c2abffbb9bccab750999f2c63a507c9e5de",
+    "_scratch/S11_lean_bookkeeping/verification_run7/evidence/logs/delta_zero_jet_positive.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "_scratch/S11_lean_bookkeeping/verification_run7/evidence/logs/delta_zero_jet_mutant.log": "e14dc06eaa2b97f39a552b15c079a9ae4db21fa65208ae52f6fad5d900a26a79",
+    "_scratch/S11_lean_bookkeeping/verification_run7/evidence/logs/first_interference_positive.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "_scratch/S11_lean_bookkeeping/verification_run7/evidence/logs/first_interference_mutant.log": "53005128ec40cd6993a62bf5c2f53b723207fbc1931bb867770312ac61f4beb5",
+    "_scratch/S11_lean_bookkeeping/verification_run7/evidence/logs/current_variation_positive.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "_scratch/S11_lean_bookkeeping/verification_run7/evidence/logs/current_variation_mutant.log": "a160a04de158efc443bb6230aee37e3a702bced02adc9133a760b813eee825e6",
+    "_scratch/S11_lean_bookkeeping/verification_run7/evidence/logs/second_amplitude_positive.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "_scratch/S11_lean_bookkeeping/verification_run7/evidence/logs/second_amplitude_mutant.log": "3b632dc3fc889e25d4c9b4e69947ed2678eb4e8f53259992cc48bfcdfa210918",
+    "_scratch/S11_lean_bookkeeping/verification_run7/evidence/logs/baseline_interference_positive.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "_scratch/S11_lean_bookkeeping/verification_run7/evidence/logs/baseline_interference_mutant.log": "2eff49cc3ee63d73583f18b52f3348b731e91c2c6ea1493279b94b7243df6732",
+    "_scratch/S11_lean_bookkeeping/verification_run7/evidence/logs/higher_terms_positive.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "_scratch/S11_lean_bookkeeping/verification_run7/evidence/logs/higher_terms_mutant.log": "3171a4edcb689284083cf9e1a3341db3a9e1dddb3f2182b2a3fc7b6d32ebd2f2",
+    "_scratch/S11_lean_bookkeeping/verification_run7/evidence/logs/induced_leading_positive.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "_scratch/S11_lean_bookkeeping/verification_run7/evidence/logs/induced_leading_mutant.log": "f96bb778527376a4a658f2ee456cd983eaf9610f0afd08cb04b69f19331d7136",
+    "_scratch/S11_lean_bookkeeping/verification_run7/evidence/logs/subtracted_is_not_induced_positive.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "_scratch/S11_lean_bookkeeping/verification_run7/evidence/logs/subtracted_is_not_induced_mutant.log": "077482ddf074d161406b2604f27ec6e7e41b947c50281ca87efdfd04de70c985",
+    "_scratch/S11_lean_bookkeeping/verification_run7/evidence/logs/omitted_parent_second_positive.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "_scratch/S11_lean_bookkeeping/verification_run7/evidence/logs/omitted_parent_second_mutant.log": "3638e3f592d354ae1fce213fc4b6553db17d7cb9c945d35e95e5294cc3999608",
+    "_scratch/S11_lean_bookkeeping/verification_run7/evidence/logs/epsilon_squared_positive.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "_scratch/S11_lean_bookkeeping/verification_run7/evidence/logs/epsilon_squared_mutant.log": "b79c74af5c6fdd3dd0bd40724df9f2e90acc775f87991bc46a8d7f3e797676f8",
+    "_scratch/S11_lean_bookkeeping/verification_run7/evidence/logs/leading_normalization_positive.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "_scratch/S11_lean_bookkeeping/verification_run7/evidence/logs/leading_normalization_mutant.log": "23faef2cad029bf74bed9f214b2cf99cbed29d59330afdb273d77853f46f21fd",
+    "_scratch/S11_lean_bookkeeping/verification_run7/evidence/logs/incident_first_positive.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "_scratch/S11_lean_bookkeeping/verification_run7/evidence/logs/incident_first_mutant.log": "2f510a9046b4cbd655321d1ff38c738fb4fc3038357fb9b55ea8a61dd956c14c",
+    "_scratch/S11_lean_bookkeeping/verification_run7/evidence/logs/incident_second_positive.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "_scratch/S11_lean_bookkeeping/verification_run7/evidence/logs/incident_second_mutant.log": "b902e8c0256f228645b3b47fcec2abeae68b3b18d4b3c757dec6a6fcd176a03b",
+    "_scratch/S11_lean_bookkeeping/verification_run7/evidence/logs/negative_leading_positive.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "_scratch/S11_lean_bookkeeping/verification_run7/evidence/logs/negative_leading_mutant.log": "fd5a7163494abb16579d42cae6b3e0ee62b5f5b6076cc5cce306211f3c7abe1a",
+    "_scratch/S11_lean_bookkeeping/verification_run7/evidence/logs/zero_model_two_constants_positive.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "_scratch/S11_lean_bookkeeping/verification_run7/evidence/logs/zero_model_two_constants_mutant.log": "62c8f18853210b0ba6ce58de6fb7e3a78e08f653a0df5e6a1725ed6af04ecb69",
+    "_scratch/S11_lean_bookkeeping/verification_run7/evidence/logs/actual_quotient_equations_positive.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "_scratch/S11_lean_bookkeeping/verification_run7/evidence/logs/zero_obstruction_positive.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "_scratch/S11_lean_bookkeeping/verification_run7/evidence/logs/zero_nonunique_positive.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "_scratch/S11_lean_bookkeeping/verification_run7/evidence/logs/empty_amplitude_positive.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "dependencies": {
+    "packages": [
+      {
+        "name": "Physlib",
+        "commit": "8b2b23701c07409f882c49e0bd290a214e44450c"
+      },
+      {
+        "name": "mathlib",
+        "commit": "db584cd6d46c92f209a44c0f1c829460d327499d"
+      },
+      {
+        "name": "\u00abdoc-gen4\u00bb",
+        "commit": "aceca4eeb5a79092eabefaa75fcb72b701d02205"
+      },
+      {
+        "name": "plausible",
+        "commit": "b7eb3304aeae834b12dda98993a37f6a41f6f0bb"
+      },
+      {
+        "name": "LeanSearchClient",
+        "commit": "5f4d51b81cbd3f6b32b156bfad9056621a040404"
+      },
+      {
+        "name": "importGraph",
+        "commit": "16f02aa7642864af59f1ff0e384a015994db9118"
+      },
+      {
+        "name": "proofwidgets",
+        "commit": "4be2e3d5087eeb272cf5a8853b8f9dd025ef5957"
+      },
+      {
+        "name": "aesop",
+        "commit": "3448c0bcc5ce01b2d1546e483ec3620e32df3d0e"
+      },
+      {
+        "name": "Qq",
+        "commit": "92c15be17b7caf78c2ad767ec40f89052d908d81"
+      },
+      {
+        "name": "batteries",
+        "commit": "4488d40d070b9700d4d5a6aa342f0d40c31b2a2d"
+      },
+      {
+        "name": "leansqlite",
+        "commit": "6168b7549738a19bc837a1625c60c5d1e5dd8aeb"
+      },
+      {
+        "name": "Cli",
+        "commit": "6130a47896ce867c6a4a55373441e59e565bad0f"
+      },
+      {
+        "name": "UnicodeBasic",
+        "commit": "37e7d8cb7316a88cd3e91208385c9ec6ae780019"
+      },
+      {
+        "name": "BibtexQuery",
+        "commit": "852edafa268eb038a7158551fd580ee8433847b0"
+      },
+      {
+        "name": "MD4Lean",
+        "commit": "31907cc18f48a95384f99cee5582c00fb39e0f67"
+      }
+    ],
+    "lean_version": "Lean (version 4.33.0, x86_64-unknown-linux-gnu, commit d8b18978322de05a8f3dba51ef03cf5461676c17, Release)"
+  },
+  "direct_imports": {
+    "Mathlib.LinearAlgebra.Matrix.ConjTranspose": {
+      "object_path": "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/LinearAlgebra/Matrix/ConjTranspose.olean",
+      "object_sha256": "1ac34e9f98f578907ac2620d109d45edb9faabc8a91b329ab0af4cc7cf356bbf",
+      "source_path": "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/packages/mathlib/Mathlib/LinearAlgebra/Matrix/ConjTranspose.lean",
+      "source_sha256": "10ace10899567db7c2ccd38c0e89e3bdca2261494975a42d3b1a5535c9e3b1b6"
+    },
+    "Mathlib.Data.Complex.Basic": {
+      "object_path": "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Data/Complex/Basic.olean",
+      "object_sha256": "f0dd349f6e747bb17cba310aed12ba9f0d4bd4a136baba6b576eb76146b0a992",
+      "source_path": "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/packages/mathlib/Mathlib/Data/Complex/Basic.lean",
+      "source_sha256": "e279bd6369e83ebf6716e17a8f38c81c812020753472cac5e7ae2a501790b760"
+    },
+    "Mathlib.Tactic.Ring": {
+      "object_path": "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Tactic/Ring.olean",
+      "object_sha256": "592377cbe645eff5792e1f62acbe0942fb9426841af93b4809cf468f3d79a99c",
+      "source_path": "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/packages/mathlib/Mathlib/Tactic/Ring.lean",
+      "source_sha256": "d3ef5c49ebbd1108ce3f935e5ad95485e143abf02f28c027dba4bb6f3be8196e"
+    },
+    "Mathlib.Tactic.Linarith": {
+      "object_path": "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Tactic/Linarith.olean",
+      "object_sha256": "d1d8e0c2d0421f98f32ac107c9a673d1254a6f53ce2f709f8a4a9d1ae9676bc3",
+      "source_path": "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/packages/mathlib/Mathlib/Tactic/Linarith.lean",
+      "source_sha256": "0581fd9f80f34d728ad628e7c1fb5a93d36cb9cb48d469fbc797869e83ebe0a6"
+    },
+    "Mathlib.Tactic.NormNum": {
+      "object_path": "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Tactic/NormNum.olean",
+      "object_sha256": "11db8a449ec7b0dd87d15412bf148df02af1d5bc27a339769227a06b6c66a5aa",
+      "source_path": "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/packages/mathlib/Mathlib/Tactic/NormNum.lean",
+      "source_sha256": "dca9500572c6d887000f3de17c7145b53bf35233afc1ad8026cca908cec7a2fe"
+    },
+    "Mathlib.Algebra.BigOperators.Fin": {
+      "object_path": "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Algebra/BigOperators/Fin.olean",
+      "object_sha256": "05c8903563ca8f8b875770b543bd3f1640c61d9f098ac808efd0e03c16c52beb",
+      "source_path": "/var/projects/toy_physics/research/pde_ledger_v3/lean/.lake/packages/mathlib/Mathlib/Algebra/BigOperators/Fin.lean",
+      "source_sha256": "4fe78cba9cdeac4eb8badbdd6359b055031900906fb94f3e51aba6d81451dbd5"
+    }
+  },
+  "evidence_sha256": {
+    "_measurements/S11_lean_bookkeeping_contract_checks.json": "32c4b3ad35ecaff74039f8109b6c1fceb5164690971c57ba9cccb31208f79416",
+    "_measurements/S11_lean_bookkeeping_source_checks.json": "02ccf56aa4853699391b6fcd1c3f2d30c689008716ad7e79bd2d7a46e0ce1c19",
+    "_measurements/S11_lean_bookkeeping_preserved_inputs.json": "bf603232e265d45608db403ce09e1c780248452af5ba0cf0d00cd9951247a20f",
+    "_measurements/S11_lean_bookkeeping_resource_receipt.json": "799e0d8e008ae703bc946a3c9c861f71113dfd9c33b9333d4f9c9cf4cf6a2554"
+  },
+  "preserved_historical_files": 567,
+  "preserved_shared_objects": 236,
+  "reviews_complete": false,
+  "limits": [
+    "No canonical source-replacement mutants.",
+    "Pinned external transitive cache baseline; all direct source/object pairs explicitly revalidated.",
+    "Native Python/NumPy versions, selected small exact fixtures and source/AST hashes are recorded; source translation remains outside Lean kernel.",
+    "No physical scattering solve/conservation/current reality or parent-theory Taylor/error claim."
+  ]
+}

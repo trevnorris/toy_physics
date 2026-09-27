@@ -3,6 +3,8 @@
 
 Requires a host shell and a systemd user manager. Fails closed if the actual
 cgroup limits cannot be verified. No scientific imports or automatic retries.
+Defaults remain 2 GiB and 32 tasks. Nondefault limits require explicit user
+authorization for the particular job; they do not change other jobs' defaults.
 """
 import argparse
 from datetime import datetime, timezone
@@ -23,6 +25,26 @@ MEMORY_MAX = 2 * 1024**3
 AVAILABLE_MIN = 4 * 1024**3
 THREADS = ('OPENBLAS_NUM_THREADS', 'OMP_NUM_THREADS', 'MKL_NUM_THREADS',
            'NUMEXPR_NUM_THREADS', 'VECLIB_MAXIMUM_THREADS', 'BLIS_NUM_THREADS')
+
+
+def resource_limits(memory_gib=2, tasks_max=32):
+    if memory_gib not in (2, 4) or tasks_max not in (32, 64):
+        raise ValueError('unsupported resource limits')
+    return {'memoryMax': memory_gib * 1024**3, 'swapMax': 0,
+            'tasksMax': tasks_max}
+
+
+def limits_match(actual, spec):
+    # Validate the requested bounds as well as their enforcement. An altered
+    # manifest must not turn a missing or unlimited cap into an accepted job.
+    return (spec['memoryMax'] in (MEMORY_MAX, 2 * MEMORY_MAX)
+            and spec['tasksMax'] in (32, 64) and spec['swapMax'] == 0
+            and actual['memory.max'] == str(spec['memoryMax'])
+            and actual['memory.swap.max'] == '0'
+            and actual['pids.max'] == str(spec['tasksMax'])
+            and actual['nice'] >= 15
+            and actual['affinity'] == [spec['cpu']]
+            and all(actual['threads'][name] == '1' for name in THREADS))
 
 
 def save(path, value):
@@ -77,11 +99,7 @@ def child_main(manifest):
                   affinity=sorted(os.sched_getaffinity(0)),
                   threads={name: os.environ.get(name) for name in THREADS})
     save(folder / 'effective-limits.json', actual)
-    if not (actual['memory.max'] == str(MEMORY_MAX)
-            and actual['memory.swap.max'] == '0'
-            and actual['pids.max'] == '32' and actual['nice'] >= 15
-            and actual['affinity'] == [spec['cpu']]
-            and all(actual['threads'][name] == '1' for name in THREADS)):
+    if not limits_match(actual, spec):
         raise RuntimeError('actual resource limits differ; no workload started')
     if available_memory() < AVAILABLE_MIN:
         raise RuntimeError('less than 4 GiB available; no workload started')
@@ -122,6 +140,10 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--log-directory', type=Path)
     parser.add_argument('--seconds', type=int, default=900)
+    parser.add_argument('--memory-gib', type=int, choices=(2, 4), default=2,
+                        help='whole-job memory cap; 4 requires explicit job authorization')
+    parser.add_argument('--tasks-max', type=int, choices=(32, 64), default=32,
+                        help='whole-job process/thread cap; 64 requires explicit job authorization')
     parser.add_argument('--child-manifest', type=Path, help=argparse.SUPPRESS)
     parser.add_argument('command', nargs=argparse.REMAINDER)
     args = parser.parse_args()
@@ -150,13 +172,13 @@ def main():
     unit = 's11c-guard-' + uuid.uuid4().hex[:12]
     spec = {'command': command, 'cwd': str(Path.cwd()), 'unit': unit,
             'seconds': args.seconds, 'cpu': max(os.sched_getaffinity(0)),
-            'memoryMax': MEMORY_MAX, 'swapMax': 0, 'tasksMax': 32,
+            **resource_limits(args.memory_gib, args.tasks_max),
             'minimumHostAvailableBytes': AVAILABLE_MIN,
             'startedUtc': datetime.now(timezone.utc).isoformat()}
     save(folder / 'invocation.json', spec)
     launch = ['systemd-run', '--user', '--quiet', '--wait', '--pipe', '--collect',
-              '--unit=' + unit, '--property=MemoryMax=' + str(MEMORY_MAX),
-              '--property=MemorySwapMax=0', '--property=TasksMax=32',
+              '--unit=' + unit, '--property=MemoryMax=' + str(spec['memoryMax']),
+              '--property=MemorySwapMax=0', '--property=TasksMax=' + str(spec['tasksMax']),
               '--property=RuntimeMaxSec=' + str(args.seconds + 10),
               '--property=TimeoutStopSec=5', '--property=KillMode=control-group',
               '--property=OOMPolicy=kill', '--property=Nice=15',

@@ -1,0 +1,55 @@
+S11 finite scattering current/flux algebra F1–F4
+Status: COMPLETE for bounded F1–F4; local PASS and Claude/Grok CLEAR.
+
+Recorded canonical execution: _scratch/S11_lean_flux/verification_run8/evidence
+Formal report: _measurements/S11_lean_flux_contract_checks.json
+Native report: _measurements/S11_lean_flux_source_checks.json
+Read-only author validation: _measurements/S11_lean_flux_validation.json
+Containment receipt: _measurements/S11_lean_flux_resource_receipt.json
+
+Three modules (Current, Balance, Controls) and audit root freshly compiled.
+34 selected standard-axiom audits; no admissions or custom physics axioms.
+11 paired mathematical rejections and 15 fresh positive controls.
+Each rejected statement has exactly one contract_control error with exactly
+one unsolved False; no warnings or instrument failures count as rejections.
+No canonical source-replacement mutations are claimed.
+31 records: native + four builds + 26 formal control executions.
+
+Native: seven identities/examples and five wrong-formula controls. Selected
+original grade-(0,0) contraction/congruence functions only. No production
+imports, saved scientific operands, S11c constructors or driver reruns.
+One isolated original-adjoint mutation removes conjugation. Orientation is
+anchored by source inspection only. Translation remains outside Lean's kernel.
+
+Source/object assurance: live and snapshot inputs, instrument bytes, complete
+recorded logs, four isolated objects, fifteen clean package pins and seven
+direct Mathlib source/object pairs. External transitive cache is the existing
+pinned baseline. No old shared ledger object is used as a local import.
+528 historical files and 232 shared local objects remain unchanged.
+
+Host containment: whole job 2 GiB, no swap, one CPU, low priority, pids cap 32.
+Lean: -j1 -M2048 -DwarningAsError=true; 180 seconds per process.
+Whole-process-group timeout cleanup retained. Resource receipt is separate
+from mathematical evidence; run8 has PASS in both records.
+
+Earlier absent-cache, fixture, allocator, import, linter and control-simplifier
+failures remain failed attempts. They are not rejected mathematical controls.
+Final Option rewrite repair changed only paired control proof strings;
+canonical definitions and proofs were unchanged from the preceding attempt.
+
+Scope: supplied finite complex current form on full finite amplitude vectors,
+including zero dimension, indefinite/null cases and arbitrary non-Hermitian
+matrices. Reality is conditional on Hermiticity. Normalized fractions exclude
+zero denominator explicitly; positivity, upper bounds and conservation retain
+their stated premises. No physical mode/basis completeness, scattering solve,
+current reality/positivity, radiation boundary or bound-capture claim.
+
+Portable d5-bulk registration: ten tooling regressions passed; 60-module and
+32-control census recorded in INSTALL_D5_BULK_REGISTRATION.json. This is
+registration only, not another full D5B proof run. Both older INSTALL validation
+records are unchanged. Subsequent bookkeeping/sensitivity remain separate.
+
+Closure: _measurements/S11_lean_flux_closure.json. Both reviews inspected source
+and recorded evidence; neither reproduced the build. Proofs, instruments and
+objects remain identical to the fixed packet. Documentation-only clarifications
+do not rerun or replace historical verification. No commit authorized.

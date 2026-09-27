@@ -1,0 +1,150 @@
+{
+  "status": "COMPLETE_PAUSED",
+  "scope": "Bounded P1\u2013P4 independent non-author fidelity review",
+  "packet_revision": "S11 retained-order scattering bookkeeping P1\u2013P4 fidelity contract v1",
+  "packet_sha256": "5c0a6c321424ae09c70e61442f73d1982c9aba49ac7d33d0503b610cb2baa9de",
+  "file_count": 27,
+  "count_note": "Payload files; archive also includes MANIFEST.json.",
+  "archive": "research/pde_ledger_v3/_measurements/S11_lean_bookkeeping_review_packet_v1.tar.gz",
+  "archive_sha256": "dd861c4a422faf25700968bb2788328f4b3c7bec221946e1dde0ba8e63128b84",
+  "archive_bytes": 126229,
+  "packet_directory": "/var/projects/toy_physics/research/pde_ledger_v3/_scratch/S11_lean_bookkeeping/review_packet_v1",
+  "manifest": "research/pde_ledger_v3/_measurements/S11_lean_bookkeeping_review_packet.json",
+  "manifest_sha256": "5f4a99492e8da9ef54335f6edc227feb9f22755a53ef704537c4a419639b0469",
+  "destinations": [
+    "Claude",
+    "Grok"
+  ],
+  "transfer_authorized": true,
+  "external_reviews_started": true,
+  "review_verdicts": {
+    "claude": {
+      "verdict": "CLEAR",
+      "blocking_findings": 0,
+      "independent_session": "53841f10-a033-45d0-a8f4-ef4bc4711e19",
+      "raw": "_measurements/S11_lean_bookkeeping_fidelity_claude_v1.json",
+      "raw_sha256": "209fc9a7148557d03aae472c123e2062d511689213c30a5bb0f7b2c410e6fa2d",
+      "record": "_measurements/S11_lean_bookkeeping_fidelity_claude_v1_run.json",
+      "record_sha256": "9d7217b8406e3ea1608e86d29179bd5a61e5a29aba809fce434e09fdd021db22",
+      "report": "_measurements/S11_lean_bookkeeping_fidelity_claude_v1.md",
+      "report_sha256": "af8b0f279fed87ff747b2a8ab86259386139356805efc843faf6e786dbcb535f",
+      "report_extraction": "Verbatim terminal result field.",
+      "independent_build": false,
+      "guard_receipt_sha256": {
+        "/var/projects/toy_physics/_scratch/s11c/lean_bookkeeping_review1_claude/stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "/var/projects/toy_physics/_scratch/s11c/lean_bookkeeping_review1_claude/child-outcome.json": "6d33b7f7447a8286cf5c711120e6da0b911d4ad14c738e28664fecf1fdd0e671",
+        "/var/projects/toy_physics/_scratch/s11c/lean_bookkeeping_review1_claude/invocation.json": "fd4bf20e002f93d4e6ec3cb56f91ca2a0b114d84a828dbf134211bdf6518219e",
+        "/var/projects/toy_physics/_scratch/s11c/lean_bookkeeping_review1_claude/outcome.json": "c68feb904abeb3d3bb5ad29768c69efc355cd1ee1be5e7dfa64f9bf1b82b5f3c",
+        "/var/projects/toy_physics/_scratch/s11c/lean_bookkeeping_review1_claude/resource-samples.jsonl": "0c659db451453e44c08bfcdea13df3b1f4ea6fc6d7ea850d3f1401407f724243",
+        "/var/projects/toy_physics/_scratch/s11c/lean_bookkeeping_review1_claude/stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "/var/projects/toy_physics/_scratch/s11c/lean_bookkeeping_review1_claude/limit-validation.json": "f00aeaf7db02f91dec5ff8d9bd2f61281fbcce9b9a6c1f9e1009c6dac88326fe",
+        "/var/projects/toy_physics/_scratch/s11c/lean_bookkeeping_review1_claude/effective-limits.json": "24fcf51196a65ef6b5bfcf60653eb909f85dce34b8c203d9f46afb50a040a6d0"
+      },
+      "guard_peak_bytes": 201453568,
+      "sampled_tasks_peak": 11,
+      "max_oom_swap_events": false
+    },
+    "grok": {
+      "verdict": "CLEAR",
+      "blocking_findings": 0,
+      "independent_session": "40f0b524-f075-4cd8-a14e-4ea13a55b699",
+      "raw": "_measurements/S11_lean_bookkeeping_fidelity_grok_v1_attempt2.json",
+      "raw_sha256": "e29a45d38bf2dec9c9467dc8067926737189e55186b249f3b58d43e59d5b64ac",
+      "record": "_measurements/S11_lean_bookkeeping_fidelity_grok_v1_attempt2_run.json",
+      "record_sha256": "033dfeb6a3083ffdf7118aa3159c770cdda696ce7ac1e16a80ef506e1c536ebd",
+      "report": "_measurements/S11_lean_bookkeeping_fidelity_grok_v1.md",
+      "report_sha256": "2e32207d1d8dabeff0a3c206783ad0af8e654e78cd9aa25e0512a89b26f467c3",
+      "report_extraction": "Verbatim substantive terminal text from ## Verdict onward; introductory status sentence omitted. No thought field extracted.",
+      "independent_build": false,
+      "guard_receipt_sha256": {
+        "/var/projects/toy_physics/_scratch/s11c/lean_bookkeeping_review3_grok/stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "/var/projects/toy_physics/_scratch/s11c/lean_bookkeeping_review3_grok/child-outcome.json": "591e2260628ec97cb0db011a44728094711726b9e7ec5c2f805aeba361bdeaa0",
+        "/var/projects/toy_physics/_scratch/s11c/lean_bookkeeping_review3_grok/invocation.json": "4347b83a309b35b228b6569c7a15c2680e9f013d313aad0974ef35b8f35b0a99",
+        "/var/projects/toy_physics/_scratch/s11c/lean_bookkeeping_review3_grok/outcome.json": "699dbde8e7d805878fb0eed3654271e63a26bbc4019d37029027fb18d1a65f80",
+        "/var/projects/toy_physics/_scratch/s11c/lean_bookkeeping_review3_grok/resource-samples.jsonl": "df57074bddacb0fba1bf6c9d5bbd5dae1274f62b79f4b21aabecaab5023fcacc",
+        "/var/projects/toy_physics/_scratch/s11c/lean_bookkeeping_review3_grok/stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "/var/projects/toy_physics/_scratch/s11c/lean_bookkeeping_review3_grok/limit-validation.json": "4dca4c3e2841fac167b383ba3e820dfcca57d5b1e43a080f556e63776da8e7fa",
+        "/var/projects/toy_physics/_scratch/s11c/lean_bookkeeping_review3_grok/effective-limits.json": "b6a418666f084cf184306ab87bc77939967430f9d5a4cb80c4a2ce5c262bdb40"
+      },
+      "guard_peak_bytes": 79683584,
+      "sampled_tasks_peak": 64,
+      "max_oom_swap_events": false
+    }
+  },
+  "completion_claimed": true,
+  "committed": false,
+  "commit_authorized": false,
+  "prepared_utc": "2026-09-26T22:55:11.289160+00:00",
+  "snapshot_validation": "PASS at closure: unchanged snapshot/archive/transport; only three explicit live documentation deltas.",
+  "local_verification": "PASS: seven fresh objects, 33 standard-axiom audits, 16 mathematical rejections, 20 positives, 42 compact native checks with execution/revalidation lineage and preservation validation.",
+  "preservation": "567 historical files and 236 old objects unchanged; every S11c source included is a read-only convention reference.",
+  "contents_note": "Private repository code: seven Lean modules, verification tools and reports, native source references, shared physics, policy, dependency pins and compact fidelity documents. No saved production operands/results or external cache archive.",
+  "authorization_requirement": "Satisfied by recorded user authorization for this exact packet; no new transfer.",
+  "authorization_record": "_scratch/S11_lean_bookkeeping/review_run1/transfer_authorization_context.json",
+  "authorization_sha256": "2a36be231e8ab5b24bed121d73246dff63fa45e6458f709a1cde40b2c5a62c05",
+  "user_authorization": "pass it along for review",
+  "authorized_utc": "2026-09-26T23:01:06.499874+00:00",
+  "resource_context": "_scratch/S11_lean_bookkeeping/review_run1/resource_context.json",
+  "resource_context_sha256": "69533d3addae6740c497e6d20ef34cc1bd7b062c4437191308b4b5f697108998",
+  "review_started_utc": "2026-09-26T23:02:31.461904+00:00",
+  "supervisor_pid": 1743213,
+  "transport_directory": "/tmp/s11-lean-bookkeeping-fidelity-fet26phx/packet",
+  "launch_preflight": {
+    "status": "PASS",
+    "packet_sha256": "5c0a6c321424ae09c70e61442f73d1982c9aba49ac7d33d0503b610cb2baa9de",
+    "files": 27,
+    "snapshot_archive_live_correspondence": true,
+    "local_correspondence": {
+      "status": "PASS",
+      "execution_status": "PASS",
+      "checks_seen": 44,
+      "report_sha256": "32c4b3ad35ecaff74039f8109b6c1fceb5164690971c57ba9cccb31208f79416",
+      "native_report_sha256": "02ccf56aa4853699391b6fcd1c3f2d30c689008716ad7e79bd2d7a46e0ce1c19",
+      "successful_objects": 7,
+      "historical_files": 567,
+      "historical_objects": 236,
+      "meaning": "Input/log/object/native/dependency/preservation correspondence; not a pass for failed proof execution."
+    },
+    "meaning": "Read-only preflight; no transfer, proof rerun or historical evidence rewrite."
+  },
+  "review_supervisor_sha256": "db192f7e1408c7683542010a573aa2104edcbb7a1dd833ca6c5e6a239b16cb38",
+  "pause_after_review": true,
+  "pause_instruction_record": "_scratch/S11_lean_bookkeeping/PAUSE_AFTER_REVIEW.json",
+  "next_increment_authorized_to_start_now": false,
+  "current_review_attempt": "grok_v1_attempt2",
+  "continuation_record": "_scratch/S11_lean_bookkeeping/review_run3/prior_attempt_validation.json",
+  "review_supervisor_finished_utc": "2026-09-26T23:22:47.454895+00:00",
+  "live_files_changed_since_packet": [
+    "lean/s11/SCATTERING_BOOKKEEPING_COVERAGE.md",
+    "lean/s11/SCATTERING_BOOKKEEPING_FIDELITY.md",
+    "lean/s11/SCATTERING_BOOKKEEPING_VERIFICATION.txt"
+  ],
+  "historical_supervisor_errors": [
+    {
+      "run": "review_run2",
+      "error": "AttributeError(\"'str' object has no attribute 'read_bytes'\")",
+      "disposition": "Local Path conversion repaired before external continuation; not review evidence."
+    }
+  ],
+  "completion_utc": "2026-09-26T23:32:05.445712+00:00",
+  "paused": true,
+  "closure_record": "_measurements/S11_lean_bookkeeping_closure.json",
+  "closure_sha256": "1519cec52767d57f8c21ac68825602b53d639602183a33beaf194a4ed16ca031",
+  "documentation_deltas": {
+    "lean/s11/SCATTERING_BOOKKEEPING_COVERAGE.md": {
+      "reviewed_sha256": "9a89f17ac2028c10ec1a1940650bc8c74e33d10d8d8356ee265627138ce4bc8c",
+      "current_sha256": "04ee55ebd3afe8796965f296c3475964c4910aad10f06984db266c63f63b5e3f",
+      "reason": "Review completion/pause status and nonblocking fidelity clarifications only; no mathematical change."
+    },
+    "lean/s11/SCATTERING_BOOKKEEPING_FIDELITY.md": {
+      "reviewed_sha256": "d3106808eb45759f05e3007761fd853232e17905e54b424a38c06e1a175b533a",
+      "current_sha256": "afe2fd3d8353e1d8cf87d1c76055f5a1dd92660e976036d2c84edca0ed57acb7",
+      "reason": "Review completion/pause status and nonblocking fidelity clarifications only; no mathematical change."
+    },
+    "lean/s11/SCATTERING_BOOKKEEPING_VERIFICATION.txt": {
+      "reviewed_sha256": "66532a3da397f052fa7c29935a5da36cd46b7502a55ff901d67107e116b1aa14",
+      "current_sha256": "59f04e133b4e7c21e71e8c7fa9b5749a7a8641e9c443c7dcc34a0f526ae14dc8",
+      "reason": "Review completion/pause status and nonblocking fidelity clarifications only; no mathematical change."
+    }
+  }
+}

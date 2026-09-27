@@ -1,0 +1,289 @@
+{
+  "status": "PASS",
+  "source_sha256": {
+    "_measurements/S11c_d_finite_scattering.py": "f187d9426be8069342a363a0466c175d32a8cb46101e32a14c433ccb9118e469",
+    "_measurements/S11c_d_finite_scattering_resolution.py": "8e101517fde113c5f0a372bab531e63ebdcee3fff03c270ff98a7590e5a7b981",
+    "_measurements/S11c_d_finite_scattering_domain.py": "73341408d0f6c1eb517e435dea986e180ff53615a6102697a8e3ba6747bd35aa",
+    "directives/S11c_d_SHARED_PHYSICS.md": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5",
+    "directives/S11c_d_SCATTERING_FORM_AMENDMENT.md": "eb6f20a3fd0bce308e53901fa69fdf267b2917e5cc78b319a1e7700074a47560"
+  },
+  "instrument_sha256": "e085831761d09d9c0bf7b2d2381d88521b661ec9bf48225b89c02ab621fe5204",
+  "selected_ast": {
+    "balance_solve_unscale": {
+      "sha256": "31b443e474fe9b23923fbbdce7fe42a005d27bc5496338a6dbf65e8dc978dd32",
+      "lines": [
+        371,
+        377
+      ],
+      "statements": 10
+    },
+    "observe_current": {
+      "sha256": "11862f041c555bfbbaecc01980ce6aba7e294b6c43b8eec94921dc6fa7f58df4",
+      "lines": [
+        378,
+        393
+      ],
+      "statements": 10
+    },
+    "residual": {
+      "sha256": "a3a5e1fd4be39c7c3d89d077b7ba92f1c2bd481c504867efd48b073d5402c6b3",
+      "lines": [
+        377,
+        377
+      ],
+      "statements": 2
+    }
+  },
+  "runtime": {
+    "python": "3.10.12",
+    "numpy": "1.26.4"
+  },
+  "checks": [
+    {
+      "name": "synthetic_exact_inverse",
+      "kind": "identity/example",
+      "passed": true,
+      "max_abs_error": 0.0,
+      "tolerance": 1e-12
+    },
+    {
+      "name": "actual_balancing",
+      "kind": "identity/example",
+      "passed": true,
+      "max_abs_error": 0.0,
+      "tolerance": 1e-12
+    },
+    {
+      "name": "actual_rhs_and_unscale",
+      "kind": "identity/example",
+      "passed": true,
+      "max_abs_error": 2.2887833992611187e-16,
+      "tolerance": 1.3975424859373685e-12
+    },
+    {
+      "name": "actual_scaled_residual",
+      "kind": "identity/example",
+      "passed": true,
+      "max_abs_error": 0.0,
+      "tolerance": 1e-12
+    },
+    {
+      "name": "omitted_row_scaling",
+      "kind": "wrong-formula control",
+      "passed": true,
+      "separation": 2.6832815729997477
+    },
+    {
+      "name": "omitted_unknown_scaling",
+      "kind": "wrong-formula control",
+      "passed": true,
+      "separation": 0.10557280900008414
+    },
+    {
+      "name": "omitted_unscaling",
+      "kind": "wrong-formula control",
+      "passed": true,
+      "separation": 0.16495751406263154
+    },
+    {
+      "name": "nonzero_residual_identity",
+      "kind": "identity/example",
+      "passed": true,
+      "max_abs_error": 0.0,
+      "tolerance": 1e-12
+    },
+    {
+      "name": "nonzero_scaled_residual_identity",
+      "kind": "identity/example",
+      "passed": true,
+      "max_abs_error": 0.0,
+      "tolerance": 1e-12
+    },
+    {
+      "name": "raw_residual_as_scaled",
+      "kind": "wrong-formula control",
+      "passed": true,
+      "separation": 0.375
+    },
+    {
+      "name": "original_residual_sign_mutation",
+      "kind": "wrong-formula control",
+      "passed": true,
+      "separation": 11.180339887498949
+    },
+    {
+      "name": "residual_inverse_bound_column_0",
+      "kind": "conditional bound example",
+      "passed": true,
+      "actual": 0.125,
+      "bound": 0.15625
+    },
+    {
+      "name": "residual_inverse_bound_column_1",
+      "kind": "conditional bound example",
+      "passed": true,
+      "actual": 0.25,
+      "bound": 0.3125
+    },
+    {
+      "name": "small_residual_is_error",
+      "kind": "wrong-formula control",
+      "passed": true,
+      "separation": 0.9990234375
+    },
+    {
+      "name": "affine_modal_observation",
+      "kind": "identity/example",
+      "passed": true,
+      "max_abs_error": 0.0,
+      "tolerance": 1.709634920823741e-12
+    },
+    {
+      "name": "missing_incoming_subtraction",
+      "kind": "wrong-formula control",
+      "passed": true,
+      "separation": 1.0
+    },
+    {
+      "name": "fixed_affine_offset_cancels",
+      "kind": "identity/example",
+      "passed": true,
+      "max_abs_error": 0.0,
+      "tolerance": 1e-12
+    },
+    {
+      "name": "native_full_current",
+      "kind": "identity/example",
+      "passed": true,
+      "max_abs_error": 0.0,
+      "tolerance": 4.080078125e-12
+    },
+    {
+      "name": "diagonal_only_current",
+      "kind": "wrong-formula control",
+      "passed": true,
+      "separation": 0.4609375
+    },
+    {
+      "name": "affine_amplitude_bound_column_0",
+      "kind": "conditional bound example",
+      "passed": true,
+      "actual": 0.25,
+      "bound": 0.875
+    },
+    {
+      "name": "full_current_bound_column_0",
+      "kind": "conditional bound example",
+      "passed": true,
+      "actual": 0.13037109375,
+      "bound": 1.386391397263333
+    },
+    {
+      "name": "fixed_denominator_bound_column_0",
+      "kind": "conditional bound example",
+      "passed": true,
+      "actual": 0.065185546875,
+      "bound": 0.6931956986316665
+    },
+    {
+      "name": "affine_amplitude_bound_column_1",
+      "kind": "conditional bound example",
+      "passed": true,
+      "actual": 0.5,
+      "bound": 1.75
+    },
+    {
+      "name": "full_current_bound_column_1",
+      "kind": "conditional bound example",
+      "passed": true,
+      "actual": 0.107421875,
+      "bound": 3.014569037796076
+    },
+    {
+      "name": "fixed_denominator_bound_column_1",
+      "kind": "conditional bound example",
+      "passed": true,
+      "actual": 0.035807291666666664,
+      "bound": 1.0048563459320252
+    },
+    {
+      "name": "cross_and_quadratic_scalar",
+      "kind": "identity/example",
+      "passed": true,
+      "max_abs_error": 0.0,
+      "tolerance": 5e-12
+    },
+    {
+      "name": "omitted_cross_scalar",
+      "kind": "wrong-formula control",
+      "passed": true,
+      "separation": 4.0
+    },
+    {
+      "name": "omitted_quadratic_scalar",
+      "kind": "wrong-formula control",
+      "passed": true,
+      "separation": 1.0
+    },
+    {
+      "name": "affine_offset_omitted_in_current",
+      "kind": "wrong-formula control",
+      "passed": true,
+      "separation": 6.0
+    },
+    {
+      "name": "current_change_scalar",
+      "kind": "identity/example",
+      "passed": true,
+      "max_abs_error": 0.0,
+      "tolerance": 9e-12
+    },
+    {
+      "name": "omitted_current_change",
+      "kind": "wrong-formula control",
+      "passed": true,
+      "separation": 9.0
+    },
+    {
+      "name": "perturbed_fraction_signed",
+      "kind": "conditional bound example",
+      "passed": true,
+      "actual": 1.0,
+      "bound": 1.5
+    },
+    {
+      "name": "omitted_denominator_change",
+      "kind": "wrong-formula control",
+      "passed": true,
+      "separation": 0.5
+    },
+    {
+      "name": "omitted_denominator_scale",
+      "kind": "wrong-formula control",
+      "passed": true,
+      "separation": 3.0
+    },
+    {
+      "name": "positive_denominator_margin",
+      "kind": "identity/example",
+      "passed": true,
+      "max_abs_error": 0.0,
+      "tolerance": 1e-12
+    },
+    {
+      "name": "zero_margin_does_not_exclude_zero",
+      "kind": "identity/example",
+      "passed": true,
+      "max_abs_error": 0.0,
+      "tolerance": 1e-12
+    }
+  ],
+  "scope": "Synthetic actual balancing, least-squares/unscaling, residual, affine modal extraction and full current operations; conditional sensitivity witnesses.",
+  "norms": "Coefficient sup norm, amplitude l1 mass, current maximum entry, observation sum of component dual-l1 row norms.",
+  "limits": [
+    "No production module imports, full constructor, saved operands or physical solve.",
+    "NumPy tiny synthetic solves use a declared 1e-12 scaled absolute tolerance, not kernel-certified floating point.",
+    "No physical inverse bound or error certificate follows from measured condition numbers.",
+    "Original complete source hashes and selected AST ranges are recorded; unselected boundary/physical construction is a supplied premise."
+  ]
+}

@@ -27,7 +27,7 @@ class EvidenceTests(unittest.TestCase):
                         (name, control['name']))
                     self.assertFalse(verify.adjudicate(124, original['output'], control['source'],
                         control['required'], control['source_mutation']))
-        self.assertEqual(total, 349)
+        self.assertEqual(total, 381)
 
     def test_mutation_source_drift_is_not_reconstructed_silently(self):
         record = {'name': 'drift', 'source': 'theorem x : True := by trivial\n',
@@ -70,17 +70,23 @@ class EvidenceTests(unittest.TestCase):
             with self.assertRaises(ValueError):
                 verify.inside(root, 'escape/passwd')
 
-    def test_completed_targets_include_d5_but_not_unfinished_bulk(self):
+    def test_completed_targets_include_reviewed_d5_density_and_bulk(self):
         roots = [r for _, rs in verify.CONTRACTS.values() for r in rs]
         order = verify.build_order(roots)
         self.assertIn('S11D4Bulk', order)
         self.assertIn('S11NonlinearPole', order)
         self.assertIn('S11D5Invariants', order)
-        self.assertNotIn('S11D5Bulk', order)
+        self.assertIn('S11D5Bulk', order)
         self.assertEqual(len(verify.build_order(['S11D5Invariants'])), 45)
         spec = verify.specifications(['d5'])['d5']
         self.assertEqual(len(spec['controls']), 30)
         self.assertEqual(sum(c['expected'] == 'REJECTED' for c in spec['controls']), 13)
+        bulk = verify.specifications(['d5-bulk'])['d5-bulk']
+        self.assertEqual(len(verify.build_order(bulk['roots'])), 60)
+        self.assertEqual(len(bulk['controls']), 32)
+        self.assertEqual(sum(c['expected'] == 'REJECTED' for c in bulk['controls']), 14)
+        self.assertEqual(verify.native_prefixes(['d5-bulk']), ['S11_lean_d5_bulk'])
+        self.assertTrue(verify.native_inputs(['S11_lean_d5_bulk']))
         self.assertEqual(len(order), len(set(order)))
 
     @unittest.skipUnless(sys.platform == 'linux', 'checks Linux process state')

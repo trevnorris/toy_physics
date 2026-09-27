@@ -1,0 +1,58 @@
+Independent non-author fidelity review of S11 scattering current/flux F1–F4.
+
+Review only this fixed packet. Do not consult the other reviewer or modify
+files. Use read-only inspection. Do not run production/scientific jobs, install
+dependencies or attempt external network access. The author supplies recorded
+Lean execution and hash evidence; the packet omits compiled objects and the
+external Mathlib cache, so this is not an independently reproduced build.
+
+Read lean/FORMALIZATION_POLICY.md, lean/s11/SCATTERING_OBSERVABLE_COVERAGE.md,
+SCATTERING_FLUX_FIDELITY.md and SCATTERING_FLUX_VERIFICATION.txt. Then inspect
+all four S11ScatteringFlux Lean files, both instruments and their reports.
+Use the included native sources only to assess the compact convention link;
+do not execute/import those production modules. Shared physics section 3a/3c
+provides context, not evidence that the unfinished boundary/scattering problem
+is solved. Subsequent bookkeeping and sensitivity are excluded from this review.
+
+Review these load-bearing points explicitly:
+1. Every finite complex amplitude space, including empty spaces, all supplied
+   matrix entries, full conjugate contraction and both interference terms.
+   No diagonal/positive/transverse/complete-physical-basis restriction silently
+   enters. flux takes the real part; raw-current reality is proved only under
+   the stated Hermitian premise. Arbitrary imaginary defects are not waived.
+2. Full C^H J C pullback, composition and scattering-coordinate covariance
+   with the supplied Cout*Dout=1. Rectangular selection is not a complete
+   invertible physical basis change. Are the maps and quantifiers faithful?
+3. Outward left/right -1/+1, opposite incident sign, and signed total outgoing
+   current. The Option-valued fraction is undefined exactly at zero incident
+   flux; nonzero indefinite-null amplitudes are retained. Positive, zero and
+   negative incident cases are exhaustive. Nonnegative/at-most-one fractions
+   and unity of normalized totals need the explicit premises stated here.
+4. conditional_balance assumes converted+survived+defect=incoming. It supplies
+   no physical conservation law, unitary S, omitted channel or bound capture.
+5. All paired false statements actually reach exactly one unsolved False in
+   contract_control. Check both good and bad statement inputs, and the strict
+   adjudication; warnings, failed imports, unreduced constructor goals and
+   resource failures were refused. There are 11 paired mathematical rejections
+   and 15 positives, not canonical source-replacement mutations. Determine
+   whether these controls are meaningful for this compact contract's claims.
+6. Native grade-(0,0) AST extraction uses the actual selected current/Gram
+   helpers with small exact-in-binary fixtures. Seven identities/examples,
+   five wrong-formula controls, one mutation of the original adjoint. Outgoing/
+   incoming orientation is source inspection only. Translation is outside
+   the Lean kernel; no scientific output, numerical current reality, complete
+   channel census, scattering solve or higher-grade correspondence is claimed.
+7. Source/dependency/proof-object preservation, fresh build evidence, standard
+   axiom audit and declared limits. The transitive external cache is a pinned
+   baseline. Python/NumPy versions were not captured in the native report.
+   Decide whether any limitation invalidates the bounded claim rather than
+   silently upgrading the evidence. Portable D5B catalog registration is
+   separate and does not assert a new D5B proof replay.
+
+Report a substantive assessment with file/theorem references: definitions,
+hypotheses, conventions, completeness/domain coverage, controls, native fidelity
+and interpretation. End with CLEAR or FIX REQUIRED for F1–F4, listing each
+blocking finding separately from optional improvements. A plan-only response,
+cancelled run, statement count or generic endorsement is not clearance.
+Do not require new unrelated physics or a systematic CAS bridge. If the
+bounded claim itself needs a missing premise or control, explain why precisely.

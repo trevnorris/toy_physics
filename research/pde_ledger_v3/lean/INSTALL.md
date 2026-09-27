@@ -3,8 +3,8 @@
 These instructions cover the completed S9, S10 and bounded S11 Lean contracts.
 Use the checkout containing the proofs and their `_measurements/*_contract_checks.json`
 records. The independently reviewed D5 density classification is included in `all`;
-the completed D5 bulk contract has a separate recorded suite and remains
-outside this portable catalog.
+the completed D5 bulk contract is also registered as `d5-bulk`. Its registration
+validation is distinct from a new full portable proof replay.
 
 The supported command-line path is Linux, or Linux inside WSL2 on Windows.
 The tools also have macOS releases, but this repository's setup/replay path has
@@ -86,7 +86,7 @@ Select one or several contracts, inspect the plan, or run only one layer:
 ```
 
 The available names are `s9`, `s10`, `homogeneous`, `d2`, `d2-dynamics`, `d3`,
-`d3-bulk`, `d4`, `d4-odd`, `analytic-error`, `variable`, `poles`, `d4-bulk`, and `d5`.
+`d3-bulk`, `d4`, `d4-odd`, `analytic-error`, `variable`, `poles`, `d4-bulk`, `d5`, and `d5-bulk`.
 `s10` includes the retained, already committed CAS bridge proofs; this runner
 does not generate or expand that bridge. The complete run is substantial.
 `--plan` validates control inputs and shows the work without launching Lean.
@@ -233,7 +233,18 @@ local modules and 349 control executions; those plan counts are not a claim of
 a new full-catalog execution.
 
 D5 bulk subsequently completed verification and both independent reviews; see
-[s11/D5_BULK_FIDELITY_REVIEW.md](s11/D5_BULK_FIDELITY_REVIEW.md). It has not yet
-been registered in the portable catalog. This closure updates status prose only;
-`INSTALL_D5_VALIDATION.json` retains the hashes of the documents at replay time.
-Runner, setup, tests and execution evidence are unchanged.
+[s11/D5_BULK_FIDELITY_REVIEW.md](s11/D5_BULK_FIDELITY_REVIEW.md). On 2026-09-26
+it was registered as `d5-bulk`: 60 transitive modules and 32 controls (14 rejected
+statements, 18 positives). Ten tooling regressions validate the catalog, frozen
+control inputs, historical diagnostic acceptance and dependency/native-input
+selection. This registration did not repeat the completed expensive D5 build.
+See `INSTALL_D5_BULK_REGISTRATION.json`; the two earlier INSTALL validation
+records retain their original bytes and historical meaning.
+
+On this development host, the September 21 resource safeguards govern scientific
+execution: use `scripts/s11c_guarded_run.py` with one job at a time and its
+verified 2 GiB/no-swap limit. The portable runner itself does not supply an OS
+resource cap or resumable bounded batches. A full portable D5 replay exceeds the
+guard's 900-second job ceiling; registration is not permission to bypass it.
+The commands above describe the reproducibility interface on a suitably
+provisioned installation, not an exception to local execution safeguards.

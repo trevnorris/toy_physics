@@ -1,0 +1,61 @@
+{
+  "engine": "claude",
+  "session_id": "53841f10-a033-45d0-a8f4-ef4bc4711e19",
+  "command": [
+    "/home/trevnorris/.local/bin/claude",
+    "--print",
+    "--output-format",
+    "json",
+    "--safe-mode",
+    "--restricted",
+    "--tools",
+    "Read,Glob,Grep",
+    "--allowedTools",
+    "Read,Glob,Grep",
+    "--permission-mode",
+    "dontAsk",
+    "--strict-mcp-config",
+    "--mcp-config",
+    "{\"mcpServers\":{}}",
+    "--setting-sources",
+    "",
+    "--disable-slash-commands",
+    "--session-id",
+    "53841f10-a033-45d0-a8f4-ef4bc4711e19"
+  ],
+  "cwd": "/tmp/s11-lean-bookkeeping-fidelity-fet26phx/packet",
+  "packet_sha256": "5c0a6c321424ae09c70e61442f73d1982c9aba49ac7d33d0503b610cb2baa9de",
+  "prompt_sha256": "f5e0e502dc272b39bfdcb0fa876a35117ace2fb712f4da18ee45a7bb721f4580",
+  "requested_scope": "Independent P1\u2013P4 source fidelity review; no scientific execution.",
+  "status": "RETURNED",
+  "review_verdict": "NOT_ADJUDICATED",
+  "guard_directory": "/var/projects/toy_physics/_scratch/s11c/lean_bookkeeping_review1_claude",
+  "prepared_utc": "2026-09-26T23:02:31.463927+00:00",
+  "runtime_env": {},
+  "resource_limits": {
+    "tasks_max": 32,
+    "memory_gib": 2
+  },
+  "reviewer_sha256": "ac0141831fe92f4a443eca62d56f6cb6d95e83e07a053c664f33e5781fe60c2e",
+  "started_utc": "2026-09-26T23:02:31.601063+00:00",
+  "pid": 1743281,
+  "exit_status": 0,
+  "finished_utc": "2026-09-26T23:05:42.620321+00:00",
+  "wall_seconds": 191.019,
+  "output_sha256": "209fc9a7148557d03aae472c123e2062d511689213c30a5bb0f7b2c410e6fa2d",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "guard_outcome": {
+    "exitCode": 0,
+    "wallSeconds": 191.48231751500862,
+    "unit": "s11c-guard-4ea7e9689963",
+    "stderrBytes": 0,
+    "limitsVerified": true,
+    "childOutcome": {
+      "exitCode": 0,
+      "guardReason": null,
+      "wallSeconds": 191.10943663102807,
+      "childPid": 1743280
+    }
+  },
+  "guard_outcome_sha256": "c68feb904abeb3d3bb5ad29768c69efc355cd1ee1be5e7dfa64f9bf1b82b5f3c"
+}

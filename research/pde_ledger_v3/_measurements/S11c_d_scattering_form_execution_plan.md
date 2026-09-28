@@ -1,5 +1,21 @@
 # S11c-d: the remaining execution queue
 
+**Current stop (2026-09-28, after resumed thickness attempt):** the user raised
+the priority of nonempty A11/A12 coverage and repaired-build review. The
+[source-only cost/reuse assessment](S11c_d_A12_scope_cost_assessment.md)
+supersedes the next thickness-repair action. Do not continue the omega=1
+construction or submit another review automatically. First make the bounded
+admissibility/method-cost decision; existing closed-domain ingredients do not
+establish radiating coverage. Local dispositions are not new independent
+reviews, and repaired-build acceptance remains a distinct obligation.
+
+The single resumed thickness run failed at its first local-profile transform,
+with all six completed restore returns and the unfinished input preserved.
+The [failure checkpoint](S11c_d_localized_thickness_failure_checkpoint.json)
+records 3.691198 worker seconds, 68,558,848 peak bytes, ordinary verified limits,
+zero swap/events and all 23 inputs unchanged. No action candidate was produced;
+no retry or further science is running. The completion event is already handled.
+
 Option B is accepted. Both round-9 document reviews are CLEAR, preserved at
 `19a7c6ed`. This is operational sequencing under the
 [accepted scope](../directives/S11c_d_SCATTERING_FORM_AMENDMENT.md), not a new

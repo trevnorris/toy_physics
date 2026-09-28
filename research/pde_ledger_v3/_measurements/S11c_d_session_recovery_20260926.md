@@ -1196,3 +1196,44 @@ equivalence and radiating coverage remain open on the unchanged evanescent
 slice. Lean/S11_lean, shared guard and protected suffix are untouched. Scratch
 is runtime storage only; canonical sources/reports are kept under research
 and committed as work proceeds.
+
+## Resumed thickness attempt failed; radiation decision takes priority
+
+After asking to pause, the user said “Resume the work you were doing.” That
+resumed the concrete single 15-minute/2-GiB stage offered before the pause.
+All 23 pinned routes, worker/helper hashes, review packet/literals and protected
+suffix matched before the authorization and READY gate were written. The hook
+armed at 16:59:12 UTC before the guard started. This was one launch, not a retry.
+
+The worker failed at its first local transform, `block17-grade01-local-0-0`,
+with `unrecognized localized source factor`. Worker/guard times were
+3.691198/4.187661 seconds; peak whole-job memory was 68,558,848 bytes, zero
+swap/events, maximum three tasks. All normal guard/native controls held.
+Scientific stderr contains the 1,889-byte traceback; stdout is empty and no
+checks/action candidate exists. Surrounding stderr is empty. All 23 source
+posthashes, six complete input/return receipts, two incomplete stack inputs
+and the 37-file/1,105,752-byte result inventory were verified without restoring
+scientific payloads. Eight saved block17 source joins report true; they do not
+establish the failed transform. The exact rejected intermediate was not emitted.
+
+The [failure checkpoint](S11c_d_localized_thickness_failure_checkpoint.json)
+preserves the failure and marks the hook completion handled. No automatic retry,
+repair, new reviewer or additional physics run was launched. A duplicate
+completion notification is not new authority to repeat this inspection.
+
+While this failure was being inspected, the user supplied Claude's critique of
+closed-slice prioritization, review governance and paperwork. The
+[A11/A12 cost/reuse assessment](S11c_d_A12_scope_cost_assessment.md) now controls
+the next decision. Existing sources give a bulk kinematic threshold, not an
+admissible A11 end-channel or complete A12 bulk-flux witness. The current
+positive-radical/decaying-bulk certificates do not transfer automatically across
+that threshold. Retain useful symbolic sources and c1/c2 maps; stop before a
+new radiation method or further omega=1 construction. Any further scientific
+inspection or submission needs its actual bounded scope decision.
+
+G4's repaired-build acceptance duty is not paid by my local disposition or by
+the word candidate. Preserve the historical review literals and saved validation
+evidence without promoting them as fresh independent clearance. No new review
+cycle is started here. Keep practical toy-model scope and concise bookkeeping,
+all earlier results/failures and the incident record. Lean/S11_lean, shared guard
+and protected suffix remain untouched; scratch artifacts are not committed.

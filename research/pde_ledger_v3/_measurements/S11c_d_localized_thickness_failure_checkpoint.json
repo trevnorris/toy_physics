@@ -1,0 +1,195 @@
+{
+  "status": "FAILED_FIRST_LOCAL_PROFILE_TRANSFORM_NO_ACTION_CANDIDATE",
+  "recordedUtc": "2026-09-28T17:02:54.658454+00:00",
+  "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-d-localized-thickness-20260928/production",
+  "userResumeInstruction": "Resume the work you were doing",
+  "launch": {
+    "jobPid": 366496,
+    "watcherPid": 366497,
+    "pins": {
+      "workerSha256": "63c64817fdead81b9bf313497d45f2149437035e9ccd0fbd53848d75abf2efa8",
+      "inputManifestSha256": "d7a61acbb452ba7d2034ce0aa612fc5a1b7a752ba347d15f8e8914be6a34044d",
+      "gateReceiptSha256": "0c181c3bc104e7800fb8ac56265dd654382a6f7c5a1ca2fb2e0085ee9349bf33",
+      "launcherSha256": "ae7c7524d831f1540e741368701390c89e217731a0b6bd4b8f4c6a2dff5f693d"
+    },
+    "command": [
+      "/usr/bin/python3",
+      "/var/projects/toy_physics/scripts/s11c_guarded_run.py",
+      "--log-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-d-localized-thickness-20260928/production/resource-guard",
+      "--seconds",
+      "900",
+      "--memory-gib",
+      "2",
+      "--tasks-max",
+      "32",
+      "--",
+      "/usr/bin/python3",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-d-localized-thickness-20260928/production",
+      "--stage",
+      "localized_thickness_response",
+      "--",
+      "/usr/bin/python3",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_localized_thickness_response.py",
+      "--input-manifest",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_localized_thickness_corrected_inputs.json",
+      "--gate-receipt",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_localized_thickness_gate.json",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-d-localized-thickness-20260928/production/complete"
+    ],
+    "thread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+    "maximumScientificWorkers": 1,
+    "completionMessageSha256": "78bbad8120cb41553e996da74b0519d3296993f8d7bfc2aa99482718e026101d"
+  },
+  "stageStartedUtc": "2026-09-28T16:59:12.087419+00:00",
+  "failure": {
+    "traceback": "Traceback (most recent call last):\n  File \"/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_localized_thickness_response.py\", line 640, in main\n    result=construct(spec,out,journal)\n  File \"/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_localized_thickness_response.py\", line 586, in construct\n    cases.append(j.op(tag+'-construct-source-action',construct_case,index,\n  File \"/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_localized_thickness_response.py\", line 153, in op\n    result = function(*args)\n  File \"/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_localized_thickness_response.py\", line 486, in construct_case\n    result=checked(tag+'-local-%d-%d'%(i,h),transform_local,value,z,k0)\n  File \"/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_localized_thickness_response.py\", line 207, in checked\n    result = j.op(name, function, *args)\n  File \"/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_localized_thickness_response.py\", line 153, in op\n    result = function(*args)\n  File \"/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_localized_thickness_response.py\", line 303, in transform_local\n    result = profile_transform(envelope,z,ell,ell*(kn-k0))\n  File \"/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_localized_thickness_response.py\", line 280, in profile_transform\n    require(all(not c.has(coordinate, sp.Integral, sp.Limit, sp.Derivative)\n  File \"/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_localized_thickness_response.py\", line 32, in require\n    raise ValueError(message)\nValueError: unrecognized localized source factor\n",
+    "completedOperations": 6,
+    "incompleteOperation": {
+      "name": "block17-grade01-local-0-0",
+      "startedUtc": "2026-09-28T16:59:15.284494+00:00",
+      "input": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-localized-thickness-20260928/production/complete/operations/0007-block17-grade01-local-0-0/input.pickle",
+        "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-localized-thickness-20260928/production/complete/operations/0007-block17-grade01-local-0-0/input.pickle",
+        "bytes": 1577,
+        "sha256": "db627fcaf6ba0882b30c80e56ec98f2b7df8d11ec6822831eb094fb2ec3de2f3"
+      },
+      "execution": "NEW_UNFINISHED_OPERATION"
+    },
+    "incompleteOperationStack": [
+      {
+        "name": "block17-grade01-construct-source-action",
+        "startedUtc": "2026-09-28T16:59:15.157856+00:00",
+        "input": {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-localized-thickness-20260928/production/complete/operations/0006-block17-grade01-construct-source-action/input.pickle",
+          "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-localized-thickness-20260928/production/complete/operations/0006-block17-grade01-construct-source-action/input.pickle",
+          "bytes": 495724,
+          "sha256": "62d9837aec78a9e00be4ce0c54f5d3851b9ea50f3f75f7ac4a2cbf9155d5ec22"
+        },
+        "execution": "NEW_UNFINISHED_OPERATION"
+      },
+      {
+        "name": "block17-grade01-local-0-0",
+        "startedUtc": "2026-09-28T16:59:15.284494+00:00",
+        "input": {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-localized-thickness-20260928/production/complete/operations/0007-block17-grade01-local-0-0/input.pickle",
+          "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-localized-thickness-20260928/production/complete/operations/0007-block17-grade01-local-0-0/input.pickle",
+          "bytes": 1577,
+          "sha256": "db627fcaf6ba0882b30c80e56ec98f2b7df8d11ec6822831eb094fb2ec3de2f3"
+        },
+        "execution": "NEW_UNFINISHED_OPERATION"
+      }
+    ],
+    "wallSeconds": 3.6911982799647376,
+    "automaticRetry": false
+  },
+  "workerSeconds": 3.6911982799647376,
+  "supervisorSeconds": 4.007337342016399,
+  "guardSeconds": 4.187660660012625,
+  "resourceSummary": {
+    "limitsVerified": true,
+    "effectiveLimits": {
+      "memory.max": "2147483648",
+      "memory.swap.max": "0",
+      "pids.max": "32",
+      "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-ba7ec28c6ab7.service",
+      "nice": 15,
+      "affinity": [
+        15
+      ],
+      "threads": {
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "VECLIB_MAXIMUM_THREADS": "1",
+        "BLIS_NUM_THREADS": "1"
+      }
+    },
+    "nativeLimits": {
+      "memory.max": "2147483648",
+      "memory.swap.max": "0",
+      "pids.max": "32",
+      "nice": 15,
+      "affinity": [
+        15
+      ],
+      "threads": {
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "VECLIB_MAXIMUM_THREADS": "1",
+        "BLIS_NUM_THREADS": "1"
+      },
+      "nativeWallSeconds": 840
+    },
+    "samples": 4,
+    "peakBytes": 68558848,
+    "maxTasks": 3,
+    "swapAndAllMemoryEventsZero": true,
+    "minimumObservedHostAvailableBytes": 20392439808
+  },
+  "completedOperationNames": [
+    "restore-candidate",
+    "restore-context",
+    "restore-units",
+    "restore-binding",
+    "restore-block17-grade01-forcing",
+    "restore-block17-grade01-domain"
+  ],
+  "completeOperationReceiptsAndInputsReturnsVerified": true,
+  "block17SourceJoins": {
+    "zeroLift": true,
+    "zeroLiftedAction": true,
+    "directSourceSign": true,
+    "savedSeedFrame": true,
+    "domainDirectJoin": true,
+    "sourceTermsJoin": true,
+    "noProfileAbel": true,
+    "forcingUnitJoin": true
+  },
+  "actualRetainedFiles": 37,
+  "actualRetainedBytes": 1105752,
+  "sourceRecordsVerified": 23,
+  "allSourcesUnchanged": true,
+  "workerStderrBytes": 1889,
+  "workerStdoutBytes": 0,
+  "checksJsonAbsent": true,
+  "stdoutChecksIdentity": "NOT_APPLICABLE_FAILURE_NO_CHECKS",
+  "surroundingStderrEmpty": true,
+  "guardAndSupervisorStdoutIdentityVerified": true,
+  "scientificAcceptance": false,
+  "automaticRetry": false,
+  "failureArtifactIndex": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-localized-thickness-20260928/production/complete/failure-artifact-index.json",
+    "bytes": 17260,
+    "sha256": "fce54e43c428928ca02e206174dd4d32c80d8433bf55b792b4ef0130073ffdc4"
+  },
+  "operationIndex": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-localized-thickness-20260928/production/complete/partial-operation-index.json",
+    "bytes": 6722,
+    "sha256": "c425e67493b385496f1f0c0bfb4a027a6773325aae3f1a3c8e5f139f642298ab"
+  },
+  "failurePosthashes": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-localized-thickness-20260928/production/complete/failure-posthashes.json",
+    "bytes": 8958,
+    "sha256": "2f0a8da7eba32eb26666bcd1fd9e96efe87e8197ea8449d7139d16d160192c8e"
+  },
+  "workerStderr": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-localized-thickness-20260928/production/localized_thickness_response.stderr",
+    "bytes": 1889,
+    "sha256": "354fb350d2e6088862382ef2d6a60f30d49a770aa3f653db4fa51caaf2d97e73"
+  },
+  "savedSourceSnapshotsMatch": true,
+  "completionHookArmedBeforeStage": true,
+  "completionEventHandled": true,
+  "duplicateCompletionEventInstruction": "Already inspected; do not repeat or retry this failed stage.",
+  "nextPriority": "User raised scope, radiating-coverage and G4 concerns. Stop thickness continuation and give source-only A11/A12 reuse/cost assessment; no new science or external submission.",
+  "scientificPayloadRestorationDuringInspection": false,
+  "newScienceAfterFailure": false
+}

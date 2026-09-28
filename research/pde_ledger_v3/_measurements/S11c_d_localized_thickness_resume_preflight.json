@@ -1,0 +1,24 @@
+{
+  "status": "RESUME_PREFLIGHT_PASSED_NO_SCIENCE",
+  "recordedUtc": "2026-09-28T16:58:57.482797+00:00",
+  "head": "f95d5de2fbbc87e1aada63ccd53129ea6b51201f",
+  "pendingGateSha256": "7dc36da3ce8d6fb44d2ac124fdc27e7e78009aabe8cb2503a6ade9c9e1a4906e",
+  "verifiedSourceRecords": 23,
+  "verifiedScientificPayloads": 8,
+  "pins": {
+    "workerSha256": "63c64817fdead81b9bf313497d45f2149437035e9ccd0fbd53848d75abf2efa8",
+    "inputManifestSha256": "d7a61acbb452ba7d2034ce0aa612fc5a1b7a752ba347d15f8e8914be6a34044d",
+    "launcherSha256": "ae7c7524d831f1540e741368701390c89e217731a0b6bd4b8f4c6a2dff5f693d",
+    "completionMessageSha256": "78bbad8120cb41553e996da74b0519d3296993f8d7bfc2aa99482718e026101d",
+    "sharedGuardSha256": "9194b3e04b43d345828082e6312b0a2d7a9293f6296153f9c6ccea2defb931d2",
+    "supervisorSha256": "45a16f7f952ca6b571362b1c386fec76cd86f1e0ad04113074adf49c683ec49c",
+    "completionHookSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
+    "adjudicationSha256": "1fc9a618cf91a9beb62ee71cc08b9d1ce2bba94abc60c3574e83fb2faa1e0fac",
+    "reviewDispositionSha256": "18cea46903264f2da0185f4b7d37a44ca68499e0c89e42409f438718edcecf30"
+  },
+  "reviewPacketAndLiteralReportsUnchanged": true,
+  "protectedBuilderSuffixSha256": "f01024512c9a028e7e524e5a95b5c455be42e125d10c36f94e20493109b013c2",
+  "scientificRestorationOrExecution": false,
+  "runtimeDirectoryReadyGateAndStageApprovalAbsentBeforePreparation": true,
+  "overlapPrevention": "Unchanged shared guard must acquire global lock and reject existing s11c jobs at launch."
+}

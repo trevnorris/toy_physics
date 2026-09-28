@@ -1,0 +1,596 @@
+{
+  "status": "AMENDMENT_NEEDS_REVISION_NO_SCIENCE",
+  "inspectedUtc": "2026-09-28T22:52:08.918048+00:00",
+  "runtimeRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-d-total-transverse-loss-20260928/amendment-review",
+  "state": {
+    "status": "AWAITING_ADJUDICATION",
+    "preparedUtc": "2026-09-28T22:31:59.346502+00:00",
+    "packetDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-d-total-transverse-loss-20260928/amendment-review/packet",
+    "packetSha256": "78aed484714bc97783737806f2ab1e52f9c3cf1935d3fbf6cc2fc518083005e1",
+    "archiveSha256": "a28ab3f4df275d3d8f70e83f2f3ff43f4932bf9ed6be38b18b7a530da5a4da7c",
+    "fileHashes": {
+      "packet-index.json": "e64308ec4c594df427593954e0b89bc13739768eb00bf110fb1683392e1804a0",
+      "research/pde_ledger_v3/_measurements/S11c_d_born_shortcut_baseline_assessment.md": "9fa08186b9d8380151fbcfdc65ed05bc0a0cb9612996166a3487414c188465e2",
+      "research/pde_ledger_v3/_measurements/S11c_d_channel_map_face_damping_note.md": "0813056146bc627e7dc0920b355a23ced1233684caaf0e35bf49e6b9570188a1",
+      "research/pde_ledger_v3/_measurements/S11c_d_channel_map_face_damping_source_inspection.json": "18ae765b897bab123040e76c3dd28a1f3e67d83b1e215e2902a57f242dcca12e",
+      "research/pde_ledger_v3/_measurements/S11c_d_continuum_currents_report.md": "f7c785bf38dc691844b024b4de2c2e2d1f9fcf4f223cf7df4f7b407b73051903",
+      "research/pde_ledger_v3/_measurements/S11c_d_total_transverse_loss_assessment.md": "b3b3f94228e5eab78844bcb604c4072498f9177c03ba352c2c8c383da41e6b51",
+      "research/pde_ledger_v3/_measurements/S11c_d_total_transverse_loss_source_evidence.txt": "d02509fe830312372c293ce9273712ba1a04871595dbd8baa62b11d1f0c022d4",
+      "research/pde_ledger_v3/_measurements/S11c_d_uniform_source.py": "2a135aea365c7b5e57bfff7683c7b927cda52c0d37f6a9bad3c961eb6205a2b2",
+      "research/pde_ledger_v3/_measurements/S11c_d_uniform_source_checkpoint.json": "9d4b65ad07d1f403fd3aa4ec42da99db622a4d0a26d6ddce6c472148c7830085",
+      "research/pde_ledger_v3/_measurements/S11c_d_uniform_source_report.md": "d95f629e292e67eafe36bde9a5bd0689345c7fb3fac97d669671ea278ae65b8b",
+      "research/pde_ledger_v3/_measurements/S11c_d_variable_profile_development_input.json": "660b2b0b54494dce964c7f5fbd722a76a7e894d8ed92b18b5eb6290c3c10f1d5",
+      "research/pde_ledger_v3/directives/S11c_c1_SHARED_PHYSICS.md": "47554c8c9cf2fd070c1048a7ae0ca36b1315bf50a48ed07a51019ff3e72987ad",
+      "research/pde_ledger_v3/directives/S11c_d_CHANNEL_MAP_BORN_AMENDMENT_DRAFT.md": "8aa6fc7ab6d43f1f197a3cb8f9a83b7607f1de2c7a321aa130b582f4a323082d",
+      "research/pde_ledger_v3/directives/S11c_d_SCATTERING_FORM_AMENDMENT.md": "eb6f20a3fd0bce308e53901fa69fdf267b2917e5cc78b319a1e7700074a47560",
+      "research/pde_ledger_v3/directives/S11c_d_SHARED_PHYSICS.md": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5",
+      "research/pde_ledger_v3/directives/S11c_d_TOTAL_TRANSVERSE_LOSS_AMENDMENT_DRAFT.md": "48712e700109c13bd3ec531c327d4a9de42a6b0bfe998bf327dac8bfba2f838a",
+      "review-prompt.md": "36babbd87c6080ea89ab48a2484507955182ab76c07fbb44a6e305e0cf43474b"
+    },
+    "sourceRecords": [
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_born_shortcut_baseline_assessment.md",
+        "sourceSha256": "9fa08186b9d8380151fbcfdc65ed05bc0a0cb9612996166a3487414c188465e2"
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_channel_map_face_damping_note.md",
+        "sourceSha256": "0813056146bc627e7dc0920b355a23ced1233684caaf0e35bf49e6b9570188a1"
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_channel_map_face_damping_source_inspection.json",
+        "sourceSha256": "18ae765b897bab123040e76c3dd28a1f3e67d83b1e215e2902a57f242dcca12e"
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_continuum_currents_report.md",
+        "sourceSha256": "f7c785bf38dc691844b024b4de2c2e2d1f9fcf4f223cf7df4f7b407b73051903"
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_continuum_response.py",
+        "sourceSha256": "0fe30a9c4771671e9fa139b0557f185f55d351887f2ba8b9fa4ed1abfb616db2"
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_frequency_source.py",
+        "sourceSha256": "9be20be462bc10bfcaa7af643b9301948dd79bc2e08eb24ebcd1386a81efcdac"
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_localized_thickness_failure_checkpoint.json",
+        "sourceSha256": "7055c982d34cde7354586538ed7c3b4874466dd348b194b54b72cd6e0ddaa18c"
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_outgoing_prescription_candidate_report.md",
+        "sourceSha256": "c1cc7cc6c1a5219fc877e7f8952eb067eaac1228c4a83eb22ce9e0aa307d7e05"
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_remaining_case_end_sources_report.md",
+        "sourceSha256": "34fa39f2fcc157ffd156e0045172d24a8cbabb457d5cb42a1c4688baed942fac"
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_total_transverse_loss_assessment.md",
+        "sourceSha256": "b3b3f94228e5eab78844bcb604c4072498f9177c03ba352c2c8c383da41e6b51"
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_total_transverse_loss_review_prompt.md",
+        "sourceSha256": "36babbd87c6080ea89ab48a2484507955182ab76c07fbb44a6e305e0cf43474b"
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_total_transverse_loss_source_evidence.txt",
+        "sourceSha256": "d02509fe830312372c293ce9273712ba1a04871595dbd8baa62b11d1f0c022d4"
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_saved_inspection_report.md",
+        "sourceSha256": "2310fdb6246635d825fcbd344bc0d1de2ba30a84cb9ddc41ad840de5a4e01e85"
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_uniform_source.py",
+        "sourceSha256": "2a135aea365c7b5e57bfff7683c7b927cda52c0d37f6a9bad3c961eb6205a2b2"
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_uniform_source_checkpoint.json",
+        "sourceSha256": "9d4b65ad07d1f403fd3aa4ec42da99db622a4d0a26d6ddce6c472148c7830085"
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_uniform_source_report.md",
+        "sourceSha256": "d95f629e292e67eafe36bde9a5bd0689345c7fb3fac97d669671ea278ae65b8b"
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_variable_profile_development_input.json",
+        "sourceSha256": "660b2b0b54494dce964c7f5fbd722a76a7e894d8ed92b18b5eb6290c3c10f1d5"
+      },
+      {
+        "path": "research/pde_ledger_v3/directives/S11b_SHARED_PHYSICS.md",
+        "sourceSha256": "9ea9e388e9d6421a841eaf851d12e1793527bba9a24aeeface3bfac2f4b40078"
+      },
+      {
+        "path": "research/pde_ledger_v3/directives/S11c_c1_SHARED_PHYSICS.md",
+        "sourceSha256": "47554c8c9cf2fd070c1048a7ae0ca36b1315bf50a48ed07a51019ff3e72987ad"
+      },
+      {
+        "path": "research/pde_ledger_v3/directives/S11c_d_CHANNEL_MAP_BORN_AMENDMENT_DRAFT.md",
+        "sourceSha256": "8aa6fc7ab6d43f1f197a3cb8f9a83b7607f1de2c7a321aa130b582f4a323082d"
+      },
+      {
+        "path": "research/pde_ledger_v3/directives/S11c_d_SCATTERING_FORM_AMENDMENT.md",
+        "sourceSha256": "eb6f20a3fd0bce308e53901fa69fdf267b2917e5cc78b319a1e7700074a47560"
+      },
+      {
+        "path": "research/pde_ledger_v3/directives/S11c_d_SHARED_PHYSICS.md",
+        "sourceSha256": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5"
+      },
+      {
+        "path": "research/pde_ledger_v3/directives/S11c_d_TOTAL_TRANSVERSE_LOSS_AMENDMENT_DRAFT.md",
+        "sourceSha256": "48712e700109c13bd3ec531c327d4a9de42a6b0bfe998bf327dac8bfba2f838a"
+      },
+      {
+        "path": "research/pde_ledger_v3/scripts/S11c_d_mixing_scattering_sympy_audit.py",
+        "sourceSha256": "5bf77729682960bb59f10c672a5fe3f67a98b0a9533da7c6189a37183596050f"
+      }
+    ],
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "currentThread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+    "packetFiles": 17,
+    "packetBytes": 332804,
+    "scientificCalls": 0,
+    "scientificExecutionAuthorized": false,
+    "startedUtc": "2026-09-28T22:37:37.836918+00:00",
+    "supervisorPid": 766434,
+    "concurrentReviewWorkers": 1,
+    "scienceCalls": 0,
+    "finishedUtc": "2026-09-28T22:49:05.885597+00:00",
+    "productionAuthorized": false,
+    "reviewVerdict": "NOT_ADJUDICATED"
+  },
+  "coordinatorOutcome": {
+    "status": "BOTH_ATTEMPTS_FINISHED_AWAITING_LITERAL_ADJUDICATION",
+    "finishedUtc": "2026-09-28T22:49:05.886885+00:00",
+    "scienceCalls": 0
+  },
+  "launch": {
+    "jobPid": 766434,
+    "watcherPid": 766435,
+    "packetSha256": "78aed484714bc97783737806f2ab1e52f9c3cf1935d3fbf6cc2fc518083005e1",
+    "reviewers": [
+      "Claude",
+      "Grok"
+    ],
+    "concurrentReviewWorkers": 1,
+    "scienceCalls": 0,
+    "runnerSha256": "2ee5b3452c8951ff16f5cf8d4b2f0d05b6b611a8c45650cfc9ad7475d2f4b8ad",
+    "launcherSha256": "55ecb0680cb017818181f0508367e5705a3997fa97aba99d199f8619edc66254"
+  },
+  "static": {
+    "status": "DOCUMENT_PACKET_ONLY_NO_SCIENCE",
+    "runnerSha256": "2ee5b3452c8951ff16f5cf8d4b2f0d05b6b611a8c45650cfc9ad7475d2f4b8ad",
+    "launcherSha256": "55ecb0680cb017818181f0508367e5705a3997fa97aba99d199f8619edc66254",
+    "completionMessageSha256": "31771143801e51b3ca188eae12780cc444c3fe22964ccb45ee39a81c9b7d00bc",
+    "syntaxPass": true,
+    "transportChanges": "Only runtime root changed from completed read-only sequential review transport. Both fresh reviewers receive identical prompt; one active reviewer, no peer sharing or retry.",
+    "scientificCalls": 0,
+    "peerReportsIncluded": false,
+    "archiveContentsVerified": true,
+    "sourceCount": 24
+  },
+  "authorization": {
+    "status": "EXPLICITLY_APPROVED_FIXED_PACKET",
+    "recordedUtc": "2026-09-28T22:31:59.346502+00:00",
+    "userInstruction": "Go: submit the total-transverse-loss amendment for independent review (fresh Claude + Grok), review-until-clear. After it clears, repair and re-review only the transverse-first map and face-drive test (premise #1). Defer the thickness-classification repair as secondary. Then return a costed plan for the first-order outgoing field and its power pairing. Stop there for my go/no-go. No science runs before that.",
+    "authorizationBasis": "Latest explicit user instruction authorizes these independent external amendment reviews. Exact packet assembled now from the named amendment and necessary source evidence; no claim user previously viewed this new packet hash. Host automatic approval review still applies.",
+    "packetSha256": "78aed484714bc97783737806f2ab1e52f9c3cf1935d3fbf6cc2fc518083005e1",
+    "archiveSha256": "a28ab3f4df275d3d8f70e83f2f3ff43f4932bf9ed6be38b18b7a530da5a4da7c",
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "packetFiles": 17,
+    "packetBytes": 332804,
+    "currentThread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+    "scientificExecutionAuthorized": false,
+    "externalSubmissionReview": {
+      "status": "REJECTED_BEFORE_PROCESS_START",
+      "recordedUtc": "2026-09-28T22:33:10.684595+00:00",
+      "reason": "The launch exports a 17-file packet containing internal source code, directives, reports, and input/checkpoint data to external Claude and Grok; the user authorized the review goal but not this exact sensitive payload and destinations.",
+      "destinations": [
+        "Claude",
+        "Grok"
+      ],
+      "packetSent": false,
+      "reviewerProcessesStarted": false,
+      "scientificJobsUsed": 0,
+      "workaroundOrRetry": false,
+      "next": "Await explicit consent to the exact fixed 17-file, 332804-byte packet and both external destinations; all preparation is complete."
+    },
+    "explicitExternalPermission": {
+      "recordedUtc": "2026-09-28T22:37:26.907078+00:00",
+      "userReply": "I approve",
+      "questionApproved": "May I send this exact 17-file, 332,804-byte packet to external Claude and Grok for the requested reviews? It contains the total-loss amendment, assessment, internal source excerpts, physics directives, baseline/damping reports and input/checkpoint JSON listed in the packet index. SHA256: 78aed484714bc97783737806f2ab1e52f9c3cf1935d3fbf6cc2fc518083005e1. No scientific job will run.",
+      "destinations": [
+        "Claude",
+        "Grok"
+      ],
+      "packetSha256": "78aed484714bc97783737806f2ab1e52f9c3cf1935d3fbf6cc2fc518083005e1",
+      "archiveSha256": "a28ab3f4df275d3d8f70e83f2f3ff43f4932bf9ed6be38b18b7a530da5a4da7c",
+      "packetFiles": 17,
+      "packetBytes": 332804,
+      "scope": "Submit this unchanged fixed packet once to each fresh independent reviewer. No science. Preserve the prior automatic rejection; no earlier process started."
+    }
+  },
+  "watcher": {
+    "status": "finished",
+    "watcherPid": 766435,
+    "jobPid": 766434,
+    "thread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+    "startedUtc": "2026-09-28T22:37:37.716099+00:00",
+    "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
+    "messageSha256": "31771143801e51b3ca188eae12780cc444c3fe22964ccb45ee39a81c9b7d00bc",
+    "notifications": {
+      "completion": {
+        "status": "queued",
+        "exitCode": 0,
+        "finishedUtc": "2026-09-28T22:49:06.262248+00:00"
+      }
+    }
+  },
+  "startup": {
+    "inspectedUtc": "2026-09-28T22:37:57.791476+00:00",
+    "state": "RUNNING",
+    "coordinatorAlive": true,
+    "watcherAlive": true,
+    "claudeAlive": true,
+    "claudeSessionId": "e47cdce4-56f7-4d91-8e11-c9fa78cf3892",
+    "claudeStartedUtc": "2026-09-28T22:37:37.887014+00:00",
+    "grokStarted": false,
+    "watcherStatus": "waiting",
+    "hookArmed": true,
+    "scientificCalls": 0,
+    "coordinatorStderrBytes": 0,
+    "watcherStderrBytes": 0
+  },
+  "packetIndex": {
+    "role": "FIXED_DOCUMENT_REVIEW_PACKET_NOT_SCIENCE",
+    "preparedUtc": "2026-09-28T22:31:59.346502+00:00",
+    "authorship": "Codex",
+    "reviewers": [
+      "fresh Claude",
+      "fresh Grok"
+    ],
+    "files": [
+      {
+        "packetPath": "research/pde_ledger_v3/directives/S11c_d_TOTAL_TRANSVERSE_LOSS_AMENDMENT_DRAFT.md",
+        "sourcePath": "research/pde_ledger_v3/directives/S11c_d_TOTAL_TRANSVERSE_LOSS_AMENDMENT_DRAFT.md",
+        "sourceSha256": "48712e700109c13bd3ec531c327d4a9de42a6b0bfe998bf327dac8bfba2f838a",
+        "bytes": 6338
+      },
+      {
+        "packetPath": "research/pde_ledger_v3/_measurements/S11c_d_total_transverse_loss_assessment.md",
+        "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_total_transverse_loss_assessment.md",
+        "sourceSha256": "b3b3f94228e5eab78844bcb604c4072498f9177c03ba352c2c8c383da41e6b51",
+        "bytes": 8089
+      },
+      {
+        "packetPath": "research/pde_ledger_v3/_measurements/S11c_d_total_transverse_loss_source_evidence.txt",
+        "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_total_transverse_loss_source_evidence.txt",
+        "sourceSha256": "d02509fe830312372c293ce9273712ba1a04871595dbd8baa62b11d1f0c022d4",
+        "bytes": 54176
+      },
+      {
+        "packetPath": "research/pde_ledger_v3/_measurements/S11c_d_channel_map_face_damping_note.md",
+        "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_channel_map_face_damping_note.md",
+        "sourceSha256": "0813056146bc627e7dc0920b355a23ced1233684caaf0e35bf49e6b9570188a1",
+        "bytes": 3102
+      },
+      {
+        "packetPath": "research/pde_ledger_v3/_measurements/S11c_d_channel_map_face_damping_source_inspection.json",
+        "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_channel_map_face_damping_source_inspection.json",
+        "sourceSha256": "18ae765b897bab123040e76c3dd28a1f3e67d83b1e215e2902a57f242dcca12e",
+        "bytes": 6118
+      },
+      {
+        "packetPath": "research/pde_ledger_v3/_measurements/S11c_d_born_shortcut_baseline_assessment.md",
+        "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_born_shortcut_baseline_assessment.md",
+        "sourceSha256": "9fa08186b9d8380151fbcfdc65ed05bc0a0cb9612996166a3487414c188465e2",
+        "bytes": 6876
+      },
+      {
+        "packetPath": "research/pde_ledger_v3/_measurements/S11c_d_uniform_source.py",
+        "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_uniform_source.py",
+        "sourceSha256": "2a135aea365c7b5e57bfff7683c7b927cda52c0d37f6a9bad3c961eb6205a2b2",
+        "bytes": 14588
+      },
+      {
+        "packetPath": "research/pde_ledger_v3/_measurements/S11c_d_uniform_source_report.md",
+        "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_uniform_source_report.md",
+        "sourceSha256": "d95f629e292e67eafe36bde9a5bd0689345c7fb3fac97d669671ea278ae65b8b",
+        "bytes": 2023
+      },
+      {
+        "packetPath": "research/pde_ledger_v3/_measurements/S11c_d_uniform_source_checkpoint.json",
+        "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_uniform_source_checkpoint.json",
+        "sourceSha256": "9d4b65ad07d1f403fd3aa4ec42da99db622a4d0a26d6ddce6c472148c7830085",
+        "bytes": 13523
+      },
+      {
+        "packetPath": "research/pde_ledger_v3/_measurements/S11c_d_continuum_currents_report.md",
+        "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_continuum_currents_report.md",
+        "sourceSha256": "f7c785bf38dc691844b024b4de2c2e2d1f9fcf4f223cf7df4f7b407b73051903",
+        "bytes": 2467
+      },
+      {
+        "packetPath": "research/pde_ledger_v3/_measurements/S11c_d_variable_profile_development_input.json",
+        "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_variable_profile_development_input.json",
+        "sourceSha256": "660b2b0b54494dce964c7f5fbd722a76a7e894d8ed92b18b5eb6290c3c10f1d5",
+        "bytes": 1884
+      },
+      {
+        "packetPath": "research/pde_ledger_v3/directives/S11c_d_CHANNEL_MAP_BORN_AMENDMENT_DRAFT.md",
+        "sourcePath": "research/pde_ledger_v3/directives/S11c_d_CHANNEL_MAP_BORN_AMENDMENT_DRAFT.md",
+        "sourceSha256": "8aa6fc7ab6d43f1f197a3cb8f9a83b7607f1de2c7a321aa130b582f4a323082d",
+        "bytes": 8623
+      },
+      {
+        "packetPath": "research/pde_ledger_v3/directives/S11c_d_SHARED_PHYSICS.md",
+        "sourcePath": "research/pde_ledger_v3/directives/S11c_d_SHARED_PHYSICS.md",
+        "sourceSha256": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5",
+        "bytes": 67800
+      },
+      {
+        "packetPath": "research/pde_ledger_v3/directives/S11c_d_SCATTERING_FORM_AMENDMENT.md",
+        "sourcePath": "research/pde_ledger_v3/directives/S11c_d_SCATTERING_FORM_AMENDMENT.md",
+        "sourceSha256": "eb6f20a3fd0bce308e53901fa69fdf267b2917e5cc78b319a1e7700074a47560",
+        "bytes": 69780
+      },
+      {
+        "packetPath": "research/pde_ledger_v3/directives/S11c_c1_SHARED_PHYSICS.md",
+        "sourcePath": "research/pde_ledger_v3/directives/S11c_c1_SHARED_PHYSICS.md",
+        "sourceSha256": "47554c8c9cf2fd070c1048a7ae0ca36b1315bf50a48ed07a51019ff3e72987ad",
+        "bytes": 50376
+      },
+      {
+        "packetPath": "review-prompt.md",
+        "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_total_transverse_loss_review_prompt.md",
+        "sourceSha256": "36babbd87c6080ea89ab48a2484507955182ab76c07fbb44a6e305e0cf43474b",
+        "bytes": 7108
+      }
+    ],
+    "sourceExcerptRanges": [
+      {
+        "path": "research/pde_ledger_v3/scripts/S11c_d_mixing_scattering_sympy_audit.py",
+        "sourceSha256": "5bf77729682960bb59f10c672a5fe3f67a98b0a9533da7c6189a37183596050f",
+        "lines": [
+          1583,
+          1647
+        ],
+        "role": "EdgeReduction.__init__ complete source definition (not executed)"
+      },
+      {
+        "path": "research/pde_ledger_v3/scripts/S11c_d_mixing_scattering_sympy_audit.py",
+        "sourceSha256": "5bf77729682960bb59f10c672a5fe3f67a98b0a9533da7c6189a37183596050f",
+        "lines": [
+          2292,
+          2325
+        ],
+        "role": "ConstantEndPencil.background complete source definition (not executed)"
+      },
+      {
+        "path": "research/pde_ledger_v3/scripts/S11c_d_mixing_scattering_sympy_audit.py",
+        "sourceSha256": "5bf77729682960bb59f10c672a5fe3f67a98b0a9533da7c6189a37183596050f",
+        "lines": [
+          2438,
+          2453
+        ],
+        "role": "ConstantEndPencil.strong_matrix complete source definition (not executed)"
+      },
+      {
+        "path": "research/pde_ledger_v3/scripts/S11c_d_mixing_scattering_sympy_audit.py",
+        "sourceSha256": "5bf77729682960bb59f10c672a5fe3f67a98b0a9533da7c6189a37183596050f",
+        "lines": [
+          2992,
+          3131
+        ],
+        "role": "ClosedAcousticEnergy.construct complete source definition (not executed)"
+      },
+      {
+        "path": "research/pde_ledger_v3/scripts/S11c_d_mixing_scattering_sympy_audit.py",
+        "sourceSha256": "5bf77729682960bb59f10c672a5fe3f67a98b0a9533da7c6189a37183596050f",
+        "lines": [
+          3183,
+          3198
+        ],
+        "role": "ClosedCurrentPairing.__init__ complete source definition (not executed)"
+      },
+      {
+        "path": "research/pde_ledger_v3/scripts/S11c_d_mixing_scattering_sympy_audit.py",
+        "sourceSha256": "5bf77729682960bb59f10c672a5fe3f67a98b0a9533da7c6189a37183596050f",
+        "lines": [
+          3242,
+          3424
+        ],
+        "role": "ClosedCurrentPairing.construct complete source definition (not executed)"
+      },
+      {
+        "path": "research/pde_ledger_v3/directives/S11b_SHARED_PHYSICS.md",
+        "sourceSha256": "9ea9e388e9d6421a841eaf851d12e1793527bba9a24aeeface3bfac2f4b40078",
+        "lines": [
+          704,
+          747
+        ],
+        "role": "Inherited two-port work and mixed physical closure"
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_remaining_case_end_sources_report.md",
+        "sourceSha256": "34fa39f2fcc157ffd156e0045172d24a8cbabb457d5cb42a1c4688baed942fac",
+        "lines": [
+          1,
+          21
+        ],
+        "role": "Recorded all-case symbolic end-coupling evidence"
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_frequency_source.py",
+        "sourceSha256": "9be20be462bc10bfcaa7af643b9301948dd79bc2e08eb24ebcd1386a81efcdac",
+        "lines": [
+          152,
+          181
+        ],
+        "role": "Saved compact frequency-source binding scope"
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_continuum_response.py",
+        "sourceSha256": "0fe30a9c4771671e9fa139b0557f185f55d351887f2ba8b9fa4ed1abfb616db2",
+        "lines": [
+          253,
+          278
+        ],
+        "role": "Saved contrast-halving comparison definition"
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_outgoing_prescription_candidate_report.md",
+        "sourceSha256": "c1cc7cc6c1a5219fc877e7f8952eb067eaac1228c4a83eb22ce9e0aa307d7e05",
+        "lines": [
+          1,
+          43
+        ],
+        "role": "Saved separated-point candidate and actual limitations"
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_saved_inspection_report.md",
+        "sourceSha256": "2310fdb6246635d825fcbd344bc0d1de2ba30a84cb9ddc41ad840de5a4e01e85",
+        "lines": [
+          15,
+          53
+        ],
+        "role": "Saved formal end-field/forcing evidence, not outgoing action"
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_localized_thickness_failure_checkpoint.json",
+        "sourceSha256": "7055c982d34cde7354586538ed7c3b4874466dd348b194b54b72cd6e0ddaa18c",
+        "lines": [
+          2,
+          2
+        ],
+        "role": "Localized action failure status (no action candidate)"
+      }
+    ],
+    "selfEntry": "packet-index.json lists every other file; state.json pins the complete inventory including this index",
+    "peerReportsIncluded": false,
+    "externalCommentaryIncluded": false,
+    "scientificPayloadsIncluded": false,
+    "scientificExecutionAuthorized": false,
+    "nextStop": "After amendment clearance, repair/review only transverse-first map and reference face drive, then costed outgoing-field/power plan; user go/no-go before any science."
+  },
+  "reports": {
+    "claude": {
+      "literalVerdict": "NEEDS REVISION",
+      "literalReport": "**NEEDS REVISION**\n\nThis review covers the document only. I ran no CAS, science, payload restoration or root work. Nothing here establishes a numerical premise, a total loss, FORM, or A11/A12.\n\n## What the source evidence establishes (my reading, before the draft)\n\n- **A native one-volume balance exists for the uniform background.** `ClosedCurrentPairing.construct` (evidence lines 466\u2013468) builds `FINITE_BALANCE_RESIDUAL = rates\u00b7(slab+depth\u00b7bulk energy/current) + interface_power + top_power \u2212 source_power`. `source_power` is built only from the five **slab row residuals** through `PLUS/MINUS_ROW_POWER_MAP` (lines 384\u2013391). The face closure is solved exactly for the bulk amplitude (lines 3070\u20133074, `CLOSURE_RESIDUAL`), so it is never a forced term. The balance covers a constant background with two legs `(\u03c9,k)` and exponential depth legs. It is not an identity for a spatially forced field.\n- **The two-port split in the source matches the balance.** `port = split` (lines 438\u2013447) splits port work into bulk `p\u00b7v_bulk`, interfacial `\ud835\udc9cJ`, and `\u039b_X\ud835\udc9cV`. At the saved inputs `\u039b_V0 = \u039b_X0 = 0` (damping note). The interfacial term is therefore \u00bdRe \u039b_A|\ud835\udc9c|\u00b2 = \u00bd \u039b_A0/(1+\u03c9\u00b2\u03c4\u00b2)|\ud835\udc9c|\u00b2 under the causal `1/(1\u2212i\u03c9\u03c4)` kernel. This is my inference, not a computed sign. I found no specific passivity obstruction in the supplied closure. The held-background work stays an open premise.\n- **The density profile is a step.** The input JSON has `w=(1+tanh \u03be)/2`, a genuine step, and `m=sech\u00b2/3`, which is localized. The saved inspection (lines 17\u201326) has nonzero RIGHT density-grade end fields with Abel-regulated records. At the ends, only the 6\u00d76 curl-representation TH/HT blocks and their end-minus-reference differences are recorded as zero (uniform report lines 7\u20139).\n- **The saved slice has no open loss channel except dissipation.** Currents report: \"thickness open selector has computed rank zero\", and `q_depth\u00b2 = \u2212k_n\u00b2 \u2212 1/25`. So at \u03c9=1 the only loss channel is interface dissipation. The bulk opens only above \u03c9=\u221a5 on this slice, which lies inside the (0.1, 4) window.\n\n## Blocking findings\n\n### 1. The loss-side forcing must be localized at the transmitted end at O(\u03bb); a zero baseline in the incident state is not enough (Q1, Q2)\n\n- **Draft (lines 33\u201335):** \"Establish \u2026 that the **uniform incident state** has zero amplitudes/drives in all loss-producing outputs.\"\n- **Shared physics (lines 364\u2013366):** the relevant objects are `K\u2080`, `K\u208b`, `K\u208a`. With a step `w`, the first-order forcing on the loss side contains `(K\u208a\u2212K\u2080)\u03c8\u2080\u00b7w(\u03be)`. That is a non-decaying Heaviside term, not a localized one.\n- **Why it matters:** if the transmitted transverse mode in the RIGHT background has any O(\u03bb) face, affinity, thickness or bulk drive, then \u039b_A dissipation (or radiation above \u221a5) occurs **per unit length** all along the half-line. `L_T` at \u03bb\u00b2 is then not a finite stationary coefficient, and \"no unresolved baseline power\" does not catch this. The draft itself says zero curl-representation TH blocks do not establish losslessness (assessment line 84). So the recorded `K\u208a\u2212K\u2080 = 0` does not by itself discharge this in the physical 5\u00d75 + closure representation.\n- **Smallest correction:** require zero loss-side drives for the incident **and transmitted** end states at every retained grade, in the physical pencil + closure + exterior-drive representation. Equivalently, the H/exterior projection of the first-order forcing must have no Heaviside, Abel or delta remainder. If that fails, stop with \"loss per unit length / L_T undefined\". Do not regularize the problem into a total.\n\n### 2. The source-work route is mis-specified in two ways (Q4)\n\n**(a) \"Inclusive minus elastic\" is not a finite subtraction for this profile.**\n- **Draft (lines 57\u201358):** \"Remove separately identified transverse elastic scattering from an inclusive source-work value.\"\n- **Why it fails:** with the step, the T-block first-order field has the phase-matched `1/(q\u2212q_T)` PV plus delta at the lossless real T pole. That is a secular transmitted-phase correction. Its \"source work\" is not a finite scattered power, so inclusive minus elastic would subtract ill-defined quantities.\n- **Smallest correction:** evaluate source work only on the loss block (H sector + exterior + interfacial dissipation). This uses the computed reference decoupling `K\u2080 = 0`, which must first be established in the physical 5\u00d75/closure representation. Then no elastic subtraction is needed. Allow the inclusive form only if the T-block phase-matched term is shown to be finite and separable.\n\n**(b) The inherited row-power maps omit the boundary sources.**\n- **Draft (line 57):** \"Use the inherited row-power maps.\"\n- **Why it is incomplete:** by construction those maps pair only slab-row residuals; the native construction solves the face closure exactly. The first-order problem also has `C1\u03a80` boundary data: tilted normals and closure/kinematic inhomogeneity driving the exterior and the interface. The draft's own \u00a72 includes these for `a1`. A reduced balance that folds them into rows can still close, because reduced source work equals reduced outflow, while missing the directly driven exterior field.\n- **Smallest correction:** state that the source work includes every first-order inhomogeneity, meaning slab rows plus face closure/kinematics/exterior drive, with the B2d two-port pairing (evidence lines 505\u2013510). Its independent check must compare against flux computed from `a1 = C0\u03a81 + C1\u03a80` on the physical faces.\n\n## Assessment by question\n\n1. **The observable is well defined, conditionally.**\n   - It needs finding 1, lossless T transport at both \u03bb-dependent ends, and T\u2013T current orthogonality.\n   - The separation from extinction, lifetime, capture and the A11/A12/`C_{T\u2192H}` roots is correct (draft lines 18\u201328 and 85\u201388; scattering amendment lines 705\u2013717).\n   - *Optional:* define `L_T` per incident channel (direction and polarization), not per \"sector\".\n2. **The order counting is correct.** It holds given finding 1, and the ban on `1 \u2212 first-order transmission` is adequate.\n   - *Optional:* name the T0\u00d7H1 cut cross-current explicitly. It is O(\u03bb) at a finite end cut and vanishes only via the local balance when the baseline drives are zero.\n3. **The one-volume flux-plus-dissipation total is viable and avoids double counting** (draft lines 49\u201352).\n   - No closure obstruction was found at `\u039b_V = \u039b_X = 0`.\n   - Held-background work, the top/lateral faces above \u221a5, and signed transfer are properly kept conditional.\n4. **The route is viable only with finding 2.**\n   - A full root classification is not needed for the total, provided the H-block response and balance are supported.\n5. **The draft is honest here** (draft lines 59\u201361; assessment lines 114\u2013122).\n   - **Concrete reusable object (inference):** if the H forcing is localized (finding 1), with smooth tanh/sech\u00b2 transforms, and the H block has no real-axis poles, the pairing can be done on the **real Fourier axis** of the uniform reference. This avoids the separated-point, position-space restriction entirely. That condition holds on the saved slice, where the only loss is \u039b_A dissipation. There the loss is \u222bdq f_H\u2020 [anti-Hermitian part of (M\u00b7G0_H)] f_H.\n   - The two-leg `(k_left, k_right)` structure in `ClosedCurrentPairing`, the 26 denominator certificates, 50 tail checks and the block-16/17 residue/delta records are candidates for reuse. The residue/delta records only become relevant once real H poles appear.\n   - **Major unknowns:**\n     - the q-space first-order kernel `K1`, with its tilt and advection terms;\n     - the row-power map at equal normal momenta for a spatially forced field;\n     - the bulk branch-cut continuum above \u221a5;\n     - threshold proximity.\n   - No measured cost supports an estimate.\n6. **The continuation section is adequate** (draft lines 73\u201381).\n   - *Optional:* note that `s=0` removes permeability entirely (the closure becomes impermeable, `J=0`), which may change the pencil's rank. It is already covered by \"singular continuations remain unresolved\".\n   - The unanchored label and the separation of review debts (lines 85\u201391) are sufficient.\n\n## The proposed sequence\n\nThe sequence is defensible once findings 1 and 2 are fixed: repair the T-first map and face drive, run the build review, produce a costed plan, then stop for your go/no-go.\n\nPremises that stay open for the later instrument:\n- zero end drives at the retained grades, in the physical representation;\n- exact reference T/H decoupling including closure;\n- passivity and held-background work;\n- a regular domain away from \u221a5 and other thresholds;\n- a supported outgoing H/exterior response and its pairing.",
+      "receipt": {
+        "engine": "claude",
+        "sessionId": "e47cdce4-56f7-4d91-8e11-c9fa78cf3892",
+        "command": [
+          "/home/trevnorris/.local/bin/claude",
+          "--print",
+          "--output-format",
+          "json",
+          "--safe-mode",
+          "--restricted",
+          "--tools",
+          "Read,Glob,Grep",
+          "--allowedTools",
+          "Read,Glob,Grep",
+          "--permission-mode",
+          "dontAsk",
+          "--strict-mcp-config",
+          "--mcp-config",
+          "{\"mcpServers\":{}}",
+          "--setting-sources",
+          "",
+          "--disable-slash-commands",
+          "--session-id",
+          "e47cdce4-56f7-4d91-8e11-c9fa78cf3892"
+        ],
+        "cwd": "/var/projects/toy_physics/_scratch/s11c/s11c-d-total-transverse-loss-20260928/amendment-review/packet",
+        "startedUtc": "2026-09-28T22:37:37.887014+00:00",
+        "packetSha256": "78aed484714bc97783737806f2ab1e52f9c3cf1935d3fbf6cc2fc518083005e1",
+        "promptSha256": "36babbd87c6080ea89ab48a2484507955182ab76c07fbb44a6e305e0cf43474b",
+        "scientificExecutionEnabled": false,
+        "reviewVerdict": "NOT_ADJUDICATED",
+        "pid": 766442,
+        "exitStatus": 0,
+        "finishedUtc": "2026-09-28T22:42:18.049040+00:00",
+        "wallSeconds": 280.14931301306933,
+        "outputSha256": "0628ef9bed0529f3a29839ba094ec95137e023f3f15d3305566e31ea88aac6c2",
+        "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderrBytes": 0
+      },
+      "rawJsonPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-total-transverse-loss-20260928/amendment-review/claude.json",
+      "rawJsonSha256": "0628ef9bed0529f3a29839ba094ec95137e023f3f15d3305566e31ea88aac6c2",
+      "stderrLiteral": "",
+      "completion": {
+        "stop_reason": "end_turn",
+        "terminal_reason": "completed",
+        "is_error": false,
+        "subtype": "success",
+        "permission_denials": []
+      }
+    },
+    "grok": {
+      "literalVerdict": "CLEAR FOR THIS PREPARATION AMENDMENT",
+      "literalReport": "I'll start by reading the packet index and source evidence, then assess the amendment draft against those sources.I\u2019ll read the source evidence first, then the draft and assessment.Continuing with shared physics, scattering, and the remaining source files before the draft.I\u2019ll pull the shared-physics and scattering sections that define loss, first-order maps, and A11/A12.Source picture is in place. Next I\u2019ll read the amendment draft and the accompanying assessment.**CLEAR FOR THIS PREPARATION AMENDMENT**\n\nThis is a preparation/document review. It does not establish numerical premises, total loss, FORM, or A11/A12.\n\n## 1. Object and separation\n\nLoss out of the whole transverse sector is a well-defined primary stationary observable on the stated domain: real-frequency scattering with clean open transverse channels, well-defined signed currents, and both ends included.\n\nv10 already defines survival from reflected and transmitted transverse blocks:\n\n> `J_T,out[a_T] = J_T,out,\u2212[ S_{T,\u2212\u2190T}a_T ] + J_T,out,+[ S_{T,+\u2190T}a_T ]`,  \n> `P_T,surv[a_T] \u2261 J_T,out[a_T] / J_T,in[a_T]`.  \n> (`S11c_d_SHARED_PHYSICS.md` \u00a73b)\n\nThe draft\u2019s target is the complement of that object:\n\n> \u201cDefine survival using **all** outgoing transverse polarizations at both ends, including reflection. The exact target is `L_T = 1 - J_T,out(all ends)/J_T,in`. It is not forward-beam extinction, a temporal decay rate, or bound-state capture.\u201d  \n> (draft \u00a71)\n\nThat separation is correct. Forward extinction treats elastic reflection as loss; this object counts it as survival. Lifetime and capture are excluded, matching the scattering amendment\u2019s bound-pole deferral and \u201cno capture probability without a protocol.\u201d\n\nThe draft treats `L_T` as an additional observable, not a replacement for A11/A12:\n\n> \u201cThis explicitly proposes the additional total/interface-loss observable that the earlier scattering amendment left outside current production. It changes the pilot's priority, not the meaning of accepted T-to-H or bulk-flux outputs, and does not close full FORM, A11/A12 or historical review debts.\u201d  \n> (draft \u00a74)\n\nThat matches the scattering amendment: `C_{T\u2192H}` is thickness end-channel conversion only; bulk-depth flux is a separately typed A12 root; survival is a continuum-channel ratio; those three together do not bound total N13 loss; combined accounting needs a common control volume (`S11c_d_SCATTERING_FORM_AMENDMENT.md` \u00a72, \u00a75). The new work is to construct the survival deficit from loss-side power, with conversion, face absorption, and bulk radiation as attribution.\n\nThe computational route is the right one for a leading coefficient:\n\n> \u201cCompute the leading supported coefficient from physical loss-side power or an equivalent source-work balance, not by subtracting a first-order transmission approximation from one.\u201d  \n> (draft \u00a71)\n\n`L_T` remains a survival deficit. It equals a physical total only after the \u00a72 balance, passivity, and completeness joins. That is a later-instrument premise, not a result claimed here.\n\n## 2. First-order sufficiency\n\nThe order counting is correct and properly conditional.\n\nAssessment:\n\n> `a0 = C0 Psi0`, `a1 = C0 Psi1 + C1 Psi0`.  \n> \u201cIf the actual baseline satisfies `a0=0` for every contributing loss channel, and its supported power form is regular, `B(\u03bb)[a(\u03bb),a(\u03bb)] = \u03bb\u00b2 B0[a1,a1] + higher orders`. No second-order field occurs in that leading term.\u201d\n\nThat matches v10 \u00a73c: if the baseline amplitude `a0` is absent, the retained quadratic slot is `B0[a1,a1]`; `B0[a0,a2]` and the other interference/current-variation slots drop. The same counting applies to a regular bilinear dissipation form such as `\u00bd Re(\ud835\udc9c \u039b_A* \ud835\udc9c*)` when the baseline affinity vanishes.\n\nThree conditions are all required, and the draft does not treat lossless ends as enough:\n\n> \u201cEstablish from actual source operands that the uniform incident state has zero amplitudes/drives in all loss-producing outputs and no unresolved baseline power. Lossless end transport alone is not a substitute for these joins.\u201d  \n> \u201cInclude the complete first-order receiving field and first-order changes of face, normal, closure, mode-projection and reconstruction maps. A loss amplitude has `a1=C0 Psi1+C1 Psi0`.\u201d  \n> (draft \u00a72)\n\nThat `C1 Psi0` term is the missing piece if one traces only a frozen map on `Psi1`. Independent `\u03b7` and `\u03c3_W` before the physical `\u03bb\u2261\u03b7` path are retained, as required by v10 \u00a71d/\u00a73c.\n\nThe prohibition on `1 \u2212` first-order transmission is adequate. Transverse survival has a nonzero baseline (`a0_T \u2260 0`), so\n\n`|t0 + \u03bb t1 + \u03bb\u00b2 t2|\u00b2`\n\ncarries `2 Re(t0* t2)` at order `\u03bb\u00b2`. Loss-side `a0=0` is what removes that interference. An optical-theorem identity can relate quadratic loss to a first-order elastic amplitude; it does not license dropping `t2` from a `1\u2212T` construction. The assessment states that limit; the draft adopts the loss-side route.\n\nZero TH/HT blocks are not those joins. Uniform-source evidence is\n\n> \u201cBoth canonical transverse/thickness off-diagonal blocks compute to zero in each background\u201d  \n> (`S11c_d_uniform_source_report.md`)\n\nin the 6\u00d76 curl-potential representation, for LAB_HELD/RHO4_CONSTANT and the approved endpoints (`S11c_d_born_shortcut_baseline_assessment.md`). Channels and face/affinity drives still live on the full 5\u00d75 pencil and closure. Baseline vanishing of thickness amplitudes, face displacement (`amplitudes[0][4]` / `e_W`), affinity, and bulk drives remains unestablished in this packet.\n\n## 3. Control-volume accounting\n\nCommon-control-volume boundary flux plus interior dissipation can supply the total if conversion and later absorption are not both counted, both disconnected exterior half-spaces are included, and signed extras are kept until passivity is shown.\n\nDraft \u00a72:\n\n> \u201cCount non-transverse boundary flux plus dissipation **inside that volume**; do not count converted power once at an end and again after it dissipates beyond that end. The survival deficit is not a third additive mechanism.\u201d  \n> \u201cInclude both exterior half-spaces, lateral terms, the complete interfacial two-port work and any external work. Establish passivity/no unaccounted pump and stationary storage \u2026 before calling the result nonnegative loss.\u201d\n\nThat is the same disjoint-surface rule as the scattering amendment (`S11c_d_SCATTERING_FORM_AMENDMENT.md` \u00a72) and the c1 geometry of two disconnected half-spaces (`S11c_c1_SHARED_PHYSICS.md` \u00a71b/\u00a72a). Native face construction already carries both orientations and the complete two-port operands:\n\n> `port_ansatz = (pressure+mechanical_response)*outward_velocity + chemical_field*mass_flux`  \n> `split_ansatz = pressure*bulk_velocity + affinity*mass_flux + mechanical_response*outward_velocity`  \n> (`S11c_d_mixing_scattering_sympy_audit.py` 3368\u20133379)\n\nwhich matches S11b B2d, including transferred-mass pressure work (`S11b_SHARED_PHYSICS.md` 704\u2013710). Saved inputs have `Lambda_X_0 = Lambda_V_0 = 0`, so the extra `\u039b_X` traction channel is off; `\u039b_A` remains.\n\nNo obstruction in the supplied permeability/memory law blocks the definition. `\u039b_A(\u03c9)=\u039b_A_0/(1\u2212i\u03c9\u03c4_A)` with `\u039b_A_0=1/100>0` has `Re \u039b_A > 0` at real `\u03c9`; that is a local interfacial dissipation channel, not a numerical outgoing-wave epsilon (`S11c_d_channel_map_face_damping_note.md`). Abel regulators are absent from the accepted uniform end pencils (`regulator: false`). Modal attenuation across the window is uncomputed.\n\nThe held LAB_HELD background can source external work (`S11c_d_SHARED_PHYSICS.md` \u00a71c). That is a remaining join, not a reason the observable is ill-posed. Until passivity, stationary storage, lateral terms, and completeness are shown at the claimed settings, the result stays a signed transfer. The draft says that.\n\n## 4. Source-work route and root classification\n\nA receiving-field source-work route is a viable conditional substitute for normalizing each damped thickness mode, if it is the native row-power pairing and it is shown equal to the same control-volume balance.\n\nNative maps (`ClosedCurrentPairing.construct`, 3312\u20133322, 3397\u20133399):\n\n- `source_ansatz` from `\u2202t` of field rows `{0,1,2,4}` plus chemical row 3\n- `PLUS_ROW_POWER_MAP` / `MINUS_ROW_POWER_MAP`\n- `source_power = plus_power_map * pencils[0] + pencils[1].T * minus_power_map`\n- finite balance: `phase_rates[0]*total_energy + phase_rates[1]*total_current + interface_power + top_power \u2212 source_power`\n\nThose are bilinear maps between amplitudes and row residuals, not a supplied `Im(f\u2020Gf)`. The assessment correctly refuses a guessed Euclidean product; the draft requires inherited row-power maps.\n\nEssential finite joins and subtractions:\n\n- elastic-transverse subtraction: open T-channel outgoing current (reflection + transmission), i.e. work on the transverse receiving field, not all in-plane kinetic work (`field_ansatz[:3]` includes `u_L`)\n- two-port identity, including transferred-mass pressure work\n- face mass/mechanical reconstruction joins (`REDUCED_MASS_FACE_JOIN_RESIDUAL`, `REDUCED_MECHANICAL_FACE_JOIN_RESIDUAL`)\n- `SOURCE_BRANCH_JOINS`\n- both half-spaces (`top_power` / depth current) with stated orientation\n- incident-current denominator in physical units\n\nTotal source work is not automatically `L_T`. The draft requires the T subtraction.\n\nFull thickness-root classification is not needed for the total. Evanescent or complex thickness motion still sits inside the volume as stored field plus face dissipation plus any bulk radiation. The draft is right to keep classification secondary and to defer its repair.\n\nEquality of source-work to boundary flux plus dissipation is unproven for the spatially forced first-order field. The native pairing is a two-frequency harmonic construction on closed-pencil residuals, not that identity.\n\n## 5. Outgoing first-order field\n\nThe missing field and pairing are described honestly.\n\nSaved \u03c9=1 Green (`S11c_d_outgoing_prescription_candidate_report.md`):\n\n- unevaluated 5\u00d75 PV Fourier integrals and signed-current delta terms\n- domain `Ne(s11cdNormalPosition, s11cdSourceNormalPosition)`\n- evanescent slice; not a complete outgoing Green, coincident-point extension, A11/A12, or radiating witness\n\nFormal two-asymptote inspection (`S11c_d_two_asymptote_saved_inspection_report.md`): end fields/forcing, not outgoing action; six of eight end-field matrices zero; RIGHT density-grade formal carriers only; reconstruction carrier count zero. Localized thickness checkpoint: `FAILED_FIRST_LOCAL_PROFILE_TRANSFORM_NO_ACTION_CANDIDATE`. Continuum \u03c9=1 solve is a closed-domain coefficient response with zero open thickness and kinematically closed bulk (`S11c_d_continuum_currents_report.md`); it is not a physical total-loss result.\n\nDraft \u00a72: \u201cunevaluated Green integrals or a separated-point kernel are not a completed power pairing. No general certification or automatic full-solver fallback.\u201d\n\nReusable ingredients, not a pairing: uniform/end strong symbols with live `\u03c9` and both tangential momenta; row-power and two-port matrices; face records; frequency-source live pencils (tangents frozen). No overlooked completed coincident pairing is in this packet.\n\nCost: the packet does not support a runtime. Uniform source ~51 s and continuum currents ~69 s are different jobs. Localized action failed; Green integrals remain unevaluated. Inference: dropping root-labeling as a prerequisite does not remove the forced-field solve. Measured cost of that solve is unknown.\n\nMajor unknowns: `a0=0` for all loss drives including face/affinity; regularity of each power form; method for outgoing `Psi1` on radiating versus decaying support; source-work/balance equality; holding-force work; lateral/limit conventions; whether the frequency window contains bulk-open points; uncalibrated physical light band.\n\n## 6. Permeability continuation\n\nThe secondary description does not declare complex-at-zero-permeability roots leaky without outgoing radiation evidence.\n\n> \u201cAbove bulk availability, a complex root at `s=0` is leaky **only with physical outgoing radiation evidence**; complex alone also permits evanescence/wrong sheets.\u201d  \n> \u201cNo continuation run is authorized by this draft.\u201d  \n> (draft \u00a73)\n\nThat matches the damping note: turning `\u039b_A` off changes a physical coupling; outgoing bulk radiation can remain; `Im(k)` does not identify the mechanism. Continuation is deferred, not a prerequisite.\n\nThe unanchored-estimate label, separate premise status, and old review-debt boundary are sufficient for any later supported result:\n\n> \u201cIf no useful full comparison exists, use **unanchored leading-order estimate** with each premise and missing check stated separately.\u201d  \n> \u201cdoes not close full FORM, A11/A12 or historical review debts.\u201d  \n> (draft \u00a74)\n\nThat is the same explicit exception already used in the channel-map/Born amendment. It does not waive reduced/full comparison, and it does not mint a physical number.\n\n## Remaining premises and sequence\n\nLater instruments still owe:\n\n- lossless open T channels at both ends, nonzero `J_T,in`, actual face/affinity/bulk baseline drives\n- regular loss-side power forms and domain (thresholds, resonances, tails)\n- complete first-order `Psi1` including outgoing bulk/face state, plus `C1 Psi0`\n- one control-volume identity with both exteriors, laterals, two-port work, external/holding work, stationary storage, units and orientations\n- passivity before a nonnegative-loss claim; otherwise signed transfer\n- source-work = that balance at the claimed grade, after T subtraction\n- independent `\u03b7`/`\u03c3_W` then the physical homotopy; physical `\u039b_A` kept\n- no omitted contribution inside a value called total\n\nThe narrower sequence is defensible: amendment clearance, then only transverse-first map and reference face-drive repair/review (needed for the T window and face-drive joins), then a costed outgoing-field/power plan, then user go/no-go. Thickness classification is not required for the total. No scientific run, including the unused map job, is authorized before that decision.\n\nNo material correction is required in the stated scope. Optional prose (explicit outgoing-T losslessness next to \u201cincoming,\u201d a tighter pointer to the promised c2 face joins) would not change what is computed or what may be claimed.",
+      "receipt": {
+        "engine": "grok",
+        "sessionId": "7eb16db1-cdf9-49c8-81ab-def462ba29c2",
+        "command": [
+          "/home/trevnorris/.local/bin/grok",
+          "--cwd",
+          "/var/projects/toy_physics/_scratch/s11c/s11c-d-total-transverse-loss-20260928/amendment-review/packet",
+          "--prompt-file",
+          "/var/projects/toy_physics/_scratch/s11c/s11c-d-total-transverse-loss-20260928/amendment-review/packet/review-prompt.md",
+          "--output-format",
+          "json",
+          "--permission-mode",
+          "dontAsk",
+          "--no-plan",
+          "--tools",
+          "Read",
+          "--no-subagents",
+          "--disable-web-search",
+          "--verbatim",
+          "--session-id",
+          "7eb16db1-cdf9-49c8-81ab-def462ba29c2"
+        ],
+        "cwd": "/var/projects/toy_physics/_scratch/s11c/s11c-d-total-transverse-loss-20260928/amendment-review/packet",
+        "startedUtc": "2026-09-28T22:42:18.075324+00:00",
+        "packetSha256": "78aed484714bc97783737806f2ab1e52f9c3cf1935d3fbf6cc2fc518083005e1",
+        "promptSha256": "36babbd87c6080ea89ab48a2484507955182ab76c07fbb44a6e305e0cf43474b",
+        "scientificExecutionEnabled": false,
+        "reviewVerdict": "NOT_ADJUDICATED",
+        "pid": 769758,
+        "exitStatus": 0,
+        "finishedUtc": "2026-09-28T22:49:05.877279+00:00",
+        "wallSeconds": 407.8005262799561,
+        "outputSha256": "2add1621ea86fbee2bc0e9da2bc9c6791a4f8a21da36120f5084d9976e7fbe80",
+        "stderrSha256": "c90cf56b5dd77858041d0940d22e6a17303181eaf89495679d75c72987905a01",
+        "stderrBytes": 1431
+      },
+      "rawJsonPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-total-transverse-loss-20260928/amendment-review/grok.json",
+      "rawJsonSha256": "2add1621ea86fbee2bc0e9da2bc9c6791a4f8a21da36120f5084d9976e7fbe80",
+      "stderrLiteral": "\u001b[2m2026-09-28T22:42:18.367461Z\u001b[0m \u001b[33m WARN\u001b[0m plugin name collision resolved by scope precedence \u001b[3mplugin_name\u001b[0m\u001b[2m=\u001b[0mfrontend-design \u001b[3mwinner\u001b[0m\u001b[2m=\u001b[0m/home/trevnorris/.claude/plugins/marketplaces/claude-plugins-official/plugins/frontend-design \u001b[3mloser\u001b[0m\u001b[2m=\u001b[0m/home/trevnorris/.claude/plugins/cache/claude-plugins-official/frontend-design/fbe07fb6ce7d\n\u001b[2m2026-09-28T22:42:18.384917Z\u001b[0m \u001b[33m WARN\u001b[0m plugin name collision resolved by scope precedence \u001b[3mplugin_name\u001b[0m\u001b[2m=\u001b[0mfrontend-design \u001b[3mwinner\u001b[0m\u001b[2m=\u001b[0m/home/trevnorris/.claude/plugins/marketplaces/claude-plugins-official/plugins/frontend-design \u001b[3mloser\u001b[0m\u001b[2m=\u001b[0m/home/trevnorris/.claude/plugins/cache/claude-plugins-official/frontend-design/fbe07fb6ce7d\n\u001b[2m2026-09-28T22:42:18.436282Z\u001b[0m \u001b[33m WARN\u001b[0m hooks: skipped unrecognized event names (check for typos) \u001b[3mfile\u001b[0m\u001b[2m=\u001b[0m/home/trevnorris/.claude/settings.json \u001b[3mskipped\u001b[0m\u001b[2m=\u001b[0m[\"PermissionRequest\"]\n\u001b[2m2026-09-28T22:42:18.436451Z\u001b[0m \u001b[33m WARN\u001b[0m hook loading from settings file: failed to parse hook file /home/trevnorris/.cursor/hooks.json: invalid matcher groups for event 'beforeSubmitPrompt': missing field `hooks`\n\u001b[2m2026-09-28T22:42:18.436600Z\u001b[0m \u001b[33m WARN\u001b[0m hook loading error \u001b[3merror\u001b[0m\u001b[2m=\u001b[0mParseFile { path: \"/home/trevnorris/.cursor/hooks.json\", detail: \"invalid matcher groups for event 'beforeSubmitPrompt': missing field `hooks`\" }\n",
+      "completion": {
+        "stopReason": "end_turn"
+      }
+    }
+  },
+  "coordinatorStderrLiteral": "",
+  "watcherStderrLiteral": "",
+  "mechanicalChecks": {
+    "method": "Python standard-library JSON/text/hash/tar reads only; no payload restoration, project import or science",
+    "packetInventoryAndAllHashesMatch": true,
+    "archiveHashAndEveryMemberMatch": true,
+    "all24CanonicalSourceHashesMatch": true,
+    "reportAndStderrReceiptHashesMatch": true,
+    "bothCompleteBeforeDisposition": true,
+    "scientificCalls": 0
+  },
+  "dispositionFile": "S11c_d_total_transverse_loss_review_disposition.md",
+  "next": "Preserve reviewed baseline, fold material end-localization/source-work/boundary-source corrections, fresh amendment review; no map repair before clearance and no science before costed-plan go/no-go."
+}

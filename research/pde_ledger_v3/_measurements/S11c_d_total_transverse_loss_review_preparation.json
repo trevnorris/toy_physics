@@ -1,0 +1,228 @@
+{
+  "status": "BOTH_REVIEWS_COMPLETE_AMENDMENT_NEEDS_REVISION",
+  "preparedUtc": "2026-09-28T22:31:59.346502+00:00",
+  "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-d-total-transverse-loss-20260928/amendment-review",
+  "packetIndex": "/var/projects/toy_physics/_scratch/s11c/s11c-d-total-transverse-loss-20260928/amendment-review/packet/packet-index.json",
+  "packetSha256": "78aed484714bc97783737806f2ab1e52f9c3cf1935d3fbf6cc2fc518083005e1",
+  "archiveSha256": "a28ab3f4df275d3d8f70e83f2f3ff43f4932bf9ed6be38b18b7a530da5a4da7c",
+  "packetFiles": 17,
+  "packetBytes": 332804,
+  "sourceRecords": [
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_born_shortcut_baseline_assessment.md",
+      "sourceSha256": "9fa08186b9d8380151fbcfdc65ed05bc0a0cb9612996166a3487414c188465e2"
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_channel_map_face_damping_note.md",
+      "sourceSha256": "0813056146bc627e7dc0920b355a23ced1233684caaf0e35bf49e6b9570188a1"
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_channel_map_face_damping_source_inspection.json",
+      "sourceSha256": "18ae765b897bab123040e76c3dd28a1f3e67d83b1e215e2902a57f242dcca12e"
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_continuum_currents_report.md",
+      "sourceSha256": "f7c785bf38dc691844b024b4de2c2e2d1f9fcf4f223cf7df4f7b407b73051903"
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_continuum_response.py",
+      "sourceSha256": "0fe30a9c4771671e9fa139b0557f185f55d351887f2ba8b9fa4ed1abfb616db2"
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_frequency_source.py",
+      "sourceSha256": "9be20be462bc10bfcaa7af643b9301948dd79bc2e08eb24ebcd1386a81efcdac"
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_localized_thickness_failure_checkpoint.json",
+      "sourceSha256": "7055c982d34cde7354586538ed7c3b4874466dd348b194b54b72cd6e0ddaa18c"
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_outgoing_prescription_candidate_report.md",
+      "sourceSha256": "c1cc7cc6c1a5219fc877e7f8952eb067eaac1228c4a83eb22ce9e0aa307d7e05"
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_remaining_case_end_sources_report.md",
+      "sourceSha256": "34fa39f2fcc157ffd156e0045172d24a8cbabb457d5cb42a1c4688baed942fac"
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_total_transverse_loss_assessment.md",
+      "sourceSha256": "b3b3f94228e5eab78844bcb604c4072498f9177c03ba352c2c8c383da41e6b51"
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_total_transverse_loss_review_prompt.md",
+      "sourceSha256": "36babbd87c6080ea89ab48a2484507955182ab76c07fbb44a6e305e0cf43474b"
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_total_transverse_loss_source_evidence.txt",
+      "sourceSha256": "d02509fe830312372c293ce9273712ba1a04871595dbd8baa62b11d1f0c022d4"
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_saved_inspection_report.md",
+      "sourceSha256": "2310fdb6246635d825fcbd344bc0d1de2ba30a84cb9ddc41ad840de5a4e01e85"
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_uniform_source.py",
+      "sourceSha256": "2a135aea365c7b5e57bfff7683c7b927cda52c0d37f6a9bad3c961eb6205a2b2"
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_uniform_source_checkpoint.json",
+      "sourceSha256": "9d4b65ad07d1f403fd3aa4ec42da99db622a4d0a26d6ddce6c472148c7830085"
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_uniform_source_report.md",
+      "sourceSha256": "d95f629e292e67eafe36bde9a5bd0689345c7fb3fac97d669671ea278ae65b8b"
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_variable_profile_development_input.json",
+      "sourceSha256": "660b2b0b54494dce964c7f5fbd722a76a7e894d8ed92b18b5eb6290c3c10f1d5"
+    },
+    {
+      "path": "research/pde_ledger_v3/directives/S11b_SHARED_PHYSICS.md",
+      "sourceSha256": "9ea9e388e9d6421a841eaf851d12e1793527bba9a24aeeface3bfac2f4b40078"
+    },
+    {
+      "path": "research/pde_ledger_v3/directives/S11c_c1_SHARED_PHYSICS.md",
+      "sourceSha256": "47554c8c9cf2fd070c1048a7ae0ca36b1315bf50a48ed07a51019ff3e72987ad"
+    },
+    {
+      "path": "research/pde_ledger_v3/directives/S11c_d_CHANNEL_MAP_BORN_AMENDMENT_DRAFT.md",
+      "sourceSha256": "8aa6fc7ab6d43f1f197a3cb8f9a83b7607f1de2c7a321aa130b582f4a323082d"
+    },
+    {
+      "path": "research/pde_ledger_v3/directives/S11c_d_SCATTERING_FORM_AMENDMENT.md",
+      "sourceSha256": "eb6f20a3fd0bce308e53901fa69fdf267b2917e5cc78b319a1e7700074a47560"
+    },
+    {
+      "path": "research/pde_ledger_v3/directives/S11c_d_SHARED_PHYSICS.md",
+      "sourceSha256": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5"
+    },
+    {
+      "path": "research/pde_ledger_v3/directives/S11c_d_TOTAL_TRANSVERSE_LOSS_AMENDMENT_DRAFT.md",
+      "sourceSha256": "48712e700109c13bd3ec531c327d4a9de42a6b0bfe998bf327dac8bfba2f838a"
+    },
+    {
+      "path": "research/pde_ledger_v3/scripts/S11c_d_mixing_scattering_sympy_audit.py",
+      "sourceSha256": "5bf77729682960bb59f10c672a5fe3f67a98b0a9533da7c6189a37183596050f"
+    }
+  ],
+  "packetFilesAndHashes": {
+    "packet-index.json": "e64308ec4c594df427593954e0b89bc13739768eb00bf110fb1683392e1804a0",
+    "research/pde_ledger_v3/_measurements/S11c_d_born_shortcut_baseline_assessment.md": "9fa08186b9d8380151fbcfdc65ed05bc0a0cb9612996166a3487414c188465e2",
+    "research/pde_ledger_v3/_measurements/S11c_d_channel_map_face_damping_note.md": "0813056146bc627e7dc0920b355a23ced1233684caaf0e35bf49e6b9570188a1",
+    "research/pde_ledger_v3/_measurements/S11c_d_channel_map_face_damping_source_inspection.json": "18ae765b897bab123040e76c3dd28a1f3e67d83b1e215e2902a57f242dcca12e",
+    "research/pde_ledger_v3/_measurements/S11c_d_continuum_currents_report.md": "f7c785bf38dc691844b024b4de2c2e2d1f9fcf4f223cf7df4f7b407b73051903",
+    "research/pde_ledger_v3/_measurements/S11c_d_total_transverse_loss_assessment.md": "b3b3f94228e5eab78844bcb604c4072498f9177c03ba352c2c8c383da41e6b51",
+    "research/pde_ledger_v3/_measurements/S11c_d_total_transverse_loss_source_evidence.txt": "d02509fe830312372c293ce9273712ba1a04871595dbd8baa62b11d1f0c022d4",
+    "research/pde_ledger_v3/_measurements/S11c_d_uniform_source.py": "2a135aea365c7b5e57bfff7683c7b927cda52c0d37f6a9bad3c961eb6205a2b2",
+    "research/pde_ledger_v3/_measurements/S11c_d_uniform_source_checkpoint.json": "9d4b65ad07d1f403fd3aa4ec42da99db622a4d0a26d6ddce6c472148c7830085",
+    "research/pde_ledger_v3/_measurements/S11c_d_uniform_source_report.md": "d95f629e292e67eafe36bde9a5bd0689345c7fb3fac97d669671ea278ae65b8b",
+    "research/pde_ledger_v3/_measurements/S11c_d_variable_profile_development_input.json": "660b2b0b54494dce964c7f5fbd722a76a7e894d8ed92b18b5eb6290c3c10f1d5",
+    "research/pde_ledger_v3/directives/S11c_c1_SHARED_PHYSICS.md": "47554c8c9cf2fd070c1048a7ae0ca36b1315bf50a48ed07a51019ff3e72987ad",
+    "research/pde_ledger_v3/directives/S11c_d_CHANNEL_MAP_BORN_AMENDMENT_DRAFT.md": "8aa6fc7ab6d43f1f197a3cb8f9a83b7607f1de2c7a321aa130b582f4a323082d",
+    "research/pde_ledger_v3/directives/S11c_d_SCATTERING_FORM_AMENDMENT.md": "eb6f20a3fd0bce308e53901fa69fdf267b2917e5cc78b319a1e7700074a47560",
+    "research/pde_ledger_v3/directives/S11c_d_SHARED_PHYSICS.md": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5",
+    "research/pde_ledger_v3/directives/S11c_d_TOTAL_TRANSVERSE_LOSS_AMENDMENT_DRAFT.md": "48712e700109c13bd3ec531c327d4a9de42a6b0bfe998bf327dac8bfba2f838a",
+    "review-prompt.md": "36babbd87c6080ea89ab48a2484507955182ab76c07fbb44a6e305e0cf43474b"
+  },
+  "authorization": {
+    "status": "EXPLICITLY_APPROVED_FIXED_PACKET",
+    "recordedUtc": "2026-09-28T22:31:59.346502+00:00",
+    "userInstruction": "Go: submit the total-transverse-loss amendment for independent review (fresh Claude + Grok), review-until-clear. After it clears, repair and re-review only the transverse-first map and face-drive test (premise #1). Defer the thickness-classification repair as secondary. Then return a costed plan for the first-order outgoing field and its power pairing. Stop there for my go/no-go. No science runs before that.",
+    "authorizationBasis": "Latest explicit user instruction authorizes these independent external amendment reviews. Exact packet assembled now from the named amendment and necessary source evidence; no claim user previously viewed this new packet hash. Host automatic approval review still applies.",
+    "packetSha256": "78aed484714bc97783737806f2ab1e52f9c3cf1935d3fbf6cc2fc518083005e1",
+    "archiveSha256": "a28ab3f4df275d3d8f70e83f2f3ff43f4932bf9ed6be38b18b7a530da5a4da7c",
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "packetFiles": 17,
+    "packetBytes": 332804,
+    "currentThread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+    "scientificExecutionAuthorized": false,
+    "externalSubmissionReview": {
+      "status": "REJECTED_BEFORE_PROCESS_START",
+      "recordedUtc": "2026-09-28T22:33:10.684595+00:00",
+      "reason": "The launch exports a 17-file packet containing internal source code, directives, reports, and input/checkpoint data to external Claude and Grok; the user authorized the review goal but not this exact sensitive payload and destinations.",
+      "destinations": [
+        "Claude",
+        "Grok"
+      ],
+      "packetSent": false,
+      "reviewerProcessesStarted": false,
+      "scientificJobsUsed": 0,
+      "workaroundOrRetry": false,
+      "next": "Await explicit consent to the exact fixed 17-file, 332804-byte packet and both external destinations; all preparation is complete."
+    },
+    "explicitExternalPermission": {
+      "recordedUtc": "2026-09-28T22:37:26.907078+00:00",
+      "userReply": "I approve",
+      "questionApproved": "May I send this exact 17-file, 332,804-byte packet to external Claude and Grok for the requested reviews? It contains the total-loss amendment, assessment, internal source excerpts, physics directives, baseline/damping reports and input/checkpoint JSON listed in the packet index. SHA256: 78aed484714bc97783737806f2ab1e52f9c3cf1935d3fbf6cc2fc518083005e1. No scientific job will run.",
+      "destinations": [
+        "Claude",
+        "Grok"
+      ],
+      "packetSha256": "78aed484714bc97783737806f2ab1e52f9c3cf1935d3fbf6cc2fc518083005e1",
+      "archiveSha256": "a28ab3f4df275d3d8f70e83f2f3ff43f4932bf9ed6be38b18b7a530da5a4da7c",
+      "packetFiles": 17,
+      "packetBytes": 332804,
+      "scope": "Submit this unchanged fixed packet once to each fresh independent reviewer. No science. Preserve the prior automatic rejection; no earlier process started."
+    }
+  },
+  "static": {
+    "status": "DOCUMENT_PACKET_ONLY_NO_SCIENCE",
+    "runnerSha256": "2ee5b3452c8951ff16f5cf8d4b2f0d05b6b611a8c45650cfc9ad7475d2f4b8ad",
+    "launcherSha256": "55ecb0680cb017818181f0508367e5705a3997fa97aba99d199f8619edc66254",
+    "completionMessageSha256": "31771143801e51b3ca188eae12780cc444c3fe22964ccb45ee39a81c9b7d00bc",
+    "syntaxPass": true,
+    "transportChanges": "Only runtime root changed from completed read-only sequential review transport. Both fresh reviewers receive identical prompt; one active reviewer, no peer sharing or retry.",
+    "scientificCalls": 0,
+    "peerReportsIncluded": false,
+    "archiveContentsVerified": true,
+    "sourceCount": 24
+  },
+  "noScienceStop": "No science before user go/no-go after the costed outgoing-field/power plan. Amendment/build clearance does not launch science.",
+  "priorReviewedMapBuildCommit": "92b835e75b4a094952cb3199105adbfa9f3fab6a",
+  "externalSubmissionReview": {
+    "status": "REJECTED_BEFORE_PROCESS_START",
+    "recordedUtc": "2026-09-28T22:33:10.684595+00:00",
+    "reason": "The launch exports a 17-file packet containing internal source code, directives, reports, and input/checkpoint data to external Claude and Grok; the user authorized the review goal but not this exact sensitive payload and destinations.",
+    "destinations": [
+      "Claude",
+      "Grok"
+    ],
+    "packetSent": false,
+    "reviewerProcessesStarted": false,
+    "scientificJobsUsed": 0,
+    "workaroundOrRetry": false,
+    "next": "Await explicit consent to the exact fixed 17-file, 332804-byte packet and both external destinations; all preparation is complete."
+  },
+  "launch": {
+    "jobPid": 766434,
+    "watcherPid": 766435,
+    "packetSha256": "78aed484714bc97783737806f2ab1e52f9c3cf1935d3fbf6cc2fc518083005e1",
+    "reviewers": [
+      "Claude",
+      "Grok"
+    ],
+    "concurrentReviewWorkers": 1,
+    "scienceCalls": 0,
+    "runnerSha256": "2ee5b3452c8951ff16f5cf8d4b2f0d05b6b611a8c45650cfc9ad7475d2f4b8ad",
+    "launcherSha256": "55ecb0680cb017818181f0508367e5705a3997fa97aba99d199f8619edc66254"
+  },
+  "startupInspection": {
+    "inspectedUtc": "2026-09-28T22:37:57.791476+00:00",
+    "state": "RUNNING",
+    "coordinatorAlive": true,
+    "watcherAlive": true,
+    "claudeAlive": true,
+    "claudeSessionId": "e47cdce4-56f7-4d91-8e11-c9fa78cf3892",
+    "claudeStartedUtc": "2026-09-28T22:37:37.887014+00:00",
+    "grokStarted": false,
+    "watcherStatus": "waiting",
+    "hookArmed": true,
+    "scientificCalls": 0,
+    "coordinatorStderrBytes": 0,
+    "watcherStderrBytes": 0
+  },
+  "completionRecord": "S11c_d_total_transverse_loss_review_record.json"
+}

@@ -1588,3 +1588,101 @@ independent review of its actual packet; no automatic external resubmission.
 No new science/physical inputs, Born, anchors or accepted-job replay. Review
 completion does not clear the amendment's remaining physics obligations.
 Lean/S11_lean/shared guard, prior failures/incidents and protected suffix intact.
+
+## User stop before repair: damping source question
+
+The latest user instruction authorizes bounded repair only after answering the
+damping question and returning for go/no-go on the rule. Read source/JSON/AST
+metadata only. Physical saved channel: Lambda_A_0=1/100, tau_A=1/10; Lambda_V_0
+and Lambda_X_0 are zero. Accepted uniform checkpoint records no Abel regulator
+in all three end symbols. Across omega=0.1–4, omega*tau_A=0.01–0.4; this is not
+modal attenuation/frequency. The physical coefficient has different units from
+omega. Modal attenuation across the window remains unmeasured. Physical bulk
+radiation and closure dissipation remain separate even if the transfer channel
+is turned off. Do not interpret tau→0 as removal of dissipation.
+
+Evidence and qualifications are in S11c_d_channel_map_face_damping_note.md and
+S11c_d_channel_map_face_damping_source_inspection.json. No scientific payload
+restoration, new job, worker/plan repair, homotopy or external submission. These
+new source-inspection notes await any applicable later record review; do not
+claim a new independent clearance. The exact rejected baseline remains commit
+92b835e7. Stop now for the user's decision on the proposed rule.
+
+## Preparation stop: total leading transverse-loss proposal
+
+The user asked whether the primary observable can be total leading loss of
+incident transverse flux, all physical mechanisms included, with the split
+secondary; assess and draft only, then stop for go/no-go. Created
+S11c_d_total_transverse_loss_assessment.md and the separate unreviewed
+S11c_d_TOTAL_TRANSVERSE_LOSS_AMENDMENT_DRAFT.md. The previously cleared amendment
+and rejected worker/plan remain unchanged.
+
+The assessment is conditional, not a new slab result: first-order receiving
+fields suffice for leading quadratic loss only with source-established zero
+loss-side baseline amplitudes/drives and regular power/limit dependencies,
+including first-order geometry/closure maps. A first-order transmitted-field
+deficit omits potentially needed second-order baseline interference. Require
+clean transverse ends, actual incident current, full outgoing response, and
+common-volume source-derived power accounting. Non-transverse escape followed
+by absorption must not be counted twice. Reflection/polarization conversion
+within the transverse sector remains surviving light.
+
+A source-work/row-power route may avoid individual damped-mode normalization,
+but the actual nonlocal forced response and pairing are unresolved; there is
+no promised free result from old omega=1 machinery. Keep physical closure at
+s=1 for the headline. The optional permeability continuation is diagnostic;
+complex-at-s=0 above bulk availability requires radiation evidence before a
+leaky label. Neither attenuation nor lineage alone gives a power split.
+
+Read local directives/reports/native source and primary optical-theorem papers;
+no scientific payload restoration, CAS/worker execution, root continuation,
+implementation repair or external reviewer submission. Preserve the physical
+inputs, unused map/face compute budget, historical failures/reviews, Lean/shared
+guard and protected suffix. New assessment/draft await user go/no-go and any
+applicable independent review before governing work. No further work launched.
+
+## Latest authorization: amendment reviews, limited repair, costed plan; no science
+
+The user subsequently explicitly authorized submitting the total-transverse-loss
+amendment to fresh Claude and Grok, review until substantively clear. After
+clearance, repair and re-review only the transverse-first map and reference
+face-drive test; defer thickness classification and permeability continuation.
+Then return a costed first-order outgoing-field/power-pairing plan and stop for
+go/no-go. No scientific job is authorized before that stop, even if the reviews
+clear. The unused older map/face run allowance cannot bypass this latest limit.
+Use one identical fixed source-only packet, preserve literal reports and exact
+reviewed bytes, and do not give either reviewer peer reports or the external
+conversation. Local disposition cannot substitute for independent clearance.
+
+The fixed total-loss packet is prepared (17 files, 332,804 bytes; SHA256
+`78aed484714bc97783737806f2ab1e52f9c3cf1935d3fbf6cc2fc518083005e1`).
+Automatic approval review rejected the external launch before process start:
+exact-payload/destination approval is required despite approval of the review
+goal. No packet was sent, reviewer started or science run. Refusal and complete
+preparation are preserved in `S11c_d_total_transverse_loss_review_preparation.json`
+and runtime `submission-blocked.json`. Await that specific consent; no workaround.
+
+The user then explicitly approved that exact packet and both destinations with
+“I approve.” Packet/archive/source hashes still matched. Submission launched
+at 22:37:37 UTC; a single host startup check verified coordinator 766434,
+watcher 766435 and fresh Claude alive, with Grok queued sequentially. The hook
+was armed before reviews and targets this session. Runtime startup receipts
+and canonical preparation preserve authorization and the earlier no-start
+refusal. Wait silently for the hook; no model polling, peer sharing, edits
+before both reports, or science launch. The authorized next stages and final
+costed-plan go/no-go stop above remain unchanged.
+
+## Total-loss amendment review completion
+
+Both reports finished by 22:49:05 UTC: Claude NEEDS REVISION, Grok CLEAR FOR
+THIS PREPARATION AMENDMENT. Complete literal reports, stderr and receipt/hash
+evidence are canonical in S11c_d_total_transverse_loss_review_record.json.
+The source-based disposition accepts explicit both-end localization and complete
+source-work/boundary-source corrections, with qualifications against treating
+intermediate distributions or unexecuted pole arguments as new physics results.
+All fixed packet/archive/24 source hashes match. Claude stderr is empty; Grok
+has configuration warnings, no read-file error in stderr, and end_turn. No
+science or payload restoration. Preserve this reviewed baseline before repair,
+then fresh amendment review under the authorized sequence; map/face repair waits
+for clearance. No science before costed-plan go/no-go; thickness classification
+remains deferred. No peer sharing or optional-wording review loop.

@@ -1,0 +1,134 @@
+{
+  "method": "Read JSON and AST literal metadata; elementary rational arithmetic on the stored frequency window and relaxation time only. No science/project import, pickle restoration, kernel evaluation, roots, attenuation calculation, worker repair or review submission.",
+  "sources": {
+    "input": {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_variable_profile_development_input.json",
+      "sha256": "660b2b0b54494dce964c7f5fbd722a76a7e894d8ed92b18b5eb6290c3c10f1d5"
+    },
+    "manifest": {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_channel_map_face_inputs.json",
+      "sha256": "63d7ec7ea9c379b80416a2f9562e32b00288f3edf07e649e3a26b8a5f6d6223e"
+    },
+    "uniformCheckpoint": {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_uniform_source_checkpoint.json",
+      "sha256": "9d4b65ad07d1f403fd3aa4ec42da99db622a4d0a26d6ddce6c472148c7830085"
+    },
+    "dimensionSource": {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_c2_selfenergy_fold_sympy_audit.py",
+      "sha256": "0e90c751d36178a9846e75c38ac4ad0c8591b4b8ce11b6dc194218913265d434"
+    },
+    "engine": {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_d_mixing_scattering_sympy_audit.py",
+      "sha256": "5bf77729682960bb59f10c672a5fe3f67a98b0a9533da7c6189a37183596050f"
+    },
+    "closureDirective": {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c1_SHARED_PHYSICS.md",
+      "sha256": "47554c8c9cf2fd070c1048a7ae0ca36b1315bf50a48ed07a51019ff3e72987ad"
+    }
+  },
+  "savedInputs": {
+    "Lambda_A_0": {
+      "savedValue": "1/100",
+      "L_T_M_exponents": [
+        -5,
+        1,
+        1
+      ]
+    },
+    "Lambda_V_0": {
+      "savedValue": "0",
+      "L_T_M_exponents": [
+        -4,
+        0,
+        1
+      ]
+    },
+    "Lambda_X_0": {
+      "savedValue": "0",
+      "L_T_M_exponents": [
+        -4,
+        0,
+        1
+      ]
+    },
+    "tau_A": {
+      "savedValue": "1/10",
+      "L_T_M_exponents": [
+        0,
+        1,
+        0
+      ]
+    },
+    "tau_V": {
+      "savedValue": "1/10",
+      "L_T_M_exponents": [
+        0,
+        1,
+        0
+      ]
+    },
+    "tau_X": {
+      "savedValue": "1/10",
+      "L_T_M_exponents": [
+        0,
+        1,
+        0
+      ]
+    },
+    "omega": {
+      "savedValue": "1",
+      "L_T_M_exponents": [
+        0,
+        -1,
+        0
+      ]
+    }
+  },
+  "window": {
+    "omegaMin": "1/10",
+    "omegaMax": "4"
+  },
+  "elementaryTimeScaleArithmetic": {
+    "formula": "omega*tau_A; this is a memory-time ratio, not modal damping/frequency",
+    "omegaTauAtMin": "1/100",
+    "omegaTauAtSavedOmega": "1/10",
+    "omegaTauAtMax": "2/5",
+    "inverseTau_A": "10",
+    "inverseTauOverOmegaMin": "100",
+    "inverseTauOverOmegaMax": "5/2"
+  },
+  "savedUniformUnresolvedCensus": {
+    "REFERENCE": {
+      "integrals": false,
+      "normalCoordinates": false,
+      "regulator": false,
+      "profiles": false
+    },
+    "LEFT": {
+      "integrals": false,
+      "normalCoordinates": false,
+      "regulator": false,
+      "profiles": false
+    },
+    "RIGHT": {
+      "integrals": false,
+      "normalCoordinates": false,
+      "regulator": false,
+      "profiles": false
+    }
+  },
+  "modalAttenuationAcrossWindow": "NOT_COMPUTED_BY_THIS_INSPECTION",
+  "scienceJobs": 0,
+  "workerEdits": 0,
+  "externalSubmissions": 0,
+  "engineLiteralExcerpt": {
+    "start": 3054,
+    "end": 3071,
+    "text": "        surface_density = sp.cancel(c.mass_symbol.subs({r.symbols[n]:0 for n in ('Lambda_A_0', 'Lambda_V_0')})[3]/time_rate)\n        mus = sp.cancel(chemical/surface_density)\n        amplitude = self.alegs[1]\n        outgoing = amplitude*c.phase*sp.exp(sp.I*(self.modes.k*r.z+qright*s))\n        face_v = sp.cancel(sp.diff(outgoing, s).subs(s, 0)/(c.phase*sp.exp(sp.I*self.modes.k*r.z)))\n        face_p = sp.cancel((-rho*sp.diff(outgoing, r.t)).subs(s, 0)/(c.phase*sp.exp(sp.I*self.modes.k*r.z)))\n        kernels = {name:sp.cancel(r.symbols['Lambda_'+name+'_0']/(1-sp.I*r.omega*r.symbols['tau_'+name]))\n                   for name in ('A', 'V', 'X')}\n        faces = []\n        for sign in (-1, 1):\n            # Supplied face geometry and real-field harmonic ansatz.\n            displacement = sign*r.symbols['W_0']*c.amplitudes[0][4]*c.phase/2\n            outward_velocity = sp.cancel(sign*sp.diff(displacement, r.t)/c.phase)\n            outward_virtual_lift = sp.diff(sign*displacement/c.phase, c.amplitudes[0][4])\n            relative = rho*(face_v-outward_velocity)\n            affinity = mus-face_p/rho\n            closure = relative-kernels['A']*affinity-kernels['V']*outward_velocity\n            coefficient = sp.diff(closure, amplitude)"
+  },
+  "closureDirectiveLiteralExcerpt": {
+    "start": 146,
+    "end": 158,
+    "text": "The flat-face closure, affinity, response kernels, traction, and kinematic balance are exactly S11c-a \u00a71c/\u00a73b\n(inherited by S11c-b \u00a71c), stated here as the laws c1 closes the bulk against, per anchoring `\u03b1\u2208{L,M}` and face `s`:\n\n```text\n\ud835\udc9c_s = \u03bc_s \u2212 \u03b4p_s/\u03c1_m ,   \u03bc_s = \u03bc_\u03b8 / \u03c1_br,bg\u2070 ,   \u03bc_\u03b8 = S11CB_MU_THETA_OPERATOR (the held-fixed operand) ,\nJ_s = \u039b_A(\u03c9) \ud835\udc9c_s + \u039b_V(\u03c9) V_s ,           \u21d0 the FLUX closure carries only \u039b_A, \u039b_V ,\n\u039b_I(\u03c9) = \u039b_I\u2070/(1\u2212i\u03c9\u03c4_I) ,   I \u2208 {A,V,X} ,   the three \u03c4_I independent ,\nt_s = \u2212(\u03b4p_s + \u039b_X(\u03c9) \ud835\udc9c_s) n\u0302_s ,           \u21d0 the TRACTION carries \u039b_X (a reciprocal-traction channel) ,\nn\u0302_s\u00b7v_bulk,s = V_s + J_s/\u03c1_m               (interfacial mass balance \u2014 kinematics, not a result) .\n```\n\n\u26a0 **\u039b-channel placement (a fold from the spec review).** `\u039b_X` appears **only** in the traction `t_s`, **not** in\nthe flux closure `J_s` and **not** in S11c-a's T-i closure shape-derivative (`S11CA_CLOSURE_SHAPE_DERIV`, which is"
+  }
+}

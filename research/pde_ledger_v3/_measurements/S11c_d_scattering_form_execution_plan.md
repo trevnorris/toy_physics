@@ -1,5 +1,69 @@
 # S11c-d: the remaining execution queue
 
+**Current result — total-loss amendment needs revision (2026-09-28):** both
+reports finished: Claude NEEDS REVISION, Grok CLEAR FOR THIS PREPARATION
+AMENDMENT. The literal record and disposition are in
+`S11c_d_total_transverse_loss_review_record.json` and
+`S11c_d_total_transverse_loss_review_disposition.md`. Packet/archive/24 source
+hashes and report receipts match. No science ran. Preserve the reviewed baseline
+before correcting both-end localization and complete source-work/face-source
+accounting; fresh amendment review is required. The user authorized that review
+sequence, but no transverse/face repair before amendment clearance and no
+scientific job before the final costed-plan go/no-go.
+
+**Current authorization — total-loss amendment review and preparation only
+(2026-09-28):** the user explicitly authorized fresh Claude/Grok review of the
+total-transverse-loss amendment until substantively clear. After clearance,
+repair and independently re-review **only** the transverse-first map and
+reference face-drive test. Defer thickness classification/permeability
+continuation. Then return a costed plan for the actual first-order outgoing
+field and its physical power pairing and stop for user go/no-go. **No science
+runs before that decision**, including the previously budgeted map/face job.
+Neither amendment nor build clearance is a science launch gate. Preserve the
+rejected build, all earlier artifacts and historical review limitations.
+The historical entries below do not enlarge this latest authorization.
+
+The user explicitly approved the exact 17-file / 332,804-byte packet and its
+external Claude/Grok destinations with “I approve.” The prior automatic refusal
+is preserved; it started no process. The unchanged packet launched at 22:37:37
+UTC with the local hook armed first. Host startup inspection verified the
+coordinator, watcher and fresh Claude alive; Grok is queued sequentially. See
+`S11c_d_total_transverse_loss_review_preparation.json`. Wait silently for the
+local completion/error event; both reports must finish before adjudication or
+editing. No science, peer sharing or automatic transport retry.
+
+**Latest user-directed preparation — proposed total transverse loss (2026-09-28):**
+the user requested assessment and, if viable, a short amendment making total
+leading loss out of the transverse sector primary, with mechanism attribution
+secondary. The [assessment](S11c_d_total_transverse_loss_assessment.md) and
+[unreviewed draft](../directives/S11c_d_TOTAL_TRANSVERSE_LOSS_AMENDMENT_DRAFT.md)
+are prepared. Conditional first-order sufficiency requires actual zero loss-side
+baseline drives, complete first-order maps, a supported outgoing response and a
+single physical power balance. A first-order transmission deficit alone is
+insufficient. Reflection remaining transverse counts as survival. Existing
+formal forcing/Green ingredients do not yet provide this new total observable.
+
+Keep the transverse-first/face repair proposed, but no implementation change
+has been made. Permeability continuation is secondary and unlaunched; complex
+roots above bulk availability need actual radiation evidence, not an automatic
+leaky label. The draft explicitly identifies the proposed added observable and
+preserves A11/A12 and prior review limitations. No new review or science budget
+has been granted. Stop after this assessment/draft for user go/no-go; both are
+unreviewed proposals, not governing physics or a fresh independent clearance.
+
+
+**Latest user-directed stop — damping question before repair (2026-09-28):**
+the user approved bounded repair in principle but explicitly requested only
+(i) the damping type and (ii) its size relative to frequency, then a go/no-go
+on the channel rule. The [source note](S11c_d_channel_map_face_damping_note.md)
+records physical permeability/memory in the end pencils, a separate Abel
+regulator absent from the accepted uniform symbols, and omega*tau_A=0.01–0.4.
+This is a memory-time comparison, not a modal damping/frequency measurement;
+that ratio across the window remains unestablished. No homotopy/channel rule,
+worker repair, external review or science job has started. Await the user's
+rule decision; retain the unused budget and all earlier review findings.
+
+
 **Latest status — map/face build reviews complete; substantive no-go
 (2026-09-28):** both literal verdicts are **NEEDS REVISION**. No science has run;
 the one map/face job and optional saved-output validator remain unused. The

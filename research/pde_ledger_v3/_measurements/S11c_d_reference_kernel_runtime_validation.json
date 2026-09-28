@@ -1,0 +1,24 @@
+{
+  "status": "RUNTIME_AND_ARTIFACT_HASH_CHECKS_PASS_SAVED_VALUE_VALIDATION_PENDING",
+  "productionRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-d-reference-kernel-20260926/production",
+  "resources": {
+    "peakBytes": 109998080,
+    "maxTasks": 3,
+    "minimumHostAvailableBytes": 22120017920,
+    "samples": 11,
+    "swapBytes": 0,
+    "memoryEvents": 0,
+    "workerWallSeconds": 19.314429000020027,
+    "guardWallSeconds": 19.583055989001878
+  },
+  "operations": 115,
+  "artifactFiles": 497,
+  "artifactBytes": 3551424,
+  "strictStderrEmpty": true,
+  "stdoutChecksIdentical": true,
+  "sourcePosthashesMatch": true,
+  "validationManifestSha256": "2fb79efb6165b5cbc07149450c063dd78dbe97238e6dff730d173012f77bb450",
+  "validatorSha256": "ca397435fd5ff7f7d2a15dd579269bbabe38541457a2f5bb00e283b636284c48",
+  "scientificImports": 0,
+  "recordedUtc": "2026-09-27T03:21:57.250052+00:00"
+}

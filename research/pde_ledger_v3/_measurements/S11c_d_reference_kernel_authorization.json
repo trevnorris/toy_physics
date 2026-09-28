@@ -1,0 +1,24 @@
+{
+  "status": "BOUNDED_METHOD_STAGE_APPROVED",
+  "utcRecorded": "2026-09-27T00:16:55.760502+00:00",
+  "userReply": "Approved",
+  "approvedQuestion": "Approve that bounded stage?",
+  "plan": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_FORM_constructor_plan.md",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_FORM_constructor_plan.md",
+    "bytes": 13584,
+    "sha256": "0c4e8a9db6a973acb3cd1ab5916067349e12fbd62d270139558ca60748d7e8de"
+  },
+  "case": "LAB_HELD__RHO4_CONSTANT",
+  "scientificJobLimit": 1,
+  "wholeJobSeconds": 900,
+  "memoryBytes": 2147483648,
+  "swapBytes": 0,
+  "tasksMax": 32,
+  "cpus": 1,
+  "nice": 15,
+  "nativeThreads": 1,
+  "externalPacketSubmission": "NOT_REQUESTED_BY_THIS_SCOPE_APPROVAL",
+  "independentMethodReview": "PENDING",
+  "scientificLaunch": false
+}

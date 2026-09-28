@@ -100,3 +100,39 @@ research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_end_determi
 research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_end_elimination_checkpoint.json -diff
 
 research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_end_complex_threshold_checkpoint.json -diff
+
+# New bounded reference-ingredient data above 1 MiB; retained in ignored scratch.
+_scratch/s11c/s11c-d-reference-kernel-20260926/production/complete/operations/001-restore-reduction/value.pickle -diff
+_scratch/s11c/s11c-d-reference-kernel-20260926/production/complete/selected-inputs.pickle -diff
+_scratch/s11c/s11c-d-outgoing-prescription-20260927/production/complete/operations/000-restore-selected/value.pickle -diff
+_scratch/s11c/s11c-d-outgoing-prescription-20260927/continuation/complete/operations/000-restore-selected/value.pickle -diff
+research/pde_ledger_v3/_measurements/S11c_d_outgoing_prescription_continuation_checkpoint.json -diff
+_scratch/s11c/s11c-d-outgoing-prescription-20260927/extended/complete/operations/000-restore-selected/value.pickle -diff
+_scratch/s11c/s11c-d-outgoing-prescription-20260927/extended/resource-guard/resource-samples.jsonl -diff
+research/pde_ledger_v3/_measurements/S11c_d_outgoing_prescription_long_checkpoint.json -diff
+_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operations/000-restore-selected/value.pickle -diff
+_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/resource-guard/resource-samples.jsonl -diff
+research/pde_ledger_v3/_measurements/S11c_d_outgoing_prescription_unlimited_checkpoint.json -diff
+research/pde_ledger_v3/_measurements/S11c_d_outgoing_prescription_validation_failure_checkpoint.json -diff
+
+research/pde_ledger_v3/_measurements/S11c_d_outgoing_prescription_validation_v2_checkpoint.json -diff
+
+# Pinned saved-return manifest for the bounded native-forcing continuation.
+research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_forcing_continuation_inputs.json -diff
+_scratch/s11c/s11c-d-two-asymptote-20260927/forcing-continuation/source/research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_forcing_continuation_inputs.json -diff
+_scratch/s11c/s11c-d-two-asymptote-20260927/forcing-continuation/complete/input-manifest.json -diff
+_scratch/s11c/s11c-d-two-asymptote-20260927/forcing-continuation/complete/prehashes.json -diff
+_scratch/s11c/s11c-d-two-asymptote-20260927/forcing-continuation/complete/operations/0004-restore-reduction/value.pickle -diff
+_scratch/s11c/s11c-d-two-asymptote-20260927/forcing-continuation/complete/artifact-index.json -diff
+_scratch/s11c/s11c-d-two-asymptote-20260927/forcing-continuation/complete/operation-index.json -diff
+_scratch/s11c/s11c-d-two-asymptote-20260927/forcing-continuation/complete/posthashes.json -diff
+research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_saved_inspection_inputs.json -diff
+_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/source/research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_saved_inspection_inputs.json -diff
+_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/complete/input-manifest.json -diff
+_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/complete/prehashes.json -diff
+_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/complete/posthashes.json -diff
+_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/complete/operations/0021-block17-grade10-inspect-saved-forcing/input.pickle -diff
+_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/complete/operations/0047-block17-grade01-inspect-saved-forcing/input.pickle -diff
+_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/complete/operations/0073-block16-grade10-inspect-saved-forcing/input.pickle -diff
+_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/complete/operations/0099-block16-grade01-inspect-saved-forcing/input.pickle -diff
+_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/complete/operations/0119-inspect-saved-responsive-controls/input.pickle -diff

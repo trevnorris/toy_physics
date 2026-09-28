@@ -1,0 +1,25 @@
+{
+  "status": "READY_FOR_ONE_GUARDED_REFERENCE_KERNEL_STAGE",
+  "workerSha256": "6f3b8a5d34b2b0eab3d63fa6ab2af212c069b2bf8b23b7a6e0d2834912acffed",
+  "inputManifestSha256": "a76146838eba897d630f598eff6a281c5040560bdadb666b6a40a125a41bf2d9",
+  "scopeAuthorization": "Approved",
+  "reviewPacketSha256": "0ffdfe49ab7ab498386fd300e086b96468889865b0511ffd570a1086e33398f6",
+  "adjudicationPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_reference_kernel_review_adjudication.json",
+  "adjudicationSha256": "97014acafbbf2ff2891e5e2e1454b83c76004f9444894652a58fdd4fa2c0ca9b",
+  "literalReviewerVerdicts": {
+    "claude": "CLEAR FOR THIS BOUNDED INGREDIENT",
+    "grok": "NEEDS REVISION"
+  },
+  "disposition": "Both reviews completed; sole requested local scalar-index revision adopted. No fresh independent CLEAR asserted.",
+  "seconds": 900,
+  "memoryGiB": 2,
+  "swapMax": 0,
+  "cpuCount": 1,
+  "nice": 15,
+  "tasksMax": 32,
+  "nativeThreads": 1,
+  "automaticRetry": false,
+  "outgoingGreenOperatorCleared": false,
+  "formCleared": false,
+  "scientificAcceptancePending": true
+}

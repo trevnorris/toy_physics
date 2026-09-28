@@ -1,0 +1,37 @@
+{
+  "status": "CORRECTED_VALIDATOR_PREPARED_AWAITING_EXPLICIT_PERMISSION",
+  "recordedUtc": "2026-09-27T03:31:04.200934+00:00",
+  "originalValidatorSha256": "ca397435fd5ff7f7d2a15dd579269bbabe38541457a2f5bb00e283b636284c48",
+  "validatorSha256": "4871dbfbb8376834bdfca0b03e6fe03b7a20a8e90bc877d4375185a1ba36582c",
+  "manifestSha256": "2fb936537f44b67d41dfedb5c1069225534d1dc90d7085eb4f0d343447b4a7cd",
+  "launcherSha256": "1d8ac1606d3f4a8a0e54f46fbf4e26e488d414f5360793bad5645625ea012726",
+  "completionMessageSha256": "e230b6a208182ea5c3f10790778b3d01474c6ee02b57da86901d4e679510d0a5",
+  "sourceRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-d-reference-kernel-20260926/production/complete",
+  "inputFilesUnchanged": 497,
+  "structuralChecksPassed": 13,
+  "failedStructuralChecks": [
+    "inverseScalarFactors",
+    "densityScalarFactors",
+    "leftSavedResidualExpression",
+    "rightSavedResidualExpression"
+  ],
+  "failedRunRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-d-reference-kernel-20260926/validation",
+  "failureSha256": "69e0854ef33c822a0eb4ec47dbfce0ae4c9f3b41fbb98fb5acd9f766d928be57",
+  "structuralChecksSha256": "cb532f5b9795c56fe524b635ee74bea2b004c0bb0496b3d3404e93f618e32bcf",
+  "diagnosisSource": {
+    "path": "/home/trevnorris/.local/lib/python3.10/site-packages/sympy/core/basic.py",
+    "sha256": "23366fb3b88870cbd5f3f6ad85d3819c8bc1609837f2486e3b67c026d77bb931"
+  },
+  "scientificCalls": 0,
+  "guard": {
+    "seconds": 900,
+    "memoryGiB": 2,
+    "swapMax": 0,
+    "tasksMax": 32,
+    "cpuCount": 1,
+    "nice": 15,
+    "nativeThreads": 1
+  },
+  "automaticRetry": false,
+  "reviewRerun": false
+}

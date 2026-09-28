@@ -1,0 +1,40 @@
+{
+  "status": "REVIEWS_LAUNCHED_METHOD_ADJUDICATION_PENDING",
+  "recordedUtc": "2026-09-27T02:46:12.952706+00:00",
+  "approval": {
+    "status": "EXPLICITLY_APPROVED_FIXED_PACKET",
+    "userReply": "Permission granted",
+    "packetSha256": "0ffdfe49ab7ab498386fd300e086b96468889865b0511ffd570a1086e33398f6",
+    "archiveSha256": "72be35d2d2e86684ad286c096e49bfb3afd9b6c4f4b0803a71c9dfacf1840e2f",
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "fileCount": 16,
+    "packetBytes": 313669,
+    "approvedRequest": "Send this exact prepared packet to Claude and Grok for separate fresh read-only reviews; use the existing local completion hook to resume this session.",
+    "utcRecorded": "2026-09-27T02:45:16.012408+00:00",
+    "thread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+    "reviewPromptSha256": "dd29fc7c27068e266212ee42dcf0a05d25228e6c888967e2a61c14c1b20d0b11"
+  },
+  "launch": {
+    "jobPid": 2038452,
+    "watcherPid": 2038453,
+    "packetSha256": "0ffdfe49ab7ab498386fd300e086b96468889865b0511ffd570a1086e33398f6",
+    "reviewers": [
+      "Claude",
+      "Grok"
+    ],
+    "concurrentReviewWorkers": 1,
+    "scienceCalls": 0,
+    "runnerSha256": "8de82776d48a20438cba00370f1f977a4ce8e5dea19db4422c8c2269110df14e",
+    "launcherSha256": "b2bb771db124151decd38086338f0ca8c542d8e31fa8d17f8511cc6563ff62b6"
+  },
+  "reviewDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-d-reference-kernel-20260926/build-review",
+  "completionHookObserved": "waiting",
+  "firstReviewObserved": "claude",
+  "scientificLaunches": 0,
+  "noFurtherModelPolling": true,
+  "preparationReceipt": "S11c_d_reference_kernel_preparation.json is retained as the prelaunch static-check record.",
+  "approvalPrecedence": "explicit-packet-approval.json records the subsequent user approval; the coordinator inherited packetSubmissionApproval=PENDING from the prepared state."
+}

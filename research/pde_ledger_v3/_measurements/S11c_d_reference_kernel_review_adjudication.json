@@ -1,0 +1,46 @@
+{
+  "status": "LOCAL_BOUNDED_DISPOSITION_COMPLETE",
+  "recordedUtc": "2026-09-27T03:07:47.832506+00:00",
+  "packetSha256": "0ffdfe49ab7ab498386fd300e086b96468889865b0511ffd570a1086e33398f6",
+  "archiveSha256": "72be35d2d2e86684ad286c096e49bfb3afd9b6c4f4b0803a71c9dfacf1840e2f",
+  "reports": {
+    "claude": {
+      "literalVerdict": "CLEAR FOR THIS BOUNDED INGREDIENT",
+      "field": "result",
+      "reportSha256": "386039c7491c2a2d191c12b8c12977742e9bf69d36c527761c4cc8d437fb4d3a",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrBytes": 0,
+      "runReceiptSha256": "ceacae607c48245d3127a08c5e754973b29d0c22f5e844e100d3213ca65d9935",
+      "extractedReport": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_reference_kernel_claude_review.md",
+      "extractedSha256": "246de23aaff0542c8287e10393a8164bbb60a298b49c1e0d365ab51f4f395fff"
+    },
+    "grok": {
+      "literalVerdict": "NEEDS REVISION",
+      "field": "text",
+      "reportSha256": "b0848883bb84ad35649f3aca9840bb02a398c4ee690bd48565774c2da34e71c5",
+      "stderrSha256": "1ded7d083c7d0b37bc1f19a4d0116a6b5420a3c3e707bcf76fb10d63f6a0878b",
+      "stderrBytes": 63289,
+      "runReceiptSha256": "447d5601557795cf9745ae1a170998ab2d8db96e4c0aabb559a65ad4e497d9d4",
+      "extractedReport": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_reference_kernel_grok_review.md",
+      "extractedSha256": "dcb9931c9ce41190cd9156120d8b9c72f9a54a6ef3c5f70b8fd3ca917f1e6e84"
+    }
+  },
+  "reviewedWorkerSha256": "638518ac0c21a2a72eb772e00fe055fd6d03e076b109591da346179e507cf8ee",
+  "workerSha256": "6f3b8a5d34b2b0eab3d63fa6ab2af212c069b2bf8b23b7a6e0d2834912acffed",
+  "inputManifestSha256": "a76146838eba897d630f598eff6a281c5040560bdadb666b6a40a125a41bf2d9",
+  "soleWorkerDelta": "columns[j][i] -> columns[j][i, 0]",
+  "astCompileWithoutExecution": true,
+  "allFrozenInputHashesMatch": true,
+  "sourceEvidence": {
+    "path": "/home/trevnorris/.local/lib/python3.10/site-packages/mpmath/matrices/matrices.py",
+    "sha256": "a3bf04abad841d09f172c4742c1a160c419110ea0de0bda20ccd6addd42bc34a",
+    "definition": "_matrix.__getitem__",
+    "line": 432,
+    "excerpt": "def __getitem__(self, key):\n        '''\n            Getitem function for mp matrix class with slice index enabled\n            it allows the following assingments\n            scalar to a slice of the matrix\n         B = A[:,2:6]\n        '''\n        # Convert vector to matrix indexing\n        if isinstance(key, int) or isinstance(key,slice):\n            # only sufficent for vectors\n            if self.__rows == 1:\n                key = (0, key)\n            elif self.__cols == 1:\n                key = (key, 0)\n            else:\n                raise IndexError('insufficient indices for matrix')\n\n        if isinstance(key[0],slice) or isinstance(key[1],slice):\n\n            #Rows\n            if isinstance(key[0],slice):\n                #Check bounds\n                if (key[0].start is None or key[0].start >= 0) and \\\n                    (key[0].stop is None or key[0].stop <= self.__rows+1):\n                    # Generate indices\n                    rows = xrange(*key[0].indices(self.__rows))\n                else:\n                    raise IndexError('Row index out of bounds')\n            else:\n                # Single row\n                rows = [key[0]]\n\n            # Columns\n            if isinstance(key[1],slice):\n                # Check bounds\n                if (key[1].start is None or key[1].start >= 0) and \\\n                    (key[1].stop is None or key[1].stop <= self.__cols+1):\n                    # Generate indices\n                    columns = xrange(*key[1].indices(self.__cols))\n                else:\n                    raise IndexError('Column index out of bounds')\n\n            else:\n                # Single column\n                columns = [key[1]]\n\n            # Create matrix slice\n            m = self.ctx.matrix(len(rows),len(columns))\n\n            # Assign elements to the output matrix\n            for i,x in enumerate(rows):\n                for j,y in enumerate(columns):\n                    m.__set_element((i,j),self.__get_element((x,y)))\n\n            return m\n\n        else:\n            # single element extraction\n            if key[0] >= self.__rows or key[1] >= self.__cols:\n                raise IndexError('matrix index out of range')\n            if key in self.__data:\n                return self.__data[key]\n            else:\n                return self.ctx.zero"
+  },
+  "dispositionSha256": "81f208190ba8f0cbd8566cc1a67be33f6af8f7259473f43011c530ccc06a95f7",
+  "protectedBuilderSuffixSha256": "f01024512c9a028e7e524e5a95b5c455be42e125d10c36f94e20493109b013c2",
+  "scientificImports": 0,
+  "scientificOperations": 0,
+  "freshReviewerClearanceClaimed": false
+}

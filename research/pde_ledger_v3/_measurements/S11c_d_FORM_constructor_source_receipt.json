@@ -1,0 +1,220 @@
+{
+  "status": "PROPOSED_METHOD_SOURCE_IDENTITY_NOT_SCIENTIFIC_CLEARANCE",
+  "utc": "2026-09-26T23:59:12.218492+00:00",
+  "baselineCommit": "ff578190710fd04169f791b1aafe011d9acd02e3",
+  "method": "Standard-library AST and literal JSON inspection; byte hashes only. No project/scientific imports, pickle restoration, constructor, solver, scientific validator or external reviewer. The hand substitution in the plan is explicitly not a new response calculation.",
+  "sourceDefinitions": [
+    {
+      "path": "scripts/S11c_d_mixing_scattering_sympy_audit.py",
+      "sha256": "5bf77729682960bb59f10c672a5fe3f67a98b0a9533da7c6189a37183596050f",
+      "definitions": [
+        {
+          "definition": "ReducedPencil.__init__",
+          "firstLine": 443,
+          "lastLine": 456,
+          "sha256": "52db0d590686716ea90d03488750bec5fe9e8518ea5c98f9121d2f279bd51ce9"
+        },
+        {
+          "definition": "EdgeReduction.wave_phase",
+          "firstLine": 1686,
+          "lastLine": 1687,
+          "sha256": "5ace91931a55219a5ca87cef9f95df6949b55e7b7dff011f4e5fc3358f8a2d7b"
+        },
+        {
+          "definition": "ConstantEndPencil.__init__",
+          "firstLine": 2257,
+          "lastLine": 2270,
+          "sha256": "b56b3b2c38397382bfd247c1edd9099f0fdf2bdcb3480f2e25bd82bab426167d"
+        },
+        {
+          "definition": "ConstantEndPencil.background",
+          "firstLine": 2292,
+          "lastLine": 2325,
+          "sha256": "5ee045b2b4c3c933d4fa4a9349ac62a1fe4e7be4ed7759c32879304aebb36b7f"
+        },
+        {
+          "definition": "ConstantEndPencil.strong_matrix",
+          "firstLine": 2438,
+          "lastLine": 2453,
+          "sha256": "8c22914d7b15fd15420579a3d97f09eef9e7184281766949b1ec8cb5f90029d4"
+        },
+        {
+          "definition": "ClosedAcousticEnergy.construct",
+          "firstLine": 2992,
+          "lastLine": 3131,
+          "sha256": "190429b6733c0347d3e8f7a9bfd81cb16d46842f923d421026b721e2552c8bf9"
+        }
+      ]
+    },
+    {
+      "path": "_measurements/S11c_d_uniform_source.py",
+      "sha256": "2a135aea365c7b5e57bfff7683c7b927cda52c0d37f6a9bad3c961eb6205a2b2",
+      "definitions": [
+        {
+          "definition": "construct",
+          "firstLine": 71,
+          "lastLine": 118,
+          "sha256": "747e36fc1c4e066692d417ddcaa17c2cd534221ea081efccde6f1fcd6b137f2a"
+        }
+      ]
+    },
+    {
+      "path": "_measurements/S11c_d_continuum_boundary.py",
+      "sha256": "ed3a6539d3151c52d25f12308b121897baf3bd6a5a626a598ab728988ab933a0",
+      "definitions": [
+        {
+          "definition": "construct_end",
+          "firstLine": 174,
+          "lastLine": 265,
+          "sha256": "e5818edbb8fba89406c397301315f26405a1968838aa15e23acca7e185e7ea58"
+        }
+      ]
+    },
+    {
+      "path": "_measurements/S11c_d_continuum_response.py",
+      "sha256": "0fe30a9c4771671e9fa139b0557f185f55d351887f2ba8b9fa4ed1abfb616db2",
+      "definitions": [
+        {
+          "definition": "systems",
+          "firstLine": 73,
+          "lastLine": 85,
+          "sha256": "de3302ff0af7ab1687fb431f527d4fcd8f06508f9c66e39e8917cbb4d11fd8be"
+        },
+        {
+          "definition": "solve",
+          "firstLine": 88,
+          "lastLine": 110,
+          "sha256": "35a8a09856a743c2242378154b0faa9e4512d6fd923272eed21f4d7fb6bca595"
+        },
+        {
+          "definition": "channels",
+          "firstLine": 113,
+          "lastLine": 172,
+          "sha256": "41b3088c06607934000d8a5a9529e16d9d5e2c0cb273bfed5454fc468554e3ab"
+        }
+      ]
+    },
+    {
+      "path": "_measurements/S11c_d_continuum_currents.py",
+      "sha256": "44ead83416dd8baa4fb0dedf16ef26a33fd810308112b6aa333dfc53fe75b8e0",
+      "definitions": [
+        {
+          "definition": "quadratic",
+          "firstLine": 30,
+          "lastLine": 30,
+          "sha256": "a3d153cba54158d2e3c41525fde02c89fcac30ba18f4e555177694b6e5a2d255"
+        },
+        {
+          "definition": "quotient",
+          "firstLine": 38,
+          "lastLine": 45,
+          "sha256": "1b9d85366630de4945163dcc83d08f24c3f86f045611b98ca3b81e25734b2584"
+        },
+        {
+          "definition": "open_metrics",
+          "firstLine": 116,
+          "lastLine": 130,
+          "sha256": "1b96fd7c0e2110403194eb432be8a3a8894726fa0ffb8516dd203cead6ba2d6c"
+        },
+        {
+          "definition": "construct_open",
+          "firstLine": 141,
+          "lastLine": 164,
+          "sha256": "b6681cfe20adc412ded59b1635452239a517c4f6238672b50ec4d0d4e28850f9"
+        }
+      ]
+    },
+    {
+      "path": "_measurements/S11c_d_continuum_grades.py",
+      "sha256": "0443c3adbeaf813ad66c60af0a50c96e9a841277d51f9c23bf1c601d2fdf329d",
+      "definitions": [
+        {
+          "definition": "split",
+          "firstLine": 84,
+          "lastLine": 113,
+          "sha256": "97bfd22480c99d1d931ceed2047945c3fa0e33d6730b09b26205a8c09f9ea9a5"
+        },
+        {
+          "definition": "term_joins",
+          "firstLine": 144,
+          "lastLine": 169,
+          "sha256": "a26eb2f88981107a00a8b240a6cc9c9f5b25a45007125c97fe97c43f7e8d8790"
+        }
+      ]
+    }
+  ],
+  "contextFiles": [
+    {
+      "path": "directives/S11c_d_FORM_constructor_plan.md",
+      "sha256": "0c4e8a9db6a973acb3cd1ab5916067349e12fbd62d270139558ca60748d7e8de"
+    },
+    {
+      "path": "directives/S11c_d_SCATTERING_FORM_AMENDMENT.md",
+      "sha256": "eb6f20a3fd0bce308e53901fa69fdf267b2917e5cc78b319a1e7700074a47560"
+    },
+    {
+      "path": "directives/S11c_d_FORM_build_directive.md",
+      "sha256": "2dfa2955b0d5943c4a641b3be8d1171dc8e63043ceac88d6e4abdab2d4222b82"
+    },
+    {
+      "path": "directives/S11c_d_SHARED_PHYSICS.md",
+      "sha256": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5"
+    },
+    {
+      "path": "_measurements/S11c_d_centre_claim_disposition.md",
+      "sha256": "23ead78376019dcd05645405f6282df1f906aabb5fbd78546bec331b8474d09c"
+    },
+    {
+      "path": "_measurements/S11c_d_variable_profile_development_input.json",
+      "sha256": "660b2b0b54494dce964c7f5fbd722a76a7e894d8ed92b18b5eb6290c3c10f1d5"
+    },
+    {
+      "path": "_measurements/S11c_d_remaining_case_end_sources_checkpoint.json",
+      "sha256": "abbb5fea9e85fdbe1e2b6fc56becf54e2892bae51efee64c3b9df055db01dff6"
+    }
+  ],
+  "acceptedUniformPackets": [
+    {
+      "case": "LAB_HELD__RHOBR_CONSTANT",
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-ends-20260920/retry-02/complete/cases/LAB_HELD__RHOBR_CONSTANT/uniform-source.pickle",
+      "bytes": 107599,
+      "sha256": "5c4083a3329d37080714b4e804b7a6ff917b2f6ca6792b9e63950e5377d29535",
+      "matchesAcceptedHash": true,
+      "matchesAcceptedSize": true,
+      "restored": false
+    },
+    {
+      "case": "LAB_HELD__RHO4_CONSTANT",
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-ends-20260920/retry-02/complete/cases/LAB_HELD__RHO4_CONSTANT/uniform-source.pickle",
+      "bytes": 109308,
+      "sha256": "a482c5023d16558f52b20d0a347d6e38f33f0f06f780abd256c5220f922b5571",
+      "matchesAcceptedHash": true,
+      "matchesAcceptedSize": true,
+      "restored": false
+    },
+    {
+      "case": "MATERIAL_ADVECTED__RHOBR_CONSTANT",
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-ends-20260920/retry-02/complete/cases/MATERIAL_ADVECTED__RHOBR_CONSTANT/uniform-source.pickle",
+      "bytes": 132974,
+      "sha256": "906e7b29c67974511da4d7d13e024030a022ab534b001be12293cea08db7caa7",
+      "matchesAcceptedHash": true,
+      "matchesAcceptedSize": true,
+      "restored": false
+    },
+    {
+      "case": "MATERIAL_ADVECTED__RHO4_CONSTANT",
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-ends-20260920/retry-02/complete/cases/MATERIAL_ADVECTED__RHO4_CONSTANT/uniform-source.pickle",
+      "bytes": 128981,
+      "sha256": "7998b40aea10666c51cddba3a1171b12817c285a195142f9940da8b33369d1e6",
+      "matchesAcceptedHash": true,
+      "matchesAcceptedSize": true,
+      "restored": false
+    }
+  ],
+  "scientificOperations": 0,
+  "packetRestorations": 0,
+  "externalReviews": 0,
+  "scopeApproval": "PENDING_NEW_METHOD_DECISION",
+  "implementationClearance": false,
+  "completedForm": false
+}

@@ -1,0 +1,29 @@
+{
+  "status": "GOAL_APPROVED_EXPLICIT_EXTERNAL_SUBMISSION_PERMISSION_REQUIRED",
+  "userInstruction": "sounds good. proceed then get back with me",
+  "authorizationContext": "User approved the whole bounded feasibility goal including preparing and independently reviewing its small diagnostic and at most one later cleared 15-minute scientific job. This pins that initial submission, not an additional permission request.",
+  "packetSha256": "5de2d5651be75deeb48a6d54c3c01c1dd086199691e8d9c015f802f17b419b26",
+  "archiveSha256": "fd3cc1a9fbe00677ea4125ab940972decca5db0a853f8515cc4ea65c2b893a24",
+  "reviewers": [
+    "claude",
+    "grok"
+  ],
+  "recordedUtc": "2026-09-28T18:51:36.383632+00:00",
+  "maximumScientificJobs": 1,
+  "scientificLaunchRequiresIndependentClearance": true,
+  "automaticRetry": false,
+  "automaticReviewRerun": false,
+  "currentThread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+  "externalSubmissionReview": {
+    "status": "REJECTED_BEFORE_PROCESS_START",
+    "recordedUtc": "2026-09-28T18:53:35.929179+00:00",
+    "reason": "Submitting the packet sends potentially sensitive source and saved-input material to external reviewers; the user approved the feasibility goal but did not specifically authorize this payload to these destinations.",
+    "destinations": [
+      "Claude",
+      "Grok"
+    ],
+    "explicitPayloadDestinationQuestionAsked": true,
+    "packetSent": false,
+    "workaroundOrRetry": false
+  }
+}

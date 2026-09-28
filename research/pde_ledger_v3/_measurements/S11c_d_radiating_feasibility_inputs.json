@@ -1,0 +1,77 @@
+{
+  "status": "ONE_DIAGNOSTIC_INPUTS_PENDING_INDEPENDENT_REVIEW",
+  "candidate": {
+    "case": "LAB_HELD_RHO4_CONSTANT",
+    "omega": "3",
+    "tangentialMomenta": [
+      "1/5",
+      "1/10"
+    ],
+    "physicalParameterOverrides": {
+      "omega": "3"
+    },
+    "allOtherPhysicalParameters": "UNCHANGED_FROM_PINNED_DEVELOPMENT_INPUT",
+    "bindingStatus": "FEASIBILITY_CANDIDATE_NOT_ACCEPTED_PHYSICAL_WITNESS"
+  },
+  "inputs": {
+    "REFERENCE": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-source-20260919/finish-01/complete/reference-frequency-pencil.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-source-20260919/finish-01/complete/reference-frequency-pencil.pickle",
+      "bytes": 9347,
+      "sha256": "c8854229394c52ce38c399b0f7dec6befba27aa5182ceecb6bd44362d6043764"
+    },
+    "LEFT": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-source-20260919/finish-01/complete/left-frequency-pencil.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-source-20260919/finish-01/complete/left-frequency-pencil.pickle",
+      "bytes": 9470,
+      "sha256": "67148025b209f7171b7679249c075c6e68b76882ac6ac5adfffed4eb2766211a"
+    },
+    "RIGHT": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-source-20260919/finish-01/complete/right-frequency-pencil.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-source-20260919/finish-01/complete/right-frequency-pencil.pickle",
+      "bytes": 23826,
+      "sha256": "0fe2cccd0b9c08f57666530b2519dff26e8dee633058aae85d3d7f4b89ec029d"
+    },
+    "unitMap": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-source-20260919/finish-01/complete/reference-threshold-candidates.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-source-20260919/finish-01/complete/reference-threshold-candidates.pickle",
+      "bytes": 9474,
+      "sha256": "11bd9fd52171e3eddb292e21dc9af91b5f46d782a7eeca007ade090ed10de52f"
+    },
+    "physicalInput": {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_variable_profile_development_input.json",
+      "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_variable_profile_development_input.json",
+      "bytes": 1884,
+      "sha256": "660b2b0b54494dce964c7f5fbd722a76a7e894d8ed92b18b5eb6290c3c10f1d5"
+    },
+    "frequencySourceCheckpoint": {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_frequency_source_checkpoint.json",
+      "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_frequency_source_checkpoint.json",
+      "bytes": 1877129,
+      "sha256": "ca5a3fa0f33d4f5457f9c5adb46b7c9da9f935661d839d036f12b0de86692bfe"
+    },
+    "plan": {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_radiating_feasibility_plan.md",
+      "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_radiating_feasibility_plan.md",
+      "bytes": 6710,
+      "sha256": "4bc70cffc22392285871c145ebdf7466fffd0f7d46084a6e4283aca169a0ef07"
+    },
+    "guard": {
+      "path": "/var/projects/toy_physics/scripts/s11c_guarded_run.py",
+      "canonicalPath": "/var/projects/toy_physics/scripts/s11c_guarded_run.py",
+      "bytes": 9977,
+      "sha256": "9194b3e04b43d345828082e6312b0a2d7a9293f6296153f9c6ccea2defb931d2"
+    },
+    "supervisor": {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+      "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+      "bytes": 3347,
+      "sha256": "45a16f7f952ca6b571362b1c386fec76cd86f1e0ad04113074adf49c683ec49c"
+    }
+  },
+  "maximumScientificJobs": 1,
+  "seconds": 900,
+  "nativeSeconds": 840,
+  "automaticRetry": false,
+  "scope": "Necessary real-channel and branch/domain feasibility only; no physical flux or response."
+}

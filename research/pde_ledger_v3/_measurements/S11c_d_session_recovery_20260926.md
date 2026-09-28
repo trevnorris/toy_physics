@@ -1237,3 +1237,44 @@ evidence without promoting them as fresh independent clearance. No new review
 cycle is started here. Keep practical toy-model scope and concise bookkeeping,
 all earlier results/failures and the incident record. Lean/S11_lean, shared guard
 and protected suffix remain untouched; scratch artifacts are not committed.
+
+## Bounded feasibility goal approved; external submission permission pending
+
+The user approved the proposed goal with “sounds good. proceed then get back
+with me.” The goal is a go/no-go and cost decision using saved inputs, with
+independent review and at most one ordinary 15-minute scientific job if useful.
+It does not resume the failed omega=1 thickness construction, a response solve,
+a sweep or automatic retries. The
+[prepared plan](S11c_d_radiating_feasibility_plan.md) uses one diagnostic omega=3
+binding of three existing frequency-live end pencils and a saved unit map.
+The worker distinguishes necessary matrix/channel evidence from physical flux
+and leaves unestablished current/validity premises explicit. The reviewers are
+also asked whether existing sources already make the diagnostic unnecessary,
+and for concrete missing objects and a rough single-pilot cost.
+
+The fixed packet contains 21 files / 304,138 bytes, SHA-256
+`5de2d5651be75deeb48a6d54c3c01c1dd086199691e8d9c015f802f17b419b26`.
+Four scientific payloads and five source/helper inputs are pinned. Only
+source/JSON/hash/AST inspection and a missing-gate refusal occurred; no
+scientific payload was restored. Original frequency-source hashes match.
+Runtime copies of the existing review transport change only task paths;
+scratch packets/archives/transport copies are ignored and never committed.
+
+Automatic approval review rejected the external submission **before process
+creation**: it requires explicit approval of this potentially sensitive
+source/input packet to the Claude and Grok destinations, beyond the goal
+approval. The exact permission question has been asked through the user-input
+tool. No packet was sent, no reviewer or scientific process started, and no
+workaround/retry occurred. The original goal authorization is preserved in
+scratch; canonical authorization/preparation now explicitly record the block.
+If the user grants that payload/destination permission, submit this same fixed
+packet once, with the silent hook armed for this session. Read both completed
+reports before any edits or adjudication. Do not repeat stage-permission
+questions already covered by the approved one-job goal.
+
+Both reports must clear the actual diagnostic before any scientific job. If
+they find a substantive expansion or blocker, return the decision and cost
+without an automatic review/repair cycle. The 900/840-second, 2GiB/zero-swap,
+one-CPU/nice15/32-task/one-thread guard remains mandatory. Prior accepted
+artifacts, failures, review literals, Lean, shared guard and protected suffix
+remain unchanged. No model polling or recurring task was created.

@@ -1,0 +1,60 @@
+{
+  "status": "PREPARED_EXTERNAL_SUBMISSION_BLOCKED_BY_AUTO_REVIEW",
+  "recordedUtc": "2026-09-28T18:51:36.383632+00:00",
+  "packetSha256": "5de2d5651be75deeb48a6d54c3c01c1dd086199691e8d9c015f802f17b419b26",
+  "archiveSha256": "fd3cc1a9fbe00677ea4125ab940972decca5db0a853f8515cc4ea65c2b893a24",
+  "packetFiles": 21,
+  "packetBytes": 304138,
+  "worker": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_radiating_feasibility.py",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_radiating_feasibility.py",
+    "bytes": 17002,
+    "sha256": "45c24734f42354528a860ba43a9d782807d01b24b45cb8140a426518f3e65920"
+  },
+  "manifest": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_radiating_feasibility_inputs.json",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_radiating_feasibility_inputs.json",
+    "bytes": 4107,
+    "sha256": "ddd26ec90908014fcaa40a560329ca044ae9e6ab00d52b77ec6ff90efe089d1b"
+  },
+  "reviewRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-d-radiating-feasibility-20260928/build-review",
+  "static": {
+    "status": "SOURCE_AND_PACKET_PREPARATION_ONLY",
+    "runnerSha256": "8c6fbeed2b403c3bd41c1c4b4d24137161268f7b7d80a763675e53118da46526",
+    "launcherSha256": "1904c975fefbc0bafdbeb4de8438a50723cd8ce685bf9c0fce169ac43bd7f771",
+    "completionMessageSha256": "2ffb2bada9ea2d6a605e842f14526cb44c667b7c8a38c67d6f8c56f56e883ffe",
+    "syntaxPass": true,
+    "pendingGateRefusedBeforeScience": true,
+    "scientificImportsOrRestorations": 0,
+    "runtimeTemplates": {
+      "runner": {
+        "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_localized_thickness_review_run.py",
+        "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_localized_thickness_review_run.py",
+        "bytes": 5530,
+        "sha256": "bd503a86374bb7124c3bb3f20b1df22d03207ac3b852bcdf586eedabccb53a24"
+      },
+      "launcher": {
+        "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_localized_thickness_review_launch.py",
+        "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_localized_thickness_review_launch.py",
+        "bytes": 3759,
+        "sha256": "b7c89cfed2150a99623dd37d57b42a6565e38b76cfc802f737e5d2e8d060d2f8"
+      }
+    },
+    "runtimeTransportChanges": "Only fixed review-root and runtime-runner paths changed."
+  },
+  "scientificJobsUsed": 0,
+  "maximumScientificJobs": 1,
+  "currentThread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+  "submissionReview": {
+    "status": "REJECTED_BEFORE_PROCESS_START",
+    "recordedUtc": "2026-09-28T18:53:35.929179+00:00",
+    "reason": "Submitting the packet sends potentially sensitive source and saved-input material to external reviewers; the user approved the feasibility goal but did not specifically authorize this payload to these destinations.",
+    "destinations": [
+      "Claude",
+      "Grok"
+    ],
+    "explicitPayloadDestinationQuestionAsked": true,
+    "packetSent": false,
+    "workaroundOrRetry": false
+  }
+}

@@ -1,5 +1,25 @@
 # S11c-d: the remaining execution queue
 
+**Approved feasibility goal, submission blocked (2026-09-28):** the user said
+“sounds good. proceed then get back with me” to one independently reviewed
+feasibility diagnostic and at most one 15-minute guarded run, followed by a
+go/no-go and cost estimate. The [concrete plan](S11c_d_radiating_feasibility_plan.md)
+and worker are prepared using three small saved frequency-live pencils and
+their saved unit map. One omega=3 diagnostic binding, with other physical
+parameters unchanged, tests necessary channel conditions without claiming
+physical current or A11/A12 acceptance. No response construction or scan is
+authorized. Substantive review blockers stop this bounded task rather than
+start an automatic correction/review loop.
+
+The fixed 21-file / 304,138-byte packet is local. Automatic approval review
+rejected external submission before process creation because it requires
+specific approval of this source/input payload to Claude and Grok. A question
+requesting that exact permission is pending. Nothing was sent, no reviewer or
+scientific job started, and no workaround was attempted. The
+[preparation record](S11c_d_radiating_feasibility_preparation.json) preserves the
+block and hashes. Do not treat goal approval as the missing external-submission
+permission or ask again for the later one-job scope already granted.
+
 **Current stop (2026-09-28, after resumed thickness attempt):** the user raised
 the priority of nonempty A11/A12 coverage and repaired-build review. The
 [source-only cost/reuse assessment](S11c_d_A12_scope_cost_assessment.md)

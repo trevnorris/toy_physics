@@ -1278,3 +1278,25 @@ without an automatic review/repair cycle. The 900/840-second, 2GiB/zero-swap,
 one-CPU/nice15/32-task/one-thread guard remains mandatory. Prior accepted
 artifacts, failures, review literals, Lean, shared guard and protected suffix
 remain unchanged. No model polling or recurring task was created.
+
+## Explicit packet permission received; initial feasibility reviews launched
+
+The user answered the exact payload/destination question with “you have
+permission.” The earlier automatic rejection is preserved; the same packet
+was subsequently approved and submitted once to Claude and Grok. Packet SHA
+remains `5de2d5651be75deeb48a6d54c3c01c1dd086199691e8d9c015f802f17b419b26`.
+The archive, every packet member, reviewed source and nine input records were
+verified before launch. Reviewed source and packet hashes still match after
+launch. No scientific import/restoration or job has run for this goal.
+
+The local hook armed at 18:55:52.498 UTC, before coordinator/reviewer launch.
+Coordinator PID 456710, watcher PID 456711 and initial Claude PID 456727 are
+recorded in the preparation receipt. Claude started at 18:55:52.606 UTC; Grok
+follows sequentially with no report sharing. Startup stderr was empty. The
+hook targets this session and waiting does not invoke the model. Both reports
+must finish before adjudication or source changes; no reviewer rerun is
+authorized. The original goal already covers at most one independently cleared,
+useful ordinary guarded diagnostic. A substantive blocker or sufficient source
+evidence instead ends this bounded goal with the go/no-go and cost estimate.
+No response construction follows automatically. Runtime scratch remains ignored;
+only canonical permission, preparation and status records are committed.

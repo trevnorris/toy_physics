@@ -1,6 +1,6 @@
 # S11c-d: the remaining execution queue
 
-**Approved feasibility goal, submission blocked (2026-09-28):** the user said
+**Approved feasibility goal, initial reviews running (2026-09-28):** the user said
 “sounds good. proceed then get back with me” to one independently reviewed
 feasibility diagnostic and at most one 15-minute guarded run, followed by a
 go/no-go and cost estimate. The [concrete plan](S11c_d_radiating_feasibility_plan.md)
@@ -11,14 +11,17 @@ physical current or A11/A12 acceptance. No response construction or scan is
 authorized. Substantive review blockers stop this bounded task rather than
 start an automatic correction/review loop.
 
-The fixed 21-file / 304,138-byte packet is local. Automatic approval review
-rejected external submission before process creation because it requires
-specific approval of this source/input payload to Claude and Grok. A question
-requesting that exact permission is pending. Nothing was sent, no reviewer or
-scientific job started, and no workaround was attempted. The
-[preparation record](S11c_d_radiating_feasibility_preparation.json) preserves the
-block and hashes. Do not treat goal approval as the missing external-submission
-permission or ask again for the later one-job scope already granted.
+The user explicitly approved sending the fixed 21-file / 304,138-byte packet
+to Claude and Grok with “you have permission.” That resolves the earlier
+automatic approval rejection, which remains in the
+[preparation record](S11c_d_radiating_feasibility_preparation.json). The unchanged
+packet was submitted once on September 28 at 18:55 UTC. The local completion
+hook armed before Claude started; Grok follows sequentially and independently.
+No scientific job has started. Wait for the hook and both literal reports
+before adjudicating or changing reviewed source. Applicable independent
+clearance is required before using the already approved one-job scope; if
+source evidence suffices or a substantive blocker appears, return the decision
+and cost without launching science or an automatic review/repair cycle.
 
 **Current stop (2026-09-28, after resumed thickness attempt):** the user raised
 the priority of nonempty A11/A12 coverage and repaired-build review. The

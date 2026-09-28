@@ -1,5 +1,5 @@
 {
-  "status": "PREPARED_EXTERNAL_SUBMISSION_BLOCKED_BY_AUTO_REVIEW",
+  "status": "INITIAL_INDEPENDENT_REVIEWS_RUNNING",
   "recordedUtc": "2026-09-28T18:51:36.383632+00:00",
   "packetSha256": "5de2d5651be75deeb48a6d54c3c01c1dd086199691e8d9c015f802f17b419b26",
   "archiveSha256": "fd3cc1a9fbe00677ea4125ab940972decca5db0a853f8515cc4ea65c2b893a24",
@@ -56,5 +56,58 @@
     "explicitPayloadDestinationQuestionAsked": true,
     "packetSent": false,
     "workaroundOrRetry": false
+  },
+  "explicitExternalPermission": {
+    "userInstruction": "you have permission",
+    "recordedUtc": "2026-09-28T18:55:39.334256+00:00",
+    "questionApproved": "May I send the 21-file, 304 KB packet\u2014code, specifications, input values and selected saved-source excerpts\u2014to Claude and Grok?",
+    "destinations": [
+      "Claude",
+      "Grok"
+    ],
+    "packetSha256": "5de2d5651be75deeb48a6d54c3c01c1dd086199691e8d9c015f802f17b419b26",
+    "archiveSha256": "fd3cc1a9fbe00677ea4125ab940972decca5db0a853f8515cc4ea65c2b893a24",
+    "packetFiles": 21,
+    "packetBytes": 304138,
+    "scope": "One initial independent submission of the unchanged fixed feasibility packet; no peer sharing or automatic reviewer rerun."
+  },
+  "submissionPreflight": {
+    "recordedUtc": "2026-09-28T18:55:39.334256+00:00",
+    "packetArchiveSourceHelperHashesMatch": true,
+    "verifiedInputRecords": 9,
+    "previousRejectionPreserved": true,
+    "noPriorReviewerProcessOrPacketSubmission": true,
+    "scientificJobsUsed": 0
+  },
+  "launch": {
+    "jobPid": 456710,
+    "watcherPid": 456711,
+    "packetSha256": "5de2d5651be75deeb48a6d54c3c01c1dd086199691e8d9c015f802f17b419b26",
+    "reviewers": [
+      "Claude",
+      "Grok"
+    ],
+    "concurrentReviewWorkers": 1,
+    "scienceCalls": 0,
+    "runnerSha256": "8c6fbeed2b403c3bd41c1c4b4d24137161268f7b7d80a763675e53118da46526",
+    "launcherSha256": "1904c975fefbc0bafdbeb4de8438a50723cd8ce685bf9c0fce169ac43bd7f771",
+    "hookStartedUtc": "2026-09-28T18:55:52.498009+00:00",
+    "coordinatorStartedUtc": "2026-09-28T18:55:52.600704+00:00",
+    "claudeStartedUtc": "2026-09-28T18:55:52.606245+00:00",
+    "claudePid": 456727,
+    "claudeSessionId": "fd07f9a4-6a65-4dc1-aa9d-4137fa0bc2a2",
+    "hookArmedBeforeReview": true,
+    "startupSnapshot": {
+      "coordinator": "RUNNING",
+      "claude": "RUNNING",
+      "grok": "QUEUED_SEQUENTIALLY",
+      "coordinatorStderrBytes": 0,
+      "watcherStderrBytes": 0,
+      "claudeStderrBytes": 0
+    },
+    "literalReportsInspected": false,
+    "packetArchiveReviewedSourceIdentityVerifiedAfterLaunch": true,
+    "recordedUtc": "2026-09-28T19:00:13.444794+00:00",
+    "completionHandling": "Existing local hook only; no model polling or recurring task."
   }
 }

@@ -1,5 +1,5 @@
 {
-  "status": "GOAL_APPROVED_EXPLICIT_EXTERNAL_SUBMISSION_PERMISSION_REQUIRED",
+  "status": "EXPLICITLY_APPROVED_FIXED_PACKET",
   "userInstruction": "sounds good. proceed then get back with me",
   "authorizationContext": "User approved the whole bounded feasibility goal including preparing and independently reviewing its small diagnostic and at most one later cleared 15-minute scientific job. This pins that initial submission, not an additional permission request.",
   "packetSha256": "5de2d5651be75deeb48a6d54c3c01c1dd086199691e8d9c015f802f17b419b26",
@@ -25,5 +25,19 @@
     "explicitPayloadDestinationQuestionAsked": true,
     "packetSent": false,
     "workaroundOrRetry": false
+  },
+  "explicitExternalPermission": {
+    "userInstruction": "you have permission",
+    "recordedUtc": "2026-09-28T18:55:39.334256+00:00",
+    "questionApproved": "May I send the 21-file, 304 KB packet\u2014code, specifications, input values and selected saved-source excerpts\u2014to Claude and Grok?",
+    "destinations": [
+      "Claude",
+      "Grok"
+    ],
+    "packetSha256": "5de2d5651be75deeb48a6d54c3c01c1dd086199691e8d9c015f802f17b419b26",
+    "archiveSha256": "fd3cc1a9fbe00677ea4125ab940972decca5db0a853f8515cc4ea65c2b893a24",
+    "packetFiles": 21,
+    "packetBytes": 304138,
+    "scope": "One initial independent submission of the unchanged fixed feasibility packet; no peer sharing or automatic reviewer rerun."
   }
 }

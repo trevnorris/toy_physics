@@ -1,0 +1,60 @@
+{
+  "status": "EXPLICITLY_APPROVED_NO_DEADLINE_SAVED_RETURN_CONTINUATION",
+  "recordedUtc": "2026-09-27T20:57:02.332712+00:00",
+  "userReply": "If it's making progress then I give you permission to allow it to run indefinitely so it can complete",
+  "scope": "One guarded continuation until completion or error, reusing 217 journal returns and the completed block-17 bundle; unchanged unfinished science.",
+  "seconds": 0,
+  "nativeSeconds": 0,
+  "zeroMeaning": "No wall-clock or native alarm deadline; systemd RuntimeMaxSec=infinity.",
+  "memoryGiB": 2,
+  "swapMax": 0,
+  "cpuCount": 1,
+  "nice": 15,
+  "tasksMax": 32,
+  "nativeThreads": 1,
+  "scientificWorkerLimit": 1,
+  "automaticRetry": false,
+  "newExternalSubmission": false,
+  "worker": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_outgoing_prescription_unlimited.py",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_outgoing_prescription_unlimited.py",
+    "bytes": 37067,
+    "sha256": "388e9104bb5a936a3a5ef2e8168a6522783d1e6c12e0cf51408493fe85fb615a"
+  },
+  "taskLocalGuard": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_outgoing_prescription_unlimited_guard.py",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_outgoing_prescription_unlimited_guard.py",
+    "bytes": 13491,
+    "sha256": "1a39b835d02dfe3cd86014010986f06e094faf70e80ee80b97c0acbc129c3184"
+  },
+  "sharedGuard": {
+    "path": "/var/projects/toy_physics/scripts/s11c_guarded_run.py",
+    "canonicalPath": "/var/projects/toy_physics/scripts/s11c_guarded_run.py",
+    "bytes": 9977,
+    "sha256": "9194b3e04b43d345828082e6312b0a2d7a9293f6296153f9c6ccea2defb931d2"
+  },
+  "guardedCommand": [
+    "/usr/bin/python3",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+    "--run-root",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited",
+    "--stage",
+    "outgoing_prescription_unlimited",
+    "--",
+    "/usr/bin/python3",
+    "-u",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_outgoing_prescription_unlimited.py",
+    "--input-manifest",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_outgoing_prescription_unlimited_inputs.json",
+    "--gate-receipt",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_outgoing_prescription_unlimited_gate.json",
+    "--run-directory",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete"
+  ],
+  "progressEvidence": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_outgoing_prescription_long_checkpoint.json",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_outgoing_prescription_long_checkpoint.json",
+    "bytes": 1414132,
+    "sha256": "382d7e474aca66487da7dc49e323efbf5de0d6a68b0d2f9c5f9295108ed3ab40"
+  }
+}

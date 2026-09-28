@@ -1,0 +1,72 @@
+{
+  "status": "LAUNCHED_AND_COMPLETED_SAVED_OUTPUT_VALIDATION_PASSED",
+  "launch": {
+    "jobPid": 3335463,
+    "watcherPid": 3335464,
+    "pins": {
+      "workerSha256": "45fd003457e42ec067e23f54d19b263fe60a41b8420c57827d908c9146c821d8",
+      "inputManifestSha256": "b298db3dd446374f8b7a9603e2195f3dd410e448c006d6942bc5e074610e40c8",
+      "gateReceiptSha256": "ce36a9ce197c02493204cab59af0581124700554b14746f72c803c232bb5c318",
+      "launcherSha256": "5a022878015f40c9574cb88cb1382046fa8a034bf2746d91e5fb02ae1ad346fc"
+    },
+    "command": [
+      "/usr/bin/python3",
+      "/var/projects/toy_physics/scripts/s11c_guarded_run.py",
+      "--log-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/saved-validation-v2/resource-guard",
+      "--seconds",
+      "900",
+      "--memory-gib",
+      "2",
+      "--tasks-max",
+      "32",
+      "--",
+      "/usr/bin/python3",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/saved-validation-v2",
+      "--stage",
+      "outgoing_prescription_validation_v2",
+      "--",
+      "/usr/bin/python3",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_outgoing_prescription_validate_v2.py",
+      "--source",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete",
+      "--manifest",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/saved-validation-v2-inputs.json",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/saved-validation-v2/complete"
+    ],
+    "thread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+    "maximumScientificWorkers": 1,
+    "completionMessageSha256": "e48587d212713d09896de2f573761d4d43b2ff3462ba6c754a2946cc78471472"
+  },
+  "watcher": {
+    "status": "finished",
+    "watcherPid": 3335464,
+    "jobPid": 3335463,
+    "thread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+    "startedUtc": "2026-09-28T01:38:01.392271+00:00",
+    "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
+    "messageSha256": "e48587d212713d09896de2f573761d4d43b2ff3462ba6c754a2946cc78471472",
+    "notifications": {
+      "completion": {
+        "status": "queued",
+        "exitCode": 0,
+        "finishedUtc": "2026-09-28T01:38:06.279632+00:00"
+      }
+    }
+  },
+  "finishedUtc": "2026-09-28T01:38:06.023213+00:00",
+  "checkpoint": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_outgoing_prescription_validation_v2_checkpoint.json",
+    "bytes": 1655968,
+    "sha256": "e72946e5599e9217436a527c58f8b750bcccdb4f00fe05bd36bed08ffcbb7a29"
+  },
+  "actualContainmentVerified": true,
+  "strictStderrEmpty": true,
+  "stdoutChecksByteIdentity": true,
+  "completionEventHandled": true,
+  "automaticRetry": false
+}

@@ -1,0 +1,23 @@
+{
+  "status": "APPROVED_PREFLIGHT_PASSED_NOT_LAUNCHED",
+  "approval": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_outgoing_prescription_validation_v2_authorization.json",
+    "bytes": 1580,
+    "sha256": "81a208eed11f15c1e2c0f4e63ddf65d8fa85133bce1e25b81ed9428aa6ad7863"
+  },
+  "gate": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_outgoing_prescription_validation_v2_gate.json",
+    "bytes": 1823,
+    "sha256": "ce36a9ce197c02493204cab59af0581124700554b14746f72c803c232bb5c318"
+  },
+  "pins": {
+    "workerSha256": "45fd003457e42ec067e23f54d19b263fe60a41b8420c57827d908c9146c821d8",
+    "inputManifestSha256": "b298db3dd446374f8b7a9603e2195f3dd410e448c006d6942bc5e074610e40c8",
+    "gateReceiptSha256": "ce36a9ce197c02493204cab59af0581124700554b14746f72c803c232bb5c318",
+    "launcherSha256": "5a022878015f40c9574cb88cb1382046fa8a034bf2746d91e5fb02ae1ad346fc"
+  },
+  "candidateFilesVerified": 1069,
+  "priorValidationFilesVerified": 901,
+  "restoredValidationOperations": 217,
+  "scientificOperations": 0
+}

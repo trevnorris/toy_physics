@@ -1,0 +1,25 @@
+{
+  "status": "READY_FOR_ONE_GUARDED_SAVED_OUTGOING_VALIDATION",
+  "completionInspectionScopeAuthorized": true,
+  "authorizationBasis": "The completion instruction requires saved scientific output inspection under a separate guard; this verifies only the completed authorized candidate and introduces no new method.",
+  "workerSha256": "488ecf97d21436b73ad0b8138fec4137928e38aebdaeece62e1faa5a349a533f",
+  "inputManifestSha256": "466aa207e67d79e91b644c2022b37fca9be2af66aaa3a5f891b6be0dcf437ec8",
+  "sharedGuardSha256": "9194b3e04b43d345828082e6312b0a2d7a9293f6296153f9c6ccea2defb931d2",
+  "supervisorSha256": "45a16f7f952ca6b571362b1c386fec76cd86f1e0ad04113074adf49c683ec49c",
+  "seconds": 900,
+  "nativeSeconds": 840,
+  "memoryGiB": 2,
+  "tasksMax": 32,
+  "swapMax": 0,
+  "cpuCount": 1,
+  "nice": 15,
+  "nativeThreads": 1,
+  "automaticRetry": false,
+  "productionCheckpoint": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_outgoing_prescription_unlimited_checkpoint.json",
+    "bytes": 1836764,
+    "sha256": "87c88ceb23cc202535aa91481fe1d3bd4af76d15dce355b0acc19bb4853610b9"
+  },
+  "newExternalSubmission": false,
+  "freshIndependentClearClaimed": false
+}

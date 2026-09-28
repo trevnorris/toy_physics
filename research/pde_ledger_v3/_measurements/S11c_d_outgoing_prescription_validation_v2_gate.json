@@ -1,0 +1,38 @@
+{
+  "status": "READY_FOR_ONE_GUARDED_CORRECTED_SAVED_OUTGOING_VALIDATION",
+  "completionInspectionScopeAuthorized": true,
+  "authorizationBasis": "User explicitly replied Approved to the prepared corrected validation; one attempt only.",
+  "workerSha256": "45fd003457e42ec067e23f54d19b263fe60a41b8420c57827d908c9146c821d8",
+  "inputManifestSha256": "b298db3dd446374f8b7a9603e2195f3dd410e448c006d6942bc5e074610e40c8",
+  "sharedGuardSha256": "9194b3e04b43d345828082e6312b0a2d7a9293f6296153f9c6ccea2defb931d2",
+  "supervisorSha256": "45a16f7f952ca6b571362b1c386fec76cd86f1e0ad04113074adf49c683ec49c",
+  "seconds": 900,
+  "nativeSeconds": 840,
+  "memoryGiB": 2,
+  "tasksMax": 32,
+  "swapMax": 0,
+  "cpuCount": 1,
+  "nice": 15,
+  "nativeThreads": 1,
+  "automaticRetry": false,
+  "productionCheckpoint": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_outgoing_prescription_unlimited_checkpoint.json",
+    "bytes": 1836764,
+    "sha256": "87c88ceb23cc202535aa91481fe1d3bd4af76d15dce355b0acc19bb4853610b9"
+  },
+  "newExternalSubmission": false,
+  "freshIndependentClearClaimed": false,
+  "correctedValidationExplicitlyApproved": true,
+  "failureCheckpoint": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_outgoing_prescription_validation_failure_checkpoint.json",
+    "bytes": 772406,
+    "sha256": "52c1188c0d5664c5d9ed549ee1940e7ad0f86d011cc33698e268e58ab862312f"
+  },
+  "resumedValidationOperations": 217,
+  "firstNewOperation": "inverse-0-0-tail-minus-literal-boolean-correction",
+  "explicitApproval": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_outgoing_prescription_validation_v2_authorization.json",
+    "bytes": 1580,
+    "sha256": "81a208eed11f15c1e2c0f4e63ddf65d8fa85133bce1e25b81ed9428aa6ad7863"
+  }
+}

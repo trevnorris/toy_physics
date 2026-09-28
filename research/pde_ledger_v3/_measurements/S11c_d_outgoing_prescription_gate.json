@@ -1,0 +1,40 @@
+{
+  "status": "READY_FOR_ONE_GUARDED_OUTGOING_PRESCRIPTION_STAGE",
+  "workerSha256": "01d3d632a32a6da951ea2484d2424c9c99efd419242b4ee61fcb8452d5935a87",
+  "inputManifestSha256": "8fb5c9b71f1f87be03c0cf501d49289f321ff2f7c5a3aa9da0e8fab97d5ed056",
+  "scopeAuthorization": "Continue",
+  "scopeReceipt": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_outgoing_prescription_authorization.json",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_outgoing_prescription_authorization.json",
+    "bytes": 437,
+    "sha256": "6f904c44a91e7cad424d70107ba5ad9b006ff414749f57e8bee4458ae9d39c37"
+  },
+  "submissionApproval": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/build-review/explicit-packet-approval.json",
+    "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/build-review/explicit-packet-approval.json",
+    "bytes": 669,
+    "sha256": "dea123f9a3c3953a211ac6adbd8e8028778afb6eabe0ba74f6af9fd8a2b83dea"
+  },
+  "reviewPacketSha256": "ee1c031b5954d00e7706aabdbb0ac2a7a97e24991d4dcc926f12288a7ebcbb34",
+  "adjudicationPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_outgoing_prescription_review_adjudication.json",
+  "adjudicationSha256": "06a9b947473512c8d8f2d569c99f6b8a76c1dd6f486efee5a334ef5dfd8a3769",
+  "literalReviewerVerdicts": {
+    "claude": "NEEDS REVISION",
+    "grok": "CLEAR FOR THIS BOUNDED STAGE"
+  },
+  "disposition": "Both reviews complete; requested bounded source/denominator/tail/domain repairs implemented locally. No fresh independent CLEAR.",
+  "seconds": 900,
+  "memoryGiB": 2,
+  "swapMax": 0,
+  "cpuCount": 1,
+  "nice": 15,
+  "tasksMax": 32,
+  "nativeThreads": 1,
+  "automaticRetry": false,
+  "scientificAcceptancePending": true,
+  "outgoingGreenOperatorCleared": false,
+  "formCleared": false,
+  "a11Cleared": false,
+  "a12Cleared": false,
+  "candidatePointwiseDomain": "z != zp, if all saved-tail and residue/domain checks pass"
+}

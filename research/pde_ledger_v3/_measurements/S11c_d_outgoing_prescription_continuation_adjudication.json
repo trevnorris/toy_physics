@@ -1,0 +1,42 @@
+{
+  "status": "BOUNDED_CORRECTION_PREPARED_EXECUTION_APPROVAL_PENDING",
+  "recordedUtc": "2026-09-27T18:03:36.592777+00:00",
+  "failedWorker": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_outgoing_prescription.py",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_outgoing_prescription.py",
+    "bytes": 31530,
+    "sha256": "01d3d632a32a6da951ea2484d2424c9c99efd419242b4ee61fcb8452d5935a87"
+  },
+  "continuationWorker": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_outgoing_prescription_continue.py",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_outgoing_prescription_continue.py",
+    "bytes": 34285,
+    "sha256": "0e0722e31e90ac487b005669b4f7cd49604d41a6d45297ddd2c11d5670a59d68"
+  },
+  "disposition": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_outgoing_prescription_failure_disposition.md",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_outgoing_prescription_failure_disposition.md",
+    "bytes": 4378,
+    "sha256": "9e45007bdb7c67ae245fa492c5239bd2317d3d6ffad1e4ab8105463589e1c158"
+  },
+  "failureCheckpoint": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_outgoing_prescription_failure_checkpoint.json",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_outgoing_prescription_failure_checkpoint.json",
+    "bytes": 162647,
+    "sha256": "09e82db14b53a57fbfba4f58c51b48120dd4f01f63499b981273ed86999f1ebf"
+  },
+  "correctionDiff": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/continuation-correction.diff",
+    "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/continuation-correction.diff",
+    "bytes": 7839,
+    "sha256": "5083820c9676f4c256aec8d4d138468b09ce64eceb3ab4b7ee6300fc1b52897a"
+  },
+  "correction": "Exact nonzero real/imaginary component with uniformly signed polynomial coefficients on positive radical; no root search.",
+  "completedOperationsToRestore": 43,
+  "completedOperationFunctionsRerun": 0,
+  "firstNewOperation": "determinant-positive-radical-denominator-proof",
+  "freshIndependentClearClaimed": false,
+  "scientificImportsDuringPreparation": 0,
+  "scientificOperationsDuringPreparation": 0,
+  "compiledWithoutExecution": true
+}

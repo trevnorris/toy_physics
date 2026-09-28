@@ -1,0 +1,30 @@
+{
+  "status": "PASS_METADATA_ONLY_PENDING_EXPLICIT_APPROVAL",
+  "recordedUtc": "2026-09-28T00:35:03.916386+00:00",
+  "checks": {
+    "filesHashesIntact": true,
+    "resumeFilesHashesIntact": true,
+    "all217OperationsPinned": true,
+    "newScientificRunAbsent": true,
+    "unapprovedLauncherRefuses": true,
+    "compile": true,
+    "onlyLiteralBooleansAccepted": true,
+    "noProducerOrSolveCalls": true,
+    "workerPin": true,
+    "gateStillPending": true,
+    "protectedSuffix": true
+  },
+  "scientificImports": 0,
+  "scientificPicklesRestored": 0,
+  "scientificOperations": 0,
+  "manifest": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/saved-validation-v2-inputs.json",
+    "bytes": 403551,
+    "sha256": "b298db3dd446374f8b7a9603e2195f3dd410e448c006d6942bc5e074610e40c8"
+  },
+  "gate": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_outgoing_prescription_validation_v2_gate.json",
+    "bytes": 1555,
+    "sha256": "4e04c226c36fc94c08bf01ad04c79d5676bc37eb8173527c39df2d5381ebb906"
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "status": "PREPARED_APPROVED_NOT_LAUNCHED",
+  "gate": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_outgoing_prescription_unlimited_gate.json",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_outgoing_prescription_unlimited_gate.json",
+    "bytes": 3004,
+    "sha256": "8ef89049122e7552f4823b3e6cfff5362b8e8a5e91817d83bd3e306ccafa81ca"
+  },
+  "authorization": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_outgoing_prescription_unlimited_authorization.json",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_outgoing_prescription_unlimited_authorization.json",
+    "bytes": 3048,
+    "sha256": "380e354fbe61a914058bebb2ac2181bd83f42736cb9fec0cc6a302016c46f03b"
+  },
+  "worker": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_outgoing_prescription_unlimited.py",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_outgoing_prescription_unlimited.py",
+    "bytes": 37067,
+    "sha256": "388e9104bb5a936a3a5ef2e8168a6522783d1e6c12e0cf51408493fe85fb615a"
+  },
+  "inputs": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_outgoing_prescription_unlimited_inputs.json",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_outgoing_prescription_unlimited_inputs.json",
+    "bytes": 814490,
+    "sha256": "c8cc3af34fd86ef24e9c5fac5cc79ea9b321f598e60780704e5f3f6f1cb90709"
+  },
+  "taskLocalGuard": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_outgoing_prescription_unlimited_guard.py",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_outgoing_prescription_unlimited_guard.py",
+    "bytes": 13491,
+    "sha256": "1a39b835d02dfe3cd86014010986f06e094faf70e80ee80b97c0acbc129c3184"
+  },
+  "sharedGuard": {
+    "path": "/var/projects/toy_physics/scripts/s11c_guarded_run.py",
+    "canonicalPath": "/var/projects/toy_physics/scripts/s11c_guarded_run.py",
+    "bytes": 9977,
+    "sha256": "9194b3e04b43d345828082e6312b0a2d7a9293f6296153f9c6ccea2defb931d2"
+  },
+  "launcher": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/launch_unlimited.py",
+    "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/launch_unlimited.py",
+    "bytes": 6446,
+    "sha256": "b6ec261e5ff8eafc4ffa3389ca78e516571ebb667966a857df9921066572c88a"
+  },
+  "completionMessage": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited_completion_message.txt",
+    "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited_completion_message.txt",
+    "bytes": 3534,
+    "sha256": "2af1c2d45b46f3f0b1718edd2b89f5681118f4b66e9d299bd3c273f5b16c7e16"
+  },
+  "inputRoutes": 498,
+  "completedReturnsToRestore": 217,
+  "completeBlocksToRestore": [
+    17
+  ],
+  "newRunDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited",
+  "wallDeadlineSeconds": null,
+  "nativeAlarmSeconds": 0,
+  "scientificOperations": 0
+}

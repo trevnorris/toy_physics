@@ -1,0 +1,75 @@
+{
+  "status": "LOCAL_BOUNDED_CORRECTIONS_READY_FOR_GUARDED_EXECUTION",
+  "recordedUtc": "2026-09-27T17:54:11.518361+00:00",
+  "inspectionReceipt": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/build-review/review-inspection.json",
+    "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/build-review/review-inspection.json",
+    "bytes": 1970,
+    "sha256": "229ccedcc10673719d09e46b6a9f8d6fb14971a83785b71ba35f0f5280a1d396"
+  },
+  "packetSha256": "ee1c031b5954d00e7706aabdbb0ac2a7a97e24991d4dcc926f12288a7ebcbb34",
+  "archiveSha256": "e11c85428bbbe3bc122cea6abbd7b485dcef62836e6e6bff27739e16ca1283c3",
+  "literalReviewerVerdicts": {
+    "claude": "NEEDS REVISION",
+    "grok": "CLEAR FOR THIS BOUNDED STAGE"
+  },
+  "reports": {
+    "claude": {
+      "literalVerdict": "NEEDS REVISION",
+      "field": "result",
+      "rawSha256": "4f162f3083d1dc1fa66fe828f7768e0f5d577b1887f5ba99c543a618bc19e77f",
+      "runReceiptSha256": "d3bcaed25598beea3393307b5afab2806d7375492f238091d5db41074e1f2478",
+      "stderrBytes": 0,
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "extractedPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_outgoing_prescription_claude_review.md",
+      "extractedSha256": "44721a437726b162ea8f37c05feb634534abf82160a6438e4509436761a6fa48",
+      "wallSeconds": 462.7008682379965
+    },
+    "grok": {
+      "literalVerdict": "CLEAR FOR THIS BOUNDED STAGE",
+      "field": "text",
+      "rawSha256": "32f9f79764888e56705ee2b06ae409491d7cc3d414a326a2ad2a5df2e91dace6",
+      "runReceiptSha256": "bc3e57bb4d27079fe1903b0f4480d8e0a85c81f065d591ba5fa25c98f1d13bab",
+      "stderrBytes": 1431,
+      "stderrSha256": "dac2a4cec11e2dd6a3504ef68c224280b78a134721cfedc293722f14de2b3bea",
+      "extractedPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_outgoing_prescription_grok_review.md",
+      "extractedSha256": "f58413615dd9d34657e690657e13c0ade9d1ddb69fc969742fc1ca68465f784c",
+      "wallSeconds": 803.190946105984
+    }
+  },
+  "reviewedWorkerSha256": "ca046bc22bd23c8fc3ae6090789419b1358a9a3b4cfedc317d064395f9ce158a",
+  "workerSha256": "01d3d632a32a6da951ea2484d2424c9c99efd419242b4ee61fcb8452d5935a87",
+  "inputManifestSha256": "8fb5c9b71f1f87be03c0cf501d49289f321ff2f7c5a3aa9da0e8fab97d5ed056",
+  "consumedInputCount": 48,
+  "correctionDiff": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/bounded-corrections.diff",
+    "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/bounded-corrections.diff",
+    "bytes": 12552,
+    "sha256": "f15e6f44023800604120dff42f0ef9039c786673897a086b92bdfeef89cb300e"
+  },
+  "disposition": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_outgoing_prescription_review_disposition.md",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_outgoing_prescription_review_disposition.md",
+    "bytes": 5371,
+    "sha256": "1499b3ac03f2dae9905f65aa8c0f2cae220cf30a58e45b19b39ab8f703ed2fc3"
+  },
+  "closedImplementationFindings": [
+    "B1: exact two-sided tail expansions, decay guard and Ne(z,zp) domain",
+    "B2(a): exact opposite-sheet join on every excluded real lift",
+    "B2(b): actual determinant/adjugate denominators reduce to nonzero radical powers",
+    "B2(c): exact inverse/determinant/adjugate identity"
+  ],
+  "additionalBoundedCorrections": [
+    "accepted spectral-density join",
+    "explicit zero reference-grade binding",
+    "per-record persistence before guards"
+  ],
+  "ifTailDoesNotDecay": "Preserve expansion and stop; no automatic contact-method extension or retry.",
+  "scientificOutcomesPending": true,
+  "freshIndependentClearClaimed": false,
+  "protectedBuilderSuffixSha256": "f01024512c9a028e7e524e5a95b5c455be42e125d10c36f94e20493109b013c2",
+  "astCompiledWithoutExecution": true,
+  "allConsumedRoutesVerified": true,
+  "scientificImports": 0,
+  "scientificOperations": 0
+}

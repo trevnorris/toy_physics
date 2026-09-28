@@ -1,0 +1,269 @@
+{
+  "status": "LAUNCHED_NO_DEADLINE_CONTAINMENT_VERIFIED_ACCEPTANCE_PENDING",
+  "inspectedUtc": "2026-09-27T21:02:25.670975+00:00",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited",
+  "startedUtc": "2026-09-27T21:00:33.473751+00:00",
+  "launch": {
+    "jobPid": 3171538,
+    "watcherPid": 3171539,
+    "pins": {
+      "workerSha256": "388e9104bb5a936a3a5ef2e8168a6522783d1e6c12e0cf51408493fe85fb615a",
+      "inputManifestSha256": "c8cc3af34fd86ef24e9c5fac5cc79ea9b321f598e60780704e5f3f6f1cb90709",
+      "gateReceiptSha256": "8ef89049122e7552f4823b3e6cfff5362b8e8a5e91817d83bd3e306ccafa81ca",
+      "launcherSha256": "b6ec261e5ff8eafc4ffa3389ca78e516571ebb667966a857df9921066572c88a"
+    },
+    "command": [
+      "/usr/bin/python3",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_outgoing_prescription_unlimited_guard.py",
+      "--log-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/resource-guard",
+      "--seconds",
+      "0",
+      "--memory-gib",
+      "2",
+      "--tasks-max",
+      "32",
+      "--",
+      "/usr/bin/python3",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited",
+      "--stage",
+      "outgoing_prescription_unlimited",
+      "--",
+      "/usr/bin/python3",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_outgoing_prescription_unlimited.py",
+      "--input-manifest",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_outgoing_prescription_unlimited_inputs.json",
+      "--gate-receipt",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_outgoing_prescription_unlimited_gate.json",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete"
+    ],
+    "thread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+    "maximumScientificWorkers": 1,
+    "completionMessageSha256": "2af1c2d45b46f3f0b1718edd2b89f5681118f4b66e9d299bd3c273f5b16c7e16"
+  },
+  "activeAtInspection": {
+    "stage": "outgoing_prescription_unlimited",
+    "command": [
+      "/usr/bin/python3",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_outgoing_prescription_unlimited.py",
+      "--input-manifest",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_outgoing_prescription_unlimited_inputs.json",
+      "--gate-receipt",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_outgoing_prescription_unlimited_gate.json",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/outgoing_prescription_unlimited.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/outgoing_prescription_unlimited.stderr",
+    "startedUtc": "2026-09-27T21:00:34.157526+00:00",
+    "childPid": 3171560,
+    "status": "running"
+  },
+  "watcherAtInspection": {
+    "status": "waiting",
+    "watcherPid": 3171539,
+    "jobPid": 3171538,
+    "thread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+    "startedUtc": "2026-09-27T21:00:33.047803+00:00",
+    "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
+    "messageSha256": "2af1c2d45b46f3f0b1718edd2b89f5681118f4b66e9d299bd3c273f5b16c7e16",
+    "notifications": {}
+  },
+  "guardInvocation": {
+    "command": [
+      "/usr/bin/python3",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited",
+      "--stage",
+      "outgoing_prescription_unlimited",
+      "--",
+      "/usr/bin/python3",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_outgoing_prescription_unlimited.py",
+      "--input-manifest",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_outgoing_prescription_unlimited_inputs.json",
+      "--gate-receipt",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_outgoing_prescription_unlimited_gate.json",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete"
+    ],
+    "cwd": "/var/projects/toy_physics",
+    "unit": "s11c-guard-96f9e7130346",
+    "seconds": 0,
+    "cpu": 15,
+    "memoryMax": 2147483648,
+    "swapMax": 0,
+    "tasksMax": 32,
+    "minimumHostAvailableBytes": 4294967296,
+    "startedUtc": "2026-09-27T21:00:33.726971+00:00",
+    "timeAuthorization": {
+      "gatePath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_outgoing_prescription_unlimited_gate.json",
+      "gateSha256": "8ef89049122e7552f4823b3e6cfff5362b8e8a5e91817d83bd3e306ccafa81ca",
+      "approvalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_outgoing_prescription_unlimited_authorization.json",
+      "approvalSha256": "380e354fbe61a914058bebb2ac2181bd83f42736cb9fec0cc6a302016c46f03b",
+      "seconds": 0,
+      "nativeSeconds": 0,
+      "sharedGuardUnchanged": true
+    }
+  },
+  "durationValidation": {
+    "verified": true,
+    "actual": {
+      "Restart": "no",
+      "RuntimeMaxUSec": "infinity"
+    },
+    "wallDeadlineSeconds": null,
+    "automaticRetry": false
+  },
+  "limits": {
+    "verified": true,
+    "actual": {
+      "memory.max": "2147483648",
+      "memory.swap.max": "0",
+      "pids.max": "32",
+      "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-96f9e7130346.service",
+      "nice": 15,
+      "affinity": [
+        15
+      ],
+      "threads": {
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "VECLIB_MAXIMUM_THREADS": "1",
+        "BLIS_NUM_THREADS": "1"
+      }
+    }
+  },
+  "nativeContainment": {
+    "memory.max": "2147483648",
+    "memory.swap.max": "0",
+    "pids.max": "32",
+    "nice": 15,
+    "affinity": [
+      15
+    ],
+    "threads": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1",
+      "VECLIB_MAXIMUM_THREADS": "1",
+      "BLIS_NUM_THREADS": "1"
+    },
+    "nativeWallSeconds": null,
+    "nativeAlarmSeconds": 0
+  },
+  "initialStderrBytes": {
+    "coordinator.stderr": 0,
+    "guard-launch.stderr": 0,
+    "resource-guard/stderr": 0,
+    "outgoing_prescription_unlimited.stderr": 0
+  },
+  "hookArmedBeforeStageStart": true,
+  "intendedRestoredJournalReturns": 217,
+  "intendedRestoredCompleteBlocks": [
+    17
+  ],
+  "scientificAcceptance": false,
+  "automaticRetry": false,
+  "startupArtifacts": {
+    "launch.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/launch.json",
+      "bytes": 1863,
+      "sha256": "141bac58ae0f6a59d953710d5e1ab65d46109390d8dbb09d51eeecfeb80bf30e"
+    },
+    "stage-start.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/stage-start.json",
+      "bytes": 1714,
+      "sha256": "bb36b6635bb69a9f5685db0891219077d32187ebed66bca3b5cdf5258afcd5bb"
+    },
+    "resource-guard/invocation.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/resource-guard/invocation.json",
+      "bytes": 1700,
+      "sha256": "1b199138a3dd7e2d5ef31222cfce32fcf0a8c045c27bac01e9f22dafdf303fa2"
+    },
+    "resource-guard/limit-validation.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/resource-guard/limit-validation.json",
+      "bytes": 511,
+      "sha256": "1befed7abd7c3b942f30d64d8a67ab92440135480a65df4c2a5144d7e4a99b3a"
+    },
+    "resource-guard/duration-validation.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/resource-guard/duration-validation.json",
+      "bytes": 154,
+      "sha256": "c4d5d82a7602eb9f6b798b2a012f54b17be51cd07ed35619d75f993ab71727f5"
+    },
+    "complete/native-containment.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/native-containment.json",
+      "bytes": 381,
+      "sha256": "717c9eb8e201c86451defea6ffb00f3e5c39da2a1ef8f3fb436e57aed1ab4a59"
+    }
+  },
+  "block17RestoreReceiptExistsAtInspection": true,
+  "block17RestoreReceipt": {
+    "execution": "RESTORED_PRIOR_COMPLETE_BLOCK_BUNDLE",
+    "index": 17,
+    "sources": {
+      "summary": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/extended/complete/block-17-checks.json",
+        "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/extended/complete/block-17-checks.json",
+        "bytes": 658,
+        "sha256": "01dcdc3d13085ccfb7bf7f38ca6a0e6c1ccf8670fcc0e57734a27614dd631240"
+      },
+      "bundle": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/extended/complete/block-17-checks-and-mutation.pickle",
+        "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/extended/complete/block-17-checks-and-mutation.pickle",
+        "bytes": 5534,
+        "sha256": "fc5fe893dd829ff4c6568d53a1fe763d98a5adcc80614730c0f1e07bfcad4e5d"
+      },
+      "projected": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/extended/complete/block-17-projected-operands.pickle",
+        "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/extended/complete/block-17-projected-operands.pickle",
+        "bytes": 1647,
+        "sha256": "e19bb4c4f2f27cb7bf5f4e50f5a061170b83f7d6269d2bf98ef96bc78d6452d5"
+      },
+      "accepted": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/extended/complete/block-17-accepted-operands.pickle",
+        "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/extended/complete/block-17-accepted-operands.pickle",
+        "bytes": 19856,
+        "sha256": "9bf7545e86e2f03ae89dd457171fe5e91874aec3bd96845943306099f39c742a"
+      }
+    },
+    "restoredArtifacts": {
+      "summary": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/block-17-checks.json",
+        "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/block-17-checks.json",
+        "bytes": 658,
+        "sha256": "01dcdc3d13085ccfb7bf7f38ca6a0e6c1ccf8670fcc0e57734a27614dd631240"
+      },
+      "bundle": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/block-17-checks-and-mutation.pickle",
+        "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/block-17-checks-and-mutation.pickle",
+        "bytes": 5534,
+        "sha256": "fc5fe893dd829ff4c6568d53a1fe763d98a5adcc80614730c0f1e07bfcad4e5d"
+      },
+      "projected": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/block-17-projected-operands.pickle",
+        "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/block-17-projected-operands.pickle",
+        "bytes": 1647,
+        "sha256": "e19bb4c4f2f27cb7bf5f4e50f5a061170b83f7d6269d2bf98ef96bc78d6452d5"
+      },
+      "accepted": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/block-17-prior-accepted-operands.pickle",
+        "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/block-17-prior-accepted-operands.pickle",
+        "bytes": 19856,
+        "sha256": "9bf7545e86e2f03ae89dd457171fe5e91874aec3bd96845943306099f39c742a"
+      }
+    },
+    "newContractions": 0,
+    "newResidualEvaluations": 0,
+    "newMutationEvaluations": 0
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "status": "READY_FOR_ONE_GUARDED_OUTGOING_PRESCRIPTION_CONTINUATION",
+  "continuationExplicitlyApproved": true,
+  "workerSha256": "0e0722e31e90ac487b005669b4f7cd49604d41a6d45297ddd2c11d5670a59d68",
+  "inputManifestSha256": "8f099dbb52887efe5405160eaa8defedd408c3dc450270b97581f50d33638fcc",
+  "scopeAuthorization": "Continue",
+  "adjudicationPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_outgoing_prescription_continuation_adjudication.json",
+  "adjudicationSha256": "06c178bb89d8b46a6b080debd2d582e98b6bbb30443345306811621b2a20caf5",
+  "seconds": 900,
+  "memoryGiB": 2,
+  "swapMax": 0,
+  "cpuCount": 1,
+  "nice": 15,
+  "tasksMax": 32,
+  "nativeThreads": 1,
+  "automaticRetry": false,
+  "scientificAcceptancePending": true,
+  "outgoingGreenOperatorCleared": false,
+  "formCleared": false,
+  "completedOperationsToRestore": 43,
+  "continuationApproval": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_outgoing_prescription_continuation_authorization.json",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_outgoing_prescription_continuation_authorization.json",
+    "bytes": 1291,
+    "sha256": "9bf2248a02519b16eb226af5ebe1f4495441d0a1f8ed9502518449aefd359dd5"
+  },
+  "continuationApprovalQuote": "I approve",
+  "approvedUtc": "2026-09-27T18:18:20.391731+00:00"
+}

@@ -1,0 +1,190 @@
+{
+  "status": "VALIDATED_FIXED_INPUT_SEPARATED_POINT_OUTGOING_PRESCRIPTION_CANDIDATE",
+  "recordedUtc": "2026-09-28T01:46:18.002013+00:00",
+  "scope": "Fixed-input 5x5 symmetric principal-value Fourier integrals and signed-current delta terms, only for distinct normal positions. Saved-output validation passed; integrals remain unevaluated.",
+  "productionCheckpoint": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_outgoing_prescription_unlimited_checkpoint.json",
+    "bytes": 1836764,
+    "sha256": "87c88ceb23cc202535aa91481fe1d3bd4af76d15dce355b0acc19bb4853610b9"
+  },
+  "validationCheckpoint": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_outgoing_prescription_validation_v2_checkpoint.json",
+    "bytes": 1655968,
+    "sha256": "e72946e5599e9217436a527c58f8b750bcccdb4f00fe05bd36bed08ffcbb7a29"
+  },
+  "referenceIngredientCheckpoint": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_reference_kernel_checkpoint.json",
+    "bytes": 70697,
+    "sha256": "68f55b406fc56e7cd1b00c8b33b1ae185c30ed3fcb5ac0a85af21d74d2ccf2cd"
+  },
+  "primaryArtifacts": {
+    "outgoing-prescription-candidate.pickle": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/outgoing-prescription-candidate.pickle",
+      "bytes": 79171,
+      "sha256": "7702b16291588d2ea823f1503b63c5d1009f111d896980eb209b9164a55037a8"
+    },
+    "prescription-domain.pickle": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/prescription-domain.pickle",
+      "bytes": 11353,
+      "sha256": "2b296cda6d33fdb0089fb625cd8a7d045cb217dd4363b4b61f83f4858ad0de8e"
+    },
+    "spatial-sign-identity.pickle": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/spatial-sign-identity.pickle",
+      "bytes": 275,
+      "sha256": "d2a186f3e545fc6519d3b6f3f089704f851077a36f7d407116b5c7c850918882"
+    },
+    "checks.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/checks.json",
+      "bytes": 2219,
+      "sha256": "534ea04d84106a39bac46404a5ea93c4c98cfb066e915e2fbb625bd7129c5cbf"
+    },
+    "operation-index.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operation-index.json",
+      "bytes": 838466,
+      "sha256": "c0b9590c228f30c11fb401e36dc39b7f181adb2e1d0f2ff49938ccb295e6b8e4"
+    },
+    "posthashes.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/posthashes.json",
+      "bytes": 231752,
+      "sha256": "796cf5c71c4c49509a9eef445dbff8218a77f4ff424d05ba5c3e6ed631f558e5"
+    }
+  },
+  "production": {
+    "artifactFiles": 1069,
+    "artifactBytes": 6786185,
+    "completedOperations": 226,
+    "restoredPriorOperations": 217,
+    "newCompletedOperations": 9,
+    "workerSeconds": 3394.434711443959,
+    "guardSeconds": 3395.4615936800838,
+    "peakWholeJobBytes": 132718592,
+    "swapBytes": 0,
+    "memoryEventsZero": true
+  },
+  "validation": {
+    "artifactFiles": 1854,
+    "artifactBytes": 3490903,
+    "completedOperations": 441,
+    "restoredOperations": 217,
+    "newOperations": 224,
+    "workerSeconds": 3.9296367240604013,
+    "supervisorSeconds": 4.284563113003969,
+    "guardSeconds": 4.420206068898551,
+    "coordinatorSeconds": 4.474658421007916,
+    "resourceSamples": 4,
+    "peakWholeJobBytes": 89706496,
+    "swapBytes": 0,
+    "memoryEventsZero": true,
+    "maxTasksObserved": 3,
+    "minimumHostAvailableBytes": 23916814336
+  },
+  "evidence": {
+    "structuralChecks": 30,
+    "denominatorCertificates": 26,
+    "decayingTails": 50,
+    "assemblyChecks": 7,
+    "blocks": [
+      {
+        "index": 17,
+        "nullity": 2,
+        "direction": -1,
+        "norms": {
+          "normalCoordinateJoin": 3.482132627276381e-17,
+          "physicalBulkCoordinateJoin": 2.518559165482285e-18,
+          "frequencyCoordinateJoin": 0.0,
+          "actualPencilJoin": 4.488947401037362e-16,
+          "projectedDerivativeJoin": 0.0,
+          "cofactorVsBlockResidue": 5.744387398727955e-16,
+          "leftLaurent": 1.5793126681599663e-17,
+          "rightLaurent": 7.638837546357342e-17,
+          "derivativeProjector": 2.8318663393837317e-16,
+          "fluxFrequencyNormalization": 2.6884200281334924e-16,
+          "outgoingCurrentSign": 0.0
+        },
+        "residualRoundTripNorm": 0.0,
+        "savedNormDifference": 0.0,
+        "savedProjectedDifference": 0.0,
+        "currentOperandDifference": 0.0,
+        "mutationRoundTripNorm": 0.0,
+        "mutationNorm": 2.8284271247461903,
+        "deltaMovementNorm": 3.7717975547957288,
+        "savedDeltaMovementDifference": 0.0,
+        "deltaCoefficientJoin": true,
+        "mutatedDeltaJoin": true,
+        "exactCofactorResidueIdentity": true,
+        "fullBlockShapes": true,
+        "savedProjectedRegular": true
+      },
+      {
+        "index": 16,
+        "nullity": 2,
+        "direction": 1,
+        "norms": {
+          "normalCoordinateJoin": 3.482132627276381e-17,
+          "physicalBulkCoordinateJoin": 2.518559165482285e-18,
+          "frequencyCoordinateJoin": 0.0,
+          "actualPencilJoin": 4.488947401037362e-16,
+          "projectedDerivativeJoin": 0.0,
+          "cofactorVsBlockResidue": 5.744387398727955e-16,
+          "leftLaurent": 1.5793126681599663e-17,
+          "rightLaurent": 7.638837546357342e-17,
+          "derivativeProjector": 2.8318663393837317e-16,
+          "fluxFrequencyNormalization": 2.6884200281334924e-16,
+          "outgoingCurrentSign": 0.0
+        },
+        "residualRoundTripNorm": 0.0,
+        "savedNormDifference": 0.0,
+        "savedProjectedDifference": 0.0,
+        "currentOperandDifference": 0.0,
+        "mutationRoundTripNorm": 0.0,
+        "mutationNorm": 2.8284271247461903,
+        "deltaMovementNorm": 3.7717975547957288,
+        "savedDeltaMovementDifference": 0.0,
+        "deltaCoefficientJoin": true,
+        "mutatedDeltaJoin": true,
+        "exactCofactorResidueIdentity": true,
+        "fullBlockShapes": true,
+        "savedProjectedRegular": true
+      }
+    ],
+    "pointwiseDomain": "Ne(s11cdNormalPosition, s11cdSourceNormalPosition)",
+    "all1069CandidateFilesUnchanged": true,
+    "all901PriorValidationFilesUnchanged": true
+  },
+  "literalReviewerVerdicts": {
+    "claude": "NEEDS REVISION",
+    "grok": "CLEAR FOR THIS BOUNDED STAGE"
+  },
+  "freshIndependentClearClaimed": false,
+  "limitations": {
+    "integralsEvaluated": false,
+    "outgoingGreenOperatorAccepted": false,
+    "formCompleted": false,
+    "twoAsymptoteResponseConstructed": false,
+    "a11Cleared": false,
+    "a12Cleared": false,
+    "diagonalDistributionExtensionClaimed": false,
+    "complexFrequencyRetardedEquivalenceClaimed": false,
+    "radiatingWitness": false,
+    "unchangedPhysicalSlice": "evanescent",
+    "contourIdentityIsWiringOnly": true
+  },
+  "nextDependencies": [
+    "Plan the two-asymptote response retaining the actual unequal left/right asymptotic fields and grades.",
+    "Specify treatment of nondecaying forcing and half-line/distributional tails, including the full nonlocal operator and cross-interface reconstruction/cancellation checks.",
+    "Keep full Green/FORM export obligations, diagonal extension if required, and supported A11/A12 coverage explicitly open."
+  ],
+  "preservedHistory": [
+    "production",
+    "continuation",
+    "extended",
+    "saved-validation",
+    "reference-kernel original failed validator"
+  ],
+  "protectedBuilderSuffixSha256": "f01024512c9a028e7e524e5a95b5c455be42e125d10c36f94e20493109b013c2",
+  "sharedGuardSha256": "9194b3e04b43d345828082e6312b0a2d7a9293f6296153f9c6ccea2defb931d2",
+  "newPhysicsJobAuthorizedByThisCheckpoint": false,
+  "newExternalReviewAuthorized": false,
+  "automaticRetry": false,
+  "completionEventHandled": true
+}

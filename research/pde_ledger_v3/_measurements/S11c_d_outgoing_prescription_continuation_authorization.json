@@ -1,0 +1,25 @@
+{
+  "status": "EXPLICITLY_APPROVED_ONE_SAVED_RETURN_CONTINUATION",
+  "userReply": "I approve",
+  "recordedUtc": "2026-09-27T18:18:20.383916+00:00",
+  "approvedQuestion": "Approve one continuation under the same 900-second/2-GiB limits?",
+  "scope": "One corrected guarded continuation restoring all 43 completed journaled operation returns and executing only unfinished work. No automatic further retry or external review.",
+  "workerSha256": "0e0722e31e90ac487b005669b4f7cd49604d41a6d45297ddd2c11d5670a59d68",
+  "inputManifestSha256": "8f099dbb52887efe5405160eaa8defedd408c3dc450270b97581f50d33638fcc",
+  "preparationReceipt": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_outgoing_prescription_continuation_preparation.json",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_outgoing_prescription_continuation_preparation.json",
+    "bytes": 2621,
+    "sha256": "a9952f85aebf5b69df014bb51ece330bc860426836175601f66e7c624066f2c0"
+  },
+  "proposedGateSha256": "46f7cc6ea3bd26da4a415df3d6c090569ea40bf4cc60f6d9b0c6941c0cec7a05",
+  "scientificWorkerLimit": 1,
+  "seconds": 900,
+  "memoryGiB": 2,
+  "swapMax": 0,
+  "cpuCount": 1,
+  "nice": 15,
+  "tasksMax": 32,
+  "nativeThreads": 1,
+  "automaticRetry": false
+}

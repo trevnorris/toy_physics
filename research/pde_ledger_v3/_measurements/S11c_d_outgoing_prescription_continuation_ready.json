@@ -1,0 +1,42 @@
+{
+  "status": "APPROVED_READY_NOT_LAUNCHED",
+  "gate": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_outgoing_prescription_continuation_gate.json",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_outgoing_prescription_continuation_gate.json",
+    "bytes": 1381,
+    "sha256": "7d02410809c36a13529c4e4c815dd2291b96c8ab206a5eae09a818a999b6e2fb"
+  },
+  "approval": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_outgoing_prescription_continuation_authorization.json",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_outgoing_prescription_continuation_authorization.json",
+    "bytes": 1291,
+    "sha256": "9bf2248a02519b16eb226af5ebe1f4495441d0a1f8ed9502518449aefd359dd5"
+  },
+  "worker": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_outgoing_prescription_continue.py",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_outgoing_prescription_continue.py",
+    "bytes": 34285,
+    "sha256": "0e0722e31e90ac487b005669b4f7cd49604d41a6d45297ddd2c11d5670a59d68"
+  },
+  "inputs": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_outgoing_prescription_continuation_inputs.json",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_outgoing_prescription_continuation_inputs.json",
+    "bytes": 114955,
+    "sha256": "8f099dbb52887efe5405160eaa8defedd408c3dc450270b97581f50d33638fcc"
+  },
+  "launcher": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/launch_continuation.py",
+    "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/launch_continuation.py",
+    "bytes": 6189,
+    "sha256": "3b984ab8fd86c050310bc883b304969766eb1f34e824ed96c4720fc4c6cc15d3"
+  },
+  "completionMessage": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/continuation_completion_message.txt",
+    "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/continuation_completion_message.txt",
+    "bytes": 2746,
+    "sha256": "d0e76a435f18e706474800931d9f34a7c3d1ed3bf6e73795873e8ec91c81301d"
+  },
+  "inputRoutesVerified": 137,
+  "priorReturnsPinned": 43,
+  "scientificOperations": 0
+}

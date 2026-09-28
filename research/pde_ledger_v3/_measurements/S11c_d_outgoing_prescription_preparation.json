@@ -1,0 +1,37 @@
+{
+  "status": "STATIC_PREPARATION_COMPLETE_EXTERNAL_SUBMISSION_PENDING",
+  "workerSha256": "ca046bc22bd23c8fc3ae6090789419b1358a9a3b4cfedc317d064395f9ce158a",
+  "inputManifestSha256": "0b0bcc3c770dfca9f04c9e1b2f6edc285418dc018cfafa8a121f27a95e5d12ed",
+  "packetSha256": "ee1c031b5954d00e7706aabdbb0ac2a7a97e24991d4dcc926f12288a7ebcbb34",
+  "archiveSha256": "e11c85428bbbe3bc122cea6abbd7b485dcef62836e6e6bff27739e16ca1283c3",
+  "fileCount": 24,
+  "packetBytes": 459674,
+  "compiledWithoutExecution": true,
+  "scientificImports": 0,
+  "nativeRestorations": 0,
+  "scientificOperations": 0,
+  "externalSubmissions": 0,
+  "nativeDefinitionJoins": {
+    "ModalCurrentSubspaces": {
+      "source": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-end-normalization-20260914/reference/source/scripts/S11c_d_mixing_scattering_sympy_audit.py",
+        "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-end-normalization-20260914/reference/source/scripts/S11c_d_mixing_scattering_sympy_audit.py",
+        "bytes": 482048,
+        "sha256": "d1c94521de128e6f11357ac990664dee1ae481333cb04806f9ce88d37c6b118a"
+      },
+      "definitionUnchanged": true
+    },
+    "ClosedCurrentPairing": {
+      "source": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-thickness-coordinate-20260914/end_pairing_reference/source/scripts/S11c_d_mixing_scattering_sympy_audit.py",
+        "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-thickness-coordinate-20260914/end_pairing_reference/source/scripts/S11c_d_mixing_scattering_sympy_audit.py",
+        "bytes": 482002,
+        "sha256": "7926ec3bb2e456f49b33fd025b901ecf836ca690178fb7f0d3d335a37874a0f1"
+      },
+      "definitionUnchanged": true
+    }
+  },
+  "runnerSha256": "8de82776d48a20438cba00370f1f977a4ce8e5dea19db4422c8c2269110df14e",
+  "launcherSha256": "b2bb771db124151decd38086338f0ca8c542d8e31fa8d17f8511cc6563ff62b6",
+  "completionMessageSha256": "9c5e92c508a98927067d70c5d34412571e54792379c92520352628f41b6b7823"
+}

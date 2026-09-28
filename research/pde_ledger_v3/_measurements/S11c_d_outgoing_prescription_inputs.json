@@ -1,0 +1,356 @@
+{
+  "status": "ADJUDICATED_INPUTS_EXECUTION_REQUIRES_GATE",
+  "inputs": {
+    "kernelCheckpoint": {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_reference_kernel_checkpoint.json",
+      "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_reference_kernel_checkpoint.json",
+      "bytes": 70697,
+      "sha256": "68f55b406fc56e7cd1b00c8b33b1ae185c30ed3fcb5ac0a85af21d74d2ccf2cd"
+    },
+    "modalCheckpoint": {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_reference_thickness_repair_checkpoint.json",
+      "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_reference_thickness_repair_checkpoint.json",
+      "bytes": 36894,
+      "sha256": "5c9456ddacd573865d00a0527b1b73b1060c613ccfe50ed89e41613fa3d9658f"
+    },
+    "pairingCheckpoint": {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_pairing_reference_thickness_repair_checkpoint.json",
+      "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_pairing_reference_thickness_repair_checkpoint.json",
+      "bytes": 203979,
+      "sha256": "1ea765d293138847a23ff7768fdba770a031659f9c978f582aff27391bf11232"
+    },
+    "modalPacket": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-end-normalization-20260914/reference/modal.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-end-normalization-20260914/reference/modal.pickle",
+      "bytes": 434483,
+      "sha256": "69668d29e11af4ca89c667f1ff39e7f646366eba7cb596dde39e74fcbefe3cd7"
+    },
+    "pairingPacket": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-thickness-coordinate-20260914/end_pairing_reference/complete.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-thickness-coordinate-20260914/end_pairing_reference/complete.pickle",
+      "bytes": 318321,
+      "sha256": "9838c5057ff36c9289cad6beb958d254097d8b18384e8c5f7d7b1a34b0062aa2"
+    },
+    "physicalInput": {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_variable_profile_development_input.json",
+      "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_variable_profile_development_input.json",
+      "bytes": 1884,
+      "sha256": "660b2b0b54494dce964c7f5fbd722a76a7e894d8ed92b18b5eb6290c3c10f1d5"
+    },
+    "originalPhysicalInput": {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_channel_preflight_input.json",
+      "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_channel_preflight_input.json",
+      "bytes": 738,
+      "sha256": "db0d6f4dd955515e2c53e59039bb36c65ba6736f0233e8a20db9356ef24fb6b4"
+    },
+    "stagePlan": {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_outgoing_prescription_plan.md",
+      "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_outgoing_prescription_plan.md",
+      "bytes": 7289,
+      "sha256": "1f4d41b662e5875b31162cb6b9ed7a11f86ad586169d1cc87799664a07094391"
+    },
+    "implementation": {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_outgoing_prescription_implementation.md",
+      "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_outgoing_prescription_implementation.md",
+      "bytes": 11782,
+      "sha256": "23b6af017c9dfe547eea64aa1ab1af123fb9cf06217eba3ff80c3ed6a1b46426"
+    },
+    "scopeAuthorization": {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_outgoing_prescription_authorization.json",
+      "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_outgoing_prescription_authorization.json",
+      "bytes": 437,
+      "sha256": "6f904c44a91e7cad424d70107ba5ad9b006ff414749f57e8bee4458ae9d39c37"
+    },
+    "guard": {
+      "path": "/var/projects/toy_physics/scripts/s11c_guarded_run.py",
+      "canonicalPath": "/var/projects/toy_physics/scripts/s11c_guarded_run.py",
+      "bytes": 9977,
+      "sha256": "9194b3e04b43d345828082e6312b0a2d7a9293f6296153f9c6ccea2defb931d2"
+    },
+    "supervisor": {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+      "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+      "bytes": 3347,
+      "sha256": "45a16f7f952ca6b571362b1c386fec76cd86f1e0ad04113074adf49c683ec49c"
+    },
+    "completionHook": {
+      "path": "/var/projects/toy_physics/scripts/codex_job_watch.py",
+      "canonicalPath": "/var/projects/toy_physics/scripts/codex_job_watch.py",
+      "bytes": 4301,
+      "sha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77"
+    },
+    "physicalDefinitions": {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_d_mixing_scattering_sympy_audit.py",
+      "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_d_mixing_scattering_sympy_audit.py",
+      "bytes": 545480,
+      "sha256": "5bf77729682960bb59f10c672a5fe3f67a98b0a9533da7c6189a37183596050f"
+    },
+    "modalProducerSnapshot": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-end-normalization-20260914/reference/source/scripts/S11c_d_mixing_scattering_sympy_audit.py",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-end-normalization-20260914/reference/source/scripts/S11c_d_mixing_scattering_sympy_audit.py",
+      "bytes": 482048,
+      "sha256": "d1c94521de128e6f11357ac990664dee1ae481333cb04806f9ce88d37c6b118a"
+    },
+    "pairingProducerSnapshot": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-thickness-coordinate-20260914/end_pairing_reference/source/scripts/S11c_d_mixing_scattering_sympy_audit.py",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-thickness-coordinate-20260914/end_pairing_reference/source/scripts/S11c_d_mixing_scattering_sympy_audit.py",
+      "bytes": 482002,
+      "sha256": "7926ec3bb2e456f49b33fd025b901ecf836ca690178fb7f0d3d335a37874a0f1"
+    },
+    "selectedInputs": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-reference-kernel-20260926/production/complete/selected-inputs.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-reference-kernel-20260926/production/complete/selected-inputs.pickle",
+      "bytes": 1104231,
+      "sha256": "f60735bba56c2936ee6cdf8245d3642225a394b2d51cc946fff4756b23e3ec6f"
+    },
+    "kernelContext": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-reference-kernel-20260926/production/complete/outgoing-source-context.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-reference-kernel-20260926/production/complete/outgoing-source-context.pickle",
+      "bytes": 37015,
+      "sha256": "285c069a450dc36839ba197935897a57bcb81631f7d944e41bc0e022e0121756"
+    },
+    "kernelUnits": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-reference-kernel-20260926/production/complete/physical-units.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-reference-kernel-20260926/production/complete/physical-units.pickle",
+      "bytes": 1049,
+      "sha256": "acd555aecd20a6447303fbd1412e7bd5d037b9a7e92b00e9765953b695c6bcf1"
+    },
+    "inverse": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-reference-kernel-20260926/production/complete/operations/054-actual-inverse/value.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-reference-kernel-20260926/production/complete/operations/054-actual-inverse/value.pickle",
+      "bytes": 30747,
+      "sha256": "faa817fb38561e9605d8b5f7b0033cb306db9f90677f2d524b5f79fa4c8cd2cd"
+    },
+    "determinant": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-reference-kernel-20260926/production/complete/operations/003-source-determinant/value.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-reference-kernel-20260926/production/complete/operations/003-source-determinant/value.pickle",
+      "bytes": 8723,
+      "sha256": "2898bcad40291817489bcc9cd95138ce749a47c17a880a9ae4c357756c32d852"
+    },
+    "cofactor_0_0": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-reference-kernel-20260926/production/complete/operations/005-source-cofactor-0-0/value.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-reference-kernel-20260926/production/complete/operations/005-source-cofactor-0-0/value.pickle",
+      "bytes": 4135,
+      "sha256": "02f9a09e1781a948053544e014aa6bdd8035a28dc146c6f62a60d56eba7b1219"
+    },
+    "cofactor_0_1": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-reference-kernel-20260926/production/complete/operations/007-source-cofactor-0-1/value.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-reference-kernel-20260926/production/complete/operations/007-source-cofactor-0-1/value.pickle",
+      "bytes": 4168,
+      "sha256": "0c0b75482cc5a95a87048bdeceb41bc7f48e55c9b2726a2af94f0caa6c7f4f4b"
+    },
+    "cofactor_0_2": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-reference-kernel-20260926/production/complete/operations/009-source-cofactor-0-2/value.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-reference-kernel-20260926/production/complete/operations/009-source-cofactor-0-2/value.pickle",
+      "bytes": 4168,
+      "sha256": "b230ea8138edc37c6df9ac2354b0d564b21fea0adfd8ddf5f0bf547986b62b61"
+    },
+    "cofactor_0_3": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-reference-kernel-20260926/production/complete/operations/011-source-cofactor-0-3/value.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-reference-kernel-20260926/production/complete/operations/011-source-cofactor-0-3/value.pickle",
+      "bytes": 3728,
+      "sha256": "08ad57f174459dac825802cb7b6c977ea7f5fe592823146f1d83786e7217a58b"
+    },
+    "cofactor_0_4": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-reference-kernel-20260926/production/complete/operations/013-source-cofactor-0-4/value.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-reference-kernel-20260926/production/complete/operations/013-source-cofactor-0-4/value.pickle",
+      "bytes": 3534,
+      "sha256": "bc3986a962b4953b958a99714aade011d826b90855f78163519afecc518678fc"
+    },
+    "cofactor_1_0": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-reference-kernel-20260926/production/complete/operations/015-source-cofactor-1-0/value.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-reference-kernel-20260926/production/complete/operations/015-source-cofactor-1-0/value.pickle",
+      "bytes": 4168,
+      "sha256": "8c9b43a186261290136b16dcba561d48b7d8655dfe367e941f9d1299bf8a8878"
+    },
+    "cofactor_1_1": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-reference-kernel-20260926/production/complete/operations/017-source-cofactor-1-1/value.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-reference-kernel-20260926/production/complete/operations/017-source-cofactor-1-1/value.pickle",
+      "bytes": 4135,
+      "sha256": "b7e3772e84f9266cb9b8b47b691df1d014a273c645eef78e4a94415b67ab0e3a"
+    },
+    "cofactor_1_2": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-reference-kernel-20260926/production/complete/operations/019-source-cofactor-1-2/value.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-reference-kernel-20260926/production/complete/operations/019-source-cofactor-1-2/value.pickle",
+      "bytes": 4168,
+      "sha256": "773835af048798f7f8aeb67ffbfdd5cbad5d9efa663c11795062cdc3ed3de91f"
+    },
+    "cofactor_1_3": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-reference-kernel-20260926/production/complete/operations/021-source-cofactor-1-3/value.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-reference-kernel-20260926/production/complete/operations/021-source-cofactor-1-3/value.pickle",
+      "bytes": 3728,
+      "sha256": "9c717fc3970c3ef8b50fd383210406520b245606750841cd7ff11e40ad8f420e"
+    },
+    "cofactor_1_4": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-reference-kernel-20260926/production/complete/operations/023-source-cofactor-1-4/value.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-reference-kernel-20260926/production/complete/operations/023-source-cofactor-1-4/value.pickle",
+      "bytes": 3534,
+      "sha256": "317d238a2b80b417f379ad36e540f7bf53909e5c26d62bd86d52e6cc65805dae"
+    },
+    "cofactor_2_0": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-reference-kernel-20260926/production/complete/operations/025-source-cofactor-2-0/value.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-reference-kernel-20260926/production/complete/operations/025-source-cofactor-2-0/value.pickle",
+      "bytes": 4168,
+      "sha256": "b4b0fa052b80a7ecb4792a4defb500bc63a51195967cf25c39813529c666bbca"
+    },
+    "cofactor_2_1": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-reference-kernel-20260926/production/complete/operations/027-source-cofactor-2-1/value.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-reference-kernel-20260926/production/complete/operations/027-source-cofactor-2-1/value.pickle",
+      "bytes": 4168,
+      "sha256": "b6526381bbd7a7d91fdeace4853d4e5e3b7bd6a03f43deb97714cf43acfaeab6"
+    },
+    "cofactor_2_2": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-reference-kernel-20260926/production/complete/operations/029-source-cofactor-2-2/value.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-reference-kernel-20260926/production/complete/operations/029-source-cofactor-2-2/value.pickle",
+      "bytes": 4135,
+      "sha256": "7d96e857d134fea38c71a64cf3246c27364f8894fb6f73784a1c01098bf1da8b"
+    },
+    "cofactor_2_3": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-reference-kernel-20260926/production/complete/operations/031-source-cofactor-2-3/value.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-reference-kernel-20260926/production/complete/operations/031-source-cofactor-2-3/value.pickle",
+      "bytes": 3728,
+      "sha256": "a26816a2e357715fb9f73c0b5439b31319466e8a340e9661da78ff27b192aeb4"
+    },
+    "cofactor_2_4": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-reference-kernel-20260926/production/complete/operations/033-source-cofactor-2-4/value.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-reference-kernel-20260926/production/complete/operations/033-source-cofactor-2-4/value.pickle",
+      "bytes": 3534,
+      "sha256": "35c0f07fcf1ce856da1f582a0a4924691c464d6f4ef6abc462615ae49872dc91"
+    },
+    "cofactor_3_0": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-reference-kernel-20260926/production/complete/operations/035-source-cofactor-3-0/value.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-reference-kernel-20260926/production/complete/operations/035-source-cofactor-3-0/value.pickle",
+      "bytes": 3896,
+      "sha256": "bed7c6e9f063db1c23bcae3a9f5dee28cca421423866a32e47ec2273dc516394"
+    },
+    "cofactor_3_1": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-reference-kernel-20260926/production/complete/operations/037-source-cofactor-3-1/value.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-reference-kernel-20260926/production/complete/operations/037-source-cofactor-3-1/value.pickle",
+      "bytes": 3896,
+      "sha256": "5204717f17b32ef71d2cbd808fb623a0e2725f25ad95b4ace2bb8f73b7c646a7"
+    },
+    "cofactor_3_2": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-reference-kernel-20260926/production/complete/operations/039-source-cofactor-3-2/value.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-reference-kernel-20260926/production/complete/operations/039-source-cofactor-3-2/value.pickle",
+      "bytes": 3899,
+      "sha256": "9a5865f405f850035bb3128f8eee6281b3158e784b3d21e076b475743cdb1d03"
+    },
+    "cofactor_3_3": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-reference-kernel-20260926/production/complete/operations/041-source-cofactor-3-3/value.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-reference-kernel-20260926/production/complete/operations/041-source-cofactor-3-3/value.pickle",
+      "bytes": 3433,
+      "sha256": "d93b53985ec23afefa5a67d322d5a3986083547f0a317885bd361d699aff1f58"
+    },
+    "cofactor_3_4": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-reference-kernel-20260926/production/complete/operations/043-source-cofactor-3-4/value.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-reference-kernel-20260926/production/complete/operations/043-source-cofactor-3-4/value.pickle",
+      "bytes": 3199,
+      "sha256": "e13cb271e95326616d64406f3987255f67e485e000dc1d233ea123c02eaacb62"
+    },
+    "cofactor_4_0": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-reference-kernel-20260926/production/complete/operations/045-source-cofactor-4-0/value.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-reference-kernel-20260926/production/complete/operations/045-source-cofactor-4-0/value.pickle",
+      "bytes": 3568,
+      "sha256": "d7b0c79367f49d6984aaf101a3124ae5a518367bd1d359d2e33f5f606d980521"
+    },
+    "cofactor_4_1": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-reference-kernel-20260926/production/complete/operations/047-source-cofactor-4-1/value.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-reference-kernel-20260926/production/complete/operations/047-source-cofactor-4-1/value.pickle",
+      "bytes": 3568,
+      "sha256": "47a5fe10787dd28a86c3eed370c94fcdde12d1b6431540b9503e8cc114b31feb"
+    },
+    "cofactor_4_2": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-reference-kernel-20260926/production/complete/operations/049-source-cofactor-4-2/value.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-reference-kernel-20260926/production/complete/operations/049-source-cofactor-4-2/value.pickle",
+      "bytes": 3568,
+      "sha256": "269e93c1032e561dd0f0242482370b73126fe9809117db38dc74bbbc5030ee2b"
+    },
+    "cofactor_4_3": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-reference-kernel-20260926/production/complete/operations/051-source-cofactor-4-3/value.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-reference-kernel-20260926/production/complete/operations/051-source-cofactor-4-3/value.pickle",
+      "bytes": 3106,
+      "sha256": "a2aaef9cbaf133467c53c47d094ee4568f7593d731d2217339d1b887b71d41ea"
+    },
+    "cofactor_4_4": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-reference-kernel-20260926/production/complete/operations/053-source-cofactor-4-4/value.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-reference-kernel-20260926/production/complete/operations/053-source-cofactor-4-4/value.pickle",
+      "bytes": 3023,
+      "sha256": "0b9b2f9396cbbf69d8974a852d2042f60eb25b46f52c575849f8d37d886e8b09"
+    },
+    "spectralDensity": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-reference-kernel-20260926/production/complete/operations/105-regular-spectral-density/value.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-reference-kernel-20260926/production/complete/operations/105-regular-spectral-density/value.pickle",
+      "bytes": 31680,
+      "sha256": "6bb5c5dee32340f6b27c8b8b511ed59ef8cf95f3e3de98bfd97c3b3625fca993"
+    },
+    "protectedBuilderReport": {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_sympy_builder_report.md",
+      "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_sympy_builder_report.md",
+      "bytes": 36895,
+      "sha256": "4b083fe7b78a4357bc27495a1ea5bb34eeffffe1134158e24f2fdfcb66394599"
+    }
+  },
+  "kernelArtifactKeys": {
+    "selectedInputs": "selected-inputs.pickle",
+    "kernelContext": "outgoing-source-context.pickle",
+    "kernelUnits": "physical-units.pickle",
+    "inverse": "operations/054-actual-inverse/value.pickle",
+    "determinant": "operations/003-source-determinant/value.pickle",
+    "cofactor_0_0": "operations/005-source-cofactor-0-0/value.pickle",
+    "cofactor_0_1": "operations/007-source-cofactor-0-1/value.pickle",
+    "cofactor_0_2": "operations/009-source-cofactor-0-2/value.pickle",
+    "cofactor_0_3": "operations/011-source-cofactor-0-3/value.pickle",
+    "cofactor_0_4": "operations/013-source-cofactor-0-4/value.pickle",
+    "cofactor_1_0": "operations/015-source-cofactor-1-0/value.pickle",
+    "cofactor_1_1": "operations/017-source-cofactor-1-1/value.pickle",
+    "cofactor_1_2": "operations/019-source-cofactor-1-2/value.pickle",
+    "cofactor_1_3": "operations/021-source-cofactor-1-3/value.pickle",
+    "cofactor_1_4": "operations/023-source-cofactor-1-4/value.pickle",
+    "cofactor_2_0": "operations/025-source-cofactor-2-0/value.pickle",
+    "cofactor_2_1": "operations/027-source-cofactor-2-1/value.pickle",
+    "cofactor_2_2": "operations/029-source-cofactor-2-2/value.pickle",
+    "cofactor_2_3": "operations/031-source-cofactor-2-3/value.pickle",
+    "cofactor_2_4": "operations/033-source-cofactor-2-4/value.pickle",
+    "cofactor_3_0": "operations/035-source-cofactor-3-0/value.pickle",
+    "cofactor_3_1": "operations/037-source-cofactor-3-1/value.pickle",
+    "cofactor_3_2": "operations/039-source-cofactor-3-2/value.pickle",
+    "cofactor_3_3": "operations/041-source-cofactor-3-3/value.pickle",
+    "cofactor_3_4": "operations/043-source-cofactor-3-4/value.pickle",
+    "cofactor_4_0": "operations/045-source-cofactor-4-0/value.pickle",
+    "cofactor_4_1": "operations/047-source-cofactor-4-1/value.pickle",
+    "cofactor_4_2": "operations/049-source-cofactor-4-2/value.pickle",
+    "cofactor_4_3": "operations/051-source-cofactor-4-3/value.pickle",
+    "cofactor_4_4": "operations/053-source-cofactor-4-4/value.pickle",
+    "spectralDensity": "operations/105-regular-spectral-density/value.pickle"
+  },
+  "nativeDefinitionJoins": {
+    "ModalCurrentSubspaces": {
+      "source": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-end-normalization-20260914/reference/source/scripts/S11c_d_mixing_scattering_sympy_audit.py",
+        "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-end-normalization-20260914/reference/source/scripts/S11c_d_mixing_scattering_sympy_audit.py",
+        "bytes": 482048,
+        "sha256": "d1c94521de128e6f11357ac990664dee1ae481333cb04806f9ce88d37c6b118a"
+      },
+      "definitionUnchanged": true
+    },
+    "ClosedCurrentPairing": {
+      "source": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-thickness-coordinate-20260914/end_pairing_reference/source/scripts/S11c_d_mixing_scattering_sympy_audit.py",
+        "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-thickness-coordinate-20260914/end_pairing_reference/source/scripts/S11c_d_mixing_scattering_sympy_audit.py",
+        "bytes": 482002,
+        "sha256": "7926ec3bb2e456f49b33fd025b901ecf836ca690178fb7f0d3d335a37874a0f1"
+      },
+      "definitionUnchanged": true
+    }
+  },
+  "pairingRelocation": {
+    "historicalRoot": "/tmp/s11c-thickness-coordinate-20260914/end_pairing_reference",
+    "preservedRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-thickness-coordinate-20260914/end_pairing_reference",
+    "acceptedBytesUnchanged": true
+  },
+  "scope": "One fixed physical input, full mode blocks and actual inverse singular coefficients; no producer replay or profile solve.",
+  "restoredPackets": 0,
+  "scientificCalls": 0,
+  "reviewedManifestSha256": "0b0bcc3c770dfca9f04c9e1b2f6edc285418dc018cfafa8a121f27a95e5d12ed",
+  "boundedCorrections": "Tail/domain certificates, denominator and opposite-sheet joins, inverse/adjugate and saved-density identities; no source producer replay."
+}

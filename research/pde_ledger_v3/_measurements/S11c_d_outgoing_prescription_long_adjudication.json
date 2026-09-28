@@ -1,0 +1,72 @@
+{
+  "status": "USER_APPROVED_DURATION_EXTENSION_SCIENCE_METHOD_UNCHANGED",
+  "authorization": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_outgoing_prescription_long_authorization.json",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_outgoing_prescription_long_authorization.json",
+    "bytes": 2607,
+    "sha256": "f21211cc61023e91e5e48e484c0e264132d6e7b4a80bdd483b55b73dcb60d730"
+  },
+  "priorCheckpoint": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_outgoing_prescription_continuation_checkpoint.json",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_outgoing_prescription_continuation_checkpoint.json",
+    "bytes": 912401,
+    "sha256": "9ad17636729e3b12df14eeb1ba52d792ca3062cb71fded2e74a23adb11970a23"
+  },
+  "priorWorker": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_outgoing_prescription_continue.py",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_outgoing_prescription_continue.py",
+    "bytes": 34285,
+    "sha256": "0e0722e31e90ac487b005669b4f7cd49604d41a6d45297ddd2c11d5670a59d68"
+  },
+  "worker": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_outgoing_prescription_long.py",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_outgoing_prescription_long.py",
+    "bytes": 34482,
+    "sha256": "a5d19ddb19fe15456f28450e5461c0b1a40f9553c52080a4ee16f0354539138a"
+  },
+  "workerDiff": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/long-worker-duration.diff",
+    "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/long-worker-duration.diff",
+    "bytes": 2125,
+    "sha256": "04f20aeb9b30201c414762c0f25d39c24adfb32655c928ee0375bac68327be53"
+  },
+  "scienceConstructionASTUnchanged": true,
+  "savedCodecASTUnchanged": true,
+  "journalASTUnchanged": true,
+  "taskLocalGuard": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_outgoing_prescription_long_guard.py",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_outgoing_prescription_long_guard.py",
+    "bytes": 12795,
+    "sha256": "10490712b56d94016ba69b14a1b64ccb660f76cd551cc7ad4fea338a83cedb78"
+  },
+  "sharedGuard": {
+    "path": "/var/projects/toy_physics/scripts/s11c_guarded_run.py",
+    "canonicalPath": "/var/projects/toy_physics/scripts/s11c_guarded_run.py",
+    "bytes": 9977,
+    "sha256": "9194b3e04b43d345828082e6312b0a2d7a9293f6296153f9c6ccea2defb931d2"
+  },
+  "guardDiff": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/long-guard-duration.diff",
+    "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/long-guard-duration.diff",
+    "bytes": 5302,
+    "sha256": "eedb9489d07847ad01625228bc3e82531cbc71b8cc29b64db163a25f1d4deec9"
+  },
+  "unchangedGuardFunctions": [
+    "resource_limits",
+    "limits_match",
+    "save",
+    "available_memory",
+    "group_path",
+    "sample",
+    "stop"
+  ],
+  "childContainmentAndMonitoringASTUnchangedAfterApprovalPrefix": true,
+  "seconds": 3600,
+  "nativeSeconds": 3540,
+  "completedReturnsToRestore": 207,
+  "firstUnfinishedOperation": "block-17-adj-value-1",
+  "freshIndependentClearClaimed": false,
+  "scientificImports": 0,
+  "scientificOperations": 0,
+  "automaticRetry": false
+}

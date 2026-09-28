@@ -1,0 +1,54 @@
+{
+  "status": "LAUNCHED_AND_FINISHED_WITH_VALIDATOR_IDENTITY_FAILURE",
+  "launch": {
+    "jobPid": 3291127,
+    "watcherPid": 3291128,
+    "pins": {
+      "workerSha256": "488ecf97d21436b73ad0b8138fec4137928e38aebdaeece62e1faa5a349a533f",
+      "inputManifestSha256": "466aa207e67d79e91b644c2022b37fca9be2af66aaa3a5f891b6be0dcf437ec8",
+      "gateReceiptSha256": "446bab649bd1ec382f7394de790de73f72c34396ceb2a53605851196d91f7d86",
+      "launcherSha256": "11ab9a3e219469fcf5daa77f8fca19fa18d528cee00c36b4578ad3f83f08e609"
+    },
+    "command": [
+      "/usr/bin/python3",
+      "/var/projects/toy_physics/scripts/s11c_guarded_run.py",
+      "--log-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/saved-validation/resource-guard",
+      "--seconds",
+      "900",
+      "--memory-gib",
+      "2",
+      "--tasks-max",
+      "32",
+      "--",
+      "/usr/bin/python3",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/saved-validation",
+      "--stage",
+      "outgoing_prescription_validation",
+      "--",
+      "/usr/bin/python3",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_outgoing_prescription_validate.py",
+      "--source",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete",
+      "--manifest",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/saved-validation-inputs.json",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/saved-validation/complete"
+    ],
+    "thread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+    "maximumScientificWorkers": 1,
+    "completionMessageSha256": "bd774f6ed3f453e736b6493a0f651b817b71a51f8597c93df21d2b142e66d782"
+  },
+  "startedUtc": "2026-09-28T00:28:19.160288+00:00",
+  "failureCheckpoint": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_outgoing_prescription_validation_failure_checkpoint.json",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_outgoing_prescription_validation_failure_checkpoint.json",
+    "bytes": 772406,
+    "sha256": "52c1188c0d5664c5d9ed549ee1940e7ad0f86d011cc33698e268e58ab862312f"
+  },
+  "limitsVerified": true,
+  "automaticRetry": false
+}

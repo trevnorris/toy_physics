@@ -1,0 +1,37 @@
+{
+  "status": "READY_NOT_LAUNCHED",
+  "gate": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_outgoing_prescription_gate.json",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_outgoing_prescription_gate.json",
+    "bytes": 2056,
+    "sha256": "c11b2934fde6dafa9deef9e1d36696fe02b4584720c73343eda1f95ed218f01c"
+  },
+  "worker": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_outgoing_prescription.py",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_outgoing_prescription.py",
+    "bytes": 31530,
+    "sha256": "01d3d632a32a6da951ea2484d2424c9c99efd419242b4ee61fcb8452d5935a87"
+  },
+  "inputs": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_outgoing_prescription_inputs.json",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_outgoing_prescription_inputs.json",
+    "bytes": 24754,
+    "sha256": "8fb5c9b71f1f87be03c0cf501d49289f321ff2f7c5a3aa9da0e8fab97d5ed056"
+  },
+  "launcher": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/launch_stage.py",
+    "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/launch_stage.py",
+    "bytes": 6060,
+    "sha256": "7c77c7feff96abe3f95d379c94ef9df2d8a8bcd8c293176cc4a67638d1ea2569"
+  },
+  "completionMessage": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/stage_completion_message.txt",
+    "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/stage_completion_message.txt",
+    "bytes": 3081,
+    "sha256": "583ca4d421a773557fc04d09106d738c8cbb5aa4cfb5b99cb52ee5cbd7520f15"
+  },
+  "launchDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/production",
+  "scientificWorkersLaunched": 0,
+  "scientificImports": 0,
+  "currentThread": "01a0e01b-ef84-7192-817f-584cda5d339b"
+}

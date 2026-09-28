@@ -1,0 +1,38 @@
+{
+  "status": "PREPARED_SAVED_OUTPUT_VALIDATION_NOT_LAUNCHED",
+  "recordedUtc": "2026-09-27T23:54:35.987508+00:00",
+  "validator": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_outgoing_prescription_validate.py",
+    "bytes": 22463,
+    "sha256": "488ecf97d21436b73ad0b8138fec4137928e38aebdaeece62e1faa5a349a533f"
+  },
+  "manifest": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/saved-validation-inputs.json",
+    "bytes": 137625,
+    "sha256": "466aa207e67d79e91b644c2022b37fca9be2af66aaa3a5f891b6be0dcf437ec8"
+  },
+  "gate": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_outgoing_prescription_validation_gate.json",
+    "bytes": 1197,
+    "sha256": "446bab649bd1ec382f7394de790de73f72c34396ceb2a53605851196d91f7d86"
+  },
+  "launcher": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/launch_saved_validation.py",
+    "bytes": 6306,
+    "sha256": "11ab9a3e219469fcf5daa77f8fca19fa18d528cee00c36b4578ad3f83f08e609"
+  },
+  "hookMessage": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/saved_validation_completion_message.txt",
+    "bytes": 3348,
+    "sha256": "bd774f6ed3f453e736b6493a0f651b817b71a51f8597c93df21d2b142e66d782"
+  },
+  "savedFiles": 1069,
+  "compilePassed": true,
+  "onlyExpectedImports": true,
+  "noProducerSolveDerivativeTailGenerationOrIntegralEvaluationCalls": true,
+  "sourceRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/saved-validation",
+  "scientificImports": 0,
+  "scientificPicklesRestored": 0,
+  "scientificOperations": 0
+}

@@ -163,6 +163,21 @@ scope. Source-specific pairing, full response/Green/FORM/A11/A12, diagonal
 extension and retarded equivalence remain open on the unchanged evanescent
 slice. No additional job is running for this stage.
 
+**Repository checkpoint and next implementation (2026-09-28):** the user
+directed cleanup/commits and continuation. The backlog is committed as
+`1bb682e7`, `fcdf6394` and `9d73a87d`, preserving original bytes and keeping
+scratch contents and separate Lean/shared-guard work out of those commits.
+The [localized thickness implementation and fixed packet](S11c_d_localized_thickness_preparation.md)
+are prepared: 25 files / 804,654 bytes, packet SHA-256
+`fd780beab5c2564e19b8f792a8bbb3751adaeaa61c2402cb2e781498084df944`.
+Syntax, helper identity, source hashes, archive and missing-approval refusal
+checks passed without scientific restoration/execution. The new source-specific
+Fourier/PV method has not been submitted or run. Obtain the exact packet's
+submission decision, complete both independent read-only reports, and resolve
+substantive findings before any fresh science-stage gate. The review question
+includes extension from the saved separated-point prescription to these two
+localized sources. No broader domain/Abel campaign is added.
+
 The [corrected stage preparation](S11c_d_two_asymptote_runtime_preparation.json)
 pins the revised worker, 101 inputs, disposition, shared guard/supervisor and
 hook-first launcher. Static source/identity and standard-library persistence

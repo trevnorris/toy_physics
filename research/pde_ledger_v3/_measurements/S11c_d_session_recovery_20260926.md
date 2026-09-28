@@ -1083,3 +1083,44 @@ A11/A12, forcing pairing, diagonal extension, retarded equivalence and a
 radiating witness remain unaccepted. Lean/S11_lean, shared guard, incident
 history and protected builder suffix are unchanged. New data above 1 MiB
 has explicit diff exclusions, with original binary artifacts retained.
+
+## Backlog committed; thickness method/build packet prepared
+
+The user requested repository cleanup and commits before continuing. The
+159 untracked S11c-d files and two tracked modifications were committed in
+three groups: `1bb682e7` reference kernel, `fcdf6394` outgoing prescription,
+and `9d73a87d` two-asymptote/inspection/recovery. All original bytes were
+verified unchanged. Lean's separate work was already committed at `60fd67a0`.
+No Lean/shared-guard change or scratch content entered these new commits.
+After an interrupted staging request, the empty index was checked before
+continuing. The user's clarification is retained: scratch is not a commit
+location; canonical files that need tracking belong outside scratch.
+
+Continued preparation produced the
+[localized thickness worker and review packet](S11c_d_localized_thickness_preparation.md).
+It proposes the two existing grade01 source transforms and their full saved
+PV/delta action, with original units/branch and selected source, profile,
+equation/pole and actual thickness-mutation checks. No science ran, no pickle
+was restored and no external review was submitted.
+
+The fixed packet has 25 files / 804,654 bytes, SHA-256
+`fd780beab5c2564e19b8f792a8bbb3751adaeaa61c2402cb2e781498084df944`.
+Sixteen input/source routes are pinned. Syntax, unchanged instrument ASTs,
+source/artifact hashes, archive identity and both missing stage/review
+approval refusals passed. The pending gate is deliberately not READY.
+Canonical implementation/runner/launcher/preparation/prompt and concise
+metadata live under `research/pde_ledger_v3`; runtime packet/archive copies
+remain ignored scratch. No new generated tracked file exceeds 1 MiB.
+
+Next boundary: the user's decision on this exact packet's submission to
+Claude and Grok. Earlier approvals and literal verdicts do not clear this
+new method. Both reports must finish before disposition/edits; no peer sharing
+or automatic reruns. Later science needs its actual disposition, pinned gate
+and ordinary shared guard/supervisor containment. The source-specific
+extension of the separated-point prescription is explicitly a review question.
+
+All accepted ingredients, failures, incident history and protected suffix
+remain intact. Full response/Green/FORM/A11/A12, density/mixed response,
+current normalization, general diagonal extension, retarded equivalence and
+radiating coverage remain open on the unchanged evanescent slice. No worker,
+review or recurring task is running for this new stage.

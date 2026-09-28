@@ -1,0 +1,65 @@
+{
+  "status": "PREPARED_NOT_SUBMITTED_NOT_RUN",
+  "recordedUtc": "2026-09-28T15:20:14.544041+00:00",
+  "worker": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_localized_thickness_response.py",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_localized_thickness_response.py",
+    "bytes": 35183,
+    "sha256": "a8a801a4432f22b1dd86934f8b38a9e7b35db80b23ad2e9da7866a3866af594d"
+  },
+  "inputManifest": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_localized_thickness_inputs.json",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_localized_thickness_inputs.json",
+    "bytes": 7052,
+    "sha256": "0e397d039c439839f8129d1f11de28cb4db249f1e7c5e4aa10e25427f49a32e4"
+  },
+  "pendingGate": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_localized_thickness_pending_gate.json",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_localized_thickness_pending_gate.json",
+    "bytes": 580,
+    "sha256": "aef839b5872b5e91b6df7750cf7080ad643c9898c2df0dd99615dcb7d05701b6"
+  },
+  "reviewRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-d-localized-thickness-20260928/build-review",
+  "packetSha256": "fd780beab5c2564e19b8f792a8bbb3751adaeaa61c2402cb2e781498084df944",
+  "archiveSha256": "99ec379463804ca32fa8ed31e4205ef1a7f479b1b0c14d49b20c82206b098ebe",
+  "packetFiles": 25,
+  "packetBytes": 804654,
+  "sourceEvidence": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-localized-thickness-20260928/build-review/packet/saved-source-evidence.json",
+    "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-localized-thickness-20260928/build-review/packet/saved-source-evidence.json",
+    "bytes": 493603,
+    "sha256": "d29373cf22e0715c83e5fd5574bda9a34df5e7a9a879eea0180b03d76edfad08"
+  },
+  "staticChecks": {
+    "status": "PASS_SOURCE_AND_INSTRUMENT_CHECKS_NO_SCIENCE",
+    "workerSha256": "a8a801a4432f22b1dd86934f8b38a9e7b35db80b23ad2e9da7866a3866af594d",
+    "inputManifestSha256": "0e397d039c439839f8129d1f11de28cb4db249f1e7c5e4aa10e25427f49a32e4",
+    "runnerSha256": "bd503a86374bb7124c3bb3f20b1df22d03207ac3b852bcdf586eedabccb53a24",
+    "launcherSha256": "b7c89cfed2150a99623dd37d57b42a6565e38b76cfc802f737e5d2e8d060d2f8",
+    "completionMessageSha256": "55db44e894e1353afacb8c30400f92a8d082a5d3d837f12a240670648ab1ca35",
+    "unchangedInstrumentASTs": [
+      "require",
+      "digest",
+      "route",
+      "save",
+      "containment",
+      "SavedCodec",
+      "Journal"
+    ],
+    "scientificImportsOrRestorations": 0,
+    "forbiddenProducerSolveReplayCalls": 0,
+    "pendingGateRefused": true,
+    "missingReviewApprovalRefused": true,
+    "archiveMatchesPacket": true,
+    "allSelectedAcceptedArtifactHashesMatch": true
+  },
+  "readOnlyReviewers": [
+    "claude",
+    "grok"
+  ],
+  "newExternalSubmissionAuthorized": false,
+  "scientificLaunchAuthorized": false,
+  "automaticRetry": false,
+  "currentThread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+  "scratchPolicy": "Runtime packet copies/archive/logs stay ignored. Canonical implementation and preparation files are under research/pde_ledger_v3."
+}

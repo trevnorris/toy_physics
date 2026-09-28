@@ -1,0 +1,12 @@
+{
+  "status": "PENDING_INDEPENDENT_METHOD_REVIEW_AND_STAGE_APPROVAL",
+  "workerSha256": "a8a801a4432f22b1dd86934f8b38a9e7b35db80b23ad2e9da7866a3866af594d",
+  "inputManifestSha256": "0e397d039c439839f8129d1f11de28cb4db249f1e7c5e4aa10e25427f49a32e4",
+  "scopeExplicitlyApproved": false,
+  "substantiveReviewFindingsClosed": false,
+  "seconds": 900,
+  "nativeSeconds": 840,
+  "automaticRetry": false,
+  "sharedGuardSha256": "9194b3e04b43d345828082e6312b0a2d7a9293f6296153f9c6ccea2defb931d2",
+  "supervisorSha256": "45a16f7f952ca6b571362b1c386fec76cd86f1e0ad04113074adf49c683ec49c"
+}

@@ -1300,3 +1300,34 @@ useful ordinary guarded diagnostic. A substantive blocker or sufficient source
 evidence instead ends this bounded goal with the go/no-go and cost estimate.
 No response construction follows automatically. Runtime scratch remains ignored;
 only canonical permission, preparation and status records are committed.
+
+## Feasibility reviews finished; bounded decision returned without a run
+
+Both initial independent reviews completed with literal **NEEDS REVISION**.
+The [decision report](S11c_d_radiating_feasibility_decision.md) and
+[canonical review record](S11c_d_radiating_feasibility_review_record.json)
+preserve the full texts, receipts and checked findings. Source/packet/archive,
+review output/helper/prompt and all nine input hashes match. Grok's 1,431-byte
+settings/plugin/hook warnings are retained; its substantive report completed.
+Claude and coordinator/watcher stderr were empty. The hook is finished and
+this completion event is handled.
+
+Confirmed findings concern the thickness label, midpoint branch-edge handling,
+non-independent corruption gate and missing elimination witnesses. Opcode-only
+inspection found only permitted SymPy globals in all four inputs, so the
+specific suspected backend allowlist mismatch was not substantiated. No
+scientific object was restored and the reviewed worker was not edited. Both
+literal verdicts stay unchanged; local disposition is not independent clearance.
+
+The approved goal explicitly ends on substantive findings. Zero scientific
+jobs were used; no gate, revised worker, retry or new review was launched.
+Existing sources establish a possible omega=3 bulk band, not an admissible
+A11/A12 witness. The necessary radiating branch/current/response work is not
+priced as a cheap rerun: Claude's low-confidence estimate is 1–3 weeks and
+1–4 hours symbolic runtime, while Grok says the packet cannot price the pilot.
+No proposed review-cycle count becomes a requirement. Recommend no further
+construction under this goal and an explicit reduced handoff if the user wants
+to move on. That would be a scope decision, not completed S11c-d or established
+leakage. The omega=1 failure remains parked. Prior science/failures, review
+debts, Lean/S11_lean, shared guard and protected suffix remain unchanged;
+scratch runtime artifacts are not committed.

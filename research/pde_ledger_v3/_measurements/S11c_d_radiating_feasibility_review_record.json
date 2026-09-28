@@ -1,0 +1,506 @@
+{
+  "status": "FEASIBILITY_REVIEW_BLOCKED_NO_SCIENCE_RUN",
+  "recordedUtc": "2026-09-28T19:21:53.355712+00:00",
+  "decision": "Do not launch this diagnostic or a response construction. Return the bounded no-go/cost decision; substantive revisions are outside this completed goal.",
+  "packetSha256": "5de2d5651be75deeb48a6d54c3c01c1dd086199691e8d9c015f802f17b419b26",
+  "archiveSha256": "fd3cc1a9fbe00677ea4125ab940972decca5db0a853f8515cc4ea65c2b893a24",
+  "packetFiles": 21,
+  "packetBytes": 304138,
+  "worker": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_radiating_feasibility.py",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_radiating_feasibility.py",
+    "bytes": 17002,
+    "sha256": "45c24734f42354528a860ba43a9d782807d01b24b45cb8140a426518f3e65920"
+  },
+  "manifest": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_radiating_feasibility_inputs.json",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_radiating_feasibility_inputs.json",
+    "bytes": 4107,
+    "sha256": "ddd26ec90908014fcaa40a560329ca044ae9e6ab00d52b77ec6ff90efe089d1b"
+  },
+  "reviewRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-d-radiating-feasibility-20260928/build-review",
+  "reports": {
+    "claude": {
+      "literalVerdict": "NEEDS REVISION",
+      "literalTextField": "result",
+      "literalText": "# Verdict: NEEDS REVISION\n\nThe revisions needed are small. The diagnostic is worth one guarded job once they are made (conditional go). The cost/scope conclusion does not depend on the run: a radiating pilot is not a cheap rerun at any outcome.\n\nI only read the packet. Nothing was executed or unpickled, and I found no evidence in the packet that any scientific or instrument run has taken place (`packet-index.json:103`, `source-schema.md:9-10`).\n\n## Material findings\n\n**D1. The first operation could burn the only job on an untested unpickler allowlist. (Defect, must fix before launch.)**\n- `SavedCodec` (`S11c_d_radiating_feasibility.py:42-47`) only admits classes from `sympy`, `numpy`, `builtins` and `collections`.\n- The first thing restored is `unitMap` (worker `:225`), which is `reference-threshold-candidates.pickle` (`inputs.json:35-40`).\n- The finish script put `Poly` objects into that packet: `realAxisAnalysis` contains `Poly` over `QQ_I` and `QQ` (`S11c_d_frequency_source_finish.py:18-21, 31, 86`).\n- If gmpy2 or python-flint is installed, those polynomials pickle as `gmpy2.mpq` or `flint.*` classes. The allowlist rejects them, and the job fails before any science.\n- Preparation explicitly restored nothing, so this path has never been tested.\n- The unit map is not used in any calculation; it only gets a length check at `:228`.\n- Fix, either of:\n  - list the GLOBAL opcodes of all four pickles with `pickletools.genops` (a mechanical lookup with no restoration), or\n  - restore the three pencils first and the unit packet last, or take the units from saved JSON.\n- The packet contains no instrument test on a synthetic 5×5 pencil, so any other runtime bug would also cost the single job.\n\n**D2. Threshold and grazing points are not detected. (Defect in claim labelling, question 2.)**\n- `:185` flags `UNRESOLVED_BRANCH_OR_THRESHOLD` only when `q2==0` exactly at the interval midpoint. With `eps=1e-45` intervals this almost never happens.\n- So a candidate within 1e-45 of the band edge |k|=1/5 (where `q_rad² = 4−100k²`, `A12_scope:25`) gets treated as an ordinary point.\n- Its `bulkAtThisEndMode` label (`:192`) then comes from the sign at the midpoint.\n- The plan (`:23-24`) says these endpoints need the c1 grazing qualification.\n- Fix: an exact test per interval, e.g. `gcd(common, numer(radicalSquare))`, or `count_roots` of the q² numerator on the interval. Both are cheap.\n\n**D3. The thickness classification mixes in a non-thickness field. (Claim defect, keeps A11 distinct.)**\n- `:208` sums the nullspace norm over field indices (3,4).\n- The saved state is `(u1,u2,u3,theta,eW)` with rows closing U, THETA, E_W (`centre_claim_disposition.md:29-30`). Index 3 is theta (densification), not thickness.\n- As a result, `NONZERO_AT_DIAGNOSTIC_PRECISION` can be triggered by theta alone. In a coupled pencil almost every candidate will be nonzero.\n- This is not the source's thickness-like selector; that lives in `continuum_currents` and is not in this packet.\n- Fix: emit per-field norms for all five fields and drop the combined \"thickness\" classification.\n\n**D4. The corruption control cannot fail. (Defect in the control, not in the physics.)**\n- `:214-221` adds 1 to the scaled matrix at column `argmax(score)` and multiplies by the same orthonormal basis.\n- The movement is then `‖basis[column,:]‖ ≥ sqrt(nullity/5) ≥ 0.447` by construction.\n- So the `require` at `:245` always passes. By the same logic, the remainder check at `:239` is an identity for a gcd.\n- Fix: either relabel both as wiring checks, or corrupt one entry before the determinant/elimination and emit the changed common polynomial.\n\n**P1. Unproved premise: the pencil's frequency dependence is certified only at ω=1. (State it; do not rerun producers.)**\n- End pencils are checked only against the ω=1 seed (`frequency_source.py:176-177, 184`).\n- The reduced sources, by contrast, got a second-frequency 11/10 freeze control (`:132-133`); the end pencils got none.\n- A freeze would produce wrong-but-consistent roots at ω=3.\n- Cheap read-only mitigation after the run:\n  - compare the emitted `radicalSquare` with the independent `4−100k²`;\n  - check that the saved bound matrix carries live ω factors such as `1/(1−3i/10)`.\n\n**Parts that are correct:**\n- Full 5×5 determinant with row-denominator clearing: it matches the saved helper (`saved-pencil-source-excerpt.txt:41-53`).\n- Resultant with the quadratic relation: this covers both sheets.\n- Real/imaginary GCD with exact rationals: this is the right necessary test for real k, and amendment `:560` requires real-normal-wavenumber channels.\n- Real-root isolation with a count check.\n- Denominator filtering.\n- Complete numerical nullspace from the SVD, including degenerate nullity.\n- The persist-before-guard journal, the 840 s native / 900 s guard stop, containment verification, pre/post hashes, and no retry.\n\n**Principal lift (question 2):** justified for ω>0 by the included sources.\n- `analytic()` sets sign(ω)→1 and uses principal `sp.sqrt` (excerpt `:6, :14`).\n- c1 uses `exp(i R q sign ω)` with q>0 (`c1-c2-literal-evidence.txt:6,9`).\n- So q>0 is outgoing and +i|q| is decaying, consistent with ω+i0.\n- The labels at `:192` are kinematic only. Nothing in the worker claims flux (`:251, :254`), which is honest.\n\n**Optional improvements:**\n- Process LEFT and RIGHT before REFERENCE so a timeout still leaves the physical ends.\n- Emit all complex roots of the resultant as mechanism context (amendment `:534-542`), without reclassifying any as channels.\n\n## Decision (questions 3–4)\n\n**Existing evidence does not answer A11 at ω=3.** It shows zero open thickness directions at ω=1 (amendment `:500`) and gives k=0 candidates near 0.274 and ±√5. It does not show whether a real thickness-like channel exists at ω=3. The diagnostic is therefore the cheapest way to settle the necessary condition, and a negative result would save the whole pilot. **Go after D1–D4 are fixed. No second frequency.**\n\n**Existing evidence does settle the pilot's cost class, whatever the run shows.**\n- At ω=3 the outgoing prescription's `sqrt(a+b k_n²)`, which assumed a,b>0, gets real branch points at k=±1/5. That needs continuous contributions there plus a propagating-bulk current normalization (`A12_scope:57-66`).\n- Under amendment `:529-531`, that is a new boundary/continuum element, which triggers a scope/build stop.\n- Restricting the calculation to channels with |k|>1/5 would be a branch choice. It does not remove the branch-point integral from the response, so it is not a cheap rerun.\n\n**What transfers from the ω=1 work:**\n- the frequency-live sources and pencils;\n- the actions, units and grades;\n- the Fourier/PV design of the outgoing prescription;\n- the c1/c2 flux operands and face maps, as restricted starting points.\n\n**What does not transfer:** the ω=1 inverse, poles, residues, end lifts and decaying-bulk certificates.\n\n**Minimum missing objects for one pilot:**\n1. Real incoming transverse and outgoing thickness-like channels on LEFT and RIGHT, with their J_T/J_H end currents in the bulk-open band.\n2. The branch-point/continuous contribution in the outgoing representation.\n3. All 80 frequency-dependent rows bound at ω=3, including a chosen continuation for the 80 nonanalytic records (`frequency_source_report:12-13`).\n4. The two-asymptote response method, which is still unplanned (`outgoing_report:119-127`).\n5. The A12 bulk-flux contraction beyond c1's restricted three-term version, plus the incident denominator.\n6. One comparison.\n\n**Measured historical costs (for reference, not a forecast):**\n\n| Run | Time | Memory |\n|---|---|---|\n| Closed-slice outgoing constructor (block-16 adjugate derivative alone: 3344 s) | 3394 s | 127 MiB |\n| Reference inverse | ~19 s | – |\n| End-spectrum checks | 19–26 s | – |\n| Frequency-source finish | 60 s | – |\n| A9 reader | 18 s | 124 MB |\n\n**My judgment, with low confidence (easily off by 3× or more):**\n- **Effort:** about 4–8 build + two-leg review cycles, i.e. 1–3 weeks of calendar time.\n- **Runtime of one pilot:** 1–4 h on the exact-symbolic route under the current containment, or minutes on a numerical-quadrature route. The numerical route is a method change that needs its own review.\n- The packet cannot justify a tighter estimate.\n\n**Recommended next step:** run the revised diagnostic.\n- If LEFT or RIGHT has no real thickness-like channel, stop. Report it as no-go for this binding, with the mechanism unresolved.\n- If both ends have usable channels, bring the user the explicit scope choice: fund the branch-point/current element (items 2 and 5), or accept the reduced handoff \"closed-channel results; radiating leakage not established.\"\n\n## Still unproved or unreviewed\n\n- Any A11 or A12 clearance. None is given here.\n- Physical J_H/J_T currents at any radiating binding.\n- Completeness of the pencils' ω-dependence (P1).\n- c1 off-grazing validity over the band.\n- Admissibility of ω=3 within the retained-order domain.\n- The earlier locally modified outgoing, two-asymptote and thickness workers. They remain uncleared and are not repaired by this review.",
+      "runReceipt": {
+        "engine": "claude",
+        "sessionId": "fd07f9a4-6a65-4dc1-aa9d-4137fa0bc2a2",
+        "command": [
+          "/home/trevnorris/.local/bin/claude",
+          "--print",
+          "--output-format",
+          "json",
+          "--safe-mode",
+          "--restricted",
+          "--tools",
+          "Read,Glob,Grep",
+          "--allowedTools",
+          "Read,Glob,Grep",
+          "--permission-mode",
+          "dontAsk",
+          "--strict-mcp-config",
+          "--mcp-config",
+          "{\"mcpServers\":{}}",
+          "--setting-sources",
+          "",
+          "--disable-slash-commands",
+          "--session-id",
+          "fd07f9a4-6a65-4dc1-aa9d-4137fa0bc2a2"
+        ],
+        "cwd": "/var/projects/toy_physics/_scratch/s11c/s11c-d-radiating-feasibility-20260928/build-review/packet",
+        "startedUtc": "2026-09-28T18:55:52.606245+00:00",
+        "packetSha256": "5de2d5651be75deeb48a6d54c3c01c1dd086199691e8d9c015f802f17b419b26",
+        "promptSha256": "a36dbc1bb146d3fa68010cbd63100147998bc77c364beed478a711344286bfbb",
+        "scientificExecutionEnabled": false,
+        "reviewVerdict": "NOT_ADJUDICATED",
+        "pid": 456727,
+        "exitStatus": 0,
+        "finishedUtc": "2026-09-28T19:01:48.118716+00:00",
+        "wallSeconds": 355.5110277319327,
+        "outputSha256": "9cdf9d9e9a719db33bb61280a3ccf3640eec24f943e60e71f368414e7343205c",
+        "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderrBytes": 0
+      },
+      "originalOutput": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-radiating-feasibility-20260928/build-review/claude.json",
+        "bytes": 11082,
+        "sha256": "9cdf9d9e9a719db33bb61280a3ccf3640eec24f943e60e71f368414e7343205c"
+      },
+      "stderr": "",
+      "completionMetadata": {
+        "stop_reason": "end_turn",
+        "session_id": "fd07f9a4-6a65-4dc1-aa9d-4137fa0bc2a2",
+        "permission_denials": [],
+        "terminal_reason": "completed",
+        "is_error": false,
+        "num_turns": 23,
+        "subtype": "success",
+        "api_error_status": null
+      }
+    },
+    "grok": {
+      "literalVerdict": "NEEDS REVISION",
+      "literalTextField": "text",
+      "literalText": "I'll review this feasibility packet from the supplied sources only, starting with the index, worker, input manifest, and plan.The worker and plan are in. Next I’ll check the saved pencil convention, frequency-source construction, and the c1/c2 scope records against the diagnostic’s claims.**NEEDS REVISION**\n\nThe saved end pencils can support one necessary real-normal-momentum census at ω = 3, and the saved records do not already answer that end-channel question. This worker should not spend the single 900-second job. Three instrument defects change what that run could be claimed to show. Bulk kinematics above |ω| = √5 are already on record and are not an A11 or A12 result.\n\n## Material findings\n\n**1. The real/imaginary elimination is not tied back to the resultant.** `S11c_d_radiating_feasibility.py` lines 149–159 form `real, imag = resultant.as_real_imag()`, take their GCD over `QQ`, and lines 239–240 accept the factor once both division remainders are zero. Divisibility is true of every common divisor. The repaired selector for these same pencils, `S11c_d_frequency_source_finish.py` lines 16–37, requires the decomposition residual `expression - real - I*imag`, the Bézout residual, and `gcd == gcdex` before any real-root interval is trusted. This worker never builds those residuals. A bad split that still lies in `QQ[k]` would pass line 240 and change which real momenta are tested. The full-pencil determinant itself matches the saved helper: worker lines 136–147 and `saved-pencil-source-excerpt.txt` lines 42–52 (row cancel, denominator LCM, `domain-ge` determinant, cancel, fraction). Root isolation at lines 161–167 keeps every real root of the square-free common factor, with the degree-64 and 32-candidate caps failing closed after the operation is saved. Denominator and row-denominator probes at lines 188–194, and the later original-matrix SVD, are the right filters for clearing artifacts once the polynomial is actually the resultant.\n\n**2. The output labels the end radical as a bulk propagating or evanescent mode.** Line 192 sets `bulkAtThisEndMode` from the sign of `radicalSquare`. The saved radical unit is inverse time, `(0,-1,0)`, in `S11c_d_frequency_source.py` line 201, and the plan lines 58–59 keep that radical distinct from depth wavenumber. Bulk propagation is the separate acoustic normal root `q_out` of c1 §1b (`S11c_c1_SHARED_PHYSICS.md` lines 109–121), with the stated slice `q_depth² = ω²/100 - 1/20 - k_n²` in `S11c_d_A12_scope_cost_assessment.md` lines 22–31. A positive end-radical square is not that sign. The summary flags at worker lines 251–256 do keep incident current and outgoing flux false; the per-candidate bulk label undoes that separation.\n\n**3. The addressed corruption gate cannot fail for a normalized null basis.** Lines 213–221 add 1 at `(0, column)` for the largest basis mass and set `movement` to the change in `scaled * basis`. With mpmath’s square SVD, `A = U S V` and `V Vᴴ = I` (`mpmath/matrices/eigen_symmetric.py`, `svd_c` docstring), `v.H` is the correct right-vector side, so singular values and this basis orientation match. Each basis column is a unit vector, so the selected mass is at least 1/5 and `movement` is about 0.45. Line 245 then requires `movement > 1e-12`. The baseline residual computed at line 207 is saved and never required to be small. The gate tests that the selected component is nonzero, which the SVD normalization already gives. It does not test sensitivity of the zero.\n\nThe principal radical lift is justified only as a restoration of the saved positive-frequency germ. The excerpt lines 3–21 replace `sign(ω)` by `+1`, require the piecewise branches to join, and set `q²` equal to the base of the single half-power. Worker lines 122–125 and 187–188 rebuild that base and substitute `sqrt(radicalSquare)`. c1 §1b lines 109–113 states that boundedness does not select the radiation sign when the bulk normal wavenumber is real. `physicalWitnessEstablished: False` at line 184 is the honest status for flux. Threshold `q² = 0` and non-real `q²` stay `UNRESOLVED_BRANCH_OR_THRESHOLD` (lines 185–186). Imaginary `k` is not admitted. A numerical midpoint of an isolating interval of width `10⁻⁴⁵` (lines 163 and 181) is a probe of the root, and `REJECTED_ON_SELECTED_LIFT` means the scaled singular values at that midpoint on this germ sit at or above `10⁻¹²`.\n\nThe thickness label is a claim defect of the same family. The recorded five-field order is `(u1, u2, u3, theta, eW)` (`S11c_d_centre_claim_disposition.md` line 31). Lines 208–211 call rows 3 and 4 the thickness coordinate, which is `theta` and `eW` and leaves out `u3`. The attached scope sentence says this norm is not a flux selector. `NO_RESOLVED_THICKNESS_COMPONENT` still reads as a thickness-content result.\n\nRow scales use `max(1, row_norm)` (line 196), so rows smaller than 1 are not equilibrated and the `10⁻²⁵` cutoff is absolute in that frame. That is a limitation of the published threshold, not a separate blocker. The unit map is checked for five fields and saved (lines 225–229) and is not applied as a second numeric scaling.\n\n## What the saved evidence already answers\n\nAt the pinned `c_s0 = 10` and tangential momenta `(1/5, 1/10)`, the frequency-source report records bulk branch frequencies `±√5`, and the A12 assessment states `q_depth² = ω²/100 - 1/20 - k_n²`. For ω = 3 that formula gives `q_depth² = 1/25 - k_n²`, so a real bulk depth root exists only for `|k_n| < 1/5`. The ω = 1 slice is closed on the real normal line. The saved end candidates near 0.27386 and 0.27250 are zero-normal-momentum algebraic candidates with denominator and opposite-sheet artifacts, not a spectrum at ω = 3 (`S11c_d_frequency_source_report.md` lines 15–23). No saved current, including c1 `CONTROL_SURFACE_FLUX` / `FARFIELD_LIMIT` and the validated evanescent outgoing prescription, answers whether the 5×5 end pencil has a real normal kernel at ω = 3.\n\nThat census is the useful content of one revised diagnostic. A null result on the principal germ narrows A11 at this binding. A candidate zero still has to be placed against the existing `|k_n| < 1/5` window and the c1 §2b grazing conditions (`S11c_c1_SHARED_PHYSICS.md` lines 204–221): grazing is the strict `v_bulk_normal_0 = 0` result, and the endpoints `|k_n| = 1/5` are the bulk branch edge. No new boundary or current method is required to make that comparison, and none is required to decide the cost of the diagnostic.\n\n## Decision and pilot cost\n\nNo-go on launching this worker. Conditional go, after a local revision and its own clearance, on one guarded job only: the necessary real-`k` census of the three saved pencils at `LAB_HELD/RHO4_CONSTANT`, ω = 3, with the other pinned parameters unchanged. The revision is the decomposition/Bézout witness from `real_axis_analysis`, deletion of the bulk-mode label, and a corruption check that requires a small baseline residual and a residual that moves for a reason other than unit-vector mass. That is still one end-channel necessary condition. It is not permission for a response solve, a second frequency, or a sweep.\n\nNo-go on a radiating pilot until that census exists. The minimum objects still missing for one pilot, and one comparison, are:\n\n- A frequency-rebuilt outgoing branch on a real bulk `q_out`. The validated prescription uses a positive `sqrt(a + b k_n²)` with `a, b > 0` and decaying-bulk normalization (`S11c_d_A12_scope_cost_assessment.md` lines 57–65; outgoing report lines 15–16). Those certificates stop at the closed slice.\n- Incident-current normalization, kept distinct from an A11 end-channel current and an A12 depth flux.\n- One comparison at the claimed grade: face pressure and outward velocity against the saved closure, or power into the exterior against a far-field flux. c1’s saved flux is the first-shape flat–flat plus flat–scattered identity and has no scattered–scattered term (amendment lines 259–268). c2 supplies `REFERENCE_TRACE_MAP` and `NORMAL_JET` for this `DELTA_W` face specialization, not a finished bulk-current contraction (`S11c_d_A9_dependency_report.md` lines 20–21).\n\nMeasured historical cost, none of it this diagnostic: frequency-source final stage 60.37 s; A9 reader 18.448 s worker / 19.036 s guard, peak about 125 MB; closed reference inverse about 19 s and end-spectrum checks about 19–26 s, as stated in the A12 assessment; outgoing constructor 3394.435 s and about 133 MB, of which 3344.348 s was one block-16 adjugate derivative; its validator 3.930 s. The failed thickness run, 3.691 s, produced no transformed source.\n\nJudgment, separate from those measurements: the packet cannot price the pilot. The hour-scale outgoing assembly is the closest measured symbolic job, and the same records say it does not cover a radiating band. Repeating that assembly with real transition points is a new branch binding, not an ω edit of the ω = 1 matrix. Runtime uncertainty is at least a factor of a few around that hour, and authoring plus review are unmeasured. If the saved acoustic map cannot carry the branch, the amendment’s stop for a new boundary method applies. The revised census stays inside the already approved 900 s outer / 840 s native, 2 GiB, zero swap, one CPU, nice 15, 32 tasks, one thread. Exact resultant degree at fixed ω = 3 is not in the packet; the k = 0 eliminant was degree 22 with a degree-8 common factor, so a cap abort is possible and would be an unresolved stop, not an empty spectrum.\n\n## Persistence, containment, and what stays open\n\nOperation inputs and `started.json` are written before each call; value files and the readable JSON are written before the flag checks in `construct` (worker lines 54–72 and 108–110, 233–246). `containment()` runs before the SymPy import and requires `memory.max = 2147483648`, swap max 0, `pids.max = 32`, nice at least 15, one CPU, and the six thread variables equal to 1, then sets a 2 GiB address limit and an 840-second alarm (lines 75–93, 264–276). The guard has a non-blocking lock, refuses an active `s11c-guard-*` unit, and does not retry (guard lines 160–168 and 202–205). The supervisor does not retry; it also refuses to start unless the 2026-09-14 endpoint progress file ends at `endpoint_plan_complete` (supervisor lines 29–35). That is an existing launch latch, not a physics prerequisite. A timeout stores the incomplete operand and sets `automaticRetry` false. No scientific payload was restored for this review (`packet-index.json`, `scientificPayloadsRestored: 0`), and this worker was not executed.\n\nUnproved, and not cleared here: A11, A12, admissibility of ω = 3, c1’s carried cross-engine debts, the radiating meaning of the evanescent outgoing prescription, scattered–scattered flux, and the failed localized thickness transform. The earlier outgoing, two-asymptote, and thickness workers are not repaired or accepted by this review. Independent centre mechanics is not a prerequisite for this five-field `DELTA_W` question, and it is not established for any larger system.",
+      "runReceipt": {
+        "engine": "grok",
+        "sessionId": "e88a3329-6d3d-4188-aaf7-0455ff6a4d26",
+        "command": [
+          "/home/trevnorris/.local/bin/grok",
+          "--cwd",
+          "/var/projects/toy_physics/_scratch/s11c/s11c-d-radiating-feasibility-20260928/build-review/packet",
+          "--prompt-file",
+          "/var/projects/toy_physics/_scratch/s11c/s11c-d-radiating-feasibility-20260928/build-review/packet/review-prompt.md",
+          "--output-format",
+          "json",
+          "--permission-mode",
+          "dontAsk",
+          "--no-plan",
+          "--tools",
+          "Read",
+          "--no-subagents",
+          "--disable-web-search",
+          "--verbatim",
+          "--session-id",
+          "e88a3329-6d3d-4188-aaf7-0455ff6a4d26"
+        ],
+        "cwd": "/var/projects/toy_physics/_scratch/s11c/s11c-d-radiating-feasibility-20260928/build-review/packet",
+        "startedUtc": "2026-09-28T19:01:48.166852+00:00",
+        "packetSha256": "5de2d5651be75deeb48a6d54c3c01c1dd086199691e8d9c015f802f17b419b26",
+        "promptSha256": "a36dbc1bb146d3fa68010cbd63100147998bc77c364beed478a711344286bfbb",
+        "scientificExecutionEnabled": false,
+        "reviewVerdict": "NOT_ADJUDICATED",
+        "pid": 466180,
+        "exitStatus": 0,
+        "finishedUtc": "2026-09-28T19:18:52.915782+00:00",
+        "wallSeconds": 1024.747324193013,
+        "outputSha256": "cdb0810620fa5b26eb4ef876e7e8c211cc05b48f711c9d15b3536c29e82fc665",
+        "stderrSha256": "3340570ea087b4548c672383f1c2306aad9b59dd346a76ee7304c451e63e60cc",
+        "stderrBytes": 1431
+      },
+      "originalOutput": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-radiating-feasibility-20260928/build-review/grok.json",
+        "bytes": 41172,
+        "sha256": "cdb0810620fa5b26eb4ef876e7e8c211cc05b48f711c9d15b3536c29e82fc665"
+      },
+      "stderr": "\u001b[2m2026-09-28T19:01:48.530302Z\u001b[0m \u001b[33m WARN\u001b[0m plugin name collision resolved by scope precedence \u001b[3mplugin_name\u001b[0m\u001b[2m=\u001b[0mfrontend-design \u001b[3mwinner\u001b[0m\u001b[2m=\u001b[0m/home/trevnorris/.claude/plugins/marketplaces/claude-plugins-official/plugins/frontend-design \u001b[3mloser\u001b[0m\u001b[2m=\u001b[0m/home/trevnorris/.claude/plugins/cache/claude-plugins-official/frontend-design/fbe07fb6ce7d\n\u001b[2m2026-09-28T19:01:48.552138Z\u001b[0m \u001b[33m WARN\u001b[0m plugin name collision resolved by scope precedence \u001b[3mplugin_name\u001b[0m\u001b[2m=\u001b[0mfrontend-design \u001b[3mwinner\u001b[0m\u001b[2m=\u001b[0m/home/trevnorris/.claude/plugins/marketplaces/claude-plugins-official/plugins/frontend-design \u001b[3mloser\u001b[0m\u001b[2m=\u001b[0m/home/trevnorris/.claude/plugins/cache/claude-plugins-official/frontend-design/fbe07fb6ce7d\n\u001b[2m2026-09-28T19:01:48.629656Z\u001b[0m \u001b[33m WARN\u001b[0m hooks: skipped unrecognized event names (check for typos) \u001b[3mfile\u001b[0m\u001b[2m=\u001b[0m/home/trevnorris/.claude/settings.json \u001b[3mskipped\u001b[0m\u001b[2m=\u001b[0m[\"PermissionRequest\"]\n\u001b[2m2026-09-28T19:01:48.630181Z\u001b[0m \u001b[33m WARN\u001b[0m hook loading from settings file: failed to parse hook file /home/trevnorris/.cursor/hooks.json: invalid matcher groups for event 'beforeSubmitPrompt': missing field `hooks`\n\u001b[2m2026-09-28T19:01:48.630281Z\u001b[0m \u001b[33m WARN\u001b[0m hook loading error \u001b[3merror\u001b[0m\u001b[2m=\u001b[0mParseFile { path: \"/home/trevnorris/.cursor/hooks.json\", detail: \"invalid matcher groups for event 'beforeSubmitPrompt': missing field `hooks`\" }\n",
+      "completionMetadata": {
+        "stopReason": "end_turn",
+        "sessionId": "e88a3329-6d3d-4188-aaf7-0455ff6a4d26",
+        "num_turns": 19
+      }
+    }
+  },
+  "verification": {
+    "packetArchiveMembersSourceHashesMatch": true,
+    "inputRecordsVerified": 9,
+    "reviewPromptAndOutputHashesMatch": true,
+    "sequentialIndependentReviewProcesses": true,
+    "reviewTransportHelpersUnchanged": true,
+    "bothLiteralReportsReadBeforeDisposition": true,
+    "grokStderrDisposition": "1431 bytes: plugin-name collision and local settings/hook warnings; completed substantive report with end_turn. Retained, not described as empty.",
+    "coordinatorStderrBytes": 0,
+    "watcherStderrBytes": 0,
+    "protectedSuffixUnchanged": true
+  },
+  "runtimeReceipts": {
+    "state.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-radiating-feasibility-20260928/build-review/state.json",
+      "bytes": 6481,
+      "sha256": "8be44b1a9e476d18d642c218f61afa6c7defd8c2d58182c901823cf7d5d985ae"
+    },
+    "coordinator-outcome.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-radiating-feasibility-20260928/build-review/coordinator-outcome.json",
+      "bytes": 145,
+      "sha256": "209a9f39c943d35add29b543dae81165cc44174c88ac1889a80d895d02ce925b"
+    },
+    "launch.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-radiating-feasibility-20260928/build-review/launch.json",
+      "bytes": 407,
+      "sha256": "f9301f19da2f273c892296ab7f4d0f127e037c144ed59b85146ec91147ca48cf"
+    },
+    "static-review.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-radiating-feasibility-20260928/build-review/static-review.json",
+      "bytes": 1310,
+      "sha256": "144da10d659407d262c8e5c79ec858f8f9f3693b69d86cd92604dcc31b29038c"
+    },
+    "explicit-packet-approval.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-radiating-feasibility-20260928/build-review/explicit-packet-approval.json",
+      "bytes": 2138,
+      "sha256": "3340d1b0d6092366ad5b8051b2f2fe65e3783247e9f04852c96b185768166db0"
+    },
+    "completion-watcher/state.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-radiating-feasibility-20260928/build-review/completion-watcher/state.json",
+      "bytes": 503,
+      "sha256": "7c8dd8c4ac0513ad6395b7d74dba5146e673fb511e1da9ad07d679a092fd38ba"
+    },
+    "packet/packet-index.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-radiating-feasibility-20260928/build-review/packet/packet-index.json",
+      "bytes": 5056,
+      "sha256": "4f4a6ca05757f0edda4f0b6be5b46dd97dc794e09a16efcb9df1b2748884a794"
+    },
+    "packet/review-prompt.md": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-radiating-feasibility-20260928/build-review/packet/review-prompt.md",
+      "bytes": 3674,
+      "sha256": "a36dbc1bb146d3fa68010cbd63100147998bc77c364beed478a711344286bfbb"
+    }
+  },
+  "opcodeOnlyInspection": {
+    "unitMap": {
+      "inputSha256": "11bd9fd52171e3eddb292e21dc9af91b5f46d782a7eeca007ade090ed10de52f",
+      "globals": [
+        {
+          "offset": 84,
+          "module": "sympy.matrices.immutable",
+          "name": "ImmutableDenseMatrix"
+        },
+        {
+          "offset": 117,
+          "module": "sympy.core.numbers",
+          "name": "Integer"
+        },
+        {
+          "offset": 159,
+          "module": "sympy.core.containers",
+          "name": "Tuple"
+        },
+        {
+          "offset": 185,
+          "module": "sympy.core.add",
+          "name": "Add"
+        },
+        {
+          "offset": 200,
+          "module": "sympy.core.numbers",
+          "name": "Rational"
+        },
+        {
+          "offset": 234,
+          "module": "sympy.core.mul",
+          "name": "Mul"
+        },
+        {
+          "offset": 252,
+          "module": "sympy.core.numbers",
+          "name": "NegativeOne"
+        },
+        {
+          "offset": 282,
+          "module": "sympy.core.power",
+          "name": "Pow"
+        },
+        {
+          "offset": 313,
+          "module": "sympy.core.symbol",
+          "name": "Symbol"
+        },
+        {
+          "offset": 411,
+          "module": "sympy.core.numbers",
+          "name": "Zero"
+        },
+        {
+          "offset": 446,
+          "module": "sympy.core.numbers",
+          "name": "ImaginaryUnit"
+        },
+        {
+          "offset": 728,
+          "module": "sympy.core.numbers",
+          "name": "One"
+        },
+        {
+          "offset": 5593,
+          "module": "sympy.core.numbers",
+          "name": "Half"
+        },
+        {
+          "offset": 6422,
+          "module": "sympy.polys.polytools",
+          "name": "Poly"
+        }
+      ],
+      "allReferencedModulesAdmittedByCurrentAllowlist": true,
+      "restored": false
+    },
+    "REFERENCE": {
+      "inputSha256": "c8854229394c52ce38c399b0f7dec6befba27aa5182ceecb6bd44362d6043764",
+      "globals": [
+        {
+          "offset": 77,
+          "module": "sympy.matrices.immutable",
+          "name": "ImmutableDenseMatrix"
+        },
+        {
+          "offset": 110,
+          "module": "sympy.core.numbers",
+          "name": "Integer"
+        },
+        {
+          "offset": 152,
+          "module": "sympy.core.containers",
+          "name": "Tuple"
+        },
+        {
+          "offset": 178,
+          "module": "sympy.core.add",
+          "name": "Add"
+        },
+        {
+          "offset": 193,
+          "module": "sympy.core.numbers",
+          "name": "Rational"
+        },
+        {
+          "offset": 227,
+          "module": "sympy.core.mul",
+          "name": "Mul"
+        },
+        {
+          "offset": 245,
+          "module": "sympy.core.numbers",
+          "name": "NegativeOne"
+        },
+        {
+          "offset": 275,
+          "module": "sympy.core.power",
+          "name": "Pow"
+        },
+        {
+          "offset": 306,
+          "module": "sympy.core.symbol",
+          "name": "Symbol"
+        },
+        {
+          "offset": 512,
+          "module": "sympy.core.numbers",
+          "name": "ImaginaryUnit"
+        },
+        {
+          "offset": 1008,
+          "module": "sympy.core.numbers",
+          "name": "One"
+        },
+        {
+          "offset": 6060,
+          "module": "sympy.core.numbers",
+          "name": "Zero"
+        },
+        {
+          "offset": 6079,
+          "module": "sympy.core.numbers",
+          "name": "Half"
+        }
+      ],
+      "allReferencedModulesAdmittedByCurrentAllowlist": true,
+      "restored": false
+    },
+    "LEFT": {
+      "inputSha256": "67148025b209f7171b7679249c075c6e68b76882ac6ac5adfffed4eb2766211a",
+      "globals": [
+        {
+          "offset": 77,
+          "module": "sympy.matrices.immutable",
+          "name": "ImmutableDenseMatrix"
+        },
+        {
+          "offset": 110,
+          "module": "sympy.core.numbers",
+          "name": "Integer"
+        },
+        {
+          "offset": 152,
+          "module": "sympy.core.containers",
+          "name": "Tuple"
+        },
+        {
+          "offset": 178,
+          "module": "sympy.core.add",
+          "name": "Add"
+        },
+        {
+          "offset": 193,
+          "module": "sympy.core.numbers",
+          "name": "Rational"
+        },
+        {
+          "offset": 227,
+          "module": "sympy.core.mul",
+          "name": "Mul"
+        },
+        {
+          "offset": 245,
+          "module": "sympy.core.numbers",
+          "name": "NegativeOne"
+        },
+        {
+          "offset": 275,
+          "module": "sympy.core.power",
+          "name": "Pow"
+        },
+        {
+          "offset": 306,
+          "module": "sympy.core.symbol",
+          "name": "Symbol"
+        },
+        {
+          "offset": 512,
+          "module": "sympy.core.numbers",
+          "name": "ImaginaryUnit"
+        },
+        {
+          "offset": 1008,
+          "module": "sympy.core.numbers",
+          "name": "One"
+        },
+        {
+          "offset": 6246,
+          "module": "sympy.core.numbers",
+          "name": "Half"
+        },
+        {
+          "offset": 6280,
+          "module": "sympy.core.numbers",
+          "name": "Zero"
+        }
+      ],
+      "allReferencedModulesAdmittedByCurrentAllowlist": true,
+      "restored": false
+    },
+    "RIGHT": {
+      "inputSha256": "0fe2cccd0b9c08f57666530b2519dff26e8dee633058aae85d3d7f4b89ec029d",
+      "globals": [
+        {
+          "offset": 77,
+          "module": "sympy.matrices.immutable",
+          "name": "ImmutableDenseMatrix"
+        },
+        {
+          "offset": 110,
+          "module": "sympy.core.numbers",
+          "name": "Integer"
+        },
+        {
+          "offset": 152,
+          "module": "sympy.core.containers",
+          "name": "Tuple"
+        },
+        {
+          "offset": 178,
+          "module": "sympy.core.add",
+          "name": "Add"
+        },
+        {
+          "offset": 193,
+          "module": "sympy.core.numbers",
+          "name": "Rational"
+        },
+        {
+          "offset": 227,
+          "module": "sympy.core.mul",
+          "name": "Mul"
+        },
+        {
+          "offset": 267,
+          "module": "sympy.core.power",
+          "name": "Pow"
+        },
+        {
+          "offset": 298,
+          "module": "sympy.core.symbol",
+          "name": "Symbol"
+        },
+        {
+          "offset": 506,
+          "module": "sympy.core.numbers",
+          "name": "ImaginaryUnit"
+        },
+        {
+          "offset": 943,
+          "module": "sympy.core.numbers",
+          "name": "NegativeOne"
+        },
+        {
+          "offset": 1074,
+          "module": "sympy.core.numbers",
+          "name": "One"
+        },
+        {
+          "offset": 5453,
+          "module": "sympy.core.numbers",
+          "name": "Half"
+        },
+        {
+          "offset": 13386,
+          "module": "sympy.core.numbers",
+          "name": "Zero"
+        }
+      ],
+      "allReferencedModulesAdmittedByCurrentAllowlist": true,
+      "restored": false
+    }
+  },
+  "opcodeInspectionScope": "pickletools.genops; resolve literal/memo module names only. No pickle restoration, reducer/class call, scientific import or calculation.",
+  "scientificJobsUsed": 0,
+  "maximumScientificJobs": 1,
+  "scientificGateCreated": false,
+  "reviewedSourceChanged": false,
+  "reviewRerun": false,
+  "independentClearance": false,
+  "completionEventHandled": true,
+  "reviewerEstimate": {
+    "claude": {
+      "calendar": "1–3 weeks",
+      "symbolicPilotRuntime": "1–4 hours",
+      "confidence": "Low; reviewer says easily off by 3x or more. Numerical-route minutes conjectural and a different method.",
+      "reviewCycles": "4–8 suggested by reviewer; not adopted as a requirement or work queue."
+    },
+    "grok": {
+      "calendar": "Not defensibly priced from this packet",
+      "symbolicPilotRuntime": "Hour-scale historical comparator, uncertainty at least a factor of a few; no measured radiating run."
+    },
+    "adoptedDecision": "No defensible cheap-pilot commitment. Substantial branch/flux work remains. These are review judgments, not measured cost, schedule or authorization."
+  }
+}

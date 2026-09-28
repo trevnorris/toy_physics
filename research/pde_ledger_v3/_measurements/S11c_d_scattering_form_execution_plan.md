@@ -1,27 +1,27 @@
 # S11c-d: the remaining execution queue
 
-**Approved feasibility goal, initial reviews running (2026-09-28):** the user said
-“sounds good. proceed then get back with me” to one independently reviewed
-feasibility diagnostic and at most one 15-minute guarded run, followed by a
-go/no-go and cost estimate. The [concrete plan](S11c_d_radiating_feasibility_plan.md)
-and worker are prepared using three small saved frequency-live pencils and
-their saved unit map. One omega=3 diagnostic binding, with other physical
-parameters unchanged, tests necessary channel conditions without claiming
-physical current or A11/A12 acceptance. No response construction or scan is
-authorized. Substantive review blockers stop this bounded task rather than
-start an automatic correction/review loop.
+**Feasibility decision complete; construction stopped (2026-09-28):** both
+initial independent reports returned **NEEDS REVISION**. The
+[decision and cost report](S11c_d_radiating_feasibility_decision.md) records a
+no-go on the submitted diagnostic and on treating a radiating pilot as a cheap
+continuation. No scientific job was used. Confirmed diagnostic claim/control
+findings remain unresolved; the reviewed worker and packet are unchanged.
+The approved goal stops here rather than starting a repair/review cycle.
 
-The user explicitly approved sending the fixed 21-file / 304,138-byte packet
-to Claude and Grok with “you have permission.” That resolves the earlier
-automatic approval rejection, which remains in the
-[preparation record](S11c_d_radiating_feasibility_preparation.json). The unchanged
-packet was submitted once on September 28 at 18:55 UTC. The local completion
-hook armed before Claude started; Grok follows sequentially and independently.
-No scientific job has started. Wait for the hook and both literal reports
-before adjudicating or changing reviewed source. Applicable independent
-clearance is required before using the already approved one-job scope; if
-source evidence suffices or a substantive blocker appears, return the decision
-and cost without launching science or an automatic review/repair cycle.
+Existing sources permit a bulk kinematic band at omega=3 but establish neither
+an admissible flux-carrying A11 end-channel witness nor complete A12 bulk flux.
+Radiating branch contributions, physical currents and a coupled response remain
+missing. Claude offered a low-confidence 1–3-week / 1–4-hour symbolic-pilot
+estimate; Grok found the pilot insufficiently priced. These are judgments,
+not a measured runtime, fixed schedule or new task queue. The recommendation
+is an explicit reduced handoff if the user wants to move on; that scope change
+has not been made and S11c-d/A11/A12 are not marked complete.
+
+The [review record](S11c_d_radiating_feasibility_review_record.json) preserves
+both literal texts and verified receipts. The unchanged 21-file packet was
+submitted once after explicit permission. Both reports and the silent hook
+finished; this completion event is handled. No scientific gate, repair,
+resubmission, retry or ongoing job was created. Scratch remains ignored.
 
 **Current stop (2026-09-28, after resumed thickness attempt):** the user raised
 the priority of nonempty A11/A12 coverage and repaired-build review. The

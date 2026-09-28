@@ -1,5 +1,32 @@
 # S11c-d: the remaining execution queue
 
+**Channel-map/Born preparation reviews complete; user decision pending
+(2026-09-28):** Claude literally returned **CLEAR FOR THIS PREPARATION
+AMENDMENT**; Grok returned **NEEDS REVISION** for two focused text clarifications.
+The [disposition](S11c_d_channel_map_born_review_disposition.md) preserves both
+verdicts, checks their findings and gives exact proposed replacement wording.
+The reviewed draft is unchanged and not represented as independently cleared.
+No implementation, scientific job or automatic review rerun has started.
+
+Both reviews support the symbolic baseline-zero interpretation and the
+recorded four-case/twelve-background zero coupling evidence at the approved
+endpoints, without shared-current or global-domain claims. Both confirm live
+tangential variables in the raw end symbols. Keep the user's preferred bounded
+2D map and fixed-momentum fallback if it is not cheap. A saved grade-coefficient
+comparison is a possible closed-domain anchor; no achieved Born/full accuracy
+or open-leakage anchor is inferred. Reuse saved contrast-halving operands first
+if a later reviewed consumer needs them; do not replay their solves.
+
+Recommendation is a conditional go for the map route, with Born magnitudes
+conditional and bulk power held until an actual exterior solved-state flux map
+is established. The bundled “premises checked” label and the bulk-map description
+need the focused clarification recorded in the disposition. Source binding is
+plausibly small; 2D classification and bulk-power costs remain unmeasured.
+Stop here for the user's go/no-go as requested, even though one reviewer cleared
+preparation. The [canonical review record](S11c_d_channel_map_born_review_record.json)
+contains literal texts and verified receipts. The local hook finished; the
+completion event is handled. Scratch stays ignored and prior failures remain.
+
 **Feasibility decision complete; construction stopped (2026-09-28):** both
 initial independent reports returned **NEEDS REVISION**. The
 [decision and cost report](S11c_d_radiating_feasibility_decision.md) records a

@@ -1,0 +1,135 @@
+{
+  "status": "PREPARATION_REVIEWS_COMPLETE_NEEDS_REVISION_STOP_FOR_USER",
+  "recordedUtc": "2026-09-28T19:47:17.189911+00:00",
+  "reviewRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-d-channel-map-born-20260928/build-review",
+  "packetSha256": "03e7c9c06c2ff5cc5a383f8a254b6b039f9bfb656ad223c95dca60def4438804",
+  "archiveSha256": "8bb9dda4b0eba8450e00dbb6277c075eef7a1f528cdb7836a3b4de08b17434f0",
+  "packetFiles": 17,
+  "packetBytes": 336619,
+  "authorization": {
+    "status": "EXPLICITLY_APPROVED_FIXED_PACKET",
+    "recordedUtc": "2026-09-28T19:47:17.189911+00:00",
+    "userInstruction": "Map the (omega, k_parallel) plane, restricted to where the incident transverse channel is open, if the saved end pencils are live in k_parallel (please confirm which). Both options you listed are slices of that plane. If k_parallel is not live, use option 1 (saved k_parallel fixed), and state in the result that conclusions hold only at that k_parallel. Report where thickness-like channels and bulk radiation open, separately. Prepare only; stop for go/no-go after the amendment's reviews.",
+    "authorizationContext": "User clarified the proposed channel-map/Born amendment and explicitly requested the stop after its two reviews. Submit this preparation amendment to the specified independent Claude/Grok legs; no physics or implementation launch.",
+    "packetSha256": "03e7c9c06c2ff5cc5a383f8a254b6b039f9bfb656ad223c95dca60def4438804",
+    "archiveSha256": "8bb9dda4b0eba8450e00dbb6277c075eef7a1f528cdb7836a3b4de08b17434f0",
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "packetFiles": 17,
+    "packetBytes": 336619,
+    "scope": "One initial pair of independent document reviews; no scientific job, method implementation, review rerun or peer sharing.",
+    "currentThread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+    "externalSubmissionReview": {
+      "status": "REJECTED_BEFORE_PROCESS_START",
+      "recordedUtc": "2026-09-28T19:49:02.079693+00:00",
+      "reason": "The action externally sends a new 17-file source/amendment packet, potentially containing sensitive internal material, to Claude and Grok; the user authorized preparing and reviewing the amendment but did not explicitly authorize this exact payload to those external destinations.",
+      "destinations": [
+        "Claude",
+        "Grok"
+      ],
+      "explicitPayloadDestinationQuestionAsked": true,
+      "packetSent": false,
+      "workaroundOrRetry": false
+    },
+    "explicitExternalPermission": {
+      "userInstruction": "you have permission",
+      "questionApproved": "May I send the prepared 17-file, 322 KB amendment/source packet to Claude and Grok for the two reviews?",
+      "userRequestedAdditions": "Add points 1 and 3 as questions before submission: symbolic versus pointwise baseline zeros and other cases; contrast scaling and an explicitly unanchored leading-order outcome. Keep prepare only; no scientific launch.",
+      "destinations": [
+        "Claude",
+        "Grok"
+      ],
+      "recordedUtc": "2026-09-28T19:55:25.041686+00:00",
+      "priorPreparedPacketSha256": "0a035eb64a4c76f8a3749bf6c050427f650f213f9c2e09e06b414548afe46d25",
+      "finalPacketSha256": "03e7c9c06c2ff5cc5a383f8a254b6b039f9bfb656ad223c95dca60def4438804",
+      "scope": "One pair of fresh independent amendment reviews. Stop after reports for user go/no-go. No scientific job or duplicate submissions."
+    }
+  },
+  "static": {
+    "status": "DOCUMENT_PACKET_ONLY_NO_SCIENCE",
+    "runnerSha256": "ebe143f5060b5942dd81a2cfaa966ba1d8922b3b9de6298bee8ce01774ad483e",
+    "launcherSha256": "f530d22e0933eecc5b2712ee949e17702ea82027907c619e07f6d47e626bdb9e",
+    "completionMessageSha256": "67e43e0fe76c7ad58e29306f7f102ae0e188992f0f96f0dc47ae59ce66202ae9",
+    "syntaxPass": true,
+    "transportChanges": "Only task-root and runner paths changed from existing sequential read-only review templates.",
+    "scientificCalls": 0,
+    "peerReportsIncluded": false
+  },
+  "scientificJobsAuthorized": 0,
+  "scientificJobsUsed": 0,
+  "stopAfterReviewsForUserGoNoGo": true,
+  "scratchCommitAllowed": false,
+  "submissionReview": {
+    "status": "REJECTED_BEFORE_PROCESS_START",
+    "recordedUtc": "2026-09-28T19:49:02.079693+00:00",
+    "reason": "The action externally sends a new 17-file source/amendment packet, potentially containing sensitive internal material, to Claude and Grok; the user authorized preparing and reviewing the amendment but did not explicitly authorize this exact payload to those external destinations.",
+    "destinations": [
+      "Claude",
+      "Grok"
+    ],
+    "explicitPayloadDestinationQuestionAsked": true,
+    "packetSent": false,
+    "workaroundOrRetry": false
+  },
+  "previousPreparedPacket": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-channel-map-born-20260928/build-review/prepared-before-user-additions",
+    "packetSha256": "0a035eb64a4c76f8a3749bf6c050427f650f213f9c2e09e06b414548afe46d25",
+    "submitted": false,
+    "reasonPreserved": "Before user permission and requested question additions."
+  },
+  "submissionPreflight": {
+    "recordedUtc": "2026-09-28T19:55:25.041686+00:00",
+    "reviewedSourcePacketArchiveHashesMatch": true,
+    "noPriorReviewerProcessOrSubmission": true,
+    "sourceEvidenceOnly": true,
+    "allCaseSourceChecksAndFourPacketHashesMatch": true,
+    "noScientificRestorationOrCalculation": true,
+    "externalCommentaryOrPeerReportsIncluded": false
+  },
+  "launch": {
+    "jobPid": 532428,
+    "watcherPid": 532429,
+    "packetSha256": "03e7c9c06c2ff5cc5a383f8a254b6b039f9bfb656ad223c95dca60def4438804",
+    "reviewers": [
+      "Claude",
+      "Grok"
+    ],
+    "concurrentReviewWorkers": 1,
+    "scienceCalls": 0,
+    "runnerSha256": "ebe143f5060b5942dd81a2cfaa966ba1d8922b3b9de6298bee8ce01774ad483e",
+    "launcherSha256": "f530d22e0933eecc5b2712ee949e17702ea82027907c619e07f6d47e626bdb9e",
+    "startupRecordedUtc": "2026-09-28T19:56:35.236505+00:00",
+    "hookStartedUtc": "2026-09-28T19:55:42.320284+00:00",
+    "coordinatorStartedUtc": "2026-09-28T19:55:42.422485+00:00",
+    "claudeStartedUtc": "2026-09-28T19:55:42.428631+00:00",
+    "claudePid": 532434,
+    "claudeSessionId": "f8df299c-7587-40a6-aeec-be67f6853b19",
+    "hookArmedBeforeReview": true,
+    "startupStderrBytes": {
+      "coordinator.stderr": 0,
+      "watcher.stderr": 0,
+      "claude.stderr": 0
+    },
+    "grokStatusAtStartup": "QUEUED_SEQUENTIALLY",
+    "literalReportContentInspected": false,
+    "sourceAndPacketHashesMatchAfterLaunch": true
+  },
+  "completion": {
+    "recordedUtc": "2026-09-28T20:17:31.653041+00:00",
+    "completionEventHandled": true,
+    "literalVerdicts": {
+      "claude": "CLEAR FOR THIS PREPARATION AMENDMENT",
+      "grok": "NEEDS REVISION"
+    },
+    "reviewRecord": "S11c_d_channel_map_born_review_record.json",
+    "disposition": "S11c_d_channel_map_born_review_disposition.md",
+    "independentAmendmentClearance": false,
+    "reviewedDraftChanged": false,
+    "scientificJobsUsed": 0,
+    "implementationStarted": false,
+    "automaticReviewerRerun": false,
+    "next": "Return conditional map recommendation and two proposed text corrections; await user go/no-go. No science launch."
+  }
+}

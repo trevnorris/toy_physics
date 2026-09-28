@@ -1331,3 +1331,96 @@ to move on. That would be a scope decision, not completed S11c-d or established
 leakage. The omega=1 failure remains parked. Prior science/failures, review
 debts, Lean/S11_lean, shared guard and protected suffix remain unchanged;
 scratch runtime artifacts are not committed.
+
+## Cheaper channel-map/Born proposal prepared; submission blocked
+
+The user supplied Claude's channel-map/conditional-Born proposal and clarified
+a preference for a bounded (omega,k_parallel) map where an incident transverse
+channel is open, with fixed saved tangential momentum as the cheap fallback.
+Prepare only; stop after the amendment reviews for the user's go/no-go.
+The new draft and baseline assessment are linked at the top of the execution
+plan. Saved uniform-source results report K0/Kminus/Kplus zero in both directions
+for LAB_HELD/RHO4_CONSTANT with the approved endpoints. All 21 original artifacts,
+checks and transcript hashes and relevant source hashes match; no payload was
+restored. Source inspection distinguishes raw uniform-end symbols with live
+frequency/tangential components from frequency-live pencils with fixed
+(1/5,1/10) tangential inputs. A scalar k_parallel map needs a declared direction
+or a justified azimuthal symmetry. Zero baselines do not themselves clear §2;
+the saved omega=1 amplitudes near the reported resolution may limit validation.
+
+The exact initial amendment-review packet is 17 files / 322,481 bytes, SHA256
+`0a035eb64a4c76f8a3749bf6c050427f650f213f9c2e09e06b414548afe46d25`.
+Packet/archive/source identities and transport syntax passed. The attempted
+external submission was rejected by automatic approval review before process
+start: preparation/review intent does not supply its required explicit approval
+for this exact new source packet to Claude/Grok. The exact payload/destination
+question is pending. No reviewer, watcher or scientific process started;
+no workaround or retry was attempted. Do not rerun without that permission.
+Source, raw-result, Lean/S11_lean/shared-guard and protected-suffix bytes remain
+unchanged. Runtime packet/transport files stay in ignored scratch. Draft
+physics is not accepted or committed before the two requested reports finish.
+
+## Explicit permission and added questions; amendment reviews launched
+
+The user explicitly granted packet/destination permission and asked to add
+questions about symbolic versus pointwise baseline zeros, the other three
+cases, and contrast-scaling validation/an unanchored leading-order label.
+Those questions were added before submission. Read-only lookup also found the
+later accepted four-case end-source inventory: all twelve backgrounds report
+zero TH/HT nonzero-entry counts; four packet hashes and checks match. This
+extends the located baseline evidence, not physical channel/current equality
+or pilot scope. The packet includes exact report/inventory/source excerpts,
+not the external Claude commentary or any peer report. Existing saved halving
+checks are explicitly distinguished from the proposed Born/full comparison.
+
+The earlier prepared-but-unsent packet is preserved under
+`build-review/prepared-before-user-additions`. The final packet has 17 files /
+336,619 bytes, SHA256
+`03e7c9c06c2ff5cc5a383f8a254b6b039f9bfb656ad223c95dca60def4438804`.
+Automatic approval accepted the explicitly authorized submission. Coordinator
+PID 532428 and watcher PID 532429 launched; the hook armed before the fresh
+Claude session. Grok follows sequentially with no report sharing. Startup
+receipts/session identity and stderr sizes are in the preparation record;
+reviewed source and packet hashes still match. No report content was inspected.
+
+Stop after both amendment reports and return the scope recommendation for the
+user's go/no-go. No scientific job, new contrast value, implementation, duplicate
+review or automatic rerun is authorized. The rejected prior feasibility worker
+and omega=1 failures remain parked. Draft physics stays uncommitted until both
+reports; no scratch contents are committed. No model polling or recurring task.
+
+## Channel-map/Born amendment reviews complete; stop for user go/no-go
+
+Both requested reviews finished normally. Literal verdicts are Claude
+CLEAR FOR THIS PREPARATION AMENDMENT and Grok NEEDS REVISION. The
+[canonical record](S11c_d_channel_map_born_review_record.json) preserves complete
+report texts/run receipts and hash verification. The
+[disposition](S11c_d_channel_map_born_review_disposition.md) gives the conditional
+map recommendation, two exact proposed text corrections, and the unresolved
+anchor/bulk distinctions. No edit to the reviewed draft or assessment was made;
+no local disposition is called independent clearance.
+
+Both reviewers agree that the accepted baseline zeros are symbolic in live
+frequency/tangential variables and that the later inventory extends zero-coupling
+evidence to all twelve case/end backgrounds at the approved endpoints. Full
+symbols/current inputs remain case-specific. The raw saved symbols support
+preparing the user's preferred 2D route, with fixed-momentum fallback if costly.
+Claude suggests a saved grade-coefficient anchor; its achievable accuracy is
+not established. Grok correctly separates closed-domain checks from open leakage.
+Existing eta/sigma halving remainders are not the Born/full comparison and their
+solves are not queued for replay. A zero-face-drive simplification is a possible
+future source check, not a supplied bulk-flux result or new centre task.
+
+Grok requests a split status in place of “premises checked,” and an explicit
+exterior solved-state/flux-map requirement for bulk power. Proposed wording is
+in the disposition, not silently folded and called clear. No automatic rerun,
+implementation or scientific job follows. This is the requested preparation
+stop; return for user go/no-go. Scope/runtime estimates remain uncertain.
+
+All 17 packet files / 336,619 bytes, archive members, source/excerpt/helper,
+prompt, authorization and report hashes match. Claude/coordinator/watcher stderr
+is empty; Grok's 1,431-byte plugin/settings/hook warnings are preserved alongside
+its completed substantive report. The watcher finished and this event is handled.
+After both reports, preserve and commit the exact reviewed canonical draft with
+its outstanding findings and preparation/review records. Scratch stays ignored;
+Lean/S11_lean/shared guard/protected suffix and all prior failures remain intact.

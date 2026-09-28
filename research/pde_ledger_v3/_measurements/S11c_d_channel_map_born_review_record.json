@@ -1,0 +1,198 @@
+{
+  "status": "PREPARATION_REVIEWS_COMPLETE_NEEDS_REVISION_STOP_FOR_USER",
+  "recordedUtc": "2026-09-28T20:15:16.910624+00:00",
+  "packetSha256": "03e7c9c06c2ff5cc5a383f8a254b6b039f9bfb656ad223c95dca60def4438804",
+  "archiveSha256": "8bb9dda4b0eba8450e00dbb6277c075eef7a1f528cdb7836a3b4de08b17434f0",
+  "packetFiles": 17,
+  "packetBytes": 336619,
+  "reviewRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-d-channel-map-born-20260928/build-review",
+  "reports": {
+    "claude": {
+      "literalVerdict": "CLEAR FOR THIS PREPARATION AMENDMENT",
+      "literalTextField": "result",
+      "literalText": "**Verdict: CLEAR FOR THIS PREPARATION AMENDMENT**\n\nThis covers the document scope only. It gives no build, current, result, A11 or A12 clearance. I did no shell work, restored no payloads and executed nothing. Everything below comes from the packet text and source.\n\n## Material findings\n\nNone of these blocks the scope change. Findings 2–4 are clarifications worth adding before the execution plan.\n\n### F1. The baseline zeros are symbolic, not pointwise, within the stated case and endpoint scope (Q1)\n\n- **Only the profile endpoints are substituted.**\n  - `S11c_d_uniform_source.py:84-103` builds each background, then applies only `xreplace(inputs.limits)`, i.e. the profile endpoint values.\n  - `ConstantEndPencil.background` (`saved-symbol-binding-source.txt:17-20`) maps only the profile limits, plus `eta_bg`/`sigma_W → 0` for REFERENCE.\n  - `EdgeReduction` declares the two tangential momenta as free symbols (`saved-symbol-binding-source.txt:121`).\n  - `frequency_source.py:173` later has to bind `r.omega`, the tangential components and the material values through `ChannelInput.mapping`. That confirms they were still live in the saved uniform records.\n- **What follows:** a recorded zero TH/HT block is an identity in ω, both tangential components, the normal momentum k_n, both radical sheets, the material symbols and live η. No check is needed at each map point for K itself.\n- **What is not shown:** the packet does not say whether the zero entries were literal `S.Zero` or zero after expansion. Either way it is an expression identity, not a sample.\n- **Endpoint scope matters.** The profiles are w→{0,1} and m→0 at both ends (`variable_profile_development_input.json:8-9`). K₊=0 with η live rules out a pure η·w₁ zero-jet coupling term. It does not test a modulus-contrast term, which is hidden by m(±∞)=0. A profile with a modulus step (Δm≠0) would need recomputation.\n- **Premises that actually matter.** Given K₀≡0, the §2 expansion (`S11c_d_SHARED_PHYSICS.md:386-388`) loses its G₁K₀ψ₀ and G₀K₀ψ₁ terms identically.\n  - The thickness baseline a₀,H is then zero for an incident reference transverse mode.\n  - K₋=K₊=0 makes the coupling localized, so its transforms are ordinary and need no delta or principal-value step parts.\n  - With a₀,H=0, the slots J_H^(0) and J_H^(1) vanish. The leading end-channel flux would then be B₀[a₁,a₁]. That is a computed disposition, not a supplied answer, and the coefficient may still be zero.\n  - What remains is the regular domain: no thresholds or an O(η) band around them, no degenerate or defective modes, no gap closures, and nothing near unassessed resonances (the pole study is deferred). There must also be no accumulated repeated conversion.\n- **Accepted result vs new proof.** This is my reading of accepted results through their producer source. It is not a new algebraic proof. The assessment keeps that distinction (`born_shortcut_baseline_assessment.md:17-23, 39-43`).\n- **Four-case inventory** (`saved-symbol-binding-source.txt:185-198, 225-416`):\n  - It extends the recorded K₀/K₋/K₊=0 premise to all four cases at the same endpoint specialization.\n  - The LAB_HELD/RHO4 packet hash in that inventory (`a482c502…`) matches the originally inspected packet.\n  - It does **not** establish shared channels or currents across density rules. Right RHOBR and right RHO4 differ in 13 strong-symbol and 16 weak-symbol entries, and all five mass-row entries differ.\n  - Same-density anchoring pairs do share exact end inputs, but their interior K(ξ) differs (for example the MATERIAL_ADVECTED advection term), so their Born amplitudes are not shared.\n  - The excerpt says \"exact symbolic generator-input family.\" It does not show that producer's live-symbol set, so treat its ω/k_∥ status as consistent with the recorded result rather than re-verified.\n  - The draft correctly keeps the pilot to one case (`draft:71-74`).\n\n### F2. The binding claims check out. Two small additions would sharpen the channel map (Q2)\n\n- **Claims verified.**\n  - The raw `records[*].strong` symbols keep ω and both tangential components.\n  - The compact pencils bind everything except `{frequency, k_n, q}` (`frequency_source.py:173-175, 185`).\n  - The compact pencils also bind the material values and the approved η at LEFT/RIGHT (η→0 at REFERENCE). That η binding is correct for the physical channel map. The Born leading term uses the reference-mode pencil.\n- **The 2D binding step looks small.** It amounts to adding the tangential components to the `live` tuple in the same `mapping` path. What costs money is classification and coverage, not binding. The draft already says a live symbol does not price a 2D map (`draft:40-42`); I agree.\n- **Scalar magnitude vs two components** (`draft:36-39`) is handled correctly. A cheap symbolic test comes before any 2D grid: substitute k₁=κcosφ, k₂=κsinφ into the cleared characteristic polynomial and the acoustic relation and check for φ-dependence.\n- **Addition 1 — bulk availability is analytic and needs no sweep.** The saved relation q² = −k_n² − 1/25 at ω=1, |k_∥|²=1/20 (`continuum_currents_report.md:7-9`) fits q² = ω²/c_s0² − |k_∥|² − k_n² with c_s0=10.\n  - With edge-normal transfer allowed, bulk depth radiation is available iff ω > c_s0|k_∥|. On the fallback slice that means ω > √5.\n  - At normal edge incidence (k_∥=0) it is available at every ω>0.\n  - This cone should come from the actual saved `wave` relation, not from my reading.\n  - Every radiating k_n window ends at grazing points (q→0). There the c1 §2b off-grazing estimates fail, so bulk power needs the strict v_bulk_normal_0=0 label (`SCATTERING_FORM_AMENDMENT.md:363-384`).\n- **Addition 2 — coverage by cells.** The saved k_n=0 elimination machinery (`frequency_source.py:188-196`), extended to 2D and paired with the k_n-discriminant and denominator loci, gives the threshold curves exactly. Within a cell the open-channel count is constant, so one classified point per cell is real coverage evidence rather than sampling. This fits the draft's \"interval-wide absence requires actual coverage evidence\" (`draft:56-59`).\n- **Claims that are already appropriate.** The conserved variables, physical-sheet handling, the refusal to treat complex roots as open channels, keeping the full pencil, and the unavailable/unresolved (not lossless) labels (`draft:44-59`) are all right.\n- **Feasibility risk, not a defect.** If the thickness branches are weakly damped everywhere by the retained closure, the map will report no open end-thickness channel anywhere. The Born route then gives no end-conversion number, and damped thickness excitation stays unattributed.\n\n### F3. An anchor at the saved ω=1 solve is probably usable, but only at grade-coefficient level (Q3)\n\n- **What cannot work.** A percent-level match of finite-λ thickness amplitudes (about 1.08e-4 and 9.1e-5) against the declared 1e-4 amplitude resolution cannot succeed. The draft is right that this may be inconclusive (`draft:96-99`).\n- **What can work.** The concrete reusable operands are the saved retained-expansion grade coefficients: the first-order η, σ and ησ coefficients a₁₀, a₀₁, a₁₁ of the thickness components. They are in `solved['coefficients']` and the currents bookkeeping (\"baseline, zero-jet contrast, first-jet, induced amplitudes … are saved\", `continuum_currents_report.md:12-13`).\n  - Evaluate them as interior near-interface fields, not as the boundary-sensitive matching coefficients.\n  - Construct the new Born first-order field under the same discretization, boundary and regulator.\n  - The comparison is then limited by solver and join residuals (about 1e-12 to 1e-14), not by the 1e-4 physical reporting resolution. The grade coefficients are about 1e-2, not 1e-4.\n  - If the Born is built as a continuum object instead, finite-boundary and regulator differences enter at an unknown size, and the result may be inconclusive.\n- **Halving diagnostic vs contrast scaling.** The saved diagnostic (`saved-symbol-binding-source.txt:442-447`) is direct-solve minus retained-expansion. It shows the saved expansion is the O(λ²)-accurate Taylor series of the finite retained solve. It is not a Born/full comparison.\n  - Given that result, a contrast-scaling test on the saved `direct` vectors reduces to the coefficient comparison: direct − λA_Born = (a₁ − A_Born)λ + O(λ²).\n  - So it needs zero new points. The saved points already follow σ = ηW₀/L_W.\n  - The reported remainders (0.0088 → 0.00055) are max-norms over all components, probably dominated by transverse components. The thickness remainder must be extracted from the saved `difference` vectors. It has not been shown separately.\n- **Open-channel points.** No full comparison exists or can exist there without the excluded radiating-boundary construction. The specific missing comparison is a full open-thickness solve at the claimed (ω,k_∥).\n  - At the least, a contrast-scaling check there would need two or three λ values at one open point, plus frequency-dependent rows, end inputs and new outgoing thickness boundaries. My uncertain judgment is that this is the radiating construction itself, not a few cheap points.\n- **The limited label is acceptable.** \"Leading order, premises checked, not anchored against the full solve\" is an honest scope exception. Better: \"construction anchored at the closed ω=1 grade level; open-channel amplitude/current not anchored.\" Neither form discharges §2's residual obligation or A11/A12, as the draft says (`draft:108-113`).\n- **Suggested edit.** State explicitly that open-point results can only carry the limited label, and that the ω=1 anchor compares grade coefficients rather than finite-λ amplitudes.\n\n### F4. The Born route is genuinely smaller, and the bulk object is narrower than the draft implies (Q4)\n\n- **End conversion.** With K₀≡0 and K±=0, the first-order amplitude is the reference-mode matrix element with the complete localized kernel: the modulus zero-jet term η·m₁ (localized here), the w₁′/m₁′ first-jet terms and ησ. That uses the saved symbolic kernel and blocks (`uniform_source.py:78-79`), reference modes, and left/right normalized currents at each admissible point.\n  - Nothing in it needs a four-case bindable FORM or a full S-matrix solve.\n  - The draft's coupling, profile and normalization requirements (`draft:76-90`) are correct. The step-tail and distributional language mostly will not bind for this kernel, because it is localized.\n- **Bulk power.** The draft stops at \"use the supported exterior solution/flux map\" (`draft:85-89`). The minimum additional object is narrower than the full A12 construction:\n  1. **Premise check.** Using the saved c2 `REFERENCE_TRACE_MAP`/`REFERENCE_PRESSURE` face maps (`A9_dependency_report.md:21, 31-37`), confirm symbolically that the incident reference transverse mode produces zero face drive. For LAB_HELD the saved velocity identification uses only thickness velocity.\n  2. **Power integral.** If that holds, the flat half-space response to the first-order face velocity V₁(k_n) = trace ∘ [−L₀⁻¹ K̂] r_a, summed over the two disconnected faces, gives the power. Its measure is ∫dk_n/2π over the radiating window, with its tangential normalization, normalized by the incident transverse current.\n  - Under that zero-drive premise, the flat–scattered terms, shape scattering and the missing c1 second-shape completion multiply a zero zeroth-order bulk field. They do not enter the leading power.\n  - If the premise fails, baseline interference returns and the bulk observable stops under the draft's own rule.\n- **Keep the observables separate.** End-channel J_H and bulk depth power stay separate. Neither the saved depth-integrated interface-normal current nor a survival deficit is escape power.\n\n### F5. The scope change is coherent and has workable stops (Q5)\n\n- It stops for go/no-go, does not fall back automatically to the full method, and pushes budgets into a pinned execution plan (`draft:115-132`). The resource limits are unchanged.\n- No repair loop or campaign is created.\n\n## Optional comments\n\n- Exclude an O(η) band around each threshold. The left and right open sets can differ there because the end pencils bind η=1/100 while the Born uses reference modes.\n- Where a real open thickness k_n lies near a radiating-window edge, label possible resonance enhancement rather than integrating through it.\n- It may be worth a note that the LEFT inventory family differs from REFERENCE even though w(−∞)=m(−∞)=0. Anything that uses REFERENCE modes for the left end should not assume the two are equal.\n- The saved \"actual mixed operator omission\" control (`continuum_response_report.md:7-8`) is a ready template for the responsive omission control required at `draft:95`.\n\n## Cost opinion (uncertain judgment, not measured)\n\n- The fixed-slice channel map with binding looks like hours of implementation plus its review.\n- The 2D map depends mostly on the cell classification, not on binding.\n- The ω=1 grade anchor reuses only saved operands.\n- Bulk power depends on the face-map and zero-drive check. That may be modest, or it may reveal a centre-displacement dependency (`A9_dependency_report.md:27-29, 35-37`), which would stop the bulk observable.\n\n## Go/no-go recommendation\n\n**GO for writing the execution plan.** Proposed order:\n\n1. The symbolic azimuth and threshold-cell check. Use a (ω,|k_∥|) map if φ-independent; otherwise use the (1/5,1/10) slice and label it.\n2. The analytic bulk cone.\n3. End-channel Born only at admissible cells, anchored by the ω=1 grade-coefficient comparison.\n4. Bulk power only after the zero-face-drive premise and the reference face map are confirmed.\n\nOtherwise report bulk availability only. Every open-point amplitude carries the limited \"not anchored against a full open solve\" label.",
+      "runReceipt": {
+        "engine": "claude",
+        "sessionId": "f8df299c-7587-40a6-aeec-be67f6853b19",
+        "command": [
+          "/home/trevnorris/.local/bin/claude",
+          "--print",
+          "--output-format",
+          "json",
+          "--safe-mode",
+          "--restricted",
+          "--tools",
+          "Read,Glob,Grep",
+          "--allowedTools",
+          "Read,Glob,Grep",
+          "--permission-mode",
+          "dontAsk",
+          "--strict-mcp-config",
+          "--mcp-config",
+          "{\"mcpServers\":{}}",
+          "--setting-sources",
+          "",
+          "--disable-slash-commands",
+          "--session-id",
+          "f8df299c-7587-40a6-aeec-be67f6853b19"
+        ],
+        "cwd": "/var/projects/toy_physics/_scratch/s11c/s11c-d-channel-map-born-20260928/build-review/packet",
+        "startedUtc": "2026-09-28T19:55:42.428631+00:00",
+        "packetSha256": "03e7c9c06c2ff5cc5a383f8a254b6b039f9bfb656ad223c95dca60def4438804",
+        "promptSha256": "d07cdd834ef8b8165143e21183d3dca6c771fb97cdd90a73c8f4bbc5c27dcf71",
+        "scientificExecutionEnabled": false,
+        "reviewVerdict": "NOT_ADJUDICATED",
+        "pid": 532434,
+        "exitStatus": 0,
+        "finishedUtc": "2026-09-28T20:02:59.730180+00:00",
+        "wallSeconds": 437.29994003497995,
+        "outputSha256": "2a3051648177359134ad40211a44d9d2538c222289a57838f9bd2818adf1878a",
+        "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderrBytes": 0
+      },
+      "originalOutput": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-channel-map-born-20260928/build-review/claude.json",
+        "bytes": 15917,
+        "sha256": "2a3051648177359134ad40211a44d9d2538c222289a57838f9bd2818adf1878a"
+      },
+      "stderr": "",
+      "completionMetadata": {
+        "stop_reason": "end_turn",
+        "session_id": "f8df299c-7587-40a6-aeec-be67f6853b19",
+        "permission_denials": [],
+        "terminal_reason": "completed",
+        "is_error": false,
+        "num_turns": 17,
+        "subtype": "success",
+        "api_error_status": null
+      }
+    },
+    "grok": {
+      "literalVerdict": "NEEDS REVISION",
+      "literalTextField": "text",
+      "literalText": "I'll review the draft scope amendment and baseline assessment from the supplied packet only, starting with the index and the two documents.The draft and baseline are in. Next I’ll check the cited source text for the shortcut premises, symbol bindings, and saved comparison operands.The saved baseline zeros are exact symbolic identities for the stated endpoint specialization, so they do not need to be rechecked at every map frequency. The draft is otherwise a coherent cheaper question, but the quotable outcome label and the bulk-power operand need two sentence-level corrections before a go.\n\n**NEEDS REVISION**\n\nThis review clears no build, current, or result. Prior clearance of the scattering-form amendment does not clear this draft.\n\n## Material findings\n\n**1. Baseline zeros.** The accepted uniform-source report states that the canonical transverse/thickness blocks `K0`, `Kminus`, and `Kplus`, in both directions, compute to zero for `LAB_HELD`/`RHO4_CONSTANT` at the approved profile endpoints, and that both end-minus-reference differences are zero. That is the accepted result. This review did not recompute it.\n\nThe producer supports reading those zeros as symbolic. `construct` builds the strong and weak symbols in `ConstantEndPencil.background` and `strong_matrix`/`weak_matrix`, then applies `xreplace(inputs.limits)` only. Those limits are the profile-endpoint values. The development-input parameters `omega = 1`, `s11cdTangentialMomentum1 = 1/5`, and `s11cdTangentialMomentum2 = 1/10` are not substituted there. The code comment and `inputs` record keep the material symbols and the independent zero-jet contrast live. Reference is the separate specialization `eta = sigma = 0`, and its blocks are zero too. An exact zero block from that path is an identity in the remaining symbols, including live frequency and both tangential components. It is a property of this case, this endpoint specialization, and the retained model.\n\nThe checkpoint field `sourceResidualScalars: 210` is the fresh-versus-accepted strong/weak/curl join. The packet hash `a482c502…` and transcript hash `5e9cbf0b…` match the supplied checkpoint. Those joins corroborate provenance. They are not themselves the coupling census.\n\nWhat still matters for the §2 permission, at `S11c_d_SHARED_PHYSICS.md` around the baseline display and the paragraph that allows the uniform-mode reduction only when the baselines and the regular-domain hypotheses both hold:\n\n- The regular-domain exclusions: thresholds, gap closure, resonance enhancement, and accumulated repeated conversion.\n- An emitted reduced/full residual at the claimed setting.\n- Open-channel currents and the outgoing sheet of the full end pencil. The zero blocks are 3×3 sectors of the redundant 6×6 curl-potential symbol. Channel classification stays on the full 5×5 pencil and its current map.\n- The flux baseline/interference disposition in §3c. Zero asymptotic `K` blocks leave the order of any physical flux still to be derived.\n\nThe later twelve-background inventory extends that baseline-zero evidence, and only that evidence, to all four anchoring/density cases at the same endpoint specialization. Every `couplingNonzero` entry for `TH` and `HT` is 0, the scope text calls each family an exact symbolic generator input, and the report states that twelve coupling blocks per direction compute to zero. References share one family, left ends share one family, and anchoring does not change the end family. Right ends split by density rule: family 2 for `RHO4`, family 3 for `RHOBR`, with 13 nonzero strong-symbol differences, 16 nonzero weak-symbol differences, and all five mass-row entries different. Currents and channels are therefore case-dependent even though the off-diagonal counts vanish. The report claims no modes, current matrices, or scattering response from that stage. The pilot in the draft stays `LAB_HELD`/`RHO4_CONSTANT`. The inventory does not enlarge it.\n\n**2. Two tangential components and the map.** `EdgeReduction` defines `s11cdTangentialMomentum1` and `s11cdTangentialMomentum2`, and also takes the first two components of the input, output, and middle momentum groups. The raw uniform symbols are the right candidate for a two-parameter map: endpoint substitution does not bind frequency or either tangential component. The frequency-source `end_sources` path then binds every other free symbol from `ChannelInput.parameters`, rebinds `omega` to a live frequency, and requires the remaining free symbols to be only that frequency, the spectral normal momentum, and the radical. Its parameters fix the tangential pair at `(1/5, 1/10)`. Those compact pencils support the fixed-slice fallback. They are already specialized to the approved material values and endpoint contrast.\n\nThe conserved kinematic labels are frequency and both edge-parallel components. Normal momentum can change across the profile. A scalar `|k_parallel|` is a further claim. On the saved numbers, `|k_∥|² = (1/5)² + (1/10)² = 1/20`, and with `c_s0 = 10` the currents report’s specialized closure `q_depth² = -k_normal² - 1/25` is the sound-cone deficit at `omega = 1`. That uses both components. The draft is right to require an azimuthal equivalence proved from the uniform symbols, or else to fix the saved 2:1 direction and label the slice. The fallback is the path the saved pencils actually support.\n\nChannel claims in the draft match the sources. Open means an incoming transverse branch of the full end pencil with nonzero physical incident current. Cleared-polynomial roots stay candidates. The frequency-source threshold packet says the same of its zero-normal-momentum eliminant: keep denominator artifacts and opposite radical sheets. Complex or damped roots are not open real-normal channels. Physical damping stays in the material binding. A sampled grid supports sampled claims. Regions with no admissible incident branch, or with unresolved sheet, rank, or current, stay unavailable or unresolved. A zero open-channel count bounds that propagating conversion. With the retained dissipative closure, it does not bound every attenuation. A live frequency or live tangential symbol does not price a grid. The 2D preference still needs a new binding and classification instrument and a finite domain and budget. No payload was restored here that shows that instrument is cheap.\n\n**3. The saved `omega = 1` solve is not a usable leakage anchor.** The continuum response is a full retained coefficient solve on a finite rectangle with a finite regulator and approximate modal boundaries: 645 unknowns, condition about 3731, equation residual `3.80e-14`. Declared amplitude resolution is `1e-4`. The currents report, for this same approved input, gives thickness-open rank zero, zero open-thickness amplitude, current, and fraction coefficients, and bulk closure through `q_depth² = -k_normal² - 1/25`. The finite-boundary thickness field amplitudes `1.084e-4` and `9.092e-5` sit on that resolution floor, and the report states that they are reference-coordinate matching coefficients. Small reflected and cross-channel amplitudes below `1e-4` are not accepted physical signals. A one-percent comparison against those numbers does not resolve a propagating conversion or a bulk flux. The draft already refuses to treat a closed-domain match as an open-domain flux test, and an inconclusive result stops validation. On the supplied reports that inconclusive path is the actual path for the leakage observable.\n\nReusable operands, none of which is that missing comparison:\n\n- The saved coefficient and field solution, to be joined and not rerun.\n- The mixed-operator omission shift `4.94e-4`, a responsiveness check above the resolution floor.\n- Open transverse current contractions, agreement `4.45e-16`, and the transmission phase change about `0.0189` radian.\n- The acoustic closure polynomial at this tangential point.\n- The three direct-minus-retained remainder norms `0.008823`, `0.002212`, `0.000554`, ratios about `3.989` and `3.996`.\n\nLines 265–271 of `S11c_d_continuum_response.py` build those three norms by solving the same coefficient polynomial at `(eta, sigma) = (0.01, 0.001)`, `(0.005, 0.0005)`, `(0.0025, 0.00025)` and subtracting the retained expansion. The ratio `sigma/eta = 1/10` is the declared physical homotopy `sigma_W = eta W_0 / L_W` with `W_0 = 1` and `L_W = 10`. The response report calls the ratios truncation diagnostics. They are evidence that this coefficient expansion’s remainder scales like the square of the contrast bookkeeper. They do not compare a new leading-order off-diagonal amplitude with the full response.\n\nA contrast test of `A_leading` proportional to `eta`, with full-minus-leading of order `eta²`, would need a nonzero leading coefficient that the full solve resolves. The saved open thickness and bulk observables on this slice are closed or unresolved. The resolved transverse phase is a different observable. New points at this same closed kinematic setting would repeat that limitation. A later anchor, if one were ever authorized, would be at least one open-channel setting whose full solve resolves a nonzero leading conversion or flux, plus one halved step along the same homotopy. That is a new radiating comparison, its cost is uncertain, and it is not a small reuse of the 202-second closed-domain solve. This preparation should not authorize it.\n\nThe explicit limited label does not discharge §2. As worded, it also over-claims. “Premises checked” bundles the regular-domain hypotheses and the reduced/full residual together with the baseline zeros. Only the baseline zeros are established, and only in the scope above. The sentence under the label, which says the label does not discharge the reduced/full comparison, is the right boundary. The quotable label needs to say that by itself: baseline zeros consumed; regular-domain exclusions and the reduced/full residual not established; leading order unanchored against the full solve.\n\n**4. Where the conditional Born route is actually smaller.** For the pilot case, a first-order amplitude from the complete reduced kernel is a smaller object than the four-case FORM and a full radiating solve, provided it keeps the whole retained coupling: tilt, modulus-gradient, advection, and the supported zero-jet and first-jet terms, with `eta` and `sigma_W` independent until the physical homotopy. Transfer `s = Q_n L_W`, phase-matched values, and step tails stay derived. No coupling-squared formula, exponential law, or eta-squared leakage is available to insert. §3c leaves the leading flux order dependent on the computed baseline and interference disposition.\n\nThickness-end current and bulk-depth power stay separate. The saved depth-integrated interior bulk normal current is a slab bookkeeping term. End thickness amplitudes are not outgoing conversion fractions.\n\nRestricted c1/c2 maps do not supply bulk power. The c1 far-field operand is a first-shape Poynting check with equal legs, one propagating `qprop`, and a single impermeable drive, and its integrand stops before the scattered–scattered quadratic. The c2 fold maps locate face-drive symbols, while d-field and centre-displacement identification for this slab state is still unresolved. The minimum additional bulk object is the exterior outgoing solution on the two disconnected half-spaces, driven by this slab’s face state at the conserved `(omega, k_∥)`, together with its signed far-field flux and measure. Kinematic bulk availability needs less: the radiation-selected depth root `q_out(omega, k_1, k_2)`, with branch points on the sound cone `omega = ± c_s0 |k_∥|`. If the exterior flux map is absent, bulk power stops. That stop is what keeps this route from becoming the full radiating construction.\n\n**5. Stopping conditions.** The draft is a limited preparation change: one pilot case, channel availability first, leading order only where the §2 reduction is actually permitted, separate end and bulk observables, fixed-slice fallback, finite domain and budget before any launch, guard limits carried forward, and no automatic jump to a full radiating method or a PDE simulation. Each later implementation keeps its own two-leg review. Cost is uncertain. The saved closed-domain solve took about 202 seconds and about 573 MiB. That does not price a two-dimensional root grid or an exterior flux map. The fixed tangential slice is the only variant whose binding is already present in a saved producer.\n\nTwo sentence-level corrections are required before this draft states a safe scope. Replace the bundled label “premises checked” with the split status in finding 3. State that bulk availability is the outgoing depth root, and that bulk power’s missing object is the exterior solved-state flux map; the restricted c1 far-field check is not that map.\n\n## Optional comments\n\nThe assessment’s phrase “recorded bulk threshold `sqrt(5)`” is the positive frequency at which `omega²/c_s0² = |k_∥|²` on the saved slice: `c_s0 = 10` and `|k_∥|² = 1/20` give `omega² = 5`. The stored current statement is the specialized closure `q_depth² = -k_normal² - 1/25` at `omega = 1`. That number is a one-slice consequence. It is not a threshold surface over the `(omega, k_parallel)` plane.\n\nThe response report’s “nonzero baseline” is the bookkeeping warning in §3c: a nonzero transmitted amplitude lets omitted second-order terms interfere with a quadratic current. It does not contradict the zero `K` blocks.\n\n“Hours/days” remains an unmeasured target. This review states no review-cycle count.\n\n## Go / no-go\n\nNo-go for implementation as written, and no-go for any leakage magnitude, A11/A12 result, or §2 shortcut claim.\n\nAfter the two sentence corrections, the piece worth a later go is a bounded channel classification at the saved tangential momenta `(1/5, 1/10)`, using the saved end symbols, the full pencil, physical currents, and the acoustic depth root, with every conclusion labelled as that slice. Leading-order Born, if still wanted, stays explicitly unanchored and stops for bulk power while the exterior flux map is missing.",
+      "runReceipt": {
+        "engine": "grok",
+        "sessionId": "6db9a1b2-f0c9-459f-a79f-3d5ed06da432",
+        "command": [
+          "/home/trevnorris/.local/bin/grok",
+          "--cwd",
+          "/var/projects/toy_physics/_scratch/s11c/s11c-d-channel-map-born-20260928/build-review/packet",
+          "--prompt-file",
+          "/var/projects/toy_physics/_scratch/s11c/s11c-d-channel-map-born-20260928/build-review/packet/review-prompt.md",
+          "--output-format",
+          "json",
+          "--permission-mode",
+          "dontAsk",
+          "--no-plan",
+          "--tools",
+          "Read",
+          "--no-subagents",
+          "--disable-web-search",
+          "--verbatim",
+          "--session-id",
+          "6db9a1b2-f0c9-459f-a79f-3d5ed06da432"
+        ],
+        "cwd": "/var/projects/toy_physics/_scratch/s11c/s11c-d-channel-map-born-20260928/build-review/packet",
+        "startedUtc": "2026-09-28T20:02:59.751135+00:00",
+        "packetSha256": "03e7c9c06c2ff5cc5a383f8a254b6b039f9bfb656ad223c95dca60def4438804",
+        "promptSha256": "d07cdd834ef8b8165143e21183d3dca6c771fb97cdd90a73c8f4bbc5c27dcf71",
+        "scientificExecutionEnabled": false,
+        "reviewVerdict": "NOT_ADJUDICATED",
+        "pid": 543400,
+        "exitStatus": 0,
+        "finishedUtc": "2026-09-28T20:13:03.891898+00:00",
+        "wallSeconds": 604.1394164409721,
+        "outputSha256": "b9cb5d5692b2a11a3ce092ff720db49d195ac726525bb1f0a82842d923d764f3",
+        "stderrSha256": "1e8862f2482f9bd033e0a937c30b57ca2498c45f48978990c7b48913eccdbbfe",
+        "stderrBytes": 1431
+      },
+      "originalOutput": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-channel-map-born-20260928/build-review/grok.json",
+        "bytes": 39257,
+        "sha256": "b9cb5d5692b2a11a3ce092ff720db49d195ac726525bb1f0a82842d923d764f3"
+      },
+      "stderr": "\u001b[2m2026-09-28T20:02:59.916462Z\u001b[0m \u001b[33m WARN\u001b[0m plugin name collision resolved by scope precedence \u001b[3mplugin_name\u001b[0m\u001b[2m=\u001b[0mfrontend-design \u001b[3mwinner\u001b[0m\u001b[2m=\u001b[0m/home/trevnorris/.claude/plugins/marketplaces/claude-plugins-official/plugins/frontend-design \u001b[3mloser\u001b[0m\u001b[2m=\u001b[0m/home/trevnorris/.claude/plugins/cache/claude-plugins-official/frontend-design/fbe07fb6ce7d\n\u001b[2m2026-09-28T20:02:59.924257Z\u001b[0m \u001b[33m WARN\u001b[0m plugin name collision resolved by scope precedence \u001b[3mplugin_name\u001b[0m\u001b[2m=\u001b[0mfrontend-design \u001b[3mwinner\u001b[0m\u001b[2m=\u001b[0m/home/trevnorris/.claude/plugins/marketplaces/claude-plugins-official/plugins/frontend-design \u001b[3mloser\u001b[0m\u001b[2m=\u001b[0m/home/trevnorris/.claude/plugins/cache/claude-plugins-official/frontend-design/fbe07fb6ce7d\n\u001b[2m2026-09-28T20:02:59.942535Z\u001b[0m \u001b[33m WARN\u001b[0m hooks: skipped unrecognized event names (check for typos) \u001b[3mfile\u001b[0m\u001b[2m=\u001b[0m/home/trevnorris/.claude/settings.json \u001b[3mskipped\u001b[0m\u001b[2m=\u001b[0m[\"PermissionRequest\"]\n\u001b[2m2026-09-28T20:02:59.942593Z\u001b[0m \u001b[33m WARN\u001b[0m hook loading from settings file: failed to parse hook file /home/trevnorris/.cursor/hooks.json: invalid matcher groups for event 'beforeSubmitPrompt': missing field `hooks`\n\u001b[2m2026-09-28T20:02:59.942630Z\u001b[0m \u001b[33m WARN\u001b[0m hook loading error \u001b[3merror\u001b[0m\u001b[2m=\u001b[0mParseFile { path: \"/home/trevnorris/.cursor/hooks.json\", detail: \"invalid matcher groups for event 'beforeSubmitPrompt': missing field `hooks`\" }\n",
+      "completionMetadata": {
+        "stopReason": "end_turn",
+        "sessionId": "6db9a1b2-f0c9-459f-a79f-3d5ed06da432",
+        "num_turns": 8
+      }
+    }
+  },
+  "reviewedDraft": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_CHANNEL_MAP_BORN_AMENDMENT_DRAFT.md",
+    "bytes": 8224,
+    "sha256": "a5e08270d2d162c5c2df29a909c7ef9535064e64774a22f832fa9e75f136b2d2"
+  },
+  "reviewedBaselineAssessment": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_born_shortcut_baseline_assessment.md",
+    "bytes": 6876,
+    "sha256": "9fa08186b9d8380151fbcfdc65ed05bc0a0cb9612996166a3487414c188465e2"
+  },
+  "verification": {
+    "packetArchiveMembersAndAllSourceHashesMatch": true,
+    "indexPromptAndReportHashesMatch": true,
+    "authorizationIdentityMatches": true,
+    "transportHelpersMatch": true,
+    "freshSequentialReviewSessions": true,
+    "hookBeforeReviews": true,
+    "bothReportsReadBeforeDisposition": true,
+    "coordinatorStderrBytes": 0,
+    "watcherStderrBytes": 0,
+    "grokStderrDisposition": "1431 bytes of plugin collision and local settings/hook warnings. Completed substantive end_turn report; stderr preserved, not described as empty.",
+    "protectedSuffixAndSharedGuardUnchanged": true
+  },
+  "runtimeReceipts": {
+    "state.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-channel-map-born-20260928/build-review/state.json",
+      "bytes": 6438,
+      "sha256": "9a8a6d52b5781a8aa9a5c8fd91bedfabc4b3b8fbfea758eb68c0ac8020e36289"
+    },
+    "coordinator-outcome.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-channel-map-born-20260928/build-review/coordinator-outcome.json",
+      "bytes": 145,
+      "sha256": "50b0f14f3b8754d8ad6d685c70b7eb94b3d1c3c65d483fe2bd20ce42abb2b151"
+    },
+    "launch.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-channel-map-born-20260928/build-review/launch.json",
+      "bytes": 407,
+      "sha256": "43cd439f68778663268381961a5105b50251f5f256da8382e1d46ceecc306e4f"
+    },
+    "static-review.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-channel-map-born-20260928/build-review/static-review.json",
+      "bytes": 517,
+      "sha256": "3897d8e132fea80592fceb14f024b6fe9a5e5f845c11bbfbe63490c1d1802aef"
+    },
+    "explicit-packet-approval.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-channel-map-born-20260928/build-review/explicit-packet-approval.json",
+      "bytes": 2865,
+      "sha256": "77811973453a5f4bc4e635cd153a1596ac77d4dac2cb70704d81bf24861c0c48"
+    },
+    "completion-watcher/state.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-channel-map-born-20260928/build-review/completion-watcher/state.json",
+      "bytes": 503,
+      "sha256": "5b0a2fd04584ac530696bf35c1d220c6bd6c3bb5cc2a4cfe8896bc8523ba48e8"
+    },
+    "packet/packet-index.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-channel-map-born-20260928/build-review/packet/packet-index.json",
+      "bytes": 6255,
+      "sha256": "7038925cb99249c11128c00810e72766dd95f57f18a92836c2231a528cf41c26"
+    },
+    "packet/review-prompt.md": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-channel-map-born-20260928/build-review/packet/review-prompt.md",
+      "bytes": 4515,
+      "sha256": "d07cdd834ef8b8165143e21183d3dca6c771fb97cdd90a73c8f4bbc5c27dcf71"
+    }
+  },
+  "scientificJobsAuthorized": 0,
+  "scientificJobsUsed": 0,
+  "scientificPayloadsRestored": 0,
+  "implementationStarted": false,
+  "reviewedDraftChanged": false,
+  "automaticReviewerRerun": false,
+  "independentAmendmentClearance": false,
+  "localDispositionIsIndependentClearance": false,
+  "completionEventHandled": true,
+  "next": "Return conditional channel-map recommendation, two proposed text corrections and anchor/bulk limitations for user go/no-go. No scientific launch even if later wording clears."
+}

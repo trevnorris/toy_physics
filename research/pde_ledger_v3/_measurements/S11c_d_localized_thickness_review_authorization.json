@@ -1,0 +1,22 @@
+{
+  "status": "EXPLICITLY_APPROVED_FIXED_PACKET",
+  "recordedUtc": "2026-09-28T15:56:46.808519+00:00",
+  "userInstruction": "You may submit it",
+  "scope": "One sequential independent read-only Claude and Grok method/build review of the exact prepared localized-thickness packet.",
+  "packetSha256": "fd780beab5c2564e19b8f792a8bbb3751adaeaa61c2402cb2e781498084df944",
+  "archiveSha256": "99ec379463804ca32fa8ed31e4205ef1a7f479b1b0c14d49b20c82206b098ebe",
+  "packetFiles": 25,
+  "packetBytes": 804654,
+  "reviewers": [
+    "claude",
+    "grok"
+  ],
+  "workerSha256": "a8a801a4432f22b1dd86934f8b38a9e7b35db80b23ad2e9da7866a3866af594d",
+  "inputManifestSha256": "0e397d039c439839f8129d1f11de28cb4db249f1e7c5e4aa10e25427f49a32e4",
+  "currentThread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+  "scientificLaunchAuthorized": false,
+  "peerSharing": false,
+  "automaticRerun": false,
+  "bothReportsRequiredBeforeEditsOrAdjudication": true,
+  "completionHookSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77"
+}

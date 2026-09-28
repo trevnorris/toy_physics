@@ -417,3 +417,13 @@ The explicit duration exception above applied to the now-completed single
 no-deadline continuation; it does not change shared defaults or authorize
 automatic attempts following failure.
 No completed review/science is rerun, and no automatic retries are introduced.
+
+
+**Current external review launch (2026-09-28):** the user explicitly approved
+submission of the fixed thickness packet with **“You may submit it.”** Its
+[authorization and startup record](S11c_d_localized_thickness_review_launch.json)
+confirm the hook-first launch at 15:56:59 UTC, host coordinator/watcher alive,
+Claude started and Grok queued sequentially. All packet/source/archive hashes
+matched the approved preparation. Both read-only reports must finish before
+adjudication or source edits. No science-stage authorization, worker launch,
+automatic retry, peer sharing or model polling follows from this submission.

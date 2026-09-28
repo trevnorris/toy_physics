@@ -1124,3 +1124,30 @@ remain intact. Full response/Green/FORM/A11/A12, density/mixed response,
 current normalization, general diagonal extension, retarded equivalence and
 radiating coverage remain open on the unchanged evanescent slice. No worker,
 review or recurring task is running for this new stage.
+
+
+## Fixed thickness review submission explicitly approved and launched
+
+The user said **“You may submit it.”** The new
+[authorization](S11c_d_localized_thickness_review_authorization.json) binds
+packet SHA-256 `fd780beab5c2564e19b8f792a8bbb3751adaeaa61c2402cb2e781498084df944`
+and archive SHA-256 `99ec379463804ca32fa8ed31e4205ef1a7f479b1b0c14d49b20c82206b098ebe`
+to exactly one sequential independent Claude/Grok read-only submission.
+Packet, indexed source files, archive, runners and completion message were
+verified unchanged before launch. No new science is authorized.
+
+The [startup receipt](S11c_d_localized_thickness_review_launch.json) records
+coordinator PID 330675, watcher PID 330676 and Claude PID 330684. The hook
+armed for this session at 15:56:59 UTC on 2026-09-28; Claude started afterward.
+Grok is queued for the same packet. Initial coordinator/watcher/Claude stderr
+was empty. Sandbox PID visibility initially returned false; the original
+observation is preserved, and an escalated read-only host process check
+confirmed all three running. Nothing was restarted or retried.
+
+Await the existing silent local completion event. Inspect both actual run
+receipts, literal reports and stderr before adjudicating or editing reviewed
+bytes; no peer sharing or automatic rerun. Preserve practical bounded scope,
+all earlier results/failures and literal verdicts. The shared scientific gate
+remains pending; no physics worker or recurring polling task was launched.
+Authorization/startup/status records belong under research/pde_ledger_v3;
+scratch packet copies and logs remain ignored and are not committed.

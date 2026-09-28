@@ -1,0 +1,115 @@
+{
+  "status": "APPROVED_FIXED_PACKET_REVIEWS_LAUNCHED",
+  "recordedUtc": "2026-09-28T15:57:36.645774+00:00",
+  "launch": {
+    "jobPid": 330675,
+    "watcherPid": 330676,
+    "packetSha256": "fd780beab5c2564e19b8f792a8bbb3751adaeaa61c2402cb2e781498084df944",
+    "reviewers": [
+      "Claude",
+      "Grok"
+    ],
+    "concurrentReviewWorkers": 1,
+    "scienceCalls": 0,
+    "runnerSha256": "bd503a86374bb7124c3bb3f20b1df22d03207ac3b852bcdf586eedabccb53a24",
+    "launcherSha256": "b7c89cfed2150a99623dd37d57b42a6565e38b76cfc802f737e5d2e8d060d2f8"
+  },
+  "coordinatorState": "RUNNING",
+  "watcherState": {
+    "status": "waiting",
+    "watcherPid": 330676,
+    "jobPid": 330675,
+    "thread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+    "startedUtc": "2026-09-28T15:56:59.025662+00:00",
+    "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
+    "messageSha256": "55db44e894e1353afacb8c30400f92a8d082a5d3d837f12a240670648ab1ca35",
+    "notifications": {}
+  },
+  "reviewers": {
+    "claude": {
+      "status": "STARTED",
+      "pid": 330684,
+      "startedUtc": "2026-09-28T15:56:59.138819+00:00",
+      "receipt": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-localized-thickness-20260928/build-review/claude-run.json",
+        "bytes": 980,
+        "sha256": "33b60524ae0c866113771a75679be6d0bb0782a731d5be1e972a7db3681ab384"
+      },
+      "exitStatus": null,
+      "visibleInSandbox": false
+    },
+    "grok": {
+      "status": "QUEUED_SEQUENTIALLY"
+    }
+  },
+  "startupLogs": {
+    "coordinator.stdout": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-localized-thickness-20260928/build-review/coordinator.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "coordinator.stderr": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-localized-thickness-20260928/build-review/coordinator.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "watcher.stdout": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-localized-thickness-20260928/build-review/watcher.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "watcher.stderr": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-localized-thickness-20260928/build-review/watcher.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "claude.stderr": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-localized-thickness-20260928/build-review/claude.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "approval": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_localized_thickness_review_authorization.json",
+    "bytes": 1027,
+    "sha256": "da71ae95b67170ae2d1841b0408dbb3e68e7aedbd8acd76e4f5655ebdfc6e3dd"
+  },
+  "packetSha256": "fd780beab5c2564e19b8f792a8bbb3751adaeaa61c2402cb2e781498084df944",
+  "archiveSha256": "99ec379463804ca32fa8ed31e4205ef1a7f479b1b0c14d49b20c82206b098ebe",
+  "completionHookArmedFirst": true,
+  "scientificLaunchAuthorized": false,
+  "scienceCalls": 0,
+  "bothReportsRequiredBeforeAdjudication": true,
+  "automaticRetry": false,
+  "startupObservationOnly": true,
+  "coordinatorVisibleInSandbox": false,
+  "watcherVisibleInSandbox": false,
+  "hostProcessVerification": {
+    "source": "Read-only escalated ps -p 330675,330676,330684 -o pid,ppid,stat,etime,args",
+    "observedElapsed": "01:41",
+    "coordinator": {
+      "pid": 330675,
+      "ppid": 4973,
+      "state": "SNs",
+      "alive": true
+    },
+    "completionHook": {
+      "pid": 330676,
+      "ppid": 4973,
+      "state": "SNs",
+      "alive": true
+    },
+    "claude": {
+      "pid": 330684,
+      "ppid": 330675,
+      "state": "SNsl",
+      "alive": true
+    },
+    "interpretation": "Host processes are running. The sandbox PID namespace did not expose them; its false liveness observations were not process failures."
+  },
+  "originalSandboxObservation": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-localized-thickness-20260928/build-review/startup-sandbox-observation.json",
+    "sha256": "7e13ba414d037360ba5ae95d44bfe00a3708fbc789e2c852cef1693906e224b3"
+  },
+  "correctedLivenessRecordedUtc": "2026-09-28T15:59:56.947271+00:00"
+}

@@ -1,0 +1,59 @@
+{
+  "status": "CONTINUATION_STATIC_CHECKS_PASSED_NO_SCIENCE",
+  "recordedUtc": "2026-09-28T06:06:58.050731+00:00",
+  "worker": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_continue.py",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_continue.py",
+    "bytes": 52011,
+    "sha256": "cc68e3fc4ec16814b0433a9b52e2c58b42ce1fddb39a68d99628dd34c31758be"
+  },
+  "manifest": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_continuation_inputs.json",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_continuation_inputs.json",
+    "bytes": 292173,
+    "sha256": "5df598e3c2f755707785f8187f7718e35c4764a4f9897befdceb818e29843a0e"
+  },
+  "unchangedCommonAST": [
+    "require",
+    "digest",
+    "route",
+    "save",
+    "containment",
+    "SavedCodec"
+  ],
+  "unchangedScientificHelperAST": [
+    "simplify",
+    "matrix_reduce",
+    "zero_check",
+    "bind",
+    "UnitAudit",
+    "convolution",
+    "polynomial_series",
+    "alpha_safe",
+    "substitute_field",
+    "linear_form",
+    "formal_coefficients",
+    "prepare_bound",
+    "apply_action",
+    "decompose"
+  ],
+  "postRegularPartConstructionUnchangedExceptEntryTag": true,
+  "oldPrefixConstructionFunctionsAbsent": true,
+  "globalNamesResolved": true,
+  "noProducerImports": true,
+  "parentOperationsPinned": 61,
+  "diagnosticOperationsPinned": 12,
+  "nonJournalParentArtifactsPinned": 25,
+  "inputRecordsVerified": 447,
+  "restoredOperandAndReturnBytesIdenticalInStdlibTest": true,
+  "nestedIncompleteInputPersistencePassed": true,
+  "missingApprovalPreventsGateAndLaunch": true,
+  "scientificImportsExecuted": 0,
+  "scientificRestorations": 0,
+  "scientificOperations": 0,
+  "scientificWorkersLaunched": 0,
+  "externalReviewsSubmitted": 0,
+  "protectedBuilderSuffixSha256": "f01024512c9a028e7e524e5a95b5c455be42e125d10c36f94e20493109b013c2",
+  "newGeneratedFilesOver1MiB": [],
+  "preparationHarnessCorrection": "Initial global-name allowlist omitted standard __file__/__name__; corrected harness only, before any worker import or launch."
+}

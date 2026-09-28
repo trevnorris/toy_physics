@@ -1,0 +1,58 @@
+{
+  "status": "FORCING_CONTINUATION_STATIC_CHECKS_PASSED_NO_SCIENCE",
+  "recordedUtc": "2026-09-28T07:43:32.976510+00:00",
+  "worker": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_forcing_continue.py",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_forcing_continue.py",
+    "bytes": 42518,
+    "sha256": "e915d69e4248a0704bc44e7af872e0807a5657545662dc451e81837e22014a03"
+  },
+  "manifest": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_forcing_continuation_inputs.json",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_forcing_continuation_inputs.json",
+    "bytes": 2159010,
+    "sha256": "b25e8d95ae92ae12c03e8e6c34a137f2a41eab722ab7cfd80b4ecaff225e44c8"
+  },
+  "unchangedCommonAST": [
+    "require",
+    "digest",
+    "route",
+    "save",
+    "containment",
+    "SavedCodec"
+  ],
+  "unchangedScientificHelperAST": [
+    "simplify",
+    "matrix_reduce",
+    "zero_check",
+    "bind",
+    "UnitAudit",
+    "substitute_field",
+    "linear_form",
+    "formal_coefficients",
+    "prepare_bound",
+    "apply_action",
+    "decompose"
+  ],
+  "allPriorJournalMethodsUnchanged": true,
+  "remainingForcingConstructionByteIdentical": true,
+  "alphaSafeOnlyChange": "substitute exact endpoint map before bound-variable renaming",
+  "oldRegularEndFieldConstructionAbsent": true,
+  "allCompletedReturnsAndSupportingArtifactsPinned": true,
+  "globalNamesResolved": true,
+  "noProducerImports": true,
+  "inputRecordsVerified": 2819,
+  "restoredOperandAndReturnBytesIdenticalInStdlibTest": true,
+  "unfinishedInputResumeAndFailurePersistencePassed": true,
+  "missingApprovalPreventsGateAndLaunch": true,
+  "scientificImportsExecuted": 0,
+  "scientificRestorations": 0,
+  "scientificOperations": 0,
+  "scientificWorkersLaunched": 0,
+  "externalReviewsSubmitted": 0,
+  "protectedBuilderSuffixSha256": "f01024512c9a028e7e524e5a95b5c455be42e125d10c36f94e20493109b013c2",
+  "newGeneratedFilesOver1MiB": [
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_forcing_continuation_inputs.json"
+  ],
+  "explicitDiffExclusionVerified": true
+}

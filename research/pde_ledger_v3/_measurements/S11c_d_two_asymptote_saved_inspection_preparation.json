@@ -1,0 +1,40 @@
+{
+  "status": "PREPARED_SAVED_PAYLOAD_INSPECTION_NO_SCIENCE_YET",
+  "recordedUtc": "2026-09-28T13:27:50.266801+00:00",
+  "worker": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_saved_inspect.py",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_saved_inspect.py",
+    "bytes": 31269,
+    "sha256": "7ad854e696ab42aa8b57430953f6360f7e3efe42f29b7778dfee9c03b87b5886"
+  },
+  "manifest": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_saved_inspection_inputs.json",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_saved_inspection_inputs.json",
+    "bytes": 1497383,
+    "sha256": "4612a1c8d4f6b7dcd50fd52ea2df993f6d9ccb4e6e9355dc41494a61b75cdd54"
+  },
+  "launcher": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/launch_saved_inspection.py",
+    "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/launch_saved_inspection.py",
+    "bytes": 9607,
+    "sha256": "aa81e4c6fb74c643fd69bb232f441d5b7582b7cf27ecdf26bf257f7e0a7d9b37"
+  },
+  "proposal": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_saved_inspection_proposal.json",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_saved_inspection_proposal.json",
+    "bytes": 2363,
+    "sha256": "fa70f2af343b8983da03f5920c6723226490c1e772961be5f379203db42b423c"
+  },
+  "completionMessage": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/saved_inspection_completion_message.txt",
+    "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/saved_inspection_completion_message.txt",
+    "bytes": 3510,
+    "sha256": "16fe169be35ae486905750a959fa97ec3123a4d7f51f471ec99c6a7f3d801bfe"
+  },
+  "sourceFiles": 2567,
+  "inputRecords": 2575,
+  "scientificOperations": 0,
+  "scientificRestorations": 0,
+  "newExternalReviews": 0,
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection"
+}

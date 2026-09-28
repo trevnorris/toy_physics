@@ -1,0 +1,699 @@
+{
+  "status": "LOCALLY_CORRECTED_INPUTS_SCIENCE_APPROVAL_PENDING",
+  "inputs": {
+    "candidateCheckpoint": {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_outgoing_prescription_checkpoint.json",
+      "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_outgoing_prescription_checkpoint.json",
+      "bytes": 8024,
+      "sha256": "4af78a75718c303d73a726c5a8621989593fe360a6169ae71d8f07c6d012b3f5"
+    },
+    "productionCheckpoint": {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_outgoing_prescription_unlimited_checkpoint.json",
+      "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_outgoing_prescription_unlimited_checkpoint.json",
+      "bytes": 1836764,
+      "sha256": "87c88ceb23cc202535aa91481fe1d3bd4af76d15dce355b0acc19bb4853610b9"
+    },
+    "validationCheckpoint": {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_outgoing_prescription_validation_v2_checkpoint.json",
+      "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_outgoing_prescription_validation_v2_checkpoint.json",
+      "bytes": 1655968,
+      "sha256": "e72946e5599e9217436a527c58f8b750bcccdb4f00fe05bd36bed08ffcbb7a29"
+    },
+    "candidateOperationIndex": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operation-index.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operation-index.json",
+      "bytes": 838466,
+      "sha256": "c0b9590c228f30c11fb401e36dc39b7f181adb2e1d0f2ff49938ccb295e6b8e4"
+    },
+    "physicalInput": {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_variable_profile_development_input.json",
+      "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_variable_profile_development_input.json",
+      "bytes": 1884,
+      "sha256": "660b2b0b54494dce964c7f5fbd722a76a7e894d8ed92b18b5eb6290c3c10f1d5"
+    },
+    "planSources": {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_plan_sources.json",
+      "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_plan_sources.json",
+      "bytes": 25792,
+      "sha256": "10cf03adaab1c5573fdce130c9a3e97e974c73fa01b0ffa5e0253ba9813c1e08"
+    },
+    "methodPlan": {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_two_asymptote_response_plan.md",
+      "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_two_asymptote_response_plan.md",
+      "bytes": 13836,
+      "sha256": "b94f6fdf5e472a444d43fdeaf0d03d51efe325b1b444d7b63e02deddd6bfe832"
+    },
+    "stageContract": {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_two_asymptote_first_stage_contract.md",
+      "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_two_asymptote_first_stage_contract.md",
+      "bytes": 12109,
+      "sha256": "8dfab429d92251a8513bf3f8e6e98d91939c57b0b402c09814bf3c255ac690b9"
+    },
+    "implementation": {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_two_asymptote_implementation.md",
+      "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_two_asymptote_implementation.md",
+      "bytes": 8193,
+      "sha256": "4ea7af9c8d3ea30983876fe21678eae77a3d2a90c1e7a949f725e20189dc10a9"
+    },
+    "scopeAuthorization": {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_authorization.json",
+      "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_authorization.json",
+      "bytes": 610,
+      "sha256": "89b724792b59a5cdd4a2a1e00fca0b443490c609105b1290a135f9f39e1a764a"
+    },
+    "guard": {
+      "path": "/var/projects/toy_physics/scripts/s11c_guarded_run.py",
+      "canonicalPath": "/var/projects/toy_physics/scripts/s11c_guarded_run.py",
+      "bytes": 9977,
+      "sha256": "9194b3e04b43d345828082e6312b0a2d7a9293f6296153f9c6ccea2defb931d2"
+    },
+    "supervisor": {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+      "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+      "bytes": 3347,
+      "sha256": "45a16f7f952ca6b571362b1c386fec76cd86f1e0ad04113074adf49c683ec49c"
+    },
+    "completionHook": {
+      "path": "/var/projects/toy_physics/scripts/codex_job_watch.py",
+      "canonicalPath": "/var/projects/toy_physics/scripts/codex_job_watch.py",
+      "bytes": 4301,
+      "sha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77"
+    },
+    "physicalDefinitions": {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_d_mixing_scattering_sympy_audit.py",
+      "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_d_mixing_scattering_sympy_audit.py",
+      "bytes": 545480,
+      "sha256": "5bf77729682960bb59f10c672a5fe3f67a98b0a9533da7c6189a37183596050f"
+    },
+    "reduction": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-reduced-action-source-20260914/complete/reduced-action.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-reduced-action-source-20260914/complete/reduced-action.pickle",
+      "bytes": 1146420,
+      "sha256": "e9062c3455c7e59fe816f47172062a0c118b201d03809ec0826575dac22872b0"
+    },
+    "actions": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-reduced-action-source-20260914/complete/actions.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-reduced-action-source-20260914/complete/actions.pickle",
+      "bytes": 176671,
+      "sha256": "4c2372a7102d1db9f21a049ab3104465e8d9245ab832be88c900bc8519b46e02"
+    },
+    "checkpoint_S11c_d_reduced_action_source_checkpoint": {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_reduced_action_source_checkpoint.json",
+      "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_reduced_action_source_checkpoint.json",
+      "bytes": 10327,
+      "sha256": "b6dcd36ee6cf8ed3b3943e207012dd165fce62ec39cb8f53ca3c23f4715d094b"
+    },
+    "assembly": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-reduced-action-assembly-20260914/recovery-01/complete/assembly.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-reduced-action-assembly-20260914/recovery-01/complete/assembly.pickle",
+      "bytes": 111081,
+      "sha256": "8eda57998285137d99cce9564757627a57f8d5bc9b27091c86a65a9cc59230a0"
+    },
+    "checkpoint_S11c_d_reduced_action_assembly_checkpoint": {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_reduced_action_assembly_checkpoint.json",
+      "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_reduced_action_assembly_checkpoint.json",
+      "bytes": 8425,
+      "sha256": "b4afb727b1a1ad2a468b0bab9a6ab369dbe4dd35bc46acd7150b7fa581cd984f"
+    },
+    "grades": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-grades-20260919/production/complete/continuum-grades.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-grades-20260919/production/complete/continuum-grades.pickle",
+      "bytes": 307486,
+      "sha256": "e39412750fe58734ba4db2bd84d40908d18706ae055f6ddd6e3f53f560aa9b71"
+    },
+    "checkpoint_S11c_d_continuum_grade_checkpoint": {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_continuum_grade_checkpoint.json",
+      "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_continuum_grade_checkpoint.json",
+      "bytes": 9207,
+      "sha256": "3987ff4abb782050fffc767065ed9b3126da49215aa0df41320abef7fdec4692"
+    },
+    "leftPencil": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/finish-02/complete/left-pencil.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/finish-02/complete/left-pencil.pickle",
+      "bytes": 9936,
+      "sha256": "66bd1e5ccbf08fb7a3c11df461232783850062090fb4500d3a7c0f6ec6253174"
+    },
+    "rightPencil": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/finish-02/complete/right-pencil.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/finish-02/complete/right-pencil.pickle",
+      "bytes": 13576,
+      "sha256": "170aa9cfa44630fe7900c33c2259960dff1c964cac50b5c931a0733cffa457a5"
+    },
+    "checkpoint_S11c_d_continuum_boundary_checkpoint": {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_continuum_boundary_checkpoint.json",
+      "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_continuum_boundary_checkpoint.json",
+      "bytes": 47697,
+      "sha256": "b2614b74b4ec68de6d9f270bdf115833eea26a9baf168643663f21314a141d2d"
+    },
+    "checkpoint_S11c_d_source_fourier_factorization_checkpoint": {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_source_fourier_factorization_checkpoint.json",
+      "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_source_fourier_factorization_checkpoint.json",
+      "bytes": 17922,
+      "sha256": "fcf6f1c5598b63c11d4f8a76d2d94c2b5bace590e83d4beea3e52e82f44158a6"
+    },
+    "uniform": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-ends-20260920/retry-02/complete/cases/LAB_HELD__RHO4_CONSTANT/uniform-source.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-ends-20260920/retry-02/complete/cases/LAB_HELD__RHO4_CONSTANT/uniform-source.pickle",
+      "bytes": 109308,
+      "sha256": "a482c5023d16558f52b20d0a347d6e38f33f0f06f780abd256c5220f922b5571"
+    },
+    "ownReferenceReduction": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-matrices-20260920/production/complete/accepted-cases/LAB_HELD__RHO4_CONSTANT/reduced-action.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-matrices-20260920/production/complete/accepted-cases/LAB_HELD__RHO4_CONSTANT/reduced-action.pickle",
+      "bytes": 1146420,
+      "sha256": "e9062c3455c7e59fe816f47172062a0c118b201d03809ec0826575dac22872b0"
+    },
+    "candidate": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/outgoing-prescription-candidate.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/outgoing-prescription-candidate.pickle",
+      "bytes": 79171,
+      "sha256": "7702b16291588d2ea823f1503b63c5d1009f111d896980eb209b9164a55037a8"
+    },
+    "domain": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/prescription-domain.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/prescription-domain.pickle",
+      "bytes": 11353,
+      "sha256": "2b296cda6d33fdb0089fb625cd8a7d045cb217dd4363b4b61f83f4858ad0de8e"
+    },
+    "branchEvidence": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/branch-and-coordinate-evidence.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/branch-and-coordinate-evidence.pickle",
+      "bytes": 407,
+      "sha256": "c112a985841b8d54ef52f3b31a78f19fc2d3f56a0af14ae939372e5ec144577d"
+    },
+    "context": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operations/001-restore-kernel-context/value.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operations/001-restore-kernel-context/value.pickle",
+      "bytes": 36885,
+      "sha256": "63c9fd4b044b16caf66f514e7060749a1290bce345a341deff710151e431c4a6"
+    },
+    "units": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operations/002-restore-kernel-units/value.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operations/002-restore-kernel-units/value.pickle",
+      "bytes": 1049,
+      "sha256": "acd555aecd20a6447303fbd1412e7bd5d037b9a7e92b00e9765953b695c6bcf1"
+    },
+    "fixedSymbol": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operations/005-bind-accepted-symbol/value.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operations/005-bind-accepted-symbol/value.pickle",
+      "bytes": 1683,
+      "sha256": "0bd919f6941e5d62b68912b8776a59334e579241138ad58e7a38319791da9ae2"
+    },
+    "fixedInverse": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operations/037-bind-saved-inverse/value.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operations/037-bind-saved-inverse/value.pickle",
+      "bytes": 20912,
+      "sha256": "906a114597ed1a5eaf109921bf17ead241d5205c060b6a5ad51af207c0cd1859"
+    },
+    "chart00": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operations/119-inverse-0-0-algebraic-chart/value.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operations/119-inverse-0-0-algebraic-chart/value.pickle",
+      "bytes": 2373,
+      "sha256": "5accb363811b16004d4679c7ba9be6a0949364ac5783c8c2eabeddc27fedf3c4"
+    },
+    "chartInput00": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operations/119-inverse-0-0-algebraic-chart/input.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operations/119-inverse-0-0-algebraic-chart/input.pickle",
+      "bytes": 5414,
+      "sha256": "0647be60541efcdbc7b1e5319c9f316b71deb2a7763d9673b138808f3712ce66"
+    },
+    "chart01": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operations/122-inverse-0-1-algebraic-chart/value.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operations/122-inverse-0-1-algebraic-chart/value.pickle",
+      "bytes": 2178,
+      "sha256": "409061ba8dadd3dec02fab6b77dedb31bd8e6fa228c3d991478213c5386c16b7"
+    },
+    "chartInput01": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operations/122-inverse-0-1-algebraic-chart/input.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operations/122-inverse-0-1-algebraic-chart/input.pickle",
+      "bytes": 5334,
+      "sha256": "451fcaa72db6b4ff3f887d2ee4582ed2c878d11450f16b7deec2c11984b6adf5"
+    },
+    "chart02": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operations/125-inverse-0-2-algebraic-chart/value.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operations/125-inverse-0-2-algebraic-chart/value.pickle",
+      "bytes": 2237,
+      "sha256": "4400a133a7303029659a775db99120541bedb9ef8975543d182b0c4e8af6c7b0"
+    },
+    "chartInput02": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operations/125-inverse-0-2-algebraic-chart/input.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operations/125-inverse-0-2-algebraic-chart/input.pickle",
+      "bytes": 5352,
+      "sha256": "5096c6e82cd4c295ca6d3f3597b10171618596a885bf26e701f49bb8d49ac724"
+    },
+    "chart03": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operations/128-inverse-0-3-algebraic-chart/value.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operations/128-inverse-0-3-algebraic-chart/value.pickle",
+      "bytes": 1918,
+      "sha256": "70b739fa41be01c0f5f14f6b0a62680da53d6d57757cb3158ac53e3436dbded5"
+    },
+    "chartInput03": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operations/128-inverse-0-3-algebraic-chart/input.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operations/128-inverse-0-3-algebraic-chart/input.pickle",
+      "bytes": 5328,
+      "sha256": "83e1c6936c2e000201f8fc5a28d4121f4cddeea742af4a6fb5cc300724b11104"
+    },
+    "chart04": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operations/131-inverse-0-4-algebraic-chart/value.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operations/131-inverse-0-4-algebraic-chart/value.pickle",
+      "bytes": 1757,
+      "sha256": "b8045ae688073483905d6d2ded0637d91d75e0fadd5e98d34d83267f6beb3b19"
+    },
+    "chartInput04": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operations/131-inverse-0-4-algebraic-chart/input.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operations/131-inverse-0-4-algebraic-chart/input.pickle",
+      "bytes": 5358,
+      "sha256": "00615773d6527d6a7fe44af590d1a57f577502160e6b670ffb275ab743a62d10"
+    },
+    "chart10": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operations/134-inverse-1-0-algebraic-chart/value.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operations/134-inverse-1-0-algebraic-chart/value.pickle",
+      "bytes": 2178,
+      "sha256": "409061ba8dadd3dec02fab6b77dedb31bd8e6fa228c3d991478213c5386c16b7"
+    },
+    "chartInput10": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operations/134-inverse-1-0-algebraic-chart/input.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operations/134-inverse-1-0-algebraic-chart/input.pickle",
+      "bytes": 5316,
+      "sha256": "2b40705fe80232788bf16cdb36212e95f7ce751f1615a067c3738f2605147a06"
+    },
+    "chart11": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operations/137-inverse-1-1-algebraic-chart/value.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operations/137-inverse-1-1-algebraic-chart/value.pickle",
+      "bytes": 2373,
+      "sha256": "19e09956cccc69264dfcf65f40a4e409989004bcdc02995466f3e940c530c1e5"
+    },
+    "chartInput11": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operations/137-inverse-1-1-algebraic-chart/input.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operations/137-inverse-1-1-algebraic-chart/input.pickle",
+      "bytes": 5450,
+      "sha256": "1907ad7092e493694c19bb670aa614b0d73bfaf898a317afbac7ff8104d56a52"
+    },
+    "chart12": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operations/140-inverse-1-2-algebraic-chart/value.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operations/140-inverse-1-2-algebraic-chart/value.pickle",
+      "bytes": 2234,
+      "sha256": "10a56283a60fd8e919330e321f559be12846bbe02f6be302bf81b11b0abaefc1"
+    },
+    "chartInput12": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operations/140-inverse-1-2-algebraic-chart/input.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operations/140-inverse-1-2-algebraic-chart/input.pickle",
+      "bytes": 5364,
+      "sha256": "375e6271b6bf9e17c7a30c28ac186c85ae5ba4832a84db316bdbd061183e6fa6"
+    },
+    "chart13": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operations/143-inverse-1-3-algebraic-chart/value.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operations/143-inverse-1-3-algebraic-chart/value.pickle",
+      "bytes": 1913,
+      "sha256": "74542196079c55582b038c06b33e8fc12fc18967adbf7ae86b80f3e2dac4fbcc"
+    },
+    "chartInput13": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operations/143-inverse-1-3-algebraic-chart/input.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operations/143-inverse-1-3-algebraic-chart/input.pickle",
+      "bytes": 5340,
+      "sha256": "73e7c3ed326ae562d9f2f3321ce81ac621f26d6c40ad92b5de0fe4c7b4cb5c74"
+    },
+    "chart14": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operations/146-inverse-1-4-algebraic-chart/value.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operations/146-inverse-1-4-algebraic-chart/value.pickle",
+      "bytes": 1751,
+      "sha256": "b5e2ff3f3cf1866b60822ea0d5396ffd64a77906c13edc2b804672e8001142c9"
+    },
+    "chartInput14": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operations/146-inverse-1-4-algebraic-chart/input.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operations/146-inverse-1-4-algebraic-chart/input.pickle",
+      "bytes": 5376,
+      "sha256": "2ad6f1b04d47d54357e3b54f0fc7ed8668146793ec1d6cd5bfeb47fca2761bbb"
+    },
+    "chart20": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operations/149-inverse-2-0-algebraic-chart/value.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operations/149-inverse-2-0-algebraic-chart/value.pickle",
+      "bytes": 2237,
+      "sha256": "4400a133a7303029659a775db99120541bedb9ef8975543d182b0c4e8af6c7b0"
+    },
+    "chartInput20": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operations/149-inverse-2-0-algebraic-chart/input.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operations/149-inverse-2-0-algebraic-chart/input.pickle",
+      "bytes": 5322,
+      "sha256": "a7291956f8a89c9f981e915471183520d40cc668a76ea224e08a192f0ca5d1bd"
+    },
+    "chart21": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operations/152-inverse-2-1-algebraic-chart/value.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operations/152-inverse-2-1-algebraic-chart/value.pickle",
+      "bytes": 2234,
+      "sha256": "10a56283a60fd8e919330e321f559be12846bbe02f6be302bf81b11b0abaefc1"
+    },
+    "chartInput21": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operations/152-inverse-2-1-algebraic-chart/input.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operations/152-inverse-2-1-algebraic-chart/input.pickle",
+      "bytes": 5352,
+      "sha256": "a05574c0b23e9b6d5d569e0fdd5e2c6dfe334504c93359aba5bd7cd49de7b4fe"
+    },
+    "chart22": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operations/155-inverse-2-2-algebraic-chart/value.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operations/155-inverse-2-2-algebraic-chart/value.pickle",
+      "bytes": 2319,
+      "sha256": "c66ff492f64fbee414f57625f1cae5cd5ccf1783a3c38ebbaeec52656b05fdb1"
+    },
+    "chartInput22": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operations/155-inverse-2-2-algebraic-chart/input.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operations/155-inverse-2-2-algebraic-chart/input.pickle",
+      "bytes": 5464,
+      "sha256": "c75e8d9bd90194dcba47fca75160e2ae8d8633d49f0d2eaf37cbc612f7ab7530"
+    },
+    "chart23": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operations/158-inverse-2-3-algebraic-chart/value.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operations/158-inverse-2-3-algebraic-chart/value.pickle",
+      "bytes": 2026,
+      "sha256": "480e4f6e888aee171311924a5aa5756c396369f74b00c14cf3fe9dde4be031bf"
+    },
+    "chartInput23": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operations/158-inverse-2-3-algebraic-chart/input.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operations/158-inverse-2-3-algebraic-chart/input.pickle",
+      "bytes": 5322,
+      "sha256": "ae4f0cd242d73d19912fce8526869e9daba1c6591ef1e464f7d45fef42afc64a"
+    },
+    "chart24": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operations/161-inverse-2-4-algebraic-chart/value.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operations/161-inverse-2-4-algebraic-chart/value.pickle",
+      "bytes": 1823,
+      "sha256": "f22f2a603835577610cb9218751d366a17192beeb25e4158808263df70c1ddd6"
+    },
+    "chartInput24": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operations/161-inverse-2-4-algebraic-chart/input.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operations/161-inverse-2-4-algebraic-chart/input.pickle",
+      "bytes": 5392,
+      "sha256": "b6621418010b526b3ca280f06972cd45d36931cd080a7f8c8c45c8c661a2c19e"
+    },
+    "chart30": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operations/164-inverse-3-0-algebraic-chart/value.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operations/164-inverse-3-0-algebraic-chart/value.pickle",
+      "bytes": 1757,
+      "sha256": "318a06c7d09dbfa197b6e46949f265709fed922acf3cc0e2ee312cb45f9e9359"
+    },
+    "chartInput30": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operations/164-inverse-3-0-algebraic-chart/input.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operations/164-inverse-3-0-algebraic-chart/input.pickle",
+      "bytes": 5292,
+      "sha256": "05f08ae0b95be3b25ea650d584564c7f45343dcb379bb3c8f84068d37027906c"
+    },
+    "chart31": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operations/167-inverse-3-1-algebraic-chart/value.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operations/167-inverse-3-1-algebraic-chart/value.pickle",
+      "bytes": 1755,
+      "sha256": "c92b8891f14dff62b25e4c6cae26f0461681de662b6f2b005490a80ede5f9789"
+    },
+    "chartInput31": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operations/167-inverse-3-1-algebraic-chart/input.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operations/167-inverse-3-1-algebraic-chart/input.pickle",
+      "bytes": 5322,
+      "sha256": "fd41ec3bc571facb5a3000d84499217082a2669f88e42afc41af6b7b4e9874e2"
+    },
+    "chart32": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operations/170-inverse-3-2-algebraic-chart/value.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operations/170-inverse-3-2-algebraic-chart/value.pickle",
+      "bytes": 1822,
+      "sha256": "388f4d191cafb49255d6e18813f1f15a13c0c9d9dbe7c2aa1c70cd24d8c9f312"
+    },
+    "chartInput32": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operations/170-inverse-3-2-algebraic-chart/input.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operations/170-inverse-3-2-algebraic-chart/input.pickle",
+      "bytes": 5320,
+      "sha256": "9ac0666750b2749b881810e8d4a66842e3f75dc9734859565ec5577e4516bba6"
+    },
+    "chart33": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operations/173-inverse-3-3-algebraic-chart/value.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operations/173-inverse-3-3-algebraic-chart/value.pickle",
+      "bytes": 1926,
+      "sha256": "48a6e8d7ca7ec5ec69ed1d78012343fc7e538500867012553a0e8ba9ba82a52f"
+    },
+    "chartInput33": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operations/173-inverse-3-3-algebraic-chart/input.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operations/173-inverse-3-3-algebraic-chart/input.pickle",
+      "bytes": 5289,
+      "sha256": "67bf39b7783dd2096cd7c15cba3c9c068b9b2ee967022df25277a0914787a37b"
+    },
+    "chart34": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operations/176-inverse-3-4-algebraic-chart/value.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operations/176-inverse-3-4-algebraic-chart/value.pickle",
+      "bytes": 1915,
+      "sha256": "f087de0138051d55cfc90f33213398f15113b2cb915603c87ef96047e99484eb"
+    },
+    "chartInput34": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operations/176-inverse-3-4-algebraic-chart/input.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operations/176-inverse-3-4-algebraic-chart/input.pickle",
+      "bytes": 5324,
+      "sha256": "9892f9c8c2755e2c4e998308e4564c6271c62cb5a2032596766f03d775ee7aae"
+    },
+    "chart40": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operations/179-inverse-4-0-algebraic-chart/value.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operations/179-inverse-4-0-algebraic-chart/value.pickle",
+      "bytes": 1757,
+      "sha256": "c52d6e3105a2c97a4bc4d077a89acb3c2644ab00a222231b12824d07ab7efdf9"
+    },
+    "chartInput40": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operations/179-inverse-4-0-algebraic-chart/input.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operations/179-inverse-4-0-algebraic-chart/input.pickle",
+      "bytes": 5305,
+      "sha256": "af550b14b6f5bbc38ff69b6b5139310c1ff80cef54f1655cef1bcd87987b4661"
+    },
+    "chart41": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operations/182-inverse-4-1-algebraic-chart/value.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operations/182-inverse-4-1-algebraic-chart/value.pickle",
+      "bytes": 1751,
+      "sha256": "bf168a7912a54253ee290d8532ce67f23a4196e2574698bee9c691a6eab71d12"
+    },
+    "chartInput41": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operations/182-inverse-4-1-algebraic-chart/input.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operations/182-inverse-4-1-algebraic-chart/input.pickle",
+      "bytes": 5323,
+      "sha256": "d9de57cae0d83c753ca4db6fad5678949e308e04730648f72221c7a3fe8071e8"
+    },
+    "chart42": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operations/185-inverse-4-2-algebraic-chart/value.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operations/185-inverse-4-2-algebraic-chart/value.pickle",
+      "bytes": 1823,
+      "sha256": "f2e670d36ace615f192af53b70c892719171a5017d039353608f45e0fcca0af6"
+    },
+    "chartInput42": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operations/185-inverse-4-2-algebraic-chart/input.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operations/185-inverse-4-2-algebraic-chart/input.pickle",
+      "bytes": 5333,
+      "sha256": "371eca87dd5727f2ad8d0a68c615a66036dd2accc769a8bb09f0e2254b481849"
+    },
+    "chart43": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operations/188-inverse-4-3-algebraic-chart/value.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operations/188-inverse-4-3-algebraic-chart/value.pickle",
+      "bytes": 1925,
+      "sha256": "3c0ba6e97b8cf154ea56d81cb6e2ca4169be31563cfb721e18f9167502ea066b"
+    },
+    "chartInput43": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operations/188-inverse-4-3-algebraic-chart/input.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operations/188-inverse-4-3-algebraic-chart/input.pickle",
+      "bytes": 5256,
+      "sha256": "f63b5e3dcf1814d25a978fb3a428b3b28a2f85e08beebaf45b05815760601517"
+    },
+    "chart44": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operations/191-inverse-4-4-algebraic-chart/value.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operations/191-inverse-4-4-algebraic-chart/value.pickle",
+      "bytes": 1919,
+      "sha256": "6cccabef3f6b7fa582f15ebf32a24427bd5f53eadd1b97538561dc41d0d39d5f"
+    },
+    "chartInput44": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operations/191-inverse-4-4-algebraic-chart/input.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operations/191-inverse-4-4-algebraic-chart/input.pickle",
+      "bytes": 5384,
+      "sha256": "d6159c4d625656c9353b325598313c06e03afebffe4916f3dc67a0970e44107f"
+    },
+    "residue16": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operations/218-block-16-exact-residue/value.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operations/218-block-16-exact-residue/value.pickle",
+      "bytes": 1242,
+      "sha256": "090fa1b2eccda4f130280e8e66e741fb513f49c7e1760f099c405f04cf70a7fa"
+    },
+    "q16": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operations/220-block-16-physical-q-at-pole/value.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operations/220-block-16-physical-q-at-pole/value.pickle",
+      "bytes": 172,
+      "sha256": "ecd2e080f331ce72ae10ad6acb9ca8583c13c9fa1d38a1f7a58cc0d0a9d2021c"
+    },
+    "p16": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operations/219-block-16-source-at-pole/value.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operations/219-block-16-source-at-pole/value.pickle",
+      "bytes": 1139,
+      "sha256": "8c28a9fd6a578ace4639b32e6d0d75553f2ecf2a82a33e6954fe8d11d8dfbec0"
+    },
+    "residue17": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operations/208-block-17-exact-residue/value.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operations/208-block-17-exact-residue/value.pickle",
+      "bytes": 1242,
+      "sha256": "4c263e7ad9e66dbe247567f97f434b92a1bc1143e032341389355216d3857ca2"
+    },
+    "q17": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operations/210-block-17-physical-q-at-pole/value.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operations/210-block-17-physical-q-at-pole/value.pickle",
+      "bytes": 172,
+      "sha256": "ecd2e080f331ce72ae10ad6acb9ca8583c13c9fa1d38a1f7a58cc0d0a9d2021c"
+    },
+    "p17": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operations/209-block-17-source-at-pole/value.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operations/209-block-17-source-at-pole/value.pickle",
+      "bytes": 1213,
+      "sha256": "67a991b6869a9198a08f3edcb46000400a05cc0c54e996e3ca3abc63e8130c95"
+    },
+    "schemaSource_S11c_d_uniform_source": {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_uniform_source.py",
+      "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_uniform_source.py",
+      "bytes": 14588,
+      "sha256": "2a135aea365c7b5e57bfff7683c7b927cda52c0d37f6a9bad3c961eb6205a2b2"
+    },
+    "schemaSource_S11c_d_reduced_action_source_check": {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_reduced_action_source_check.py",
+      "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_reduced_action_source_check.py",
+      "bytes": 15732,
+      "sha256": "aae3b2402e1707ef27f217b917dc10592f38acbe35d18356fbc4886ed854f754"
+    },
+    "schemaSource_S11c_d_reduced_action_assembly_check": {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_reduced_action_assembly_check.py",
+      "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_reduced_action_assembly_check.py",
+      "bytes": 13460,
+      "sha256": "f620a643c761474aeaa181ad34a368bc35c1f9e81fb528a81744c2a32af364a8"
+    },
+    "schemaSource_S11c_d_continuum_grades": {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_continuum_grades.py",
+      "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_continuum_grades.py",
+      "bytes": 19471,
+      "sha256": "0443c3adbeaf813ad66c60af0a50c96e9a841277d51f9c23bf1c601d2fdf329d"
+    },
+    "schemaSource_S11c_d_continuum_boundary": {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_continuum_boundary.py",
+      "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_continuum_boundary.py",
+      "bytes": 28349,
+      "sha256": "ed3a6539d3151c52d25f12308b121897baf3bd6a5a626a598ab728988ab933a0"
+    },
+    "schemaSource_S11c_d_reference_kernel": {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_reference_kernel.py",
+      "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_reference_kernel.py",
+      "bytes": 20251,
+      "sha256": "6f3b8a5d34b2b0eab3d63fa6ab2af212c069b2bf8b23b7a6e0d2834912acffed"
+    },
+    "schemaSource_S11c_d_outgoing_prescription_unlimited": {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_outgoing_prescription_unlimited.py",
+      "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_outgoing_prescription_unlimited.py",
+      "bytes": 37067,
+      "sha256": "388e9104bb5a936a3a5ef2e8168a6522783d1e6c12e0cf51408493fe85fb615a"
+    },
+    "gradeInventory": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-grades-20260919/production/complete/record-inventory.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-grades-20260919/production/complete/record-inventory.json",
+      "bytes": 126458,
+      "sha256": "a26e4ae2cbb6fb0a5b14167321a50fee6175ecaae5da16d9512be4bb09164d3a"
+    },
+    "gradeInventoryEvidence": {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_grade_inventory_evidence.json",
+      "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_grade_inventory_evidence.json",
+      "bytes": 43366,
+      "sha256": "d87991d3686f79a3631c5f58dc0f26814ac4da97c5ab9b7a15c69577b1675b2b"
+    },
+    "boundedCorrectionDisposition": {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_review_disposition.md",
+      "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_review_disposition.md",
+      "bytes": 9154,
+      "sha256": "2a77b98760da246d1fd05bd033cc0ebae2b819dcfca9d4203469f54675019792"
+    },
+    "protectedBuilderReport": {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_sympy_builder_report.md",
+      "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_sympy_builder_report.md",
+      "bytes": 36895,
+      "sha256": "4b083fe7b78a4357bc27495a1ea5bb34eeffffe1134158e24f2fdfcb66394599"
+    }
+  },
+  "candidateArtifacts": {
+    "candidate": "outgoing-prescription-candidate.pickle",
+    "domain": "prescription-domain.pickle",
+    "branchEvidence": "branch-and-coordinate-evidence.pickle",
+    "context": "operations/001-restore-kernel-context/value.pickle",
+    "units": "operations/002-restore-kernel-units/value.pickle",
+    "fixedSymbol": "operations/005-bind-accepted-symbol/value.pickle",
+    "fixedInverse": "operations/037-bind-saved-inverse/value.pickle",
+    "chart00": "operations/119-inverse-0-0-algebraic-chart/value.pickle",
+    "chartInput00": "operations/119-inverse-0-0-algebraic-chart/input.pickle",
+    "chart01": "operations/122-inverse-0-1-algebraic-chart/value.pickle",
+    "chartInput01": "operations/122-inverse-0-1-algebraic-chart/input.pickle",
+    "chart02": "operations/125-inverse-0-2-algebraic-chart/value.pickle",
+    "chartInput02": "operations/125-inverse-0-2-algebraic-chart/input.pickle",
+    "chart03": "operations/128-inverse-0-3-algebraic-chart/value.pickle",
+    "chartInput03": "operations/128-inverse-0-3-algebraic-chart/input.pickle",
+    "chart04": "operations/131-inverse-0-4-algebraic-chart/value.pickle",
+    "chartInput04": "operations/131-inverse-0-4-algebraic-chart/input.pickle",
+    "chart10": "operations/134-inverse-1-0-algebraic-chart/value.pickle",
+    "chartInput10": "operations/134-inverse-1-0-algebraic-chart/input.pickle",
+    "chart11": "operations/137-inverse-1-1-algebraic-chart/value.pickle",
+    "chartInput11": "operations/137-inverse-1-1-algebraic-chart/input.pickle",
+    "chart12": "operations/140-inverse-1-2-algebraic-chart/value.pickle",
+    "chartInput12": "operations/140-inverse-1-2-algebraic-chart/input.pickle",
+    "chart13": "operations/143-inverse-1-3-algebraic-chart/value.pickle",
+    "chartInput13": "operations/143-inverse-1-3-algebraic-chart/input.pickle",
+    "chart14": "operations/146-inverse-1-4-algebraic-chart/value.pickle",
+    "chartInput14": "operations/146-inverse-1-4-algebraic-chart/input.pickle",
+    "chart20": "operations/149-inverse-2-0-algebraic-chart/value.pickle",
+    "chartInput20": "operations/149-inverse-2-0-algebraic-chart/input.pickle",
+    "chart21": "operations/152-inverse-2-1-algebraic-chart/value.pickle",
+    "chartInput21": "operations/152-inverse-2-1-algebraic-chart/input.pickle",
+    "chart22": "operations/155-inverse-2-2-algebraic-chart/value.pickle",
+    "chartInput22": "operations/155-inverse-2-2-algebraic-chart/input.pickle",
+    "chart23": "operations/158-inverse-2-3-algebraic-chart/value.pickle",
+    "chartInput23": "operations/158-inverse-2-3-algebraic-chart/input.pickle",
+    "chart24": "operations/161-inverse-2-4-algebraic-chart/value.pickle",
+    "chartInput24": "operations/161-inverse-2-4-algebraic-chart/input.pickle",
+    "chart30": "operations/164-inverse-3-0-algebraic-chart/value.pickle",
+    "chartInput30": "operations/164-inverse-3-0-algebraic-chart/input.pickle",
+    "chart31": "operations/167-inverse-3-1-algebraic-chart/value.pickle",
+    "chartInput31": "operations/167-inverse-3-1-algebraic-chart/input.pickle",
+    "chart32": "operations/170-inverse-3-2-algebraic-chart/value.pickle",
+    "chartInput32": "operations/170-inverse-3-2-algebraic-chart/input.pickle",
+    "chart33": "operations/173-inverse-3-3-algebraic-chart/value.pickle",
+    "chartInput33": "operations/173-inverse-3-3-algebraic-chart/input.pickle",
+    "chart34": "operations/176-inverse-3-4-algebraic-chart/value.pickle",
+    "chartInput34": "operations/176-inverse-3-4-algebraic-chart/input.pickle",
+    "chart40": "operations/179-inverse-4-0-algebraic-chart/value.pickle",
+    "chartInput40": "operations/179-inverse-4-0-algebraic-chart/input.pickle",
+    "chart41": "operations/182-inverse-4-1-algebraic-chart/value.pickle",
+    "chartInput41": "operations/182-inverse-4-1-algebraic-chart/input.pickle",
+    "chart42": "operations/185-inverse-4-2-algebraic-chart/value.pickle",
+    "chartInput42": "operations/185-inverse-4-2-algebraic-chart/input.pickle",
+    "chart43": "operations/188-inverse-4-3-algebraic-chart/value.pickle",
+    "chartInput43": "operations/188-inverse-4-3-algebraic-chart/input.pickle",
+    "chart44": "operations/191-inverse-4-4-algebraic-chart/value.pickle",
+    "chartInput44": "operations/191-inverse-4-4-algebraic-chart/input.pickle",
+    "residue16": "operations/218-block-16-exact-residue/value.pickle",
+    "q16": "operations/220-block-16-physical-q-at-pole/value.pickle",
+    "p16": "operations/219-block-16-source-at-pole/value.pickle",
+    "residue17": "operations/208-block-17-exact-residue/value.pickle",
+    "q17": "operations/210-block-17-physical-q-at-pole/value.pickle",
+    "p17": "operations/209-block-17-source-at-pole/value.pickle"
+  },
+  "ownReferenceReductionIdentity": {
+    "original": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-reduced-action-source-20260914/complete/reduced-action.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-reduced-action-source-20260914/complete/reduced-action.pickle",
+      "bytes": 1146420,
+      "sha256": "e9062c3455c7e59fe816f47172062a0c118b201d03809ec0826575dac22872b0"
+    },
+    "own": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-matrices-20260920/production/complete/accepted-cases/LAB_HELD__RHO4_CONSTANT/reduced-action.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-matrices-20260920/production/complete/accepted-cases/LAB_HELD__RHO4_CONSTANT/reduced-action.pickle",
+      "bytes": 1146420,
+      "sha256": "e9062c3455c7e59fe816f47172062a0c118b201d03809ec0826575dac22872b0"
+    },
+    "sameBytes": true
+  },
+  "savedTableConvention": "pencilCoefficients[(etaOrder,sigmaOrder,kOrder)], including total physical-q transport and 1/kOrder!; use only kOrder 0,1.",
+  "consumerScope": "Exact first-grade end lifts and native whole-line forcing expressions; domain can remain specifically unresolved.",
+  "scientificOperationsDuringPreparation": 0,
+  "scientificPacketRestorationsDuringPreparation": 0,
+  "productionAuthorized": false,
+  "externalSubmissionAuthorized": false,
+  "reviewedManifestSha256": "570fba60b726cf8992033292b6d50471423199c27f3585bf21ea9e3e5e0657f5",
+  "correctionScope": "Formal carrier coefficient collection, actual one-sided term omission, pre-guard persistence, explicit unverified plane-jet premise, grade inventory join; original local mathematics unchanged."
+}

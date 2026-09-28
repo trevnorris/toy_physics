@@ -1,0 +1,48 @@
+{
+  "status": "STATIC_PREPARATION_CHECKS_PASSED_NO_SCIENCE",
+  "recordedUtc": "2026-09-28T05:36:41.058743+00:00",
+  "worker": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_entry_diagnostic.py",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_entry_diagnostic.py",
+    "bytes": 15186,
+    "sha256": "e1b782a43e0d1596237f51622ea5a9c2039d7a5c02534bfc518bb02cdaaab50f"
+  },
+  "launcher": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/launch_entry_diagnostic.py",
+    "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/launch_entry_diagnostic.py",
+    "bytes": 9509,
+    "sha256": "c5031f1e9e83787b218c995ffd90f38d0d7e3df738057b57cc1a07dade1eaf00"
+  },
+  "unchangedASTHelpers": [
+    "require",
+    "digest",
+    "route",
+    "save",
+    "containment",
+    "SavedCodec",
+    "Journal",
+    "simplify",
+    "convolution",
+    "polynomial_series"
+  ],
+  "inputRecordsVerified": 392,
+  "parentArtifactsVerified": 279,
+  "parentInputHashesVerified": 101,
+  "seriesSavedBeforeFlagObservation": true,
+  "scientificRestoreAllowlist": [
+    "incompleteInput"
+  ],
+  "missingApprovalPreventsGateAndRunDirectory": true,
+  "missingApprovalExitCode": 1,
+  "stdlibOnlyPersistenceCheckPassed": true,
+  "scientificImportsExecuted": 0,
+  "scientificRestorations": 0,
+  "scientificOperations": 0,
+  "scientificWorkersLaunched": 0,
+  "externalReviewsSubmitted": 0,
+  "activeDiagnosticGate": false,
+  "diagnosticRunDirectoryExists": false,
+  "sharedGuardSha256": "9194b3e04b43d345828082e6312b0a2d7a9293f6296153f9c6ccea2defb931d2",
+  "protectedBuilderSuffixSha256": "f01024512c9a028e7e524e5a95b5c455be42e125d10c36f94e20493109b013c2",
+  "newGeneratedFilesOver1MiB": []
+}

@@ -1,0 +1,49 @@
+{
+  "status": "CORRECTED_SINGLE_STAGE_PREPARED_NOT_AUTHORIZED_OR_LAUNCHED",
+  "worker": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_lift.py",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_lift.py",
+    "bytes": 54891,
+    "sha256": "523e0b7423906f793d42a68b67c139f5ec7fde9be8843888c499c7a10cc336de"
+  },
+  "inputs": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_corrected_inputs.json",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_corrected_inputs.json",
+    "bytes": 51622,
+    "sha256": "28db0c04a4c2812dc944ae3c0f48b263ffcc0137bc00f06a23fd979b91bb639f"
+  },
+  "inputFiles": 101,
+  "adjudication": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_review_adjudication.json",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_review_adjudication.json",
+    "bytes": 6150,
+    "sha256": "60b390c8fd7c94802fd2c38b8275d4ea0fe87b5f1e00dd84087d646cb45d25e2"
+  },
+  "pendingGate": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_pending_gate.json",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_pending_gate.json",
+    "bytes": 1835,
+    "sha256": "e5abf7f4ffb1f112a7d67d9374f1764f5312074577ce59e1c2481505f5fb784c"
+  },
+  "launcher": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/launch_stage.py",
+    "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/launch_stage.py",
+    "bytes": 9212,
+    "sha256": "ffa761698740a7251c7151df0d88128db6b3bd2c5ee6b33135c64b6fe2c67dcf"
+  },
+  "completionMessage": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/stage_completion_message.txt",
+    "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/stage_completion_message.txt",
+    "bytes": 3427,
+    "sha256": "f1ef8b41a16c2e6a1fcc992b08eed28d7eae9c27b3a9aa0c90f0e0ea0597bc97"
+  },
+  "launchDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/production",
+  "reviewedPacketUnchanged": true,
+  "protectedBuilderSuffixSha256": "f01024512c9a028e7e524e5a95b5c455be42e125d10c36f94e20493109b013c2",
+  "scientificWorkersLaunched": 0,
+  "scientificOperations": 0,
+  "scientificRestorations": 0,
+  "externalReviewsLaunched": 0,
+  "requires": "Explicit approval of the one bounded science stage; review submission approval does not authorize it.",
+  "currentThread": "01a0e01b-ef84-7192-817f-584cda5d339b"
+}

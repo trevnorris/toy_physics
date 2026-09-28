@@ -1,0 +1,109 @@
+{
+  "status": "SUBSTANTIVE_IMPLEMENTATION_FINDINGS_LOCALLY_ADDRESSED_SCIENCE_APPROVAL_PENDING",
+  "recordedUtc": "2026-09-28T05:15:12.329167+00:00",
+  "inspection": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/build-review/completion-inspection.json",
+    "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/build-review/completion-inspection.json",
+    "bytes": 3769,
+    "sha256": "d6184d0042a90a08a3cf0765c468ae62293644f3049fd6360c23e1d2a22bc7b5"
+  },
+  "packetSha256": "0bfabfac59801cd96b780b1d878095dbdcbad9fdd15237803426e21631d44e9c",
+  "archiveSha256": "b9a6a5e80de4c1a7cb34e184a2255e6973a088ab3c7d8beaa85922825923598a",
+  "reports": {
+    "claude": {
+      "literalVerdict": "NEEDS REVISION",
+      "literalField": "result",
+      "raw": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/build-review/claude.json",
+        "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/build-review/claude.json",
+        "bytes": 9216,
+        "sha256": "d8dc6a26d5579c30d885d0f45f41dcc5865f6f693e8f7b814e35ae5baee5320e"
+      },
+      "run": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/build-review/claude-run.json",
+        "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/build-review/claude-run.json",
+        "bytes": 1275,
+        "sha256": "f802585b702bc187634b54ad610bb52165d0ebf5ae085a125e82345f629bb4ad"
+      },
+      "stderr": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/build-review/claude.stderr",
+        "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/build-review/claude.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "wallSeconds": 612.7521500100847
+    },
+    "grok": {
+      "literalVerdict": "CLEAR FOR THIS BOUNDED INGREDIENT",
+      "literalField": "text",
+      "raw": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/build-review/grok.json",
+        "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/build-review/grok.json",
+        "bytes": 92982,
+        "sha256": "77b38215449e781a3de4d5a60c0b163a57134ccc9e55f498425d8c7c38def439"
+      },
+      "run": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/build-review/grok-run.json",
+        "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/build-review/grok-run.json",
+        "bytes": 1357,
+        "sha256": "4f246b7dad8b206b6aba9387901d9e7c48ca44f656d0413937274be213f1b358"
+      },
+      "stderr": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/build-review/grok.stderr",
+        "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/build-review/grok.stderr",
+        "bytes": 1431,
+        "sha256": "26a9fe41df029697d5729d748a19841c6244d3f8487d79bc35d35c1dbbe19b26"
+      },
+      "wallSeconds": 790.5220251869177
+    }
+  },
+  "literalReviewerVerdicts": {
+    "claude": "NEEDS REVISION",
+    "grok": "CLEAR FOR THIS BOUNDED INGREDIENT"
+  },
+  "reviewedWorkerSha256": "b1ebba96510b3feebba1ea5281256194f63fe78eba0e6606b9fc9e7d7c463556",
+  "worker": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_lift.py",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_lift.py",
+    "bytes": 54891,
+    "sha256": "523e0b7423906f793d42a68b67c139f5ec7fde9be8843888c499c7a10cc336de"
+  },
+  "correctedInputs": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_corrected_inputs.json",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_corrected_inputs.json",
+    "bytes": 51622,
+    "sha256": "28db0c04a4c2812dc944ae3c0f48b263ffcc0137bc00f06a23fd979b91bb639f"
+  },
+  "disposition": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_review_disposition.md",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_review_disposition.md",
+    "bytes": 9154,
+    "sha256": "2a77b98760da246d1fd05bd033cc0ebae2b819dcfca9d4203469f54675019792"
+  },
+  "boundedDiff": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/bounded-corrections.diff",
+    "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/bounded-corrections.diff",
+    "bytes": 22680,
+    "sha256": "96f5e690e44805e077b8be8e05e02879f93ea355ae20e0bc1e1d47054ffa75cc"
+  },
+  "staticChecks": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_corrected_static_checks.json",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_corrected_static_checks.json",
+    "bytes": 1258,
+    "sha256": "2af1f78a3c0a04ca29ccb972547e475cee132c31f1f1cc5a082d99a6ba28d2a5"
+  },
+  "closedFindings": {
+    "S1": "Extract independent coefficients; collect and exactly check formal Integral carrier coefficients.",
+    "S2": "Omit an actual addressed native addend in reassembly; require an exact nonzero formal carrier coefficient.",
+    "S3": "Save raw plane comparison before reconstruction guards.",
+    "S4": "Unverified plane-jet premise and actual source regulator/profile diagnostics; no interchange claim.",
+    "S5": "Existing 80 factor/35 source zero-grade inventory, with exact runtime address/coefficient/integral join."
+  },
+  "freshIndependentClearClaimed": false,
+  "scientificAcceptance": false,
+  "scientificLaunchAuthorized": false,
+  "scientificOperations": 0,
+  "externalReviewReruns": 0,
+  "automaticRetry": false,
+  "protectedBuilderSuffixSha256": "f01024512c9a028e7e524e5a95b5c455be42e125d10c36f94e20493109b013c2"
+}

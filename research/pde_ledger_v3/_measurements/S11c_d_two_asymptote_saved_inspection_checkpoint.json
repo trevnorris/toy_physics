@@ -1,0 +1,1328 @@
+{
+  "status": "SAVED_END_LIFT_FORMAL_FORCING_INGREDIENT_INSPECTED_PAIRING_UNRESOLVED",
+  "recordedUtc": "2026-09-28T14:46:30.945323+00:00",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection",
+  "checks": {
+    "status": "SAVED_END_LIFT_FORCING_PAYLOADS_INSPECTED_PAIRING_UNRESOLVED",
+    "contextChecks": {
+      "physicalBindingPresent": true,
+      "partitionDoesNotChangePhysics": true,
+      "partitionHeldFixed": true,
+      "nativeSubtractionUnchanged": true,
+      "sameRegulator": true,
+      "actualEndpointMapReused": true,
+      "allActualEndpointLimitsMatched": true,
+      "nonlocalPlaneJetRemainsUnverified": true
+    },
+    "caseChecks": [
+      {
+        "case": "block17-grade10",
+        "checks": {
+          "fiveByFiveDirectAndDecomposed": true,
+          "forcingOperationJoin": true,
+          "liftOperationJoin": true,
+          "sideActionOperationJoins": true,
+          "assemblyReturnJoin": true,
+          "directFromSavedTotals": true,
+          "carrierInputJoin": true,
+          "reductionInputJoin": true,
+          "savedReducedCoefficientsZero": true,
+          "rawPlaneOperationJoins": true,
+          "sourcePlaneOperandJoin": true,
+          "planePremiseJoin": true,
+          "directDomainOperandJoin": true,
+          "profileForcingTermJoin": true,
+          "nativeObligationsAndOrderedLimitsJoin": true,
+          "domainCaseIdentity": true,
+          "nonlocalObligationCount": true,
+          "localLimitCount": true,
+          "localLimitsUnevaluated": true,
+          "fullDefectLimitsPreserved": true,
+          "localTailOperandJoin": true,
+          "pairingStillUnresolved": true,
+          "independentPoleExclusionRetained": true
+        },
+        "carrierCount": 0,
+        "nativeTermsBySide": {
+          "PROFILE_FORCING": 54,
+          "RIGHT": 18
+        },
+        "regulatorPresentCount": 18,
+        "planeJetStructuralEquality": {
+          "LEFT": true,
+          "RIGHT": false
+        }
+      },
+      {
+        "case": "block17-grade01",
+        "checks": {
+          "fiveByFiveDirectAndDecomposed": true,
+          "forcingOperationJoin": true,
+          "liftOperationJoin": true,
+          "sideActionOperationJoins": true,
+          "assemblyReturnJoin": true,
+          "directFromSavedTotals": true,
+          "carrierInputJoin": true,
+          "reductionInputJoin": true,
+          "savedReducedCoefficientsZero": true,
+          "rawPlaneOperationJoins": true,
+          "sourcePlaneOperandJoin": true,
+          "planePremiseJoin": true,
+          "directDomainOperandJoin": true,
+          "profileForcingTermJoin": true,
+          "nativeObligationsAndOrderedLimitsJoin": true,
+          "domainCaseIdentity": true,
+          "nonlocalObligationCount": true,
+          "localLimitCount": true,
+          "localLimitsUnevaluated": true,
+          "fullDefectLimitsPreserved": true,
+          "localTailOperandJoin": true,
+          "pairingStillUnresolved": true,
+          "independentPoleExclusionRetained": true
+        },
+        "carrierCount": 0,
+        "nativeTermsBySide": {
+          "PROFILE_FORCING": 36
+        },
+        "regulatorPresentCount": 0,
+        "planeJetStructuralEquality": {
+          "LEFT": true,
+          "RIGHT": true
+        }
+      },
+      {
+        "case": "block16-grade10",
+        "checks": {
+          "fiveByFiveDirectAndDecomposed": true,
+          "forcingOperationJoin": true,
+          "liftOperationJoin": true,
+          "sideActionOperationJoins": true,
+          "assemblyReturnJoin": true,
+          "directFromSavedTotals": true,
+          "carrierInputJoin": true,
+          "reductionInputJoin": true,
+          "savedReducedCoefficientsZero": true,
+          "rawPlaneOperationJoins": true,
+          "sourcePlaneOperandJoin": true,
+          "planePremiseJoin": true,
+          "directDomainOperandJoin": true,
+          "profileForcingTermJoin": true,
+          "nativeObligationsAndOrderedLimitsJoin": true,
+          "domainCaseIdentity": true,
+          "nonlocalObligationCount": true,
+          "localLimitCount": true,
+          "localLimitsUnevaluated": true,
+          "fullDefectLimitsPreserved": true,
+          "localTailOperandJoin": true,
+          "pairingStillUnresolved": true,
+          "independentPoleExclusionRetained": true
+        },
+        "carrierCount": 0,
+        "nativeTermsBySide": {
+          "PROFILE_FORCING": 54,
+          "RIGHT": 18
+        },
+        "regulatorPresentCount": 18,
+        "planeJetStructuralEquality": {
+          "LEFT": true,
+          "RIGHT": false
+        }
+      },
+      {
+        "case": "block16-grade01",
+        "checks": {
+          "fiveByFiveDirectAndDecomposed": true,
+          "forcingOperationJoin": true,
+          "liftOperationJoin": true,
+          "sideActionOperationJoins": true,
+          "assemblyReturnJoin": true,
+          "directFromSavedTotals": true,
+          "carrierInputJoin": true,
+          "reductionInputJoin": true,
+          "savedReducedCoefficientsZero": true,
+          "rawPlaneOperationJoins": true,
+          "sourcePlaneOperandJoin": true,
+          "planePremiseJoin": true,
+          "directDomainOperandJoin": true,
+          "profileForcingTermJoin": true,
+          "nativeObligationsAndOrderedLimitsJoin": true,
+          "domainCaseIdentity": true,
+          "nonlocalObligationCount": true,
+          "localLimitCount": true,
+          "localLimitsUnevaluated": true,
+          "fullDefectLimitsPreserved": true,
+          "localTailOperandJoin": true,
+          "pairingStillUnresolved": true,
+          "independentPoleExclusionRetained": true
+        },
+        "carrierCount": 0,
+        "nativeTermsBySide": {
+          "PROFILE_FORCING": 36
+        },
+        "regulatorPresentCount": 0,
+        "planeJetStructuralEquality": {
+          "LEFT": true,
+          "RIGHT": true
+        }
+      }
+    ],
+    "endFieldChecks": [
+      {
+        "endField": "LEFT-block17-grade10",
+        "checks": {
+          "fieldShape": true,
+          "principalPartReturnJoin": true,
+          "bothSavedEquationResidualsZero": true,
+          "entryUnits": true,
+          "columnUnits": true
+        }
+      },
+      {
+        "endField": "RIGHT-block17-grade10",
+        "checks": {
+          "fieldShape": true,
+          "principalPartReturnJoin": true,
+          "bothSavedEquationResidualsZero": true,
+          "entryUnits": true,
+          "columnUnits": true
+        }
+      },
+      {
+        "endField": "LEFT-block17-grade01",
+        "checks": {
+          "fieldShape": true,
+          "principalPartReturnJoin": true,
+          "bothSavedEquationResidualsZero": true,
+          "entryUnits": true,
+          "columnUnits": true
+        }
+      },
+      {
+        "endField": "RIGHT-block17-grade01",
+        "checks": {
+          "fieldShape": true,
+          "principalPartReturnJoin": true,
+          "bothSavedEquationResidualsZero": true,
+          "entryUnits": true,
+          "columnUnits": true
+        }
+      },
+      {
+        "endField": "LEFT-block16-grade10",
+        "checks": {
+          "fieldShape": true,
+          "principalPartReturnJoin": true,
+          "bothSavedEquationResidualsZero": true,
+          "entryUnits": true,
+          "columnUnits": true
+        }
+      },
+      {
+        "endField": "RIGHT-block16-grade10",
+        "checks": {
+          "fieldShape": true,
+          "principalPartReturnJoin": true,
+          "bothSavedEquationResidualsZero": true,
+          "entryUnits": true,
+          "columnUnits": true
+        }
+      },
+      {
+        "endField": "LEFT-block16-grade01",
+        "checks": {
+          "fieldShape": true,
+          "principalPartReturnJoin": true,
+          "bothSavedEquationResidualsZero": true,
+          "entryUnits": true,
+          "columnUnits": true
+        }
+      },
+      {
+        "endField": "RIGHT-block16-grade01",
+        "checks": {
+          "fieldShape": true,
+          "principalPartReturnJoin": true,
+          "bothSavedEquationResidualsZero": true,
+          "entryUnits": true,
+          "columnUnits": true
+        }
+      }
+    ],
+    "controlChecks": {
+      "removedOneActualNativeTerm": true,
+      "omissionReturnJoin": true,
+      "baselineHeldFixed": true,
+      "savedMutationResidualJoin": true,
+      "carrierReturnJoin": true,
+      "reductionReturnJoin": true,
+      "responsivePositionsMatchActualCoefficients": true,
+      "formalControlFlag": true,
+      "noIntegratedMutationClaim": true,
+      "endControlUsesActualFieldAndReturn": true,
+      "endControlSeparate": true
+    },
+    "actualOmissionAddress": [
+      "RIGHT",
+      3,
+      0,
+      0,
+      6
+    ],
+    "responsiveCarrierCoefficientCount": 12,
+    "nonzeroEndResidualCount": 4,
+    "savedPayloadsRead": 106,
+    "completedOperations": 120,
+    "sourceCases": 4,
+    "savedEndFields": 8,
+    "integralsEvaluated": false,
+    "limitsEvaluated": false,
+    "producerCalls": 0,
+    "newRoots": 0,
+    "newModeSolves": 0,
+    "newLUSolves": 0,
+    "derivativesReconstructed": false,
+    "constructorReplayed": false,
+    "forcingPairingEstablished": false,
+    "planeJetExtensionEstablished": false,
+    "responseConstructed": false,
+    "formCompleted": false,
+    "a11Cleared": false,
+    "a12Cleared": false,
+    "freshIndependentClearClaimed": false,
+    "automaticRetry": false,
+    "scope": "Saved-object structural joins, returned zero matrices and actual responsive coefficients; readable native/domain operands. No integral/limit evaluation or replay of constructor functions.",
+    "wallSeconds": 131.06036461296026,
+    "allSourceHashesUnchanged": true,
+    "restoredParentOperations": 0,
+    "restoredDiagnosticOperations": 0,
+    "priorFunctionsExecuted": 0
+  },
+  "inspectionScript": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/inspect_saved_inspection_completion.py",
+    "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/inspect_saved_inspection_completion.py",
+    "bytes": 11202,
+    "sha256": "b9f8edffdf6426e4e0cbf19d59486109dadbeacf13574c6f47020cd53aa15c2a"
+  },
+  "sourceFilesVerified": 2567,
+  "inputRecordsVerified": 2575,
+  "allSourceHashesUnchanged": true,
+  "sourcePosthashes": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/complete/posthashes.json",
+    "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/complete/posthashes.json",
+    "bytes": 1247572,
+    "sha256": "93a2db6800282a13e78247420b5738e143c4ba3f5c002c006a62c229914e133f"
+  },
+  "operationCount": 120,
+  "savedPayloadsRead": 106,
+  "allOperationReceiptsInputsReturnsVerified": true,
+  "operationIndex": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/complete/operation-index.json",
+    "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/complete/operation-index.json",
+    "bytes": 132385,
+    "sha256": "f81c836de681600d5f94232916c77635e4d855a11c90b88fd88bf028a37b29b0"
+  },
+  "artifactIndex": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/complete/artifact-index.json",
+    "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/complete/artifact-index.json",
+    "bytes": 242051,
+    "sha256": "b125ed494a8a714cbc6296f791c5a891e022a155ee1d739eba4d637af542c073"
+  },
+  "artifactIndexExcludesItself": true,
+  "artifactCount": 503,
+  "artifactBytes": 20637349,
+  "sourceSnapshots": {
+    "_scratch/s11c/s11c-d-two-asymptote-20260927/launch_saved_inspection.py": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/source/_scratch/s11c/s11c-d-two-asymptote-20260927/launch_saved_inspection.py",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/source/_scratch/s11c/s11c-d-two-asymptote-20260927/launch_saved_inspection.py",
+      "bytes": 9607,
+      "sha256": "aa81e4c6fb74c643fd69bb232f441d5b7582b7cf27ecdf26bf257f7e0a7d9b37"
+    },
+    "_scratch/s11c/s11c-d-two-asymptote-20260927/saved_inspection_completion_message.txt": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/source/_scratch/s11c/s11c-d-two-asymptote-20260927/saved_inspection_completion_message.txt",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/source/_scratch/s11c/s11c-d-two-asymptote-20260927/saved_inspection_completion_message.txt",
+      "bytes": 3510,
+      "sha256": "16fe169be35ae486905750a959fa97ec3123a4d7f51f471ec99c6a7f3d801bfe"
+    },
+    "research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/source/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/source/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+      "bytes": 3347,
+      "sha256": "45a16f7f952ca6b571362b1c386fec76cd86f1e0ad04113074adf49c683ec49c"
+    },
+    "research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_forcing_continuation_checkpoint.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/source/research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_forcing_continuation_checkpoint.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/source/research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_forcing_continuation_checkpoint.json",
+      "bytes": 99204,
+      "sha256": "0c8822623fd0f159c5b02fca33bad0312e25acc3b14bc144af9fa37002cbff65"
+    },
+    "research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_forcing_continue.py": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/source/research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_forcing_continue.py",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/source/research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_forcing_continue.py",
+      "bytes": 42518,
+      "sha256": "e915d69e4248a0704bc44e7af872e0807a5657545662dc451e81837e22014a03"
+    },
+    "research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_review_adjudication.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/source/research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_review_adjudication.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/source/research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_review_adjudication.json",
+      "bytes": 6150,
+      "sha256": "60b390c8fd7c94802fd2c38b8275d4ea0fe87b5f1e00dd84087d646cb45d25e2"
+    },
+    "research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_saved_inspect.py": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/source/research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_saved_inspect.py",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/source/research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_saved_inspect.py",
+      "bytes": 31269,
+      "sha256": "7ad854e696ab42aa8b57430953f6360f7e3efe42f29b7778dfee9c03b87b5886"
+    },
+    "research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_saved_inspection_authorization.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/source/research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_saved_inspection_authorization.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/source/research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_saved_inspection_authorization.json",
+      "bytes": 1867,
+      "sha256": "f93e313522f92697c9e67d0abf672a379fb921a4ea8396bf107d1975ce87f7c9"
+    },
+    "research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_saved_inspection_gate.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/source/research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_saved_inspection_gate.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/source/research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_saved_inspection_gate.json",
+      "bytes": 2726,
+      "sha256": "01ea115a1e1f86784b9cad0fec6ee724876cc8e9254f9a22ea741562cc8be760"
+    },
+    "research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_saved_inspection_inputs.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/source/research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_saved_inspection_inputs.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/source/research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_saved_inspection_inputs.json",
+      "bytes": 1497383,
+      "sha256": "4612a1c8d4f6b7dcd50fd52ea2df993f6d9ccb4e6e9355dc41494a61b75cdd54"
+    },
+    "research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_saved_inspection_proposal.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/source/research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_saved_inspection_proposal.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/source/research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_saved_inspection_proposal.json",
+      "bytes": 2363,
+      "sha256": "fa70f2af343b8983da03f5920c6723226490c1e772961be5f379203db42b423c"
+    },
+    "research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_saved_inspection_scope.md": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/source/research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_saved_inspection_scope.md",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/source/research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_saved_inspection_scope.md",
+      "bytes": 2522,
+      "sha256": "8c4fc6638fefbc3694fd0433ca78bf3df5469656e8a613cbd17108e1b5df6d17"
+    },
+    "scripts/codex_job_watch.py": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/source/scripts/codex_job_watch.py",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/source/scripts/codex_job_watch.py",
+      "bytes": 4301,
+      "sha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77"
+    },
+    "scripts/s11c_guarded_run.py": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/source/scripts/s11c_guarded_run.py",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/source/scripts/s11c_guarded_run.py",
+      "bytes": 9977,
+      "sha256": "9194b3e04b43d345828082e6312b0a2d7a9293f6296153f9c6ccea2defb931d2"
+    }
+  },
+  "context": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/complete/saved-context.json",
+    "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/complete/saved-context.json",
+    "bytes": 192675,
+    "sha256": "59fb550f486832142c34ee1de3580961ee6d1783a99f6bcf5e33f035733e96a1"
+  },
+  "caseReports": {
+    "block17-grade10": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/complete/block17-grade10-inspection.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/complete/block17-grade10-inspection.json",
+      "bytes": 531605,
+      "sha256": "2b09f7bb0fa4877e9ad9d6f8caf7f0e9bd59c1dde9380a09fe943dcfc8acc6a7"
+    },
+    "block17-grade01": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/complete/block17-grade01-inspection.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/complete/block17-grade01-inspection.json",
+      "bytes": 332192,
+      "sha256": "e2edc002377e59ac4ecea295c947d131cd0b1526d1be5a426c06948aa646ce6d"
+    },
+    "block16-grade10": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/complete/block16-grade10-inspection.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/complete/block16-grade10-inspection.json",
+      "bytes": 531011,
+      "sha256": "c3a73cde433d049d703b3cf53440c7739e9a54bdf0acc27080b84bef0472164e"
+    },
+    "block16-grade01": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/complete/block16-grade01-inspection.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/complete/block16-grade01-inspection.json",
+      "bytes": 331505,
+      "sha256": "8fe530505f42410510cad298dc085581ac3111045debe5a3d918cf54e4177c7e"
+    }
+  },
+  "caseDetails": [
+    {
+      "case": "block17-grade10",
+      "checks": {
+        "fiveByFiveDirectAndDecomposed": true,
+        "forcingOperationJoin": true,
+        "liftOperationJoin": true,
+        "sideActionOperationJoins": true,
+        "assemblyReturnJoin": true,
+        "directFromSavedTotals": true,
+        "carrierInputJoin": true,
+        "reductionInputJoin": true,
+        "savedReducedCoefficientsZero": true,
+        "rawPlaneOperationJoins": true,
+        "sourcePlaneOperandJoin": true,
+        "planePremiseJoin": true,
+        "directDomainOperandJoin": true,
+        "profileForcingTermJoin": true,
+        "nativeObligationsAndOrderedLimitsJoin": true,
+        "domainCaseIdentity": true,
+        "nonlocalObligationCount": true,
+        "localLimitCount": true,
+        "localLimitsUnevaluated": true,
+        "fullDefectLimitsPreserved": true,
+        "localTailOperandJoin": true,
+        "pairingStillUnresolved": true,
+        "independentPoleExclusionRetained": true
+      },
+      "carrierCount": 0,
+      "nativeTermsBySide": {
+        "PROFILE_FORCING": 54,
+        "RIGHT": 18
+      },
+      "regulatorPresentCount": 18,
+      "planeJetStructuralEquality": {
+        "LEFT": true,
+        "RIGHT": false
+      },
+      "nativeDomainRecordCount": 72,
+      "nonzeroDirectEntries": 15,
+      "unreducedCoefficientZeroFlags": [
+        "None",
+        "None",
+        "None",
+        "True",
+        "True",
+        "None",
+        "None",
+        "None",
+        "True",
+        "True",
+        "None",
+        "None",
+        "None",
+        "True",
+        "True",
+        "None",
+        "None",
+        "None",
+        "True",
+        "True",
+        "None",
+        "None",
+        "None",
+        "True",
+        "True"
+      ]
+    },
+    {
+      "case": "block17-grade01",
+      "checks": {
+        "fiveByFiveDirectAndDecomposed": true,
+        "forcingOperationJoin": true,
+        "liftOperationJoin": true,
+        "sideActionOperationJoins": true,
+        "assemblyReturnJoin": true,
+        "directFromSavedTotals": true,
+        "carrierInputJoin": true,
+        "reductionInputJoin": true,
+        "savedReducedCoefficientsZero": true,
+        "rawPlaneOperationJoins": true,
+        "sourcePlaneOperandJoin": true,
+        "planePremiseJoin": true,
+        "directDomainOperandJoin": true,
+        "profileForcingTermJoin": true,
+        "nativeObligationsAndOrderedLimitsJoin": true,
+        "domainCaseIdentity": true,
+        "nonlocalObligationCount": true,
+        "localLimitCount": true,
+        "localLimitsUnevaluated": true,
+        "fullDefectLimitsPreserved": true,
+        "localTailOperandJoin": true,
+        "pairingStillUnresolved": true,
+        "independentPoleExclusionRetained": true
+      },
+      "carrierCount": 0,
+      "nativeTermsBySide": {
+        "PROFILE_FORCING": 36
+      },
+      "regulatorPresentCount": 0,
+      "planeJetStructuralEquality": {
+        "LEFT": true,
+        "RIGHT": true
+      },
+      "nativeDomainRecordCount": 36,
+      "nonzeroDirectEntries": 15,
+      "unreducedCoefficientZeroFlags": [
+        "True",
+        "True",
+        "True",
+        "True",
+        "True",
+        "True",
+        "True",
+        "True",
+        "True",
+        "True",
+        "True",
+        "True",
+        "True",
+        "True",
+        "True",
+        "True",
+        "True",
+        "True",
+        "True",
+        "True",
+        "True",
+        "True",
+        "True",
+        "True",
+        "True"
+      ]
+    },
+    {
+      "case": "block16-grade10",
+      "checks": {
+        "fiveByFiveDirectAndDecomposed": true,
+        "forcingOperationJoin": true,
+        "liftOperationJoin": true,
+        "sideActionOperationJoins": true,
+        "assemblyReturnJoin": true,
+        "directFromSavedTotals": true,
+        "carrierInputJoin": true,
+        "reductionInputJoin": true,
+        "savedReducedCoefficientsZero": true,
+        "rawPlaneOperationJoins": true,
+        "sourcePlaneOperandJoin": true,
+        "planePremiseJoin": true,
+        "directDomainOperandJoin": true,
+        "profileForcingTermJoin": true,
+        "nativeObligationsAndOrderedLimitsJoin": true,
+        "domainCaseIdentity": true,
+        "nonlocalObligationCount": true,
+        "localLimitCount": true,
+        "localLimitsUnevaluated": true,
+        "fullDefectLimitsPreserved": true,
+        "localTailOperandJoin": true,
+        "pairingStillUnresolved": true,
+        "independentPoleExclusionRetained": true
+      },
+      "carrierCount": 0,
+      "nativeTermsBySide": {
+        "PROFILE_FORCING": 54,
+        "RIGHT": 18
+      },
+      "regulatorPresentCount": 18,
+      "planeJetStructuralEquality": {
+        "LEFT": true,
+        "RIGHT": false
+      },
+      "nativeDomainRecordCount": 72,
+      "nonzeroDirectEntries": 15,
+      "unreducedCoefficientZeroFlags": [
+        "None",
+        "None",
+        "None",
+        "True",
+        "True",
+        "None",
+        "None",
+        "None",
+        "True",
+        "True",
+        "None",
+        "None",
+        "None",
+        "True",
+        "True",
+        "None",
+        "None",
+        "None",
+        "True",
+        "True",
+        "None",
+        "None",
+        "None",
+        "True",
+        "True"
+      ]
+    },
+    {
+      "case": "block16-grade01",
+      "checks": {
+        "fiveByFiveDirectAndDecomposed": true,
+        "forcingOperationJoin": true,
+        "liftOperationJoin": true,
+        "sideActionOperationJoins": true,
+        "assemblyReturnJoin": true,
+        "directFromSavedTotals": true,
+        "carrierInputJoin": true,
+        "reductionInputJoin": true,
+        "savedReducedCoefficientsZero": true,
+        "rawPlaneOperationJoins": true,
+        "sourcePlaneOperandJoin": true,
+        "planePremiseJoin": true,
+        "directDomainOperandJoin": true,
+        "profileForcingTermJoin": true,
+        "nativeObligationsAndOrderedLimitsJoin": true,
+        "domainCaseIdentity": true,
+        "nonlocalObligationCount": true,
+        "localLimitCount": true,
+        "localLimitsUnevaluated": true,
+        "fullDefectLimitsPreserved": true,
+        "localTailOperandJoin": true,
+        "pairingStillUnresolved": true,
+        "independentPoleExclusionRetained": true
+      },
+      "carrierCount": 0,
+      "nativeTermsBySide": {
+        "PROFILE_FORCING": 36
+      },
+      "regulatorPresentCount": 0,
+      "planeJetStructuralEquality": {
+        "LEFT": true,
+        "RIGHT": true
+      },
+      "nativeDomainRecordCount": 36,
+      "nonzeroDirectEntries": 15,
+      "unreducedCoefficientZeroFlags": [
+        "True",
+        "True",
+        "True",
+        "True",
+        "True",
+        "True",
+        "True",
+        "True",
+        "True",
+        "True",
+        "True",
+        "True",
+        "True",
+        "True",
+        "True",
+        "True",
+        "True",
+        "True",
+        "True",
+        "True",
+        "True",
+        "True",
+        "True",
+        "True",
+        "True"
+      ]
+    }
+  ],
+  "endFieldReports": {
+    "LEFT-block17-grade10": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/complete/LEFT-block17-grade10-inspection.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/complete/LEFT-block17-grade10-inspection.json",
+      "bytes": 407,
+      "sha256": "4e501d05fa15704415e6f7573de4fe04152a2d0dbdc192992af0b841229ed344"
+    },
+    "RIGHT-block17-grade10": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/complete/RIGHT-block17-grade10-inspection.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/complete/RIGHT-block17-grade10-inspection.json",
+      "bytes": 11557,
+      "sha256": "fd6f1dc5cc8764f65462fb1c27f4eea148b2bf245fc56197de55afa1666e02b4"
+    },
+    "LEFT-block17-grade01": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/complete/LEFT-block17-grade01-inspection.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/complete/LEFT-block17-grade01-inspection.json",
+      "bytes": 407,
+      "sha256": "6fb3239c6df085f8be65f8410a5842017f743bff9f3b2fe58c13b1ef9ec4ddff"
+    },
+    "RIGHT-block17-grade01": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/complete/RIGHT-block17-grade01-inspection.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/complete/RIGHT-block17-grade01-inspection.json",
+      "bytes": 408,
+      "sha256": "365b3e43636628a2e6b00d0235b7ae5f427127e85b057fa0f94fe802c018dc52"
+    },
+    "LEFT-block16-grade10": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/complete/LEFT-block16-grade10-inspection.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/complete/LEFT-block16-grade10-inspection.json",
+      "bytes": 407,
+      "sha256": "eba23c9235bb0b21cb9723bcf019b12fd360d3c0a5a9becf96dda024a70808f7"
+    },
+    "RIGHT-block16-grade10": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/complete/RIGHT-block16-grade10-inspection.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/complete/RIGHT-block16-grade10-inspection.json",
+      "bytes": 11556,
+      "sha256": "5c90311f9c1dbbe6ee67241a963c878191bc2ff567b10e5c2d07a830385bd7d3"
+    },
+    "LEFT-block16-grade01": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/complete/LEFT-block16-grade01-inspection.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/complete/LEFT-block16-grade01-inspection.json",
+      "bytes": 407,
+      "sha256": "3ef2b118a3552e779269b2aca09b9d298c2fad02c3110ff3e3939dca8c696c20"
+    },
+    "RIGHT-block16-grade01": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/complete/RIGHT-block16-grade01-inspection.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/complete/RIGHT-block16-grade01-inspection.json",
+      "bytes": 408,
+      "sha256": "7a811e3fba1ee49edcaade421f98fe60c2078f1eb34c75b43d9bde8e92e35c2f"
+    }
+  },
+  "endFieldNonzeroEntryCounts": {
+    "LEFT-block17-grade10": 0,
+    "RIGHT-block17-grade10": 9,
+    "LEFT-block17-grade01": 0,
+    "RIGHT-block17-grade01": 0,
+    "LEFT-block16-grade10": 0,
+    "RIGHT-block16-grade10": 9,
+    "LEFT-block16-grade01": 0,
+    "RIGHT-block16-grade01": 0
+  },
+  "controlsReport": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/complete/saved-controls.json",
+    "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/complete/saved-controls.json",
+    "bytes": 7293,
+    "sha256": "e971579ca76a9c54a4bc911d21172430bcfb69336297f420fea2ffce2b355177"
+  },
+  "controls": {
+    "checks": {
+      "removedOneActualNativeTerm": true,
+      "omissionReturnJoin": true,
+      "baselineHeldFixed": true,
+      "savedMutationResidualJoin": true,
+      "carrierReturnJoin": true,
+      "reductionReturnJoin": true,
+      "responsivePositionsMatchActualCoefficients": true,
+      "formalControlFlag": true,
+      "noIntegratedMutationClaim": true,
+      "endControlUsesActualFieldAndReturn": true,
+      "endControlSeparate": true
+    },
+    "actualOmissionAddress": [
+      "RIGHT",
+      3,
+      0,
+      0,
+      6
+    ],
+    "removedNativeTerm": "-200*I*(1/100 - I/10)*Integral(I*(1/10 + I/100)*(94*_liftBound_s11cdSourceNormalPosition*I/555 + (sqrt(555)*(10902834728618608223928280462592640672336216791662044728590598414911 - 36622199795857837469457199393470800184365001221956087686266085668510*I) + sqrt(36445)*(23303750678690263200398237977527221716193101802194149121280845833210 + 32178578490811785252301588306407441465297090334833442517773963800*I))/(1350360139639222677191599754519540869761304051970929363700892270507825 - 4535807435512308157028369056362622929951358866663861644375597522333250*I + sqrt(591)*(962087897440499708122593117950384997872990240265494274639127802945250 + 1328482326716566164366733244616157640711451045488147853040788795000*I)))*(tanh(_liftBound_s11cdSourceNormalPosition/10)/2 + 1/2)*exp(-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30)*exp(-_liftBound_s11cdOutputNormalMomentum*_liftBound_s11cdSourceNormalPosition*I + _liftBound_s11cdOutputNormalMomentum*I*s11cdNormalPosition)/(101*pi*(1 + 100*(1 + I/10)/(101*sqrt(-100*_liftBound_s11cdOutputNormalMomentum**2 - 4)))*sqrt(-100*_liftBound_s11cdOutputNormalMomentum**2 - 4)), (_liftBound_s11cdOutputNormalMomentum, -oo, oo), (_liftBound_s11cdSourceNormalPosition, -oo, oo))/101",
+    "responsiveCarrierCoefficients": [
+      {
+        "index": 15,
+        "position": {
+          "row": 3,
+          "column": 0,
+          "carrierPowers": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "coefficient": "-4660106564168236404374601563739316194409314418632133155405813687366*sqrt(36445)*(1 - 10*I)/101",
+        "isZero": "False"
+      },
+      {
+        "index": 16,
+        "position": {
+          "row": 3,
+          "column": 0,
+          "carrierPowers": [
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "coefficient": "-14565054708204391970874000401939720690772716913857653497217206981762*sqrt(555)*(1 - 10*I)/101",
+        "isZero": "False"
+      },
+      {
+        "index": 17,
+        "position": {
+          "row": 3,
+          "column": 0,
+          "carrierPowers": [
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "coefficient": "-4725107292719676210584250772118259226169214541108496709291717094242*sqrt(36445)*I*(1 - 10*I)/101",
+        "isZero": "False"
+      },
+      {
+        "index": 18,
+        "position": {
+          "row": 3,
+          "column": 0,
+          "carrierPowers": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "coefficient": "710638326459919532941287426944230722342627590855797664268140516540378*sqrt(555)*I*(1 - 10*I)/101",
+        "isZero": "False"
+      },
+      {
+        "index": 19,
+        "position": {
+          "row": 3,
+          "column": 0,
+          "carrierPowers": [
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "coefficient": "-940/101 - 94*I/101",
+        "isZero": "False"
+      },
+      {
+        "index": 20,
+        "position": {
+          "row": 3,
+          "column": 0,
+          "carrierPowers": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "coefficient": "94/101 - 940*I/101",
+        "isZero": "False"
+      },
+      {
+        "index": 21,
+        "position": {
+          "row": 3,
+          "column": 0,
+          "carrierPowers": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "coefficient": "-4660106564168236404374601563739316194409314418632133155405813687366*sqrt(36445)*(1 - 10*I)/101",
+        "isZero": "False"
+      },
+      {
+        "index": 22,
+        "position": {
+          "row": 3,
+          "column": 0,
+          "carrierPowers": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "coefficient": "-14565054708204391970874000401939720690772716913857653497217206981762*sqrt(555)*(1 - 10*I)/101",
+        "isZero": "False"
+      },
+      {
+        "index": 23,
+        "position": {
+          "row": 3,
+          "column": 0,
+          "carrierPowers": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0
+          ]
+        },
+        "coefficient": "-4725107292719676210584250772118259226169214541108496709291717094242*sqrt(36445)*I*(1 - 10*I)/101",
+        "isZero": "False"
+      },
+      {
+        "index": 24,
+        "position": {
+          "row": 3,
+          "column": 0,
+          "carrierPowers": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0
+          ]
+        },
+        "coefficient": "710638326459919532941287426944230722342627590855797664268140516540378*sqrt(555)*I*(1 - 10*I)/101",
+        "isZero": "False"
+      },
+      {
+        "index": 25,
+        "position": {
+          "row": 3,
+          "column": 0,
+          "carrierPowers": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0
+          ]
+        },
+        "coefficient": "-940/101 - 94*I/101",
+        "isZero": "False"
+      },
+      {
+        "index": 26,
+        "position": {
+          "row": 3,
+          "column": 0,
+          "carrierPowers": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        "coefficient": "94/101 - 940*I/101",
+        "isZero": "False"
+      }
+    ],
+    "matchingEndControlSides": [
+      "RIGHT"
+    ],
+    "nonzeroEndResidualEntries": [
+      {
+        "row": 0,
+        "column": 2,
+        "coefficient": "1/10",
+        "isZero": "False"
+      },
+      {
+        "row": 1,
+        "column": 2,
+        "coefficient": "1/20",
+        "isZero": "False"
+      },
+      {
+        "row": 2,
+        "column": 0,
+        "coefficient": "1/10",
+        "isZero": "False"
+      },
+      {
+        "row": 2,
+        "column": 1,
+        "coefficient": "1/20",
+        "isZero": "False"
+      }
+    ],
+    "integratedMutationEstablished": false,
+    "integralsOrLimitsEvaluated": false
+  },
+  "resourceEnforcement": {
+    "verified": true,
+    "actual": {
+      "memory.max": "2147483648",
+      "memory.swap.max": "0",
+      "pids.max": "32",
+      "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-8eaa38ab97b1.service",
+      "nice": 15,
+      "affinity": [
+        15
+      ],
+      "threads": {
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "VECLIB_MAXIMUM_THREADS": "1",
+        "BLIS_NUM_THREADS": "1"
+      }
+    }
+  },
+  "resources": {
+    "workerWallSeconds": 131.06036461296026,
+    "supervisorWallSeconds": 132.57701675302815,
+    "guardChildWallSeconds": 132.7678597109625,
+    "wholeGuardWallSeconds": 132.97420017502736,
+    "coordinatorWallSeconds": 133.21549024397973,
+    "peakBytes": 174641152,
+    "samples": 68,
+    "maxSampledTasks": 3,
+    "minHostAvailableBytes": 18200174592,
+    "swapBytes": 0,
+    "allMemoryEventCountsZero": true
+  },
+  "logs": {
+    "active.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/active.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/active.json",
+      "bytes": 1125,
+      "sha256": "f1607df7f03c143b22a9a537f43e62bdcc9242c64bc160243cadd9a3dcc483af"
+    },
+    "completion-watcher/completion.stderr": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/completion-watcher/completion.stderr",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/completion-watcher/completion.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "completion-watcher/completion.stdout": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/completion-watcher/completion.stdout",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/completion-watcher/completion.stdout",
+      "bytes": 101,
+      "sha256": "3f91d0a0ec90e7cd8b607f3f423e4f6bcd847a9872495664f7fd36cca36b74b7"
+    },
+    "completion-watcher/state.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/completion-watcher/state.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/completion-watcher/state.json",
+      "bytes": 503,
+      "sha256": "33760c95093bf8917dde0006d4920e2b51225e4d58d4df4b7faa82bea7d3500a"
+    },
+    "completion-watcher/watcher.lock": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/completion-watcher/watcher.lock",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/completion-watcher/watcher.lock",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "coordinator-outcome.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/coordinator-outcome.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/coordinator-outcome.json",
+      "bytes": 147,
+      "sha256": "759934dc5e92d56adddd566748a7b63dbfb9b01834906c338c251afc81b014aa"
+    },
+    "coordinator.stderr": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/coordinator.stderr",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/coordinator.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "coordinator.stdout": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/coordinator.stdout",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/coordinator.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "guard-launch.stderr": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/guard-launch.stderr",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/guard-launch.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "guard-launch.stdout": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/guard-launch.stdout",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/guard-launch.stdout",
+      "bytes": 270,
+      "sha256": "e68404867053e44b3f9be1f98aebfb95c0aa143c3b0f78091c0d20ab5d5a8ea3"
+    },
+    "launch.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/launch.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/launch.json",
+      "bytes": 1796,
+      "sha256": "4b6d43437d2efbf96713767a8a767a2349b32b80d762e0144a2f9fe34ac9f6d8"
+    },
+    "normalization.lock": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/normalization.lock",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/normalization.lock",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "resource-guard/child-outcome.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/resource-guard/child-outcome.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/resource-guard/child-outcome.json",
+      "bytes": 101,
+      "sha256": "99ab3ba6969598807829cac4541ce214929bff22fafce4b4bd6f1742206f2077"
+    },
+    "resource-guard/effective-limits.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/resource-guard/effective-limits.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/resource-guard/effective-limits.json",
+      "bytes": 441,
+      "sha256": "ce128b91806459cb739f7f8944de74775e204ba3d856bfdda66efcf51a4eef5e"
+    },
+    "resource-guard/invocation.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/resource-guard/invocation.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/resource-guard/invocation.json",
+      "bytes": 1137,
+      "sha256": "4c10e9031dc5da5bb8334090da76aa92505390944a23fa33039a61df6faf6c0d"
+    },
+    "resource-guard/limit-validation.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/resource-guard/limit-validation.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/resource-guard/limit-validation.json",
+      "bytes": 511,
+      "sha256": "59a4d6409c3e9b975f0758a0f05fd3844795b9d77f746faae390b5b43b631463"
+    },
+    "resource-guard/outcome.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/resource-guard/outcome.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/resource-guard/outcome.json",
+      "bytes": 270,
+      "sha256": "e68404867053e44b3f9be1f98aebfb95c0aa143c3b0f78091c0d20ab5d5a8ea3"
+    },
+    "resource-guard/resource-samples.jsonl": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/resource-guard/resource-samples.jsonl",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/resource-guard/resource-samples.jsonl",
+      "bytes": 27181,
+      "sha256": "a2557ef3ba1989de878bca28e7369dada5ebfd846bc497316f42857b827530a7"
+    },
+    "resource-guard/stderr": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/resource-guard/stderr",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/resource-guard/stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "resource-guard/stdout": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/resource-guard/stdout",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/resource-guard/stdout",
+      "bytes": 1125,
+      "sha256": "f1607df7f03c143b22a9a537f43e62bdcc9242c64bc160243cadd9a3dcc483af"
+    },
+    "stage-start.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/stage-start.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/stage-start.json",
+      "bytes": 1649,
+      "sha256": "1878db7bae28b115da65dbf814a624ec9183ffdf503263a92462bf627c6b48a9"
+    },
+    "two_asymptote_saved_inspection.invocation.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/two_asymptote_saved_inspection.invocation.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/two_asymptote_saved_inspection.invocation.json",
+      "bytes": 1125,
+      "sha256": "f1607df7f03c143b22a9a537f43e62bdcc9242c64bc160243cadd9a3dcc483af"
+    },
+    "two_asymptote_saved_inspection.stderr": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/two_asymptote_saved_inspection.stderr",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/two_asymptote_saved_inspection.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "two_asymptote_saved_inspection.stdout": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/two_asymptote_saved_inspection.stdout",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/two_asymptote_saved_inspection.stdout",
+      "bytes": 8915,
+      "sha256": "23626f97dc6c52b542e488a7d30466f022759fa82bef3e885b5a63da13a22c9a"
+    },
+    "watcher.stderr": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/watcher.stderr",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/watcher.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "watcher.stdout": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/watcher.stdout",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/watcher.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "scientificStderrEmpty": true,
+  "stdoutChecksByteIdentical": true,
+  "completionEventHandled": true,
+  "completionHookArmedBeforeScience": true,
+  "scientificPayloadContentsInspectedUnderGuard": true,
+  "savedOperandJoinsAndReturnedResidualsAndActualControlsPassed": true,
+  "newIntegralLimitOrSolverEvaluationPerformed": false,
+  "constructorReplayed": false,
+  "acceptanceScope": "Saved end fields and formal native forcing/control operands with inspected structural joins and returned residuals; source-specific plane-jet extension and prescription pairing remain unresolved.",
+  "fullResponseGreenFormA11A12Accepted": false,
+  "forcingPairingAccepted": false,
+  "reviewVerdicts": {
+    "Claude": "NEEDS REVISION",
+    "Grok": "CLEAR FOR THIS BOUNDED INGREDIENT"
+  },
+  "freshIndependentClearClaimed": false,
+  "automaticRetry": false,
+  "protectedBuilderSuffixSha256": "f01024512c9a028e7e524e5a95b5c455be42e125d10c36f94e20493109b013c2",
+  "nextDependency": "Prepare a localized thickness-grade Fourier-forcing/action pilot using the two saved grade01 cases (zero end lifts, no profile Abel regulator). The eta grade10 cases retain the two nonzero RIGHT end fields and 18 Abel-bearing source records each; keep these separate without dropping them from retained FORM scope."
+}

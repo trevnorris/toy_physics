@@ -1,0 +1,50 @@
+{
+  "status": "PREPARED_USER_DIRECTED_CONTINUATION_NO_SCIENCE_YET",
+  "recordedUtc": "2026-09-28T06:04:43.088243+00:00",
+  "worker": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_continue.py",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_continue.py",
+    "bytes": 52011,
+    "sha256": "cc68e3fc4ec16814b0433a9b52e2c58b42ce1fddb39a68d99628dd34c31758be"
+  },
+  "manifest": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_continuation_inputs.json",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_continuation_inputs.json",
+    "bytes": 292173,
+    "sha256": "5df598e3c2f755707785f8187f7718e35c4764a4f9897befdceb818e29843a0e"
+  },
+  "proposal": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_continuation_proposal.json",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_continuation_proposal.json",
+    "bytes": 2271,
+    "sha256": "30268429e5055f31a25e21967eb55240f7818b2ee7c0457865761e6349247f80"
+  },
+  "launcher": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/launch_continuation.py",
+    "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/launch_continuation.py",
+    "bytes": 9573,
+    "sha256": "5d51e56dc0b7f003d44c77a5d5aef241b5f5bddbce6f37a71282e43cce84d7cd"
+  },
+  "completionMessage": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/continuation_completion_message.txt",
+    "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/continuation_completion_message.txt",
+    "bytes": 3183,
+    "sha256": "ba0d3bce68b52220068fff6750a7c9f09e89798ff4af4b1bad0a94b1e99ce82d"
+  },
+  "disposition": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_continuation_disposition.md",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_continuation_disposition.md",
+    "bytes": 4756,
+    "sha256": "64a75890de7c160280d331928a9232e6b438f07756d0aeaa292fa6b8878fe4f6"
+  },
+  "inputRecords": 447,
+  "uniquePinnedFiles": 445,
+  "parentOperations": 61,
+  "diagnosticOperations": 12,
+  "copiedParentArtifacts": 25,
+  "scientificOperations": 0,
+  "scientificRestorations": 0,
+  "externalReviewsLaunched": 0,
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/continuation",
+  "freshIndependentClearClaimed": false
+}

@@ -1,0 +1,85 @@
+{
+  "status": "SAVED_END_LIFT_FORMAL_FORCING_INGREDIENT_INSPECTED_PAIRING_UNRESOLVED",
+  "recordedUtc": "2026-09-28T14:54:27.662106+00:00",
+  "scope": "Saved end fields and formal native forcing/control operands with inspected structural joins and returned residuals; source-specific plane-jet extension and prescription pairing remain unresolved.",
+  "construction": {
+    "path": "research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_forcing_continuation_checkpoint.json",
+    "bytes": 99204,
+    "sha256": "0c8822623fd0f159c5b02fca33bad0312e25acc3b14bc144af9fa37002cbff65"
+  },
+  "savedPayloadInspection": {
+    "path": "research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_saved_inspection_checkpoint.json",
+    "bytes": 54328,
+    "sha256": "8afe9c5473690707c162d03dae69d41682fd9be0d6d382817a41a6559ae3310b"
+  },
+  "report": {
+    "path": "research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_saved_inspection_report.md",
+    "bytes": 4623,
+    "sha256": "2310fdb6246635d825fcbd344bc0d1de2ba30a84cb9ddc41ad840de5a4e01e85"
+  },
+  "sourceResultRoot": "_scratch/s11c/s11c-d-two-asymptote-20260927/forcing-continuation/complete",
+  "inspectionResultRoot": "_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/complete",
+  "savedPayloadsRead": 106,
+  "completeInspectionOperations": 120,
+  "endFieldNonzeroEntryCounts": {
+    "LEFT-block17-grade10": 0,
+    "RIGHT-block17-grade10": 9,
+    "LEFT-block17-grade01": 0,
+    "RIGHT-block17-grade01": 0,
+    "LEFT-block16-grade10": 0,
+    "RIGHT-block16-grade10": 9,
+    "LEFT-block16-grade01": 0,
+    "RIGHT-block16-grade01": 0
+  },
+  "actualNativeOmissionAddress": [
+    "RIGHT",
+    3,
+    0,
+    0,
+    6
+  ],
+  "responsiveFormalCarrierCoefficientCount": 12,
+  "integratedMutationEstablished": false,
+  "forcingPairingAccepted": false,
+  "independentReductionRecalculationPerformed": false,
+  "fullResponseGreenFormA11A12Accepted": false,
+  "diagonalExtensionAccepted": false,
+  "complexFrequencyRetardedEquivalenceAccepted": false,
+  "fixedSlice": "Unchanged LAB_HELD/RHO4_CONSTANT evanescent slice; no radiating witness.",
+  "inspectionResources": {
+    "workerWallSeconds": 131.06036461296026,
+    "supervisorWallSeconds": 132.57701675302815,
+    "guardChildWallSeconds": 132.7678597109625,
+    "wholeGuardWallSeconds": 132.97420017502736,
+    "coordinatorWallSeconds": 133.21549024397973,
+    "peakBytes": 174641152,
+    "samples": 68,
+    "maxSampledTasks": 3,
+    "minHostAvailableBytes": 18200174592,
+    "swapBytes": 0,
+    "allMemoryEventCountsZero": true
+  },
+  "allSourceHashesUnchanged": true,
+  "scientificStderrEmpty": true,
+  "stdoutChecksByteIdentical": true,
+  "completionEventHandled": true,
+  "newPhysicsJobRunningForThisStage": false,
+  "reviewVerdicts": {
+    "Claude": "NEEDS REVISION",
+    "Grok": "CLEAR FOR THIS BOUNDED INGREDIENT"
+  },
+  "freshIndependentClearClaimed": false,
+  "nextImplementationPlan": {
+    "path": "research/pde_ledger_v3/directives/S11c_d_localized_thickness_response_plan.md",
+    "bytes": 6528,
+    "sha256": "1267a6ecadbfb3864127a6185eececa141376cf4c625c604b99460cab3de1abf"
+  },
+  "nextPlanSourceReceipt": {
+    "path": "research/pde_ledger_v3/_measurements/S11c_d_localized_thickness_response_plan_sources.json",
+    "bytes": 5256,
+    "sha256": "79a060fd0b8cfc89aafebd4c37e1248a446b2ad0b7b6f7a61e2dd19b56ae520f"
+  },
+  "newExternalSubmissionAuthorized": false,
+  "preservation": "Earlier production/diagnostic/continuation failures, reference/outgoing results, incident history, Lean/S11_lean and shared guard remain untouched.",
+  "protectedBuilderSuffixSha256": "f01024512c9a028e7e524e5a95b5c455be42e125d10c36f94e20493109b013c2"
+}

@@ -1,0 +1,35 @@
+{
+  "status": "PASSED_STATIC_SOURCE_AND_STDLIB_INSTRUMENT_CHECKS_ONLY",
+  "compiledWithoutScientificExecution": true,
+  "unchangedReviewedScientificDefinitions": [
+    "regular_part",
+    "polynomial_series",
+    "convolution",
+    "principal",
+    "map_end",
+    "bind",
+    "alpha_safe",
+    "substitute_field",
+    "apply_action"
+  ],
+  "nativeContainmentAndCodecUnchanged": true,
+  "onlyDeferredScientificImports": [
+    "sympy",
+    "sympy.core.function"
+  ],
+  "noForbiddenProducerSolverIntegralCalls": true,
+  "coefficientExtractionPresent": true,
+  "rawPlanePersistenceBeforeReconstruction": true,
+  "planeJetPremiseExplicitlyUnverified": true,
+  "localLimitEvaluationRemovedOperandsRetained": true,
+  "missingScienceApprovalRefusedBeforeMutationOrLaunch": true,
+  "persistenceTest": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/corrected-static-instrument/checks.json",
+    "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/corrected-static-instrument/checks.json",
+    "bytes": 212,
+    "sha256": "0a6ebb9ee6db87aa406533ef188675d72e5ff7f6315108d38639271db6ad167c"
+  },
+  "mathematicalChecksRun": false,
+  "scientificPacketRestorations": 0,
+  "scientificOperations": 0
+}

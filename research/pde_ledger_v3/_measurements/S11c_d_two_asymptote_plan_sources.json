@@ -1,0 +1,493 @@
+{
+  "status": "TWO_ASYMPTOTE_METHOD_PLAN_SOURCE_IDENTITY_ONLY",
+  "recordedUtc": "2026-09-28T02:07:42.685033+00:00",
+  "authorizationBasis": "User said Continue after the completed bounded prescription and the stated next step of two-asymptote response planning.",
+  "method": "Standard-library AST, JSON, filesystem metadata and byte hashes only; no scientific pickle restoration or execution.",
+  "sourceDefinitions": [
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_d_mixing_scattering_sympy_audit.py",
+      "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_d_mixing_scattering_sympy_audit.py",
+      "bytes": 545480,
+      "sha256": "5bf77729682960bb59f10c672a5fe3f67a98b0a9533da7c6189a37183596050f",
+      "definitions": [
+        {
+          "definition": "ReducedPencil.__init__",
+          "firstLine": 443,
+          "lastLine": 456,
+          "sourceSha256": "52db0d590686716ea90d03488750bec5fe9e8518ea5c98f9121d2f279bd51ce9"
+        },
+        {
+          "definition": "ReducedActionAssembly.construct",
+          "firstLine": 739,
+          "lastLine": 782,
+          "sourceSha256": "9dbb31feb1f9696551494cf7fd49d361039c958683eb7d249cf059b1bd01dcea"
+        },
+        {
+          "definition": "BoundedSourceFourierAssembly.bounded",
+          "firstLine": 961,
+          "lastLine": 967,
+          "sourceSha256": "3cc0e2eaf94de5044b143683dbeeab40c63c1e4c818da31a751a6b7a84e7722b"
+        },
+        {
+          "definition": "BoundedSourceFourierAssembly.construct",
+          "firstLine": 1109,
+          "lastLine": 1160,
+          "sourceSha256": "9a4f5f3b02d4c6c67dacc7d8ce07c52fc2a6d4a6de74d1aa5fefb4fa4991d30f"
+        },
+        {
+          "definition": "EdgeReduction.subtraction",
+          "firstLine": 1649,
+          "lastLine": 1654,
+          "sourceSha256": "884a5c936716a20dd456c030ace6e8dec9d0b5f84c0380881670ad38403ce3fb"
+        },
+        {
+          "definition": "EdgeReduction.prescribe",
+          "firstLine": 1656,
+          "lastLine": 1680,
+          "sourceSha256": "05a6b4bd039ca215f229f6233469e5f377b50f638876715df094e8a51f0e53f1"
+        },
+        {
+          "definition": "EdgeReduction.weak_limit",
+          "firstLine": 1682,
+          "lastLine": 1684,
+          "sourceSha256": "bf9fddf05203e6ece2019ad019e598a977890ce4cfac11de0cfc5a6214fa594b"
+        },
+        {
+          "definition": "ConstantEndPencil.background",
+          "firstLine": 2292,
+          "lastLine": 2325,
+          "sourceSha256": "5ee045b2b4c3c933d4fa4a9349ac62a1fe4e7be4ed7759c32879304aebb36b7f"
+        },
+        {
+          "definition": "ConstantEndPencil.profile_limit_operands",
+          "firstLine": 2327,
+          "lastLine": 2331,
+          "sourceSha256": "af0e65ed2261dee40e9f5d5636d49b0c93098c2c1ed1c93b8f3517f4d465f3c2"
+        },
+        {
+          "definition": "RectangularModeJets.__init__",
+          "firstLine": 5183,
+          "lastLine": 5203,
+          "sourceSha256": "04dafa0ac47a7b60e96bbaa083a9b644a25a6fe6398a8fade8e17735ef990442"
+        },
+        {
+          "definition": "RectangularModeJets.pair",
+          "firstLine": 5231,
+          "lastLine": 5272,
+          "sourceSha256": "b7873ff4dc160235ffa9ef1d0f4ff79cc3d70d08c8e45154b6f026da1d73a9c9"
+        }
+      ]
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_continuum_grades.py",
+      "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_continuum_grades.py",
+      "bytes": 19471,
+      "sha256": "0443c3adbeaf813ad66c60af0a50c96e9a841277d51f9c23bf1c601d2fdf329d",
+      "definitions": [
+        {
+          "definition": "split",
+          "firstLine": 84,
+          "lastLine": 113,
+          "sourceSha256": "97bfd22480c99d1d931ceed2047945c3fa0e33d6730b09b26205a8c09f9ea9a5"
+        },
+        {
+          "definition": "term_joins",
+          "firstLine": 144,
+          "lastLine": 169,
+          "sourceSha256": "a26eb2f88981107a00a8b240a6cc9c9f5b25a45007125c97fe97c43f7e8d8790"
+        },
+        {
+          "definition": "main",
+          "firstLine": 194,
+          "lastLine": 288,
+          "sourceSha256": "009577f402b59b9c7f90d73063a47be52352af505f537a3f248857280be689e4"
+        }
+      ]
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_continuum_boundary.py",
+      "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_continuum_boundary.py",
+      "bytes": 28349,
+      "sha256": "ed3a6539d3151c52d25f12308b121897baf3bd6a5a626a598ab728988ab933a0",
+      "definitions": [
+        {
+          "definition": "phase",
+          "firstLine": 163,
+          "lastLine": 171,
+          "sourceSha256": "9738a4bbb115dd1e6ab0d069289b333de24efafc01827dd8422070560926fffe"
+        },
+        {
+          "definition": "construct_end",
+          "firstLine": 174,
+          "lastLine": 265,
+          "sourceSha256": "e5818edbb8fba89406c397301315f26405a1968838aa15e23acca7e185e7ea58"
+        }
+      ]
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_continuum_response.py",
+      "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_continuum_response.py",
+      "bytes": 23551,
+      "sha256": "0fe30a9c4771671e9fa139b0557f185f55d351887f2ba8b9fa4ed1abfb616db2",
+      "definitions": [
+        {
+          "definition": "systems",
+          "firstLine": 73,
+          "lastLine": 85,
+          "sourceSha256": "de3302ff0af7ab1687fb431f527d4fcd8f06508f9c66e39e8917cbb4d11fd8be"
+        },
+        {
+          "definition": "solve",
+          "firstLine": 88,
+          "lastLine": 110,
+          "sourceSha256": "35a8a09856a743c2242378154b0faa9e4512d6fd923272eed21f4d7fb6bca595"
+        },
+        {
+          "definition": "channels",
+          "firstLine": 113,
+          "lastLine": 172,
+          "sourceSha256": "41b3088c06607934000d8a5a9529e16d9d5e2c0cb273bfed5454fc468554e3ab"
+        }
+      ]
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_uniform_source.py",
+      "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_uniform_source.py",
+      "bytes": 14588,
+      "sha256": "2a135aea365c7b5e57bfff7683c7b927cda52c0d37f6a9bad3c961eb6205a2b2",
+      "definitions": [
+        {
+          "definition": "construct",
+          "firstLine": 71,
+          "lastLine": 118,
+          "sourceSha256": "747e36fc1c4e066692d417ddcaa17c2cd534221ea081efccde6f1fcd6b137f2a"
+        }
+      ]
+    }
+  ],
+  "selectedPackets": [
+    {
+      "checkpoint": {
+        "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_reduced_action_source_checkpoint.json",
+        "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_reduced_action_source_checkpoint.json",
+        "bytes": 10327,
+        "sha256": "b6dcd36ee6cf8ed3b3943e207012dd165fce62ec39cb8f53ca3c23f4715d094b"
+      },
+      "scopeAsStored": "Computed reduced source rows and native probe actions. No local/nonlocal numerical quadrature, boundary solve or scattering result.",
+      "proposedRole": "Native infinite-domain source rows and probe actions; restore only under containment.",
+      "artifacts": [
+        {
+          "manifestKey": "reduced-action.pickle",
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-reduced-action-source-20260914/complete/reduced-action.pickle",
+          "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-reduced-action-source-20260914/complete/reduced-action.pickle",
+          "bytes": 1146420,
+          "sha256": "e9062c3455c7e59fe816f47172062a0c118b201d03809ec0826575dac22872b0",
+          "restored": false
+        },
+        {
+          "manifestKey": "actions.pickle",
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-reduced-action-source-20260914/complete/actions.pickle",
+          "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-reduced-action-source-20260914/complete/actions.pickle",
+          "bytes": 176671,
+          "sha256": "4c2372a7102d1db9f21a049ab3104465e8d9245ab832be88c900bc8519b46e02",
+          "restored": false
+        }
+      ]
+    },
+    {
+      "checkpoint": {
+        "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_reduced_action_assembly_checkpoint.json",
+        "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_reduced_action_assembly_checkpoint.json",
+        "bytes": 8425,
+        "sha256": "b4afb727b1a1ad2a468b0bab9a6ab369dbe4dd35bc46acd7150b7fa581cd984f"
+      },
+      "scopeAsStored": "Exact local-jet and intact-integral assembly with formal reconstruction and derivative-extraction residuals. No numerical quadrature or scattering solution.",
+      "proposedRole": "Reuse original local/nonlocal action assembly, without reconstructing it.",
+      "artifacts": [
+        {
+          "manifestKey": "assembly.pickle",
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-reduced-action-assembly-20260914/recovery-01/complete/assembly.pickle",
+          "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-reduced-action-assembly-20260914/recovery-01/complete/assembly.pickle",
+          "bytes": 111081,
+          "sha256": "8eda57998285137d99cce9564757627a57f8d5bc9b27091c86a65a9cc59230a0",
+          "restored": false
+        }
+      ]
+    },
+    {
+      "checkpoint": {
+        "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_continuum_grade_checkpoint.json",
+        "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_continuum_grade_checkpoint.json",
+        "bytes": 9207,
+        "sha256": "3987ff4abb782050fffc767065ed9b3126da49215aa0df41320abef7fdec4692"
+      },
+      "scopeAsStored": "Symbolic coefficient operators before numerical matrix, boundary/channel and response expansion.",
+      "proposedRole": "Reuse symbolic coefficient grades. Finite-domain term-factor integrals are not whole-line action operands.",
+      "artifacts": [
+        {
+          "manifestKey": "continuum-grades.pickle",
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-grades-20260919/production/complete/continuum-grades.pickle",
+          "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-grades-20260919/production/complete/continuum-grades.pickle",
+          "bytes": 307486,
+          "sha256": "e39412750fe58734ba4db2bd84d40908d18706ae055f6ddd6e3f53f560aa9b71",
+          "restored": false
+        }
+      ]
+    },
+    {
+      "checkpoint": {
+        "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_continuum_boundary_checkpoint.json",
+        "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_continuum_boundary_checkpoint.json",
+        "bytes": 47697,
+        "sha256": "b2614b74b4ec68de6d9f270bdf115833eea26a9baf168643663f21314a141d2d"
+      },
+      "scopeAsStored": "Complete finite modal-boundary and current coefficients in reference-anchored channel coordinates; no continuum solve yet.",
+      "proposedRole": "Reuse symbolic end pencil/Taylor tables; numerical invariant pairs are comparison/gauge evidence, not exact tail cancellation.",
+      "artifacts": [
+        {
+          "manifestKey": "left-pencil.pickle",
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/finish-02/complete/left-pencil.pickle",
+          "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/finish-02/complete/left-pencil.pickle",
+          "bytes": 9936,
+          "sha256": "66bd1e5ccbf08fb7a3c11df461232783850062090fb4500d3a7c0f6ec6253174",
+          "restored": false
+        },
+        {
+          "manifestKey": "right-pencil.pickle",
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/finish-02/complete/right-pencil.pickle",
+          "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/finish-02/complete/right-pencil.pickle",
+          "bytes": 13576,
+          "sha256": "170aa9cfa44630fe7900c33c2259960dff1c964cac50b5c931a0733cffa457a5",
+          "restored": false
+        },
+        {
+          "manifestKey": "left-mode-16.pickle",
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/finish-02/complete/left-mode-16.pickle",
+          "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/finish-02/complete/left-mode-16.pickle",
+          "bytes": 10748,
+          "sha256": "7f5eb226f0e751c1f08be8e125e261c1c72ec7aa7bb2e592d644fb10be8e0a21",
+          "restored": false
+        },
+        {
+          "manifestKey": "left-mode-17.pickle",
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/finish-02/complete/left-mode-17.pickle",
+          "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/finish-02/complete/left-mode-17.pickle",
+          "bytes": 10751,
+          "sha256": "23feab53b8b61d9c13c3d15b2c2fec8602eab0d73c72adaf8090487b9530606c",
+          "restored": false
+        },
+        {
+          "manifestKey": "right-mode-16.pickle",
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/finish-02/complete/right-mode-16.pickle",
+          "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/finish-02/complete/right-mode-16.pickle",
+          "bytes": 10748,
+          "sha256": "1a8e79900fd71f9c810f2783606e1fed2929883c1363a8e4c127797d9c3d8833",
+          "restored": false
+        },
+        {
+          "manifestKey": "right-mode-17.pickle",
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/finish-02/complete/right-mode-17.pickle",
+          "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/finish-02/complete/right-mode-17.pickle",
+          "bytes": 10751,
+          "sha256": "800e186f0911f98034ae6b2074ce4c390ce73193690d294f712797d64c1a2b30",
+          "restored": false
+        },
+        {
+          "manifestKey": "continuum-boundary.pickle",
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/finish-02/complete/continuum-boundary.pickle",
+          "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-boundary-20260919/finish-02/complete/continuum-boundary.pickle",
+          "bytes": 427369,
+          "sha256": "8e3e53c3b7b06e3e81f961f013b77b4b87dfede081db75b4de458503b062eed0",
+          "restored": false
+        }
+      ]
+    },
+    {
+      "checkpoint": {
+        "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_source_fourier_factorization_checkpoint.json",
+        "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_source_fourier_factorization_checkpoint.json",
+        "bytes": 17922,
+        "sha256": "fcf6f1c5598b63c11d4f8a76d2d94c2b5bace590e83d4beea3e52e82f44158a6"
+      },
+      "scopeAsStored": "Exact reconstruction certificates for saved finite-domain source Fourier operands. Original raw residuals, all Piecewise operands and denominator domains are retained. No numerical action convergence, extension onto singular loci, unbounded integration interchange, Abel weak limit or scattering result.",
+      "proposedRole": "Boundary evidence only: stored reconstruction is finite-domain and does not license an infinite-limit interchange.",
+      "artifacts": [
+        {
+          "manifestKey": "source-factorization.pickle",
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-source-fourier-20260914/recovery-01/complete/source-factorization.pickle",
+          "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-source-fourier-20260914/recovery-01/complete/source-factorization.pickle",
+          "bytes": 6465424,
+          "sha256": "4ad4e99de3f13a8bf3e42374f1425a84521e27634635063adb497cdc94651033",
+          "restored": false
+        }
+      ]
+    }
+  ],
+  "ownReferenceRoutes": [
+    {
+      "role": "uniformPacket",
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-ends-20260920/retry-02/complete/cases/LAB_HELD__RHO4_CONSTANT/uniform-source.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-ends-20260920/retry-02/complete/cases/LAB_HELD__RHO4_CONSTANT/uniform-source.pickle",
+      "bytes": 109308,
+      "sha256": "a482c5023d16558f52b20d0a347d6e38f33f0f06f780abd256c5220f922b5571",
+      "restored": false
+    },
+    {
+      "role": "reductionPacket",
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-matrices-20260920/production/complete/accepted-cases/LAB_HELD__RHO4_CONSTANT/reduced-action.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-remaining-case-matrices-20260920/production/complete/accepted-cases/LAB_HELD__RHO4_CONSTANT/reduced-action.pickle",
+      "bytes": 1146420,
+      "sha256": "e9062c3455c7e59fe816f47172062a0c118b201d03809ec0826575dac22872b0",
+      "restored": false
+    },
+    {
+      "role": "physicalInput",
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_variable_profile_development_input.json",
+      "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_variable_profile_development_input.json",
+      "bytes": 1884,
+      "sha256": "660b2b0b54494dce964c7f5fbd722a76a7e894d8ed92b18b5eb6290c3c10f1d5",
+      "restored": false
+    }
+  ],
+  "validatedCandidateCheckpoint": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_outgoing_prescription_checkpoint.json",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_outgoing_prescription_checkpoint.json",
+    "bytes": 8024,
+    "sha256": "4af78a75718c303d73a726c5a8621989593fe360a6169ae71d8f07c6d012b3f5"
+  },
+  "verifiedAcceptedArtifacts": [
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_outgoing_prescription_unlimited_checkpoint.json",
+      "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_outgoing_prescription_unlimited_checkpoint.json",
+      "bytes": 1836764,
+      "sha256": "87c88ceb23cc202535aa91481fe1d3bd4af76d15dce355b0acc19bb4853610b9"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_outgoing_prescription_validation_v2_checkpoint.json",
+      "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_outgoing_prescription_validation_v2_checkpoint.json",
+      "bytes": 1655968,
+      "sha256": "e72946e5599e9217436a527c58f8b750bcccdb4f00fe05bd36bed08ffcbb7a29"
+    },
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/outgoing-prescription-candidate.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/outgoing-prescription-candidate.pickle",
+      "bytes": 79171,
+      "sha256": "7702b16291588d2ea823f1503b63c5d1009f111d896980eb209b9164a55037a8"
+    },
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/prescription-domain.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/prescription-domain.pickle",
+      "bytes": 11353,
+      "sha256": "2b296cda6d33fdb0089fb625cd8a7d045cb217dd4363b4b61f83f4858ad0de8e"
+    },
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/spatial-sign-identity.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/spatial-sign-identity.pickle",
+      "bytes": 275,
+      "sha256": "d2a186f3e545fc6519d3b6f3f089704f851077a36f7d407116b5c7c850918882"
+    },
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/checks.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/checks.json",
+      "bytes": 2219,
+      "sha256": "534ea04d84106a39bac46404a5ea93c4c98cfb066e915e2fbb625bd7129c5cbf"
+    },
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operation-index.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/operation-index.json",
+      "bytes": 838466,
+      "sha256": "c0b9590c228f30c11fb401e36dc39b7f181adb2e1d0f2ff49938ccb295e6b8e4"
+    },
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/posthashes.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/posthashes.json",
+      "bytes": 231752,
+      "sha256": "796cf5c71c4c49509a9eef445dbff8218a77f4ff424d05ba5c3e6ed631f558e5"
+    }
+  ],
+  "savedTailPowerCensus": {
+    "files": 50,
+    "powers": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "inference": "At least one entry has a 1/k leading tail. Decay alone does not certify absolute Fourier integrability at coincident positions."
+  },
+  "context": [
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_FORM_constructor_plan.md",
+      "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_FORM_constructor_plan.md",
+      "bytes": 13584,
+      "sha256": "0c4e8a9db6a973acb3cd1ab5916067349e12fbd62d270139558ca60748d7e8de"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_FORM_build_directive.md",
+      "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_FORM_build_directive.md",
+      "bytes": 8322,
+      "sha256": "2dfa2955b0d5943c4a641b3be8d1171dc8e63043ceac88d6e4abdab2d4222b82"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_SCATTERING_FORM_AMENDMENT.md",
+      "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_SCATTERING_FORM_AMENDMENT.md",
+      "bytes": 69780,
+      "sha256": "eb6f20a3fd0bce308e53901fa69fdf267b2917e5cc78b319a1e7700074a47560"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_SHARED_PHYSICS.md",
+      "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_SHARED_PHYSICS.md",
+      "bytes": 67800,
+      "sha256": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_FORM_implementation_coverage.md",
+      "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_FORM_implementation_coverage.md",
+      "bytes": 9160,
+      "sha256": "186b6c990d05b69b3bd814482ef2a71c1042389db144e2826a33866b3c37c24d"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_A9_dependency_report.md",
+      "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_A9_dependency_report.md",
+      "bytes": 8509,
+      "sha256": "08f45c0100a13ba8b4dd155df931c1530af571e4dee975840e0fee50a1a8e1e9"
+    }
+  ],
+  "protectedBuilderSuffixSha256": "f01024512c9a028e7e524e5a95b5c455be42e125d10c36f94e20493109b013c2",
+  "sharedGuard": {
+    "path": "/var/projects/toy_physics/scripts/s11c_guarded_run.py",
+    "canonicalPath": "/var/projects/toy_physics/scripts/s11c_guarded_run.py",
+    "bytes": 9977,
+    "sha256": "9194b3e04b43d345828082e6312b0a2d7a9293f6296153f9c6ccea2defb931d2"
+  },
+  "scientificOperations": 0,
+  "scientificPacketRestorations": 0,
+  "externalReviewsLaunched": 0,
+  "implementationExists": false,
+  "methodClearance": false,
+  "productionAuthorized": false,
+  "referenceLiterature": {
+    "url": "https://dlmf.nist.gov/1.16",
+    "purpose": "Definitions of distribution/test-function action and Fourier transforms, including the Heaviside transform. Not authority for this coupled physical method; native signs/measures govern."
+  },
+  "outputs": [
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_two_asymptote_response_plan.md",
+      "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_two_asymptote_response_plan.md",
+      "bytes": 13836,
+      "sha256": "b94f6fdf5e472a444d43fdeaf0d03d51efe325b1b444d7b63e02deddd6bfe832"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_two_asymptote_first_stage_contract.md",
+      "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_two_asymptote_first_stage_contract.md",
+      "bytes": 12109,
+      "sha256": "8dfab429d92251a8513bf3f8e6e98d91939c57b0b402c09814bf3c255ac690b9"
+    }
+  ],
+  "generator": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_plan_sources.py",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_plan_sources.py",
+    "bytes": 8001,
+    "sha256": "df51ad19a44f423b1d782cf72fa046c0b924078105aed25849b933e0d94b795a"
+  }
+}

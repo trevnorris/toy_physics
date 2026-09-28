@@ -1,0 +1,111 @@
+{
+  "status": "SOURCE_METADATA_FOR_NEXT_IMPLEMENTATION_NOT_A_SCIENCE_GATE",
+  "recordedUtc": "2026-09-28T14:54:27.652155+00:00",
+  "selection": "Two saved grade01 cases, zero end fields, no profile Abel regulator; full accepted outgoing prescription retained.",
+  "scientificObjectsRestoredByThisRecord": false,
+  "newMethodReviewSubmitted": false,
+  "newPhysicsJobLaunched": false,
+  "files": [
+    {
+      "path": "research/pde_ledger_v3/directives/S11c_d_localized_thickness_response_plan.md",
+      "bytes": 6528,
+      "sha256": "1267a6ecadbfb3864127a6185eececa141376cf4c625c604b99460cab3de1abf"
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_saved_inspection_checkpoint.json",
+      "bytes": 54328,
+      "sha256": "8afe9c5473690707c162d03dae69d41682fd9be0d6d382817a41a6559ae3310b"
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_saved_inspection_report.md",
+      "bytes": 4623,
+      "sha256": "2310fdb6246635d825fcbd344bc0d1de2ba30a84cb9ddc41ad840de5a4e01e85"
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_outgoing_prescription_checkpoint.json",
+      "bytes": 8024,
+      "sha256": "4af78a75718c303d73a726c5a8621989593fe360a6169ae71d8f07c6d012b3f5"
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_reference_kernel_checkpoint.json",
+      "bytes": 70697,
+      "sha256": "68f55b406fc56e7cd1b00c8b33b1ae185c30ed3fcb5ac0a85af21d74d2ccf2cd"
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_forcing_continuation_checkpoint.json",
+      "bytes": 99204,
+      "sha256": "0c8822623fd0f159c5b02fca33bad0312e25acc3b14bc144af9fa37002cbff65"
+    },
+    {
+      "path": "_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/complete/block17-grade01-inspection.json",
+      "bytes": 332192,
+      "sha256": "e2edc002377e59ac4ecea295c947d131cd0b1526d1be5a426c06948aa646ce6d"
+    },
+    {
+      "path": "_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/complete/block16-grade01-inspection.json",
+      "bytes": 331505,
+      "sha256": "8fe530505f42410510cad298dc085581ac3111045debe5a3d918cf54e4177c7e"
+    },
+    {
+      "path": "_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/complete/LEFT-block17-grade01-inspection.json",
+      "bytes": 407,
+      "sha256": "6fb3239c6df085f8be65f8410a5842017f743bff9f3b2fe58c13b1ef9ec4ddff"
+    },
+    {
+      "path": "_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/complete/RIGHT-block17-grade01-inspection.json",
+      "bytes": 408,
+      "sha256": "365b3e43636628a2e6b00d0235b7ae5f427127e85b057fa0f94fe802c018dc52"
+    },
+    {
+      "path": "_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/complete/LEFT-block16-grade01-inspection.json",
+      "bytes": 407,
+      "sha256": "3ef2b118a3552e779269b2aca09b9d298c2fad02c3110ff3e3939dca8c696c20"
+    },
+    {
+      "path": "_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/complete/RIGHT-block16-grade01-inspection.json",
+      "bytes": 408,
+      "sha256": "7a811e3fba1ee49edcaade421f98fe60c2078f1eb34c75b43d9bde8e92e35c2f"
+    },
+    {
+      "path": "_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/complete/saved-context.json",
+      "bytes": 192675,
+      "sha256": "59fb550f486832142c34ee1de3580961ee6d1783a99f6bcf5e33f035733e96a1"
+    },
+    {
+      "path": "_scratch/s11c/s11c-d-two-asymptote-20260927/forcing-continuation/complete/native-grades-and-units.pickle",
+      "bytes": 91438,
+      "sha256": "6575170325799993799cea98033119017e8126857fe9010da044b7cfb6afb099"
+    },
+    {
+      "path": "_scratch/s11c/s11c-d-two-asymptote-20260927/forcing-continuation/complete/native-reference-action-join.pickle",
+      "bytes": 170951,
+      "sha256": "d7ab79842163bca929d381d656e8d1eed4b7a5f5b7f1e221f50aeb0753a0297d"
+    },
+    {
+      "path": "_scratch/s11c/s11c-d-two-asymptote-20260927/forcing-continuation/complete/units-and-binding.pickle",
+      "bytes": 2984,
+      "sha256": "8846485de8a23c6558f2de87ebdf39bfc0cb11149304637d6b72ee24882eb701"
+    },
+    {
+      "path": "_scratch/s11c/s11c-d-two-asymptote-20260927/forcing-continuation/complete/block16-grade01-forcing-operands.pickle",
+      "bytes": 294354,
+      "sha256": "6c0818d7fe2a819419dc5e7b5e4932bc7a1e718d6f52061f314f8ac51e9607e8"
+    },
+    {
+      "path": "_scratch/s11c/s11c-d-two-asymptote-20260927/forcing-continuation/complete/block16-grade01-domain.pickle",
+      "bytes": 137791,
+      "sha256": "05a73720336b33634433eafe53ddd8ac94f73bf8e6bcbfd248af32ab89b3d1bf"
+    },
+    {
+      "path": "_scratch/s11c/s11c-d-two-asymptote-20260927/forcing-continuation/complete/block17-grade01-forcing-operands.pickle",
+      "bytes": 294380,
+      "sha256": "9ccf68e19c02c514e411aaa7ff57460e404b7347d35bebe75d025f63be0e1360"
+    },
+    {
+      "path": "_scratch/s11c/s11c-d-two-asymptote-20260927/forcing-continuation/complete/block17-grade01-domain.pickle",
+      "bytes": 137800,
+      "sha256": "643e27ef9c0514ded8265498b1c0949e1dbc7c07ce4befa690c140614c80253a"
+    }
+  ],
+  "note": "Navigation and byte identities only. A future review packet and run manifest must pin their complete actual inputs. Density and mixed response remain retained work."
+}

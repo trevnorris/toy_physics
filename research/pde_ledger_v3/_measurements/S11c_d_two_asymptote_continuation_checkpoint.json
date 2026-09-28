@@ -1,0 +1,2424 @@
+{
+  "status": "PARTIAL_END_LIFTS_SAVED_NATIVE_BINDING_FAILED_NO_RETRY",
+  "recordedUtc": "2026-09-28T07:31:27.767313+00:00",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/continuation",
+  "inspectionScript": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/inspect_continuation.py",
+    "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/inspect_continuation.py",
+    "bytes": 13210,
+    "sha256": "3e49e086f242891a85a4e1f5f9544150b64986ae4ce219696bc3ec1ecd218f1f"
+  },
+  "failure": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/continuation/complete/failure.json",
+    "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/continuation/complete/failure.json",
+    "bytes": 29448,
+    "sha256": "3e4f47ea3f4de7620786241c0b60abee7889fd233d4a47dde877274fb2c9d3ff"
+  },
+  "incompleteOperation": {
+    "name": "bind-native-action",
+    "startedUtc": "2026-09-28T07:23:36.670671+00:00",
+    "input": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/continuation/complete/operations/0536-bind-native-action/input.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/continuation/complete/operations/0536-bind-native-action/input.pickle",
+      "bytes": 79669,
+      "sha256": "8e1cf051c7d8b47ae8ae775d63f93845ee995dfa939ff7062dfbc91cff92562c"
+    },
+    "execution": "NEW_UNFINISHED_OPERATION"
+  },
+  "operationCount": 536,
+  "operationExecutionCounts": {
+    "RESTORED_PRIOR_COMPLETE_RETURN": 61,
+    "RESTORED_DIAGNOSTIC_COMPLETE_RETURN": 12,
+    "NEW_UNFINISHED_OPERATION": 413,
+    "REUSED_COMPLETE_RETURN_IDENTICAL_OPERANDS": 50
+  },
+  "operationIndex": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/continuation/complete/partial-operation-index.json",
+    "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/continuation/complete/partial-operation-index.json",
+    "bytes": 763079,
+    "sha256": "ca1c1c9263708506a75ebd2ae3adec0ed4d6c1a58edd6dc60d153a01e113b711"
+  },
+  "artifactIndex": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/continuation/complete/failure-artifact-index.json",
+    "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/continuation/complete/failure-artifact-index.json",
+    "bytes": 1208134,
+    "sha256": "8099fbc5686184491a581d4d4483fdbf145e4e9f32284d76d141e909a55db479"
+  },
+  "artifactIndexExcludesItself": true,
+  "artifactCount": 2366,
+  "artifactBytes": 9597308,
+  "allJournalInputReturnReceiptsVerified": true,
+  "allArtifactIndexEntriesVerified": true,
+  "copiedArtifactsVerified": 26,
+  "restoredPrefix": {
+    "parentCompleteReturns": 61,
+    "diagnosticCompleteReturns": 12,
+    "priorFunctionsExecuted": 0,
+    "parentCarryArtifacts": 25,
+    "firstUnfinishedOperation": "block17-regular-0-0",
+    "parentFailurePreserved": true,
+    "diagnosticSeriesRestored": true
+  },
+  "firstEntryRestoration": {
+    "status": "RESTORED_DIAGNOSTIC_COMPLETE_SERIES",
+    "inputIdentityChecked": true,
+    "diagnosticFunctionsExecuted": 0,
+    "numeratorSeriesSource": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/entry-diagnostic/complete/operations/0009-numerator-series/value.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/entry-diagnostic/complete/operations/0009-numerator-series/value.pickle",
+      "bytes": 700,
+      "sha256": "12e36dad89709ae2e51198e99c7b926ca2094291b990350ced357bfda3127670"
+    },
+    "denominatorSeriesSource": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/entry-diagnostic/complete/operations/0010-denominator-series/value.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/entry-diagnostic/complete/operations/0010-denominator-series/value.pickle",
+      "bytes": 588,
+      "sha256": "2374af9c4c4a9e80b1b84b4b1d66c6d8625e4d56d895f83eeae027e6c43ffaf8"
+    }
+  },
+  "inputRecordsVerified": 447,
+  "uniquePinnedFilesVerified": 445,
+  "sourcePosthashes": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/continuation/complete/failure-posthashes.json",
+    "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/continuation/complete/failure-posthashes.json",
+    "bytes": 198631,
+    "sha256": "d2e8df2b710cb561c62064c43cd129b9e521cb1ca6be92f1ee933654b32e7a47"
+  },
+  "allSourceHashesUnchanged": true,
+  "parent279AndDiagnostic59ArtifactsUnchanged": true,
+  "sourceSnapshots": {
+    "_scratch/s11c/s11c-d-two-asymptote-20260927/continuation_completion_message.txt": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/continuation/source/_scratch/s11c/s11c-d-two-asymptote-20260927/continuation_completion_message.txt",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/continuation/source/_scratch/s11c/s11c-d-two-asymptote-20260927/continuation_completion_message.txt",
+      "bytes": 3183,
+      "sha256": "ba0d3bce68b52220068fff6750a7c9f09e89798ff4af4b1bad0a94b1e99ce82d"
+    },
+    "_scratch/s11c/s11c-d-two-asymptote-20260927/launch_continuation.py": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/continuation/source/_scratch/s11c/s11c-d-two-asymptote-20260927/launch_continuation.py",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/continuation/source/_scratch/s11c/s11c-d-two-asymptote-20260927/launch_continuation.py",
+      "bytes": 9573,
+      "sha256": "5d51e56dc0b7f003d44c77a5d5aef241b5f5bddbce6f37a71282e43cce84d7cd"
+    },
+    "research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/continuation/source/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/continuation/source/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+      "bytes": 3347,
+      "sha256": "45a16f7f952ca6b571362b1c386fec76cd86f1e0ad04113074adf49c683ec49c"
+    },
+    "research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_continuation_authorization.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/continuation/source/research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_continuation_authorization.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/continuation/source/research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_continuation_authorization.json",
+      "bytes": 1725,
+      "sha256": "16ae08874aa221d91f3312f7e046372ef5241a375da4d888bfe8073027f98d00"
+    },
+    "research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_continuation_disposition.md": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/continuation/source/research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_continuation_disposition.md",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/continuation/source/research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_continuation_disposition.md",
+      "bytes": 4756,
+      "sha256": "64a75890de7c160280d331928a9232e6b438f07756d0aeaa292fa6b8878fe4f6"
+    },
+    "research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_continuation_gate.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/continuation/source/research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_continuation_gate.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/continuation/source/research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_continuation_gate.json",
+      "bytes": 2630,
+      "sha256": "9f91c064fe72eaf3a0a9f85ebb2a71ce9fddc2427d0ba9acb5e99abe15fa6da0"
+    },
+    "research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_continuation_inputs.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/continuation/source/research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_continuation_inputs.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/continuation/source/research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_continuation_inputs.json",
+      "bytes": 292173,
+      "sha256": "5df598e3c2f755707785f8187f7718e35c4764a4f9897befdceb818e29843a0e"
+    },
+    "research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_continuation_proposal.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/continuation/source/research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_continuation_proposal.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/continuation/source/research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_continuation_proposal.json",
+      "bytes": 2271,
+      "sha256": "30268429e5055f31a25e21967eb55240f7818b2ee7c0457865761e6349247f80"
+    },
+    "research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_continue.py": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/continuation/source/research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_continue.py",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/continuation/source/research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_continue.py",
+      "bytes": 52011,
+      "sha256": "cc68e3fc4ec16814b0433a9b52e2c58b42ce1fddb39a68d99628dd34c31758be"
+    },
+    "research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_entry_diagnostic_checkpoint.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/continuation/source/research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_entry_diagnostic_checkpoint.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/continuation/source/research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_entry_diagnostic_checkpoint.json",
+      "bytes": 248571,
+      "sha256": "9bfaf4396da12e004d2dd6b28a26998d99f506038b739a7de62a1778b3f1401e"
+    },
+    "research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_failure_checkpoint.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/continuation/source/research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_failure_checkpoint.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/continuation/source/research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_failure_checkpoint.json",
+      "bytes": 272339,
+      "sha256": "5a9ded32c1fd7219dfcd36346ce439e00426454065ffa2406004e637a3c6b6be"
+    },
+    "research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_review_adjudication.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/continuation/source/research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_review_adjudication.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/continuation/source/research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_review_adjudication.json",
+      "bytes": 6150,
+      "sha256": "60b390c8fd7c94802fd2c38b8275d4ea0fe87b5f1e00dd84087d646cb45d25e2"
+    },
+    "research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_review_disposition.md": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/continuation/source/research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_review_disposition.md",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/continuation/source/research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_review_disposition.md",
+      "bytes": 9154,
+      "sha256": "2a77b98760da246d1fd05bd033cc0ebae2b819dcfca9d4203469f54675019792"
+    },
+    "scripts/codex_job_watch.py": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/continuation/source/scripts/codex_job_watch.py",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/continuation/source/scripts/codex_job_watch.py",
+      "bytes": 4301,
+      "sha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77"
+    },
+    "scripts/s11c_guarded_run.py": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/continuation/source/scripts/s11c_guarded_run.py",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/continuation/source/scripts/s11c_guarded_run.py",
+      "bytes": 9977,
+      "sha256": "9194b3e04b43d345828082e6312b0a2d7a9293f6296153f9c6ccea2defb931d2"
+    }
+  },
+  "nonzeroCertificates": {
+    "block16-regular-0-0-nonzero-certificate.json": {
+      "entry": "block16-regular-0-0",
+      "denominatorOrder": 1,
+      "coefficient": "sqrt(555)*(259257681200800 - 79429384856000*I)/81 + sqrt(36445)*(27911338644360 + 79738064747200*I)/81",
+      "originalIsZero": "None",
+      "provedNonzero": true,
+      "method": "EXACT_COMPONENT_TERM_SIGNS",
+      "component": "real",
+      "sign": 1,
+      "reconstructionResidual": "0",
+      "componentChecks": [
+        {
+          "component": "real",
+          "expression": "9303779548120*sqrt(36445)/27 + 259257681200800*sqrt(555)/81",
+          "reconstructionResidual": "0",
+          "allPositive": true,
+          "allNegative": false,
+          "terms": [
+            {
+              "value": "9303779548120*sqrt(36445)/27",
+              "positive": "True",
+              "negative": "False"
+            },
+            {
+              "value": "259257681200800*sqrt(555)/81",
+              "positive": "True",
+              "negative": "False"
+            }
+          ]
+        }
+      ]
+    },
+    "block16-regular-0-1-nonzero-certificate.json": {
+      "entry": "block16-regular-0-1",
+      "denominatorOrder": 1,
+      "coefficient": "sqrt(555)*(259257681200800 - 79429384856000*I)/81 + sqrt(36445)*(27911338644360 + 79738064747200*I)/81",
+      "originalIsZero": "None",
+      "provedNonzero": true,
+      "method": "EXACT_COMPONENT_TERM_SIGNS",
+      "component": "real",
+      "sign": 1,
+      "reconstructionResidual": "0",
+      "componentChecks": [
+        {
+          "component": "real",
+          "expression": "9303779548120*sqrt(36445)/27 + 259257681200800*sqrt(555)/81",
+          "reconstructionResidual": "0",
+          "allPositive": true,
+          "allNegative": false,
+          "terms": [
+            {
+              "value": "9303779548120*sqrt(36445)/27",
+              "positive": "True",
+              "negative": "False"
+            },
+            {
+              "value": "259257681200800*sqrt(555)/81",
+              "positive": "True",
+              "negative": "False"
+            }
+          ]
+        }
+      ]
+    },
+    "block16-regular-0-2-nonzero-certificate.json": {
+      "entry": "block16-regular-0-2",
+      "denominatorOrder": 1,
+      "coefficient": "sqrt(555)*(51851536240160 - 15885876971200*I)/81 + sqrt(36445)*(5582267728872 + 15947612949440*I)/81",
+      "originalIsZero": "None",
+      "provedNonzero": true,
+      "method": "EXACT_COMPONENT_TERM_SIGNS",
+      "component": "real",
+      "sign": 1,
+      "reconstructionResidual": "0",
+      "componentChecks": [
+        {
+          "component": "real",
+          "expression": "1860755909624*sqrt(36445)/27 + 51851536240160*sqrt(555)/81",
+          "reconstructionResidual": "0",
+          "allPositive": true,
+          "allNegative": false,
+          "terms": [
+            {
+              "value": "1860755909624*sqrt(36445)/27",
+              "positive": "True",
+              "negative": "False"
+            },
+            {
+              "value": "51851536240160*sqrt(555)/81",
+              "positive": "True",
+              "negative": "False"
+            }
+          ]
+        }
+      ]
+    },
+    "block16-regular-0-3-nonzero-certificate.json": {
+      "entry": "block16-regular-0-3",
+      "denominatorOrder": 0,
+      "coefficient": "12962884060040/81 - 3971469242800*I/81 + sqrt(591)*(1395566932218 + 3986903237360*I)/243",
+      "originalIsZero": "None",
+      "provedNonzero": true,
+      "method": "EXACT_COMPONENT_TERM_SIGNS",
+      "component": "real",
+      "sign": 1,
+      "reconstructionResidual": "0",
+      "componentChecks": [
+        {
+          "component": "real",
+          "expression": "465188977406*sqrt(591)/81 + 12962884060040/81",
+          "reconstructionResidual": "0",
+          "allPositive": true,
+          "allNegative": false,
+          "terms": [
+            {
+              "value": "12962884060040/81",
+              "positive": "True",
+              "negative": "False"
+            },
+            {
+              "value": "465188977406*sqrt(591)/81",
+              "positive": "True",
+              "negative": "False"
+            }
+          ]
+        }
+      ]
+    },
+    "block16-regular-0-4-nonzero-certificate.json": {
+      "entry": "block16-regular-0-4",
+      "denominatorOrder": 0,
+      "coefficient": "12962884060040/81 - 3971469242800*I/81 + sqrt(591)*(1395566932218 + 3986903237360*I)/243",
+      "originalIsZero": "None",
+      "provedNonzero": true,
+      "method": "EXACT_COMPONENT_TERM_SIGNS",
+      "component": "real",
+      "sign": 1,
+      "reconstructionResidual": "0",
+      "componentChecks": [
+        {
+          "component": "real",
+          "expression": "465188977406*sqrt(591)/81 + 12962884060040/81",
+          "reconstructionResidual": "0",
+          "allPositive": true,
+          "allNegative": false,
+          "terms": [
+            {
+              "value": "12962884060040/81",
+              "positive": "True",
+              "negative": "False"
+            },
+            {
+              "value": "465188977406*sqrt(591)/81",
+              "positive": "True",
+              "negative": "False"
+            }
+          ]
+        }
+      ]
+    },
+    "block16-regular-1-0-nonzero-certificate.json": {
+      "entry": "block16-regular-1-0",
+      "denominatorOrder": 1,
+      "coefficient": "sqrt(555)*(259257681200800 - 79429384856000*I)/81 + sqrt(36445)*(27911338644360 + 79738064747200*I)/81",
+      "originalIsZero": "None",
+      "provedNonzero": true,
+      "method": "EXACT_COMPONENT_TERM_SIGNS",
+      "component": "real",
+      "sign": 1,
+      "reconstructionResidual": "0",
+      "componentChecks": [
+        {
+          "component": "real",
+          "expression": "9303779548120*sqrt(36445)/27 + 259257681200800*sqrt(555)/81",
+          "reconstructionResidual": "0",
+          "allPositive": true,
+          "allNegative": false,
+          "terms": [
+            {
+              "value": "9303779548120*sqrt(36445)/27",
+              "positive": "True",
+              "negative": "False"
+            },
+            {
+              "value": "259257681200800*sqrt(555)/81",
+              "positive": "True",
+              "negative": "False"
+            }
+          ]
+        }
+      ]
+    },
+    "block16-regular-1-1-nonzero-certificate.json": {
+      "entry": "block16-regular-1-1",
+      "denominatorOrder": 1,
+      "coefficient": "sqrt(555)*(259257681200800 - 79429384856000*I)/81 + sqrt(36445)*(27911338644360 + 79738064747200*I)/81",
+      "originalIsZero": "None",
+      "provedNonzero": true,
+      "method": "EXACT_COMPONENT_TERM_SIGNS",
+      "component": "real",
+      "sign": 1,
+      "reconstructionResidual": "0",
+      "componentChecks": [
+        {
+          "component": "real",
+          "expression": "9303779548120*sqrt(36445)/27 + 259257681200800*sqrt(555)/81",
+          "reconstructionResidual": "0",
+          "allPositive": true,
+          "allNegative": false,
+          "terms": [
+            {
+              "value": "9303779548120*sqrt(36445)/27",
+              "positive": "True",
+              "negative": "False"
+            },
+            {
+              "value": "259257681200800*sqrt(555)/81",
+              "positive": "True",
+              "negative": "False"
+            }
+          ]
+        }
+      ]
+    },
+    "block16-regular-1-2-nonzero-certificate.json": {
+      "entry": "block16-regular-1-2",
+      "denominatorOrder": 1,
+      "coefficient": "sqrt(555)*(51851536240160 - 15885876971200*I)/81 + sqrt(36445)*(5582267728872 + 15947612949440*I)/81",
+      "originalIsZero": "None",
+      "provedNonzero": true,
+      "method": "EXACT_COMPONENT_TERM_SIGNS",
+      "component": "real",
+      "sign": 1,
+      "reconstructionResidual": "0",
+      "componentChecks": [
+        {
+          "component": "real",
+          "expression": "1860755909624*sqrt(36445)/27 + 51851536240160*sqrt(555)/81",
+          "reconstructionResidual": "0",
+          "allPositive": true,
+          "allNegative": false,
+          "terms": [
+            {
+              "value": "1860755909624*sqrt(36445)/27",
+              "positive": "True",
+              "negative": "False"
+            },
+            {
+              "value": "51851536240160*sqrt(555)/81",
+              "positive": "True",
+              "negative": "False"
+            }
+          ]
+        }
+      ]
+    },
+    "block16-regular-1-3-nonzero-certificate.json": {
+      "entry": "block16-regular-1-3",
+      "denominatorOrder": 0,
+      "coefficient": "12962884060040/81 - 3971469242800*I/81 + sqrt(591)*(1395566932218 + 3986903237360*I)/243",
+      "originalIsZero": "None",
+      "provedNonzero": true,
+      "method": "EXACT_COMPONENT_TERM_SIGNS",
+      "component": "real",
+      "sign": 1,
+      "reconstructionResidual": "0",
+      "componentChecks": [
+        {
+          "component": "real",
+          "expression": "465188977406*sqrt(591)/81 + 12962884060040/81",
+          "reconstructionResidual": "0",
+          "allPositive": true,
+          "allNegative": false,
+          "terms": [
+            {
+              "value": "12962884060040/81",
+              "positive": "True",
+              "negative": "False"
+            },
+            {
+              "value": "465188977406*sqrt(591)/81",
+              "positive": "True",
+              "negative": "False"
+            }
+          ]
+        }
+      ]
+    },
+    "block16-regular-1-4-nonzero-certificate.json": {
+      "entry": "block16-regular-1-4",
+      "denominatorOrder": 0,
+      "coefficient": "12962884060040/81 - 3971469242800*I/81 + sqrt(591)*(1395566932218 + 3986903237360*I)/243",
+      "originalIsZero": "None",
+      "provedNonzero": true,
+      "method": "EXACT_COMPONENT_TERM_SIGNS",
+      "component": "real",
+      "sign": 1,
+      "reconstructionResidual": "0",
+      "componentChecks": [
+        {
+          "component": "real",
+          "expression": "465188977406*sqrt(591)/81 + 12962884060040/81",
+          "reconstructionResidual": "0",
+          "allPositive": true,
+          "allNegative": false,
+          "terms": [
+            {
+              "value": "12962884060040/81",
+              "positive": "True",
+              "negative": "False"
+            },
+            {
+              "value": "465188977406*sqrt(591)/81",
+              "positive": "True",
+              "negative": "False"
+            }
+          ]
+        }
+      ]
+    },
+    "block16-regular-2-0-nonzero-certificate.json": {
+      "entry": "block16-regular-2-0",
+      "denominatorOrder": 1,
+      "coefficient": "sqrt(555)*(51851536240160 - 15885876971200*I)/81 + sqrt(36445)*(5582267728872 + 15947612949440*I)/81",
+      "originalIsZero": "None",
+      "provedNonzero": true,
+      "method": "EXACT_COMPONENT_TERM_SIGNS",
+      "component": "real",
+      "sign": 1,
+      "reconstructionResidual": "0",
+      "componentChecks": [
+        {
+          "component": "real",
+          "expression": "1860755909624*sqrt(36445)/27 + 51851536240160*sqrt(555)/81",
+          "reconstructionResidual": "0",
+          "allPositive": true,
+          "allNegative": false,
+          "terms": [
+            {
+              "value": "1860755909624*sqrt(36445)/27",
+              "positive": "True",
+              "negative": "False"
+            },
+            {
+              "value": "51851536240160*sqrt(555)/81",
+              "positive": "True",
+              "negative": "False"
+            }
+          ]
+        }
+      ]
+    },
+    "block16-regular-2-1-nonzero-certificate.json": {
+      "entry": "block16-regular-2-1",
+      "denominatorOrder": 1,
+      "coefficient": "sqrt(555)*(51851536240160 - 15885876971200*I)/81 + sqrt(36445)*(5582267728872 + 15947612949440*I)/81",
+      "originalIsZero": "None",
+      "provedNonzero": true,
+      "method": "EXACT_COMPONENT_TERM_SIGNS",
+      "component": "real",
+      "sign": 1,
+      "reconstructionResidual": "0",
+      "componentChecks": [
+        {
+          "component": "real",
+          "expression": "1860755909624*sqrt(36445)/27 + 51851536240160*sqrt(555)/81",
+          "reconstructionResidual": "0",
+          "allPositive": true,
+          "allNegative": false,
+          "terms": [
+            {
+              "value": "1860755909624*sqrt(36445)/27",
+              "positive": "True",
+              "negative": "False"
+            },
+            {
+              "value": "51851536240160*sqrt(555)/81",
+              "positive": "True",
+              "negative": "False"
+            }
+          ]
+        }
+      ]
+    },
+    "block16-regular-2-2-nonzero-certificate.json": {
+      "entry": "block16-regular-2-2",
+      "denominatorOrder": 1,
+      "coefficient": "sqrt(555)*(51851536240160 - 15885876971200*I)/81 + sqrt(36445)*(5582267728872 + 15947612949440*I)/81",
+      "originalIsZero": "None",
+      "provedNonzero": true,
+      "method": "EXACT_COMPONENT_TERM_SIGNS",
+      "component": "real",
+      "sign": 1,
+      "reconstructionResidual": "0",
+      "componentChecks": [
+        {
+          "component": "real",
+          "expression": "1860755909624*sqrt(36445)/27 + 51851536240160*sqrt(555)/81",
+          "reconstructionResidual": "0",
+          "allPositive": true,
+          "allNegative": false,
+          "terms": [
+            {
+              "value": "1860755909624*sqrt(36445)/27",
+              "positive": "True",
+              "negative": "False"
+            },
+            {
+              "value": "51851536240160*sqrt(555)/81",
+              "positive": "True",
+              "negative": "False"
+            }
+          ]
+        }
+      ]
+    },
+    "block16-regular-2-3-nonzero-certificate.json": {
+      "entry": "block16-regular-2-3",
+      "denominatorOrder": 0,
+      "coefficient": "12962884060040/81 - 3971469242800*I/81 + sqrt(591)*(1395566932218 + 3986903237360*I)/243",
+      "originalIsZero": "None",
+      "provedNonzero": true,
+      "method": "EXACT_COMPONENT_TERM_SIGNS",
+      "component": "real",
+      "sign": 1,
+      "reconstructionResidual": "0",
+      "componentChecks": [
+        {
+          "component": "real",
+          "expression": "465188977406*sqrt(591)/81 + 12962884060040/81",
+          "reconstructionResidual": "0",
+          "allPositive": true,
+          "allNegative": false,
+          "terms": [
+            {
+              "value": "12962884060040/81",
+              "positive": "True",
+              "negative": "False"
+            },
+            {
+              "value": "465188977406*sqrt(591)/81",
+              "positive": "True",
+              "negative": "False"
+            }
+          ]
+        }
+      ]
+    },
+    "block16-regular-2-4-nonzero-certificate.json": {
+      "entry": "block16-regular-2-4",
+      "denominatorOrder": 0,
+      "coefficient": "12962884060040/81 - 3971469242800*I/81 + sqrt(591)*(1395566932218 + 3986903237360*I)/243",
+      "originalIsZero": "None",
+      "provedNonzero": true,
+      "method": "EXACT_COMPONENT_TERM_SIGNS",
+      "component": "real",
+      "sign": 1,
+      "reconstructionResidual": "0",
+      "componentChecks": [
+        {
+          "component": "real",
+          "expression": "465188977406*sqrt(591)/81 + 12962884060040/81",
+          "reconstructionResidual": "0",
+          "allPositive": true,
+          "allNegative": false,
+          "terms": [
+            {
+              "value": "12962884060040/81",
+              "positive": "True",
+              "negative": "False"
+            },
+            {
+              "value": "465188977406*sqrt(591)/81",
+              "positive": "True",
+              "negative": "False"
+            }
+          ]
+        }
+      ]
+    },
+    "block16-regular-3-0-nonzero-certificate.json": {
+      "entry": "block16-regular-3-0",
+      "denominatorOrder": 0,
+      "coefficient": "12962884060040/81 - 3971469242800*I/81 + sqrt(591)*(1395566932218 + 3986903237360*I)/243",
+      "originalIsZero": "None",
+      "provedNonzero": true,
+      "method": "EXACT_COMPONENT_TERM_SIGNS",
+      "component": "real",
+      "sign": 1,
+      "reconstructionResidual": "0",
+      "componentChecks": [
+        {
+          "component": "real",
+          "expression": "465188977406*sqrt(591)/81 + 12962884060040/81",
+          "reconstructionResidual": "0",
+          "allPositive": true,
+          "allNegative": false,
+          "terms": [
+            {
+              "value": "12962884060040/81",
+              "positive": "True",
+              "negative": "False"
+            },
+            {
+              "value": "465188977406*sqrt(591)/81",
+              "positive": "True",
+              "negative": "False"
+            }
+          ]
+        }
+      ]
+    },
+    "block16-regular-3-1-nonzero-certificate.json": {
+      "entry": "block16-regular-3-1",
+      "denominatorOrder": 0,
+      "coefficient": "12962884060040/81 - 3971469242800*I/81 + sqrt(591)*(1395566932218 + 3986903237360*I)/243",
+      "originalIsZero": "None",
+      "provedNonzero": true,
+      "method": "EXACT_COMPONENT_TERM_SIGNS",
+      "component": "real",
+      "sign": 1,
+      "reconstructionResidual": "0",
+      "componentChecks": [
+        {
+          "component": "real",
+          "expression": "465188977406*sqrt(591)/81 + 12962884060040/81",
+          "reconstructionResidual": "0",
+          "allPositive": true,
+          "allNegative": false,
+          "terms": [
+            {
+              "value": "12962884060040/81",
+              "positive": "True",
+              "negative": "False"
+            },
+            {
+              "value": "465188977406*sqrt(591)/81",
+              "positive": "True",
+              "negative": "False"
+            }
+          ]
+        }
+      ]
+    },
+    "block16-regular-3-2-nonzero-certificate.json": {
+      "entry": "block16-regular-3-2",
+      "denominatorOrder": 0,
+      "coefficient": "12962884060040/81 - 3971469242800*I/81 + sqrt(591)*(1395566932218 + 3986903237360*I)/243",
+      "originalIsZero": "None",
+      "provedNonzero": true,
+      "method": "EXACT_COMPONENT_TERM_SIGNS",
+      "component": "real",
+      "sign": 1,
+      "reconstructionResidual": "0",
+      "componentChecks": [
+        {
+          "component": "real",
+          "expression": "465188977406*sqrt(591)/81 + 12962884060040/81",
+          "reconstructionResidual": "0",
+          "allPositive": true,
+          "allNegative": false,
+          "terms": [
+            {
+              "value": "12962884060040/81",
+              "positive": "True",
+              "negative": "False"
+            },
+            {
+              "value": "465188977406*sqrt(591)/81",
+              "positive": "True",
+              "negative": "False"
+            }
+          ]
+        }
+      ]
+    },
+    "block16-regular-3-3-nonzero-certificate.json": {
+      "entry": "block16-regular-3-3",
+      "denominatorOrder": 0,
+      "coefficient": "12962884060040/81 - 3971469242800*I/81 + sqrt(591)*(1395566932218 + 3986903237360*I)/243",
+      "originalIsZero": "None",
+      "provedNonzero": true,
+      "method": "EXACT_COMPONENT_TERM_SIGNS",
+      "component": "real",
+      "sign": 1,
+      "reconstructionResidual": "0",
+      "componentChecks": [
+        {
+          "component": "real",
+          "expression": "465188977406*sqrt(591)/81 + 12962884060040/81",
+          "reconstructionResidual": "0",
+          "allPositive": true,
+          "allNegative": false,
+          "terms": [
+            {
+              "value": "12962884060040/81",
+              "positive": "True",
+              "negative": "False"
+            },
+            {
+              "value": "465188977406*sqrt(591)/81",
+              "positive": "True",
+              "negative": "False"
+            }
+          ]
+        }
+      ]
+    },
+    "block16-regular-3-4-nonzero-certificate.json": {
+      "entry": "block16-regular-3-4",
+      "denominatorOrder": 0,
+      "coefficient": "12962884060040/81 - 3971469242800*I/81 + sqrt(591)*(1395566932218 + 3986903237360*I)/243",
+      "originalIsZero": "None",
+      "provedNonzero": true,
+      "method": "EXACT_COMPONENT_TERM_SIGNS",
+      "component": "real",
+      "sign": 1,
+      "reconstructionResidual": "0",
+      "componentChecks": [
+        {
+          "component": "real",
+          "expression": "465188977406*sqrt(591)/81 + 12962884060040/81",
+          "reconstructionResidual": "0",
+          "allPositive": true,
+          "allNegative": false,
+          "terms": [
+            {
+              "value": "12962884060040/81",
+              "positive": "True",
+              "negative": "False"
+            },
+            {
+              "value": "465188977406*sqrt(591)/81",
+              "positive": "True",
+              "negative": "False"
+            }
+          ]
+        }
+      ]
+    },
+    "block16-regular-4-0-nonzero-certificate.json": {
+      "entry": "block16-regular-4-0",
+      "denominatorOrder": 0,
+      "coefficient": "12962884060040/81 - 3971469242800*I/81 + sqrt(591)*(1395566932218 + 3986903237360*I)/243",
+      "originalIsZero": "None",
+      "provedNonzero": true,
+      "method": "EXACT_COMPONENT_TERM_SIGNS",
+      "component": "real",
+      "sign": 1,
+      "reconstructionResidual": "0",
+      "componentChecks": [
+        {
+          "component": "real",
+          "expression": "465188977406*sqrt(591)/81 + 12962884060040/81",
+          "reconstructionResidual": "0",
+          "allPositive": true,
+          "allNegative": false,
+          "terms": [
+            {
+              "value": "12962884060040/81",
+              "positive": "True",
+              "negative": "False"
+            },
+            {
+              "value": "465188977406*sqrt(591)/81",
+              "positive": "True",
+              "negative": "False"
+            }
+          ]
+        }
+      ]
+    },
+    "block16-regular-4-1-nonzero-certificate.json": {
+      "entry": "block16-regular-4-1",
+      "denominatorOrder": 0,
+      "coefficient": "12962884060040/81 - 3971469242800*I/81 + sqrt(591)*(1395566932218 + 3986903237360*I)/243",
+      "originalIsZero": "None",
+      "provedNonzero": true,
+      "method": "EXACT_COMPONENT_TERM_SIGNS",
+      "component": "real",
+      "sign": 1,
+      "reconstructionResidual": "0",
+      "componentChecks": [
+        {
+          "component": "real",
+          "expression": "465188977406*sqrt(591)/81 + 12962884060040/81",
+          "reconstructionResidual": "0",
+          "allPositive": true,
+          "allNegative": false,
+          "terms": [
+            {
+              "value": "12962884060040/81",
+              "positive": "True",
+              "negative": "False"
+            },
+            {
+              "value": "465188977406*sqrt(591)/81",
+              "positive": "True",
+              "negative": "False"
+            }
+          ]
+        }
+      ]
+    },
+    "block16-regular-4-2-nonzero-certificate.json": {
+      "entry": "block16-regular-4-2",
+      "denominatorOrder": 0,
+      "coefficient": "12962884060040/81 - 3971469242800*I/81 + sqrt(591)*(1395566932218 + 3986903237360*I)/243",
+      "originalIsZero": "None",
+      "provedNonzero": true,
+      "method": "EXACT_COMPONENT_TERM_SIGNS",
+      "component": "real",
+      "sign": 1,
+      "reconstructionResidual": "0",
+      "componentChecks": [
+        {
+          "component": "real",
+          "expression": "465188977406*sqrt(591)/81 + 12962884060040/81",
+          "reconstructionResidual": "0",
+          "allPositive": true,
+          "allNegative": false,
+          "terms": [
+            {
+              "value": "12962884060040/81",
+              "positive": "True",
+              "negative": "False"
+            },
+            {
+              "value": "465188977406*sqrt(591)/81",
+              "positive": "True",
+              "negative": "False"
+            }
+          ]
+        }
+      ]
+    },
+    "block16-regular-4-3-nonzero-certificate.json": {
+      "entry": "block16-regular-4-3",
+      "denominatorOrder": 0,
+      "coefficient": "12962884060040/81 - 3971469242800*I/81 + sqrt(591)*(1395566932218 + 3986903237360*I)/243",
+      "originalIsZero": "None",
+      "provedNonzero": true,
+      "method": "EXACT_COMPONENT_TERM_SIGNS",
+      "component": "real",
+      "sign": 1,
+      "reconstructionResidual": "0",
+      "componentChecks": [
+        {
+          "component": "real",
+          "expression": "465188977406*sqrt(591)/81 + 12962884060040/81",
+          "reconstructionResidual": "0",
+          "allPositive": true,
+          "allNegative": false,
+          "terms": [
+            {
+              "value": "12962884060040/81",
+              "positive": "True",
+              "negative": "False"
+            },
+            {
+              "value": "465188977406*sqrt(591)/81",
+              "positive": "True",
+              "negative": "False"
+            }
+          ]
+        }
+      ]
+    },
+    "block16-regular-4-4-nonzero-certificate.json": {
+      "entry": "block16-regular-4-4",
+      "denominatorOrder": 0,
+      "coefficient": "12962884060040/81 - 3971469242800*I/81 + sqrt(591)*(1395566932218 + 3986903237360*I)/243",
+      "originalIsZero": "None",
+      "provedNonzero": true,
+      "method": "EXACT_COMPONENT_TERM_SIGNS",
+      "component": "real",
+      "sign": 1,
+      "reconstructionResidual": "0",
+      "componentChecks": [
+        {
+          "component": "real",
+          "expression": "465188977406*sqrt(591)/81 + 12962884060040/81",
+          "reconstructionResidual": "0",
+          "allPositive": true,
+          "allNegative": false,
+          "terms": [
+            {
+              "value": "12962884060040/81",
+              "positive": "True",
+              "negative": "False"
+            },
+            {
+              "value": "465188977406*sqrt(591)/81",
+              "positive": "True",
+              "negative": "False"
+            }
+          ]
+        }
+      ]
+    },
+    "block17-regular-0-0-nonzero-certificate.json": {
+      "entry": "block17-regular-0-0",
+      "denominatorOrder": 1,
+      "coefficient": "sqrt(36445)*(-27911338644360 - 79738064747200*I)/81 + sqrt(555)*(-259257681200800 + 79429384856000*I)/81",
+      "originalIsZero": "None",
+      "provedNonzero": true,
+      "method": "EXACT_COMPONENT_TERM_SIGNS",
+      "component": "real",
+      "sign": -1,
+      "reconstructionResidual": "0",
+      "componentChecks": [
+        {
+          "component": "real",
+          "expression": "-259257681200800*sqrt(555)/81 - 9303779548120*sqrt(36445)/27",
+          "reconstructionResidual": "0",
+          "allPositive": false,
+          "allNegative": true,
+          "terms": [
+            {
+              "value": "-259257681200800*sqrt(555)/81",
+              "positive": "False",
+              "negative": "True"
+            },
+            {
+              "value": "-9303779548120*sqrt(36445)/27",
+              "positive": "False",
+              "negative": "True"
+            }
+          ]
+        }
+      ]
+    },
+    "block17-regular-0-1-nonzero-certificate.json": {
+      "entry": "block17-regular-0-1",
+      "denominatorOrder": 1,
+      "coefficient": "sqrt(36445)*(-27911338644360 - 79738064747200*I)/81 + sqrt(555)*(-259257681200800 + 79429384856000*I)/81",
+      "originalIsZero": "None",
+      "provedNonzero": true,
+      "method": "EXACT_COMPONENT_TERM_SIGNS",
+      "component": "real",
+      "sign": -1,
+      "reconstructionResidual": "0",
+      "componentChecks": [
+        {
+          "component": "real",
+          "expression": "-259257681200800*sqrt(555)/81 - 9303779548120*sqrt(36445)/27",
+          "reconstructionResidual": "0",
+          "allPositive": false,
+          "allNegative": true,
+          "terms": [
+            {
+              "value": "-259257681200800*sqrt(555)/81",
+              "positive": "False",
+              "negative": "True"
+            },
+            {
+              "value": "-9303779548120*sqrt(36445)/27",
+              "positive": "False",
+              "negative": "True"
+            }
+          ]
+        }
+      ]
+    },
+    "block17-regular-0-2-nonzero-certificate.json": {
+      "entry": "block17-regular-0-2",
+      "denominatorOrder": 1,
+      "coefficient": "sqrt(36445)*(-5582267728872 - 15947612949440*I)/81 + sqrt(555)*(-51851536240160 + 15885876971200*I)/81",
+      "originalIsZero": "None",
+      "provedNonzero": true,
+      "method": "EXACT_COMPONENT_TERM_SIGNS",
+      "component": "real",
+      "sign": -1,
+      "reconstructionResidual": "0",
+      "componentChecks": [
+        {
+          "component": "real",
+          "expression": "-51851536240160*sqrt(555)/81 - 1860755909624*sqrt(36445)/27",
+          "reconstructionResidual": "0",
+          "allPositive": false,
+          "allNegative": true,
+          "terms": [
+            {
+              "value": "-51851536240160*sqrt(555)/81",
+              "positive": "False",
+              "negative": "True"
+            },
+            {
+              "value": "-1860755909624*sqrt(36445)/27",
+              "positive": "False",
+              "negative": "True"
+            }
+          ]
+        }
+      ]
+    },
+    "block17-regular-0-3-nonzero-certificate.json": {
+      "entry": "block17-regular-0-3",
+      "denominatorOrder": 0,
+      "coefficient": "12962884060040/81 - 3971469242800*I/81 + sqrt(591)*(1395566932218 + 3986903237360*I)/243",
+      "originalIsZero": "None",
+      "provedNonzero": true,
+      "method": "EXACT_COMPONENT_TERM_SIGNS",
+      "component": "real",
+      "sign": 1,
+      "reconstructionResidual": "0",
+      "componentChecks": [
+        {
+          "component": "real",
+          "expression": "465188977406*sqrt(591)/81 + 12962884060040/81",
+          "reconstructionResidual": "0",
+          "allPositive": true,
+          "allNegative": false,
+          "terms": [
+            {
+              "value": "12962884060040/81",
+              "positive": "True",
+              "negative": "False"
+            },
+            {
+              "value": "465188977406*sqrt(591)/81",
+              "positive": "True",
+              "negative": "False"
+            }
+          ]
+        }
+      ]
+    },
+    "block17-regular-0-4-nonzero-certificate.json": {
+      "entry": "block17-regular-0-4",
+      "denominatorOrder": 0,
+      "coefficient": "12962884060040/81 - 3971469242800*I/81 + sqrt(591)*(1395566932218 + 3986903237360*I)/243",
+      "originalIsZero": "None",
+      "provedNonzero": true,
+      "method": "EXACT_COMPONENT_TERM_SIGNS",
+      "component": "real",
+      "sign": 1,
+      "reconstructionResidual": "0",
+      "componentChecks": [
+        {
+          "component": "real",
+          "expression": "465188977406*sqrt(591)/81 + 12962884060040/81",
+          "reconstructionResidual": "0",
+          "allPositive": true,
+          "allNegative": false,
+          "terms": [
+            {
+              "value": "12962884060040/81",
+              "positive": "True",
+              "negative": "False"
+            },
+            {
+              "value": "465188977406*sqrt(591)/81",
+              "positive": "True",
+              "negative": "False"
+            }
+          ]
+        }
+      ]
+    },
+    "block17-regular-1-0-nonzero-certificate.json": {
+      "entry": "block17-regular-1-0",
+      "denominatorOrder": 1,
+      "coefficient": "sqrt(36445)*(-27911338644360 - 79738064747200*I)/81 + sqrt(555)*(-259257681200800 + 79429384856000*I)/81",
+      "originalIsZero": "None",
+      "provedNonzero": true,
+      "method": "EXACT_COMPONENT_TERM_SIGNS",
+      "component": "real",
+      "sign": -1,
+      "reconstructionResidual": "0",
+      "componentChecks": [
+        {
+          "component": "real",
+          "expression": "-259257681200800*sqrt(555)/81 - 9303779548120*sqrt(36445)/27",
+          "reconstructionResidual": "0",
+          "allPositive": false,
+          "allNegative": true,
+          "terms": [
+            {
+              "value": "-259257681200800*sqrt(555)/81",
+              "positive": "False",
+              "negative": "True"
+            },
+            {
+              "value": "-9303779548120*sqrt(36445)/27",
+              "positive": "False",
+              "negative": "True"
+            }
+          ]
+        }
+      ]
+    },
+    "block17-regular-1-1-nonzero-certificate.json": {
+      "entry": "block17-regular-1-1",
+      "denominatorOrder": 1,
+      "coefficient": "sqrt(36445)*(-27911338644360 - 79738064747200*I)/81 + sqrt(555)*(-259257681200800 + 79429384856000*I)/81",
+      "originalIsZero": "None",
+      "provedNonzero": true,
+      "method": "EXACT_COMPONENT_TERM_SIGNS",
+      "component": "real",
+      "sign": -1,
+      "reconstructionResidual": "0",
+      "componentChecks": [
+        {
+          "component": "real",
+          "expression": "-259257681200800*sqrt(555)/81 - 9303779548120*sqrt(36445)/27",
+          "reconstructionResidual": "0",
+          "allPositive": false,
+          "allNegative": true,
+          "terms": [
+            {
+              "value": "-259257681200800*sqrt(555)/81",
+              "positive": "False",
+              "negative": "True"
+            },
+            {
+              "value": "-9303779548120*sqrt(36445)/27",
+              "positive": "False",
+              "negative": "True"
+            }
+          ]
+        }
+      ]
+    },
+    "block17-regular-1-2-nonzero-certificate.json": {
+      "entry": "block17-regular-1-2",
+      "denominatorOrder": 1,
+      "coefficient": "sqrt(36445)*(-5582267728872 - 15947612949440*I)/81 + sqrt(555)*(-51851536240160 + 15885876971200*I)/81",
+      "originalIsZero": "None",
+      "provedNonzero": true,
+      "method": "EXACT_COMPONENT_TERM_SIGNS",
+      "component": "real",
+      "sign": -1,
+      "reconstructionResidual": "0",
+      "componentChecks": [
+        {
+          "component": "real",
+          "expression": "-51851536240160*sqrt(555)/81 - 1860755909624*sqrt(36445)/27",
+          "reconstructionResidual": "0",
+          "allPositive": false,
+          "allNegative": true,
+          "terms": [
+            {
+              "value": "-51851536240160*sqrt(555)/81",
+              "positive": "False",
+              "negative": "True"
+            },
+            {
+              "value": "-1860755909624*sqrt(36445)/27",
+              "positive": "False",
+              "negative": "True"
+            }
+          ]
+        }
+      ]
+    },
+    "block17-regular-1-3-nonzero-certificate.json": {
+      "entry": "block17-regular-1-3",
+      "denominatorOrder": 0,
+      "coefficient": "12962884060040/81 - 3971469242800*I/81 + sqrt(591)*(1395566932218 + 3986903237360*I)/243",
+      "originalIsZero": "None",
+      "provedNonzero": true,
+      "method": "EXACT_COMPONENT_TERM_SIGNS",
+      "component": "real",
+      "sign": 1,
+      "reconstructionResidual": "0",
+      "componentChecks": [
+        {
+          "component": "real",
+          "expression": "465188977406*sqrt(591)/81 + 12962884060040/81",
+          "reconstructionResidual": "0",
+          "allPositive": true,
+          "allNegative": false,
+          "terms": [
+            {
+              "value": "12962884060040/81",
+              "positive": "True",
+              "negative": "False"
+            },
+            {
+              "value": "465188977406*sqrt(591)/81",
+              "positive": "True",
+              "negative": "False"
+            }
+          ]
+        }
+      ]
+    },
+    "block17-regular-1-4-nonzero-certificate.json": {
+      "entry": "block17-regular-1-4",
+      "denominatorOrder": 0,
+      "coefficient": "12962884060040/81 - 3971469242800*I/81 + sqrt(591)*(1395566932218 + 3986903237360*I)/243",
+      "originalIsZero": "None",
+      "provedNonzero": true,
+      "method": "EXACT_COMPONENT_TERM_SIGNS",
+      "component": "real",
+      "sign": 1,
+      "reconstructionResidual": "0",
+      "componentChecks": [
+        {
+          "component": "real",
+          "expression": "465188977406*sqrt(591)/81 + 12962884060040/81",
+          "reconstructionResidual": "0",
+          "allPositive": true,
+          "allNegative": false,
+          "terms": [
+            {
+              "value": "12962884060040/81",
+              "positive": "True",
+              "negative": "False"
+            },
+            {
+              "value": "465188977406*sqrt(591)/81",
+              "positive": "True",
+              "negative": "False"
+            }
+          ]
+        }
+      ]
+    },
+    "block17-regular-2-0-nonzero-certificate.json": {
+      "entry": "block17-regular-2-0",
+      "denominatorOrder": 1,
+      "coefficient": "sqrt(36445)*(-5582267728872 - 15947612949440*I)/81 + sqrt(555)*(-51851536240160 + 15885876971200*I)/81",
+      "originalIsZero": "None",
+      "provedNonzero": true,
+      "method": "EXACT_COMPONENT_TERM_SIGNS",
+      "component": "real",
+      "sign": -1,
+      "reconstructionResidual": "0",
+      "componentChecks": [
+        {
+          "component": "real",
+          "expression": "-51851536240160*sqrt(555)/81 - 1860755909624*sqrt(36445)/27",
+          "reconstructionResidual": "0",
+          "allPositive": false,
+          "allNegative": true,
+          "terms": [
+            {
+              "value": "-51851536240160*sqrt(555)/81",
+              "positive": "False",
+              "negative": "True"
+            },
+            {
+              "value": "-1860755909624*sqrt(36445)/27",
+              "positive": "False",
+              "negative": "True"
+            }
+          ]
+        }
+      ]
+    },
+    "block17-regular-2-1-nonzero-certificate.json": {
+      "entry": "block17-regular-2-1",
+      "denominatorOrder": 1,
+      "coefficient": "sqrt(36445)*(-5582267728872 - 15947612949440*I)/81 + sqrt(555)*(-51851536240160 + 15885876971200*I)/81",
+      "originalIsZero": "None",
+      "provedNonzero": true,
+      "method": "EXACT_COMPONENT_TERM_SIGNS",
+      "component": "real",
+      "sign": -1,
+      "reconstructionResidual": "0",
+      "componentChecks": [
+        {
+          "component": "real",
+          "expression": "-51851536240160*sqrt(555)/81 - 1860755909624*sqrt(36445)/27",
+          "reconstructionResidual": "0",
+          "allPositive": false,
+          "allNegative": true,
+          "terms": [
+            {
+              "value": "-51851536240160*sqrt(555)/81",
+              "positive": "False",
+              "negative": "True"
+            },
+            {
+              "value": "-1860755909624*sqrt(36445)/27",
+              "positive": "False",
+              "negative": "True"
+            }
+          ]
+        }
+      ]
+    },
+    "block17-regular-2-2-nonzero-certificate.json": {
+      "entry": "block17-regular-2-2",
+      "denominatorOrder": 1,
+      "coefficient": "sqrt(36445)*(-5582267728872 - 15947612949440*I)/81 + sqrt(555)*(-51851536240160 + 15885876971200*I)/81",
+      "originalIsZero": "None",
+      "provedNonzero": true,
+      "method": "EXACT_COMPONENT_TERM_SIGNS",
+      "component": "real",
+      "sign": -1,
+      "reconstructionResidual": "0",
+      "componentChecks": [
+        {
+          "component": "real",
+          "expression": "-51851536240160*sqrt(555)/81 - 1860755909624*sqrt(36445)/27",
+          "reconstructionResidual": "0",
+          "allPositive": false,
+          "allNegative": true,
+          "terms": [
+            {
+              "value": "-51851536240160*sqrt(555)/81",
+              "positive": "False",
+              "negative": "True"
+            },
+            {
+              "value": "-1860755909624*sqrt(36445)/27",
+              "positive": "False",
+              "negative": "True"
+            }
+          ]
+        }
+      ]
+    },
+    "block17-regular-2-3-nonzero-certificate.json": {
+      "entry": "block17-regular-2-3",
+      "denominatorOrder": 0,
+      "coefficient": "12962884060040/81 - 3971469242800*I/81 + sqrt(591)*(1395566932218 + 3986903237360*I)/243",
+      "originalIsZero": "None",
+      "provedNonzero": true,
+      "method": "EXACT_COMPONENT_TERM_SIGNS",
+      "component": "real",
+      "sign": 1,
+      "reconstructionResidual": "0",
+      "componentChecks": [
+        {
+          "component": "real",
+          "expression": "465188977406*sqrt(591)/81 + 12962884060040/81",
+          "reconstructionResidual": "0",
+          "allPositive": true,
+          "allNegative": false,
+          "terms": [
+            {
+              "value": "12962884060040/81",
+              "positive": "True",
+              "negative": "False"
+            },
+            {
+              "value": "465188977406*sqrt(591)/81",
+              "positive": "True",
+              "negative": "False"
+            }
+          ]
+        }
+      ]
+    },
+    "block17-regular-2-4-nonzero-certificate.json": {
+      "entry": "block17-regular-2-4",
+      "denominatorOrder": 0,
+      "coefficient": "12962884060040/81 - 3971469242800*I/81 + sqrt(591)*(1395566932218 + 3986903237360*I)/243",
+      "originalIsZero": "None",
+      "provedNonzero": true,
+      "method": "EXACT_COMPONENT_TERM_SIGNS",
+      "component": "real",
+      "sign": 1,
+      "reconstructionResidual": "0",
+      "componentChecks": [
+        {
+          "component": "real",
+          "expression": "465188977406*sqrt(591)/81 + 12962884060040/81",
+          "reconstructionResidual": "0",
+          "allPositive": true,
+          "allNegative": false,
+          "terms": [
+            {
+              "value": "12962884060040/81",
+              "positive": "True",
+              "negative": "False"
+            },
+            {
+              "value": "465188977406*sqrt(591)/81",
+              "positive": "True",
+              "negative": "False"
+            }
+          ]
+        }
+      ]
+    },
+    "block17-regular-3-0-nonzero-certificate.json": {
+      "entry": "block17-regular-3-0",
+      "denominatorOrder": 0,
+      "coefficient": "12962884060040/81 - 3971469242800*I/81 + sqrt(591)*(1395566932218 + 3986903237360*I)/243",
+      "originalIsZero": "None",
+      "provedNonzero": true,
+      "method": "EXACT_COMPONENT_TERM_SIGNS",
+      "component": "real",
+      "sign": 1,
+      "reconstructionResidual": "0",
+      "componentChecks": [
+        {
+          "component": "real",
+          "expression": "465188977406*sqrt(591)/81 + 12962884060040/81",
+          "reconstructionResidual": "0",
+          "allPositive": true,
+          "allNegative": false,
+          "terms": [
+            {
+              "value": "12962884060040/81",
+              "positive": "True",
+              "negative": "False"
+            },
+            {
+              "value": "465188977406*sqrt(591)/81",
+              "positive": "True",
+              "negative": "False"
+            }
+          ]
+        }
+      ]
+    },
+    "block17-regular-3-1-nonzero-certificate.json": {
+      "entry": "block17-regular-3-1",
+      "denominatorOrder": 0,
+      "coefficient": "12962884060040/81 - 3971469242800*I/81 + sqrt(591)*(1395566932218 + 3986903237360*I)/243",
+      "originalIsZero": "None",
+      "provedNonzero": true,
+      "method": "EXACT_COMPONENT_TERM_SIGNS",
+      "component": "real",
+      "sign": 1,
+      "reconstructionResidual": "0",
+      "componentChecks": [
+        {
+          "component": "real",
+          "expression": "465188977406*sqrt(591)/81 + 12962884060040/81",
+          "reconstructionResidual": "0",
+          "allPositive": true,
+          "allNegative": false,
+          "terms": [
+            {
+              "value": "12962884060040/81",
+              "positive": "True",
+              "negative": "False"
+            },
+            {
+              "value": "465188977406*sqrt(591)/81",
+              "positive": "True",
+              "negative": "False"
+            }
+          ]
+        }
+      ]
+    },
+    "block17-regular-3-2-nonzero-certificate.json": {
+      "entry": "block17-regular-3-2",
+      "denominatorOrder": 0,
+      "coefficient": "12962884060040/81 - 3971469242800*I/81 + sqrt(591)*(1395566932218 + 3986903237360*I)/243",
+      "originalIsZero": "None",
+      "provedNonzero": true,
+      "method": "EXACT_COMPONENT_TERM_SIGNS",
+      "component": "real",
+      "sign": 1,
+      "reconstructionResidual": "0",
+      "componentChecks": [
+        {
+          "component": "real",
+          "expression": "465188977406*sqrt(591)/81 + 12962884060040/81",
+          "reconstructionResidual": "0",
+          "allPositive": true,
+          "allNegative": false,
+          "terms": [
+            {
+              "value": "12962884060040/81",
+              "positive": "True",
+              "negative": "False"
+            },
+            {
+              "value": "465188977406*sqrt(591)/81",
+              "positive": "True",
+              "negative": "False"
+            }
+          ]
+        }
+      ]
+    },
+    "block17-regular-3-3-nonzero-certificate.json": {
+      "entry": "block17-regular-3-3",
+      "denominatorOrder": 0,
+      "coefficient": "12962884060040/81 - 3971469242800*I/81 + sqrt(591)*(1395566932218 + 3986903237360*I)/243",
+      "originalIsZero": "None",
+      "provedNonzero": true,
+      "method": "EXACT_COMPONENT_TERM_SIGNS",
+      "component": "real",
+      "sign": 1,
+      "reconstructionResidual": "0",
+      "componentChecks": [
+        {
+          "component": "real",
+          "expression": "465188977406*sqrt(591)/81 + 12962884060040/81",
+          "reconstructionResidual": "0",
+          "allPositive": true,
+          "allNegative": false,
+          "terms": [
+            {
+              "value": "12962884060040/81",
+              "positive": "True",
+              "negative": "False"
+            },
+            {
+              "value": "465188977406*sqrt(591)/81",
+              "positive": "True",
+              "negative": "False"
+            }
+          ]
+        }
+      ]
+    },
+    "block17-regular-3-4-nonzero-certificate.json": {
+      "entry": "block17-regular-3-4",
+      "denominatorOrder": 0,
+      "coefficient": "12962884060040/81 - 3971469242800*I/81 + sqrt(591)*(1395566932218 + 3986903237360*I)/243",
+      "originalIsZero": "None",
+      "provedNonzero": true,
+      "method": "EXACT_COMPONENT_TERM_SIGNS",
+      "component": "real",
+      "sign": 1,
+      "reconstructionResidual": "0",
+      "componentChecks": [
+        {
+          "component": "real",
+          "expression": "465188977406*sqrt(591)/81 + 12962884060040/81",
+          "reconstructionResidual": "0",
+          "allPositive": true,
+          "allNegative": false,
+          "terms": [
+            {
+              "value": "12962884060040/81",
+              "positive": "True",
+              "negative": "False"
+            },
+            {
+              "value": "465188977406*sqrt(591)/81",
+              "positive": "True",
+              "negative": "False"
+            }
+          ]
+        }
+      ]
+    },
+    "block17-regular-4-0-nonzero-certificate.json": {
+      "entry": "block17-regular-4-0",
+      "denominatorOrder": 0,
+      "coefficient": "12962884060040/81 - 3971469242800*I/81 + sqrt(591)*(1395566932218 + 3986903237360*I)/243",
+      "originalIsZero": "None",
+      "provedNonzero": true,
+      "method": "EXACT_COMPONENT_TERM_SIGNS",
+      "component": "real",
+      "sign": 1,
+      "reconstructionResidual": "0",
+      "componentChecks": [
+        {
+          "component": "real",
+          "expression": "465188977406*sqrt(591)/81 + 12962884060040/81",
+          "reconstructionResidual": "0",
+          "allPositive": true,
+          "allNegative": false,
+          "terms": [
+            {
+              "value": "12962884060040/81",
+              "positive": "True",
+              "negative": "False"
+            },
+            {
+              "value": "465188977406*sqrt(591)/81",
+              "positive": "True",
+              "negative": "False"
+            }
+          ]
+        }
+      ]
+    },
+    "block17-regular-4-1-nonzero-certificate.json": {
+      "entry": "block17-regular-4-1",
+      "denominatorOrder": 0,
+      "coefficient": "12962884060040/81 - 3971469242800*I/81 + sqrt(591)*(1395566932218 + 3986903237360*I)/243",
+      "originalIsZero": "None",
+      "provedNonzero": true,
+      "method": "EXACT_COMPONENT_TERM_SIGNS",
+      "component": "real",
+      "sign": 1,
+      "reconstructionResidual": "0",
+      "componentChecks": [
+        {
+          "component": "real",
+          "expression": "465188977406*sqrt(591)/81 + 12962884060040/81",
+          "reconstructionResidual": "0",
+          "allPositive": true,
+          "allNegative": false,
+          "terms": [
+            {
+              "value": "12962884060040/81",
+              "positive": "True",
+              "negative": "False"
+            },
+            {
+              "value": "465188977406*sqrt(591)/81",
+              "positive": "True",
+              "negative": "False"
+            }
+          ]
+        }
+      ]
+    },
+    "block17-regular-4-2-nonzero-certificate.json": {
+      "entry": "block17-regular-4-2",
+      "denominatorOrder": 0,
+      "coefficient": "12962884060040/81 - 3971469242800*I/81 + sqrt(591)*(1395566932218 + 3986903237360*I)/243",
+      "originalIsZero": "None",
+      "provedNonzero": true,
+      "method": "EXACT_COMPONENT_TERM_SIGNS",
+      "component": "real",
+      "sign": 1,
+      "reconstructionResidual": "0",
+      "componentChecks": [
+        {
+          "component": "real",
+          "expression": "465188977406*sqrt(591)/81 + 12962884060040/81",
+          "reconstructionResidual": "0",
+          "allPositive": true,
+          "allNegative": false,
+          "terms": [
+            {
+              "value": "12962884060040/81",
+              "positive": "True",
+              "negative": "False"
+            },
+            {
+              "value": "465188977406*sqrt(591)/81",
+              "positive": "True",
+              "negative": "False"
+            }
+          ]
+        }
+      ]
+    },
+    "block17-regular-4-3-nonzero-certificate.json": {
+      "entry": "block17-regular-4-3",
+      "denominatorOrder": 0,
+      "coefficient": "12962884060040/81 - 3971469242800*I/81 + sqrt(591)*(1395566932218 + 3986903237360*I)/243",
+      "originalIsZero": "None",
+      "provedNonzero": true,
+      "method": "EXACT_COMPONENT_TERM_SIGNS",
+      "component": "real",
+      "sign": 1,
+      "reconstructionResidual": "0",
+      "componentChecks": [
+        {
+          "component": "real",
+          "expression": "465188977406*sqrt(591)/81 + 12962884060040/81",
+          "reconstructionResidual": "0",
+          "allPositive": true,
+          "allNegative": false,
+          "terms": [
+            {
+              "value": "12962884060040/81",
+              "positive": "True",
+              "negative": "False"
+            },
+            {
+              "value": "465188977406*sqrt(591)/81",
+              "positive": "True",
+              "negative": "False"
+            }
+          ]
+        }
+      ]
+    },
+    "block17-regular-4-4-nonzero-certificate.json": {
+      "entry": "block17-regular-4-4",
+      "denominatorOrder": 0,
+      "coefficient": "12962884060040/81 - 3971469242800*I/81 + sqrt(591)*(1395566932218 + 3986903237360*I)/243",
+      "originalIsZero": "None",
+      "provedNonzero": true,
+      "method": "EXACT_COMPONENT_TERM_SIGNS",
+      "component": "real",
+      "sign": 1,
+      "reconstructionResidual": "0",
+      "componentChecks": [
+        {
+          "component": "real",
+          "expression": "465188977406*sqrt(591)/81 + 12962884060040/81",
+          "reconstructionResidual": "0",
+          "allPositive": true,
+          "allNegative": false,
+          "terms": [
+            {
+              "value": "12962884060040/81",
+              "positive": "True",
+              "negative": "False"
+            },
+            {
+              "value": "465188977406*sqrt(591)/81",
+              "positive": "True",
+              "negative": "False"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "nonzeroCertificateCount": 50,
+  "nonzeroSignCounts": {
+    "1": 41,
+    "-1": 9
+  },
+  "denominatorOrderCounts": {
+    "1": 18,
+    "0": 32
+  },
+  "workerReportedZeroChecks": {
+    "LEFT-block16-grade01-end-action-power1.json": {
+      "shape": [
+        5,
+        5
+      ],
+      "zero": true,
+      "unresolvedEntries": []
+    },
+    "block17-inverse-constant-right.json": {
+      "shape": [
+        5,
+        5
+      ],
+      "zero": true,
+      "unresolvedEntries": []
+    },
+    "LEFT-block16-grade10-end-action-power1.json": {
+      "shape": [
+        5,
+        5
+      ],
+      "zero": true,
+      "unresolvedEntries": []
+    },
+    "block17-residue-right.json": {
+      "shape": [
+        5,
+        5
+      ],
+      "zero": true,
+      "unresolvedEntries": []
+    },
+    "LEFT-grade-join-10.json": {
+      "shape": [
+        5,
+        5
+      ],
+      "zero": true,
+      "unresolvedEntries": []
+    },
+    "RIGHT-block16-grade10-end-action-power0.json": {
+      "shape": [
+        5,
+        5
+      ],
+      "zero": true,
+      "unresolvedEntries": []
+    },
+    "reference-symbol-join.json": {
+      "shape": [
+        5,
+        5
+      ],
+      "zero": true,
+      "unresolvedEntries": []
+    },
+    "LEFT-block16-grade01-end-action-power0.json": {
+      "shape": [
+        5,
+        5
+      ],
+      "zero": true,
+      "unresolvedEntries": []
+    },
+    "RIGHT-grade-join-10.json": {
+      "shape": [
+        5,
+        5
+      ],
+      "zero": true,
+      "unresolvedEntries": []
+    },
+    "LEFT-branch-derivative-join-10.json": {
+      "shape": [
+        5,
+        5
+      ],
+      "zero": true,
+      "unresolvedEntries": []
+    },
+    "block16-inverse-constant-right.json": {
+      "shape": [
+        5,
+        5
+      ],
+      "zero": true,
+      "unresolvedEntries": []
+    },
+    "RIGHT-block16-grade01-end-action-power0.json": {
+      "shape": [
+        5,
+        5
+      ],
+      "zero": true,
+      "unresolvedEntries": []
+    },
+    "LEFT-block17-grade01-end-action-power0.json": {
+      "shape": [
+        5,
+        5
+      ],
+      "zero": true,
+      "unresolvedEntries": []
+    },
+    "LEFT-branch-derivative-join-00.json": {
+      "shape": [
+        5,
+        5
+      ],
+      "zero": true,
+      "unresolvedEntries": []
+    },
+    "RIGHT-grade-join-01.json": {
+      "shape": [
+        5,
+        5
+      ],
+      "zero": true,
+      "unresolvedEntries": []
+    },
+    "LEFT-block17-grade01-end-action-power1.json": {
+      "shape": [
+        5,
+        5
+      ],
+      "zero": true,
+      "unresolvedEntries": []
+    },
+    "block17-inverse-constant-left.json": {
+      "shape": [
+        5,
+        5
+      ],
+      "zero": true,
+      "unresolvedEntries": []
+    },
+    "RIGHT-block16-grade01-end-action-power1.json": {
+      "shape": [
+        5,
+        5
+      ],
+      "zero": true,
+      "unresolvedEntries": []
+    },
+    "block16-residue-left.json": {
+      "shape": [
+        5,
+        5
+      ],
+      "zero": true,
+      "unresolvedEntries": []
+    },
+    "RIGHT-block16-grade10-end-action-power1.json": {
+      "shape": [
+        5,
+        5
+      ],
+      "zero": true,
+      "unresolvedEntries": []
+    },
+    "block16-residue-right.json": {
+      "shape": [
+        5,
+        5
+      ],
+      "zero": true,
+      "unresolvedEntries": []
+    },
+    "RIGHT-branch-derivative-join-10.json": {
+      "shape": [
+        5,
+        5
+      ],
+      "zero": true,
+      "unresolvedEntries": []
+    },
+    "block17-residue-left.json": {
+      "shape": [
+        5,
+        5
+      ],
+      "zero": true,
+      "unresolvedEntries": []
+    },
+    "LEFT-block17-grade10-end-action-power1.json": {
+      "shape": [
+        5,
+        5
+      ],
+      "zero": true,
+      "unresolvedEntries": []
+    },
+    "LEFT-branch-derivative-join-01.json": {
+      "shape": [
+        5,
+        5
+      ],
+      "zero": true,
+      "unresolvedEntries": []
+    },
+    "RIGHT-reference-join.json": {
+      "shape": [
+        5,
+        5
+      ],
+      "zero": true,
+      "unresolvedEntries": []
+    },
+    "LEFT-uniform-pencil-join.json": {
+      "shape": [
+        5,
+        5
+      ],
+      "zero": true,
+      "unresolvedEntries": []
+    },
+    "RIGHT-grade-join-00.json": {
+      "shape": [
+        5,
+        5
+      ],
+      "zero": true,
+      "unresolvedEntries": []
+    },
+    "RIGHT-branch-derivative-join-00.json": {
+      "shape": [
+        5,
+        5
+      ],
+      "zero": true,
+      "unresolvedEntries": []
+    },
+    "LEFT-reference-join.json": {
+      "shape": [
+        5,
+        5
+      ],
+      "zero": true,
+      "unresolvedEntries": []
+    },
+    "LEFT-block16-grade10-end-action-power0.json": {
+      "shape": [
+        5,
+        5
+      ],
+      "zero": true,
+      "unresolvedEntries": []
+    },
+    "block16-inverse-constant-left.json": {
+      "shape": [
+        5,
+        5
+      ],
+      "zero": true,
+      "unresolvedEntries": []
+    },
+    "RIGHT-uniform-pencil-join.json": {
+      "shape": [
+        5,
+        5
+      ],
+      "zero": true,
+      "unresolvedEntries": []
+    },
+    "LEFT-block17-grade10-end-action-power0.json": {
+      "shape": [
+        5,
+        5
+      ],
+      "zero": true,
+      "unresolvedEntries": []
+    },
+    "RIGHT-branch-derivative-join-01.json": {
+      "shape": [
+        5,
+        5
+      ],
+      "zero": true,
+      "unresolvedEntries": []
+    },
+    "RIGHT-block17-grade10-end-action-power1.json": {
+      "shape": [
+        5,
+        5
+      ],
+      "zero": true,
+      "unresolvedEntries": []
+    },
+    "RIGHT-block17-grade01-end-action-power1.json": {
+      "shape": [
+        5,
+        5
+      ],
+      "zero": true,
+      "unresolvedEntries": []
+    },
+    "RIGHT-block17-grade10-end-action-power0.json": {
+      "shape": [
+        5,
+        5
+      ],
+      "zero": true,
+      "unresolvedEntries": []
+    },
+    "RIGHT-block17-grade01-end-action-power0.json": {
+      "shape": [
+        5,
+        5
+      ],
+      "zero": true,
+      "unresolvedEntries": []
+    },
+    "LEFT-grade-join-01.json": {
+      "shape": [
+        5,
+        5
+      ],
+      "zero": true,
+      "unresolvedEntries": []
+    },
+    "LEFT-grade-join-00.json": {
+      "shape": [
+        5,
+        5
+      ],
+      "zero": true,
+      "unresolvedEntries": []
+    }
+  },
+  "newEndEquationCheckCount": 16,
+  "newInverseResidueCheckCount": 8,
+  "inheritedJoinCheckCount": 17,
+  "endFieldArtifacts": {
+    "LEFT-block16-grade01-field.pickle": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/continuation/complete/LEFT-block16-grade01-field.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/continuation/complete/LEFT-block16-grade01-field.pickle",
+      "bytes": 1003,
+      "sha256": "719fb001339abdf3ddd0cbf01fef660cb67ebff7c4e8ac4f2444daf7ea367d34"
+    },
+    "LEFT-block16-grade10-field.pickle": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/continuation/complete/LEFT-block16-grade10-field.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/continuation/complete/LEFT-block16-grade10-field.pickle",
+      "bytes": 1003,
+      "sha256": "719fb001339abdf3ddd0cbf01fef660cb67ebff7c4e8ac4f2444daf7ea367d34"
+    },
+    "LEFT-block17-grade01-field.pickle": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/continuation/complete/LEFT-block17-grade01-field.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/continuation/complete/LEFT-block17-grade01-field.pickle",
+      "bytes": 1003,
+      "sha256": "719fb001339abdf3ddd0cbf01fef660cb67ebff7c4e8ac4f2444daf7ea367d34"
+    },
+    "LEFT-block17-grade10-field.pickle": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/continuation/complete/LEFT-block17-grade10-field.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/continuation/complete/LEFT-block17-grade10-field.pickle",
+      "bytes": 1003,
+      "sha256": "719fb001339abdf3ddd0cbf01fef660cb67ebff7c4e8ac4f2444daf7ea367d34"
+    },
+    "RIGHT-block16-grade01-field.pickle": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/continuation/complete/RIGHT-block16-grade01-field.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/continuation/complete/RIGHT-block16-grade01-field.pickle",
+      "bytes": 1003,
+      "sha256": "719fb001339abdf3ddd0cbf01fef660cb67ebff7c4e8ac4f2444daf7ea367d34"
+    },
+    "RIGHT-block16-grade10-field.pickle": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/continuation/complete/RIGHT-block16-grade10-field.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/continuation/complete/RIGHT-block16-grade10-field.pickle",
+      "bytes": 7468,
+      "sha256": "4304dc03fd35720628c14ec9a7a973b1fba77e160226c5a3568e3a04592e0527"
+    },
+    "RIGHT-block17-grade01-field.pickle": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/continuation/complete/RIGHT-block17-grade01-field.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/continuation/complete/RIGHT-block17-grade01-field.pickle",
+      "bytes": 1003,
+      "sha256": "719fb001339abdf3ddd0cbf01fef660cb67ebff7c4e8ac4f2444daf7ea367d34"
+    },
+    "RIGHT-block17-grade10-field.pickle": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/continuation/complete/RIGHT-block17-grade10-field.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/continuation/complete/RIGHT-block17-grade10-field.pickle",
+      "bytes": 7473,
+      "sha256": "e13ac8802b3bac8b8b9b9974d12f1ccba3b21f6323a80958f404d02cf5b4c80a"
+    }
+  },
+  "regularMatrixArtifacts": {
+    "block16-regular-matrix.pickle": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/continuation/complete/block16-regular-matrix.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/continuation/complete/block16-regular-matrix.pickle",
+      "bytes": 4510,
+      "sha256": "3987436e1512bc40592bf05270669fc7d677f67d673c5b600f498c60e6f7cbe4"
+    },
+    "block17-regular-matrix.pickle": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/continuation/complete/block17-regular-matrix.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/continuation/complete/block17-regular-matrix.pickle",
+      "bytes": 4633,
+      "sha256": "7b91336a3a6b0db0e35201fda9e107d7dca4d739b902eec0e2567227cf9fcf83"
+    }
+  },
+  "nativeCensus": {
+    "cells": 25,
+    "localTerms": 71,
+    "nonlocalTerms": 160
+  },
+  "planeJetPremise": {
+    "status": "UNVERIFIED_NONLOCAL_PLANE_JET_EXTENSION",
+    "zeroGradeContainsAbelRegulator": false,
+    "translationInvarianceEstablished": false,
+    "momentumDerivativePassesOrderedIntegralsAndAbelLimitEstablished": false,
+    "required": "Justify the native regulated harmonic identity on finite momentum derivatives near each inherited pole.",
+    "scope": "The absence checks are necessary source diagnostics, not a translation/interchange theorem.",
+    "zeroGradeProfileOccurrenceCount": 0
+  },
+  "forcingCarrierMutationDomainConstructionReached": false,
+  "resourceEnforcement": {
+    "verified": true,
+    "actual": {
+      "memory.max": "2147483648",
+      "memory.swap.max": "0",
+      "pids.max": "32",
+      "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-53d049014dff.service",
+      "nice": 15,
+      "affinity": [
+        15
+      ],
+      "threads": {
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "VECLIB_MAXIMUM_THREADS": "1",
+        "BLIS_NUM_THREADS": "1"
+      }
+    }
+  },
+  "resources": {
+    "workerWallSeconds": 640.0240995880449,
+    "supervisorWallSeconds": 641.0727738729911,
+    "guardChildWallSeconds": 641.1418196220184,
+    "wholeGuardWallSeconds": 641.2329668879975,
+    "coordinatorWallSeconds": 641.2882994060637,
+    "peakBytes": 139350016,
+    "samples": 322,
+    "maxSampledTasks": 3,
+    "minHostAvailableBytes": 17934106624,
+    "swapBytes": 0,
+    "allMemoryEventCountsZero": true,
+    "guardReason": null
+  },
+  "logs": {
+    "active.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/continuation/active.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/continuation/active.json",
+      "bytes": 1088,
+      "sha256": "84c744acfba20b43d003801c593df511b552c66fe5f5a1831fbc81921fd56a1e"
+    },
+    "completion-watcher/completion.stderr": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/continuation/completion-watcher/completion.stderr",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/continuation/completion-watcher/completion.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "completion-watcher/completion.stdout": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/continuation/completion-watcher/completion.stdout",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/continuation/completion-watcher/completion.stdout",
+      "bytes": 101,
+      "sha256": "022a8bf548ace45989204a7463fc8e3cc1f363bde222233a78a0a5f8f95dc6b7"
+    },
+    "completion-watcher/state.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/continuation/completion-watcher/state.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/continuation/completion-watcher/state.json",
+      "bytes": 505,
+      "sha256": "a67c589c0f004ae9c3e57912ebfa07f9f24c23aa890d84fb937100f5bf25d2d7"
+    },
+    "completion-watcher/watcher.lock": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/continuation/completion-watcher/watcher.lock",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/continuation/completion-watcher/watcher.lock",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "coordinator-outcome.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/continuation/coordinator-outcome.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/continuation/coordinator-outcome.json",
+      "bytes": 146,
+      "sha256": "5923716a30b371a086c19ba02e11d6abf4f4306fb01ac736330fae5e3b67ef87"
+    },
+    "coordinator.stderr": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/continuation/coordinator.stderr",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/continuation/coordinator.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "coordinator.stdout": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/continuation/coordinator.stdout",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/continuation/coordinator.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "guard-launch.stderr": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/continuation/guard-launch.stderr",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/continuation/guard-launch.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "guard-launch.stdout": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/continuation/guard-launch.stdout",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/continuation/guard-launch.stdout",
+      "bytes": 270,
+      "sha256": "c633853ba6e7bd422da41df1f388982e11e9a04999144ed013eacb6908aa0b11"
+    },
+    "issues.log": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/continuation/issues.log",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/continuation/issues.log",
+      "bytes": 59,
+      "sha256": "89bdd06d52c6747fdfae97bc84c8bc557449f81818290b8741ef501cd29460e5"
+    },
+    "launch.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/continuation/launch.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/continuation/launch.json",
+      "bytes": 1769,
+      "sha256": "75dbded2190d5ea601b52bb4b7a3c2374245d298d4f4959fe61ade75b3fc695e"
+    },
+    "normalization.lock": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/continuation/normalization.lock",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/continuation/normalization.lock",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "resource-guard/child-outcome.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/continuation/resource-guard/child-outcome.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/continuation/resource-guard/child-outcome.json",
+      "bytes": 102,
+      "sha256": "d6f0f253fdb9cc625e4a0ef5592296a95173bd6cd08b51a29933ba2aca1c137c"
+    },
+    "resource-guard/effective-limits.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/continuation/resource-guard/effective-limits.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/continuation/resource-guard/effective-limits.json",
+      "bytes": 441,
+      "sha256": "91fdddd6ce8fcf822066d0cf72cf7dbe5572227de69d3f30fd43a6d11a161cd5"
+    },
+    "resource-guard/invocation.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/continuation/resource-guard/invocation.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/continuation/resource-guard/invocation.json",
+      "bytes": 1112,
+      "sha256": "d5d53792482b1ccd53010ca6ee11ae582a83922d7a26bd39bd7ca866bddd3e8d"
+    },
+    "resource-guard/limit-validation.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/continuation/resource-guard/limit-validation.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/continuation/resource-guard/limit-validation.json",
+      "bytes": 511,
+      "sha256": "f224082db8f433a31ad12d26d6f09d496d0527c15672d9d6d9d6b9089af33fa9"
+    },
+    "resource-guard/outcome.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/continuation/resource-guard/outcome.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/continuation/resource-guard/outcome.json",
+      "bytes": 270,
+      "sha256": "c633853ba6e7bd422da41df1f388982e11e9a04999144ed013eacb6908aa0b11"
+    },
+    "resource-guard/resource-samples.jsonl": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/continuation/resource-guard/resource-samples.jsonl",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/continuation/resource-guard/resource-samples.jsonl",
+      "bytes": 128783,
+      "sha256": "0b710dff3b844cddd8f9f7401cec9573c31eac45193bba2ee3475c76a9e9a0f9"
+    },
+    "resource-guard/stderr": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/continuation/resource-guard/stderr",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/continuation/resource-guard/stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "resource-guard/stdout": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/continuation/resource-guard/stdout",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/continuation/resource-guard/stdout",
+      "bytes": 1088,
+      "sha256": "84c744acfba20b43d003801c593df511b552c66fe5f5a1831fbc81921fd56a1e"
+    },
+    "stage-start.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/continuation/stage-start.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/continuation/stage-start.json",
+      "bytes": 1620,
+      "sha256": "411ed7b604076a1b69a2d8010f302d0cf452c2cdfc8dd8ad71153a50a673650f"
+    },
+    "two_asymptote_continuation.invocation.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/continuation/two_asymptote_continuation.invocation.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/continuation/two_asymptote_continuation.invocation.json",
+      "bytes": 1088,
+      "sha256": "84c744acfba20b43d003801c593df511b552c66fe5f5a1831fbc81921fd56a1e"
+    },
+    "two_asymptote_continuation.stderr": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/continuation/two_asymptote_continuation.stderr",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/continuation/two_asymptote_continuation.stderr",
+      "bytes": 4424,
+      "sha256": "c745b32f51d6172888d2edc0d6cb4dc3d744f5eb028dc1d10791aa0f257b410a"
+    },
+    "two_asymptote_continuation.stdout": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/continuation/two_asymptote_continuation.stdout",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/continuation/two_asymptote_continuation.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "watcher.stderr": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/continuation/watcher.stderr",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/continuation/watcher.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "watcher.stdout": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/continuation/watcher.stdout",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/continuation/watcher.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "scientificStderrEmpty": false,
+  "scientificStderrBytes": 4424,
+  "scientificStderrMatchesSavedFailurePlusMainFrame": true,
+  "scientificStdoutBytes": 0,
+  "checksPresent": false,
+  "stdoutChecksByteIdentical": null,
+  "completionHookArmedBeforeScience": true,
+  "completionEventHandled": true,
+  "endLiftForcingStageAccepted": false,
+  "partialOutputsPreservedForResume": true,
+  "independentScientificSavedObjectValidationPerformed": false,
+  "scientificPickleRestorationsDuringCompletionInspection": 0,
+  "reviewVerdicts": {
+    "Claude": "NEEDS REVISION",
+    "Grok": "CLEAR FOR THIS BOUNDED INGREDIENT"
+  },
+  "freshIndependentClearClaimed": false,
+  "automaticRetry": false,
+  "newJobLaunched": false,
+  "protectedBuilderSuffixSha256": "f01024512c9a028e7e524e5a95b5c455be42e125d10c36f94e20493109b013c2",
+  "nextDependency": "Fix exact endpoint substitution before alpha-renaming, preserving the unknown-Limit guard. A separately authorized continuation must restore all 536 complete returns and completed end-field/support artifacts, then resume only bind-native-action and unfinished forcing/control/domain work."
+}

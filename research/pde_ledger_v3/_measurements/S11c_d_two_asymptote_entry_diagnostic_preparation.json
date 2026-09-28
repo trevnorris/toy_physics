@@ -1,0 +1,53 @@
+{
+  "status": "PREPARED_DIAGNOSTIC_PENDING_EXPLICIT_APPROVAL_NO_LAUNCH",
+  "recordedUtc": "2026-09-28T05:33:35.696198+00:00",
+  "worker": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_entry_diagnostic.py",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_entry_diagnostic.py",
+    "bytes": 15186,
+    "sha256": "e1b782a43e0d1596237f51622ea5a9c2039d7a5c02534bfc518bb02cdaaab50f"
+  },
+  "inputManifest": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_entry_diagnostic_inputs.json",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_entry_diagnostic_inputs.json",
+    "bytes": 179057,
+    "sha256": "f99469dfa9e73120da6d69a41f0c4dab0955c398345610b93bad1f0b7908bf6d"
+  },
+  "launcher": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/launch_entry_diagnostic.py",
+    "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/launch_entry_diagnostic.py",
+    "bytes": 9509,
+    "sha256": "c5031f1e9e83787b218c995ffd90f38d0d7e3df738057b57cc1a07dade1eaf00"
+  },
+  "completionMessage": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/entry_diagnostic_completion_message.txt",
+    "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/entry_diagnostic_completion_message.txt",
+    "bytes": 2474,
+    "sha256": "2c8735fec73aefc1db0d599a145cb8aa0ae91d5cd8493eea26174da558ed0abd"
+  },
+  "pendingGate": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_entry_diagnostic_pending_gate.json",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_entry_diagnostic_pending_gate.json",
+    "bytes": 2501,
+    "sha256": "06909deb25bf0959849cbdb6a326c898452ec769b7503a249496014ebb0f1e5e"
+  },
+  "parentFailureCheckpoint": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_failure_checkpoint.json",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_failure_checkpoint.json",
+    "bytes": 272339,
+    "sha256": "5a9ded32c1fd7219dfcd36346ce439e00426454065ffa2406004e637a3c6b6be"
+  },
+  "inputRecords": 392,
+  "uniquePinnedFiles": 386,
+  "parentArtifactsPinned": 279,
+  "originalInputHashesPinned": 101,
+  "scientificWorkersLaunched": 0,
+  "scientificRestorations": 0,
+  "scientificOperations": 0,
+  "externalReviewsSubmitted": 0,
+  "automaticRetry": false,
+  "proposedRunRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/entry-diagnostic",
+  "protectedBuilderSuffixSha256": "f01024512c9a028e7e524e5a95b5c455be42e125d10c36f94e20493109b013c2",
+  "newGeneratedFilesOver1MiB": [],
+  "preparationNote": "Denominator observations also save full expression text and srepr for lightweight completion inspection."
+}

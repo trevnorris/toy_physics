@@ -1,0 +1,42 @@
+{
+  "status": "PREPARED_USER_DIRECTED_ENDPOINT_REPAIR_NO_SCIENCE_YET",
+  "recordedUtc": "2026-09-28T07:41:39.855828+00:00",
+  "worker": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_forcing_continue.py",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_forcing_continue.py",
+    "bytes": 42518,
+    "sha256": "e915d69e4248a0704bc44e7af872e0807a5657545662dc451e81837e22014a03"
+  },
+  "manifest": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_forcing_continuation_inputs.json",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_forcing_continuation_inputs.json",
+    "bytes": 2159010,
+    "sha256": "b25e8d95ae92ae12c03e8e6c34a137f2a41eab722ab7cfd80b4ecaff225e44c8"
+  },
+  "launcher": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/launch_forcing_continuation.py",
+    "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/launch_forcing_continuation.py",
+    "bytes": 9893,
+    "sha256": "d428c173f2ab8e361fd1f0514aa66cf24f841cfa93f853d24584e07377bf83e6"
+  },
+  "completionMessage": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/forcing_continuation_completion_message.txt",
+    "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/forcing_continuation_completion_message.txt",
+    "bytes": 3430,
+    "sha256": "178276af6c76f055f661c1a5b11d75546848ec851331f69f45167cdc61e6f600"
+  },
+  "proposal": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_forcing_continuation_proposal.json",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_forcing_continuation_proposal.json",
+    "bytes": 2591,
+    "sha256": "9aa17eb0ca8c4d71af31765e6c41673d282b0fa38e0e4a2adeca053134415303"
+  },
+  "completedOperationsToRestore": 536,
+  "copiedSupportingArtifacts": 211,
+  "inputRecords": 2819,
+  "uniquePinnedFiles": 2816,
+  "scientificOperations": 0,
+  "scientificRestorations": 0,
+  "newExternalReviews": 0,
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/forcing-continuation"
+}

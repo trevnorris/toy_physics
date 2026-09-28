@@ -1,0 +1,2073 @@
+{
+  "status": "GRADE_FREE_FACTOR_SOURCE_INVENTORY_CONFIRMED_METADATA_ONLY",
+  "recordedUtc": "2026-09-28T05:06:00.525005+00:00",
+  "inventory": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-grades-20260919/production/complete/record-inventory.json",
+    "bytes": 126458,
+    "sha256": "a26e4ae2cbb6fb0a5b14167321a50fee6175ecaae5da16d9512be4bb09164d3a"
+  },
+  "checkpoint": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_continuum_grade_checkpoint.json",
+    "bytes": 9207,
+    "sha256": "3987ff4abb782050fffc767065ed9b3126da49215aa0df41320abef7fdec4692"
+  },
+  "savedPacket": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-grades-20260919/production/complete/continuum-grades.pickle",
+    "bytes": 307486,
+    "sha256": "e39412750fe58734ba4db2bd84d40908d18706ae055f6ddd6e3f53f560aa9b71"
+  },
+  "counts": {
+    "local": 100,
+    "cell": 160,
+    "factor": 80,
+    "source": 35
+  },
+  "selectedRecords": [
+    {
+      "key": "integral0Factor0Coefficient",
+      "address": [
+        "factor",
+        0,
+        0
+      ],
+      "path": "records/integral0Factor0Coefficient.pickle",
+      "sha256": "28b77150cc5d2d9a71e83d5cf47f6f308ede27a211b4f4bd0bf843b8bca2817e",
+      "grades": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "carriers": 1
+    },
+    {
+      "key": "integral1Factor0Coefficient",
+      "address": [
+        "factor",
+        1,
+        0
+      ],
+      "path": "records/integral1Factor0Coefficient.pickle",
+      "sha256": "e5c0a98291bfb186b4ff86f0c9abcdb4d1610889393298013a1374810a770855",
+      "grades": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "carriers": 1
+    },
+    {
+      "key": "integral2Factor0Coefficient",
+      "address": [
+        "factor",
+        2,
+        0
+      ],
+      "path": "records/integral2Factor0Coefficient.pickle",
+      "sha256": "d37a5e2f237630c63a5f593629452fd18b581acaeb6a676df66570a65a8bc499",
+      "grades": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "carriers": 1
+    },
+    {
+      "key": "integral3Factor0Coefficient",
+      "address": [
+        "factor",
+        3,
+        0
+      ],
+      "path": "records/integral3Factor0Coefficient.pickle",
+      "sha256": "734cc77226e6806dbd473f7ddcf4a1a36b301c0c483e715cab1cb1ecfa4349de",
+      "grades": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "carriers": 1
+    },
+    {
+      "key": "integral4Factor0Coefficient",
+      "address": [
+        "factor",
+        4,
+        0
+      ],
+      "path": "records/integral4Factor0Coefficient.pickle",
+      "sha256": "b1f723d12573c4ab601c4396c14ced6225695182d19e227df7c4b2f2c5cf7b05",
+      "grades": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "carriers": 1
+    },
+    {
+      "key": "integral5Factor0Coefficient",
+      "address": [
+        "factor",
+        5,
+        0
+      ],
+      "path": "records/integral5Factor0Coefficient.pickle",
+      "sha256": "0f1791355c8af4eb3c79e00fa7a0ee1ac665a3869a942d81d969f56dd20c3ef0",
+      "grades": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "carriers": 1
+    },
+    {
+      "key": "integral6Factor0Coefficient",
+      "address": [
+        "factor",
+        6,
+        0
+      ],
+      "path": "records/integral6Factor0Coefficient.pickle",
+      "sha256": "55f777ad89f61842ad544354bf3a66d383c3795da4db1b636e57dc54998cc483",
+      "grades": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "carriers": 1
+    },
+    {
+      "key": "integral7Factor0Coefficient",
+      "address": [
+        "factor",
+        7,
+        0
+      ],
+      "path": "records/integral7Factor0Coefficient.pickle",
+      "sha256": "86fdf651dec5fc1dedad27ec168712ffb489f53480f82943f76d0f7df5ac049d",
+      "grades": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "carriers": 1
+    },
+    {
+      "key": "integral8Factor0Coefficient",
+      "address": [
+        "factor",
+        8,
+        0
+      ],
+      "path": "records/integral8Factor0Coefficient.pickle",
+      "sha256": "c8c4013426d6f8e67da1afd4d9a7f4f9a906e2a51c1dd2ef9a0d8c6da4b02d3b",
+      "grades": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "carriers": 1
+    },
+    {
+      "key": "integral9Factor0Coefficient",
+      "address": [
+        "factor",
+        9,
+        0
+      ],
+      "path": "records/integral9Factor0Coefficient.pickle",
+      "sha256": "145a1dbc58e851d86c9a0d7fa3f3d3104722b6b3c189f05ee62104f8e0f4bbad",
+      "grades": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "carriers": 1
+    },
+    {
+      "key": "integral10Factor0Coefficient",
+      "address": [
+        "factor",
+        10,
+        0
+      ],
+      "path": "records/integral10Factor0Coefficient.pickle",
+      "sha256": "a6617db5fdeb4c574066c673bb2d1ddc48a99002addf71094734b89fb3955e91",
+      "grades": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "carriers": 1
+    },
+    {
+      "key": "integral11Factor0Coefficient",
+      "address": [
+        "factor",
+        11,
+        0
+      ],
+      "path": "records/integral11Factor0Coefficient.pickle",
+      "sha256": "21c7ec43e7e6e341e8ecf61bf587a9acbab6c7f57d45547f8ebfb54d6a377940",
+      "grades": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "carriers": 1
+    },
+    {
+      "key": "integral12Factor0Coefficient",
+      "address": [
+        "factor",
+        12,
+        0
+      ],
+      "path": "records/integral12Factor0Coefficient.pickle",
+      "sha256": "b51695534e232b4cc815788e6ebb13ee438b00b4c7b1d6efa5e45a0e5adb709e",
+      "grades": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "carriers": 1
+    },
+    {
+      "key": "integral13Factor0Coefficient",
+      "address": [
+        "factor",
+        13,
+        0
+      ],
+      "path": "records/integral13Factor0Coefficient.pickle",
+      "sha256": "1d00f0fc7e0678a3578328703141e20015a4bdc64a7ba9552b3af1d3b09902d0",
+      "grades": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "carriers": 1
+    },
+    {
+      "key": "integral14Factor0Coefficient",
+      "address": [
+        "factor",
+        14,
+        0
+      ],
+      "path": "records/integral14Factor0Coefficient.pickle",
+      "sha256": "b0a5369629ddce62642ca156e7c2013253e62a6b114a4acbddffde1ba9d2946a",
+      "grades": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "carriers": 1
+    },
+    {
+      "key": "integral15Factor0Coefficient",
+      "address": [
+        "factor",
+        15,
+        0
+      ],
+      "path": "records/integral15Factor0Coefficient.pickle",
+      "sha256": "b6d92c03e528a8e9090a6acab3376ebeff4ce59f667daafffb8216093e9054f5",
+      "grades": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "carriers": 1
+    },
+    {
+      "key": "integral16Factor0Coefficient",
+      "address": [
+        "factor",
+        16,
+        0
+      ],
+      "path": "records/integral16Factor0Coefficient.pickle",
+      "sha256": "b044bc7d914db7cd43d332538235647dcfe90380b84f691e015f092169fe049c",
+      "grades": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "carriers": 1
+    },
+    {
+      "key": "integral17Factor0Coefficient",
+      "address": [
+        "factor",
+        17,
+        0
+      ],
+      "path": "records/integral17Factor0Coefficient.pickle",
+      "sha256": "0e72beaaab54e5d83a2c3bb767b9706514c6e991da6ef634c283866d5363a422",
+      "grades": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "carriers": 1
+    },
+    {
+      "key": "integral18Factor0Coefficient",
+      "address": [
+        "factor",
+        18,
+        0
+      ],
+      "path": "records/integral18Factor0Coefficient.pickle",
+      "sha256": "4ac48027284f185de7129c5a953dd71daa368f7f885bb21cf853d37e779822fa",
+      "grades": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "carriers": 1
+    },
+    {
+      "key": "integral19Factor0Coefficient",
+      "address": [
+        "factor",
+        19,
+        0
+      ],
+      "path": "records/integral19Factor0Coefficient.pickle",
+      "sha256": "86c624e6ab4b5ee8a1fcc61825bf11b06dd769b0e282760630c571ce39fae397",
+      "grades": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "carriers": 1
+    },
+    {
+      "key": "integral20Factor0Coefficient",
+      "address": [
+        "factor",
+        20,
+        0
+      ],
+      "path": "records/integral20Factor0Coefficient.pickle",
+      "sha256": "502db8544e5a8388c24d67408ee785ef20469a721ce9357e01a9e11d523af49f",
+      "grades": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "carriers": 1
+    },
+    {
+      "key": "integral21Factor0Coefficient",
+      "address": [
+        "factor",
+        21,
+        0
+      ],
+      "path": "records/integral21Factor0Coefficient.pickle",
+      "sha256": "beee5293c6f87e301e763044b9f5e9a054aa0bba988c9d55dfe27c7f7411e45b",
+      "grades": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "carriers": 1
+    },
+    {
+      "key": "integral22Factor0Coefficient",
+      "address": [
+        "factor",
+        22,
+        0
+      ],
+      "path": "records/integral22Factor0Coefficient.pickle",
+      "sha256": "d362b020472ee0e2e50fdf31c724cedb272b1ddbcd136a303851b6147ce1567d",
+      "grades": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "carriers": 1
+    },
+    {
+      "key": "integral23Factor0Coefficient",
+      "address": [
+        "factor",
+        23,
+        0
+      ],
+      "path": "records/integral23Factor0Coefficient.pickle",
+      "sha256": "633ed0b8c0adae8b2634b2bb5dc03ffccca0d495a146f335d1a914bedce650f3",
+      "grades": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "carriers": 1
+    },
+    {
+      "key": "integral24Factor0Coefficient",
+      "address": [
+        "factor",
+        24,
+        0
+      ],
+      "path": "records/integral24Factor0Coefficient.pickle",
+      "sha256": "37035ad71cecdd540ceff820d0530dbdeab89b41f4db2b757822201abd04b685",
+      "grades": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "carriers": 1
+    },
+    {
+      "key": "integral25Factor0Coefficient",
+      "address": [
+        "factor",
+        25,
+        0
+      ],
+      "path": "records/integral25Factor0Coefficient.pickle",
+      "sha256": "689e0b3d8a0571cbaa641ac3cfd23a752db02c8e48908e8987339595cc13eb48",
+      "grades": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "carriers": 1
+    },
+    {
+      "key": "integral26Factor0Coefficient",
+      "address": [
+        "factor",
+        26,
+        0
+      ],
+      "path": "records/integral26Factor0Coefficient.pickle",
+      "sha256": "dea71240c6f7f63e9c349ff579ad87d0224648c47dd50c5cdb7b5446b6880f9f",
+      "grades": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "carriers": 1
+    },
+    {
+      "key": "integral27Factor0Coefficient",
+      "address": [
+        "factor",
+        27,
+        0
+      ],
+      "path": "records/integral27Factor0Coefficient.pickle",
+      "sha256": "0ce7102747f528dab123d030166195fa47f2e40dab6972f5381563896582d4e4",
+      "grades": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "carriers": 1
+    },
+    {
+      "key": "integral28Factor0Coefficient",
+      "address": [
+        "factor",
+        28,
+        0
+      ],
+      "path": "records/integral28Factor0Coefficient.pickle",
+      "sha256": "0f10f42b63517d050c7849cd0168f4b16dbd0ce282da108984a2d62d811eb0e4",
+      "grades": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "carriers": 1
+    },
+    {
+      "key": "integral29Factor0Coefficient",
+      "address": [
+        "factor",
+        29,
+        0
+      ],
+      "path": "records/integral29Factor0Coefficient.pickle",
+      "sha256": "0b8389ac400d2deb40e01fc772d68479e268adf1522c903dfeec5d99edbdd715",
+      "grades": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "carriers": 1
+    },
+    {
+      "key": "integral30Factor0Coefficient",
+      "address": [
+        "factor",
+        30,
+        0
+      ],
+      "path": "records/integral30Factor0Coefficient.pickle",
+      "sha256": "4a82563f56d04d899ebc46ac8bbcb3f1ee772209c597b01d1ac0f17b58ee154a",
+      "grades": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "carriers": 1
+    },
+    {
+      "key": "integral31Factor0Coefficient",
+      "address": [
+        "factor",
+        31,
+        0
+      ],
+      "path": "records/integral31Factor0Coefficient.pickle",
+      "sha256": "2cc651ad7cdba9b13e6b06ebc7e8d7acc44aeb25e35b4612f30c297dea601a23",
+      "grades": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "carriers": 1
+    },
+    {
+      "key": "integral32Factor0Coefficient",
+      "address": [
+        "factor",
+        32,
+        0
+      ],
+      "path": "records/integral32Factor0Coefficient.pickle",
+      "sha256": "10137a6cbb500b3d443930108c481d6042516c94d30ff5988b111f6af2d52d69",
+      "grades": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "carriers": 1
+    },
+    {
+      "key": "integral33Factor0Coefficient",
+      "address": [
+        "factor",
+        33,
+        0
+      ],
+      "path": "records/integral33Factor0Coefficient.pickle",
+      "sha256": "72ec7d63e095389b0558dbb2a29773778b47be3d3eecef374306c7f92d5dbc3d",
+      "grades": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "carriers": 1
+    },
+    {
+      "key": "integral34Factor0Coefficient",
+      "address": [
+        "factor",
+        34,
+        0
+      ],
+      "path": "records/integral34Factor0Coefficient.pickle",
+      "sha256": "dcc6fffdae26ce4af2d7e58ab5879fc233489217b34678008065809578b89111",
+      "grades": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "carriers": 1
+    },
+    {
+      "key": "integral35Factor0Coefficient",
+      "address": [
+        "factor",
+        35,
+        0
+      ],
+      "path": "records/integral35Factor0Coefficient.pickle",
+      "sha256": "468973e37e87115b84fc3e59ab24e477bba00365c377a9a3a97654060503f051",
+      "grades": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "carriers": 1
+    },
+    {
+      "key": "integral36Factor0Coefficient",
+      "address": [
+        "factor",
+        36,
+        0
+      ],
+      "path": "records/integral36Factor0Coefficient.pickle",
+      "sha256": "de46699f4f80b9910d5e213c7793c87fd761debb5c70262ccf9856fd44541253",
+      "grades": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "carriers": 1
+    },
+    {
+      "key": "integral37Factor0Coefficient",
+      "address": [
+        "factor",
+        37,
+        0
+      ],
+      "path": "records/integral37Factor0Coefficient.pickle",
+      "sha256": "565168af8b9ec285d21304b56ed7356d0cda35a77a1f096c4e6a30a6f8b3eaa3",
+      "grades": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "carriers": 1
+    },
+    {
+      "key": "integral38Factor0Coefficient",
+      "address": [
+        "factor",
+        38,
+        0
+      ],
+      "path": "records/integral38Factor0Coefficient.pickle",
+      "sha256": "09341035c1576074de8938fac40009d0190ebefdac0fb88c8e21579c424a381c",
+      "grades": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "carriers": 1
+    },
+    {
+      "key": "integral39Factor0Coefficient",
+      "address": [
+        "factor",
+        39,
+        0
+      ],
+      "path": "records/integral39Factor0Coefficient.pickle",
+      "sha256": "5bf06b23be9abceba7649f8b35fa12da60c7a4f88aadd73da6bf64ad417890b8",
+      "grades": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "carriers": 1
+    },
+    {
+      "key": "integral40Factor0Coefficient",
+      "address": [
+        "factor",
+        40,
+        0
+      ],
+      "path": "records/integral40Factor0Coefficient.pickle",
+      "sha256": "4d6dbb504bd30fcb49c8dc7f033fd4463fe97ff21cf8f4c7496261f4c04f28d2",
+      "grades": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "carriers": 1
+    },
+    {
+      "key": "integral41Factor0Coefficient",
+      "address": [
+        "factor",
+        41,
+        0
+      ],
+      "path": "records/integral41Factor0Coefficient.pickle",
+      "sha256": "9300cae1affc398f261f20b8450a791d804e1edf7dcc32c26a9a936f126e7370",
+      "grades": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "carriers": 1
+    },
+    {
+      "key": "integral42Factor0Coefficient",
+      "address": [
+        "factor",
+        42,
+        0
+      ],
+      "path": "records/integral42Factor0Coefficient.pickle",
+      "sha256": "55dd6ca48f3a7aa1b912df2194c26b21812387650d432982719bec86cbf96941",
+      "grades": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "carriers": 1
+    },
+    {
+      "key": "integral43Factor0Coefficient",
+      "address": [
+        "factor",
+        43,
+        0
+      ],
+      "path": "records/integral43Factor0Coefficient.pickle",
+      "sha256": "bdf2d5e68b2b9f6706409ba938426fc5e7bafc643613be054e8b550409d17f5d",
+      "grades": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "carriers": 1
+    },
+    {
+      "key": "integral44Factor0Coefficient",
+      "address": [
+        "factor",
+        44,
+        0
+      ],
+      "path": "records/integral44Factor0Coefficient.pickle",
+      "sha256": "dfa04325b4b9d81163d3a4564bf0f2a05e7a69bd4a24f9da99e918b304707f14",
+      "grades": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "carriers": 1
+    },
+    {
+      "key": "integral45Factor0Coefficient",
+      "address": [
+        "factor",
+        45,
+        0
+      ],
+      "path": "records/integral45Factor0Coefficient.pickle",
+      "sha256": "84fea9d6beb6b014992f699c4fa651d6433890aa75d869fa4ed1fea1ff8ce275",
+      "grades": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "carriers": 1
+    },
+    {
+      "key": "integral46Factor0Coefficient",
+      "address": [
+        "factor",
+        46,
+        0
+      ],
+      "path": "records/integral46Factor0Coefficient.pickle",
+      "sha256": "1ea86667a6d80682d162e67409dda8fa0199e611a56198a250cb4d8ac4cd7a80",
+      "grades": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "carriers": 1
+    },
+    {
+      "key": "integral47Factor0Coefficient",
+      "address": [
+        "factor",
+        47,
+        0
+      ],
+      "path": "records/integral47Factor0Coefficient.pickle",
+      "sha256": "29ece751b8995c9c9372fd20fca04a4f17882cfa7493c548fc2afd9bc091fb7b",
+      "grades": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "carriers": 1
+    },
+    {
+      "key": "integral48Factor0Coefficient",
+      "address": [
+        "factor",
+        48,
+        0
+      ],
+      "path": "records/integral48Factor0Coefficient.pickle",
+      "sha256": "d296170eb61fdca6537bbfcdc232b23c098b41bfb3a1a6d062226b1ac8ebbcce",
+      "grades": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "carriers": 1
+    },
+    {
+      "key": "integral49Factor0Coefficient",
+      "address": [
+        "factor",
+        49,
+        0
+      ],
+      "path": "records/integral49Factor0Coefficient.pickle",
+      "sha256": "c057c656698c80199e03081712e1d48d049f0abac41f055dd1cd2b27216c1eb8",
+      "grades": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "carriers": 1
+    },
+    {
+      "key": "integral50Factor0Coefficient",
+      "address": [
+        "factor",
+        50,
+        0
+      ],
+      "path": "records/integral50Factor0Coefficient.pickle",
+      "sha256": "5460a76d1ea0496b3707df5e45d8d93f3f4ffdeac6098a6d784774c30703c847",
+      "grades": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "carriers": 1
+    },
+    {
+      "key": "integral51Factor0Coefficient",
+      "address": [
+        "factor",
+        51,
+        0
+      ],
+      "path": "records/integral51Factor0Coefficient.pickle",
+      "sha256": "0dd53202656e18befc8ce21baeef9973f6a78727097d7d412c9fd08a6b26bde8",
+      "grades": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "carriers": 1
+    },
+    {
+      "key": "integral52Factor0Coefficient",
+      "address": [
+        "factor",
+        52,
+        0
+      ],
+      "path": "records/integral52Factor0Coefficient.pickle",
+      "sha256": "158594a17af5207729f7729a7668fab9d82e2a3693c7a8e3909e7963d60dc80b",
+      "grades": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "carriers": 1
+    },
+    {
+      "key": "integral53Factor0Coefficient",
+      "address": [
+        "factor",
+        53,
+        0
+      ],
+      "path": "records/integral53Factor0Coefficient.pickle",
+      "sha256": "ba7a60d9500382ba196eabaaa0ce1839af388562e8baa4aacf9b78bdbb725025",
+      "grades": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "carriers": 1
+    },
+    {
+      "key": "integral54Factor0Coefficient",
+      "address": [
+        "factor",
+        54,
+        0
+      ],
+      "path": "records/integral54Factor0Coefficient.pickle",
+      "sha256": "10bb2006eaf6ba465e0c496f1f5db29bcb528e2ff48c9e98e8ac30e20a6ad99e",
+      "grades": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "carriers": 1
+    },
+    {
+      "key": "integral55Factor0Coefficient",
+      "address": [
+        "factor",
+        55,
+        0
+      ],
+      "path": "records/integral55Factor0Coefficient.pickle",
+      "sha256": "33ea31cec42379aa60c6afacab150a2e4e40b2b3ae3d4bab21ad11c38829c882",
+      "grades": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "carriers": 1
+    },
+    {
+      "key": "integral56Factor0Coefficient",
+      "address": [
+        "factor",
+        56,
+        0
+      ],
+      "path": "records/integral56Factor0Coefficient.pickle",
+      "sha256": "c045b8d1f7ce8a9b523f793280af3942d8543c69bd12e0bc1e48c151e8be1a76",
+      "grades": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "carriers": 1
+    },
+    {
+      "key": "integral57Factor0Coefficient",
+      "address": [
+        "factor",
+        57,
+        0
+      ],
+      "path": "records/integral57Factor0Coefficient.pickle",
+      "sha256": "a5ab3d46db5e3dd527d837e072f62ca561a9c7f1eccef057801ae9f544ac2c22",
+      "grades": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "carriers": 1
+    },
+    {
+      "key": "integral58Factor0Coefficient",
+      "address": [
+        "factor",
+        58,
+        0
+      ],
+      "path": "records/integral58Factor0Coefficient.pickle",
+      "sha256": "fadcdc1e7bbab7538d15f0dd33a2954f886ab2bf2d29decedc5d78c732cf1d86",
+      "grades": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "carriers": 1
+    },
+    {
+      "key": "integral59Factor0Coefficient",
+      "address": [
+        "factor",
+        59,
+        0
+      ],
+      "path": "records/integral59Factor0Coefficient.pickle",
+      "sha256": "68b314ab03289e22f9a0fa4b1b47e44913663d1f3fb2f6a52508d455b579704d",
+      "grades": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "carriers": 1
+    },
+    {
+      "key": "integral60Factor0Coefficient",
+      "address": [
+        "factor",
+        60,
+        0
+      ],
+      "path": "records/integral60Factor0Coefficient.pickle",
+      "sha256": "d42cb671c3c2a458ca02a7c12adc5c7894b7755290db246930e193ff4fd8c80d",
+      "grades": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "carriers": 1
+    },
+    {
+      "key": "integral61Factor0Coefficient",
+      "address": [
+        "factor",
+        61,
+        0
+      ],
+      "path": "records/integral61Factor0Coefficient.pickle",
+      "sha256": "0d7e13380eb023f0b205613d8c0f00498aa83449d6107bcb0bd4bd4bbab22049",
+      "grades": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "carriers": 1
+    },
+    {
+      "key": "integral62Factor0Coefficient",
+      "address": [
+        "factor",
+        62,
+        0
+      ],
+      "path": "records/integral62Factor0Coefficient.pickle",
+      "sha256": "ba87ee18406c32400167c3a001275cc90d12e7e93ad778c1268c748255029f76",
+      "grades": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "carriers": 1
+    },
+    {
+      "key": "integral63Factor0Coefficient",
+      "address": [
+        "factor",
+        63,
+        0
+      ],
+      "path": "records/integral63Factor0Coefficient.pickle",
+      "sha256": "7fcb5ee3a2b6e90dc22b9b1e3bfed50bbd8e9b6f979e207ee316c96e40ba40eb",
+      "grades": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "carriers": 1
+    },
+    {
+      "key": "integral64Factor0Coefficient",
+      "address": [
+        "factor",
+        64,
+        0
+      ],
+      "path": "records/integral64Factor0Coefficient.pickle",
+      "sha256": "f9c82f99dac7c779ba48e9e9afed2f2811f8ec1742b6ec28458934109ce2a161",
+      "grades": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "carriers": 1
+    },
+    {
+      "key": "integral65Factor0Coefficient",
+      "address": [
+        "factor",
+        65,
+        0
+      ],
+      "path": "records/integral65Factor0Coefficient.pickle",
+      "sha256": "f50abb21319ce7e13d6a66d3d9e3a46af9807fdd792c9bdcafb1864c7b3f710b",
+      "grades": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "carriers": 1
+    },
+    {
+      "key": "integral66Factor0Coefficient",
+      "address": [
+        "factor",
+        66,
+        0
+      ],
+      "path": "records/integral66Factor0Coefficient.pickle",
+      "sha256": "68b855c97377e5e06ab5eae4068c3711c028b302c525120bd03bd07e3a2d67a0",
+      "grades": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "carriers": 1
+    },
+    {
+      "key": "integral67Factor0Coefficient",
+      "address": [
+        "factor",
+        67,
+        0
+      ],
+      "path": "records/integral67Factor0Coefficient.pickle",
+      "sha256": "f77a28b56a644d0b2226e45949f4220b8eaea401635a4f46634a249bbcb08cbe",
+      "grades": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "carriers": 1
+    },
+    {
+      "key": "integral68Factor0Coefficient",
+      "address": [
+        "factor",
+        68,
+        0
+      ],
+      "path": "records/integral68Factor0Coefficient.pickle",
+      "sha256": "e1359631b93139e7da583728830f6fdc2e2deb8e447520276964d6acbfdb5863",
+      "grades": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "carriers": 1
+    },
+    {
+      "key": "integral69Factor0Coefficient",
+      "address": [
+        "factor",
+        69,
+        0
+      ],
+      "path": "records/integral69Factor0Coefficient.pickle",
+      "sha256": "e071a54daba8d75b435b6195d132f0e66a59089f0b13adb123c5d847f25726c4",
+      "grades": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "carriers": 1
+    },
+    {
+      "key": "integral70Factor0Coefficient",
+      "address": [
+        "factor",
+        70,
+        0
+      ],
+      "path": "records/integral70Factor0Coefficient.pickle",
+      "sha256": "7b0a0d264ab9c1e008e19c1c2967262bb4d056b0c7b8cfe411e90ab57a3ad6b7",
+      "grades": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "carriers": 1
+    },
+    {
+      "key": "integral71Factor0Coefficient",
+      "address": [
+        "factor",
+        71,
+        0
+      ],
+      "path": "records/integral71Factor0Coefficient.pickle",
+      "sha256": "a1e7de459964e19bf91afe53ae4ae00270e47c59d9b4975ea0667df16226916e",
+      "grades": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "carriers": 1
+    },
+    {
+      "key": "integral72Factor0Coefficient",
+      "address": [
+        "factor",
+        72,
+        0
+      ],
+      "path": "records/integral72Factor0Coefficient.pickle",
+      "sha256": "30a9eeba5bb46324e9ea26dbc1a0a54bdc8f3e0f6c5aceaef5795bb5d903802a",
+      "grades": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "carriers": 1
+    },
+    {
+      "key": "integral73Factor0Coefficient",
+      "address": [
+        "factor",
+        73,
+        0
+      ],
+      "path": "records/integral73Factor0Coefficient.pickle",
+      "sha256": "86959713457622e6310c61a866690244306c998fd1cddb101c17787adac973ec",
+      "grades": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "carriers": 1
+    },
+    {
+      "key": "integral74Factor0Coefficient",
+      "address": [
+        "factor",
+        74,
+        0
+      ],
+      "path": "records/integral74Factor0Coefficient.pickle",
+      "sha256": "ac1108ffde5d766453ba974168000381a7416a2a0542c8b321c3a0c1bff486e5",
+      "grades": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "carriers": 1
+    },
+    {
+      "key": "integral75Factor0Coefficient",
+      "address": [
+        "factor",
+        75,
+        0
+      ],
+      "path": "records/integral75Factor0Coefficient.pickle",
+      "sha256": "0474e4044ecc247baf00fe91e50678c425551f4ab4037e2cd1e273f3130ce04f",
+      "grades": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "carriers": 1
+    },
+    {
+      "key": "integral76Factor0Coefficient",
+      "address": [
+        "factor",
+        76,
+        0
+      ],
+      "path": "records/integral76Factor0Coefficient.pickle",
+      "sha256": "8e757e672a7d1e97660a04d1c2a7ce49af758f94674f3fe535039928420b8837",
+      "grades": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "carriers": 1
+    },
+    {
+      "key": "integral77Factor0Coefficient",
+      "address": [
+        "factor",
+        77,
+        0
+      ],
+      "path": "records/integral77Factor0Coefficient.pickle",
+      "sha256": "d4999470a48389111a473c951c3846ecfe530b398056502f849ed74a01eea4a2",
+      "grades": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "carriers": 1
+    },
+    {
+      "key": "integral78Factor0Coefficient",
+      "address": [
+        "factor",
+        78,
+        0
+      ],
+      "path": "records/integral78Factor0Coefficient.pickle",
+      "sha256": "edc3e7247c4b4111a9dabbbd901da3adb028b68bdf82fdf26018b30e9fb6f6f2",
+      "grades": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "carriers": 1
+    },
+    {
+      "key": "integral79Factor0Coefficient",
+      "address": [
+        "factor",
+        79,
+        0
+      ],
+      "path": "records/integral79Factor0Coefficient.pickle",
+      "sha256": "ef6d111f9b16f19a32dadbec6ebac4b863784f90b5cb840194396f2180219767",
+      "grades": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "carriers": 1
+    },
+    {
+      "key": "sourceAmplitude0",
+      "address": [
+        "source",
+        0
+      ],
+      "path": "records/sourceAmplitude0.pickle",
+      "sha256": "2f3f9a979c1841d872e897a2c4d3940f688fed3858d59d60b3c328fddc903ca4",
+      "grades": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "carriers": 1
+    },
+    {
+      "key": "sourceAmplitude1",
+      "address": [
+        "source",
+        1
+      ],
+      "path": "records/sourceAmplitude1.pickle",
+      "sha256": "841eba5c586a474fb068bd5c6244863d433519444a6541a945782df639659d52",
+      "grades": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "carriers": 1
+    },
+    {
+      "key": "sourceAmplitude2",
+      "address": [
+        "source",
+        2
+      ],
+      "path": "records/sourceAmplitude2.pickle",
+      "sha256": "a5bb0d79b8094cf3ee9249518b84a253421a15e3de4f5d7ac37f11615c7e6454",
+      "grades": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "carriers": 1
+    },
+    {
+      "key": "sourceAmplitude3",
+      "address": [
+        "source",
+        3
+      ],
+      "path": "records/sourceAmplitude3.pickle",
+      "sha256": "86e857452282db2d8e6702379d2fe9d0c8724a51db3b200328105edfe926faf2",
+      "grades": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "carriers": 1
+    },
+    {
+      "key": "sourceAmplitude4",
+      "address": [
+        "source",
+        4
+      ],
+      "path": "records/sourceAmplitude4.pickle",
+      "sha256": "cf194e522834ae527936cedb64a9677b66b2e724a1850df2b94b0e46bd5329e2",
+      "grades": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "carriers": 1
+    },
+    {
+      "key": "sourceAmplitude5",
+      "address": [
+        "source",
+        5
+      ],
+      "path": "records/sourceAmplitude5.pickle",
+      "sha256": "80598eda94ac74f3534d9912effb653dcd3b5a5ee4c295268335c6dc0d49e557",
+      "grades": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "carriers": 1
+    },
+    {
+      "key": "sourceAmplitude6",
+      "address": [
+        "source",
+        6
+      ],
+      "path": "records/sourceAmplitude6.pickle",
+      "sha256": "08be12df1492b7f36efe6a016395113b45c074b4358e962a399b063aef2bd2a0",
+      "grades": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "carriers": 1
+    },
+    {
+      "key": "sourceAmplitude7",
+      "address": [
+        "source",
+        7
+      ],
+      "path": "records/sourceAmplitude7.pickle",
+      "sha256": "35f2d7c99f8c551b4192b4845ee54c8e6faf64fba523f430e57e3b3d234d2d36",
+      "grades": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "carriers": 1
+    },
+    {
+      "key": "sourceAmplitude8",
+      "address": [
+        "source",
+        8
+      ],
+      "path": "records/sourceAmplitude8.pickle",
+      "sha256": "a861777462b61e16aa342eafa54fa65d3c0e3a21094e7bb1649b41dcc20b0b19",
+      "grades": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "carriers": 1
+    },
+    {
+      "key": "sourceAmplitude9",
+      "address": [
+        "source",
+        9
+      ],
+      "path": "records/sourceAmplitude9.pickle",
+      "sha256": "a490f3f881c2af583619d58c73eae10c7878156ee54c9dc1b6bf42800b23392a",
+      "grades": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "carriers": 1
+    },
+    {
+      "key": "sourceAmplitude10",
+      "address": [
+        "source",
+        10
+      ],
+      "path": "records/sourceAmplitude10.pickle",
+      "sha256": "df77caa45e8594aa0e2635dc5b7696dfc85635479ba3dfaa7ab62786bbedb703",
+      "grades": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "carriers": 1
+    },
+    {
+      "key": "sourceAmplitude11",
+      "address": [
+        "source",
+        11
+      ],
+      "path": "records/sourceAmplitude11.pickle",
+      "sha256": "9005cb8c49bc6d29419cec4ccf7ff2810d1930b458de5f2f05ec6cc2a5e5928a",
+      "grades": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "carriers": 1
+    },
+    {
+      "key": "sourceAmplitude12",
+      "address": [
+        "source",
+        12
+      ],
+      "path": "records/sourceAmplitude12.pickle",
+      "sha256": "dea024b7df11dcecf17fb1ec31328367096ec889a6d1badd7720e93e9ecb1563",
+      "grades": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "carriers": 1
+    },
+    {
+      "key": "sourceAmplitude13",
+      "address": [
+        "source",
+        13
+      ],
+      "path": "records/sourceAmplitude13.pickle",
+      "sha256": "42e312cdf2aa86e7f99901097ebafd9aa0d082a632675334e971bb4e93222edc",
+      "grades": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "carriers": 1
+    },
+    {
+      "key": "sourceAmplitude14",
+      "address": [
+        "source",
+        14
+      ],
+      "path": "records/sourceAmplitude14.pickle",
+      "sha256": "3942c29a02d885dca6e82e31ce99e4f6c63d3b8e306a36d3c5fd0617d4028620",
+      "grades": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "carriers": 1
+    },
+    {
+      "key": "sourceAmplitude15",
+      "address": [
+        "source",
+        15
+      ],
+      "path": "records/sourceAmplitude15.pickle",
+      "sha256": "9fd801c4557f3e31430b5e34af394d12b1e5cf5dbd105bd12ce631245f6920ab",
+      "grades": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "carriers": 1
+    },
+    {
+      "key": "sourceAmplitude16",
+      "address": [
+        "source",
+        16
+      ],
+      "path": "records/sourceAmplitude16.pickle",
+      "sha256": "36dd1f8e1cd4f60ebc1547a981ce50ac0d011ab7e4b266b95a1cfee5dd7330c4",
+      "grades": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "carriers": 1
+    },
+    {
+      "key": "sourceAmplitude17",
+      "address": [
+        "source",
+        17
+      ],
+      "path": "records/sourceAmplitude17.pickle",
+      "sha256": "015ec426addcf8c71049a2dae03a1a256e47b40039b5289028fddedc532ff82e",
+      "grades": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "carriers": 1
+    },
+    {
+      "key": "sourceAmplitude18",
+      "address": [
+        "source",
+        18
+      ],
+      "path": "records/sourceAmplitude18.pickle",
+      "sha256": "0aa4d1527493c86dcbe9172efa4cc32b7852edc7bea0c581a31f094b09b43dc7",
+      "grades": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "carriers": 1
+    },
+    {
+      "key": "sourceAmplitude19",
+      "address": [
+        "source",
+        19
+      ],
+      "path": "records/sourceAmplitude19.pickle",
+      "sha256": "81a49896abfd8c9a336fb649d7fe50b57a1eaa29d4c036faafddc85316be3375",
+      "grades": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "carriers": 1
+    },
+    {
+      "key": "sourceAmplitude20",
+      "address": [
+        "source",
+        20
+      ],
+      "path": "records/sourceAmplitude20.pickle",
+      "sha256": "7ec54208aba1d234cde2b9ae6bccf427ab599ae0c7514f458de5431a0c331825",
+      "grades": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "carriers": 1
+    },
+    {
+      "key": "sourceAmplitude21",
+      "address": [
+        "source",
+        21
+      ],
+      "path": "records/sourceAmplitude21.pickle",
+      "sha256": "4fc189a7177c975835aab2486cc5e7667c1ef3a802f26ad34dab15d42180d33e",
+      "grades": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "carriers": 1
+    },
+    {
+      "key": "sourceAmplitude22",
+      "address": [
+        "source",
+        22
+      ],
+      "path": "records/sourceAmplitude22.pickle",
+      "sha256": "6913646b1bba2c7ea382cbfb2f9125a55ad41012614c17666c8c206b99d32f4a",
+      "grades": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "carriers": 1
+    },
+    {
+      "key": "sourceAmplitude23",
+      "address": [
+        "source",
+        23
+      ],
+      "path": "records/sourceAmplitude23.pickle",
+      "sha256": "ecd52c39cc78b5e92392c1b1669e3944f0be5d56e7c0d42438dd5e13836b650c",
+      "grades": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "carriers": 1
+    },
+    {
+      "key": "sourceAmplitude24",
+      "address": [
+        "source",
+        24
+      ],
+      "path": "records/sourceAmplitude24.pickle",
+      "sha256": "e67f9b70d2cebf4bdcfb656f9b0d537010ffabef7c40417a9cf3f10284e7382d",
+      "grades": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "carriers": 1
+    },
+    {
+      "key": "sourceAmplitude25",
+      "address": [
+        "source",
+        25
+      ],
+      "path": "records/sourceAmplitude25.pickle",
+      "sha256": "c1f7570816a4cad4d4786e72b7a61539756a86a974f60104a8b7338360459664",
+      "grades": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "carriers": 1
+    },
+    {
+      "key": "sourceAmplitude26",
+      "address": [
+        "source",
+        26
+      ],
+      "path": "records/sourceAmplitude26.pickle",
+      "sha256": "19f7cf40e45ea992aa7f2ea96a55264af152c1ff3e4115a8c3c7791f6eac344c",
+      "grades": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "carriers": 1
+    },
+    {
+      "key": "sourceAmplitude27",
+      "address": [
+        "source",
+        27
+      ],
+      "path": "records/sourceAmplitude27.pickle",
+      "sha256": "5486380cc6da3844652cedf2812b64bff2df73d5ca42da7b9f1efb003aa97951",
+      "grades": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "carriers": 1
+    },
+    {
+      "key": "sourceAmplitude28",
+      "address": [
+        "source",
+        28
+      ],
+      "path": "records/sourceAmplitude28.pickle",
+      "sha256": "20d2b5db1c8025be3c724a110d434378da987ba047efea480425ad9ab382fcb7",
+      "grades": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "carriers": 1
+    },
+    {
+      "key": "sourceAmplitude29",
+      "address": [
+        "source",
+        29
+      ],
+      "path": "records/sourceAmplitude29.pickle",
+      "sha256": "b447ca7b0f203d94d6c2920c00037cebf9420d0ed83aef9b40cf97b6e7aab235",
+      "grades": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "carriers": 1
+    },
+    {
+      "key": "sourceAmplitude30",
+      "address": [
+        "source",
+        30
+      ],
+      "path": "records/sourceAmplitude30.pickle",
+      "sha256": "7aac53b5785b24fbb7ad520c18d6c9821aaab1cb288ef4f328510406268f818a",
+      "grades": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "carriers": 1
+    },
+    {
+      "key": "sourceAmplitude31",
+      "address": [
+        "source",
+        31
+      ],
+      "path": "records/sourceAmplitude31.pickle",
+      "sha256": "43af844d5a1dd4cea65ccced9507309ae369924dab268ec955a6fba3663915f0",
+      "grades": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "carriers": 1
+    },
+    {
+      "key": "sourceAmplitude32",
+      "address": [
+        "source",
+        32
+      ],
+      "path": "records/sourceAmplitude32.pickle",
+      "sha256": "78bbff18098bba4cd4c3c0c67909baabab6a6a315ebca8ed9ff29bdce8bd4e8a",
+      "grades": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "carriers": 1
+    },
+    {
+      "key": "sourceAmplitude33",
+      "address": [
+        "source",
+        33
+      ],
+      "path": "records/sourceAmplitude33.pickle",
+      "sha256": "5bce1e6274048cc24e85cb634ff4b153959c9152924320f77dde95f2ba58fcb6",
+      "grades": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "carriers": 1
+    },
+    {
+      "key": "sourceAmplitude34",
+      "address": [
+        "source",
+        34
+      ],
+      "path": "records/sourceAmplitude34.pickle",
+      "sha256": "20898600f5a1b3e98dc51a6ae265184c0be9a13148f5cc64aaa3e213ea833c0b",
+      "grades": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "carriers": 1
+    }
+  ],
+  "allSelectedGrades": [
+    [
+      0,
+      0,
+      0
+    ]
+  ],
+  "selectedRecordBytesMatchInventory": true,
+  "boundary": "Inventory and bytes only. Corrected guarded worker must join actual restored COEFFICIENTS to these addresses and check original integrals remain grade-free.",
+  "scientificRestorations": 0,
+  "scientificOperations": 0
+}

@@ -1,0 +1,39 @@
+{
+  "status": "SAVED_INSPECTION_STATIC_CHECKS_PASSED_NO_SCIENCE",
+  "recordedUtc": "2026-09-28T13:29:41.033716+00:00",
+  "worker": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_saved_inspect.py",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_saved_inspect.py",
+    "bytes": 31269,
+    "sha256": "7ad854e696ab42aa8b57430953f6360f7e3efe42f29b7778dfee9c03b87b5886"
+  },
+  "manifest": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_saved_inspection_inputs.json",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_saved_inspection_inputs.json",
+    "bytes": 1497383,
+    "sha256": "4612a1c8d4f6b7dcd50fd52ea2df993f6d9ccb4e6e9355dc41494a61b75cdd54"
+  },
+  "unchangedContainmentCodecJournalAST": [
+    "require",
+    "digest",
+    "route",
+    "save",
+    "containment",
+    "SavedCodec",
+    "Journal"
+  ],
+  "sourceFilesPinned": 2567,
+  "inputRecordsVerified": 2575,
+  "requestedSavedPayloadsAndOperationsPresent": true,
+  "noProducerImportsOrScientificImportsBeforeContainment": true,
+  "noDerivativeSimplificationIntegralLimitOrSolveCalls": true,
+  "globalNamesResolved": true,
+  "failedCheckReturnPreservedInStdlibTest": true,
+  "missingApprovalPreventsGateAndLaunch": true,
+  "scientificOperations": 0,
+  "scientificRestorations": 0,
+  "scientificWorkersLaunched": 0,
+  "externalReviewsSubmitted": 0,
+  "protectedBuilderSuffixSha256": "f01024512c9a028e7e524e5a95b5c455be42e125d10c36f94e20493109b013c2",
+  "explicitManifestDiffExclusion": true
+}

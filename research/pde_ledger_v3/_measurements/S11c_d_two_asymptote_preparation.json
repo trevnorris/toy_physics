@@ -1,0 +1,57 @@
+{
+  "status": "TWO_ASYMPTOTE_METHOD_PLAN_PREPARED_IMPLEMENTATION_REVIEW_REQUIRED",
+  "recordedUtc": "2026-09-28T02:09:10.332175+00:00",
+  "authorizationBasis": "Continue after the stated next step of two-asymptote response planning",
+  "files": [
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_two_asymptote_response_plan.md",
+      "bytes": 13836,
+      "sha256": "b94f6fdf5e472a444d43fdeaf0d03d51efe325b1b444d7b63e02deddd6bfe832"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_two_asymptote_first_stage_contract.md",
+      "bytes": 12109,
+      "sha256": "8dfab429d92251a8513bf3f8e6e98d91939c57b0b402c09814bf3c255ac690b9"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_plan_sources.py",
+      "bytes": 8001,
+      "sha256": "df51ad19a44f423b1d782cf72fa046c0b924078105aed25849b933e0d94b795a"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_plan_sources.json",
+      "bytes": 25792,
+      "sha256": "10cf03adaab1c5573fdce130c9a3e97e974c73fa01b0ffa5e0253ba9813c1e08"
+    }
+  ],
+  "checks": {
+    "planContractLinksHashesAndWhitespace": true,
+    "metadataGeneratorOnlyStandardLibrary": true,
+    "noScientificRunOrReview": true,
+    "acceptedArtifactsUnchanged": true,
+    "sharedGuardAndProtectedSuffixUnchanged": true,
+    "newPlanningFilesBelowOneMiB": true
+  },
+  "proposedFirstStage": "Exact first-grade end lifts and full unbounded forcing defects at unchanged LAB_HELD/RHO4_CONSTANT inputs and inherited real pole blocks",
+  "implementationExists": false,
+  "independentMethodReviewCompleted": false,
+  "fixedReviewPacketPrepared": false,
+  "reviewSubmissionAuthorized": false,
+  "scientificLaunchAuthorized": false,
+  "scientificJobsLaunched": 0,
+  "externalReviewsSubmitted": 0,
+  "physicalInputChanged": false,
+  "freshIndependentClearClaimed": false,
+  "nextAction": "Author actual worker and fixed implementation/method review packet against the first-stage contract; no plan-only submission.",
+  "limitsForProposedJob": {
+    "outerSeconds": 900,
+    "nativeSeconds": 840,
+    "memoryGiB": 2,
+    "swapBytes": 0,
+    "cpuCount": 1,
+    "nice": 15,
+    "tasksMax": 32,
+    "nativeThreads": 1
+  },
+  "indefiniteDurationExceptionInherited": false
+}

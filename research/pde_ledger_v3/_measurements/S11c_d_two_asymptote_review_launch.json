@@ -1,0 +1,57 @@
+{
+  "status": "AUTHORIZED_FIXED_PACKET_REVIEWS_LAUNCHED",
+  "recordedUtc": "2026-09-28T04:40:04.807079+00:00",
+  "userReply": "You may submit",
+  "packetSha256": "0bfabfac59801cd96b780b1d878095dbdcbad9fdd15237803426e21631d44e9c",
+  "fileCount": 28,
+  "packetBytes": 611908,
+  "reviewRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/build-review",
+  "approval": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/build-review/explicit-packet-approval.json",
+    "bytes": 1040,
+    "sha256": "7725da383e28c80fb35be968c3e73a75f2c74162aff017e15b615236784b1dfa"
+  },
+  "launch": {
+    "jobPid": 3501515,
+    "watcherPid": 3501516,
+    "packetSha256": "0bfabfac59801cd96b780b1d878095dbdcbad9fdd15237803426e21631d44e9c",
+    "reviewers": [
+      "Claude",
+      "Grok"
+    ],
+    "concurrentReviewWorkers": 1,
+    "scienceCalls": 0,
+    "runnerSha256": "77f3a752f9b198efcd39743f2404529008e1f1869643968f3d11f94174fd8fd2",
+    "launcherSha256": "3909c276b7cfb6678ccd82d66413634f98ba55e2ba961a9860397639cf3235ea"
+  },
+  "launchReceipt": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/build-review/launch.json",
+    "bytes": 409,
+    "sha256": "3c2fffe5c02a781b85a6c86d600537668633b8805235d641b3d68f035009849f"
+  },
+  "staticPreparation": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/build-review/static-review.json",
+    "bytes": 3988,
+    "sha256": "376f409183c03129d684f7b675cf3fdc84792238997839ba876c3746cfcc0d56"
+  },
+  "initialVerification": {
+    "coordinatorStatus": "RUNNING",
+    "claudePid": 3501520,
+    "claudeStartedUtc": "2026-09-28T04:38:58.943797+00:00",
+    "grok": "QUEUED_AFTER_CLAUDE",
+    "hookStatus": "waiting",
+    "hookArmedBeforeReviewStart": true,
+    "coordinatorStderrBytes": 0,
+    "watcherStderrBytes": 0,
+    "claudeStderrBytes": 0,
+    "issuesLogPresent": false
+  },
+  "currentThread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+  "concurrentReviewWorkers": 1,
+  "peerSharing": false,
+  "scientificOperations": 0,
+  "scientificLaunchAuthorized": false,
+  "reviewVerdict": "NOT_ADJUDICATED",
+  "automaticRetry": false,
+  "next": "Local hook resumes this session on completion/error; both reports must finish before editing or adjudicating."
+}

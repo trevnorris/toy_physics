@@ -1,3 +1,42 @@
+# Total transverse-loss amendment: round 2 independently clear
+
+2026-09-28. Both fresh reports literally return **CLEAR FOR THIS PREPARATION
+AMENDMENT**. Claude finished at 23:10:37 UTC (364.890 s); Grok at 23:19:07 UTC
+(510.224 s). The [round-2 record](S11c_d_total_transverse_loss_review_r2_record.json)
+retains both complete literal reports, authorization, stderr and hash evidence.
+All 17 files / 336,969 bytes, archive, 24 canonical sources, prompt/transport and
+report receipts match. Claude and infrastructure stderr are empty; Grok has
+1,431 bytes of configuration/hook warnings, no read-file error in stderr, and
+a complete `end_turn` report. The local completion hook finished. No science ran.
+
+The exact reviewed draft/assessment stay unchanged; their historical proposal
+labels do not require a wording review. This clearance governs preparation,
+not an instrument, numerical premises, physical loss, FORM or A11/A12. Earlier
+verdicts, exact baseline `f9e923dd`, export refusals and approvals remain below
+and in the first-round record. No local disposition is substituted for a leg.
+
+Carry three suggestions into the later costed plan, not another prose cycle:
+
+- Inspect the actual nonzero RIGHT density-grade lifts for loss-side endpoint
+  content; zero thickness-grade lifts/localized forcing may support a smaller
+  pilot, but sigma_W-squared alone is not the total along the physical path.
+- Price a real-Fourier-axis/Parseval dissipation route at a supported closed
+  point as a conditional alternative. Its physical projection, complete boundary
+  sources, source transforms, integrability and balance remain unresolved.
+  Closed bulk/open-thickness counts alone do not establish a dissipation-only
+  total or exclude held-background work. The reviewers supplied no measured
+  response/pairing runtime or computed resolvent identity.
+- Deferring mechanism labels does not defer outgoing direction/sheet evidence
+  for any contributing response. Unsupported outgoing selection stops a total.
+
+Proceed only with the authorized transverse-first/reference-face repair and
+fresh independent build review, then a concrete costed outgoing-field/power
+plan and user decision. No scientific runs before that decision; no thickness
+classification, permeability continuation or new anchor campaign. Optional
+wording suggestions do not trigger another amendment review.
+
+---
+
 # Total transverse-loss amendment: first review disposition
 
 2026-09-28. Both reports finished before this disposition or any repair.
@@ -79,3 +118,9 @@ clear instruction. No peer reports go into that packet. Only after amendment
 clearance may the narrowed transverse/face repair and its build review proceed,
 followed by the costed outgoing-field/power plan and user go/no-go. No science
 runs, thickness-classification repair, transport retry or optional-prose cycle.
+
+The exact first-round draft and record were preserved in commit `f9e923dd`.
+The three material corrections are now folded into the draft/assessment and
+await fresh round-2 review, not author clearance. The new packet retains the
+same source evidence; only draft, assessment, prompt and index changed.
+See `S11c_d_total_transverse_loss_review_r2_preparation.json`.

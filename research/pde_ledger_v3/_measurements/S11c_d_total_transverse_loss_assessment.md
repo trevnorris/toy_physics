@@ -30,6 +30,18 @@ dissipation inside it; extending the volume can move power between those two
 entries. A supported total may be invariant even when that split is not.
 Actual lateral terms, bulk tails, external work and limit conventions matter.
 
+The step profile also requires an explicit end-localization test. The incident,
+transmitted and reflected transverse states must be lossless in their own
+physical end backgrounds, with zero loss-producing closure/exterior drives at
+the amplitude grades needed for the claimed coefficient. Reference `a0=0` alone
+does not establish this. After asymptotic matching, check for uncompensated
+nondecaying loss-side forcing and a finite power pairing. Persistent uniform-
+end loss or an unresolved limit makes this interface coefficient unsupported;
+it must not be regularized into a finite interface number. This is a required
+check, not a computed divergence. A Fourier delta/PV or an intermediate Abel
+term alone does not settle localization, and outgoing non-transverse flux is
+not an unphysical source to remove.
+
 ## When first-order fields suffice
 
 The small expansion parameter is the existing contrast path, not the physical
@@ -93,13 +105,25 @@ Neither external electromagnetic/quantum result is a proof for this slab.
   a regular weak-contrast domain away from unresolved thresholds, resonances
   and divergent tails. No classification label can replace this response.
 
-There is a concrete source-work route worth reviewing: evaluate the power
-supplied by the first-order forcing to the non-transverse receiving field,
-using the actual row-power map, and establish equality to its boundary flux
-plus interface dissipation. This need not individually normalize every
-damped eigenmode. If the forcing also scatters transverse light, that elastic
-part must be separated; total source work is not automatically transverse loss.
+There is a concrete source-work route worth reviewing: establish physical
+reference decoupling and current/port projection joins, then pair the complete
+loss-producing sources directly with their first-order outgoing response.
+Establish equality to its boundary flux plus interface dissipation. This need
+not individually normalize every damped eigenmode. Inclusive work minus elastic
+transverse work is an alternative only if both operands are finite, separable
+and have a supported common limit; that has not been shown for the step's
+phase-matched terms. Total source work is not automatically transverse loss.
 Do not insert a generic Euclidean `Im(f†Gf)` with guessed sign or normalization.
+
+The inherited row-power maps pair five slab residuals; the native face closure
+has already been solved homogeneously for the exterior amplitude. Those maps
+do not already include arbitrary first-order face sources. Include actual
+kinematic, closure and exterior inhomogeneities with complete two-port work.
+Eliminating them into slab rows must retain the induced work and the direct
+exterior field, without double counting. The independent power comparison uses
+the physical reconstructed `C0 Psi1+C1 Psi0` traces and outgoing field, not only
+the reduced residual. These are finite source-specific obligations for the
+later plan, not an authorization to construct the response now.
 
 The native source already constructs `PLUS_ROW_POWER_MAP`, separate interface
 and bulk power, and a finite-volume balance

@@ -1686,3 +1686,44 @@ science or payload restoration. Preserve this reviewed baseline before repair,
 then fresh amendment review under the authorized sequence; map/face repair waits
 for clearance. No science before costed-plan go/no-go; thickness classification
 remains deferred. No peer sharing or optional-wording review loop.
+
+First-round baseline preserved at `f9e923dd`. The revised draft/assessment now
+require matched-end lossless physical transverse states and finite interface
+pairing; loss-sector source work with justified physical projection; finite
+separable operands for any inclusive-minus-elastic alternative; all slab and
+boundary sources/direct exterior reconstruction and independent power joins.
+These are proposed corrections, not new results or author clearance. Round-2
+packet prepared: 17 files / 336,969 bytes, SHA256
+`cda0776d22f2e75dcf88763ec0cd5d171c35b3737dd218cf2f5992000b1344b2`.
+Only draft, assessment, prompt and index change; the source evidence is identical
+and no peer reports are included. No science or map repair before the gates.
+
+**Round-2 external submission blocked before process start:** automatic approval
+review requires separate consent to the revised 17-file / 336,969-byte packet
+and Claude/Grok destinations; the review-until-clear instruction did not satisfy
+that export check. Refusal is preserved in the round-2 preparation record. No
+packet sent, reviewer started, science run or workaround. Await exact-payload
+consent; all review preparation is complete.
+
+The user then explicitly approved the revised exact packet and destinations
+with “I approve.” All packet/archive/source/transport hashes matched. Round 2
+launched at 23:04:32 UTC, coordinator 797288 and watcher 797289; one host startup
+check verified those and fresh Claude alive, with Grok queued sequentially.
+The hook was armed first and targets this task. Preserve the prior no-start
+refusal. Wait silently for completion/error; both reports before edits or
+adjudication. No science, peer sharing, retries, model polling or automatic
+launch after clearance. The authorized narrowed repair/review then costed-plan
+go/no-go sequence is unchanged.
+
+## Total-loss amendment round 2: independent document clearance
+
+Both fresh reports finished by 23:19:07 UTC and literally return CLEAR FOR
+THIS PREPARATION AMENDMENT. Round-2 record/disposition retain full reports,
+source/hash/receipt checks, warnings and prior authorization/refusal history.
+Exact reviewed draft/assessment remain unchanged. No science ran. The three
+later-plan leads are RIGHT density-grade endpoint localization, a conditional
+closed-point Fourier/Parseval route, and retained outgoing direction/sheet
+requirements despite deferred mechanism classification. None is a new result.
+Next authorized work is code-only transverse-first/reference-face repair and
+fresh build review, then costed outgoing-field/power plan and user go/no-go.
+No science, thickness classification repair, response or anchor launch.

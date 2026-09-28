@@ -1,5 +1,31 @@
 # S11c-d: the remaining execution queue
 
+**Current status — total-loss amendment independently cleared (2026-09-28):**
+both fresh round-2 reviewers literally return CLEAR FOR THIS PREPARATION
+AMENDMENT. Exact draft/assessment remain unchanged; see the round-2 record and
+disposition. Proceed with preparation of only the transverse-first/reference-
+face instrument and its independent build review, then the costed outgoing-
+field/power plan. Thickness classification stays deferred. **No science before
+the user go/no-go on that plan.** No automatic use of the old map run allowance.
+
+**Round-2 reviews running (2026-09-28):** the user explicitly approved the exact
+revised 17-file / 336,969-byte packet and Claude/Grok destinations with “I approve.”
+The earlier automatic no-start refusal is preserved. The unchanged packet
+launched at 23:04:32 UTC with the local completion hook armed first. One host
+startup inspection verified coordinator, watcher and fresh Claude alive; Grok
+is queued sequentially. Both reports must finish before adjudication or edits.
+No peer sharing, transport retry, model polling or science. The final costed-plan
+go/no-go stop remains mandatory. See the round-2 preparation record.
+
+**Current preparation — total-loss amendment round 2 (2026-09-28):** the exact
+first-round baseline is preserved in commit `f9e923dd`. Material end-localization,
+finite source-work and boundary-source corrections are folded; no independent
+clearance is claimed. The fresh 17-file / 336,969-byte review packet changes only
+draft, assessment, prompt and index. Source evidence is byte-identical to the
+previously approved packet; no peer reports are supplied. See
+`S11c_d_total_transverse_loss_review_r2_preparation.json`. No science or
+transverse/face implementation repair has started.
+
 **Current result — total-loss amendment needs revision (2026-09-28):** both
 reports finished: Claude NEEDS REVISION, Grok CLEAR FOR THIS PREPARATION
 AMENDMENT. The literal record and disposition are in

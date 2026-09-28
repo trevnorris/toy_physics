@@ -11,12 +11,13 @@ states the source evidence and remaining method dependency.
 For LAB_HELD/RHO4_CONSTANT at the saved 2:1 azimuth, estimate the leading weak-
 contrast **total stationary loss out of the incident transverse sector**, with
 physical permeability, memory, bulk loading and material inputs retained.
-Use the bounded frequency/momentum window only where clean lossless incoming
-transverse channels and nonzero incident current are established. The analog's
+Use the bounded frequency/momentum window only where clean lossless transverse
+channels at both ends and nonzero incident current are established. The analog's
 physical light-band calibration remains unestablished.
 
 Define survival using **all** outgoing transverse polarizations at both ends,
-including reflection. The exact target is
+including reflection, for each specified incident end/direction/polarization.
+The exact target is
 `L_T = 1 - J_T,out(all ends)/J_T,in`. It is not forward-beam extinction,
 a temporal decay rate, or bound-state capture. Compute the leading supported
 coefficient from physical loss-side power or an equivalent source-work balance,
@@ -31,9 +32,21 @@ not be set to zero or omitted from a value called total.
 
 Retain independent eta/sigma_W grades before the existing physical contrast
 path. Physical closure is not expanded away. Establish from actual source
-operands that the uniform incident state has zero amplitudes/drives in all
-loss-producing outputs and no unresolved baseline power. Lossless end
-transport alone is not a substitute for these joins.
+operands that the reference incident state has zero amplitudes/drives in all
+loss-producing outputs and no unresolved baseline power. Also establish zero
+loss-producing drives for the matched incoming, transmitted and reflected
+transverse states in their respective physical end pencils, closure and
+exterior maps, at the retained amplitude grades needed for the claimed power.
+Zero curl-representation off-diagonal blocks alone do not establish these joins.
+
+After actual asymptotic matching, the interface-generated loss-side forcing
+must have no uncompensated nondecaying half-line source, and its claimed power
+pairing must be finite on the stated domain. Keep endpoint, Heaviside, Abel and
+Fourier delta/PV operands until their matching/cancellation is established.
+Their mere presence is not a failure, nor may they be discarded. Persistent
+uniform-end loss or unresolved finiteness stops this interface-loss coefficient;
+do not regularize it into a finite total or infer a loss-per-length value.
+Supported outgoing non-transverse boundary flux remains part of the balance.
 
 Include the complete first-order receiving field and first-order changes of
 face, normal, closure, mode-projection and reconstruction maps. A loss amplitude
@@ -51,11 +64,23 @@ boundary flux plus dissipation **inside that volume**; do not count converted
 power once at an end and again after it dissipates beyond that end. The
 survival deficit is not a third additive mechanism.
 
-A source-work evaluation on the outgoing first-order receiving field may
-replace individual damped-mode flux normalization if its equality to the same
-physical balance is established at the claimed grade. Use the inherited
-row-power maps, not an assumed operator inner product. Remove separately
-identified transverse elastic scattering from an inclusive source-work value.
+A source-work evaluation may replace individual damped-mode normalization only
+if its equality to this physical balance is established at the claimed grade.
+Where actual physical reference decoupling and current/port joins support a
+loss-sector projection, pair the complete projected sources directly with the
+outgoing loss-producing response. Do not assume that inclusive work minus
+elastic transverse work is a finite subtraction for the step profile. That
+alternative requires separately established finite operands, separability and
+a common supported limit; otherwise it is unavailable.
+
+The inherited row-power maps cover slab residuals. Include every actual
+first-order inhomogeneity: slab rows, face closure/kinematics and exterior drive,
+with the complete two-port work. If boundary sources are eliminated into slab
+rows, retain their induced work and direct exterior reconstruction, without
+double counting. Check the complete source work against independently
+reconstructed physical face/outgoing power using `a1=C0 Psi1+C1 Psi0`; a reduced
+balance that omits that direct term is insufficient. Use source-derived units,
+orientations and power maps, not a guessed operator inner product.
 Retain nonlocal, distributional, endpoint and regulator/domain conditions;
 unevaluated Green integrals or a separated-point kernel are not a completed
 power pairing. No general certification or automatic full-solver fallback.
@@ -65,7 +90,9 @@ power pairing. No general certification or automatic full-solver fallback.
 Keep only the transverse-first map and reference face-drive repair, including
 available/absent/unresolved states, actual threshold-crossing checks where
 tractable, responsive controls and useful output before optional costly
-symbolics. Implement the promised c2 face joins or explicitly revise their
+symbolics. These are premise checks, not completion of every end/forced-field
+condition above; remaining conditions belong in the later costed plan.
+Implement the promised c2 face joins or explicitly revise their
 scope with the reason in the reviewed build. Do not make a complete thickness
 classification a prerequisite for the proposed total. Defer its repair and
 the permeability-continuation implementation; they are secondary work.

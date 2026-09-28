@@ -1,6 +1,9 @@
 # Fixed-input thickness forcing and outgoing action: implementation for review
 
-Status: prepared method/build proposal, **no scientific result or launch**.
+Status: independently reviewed proposal with bounded local corrections,
+**no scientific result or launch**. Literal Claude/Grok verdicts both remain
+NEEDS REVISION; the [local disposition](../_measurements/S11c_d_localized_thickness_review_disposition.md)
+does not claim a fresh independent CLEAR.
 The worker is `../_measurements/S11c_d_localized_thickness_response.py`.
 This implements the [thickness-first plan](S11c_d_localized_thickness_response_plan.md)
 for the two existing grade `(0,1)` cases, blocks 16 and 17. Physical inputs,
@@ -114,6 +117,17 @@ hold the baseline fixed and require a changed forcing and spectral response
 at the same small probe set. Save the term, both matrices and actual movement.
 Do not substitute the old density mutation for this control. Contract actual
 saved row/field/column units through all five intermediate rows.
+
+After the completed build reviews, the implementation was narrowed as follows:
+expand the removed phase before combining exponentials; save and require an
+actual source-plane join for every native term after removing only its kernel
+character; rebuild the full source from recorded local/native transforms and
+require exact equality to the baseline; rebuild again while skipping one
+actual address to produce the omitted source. Do not create that source by
+subtracting the selected transform from the baseline. Persist all 125 unit
+contractions, including joined/expected units, before their guard. The exact
+indexed evidence shows each block already carries its own seed sign; no source
+operand, dictionary, physical input or Fourier formula changed.
 
 Every restored payload and new operation has complete journal inputs and
 returns. The whole case also has a containing operation receipt, so a timeout

@@ -255,8 +255,23 @@ def construct(spec, out, journal):
                             (sp.pi*transfer/sp.sinh(sp.pi*transfer/2), True))
 
     def remove_phase(expression, phase):
-        return sp.Add(*(sp.expand_power_exp(sp.powsimp(term*sp.exp(-phase), combine='exp'))
+        return sp.Add(*(sp.expand_power_exp(sp.powsimp(term*sp.exp(-sp.expand(phase)), combine='exp'))
                         for term in sp.Add.make_args(sp.expand_mul(expression))))
+
+    def source_plane_checks(expression, kernel_phase, z, zs, k0, address, profile=None):
+        stripped = remove_phase(expression, kernel_phase)
+        observed = sorted({v.args[0] for v in stripped.atoms(sp.exp)
+                           if v.args[0].has(zs)}, key=sp.default_sort_key)
+        expected = sp.expand(sp.I*k0*zs)
+        residuals = [sp.expand(v-expected) for v in observed]
+        return {'checks': {'sourcePlanePresentOrZeroTerm':bool(observed) or stripped == 0,
+                           'everySourcePlaneMatchesSavedSeed':all(v == 0 for v in residuals),
+                           'outputCharacterRemoved':not stripped.has(z),
+                           'removedProfileIndependentOfSourcePosition':profile is None or not profile.has(z,zs)},
+                'address':address,'originalSourceExpression':expression,'kernelPhase':kernel_phase,
+                'removedIndependentProfile':profile,'afterKernelCharacter':stripped,
+                'observedSourceExponents':observed,'expectedSeedExponent':expected,
+                'exactExponentResiduals':residuals}
 
     def profile_transform(envelope, coordinate, scale, transfer):
         # No integration engine: only the actually present polynomial profiles.
@@ -289,7 +304,7 @@ def construct(spec, out, journal):
         result.update(source=value, removedPlanePhase=sp.I*k0*z)
         return result
 
-    def transform_nonlocal(value, z, k0):
+    def transform_nonlocal(value, z, k0, address):
         # Two fixed source schemas; every unknown carrier is rejected.
         outer = [v for v in sp.preorder_traversal(value)
                  if isinstance(v,sp.Integral) and len(v.limits) in (2,3)]
@@ -306,8 +321,9 @@ def construct(spec, out, journal):
         require('OutputNormalMomentum' in kout.name and 'SourceNormalPosition' in zs.name,
                 'source coordinate roles/order')
         if len(variables) == 2:
-            phase = sp.I*kout*z + sp.I*(k0-kout)*zs
-            envelope = remove_phase(outer.function,phase).xreplace({kout:kn})
+            phase_join = checked('native-source-plane-%04d'%j.next_number,source_plane_checks,
+                                 outer.function,sp.I*kout*z-sp.I*kout*zs,z,zs,k0,address)
+            envelope = remove_phase(phase_join['afterKernelCharacter'],sp.I*k0*zs).xreplace({kout:kn})
             require(not envelope.has(z), 'output character fully extracted')
             result = profile_transform(envelope,zs,ell,ell*(kn-k0))
             result['amplitudeWithoutB0'] *= mass*coefficient
@@ -322,8 +338,10 @@ def construct(spec, out, journal):
             profile = nested[0]; xi = profile.limits[0][0]
             require(tuple(profile.limits[0][1:]) == (-sp.oo,sp.oo)
                     and 'ProfileCoordinate' in xi.name, 'profile coordinate role')
-            phase = sp.I*kout*z + sp.I*(k0-p)*zs
-            multiplier = remove_phase(outer.function.xreplace({profile:sp.S.One}),phase)
+            phase_join = checked('native-source-plane-%04d'%j.next_number,source_plane_checks,
+                                 outer.function.xreplace({profile:sp.S.One}),
+                                 sp.I*kout*z-sp.I*p*zs,z,zs,k0,address,profile)
+            multiplier = remove_phase(phase_join['afterKernelCharacter'],sp.I*k0*zs)
             require(not multiplier.has(z,zs,xi,sp.Integral), 'plane source leaves a multiplier only')
             profile_envelope = remove_phase(profile.function,-sp.I*ell*(kout-p)*xi)
             require(not profile_envelope.has(kout,p,z,zs), 'localized fixed profile transform')
@@ -337,7 +355,8 @@ def construct(spec, out, journal):
             result.update(collapsedInputMomentum=p, inheritedPlaneMomentum=k0,
                           sourceMultiplierBeforeCollapse=multiplier)
         result.update(source=value, orderedLimits=outer.limits, schema=schema,
-                      fourierDeltaFactors=delta_factors, fourierMass=mass)
+                      fourierDeltaFactors=delta_factors, fourierMass=mass,
+                      address=address, sourcePlaneJoin=phase_join)
         result['transform'] = result['amplitudeWithoutB0']*base_transform(ell*(kn-k0))
         require(not result['amplitudeWithoutB0'].has(z,zs,sp.Integral,sp.Limit,sp.Derivative),
                 'no unhandled coordinate or operator in transformed source')
@@ -415,6 +434,37 @@ def construct(spec, out, journal):
                 'residual':residual,'relativeResidual':error,'decimalPrecision':80,
                 'scope':'New-source contraction of saved inverse; no solve or inverse reconstruction.'}
 
+    def assemble_transformed_source(local_terms, native_terms, transfer, omission=None):
+        rebuilt = sp.zeros(5); omitted = []; included = []
+        for term in local_terms:
+            rebuilt[term['row'],term['column']] += term['amplitudeWithoutB0']
+        for term in native_terms:
+            if term['address'] == omission:
+                omitted.append(term)
+                continue
+            rebuilt[term['address']['row'],term['address']['frameColumn']] += term['amplitudeWithoutB0']
+            included.append(term['address'])
+        return {'checks': {'exactAddressOmissionCount':len(omitted) == (0 if omission is None else 1)},
+                'omission':omission,'omittedTerms':omitted,'includedAddresses':included,
+                'localTerms':local_terms,'nativeTerms':native_terms,
+                'amplitudeWithoutB0':sp.ImmutableMatrix(rebuilt),
+                'forcing':sp.ImmutableMatrix(rebuilt)*base_transform(transfer)}
+
+    def unit_contractions(inverse_units, forcing_units, field_units):
+        records=[]
+        for i in range(5):
+            for h in range(5):
+                for row in range(5):
+                    joined=tuple(a+b for a,b in zip(inverse_units[i][row],forcing_units[row][h]))
+                    expected=tuple(field_units[i][h])
+                    records.append({'row':i,'column':h,'intermediateRow':row,
+                                    'inverseUnit':inverse_units[i][row],
+                                    'forcingUnit':forcing_units[row][h],
+                                    'joinedUnit':joined,'expectedFieldUnit':expected,
+                                    'matches':joined==expected})
+        return {'checks': {'allUnitContractionsMatch':all(v['matches'] for v in records)},
+                'contractions':records}
+
     def construct_case(index, f, d, candidate, context, units, binding):
         tag='block%d-grade01'%index
         k0=blocks[index]['k']
@@ -429,7 +479,7 @@ def construct(spec, out, journal):
             'forcingUnitJoin':f['forcingUnits']==binding['forcingUnits']}
         save(out/(tag+'-source-joins.json'),source_checks)
         require(all(source_checks.values()),'fixed source/end/domain join')
-        amplitudes=sp.zeros(5); transformed_terms=[]
+        amplitudes=sp.zeros(5); local_terms=[]; transformed_terms=[]
         for i in range(5):
             for h in range(5):
                 value=-f['forcing']['local'][i,h]
@@ -437,19 +487,21 @@ def construct(spec, out, journal):
                 amplitude=result['amplitudeWithoutB0'];used_orders.update(result['orders'])
                 certificate(amplitude,tag+'-local-domain-%d-%d'%(i,h))
                 amplitudes[i,h]+=amplitude
+                local_terms.append({'row':i,'column':h,'sourceValue':value,'amplitudeWithoutB0':amplitude})
         for n,term in enumerate(f['forcing']['terms']):
             if term['value']==0:continue
-            result=checked(tag+'-native-%03d'%n,transform_nonlocal,-term['value'],z,k0)
+            address={k:term[k] for k in ('row','sourceColumn','frameColumn','term')}
+            result=checked(tag+'-native-%03d'%n,transform_nonlocal,-term['value'],z,k0,address)
             amplitude=result['amplitudeWithoutB0'];used_orders.update(result['orders'])
             certificate(amplitude,tag+'-native-domain-%03d'%n)
             amplitudes[term['row'],term['frameColumn']]+=amplitude
-            transformed_terms.append({'address':{k:term[k] for k in ('row','sourceColumn','frameColumn','term')},
+            transformed_terms.append({'address':address,
                                       'sourceValue':-term['value'],'amplitudeWithoutB0':amplitude})
         amplitude=sp.ImmutableMatrix(amplitudes)
         forcing=amplitude*base_transform(ell*(kn-k0))
         transform={'block':index,'grade':(0,1),'planeMomentum':k0,'source':f['direct'],
                    'amplitudeWithoutB0':amplitude,'forcingTransform':forcing,
-                   'transformedNativeTerms':transformed_terms,'sourceChecks':source_checks,
+                   'transformedLocalTerms':local_terms,'transformedNativeTerms':transformed_terms,'sourceChecks':source_checks,
                    'profileZeroTransferValue':2,'fourierMass':mass,
                    'forcingEntryUnits':binding['forcingUnits'],
                    'transformedForcingEntryUnits':[[tuple(a-b for a,b in zip(v,units['spectralMeasureUnit']))
@@ -482,27 +534,31 @@ def construct(spec, out, journal):
             sp.Integral(phase*spectral[i,h]/mass,(kn,a,b)) for a,b in intervals)),exclusion,0,dir='+'))
         response_delta=sum((sp.exp(sp.I*p['k']*z)*p['responseCoefficient']/mass for p in pole_terms),sp.zeros(5))
         selected=transformed_terms[0]
-        changed=forcing.copy().as_mutable()
-        changed[selected['address']['row'],selected['address']['frameColumn']] -= selected['amplitudeWithoutB0']*base_transform(ell*(kn-k0))
+        rebuilt=checked(tag+'-full-source-rebuild',assemble_transformed_source,
+                        local_terms,transformed_terms,ell*(kn-k0))
+        omitted=checked(tag+'-omitted-source-rebuild',assemble_transformed_source,
+                        local_terms,transformed_terms,ell*(kn-k0),selected['address'])
+        rebuild_residual=rebuilt['forcing']-forcing
+        j.value(tag+'-source-rebuild-join.pickle',{'baseline':forcing,'rebuilt':rebuilt['forcing'],
+                                                'residual':rebuild_residual})
+        save(out/(tag+'-source-rebuild-join.json'),{'exactZero':rebuild_residual==sp.zeros(5)})
+        require(rebuild_residual==sp.zeros(5),'every recorded transform must enter the baseline source')
+        changed=omitted['forcing']
         movements=[]
         for point in (sp.S.Zero,1/ell,-1/ell):
-            difference=numerical_matrix(forcing-sp.ImmutableMatrix(changed),{kn:point})
+            difference=numerical_matrix(forcing-changed,{kn:point})
             response_movement=numerical_matrix(candidate['fixedInverse'],{kn:point})*difference
             movements.append({'k':point,'forcingMovement':difference,'responseMovement':response_movement,
                               'forcingNorm':norm(difference),'responseNorm':norm(response_movement)})
         mutation={'omittedActualNativeTerm':selected,'baselineForcing':forcing,
-                  'mutatedForcing':sp.ImmutableMatrix(changed),'probes':movements,
+                  'fullSourceRebuild':rebuilt,'omittedSourceRebuild':omitted,
+                  'fullRebuildResidual':rebuild_residual,'mutatedForcing':changed,'probes':movements,
                   'responsive':any(v['forcingNorm']>1e-10 and v['responseNorm']>1e-10 for v in movements)}
         j.value(tag+'-thickness-mutation.pickle',mutation)
         require(mutation['responsive'],'actual thickness-term omission must change transformed response')
         # Contract each field/row/source-column unit using the actual saved tables.
-        unit_checks=[]
-        for i in range(5):
-            for h in range(5):
-                for row in range(5):
-                    joined=tuple(a+b for a,b in zip(units['inverseEntryUnits'][i][row],binding['forcingUnits'][row][h]))
-                    unit_checks.append(joined==tuple(binding['endFieldUnits'][i][h]))
-        require(all(unit_checks),'source-specific response unit contraction')
+        unit_result=checked(tag+'-unit-contractions',unit_contractions,units['inverseEntryUnits'],
+                            binding['forcingUnits'],binding['endFieldUnits'])
         result={'block':index,'grade':(0,1),'forcingTransform':forcing,'regularSpectralResponse':spectral,
                 'principalValueResponse':response_pv,'poleContributions':pole_terms,
                 'deltaResponse':response_delta,'response':response_pv+response_delta,
@@ -515,7 +571,10 @@ def construct(spec, out, journal):
         summary={'block':index,'sourceJoins':source_checks,'nativeTermsTransformed':len(transformed_terms),
                  'profileBasisOrders':sorted(used_orders),'sourceEquationRelativeResiduals':[p['relativeResidual'] for p in probes],
                  'poleRelativeResiduals':[p['relativeResidual'] for p in pole_terms],
-                 'actualThicknessMutationResponsive':mutation['responsive'],'allUnitContractionsMatch':all(unit_checks),
+                 'actualThicknessMutationResponsive':mutation['responsive'],
+                 'completeSourceRebuildMatchesBaseline':rebuild_residual==sp.zeros(5),
+                 'sourcePlaneJoins':len(transformed_terms),
+                 'allUnitContractionsMatch':unit_result['checks']['allUnitContractionsMatch'],
                  'forcingSmoothAndRapidlyDecreasingFromSavedCertificates':True,
                  'integralsEvaluated':False,'acceptancePendingSavedOutputInspection':True}
         save(out/(tag+'-summary.json'),summary)

@@ -1,0 +1,47 @@
+{
+  "status": "CORRECTED_STAGE_PREPARED_PENDING_USER_APPROVAL",
+  "recordedUtc": "2026-09-28T16:39:38.220111+00:00",
+  "worker": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_localized_thickness_response.py",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_localized_thickness_response.py",
+    "bytes": 39360,
+    "sha256": "63c64817fdead81b9bf313497d45f2149437035e9ccd0fbd53848d75abf2efa8"
+  },
+  "inputManifest": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_localized_thickness_corrected_inputs.json",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_localized_thickness_corrected_inputs.json",
+    "bytes": 9752,
+    "sha256": "d7a61acbb452ba7d2034ce0aa612fc5a1b7a752ba347d15f8e8914be6a34044d"
+  },
+  "proposal": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_localized_thickness_proposal.json",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_localized_thickness_proposal.json",
+    "bytes": 2059,
+    "sha256": "7dc36da3ce8d6fb44d2ac124fdc27e7e78009aabe8cb2503a6ade9c9e1a4906e"
+  },
+  "launcher": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_localized_thickness_stage_launch.py",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_localized_thickness_stage_launch.py",
+    "bytes": 10175,
+    "sha256": "ae7c7524d831f1540e741368701390c89e217731a0b6bd4b8f4c6a2dff5f693d"
+  },
+  "adjudication": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_localized_thickness_review_adjudication.json",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_localized_thickness_review_adjudication.json",
+    "bytes": 6778,
+    "sha256": "1fc9a618cf91a9beb62ee71cc08b9d1ce2bba94abc60c3574e83fb2faa1e0fac"
+  },
+  "staticChecks": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_localized_thickness_corrected_static_checks.json",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_localized_thickness_corrected_static_checks.json",
+    "bytes": 1137,
+    "sha256": "81b9e768aa7aff7e44001fae82dc4e220df827d1d1b68fd3dc46b4fcb0d57c86"
+  },
+  "sourceInputs": 23,
+  "scientificPayloads": 8,
+  "productionRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-d-localized-thickness-20260928/production",
+  "scientificLaunchAuthorized": false,
+  "scientificOperationsDuringPreparation": 0,
+  "newExternalReviews": 0,
+  "currentThread": "01a0e01b-ef84-7192-817f-584cda5d339b"
+}

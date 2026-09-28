@@ -1151,3 +1151,48 @@ all earlier results/failures and literal verdicts. The shared scientific gate
 remains pending; no physics worker or recurring polling task was launched.
 Authorization/startup/status records belong under research/pde_ledger_v3;
 scratch packet copies and logs remain ignored and are not committed.
+
+## Thickness reviews handled; corrected stage awaiting launch approval
+
+Both authorized reports completed before adjudication or source edits.
+Claude finished at 16:05:03 UTC on 2026-09-28 after 484.409211 seconds; Grok
+finished at 16:28:59 UTC after 1436.238371 seconds. Both literal verdicts are
+**NEEDS REVISION**, preserved verbatim. The actual run receipts, coordinator,
+hook completion, approval, packet/archive and output/stderr hashes were read
+and verified. Claude stderr is empty. Grok's 1,745-byte stderr retains
+configuration warnings and one read-file tool error; its subsequent section
+reads and final substantive report completed. No process-exit-only clearance
+or fresh independent CLEAR is claimed.
+
+The [disposition](S11c_d_localized_thickness_review_disposition.md) closes the
+bounded source findings locally. Claude's phase normalization, complete-source
+rebuild/actual omission and pre-guard unit-record requests are implemented.
+Grok's positive-plane citation belongs to block16 rather than block17; exact
+indexed evidence is preserved, and every transformed native term gains an
+explicit saved runtime phase join. The original reviewed worker, manifest
+and description were copied byte-identically before correction. The fixed
+packet/archive and raw reports remain unchanged. No reviewer rerun, peer
+sharing or optional-review loop occurred.
+
+The [stage preparation](S11c_d_localized_thickness_stage_preparation.md) and
+[pending proposal](S11c_d_localized_thickness_proposal.json) bind the corrected
+worker, 23 inputs (including eight unchanged scientific payloads), ordinary
+guard/supervisor and hook-first launcher. Source/AST and synthetic instrument
+checks passed without scientific imports/restoration. The pending worker gate
+and absent stage approval both refused launch before any runtime directory,
+READY gate or child process was created. No science ran in this turn.
+
+Next action requires explicit approval for the one prepared 900s outer/840s
+native, 2GiB/zero-swap/one-CPU/nice15/32-task/one-thread thickness stage. The
+review-completion event expressly authorizes no science. The completion hook
+targets this session `01a0e01b-ef84-7192-817f-584cda5d339b`; this review event
+has been handled and no job remains active for this stage. Do not infer a
+retry or unlimited-duration permission from older work.
+
+All accepted science, prior failures, incident history and historical review
+literals remain preserved. Full response/Green/FORM/A11/A12, density/mixed
+response, current normalization, general diagonal extension, retarded
+equivalence and radiating coverage remain open on the unchanged evanescent
+slice. Lean/S11_lean, shared guard and protected suffix are untouched. Scratch
+is runtime storage only; canonical sources/reports are kept under research
+and committed as work proceeds.

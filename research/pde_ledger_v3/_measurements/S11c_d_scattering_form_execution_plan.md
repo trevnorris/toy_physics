@@ -419,7 +419,7 @@ automatic attempts following failure.
 No completed review/science is rerun, and no automatic retries are introduced.
 
 
-**Current external review launch (2026-09-28):** the user explicitly approved
+**Historical external review launch (2026-09-28):** the user explicitly approved
 submission of the fixed thickness packet with **“You may submit it.”** Its
 [authorization and startup record](S11c_d_localized_thickness_review_launch.json)
 confirm the hook-first launch at 15:56:59 UTC, host coordinator/watcher alive,
@@ -427,3 +427,27 @@ Claude started and Grok queued sequentially. All packet/source/archive hashes
 matched the approved preparation. Both read-only reports must finish before
 adjudication or source edits. No science-stage authorization, worker launch,
 automatic retry, peer sharing or model polling follows from this submission.
+
+**Current next step (2026-09-28):** both thickness method/build reports finished
+before edits: Claude at 16:05:03 UTC, Grok at 16:28:59 UTC. Both literal verdicts
+are **NEEDS REVISION**. The
+[local disposition](S11c_d_localized_thickness_review_disposition.md) addresses
+Claude's phase expansion, full-source rebuild/omission and unit-persistence
+findings. Grok cited block16's positive phase as belonging to block17; exact
+indexed evidence resolves the citation, and explicit per-term phase joins
+are added. Original packet/reviewed bytes and both raw reports are preserved;
+Grok's configuration warnings and one read-file error are recorded. No fresh
+independent CLEAR, review rerun or science launch is claimed.
+
+The [corrected stage](S11c_d_localized_thickness_stage_preparation.md) is ready
+for the user's separate launch decision, with 23 pinned inputs including the
+same eight scientific payloads. Syntax/source and synthetic instrument checks
+passed; actual mathematical checks remain for the guarded stage. Both missing
+approval refusals passed without creating a runtime directory or READY gate.
+The proposed single job is limited to the two fixed thickness transforms and
+their saved full coupled PV/delta action, under ordinary 900/840s and 2GiB
+containment. The review completion event has been handled; no review or
+scientific worker is active for this stage. No retry or broader physics queue
+is authorized. Full response/Green/FORM/A11/A12 and the other retained
+limitations remain open. Canonical changes belong under research; scratch
+remains ignored runtime storage, never a commit destination.

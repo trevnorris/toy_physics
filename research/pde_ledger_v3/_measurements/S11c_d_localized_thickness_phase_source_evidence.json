@@ -1,0 +1,1211 @@
+{
+  "status": "LITERAL_PACKET_SOURCE_CITATION_CHECK_NOT_SCIENTIFIC_RECALCULATION",
+  "packetSha256": "fd780beab5c2564e19b8f792a8bbb3751adaeaa61c2402cb2e781498084df944",
+  "sourcePath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-localized-thickness-20260928/build-review/packet/saved-source-evidence.json",
+  "sourceSha256": "d29373cf22e0715c83e5fd5574bda9a34df5e7a9a879eea0180b03d76edfad08",
+  "grokLiteralVerdict": "NEEDS REVISION",
+  "conclusion": "The cited opposite sign belongs to block16-grade01. The cited address in block17-grade01 carries the negative seed phase. All 36 native terms per case use the corresponding seed phase in the readable saved evidence.",
+  "scientificImportsOrPickleRestorations": 0,
+  "cases": [
+    {
+      "case": "block17-grade01",
+      "seed20": {
+        "row": 2,
+        "column": 0,
+        "expression": "-exp(-sqrt(555)*I*s11cdNormalPosition/30)/10"
+      },
+      "termCount": 36,
+      "allSavedLiteralSignsMatchTheirOwnCase": true,
+      "grokCitedAddressActualOperand": {
+        "side": "PROFILE_FORCING",
+        "address": {
+          "row": 3,
+          "sourceColumn": 2,
+          "frameColumn": 0,
+          "term": 4
+        },
+        "operand": "-200*I*(1/100 - I/10)*Integral((-6075*(1/10 + I/100)*(1/2 - tanh(_liftBound_s11cdSourceNormalPosition/10)**2/2)*exp(-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30)/10201 + 575*(1/10 + I/100)*(2 - 2*tanh(_liftBound_s11cdSourceNormalPosition/10)**2)*exp(-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30)*tanh(_liftBound_s11cdSourceNormalPosition/10)/10201 + 7*sqrt(555)*I*(1 + I/10)*(tanh(_liftBound_s11cdSourceNormalPosition/10)**2 - 1)*(3*tanh(_liftBound_s11cdSourceNormalPosition/10)**2 - 1)*exp(-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30)/153015 - 11*sqrt(555)*I*(1 + I/10)*(tanh(_liftBound_s11cdSourceNormalPosition/10)**2 - 1)*exp(-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30)*tanh(_liftBound_s11cdSourceNormalPosition/10)/51005)*exp(-_liftBound_s11cdOutputNormalMomentum*_liftBound_s11cdSourceNormalPosition*I + _liftBound_s11cdOutputNormalMomentum*I*s11cdNormalPosition)/(20*pi*(1 + 100*(1 + I/10)/(101*sqrt(-100*_liftBound_s11cdOutputNormalMomentum**2 - 4)))*sqrt(-100*_liftBound_s11cdOutputNormalMomentum**2 - 4)), (_liftBound_s11cdOutputNormalMomentum, -oo, oo), (_liftBound_s11cdSourceNormalPosition, -oo, oo))/101",
+        "hasProfileAbelRegulator": false,
+        "status": "UNRESOLVED_UNBOUNDED_NONLOCAL_PAIRING",
+        "orderedLimits": [
+          [
+            [
+              "_liftBound_s11cdOutputNormalMomentum",
+              "-oo",
+              "oo"
+            ],
+            [
+              "_liftBound_s11cdSourceNormalPosition",
+              "-oo",
+              "oo"
+            ]
+          ]
+        ]
+      },
+      "observations": [
+        {
+          "address": {
+            "row": 3,
+            "sourceColumn": 0,
+            "frameColumn": 0,
+            "term": 4
+          },
+          "planeExponents": [
+            "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+            "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+            "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+            "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30"
+          ],
+          "expectedExponent": "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+          "literalMatch": true,
+          "operandStringSha256": "8d269e573fc5337a302e9778340a4d641775748451b1c59a2b0a69dd6584499a"
+        },
+        {
+          "address": {
+            "row": 3,
+            "sourceColumn": 0,
+            "frameColumn": 0,
+            "term": 10
+          },
+          "planeExponents": [
+            "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30"
+          ],
+          "expectedExponent": "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+          "literalMatch": true,
+          "operandStringSha256": "6c908d7700bc3b1d2b29ca546b23c82e3fa8668bea36aaab88f541822ab478c4"
+        },
+        {
+          "address": {
+            "row": 3,
+            "sourceColumn": 0,
+            "frameColumn": 1,
+            "term": 4
+          },
+          "planeExponents": [
+            "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+            "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+            "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+            "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30"
+          ],
+          "expectedExponent": "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+          "literalMatch": true,
+          "operandStringSha256": "b0fb7745c0b39cd66e52190dad75000ff36640c1150993e5d98c9875b6433ccf"
+        },
+        {
+          "address": {
+            "row": 3,
+            "sourceColumn": 0,
+            "frameColumn": 1,
+            "term": 10
+          },
+          "planeExponents": [
+            "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30"
+          ],
+          "expectedExponent": "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+          "literalMatch": true,
+          "operandStringSha256": "f890a1b75708cbd797fb7a0c205bc4db000eee5fdcb22ac21d278f74522d7cbb"
+        },
+        {
+          "address": {
+            "row": 3,
+            "sourceColumn": 0,
+            "frameColumn": 2,
+            "term": 4
+          },
+          "planeExponents": [
+            "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+            "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+            "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+            "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30"
+          ],
+          "expectedExponent": "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+          "literalMatch": true,
+          "operandStringSha256": "8cf581194d71aee200c67388b8241da00b194fa079bbe7d403da4e200e6012b7"
+        },
+        {
+          "address": {
+            "row": 3,
+            "sourceColumn": 0,
+            "frameColumn": 2,
+            "term": 10
+          },
+          "planeExponents": [
+            "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30"
+          ],
+          "expectedExponent": "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+          "literalMatch": true,
+          "operandStringSha256": "14655129be7c81ae19871184215615f08942acc239e0d0f7fdeb94c6ea471582"
+        },
+        {
+          "address": {
+            "row": 3,
+            "sourceColumn": 1,
+            "frameColumn": 0,
+            "term": 4
+          },
+          "planeExponents": [
+            "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+            "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+            "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+            "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30"
+          ],
+          "expectedExponent": "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+          "literalMatch": true,
+          "operandStringSha256": "554d4601749a7f0f9194d9aca7a947d93d09a7388a1bcb07e8cfa780f08f5d99"
+        },
+        {
+          "address": {
+            "row": 3,
+            "sourceColumn": 1,
+            "frameColumn": 0,
+            "term": 10
+          },
+          "planeExponents": [
+            "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30"
+          ],
+          "expectedExponent": "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+          "literalMatch": true,
+          "operandStringSha256": "0846b48b28825118c896e59748f571103b84c46157cf901bc3e882c56f07019b"
+        },
+        {
+          "address": {
+            "row": 3,
+            "sourceColumn": 1,
+            "frameColumn": 1,
+            "term": 4
+          },
+          "planeExponents": [
+            "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+            "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+            "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+            "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30"
+          ],
+          "expectedExponent": "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+          "literalMatch": true,
+          "operandStringSha256": "55573e14aac00071c955439fa8bfff55ad46725efd0b4db76d185a6b9de9836d"
+        },
+        {
+          "address": {
+            "row": 3,
+            "sourceColumn": 1,
+            "frameColumn": 1,
+            "term": 10
+          },
+          "planeExponents": [
+            "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30"
+          ],
+          "expectedExponent": "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+          "literalMatch": true,
+          "operandStringSha256": "cc7051d3f6698383230577e7f8e6522e817587074157f6215d66d62944734fe2"
+        },
+        {
+          "address": {
+            "row": 3,
+            "sourceColumn": 1,
+            "frameColumn": 2,
+            "term": 4
+          },
+          "planeExponents": [
+            "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+            "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+            "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+            "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30"
+          ],
+          "expectedExponent": "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+          "literalMatch": true,
+          "operandStringSha256": "6d164150952ea688431fc9b4aeaa60fb71f35489f62b2d320f420750f00d7b4f"
+        },
+        {
+          "address": {
+            "row": 3,
+            "sourceColumn": 1,
+            "frameColumn": 2,
+            "term": 10
+          },
+          "planeExponents": [
+            "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30"
+          ],
+          "expectedExponent": "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+          "literalMatch": true,
+          "operandStringSha256": "8e9ff0cd6a37e555cdeca2b864949ef74709c1a0b8426db3b8b5f17d1f439d68"
+        },
+        {
+          "address": {
+            "row": 3,
+            "sourceColumn": 2,
+            "frameColumn": 0,
+            "term": 4
+          },
+          "planeExponents": [
+            "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+            "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+            "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+            "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30"
+          ],
+          "expectedExponent": "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+          "literalMatch": true,
+          "operandStringSha256": "00be6b86d62906eebdc60f53f0f6342d01b182853a0faddb0e5226ed27dc47fa"
+        },
+        {
+          "address": {
+            "row": 3,
+            "sourceColumn": 2,
+            "frameColumn": 0,
+            "term": 10
+          },
+          "planeExponents": [
+            "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30"
+          ],
+          "expectedExponent": "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+          "literalMatch": true,
+          "operandStringSha256": "376eae30be2b81089a052b3fedf18f9acf2cf1397af7e7965664634179fbfb26"
+        },
+        {
+          "address": {
+            "row": 3,
+            "sourceColumn": 2,
+            "frameColumn": 1,
+            "term": 4
+          },
+          "planeExponents": [
+            "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+            "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+            "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+            "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30"
+          ],
+          "expectedExponent": "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+          "literalMatch": true,
+          "operandStringSha256": "709b3ac113621bd61b865625b73e3ec877db6f1b8a89ae5e2d1429445f954756"
+        },
+        {
+          "address": {
+            "row": 3,
+            "sourceColumn": 2,
+            "frameColumn": 1,
+            "term": 10
+          },
+          "planeExponents": [
+            "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30"
+          ],
+          "expectedExponent": "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+          "literalMatch": true,
+          "operandStringSha256": "4df625b79d3ca5663e61e196864386f2b775b74b265bac638428cc6e5aa1176c"
+        },
+        {
+          "address": {
+            "row": 3,
+            "sourceColumn": 2,
+            "frameColumn": 2,
+            "term": 4
+          },
+          "planeExponents": [
+            "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+            "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+            "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+            "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+            "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+            "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30"
+          ],
+          "expectedExponent": "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+          "literalMatch": true,
+          "operandStringSha256": "3fc0aff599c7d32a8ca0b87db6387abcb792c8ac123de7949824147e7d04ead1"
+        },
+        {
+          "address": {
+            "row": 3,
+            "sourceColumn": 2,
+            "frameColumn": 2,
+            "term": 10
+          },
+          "planeExponents": [
+            "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30"
+          ],
+          "expectedExponent": "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+          "literalMatch": true,
+          "operandStringSha256": "51b4bfbb121d4050ae879e826d3405ff7991bcb20df65b6e07287eee6e9c82b4"
+        },
+        {
+          "address": {
+            "row": 4,
+            "sourceColumn": 0,
+            "frameColumn": 0,
+            "term": 4
+          },
+          "planeExponents": [
+            "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+            "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+            "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+            "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30"
+          ],
+          "expectedExponent": "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+          "literalMatch": true,
+          "operandStringSha256": "c1bcee95978842f525b9249226febfcdcc6163e7c0b07441a945655f5355d7aa"
+        },
+        {
+          "address": {
+            "row": 4,
+            "sourceColumn": 0,
+            "frameColumn": 0,
+            "term": 10
+          },
+          "planeExponents": [
+            "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30"
+          ],
+          "expectedExponent": "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+          "literalMatch": true,
+          "operandStringSha256": "f4627234b5c3bf267a4067fd44dcb15a01f97489d4d0049669906b0e469ff474"
+        },
+        {
+          "address": {
+            "row": 4,
+            "sourceColumn": 0,
+            "frameColumn": 1,
+            "term": 4
+          },
+          "planeExponents": [
+            "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+            "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+            "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+            "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30"
+          ],
+          "expectedExponent": "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+          "literalMatch": true,
+          "operandStringSha256": "d072059cf85c8006f9d26d39de6e82e93484a70d6d438dd856fc9e980f0f6f8d"
+        },
+        {
+          "address": {
+            "row": 4,
+            "sourceColumn": 0,
+            "frameColumn": 1,
+            "term": 10
+          },
+          "planeExponents": [
+            "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30"
+          ],
+          "expectedExponent": "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+          "literalMatch": true,
+          "operandStringSha256": "fab554a5e4162a6e249cf33fb183f679347e86dab4e80de552eb269ada971ab2"
+        },
+        {
+          "address": {
+            "row": 4,
+            "sourceColumn": 0,
+            "frameColumn": 2,
+            "term": 4
+          },
+          "planeExponents": [
+            "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+            "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+            "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+            "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30"
+          ],
+          "expectedExponent": "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+          "literalMatch": true,
+          "operandStringSha256": "4e178cf204b12058a422447d6741959cf3f9bfe52b3f7bd69ffbc2f02478d554"
+        },
+        {
+          "address": {
+            "row": 4,
+            "sourceColumn": 0,
+            "frameColumn": 2,
+            "term": 10
+          },
+          "planeExponents": [
+            "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30"
+          ],
+          "expectedExponent": "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+          "literalMatch": true,
+          "operandStringSha256": "964946258b7e77b455077f3c46b4ef4fa195d662a764f4e1e30f59c5cfef9b6e"
+        },
+        {
+          "address": {
+            "row": 4,
+            "sourceColumn": 1,
+            "frameColumn": 0,
+            "term": 4
+          },
+          "planeExponents": [
+            "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+            "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+            "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+            "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30"
+          ],
+          "expectedExponent": "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+          "literalMatch": true,
+          "operandStringSha256": "53665c5b980468539ea00cdfca2ff2e4fa5fea7e6bb627f4289c963c577e9cf8"
+        },
+        {
+          "address": {
+            "row": 4,
+            "sourceColumn": 1,
+            "frameColumn": 0,
+            "term": 10
+          },
+          "planeExponents": [
+            "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30"
+          ],
+          "expectedExponent": "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+          "literalMatch": true,
+          "operandStringSha256": "4094916ba9ec971edeea77cd53e66e4e482f28fd694054e31044fbd2a717fbe1"
+        },
+        {
+          "address": {
+            "row": 4,
+            "sourceColumn": 1,
+            "frameColumn": 1,
+            "term": 4
+          },
+          "planeExponents": [
+            "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+            "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+            "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+            "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30"
+          ],
+          "expectedExponent": "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+          "literalMatch": true,
+          "operandStringSha256": "cb2997e8d85e8025e30f3074a61057faccd7c4f59431cd6ab795b570c8a0b71c"
+        },
+        {
+          "address": {
+            "row": 4,
+            "sourceColumn": 1,
+            "frameColumn": 1,
+            "term": 10
+          },
+          "planeExponents": [
+            "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30"
+          ],
+          "expectedExponent": "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+          "literalMatch": true,
+          "operandStringSha256": "0f59c3453ce4e0aa7b087d95ddc0512dd5ac9d7ee9c4244b541b41b5f9aafa7a"
+        },
+        {
+          "address": {
+            "row": 4,
+            "sourceColumn": 1,
+            "frameColumn": 2,
+            "term": 4
+          },
+          "planeExponents": [
+            "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+            "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+            "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+            "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30"
+          ],
+          "expectedExponent": "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+          "literalMatch": true,
+          "operandStringSha256": "9df3e0ced4651df06d15771a0bb60ac8fee7fd223d10bca9d335ffe16a3317ad"
+        },
+        {
+          "address": {
+            "row": 4,
+            "sourceColumn": 1,
+            "frameColumn": 2,
+            "term": 10
+          },
+          "planeExponents": [
+            "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30"
+          ],
+          "expectedExponent": "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+          "literalMatch": true,
+          "operandStringSha256": "6592cdbc09e6a9f2e0bcb9183234236fabeffeae78035d6f01fa68278891802f"
+        },
+        {
+          "address": {
+            "row": 4,
+            "sourceColumn": 2,
+            "frameColumn": 0,
+            "term": 4
+          },
+          "planeExponents": [
+            "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+            "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+            "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+            "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30"
+          ],
+          "expectedExponent": "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+          "literalMatch": true,
+          "operandStringSha256": "fb17e421241a79a87107cb3f4092981cf5e880b4d59035c65a521bc01d60dbe7"
+        },
+        {
+          "address": {
+            "row": 4,
+            "sourceColumn": 2,
+            "frameColumn": 0,
+            "term": 10
+          },
+          "planeExponents": [
+            "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30"
+          ],
+          "expectedExponent": "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+          "literalMatch": true,
+          "operandStringSha256": "0d09232be455236f229cfd2152bf8a02af7bbc107cfe0f8bebdcac7bac715fec"
+        },
+        {
+          "address": {
+            "row": 4,
+            "sourceColumn": 2,
+            "frameColumn": 1,
+            "term": 4
+          },
+          "planeExponents": [
+            "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+            "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+            "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+            "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30"
+          ],
+          "expectedExponent": "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+          "literalMatch": true,
+          "operandStringSha256": "3bf8f5d51a6ee1a04a8252a2c76a181135bca5e7a2c336bf6eb0a8642a0bd2f4"
+        },
+        {
+          "address": {
+            "row": 4,
+            "sourceColumn": 2,
+            "frameColumn": 1,
+            "term": 10
+          },
+          "planeExponents": [
+            "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30"
+          ],
+          "expectedExponent": "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+          "literalMatch": true,
+          "operandStringSha256": "786cbec9db38c01fa29d68915fd84dd91a4f614f6c9288dd9db8802e64dd5189"
+        },
+        {
+          "address": {
+            "row": 4,
+            "sourceColumn": 2,
+            "frameColumn": 2,
+            "term": 4
+          },
+          "planeExponents": [
+            "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+            "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+            "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+            "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+            "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+            "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30"
+          ],
+          "expectedExponent": "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+          "literalMatch": true,
+          "operandStringSha256": "2fe89dbcaaa46a4bea645d03e2f5652fc1615c4fd378934006edbd9e44db3004"
+        },
+        {
+          "address": {
+            "row": 4,
+            "sourceColumn": 2,
+            "frameColumn": 2,
+            "term": 10
+          },
+          "planeExponents": [
+            "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30"
+          ],
+          "expectedExponent": "-sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+          "literalMatch": true,
+          "operandStringSha256": "34af341af9bf6bc8025f277ad3bffd18a1e099e14e2825ed0a941855eebcf6e2"
+        }
+      ]
+    },
+    {
+      "case": "block16-grade01",
+      "seed20": {
+        "row": 2,
+        "column": 0,
+        "expression": "-exp(sqrt(555)*I*s11cdNormalPosition/30)/10"
+      },
+      "termCount": 36,
+      "allSavedLiteralSignsMatchTheirOwnCase": true,
+      "grokCitedAddressActualOperand": {
+        "side": "PROFILE_FORCING",
+        "address": {
+          "row": 3,
+          "sourceColumn": 2,
+          "frameColumn": 0,
+          "term": 4
+        },
+        "operand": "-200*I*(1/100 - I/10)*Integral((-6075*(1/10 + I/100)*(1/2 - tanh(_liftBound_s11cdSourceNormalPosition/10)**2/2)*exp(sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30)/10201 + 575*(1/10 + I/100)*(2 - 2*tanh(_liftBound_s11cdSourceNormalPosition/10)**2)*exp(sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30)*tanh(_liftBound_s11cdSourceNormalPosition/10)/10201 - 7*sqrt(555)*I*(1 + I/10)*(tanh(_liftBound_s11cdSourceNormalPosition/10)**2 - 1)*(3*tanh(_liftBound_s11cdSourceNormalPosition/10)**2 - 1)*exp(sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30)/153015 + 11*sqrt(555)*I*(1 + I/10)*(tanh(_liftBound_s11cdSourceNormalPosition/10)**2 - 1)*exp(sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30)*tanh(_liftBound_s11cdSourceNormalPosition/10)/51005)*exp(-_liftBound_s11cdOutputNormalMomentum*_liftBound_s11cdSourceNormalPosition*I + _liftBound_s11cdOutputNormalMomentum*I*s11cdNormalPosition)/(20*pi*(1 + 100*(1 + I/10)/(101*sqrt(-100*_liftBound_s11cdOutputNormalMomentum**2 - 4)))*sqrt(-100*_liftBound_s11cdOutputNormalMomentum**2 - 4)), (_liftBound_s11cdOutputNormalMomentum, -oo, oo), (_liftBound_s11cdSourceNormalPosition, -oo, oo))/101",
+        "hasProfileAbelRegulator": false,
+        "status": "UNRESOLVED_UNBOUNDED_NONLOCAL_PAIRING",
+        "orderedLimits": [
+          [
+            [
+              "_liftBound_s11cdOutputNormalMomentum",
+              "-oo",
+              "oo"
+            ],
+            [
+              "_liftBound_s11cdSourceNormalPosition",
+              "-oo",
+              "oo"
+            ]
+          ]
+        ]
+      },
+      "observations": [
+        {
+          "address": {
+            "row": 3,
+            "sourceColumn": 0,
+            "frameColumn": 0,
+            "term": 4
+          },
+          "planeExponents": [
+            "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+            "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+            "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+            "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30"
+          ],
+          "expectedExponent": "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+          "literalMatch": true,
+          "operandStringSha256": "d2f1d365598698f4b435e6c0f43244da419c316b239cd7c7798717f035a79fe5"
+        },
+        {
+          "address": {
+            "row": 3,
+            "sourceColumn": 0,
+            "frameColumn": 0,
+            "term": 10
+          },
+          "planeExponents": [
+            "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30"
+          ],
+          "expectedExponent": "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+          "literalMatch": true,
+          "operandStringSha256": "dcc36678351ac77f690c6e804c38f94db09f758e2f567b081dab9cc980b0b20b"
+        },
+        {
+          "address": {
+            "row": 3,
+            "sourceColumn": 0,
+            "frameColumn": 1,
+            "term": 4
+          },
+          "planeExponents": [
+            "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+            "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+            "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+            "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30"
+          ],
+          "expectedExponent": "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+          "literalMatch": true,
+          "operandStringSha256": "41b55b3f83f63f259732a41d45d911ed90d2abe69bfcb1ca14f6456c0cba23ce"
+        },
+        {
+          "address": {
+            "row": 3,
+            "sourceColumn": 0,
+            "frameColumn": 1,
+            "term": 10
+          },
+          "planeExponents": [
+            "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30"
+          ],
+          "expectedExponent": "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+          "literalMatch": true,
+          "operandStringSha256": "41c1e93ef3b46dab02525ad5fb1587c90d2bdaa6f0f4b407f6887c60fcc854ed"
+        },
+        {
+          "address": {
+            "row": 3,
+            "sourceColumn": 0,
+            "frameColumn": 2,
+            "term": 4
+          },
+          "planeExponents": [
+            "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+            "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+            "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+            "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30"
+          ],
+          "expectedExponent": "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+          "literalMatch": true,
+          "operandStringSha256": "3bce55f5321f1b01e22aab01ba5cdfed95ec18f6a6f432f1939af6743785bdf6"
+        },
+        {
+          "address": {
+            "row": 3,
+            "sourceColumn": 0,
+            "frameColumn": 2,
+            "term": 10
+          },
+          "planeExponents": [
+            "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30"
+          ],
+          "expectedExponent": "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+          "literalMatch": true,
+          "operandStringSha256": "eadd2ab6bd9fcebe9e729a92948f62da80bbdb52f747b9de5b23707370d614e8"
+        },
+        {
+          "address": {
+            "row": 3,
+            "sourceColumn": 1,
+            "frameColumn": 0,
+            "term": 4
+          },
+          "planeExponents": [
+            "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+            "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+            "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+            "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30"
+          ],
+          "expectedExponent": "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+          "literalMatch": true,
+          "operandStringSha256": "7f5c5a00df85e9f320382d846128ba102789c1476e634601f0269f5a62f3e832"
+        },
+        {
+          "address": {
+            "row": 3,
+            "sourceColumn": 1,
+            "frameColumn": 0,
+            "term": 10
+          },
+          "planeExponents": [
+            "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30"
+          ],
+          "expectedExponent": "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+          "literalMatch": true,
+          "operandStringSha256": "2b28a70d697a0064c669a8b2dd20b6441fb13cd3d8bfe0bfd132900c69014783"
+        },
+        {
+          "address": {
+            "row": 3,
+            "sourceColumn": 1,
+            "frameColumn": 1,
+            "term": 4
+          },
+          "planeExponents": [
+            "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+            "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+            "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+            "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30"
+          ],
+          "expectedExponent": "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+          "literalMatch": true,
+          "operandStringSha256": "d1e1b345cc01dc43ffcb3dc040a847b4a200f5e7df29a9f3c401203a6daa689f"
+        },
+        {
+          "address": {
+            "row": 3,
+            "sourceColumn": 1,
+            "frameColumn": 1,
+            "term": 10
+          },
+          "planeExponents": [
+            "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30"
+          ],
+          "expectedExponent": "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+          "literalMatch": true,
+          "operandStringSha256": "1b68f65ba30c6e6ce98592d18999ecc00d4466dc71c39a9a55a95c4b0a241064"
+        },
+        {
+          "address": {
+            "row": 3,
+            "sourceColumn": 1,
+            "frameColumn": 2,
+            "term": 4
+          },
+          "planeExponents": [
+            "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+            "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+            "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+            "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30"
+          ],
+          "expectedExponent": "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+          "literalMatch": true,
+          "operandStringSha256": "d4defd7f1b5a29f6b9e600473a939da0020a66949558c0f3b21143b02a93841f"
+        },
+        {
+          "address": {
+            "row": 3,
+            "sourceColumn": 1,
+            "frameColumn": 2,
+            "term": 10
+          },
+          "planeExponents": [
+            "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30"
+          ],
+          "expectedExponent": "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+          "literalMatch": true,
+          "operandStringSha256": "781ddc07068cce5e648d078e1f684ded99fff7c145c56586fc77c28c723d0023"
+        },
+        {
+          "address": {
+            "row": 3,
+            "sourceColumn": 2,
+            "frameColumn": 0,
+            "term": 4
+          },
+          "planeExponents": [
+            "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+            "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+            "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+            "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30"
+          ],
+          "expectedExponent": "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+          "literalMatch": true,
+          "operandStringSha256": "eb24553d3ee7145285e8f2124f30ba12da9c039feeb5728f51280a29f50c4dca"
+        },
+        {
+          "address": {
+            "row": 3,
+            "sourceColumn": 2,
+            "frameColumn": 0,
+            "term": 10
+          },
+          "planeExponents": [
+            "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30"
+          ],
+          "expectedExponent": "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+          "literalMatch": true,
+          "operandStringSha256": "0022a1f671a24b5a6fc6b699582169118e9a2ebf2cbb277c59641598a80cbabe"
+        },
+        {
+          "address": {
+            "row": 3,
+            "sourceColumn": 2,
+            "frameColumn": 1,
+            "term": 4
+          },
+          "planeExponents": [
+            "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+            "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+            "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+            "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30"
+          ],
+          "expectedExponent": "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+          "literalMatch": true,
+          "operandStringSha256": "68d30f758716893822e8c2e46fc6adae1a99cc6c6893192618d02d56e421ecc1"
+        },
+        {
+          "address": {
+            "row": 3,
+            "sourceColumn": 2,
+            "frameColumn": 1,
+            "term": 10
+          },
+          "planeExponents": [
+            "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30"
+          ],
+          "expectedExponent": "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+          "literalMatch": true,
+          "operandStringSha256": "5011bb5ef2cd641843ad3f8bfd38a5f9d0a0c4cdc2a8efd73f224ef5133e40ae"
+        },
+        {
+          "address": {
+            "row": 3,
+            "sourceColumn": 2,
+            "frameColumn": 2,
+            "term": 4
+          },
+          "planeExponents": [
+            "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+            "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+            "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+            "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+            "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+            "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30"
+          ],
+          "expectedExponent": "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+          "literalMatch": true,
+          "operandStringSha256": "ce9df77d12898a4aa94a2d49fe09b6454f49b59ebc7e2ef646552fecd6f5b3a2"
+        },
+        {
+          "address": {
+            "row": 3,
+            "sourceColumn": 2,
+            "frameColumn": 2,
+            "term": 10
+          },
+          "planeExponents": [
+            "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30"
+          ],
+          "expectedExponent": "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+          "literalMatch": true,
+          "operandStringSha256": "291689b128e1f31af7a05451a0fc62c0c47749c69c2a508d7ef9935761be03b3"
+        },
+        {
+          "address": {
+            "row": 4,
+            "sourceColumn": 0,
+            "frameColumn": 0,
+            "term": 4
+          },
+          "planeExponents": [
+            "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+            "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+            "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+            "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30"
+          ],
+          "expectedExponent": "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+          "literalMatch": true,
+          "operandStringSha256": "364db85849139e5fcc5c6e4abf31181ffebcdbe2eff846c46861778669eff9bf"
+        },
+        {
+          "address": {
+            "row": 4,
+            "sourceColumn": 0,
+            "frameColumn": 0,
+            "term": 10
+          },
+          "planeExponents": [
+            "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30"
+          ],
+          "expectedExponent": "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+          "literalMatch": true,
+          "operandStringSha256": "eb163a5fb53ef4c4c3cc461dd59675acc0d7975ad9b715c47f1202e71c6ae816"
+        },
+        {
+          "address": {
+            "row": 4,
+            "sourceColumn": 0,
+            "frameColumn": 1,
+            "term": 4
+          },
+          "planeExponents": [
+            "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+            "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+            "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+            "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30"
+          ],
+          "expectedExponent": "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+          "literalMatch": true,
+          "operandStringSha256": "766eee600b92c98c4736215e134563c80007801612edf7384e10ab32d5b6c1c1"
+        },
+        {
+          "address": {
+            "row": 4,
+            "sourceColumn": 0,
+            "frameColumn": 1,
+            "term": 10
+          },
+          "planeExponents": [
+            "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30"
+          ],
+          "expectedExponent": "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+          "literalMatch": true,
+          "operandStringSha256": "e38037b7d50a1a43ca1252b9e6abaf1b08be84c32a0c723f4f512653e29ae758"
+        },
+        {
+          "address": {
+            "row": 4,
+            "sourceColumn": 0,
+            "frameColumn": 2,
+            "term": 4
+          },
+          "planeExponents": [
+            "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+            "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+            "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+            "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30"
+          ],
+          "expectedExponent": "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+          "literalMatch": true,
+          "operandStringSha256": "ecd4a34940fcc5f0c40bf3060ede520ef4a1d3ac71e5afacf5af2c51cf2f8029"
+        },
+        {
+          "address": {
+            "row": 4,
+            "sourceColumn": 0,
+            "frameColumn": 2,
+            "term": 10
+          },
+          "planeExponents": [
+            "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30"
+          ],
+          "expectedExponent": "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+          "literalMatch": true,
+          "operandStringSha256": "d53c57761c1a6451d2f7b350bf51da27a2b2f021872bd69808fbf7571cfa1150"
+        },
+        {
+          "address": {
+            "row": 4,
+            "sourceColumn": 1,
+            "frameColumn": 0,
+            "term": 4
+          },
+          "planeExponents": [
+            "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+            "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+            "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+            "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30"
+          ],
+          "expectedExponent": "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+          "literalMatch": true,
+          "operandStringSha256": "0a96ba23092b08873ea9b7c83f00c9e24605e503bf3d66fa7e38babf95fa973a"
+        },
+        {
+          "address": {
+            "row": 4,
+            "sourceColumn": 1,
+            "frameColumn": 0,
+            "term": 10
+          },
+          "planeExponents": [
+            "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30"
+          ],
+          "expectedExponent": "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+          "literalMatch": true,
+          "operandStringSha256": "fa8cbb8e031e5003d865aab45531314039f23ae87a18011f3a09fd2499e3983d"
+        },
+        {
+          "address": {
+            "row": 4,
+            "sourceColumn": 1,
+            "frameColumn": 1,
+            "term": 4
+          },
+          "planeExponents": [
+            "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+            "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+            "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+            "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30"
+          ],
+          "expectedExponent": "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+          "literalMatch": true,
+          "operandStringSha256": "daaacd0a5e90a4b7d6580587adced9d3430460c6e528b49f70cfb881274ba145"
+        },
+        {
+          "address": {
+            "row": 4,
+            "sourceColumn": 1,
+            "frameColumn": 1,
+            "term": 10
+          },
+          "planeExponents": [
+            "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30"
+          ],
+          "expectedExponent": "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+          "literalMatch": true,
+          "operandStringSha256": "f95b4128b8d47ced2497d2c08d8f36715dd2f558ce7f2bc942601b4e4117ec12"
+        },
+        {
+          "address": {
+            "row": 4,
+            "sourceColumn": 1,
+            "frameColumn": 2,
+            "term": 4
+          },
+          "planeExponents": [
+            "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+            "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+            "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+            "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30"
+          ],
+          "expectedExponent": "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+          "literalMatch": true,
+          "operandStringSha256": "19eefdbfa6f154cc5f873627c0bfb5c0e49598c5fd30ec9a0e69f9baa1d3bc4e"
+        },
+        {
+          "address": {
+            "row": 4,
+            "sourceColumn": 1,
+            "frameColumn": 2,
+            "term": 10
+          },
+          "planeExponents": [
+            "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30"
+          ],
+          "expectedExponent": "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+          "literalMatch": true,
+          "operandStringSha256": "d39637ba4eb1b9edd84187951820f29a3df30c31fb954c3f064767e76b70abbe"
+        },
+        {
+          "address": {
+            "row": 4,
+            "sourceColumn": 2,
+            "frameColumn": 0,
+            "term": 4
+          },
+          "planeExponents": [
+            "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+            "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+            "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+            "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30"
+          ],
+          "expectedExponent": "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+          "literalMatch": true,
+          "operandStringSha256": "738319e4570ebda776c27eb058fe5af8430496d48eb6cfdd937f0434ebc3469d"
+        },
+        {
+          "address": {
+            "row": 4,
+            "sourceColumn": 2,
+            "frameColumn": 0,
+            "term": 10
+          },
+          "planeExponents": [
+            "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30"
+          ],
+          "expectedExponent": "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+          "literalMatch": true,
+          "operandStringSha256": "dcb7b8392fbcc84297ea2341cc84a535d11102edd1813c242191816cc03afa92"
+        },
+        {
+          "address": {
+            "row": 4,
+            "sourceColumn": 2,
+            "frameColumn": 1,
+            "term": 4
+          },
+          "planeExponents": [
+            "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+            "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+            "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+            "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30"
+          ],
+          "expectedExponent": "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+          "literalMatch": true,
+          "operandStringSha256": "54deabc9e29380fc5de708f61a32e45f71e1178af06f3b629dc17e66c1bf9c3e"
+        },
+        {
+          "address": {
+            "row": 4,
+            "sourceColumn": 2,
+            "frameColumn": 1,
+            "term": 10
+          },
+          "planeExponents": [
+            "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30"
+          ],
+          "expectedExponent": "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+          "literalMatch": true,
+          "operandStringSha256": "0e8069705008541f711d62f9a7e2aef3efa2630d9f0ecb1d4336f3a06abf1da4"
+        },
+        {
+          "address": {
+            "row": 4,
+            "sourceColumn": 2,
+            "frameColumn": 2,
+            "term": 4
+          },
+          "planeExponents": [
+            "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+            "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+            "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+            "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+            "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+            "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30"
+          ],
+          "expectedExponent": "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+          "literalMatch": true,
+          "operandStringSha256": "2d22bff173b18e2f85ee8ea127d02c92b39af609a0e0f51a3ddc31ad3b0b5224"
+        },
+        {
+          "address": {
+            "row": 4,
+            "sourceColumn": 2,
+            "frameColumn": 2,
+            "term": 10
+          },
+          "planeExponents": [
+            "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30"
+          ],
+          "expectedExponent": "sqrt(555)*_liftBound_s11cdSourceNormalPosition*I/30",
+          "literalMatch": true,
+          "operandStringSha256": "830ac40b488a7fd3a9e937be83e49edd126ac65950325768a029fc9cdb3e6fda"
+        }
+      ]
+    }
+  ]
+}

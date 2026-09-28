@@ -1,0 +1,164 @@
+{
+  "status": "PINNED_CORRECTED_INPUTS_PENDING_ONE_STAGE_APPROVAL",
+  "scope": "Two existing thickness-grade sources; no new physical input or producer replay.",
+  "case": "LAB_HELD_RHO4_CONSTANT",
+  "blocks": [
+    17,
+    16
+  ],
+  "grade": [
+    0,
+    1
+  ],
+  "inputs": {
+    "candidate": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/outgoing-prescription-candidate.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-outgoing-prescription-20260927/unlimited/complete/outgoing-prescription-candidate.pickle",
+      "bytes": 79171,
+      "sha256": "7702b16291588d2ea823f1503b63c5d1009f111d896980eb209b9164a55037a8"
+    },
+    "context": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-reference-kernel-20260926/production/complete/outgoing-source-context.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-reference-kernel-20260926/production/complete/outgoing-source-context.pickle",
+      "bytes": 37015,
+      "sha256": "285c069a450dc36839ba197935897a57bcb81631f7d944e41bc0e022e0121756"
+    },
+    "units": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-reference-kernel-20260926/production/complete/physical-units.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-reference-kernel-20260926/production/complete/physical-units.pickle",
+      "bytes": 1049,
+      "sha256": "acd555aecd20a6447303fbd1412e7bd5d037b9a7e92b00e9765953b695c6bcf1"
+    },
+    "binding": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/forcing-continuation/complete/units-and-binding.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/forcing-continuation/complete/units-and-binding.pickle",
+      "bytes": 2984,
+      "sha256": "8846485de8a23c6558f2de87ebdf39bfc0cb11149304637d6b72ee24882eb701"
+    },
+    "block17-grade01-forcing": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/forcing-continuation/complete/block17-grade01-forcing-operands.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/forcing-continuation/complete/block17-grade01-forcing-operands.pickle",
+      "bytes": 294380,
+      "sha256": "9ccf68e19c02c514e411aaa7ff57460e404b7347d35bebe75d025f63be0e1360"
+    },
+    "block17-grade01-domain": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/forcing-continuation/complete/block17-grade01-domain.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/forcing-continuation/complete/block17-grade01-domain.pickle",
+      "bytes": 137800,
+      "sha256": "643e27ef9c0514ded8265498b1c0949e1dbc7c07ce4befa690c140614c80253a"
+    },
+    "block16-grade01-forcing": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/forcing-continuation/complete/block16-grade01-forcing-operands.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/forcing-continuation/complete/block16-grade01-forcing-operands.pickle",
+      "bytes": 294354,
+      "sha256": "6c0818d7fe2a819419dc5e7b5e4932bc7a1e718d6f52061f314f8ac51e9607e8"
+    },
+    "block16-grade01-domain": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/forcing-continuation/complete/block16-grade01-domain.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/forcing-continuation/complete/block16-grade01-domain.pickle",
+      "bytes": 137791,
+      "sha256": "05a73720336b33634433eafe53ddd8ac94f73bf8e6bcbfd248af32ab89b3d1bf"
+    },
+    "kernelCheckpoint": {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_reference_kernel_checkpoint.json",
+      "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_reference_kernel_checkpoint.json",
+      "bytes": 70697,
+      "sha256": "68f55b406fc56e7cd1b00c8b33b1ae185c30ed3fcb5ac0a85af21d74d2ccf2cd"
+    },
+    "outgoingCheckpoint": {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_outgoing_prescription_checkpoint.json",
+      "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_outgoing_prescription_checkpoint.json",
+      "bytes": 8024,
+      "sha256": "4af78a75718c303d73a726c5a8621989593fe360a6169ae71d8f07c6d012b3f5"
+    },
+    "twoAsymptoteCheckpoint": {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_checkpoint.json",
+      "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_checkpoint.json",
+      "bytes": 3659,
+      "sha256": "4be407cbd17685b31327296d1d01b565befb650c0645ff18ff0b7b274c05aeef"
+    },
+    "inspectionCheckpoint": {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_saved_inspection_checkpoint.json",
+      "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_saved_inspection_checkpoint.json",
+      "bytes": 54328,
+      "sha256": "8afe9c5473690707c162d03dae69d41682fd9be0d6d382817a41a6559ae3310b"
+    },
+    "physicalInput": {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_variable_profile_development_input.json",
+      "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_variable_profile_development_input.json",
+      "bytes": 1884,
+      "sha256": "660b2b0b54494dce964c7f5fbd722a76a7e894d8ed92b18b5eb6290c3c10f1d5"
+    },
+    "guard": {
+      "path": "/var/projects/toy_physics/scripts/s11c_guarded_run.py",
+      "canonicalPath": "/var/projects/toy_physics/scripts/s11c_guarded_run.py",
+      "bytes": 9977,
+      "sha256": "9194b3e04b43d345828082e6312b0a2d7a9293f6296153f9c6ccea2defb931d2"
+    },
+    "supervisor": {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+      "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+      "bytes": 3347,
+      "sha256": "45a16f7f952ca6b571362b1c386fec76cd86f1e0ad04113074adf49c683ec49c"
+    },
+    "methodDescription": {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_localized_thickness_implementation.md",
+      "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_localized_thickness_implementation.md",
+      "bytes": 8866,
+      "sha256": "727b5411fee765696550e7c705d9963e84ec910cd3d7940af3654353d11b2b1e"
+    },
+    "reviewDisposition": {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_localized_thickness_review_disposition.md",
+      "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_localized_thickness_review_disposition.md",
+      "bytes": 6155,
+      "sha256": "18cea46903264f2da0185f4b7d37a44ca68499e0c89e42409f438718edcecf30"
+    },
+    "phaseSourceEvidence": {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_localized_thickness_phase_source_evidence.json",
+      "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_localized_thickness_phase_source_evidence.json",
+      "bytes": 47975,
+      "sha256": "46fa6976b4a743e452c637f01fbcb9b9701203cbb76548deef3a32bc4fdf75ff"
+    },
+    "claudeLiteralReview": {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_localized_thickness_claude_review.md",
+      "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_localized_thickness_claude_review.md",
+      "bytes": 6485,
+      "sha256": "29654fc14acbdc8a9a2a5e42c2f435fde6e5f23f36265aecaa2e12a2055749dd"
+    },
+    "grokLiteralReview": {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_localized_thickness_grok_review.md",
+      "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_localized_thickness_grok_review.md",
+      "bytes": 8078,
+      "sha256": "74a410d4327ed0d6fb8ee5a2b6f3079921339ec61983071b0575099b2814603f"
+    },
+    "completionHook": {
+      "path": "/var/projects/toy_physics/scripts/codex_job_watch.py",
+      "canonicalPath": "/var/projects/toy_physics/scripts/codex_job_watch.py",
+      "bytes": 4301,
+      "sha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77"
+    },
+    "stageLauncher": {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_localized_thickness_stage_launch.py",
+      "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_localized_thickness_stage_launch.py",
+      "bytes": 10175,
+      "sha256": "ae7c7524d831f1540e741368701390c89e217731a0b6bd4b8f4c6a2dff5f693d"
+    },
+    "completionMessage": {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_localized_thickness_completion_message.txt",
+      "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_localized_thickness_completion_message.txt",
+      "bytes": 3606,
+      "sha256": "78bbad8120cb41553e996da74b0519d3296993f8d7bfc2aa99482718e026101d"
+    }
+  },
+  "scientificPayloads": [
+    "candidate",
+    "context",
+    "units",
+    "binding",
+    "block17-grade01-forcing",
+    "block17-grade01-domain",
+    "block16-grade01-forcing",
+    "block16-grade01-domain"
+  ],
+  "automaticRetry": false
+}

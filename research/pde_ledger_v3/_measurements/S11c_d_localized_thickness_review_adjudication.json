@@ -1,0 +1,129 @@
+{
+  "status": "BOUNDED_FINDINGS_LOCALLY_DISPOSED_PENDING_STAGE_APPROVAL",
+  "recordedUtc": "2026-09-28T16:39:38.131389+00:00",
+  "packetSha256": "fd780beab5c2564e19b8f792a8bbb3751adaeaa61c2402cb2e781498084df944",
+  "archiveSha256": "99ec379463804ca32fa8ed31e4205ef1a7f479b1b0c14d49b20c82206b098ebe",
+  "reviewers": {
+    "claude": {
+      "literalVerdict": "NEEDS REVISION",
+      "literalReport": {
+        "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_localized_thickness_claude_review.md",
+        "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_localized_thickness_claude_review.md",
+        "bytes": 6485,
+        "sha256": "29654fc14acbdc8a9a2a5e42c2f435fde6e5f23f36265aecaa2e12a2055749dd"
+      },
+      "rawOutput": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-localized-thickness-20260928/build-review/claude.json",
+        "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-localized-thickness-20260928/build-review/claude.json",
+        "bytes": 8364,
+        "sha256": "11d459aca54b879a0890072029fd57a7489ada7d1618df89eac4e4fd64b4c53d"
+      },
+      "runReceipt": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-localized-thickness-20260928/build-review/claude-run.json",
+        "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-localized-thickness-20260928/build-review/claude-run.json",
+        "bytes": 1280,
+        "sha256": "06759652e5f66666b67d4c4448d09a7f57b1126493bd50da066e127e7bdcd3aa"
+      },
+      "stderr": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-localized-thickness-20260928/build-review/claude.stderr",
+        "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-localized-thickness-20260928/build-review/claude.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "finishedUtc": "2026-09-28T16:05:03.549169+00:00",
+      "wallSeconds": 484.4092110780766
+    },
+    "grok": {
+      "literalVerdict": "NEEDS REVISION",
+      "literalReport": {
+        "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_localized_thickness_grok_review.md",
+        "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_localized_thickness_grok_review.md",
+        "bytes": 8078,
+        "sha256": "74a410d4327ed0d6fb8ee5a2b6f3079921339ec61983071b0575099b2814603f"
+      },
+      "rawOutput": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-localized-thickness-20260928/build-review/grok.json",
+        "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-localized-thickness-20260928/build-review/grok.json",
+        "bytes": 125860,
+        "sha256": "62360b80efe19267475f9dd62af39e3023cad97fd5f68acd232a3e65a8663c28"
+      },
+      "runReceipt": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-localized-thickness-20260928/build-review/grok-run.json",
+        "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-localized-thickness-20260928/build-review/grok-run.json",
+        "bytes": 1375,
+        "sha256": "fd124df3dbe56426711720afcf64d7608adaaf5526c76e8170bcfa7139cb04b3"
+      },
+      "stderr": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-localized-thickness-20260928/build-review/grok.stderr",
+        "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-localized-thickness-20260928/build-review/grok.stderr",
+        "bytes": 1745,
+        "sha256": "c2a17b5c658b06e3c99b6a46b7516072f5d6acc847dcb8d977f78d9d1c6443e9"
+      },
+      "finishedUtc": "2026-09-28T16:28:59.809509+00:00",
+      "wallSeconds": 1436.2383709769929
+    }
+  },
+  "originalReviewedWorkerSha256": "a8a801a4432f22b1dd86934f8b38a9e7b35db80b23ad2e9da7866a3866af594d",
+  "correctedWorkerSha256": "63c64817fdead81b9bf313497d45f2149437035e9ccd0fbd53848d75abf2efa8",
+  "correctedInputManifestSha256": "d7a61acbb452ba7d2034ce0aa612fc5a1b7a752ba347d15f8e8914be6a34044d",
+  "reviewDisposition": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_localized_thickness_review_disposition.md",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_localized_thickness_review_disposition.md",
+    "bytes": 6155,
+    "sha256": "18cea46903264f2da0185f4b7d37a44ca68499e0c89e42409f438718edcecf30"
+  },
+  "phaseCitationEvidence": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_localized_thickness_phase_source_evidence.json",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_localized_thickness_phase_source_evidence.json",
+    "bytes": 47975,
+    "sha256": "46fa6976b4a743e452c637f01fbcb9b9701203cbb76548deef3a32bc4fdf75ff"
+  },
+  "findings": {
+    "Claude S1": "ADOPTED_EXPLICIT_PHASE_EXPANSION",
+    "Claude S2": "ADOPTED_FULL_BASELINE_REBUILD_AND_ACTUAL_ADDRESS_OMISSION",
+    "Claude S3": "ADOPTED_COMPLETE_UNIT_RECORDS_PERSISTED_BEFORE_GUARD",
+    "Grok G1": "CITATION_DISPROVED_BY_OWN_CASE_PACKET_EVIDENCE_EXPLICIT_RUNTIME_PHASE_JOIN_ADOPTED"
+  },
+  "substantiveFindingsClosed": true,
+  "freshIndependentClearClaimed": false,
+  "reviewRerunOrPeerSharing": false,
+  "scientificStageAuthorized": false,
+  "scientificObjectsRestored": false,
+  "staticCorrectionChecks": {
+    "status": "PASS_SOURCE_AND_STDLIB_INSTRUMENT_CHECKS_NO_SCIENCE",
+    "unchangedHelperASTs": [
+      "require",
+      "digest",
+      "route",
+      "save",
+      "containment",
+      "SavedCodec",
+      "Journal",
+      "json_form",
+      "basis_polynomial",
+      "base_transform",
+      "profile_transform",
+      "amplitude_domain",
+      "certificate",
+      "numerical_matrix",
+      "norm",
+      "equation_probe",
+      "profile_probe",
+      "main"
+    ],
+    "phaseExpansionPresent": true,
+    "actualAddressReassemblyFixture": true,
+    "droppedBaselineContributionDetected": true,
+    "duplicateOmissionRefused": true,
+    "all125UnitFixtureRecordsReturned": true,
+    "unitFailureReturnAndJsonPersistBeforeGuard": true,
+    "scientificImportsOrRestorations": 0,
+    "workerSha256": "63c64817fdead81b9bf313497d45f2149437035e9ccd0fbd53848d75abf2efa8",
+    "inputManifestSha256": "d7a61acbb452ba7d2034ce0aa612fc5a1b7a752ba347d15f8e8914be6a34044d",
+    "launcherSha256": "ae7c7524d831f1540e741368701390c89e217731a0b6bd4b8f4c6a2dff5f693d",
+    "sourceInputs": 23
+  },
+  "reviewStderrDisposition": "Claude empty; Grok retained configuration warnings and one read_file tool error with completed literal report.",
+  "completionEventHandled": true,
+  "protectedBuilderSuffixSha256": "f01024512c9a028e7e524e5a95b5c455be42e125d10c36f94e20493109b013c2"
+}

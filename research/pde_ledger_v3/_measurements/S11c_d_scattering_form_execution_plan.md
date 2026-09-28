@@ -1,5 +1,32 @@
 # S11c-d: the remaining execution queue
 
+**Latest status — revised amendment independently cleared; plan ready for
+user go/no-go (2026-09-28):** both fresh round-2 reports literally return
+CLEAR FOR THIS PREPARATION AMENDMENT. The exact reviewed draft remains unchanged.
+The [disposition](S11c_d_channel_map_born_review_disposition.md) and
+[round-2 record](S11c_d_channel_map_born_review_r2_record.json) preserve both
+reports, source qualifications, the prior submission block and explicit export
+approval, packet/hash checks and the completed hook. The earlier round-1 verdicts
+below are historical, not the current amendment status.
+
+The requested [implementation plan](S11c_d_channel_map_born_implementation_plan.md)
+is now prepared: (a) bounded 2D channel map at saved 2:1 azimuth with fixed-momentum
+fallback, (b) actual reference face-drive test and classification feedback,
+(c) conditional open-thickness Born conversion for both incidence/output ends,
+(d) saved contrast/coefficient inspection before any proposed new anchor solves.
+Bulk availability and actual bulk power remain distinct; reference-zero drive
+is not a first-order no-radiation result. All claim-status qualifications travel
+with any handoff. No general certification or centre-mechanics campaign is queued.
+
+The plan is a proposal, not an independently reviewed implementation or launch
+gate. Its first map/face pilot measures cost; the later Born work is conditional.
+The proposed total ceiling is four ordinary 15-minute job envelopes including
+at most one necessary validator per science job, with no automatic retry or
+longer-runtime inheritance. No scientific job, implementation worker, new anchor
+solve or review submission has started. Stop for the user's go/no-go as requested.
+Scratch remains ignored; accepted artifacts, prior failures, historical review
+debts, Lean/S11_lean/shared guard and protected suffix remain intact.
+
 **Channel-map/Born preparation reviews complete; user decision pending
 (2026-09-28):** Claude literally returned **CLEAR FOR THIS PREPARATION
 AMENDMENT**; Grok returned **NEEDS REVISION** for two focused text clarifications.

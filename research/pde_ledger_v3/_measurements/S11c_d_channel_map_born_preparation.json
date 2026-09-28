@@ -1,5 +1,5 @@
 {
-  "status": "PREPARATION_REVIEWS_COMPLETE_NEEDS_REVISION_STOP_FOR_USER",
+  "status": "ROUND_2_AMENDMENT_CLEARED_IMPLEMENTATION_PLAN_READY_STOP_FOR_USER",
   "recordedUtc": "2026-09-28T19:47:17.189911+00:00",
   "reviewRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-d-channel-map-born-20260928/build-review",
   "packetSha256": "03e7c9c06c2ff5cc5a383f8a254b6b039f9bfb656ad223c95dca60def4438804",
@@ -131,5 +131,145 @@
     "implementationStarted": false,
     "automaticReviewerRerun": false,
     "next": "Return conditional map recommendation and two proposed text corrections; await user go/no-go. No science launch."
+  },
+  "round2": {
+    "reviewRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-d-channel-map-born-20260928/build-review-r2",
+    "authorization": {
+      "status": "EXPLICITLY_APPROVED_FIXED_PACKET",
+      "recordedUtc": "2026-09-28T20:25:36.794990+00:00",
+      "userInstruction": "Go. (1) Apply Grok's two corrections as written, then run the second review round on the revised amendment (fresh Claude + Grok), until clear. (2) After it clears, prepare the map implementation plan, in this order: (a) the 2D (omega, |k_parallel|) channel map, at the saved azimuth unless symmetry is shown; (b) test whether the reference transverse mode drives the slab faces at all; (c) Born leakage only where a thickness channel is open; (d) inspect the saved contrast-halving vectors before proposing any new anchor runs. Stop after the plan for my go/no-go. Don't launch anything.",
+      "authorizationContext": "User explicitly requested the second external review round on these two corrections with fresh Claude and Grok. Reuse the previously explicitly approved source packet; only revised amendment, identical fresh prompt, and index change. No prior reports or external commentary included. No science launch.",
+      "packetSha256": "cca8d6c1079c2f742884f0d3382038f4d037705b80492b489ca19defe285b2e2",
+      "archiveSha256": "dda8f00abf1f6abf79a68b3fbfdde33cdc35b86ee0747c78d8c0e3d7586827b5",
+      "reviewers": [
+        "claude",
+        "grok"
+      ],
+      "packetFiles": 17,
+      "packetBytes": 339141,
+      "currentThread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+      "scope": "This launch is one fresh sequential pair of independent document reviews. Both finish before adjudication/edits. No transport retries or peer sharing. Material revisions remain subject to the user-requested review-until-clear; optional wording does not trigger another cycle. After clearance prepare only the requested plan; stop before implementation/science.",
+      "priorReviewedBaselineCommit": "4e286fb0",
+      "priorPacketSha256": "03e7c9c06c2ff5cc5a383f8a254b6b039f9bfb656ad223c95dca60def4438804",
+      "changedPacketFiles": [
+        "packet-index.json",
+        "research/pde_ledger_v3/directives/S11c_d_CHANNEL_MAP_BORN_AMENDMENT_DRAFT.md",
+        "review-prompt.md"
+      ],
+      "externalSubmissionReview": {
+        "status": "REJECTED_BEFORE_PROCESS_START",
+        "recordedUtc": "2026-09-28T20:26:46.398516+00:00",
+        "reason": "This submits a packet containing potentially sensitive internal source files to external Claude and Grok services; the user authorized fresh reviews of the amendment but did not explicitly authorize exporting the packet's full contents to those destinations.",
+        "destinations": [
+          "Claude",
+          "Grok"
+        ],
+        "packetSent": false,
+        "reviewerProcessesStarted": false,
+        "scientificJobsUsed": 0,
+        "workaroundOrRetry": false,
+        "next": "Request explicit approval for this exact 17-file, 339141-byte packet and both external destinations. Preserve already requested amendment corrections; no review or science launch pending approval."
+      },
+      "explicitExternalPermission": {
+        "recordedUtc": "2026-09-28T20:31:37.341765+00:00",
+        "userReply": "I approve",
+        "questionApproved": "May I send the exact revised 17-file, 339,141-byte amendment/source packet to external Claude and Grok for the requested second review round? It includes the amendment, baseline assessment, source excerpts, Python sources, reports, directives and input/checkpoint JSON listed in the packet index. The sources match the previously approved packet; only the amendment, review prompt and index changed. No scientific job will run.",
+        "destinations": [
+          "Claude",
+          "Grok"
+        ],
+        "packetSha256": "cca8d6c1079c2f742884f0d3382038f4d037705b80492b489ca19defe285b2e2",
+        "archiveSha256": "dda8f00abf1f6abf79a68b3fbfdde33cdc35b86ee0747c78d8c0e3d7586827b5",
+        "packetFiles": 17,
+        "packetBytes": 339141,
+        "scope": "Submit the unchanged prepared round-2 packet once to each fresh reviewer. After substantive amendment clearance prepare the ordered implementation plan; stop before scientific execution or implementation launch."
+      }
+    },
+    "static": {
+      "status": "DOCUMENT_PACKET_ONLY_NO_SCIENCE",
+      "runnerSha256": "006aa4dcfce3922af3c4f575e8766ede0b1740b687e5023f72ba936805129777",
+      "launcherSha256": "d254678b5c6d15a156b2e84924f877672302633906594d7eb294ededa97dcfb8",
+      "completionMessageSha256": "60bd8eeeb858d09b9d8f3ba10166af822837f2d969f403220fc59fddc7bc6dad",
+      "syntaxPass": true,
+      "transportChanges": "Only runtime root changed from completed round-1 read-only sequential transport.",
+      "scientificCalls": 0,
+      "peerReportsIncluded": false,
+      "changedPacketFiles": [
+        "packet-index.json",
+        "research/pde_ledger_v3/directives/S11c_d_CHANNEL_MAP_BORN_AMENDMENT_DRAFT.md",
+        "review-prompt.md"
+      ],
+      "archiveContentsVerified": true
+    },
+    "priorBaselineCommit": "4e286fb0",
+    "scientificJobsAuthorized": 0,
+    "scientificJobsUsed": 0,
+    "implementationAuthorized": false,
+    "afterClearance": "Prepare requested plan and stop for user go/no-go.",
+    "submissionReview": {
+      "status": "REJECTED_BEFORE_PROCESS_START",
+      "recordedUtc": "2026-09-28T20:26:46.398516+00:00",
+      "reason": "This submits a packet containing potentially sensitive internal source files to external Claude and Grok services; the user authorized fresh reviews of the amendment but did not explicitly authorize exporting the packet's full contents to those destinations.",
+      "destinations": [
+        "Claude",
+        "Grok"
+      ],
+      "packetSent": false,
+      "reviewerProcessesStarted": false,
+      "scientificJobsUsed": 0,
+      "workaroundOrRetry": false,
+      "next": "Request explicit approval for this exact 17-file, 339141-byte packet and both external destinations. Preserve already requested amendment corrections; no review or science launch pending approval."
+    },
+    "explicitExportApprovalReceived": true,
+    "launch": {
+      "jobPid": 591358,
+      "watcherPid": 591359,
+      "packetSha256": "cca8d6c1079c2f742884f0d3382038f4d037705b80492b489ca19defe285b2e2",
+      "reviewers": [
+        "Claude",
+        "Grok"
+      ],
+      "concurrentReviewWorkers": 1,
+      "scienceCalls": 0,
+      "runnerSha256": "006aa4dcfce3922af3c4f575e8766ede0b1740b687e5023f72ba936805129777",
+      "launcherSha256": "d254678b5c6d15a156b2e84924f877672302633906594d7eb294ededa97dcfb8",
+      "startupRecordedUtc": "2026-09-28T20:32:32.065644+00:00",
+      "hookStartedUtc": "2026-09-28T20:31:49.420764+00:00",
+      "coordinatorStartedUtc": "2026-09-28T20:31:49.521931+00:00",
+      "claudeStartedUtc": "2026-09-28T20:31:49.533802+00:00",
+      "claudePid": 591362,
+      "claudeSessionId": "fd453a50-62c7-4e55-9593-cc90f94966d1",
+      "startupStderrBytes": {
+        "coordinator.stderr": 0,
+        "watcher.stderr": 0,
+        "claude.stderr": 0
+      },
+      "grokStatusAtStartup": "QUEUED_SEQUENTIALLY",
+      "literalReportContentInspected": false,
+      "sourceAndPacketHashesMatchAfterLaunch": true,
+      "hookArmedBeforeReview": true
+    },
+    "submissionReviewResolution": "Explicit exact-payload approval received; automatic approval accepted launch. Prior rejection retained.",
+    "completion": {
+      "recordedUtc": "2026-09-28T20:52:15.742884+00:00",
+      "literalVerdicts": {
+        "claude": "CLEAR FOR THIS PREPARATION AMENDMENT",
+        "grok": "CLEAR FOR THIS PREPARATION AMENDMENT"
+      },
+      "independentAmendmentClearance": true,
+      "scope": "Unchanged revised preparation amendment only",
+      "reviewRecord": "S11c_d_channel_map_born_review_r2_record.json",
+      "disposition": "S11c_d_channel_map_born_review_disposition.md",
+      "implementationPlan": "S11c_d_channel_map_born_implementation_plan.md",
+      "planStatus": "PROPOSAL_AWAITING_USER_GO_NO_GO",
+      "reviewedDraftChangedAfterReview": false,
+      "completionEventHandled": true,
+      "scientificJobsUsed": 0,
+      "scientificPayloadsRestored": 0,
+      "implementationStarted": false,
+      "next": "Stop for user decision on prepared plan; no job or external submission.",
+      "implementationPlanSha256": "522dad07dcbc7523e9cdfd03cadac7b70e6a821ad3a5c0e3cee3bd190b4a1a48",
+      "reviewRecordSha256": "5c36751d833d15eb2d6e92a94073562d1927f3d312636788d0934acf04f927d9"
+    }
   }
 }

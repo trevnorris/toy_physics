@@ -82,12 +82,17 @@ Do not insert a preselected scalar “coupling squared” formula or assume
 universal exponential suppression/nonzero sharp-step leakage. Width changes
 must remain within the retained smallness/regularity domain.
 
-Normalize with the actual incident and outgoing current forms. For bulk power,
-use the supported exterior solution/flux map, continuum measure and allowed
-quadratic terms; neither a slab-current deficit nor a decaying-mode norm is
-bulk escape. An unavailable radiating normalization stops that observable;
-it does not trigger the full construction automatically. Report a flux ratio
-or power coefficient, not a temporal decay rate without its additional map.
+Normalize with the actual incident and outgoing current forms. Bulk
+availability uses the radiation-selected acoustic depth root. Bulk power
+additionally requires the actual outgoing exterior solution driven by the
+same slab face state on both disconnected half-spaces, its signed far-field
+flux and measure, and the incident-current denominator. The restricted c1
+far-field check alone does not establish this map; absent the supported map,
+report availability only and leave bulk power pending. Neither a slab-current
+deficit nor a decaying-mode norm is bulk escape. An unavailable radiating
+normalization stops that observable; it does not trigger the full construction
+automatically. Report a flux ratio or power coefficient, not a temporal decay
+rate without its additional map.
 
 First compare with matching saved omega=1 coefficient/field operands under
 the same units, grades, profiles, regulator and boundary convention. Reuse
@@ -106,10 +111,11 @@ eta/sigma homotopy where the relevant nonzero signal is resolved. Reuse saved
 evaluations first. Existing coefficient-polynomial remainder checks are not
 automatically a Born/full comparison. Any new contrast points need a later
 bounded plan; do not repeat completed points. If no useful anchor exists,
-the proposed limited outcome is “leading order, premises checked, not anchored
-against the full solve,” with its specific missing comparison and reduced
-confidence. It does not discharge §2's reduced/full comparison or A11/A12
-acceptance. The amendment reviewers must assess this explicit scope exception;
+label the result “unanchored leading-order estimate” and report baseline-zero
+evidence, regular-domain checks, reduced/full comparison and open-domain flux
+validation separately, identifying what is established and what remains
+unestablished. This label does not discharge §2's comparison requirement or
+A11/A12. The amendment reviewers must assess this explicit scope exception;
 it is not an author-issued waiver or a reason to force a precision campaign.
 
 ## 4. Budget, review and stop

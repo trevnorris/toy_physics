@@ -1424,3 +1424,75 @@ its completed substantive report. The watcher finished and this event is handled
 After both reports, preserve and commit the exact reviewed canonical draft with
 its outstanding findings and preparation/review records. Scratch stays ignored;
 Lean/S11_lean/shared guard/protected suffix and all prior failures remain intact.
+
+## User requested round 2; exact revised packet prepared, submission blocked
+
+The user requested applying the two proposed corrections, fresh Claude/Grok
+amendment reviews until clear, then the specified implementation plan and a stop.
+Both corrections are applied: separate evidence statuses under “unanchored
+leading-order estimate,” and bulk availability separated from actual exterior
+solved-state/current/flux power. The reviewed first draft remains in `4e286fb0`.
+The unchanged source bundle plus revised draft/prompt/index is prepared in
+`_scratch/s11c/s11c-d-channel-map-born-20260928/build-review-r2` (17 files,
+339,141 bytes; packet SHA256
+`cca8d6c1079c2f742884f0d3382038f4d037705b80492b489ca19defe285b2e2`).
+
+Automatic approval review rejected the external submission before process start:
+it requires explicit approval to export this packet's full internal contents to
+Claude and Grok. No reviewer or watcher launched; no packet was sent; no retry
+or workaround. The preparation record preserves the reason and pending explicit
+payload/destination request. Source/excerpt/archive/static checks passed; no
+scientific payload was restored or computation run. Shared guard and protected
+builder suffix hashes match. Scratch remains ignored and uncommitted.
+
+After approved submission and substantive amendment clearance, prepare only the
+requested plan: bounded (omega, |k_parallel|) map at saved 2:1 azimuth, reference
+transverse face drive (without assuming all first-order drive vanishes), Born
+end conversion where thickness channels are open, and reuse of saved contrast
+vectors before any new anchor proposal. Do not launch science/implementation.
+Do not commit this revised physics draft until both round-2 reports finish.
+
+## Exact round-2 export approved; fresh reviews launched
+
+The user replied “I approve” to the exact 17-file/339,141-byte packet and both
+external destinations. That permission is pinned in the runtime authorization
+and canonical preparation record; the earlier rejection remains preserved.
+Automatic approval accepted launch without changing the packet. Coordinator
+PID 591358 and watcher PID 591359 started. The hook armed before the fresh
+Claude session; Grok follows sequentially. Packet/archive/source hashes match;
+startup metadata and stderr sizes are recorded. No report content was inspected.
+
+Wait silently for the existing local hook. After both reports, adjudicate the
+actual revised amendment; no peer sharing or optional-wording review cycle.
+After substantive clearance, prepare the requested ordered implementation plan
+and stop for user go/no-go. No scientific job, implementation launch or new
+anchor run is authorized. Scratch stays uncommitted; commit the revised physics
+baseline only after both reports. Preserve all earlier results and failures.
+
+## Round-2 amendment clear; requested plan prepared; user-decision stop
+
+Both fresh reviewers returned CLEAR FOR THIS PREPARATION AMENDMENT on the
+unchanged revised draft. Claude: 273.894 s, empty stderr. Grok: 571.309 s,
+complete end_turn report; 1,745-byte stderr preserves environment warnings and
+one unidentified read_file error. No claim that every read succeeded. Both
+reports finished before adjudication. All packet/archive/source/excerpt/helper,
+authorization and report hashes match; 16 selected saved scientific artifacts
+were byte/hash-checked without restoration. The local watcher is finished and
+this event is handled. The round-2 canonical record contains literal reports;
+the disposition preserves source limitations and reviewer qualifications.
+
+The requested implementation plan now exists in
+`S11c_d_channel_map_born_implementation_plan.md`. It keeps the user's order:
+map at saved azimuth, actual reference face-drive test, conditional open-thickness
+Born conversion, saved contrast/coefficient reuse before any new anchor proposal.
+It includes branch-binding checks, both incident/output ends, separated bulk
+availability/power, and the limitation of zero reference drive. A uniform mode's
+own normal momentum must be retained before labeling it leaky; the edge-continuum
+threshold alone is insufficient. No centre project or broad proof campaign.
+
+The finite domain/grid and compute ceilings are proposed work bounds, not new
+results or execution authority. Planning cost is explicitly uncertain. No
+implementation or scientific job has run. Stop now for the user's go/no-go;
+future workers retain independent build review and ordinary shared containment.
+Preserve the exact reviewed draft and canonical records outside scratch; no
+scratch commit or historical acceptance rewrite. Guard/protected suffix intact.

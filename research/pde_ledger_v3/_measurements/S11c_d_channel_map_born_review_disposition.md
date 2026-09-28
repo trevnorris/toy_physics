@@ -145,3 +145,71 @@ intact. Lean/S11_lean, shared guard and protected suffix are unchanged. Commit
 canonical preparation/review records after these two reports; scratch remains
 runtime-only. No scientific payload was restored and nothing is running for
 this preparation task.
+
+## Round 2 — independently cleared; implementation plan only (2026-09-28)
+
+Both fresh reports literally return **CLEAR FOR THIS PREPARATION AMENDMENT**.
+The [round-2 record](S11c_d_channel_map_born_review_r2_record.json) preserves both
+complete texts, actual run receipts, stderr and verified packet/source hashes.
+The reviewed draft SHA256 is
+`8aa6fc7ab6d43f1f197a3cb8f9a83b7607f1de2c7a321aa130b582f4a323082d`;
+no post-review edits were made. Round 1 and its outstanding-at-that-time
+verdicts remain historical facts, not overwritten clearance.
+
+The two requested corrections now have independent review: the unanchored label
+carries separate premise statuses, and bulk power requires the actual outgoing
+exterior solved-state/flux map. Neither reviewer identifies a remaining
+amendment change needed before preparing the plan. Optional tightening is carried
+into the [proposed plan](S11c_d_channel_map_born_implementation_plan.md), rather
+than editing the reviewed amendment or starting another wording cycle.
+
+Concrete plan dispositions:
+
+- Retain the original symbolic end-zero evidence and its endpoint/model/domain
+  limits. Both reviewers read the pilot result as symbolic in frequency and
+  tangential momenta. The later twelve-background inventory supports all-case
+  baseline evidence, not shared modes/currents; this pilot stays one case.
+  Claude notes the other-case producer was not in the packet. No new algebraic
+  proof or expanded response coverage is inferred from either review.
+- Use the original live symbols at the saved azimuth; explicitly inspect branch
+  bindings and origin handling for a hidden fixed-momentum substitution. Physical
+  full-pencil/current classification is the main unmeasured cost. No global
+  domain theorem is a prerequisite for an honestly labeled sampled map.
+- Carry both incident ends and both outgoing ends into the conditional Born
+  deliverable. The unanchored label and each evidence status must travel with
+  any coefficient handoff. No optional amendment wording cycle is needed.
+- Keep reference face drive distinct from first-order drive and end conversion
+  distinct from bulk power. Qualify Claude F7(2): the edge-continuum availability
+  threshold alone does not establish leakage of a particular uniform mode.
+  Its own normal momentum remains in the saved acoustic relation (see
+  `S11c_d_continuum_currents.py:189`, `depthSquared`/`normalMomentum` records).
+  The plan therefore checks that mode's own root and supported exterior drive
+  before leaky classification. The amendment already distinguishes those domains.
+- Grok's face/centre qualification is a retained limitation on unsupported bulk
+  power. The actual saved identifications lack an independent centre velocity;
+  the A9 report does not establish centre elimination. No new centre-mechanics
+  project follows. Bulk power remains pending without the required map.
+- Claude suggests a matched coefficient-level anchor; Grok emphasizes that the
+  saved closed point is not an open-leakage anchor. These are compatible when
+  their scopes stay separate. Arithmetic residuals are not physical error
+  bounds; Claude's suggested coefficient size/precision and extrapolation are
+  not newly measured outcomes. The plan first inspects the actual saved
+  thickness components and baseline floor, without presupposing their values.
+  Existing full-vector halving ratios are not a Born/full comparison. No new
+  contrast or open-point solve is proposed before saved-data inspection.
+
+Transport verification: Claude finished in 273.894 s with empty stderr; Grok
+finished in 571.309 s. Its 1,745-byte stderr includes plugin/settings/hook warnings
+and one `read_file` error without an identified target. The complete substantive
+`end_turn` report addresses the supplied amendment and sources; retain that
+error, do not assert every read succeeded, and do not rerun the review. Both
+reports finished before adjudication. All 17 packet files/339,141 bytes, archive,
+source/excerpt/helper/prompt/authorization/report hashes match. Sixteen selected
+saved scientific artifacts and their checkpoint checks also match by bytes/hash;
+no scientific payload was restored. Guard and protected builder suffix match.
+
+**Decision:** the exact revised preparation amendment has its two independent
+clear reports. The requested bounded implementation plan is prepared and remains
+a proposal for user go/no-go, not a reviewed worker or execution authority.
+No science, new implementation, new review submission or historical repaired-build
+clearance follows. Stop here as requested.

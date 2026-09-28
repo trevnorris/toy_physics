@@ -1496,3 +1496,95 @@ implementation or scientific job has run. Stop now for the user's go/no-go;
 future workers retain independent build review and ordinary shared containment.
 Preserve the exact reviewed draft and canonical records outside scratch; no
 scratch commit or historical acceptance rewrite. Guard/protected suffix intact.
+
+## User go for map/face with additions; worker prepared, exact export blocked
+
+The user approved only (a) map and (b) reference face-drive results, with three
+additions: exact threshold loci where tractable as primary output, an explicit
+physical-light-regime qualification, and the plan in the first fresh Claude/Grok
+build review. Born remains unauthorized until a new go/no-go after these results.
+The amended plan retains the finite window/grid/case, uses candidate/physical
+locus distinctions, and caps this goal at one ordinary map/face worker plus at
+most one needed saved-output validator. No inherited unlimited runtime.
+
+The new map/face worker and manifest are prepared, with source/checkpoint hash
+joins and AST syntax checked only. All three relocated symbolic pairing packets
+match their accepted hashes. Original frequency packets retain the pre-binding
+symbolic operands. The worker uses saved currents/face maps without producers,
+exact generic/specialized elimination witnesses, finite root/current checks and
+actual native-term controls. Whether the resulting candidate loci sufficiently
+answer the threshold question is explicitly in independent review scope. No
+scientific payload was restored; no physical result is claimed.
+
+Review packet: `_scratch/s11c/s11c-d-channel-map-face-20260928/build-review`,
+20 files / 423,019 bytes, SHA256
+`6293fc90a880651ee94ed84a244de73449b7375c404159ba56dd83c68dcf1a99`.
+It includes the actual amended plan, script, manifest, source excerpts and
+necessary existing directives/reports; no scientific pickles, peer reports or
+external commentary. Hook-first transport is prepared for this session.
+Automatic approval review rejected export before any process started, requiring
+explicit permission for this exact packet's full contents to external Claude
+and Grok. The refusal is saved; no packet sent, reviewer/hook launched, retry or
+workaround. Ask exact payload/destination permission. No launch gate exists.
+
+After approved submission both reports must finish before adjudication/edits;
+actual substantive independent build clearance is necessary before the approved
+single guarded map/face run. A real expanded-method blocker returns to the user.
+Keep prior artifacts/failures, Lean/S11_lean/shared guard and protected suffix.
+Scratch is ignored. Revised plan/worker stay uncommitted until both build reports.
+
+## Exact map/face export approved; initial build reviews running
+
+After the exact-payload permission question, the user replied “I approve.”
+Approval covers the unchanged 20-file / 423,019-byte packet SHA256
+`6293fc90a880651ee94ed84a244de73449b7375c404159ba56dd83c68dcf1a99`
+to external Claude and Grok for this one fresh pair. The prior auto-review
+rejection remains in the runtime and canonical preparation record. No workaround.
+All packet/archive/source/helper hashes verified before launch. The canonical
+worker/plan/manifest/authorization and exact reviewed packet remain unchanged.
+
+The completion hook armed before reviewer execution. Transport began at
+21:29:50 UTC, coordinator PID 683754, watcher PID 683755; fresh Claude session
+`820ca3a6-8416-480a-b5d0-3394e7bafeef` started, Grok queued sequentially.
+Host startup inspection verified all three current processes alive and empty
+coordinator/watcher stderr. Initial sandbox PID invisibility was resolved by
+host inspection, not a relaunch. No scientific worker or payload restoration.
+Both reports must finish before edits/adjudication; wait via the local hook,
+not model polling. Goal remains map/face only, then user go/no-go before Born.
+Substantive independent build clearance and a fresh pinned guard gate remain
+necessary before the already authorized bounded science job. Keep this build
+uncommitted until both reports; scratch stays ignored.
+
+## Map/face build review completion: both NEEDS REVISION; no science
+
+Both reports are complete: Claude finished 21:37:15 UTC (445.106 s), Grok
+21:53:49 UTC (993.710 s). Both literal verdicts are NEEDS REVISION. Claude stderr
+is empty; Grok retains 2,059 bytes of configuration warnings and two unidentified
+read_file errors. The watcher finished; this completion event is handled. All
+20 packet files / 423,019 bytes, archive, source/helper and 22 input hashes plus
+checkpoint joins match. No scientific payload was restored or new science run.
+
+Canonical full reports/receipts/evidence:
+`S11c_d_channel_map_face_review_record.json`; finding dispositions and bounded
+repair options: `S11c_d_channel_map_face_review_disposition.md`. The exact reviewed
+worker/plan/manifest have not been repaired. Preserve/commit that baseline before
+any later correction; scratch never enters git.
+
+Confirmed blockers: real-only census does not cover damped/complex spatial
+branches; unresolved incidence can become false; candidate loci are not checked
+at crossings; generic elimination can prevent useful grid/fallback output;
+branch/liveness/mutation and promised face-map joins need work. Source evidence
+qualifies two allegations: actual pairing producer saves the expected wrapper,
+and accepted uniform/frequency/pairing producers bind endpoints before saving.
+Do not make the proposed erroneous loader change or rerun those producers.
+Non-rational ray values alone do not prove non-rational polynomial coefficients;
+use a bounded rational-v remedy rather than assert an observed crash.
+
+Current result: NO_GO for this build. Budget remains one ordinary map/face job
+plus at most one necessary saved-output validator, both unused. Return the
+specific damped/leaky coverage gap and bounded repair choices, without inventing
+physical thickness cutoffs or a new method campaign. A repaired build needs
+independent review of its actual packet; no automatic external resubmission.
+No new science/physical inputs, Born, anchors or accepted-job replay. Review
+completion does not clear the amendment's remaining physics obligations.
+Lean/S11_lean/shared guard, prior failures/incidents and protected suffix intact.

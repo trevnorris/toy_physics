@@ -1,5 +1,65 @@
 # S11c-d: the remaining execution queue
 
+**Latest status — map/face build reviews complete; substantive no-go
+(2026-09-28):** both literal verdicts are **NEEDS REVISION**. No science has run;
+the one map/face job and optional saved-output validator remain unused. The
+[disposition](S11c_d_channel_map_face_review_disposition.md) and
+[complete review record](S11c_d_channel_map_face_review_record.json) preserve
+both reports, source-qualified findings and verified packet/input hashes.
+Claude stderr is empty; Grok's complete report has configuration warnings and
+two read-file errors. Both reports finished before disposition. No fresh CLEAR,
+source repair, reviewer rerun or science gate is claimed.
+
+The code omits complex spatial candidates, can collapse unresolved incident
+classification to false, never tests candidate threshold crossings, and makes
+the grid depend on potentially expensive generic elimination. Branch/control
+coverage and promised c2 face-map joins also need correction. The loader wrapper
+is supported by the actual saved-packet producer; endpoint values are already
+bound by the accepted producers. Do not fix those by inventing a different
+packet schema or replaying producers. Rational-grid coefficients need explicit
+coverage; the review's predicted crash was not measured.
+
+Return the specific damped/leaky-coverage limitation and bounded repair options
+before expanding the method. Prioritize useful bulk/transverse/face evidence;
+unsupported thickness branches must remain unresolved, never a no-leakage claim.
+Keep damping and the ordinary compute cap. No lossless comparison, complex-pole
+campaign, full radiating-current method, Born or new anchor is authorized.
+The exact worker/plan/manifest are preserved as the reviewed, rejected baseline;
+any repaired build needs its own independent review and exact-packet submission
+authorization. Runtime scratch remains ignored and never committed.
+
+
+**Latest status — exact map/face packet approved; first build reviews running
+(2026-09-28):** the user narrowed the next goal to
+(a) map and (b) reference face-drive results, then a mandatory go/no-go before
+Born. The implementation plan now prioritizes exact threshold loci where
+tractable, retains the grid as cross-check/region evidence, explicitly leaves
+physical-light calibration unestablished, and is included in the first build
+review alongside the actual worker and inputs. One LAB_HELD/RHO4_CONSTANT case
+at the saved 2:1 azimuth only. The active ceiling is one 900s map/face job plus
+at most one necessary 900s saved-output validator, with native limits unchanged.
+
+The new `S11c_d_channel_map_face.py` uses saved original symbolic frequency and
+pairing inputs, current/unit context and face identities. Source-only preparation
+verified their hashes and AST syntax; no scientific library, payload restoration
+or job ran. The rejected earlier feasibility instrument stays unchanged/parked.
+Both fresh reviewers are asked to assess whether candidate loci and classifications
+suffice or need a concrete correction; no physical partition is assumed.
+
+The fixed review packet contains 20 files / 423,019 bytes, SHA256
+`6293fc90a880651ee94ed84a244de73449b7375c404159ba56dd83c68dcf1a99`.
+The earlier automatic export rejection is preserved. The user then explicitly
+approved this exact packet and its external Claude/Grok destinations with
+“I approve.” All packet/archive/source/helper hashes matched before submission.
+The hook-first transport started at 21:29:50 UTC; host startup inspection verified
+the coordinator, completion watcher and fresh Claude alive, with Grok queued
+sequentially. No peer sharing, review retry or science launch. Details are in
+`S11c_d_channel_map_face_preparation.json`. No science gate exists.
+Wait silently for the existing local event hook, then read both reports before
+edits/adjudication. No science before substantive independent build clearance;
+no Born under this goal. The revised plan/worker stay uncommitted until both
+reports, with the exact reviewed baseline preserved before any repair.
+
 **Latest status — revised amendment independently cleared; plan ready for
 user go/no-go (2026-09-28):** both fresh round-2 reports literally return
 CLEAR FOR THIS PREPARATION AMENDMENT. The exact reviewed draft remains unchanged.

@@ -1,6 +1,9 @@
 # Channel map and conditional Born: proposed implementation plan
 
-2026-09-28. **Prepared for user go/no-go; nothing has been implemented or run.**
+2026-09-28. **User approved only (a) map and (b) face-drive implementation, with
+the three additions below. Stop after their results for go/no-go before Born.**
+The plan itself must accompany the first fresh Claude/Grok build-review packet;
+amendment clearance did not review its window/grid/case choices.
 Both fresh round-2 reviewers returned CLEAR FOR THIS PREPARATION AMENDMENT on
 the unchanged [amendment](../directives/S11c_d_CHANNEL_MAP_BORN_AMENDMENT_DRAFT.md).
 Their [literal reports and receipts](S11c_d_channel_map_born_review_r2_record.json)
@@ -13,7 +16,7 @@ It asks where channels are available, then attempts weak end conversion where
 supported. Bulk availability and bulk power remain separate. No full FORM,
 four-case response, centre project or A11/A12 completion is promised.
 
-## (a) Map at the saved azimuth
+## (a) Threshold loci and channel map at the saved azimuth
 
 Use the original accepted `uniform-source.pickle`/strong symbols with frequency
 and both tangential components live. The compact frequency-live pencils froze
@@ -21,6 +24,21 @@ tangential momentum and are only the fixed-momentum fallback. Parameterize
 `(k1,k2) = (2*kappa/sqrt(5), kappa/sqrt(5))`, where `kappa = |k_parallel|`, with
 actual source units. This is the saved 2:1 direction, not all azimuths. No new
 symmetry campaign is required.
+
+**Primary output is the threshold loci where tractable**, beginning with the
+bulk acoustic boundary and the thickness cutoff candidates of both end pencils.
+Derive from actual dispersion/branch operands. Include zero-normal cutoffs,
+finite-normal collisions, branch endpoints, denominator/chart boundaries and
+parameter-specialization exceptions needed for the claimed coverage. With
+physical damping, a cleared-polynomial discriminant alone is not a physical
+opening curve. Preserve real/imaginary constraints and test the original pencil,
+selected sheet and current; label candidate/unresolved loci honestly.
+
+Use the grid to label supported regions and cross-check curves, not to define
+their topology by interpolation. Where exact loci or a complete region partition
+are not tractable within the budget, retain that limitation and sampled claims.
+Do not infer that a thin channel region is absent because grid points missed it.
+A general algebraic-decomposition or certification campaign is not required.
 
 Proposed window in the saved `L_ref,T_ref,M_ref` coefficient frame:
 **0.1 ≤ omega ≤ 4; 0 ≤ kappa ≤ 0.4**. It includes the saved frequency-one point
@@ -62,6 +80,14 @@ physical-current classifier needs a new unsupported method, preserve the
 candidate/availability evidence and return that blocker instead of calling it
 a completed physical-channel map.
 
+**Meaning of “light”:** the governing d directive calls the uniform transverse
+sector “light.” The selected sources do not establish a numerical calibration
+of the physically relevant analog-light band inside this reference-unit window,
+nor that the whole window lies well below internal scales. Report that mapping
+as **not established**. Channel/threshold labels and any ratios available from
+the actual saved dispersion remain separate from an assumed physical-light band.
+All conclusions explicitly concern LAB_HELD/RHO4_CONSTANT at this azimuth.
+
 ## (b) Test actual reference transverse face drive
 
 In the map consumer, join reference modes to the saved c2 `REFERENCE_TRACE_MAP`,
@@ -84,9 +110,10 @@ channel must agree with the full-pencil/current classification, or be labeled
 leaky/unresolved. This finalizes a provisional map; it is not a new radiation
 method or a complete bulk-power calculation.
 
-## (c) Born end conversion only on supported open-thickness points
+## (c) Deferred: Born end conversion after a separate user go
 
-If (a)/(b) supply regular flux-carrying channels, use **at most two** open-thickness
+This part is NOT authorized by the latest user go. If later approved and
+(a)/(b) supply regular flux-carrying channels, use **at most two** open-thickness
 parameter pairs, selected by reported threshold/gap/current margins rather than
 a desired nonzero answer. Include all incoming transverse polarizations from
 **both incident ends** and reflected/transmitted thickness-like channels at
@@ -112,7 +139,7 @@ half-spaces from the same solved face state, signed far-field flux, measure and
 incident denominator. The restricted c1 identity and slab-current deficit do
 not supply it. No full radiating solve follows automatically if Born fails.
 
-## (d) Inspect saved contrast vectors before proposing new anchor runs
+## (d) Deferred anchor reuse; no new anchor proposal
 
 For this preparation, **16 selected saved artifacts and their checkpoint checks
 were hash-verified; no scientific payload was restored**. Exact routes/hashes
@@ -141,7 +168,7 @@ separately priced proposal after this inspection.
 
 ## Proposed budget and stopping point
 
-**Recommend go for the map/face implementation, with Born conditional.** Each
+**Authorized goal is map/face results, then a mandatory user-decision stop.** Each
 new instrument retains applicable independent build review before execution;
 amendment review does not pay that gate. No implementation review is submitted.
 
@@ -150,10 +177,12 @@ face test; **another 1–3 days** for supported Born/saved-anchor work. Confiden
 is low until the first pilot measures cost and current-domain support. A concrete
 method blocker stops the pilot rather than expanding that estimate indefinitely.
 
-Later proposed compute ceiling: one map/face job, one conditional Born/saved-anchor
-job, and at most one saved-output validator per completed job if needed —
-**four ordinary 15-minute job envelopes maximum**, not a completion guarantee.
-Review elapsed time is separate. No retry or deadline extension is included.
+The current goal uses **one ordinary map/face job and at most one necessary
+saved-output validator: two 15-minute envelopes maximum**. The earlier four-job
+whole-route ceiling is not authorization for Born. Review elapsed time is
+separate. No failure retry, deadline extension or new anchor run is included.
+After these results, return the threshold/availability answer, face-drive scope,
+light-band qualification, actual cost and remaining blocker, then STOP.
 
 Use the unchanged shared guard around the normalization supervisor: 900 s outer,
 840 s native, 2 GiB, zero swap, one CPU, nice15, 32 tasks, one native thread;
@@ -163,4 +192,6 @@ general certification or optional-review campaign. Scratch stays uncommitted;
 canonical sources/reports live outside it. Lean/S11_lean/shared guard, protected
 suffix and incident/failure history remain untouched.
 
-**Stop here for user go/no-go. No worker or scientific job has been launched.**
+**Current preparation: no scientific job has launched. Build review includes
+this plan and the actual instrument. The next user-decision stop is after the
+map/face results; no Born work is authorized.**

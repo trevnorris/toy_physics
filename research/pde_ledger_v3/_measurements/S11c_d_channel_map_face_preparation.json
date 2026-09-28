@@ -1,0 +1,138 @@
+{
+  "status": "BUILD_REVIEWS_COMPLETE_NEEDS_REVISION_NO_SCIENCE",
+  "recordedUtc": "2026-09-28T21:22:45.888667+00:00",
+  "reviewRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-d-channel-map-face-20260928/build-review",
+  "packetSha256": "6293fc90a880651ee94ed84a244de73449b7375c404159ba56dd83c68dcf1a99",
+  "archiveSha256": "25955efb041f7d566d6d600cb8798c33467c9d428ba48f93c9adf64991c4e646",
+  "packetFiles": 20,
+  "packetBytes": 423019,
+  "authorization": {
+    "status": "EXPLICITLY_APPROVED_FIXED_PACKET",
+    "recordedUtc": "2026-09-28T21:22:45.888667+00:00",
+    "userInstruction": "Go for (a) the map and (b) the face-drive test, with exact threshold loci where tractable as primary output, explicit physical-light-regime qualification, and the plan in the first fresh Claude/Grok build review. Stop after map + face-drive results for user go/no-go before any Born work.",
+    "authorizationContext": "User explicitly requested the plan in the first build-review packet with fresh Claude and Grok, and approved the map/face goal. This is that one initial pair; no prior peer reports or external commentary included.",
+    "packetSha256": "6293fc90a880651ee94ed84a244de73449b7375c404159ba56dd83c68dcf1a99",
+    "archiveSha256": "25955efb041f7d566d6d600cb8798c33467c9d428ba48f93c9adf64991c4e646",
+    "packetFiles": 20,
+    "packetBytes": 423019,
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "currentThread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+    "scope": "One fresh independent build/plan pair, both reports before edits/adjudication. No science launch by this transport. A later single guarded map/face run requires substantive clearance and pinned gate; stop after results before Born.",
+    "externalSubmissionReview": {
+      "status": "REJECTED_BEFORE_PROCESS_START",
+      "recordedUtc": "2026-09-28T21:24:35.298212+00:00",
+      "reason": "This exports a 20-file packet containing internal scripts, directives, reports, and manifests to external Claude and Grok; the user authorized a build review and inclusion of the plan but did not explicitly authorize exporting this exact full payload to those destinations.",
+      "packetSha256": "6293fc90a880651ee94ed84a244de73449b7375c404159ba56dd83c68dcf1a99",
+      "packetFiles": 20,
+      "packetBytes": 423019,
+      "destinations": [
+        "Claude",
+        "Grok"
+      ],
+      "packetSent": false,
+      "reviewerOrWatcherLaunched": false,
+      "scientificJobsStarted": 0,
+      "workaroundOrRetry": false,
+      "next": "Request explicit approval to send the exact prepared packet to both named external reviewers."
+    },
+    "exactPayloadConsent": {
+      "recordedUtc": "2026-09-28T21:29:38.210137+00:00",
+      "question": "May I send this exact 20-file, 423,019-byte review packet to external Claude and Grok for one fresh build-review pair? It contains the worker script, revised plan, input manifest, authorization, directives, reports and source excerpts; no scientific pickles or prior reviewer reports.",
+      "packetIndex": "/var/projects/toy_physics/_scratch/s11c/s11c-d-channel-map-face-20260928/build-review/packet/packet-index.json",
+      "packetSha256": "6293fc90a880651ee94ed84a244de73449b7375c404159ba56dd83c68dcf1a99",
+      "userReply": "I approve",
+      "destinations": [
+        "Claude",
+        "Grok"
+      ],
+      "resolves": "submission-blocked.json exact external payload consent requirement",
+      "reviewAttemptsAlreadyStarted": 0,
+      "noAutomaticRetry": true
+    }
+  },
+  "static": {
+    "status": "READ_ONLY_BUILD_REVIEW_PACKET_NO_SCIENCE",
+    "runnerSha256": "ae031c2b395ae512fb6a81dfd3f95f22807b7c59140137b5ba6ea185c5dffc02",
+    "launcherSha256": "ac7de71fb53824b46a81f3515f6de4b342bd91c6438c508a2270942a81f0fb56",
+    "completionMessageSha256": "d2a0d28dee2635264e882ed19ea11d579fe12294ece64336688235584600ae43",
+    "syntaxPass": true,
+    "workerAstSyntaxPass": true,
+    "workerNotImportedOrExecuted": true,
+    "sourceOnlyPreparation": true,
+    "transportChanges": "Only task-root path changed from completed read-only sequential transport.",
+    "peerReportsIncluded": false,
+    "planIncluded": true,
+    "scienceCalls": 0,
+    "archiveContentsVerified": true
+  },
+  "scientificJobsUsed": 0,
+  "scientificPayloadsRestored": 0,
+  "implementationCandidate": "S11c_d_channel_map_face.py",
+  "next": "Preserve the reviewed baseline. Return the damped/leaky coverage gap and bounded repair scope; no launch or automatic review resubmission. A repaired build requires its own independent clearance and exact-packet submission authorization.",
+  "submissionReview": {
+    "status": "REJECTED_BEFORE_PROCESS_START",
+    "recordedUtc": "2026-09-28T21:24:35.298212+00:00",
+    "reason": "This exports a 20-file packet containing internal scripts, directives, reports, and manifests to external Claude and Grok; the user authorized a build review and inclusion of the plan but did not explicitly authorize exporting this exact full payload to those destinations.",
+    "packetSha256": "6293fc90a880651ee94ed84a244de73449b7375c404159ba56dd83c68dcf1a99",
+    "packetFiles": 20,
+    "packetBytes": 423019,
+    "destinations": [
+      "Claude",
+      "Grok"
+    ],
+    "packetSent": false,
+    "reviewerOrWatcherLaunched": false,
+    "scientificJobsStarted": 0,
+    "workaroundOrRetry": false,
+    "next": "Request explicit approval to send the exact prepared packet to both named external reviewers."
+  },
+  "updatedUtc": "2026-09-28T22:00:46.863956+00:00",
+  "launch": {
+    "jobPid": 683754,
+    "watcherPid": 683755,
+    "packetSha256": "6293fc90a880651ee94ed84a244de73449b7375c404159ba56dd83c68dcf1a99",
+    "reviewers": [
+      "Claude",
+      "Grok"
+    ],
+    "concurrentReviewWorkers": 1,
+    "scienceCalls": 0,
+    "runnerSha256": "ae031c2b395ae512fb6a81dfd3f95f22807b7c59140137b5ba6ea185c5dffc02",
+    "launcherSha256": "ac7de71fb53824b46a81f3515f6de4b342bd91c6438c508a2270942a81f0fb56"
+  },
+  "startupInspection": {
+    "inspectionContext": "host process namespace",
+    "processes": {
+      "coordinator": {
+        "pid": 683754,
+        "alive": true,
+        "procState": "S"
+      },
+      "watcher": {
+        "pid": 683755,
+        "alive": true,
+        "procState": "S"
+      },
+      "claude": {
+        "pid": 683757,
+        "alive": true,
+        "procState": "S"
+      }
+    },
+    "watcherStatus": "waiting",
+    "coordinatorOutcomeExists": false,
+    "issuesLogExists": false
+  },
+  "reviewStartedUtc": "2026-09-28T21:29:50.167733+00:00",
+  "startupNamespaceNote": "An initial sandbox PID lookup could not see host processes. Separate host startup inspection verified coordinator, watcher and Claude alive; Grok queued. This is not a process failure or retry.",
+  "literalVerdicts": {
+    "claude": "NEEDS REVISION",
+    "grok": "NEEDS REVISION"
+  },
+  "reviewRecord": "S11c_d_channel_map_face_review_record.json",
+  "disposition": "S11c_d_channel_map_face_review_disposition.md",
+  "independentBuildClearance": false
+}

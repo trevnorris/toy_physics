@@ -1,0 +1,24 @@
+{
+  "status": "USER_APPROVED_MAP_FACE_GOAL_PENDING_BUILD_CLEARANCE",
+  "userInstruction": "Go for (a) the map and (b) the face-drive test, with exact threshold loci where tractable as primary output, explicit physical-light-regime qualification, and the plan in the first fresh Claude/Grok build review. Stop after map + face-drive results for user go/no-go before any Born work.",
+  "currentThread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+  "scientificJobsStarted": 0,
+  "compute": {
+    "constructorJobs": 1,
+    "necessarySavedOutputValidators": 1,
+    "secondsPerJob": 900,
+    "nativeSeconds": 840,
+    "memoryBytes": 2147483648,
+    "swapBytes": 0,
+    "cpus": 1,
+    "nice": 15,
+    "tasks": 32,
+    "nativeThreads": 1,
+    "automaticRetry": false,
+    "bornAuthorized": false
+  },
+  "independentBuildReviewRequired": true,
+  "inputsSha256": "63d7ec7ea9c379b80416a2f9562e32b00288f3edf07e649e3a26b8a5f6d6223e",
+  "workerSha256": "850ee22afebecb12f84ebc820796c6df4f503e336cada86089db715904980bb4",
+  "scopePlanSha256": "3740d4bd1204c852f095ec0d57f7a4ecebaeafc3029b6daa72837ca1cf221440"
+}

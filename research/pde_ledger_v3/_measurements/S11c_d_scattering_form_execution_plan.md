@@ -1,5 +1,13 @@
 # S11c-d: the remaining execution queue
 
+**Corrected job-2 reader prepared for fresh review:** bounded container/rendering,
+selected-row, supplied historical metadata and final-publication fixes are saved.
+Codec, all existing input pins, restore selection and ordinary limits are unchanged.
+Both original NEEDS REVISION reports remain at `fcfbc9a2`; no author clearance.
+Fresh packet: 37 files / 3,101,999 bytes, SHA-256
+`2ef5f7e88cc2527c68098bb6613ad1982ba6b59cc208fbd6742ff768af4491ad`.
+Exact external submission approval is pending. No job-2 science or retry launched.
+
 **Job 2 first build review — both NEEDS REVISION (2026-09-29):** literal
 reports and exact reviewed bytes are preserved. Static opcode metadata confirms
 sets in selected saved objects, requiring a reader rendering fix; no scientific

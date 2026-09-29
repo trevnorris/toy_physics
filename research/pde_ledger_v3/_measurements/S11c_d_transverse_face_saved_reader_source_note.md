@@ -22,7 +22,7 @@ files. It also pins all 33 original job-1 input routes to verify unchanged
 provenance; only the ten source objects actually restored by job 1 are selected
 for restoration and comparison with the saved complete returns. The original
 reviewed producer is schema/source provenance only and is never imported.
-There are 166 input records and 38 explicitly selected restorable keys; duplicate
+There are 168 input records and 38 explicitly selected restorable keys; duplicate
 routes are intentional when the old response is also job 1's unit context.
 
 Job 1's operations use `operands` (a list of immutable object routes), optional
@@ -36,7 +36,7 @@ joins. Missing `value` remains missing; no intermediate binding or grade result
 is inferred from a traceback or a source operand.
 
 The branch inventory joins the actual saved reduction state, branch operation
-input and complete return. It compares saved equation right sides with their
+input and complete return, and requires the recorded three-equation census. It compares saved equation right sides with their
 saved map entries structurally, reports the supplied residual entries/zero flags,
 and preserves the returned scope. This is an inventory/source join, not a new
 independent branch derivation. The unit-context join uses the actual returned
@@ -45,7 +45,9 @@ Source symbol/current/face shapes and free symbols are inventoried as supplied;
 full objects remain in the journal. It never extracts a physical current grade.
 
 Grid accounting uses actual visited/unvisited rows and the saved planned grid.
-It extracts existing omega=1 and omega=3 rows at the saved ray. It does not
+It extracts existing omega=1 and omega=3 rows at the saved ray. Every one of
+the six selected end/frequency/ray triples must be planned and represented
+exactly once across visited and unvisited rows; these counts are emitted first. It does not
 classify a missing point as absent, compute channels or fill an unvisited cell.
 The actual saved face, seed and locus records are retained as returned.
 
@@ -59,7 +61,9 @@ The actual saved face, seed and locus records are retained as returned.
   with complete direct, retained and difference vectors and equation residuals.
   This packet is structurally joined to the response's embedded remainder data.
   The only new numerical arithmetic is `direct - retained - savedDifference`,
-  emitted with all three operands. There is no polynomial reevaluation, new
+  emitted with all three operands as `subtractionBookkeepingIdentity`. This is
+  a bookkeeping identity of the producer's stored difference, not independent
+  scientific evidence. There is no polynomial reevaluation, new
   contrast, new linear solve, error fit or Born/full construction.
 * `coefficient-systems.pickle`: complete saved matrices/RHS are journal operands;
   only grade sets, shapes and dtype inventory are inspected. No matrix product,
@@ -80,11 +84,17 @@ remain source context, not target answers for a calculation.
 The producer source shows that the old contrast vectors compare direct
 solutions of the same coefficient polynomial with its retained expansion. They
 are not an existing Born/full or physical-power anchor. The output inventories
-all selected packet keys and explicitly probes named comparator fields; those
-field-presence flags are a schema census, not a search proving that no possible
-comparator exists elsewhere. Suitability of any matching observable, profile,
+all selected packet keys and explicitly probes selected top-level names as
+`topLevelNamedKeyProbe_notACensus`; it is not a search proving that no possible
+comparator exists elsewhere. The existing saved `flux` object is inventoried
+and its own retained-rectangle open-current scope is returned unchanged. Suitability of any matching observable, profile,
 normalization, boundaries, regulator and grades belongs to the later report.
-No old field amplitude becomes a leakage estimate in this reader.
+No old field amplitude becomes a leakage estimate in this reader. The manifest
+also carries explicitly supplied, source-attributed conventions: grade keys
+`(a,b)` multiply `eta_bg**a * sigma_W**b`, incident columns 0–1 are LEFT and
+2–3 are RIGHT, and field coefficient units are `fieldUnits[i] - currentUnit/2`
+per reference incoming flux-amplitude unit. These are source/schema statements,
+not quantities newly derived by the reader.
 
 ## Gate, codec and evidence
 
@@ -121,7 +131,9 @@ worker/manifest/gate/review launch snapshots and posthashes, operation index and
 an all-artifact index excluding itself are retained. Successful stdout uses
 exactly the checks.json byte string; the external checkpoint must still verify
 strict stderr and surrounding guard/supervisor outcomes, not infer acceptance
-from exit code. All output paths are fresh directories under ignored scratch.
+from exit code. The successful path disarms the native scientific alarm only
+after inspection and source posthash guards, before final checks/stdout
+publication; the outer guard still bounds that bookkeeping. All output paths are fresh directories under ignored scratch.
 
 The reader reports operational statuses only. It does not choose omega=1 or
 omega=3, start the method decision, implement fields/power, repair old review
@@ -129,3 +141,45 @@ debts, supply all-grade end losslessness, or claim a global domain. The report
 must keep the toy case/azimuth and **physical analog-light calibration OPEN**,
 and stop after job 2 and the frequency comparison. Accepted scientific files,
 failed outputs, Lean, shared guard and the protected builder suffix are untouched.
+
+## Bounded repair after the first independent review
+
+Both first literal verdicts remain **NEEDS REVISION**, preserved with the
+reviewed baseline at `30afac71` and review/disposition at `fcfbc9a2`. These
+source corrections are not author clearance and require fresh independent
+review of the corrected bytes before any READY receipt or reader execution.
+
+The two output walkers now represent Python set/frozenset containers with
+type tags and recursively rendered entries sorted by `str`; slices carry
+start/stop/step. Other unsupported types still fail closed. The original
+premise `show()` is copied exactly as `premise_show` for its two rendered
+JSON joins; the new richer output renderer is not used for those comparisons.
+The exact source-renderer body is checked by AST after name normalization,
+without importing either script. The container/renderer fixes do not expand
+the codec's accepted globals or the selected saved-object set.
+
+The pinned `S11c_d_transverse_face_saved_reader_codec_census.json` is historical
+stdlib-only opcode metadata for original manifest hash
+`b5584571003fc887a9d35b7f356131f570ddf316e70d19986a5019a1ed0f353e`.
+It and its scanner source are the two added input pins; its original target
+hash is unchanged. Its 37 distinct selected pickle hashes are unchanged in
+this revision. It records set opcodes in seven payloads, 43 distinct globals,
+NumPy 1.26.4 and SymPy 1.14.0, with zero scientific imports, restorations or
+reducers executed. The native `dimensions.known` writer defines a dictionary;
+that field is not used as evidence that sets occur.
+
+The observed four NumPy globals already have explicit codec entries. Source
+AST inspection finds the observed SymPy class definitions on the existing
+Basic/MatrixBase inheritance routes and the observed `_rebuild_undef` helper
+returns `Function(name, **kwargs)`. No extra global is allowed speculatively.
+This source/opcode correspondence does not establish successful unpickling;
+runtime class and schema checks remain. There is no NumPy-2 migration or
+warning-suppression campaign on the recorded NumPy-1.26.4 installation.
+
+Repeated-object joins are now explicitly labelled saved route/structural
+identities. Historical end-field entry counts say `NonzeroEntryCount`,
+matching the earlier text export's omission of zero entries. The six required
+comparison rows and three-equation branch census are bookkeeping/schema
+requirements, not supplied physical outcomes. The selected rows still preserve
+unknown/unvisited statuses. Limits remain 900/840 seconds and the task stops
+before method-route or field/power work.

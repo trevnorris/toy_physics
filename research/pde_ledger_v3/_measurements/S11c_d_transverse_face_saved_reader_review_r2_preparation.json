@@ -1,0 +1,244 @@
+{
+  "status": "PREPARED_AWAITING_EXACT_PACKET_SUBMISSION_APPROVAL",
+  "preparedUtc": "2026-09-29T06:22:02.210973+00:00",
+  "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/saved-reader-build-review-r2",
+  "packetSha256": "2ef5f7e88cc2527c68098bb6613ad1982ba6b59cc208fbd6742ff768af4491ad",
+  "archiveSha256": "9861ebedaaa7ce495a9929c9999989aa93cc151a24f26589a466298348de7d71",
+  "packetFiles": 37,
+  "packetBytes": 3101999,
+  "sourceRecords": [
+    {
+      "path": "_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/complete/LEFT-block16-grade01-inspection.json",
+      "sourceSha256": "3ef2b118a3552e779269b2aca09b9d298c2fad02c3110ff3e3939dca8c696c20",
+      "bytes": 407
+    },
+    {
+      "path": "_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/complete/LEFT-block16-grade10-inspection.json",
+      "sourceSha256": "eba23c9235bb0b21cb9723bcf019b12fd360d3c0a5a9becf96dda024a70808f7",
+      "bytes": 407
+    },
+    {
+      "path": "_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/complete/LEFT-block17-grade01-inspection.json",
+      "sourceSha256": "6fb3239c6df085f8be65f8410a5842017f743bff9f3b2fe58c13b1ef9ec4ddff",
+      "bytes": 407
+    },
+    {
+      "path": "_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/complete/LEFT-block17-grade10-inspection.json",
+      "sourceSha256": "4e501d05fa15704415e6f7573de4fe04152a2d0dbdc192992af0b841229ed344",
+      "bytes": 407
+    },
+    {
+      "path": "_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/complete/RIGHT-block16-grade01-inspection.json",
+      "sourceSha256": "7a811e3fba1ee49edcaade421f98fe60c2078f1eb34c75b43d9bde8e92e35c2f",
+      "bytes": 408
+    },
+    {
+      "path": "_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/complete/RIGHT-block16-grade10-inspection.json",
+      "sourceSha256": "5c90311f9c1dbbe6ee67241a963c878191bc2ff567b10e5c2d07a830385bd7d3",
+      "bytes": 11556
+    },
+    {
+      "path": "_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/complete/RIGHT-block17-grade01-inspection.json",
+      "sourceSha256": "365b3e43636628a2e6b00d0235b7ae5f427127e85b057fa0f94fe802c018dc52",
+      "bytes": 408
+    },
+    {
+      "path": "_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/complete/RIGHT-block17-grade10-inspection.json",
+      "sourceSha256": "fd6f1dc5cc8764f65462fb1c27f4eea148b2bf245fc56197de55afa1666e02b4",
+      "bytes": 11557
+    },
+    {
+      "path": "_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/complete/block16-grade01-inspection.json",
+      "sourceSha256": "8fe530505f42410510cad298dc085581ac3111045debe5a3d918cf54e4177c7e",
+      "bytes": 331505
+    },
+    {
+      "path": "_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/complete/block16-grade10-inspection.json",
+      "sourceSha256": "c3a73cde433d049d703b3cf53440c7739e9a54bdf0acc27080b84bef0472164e",
+      "bytes": 531011
+    },
+    {
+      "path": "_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/complete/block17-grade01-inspection.json",
+      "sourceSha256": "e2edc002377e59ac4ecea295c947d131cd0b1526d1be5a426c06948aa646ce6d",
+      "bytes": 332192
+    },
+    {
+      "path": "_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/complete/block17-grade10-inspection.json",
+      "sourceSha256": "2b09f7bb0fa4877e9ad9d6f8caf7f0e9bd59c1dde9380a09fe943dcfc8acc6a7",
+      "bytes": 531605
+    },
+    {
+      "path": "_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/complete/saved-context.json",
+      "sourceSha256": "59fb550f486832142c34ee1de3580961ee6d1783a99f6bcf5e33f035733e96a1",
+      "bytes": 192675
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_continuum_response.py",
+      "sourceSha256": "0fe30a9c4771671e9fa139b0557f185f55d351887f2ba8b9fa4ed1abfb616db2",
+      "bytes": 23551
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_continuum_response_checkpoint.json",
+      "sourceSha256": "c29b71bc8adf8b98856d00d4586b7b060c0f6d5f42778ff231e03e0d45ba0139",
+      "bytes": 26020
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_continuum_response_focused.py",
+      "sourceSha256": "afbee186551f69e0aa685132d37e56481056ed1cf792c4f86256fbdb27d6f5d8",
+      "bytes": 2961
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_continuum_response_report.md",
+      "sourceSha256": "76fd4ead96eef89b406977d717a914635a79afe8cfd110e0f084805ba43dfa1b",
+      "bytes": 2577
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+      "sourceSha256": "45a16f7f952ca6b571362b1c386fec76cd86f1e0ad04113074adf49c683ec49c",
+      "bytes": 3347
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_duration_authorization.json",
+      "sourceSha256": "cd6e4d6850d9c589b8ada43b2c47958d47aedf12ceff7816e7179a2d0cb089e6",
+      "bytes": 774
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_premise.py",
+      "sourceSha256": "ebf2739a2f8dca9ed4130b89606a36a27be29ef5d5c0915756b7118fcbd6fae5",
+      "bytes": 79986
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_premise_authorization.json",
+      "sourceSha256": "a3f0f7c1532572fc5409f3ec8a459d0bcb8bcd1a2c24b8cad8c9a1d7e033514b",
+      "bytes": 1670
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_premise_checkpoint.json",
+      "sourceSha256": "b7a401773af74131bd9a9ffcc783eceaab559f9b48f1a2afecca0a08ec2d7b1b",
+      "bytes": 63574
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_saved_reader.py",
+      "sourceSha256": "54ea52fd5aaea52eaca23314a227b6891be2856f7a9246697efe827042db1eaf",
+      "bytes": 37426
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_saved_reader_codec_census.json",
+      "sourceSha256": "43c16a08e6daa3ce88a5fd2f7216326566b58b34c417b7c25ba90dde17af1c78",
+      "bytes": 65953
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_saved_reader_inputs.json",
+      "sourceSha256": "d41990bb06196d830471445d8430ec9030be1641cffa51b99b843e25c547d0b5",
+      "bytes": 92150
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_saved_reader_pickle_metadata.py",
+      "sourceSha256": "2a36a6cb97709529b3273bc75b36057fc7aacfd4bd0eacf47d9f6452a470a7c2",
+      "bytes": 4040
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_saved_reader_review_prompt.md",
+      "sourceSha256": "4f4d4c7452489e998b97cabc0b89494f5e92cb578ab92fa892b1da1301165c80",
+      "bytes": 6425
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_saved_reader_scope.md",
+      "sourceSha256": "ff719da1f6f72c89bb3eb02511ac361985be98007e692a3783d2c68e15c3fe2a",
+      "bytes": 4462
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_saved_reader_source_note.md",
+      "sourceSha256": "b9e03e7f158e3947930a55e82c004c4dc5024bdbda57e0009738e0563e477524",
+      "bytes": 12206
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_saved_inspect.py",
+      "sourceSha256": "7ad854e696ab42aa8b57430953f6360f7e3efe42f29b7778dfee9c03b87b5886",
+      "bytes": 31269
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_saved_inspection_checkpoint.json",
+      "sourceSha256": "8afe9c5473690707c162d03dae69d41682fd9be0d6d382817a41a6559ae3310b",
+      "bytes": 54328
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_saved_inspection_report.md",
+      "sourceSha256": "2310fdb6246635d825fcbd344bc0d1de2ba30a84cb9ddc41ad840de5a4e01e85",
+      "bytes": 4623
+    },
+    {
+      "path": "research/pde_ledger_v3/directives/S11c_d_SHARED_PHYSICS.md",
+      "sourceSha256": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5",
+      "bytes": 67800
+    },
+    {
+      "path": "research/pde_ledger_v3/directives/S11c_d_TOTAL_TRANSVERSE_LOSS_AMENDMENT_DRAFT.md",
+      "sourceSha256": "ec12456947527bb162a6bd56a65651f1028cca1f95f0d85379bdc8a411fbb6fc",
+      "bytes": 8243
+    },
+    {
+      "path": "research/pde_ledger_v3/scripts/S11c_d_mixing_scattering_sympy_audit.py",
+      "sourceSha256": "5bf77729682960bb59f10c672a5fe3f67a98b0a9533da7c6189a37183596050f",
+      "bytes": 545480
+    },
+    {
+      "path": "scripts/s11c_guarded_run.py",
+      "sourceSha256": "9194b3e04b43d345828082e6312b0a2d7a9293f6296153f9c6ccea2defb931d2",
+      "bytes": 9977
+    }
+  ],
+  "static": {
+    "status": "SOURCE_HASH_AST_ONLY_NO_SCIENCE",
+    "runnerSha256": "278001030e690696494ad0d0df3076c199e0b98dd51481eb7f65701133612334",
+    "launcherSha256": "13a4e7a60423f8343ccec46d4b6addc335d7f2875aad24aef2b05e3cad41b27a",
+    "completionMessageSha256": "0853518cdc48380d657c8a78e979253d92b81d703a39ebf59c43bed9594f6fed",
+    "workerSha256": "54ea52fd5aaea52eaca23314a227b6891be2856f7a9246697efe827042db1eaf",
+    "inputManifestSha256": "d41990bb06196d830471445d8430ec9030be1641cffa51b99b843e25c547d0b5",
+    "workerSyntaxPass": true,
+    "workerImportedOrExecuted": false,
+    "payloadsRestored": 0,
+    "peerReportsIncluded": false,
+    "archiveMembersVerified": true,
+    "rootAstScopeCheck": {
+      "changedFunctions": [
+        "inspect_saved",
+        "inspect_saved.context_joins",
+        "inspect_saved.coverage",
+        "inspect_saved.display",
+        "inspect_saved.inspect_end",
+        "inspect_saved.inspect_old_text",
+        "inspect_saved.inspect_response",
+        "inspect_saved.inventory",
+        "main"
+      ],
+      "addedFunctions": [
+        "inspect_saved.premise_show"
+      ],
+      "codecUnchanged": true,
+      "selectedRestorationKeysUnchanged": true,
+      "priorInputPinsUnchanged": true,
+      "scientificExecution": false
+    }
+  },
+  "authorization": {
+    "status": "PENDING_EXACT_PACKET_APPROVAL",
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "packetSha256": "2ef5f7e88cc2527c68098bb6613ad1982ba6b59cc208fbd6742ff768af4491ad",
+    "archiveSha256": "9861ebedaaa7ce495a9929c9999989aa93cc151a24f26589a466298348de7d71",
+    "packetFiles": 37,
+    "packetBytes": 3101999,
+    "scientificExecutionAuthorizedByThisSubmission": false
+  },
+  "scienceJobsUsed": 1,
+  "readerScienceNotLaunched": true,
+  "priorReviewedBaselineCommit": "fcfbc9a2",
+  "priorLiteralVerdicts": {
+    "claude": "NEEDS REVISION",
+    "grok": "NEEDS REVISION"
+  },
+  "independentBuildClearance": false
+}

@@ -69,6 +69,19 @@ and exit; no retry, further orchestration or downstream launch.
    correction needed for this reader and these inputs. Keep optional wording
    separate; unsupported hypothetical inputs do not require a redesign.
 
+Inspect source-rendered joins with the actual premise writer's renderer, and
+inspect the coverage triples required for the saved comparison rather than only
+overall set accounting. The packet includes a stdlib-only serialization opcode
+census and installed package versions: it records actual globals/container
+opcodes without restoring objects or invoking reducers. It is metadata, not an
+unpickling or scientific validation result. Use that actual input evidence when
+assessing codec/rendering support; do not infer the type of a field from its
+name. Keep source/route identity and stored subtraction bookkeeping distinct
+from independent physical validation. The existing open-flux inventory must
+carry the producing source's exact scope, with supplied grade/incidence/unit
+conventions attributed as source metadata. Inspect the final timer handoff
+without weakening the outer containment or partial-output failure record.
+
 The source packet includes the relevant original schema writers and selected
 context reports. They are schema/provenance sources, not programs to execute.
 No first-order outgoing field or total physical power is supplied by the reader.

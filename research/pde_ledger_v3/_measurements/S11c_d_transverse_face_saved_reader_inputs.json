@@ -1005,6 +1005,18 @@
       "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/complete/RIGHT-block16-grade01-inspection.json",
       "bytes": 408,
       "sha256": "7a811e3fba1ee49edcaade421f98fe60c2078f1eb34c75b43d9bde8e92e35c2f"
+    },
+    "codecMetadata": {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_saved_reader_codec_census.json",
+      "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_saved_reader_codec_census.json",
+      "bytes": 65953,
+      "sha256": "43c16a08e6daa3ce88a5fd2f7216326566b58b34c417b7c25ba90dde17af1c78"
+    },
+    "codecMetadataScannerSource": {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_saved_reader_pickle_metadata.py",
+      "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_saved_reader_pickle_metadata.py",
+      "bytes": 4040,
+      "sha256": "2a36a6cb97709529b3273bc75b36057fc7aacfd4bd0eacf47d9f6452a470a7c2"
     }
   },
   "job1Files": {
@@ -1333,17 +1345,111 @@
       "inputKey": "oldReadable_end-RIGHT-block16-grade01"
     }
   ],
-  "comparatorFieldNames": [
+  "selectedOldRoles": {
+    "oldResponse": "Saved coefficient solutions, independent solutions, fields/maps/labels, dimensions, finite settings and residuals; compare against job1 restored unitContext.",
+    "oldRemainders": "Three simultaneous eta/sigma contrasts: actual coefficient-polynomial direct vs retained vectors, saved differences/residuals, exact structural join to response. No Born/full relabelling.",
+    "oldSystems": "Saved coefficient matrices and right-hand sides: only inventory, grade sets and shape joins. No multiplication, solve or re-evaluation.",
+    "oldReadable": "Prior guarded reader text exports containing exact printed end-field/formal-forcing expressions, units/regulator/domain operands and original flags. JSON-as-saved inventory only, not new domain validation."
+  },
+  "limitedComparatorKeyProbe": [
     "bornAmplitude",
     "fullBornComparison",
     "physicalTotalLoss",
     "outgoingPower",
     "lossQuadraticForm"
   ],
-  "selectedOldRoles": {
-    "oldResponse": "Saved coefficient solutions, independent solutions, fields/maps/labels, dimensions, finite settings and residuals; compare against job1 restored unitContext.",
-    "oldRemainders": "Three simultaneous eta/sigma contrasts: actual coefficient-polynomial direct vs retained vectors, saved differences/residuals, exact structural join to response. No Born/full relabelling.",
-    "oldSystems": "Saved coefficient matrices and right-hand sides: only inventory, grade sets and shape joins. No multiplication, solve or re-evaluation.",
-    "oldReadable": "Prior guarded reader text exports containing exact printed end-field/formal-forcing expressions, units/regulator/domain operands and original flags. JSON-as-saved inventory only, not new domain validation."
+  "expectedBranchEquationCount": 3,
+  "expectedComparisonTripleCount": 6,
+  "oldResponseSuppliedConventions": {
+    "status": "SUPPLIED_PRODUCER_SOURCE_CONVENTIONS_NOT_NEW_SCIENTIFIC_RESULTS",
+    "source": {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_continuum_response.py",
+      "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_continuum_response.py",
+      "bytes": 23551,
+      "sha256": "0fe30a9c4771671e9fa139b0557f185f55d351887f2ba8b9fa4ed1abfb616db2"
+    },
+    "contrastComparison": {
+      "kind": "DIRECT_COEFFICIENT_POLYNOMIAL_VERSUS_RETAINED_EXPANSION",
+      "sourceLines": [
+        265,
+        266,
+        267,
+        268,
+        269,
+        270,
+        271
+      ]
+    },
+    "gradeConvention": {
+      "key": [
+        "a",
+        "b"
+      ],
+      "coefficientMonomial": "eta_bg**a * sigma_W**b",
+      "sourceLines": [
+        202,
+        203,
+        204,
+        205,
+        206,
+        207,
+        208
+      ]
+    },
+    "incidentColumnOrdering": {
+      "LEFT": [
+        0,
+        1
+      ],
+      "RIGHT": [
+        2,
+        3
+      ],
+      "sourceLines": [
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84
+      ]
+    },
+    "fieldCoefficientUnits": {
+      "expression": "fieldUnits[i] - currentUnit/2",
+      "normalization": "per reference incoming flux-amplitude unit",
+      "sourceLines": [
+        219,
+        220,
+        221,
+        222
+      ]
+    },
+    "savedOpenFluxSource": {
+      "sourceLines": [
+        188,
+        189,
+        190,
+        191,
+        192,
+        193,
+        194,
+        195,
+        196,
+        197,
+        198,
+        199
+      ],
+      "scopeOrigin": "response['flux']['scope']"
+    },
+    "namedKeyProbeScope": "Selected top-level names only; not a comparator census or anchor assessment",
+    "subtractionScope": "Bookkeeping identity of saved direct/retained/difference operands; not independent physics evidence"
+  },
+  "codecMetadataProvenance": {
+    "inputKey": "codecMetadata",
+    "historicalTargetManifestSha256": "b5584571003fc887a9d35b7f356131f570ddf316e70d19986a5019a1ed0f353e",
+    "targetManifestRole": "Original reviewed manifest; unchanged historical census receipt",
+    "selectedRestorableHashesUnchanged": true
   }
 }

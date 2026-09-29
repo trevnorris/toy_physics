@@ -234,6 +234,12 @@ def inspect_saved(spec, out, journal):
             return {str(key): display(item) for key, item in value.items()}
         if isinstance(value, (tuple, list)):
             return [display(item) for item in value]
+        if isinstance(value, (set, frozenset)):
+            return dict(type=type(value).__name__,
+                        entries=[display(item) for item in sorted(value, key=str)])
+        if isinstance(value, slice):
+            return dict(type='slice', start=display(value.start),
+                        stop=display(value.stop), step=display(value.step))
         if isinstance(value, np.ndarray):
             return dict(shape=list(value.shape), dtype=str(value.dtype), entries=display(value.tolist()))
         if isinstance(value, sp.MatrixBase):
@@ -243,11 +249,28 @@ def inspect_saved(spec, out, journal):
             return str(value)
         raise TypeError('unsupported readable object ' + str(type(value)))
 
+    def premise_show(value):
+        # Exact source show() convention; used only for premise-rendered joins.
+        if isinstance(value, dict): return {str(a): premise_show(b) for a, b in value.items()}
+        if isinstance(value, (list, tuple)): return [premise_show(x) for x in value]
+        if isinstance(value, sp.MatrixBase): return premise_show(value.tolist())
+        if isinstance(value, np.ndarray): return premise_show(value.tolist())
+        if isinstance(value, complex): return dict(real=value.real, imag=value.imag)
+        if isinstance(value, (np.integer, np.floating, np.bool_)): return value.item()
+        if isinstance(value, sp.Basic): return str(value)
+        return value
+
     def inventory(value):
         if isinstance(value, dict):
             return {str(key): inventory(item) for key, item in value.items()}
         if isinstance(value, (tuple, list)):
             return [inventory(item) for item in value]
+        if isinstance(value, (set, frozenset)):
+            return dict(type=type(value).__name__,
+                        entries=[inventory(item) for item in sorted(value, key=str)])
+        if isinstance(value, slice):
+            return dict(type='slice', start=inventory(value.start),
+                        stop=inventory(value.stop), step=inventory(value.step))
         if isinstance(value, np.ndarray):
             return dict(type='ndarray', shape=list(value.shape), dtype=str(value.dtype))
         if isinstance(value, sp.MatrixBase):
@@ -313,16 +336,17 @@ def inspect_saved(spec, out, journal):
                 source_key = spec['job1SourceInputs'][source_name]
                 source_value = read_pickle(source_key)
                 result = journal.op('source-join-' + name,
-                                    lambda a, b: dict(structuralEquality=same(a, b),
+                                    lambda a, b: dict(structuralIdentity=same(a, b),
+                                                      evidenceKind='SAVED_SOURCE_IDENTITY',
                                                       returnedInventory=inventory(a)),
                                     value, source_value)
-                joins['restoredSource'] = result['structuralEquality']
+                joins['restoredSourceStructuralIdentity'] = result['structuralIdentity']
                 restored[name] = source_name
             rendered = parent.get(name + '.json')
             if isinstance(rendered, dict) and 'completeObjectReceipt' in rendered:
                 joins['renderedReceipt'] = rendered['completeObjectReceipt'] == previous
             elif rendered is not None:
-                joins['renderedReturn'] = display(value) == rendered
+                joins['renderedReturn'] = premise_show(value) == rendered
             detail = dict(name=name, status=status, sourceReceipt=previous,
                           returnedInventory=inventory(value), joins=joins)
         else:
@@ -351,12 +375,15 @@ def inspect_saved(spec, out, journal):
                                tangents=state['tangents'], groups=state['momentum_groups'],
                                normalMap=state['normal_map'])
         joins = dict(branchOperationInput=same(branch_input, state),
+                     recordedEquationCount=len(equations) == spec['expectedBranchEquationCount'],
                      branchReturnedOperands=all(same(branch_return[key], value)
                                                for key, value in branch_operands.items()),
                      branchEquationStructuralJoins=all(equation_joins),
-                     unitRenderedJoin=display(unit_operands) == unit_json,
+                     unitRenderedJoin=premise_show(unit_operands) == unit_json,
                      returnedResidualCount=len(branch_return['residuals']) == len(equations))
         return dict(operands=branch_operands, savedBranchReturn=branch_return,
+                    expectedEquationCount=spec['expectedBranchEquationCount'],
+                    evidenceKind='SAVED_BRANCH_AND_UNIT_STRUCTURAL_IDENTITY',
                     unitOperands=unit_operands, equationStructuralJoins=equation_joins,
                     savedResidualZeroFlags=[bool(value == 0) for value in branch_return['residuals']],
                     joins=joins)
@@ -375,10 +402,11 @@ def inspect_saved(spec, out, journal):
         arguments = [read_pickle(by_path[item['path']]) for item in record['operands']]
         original, pair = completed[end + '-restore-original-symbol'], completed[end + '-restore-current']
         def inspect_end(label, args, source, current, receipt):
-            joins = dict(label=args[0] == label, originalSymbol=same(args[1], source),
-                         currentPair=same(args[2], current))
+            joins = dict(label=args[0] == label, originalSymbolStructuralIdentity=same(args[1], source),
+                         currentPairStructuralIdentity=same(args[2], current))
             # The saved pair is the source tuple, never a successfully bound map.
             return dict(joins=joins, sourceSymbolInventory=inventory(source),
+                        evidenceKind='SAVED_OPERAND_IDENTITY_NOT_INDEPENDENT_PHYSICS',
                         currentPairInventory=inventory(current),
                         savedInputTupleLength=len(current),
                         sourceBindStatus=receipt['status'], sourceBindValuePresent='value' in receipt,
@@ -402,10 +430,18 @@ def inspect_saved(spec, out, journal):
                          and row['ray'] == spec['comparisonRay']],
                 unvisited=[row for row in unvisited if row['end'] == end and row['omega'] == omega
                            and row['ray'] == spec['comparisonRay']]) for end in ENDS}
+        selected_counts = [dict(end=end, omega=omega, ray=spec['comparisonRay'],
+                                planned=(end, omega, spec['comparisonRay']) in expected,
+                                savedRowCount=len(rows['visited']) + len(rows['unvisited']))
+                           for omega, ends in selected.items() for end, rows in ends.items()]
         return dict(joins=dict(disjoint=not bool(seen & missing), completeAccounting=seen | missing == expected,
                                uniqueVisited=len(seen) == len(visited), uniqueUnvisited=len(missing) == len(unvisited),
-                               summaryCount=metadata['checks.json']['points'] == len(visited)),
+                               summaryCount=metadata['checks.json']['points'] == len(visited),
+                               selectedTripleCount=len(selected_counts) == spec['expectedComparisonTripleCount'],
+                               selectedTriplesPlanned=all(row['planned'] for row in selected_counts),
+                               selectedTriplesAccountedOnce=all(row['savedRowCount'] == 1 for row in selected_counts)),
                     planned=len(expected), visited=len(visited), unvisited=len(unvisited),
+                    selectedTripleCounts=selected_counts,
                     selectedSavedRows=selected, sourceEndStates=metadata['source-end-states.json'],
                     savedReferenceFace=metadata['reference-face-drive.json'],
                     savedSeeds=metadata['saved-seed-comparison.json'], savedLoci=metadata['threshold-loci.json'])
@@ -422,19 +458,21 @@ def inspect_saved(spec, out, journal):
         vectors = []
         for contrast, entry in remainder.items():
             direct, retained, difference = (entry[key] for key in ('direct', 'retained', 'difference'))
-            # A saved arithmetic residual check, not a coefficient-polynomial evaluation.
+            # Bookkeeping identity for a difference produced from these same operands.
             arithmetic = direct - retained - difference
             vectors.append(dict(contrast=contrast, direct=direct, retained=retained,
-                                savedDifference=difference, subtractionResidual=arithmetic,
+                                savedDifference=difference, subtractionBookkeepingIdentity=arithmetic,
                                 savedEquationResidual=entry['directEquationResidual'],
                                 savedMaximum=entry['maximumReferenceFrame']))
-        joins = dict(remainderPacket=same(response['remainders'], remainder),
-                     job1UnitSource=same(response, unit_source),
+        joins = dict(remainderPacketStructuralIdentity=same(response['remainders'], remainder),
+                     job1UnitSourceStructuralIdentity=same(response, unit_source),
                      coefficientGrades=set(grades) == set(systems['matrices']) == set(systems['rhs']),
                      coefficientSystemShapes=all(systems['matrices'][grade].shape == (5*response['size'], 5*response['size'])
                                                 and systems['rhs'][grade].shape == response['solve']['coefficients'][grade].shape
                                                 for grade in grades))
         return dict(joins=joins, vectors=vectors, grades=grades,
+                    suppliedSourceConventions=spec['oldResponseSuppliedConventions'],
+                    joinEvidenceKind='SAVED_PACKET_IDENTITY_AND_SHAPE_CHECKS',
                     coefficientIngredients={key: inventory(systems[key]) for key in ('matrices', 'rhs')},
                     savedCoefficients=response['solve']['coefficients'],
                     savedIndependentCoefficients=response['solve']['independentCoefficients'],
@@ -446,9 +484,12 @@ def inspect_saved(spec, out, journal):
                     ratio=response['ratio'], savedScope=response['scope'],
                     labels=response['response']['labels'],
                     responseInventory=inventory(response['response']),
+                    savedOpenFluxInventory=inventory(response['flux']),
+                    savedOpenFluxScope=response['flux']['scope'],
                     savedInputPackets=response['inputPackets'],
                     selectedPacketTopLevelKeys=list(response),
-                    comparatorFieldsPresent={key: key in response for key in spec['comparatorFieldNames']})
+                    topLevelNamedKeyProbe_notACensus={key: key in response
+                                                     for key in spec['limitedComparatorKeyProbe']})
     anchor = journal.op('old-saved-contrast-vectors', inspect_response,
                         response, remainder, systems, completed['restore-unit-context'])
     emit('old-saved-contrast-vectors', anchor)
@@ -468,8 +509,8 @@ def inspect_saved(spec, out, journal):
                                      unreducedCoefficientZeroFlags=row['unreducedCoefficientZeroFlags'])
                            for name, row in payloads.items() if name.startswith('case-')},
                     ends={name: dict(savedEndField=row['endField'], fieldShape=row['field']['shape'],
-                                    savedFieldEntryCount=len(row['field']['entries']),
-                                    savedPolynomialEntryCount=len(row['polynomial']['entries']))
+                                    savedFieldNonzeroEntryCount=len(row['field']['entries']),
+                                    savedPolynomialNonzeroEntryCount=len(row['polynomial']['entries']))
                           for name, row in payloads.items() if name.startswith('end-')},
                     originalReviewVerdicts=old_checkpoint['reviewVerdicts'],
                     originalAcceptanceScope=old_checkpoint['acceptanceScope'],
@@ -575,6 +616,9 @@ def main():
         launch_post = {name: route(record['path']) for name, record in launch_routes.items()}
         save(out / 'launch-source-posthashes.json', launch_post)
         require(launch_post == launch_routes, 'worker/manifest/gate/review changed during inspection')
+        # Scientific inspection and pinning are complete; outer containment
+        # still bounds final receipt/stdout publication.
+        signal.setitimer(signal.ITIMER_REAL, 0)
         result.update(wallSeconds=time.monotonic() - started, operations=len(journal.records),
                       allSourceRoutesUnchanged=post == prehashes)
         save(out / 'operation-index.json', journal.records)

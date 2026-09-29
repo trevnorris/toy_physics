@@ -1,5 +1,19 @@
 # S11c-d session recovery — 2026-09-26
 
+**Execution 4 launched (2026-09-29):** the exact independently cleared
+fixed-point worker is running under the unchanged shared guard and normalization
+supervisor in `s11c-d-transverse-face-fixed-point-20260929/production`.
+Gate/review records were committed at `99e0ea84` before launch; source snapshots
+and the local completion hook were established first. One host startup check
+verified 2 GiB / zero swap / one CPU / nice 15 / 32 tasks / one native thread,
+900 s outer / 840 s native, empty startup stderr and the owned running worker.
+See `S11c_d_transverse_face_fixed_point_launch_record.json`.
+This consumes the fourth and final scientific execution. No further job,
+validator, retry or duration extension is authorized. Await the silent completion
+hook; no model polling. Inspect actual saved reuse, point/face/current/control
+outputs and resources before reporting; process success is not acceptance.
+Stop after results and the qualified saved-current interpretation.
+
 **Execution 4 independently cleared and gated (2026-09-29):** both fresh
 second-round reviewers literally CLEAR FOR THIS BOUNDED FIXED-POINT
 TRANSVERSE/FACE BUILD. Exact worker/manifest remain unchanged from `b8a1dd2c`.

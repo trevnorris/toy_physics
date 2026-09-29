@@ -1,5 +1,17 @@
 # S11c-d: the remaining execution queue
 
+**Source-only next-step assessment (2026-09-29):** existing finite profile
+current ratios and regulator/domain comparisons are already in saved metadata.
+Uniform controls use homogeneous matching, not the regulated profile quadrature;
+three contrast-halving vectors belong to coefficient-polynomial systems. No
+resolved physical total loss or subtractable regulator-only floor follows.
+The premise timeout extracts epsilon_shape squared before binding current sources.
+Propose at most one newly reviewed fixed-omega=1, saved-tangent premise job with
+numeric-first binding and 180 s per-end caps inside 900 s / 840 s containment.
+See `S11c_d_saved_balance_numeric_first_assessment.md`. Source/JSON/hashes only;
+no implementation, external review, gate or science launch. Await user go/no-go;
+execution 4 remains unspent and unapproved. Calibration and physical loss stay OPEN.
+
 **Saved-reader continuation completed and inspected (2026-09-29):** scientific
 execution 3 completed in 206.321612 worker seconds, peak 428,748,800 bytes,
 zero swap/events. All 70 reader operations complete: nine prior returns restored,

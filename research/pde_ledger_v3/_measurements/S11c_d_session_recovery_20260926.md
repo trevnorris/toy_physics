@@ -1,5 +1,14 @@
 # S11c-d session recovery — 2026-09-26
 
+**Current authorization — jobs 1–2 only (2026-09-28 local):** user explicitly
+said “Approve jobs 1-2 only.” The exact round-5 cleared premise worker and all
+33 input pins are unchanged. Fresh approval/gate/launch records authorize job 1
+under the normal shared guard; job 2 must independently clear as a saved-output
+reader before execution. Two 900 s envelopes, no retries; stop after actual
+results and the omega=1/omega=3 comparison, before method-route work or jobs 3–4.
+No loss magnitude is promised. Analog-light calibration remains OPEN.
+See `S11c_d_transverse_face_premise_launch_record.json` for actual launch state.
+
 **Current proposal — two premise/inspection jobs, then frequency decision
 (2026-09-28 local):** the user forwarded Claude's recommendation to authorize
 only jobs 1–2 and compare omega=1 with omega=3 before method construction.

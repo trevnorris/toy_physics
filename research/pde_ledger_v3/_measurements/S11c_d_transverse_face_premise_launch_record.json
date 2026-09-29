@@ -1,0 +1,32 @@
+{
+  "status": "AUTHORIZED_PINNED_NOT_YET_LAUNCHED",
+  "recordedUtc": "2026-09-29T05:20:47.124020+00:00",
+  "pins": {
+    "workerSha256": "ebf2739a2f8dca9ed4130b89606a36a27be29ef5d5c0915756b7118fcbd6fae5",
+    "inputManifestSha256": "c04a3ca3d37fd645214a4455e36b5e4ab066d0587adc924dca1fbb3aa4648e8f",
+    "gateSha256": "67c0e1142559f25b909d345fd25ab2940be531355ca5f85198f96336aa82337d",
+    "launcherSha256": "fe73c80f9d62faa07b4e01b8d59dd335ab736ac139e41aa7114322159543d087"
+  },
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production",
+  "authorization": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_premise_authorization.json",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_premise_authorization.json",
+    "bytes": 1670,
+    "sha256": "a3f0f7c1532572fc5409f3ec8a459d0bcb8bcd1a2c24b8cad8c9a1d7e033514b"
+  },
+  "reviewedWorkerUnchanged": true,
+  "inputPinsVerified": 33,
+  "reviewedCanonicalSourcesVerified": 24,
+  "acceptedCheckpointJoinsVerified": 15,
+  "launcherSyntaxPass": true,
+  "scienceWorkerImportedOrExecuted": false,
+  "scientificPayloadsRestored": 0,
+  "hookFirst": true,
+  "automaticRetry": false,
+  "scienceJobsLaunched": 0,
+  "authorizedJobs": [
+    1,
+    2
+  ],
+  "stopAfterJob2": true
+}

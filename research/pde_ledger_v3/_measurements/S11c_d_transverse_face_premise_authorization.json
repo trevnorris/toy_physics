@@ -1,0 +1,39 @@
+{
+  "status": "USER_AUTHORIZED_JOBS_1_2_ONLY",
+  "recordedUtc": "2026-09-29T05:20:47.124020+00:00",
+  "userReply": "Approve jobs 1-2 only",
+  "currentThread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+  "approvedScopeCommit": "d2f12b76",
+  "authorizedScienceJobOrdinals": [
+    1,
+    2
+  ],
+  "stopAfterJob2AndFrequencyComparison": true,
+  "job1": "Exact independently cleared transverse/face premise worker; no source change.",
+  "job2": "One independently reviewed guarded saved-output reader of actual job1 returns plus selected old end/forcing/contrast payloads, no producer or solve replay.",
+  "scopePlan": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_pilot_frequency_comparison.md",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_pilot_frequency_comparison.md",
+    "bytes": 9423,
+    "sha256": "53f98edfada592759d1a7fd689e8d6f2d24472da61eccd2f54b77bb38f3ddeba"
+  },
+  "workerSha256": "ebf2739a2f8dca9ed4130b89606a36a27be29ef5d5c0915756b7118fcbd6fae5",
+  "inputManifestSha256": "c04a3ca3d37fd645214a4455e36b5e4ab066d0587adc924dca1fbb3aa4648e8f",
+  "limits": {
+    "seconds": 900,
+    "nativeSeconds": 840,
+    "memoryGiB": 2,
+    "swapMax": 0,
+    "cpuCount": 1,
+    "nice": 15,
+    "tasksMax": 32,
+    "nativeThreads": 1
+  },
+  "automaticRetry": false,
+  "maximumScientificWorkers": 1,
+  "remainingJobs3And4Authorized": false,
+  "methodRouteDecisionAuthorized": false,
+  "fieldPowerConstructionAuthorized": false,
+  "externalSubmission": "No new exact packet exists; applicable exact-packet approval requirements remain.",
+  "physicalLightCalibration": "OPEN_NOT_ESTABLISHED"
+}

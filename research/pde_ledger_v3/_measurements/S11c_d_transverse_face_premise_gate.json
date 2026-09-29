@@ -1,0 +1,38 @@
+{
+  "status": "READY_FOR_ONE_GUARDED_TRANSVERSE_FACE_PREMISE_JOB",
+  "recordedUtc": "2026-09-29T05:20:47.124020+00:00",
+  "scienceAuthorizationAfterCostedPlanGo": true,
+  "userScienceApprovalRecord": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_premise_authorization.json",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_premise_authorization.json",
+    "bytes": 1670,
+    "sha256": "a3f0f7c1532572fc5409f3ec8a459d0bcb8bcd1a2c24b8cad8c9a1d7e033514b"
+  },
+  "workerSha256": "ebf2739a2f8dca9ed4130b89606a36a27be29ef5d5c0915756b7118fcbd6fae5",
+  "inputManifestSha256": "c04a3ca3d37fd645214a4455e36b5e4ab066d0587adc924dca1fbb3aa4648e8f",
+  "independentBuildClearance": true,
+  "reviewRecord": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_premise_review_r5_record.json",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_premise_review_r5_record.json",
+    "bytes": 41344,
+    "sha256": "bd413b07358e20a868d321f0ae406d846d6c0aa0f0c9e599a77922a52be92790"
+  },
+  "scienceJobOrdinal": 1,
+  "seconds": 900,
+  "nativeSeconds": 840,
+  "memoryGiB": 2,
+  "swapMax": 0,
+  "cpuCount": 1,
+  "nice": 15,
+  "tasksMax": 32,
+  "nativeThreads": 1,
+  "automaticRetry": false,
+  "launcherSha256": "fe73c80f9d62faa07b4e01b8d59dd335ab736ac139e41aa7114322159543d087",
+  "completionMessageSha256": "c879d2172fda4ae4ddbf42c2c0822d2726d70847b8eb77094ae938ba392326a6",
+  "protectedBuilderSuffixSha256": "f01024512c9a028e7e524e5a95b5c455be42e125d10c36f94e20493109b013c2",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production",
+  "resultDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete",
+  "guardSha256": "9194b3e04b43d345828082e6312b0a2d7a9293f6296153f9c6ccea2defb931d2",
+  "supervisorSha256": "45a16f7f952ca6b571362b1c386fec76cd86f1e0ad04113074adf49c683ec49c",
+  "completionHookSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77"
+}

@@ -1,5 +1,18 @@
 # S11c-d: the remaining execution queue
 
+**Current decision — transverse/face build independently cleared; costed plan
+awaits go/no-go (2026-09-28 local):** both fresh round-5 reviewers literally
+CLEAR FOR THIS BOUNDED TRANSVERSE/FACE BUILD. Exact packet/archive/source/input
+hashes match; code stays unchanged. See the round-5 literal record/disposition.
+This is prospective build clearance only; no science or premise result.
+`S11c_d_outgoing_field_power_costed_plan.md` proposes one omega=3 radiating-point
+loss pilot, with a four-job / 60-minute compute ceiling and a low-confidence
+2–5 working-day authoring estimate. Missing complete source/localization/power
+method stops the proposal early. This plan is not independently cleared field
+physics or launch authority. STOP for the user's decision: no science gate,
+new implementation, external submission, retry or automatic continuation.
+The earlier unused map allowance remains suspended. Full FORM/A11/A12 remain open.
+
 **Current status — transverse/face round-5 reviews running (2026-09-28 local):**
 the user selected “Approve this exact packet” for the 24-file / 571,618-byte
 payload and fresh Claude/Grok destinations. The unchanged packet launched with

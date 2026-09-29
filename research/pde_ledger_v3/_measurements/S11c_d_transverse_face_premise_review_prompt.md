@@ -47,7 +47,8 @@ Write the report and exit; no orchestration or automatic downstream action.
    end and grid levels? Does any exception, budget hit, missing record or silent
    mutation still become zero/false? Existence and complete channel census are
    different. Incomplete or sampled coverage must not become a plane-wide absence
-   claim. Keep REFERENCE, LEFT and RIGHT origin/grade evidence distinct.
+   claim. Point rank totals must be null unless coverage is complete. Keep
+   REFERENCE, LEFT and RIGHT origin/grade evidence distinct.
 3. Are actual exact transverse/bulk boundary expressions derived from the source
    and interpreted only with supported domain and both-side checks? If a locus
    is unsupported or too expensive, is that visible? The grid is a cross-check,
@@ -118,10 +119,17 @@ pole certificate, inspect every numerator/denominator through quadratic
 reduction, including coefficient denominators and uncancelled factors. A
 later count cannot recover a factor discarded earlier. Check that short timers
 are disarmed inside the protected call region before successful serialization.
+Check that the local timeout handler preserves the remaining native deadline
+before raising, and that complete two-face/two-leg census checks precede empty
+all/any reductions at symbolic and numerical premise boundaries. Distinguish a
+source-schema guard from evidence that accepted inputs were actually corrupt.
 
 Practical toy-model scope applies: identify the smallest concrete correction
 needed for this supported question, not a general operator or classification
-campaign. The physical light-band calibration is unestablished; labels apply
+campaign. Findings must identify a wrong claim on this bounded instrument or
+an unsupported required runtime gate; do not require a redesign merely because
+a different physical input or hypothetical unsupported schema could fail. The
+physical light-band calibration is unestablished; labels apply
 only to LAB_HELD/RHO4_CONSTANT and the saved azimuth/window. The future total
 still needs all-grade endpoint localization, held-background work/passivity,
 complete outgoing selection, boundary forcing and power pairing. A repaired

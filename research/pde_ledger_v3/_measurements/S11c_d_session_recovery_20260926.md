@@ -1,5 +1,17 @@
 # S11c-d session recovery — 2026-09-26
 
+**Current preparation — transverse/face round 5 (2026-09-28 local):** both
+round-4 NEEDS REVISION reports and exact source are preserved at `dfe68748`.
+The bounded rank-summary, timer-fallback and face-census corrections are written;
+AST/scope/whitespace checks pass, with no scientific execution or imports.
+The fresh packet has 24 files / 571,618 bytes, SHA-256
+`801fa8155f6ee191db29aa0ba67353d8e8d3a52151d07ad4cfcf7e0c3f0380f8`.
+Automatic export approval requires explicit consent for this revised payload
+and Claude/Grok destinations. No reviewer started; no bypass or retry. See
+`S11c_d_transverse_face_premise_review_r5_preparation.json`. Await exact-packet
+consent, finish independent review, then return the costed outgoing-field/power
+plan and stop for user go/no-go before science. No author clearance.
+
 **Current result — transverse/face round 4 needs revision (2026-09-28 local):**
 both reviewers literally NEEDS REVISION; both accept the saved-current fix.
 Packet/archive/source/input/report hashes match. The remaining bounded changes

@@ -92,8 +92,10 @@ class Journal:
         self.records, self.active, self.objects = [], None, {}
         def timeout(*_):
             signal.setitimer(signal.ITIMER_REAL, 0)
-            if time.monotonic() >= self.deadline:
+            remaining = self.deadline-time.monotonic()
+            if remaining <= 0:
                 raise NativeDeadline('native whole-job deadline')
+            signal.setitimer(signal.ITIMER_REAL, remaining)
             raise OperationBudget('bounded mathematical operation')
         signal.signal(signal.SIGALRM, timeout)
         self.arm_native()
@@ -360,6 +362,18 @@ def construct(spec, out, journal):
     def bound_end(label, packet, pair_tuple):
         pair, dimensions = pair_tuple  # Authoritative end_pairing_check.py:165-166.
         result = pair['result']
+        saved_faces = result['FACE_LEG_OBJECTS']
+        source_addresses = [(index,leg) for index,face in enumerate(saved_faces)
+                            for leg in range(len(face))]
+        expected_addresses = [(0,0),(0,1),(1,0),(1,1)]
+        source_face_census = dict(sourceFaceOrder=face_order,faceCount=len(saved_faces),
+            legCounts=[len(face) for face in saved_faces],addresses=source_addresses,
+            expectedAddresses=expected_addresses,expectedOrientations=(-1,1),
+            complete=(len(face_order)==2 and set(face_order)=={-1,1} and len(saved_faces)==2
+                      and len(source_addresses)==4 and set(source_addresses)==set(expected_addresses)))
+        if not source_face_census['complete']:
+            return dict(end=label,checks={'faceLegCensus':False},sourceFaceLegCensus=source_face_census,
+                        savedFaceLegObjects=saved_faces,status='UNRESOLVED',reason='FACE_LEG_CENSUS_INCOMPLETE')
         wl, wr = result['FREQUENCY_LEGS']; kl, kr = result['NORMAL_LEGS']
         ql, qr = result['BULK_LEGS']
         mapping = {wl:w, wr:w, kl:k, kr:k, ql:qb, qr:q}
@@ -446,7 +460,8 @@ def construct(spec, out, journal):
                                           for factor in saved_source_factors)
         denominators = tuple(dict.fromkeys((*raw_denominators(denominator_operands),*bound_saved_source_factors)))
         coupling = [uniform['records'][label]['coupling'][name] for name in ('TH','HT')]
-        checks = dict(sourceJoin=zero(source_join), waveJoin=zero(wave_join),
+        checks = dict(faceLegCensus=source_face_census['complete'],
+            sourceJoin=zero(source_join), waveJoin=zero(wave_join),
             suppliedCurlJoin=zero(common_curl_join), carrierLawAndNormalization=carrier['joins'],
             originalBranch=zero(packet['branchResiduals']), pairingBranch=zero(result['SOURCE_BRANCH_JOINS']),
             savedCoupling=zero(coupling), invariantT=zero(invariant),
@@ -459,7 +474,7 @@ def construct(spec, out, journal):
             actualMatrixFrequencyLive=matrix.has(w), actualMatrixTangentialLive=matrix.has(v),
             restrictedFrequencyLive=restricted.has(w), restrictedTangentialLive=restricted.has(v),
             declaredSymbols=not matrix.free_symbols-{w,v,k,q})
-        return dict(end=label, checks=checks, originalSource=packet['originalAlgebraic'],
+        return dict(end=label, checks=checks,sourceFaceLegCensus=source_face_census,originalSource=packet['originalAlgebraic'],
             originalRelation=packet['originalRelation'], sourceJoin=source_join, waveJoin=wave_join,
             savedSourceBranch=packet['branchResiduals'], pairingSourceBranch=result['SOURCE_BRANCH_JOINS'],
             sourceCoupling=coupling, matrix=matrix, rawMatrix=raw_matrix, wave=wave, q2=q2, scale=scale,
@@ -475,6 +490,18 @@ def construct(spec, out, journal):
             driveReconstruction=reconstruction, flatExteriorJoins=flat_exterior, sourceDenominators=denominators,
             outgoingDepthCoefficient=depth, carrierLawCheck=carrier,
             flatExteriorJoinScope='SOURCE_INTERNAL_CONSISTENCY_NOT_INDEPENDENT_CLOSURE',dimensions=dimensions)
+
+    def face_address_census(records):
+        addresses = [(item['faceOrdinal'],item['harmonicLeg']) for item in records]
+        oriented = [(face_order[index] if 0<=index<len(face_order) else None,leg)
+                    for index,leg in addresses]
+        expected = [(0,0),(0,1),(1,0),(1,1)]
+        expected_oriented = [(-1,0),(-1,1),(1,0),(1,1)]
+        return dict(recordCount=len(records),distinctAddressCount=len(set(addresses)),
+            addresses=addresses,orientedAddresses=oriented,sourceFaceOrder=face_order,
+            expectedAddresses=expected,expectedOrientedAddresses=expected_oriented,
+            complete=(len(face_order)==2 and set(face_order)=={-1,1} and len(records)==4
+                      and set(addresses)==set(expected) and set(oriented)==set(expected_oriented)))
 
     def faces(bound):
         plus_lift = bound['lift']; records = []
@@ -572,12 +599,15 @@ def construct(spec, out, journal):
                     c2OrientationIndependentlyChecked=False))
         forms = {name:clean(plus_lift.H*matrix*plus_lift) for name,matrix in bound['currents'].items()
                  if name!='SLAB_CURRENT_MATRIX'}
-        checks = dict(allHarmonicDrivesZero=all(item['driveZero'] for item in records),
-            nativeEVelocityPresence=all(item['eWPresenceCalibration']['presenceCalibrationSupported'] for item in records),
-            loadedUControls=all(control['status']!='UNRESOLVED' for item in records for control in item['loadedUTermControls']),
-            c2IndexLiteral=(bound['end']!='REFERENCE' or all(item['c2IndexLiteralSupported'] and
+        face_census = face_address_census(records)
+        complete_faces = face_census['complete']
+        checks = dict(faceLegCensus=complete_faces,
+            allHarmonicDrivesZero=complete_faces and all(item['driveZero'] for item in records),
+            nativeEVelocityPresence=complete_faces and all(item['eWPresenceCalibration']['presenceCalibrationSupported'] for item in records),
+            loadedUControls=complete_faces and all(control['status']!='UNRESOLVED' for item in records for control in item['loadedUTermControls']),
+            c2IndexLiteral=complete_faces and (bound['end']!='REFERENCE' or all(item['c2IndexLiteralSupported'] and
                 zero(item['c2IndexLiteralJoins']) for item in records)),lossSideFormsZero=zero(forms))
-        return dict(end=bound['end'],faces=records,physicalForms=forms,checks=checks,
+        return dict(end=bound['end'],faces=records,faceLegCensus=face_census,physicalForms=forms,checks=checks,
             harmonicLegScope='BOTH_SAVED_REAL_FIELD_LEGS_NOT_TWO_ACOUSTIC_INCIDENCE_WAVES',
             c2LiteralEvidence=literals,c2EvidenceScope='ORIENTATION_BLIND_INDEX_LITERAL_ONLY',
             flatExteriorSourceInternalJoins=bound['flatExteriorJoins'],
@@ -844,6 +874,10 @@ def construct(spec, out, journal):
         forms = {name:basis.conj().T@numeric(value,mapping)@basis
                  for name,value in bound['currents'].items()}
         face = numerical_face_legs(bound,mapping,basis)
+        face_census = face_address_census(face)
+        if not face_census['complete']:
+            return dict(base,reason='FACE_LEG_CENSUS_INCOMPLETE',basis=basis,fullResidual=residual,
+                        rowScale=row_scale,forms=forms,face=face,faceLegCensus=face_census)
         current = forms['SLAB_CURRENT_MATRIX']; hermitian = current-current.conj().T
         eig, rotation = np.linalg.eigh((current+current.conj().T)/2)
         depth_coefficient = complex(bound['outgoingDepthCoefficient'].subs(mapping).evalf(40))
@@ -852,7 +886,7 @@ def construct(spec, out, journal):
                     rootMultiplicityAccounted=(basis.shape[1]==multiplicity),
                     rankInterpretation='NUMERICAL_SUPPORTED_CURRENT_RANK_LOWER_BOUND',
                     fullResidual=residual, rowScale=row_scale, forms=forms,
-                    face=face, current=current, hermitianResidual=hermitian, currentEigenvalues=eig,
+                    face=face,faceLegCensus=face_census,current=current,hermitianResidual=hermitian,currentEigenvalues=eig,
                     rotation=rotation, controls=controls, outgoingDepthCoefficient=depth_coefficient)
         if q2.is_positive and (abs(depth_coefficient.imag)>1e-10 or depth_coefficient.real<=0):
             return dict(base, reason='OUTGOING_DEPTH_SIGN_UNRESOLVED')
@@ -884,6 +918,7 @@ def construct(spec, out, journal):
         pencil_join = (matrix-np.asarray(old['pencil'],complex))/scale[:,None]
         kernel = (matrix/scale[:,None])@right
         face = numerical_face_legs(bound,mapping,right)
+        face_census = face_address_census(face)
         slab = numeric(bound['currents']['SLAB_CURRENT_MATRIX'],mapping)
         bulk = numeric(bound['currents']['BULK_NORMAL_CURRENT_DENSITY_MATRIX'],mapping)
         current = right.conj().T@slab@right
@@ -894,7 +929,7 @@ def construct(spec, out, journal):
         wave = complex(bound['wave'].subs(mapping).evalf(40))
         normal_reality_residual = k0-k0.conjugate()
         normal_is_real = k0.imag == 0.0
-        face_zero = all(np.linalg.norm(value)<1e-8 for item in face
+        face_zero = face_census['complete'] and all(np.linalg.norm(value)<1e-8 for item in face
                         for value in item['contractions'].values())
         bulk_zero = np.linalg.norm(projected_bulk)<1e-8
         hermitian_residual = current-current.conj().T
@@ -945,7 +980,7 @@ def construct(spec, out, journal):
                 realOutwardDepth=real_outward,coordinateRealityTolerance=1e-12,
                 historicalDecayDisk=info.get('BULK_DECAY_DISK_CERTIFIED'),
                 supported=(abs(normalization_residual)<1e-10 and (decay or real_outward))))
-        checks = dict(savedFrequency=(w0==params['omega']),
+        checks = dict(faceLegCensus=face_census['complete'],savedFrequency=(w0==params['omega']),
             transverseMembership=np.linalg.norm(t_residual)<1e-8,
             physicalPencilJoin=np.linalg.norm(pencil_join)<1e-8,
             physicalKernel=np.linalg.norm(kernel)<1e-8, physicalWave=abs(wave)<1e-8,
@@ -953,7 +988,7 @@ def construct(spec, out, journal):
             actualPhysicalDepth=(depth_evidence[0]['supported'] and not depth_evidence[1]['supported']),
             slabCurrentOperands=np.linalg.norm(operand_joins['slab'])<1e-8,
             bulkCurrentOperands=np.linalg.norm(operand_joins['bulk'])<1e-8,
-            nativeEVelocityPresence=all(item['nativeEVelocityPresent'] for item in face),
+            nativeEVelocityPresence=face_census['complete'] and all(item['nativeEVelocityPresent'] for item in face),
             undriven=face_zero,projectedBulk=bulk_zero,
             transverseCurrentHermitian=hermitian_supported,transverseCurrentNonzeroRank=current_rank_supported,
             controls=all(item['status']=='RESPONSIVE' for item in controls))
@@ -964,7 +999,7 @@ def construct(spec, out, journal):
             historicalEligibility=history,historicalWeightedGramComparison=historical_comparison,
             checks=checks,sourceMatrix=matrix,savedPencil=old['pencil'],sourceLift=lift,
             savedRight=right,transverseResidual=t_residual,pencilResidual=pencil_join,
-            kernelResidual=kernel,waveResidual=wave,face=face,recomputedTransverseTransport=transport,
+            kernelResidual=kernel,waveResidual=wave,face=face,faceLegCensus=face_census,recomputedTransverseTransport=transport,
             actualNormalMomentum=k0,normalRealityResidual=normal_reality_residual,
             normalRealityCriterion='Zero imaginary part of the saved numeric coefficient, checked directly',
             currentOperandResiduals=operand_joins,projectedBulk=projected_bulk,controls=controls,
@@ -972,7 +1007,8 @@ def construct(spec, out, journal):
 
     def classify(label, bound, w0, v0, prefix):
         if v0 == 0:
-            record = dict(end=label,status='UNRESOLVED',coverage='UNRESOLVED',reason='CURL_CHART_ZERO_RAY', omega=str(w0),ray=str(v0),kappa='0')
+            record = dict(end=label,status='UNRESOLVED',coverage='UNRESOLVED',reason='CURL_CHART_ZERO_RAY',
+                          omega=str(w0),ray=str(v0),kappa='0',positiveCurrentRank=None,negativeCurrentRank=None)
             save(out/(prefix+'-summary.json'),record); return record
         point = op(prefix+'-census',census,bound,w0,v0,seconds=12)
         results = []
@@ -994,8 +1030,8 @@ def construct(spec, out, journal):
             kappa=str(sp.sqrt(5)*v0),candidateCount=point.get('count'),candidateMultiplicity=point.get('totalRootMultiplicity'),
             transverseDomainCertified=point.get('noRealExcludedPoint',False),
             candidateStatuses=[x.get('status','UNRESOLVED') for x in results],
-            positiveCurrentRank=sum(x.get('positiveCurrentRank',0) for x in results),
-            negativeCurrentRank=sum(x.get('negativeCurrentRank',0) for x in results),
+            positiveCurrentRank=(sum(x['positiveCurrentRank'] for x in results) if coverage=='COMPLETE' else None),
+            negativeCurrentRank=(sum(x['negativeCurrentRank'] for x in results) if coverage=='COMPLETE' else None),
             physicalLightCalibration='NOT_ESTABLISHED',lossFractionComputed=False)
         save(out/(prefix+'-summary.json'),record)
         return record

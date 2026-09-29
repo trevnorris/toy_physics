@@ -1,9 +1,11 @@
 # Transverse/face premise worker: source schema and limits
 
 This is an unexecuted repaired instrument for independent build review. The
-reviewed third build remains at `93b438b2`; its literal Claude CLEAR FOR THIS
-BOUNDED TRANSVERSE/FACE BUILD and Grok NEEDS REVISION reports, together with
-earlier reports, are preserved. Preparation approval cannot launch this code: a later
+reviewed fourth build remains at `dfe68748`; its literal Claude NEEDS REVISION
+and Grok NEEDS REVISION reports, together with earlier reports, are preserved.
+Both accepted the prior saved-current comparison repair. This revision changes
+only rank-summary, timer and face-census instrumentation. Preparation approval
+cannot launch this code: a later
 pinned user science approval after the costed-plan stop, a fresh build gate,
 and ordinary guard/supervisor containment remain required. No payload was
 restored and no mathematical operation was executed during this repair.
@@ -24,8 +26,9 @@ certificates must exclude all real zeros of those T-domain exclusions. This
 is not a full-pencil/H pole census. Root multiplicities remain explicit;
 twofold T roots are not rejected merely for being repeated. Actual lifted
 kernel/current ranks support available subspaces; incomplete multiplicity
-accounting prevents a complete census claim. Numerical ranks and residuals
-remain tolerance-based evidence.
+accounting prevents a complete census claim. Point-level positive/negative
+current-rank totals are null unless coverage is COMPLETE; full root evidence
+remains saved. Numerical ranks and residuals remain tolerance-based evidence.
 
 REFERENCE, LEFT and RIGHT are bound separately. The manifest's fixed-ray
 prefix (1/4, 3/10, 1/2) precedes optional loci. The transition cap comes from
@@ -52,8 +55,11 @@ Both actual saved harmonic face legs are differentiated against their own
 Plus/Minus amplitude arrays and their linear reconstructions are retained.
 Symbolic and numerical contractions use the physical lift/basis and its
 conjugate respectively; no unchecked conjugacy assumption replaces the second
-map. Both legs contribute source denominators and pressure/velocity checks.
-The readable c2 evidence remains **orientation-blind index-literal velocity
+map. Source binding checks two source orientations and two legs per face.
+Symbolic, numerical-root and saved-seed gates require all four distinct
+face/leg addresses, retaining actual counts and addresses; missing coverage
+remains unresolved before any lossless premise. Both legs contribute source
+denominators and pressure/velocity checks. The readable c2 evidence remains **orientation-blind index-literal velocity
 only**, with each harmonic time character evaluated at its own minus/plus
 i-omega rate. Matching literals does not validate physical face assignment or
 the original transcript. Flat d pressure/velocity joins are source-internal
@@ -91,8 +97,10 @@ objects must match their digest and size. The short timer is disarmed
 immediately after the function returns inside the protected try block. Every operation retains complete
 operand references and its own receipt, including identical returns. Short
 operation timers end before serialization; only the remaining native deadline
-covers publication. Ordinary mathematical exceptions create local unresolved
-receipts with tracebacks. Initial restores, integrity and persistence failures
+covers publication. The Journal signal handler arms the remaining whole-job
+time before raising a local OperationBudget; native expiry stays fatal and
+disarmed for failure bookkeeping. The containment bootstrap is unchanged.
+Ordinary mathematical exceptions create local unresolved receipts with tracebacks. Initial restores, integrity and persistence failures
 are fatal. The native deadline is distinct, disarmed before failure handling,
 and never rearmed at a 1ms fallback. Whole restored packets are not rendered
 to JSON. Partial objects, completed returns, planned/unvisited grid state,

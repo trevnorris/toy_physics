@@ -28,8 +28,10 @@ incomplete root, chart, branch, current or control check cannot count as zero
 available channels. An available root proves existence; it does not establish
 the complete polarization census if another candidate is unresolved. Any
 absence claim needs the supported complete transverse census at that point.
-Unvisited end/point records remain unresolved. Grid samples cannot rule out
-thin unsampled regions or make a no-leakage theorem.
+Unvisited end/point records remain unresolved. Point-level positive/negative
+current-rank totals are published only for complete coverage; incomplete totals
+are null, with the underlying root records retained. Grid samples cannot rule
+out thin unsampled regions or make a no-leakage theorem.
 
 Use the physical five-field end pencil with the saved curl lift and its actual
 current bilinear. The transverse restriction must join the full pencil, with
@@ -102,7 +104,10 @@ eW-velocity omission on an independently addressed nontransverse probe; also
 check dependence of the transverse-zero test on its physical source/lift slots.
 A zero contraction is a result to inspect, not an answer built into the source.
 Account for both saved harmonic legs of each physical face, with their actual
-Plus/Minus amplitude maps and conjugate physical lifts/bases. An untested
+Plus/Minus amplitude maps and conjugate physical lifts/bases. Check the source's
+two orientations and two legs per face explicitly, and require all four distinct
+face/leg addresses before symbolic or numerical lossless-premise gates. Missing
+face evidence is unresolved; an empty all/any reduction is not a census. An untested
 conjugacy assumption cannot replace the second map. Require the source's
 outward-velocity E-slot presence calibration on each leg, separately from its
 structural T zero. Other theta/E probes retain structural-zero cases rather
@@ -157,7 +162,9 @@ the local operation unresolved. Required initial restores and persistence or
 input-integrity failures remain fatal. Atomically publish objects and receipts,
 verify any existing content hash, and end each short operation timer before
 serialization. Whole-job expiry is fatal, disarmed for failure bookkeeping,
-and cannot be swallowed as a local budget stop. Preserve restored objects as
+and cannot be swallowed as a local budget stop. A local timeout handler re-arms
+the remaining native deadline before raising OperationBudget, so that fallback
+does not depend on propagation of the local exception. Preserve restored objects as
 complete blobs without unbounded pretty-printing. Branch-map reconstruction
 is labelled saved integrity, not a second derivation.
 

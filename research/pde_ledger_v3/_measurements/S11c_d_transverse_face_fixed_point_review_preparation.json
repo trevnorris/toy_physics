@@ -1,5 +1,5 @@
 {
-  "status": "PREPARED_AWAITING_EXACT_PACKET_SUBMISSION_APPROVAL",
+  "status": "REVIEWS_LAUNCHED_AWAITING_BOTH_REPORTS",
   "preparedUtc": "2026-09-29T16:39:15.814533+00:00",
   "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/build-review",
   "packetSha256": "324da469516f6bd39fbac154fdeed020e726cc6442e3df59292aaa98e4b93e02",
@@ -413,7 +413,7 @@
     "rootNewWorkerSemanticInspection": false
   },
   "authorization": {
-    "status": "PENDING_EXACT_PACKET_APPROVAL",
+    "status": "EXPLICITLY_APPROVED_FIXED_PACKET",
     "reviewers": [
       "claude",
       "grok"
@@ -422,12 +422,50 @@
     "archiveSha256": "46a1c89433a96e82c853b0d2c5a2b90b7adb5dacc2225dbdc787b817c7d11f2e",
     "packetFiles": 79,
     "packetBytes": 1628509,
-    "scientificExecutionAuthorizedByThisSubmission": false
+    "scientificExecutionAuthorizedByThisSubmission": false,
+    "approvedUtc": "2026-09-29T16:47:03.608460+00:00",
+    "userMessage": "you may submit this packet",
+    "approvedPacketSha256": "324da469516f6bd39fbac154fdeed020e726cc6442e3df59292aaa98e4b93e02",
+    "preparedCommit": "d163c1fe",
+    "currentThread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+    "noPeerReports": true,
+    "noAutomaticRetry": true
   },
   "scientificExecutionsUsed": 3,
   "proposedScientificExecutionOrdinal": 4,
   "execution4ScienceNotLaunched": true,
   "independentBuildClearance": false,
   "priorFailurePreserved": true,
-  "execution4AuthorizationSha256": "49dbc3c7763a71ac53c96c2113842dbfcf8b4043cc77ab390925348bdfebced1"
+  "execution4AuthorizationSha256": "49dbc3c7763a71ac53c96c2113842dbfcf8b4043cc77ab390925348bdfebced1",
+  "approvalRecordSha256": "198cbb511ebdb0907f441be7bcf45f9d4b2bc242b1cb6cdc4d294fe3355a429c",
+  "allInputPinsRechecked": 142,
+  "allPacketSourcePinsRechecked": 78,
+  "launch": {
+    "jobPid": 2405172,
+    "watcherPid": 2405173,
+    "packetSha256": "324da469516f6bd39fbac154fdeed020e726cc6442e3df59292aaa98e4b93e02",
+    "reviewers": [
+      "Claude",
+      "Grok"
+    ],
+    "concurrentReviewWorkers": 1,
+    "scienceCalls": 0,
+    "runnerSha256": "a26a07dea56830abb0524c16b2911d195f07e23efc5696d87bf981573418c553",
+    "launcherSha256": "1ea4df31e4976942911381bab2f4495687b78cf2df4c131c7ce00b8013e01039"
+  },
+  "launchRecordSha256": "b46e8d244460108d167fe8b87c16d1734fd36bd879edef76f296c46b76985572",
+  "startupCheck": {
+    "checkedUtc": "2026-09-29T16:48:09.353979+00:00",
+    "ownedCoordinatorReviewerAndWatcherExist": true,
+    "state": "RUNNING",
+    "hookStatus": "waiting",
+    "activeReviewer": "claude",
+    "coordinatorStderrBytes": 0,
+    "watcherStderrBytes": 0,
+    "reviewerStderrBytes": 0,
+    "checkCount": 1,
+    "reportContentRead": false
+  },
+  "externalSubmissionAuthorized": true,
+  "rootNewWorkerSemanticInspection": false
 }

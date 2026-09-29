@@ -1,0 +1,33 @@
+{
+  "status": "STATIC_READY_FOR_ALREADY_APPROVED_PROGRESS_CONTINUATION",
+  "recordedUtc": "2026-09-29T19:22:48.826815+00:00",
+  "gate": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_fixed_point_continue_gate.json",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_fixed_point_continue_gate.json",
+    "bytes": 4905,
+    "sha256": "3e1ef357b1d38652fab2be58b790544b6cbf8fa430b827902345a7873d40c6ba"
+  },
+  "launcher": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_fixed_point_continue_stage_launch.py",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_fixed_point_continue_stage_launch.py",
+    "bytes": 15745,
+    "sha256": "a70ba31e764cda3b0efc3afd2eecd5bb3af4a99cab8796d57a9f0909d1bfaed1"
+  },
+  "reviewRecord": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_fixed_point_continue_review_record.json",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_fixed_point_continue_review_record.json",
+    "bytes": 123824,
+    "sha256": "2770c68c9576b67d89837ee7c1812a1f8788be81d49a9effd14ef79c9fe97769"
+  },
+  "authorization": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_fixed_point_continue_authorization.json",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_fixed_point_continue_authorization.json",
+    "bytes": 1769,
+    "sha256": "34020b86a5f36175478f86f8a3963a1d1beb4c37fb341e2c3a4ed1e2d498e6c9"
+  },
+  "scientificExecutionOrdinal": 5,
+  "scientificExecutionLaunched": false,
+  "reviewedWorkerAndGuardUnchanged": true,
+  "scientificImportsOrRestorations": 0,
+  "completionHookTarget": "01a0e01b-ef84-7192-817f-584cda5d339b"
+}

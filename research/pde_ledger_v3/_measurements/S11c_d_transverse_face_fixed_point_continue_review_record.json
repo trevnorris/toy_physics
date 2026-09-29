@@ -1,0 +1,1422 @@
+{
+  "status": "BOTH_INDEPENDENT_REVIEWS_CLEAR_EXACT_UNCHANGED_CONTINUATION",
+  "inspectedUtc": "2026-09-29T19:20:33.438965+00:00",
+  "reviewedCommit": "3b831062",
+  "submissionCommit": "70c6febc",
+  "independentBuildClearance": true,
+  "workerSha256": "5d38c329e8e15cff091c09584c1d33806fd8318f66a779fc10f2ae52d00e3135",
+  "inputManifestSha256": "e78fc287fec25006d555ffb107d1fdcc6ef222554b3221d546c11331d05bb63b",
+  "scopeSha256": "ff951cb8f30992cec8892782a9fc47b3f9ece8ca8ec026f7295847ba9f474adc",
+  "authorizationSha256": "34020b86a5f36175478f86f8a3963a1d1beb4c37fb341e2c3a4ed1e2d498e6c9",
+  "guardSha256": "1c2bef4f691555e98e20eec1ccb76c8861cfd92ce827ddc36caa19afc12f5ecd",
+  "packetState": {
+    "status": "AWAITING_ADJUDICATION",
+    "preparedUtc": "2026-09-29T18:54:45.392932+00:00",
+    "packetDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation-build-review/packet",
+    "packetSha256": "c88b13119288be87d01ce40eed1c9e3ada483d30015fdebad3548feb555197f5",
+    "archiveSha256": "26e0cd0765ca9a362069a8dc21a159d2615f0f6d3f5239a0f0291da83666c803",
+    "fileHashes": {
+      "_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/acoustic-law-source.json": "fbf49d0f6ae5404e8b1d86e9b6a15abc69c7230a134d0ab06fcf0b81fc6ca0cb",
+      "_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/artifact-index.json": "5de2dae1ad6dbc1a5ba90d51342a60c7ac5dc33bc4d380c565183caa3edb98d7",
+      "_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/checks.json": "af8378e0f87de75c726be6b18f1ea1943f089530f225927b95114a3c4d1c37ce",
+      "_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/native-face-order-source.json": "0285262ca5e9eafb920178fb05d8f8fec434a07214251536f4fc45a1d9cb54db",
+      "_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operation-index.json": "552a5c35942e552104b36e585af7c5e6c167f0db4a21cd9a57e4223641a7b3e9",
+      "_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0000-restore-uniform/complete.json": "d2d304fbd16ddd33c55a4a91228ad132f6ecd5da9f89532bf9f685d1de8497d3",
+      "_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0000-restore-uniform/input-references.json": "854db7ddd7abc9cbe7412e528a343aa9a42d10c70ee51734bf6adddfe2de21a1",
+      "_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0000-restore-uniform/started.json": "bab33d2a268d2028ad4298cb72b285b03430daa1270f6993a6a7e63b9079ad61",
+      "_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0001-restore-branch-context/complete.json": "a410791caf7fec687d4335e6a711d8bb04905e1df7de76c87b984d0dac729e71",
+      "_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0001-restore-branch-context/input-references.json": "086794dcff7e6bbc20e6576bccce34cbceb160ba24c45d6be84c66775df29258",
+      "_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0001-restore-branch-context/started.json": "e9f9804e92e6cfe5c52077b10ab8c3e30dd9d3d7075b8c6a302e106db4047f7e",
+      "_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0002-restore-unit-context/complete.json": "6171f7abcd33caf24051ba9d1e2688f7152422541fe59f3fb729d7de66d2cbf4",
+      "_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0002-restore-unit-context/input-references.json": "89dc04c2a1444ab162f2538c5fc5ce1baa013ca983c54f593bc70520c7773532",
+      "_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0002-restore-unit-context/started.json": "b7b2ab299a6b6f130b25aabe78cc99ed7f78cd11cceff75721cfe7dc6e69c715",
+      "_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0003-restore-uniform-common/complete.json": "a00d8ee3678312adfe917df706ee42e8e93034e3fecb69a3019b442748889502",
+      "_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0003-restore-uniform-common/input-references.json": "7df161fa2cff59718f2b1792fb42b5bc3d4992d1cf46c0d329a27002105b852c",
+      "_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0003-restore-uniform-common/started.json": "e94c727c1897eac373b8de9ccce6ac110186918536f2393da0bbc2a4d1d38630",
+      "_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0004-source-branch-map-joins/complete.json": "f0a7578caf9c65b449731ea1d5d25a71bff25b44963cbaad2ef02ccde0d50521",
+      "_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0004-source-branch-map-joins/input-references.json": "394d297b8ccf2f548d22c81c409ef5ce4d0a6e419baffbbbec2ac85f7e1372f3",
+      "_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0004-source-branch-map-joins/started.json": "26f3a6d7a756ca70cc032a477147f2c5966f695b7be83e51e1c5ba62bce95529",
+      "_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0005-REFERENCE-restore-original-symbol/complete.json": "d39093e46de242445a1b36e702bca3e3ba5d47b3bbaf00a323f58e3038e14737",
+      "_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0005-REFERENCE-restore-original-symbol/input-references.json": "8455ede79d2c0ae972f0fbc839a535c3168e342a65349582e27eff5fa9c70e00",
+      "_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0005-REFERENCE-restore-original-symbol/started.json": "8d20e2ed9d79ab603769f344c6782b773da3395dd38dcb88910a85bff015be33",
+      "_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0006-REFERENCE-restore-current/complete.json": "652e5c9103195bcb3b2e3b3556b8d1cea8a447e54740e8ec51d837d0e552c989",
+      "_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0006-REFERENCE-restore-current/input-references.json": "fbdab19a030cf94cb03be812df6d0390334382c62e629819f48f540038fbe095",
+      "_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0006-REFERENCE-restore-current/started.json": "152bd3b551894bc1a1b7d172efdd167848b4bf27d98b794918ef9ce9f79ee42b",
+      "_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0007-REFERENCE-source-bind/input-references.json": "ca496f7ffb43ac6cd3fd3d84b20dedf64bca1408be4ddefc36e2f73f86faaa25",
+      "_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0007-REFERENCE-source-bind/started.json": "572abf96f5776f6f0a0184776b6c7e6a8f1976702870e48e4a0503629b3d71c0",
+      "_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0007-REFERENCE-source-bind/unresolved.json": "edf58e3020a65bf8ee71d6e4cb7f27b6a85cb62da846804dbc042e88f7011790",
+      "_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0008-LEFT-restore-original-symbol/complete.json": "b351ce7bb7c04a16fa601efa3b6b709441ad9b08f729b11deadbe6dcaaed075c",
+      "_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0008-LEFT-restore-original-symbol/input-references.json": "bfbb930cc0fb264e85c35a3665e137716d42c9ba1614082a84379d9ecb14048a",
+      "_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0008-LEFT-restore-original-symbol/started.json": "cd127032ed3bc3b36019c58152d2d7a3b5e5607749d2f6c1dde0a15cfa4d2935",
+      "_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0009-LEFT-restore-current/complete.json": "438b0b8ebc884758feadb338fa8aff95f0570cbc4a4988818b2b812a8864304e",
+      "_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0009-LEFT-restore-current/input-references.json": "ce7ad21dc6c4973f20a85a0ecc4c3052ac4fd9f604c496dd699180004209a7e6",
+      "_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0009-LEFT-restore-current/started.json": "76d22302ba3561970aa4e0b68827cb1273311ed170135db5e5bf5e8777c2d995",
+      "_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0010-LEFT-source-bind/input-references.json": "db42f3cecac9fc9ad2cebee2be91d05c3c87056b3e205d7b173ed0e43182bcc6",
+      "_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0010-LEFT-source-bind/started.json": "ffe6400e060b8df79feacfa34f56a2ed5a63968fd63cd9fb1295b66a88510d13",
+      "_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0010-LEFT-source-bind/unresolved.json": "af749b9ae976bd97ac0b5ef6904ae176e0a3fdfb29b394a4886c7b39a84fc8d4",
+      "_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0011-RIGHT-restore-original-symbol/complete.json": "7b9e5882b59ef46922c6fcb6e67e7e75e5f26ce6e8f272ada4ed7304e6f810f9",
+      "_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0011-RIGHT-restore-original-symbol/input-references.json": "51fd2e1c528ef98f4c736403476bf946e65394398cff815130076df1c87a7140",
+      "_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0011-RIGHT-restore-original-symbol/started.json": "24bef2bccc8c8d3214b982d40d042d98c7ccf1e33a9145ecaec760b085166af7",
+      "_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0012-RIGHT-restore-current/complete.json": "a6a2414d62db67024e4f4595ab57b816f0e2aa644cc1a5844144fc6f31a77536",
+      "_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0012-RIGHT-restore-current/input-references.json": "64c6c8bf562d9eba62baad7eb2be2052a03bd7c9b3943b3f258e53d6919445ee",
+      "_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0012-RIGHT-restore-current/started.json": "3d916ac5a7d3f4c09583b28b8290dae88cc37166da1d3a2014bebfdbd42abcc9",
+      "_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0013-RIGHT-source-bind/input-references.json": "041815711e39b0434171c1e3839b15533eaa956fd7d55049c7742a0243a51c80",
+      "_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0013-RIGHT-source-bind/started.json": "316b3f7bd6c4cb73dfc9f21d152c1d1b06c8709a687830fd8bf5a69ac0378045",
+      "_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0013-RIGHT-source-bind/unresolved.json": "258e68ee6e09c7f73482ef55df20b83a5791d732e316312063f9e89e5274ccbd",
+      "_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/source-branch-map-joins.json": "5d026df1f253d78410df9a84787d453e9a78384cd99eb4c495a7af6a60bc57dd",
+      "_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/unit-context.json": "afe598d7ec98f7a159e67e65eb83f8636c0ebd37d50c452b5c5552b956867773",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/artifact-index.json": "797e2b38501cbda53a958e0bc0b3a993fe177b546ecd650a583e29940a3207a8",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/checks.json": "2dd1bf7957c5bd046c8a49e6fecd9cb37adccf4a13ca5b096837c4859486ddcc",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/complete-return-reuse.json": "717b95a559c92256d05e201ef904df0bab00420e51308b4d0d81f8e96320dd6a",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/native-limits.json": "4b2c692d5bfcec7183f97936c77c3cce9cbcc8e797f44c0a2d689207a4f0047b",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operation-index.json": "021beb231a990d39b043beea9ec8c10f7f4411704036dc3ed796d4911ab21178",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0000-restore-uniform/complete.json": "3bab4e677d7b6aea8e4565e951dc450e4437727ad10aa2df612a17301d0a3b6c",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0000-restore-uniform/input-references.json": "11279a35af35faa66dca78c71afa6c032397ae515e5fafd540d5a4685489037f",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0000-restore-uniform/prior-argument-join.json": "fe292e9cc459399041388f8488f2d8387144b27be4d14941bee12a75051b281e",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0000-restore-uniform/prior-restoration-source-join.json": "4214c46eab7b841dea166cf86d51ddfee6ec4aee02b66cef5118d5f62f782bab",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0000-restore-uniform/started.json": "b7a097b8ec44250b303bcf3903ee31e3f6d54a6ffc51d74431e894d75b485d2f",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0001-restore-branch-context/complete.json": "22977ef6423e1c4f73d1c7d24f76e06183411e88a9e1a6c6831543024744a07d",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0001-restore-branch-context/input-references.json": "abac82e57a3e83ae202555bef07ba406b6d519be5548601d77603b8d8d5d4f8b",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0001-restore-branch-context/prior-argument-join.json": "0460e9cf49766b248249cb11fbfa17c20d017bcc2b5437425b35ab70fb4bfe0e",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0001-restore-branch-context/prior-restoration-source-join.json": "a1fa68ded9a1e188188e755f315c2b66dd5a6266d7c3f34c64671b44235a44d4",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0001-restore-branch-context/started.json": "bc9681e03070781d29edffe2e0f27ae7d2cf48146a54b69834e48b83d5d4b9e0",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0002-restore-unit-context/complete.json": "6aeb8e867065d4d3584cf8b92550ad54440b669b8d1a8a819b0e9e6c080ed389",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0002-restore-unit-context/input-references.json": "ce8415d00840166676e6d9da035dcf828fe66561561feeddd71010689e4af778",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0002-restore-unit-context/prior-argument-join.json": "c33a831426bb7dd50a7c91d526ec44255402a0cafb9ae577f5cf9b7b3613f340",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0002-restore-unit-context/prior-restoration-source-join.json": "9bff475ca227703cf4a6824c4d162245ba0a71200eb18a123a7cf4a3eb749430",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0002-restore-unit-context/started.json": "d4b7bb7fe313b04135b6a5d27cd5e2b5215a0fe99733c9dbe987dc17df85e9f6",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0003-restore-uniform-common/complete.json": "769957743211670678393d315f57429e783f2286434f3158cffb23e5f12fd0bd",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0003-restore-uniform-common/input-references.json": "0e6e75b659ac87a3fea5e7f5fc542baf1cf40a19915697f40cb67e293a043a71",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0003-restore-uniform-common/prior-argument-join.json": "000ce805b504c2ea8ad7ff231d763a09d75a72c2e6b11702534c652372df2cb5",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0003-restore-uniform-common/prior-restoration-source-join.json": "d10ea99ab77a64d47aaac2ce2864ba381410d377061bb63ea44cde175ccfdded",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0003-restore-uniform-common/started.json": "2d5dd9310a78ceff4f36af64e182374f0c22444d75ebc77a50a8489037a0713f",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0004-source-branch-map-joins/complete.json": "287fc9e12db1b3438204d0cbbd0e61aca6264ff1dc39e9193ae640e29bae99ce",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0004-source-branch-map-joins/input-references.json": "7c80d8ceb400dabaab48107aa393128f849fbada71b331bca9572f3f8551de23",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0004-source-branch-map-joins/prior-argument-join.json": "719ef46733f05e014511eee31cd4ba1e9d30885db70027d46a8d305edc54cf4c",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0004-source-branch-map-joins/started.json": "78dc50a660eb188f6fd3bae28e9ffbb2659d47ee9038de0da29ee4285423d66e",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0005-REFERENCE-restore-original-symbol/complete.json": "a257e585f5898286c813cf2758a6344298fa8567d71330f3f2da55598cb678ce",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0005-REFERENCE-restore-original-symbol/input-references.json": "49ecbacfef91e0206c0452e531125bac647089d92f5cfab1b24e2871139c6c0a",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0005-REFERENCE-restore-original-symbol/prior-argument-join.json": "d29d6e160a406c3b20ef8a11e1fff6f0bf819f5ac62f825e74ec36902f73426e",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0005-REFERENCE-restore-original-symbol/prior-restoration-source-join.json": "0de84fb7bb0e949207c23b20a67ff513916ee6046d8a1ecead4f8548bb2aa29f",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0005-REFERENCE-restore-original-symbol/started.json": "7412be30da5d65f169e64b7086a11419e49bfdf53d620a33ea38b4810f2c19a4",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0006-REFERENCE-restore-current/complete.json": "d395b1d05bc2e65f9098dffb4a43ba295e3b82e774151381fc842b3340e893da",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0006-REFERENCE-restore-current/input-references.json": "b68b961e41be04503875462ecb1a2009ddf3d73b5400af056a005d519b136c2d",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0006-REFERENCE-restore-current/prior-argument-join.json": "bc6c178489024a96a3f605cc6108e8dcbe97d3e105b5a5239a655c9dab91410e",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0006-REFERENCE-restore-current/prior-restoration-source-join.json": "ca7d996eb61a00265823f64136c61ce448e745641a7107b5a43540859358f01d",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0006-REFERENCE-restore-current/started.json": "6e01d8d8f544d245b45843c54e52a1d3e1b4ecc37440b4b0c419cd0c54ffeadc",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0007-LEFT-restore-original-symbol/complete.json": "9e2de7c4a1486a940c03ca449ceadc055209dfbede719909e230bff431436a7f",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0007-LEFT-restore-original-symbol/input-references.json": "acb75cde1214fcefd7c65e05e6106e44b60eba13865014501ae18fff1caed19b",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0007-LEFT-restore-original-symbol/prior-argument-join.json": "935862a3c42a2af1af054062917d2e4df93d9abd85e94a767b091191da23555a",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0007-LEFT-restore-original-symbol/prior-restoration-source-join.json": "00627e593fc976e26a02801cd5abcc290beeabdd98bd0de1944935b10d646a0d",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0007-LEFT-restore-original-symbol/started.json": "c688465f8d2f51014a32e942eee29155c039d53f55cefad2e02be4014e110d2e",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0008-LEFT-restore-current/complete.json": "27bdf30cd76c813bc079587664476f791f9aa777e2da7fc5a7981a34b3b5bd79",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0008-LEFT-restore-current/input-references.json": "246e3b95d527e6f3d63fad1ab7a36af5b108a2f390c1582f36a0c69c2538bacb",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0008-LEFT-restore-current/prior-argument-join.json": "b25a264aafc22b8b8d191d274fad76a6fccc89b67ba92396b3d387a2872219d8",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0008-LEFT-restore-current/prior-restoration-source-join.json": "4a9d7f0b58b99483025931a8aa1ef8cfe12ed7c52eed5fa13079bc35a4687a0e",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0008-LEFT-restore-current/started.json": "90951cb28420c8a8ca79140e8810caf1ce277e32d244fe56c1c45c0e4b9ab715",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0009-RIGHT-restore-original-symbol/complete.json": "4d5e986c8a37c78673bb635ce72dc4e5ac5f697594eb2d7a882e057edcd60110",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0009-RIGHT-restore-original-symbol/input-references.json": "0c1da24e6cba4f83bac7eb17f2fee1b68b3413442286d0592e1d1750b09b4222",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0009-RIGHT-restore-original-symbol/prior-argument-join.json": "ee43bf811481617721daea7266929e81bc677478337f8db97dd41e7d5d895833",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0009-RIGHT-restore-original-symbol/prior-restoration-source-join.json": "ae937195220d21dd11fc9a5d60d54d3a7e33f84ca7adb1b7ba884c9d5eba12ef",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0009-RIGHT-restore-original-symbol/started.json": "1d51a76e2a3e8bfb83ac59473cbdbcd76babb6ed1b28bd16926361a14129e84a",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0010-RIGHT-restore-current/complete.json": "13e25dd0fb4023669767bb4dc11d4d05cf6dde8fead2eb7a5e4607df146bc553",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0010-RIGHT-restore-current/input-references.json": "e764b142e434270618de81b7116b40948bbc8e7f12fd6a5246d64f9377e51537",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0010-RIGHT-restore-current/prior-argument-join.json": "9ba92a7a1ae5c520f8501341f99112f4ae827dd9aa520d6a9184917c226a719f",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0010-RIGHT-restore-current/prior-restoration-source-join.json": "98f95407f9287e037db6b0510eba71d5038b06a6bd6c5ef68323a46abe5d801e",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0010-RIGHT-restore-current/started.json": "8dcd05a332e5a739dcac19b23e6469c2aea32b4ecd83cafb847fee3617094e16",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0011-REFERENCE-source-bind/input-references.json": "b99ffd7e4d930eaa29f36cd87da4d9dff431bb5ac3c87280ef5cc2b07a1813a6",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0011-REFERENCE-source-bind/prior-argument-join.json": "7c4dfaf4a1875d4f8653766b4faf9f04bb47fe1146f6a335048bb63211c2a5a8",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0011-REFERENCE-source-bind/started.json": "bafd6804ed6d3e49211578255873c90bf0c4387b9956a2a61752b2fb9eb3cc6e",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0011-REFERENCE-source-bind/suboperations/BULK_DEPTH_CURRENT_MATRIX-carrier-return/complete.json": "e60cce63270ff55def3a83f474b61d8e53b0952a7f09b2920021f8a599f40dc1",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0011-REFERENCE-source-bind/suboperations/BULK_DEPTH_CURRENT_MATRIX-end-specialization/complete.json": "be30f4e725fa79d7034a801ca1a4db9fe9de3cc6826dab4e2854ae0e564c390e",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0011-REFERENCE-source-bind/suboperations/BULK_DEPTH_CURRENT_MATRIX-specialized-input/complete.json": "b8035fda8e8ef13a1b5ea8bd3396a5e61a9610c8b5c7ea168554d0bfed0c6538",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0011-REFERENCE-source-bind/suboperations/BULK_NORMAL_CURRENT_DENSITY_MATRIX-carrier-return/complete.json": "32cb753a53861b9d1994cc0c90c584d88c03685cad471c244738d18b2c05233d",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0011-REFERENCE-source-bind/suboperations/BULK_NORMAL_CURRENT_DENSITY_MATRIX-end-specialization/complete.json": "9d57ed3b7d40f699289a225f55c34ac0b29f7fcbb569c9829e3ac49521eeddbe",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0011-REFERENCE-source-bind/suboperations/BULK_NORMAL_CURRENT_DENSITY_MATRIX-specialized-input/complete.json": "ddc7085aa53efcf40ffd3b7ece908bd1df5481b9c4dcdb2e57ba55b6a6a5d7eb",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0011-REFERENCE-source-bind/suboperations/INTERFACE_POWER_MATRIX-specialized-input/complete.json": "71ebfa772714813198bd197e8dcbaa8c96dfd8e428adc49d15dca866a05ad88d",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0011-REFERENCE-source-bind/suboperations/SLAB_CURRENT_MATRIX-carrier-return/complete.json": "581333dc687fc2c1b4c655d58a38bec1a3c209bd24099fa955efa5b44179474f",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0011-REFERENCE-source-bind/suboperations/SLAB_CURRENT_MATRIX-end-specialization/complete.json": "afcf5592e63fb81eade689169ce4773bbca199645521c2980a8c8dcb78fb0760",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0011-REFERENCE-source-bind/suboperations/SLAB_CURRENT_MATRIX-specialized-input/complete.json": "2ef4e44b87e20395f2894a40493c2689a81489ae2bc890538c298e011fe513e7",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0011-REFERENCE-source-bind/suboperations/source-specialization/complete.json": "59ad9b26fc225b7b729ef50465c547929156526719eb942ee1baf777f3553678",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0011-REFERENCE-source-bind/suboperations/transverse-restriction/complete.json": "502d186252c87d2e269f69ed4af984bbc22011919a80bd87246feb2c86215f1c",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0011-REFERENCE-source-bind/suboperations/wave-polynomial/complete.json": "2f78740267530465d855ed7470c9fdb11f6d417d0afcd5e472864b0cc51b8229",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0011-REFERENCE-source-bind/unresolved.json": "c34ea3ca41dce72662b36b1a4132075682c8b9f4e1ab4a3617ee1813c446c90e",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0012-LEFT-source-bind/input-references.json": "cd402df1ae2eacda12037acfea68961192b035f0b08661739222aa28f909ab9d",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0012-LEFT-source-bind/prior-argument-join.json": "f03aead0843e031d1b306e90d316891c452ad29de34337f1e59f8bbe673eb8a0",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0012-LEFT-source-bind/started.json": "70901e05dd2cb97adbb8517db190d368c8521fb13debea43f6f24ffe44bfd113",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0012-LEFT-source-bind/suboperations/BULK_DEPTH_CURRENT_MATRIX-carrier-return/complete.json": "72b1e87b0a7a8ef40384fc44230a8a71fe59b096d2777961a502093c42516767",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0012-LEFT-source-bind/suboperations/BULK_DEPTH_CURRENT_MATRIX-end-specialization/complete.json": "30411e8be651300fff7327566ae4b9ba9de52bfbd79728dc02492c95dbfd09cb",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0012-LEFT-source-bind/suboperations/BULK_DEPTH_CURRENT_MATRIX-specialized-input/complete.json": "379af50fe2445771ccb95256ed7c9edba2027a4d7b3f12cdbcc31a76b4afc2fa",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0012-LEFT-source-bind/suboperations/BULK_NORMAL_CURRENT_DENSITY_MATRIX-carrier-return/complete.json": "bd512508d83aba0dfb793ad6c5e520477ccf35990c1fb5cbfcd40ef282e8bd80",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0012-LEFT-source-bind/suboperations/BULK_NORMAL_CURRENT_DENSITY_MATRIX-end-specialization/complete.json": "066b8aeaf55df17adb2a33408fd2aca592b451d3633e473f19e037429a0f9a56",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0012-LEFT-source-bind/suboperations/BULK_NORMAL_CURRENT_DENSITY_MATRIX-specialized-input/complete.json": "c549595d07d42da33715ec790e9cebc01f60ff3cef48347d3c3f18ff3805a642",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0012-LEFT-source-bind/suboperations/INTERFACE_POWER_MATRIX-specialized-input/complete.json": "4dea0b07ce451a561b6da2367860422f31f7dc808a4809593c4210c39c733fbd",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0012-LEFT-source-bind/suboperations/SLAB_CURRENT_MATRIX-carrier-return/complete.json": "5f997297ac5a18db28755b684f3558778ea223e6c7066311570c643efb729ef8",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0012-LEFT-source-bind/suboperations/SLAB_CURRENT_MATRIX-end-specialization/complete.json": "b342c8548b4ce26809d9fc4e96813a94dfac5ed3380e9aab5c4120e79a4b4c6c",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0012-LEFT-source-bind/suboperations/SLAB_CURRENT_MATRIX-specialized-input/complete.json": "cb9f5c14a66e153cc2db9281ab8a80b80f124fc64301f62a24006adb6de45ec9",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0012-LEFT-source-bind/suboperations/source-specialization/complete.json": "54a8500e1a3839073f80c1cbe6132c8bf18f37a710378cec104a8599d2ace31b",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0012-LEFT-source-bind/suboperations/transverse-restriction/complete.json": "99baa06a290970d8ee773f0112ba2d4d01e098a1f22149c08cbb74c1196a9f5a",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0012-LEFT-source-bind/suboperations/wave-polynomial/complete.json": "caa78187f906cec5b2b5525b21928b77cde504e2697221266309f386d695c128",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0012-LEFT-source-bind/unresolved.json": "430ff2fce2094d1712132b8f0d7beda299045ddfd62626e39761beba332b904a",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0013-RIGHT-source-bind/input-references.json": "affad6d0997f03a22a92659b995c11341c05595715c0b0c5f56377d88c128121",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0013-RIGHT-source-bind/prior-argument-join.json": "40dfc96648413316b94091486226358c69d963d55ed2b7378c16d9610ba912c1",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0013-RIGHT-source-bind/started.json": "3d6baee094712917c072365471ac5fb8f904bf63199bc6fcc7f57c4a87f470ae",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0013-RIGHT-source-bind/suboperations/BULK_NORMAL_CURRENT_DENSITY_MATRIX-specialized-input/complete.json": "36abdc38bbdaf130d899f8730bc3adaaf808a9d8d87eba9348cf1894028dc37b",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0013-RIGHT-source-bind/suboperations/SLAB_CURRENT_MATRIX-carrier-return/complete.json": "61b8c7ad0e9050e7dd981f8baf9e1141fe250e7f3d6955b9923e6d59c8eb075e",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0013-RIGHT-source-bind/suboperations/SLAB_CURRENT_MATRIX-end-specialization/complete.json": "3a46b68a88bf58247d81e2e7bd34f4262ca8f710b1144aa52bce6b9f33c1341d",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0013-RIGHT-source-bind/suboperations/SLAB_CURRENT_MATRIX-specialized-input/complete.json": "c5fa26909cf3a71e895196e6f092e37583613860e3e6a0322c05fa98fa70460c",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0013-RIGHT-source-bind/suboperations/source-specialization/complete.json": "f7b0ebf34b007c465ee4b9ea3277eaafbce1ac756fdd59ddc1039c3fa6793ff2",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0013-RIGHT-source-bind/suboperations/transverse-restriction/complete.json": "a500dabc3f562c8e995cb9951ef3e32678edcfc088eacce162c095e7225dbf0b",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0013-RIGHT-source-bind/suboperations/wave-polynomial/complete.json": "c56772756b885a4ffef5094169fb2996ed590186b3ab5d715a78f7709ae2ac2f",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0013-RIGHT-source-bind/unresolved.json": "3ab1d3613729a7790da1fdd16b13f706babb87a9caa2196cb9444d6523053213",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/saved-seed-comparison.json": "11973b4c159cd335dba77bba2f6e285b8f8ba0aae8f414d39606f0162eef8a05",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/source-end-states.json": "303b511a6182d10ed2a9415749efadd267237721334e6e908c5b2a513cf8ca76",
+      "packet-index.json": "c4466eca703f75e2ad7231bd1678dc01801c041c9d4ce74f2487217fb996eb33",
+      "research/pde_ledger_v3/_measurements/S11c_d_A9_saved_face_drives.json": "057c9960aa1c721d1973de85cc48e5d6ac3bcb20a233cfc10f63d6f9207d6bf8",
+      "research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py": "45a16f7f952ca6b571362b1c386fec76cd86f1e0ad04113074adf49c683ec49c",
+      "research/pde_ledger_v3/_measurements/S11c_d_end_pairing_check.py": "1fcf86b0be819e2c7e9a2127d8330c907bcaccf58d1d15c3f1534d594d926dee",
+      "research/pde_ledger_v3/_measurements/S11c_d_frequency_source.py": "9be20be462bc10bfcaa7af643b9301948dd79bc2e08eb24ebcd1386a81efcdac",
+      "research/pde_ledger_v3/_measurements/S11c_d_frequency_source_report.md": "46b91c1e159f6b467809c0119511b24bef270e4c960edf0755d2034fd93fa421",
+      "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_fixed_point.py": "64cd6ea8ec7907edacd5fce9687c2072d3a235bd270c0ea483e8b76f18af9888",
+      "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_fixed_point_authorization.json": "49dbc3c7763a71ac53c96c2113842dbfcf8b4043cc77ab390925348bdfebced1",
+      "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_fixed_point_codec_census.json": "3bc4d9875742f5686bff3041de79d9cb51457ff11f83fed7e813f9e61eb1e6ff",
+      "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_fixed_point_continue.py": "5d38c329e8e15cff091c09584c1d33806fd8318f66a779fc10f2ae52d00e3135",
+      "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_fixed_point_continue_authorization.json": "34020b86a5f36175478f86f8a3963a1d1beb4c37fb341e2c3a4ed1e2d498e6c9",
+      "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_fixed_point_continue_codec_census.json": "479ea98d0dcabda9ed84d01e312d80433a2d80ab460100c35772fe9a2f23233d",
+      "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_fixed_point_continue_guard.py": "1c2bef4f691555e98e20eec1ccb76c8861cfd92ce827ddc36caa19afc12f5ecd",
+      "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_fixed_point_continue_inputs.json": "e78fc287fec25006d555ffb107d1fdcc6ef222554b3221d546c11331d05bb63b",
+      "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_fixed_point_continue_scope.md": "ff951cb8f30992cec8892782a9fc47b3f9ece8ca8ec026f7295847ba9f474adc",
+      "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_fixed_point_continue_static_checks.json": "65b87cf85cdd11085eea9fca56846fb0199eed571660bd7e5c3686843ac5b19b",
+      "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_fixed_point_inputs.json": "01dc1264f1ac59490880b5d186e6b52cf65f2afb288dd9a1054741e57a0fc41c",
+      "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_fixed_point_saved_schema.json": "d6849134dcf25af0587cc4b896522b829bcee8e3db09cf00ca406ca812b2d09f",
+      "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_fixed_point_scope.md": "77cbebb09161688cd610a844fd054530c841fd0fda1e2b27a5cc5ddf7002240e",
+      "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_fixed_point_source_note.md": "2750192756c5d0a768d6ea8ca78d1d342affddc86b3ed497cacc0005f5b4064b",
+      "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_native_source.txt": "fe9492e73f5aeb4a5c1b1782153e9e420cc884ff730905aaefa26aaafa70b2b5",
+      "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_premise.py": "ebf2739a2f8dca9ed4130b89606a36a27be29ef5d5c0915756b7118fcbd6fae5",
+      "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_premise_checkpoint.json": "b7a401773af74131bd9a9ffcc783eceaab559f9b48f1a2afecca0a08ec2d7b1b",
+      "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_premise_inputs.json": "c04a3ca3d37fd645214a4455e36b5e4ab066d0587adc924dca1fbb3aa4648e8f",
+      "research/pde_ledger_v3/_measurements/S11c_d_uniform_response.py": "b65749ab0eaaeed372a5bf01077a030971fc3e05f05a11543443bd1de3f157d4",
+      "research/pde_ledger_v3/_measurements/S11c_d_uniform_source.py": "2a135aea365c7b5e57bfff7683c7b927cda52c0d37f6a9bad3c961eb6205a2b2",
+      "research/pde_ledger_v3/_measurements/S11c_d_uniform_source_checkpoint.json": "9d4b65ad07d1f403fd3aa4ec42da99db622a4d0a26d6ddce6c472148c7830085",
+      "research/pde_ledger_v3/_measurements/S11c_d_uniform_source_report.md": "d95f629e292e67eafe36bde9a5bd0689345c7fb3fac97d669671ea278ae65b8b",
+      "research/pde_ledger_v3/_measurements/S11c_d_variable_profile_development_input.json": "660b2b0b54494dce964c7f5fbd722a76a7e894d8ed92b18b5eb6290c3c10f1d5",
+      "research/pde_ledger_v3/directives/S11c_c1_SHARED_PHYSICS.md": "47554c8c9cf2fd070c1048a7ae0ca36b1315bf50a48ed07a51019ff3e72987ad",
+      "research/pde_ledger_v3/directives/S11c_d_CHANNEL_MAP_BORN_AMENDMENT_DRAFT.md": "8aa6fc7ab6d43f1f197a3cb8f9a83b7607f1de2c7a321aa130b582f4a323082d",
+      "research/pde_ledger_v3/directives/S11c_d_EXPLORATORY_ACCEPTANCE.md": "5c1e560a78d40739af8b1318c0487e20bf2b816c41109889e12004266c72840c",
+      "research/pde_ledger_v3/directives/S11c_d_SCATTERING_FORM_AMENDMENT.md": "eb6f20a3fd0bce308e53901fa69fdf267b2917e5cc78b319a1e7700074a47560",
+      "research/pde_ledger_v3/directives/S11c_d_SHARED_PHYSICS.md": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5",
+      "research/pde_ledger_v3/directives/S11c_d_TOTAL_TRANSVERSE_LOSS_AMENDMENT_DRAFT.md": "ec12456947527bb162a6bd56a65651f1028cca1f95f0d85379bdc8a411fbb6fc",
+      "research/pde_ledger_v3/scripts/S11c_d_mixing_scattering_sympy_audit.py": "5bf77729682960bb59f10c672a5fe3f67a98b0a9533da7c6189a37183596050f",
+      "review-prompt.md": "b6cb87b35db308666f3ba89802c562342f669a895aff88b1db8e56625796591f",
+      "scripts/s11c_guarded_run.py": "9194b3e04b43d345828082e6312b0a2d7a9293f6296153f9c6ccea2defb931d2"
+    },
+    "sourceRecords": [
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/acoustic-law-source.json",
+        "sourceSha256": "fbf49d0f6ae5404e8b1d86e9b6a15abc69c7230a134d0ab06fcf0b81fc6ca0cb",
+        "bytes": 839
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/artifact-index.json",
+        "sourceSha256": "5de2dae1ad6dbc1a5ba90d51342a60c7ac5dc33bc4d380c565183caa3edb98d7",
+        "bytes": 47628
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/checks.json",
+        "sourceSha256": "af8378e0f87de75c726be6b18f1ea1943f089530f225927b95114a3c4d1c37ce",
+        "bytes": 729
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/native-face-order-source.json",
+        "sourceSha256": "0285262ca5e9eafb920178fb05d8f8fec434a07214251536f4fc45a1d9cb54db",
+        "bytes": 438
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operation-index.json",
+        "sourceSha256": "552a5c35942e552104b36e585af7c5e6c167f0db4a21cd9a57e4223641a7b3e9",
+        "bytes": 89547
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0000-restore-uniform/complete.json",
+        "sourceSha256": "d2d304fbd16ddd33c55a4a91228ad132f6ecd5da9f89532bf9f685d1de8497d3",
+        "bytes": 1132
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0000-restore-uniform/input-references.json",
+        "sourceSha256": "854db7ddd7abc9cbe7412e528a343aa9a42d10c70ee51734bf6adddfe2de21a1",
+        "bytes": 606
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0000-restore-uniform/started.json",
+        "sourceSha256": "bab33d2a268d2028ad4298cb72b285b03430daa1270f6993a6a7e63b9079ad61",
+        "bytes": 102
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0001-restore-branch-context/complete.json",
+        "sourceSha256": "a410791caf7fec687d4335e6a711d8bb04905e1df7de76c87b984d0dac729e71",
+        "bytes": 1141
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0001-restore-branch-context/input-references.json",
+        "sourceSha256": "086794dcff7e6bbc20e6576bccce34cbceb160ba24c45d6be84c66775df29258",
+        "bytes": 613
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0001-restore-branch-context/started.json",
+        "sourceSha256": "e9f9804e92e6cfe5c52077b10ab8c3e30dd9d3d7075b8c6a302e106db4047f7e",
+        "bytes": 109
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0002-restore-unit-context/complete.json",
+        "sourceSha256": "6171f7abcd33caf24051ba9d1e2688f7152422541fe59f3fb729d7de66d2cbf4",
+        "bytes": 1139
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0002-restore-unit-context/input-references.json",
+        "sourceSha256": "89dc04c2a1444ab162f2538c5fc5ce1baa013ca983c54f593bc70520c7773532",
+        "bytes": 611
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0002-restore-unit-context/started.json",
+        "sourceSha256": "b7b2ab299a6b6f130b25aabe78cc99ed7f78cd11cceff75721cfe7dc6e69c715",
+        "bytes": 107
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0003-restore-uniform-common/complete.json",
+        "sourceSha256": "a00d8ee3678312adfe917df706ee42e8e93034e3fecb69a3019b442748889502",
+        "bytes": 1140
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0003-restore-uniform-common/input-references.json",
+        "sourceSha256": "7df161fa2cff59718f2b1792fb42b5bc3d4992d1cf46c0d329a27002105b852c",
+        "bytes": 613
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0003-restore-uniform-common/started.json",
+        "sourceSha256": "e94c727c1897eac373b8de9ccce6ac110186918536f2393da0bbc2a4d1d38630",
+        "bytes": 109
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0004-source-branch-map-joins/complete.json",
+        "sourceSha256": "f0a7578caf9c65b449731ea1d5d25a71bff25b44963cbaad2ef02ccde0d50521",
+        "bytes": 1144
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0004-source-branch-map-joins/input-references.json",
+        "sourceSha256": "394d297b8ccf2f548d22c81c409ef5ce4d0a6e419baffbbbec2ac85f7e1372f3",
+        "bytes": 619
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0004-source-branch-map-joins/started.json",
+        "sourceSha256": "26f3a6d7a756ca70cc032a477147f2c5966f695b7be83e51e1c5ba62bce95529",
+        "bytes": 110
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0005-REFERENCE-restore-original-symbol/complete.json",
+        "sourceSha256": "d39093e46de242445a1b36e702bca3e3ba5d47b3bbaf00a323f58e3038e14737",
+        "bytes": 1149
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0005-REFERENCE-restore-original-symbol/input-references.json",
+        "sourceSha256": "8455ede79d2c0ae972f0fbc839a535c3168e342a65349582e27eff5fa9c70e00",
+        "bytes": 624
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0005-REFERENCE-restore-original-symbol/started.json",
+        "sourceSha256": "8d20e2ed9d79ab603769f344c6782b773da3395dd38dcb88910a85bff015be33",
+        "bytes": 120
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0006-REFERENCE-restore-current/complete.json",
+        "sourceSha256": "652e5c9103195bcb3b2e3b3556b8d1cea8a447e54740e8ec51d837d0e552c989",
+        "bytes": 1143
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0006-REFERENCE-restore-current/input-references.json",
+        "sourceSha256": "fbdab19a030cf94cb03be812df6d0390334382c62e629819f48f540038fbe095",
+        "bytes": 616
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0006-REFERENCE-restore-current/started.json",
+        "sourceSha256": "152bd3b551894bc1a1b7d172efdd167848b4bf27d98b794918ef9ce9f79ee42b",
+        "bytes": 112
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0007-REFERENCE-source-bind/input-references.json",
+        "sourceSha256": "ca496f7ffb43ac6cd3fd3d84b20dedf64bca1408be4ddefc36e2f73f86faaa25",
+        "bytes": 1622
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0007-REFERENCE-source-bind/started.json",
+        "sourceSha256": "572abf96f5776f6f0a0184776b6c7e6a8f1976702870e48e4a0503629b3d71c0",
+        "bytes": 108
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0007-REFERENCE-source-bind/unresolved.json",
+        "sourceSha256": "edf58e3020a65bf8ee71d6e4cb7f27b6a85cb62da846804dbc042e88f7011790",
+        "bytes": 29985
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0008-LEFT-restore-original-symbol/complete.json",
+        "sourceSha256": "b351ce7bb7c04a16fa601efa3b6b709441ad9b08f729b11deadbe6dcaaed075c",
+        "bytes": 1144
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0008-LEFT-restore-original-symbol/input-references.json",
+        "sourceSha256": "bfbb930cc0fb264e85c35a3665e137716d42c9ba1614082a84379d9ecb14048a",
+        "bytes": 619
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0008-LEFT-restore-original-symbol/started.json",
+        "sourceSha256": "cd127032ed3bc3b36019c58152d2d7a3b5e5607749d2f6c1dde0a15cfa4d2935",
+        "bytes": 115
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0009-LEFT-restore-current/complete.json",
+        "sourceSha256": "438b0b8ebc884758feadb338fa8aff95f0570cbc4a4988818b2b812a8864304e",
+        "bytes": 1138
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0009-LEFT-restore-current/input-references.json",
+        "sourceSha256": "ce7ad21dc6c4973f20a85a0ecc4c3052ac4fd9f604c496dd699180004209a7e6",
+        "bytes": 611
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0009-LEFT-restore-current/started.json",
+        "sourceSha256": "76d22302ba3561970aa4e0b68827cb1273311ed170135db5e5bf5e8777c2d995",
+        "bytes": 107
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0010-LEFT-source-bind/input-references.json",
+        "sourceSha256": "db42f3cecac9fc9ad2cebee2be91d05c3c87056b3e205d7b173ed0e43182bcc6",
+        "bytes": 1617
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0010-LEFT-source-bind/started.json",
+        "sourceSha256": "ffe6400e060b8df79feacfa34f56a2ed5a63968fd63cd9fb1295b66a88510d13",
+        "bytes": 103
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0010-LEFT-source-bind/unresolved.json",
+        "sourceSha256": "af749b9ae976bd97ac0b5ef6904ae176e0a3fdfb29b394a4886c7b39a84fc8d4",
+        "bytes": 34740
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0011-RIGHT-restore-original-symbol/complete.json",
+        "sourceSha256": "7b9e5882b59ef46922c6fcb6e67e7e75e5f26ce6e8f272ada4ed7304e6f810f9",
+        "bytes": 1146
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0011-RIGHT-restore-original-symbol/input-references.json",
+        "sourceSha256": "51fd2e1c528ef98f4c736403476bf946e65394398cff815130076df1c87a7140",
+        "bytes": 620
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0011-RIGHT-restore-original-symbol/started.json",
+        "sourceSha256": "24bef2bccc8c8d3214b982d40d042d98c7ccf1e33a9145ecaec760b085166af7",
+        "bytes": 116
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0012-RIGHT-restore-current/complete.json",
+        "sourceSha256": "a6a2414d62db67024e4f4595ab57b816f0e2aa644cc1a5844144fc6f31a77536",
+        "bytes": 1139
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0012-RIGHT-restore-current/input-references.json",
+        "sourceSha256": "64c6c8bf562d9eba62baad7eb2be2052a03bd7c9b3943b3f258e53d6919445ee",
+        "bytes": 612
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0012-RIGHT-restore-current/started.json",
+        "sourceSha256": "3d916ac5a7d3f4c09583b28b8290dae88cc37166da1d3a2014bebfdbd42abcc9",
+        "bytes": 108
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0013-RIGHT-source-bind/input-references.json",
+        "sourceSha256": "041815711e39b0434171c1e3839b15533eaa956fd7d55049c7742a0243a51c80",
+        "bytes": 1619
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0013-RIGHT-source-bind/started.json",
+        "sourceSha256": "316b3f7bd6c4cb73dfc9f21d152c1d1b06c8709a687830fd8bf5a69ac0378045",
+        "bytes": 104
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0013-RIGHT-source-bind/unresolved.json",
+        "sourceSha256": "258e68ee6e09c7f73482ef55df20b83a5791d732e316312063f9e89e5274ccbd",
+        "bytes": 11610
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/source-branch-map-joins.json",
+        "sourceSha256": "5d026df1f253d78410df9a84787d453e9a78384cd99eb4c495a7af6a60bc57dd",
+        "bytes": 3656
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/unit-context.json",
+        "sourceSha256": "afe598d7ec98f7a159e67e65eb83f8636c0ebd37d50c452b5c5552b956867773",
+        "bytes": 1761
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/artifact-index.json",
+        "sourceSha256": "797e2b38501cbda53a958e0bc0b3a993fe177b546ecd650a583e29940a3207a8",
+        "bytes": 158395
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/checks.json",
+        "sourceSha256": "2dd1bf7957c5bd046c8a49e6fecd9cb37adccf4a13ca5b096837c4859486ddcc",
+        "bytes": 804
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/complete-return-reuse.json",
+        "sourceSha256": "717b95a559c92256d05e201ef904df0bab00420e51308b4d0d81f8e96320dd6a",
+        "bytes": 6963
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/native-limits.json",
+        "sourceSha256": "4b2c692d5bfcec7183f97936c77c3cce9cbcc8e797f44c0a2d689207a4f0047b",
+        "bytes": 325
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operation-index.json",
+        "sourceSha256": "021beb231a990d39b043beea9ec8c10f7f4411704036dc3ed796d4911ab21178",
+        "bytes": 86618
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0000-restore-uniform/complete.json",
+        "sourceSha256": "3bab4e677d7b6aea8e4565e951dc450e4437727ad10aa2df612a17301d0a3b6c",
+        "bytes": 4414
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0000-restore-uniform/input-references.json",
+        "sourceSha256": "11279a35af35faa66dca78c71afa6c032397ae515e5fafd540d5a4685489037f",
+        "bytes": 630
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0000-restore-uniform/prior-argument-join.json",
+        "sourceSha256": "fe292e9cc459399041388f8488f2d8387144b27be4d14941bee12a75051b281e",
+        "bytes": 1881
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0000-restore-uniform/prior-restoration-source-join.json",
+        "sourceSha256": "4214c46eab7b841dea166cf86d51ddfee6ec4aee02b66cef5118d5f62f782bab",
+        "bytes": 1192
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0000-restore-uniform/started.json",
+        "sourceSha256": "b7a097b8ec44250b303bcf3903ee31e3f6d54a6ffc51d74431e894d75b485d2f",
+        "bytes": 102
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0001-restore-branch-context/complete.json",
+        "sourceSha256": "22977ef6423e1c4f73d1c7d24f76e06183411e88a9e1a6c6831543024744a07d",
+        "bytes": 4441
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0001-restore-branch-context/input-references.json",
+        "sourceSha256": "abac82e57a3e83ae202555bef07ba406b6d519be5548601d77603b8d8d5d4f8b",
+        "bytes": 637
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0001-restore-branch-context/prior-argument-join.json",
+        "sourceSha256": "0460e9cf49766b248249cb11fbfa17c20d017bcc2b5437425b35ab70fb4bfe0e",
+        "bytes": 1890
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0001-restore-branch-context/prior-restoration-source-join.json",
+        "sourceSha256": "a1fa68ded9a1e188188e755f315c2b66dd5a6266d7c3f34c64671b44235a44d4",
+        "bytes": 1485
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0001-restore-branch-context/started.json",
+        "sourceSha256": "bc9681e03070781d29edffe2e0f27ae7d2cf48146a54b69834e48b83d5d4b9e0",
+        "bytes": 109
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0002-restore-unit-context/complete.json",
+        "sourceSha256": "6aeb8e867065d4d3584cf8b92550ad54440b669b8d1a8a819b0e9e6c080ed389",
+        "bytes": 4435
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0002-restore-unit-context/input-references.json",
+        "sourceSha256": "ce8415d00840166676e6d9da035dcf828fe66561561feeddd71010689e4af778",
+        "bytes": 635
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0002-restore-unit-context/prior-argument-join.json",
+        "sourceSha256": "c33a831426bb7dd50a7c91d526ec44255402a0cafb9ae577f5cf9b7b3613f340",
+        "bytes": 1888
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0002-restore-unit-context/prior-restoration-source-join.json",
+        "sourceSha256": "9bff475ca227703cf4a6824c4d162245ba0a71200eb18a123a7cf4a3eb749430",
+        "bytes": 1247
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0002-restore-unit-context/started.json",
+        "sourceSha256": "d4b7bb7fe313b04135b6a5d27cd5e2b5215a0fe99733c9dbe987dc17df85e9f6",
+        "bytes": 107
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0003-restore-uniform-common/complete.json",
+        "sourceSha256": "769957743211670678393d315f57429e783f2286434f3158cffb23e5f12fd0bd",
+        "bytes": 4438
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0003-restore-uniform-common/input-references.json",
+        "sourceSha256": "0e6e75b659ac87a3fea5e7f5fc542baf1cf40a19915697f40cb67e293a043a71",
+        "bytes": 637
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0003-restore-uniform-common/prior-argument-join.json",
+        "sourceSha256": "000ce805b504c2ea8ad7ff231d763a09d75a72c2e6b11702534c652372df2cb5",
+        "bytes": 1889
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0003-restore-uniform-common/prior-restoration-source-join.json",
+        "sourceSha256": "d10ea99ab77a64d47aaac2ce2864ba381410d377061bb63ea44cde175ccfdded",
+        "bytes": 1150
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0003-restore-uniform-common/started.json",
+        "sourceSha256": "2d5dd9310a78ceff4f36af64e182374f0c22444d75ebc77a50a8489037a0713f",
+        "bytes": 109
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0004-source-branch-map-joins/complete.json",
+        "sourceSha256": "287fc9e12db1b3438204d0cbbd0e61aca6264ff1dc39e9193ae640e29bae99ce",
+        "bytes": 4455
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0004-source-branch-map-joins/input-references.json",
+        "sourceSha256": "7c80d8ceb400dabaab48107aa393128f849fbada71b331bca9572f3f8551de23",
+        "bytes": 643
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0004-source-branch-map-joins/prior-argument-join.json",
+        "sourceSha256": "719ef46733f05e014511eee31cd4ba1e9d30885db70027d46a8d305edc54cf4c",
+        "bytes": 1898
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0004-source-branch-map-joins/started.json",
+        "sourceSha256": "78dc50a660eb188f6fd3bae28e9ffbb2659d47ee9038de0da29ee4285423d66e",
+        "bytes": 110
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0005-REFERENCE-restore-original-symbol/complete.json",
+        "sourceSha256": "a257e585f5898286c813cf2758a6344298fa8567d71330f3f2da55598cb678ce",
+        "bytes": 4465
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0005-REFERENCE-restore-original-symbol/input-references.json",
+        "sourceSha256": "49ecbacfef91e0206c0452e531125bac647089d92f5cfab1b24e2871139c6c0a",
+        "bytes": 648
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0005-REFERENCE-restore-original-symbol/prior-argument-join.json",
+        "sourceSha256": "d29d6e160a406c3b20ef8a11e1fff6f0bf819f5ac62f825e74ec36902f73426e",
+        "bytes": 1898
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0005-REFERENCE-restore-original-symbol/prior-restoration-source-join.json",
+        "sourceSha256": "0de84fb7bb0e949207c23b20a67ff513916ee6046d8a1ecead4f8548bb2aa29f",
+        "bytes": 1275
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0005-REFERENCE-restore-original-symbol/started.json",
+        "sourceSha256": "7412be30da5d65f169e64b7086a11419e49bfdf53d620a33ea38b4810f2c19a4",
+        "bytes": 120
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0006-REFERENCE-restore-current/complete.json",
+        "sourceSha256": "d395b1d05bc2e65f9098dffb4a43ba295e3b82e774151381fc842b3340e893da",
+        "bytes": 4447
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0006-REFERENCE-restore-current/input-references.json",
+        "sourceSha256": "b68b961e41be04503875462ecb1a2009ddf3d73b5400af056a005d519b136c2d",
+        "bytes": 640
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0006-REFERENCE-restore-current/prior-argument-join.json",
+        "sourceSha256": "bc6c178489024a96a3f605cc6108e8dcbe97d3e105b5a5239a655c9dab91410e",
+        "bytes": 1892
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0006-REFERENCE-restore-current/prior-restoration-source-join.json",
+        "sourceSha256": "ca7d996eb61a00265823f64136c61ce448e745641a7107b5a43540859358f01d",
+        "bytes": 1213
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0006-REFERENCE-restore-current/started.json",
+        "sourceSha256": "6e01d8d8f544d245b45843c54e52a1d3e1b4ecc37440b4b0c419cd0c54ffeadc",
+        "bytes": 112
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0007-LEFT-restore-original-symbol/complete.json",
+        "sourceSha256": "9e2de7c4a1486a940c03ca449ceadc055209dfbede719909e230bff431436a7f",
+        "bytes": 4450
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0007-LEFT-restore-original-symbol/input-references.json",
+        "sourceSha256": "acb75cde1214fcefd7c65e05e6106e44b60eba13865014501ae18fff1caed19b",
+        "bytes": 643
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0007-LEFT-restore-original-symbol/prior-argument-join.json",
+        "sourceSha256": "935862a3c42a2af1af054062917d2e4df93d9abd85e94a767b091191da23555a",
+        "bytes": 1893
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0007-LEFT-restore-original-symbol/prior-restoration-source-join.json",
+        "sourceSha256": "00627e593fc976e26a02801cd5abcc290beeabdd98bd0de1944935b10d646a0d",
+        "bytes": 1240
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0007-LEFT-restore-original-symbol/started.json",
+        "sourceSha256": "c688465f8d2f51014a32e942eee29155c039d53f55cefad2e02be4014e110d2e",
+        "bytes": 115
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0008-LEFT-restore-current/complete.json",
+        "sourceSha256": "27bdf30cd76c813bc079587664476f791f9aa777e2da7fc5a7981a34b3b5bd79",
+        "bytes": 4432
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0008-LEFT-restore-current/input-references.json",
+        "sourceSha256": "246e3b95d527e6f3d63fad1ab7a36af5b108a2f390c1582f36a0c69c2538bacb",
+        "bytes": 635
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0008-LEFT-restore-current/prior-argument-join.json",
+        "sourceSha256": "b25a264aafc22b8b8d191d274fad76a6fccc89b67ba92396b3d387a2872219d8",
+        "bytes": 1887
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0008-LEFT-restore-current/prior-restoration-source-join.json",
+        "sourceSha256": "4a9d7f0b58b99483025931a8aa1ef8cfe12ed7c52eed5fa13079bc35a4687a0e",
+        "bytes": 1178
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0008-LEFT-restore-current/started.json",
+        "sourceSha256": "90951cb28420c8a8ca79140e8810caf1ce277e32d244fe56c1c45c0e4b9ab715",
+        "bytes": 107
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0009-RIGHT-restore-original-symbol/complete.json",
+        "sourceSha256": "4d5e986c8a37c78673bb635ce72dc4e5ac5f697594eb2d7a882e057edcd60110",
+        "bytes": 4456
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0009-RIGHT-restore-original-symbol/input-references.json",
+        "sourceSha256": "0c1da24e6cba4f83bac7eb17f2fee1b68b3413442286d0592e1d1750b09b4222",
+        "bytes": 644
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0009-RIGHT-restore-original-symbol/prior-argument-join.json",
+        "sourceSha256": "ee43bf811481617721daea7266929e81bc677478337f8db97dd41e7d5d895833",
+        "bytes": 1895
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0009-RIGHT-restore-original-symbol/prior-restoration-source-join.json",
+        "sourceSha256": "ae937195220d21dd11fc9a5d60d54d3a7e33f84ca7adb1b7ba884c9d5eba12ef",
+        "bytes": 1250
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0009-RIGHT-restore-original-symbol/started.json",
+        "sourceSha256": "1d51a76e2a3e8bfb83ac59473cbdbcd76babb6ed1b28bd16926361a14129e84a",
+        "bytes": 116
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0010-RIGHT-restore-current/complete.json",
+        "sourceSha256": "13e25dd0fb4023669767bb4dc11d4d05cf6dde8fead2eb7a5e4607df146bc553",
+        "bytes": 4435
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0010-RIGHT-restore-current/input-references.json",
+        "sourceSha256": "e764b142e434270618de81b7116b40948bbc8e7f12fd6a5246d64f9377e51537",
+        "bytes": 636
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0010-RIGHT-restore-current/prior-argument-join.json",
+        "sourceSha256": "9ba92a7a1ae5c520f8501341f99112f4ae827dd9aa520d6a9184917c226a719f",
+        "bytes": 1888
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0010-RIGHT-restore-current/prior-restoration-source-join.json",
+        "sourceSha256": "98f95407f9287e037db6b0510eba71d5038b06a6bd6c5ef68323a46abe5d801e",
+        "bytes": 1188
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0010-RIGHT-restore-current/started.json",
+        "sourceSha256": "8dcd05a332e5a739dcac19b23e6469c2aea32b4ecd83cafb847fee3617094e16",
+        "bytes": 108
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0011-REFERENCE-source-bind/input-references.json",
+        "sourceSha256": "b99ffd7e4d930eaa29f36cd87da4d9dff431bb5ac3c87280ef5cc2b07a1813a6",
+        "bytes": 1754
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0011-REFERENCE-source-bind/prior-argument-join.json",
+        "sourceSha256": "7c4dfaf4a1875d4f8653766b4faf9f04bb47fe1146f6a335048bb63211c2a5a8",
+        "bytes": 31908
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0011-REFERENCE-source-bind/started.json",
+        "sourceSha256": "bafd6804ed6d3e49211578255873c90bf0c4387b9956a2a61752b2fb9eb3cc6e",
+        "bytes": 108
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0011-REFERENCE-source-bind/suboperations/BULK_DEPTH_CURRENT_MATRIX-carrier-return/complete.json",
+        "sourceSha256": "e60cce63270ff55def3a83f474b61d8e53b0952a7f09b2920021f8a599f40dc1",
+        "bytes": 622
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0011-REFERENCE-source-bind/suboperations/BULK_DEPTH_CURRENT_MATRIX-end-specialization/complete.json",
+        "sourceSha256": "be30f4e725fa79d7034a801ca1a4db9fe9de3cc6826dab4e2854ae0e564c390e",
+        "bytes": 626
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0011-REFERENCE-source-bind/suboperations/BULK_DEPTH_CURRENT_MATRIX-specialized-input/complete.json",
+        "sourceSha256": "b8035fda8e8ef13a1b5ea8bd3396a5e61a9610c8b5c7ea168554d0bfed0c6538",
+        "bytes": 625
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0011-REFERENCE-source-bind/suboperations/BULK_NORMAL_CURRENT_DENSITY_MATRIX-carrier-return/complete.json",
+        "sourceSha256": "32cb753a53861b9d1994cc0c90c584d88c03685cad471c244738d18b2c05233d",
+        "bytes": 631
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0011-REFERENCE-source-bind/suboperations/BULK_NORMAL_CURRENT_DENSITY_MATRIX-end-specialization/complete.json",
+        "sourceSha256": "9d57ed3b7d40f699289a225f55c34ac0b29f7fcbb569c9829e3ac49521eeddbe",
+        "bytes": 635
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0011-REFERENCE-source-bind/suboperations/BULK_NORMAL_CURRENT_DENSITY_MATRIX-specialized-input/complete.json",
+        "sourceSha256": "ddc7085aa53efcf40ffd3b7ece908bd1df5481b9c4dcdb2e57ba55b6a6a5d7eb",
+        "bytes": 634
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0011-REFERENCE-source-bind/suboperations/INTERFACE_POWER_MATRIX-specialized-input/complete.json",
+        "sourceSha256": "71ebfa772714813198bd197e8dcbaa8c96dfd8e428adc49d15dca866a05ad88d",
+        "bytes": 623
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0011-REFERENCE-source-bind/suboperations/SLAB_CURRENT_MATRIX-carrier-return/complete.json",
+        "sourceSha256": "581333dc687fc2c1b4c655d58a38bec1a3c209bd24099fa955efa5b44179474f",
+        "bytes": 616
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0011-REFERENCE-source-bind/suboperations/SLAB_CURRENT_MATRIX-end-specialization/complete.json",
+        "sourceSha256": "afcf5592e63fb81eade689169ce4773bbca199645521c2980a8c8dcb78fb0760",
+        "bytes": 620
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0011-REFERENCE-source-bind/suboperations/SLAB_CURRENT_MATRIX-specialized-input/complete.json",
+        "sourceSha256": "2ef4e44b87e20395f2894a40493c2689a81489ae2bc890538c298e011fe513e7",
+        "bytes": 619
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0011-REFERENCE-source-bind/suboperations/source-specialization/complete.json",
+        "sourceSha256": "59ad9b26fc225b7b729ef50465c547929156526719eb942ee1baf777f3553678",
+        "bytes": 603
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0011-REFERENCE-source-bind/suboperations/transverse-restriction/complete.json",
+        "sourceSha256": "502d186252c87d2e269f69ed4af984bbc22011919a80bd87246feb2c86215f1c",
+        "bytes": 604
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0011-REFERENCE-source-bind/suboperations/wave-polynomial/complete.json",
+        "sourceSha256": "2f78740267530465d855ed7470c9fdb11f6d417d0afcd5e472864b0cc51b8229",
+        "bytes": 596
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0011-REFERENCE-source-bind/unresolved.json",
+        "sourceSha256": "c34ea3ca41dce72662b36b1a4132075682c8b9f4e1ab4a3617ee1813c446c90e",
+        "bytes": 11583
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0012-LEFT-source-bind/input-references.json",
+        "sourceSha256": "cd402df1ae2eacda12037acfea68961192b035f0b08661739222aa28f909ab9d",
+        "bytes": 1749
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0012-LEFT-source-bind/prior-argument-join.json",
+        "sourceSha256": "f03aead0843e031d1b306e90d316891c452ad29de34337f1e59f8bbe673eb8a0",
+        "bytes": 36663
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0012-LEFT-source-bind/started.json",
+        "sourceSha256": "70901e05dd2cb97adbb8517db190d368c8521fb13debea43f6f24ffe44bfd113",
+        "bytes": 103
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0012-LEFT-source-bind/suboperations/BULK_DEPTH_CURRENT_MATRIX-carrier-return/complete.json",
+        "sourceSha256": "72b1e87b0a7a8ef40384fc44230a8a71fe59b096d2777961a502093c42516767",
+        "bytes": 617
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0012-LEFT-source-bind/suboperations/BULK_DEPTH_CURRENT_MATRIX-end-specialization/complete.json",
+        "sourceSha256": "30411e8be651300fff7327566ae4b9ba9de52bfbd79728dc02492c95dbfd09cb",
+        "bytes": 621
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0012-LEFT-source-bind/suboperations/BULK_DEPTH_CURRENT_MATRIX-specialized-input/complete.json",
+        "sourceSha256": "379af50fe2445771ccb95256ed7c9edba2027a4d7b3f12cdbcc31a76b4afc2fa",
+        "bytes": 620
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0012-LEFT-source-bind/suboperations/BULK_NORMAL_CURRENT_DENSITY_MATRIX-carrier-return/complete.json",
+        "sourceSha256": "bd512508d83aba0dfb793ad6c5e520477ccf35990c1fb5cbfcd40ef282e8bd80",
+        "bytes": 626
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0012-LEFT-source-bind/suboperations/BULK_NORMAL_CURRENT_DENSITY_MATRIX-end-specialization/complete.json",
+        "sourceSha256": "066b8aeaf55df17adb2a33408fd2aca592b451d3633e473f19e037429a0f9a56",
+        "bytes": 630
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0012-LEFT-source-bind/suboperations/BULK_NORMAL_CURRENT_DENSITY_MATRIX-specialized-input/complete.json",
+        "sourceSha256": "c549595d07d42da33715ec790e9cebc01f60ff3cef48347d3c3f18ff3805a642",
+        "bytes": 629
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0012-LEFT-source-bind/suboperations/INTERFACE_POWER_MATRIX-specialized-input/complete.json",
+        "sourceSha256": "4dea0b07ce451a561b6da2367860422f31f7dc808a4809593c4210c39c733fbd",
+        "bytes": 618
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0012-LEFT-source-bind/suboperations/SLAB_CURRENT_MATRIX-carrier-return/complete.json",
+        "sourceSha256": "5f997297ac5a18db28755b684f3558778ea223e6c7066311570c643efb729ef8",
+        "bytes": 611
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0012-LEFT-source-bind/suboperations/SLAB_CURRENT_MATRIX-end-specialization/complete.json",
+        "sourceSha256": "b342c8548b4ce26809d9fc4e96813a94dfac5ed3380e9aab5c4120e79a4b4c6c",
+        "bytes": 615
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0012-LEFT-source-bind/suboperations/SLAB_CURRENT_MATRIX-specialized-input/complete.json",
+        "sourceSha256": "cb9f5c14a66e153cc2db9281ab8a80b80f124fc64301f62a24006adb6de45ec9",
+        "bytes": 614
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0012-LEFT-source-bind/suboperations/source-specialization/complete.json",
+        "sourceSha256": "54a8500e1a3839073f80c1cbe6132c8bf18f37a710378cec104a8599d2ace31b",
+        "bytes": 598
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0012-LEFT-source-bind/suboperations/transverse-restriction/complete.json",
+        "sourceSha256": "99baa06a290970d8ee773f0112ba2d4d01e098a1f22149c08cbb74c1196a9f5a",
+        "bytes": 599
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0012-LEFT-source-bind/suboperations/wave-polynomial/complete.json",
+        "sourceSha256": "caa78187f906cec5b2b5525b21928b77cde504e2697221266309f386d695c128",
+        "bytes": 591
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0012-LEFT-source-bind/unresolved.json",
+        "sourceSha256": "430ff2fce2094d1712132b8f0d7beda299045ddfd62626e39761beba332b904a",
+        "bytes": 12752
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0013-RIGHT-source-bind/input-references.json",
+        "sourceSha256": "affad6d0997f03a22a92659b995c11341c05595715c0b0c5f56377d88c128121",
+        "bytes": 1751
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0013-RIGHT-source-bind/prior-argument-join.json",
+        "sourceSha256": "40dfc96648413316b94091486226358c69d963d55ed2b7378c16d9610ba912c1",
+        "bytes": 13534
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0013-RIGHT-source-bind/started.json",
+        "sourceSha256": "3d6baee094712917c072365471ac5fb8f904bf63199bc6fcc7f57c4a87f470ae",
+        "bytes": 104
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0013-RIGHT-source-bind/suboperations/BULK_NORMAL_CURRENT_DENSITY_MATRIX-specialized-input/complete.json",
+        "sourceSha256": "36abdc38bbdaf130d899f8730bc3adaaf808a9d8d87eba9348cf1894028dc37b",
+        "bytes": 631
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0013-RIGHT-source-bind/suboperations/SLAB_CURRENT_MATRIX-carrier-return/complete.json",
+        "sourceSha256": "61b8c7ad0e9050e7dd981f8baf9e1141fe250e7f3d6955b9923e6d59c8eb075e",
+        "bytes": 612
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0013-RIGHT-source-bind/suboperations/SLAB_CURRENT_MATRIX-end-specialization/complete.json",
+        "sourceSha256": "3a46b68a88bf58247d81e2e7bd34f4262ca8f710b1144aa52bce6b9f33c1341d",
+        "bytes": 616
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0013-RIGHT-source-bind/suboperations/SLAB_CURRENT_MATRIX-specialized-input/complete.json",
+        "sourceSha256": "c5fa26909cf3a71e895196e6f092e37583613860e3e6a0322c05fa98fa70460c",
+        "bytes": 615
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0013-RIGHT-source-bind/suboperations/source-specialization/complete.json",
+        "sourceSha256": "f7b0ebf34b007c465ee4b9ea3277eaafbce1ac756fdd59ddc1039c3fa6793ff2",
+        "bytes": 600
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0013-RIGHT-source-bind/suboperations/transverse-restriction/complete.json",
+        "sourceSha256": "a500dabc3f562c8e995cb9951ef3e32678edcfc088eacce162c095e7225dbf0b",
+        "bytes": 600
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0013-RIGHT-source-bind/suboperations/wave-polynomial/complete.json",
+        "sourceSha256": "c56772756b885a4ffef5094169fb2996ed590186b3ab5d715a78f7709ae2ac2f",
+        "bytes": 592
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/operations/0013-RIGHT-source-bind/unresolved.json",
+        "sourceSha256": "3ab1d3613729a7790da1fdd16b13f706babb87a9caa2196cb9444d6523053213",
+        "bytes": 11570
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/saved-seed-comparison.json",
+        "sourceSha256": "11973b4c159cd335dba77bba2f6e285b8f8ba0aae8f414d39606f0162eef8a05",
+        "bytes": 2036
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/production/complete/source-end-states.json",
+        "sourceSha256": "303b511a6182d10ed2a9415749efadd267237721334e6e908c5b2a513cf8ca76",
+        "bytes": 117
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_A9_saved_face_drives.json",
+        "sourceSha256": "057c9960aa1c721d1973de85cc48e5d6ac3bcb20a233cfc10f63d6f9207d6bf8",
+        "bytes": 8224
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+        "sourceSha256": "45a16f7f952ca6b571362b1c386fec76cd86f1e0ad04113074adf49c683ec49c",
+        "bytes": 3347
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_end_pairing_check.py",
+        "sourceSha256": "1fcf86b0be819e2c7e9a2127d8330c907bcaccf58d1d15c3f1534d594d926dee",
+        "bytes": 10885
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_frequency_source.py",
+        "sourceSha256": "9be20be462bc10bfcaa7af643b9301948dd79bc2e08eb24ebcd1386a81efcdac",
+        "bytes": 29576
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_frequency_source_report.md",
+        "sourceSha256": "46b91c1e159f6b467809c0119511b24bef270e4c960edf0755d2034fd93fa421",
+        "bytes": 2842
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_fixed_point.py",
+        "sourceSha256": "64cd6ea8ec7907edacd5fce9687c2072d3a235bd270c0ea483e8b76f18af9888",
+        "bytes": 84850
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_fixed_point_authorization.json",
+        "sourceSha256": "49dbc3c7763a71ac53c96c2113842dbfcf8b4043cc77ab390925348bdfebced1",
+        "bytes": 3178
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_fixed_point_codec_census.json",
+        "sourceSha256": "3bc4d9875742f5686bff3041de79d9cb51457ff11f83fed7e813f9e61eb1e6ff",
+        "bytes": 46189
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_fixed_point_continue.py",
+        "sourceSha256": "5d38c329e8e15cff091c09584c1d33806fd8318f66a779fc10f2ae52d00e3135",
+        "bytes": 91220
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_fixed_point_continue_authorization.json",
+        "sourceSha256": "34020b86a5f36175478f86f8a3963a1d1beb4c37fb341e2c3a4ed1e2d498e6c9",
+        "bytes": 1769
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_fixed_point_continue_codec_census.json",
+        "sourceSha256": "479ea98d0dcabda9ed84d01e312d80433a2d80ab460100c35772fe9a2f23233d",
+        "bytes": 90831
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_fixed_point_continue_guard.py",
+        "sourceSha256": "1c2bef4f691555e98e20eec1ccb76c8861cfd92ce827ddc36caa19afc12f5ecd",
+        "bytes": 16216
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_fixed_point_continue_inputs.json",
+        "sourceSha256": "e78fc287fec25006d555ffb107d1fdcc6ef222554b3221d546c11331d05bb63b",
+        "bytes": 308201
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_fixed_point_continue_review_prompt.md",
+        "sourceSha256": "b6cb87b35db308666f3ba89802c562342f669a895aff88b1db8e56625796591f",
+        "bytes": 4556
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_fixed_point_continue_scope.md",
+        "sourceSha256": "ff951cb8f30992cec8892782a9fc47b3f9ece8ca8ec026f7295847ba9f474adc",
+        "bytes": 3662
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_fixed_point_continue_static_checks.json",
+        "sourceSha256": "65b87cf85cdd11085eea9fca56846fb0199eed571660bd7e5c3686843ac5b19b",
+        "bytes": 2153
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_fixed_point_inputs.json",
+        "sourceSha256": "01dc1264f1ac59490880b5d186e6b52cf65f2afb288dd9a1054741e57a0fc41c",
+        "bytes": 105826
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_fixed_point_saved_schema.json",
+        "sourceSha256": "d6849134dcf25af0587cc4b896522b829bcee8e3db09cf00ca406ca812b2d09f",
+        "bytes": 25329
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_fixed_point_scope.md",
+        "sourceSha256": "77cbebb09161688cd610a844fd054530c841fd0fda1e2b27a5cc5ddf7002240e",
+        "bytes": 4767
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_fixed_point_source_note.md",
+        "sourceSha256": "2750192756c5d0a768d6ea8ca78d1d342affddc86b3ed497cacc0005f5b4064b",
+        "bytes": 12972
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_native_source.txt",
+        "sourceSha256": "fe9492e73f5aeb4a5c1b1782153e9e420cc884ff730905aaefa26aaafa70b2b5",
+        "bytes": 83915
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_premise.py",
+        "sourceSha256": "ebf2739a2f8dca9ed4130b89606a36a27be29ef5d5c0915756b7118fcbd6fae5",
+        "bytes": 79986
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_premise_checkpoint.json",
+        "sourceSha256": "b7a401773af74131bd9a9ffcc783eceaab559f9b48f1a2afecca0a08ec2d7b1b",
+        "bytes": 63574
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_premise_inputs.json",
+        "sourceSha256": "c04a3ca3d37fd645214a4455e36b5e4ab066d0587adc924dca1fbb3aa4648e8f",
+        "bytes": 22547
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_uniform_response.py",
+        "sourceSha256": "b65749ab0eaaeed372a5bf01077a030971fc3e05f05a11543443bd1de3f157d4",
+        "bytes": 21153
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_uniform_source.py",
+        "sourceSha256": "2a135aea365c7b5e57bfff7683c7b927cda52c0d37f6a9bad3c961eb6205a2b2",
+        "bytes": 14588
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_uniform_source_checkpoint.json",
+        "sourceSha256": "9d4b65ad07d1f403fd3aa4ec42da99db622a4d0a26d6ddce6c472148c7830085",
+        "bytes": 13523
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_uniform_source_report.md",
+        "sourceSha256": "d95f629e292e67eafe36bde9a5bd0689345c7fb3fac97d669671ea278ae65b8b",
+        "bytes": 2023
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_variable_profile_development_input.json",
+        "sourceSha256": "660b2b0b54494dce964c7f5fbd722a76a7e894d8ed92b18b5eb6290c3c10f1d5",
+        "bytes": 1884
+      },
+      {
+        "path": "research/pde_ledger_v3/directives/S11c_c1_SHARED_PHYSICS.md",
+        "sourceSha256": "47554c8c9cf2fd070c1048a7ae0ca36b1315bf50a48ed07a51019ff3e72987ad",
+        "bytes": 50376
+      },
+      {
+        "path": "research/pde_ledger_v3/directives/S11c_d_CHANNEL_MAP_BORN_AMENDMENT_DRAFT.md",
+        "sourceSha256": "8aa6fc7ab6d43f1f197a3cb8f9a83b7607f1de2c7a321aa130b582f4a323082d",
+        "bytes": 8623
+      },
+      {
+        "path": "research/pde_ledger_v3/directives/S11c_d_EXPLORATORY_ACCEPTANCE.md",
+        "sourceSha256": "5c1e560a78d40739af8b1318c0487e20bf2b816c41109889e12004266c72840c",
+        "bytes": 7083
+      },
+      {
+        "path": "research/pde_ledger_v3/directives/S11c_d_SCATTERING_FORM_AMENDMENT.md",
+        "sourceSha256": "eb6f20a3fd0bce308e53901fa69fdf267b2917e5cc78b319a1e7700074a47560",
+        "bytes": 69780
+      },
+      {
+        "path": "research/pde_ledger_v3/directives/S11c_d_SHARED_PHYSICS.md",
+        "sourceSha256": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5",
+        "bytes": 67800
+      },
+      {
+        "path": "research/pde_ledger_v3/directives/S11c_d_TOTAL_TRANSVERSE_LOSS_AMENDMENT_DRAFT.md",
+        "sourceSha256": "ec12456947527bb162a6bd56a65651f1028cca1f95f0d85379bdc8a411fbb6fc",
+        "bytes": 8243
+      },
+      {
+        "path": "research/pde_ledger_v3/scripts/S11c_d_mixing_scattering_sympy_audit.py",
+        "sourceSha256": "5bf77729682960bb59f10c672a5fe3f67a98b0a9533da7c6189a37183596050f",
+        "bytes": 545480
+      },
+      {
+        "path": "scripts/s11c_guarded_run.py",
+        "sourceSha256": "9194b3e04b43d345828082e6312b0a2d7a9293f6296153f9c6ccea2defb931d2",
+        "bytes": 9977
+      }
+    ],
+    "packetFiles": 193,
+    "packetBytes": 2715260,
+    "currentThread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "scienceCalls": 0,
+    "startedUtc": "2026-09-29T18:57:34.236918+00:00",
+    "supervisorPid": 2487967,
+    "concurrentReviewWorkers": 1,
+    "finishedUtc": "2026-09-29T19:17:40.440131+00:00",
+    "productionAuthorized": false,
+    "reviewVerdict": "NOT_ADJUDICATED"
+  },
+  "packetSha256": "c88b13119288be87d01ce40eed1c9e3ada483d30015fdebad3548feb555197f5",
+  "archiveSha256": "26e0cd0765ca9a362069a8dc21a159d2615f0f6d3f5239a0f0291da83666c803",
+  "allPacketArchiveAndSourceHashesMatch": true,
+  "sourceCount": 192,
+  "inputPinsVerified": 432,
+  "packetIndex": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation-build-review/packet/packet-index.json",
+    "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation-build-review/packet/packet-index.json",
+    "bytes": 51998,
+    "sha256": "c4466eca703f75e2ad7231bd1678dc01801c041c9d4ce74f2487217fb996eb33"
+  },
+  "prompt": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation-build-review/packet/review-prompt.md",
+    "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation-build-review/packet/review-prompt.md",
+    "bytes": 4556,
+    "sha256": "b6cb87b35db308666f3ba89802c562342f669a895aff88b1db8e56625796591f"
+  },
+  "authorization": {
+    "status": "EXPLICITLY_APPROVED_FIXED_PACKET",
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "packetSha256": "c88b13119288be87d01ce40eed1c9e3ada483d30015fdebad3548feb555197f5",
+    "archiveSha256": "26e0cd0765ca9a362069a8dc21a159d2615f0f6d3f5239a0f0291da83666c803",
+    "packetFiles": 193,
+    "packetBytes": 2715260,
+    "scientificExecutionAuthorizedByThisSubmission": false,
+    "approvedUtc": "2026-09-29T18:57:19.544736+00:00",
+    "userReply": "Approve this exact packet",
+    "approvalContext": "Explicit answer to the exact 193-file / 2715260-byte packet request with SHA256 c88b13119288be87d01ce40eed1c9e3ada483d30015fdebad3548feb555197f5.",
+    "currentThread": "01a0e01b-ef84-7192-817f-584cda5d339b"
+  },
+  "coordinator": {
+    "status": "BOTH_ATTEMPTS_FINISHED_AWAITING_LITERAL_ADJUDICATION",
+    "finishedUtc": "2026-09-29T19:17:40.442990+00:00",
+    "scienceCalls": 0
+  },
+  "launch": {
+    "jobPid": 2487967,
+    "watcherPid": 2487968,
+    "packetSha256": "c88b13119288be87d01ce40eed1c9e3ada483d30015fdebad3548feb555197f5",
+    "reviewers": [
+      "Claude",
+      "Grok"
+    ],
+    "concurrentReviewWorkers": 1,
+    "scienceCalls": 0,
+    "runnerSha256": "15aea554dcaff6b37b1cbc5164582ceb4026cef7a0eb85553a2c16c07ab6298e",
+    "launcherSha256": "3c2f11b338da6deda7417443c546dc1ff99ada9a23ca3e8cda1ec7ee33e1ffed"
+  },
+  "static": {
+    "status": "SOURCE_HASH_AST_ONLY_NO_SCIENCE",
+    "runnerSha256": "15aea554dcaff6b37b1cbc5164582ceb4026cef7a0eb85553a2c16c07ab6298e",
+    "launcherSha256": "3c2f11b338da6deda7417443c546dc1ff99ada9a23ca3e8cda1ec7ee33e1ffed",
+    "completionMessageSha256": "b1ffe1c195441648266d628132d096cd29fb64b9e6cce3fbc495a3571fb2b337",
+    "workerSha256": "5d38c329e8e15cff091c09584c1d33806fd8318f66a779fc10f2ae52d00e3135",
+    "inputManifestSha256": "e78fc287fec25006d555ffb107d1fdcc6ef222554b3221d546c11331d05bb63b",
+    "guardSha256": "1c2bef4f691555e98e20eec1ccb76c8861cfd92ce827ddc36caa19afc12f5ecd",
+    "workerImportedOrExecuted": false,
+    "payloadsRestored": 0,
+    "peerReportsIncluded": false,
+    "archiveMembersVerified": true
+  },
+  "watcher": {
+    "status": "finished",
+    "watcherPid": 2487968,
+    "jobPid": 2487967,
+    "thread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+    "startedUtc": "2026-09-29T18:57:34.110550+00:00",
+    "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
+    "messageSha256": "b1ffe1c195441648266d628132d096cd29fb64b9e6cce3fbc495a3571fb2b337",
+    "notifications": {
+      "completion": {
+        "status": "queued",
+        "exitCode": 0,
+        "finishedUtc": "2026-09-29T19:17:40.558361+00:00"
+      }
+    }
+  },
+  "reviews": [
+    {
+      "engine": "claude",
+      "literalVerdict": "CLEAR FOR THIS PROGRESS-DEPENDENT FIXED-POINT CONTINUATION",
+      "verdict": "CLEAR",
+      "literalReport": "**CLEAR FOR THIS PROGRESS-DEPENDENT FIXED-POINT CONTINUATION**\n\nThis clearance covers the source only. It does not accept any runtime result, clear a build or authorize a launch. I found no substantive blockers. Six hardening items are listed below; I recommend the first two before launch, but none makes the job fail open or produce an unsupported claim. I executed, imported and unpickled nothing, and contacted no one. I have no file-write tool in this session, so the report is here rather than saved to a file.\n\n## 1. Restoring the saved returns and bundles\n\n- **Eleven original returns:** each is restored through `op()` without calling its function (`continue.py:357-376`). It is checked structurally against its arguments, its source route and the original order. This is unchanged from the previous worker (`fixed_point.py:280-306`).\n- **Execution-4 bundle census:** `configure_resume` (`continue.py:169-195`) checks all 286 files. It hash-copies each file and compares every one of the 33 receipts to the reviewed `resumeSuboperations` records, requiring exactly 33.\n- **Three-way argument join:** for each unfinished end binding, the execution-4 operand hashes must equal the original operand hashes (`continue.py:342-348`). The current arguments are joined structurally to the originals by `same()` (`:349-356`). Hash equality is valid here because both runs blobbed the same restored prior objects. No pickle bytes are compared where they don't need to be.\n- **Bundle joins:**\n  - Source specialization: joined on mapping, original pencil and face census (`:717-720`).\n  - Transverse bundle: joined to raw matrix, wave and branch residuals (`:725-728`).\n  - Specialized current inputs: `original == result[name]` (`:757`).\n  - End specialization: `original == coefficient` (`:773`).\n- **Carrier outputs have no join:** the restored carrier returns (`:764-766`) are tied to their specialized input only by the pinned receipt key and the code order in execution 4. See item 1 below.\n- **No replay:** nothing from a producer, a saved full binding, a saved specialization, the wave polynomial or the transverse restriction is recomputed. The code path consumes all 13 + 13 + 7 bundles.\n\n## 2. Reconstructed unsaved context\n\nCompared against `fixed_point.py:647-668`:\n\n- **Same formulas on saved operands:** `relation`, `scale`, gauge, longitudinal probes, `raw_gram = lift.H*lift`, `clean(raw_weak/raw_restricted)` and the raw transverse denominators. Nothing else is reconstructed, and downstream uses (probes in `faces()`, `raw_gram` in the denominators) are unchanged.\n- **q\u00b2 is written differently:** it is now `-polynomial.subs(q,0)/coefficientTwo` (`continue.py:738`) instead of `-wp.nth(0)/wp.nth(2)`. The two are equal after `cancel`, and q\u00b2 is recorded only, never checked. It still isn't literally the unchanged formula (item 4).\n- **Joins to the current packet are thin:** `transverse['original']`, `sourceJoin` and `waveJoin` reach the current packet only through `branchResiduals`, which may not tell the ends apart. Provenance still holds through the operand-hash join plus the pinned execution-4 code, so this is not a blocker. A cheap structural join is suggested in item 3.\n\n## 3. Entry checkpoint wrapper\n\n- **Unchanged math:** the operation is still `sp.Poly(entry, e).nth(2)` inside `matrix.applyfunc` (`:581-589`), and the residual is still `matrix - e**2*coefficient`.\n- **Symbols stay independent:** `epsilon`, `eta_bg` and `sigma_W` are all carried through specialization (`:761-762`). They are bound only afterwards, at the end-specialization step.\n- **No numbers substituted:** nothing varying is replaced by a number during extraction.\n- **Both halves saved:** each attempted input and each returned coefficient is saved separately.\n- **Entry numbering follows SymPy's call pattern, not matrix positions:** SymPy's `_eval_applyfunc` (visible in the execution-4 traceback at `matrixbase.py:2040`) calls the function once per stored nonzero value. It also calls it once on `S.Zero` if the matrix has structural zeros. The resulting matrix is identical.\n- **Restored results stay separate from accepted premises:** restored bundles are labelled `RESTORED_PRIOR_COMPLETE_SUBOPERATION`. All premise checks are still recomputed.\n\n## 4. Progress-dependent duration\n\n- **Only saved results reset the timer:** the deadline is renewed only in `progress()` (`:151-167`). That happens after an exclusive, fsynced `publish()` of the result and of `progress-events/%08d.json`. `checkpoint`, `resume_local` and the re-arm after `op()` only re-arm with the remaining time, so serialization never renews it.\n- **What counts as progress:** entries ending in `-input` don't count. Each restored item counts once, enforced by `progress_paths`.\n- **Deadline expiry is fatal:** `NativeDeadline` is a `BaseException`, and the timer is disarmed before failure bookkeeping (`:1382`).\n- **Guard behaviour:**\n  - If `progress.json` is missing, the guard falls back to its start time.\n  - It rejects a decreasing sequence, a replayed receipt, a receipt outside `complete/`, a changed hash or an unknown event kind.\n  - It stops the job at 3,660 s after the progress it last observed (`guard.py:173-217`).\n  - The guard observes progress no earlier than the worker records it, and it starts before the worker, so the guard's limit always falls at least 60 s after the native deadline.\n- **Practicality:** in execution 4 the time went into `expand()` inside `construct_domain` on a single entry. One hour per entry is the finest granularity possible without changing the operation. Whether any given `INTERFACE_POWER` or `BULK_NORMAL` entry finishes within an hour, or within 2 GiB, cannot be known in advance.\n\n## 5. Containment\n\n- **Gates are exact:** status, `seconds`/`nativeSeconds` = 0, stall = 3600, user reply, review legs, and the worker, manifest, guard, shared guard and supervisor pins (`continue.py:1321-1356`, `guard.py:100-133`).\n- **Service settings are verified:** `RuntimeMaxUSec=infinity` and `Restart=no` are checked before the workload starts (`guard.py:136-151`).\n- **Limits are unchanged:** the global lock, refusal to run while another guard service is active, 2 GiB, zero swap, one CPU, nice 15, 32 tasks, one thread, `RLIMIT_AS` and the 4 GiB host-memory check.\n- **No escape routes:** there is no fallback, retry or restart.\n\n## 6. Face, current and seed method\n\nThe code from `face_address_census`, `faces`, `numerical_face_legs`, `loaded_control` and `saved_seed` through the tri-state summary matches the previous worker (spot-checked, and the static AST record agrees). Specifically:\n\n- Tri-state coverage, both seeds 16 and 17, and the source and unit joins are intact.\n- The depth-sign and damping evidence, addressed controls and the orientation-blind c2 literal scope are intact.\n- `completeInventory=False` is still set.\n- No field or power construction follows the results.\n\n## 7. Persistence\n\n- **On failure:** the worker writes `failure.json`, the operation index, failure posthashes, `restored-suboperations.json` and the artifact index. Prior originals are copied byte-for-byte into `prior-complete/` and `fixed-point-prior/`.\n- **On completion:** posthashes are required to equal the inputs.\n- **Reuse labels are distinct:** `RESTORED_PRIOR_COMPLETE_RETURN`, `RESTORED_PRIOR_COMPLETE_SUBOPERATION`, `NEW_COMPLETE_*`.\n\n## Hardening items\n\n1. **Carrier-return join** (`continue.py:765-766`). Consequence: a restored coefficient isn't checked against the specialized input it came from. Fix: after restoring, require `journal.same(specialized - e**2*coefficient, residual)`. This is a cheap structural rebuild with no expansion.\n2. **Integrity failures are mislabelled** (`continue.py:202-212`). A changed copied object or pin raises `ValueError`, which `op()` (`:396-400`) records as `LOCAL_OPERATION_EXCEPTION`. The job then moves on to the other ends. Fix: raise `IntegrityError` for the hash and pin checks in `restore_suboperation`.\n3. **Optional join** (`:730`): `journal.same(transverse['original'], bind(packet['originalAlgebraic'], label, {oldq: oldq}))`. It is the same cheap `xreplace` already used for `relation`.\n4. **Literal q\u00b2 formula** (`:738`): use `sp.Poly(wave_saved['polynomial'], q).nth(0)`.\n5. **Guard exception handling** (`guard.py:214`): add `TypeError` to the caught exceptions, so a structurally malformed `progress.json` still writes `child-outcome.json`.\n6. **Wording only:**\n   - \"fresh exact execution-4 gate\" at `:1321` should say execution 5.\n   - \"one bounded attempt\" and `seconds==180` at `:377` are now just labels.\n   - Tag `recovered-unsaved-context` with an explicit `execution='RECOVERED_UNSAVED_CONTEXT'`.\n   - Name the `-input` checkpoint files something other than `complete.json`, since they record attempts.\n   - Specialized-input results are excluded from progress. That is conservative and acceptable, but should be stated in the scope.\n\n## Remaining runtime and progress uncertainties\n\n- A single `Poly(entry, e)` expansion may need more than 3,600 s or more than 2 GiB. A memory error leaves that end unresolved, and a stall stops the job with evidence preserved.\n- SIGALRM only fires between Python bytecodes, so a long C-level call can delay the deadline. The guard's 60 s margin then covers it.\n- Bookkeeping hashes every input and output file. That should fit within 60 s, but it hasn't been measured.\n- A bare `except:` inside SymPy could in principle swallow `NativeDeadline`.\n- Nothing here predicts whether any end reaches the face premise or seed checks.",
+      "receipt": {
+        "engine": "claude",
+        "sessionId": "4c455168-9352-47ce-b9de-9783afa9a1d7",
+        "command": [
+          "/home/trevnorris/.local/bin/claude",
+          "--print",
+          "--output-format",
+          "json",
+          "--safe-mode",
+          "--restricted",
+          "--tools",
+          "Read,Glob,Grep",
+          "--allowedTools",
+          "Read,Glob,Grep",
+          "--permission-mode",
+          "dontAsk",
+          "--strict-mcp-config",
+          "--mcp-config",
+          "{\"mcpServers\":{}}",
+          "--setting-sources",
+          "",
+          "--disable-slash-commands",
+          "--session-id",
+          "4c455168-9352-47ce-b9de-9783afa9a1d7"
+        ],
+        "cwd": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation-build-review/packet",
+        "startedUtc": "2026-09-29T18:57:34.283544+00:00",
+        "packetSha256": "c88b13119288be87d01ce40eed1c9e3ada483d30015fdebad3548feb555197f5",
+        "promptSha256": "b6cb87b35db308666f3ba89802c562342f669a895aff88b1db8e56625796591f",
+        "scientificExecutionEnabled": false,
+        "reviewVerdict": "NOT_ADJUDICATED",
+        "pid": 2487975,
+        "exitStatus": 0,
+        "finishedUtc": "2026-09-29T19:02:35.006979+00:00",
+        "wallSeconds": 300.72187596710864,
+        "outputSha256": "615d8e350c9d82d5978ad7ba3180e211f3f0c153060b53714d85efd69f58a597",
+        "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderrBytes": 0
+      },
+      "output": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation-build-review/claude.json",
+        "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation-build-review/claude.json",
+        "bytes": 11456,
+        "sha256": "615d8e350c9d82d5978ad7ba3180e211f3f0c153060b53714d85efd69f58a597"
+      },
+      "stderr": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation-build-review/claude.stderr",
+        "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation-build-review/claude.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "terminalMetadata": {
+        "stop_reason": "end_turn",
+        "is_error": false,
+        "terminal_reason": "completed",
+        "num_turns": 26
+      }
+    },
+    {
+      "engine": "grok",
+      "literalVerdict": "CLEAR FOR THIS PROGRESS-DEPENDENT FIXED-POINT CONTINUATION",
+      "verdict": "CLEAR",
+      "literalReport": "I'll review the continuation worker, progress guard, manifest, and scope from the packet sources only, then write the report. First I'm locating the packet files and the review format.The review is source-only, so I\u2019ll read the packet files directly and not run science, imports, or ablations.The packet index names the continuation worker, guard, manifest, and scope. I\u2019ll read those sources and the physical wrappers they depend on.**CLEAR FOR THIS PROGRESS-DEPENDENT FIXED-POINT CONTINUATION**\n\nSource-only reading of the continuation worker, task-local guard, manifest, scope, previous worker, and saved receipts. No science run, unpickle, import, ablation, or peer contact. This is not runtime acceptance. No `READY_FOR_ONE_PROGRESS_GUARDED_FIXED_POINT_CONTINUATION` gate file is present, and both the worker and the guard refuse to start without that exact record.\n\nThe proposal is one fifth execution of the same unfinished `omega=1`, tangential `(1/5, 1/10)`, `LAB_HELD`/`RHO4_CONSTANT` binding. It reuses the eleven completed journal returns and the thirty-three execution-4 suboperation bundles, then resumes REFERENCE and LEFT at interface-power carrier extraction and RIGHT at bulk-normal carrier extraction.\n\n**1. Restoration**\n\nThe eleven completed returns are the prior index entries whose status is `COMPLETE`. `Journal.op` (`S11c_d_transverse_face_fixed_point_continue.py:349-376`) structurally joins the live arguments with `same()`, then returns `prior_value` of the saved object and never calls the supplied function. Order is fixed by `prior_order`. The three unfinished names are the `REFERENCE`/`LEFT`/`RIGHT` source bindings.\n\nThe thirty-three bundles are counted in `configure_resume` (`:187-194`) and match the saved layout: thirteen REFERENCE, thirteen LEFT, seven RIGHT. `restore_suboperation` (`:200-220`) unpickles the copied receipt through `SavedCodec` and does not call the producer. `bound_end` (`:716-778`) restores `source-specialization`, `wave-polynomial`, and `transverse-restriction` on every end, then restores a current stage only when that stage\u2019s receipt exists. REFERENCE/LEFT therefore recompute from interface power; RIGHT recomputes from bulk-normal current. Saved carrier, wave, and transverse work is not run again.\n\nUnchanged old copies are hash-pinned and republished (`configure_prior` `:277-286`, `configure_resume` `:174-180`). Live arguments, current originals, carrier coefficients, and declared end inputs use `same()` (`:464-478`, `:717-720`, `:725-728`, `:757`, `:773`), not a re-pickle. Execution-4 versus original operand pins are compared as stored sha256 lists (`:342-348`). Those pins are the unchanged saved operand files; the static record says those hashes match. That byte check is on the stored copies. The live join is structural.\n\n**2. Unsaved context**\n\nThe restored blocks already contain the source specialization, the wave polynomial, and the transverse restriction, including matrix, wave, lift, cleaned gram, raw weak and raw restricted forms, source and wave joins, and the invariant residual. They do not contain `q2`, `scale`, gauge probes, raw gram, cleaned weak/restricted matrices, or raw transverse denominators.\n\nThe continuation rebuilds only those, with the execution-4 formulas (`fixed_point.py:647-668` versus `continue.py:738-748`):\n\n- `q2` is the cancelled ratio of the degree-2 constant term to `coefficientTwo`. The saved polynomial is `Poly.as_expr()` with the linear coefficient required to be zero, so substituting the depth symbol with zero is that constant term.\n- `scale` is the same square root of the cancelled ratio of the relation\u2019s quadratic coefficient to `coefficientTwo`.\n- Gauge probes, `lift.H*lift`, `clean` of the saved raw coordinate blocks, and the raw denominator extraction match the previous lines.\n\n`epsilon_shape` is not a parameter value. `eta_bg` and `sigma_W` stay on the carried-symbol allowlist through specialization and are not given a new closure. Saved source, wave, and branch identities are reused as saved joins, not treated as an independent derivation. Later face, denominator, and seed code consumes the reconstructed probes, raw gram, cleaned blocks, and raw denominators. `q2` and `scale` are returned on the same result object as before; the saved joins are not recomputed from them.\n\n**3. Coefficient extraction**\n\n`grade` (`:576-589`) is still `matrix.applyfunc` of `Poly(entry, epsilon_shape).nth(2)`, and the residual is still `matrix - epsilon_shape**2 * coefficient`. The only addition is a saved attempt (`*-input`) and a saved coefficient (`*-return`) around that call. Empty exact zeros still return without inventing a grade. Specialization still carries `epsilon_shape`, `eta_bg`, and `sigma_W` (`:761-762`). End substitution still happens afterward, with reference grades set to exact zero and the other ends set from the source grade-origin arithmetic, as in the previous worker. Seed `evalf` remains after extraction, at the saved numeric point. A restored carrier residual is not by itself a face or seed premise; those later checks still have to pass (`:1263-1280`).\n\n**4. Progress deadline**\n\nThere is no total cap. The worker deadline starts at one hour and moves forward only in `progress()` (`:151-167`), after an exclusive fsynced receipt. `checkpoint` (`:319-328`) rearms the time already remaining, serializes, and renews only for a saved result whose name does not end in `-input`. Started work and CPU samples do not renew it. Restores call `progress` once per new receipt (`:219`); a repeated path is rejected by both the worker and the guard.\n\nThe guard (`continue_guard.py:216-217`) stops the child at 3660 seconds from the last accepted progress: 3600 plus 60 seconds for bookkeeping. `systemd` is `RuntimeMaxSec=infinity` and `Restart=no` (`:276-277`, verified at `:136-141`). Absent `progress.json` does not refresh. A decreasing sequence, a reused receipt, a bad hash, or an unknown kind is fatal. Equal sequence does not refresh.\n\n**5. Containment**\n\nThe task-local guard is separate from `scripts/s11c_guarded_run.py`. The shared runner still requires `--seconds` in `1..900` and a finite `RuntimeMaxSec`. This job does not call it; it pins that file\u2019s hash. The task-local guard requires the approved zero wall and zero native seconds, the quoted user approval, one new execution, 2 GiB, zero swap, 32 tasks, nice 15, and one CPU. It keeps the original `resource-guard.lock`, the active `s11c-guard-*.service` refusal, the 4 GiB host-memory check, and fail-closed launch. The worker repeats the cgroup check and sets a 2 GiB address-space cap (`continue.py:416-436`). No unguarded path, overlap, or automatic retry is present. The normalization supervisor is pinned and still waits on one child.\n\n**6. Later method**\n\nFrom the face census through both seeds, the continuation matches the execution-4 worker, including seeds 16 and 17, source and unit joins, `tau_A`/`tau_V`/`tau_X` and the `gamma_*` parameter map, addressed omission controls, and the orientation-blind c2 literal scope. Tri-state coverage stays available / unresolved / not visited, with partial selected support left unresolved. The result stops at the check record. It does not build an outgoing field or power, and it does not state a lossless end, a total loss, an `omega=3` result, a channel map, or a calibrated-light result.\n\n**7. Persistence and labels**\n\nSuccess writes `posthashes.json` and requires the input pins to be unchanged (`:1372-1376`). Failure disarms the timer, writes `failure.json` with `noRetry`, the operation index, and `failure-posthashes.json` (`:1381-1386`). Prior and execution-4 trees are copied and hash-checked before use. Restored returns are labeled `RESTORED_PRIOR_COMPLETE_RETURN`; restored bundles are labeled `RESTORED_PRIOR_COMPLETE_SUBOPERATION`.\n\n**Optional, not blockers**\n\n- New coefficient receipts do not repeat that execution label; the progress kind and the absence of `priorReceipt` distinguish them.\n- The manifest also contains an unread `futureComputeLimits` of 900/840 seconds beside the enforced `limits` of zero wall, zero native, and a 3600-second stall. The guard rejects any other duration.\n- `nice >= 15` matches the shared guard; the unit is still started at nice 15.\n- `clean(lift.H*lift)` is not re-joined to the saved gram, and the reconstructed scale is not substituted back into the saved wave join. Both formulas match the previous worker.\n- SymPy `applyfunc` calls the extractor once per distinct entry. Duplicate positions share one saved pair; the matrix entry is still that coefficient.\n\n**Runtime and progress uncertainties**\n\n- Execution 4 died inside one `Poly(..., epsilon_shape)` construction, in `expand`, when the 180-second local budget fired (`operations/0011-REFERENCE-source-bind/unresolved.json`). This continuation gives that same call up to 3600 seconds after the previous saved receipt. Nothing read here shows that this expand finishes inside that hour.\n- The native timer raises in Python. The saved traceback shows that signal arrived during this expand. The guard\u2019s SIGTERM is about 60 seconds later. Bookkeeping that is still running then will be killed; receipts already published with `publish()` remain.\n- The initial prior and execution-4 copy does not count as progress until the copy index is published, so that copy sits inside the first hour.\n- Whether the saved objects actually satisfy `same()` was not executed in this review.",
+      "receipt": {
+        "engine": "grok",
+        "sessionId": "b23de081-b04c-4922-8f26-fc77c81940b6",
+        "command": [
+          "/home/trevnorris/.local/bin/grok",
+          "--cwd",
+          "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation-build-review/packet",
+          "--prompt-file",
+          "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation-build-review/packet/review-prompt.md",
+          "--output-format",
+          "json",
+          "--permission-mode",
+          "dontAsk",
+          "--no-plan",
+          "--tools",
+          "Read",
+          "--no-subagents",
+          "--disable-web-search",
+          "--verbatim",
+          "--session-id",
+          "b23de081-b04c-4922-8f26-fc77c81940b6"
+        ],
+        "cwd": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation-build-review/packet",
+        "startedUtc": "2026-09-29T19:02:35.079644+00:00",
+        "packetSha256": "c88b13119288be87d01ce40eed1c9e3ada483d30015fdebad3548feb555197f5",
+        "promptSha256": "b6cb87b35db308666f3ba89802c562342f669a895aff88b1db8e56625796591f",
+        "scientificExecutionEnabled": false,
+        "reviewVerdict": "NOT_ADJUDICATED",
+        "pid": 2490670,
+        "exitStatus": 0,
+        "finishedUtc": "2026-09-29T19:17:40.374154+00:00",
+        "wallSeconds": 905.2926857059356,
+        "outputSha256": "604565f296f5db4add6e79a7f4f1d13eaab65a2a705ec8af4b809e40b61a3ee0",
+        "stderrSha256": "2e85a16fbb9506f2c5f8c36df50fc7f2bd54a68bb78173268eeb8a691cbc0b78",
+        "stderrBytes": 8967
+      },
+      "output": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation-build-review/grok.json",
+        "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation-build-review/grok.json",
+        "bytes": 101917,
+        "sha256": "604565f296f5db4add6e79a7f4f1d13eaab65a2a705ec8af4b809e40b61a3ee0"
+      },
+      "stderr": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation-build-review/grok.stderr",
+        "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation-build-review/grok.stderr",
+        "bytes": 8967,
+        "sha256": "2e85a16fbb9506f2c5f8c36df50fc7f2bd54a68bb78173268eeb8a691cbc0b78"
+      },
+      "terminalMetadata": {
+        "stopReason": "end_turn",
+        "num_turns": 25
+      }
+    }
+  ],
+  "codecCensusJoin": {
+    "census": {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_fixed_point_continue_codec_census.json",
+      "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_fixed_point_continue_codec_census.json",
+      "bytes": 90831,
+      "sha256": "479ea98d0dcabda9ed84d01e312d80433a2d80ab460100c35772fe9a2f23233d"
+    },
+    "currentManifestHashMatches": true,
+    "allCensusedBytesMatch": true,
+    "selectedRoutes": 64,
+    "uniqueFiles": 57,
+    "scientificRestorations": 0,
+    "runtimeCompatibilityProven": false
+  },
+  "grokStderrAssessment": "8967 bytes of CLI configuration warnings and read-tool errors preserved. Normal end_turn and a substantive source-addressed final CLEAR report; not claimed empty.",
+  "optionalEditsApplied": false,
+  "sourceChangedAfterReview": false,
+  "authorIndependentClearanceClaim": false,
+  "automaticReviewRerun": false,
+  "peerSharing": false,
+  "scienceCalls": 0,
+  "scientificExecutionOrdinal": 5,
+  "scientificExecutionLaunched": false,
+  "remainingRuntimeObligations": [
+    "Restored object compatibility and exact argument/source joins",
+    "All per-entry carrier extractions within progress inactivity limit and 2GiB",
+    "Actual face/current/seed/control/coverage results",
+    "Input/copy/snapshot integrity and physical acceptance independent of exits"
+  ]
+}

@@ -1,5 +1,19 @@
 # S11c-d session recovery — 2026-09-26
 
+**Execution 4 independently cleared and gated (2026-09-29):** both fresh
+second-round reviewers literally CLEAR FOR THIS BOUNDED FIXED-POINT
+TRANSVERSE/FACE BUILD. Exact worker/manifest remain unchanged from `b8a1dd2c`.
+All packet/archive/source hashes and 142 inputs match. The older opcode census
+covers the identical 31 selected routes / 29 unique files; duplicated
+LEFT/REFERENCE seed bytes explain the representative routes. Runtime structural
+joins, costs and compatibility remain obligations, not metadata conclusions.
+See fixed-point review_r2_record/disposition, gate and stage_launch.
+Metadata-only launch preflight passed; no scientific import or launch yet.
+Existing execution-4 approval covers this one ordinary shared-guard/supervisor
+job: 180 s per binding, 840 s native / 900 s outer, 2 GiB, zero swap, one CPU,
+nice 15, 32 tasks, one native thread. Restore eleven completed returns; no retry
+or further execution. Arm the local hook before launch and stop after results.
+
 **Corrected execution-4 build reviews submitted (2026-09-29):** the user
 approved the exact 80-file / 1,682,033-byte packet, SHA-256
 `58f12be41da26a4e28a564f97be8018286467cc42f41c5fa2508539f9d850624`.

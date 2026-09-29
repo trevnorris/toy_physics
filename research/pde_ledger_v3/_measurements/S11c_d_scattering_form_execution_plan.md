@@ -1,5 +1,16 @@
 # S11c-d: the remaining execution queue
 
+**Corrected reader continuation prepared for exact-packet consent:** the narrow
+formatter repair and nine-return continuation are saved in new files; original
+reader/failure unchanged. Static AST/metadata checks confirm the codec and
+unfinished inspection functions are unchanged apart from formatting, continuation
+plumbing and gate bookkeeping; all 168 original pins remain within 244 total.
+Fresh Claude/Grok source/JSON packet: 75 files / 3,656,409 bytes, SHA-256
+`68ad4e2e56a6163ac0506fb9fa5be8ec2809328592c2fcc60162783ade6780a0`.
+No independent clearance, science READY gate, external submission or execution.
+Await exact-packet consent; the user's Continue already covers one guarded
+continuation after clearance, then the reader/frequency-comparison stop.
+
 **User-directed reader continuation in preparation (2026-09-29):** “Continue”
 authorizes the narrow saved-function formatter repair and one guarded continuation
 after independent build clearance. Preserve all nine completed reader returns and

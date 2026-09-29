@@ -1,5 +1,16 @@
 # S11c-d session recovery — 2026-09-26
 
+**Saved-reader continuation reviews launched (2026-09-29):** the user explicitly
+approved the exact 75-file / 3,656,409-byte packet, SHA-256
+`68ad4e2e56a6163ac0506fb9fa5be8ec2809328592c2fcc60162783ade6780a0`.
+All 74 packet source pins and 244 input pins match. Fresh Claude is running;
+Grok follows sequentially with the identical read-only packet. Completion hook
+armed for this session; one host startup check verified the owned processes.
+Both literal reports must finish before adjudication or edits. No science,
+independent clearance or READY gate yet. Existing Continue authority covers
+one guarded saved-return continuation after clearance, then the comparison stop.
+See `S11c_d_transverse_face_saved_reader_continue_review_preparation.json`.
+
 **Corrected reader continuation prepared for exact-packet consent:** the narrow
 formatter repair and nine-return continuation are saved in new files; original
 reader/failure unchanged. Static AST/metadata checks confirm the codec and

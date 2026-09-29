@@ -1,5 +1,5 @@
 {
-  "status": "PREPARED_AWAITING_EXACT_PACKET_SUBMISSION_APPROVAL",
+  "status": "REVIEWS_LAUNCHED_AWAITING_BOTH_LITERAL_REPORTS",
   "preparedUtc": "2026-09-29T15:03:32.022784+00:00",
   "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/saved-reader-continue-build-review",
   "packetSha256": "68ad4e2e56a6163ac0506fb9fa5be8ec2809328592c2fcc60162783ade6780a0",
@@ -421,7 +421,7 @@
     }
   },
   "authorization": {
-    "status": "PENDING_EXACT_PACKET_APPROVAL",
+    "status": "EXPLICITLY_APPROVED_FIXED_PACKET",
     "reviewers": [
       "claude",
       "grok"
@@ -430,7 +430,11 @@
     "archiveSha256": "ed2e5abe5816284fb63ea6e87dcddb324d9083ec54be099d9f2224b99546313a",
     "packetFiles": 75,
     "packetBytes": 3656409,
-    "scientificExecutionAuthorizedByThisSubmission": false
+    "scientificExecutionAuthorizedByThisSubmission": false,
+    "userReply": "I approve",
+    "approvedUtc": "2026-09-29T15:23:25.528807+00:00",
+    "approvalContext": "Direct approval of the prepared 75-file, 3656409-byte corrected reader-continuation packet SHA256 68ad4e2e56a6163ac0506fb9fa5be8ec2809328592c2fcc60162783ade6780a0 for fresh Claude and Grok review. Source/JSON only; no binary scientific payloads or scientific execution.",
+    "currentThread": "01a0e01b-ef84-7192-817f-584cda5d339b"
   },
   "scientificExecutionsUsed": 2,
   "continuationScienceNotLaunched": true,
@@ -439,5 +443,67 @@
   "continuationAuthorizationSha256": "fdba1de70d139d1371faaeb1cb5695c2fae1d3fc60cf8290843644ea7b23c69c",
   "parentFailureCommit": "7d323ce8",
   "parentReviewedSourceCommit": "f9f5553e",
-  "continuationScientificExecutionOrdinal": 3
+  "continuationScientificExecutionOrdinal": 3,
+  "prelaunchVerification": {
+    "verifiedUtc": "2026-09-29T15:23:25.529256+00:00",
+    "packetAndArchiveMatch": true,
+    "sourcePinsMatch": 74,
+    "inputPinsMatch": 244,
+    "protectedHashesMatch": true,
+    "scientificImportsOrRestorations": 0,
+    "priorLaunchExists": false
+  },
+  "launch": {
+    "jobPid": 2333312,
+    "watcherPid": 2333313,
+    "packetSha256": "68ad4e2e56a6163ac0506fb9fa5be8ec2809328592c2fcc60162783ade6780a0",
+    "reviewers": [
+      "Claude",
+      "Grok"
+    ],
+    "concurrentReviewWorkers": 1,
+    "scienceCalls": 0,
+    "runnerSha256": "8f6bd8d881b9740de6b54edd0daddd9af3a1ad54f4cf72d4369c0a498e30399b",
+    "launcherSha256": "26ad031dee63d41452e02b01d3749b6bdea6fd5a02b0e390cebdb02562ec3e92"
+  },
+  "startupInspection": {
+    "inspectedUtc": "2026-09-29T15:24:03.735597+00:00",
+    "hostNamespaceCheck": true,
+    "coordinator": {
+      "visible": true,
+      "state": "S",
+      "alive": true
+    },
+    "watcher": {
+      "visible": true,
+      "state": "S",
+      "alive": true
+    },
+    "stateStatus": "RUNNING",
+    "watcherStatus": "waiting",
+    "reviewers": {
+      "claude": {
+        "sessionId": "6619eab8-fd18-41b7-8d75-7daafaaf414d",
+        "pid": 2333319,
+        "startedUtc": "2026-09-29T15:23:39.864059+00:00",
+        "finishedUtc": null,
+        "exitStatus": null,
+        "hostProcess": {
+          "visible": true,
+          "state": "S",
+          "alive": true
+        }
+      },
+      "grok": {
+        "status": "NOT_STARTED_SEQUENTIAL_QUEUE"
+      }
+    },
+    "infrastructureStderrBytes": {
+      "coordinator.stderr": 0,
+      "watcher.stderr": 0
+    },
+    "scienceCalls": 0,
+    "completionHookTarget": "01a0e01b-ef84-7192-817f-584cda5d339b",
+    "singleStartupInspection": true
+  }
 }

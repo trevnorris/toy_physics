@@ -1,0 +1,197 @@
+{
+  "status": "STOPPED_SAVED_REFERENCE_FACE_SUMMARY_MISMATCH_RIGHT_NOT_REACHED",
+  "inspectedUtc": "2026-09-29T23:48:25.529362+00:00",
+  "scientificExecutionOrdinal": 6,
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/right-finish",
+  "failure": {
+    "traceback": "Traceback (most recent call last):\n  File \"/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_right_finish.py\", line 1390, in main\n    result=construct(spec,out,journal)\n  File \"/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_right_finish.py\", line 1276, in construct\n    face = op(label+'-face-premise',faces,bound,seconds=20)\n  File \"/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_right_finish.py\", line 496, in op\n    journal.reuse_summary(name+'.json',show(value))\n  File \"/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_right_finish.py\", line 315, in reuse_summary\n    require(evidence['actualArgumentJoin'],'completed nonjournal source/argument join changed')\n  File \"/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_right_finish.py\", line 36, in require\n    raise ValueError(reason)\nValueError: completed nonjournal source/argument join changed\n",
+    "incompleteOperation": null,
+    "wallSeconds": 37.437806464964524,
+    "noRetry": true
+  },
+  "checks": {
+    "exitFailurePreserved": true,
+    "noChecksDocument": true,
+    "scientificStdoutEmpty": true,
+    "scientificStderrNonempty": true,
+    "allInputPosthashesMatch": true,
+    "allSavedByteReferencesMatch": true,
+    "allSourceSnapshotsMatch": true,
+    "allPriorCopiesByteIdentical": true,
+    "allThirteenRestoredArgumentJoinsMatch": true,
+    "referenceFaceRenderedSummaryJoin": false,
+    "newRightWorkReached": false,
+    "noAutomaticRetry": true
+  },
+  "resources": {
+    "workerSeconds": 37.437806464964524,
+    "supervisorSeconds": 39.786169616971165,
+    "guardSeconds": 39.86621654999908,
+    "sampleCount": 21,
+    "peakMemoryBytes": 246804480,
+    "maxSwapBytes": 0,
+    "maxMemoryEvents": {
+      "low": 0,
+      "high": 0,
+      "max": 0,
+      "oom": 0,
+      "oom_kill": 0,
+      "oom_group_kill": 0,
+      "sock_throttled": 0
+    },
+    "minimumHostAvailableBytes": 21419319296,
+    "maximumTasks": 3,
+    "enforced": {
+      "memory.max": "17179869184",
+      "memory.swap.max": "0",
+      "pids.max": "32",
+      "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-a8c68e86b784.service",
+      "nice": 0,
+      "affinity": [
+        15
+      ],
+      "threads": {
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "VECLIB_MAXIMUM_THREADS": "1",
+        "BLIS_NUM_THREADS": "1"
+      }
+    },
+    "duration": {
+      "verified": true,
+      "actual": {
+        "Restart": "no",
+        "RuntimeMaxUSec": "infinity"
+      },
+      "wallDeadlineSeconds": null,
+      "automaticRetry": false
+    },
+    "nativeAddressSpaceEvidence": "Reviewed unchanged worker sets RLIMIT_AS16GiB before native-limits.json; /proc limits were not captured before process exit."
+  },
+  "integrity": {
+    "inputPosthashesMatched": 1364,
+    "sourceSnapshotPairsMatched": 80,
+    "uniqueHashReferencesVerified": 2926,
+    "priorCopiedFiles": 1311,
+    "priorCopiedBytes": 31272777,
+    "actualResultFiles": 1441,
+    "actualResultBytes": 36188299,
+    "artifactIndex": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/right-finish/complete/artifact-index.json",
+      "bytes": 873878,
+      "sha256": "b0781c8d473946056b5de1324ae9bf28d1a5ef22245f58bb58862c4cc92c8ed8"
+    },
+    "failurePosthashes": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/right-finish/complete/failure-posthashes.json",
+      "bytes": 698480,
+      "sha256": "19e8b26ff00bc224a13335777db7d4c29d2dbd9733aaf7a3e9d49b03e6ea879b"
+    },
+    "stderrBytes": {
+      "transverse_face_right_finish.stderr": 1185,
+      "guard-launch.stderr": 0,
+      "coordinator.stderr": 0,
+      "resource-guard/stderr": 0,
+      "watcher.stderr": 0
+    }
+  },
+  "operations": {
+    "completeRestored": 13,
+    "lastComplete": "REFERENCE-face-premise",
+    "argumentJoins": 13,
+    "newScientificReturns": 0,
+    "rightSuboperationsRestored": 0,
+    "failedSummaryJoin": {
+      "source": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/REFERENCE-face-premise.json",
+        "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/REFERENCE-face-premise.json",
+        "bytes": 3325557,
+        "sha256": "1d2c702c4d0ab829bd3dae96c260d20d8ac05142f421314e31e4458dac262df1"
+      },
+      "actualArgumentJoin": false
+    },
+    "failedSummaryReceipt": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/right-finish/complete/summary-joins/REFERENCE-face-premise.json.join.json",
+      "bytes": 463,
+      "sha256": "2b00bcb3b3274ca1499c05b6349bd8853f009bcd4876e9a60c92c89f07591b5e"
+    },
+    "exactMismatchNotPersisted": true
+  },
+  "progress": {
+    "events": 14,
+    "kinds": [
+      "PRESERVED_FIXED_POINT_RESULTS",
+      "RESTORED_PRIOR_COMPLETE_RETURN"
+    ],
+    "lastEvent": {
+      "sequence": 14,
+      "kind": "RESTORED_PRIOR_COMPLETE_RETURN",
+      "receipt": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/right-finish/complete/operations/0012-REFERENCE-face-premise/complete.json",
+        "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/right-finish/complete/operations/0012-REFERENCE-face-premise/complete.json",
+        "bytes": 4638,
+        "sha256": "58b070e896479918e4348faba8d555a408bb7b66201526afa4c59f4b63029410"
+      },
+      "utc": "2026-09-29T23:45:48.370996+00:00"
+    }
+  },
+  "outcomes": {
+    "coordinator": {
+      "exitCode": 1,
+      "wallSeconds": 40.058318177005276,
+      "scientificAcceptance": "PENDING",
+      "finishedUtc": "2026-09-29T23:46:09.115999+00:00"
+    },
+    "guard": {
+      "exitCode": 1,
+      "wallSeconds": 39.97742170304991,
+      "unit": "s11c-guard-a8c68e86b784",
+      "stderrBytes": 0,
+      "limitsVerified": true,
+      "childOutcome": {
+        "exitCode": 1,
+        "guardReason": null,
+        "wallSeconds": 39.86621654999908,
+        "childPid": 2577450
+      }
+    },
+    "child": {
+      "exitCode": 1,
+      "guardReason": null,
+      "wallSeconds": 39.86621654999908,
+      "childPid": 2577450
+    },
+    "supervisor": {
+      "stage": "transverse_face_right_finish",
+      "command": [
+        "/usr/bin/python3",
+        "-u",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_right_finish.py",
+        "--input-manifest",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_right_finish_inputs.json",
+        "--gate-receipt",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_right_finish_gate.json",
+        "--run-directory",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/right-finish/complete"
+      ],
+      "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/right-finish/transverse_face_right_finish.stdout",
+      "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/right-finish/transverse_face_right_finish.stderr",
+      "startedUtc": "2026-09-29T23:45:29.261863+00:00",
+      "childPid": 2577451,
+      "status": "failed",
+      "exitCode": 1,
+      "wallSeconds": 39.786169616971165,
+      "stderrBytes": 1185,
+      "finishedUtc": "2026-09-29T23:46:09.048111+00:00"
+    }
+  },
+  "literalBuildVerdicts": {
+    "claude": "CLEAR FOR THIS 16 GIB RIGHT-END CONTINUATION",
+    "grok": "CLEAR FOR THIS 16 GIB RIGHT-END CONTINUATION"
+  },
+  "scientificAcceptance": "NONE_NEW; prior accepted/selected results preserved, RIGHT remains unresolved",
+  "nextDependency": "A separately authorized guarded saved-output comparison must identify the exact rendered-summary mismatch before any proposed repair; current JSON stores only actualArgumentJoin=false, not the reconstructed summary.",
+  "automaticRetry": false,
+  "protectedBuilderSuffixSha256": "f01024512c9a028e7e524e5a95b5c455be42e125d10c36f94e20493109b013c2"
+}

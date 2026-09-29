@@ -1,5 +1,19 @@
 # S11c-d session recovery — 2026-09-26
 
+**Execution6 stopped restoring the reference-face summary (2026-09-29):**
+exact cleared16GiB RIGHT continuation launched23:45:29UTC and stopped after
+37.438worker seconds before new RIGHT work. Thirteen completed returns
+restored and13 argument joins passed; REFERENCE-face-premise rendered-summary
+comparison failed. The mismatch fields were not persisted, so representation
+versus scientific significance is not established. RIGHT scalar55 was not reached.
+Peak246804480bytes, zero swap/memory events; no resource/stall stop.
+All1364 input pins,80 source snapshots and1311 prior copied files intact.
+Failure retained:1441files/36188299bytes, stdout empty, no checks.json,
+scientific stderr1185bytes. Hook completed; no retry or running worker.
+See right_finish_failure_checkpoint/report. STOP. Next dependency is a separately
+authorized guarded comparison of the saved face return to its old JSON, saving
+actual differences without any face/current/carrier replay. No new job launched.
+
 **RIGHT continuation independently cleared and gated (2026-09-29):** both
 fresh literal verdicts CLEAR FOR THIS 16 GIB RIGHT-END CONTINUATION. All74
 packet/archive members,73 source files and1364 input pins match; worker,

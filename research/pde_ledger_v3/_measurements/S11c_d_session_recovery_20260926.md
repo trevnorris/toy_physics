@@ -1,5 +1,15 @@
 # S11c-d session recovery — 2026-09-26
 
+**RIGHT continuation build review: one gate correction required (2026-09-29):**
+Claude literally NEEDS REVISION; Grok literally CLEAR FOR THIS 16 GIB RIGHT-END
+CONTINUATION. Both reports finished, and all packet/archive/source/input hashes
+match. Claude B1 is accepted: the worker must tie the resource guard and
+supervisor hashes in its review record to the actual-file-checked launch gate.
+One explicit equality check is the required repair; scientific formulas and
+resource values stay unchanged. No optional edits, author CLEAR or science
+launch. Exact reviewed bytes and raw reports are preserved; see right_finish
+review_record/disposition. Corrected-source review needs fresh packet consent.
+
 **RIGHT-only 16 GiB continuation reviews submitted (2026-09-29):** user
 said “I approve. run it.” in direct reply to exact packet
 `10a92ac1f410a921ba2efbc81f5180d779e9a4e673d007e3382fed66adcea8fb`

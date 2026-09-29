@@ -1,5 +1,5 @@
 {
-  "status": "SUBMITTED_WAITING_FOR_BOTH_LITERAL_REPORTS",
+  "status": "BOTH_REPORTS_FINISHED_REVISION_REQUIRED_NO_LAUNCH",
   "preparedUtc": "2026-09-29T21:26:38.507014+00:00",
   "priorCompletionCommit": "79e7cfc9",
   "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/right-finish-build-review",
@@ -428,5 +428,15 @@
     "thread": "01a0e01b-ef84-7192-817f-584cda5d339b",
     "watcherPid": 2550296,
     "jobPid": 2550295
+  },
+  "literalReviewVerdicts": {
+    "claude": "NEEDS REVISION",
+    "grok": "CLEAR FOR THIS 16 GIB RIGHT-END CONTINUATION"
+  },
+  "reviewRecord": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_right_finish_review_record.json",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_right_finish_review_record.json",
+    "bytes": 60970,
+    "sha256": "a9c7db8bc67b3416084e196ff20501c1ee82564d21832c60de49a466675558a5"
   }
 }

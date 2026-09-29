@@ -27,3 +27,9 @@ Neither report executed science. Source review cannot certify restore order,
 future memory/time, selected RIGHT premise, all-grade losslessness or total loss.
 More memory remains an allowance, not a prediction. No retry, new science method
 or optional wording campaign. A fresh external packet needs exact export consent.
+
+The bounded repair is now implemented: one assertion joins all three helper
+hashes from the independently reviewed record to the already verified gate.
+An AST comparison proves all other worker code unchanged. Seven synthetic
+cases pass (one matching, three missing, three mismatched). This is an author
+correction awaiting fresh independent review, not a new CLEAR. See r2 preparation.

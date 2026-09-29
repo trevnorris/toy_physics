@@ -1,5 +1,16 @@
 # S11c-d session recovery — 2026-09-26
 
+**RIGHT continuation gate repair prepared for fresh review (2026-09-29):**
+first reviewed source/reports preserved at2d720c7d. The correction adds one
+review-to-gate equality assertion for guard/shared-guard/supervisor hashes;
+all other worker AST and guard/manifest/scope/authorization bytes are unchanged.
+Matching and six missing/mismatched hash cases pass with synthetic data only.
+All1364 input pins remain intact. Corrected packet74files/2964819bytes,
+SHA256`a3f4b309a4af9761476c08ccd123c440e0e0a00df0ec555d092e542a1c716293`,
+is prepared for fresh Claude/Grok review, awaiting exact-packet export consent.
+No optional edits, author clearance, review launch or scientific execution.
+The existing one-run16GiB approval remains valid after independent clearance.
+
 **RIGHT continuation build review: one gate correction required (2026-09-29):**
 Claude literally NEEDS REVISION; Grok literally CLEAR FOR THIS 16 GIB RIGHT-END
 CONTINUATION. Both reports finished, and all packet/archive/source/input hashes

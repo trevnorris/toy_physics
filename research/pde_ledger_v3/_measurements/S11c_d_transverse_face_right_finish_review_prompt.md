@@ -40,7 +40,9 @@ Check these concrete deltas:
    Desktop-managed priority means no nice check/set or scheduler exception.
    Retain zero swap, one CPU, 32 tasks, one thread, host memory protection,
    global lock/active-service refusal and existing normalization supervisor.
-   Validate exact fresh user/worker/manifest/guard/review gates. No science gate
+   Validate exact fresh user/worker/manifest/guard/review gates, including the
+   explicit guardSha256/sharedGuardSha256/supervisorSha256 review-to-gate join.
+   No science gate
    has yet been issued, no fallback, restart or automatic retry is authorized.
 5. No total deadline; native 3600 seconds without a distinct saved result stops,
    outer guard adds 60 seconds bookkeeping grace, systemd runtime is infinity

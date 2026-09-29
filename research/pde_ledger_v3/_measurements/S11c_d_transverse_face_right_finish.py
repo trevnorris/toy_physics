@@ -1351,6 +1351,9 @@ def main():
     reviewed=json.loads(Path(review['path']).read_text())
     require(reviewed.get('independentBuildClearance') is True
             and all(reviewed.get(key)==value for key,value in pins.items()),'exact reviewed packet')
+    require(all(reviewed.get(key)==gate[key] for key in
+                ('guardSha256','sharedGuardSha256','supervisorSha256')),
+            'exact reviewed resource guard and supervisor')
     legs=reviewed.get('reviews',[])
     require({leg.get('engine') for leg in legs}=={'claude','grok'} and len(legs)==2,'fresh independent Claude/Grok legs')
     for leg in legs:

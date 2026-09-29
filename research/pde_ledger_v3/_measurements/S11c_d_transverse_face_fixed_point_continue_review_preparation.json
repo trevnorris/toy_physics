@@ -1,5 +1,5 @@
 {
-  "status": "PREPARED_AWAITING_EXACT_PACKET_SUBMISSION_APPROVAL",
+  "status": "SUBMITTED_HOOK_ARMED_AWAITING_BOTH_LITERAL_REPORTS",
   "preparedUtc": "2026-09-29T18:54:45.392932+00:00",
   "priorCompletionCommit": "9c8a49b4",
   "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation-build-review",
@@ -983,7 +983,7 @@
     "archiveMembersVerified": true
   },
   "authorization": {
-    "status": "PENDING_EXACT_PACKET_APPROVAL",
+    "status": "EXPLICITLY_APPROVED_FIXED_PACKET",
     "reviewers": [
       "claude",
       "grok"
@@ -992,11 +992,54 @@
     "archiveSha256": "26e0cd0765ca9a362069a8dc21a159d2615f0f6d3f5239a0f0291da83666c803",
     "packetFiles": 193,
     "packetBytes": 2715260,
-    "scientificExecutionAuthorizedByThisSubmission": false
+    "scientificExecutionAuthorizedByThisSubmission": false,
+    "approvedUtc": "2026-09-29T18:57:19.544736+00:00",
+    "userReply": "Approve this exact packet",
+    "approvalContext": "Explicit answer to the exact 193-file / 2715260-byte packet request with SHA256 c88b13119288be87d01ce40eed1c9e3ada483d30015fdebad3548feb555197f5.",
+    "currentThread": "01a0e01b-ef84-7192-817f-584cda5d339b"
   },
   "scientificExecutionsUsed": 4,
   "proposedScientificExecutionOrdinal": 5,
   "continuationScienceNotLaunched": true,
   "independentBuildClearance": false,
-  "durationAuthorizationSha256": "34020b86a5f36175478f86f8a3963a1d1beb4c37fb341e2c3a4ed1e2d498e6c9"
+  "durationAuthorizationSha256": "34020b86a5f36175478f86f8a3963a1d1beb4c37fb341e2c3a4ed1e2d498e6c9",
+  "prelaunchVerifiedUtc": "2026-09-29T18:57:19.544736+00:00",
+  "inputPinsVerified": 432,
+  "packetAndArchiveVerified": true,
+  "sourcePinsVerified": 192,
+  "launchedUtc": "2026-09-29T18:57:34.236918+00:00",
+  "launch": {
+    "jobPid": 2487967,
+    "watcherPid": 2487968,
+    "packetSha256": "c88b13119288be87d01ce40eed1c9e3ada483d30015fdebad3548feb555197f5",
+    "reviewers": [
+      "Claude",
+      "Grok"
+    ],
+    "concurrentReviewWorkers": 1,
+    "scienceCalls": 0,
+    "runnerSha256": "15aea554dcaff6b37b1cbc5164582ceb4026cef7a0eb85553a2c16c07ab6298e",
+    "launcherSha256": "3c2f11b338da6deda7417443c546dc1ff99ada9a23ca3e8cda1ec7ee33e1ffed"
+  },
+  "startupCheck": {
+    "checkedUtc": "2026-09-29T18:58:44.839641+00:00",
+    "checkCount": 1,
+    "checkLocation": "HOST_PROC_SANDBOX_PID_NAMESPACE_DID_NOT_EXPOSE_HOST_PIDS",
+    "hookStatus": "waiting",
+    "coordinatorStatus": "RUNNING",
+    "reviewerRunning": "claude",
+    "grokScheduledAfterClaude": true,
+    "ownedProcessIds": [
+      2487967,
+      2487968,
+      2487975
+    ],
+    "stderrBytes": {
+      "claude.stderr": 0,
+      "coordinator.stderr": 0,
+      "watcher.stderr": 0
+    },
+    "scientificExecutionEnabled": false
+  },
+  "scienceLaunched": false
 }

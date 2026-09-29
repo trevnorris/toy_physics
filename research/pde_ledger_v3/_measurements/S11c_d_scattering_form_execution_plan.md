@@ -1,5 +1,17 @@
 # S11c-d: the remaining execution queue
 
+**Progress-dependent continuation reviews submitted (2026-09-29):** user
+approved exact packet `c88b13119288be87d01ce40eed1c9e3ada483d30015fdebad3548feb555197f5`
+(193 files / 2,715,260 bytes). Packet/archive, 192 source pins and 432 input pins
+match. Fresh Claude is running; fresh Grok follows with identical read-only
+bytes and no peer report. Local completion hook armed first; one host startup
+check verified owned processes and empty stderr. See continuation review preparation.
+No scientific job launched or READY gate. Await both literal reports before
+adjudication/edits; no transport retry or optional review loop. Existing permission
+covers one longer same-scope continuation only after substantive independent
+build clearance. Runtime retains progress-based stopping and all other safeguards.
+No model polling; completion/error hook wakes this task.
+
 **Progress-dependent continuation prepared (2026-09-29):** subsequent user
 permission covers longer running while saved results advance. One additional
 continuation of the same fixed-point premise is prepared as execution 5; the

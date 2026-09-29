@@ -1,5 +1,16 @@
 # S11c-d session recovery — 2026-09-26
 
+**Saved-reader continuation independently cleared and gated (2026-09-29):**
+both fresh reviewers literally CLEAR FOR THIS BOUNDED SAVED-READER CONTINUATION.
+Reviewed worker/manifest/note unchanged from `8e18ddc1`; all 244 inputs match.
+Recommended static opcode census of 20 prior journal blobs found no new globals;
+no scientific objects were restored. See continuation review_record/disposition.
+The user's Continue covers one fresh ordinary guarded continuation, scientific
+execution 3, reusing all nine completed returns and three completed summaries.
+A new single-use gate pins the review, approvals, helpers and metadata census.
+Runtime joins still must pass. Stop after actual reader/frequency-comparison
+results; no premise retry, new method phase, field/power work or automatic retry.
+
 **Saved-reader continuation reviews launched (2026-09-29):** the user explicitly
 approved the exact 75-file / 3,656,409-byte packet, SHA-256
 `68ad4e2e56a6163ac0506fb9fa5be8ec2809328592c2fcc60162783ade6780a0`.

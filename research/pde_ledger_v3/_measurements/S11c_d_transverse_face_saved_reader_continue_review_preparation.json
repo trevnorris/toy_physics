@@ -1,5 +1,5 @@
 {
-  "status": "REVIEWS_LAUNCHED_AWAITING_BOTH_LITERAL_REPORTS",
+  "status": "BOTH_CLEAR_FOR_BOUNDED_SAVED_READER_CONTINUATION",
   "preparedUtc": "2026-09-29T15:03:32.022784+00:00",
   "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/saved-reader-continue-build-review",
   "packetSha256": "68ad4e2e56a6163ac0506fb9fa5be8ec2809328592c2fcc60162783ade6780a0",
@@ -438,7 +438,7 @@
   },
   "scientificExecutionsUsed": 2,
   "continuationScienceNotLaunched": true,
-  "independentBuildClearance": false,
+  "independentBuildClearance": true,
   "parentFailurePreserved": true,
   "continuationAuthorizationSha256": "fdba1de70d139d1371faaeb1cb5695c2fae1d3fc60cf8290843644ea7b23c69c",
   "parentFailureCommit": "7d323ce8",
@@ -505,5 +505,7 @@
     "scienceCalls": 0,
     "completionHookTarget": "01a0e01b-ef84-7192-817f-584cda5d339b",
     "singleStartupInspection": true
-  }
+  },
+  "completionEventHandled": true,
+  "reviewRecord": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_saved_reader_continue_review_record.json"
 }

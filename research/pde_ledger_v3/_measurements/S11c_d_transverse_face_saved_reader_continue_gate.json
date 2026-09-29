@@ -1,0 +1,59 @@
+{
+  "status": "READY_FOR_ONE_GUARDED_TRANSVERSE_FACE_SAVED_READER_CONTINUATION",
+  "recordedUtc": "2026-09-29T15:53:01.729822+00:00",
+  "scienceAuthorizationAfterCostedPlanGo": true,
+  "userScienceApprovalRecord": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_premise_authorization.json",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_premise_authorization.json",
+    "bytes": 1670,
+    "sha256": "a3f0f7c1532572fc5409f3ec8a459d0bcb8bcd1a2c24b8cad8c9a1d7e033514b"
+  },
+  "workerSha256": "ab3ff8d17ee94b6738d2716685ed32e1de96ba508e77355f971d53a9d0e489cb",
+  "inputManifestSha256": "ab9ee0cdb5613411453afddf6ef8b5fe6903891b513082c7539943c5d2e0142b",
+  "independentBuildClearance": true,
+  "reviewRecord": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_saved_reader_continue_review_record.json",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_saved_reader_continue_review_record.json",
+    "bytes": 68052,
+    "sha256": "3ff69e110ccc5c797e10610089bfa3b1a76d6692d19b9a9b087e7c82f138548d"
+  },
+  "scienceJobOrdinal": 2,
+  "seconds": 900,
+  "nativeSeconds": 840,
+  "memoryGiB": 2,
+  "swapMax": 0,
+  "cpuCount": 1,
+  "nice": 15,
+  "tasksMax": 32,
+  "nativeThreads": 1,
+  "automaticRetry": false,
+  "launcherSha256": "108c5d139ddc22e525483f1c8d4c0259fc81cd2713a1f2dc382373d2bd0afc95",
+  "completionMessageSha256": "2543fcac499fb48ad25439cbcba23b37a710257a83845b2674535b8c204d5825",
+  "protectedBuilderSuffixSha256": "f01024512c9a028e7e524e5a95b5c455be42e125d10c36f94e20493109b013c2",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/saved-reader-continuation",
+  "resultDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/saved-reader-continuation/complete",
+  "guardSha256": "9194b3e04b43d345828082e6312b0a2d7a9293f6296153f9c6ccea2defb931d2",
+  "supervisorSha256": "45a16f7f952ca6b571362b1c386fec76cd86f1e0ad04113074adf49c683ec49c",
+  "completionHookSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
+  "durationExceptionUsed": false,
+  "stopAfterJob2AndFrequencyComparison": true,
+  "continuationAuthorizationRecord": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_saved_reader_continue_authorization.json",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_saved_reader_continue_authorization.json",
+    "bytes": 2452,
+    "sha256": "fdba1de70d139d1371faaeb1cb5695c2fae1d3fc60cf8290843644ea7b23c69c"
+  },
+  "priorCodecCensus": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_saved_reader_continue_codec_census.json",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_saved_reader_continue_codec_census.json",
+    "bytes": 26350,
+    "sha256": "cba81009ef8df1087ca90e6c1dd02cf18366e7d6bbccb0cbe63f65b61661820e"
+  },
+  "priorCodecScanner": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_saved_reader_continue_pickle_metadata.py",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_saved_reader_continue_pickle_metadata.py",
+    "bytes": 4077,
+    "sha256": "7b86f6456c94de28b208d800d6ed7e955ac6f9bee921fa52eb457ed0cf86d2df"
+  },
+  "scientificExecutionOrdinal": 3
+}

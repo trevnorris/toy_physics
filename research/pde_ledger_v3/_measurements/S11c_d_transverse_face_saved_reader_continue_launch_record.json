@@ -1,0 +1,40 @@
+{
+  "status": "STATIC_READY_FOR_APPROVED_SAVED_READER_CONTINUATION",
+  "recordedUtc": "2026-09-29T15:53:01.731624+00:00",
+  "gate": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_saved_reader_continue_gate.json",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_saved_reader_continue_gate.json",
+    "bytes": 3620,
+    "sha256": "9fc1d07848be3a0b07fd09b5c4eaaba524c870ebb239c8b68a9f8e34c1500201"
+  },
+  "launcher": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_saved_reader_continue_stage_launch.py",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_saved_reader_continue_stage_launch.py",
+    "bytes": 14578,
+    "sha256": "108c5d139ddc22e525483f1c8d4c0259fc81cd2713a1f2dc382373d2bd0afc95"
+  },
+  "reviewRecord": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_saved_reader_continue_review_record.json",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_saved_reader_continue_review_record.json",
+    "bytes": 68052,
+    "sha256": "3ff69e110ccc5c797e10610089bfa3b1a76d6692d19b9a9b087e7c82f138548d"
+  },
+  "continuationAuthorization": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_saved_reader_continue_authorization.json",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_saved_reader_continue_authorization.json",
+    "bytes": 2452,
+    "sha256": "fdba1de70d139d1371faaeb1cb5695c2fae1d3fc60cf8290843644ea7b23c69c"
+  },
+  "priorCodecCensus": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_saved_reader_continue_codec_census.json",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_saved_reader_continue_codec_census.json",
+    "bytes": 26350,
+    "sha256": "cba81009ef8df1087ca90e6c1dd02cf18366e7d6bbccb0cbe63f65b61661820e"
+  },
+  "scientificExecutionOrdinal": 3,
+  "scienceJobOrdinal": 2,
+  "scientificExecutionLaunched": false,
+  "reviewedWorkerUnchanged": true,
+  "scientificImportsOrRestorations": 0,
+  "completionHookTarget": "01a0e01b-ef84-7192-817f-584cda5d339b"
+}

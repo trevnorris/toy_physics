@@ -1,5 +1,16 @@
 # S11c-d session recovery — 2026-09-26
 
+**Current proposal — two premise/inspection jobs, then frequency decision
+(2026-09-28 local):** the user forwarded Claude's recommendation to authorize
+only jobs 1–2 and compare omega=1 with omega=3 before method construction.
+The source-only comparison is in `S11c_d_pilot_frequency_comparison.md`.
+Omega=1 is the preliminary lower-work candidate for total loss; absorption
+still requires an actual driven dissipative port. Direct go on the narrowed
+scientific scope is pending. No gate/run/new submission or payload restoration.
+The two-job result will not itself be a leakage magnitude. Keep the later
+one-day/five-day/four-job ceilings and STOP after job 2 plus comparison.
+**OPEN: analog-light frequency calibration is unestablished at both points.**
+
 **Current decision — transverse/face build independently cleared; costed plan
 awaits go/no-go (2026-09-28 local):** both fresh round-5 reviewers literally
 CLEAR FOR THIS BOUNDED TRANSVERSE/FACE BUILD. Exact packet/archive/source/input

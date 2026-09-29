@@ -1,5 +1,13 @@
 # Costed proposal: one radiating-point transverse-loss pilot
 
+**Latest sequencing proposal:** the forwarded Claude recommendation narrows
+next execution to jobs 1–2 and an omega=1/omega=3 comparison, with a new stop
+before the method-route decision. See
+[S11c_d_pilot_frequency_comparison.md](S11c_d_pilot_frequency_comparison.md).
+The original omega=3 pilot below remains a proposal, not an adopted point.
+Direct user go on the narrower scientific scope is still pending; no READY
+gate or scientific run has been created.
+
 2026-09-28 local. **Decision proposal only. No science or new submission is
 authorized until the user gives go/no-go on this plan.** The total-loss
 amendment independently cleared at `d648e1f4`; both reviewers now clear the

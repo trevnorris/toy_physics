@@ -1,0 +1,917 @@
+{
+  "status": "JOB1_COMPLETED_WITH_ALL_END_BINDINGS_UNRESOLVED",
+  "inspectedUtc": "2026-09-29T05:26:43.451226+00:00",
+  "runtimeRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production",
+  "checks": {
+    "status": "TRANSVERSE_FACE_SAVED_CANDIDATE_REQUIRES_INSPECTION",
+    "case": "LAB_HELD_RHO4_CONSTANT",
+    "endStates": {
+      "REFERENCE": "UNRESOLVED_SOURCE_JOIN",
+      "LEFT": "UNRESOLVED_SOURCE_JOIN",
+      "RIGHT": "UNRESOLVED_SOURCE_JOIN"
+    },
+    "points": 0,
+    "gridStop": null,
+    "completePlanePartition": false,
+    "referenceOnlyFaceScope": true,
+    "matchedAllGradeEndPremiseEstablished": false,
+    "firstOrderBoundaryMapsEstablished": false,
+    "totalLossComputed": false,
+    "thicknessClassification": "DEFERRED",
+    "physicalLightCalibration": "NOT_ESTABLISHED",
+    "azimuth": "2:1; kappa=sqrt(5)*v",
+    "sourceEndMismatchMayRemain": true,
+    "wallSeconds": 115.19895451806951,
+    "operations": 14,
+    "allSourcesUnchanged": true
+  },
+  "scientificAcceptance": "NO_TRANSVERSE_MAP_OR_FACE_PREMISE_ESTABLISHED_SAVED_READER_PENDING",
+  "stdoutChecksByteIdentical": true,
+  "strictStderrBytes": {
+    "coordinator.stderr": 0,
+    "watcher.stderr": 0,
+    "guard-launch.stderr": 0,
+    "resource-guard/stderr": 0,
+    "transverse_face_premise.stderr": 0
+  },
+  "coordinator": {
+    "exitCode": 0,
+    "wallSeconds": 115.67520845506806,
+    "scientificAcceptance": "PENDING",
+    "finishedUtc": "2026-09-29T05:23:18.123514+00:00"
+  },
+  "guardOutcome": {
+    "exitCode": 0,
+    "wallSeconds": 115.62418673897628,
+    "unit": "s11c-guard-987cfcd93acb",
+    "stderrBytes": 0,
+    "limitsVerified": true,
+    "childOutcome": {
+      "exitCode": 0,
+      "guardReason": null,
+      "wallSeconds": 115.56520908803213,
+      "childPid": 1025508
+    }
+  },
+  "childOutcome": {
+    "exitCode": 0,
+    "guardReason": null,
+    "wallSeconds": 115.56520908803213,
+    "childPid": 1025508
+  },
+  "supervisor": {
+    "stage": "transverse_face_premise",
+    "command": [
+      "/usr/bin/python3",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_premise.py",
+      "--input-manifest",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_premise_inputs.json",
+      "--gate-receipt",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_premise_gate.json",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/transverse_face_premise.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/transverse_face_premise.stderr",
+    "startedUtc": "2026-09-29T05:21:22.572783+00:00",
+    "childPid": 1025509,
+    "status": "completed",
+    "exitCode": 0,
+    "wallSeconds": 115.51167635398451,
+    "stderrBytes": 0,
+    "finishedUtc": "2026-09-29T05:23:18.084508+00:00"
+  },
+  "effectiveLimits": {
+    "memory.max": "2147483648",
+    "memory.swap.max": "0",
+    "pids.max": "32",
+    "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-987cfcd93acb.service",
+    "nice": 15,
+    "affinity": [
+      15
+    ],
+    "threads": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1",
+      "VECLIB_MAXIMUM_THREADS": "1",
+      "BLIS_NUM_THREADS": "1"
+    }
+  },
+  "guardInvocation": {
+    "command": [
+      "/usr/bin/python3",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production",
+      "--stage",
+      "transverse_face_premise",
+      "--",
+      "/usr/bin/python3",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_premise.py",
+      "--input-manifest",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_premise_inputs.json",
+      "--gate-receipt",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_premise_gate.json",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete"
+    ],
+    "cwd": "/var/projects/toy_physics",
+    "unit": "s11c-guard-987cfcd93acb",
+    "seconds": 900,
+    "cpu": 15,
+    "memoryMax": 2147483648,
+    "swapMax": 0,
+    "tasksMax": 32,
+    "minimumHostAvailableBytes": 4294967296,
+    "startedUtc": "2026-09-29T05:21:22.491917+00:00"
+  },
+  "resourceSamples": 59,
+  "peakMemoryBytes": 196616192,
+  "maximumSwapBytes": 0,
+  "memoryEventMaxima": {
+    "low": 0,
+    "high": 0,
+    "max": 0,
+    "oom": 0,
+    "oom_kill": 0,
+    "oom_group_kill": 0,
+    "sock_throttled": 0
+  },
+  "all33InputsMatchPrePostAndActual": true,
+  "reviewedSourcesUnchanged": 24,
+  "reviewedWorkerSha256": "ebf2739a2f8dca9ed4130b89606a36a27be29ef5d5c0915756b7118fcbd6fae5",
+  "allRunSourceSnapshotsUnchanged": true,
+  "allOperationReceiptsAndReferencesVerified": true,
+  "operationSummary": [
+    {
+      "name": "restore-uniform",
+      "status": "COMPLETE",
+      "operandCount": 1,
+      "receipt": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0000-restore-uniform/complete.json",
+        "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0000-restore-uniform/complete.json",
+        "bytes": 1132,
+        "sha256": "d2d304fbd16ddd33c55a4a91228ad132f6ecd5da9f89532bf9f685d1de8497d3"
+      }
+    },
+    {
+      "name": "restore-branch-context",
+      "status": "COMPLETE",
+      "operandCount": 1,
+      "receipt": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0001-restore-branch-context/complete.json",
+        "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0001-restore-branch-context/complete.json",
+        "bytes": 1141,
+        "sha256": "a410791caf7fec687d4335e6a711d8bb04905e1df7de76c87b984d0dac729e71"
+      }
+    },
+    {
+      "name": "restore-unit-context",
+      "status": "COMPLETE",
+      "operandCount": 1,
+      "receipt": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0002-restore-unit-context/complete.json",
+        "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0002-restore-unit-context/complete.json",
+        "bytes": 1139,
+        "sha256": "6171f7abcd33caf24051ba9d1e2688f7152422541fe59f3fb729d7de66d2cbf4"
+      }
+    },
+    {
+      "name": "restore-uniform-common",
+      "status": "COMPLETE",
+      "operandCount": 1,
+      "receipt": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0003-restore-uniform-common/complete.json",
+        "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0003-restore-uniform-common/complete.json",
+        "bytes": 1140,
+        "sha256": "a00d8ee3678312adfe917df706ee42e8e93034e3fecb69a3019b442748889502"
+      }
+    },
+    {
+      "name": "source-branch-map-joins",
+      "status": "COMPLETE",
+      "operandCount": 1,
+      "receipt": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0004-source-branch-map-joins/complete.json",
+        "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0004-source-branch-map-joins/complete.json",
+        "bytes": 1144,
+        "sha256": "f0a7578caf9c65b449731ea1d5d25a71bff25b44963cbaad2ef02ccde0d50521"
+      }
+    },
+    {
+      "name": "REFERENCE-restore-original-symbol",
+      "status": "COMPLETE",
+      "operandCount": 1,
+      "receipt": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0005-REFERENCE-restore-original-symbol/complete.json",
+        "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0005-REFERENCE-restore-original-symbol/complete.json",
+        "bytes": 1149,
+        "sha256": "d39093e46de242445a1b36e702bca3e3ba5d47b3bbaf00a323f58e3038e14737"
+      }
+    },
+    {
+      "name": "REFERENCE-restore-current",
+      "status": "COMPLETE",
+      "operandCount": 1,
+      "receipt": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0006-REFERENCE-restore-current/complete.json",
+        "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0006-REFERENCE-restore-current/complete.json",
+        "bytes": 1143,
+        "sha256": "652e5c9103195bcb3b2e3b3556b8d1cea8a447e54740e8ec51d837d0e552c989"
+      }
+    },
+    {
+      "name": "REFERENCE-source-bind",
+      "status": "UNRESOLVED_NO_RETRY",
+      "operandCount": 3,
+      "receipt": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0007-REFERENCE-source-bind/unresolved.json",
+        "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0007-REFERENCE-source-bind/unresolved.json",
+        "bytes": 29985,
+        "sha256": "edf58e3020a65bf8ee71d6e4cb7f27b6a85cb62da846804dbc042e88f7011790"
+      }
+    },
+    {
+      "name": "LEFT-restore-original-symbol",
+      "status": "COMPLETE",
+      "operandCount": 1,
+      "receipt": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0008-LEFT-restore-original-symbol/complete.json",
+        "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0008-LEFT-restore-original-symbol/complete.json",
+        "bytes": 1144,
+        "sha256": "b351ce7bb7c04a16fa601efa3b6b709441ad9b08f729b11deadbe6dcaaed075c"
+      }
+    },
+    {
+      "name": "LEFT-restore-current",
+      "status": "COMPLETE",
+      "operandCount": 1,
+      "receipt": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0009-LEFT-restore-current/complete.json",
+        "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0009-LEFT-restore-current/complete.json",
+        "bytes": 1138,
+        "sha256": "438b0b8ebc884758feadb338fa8aff95f0570cbc4a4988818b2b812a8864304e"
+      }
+    },
+    {
+      "name": "LEFT-source-bind",
+      "status": "UNRESOLVED_NO_RETRY",
+      "operandCount": 3,
+      "receipt": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0010-LEFT-source-bind/unresolved.json",
+        "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0010-LEFT-source-bind/unresolved.json",
+        "bytes": 34740,
+        "sha256": "af749b9ae976bd97ac0b5ef6904ae176e0a3fdfb29b394a4886c7b39a84fc8d4"
+      }
+    },
+    {
+      "name": "RIGHT-restore-original-symbol",
+      "status": "COMPLETE",
+      "operandCount": 1,
+      "receipt": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0011-RIGHT-restore-original-symbol/complete.json",
+        "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0011-RIGHT-restore-original-symbol/complete.json",
+        "bytes": 1146,
+        "sha256": "7b9e5882b59ef46922c6fcb6e67e7e75e5f26ce6e8f272ada4ed7304e6f810f9"
+      }
+    },
+    {
+      "name": "RIGHT-restore-current",
+      "status": "COMPLETE",
+      "operandCount": 1,
+      "receipt": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0012-RIGHT-restore-current/complete.json",
+        "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0012-RIGHT-restore-current/complete.json",
+        "bytes": 1139,
+        "sha256": "a6a2414d62db67024e4f4595ab57b816f0e2aa644cc1a5844144fc6f31a77536"
+      }
+    },
+    {
+      "name": "RIGHT-source-bind",
+      "status": "UNRESOLVED_NO_RETRY",
+      "operandCount": 3,
+      "receipt": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0013-RIGHT-source-bind/unresolved.json",
+        "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0013-RIGHT-source-bind/unresolved.json",
+        "bytes": 11610,
+        "sha256": "258e68ee6e09c7f73482ef55df20b83a5791d732e316312063f9e89e5274ccbd"
+      }
+    }
+  ],
+  "completeOperations": 11,
+  "unresolvedOperations": 3,
+  "allArtifactsPinned": true,
+  "artifactCount": 98,
+  "artifactBytes": 6040877,
+  "artifacts": {
+    "LEFT-restore-current.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/LEFT-restore-current.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/LEFT-restore-current.json",
+      "bytes": 1285,
+      "sha256": "94e35024559cf67501f6a17512bff965ec0e88089204389bfd6bbead4edb06b6"
+    },
+    "LEFT-restore-original-symbol.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/LEFT-restore-original-symbol.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/LEFT-restore-original-symbol.json",
+      "bytes": 1299,
+      "sha256": "d205477353554a6f32127c24ac8ad32464982f74f1158de378974240effbc18f"
+    },
+    "LEFT-source-bind.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/LEFT-source-bind.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/LEFT-source-bind.json",
+      "bytes": 16509,
+      "sha256": "64e96ee9570f3a0e26d65c43412c00b12431c814c2bb983f3b914af9987e0023"
+    },
+    "REFERENCE-restore-current.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/REFERENCE-restore-current.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/REFERENCE-restore-current.json",
+      "bytes": 1295,
+      "sha256": "8d17c9600b54493c240ec7fd10504170cc8fa9cb30b1dde6e88a00bf49b6a136"
+    },
+    "REFERENCE-restore-original-symbol.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/REFERENCE-restore-original-symbol.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/REFERENCE-restore-original-symbol.json",
+      "bytes": 1309,
+      "sha256": "e388769443b9b2081f9a22b6b1b1650fa492b64c1ae469939d011019690a6bed"
+    },
+    "REFERENCE-source-bind.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/REFERENCE-source-bind.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/REFERENCE-source-bind.json",
+      "bytes": 14129,
+      "sha256": "7fbc31f188792c0e1de8f3f3ce8b81182fe2a78b45e98923d12063137a14310b"
+    },
+    "RIGHT-restore-current.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/RIGHT-restore-current.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/RIGHT-restore-current.json",
+      "bytes": 1287,
+      "sha256": "fe2fe1ee143bfeb349b19a89d69adb7844ade9bcf21e89cb72d7213377218c54"
+    },
+    "RIGHT-restore-original-symbol.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/RIGHT-restore-original-symbol.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/RIGHT-restore-original-symbol.json",
+      "bytes": 1302,
+      "sha256": "2a8e53c32f048b2c4086068e17c153d0e48c7d279cb8584a875069bd91188d48"
+    },
+    "RIGHT-source-bind.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/RIGHT-source-bind.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/RIGHT-source-bind.json",
+      "bytes": 4943,
+      "sha256": "ad24c52942d5fd410371c3615edf0d090994979fd7a40001979fd8c2049a20d5"
+    },
+    "acoustic-law-source.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/acoustic-law-source.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/acoustic-law-source.json",
+      "bytes": 839,
+      "sha256": "fbf49d0f6ae5404e8b1d86e9b6a15abc69c7230a134d0ab06fcf0b81fc6ca0cb"
+    },
+    "artifact-index.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/artifact-index.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/artifact-index.json",
+      "bytes": 47628,
+      "sha256": "5de2dae1ad6dbc1a5ba90d51342a60c7ac5dc33bc4d380c565183caa3edb98d7"
+    },
+    "checks.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/checks.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/checks.json",
+      "bytes": 729,
+      "sha256": "af8378e0f87de75c726be6b18f1ea1943f089530f225927b95114a3c4d1c37ce"
+    },
+    "gate.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/gate.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/gate.json",
+      "bytes": 2157,
+      "sha256": "67c0e1142559f25b909d345fd25ab2940be531355ca5f85198f96336aa82337d"
+    },
+    "grid-summary.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/grid-summary.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/grid-summary.json",
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    "manifest.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/manifest.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/manifest.json",
+      "bytes": 22547,
+      "sha256": "c04a3ca3d37fd645214a4455e36b5e4ab066d0587adc924dca1fbb3aa4648e8f"
+    },
+    "native-face-order-source.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/native-face-order-source.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/native-face-order-source.json",
+      "bytes": 438,
+      "sha256": "0285262ca5e9eafb920178fb05d8f8fec434a07214251536f4fc45a1d9cb54db"
+    },
+    "native-limits.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/native-limits.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/native-limits.json",
+      "bytes": 325,
+      "sha256": "4b2c692d5bfcec7183f97936c77c3cce9cbcc8e797f44c0a2d689207a4f0047b"
+    },
+    "objects/0976bb0311a9c2f7307296a6ad0aa19a2f00ddd92e06e8f49d7cda3af209561a.pickle": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/objects/0976bb0311a9c2f7307296a6ad0aa19a2f00ddd92e06e8f49d7cda3af209561a.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/objects/0976bb0311a9c2f7307296a6ad0aa19a2f00ddd92e06e8f49d7cda3af209561a.pickle",
+      "bytes": 28,
+      "sha256": "0976bb0311a9c2f7307296a6ad0aa19a2f00ddd92e06e8f49d7cda3af209561a"
+    },
+    "objects/18de21d260b9192987ec7df52b6bfc83cd0ea4a2cec593f2f99d61e376f224f0.pickle": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/objects/18de21d260b9192987ec7df52b6bfc83cd0ea4a2cec593f2f99d61e376f224f0.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/objects/18de21d260b9192987ec7df52b6bfc83cd0ea4a2cec593f2f99d61e376f224f0.pickle",
+      "bytes": 94161,
+      "sha256": "18de21d260b9192987ec7df52b6bfc83cd0ea4a2cec593f2f99d61e376f224f0"
+    },
+    "objects/18e45100c902df9e3a3fe5f23d7e5ddc79fcf262d4d07bf08b7f970b53be7c2e.pickle": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/objects/18e45100c902df9e3a3fe5f23d7e5ddc79fcf262d4d07bf08b7f970b53be7c2e.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/objects/18e45100c902df9e3a3fe5f23d7e5ddc79fcf262d4d07bf08b7f970b53be7c2e.pickle",
+      "bytes": 1035529,
+      "sha256": "18e45100c902df9e3a3fe5f23d7e5ddc79fcf262d4d07bf08b7f970b53be7c2e"
+    },
+    "objects/1c80eb1a5d04e27d654561cf8f4e65141e2a7cd4162d53a1e2d4e0e2fe69aed9.pickle": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/objects/1c80eb1a5d04e27d654561cf8f4e65141e2a7cd4162d53a1e2d4e0e2fe69aed9.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/objects/1c80eb1a5d04e27d654561cf8f4e65141e2a7cd4162d53a1e2d4e0e2fe69aed9.pickle",
+      "bytes": 1837,
+      "sha256": "1c80eb1a5d04e27d654561cf8f4e65141e2a7cd4162d53a1e2d4e0e2fe69aed9"
+    },
+    "objects/205a2d2b19105cbf504b0b9de5464f06f33bb5ce921f34c44e6214ad16eafe0d.pickle": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/objects/205a2d2b19105cbf504b0b9de5464f06f33bb5ce921f34c44e6214ad16eafe0d.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/objects/205a2d2b19105cbf504b0b9de5464f06f33bb5ce921f34c44e6214ad16eafe0d.pickle",
+      "bytes": 9293,
+      "sha256": "205a2d2b19105cbf504b0b9de5464f06f33bb5ce921f34c44e6214ad16eafe0d"
+    },
+    "objects/2a568090a0ff6e5f108186b652148f865093c3627b597c9bb7f824beffd52a66.pickle": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/objects/2a568090a0ff6e5f108186b652148f865093c3627b597c9bb7f824beffd52a66.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/objects/2a568090a0ff6e5f108186b652148f865093c3627b597c9bb7f824beffd52a66.pickle",
+      "bytes": 901117,
+      "sha256": "2a568090a0ff6e5f108186b652148f865093c3627b597c9bb7f824beffd52a66"
+    },
+    "objects/2c9faf5fcae7d99402e4d5069acd828dc40ad008dbf32b999890c2d79e44983b.pickle": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/objects/2c9faf5fcae7d99402e4d5069acd828dc40ad008dbf32b999890c2d79e44983b.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/objects/2c9faf5fcae7d99402e4d5069acd828dc40ad008dbf32b999890c2d79e44983b.pickle",
+      "bytes": 31,
+      "sha256": "2c9faf5fcae7d99402e4d5069acd828dc40ad008dbf32b999890c2d79e44983b"
+    },
+    "objects/43d60e988b70c48ad2cb50832418fca667a00b1a4174b0409ee0decdd6f0e2d9.pickle": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/objects/43d60e988b70c48ad2cb50832418fca667a00b1a4174b0409ee0decdd6f0e2d9.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/objects/43d60e988b70c48ad2cb50832418fca667a00b1a4174b0409ee0decdd6f0e2d9.pickle",
+      "bytes": 24,
+      "sha256": "43d60e988b70c48ad2cb50832418fca667a00b1a4174b0409ee0decdd6f0e2d9"
+    },
+    "objects/4a9d48bf8c6c261f6cbeb48b84bca57f33de79dc317cada8f33072f060a85426.pickle": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/objects/4a9d48bf8c6c261f6cbeb48b84bca57f33de79dc317cada8f33072f060a85426.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/objects/4a9d48bf8c6c261f6cbeb48b84bca57f33de79dc317cada8f33072f060a85426.pickle",
+      "bytes": 28,
+      "sha256": "4a9d48bf8c6c261f6cbeb48b84bca57f33de79dc317cada8f33072f060a85426"
+    },
+    "objects/5cb79c6b73f2f7959be7219884e742c13a9ec0dc2d48226bcf8b7fa1f24447c8.pickle": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/objects/5cb79c6b73f2f7959be7219884e742c13a9ec0dc2d48226bcf8b7fa1f24447c8.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/objects/5cb79c6b73f2f7959be7219884e742c13a9ec0dc2d48226bcf8b7fa1f24447c8.pickle",
+      "bytes": 20,
+      "sha256": "5cb79c6b73f2f7959be7219884e742c13a9ec0dc2d48226bcf8b7fa1f24447c8"
+    },
+    "objects/6d1176035b43f132523effa44e60fff229cb1ec37c9fc155496095d6759a70aa.pickle": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/objects/6d1176035b43f132523effa44e60fff229cb1ec37c9fc155496095d6759a70aa.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/objects/6d1176035b43f132523effa44e60fff229cb1ec37c9fc155496095d6759a70aa.pickle",
+      "bytes": 9271,
+      "sha256": "6d1176035b43f132523effa44e60fff229cb1ec37c9fc155496095d6759a70aa"
+    },
+    "objects/7868791c4c1a022365206cac1d1612680d676b793b36ef38676eeffe5a0ea609.pickle": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/objects/7868791c4c1a022365206cac1d1612680d676b793b36ef38676eeffe5a0ea609.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/objects/7868791c4c1a022365206cac1d1612680d676b793b36ef38676eeffe5a0ea609.pickle",
+      "bytes": 1787720,
+      "sha256": "7868791c4c1a022365206cac1d1612680d676b793b36ef38676eeffe5a0ea609"
+    },
+    "objects/8c8f50da2e51163797323c17e4dddf6c5d77d8d83e408d5af903c5c682ef3945.pickle": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/objects/8c8f50da2e51163797323c17e4dddf6c5d77d8d83e408d5af903c5c682ef3945.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/objects/8c8f50da2e51163797323c17e4dddf6c5d77d8d83e408d5af903c5c682ef3945.pickle",
+      "bytes": 24,
+      "sha256": "8c8f50da2e51163797323c17e4dddf6c5d77d8d83e408d5af903c5c682ef3945"
+    },
+    "objects/96334accbe6d9258c694e43dc8401b2a667b7a6ea97d9429e576d6a18e501487.pickle": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/objects/96334accbe6d9258c694e43dc8401b2a667b7a6ea97d9429e576d6a18e501487.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/objects/96334accbe6d9258c694e43dc8401b2a667b7a6ea97d9429e576d6a18e501487.pickle",
+      "bytes": 19,
+      "sha256": "96334accbe6d9258c694e43dc8401b2a667b7a6ea97d9429e576d6a18e501487"
+    },
+    "objects/a10cc83b0c34110186d9668c7326269e939cf06e34e81f7307bf17f3efb6871f.pickle": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/objects/a10cc83b0c34110186d9668c7326269e939cf06e34e81f7307bf17f3efb6871f.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/objects/a10cc83b0c34110186d9668c7326269e939cf06e34e81f7307bf17f3efb6871f.pickle",
+      "bytes": 26,
+      "sha256": "a10cc83b0c34110186d9668c7326269e939cf06e34e81f7307bf17f3efb6871f"
+    },
+    "objects/a208388e432d2f716170febbbe7a1a30eca8cff31cd23820dd3676f6da346ac1.pickle": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/objects/a208388e432d2f716170febbbe7a1a30eca8cff31cd23820dd3676f6da346ac1.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/objects/a208388e432d2f716170febbbe7a1a30eca8cff31cd23820dd3676f6da346ac1.pickle",
+      "bytes": 29,
+      "sha256": "a208388e432d2f716170febbbe7a1a30eca8cff31cd23820dd3676f6da346ac1"
+    },
+    "objects/b664c62a66fe4fe6a56a0ee568dda049e37c650332d0e4d94555c5e281b523e1.pickle": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/objects/b664c62a66fe4fe6a56a0ee568dda049e37c650332d0e4d94555c5e281b523e1.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/objects/b664c62a66fe4fe6a56a0ee568dda049e37c650332d0e4d94555c5e281b523e1.pickle",
+      "bytes": 22,
+      "sha256": "b664c62a66fe4fe6a56a0ee568dda049e37c650332d0e4d94555c5e281b523e1"
+    },
+    "objects/cc214b9ec543d12330a8e479c767b9380ce6d87838c52c11e583a9f9e99f13ae.pickle": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/objects/cc214b9ec543d12330a8e479c767b9380ce6d87838c52c11e583a9f9e99f13ae.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/objects/cc214b9ec543d12330a8e479c767b9380ce6d87838c52c11e583a9f9e99f13ae.pickle",
+      "bytes": 1122394,
+      "sha256": "cc214b9ec543d12330a8e479c767b9380ce6d87838c52c11e583a9f9e99f13ae"
+    },
+    "objects/dff01bf9caea03490a75acd4a55c3a7082f25a048532827d0333ee1754556ee6.pickle": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/objects/dff01bf9caea03490a75acd4a55c3a7082f25a048532827d0333ee1754556ee6.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/objects/dff01bf9caea03490a75acd4a55c3a7082f25a048532827d0333ee1754556ee6.pickle",
+      "bytes": 27,
+      "sha256": "dff01bf9caea03490a75acd4a55c3a7082f25a048532827d0333ee1754556ee6"
+    },
+    "objects/e3102f7c28562de2775bc4c0e4620262ce64180becbf0801ef4c71100db1db8c.pickle": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/objects/e3102f7c28562de2775bc4c0e4620262ce64180becbf0801ef4c71100db1db8c.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/objects/e3102f7c28562de2775bc4c0e4620262ce64180becbf0801ef4c71100db1db8c.pickle",
+      "bytes": 26,
+      "sha256": "e3102f7c28562de2775bc4c0e4620262ce64180becbf0801ef4c71100db1db8c"
+    },
+    "objects/e555ba40ee5af416640ece81c20d0b711bb96e8cc9276c8fddf169083fbb78a3.pickle": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/objects/e555ba40ee5af416640ece81c20d0b711bb96e8cc9276c8fddf169083fbb78a3.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/objects/e555ba40ee5af416640ece81c20d0b711bb96e8cc9276c8fddf169083fbb78a3.pickle",
+      "bytes": 140419,
+      "sha256": "e555ba40ee5af416640ece81c20d0b711bb96e8cc9276c8fddf169083fbb78a3"
+    },
+    "objects/e97a7c4c8f944daf0da222bce006e92db4cd19b5f78a7baf14d6ff3ea1a237cd.pickle": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/objects/e97a7c4c8f944daf0da222bce006e92db4cd19b5f78a7baf14d6ff3ea1a237cd.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/objects/e97a7c4c8f944daf0da222bce006e92db4cd19b5f78a7baf14d6ff3ea1a237cd.pickle",
+      "bytes": 33,
+      "sha256": "e97a7c4c8f944daf0da222bce006e92db4cd19b5f78a7baf14d6ff3ea1a237cd"
+    },
+    "objects/f2977af9c1e53e40b7dd35c0e6a59312cfa00ecdee9bba5ab9e3bf9166e03710.pickle": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/objects/f2977af9c1e53e40b7dd35c0e6a59312cfa00ecdee9bba5ab9e3bf9166e03710.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/objects/f2977af9c1e53e40b7dd35c0e6a59312cfa00ecdee9bba5ab9e3bf9166e03710.pickle",
+      "bytes": 248924,
+      "sha256": "f2977af9c1e53e40b7dd35c0e6a59312cfa00ecdee9bba5ab9e3bf9166e03710"
+    },
+    "objects/f7f3599f614eb9d37d8cf1add5147dab267d528b5d9e61b1d19d4837939572fc.pickle": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/objects/f7f3599f614eb9d37d8cf1add5147dab267d528b5d9e61b1d19d4837939572fc.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/objects/f7f3599f614eb9d37d8cf1add5147dab267d528b5d9e61b1d19d4837939572fc.pickle",
+      "bytes": 23475,
+      "sha256": "f7f3599f614eb9d37d8cf1add5147dab267d528b5d9e61b1d19d4837939572fc"
+    },
+    "objects/fd6e8e8972f294f935bd73e54afaa97a3d1632bee77f921a6c2db1198bc71258.pickle": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/objects/fd6e8e8972f294f935bd73e54afaa97a3d1632bee77f921a6c2db1198bc71258.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/objects/fd6e8e8972f294f935bd73e54afaa97a3d1632bee77f921a6c2db1198bc71258.pickle",
+      "bytes": 249482,
+      "sha256": "fd6e8e8972f294f935bd73e54afaa97a3d1632bee77f921a6c2db1198bc71258"
+    },
+    "operation-index.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operation-index.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operation-index.json",
+      "bytes": 89547,
+      "sha256": "552a5c35942e552104b36e585af7c5e6c167f0db4a21cd9a57e4223641a7b3e9"
+    },
+    "operations/0000-restore-uniform/complete.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0000-restore-uniform/complete.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0000-restore-uniform/complete.json",
+      "bytes": 1132,
+      "sha256": "d2d304fbd16ddd33c55a4a91228ad132f6ecd5da9f89532bf9f685d1de8497d3"
+    },
+    "operations/0000-restore-uniform/input-references.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0000-restore-uniform/input-references.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0000-restore-uniform/input-references.json",
+      "bytes": 606,
+      "sha256": "854db7ddd7abc9cbe7412e528a343aa9a42d10c70ee51734bf6adddfe2de21a1"
+    },
+    "operations/0000-restore-uniform/started.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0000-restore-uniform/started.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0000-restore-uniform/started.json",
+      "bytes": 102,
+      "sha256": "bab33d2a268d2028ad4298cb72b285b03430daa1270f6993a6a7e63b9079ad61"
+    },
+    "operations/0001-restore-branch-context/complete.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0001-restore-branch-context/complete.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0001-restore-branch-context/complete.json",
+      "bytes": 1141,
+      "sha256": "a410791caf7fec687d4335e6a711d8bb04905e1df7de76c87b984d0dac729e71"
+    },
+    "operations/0001-restore-branch-context/input-references.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0001-restore-branch-context/input-references.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0001-restore-branch-context/input-references.json",
+      "bytes": 613,
+      "sha256": "086794dcff7e6bbc20e6576bccce34cbceb160ba24c45d6be84c66775df29258"
+    },
+    "operations/0001-restore-branch-context/started.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0001-restore-branch-context/started.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0001-restore-branch-context/started.json",
+      "bytes": 109,
+      "sha256": "e9f9804e92e6cfe5c52077b10ab8c3e30dd9d3d7075b8c6a302e106db4047f7e"
+    },
+    "operations/0002-restore-unit-context/complete.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0002-restore-unit-context/complete.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0002-restore-unit-context/complete.json",
+      "bytes": 1139,
+      "sha256": "6171f7abcd33caf24051ba9d1e2688f7152422541fe59f3fb729d7de66d2cbf4"
+    },
+    "operations/0002-restore-unit-context/input-references.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0002-restore-unit-context/input-references.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0002-restore-unit-context/input-references.json",
+      "bytes": 611,
+      "sha256": "89dc04c2a1444ab162f2538c5fc5ce1baa013ca983c54f593bc70520c7773532"
+    },
+    "operations/0002-restore-unit-context/started.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0002-restore-unit-context/started.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0002-restore-unit-context/started.json",
+      "bytes": 107,
+      "sha256": "b7b2ab299a6b6f130b25aabe78cc99ed7f78cd11cceff75721cfe7dc6e69c715"
+    },
+    "operations/0003-restore-uniform-common/complete.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0003-restore-uniform-common/complete.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0003-restore-uniform-common/complete.json",
+      "bytes": 1140,
+      "sha256": "a00d8ee3678312adfe917df706ee42e8e93034e3fecb69a3019b442748889502"
+    },
+    "operations/0003-restore-uniform-common/input-references.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0003-restore-uniform-common/input-references.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0003-restore-uniform-common/input-references.json",
+      "bytes": 613,
+      "sha256": "7df161fa2cff59718f2b1792fb42b5bc3d4992d1cf46c0d329a27002105b852c"
+    },
+    "operations/0003-restore-uniform-common/started.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0003-restore-uniform-common/started.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0003-restore-uniform-common/started.json",
+      "bytes": 109,
+      "sha256": "e94c727c1897eac373b8de9ccce6ac110186918536f2393da0bbc2a4d1d38630"
+    },
+    "operations/0004-source-branch-map-joins/complete.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0004-source-branch-map-joins/complete.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0004-source-branch-map-joins/complete.json",
+      "bytes": 1144,
+      "sha256": "f0a7578caf9c65b449731ea1d5d25a71bff25b44963cbaad2ef02ccde0d50521"
+    },
+    "operations/0004-source-branch-map-joins/input-references.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0004-source-branch-map-joins/input-references.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0004-source-branch-map-joins/input-references.json",
+      "bytes": 619,
+      "sha256": "394d297b8ccf2f548d22c81c409ef5ce4d0a6e419baffbbbec2ac85f7e1372f3"
+    },
+    "operations/0004-source-branch-map-joins/started.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0004-source-branch-map-joins/started.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0004-source-branch-map-joins/started.json",
+      "bytes": 110,
+      "sha256": "26f3a6d7a756ca70cc032a477147f2c5966f695b7be83e51e1c5ba62bce95529"
+    },
+    "operations/0005-REFERENCE-restore-original-symbol/complete.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0005-REFERENCE-restore-original-symbol/complete.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0005-REFERENCE-restore-original-symbol/complete.json",
+      "bytes": 1149,
+      "sha256": "d39093e46de242445a1b36e702bca3e3ba5d47b3bbaf00a323f58e3038e14737"
+    },
+    "operations/0005-REFERENCE-restore-original-symbol/input-references.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0005-REFERENCE-restore-original-symbol/input-references.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0005-REFERENCE-restore-original-symbol/input-references.json",
+      "bytes": 624,
+      "sha256": "8455ede79d2c0ae972f0fbc839a535c3168e342a65349582e27eff5fa9c70e00"
+    },
+    "operations/0005-REFERENCE-restore-original-symbol/started.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0005-REFERENCE-restore-original-symbol/started.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0005-REFERENCE-restore-original-symbol/started.json",
+      "bytes": 120,
+      "sha256": "8d20e2ed9d79ab603769f344c6782b773da3395dd38dcb88910a85bff015be33"
+    },
+    "operations/0006-REFERENCE-restore-current/complete.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0006-REFERENCE-restore-current/complete.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0006-REFERENCE-restore-current/complete.json",
+      "bytes": 1143,
+      "sha256": "652e5c9103195bcb3b2e3b3556b8d1cea8a447e54740e8ec51d837d0e552c989"
+    },
+    "operations/0006-REFERENCE-restore-current/input-references.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0006-REFERENCE-restore-current/input-references.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0006-REFERENCE-restore-current/input-references.json",
+      "bytes": 616,
+      "sha256": "fbdab19a030cf94cb03be812df6d0390334382c62e629819f48f540038fbe095"
+    },
+    "operations/0006-REFERENCE-restore-current/started.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0006-REFERENCE-restore-current/started.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0006-REFERENCE-restore-current/started.json",
+      "bytes": 112,
+      "sha256": "152bd3b551894bc1a1b7d172efdd167848b4bf27d98b794918ef9ce9f79ee42b"
+    },
+    "operations/0007-REFERENCE-source-bind/input-references.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0007-REFERENCE-source-bind/input-references.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0007-REFERENCE-source-bind/input-references.json",
+      "bytes": 1622,
+      "sha256": "ca496f7ffb43ac6cd3fd3d84b20dedf64bca1408be4ddefc36e2f73f86faaa25"
+    },
+    "operations/0007-REFERENCE-source-bind/started.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0007-REFERENCE-source-bind/started.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0007-REFERENCE-source-bind/started.json",
+      "bytes": 108,
+      "sha256": "572abf96f5776f6f0a0184776b6c7e6a8f1976702870e48e4a0503629b3d71c0"
+    },
+    "operations/0007-REFERENCE-source-bind/unresolved.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0007-REFERENCE-source-bind/unresolved.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0007-REFERENCE-source-bind/unresolved.json",
+      "bytes": 29985,
+      "sha256": "edf58e3020a65bf8ee71d6e4cb7f27b6a85cb62da846804dbc042e88f7011790"
+    },
+    "operations/0008-LEFT-restore-original-symbol/complete.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0008-LEFT-restore-original-symbol/complete.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0008-LEFT-restore-original-symbol/complete.json",
+      "bytes": 1144,
+      "sha256": "b351ce7bb7c04a16fa601efa3b6b709441ad9b08f729b11deadbe6dcaaed075c"
+    },
+    "operations/0008-LEFT-restore-original-symbol/input-references.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0008-LEFT-restore-original-symbol/input-references.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0008-LEFT-restore-original-symbol/input-references.json",
+      "bytes": 619,
+      "sha256": "bfbb930cc0fb264e85c35a3665e137716d42c9ba1614082a84379d9ecb14048a"
+    },
+    "operations/0008-LEFT-restore-original-symbol/started.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0008-LEFT-restore-original-symbol/started.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0008-LEFT-restore-original-symbol/started.json",
+      "bytes": 115,
+      "sha256": "cd127032ed3bc3b36019c58152d2d7a3b5e5607749d2f6c1dde0a15cfa4d2935"
+    },
+    "operations/0009-LEFT-restore-current/complete.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0009-LEFT-restore-current/complete.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0009-LEFT-restore-current/complete.json",
+      "bytes": 1138,
+      "sha256": "438b0b8ebc884758feadb338fa8aff95f0570cbc4a4988818b2b812a8864304e"
+    },
+    "operations/0009-LEFT-restore-current/input-references.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0009-LEFT-restore-current/input-references.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0009-LEFT-restore-current/input-references.json",
+      "bytes": 611,
+      "sha256": "ce7ad21dc6c4973f20a85a0ecc4c3052ac4fd9f604c496dd699180004209a7e6"
+    },
+    "operations/0009-LEFT-restore-current/started.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0009-LEFT-restore-current/started.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0009-LEFT-restore-current/started.json",
+      "bytes": 107,
+      "sha256": "76d22302ba3561970aa4e0b68827cb1273311ed170135db5e5bf5e8777c2d995"
+    },
+    "operations/0010-LEFT-source-bind/input-references.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0010-LEFT-source-bind/input-references.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0010-LEFT-source-bind/input-references.json",
+      "bytes": 1617,
+      "sha256": "db42f3cecac9fc9ad2cebee2be91d05c3c87056b3e205d7b173ed0e43182bcc6"
+    },
+    "operations/0010-LEFT-source-bind/started.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0010-LEFT-source-bind/started.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0010-LEFT-source-bind/started.json",
+      "bytes": 103,
+      "sha256": "ffe6400e060b8df79feacfa34f56a2ed5a63968fd63cd9fb1295b66a88510d13"
+    },
+    "operations/0010-LEFT-source-bind/unresolved.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0010-LEFT-source-bind/unresolved.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0010-LEFT-source-bind/unresolved.json",
+      "bytes": 34740,
+      "sha256": "af749b9ae976bd97ac0b5ef6904ae176e0a3fdfb29b394a4886c7b39a84fc8d4"
+    },
+    "operations/0011-RIGHT-restore-original-symbol/complete.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0011-RIGHT-restore-original-symbol/complete.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0011-RIGHT-restore-original-symbol/complete.json",
+      "bytes": 1146,
+      "sha256": "7b9e5882b59ef46922c6fcb6e67e7e75e5f26ce6e8f272ada4ed7304e6f810f9"
+    },
+    "operations/0011-RIGHT-restore-original-symbol/input-references.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0011-RIGHT-restore-original-symbol/input-references.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0011-RIGHT-restore-original-symbol/input-references.json",
+      "bytes": 620,
+      "sha256": "51fd2e1c528ef98f4c736403476bf946e65394398cff815130076df1c87a7140"
+    },
+    "operations/0011-RIGHT-restore-original-symbol/started.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0011-RIGHT-restore-original-symbol/started.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0011-RIGHT-restore-original-symbol/started.json",
+      "bytes": 116,
+      "sha256": "24bef2bccc8c8d3214b982d40d042d98c7ccf1e33a9145ecaec760b085166af7"
+    },
+    "operations/0012-RIGHT-restore-current/complete.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0012-RIGHT-restore-current/complete.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0012-RIGHT-restore-current/complete.json",
+      "bytes": 1139,
+      "sha256": "a6a2414d62db67024e4f4595ab57b816f0e2aa644cc1a5844144fc6f31a77536"
+    },
+    "operations/0012-RIGHT-restore-current/input-references.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0012-RIGHT-restore-current/input-references.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0012-RIGHT-restore-current/input-references.json",
+      "bytes": 612,
+      "sha256": "64c6c8bf562d9eba62baad7eb2be2052a03bd7c9b3943b3f258e53d6919445ee"
+    },
+    "operations/0012-RIGHT-restore-current/started.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0012-RIGHT-restore-current/started.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0012-RIGHT-restore-current/started.json",
+      "bytes": 108,
+      "sha256": "3d916ac5a7d3f4c09583b28b8290dae88cc37166da1d3a2014bebfdbd42abcc9"
+    },
+    "operations/0013-RIGHT-source-bind/input-references.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0013-RIGHT-source-bind/input-references.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0013-RIGHT-source-bind/input-references.json",
+      "bytes": 1619,
+      "sha256": "041815711e39b0434171c1e3839b15533eaa956fd7d55049c7742a0243a51c80"
+    },
+    "operations/0013-RIGHT-source-bind/started.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0013-RIGHT-source-bind/started.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0013-RIGHT-source-bind/started.json",
+      "bytes": 104,
+      "sha256": "316b3f7bd6c4cb73dfc9f21d152c1d1b06c8709a687830fd8bf5a69ac0378045"
+    },
+    "operations/0013-RIGHT-source-bind/unresolved.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0013-RIGHT-source-bind/unresolved.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operations/0013-RIGHT-source-bind/unresolved.json",
+      "bytes": 11610,
+      "sha256": "258e68ee6e09c7f73482ef55df20b83a5791d732e316312063f9e89e5274ccbd"
+    },
+    "planned-grid.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/planned-grid.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/planned-grid.json",
+      "bytes": 10646,
+      "sha256": "51ebf659af38294e51f0f942c12203a8131a1e9258220f7dad180a6848d15a60"
+    },
+    "posthashes.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/posthashes.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/posthashes.json",
+      "bytes": 12866,
+      "sha256": "fd2b7350b28ca46a8e12326a6235fee80befbbcd32d33afdf4446ccae57bd09d"
+    },
+    "reference-face-drive.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/reference-face-drive.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/reference-face-drive.json",
+      "bytes": 29,
+      "sha256": "5fb66f407954aabe67142c482dfac290bea4c4635c7fc9d19f0a49cf2d77e603"
+    },
+    "restore-branch-context.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/restore-branch-context.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/restore-branch-context.json",
+      "bytes": 1290,
+      "sha256": "a7ee1fa685104f2ddbc3f7f7f87b4883993058f70da524d1cb3226684d598cbb"
+    },
+    "restore-uniform-common.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/restore-uniform-common.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/restore-uniform-common.json",
+      "bytes": 1289,
+      "sha256": "8ea0d205aca4efc61b9e14428e4034ea6650d4f8dadcc3f8bef4dd8d0576dce7"
+    },
+    "restore-uniform.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/restore-uniform.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/restore-uniform.json",
+      "bytes": 1274,
+      "sha256": "34565375dfdfb7c81b0f162eb713f9afbd7b41bf51ec43d0041f82b1115acbab"
+    },
+    "restore-unit-context.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/restore-unit-context.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/restore-unit-context.json",
+      "bytes": 1286,
+      "sha256": "fa63baee262ae23225d2b3762d04440a901111f105f18230dfeef31139192f41"
+    },
+    "saved-seed-comparison.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/saved-seed-comparison.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/saved-seed-comparison.json",
+      "bytes": 1277,
+      "sha256": "e148dbd5146fbf4d7372e8d0527471f7513f490c7f330ffd3144877fbb11f452"
+    },
+    "source-branch-map-joins.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/source-branch-map-joins.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/source-branch-map-joins.json",
+      "bytes": 3656,
+      "sha256": "5d026df1f253d78410df9a84787d453e9a78384cd99eb4c495a7af6a60bc57dd"
+    },
+    "source-end-states.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/source-end-states.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/source-end-states.json",
+      "bytes": 117,
+      "sha256": "303b511a6182d10ed2a9415749efadd267237721334e6e908c5b2a513cf8ca76"
+    },
+    "threshold-loci.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/threshold-loci.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/threshold-loci.json",
+      "bytes": 3,
+      "sha256": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356"
+    },
+    "unit-context.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/unit-context.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/unit-context.json",
+      "bytes": 1761,
+      "sha256": "afe598d7ec98f7a159e67e65eb83f8636c0ebd37d50c452b5c5552b956867773"
+    },
+    "unvisited-grid.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/unvisited-grid.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/unvisited-grid.json",
+      "bytes": 71811,
+      "sha256": "e8dec71c58673c2d96a51924a41bd6964ab5a07dde5c80ed47a9005c2d8d2ebf"
+    }
+  },
+  "unvisitedEndPointCount": 576,
+  "plannedPairCount": 192,
+  "faceStatus": {
+    "status": "UNRESOLVED"
+  },
+  "failureLocation": "All three source-bind local budgets expired at bound_end -> grade -> sp.Poly(x, epsilon_shape).nth(2); no complete binding return saved.",
+  "sourceBranchJoin": "Three worker-reported zero residuals join supplied branch inventory; not independent physics evidence. Saved payload inspection pending.",
+  "noRetry": true,
+  "scienceJobsUsed": 1,
+  "authorizedScienceJobs": [
+    1,
+    2
+  ],
+  "job2": "Independently reviewed saved-output reader only; no binding retry or method repair.",
+  "stopAfterJob2AndFrequencyComparison": true,
+  "physicalLightCalibration": "OPEN_NOT_ESTABLISHED",
+  "payloadRestorationsDuringThisInspection": 0
+}

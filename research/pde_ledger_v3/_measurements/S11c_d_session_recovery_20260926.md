@@ -1,5 +1,16 @@
 # S11c-d session recovery — 2026-09-26
 
+**Current result — job 1 unresolved at all three ends:** 115.199 worker seconds,
+196,616,192 peak bytes, zero swap/events. Eleven complete operations and three
+35-second source-bind timeouts; zero map points and no face-drive premise.
+All 33 inputs and 98 result files are intact; strict stderr empty and stdout
+identical to checks. See `S11c_d_transverse_face_premise_report.md` and checkpoint.
+Job 2 is being prepared as the approved saved-output reader, not a binding retry.
+User additionally permits necessary longer duration for these jobs; local
+operation budgets are the observed bottleneck. No extended run or method repair
+has been launched. Preserve completed work and stop before field/power work.
+Analog-light frequency calibration remains OPEN.
+
 **Current authorization — jobs 1–2 only (2026-09-28 local):** user explicitly
 said “Approve jobs 1-2 only.” The exact round-5 cleared premise worker and all
 33 input pins are unchanged. Fresh approval/gate/launch records authorize job 1

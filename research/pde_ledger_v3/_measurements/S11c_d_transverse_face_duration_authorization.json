@@ -1,0 +1,14 @@
+{
+  "status": "CONDITIONAL_LONGER_DURATION_APPROVED_WITHIN_JOBS_1_2",
+  "recordedUtc": "2026-09-29T05:28:42.123751+00:00",
+  "userReply": "I give permission to run them for longer if that's necessary so we can get the data we need",
+  "scope": "Premise check and saved-output inspection only; finish inspection and identify necessary unfinished work.",
+  "knownBottleneck": "Three 35-second source-bind local operation allowances expired; original outer900/native840 did not expire.",
+  "durationExtendedExecutionLaunched": false,
+  "longerLimitsSelected": null,
+  "scientificMethodChangeAuthorized": false,
+  "completedOperationReplayAuthorized": false,
+  "resourceContainmentUnchanged": true,
+  "stopBeforeFieldPowerMethodWork": true,
+  "originalFailurePreserved": true
+}

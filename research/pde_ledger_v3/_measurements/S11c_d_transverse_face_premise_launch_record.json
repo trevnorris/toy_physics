@@ -1,5 +1,5 @@
 {
-  "status": "LAUNCHED_JOB_1_COMPLETION_INSPECTION_PENDING",
+  "status": "JOB1_COMPLETED_WITH_ALL_END_BINDINGS_UNRESOLVED",
   "recordedUtc": "2026-09-29T05:20:47.124020+00:00",
   "pins": {
     "workerSha256": "ebf2739a2f8dca9ed4130b89606a36a27be29ef5d5c0915756b7118fcbd6fae5",
@@ -118,5 +118,12 @@
     "initialScientificStderrBytes": 0,
     "initialInfrastructureStderrBytes": 0,
     "oneStartupInspectionOnly": true
-  }
+  },
+  "completionCheckpoint": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_premise_checkpoint.json",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_premise_checkpoint.json",
+    "bytes": 63574,
+    "sha256": "b7a401773af74131bd9a9ffcc783eceaab559f9b48f1a2afecca0a08ec2d7b1b"
+  },
+  "completionEventHandled": true
 }

@@ -1,5 +1,5 @@
 {
-  "status": "PREPARED_AWAITING_EXACT_PACKET_SUBMISSION_APPROVAL",
+  "status": "REVIEWS_LAUNCHED_AWAITING_BOTH_LITERAL_REPORTS",
   "preparedUtc": "2026-09-29T06:22:02.210973+00:00",
   "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/saved-reader-build-review-r2",
   "packetSha256": "2ef5f7e88cc2527c68098bb6613ad1982ba6b59cc208fbd6742ff768af4491ad",
@@ -222,7 +222,7 @@
     }
   },
   "authorization": {
-    "status": "PENDING_EXACT_PACKET_APPROVAL",
+    "status": "EXPLICITLY_APPROVED_FIXED_PACKET",
     "reviewers": [
       "claude",
       "grok"
@@ -231,7 +231,11 @@
     "archiveSha256": "9861ebedaaa7ce495a9929c9999989aa93cc151a24f26589a466298348de7d71",
     "packetFiles": 37,
     "packetBytes": 3101999,
-    "scientificExecutionAuthorizedByThisSubmission": false
+    "scientificExecutionAuthorizedByThisSubmission": false,
+    "userReply": "I approve",
+    "approvedUtc": "2026-09-29T13:07:11.188940+00:00",
+    "approvalContext": "Direct reply to exact corrected 37-file, 3101999-byte reader review packet SHA256 2ef5f7e88cc2527c68098bb6613ad1982ba6b59cc208fbd6742ff768af4491ad naming fresh Claude and Grok destinations; no binary payloads or scientific execution in this submission.",
+    "currentThread": "01a0e01b-ef84-7192-817f-584cda5d339b"
   },
   "scienceJobsUsed": 1,
   "readerScienceNotLaunched": true,
@@ -240,5 +244,67 @@
     "claude": "NEEDS REVISION",
     "grok": "NEEDS REVISION"
   },
-  "independentBuildClearance": false
+  "independentBuildClearance": false,
+  "prelaunchVerification": {
+    "verifiedUtc": "2026-09-29T13:07:11.189753+00:00",
+    "packetAndArchiveMatch": true,
+    "sourcePinsMatch": 36,
+    "inputPinsMatch": 168,
+    "protectedHashesMatch": true,
+    "scientificImportsOrRestorations": 0,
+    "priorLaunchExists": false
+  },
+  "launch": {
+    "jobPid": 2234500,
+    "watcherPid": 2234501,
+    "packetSha256": "2ef5f7e88cc2527c68098bb6613ad1982ba6b59cc208fbd6742ff768af4491ad",
+    "reviewers": [
+      "Claude",
+      "Grok"
+    ],
+    "concurrentReviewWorkers": 1,
+    "scienceCalls": 0,
+    "runnerSha256": "278001030e690696494ad0d0df3076c199e0b98dd51481eb7f65701133612334",
+    "launcherSha256": "13a4e7a60423f8343ccec46d4b6addc335d7f2875aad24aef2b05e3cad41b27a"
+  },
+  "startupInspection": {
+    "inspectedUtc": "2026-09-29T13:07:57.823915+00:00",
+    "hostNamespaceCheck": true,
+    "coordinator": {
+      "visible": true,
+      "state": "S",
+      "alive": true
+    },
+    "watcher": {
+      "visible": true,
+      "state": "S",
+      "alive": true
+    },
+    "stateStatus": "RUNNING",
+    "watcherStatus": "waiting",
+    "reviewers": {
+      "claude": {
+        "sessionId": "4b2532a8-5cec-4ba5-913c-18cfc09f128c",
+        "pid": 2234506,
+        "startedUtc": "2026-09-29T13:07:24.649380+00:00",
+        "finishedUtc": null,
+        "exitStatus": null,
+        "hostProcess": {
+          "visible": true,
+          "state": "S",
+          "alive": true
+        }
+      },
+      "grok": {
+        "status": "NOT_STARTED_SEQUENTIAL_QUEUE"
+      }
+    },
+    "infrastructureStderrBytes": {
+      "coordinator.stderr": 0,
+      "watcher.stderr": 0
+    },
+    "scienceCalls": 0,
+    "completionHookTarget": "01a0e01b-ef84-7192-817f-584cda5d339b",
+    "singleStartupInspection": true
+  }
 }

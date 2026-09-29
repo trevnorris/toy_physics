@@ -1,5 +1,15 @@
 # S11c-d session recovery — 2026-09-26
 
+**Job 2 corrected build reviews launched (2026-09-29):** the user approved
+the exact 37-file / 3,101,999-byte packet
+`2ef5f7e88cc2527c68098bb6613ad1982ba6b59cc208fbd6742ff768af4491ad`.
+Fresh Claude started; Grok follows sequentially with the same read-only packet.
+The local completion hook is armed for this session. Both reports must finish
+before adjudication or edits; no independent clearance is presumed.
+See `S11c_d_transverse_face_saved_reader_review_r2_preparation.json`.
+No job-2 science launched. Existing jobs-1–2 approval and conditional duration
+permission remain; stop after the reader results and omega=1/omega=3 comparison.
+
 **Corrected job-2 reader prepared for fresh review:** bounded container/rendering,
 selected-row, supplied historical metadata and final-publication fixes are saved.
 Codec, all existing input pins, restore selection and ordinary limits are unchanged.

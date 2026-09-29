@@ -1,5 +1,14 @@
 # S11c-d: the remaining execution queue
 
+**Current result — transverse/face round 4 needs revision (2026-09-28 local):**
+both reviewers literally NEEDS REVISION; both accept the saved-current fix.
+Packet/archive/source/input/report hashes match. The remaining bounded changes
+are incomplete point-rank totals, native timer handoff and explicit face/leg
+census guards. See `S11c_d_transverse_face_premise_review_r4_disposition.md`
+and its literal record. Preserve the exact reviewed baseline before repair.
+No physics method change, author clearance or science. After substantive build
+clearance, return the costed outgoing-field/power plan and stop for go/no-go.
+
 **Current status — transverse/face round-4 reviews running (2026-09-28 local):**
 the user explicitly approved the exact 24-file / 566,939-byte revised packet
 and Claude/Grok destinations with “I approve.” The unchanged packet launched

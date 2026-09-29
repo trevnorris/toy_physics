@@ -1,5 +1,5 @@
 {
-  "status": "REVIEWS_RUNNING_SOURCE_ONLY",
+  "status": "BOTH_NEED_REVISION_SOURCE_ONLY",
   "preparedUtc": "2026-09-29T02:24:35.955716+00:00",
   "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/build-review-r4",
   "packetIndex": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/build-review-r4/packet/packet-index.json",
@@ -247,5 +247,6 @@
       "coordinator.stderr": 0,
       "watcher.stderr": 0
     }
-  }
+  },
+  "reviewRecord": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_premise_review_r4_record.json"
 }

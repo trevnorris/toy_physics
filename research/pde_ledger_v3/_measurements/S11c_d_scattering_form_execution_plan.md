@@ -1,5 +1,17 @@
 # S11c-d: the remaining execution queue
 
+**RIGHT continuation independently cleared and gated (2026-09-29):** both
+fresh literal verdicts CLEAR FOR THIS 16 GIB RIGHT-END CONTINUATION. All74
+packet/archive members,73 source files and1364 input pins match; worker,
+guard and inputs are unchanged from3aba519b. No optional edits/review cycle.
+The exact review record includes all helper hashes and preserves the prior
+NEEDS REVISION/CLEAR round. Source-only clearance is not a runtime result.
+Fresh gate and hook-first launcher pass metadata preflight for one execution6:
+RIGHT-only saved-return continuation,16GiB native/cgroup caps, desktop-managed
+priority, zero swap/one CPU/32tasks/one thread,3600s result inactivity plus60s
+bookkeeping, no total duration cap. No science launched at this checkpoint.
+The existing approval covers launch; stop after actual results, no new job.
+
 **Corrected RIGHT continuation packet submitted (2026-09-29):** user
 said “Continue” in direct response to the exact corrected-packet submission
 request. Fresh Claude/Grok review is underway for packet

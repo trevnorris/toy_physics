@@ -1,0 +1,713 @@
+{
+  "status": "BOTH_INDEPENDENT_REVIEWS_CLEAR_EXACT_UNCHANGED_RIGHT_CONTINUATION",
+  "inspectedUtc": "2026-09-29T23:42:01.167645+00:00",
+  "reviewedCommit": "3aba519b",
+  "submissionCommit": "b6f96d3d",
+  "independentBuildClearance": true,
+  "workerSha256": "f41ca1c84ce0d49ed35d413a36afe6fadab17049e3db3d6878839bec259fa708",
+  "inputManifestSha256": "1ef4f620efb38de7235f8efec65c377aec36844a38f9e056c80b3d477e3425e3",
+  "scopeSha256": "f4fe62952197e92d5a07b8c757a66ef8e33bfdc9ac8ebf1ecd4b942127f6c285",
+  "authorizationSha256": "e8d571e7794bbfdc57444dabe4c66a438e5d785e9b9f55c56d5b8d6958f69ca7",
+  "guardSha256": "38278b15fbd27c7f5d36fb8f42b25c17ce60446c675dd326e0c642d500adad8f",
+  "sharedGuardSha256": "9194b3e04b43d345828082e6312b0a2d7a9293f6296153f9c6ccea2defb931d2",
+  "supervisorSha256": "45a16f7f952ca6b571362b1c386fec76cd86f1e0ad04113074adf49c683ec49c",
+  "packetState": {
+    "status": "AWAITING_ADJUDICATION",
+    "preparedUtc": "2026-09-29T22:49:02.309378+00:00",
+    "packetDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/right-finish-build-review-r2/packet",
+    "packetSha256": "a3f4b309a4af9761476c08ccd123c440e0e0a00df0ec555d092e542a1c716293",
+    "archiveSha256": "eb95f52031525f766785c9db0b5c2cce03a8131f828df7e8b13f4fed439053ef",
+    "fileHashes": {
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/LEFT-restore-current.json": "94e35024559cf67501f6a17512bff965ec0e88089204389bfd6bbead4edb06b6",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/LEFT-restore-original-symbol.json": "d205477353554a6f32127c24ac8ad32464982f74f1158de378974240effbc18f",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/LEFT-restore-seed-16.json": "6da650a28183679375d3e7b294f8cd89e39a56309998f68c09e06c731fdbf4f0",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/LEFT-restore-seed-17.json": "eca5e95872288b422d93e8ccafaf73b4a66769f4ba1ed32bc617398fae6cc9ff",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/LEFT-source-bind.json": "4a564eb60b085b0917531d1b6c7e3341cb45344bae5da6925eac11778192a4a5",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/REFERENCE-restore-current.json": "8d17c9600b54493c240ec7fd10504170cc8fa9cb30b1dde6e88a00bf49b6a136",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/REFERENCE-restore-original-symbol.json": "e388769443b9b2081f9a22b6b1b1650fa492b64c1ae469939d011019690a6bed",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/REFERENCE-restore-seed-16.json": "39a5245e539e505182ad5b1fdbe782b28fb87bdfe1b6a363fbec1333bbfadd9e",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/REFERENCE-restore-seed-17.json": "50b7a5baa0e25e0b60a53f96a0d3cb0a7b9ec904ddb6a4fecb845a42d80350d9",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/REFERENCE-source-bind.json": "35843c8d8dbdfa5815917387869162fc28f661fb4076adc56bc6c88cf1bb9188",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/RIGHT-restore-current.json": "fe2fe1ee143bfeb349b19a89d69adb7844ade9bcf21e89cb72d7213377218c54",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/RIGHT-restore-original-symbol.json": "2a8e53c32f048b2c4086068e17c153d0e48c7d279cb8584a875069bd91188d48",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/checks.json": "45b6d4680a1afa2a8b791446b566eff0943f486b6aec0d0939db0d1d57181da5",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/complete-return-reuse.json": "717b95a559c92256d05e201ef904df0bab00420e51308b4d0d81f8e96320dd6a",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/operation-index.json": "551cec85a38ff70345e3bf0157711b1cdc4cd652586a3bd3f61dd3e9167980f7",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/operations/0023-RIGHT-source-bind/fixed-point-incomplete-input-join.json": "92152368228255b3f01b78facca10936fea3be6e45ccdee43f19a5cab5a08a65",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/operations/0023-RIGHT-source-bind/input-references.json": "2c42a240009ecb13af433a97af58ab938faa19ab4361a1a693747bec641a019b",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/operations/0023-RIGHT-source-bind/prior-argument-join.json": "bc66e98239d10791d0cffd9f5fe8b658662d25c24d9f919729db64edc9548c25",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/operations/0023-RIGHT-source-bind/started.json": "eba08b32c47bc40f9aef5a9c2455745b1e573f4c2f61c072f0294030b51bb1c7",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/operations/0023-RIGHT-source-bind/suboperations/BULK_NORMAL_CURRENT_DENSITY_MATRIX-specialized-input/complete.json": "f12fcc3a269c9f390bbaf3b9b31bd82e94c19b32e6640dbe010442fecee4f407",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/operations/0023-RIGHT-source-bind/suboperations/SLAB_CURRENT_MATRIX-carrier-return/complete.json": "76379aa59063e6a33f312522f4b92944287d85e758bdb59006fc5105e971d5e5",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/operations/0023-RIGHT-source-bind/suboperations/SLAB_CURRENT_MATRIX-end-specialization/complete.json": "0b4dc02787f44ec04c413eb3f6a2c59a4e78d87588516cb7fa18186e6a3edb01",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/operations/0023-RIGHT-source-bind/suboperations/SLAB_CURRENT_MATRIX-specialized-input/complete.json": "8efbeec618db220c5023aabc680fc495ee5fd9f085b820048678166af730c78d",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/operations/0023-RIGHT-source-bind/suboperations/carrier-entry-000052-input/complete.json": "f19e110ad941bc735679253697038156f27ee05bd55326d8d5a2addf15bc837f",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/operations/0023-RIGHT-source-bind/suboperations/carrier-entry-000052-return/complete.json": "e2f2b43e2fddd7a2479cdfa648971b0edb726bd9f75b4abd3e62660ed44909cd",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/operations/0023-RIGHT-source-bind/suboperations/carrier-entry-000053-input/complete.json": "5112a2954ac7c94ed98e87934d496a72c849e02327874c7b88a6dcfa93f8160e",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/operations/0023-RIGHT-source-bind/suboperations/carrier-entry-000053-return/complete.json": "edf2c4b048fa3ac16a8c458b10127f4915cf97c7af1ba1072df1beb17a8620db",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/operations/0023-RIGHT-source-bind/suboperations/carrier-entry-000054-input/complete.json": "fd3038a6267454fd283eb2c98be30517722cf91e5a27ce09b788e92b4117c661",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/operations/0023-RIGHT-source-bind/suboperations/carrier-entry-000054-return/complete.json": "23197a7b8dedcb5674a8ec930f696c49e73bc3375017acc49007bf7c8cd2d82f",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/operations/0023-RIGHT-source-bind/suboperations/carrier-entry-000055-input/complete.json": "de3759ce2cb504e3b0625eba860ad4c9c81f7450c40c522fe95eec79a759eb68",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/operations/0023-RIGHT-source-bind/suboperations/recovered-unsaved-context/complete.json": "cba94b30458cd06d57498331074d8adceb03fad69eb5bde2abf8326f8e0f7221",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/operations/0023-RIGHT-source-bind/suboperations/source-specialization/complete.json": "e0a4c2cd383ec555737f544caeb90a93c4b972a7d11774df54dd78d99c7b3c7e",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/operations/0023-RIGHT-source-bind/suboperations/transverse-restriction/complete.json": "f94cf7557a64c7b56b0fd390f8a4359e96873f695854f3b428ae14079ee7eb5b",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/operations/0023-RIGHT-source-bind/suboperations/wave-polynomial/complete.json": "5a6c6d52cc0692c0d5004a8893eb52865e692c4055bb95d427a39cd449a61851",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/operations/0023-RIGHT-source-bind/unresolved.json": "86d856a77a0cb4898891981fee19f580db15ce960975a181eedb2ff7ea77aba5",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/point-summary.json": "fc8dc9a1f08092e8080a9bfdaa245a79bbd9f6024cc60ad3e8f03db8491fd24f",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/restore-branch-context.json": "a7ee1fa685104f2ddbc3f7f7f87b4883993058f70da524d1cb3226684d598cbb",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/restore-uniform-common.json": "8ea0d205aca4efc61b9e14428e4034ea6650d4f8dadcc3f8bef4dd8d0576dce7",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/restore-uniform.json": "34565375dfdfb7c81b0f162eb713f9afbd7b41bf51ec43d0041f82b1115acbab",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/restore-unit-context.json": "fa63baee262ae23225d2b3762d04440a901111f105f18230dfeef31139192f41",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/restored-suboperations.json": "ac1b1f1d9f11790d237957786ffad41e2da6198b531520e15f12ebcb7d4d1b51",
+      "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/source-end-states.json": "cec0e918d21ddd4cc7b2ad3683dd9b7c62678e959e2d10fff6ddae23e1ee558a",
+      "packet-index.json": "17cb18258bf4ba9ae85e39a3bb4c69ee5a4ddd1b76aea498365eb9752b491cb4",
+      "research/pde_ledger_v3/_measurements/S11c_d_A9_saved_face_drives.json": "057c9960aa1c721d1973de85cc48e5d6ac3bcb20a233cfc10f63d6f9207d6bf8",
+      "research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py": "45a16f7f952ca6b571362b1c386fec76cd86f1e0ad04113074adf49c683ec49c",
+      "research/pde_ledger_v3/_measurements/S11c_d_end_pairing_check.py": "1fcf86b0be819e2c7e9a2127d8330c907bcaccf58d1d15c3f1534d594d926dee",
+      "research/pde_ledger_v3/_measurements/S11c_d_frequency_source.py": "9be20be462bc10bfcaa7af643b9301948dd79bc2e08eb24ebcd1386a81efcdac",
+      "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_fixed_point.py": "64cd6ea8ec7907edacd5fce9687c2072d3a235bd270c0ea483e8b76f18af9888",
+      "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_fixed_point_continue.py": "5d38c329e8e15cff091c09584c1d33806fd8318f66a779fc10f2ae52d00e3135",
+      "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_fixed_point_continue_guard.py": "1c2bef4f691555e98e20eec1ccb76c8861cfd92ce827ddc36caa19afc12f5ecd",
+      "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_fixed_point_continue_inputs.json": "e78fc287fec25006d555ffb107d1fdcc6ef222554b3221d546c11331d05bb63b",
+      "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_fixed_point_inputs.json": "01dc1264f1ac59490880b5d186e6b52cf65f2afb288dd9a1054741e57a0fc41c",
+      "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_fixed_point_saved_schema.json": "d6849134dcf25af0587cc4b896522b829bcee8e3db09cf00ca406ca812b2d09f",
+      "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_fixed_point_scope.md": "77cbebb09161688cd610a844fd054530c841fd0fda1e2b27a5cc5ddf7002240e",
+      "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_fixed_point_source_note.md": "2750192756c5d0a768d6ea8ca78d1d342affddc86b3ed497cacc0005f5b4064b",
+      "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_native_source.txt": "fe9492e73f5aeb4a5c1b1782153e9e420cc884ff730905aaefa26aaafa70b2b5",
+      "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_premise_plan.md": "c326f31812e6b6d409853d2d34cadc750c3c0d2e8146eede4bbe9d794c705d89",
+      "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_right_finish.py": "f41ca1c84ce0d49ed35d413a36afe6fadab17049e3db3d6878839bec259fa708",
+      "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_right_finish_authorization.json": "e8d571e7794bbfdc57444dabe4c66a438e5d785e9b9f55c56d5b8d6958f69ca7",
+      "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_right_finish_codec_census.json": "ab1e7d4ada232725d3197866ee25d12f6ab91ee695b4a0510eeece2d67678914",
+      "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_right_finish_codec_source.md": "90b1851d50c2620c09c687a286e3283d6a06fa4fc7a1015d91d7b7bce1278d25",
+      "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_right_finish_guard.py": "38278b15fbd27c7f5d36fb8f42b25c17ce60446c675dd326e0c642d500adad8f",
+      "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_right_finish_inputs.json": "1ef4f620efb38de7235f8efec65c377aec36844a38f9e056c80b3d477e3425e3",
+      "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_right_finish_review_r2_static_checks.json": "d03f36174d63ee1823028787aa4111b9c0e75936e9c6b23647a5649feb964d97",
+      "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_right_finish_scope.md": "f4fe62952197e92d5a07b8c757a66ef8e33bfdc9ac8ebf1ecd4b942127f6c285",
+      "research/pde_ledger_v3/_measurements/S11c_d_uniform_response.py": "b65749ab0eaaeed372a5bf01077a030971fc3e05f05a11543443bd1de3f157d4",
+      "research/pde_ledger_v3/_measurements/S11c_d_uniform_source.py": "2a135aea365c7b5e57bfff7683c7b927cda52c0d37f6a9bad3c961eb6205a2b2",
+      "research/pde_ledger_v3/_measurements/S11c_d_variable_profile_development_input.json": "660b2b0b54494dce964c7f5fbd722a76a7e894d8ed92b18b5eb6290c3c10f1d5",
+      "research/pde_ledger_v3/directives/S11c_c1_SHARED_PHYSICS.md": "47554c8c9cf2fd070c1048a7ae0ca36b1315bf50a48ed07a51019ff3e72987ad",
+      "research/pde_ledger_v3/directives/S11c_d_SHARED_PHYSICS.md": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5",
+      "research/pde_ledger_v3/directives/S11c_d_TOTAL_TRANSVERSE_LOSS_AMENDMENT_DRAFT.md": "ec12456947527bb162a6bd56a65651f1028cca1f95f0d85379bdc8a411fbb6fc",
+      "research/pde_ledger_v3/scripts/S11c_d_mixing_scattering_sympy_audit.py": "5bf77729682960bb59f10c672a5fe3f67a98b0a9533da7c6189a37183596050f",
+      "review-prompt.md": "7c9dfd7d6e479dec3f9a9067ec07dbb6d98b897c3bd03d87f743fea749fbd860",
+      "scripts/s11c_guarded_run.py": "9194b3e04b43d345828082e6312b0a2d7a9293f6296153f9c6ccea2defb931d2"
+    },
+    "sourceRecords": [
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/LEFT-restore-current.json",
+        "sourceSha256": "94e35024559cf67501f6a17512bff965ec0e88089204389bfd6bbead4edb06b6",
+        "bytes": 1285
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/LEFT-restore-original-symbol.json",
+        "sourceSha256": "d205477353554a6f32127c24ac8ad32464982f74f1158de378974240effbc18f",
+        "bytes": 1299
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/LEFT-restore-seed-16.json",
+        "sourceSha256": "6da650a28183679375d3e7b294f8cd89e39a56309998f68c09e06c731fdbf4f0",
+        "bytes": 1339
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/LEFT-restore-seed-17.json",
+        "sourceSha256": "eca5e95872288b422d93e8ccafaf73b4a66769f4ba1ed32bc617398fae6cc9ff",
+        "bytes": 1339
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/LEFT-source-bind.json",
+        "sourceSha256": "4a564eb60b085b0917531d1b6c7e3341cb45344bae5da6925eac11778192a4a5",
+        "bytes": 2483
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/REFERENCE-restore-current.json",
+        "sourceSha256": "8d17c9600b54493c240ec7fd10504170cc8fa9cb30b1dde6e88a00bf49b6a136",
+        "bytes": 1295
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/REFERENCE-restore-original-symbol.json",
+        "sourceSha256": "e388769443b9b2081f9a22b6b1b1650fa492b64c1ae469939d011019690a6bed",
+        "bytes": 1309
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/REFERENCE-restore-seed-16.json",
+        "sourceSha256": "39a5245e539e505182ad5b1fdbe782b28fb87bdfe1b6a363fbec1333bbfadd9e",
+        "bytes": 1349
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/REFERENCE-restore-seed-17.json",
+        "sourceSha256": "50b7a5baa0e25e0b60a53f96a0d3cb0a7b9ec904ddb6a4fecb845a42d80350d9",
+        "bytes": 1349
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/REFERENCE-source-bind.json",
+        "sourceSha256": "35843c8d8dbdfa5815917387869162fc28f661fb4076adc56bc6c88cf1bb9188",
+        "bytes": 2493
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/RIGHT-restore-current.json",
+        "sourceSha256": "fe2fe1ee143bfeb349b19a89d69adb7844ade9bcf21e89cb72d7213377218c54",
+        "bytes": 1287
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/RIGHT-restore-original-symbol.json",
+        "sourceSha256": "2a8e53c32f048b2c4086068e17c153d0e48c7d279cb8584a875069bd91188d48",
+        "bytes": 1302
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/checks.json",
+        "sourceSha256": "45b6d4680a1afa2a8b791446b566eff0943f486b6aec0d0939db0d1d57181da5",
+        "bytes": 814
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/complete-return-reuse.json",
+        "sourceSha256": "717b95a559c92256d05e201ef904df0bab00420e51308b4d0d81f8e96320dd6a",
+        "bytes": 6963
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/operation-index.json",
+        "sourceSha256": "551cec85a38ff70345e3bf0157711b1cdc4cd652586a3bd3f61dd3e9167980f7",
+        "bytes": 82681
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/operations/0023-RIGHT-source-bind/fixed-point-incomplete-input-join.json",
+        "sourceSha256": "92152368228255b3f01b78facca10936fea3be6e45ccdee43f19a5cab5a08a65",
+        "bytes": 23398
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/operations/0023-RIGHT-source-bind/input-references.json",
+        "sourceSha256": "2c42a240009ecb13af433a97af58ab938faa19ab4361a1a693747bec641a019b",
+        "bytes": 1763
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/operations/0023-RIGHT-source-bind/prior-argument-join.json",
+        "sourceSha256": "bc66e98239d10791d0cffd9f5fe8b658662d25c24d9f919729db64edc9548c25",
+        "bytes": 13546
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/operations/0023-RIGHT-source-bind/started.json",
+        "sourceSha256": "eba08b32c47bc40f9aef5a9c2455745b1e573f4c2f61c072f0294030b51bb1c7",
+        "bytes": 104
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/operations/0023-RIGHT-source-bind/suboperations/BULK_NORMAL_CURRENT_DENSITY_MATRIX-specialized-input/complete.json",
+        "sourceSha256": "f12fcc3a269c9f390bbaf3b9b31bd82e94c19b32e6640dbe010442fecee4f407",
+        "bytes": 1394
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/operations/0023-RIGHT-source-bind/suboperations/SLAB_CURRENT_MATRIX-carrier-return/complete.json",
+        "sourceSha256": "76379aa59063e6a33f312522f4b92944287d85e758bdb59006fc5105e971d5e5",
+        "bytes": 1356
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/operations/0023-RIGHT-source-bind/suboperations/SLAB_CURRENT_MATRIX-end-specialization/complete.json",
+        "sourceSha256": "0b4dc02787f44ec04c413eb3f6a2c59a4e78d87588516cb7fa18186e6a3edb01",
+        "bytes": 1364
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/operations/0023-RIGHT-source-bind/suboperations/SLAB_CURRENT_MATRIX-specialized-input/complete.json",
+        "sourceSha256": "8efbeec618db220c5023aabc680fc495ee5fd9f085b820048678166af730c78d",
+        "bytes": 1362
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/operations/0023-RIGHT-source-bind/suboperations/carrier-entry-000052-input/complete.json",
+        "sourceSha256": "f19e110ad941bc735679253697038156f27ee05bd55326d8d5a2addf15bc837f",
+        "bytes": 608
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/operations/0023-RIGHT-source-bind/suboperations/carrier-entry-000052-return/complete.json",
+        "sourceSha256": "e2f2b43e2fddd7a2479cdfa648971b0edb726bd9f75b4abd3e62660ed44909cd",
+        "bytes": 609
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/operations/0023-RIGHT-source-bind/suboperations/carrier-entry-000053-input/complete.json",
+        "sourceSha256": "5112a2954ac7c94ed98e87934d496a72c849e02327874c7b88a6dcfa93f8160e",
+        "bytes": 608
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/operations/0023-RIGHT-source-bind/suboperations/carrier-entry-000053-return/complete.json",
+        "sourceSha256": "edf2c4b048fa3ac16a8c458b10127f4915cf97c7af1ba1072df1beb17a8620db",
+        "bytes": 609
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/operations/0023-RIGHT-source-bind/suboperations/carrier-entry-000054-input/complete.json",
+        "sourceSha256": "fd3038a6267454fd283eb2c98be30517722cf91e5a27ce09b788e92b4117c661",
+        "bytes": 608
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/operations/0023-RIGHT-source-bind/suboperations/carrier-entry-000054-return/complete.json",
+        "sourceSha256": "23197a7b8dedcb5674a8ec930f696c49e73bc3375017acc49007bf7c8cd2d82f",
+        "bytes": 609
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/operations/0023-RIGHT-source-bind/suboperations/carrier-entry-000055-input/complete.json",
+        "sourceSha256": "de3759ce2cb504e3b0625eba860ad4c9c81f7450c40c522fe95eec79a759eb68",
+        "bytes": 608
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/operations/0023-RIGHT-source-bind/suboperations/recovered-unsaved-context/complete.json",
+        "sourceSha256": "cba94b30458cd06d57498331074d8adceb03fad69eb5bde2abf8326f8e0f7221",
+        "bytes": 607
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/operations/0023-RIGHT-source-bind/suboperations/source-specialization/complete.json",
+        "sourceSha256": "e0a4c2cd383ec555737f544caeb90a93c4b972a7d11774df54dd78d99c7b3c7e",
+        "bytes": 1332
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/operations/0023-RIGHT-source-bind/suboperations/transverse-restriction/complete.json",
+        "sourceSha256": "f94cf7557a64c7b56b0fd390f8a4359e96873f695854f3b428ae14079ee7eb5b",
+        "bytes": 1332
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/operations/0023-RIGHT-source-bind/suboperations/wave-polynomial/complete.json",
+        "sourceSha256": "5a6c6d52cc0692c0d5004a8893eb52865e692c4055bb95d427a39cd449a61851",
+        "bytes": 1316
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/operations/0023-RIGHT-source-bind/unresolved.json",
+        "sourceSha256": "86d856a77a0cb4898891981fee19f580db15ce960975a181eedb2ff7ea77aba5",
+        "bytes": 12694
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/point-summary.json",
+        "sourceSha256": "fc8dc9a1f08092e8080a9bfdaa245a79bbd9f6024cc60ad3e8f03db8491fd24f",
+        "bytes": 1002
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/restore-branch-context.json",
+        "sourceSha256": "a7ee1fa685104f2ddbc3f7f7f87b4883993058f70da524d1cb3226684d598cbb",
+        "bytes": 1290
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/restore-uniform-common.json",
+        "sourceSha256": "8ea0d205aca4efc61b9e14428e4034ea6650d4f8dadcc3f8bef4dd8d0576dce7",
+        "bytes": 1289
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/restore-uniform.json",
+        "sourceSha256": "34565375dfdfb7c81b0f162eb713f9afbd7b41bf51ec43d0041f82b1115acbab",
+        "bytes": 1274
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/restore-unit-context.json",
+        "sourceSha256": "fa63baee262ae23225d2b3762d04440a901111f105f18230dfeef31139192f41",
+        "bytes": 1286
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/restored-suboperations.json",
+        "sourceSha256": "ac1b1f1d9f11790d237957786ffad41e2da6198b531520e15f12ebcb7d4d1b51",
+        "bytes": 5760
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/source-end-states.json",
+        "sourceSha256": "cec0e918d21ddd4cc7b2ad3683dd9b7c62678e959e2d10fff6ddae23e1ee558a",
+        "bytes": 125
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_A9_saved_face_drives.json",
+        "sourceSha256": "057c9960aa1c721d1973de85cc48e5d6ac3bcb20a233cfc10f63d6f9207d6bf8",
+        "bytes": 8224
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+        "sourceSha256": "45a16f7f952ca6b571362b1c386fec76cd86f1e0ad04113074adf49c683ec49c",
+        "bytes": 3347
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_end_pairing_check.py",
+        "sourceSha256": "1fcf86b0be819e2c7e9a2127d8330c907bcaccf58d1d15c3f1534d594d926dee",
+        "bytes": 10885
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_frequency_source.py",
+        "sourceSha256": "9be20be462bc10bfcaa7af643b9301948dd79bc2e08eb24ebcd1386a81efcdac",
+        "bytes": 29576
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_fixed_point.py",
+        "sourceSha256": "64cd6ea8ec7907edacd5fce9687c2072d3a235bd270c0ea483e8b76f18af9888",
+        "bytes": 84850
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_fixed_point_continue.py",
+        "sourceSha256": "5d38c329e8e15cff091c09584c1d33806fd8318f66a779fc10f2ae52d00e3135",
+        "bytes": 91220
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_fixed_point_continue_guard.py",
+        "sourceSha256": "1c2bef4f691555e98e20eec1ccb76c8861cfd92ce827ddc36caa19afc12f5ecd",
+        "bytes": 16216
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_fixed_point_continue_inputs.json",
+        "sourceSha256": "e78fc287fec25006d555ffb107d1fdcc6ef222554b3221d546c11331d05bb63b",
+        "bytes": 308201
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_fixed_point_inputs.json",
+        "sourceSha256": "01dc1264f1ac59490880b5d186e6b52cf65f2afb288dd9a1054741e57a0fc41c",
+        "bytes": 105826
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_fixed_point_saved_schema.json",
+        "sourceSha256": "d6849134dcf25af0587cc4b896522b829bcee8e3db09cf00ca406ca812b2d09f",
+        "bytes": 25329
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_fixed_point_scope.md",
+        "sourceSha256": "77cbebb09161688cd610a844fd054530c841fd0fda1e2b27a5cc5ddf7002240e",
+        "bytes": 4767
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_fixed_point_source_note.md",
+        "sourceSha256": "2750192756c5d0a768d6ea8ca78d1d342affddc86b3ed497cacc0005f5b4064b",
+        "bytes": 12972
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_native_source.txt",
+        "sourceSha256": "fe9492e73f5aeb4a5c1b1782153e9e420cc884ff730905aaefa26aaafa70b2b5",
+        "bytes": 83915
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_premise_plan.md",
+        "sourceSha256": "c326f31812e6b6d409853d2d34cadc750c3c0d2e8146eede4bbe9d794c705d89",
+        "bytes": 12465
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_right_finish.py",
+        "sourceSha256": "f41ca1c84ce0d49ed35d413a36afe6fadab17049e3db3d6878839bec259fa708",
+        "bytes": 92839
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_right_finish_authorization.json",
+        "sourceSha256": "e8d571e7794bbfdc57444dabe4c66a438e5d785e9b9f55c56d5b8d6958f69ca7",
+        "bytes": 2030
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_right_finish_codec_census.json",
+        "sourceSha256": "ab1e7d4ada232725d3197866ee25d12f6ab91ee695b4a0510eeece2d67678914",
+        "bytes": 93491
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_right_finish_codec_source.md",
+        "sourceSha256": "90b1851d50c2620c09c687a286e3283d6a06fa4fc7a1015d91d7b7bce1278d25",
+        "bytes": 3570
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_right_finish_guard.py",
+        "sourceSha256": "38278b15fbd27c7f5d36fb8f42b25c17ce60446c675dd326e0c642d500adad8f",
+        "bytes": 16560
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_right_finish_inputs.json",
+        "sourceSha256": "1ef4f620efb38de7235f8efec65c377aec36844a38f9e056c80b3d477e3425e3",
+        "bytes": 1017519
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_right_finish_review_prompt.md",
+        "sourceSha256": "7c9dfd7d6e479dec3f9a9067ec07dbb6d98b897c3bd03d87f743fea749fbd860",
+        "bytes": 4093
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_right_finish_review_r2_static_checks.json",
+        "sourceSha256": "d03f36174d63ee1823028787aa4111b9c0e75936e9c6b23647a5649feb964d97",
+        "bytes": 7790
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_right_finish_scope.md",
+        "sourceSha256": "f4fe62952197e92d5a07b8c757a66ef8e33bfdc9ac8ebf1ecd4b942127f6c285",
+        "bytes": 3144
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_uniform_response.py",
+        "sourceSha256": "b65749ab0eaaeed372a5bf01077a030971fc3e05f05a11543443bd1de3f157d4",
+        "bytes": 21153
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_uniform_source.py",
+        "sourceSha256": "2a135aea365c7b5e57bfff7683c7b927cda52c0d37f6a9bad3c961eb6205a2b2",
+        "bytes": 14588
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_variable_profile_development_input.json",
+        "sourceSha256": "660b2b0b54494dce964c7f5fbd722a76a7e894d8ed92b18b5eb6290c3c10f1d5",
+        "bytes": 1884
+      },
+      {
+        "path": "research/pde_ledger_v3/directives/S11c_c1_SHARED_PHYSICS.md",
+        "sourceSha256": "47554c8c9cf2fd070c1048a7ae0ca36b1315bf50a48ed07a51019ff3e72987ad",
+        "bytes": 50376
+      },
+      {
+        "path": "research/pde_ledger_v3/directives/S11c_d_SHARED_PHYSICS.md",
+        "sourceSha256": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5",
+        "bytes": 67800
+      },
+      {
+        "path": "research/pde_ledger_v3/directives/S11c_d_TOTAL_TRANSVERSE_LOSS_AMENDMENT_DRAFT.md",
+        "sourceSha256": "ec12456947527bb162a6bd56a65651f1028cca1f95f0d85379bdc8a411fbb6fc",
+        "bytes": 8243
+      },
+      {
+        "path": "research/pde_ledger_v3/scripts/S11c_d_mixing_scattering_sympy_audit.py",
+        "sourceSha256": "5bf77729682960bb59f10c672a5fe3f67a98b0a9533da7c6189a37183596050f",
+        "bytes": 545480
+      },
+      {
+        "path": "scripts/s11c_guarded_run.py",
+        "sourceSha256": "9194b3e04b43d345828082e6312b0a2d7a9293f6296153f9c6ccea2defb931d2",
+        "bytes": 9977
+      }
+    ],
+    "packetFiles": 74,
+    "packetBytes": 2964819,
+    "currentThread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "scienceCalls": 0,
+    "startedUtc": "2026-09-29T23:21:59.592665+00:00",
+    "supervisorPid": 2569183,
+    "concurrentReviewWorkers": 1,
+    "finishedUtc": "2026-09-29T23:40:17.648498+00:00",
+    "productionAuthorized": false,
+    "reviewVerdict": "NOT_ADJUDICATED"
+  },
+  "packetSha256": "a3f4b309a4af9761476c08ccd123c440e0e0a00df0ec555d092e542a1c716293",
+  "archiveSha256": "eb95f52031525f766785c9db0b5c2cce03a8131f828df7e8b13f4fed439053ef",
+  "allPacketArchiveAndSourceHashesMatch": true,
+  "sourceCount": 73,
+  "inputPinsVerified": 1364,
+  "packetIndex": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/right-finish-build-review-r2/packet/packet-index.json",
+    "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/right-finish-build-review-r2/packet/packet-index.json",
+    "bytes": 20049,
+    "sha256": "17cb18258bf4ba9ae85e39a3bb4c69ee5a4ddd1b76aea498365eb9752b491cb4"
+  },
+  "prompt": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/right-finish-build-review-r2/packet/review-prompt.md",
+    "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/right-finish-build-review-r2/packet/review-prompt.md",
+    "bytes": 4093,
+    "sha256": "7c9dfd7d6e479dec3f9a9067ec07dbb6d98b897c3bd03d87f743fea749fbd860"
+  },
+  "authorization": {
+    "status": "EXPLICITLY_APPROVED_FIXED_PACKET",
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "packetSha256": "a3f4b309a4af9761476c08ccd123c440e0e0a00df0ec555d092e542a1c716293",
+    "archiveSha256": "eb95f52031525f766785c9db0b5c2cce03a8131f828df7e8b13f4fed439053ef",
+    "packetFiles": 74,
+    "packetBytes": 2964819,
+    "scientificExecutionAuthorizedByThisSubmission": false,
+    "userReply": "Continue",
+    "approvedUtc": "2026-09-29T23:21:43.045872+00:00",
+    "approvalContext": "Direct response to the exact corrected 74-file / 2,964,819-byte packet submission request. Existing separate approval covers one right-end scientific continuation only after substantive independent build clearance.",
+    "packetPreparedCommit": "3aba519b",
+    "noPeerSharing": true,
+    "noAutomaticTransportRetry": true
+  },
+  "coordinator": {
+    "status": "BOTH_ATTEMPTS_FINISHED_AWAITING_LITERAL_ADJUDICATION",
+    "finishedUtc": "2026-09-29T23:40:17.650444+00:00",
+    "scienceCalls": 0
+  },
+  "launch": {
+    "jobPid": 2569183,
+    "watcherPid": 2569184,
+    "packetSha256": "a3f4b309a4af9761476c08ccd123c440e0e0a00df0ec555d092e542a1c716293",
+    "reviewers": [
+      "Claude",
+      "Grok"
+    ],
+    "concurrentReviewWorkers": 1,
+    "scienceCalls": 0,
+    "runnerSha256": "495e191ca6754dc7e0d7256bcd0c33b9657906567410dbfaa0eb88eb6442172d",
+    "launcherSha256": "2bc7ca7b1f803f03b580a78148a7d5971f54c96338abad68b4772af1222c6464"
+  },
+  "static": {
+    "status": "SOURCE_HASH_AST_SYNTHETIC_ONLY_NO_SCIENCE",
+    "runnerSha256": "495e191ca6754dc7e0d7256bcd0c33b9657906567410dbfaa0eb88eb6442172d",
+    "launcherSha256": "2bc7ca7b1f803f03b580a78148a7d5971f54c96338abad68b4772af1222c6464",
+    "completionMessageSha256": "1e5b693e6591a25d738583e150726e2fbd61ac6f5beeca5d7dcdd7983f026d34",
+    "workerSha256": "f41ca1c84ce0d49ed35d413a36afe6fadab17049e3db3d6878839bec259fa708",
+    "inputManifestSha256": "1ef4f620efb38de7235f8efec65c377aec36844a38f9e056c80b3d477e3425e3",
+    "guardSha256": "38278b15fbd27c7f5d36fb8f42b25c17ce60446c675dd326e0c642d500adad8f",
+    "workerImportedOrExecuted": false,
+    "payloadsRestored": 0,
+    "peerReportsIncluded": false,
+    "archiveMembersVerified": true
+  },
+  "watcher": {
+    "status": "finished",
+    "watcherPid": 2569184,
+    "jobPid": 2569183,
+    "thread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+    "startedUtc": "2026-09-29T23:21:59.470348+00:00",
+    "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
+    "messageSha256": "1e5b693e6591a25d738583e150726e2fbd61ac6f5beeca5d7dcdd7983f026d34",
+    "notifications": {
+      "completion": {
+        "status": "queued",
+        "exitCode": 0,
+        "finishedUtc": "2026-09-29T23:40:17.773662+00:00"
+      }
+    }
+  },
+  "reviews": [
+    {
+      "engine": "claude",
+      "literalVerdict": "CLEAR FOR THIS 16 GIB RIGHT-END CONTINUATION",
+      "verdict": "CLEAR",
+      "literalReport": "**CLEAR FOR THIS 16 GIB RIGHT-END CONTINUATION**\n\nI reviewed the source only, before any run. I didn't execute, import or unpickle anything, and I didn't contact anyone. The clearance covers the implementation only. It can't confirm anything that only a run would show: that the restored objects decode correctly, that the re-rendered summaries match, or that 16 GiB is enough for scalar 55 or anything after it. Execution 5 needed more than 2 GiB just to build the polynomial domain for entry 55 (`construct_domain` \u2192 `expand`). More memory may still not be enough.\n\n## Delta checks\n\n**1. Restoring the 23 complete returns (`S11c_d_transverse_face_right_finish.py:247-287, 289-304, 334-380, 490-509`)**\n- `configure_prior` checks the 1311-file prior tree before any work:\n  - the file list matches the manifest exactly;\n  - the file count, byte total and artifact-index hash join to the checkpoint;\n  - the manifest and posthashes match the previous run;\n  - each of the 24 receipts matches its `input-references.json`.\n- Each file is then copied byte for byte with atomic publication and a hash check.\n- `op` compares the actual arguments against the stored operands using structural identity. Restore operations also compare the original, current and observed source routes. The completed function is never called, the order is enforced against `prior_order`, and restores must happen before any new computation (11 first at line 1262, 23 at 1301).\n- Duplicate-byte routes: `prior_value` now keys the allowed set by path rather than by hash, which the old sha-keyed dict could collapse. The census shows the only duplicate bytes are REFERENCE/LEFT seeds 16/17. Those go through the per-key source join, not `prior_value`.\n- Copied summaries with `render=False` walk `priorOperation` back until they reach the exact receipt, and the walk always ends. Summaries with `render=True` must match `show(value)` exactly.\n- Codec additions (lines 114-116):\n  - Only the exact pairs `domainmatrix.DomainMatrix` and `integerring.IntegerRing` are admitted.\n  - This matches the census `explicitStorageClasses`, which lists no gmpy, flint or copyreg globals.\n  - In the installed-source excerpt, `DomainMatrix.__reduce__` rebuilds through `__new__(rows, shape, domain)` into SDM/DDM storage with no evaluation.\n  - The `{3:{0:1}}` 5\u00d71 arguments are consistent with the `sp.eye(5)[:,slot]` probes at line 999.\n\n**2. Resuming only RIGHT-source-bind (lines 175-219, 343-352, 591-611, 738-789)**\n- The run refuses unless RIGHT-source-bind is the only unfinished operation and it has exactly 15 bundles, each equal to its reviewed receipt.\n- Restore order: source-specialization \u2192 wave-polynomial \u2192 transverse-restriction \u2192 recovered context \u2192 SLAB (specialized input, carrier return, end-specialization) \u2192 BULK_NORMAL specialized input. Then scalars 52\u201354 each restore their input and return, and 55 restores its input only. That makes 15.\n- Starting the counter at 52 matches execution 5, where the REFERENCE/LEFT INTERFACE_POWER and open-depth extractions used numbers 0\u201351.\n- Every restored scalar compares both entry and epsilon. The first new `Poly(entry,e).nth(2)` call is 55, reached through the same `applyfunc`. Missing earlier inputs or returns fail. Context and completed coefficients are not recomputed.\n- Unsupported symbols and failed later checks still end as unresolved.\n\n**3. Binding and interpretation**\n- `bind` keeps the carry allowlist of epsilon/eta/sigma. The face, current, seed, control and c2 logic is unchanged.\n- RIGHT counts as supported only if both seeds are `AVAILABLE` with every check passing (lines 1288-1290). The scopes remain \"selected\" rather than a full census.\n\n**4. Containment and gate**\n- `memory.max` must be 17179869184 and `RLIMIT_AS` is set to 16 GiB (lines 429, 434). The guard applies `MemoryMax`, swap 0, 32 tasks, 1 CPU and 1 thread.\n- Nice is recorded but neither checked nor set, and `Nice=` was removed from the launch. The lock, active-service refusal, pause file and 4 GiB host monitor are kept.\n- The review-to-gate join at lines 1354-1356 is correct. Line 1345 has already required the gate keys to equal the live hashes, so `gate[key]` cannot raise a KeyError there.\n\n**5. Progress and deadlines**\n- These count as progress: publishing the prior copy once, each restored complete return once, each non-input suboperation restore once, and new complete results.\n- `-input` checkpoints, started work and CPU time do not count.\n- The worker stops after 3600 s without new saved progress. The guard stops at 3660 s after the last progress it validated, checking the receipt's hash and path. Systemd is set to `RuntimeMaxUSec=infinity` and `Restart=no`, and there is no total wall deadline.\n- stdout carries only the `checks.json` document.\n\n## Blockers\nNone.\n\n## Optional refinements (not blocking)\n1. **Join failures are recorded as math failures.** Mismatches in restored bundles use `require`, which raises `ValueError` (for example lines 208, 597, 603, 739-750, 768, 784). `op` catches that as `LOCAL_OPERATION_EXCEPTION`, so RIGHT is recorded as `UNRESOLVED_SOURCE_JOIN` and the run exits 0. This is honest, but it labels a provenance breach like a math failure. Smallest fix: raise `IntegrityError` for these.\n2. **A MemoryError is reported as `UNRESOLVED_SOURCE_JOIN`** (lines 1273-1275). Execution 5 did the same. Readers have to open `unresolved.json` to see the exception type. Smallest fix: copy `failure.exceptionType` into `end_states` or the summary.\n3. **Two gate files are not explicitly joined.** The guard's fixed gate path is not tied to the worker's `--gate-receipt`, and `gate.runtimeApproval` is not tied to `spec.inputs.continuationAuthorization`. Today only the exact `guardedCommand` links them. Smallest fix: add two equality checks.\n4. **No host-capacity check before launch.** Nothing checks that the host can supply 16 GiB plus the 4 GiB reserve. If the host monitor fires, it sends SIGTERM and the worker writes no `failure.json`. The receipts saved so far survive.\n5. **A cgroup OOM kill could come before a MemoryError.** Because `RLIMIT_AS` equals `memory.max`, the only margin is the process's non-anonymous mappings, less the guard, supervisor and kernel charges. This is accepted by the equal-16-GiB requirement.\n6. **A late error can hide itself in the error handler.** An exception after the success-path write of `operation-index.json` (line 1395) would make line 1404 raise `FileExistsError`. `failure.json` is already saved by then.\n7. **Two restores are linked by provenance only.** The SLAB carrier return is not argument-joined to the restored specialized input. The specialized-input join checks `original` but not `actualSubstitutions`.\n\n## Runtime premises this review cannot accept\n- For `render=True` summaries written fresh in execution 5 (REFERENCE/LEFT face-premise, the seed joins, `source-branch-map-joins`), `show(restored value)` must match the saved JSON exactly.\n- DomainMatrix and IntegerRing must restore correctly.\n- The installed SymPy must still produce the same `applyfunc` order. The 52\u201355 comparisons fail closed if it doesn't.\n- Memory and stall behaviour for scalar 55 and later.\n\n## Scientific limitations (separate from clearance)\nRestored results are linked by provenance, not revalidated. A RIGHT pass would support only the selected transverse/current premise for seeds 16/17. c2 remains limited, orientation-blind velocity/index-literal evidence. Nothing here establishes all-grade matched lossless ends, total loss, a full field, power, omega3 or calibration.",
+      "receipt": {
+        "engine": "claude",
+        "sessionId": "e063a70f-73ff-4b60-91dc-1601c1178374",
+        "command": [
+          "/home/trevnorris/.local/bin/claude",
+          "--print",
+          "--output-format",
+          "json",
+          "--safe-mode",
+          "--restricted",
+          "--tools",
+          "Read,Glob,Grep",
+          "--allowedTools",
+          "Read,Glob,Grep",
+          "--permission-mode",
+          "dontAsk",
+          "--strict-mcp-config",
+          "--mcp-config",
+          "{\"mcpServers\":{}}",
+          "--setting-sources",
+          "",
+          "--disable-slash-commands",
+          "--session-id",
+          "e063a70f-73ff-4b60-91dc-1601c1178374"
+        ],
+        "cwd": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/right-finish-build-review-r2/packet",
+        "startedUtc": "2026-09-29T23:21:59.630894+00:00",
+        "packetSha256": "a3f4b309a4af9761476c08ccd123c440e0e0a00df0ec555d092e542a1c716293",
+        "promptSha256": "7c9dfd7d6e479dec3f9a9067ec07dbb6d98b897c3bd03d87f743fea749fbd860",
+        "scientificExecutionEnabled": false,
+        "reviewVerdict": "NOT_ADJUDICATED",
+        "pid": 2569190,
+        "exitStatus": 0,
+        "finishedUtc": "2026-09-29T23:28:57.995863+00:00",
+        "wallSeconds": 418.3637722139247,
+        "outputSha256": "f2bad9042bb82651ee3e6790a1951bea5a7fa6cdc0c0202f81a2517f8d680775",
+        "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderrBytes": 0
+      },
+      "output": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/right-finish-build-review-r2/claude.json",
+        "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/right-finish-build-review-r2/claude.json",
+        "bytes": 9486,
+        "sha256": "f2bad9042bb82651ee3e6790a1951bea5a7fa6cdc0c0202f81a2517f8d680775"
+      },
+      "stderr": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/right-finish-build-review-r2/claude.stderr",
+        "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/right-finish-build-review-r2/claude.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "terminalMetadata": {
+        "stop_reason": "end_turn",
+        "is_error": false,
+        "terminal_reason": "completed",
+        "num_turns": 28
+      }
+    },
+    {
+      "engine": "grok",
+      "literalVerdict": "CLEAR FOR THIS 16 GIB RIGHT-END CONTINUATION",
+      "verdict": "CLEAR",
+      "literalReport": "I'll start from `packet-index.json` and review the RIGHT continuation sources only: the new worker, task-local guard, manifest, scope, and authorization, against the supplied receipts.The packet is a prospective source-only review of one 16 GiB RIGHT continuation. I'll follow its reading order and check the five concrete deltas against the worker, guard, and receipts.The index frames this as one review-to-gate hash join on an otherwise unchanged continuation. I'll read the worker and guard against the five deltas and the saved receipts.**CLEAR FOR THIS 16 GIB RIGHT-END CONTINUATION**\n\nThis is a prospective source-only review. It did not run the worker, unpickle a scientific payload, import SymPy, or ablate anything, so it cannot accept a runtime premise. No science gate is present, and a later launch still has to fail closed unless that gate matches these exact bytes.\n\n## Implementation clearance\n\nNo blocker. The bounded continuation matches the five requested deltas.\n\n1. **Restore without calling the completed functions.** `Journal.op` returns a prior `COMPLETE` value before the function call (`S11c_d_transverse_face_right_finish.py` 353\u2013380). The call order matches the saved journal: operations `0000`\u2013`0010` are the original 11, `0011`\u2013`0016` REFERENCE, `0017`\u2013`0022` LEFT, and `0023` is the only `UNRESOLVED_NO_RETRY` record, `RIGHT-source-bind`. The final reuse check requires those 23 names (`1301\u20131302`). Summaries are copied byte-for-byte. Rendered summaries are compared with `show`; unrendered ones must match the saved receipt or its `priorOperation` ancestor (`491\u2013505`). `restore-uniform.json` is the one-hop production receipt. `REFERENCE-source-bind.json` equals `operations/0011-REFERENCE-source-bind/complete.json` directly. `priorFiles` and `resumeFiles` both run `priorResult0000` through `priorResult1310` (1311 entries) with the same head and tail, and `resumeRoot == priorRoot`. The continue checkpoint records 1311 files and 31,272,777 bytes (`S11c_d_transverse_face_fixed_point_continue_checkpoint.json` 64\u201366); launch rechecks that census. Duplicate-byte routes stay path-addressed: `REFERENCESeed16` and `LEFTSeed16` share hash `69450680\u2026` at different paths, and the three frequency checkpoints share one path. `prior_value` allowlists by path (`289\u2013292`), and restore joins use the named key (`361\u2013370`). RIGHT\u2019s three operand generations join by hash `5cb79c6b\u2026`, `f7f3599f\u2026`, and `2a568090\u2026` with `sourceHashesEqual: true`. `DomainMatrix` and `IntegerRing` are the only codec additions (`114\u2013116`). The census shows both on the mutable face-matrix pickles, and the pinned installed sources match that reconstruction: `DomainMatrix.__reduce__` / `__new__` and `IntegerRing()` only. A restored object is provenance-linked.\n\n2. **Only RIGHT resumes, and the next extraction is 55.** Resume accepts exactly `RIGHT-source-bind` and exactly 15 published bundles (`175\u2013192`). Those bundles are source, wave, transverse, recovered context, the slab current trio, bulk-normal specialized input, scalar inputs/returns 52\u201354, and input 55 with no return. Slab and context are restored, not recomputed (`738\u2013789`). The carrier counter starts at 52 (`143`). Saved returns 52\u201354 return the stored coefficient with no `Poly` call; input 55 is compared with `same` on entry and epsilon, then the first new call is `Poly(entry, epsilon).nth(2)` under the same `applyfunc` (`591\u2013610`). The installed `matrixbase.py` `_eval_applyfunc` (`2035\u20132050`) is the same dict-of-keys path named in the MemoryError traceback. An unsupported symbol raises (`577`). A right-end matrix that still has symbols other than `k` and `q` fails `declaredSymbols` and stays unresolved (`876`). Later domain factors with remaining symbols stay non-finite and unresolved (`1158\u20131169`).\n\n3. **Bindings and claims.** `bind` keeps carried `epsilon_shape`, `eta_bg`, and `sigma_W` through carrier extraction, and binds frequency, tangents, and the pinned grade/material parameters in that substitution (`563\u2013584`). Face, current, seed, and responsive-control formulas are the same construction as the execution-5 worker. Selected support requires both RIGHT seeds 16 and 17 to be `AVAILABLE` with every check true (`1287\u20131292`). c2 stays an orientation-blind index literal (`1061\u20131063`); the summary scope remains a selected undriven transverse/current premise.\n\n4. **16 GiB, desktop priority, one shot.** The worker requires cgroup `memory.max == 17179869184` and then sets `RLIMIT_AS` to `16*1024**3` (`429\u2013434`). The task-local guard uses the same 16 GiB cgroup cap, swap 0, 32 tasks, one CPU, and the six thread variables at 1 (`38\u201354`, `278\u2013285`). It does not call `nice` or set a CPU scheduler policy, and `limits_match` does not test nice. The shared guard is pinned and still defaults to 2 GiB. The worker joins live `guardSha256`, `sharedGuardSha256`, and `supervisorSha256` to the gate (`1345\u20131348`) and requires the review record to carry those same three values (`1354\u20131356`). Missing or unequal values fail that check. Clearance, ordinal 6, one new execution, and `automaticRetry: false` are required (`1340\u20131344`). `Restart=no` is both requested and read back (`141\u2013147`, `281`). No ready science gate exists.\n\n5. **Progress and persistence.** There is no total deadline (`seconds == 0`). The native timer is 3600 seconds from the last distinct saved result (`144\u2013173`, `439`). The guard\u2019s backstop is 3660 seconds (`221\u2013222`). Started files, CPU samples, and names ending in `-input` do not refresh progress (`217\u2013218`, `327\u2013328`). Each restored completed receipt is counted once (`157\u2013161`). Failure and partial state go to `failure.json`, `unresolved.json`, the operation index, and posthashes (`1400\u20131412`). Success stdout is one JSON document written as `checks.json`.\n\n## Optional refinement\n\nThe task-local guard does not repeat the supervisor or review-record join before it starts the service. The worker still refuses, before the SymPy import, when those pins differ. Moving that same equality into `validate_duration` would fail a bad gate earlier. It does not change the scientific result.\n\n## Scientific limitations\n\nThese are limits of the claim, not clearance defects.\n\nMore memory does not guarantee that scalar 55 finishes. That call is one `Poly(...).nth(2)` with no intermediate save, so an hour of CPU inside it is inactivity and the native timer stops it. The 23 restored returns and the RIGHT operands occupy the same 16 GiB address space before that call. A repeated memory failure is recorded as unresolved. An exit code of 0 only means the runner finished; it does not mean the right end passed.\n\nRestored REFERENCE and LEFT mathematics are not recomputed. If the right bind completes, only selected seeds 16 and 17 can support the premise. c2 remains limited velocity/index evidence. No matched lossless end, total-loss magnitude, full field, power, omega3, new root, mode, producer replay, map, or calibration follows. The 4 GiB host-available reserve can still stop the job.",
+      "receipt": {
+        "engine": "grok",
+        "sessionId": "baa6778c-4b17-405a-a8af-3e80817ee631",
+        "command": [
+          "/home/trevnorris/.local/bin/grok",
+          "--cwd",
+          "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/right-finish-build-review-r2/packet",
+          "--prompt-file",
+          "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/right-finish-build-review-r2/packet/review-prompt.md",
+          "--output-format",
+          "json",
+          "--permission-mode",
+          "dontAsk",
+          "--no-plan",
+          "--tools",
+          "Read",
+          "--no-subagents",
+          "--disable-web-search",
+          "--verbatim",
+          "--session-id",
+          "baa6778c-4b17-405a-a8af-3e80817ee631"
+        ],
+        "cwd": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/right-finish-build-review-r2/packet",
+        "startedUtc": "2026-09-29T23:28:58.081516+00:00",
+        "packetSha256": "a3f4b309a4af9761476c08ccd123c440e0e0a00df0ec555d092e542a1c716293",
+        "promptSha256": "7c9dfd7d6e479dec3f9a9067ec07dbb6d98b897c3bd03d87f743fea749fbd860",
+        "scientificExecutionEnabled": false,
+        "reviewVerdict": "NOT_ADJUDICATED",
+        "pid": 2571835,
+        "exitStatus": 0,
+        "finishedUtc": "2026-09-29T23:40:17.591551+00:00",
+        "wallSeconds": 679.498945957981,
+        "outputSha256": "363bc0ca7f1aa607879050a5bbfb23d8e2856600a44c3dde0af714eb795ac8d5",
+        "stderrSha256": "915cdf03d7cbb63f0772f08dec74e820e3f5469c36673104194f40cfe8583a64",
+        "stderrBytes": 1431
+      },
+      "output": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/right-finish-build-review-r2/grok.json",
+        "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/right-finish-build-review-r2/grok.json",
+        "bytes": 93746,
+        "sha256": "363bc0ca7f1aa607879050a5bbfb23d8e2856600a44c3dde0af714eb795ac8d5"
+      },
+      "stderr": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/right-finish-build-review-r2/grok.stderr",
+        "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/right-finish-build-review-r2/grok.stderr",
+        "bytes": 1431,
+        "sha256": "915cdf03d7cbb63f0772f08dec74e820e3f5469c36673104194f40cfe8583a64"
+      },
+      "terminalMetadata": {
+        "stopReason": "end_turn",
+        "num_turns": 22
+      }
+    }
+  ],
+  "codecCensusJoin": {
+    "census": {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_right_finish_codec_census.json",
+      "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_right_finish_codec_census.json",
+      "bytes": 93491,
+      "sha256": "ab1e7d4ada232725d3197866ee25d12f6ab91ee695b4a0510eeece2d67678914"
+    },
+    "currentManifestHashMatches": true,
+    "allCensusedBytesMatch": true,
+    "selectedRoutes": 60,
+    "uniqueFiles": 58,
+    "scientificRestorations": 0,
+    "runtimeCompatibilityProven": false
+  },
+  "grokStderrAssessment": "1431 bytes of CLI configuration warnings preserved. Normal end_turn and substantive source-addressed literal CLEAR; not claimed empty.",
+  "optionalEditsApplied": false,
+  "sourceChangedAfterReview": false,
+  "authorIndependentClearanceClaim": false,
+  "automaticReviewRerun": false,
+  "peerSharing": false,
+  "scienceCalls": 0,
+  "scientificExecutionOrdinal": 6,
+  "scientificExecutionLaunched": false,
+  "remainingRuntimeObligations": [
+    "Codec/saved-summary compatibility and actual argument/provenance joins",
+    "Reuse all23 returns and15 reached RIGHT suboperations without replay",
+    "Actual right-end carrier/face/current/selected-seed/control/domain results",
+    "16GiB native/cgroup limits, desktop-managed priority, progress stop, all other safeguards",
+    "Complete input/copy/snapshot integrity; process exit is not acceptance"
+  ]
+}

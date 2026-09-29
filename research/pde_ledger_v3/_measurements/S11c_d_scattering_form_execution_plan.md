@@ -1,5 +1,19 @@
 # S11c-d: the remaining execution queue
 
+**Corrected execution-4 build reviews submitted (2026-09-29):** the user
+approved the exact 80-file / 1,682,033-byte packet, SHA-256
+`58f12be41da26a4e28a564f97be8018286467cc42f41c5fa2508539f9d850624`.
+All 79 packet-source pins and 142 scientific input pins match. Fresh Claude is
+running; fresh Grok follows with identical read-only bytes and no peer reports.
+The local completion hook armed before submission; one host startup check
+verified owned processes and empty stderr. Both reports must finish before
+corrected-source inspection, adjudication or edits. No model polling or retries.
+See `S11c_d_transverse_face_fixed_point_review_r2_preparation.json`.
+No science gate or run: execution 4 remains unspent and already authorized
+only after substantive independent build clearance. The first literal
+NEEDS REVISION reports and reviewed baseline remain preserved. Stop after
+actual fixed-point results; no field/power expansion or further execution.
+
 **Execution-4 build review completed (2026-09-29):** both literal reports are
 NEEDS REVISION. Exact reviewed bytes remain at `d163c1fe` and in the fixed
 packet; all packet/archive/source hashes match. See fixed-point review record

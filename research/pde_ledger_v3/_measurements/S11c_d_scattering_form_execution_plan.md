@@ -1,5 +1,23 @@
 # S11c-d: the remaining execution queue
 
+**Progress-dependent continuation prepared (2026-09-29):** subsequent user
+permission covers longer running while saved results advance. One additional
+continuation of the same fixed-point premise is prepared as execution 5; the
+original four remain used and execution 4 is preserved at `9c8a49b4`.
+Restore eleven completed operations and 33 partial suboperations; reconstruct
+only explicitly documented unsaved context. Unchanged scalar extraction now
+saves per-entry inputs/returns. No total wall cap; native stop after 3600 s without
+a distinct saved result, outer 60 s bookkeeping grace. Other resource/locking
+safeguards remain; task-local guard only, shared guard unchanged.
+432 source pins and source syntax/AST checks pass; opcode metadata covers 64
+selected routes / 57 unique blobs without restoration. These are not runtime
+results or independent clearance. Exact review packet: 193 files /
+2,715,260 bytes, SHA-256 `c88b13119288be87d01ce40eed1c9e3ada483d30015fdebad3548feb555197f5`.
+See continuation scope, worker/guard, manifest, static checks and review preparation.
+Await exact external submission approval for fresh Claude/Grok. No review,
+science READY gate or continuation launch. Stop after actual continued results;
+no outgoing-field/power work, map or omega3 extension. Calibration and loss OPEN.
+
 **Execution 4 audited; all three bindings unresolved (2026-09-29):** numeric-first
 binding still reached the local 180-second cap in epsilon_shape-squared carrier
 extraction. REFERENCE/LEFT saved three current extractions before interface

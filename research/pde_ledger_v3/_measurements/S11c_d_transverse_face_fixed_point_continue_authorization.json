@@ -1,0 +1,36 @@
+{
+  "status": "USER_APPROVED_PROGRESS_DEPENDENT_FIXED_POINT_CONTINUATION",
+  "recordedUtc": "2026-09-29T18:49:41.671544+00:00",
+  "userReply": "I give permission for running them longer than the normal limit. allow them to run as long as necessary as long as they are making progress",
+  "scopeInterpretation": "One saved-return continuation of the already authorized unfinished fixed-point premise work; no new method or physical scope.",
+  "scientificExecutionOrdinal": 5,
+  "originalExecutionsUsed": 4,
+  "maximumNewScientificExecutions": 1,
+  "seconds": 0,
+  "nativeSeconds": 0,
+  "progressStallSeconds": 3600,
+  "guardBookkeepingGraceSeconds": 60,
+  "progressPolicyChosenDuringPreparation": true,
+  "memoryBytes": 2147483648,
+  "swapBytes": 0,
+  "cpuCount": 1,
+  "nice": 15,
+  "tasksMax": 32,
+  "nativeThreads": 1,
+  "automaticRetry": false,
+  "stopAfterResults": true,
+  "independentBuildReviewRequired": true,
+  "exactExternalPacketConsentRequired": true,
+  "sourceCheckpoint": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_fixed_point_checkpoint.json",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_fixed_point_checkpoint.json",
+    "bytes": 146497,
+    "sha256": "38ad249e315beaecb7d7206ea3353017ad691b761e4e3051d148fb9e7fd61c19"
+  },
+  "originalAuthorization": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_fixed_point_authorization.json",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_fixed_point_authorization.json",
+    "bytes": 3178,
+    "sha256": "49dbc3c7763a71ac53c96c2113842dbfcf8b4043cc77ab390925348bdfebced1"
+  }
+}

@@ -1,5 +1,14 @@
 # S11c-d: the remaining execution queue
 
+**Job 2 independent build reviews launched:** user explicitly approved the
+34-file, 2,474,785-byte fixed packet
+`bb20fefb5672bd47fcbb8951200a0b4a22e8279c6d046e2e49e776853cc5ec3f`.
+Fresh Claude and Grok receive identical source/JSON bytes with read-only tools,
+no peer reports, scientific execution or binary payloads. Local hook is armed
+for this session; both reports must finish before adjudication or edits.
+No job-2 science gate or launch yet. Existing jobs-1–2 approval and conditional
+longer-duration permission remain; preserve job-1 unresolved results.
+
 **Job 2 reader prepared; exact external packet approval pending:** source,
 manifest and schema note are saved without scientific execution or restoration.
 The reader covers actual job-1 returns plus three old comparison payloads and

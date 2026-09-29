@@ -1,5 +1,5 @@
 {
-  "status": "PREPARED_AWAITING_EXACT_PACKET_SUBMISSION_APPROVAL",
+  "status": "REVIEWS_LAUNCHED_AWAITING_BOTH_LITERAL_REPORTS",
   "preparedUtc": "2026-09-29T05:36:00.510726+00:00",
   "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/saved-reader-build-review",
   "packetSha256": "bb20fefb5672bd47fcbb8951200a0b4a22e8279c6d046e2e49e776853cc5ec3f",
@@ -187,7 +187,7 @@
     "archiveMembersVerified": true
   },
   "authorization": {
-    "status": "PENDING_EXACT_PACKET_APPROVAL",
+    "status": "EXPLICITLY_APPROVED_FIXED_PACKET",
     "reviewers": [
       "claude",
       "grok"
@@ -196,8 +196,77 @@
     "archiveSha256": "2b841ac1b54756cf2ec999aed0f2591f1140524aa3d3187c8763c965de23ca5e",
     "packetFiles": 34,
     "packetBytes": 2474785,
-    "scientificExecutionAuthorizedByThisSubmission": false
+    "scientificExecutionAuthorizedByThisSubmission": false,
+    "userReply": "I approve",
+    "approvedUtc": "2026-09-29T05:54:14.853548+00:00",
+    "approvalContext": "Direct reply to exact 34-file, 2474785-byte reader review packet SHA256 bb20fefb5672bd47fcbb8951200a0b4a22e8279c6d046e2e49e776853cc5ec3f naming fresh Claude and Grok destinations; no binary payloads or scientific execution in this submission.",
+    "currentThread": "01a0e01b-ef84-7192-817f-584cda5d339b"
   },
   "scienceJobsUsed": 1,
-  "readerScienceNotLaunched": true
+  "readerScienceNotLaunched": true,
+  "prelaunchVerification": {
+    "verifiedUtc": "2026-09-29T05:54:14.854363+00:00",
+    "packetAndArchiveMatch": true,
+    "sourcePinsMatch": 33,
+    "inputPinsMatch": 166,
+    "protectedHashesMatch": true,
+    "scientificImportsOrRestorations": 0,
+    "priorLaunchExists": false
+  },
+  "launch": {
+    "jobPid": 1060073,
+    "watcherPid": 1060074,
+    "packetSha256": "bb20fefb5672bd47fcbb8951200a0b4a22e8279c6d046e2e49e776853cc5ec3f",
+    "reviewers": [
+      "Claude",
+      "Grok"
+    ],
+    "concurrentReviewWorkers": 1,
+    "scienceCalls": 0,
+    "runnerSha256": "0d2be3973f6a937caa023d84f3b00d72b87e04d8d58e38805d98d8d5050173e0",
+    "launcherSha256": "28f18223b05d3d047e2c292858d08c945931a6dbff2491e9fc7c337aea86401d"
+  },
+  "startupInspection": {
+    "inspectedUtc": "2026-09-29T05:55:03.633866+00:00",
+    "stateStatus": "RUNNING",
+    "watcherStatus": "waiting",
+    "reviewers": {
+      "claude": {
+        "sessionId": "b256b054-84f0-4631-b7de-ac1c4ff4c01d",
+        "pid": 1060080,
+        "startedUtc": "2026-09-29T05:54:35.169361+00:00",
+        "finishedUtc": null,
+        "exitStatus": null,
+        "alive": true
+      },
+      "grok": {
+        "status": "NOT_STARTED_SEQUENTIAL_QUEUE"
+      }
+    },
+    "infrastructureStderrBytes": {
+      "coordinator.stderr": 0,
+      "watcher.stderr": 0
+    },
+    "scienceCalls": 0,
+    "completionHookTarget": "01a0e01b-ef84-7192-817f-584cda5d339b",
+    "singleStartupInspection": true,
+    "sandboxPidVisibility": {
+      "coordinatorVisible": false,
+      "watcherVisible": false,
+      "claudeVisible": false,
+      "interpretation": "Sandbox process namespace cannot see these host PIDs; negative visibility was not process death."
+    },
+    "hostVerification": {
+      "verifiedUtc": "2026-09-29T05:55:42.506691+00:00",
+      "coordinatorPid": 1060073,
+      "coordinatorAlive": true,
+      "watcherPid": 1060074,
+      "watcherAlive": true,
+      "claudePid": 1060080,
+      "claudeAlive": true,
+      "evidence": "Escalated read-only ps showed all three running at elapsed00:51, Claude parent is coordinator; no coordinator outcome/issue and empty infrastructure/Claude stderr. No restart or retry."
+    },
+    "coordinatorAlive": true,
+    "watcherAlive": true
+  }
 }

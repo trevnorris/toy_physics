@@ -887,43 +887,87 @@ def construct(spec, out, journal):
         slab = numeric(bound['currents']['SLAB_CURRENT_MATRIX'],mapping)
         bulk = numeric(bound['currents']['BULK_NORMAL_CURRENT_DENSITY_MATRIX'],mapping)
         current = right.conj().T@slab@right
-        current_join = current-np.asarray(old['currentGram'],complex) if 'currentGram' in old else None
+        projected_bulk = right.conj().T@bulk@right
         operand_joins = {'slab':slab-np.asarray(old['currentOperands']['CURRENT_SLAB'],complex),
                          'bulk':bulk-np.asarray(old['currentOperands']['CURRENT_BULK'],complex)}
         controls = [loaded_control(bound,symbol,mapping,right,scale) for symbol in (w,v)]
         wave = complex(bound['wave'].subs(mapping).evalf(40))
-        projected_bulk = right.conj().T@bulk@right
+        normal_reality_residual = k0-k0.conjugate()
+        normal_is_real = k0.imag == 0.0
+        face_zero = all(np.linalg.norm(value)<1e-8 for item in face
+                        for value in item['contractions'].values())
+        bulk_zero = np.linalg.norm(projected_bulk)<1e-8
+        hermitian_residual = current-current.conj().T
+        hermitian_part = (current+current.conj().T)/2
+        current_eigenvalues = np.linalg.eigvalsh(hermitian_part)
+        hermitian_supported = np.linalg.norm(hermitian_residual)<1e-8*max(1.,np.linalg.norm(current))
+        current_rank_supported = bool(current_eigenvalues.size and np.min(np.abs(current_eigenvalues))>1e-9)
+        transport = dict(scope='RECOMPUTED_SLAB_FORM_ONLY_ON_UNDRIVEN_T_ZERO_PROJECTED_BULK_DOMAIN',
+            domainSupported=bool(face_zero and bulk_zero),right=right,slabMatrix=slab,bulkMatrix=bulk,
+            currentForm=current,projectedBulk=projected_bulk,hermitianResidual=hermitian_residual,
+            hermitianPart=hermitian_part,eigenvaluesOfHermitianPart=current_eigenvalues,
+            hermitianTolerance=1e-8*max(1.,float(np.linalg.norm(current))),rankTolerance=1e-9,
+            positiveCurrentRank=int(sum(current_eigenvalues>1e-9)),
+            negativeCurrentRank=int(sum(current_eigenvalues < -1e-9)),
+            interpretation='Tolerance-based current check on the saved basis; no new normalized basis')
+        history = dict(currentDefined=old.get('currentDefined'),
+            sourceSheetMembership=info.get('SHEET_MEMBERSHIP'),sourceExactRealNormal=info.get('EXACT_REAL_NORMAL'),
+            sourceBulkDecayDiskCertified=info.get('BULK_DECAY_DISK_CERTIFIED'),
+            sourcePhysicalCurrentNormalization=info.get('PHYSICAL_RIGHT_CURRENT_NORMALIZATION_DEFINED'),
+            scope='HISTORICAL_METADATA_NOT_RECOMPUTED_AVAILABILITY_GATE')
+        missing = [name for name in ('depthIntegral','currentGram') if name not in old]
+        if missing:
+            historical_comparison = dict(status='UNAVAILABLE',missingFields=missing,
+                availableSavedDepthIntegral=old.get('depthIntegral'),availableSavedGram=old.get('currentGram'),
+                availabilityGated=False)
+        else:
+            depth = complex(old['depthIntegral'])
+            weighted_matrix = slab+depth*bulk
+            weighted_gram = right.conj().T@weighted_matrix@right
+            saved_gram = np.asarray(old['currentGram'],complex)
+            weighted_residual = weighted_gram-saved_gram
+            comparison_supported = np.linalg.norm(weighted_residual)<1e-8
+            historical_comparison = dict(status='COMPARED',right=right,slabMatrix=slab,bulkMatrix=bulk,
+                savedDepthIntegral=depth,weightedMatrix=weighted_matrix,recomputedWeightedGram=weighted_gram,
+                savedGram=saved_gram,residual=weighted_residual,residualNorm=float(np.linalg.norm(weighted_residual)),
+                tolerance=1e-8,supported=bool(comparison_supported),availabilityGated=True,
+                source='S11c_d_uniform_response.py:74-88; no depth integral is re-evaluated')
         depth_evidence = []
         for candidate in (q0,-q0):
             dm = dict(mapping); dm.update({q:candidate,qb:candidate.conjugate()})
             native_flux = complex(bound['outgoingDepthCoefficient'].subs(dm).evalf(40))
             carrier_flux = complex(bound['carrierLawCheck']['normalizedFlux'].subs(dm).evalf(40))
             normalization_residual = native_flux-carrier_flux
-            decay = bool(info['BULK_DECAY_DISK_CERTIFIED'] and candidate.imag>0)
+            decay = bool(abs(candidate.real)<1e-12 and candidate.imag>0)
             real_outward = bool(abs(candidate.imag)<1e-12 and abs(native_flux.imag)<1e-10 and native_flux.real>0)
             depth_evidence.append(dict(candidate=candidate,nativeFlux=native_flux,carrierFlux=carrier_flux,
-                normalizationResidual=normalization_residual,savedDecayDisk=info['BULK_DECAY_DISK_CERTIFIED'],
+                normalizationResidual=normalization_residual,decayingImaginaryDepth=decay,
+                realOutwardDepth=real_outward,coordinateRealityTolerance=1e-12,
+                historicalDecayDisk=info.get('BULK_DECAY_DISK_CERTIFIED'),
                 supported=(abs(normalization_residual)<1e-10 and (decay or real_outward))))
-        eligible = bool(info['SHEET_MEMBERSHIP'] and info['EXACT_REAL_NORMAL'] and old['currentDefined'])
-        checks = dict(savedEligibility=eligible, savedFrequency=(w0==params['omega']),
+        checks = dict(savedFrequency=(w0==params['omega']),
             transverseMembership=np.linalg.norm(t_residual)<1e-8,
             physicalPencilJoin=np.linalg.norm(pencil_join)<1e-8,
             physicalKernel=np.linalg.norm(kernel)<1e-8, physicalWave=abs(wave)<1e-8,
-            savedPhysicalDepth=(depth_evidence[0]['supported'] and not depth_evidence[1]['supported']),
+            recomputedRealNormal=normal_is_real,
+            actualPhysicalDepth=(depth_evidence[0]['supported'] and not depth_evidence[1]['supported']),
             slabCurrentOperands=np.linalg.norm(operand_joins['slab'])<1e-8,
             bulkCurrentOperands=np.linalg.norm(operand_joins['bulk'])<1e-8,
             nativeEVelocityPresence=all(item['nativeEVelocityPresent'] for item in face),
-            undriven=all(np.linalg.norm(value)<1e-8 for item in face for value in item['contractions'].values()),
-            projectedBulk=np.linalg.norm(projected_bulk)<1e-8,
-            currentGram=('currentGram' in old and np.linalg.norm(current_join)<1e-8),
+            undriven=face_zero,projectedBulk=bulk_zero,
+            transverseCurrentHermitian=hermitian_supported,transverseCurrentNonzeroRank=current_rank_supported,
             controls=all(item['status']=='RESPONSIVE' for item in controls))
+        if historical_comparison['status']=='COMPARED':
+            checks['historicalWeightedGramComparison'] = historical_comparison['supported']
         return dict(status='AVAILABLE' if all(checks.values()) else 'UNRESOLVED',
-            scope='SELECTED_SAVED_SEED_SUBSPACE_JOIN_NOT_COMPLETE_CENSUS', info=info,
-            checks=checks, sourceMatrix=matrix, savedPencil=old['pencil'], sourceLift=lift,
-            savedRight=right, transverseResidual=t_residual, pencilResidual=pencil_join,
-            kernelResidual=kernel, waveResidual=wave, face=face, current=current,
-            savedCurrent=old.get('currentGram'), currentResidual=current_join,
-            currentOperandResiduals=operand_joins, projectedBulk=projected_bulk, controls=controls,
+            scope='SELECTED_SAVED_SEED_SUBSPACE_JOIN_NOT_COMPLETE_CENSUS',info=info,
+            historicalEligibility=history,historicalWeightedGramComparison=historical_comparison,
+            checks=checks,sourceMatrix=matrix,savedPencil=old['pencil'],sourceLift=lift,
+            savedRight=right,transverseResidual=t_residual,pencilResidual=pencil_join,
+            kernelResidual=kernel,waveResidual=wave,face=face,recomputedTransverseTransport=transport,
+            actualNormalMomentum=k0,normalRealityResidual=normal_reality_residual,
+            normalRealityCriterion='Zero imaginary part of the saved numeric coefficient, checked directly',
+            currentOperandResiduals=operand_joins,projectedBulk=projected_bulk,controls=controls,
             savedDepthSignEvidence=depth_evidence)
 
     def classify(label, bound, w0, v0, prefix):

@@ -67,6 +67,13 @@ physical source/current operands and transverse membership; do not assume
 their sector from an index or redo their root/nullspace solve. This selected
 subset is a regression comparison, not a complete new seed census or a response
 anchor. Any unavailable comparison stays explicit.
+Separate the producer's saved decay-normalization eligibility from the newly
+checked transverse transport evidence. When saved depth and current Gram both
+exist, compare the full producer form (slab plus depth-weighted bulk); missing
+historical data are unavailable rather than a failed physical premise. A
+present but failed comparison stays unresolved. Require actual real normal
+momentum and Hermitian nonzero-rank transverse current alongside the existing
+source, face-zero and projected-bulk checks; no new normalized basis is made.
 Identical accepted REFERENCE/LEFT seed hashes are shared operands, not
 independent datasets; each must join its separately bound end. The saved point
 keeps selected-subspace coverage without a root-producer replay. Do not copy
@@ -164,8 +171,10 @@ The per-root pole certificate retains uncancelled numerator, denominator and
 introduced coefficient-denominator factors through every quadratic reduction;
 count their real zeros on the root interval before supporting availability.
 Unsupported certificates stay unresolved.
-Measure actual cost before proposing further work; no response runtime is
-inferred from an end-pencil or document-review duration.
+The required costed plan comes before any scientific run and must state the
+unmeasured runtime uncertainty. Measure actual cost only if the user later
+approves execution; no response runtime is inferred from an end-pencil or
+document-review duration.
 
 The physically relevant analog-light band in these reference units is still
 uncalibrated. All outputs are case/azimuth/window-specific. Reference-zero face

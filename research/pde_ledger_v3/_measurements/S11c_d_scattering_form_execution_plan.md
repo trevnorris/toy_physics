@@ -1,5 +1,18 @@
 # S11c-d: the remaining execution queue
 
+**Current preparation — transverse/face round 4 (2026-09-28 local):** round-3
+source and literal Claude CLEAR / Grok NEEDS REVISION are preserved at
+`93b438b2`. The one material saved-current correction is written; independent
+AST comparison confirms only `construct.saved_seed` changed in the worker.
+No mathematical execution or payload restoration occurred. The fresh packet
+has 24 files / 566,939 bytes, SHA-256
+`6e1efd56a89065ab8233c5249e900df710b8b5d1a6a7e07c1d2e2b32ac8c6fda`.
+Automatic export approval requires explicit consent for this revised payload
+and the Claude/Grok destinations. No reviewer started; no bypass or retry.
+See `S11c_d_transverse_face_premise_review_r4_preparation.json`. Await exact-
+packet approval, finish independent review, then return the costed field/power
+plan and stop for user go/no-go before science. No author clearance.
+
 **Current result — transverse/face round 3 (2026-09-28 local):** Claude
 literally CLEAR FOR THIS BOUNDED TRANSVERSE/FACE BUILD; Grok NEEDS REVISION.
 Both finished; packet, archive, inputs and report hashes match. One material

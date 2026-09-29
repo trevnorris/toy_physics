@@ -126,8 +126,8 @@
     "plan": {
       "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_premise_plan.md",
       "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_premise_plan.md",
-      "bytes": 11225,
-      "sha256": "b8ebaa5e47205ab26e64f66042c20980d3ff0825f007e2784872fa8268751972"
+      "bytes": 11883,
+      "sha256": "23070bb6fc03e3709645ebf32d724744864e69a238aaf6ebb60ddc53ce699cc6"
     },
     "sourceEngine": {
       "path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_d_mixing_scattering_sympy_audit.py",
@@ -472,5 +472,5 @@
       "sha256": "74f5bd4da163dd6d78ad427fc5c4cd6926f414c961172f6854174131ea2fbc45"
     }
   },
-  "reviewedBaselineCommit": "b7d41f7f"
+  "reviewedBaselineCommit": "93b438b2"
 }

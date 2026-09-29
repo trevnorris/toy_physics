@@ -1,8 +1,9 @@
 # Transverse/face premise worker: source schema and limits
 
 This is an unexecuted repaired instrument for independent build review. The
-reviewed second build remains at `b7d41f7f`; both rounds' literal NEEDS
-REVISION reports are preserved. Preparation approval cannot launch this code: a later
+reviewed third build remains at `93b438b2`; its literal Claude CLEAR FOR THIS
+BOUNDED TRANSVERSE/FACE BUILD and Grok NEEDS REVISION reports, together with
+earlier reports, are preserved. Preparation approval cannot launch this code: a later
 pinned user science approval after the costed-plan stop, a fresh build gate,
 and ordinary guard/supervisor containment remain required. No payload was
 restored and no mathematical operation was executed during this repair.
@@ -70,6 +71,20 @@ not. Shared accepted hashes, including identical REFERENCE/LEFT bytes, are
 recorded as shared evidence and joined to each bound end. No seed root solve
 is replayed, no complete seed census is claimed, and no unverified thickness
 response summary is copied into the output.
+
+For those selected seeds, historical `currentDefined`, sheet and real-normal
+eligibility are metadata only. Recomputed transport requires an actually real
+stored normal-momentum coefficient, physical depth evidence, both harmonic
+face checks, zero projected bulk current, and a Hermitian slab-current form
+with supported nonzero rank on the saved basis. Its complete form, eigenvalues
+and residuals are retained; no mode solve or current-normalized basis is made.
+Slab-only transport is conditional on the undriven-face/zero-bulk domain.
+When both historical `depthIntegral` and `currentGram` exist, the comparison
+uses `right.H @ (slab + depthIntegral * bulk) @ right`, matching the producer.
+All weighted operands and residuals are saved and a failed available comparison
+blocks availability. Missing historical operands are explicitly UNAVAILABLE
+and do not veto otherwise supported recomputed evidence. The historical depth
+integral is restored as supplied, never re-evaluated.
 
 Journal JSON and pickle objects publish atomically after fsync; existing
 objects must match their digest and size. The short timer is disarmed

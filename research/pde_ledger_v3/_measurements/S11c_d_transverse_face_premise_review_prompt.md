@@ -66,7 +66,11 @@ Write the report and exit; no orchestration or automatic downstream action.
    frequency-source operands differ from later compact bound pencils. Are
    those schemas and accepted source/unit/branch joins used correctly, without
    profile reconstruction or invented loader changes? Are comparisons to saved
-   seed data real comparisons, or honestly labelled unavailable?
+   seed data real comparisons, or honestly labelled unavailable? Distinguish
+   historical decay normalization from recomputed transverse transport. Check
+   that any historical Gram comparison uses its producer's full depth-weighted
+   form, unavailable data do not masquerade as failed physics, and recomputed
+   current reality/rank and real-normal evidence still gate availability.
 6. Inspect the actual native face maps, their amplitude/pressure/velocity/mass/
    affinity contractions, and both face orientations. The readable c2 index
    supplies only velocity identities. This plan explicitly withdraws the old

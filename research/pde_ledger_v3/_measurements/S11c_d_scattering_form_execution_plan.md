@@ -1,5 +1,15 @@
 # S11c-d: the remaining execution queue
 
+**Execution-4 build review completed (2026-09-29):** both literal reports are
+NEEDS REVISION. Exact reviewed bytes remain at `d163c1fe` and in the fixed
+packet; all packet/archive/source hashes match. See fixed-point review record
+and disposition. Corrections are limited to source-bind rendering, control
+applicability/response, complete selected-seed coverage, deadline attribution
+and evidence serialization. The right-pencil guard remains strict: the cited
+bilinear-current leg census is a different object. No author clearance, science
+gate, run or reviewer resubmission. Execution 4 remains unspent; prepare the
+bounded corrected packet and request its exact external-submission approval.
+
 **Execution-4 build reviews submitted (2026-09-29):** the user explicitly
 approved the exact 79-file / 1,628,509-byte packet, SHA-256
 `324da469516f6bd39fbac154fdeed020e726cc6442e3df59292aaa98e4b93e02`.

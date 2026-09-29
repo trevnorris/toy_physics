@@ -1,0 +1,206 @@
+{
+  "status": "BOTH_REPORTS_FINISHED_NEEDS_REVISION_NO_SCIENCE_GATE",
+  "inspectedUtc": "2026-09-29T17:20:00.972356+00:00",
+  "independentBuildClearance": false,
+  "reviewedCommit": "d163c1fe",
+  "workerSha256": "0d78111e6701c3905ed82cadf48a9eccf8eb81d498f9ee64e487fbb2f4417e0a",
+  "inputManifestSha256": "01158fb90043d7486119552b75605b44b0684192b125be64c2279cf728e7ba21",
+  "packetSha256": "324da469516f6bd39fbac154fdeed020e726cc6442e3df59292aaa98e4b93e02",
+  "archiveSha256": "46a1c89433a96e82c853b0d2c5a2b90b7adb5dacc2225dbdc787b817c7d11f2e",
+  "packetFiles": 79,
+  "packetBytes": 1628509,
+  "allPacketArchiveAndSourceHashesMatch": true,
+  "sourceCount": 78,
+  "packetIndex": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/build-review/packet/packet-index.json",
+    "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/build-review/packet/packet-index.json",
+    "bytes": 19440,
+    "sha256": "cb040dcd83888919aa2202874d69e619a6bad5b3530ac1ab8dc087b62c2bdd59"
+  },
+  "prompt": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/build-review/packet/review-prompt.md",
+    "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/build-review/packet/review-prompt.md",
+    "bytes": 6072,
+    "sha256": "65f157ea111491924d3487af11cdd1c9f128f00114756cf26c933de6899afd09"
+  },
+  "authorization": {
+    "status": "EXPLICITLY_APPROVED_FIXED_PACKET",
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "packetSha256": "324da469516f6bd39fbac154fdeed020e726cc6442e3df59292aaa98e4b93e02",
+    "archiveSha256": "46a1c89433a96e82c853b0d2c5a2b90b7adb5dacc2225dbdc787b817c7d11f2e",
+    "packetFiles": 79,
+    "packetBytes": 1628509,
+    "scientificExecutionAuthorizedByThisSubmission": false,
+    "approvedUtc": "2026-09-29T16:47:03.608460+00:00",
+    "userMessage": "you may submit this packet",
+    "approvedPacketSha256": "324da469516f6bd39fbac154fdeed020e726cc6442e3df59292aaa98e4b93e02",
+    "preparedCommit": "d163c1fe",
+    "currentThread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+    "noPeerReports": true,
+    "noAutomaticRetry": true
+  },
+  "coordinator": {
+    "status": "BOTH_ATTEMPTS_FINISHED_AWAITING_LITERAL_ADJUDICATION",
+    "finishedUtc": "2026-09-29T17:16:41.230079+00:00",
+    "scienceCalls": 0
+  },
+  "launch": {
+    "jobPid": 2405172,
+    "watcherPid": 2405173,
+    "packetSha256": "324da469516f6bd39fbac154fdeed020e726cc6442e3df59292aaa98e4b93e02",
+    "reviewers": [
+      "Claude",
+      "Grok"
+    ],
+    "concurrentReviewWorkers": 1,
+    "scienceCalls": 0,
+    "runnerSha256": "a26a07dea56830abb0524c16b2911d195f07e23efc5696d87bf981573418c553",
+    "launcherSha256": "1ea4df31e4976942911381bab2f4495687b78cf2df4c131c7ce00b8013e01039"
+  },
+  "static": {
+    "status": "SOURCE_HASH_AST_ONLY_NO_SCIENCE",
+    "runnerSha256": "a26a07dea56830abb0524c16b2911d195f07e23efc5696d87bf981573418c553",
+    "launcherSha256": "1ea4df31e4976942911381bab2f4495687b78cf2df4c131c7ce00b8013e01039",
+    "completionMessageSha256": "64b3544c8bb554ea3ee56bd42070a4db50d82964e65198bb8385a9c7c7c04e28",
+    "workerSha256": "0d78111e6701c3905ed82cadf48a9eccf8eb81d498f9ee64e487fbb2f4417e0a",
+    "inputManifestSha256": "01158fb90043d7486119552b75605b44b0684192b125be64c2279cf728e7ba21",
+    "workerSyntaxPass": true,
+    "workerImportedOrExecuted": false,
+    "payloadsRestored": 0,
+    "peerReportsIncluded": false,
+    "archiveMembersVerified": true,
+    "rootNewWorkerSemanticInspection": false
+  },
+  "reviews": [
+    {
+      "engine": "claude",
+      "literalVerdict": "NEEDS REVISION",
+      "verdict": "NEEDS_REVISION",
+      "literalReport": "**NEEDS REVISION**\n\nOne source correction is needed before the last execution. Everything else is either sound or a runtime obligation. This review read source and JSON only. I ran nothing, restored no pickles and derived nothing numerically. Nothing below is an executed result.\n\n## Required correction\n\n**R1. The `*-source-bind` JSON renders the whole unspecialized source payload, with no local time allowance.**\n- **Where:** `S11c_d_transverse_face_fixed_point.py:1133` calls `op(...)` with the default `render=True`. The wrapper at `:413-415` then runs `save(out/(name+'.json'), show(value))`. The value returned by `bound_end` now includes:\n  - `originalCurrentResult=result` (`:759`), which is the entire restored pairing result: FACE_RECORDS, SOURCE_POWER_MATRIX, the four raw current matrices and more.\n  - `currentSpecializations` (`:676`). Each `bind` receipt holds `original` and `afterEndpoints` (`:487-489`), so every raw current matrix is printed at least three times.\n- **Why this is new:** The old `bound_end` return (`premise.py:477-492`) had none of this. The same worker deliberately does not render these payloads in the restore summaries (`:418-419`, `wholeRestoredPayloadRendered=False`).\n- **Consequence on these inputs:** These are the same raw currents where `Poly(x, epsilon)` ran past 35 s at all three ends. Converting them to text with `str()` on sympy trees can be much larger than their pickles, because shared subtrees print in full. That work runs after the journal op, with only the 840-second timer armed, on the path to faces and seeds. It can:\n  - use up the native budget, which is fatal and skips later ends; or\n  - trigger an OOM kill (`OOMPolicy=kill`), which skips the failure bookkeeping entirely.\n  \n  No evidence is gained, because the complete object is already stored as a content-addressed pickle.\n- **Smallest fix:** Pass `render=False` for `label+'-source-bind'`, which gives a receipt-only JSON. Alternatively, render a filtered view that leaves out `originalCurrentResult`, `currentSpecializations[*].carrier.original/afterEndpoints` and `sourceSpecialization.originalSource`.\n\n## Recommended (not blocking)\n\n- **O1. Heavy work on unspecialized expressions still happens inside the 180-second bindings.** `raw_denominators(raw_source_values)` (`:721-730`) runs `together()` on all 100 raw current entries and the raw face expressions. If this times out, the whole end becomes UNRESOLVED and its faces and seeds are skipped, although the specialized carrier returns are already saved. Fix: compute those factors from the bound but uncancelled operands (`bind` with the amplitudes and epsilon carried), or move them into their own op. Likewise, `faces` (`:833-838`) and `loaded_control` (`:958`) expand raw source expressions under 20-second allowances. The old face control expanded already-bound rows. `loaded_control` also re-expands every entry for each column; caching per entry would avoid that.\n- **O2. A non-finite float can kill the job instead of marking a seed unresolved.** `show()` (`:369-379`) handles non-finite complex values but not floats. `save` uses `allow_nan=False` (`:73`). A NaN in `loadedColumnMovement` (`:975`) or `hermitianTolerance` (`:1048`) would raise in the wrapper's render, outside the op's try, and end the whole job. Fix: stringify non-finite floats in `show`.\n- **O3. Some labels overstate what was checked:**\n  - `referenceFaceComputed` (`:1173`) is true even when the face op failed; `referenceFaceAttempted` or a status check would be accurate.\n  - A drive whose columns are all `NOT_APPLICABLE_STRUCTURALLY_UNLOADED_COLUMN` is labelled `SUPPORTED_GENERIC_DEPENDENCE` (`:864-865`), yet no sensitivity was shown. Its zero comes from the lift geometry. The same applies to face-legs whose drives are all `NOT_APPLICABLE_NO_U_DEPENDENCE`. Reporting loaded-control counts would make this visible.\n\n## Material questions\n\n1. **Binding order: sound.** Both frequency legs, the left/right normal legs (kb/k), the depth legs (qb/q), the tangents from the parameter file and the material values are all bound (`:624`, `:476-484`) before `grade()` (`:667-670`). Receipts for the substitutions, remaining symbols and carried symbols are saved before extraction (`:669`). End values are applied afterwards (`:674`), and the grade test `zero(grade_residuals)` uses the carried residual.\n   - The saved schema shows `eta_bg` only in the RIGHT currents and `sigma_W` nowhere. Nothing is inserted: only symbols actually present are carried (`:478`).\n   - The epsilon/eta/sigma allowlist (`:473`) matches the schema. Amplitudes are handled by differentiation, depth by kb/k/qb/q, and harmonics by leg maps.\n   - Mapping the left leg to a separate `kb` is correct against the source (`audit.py:3284-3290`) and the saved-seed point (`uniform_response.py:56`). It fixes the old `kl=kr=k` mismatch for complex k.\n2. **Restriction and joins: sound for this point.**\n   - The five-field transverse restriction and its lift, Gram inverse and invariant residual are kept (`:642-662`).\n   - Seed joins cover the full pencil, kernel, acoustic wave, slab/bulk current operands, depth sign, and denominator and chart values at the point (`:988-1118`).\n   - Leftover, non-finite or small denominator values count as UNRESOLVED. Coverage stays `SELECTED_SAVED_SUBSPACES_ONLY`, and `unvisited-point.json` lists ends with no summary.\n   - \"Complete subspace\" rests on the saved basis. Nullity is not recomputed, and the scope string says so.\n   - Seeds run only if every face check passes, as in the premise design.\n3. **Face test: sound.**\n   - Both faces and both legs are addressed and censused (`:777-787`, `:915-920`).\n   - The negative leg uses a conjugated lift in `kb`.\n   - Omission controls re-derive rows from the native source (`:795-803`), and raw values are saved before classification (`:860`, `:899`).\n   - An empty c2 literal list fails the check (`:908`, `:919`).\n   - Acoustic-law and flat-exterior checks are labelled source-internal. The c2 evidence is labelled orientation-blind, with no pressure or first-shape claim.\n4. **Restore path: sound.**\n   - All 98 files are copied byte-for-byte before any restore (`:203-213`).\n   - The eleven complete returns come from pinned copies, and their functions are never called (`:280-297`).\n   - All eleven are restored before the first end binding (`:1120-1124`), so the old interleaving is handled.\n   - I checked that the three unfinished bindings' operand pins are the same objects as the complete returns (for example `6d1176\u2026` and `f2977a\u2026`), so the argument join is an identity join.\n   - The resumed unfinished bindings are limited to one attempt each at 180 s (`:298-300`).\n5. **Persistence: sound, with one runtime gap.** Publication is atomic with no overwrite (`:57-69`), and prior objects are re-hashed before loading (`:224`). Specialized inputs are checkpointed before extraction, and failure receipts keep the active operands. The gap is O2.\n6. **Timers and gates: sound.**\n   - The local timer is disarmed during serialization, and resumed bindings keep their original local deadline (`:246-261`).\n   - `NativeDeadline` is re-raised before local handling (`:310-312`).\n   - Gate, pins and containment checks all come before any science import or restore (`:1184-1228`).\n   - The worker's 840-second deadline falls before the guard's 900-second SIGTERM.\n7. **Practicality:** The narrowed scope fits the toy model and one execution once R1 is fixed. Whether specialization fits inside 180 s is still unknown.\n\n## Runtime obligations and cost uncertainty\n\n- **Before any gate: check pickle compatibility.** `SavedCodec` (`:84-117`) is much stricter than the codec that wrote the prior objects (`premise.py:80-85`). It only admits sympy Basic/MatrixBase subclasses, `_rebuild_undef` and specific numpy names. No inventory of the globals in the 25 prior object files or the 6 seed pickles was supplied. One rejected global would fail the final execution at its first restore. A static opcode scan with `pickletools.genops` doesn't unpickle anything, so it should be done if the scope allows it.\n- **Timing budget is unknown.**\n  - Specialized `Poly` extraction, raw `together` and the checks all share the 180-second budget per end.\n  - Faces (20 s), seeds (20 s each) and rendering are untested.\n  - In the worst case, three bindings of 180 s plus the rest may not leave enough time for RIGHT's seeds (the loop stops starting ends at 60 s and seeds at 30 s before the deadline).\n  - `Journal.objects` keeps every evidence payload in memory, which adds pressure under the 2 GiB `RLIMIT_AS`.\n- **After the run:** compare stdout with `checks.json` and inspect the suboperations, posthashes, stderr and resource samples. Do not accept anything from the exit status alone.\n\n## Evidence categories\n\n- **Supplied premises:** the pair, frequency, uniform, unit and seed payloads; the physical input; the ChannelInput grade origin read from the source syntax tree.\n- **Computed structural joins:** source and wave joins, curl, branch, grade reconstruction, drive linearity, pencil/kernel/current operand residuals.\n- **Instrument dependence controls:** face omission controls, pencil term omission at the fixed point, Theta/E slot presence checks. These show the route from source to result is live. They are not coverage of a parameter map.\n- **Independent evidence:** none. The acoustic-law, flat-exterior and c2 comparisons are source-internal or index-literal.\n\nEven a clean result would cover only omega=1 with tangents (1/5, 1/10) in LAB_HELD/RHO4_CONSTANT. It would give no loss number, no all-grade matched-end statement, no omega=3 result and no calibration.",
+      "receipt": {
+        "engine": "claude",
+        "sessionId": "bbc61c27-5687-4163-889b-5944ba0f7506",
+        "command": [
+          "/home/trevnorris/.local/bin/claude",
+          "--print",
+          "--output-format",
+          "json",
+          "--safe-mode",
+          "--restricted",
+          "--tools",
+          "Read,Glob,Grep",
+          "--allowedTools",
+          "Read,Glob,Grep",
+          "--permission-mode",
+          "dontAsk",
+          "--strict-mcp-config",
+          "--mcp-config",
+          "{\"mcpServers\":{}}",
+          "--setting-sources",
+          "",
+          "--disable-slash-commands",
+          "--session-id",
+          "bbc61c27-5687-4163-889b-5944ba0f7506"
+        ],
+        "cwd": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/build-review/packet",
+        "startedUtc": "2026-09-29T16:47:19.695654+00:00",
+        "packetSha256": "324da469516f6bd39fbac154fdeed020e726cc6442e3df59292aaa98e4b93e02",
+        "promptSha256": "65f157ea111491924d3487af11cdd1c9f128f00114756cf26c933de6899afd09",
+        "scientificExecutionEnabled": false,
+        "reviewVerdict": "NOT_ADJUDICATED",
+        "pid": 2405177,
+        "exitStatus": 0,
+        "finishedUtc": "2026-09-29T16:59:25.542081+00:00",
+        "wallSeconds": 725.8445481299423,
+        "outputSha256": "781e0853e61e46686f79273f03ff0b7601e835a2c5c424d6a6c85e2837ede8e5",
+        "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderrBytes": 0
+      },
+      "output": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/build-review/claude.json",
+        "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/build-review/claude.json",
+        "bytes": 11596,
+        "sha256": "781e0853e61e46686f79273f03ff0b7601e835a2c5c424d6a6c85e2837ede8e5"
+      },
+      "stderr": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/build-review/claude.stderr",
+        "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/build-review/claude.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "terminalMetadata": {
+        "stop_reason": "end_turn",
+        "is_error": false,
+        "terminal_reason": "completed",
+        "num_turns": 38
+      }
+    },
+    {
+      "engine": "grok",
+      "literalVerdict": "NEEDS REVISION",
+      "verdict": "NEEDS_REVISION",
+      "literalReport": "I'll review the fixed-point transverse/face packet from the supplied source and JSON only, starting with the packet index and the files it names.The packet directory is present. I'll read the named worker and the index files that list what this review is allowed to use.The scope and the start of the worker are in hand. Next I\u2019ll read the binding, face, restore, and timer paths against the saved inputs.**NEEDS REVISION**\n\nSource-only review of `research/pde_ledger_v3/_measurements/S11c_d_transverse_face_fixed_point.py`, its input manifest, scope, source note, the premise worker, `ChannelInput`, the saved-symbol inventory, and the eleven-complete / three-unresolved journal. No scientific module was imported, no pickle was restored, and no ablation or numerical derivation was run. A clear source reading would still not be a physical result or a measured fit to the 180 s cap.\n\n## Findings\n\n**1. Face sensitivity can pass with no loaded term.** `S11c_d_transverse_face_fixed_point.py` lines 826\u2013866 and 915\u2013918.\n\nA drive whose first three columns are identically zero is stored as `NOT_APPLICABLE_NO_U_DEPENDENCE` and the omission test is skipped. A column whose contributions are rational and all zero is stored as `NOT_APPLICABLE_STRUCTURALLY_UNLOADED_COLUMN`. `loadedUControls` is true when every control status is anything except `UNRESOLVED`, so an all-waiver face satisfies the check. Raw rows are checkpointed before that classification, but the bit still treats missing movement as support.\n\nConsequence: after frequency and tangent specialization, a face whose transverse block has dropped out is reported as a supported omission/lift control. That is the sensitivity gate for this fixed point.\n\nSmallest correction: require every addressed drive to have at least one saved column whose reduced movement is a nonzero rational function of the retained momenta, with the before/after operands already written. Leave `NOT_APPLICABLE_*` outside that bit.\n\n**2. End availability collapses a partial seed join, and it requires zero drives and zero loss-side forms.** Lines 910\u2013920 and 1137\u20131156.\n\n`lossSideFormsZero` is `zero` of the quadratic forms of every current except the slab current, including `INTERFACE_POWER_MATRIX`, on `lift(kb).H * form * lift(k)`. `allHarmonicDrivesZero` requires every harmonic contraction to vanish. Both sit in `face['checks']`, and `all(face['checks'].values())` must pass before any seed join. The end status is then `AVAILABLE` when any one of seeds 16 and 17 has status `AVAILABLE`.\n\nConsequence: one joined seed plus a zero drive and a zero projected interface-power/bulk form becomes the headline end state. The summary\u2019s `selectedChecksComplete` and `completeInventory: false` do not control that headline. A zero contraction and a zero projected form are pointwise measurements; availability has to be a separate bit from those zeros, from total loss, and from an all-grade matched end. The supplied manifest already records that LEFT seeds 16 and 17 are the same bytes as REFERENCE seeds 16 and 17 (`69450680\u2026` and `d7170682\u2026`). `savedSeedProvenance` calls those shared operands. An `AVAILABLE` left end would be a join of the left operator to that shared payload.\n\nSmallest correction: set the end state `AVAILABLE` only when both selected seeds are `AVAILABLE`. Otherwise keep `UNRESOLVED` or a partial state that downstream code must not read as success. Save drive zeros and projected forms, including the interface-power form, as evidence with scope text that they are this fixed point only. Keep shared LEFT/REFERENCE hashes in that evidence.\n\n**3. The pencil acceptance set omits the left momenta the binder is required to retain.** Lines 363\u2013367, 470\u2013484, 622\u2013626, and 757. Saved schema `currentSchema.NORMAL_LEGS` and `BULK_LEGS`.\n\n`bind` maps `s11cdCurrentLeftMomentum` to `kb`, `s11cdCurrentRightMomentum` to `k`, `s11cdAcousticLeftNormalMomentum` to `qb`, and `s11cdAcousticRightNormalMomentum` to `q`, and it leaves those four symbols live. The saved inventory shows both current-momentum symbols in every listed current matrix, and both acoustic-normal symbols in the bulk and interface matrices. `declaredSymbols` then requires `matrix.free_symbols` to be a subset of `{k, q}`.\n\nConsequence: a closed pencil that still depends on the left normal or left depth leg fails `all(checks)` at line 1134. The face premise and both seed joins are skipped, and the end is `UNRESOLVED_SOURCE_JOIN`. The supplied schema does not inventory `CLOSED_PENCIL_LEGS`, so this reading does not prove that those symbols remain inside the pencil; the acceptance bit is already inconsistent with the substitution the same function applies to the matrices that do contain them.\n\nSmallest correction: accept exactly the retained momenta `{k, kb, q, qb}` after the numerical frequency, tangent, and material substitution, and reject a remaining frequency, tangent, `epsilon_shape`, `eta_bg`, `sigma_W`, or other material name.\n\n**4. A native alarm with a positive remainder is handled as a local budget miss and the end loop continues.** Lines 132\u2013138, 307\u2013328, and 1128\u20131140. Failure path at lines 1242\u20131248.\n\n`Journal.timeout` raises `NativeDeadline` only when `deadline - monotonic() <= 0`. Any earlier `SIGALRM`, including the native interval armed by `arm_native`, rearms the full remainder and raises `OperationBudget`. For a non-required operation that exception is stored as `UNRESOLVED_NO_RETRY`, and the `for label in ENDS` loop proceeds. `ITIMER_REAL` is programmed from a float second count, so the fire can precede the stored deadline by a timer quantum and still see a positive remainder.\n\nConsequence: whole-job expiry can be recorded as a local 180 s miss. Later ends keep running until the outer guard. The `main` handler does write `failure.json` when `NativeDeadline` actually propagates, and it disarms the timer before that write.\n\nSmallest correction: classify the alarm as native when `local_deadline` is unset or monotonic time is within a millisecond of `self.deadline`; rethrow before the unresolved-operation path; do not start another end after that classification.\n\n## Substitution, restore, and publication\n\nOn the four current matrices the order matches the requested fixed point. `bind` at lines 664\u2013677 substitutes both `s11cdPairingLeftFrequency` and `s11cdPairingRightFrequency` to rational `omega = 1`, and `s11cdTangentialMomentum1` / `s11cdTangentialMomentum2` to the parameter values `1/5` and `1/10`, before `grade`. Material names in `physicalInput.parameters` are substituted there too. `epsilon_shape`, `eta_bg`, and `sigma_W` are carried only when present. The saved inventory has `epsilon_shape` in every current matrix, `eta_bg` on the RIGHT matrices, and no `sigma_W` atom in those lists, so the binder does not insert an absent grade. The second `bind`, with receipts, applies the end map after extraction. That map matches `ChannelInput.__init__` lines 4901\u20134904 and the old premise rule: REFERENCE \u2192 0 when the symbol is present; LEFT/RIGHT \u2192 `eta_bg = 1/100` and `sigma_W = eta_bg * W_0 / L_W = 1/1000`.\n\n`OPEN_BULK_CURRENT_COEFFICIENTS[3]` is graded with the same carry, but its final `bind` at line 716 does not take a receipt. The four matrix paths already record the substitution map. Smallest correction, separate from the four blockers: pass a receipt and checkpoint it before the carrier residual is classified.\n\nThe eleven complete names are restored in `prior_order` before any `*-source-bind` (lines 501\u2013537 and 1120\u20131126), including the LEFT and RIGHT restores that sit after `REFERENCE-source-bind` in the old journal. A `COMPLETE` prior return is unpickled and returned without calling the supplied function. An `UNRESOLVED_NO_RETRY` prior entry is the only path into `bound_end`, and only with `seconds == 180`, at most three times. Argument joins use structural `same`, not re-pickle byte identity. `configure_prior` copies all pinned prior files, including the three unfinished operand bundles, and checks hashes before the guard. `SavedCodec` reconstructs SymPy `Basic` / `MatrixBase`, NumPy arrays, and the listed plain containers; other globals and persistent ids raise `UnpicklingError`, which is re-raised. `publish` uses an exclusive link and a post-write hash. `show` stringifies expressions; it does not call saved callables.\n\nThe transverse object is the supplied five-by-five current, the two-column curl lift, the source pencil/wave join, the unit summary join, and seeds 16 and 17 only. There is no thickness census, permeability continuation, profile-limit sweep, omega grid, or omega = 3 branch in this worker.\n\nThe c2 block reads the two `LAB_HELD/RHO4_CONSTANT` index rows. Both saved s-expressions are `Mul(Rational(1, 2), Symbol('W_0'), Symbol('e_W_t'))`. The worker marks that comparison orientation-blind and sets `c2PressureTraceFirstShapeJoin` to `NOT_SUPPORTED_BY_THIS_INPUT_INDEX`. The carrier residual is labeled source-internal. `native_acoustic_laws` injects `positions = (depth_coordinate,)` and uses component 0, while `ClosedAcousticEnergy.construct` builds the velocity on `(*r.x[:2], r.z, s)` and the saved depth scale is component 3. On this ansatz, which does not depend on the tangential or slab-normal coordinates, those derivatives agree. A passing `carrierLawAndNormalization` bit remains internal normalization evidence.\n\n## Runtime obligations and cost\n\nThe worker stays inert until a future gate has status `READY_FOR_ONE_GUARDED_TRANSVERSE_FACE_FIXED_POINT_JOB`, ordinal 4, ceiling 4, the four pinned hashes, `automaticRetry: false`, and two review outputs with verdict `CLEAR`. There is no science-ready gate in this packet. Containment is checked before SymPy import and before unpickling: 2 GiB, swap 0, 32 tasks, nice at least 15, one CPU, and all six native thread variables equal to 1. The native timer is 840 s from `started + 840`. The 900 s outer cap is the guard\u2019s `--seconds`, which this worker does not measure; `s11c_guarded_run.py` must be launched at 900 with the 2 GiB / 32-task defaults. The guard allows a 4 GiB or 64-task request, and this worker\u2019s cgroup check rejects those. The run directory is create-exclusive. No retry, overlap, or fallback path is in the worker.\n\nWhether the specialized `Poly` extraction finishes inside three 180 s bindings, and whether the face and seed operations finish inside their separate 20 s defaults, is unmeasured. The prior journal died in `grade` on the unspecialized current. Specialization removes frequency, tangent, and material symbols before that extraction; this review did not time the reduced polynomial. After any run, acceptance is the operation artifacts, posthashes, stderr, and resource log, compared with stdout and `checks.json`.",
+      "receipt": {
+        "engine": "grok",
+        "sessionId": "09c2be27-9543-4a0e-8e39-f2be144d44cc",
+        "command": [
+          "/home/trevnorris/.local/bin/grok",
+          "--cwd",
+          "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/build-review/packet",
+          "--prompt-file",
+          "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/build-review/packet/review-prompt.md",
+          "--output-format",
+          "json",
+          "--permission-mode",
+          "dontAsk",
+          "--no-plan",
+          "--tools",
+          "Read",
+          "--no-subagents",
+          "--disable-web-search",
+          "--verbatim",
+          "--session-id",
+          "09c2be27-9543-4a0e-8e39-f2be144d44cc"
+        ],
+        "cwd": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/build-review/packet",
+        "startedUtc": "2026-09-29T16:59:25.584124+00:00",
+        "packetSha256": "324da469516f6bd39fbac154fdeed020e726cc6442e3df59292aaa98e4b93e02",
+        "promptSha256": "65f157ea111491924d3487af11cdd1c9f128f00114756cf26c933de6899afd09",
+        "scientificExecutionEnabled": false,
+        "reviewVerdict": "NOT_ADJUDICATED",
+        "pid": 2410624,
+        "exitStatus": 0,
+        "finishedUtc": "2026-09-29T17:16:41.194095+00:00",
+        "wallSeconds": 1035.6084277979098,
+        "outputSha256": "5219fbbd1619bfb2920a1bc884c4a9cfa58d97be5d955c7a80a04ad861263a24",
+        "stderrSha256": "d3ea563f2b363869133aa39949066b5021bed9d2a62d78649148e00b0aa9021c",
+        "stderrBytes": 4438
+      },
+      "output": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/build-review/grok.json",
+        "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/build-review/grok.json",
+        "bytes": 115706,
+        "sha256": "5219fbbd1619bfb2920a1bc884c4a9cfa58d97be5d955c7a80a04ad861263a24"
+      },
+      "stderr": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/build-review/grok.stderr",
+        "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/build-review/grok.stderr",
+        "bytes": 4438,
+        "sha256": "d3ea563f2b363869133aa39949066b5021bed9d2a62d78649148e00b0aa9021c"
+      },
+      "terminalMetadata": {
+        "stopReason": "end_turn",
+        "num_turns": 23
+      }
+    }
+  ],
+  "scienceCalls": 0,
+  "execution4Unspent": true,
+  "automaticReviewRerun": false,
+  "peerSharing": false,
+  "grokStderrAssessment": "Read-tool errors and plugin/hook/session diagnostics preserved. A substantive final text with source addresses was emitted; not a clean stderr receipt or a CLEAR.",
+  "reviewedBytesPreservedInPacketAndGit": true
+}

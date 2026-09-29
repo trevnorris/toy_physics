@@ -1,5 +1,17 @@
 # S11c-d session recovery — 2026-09-26
 
+**Corrected RIGHT continuation packet submitted (2026-09-29):** user
+said “Continue” in direct response to the exact corrected-packet submission
+request. Fresh Claude/Grok review is underway for packet
+`a3f4b309a4af9761476c08ccd123c440e0e0a00df0ec555d092e542a1c716293`
+(74 files / 2964819 bytes), source baseline3aba519b. All73 source files and1364
+input pins match. The completion hook is armed for this session; silent local
+waiting does not invoke the model. Only the three-line helper review-hash join
+changed. First literal NEEDS REVISION/CLEAR reports remain at2d720c7d; no peer
+reports were shared. No scientific job or READY gate. After substantive fresh
+clearance the existing approval covers one16GiB RIGHT continuation, without
+repetitive science approval. Stop after its result; no new field/power campaign.
+
 **RIGHT continuation gate repair prepared for fresh review (2026-09-29):**
 first reviewed source/reports preserved at2d720c7d. The correction adds one
 review-to-gate equality assertion for guard/shared-guard/supervisor hashes;

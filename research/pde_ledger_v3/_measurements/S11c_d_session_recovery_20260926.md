@@ -1,5 +1,17 @@
 # S11c-d session recovery — 2026-09-26
 
+**Current status — transverse/face round-4 reviews running (2026-09-28 local):**
+the user explicitly approved the exact 24-file / 566,939-byte revised packet
+and Claude/Grok destinations with “I approve.” The unchanged packet launched
+with its local completion hook armed first; the earlier automatic no-start
+refusal remains preserved. One host startup inspection at 02:30:10 UTC on
+September 29 verified the coordinator, watcher and fresh Claude alive; Grok
+is queued sequentially. See
+`S11c_d_transverse_face_premise_review_r4_preparation.json`. Both reports must
+finish before adjudication or edits. No science, peer sharing, transport retry
+or model polling. After substantive build clearance, return the costed outgoing-
+field/power plan and stop for user go/no-go before any scientific run.
+
 **Current preparation — transverse/face round 4 (2026-09-28 local):** round-3
 source and literal Claude CLEAR / Grok NEEDS REVISION are preserved at
 `93b438b2`. The one material saved-current correction is written; independent

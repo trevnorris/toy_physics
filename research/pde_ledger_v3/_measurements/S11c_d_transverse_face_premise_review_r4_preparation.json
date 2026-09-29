@@ -1,5 +1,5 @@
 {
-  "status": "EXTERNAL_PAYLOAD_APPROVAL_PENDING_NO_PROCESS_STARTED",
+  "status": "REVIEWS_RUNNING_SOURCE_ONLY",
   "preparedUtc": "2026-09-29T02:24:35.955716+00:00",
   "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/build-review-r4",
   "packetIndex": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/build-review-r4/packet/packet-index.json",
@@ -132,10 +132,10 @@
     "scripts/s11c_guarded_run.py": "9194b3e04b43d345828082e6312b0a2d7a9293f6296153f9c6ccea2defb931d2"
   },
   "authorization": {
-    "status": "EXTERNAL_PAYLOAD_APPROVAL_PENDING",
+    "status": "EXPLICITLY_APPROVED_FIXED_PACKET",
     "recordedUtc": "2026-09-29T02:24:35.955716+00:00",
     "userInstruction": "After it clears, repair and re-review only the transverse-first map and face-drive test (premise #1). Defer thickness-classification repair as secondary. Then return a costed plan for first-order outgoing field and its power pairing. Stop for go/no-go. No science runs before that.",
-    "authorizationBasis": "Explicit user instruction authorizes this narrowed build review after amendment clearance. Exact new payload assembled now; no claim of prior consent naming its hash. Automatic external-export approval review applies.",
+    "authorizationBasis": "Exact-payload/destination consent now provided in addition to the existing bounded repair/review goal.",
     "reviewers": [
       "claude",
       "grok"
@@ -156,7 +156,10 @@
       "packetFiles": 24,
       "packetBytes": 566939,
       "scientificCalls": 0
-    }
+    },
+    "exactPayloadApprovedUtc": "2026-09-29T02:29:31.579867+00:00",
+    "exactPayloadUserReply": "I approve",
+    "exactPayloadApprovalContext": "User explicitly replied to the exact 24-file, 566939-byte packet SHA256 6e1efd56a89065ab8233c5249e900df710b8b5d1a6a7e07c1d2e2b32ac8c6fda submission question naming fresh Claude and Grok external reviewers, after automatic egress refusal. No science included."
   },
   "static": {
     "status": "SOURCE_AST_HASH_CHECKS_ONLY_NO_SCIENCE",
@@ -193,5 +196,56 @@
     "packetFiles": 24,
     "packetBytes": 566939,
     "scientificCalls": 0
+  },
+  "prelaunchVerification": {
+    "verifiedUtc": "2026-09-29T02:29:31.579867+00:00",
+    "packetHashAndArchiveMembersMatch": true,
+    "canonicalSourcesMatch": 24,
+    "inputHashesMatch": 33,
+    "protectedHashesMatch": true,
+    "noPreviousLaunch": true,
+    "scientificCalls": 0
+  },
+  "launch": {
+    "jobPid": 955175,
+    "watcherPid": 955176,
+    "packetSha256": "6e1efd56a89065ab8233c5249e900df710b8b5d1a6a7e07c1d2e2b32ac8c6fda",
+    "reviewers": [
+      "Claude",
+      "Grok"
+    ],
+    "concurrentReviewWorkers": 1,
+    "scienceCalls": 0,
+    "runnerSha256": "41ef56bab4eb01ba36e63308cdda494d161561df516371772296158698ea8eee",
+    "launcherSha256": "ef37c430d83fe97bb95681fe0cc01aef4783320832c9ab98a1528f1f7a607b20"
+  },
+  "startupInspection": {
+    "inspectedUtc": "2026-09-29T02:30:10.525156+00:00",
+    "coordinatorPid": 955175,
+    "coordinatorAlive": true,
+    "watcherPid": 955176,
+    "watcherAlive": true,
+    "stateStatus": "RUNNING",
+    "watcherStatus": "waiting",
+    "completionHookTarget": "01a0e01b-ef84-7192-817f-584cda5d339b",
+    "hookArmedBeforeAuthorization": true,
+    "scientificCalls": 0,
+    "reviewers": {
+      "claude": {
+        "sessionId": "cc2d16c3-13f6-47b7-b47a-967ded556407",
+        "pid": 955183,
+        "startedUtc": "2026-09-29T02:29:45.778808+00:00",
+        "finishedUtc": null,
+        "exitStatus": null,
+        "alive": true
+      },
+      "grok": {
+        "status": "NOT_STARTED_SEQUENTIAL_QUEUE"
+      }
+    },
+    "infrastructureStderrBytes": {
+      "coordinator.stderr": 0,
+      "watcher.stderr": 0
+    }
   }
 }

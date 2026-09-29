@@ -1,5 +1,22 @@
 # S11c-d session recovery — 2026-09-26
 
+**Saved-reader continuation completed and inspected (2026-09-29):** scientific
+execution 3 completed in 206.321612 worker seconds, peak 428,748,800 bytes,
+zero swap/events. All 70 reader operations complete: nine prior returns restored,
+one resumed incomplete call and 60 further inspection operations; all 20 prior
+blobs and three complete summaries copied byte-for-byte. Strict stderr empty,
+stdout/checks identical, all 244 inputs and both earlier runs unchanged. Ordinary
+900 s / 840 s containment; no duration exception. See
+`S11c_d_transverse_face_saved_reader_continue_report.md` and checkpoint.
+The reader confirms accessible historical contrast/forcing operands, not a
+Born/full or power anchor. Job 1 remains zero of 576 points, three unresolved
+source bindings and no face premise. Omega=1 remains the cheaper conditional
+pilot; its field/power route and consumed-candidate clearances are outstanding.
+**STOP after this report:** three executions used under the four-execution ceiling;
+no premise continuation, method-route phase, field/power build or new review
+launched. Analog-light frequency calibration remains OPEN. Historical entries
+below retain their original chronology and are superseded by this status.
+
 **Saved-reader continuation launched (2026-09-29):** scientific execution 3
 is running in the new `saved-reader-continuation` directory. Both fresh literal
 build verdicts CLEAR; exact reviewed worker/manifest unchanged. The hook armed

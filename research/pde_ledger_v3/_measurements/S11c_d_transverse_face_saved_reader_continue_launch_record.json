@@ -1,5 +1,5 @@
 {
-  "status": "SAVED_READER_CONTINUATION_LAUNCHED_AWAITING_COMPLETION",
+  "status": "SAVED_READER_INSPECTION_COMPLETE_PREMISE_AND_LOSS_UNRESOLVED_STOP",
   "recordedUtc": "2026-09-29T15:53:01.731624+00:00",
   "gate": {
     "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_saved_reader_continue_gate.json",
@@ -204,5 +204,33 @@
       "state": "R",
       "alive": true
     }
-  }
+  },
+  "completionEventHandled": true,
+  "checkpoint": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_saved_reader_continue_checkpoint.json",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_saved_reader_continue_checkpoint.json",
+    "bytes": 359127,
+    "sha256": "86613482e260855ad5ba342e6ddd314c73427f1d7e0072b32aed02e906aa59bd"
+  },
+  "resources": {
+    "samples": 105,
+    "peakBytes": 428748800,
+    "maximumSwapBytes": 0,
+    "maximumObservedTasks": 3,
+    "minimumHostAvailableBytes": 21879074816,
+    "memoryEventMaxima": {
+      "low": 0,
+      "high": 0,
+      "max": 0,
+      "oom": 0,
+      "oom_kill": 0,
+      "oom_group_kill": 0,
+      "sock_throttled": 0
+    },
+    "workerSeconds": 206.32161178195383,
+    "supervisorSeconds": 206.79300403397065,
+    "coordinatorSeconds": 207.04838913597632,
+    "durationExceptionUsed": false
+  },
+  "sourcePinsIntact": true
 }

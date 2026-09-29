@@ -1,0 +1,524 @@
+{
+  "status": "CLAUDE_CLEAR_GROK_NEEDS_REVISION_SOURCE_ONLY",
+  "inspectedUtc": "2026-09-29T02:16:32.151277+00:00",
+  "runtimeRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/build-review-r3",
+  "packetState": {
+    "status": "AWAITING_ADJUDICATION",
+    "preparedUtc": "2026-09-29T01:10:24.213635+00:00",
+    "packetDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/build-review-r3/packet",
+    "packetSha256": "d1ddafe76f01120aafd9105d120cb52ddf587fb4e0f1c86290de1e4a172360ab",
+    "archiveSha256": "75a2faf408bfa3454c1d7a0cba63eac4ea2247f38210bc7ffc2ca50460f3b8b4",
+    "fileHashes": {
+      "packet-index.json": "9d3d6c3b58d25859238c4d31eb24b9accd9b72f1fa0102a1306d0e07dabf2640",
+      "research/pde_ledger_v3/_measurements/S11c_d_A9_saved_face_drives.json": "057c9960aa1c721d1973de85cc48e5d6ac3bcb20a233cfc10f63d6f9207d6bf8",
+      "research/pde_ledger_v3/_measurements/S11c_d_continuum_response.py": "0fe30a9c4771671e9fa139b0557f185f55d351887f2ba8b9fa4ed1abfb616db2",
+      "research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py": "45a16f7f952ca6b571362b1c386fec76cd86f1e0ad04113074adf49c683ec49c",
+      "research/pde_ledger_v3/_measurements/S11c_d_end_pairing_check.py": "1fcf86b0be819e2c7e9a2127d8330c907bcaccf58d1d15c3f1534d594d926dee",
+      "research/pde_ledger_v3/_measurements/S11c_d_frequency_source.py": "9be20be462bc10bfcaa7af643b9301948dd79bc2e08eb24ebcd1386a81efcdac",
+      "research/pde_ledger_v3/_measurements/S11c_d_frequency_source_report.md": "46b91c1e159f6b467809c0119511b24bef270e4c960edf0755d2034fd93fa421",
+      "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_native_source.txt": "fe9492e73f5aeb4a5c1b1782153e9e420cc884ff730905aaefa26aaafa70b2b5",
+      "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_premise.py": "e83ce4b9efe39851263ad68755c29f9a0a5ae92465dcc0386a0e5a43ef59c445",
+      "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_premise_inputs.json": "ec3b1d7271a97a9341f0d9ba22b7bf62c01f06d221141e6d13c3ff1ff74cde44",
+      "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_premise_plan.md": "b8ebaa5e47205ab26e64f66042c20980d3ff0825f007e2784872fa8268751972",
+      "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_premise_source_note.md": "a7192de9acb91cf7a88cd10083b608b65fa75e1506b8acc93c330c029eed8447",
+      "research/pde_ledger_v3/_measurements/S11c_d_uniform_response.py": "b65749ab0eaaeed372a5bf01077a030971fc3e05f05a11543443bd1de3f157d4",
+      "research/pde_ledger_v3/_measurements/S11c_d_uniform_source.py": "2a135aea365c7b5e57bfff7683c7b927cda52c0d37f6a9bad3c961eb6205a2b2",
+      "research/pde_ledger_v3/_measurements/S11c_d_uniform_source_checkpoint.json": "9d4b65ad07d1f403fd3aa4ec42da99db622a4d0a26d6ddce6c472148c7830085",
+      "research/pde_ledger_v3/_measurements/S11c_d_uniform_source_report.md": "d95f629e292e67eafe36bde9a5bd0689345c7fb3fac97d669671ea278ae65b8b",
+      "research/pde_ledger_v3/_measurements/S11c_d_variable_profile_development_input.json": "660b2b0b54494dce964c7f5fbd722a76a7e894d8ed92b18b5eb6290c3c10f1d5",
+      "research/pde_ledger_v3/directives/S11c_c1_SHARED_PHYSICS.md": "47554c8c9cf2fd070c1048a7ae0ca36b1315bf50a48ed07a51019ff3e72987ad",
+      "research/pde_ledger_v3/directives/S11c_d_CHANNEL_MAP_BORN_AMENDMENT_DRAFT.md": "8aa6fc7ab6d43f1f197a3cb8f9a83b7607f1de2c7a321aa130b582f4a323082d",
+      "research/pde_ledger_v3/directives/S11c_d_SCATTERING_FORM_AMENDMENT.md": "eb6f20a3fd0bce308e53901fa69fdf267b2917e5cc78b319a1e7700074a47560",
+      "research/pde_ledger_v3/directives/S11c_d_SHARED_PHYSICS.md": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5",
+      "research/pde_ledger_v3/directives/S11c_d_TOTAL_TRANSVERSE_LOSS_AMENDMENT_DRAFT.md": "ec12456947527bb162a6bd56a65651f1028cca1f95f0d85379bdc8a411fbb6fc",
+      "review-prompt.md": "c1daaea68df402a37771d7c8e6c54c3d81f88f0b6547607286eb88a1a0f1cbfd",
+      "scripts/s11c_guarded_run.py": "9194b3e04b43d345828082e6312b0a2d7a9293f6296153f9c6ccea2defb931d2"
+    },
+    "sourceRecords": [
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_A9_saved_face_drives.json",
+        "sourceSha256": "057c9960aa1c721d1973de85cc48e5d6ac3bcb20a233cfc10f63d6f9207d6bf8"
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_continuum_response.py",
+        "sourceSha256": "0fe30a9c4771671e9fa139b0557f185f55d351887f2ba8b9fa4ed1abfb616db2"
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+        "sourceSha256": "45a16f7f952ca6b571362b1c386fec76cd86f1e0ad04113074adf49c683ec49c"
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_end_pairing_check.py",
+        "sourceSha256": "1fcf86b0be819e2c7e9a2127d8330c907bcaccf58d1d15c3f1534d594d926dee"
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_frequency_source.py",
+        "sourceSha256": "9be20be462bc10bfcaa7af643b9301948dd79bc2e08eb24ebcd1386a81efcdac"
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_frequency_source_report.md",
+        "sourceSha256": "46b91c1e159f6b467809c0119511b24bef270e4c960edf0755d2034fd93fa421"
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_native_source.txt",
+        "sourceSha256": "fe9492e73f5aeb4a5c1b1782153e9e420cc884ff730905aaefa26aaafa70b2b5"
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_premise.py",
+        "sourceSha256": "e83ce4b9efe39851263ad68755c29f9a0a5ae92465dcc0386a0e5a43ef59c445"
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_premise_inputs.json",
+        "sourceSha256": "ec3b1d7271a97a9341f0d9ba22b7bf62c01f06d221141e6d13c3ff1ff74cde44"
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_premise_plan.md",
+        "sourceSha256": "b8ebaa5e47205ab26e64f66042c20980d3ff0825f007e2784872fa8268751972"
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_premise_review_prompt.md",
+        "sourceSha256": "c1daaea68df402a37771d7c8e6c54c3d81f88f0b6547607286eb88a1a0f1cbfd"
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_premise_source_note.md",
+        "sourceSha256": "a7192de9acb91cf7a88cd10083b608b65fa75e1506b8acc93c330c029eed8447"
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_uniform_response.py",
+        "sourceSha256": "b65749ab0eaaeed372a5bf01077a030971fc3e05f05a11543443bd1de3f157d4"
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_uniform_source.py",
+        "sourceSha256": "2a135aea365c7b5e57bfff7683c7b927cda52c0d37f6a9bad3c961eb6205a2b2"
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_uniform_source_checkpoint.json",
+        "sourceSha256": "9d4b65ad07d1f403fd3aa4ec42da99db622a4d0a26d6ddce6c472148c7830085"
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_uniform_source_report.md",
+        "sourceSha256": "d95f629e292e67eafe36bde9a5bd0689345c7fb3fac97d669671ea278ae65b8b"
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_variable_profile_development_input.json",
+        "sourceSha256": "660b2b0b54494dce964c7f5fbd722a76a7e894d8ed92b18b5eb6290c3c10f1d5"
+      },
+      {
+        "path": "research/pde_ledger_v3/directives/S11c_c1_SHARED_PHYSICS.md",
+        "sourceSha256": "47554c8c9cf2fd070c1048a7ae0ca36b1315bf50a48ed07a51019ff3e72987ad"
+      },
+      {
+        "path": "research/pde_ledger_v3/directives/S11c_d_CHANNEL_MAP_BORN_AMENDMENT_DRAFT.md",
+        "sourceSha256": "8aa6fc7ab6d43f1f197a3cb8f9a83b7607f1de2c7a321aa130b582f4a323082d"
+      },
+      {
+        "path": "research/pde_ledger_v3/directives/S11c_d_SCATTERING_FORM_AMENDMENT.md",
+        "sourceSha256": "eb6f20a3fd0bce308e53901fa69fdf267b2917e5cc78b319a1e7700074a47560"
+      },
+      {
+        "path": "research/pde_ledger_v3/directives/S11c_d_SHARED_PHYSICS.md",
+        "sourceSha256": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5"
+      },
+      {
+        "path": "research/pde_ledger_v3/directives/S11c_d_TOTAL_TRANSVERSE_LOSS_AMENDMENT_DRAFT.md",
+        "sourceSha256": "ec12456947527bb162a6bd56a65651f1028cca1f95f0d85379bdc8a411fbb6fc"
+      },
+      {
+        "path": "research/pde_ledger_v3/scripts/S11c_d_mixing_scattering_sympy_audit.py",
+        "sourceSha256": "5bf77729682960bb59f10c672a5fe3f67a98b0a9533da7c6189a37183596050f"
+      },
+      {
+        "path": "scripts/s11c_guarded_run.py",
+        "sourceSha256": "9194b3e04b43d345828082e6312b0a2d7a9293f6296153f9c6ccea2defb931d2"
+      }
+    ],
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "currentThread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+    "packetFiles": 24,
+    "packetBytes": 561604,
+    "scientificCalls": 0,
+    "scientificExecutionAuthorized": false,
+    "startedUtc": "2026-09-29T01:37:33.361672+00:00",
+    "supervisorPid": 930381,
+    "concurrentReviewWorkers": 1,
+    "scienceCalls": 0,
+    "finishedUtc": "2026-09-29T02:14:35.446528+00:00",
+    "productionAuthorized": false,
+    "reviewVerdict": "NOT_ADJUDICATED"
+  },
+  "packetIndex": {
+    "role": "PROSPECTIVE_SOURCE_ONLY_BUILD_REVIEW_NO_SCIENCE",
+    "preparedUtc": "2026-09-29T01:10:24.213635+00:00",
+    "authorship": "Codex builder; fresh non-author Claude and Grok reviewers",
+    "reviewedBaselineCommit": "b7d41f7f",
+    "files": [
+      {
+        "packetPath": "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_premise_plan.md",
+        "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_premise_plan.md",
+        "sourceSha256": "b8ebaa5e47205ab26e64f66042c20980d3ff0825f007e2784872fa8268751972",
+        "bytes": 11225
+      },
+      {
+        "packetPath": "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_premise.py",
+        "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_premise.py",
+        "sourceSha256": "e83ce4b9efe39851263ad68755c29f9a0a5ae92465dcc0386a0e5a43ef59c445",
+        "bytes": 73895
+      },
+      {
+        "packetPath": "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_premise_inputs.json",
+        "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_premise_inputs.json",
+        "sourceSha256": "ec3b1d7271a97a9341f0d9ba22b7bf62c01f06d221141e6d13c3ff1ff74cde44",
+        "bytes": 22547
+      },
+      {
+        "packetPath": "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_premise_source_note.md",
+        "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_premise_source_note.md",
+        "sourceSha256": "a7192de9acb91cf7a88cd10083b608b65fa75e1506b8acc93c330c029eed8447",
+        "bytes": 6580
+      },
+      {
+        "packetPath": "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_native_source.txt",
+        "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_native_source.txt",
+        "sourceSha256": "fe9492e73f5aeb4a5c1b1782153e9e420cc884ff730905aaefa26aaafa70b2b5",
+        "bytes": 83915
+      },
+      {
+        "packetPath": "research/pde_ledger_v3/_measurements/S11c_d_uniform_source.py",
+        "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_uniform_source.py",
+        "sourceSha256": "2a135aea365c7b5e57bfff7683c7b927cda52c0d37f6a9bad3c961eb6205a2b2",
+        "bytes": 14588
+      },
+      {
+        "packetPath": "research/pde_ledger_v3/_measurements/S11c_d_uniform_source_report.md",
+        "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_uniform_source_report.md",
+        "sourceSha256": "d95f629e292e67eafe36bde9a5bd0689345c7fb3fac97d669671ea278ae65b8b",
+        "bytes": 2023
+      },
+      {
+        "packetPath": "research/pde_ledger_v3/_measurements/S11c_d_uniform_source_checkpoint.json",
+        "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_uniform_source_checkpoint.json",
+        "sourceSha256": "9d4b65ad07d1f403fd3aa4ec42da99db622a4d0a26d6ddce6c472148c7830085",
+        "bytes": 13523
+      },
+      {
+        "packetPath": "research/pde_ledger_v3/_measurements/S11c_d_frequency_source.py",
+        "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_frequency_source.py",
+        "sourceSha256": "9be20be462bc10bfcaa7af643b9301948dd79bc2e08eb24ebcd1386a81efcdac",
+        "bytes": 29576
+      },
+      {
+        "packetPath": "research/pde_ledger_v3/_measurements/S11c_d_frequency_source_report.md",
+        "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_frequency_source_report.md",
+        "sourceSha256": "46b91c1e159f6b467809c0119511b24bef270e4c960edf0755d2034fd93fa421",
+        "bytes": 2842
+      },
+      {
+        "packetPath": "research/pde_ledger_v3/_measurements/S11c_d_end_pairing_check.py",
+        "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_end_pairing_check.py",
+        "sourceSha256": "1fcf86b0be819e2c7e9a2127d8330c907bcaccf58d1d15c3f1534d594d926dee",
+        "bytes": 10885
+      },
+      {
+        "packetPath": "research/pde_ledger_v3/_measurements/S11c_d_uniform_response.py",
+        "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_uniform_response.py",
+        "sourceSha256": "b65749ab0eaaeed372a5bf01077a030971fc3e05f05a11543443bd1de3f157d4",
+        "bytes": 21153
+      },
+      {
+        "packetPath": "research/pde_ledger_v3/_measurements/S11c_d_continuum_response.py",
+        "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_continuum_response.py",
+        "sourceSha256": "0fe30a9c4771671e9fa139b0557f185f55d351887f2ba8b9fa4ed1abfb616db2",
+        "bytes": 23551
+      },
+      {
+        "packetPath": "research/pde_ledger_v3/_measurements/S11c_d_A9_saved_face_drives.json",
+        "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_A9_saved_face_drives.json",
+        "sourceSha256": "057c9960aa1c721d1973de85cc48e5d6ac3bcb20a233cfc10f63d6f9207d6bf8",
+        "bytes": 8224
+      },
+      {
+        "packetPath": "research/pde_ledger_v3/_measurements/S11c_d_variable_profile_development_input.json",
+        "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_variable_profile_development_input.json",
+        "sourceSha256": "660b2b0b54494dce964c7f5fbd722a76a7e894d8ed92b18b5eb6290c3c10f1d5",
+        "bytes": 1884
+      },
+      {
+        "packetPath": "research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+        "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+        "sourceSha256": "45a16f7f952ca6b571362b1c386fec76cd86f1e0ad04113074adf49c683ec49c",
+        "bytes": 3347
+      },
+      {
+        "packetPath": "research/pde_ledger_v3/directives/S11c_d_TOTAL_TRANSVERSE_LOSS_AMENDMENT_DRAFT.md",
+        "sourcePath": "research/pde_ledger_v3/directives/S11c_d_TOTAL_TRANSVERSE_LOSS_AMENDMENT_DRAFT.md",
+        "sourceSha256": "ec12456947527bb162a6bd56a65651f1028cca1f95f0d85379bdc8a411fbb6fc",
+        "bytes": 8243
+      },
+      {
+        "packetPath": "research/pde_ledger_v3/directives/S11c_d_CHANNEL_MAP_BORN_AMENDMENT_DRAFT.md",
+        "sourcePath": "research/pde_ledger_v3/directives/S11c_d_CHANNEL_MAP_BORN_AMENDMENT_DRAFT.md",
+        "sourceSha256": "8aa6fc7ab6d43f1f197a3cb8f9a83b7607f1de2c7a321aa130b582f4a323082d",
+        "bytes": 8623
+      },
+      {
+        "packetPath": "research/pde_ledger_v3/directives/S11c_d_SCATTERING_FORM_AMENDMENT.md",
+        "sourcePath": "research/pde_ledger_v3/directives/S11c_d_SCATTERING_FORM_AMENDMENT.md",
+        "sourceSha256": "eb6f20a3fd0bce308e53901fa69fdf267b2917e5cc78b319a1e7700074a47560",
+        "bytes": 69780
+      },
+      {
+        "packetPath": "research/pde_ledger_v3/directives/S11c_d_SHARED_PHYSICS.md",
+        "sourcePath": "research/pde_ledger_v3/directives/S11c_d_SHARED_PHYSICS.md",
+        "sourceSha256": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5",
+        "bytes": 67800
+      },
+      {
+        "packetPath": "research/pde_ledger_v3/directives/S11c_c1_SHARED_PHYSICS.md",
+        "sourcePath": "research/pde_ledger_v3/directives/S11c_c1_SHARED_PHYSICS.md",
+        "sourceSha256": "47554c8c9cf2fd070c1048a7ae0ca36b1315bf50a48ed07a51019ff3e72987ad",
+        "bytes": 50376
+      },
+      {
+        "packetPath": "scripts/s11c_guarded_run.py",
+        "sourcePath": "scripts/s11c_guarded_run.py",
+        "sourceSha256": "9194b3e04b43d345828082e6312b0a2d7a9293f6296153f9c6ccea2defb931d2",
+        "bytes": 9977
+      },
+      {
+        "packetPath": "review-prompt.md",
+        "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_premise_review_prompt.md",
+        "sourceSha256": "c1daaea68df402a37771d7c8e6c54c3d81f88f0b6547607286eb88a1a0f1cbfd",
+        "bytes": 9018
+      }
+    ],
+    "nativeExcerptSource": {
+      "path": "research/pde_ledger_v3/scripts/S11c_d_mixing_scattering_sympy_audit.py",
+      "sourceSha256": "5bf77729682960bb59f10c672a5fe3f67a98b0a9533da7c6189a37183596050f",
+      "sourceAddresses": "Complete named AST methods and original line numbers in S11c_d_transverse_face_native_source.txt"
+    },
+    "scientificBinaryPayloadsIncluded": false,
+    "peerReportsIncluded": false,
+    "externalConversationIncluded": false,
+    "noScienceStop": "No reviewer science, worker launch or payload restoration before user go/no-go after costed outgoing-field/power plan. This review cannot authorize a run.",
+    "selfEntry": "packet-index.json indexes all other members; state pins every file including this index."
+  },
+  "authorization": {
+    "status": "EXPLICITLY_APPROVED_FIXED_PACKET",
+    "recordedUtc": "2026-09-29T01:10:24.213635+00:00",
+    "userInstruction": "After it clears, repair and re-review only the transverse-first map and face-drive test (premise #1). Defer thickness-classification repair as secondary. Then return a costed plan for first-order outgoing field and its power pairing. Stop for go/no-go. No science runs before that.",
+    "authorizationBasis": "User explicitly approved this exact revised packet and Claude/Grok destinations after the automatic export refusal. The earlier refusal remains preserved.",
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "packetSha256": "d1ddafe76f01120aafd9105d120cb52ddf587fb4e0f1c86290de1e4a172360ab",
+    "archiveSha256": "75a2faf408bfa3454c1d7a0cba63eac4ea2247f38210bc7ffc2ca50460f3b8b4",
+    "packetFiles": 24,
+    "packetBytes": 561604,
+    "currentThread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+    "scientificExecutionAuthorized": false,
+    "automaticApprovalRefusal": {
+      "status": "AUTOMATIC_EXPORT_APPROVAL_REJECTED_NO_PROCESS_STARTED",
+      "recordedUtc": "2026-09-29T01:11:23.317027+00:00",
+      "action": "Submit third-round corrected transverse/face source-only build packet to fresh Claude and Grok reviewers",
+      "reason": "This exports a newly changed 24-file internal packet with a different hash and contents; prior approval covered the earlier exact packet, not this revised payload, so sensitive egress to Claude/Grok is not specifically authorized.",
+      "packetFiles": 24,
+      "packetBytes": 561604,
+      "packetSha256": "d1ddafe76f01120aafd9105d120cb52ddf587fb4e0f1c86290de1e4a172360ab",
+      "destinations": [
+        "Claude",
+        "Grok"
+      ],
+      "scienceCalls": 0,
+      "bypassOrRetryAttempted": false,
+      "payloadDeltaEvidence": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/build-review-r3/payload-delta-metadata.json",
+      "requiredNextInput": "Explicit approval for this exact revised packet and destinations."
+    },
+    "exactPayloadUserApproval": {
+      "recordedUtc": "2026-09-29T01:37:18.650269+00:00",
+      "reply": "I approve",
+      "context": "Reply to explicit request to send this third-round corrected 24-file / 561,604-byte packet to fresh Claude and Grok reviewers.",
+      "packetSha256": "d1ddafe76f01120aafd9105d120cb52ddf587fb4e0f1c86290de1e4a172360ab",
+      "archiveSha256": "75a2faf408bfa3454c1d7a0cba63eac4ea2247f38210bc7ffc2ca50460f3b8b4",
+      "destinations": [
+        "Claude",
+        "Grok"
+      ],
+      "scientificExecutionAuthorized": false
+    }
+  },
+  "static": {
+    "status": "SOURCE_AST_HASH_CHECKS_ONLY_NO_SCIENCE",
+    "reviewedBaselineCommit": "b7d41f7f",
+    "runnerSha256": "cc2a2f63fdb36a35d61471421cbc6d35da9ee107aa6fe757a5f82ba3b1afa8b0",
+    "launcherSha256": "3cbeab6f6a23c9c7b1e581c8ab3185c2ccd63a78c7ebe1d5b70f0d1d73c6785b",
+    "completionMessageSha256": "6d2c3692d8530baf61707d09d6b68fd1cb2beea24b3589365d104d014268652e",
+    "workerSha256": "e83ce4b9efe39851263ad68755c29f9a0a5ae92465dcc0386a0e5a43ef59c445",
+    "workerSyntaxPass": true,
+    "workerExecutedOrImported": false,
+    "scientificPayloadsRestored": 0,
+    "allPinnedInputsHashAndSizeMatch": 33,
+    "acceptedArtifactCheckpointJoinsMatch": 15,
+    "archiveContentsVerified": true,
+    "peerReportsIncluded": false,
+    "transportChanges": "Only runtime root changed from previously completed read-only sequential transport.",
+    "missingOptionalStaticTriageTool": "Skill reference reduction/derived_or_declared.py not found by rg --files; no substitute created and no physics clearance inferred from syntax."
+  },
+  "launch": {
+    "jobPid": 930381,
+    "watcherPid": 930382,
+    "packetSha256": "d1ddafe76f01120aafd9105d120cb52ddf587fb4e0f1c86290de1e4a172360ab",
+    "reviewers": [
+      "Claude",
+      "Grok"
+    ],
+    "concurrentReviewWorkers": 1,
+    "scienceCalls": 0,
+    "runnerSha256": "cc2a2f63fdb36a35d61471421cbc6d35da9ee107aa6fe757a5f82ba3b1afa8b0",
+    "launcherSha256": "3cbeab6f6a23c9c7b1e581c8ab3185c2ccd63a78c7ebe1d5b70f0d1d73c6785b"
+  },
+  "coordinator": {
+    "status": "BOTH_ATTEMPTS_FINISHED_AWAITING_LITERAL_ADJUDICATION",
+    "finishedUtc": "2026-09-29T02:14:35.453867+00:00",
+    "scienceCalls": 0
+  },
+  "watcher": {
+    "status": "finished",
+    "watcherPid": 930382,
+    "jobPid": 930381,
+    "thread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+    "startedUtc": "2026-09-29T01:37:33.264747+00:00",
+    "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
+    "messageSha256": "6d2c3692d8530baf61707d09d6b68fd1cb2beea24b3589365d104d014268652e",
+    "notifications": {
+      "completion": {
+        "status": "queued",
+        "exitCode": 0,
+        "finishedUtc": "2026-09-29T02:14:36.025056+00:00"
+      }
+    }
+  },
+  "reports": {
+    "claude": {
+      "literalVerdict": "CLEAR FOR THIS BOUNDED TRANSVERSE/FACE BUILD",
+      "literalReport": "**CLEAR FOR THIS BOUNDED TRANSVERSE/FACE BUILD**\n\nThis is a prospective review based only on the source. I had only read-only tools (no file write), so the report is here rather than saved to a file. I ran no shell, CAS or numerics, restored no payloads, and ran no ablations. This clearance does not authorize a science run: the user stop still applies until the costed outgoing-field/power plan gets an explicit go.\n\nPaths below are relative to `research/pde_ledger_v3/_measurements/`. `W:` means `S11c_d_transverse_face_premise.py`.\n\n## Basis for clearance, by question\n\n1. **Transverse restriction joins the physical pencil.**\n   - `bound_end` checks the pairing pencil against the original frequency-source operand (`W:360-461`). It uses the native radical scale, the same one `ClosedCurrentPairing` uses (native 3088, 3320), and exact wave-row/relation, curl, branch, grade and coupling joins.\n   - `invariantT` (`M\u00b7lift \u2212 lift\u00b7R \u2261 0`) and `weakHermitian` are exact identities checked for the whole end. An end enters the grid only if they hold, together with exactly zero face drives and exactly zero bulk-normal, depth and interface forms on both harmonic legs (`W:575-579`, `1041-1046`). So real-k transverse roots are only used where the T block is lossless at the source level; if these checks fail, the whole end is unresolved.\n   - Frequency and tangent symbols are bound live to `(w, 2v, v)` before the frozen parameter values can apply (`W:261-268`). Liveness is checked on the actual matrix and restricted block.\n   - Grazing cases are caught: k=0 (`W:808`), bulk branch or pole inside the root interval (`W:811`), ambiguous T rank (`W:837`), and multiplicity versus nullity (`W:852`). v=0 is explicitly unresolved as a chart failure (`W:930`). This matches the curl-column Gram, which vanishes when k\u2081=2v=0.\n2. **Uncertainty is preserved.**\n   - ABSENT requires a complete census at that point with no real roots of the T-domain denominators or the chart (`W:601-643`, `943`).\n   - Partial points keep existence only (PARTIAL_UNRESOLVED). Unvisited, budget-skipped and failed-end points are listed as UNRESOLVED (`W:1101-1105`).\n   - The saved-seed point is labelled `SELECTED_SAVED_SUBSPACES_ONLY` and is never ABSENT. REFERENCE, LEFT and RIGHT are bound and recorded separately.\n3. **Loci are candidates only.** Loci run only after the prefix. They produce only zero-normal and normal-incidence bulk-cone equations, with both-side sampling and `completePartition=False` / `physicalCutoffEstablished=False`. Thickness is labelled DEFERRED.\n4. **Ordering and timers are sound.**\n   - The fixed-ray prefix runs REFERENCE first, then the other ends, before any optional loci.\n   - Short timers are disarmed inside the `try` (`W:145`). Serialization runs only under the whole-job timer. `NativeDeadline` is kept separate and always fatal. There are no retry loops, and deadline margins bound every loop.\n   - The seed point performs no producer or root replay.\n5. **Schemas match the producers.**\n   - `(packet, knownDimensions)` \u2192 `packet['result']` matches `S11c_d_end_pairing_check.py:165-166`.\n   - Frequency packet keys match `S11c_d_frequency_source.py:180-182`.\n   - `reductionState` matches `save_reduced_action_cache` (native 8144-8147).\n   - Seed `info`/`right`/`pencil`/`currentOperands`/`currentGram` match `S11c_d_uniform_response.py:76-85`.\n   - The seed comparisons are real numerical joins. Where the saved gram includes the depth-integral bulk term, it only equals the slab form if `projectedBulk \u2248 0`, and that is checked separately.\n6. **Face maps.**\n   - Both faces and both harmonic legs are differentiated against their own Plus/Minus amplitude arrays. The minus leg uses the conjugate lift, which is the real-field condition rather than an assumed map.\n   - The outward-velocity E slot is `W\u2080\u00b7(\u2213i\u03c9)/2` on both faces; the orientation sign cancels (native 3065-3066). That agrees with the c2 literal evaluated at each leg's rate, and the comparison is correctly labelled orientation-blind.\n   - Which routes move under one-sided corruption:\n     - **Carrier check:** it re-types `-\u03c1\u2202t` and `\u2202s`, so it moves if the pairing's saved pressure/velocity scales or depth-current coefficient are corrupted. It cannot detect a corrupted shared native law beyond the source hash pin.\n     - **`flatExteriorJoin` pressure:** moves only if the face-record pressure (native 3059) is corrupted.\n     - **`flatExteriorJoin` velocity:** nearly the same route on both sides (both use the bulk-leg derivative), so it has little independence.\n     - **c2 literal:** the only external check; it moves if the native outward-velocity row is corrupted.\n7. **Controls respond for a stated reason.**\n   - The loaded-U-term, E-slot and w/v controls are dependence tests by construction, and they are labelled that way.\n   - A zero drive with a nonzero rational contribution in some slot implies at least two cancelling terms, which is the structural-versus-cancellation question.\n   - The w/v controls look at each loaded basis column separately; this replaces the old hard-coded (0,0) perturbation.\n8. **Persistence.** Operands are stored as content-addressed blobs and each operation gets its own receipt. Raw residuals are kept before any guard. Failures keep a traceback and the active operation. Posthashes are written on both the success and failure paths.\n\n## Recommended pre-launch corrections (non-blocking)\n\nThese are cost/robustness issues, not wrong science.\n\n1. **Unbounded rendering of restored content.** `op(..., render=True)` passes the whole `bound_end` return through `show()` (`W:222-226`, `1040`). That return includes restored objects: `dimensions`, `originalSource`, and the raw pairing face expressions and denominator operands. This is exactly the \"unbounded pretty-printing\" the plan forbids (plan lines 153-154). It runs under only the whole-job timer and before the REFERENCE prefix. **Fix:** use `render=False` for `-source-bind` (and `-face-premise` if large), and render only `checks` plus the blob receipt.\n2. **Timer handler disarms before raising (`W:93-97`).** If an `OperationBudget` is ever swallowed (a `__del__`/callback context, or a bare `except` in a dependency), no timer is left at all and only the 900 s guard remains. **Fix:** when raising `OperationBudget`, re-arm the remaining native deadline instead of setting 0.\n3. **`savedCoupling` tests the unbound coupling (`W:448-452`).** This can only give a false negative, for example from terms in the zero-valued `Lambda_V_0`/`Lambda_X_0`. That would needlessly remove a whole end. **Fix:** apply `bind(..., label)` before `zero`.\n4. **`Journal.objects` holds every operand and return for the whole job (`W:126`).** Memory grows without bound under the 2 GiB cap. A cgroup OOM kill would leave no `operation-index.json` or `failure.json` (per-operation receipts would survive). **Fix:** cache only the reused operand objects.\n5. **Single authorized job with fatal restores (`W:80-85`, `232`).** An untested whitelist unpickler combined with fatal required restores includes `reduction`, which is used only for a branch-inventory integrity display. One false class rejection would burn the single no-retry job. **Fix:** make that restore non-fatal (unresolved branch inventory), or run a static opcode/global census under the separately gated validator. Separately, whitelisting all of `builtins` defeats the restriction's purpose.\n\n## Optional wording\n\n- Add `channel='TRANSVERSE_ONLY'` and `thickness='DEFERRED_NOT_ABSENT'` to every point summary.\n- `referenceOnlyFaceScope=True` is misleading: the face premise gates all three ends, and only the c2 literal is REFERENCE-only. Rename it to something like \"flat/zeroth-order face scope\".\n- `EXACTLY_UNDRIVEN_T_EXTERIOR` should read \"at flat uniform zeroth order\".\n- At partial points, set the rank sums to `None`.\n- Record `discriminantFoldLocus` and `T/bulk resultant` as `NOT_ATTEMPTED`. Note that `bulkBoundary` is the normal-incidence (k=0) cone.\n- Some checks are tautological: the gcd remainders and `coverage` always pass, and the loaded-control \"movement\" equals the omitted term by construction.\n- The longitudinal gauge probes are saved but never classified. Given a live U row, their nonzero response already follows from bilinear orthogonality to the curl span.\n- `sp.Rational(str(info['OMEGA']))` depends on the saved number type. If parsing fails, it fails closed.\n\n## Remaining finite premise gaps and cost uncertainty\n\n**Only a run can settle these; each one fails closed to UNRESOLVED:**\n- whether the saved symbol names match the binder;\n- whether the T block is actually free of q;\n- whether the exact identities (`invariantT`, zero drives and loss forms, source/wave joins) hold at LEFT and RIGHT;\n- whether seeds 16/17 are transverse.\n\n**Not tested by design:** the new census is not regression-tested against a saved root, because the seed point deliberately skips it (`newRootCensus=False`).\n\n**Outside this build:**\n- the analog-light calibration;\n- all-grade matched-end localization;\n- held-background work and passivity;\n- `C1 Psi0`, the physical face reconstruction, the forced outgoing field and its power pairing;\n- the c2 pressure/trace/normal-jet joins.\n\n**Cost is unmeasured.** It is mostly driven by `bound_end` (35 s cap) and `faces` (20 s) on the large RIGHT pairing, per-root pole certificates over many source denominators, and serialization. A 192-pair \u00d7 3-end grid may not finish in 840 s. If so, the prefix and partial grid persist with explicit unvisited records.",
+      "receipt": {
+        "engine": "claude",
+        "sessionId": "8457f017-1d11-4b9c-85ce-f89aa3a4eae2",
+        "command": [
+          "/home/trevnorris/.local/bin/claude",
+          "--print",
+          "--output-format",
+          "json",
+          "--safe-mode",
+          "--restricted",
+          "--tools",
+          "Read,Glob,Grep",
+          "--allowedTools",
+          "Read,Glob,Grep",
+          "--permission-mode",
+          "dontAsk",
+          "--strict-mcp-config",
+          "--mcp-config",
+          "{\"mcpServers\":{}}",
+          "--setting-sources",
+          "",
+          "--disable-slash-commands",
+          "--session-id",
+          "8457f017-1d11-4b9c-85ce-f89aa3a4eae2"
+        ],
+        "cwd": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/build-review-r3/packet",
+        "startedUtc": "2026-09-29T01:37:33.379697+00:00",
+        "packetSha256": "d1ddafe76f01120aafd9105d120cb52ddf587fb4e0f1c86290de1e4a172360ab",
+        "promptSha256": "c1daaea68df402a37771d7c8e6c54c3d81f88f0b6547607286eb88a1a0f1cbfd",
+        "scientificExecutionEnabled": false,
+        "reviewVerdict": "NOT_ADJUDICATED",
+        "pid": 930389,
+        "exitStatus": 0,
+        "finishedUtc": "2026-09-29T01:52:21.005276+00:00",
+        "wallSeconds": 887.6238910900429,
+        "outputSha256": "1bec8bb5969ff5eceec1956f0860603b9a3915722c5567c255e3aeca45168790",
+        "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderrBytes": 0
+      },
+      "stderr": "",
+      "rawOutputPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/build-review-r3/claude.json",
+      "rawOutputSha256": "1bec8bb5969ff5eceec1956f0860603b9a3915722c5567c255e3aeca45168790",
+      "terminationMetadata": {
+        "stop_reason": "end_turn",
+        "session_id": "8457f017-1d11-4b9c-85ce-f89aa3a4eae2",
+        "permission_denials": [],
+        "is_error": false,
+        "num_turns": 26,
+        "duration_ms": 885796
+      }
+    },
+    "grok": {
+      "literalVerdict": "NEEDS REVISION",
+      "literalReport": "I'll review only the packet sources and give a prospective judgment on this bounded transverse/face instrument. First I'm reading the index and the files it names.The index lists a Codex-written instrument plus its plan, inputs, and native excerpts. I'll read those sources next and judge only what they actually implement.**NEEDS REVISION**\n\nThe transverse chart, uncertainty labels, face-drive scope, and guarded persistence are in place for this bounded premise job. The saved-seed availability bit is not. It can withhold a real transverse join, and it compares the saved current gram to the wrong quadratic form. That is the correction required before this instrument is clear. No science run is authorized by this review.\n\n## Material finding\n\n`saved_seed` collapses recomputed joins and saved decay-sector flags into one availability bit, and the gram residual uses a different current than the producer saved.\n\nThe uniform-response producer writes `currentOperands` for every mode, and writes `depthIntegral` and `currentGram` only inside the decay-certified branch. There `currentGram` is the quadratic form of `CURRENT_SLAB + depthIntegral * CURRENT_BULK` (`S11c_d_uniform_response.py` lines 74\u201388). Modes outside that branch keep `currentDefined` false and have no `currentGram`.\n\n`S11c_d_transverse_face_premise.py` lines 887\u2013920 then do three things that change what a seed may be called:\n\n- Availability requires `savedEligibility`, which requires `old['currentDefined']` (line 907). A real-depth or otherwise non-decay seed stays `UNRESOLVED` even when the recomputed pencil, kernel, wave, transverse residual, and operand joins pass.\n- When `currentGram` is present, the residual is `right\u1d34 (slab only) right` minus that saved gram (lines 887\u2013890 and 918). The depth-weighted bulk term is omitted.\n- When `currentGram` is absent, `currentGram` is the boolean false inside `all(checks.values())`. A missing saved object is not labelled unavailable.\n\nAt the saved frequency and fixed ray, `sample` does not run the transverse census at all. It copies this seed status (`lines 1017\u20131024`). Modes 16 and 17 are therefore the only evidence at `(omega, v) = (1, 1/10)`, and this gate is what decides that cell.\n\nSmallest correction, in `saved_seed` only: let the seed status follow the recomputed checks (transverse membership, pencil, kernel, wave, both depth signs, slab and bulk operand residuals, undriven face contractions, outward-velocity E-slot presence, and responsive loaded controls). Record `currentDefined` as saved decay-normalization evidence. If `depthIntegral` and `currentGram` are both present, compare `right\u1d34 (slab + depthIntegral * bulk) right` to `currentGram`. If either is absent, store an explicit unavailable gram comparison and do not put that absence into the availability conjunction.\n\n## Optional wording\n\nThese do not change the correction above.\n\n- Line 868 labels a tolerance-qualified root `EXACTLY_UNDRIVEN_T_EXTERIOR`. Singular values, residuals, and eigenvalue cuts at `1e-8` to `1e-12` are already stored on the record. The status string should stay tolerance-qualified, in line with the numerical-rank wording in the source note.\n- In `faces`, a drive whose loaded columns are all `NOT_APPLICABLE_STRUCTURALLY_UNLOADED_COLUMN` is still aggregated as `SUPPORTED_GENERIC_DEPENDENCE` (lines 531\u2013533). The per-column records are the accurate ones.\n- An unsupported pole certificate sets `excluded=True` (`lines 729\u2013732`) and `inspect_root` reports `SOURCE_POLE_OR_CHART_NOT_EXCLUDED` (lines 822\u2013823). The root remains `UNRESOLVED`, and the certificate\u2019s `unsupportedReason` is in the operation payload. The reason string overstates a proved pole.\n\n## What holds\n\nThe transverse restriction is the accepted curl chart, not a new mode solve. `bound_end` stacks `curl[:, 1:3]` over a zero theta/E block, inverts only the 2\u00d72 Gram, and keeps the raw restricted matrix, its denominators, and `gram.det()` (`lines 378\u2013392`). `census` counts real `k` roots from the row-cleared determinant, keeps isolating-interval multiplicities beside the square-free count, and refuses a pointwise absence or a complete census unless those T-domain exclusions have no real `k` zero (`lines 617\u2013643`, `929\u2013956`). A root interval that contains `k = 0` stays unresolved. `v = 0` is `CURL_CHART_ZERO_RAY` and is not given an invented azimuth. Per-root `no_pole_interval` retains source factors before `together`, reduces numerator and denominator separately, and records input and introduced coefficient denominators through the opposite-sheet product (`lines 645\u2013736`). An incomplete multiplicity or a failed certificate blocks `COMPLETE` and does not become `ABSENT`.\n\n`available` / `absent` / `unresolved` stay split at point and grid level. `ABSENT` is only the empty real-root census with `noRealExcludedPoint`. A partial root list can be `AVAILABLE` with `PARTIAL_UNRESOLVED`, which is existence without a full polarization census. Unvisited cells are written as `NOT_VISITED`. `completePlanePartition` is false. Thickness classification is `DEFERRED`. Bulk availability is a candidate `q\u00b2` sign condition with `physicalCutoffEstablished` false; it is not turned into emitted power.\n\nEndpoints are bound separately. The pairing loader matches `S11c_d_end_pairing_check.py` lines 165\u2013166: `(packet, knownDimensions)` with `packet['result']`. Original frequency packets supply `originalAlgebraic`, `originalRelation`, `radical`, and branch residuals; the worker rescales the physical depth onto that radical and does not relabel `livePencil`. `eta_bg` and `sigma_W` follow `ChannelInput.origin` in the native excerpt (lines 4901\u20134904): zero on REFERENCE, and `eta_bg * W_0 / L_W` on LEFT and RIGHT. Profile limits are `xreplace` of `uniform['profileEndpoints']`, not a fresh limit evaluation. Identical REFERENCE and LEFT seed hashes are restored and joined per bound end; the output records `sharedBytesAreIndependentEvidence: false`.\n\nBoth harmonic legs are read from `FACE_LEG_OBJECTS`. The minus leg keeps its own row and uses the conjugate lift; it is not dropped as a second incident wave. Native outward velocity is `sign * \u2202t(sign * W_0 * e_W * phase / 2) / phase`, so the face sign squares away and both faces carry `-I \u03c9 W_0 / 2` on the plus character. The c2 index literals for `LAB_HELD_RHO4_CONSTANT` are the same `(1/2) W_0 e_W_t` on faces `+1` and `-1`. Substituting `e_W_t \u2192 -I w` and `+I w` for legs 0 and 1 matches that identity. The join is marked orientation-blind and index-literal, and the old pressure, trace, and normal-jet c2 promise is withdrawn in the plan and the result (`c2PressureTraceFirstShapeJoin`). Flat pressure and velocity row joins are labelled source-internal. The carrier check differentiates the acoustic laws taken from the source AST (`pressure = -\u03c1 \u2202t`, depth velocity `\u2202s`) and compares both depth signs with the saved scales; that route moves if either the AST law or the saved scale is changed alone. The c2 literal moves if the index text or the velocity E-slot is changed alone.\n\nLoaded U-term omissions test exact rational identity per transverse column, with `pointwiseNonzeroClaim` false. The E-slot check is a separate presence calibration of the outward-velocity coefficient over `w`, not a structural zero of the transverse contraction. Frequency and tangent controls search the loaded matrix for a term that actually contains `w` or `v` and must move every basis column. Residuals are stored before the status cut. One-sided term omission is the route that moves; the baseline matrix is not replaced.\n\nThe manifest grid matches the plan: frequencies as stated, rays through `7/40` at azimuth `(2v, v)`, 192 kinematic pairs, prefix `1/4`, `3/10`, `1/2` at `v = 1/10` before optional loci, and at most 24 transition pairs under a 256-pair cap. The fixed-ray prefix and seed joins are issued before `loci`. Short timers are cleared inside the `try` before serialization (`lines 143\u2013166`); the native deadline is rearmed from the remaining whole-job time and is not caught as a local budget miss. Operation inputs and returns are content-addressed, with identity dedup checked by path hash. Failures keep operands and tracebacks. `checks.json`, posthashes, and the guard/supervisor stdout and stderr files are the inspectable record; an exit code is not.\n\nThe pinned guard is the 900 s outer, 2 GiB, zero-swap, 32-task, nice-15, one-CPU wrapper, and the worker rejects any other cgroup it finds, with an 840 s native deadline. The supplied guard and normalization supervisor do not themselves call a completion hook; hook-first remains a launch-time obligation on the unchanged wrapper, not a second physics path.\n\n## Remaining premise gaps and cost\n\nClearing the seed-status correction still leaves this job as a premise instrument. It does not establish the analog light band, all-grade matched-end localization, held-background passivity, a forced outgoing field, `C1 Psi0`, or a power pairing. Reference-zero face drive would not close those, and neither would a later total-loss coefficient. Wall time is unmeasured. The source only shows that a prefix is saved first and that a native-deadline stop leaves the rest unresolved; it does not show that the 192-pair, three-end, exact-root schedule finishes inside 840 s. That cost still has to be measured before any outgoing-field plan, and this review does not authorize the run.",
+      "receipt": {
+        "engine": "grok",
+        "sessionId": "0b094927-1479-4a7c-b2ce-359cd27464c8",
+        "command": [
+          "/home/trevnorris/.local/bin/grok",
+          "--cwd",
+          "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/build-review-r3/packet",
+          "--prompt-file",
+          "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/build-review-r3/packet/review-prompt.md",
+          "--output-format",
+          "json",
+          "--permission-mode",
+          "dontAsk",
+          "--no-plan",
+          "--tools",
+          "Read",
+          "--no-subagents",
+          "--disable-web-search",
+          "--verbatim",
+          "--session-id",
+          "0b094927-1479-4a7c-b2ce-359cd27464c8"
+        ],
+        "cwd": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/build-review-r3/packet",
+        "startedUtc": "2026-09-29T01:52:21.023613+00:00",
+        "packetSha256": "d1ddafe76f01120aafd9105d120cb52ddf587fb4e0f1c86290de1e4a172360ab",
+        "promptSha256": "c1daaea68df402a37771d7c8e6c54c3d81f88f0b6547607286eb88a1a0f1cbfd",
+        "scientificExecutionEnabled": false,
+        "reviewVerdict": "NOT_ADJUDICATED",
+        "pid": 936360,
+        "exitStatus": 0,
+        "finishedUtc": "2026-09-29T02:14:35.437461+00:00",
+        "wallSeconds": 1334.402999361977,
+        "outputSha256": "f157009845c332bfabc4bf5fe2c71c9f88ef105ca7b07cea44f952c0d91743f5",
+        "stderrSha256": "5549edf599a3e2529cc93774c8e0ba4bfc9a1257d1f5a0d7335cf15977dca5db",
+        "stderrBytes": 1563
+      },
+      "stderr": "\u001b[2m2026-09-29T01:52:21.255824Z\u001b[0m \u001b[33m WARN\u001b[0m plugin name collision resolved by scope precedence \u001b[3mplugin_name\u001b[0m\u001b[2m=\u001b[0mfrontend-design \u001b[3mwinner\u001b[0m\u001b[2m=\u001b[0m/home/trevnorris/.claude/plugins/marketplaces/claude-plugins-official/plugins/frontend-design \u001b[3mloser\u001b[0m\u001b[2m=\u001b[0m/home/trevnorris/.claude/plugins/cache/claude-plugins-official/frontend-design/fbe07fb6ce7d\n\u001b[2m2026-09-29T01:52:21.287630Z\u001b[0m \u001b[33m WARN\u001b[0m plugin name collision resolved by scope precedence \u001b[3mplugin_name\u001b[0m\u001b[2m=\u001b[0mfrontend-design \u001b[3mwinner\u001b[0m\u001b[2m=\u001b[0m/home/trevnorris/.claude/plugins/marketplaces/claude-plugins-official/plugins/frontend-design \u001b[3mloser\u001b[0m\u001b[2m=\u001b[0m/home/trevnorris/.claude/plugins/cache/claude-plugins-official/frontend-design/fbe07fb6ce7d\n\u001b[2m2026-09-29T01:52:21.461539Z\u001b[0m \u001b[33m WARN\u001b[0m hooks: skipped unrecognized event names (check for typos) \u001b[3mfile\u001b[0m\u001b[2m=\u001b[0m/home/trevnorris/.claude/settings.json \u001b[3mskipped\u001b[0m\u001b[2m=\u001b[0m[\"PermissionRequest\"]\n\u001b[2m2026-09-29T01:52:21.465423Z\u001b[0m \u001b[33m WARN\u001b[0m hook loading from settings file: failed to parse hook file /home/trevnorris/.cursor/hooks.json: invalid matcher groups for event 'beforeSubmitPrompt': missing field `hooks`\n\u001b[2m2026-09-29T01:52:21.465512Z\u001b[0m \u001b[33m WARN\u001b[0m hook loading error \u001b[3merror\u001b[0m\u001b[2m=\u001b[0mParseFile { path: \"/home/trevnorris/.cursor/hooks.json\", detail: \"invalid matcher groups for event 'beforeSubmitPrompt': missing field `hooks`\" }\n\u001b[2m2026-09-29T02:14:35.127161Z\u001b[0m \u001b[33m WARN\u001b[0m memory-v2 capture activity failed \u001b[3merror\u001b[0m\u001b[2m=\u001b[0mcapture worker cancelled\n",
+      "rawOutputPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/build-review-r3/grok.json",
+      "rawOutputSha256": "f157009845c332bfabc4bf5fe2c71c9f88ef105ca7b07cea44f952c0d91743f5",
+      "terminationMetadata": {
+        "stopReason": "end_turn",
+        "sessionId": "0b094927-1479-4a7c-b2ce-359cd27464c8",
+        "requestId": "5f9ad60a-f139-4313-b39c-680d28f64d36",
+        "num_turns": 16
+      }
+    }
+  },
+  "verification": {
+    "packetInventoryAndHashes": true,
+    "archiveMembersAndHashes": true,
+    "canonicalSources": 24,
+    "pinnedInputHashesAndSizes": 33,
+    "transportHashes": true,
+    "receiptStreamHashes": true,
+    "bothFinishedBeforeAdjudicationOrEdit": true,
+    "coordinatorAndWatcherStderrEmpty": true
+  },
+  "stderrAssessment": "Claude empty; Grok configuration/hook warnings plus memory-v2 capture worker cancelled warning. Complete end_turn literal report, no read-file failure in stderr. No retry.",
+  "scientificCalls": 0,
+  "workerPayloadsRestored": 0,
+  "independentBuildClearance": false,
+  "noScienceStop": "Costed outgoing-field/power plan and user go/no-go required before any science."
+}

@@ -107,6 +107,14 @@ claimed. Recommend corrections only for substantive unsupported claims or
 wrong computations in this limited instrument; do not require new mode solves
 or a general classification campaign to improve a subset comparison's label.
 
+Check the full two-harmonic-leg face extraction and contractions, the separate
+required native velocity E-slot calibration, and the distinction between
+generic rational nonidentity and pointwise nonzero movement. In the per-root
+pole certificate, inspect every numerator/denominator through quadratic
+reduction, including coefficient denominators and uncancelled factors. A
+later count cannot recover a factor discarded earlier. Check that short timers
+are disarmed inside the protected call region before successful serialization.
+
 Practical toy-model scope applies: identify the smallest concrete correction
 needed for this supported question, not a general operator or classification
 campaign. The physical light-band calibration is unestablished; labels apply

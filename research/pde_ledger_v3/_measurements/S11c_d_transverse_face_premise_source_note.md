@@ -1,8 +1,8 @@
 # Transverse/face premise worker: source schema and limits
 
 This is an unexecuted repaired instrument for independent build review. The
-reviewed first build remains at `c84793b3`; its two literal NEEDS REVISION
-reports are preserved. Preparation approval cannot launch this code: a later
+reviewed second build remains at `b7d41f7f`; both rounds' literal NEEDS
+REVISION reports are preserved. Preparation approval cannot launch this code: a later
 pinned user science approval after the costed-plan stop, a fresh build gate,
 and ordinary guard/supervisor containment remain required. No payload was
 restored and no mathematical operation was executed during this repair.
@@ -33,17 +33,28 @@ with actual slice-side samples; no plane partition or interpolated absence
 is inferred. Zero-ray/chart degeneracy and unsupported arithmetic remain
 unresolved. Physical permeability and memory are retained.
 
-Actual loaded U-term omissions test cancellation in each native face row
-contracted with each supplied T column. Rows with no U dependence, or columns
-with exactly zero native contributions, have explicit not-applicable states.
-The eW omission is a separate entry-presence diagnostic. Source longitudinal
+Actual loaded U-term omissions test generic rational cancellation in each
+native face row contracted with each supplied T column. Cancelled rational
+expressions are compared by identity, not assumptions-based zero flags; a
+generic nonidentity is not a pointwise nonzero claim. Rows with no U dependence
+or columns with exactly zero native contributions have explicit not-applicable
+states. Required outward-velocity E-slot calibration is checked separately for
+every face and harmonic leg. Other theta/E slot omissions preserve uncancelled
+rows, before/after probe values and structural-zero/N/A cases without demanding
+a legitimate optional zero coefficient respond. Source longitudinal
 probes use `common['gauge']` from the saved curl nullspace: its direction is
 embedded into U coordinates, without claiming an independently normalized
 longitudinal mode. Frequency/tangent omissions must move every loaded basis
 column and are labelled dependence tests, not independent physics derivations.
 
-The readable c2 evidence is **orientation-blind index-literal velocity only**.
-Matching both equal literals does not validate physical face assignment or
+Both actual saved harmonic face legs are differentiated against their own
+Plus/Minus amplitude arrays and their linear reconstructions are retained.
+Symbolic and numerical contractions use the physical lift/basis and its
+conjugate respectively; no unchecked conjugacy assumption replaces the second
+map. Both legs contribute source denominators and pressure/velocity checks.
+The readable c2 evidence remains **orientation-blind index-literal velocity
+only**, with each harmonic time character evaluated at its own minus/plus
+i-omega rate. Matching literals does not validate physical face assignment or
 the original transcript. Flat d pressure/velocity joins are source-internal
 consistency. A single real carrier pair is differentiated using the native
 pressure/velocity laws, retaining its amplitude normalization and source-line
@@ -61,7 +72,8 @@ is replayed, no complete seed census is claimed, and no unverified thickness
 response summary is copied into the output.
 
 Journal JSON and pickle objects publish atomically after fsync; existing
-objects must match their digest and size. Every operation retains complete
+objects must match their digest and size. The short timer is disarmed
+immediately after the function returns inside the protected try block. Every operation retains complete
 operand references and its own receipt, including identical returns. Short
 operation timers end before serialization; only the remaining native deadline
 covers publication. Ordinary mathematical exceptions create local unresolved
@@ -70,6 +82,14 @@ are fatal. The native deadline is distinct, disarmed before failure handling,
 and never rearmed at a 1ms fallback. Whole restored packets are not rendered
 to JSON. Partial objects, completed returns, planned/unvisited grid state,
 active operations, source posthashes and failures remain available. No retry.
+
+Per-root pole exclusion retains the raw source factors before cancellation.
+Each quadratic remainder records its input and introduced coefficient
+denominators. The opposite-sheet product keeps and reduces both numerator and
+denominator independently, then counts every retained scalar factor on the
+same real-momentum isolating interval. Zero numerators and unsupported
+certificates remain unresolved. This is the existing local domain check, not
+a new global pole or thickness classification.
 
 Physical-light calibration, matched-end localization at all retained grades,
 `C1 Psi0`, the forced outgoing field and its power pairing remain downstream.

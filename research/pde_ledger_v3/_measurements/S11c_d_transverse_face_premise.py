@@ -142,6 +142,7 @@ class Journal:
         failed = None
         try:
             value = function(*args)
+            signal.setitimer(signal.ITIMER_REAL, 0)
         except NativeDeadline:
             signal.setitimer(signal.ITIMER_REAL, 0)
             raise
@@ -245,6 +246,12 @@ def construct(spec, out, journal):
     def zero(value): return all(sp.cancel(x) == 0 for x in flat(value))
     def clean(matrix): return sp.ImmutableMatrix(matrix).applyfunc(sp.cancel)
 
+    def raw_denominators(values):
+        return tuple(dict.fromkeys(
+            [sp.fraction(sp.together(value))[1] for value in values]+
+            [power.base for value in values for power in value.atoms(sp.Pow)
+             if power.exp.is_negative is True]))
+
     def bind(value, label, extra=None):
         mapping = dict(extra or {})
         # Endpoints come from the accepted saved packet, never re-evaluated.
@@ -331,8 +338,14 @@ def construct(spec, out, journal):
         velocity_scale = sp.cancel(sp.diff(plus,depth_coordinate)/plus)
         saved_pressure = bind(result['OPEN_BULK_PRESSURE_SCALES'][0],label,mapping)
         saved_velocity = bind(result['OPEN_BULK_VELOCITY_SCALES'][0],label,mapping)
+        minus_pressure_scale = sp.cancel(-params['rho_m']*sp.diff(minus,time_coordinate)/minus)
+        minus_velocity_scale = sp.cancel(sp.diff(minus,depth_coordinate)/minus)
+        saved_minus_pressure = bind(result['OPEN_BULK_PRESSURE_SCALES'][1],label,mapping)
+        saved_minus_velocity = bind(result['OPEN_BULK_VELOCITY_SCALES'][1],label,mapping)
         residuals = dict(pressure=sp.cancel(saved_pressure-pressure_scale),
                          velocity=sp.cancel(saved_velocity-velocity_scale),
+                         minusPressure=sp.cancel(saved_minus_pressure-minus_pressure_scale),
+                         minusVelocity=sp.cancel(saved_minus_velocity-minus_velocity_scale),
                          depthFlux=sp.cancel(depth-normalized_flux))
         return dict(scope='SOURCE_LAW_AND_REAL_CARRIER_NORMALIZATION_CHECK_NOT_INDEPENDENT_CLOSURE',
             provenance=acoustic_law_provenance,plus=plus,conjugateLeg=minus,
@@ -340,6 +353,8 @@ def construct(spec, out, journal):
             zeroHarmonicAverage=average,amplitudeNormalization=normalization,
             normalizedFlux=normalized_flux,pressureScale=pressure_scale,velocityScale=velocity_scale,
             savedPressure=saved_pressure,savedVelocity=saved_velocity,savedFlux=depth,
+            minusPressureScale=minus_pressure_scale,minusVelocityScale=minus_velocity_scale,
+            savedMinusPressure=saved_minus_pressure,savedMinusVelocity=saved_minus_velocity,
             residuals=residuals,joins=zero(residuals))
 
     def bound_end(label, packet, pair_tuple):
@@ -382,35 +397,54 @@ def construct(spec, out, journal):
             value, residual = grade(result[name])
             currents[name] = bind(value, label, mapping)
             grade_residuals[name] = residual
-        amplitudes = sorted((s for s in dimensions if getattr(s, 'name', '').startswith(
-            's11cdCurrentPlusAmplitude')), key=lambda s:s.name)
-        require(len(amplitudes) == 5, 'five physical amplitude columns required')
-        rows, reconstruction = [], []
-        for face in result['FACE_LEG_OBJECTS']:
-            row, residual = {}, {}
-            for name in DRIVES:
-                expression = face[0][name]
-                coefficients = sp.ImmutableMatrix(1, 5, lambda i,j:sp.diff(expression, amplitudes[j]))
-                row[name] = bind(coefficients, label, mapping)
-                residual[name] = expression-(coefficients*sp.ImmutableMatrix(amplitudes))[0]
-            rows.append(row); reconstruction.append(residual)
-        pressure_scale = bind(result['OPEN_BULK_PRESSURE_SCALES'][0],label,mapping)
-        velocity_scale = bind(result['OPEN_BULK_VELOCITY_SCALES'][0],label,mapping)
-        flat_exterior = [dict(pressure=row['PRESSURE'], amplitude=row['AMPLITUDE'],
-            bulkVelocity=row['BULK_VELOCITY'], pressureScale=pressure_scale,
-            velocityScale=velocity_scale,
-            pressureResidual=clean(row['PRESSURE']-pressure_scale*row['AMPLITUDE']),
-            velocityResidual=clean(row['BULK_VELOCITY']-velocity_scale*row['AMPLITUDE']))
-            for row in rows]
+        amplitude_legs = tuple(tuple(sorted((symbol for symbol in dimensions
+            if getattr(symbol,'name','').startswith('s11cdCurrent'+side+'Amplitude')),
+            key=lambda symbol:symbol.name)) for side in ('Plus','Minus'))
+        require(all(len(amplitudes)==5 for amplitudes in amplitude_legs),
+                'five physical amplitude columns in each harmonic leg')
+        rows, reconstruction, raw_face_expressions = [], [], []
+        flat_exterior = []
+        for face_index_value,face in enumerate(result['FACE_LEG_OBJECTS']):
+            require(len(face)==2,'both saved harmonic face legs required')
+            face_rows,face_residuals,face_expressions = [],[],[]
+            for leg,amplitudes in enumerate(amplitude_legs):
+                row,residual,expressions = {},{},{}
+                for name in DRIVES:
+                    expression = face[leg][name]
+                    coefficients = sp.ImmutableMatrix(1,5,
+                        lambda i,j:sp.diff(expression,amplitudes[j]))
+                    row[name] = bind(coefficients,label,mapping)
+                    residual[name] = expression-(coefficients*sp.ImmutableMatrix(amplitudes))[0]
+                    expressions[name] = expression
+                face_rows.append(row);face_residuals.append(residual);face_expressions.append(expressions)
+                pressure_scale = bind(result['OPEN_BULK_PRESSURE_SCALES'][leg],label,mapping)
+                velocity_scale = bind(result['OPEN_BULK_VELOCITY_SCALES'][leg],label,mapping)
+                flat_exterior.append(dict(face=face_index_value,harmonicLeg=leg,
+                    pressure=row['PRESSURE'],amplitude=row['AMPLITUDE'],bulkVelocity=row['BULK_VELOCITY'],
+                    pressureScale=pressure_scale,velocityScale=velocity_scale,
+                    pressureResidual=clean(row['PRESSURE']-pressure_scale*row['AMPLITUDE']),
+                    velocityResidual=clean(row['BULK_VELOCITY']-velocity_scale*row['AMPLITUDE'])))
+            rows.append(tuple(face_rows));reconstruction.append(tuple(face_residuals))
+            raw_face_expressions.append(tuple(face_expressions))
         depth = result['OPEN_BULK_CURRENT_COEFFICIENTS'][3]
         e = next(s for s in depth.free_symbols if s.name == 'epsilon_shape')
         free_amps = {s:sp.S.One for s in depth.free_symbols
                      if s.name in ('s11cdAcousticLeftAmplitude', 's11cdAcousticRightAmplitude')}
         depth = bind(sp.Poly(depth,e).nth(2), label, {**mapping, **free_amps})
         carrier = carrier_law_check(label,result,mapping,depth)
-        denominators = tuple(dict.fromkeys(sp.denom(sp.cancel(x)) for x in
-            [*matrix, *restricted, *gram, *[z for m in currents.values() for z in m],
-             *[z for row in rows for m in row.values() for z in m]]))
+        denominator_operands = [*raw_matrix,*raw_restricted,*raw_weak,*raw_gram,
+            *[value for current in currents.values() for value in current],
+            *[value for face in rows for row in face for coefficients in row.values() for value in coefficients]]
+        raw_source_values = [*result['CLOSED_PENCIL_LEGS'][0],
+            *[value for name in currents for value in result[name]],
+            *[expression for face in raw_face_expressions for leg in face for expression in leg.values()]]
+        carried_symbols = {symbol:symbol for columns in amplitude_legs for symbol in columns}
+        carried_symbols.update({symbol:symbol for value in raw_source_values for symbol in value.free_symbols
+                                if symbol.name=='epsilon_shape'})
+        saved_source_factors = raw_denominators(raw_source_values)
+        bound_saved_source_factors = tuple(bind(factor,label,{**mapping,**carried_symbols})
+                                          for factor in saved_source_factors)
+        denominators = tuple(dict.fromkeys((*raw_denominators(denominator_operands),*bound_saved_source_factors)))
         coupling = [uniform['records'][label]['coupling'][name] for name in ('TH','HT')]
         checks = dict(sourceJoin=zero(source_join), waveJoin=zero(wave_join),
             suppliedCurlJoin=zero(common_curl_join), carrierLawAndNormalization=carrier['joins'],
@@ -434,12 +468,16 @@ def construct(spec, out, journal):
             rawTDenominators=raw_t_denominators, chart=sp.factor(gram.det()), restricted=restricted, weak=weak,
             invariantResidual=invariant, weakHermitianResidual=weak-weak.H,
             currents=currents, gradeResiduals=grade_residuals, drives=rows,
+            harmonicAmplitudeColumns=amplitude_legs,rawSavedFaceExpressions=raw_face_expressions,
+            sourceDenominatorOperands=denominator_operands,
+            rawSavedSourceDenominatorFactors=saved_source_factors,
+            boundSavedSourceDenominatorFactors=bound_saved_source_factors,
             driveReconstruction=reconstruction, flatExteriorJoins=flat_exterior, sourceDenominators=denominators,
             outgoingDepthCoefficient=depth, carrierLawCheck=carrier,
             flatExteriorJoinScope='SOURCE_INTERNAL_CONSISTENCY_NOT_INDEPENDENT_CLOSURE',dimensions=dimensions)
 
     def faces(bound):
-        lift = bound['lift']; records = []
+        plus_lift = bound['lift']; records = []
         literals = []
         if bound['end'] == 'REFERENCE':
             for item in face_index['records']:
@@ -449,69 +487,98 @@ def construct(spec, out, journal):
                     if hashlib.sha256(text.encode()).hexdigest() != identity['literalSha256']:
                         raise IntegrityError('c2 index literal changed')
                     expression = sp.sympify(text)
-                    field = next(s for s in expression.free_symbols if s.name == 'e_W_t')
-                    literals.append(dict(indexFaceLabel=item['face'], source=expression,
-                        coefficient=bind(expression,'REFERENCE',{field:-sp.I*w}),
-                        literalSha256=identity['literalSha256']))
-        for index,row in enumerate(bound['drives']):
-            contractions = {name:clean(row[name]*lift) for name in DRIVES}
-            loaded_controls = []
-            for name in DRIVES:
-                urow = row[name][:,:3]
-                if zero(urow):
-                    loaded_controls.append(dict(drive=name,status='NOT_APPLICABLE_NO_U_DEPENDENCE',
-                        originalRow=row[name],uRow=urow,baseline=contractions[name]))
-                    continue
-                terms = [(slot,term) for slot in range(3)
-                         for term in sp.Add.make_args(sp.expand(row[name][0,slot])) if term!=0]
-                columns = []
-                for column in range(lift.cols):
-                    contributions = [(slot,term,sp.cancel(term*lift[slot,column])) for slot,term in terms]
-                    loaded = [item for item in contributions if item[2].is_zero is False]
-                    if not loaded:
-                        structural = all(value==0 for _,_,value in contributions)
-                        columns.append(dict(column=column,contributions=contributions,
-                            status='NOT_APPLICABLE_STRUCTURALLY_UNLOADED_COLUMN' if structural else 'UNRESOLVED'))
+                    field = next(symbol for symbol in expression.free_symbols if symbol.name=='e_W_t')
+                    literals.append(dict(indexFaceLabel=item['face'],source=expression,
+                        coefficientsByHarmonicLeg=tuple(bind(expression,'REFERENCE',{field:rate})
+                            for rate in (-sp.I*w,sp.I*w)),literalSha256=identity['literalSha256']))
+        for index,face_rows in enumerate(bound['drives']):
+            for leg,row in enumerate(face_rows):
+                lift = plus_lift if leg==0 else sp.conjugate(plus_lift)
+                contractions = {name:clean(row[name]*lift) for name in DRIVES}
+                loaded_controls = []
+                for name in DRIVES:
+                    urow = row[name][:,:3]
+                    if zero(urow):
+                        loaded_controls.append(dict(drive=name,status='NOT_APPLICABLE_NO_U_DEPENDENCE',
+                            originalRow=row[name],uRow=urow,baseline=contractions[name]))
                         continue
-                    slot,term,contribution = loaded[0]
-                    mutated = sp.MutableDenseMatrix(row[name]); mutated[0,slot] -= term
-                    before = clean(row[name]*lift[:,column])
-                    after = clean(mutated*lift[:,column]); movement = clean(after-before)
-                    columns.append(dict(column=column,slot=slot,omittedNativeUTerm=term,
-                        sourceContributions=contributions,originalRow=row[name],mutatedRow=mutated,
-                        fixedLoadedLift=lift[:,column],before=before,after=after,movement=movement,
-                        status='RESPONSIVE' if not zero(movement) else 'UNRESOLVED'))
-                supported = all(item['status']!='UNRESOLVED' for item in columns)
-                loaded_controls.append(dict(drive=name,status='SUPPORTED_LOADED_DEPENDENCE' if supported else 'UNRESOLVED',
-                    originalRow=row[name],baseline=contractions[name],columns=columns))
-            original = row['OUTWARD_VELOCITY']
-            e_probe = sp.eye(5)[:,4]
-            changed = sp.MutableDenseMatrix(original); changed[0,4]=0
-            ew = dict(scope='NATIVE_E_SLOT_PRESENCE_ONLY_NOT_T_ZERO_CONTROL',originalRow=original,
-                changedRow=changed,physicalFieldCoordinateProbe=e_probe,
-                before=original*e_probe,after=changed*e_probe,difference=clean((changed-original)*e_probe))
-            probes = [dict(kind='SAVED_CURL_GAUGE_DIRECTION_EMBEDDED_AS_U_PROBE',vector=probe,
-                normalization='Arbitrary coordinate probe; not a normalized physical longitudinal mode',
-                values={name:clean(row[name]*probe) for name in DRIVES})
-                for probe in bound['longitudinalDirectionProbes']]
-            probes.append(dict(kind='E_FIELD_COORDINATE_PROBE',vector=e_probe,
-                normalization='Unit coefficient in the saved E reference-unit coordinate',
-                values={name:clean(row[name]*e_probe) for name in DRIVES}))
-            # The readable index is orientation-blind: equal literal values do
-            # not independently validate assignment of the two physical faces.
-            joins = [sp.cancel(original[0,4]-item['coefficient']) for item in literals]
-            records.append(dict(faceOrdinal=index,nativeSourceOrientation=face_order[index],
-                nativeRows=row,lift=lift,contractions=contractions,driveZero=zero(contractions),
-                loadedUTermControls=loaded_controls,nontransverseSourceProbes=probes,eWPresenceDiagnostic=ew,
-                c2IndexLiteralJoins=joins,c2IndexLiteralSupported=(len(literals)==2) if bound['end']=='REFERENCE' else None,
-                c2OrientationIndependentlyChecked=False))
-        forms = {name:clean(lift.H*matrix*lift) for name,matrix in bound['currents'].items()
+                    terms = [(slot,term) for slot in range(3)
+                             for term in sp.Add.make_args(sp.expand(row[name][0,slot])) if term!=0]
+                    columns = []
+                    for column in range(lift.cols):
+                        contributions = [(slot,term,sp.cancel(term*lift[slot,column])) for slot,term in terms]
+                        rational = all(value.is_rational_function(w,v,k,q,qb) is True
+                                       for _,_,value in contributions)
+                        # Exact rational identity, not an assumptions-based
+                        # nonzero-at-every-point claim on the k/v domain.
+                        loaded = [item for item in contributions if item[2]!=0] if rational else []
+                        if not loaded:
+                            structural = rational and all(value==0 for _,_,value in contributions)
+                            columns.append(dict(column=column,contributions=contributions,
+                                status='NOT_APPLICABLE_STRUCTURALLY_UNLOADED_COLUMN' if structural else 'UNRESOLVED'))
+                            continue
+                        slot,term,contribution = loaded[0]
+                        mutated = sp.MutableDenseMatrix(row[name]); mutated[0,slot]-=term
+                        before = row[name]*lift[:,column]
+                        after = mutated*lift[:,column]; raw_movement = after-before
+                        movement = clean(raw_movement)
+                        columns.append(dict(column=column,slot=slot,omittedNativeUTerm=term,
+                            sourceContributions=contributions,originalRow=row[name],mutatedRow=mutated,
+                            fixedLoadedLift=lift[:,column],before=before,after=after,
+                            rawMovement=raw_movement,reducedMovement=movement,
+                            status='GENERIC_RATIONAL_NONIDENTITY' if not zero(movement) else 'UNRESOLVED',
+                            pointwiseNonzeroClaim=False))
+                    supported = all(item['status']!='UNRESOLVED' for item in columns)
+                    loaded_controls.append(dict(drive=name,status='SUPPORTED_GENERIC_DEPENDENCE' if supported else 'UNRESOLVED',
+                        originalRow=row[name],baseline=contractions[name],columns=columns))
+                slot_diagnostics = []
+                for name in DRIVES:
+                    for slot,field_name in ((3,'Theta'),(4,'E')):
+                        original = row[name]; probe = sp.eye(5)[:,slot]
+                        changed = sp.MutableDenseMatrix(original);changed[0,slot]=0
+                        before,after = original*probe,changed*probe
+                        raw_difference = after-before; reduced = clean(raw_difference)
+                        coefficient = sp.cancel(original[0,slot])
+                        rational = coefficient.is_rational_function(w,v,k,q,qb) is True
+                        status = ('NOT_APPLICABLE_STRUCTURAL_ZERO' if coefficient==0 else
+                                  'GENERIC_COEFFICIENT_PRESENT' if rational else 'UNRESOLVED')
+                        slot_diagnostics.append(dict(drive=name,field=field_name,slot=slot,status=status,
+                            scope='NATIVE_SLOT_PRESENCE_ONLY_NOT_T_CANCELLATION_OR_POWER',
+                            originalRow=original,changedRow=changed,probe=probe,before=before,after=after,
+                            rawDifference=raw_difference,reducedDifference=reduced,coefficient=coefficient))
+                ew = next(item for item in slot_diagnostics
+                          if item['drive']=='OUTWARD_VELOCITY' and item['field']=='E')
+                scaled_velocity_coefficient = sp.cancel(ew['coefficient']/w)
+                ew_calibrated = (not scaled_velocity_coefficient.free_symbols
+                                 and scaled_velocity_coefficient!=0 and w.is_positive is True)
+                ew = dict(ew,frequencyNormalizedCoefficient=scaled_velocity_coefficient,
+                          frequencyDomain=sp.Gt(w,0,evaluate=False),presenceCalibrationSupported=ew_calibrated)
+                probe_vectors = [probe if leg==0 else sp.conjugate(probe)
+                                 for probe in bound['longitudinalDirectionProbes']]
+                probes = [dict(kind='SAVED_CURL_GAUGE_DIRECTION_EMBEDDED_AS_U_PROBE',vector=probe,
+                    normalization='Arbitrary coordinate probe; not a normalized physical longitudinal mode',
+                    values={name:row[name]*probe for name in DRIVES}) for probe in probe_vectors]
+                # Index values are orientation-blind. The two harmonic signs
+                # come from their actual time characters, not face orientation.
+                original_velocity = row['OUTWARD_VELOCITY']
+                joins = [sp.cancel(original_velocity[0,4]-item['coefficientsByHarmonicLeg'][leg]) for item in literals]
+                records.append(dict(faceOrdinal=index,nativeSourceOrientation=face_order[index],harmonicLeg=leg,
+                    harmonicMeaning='POSITIVE_CHARACTER' if leg==0 else 'NEGATIVE_CONJUGATE_CHARACTER',
+                    amplitudeColumns=bound['harmonicAmplitudeColumns'][leg],nativeRows=row,lift=lift,
+                    contractions=contractions,driveZero=zero(contractions),loadedUTermControls=loaded_controls,
+                    nontransverseSourceProbes=probes,nativeThetaESlotDiagnostics=slot_diagnostics,
+                    eWPresenceCalibration=ew,c2IndexLiteralJoins=joins,
+                    c2IndexLiteralSupported=(len(literals)==2) if bound['end']=='REFERENCE' else None,
+                    c2OrientationIndependentlyChecked=False))
+        forms = {name:clean(plus_lift.H*matrix*plus_lift) for name,matrix in bound['currents'].items()
                  if name!='SLAB_CURRENT_MATRIX'}
-        checks = dict(allDrivesZero=all(item['driveZero'] for item in records),
+        checks = dict(allHarmonicDrivesZero=all(item['driveZero'] for item in records),
+            nativeEVelocityPresence=all(item['eWPresenceCalibration']['presenceCalibrationSupported'] for item in records),
             loadedUControls=all(control['status']!='UNRESOLVED' for item in records for control in item['loadedUTermControls']),
             c2IndexLiteral=(bound['end']!='REFERENCE' or all(item['c2IndexLiteralSupported'] and
                 zero(item['c2IndexLiteralJoins']) for item in records)),lossSideFormsZero=zero(forms))
         return dict(end=bound['end'],faces=records,physicalForms=forms,checks=checks,
+            harmonicLegScope='BOTH_SAVED_REAL_FIELD_LEGS_NOT_TWO_ACOUSTIC_INCIDENCE_WAVES',
             c2LiteralEvidence=literals,c2EvidenceScope='ORIENTATION_BLIND_INDEX_LITERAL_ONLY',
             flatExteriorSourceInternalJoins=bound['flatExteriorJoins'],
             c2PressureTraceFirstShapeJoin='NOT_SUPPORTED_BY_THIS_INPUT_INDEX')
@@ -576,26 +643,114 @@ def construct(spec, out, journal):
             coverage=(distinct==len(intervals)), **data)
 
     def no_pole_interval(expression, bound, point, interval, depth_sign):
-        lo, hi = interval
-        specialized = sp.cancel(expression.subs({w:point['omega'],v:point['ray'],qb:depth_sign*q}))
-        numerator, denominator = sp.fraction(specialized)
-        certificates = []
-        q2 = sp.cancel(bound['q2'].subs({w:point['omega'],v:point['ray']}))
-        for value in (numerator,denominator):
-            reduced = sp.rem(sp.Poly(value,q),sp.Poly(q*q-q2,q)).as_expr()
-            norm = sp.cancel(reduced*reduced.xreplace({q:-q}))
-            norm = sp.rem(sp.Poly(sp.fraction(norm)[0],q),sp.Poly(q*q-q2,q)).as_expr()
-            real_norm = sp.cancel(norm*sp.conjugate(norm))
-            polys = [sp.Poly(x,k,domain=sp.QQ) for x in sp.fraction(real_norm)]
-            counts = [None if p.is_zero else (p.count_roots(lo,hi) if p.degree()>0 else 0) for p in polys]
-            certificates.append(dict(reduced=reduced, norm=norm, realNorm=real_norm,
-                                     polynomialNumerator=polys[0].as_expr(), polynomialDenominator=polys[1].as_expr(),
-                                     intervalRootCounts=counts))
-        return dict(expression=expression, specialized=specialized, certificates=certificates,
-                    excluded=any(c != 0 for item in certificates for c in item['intervalRootCounts']))
+        lo,hi = interval
+        mapping = {w:point['omega'],v:point['ray'],qb:depth_sign*q}
+        specialized = expression.subs(mapping)
+        q2_raw = bound['q2'].subs({w:point['omega'],v:point['ray']})
+        q2 = sp.cancel(q2_raw)
+        stages,zero_tests,coefficient_factors = [],[],[]
+        pending = [('source',specialized)]
+        queued = {specialized}
+        seen_factors = set()
+
+        def retain_factor(value, stage):
+            if value.has(q):
+                if value not in queued:
+                    queued.add(value);pending.append((stage,value))
+            elif value not in seen_factors:
+                seen_factors.add(value);coefficient_factors.append((stage,value))
+
+        def split(value, stage):
+            # Preserve the source expression and its uncancelled negative-power
+            # factors before together/cancel can merge removable factors.
+            literal = raw_denominators([value])
+            together = sp.together(value)
+            numerator,denominator = sp.fraction(together)
+            for factor in (*literal,*raw_denominators([together])):
+                retain_factor(factor,stage+'-domain-factor')
+            stages.append(dict(stage=stage,raw=value,together=together,
+                numerator=numerator,denominator=denominator,uncancelledFactors=literal))
+            return numerator,denominator
+
+        def reduce_polynomial(value, stage):
+            polynomial = sp.Poly(value,q,domain='EX')
+            modulus = sp.Poly(q*q-q2,q,domain='EX')
+            before_factors = raw_denominators([*polynomial.all_coeffs(),*modulus.all_coeffs()])
+            for factor in before_factors:
+                retain_factor(factor,stage+'-input-coefficient-denominator')
+            reduced_poly = sp.rem(polynomial,modulus)
+            after_factors = raw_denominators(reduced_poly.all_coeffs())
+            for factor in after_factors:
+                retain_factor(factor,stage+'-introduced-coefficient-denominator')
+            reduced = reduced_poly.as_expr()
+            stages.append(dict(stage=stage,polynomial=polynomial.as_expr(),modulus=modulus.as_expr(),
+                reduced=reduced,inputCoefficientDenominators=before_factors,
+                outputCoefficientDenominators=after_factors))
+            return reduced
+
+        try:
+            for factor in raw_denominators([q2_raw]):
+                retain_factor(factor,'physical-quadratic-coefficient-denominator')
+            cursor = 0
+            while cursor<len(pending):
+                name,value = pending[cursor];cursor+=1
+                numerator,denominator = split(value,name+'-fraction')
+                for side,part in (('numerator',numerator),('denominator',denominator)):
+                    tag = name+'-'+side
+                    reduced = reduce_polynomial(part,tag+'-quadratic-reduction')
+                    # This product is a rational expression. Both its numerator
+                    # AND denominator are reduced and retained independently.
+                    product = sp.Mul(reduced,reduced.xreplace({q:-q}),evaluate=False)
+                    product_n,product_d = split(product,tag+'-opposite-sheet-product')
+                    norm_n = reduce_polynomial(product_n,tag+'-norm-numerator')
+                    norm_d = reduce_polynomial(product_d,tag+'-norm-denominator')
+                    stages.append(dict(stage=tag+'-norm-rational-pair',
+                        numerator=norm_n,denominator=norm_d,uncancelledProduct=product))
+                    if norm_n.has(q) or norm_d.has(q):
+                        raise ValueError('unsupported residual depth dependence in denominator norm')
+                    retain_factor(norm_n,tag+'-norm-numerator-nonzero')
+                    retain_factor(norm_d,tag+'-norm-denominator-nonzero')
+            # Every retained scalar factor is tested on this root interval only.
+            # Complex rational coefficients use a real/imaginary gcd; neither
+            # an identically zero numerator nor an unsupported domain passes.
+            for stage,value in coefficient_factors:
+                numerator,denominator = sp.fraction(sp.together(value))
+                tests = []
+                for side,part in (('numerator',numerator),('denominator',denominator)):
+                    real,imag = map(sp.expand,part.as_real_imag())
+                    rp,ip = sp.Poly(real,k,domain=sp.QQ),sp.Poly(imag,k,domain=sp.QQ)
+                    if rp.is_zero and ip.is_zero:
+                        tests.append(dict(side=side,real=real,imaginary=imag,identicallyZero=True,intervalRootCount=None))
+                    else:
+                        gcd = sp.gcd(rp,ip)
+                        tests.append(dict(side=side,real=real,imaginary=imag,gcd=gcd.as_expr(),
+                            identicallyZero=False,intervalRootCount=gcd.count_roots(lo,hi) if gcd.degree()>0 else 0))
+                zero_tests.append(dict(stage=stage,factor=value,numerator=numerator,denominator=denominator,tests=tests))
+        except (sp.PolynomialError,sp.polys.polyerrors.CoercionFailed,ValueError) as error:
+            return dict(status='UNRESOLVED',expression=expression,specialized=specialized,
+                quadratic=q2_raw,stages=stages,retainedCoefficientFactors=coefficient_factors,
+                tests=zero_tests,unsupportedType=type(error).__name__,unsupportedReason=str(error),excluded=True)
+        supported = all(test['intervalRootCount']==0 for entry in zero_tests for test in entry['tests'])
+        return dict(status='CERTIFIED_ON_INTERVAL' if supported else 'UNRESOLVED',
+            expression=expression,specialized=specialized,quadratic=q2_raw,stages=stages,
+            retainedCoefficientFactors=coefficient_factors,tests=zero_tests,excluded=not supported)
 
     def numeric(matrix, mapping):
         return np.asarray(matrix.subs(mapping).evalf(40).tolist(), dtype=complex)
+
+    def numerical_face_legs(bound,mapping,basis):
+        records = []
+        for face_index_value,face_rows in enumerate(bound['drives']):
+            for leg,row in enumerate(face_rows):
+                loaded_basis = basis if leg==0 else basis.conj()
+                native_rows = {name:numeric(row[name],mapping) for name in DRIVES}
+                contractions = {name:value@loaded_basis for name,value in native_rows.items()}
+                e_coefficient = native_rows['OUTWARD_VELOCITY'][0,4]
+                records.append(dict(faceOrdinal=face_index_value,harmonicLeg=leg,
+                    nativeRows=native_rows,loadedBasis=loaded_basis,contractions=contractions,
+                    nativeEVelocityCoefficient=e_coefficient,
+                    nativeEVelocityPresent=abs(e_coefficient)>1e-12))
+        return records
 
     def loaded_control(bound, symbol, mapping, basis, scale):
         matrix = bound['matrix']; records = []
@@ -688,7 +843,7 @@ def construct(spec, out, journal):
             return dict(base, reason='PHYSICAL_FULL_PENCIL_RESIDUAL', basis=basis, residual=residual)
         forms = {name:basis.conj().T@numeric(value,mapping)@basis
                  for name,value in bound['currents'].items()}
-        face = [{name:numeric(row[name],mapping)@basis for name in DRIVES} for row in bound['drives']]
+        face = numerical_face_legs(bound,mapping,basis)
         current = forms['SLAB_CURRENT_MATRIX']; hermitian = current-current.conj().T
         eig, rotation = np.linalg.eigh((current+current.conj().T)/2)
         depth_coefficient = complex(bound['outgoingDepthCoefficient'].subs(mapping).evalf(40))
@@ -701,7 +856,8 @@ def construct(spec, out, journal):
                     rotation=rotation, controls=controls, outgoingDepthCoefficient=depth_coefficient)
         if q2.is_positive and (abs(depth_coefficient.imag)>1e-10 or depth_coefficient.real<=0):
             return dict(base, reason='OUTGOING_DEPTH_SIGN_UNRESOLVED')
-        if any(np.linalg.norm(x)>1e-8 for row in face for x in row.values()) or any(
+        if any(not item['nativeEVelocityPresent'] for item in face) or any(
+                np.linalg.norm(value)>1e-8 for item in face for value in item['contractions'].values()) or any(
                 np.linalg.norm(value)>1e-8 for name,value in forms.items() if name!='SLAB_CURRENT_MATRIX'):
             return dict(base, reason='LOSS_SIDE_T_DRIVE_OR_FORM_NOT_ZERO')
         if np.linalg.norm(hermitian)>1e-8*max(1.,np.linalg.norm(current)) or np.min(np.abs(eig))<1e-9:
@@ -727,8 +883,7 @@ def construct(spec, out, journal):
         scale = np.maximum(np.linalg.norm(matrix,axis=1),1.)
         pencil_join = (matrix-np.asarray(old['pencil'],complex))/scale[:,None]
         kernel = (matrix/scale[:,None])@right
-        face = [{name:numeric(row[name],mapping)@right for name in DRIVES}
-                for row in bound['drives']]
+        face = numerical_face_legs(bound,mapping,right)
         slab = numeric(bound['currents']['SLAB_CURRENT_MATRIX'],mapping)
         bulk = numeric(bound['currents']['BULK_NORMAL_CURRENT_DENSITY_MATRIX'],mapping)
         current = right.conj().T@slab@right
@@ -757,7 +912,8 @@ def construct(spec, out, journal):
             savedPhysicalDepth=(depth_evidence[0]['supported'] and not depth_evidence[1]['supported']),
             slabCurrentOperands=np.linalg.norm(operand_joins['slab'])<1e-8,
             bulkCurrentOperands=np.linalg.norm(operand_joins['bulk'])<1e-8,
-            undriven=all(np.linalg.norm(value)<1e-8 for row in face for value in row.values()),
+            nativeEVelocityPresence=all(item['nativeEVelocityPresent'] for item in face),
+            undriven=all(np.linalg.norm(value)<1e-8 for item in face for value in item['contractions'].values()),
             projectedBulk=np.linalg.norm(projected_bulk)<1e-8,
             currentGram=('currentGram' in old and np.linalg.norm(current_join)<1e-8),
             controls=all(item['status']=='RESPONSIVE' for item in controls))

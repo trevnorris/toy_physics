@@ -94,12 +94,21 @@ contractions, source identities and unit context before guards. Test the native
 eW-velocity omission on an independently addressed nontransverse probe; also
 check dependence of the transverse-zero test on its physical source/lift slots.
 A zero contraction is a result to inspect, not an answer built into the source.
+Account for both saved harmonic legs of each physical face, with their actual
+Plus/Minus amplitude maps and conjugate physical lifts/bases. An untested
+conjugacy assumption cannot replace the second map. Require the source's
+outward-velocity E-slot presence calibration on each leg, separately from its
+structural T zero. Other theta/E probes retain structural-zero cases rather
+than imposing nonzero optional couplings.
 Use the accepted common packet's longitudinal gauge vector and the physical
 eW ansatz column as nontransverse probes. For cancellations across loaded U
 slots, omit an addressed term and contract the changed row with the actual
 transverse columns. Rows with structural zero U-dependence get an explicit
 nonapplicable cancellation control. Unit-slot coefficient presence alone
 does not validate transverse-drive cancellation.
+Generic loaded-term selection tests exact rational-expression identity; an
+undecided `.is_zero` flag is not a negative result. Generic nonidentity is not
+pointwise nonzero movement. Keep the actual per-polarization point checks.
 
 The supplied readable c2 index contains **velocity identifications only**.
 Join those exact values, their face addresses and harmonic convention. This is
@@ -151,6 +160,10 @@ If later authorized, one ordinary worker must use unchanged
 global locking and hook first. No overlap, fallback, retry or inherited unlimited
 duration. Any saved-output validator needs its own bounded authorization/gate.
 Whole-job timeout must not be swallowed by an optional-operation handler.
+The per-root pole certificate retains uncancelled numerator, denominator and
+introduced coefficient-denominator factors through every quadratic reduction;
+count their real zeros on the root interval before supporting availability.
+Unsupported certificates stay unresolved.
 Measure actual cost before proposing further work; no response runtime is
 inferred from an end-pencil or document-review duration.
 

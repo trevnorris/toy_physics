@@ -1,5 +1,40 @@
 # S11c-d: the remaining execution queue
 
+**Current result — transverse/face round 3 (2026-09-28 local):** Claude
+literally CLEAR FOR THIS BOUNDED TRANSVERSE/FACE BUILD; Grok NEEDS REVISION.
+Both finished; packet, archive, inputs and report hashes match. One material
+saved-seed current comparison needs correction: the producer's historical Gram
+includes depth-weighted bulk current, and its old decay-normalization flag
+must be separated from recomputed transverse evidence. See
+`S11c_d_transverse_face_premise_review_r3_disposition.md` and literal record.
+Preserve this exact reviewed baseline before the bounded repair/fresh review.
+No science or author clearance. After build clearance return the costed
+outgoing-field/power plan, with unmeasured-cost uncertainty, and stop for user
+go/no-go before any run. Optional wording/hardening stays deferred.
+
+**Current status — transverse/face round-3 reviews running (2026-09-28 local):**
+the user explicitly approved the exact 24-file / 561,604-byte revised packet
+and Claude/Grok destinations with “I approve.” The automatic no-start refusal
+remains preserved. The unchanged packet launched with the local completion
+hook armed first. One host startup inspection at 01:37:50 UTC on September 29
+verified coordinator, watcher and fresh Claude alive; Grok is queued sequentially.
+See `S11c_d_transverse_face_premise_review_r3_preparation.json`. Both reports
+must finish before adjudication or edits. No science, peer sharing, transport
+retry or model polling. After build clearance, return the costed outgoing-field/
+power plan and stop for user go/no-go before any scientific run.
+
+**Current preparation — transverse/face round 3 (2026-09-28 local):** exact
+round-2 source/reports are preserved at `b7d41f7f`. The five local corrections
+are written; AST/whitespace checks pass, no mathematical execution. Fresh review
+packet: same 24 files, 561,604 bytes, SHA-256
+`d1ddafe76f01120aafd9105d120cb52ddf587fb4e0f1c86290de1e4a172360ab`.
+All 18 source-evidence members and physical inputs are unchanged. Automatic
+export approval nevertheless requires this revised payload's explicit consent;
+no process started and no bypass/retry occurred. See
+`S11c_d_transverse_face_premise_review_r3_preparation.json`. No independent
+CLEAR is claimed. After build clearance, return the costed field/power plan
+and stop for user go/no-go before any science. Thickness classification deferred.
+
 **Current result — transverse/face round 2 needs revision (2026-09-28 local):**
 both reviewers again literally returned NEEDS REVISION. All packet, source,
 input and report hashes match; both finished before adjudication. The remaining

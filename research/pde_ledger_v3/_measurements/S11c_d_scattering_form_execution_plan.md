@@ -1,5 +1,23 @@
 # S11c-d: the remaining execution queue
 
+**RIGHT-only 16 GiB continuation prepared (2026-09-29):** user explicitly
+approved 16 GB and had already approved desktop-managed priority and longer
+running while saved results progress. This prepares execution 6, preserving
+execution 5's partial result. New worker restores all 23 completed operations,
+all prior files and the 15 RIGHT bundles; new scalar work begins at entry 55.
+No REFERENCE/LEFT recalculation, no scheduler changes. Both native/cgroup caps
+are 16 GiB; zero swap/one CPU/32 tasks/one thread and 3600s saved-result inactivity
+(+60s bookkeeping) remain. Two exact matrix-storage codec classes are admitted
+from the static census, without restoring scientific payloads in preparation.
+All 1364 input pins and synthetic extraction/guard checks pass; this is not
+independent build clearance or a scientific result. Fresh Claude/Grok packet
+74 files / 2962084 bytes, SHA256
+`10a92ac1f410a921ba2efbc81f5180d779e9a4e673d007e3382fed66adcea8fb`,
+is ready and awaiting exact external-submission consent. No review/science
+launched and no READY gate created. After clearance the existing authorization
+covers one right-end continuation; stop after its actual result. See
+`S11c_d_transverse_face_right_finish_scope.md` and review preparation.
+
 **Execution 5 completion audited: selected REFERENCE/LEFT supported; RIGHT memory failure (2026-09-29):**
 at omega1/tangents(1/5,1/10), both selected seeds pass transverse/current joins
 for REFERENCE and LEFT, and all tested native face drives/projected loss-side

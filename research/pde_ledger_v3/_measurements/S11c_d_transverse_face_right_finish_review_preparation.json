@@ -1,0 +1,406 @@
+{
+  "status": "PREPARED_AWAITING_EXACT_PACKET_SUBMISSION_APPROVAL",
+  "preparedUtc": "2026-09-29T21:26:38.507014+00:00",
+  "priorCompletionCommit": "79e7cfc9",
+  "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/right-finish-build-review",
+  "packetSha256": "10a92ac1f410a921ba2efbc81f5180d779e9a4e673d007e3382fed66adcea8fb",
+  "archiveSha256": "c5798a621c994a662f26bd1a4e59063bef78a4d79499fec5467538a94d7ee77e",
+  "packetFiles": 74,
+  "packetBytes": 2962084,
+  "sourceRecords": [
+    {
+      "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/LEFT-restore-current.json",
+      "sourceSha256": "94e35024559cf67501f6a17512bff965ec0e88089204389bfd6bbead4edb06b6",
+      "bytes": 1285
+    },
+    {
+      "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/LEFT-restore-original-symbol.json",
+      "sourceSha256": "d205477353554a6f32127c24ac8ad32464982f74f1158de378974240effbc18f",
+      "bytes": 1299
+    },
+    {
+      "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/LEFT-restore-seed-16.json",
+      "sourceSha256": "6da650a28183679375d3e7b294f8cd89e39a56309998f68c09e06c731fdbf4f0",
+      "bytes": 1339
+    },
+    {
+      "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/LEFT-restore-seed-17.json",
+      "sourceSha256": "eca5e95872288b422d93e8ccafaf73b4a66769f4ba1ed32bc617398fae6cc9ff",
+      "bytes": 1339
+    },
+    {
+      "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/LEFT-source-bind.json",
+      "sourceSha256": "4a564eb60b085b0917531d1b6c7e3341cb45344bae5da6925eac11778192a4a5",
+      "bytes": 2483
+    },
+    {
+      "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/REFERENCE-restore-current.json",
+      "sourceSha256": "8d17c9600b54493c240ec7fd10504170cc8fa9cb30b1dde6e88a00bf49b6a136",
+      "bytes": 1295
+    },
+    {
+      "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/REFERENCE-restore-original-symbol.json",
+      "sourceSha256": "e388769443b9b2081f9a22b6b1b1650fa492b64c1ae469939d011019690a6bed",
+      "bytes": 1309
+    },
+    {
+      "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/REFERENCE-restore-seed-16.json",
+      "sourceSha256": "39a5245e539e505182ad5b1fdbe782b28fb87bdfe1b6a363fbec1333bbfadd9e",
+      "bytes": 1349
+    },
+    {
+      "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/REFERENCE-restore-seed-17.json",
+      "sourceSha256": "50b7a5baa0e25e0b60a53f96a0d3cb0a7b9ec904ddb6a4fecb845a42d80350d9",
+      "bytes": 1349
+    },
+    {
+      "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/REFERENCE-source-bind.json",
+      "sourceSha256": "35843c8d8dbdfa5815917387869162fc28f661fb4076adc56bc6c88cf1bb9188",
+      "bytes": 2493
+    },
+    {
+      "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/RIGHT-restore-current.json",
+      "sourceSha256": "fe2fe1ee143bfeb349b19a89d69adb7844ade9bcf21e89cb72d7213377218c54",
+      "bytes": 1287
+    },
+    {
+      "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/RIGHT-restore-original-symbol.json",
+      "sourceSha256": "2a8e53c32f048b2c4086068e17c153d0e48c7d279cb8584a875069bd91188d48",
+      "bytes": 1302
+    },
+    {
+      "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/checks.json",
+      "sourceSha256": "45b6d4680a1afa2a8b791446b566eff0943f486b6aec0d0939db0d1d57181da5",
+      "bytes": 814
+    },
+    {
+      "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/complete-return-reuse.json",
+      "sourceSha256": "717b95a559c92256d05e201ef904df0bab00420e51308b4d0d81f8e96320dd6a",
+      "bytes": 6963
+    },
+    {
+      "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/operation-index.json",
+      "sourceSha256": "551cec85a38ff70345e3bf0157711b1cdc4cd652586a3bd3f61dd3e9167980f7",
+      "bytes": 82681
+    },
+    {
+      "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/operations/0023-RIGHT-source-bind/fixed-point-incomplete-input-join.json",
+      "sourceSha256": "92152368228255b3f01b78facca10936fea3be6e45ccdee43f19a5cab5a08a65",
+      "bytes": 23398
+    },
+    {
+      "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/operations/0023-RIGHT-source-bind/input-references.json",
+      "sourceSha256": "2c42a240009ecb13af433a97af58ab938faa19ab4361a1a693747bec641a019b",
+      "bytes": 1763
+    },
+    {
+      "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/operations/0023-RIGHT-source-bind/prior-argument-join.json",
+      "sourceSha256": "bc66e98239d10791d0cffd9f5fe8b658662d25c24d9f919729db64edc9548c25",
+      "bytes": 13546
+    },
+    {
+      "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/operations/0023-RIGHT-source-bind/started.json",
+      "sourceSha256": "eba08b32c47bc40f9aef5a9c2455745b1e573f4c2f61c072f0294030b51bb1c7",
+      "bytes": 104
+    },
+    {
+      "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/operations/0023-RIGHT-source-bind/suboperations/BULK_NORMAL_CURRENT_DENSITY_MATRIX-specialized-input/complete.json",
+      "sourceSha256": "f12fcc3a269c9f390bbaf3b9b31bd82e94c19b32e6640dbe010442fecee4f407",
+      "bytes": 1394
+    },
+    {
+      "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/operations/0023-RIGHT-source-bind/suboperations/SLAB_CURRENT_MATRIX-carrier-return/complete.json",
+      "sourceSha256": "76379aa59063e6a33f312522f4b92944287d85e758bdb59006fc5105e971d5e5",
+      "bytes": 1356
+    },
+    {
+      "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/operations/0023-RIGHT-source-bind/suboperations/SLAB_CURRENT_MATRIX-end-specialization/complete.json",
+      "sourceSha256": "0b4dc02787f44ec04c413eb3f6a2c59a4e78d87588516cb7fa18186e6a3edb01",
+      "bytes": 1364
+    },
+    {
+      "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/operations/0023-RIGHT-source-bind/suboperations/SLAB_CURRENT_MATRIX-specialized-input/complete.json",
+      "sourceSha256": "8efbeec618db220c5023aabc680fc495ee5fd9f085b820048678166af730c78d",
+      "bytes": 1362
+    },
+    {
+      "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/operations/0023-RIGHT-source-bind/suboperations/carrier-entry-000052-input/complete.json",
+      "sourceSha256": "f19e110ad941bc735679253697038156f27ee05bd55326d8d5a2addf15bc837f",
+      "bytes": 608
+    },
+    {
+      "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/operations/0023-RIGHT-source-bind/suboperations/carrier-entry-000052-return/complete.json",
+      "sourceSha256": "e2f2b43e2fddd7a2479cdfa648971b0edb726bd9f75b4abd3e62660ed44909cd",
+      "bytes": 609
+    },
+    {
+      "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/operations/0023-RIGHT-source-bind/suboperations/carrier-entry-000053-input/complete.json",
+      "sourceSha256": "5112a2954ac7c94ed98e87934d496a72c849e02327874c7b88a6dcfa93f8160e",
+      "bytes": 608
+    },
+    {
+      "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/operations/0023-RIGHT-source-bind/suboperations/carrier-entry-000053-return/complete.json",
+      "sourceSha256": "edf2c4b048fa3ac16a8c458b10127f4915cf97c7af1ba1072df1beb17a8620db",
+      "bytes": 609
+    },
+    {
+      "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/operations/0023-RIGHT-source-bind/suboperations/carrier-entry-000054-input/complete.json",
+      "sourceSha256": "fd3038a6267454fd283eb2c98be30517722cf91e5a27ce09b788e92b4117c661",
+      "bytes": 608
+    },
+    {
+      "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/operations/0023-RIGHT-source-bind/suboperations/carrier-entry-000054-return/complete.json",
+      "sourceSha256": "23197a7b8dedcb5674a8ec930f696c49e73bc3375017acc49007bf7c8cd2d82f",
+      "bytes": 609
+    },
+    {
+      "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/operations/0023-RIGHT-source-bind/suboperations/carrier-entry-000055-input/complete.json",
+      "sourceSha256": "de3759ce2cb504e3b0625eba860ad4c9c81f7450c40c522fe95eec79a759eb68",
+      "bytes": 608
+    },
+    {
+      "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/operations/0023-RIGHT-source-bind/suboperations/recovered-unsaved-context/complete.json",
+      "sourceSha256": "cba94b30458cd06d57498331074d8adceb03fad69eb5bde2abf8326f8e0f7221",
+      "bytes": 607
+    },
+    {
+      "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/operations/0023-RIGHT-source-bind/suboperations/source-specialization/complete.json",
+      "sourceSha256": "e0a4c2cd383ec555737f544caeb90a93c4b972a7d11774df54dd78d99c7b3c7e",
+      "bytes": 1332
+    },
+    {
+      "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/operations/0023-RIGHT-source-bind/suboperations/transverse-restriction/complete.json",
+      "sourceSha256": "f94cf7557a64c7b56b0fd390f8a4359e96873f695854f3b428ae14079ee7eb5b",
+      "bytes": 1332
+    },
+    {
+      "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/operations/0023-RIGHT-source-bind/suboperations/wave-polynomial/complete.json",
+      "sourceSha256": "5a6c6d52cc0692c0d5004a8893eb52865e692c4055bb95d427a39cd449a61851",
+      "bytes": 1316
+    },
+    {
+      "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/operations/0023-RIGHT-source-bind/unresolved.json",
+      "sourceSha256": "86d856a77a0cb4898891981fee19f580db15ce960975a181eedb2ff7ea77aba5",
+      "bytes": 12694
+    },
+    {
+      "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/point-summary.json",
+      "sourceSha256": "fc8dc9a1f08092e8080a9bfdaa245a79bbd9f6024cc60ad3e8f03db8491fd24f",
+      "bytes": 1002
+    },
+    {
+      "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/restore-branch-context.json",
+      "sourceSha256": "a7ee1fa685104f2ddbc3f7f7f87b4883993058f70da524d1cb3226684d598cbb",
+      "bytes": 1290
+    },
+    {
+      "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/restore-uniform-common.json",
+      "sourceSha256": "8ea0d205aca4efc61b9e14428e4034ea6650d4f8dadcc3f8bef4dd8d0576dce7",
+      "bytes": 1289
+    },
+    {
+      "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/restore-uniform.json",
+      "sourceSha256": "34565375dfdfb7c81b0f162eb713f9afbd7b41bf51ec43d0041f82b1115acbab",
+      "bytes": 1274
+    },
+    {
+      "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/restore-unit-context.json",
+      "sourceSha256": "fa63baee262ae23225d2b3762d04440a901111f105f18230dfeef31139192f41",
+      "bytes": 1286
+    },
+    {
+      "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/restored-suboperations.json",
+      "sourceSha256": "ac1b1f1d9f11790d237957786ffad41e2da6198b531520e15f12ebcb7d4d1b51",
+      "bytes": 5760
+    },
+    {
+      "path": "_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/source-end-states.json",
+      "sourceSha256": "cec0e918d21ddd4cc7b2ad3683dd9b7c62678e959e2d10fff6ddae23e1ee558a",
+      "bytes": 125
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_A9_saved_face_drives.json",
+      "sourceSha256": "057c9960aa1c721d1973de85cc48e5d6ac3bcb20a233cfc10f63d6f9207d6bf8",
+      "bytes": 8224
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+      "sourceSha256": "45a16f7f952ca6b571362b1c386fec76cd86f1e0ad04113074adf49c683ec49c",
+      "bytes": 3347
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_end_pairing_check.py",
+      "sourceSha256": "1fcf86b0be819e2c7e9a2127d8330c907bcaccf58d1d15c3f1534d594d926dee",
+      "bytes": 10885
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_frequency_source.py",
+      "sourceSha256": "9be20be462bc10bfcaa7af643b9301948dd79bc2e08eb24ebcd1386a81efcdac",
+      "bytes": 29576
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_fixed_point.py",
+      "sourceSha256": "64cd6ea8ec7907edacd5fce9687c2072d3a235bd270c0ea483e8b76f18af9888",
+      "bytes": 84850
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_fixed_point_continue.py",
+      "sourceSha256": "5d38c329e8e15cff091c09584c1d33806fd8318f66a779fc10f2ae52d00e3135",
+      "bytes": 91220
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_fixed_point_continue_guard.py",
+      "sourceSha256": "1c2bef4f691555e98e20eec1ccb76c8861cfd92ce827ddc36caa19afc12f5ecd",
+      "bytes": 16216
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_fixed_point_continue_inputs.json",
+      "sourceSha256": "e78fc287fec25006d555ffb107d1fdcc6ef222554b3221d546c11331d05bb63b",
+      "bytes": 308201
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_fixed_point_inputs.json",
+      "sourceSha256": "01dc1264f1ac59490880b5d186e6b52cf65f2afb288dd9a1054741e57a0fc41c",
+      "bytes": 105826
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_fixed_point_saved_schema.json",
+      "sourceSha256": "d6849134dcf25af0587cc4b896522b829bcee8e3db09cf00ca406ca812b2d09f",
+      "bytes": 25329
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_fixed_point_scope.md",
+      "sourceSha256": "77cbebb09161688cd610a844fd054530c841fd0fda1e2b27a5cc5ddf7002240e",
+      "bytes": 4767
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_fixed_point_source_note.md",
+      "sourceSha256": "2750192756c5d0a768d6ea8ca78d1d342affddc86b3ed497cacc0005f5b4064b",
+      "bytes": 12972
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_native_source.txt",
+      "sourceSha256": "fe9492e73f5aeb4a5c1b1782153e9e420cc884ff730905aaefa26aaafa70b2b5",
+      "bytes": 83915
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_premise_plan.md",
+      "sourceSha256": "c326f31812e6b6d409853d2d34cadc750c3c0d2e8146eede4bbe9d794c705d89",
+      "bytes": 12465
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_right_finish.py",
+      "sourceSha256": "71df6f3053f6056b486332bec7deac49cdcd11781991eb3dcc46fdbba055261f",
+      "bytes": 92650
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_right_finish_authorization.json",
+      "sourceSha256": "e8d571e7794bbfdc57444dabe4c66a438e5d785e9b9f55c56d5b8d6958f69ca7",
+      "bytes": 2030
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_right_finish_codec_census.json",
+      "sourceSha256": "ab1e7d4ada232725d3197866ee25d12f6ab91ee695b4a0510eeece2d67678914",
+      "bytes": 93491
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_right_finish_codec_source.md",
+      "sourceSha256": "90b1851d50c2620c09c687a286e3283d6a06fa4fc7a1015d91d7b7bce1278d25",
+      "bytes": 3570
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_right_finish_guard.py",
+      "sourceSha256": "38278b15fbd27c7f5d36fb8f42b25c17ce60446c675dd326e0c642d500adad8f",
+      "bytes": 16560
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_right_finish_inputs.json",
+      "sourceSha256": "1ef4f620efb38de7235f8efec65c377aec36844a38f9e056c80b3d477e3425e3",
+      "bytes": 1017519
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_right_finish_review_prompt.md",
+      "sourceSha256": "b0906b0b95aa21f9afbc74ccaa7e99f556c7733b4779249ac8238dfbd4c921ab",
+      "bytes": 3996
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_right_finish_scope.md",
+      "sourceSha256": "f4fe62952197e92d5a07b8c757a66ef8e33bfdc9ac8ebf1ecd4b942127f6c285",
+      "bytes": 3144
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_right_finish_static_checks.json",
+      "sourceSha256": "f45e5e37a3258640827d9ae295325737aee7e1c5ca0d6704ae2733b1ee0864fc",
+      "bytes": 5572
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_uniform_response.py",
+      "sourceSha256": "b65749ab0eaaeed372a5bf01077a030971fc3e05f05a11543443bd1de3f157d4",
+      "bytes": 21153
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_uniform_source.py",
+      "sourceSha256": "2a135aea365c7b5e57bfff7683c7b927cda52c0d37f6a9bad3c961eb6205a2b2",
+      "bytes": 14588
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_variable_profile_development_input.json",
+      "sourceSha256": "660b2b0b54494dce964c7f5fbd722a76a7e894d8ed92b18b5eb6290c3c10f1d5",
+      "bytes": 1884
+    },
+    {
+      "path": "research/pde_ledger_v3/directives/S11c_c1_SHARED_PHYSICS.md",
+      "sourceSha256": "47554c8c9cf2fd070c1048a7ae0ca36b1315bf50a48ed07a51019ff3e72987ad",
+      "bytes": 50376
+    },
+    {
+      "path": "research/pde_ledger_v3/directives/S11c_d_SHARED_PHYSICS.md",
+      "sourceSha256": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5",
+      "bytes": 67800
+    },
+    {
+      "path": "research/pde_ledger_v3/directives/S11c_d_TOTAL_TRANSVERSE_LOSS_AMENDMENT_DRAFT.md",
+      "sourceSha256": "ec12456947527bb162a6bd56a65651f1028cca1f95f0d85379bdc8a411fbb6fc",
+      "bytes": 8243
+    },
+    {
+      "path": "research/pde_ledger_v3/scripts/S11c_d_mixing_scattering_sympy_audit.py",
+      "sourceSha256": "5bf77729682960bb59f10c672a5fe3f67a98b0a9533da7c6189a37183596050f",
+      "bytes": 545480
+    },
+    {
+      "path": "scripts/s11c_guarded_run.py",
+      "sourceSha256": "9194b3e04b43d345828082e6312b0a2d7a9293f6296153f9c6ccea2defb931d2",
+      "bytes": 9977
+    }
+  ],
+  "static": {
+    "status": "SOURCE_HASH_AST_SYNTHETIC_ONLY_NO_SCIENCE",
+    "runnerSha256": "4d75a6f0a09e7c9543066bc4e4a56cbf9a7112a6621e46ba6701000b4de60cd9",
+    "launcherSha256": "49fe9c927187bab8192ea68c08466359e7b087a5417aa36cd2d026ba5c351509",
+    "completionMessageSha256": "d99b207437cb27ba4d6db7216899e19c8a1c04af3e88fb3c725dd3c355366100",
+    "workerSha256": "71df6f3053f6056b486332bec7deac49cdcd11781991eb3dcc46fdbba055261f",
+    "inputManifestSha256": "1ef4f620efb38de7235f8efec65c377aec36844a38f9e056c80b3d477e3425e3",
+    "guardSha256": "38278b15fbd27c7f5d36fb8f42b25c17ce60446c675dd326e0c642d500adad8f",
+    "workerImportedOrExecuted": false,
+    "payloadsRestored": 0,
+    "peerReportsIncluded": false,
+    "archiveMembersVerified": true
+  },
+  "authorization": {
+    "status": "PENDING_EXACT_PACKET_APPROVAL",
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "packetSha256": "10a92ac1f410a921ba2efbc81f5180d779e9a4e673d007e3382fed66adcea8fb",
+    "archiveSha256": "c5798a621c994a662f26bd1a4e59063bef78a4d79499fec5467538a94d7ee77e",
+    "packetFiles": 74,
+    "packetBytes": 2962084,
+    "scientificExecutionAuthorizedByThisSubmission": false
+  },
+  "scientificExecutionsUsed": 5,
+  "proposedScientificExecutionOrdinal": 6,
+  "scienceNotLaunched": true,
+  "independentBuildClearance": false
+}

@@ -136,3 +136,6 @@ _scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/complete/operations
 _scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/complete/operations/0073-block16-grade10-inspect-saved-forcing/input.pickle -diff
 _scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/complete/operations/0099-block16-grade01-inspect-saved-forcing/input.pickle -diff
 _scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/complete/operations/0119-inspect-saved-responsive-controls/input.pickle -diff
+
+# Pinned inputs for the user-approved right-end memory continuation.
+research/pde_ledger_v3/_measurements/S11c_d_transverse_face_right_finish_inputs.json -diff

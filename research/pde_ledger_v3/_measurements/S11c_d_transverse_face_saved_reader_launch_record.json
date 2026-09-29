@@ -1,5 +1,5 @@
 {
-  "status": "STATIC_ONLY_READY_FOR_APPROVED_JOB2",
+  "status": "JOB2_FAILED_RENDERING_SAVED_UNDEFINED_FUNCTION_NO_RETRY",
   "recordedUtc": "2026-09-29T13:32:29.211260+00:00",
   "reviewedWorkerUnchanged": true,
   "inputPinsVerified": 168,
@@ -27,5 +27,211 @@
     "sha256": "64a296214be40ab57a92f9e2d8dad4c70c6d950bbb4e0e9b2e1f8cffc4e28069"
   },
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/saved-reader",
-  "completionHookTarget": "01a0e01b-ef84-7192-817f-584cda5d339b"
+  "completionHookTarget": "01a0e01b-ef84-7192-817f-584cda5d339b",
+  "launch": {
+    "jobPid": 2251810,
+    "watcherPid": 2251811,
+    "pins": {
+      "workerSha256": "54ea52fd5aaea52eaca23314a227b6891be2856f7a9246697efe827042db1eaf",
+      "inputManifestSha256": "d41990bb06196d830471445d8430ec9030be1641cffa51b99b843e25c547d0b5",
+      "gateSha256": "80481e8cfb6a2877a20cee54cb4275bc2e162f463285a101aea107c416c99994",
+      "launcherSha256": "02c06fad58069f0aa033bca4f9473a55015848dc11039cc3361cda29f449491a"
+    },
+    "command": [
+      "/usr/bin/python3",
+      "/var/projects/toy_physics/scripts/s11c_guarded_run.py",
+      "--log-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/saved-reader/resource-guard",
+      "--seconds",
+      "900",
+      "--memory-gib",
+      "2",
+      "--tasks-max",
+      "32",
+      "--",
+      "/usr/bin/python3",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/saved-reader",
+      "--stage",
+      "transverse_face_saved_reader",
+      "--",
+      "/usr/bin/python3",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_saved_reader.py",
+      "--input-manifest",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_saved_reader_inputs.json",
+      "--gate-receipt",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_saved_reader_gate.json",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/saved-reader/complete"
+    ],
+    "thread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+    "maximumScientificWorkers": 1,
+    "completionMessageSha256": "37944b0a7acb93778dad3dc4e10979a7322f4036273c22b9051aa0744177f1d3"
+  },
+  "startupInspection": {
+    "inspectedUtc": "2026-09-29T13:33:54.446200+00:00",
+    "hostNamespaceCheck": true,
+    "coordinator": {
+      "visible": false
+    },
+    "watcher": {
+      "visible": false
+    },
+    "records": {
+      "completion-watcher/state.json": {
+        "status": "finished",
+        "watcherPid": 2251811,
+        "jobPid": 2251810,
+        "thread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+        "startedUtc": "2026-09-29T13:33:29.774681+00:00",
+        "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
+        "messageSha256": "37944b0a7acb93778dad3dc4e10979a7322f4036273c22b9051aa0744177f1d3",
+        "notifications": {
+          "completion": {
+            "status": "queued",
+            "exitCode": 0,
+            "finishedUtc": "2026-09-29T13:33:47.873332+00:00"
+          }
+        }
+      },
+      "resource-guard/invocation.json": {
+        "command": [
+          "/usr/bin/python3",
+          "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+          "--run-root",
+          "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/saved-reader",
+          "--stage",
+          "transverse_face_saved_reader",
+          "--",
+          "/usr/bin/python3",
+          "-u",
+          "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_saved_reader.py",
+          "--input-manifest",
+          "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_saved_reader_inputs.json",
+          "--gate-receipt",
+          "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_saved_reader_gate.json",
+          "--run-directory",
+          "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/saved-reader/complete"
+        ],
+        "cwd": "/var/projects/toy_physics",
+        "unit": "s11c-guard-dc49b7a2e4bc",
+        "seconds": 900,
+        "cpu": 15,
+        "memoryMax": 2147483648,
+        "swapMax": 0,
+        "tasksMax": 32,
+        "minimumHostAvailableBytes": 4294967296,
+        "startedUtc": "2026-09-29T13:33:30.060576+00:00"
+      },
+      "resource-guard/effective-limits.json": {
+        "memory.max": "2147483648",
+        "memory.swap.max": "0",
+        "pids.max": "32",
+        "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-dc49b7a2e4bc.service",
+        "nice": 15,
+        "affinity": [
+          15
+        ],
+        "threads": {
+          "OPENBLAS_NUM_THREADS": "1",
+          "OMP_NUM_THREADS": "1",
+          "MKL_NUM_THREADS": "1",
+          "NUMEXPR_NUM_THREADS": "1",
+          "VECLIB_MAXIMUM_THREADS": "1",
+          "BLIS_NUM_THREADS": "1"
+        }
+      },
+      "resource-guard/limit-validation.json": {
+        "verified": true,
+        "actual": {
+          "memory.max": "2147483648",
+          "memory.swap.max": "0",
+          "pids.max": "32",
+          "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-dc49b7a2e4bc.service",
+          "nice": 15,
+          "affinity": [
+            15
+          ],
+          "threads": {
+            "OPENBLAS_NUM_THREADS": "1",
+            "OMP_NUM_THREADS": "1",
+            "MKL_NUM_THREADS": "1",
+            "NUMEXPR_NUM_THREADS": "1",
+            "VECLIB_MAXIMUM_THREADS": "1",
+            "BLIS_NUM_THREADS": "1"
+          }
+        }
+      },
+      "active.json": {
+        "stage": "transverse_face_saved_reader",
+        "command": [
+          "/usr/bin/python3",
+          "-u",
+          "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_saved_reader.py",
+          "--input-manifest",
+          "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_saved_reader_inputs.json",
+          "--gate-receipt",
+          "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_saved_reader_gate.json",
+          "--run-directory",
+          "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/saved-reader/complete"
+        ],
+        "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/saved-reader/transverse_face_saved_reader.stdout",
+        "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/saved-reader/transverse_face_saved_reader.stderr",
+        "startedUtc": "2026-09-29T13:33:30.146809+00:00",
+        "childPid": 2251829,
+        "status": "failed",
+        "exitCode": 1,
+        "wallSeconds": 17.386256786063313,
+        "stderrBytes": 2559,
+        "finishedUtc": "2026-09-29T13:33:47.533121+00:00"
+      },
+      "coordinator-outcome.json": {
+        "exitCode": 1,
+        "wallSeconds": 17.63086617505178,
+        "scientificAcceptance": "PENDING",
+        "finishedUtc": "2026-09-29T13:33:47.637059+00:00"
+      }
+    },
+    "stderrBytes": {
+      "coordinator.stderr": 0,
+      "watcher.stderr": 0,
+      "guard-launch.stderr": 0,
+      "resource-guard/stderr": 0,
+      "transverse_face_saved_reader.stderr": 2559
+    },
+    "singleStartupInspection": true,
+    "scientificWorker": {
+      "visible": false
+    }
+  },
+  "completionEventHandled": true,
+  "checkpoint": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_saved_reader_failure_checkpoint.json",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_saved_reader_failure_checkpoint.json",
+    "bytes": 67593,
+    "sha256": "48b1be5a82a9a4aaf98aaff59ca2f63a05a557c7c8f4f5e91dca8ed7e1231682"
+  },
+  "resources": {
+    "samples": 10,
+    "peakBytes": 138317824,
+    "maximumSwapBytes": 0,
+    "maximumObservedTasks": 3,
+    "minimumHostAvailableBytes": 19793592320,
+    "memoryEventMaxima": {
+      "low": 0,
+      "high": 0,
+      "max": 0,
+      "oom": 0,
+      "oom_kill": 0,
+      "oom_group_kill": 0,
+      "sock_throttled": 0
+    },
+    "workerFailureSeconds": 16.752281452994794,
+    "supervisorSeconds": 17.386256786063313,
+    "coordinatorSeconds": 17.63086617505178,
+    "durationExceptionUsed": false
+  },
+  "sourcePinsIntact": true
 }

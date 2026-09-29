@@ -1,5 +1,18 @@
 # S11c-d: the remaining execution queue
 
+**Jobs 1–2 stop (2026-09-29):** job 2 failed after 16.752281 worker seconds
+while inventorying a saved SymPy `UndefinedFunction` class. Nine complete returns
+and incomplete inputs are preserved (71 files / 6,020,056 bytes); peak 138,317,824
+bytes, zero swap/events, all 168 inputs and all 98 job-1 artifacts intact. The
+scientific traceback is retained; no success checks or retry. Both fresh reader
+reviews were literal CLEAR for the unchanged build, not a runtime/physics result.
+Job 1 still has three unresolved 35 s bindings, zero map points and no face premise.
+See `S11c_d_transverse_face_saved_reader_report.md` and failure checkpoint for
+actual costs, conditional omega=1/omega=3 comparison and the narrow formatter gap.
+Longer runtime alone cannot fix this reader failure. STOP before a continuation,
+new review submission, method-route phase or field/power work. Two scientific
+jobs used; only jobs 1–2 approved. Analog-light frequency calibration remains OPEN.
+
 **Job 2 independently cleared and gated (2026-09-29):** both fresh round-2
 reviewers literally CLEAR FOR THIS BOUNDED SAVED-OUTPUT READER. Exact reviewed
 worker/manifest/note are unchanged; 168 input pins and the fixed packet match.

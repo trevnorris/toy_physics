@@ -1,0 +1,428 @@
+{
+  "status": "BOTH_CLEAR_FOR_BOUNDED_SAVED_OUTPUT_READER",
+  "inspectedUtc": "2026-09-29T13:30:37.157275+00:00",
+  "runtimeRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/saved-reader-build-review-r2",
+  "packetState": {
+    "status": "AWAITING_ADJUDICATION",
+    "preparedUtc": "2026-09-29T06:22:02.210973+00:00",
+    "packetDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/saved-reader-build-review-r2/packet",
+    "packetSha256": "2ef5f7e88cc2527c68098bb6613ad1982ba6b59cc208fbd6742ff768af4491ad",
+    "archiveSha256": "9861ebedaaa7ce495a9929c9999989aa93cc151a24f26589a466298348de7d71",
+    "fileHashes": {
+      "_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/complete/LEFT-block16-grade01-inspection.json": "3ef2b118a3552e779269b2aca09b9d298c2fad02c3110ff3e3939dca8c696c20",
+      "_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/complete/LEFT-block16-grade10-inspection.json": "eba23c9235bb0b21cb9723bcf019b12fd360d3c0a5a9becf96dda024a70808f7",
+      "_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/complete/LEFT-block17-grade01-inspection.json": "6fb3239c6df085f8be65f8410a5842017f743bff9f3b2fe58c13b1ef9ec4ddff",
+      "_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/complete/LEFT-block17-grade10-inspection.json": "4e501d05fa15704415e6f7573de4fe04152a2d0dbdc192992af0b841229ed344",
+      "_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/complete/RIGHT-block16-grade01-inspection.json": "7a811e3fba1ee49edcaade421f98fe60c2078f1eb34c75b43d9bde8e92e35c2f",
+      "_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/complete/RIGHT-block16-grade10-inspection.json": "5c90311f9c1dbbe6ee67241a963c878191bc2ff567b10e5c2d07a830385bd7d3",
+      "_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/complete/RIGHT-block17-grade01-inspection.json": "365b3e43636628a2e6b00d0235b7ae5f427127e85b057fa0f94fe802c018dc52",
+      "_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/complete/RIGHT-block17-grade10-inspection.json": "fd6f1dc5cc8764f65462fb1c27f4eea148b2bf245fc56197de55afa1666e02b4",
+      "_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/complete/block16-grade01-inspection.json": "8fe530505f42410510cad298dc085581ac3111045debe5a3d918cf54e4177c7e",
+      "_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/complete/block16-grade10-inspection.json": "c3a73cde433d049d703b3cf53440c7739e9a54bdf0acc27080b84bef0472164e",
+      "_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/complete/block17-grade01-inspection.json": "e2edc002377e59ac4ecea295c947d131cd0b1526d1be5a426c06948aa646ce6d",
+      "_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/complete/block17-grade10-inspection.json": "2b09f7bb0fa4877e9ad9d6f8caf7f0e9bd59c1dde9380a09fe943dcfc8acc6a7",
+      "_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/complete/saved-context.json": "59fb550f486832142c34ee1de3580961ee6d1783a99f6bcf5e33f035733e96a1",
+      "packet-index.json": "37d83f8cd5112d1f71cf559546e7b8b28547b14e34eaaba69267fe637d1b971d",
+      "research/pde_ledger_v3/_measurements/S11c_d_continuum_response.py": "0fe30a9c4771671e9fa139b0557f185f55d351887f2ba8b9fa4ed1abfb616db2",
+      "research/pde_ledger_v3/_measurements/S11c_d_continuum_response_checkpoint.json": "c29b71bc8adf8b98856d00d4586b7b060c0f6d5f42778ff231e03e0d45ba0139",
+      "research/pde_ledger_v3/_measurements/S11c_d_continuum_response_focused.py": "afbee186551f69e0aa685132d37e56481056ed1cf792c4f86256fbdb27d6f5d8",
+      "research/pde_ledger_v3/_measurements/S11c_d_continuum_response_report.md": "76fd4ead96eef89b406977d717a914635a79afe8cfd110e0f084805ba43dfa1b",
+      "research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py": "45a16f7f952ca6b571362b1c386fec76cd86f1e0ad04113074adf49c683ec49c",
+      "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_duration_authorization.json": "cd6e4d6850d9c589b8ada43b2c47958d47aedf12ceff7816e7179a2d0cb089e6",
+      "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_premise.py": "ebf2739a2f8dca9ed4130b89606a36a27be29ef5d5c0915756b7118fcbd6fae5",
+      "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_premise_authorization.json": "a3f0f7c1532572fc5409f3ec8a459d0bcb8bcd1a2c24b8cad8c9a1d7e033514b",
+      "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_premise_checkpoint.json": "b7a401773af74131bd9a9ffcc783eceaab559f9b48f1a2afecca0a08ec2d7b1b",
+      "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_saved_reader.py": "54ea52fd5aaea52eaca23314a227b6891be2856f7a9246697efe827042db1eaf",
+      "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_saved_reader_codec_census.json": "43c16a08e6daa3ce88a5fd2f7216326566b58b34c417b7c25ba90dde17af1c78",
+      "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_saved_reader_inputs.json": "d41990bb06196d830471445d8430ec9030be1641cffa51b99b843e25c547d0b5",
+      "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_saved_reader_pickle_metadata.py": "2a36a6cb97709529b3273bc75b36057fc7aacfd4bd0eacf47d9f6452a470a7c2",
+      "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_saved_reader_scope.md": "ff719da1f6f72c89bb3eb02511ac361985be98007e692a3783d2c68e15c3fe2a",
+      "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_saved_reader_source_note.md": "b9e03e7f158e3947930a55e82c004c4dc5024bdbda57e0009738e0563e477524",
+      "research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_saved_inspect.py": "7ad854e696ab42aa8b57430953f6360f7e3efe42f29b7778dfee9c03b87b5886",
+      "research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_saved_inspection_checkpoint.json": "8afe9c5473690707c162d03dae69d41682fd9be0d6d382817a41a6559ae3310b",
+      "research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_saved_inspection_report.md": "2310fdb6246635d825fcbd344bc0d1de2ba30a84cb9ddc41ad840de5a4e01e85",
+      "research/pde_ledger_v3/directives/S11c_d_SHARED_PHYSICS.md": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5",
+      "research/pde_ledger_v3/directives/S11c_d_TOTAL_TRANSVERSE_LOSS_AMENDMENT_DRAFT.md": "ec12456947527bb162a6bd56a65651f1028cca1f95f0d85379bdc8a411fbb6fc",
+      "research/pde_ledger_v3/scripts/S11c_d_mixing_scattering_sympy_audit.py": "5bf77729682960bb59f10c672a5fe3f67a98b0a9533da7c6189a37183596050f",
+      "review-prompt.md": "4f4d4c7452489e998b97cabc0b89494f5e92cb578ab92fa892b1da1301165c80",
+      "scripts/s11c_guarded_run.py": "9194b3e04b43d345828082e6312b0a2d7a9293f6296153f9c6ccea2defb931d2"
+    },
+    "sourceRecords": [
+      {
+        "path": "_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/complete/LEFT-block16-grade01-inspection.json",
+        "sourceSha256": "3ef2b118a3552e779269b2aca09b9d298c2fad02c3110ff3e3939dca8c696c20",
+        "bytes": 407
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/complete/LEFT-block16-grade10-inspection.json",
+        "sourceSha256": "eba23c9235bb0b21cb9723bcf019b12fd360d3c0a5a9becf96dda024a70808f7",
+        "bytes": 407
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/complete/LEFT-block17-grade01-inspection.json",
+        "sourceSha256": "6fb3239c6df085f8be65f8410a5842017f743bff9f3b2fe58c13b1ef9ec4ddff",
+        "bytes": 407
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/complete/LEFT-block17-grade10-inspection.json",
+        "sourceSha256": "4e501d05fa15704415e6f7573de4fe04152a2d0dbdc192992af0b841229ed344",
+        "bytes": 407
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/complete/RIGHT-block16-grade01-inspection.json",
+        "sourceSha256": "7a811e3fba1ee49edcaade421f98fe60c2078f1eb34c75b43d9bde8e92e35c2f",
+        "bytes": 408
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/complete/RIGHT-block16-grade10-inspection.json",
+        "sourceSha256": "5c90311f9c1dbbe6ee67241a963c878191bc2ff567b10e5c2d07a830385bd7d3",
+        "bytes": 11556
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/complete/RIGHT-block17-grade01-inspection.json",
+        "sourceSha256": "365b3e43636628a2e6b00d0235b7ae5f427127e85b057fa0f94fe802c018dc52",
+        "bytes": 408
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/complete/RIGHT-block17-grade10-inspection.json",
+        "sourceSha256": "fd6f1dc5cc8764f65462fb1c27f4eea148b2bf245fc56197de55afa1666e02b4",
+        "bytes": 11557
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/complete/block16-grade01-inspection.json",
+        "sourceSha256": "8fe530505f42410510cad298dc085581ac3111045debe5a3d918cf54e4177c7e",
+        "bytes": 331505
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/complete/block16-grade10-inspection.json",
+        "sourceSha256": "c3a73cde433d049d703b3cf53440c7739e9a54bdf0acc27080b84bef0472164e",
+        "bytes": 531011
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/complete/block17-grade01-inspection.json",
+        "sourceSha256": "e2edc002377e59ac4ecea295c947d131cd0b1526d1be5a426c06948aa646ce6d",
+        "bytes": 332192
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/complete/block17-grade10-inspection.json",
+        "sourceSha256": "2b09f7bb0fa4877e9ad9d6f8caf7f0e9bd59c1dde9380a09fe943dcfc8acc6a7",
+        "bytes": 531605
+      },
+      {
+        "path": "_scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/complete/saved-context.json",
+        "sourceSha256": "59fb550f486832142c34ee1de3580961ee6d1783a99f6bcf5e33f035733e96a1",
+        "bytes": 192675
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_continuum_response.py",
+        "sourceSha256": "0fe30a9c4771671e9fa139b0557f185f55d351887f2ba8b9fa4ed1abfb616db2",
+        "bytes": 23551
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_continuum_response_checkpoint.json",
+        "sourceSha256": "c29b71bc8adf8b98856d00d4586b7b060c0f6d5f42778ff231e03e0d45ba0139",
+        "bytes": 26020
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_continuum_response_focused.py",
+        "sourceSha256": "afbee186551f69e0aa685132d37e56481056ed1cf792c4f86256fbdb27d6f5d8",
+        "bytes": 2961
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_continuum_response_report.md",
+        "sourceSha256": "76fd4ead96eef89b406977d717a914635a79afe8cfd110e0f084805ba43dfa1b",
+        "bytes": 2577
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+        "sourceSha256": "45a16f7f952ca6b571362b1c386fec76cd86f1e0ad04113074adf49c683ec49c",
+        "bytes": 3347
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_duration_authorization.json",
+        "sourceSha256": "cd6e4d6850d9c589b8ada43b2c47958d47aedf12ceff7816e7179a2d0cb089e6",
+        "bytes": 774
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_premise.py",
+        "sourceSha256": "ebf2739a2f8dca9ed4130b89606a36a27be29ef5d5c0915756b7118fcbd6fae5",
+        "bytes": 79986
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_premise_authorization.json",
+        "sourceSha256": "a3f0f7c1532572fc5409f3ec8a459d0bcb8bcd1a2c24b8cad8c9a1d7e033514b",
+        "bytes": 1670
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_premise_checkpoint.json",
+        "sourceSha256": "b7a401773af74131bd9a9ffcc783eceaab559f9b48f1a2afecca0a08ec2d7b1b",
+        "bytes": 63574
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_saved_reader.py",
+        "sourceSha256": "54ea52fd5aaea52eaca23314a227b6891be2856f7a9246697efe827042db1eaf",
+        "bytes": 37426
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_saved_reader_codec_census.json",
+        "sourceSha256": "43c16a08e6daa3ce88a5fd2f7216326566b58b34c417b7c25ba90dde17af1c78",
+        "bytes": 65953
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_saved_reader_inputs.json",
+        "sourceSha256": "d41990bb06196d830471445d8430ec9030be1641cffa51b99b843e25c547d0b5",
+        "bytes": 92150
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_saved_reader_pickle_metadata.py",
+        "sourceSha256": "2a36a6cb97709529b3273bc75b36057fc7aacfd4bd0eacf47d9f6452a470a7c2",
+        "bytes": 4040
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_saved_reader_review_prompt.md",
+        "sourceSha256": "4f4d4c7452489e998b97cabc0b89494f5e92cb578ab92fa892b1da1301165c80",
+        "bytes": 6425
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_saved_reader_scope.md",
+        "sourceSha256": "ff719da1f6f72c89bb3eb02511ac361985be98007e692a3783d2c68e15c3fe2a",
+        "bytes": 4462
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_saved_reader_source_note.md",
+        "sourceSha256": "b9e03e7f158e3947930a55e82c004c4dc5024bdbda57e0009738e0563e477524",
+        "bytes": 12206
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_saved_inspect.py",
+        "sourceSha256": "7ad854e696ab42aa8b57430953f6360f7e3efe42f29b7778dfee9c03b87b5886",
+        "bytes": 31269
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_saved_inspection_checkpoint.json",
+        "sourceSha256": "8afe9c5473690707c162d03dae69d41682fd9be0d6d382817a41a6559ae3310b",
+        "bytes": 54328
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_two_asymptote_saved_inspection_report.md",
+        "sourceSha256": "2310fdb6246635d825fcbd344bc0d1de2ba30a84cb9ddc41ad840de5a4e01e85",
+        "bytes": 4623
+      },
+      {
+        "path": "research/pde_ledger_v3/directives/S11c_d_SHARED_PHYSICS.md",
+        "sourceSha256": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5",
+        "bytes": 67800
+      },
+      {
+        "path": "research/pde_ledger_v3/directives/S11c_d_TOTAL_TRANSVERSE_LOSS_AMENDMENT_DRAFT.md",
+        "sourceSha256": "ec12456947527bb162a6bd56a65651f1028cca1f95f0d85379bdc8a411fbb6fc",
+        "bytes": 8243
+      },
+      {
+        "path": "research/pde_ledger_v3/scripts/S11c_d_mixing_scattering_sympy_audit.py",
+        "sourceSha256": "5bf77729682960bb59f10c672a5fe3f67a98b0a9533da7c6189a37183596050f",
+        "bytes": 545480
+      },
+      {
+        "path": "scripts/s11c_guarded_run.py",
+        "sourceSha256": "9194b3e04b43d345828082e6312b0a2d7a9293f6296153f9c6ccea2defb931d2",
+        "bytes": 9977
+      }
+    ],
+    "packetFiles": 37,
+    "packetBytes": 3101999,
+    "currentThread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "scienceCalls": 0,
+    "startedUtc": "2026-09-29T13:07:24.603995+00:00",
+    "supervisorPid": 2234500,
+    "concurrentReviewWorkers": 1,
+    "finishedUtc": "2026-09-29T13:29:05.973866+00:00",
+    "productionAuthorized": false,
+    "reviewVerdict": "NOT_ADJUDICATED"
+  },
+  "coordinatorOutcome": {
+    "status": "BOTH_ATTEMPTS_FINISHED_AWAITING_LITERAL_ADJUDICATION",
+    "finishedUtc": "2026-09-29T13:29:05.976457+00:00",
+    "scienceCalls": 0
+  },
+  "launch": {
+    "jobPid": 2234500,
+    "watcherPid": 2234501,
+    "packetSha256": "2ef5f7e88cc2527c68098bb6613ad1982ba6b59cc208fbd6742ff768af4491ad",
+    "reviewers": [
+      "Claude",
+      "Grok"
+    ],
+    "concurrentReviewWorkers": 1,
+    "scienceCalls": 0,
+    "runnerSha256": "278001030e690696494ad0d0df3076c199e0b98dd51481eb7f65701133612334",
+    "launcherSha256": "13a4e7a60423f8343ccec46d4b6addc335d7f2875aad24aef2b05e3cad41b27a"
+  },
+  "static": {
+    "status": "SOURCE_HASH_AST_ONLY_NO_SCIENCE",
+    "runnerSha256": "278001030e690696494ad0d0df3076c199e0b98dd51481eb7f65701133612334",
+    "launcherSha256": "13a4e7a60423f8343ccec46d4b6addc335d7f2875aad24aef2b05e3cad41b27a",
+    "completionMessageSha256": "0853518cdc48380d657c8a78e979253d92b81d703a39ebf59c43bed9594f6fed",
+    "workerSha256": "54ea52fd5aaea52eaca23314a227b6891be2856f7a9246697efe827042db1eaf",
+    "inputManifestSha256": "d41990bb06196d830471445d8430ec9030be1641cffa51b99b843e25c547d0b5",
+    "workerSyntaxPass": true,
+    "workerImportedOrExecuted": false,
+    "payloadsRestored": 0,
+    "peerReportsIncluded": false,
+    "archiveMembersVerified": true
+  },
+  "authorization": {
+    "status": "EXPLICITLY_APPROVED_FIXED_PACKET",
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "packetSha256": "2ef5f7e88cc2527c68098bb6613ad1982ba6b59cc208fbd6742ff768af4491ad",
+    "archiveSha256": "9861ebedaaa7ce495a9929c9999989aa93cc151a24f26589a466298348de7d71",
+    "packetFiles": 37,
+    "packetBytes": 3101999,
+    "scientificExecutionAuthorizedByThisSubmission": false,
+    "userReply": "I approve",
+    "approvedUtc": "2026-09-29T13:07:11.188940+00:00",
+    "approvalContext": "Direct reply to exact corrected 37-file, 3101999-byte reader review packet SHA256 2ef5f7e88cc2527c68098bb6613ad1982ba6b59cc208fbd6742ff768af4491ad naming fresh Claude and Grok destinations; no binary payloads or scientific execution in this submission.",
+    "currentThread": "01a0e01b-ef84-7192-817f-584cda5d339b"
+  },
+  "watcher": {
+    "status": "finished",
+    "watcherPid": 2234501,
+    "jobPid": 2234500,
+    "thread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+    "startedUtc": "2026-09-29T13:07:24.564929+00:00",
+    "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
+    "messageSha256": "0853518cdc48380d657c8a78e979253d92b81d703a39ebf59c43bed9594f6fed",
+    "notifications": {
+      "completion": {
+        "status": "queued",
+        "exitCode": 0,
+        "finishedUtc": "2026-09-29T13:29:06.205298+00:00"
+      }
+    }
+  },
+  "reviews": {
+    "claude": {
+      "literalVerdict": "CLEAR FOR THIS BOUNDED SAVED-OUTPUT READER",
+      "literalReport": "**CLEAR FOR THIS BOUNDED SAVED-OUTPUT READER**\n\nI read only the source and JSON files listed in `packet-index.json`. I executed nothing, restored no pickle and contacted no peer. The job-1 production files themselves are not in the packet, so every join that depends on their contents is listed below as a runtime obligation, not as a verified fact.\n\n## Findings by question\n\n**1. Restore scope.** Everything is restored through `read_pickle`, which only accepts the 38 `restoreKeys` (25 job-1 objects, 10 job-1 sources, 3 old payloads). The reader imports no producer code and makes no binding, `grade()`, root, solve, transform or integral call. For the unresolved binds, the reader inventories only the saved inputs `(label, packet, (pair, dimensions.known))` and the saved failure record, and reports `sourceBindValuePresent=False`. It infers nothing from the traceback.\n- One labelling point, not a defect. In job 1 the journal stored the `packet`/`pairing` inputs under the same file as the matching restore return, because it caches by object identity. So `originalSymbolStructuralIdentity` and `currentPairStructuralIdentity` (`saved_reader.py:405-406`) compare one cached object with itself on these inputs. The `SAVED_OPERAND_IDENTITY_NOT_INDEPENDENT_PHYSICS` label is accurate. The comparison would still catch a real mismatch if the paths differed.\n\n**2. Receipts, hashes and duplicate checks.** These checks are real and respond to changes:\n- The file census uses a recursive directory listing checked against the 98 manifest files.\n- The checkpoint artifacts, `checks.json`, the job-1 artifact index (excluding itself, which matches how the producer wrote it at `premise.py:1236`), source pre/post hashes, stdout-vs-checks bytes and empty stderr files are all compared.\n- Each operation is checked against its started, input-reference and complete/unresolved receipts. The failure-receipt path join works because the producer's output directory was already a resolved path (`premise.py:1217`).\n- Pickle bytes are hashed as read, then preserved before deserialization.\n\nThe two duplicate comparisons are labelled as saved identities, not physics:\n- `response['remainders']` against `formal-remainders.pickle`: two copies of one object from one process.\n- The old response against job 1's `restore-unit-context` return: a round-trip consistency check.\n\nThe `direct - retained - difference` arithmetic will be exactly zero, and it is correctly labelled as bookkeeping.\n\n**3. Branch, unit and coverage data.** The unit join rebuilds exactly the operands the producer used (`premise.py:290-291`) and compares them with the copied `show()` renderer. I checked that `premise_show` matches `show` line for line.\n\nCoverage checks each of the six end/frequency/ray triples individually (planned, and exactly one row across visited and unvisited), not just the overall set. On these inputs `grid-summary.json` is `[]` (3 bytes). So all six triples should come out as `UNRESOLVED/NOT_VISITED` rows. The reader never turns them into absent, zero or passed. The saved face result stays `{\"status\":\"UNRESOLVED\"}`.\n\n**4. Historical response and remainder schema.** Every key the reader uses exists in the writer (`continuum_response.py:108-110, 164-172, 197-199, 269-275`). The supplied conventions match the cited source lines:\n- Grade `(a,b)` means `eta**a*sigma**b` (line 208).\n- Incident columns 0\u20131 are LEFT and 2\u20133 are RIGHT (line 84).\n- Field coefficient units are `fieldUnits[i]-currentUnit/2` (line 221).\n\nThe contrast is correctly described as the truncated coefficient-polynomial solve against the retained expansion (lines 266-268), not a Born/full or power anchor. The key probe is labelled \"not a census\", and the full list of top-level keys is emitted. The open-flux scope is copied from `response['flux']['scope']` unchanged. No comparator is filled in.\n\n**5. Old end/forcing inspection.** It is pinned through its checkpoint's hash/size entries and the route of the reader that produced it. The split verdicts (Claude NEEDS REVISION, Grok CLEAR) and the acceptance scope are carried through unchanged. The case rows keep `planeJetEstablished` and `forcingPairingEstablished` as false. The full JSON files are copied without being parsed as maths. Nothing is promoted.\n\n**6. Codec, journal, alarm, gate and output mechanisms.**\n- Every global recorded in the census is either on the explicit allow-list or is a SymPy Basic/MatrixBase class, plus `_rebuild_undef`. No other module appears.\n- Containment is checked before any scientific import.\n- The journal is content-addressed, refuses to overwrite, and records the incomplete operation on failure. Readable output is written before each `require`.\n- The final timer handoff disarms the 840 s alarm only after the posthash and launch-file guards. The outer 900 s guard still bounds the final `checks.json` and stdout writes. The failure path disarms, records the failure, and writes the operation index and posthashes.\n- Every `all()` on these inputs is either over fixed keys or protected by a count check (3 branch equations, 6 triples). None passes vacuously.\n\n**7. Usefulness.** The reader is fit for this purpose. It will record truthfully that job 1 reached zero grid points, all three binds ran out of their per-operation allowance inside `grade()`, and \u03c9=1 and \u03c9=3 rows are both unvisited. It also exposes the old contrast vectors for the report without inventing a method.\n\n## Optional small improvements (not blocking, no re-review needed)\n- Emit `size=response['size']` in `old-saved-contrast-vectors`, so the row blocks `i*size:(i+1)*size` needed for the unit join don't have to be inferred from the shape.\n- Add the old checkpoint's `status`, `fullResponseGreenFormA11A12Accepted`, `forcingPairingAccepted` and `freshIndependentClearClaimed` to `old-readable-inventory`.\n- Add a `sameSavedRoute` flag next to the end-operand identity flags.\n- Mark `savedLoci == {}` and the empty `selectedRecords` as \"not attempted (no end bound)\".\n- Require `len(remainder) == 3` and a non-empty grade set, so those checks can't pass on empty data.\n- Hash the JSON bytes actually read, as the pickle path already does. The posthash check covers persistent changes, but not a change-and-revert between check and read.\n- The codec docstring says \"no eval\", but SymPy's non-strict conversion inside some constructors can evaluate strings. This is harmless for these hash-pinned files; it is a wording issue only.\n\n## Runtime obligations and cost uncertainty\n1. **Restoring with NumPy 1.26.4 / SymPy 1.14.0 must succeed for all 37 distinct pickles.** SymPy rebuilds objects by calling their constructors, which can re-simplify `Add`, `Mul`, `Eq`, `Piecewise` and similar. Job 1 went through the same path, so the source-vs-return identities test round-trip consistency, not byte-level structure. Any unpickling or unsupported-type error stops the reader with the evidence already saved. One untested case: a bare undefined-function class (not a call like `f(x)`) would make `display`/`inventory` raise.\n2. **The six comparison triples must actually be in job 1's planned grid.** The job-1 manifest isn't in the packet, so I couldn't confirm this.\n3. **Branch equations are compared structurally; the producer compared them with `cancel`.** I expect a pass, but a failure here would stop all later stages (coverage, old contrasts, old inspection).\n4. **Cost.** I expect it to fit comfortably within 840 s and 2 GiB. Job 1 peaked at about 197 MB, and its restores took roughly 10 s of its 115 s. Most of the cost will be:\n   - restoring the pickles (the largest has about 484k opcodes);\n   - re-serializing each new operand list in the `inspect-prior` and `end-saved-input` steps;\n   - converting the branch context to strings.\n\n   Disk output is probably 100\u2013200 MB, including two copies of the 26.8 MB coefficient systems.\n5. **The external checkpoint must still verify** empty stderr, the guard and supervisor outcomes, that `failure.json` is absent, and that stdout matches `checks.json` byte for byte. A successful exit does not mean physical acceptance.\n\nThis review is not a physical CLEAR for the original producer. Physical damping stays retained, and analog-light frequency calibration stays **OPEN**.",
+      "receipt": {
+        "engine": "claude",
+        "sessionId": "4b2532a8-5cec-4ba5-913c-18cfc09f128c",
+        "command": [
+          "/home/trevnorris/.local/bin/claude",
+          "--print",
+          "--output-format",
+          "json",
+          "--safe-mode",
+          "--restricted",
+          "--tools",
+          "Read,Glob,Grep",
+          "--allowedTools",
+          "Read,Glob,Grep",
+          "--permission-mode",
+          "dontAsk",
+          "--strict-mcp-config",
+          "--mcp-config",
+          "{\"mcpServers\":{}}",
+          "--setting-sources",
+          "",
+          "--disable-slash-commands",
+          "--session-id",
+          "4b2532a8-5cec-4ba5-913c-18cfc09f128c"
+        ],
+        "cwd": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/saved-reader-build-review-r2/packet",
+        "startedUtc": "2026-09-29T13:07:24.649380+00:00",
+        "packetSha256": "2ef5f7e88cc2527c68098bb6613ad1982ba6b59cc208fbd6742ff768af4491ad",
+        "promptSha256": "4f4d4c7452489e998b97cabc0b89494f5e92cb578ab92fa892b1da1301165c80",
+        "scientificExecutionEnabled": false,
+        "reviewVerdict": "NOT_ADJUDICATED",
+        "pid": 2234506,
+        "exitStatus": 0,
+        "finishedUtc": "2026-09-29T13:15:59.919206+00:00",
+        "wallSeconds": 515.268279726035,
+        "outputSha256": "19f5ee3a7902de2237304ac243cd66ef9f2aa740fc11da45a7e5d3010df9759d",
+        "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderrBytes": 0
+      },
+      "stderr": "",
+      "rawOutputPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/saved-reader-build-review-r2/claude.json",
+      "rawOutputSha256": "19f5ee3a7902de2237304ac243cd66ef9f2aa740fc11da45a7e5d3010df9759d",
+      "terminationMetadata": {
+        "is_error": false,
+        "subtype": "success",
+        "stop_reason": "end_turn",
+        "terminal_reason": "completed",
+        "num_turns": 38,
+        "session_id": "4b2532a8-5cec-4ba5-913c-18cfc09f128c"
+      }
+    },
+    "grok": {
+      "literalVerdict": "CLEAR FOR THIS BOUNDED SAVED-OUTPUT READER",
+      "literalReport": "I'll start from the packet index and the supplied reader sources, then judge the bounded saved-output reader against those files only.The packet is source-only. Next I\u2019ll map its files and read the reader, inputs, and schema writers.I\u2019ll read the reader, input manifest, and the remaining packet files next.The reader\u2019s second half and the manifest\u2019s restorable keys are next; those control what actually gets restored.I\u2019ll inspect the schema writers, job-1 checkpoint, codec census, and the restorable input records next.I\u2019ll compare the premise writer\u2019s `show()`, grid schema, and codec globals with what the reader actually joins.The case-report schema may not match the reader\u2019s expected keys. I\u2019ll check the inspect writer\u2019s actual emit shape next.**CLEAR FOR THIS BOUNDED SAVED-OUTPUT READER**\n\nSource-only review of `S11c_d_transverse_face_saved_reader.py` against the pinned manifest, job-1 checkpoint, continuum-response / premise / two-asymptote schema writers, codec census, and selected readable exports. No execution, unpickling, or ablation.\n\n## 1. Restore scope\n\nThe reader restores only `restoreKeys`: job-1 complete object pickles, the ten sources job 1 actually restored, and the three historical binaries. It does not import `S11c_d_transverse_face_premise.py` or call `bound_end`, `grade`, `classify`, `inspect_root`, `numeric`, `la.solve`, or any transform/integral.\n\nUnresolved `REFERENCE`/`LEFT`/`RIGHT-source-bind` records are handled as `UNRESOLVED_NO_RETRY` with `noInventedReturn = 'value' not in previous`. Operand pickles (label, original-symbol packet, current pair) are inventoried; `packet['result']` is treated as a saved pairing operand, not a bound map. Job 1\u2019s checkpoint matches that scope: 11 complete operations, 3 unresolved binds, `points: 0`, `firstOrderBoundaryMapsEstablished: false`.\n\n`oldResponse` and `job1Source_unitContext` are the same continuum-response pickle. Joins are labelled `SAVED_SOURCE_IDENTITY` / `SAVED_PACKET_IDENTITY_AND_SHAPE_CHECKS`.\n\n## 2. Inventory, receipts, hashes\n\nJob-1 receipt checks compare the live complete-directory census to the 98 pinned artifacts, checkpoint artifact map, checks vs checkpoint checks, artifact-index (excluding itself), source pre/post hashes, stdout/checks bytes, and five empty stderr files. Evidence is written before `require`.\n\nChanged bytes fail `route(...) == record`. Missing receipts fail file reads or status joins. Duplicated continuum-response routes are identity checks, not a second physical route. The only new arithmetic is `direct - retained - difference` on stored remainder arrays, emitted as `subtractionBookkeepingIdentity`.\n\n`all([])` does not accept missing required records on these inputs: `checkpointJoins` has the three binaries plus 13 readable exports; stderr keys are five; coverage requires six selected triples and three branch equations.\n\n## 3. Saved context, shapes, missing results\n\nBranch/unit joins use saved `reductionState`, the branch-map return, and `premise_show` against `unit-context.json`. `premise_show` matches premise `show()` (lines 214\u2013222 of the premise writer). Residual zero-flags are reported; they are not required to be true.\n\nCoverage uses `planned-grid.json` + empty `grid-summary.json` (`[]`, 3 bytes) + `unvisited-grid.json`. Premise writes `omega=str(Rational)`, `ray=str(Rational)`, so `\"1\"`, `\"3\"`, `\"1/10\"` are the intended string forms. The six triples must be planned and appear once; with zero visits they remain `UNRESOLVED` / `NOT_VISITED`. `reference-face-drive.json` is the saved `{\"status\": \"UNRESOLVED\"}`; `threshold-loci.json` is `{}`. Source-end states stay `UNRESOLVED_SOURCE_JOIN`. No face-drive cancellation, lossless-end, or channel census is claimed.\n\n## 4. Continuum-response / remainder schema\n\nWriter schema matches the reader:\n\n- contrasts `(0.01,0.001)`, `(0.005,0.0005)`, `(0.0025,0.00025)`: `direct = la.solve(A,b)`, `retained = evaluate(coefficients)`, `difference = direct-retained`\n- systems: `matrices[g].shape == (5*size, 5*size)`, `rhs[g].shape` matches coefficient columns; `size=129`, four grades `(0,0),(1,0),(0,1),(1,1)`\n- grade keys `(a,b)` as `eta_bg**a * sigma_W**b`; incident columns 0\u20131 LEFT, 2\u20133 RIGHT; field units `fieldUnits[i]-currentUnit/2`\n- `flux.scope` is the retained-rectangle open-current homotopy; inventoried, not treated as physical loss\n- top-level probe of `bornAmplitude` / `fullBornComparison` / `physicalTotalLoss` / `outgoingPower` / `lossQuadraticForm` is labelled `topLevelNamedKeyProbe_notACensus`\n\nCoefficient matrices are journaled and shape-inventoried only. No new solve, Born/full relabel, rate fit, or optical-loss inference.\n\n## 5. Historical readable JSON\n\nSelected context, four case reports, and eight end-field reports are copied as JSON. Consumed case fields (`case`, `planeJetEstablished`, `forcingPairingEstablished`, `nativeTermsBySide`, `regulatorPresentCount`, `unreducedCoefficientZeroFlags`) exist on the inspect writer\u2019s emit (lines 339\u2013352). End-field `savedFieldNonzeroEntryCount` follows `text_matrix`\u2019s omission of zeros; LEFT density/thickness exports are empty `entries` lists. Checkpoint `reviewVerdicts` and `acceptanceScope` are copied under original-* names. Status is `SAVED_READER_COMPLETED_REQUIRES_REPORT`. Mixed historical Claude/Grok verdicts are not a new CLEAR.\n\n`physicalInputStructuralJoin` is a hard equality of old `saved-context.json` `physicalInput` with job 1\u2019s manifest `physicalInput`. Evidence is persisted before the require.\n\n## 6. Codec, journal, containment, timer\n\nContainment (2 GiB, swap 0, 32 pids, one CPU, nice \u2265 15, six thread vars `1`, `RLIMIT_AS`, no cores, 840 s `ITIMER_REAL`) runs before any pickle restore. Gate requires `READY_FOR_ONE_GUARDED_TRANSVERSE_FACE_SAVED_READER_JOB`, ordinal 2, worker/manifest hashes, jobs `[1,2]` with method/field-power false, and `packetState.fileHashes` for this worker and manifest. These files do not mint a READY gate.\n\nCensus (37 unique pickles, NumPy 1.26.4, SymPy 1.14.0, zero restorations): observed NumPy globals are `dtype`, `ndarray`, `numpy.core.multiarray._reconstruct`, `numpy.core.numeric._frombuffer`. Original continuum-response/remainders/systems use `_frombuffer`; job-1 re-pickles add `_reconstruct`. All four have codec entries. Observed SymPy names are `Basic`/`MatrixBase` classes plus `_rebuild_undef`. `EMPTY_SET`/`ADDITEMS` are opcodes, not `builtins.set` globals. Producer classes and persistent IDs are rejected.\n\nJournal writes started + input-references before the call, complete returns after, original pickle bytes under `source-objects/` before decode. Failure writes `failure.json` with `incompleteOperation` and posthashes. Successful stdout is exactly `checks.json`. `artifact-index.json` is written in `finally` and excludes itself.\n\nNative 840 s is disarmed after posthashes on success, and immediately on exception, before `checks.json` / stdout / artifact-index / failure hashing. Outer guard 900 s still bounds that bookkeeping.\n\n## 7. Use for the omega=1 / omega=3 comparison\n\nThis is the right bounded instrument: it reports job 1\u2019s actual unfinished binds, zero visited points, the six comparison rows as unvisited, saved branch/unit/contrast inventory, and wall time, then stops. It does not choose a method route or repair the 35 s bind timeouts.\n\n## Material findings\n\nNone that change what this reader computes or may claim on these inputs.\n\n## Runtime obligations / cost uncertainty\n\nThese cannot be settled from source-only review:\n\n1. **Unpickling.** Class/schema checks for the census globals (including `TupleArg`, `meijerg`, `BooleanTrue`, `Heaviside`, `Integral`, `Limit`) still have to succeed at runtime.\n2. **`same(oldResponse, job-1 unit-context)`** after `_frombuffer` vs `_reconstruct` encodings, and **`premise_show` vs `unit-context.json`**.\n3. **`physicalInput` equality** of the old readable context with job 1\u2019s manifest dict.\n4. **Coverage strings** `\"1\"`, `\"3\"`, `\"1/10\"` against job 1\u2019s `str(Rational)` planned grid (fail-closed if they differ).\n5. **Cost.** Restoring the 26.8 MB coefficient-systems pickle, re-pickling journal operands, and `display()` of four-grade 645\u00d74 coefficient/remainder arrays plus pairing/reduction inventories must fit 840 s / 2 GiB. Job 1 peaked at ~187 MiB in 115 s without the 26 MB systems object; continuum-response construction peaked at ~560 MiB RSS. Duration-authorization longer limits are not encoded here.\n6. **Timer handoff.** Remaining native time is not armed through artifact-index or failure hashing. Outer 900 s remains. Smallest later control tweak, if wanted: re-arm remaining native time until after `artifact-index.json`, as job 1\u2019s `arm_native` does for construct-time persistence.\n\nNo optional wording cycle. No downstream launch.",
+      "receipt": {
+        "engine": "grok",
+        "sessionId": "fb8435f8-a483-49c3-96bc-348c0c72a745",
+        "command": [
+          "/home/trevnorris/.local/bin/grok",
+          "--cwd",
+          "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/saved-reader-build-review-r2/packet",
+          "--prompt-file",
+          "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/saved-reader-build-review-r2/packet/review-prompt.md",
+          "--output-format",
+          "json",
+          "--permission-mode",
+          "dontAsk",
+          "--no-plan",
+          "--tools",
+          "Read",
+          "--no-subagents",
+          "--disable-web-search",
+          "--verbatim",
+          "--session-id",
+          "fb8435f8-a483-49c3-96bc-348c0c72a745"
+        ],
+        "cwd": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/saved-reader-build-review-r2/packet",
+        "startedUtc": "2026-09-29T13:15:59.953584+00:00",
+        "packetSha256": "2ef5f7e88cc2527c68098bb6613ad1982ba6b59cc208fbd6742ff768af4491ad",
+        "promptSha256": "4f4d4c7452489e998b97cabc0b89494f5e92cb578ab92fa892b1da1301165c80",
+        "scientificExecutionEnabled": false,
+        "reviewVerdict": "NOT_ADJUDICATED",
+        "pid": 2241105,
+        "exitStatus": 0,
+        "finishedUtc": "2026-09-29T13:29:05.915461+00:00",
+        "wallSeconds": 785.9607448409079,
+        "outputSha256": "704cde06c73ceb30c31d6ea8d0d61b4d42630b7dc103731c5e37b54fb3061545",
+        "stderrSha256": "ae49ebbd4bac366b41002cd2ba5fda263d3ba661100d2a69e6c35521e19423f3",
+        "stderrBytes": 6904
+      },
+      "stderr": "\u001b[2m2026-09-29T13:16:00.242245Z\u001b[0m \u001b[33m WARN\u001b[0m plugin name collision resolved by scope precedence \u001b[3mplugin_name\u001b[0m\u001b[2m=\u001b[0mfrontend-design \u001b[3mwinner\u001b[0m\u001b[2m=\u001b[0m/home/trevnorris/.claude/plugins/marketplaces/claude-plugins-official/plugins/frontend-design \u001b[3mloser\u001b[0m\u001b[2m=\u001b[0m/home/trevnorris/.claude/plugins/cache/claude-plugins-official/frontend-design/fbe07fb6ce7d\n\u001b[2m2026-09-29T13:16:00.252516Z\u001b[0m \u001b[33m WARN\u001b[0m plugin name collision resolved by scope precedence \u001b[3mplugin_name\u001b[0m\u001b[2m=\u001b[0mfrontend-design \u001b[3mwinner\u001b[0m\u001b[2m=\u001b[0m/home/trevnorris/.claude/plugins/marketplaces/claude-plugins-official/plugins/frontend-design \u001b[3mloser\u001b[0m\u001b[2m=\u001b[0m/home/trevnorris/.claude/plugins/cache/claude-plugins-official/frontend-design/fbe07fb6ce7d\n\u001b[2m2026-09-29T13:16:00.279601Z\u001b[0m \u001b[33m WARN\u001b[0m hooks: skipped unrecognized event names (check for typos) \u001b[3mfile\u001b[0m\u001b[2m=\u001b[0m/home/trevnorris/.claude/settings.json \u001b[3mskipped\u001b[0m\u001b[2m=\u001b[0m[\"PermissionRequest\"]\n\u001b[2m2026-09-29T13:16:00.280000Z\u001b[0m \u001b[33m WARN\u001b[0m hook loading from settings file: failed to parse hook file /home/trevnorris/.cursor/hooks.json: invalid matcher groups for event 'beforeSubmitPrompt': missing field `hooks`\n\u001b[2m2026-09-29T13:16:00.280050Z\u001b[0m \u001b[33m WARN\u001b[0m hook loading error \u001b[3merror\u001b[0m\u001b[2m=\u001b[0mParseFile { path: \"/home/trevnorris/.cursor/hooks.json\", detail: \"invalid matcher groups for event 'beforeSubmitPrompt': missing field `hooks`\" }\n\u001b[2m2026-09-29T13:16:01.401271Z\u001b[0m \u001b[33m WARN\u001b[0m Ignoring context_window downgrade from response header \u001b[3mcurrent_context_window\u001b[0m\u001b[2m=\u001b[0m500000 \u001b[3mheader_context_window\u001b[0m\u001b[2m=\u001b[0m256000\n\u001b[2m2026-09-29T13:16:05.755722Z\u001b[0m \u001b[33m WARN\u001b[0m Ignoring context_window downgrade from response header \u001b[3mcurrent_context_window\u001b[0m\u001b[2m=\u001b[0m500000 \u001b[3mheader_context_window\u001b[0m\u001b[2m=\u001b[0m256000\n\u001b[2m2026-09-29T13:16:13.345894Z\u001b[0m \u001b[31mERROR\u001b[0m tool_error: tool_output_error \u001b[3msession_id\u001b[0m\u001b[2m=\u001b[0mfb8435f8-a483-49c3-96bc-348c0c72a745 \u001b[3mtool_name\u001b[0m\u001b[2m=\u001b[0m\"read_file\" \u001b[3meffective_tool_name\u001b[0m\u001b[2m=\u001b[0m\"read_file\" \u001b[3mmodel_id\u001b[0m\u001b[2m=\u001b[0m\"grok-4.6\" \u001b[3merror_kind\u001b[0m\u001b[2m=\u001b[0m\"tool_output_error\"\n\u001b[2m2026-09-29T13:16:13.346803Z\u001b[0m \u001b[31mERROR\u001b[0m tool_error: tool_output_error \u001b[3msession_id\u001b[0m\u001b[2m=\u001b[0mfb8435f8-a483-49c3-96bc-348c0c72a745 \u001b[3mtool_name\u001b[0m\u001b[2m=\u001b[0m\"read_file\" \u001b[3meffective_tool_name\u001b[0m\u001b[2m=\u001b[0m\"read_file\" \u001b[3mmodel_id\u001b[0m\u001b[2m=\u001b[0m\"grok-4.6\" \u001b[3merror_kind\u001b[0m\u001b[2m=\u001b[0m\"tool_output_error\"\n\u001b[2m2026-09-29T13:16:14.153520Z\u001b[0m \u001b[33m WARN\u001b[0m Ignoring context_window downgrade from response header \u001b[3mcurrent_context_window\u001b[0m\u001b[2m=\u001b[0m500000 \u001b[3mheader_context_window\u001b[0m\u001b[2m=\u001b[0m256000\n\u001b[2m2026-09-29T13:16:15.863757Z\u001b[0m \u001b[33m WARN\u001b[0m Ignoring context_window downgrade from response header \u001b[3mcurrent_context_window\u001b[0m\u001b[2m=\u001b[0m500000 \u001b[3mheader_context_window\u001b[0m\u001b[2m=\u001b[0m256000\n\u001b[2m2026-09-29T13:16:24.392823Z\u001b[0m \u001b[33m WARN\u001b[0m Ignoring context_window downgrade from response header \u001b[3mcurrent_context_window\u001b[0m\u001b[2m=\u001b[0m500000 \u001b[3mheader_context_window\u001b[0m\u001b[2m=\u001b[0m256000\n\u001b[2m2026-09-29T13:16:30.125738Z\u001b[0m \u001b[33m WARN\u001b[0m Ignoring context_window downgrade from response header \u001b[3mcurrent_context_window\u001b[0m\u001b[2m=\u001b[0m500000 \u001b[3mheader_context_window\u001b[0m\u001b[2m=\u001b[0m256000\n\u001b[2m2026-09-29T13:16:32.993026Z\u001b[0m \u001b[33m WARN\u001b[0m Ignoring context_window downgrade from response header \u001b[3mcurrent_context_window\u001b[0m\u001b[2m=\u001b[0m500000 \u001b[3mheader_context_window\u001b[0m\u001b[2m=\u001b[0m256000\n\u001b[2m2026-09-29T13:17:40.934474Z\u001b[0m \u001b[33m WARN\u001b[0m Ignoring context_window downgrade from response header \u001b[3mcurrent_context_window\u001b[0m\u001b[2m=\u001b[0m500000 \u001b[3mheader_context_window\u001b[0m\u001b[2m=\u001b[0m256000\n\u001b[2m2026-09-29T13:17:56.951036Z\u001b[0m \u001b[33m WARN\u001b[0m Ignoring context_window downgrade from response header \u001b[3mcurrent_context_window\u001b[0m\u001b[2m=\u001b[0m500000 \u001b[3mheader_context_window\u001b[0m\u001b[2m=\u001b[0m256000\n\u001b[2m2026-09-29T13:18:45.440126Z\u001b[0m \u001b[33m WARN\u001b[0m Ignoring context_window downgrade from response header \u001b[3mcurrent_context_window\u001b[0m\u001b[2m=\u001b[0m500000 \u001b[3mheader_context_window\u001b[0m\u001b[2m=\u001b[0m256000\n\u001b[2m2026-09-29T13:18:50.392384Z\u001b[0m \u001b[33m WARN\u001b[0m Ignoring context_window downgrade from response header \u001b[3mcurrent_context_window\u001b[0m\u001b[2m=\u001b[0m500000 \u001b[3mheader_context_window\u001b[0m\u001b[2m=\u001b[0m256000\n\u001b[2m2026-09-29T13:19:04.091888Z\u001b[0m \u001b[33m WARN\u001b[0m Ignoring context_window downgrade from response header \u001b[3mcurrent_context_window\u001b[0m\u001b[2m=\u001b[0m500000 \u001b[3mheader_context_window\u001b[0m\u001b[2m=\u001b[0m256000\n\u001b[2m2026-09-29T13:19:09.026890Z\u001b[0m \u001b[33m WARN\u001b[0m Ignoring context_window downgrade from response header \u001b[3mcurrent_context_window\u001b[0m\u001b[2m=\u001b[0m500000 \u001b[3mheader_context_window\u001b[0m\u001b[2m=\u001b[0m256000\n\u001b[2m2026-09-29T13:20:19.703481Z\u001b[0m \u001b[33m WARN\u001b[0m Ignoring context_window downgrade from response header \u001b[3mcurrent_context_window\u001b[0m\u001b[2m=\u001b[0m500000 \u001b[3mheader_context_window\u001b[0m\u001b[2m=\u001b[0m256000\n\u001b[2m2026-09-29T13:20:34.330569Z\u001b[0m \u001b[33m WARN\u001b[0m Ignoring context_window downgrade from response header \u001b[3mcurrent_context_window\u001b[0m\u001b[2m=\u001b[0m500000 \u001b[3mheader_context_window\u001b[0m\u001b[2m=\u001b[0m256000\n\u001b[2m2026-09-29T13:21:47.019510Z\u001b[0m \u001b[33m WARN\u001b[0m Ignoring context_window downgrade from response header \u001b[3mcurrent_context_window\u001b[0m\u001b[2m=\u001b[0m500000 \u001b[3mheader_context_window\u001b[0m\u001b[2m=\u001b[0m256000\n\u001b[2m2026-09-29T13:21:58.217740Z\u001b[0m \u001b[33m WARN\u001b[0m Ignoring context_window downgrade from response header \u001b[3mcurrent_context_window\u001b[0m\u001b[2m=\u001b[0m500000 \u001b[3mheader_context_window\u001b[0m\u001b[2m=\u001b[0m256000\n\u001b[2m2026-09-29T13:22:11.987539Z\u001b[0m \u001b[33m WARN\u001b[0m Ignoring context_window downgrade from response header \u001b[3mcurrent_context_window\u001b[0m\u001b[2m=\u001b[0m500000 \u001b[3mheader_context_window\u001b[0m\u001b[2m=\u001b[0m256000\n\u001b[2m2026-09-29T13:22:19.113406Z\u001b[0m \u001b[33m WARN\u001b[0m Ignoring context_window downgrade from response header \u001b[3mcurrent_context_window\u001b[0m\u001b[2m=\u001b[0m500000 \u001b[3mheader_context_window\u001b[0m\u001b[2m=\u001b[0m256000\n\u001b[2m2026-09-29T13:22:23.262788Z\u001b[0m \u001b[33m WARN\u001b[0m Ignoring context_window downgrade from response header \u001b[3mcurrent_context_window\u001b[0m\u001b[2m=\u001b[0m500000 \u001b[3mheader_context_window\u001b[0m\u001b[2m=\u001b[0m256000\n\u001b[2m2026-09-29T13:22:26.150317Z\u001b[0m \u001b[33m WARN\u001b[0m Ignoring context_window downgrade from response header \u001b[3mcurrent_context_window\u001b[0m\u001b[2m=\u001b[0m500000 \u001b[3mheader_context_window\u001b[0m\u001b[2m=\u001b[0m256000\n\u001b[2m2026-09-29T13:23:55.712095Z\u001b[0m \u001b[33m WARN\u001b[0m Ignoring context_window downgrade from response header \u001b[3mcurrent_context_window\u001b[0m\u001b[2m=\u001b[0m500000 \u001b[3mheader_context_window\u001b[0m\u001b[2m=\u001b[0m256000\n\u001b[2m2026-09-29T13:26:50.501729Z\u001b[0m \u001b[31mERROR\u001b[0m tool_error: tool_output_error \u001b[3msession_id\u001b[0m\u001b[2m=\u001b[0mfb8435f8-a483-49c3-96bc-348c0c72a745 \u001b[3mtool_name\u001b[0m\u001b[2m=\u001b[0m\"read_file\" \u001b[3meffective_tool_name\u001b[0m\u001b[2m=\u001b[0m\"read_file\" \u001b[3mmodel_id\u001b[0m\u001b[2m=\u001b[0m\"grok-4.6\" \u001b[3merror_kind\u001b[0m\u001b[2m=\u001b[0m\"tool_output_error\"\n\u001b[2m2026-09-29T13:26:51.480685Z\u001b[0m \u001b[33m WARN\u001b[0m Ignoring context_window downgrade from response header \u001b[3mcurrent_context_window\u001b[0m\u001b[2m=\u001b[0m500000 \u001b[3mheader_context_window\u001b[0m\u001b[2m=\u001b[0m256000\n",
+      "rawOutputPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/saved-reader-build-review-r2/grok.json",
+      "rawOutputSha256": "704cde06c73ceb30c31d6ea8d0d61b4d42630b7dc103731c5e37b54fb3061545",
+      "terminationMetadata": {
+        "stopReason": "end_turn",
+        "num_turns": 23,
+        "sessionId": "fb8435f8-a483-49c3-96bc-348c0c72a745"
+      }
+    }
+  },
+  "verification": {
+    "packetArchiveAndCanonicalSourcesMatch": true,
+    "canonicalSourcePins": 36,
+    "inputPins": 168,
+    "bothReportsFinishedBeforeAdjudication": true,
+    "reviewedWorkerSha256": "54ea52fd5aaea52eaca23314a227b6891be2856f7a9246697efe827042db1eaf",
+    "reviewedSourceCommit": "f9f5553e",
+    "scientificImportsOrRestorations": 0
+  },
+  "stderrAssessment": "Claude and infrastructure stderr are empty. Grok stderr contains configuration/context warnings and three read_file tool errors. Both attempts completed; Grok ends with a complete source-addressed report covering all seven questions and concrete writer/schema joins. The failed reads are retained as a review limitation, not hidden or treated as scientific evidence. No transport retry occurred.",
+  "independentBuildClearance": true,
+  "scienceJob2Launched": false,
+  "newReviewSubmitted": false,
+  "disposition": "Both substantive literal CLEAR verdicts apply to the unchanged pinned bounded reader. Optional suggestions are deferred; runtime obligations remain. Build clearance is not scientific acceptance."
+}

@@ -1,0 +1,40 @@
+{
+  "status": "READY_FOR_ONE_GUARDED_TRANSVERSE_FACE_SAVED_READER_JOB",
+  "recordedUtc": "2026-09-29T13:32:29.210251+00:00",
+  "scienceAuthorizationAfterCostedPlanGo": true,
+  "userScienceApprovalRecord": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_premise_authorization.json",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_premise_authorization.json",
+    "bytes": 1670,
+    "sha256": "a3f0f7c1532572fc5409f3ec8a459d0bcb8bcd1a2c24b8cad8c9a1d7e033514b"
+  },
+  "workerSha256": "54ea52fd5aaea52eaca23314a227b6891be2856f7a9246697efe827042db1eaf",
+  "inputManifestSha256": "d41990bb06196d830471445d8430ec9030be1641cffa51b99b843e25c547d0b5",
+  "independentBuildClearance": true,
+  "reviewRecord": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_saved_reader_review_r2_record.json",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_saved_reader_review_r2_record.json",
+    "bytes": 50140,
+    "sha256": "64a296214be40ab57a92f9e2d8dad4c70c6d950bbb4e0e9b2e1f8cffc4e28069"
+  },
+  "scienceJobOrdinal": 2,
+  "seconds": 900,
+  "nativeSeconds": 840,
+  "memoryGiB": 2,
+  "swapMax": 0,
+  "cpuCount": 1,
+  "nice": 15,
+  "tasksMax": 32,
+  "nativeThreads": 1,
+  "automaticRetry": false,
+  "launcherSha256": "02c06fad58069f0aa033bca4f9473a55015848dc11039cc3361cda29f449491a",
+  "completionMessageSha256": "37944b0a7acb93778dad3dc4e10979a7322f4036273c22b9051aa0744177f1d3",
+  "protectedBuilderSuffixSha256": "f01024512c9a028e7e524e5a95b5c455be42e125d10c36f94e20493109b013c2",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/saved-reader",
+  "resultDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/saved-reader/complete",
+  "guardSha256": "9194b3e04b43d345828082e6312b0a2d7a9293f6296153f9c6ccea2defb931d2",
+  "supervisorSha256": "45a16f7f952ca6b571362b1c386fec76cd86f1e0ad04113074adf49c683ec49c",
+  "completionHookSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
+  "durationExceptionUsed": false,
+  "stopAfterJob2AndFrequencyComparison": true
+}

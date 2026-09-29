@@ -1,0 +1,31 @@
+{
+  "status": "STATIC_ONLY_READY_FOR_APPROVED_JOB2",
+  "recordedUtc": "2026-09-29T13:32:29.211260+00:00",
+  "reviewedWorkerUnchanged": true,
+  "inputPinsVerified": 168,
+  "nativeWorkerNotImportedOrExecuted": true,
+  "scientificRestorations": 0,
+  "launcherSyntaxPass": true,
+  "ordinaryLimitsUnchanged": true,
+  "protectedBuilderSuffixSha256": "f01024512c9a028e7e524e5a95b5c455be42e125d10c36f94e20493109b013c2",
+  "gate": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_saved_reader_gate.json",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_saved_reader_gate.json",
+    "bytes": 2257,
+    "sha256": "80481e8cfb6a2877a20cee54cb4275bc2e162f463285a101aea107c416c99994"
+  },
+  "launcher": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_saved_reader_stage_launch.py",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_saved_reader_stage_launch.py",
+    "bytes": 12936,
+    "sha256": "02c06fad58069f0aa033bca4f9473a55015848dc11039cc3361cda29f449491a"
+  },
+  "reviewRecord": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_saved_reader_review_r2_record.json",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_saved_reader_review_r2_record.json",
+    "bytes": 50140,
+    "sha256": "64a296214be40ab57a92f9e2d8dad4c70c6d950bbb4e0e9b2e1f8cffc4e28069"
+  },
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/saved-reader",
+  "completionHookTarget": "01a0e01b-ef84-7192-817f-584cda5d339b"
+}

@@ -1,5 +1,15 @@
 # S11c-d: the remaining execution queue
 
+**Job 2 independently cleared and gated (2026-09-29):** both fresh round-2
+reviewers literally CLEAR FOR THIS BOUNDED SAVED-OUTPUT READER. Exact reviewed
+worker/manifest/note are unchanged; 168 input pins and the fixed packet match.
+See reader review_r2_record/disposition and gate. Optional suggestions deferred;
+runtime joins and resource/output inspection remain. The existing jobs-1–2
+approval covers one ordinary guarded reader (900 s outer / 840 s native).
+No longer-duration exception or failed-binding retry. After results, return the
+omega=1/omega=3 comparison and stop before field/power work. Job 1 remains
+unresolved; analog-light frequency calibration remains OPEN.
+
 **Job 2 corrected build reviews launched (2026-09-29):** the user approved
 the exact 37-file / 3,101,999-byte packet
 `2ef5f7e88cc2527c68098bb6613ad1982ba6b59cc208fbd6742ff768af4491ad`.

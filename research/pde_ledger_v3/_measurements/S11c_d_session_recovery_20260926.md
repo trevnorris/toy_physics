@@ -1,5 +1,20 @@
 # S11c-d session recovery — 2026-09-26
 
+**Execution 5 resumed with user-authorized desktop priority (2026-09-29):**
+exact cleared worker is running as the same PID 2497607, resumed at 19:39:51 UTC.
+New coefficient returns were saved before a host-priority detour. The desktop
+scheduler overrode nice15; the worker was suspended in place at 19:26:41 UTC.
+The approved temporary exact-job exception did not prevent that override.
+User then explicitly said “Resume with desktop-managed priority.” Only the
+nice15 requirement is waived. Existing 2GiB/zero-swap/one-CPU/32-task/one-thread
+controls remain, with no overall runtime cap and the unchanged 3600s saved-result
+inactivity stop (+60s outer grace). No restart, replay, new science or source edit.
+Exception removal authentication was dismissed; the already-armed root cleanup
+service will remove the exact temporary file when this job's cgroup empties.
+Verify that cleanup on completion. See continuation launch record for the full
+priority/pause/approval evidence. No further priority changes or model polling.
+Stop after actual results; no premise/loss acceptance yet or further job authority.
+
 **Progress-dependent continuation independently cleared and gated (2026-09-29):**
 both fresh reviewers literally CLEAR FOR THIS PROGRESS-DEPENDENT FIXED-POINT
 CONTINUATION. All 193 packet/archive members, 192 source pins and 432 input pins

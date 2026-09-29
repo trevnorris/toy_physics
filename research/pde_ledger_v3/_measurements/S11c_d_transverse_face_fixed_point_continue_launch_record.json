@@ -1,5 +1,5 @@
 {
-  "status": "STATIC_READY_FOR_ALREADY_APPROVED_PROGRESS_CONTINUATION",
+  "status": "RUNNING_USER_AUTHORIZED_DESKTOP_PRIORITY",
   "recordedUtc": "2026-09-29T19:22:48.826815+00:00",
   "gate": {
     "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_fixed_point_continue_gate.json",
@@ -26,8 +26,123 @@
     "sha256": "34020b86a5f36175478f86f8a3963a1d1beb4c37fb341e2c3a4ed1e2d498e6c9"
   },
   "scientificExecutionOrdinal": 5,
-  "scientificExecutionLaunched": false,
+  "scientificExecutionLaunched": true,
   "reviewedWorkerAndGuardUnchanged": true,
-  "scientificImportsOrRestorations": 0,
-  "completionHookTarget": "01a0e01b-ef84-7192-817f-584cda5d339b"
+  "scientificImportsOrRestorations": "Worker is running authorized restorations inside containment only; none during host inspection.",
+  "completionHookTarget": "01a0e01b-ef84-7192-817f-584cda5d339b",
+  "updatedUtc": "2026-09-29T19:40:58.151340+00:00",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation",
+  "launch": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/launch.json",
+    "bytes": 2177,
+    "sha256": "e8efa07468af8a49618e6bc7639f1234372460393bcd720a9519ad6a8af60b90"
+  },
+  "stageStart": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/stage-start.json",
+    "bytes": 2028,
+    "sha256": "7d90a6694da8d245b811b266c7b549ddc0e11a3a4b3058be25cd05d310b1379b"
+  },
+  "sourceSnapshotPairsVerified": 199,
+  "recursiveManifestPinRecordsVerified": 500,
+  "sourceSnapshotAndManifestHashFailures": [],
+  "scientificWorkerPid": 2497607,
+  "systemdUnit": "s11c-guard-37f533cfe2e7.service",
+  "progressAtSuspension": {
+    "sequence": 45,
+    "kind": "NEW_COMPLETE_SUBOPERATION",
+    "receipt": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/operations/0011-REFERENCE-source-bind/suboperations/carrier-entry-000018-return/complete.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/operations/0011-REFERENCE-source-bind/suboperations/carrier-entry-000018-return/complete.json",
+      "bytes": 613,
+      "sha256": "5ab83520064c45d402d273e48c9babadd08bfec48585355084144e5537e55484"
+    },
+    "utc": "2026-09-29T19:24:30.592344+00:00"
+  },
+  "priorityRestoration": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/priority-restoration.json",
+    "bytes": 421,
+    "sha256": "9aff8934d908862e9a210ae44deefd3d91748a78fc74adec489918f6dd8ac3dc"
+  },
+  "prioritySuspension": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/priority-containment-pause.json",
+    "bytes": 280,
+    "sha256": "26b8fe911c6bacd3c5ae2a3ff37e9797c531944843f3c99a390895d1d8acacf4"
+  },
+  "resourceEnforcementAtStartup": {
+    "memory.max": "2147483648",
+    "memory.swap.max": "0",
+    "pids.max": "32",
+    "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-37f533cfe2e7.service",
+    "nice": 15,
+    "affinity": [
+      15
+    ],
+    "threads": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1",
+      "VECLIB_MAXIMUM_THREADS": "1",
+      "BLIS_NUM_THREADS": "1"
+    }
+  },
+  "durationEnforcement": {
+    "verified": true,
+    "actual": {
+      "Restart": "no",
+      "RuntimeMaxUSec": "infinity"
+    },
+    "wallDeadlineSeconds": null,
+    "automaticRetry": false
+  },
+  "schedulerExceptionApproval": {
+    "userReply": "Approve the exact-job exception",
+    "config": {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_fixed_point_continue_scheduler_exception.kdl",
+      "bytes": 360,
+      "sha256": "ec3a8b3f2514520c3a4f153bf7785777cc2ac995528ba529a411e06616ac7520"
+    },
+    "installer": {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_fixed_point_continue_scheduler_install.py",
+      "bytes": 3865,
+      "sha256": "a01387e1d98e4548b91f3581261c3c8777671589d0680f9b24e201066df33971"
+    },
+    "status": "Installed; did not prevent priority rewrite. Failed verification preserved. User subsequently waived only niceness; automatic cleanup remains armed."
+  },
+  "scientificRestart": false,
+  "scientificAcceptance": false,
+  "priorityResume": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/user-authorized-priority-resume.json",
+    "bytes": 1073,
+    "sha256": "8477a6d4ed9082b5749d041a35f7819ad1b35b6906160af2147c428f35fc93ab"
+  },
+  "schedulerExceptionInstall": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/scheduler-exception-install.stdout",
+    "bytes": 438,
+    "sha256": "2b59eb80d752b94ec5d12c1132b583c04a6e6e36f5ff786471e9721c37c7eae2"
+  },
+  "schedulerPriorityVerification": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/scheduler-priority-verification.json",
+    "bytes": 2505,
+    "sha256": "ea2ee0b11bd9d623b7e93472f85ca960f116f351fb8200f33a3ca5cedc701c35"
+  },
+  "schedulerExceptionRemovalAttempt": {
+    "status": "ADMINISTRATOR_AUTHENTICATION_DISMISSED",
+    "stderr": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/scheduler-exception-removal.stderr",
+      "bytes": 59,
+      "sha256": "78ad9b7bc55d10042a48ef013523a951c63038c24df37ee689e45c1c80046ea4"
+    },
+    "automaticCleanupStillArmed": "s11c-priority-exception-cleanup-37f533cfe2e7.service",
+    "noFurtherAuthenticationOrPriorityChangesPlanned": true
+  },
+  "finalPriorityAuthority": {
+    "userReply": "Resume with desktop-managed priority",
+    "scope": "Waive only nice-15 requirement; retain all other existing limits and progress checks."
+  },
+  "remainingExistingProgressCondition": "No overall duration cap; 3600s without a distinct saved result, outer +60s bookkeeping grace, unchanged in flight.",
+  "completionAdditionalChecks": [
+    "Verify temporary scheduler exception automatically removed after cgroup empties; inspect cleanup service result.",
+    "Preserve observed pre-waiver priority deviations and suspension history; do not claim uninterrupted nice15 enforcement."
+  ]
 }

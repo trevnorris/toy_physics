@@ -1,0 +1,6 @@
+// Proposed temporary host exception for execution 5 only; not installed.
+// The scientific guard/native worker retain nice 15 and every resource limit.
+// Remove this file from /etc/system76-scheduler/process-scheduler/ after the job.
+exceptions {
+    include cgroup="/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-37f533cfe2e7.service"
+}

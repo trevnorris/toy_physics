@@ -1,0 +1,1839 @@
+{
+  "status": "STATIC_SERIALIZATION_METADATA_ONLY",
+  "recordedUtc": "2026-09-29T17:22:36.932728+00:00",
+  "manifestSha256": "01158fb90043d7486119552b75605b44b0684192b125be64c2279cf728e7ba21",
+  "uniquePickles": 29,
+  "wallSeconds": 4.926103746052831,
+  "scientificImports": 0,
+  "scientificRestorations": 0,
+  "reducersExecuted": 0,
+  "results": [
+    {
+      "keys": [
+        "priorArtifact017"
+      ],
+      "route": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/objects/0976bb0311a9c2f7307296a6ad0aa19a2f00ddd92e06e8f49d7cda3af209561a.pickle",
+        "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/objects/0976bb0311a9c2f7307296a6ad0aa19a2f00ddd92e06e8f49d7cda3af209561a.pickle",
+        "bytes": 28,
+        "sha256": "0976bb0311a9c2f7307296a6ad0aa19a2f00ddd92e06e8f49d7cda3af209561a"
+      },
+      "globals": [],
+      "setOpcodes": {
+        "EMPTY_SET": 0,
+        "ADDITEMS": 0,
+        "FROZENSET": 0
+      },
+      "setSliceGlobals": [],
+      "opcodeCount": 5
+    },
+    {
+      "keys": [
+        "priorArtifact018"
+      ],
+      "route": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/objects/18de21d260b9192987ec7df52b6bfc83cd0ea4a2cec593f2f99d61e376f224f0.pickle",
+        "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/objects/18de21d260b9192987ec7df52b6bfc83cd0ea4a2cec593f2f99d61e376f224f0.pickle",
+        "bytes": 94161,
+        "sha256": "18de21d260b9192987ec7df52b6bfc83cd0ea4a2cec593f2f99d61e376f224f0"
+      },
+      "globals": [
+        [
+          "sympy.core.add",
+          "Add"
+        ],
+        [
+          "sympy.core.containers",
+          "Tuple"
+        ],
+        [
+          "sympy.core.function",
+          "Derivative"
+        ],
+        [
+          "sympy.core.function",
+          "Subs"
+        ],
+        [
+          "sympy.core.function",
+          "_rebuild_undef"
+        ],
+        [
+          "sympy.core.mul",
+          "Mul"
+        ],
+        [
+          "sympy.core.numbers",
+          "Half"
+        ],
+        [
+          "sympy.core.numbers",
+          "ImaginaryUnit"
+        ],
+        [
+          "sympy.core.numbers",
+          "Infinity"
+        ],
+        [
+          "sympy.core.numbers",
+          "Integer"
+        ],
+        [
+          "sympy.core.numbers",
+          "NegativeInfinity"
+        ],
+        [
+          "sympy.core.numbers",
+          "NegativeOne"
+        ],
+        [
+          "sympy.core.numbers",
+          "One"
+        ],
+        [
+          "sympy.core.numbers",
+          "Pi"
+        ],
+        [
+          "sympy.core.numbers",
+          "Rational"
+        ],
+        [
+          "sympy.core.numbers",
+          "Zero"
+        ],
+        [
+          "sympy.core.power",
+          "Pow"
+        ],
+        [
+          "sympy.core.relational",
+          "LessThan"
+        ],
+        [
+          "sympy.core.symbol",
+          "Dummy"
+        ],
+        [
+          "sympy.core.symbol",
+          "Str"
+        ],
+        [
+          "sympy.core.symbol",
+          "Symbol"
+        ],
+        [
+          "sympy.functions.elementary.complexes",
+          "sign"
+        ],
+        [
+          "sympy.functions.elementary.exponential",
+          "exp"
+        ],
+        [
+          "sympy.functions.elementary.piecewise",
+          "ExprCondPair"
+        ],
+        [
+          "sympy.functions.elementary.piecewise",
+          "Piecewise"
+        ],
+        [
+          "sympy.functions.special.delta_functions",
+          "DiracDelta"
+        ],
+        [
+          "sympy.integrals.integrals",
+          "Integral"
+        ],
+        [
+          "sympy.logic.boolalg",
+          "And"
+        ],
+        [
+          "sympy.logic.boolalg",
+          "BooleanTrue"
+        ],
+        [
+          "sympy.logic.boolalg",
+          "Or"
+        ],
+        [
+          "sympy.matrices.immutable",
+          "ImmutableDenseMatrix"
+        ],
+        [
+          "sympy.series.limits",
+          "Limit"
+        ]
+      ],
+      "setOpcodes": {
+        "EMPTY_SET": 1,
+        "ADDITEMS": 0,
+        "FROZENSET": 0
+      },
+      "setSliceGlobals": [],
+      "opcodeCount": 40833
+    },
+    {
+      "keys": [
+        "priorArtifact019"
+      ],
+      "route": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/objects/18e45100c902df9e3a3fe5f23d7e5ddc79fcf262d4d07bf08b7f970b53be7c2e.pickle",
+        "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/objects/18e45100c902df9e3a3fe5f23d7e5ddc79fcf262d4d07bf08b7f970b53be7c2e.pickle",
+        "bytes": 1035529,
+        "sha256": "18e45100c902df9e3a3fe5f23d7e5ddc79fcf262d4d07bf08b7f970b53be7c2e"
+      },
+      "globals": [
+        [
+          "sympy.core.add",
+          "Add"
+        ],
+        [
+          "sympy.core.containers",
+          "Tuple"
+        ],
+        [
+          "sympy.core.function",
+          "Derivative"
+        ],
+        [
+          "sympy.core.function",
+          "_rebuild_undef"
+        ],
+        [
+          "sympy.core.mul",
+          "Mul"
+        ],
+        [
+          "sympy.core.numbers",
+          "Half"
+        ],
+        [
+          "sympy.core.numbers",
+          "ImaginaryUnit"
+        ],
+        [
+          "sympy.core.numbers",
+          "Infinity"
+        ],
+        [
+          "sympy.core.numbers",
+          "Integer"
+        ],
+        [
+          "sympy.core.numbers",
+          "NegativeInfinity"
+        ],
+        [
+          "sympy.core.numbers",
+          "NegativeOne"
+        ],
+        [
+          "sympy.core.numbers",
+          "One"
+        ],
+        [
+          "sympy.core.numbers",
+          "Pi"
+        ],
+        [
+          "sympy.core.numbers",
+          "Rational"
+        ],
+        [
+          "sympy.core.numbers",
+          "Zero"
+        ],
+        [
+          "sympy.core.power",
+          "Pow"
+        ],
+        [
+          "sympy.core.relational",
+          "Equality"
+        ],
+        [
+          "sympy.core.relational",
+          "LessThan"
+        ],
+        [
+          "sympy.core.symbol",
+          "Str"
+        ],
+        [
+          "sympy.core.symbol",
+          "Symbol"
+        ],
+        [
+          "sympy.functions.elementary.complexes",
+          "sign"
+        ],
+        [
+          "sympy.functions.elementary.exponential",
+          "exp"
+        ],
+        [
+          "sympy.functions.elementary.exponential",
+          "exp_polar"
+        ],
+        [
+          "sympy.functions.elementary.piecewise",
+          "ExprCondPair"
+        ],
+        [
+          "sympy.functions.elementary.piecewise",
+          "Piecewise"
+        ],
+        [
+          "sympy.functions.special.error_functions",
+          "erfc"
+        ],
+        [
+          "sympy.functions.special.hyper",
+          "TupleArg"
+        ],
+        [
+          "sympy.functions.special.hyper",
+          "meijerg"
+        ],
+        [
+          "sympy.integrals.integrals",
+          "Integral"
+        ],
+        [
+          "sympy.logic.boolalg",
+          "BooleanTrue"
+        ],
+        [
+          "sympy.matrices.immutable",
+          "ImmutableDenseMatrix"
+        ],
+        [
+          "sympy.series.limits",
+          "Limit"
+        ]
+      ],
+      "setOpcodes": {
+        "EMPTY_SET": 1,
+        "ADDITEMS": 1,
+        "FROZENSET": 0
+      },
+      "setSliceGlobals": [],
+      "opcodeCount": 437813
+    },
+    {
+      "keys": [
+        "priorArtifact020"
+      ],
+      "route": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/objects/1c80eb1a5d04e27d654561cf8f4e65141e2a7cd4162d53a1e2d4e0e2fe69aed9.pickle",
+        "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/objects/1c80eb1a5d04e27d654561cf8f4e65141e2a7cd4162d53a1e2d4e0e2fe69aed9.pickle",
+        "bytes": 1837,
+        "sha256": "1c80eb1a5d04e27d654561cf8f4e65141e2a7cd4162d53a1e2d4e0e2fe69aed9"
+      },
+      "globals": [
+        [
+          "sympy.core.add",
+          "Add"
+        ],
+        [
+          "sympy.core.function",
+          "_rebuild_undef"
+        ],
+        [
+          "sympy.core.mul",
+          "Mul"
+        ],
+        [
+          "sympy.core.numbers",
+          "Half"
+        ],
+        [
+          "sympy.core.numbers",
+          "Integer"
+        ],
+        [
+          "sympy.core.numbers",
+          "NegativeOne"
+        ],
+        [
+          "sympy.core.numbers",
+          "Zero"
+        ],
+        [
+          "sympy.core.power",
+          "Pow"
+        ],
+        [
+          "sympy.core.relational",
+          "Equality"
+        ],
+        [
+          "sympy.core.relational",
+          "LessThan"
+        ],
+        [
+          "sympy.core.symbol",
+          "Symbol"
+        ],
+        [
+          "sympy.functions.elementary.complexes",
+          "sign"
+        ],
+        [
+          "sympy.functions.elementary.piecewise",
+          "ExprCondPair"
+        ],
+        [
+          "sympy.functions.elementary.piecewise",
+          "Piecewise"
+        ],
+        [
+          "sympy.logic.boolalg",
+          "BooleanTrue"
+        ]
+      ],
+      "setOpcodes": {
+        "EMPTY_SET": 0,
+        "ADDITEMS": 0,
+        "FROZENSET": 0
+      },
+      "setSliceGlobals": [],
+      "opcodeCount": 725
+    },
+    {
+      "keys": [
+        "priorArtifact021"
+      ],
+      "route": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/objects/205a2d2b19105cbf504b0b9de5464f06f33bb5ce921f34c44e6214ad16eafe0d.pickle",
+        "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/objects/205a2d2b19105cbf504b0b9de5464f06f33bb5ce921f34c44e6214ad16eafe0d.pickle",
+        "bytes": 9293,
+        "sha256": "205a2d2b19105cbf504b0b9de5464f06f33bb5ce921f34c44e6214ad16eafe0d"
+      },
+      "globals": [
+        [
+          "sympy.core.add",
+          "Add"
+        ],
+        [
+          "sympy.core.containers",
+          "Tuple"
+        ],
+        [
+          "sympy.core.mul",
+          "Mul"
+        ],
+        [
+          "sympy.core.numbers",
+          "Half"
+        ],
+        [
+          "sympy.core.numbers",
+          "ImaginaryUnit"
+        ],
+        [
+          "sympy.core.numbers",
+          "Integer"
+        ],
+        [
+          "sympy.core.numbers",
+          "NegativeOne"
+        ],
+        [
+          "sympy.core.numbers",
+          "One"
+        ],
+        [
+          "sympy.core.numbers",
+          "Rational"
+        ],
+        [
+          "sympy.core.numbers",
+          "Zero"
+        ],
+        [
+          "sympy.core.power",
+          "Pow"
+        ],
+        [
+          "sympy.core.symbol",
+          "Symbol"
+        ],
+        [
+          "sympy.matrices.immutable",
+          "ImmutableDenseMatrix"
+        ]
+      ],
+      "setOpcodes": {
+        "EMPTY_SET": 0,
+        "ADDITEMS": 0,
+        "FROZENSET": 0
+      },
+      "setSliceGlobals": [],
+      "opcodeCount": 4585
+    },
+    {
+      "keys": [
+        "priorArtifact022"
+      ],
+      "route": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/objects/2a568090a0ff6e5f108186b652148f865093c3627b597c9bb7f824beffd52a66.pickle",
+        "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/objects/2a568090a0ff6e5f108186b652148f865093c3627b597c9bb7f824beffd52a66.pickle",
+        "bytes": 901117,
+        "sha256": "2a568090a0ff6e5f108186b652148f865093c3627b597c9bb7f824beffd52a66"
+      },
+      "globals": [
+        [
+          "sympy.core.add",
+          "Add"
+        ],
+        [
+          "sympy.core.containers",
+          "Tuple"
+        ],
+        [
+          "sympy.core.function",
+          "Derivative"
+        ],
+        [
+          "sympy.core.function",
+          "Subs"
+        ],
+        [
+          "sympy.core.function",
+          "_rebuild_undef"
+        ],
+        [
+          "sympy.core.mul",
+          "Mul"
+        ],
+        [
+          "sympy.core.numbers",
+          "Half"
+        ],
+        [
+          "sympy.core.numbers",
+          "ImaginaryUnit"
+        ],
+        [
+          "sympy.core.numbers",
+          "Infinity"
+        ],
+        [
+          "sympy.core.numbers",
+          "Integer"
+        ],
+        [
+          "sympy.core.numbers",
+          "NegativeInfinity"
+        ],
+        [
+          "sympy.core.numbers",
+          "NegativeOne"
+        ],
+        [
+          "sympy.core.numbers",
+          "One"
+        ],
+        [
+          "sympy.core.numbers",
+          "Rational"
+        ],
+        [
+          "sympy.core.numbers",
+          "Zero"
+        ],
+        [
+          "sympy.core.power",
+          "Pow"
+        ],
+        [
+          "sympy.core.relational",
+          "Equality"
+        ],
+        [
+          "sympy.core.relational",
+          "Unequality"
+        ],
+        [
+          "sympy.core.symbol",
+          "Dummy"
+        ],
+        [
+          "sympy.core.symbol",
+          "Symbol"
+        ],
+        [
+          "sympy.functions.elementary.exponential",
+          "exp"
+        ],
+        [
+          "sympy.matrices.immutable",
+          "ImmutableDenseMatrix"
+        ],
+        [
+          "sympy.series.limits",
+          "Limit"
+        ]
+      ],
+      "setOpcodes": {
+        "EMPTY_SET": 0,
+        "ADDITEMS": 0,
+        "FROZENSET": 0
+      },
+      "setSliceGlobals": [],
+      "opcodeCount": 357270
+    },
+    {
+      "keys": [
+        "priorArtifact023"
+      ],
+      "route": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/objects/2c9faf5fcae7d99402e4d5069acd828dc40ad008dbf32b999890c2d79e44983b.pickle",
+        "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/objects/2c9faf5fcae7d99402e4d5069acd828dc40ad008dbf32b999890c2d79e44983b.pickle",
+        "bytes": 31,
+        "sha256": "2c9faf5fcae7d99402e4d5069acd828dc40ad008dbf32b999890c2d79e44983b"
+      },
+      "globals": [],
+      "setOpcodes": {
+        "EMPTY_SET": 0,
+        "ADDITEMS": 0,
+        "FROZENSET": 0
+      },
+      "setSliceGlobals": [],
+      "opcodeCount": 5
+    },
+    {
+      "keys": [
+        "priorArtifact024"
+      ],
+      "route": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/objects/43d60e988b70c48ad2cb50832418fca667a00b1a4174b0409ee0decdd6f0e2d9.pickle",
+        "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/objects/43d60e988b70c48ad2cb50832418fca667a00b1a4174b0409ee0decdd6f0e2d9.pickle",
+        "bytes": 24,
+        "sha256": "43d60e988b70c48ad2cb50832418fca667a00b1a4174b0409ee0decdd6f0e2d9"
+      },
+      "globals": [],
+      "setOpcodes": {
+        "EMPTY_SET": 0,
+        "ADDITEMS": 0,
+        "FROZENSET": 0
+      },
+      "setSliceGlobals": [],
+      "opcodeCount": 5
+    },
+    {
+      "keys": [
+        "priorArtifact025"
+      ],
+      "route": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/objects/4a9d48bf8c6c261f6cbeb48b84bca57f33de79dc317cada8f33072f060a85426.pickle",
+        "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/objects/4a9d48bf8c6c261f6cbeb48b84bca57f33de79dc317cada8f33072f060a85426.pickle",
+        "bytes": 28,
+        "sha256": "4a9d48bf8c6c261f6cbeb48b84bca57f33de79dc317cada8f33072f060a85426"
+      },
+      "globals": [],
+      "setOpcodes": {
+        "EMPTY_SET": 0,
+        "ADDITEMS": 0,
+        "FROZENSET": 0
+      },
+      "setSliceGlobals": [],
+      "opcodeCount": 5
+    },
+    {
+      "keys": [
+        "priorArtifact026"
+      ],
+      "route": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/objects/5cb79c6b73f2f7959be7219884e742c13a9ec0dc2d48226bcf8b7fa1f24447c8.pickle",
+        "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/objects/5cb79c6b73f2f7959be7219884e742c13a9ec0dc2d48226bcf8b7fa1f24447c8.pickle",
+        "bytes": 20,
+        "sha256": "5cb79c6b73f2f7959be7219884e742c13a9ec0dc2d48226bcf8b7fa1f24447c8"
+      },
+      "globals": [],
+      "setOpcodes": {
+        "EMPTY_SET": 0,
+        "ADDITEMS": 0,
+        "FROZENSET": 0
+      },
+      "setSliceGlobals": [],
+      "opcodeCount": 5
+    },
+    {
+      "keys": [
+        "priorArtifact027"
+      ],
+      "route": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/objects/6d1176035b43f132523effa44e60fff229cb1ec37c9fc155496095d6759a70aa.pickle",
+        "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/objects/6d1176035b43f132523effa44e60fff229cb1ec37c9fc155496095d6759a70aa.pickle",
+        "bytes": 9271,
+        "sha256": "6d1176035b43f132523effa44e60fff229cb1ec37c9fc155496095d6759a70aa"
+      },
+      "globals": [
+        [
+          "sympy.core.add",
+          "Add"
+        ],
+        [
+          "sympy.core.containers",
+          "Tuple"
+        ],
+        [
+          "sympy.core.mul",
+          "Mul"
+        ],
+        [
+          "sympy.core.numbers",
+          "Half"
+        ],
+        [
+          "sympy.core.numbers",
+          "ImaginaryUnit"
+        ],
+        [
+          "sympy.core.numbers",
+          "Integer"
+        ],
+        [
+          "sympy.core.numbers",
+          "NegativeOne"
+        ],
+        [
+          "sympy.core.numbers",
+          "One"
+        ],
+        [
+          "sympy.core.numbers",
+          "Rational"
+        ],
+        [
+          "sympy.core.numbers",
+          "Zero"
+        ],
+        [
+          "sympy.core.power",
+          "Pow"
+        ],
+        [
+          "sympy.core.symbol",
+          "Symbol"
+        ],
+        [
+          "sympy.matrices.immutable",
+          "ImmutableDenseMatrix"
+        ]
+      ],
+      "setOpcodes": {
+        "EMPTY_SET": 0,
+        "ADDITEMS": 0,
+        "FROZENSET": 0
+      },
+      "setSliceGlobals": [],
+      "opcodeCount": 4567
+    },
+    {
+      "keys": [
+        "priorArtifact028"
+      ],
+      "route": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/objects/7868791c4c1a022365206cac1d1612680d676b793b36ef38676eeffe5a0ea609.pickle",
+        "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/objects/7868791c4c1a022365206cac1d1612680d676b793b36ef38676eeffe5a0ea609.pickle",
+        "bytes": 1787720,
+        "sha256": "7868791c4c1a022365206cac1d1612680d676b793b36ef38676eeffe5a0ea609"
+      },
+      "globals": [
+        [
+          "numpy",
+          "dtype"
+        ],
+        [
+          "numpy",
+          "ndarray"
+        ],
+        [
+          "numpy.core.multiarray",
+          "_reconstruct"
+        ],
+        [
+          "sympy.core.containers",
+          "Tuple"
+        ],
+        [
+          "sympy.core.function",
+          "Derivative"
+        ],
+        [
+          "sympy.core.function",
+          "Subs"
+        ],
+        [
+          "sympy.core.function",
+          "_rebuild_undef"
+        ],
+        [
+          "sympy.core.numbers",
+          "Infinity"
+        ],
+        [
+          "sympy.core.numbers",
+          "Integer"
+        ],
+        [
+          "sympy.core.numbers",
+          "NegativeInfinity"
+        ],
+        [
+          "sympy.core.numbers",
+          "NegativeOne"
+        ],
+        [
+          "sympy.core.numbers",
+          "One"
+        ],
+        [
+          "sympy.core.numbers",
+          "Rational"
+        ],
+        [
+          "sympy.core.numbers",
+          "Zero"
+        ],
+        [
+          "sympy.core.symbol",
+          "Dummy"
+        ],
+        [
+          "sympy.core.symbol",
+          "Symbol"
+        ],
+        [
+          "sympy.series.limits",
+          "Limit"
+        ]
+      ],
+      "setOpcodes": {
+        "EMPTY_SET": 1,
+        "ADDITEMS": 0,
+        "FROZENSET": 0
+      },
+      "setSliceGlobals": [],
+      "opcodeCount": 12554
+    },
+    {
+      "keys": [
+        "priorArtifact029"
+      ],
+      "route": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/objects/8c8f50da2e51163797323c17e4dddf6c5d77d8d83e408d5af903c5c682ef3945.pickle",
+        "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/objects/8c8f50da2e51163797323c17e4dddf6c5d77d8d83e408d5af903c5c682ef3945.pickle",
+        "bytes": 24,
+        "sha256": "8c8f50da2e51163797323c17e4dddf6c5d77d8d83e408d5af903c5c682ef3945"
+      },
+      "globals": [],
+      "setOpcodes": {
+        "EMPTY_SET": 0,
+        "ADDITEMS": 0,
+        "FROZENSET": 0
+      },
+      "setSliceGlobals": [],
+      "opcodeCount": 5
+    },
+    {
+      "keys": [
+        "priorArtifact030"
+      ],
+      "route": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/objects/96334accbe6d9258c694e43dc8401b2a667b7a6ea97d9429e576d6a18e501487.pickle",
+        "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/objects/96334accbe6d9258c694e43dc8401b2a667b7a6ea97d9429e576d6a18e501487.pickle",
+        "bytes": 19,
+        "sha256": "96334accbe6d9258c694e43dc8401b2a667b7a6ea97d9429e576d6a18e501487"
+      },
+      "globals": [],
+      "setOpcodes": {
+        "EMPTY_SET": 0,
+        "ADDITEMS": 0,
+        "FROZENSET": 0
+      },
+      "setSliceGlobals": [],
+      "opcodeCount": 5
+    },
+    {
+      "keys": [
+        "priorArtifact031"
+      ],
+      "route": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/objects/a10cc83b0c34110186d9668c7326269e939cf06e34e81f7307bf17f3efb6871f.pickle",
+        "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/objects/a10cc83b0c34110186d9668c7326269e939cf06e34e81f7307bf17f3efb6871f.pickle",
+        "bytes": 26,
+        "sha256": "a10cc83b0c34110186d9668c7326269e939cf06e34e81f7307bf17f3efb6871f"
+      },
+      "globals": [],
+      "setOpcodes": {
+        "EMPTY_SET": 0,
+        "ADDITEMS": 0,
+        "FROZENSET": 0
+      },
+      "setSliceGlobals": [],
+      "opcodeCount": 5
+    },
+    {
+      "keys": [
+        "priorArtifact032"
+      ],
+      "route": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/objects/a208388e432d2f716170febbbe7a1a30eca8cff31cd23820dd3676f6da346ac1.pickle",
+        "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/objects/a208388e432d2f716170febbbe7a1a30eca8cff31cd23820dd3676f6da346ac1.pickle",
+        "bytes": 29,
+        "sha256": "a208388e432d2f716170febbbe7a1a30eca8cff31cd23820dd3676f6da346ac1"
+      },
+      "globals": [],
+      "setOpcodes": {
+        "EMPTY_SET": 0,
+        "ADDITEMS": 0,
+        "FROZENSET": 0
+      },
+      "setSliceGlobals": [],
+      "opcodeCount": 5
+    },
+    {
+      "keys": [
+        "priorArtifact033"
+      ],
+      "route": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/objects/b664c62a66fe4fe6a56a0ee568dda049e37c650332d0e4d94555c5e281b523e1.pickle",
+        "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/objects/b664c62a66fe4fe6a56a0ee568dda049e37c650332d0e4d94555c5e281b523e1.pickle",
+        "bytes": 22,
+        "sha256": "b664c62a66fe4fe6a56a0ee568dda049e37c650332d0e4d94555c5e281b523e1"
+      },
+      "globals": [],
+      "setOpcodes": {
+        "EMPTY_SET": 0,
+        "ADDITEMS": 0,
+        "FROZENSET": 0
+      },
+      "setSliceGlobals": [],
+      "opcodeCount": 5
+    },
+    {
+      "keys": [
+        "priorArtifact034"
+      ],
+      "route": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/objects/cc214b9ec543d12330a8e479c767b9380ce6d87838c52c11e583a9f9e99f13ae.pickle",
+        "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/objects/cc214b9ec543d12330a8e479c767b9380ce6d87838c52c11e583a9f9e99f13ae.pickle",
+        "bytes": 1122394,
+        "sha256": "cc214b9ec543d12330a8e479c767b9380ce6d87838c52c11e583a9f9e99f13ae"
+      },
+      "globals": [
+        [
+          "sympy.core.add",
+          "Add"
+        ],
+        [
+          "sympy.core.containers",
+          "Tuple"
+        ],
+        [
+          "sympy.core.function",
+          "Derivative"
+        ],
+        [
+          "sympy.core.function",
+          "Subs"
+        ],
+        [
+          "sympy.core.function",
+          "_rebuild_undef"
+        ],
+        [
+          "sympy.core.mul",
+          "Mul"
+        ],
+        [
+          "sympy.core.numbers",
+          "Half"
+        ],
+        [
+          "sympy.core.numbers",
+          "ImaginaryUnit"
+        ],
+        [
+          "sympy.core.numbers",
+          "Infinity"
+        ],
+        [
+          "sympy.core.numbers",
+          "Integer"
+        ],
+        [
+          "sympy.core.numbers",
+          "NegativeInfinity"
+        ],
+        [
+          "sympy.core.numbers",
+          "NegativeOne"
+        ],
+        [
+          "sympy.core.numbers",
+          "One"
+        ],
+        [
+          "sympy.core.numbers",
+          "Pi"
+        ],
+        [
+          "sympy.core.numbers",
+          "Rational"
+        ],
+        [
+          "sympy.core.numbers",
+          "Zero"
+        ],
+        [
+          "sympy.core.power",
+          "Pow"
+        ],
+        [
+          "sympy.core.relational",
+          "Equality"
+        ],
+        [
+          "sympy.core.relational",
+          "LessThan"
+        ],
+        [
+          "sympy.core.symbol",
+          "Dummy"
+        ],
+        [
+          "sympy.core.symbol",
+          "Str"
+        ],
+        [
+          "sympy.core.symbol",
+          "Symbol"
+        ],
+        [
+          "sympy.functions.elementary.complexes",
+          "sign"
+        ],
+        [
+          "sympy.functions.elementary.exponential",
+          "exp"
+        ],
+        [
+          "sympy.functions.elementary.exponential",
+          "exp_polar"
+        ],
+        [
+          "sympy.functions.elementary.piecewise",
+          "ExprCondPair"
+        ],
+        [
+          "sympy.functions.elementary.piecewise",
+          "Piecewise"
+        ],
+        [
+          "sympy.functions.special.delta_functions",
+          "Heaviside"
+        ],
+        [
+          "sympy.functions.special.error_functions",
+          "erfc"
+        ],
+        [
+          "sympy.functions.special.hyper",
+          "TupleArg"
+        ],
+        [
+          "sympy.functions.special.hyper",
+          "meijerg"
+        ],
+        [
+          "sympy.integrals.integrals",
+          "Integral"
+        ],
+        [
+          "sympy.logic.boolalg",
+          "And"
+        ],
+        [
+          "sympy.logic.boolalg",
+          "BooleanTrue"
+        ],
+        [
+          "sympy.logic.boolalg",
+          "Or"
+        ],
+        [
+          "sympy.matrices.immutable",
+          "ImmutableDenseMatrix"
+        ],
+        [
+          "sympy.series.limits",
+          "Limit"
+        ]
+      ],
+      "setOpcodes": {
+        "EMPTY_SET": 2,
+        "ADDITEMS": 1,
+        "FROZENSET": 0
+      },
+      "setSliceGlobals": [],
+      "opcodeCount": 471433
+    },
+    {
+      "keys": [
+        "priorArtifact035"
+      ],
+      "route": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/objects/dff01bf9caea03490a75acd4a55c3a7082f25a048532827d0333ee1754556ee6.pickle",
+        "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/objects/dff01bf9caea03490a75acd4a55c3a7082f25a048532827d0333ee1754556ee6.pickle",
+        "bytes": 27,
+        "sha256": "dff01bf9caea03490a75acd4a55c3a7082f25a048532827d0333ee1754556ee6"
+      },
+      "globals": [],
+      "setOpcodes": {
+        "EMPTY_SET": 0,
+        "ADDITEMS": 0,
+        "FROZENSET": 0
+      },
+      "setSliceGlobals": [],
+      "opcodeCount": 5
+    },
+    {
+      "keys": [
+        "priorArtifact036"
+      ],
+      "route": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/objects/e3102f7c28562de2775bc4c0e4620262ce64180becbf0801ef4c71100db1db8c.pickle",
+        "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/objects/e3102f7c28562de2775bc4c0e4620262ce64180becbf0801ef4c71100db1db8c.pickle",
+        "bytes": 26,
+        "sha256": "e3102f7c28562de2775bc4c0e4620262ce64180becbf0801ef4c71100db1db8c"
+      },
+      "globals": [],
+      "setOpcodes": {
+        "EMPTY_SET": 0,
+        "ADDITEMS": 0,
+        "FROZENSET": 0
+      },
+      "setSliceGlobals": [],
+      "opcodeCount": 5
+    },
+    {
+      "keys": [
+        "priorArtifact037"
+      ],
+      "route": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/objects/e555ba40ee5af416640ece81c20d0b711bb96e8cc9276c8fddf169083fbb78a3.pickle",
+        "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/objects/e555ba40ee5af416640ece81c20d0b711bb96e8cc9276c8fddf169083fbb78a3.pickle",
+        "bytes": 140419,
+        "sha256": "e555ba40ee5af416640ece81c20d0b711bb96e8cc9276c8fddf169083fbb78a3"
+      },
+      "globals": [
+        [
+          "sympy.core.add",
+          "Add"
+        ],
+        [
+          "sympy.core.containers",
+          "Tuple"
+        ],
+        [
+          "sympy.core.function",
+          "Derivative"
+        ],
+        [
+          "sympy.core.function",
+          "Subs"
+        ],
+        [
+          "sympy.core.function",
+          "_rebuild_undef"
+        ],
+        [
+          "sympy.core.mul",
+          "Mul"
+        ],
+        [
+          "sympy.core.numbers",
+          "Half"
+        ],
+        [
+          "sympy.core.numbers",
+          "ImaginaryUnit"
+        ],
+        [
+          "sympy.core.numbers",
+          "Infinity"
+        ],
+        [
+          "sympy.core.numbers",
+          "Integer"
+        ],
+        [
+          "sympy.core.numbers",
+          "NegativeInfinity"
+        ],
+        [
+          "sympy.core.numbers",
+          "NegativeOne"
+        ],
+        [
+          "sympy.core.numbers",
+          "One"
+        ],
+        [
+          "sympy.core.numbers",
+          "Pi"
+        ],
+        [
+          "sympy.core.numbers",
+          "Rational"
+        ],
+        [
+          "sympy.core.numbers",
+          "Zero"
+        ],
+        [
+          "sympy.core.power",
+          "Pow"
+        ],
+        [
+          "sympy.core.relational",
+          "LessThan"
+        ],
+        [
+          "sympy.core.symbol",
+          "Dummy"
+        ],
+        [
+          "sympy.core.symbol",
+          "Str"
+        ],
+        [
+          "sympy.core.symbol",
+          "Symbol"
+        ],
+        [
+          "sympy.functions.elementary.complexes",
+          "sign"
+        ],
+        [
+          "sympy.functions.elementary.exponential",
+          "exp"
+        ],
+        [
+          "sympy.functions.elementary.piecewise",
+          "ExprCondPair"
+        ],
+        [
+          "sympy.functions.elementary.piecewise",
+          "Piecewise"
+        ],
+        [
+          "sympy.functions.special.delta_functions",
+          "Heaviside"
+        ],
+        [
+          "sympy.integrals.integrals",
+          "Integral"
+        ],
+        [
+          "sympy.logic.boolalg",
+          "And"
+        ],
+        [
+          "sympy.logic.boolalg",
+          "BooleanTrue"
+        ],
+        [
+          "sympy.logic.boolalg",
+          "Or"
+        ],
+        [
+          "sympy.matrices.immutable",
+          "ImmutableDenseMatrix"
+        ],
+        [
+          "sympy.series.limits",
+          "Limit"
+        ]
+      ],
+      "setOpcodes": {
+        "EMPTY_SET": 0,
+        "ADDITEMS": 0,
+        "FROZENSET": 0
+      },
+      "setSliceGlobals": [],
+      "opcodeCount": 62438
+    },
+    {
+      "keys": [
+        "priorArtifact038"
+      ],
+      "route": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/objects/e97a7c4c8f944daf0da222bce006e92db4cd19b5f78a7baf14d6ff3ea1a237cd.pickle",
+        "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/objects/e97a7c4c8f944daf0da222bce006e92db4cd19b5f78a7baf14d6ff3ea1a237cd.pickle",
+        "bytes": 33,
+        "sha256": "e97a7c4c8f944daf0da222bce006e92db4cd19b5f78a7baf14d6ff3ea1a237cd"
+      },
+      "globals": [],
+      "setOpcodes": {
+        "EMPTY_SET": 0,
+        "ADDITEMS": 0,
+        "FROZENSET": 0
+      },
+      "setSliceGlobals": [],
+      "opcodeCount": 5
+    },
+    {
+      "keys": [
+        "priorArtifact039"
+      ],
+      "route": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/objects/f2977af9c1e53e40b7dd35c0e6a59312cfa00ecdee9bba5ab9e3bf9166e03710.pickle",
+        "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/objects/f2977af9c1e53e40b7dd35c0e6a59312cfa00ecdee9bba5ab9e3bf9166e03710.pickle",
+        "bytes": 248924,
+        "sha256": "f2977af9c1e53e40b7dd35c0e6a59312cfa00ecdee9bba5ab9e3bf9166e03710"
+      },
+      "globals": [
+        [
+          "sympy.core.add",
+          "Add"
+        ],
+        [
+          "sympy.core.containers",
+          "Tuple"
+        ],
+        [
+          "sympy.core.function",
+          "Derivative"
+        ],
+        [
+          "sympy.core.function",
+          "Subs"
+        ],
+        [
+          "sympy.core.function",
+          "_rebuild_undef"
+        ],
+        [
+          "sympy.core.mul",
+          "Mul"
+        ],
+        [
+          "sympy.core.numbers",
+          "Half"
+        ],
+        [
+          "sympy.core.numbers",
+          "ImaginaryUnit"
+        ],
+        [
+          "sympy.core.numbers",
+          "Infinity"
+        ],
+        [
+          "sympy.core.numbers",
+          "Integer"
+        ],
+        [
+          "sympy.core.numbers",
+          "NegativeInfinity"
+        ],
+        [
+          "sympy.core.numbers",
+          "NegativeOne"
+        ],
+        [
+          "sympy.core.numbers",
+          "One"
+        ],
+        [
+          "sympy.core.numbers",
+          "Rational"
+        ],
+        [
+          "sympy.core.numbers",
+          "Zero"
+        ],
+        [
+          "sympy.core.power",
+          "Pow"
+        ],
+        [
+          "sympy.core.relational",
+          "Equality"
+        ],
+        [
+          "sympy.core.relational",
+          "Unequality"
+        ],
+        [
+          "sympy.core.symbol",
+          "Dummy"
+        ],
+        [
+          "sympy.core.symbol",
+          "Symbol"
+        ],
+        [
+          "sympy.functions.elementary.exponential",
+          "exp"
+        ],
+        [
+          "sympy.matrices.immutable",
+          "ImmutableDenseMatrix"
+        ],
+        [
+          "sympy.series.limits",
+          "Limit"
+        ]
+      ],
+      "setOpcodes": {
+        "EMPTY_SET": 0,
+        "ADDITEMS": 0,
+        "FROZENSET": 0
+      },
+      "setSliceGlobals": [],
+      "opcodeCount": 114491
+    },
+    {
+      "keys": [
+        "priorArtifact040"
+      ],
+      "route": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/objects/f7f3599f614eb9d37d8cf1add5147dab267d528b5d9e61b1d19d4837939572fc.pickle",
+        "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/objects/f7f3599f614eb9d37d8cf1add5147dab267d528b5d9e61b1d19d4837939572fc.pickle",
+        "bytes": 23475,
+        "sha256": "f7f3599f614eb9d37d8cf1add5147dab267d528b5d9e61b1d19d4837939572fc"
+      },
+      "globals": [
+        [
+          "sympy.core.add",
+          "Add"
+        ],
+        [
+          "sympy.core.containers",
+          "Tuple"
+        ],
+        [
+          "sympy.core.mul",
+          "Mul"
+        ],
+        [
+          "sympy.core.numbers",
+          "Half"
+        ],
+        [
+          "sympy.core.numbers",
+          "ImaginaryUnit"
+        ],
+        [
+          "sympy.core.numbers",
+          "Integer"
+        ],
+        [
+          "sympy.core.numbers",
+          "NegativeOne"
+        ],
+        [
+          "sympy.core.numbers",
+          "One"
+        ],
+        [
+          "sympy.core.numbers",
+          "Rational"
+        ],
+        [
+          "sympy.core.numbers",
+          "Zero"
+        ],
+        [
+          "sympy.core.power",
+          "Pow"
+        ],
+        [
+          "sympy.core.symbol",
+          "Symbol"
+        ],
+        [
+          "sympy.matrices.immutable",
+          "ImmutableDenseMatrix"
+        ]
+      ],
+      "setOpcodes": {
+        "EMPTY_SET": 0,
+        "ADDITEMS": 0,
+        "FROZENSET": 0
+      },
+      "setSliceGlobals": [],
+      "opcodeCount": 11616
+    },
+    {
+      "keys": [
+        "priorArtifact041"
+      ],
+      "route": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/objects/fd6e8e8972f294f935bd73e54afaa97a3d1632bee77f921a6c2db1198bc71258.pickle",
+        "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/objects/fd6e8e8972f294f935bd73e54afaa97a3d1632bee77f921a6c2db1198bc71258.pickle",
+        "bytes": 249482,
+        "sha256": "fd6e8e8972f294f935bd73e54afaa97a3d1632bee77f921a6c2db1198bc71258"
+      },
+      "globals": [
+        [
+          "sympy.core.add",
+          "Add"
+        ],
+        [
+          "sympy.core.containers",
+          "Tuple"
+        ],
+        [
+          "sympy.core.function",
+          "Derivative"
+        ],
+        [
+          "sympy.core.function",
+          "Subs"
+        ],
+        [
+          "sympy.core.function",
+          "_rebuild_undef"
+        ],
+        [
+          "sympy.core.mul",
+          "Mul"
+        ],
+        [
+          "sympy.core.numbers",
+          "Half"
+        ],
+        [
+          "sympy.core.numbers",
+          "ImaginaryUnit"
+        ],
+        [
+          "sympy.core.numbers",
+          "Infinity"
+        ],
+        [
+          "sympy.core.numbers",
+          "Integer"
+        ],
+        [
+          "sympy.core.numbers",
+          "NegativeInfinity"
+        ],
+        [
+          "sympy.core.numbers",
+          "NegativeOne"
+        ],
+        [
+          "sympy.core.numbers",
+          "One"
+        ],
+        [
+          "sympy.core.numbers",
+          "Rational"
+        ],
+        [
+          "sympy.core.numbers",
+          "Zero"
+        ],
+        [
+          "sympy.core.power",
+          "Pow"
+        ],
+        [
+          "sympy.core.relational",
+          "Equality"
+        ],
+        [
+          "sympy.core.relational",
+          "Unequality"
+        ],
+        [
+          "sympy.core.symbol",
+          "Dummy"
+        ],
+        [
+          "sympy.core.symbol",
+          "Symbol"
+        ],
+        [
+          "sympy.functions.elementary.exponential",
+          "exp"
+        ],
+        [
+          "sympy.matrices.immutable",
+          "ImmutableDenseMatrix"
+        ],
+        [
+          "sympy.series.limits",
+          "Limit"
+        ]
+      ],
+      "setOpcodes": {
+        "EMPTY_SET": 0,
+        "ADDITEMS": 0,
+        "FROZENSET": 0
+      },
+      "setSliceGlobals": [],
+      "opcodeCount": 114746
+    },
+    {
+      "keys": [
+        "REFERENCESeed16",
+        "LEFTSeed16"
+      ],
+      "route": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-uniform-response-20260919/production/complete/reference-mode-16.pickle",
+        "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-uniform-response-20260919/production/complete/reference-mode-16.pickle",
+        "bytes": 7685,
+        "sha256": "694506806010d379a222757324be701e605d113c0ac551be651ca5b96ce40c32"
+      },
+      "globals": [
+        [
+          "builtins",
+          "complex"
+        ],
+        [
+          "numpy",
+          "dtype"
+        ],
+        [
+          "numpy",
+          "ndarray"
+        ],
+        [
+          "numpy.core.multiarray",
+          "_reconstruct"
+        ],
+        [
+          "numpy.core.numeric",
+          "_frombuffer"
+        ],
+        [
+          "sympy.core.mul",
+          "Mul"
+        ],
+        [
+          "sympy.core.numbers",
+          "Float"
+        ],
+        [
+          "sympy.core.numbers",
+          "ImaginaryUnit"
+        ],
+        [
+          "sympy.core.symbol",
+          "Str"
+        ],
+        [
+          "sympy.logic.boolalg",
+          "BooleanTrue"
+        ]
+      ],
+      "setOpcodes": {
+        "EMPTY_SET": 0,
+        "ADDITEMS": 0,
+        "FROZENSET": 0
+      },
+      "setSliceGlobals": [],
+      "opcodeCount": 715
+    },
+    {
+      "keys": [
+        "REFERENCESeed17",
+        "LEFTSeed17"
+      ],
+      "route": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-uniform-response-20260919/production/complete/reference-mode-17.pickle",
+        "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-uniform-response-20260919/production/complete/reference-mode-17.pickle",
+        "bytes": 7688,
+        "sha256": "d7170682ecf3d059dabe7876528201d055fd2033696b6f8e7fe734866017a174"
+      },
+      "globals": [
+        [
+          "builtins",
+          "complex"
+        ],
+        [
+          "numpy",
+          "dtype"
+        ],
+        [
+          "numpy",
+          "ndarray"
+        ],
+        [
+          "numpy.core.multiarray",
+          "_reconstruct"
+        ],
+        [
+          "numpy.core.numeric",
+          "_frombuffer"
+        ],
+        [
+          "sympy.core.mul",
+          "Mul"
+        ],
+        [
+          "sympy.core.numbers",
+          "Float"
+        ],
+        [
+          "sympy.core.numbers",
+          "ImaginaryUnit"
+        ],
+        [
+          "sympy.core.symbol",
+          "Str"
+        ],
+        [
+          "sympy.logic.boolalg",
+          "BooleanTrue"
+        ]
+      ],
+      "setOpcodes": {
+        "EMPTY_SET": 0,
+        "ADDITEMS": 0,
+        "FROZENSET": 0
+      },
+      "setSliceGlobals": [],
+      "opcodeCount": 715
+    },
+    {
+      "keys": [
+        "RIGHTSeed16"
+      ],
+      "route": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-uniform-response-20260919/production/complete/right-mode-16.pickle",
+        "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-uniform-response-20260919/production/complete/right-mode-16.pickle",
+        "bytes": 7685,
+        "sha256": "9345bd53d71ddfe1e08607666d5b1c8b3a9c24044c09eb5dfbeda055d2f99f84"
+      },
+      "globals": [
+        [
+          "builtins",
+          "complex"
+        ],
+        [
+          "numpy",
+          "dtype"
+        ],
+        [
+          "numpy",
+          "ndarray"
+        ],
+        [
+          "numpy.core.multiarray",
+          "_reconstruct"
+        ],
+        [
+          "numpy.core.numeric",
+          "_frombuffer"
+        ],
+        [
+          "sympy.core.mul",
+          "Mul"
+        ],
+        [
+          "sympy.core.numbers",
+          "Float"
+        ],
+        [
+          "sympy.core.numbers",
+          "ImaginaryUnit"
+        ],
+        [
+          "sympy.core.symbol",
+          "Str"
+        ],
+        [
+          "sympy.logic.boolalg",
+          "BooleanTrue"
+        ]
+      ],
+      "setOpcodes": {
+        "EMPTY_SET": 0,
+        "ADDITEMS": 0,
+        "FROZENSET": 0
+      },
+      "setSliceGlobals": [],
+      "opcodeCount": 715
+    },
+    {
+      "keys": [
+        "RIGHTSeed17"
+      ],
+      "route": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-uniform-response-20260919/production/complete/right-mode-17.pickle",
+        "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-uniform-response-20260919/production/complete/right-mode-17.pickle",
+        "bytes": 7688,
+        "sha256": "300d4c80748d193a9fea4f06fa8b0224120a7fc71cb0d80a233ae0d27c7e999f"
+      },
+      "globals": [
+        [
+          "builtins",
+          "complex"
+        ],
+        [
+          "numpy",
+          "dtype"
+        ],
+        [
+          "numpy",
+          "ndarray"
+        ],
+        [
+          "numpy.core.multiarray",
+          "_reconstruct"
+        ],
+        [
+          "numpy.core.numeric",
+          "_frombuffer"
+        ],
+        [
+          "sympy.core.mul",
+          "Mul"
+        ],
+        [
+          "sympy.core.numbers",
+          "Float"
+        ],
+        [
+          "sympy.core.numbers",
+          "ImaginaryUnit"
+        ],
+        [
+          "sympy.core.symbol",
+          "Str"
+        ],
+        [
+          "sympy.logic.boolalg",
+          "BooleanTrue"
+        ]
+      ],
+      "setOpcodes": {
+        "EMPTY_SET": 0,
+        "ADDITEMS": 0,
+        "FROZENSET": 0
+      },
+      "setSliceGlobals": [],
+      "opcodeCount": 715
+    }
+  ],
+  "selectedRoutes": 31,
+  "selectedRouteScope": "25 prior journal object routes plus six selected seed routes; duplicate hashes read once",
+  "reviewedManifestPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/build-review/packet/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_fixed_point_inputs.json",
+  "reviewedManifestSha256": "01158fb90043d7486119552b75605b44b0684192b125be64c2279cf728e7ba21",
+  "noProducerGlobals": true,
+  "runtimeUnpicklingProven": false
+}

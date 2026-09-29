@@ -1736,7 +1736,11 @@
     ],
     "newCensus": false,
     "absenceInferenceFromFailure": false,
-    "completeInventory": false
+    "completeInventory": false,
+    "endSummaryMeaning": "SELECTED_UNDRIVEN_TRANSVERSE_CURRENT_PREMISE_NOT_CHANNEL_CENSUS",
+    "bothSelectedSeedJoinsRequired": true,
+    "recordedDomainAndCurrentChecksRequired": true,
+    "partialSelectedSupportIsUnresolved": true
   },
   "scopeExclusions": [
     "optional loci",
@@ -1756,6 +1760,8 @@
   "scienceLaunchedDuringPreparation": false,
   "completionAudit": {
     "stdout": "One JSON document, byte-identical to checks.json. Raw computed operands, returns and residuals are emitted to immutable operation/suboperation artifacts before guards.",
-    "classification": "Inspect source residuals, reuse joins, actual point/current/face/control evidence, domain/coverage and resource logs; exit status is not scientific acceptance."
+    "classification": "Inspect source residuals, reuse joins, actual point/current/face/control evidence, domain/coverage and resource logs; exit status is not scientific acceptance.",
+    "sourceBindRendering": "Receipt only; complete operands, return and suboperation payloads remain immutable artifacts.",
+    "referenceFace": "Record attempted and supported separately; nonzero drive is a failed clean-end premise, not absence of a transverse mode."
   }
 }

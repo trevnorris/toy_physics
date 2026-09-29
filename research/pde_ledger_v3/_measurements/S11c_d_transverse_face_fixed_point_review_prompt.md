@@ -13,6 +13,10 @@ It visited no map points and established no face premise. The proposed worker
 reuses complete returns and specializes the unfinished work to omega=1 and
 tangential components (1/5,1/10), LAB_HELD/RHO4_CONSTANT. It has no executed
 scientific result yet. The saved input schema is metadata, not a payload test.
+The static opcode census covers the 25 prior object routes and six seed routes
+(29 unique files). It lists serialized global names without importing scientific
+packages, executing reducers or restoring objects; runtime compatibility remains
+an obligation.
 
 Read source and JSON only. No shell, scientific import/execution, unpickling,
 ablation, web, edits, peer contact, other agents or further orchestration.
@@ -38,6 +42,8 @@ on reviewer runs. Identify runtime obligations honestly. Write your report and e
    permeability continuation, profile response or physical power calculation is
    authorized. The result covers only this fixed point, not a two-parameter map
    or omega=3. Review coverage counts and null/partial summaries.
+   Both selected seed joins must support a complete selected-end summary; a
+   single successful seed remains partial. This is still not a complete census.
 3. Inspect the limited reference-face test: both faces, both saved harmonic legs,
    source-row addresses, transverse contractions and actual native-term omission
    or lift controls. Are controls still sensitive after specialization, with raw
@@ -46,6 +52,10 @@ on reviewer runs. Identify runtime obligations honestly. Write your report and e
    evidence. c2 is an orientation-blind velocity-index comparison; no first-shape
    pressure/trace or emitted-power claim follows. Reference evidence does not
    establish all-grade matched-end localization or total loss.
+   Check explicit applicability and response counts: a structurally unloaded
+   U control cannot demonstrate sensitivity, while a U-independent drive should
+   not be forced to become loaded. Inspect actual native E-velocity omission
+   movement separately from coefficient presence and from zero baseline drives.
 4. Do all eleven old COMPLETE returns restore without calling their functions,
    including interspersed restores after the first unresolved end? Join original
    arguments and provenance; do not assume a re-pickled symbolic object must be
@@ -60,6 +70,9 @@ on reviewer runs. Identify runtime obligations honestly. Write your report and e
    reject changed sources? Check handling of restored symbolic function classes,
    matrices, arrays, plain metadata and unsupported objects. No formatting
    convenience may execute a saved function or silently discard evidence.
+   The source-bind JSON should identify its complete saved return without
+   stringifying the repeated unspecialized payload. Nonfinite scalar evidence
+   must remain explicit. Attempted work must not be labeled completed support.
 6. Check 180-second end-binding allowances, 840-second native deadline and
    ordinary 900-second outer guard: local timeouts must not swallow whole-job
    expiry, serialization must have the correct deadline, and failure bookkeeping
@@ -68,6 +81,8 @@ on reviewer runs. Identify runtime obligations honestly. Write your report and e
    containment checks. 2 GiB, zero swap, one CPU, nice 15, 32 tasks, one native
    thread. No duration exception, overlap, fallback or automatic retry. There is
    no science READY gate in this review packet.
+   Check the recorded kind of the armed deadline, including native alarms
+   during serialization while a local mathematical deadline is still recorded.
 7. Are narrowed scope and instrument controls practical for the toy model and
    this last proposed execution? Identify a concrete material defect on these
    inputs, not a hypothetical different-input or global-certification demand.

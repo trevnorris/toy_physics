@@ -1,11 +1,13 @@
 {
-  "status": "BOTH_REVIEWS_FINISHED_NEEDS_REVISION",
-  "preparedUtc": "2026-09-29T16:39:15.814533+00:00",
-  "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/build-review",
-  "packetSha256": "324da469516f6bd39fbac154fdeed020e726cc6442e3df59292aaa98e4b93e02",
-  "archiveSha256": "46a1c89433a96e82c853b0d2c5a2b90b7adb5dacc2225dbdc787b817c7d11f2e",
-  "packetFiles": 79,
-  "packetBytes": 1628509,
+  "status": "PREPARED_AWAITING_EXACT_PACKET_SUBMISSION_APPROVAL",
+  "preparedUtc": "2026-09-29T17:27:15.804388+00:00",
+  "priorReviewedCommit": "d163c1fe",
+  "priorReportsCommit": "32e3e9fc",
+  "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/build-review-r2",
+  "packetSha256": "58f12be41da26a4e28a564f97be8018286467cc42f41c5fa2508539f9d850624",
+  "archiveSha256": "b5c3eb69e78f4259c6dd5fa9b4717265de5854f2ec47aeb119667b9c6cea834e",
+  "packetFiles": 80,
+  "packetBytes": 1682033,
   "sourceRecords": [
     {
       "path": "_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/acoustic-law-source.json",
@@ -279,8 +281,8 @@
     },
     {
       "path": "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_fixed_point.py",
-      "sourceSha256": "0d78111e6701c3905ed82cadf48a9eccf8eb81d498f9ee64e487fbb2f4417e0a",
-      "bytes": 81367
+      "sourceSha256": "64cd6ea8ec7907edacd5fce9687c2072d3a235bd270c0ea483e8b76f18af9888",
+      "bytes": 84850
     },
     {
       "path": "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_fixed_point_authorization.json",
@@ -288,14 +290,19 @@
       "bytes": 3178
     },
     {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_fixed_point_codec_census.json",
+      "sourceSha256": "3bc4d9875742f5686bff3041de79d9cb51457ff11f83fed7e813f9e61eb1e6ff",
+      "bytes": 46189
+    },
+    {
       "path": "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_fixed_point_inputs.json",
-      "sourceSha256": "01158fb90043d7486119552b75605b44b0684192b125be64c2279cf728e7ba21",
-      "bytes": 105321
+      "sourceSha256": "01dc1264f1ac59490880b5d186e6b52cf65f2afb288dd9a1054741e57a0fc41c",
+      "bytes": 105826
     },
     {
       "path": "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_fixed_point_review_prompt.md",
-      "sourceSha256": "65f157ea111491924d3487af11cdd1c9f128f00114756cf26c933de6899afd09",
-      "bytes": 6072
+      "sourceSha256": "8b3d3d797286307a06ea343ea651221bce193a6838678b2c573ba6658b032c7c",
+      "bytes": 7182
     },
     {
       "path": "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_fixed_point_saved_schema.json",
@@ -309,8 +316,8 @@
     },
     {
       "path": "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_fixed_point_source_note.md",
-      "sourceSha256": "0db11e198ab56970fa47e9a16f10975d461b3a84eebcb485517cebb1b72288e1",
-      "bytes": 10966
+      "sourceSha256": "2750192756c5d0a768d6ea8ca78d1d342affddc86b3ed497cacc0005f5b4064b",
+      "bytes": 12972
     },
     {
       "path": "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_native_source.txt",
@@ -400,11 +407,11 @@
   ],
   "static": {
     "status": "SOURCE_HASH_AST_ONLY_NO_SCIENCE",
-    "runnerSha256": "a26a07dea56830abb0524c16b2911d195f07e23efc5696d87bf981573418c553",
-    "launcherSha256": "1ea4df31e4976942911381bab2f4495687b78cf2df4c131c7ce00b8013e01039",
-    "completionMessageSha256": "64b3544c8bb554ea3ee56bd42070a4db50d82964e65198bb8385a9c7c7c04e28",
-    "workerSha256": "0d78111e6701c3905ed82cadf48a9eccf8eb81d498f9ee64e487fbb2f4417e0a",
-    "inputManifestSha256": "01158fb90043d7486119552b75605b44b0684192b125be64c2279cf728e7ba21",
+    "runnerSha256": "03eb1f61df08fda1877589c0e382992b47da915c6513355e4779641f4779ff5b",
+    "launcherSha256": "283c60412a267294c790218b93b1e5fdd5d2836b956ed659e7b4722206ae7d5f",
+    "completionMessageSha256": "eab17c72af04611a7fbd000721bc312151a1e9ef5383038d4faa8b93c378cf9e",
+    "workerSha256": "64cd6ea8ec7907edacd5fce9687c2072d3a235bd270c0ea483e8b76f18af9888",
+    "inputManifestSha256": "01dc1264f1ac59490880b5d186e6b52cf65f2afb288dd9a1054741e57a0fc41c",
     "workerSyntaxPass": true,
     "workerImportedOrExecuted": false,
     "payloadsRestored": 0,
@@ -413,67 +420,21 @@
     "rootNewWorkerSemanticInspection": false
   },
   "authorization": {
-    "status": "EXPLICITLY_APPROVED_FIXED_PACKET",
+    "status": "PENDING_EXACT_PACKET_APPROVAL",
     "reviewers": [
       "claude",
       "grok"
     ],
-    "packetSha256": "324da469516f6bd39fbac154fdeed020e726cc6442e3df59292aaa98e4b93e02",
-    "archiveSha256": "46a1c89433a96e82c853b0d2c5a2b90b7adb5dacc2225dbdc787b817c7d11f2e",
-    "packetFiles": 79,
-    "packetBytes": 1628509,
-    "scientificExecutionAuthorizedByThisSubmission": false,
-    "approvedUtc": "2026-09-29T16:47:03.608460+00:00",
-    "userMessage": "you may submit this packet",
-    "approvedPacketSha256": "324da469516f6bd39fbac154fdeed020e726cc6442e3df59292aaa98e4b93e02",
-    "preparedCommit": "d163c1fe",
-    "currentThread": "01a0e01b-ef84-7192-817f-584cda5d339b",
-    "noPeerReports": true,
-    "noAutomaticRetry": true
+    "packetSha256": "58f12be41da26a4e28a564f97be8018286467cc42f41c5fa2508539f9d850624",
+    "archiveSha256": "b5c3eb69e78f4259c6dd5fa9b4717265de5854f2ec47aeb119667b9c6cea834e",
+    "packetFiles": 80,
+    "packetBytes": 1682033,
+    "scientificExecutionAuthorizedByThisSubmission": false
   },
   "scientificExecutionsUsed": 3,
   "proposedScientificExecutionOrdinal": 4,
   "execution4ScienceNotLaunched": true,
   "independentBuildClearance": false,
   "priorFailurePreserved": true,
-  "execution4AuthorizationSha256": "49dbc3c7763a71ac53c96c2113842dbfcf8b4043cc77ab390925348bdfebced1",
-  "approvalRecordSha256": "198cbb511ebdb0907f441be7bcf45f9d4b2bc242b1cb6cdc4d294fe3355a429c",
-  "allInputPinsRechecked": 142,
-  "allPacketSourcePinsRechecked": 78,
-  "launch": {
-    "jobPid": 2405172,
-    "watcherPid": 2405173,
-    "packetSha256": "324da469516f6bd39fbac154fdeed020e726cc6442e3df59292aaa98e4b93e02",
-    "reviewers": [
-      "Claude",
-      "Grok"
-    ],
-    "concurrentReviewWorkers": 1,
-    "scienceCalls": 0,
-    "runnerSha256": "a26a07dea56830abb0524c16b2911d195f07e23efc5696d87bf981573418c553",
-    "launcherSha256": "1ea4df31e4976942911381bab2f4495687b78cf2df4c131c7ce00b8013e01039"
-  },
-  "launchRecordSha256": "b46e8d244460108d167fe8b87c16d1734fd36bd879edef76f296c46b76985572",
-  "startupCheck": {
-    "checkedUtc": "2026-09-29T16:48:09.353979+00:00",
-    "ownedCoordinatorReviewerAndWatcherExist": true,
-    "state": "RUNNING",
-    "hookStatus": "waiting",
-    "activeReviewer": "claude",
-    "coordinatorStderrBytes": 0,
-    "watcherStderrBytes": 0,
-    "reviewerStderrBytes": 0,
-    "checkCount": 1,
-    "reportContentRead": false
-  },
-  "externalSubmissionAuthorized": true,
-  "rootNewWorkerSemanticInspection": false,
-  "reviewRecord": "S11c_d_transverse_face_fixed_point_review_record.json",
-  "reviewDisposition": "S11c_d_transverse_face_fixed_point_review_disposition.md",
-  "reviewedSourcePreservedCommit": "d163c1fe",
-  "literalReviewVerdicts": {
-    "claude": "NEEDS REVISION",
-    "grok": "NEEDS REVISION"
-  },
-  "correctedPacketRequiresSeparateSubmissionApproval": true
+  "execution4AuthorizationSha256": "49dbc3c7763a71ac53c96c2113842dbfcf8b4043cc77ab390925348bdfebced1"
 }

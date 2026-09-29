@@ -10,6 +10,16 @@ bilinear-current leg census is a different object. No author clearance, science
 gate, run or reviewer resubmission. Execution 4 remains unspent; prepare the
 bounded corrected packet and request its exact external-submission approval.
 
+The bounded corrected candidate is now prepared for fresh independent review:
+80 files / 1,682,033 bytes, SHA-256
+`58f12be41da26a4e28a564f97be8018286467cc42f41c5fa2508539f9d850624`.
+See `S11c_d_transverse_face_fixed_point_review_r2_preparation.json`.
+Static syntax/hash checks pass; all 142 input pins still match. An opcode-only
+inventory covers 31 routes / 29 unique files, with no scientific import or
+restoration and no runtime compatibility claim. The corrected worker has not
+been independently cleared, submitted or run. Exact new-packet consent remains
+pending; existing execution-4 science approval is retained.
+
 **Execution-4 build reviews submitted (2026-09-29):** the user explicitly
 approved the exact 79-file / 1,628,509-byte packet, SHA-256
 `324da469516f6bd39fbac154fdeed020e726cc6442e3df59292aaa98e4b93e02`.

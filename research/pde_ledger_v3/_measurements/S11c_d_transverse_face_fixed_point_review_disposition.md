@@ -73,3 +73,8 @@ of successful unpickling. Runtime compatibility and total cost remain unknown.
 
 No general theorem, optional wording review cycle, source replay, new physics
 method, external resubmission or scientific launch follows from this disposition.
+
+A corrected candidate and separate second packet are prepared; static checks
+pass, but there is no fresh independent verdict. The original review record
+and both literal NEEDS REVISION verdicts remain unchanged. No submission or
+science run has followed this disposition.

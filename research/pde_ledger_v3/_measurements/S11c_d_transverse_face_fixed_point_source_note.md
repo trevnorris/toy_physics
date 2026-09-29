@@ -6,10 +6,10 @@ scientific result. No scientific worker, restoration, CAS, producer, review,
 agent, Git mutation, or guarded job was run by this builder. The builder stops
 at these three files; independent review and any later launch belong to root.
 
-Worker: `/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_fixed_point.py` (81367 bytes), SHA-256
-`0d78111e6701c3905ed82cadf48a9eccf8eb81d498f9ee64e487fbb2f4417e0a`.
-Manifest: `/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_fixed_point_inputs.json` (105321 bytes), SHA-256
-`01158fb90043d7486119552b75605b44b0684192b125be64c2279cf728e7ba21`.
+Worker: `/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_fixed_point.py` (84850 bytes), SHA-256
+`64cd6ea8ec7907edacd5fce9687c2072d3a235bd270c0ea483e8b76f18af9888`.
+Manifest: `/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_fixed_point_inputs.json` (105826 bytes), SHA-256
+`01dc1264f1ac59490880b5d186e6b52cf65f2afb288dd9a1054741e57a0fc41c`.
 The old 79,986-byte premise worker remains
 `ebf2739a2f8dca9ed4130b89606a36a27be29ef5d5c0915756b7118fcbd6fae5`.
 
@@ -21,10 +21,14 @@ relative order before any unfinished end binding. Their supplied functions are
 not called. The three original failed end bindings alone may be attempted,
 once each, at 180 seconds each. REFERENCE, LEFT and RIGHT retain their existing
 limited face checks and saved seed indices 16 and 17. There is no new root
-census: selected-seed support is existential, coverage stays
-SELECTED_SAVED_SUBSPACES_ONLY, and a failed or unvisited seed is unresolved,
-never absent. No complete inventory is inferred even if both selected seeds
-join. The generic census, interval/domain certification, roots, optional loci,
+census. End support is a selected undriven/current premise, requiring both
+seed16 and seed17 to join with every recorded source/domain/current check.
+The end label is SELECTED_PREMISE_SUPPORTED only in that case. One successful
+seed with another failed or unvisited remains UNRESOLVED_SELECTED_PREMISE with
+partial coverage. Both seed statuses, attempted flags and source-shared
+LEFT/REFERENCE provenance remain recorded. A nonzero drive fails the clean-end
+premise; it does not establish absence of a transverse mode. No complete
+inventory is inferred even when both selected seeds join. The generic census, interval/domain certification, roots, optional loci,
 slices and grid paths were removed from this worker rather than left scheduled
 behind a flag. No thickness, field, power or total-loss calculation was added.
 
@@ -56,7 +60,9 @@ no sigma dependence is inserted. Each raw/current operand, endpoint mapping,
 actual substitution map, remaining-symbol list, coefficient and reconstruction
 residual is published as a complete suboperation. Independent eta/sigma remain
 through that extraction. The declared end values are then applied for the
-point checks, so this is not symbolic/all-grade evidence.
+point checks, so this is not symbolic/all-grade evidence. The final open-depth
+binding has its own complete substitution/remaining-symbol receipt, like each
+current-matrix binding; its formula is unchanged.
 
 The physical grade-origin arithmetic is reached from the pinned ChannelInput
 AST using a tiny permitted scalar-expression reader; no producer module or
@@ -75,7 +81,9 @@ addressed, with full source rows, contractions, census, units and seed-current
 operand joins. Original frequency/tangent liveness is retained as provenance;
 new acceptance uses the actual exact specialization, source/wave residuals
 and remaining-symbol census. It never demands that a numerical frequency or
-tangent still appear as a free symbol.
+tangent still appear as a free symbol. The strict declaredSymbols set {k,q}
+checks CLOSED_PENCIL_LEGS[0], the right single-leg pencil. It is not a restriction
+on bilinear currents, which retain both normal and depth legs.
 
 ## Controls and bounded domain evidence
 
@@ -93,8 +101,17 @@ again by the same differentiation and binding route. Native Theta/E slot
 controls set the addressed source amplitude input to zero before row
 extraction. They do not overwrite a computed row or contraction. Raw altered
 operands, before/after contractions and movements precede classification.
-Symbolic face controls explicitly claim rational nonidentity only at the fixed
-frequency/tangents, not nonzero movement at every normal/depth point. Actual
+Loaded U controls separately count applicable, responsive, nonapplicable and
+unresolved columns. A structurally unloaded drive or column stays NOT_APPLICABLE;
+an entirely unloaded set carries no generic sensitivity label. Every applicable
+loaded column must respond, and an unresolved applicability/movement blocks the
+control requirement. Physically U-independent drives need not acquire U coupling.
+For each face and harmonic leg, the native E outward-velocity source omission's
+already-computed movement is persisted and must be nonzero, separately from the
+original coefficient-presence calibration. Zero-drive/form values and control
+responses remain distinct evidence. Symbolic face controls claim rational
+nonidentity only at the fixed frequency/tangents, not nonzero movement at every
+normal/depth point. Actual
 pencil controls are evaluated on each supplied saved seed. Native gauges remain
 coordinate probes, not normalized longitudinal modes.
 
@@ -127,8 +144,10 @@ actual opinions and exact external-packet consent, then create any gate.
 The unchanged shared guard/supervisor must supply 2 GiB/no swap, one CPU,
 nice at least 15, 32 tasks and all six native thread settings equal to one.
 Containment and gate checks precede scientific import/restoration. Native expiry
-is a BaseException and is rethrown before local handling; a local mathematical
-budget cannot convert it to an unresolved operation. Local timers are disarmed
+uses an explicit armed-timer kind (native or local). Every native-armed alarm
+raises the fatal NativeDeadline BaseException even if the sampled monotonic
+remainder is still slightly positive. Only a local mathematical expiry can
+become an unresolved operation. Local timers are disarmed
 before suboperation or return serialization and immutable artifact emission. The
 whole-job timer stays armed. Resuming an end operation uses its original local
 deadline, never a fresh allowance. Completed suboperations persist even if a
@@ -138,8 +157,13 @@ and raw evidence; no automatic retry or duration exception exists.
 Stdout preserves the established contract: exactly one indented JSON document,
 byte-identical to checks.json. Raw computed operands, returns and residuals are
 emitted first to immutable operation/suboperation artifacts, including complete
-content-addressed object payloads and their complete receipts; operation-level
-rendered JSON and copied prior summaries remain available. These artifacts are
+content-addressed object payloads and their complete receipts. Source-bind
+operations use render=False: their readable record contains the immutable return
+receipt, without stringifying the entire raw-source return into JSON. Other
+operation-level rendered JSON and copied prior summaries remain available.
+Python and NumPy nonfinite floating values render as explicit strings, preserving
+strict JSON instead of triggering allow_nan=False failures. Reference-face
+attempted and supported flags are separate; an attempted failure is not support. These artifacts are
 persisted before the corresponding guards. Completion inspection must compare
 whole stdout with checks.json and inspect the raw operation/suboperation
 artifacts, source posthashes, stderr and resource logs. No result may be accepted
@@ -158,9 +182,10 @@ control responsiveness. The named `reduction/derived_or_declared.py` and
 `engine_output_checks.py` helpers were unavailable in repository inventory;
 no replacement or scientific test was invented.
 
-No concrete unresolved source-authoring blocker was found by these limited
-static checks. Runtime shape compatibility, symbolic/numeric joins, operation
-cost and prospective reviewer findings remain untested. Independent fresh
+This bounded correction was source-only. Raw-denominator and face-expansion
+mathematics, grade inputs, point, resource caps and restoration routes were not
+changed. Runtime shape compatibility, symbolic/numeric joins, operation cost and
+control responsiveness remain untested; this note supplies no build verdict. Independent fresh
 Claude/Grok build review must inspect the actual source/manifest/scope/helper
 routes before any scientific execution. Root must inspect the eventual raw
 results and qualify them against finite boundaries, regulator/domain effects

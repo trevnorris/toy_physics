@@ -127,20 +127,24 @@ class Journal:
         self.prior, self.prior_cache, self.reused = {}, {}, []
         self.prior_order, self.resumed, self.summary_reuse = [], [], []
         self.local_deadline, self.active_path = None, None
+        self.armed_timer_kind = None
         self.same = None
         self.records, self.active, self.objects = [], None, {}
         def timeout(*_):
+            expired_kind = self.armed_timer_kind
             signal.setitimer(signal.ITIMER_REAL, 0)
+            self.armed_timer_kind = None
             remaining = self.deadline-time.monotonic()
-            if remaining <= 0:
+            if expired_kind != 'local' or remaining <= 0:
                 raise NativeDeadline('native whole-job deadline')
-            signal.setitimer(signal.ITIMER_REAL, remaining)
+            self.arm_native()
             raise OperationBudget('bounded mathematical operation')
         signal.signal(signal.SIGALRM, timeout)
         self.arm_native()
 
     def arm_native(self):
         signal.setitimer(signal.ITIMER_REAL, 0)
+        self.armed_timer_kind = 'native'
         remaining = self.deadline-time.monotonic()
         if remaining <= 0:
             raise NativeDeadline('native whole-job deadline')
@@ -254,10 +258,15 @@ class Journal:
 
     def resume_local(self):
         if self.local_deadline is not None:
-            remaining = min(self.local_deadline,self.deadline)-time.monotonic()
+            if self.local_deadline >= self.deadline:
+                self.arm_native()
+                return
+            remaining = self.local_deadline-time.monotonic()
             if remaining<=0:
                 if time.monotonic()>=self.deadline: raise NativeDeadline('native whole-job deadline')
                 raise OperationBudget('end binding allowance elapsed at checkpoint')
+            signal.setitimer(signal.ITIMER_REAL,0)
+            self.armed_timer_kind = 'local'
             signal.setitimer(signal.ITIMER_REAL,remaining)
 
     def op(self, name, function, *args, seconds=20, required=False):
@@ -302,7 +311,7 @@ class Journal:
         remaining = self.deadline-time.monotonic()
         if remaining<=0: raise NativeDeadline('native whole-job deadline')
         self.local_deadline = time.monotonic()+seconds
-        signal.setitimer(signal.ITIMER_REAL,min(seconds,remaining))
+        self.resume_local()
         failed = None
         try:
             value = function(*args)
@@ -374,7 +383,10 @@ def construct(spec, out, journal):
         if isinstance(value, complex):
             return dict(real=value.real if np.isfinite(value.real) else str(value.real),
                         imag=value.imag if np.isfinite(value.imag) else str(value.imag))
-        if isinstance(value, (np.integer, np.floating, np.bool_)): return value.item()
+        if isinstance(value, (float, np.floating)):
+            number = float(value)
+            return number if np.isfinite(number) else str(value)
+        if isinstance(value, (np.integer, np.bool_)): return value.item()
         if isinstance(value, sp.Basic): return str(value)
         return value
 
@@ -713,7 +725,9 @@ def construct(spec, out, journal):
         evidence('open-depth-specialized-input',depth_specialization)
         depth_matrix,depth_residual=grade(sp.ImmutableMatrix([depth_raw]))
         evidence('open-depth-carrier-return',dict(coefficient=depth_matrix,reconstructionResidual=depth_residual))
-        depth=bind(depth_matrix[0],label)
+        depth_end_specialization={}
+        depth=bind(depth_matrix[0],label,receipt=depth_end_specialization)
+        evidence('open-depth-end-specialization',depth_end_specialization)
         carrier = carrier_law_check(label,result,mapping,depth)
         denominator_operands = [*raw_matrix,*raw_restricted,*raw_weak,*raw_gram,
             *[value for current in currents.values() for value in current],
@@ -742,9 +756,12 @@ def construct(spec, out, journal):
                 tuple(str(params[name]) for name in ('s11cdTangentialMomentum1','s11cdTangentialMomentum2'))))
         evidence('source-current-face-residuals',dict(specialization=specialization,
             currentSpecializations=current_specializations,gradeResiduals=grade_residuals,
+            depthEndSpecialization=depth_end_specialization,
             depthReconstructionResidual=depth_residual,carrierLaw=carrier,
             driveReconstruction=reconstruction,flatExteriorJoins=flat_exterior,
             sourceCoupling=coupling,pairingBranch=result['SOURCE_BRANCH_JOINS']))
+        # CLOSED_PENCIL_LEGS[0] is the right single-leg pencil; only k and q
+        # may remain there. Bilinear currents retain both normal/depth legs.
         checks=dict(faceLegCensus=source_face_census['complete'],sourceJoin=zero(source_join),
             waveJoin=zero(wave_join),suppliedCurlJoin=zero(common_curl_join),
             carrierLawAndNormalization=carrier['joins'],originalBranch=zero(packet['branchResiduals']),
@@ -758,6 +775,7 @@ def construct(spec, out, journal):
         return dict(end=label,checks=checks,sourceFaceLegCensus=source_face_census,originalSource=packet['originalAlgebraic'],
             originalCurrentResult=result,sourceLegMapping=mapping,sourceSpecialization=specialization,
             currentSpecializations=current_specializations,
+            depthEndSpecialization=depth_end_specialization,
             originalRelation=packet['originalRelation'], sourceJoin=source_join, waveJoin=wave_join,
             savedSourceBranch=packet['branchResiduals'], pairingSourceBranch=result['SOURCE_BRANCH_JOINS'],
             sourceCoupling=coupling, matrix=matrix, rawMatrix=raw_matrix, wave=wave, q2=q2, scale=scale,
@@ -826,6 +844,7 @@ def construct(spec, out, journal):
                     urow = row[name][:,:3]
                     if zero(urow):
                         loaded_controls.append(dict(drive=name,status='NOT_APPLICABLE_NO_U_DEPENDENCE',
+                            applicableCount=0,responsiveCount=0,nonapplicableCount=lift.cols,unresolvedCount=0,
                             originalRow=row[name],uRow=urow,baseline=contractions[name]))
                         continue
                     source=bound['rawSavedFaceExpressions'][index][leg][name]
@@ -846,6 +865,7 @@ def construct(spec, out, journal):
                         if not loaded:
                             structural=rational and all(value==0 for _,_,value in contributions)
                             columns.append(dict(column=column,contributions=contributions,
+                                applicable=False if structural else None,
                                 status='NOT_APPLICABLE_STRUCTURALLY_UNLOADED_COLUMN' if structural else 'UNRESOLVED'))
                             continue
                         slot,term,contribution=loaded[0]
@@ -858,11 +878,18 @@ def construct(spec, out, journal):
                             fixedLoadedLift=lift[:,column],before=before,after=after,
                             rawMovement=raw_movement,reducedMovement=movement)
                         evidence('face-%d-leg-%d-%s-column-%d'%(index,leg,name,column),raw_control)
-                        columns.append(dict(raw_control,
+                        columns.append(dict(raw_control,applicable=True,
                             status='RATIONAL_NONIDENTITY_AT_FIXED_FREQUENCY_TANGENTS' if not zero(movement) else 'UNRESOLVED',
                             normalDepthPointwiseNonzeroClaim=False))
-                    supported = all(item['status']!='UNRESOLVED' for item in columns)
-                    loaded_controls.append(dict(drive=name,status='SUPPORTED_GENERIC_DEPENDENCE' if supported else 'UNRESOLVED',
+                    applicable_count=sum(item['applicable'] is True for item in columns)
+                    responsive_count=sum(item['status']=='RATIONAL_NONIDENTITY_AT_FIXED_FREQUENCY_TANGENTS' for item in columns)
+                    nonapplicable_count=sum(item['applicable'] is False for item in columns)
+                    unresolved_count=sum(item['status']=='UNRESOLVED' for item in columns)
+                    control_status=('UNRESOLVED' if unresolved_count or responsive_count!=applicable_count else
+                        'RESPONSIVE_LOADED_COLUMNS' if applicable_count else 'NOT_APPLICABLE_STRUCTURALLY_UNLOADED_COLUMNS')
+                    loaded_controls.append(dict(drive=name,status=control_status,
+                        applicableCount=applicable_count,responsiveCount=responsive_count,
+                        nonapplicableCount=nonapplicable_count,unresolvedCount=unresolved_count,
                         originalRow=row[name],baseline=contractions[name],columns=columns))
                 slot_diagnostics = []
                 for name in DRIVES:
@@ -882,11 +909,14 @@ def construct(spec, out, journal):
                             rawDifference=raw_difference,reducedDifference=reduced,coefficient=coefficient))
                 ew = next(item for item in slot_diagnostics
                           if item['drive']=='OUTWARD_VELOCITY' and item['field']=='E')
+                evidence('face-%d-leg-%d-e-velocity-omission'%(index,leg),ew)
+                ew_omission_responsive = not zero(ew['reducedDifference'])
                 scaled_velocity_coefficient = sp.cancel(ew['coefficient']/w)
                 ew_calibrated = (not scaled_velocity_coefficient.free_symbols
                                  and scaled_velocity_coefficient!=0 and w.is_positive is True)
                 ew = dict(ew,frequencyNormalizedCoefficient=scaled_velocity_coefficient,
-                          frequencyDomain=sp.Gt(w,0,evaluate=False),presenceCalibrationSupported=ew_calibrated)
+                          frequencyDomain=sp.Gt(w,0,evaluate=False),presenceCalibrationSupported=ew_calibrated,
+                          omissionResponsive=ew_omission_responsive)
                 probe_vectors = [probe if leg==0 else sp.conjugate(probe).xreplace({k:kb})
                                  for probe in bound['longitudinalDirectionProbes']]
                 probes = [dict(kind='SAVED_CURL_GAUGE_DIRECTION_EMBEDDED_AS_U_PROBE',vector=probe,
@@ -896,13 +926,16 @@ def construct(spec, out, journal):
                 # come from their actual time characters, not face orientation.
                 original_velocity = row['OUTWARD_VELOCITY']
                 joins = [sp.cancel(original_velocity[0,4]-item['coefficientsByHarmonicLeg'][leg]) for item in literals]
+                control_counts={key:sum(control[key] for control in loaded_controls)
+                                for key in ('applicableCount','responsiveCount','nonapplicableCount','unresolvedCount')}
                 evidence('face-%d-leg-%d-operands'%(index,leg),dict(nativeRows=row,lift=lift,
                     contractions=contractions,slotDiagnostics=slot_diagnostics,c2Residuals=joins,
-                    nontransverseProbes=probes,loadedControls=loaded_controls))
+                    nontransverseProbes=probes,loadedControls=loaded_controls,uControlCounts=control_counts))
                 records.append(dict(faceOrdinal=index,nativeSourceOrientation=face_order[index],harmonicLeg=leg,
                     harmonicMeaning='POSITIVE_CHARACTER' if leg==0 else 'NEGATIVE_CONJUGATE_CHARACTER',
                     amplitudeColumns=bound['harmonicAmplitudeColumns'][leg],nativeRows=row,lift=lift,
                     contractions=contractions,driveZero=zero(contractions),loadedUTermControls=loaded_controls,
+                    uControlCounts=control_counts,
                     nontransverseSourceProbes=probes,nativeThetaESlotDiagnostics=slot_diagnostics,
                     eWPresenceCalibration=ew,c2IndexLiteralJoins=joins,
                     c2IndexLiteralSupported=(len(literals)==2) if bound['end']=='REFERENCE' else None,
@@ -915,7 +948,10 @@ def construct(spec, out, journal):
         checks = dict(faceLegCensus=complete_faces,
             allHarmonicDrivesZero=complete_faces and all(item['driveZero'] for item in records),
             nativeEVelocityPresence=complete_faces and all(item['eWPresenceCalibration']['presenceCalibrationSupported'] for item in records),
-            loadedUControls=complete_faces and all(control['status']!='UNRESOLVED' for item in records for control in item['loadedUTermControls']),
+            nativeEVelocityOmissionResponse=complete_faces and all(item['eWPresenceCalibration']['omissionResponsive'] for item in records),
+            loadedUControls=complete_faces and all(control['unresolvedCount']==0
+                and control['responsiveCount']==control['applicableCount']
+                for item in records for control in item['loadedUTermControls']),
             c2IndexLiteral=complete_faces and (bound['end']!='REFERENCE' or all(item['c2IndexLiteralSupported'] and
                 zero(item['c2IndexLiteralJoins']) for item in records)),lossSideFormsZero=zero(forms))
         return dict(end=bound['end'],faces=records,faceLegCensus=face_census,physicalForms=forms,checks=checks,
@@ -1124,13 +1160,15 @@ def construct(spec, out, journal):
     require(journal.reused==journal.prior_order and len(journal.reused)==11,'all original completed returns reused')
     save(out/'complete-return-reuse.json',dict(names=journal.reused,number=len(journal.reused),
          summaries=journal.summary_reuse))
-    end_states, face_results, seed_results, summaries = {}, {}, {}, []
+    end_states, face_results, summaries = {}, {}, []
+    seed_results={label:[dict(seedIndex=index,status='UNRESOLVED',reason='NOT_VISITED',attempted=False)
+                         for index in (16,17)] for label in ENDS}
     for label in ENDS:
         if time.monotonic()>journal.deadline-60:
             end_states[label]='UNRESOLVED_BUDGET_NOT_ATTEMPTED'
             continue
         packet,pairing = packets[label]
-        bound = op(label+'-source-bind',bound_end,label,packet,pairing,seconds=180)
+        bound = op(label+'-source-bind',bound_end,label,packet,pairing,seconds=180,render=False)
         if 'checks' not in bound or not all(bound['checks'].values()):
             end_states[label]='UNRESOLVED_SOURCE_JOIN'
             continue
@@ -1139,21 +1177,26 @@ def construct(spec, out, journal):
         if 'checks' not in face or not all(face['checks'].values()):
             end_states[label]='UNRESOLVED_FACE_CHECK'
             continue
-        seed_results[label]=[]
-        for index in (16,17):
+        for ordinal,index in enumerate((16,17)):
             if time.monotonic()>journal.deadline-30: break
             key=label+'Seed'+str(index)
             saved=restored(label+'-restore-seed-'+str(index),key)
-            seed_results[label].append(op(label+'-seed-join-'+str(index),saved_seed,bound,saved,seconds=20))
+            joined=op(label+'-seed-join-'+str(index),saved_seed,bound,saved,seconds=20)
+            seed_results[label][ordinal]=dict(joined,seedIndex=index,attempted=True)
         statuses=[item.get('status','UNRESOLVED') for item in seed_results[label]]
-        available=any(state=='AVAILABLE' for state in statuses)
-        state='AVAILABLE' if available else 'UNRESOLVED'
+        selected_premise_supported=len(statuses)==2 and all(
+            item.get('status')=='AVAILABLE' and bool(item.get('checks')) and all(item['checks'].values())
+            for item in seed_results[label])
+        attempted_count=sum(item['attempted'] for item in seed_results[label])
+        state='SELECTED_PREMISE_SUPPORTED' if selected_premise_supported else 'UNRESOLVED_SELECTED_PREMISE'
         end_states[label]=state
         summaries.append(dict(end=label,status=state,omega=str(w),
              tangents=[str(params['s11cdTangentialMomentum1']),str(params['s11cdTangentialMomentum2'])],
-             coverage='SELECTED_SAVED_SUBSPACES_ONLY',completeInventory=False,
-             checkedSelectedSeeds=len(statuses),selectedSeedStatuses=statuses,
-             selectedChecksComplete=(len(statuses)==2 and all(state=='AVAILABLE' for state in statuses))))
+             scope='SELECTED_UNDRIVEN_TRANSVERSE_CURRENT_PREMISE_NOT_CHANNEL_CENSUS',
+             coverage='SELECTED_SAVED_SUBSPACES_ONLY' if selected_premise_supported else 'PARTIAL_UNRESOLVED_SELECTED_SUBSPACES',
+             completeInventory=False,selectedSeedIndices=[16,17],
+             checkedSelectedSeeds=attempted_count,selectedSeedStatuses=statuses,
+             selectedChecksComplete=selected_premise_supported))
     save(out/'source-end-states.json',end_states)
     save(out/'reference-face-drive.json',show(face_results.get('REFERENCE',{'status':'UNRESOLVED'})))
     seed_hashes={}
@@ -1167,10 +1210,13 @@ def construct(spec, out, journal):
                for label in ENDS if label not in {item['end'] for item in summaries}]
     save(out/'point-summary.json',summaries)
     save(out/'unvisited-point.json',unvisited)
+    reference_face=face_results.get('REFERENCE',{})
     return dict(case=spec['case'],endStates=end_states,pointRecords=len(summaries),
                 reusedCompleteCount=len(journal.reused),endBindingsAttempted=len(journal.resumed),
-                selectedSeedChecks=sum(len(value) for value in seed_results.values()),
-                referenceFaceComputed='REFERENCE' in face_results,
+                selectedSeedChecks=sum(item['attempted'] for values in seed_results.values() for item in values),
+                selectedSeedStatuses={label:[item['status'] for item in values] for label,values in seed_results.items()},
+                referenceFaceAttempted='REFERENCE' in face_results,
+                referenceFaceSupported=bool(reference_face.get('checks')) and all(reference_face['checks'].values()),
                 pointStates={label:end_states[label] for label in ENDS})
 
 

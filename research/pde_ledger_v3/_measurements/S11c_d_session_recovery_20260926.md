@@ -1,5 +1,20 @@
 # S11c-d session recovery — 2026-09-26
 
+**Execution 5 completion audited: selected REFERENCE/LEFT supported; RIGHT memory failure (2026-09-29):**
+at omega1/tangents(1/5,1/10), both selected seeds pass transverse/current joins
+for REFERENCE and LEFT, and all tested native face drives/projected loss-side
+forms vanish with responsive controls. These ends share saved seed operands;
+no complete census or matched-end/total-loss conclusion follows. RIGHT saved
+three new scalar coefficients, then MemoryError in bulk-normal current carrier
+entry 000055; its face/seed checks remain unvisited. No timeout or retry.
+Worker 4830.204s including789.212s priority suspension; peak2069409792bytes,
+zero swap/events. All432 posthashes,199 snapshots and both prior copies intact;
+strict stderr empty, stdout/checks identical. 23 complete journal returns
+(11 restored,12 new),33 restored suboperations,55 new scalar carrier returns;
+1311files/31272777bytes preserved. Desktop-priority waiver retained; temporary
+scheduler exception is gone. See continuation checkpoint/report. STOP after
+this partial result: no further science/validator/method work authorized.
+
 **Execution 5 resumed with user-authorized desktop priority (2026-09-29):**
 exact cleared worker is running as the same PID 2497607, resumed at 19:39:51 UTC.
 New coefficient returns were saved before a host-priority detour. The desktop

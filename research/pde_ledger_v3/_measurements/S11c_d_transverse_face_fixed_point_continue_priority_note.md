@@ -27,3 +27,7 @@ The detour was operational, not a physics requirement. Nice15 has no scientific
 significance and no premise or loss result follows from build clearance, priority
 verification or resumption. All raw receipts are under the continuation runtime
 root; the canonical launch record pins them. Scratch remains uncommitted.
+
+Completion inspection on 2026-09-29 verified the temporary exception file is
+absent, the cleanup unit is inactive/unloaded, and the original worker and
+coordinator have exited. The approved desktop-priority waiver is preserved.

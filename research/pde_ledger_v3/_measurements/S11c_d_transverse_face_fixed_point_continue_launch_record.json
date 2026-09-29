@@ -1,5 +1,5 @@
 {
-  "status": "RUNNING_USER_AUTHORIZED_DESKTOP_PRIORITY",
+  "status": "PARTIAL_SELECTED_PREMISE_SUPPORTED_RIGHT_MEMORY_UNRESOLVED",
   "recordedUtc": "2026-09-29T19:22:48.826815+00:00",
   "gate": {
     "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_fixed_point_continue_gate.json",
@@ -110,7 +110,7 @@
     "status": "Installed; did not prevent priority rewrite. Failed verification preserved. User subsequently waived only niceness; automatic cleanup remains armed."
   },
   "scientificRestart": false,
-  "scientificAcceptance": false,
+  "scientificAcceptance": "Limited selected reference/left premise evidence only; full matched-end premise, total loss, omega3, analog-light calibration, Green/FORM/A11/A12 remain open.",
   "priorityResume": {
     "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/user-authorized-priority-resume.json",
     "bytes": 1073,
@@ -134,7 +134,8 @@
       "sha256": "78ad9b7bc55d10042a48ef013523a951c63038c24df37ee689e45c1c80046ea4"
     },
     "automaticCleanupStillArmed": "s11c-priority-exception-cleanup-37f533cfe2e7.service",
-    "noFurtherAuthenticationOrPriorityChangesPlanned": true
+    "noFurtherAuthenticationOrPriorityChangesPlanned": true,
+    "subsequentCompletionObservation": "Exception file absent and cleanup unit inactive/unloaded; no further authentication performed."
   },
   "finalPriorityAuthority": {
     "userReply": "Resume with desktop-managed priority",
@@ -144,5 +145,21 @@
   "completionAdditionalChecks": [
     "Verify temporary scheduler exception automatically removed after cgroup empties; inspect cleanup service result.",
     "Preserve observed pre-waiver priority deviations and suspension history; do not claim uninterrupted nice15 enforcement."
-  ]
+  ],
+  "completionCheckpoint": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_fixed_point_continue_checkpoint.json",
+    "bytes": 24602,
+    "sha256": "48740bc4cc5fc4014945e511e2096a8ecc4b7407325159a7d5bc436dc0e1f17e"
+  },
+  "completionReport": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_fixed_point_continue_report.md",
+    "bytes": 5544,
+    "sha256": "46a229790fa5208610f4540a60fbf35fa36292b9ac4e0c49d68c7b0480de768c"
+  },
+  "completedUtc": "2026-09-29T20:44:15.019401+00:00",
+  "completionInspectedUtc": "2026-09-29T20:49:02.802379+00:00",
+  "schedulerCleanup": {
+    "exceptionFileAbsent": true,
+    "unitObservedInactiveUnloaded": true
+  }
 }

@@ -1,0 +1,761 @@
+{
+  "status": "PARTIAL_SELECTED_PREMISE_SUPPORTED_RIGHT_MEMORY_UNRESOLVED",
+  "inspectedUtc": "2026-09-29T20:49:02.802379+00:00",
+  "scientificExecutionOrdinal": 5,
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation",
+  "inspectionScope": "JSON/source/hash inspection only; no scientific payload restored, algebra repeated or extra validator run",
+  "checks": {
+    "case": "LAB_HELD_RHO4_CONSTANT",
+    "endStates": {
+      "REFERENCE": "SELECTED_PREMISE_SUPPORTED",
+      "LEFT": "SELECTED_PREMISE_SUPPORTED",
+      "RIGHT": "UNRESOLVED_SOURCE_JOIN"
+    },
+    "pointRecords": 2,
+    "reusedCompleteCount": 11,
+    "endBindingsAttempted": 3,
+    "selectedSeedChecks": 4,
+    "selectedSeedStatuses": {
+      "REFERENCE": [
+        "AVAILABLE",
+        "AVAILABLE"
+      ],
+      "LEFT": [
+        "AVAILABLE",
+        "AVAILABLE"
+      ],
+      "RIGHT": [
+        "UNRESOLVED",
+        "UNRESOLVED"
+      ]
+    },
+    "referenceFaceAttempted": true,
+    "referenceFaceSupported": true,
+    "pointStates": {
+      "REFERENCE": "SELECTED_PREMISE_SUPPORTED",
+      "LEFT": "SELECTED_PREMISE_SUPPORTED",
+      "RIGHT": "UNRESOLVED_SOURCE_JOIN"
+    },
+    "wallSeconds": 4830.203603353002,
+    "operations": 24,
+    "allSourcesUnchanged": true
+  },
+  "resources": {
+    "samples": 2416,
+    "peakMemoryBytes": 2069409792,
+    "maximumSwapBytes": 0,
+    "maximumTasks": 3,
+    "minimumHostAvailableBytes": 19835928576,
+    "memoryEventMaxima": {
+      "low": 0,
+      "high": 0,
+      "max": 0,
+      "oom": 0,
+      "oom_kill": 0,
+      "oom_group_kill": 0,
+      "sock_throttled": 0
+    }
+  },
+  "integrity": {
+    "posthashesMatched": 432,
+    "sourceSnapshotPairsMatched": 199,
+    "uniqueHashReferencesChecked": 1969,
+    "hashFailures": [],
+    "artifactIndexEntries": 1310,
+    "actualResultFiles": 1311,
+    "actualResultBytes": 31272777,
+    "artifactIndex": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/artifact-index.json",
+      "bytes": 747720,
+      "sha256": "32344f554e1462fbbdb755bed28bfa060996c0af5de605f7ad6737bcac567c6a"
+    },
+    "sourceSnapshots": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/source-snapshots.json",
+      "bytes": 246633,
+      "sha256": "5b8f429b81b85c8c92c272145a466c85bf283a53635015e4729289cc9fc2105c"
+    },
+    "posthashes": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/posthashes.json",
+      "bytes": 208850,
+      "sha256": "b04a36c27cf927129278a59508dd9780859ca323ac73d9bc70d3425b210f083a"
+    },
+    "copies": {
+      "prior-copy-index.json": {
+        "count": 98,
+        "bytes": 6040877,
+        "index": {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/prior-copy-index.json",
+          "bytes": 53708,
+          "sha256": "9bc41d856c93a6b35cde5a7298c3a799d343fcf192dbb5e4b0c639a9b6adb8b3"
+        }
+      },
+      "fixed-point-prior-copy-index.json": {
+        "count": 286,
+        "bytes": 8104854,
+        "index": {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/fixed-point-prior-copy-index.json",
+          "bytes": 170256,
+          "sha256": "b90d3e3f115c58e68b0286e4bb4719aaa268ef6ff8b5256b3a70c8f584fad69a"
+        }
+      }
+    },
+    "restoredCompleteReturns": 11,
+    "priorArgumentJoins": 14,
+    "fixedOriginalCurrentInputJoins": 3,
+    "restoredSuboperations": 33,
+    "suboperationReceipts": 291,
+    "completedScalarCarrierReturns": 55,
+    "stdoutChecksByteIdentical": true,
+    "stderrBytes": {
+      "transverse_face_fixed_point_continue.stderr": 0,
+      "guard-launch.stderr": 0,
+      "coordinator.stderr": 0,
+      "watcher.stderr": 0,
+      "resource-guard/stderr": 0
+    },
+    "guardStdoutSupervisorIdentity": true
+  },
+  "operations": {
+    "statusCounts": {
+      "COMPLETE": 23,
+      "UNRESOLVED_NO_RETRY": 1
+    },
+    "newCompleteOperations": 12,
+    "operationIndex": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/operation-index.json",
+      "bytes": 82681,
+      "sha256": "551cec85a38ff70345e3bf0157711b1cdc4cd652586a3bd3f61dd3e9167980f7"
+    },
+    "unfinishedScalarInput": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/operations/0023-RIGHT-source-bind/suboperations/carrier-entry-000055-input/complete.json",
+      "bytes": 608,
+      "sha256": "de3759ce2cb504e3b0625eba860ad4c9c81f7450c40c522fe95eec79a759eb68"
+    },
+    "unfinishedScalarOperand": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/objects/ffec5bca627930d748451ef6fde2fbfdf07b1693970739b44dc0ffe2418206a4.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/objects/ffec5bca627930d748451ef6fde2fbfdf07b1693970739b44dc0ffe2418206a4.pickle",
+      "bytes": 1480,
+      "sha256": "ffec5bca627930d748451ef6fde2fbfdf07b1693970739b44dc0ffe2418206a4"
+    },
+    "unresolvedOperation": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/operations/0023-RIGHT-source-bind/unresolved.json",
+      "bytes": 12694,
+      "sha256": "86d856a77a0cb4898891981fee19f580db15ce960975a181eedb2ff7ea77aba5"
+    },
+    "reason": "MemoryError in Poly(entry,epsilon_shape).nth(2), BULK_NORMAL_CURRENT_DENSITY_MATRIX; no timeout/guard kill"
+  },
+  "progress": {
+    "distinctEvents": 257,
+    "kinds": {
+      "PRESERVED_FIXED_POINT_RESULTS": 1,
+      "RESTORED_PRIOR_COMPLETE_RETURN": 11,
+      "RESTORED_PRIOR_COMPLETE_SUBOPERATION": 33,
+      "NEW_COMPLETE_SUBOPERATION": 200,
+      "NEW_COMPLETE_OPERATION": 12
+    },
+    "largestGapSeconds": 1171.616416,
+    "lastEvent": {
+      "sequence": 257,
+      "kind": "NEW_COMPLETE_SUBOPERATION",
+      "receipt": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/operations/0023-RIGHT-source-bind/suboperations/carrier-entry-000054-return/complete.json",
+        "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/operations/0023-RIGHT-source-bind/suboperations/carrier-entry-000054-return/complete.json",
+        "bytes": 609,
+        "sha256": "23197a7b8dedcb5674a8ec930f696c49e73bc3375017acc49007bf7c8cd2d82f"
+      },
+      "utc": "2026-09-29T20:38:22.454758+00:00"
+    }
+  },
+  "faces": {
+    "REFERENCE": {
+      "result": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/REFERENCE-face-premise.json",
+        "bytes": 3325557,
+        "sha256": "1d2c702c4d0ab829bd3dae96c260d20d8ac05142f421314e31e4458dac262df1"
+      },
+      "checks": {
+        "faceLegCensus": true,
+        "allHarmonicDrivesZero": true,
+        "nativeEVelocityPresence": true,
+        "nativeEVelocityOmissionResponse": true,
+        "loadedUControls": true,
+        "c2IndexLiteral": true,
+        "lossSideFormsZero": true
+      },
+      "physicalForms": {
+        "BULK_NORMAL_CURRENT_DENSITY_MATRIX": [
+          [
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "0"
+          ]
+        ],
+        "BULK_DEPTH_CURRENT_MATRIX": [
+          [
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "0"
+          ]
+        ],
+        "INTERFACE_POWER_MATRIX": [
+          [
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "0"
+          ]
+        ]
+      },
+      "faceLegCount": 4,
+      "loadedUApplicable": 40,
+      "loadedUResponsive": 40,
+      "loadedUNonapplicable": 8,
+      "nativeEVelocityOmissionMovement": [
+        [
+          [
+            "I/2"
+          ]
+        ],
+        [
+          [
+            "-I/2"
+          ]
+        ],
+        [
+          [
+            "I/2"
+          ]
+        ],
+        [
+          [
+            "-I/2"
+          ]
+        ]
+      ],
+      "c2EvidenceScope": "ORIENTATION_BLIND_INDEX_LITERAL_ONLY",
+      "c2PressureTraceFirstShapeJoin": "NOT_SUPPORTED_BY_THIS_INPUT_INDEX"
+    },
+    "LEFT": {
+      "result": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/LEFT-face-premise.json",
+        "bytes": 3324947,
+        "sha256": "dc0eab39deaa8a4d5c69353d3353b09d7b47a0240977cc6dd65bc631c7b5e4f6"
+      },
+      "checks": {
+        "faceLegCensus": true,
+        "allHarmonicDrivesZero": true,
+        "nativeEVelocityPresence": true,
+        "nativeEVelocityOmissionResponse": true,
+        "loadedUControls": true,
+        "c2IndexLiteral": true,
+        "lossSideFormsZero": true
+      },
+      "physicalForms": {
+        "BULK_NORMAL_CURRENT_DENSITY_MATRIX": [
+          [
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "0"
+          ]
+        ],
+        "BULK_DEPTH_CURRENT_MATRIX": [
+          [
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "0"
+          ]
+        ],
+        "INTERFACE_POWER_MATRIX": [
+          [
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "0"
+          ]
+        ]
+      },
+      "faceLegCount": 4,
+      "loadedUApplicable": 40,
+      "loadedUResponsive": 40,
+      "loadedUNonapplicable": 8,
+      "nativeEVelocityOmissionMovement": [
+        [
+          [
+            "I/2"
+          ]
+        ],
+        [
+          [
+            "-I/2"
+          ]
+        ],
+        [
+          [
+            "I/2"
+          ]
+        ],
+        [
+          [
+            "-I/2"
+          ]
+        ]
+      ],
+      "c2EvidenceScope": "ORIENTATION_BLIND_INDEX_LITERAL_ONLY",
+      "c2PressureTraceFirstShapeJoin": "NOT_SUPPORTED_BY_THIS_INPUT_INDEX"
+    }
+  },
+  "selectedSeeds": {
+    "REFERENCE/16": {
+      "result": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/REFERENCE-seed-join-16.json",
+        "bytes": 158721,
+        "sha256": "9d881a592eb76472bc20a3048b12f3d5d6a2a144ae60d81d2cdf255633efb41d"
+      },
+      "checks": {
+        "sourcePointDomain": true,
+        "faceLegCensus": true,
+        "savedFrequency": true,
+        "transverseMembership": true,
+        "physicalPencilJoin": true,
+        "physicalKernel": true,
+        "physicalWave": true,
+        "recomputedRealNormal": true,
+        "actualPhysicalDepth": true,
+        "slabCurrentOperands": true,
+        "bulkCurrentOperands": true,
+        "nativeEVelocityPresence": true,
+        "undriven": true,
+        "projectedBulk": true,
+        "transverseCurrentHermitian": true,
+        "transverseCurrentNonzeroRank": true,
+        "controls": true,
+        "historicalWeightedGramComparison": true
+      },
+      "normalMomentum": {
+        "real": 0.7852812659593165,
+        "imag": 0.0
+      },
+      "physicalDepth": "0.8103497187428812*I",
+      "currentEigenvalues": [
+        0.5889609494694872,
+        0.5889609494694877
+      ],
+      "positiveCurrentRank": 2,
+      "negativeCurrentRank": 0,
+      "hermitianResidual": [
+        [
+          {
+            "real": 0.0,
+            "imag": -3.469446951953614e-18
+          },
+          {
+            "real": -2.551940863487756e-17,
+            "imag": -8.673617379884035e-19
+          }
+        ],
+        [
+          {
+            "real": 2.551940863487756e-17,
+            "imag": -8.673617379884035e-19
+          },
+          {
+            "real": 0.0,
+            "imag": -1.734723475976807e-18
+          }
+        ]
+      ],
+      "waveResidual": {
+        "real": 1.4210854715202004e-14,
+        "imag": 0.0
+      },
+      "controlStatuses": [
+        {
+          "kind": "frequency",
+          "status": "RESPONSIVE",
+          "columns": [
+            "RESPONSIVE",
+            "RESPONSIVE"
+          ]
+        },
+        {
+          "kind": "tangents",
+          "status": "RESPONSIVE",
+          "columns": [
+            "RESPONSIVE",
+            "RESPONSIVE"
+          ]
+        }
+      ]
+    },
+    "REFERENCE/17": {
+      "result": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/REFERENCE-seed-join-17.json",
+        "bytes": 158702,
+        "sha256": "eedf3c7bafb37567d0f13022366a5f424a277a7d235ef725a08194c53173ce04"
+      },
+      "checks": {
+        "sourcePointDomain": true,
+        "faceLegCensus": true,
+        "savedFrequency": true,
+        "transverseMembership": true,
+        "physicalPencilJoin": true,
+        "physicalKernel": true,
+        "physicalWave": true,
+        "recomputedRealNormal": true,
+        "actualPhysicalDepth": true,
+        "slabCurrentOperands": true,
+        "bulkCurrentOperands": true,
+        "nativeEVelocityPresence": true,
+        "undriven": true,
+        "projectedBulk": true,
+        "transverseCurrentHermitian": true,
+        "transverseCurrentNonzeroRank": true,
+        "controls": true,
+        "historicalWeightedGramComparison": true
+      },
+      "normalMomentum": {
+        "real": -0.7852812659593165,
+        "imag": 0.0
+      },
+      "physicalDepth": "0.8103497187428812*I",
+      "currentEigenvalues": [
+        -0.5889609494694877,
+        -0.5889609494694872
+      ],
+      "positiveCurrentRank": 0,
+      "negativeCurrentRank": 2,
+      "hermitianResidual": [
+        [
+          {
+            "real": 0.0,
+            "imag": 3.469446951953614e-18
+          },
+          {
+            "real": 2.551940863487756e-17,
+            "imag": 8.673617379884035e-19
+          }
+        ],
+        [
+          {
+            "real": -2.551940863487756e-17,
+            "imag": 8.673617379884035e-19
+          },
+          {
+            "real": 0.0,
+            "imag": 1.734723475976807e-18
+          }
+        ]
+      ],
+      "waveResidual": {
+        "real": 1.4210854715202004e-14,
+        "imag": 0.0
+      },
+      "controlStatuses": [
+        {
+          "kind": "frequency",
+          "status": "RESPONSIVE",
+          "columns": [
+            "RESPONSIVE",
+            "RESPONSIVE"
+          ]
+        },
+        {
+          "kind": "tangents",
+          "status": "RESPONSIVE",
+          "columns": [
+            "RESPONSIVE",
+            "RESPONSIVE"
+          ]
+        }
+      ]
+    },
+    "LEFT/16": {
+      "result": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/LEFT-seed-join-16.json",
+        "bytes": 158721,
+        "sha256": "9d881a592eb76472bc20a3048b12f3d5d6a2a144ae60d81d2cdf255633efb41d"
+      },
+      "checks": {
+        "sourcePointDomain": true,
+        "faceLegCensus": true,
+        "savedFrequency": true,
+        "transverseMembership": true,
+        "physicalPencilJoin": true,
+        "physicalKernel": true,
+        "physicalWave": true,
+        "recomputedRealNormal": true,
+        "actualPhysicalDepth": true,
+        "slabCurrentOperands": true,
+        "bulkCurrentOperands": true,
+        "nativeEVelocityPresence": true,
+        "undriven": true,
+        "projectedBulk": true,
+        "transverseCurrentHermitian": true,
+        "transverseCurrentNonzeroRank": true,
+        "controls": true,
+        "historicalWeightedGramComparison": true
+      },
+      "normalMomentum": {
+        "real": 0.7852812659593165,
+        "imag": 0.0
+      },
+      "physicalDepth": "0.8103497187428812*I",
+      "currentEigenvalues": [
+        0.5889609494694872,
+        0.5889609494694877
+      ],
+      "positiveCurrentRank": 2,
+      "negativeCurrentRank": 0,
+      "hermitianResidual": [
+        [
+          {
+            "real": 0.0,
+            "imag": -3.469446951953614e-18
+          },
+          {
+            "real": -2.551940863487756e-17,
+            "imag": -8.673617379884035e-19
+          }
+        ],
+        [
+          {
+            "real": 2.551940863487756e-17,
+            "imag": -8.673617379884035e-19
+          },
+          {
+            "real": 0.0,
+            "imag": -1.734723475976807e-18
+          }
+        ]
+      ],
+      "waveResidual": {
+        "real": 1.4210854715202004e-14,
+        "imag": 0.0
+      },
+      "controlStatuses": [
+        {
+          "kind": "frequency",
+          "status": "RESPONSIVE",
+          "columns": [
+            "RESPONSIVE",
+            "RESPONSIVE"
+          ]
+        },
+        {
+          "kind": "tangents",
+          "status": "RESPONSIVE",
+          "columns": [
+            "RESPONSIVE",
+            "RESPONSIVE"
+          ]
+        }
+      ]
+    },
+    "LEFT/17": {
+      "result": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/LEFT-seed-join-17.json",
+        "bytes": 158702,
+        "sha256": "eedf3c7bafb37567d0f13022366a5f424a277a7d235ef725a08194c53173ce04"
+      },
+      "checks": {
+        "sourcePointDomain": true,
+        "faceLegCensus": true,
+        "savedFrequency": true,
+        "transverseMembership": true,
+        "physicalPencilJoin": true,
+        "physicalKernel": true,
+        "physicalWave": true,
+        "recomputedRealNormal": true,
+        "actualPhysicalDepth": true,
+        "slabCurrentOperands": true,
+        "bulkCurrentOperands": true,
+        "nativeEVelocityPresence": true,
+        "undriven": true,
+        "projectedBulk": true,
+        "transverseCurrentHermitian": true,
+        "transverseCurrentNonzeroRank": true,
+        "controls": true,
+        "historicalWeightedGramComparison": true
+      },
+      "normalMomentum": {
+        "real": -0.7852812659593165,
+        "imag": 0.0
+      },
+      "physicalDepth": "0.8103497187428812*I",
+      "currentEigenvalues": [
+        -0.5889609494694877,
+        -0.5889609494694872
+      ],
+      "positiveCurrentRank": 0,
+      "negativeCurrentRank": 2,
+      "hermitianResidual": [
+        [
+          {
+            "real": 0.0,
+            "imag": 3.469446951953614e-18
+          },
+          {
+            "real": 2.551940863487756e-17,
+            "imag": 8.673617379884035e-19
+          }
+        ],
+        [
+          {
+            "real": -2.551940863487756e-17,
+            "imag": 8.673617379884035e-19
+          },
+          {
+            "real": 0.0,
+            "imag": 1.734723475976807e-18
+          }
+        ]
+      ],
+      "waveResidual": {
+        "real": 1.4210854715202004e-14,
+        "imag": 0.0
+      },
+      "controlStatuses": [
+        {
+          "kind": "frequency",
+          "status": "RESPONSIVE",
+          "columns": [
+            "RESPONSIVE",
+            "RESPONSIVE"
+          ]
+        },
+        {
+          "kind": "tangents",
+          "status": "RESPONSIVE",
+          "columns": [
+            "RESPONSIVE",
+            "RESPONSIVE"
+          ]
+        }
+      ]
+    }
+  },
+  "selectedCoverage": "Two saved seeds per supported end; REFERENCE and LEFT share accepted seed hashes and are not independent datasets. RIGHT seeds/face unvisited. No complete mode census.",
+  "reviewVerdicts": {
+    "Claude": "CLEAR FOR THIS PROGRESS-DEPENDENT FIXED-POINT CONTINUATION",
+    "Grok": "CLEAR FOR THIS PROGRESS-DEPENDENT FIXED-POINT CONTINUATION"
+  },
+  "limits": {
+    "memory.max": "2147483648",
+    "memory.swap.max": "0",
+    "pids.max": "32",
+    "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-37f533cfe2e7.service",
+    "nice": 15,
+    "affinity": [
+      15
+    ],
+    "threads": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1",
+      "VECLIB_MAXIMUM_THREADS": "1",
+      "BLIS_NUM_THREADS": "1"
+    }
+  },
+  "duration": {
+    "verified": true,
+    "actual": {
+      "Restart": "no",
+      "RuntimeMaxUSec": "infinity"
+    },
+    "wallDeadlineSeconds": null,
+    "automaticRetry": false
+  },
+  "priorityWaiver": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/user-authorized-priority-resume.json",
+    "bytes": 1073,
+    "sha256": "8477a6d4ed9082b5749d041a35f7819ad1b35b6906160af2147c428f35fc93ab"
+  },
+  "priorityCaveat": "Initial nice15 was overridden before waiver; user explicitly allowed desktop-managed priority. No uninterrupted nice15 claim.",
+  "schedulerCleanup": {
+    "exceptionFileAbsent": true,
+    "unitObservedInactiveUnloaded": true
+  },
+  "scientificAcceptance": "Limited selected reference/left premise evidence only; full matched-end premise, total loss, omega3, analog-light calibration, Green/FORM/A11/A12 remain open.",
+  "automaticRetry": false,
+  "outcomeRecords": {
+    "coordinator-outcome.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/coordinator-outcome.json",
+      "bytes": 146,
+      "sha256": "f67058e0bdad968d2904e4083c5bb6d0111aa26597ceeffb996b649ab8ccaf55"
+    },
+    "active.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/active.json",
+      "bytes": 1194,
+      "sha256": "3c12db3cb717ae3a5384042ed626c383485bf3a139403494ad9efe0f8736df81"
+    },
+    "resource-guard/outcome.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/resource-guard/outcome.json",
+      "bytes": 271,
+      "sha256": "806a721d6585b9499b198077a5e3e91c6335c99e8aee0840305e0112c74b9a6b"
+    },
+    "resource-guard/child-outcome.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/resource-guard/child-outcome.json",
+      "bytes": 102,
+      "sha256": "0e99811e159557a38e4bf9b87d5462dfb622b37f18b5250f62f1a1d55f9ca9ab"
+    },
+    "resource-guard/invocation.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/resource-guard/invocation.json",
+      "bytes": 1937,
+      "sha256": "c4e7f115170ab4873169702d87ec10f33929ca155b73f6a9c022af06350c56cf"
+    },
+    "resource-guard/duration-validation.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/resource-guard/duration-validation.json",
+      "bytes": 154,
+      "sha256": "c4d5d82a7602eb9f6b798b2a012f54b17be51cd07ed35619d75f993ab71727f5"
+    },
+    "resource-guard/limit-validation.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/resource-guard/limit-validation.json",
+      "bytes": 511,
+      "sha256": "af9b95be850e192ffa30cbf8f6e48065c763593fa7e211baa29c4fefc0afd2e1"
+    },
+    "resource-guard/last-progress.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/resource-guard/last-progress.json",
+      "bytes": 744,
+      "sha256": "c9857cfb93bd98fee87031bc04a2ee3b7a12d1bde395e476abdf70dc5d36a443"
+    },
+    "complete/checks.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/checks.json",
+      "bytes": 814,
+      "sha256": "45b6d4680a1afa2a8b791446b566eff0943f486b6aec0d0939db0d1d57181da5"
+    }
+  },
+  "resourceSamples": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/resource-guard/resource-samples.jsonl",
+    "bytes": 966524,
+    "sha256": "442c9d051fd568cf9abe780b7b07562b60060016d182d895ab43e7797b6c18df"
+  },
+  "cost": {
+    "workerWallSeconds": 4830.203603353002,
+    "supervisorWallSeconds": 4831.229428656981,
+    "coordinatorWallSeconds": 4831.483199244016,
+    "wallIncludesSuspension": true,
+    "suspensionSeconds": 789.211757,
+    "peakMemoryGiB": 1.9272880554199219,
+    "nativeAddressSpaceLimitBytes": 2147483648,
+    "memoryInterpretation": "Python MemoryError in symbolic coefficient expansion under unchanged native and cgroup 2GiB limits; no cgroup OOM kill or resource guard stop. Not proof of host exhaustion."
+  },
+  "protectedBuilderSuffixSha256": "f01024512c9a028e7e524e5a95b5c455be42e125d10c36f94e20493109b013c2",
+  "sharedGuardUnchanged": true
+}

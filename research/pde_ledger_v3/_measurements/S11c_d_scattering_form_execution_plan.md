@@ -1,5 +1,24 @@
 # S11c-d: the remaining execution queue
 
+**Execution 4 authorized; fixed-point build prepared (2026-09-29):** the user
+approved one numeric-first transverse/current and limited reference-face check at
+omega=1, tangents (1/5,1/10), LAB_HELD/RHO4_CONSTANT. The new source candidate
+reuses all eleven complete premise returns and preserves the three unfinished
+bindings; 180 s per binding within ordinary 900 s outer / 840 s native limits.
+Source/AST/hash checks only: all 142 input pins match; no scientific restoration,
+execution, independent clearance or READY gate. Three executions used; the
+fourth remains unspent. The exact fresh Claude/Grok packet is prepared:
+79 files / 1,628,509 bytes, SHA-256
+`324da469516f6bd39fbac154fdeed020e726cc6442e3df59292aaa98e4b93e02`.
+Await the task's required exact-packet external-submission consent; execution 4
+itself is already approved after substantive independent build clearance.
+See `S11c_d_transverse_face_fixed_point_scope.md`, authorization and review preparation. Stop after actual
+fixed-point results; no omega=3 extension, full map, field/power work or retry.
+The saved-current interpretation note distinguishes four baseline incident
+columns from four physical cases and retained-series omissions from the full
+finite solve. Calibration and physical loss remain OPEN. Earlier entries below
+retain their chronology and are superseded by this status.
+
 **Source-only next-step assessment (2026-09-29):** existing finite profile
 current ratios and regulator/domain comparisons are already in saved metadata.
 Uniform controls use homogeneous matching, not the regulated profile quadrature;

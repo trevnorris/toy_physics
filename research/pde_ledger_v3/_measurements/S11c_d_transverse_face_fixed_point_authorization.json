@@ -1,0 +1,61 @@
+{
+  "status": "USER_DIRECTED_EXECUTION4_PREPARATION_AFTER_APPROVED_SCOPE",
+  "recordedUtc": "2026-09-29T16:23:00.316147+00:00",
+  "userInstruction": "Approve execution 4: the numeric-first fixed-point transverse/current and limited reference-face check at omega=1, tangential momentum=(1/5,1/10). Bind frequency, tangential momentum and material parameters before epsilon_shape squared extraction; keep epsilon, eta and sigma symbolic; 180 s per end binding within ordinary 900/840 s limits. Fresh Claude and Grok build review before the run. Stop with results.",
+  "approvalContext": "User forwarded the concrete execution-4 approval and requested final-report loss qualifications in the active task.",
+  "scientificExecutionOrdinal": 4,
+  "scientificExecutionsUsedBefore": 3,
+  "scientificExecutionCeiling": 4,
+  "maximumNewScientificExecutions": 1,
+  "frequency": "1",
+  "tangentialComponents": [
+    "1/5",
+    "1/10"
+  ],
+  "case": "LAB_HELD/RHO4_CONSTANT",
+  "localBindingSeconds": 180,
+  "outerSeconds": 900,
+  "nativeSeconds": 840,
+  "memoryBytes": 2147483648,
+  "swapBytes": 0,
+  "cpuCount": 1,
+  "nice": 15,
+  "tasksMax": 32,
+  "nativeThreads": 1,
+  "independentBuildReviewRequired": true,
+  "exactExternalPacketConsentRequired": true,
+  "scienceLaunchBeforeReview": false,
+  "automaticRetry": false,
+  "durationException": false,
+  "completedOperationReplayAuthorized": false,
+  "fullMapAuthorized": false,
+  "firstOrderOutgoingFieldOrPowerAuthorized": false,
+  "stopAfterResults": true,
+  "finalReportMustQualifySavedFiniteCurrentBalance": true,
+  "physicalLightCalibration": "OPEN",
+  "currentThread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+  "priorPremiseCheckpoint": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_premise_checkpoint.json",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_premise_checkpoint.json",
+    "bytes": 63574,
+    "sha256": "b7a401773af74131bd9a9ffcc783eceaab559f9b48f1a2afecca0a08ec2d7b1b"
+  },
+  "priorWorker": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_premise.py",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_premise.py",
+    "bytes": 79986,
+    "sha256": "ebf2739a2f8dca9ed4130b89606a36a27be29ef5d5c0915756b7118fcbd6fae5"
+  },
+  "priorInputs": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_premise_inputs.json",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_premise_inputs.json",
+    "bytes": 22547,
+    "sha256": "c04a3ca3d37fd645214a4455e36b5e4ab066d0587adc924dca1fbb3aa4648e8f"
+  },
+  "sourceAssessment": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_saved_balance_numeric_first_assessment.md",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_saved_balance_numeric_first_assessment.md",
+    "bytes": 10724,
+    "sha256": "d136a8d6e215f8b88984249182649403165e0d433c509244639d89807ffad50c"
+  }
+}

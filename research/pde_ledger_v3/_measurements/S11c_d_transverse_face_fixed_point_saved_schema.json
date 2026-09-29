@@ -1,0 +1,811 @@
+{
+  "status": "COPIED_SAVED_JSON_SCHEMA_ONLY_NOT_PAYLOAD_VALIDATION",
+  "recordedUtc": "2026-09-29T16:26:09.368593+00:00",
+  "ends": {
+    "REFERENCE": {
+      "source": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/saved-reader-continuation/complete/end-saved-input-REFERENCE.json",
+        "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/saved-reader-continuation/complete/end-saved-input-REFERENCE.json",
+        "bytes": 253761,
+        "sha256": "9e09aa8f0fe5a6861e008e4c4953c380640ab9c8ee7b2280ea701c2899bde7ff"
+      },
+      "savedJoinKind": "SAVED_OPERAND_IDENTITY_NOT_INDEPENDENT_PHYSICS",
+      "savedInputTupleLength": 2,
+      "sourceBindStatus": "UNRESOLVED_NO_RETRY",
+      "sourceBindValuePresent": false,
+      "failureReason": "OPERATION_BUDGET",
+      "currentSchema": {
+        "FREQUENCY_LEGS": [
+          {
+            "type": "Symbol",
+            "symbols": [
+              "s11cdPairingLeftFrequency"
+            ]
+          },
+          {
+            "type": "Symbol",
+            "symbols": [
+              "s11cdPairingRightFrequency"
+            ]
+          }
+        ],
+        "NORMAL_LEGS": [
+          {
+            "type": "Symbol",
+            "symbols": [
+              "s11cdCurrentLeftMomentum"
+            ]
+          },
+          {
+            "type": "Symbol",
+            "symbols": [
+              "s11cdCurrentRightMomentum"
+            ]
+          }
+        ],
+        "BULK_LEGS": [
+          {
+            "type": "Symbol",
+            "symbols": [
+              "s11cdAcousticLeftNormalMomentum"
+            ]
+          },
+          {
+            "type": "Symbol",
+            "symbols": [
+              "s11cdAcousticRightNormalMomentum"
+            ]
+          }
+        ],
+        "SLAB_CURRENT_MATRIX": {
+          "type": "ImmutableDenseMatrix",
+          "shape": [
+            5,
+            5
+          ],
+          "symbols": [
+            "B_rho_3",
+            "C",
+            "G_W_u",
+            "G_theta_u",
+            "W_0",
+            "epsilon_shape",
+            "kappa_W",
+            "kappa_theta",
+            "kappa_theta_W",
+            "mu_R",
+            "mu_S",
+            "s11cdCurrentLeftMomentum",
+            "s11cdCurrentRightMomentum",
+            "s11cdPairingLeftFrequency",
+            "s11cdPairingRightFrequency",
+            "s11cdTangentialMomentum1",
+            "s11cdTangentialMomentum2"
+          ]
+        },
+        "BULK_NORMAL_CURRENT_DENSITY_MATRIX": {
+          "type": "ImmutableDenseMatrix",
+          "shape": [
+            5,
+            5
+          ],
+          "symbols": [
+            "B_rho_3",
+            "C",
+            "G_theta_u",
+            "Lambda_A_0",
+            "Lambda_V_0",
+            "W_0",
+            "epsilon_shape",
+            "kappa_theta",
+            "kappa_theta_W",
+            "rho_br",
+            "rho_m",
+            "s11cdAcousticLeftNormalMomentum",
+            "s11cdAcousticRightNormalMomentum",
+            "s11cdCurrentLeftMomentum",
+            "s11cdCurrentRightMomentum",
+            "s11cdPairingLeftFrequency",
+            "s11cdPairingRightFrequency",
+            "s11cdTangentialMomentum1",
+            "s11cdTangentialMomentum2",
+            "tau_A",
+            "tau_V"
+          ]
+        },
+        "BULK_DEPTH_CURRENT_MATRIX": {
+          "type": "ImmutableDenseMatrix",
+          "shape": [
+            5,
+            5
+          ],
+          "symbols": [
+            "B_rho_3",
+            "C",
+            "G_theta_u",
+            "Lambda_A_0",
+            "Lambda_V_0",
+            "W_0",
+            "epsilon_shape",
+            "kappa_theta",
+            "kappa_theta_W",
+            "rho_br",
+            "rho_m",
+            "s11cdAcousticLeftNormalMomentum",
+            "s11cdAcousticRightNormalMomentum",
+            "s11cdCurrentLeftMomentum",
+            "s11cdCurrentRightMomentum",
+            "s11cdPairingLeftFrequency",
+            "s11cdPairingRightFrequency",
+            "s11cdTangentialMomentum1",
+            "s11cdTangentialMomentum2",
+            "tau_A",
+            "tau_V"
+          ]
+        },
+        "INTERFACE_POWER_MATRIX": {
+          "type": "ImmutableDenseMatrix",
+          "shape": [
+            5,
+            5
+          ],
+          "symbols": [
+            "B_rho_3",
+            "C",
+            "G_theta_u",
+            "Lambda_A_0",
+            "Lambda_V_0",
+            "Lambda_X_0",
+            "W_0",
+            "epsilon_shape",
+            "kappa_theta",
+            "kappa_theta_W",
+            "rho_br",
+            "rho_m",
+            "s11cdAcousticLeftNormalMomentum",
+            "s11cdAcousticRightNormalMomentum",
+            "s11cdCurrentLeftMomentum",
+            "s11cdCurrentRightMomentum",
+            "s11cdPairingLeftFrequency",
+            "s11cdPairingRightFrequency",
+            "s11cdTangentialMomentum1",
+            "s11cdTangentialMomentum2",
+            "tau_A",
+            "tau_V",
+            "tau_X"
+          ]
+        }
+      },
+      "originalSourceInventory": {
+        "originalAlgebraic": {
+          "type": "ImmutableDenseMatrix",
+          "shape": [
+            5,
+            5
+          ],
+          "symbols": [
+            "B_rho_3",
+            "C",
+            "G_W_u",
+            "G_theta_u",
+            "Lambda_A_0",
+            "Lambda_V_0",
+            "Lambda_X_0",
+            "W_0",
+            "c_s0",
+            "k_W",
+            "kappa_W",
+            "kappa_theta",
+            "kappa_theta_W",
+            "mu_R",
+            "mu_S",
+            "mu_W",
+            "omega",
+            "rho_br",
+            "rho_m",
+            "s11cdBulkRadical",
+            "s11cdSpectralNormalMomentum",
+            "s11cdTangentialMomentum1",
+            "s11cdTangentialMomentum2",
+            "tau_A",
+            "tau_V",
+            "tau_X"
+          ]
+        },
+        "originalRelation": {
+          "type": "Add",
+          "symbols": [
+            "c_s0",
+            "omega",
+            "s11cdBulkRadical",
+            "s11cdSpectralNormalMomentum",
+            "s11cdTangentialMomentum1",
+            "s11cdTangentialMomentum2"
+          ]
+        },
+        "livePencil": {
+          "type": "ImmutableDenseMatrix",
+          "shape": [
+            5,
+            5
+          ],
+          "symbols": [
+            "s11cdBulkRadical",
+            "s11cdProfilePoleFrequency",
+            "s11cdSpectralNormalMomentum"
+          ]
+        }
+      }
+    },
+    "LEFT": {
+      "source": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/saved-reader-continuation/complete/end-saved-input-LEFT.json",
+        "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/saved-reader-continuation/complete/end-saved-input-LEFT.json",
+        "bytes": 256259,
+        "sha256": "adc575e75d101043058a16dd6fb0819eb76aa839d2a0549a250515536e0c8ffd"
+      },
+      "savedJoinKind": "SAVED_OPERAND_IDENTITY_NOT_INDEPENDENT_PHYSICS",
+      "savedInputTupleLength": 2,
+      "sourceBindStatus": "UNRESOLVED_NO_RETRY",
+      "sourceBindValuePresent": false,
+      "failureReason": "OPERATION_BUDGET",
+      "currentSchema": {
+        "FREQUENCY_LEGS": [
+          {
+            "type": "Symbol",
+            "symbols": [
+              "s11cdPairingLeftFrequency"
+            ]
+          },
+          {
+            "type": "Symbol",
+            "symbols": [
+              "s11cdPairingRightFrequency"
+            ]
+          }
+        ],
+        "NORMAL_LEGS": [
+          {
+            "type": "Symbol",
+            "symbols": [
+              "s11cdCurrentLeftMomentum"
+            ]
+          },
+          {
+            "type": "Symbol",
+            "symbols": [
+              "s11cdCurrentRightMomentum"
+            ]
+          }
+        ],
+        "BULK_LEGS": [
+          {
+            "type": "Symbol",
+            "symbols": [
+              "s11cdAcousticLeftNormalMomentum"
+            ]
+          },
+          {
+            "type": "Symbol",
+            "symbols": [
+              "s11cdAcousticRightNormalMomentum"
+            ]
+          }
+        ],
+        "SLAB_CURRENT_MATRIX": {
+          "type": "ImmutableDenseMatrix",
+          "shape": [
+            5,
+            5
+          ],
+          "symbols": [
+            "B_rho_3",
+            "C",
+            "G_W_u",
+            "G_theta_u",
+            "W_0",
+            "epsilon_shape",
+            "kappa_W",
+            "kappa_theta",
+            "kappa_theta_W",
+            "mu_R",
+            "mu_S",
+            "s11cdCurrentLeftMomentum",
+            "s11cdCurrentRightMomentum",
+            "s11cdPairingLeftFrequency",
+            "s11cdPairingRightFrequency",
+            "s11cdTangentialMomentum1",
+            "s11cdTangentialMomentum2"
+          ]
+        },
+        "BULK_NORMAL_CURRENT_DENSITY_MATRIX": {
+          "type": "ImmutableDenseMatrix",
+          "shape": [
+            5,
+            5
+          ],
+          "symbols": [
+            "B_rho_3",
+            "C",
+            "G_theta_u",
+            "Lambda_A_0",
+            "Lambda_V_0",
+            "W_0",
+            "epsilon_shape",
+            "kappa_theta",
+            "kappa_theta_W",
+            "rho_br",
+            "rho_m",
+            "s11cdAcousticLeftNormalMomentum",
+            "s11cdAcousticRightNormalMomentum",
+            "s11cdCurrentLeftMomentum",
+            "s11cdCurrentRightMomentum",
+            "s11cdPairingLeftFrequency",
+            "s11cdPairingRightFrequency",
+            "s11cdTangentialMomentum1",
+            "s11cdTangentialMomentum2",
+            "tau_A",
+            "tau_V"
+          ]
+        },
+        "BULK_DEPTH_CURRENT_MATRIX": {
+          "type": "ImmutableDenseMatrix",
+          "shape": [
+            5,
+            5
+          ],
+          "symbols": [
+            "B_rho_3",
+            "C",
+            "G_theta_u",
+            "Lambda_A_0",
+            "Lambda_V_0",
+            "W_0",
+            "epsilon_shape",
+            "kappa_theta",
+            "kappa_theta_W",
+            "rho_br",
+            "rho_m",
+            "s11cdAcousticLeftNormalMomentum",
+            "s11cdAcousticRightNormalMomentum",
+            "s11cdCurrentLeftMomentum",
+            "s11cdCurrentRightMomentum",
+            "s11cdPairingLeftFrequency",
+            "s11cdPairingRightFrequency",
+            "s11cdTangentialMomentum1",
+            "s11cdTangentialMomentum2",
+            "tau_A",
+            "tau_V"
+          ]
+        },
+        "INTERFACE_POWER_MATRIX": {
+          "type": "ImmutableDenseMatrix",
+          "shape": [
+            5,
+            5
+          ],
+          "symbols": [
+            "B_rho_3",
+            "C",
+            "G_theta_u",
+            "Lambda_A_0",
+            "Lambda_V_0",
+            "Lambda_X_0",
+            "W_0",
+            "epsilon_shape",
+            "kappa_theta",
+            "kappa_theta_W",
+            "rho_br",
+            "rho_m",
+            "s11cdAcousticLeftNormalMomentum",
+            "s11cdAcousticRightNormalMomentum",
+            "s11cdCurrentLeftMomentum",
+            "s11cdCurrentRightMomentum",
+            "s11cdPairingLeftFrequency",
+            "s11cdPairingRightFrequency",
+            "s11cdTangentialMomentum1",
+            "s11cdTangentialMomentum2",
+            "tau_A",
+            "tau_V",
+            "tau_X"
+          ]
+        }
+      },
+      "originalSourceInventory": {
+        "originalAlgebraic": {
+          "type": "ImmutableDenseMatrix",
+          "shape": [
+            5,
+            5
+          ],
+          "symbols": [
+            "B_rho_3",
+            "C",
+            "G_W_u",
+            "G_theta_u",
+            "Lambda_A_0",
+            "Lambda_V_0",
+            "Lambda_X_0",
+            "W_0",
+            "c_s0",
+            "k_W",
+            "kappa_W",
+            "kappa_theta",
+            "kappa_theta_W",
+            "mu_R",
+            "mu_S",
+            "mu_W",
+            "omega",
+            "rho_br",
+            "rho_m",
+            "s11cdBulkRadical",
+            "s11cdSpectralNormalMomentum",
+            "s11cdTangentialMomentum1",
+            "s11cdTangentialMomentum2",
+            "tau_A",
+            "tau_V",
+            "tau_X"
+          ]
+        },
+        "originalRelation": {
+          "type": "Add",
+          "symbols": [
+            "c_s0",
+            "omega",
+            "s11cdBulkRadical",
+            "s11cdSpectralNormalMomentum",
+            "s11cdTangentialMomentum1",
+            "s11cdTangentialMomentum2"
+          ]
+        },
+        "livePencil": {
+          "type": "ImmutableDenseMatrix",
+          "shape": [
+            5,
+            5
+          ],
+          "symbols": [
+            "s11cdBulkRadical",
+            "s11cdProfilePoleFrequency",
+            "s11cdSpectralNormalMomentum"
+          ]
+        }
+      }
+    },
+    "RIGHT": {
+      "source": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/saved-reader-continuation/complete/end-saved-input-RIGHT.json",
+        "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/saved-reader-continuation/complete/end-saved-input-RIGHT.json",
+        "bytes": 250324,
+        "sha256": "ead272c798af3bcdb53833a1125d627f8db192d9d417b2fec8e6a94ae519d9cb"
+      },
+      "savedJoinKind": "SAVED_OPERAND_IDENTITY_NOT_INDEPENDENT_PHYSICS",
+      "savedInputTupleLength": 2,
+      "sourceBindStatus": "UNRESOLVED_NO_RETRY",
+      "sourceBindValuePresent": false,
+      "failureReason": "OPERATION_BUDGET",
+      "currentSchema": {
+        "FREQUENCY_LEGS": [
+          {
+            "type": "Symbol",
+            "symbols": [
+              "s11cdPairingLeftFrequency"
+            ]
+          },
+          {
+            "type": "Symbol",
+            "symbols": [
+              "s11cdPairingRightFrequency"
+            ]
+          }
+        ],
+        "NORMAL_LEGS": [
+          {
+            "type": "Symbol",
+            "symbols": [
+              "s11cdCurrentLeftMomentum"
+            ]
+          },
+          {
+            "type": "Symbol",
+            "symbols": [
+              "s11cdCurrentRightMomentum"
+            ]
+          }
+        ],
+        "BULK_LEGS": [
+          {
+            "type": "Symbol",
+            "symbols": [
+              "s11cdAcousticLeftNormalMomentum"
+            ]
+          },
+          {
+            "type": "Symbol",
+            "symbols": [
+              "s11cdAcousticRightNormalMomentum"
+            ]
+          }
+        ],
+        "SLAB_CURRENT_MATRIX": {
+          "type": "ImmutableDenseMatrix",
+          "shape": [
+            5,
+            5
+          ],
+          "symbols": [
+            "B_rho_3",
+            "C",
+            "G_W_u",
+            "G_theta_u",
+            "W_0",
+            "epsilon_shape",
+            "eta_bg",
+            "kappa_W",
+            "kappa_theta",
+            "kappa_theta_W",
+            "mu_R",
+            "mu_S",
+            "s11cdCurrentLeftMomentum",
+            "s11cdCurrentRightMomentum",
+            "s11cdPairingLeftFrequency",
+            "s11cdPairingRightFrequency",
+            "s11cdTangentialMomentum1",
+            "s11cdTangentialMomentum2"
+          ]
+        },
+        "BULK_NORMAL_CURRENT_DENSITY_MATRIX": {
+          "type": "ImmutableDenseMatrix",
+          "shape": [
+            5,
+            5
+          ],
+          "symbols": [
+            "B_rho_3",
+            "C",
+            "G_theta_u",
+            "Lambda_A_0",
+            "Lambda_V_0",
+            "W_0",
+            "epsilon_shape",
+            "eta_bg",
+            "kappa_theta",
+            "kappa_theta_W",
+            "rho_br",
+            "rho_m",
+            "s11cdAcousticLeftNormalMomentum",
+            "s11cdAcousticRightNormalMomentum",
+            "s11cdCurrentLeftMomentum",
+            "s11cdCurrentRightMomentum",
+            "s11cdPairingLeftFrequency",
+            "s11cdPairingRightFrequency",
+            "s11cdTangentialMomentum1",
+            "s11cdTangentialMomentum2",
+            "tau_A",
+            "tau_V"
+          ]
+        },
+        "BULK_DEPTH_CURRENT_MATRIX": {
+          "type": "ImmutableDenseMatrix",
+          "shape": [
+            5,
+            5
+          ],
+          "symbols": [
+            "B_rho_3",
+            "C",
+            "G_theta_u",
+            "Lambda_A_0",
+            "Lambda_V_0",
+            "W_0",
+            "epsilon_shape",
+            "eta_bg",
+            "kappa_theta",
+            "kappa_theta_W",
+            "rho_br",
+            "rho_m",
+            "s11cdAcousticLeftNormalMomentum",
+            "s11cdAcousticRightNormalMomentum",
+            "s11cdCurrentLeftMomentum",
+            "s11cdCurrentRightMomentum",
+            "s11cdPairingLeftFrequency",
+            "s11cdPairingRightFrequency",
+            "s11cdTangentialMomentum1",
+            "s11cdTangentialMomentum2",
+            "tau_A",
+            "tau_V"
+          ]
+        },
+        "INTERFACE_POWER_MATRIX": {
+          "type": "ImmutableDenseMatrix",
+          "shape": [
+            5,
+            5
+          ],
+          "symbols": [
+            "B_rho_3",
+            "C",
+            "G_theta_u",
+            "Lambda_A_0",
+            "Lambda_V_0",
+            "Lambda_X_0",
+            "W_0",
+            "epsilon_shape",
+            "eta_bg",
+            "kappa_theta",
+            "kappa_theta_W",
+            "rho_br",
+            "rho_m",
+            "s11cdAcousticLeftNormalMomentum",
+            "s11cdAcousticRightNormalMomentum",
+            "s11cdCurrentLeftMomentum",
+            "s11cdCurrentRightMomentum",
+            "s11cdPairingLeftFrequency",
+            "s11cdPairingRightFrequency",
+            "s11cdTangentialMomentum1",
+            "s11cdTangentialMomentum2",
+            "tau_A",
+            "tau_V",
+            "tau_X"
+          ]
+        }
+      },
+      "originalSourceInventory": {
+        "originalAlgebraic": {
+          "type": "ImmutableDenseMatrix",
+          "shape": [
+            5,
+            5
+          ],
+          "symbols": [
+            "B_rho_3",
+            "C",
+            "G_W_u",
+            "G_theta_u",
+            "Lambda_A_0",
+            "Lambda_V_0",
+            "Lambda_X_0",
+            "W_0",
+            "c_s0",
+            "eta_bg",
+            "k_W",
+            "kappa_W",
+            "kappa_theta",
+            "kappa_theta_W",
+            "mu_R",
+            "mu_S",
+            "mu_W",
+            "omega",
+            "rho_br",
+            "rho_m",
+            "s11cdBulkRadical",
+            "s11cdSpectralNormalMomentum",
+            "s11cdTangentialMomentum1",
+            "s11cdTangentialMomentum2",
+            "tau_A",
+            "tau_V",
+            "tau_X"
+          ]
+        },
+        "originalRelation": {
+          "type": "Add",
+          "symbols": [
+            "c_s0",
+            "omega",
+            "s11cdBulkRadical",
+            "s11cdSpectralNormalMomentum",
+            "s11cdTangentialMomentum1",
+            "s11cdTangentialMomentum2"
+          ]
+        },
+        "livePencil": {
+          "type": "ImmutableDenseMatrix",
+          "shape": [
+            5,
+            5
+          ],
+          "symbols": [
+            "s11cdBulkRadical",
+            "s11cdProfilePoleFrequency",
+            "s11cdSpectralNormalMomentum"
+          ]
+        }
+      }
+    }
+  },
+  "priorOperationIndex": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operation-index.json",
+    "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/operation-index.json",
+    "bytes": 89547,
+    "sha256": "552a5c35942e552104b36e585af7c5e6c167f0db4a21cd9a57e4223641a7b3e9"
+  },
+  "completeOperations": [
+    "restore-uniform",
+    "restore-branch-context",
+    "restore-unit-context",
+    "restore-uniform-common",
+    "source-branch-map-joins",
+    "REFERENCE-restore-original-symbol",
+    "REFERENCE-restore-current",
+    "LEFT-restore-original-symbol",
+    "LEFT-restore-current",
+    "RIGHT-restore-original-symbol",
+    "RIGHT-restore-current"
+  ],
+  "unfinishedOperations": [
+    {
+      "name": "REFERENCE-source-bind",
+      "status": "UNRESOLVED_NO_RETRY",
+      "operands": [
+        {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/objects/8c8f50da2e51163797323c17e4dddf6c5d77d8d83e408d5af903c5c682ef3945.pickle",
+          "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/objects/8c8f50da2e51163797323c17e4dddf6c5d77d8d83e408d5af903c5c682ef3945.pickle",
+          "bytes": 24,
+          "sha256": "8c8f50da2e51163797323c17e4dddf6c5d77d8d83e408d5af903c5c682ef3945"
+        },
+        {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/objects/6d1176035b43f132523effa44e60fff229cb1ec37c9fc155496095d6759a70aa.pickle",
+          "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/objects/6d1176035b43f132523effa44e60fff229cb1ec37c9fc155496095d6759a70aa.pickle",
+          "bytes": 9271,
+          "sha256": "6d1176035b43f132523effa44e60fff229cb1ec37c9fc155496095d6759a70aa"
+        },
+        {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/objects/f2977af9c1e53e40b7dd35c0e6a59312cfa00ecdee9bba5ab9e3bf9166e03710.pickle",
+          "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/objects/f2977af9c1e53e40b7dd35c0e6a59312cfa00ecdee9bba5ab9e3bf9166e03710.pickle",
+          "bytes": 248924,
+          "sha256": "f2977af9c1e53e40b7dd35c0e6a59312cfa00ecdee9bba5ab9e3bf9166e03710"
+        }
+      ]
+    },
+    {
+      "name": "LEFT-source-bind",
+      "status": "UNRESOLVED_NO_RETRY",
+      "operands": [
+        {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/objects/96334accbe6d9258c694e43dc8401b2a667b7a6ea97d9429e576d6a18e501487.pickle",
+          "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/objects/96334accbe6d9258c694e43dc8401b2a667b7a6ea97d9429e576d6a18e501487.pickle",
+          "bytes": 19,
+          "sha256": "96334accbe6d9258c694e43dc8401b2a667b7a6ea97d9429e576d6a18e501487"
+        },
+        {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/objects/205a2d2b19105cbf504b0b9de5464f06f33bb5ce921f34c44e6214ad16eafe0d.pickle",
+          "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/objects/205a2d2b19105cbf504b0b9de5464f06f33bb5ce921f34c44e6214ad16eafe0d.pickle",
+          "bytes": 9293,
+          "sha256": "205a2d2b19105cbf504b0b9de5464f06f33bb5ce921f34c44e6214ad16eafe0d"
+        },
+        {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/objects/fd6e8e8972f294f935bd73e54afaa97a3d1632bee77f921a6c2db1198bc71258.pickle",
+          "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/objects/fd6e8e8972f294f935bd73e54afaa97a3d1632bee77f921a6c2db1198bc71258.pickle",
+          "bytes": 249482,
+          "sha256": "fd6e8e8972f294f935bd73e54afaa97a3d1632bee77f921a6c2db1198bc71258"
+        }
+      ]
+    },
+    {
+      "name": "RIGHT-source-bind",
+      "status": "UNRESOLVED_NO_RETRY",
+      "operands": [
+        {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/objects/5cb79c6b73f2f7959be7219884e742c13a9ec0dc2d48226bcf8b7fa1f24447c8.pickle",
+          "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/objects/5cb79c6b73f2f7959be7219884e742c13a9ec0dc2d48226bcf8b7fa1f24447c8.pickle",
+          "bytes": 20,
+          "sha256": "5cb79c6b73f2f7959be7219884e742c13a9ec0dc2d48226bcf8b7fa1f24447c8"
+        },
+        {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/objects/f7f3599f614eb9d37d8cf1add5147dab267d528b5d9e61b1d19d4837939572fc.pickle",
+          "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/objects/f7f3599f614eb9d37d8cf1add5147dab267d528b5d9e61b1d19d4837939572fc.pickle",
+          "bytes": 23475,
+          "sha256": "f7f3599f614eb9d37d8cf1add5147dab267d528b5d9e61b1d19d4837939572fc"
+        },
+        {
+          "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/objects/2a568090a0ff6e5f108186b652148f865093c3627b597c9bb7f824beffd52a66.pickle",
+          "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/production/complete/objects/2a568090a0ff6e5f108186b652148f865093c3627b597c9bb7f824beffd52a66.pickle",
+          "bytes": 901117,
+          "sha256": "2a568090a0ff6e5f108186b652148f865093c3627b597c9bb7f824beffd52a66"
+        }
+      ]
+    }
+  ],
+  "scientificRestorations": 0,
+  "newScientificComputations": 0
+}

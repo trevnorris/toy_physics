@@ -1,0 +1,1098 @@
+Source: /var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_d_mixing_scattering_sympy_audit.py
+SHA256: 5bf77729682960bb59f10c672a5fe3f67a98b0a9533da7c6189a37183596050f
+AST-selected literal method excerpts, no execution.
+
+### ReducedPencil.trial_ansatz
+482:     def trial_ansatz(self, sector):
+483:         def displacement(i, z):
+484:             if sector == 'TRANSVERSE':
+485:                 potentials = [sp.Function('s11cdReducedTrialA'+str(j))(z) for j in range(3)]
+486:                 def derivative(value, j):
+487:                     return self.tangent_derivatives[j]*value if j < 2 else sp.diff(value, z)
+488:                 return derivative(potentials[(i+2)%3], (i+1)%3)-derivative(potentials[(i+1)%3], (i+2)%3)
+489:             if sector == 'LONGITUDINAL':
+490:                 phi = sp.Function('s11cdReducedTrialPhi')(z)
+491:                 return self.tangent_derivatives[i]*phi if i < 2 else sp.diff(phi, z)
+492:             return sp.S.Zero
+493:         result = {self.fields[i]: lambda z, i=i: displacement(i, z) for i in range(3)}
+494:         for f, active, name in zip(self.fields[3:], ('THETA', 'E_W'), ('Theta', 'E')):
+495:             result[f] = lambda z, active=active, name=name: (
+496:                 sp.Function('s11cdReducedTrial'+name)(z) if sector == active else sp.S.Zero)
+497:         return result
+
+### EdgeReduction.__init__
+1583:     def __init__(self, rows):
+1584:         self.rows = rows
+1585:         self.values = {k: r['value'] for k, r in rows.items()}
+1586:         symbols = set().union(*(self.values[k].atoms(sp.Symbol) for k in CLOSED_KEYS))
+1587:         self.symbols = {s.name: s for s in symbols}
+1588:         self.x = tuple(self.symbols[f's11cc2X{i}'] for i in range(1, 4))
+1589:         self.y = tuple(self.symbols[f's11cc2Y{i}'] for i in range(1, 4))
+1590:         self.t = self.symbols['s11cc2Time']
+1591:         self.ell = self.values['L_W']
+1592:         self.omega = self.values['omega']
+1593:         self.tangents = sp.symbols('s11cdTangentialMomentum1 s11cdTangentialMomentum2', real=True)
+1594:         self.z, self.zp = sp.symbols('s11cdNormalPosition s11cdSourceNormalPosition', real=True)
+1595:         self.xi = sp.Symbol('s11cdProfileCoordinate', real=True)
+1596:         self.profiles = {p: sp.Function('s11cd' + p.upper() + 'Profile') for p in ('w', 'm')}
+1597:         self.functions = {}
+1598:         self.normal_transfers = set()
+1599:         self.momentum_groups = tuple(
+1600:             tuple(self.symbols[pattern.format(i)] for i in range(1, 4))
+1601:             for pattern in ('s11cc1_k_output_{}', 's11cc1_k_input_{}', 's11cc2MiddleMomentum{}')
+1602:         )
+1603:         self.tangent_momenta = tuple(k for group in self.momentum_groups for k in group[:2])
+1604:         self.normal_map = {self.x[2]: self.z, self.y[2]: self.zp}
+1605:         self.normal_map.update({group[2]: sp.Symbol('s11cd' + name + 'NormalMomentum', real=True)
+1606:                                 for group, name in zip(self.momentum_groups, ('Output', 'Input', 'Middle'))})
+1607:         self.branch_equations = tuple(sorted(set(
+1608:             eq for key in CLOSED_KEYS for _, payload in self.values[key]
+1609:             for eq in named(payload, 'COMPUTED_BRANCH_BINDINGS')
+1610:         ), key=sp.default_sort_key))
+1611:         self.branch_map = {}
+1612:         for eq in self.branch_equations:
+1613:             if eq.lhs in self.branch_map and self.branch_map[eq.lhs] != eq.rhs:
+1614:                 raise ValueError(('case-dependent branch binding', eq.lhs))
+1615:             self.branch_map[eq.lhs] = eq.rhs
+1616:         # Distributional normalization computed from the mass of a regulated
+1617:         # Fourier kernel. No numerical Fourier weight is supplied here.
+1618:         u, q = sp.symbols('s11cdFourierPosition s11cdFourierMomentum', real=True)
+1619:         a = sp.Symbol('s11cdFourierRegulator', positive=True)
+1620:         self.regulated_ansatz = sp.exp(-a*u**2 + sp.I*q*u)
+1621:         self.regulated_transform = sp.integrate(self.regulated_ansatz, (u, -sp.oo, sp.oo))
+1622:         self.fourier_mass = sp.integrate(self.regulated_transform, (q, -sp.oo, sp.oo))
+1623:         self.normalization_operands = (self.regulated_ansatz, self.regulated_transform, self.fourier_mass)
+1624:         self.regulator = sp.Symbol('s11cdAbelRegulator', positive=True)
+1625:         self.transfer = sp.Symbol('s11cdDimensionlessTransfer', real=True)
+1626:         self.end_values = {(p, end): sp.Limit(f(self.xi), self.xi, end)
+1627:                            for p, f in self.profiles.items() for end in (-sp.oo, sp.oo)}
+1628:         phase = sp.exp(-sp.I*self.transfer*self.xi)
+1629:         positive = sp.integrate(phase*sp.exp(-self.regulator*self.xi),
+1630:                                 (self.xi, 0, sp.oo), conds='none')
+1631:         negative = sp.integrate(phase*sp.exp(self.regulator*self.xi),
+1632:                                 (self.xi, -sp.oo, 0), conds='none')
+1633:         self.abel_halves = (negative, positive)
+1634:         self.abel_constant = sp.factor(negative+positive)
+1635:         self.abel_even = sp.factor((positive+negative)/2)
+1636:         self.abel_odd = sp.factor((positive-negative)/2)
+1637:         test = sp.Function('s11cdSchwartzTest')(self.transfer)
+1638:         self.distribution_record = {
+1639:             'REGULATED_HALF_LINE_OPERANDS': (phase*sp.exp(self.regulator*self.xi),
+1640:                                               phase*sp.exp(-self.regulator*self.xi)),
+1641:             'REGULATED_HALF_LINE_TRANSFORMS': self.abel_halves,
+1642:             'CONSTANT_TRANSFORM': self.abel_constant,
+1643:             'HEAVISIDE_EVEN_ODD': (self.abel_even, self.abel_odd),
+1644:             'DELTA_MASS': sp.integrate(self.abel_even, (self.transfer, -sp.oo, sp.oo)),
+1645:             'PRINCIPAL_VALUE_WEAK_ACTION': sp.Limit(sp.Integral(test*self.abel_odd,
+1646:                 (self.transfer, -sp.oo, sp.oo)), self.regulator, 0, dir='+'),
+1647:         }
+
+### ConstantEndPencil.background
+2292:     def background(self, value, end=None):
+2293:         """End limit on coefficients before weak normal convolution.
+2294: 
+2295:         End=None extracts the complete eta^0,sigma^0 coefficient. An end
+2296:         replaces the translated background as a whole, including the endpoint
+2297:         constants and localized remainder in its canonical subtraction; it
+2298:         does not discard a step transform by a pointwise Q-limit.
+2299:         """
+2300:         r = self.r
+2301:         if end is None:
+2302:             mapping = {r.symbols[n]: sp.S.Zero for n in ('eta_bg', 'sigma_W')}
+2303:         else:
+2304:             mapping = {v: r.end_values[(p, end)] for (p, _), v in r.end_values.items()}
+2305:         @lru_cache(maxsize=None)
+2306:         def visit(node):
+2307:             if node in mapping:
+2308:                 return mapping[node]
+2309:             if end is not None and isinstance(node, AppliedUndef) and node.func in r.profiles.values():
+2310:                 p = next(p for p, f in r.profiles.items() if f == node.func)
+2311:                 return r.end_values[(p, end)]
+2312:             if not node.args or isinstance(node, Str):
+2313:                 return node
+2314:             args = tuple(visit(a) for a in node.args)
+2315:             if isinstance(node, sp.Integral):
+2316:                 return sp.Integral(*args) if args[0] != 0 else sp.S.Zero
+2317:             if isinstance(node, sp.Derivative) and args != node.args:
+2318:                 return sp.diff(args[0], *args[1:])
+2319:             if isinstance(node, sp.Subs) and args != node.args:
+2320:                 return sp.Subs(*args).doit()
+2321:             return node if args == node.args else node.func(*args)
+2322:         constant = visit(value)
+2323:         if end is not None:
+2324:             constant = self.abel_constant_limit(constant)
+2325:         return constant
+
+### ConstantEndPencil.strong_matrix
+2438:     def strong_matrix(self, pencil, background):
+2439:         columns = []
+2440:         epsilon = self.r.symbols['epsilon_shape']
+2441:         def strip_phase(expression):
+2442:             terms = self.phase_terms(sp.diff(expression, epsilon), self.r.z)
+2443:             other = {q: c for q, c in terms.items() if q != self.kn and c != 0}
+2444:             if other:
+2445:                 raise NotImplementedError(('end translation character', tuple(other)))
+2446:             return terms.get(self.kn, sp.S.Zero)
+2447:         for j in range(len(pencil.fields)):
+2448:             mapping = {f: (lambda z, i=i: sp.exp(sp.I*self.kn*z) if i == j else sp.S.Zero)
+2449:                        for i, f in enumerate(pencil.fields)}
+2450:             column = self.symbol(background, mapping)
+2451:             column = map_leaves(column, strip_phase)
+2452:             columns.append(column)
+2453:         return sp.ImmutableMatrix.hstack(*(sp.ImmutableMatrix(c) for c in columns))
+
+### ConstantEndPencil.weak_matrix
+2487:     def weak_matrix(self, blocks):
+2488:         """Full canonical symbol in the inherited curl-potential basis.
+2489: 
+2490:         All three transverse potentials are retained. Their curl gauge is
+2491:         emitted separately; this redundant representation is not used as a
+2492:         determinant-based mode solve.
+2493:         """
+2494:         labels = ('A0', 'A1', 'A2', 'Theta', 'E', 'Phi')
+2495:         trials = tuple(sp.Function('s11cdReducedTrial'+s) for s in labels)
+2496:         tests = tuple(sp.Function('s11cdReducedTest'+s) for s in labels)
+2497:         amplitudes = sp.symbols('s11cdSpectralTest0:6')
+2498:         units = PHYSICAL_METADATA.dimensions
+2499:         for f, amplitude in zip(tests, amplitudes):
+2500:             units.known[amplitude] = units.known[f]
+2501:         epsilon = self.r.symbols['epsilon_shape']
+2502:         columns = []
+2503:         for j in range(6):
+2504:             mapping = {f: (lambda z, i=i: sp.exp(sp.I*self.kn*z) if i == j else sp.S.Zero)
+2505:                        for i, f in enumerate(trials)}
+2506:             mapping.update({f: (lambda z, i=i: amplitudes[i]*sp.exp(-sp.I*self.kn*z))
+2507:                             for i, f in enumerate(tests)})
+2508:             evaluated = self.symbol(blocks, mapping)
+2509:             column = []
+2510:             for i in range(6):
+2511:                 expression = sp.diff(self.block_entry(evaluated, i, j), amplitudes[i], epsilon)
+2512:                 terms = self.phase_terms(expression, self.r.z)
+2513:                 other = {q: c for q, c in terms.items() if q != 0 and c != 0}
+2514:                 if other:
+2515:                     raise NotImplementedError(('weak end translation character', tuple(other)))
+2516:                 column.append(terms.get(sp.S.Zero, sp.S.Zero))
+2517:             columns.append(column)
+2518:         return sp.ImmutableMatrix.hstack(*(sp.ImmutableMatrix(c) for c in columns))
+
+### ConstantEndPencil.curl_gauge_operands
+2532:     def curl_gauge_operands(self, pencil):
+2533:         """Differentiate the actual curl trial ansatz; expose its null space."""
+2534:         amplitudes = sp.symbols('s11cdGaugePotential0:3')
+2535:         potentials = {sp.Function('s11cdReducedTrialA'+str(i)):
+2536:                       (lambda z, i=i: amplitudes[i]*sp.exp(sp.I*self.kn*z)) for i in range(3)}
+2537:         displacement = sp.Tuple(*(pencil.trial_ansatz('TRANSVERSE')[f](self.r.z)
+2538:                                   for f in pencil.fields[:3]))
+2539:         transformed = dag_substitute(displacement, potentials)
+2540:         curl = sp.ImmutableMatrix(3, 3, lambda i, j:
+2541:             self.phase_terms(sp.diff(transformed[i], amplitudes[j]), self.r.z).get(self.kn, sp.S.Zero))
+2542:         nullspace = curl.nullspace()
+2543:         return curl, tuple(nullspace), tuple(curl*v for v in nullspace)
+
+### ConstantEndPencil.field_lift
+2545:     def field_lift(self, pencil):
+2546:         """Differentiate the existing sector ansatz into physical field columns."""
+2547:         labels = ('A0', 'A1', 'A2', 'Theta', 'E', 'Phi')
+2548:         amplitudes = sp.symbols('s11cdFieldLiftAmplitude0:6')
+2549:         trials = {sp.Function('s11cdReducedTrial'+label):
+2550:                   (lambda z, j=j: amplitudes[j]*sp.exp(sp.I*self.kn*z))
+2551:                   for j, label in enumerate(labels)}
+2552:         ansatz = [pencil.trial_ansatz(sector)
+2553:                   for sector in ('TRANSVERSE', 'THETA', 'E_W', 'LONGITUDINAL')]
+2554:         fields = sp.Tuple(*(sum(a[f](self.r.z) for a in ansatz) for f in pencil.fields))
+2555:         wave = dag_substitute(fields, trials)
+2556:         return sp.ImmutableMatrix(5, 6, lambda i, j:
+2557:             self.phase_terms(sp.diff(wave[i], amplitudes[j]), self.r.z).get(self.kn, sp.S.Zero))
+
+### UniformSlabCurrent.__init__
+2570:     def __init__(self, reduction, energy_row, ends, mass_symbol):
+2571:         self.r, self.ends = reduction, ends
+2572:         self.mass_symbol = mass_symbol
+2573:         self.energy_cases = {str(case): named(payload, 'VALUE')
+2574:                              for case, payload in energy_row['value']}
+2575:         r = reduction
+2576:         self.phase_coordinate = sp.Symbol('s11cdCurrentPhase', real=True)
+2577:         self.virtual_parameter = sp.Symbol('s11cdCurrentVariationParameter', real=True)
+2578:         self.leg_momenta = sp.symbols('s11cdCurrentLeftMomentum s11cdCurrentRightMomentum', real=True)
+2579:         self.fields = tuple(tuple(sp.Function('s11cdCurrent'+side+name)
+2580:                                   for name in ('U1', 'U2', 'U3', 'Theta', 'E'))
+2581:                             for side in ('Plus', 'Minus'))
+2582:         self.variations = tuple(tuple(sp.Function('s11cdCurrentVariation'+side+name)
+2583:                                       for name in ('U1', 'U2', 'U3', 'E'))
+2584:                                 for side in ('Plus', 'Minus'))
+2585:         self.amplitudes = tuple(sp.symbols('s11cdCurrent'+side+'Amplitude0:5')
+2586:                                 for side in ('Plus', 'Minus'))
+2587:         units = PHYSICAL_METADATA.dimensions
+2588:         units.known[self.phase_coordinate] = units.zero
+2589:         units.known[self.virtual_parameter] = units.zero
+2590:         for momentum in self.leg_momenta:
+2591:             units.known[momentum] = units.measure(ends.kn)
+2592:         field_units = [units.known[sp.Function('s11cdReducedField'+name)]
+2593:                        for name in ('u1', 'u2', 'u3', 'theta', 'eW')]
+2594:         for functions, variations, amplitudes in zip(self.fields, self.variations, self.amplitudes):
+2595:             for f, a, unit in zip(functions, amplitudes, field_units):
+2596:                 units.known[f] = unit
+2597:                 units.known[a] = unit
+2598:             for f, unit in zip(variations, (*field_units[:3], field_units[4])):
+2599:                 units.known[f] = unit
+2600:         self.field_units = field_units
+2601:         self.phase = sp.exp(sp.I*(sum(k*x for k, x in zip(r.tangents, r.x[:2]))
+2602:                                  -r.omega*r.t+self.phase_coordinate))
+
+### UniformSlabCurrent.construct
+2612:     def construct(self, anchoring, end):
+2613:         r, z = self.r, self.r.z
+2614:         body = self.energy_cases[anchoring]
+2615:         source = sp.Add(*(row[4] if str(row[0]) in ('W_BG', 'MU_R_BG') else row[3]
+2616:                           for row in body[1:]))
+2617:         background = {}
+2618:         for atom in source.atoms(sp.Symbol):
+2619:             match = re.fullmatch(r'([wm])1_profile((?:_d[123](?:d[123])*)?)', atom.name)
+2620:             if match:
+2621:                 constant = r.end_values[(match[1], end)] if end is not None else sp.S.Zero
+2622:                 indices = re.findall(r'd([123])', match[2])
+2623:                 background[atom] = sp.diff(constant, r.xi, len(indices)) if indices else constant
+2624:         if end is None:
+2625:             background.update({r.symbols[n]: sp.S.Zero for n in ('eta_bg', 'sigma_W')})
+2626:         uniform_source = source.xreplace(background)
+2627:         # Field carriers are an explicit +/- harmonic ansatz. Their spatial
+2628:         # factors are differentiated before selecting the zero phase harmonic.
+2629:         fields = tuple((plus(z)*self.phase+minus(z)/self.phase)/2
+2630:                        for plus, minus in zip(*self.fields))
+2631:         source_names = {'u_1': 0, 'u_2': 1, 'u_3': 2, 'theta': 3, 'e_W': 4}
+2632:         field_map, parameter_map = {}, {}
+2633:         for atom in source.atoms(sp.Symbol):
+2634:             name = re.sub(r'^grad_theta_([123])$', r'theta_d\1', atom.name)
+2635:             match = re.fullmatch(r'(u_[123]|theta|e_W)((?:_t{1,2})?(?:_?d[123])*)', name)
+2636:             if match:
+2637:                 field, suffix = match.groups()
+2638:                 value = fields[source_names[field]]
+2639:                 for index in re.findall(r'd([123])', suffix):
+2640:                     value = sp.diff(value, r.x[int(index)-1] if index != '3' else z)
+2641:                 if '_tt' in suffix:
+2642:                     value = sp.diff(value, r.t, 2)
+2643:                 elif '_t' in suffix:
+2644:                     value = sp.diff(value, r.t)
+2645:                 field_map[atom] = value
+2646:                 PHYSICAL_METADATA.dimensions.known[atom] = PHYSICAL_METADATA.dimensions.measure(value)
+2647:             elif atom.name in r.symbols:
+2648:                 parameter_map[atom] = r.symbols[atom.name]
+2649:                 PHYSICAL_METADATA.dimensions.known[atom] = PHYSICAL_METADATA.dimensions.measure(parameter_map[atom])
+2650:         harmonic_energy = uniform_source.xreplace(parameter_map).xreplace(field_map)
+2651:         energy = sp.expand(self.ends.phase_terms(sp.expand(harmonic_energy),
+2652:                                                 self.phase_coordinate).get(0, sp.S.Zero))
+2653:         # The inherited field is measured against W_0. At a changed end it
+2654:         # need not be the local-background thickness fraction. Extract the
+2655:         # homogeneous material constraint from the actual mass row with the
+2656:         # two supplied mass-transfer drivers disabled, before varying energy.
+2657:         no_transfer = {r.symbols[n]:sp.S.Zero for n in ('Lambda_A_0','Lambda_V_0')}
+2658:         mass_control = self.mass_symbol.subs(no_transfer).applyfunc(sp.cancel)
+2659:         constraint_coefficients = tuple(self.retained(sp.cancel(v/mass_control[3])) for v in mass_control)
+2660:         constraint_residual = sp.ImmutableMatrix(1,5,lambda i,j:
+2661:             sp.expand(constraint_coefficients[j]*mass_control[3]-mass_control[j]))
+2662:         virtual = {}
+2663:         for sign, functions, variations in zip((1, -1), self.fields, self.variations):
+2664:             displacement = [f(z) for f in variations[:3]]
+2665:             thickness = variations[3](z)
+2666:             density = sp.S.Zero
+2667:             for index, test in zip((0,1,2,4), (*displacement,thickness)):
+2668:                 coefficient = constraint_coefficients[index].subs(
+2669:                     {a:sign*a for a in (*r.tangents,r.omega)}, simultaneous=True)
+2670:                 # SymPy Limit carries unknown commutativity. It is an end
+2671:                 # coefficient here, not a normal differential operator.
+2672:                 constants = {limit:sp.Dummy(real=True) for limit in coefficient.atoms(sp.Limit)}
+2673:                 restore = {v:k for k,v in constants.items()}
+2674:                 polynomial = sp.Poly(coefficient.xreplace(constants), self.ends.kn)
+2675:                 density -= sum(c.xreplace(restore)*sp.diff(test,z,power[0])/sp.I**power[0]
+2676:                                for power,c in polynomial.terms())
+2677:             virtual.update({f(z): f(z)+self.virtual_parameter*v
+2678:                             for f, v in zip(functions, (*displacement, density, thickness))})
+2679:         action = -energy
+2680:         variation = sp.expand(sp.diff(action.subs(virtual, simultaneous=True).doit(),
+2681:                                       self.virtual_parameter).subs(self.virtual_parameter, 0))
+2682:         bulk, boundary, reconstruction = sp.S.Zero, sp.S.Zero, sp.S.Zero
+2683:         for test in (f(z) for group in self.variations for f in group):
+2684:             jets = {test} | {d for d in variation.atoms(sp.Derivative) if d.expr == test}
+2685:             for jet in sorted(jets, key=sp.default_sort_key):
+2686:                 order = sum(n for variable, n in jet.variable_count) if isinstance(jet, sp.Derivative) else 0
+2687:                 coefficient = sp.diff(variation, jet)
+2688:                 reconstruction += coefficient*jet
+2689:                 bulk += (-1)**order*sp.diff(coefficient, z, order)*test
+2690:                 boundary += sum((-1)**j*sp.diff(coefficient, z, j)*sp.diff(test, z, order-1-j)
+2691:                                 for j in range(order))
+2692:         variation_residual = sp.expand(variation-reconstruction)
+2693:         boundary_residual = sp.expand(reconstruction-bulk-sp.diff(boundary, z))
+2694:         time_shift = {}
+2695:         for sign, functions, variations in zip((1, -1), self.fields, self.variations):
+2696:             factor = sp.cancel(sp.diff(self.phase**sign, r.t)/(self.phase**sign))
+2697:             time_shift.update({v(z): factor*f(z) for v, f in
+2698:                                zip(variations, (*functions[:3], functions[4]))})
+2699:         untruncated_current = sp.expand(boundary.subs(time_shift, simultaneous=True).doit())
+2700:         current = self.retained(untruncated_current)
+2701:         right_momentum, left_momentum = self.leg_momenta[1], self.leg_momenta[0]
+2702:         wave = {}
+2703:         for sign, momentum, functions, amplitudes in zip(
+2704:                 (1, -1), (right_momentum, left_momentum), self.fields, self.amplitudes):
+2705:             wave.update({f(z): a*sp.exp(sign*sp.I*momentum*z)
+2706:                          for f, a in zip(functions, amplitudes)})
+2707:         polarized = sp.expand(current.subs(wave, simultaneous=True).doit().subs(z, 0))
+2708:         matrix = sp.ImmutableMatrix(5, 5, lambda i, j:
+2709:             sp.diff(polarized, self.amplitudes[1][i], self.amplitudes[0][j]))
+2710:         return {'SOURCE_ENERGY': source, 'UNIFORM_SOURCE_ENERGY': uniform_source,
+2711:                 'SOURCE_PARAMETER_ALIGNMENT': tuple(parameter_map.items()),
+2712:                 'ZERO_TRANSFER_MASS_ROW': mass_control,
+2713:                 'MATERIAL_CONSTRAINT_COEFFICIENTS': constraint_coefficients,
+2714:                 'MATERIAL_CONSTRAINT_TRUNCATION_REMAINDER': constraint_residual,
+2715:                 'MATERIAL_CONSTRAINT_RETAINED_RESIDUAL': constraint_residual.applyfunc(self.retained),
+2716:                 'TANGENTIAL_ENERGY_REDUCTION': energy, 'VIRTUAL_VARIATION': variation,
+2717:                 'VARIATION_RECONSTRUCTION_RESIDUAL': variation_residual,
+2718:                 'NORMAL_BOUNDARY_WORK': boundary, 'NORMAL_BOUNDARY_RESIDUAL': boundary_residual,
+2719:                 'SLAB_CURRENT_BEFORE_BACKGROUND_PROJECTION': untruncated_current,
+2720:                 'SLAB_CURRENT_BACKGROUND_REMAINDER': sp.expand(untruncated_current-current),
+2721:                 'SLAB_CURRENT': current, 'SLAB_CURRENT_MATRIX': matrix}
+
+### SlabEnergyBalance.construct
+2815:     def construct(self, anchoring, end):
+2816:         c, r, z = self.c, self.r, self.r.z
+2817:         source = c.construct(anchoring, end)
+2818:         tests = tuple(f(z) for group in self.tests for f in group)
+2819:         variation_map = {f(z):f(z)+c.virtual_parameter*v(z)
+2820:                          for fields, group in zip(c.fields, self.tests) for f, v in zip(fields, group)}
+2821:         variation = sp.expand(sp.diff((-source['TANGENTIAL_ENERGY_REDUCTION']).subs(
+2822:             variation_map, simultaneous=True).doit(), c.virtual_parameter).subs(c.virtual_parameter, 0))
+2823:         euler, boundary, reconstruction, ibp = self.parts(variation, tests)
+2824:         virtual = self.virtual_map(source['MATERIAL_CONSTRAINT_COEFFICIENTS'])
+2825:         mechanical_tests = tuple(f(z) for group in self.tests for i, f in enumerate(group) if i != 3)
+2826:         virtual_bulk = sp.expand(sp.Add(*(a*b for a, b in zip(euler, tests))).subs(
+2827:             virtual, simultaneous=True).doit())
+2828:         mechanical, transport, transport_reconstruction, transport_ibp = self.parts(virtual_bulk, mechanical_tests)
+2829:         virtual_boundary = sp.expand(boundary.subs(virtual, simultaneous=True).doit()+transport)
+2830:         old_tests = {f(z):v(z) for group, old in zip(self.tests, c.variations)
+2831:                      for f, v in zip((*group[:3], group[4]), old)}
+2832:         virtual_variation_residual = sp.expand(variation.subs(virtual, simultaneous=True).doit().subs(
+2833:             old_tests, simultaneous=True).doit()-source['VIRTUAL_VARIATION'])
+2834:         virtual_boundary_residual = sp.expand(virtual_boundary.subs(old_tests, simultaneous=True).doit()
+2835:                                              -source['NORMAL_BOUNDARY_WORK'])
+2836:         rates = {v(z):sp.cancel(sp.diff(c.phase**sign, r.t)/(c.phase**sign))*f(z)
+2837:                  for sign, fields, group in zip((1, -1), c.fields, self.tests) for f, v in zip(fields, group)}
+2838:         defects = tuple(sp.expand((group[3](z)-virtual[group[3](z)]).subs(rates, simultaneous=True).doit())
+2839:                         for group in self.tests)
+2840:         actual_boundary = sp.expand(boundary.subs(rates, simultaneous=True).doit())
+2841:         chemical_transport = sp.expand(transport.subs(rates, simultaneous=True).doit())
+2842:         current = c.retained(actual_boundary+chemical_transport)
+2843:         defect_map = {test:sp.S.Zero for test in tests}
+2844:         defect_map.update({group[3](z):defect for group, defect in zip(self.tests, defects)})
+2845:         correction = c.retained(boundary.subs(defect_map, simultaneous=True).doit())
+2846:         current_residual = sp.expand(current-source['SLAB_CURRENT']-correction)
+2847:         matrix, polarization_residual = self.matrix(current)
+2848:         correction_matrix, correction_polarization_residual = self.matrix(correction)
+2849:         chemical_work = sp.expand(sum(-euler[5*i+3]*defect for i, defect in enumerate(defects)))
+2850:         rate_variation = sp.expand(variation.subs(rates, simultaneous=True).doit())
+2851:         mechanical_power = sp.expand(sum(a*b for a, b in zip(mechanical, mechanical_tests)).subs(
+2852:             rates, simultaneous=True).doit())
+2853:         balance_residual = c.retained(rate_variation-mechanical_power+chemical_work-sp.diff(current, z))
+2854:         # The coefficient connecting an averaged quadratic variation to its
+2855:         # positive harmonic is extracted from the same real-field ansatz.
+2856:         probe = (c.amplitudes[0][3]*c.phase+c.amplitudes[1][3]/c.phase)/2
+2857:         norm = sp.diff(c.ends.phase_terms(sp.expand(probe**2/2), c.phase_coordinate)[0],
+2858:                        c.amplitudes[0][3], c.amplitudes[1][3])
+2859:         chemical = sp.expand(-euler[8]/norm).coeff(r.symbols['epsilon_shape'], 2)
+2860:         chemical_wave = chemical.subs({f(z):a*sp.exp(sp.I*c.ends.kn*z)
+2861:                                       for f, a in zip(c.fields[0], c.amplitudes[0])}, simultaneous=True)
+2862:         chemical_wave = sp.expand(chemical_wave.doit().subs(z, 0))
+2863:         chemical_row = sp.ImmutableMatrix(1, 5, lambda i, j:sp.diff(chemical_wave, c.amplitudes[0][j]))
+2864:         chemical_residual = sp.expand(chemical_wave-(chemical_row*sp.ImmutableMatrix(c.amplitudes[0]))[0])
+2865:         return {'UNCONSTRAINED_VARIATION':variation, 'ENERGY_EULER_DERIVATIVES':-euler,
+2866:                 'UNCONSTRAINED_BOUNDARY_WORK':boundary,
+2867:                 'VARIATION_RECONSTRUCTION_RESIDUAL':reconstruction,
+2868:                 'ENERGY_IBP_RESIDUAL':ibp, 'MATERIAL_VIRTUAL_DENSITY_MAP':tuple(virtual.items()),
+2869:                 'CONSTRAINED_MECHANICAL_EULER_DERIVATIVES':mechanical,
+2870:                 'CHEMICAL_TRANSPORT_BOUNDARY':transport,
+2871:                 'TRANSPORT_RECONSTRUCTION_RESIDUAL':transport_reconstruction,
+2872:                 'TRANSPORT_IBP_RESIDUAL':transport_ibp,
+2873:                 'CONSERVATIVE_VARIATION_RECONSTRUCTION_RESIDUAL':virtual_variation_residual,
+2874:                 'CONSERVATIVE_BOUNDARY_RECONSTRUCTION_RESIDUAL':virtual_boundary_residual,
+2875:                 'MATERIAL_DENSITY_RATE_DEFECTS':defects, 'ACTUAL_TIME_BOUNDARY':actual_boundary,
+2876:                 'CHEMICAL_TRANSPORT_CURRENT':chemical_transport,
+2877:                 'MASS_RATE_CHEMICAL_WORK':chemical_work, 'MECHANICAL_POWER':mechanical_power,
+2878:                 'ACTUAL_ENERGY_RATE_VARIATION':rate_variation,
+2879:                 'MASS_RATE_BOUNDARY_CORRECTION':correction, 'SLAB_CURRENT':current,
+2880:                 'SLAB_CURRENT_MATRIX':matrix, 'MASS_RATE_CORRECTION_MATRIX':correction_matrix,
+2881:                 'CURRENT_DECOMPOSITION_RESIDUAL':current_residual,
+2882:                 'POLARIZATION_RESIDUAL':polarization_residual,
+2883:                 'CORRECTION_POLARIZATION_RESIDUAL':correction_polarization_residual,
+2884:                 'ENERGY_BALANCE_RESIDUAL':balance_residual,
+2885:                 'HARMONIC_VARIATION_NORMALIZATION':norm,
+2886:                 'CHEMICAL_FUNCTIONAL_DERIVATIVE':chemical,
+2887:                 'CHEMICAL_FIELD_ROW':chemical_row,
+2888:                 'CHEMICAL_POLARIZATION_RESIDUAL':chemical_residual}
+
+### ClosedAcousticEnergy.__init__
+2927:     def __init__(self, balance, modes, strong):
+2928:         self.balance, self.modes, self.strong = balance, modes, strong
+2929:         self.c, self.r = balance.c, balance.r
+2930:         self.depth = sp.Symbol('s11cdAcousticOutwardDepth', nonnegative=True)
+2931:         self.height = sp.Symbol('s11cdAcousticDepthCutoff', positive=True)
+2932:         self.qlegs = sp.symbols('s11cdAcousticLeftNormalMomentum s11cdAcousticRightNormalMomentum', complex=True)
+2933:         self.alegs = sp.symbols('s11cdAcousticLeftAmplitude s11cdAcousticRightAmplitude')
+2934:         self.phi = sp.Function('s11cdAcousticPotential')
+2935:         self.energy_coefficients = sp.symbols('s11cdAcousticTimeEnergyCoefficient s11cdAcousticGradientEnergyCoefficient')
+2936:         dims = PHYSICAL_METADATA.dimensions
+2937:         length, frequency = dims.measure(self.r.z), dims.measure(self.r.omega)
+2938:         potential = tuple(2*a+b for a, b in zip(length, frequency))
+2939:         density = dims.measure(self.r.symbols['rho_m'])
+2940:         dims.known[self.depth] = dims.known[self.height] = length
+2941:         dims.known[self.phi] = potential
+2942:         for q in self.qlegs:
+2943:             dims.known[q] = tuple(-a for a in length)
+2944:         for a in self.alegs:
+2945:             dims.known[a] = potential
+2946:         speed = dims.measure(self.r.symbols['c_s0'])
+2947:         dims.known[self.energy_coefficients[0]] = tuple(a-2*b for a, b in zip(density, speed))
+2948:         dims.known[self.energy_coefficients[1]] = density
+
+### ClosedAcousticEnergy.construct
+2992:     def construct(self, anchoring, end):
+2993:         c, r, s = self.c, self.r, self.depth
+2994:         rho, speed = (r.symbols[n] for n in ('rho_m', 'c_s0'))
+2995:         positions = (*r.x[:2], r.z, s)
+2996:         phi = self.phi(r.t, *positions)
+2997:         velocity = sp.ImmutableMatrix([sp.diff(phi, x) for x in positions])
+2998:         pressure = -rho*sp.diff(phi, r.t)
+2999:         wave = sp.diff(phi, r.t, 2)-speed**2*sum(sp.diff(phi, x, 2) for x in positions)
+3000:         local_flux = pressure*velocity
+3001:         a, b = self.energy_coefficients
+3002:         energy_ansatz = a*sp.diff(phi, r.t)**2+b*(velocity.T*velocity)[0]
+3003:         balance_ansatz = sp.diff(energy_ansatz, r.t)+sum(sp.diff(local_flux[i], x) for i, x in enumerate(positions))
+3004:         wave_evolution = sp.solve(wave, sp.diff(phi, r.t, 2))[0]
+3005:         balance_on_wave = sp.expand(balance_ansatz.subs(sp.diff(phi, r.t, 2), wave_evolution))
+3006:         jets = sorted(balance_on_wave.atoms(sp.Derivative), key=sp.default_sort_key)
+3007:         coefficients = sp.solve(sp.Poly(balance_on_wave, *jets).coeffs(), (a, b), dict=True)[0]
+3008:         energy = energy_ansatz.subs(coefficients)
+3009:         local_residual = sp.expand(balance_on_wave.subs(coefficients))
+3010:         qleft, qright = self.qlegs
+3011:         aleft, aright = self.alegs
+3012:         kleft, kright = c.leg_momenta
+3013:         plus = aright*c.phase*sp.exp(sp.I*(kright*r.z+qright*s))
+3014:         minus = aleft/c.phase*sp.exp(-sp.I*(kleft*r.z+qleft*s))
+3015:         harmonic = r.symbols['epsilon_shape']*(plus+minus)/2
+3016:         def average(expression):
+3017:             return sp.expand(c.ends.phase_terms(sp.expand(expression.subs(phi, harmonic).doit()),
+3018:                                                 c.phase_coordinate).get(0, sp.S.Zero))
+3019:         harmonic_energy = average(energy)
+3020:         harmonic_flux = local_flux.applyfunc(average)
+3021:         harmonic_wave = tuple(sp.cancel(wave.subs(phi, leg).doit()/leg) for leg in (minus, plus))
+3022:         depth_factor = sp.exp(sp.I*(qright-qleft)*s)
+3023:         current_coefficient = sp.simplify(harmonic_flux[2].subs(r.z, 0)/depth_factor)
+3024:         generic_depth = sp.integrate(depth_factor, (s, 0, self.height))
+3025:         diagonal_depth = sp.integrate(depth_factor.subs(qleft, qright), (s, 0, self.height))
+3026:         finite_depth = sp.Piecewise((generic_depth, sp.Ne(qright, qleft)), (diagonal_depth, True))
+3027:         finite_residual = sp.Piecewise((sp.simplify(sp.diff(generic_depth, self.height)-depth_factor.subs(s, self.height)),
+3028:                                        sp.Ne(qright, qleft)),
+3029:                                       (sp.simplify(sp.diff(diagonal_depth, self.height)-
+3030:                                                    depth_factor.subs(qleft, qright).subs(s, self.height)), True))
+3031:         decay = sp.Symbol('s11cdAcousticDepthDecay', positive=True)
+3032:         oscillation = sp.Symbol('s11cdAcousticDepthOscillation', real=True)
+3033:         dims = PHYSICAL_METADATA.dimensions
+3034:         dims.known[decay] = dims.known[oscillation] = dims.measure(qright)
+3035:         convergent_factor = sp.exp((-decay+sp.I*oscillation)*s)
+3036:         # Integrate the exponential using its computed differential
+3037:         # coefficient; verify the antiderivative before using its endpoints.
+3038:         primitive = convergent_factor/sp.cancel(sp.diff(convergent_factor, s)/convergent_factor)
+3039:         convergent_finite = primitive.subs(s, self.height)-primitive.subs(s, 0)
+3040:         boundary_modulus = sp.simplify(sp.Abs(primitive.subs(s, self.height)))
+3041:         boundary_modulus_limit = sp.limit(boundary_modulus, self.height, sp.oo)
+3042:         # The modulus limit bounds both real and imaginary endpoint parts.
+3043:         # A nonzero/unresolved bound is retained; it cannot define this limit.
+3044:         infinite_depth = (boundary_modulus_limit-primitive.subs(s, 0) if boundary_modulus_limit == 0
+3045:                           else sp.Limit(convergent_finite, self.height, sp.oo))
+3046:         primitive_residual = sp.simplify(sp.diff(primitive, s)-convergent_factor)
+3047:         depth_rate = sp.cancel(sp.diff(depth_factor, s)/depth_factor)
+3048:         depth_map = {decay:-sp.re(depth_rate), oscillation:sp.im(depth_rate)}
+3049:         depth_join = sp.simplify(sp.expand_complex((-decay+sp.I*oscillation).subs(depth_map)-depth_rate))
+3050: 
+3051:         slab = self.balance.construct(anchoring, end)
+3052:         chemical = (slab['CHEMICAL_FIELD_ROW']*sp.ImmutableMatrix(c.amplitudes[0]))[0]
+3053:         time_rate = sp.cancel(sp.diff(c.phase, r.t)/c.phase)
+3054:         surface_density = sp.cancel(c.mass_symbol.subs({r.symbols[n]:0 for n in ('Lambda_A_0', 'Lambda_V_0')})[3]/time_rate)
+3055:         mus = sp.cancel(chemical/surface_density)
+3056:         amplitude = self.alegs[1]
+3057:         outgoing = amplitude*c.phase*sp.exp(sp.I*(self.modes.k*r.z+qright*s))
+3058:         face_v = sp.cancel(sp.diff(outgoing, s).subs(s, 0)/(c.phase*sp.exp(sp.I*self.modes.k*r.z)))
+3059:         face_p = sp.cancel((-rho*sp.diff(outgoing, r.t)).subs(s, 0)/(c.phase*sp.exp(sp.I*self.modes.k*r.z)))
+3060:         kernels = {name:sp.cancel(r.symbols['Lambda_'+name+'_0']/(1-sp.I*r.omega*r.symbols['tau_'+name]))
+3061:                    for name in ('A', 'V', 'X')}
+3062:         faces = []
+3063:         for sign in (-1, 1):
+3064:             # Supplied face geometry and real-field harmonic ansatz.
+3065:             displacement = sign*r.symbols['W_0']*c.amplitudes[0][4]*c.phase/2
+3066:             outward_velocity = sp.cancel(sign*sp.diff(displacement, r.t)/c.phase)
+3067:             outward_virtual_lift = sp.diff(sign*displacement/c.phase, c.amplitudes[0][4])
+3068:             relative = rho*(face_v-outward_velocity)
+3069:             affinity = mus-face_p/rho
+3070:             closure = relative-kernels['A']*affinity-kernels['V']*outward_velocity
+3071:             coefficient = sp.diff(closure, amplitude)
+3072:             constant = closure.subs(amplitude, 0)
+3073:             solution = sp.cancel(-constant/coefficient)
+3074:             closed = {amplitude:solution}
+3075:             faces.append({'ORIENTATION':sign, 'DISPLACEMENT':displacement,
+3076:                           'OUTWARD_VELOCITY':outward_velocity, 'VIRTUAL_LIFT':outward_virtual_lift,
+3077:                           'AMPLITUDE':solution, 'PRESSURE':sp.cancel(face_p.subs(closed)),
+3078:                           'RELATIVE_MASS_FLUX':sp.cancel(relative.subs(closed)),
+3079:                           'AFFINITY':sp.cancel(affinity.subs(closed)),
+3080:                           'MECHANICAL_LOAD':self.cancel_background_expression(
+3081:                               ((face_p+kernels['X']*affinity)*outward_virtual_lift).subs(closed),
+3082:                               'face_'+str(sign)+'_mechanical_load'),
+3083:                           'AMPLITUDE_EQUATION_COEFFICIENT':coefficient,
+3084:                           'AMPLITUDE_EQUATION_RECONSTRUCTION_RESIDUAL':sp.expand(closure-coefficient*amplitude-constant),
+3085:                           'CLOSURE_RESIDUAL':sp.cancel(closure.subs(closed))})
+3086:         algebraic, relation, joins = self.modes.analytic(self.strong)
+3087:         acoustic_row = harmonic_wave[1].subs(kright, self.modes.k)
+3088:         radical_scale = sp.sqrt(sp.Poly(relation, self.modes.q).nth(2)/sp.Poly(acoustic_row, qright).nth(2))
+3089:         radical_map = {qright:radical_scale*self.modes.q}
+3090:         radical_residual = sp.simplify(acoustic_row.subs(radical_map)-relation)
+3091:         no_transfer = {r.symbols[n]:0 for n in ('Lambda_A_0', 'Lambda_V_0')}
+3092:         no_face = {**no_transfer, r.symbols['Lambda_X_0']:0}
+3093:         mass_increment = self.cancel_background_row(
+3094:             algebraic[3, :]-algebraic[3, :].subs(no_transfer), 'mass_increment')
+3095:         mechanical_increment = self.cancel_background_row(
+3096:             algebraic[4, :]-algebraic[4, :].subs(no_face).subs(rho, 0), 'mechanical_increment')
+3097:         mass_from_faces = sum(face['RELATIVE_MASS_FLUX'] for face in faces).subs(radical_map)
+3098:         mechanical_from_faces = sum(face['MECHANICAL_LOAD'] for face in faces).subs(radical_map)
+3099:         mass_face_row = sp.ImmutableMatrix(1, 5, lambda i, j:c.retained(
+3100:             self.cancel_background_expression(sp.diff(mass_from_faces,c.amplitudes[0][j]),'mass_face_'+str(j))))
+3101:         mechanical_face_row = sp.ImmutableMatrix(1, 5, lambda i, j:c.retained(
+3102:             self.cancel_background_expression(sp.diff(mechanical_from_faces,c.amplitudes[0][j]),'mechanical_face_'+str(j))))
+3103:         mass_join = self.cancel_background_row(mass_increment-mass_face_row,'mass_join').applyfunc(c.retained)
+3104:         mechanical_join = self.cancel_background_row(mechanical_increment-mechanical_face_row,'mechanical_join').applyfunc(c.retained)
+3105:         mechanical_sum = self.cancel_background_row(mechanical_increment+mechanical_face_row,'mechanical_sum').applyfunc(c.retained)
+3106:         faces = [{key:c.retained(value) for key, value in face.items()} for face in faces]
+3107:         return {'ACOUSTIC_WAVE_EQUATION':wave, 'ACOUSTIC_PRESSURE':pressure,
+3108:                 'ACOUSTIC_VELOCITY':velocity, 'ENERGY_ANSATZ':energy_ansatz,
+3109:                 'ENERGY_COEFFICIENT_SOLVE':tuple(coefficients.items()), 'ACOUSTIC_ENERGY':energy,
+3110:                 'ACOUSTIC_LOCAL_CURRENT':local_flux, 'LOCAL_ENERGY_BALANCE_RESIDUAL':local_residual,
+3111:                 'HARMONIC_FIELD_ANSATZ':harmonic, 'HARMONIC_WAVE_ROWS':harmonic_wave,
+3112:                 'HARMONIC_ENERGY':harmonic_energy, 'HARMONIC_CURRENT':harmonic_flux,
+3113:                 'NORMAL_CURRENT_DEPTH_COEFFICIENT':current_coefficient,
+3114:                 'FINITE_DEPTH_INTEGRAL':finite_depth, 'FINITE_DEPTH_DERIVATIVE_RESIDUAL':finite_residual,
+3115:                 'DIAGONAL_DEPTH_INTEGRAL':diagonal_depth,
+3116:                 'CONVERGENT_DEPTH_FACTOR':convergent_factor, 'CONVERGENT_FINITE_DEPTH_INTEGRAL':convergent_finite,
+3117:                 'DEPTH_PRIMITIVE_RESIDUAL':primitive_residual,
+3118:                 'DEPTH_BOUNDARY_MODULUS':boundary_modulus, 'DEPTH_BOUNDARY_MODULUS_LIMIT':boundary_modulus_limit,
+3119:                 'CONVERGENT_INFINITE_DEPTH_INTEGRAL':infinite_depth, 'DEPTH_DECAY_BINDINGS':tuple(depth_map.items()),
+3120:                 'DEPTH_RATE_JOIN_RESIDUAL':depth_join, 'DEPTH_CONVERGENCE_DOMAIN':sp.Gt(-sp.re(depth_rate), 0),
+3121:                 'SLAB_SURFACE_DENSITY':surface_density, 'CHEMICAL_AFFINITY_DRIVER':c.retained(mus),
+3122:                 'MEMORY_KERNELS':kernels, 'FACE_RECORDS':faces,
+3123:                 'SOURCE_BRANCH_JOINS':joins, 'ACOUSTIC_RADICAL_SCALE':radical_scale,
+3124:                 'ACOUSTIC_RADICAL_JOIN_RESIDUAL':radical_residual,
+3125:                 'REDUCED_MASS_CLOSURE_INCREMENT':mass_increment,
+3126:                 'RECONSTRUCTED_MASS_FACE_ROW':mass_face_row,
+3127:                 'REDUCED_MECHANICAL_CLOSURE_INCREMENT':mechanical_increment,
+3128:                 'RECONSTRUCTED_MECHANICAL_FACE_ROW':mechanical_face_row,
+3129:                 'REDUCED_MASS_FACE_JOIN_RESIDUAL':mass_join,
+3130:                 'REDUCED_MECHANICAL_FACE_JOIN_RESIDUAL':mechanical_join,
+3131:                 'REDUCED_MECHANICAL_FACE_SUM':mechanical_sum}
+
+### ClosedCurrentPairing.__init__
+3183:     def __init__(self, acoustic, anchoring='LAB_HELD', end=None):
+3184:         self.acoustic = acoustic
+3185:         self.anchoring, self.end = anchoring, end
+3186:         self.balance, self.c, self.r = acoustic.balance, acoustic.c, acoustic.r
+3187:         self.modes = acoustic.modes
+3188:         self.frequencies = sp.symbols('s11cdPairingLeftFrequency s11cdPairingRightFrequency', real=True)
+3189:         dims = PHYSICAL_METADATA.dimensions
+3190:         for frequency in self.frequencies:
+3191:             dims.known[frequency] = dims.measure(self.r.omega)
+3192:         self.residual_amplitudes = tuple(sp.symbols('s11cdPairing'+side+'RowResidual0:5')
+3193:                                          for side in ('Plus', 'Minus'))
+3194:         for group in self.residual_amplitudes:
+3195:             for i, a in enumerate(group):
+3196:                 j = next(j for j in range(5) if acoustic.strong[i, j] != 0)
+3197:                 dims.known[a] = tuple(u+v for u, v in zip(
+3198:                     dims.measure(acoustic.strong[i, j]), self.c.field_units[j]))
+
+### ClosedCurrentPairing.construct
+3242:     def construct(self, anchoring, end):
+3243:         if (anchoring, end) != (self.anchoring, self.end):
+3244:             raise ValueError('two-frequency source context differs from requested background')
+3245:         c, r, a, b = self.c, self.r, self.acoustic, self.balance
+3246:         slab = b.construct(anchoring, end)
+3247:         conservative = c.construct(anchoring, end)
+3248:         acoustic = a.construct(anchoring, end)
+3249:         omega_left, omega_right = self.frequencies
+3250:         kleft, kright = c.leg_momenta
+3251:         qleft, qright = a.qlegs
+3252:         epsilon = r.symbols['epsilon_shape']
+3253:         rho = r.symbols['rho_m']
+3254:         phases = tuple(sp.exp(sign*sp.I*(sum(k*x for k, x in zip(r.tangents, r.x[:2]))+
+3255:                        momentum*r.z-frequency*r.t+c.phase_coordinate))
+3256:                        for sign, momentum, frequency in
+3257:                        ((1, kright, omega_right), (-1, kleft, omega_left)))
+3258:         beat = sp.simplify(phases[0]*phases[1])
+3259:         phase_rates = tuple(sp.cancel(sp.diff(beat, x)/beat) for x in (r.t, r.z))
+3260:         zero_coordinates = {r.t:0, r.z:0, a.depth:0}
+3261: 
+3262:         def average(expression):
+3263:             # Shield coefficient carriers before expanding the harmonic
+3264:             # polynomial. Deep expansion of a response fraction can move
+3265:             # exponential phases into an expanded denominator.
+3266:             carriers = {}
+3267:             def shield(node):
+3268:                 if node == c.phase_coordinate:
+3269:                     return node
+3270:                 if not node.has(c.phase_coordinate):
+3271:                     if node.is_number:
+3272:                         return node
+3273:                     return carriers.setdefault(node, sp.Dummy())
+3274:                 return node.func(*(shield(child) for child in node.args))
+3275:             harmonic = shield(expression.doit())
+3276:             selected = c.ends.phase_terms(sp.expand(harmonic), c.phase_coordinate).get(0, sp.S.Zero)
+3277:             return selected.xreplace({v:k for k, v in carriers.items()}).subs(zero_coordinates)
+3278: 
+3279:         def real_field(plus, minus):
+3280:             return epsilon*(plus*phases[0]+minus*phases[1])/2
+3281: 
+3282:         field_ansatz = tuple(real_field(plus, minus) for plus, minus in zip(*c.amplitudes))
+3283:         leg_maps = []
+3284:         for sign, frequency, momentum, bulk_momentum, amplitudes in (
+3285:                 (1, omega_right, kright, qright, c.amplitudes[0]),
+3286:                 (-1, omega_left, kleft, qleft, c.amplitudes[1])):
+3287:             leg_maps.append({r.omega:sign*frequency, self.modes.k:sign*momentum,
+3288:                              a.qlegs[1]:sign*bulk_momentum,
+3289:                              **{k:sign*k for k in r.tangents},
+3290:                              **dict(zip(c.amplitudes[0], amplitudes))})
+3291:         time_rates = tuple(sp.cancel(sp.diff(phase, r.t)/phase) for phase in phases)
+3292:         test_rates = {test(r.z):rate*field(r.z)
+3293:                       for rate, tests, fields in zip(time_rates, b.tests, c.fields)
+3294:                       for test, field in zip(tests, fields)}
+3295:         boundary = slab['UNCONSTRAINED_BOUNDARY_WORK']+slab['CHEMICAL_TRANSPORT_BOUNDARY']
+3296:         slab_current, slab_polarization = b.matrix(boundary.subs(test_rates, simultaneous=True).doit())
+3297:         stored_energy, stored_polarization = b.matrix(conservative['TANGENTIAL_ENERGY_REDUCTION'])
+3298:         # The supplied S11b kinetic action, with the physical thickness lift
+3299:         # taken from the independently computed two-face displacement ansatz.
+3300:         face_displacements = [sp.cancel(face['DISPLACEMENT']/c.phase)
+3301:                               for face in acoustic['FACE_RECORDS']]
+3302:         thickness_plus = face_displacements[1]-face_displacements[0]
+3303:         thickness = real_field(thickness_plus.xreplace(leg_maps[0]), thickness_plus.xreplace(leg_maps[1]))
+3304:         kinetic_ansatz = (acoustic['SLAB_SURFACE_DENSITY']*sum(sp.diff(f, r.t)**2 for f in field_ansatz[:3])+
+3305:                           r.symbols['mu_W']*sp.diff(thickness, r.t)**2)/2
+3306:         kinetic_energy, kinetic_polarization = self.polarize(average(kinetic_ansatz))
+3307:         slab_energy = stored_energy+kinetic_energy
+3308:         mus = tuple(acoustic['CHEMICAL_AFFINITY_DRIVER'].xreplace(mapping) for mapping in leg_maps)
+3309:         chemical_field = real_field(*mus)
+3310:         residual_fields = tuple(real_field(plus, minus)
+3311:                                for plus, minus in zip(*self.residual_amplitudes))
+3312:         source_ansatz = sum(sp.diff(field_ansatz[i], r.t)*residual_fields[i] for i in (0, 1, 2, 4))
+3313:         source_ansatz += chemical_field*residual_fields[3]
+3314:         source_coefficient = average(source_ansatz)
+3315:         plus_power_map = sp.ImmutableMatrix(5, 5, lambda i, j:sp.diff(
+3316:             source_coefficient, c.amplitudes[1][i], self.residual_amplitudes[0][j]))
+3317:         minus_power_map = sp.ImmutableMatrix(5, 5, lambda i, j:sp.diff(
+3318:             source_coefficient, self.residual_amplitudes[1][i], c.amplitudes[0][j]))
+3319:         algebraic, relation, joins = self.modes.analytic(a.strong)
+3320:         physical_q = algebraic.subs(self.modes.q, a.qlegs[1]/acoustic['ACOUSTIC_RADICAL_SCALE'])
+3321:         pencils = tuple(physical_q.xreplace(mapping) for mapping in leg_maps)
+3322:         source_power = plus_power_map*pencils[0]+pencils[1].T*minus_power_map
+3323:         source_reconstruction = sp.expand(source_coefficient-
+3324:             (sp.ImmutableMatrix(1, 5, c.amplitudes[1])*plus_power_map*
+3325:              sp.ImmutableMatrix(self.residual_amplitudes[0]))[0]-
+3326:             (sp.ImmutableMatrix(1, 5, self.residual_amplitudes[1])*minus_power_map*
+3327:              sp.ImmutableMatrix(c.amplitudes[0]))[0])
+3328: 
+3329:         phi = a.phi(r.t, *r.x[:2], r.z, a.depth)
+3330:         bulk_legs = (a.alegs[1]*phases[0]*sp.exp(sp.I*qright*a.depth),
+3331:                      a.alegs[0]*phases[1]*sp.exp(-sp.I*qleft*a.depth))
+3332:         bulk_ansatz = epsilon*sum(bulk_legs)/2
+3333:         wave_rows = tuple(sp.simplify(acoustic['ACOUSTIC_WAVE_EQUATION'].subs(phi, leg).doit()/leg)
+3334:                           for leg in bulk_legs)
+3335:         pressure_scales = tuple(sp.simplify(acoustic['ACOUSTIC_PRESSURE'].subs(phi, leg).doit()/leg)
+3336:                                 for leg in bulk_legs)
+3337:         velocity_scales = tuple(sp.simplify(acoustic['ACOUSTIC_VELOCITY'][3].subs(phi, leg).doit()/leg)
+3338:                                 for leg in bulk_legs)
+3339:         bulk_energy_coefficient = average(acoustic['ACOUSTIC_ENERGY'].subs(phi, bulk_ansatz))
+3340:         bulk_current_coefficients = acoustic['ACOUSTIC_LOCAL_CURRENT'].applyfunc(
+3341:             lambda value:average(value.subs(phi, bulk_ansatz)))
+3342:         faces = []
+3343:         face_leg_objects = []
+3344:         for face in acoustic['FACE_RECORDS']:
+3345:             legs = tuple({key:value.xreplace(mapping) for key, value in face.items()
+3346:                           if key != 'DISPLACEMENT'} for mapping in leg_maps)
+3347:             lifts = {a.alegs[1]:legs[0]['AMPLITUDE'], a.alegs[0]:legs[1]['AMPLITUDE']}
+3348:             energy_matrix, energy_polarization = self.polarize(bulk_energy_coefficient.xreplace(lifts))
+3349:             normal_matrix, normal_polarization = self.polarize(bulk_current_coefficients[2].xreplace(lifts))
+3350:             depth_matrix, depth_polarization = self.polarize(bulk_current_coefficients[3].xreplace(lifts))
+3351:             pressure = real_field(*(leg['PRESSURE'] for leg in legs))
+3352:             outward_velocity = real_field(*(leg['OUTWARD_VELOCITY'] for leg in legs))
+3353:             mass_flux = real_field(*(leg['RELATIVE_MASS_FLUX'] for leg in legs))
+3354:             affinity = real_field(*(leg['AFFINITY'] for leg in legs))
+3355:             mechanical_response = real_field(*(acoustic['MEMORY_KERNELS']['X'].xreplace(mapping)*leg['AFFINITY']
+3356:                                                for mapping, leg in zip(leg_maps, legs)))
+3357:             velocity_legs = tuple(sp.cancel(sp.diff(leg, a.depth)/leg)*closed['AMPLITUDE']
+3358:                                   for leg, closed in zip(bulk_legs, legs))
+3359:             face_leg_objects.append(tuple({
+3360:                 **{key:leg[key] for key in ('AMPLITUDE', 'PRESSURE', 'OUTWARD_VELOCITY',
+3361:                                             'RELATIVE_MASS_FLUX', 'AFFINITY')},
+3362:                 'CHEMICAL_POTENTIAL':mu, 'BULK_VELOCITY':velocity,
+3363:                 'MECHANICAL_RESPONSE':acoustic['MEMORY_KERNELS']['X'].xreplace(mapping)*leg['AFFINITY'],
+3364:                 'MASS_RESPONSE_A':acoustic['MEMORY_KERNELS']['A'].xreplace(mapping),
+3365:                 'MASS_RESPONSE_V':acoustic['MEMORY_KERNELS']['V'].xreplace(mapping)}
+3366:                 for leg, mu, velocity, mapping in zip(legs, mus, velocity_legs, leg_maps)))
+3367:             bulk_velocity = real_field(*velocity_legs)
+3368:             # The two supplied port-work forms are separate ansatz operands.
+3369:             port_ansatz = (pressure+mechanical_response)*outward_velocity+chemical_field*mass_flux
+3370:             split_ansatz = pressure*bulk_velocity+affinity*mass_flux+mechanical_response*outward_velocity
+3371:             interface_ansatz = affinity*mass_flux+mechanical_response*outward_velocity
+3372:             port_matrix, port_polarization = self.polarize(average(port_ansatz))
+3373:             split_matrix, split_polarization = self.polarize(average(split_ansatz))
+3374:             interface_matrix, interface_polarization = self.polarize(average(interface_ansatz))
+3375:             faces.append({'ENERGY_DENSITY_MATRIX':energy_matrix, 'NORMAL_CURRENT_DENSITY_MATRIX':normal_matrix,
+3376:                           'DEPTH_CURRENT_MATRIX':depth_matrix, 'PORT_POWER_MATRIX':port_matrix,
+3377:                           'SPLIT_PORT_POWER_MATRIX':split_matrix, 'INTERFACE_POWER_MATRIX':interface_matrix,
+3378:                           'PORT_IDENTITY_RESIDUAL':port_matrix-split_matrix,
+3379:                           'FACE_CURRENT_JOIN_RESIDUAL':port_matrix-interface_matrix-depth_matrix,
+3380:                           'POLARIZATION_RESIDUALS':(energy_polarization, normal_polarization, depth_polarization,
+3381:                                                    port_polarization, split_polarization, interface_polarization)})
+3382:         def sum_face(key):
+3383:             return sum((face[key] for face in faces), sp.zeros(5))
+3384:         depth_factor = sp.exp(sp.I*(qright-qleft)*a.depth)
+3385:         depth_rate = sp.cancel(sp.diff(depth_factor, a.depth)/depth_factor)
+3386:         primitive = depth_factor/depth_rate
+3387:         depth_integral = primitive.subs(a.depth, a.height)-primitive.subs(a.depth, 0)
+3388:         equal_depth_integral = sp.integrate(depth_factor.subs(qleft, qright), (a.depth, 0, a.height))
+3389:         bulk_energy = sum_face('ENERGY_DENSITY_MATRIX')
+3390:         bulk_current = sum_face('NORMAL_CURRENT_DENSITY_MATRIX')
+3391:         bulk_depth_current = sum_face('DEPTH_CURRENT_MATRIX')
+3392:         port_power = sum_face('PORT_POWER_MATRIX')
+3393:         interface_power = sum_face('INTERFACE_POWER_MATRIX')
+3394:         total_energy = slab_energy+depth_integral*bulk_energy
+3395:         total_current = slab_current+depth_integral*bulk_current
+3396:         top_power = depth_factor.subs(a.depth, a.height)*bulk_depth_current
+3397:         slab_residual = (phase_rates[0]*slab_energy+phase_rates[1]*slab_current+port_power-source_power)
+3398:         bulk_density_residual = (phase_rates[0]*bulk_energy+phase_rates[1]*bulk_current+depth_rate*bulk_depth_current)
+3399:         finite_residual = phase_rates[0]*total_energy+phase_rates[1]*total_current+interface_power+top_power-source_power
+3400:         return {'FREQUENCY_LEGS':self.frequencies, 'NORMAL_LEGS':c.leg_momenta, 'BULK_LEGS':a.qlegs,
+3401:                 'BEAT_PHASE':beat, 'BEAT_RATES':phase_rates, 'SOURCE_BRANCH_JOINS':joins,
+3402:                 'ACOUSTIC_WAVE_ROWS':wave_rows, 'KINETIC_ACTION_ANSATZ':kinetic_ansatz,
+3403:                 'STORED_ENERGY_MATRIX':stored_energy, 'KINETIC_ENERGY_MATRIX':kinetic_energy,
+3404:                 'SLAB_ENERGY_MATRIX':slab_energy, 'SLAB_CURRENT_MATRIX':slab_current,
+3405:                 'SLAB_POLARIZATION_RESIDUALS':(slab_polarization, stored_polarization, kinetic_polarization),
+3406:                 'PLUS_ROW_POWER_MAP':plus_power_map, 'MINUS_ROW_POWER_MAP':minus_power_map,
+3407:                 'ROW_POWER_RECONSTRUCTION_RESIDUAL':source_reconstruction, 'CLOSED_PENCIL_LEGS':pencils,
+3408:                 'SOURCE_POWER_MATRIX':source_power, 'FACE_RECORDS':faces,
+3409:                 'OPEN_BULK_ENERGY_COEFFICIENT':bulk_energy_coefficient,
+3410:                 'OPEN_BULK_CURRENT_COEFFICIENTS':bulk_current_coefficients,
+3411:                 'OPEN_BULK_PRESSURE_SCALES':pressure_scales,
+3412:                 'OPEN_BULK_VELOCITY_SCALES':velocity_scales,
+3413:                 'FACE_LEG_OBJECTS':face_leg_objects,
+3414:                 'DEPTH_PHASE_FACTOR':depth_factor, 'DEPTH_PHASE_RATE':depth_rate,
+3415:                 'DEPTH_PRIMITIVE':primitive,
+3416:                 'BULK_ENERGY_DENSITY_MATRIX':bulk_energy, 'BULK_NORMAL_CURRENT_DENSITY_MATRIX':bulk_current,
+3417:                 'BULK_DEPTH_CURRENT_MATRIX':bulk_depth_current, 'PORT_POWER_MATRIX':port_power,
+3418:                 'INTERFACE_POWER_MATRIX':interface_power, 'GENERIC_DEPTH_INTEGRAL':depth_integral,
+3419:                 'GENERIC_DEPTH_DOMAIN':sp.Ne(qleft, qright), 'EQUAL_DEPTH_INTEGRAL':equal_depth_integral,
+3420:                 'EQUAL_DEPTH_DOMAIN':sp.Eq(qleft, qright),
+3421:                 'FINITE_TOTAL_ENERGY_MATRIX':total_energy, 'FINITE_TOTAL_CURRENT_MATRIX':total_current,
+3422:                 'TOP_BOUNDARY_POWER_MATRIX':top_power, 'SLAB_BALANCE_RESIDUAL':slab_residual,
+3423:                 'BULK_DENSITY_BALANCE_RESIDUAL':bulk_density_residual,
+3424:                 'FINITE_BALANCE_RESIDUAL':finite_residual}
+
+### ModalCurrentSubspaces.__init__
+4126:     def __init__(self, pairing, result, material_bindings):
+4127:         self.pairing, self.result = pairing, result
+4128:         self.modes, self.r = pairing.modes, pairing.r
+4129:         self.bindings = dict(material_bindings)
+4130:         self.epsilon = self.r.symbols['epsilon_shape']
+4131:         self.variables = (*pairing.frequencies, *pairing.c.leg_momenta, *pairing.acoustic.qlegs,
+4132:                           pairing.acoustic.height)
+4133:         self.field_units = pairing.c.field_units
+4134:         d = PHYSICAL_METADATA.dimensions
+4135:         self.row_units = [d.measure(v) for v in pairing.residual_amplitudes[0]]
+4136:         self.energy_unit = d.measure(pairing.c.construct(pairing.anchoring, pairing.end)['TANGENTIAL_ENERGY_REDUCTION'])
+4137:         self.frequency_unit, self.length_unit = d.measure(self.r.omega), d.measure(self.r.z)
+4138:         self.power_unit = tuple(a+b for a,b in zip(self.energy_unit, self.frequency_unit))
+4139:         self.current_unit = tuple(a+b for a,b in zip(self.power_unit, self.length_unit))
+
+### ModalCurrentSubspaces.prepare
+4141:     def prepare(self):
+4142:         p, result = self.pairing, self.result
+4143:         sources = {'ENERGY_SLAB':'SLAB_ENERGY_MATRIX', 'CURRENT_SLAB':'SLAB_CURRENT_MATRIX',
+4144:                    'ENERGY_BULK':'BULK_ENERGY_DENSITY_MATRIX', 'CURRENT_BULK':'BULK_NORMAL_CURRENT_DENSITY_MATRIX',
+4145:                    'CURRENT_DEPTH':'BULK_DEPTH_CURRENT_MATRIX', 'POWER_INTERFACE':'INTERFACE_POWER_MATRIX',
+4146:                    'POWER_PORT':'PORT_POWER_MATRIX', 'POWER_SOURCE':'SOURCE_POWER_MATRIX',
+4147:                    'POWER_MAP_PLUS':'PLUS_ROW_POWER_MAP', 'POWER_MAP_MINUS':'MINUS_ROW_POWER_MAP'}
+4148:         expressions, residuals = {}, {}
+4149:         for name, key in sources.items():
+4150:             def coefficient(value):
+4151:                 return dict(polynomial_terms(value, (self.epsilon,))).get((2,), sp.S.Zero)
+4152:             expressions[name] = result[key].applyfunc(coefficient)
+4153:             residuals[key] = (result[key]-self.epsilon**2*expressions[name]).applyfunc(p.carrier_expansion)
+4154:         expressions.update({'PENCIL_PLUS':result['CLOSED_PENCIL_LEGS'][0],
+4155:                             'PENCIL_MINUS':result['CLOSED_PENCIL_LEGS'][1]})
+4156:         qleft, qright = p.acoustic.qlegs
+4157:         wave = result['ACOUSTIC_WAVE_ROWS'][0]
+4158:         transports = {}
+4159:         for name, variable in (('NORMAL', p.c.leg_momenta[1]), ('FREQUENCY', p.frequencies[1])):
+4160:             transport = sp.cancel(-sp.diff(wave,variable)/sp.diff(wave,qright))
+4161:             transports[name] = transport
+4162:             for key, value in tuple(expressions.items()):
+4163:                 if key.startswith(('NORMAL_', 'FREQUENCY_')):
+4164:                     continue
+4165:                 expressions[name+'_'+key] = value.diff(variable)+transport*value.diff(qright)
+4166:         scalar_expressions = {'TIME_RATE':result['BEAT_RATES'][0], 'NORMAL_RATE':result['BEAT_RATES'][1],
+4167:             'DEPTH_RATE':result['DEPTH_PHASE_RATE'], 'DEPTH_INTEGRAL':result['GENERIC_DEPTH_INTEGRAL'],
+4168:             'DEPTH_INTEGRAL_Q':sp.diff(result['GENERIC_DEPTH_INTEGRAL'],qright),
+4169:             'EQUAL_DEPTH_INTEGRAL':result['EQUAL_DEPTH_INTEGRAL'],
+4170:             'EQUAL_DEPTH_INTEGRAL_Q':sp.limit(sp.diff(result['GENERIC_DEPTH_INTEGRAL'],qright),qright,qleft),
+4171:             'TOP_FACTOR':result['DEPTH_PHASE_FACTOR'].subs(p.acoustic.depth,p.acoustic.height)}
+4172:         old_bulk = p.acoustic.construct(p.anchoring,p.end)
+4173:         rate_map = dict(old_bulk['DEPTH_DECAY_BINDINGS'])
+4174:         decay = next(v for v in rate_map if 'Decay' in v.name)
+4175:         oscillation = next(v for v in rate_map if 'Oscillation' in v.name)
+4176:         infinite = old_bulk['CONVERGENT_INFINITE_DEPTH_INTEGRAL'].xreplace(
+4177:             {-decay+sp.I*oscillation:result['DEPTH_PHASE_RATE']})
+4178:         scalar_expressions['INFINITE_DEPTH_INTEGRAL'] = infinite
+4179:         scalar_expressions['RADICAL_SCALE'] = old_bulk['ACOUSTIC_RADICAL_SCALE']
+4180:         for name, variable in (('NORMAL', p.c.leg_momenta[1]), ('FREQUENCY', p.frequencies[1])):
+4181:             scalar_expressions[name+'_TRANSPORT'] = transports[name]
+4182:             for label, value in zip(('TIME_WEIGHT','NORMAL_WEIGHT','DEPTH_WEIGHT'),
+4183:                     (result['BEAT_RATES'][0],result['BEAT_RATES'][1],result['DEPTH_PHASE_RATE'])):
+4184:                 scalar_expressions[name+'_'+label] = value.diff(variable)+transports[name]*value.diff(qright)
+4185:         bound = {key:value.xreplace(self.bindings) for key,value in {**expressions,**scalar_expressions}.items()}
+4186:         unresolved = set().union(*(value.free_symbols for value in bound.values()))-set(self.variables)
+4187:         if unresolved:
+4188:             raise ValueError(('unbound modal-current inputs',sorted(map(str,unresolved))))
+4189:         self.evaluate = {key:sp.lambdify(self.variables,value,'numpy',cse=True) for key,value in bound.items()}
+4190:         self.coefficient_residuals = residuals
+4191:         self.symbolic_operands = expressions
+4192:         self.scalar_operands = scalar_expressions
+4193:         return residuals
+
+### ModalCurrentSubspaces.construct
+4235:     def construct(self, records, coverage, frequency, cutoff, progress=lambda record:None):
+4236:         self.prepare()
+4237:         exact, exact_residuals = self.exact_low_degree_lifts(records,coverage)
+4238:         outputs = []
+4239:         for index, source in enumerate(records):
+4240:             k = complex(exact[index]['K'] if index in exact else source['K'])
+4241:             native_q = complex(exact[index]['Q'] if index in exact else source['Q'])
+4242:             scale = complex(self.evaluate['RADICAL_SCALE'](frequency,frequency,k.conjugate(),k,0,0,cutoff))
+4243:             q = scale*native_q
+4244:             point = (frequency,frequency,k.conjugate(),k,q.conjugate(),q,cutoff)
+4245:             equal = q.conjugate()==q
+4246:             excluded = {'INFINITE_DEPTH_INTEGRAL'} | ({'DEPTH_INTEGRAL','DEPTH_INTEGRAL_Q'} if equal else set())
+4247:             values = {key:np.asarray(evaluate(*point),dtype=complex) for key,evaluate in self.evaluate.items() if key not in excluded}
+4248:             integral = complex(values['EQUAL_DEPTH_INTEGRAL' if equal else 'DEPTH_INTEGRAL'])
+4249:             integral_q = complex(values['EQUAL_DEPTH_INTEGRAL_Q' if equal else 'DEPTH_INTEGRAL_Q'])
+4250:             matrix = values['PENCIL_PLUS']
+4251:             u,singular,vh = np.linalg.svd(matrix)
+4252:             threshold = 1e-8*max(1.,singular[0])
+4253:             nullity = int(np.sum(singular<threshold))
+4254:             record = {'INDEX':index,'ROOT_DISK_INDEX':int(source['ROOT_DISK_INDEX']),
+4255:                 'NORMAL_LIFT_SIGN':int(source['NORMAL_LIFT_SIGN']),'K':self.modes.number(k),
+4256:                 'Q':self.modes.number(native_q),'PHYSICAL_Q':self.modes.number(q),
+4257:                 'OMEGA':self.modes.number(frequency),'DEPTH_CUTOFF':self.modes.number(cutoff),
+4258:                 'DEPTH_INTEGRAL':self.modes.number(integral),'EQUAL_DEPTH_BRANCH':equal,
+4259:                 'SHEET_MEMBERSHIP':source['FIXED_FREQUENCY_SHEET_MEMBERSHIP'],
+4260:                 'SINGULAR_VALUES':tuple(map(self.modes.number,singular)), 'RANK_THRESHOLD':threshold,
+4261:                 'NULLITY':nullity,'PRODUCER_NULLITY_RESIDUAL':nullity-int(source['NULLITY']),
+4262:                 'EXACT_LOW_DEGREE_LIFT':exact.get(index, {'STATUS':'HIGHER_DEGREE_ISOLATED_NUMERIC_ROOT'}),
+4263:                 'RADICAL_TRANSPORT_DENOMINATOR':self.modes.number(q),
+4264:                 'BULK_DECAY_NUMERIC':q.imag>0,
+4265:                 'NORMAL_REALITY_CERTIFICATE':self.normal_reality['DISKS'][int(source['ROOT_DISK_INDEX'])],
+4266:                 'EXACT_REAL_NORMAL':self.normal_reality['DISKS'][int(source['ROOT_DISK_INDEX'])]['NORMAL_REALITY_STATUS']=='PROVED_REAL',
+4267:                 'FORMS':{},'RESIDUALS':{},
+4268:                 'OPERANDS':{key:values[key] for key in ('PENCIL_PLUS','PENCIL_MINUS','NORMAL_PENCIL_PLUS',
+4269:                     'FREQUENCY_PENCIL_PLUS','POWER_MAP_PLUS','POWER_MAP_MINUS','ENERGY_SLAB','CURRENT_SLAB',
+4270:                     'ENERGY_BULK','CURRENT_BULK','CURRENT_DEPTH','POWER_INTERFACE')}}
+4271:             if not nullity:
+4272:                 outputs.append(record);progress({'mode':index,'nullity':nullity});continue
+4273:             right,left = vh.conj().T[:,-nullity:],u[:,-nullity:]
+4274:             n_frequency = left.conj().T@values['FREQUENCY_PENCIL_PLUS']@right
+4275:             n_normal = left.conj().T@values['NORMAL_PENCIL_PLUS']@right
+4276:             n_threshold = 1e-9*max(1.,np.linalg.norm(n_frequency,2))
+4277:             normal_threshold = 1e-9*max(1.,np.linalg.norm(n_normal,2))
+4278:             record.update({'RIGHT_BASIS_RANK':int(np.linalg.matrix_rank(right,tol=1e-9)),
+4279:                            'LEFT_BASIS_RANK':int(np.linalg.matrix_rank(left,tol=1e-9)),
+4280:                            'FREQUENCY_PAIRING_RANK':int(np.linalg.matrix_rank(n_frequency,tol=n_threshold)),
+4281:                            'FREQUENCY_PAIRING_THRESHOLD':n_threshold,
+4282:                            'NORMAL_PAIRING_RANK':int(np.linalg.matrix_rank(n_normal,tol=normal_threshold)),
+4283:                            'NORMAL_PAIRING_THRESHOLD':normal_threshold})
+4284:             forms,residuals = record['FORMS'],record['RESIDUALS']
+4285:             forms.update({'RIGHT':right,'LEFT':left,'N_FREQUENCY':n_frequency,'N_NORMAL':n_normal,
+4286:                           'RIGHT_COORDINATE_PROJECTOR':right@right.conj().T,
+4287:                           'LEFT_COORDINATE_PROJECTOR':left@left.conj().T})
+4288:             residuals.update({'RIGHT_KERNEL':matrix@right,'LEFT_KERNEL':matrix.conj().T@left,
+4289:                 'RIGHT_BASIS':right.conj().T@right-np.eye(nullity),'LEFT_BASIS':left.conj().T@left-np.eye(nullity),
+4290:                 'RIGHT_PROJECTOR':forms['RIGHT_COORDINATE_PROJECTOR']@forms['RIGHT_COORDINATE_PROJECTOR']-forms['RIGHT_COORDINATE_PROJECTOR'],
+4291:                 'LEFT_PROJECTOR':forms['LEFT_COORDINATE_PROJECTOR']@forms['LEFT_COORDINATE_PROJECTOR']-forms['LEFT_COORDINATE_PROJECTOR'],
+4292:                 'CONJUGATE_PENCIL':values['PENCIL_MINUS']-matrix.conjugate(),
+4293:                 'CONJUGATE_POWER_MAP':values['POWER_MAP_MINUS']-values['POWER_MAP_PLUS'].conj().T})
+4294:             contract = lambda value:right.conj().T@value@right
+4295:             energy = values['ENERGY_SLAB']+integral*values['ENERGY_BULK']
+4296:             current = values['CURRENT_SLAB']+integral*values['CURRENT_BULK']
+4297:             top = complex(values['TOP_FACTOR'])*values['CURRENT_DEPTH']
+4298:             forms.update({key:contract(values[key]) for key in ('ENERGY_SLAB','CURRENT_SLAB','ENERGY_BULK',
+4299:                 'CURRENT_BULK','CURRENT_DEPTH','POWER_INTERFACE','POWER_PORT','POWER_SOURCE')})
+4300:             forms.update({'ENERGY_FINITE':contract(energy),'CURRENT_FINITE':contract(current),'POWER_TOP':contract(top)})
+4301:             residuals['FINITE_BALANCE'] = contract(complex(values['TIME_RATE'])*energy+
+4302:                 complex(values['NORMAL_RATE'])*current+values['POWER_INTERFACE']+top-values['POWER_SOURCE'])
+4303:             residuals['CURRENT_HERMITIAN'] = forms['CURRENT_FINITE']-forms['CURRENT_FINITE'].conj().T
+4304:             residuals['ENERGY_HERMITIAN'] = forms['ENERGY_FINITE']-forms['ENERGY_FINITE'].conj().T
+4305:             power_covectors = right.conj().T@values['POWER_MAP_PLUS']
+4306:             bridge = power_covectors@left
+4307:             defect = power_covectors-bridge@left.conj().T
+4308:             forms.update({'POWER_LEFT_BRIDGE':bridge,'POWER_LEFT_DEFECT':defect})
+4309:             residuals['POWER_LEFT_SPLIT'] = power_covectors-bridge@left.conj().T-defect
+4310:             for label in ('NORMAL','FREQUENCY'):
+4311:                 transport = complex(values[label+'_TRANSPORT'])
+4312:                 de = values[label+'_ENERGY_SLAB']+integral*values[label+'_ENERGY_BULK']+integral_q*transport*values['ENERGY_BULK']
+4313:                 dj = values[label+'_CURRENT_SLAB']+integral*values[label+'_CURRENT_BULK']+integral_q*transport*values['CURRENT_BULK']
+4314:                 dtop = complex(values['TOP_FACTOR'])*(values[label+'_CURRENT_DEPTH']+
+4315:                     cutoff*complex(values[label+'_DEPTH_WEIGHT'])*values['CURRENT_DEPTH'])
+4316:                 balance_derivative = (complex(values[label+'_TIME_WEIGHT'])*energy+complex(values['TIME_RATE'])*de+
+4317:                     complex(values[label+'_NORMAL_WEIGHT'])*current+complex(values['NORMAL_RATE'])*dj+
+4318:                     values[label+'_POWER_INTERFACE']+dtop)
+4319:                 source_derivative = values[label+'_POWER_SOURCE']
+4320:                 pencil_pair = left.conj().T@values[label+'_PENCIL_PLUS']@right
+4321:                 weighted_pair = power_covectors@values[label+'_PENCIL_PLUS']@right
+4322:                 defect_pair = defect@values[label+'_PENCIL_PLUS']@right
+4323:                 other_source_terms = source_derivative-values['POWER_MAP_PLUS']@values[label+'_PENCIL_PLUS']
+4324:                 isolated_weight = complex(values[label+('_NORMAL_WEIGHT' if label=='NORMAL' else '_TIME_WEIGHT')])
+4325:                 isolated_operand = current if label=='NORMAL' else energy
+4326:                 other_balance_terms = contract(balance_derivative-isolated_weight*isolated_operand)
+4327:                 reconstructed = (bridge@pencil_pair+defect_pair+contract(other_source_terms)-other_balance_terms)/isolated_weight
+4328:                 forms.update({label+'_BALANCE_DERIVATIVE':contract(balance_derivative),
+4329:                     label+'_SOURCE_DERIVATIVE':contract(source_derivative),label+'_WEIGHTED_PENCIL_PAIRING':weighted_pair,
+4330:                     label+'_LEFT_DEFECT_PAIRING':defect_pair,label+'_OTHER_SOURCE_TERMS':contract(other_source_terms),
+4331:                     label+'_OTHER_BALANCE_TERMS':other_balance_terms,
+4332:                     label+'_RECONSTRUCTED_FORM':reconstructed})
+4333:                 residuals[label+'_BALANCE_DERIVATIVE'] = contract(balance_derivative-source_derivative)
+4334:                 residuals[label+'_ROW_PAIRING_BRIDGE'] = weighted_pair-bridge@pencil_pair-defect_pair
+4335:                 residuals[label+'_CURRENT_ENERGY_RECONSTRUCTION'] = reconstructed-contract(isolated_operand)
+4336:             if record['FREQUENCY_PAIRING_RANK']==nullity:
+4337:                 normalized_left = left@np.linalg.inv(n_frequency).conj().T
+4338:                 forms['LEFT_FREQUENCY_NORMALIZED'] = normalized_left
+4339:                 forms['NORMAL_PAIRING_FREQUENCY_NORMALIZED'] = normalized_left.conj().T@values['NORMAL_PENCIL_PLUS']@right
+4340:                 forms['POWER_LEFT_BRIDGE_FREQUENCY_NORMALIZED'] = bridge@n_frequency
+4341:                 residuals['NORMALIZED_POWER_LEFT_SPLIT'] = (power_covectors-
+4342:                     forms['POWER_LEFT_BRIDGE_FREQUENCY_NORMALIZED']@normalized_left.conj().T-defect)
+4343:                 residuals['FREQUENCY_NORMALIZATION'] = normalized_left.conj().T@values['FREQUENCY_PENCIL_PLUS']@right-np.eye(nullity)
+4344:                 residuals['NORMALIZED_LEFT_KERNEL'] = matrix.conj().T@normalized_left
+4345:             disk = {str(k):v for k,v in coverage['ROOT_DISKS'][int(source['ROOT_DISK_INDEX'])]}
+4346:             decay_certified = bool(scale.real>0 and scale.imag==0 and sp.im(disk['CENTER'])-disk['RADIUS']>0)
+4347:             record['BULK_DECAY_DISK_CERTIFIED'] = decay_certified
+4348:             certificate = record['NORMAL_REALITY_CERTIFICATE']
+4349:             regular_normal = bool(certificate['NORMAL_NONZERO'] is True and certificate['DENOMINATOR_EXCLUDED'] and
+4350:                                   record['NORMAL_PAIRING_RANK']==nullity)
+4351:             record['PHYSICAL_RIGHT_CURRENT_NORMALIZATION_DEFINED'] = bool(regular_normal and decay_certified and record['EXACT_REAL_NORMAL'] and
+4352:                 source['FIXED_FREQUENCY_SHEET_MEMBERSHIP']==sp.true and record['FREQUENCY_PAIRING_RANK']==nullity)
+4353:             if decay_certified:
+4354:                 infinite_integral = complex(self.evaluate['INFINITE_DEPTH_INTEGRAL'](*point))
+4355:                 record['INFINITE_DEPTH_INTEGRAL'] = self.modes.number(infinite_integral)
+4356:                 infinite_current = contract(values['CURRENT_SLAB']+infinite_integral*values['CURRENT_BULK'])
+4357:                 forms['CURRENT_INFINITE'] = infinite_current
+4358:                 residuals['INFINITE_CURRENT_HERMITIAN'] = infinite_current-infinite_current.conj().T
+4359:                 hermitian = (infinite_current+infinite_current.conj().T)/2
+4360:                 eigenvalues,rotation = np.linalg.eigh(hermitian)
+4361:                 forms.update({'CURRENT_EIGENVALUES':eigenvalues,'CURRENT_ROTATION':rotation})
+4362:                 residuals['CURRENT_DIAGONALIZATION'] = rotation.conj().T@infinite_current@rotation-np.diag(eigenvalues)
+4363:                 current_threshold = 1e-9*max(1.,np.linalg.norm(infinite_current,2))
+4364:                 record['CURRENT_RANK'] = int(np.sum(np.abs(eigenvalues)>current_threshold))
+4365:                 record['CURRENT_RANK_THRESHOLD'] = current_threshold
+4366:                 eligible = (regular_normal and record['EXACT_REAL_NORMAL'] and source['FIXED_FREQUENCY_SHEET_MEMBERSHIP']==sp.true and
+4367:                     record['CURRENT_RANK']==nullity and record['FREQUENCY_PAIRING_RANK']==nullity and
+4368:                     self.norm(residuals['INFINITE_CURRENT_HERMITIAN'])<=1e-9*max(1.,self.norm(infinite_current)))
+4369:                 record['PHYSICAL_RIGHT_CURRENT_NORMALIZATION_DEFINED'] = bool(eligible)
+4370:                 if eligible:
+4371:                     transform = rotation@np.diag(1/np.sqrt(np.abs(eigenvalues)))
+4372:                     flux_right = right@transform
+4373:                     flux_left = normalized_left@np.linalg.inv(transform).conj().T
+4374:                     forms.update({'FIELD_TO_FLUX_MAP':transform,'FLUX_RIGHT':flux_right,'FLUX_LEFT':flux_left,
+4375:                                   'SIGNED_CURRENT':np.diag(np.sign(eigenvalues))})
+4376:                     residuals['SIGNED_CURRENT_NORMALIZATION'] = transform.conj().T@infinite_current@transform-forms['SIGNED_CURRENT']
+4377:                     residuals['FLUX_FREQUENCY_NORMALIZATION'] = flux_left.conj().T@values['FREQUENCY_PENCIL_PLUS']@flux_right-np.eye(nullity)
+4378:                     residuals['FLUX_RIGHT_KERNEL'] = matrix@flux_right
+4379:                     residuals['FLUX_LEFT_KERNEL'] = matrix.conj().T@flux_left
+4380:             record['SCALED_RIGHT_KERNEL_NORM'] = self.norm(residuals['RIGHT_KERNEL'])/max(1.,self.norm(matrix)*self.norm(right))
+4381:             record['SCALED_LEFT_KERNEL_NORM'] = self.norm(residuals['LEFT_KERNEL'])/max(1.,self.norm(matrix)*self.norm(left))
+4382:             record['RESIDUAL_NORMS'] = {key:self.norm(value) for key,value in residuals.items()}
+4383:             outputs.append(record)
+4384:             progress({'mode':index,'nullity':nullity,'frequencyRank':record['FREQUENCY_PAIRING_RANK'],
+4385:                 'finiteBalance':record['RESIDUAL_NORMS']['FINITE_BALANCE'],
+4386:                 'normalDerivative':record['RESIDUAL_NORMS']['NORMAL_BALANCE_DERIVATIVE'],
+4387:                 'frequencyDerivative':record['RESIDUAL_NORMS']['FREQUENCY_BALANCE_DERIVATIVE'],
+4388:                 'physicalCurrentNormalization':record.get('PHYSICAL_RIGHT_CURRENT_NORMALIZATION_DEFINED',False)})
+4389:         return {'RECORDS':outputs,'EXACT_SPECTRUM_RECONSTRUCTION_RESIDUALS':exact_residuals,
+4390:                 'NORMAL_REALITY_COVERAGE':self.normal_reality}
+
+### ChannelInput.__init__
+4884:     def __init__(self, reduction, specification):
+4885:         self.r = reduction
+4886:         self.specification = specification
+4887:         self.parameters = {name: sp.Rational(value)
+4888:                            for name, value in specification['parameters'].items()}
+4889:         self.frame = tuple(specification['unit_frame'])
+4890:         if len(self.frame) != 3 or len(set(self.frame)) != 3:
+4891:             raise ValueError('channel input needs three distinct L/T/M reference-unit names')
+4892:         self.profiles = {p: sp.sympify(specification['profiles'][p],
+4893:                                       locals={'xi': reduction.xi}) for p in ('w', 'm')}
+4894:         if any(f.free_symbols-set((reduction.xi,)) for f in self.profiles.values()):
+4895:             raise ValueError('channel profiles contain unbound parameters')
+4896:         self.limits = {key: sp.limit(self.profiles[p], reduction.xi, end)
+4897:                        for (p, end), key in reduction.end_values.items()}
+4898:         if any(value.is_finite is not True or value.is_real is not True
+4899:                for value in self.limits.values()):
+4900:             raise ValueError('channel input profile limits are unresolved or non-finite')
+4901:         eta = self.parameters['eta_bg']
+4902:         self.origin = {reduction.symbols['eta_bg']: eta,
+4903:                        reduction.symbols['sigma_W']:
+4904:                            eta*self.parameters['W_0']/self.parameters['L_W']}
+4905:         if self.parameters['L_W'] <= 0 or self.parameters['W_0'] <= 0:
+4906:             raise ValueError('channel input length scales must be positive')
+4907:         if self.parameters['omega'] <= 0:
+4908:             raise ValueError('the implemented channel chart requires positive real frequency')
+
+### ChannelInput.mapping
+4910:     def mapping(self, algebraic, relation, live):
+4911:         atoms = (algebraic.free_symbols | relation.free_symbols)-set(live)
+4912:         missing = sorted(a.name for a in atoms if a.name not in self.parameters)
+4913:         if missing:
+4914:             raise ValueError(('unbound channel parameters', missing))
+4915:         mapping = {a: self.parameters[a.name] for a in atoms}
+4916:         for limit in algebraic.atoms(sp.Limit):
+4917:             mapping[limit] = self.limits[limit]
+4918:         return mapping
+
+### FullPencilModes.analytic
+5414:     def analytic(self, quotient):
+5415:         """Continue the actual positive-frequency real-axis branch operands."""
+5416:         positive = quotient.xreplace({sp.sign(self.r.omega): sp.S.One})
+5417:         piecewise = sorted(positive.atoms(sp.Piecewise), key=sp.default_sort_key)
+5418:         differences = tuple(sp.cancel(p.args[0].expr-p.args[-1].expr) for p in piecewise)
+5419:         # Both real-axis branches must join this analytic expression; the
+5420:         # branch residual is emitted before the structural gate in solve().
+5421:         positive = positive.xreplace({p: p.args[0].expr for p in piecewise})
+5422:         radical_powers = [p for p in positive.atoms(sp.Pow)
+5423:                           if p.exp.is_Rational and p.exp.q == 2 and p.has(self.k)]
+5424:         radicals = sorted({sp.sqrt(p.base) for p in radical_powers}, key=sp.default_sort_key)
+5425:         if len(radicals) != 1:
+5426:             raise NotImplementedError(('spectral radical census', radicals))
+5427:         radical = radicals[0]
+5428:         relation = self.q**2-radical.base
+5429:         replacements = {p: self.q**(2*p.exp) for p in radical_powers}
+5430:         algebraic = positive.xreplace(replacements)
+5431:         return algebraic, relation, differences
+
+### FullPencilModes.rational_determinant
+5452:     def rational_determinant(matrix):
+5453:         """Clear row denominators before the small exact determinant."""
+5454:         denominators, rows = [], []
+5455:         for i in range(matrix.rows):
+5456:             entries = [sp.cancel(matrix[i, j]) for j in range(matrix.cols)]
+5457:             denominator = sp.lcm([sp.denom(e) for e in entries])
+5458:             rows.append([sp.cancel(e*denominator) for e in entries])
+5459:             denominators.append(denominator)
+5460:         polynomial_matrix = sp.ImmutableMatrix(rows)
+5461:         determinant = polynomial_matrix.det(method='domain-ge')
+5462:         rational = sp.cancel(determinant/sp.prod(denominators))
+5463:         return sp.fraction(rational), polynomial_matrix, tuple(denominators)

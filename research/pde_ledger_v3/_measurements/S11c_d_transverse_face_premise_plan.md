@@ -1,0 +1,124 @@
+# Transverse map and reference face premise: bounded repair plan
+
+2026-09-28. **Build preparation and independent review only. No science run is
+authorized.** This plan replaces only the transverse/reference-face part of the
+rejected map build. Its exact earlier worker/plan remain preserved at `92b835e7`.
+The total-loss preparation amendment is independently cleared at `d648e1f4`;
+that clears neither this instrument nor any numerical premise.
+
+After this build review, return the costed first-order outgoing-field/power
+plan and stop for user go/no-go. The unused earlier map allowance cannot launch
+science before that decision. Thickness classification, permeability continuation,
+Born response, new anchors and the failed localized-action retry are outside
+this repair. No change to physical permeability, memory, materials or profiles.
+
+## Question and outputs
+
+For LAB_HELD/RHO4_CONSTANT at the saved 2:1 tangential direction, determine where
+the incident **transverse** channel has supported real propagation, physical
+current and undriven uniform face data. Keep REFERENCE, LEFT and RIGHT separate;
+reference evidence is not an end-to-end result. Record exact transverse and
+bulk-availability boundary expressions where tractable, with actual sampled
+crossing checks and chart/pole exclusions. No thickness-opening curve is promised.
+Deferring a mechanism label never defers the physical outgoing sheet needed
+for a contributing field. No current or wave number is supplied as an answer.
+
+Outputs must distinguish `available`, `absent`, and `unresolved`. A failed or
+incomplete root, chart, branch, current or control check cannot count as zero
+available channels. An available root proves existence; it does not establish
+the complete polarization census if another candidate is unresolved. Any
+absence claim needs the supported complete transverse census at that point.
+Unvisited end/point records remain unresolved. Grid samples cannot rule out
+thin unsampled regions or make a no-leakage theorem.
+
+Use the physical five-field end pencil with the saved curl lift and its actual
+current bilinear. The transverse restriction must join the full pencil, with
+the physical sector/off-diagonal and sheet evidence. No roots of the thickness
+block or general dissipative eliminant enter this job. Bulk availability comes
+from the saved physical acoustic row; it is not emitted power or face radiation.
+
+## Inputs and work order
+
+Restore only pinned own accepted uniform/frequency/pairing/unit and branch
+context; never import their producers. The source wrapper saves
+`(packet, knownDimensions)` with the constructor return in `packet['result']`.
+Original algebraic symbols retain both tangential momenta; the compact pencils
+bind them. Join against the original source, not a re-labelled compact pencil.
+Accepted endpoint limits are already bound; unsupported residual atoms stop
+that branch rather than trigger profile reconstruction.
+
+Use rational ray coordinate `v`, `(k1,k2)=(2v,v)` and display
+`kappa=|k_parallel|=sqrt(5)*v`. Frequency rows remain
+`[.1,.2,.25,.275,.3,.4,.5,.75,1,1.5,2,2.25,2.5,3,3.5,4]`.
+Ray columns are `[0,.01,.02,.03,.04,.06,.08,.10,.12,.14,.16,.175]`;
+their largest magnitude is `7*sqrt(5)/40`, inside the earlier 0.4 window.
+This arithmetic-domain repair changes sampling, not the physical source inputs.
+The 192 grid pairs plus at most 64 transition pairs remain bounded by 256.
+Zero-ray/chart degeneracy is explicit; no invented azimuth at zero momentum.
+
+Save a useful fixed-ray prefix at `v=.1`, beginning with REFERENCE, before
+optional symbolic loci or remaining columns. Share an end's result only after
+an actual source equality/origin join; otherwise keep separate evidence. Reuse
+saved seed data for comparisons without rerunning its mode producer. Six
+accepted `*-mode-16/17.pickle` operands, two per end, are pinned to the original
+uniform-response checkpoint. Join their actual saved wave numbers, bases,
+physical source/current operands and transverse membership; do not assume
+their sector from an index or redo their root/nullspace solve. This selected
+subset is a regression comparison, not a complete new seed census or a response
+anchor. Any unavailable comparison stays explicit.
+
+An exact locus remains a candidate until its domain/exclusions and both-side
+classifications support the stated interpretation. Optional locus timeouts
+save the partial inputs and leave the locus unresolved; they do not erase
+the fixed-ray result or trigger retries. Preserve a finite complete/partial
+grid record and the current operation if the whole-job cap is reached.
+
+## Face scope and controls
+
+Contract the actual saved native amplitude, pressure, outward velocity, mass
+flux, affinity and bulk-velocity rows with the transverse lift. Save raw rows,
+contractions, source identities and unit context before guards. Test the native
+eW-velocity omission on an independently addressed nontransverse probe; also
+check dependence of the transverse-zero test on its physical source/lift slots.
+A zero contraction is a result to inspect, not an answer built into the source.
+
+The supplied readable c2 index contains **velocity identifications only**.
+Join those exact values, their face addresses and harmonic convention. The old
+plan additionally promised c2 pressure, trace and normal-jet joins that its
+code did not implement. This repair explicitly excludes those first-shape
+joins and does not claim a first-order bulk drive or power result. Any supported
+flat-reference d pressure/velocity reconstruction must be labelled separately
+from that missing c2 coverage. The later outgoing-field/power plan must price
+the actual `C1 Psi0` and physical-face reconstruction dependencies.
+
+Frequency/tangential freezing or native-term omission controls must address
+actual source entries that act on the loaded subspace. The old hard-coded
+entry-(0,0) perturbation could miss a polarization. Save which operand changed,
+which route stayed fixed and the actual residual movement. A silent control
+leaves the affected claim unresolved; an arbitrary added constant is not a
+physics control. Mutations never replace the baseline source.
+
+## Evidence, budget and acceptance
+
+Persist complete operation inputs/returns or immutable references to them;
+deduplication may reduce serialization but never omit a repeated mathematical
+operand. Preserve raw residuals before classification, all partial outcomes,
+artifact/operation indices and input posthashes. Guarded execution is not
+scientific acceptance, and this source-only build review is not an executed
+ablation or numerical validation.
+
+If later authorized, one ordinary worker must use unchanged
+`scripts/s11c_guarded_run.py` around the normalization supervisor: 900 s outer,
+840 s native, 2 GiB, zero swap, one CPU, nice 15, 32 tasks, one native thread,
+global locking and hook first. No overlap, fallback, retry or inherited unlimited
+duration. Any saved-output validator needs its own bounded authorization/gate.
+Whole-job timeout must not be swallowed by an optional-operation handler.
+Measure actual cost before proposing further work; no response runtime is
+inferred from an end-pencil or document-review duration.
+
+The physically relevant analog-light band in these reference units is still
+uncalibrated. All outputs are case/azimuth/window-specific. Reference-zero face
+drive does not establish all retained-grade matched-end localization, absence
+of held-background work, or the first-order outgoing field/power pairing.
+Physical loss, the full response/Green/FORM and A11/A12 remain unestablished.
+Scratch stays runtime-only; Lean/S11_lean/shared guard and history stay intact.

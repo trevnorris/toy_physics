@@ -1,5 +1,38 @@
 # S11c-d: the remaining execution queue
 
+**Current result — narrowed transverse/face build needs revision (2026-09-28):**
+both fresh reviewers literally returned NEEDS REVISION. Packet/archive/source
+and receipt hashes match; both completed before adjudication or edits. See
+`S11c_d_transverse_face_premise_review_record.json` and the source-grounded
+`S11c_d_transverse_face_premise_review_disposition.md`. Preserve this reviewed
+baseline before the bounded domain/control/persistence repair and fresh review.
+No science ran. The costed outgoing-field/power plan and user go/no-go remain
+the required stop; thickness classification stays deferred.
+
+**Current status — narrowed transverse/face reviews running (2026-09-28):**
+the user explicitly approved the exact 23-file / 504,904-byte packet and its
+Claude/Grok destinations with “I approve.” The earlier automatic no-start
+refusal remains preserved. The unchanged packet launched with the local
+completion hook armed first; the single host startup inspection at 23:38:51
+UTC verified coordinator, watcher and fresh Claude alive. Grok is queued
+sequentially. Both reports must finish before adjudication or edits. See
+`S11c_d_transverse_face_premise_preparation.json`. No science, peer sharing,
+transport retry or model polling. After build clearance, return the costed
+outgoing-field/power plan and **stop for user go/no-go before any science**.
+
+**Current preparation — narrowed transverse/face build (2026-09-28):** the
+independently cleared total-loss amendment is preserved at `d648e1f4`. New
+worker, plan, input manifest and source/schema note are prepared for fresh
+Claude/Grok review; no scientific execution or payload restoration occurred.
+The fixed packet has 23 files / 504,904 bytes, SHA-256
+`25d7fc2b7634b152a52337e798d5c8c0131836f166b004db340d6cbdd972d841`.
+Automatic export approval rejected submission because this exact payload and
+destinations had not been explicitly approved. No reviewer process started;
+no bypass/retry. See `S11c_d_transverse_face_premise_preparation.json`.
+Await exact-packet permission, finish independent build review, then return
+the costed outgoing-field/power plan for go/no-go. **No science before that
+decision; thickness classification remains deferred.** Scratch stays ignored.
+
 **Current status — total-loss amendment independently cleared (2026-09-28):**
 both fresh round-2 reviewers literally return CLEAR FOR THIS PREPARATION
 AMENDMENT. Exact draft/assessment remain unchanged; see the round-2 record and

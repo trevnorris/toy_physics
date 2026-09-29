@@ -1,5 +1,17 @@
 # S11c-d session recovery — 2026-09-26
 
+**RIGHT-only 16 GiB continuation reviews submitted (2026-09-29):** user
+said “I approve. run it.” in direct reply to exact packet
+`10a92ac1f410a921ba2efbc81f5180d779e9a4e673d007e3382fed66adcea8fb`
+(74 files / 2962084 bytes). Packet/archive,73 source files and1364 input pins
+match. Fresh Claude review launched; fresh Grok follows independently with the
+same packet. The existing local completion hook is armed for this session;
+waiting invokes no model. No scientific execution or READY gate yet. Both
+literal reports must finish before adjudication. If substantively cleared,
+the existing user approval covers the single right-end continuation at16GiB,
+desktop-managed priority and progress-dependent runtime, with no repeated
+science approval. Stop after its actual result; preserve all prior work.
+
 **RIGHT-only 16 GiB continuation prepared (2026-09-29):** user explicitly
 approved 16 GB and had already approved desktop-managed priority and longer
 running while saved results progress. This prepares execution 6, preserving

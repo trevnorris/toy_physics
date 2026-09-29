@@ -1,5 +1,5 @@
 {
-  "status": "PREPARED_AWAITING_EXACT_PACKET_SUBMISSION_APPROVAL",
+  "status": "SUBMITTED_WAITING_FOR_BOTH_LITERAL_REPORTS",
   "preparedUtc": "2026-09-29T21:26:38.507014+00:00",
   "priorCompletionCommit": "79e7cfc9",
   "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/right-finish-build-review",
@@ -388,7 +388,7 @@
     "archiveMembersVerified": true
   },
   "authorization": {
-    "status": "PENDING_EXACT_PACKET_APPROVAL",
+    "status": "EXPLICITLY_APPROVED_FIXED_PACKET",
     "reviewers": [
       "claude",
       "grok"
@@ -397,10 +397,36 @@
     "archiveSha256": "c5798a621c994a662f26bd1a4e59063bef78a4d79499fec5467538a94d7ee77e",
     "packetFiles": 74,
     "packetBytes": 2962084,
-    "scientificExecutionAuthorizedByThisSubmission": false
+    "scientificExecutionAuthorizedByThisSubmission": false,
+    "userReply": "I approve. run it.",
+    "approvedUtc": "2026-09-29T22:20:53.872705+00:00",
+    "approvalContext": "Direct reply to the prepared 74-file / 2,962,084-byte exact-packet question. Existing separate science authorization covers one right-end continuation after substantive independent clearance.",
+    "packetPreparedCommit": "ff4c606b",
+    "noPeerSharing": true,
+    "noAutomaticTransportRetry": true
   },
   "scientificExecutionsUsed": 5,
   "proposedScientificExecutionOrdinal": 6,
   "scienceNotLaunched": true,
-  "independentBuildClearance": false
+  "independentBuildClearance": false,
+  "submittedUtc": "2026-09-29T22:21:06.053381+00:00",
+  "launch": {
+    "jobPid": 2550295,
+    "watcherPid": 2550296,
+    "packetSha256": "10a92ac1f410a921ba2efbc81f5180d779e9a4e673d007e3382fed66adcea8fb",
+    "reviewers": [
+      "Claude",
+      "Grok"
+    ],
+    "concurrentReviewWorkers": 1,
+    "scienceCalls": 0,
+    "runnerSha256": "4d75a6f0a09e7c9543066bc4e4a56cbf9a7112a6621e46ba6701000b4de60cd9",
+    "launcherSha256": "49fe9c927187bab8192ea68c08466359e7b087a5417aa36cd2d026ba5c351509"
+  },
+  "hook": {
+    "status": "waiting",
+    "thread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+    "watcherPid": 2550296,
+    "jobPid": 2550295
+  }
 }

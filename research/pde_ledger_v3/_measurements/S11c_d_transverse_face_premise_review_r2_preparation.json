@@ -1,0 +1,251 @@
+{
+  "status": "BOTH_LITERAL_NEEDS_REVISION_SOURCE_ONLY",
+  "preparedUtc": "2026-09-29T00:19:30.718134+00:00",
+  "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/build-review-r2",
+  "packetIndex": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/build-review-r2/packet/packet-index.json",
+  "packetSha256": "70aa95c46d46830dd10e89f6cc562d55fb7fb8935fd4d19f7841e595db861dec",
+  "archiveSha256": "42ff2cc818d37b2ca9843bdf6438538726a275e54a37ebf9716e7399a8818c97",
+  "packetFiles": 24,
+  "packetBytes": 547542,
+  "sourceRecords": [
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_A9_saved_face_drives.json",
+      "sourceSha256": "057c9960aa1c721d1973de85cc48e5d6ac3bcb20a233cfc10f63d6f9207d6bf8"
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_continuum_response.py",
+      "sourceSha256": "0fe30a9c4771671e9fa139b0557f185f55d351887f2ba8b9fa4ed1abfb616db2"
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+      "sourceSha256": "45a16f7f952ca6b571362b1c386fec76cd86f1e0ad04113074adf49c683ec49c"
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_end_pairing_check.py",
+      "sourceSha256": "1fcf86b0be819e2c7e9a2127d8330c907bcaccf58d1d15c3f1534d594d926dee"
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_frequency_source.py",
+      "sourceSha256": "9be20be462bc10bfcaa7af643b9301948dd79bc2e08eb24ebcd1386a81efcdac"
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_frequency_source_report.md",
+      "sourceSha256": "46b91c1e159f6b467809c0119511b24bef270e4c960edf0755d2034fd93fa421"
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_native_source.txt",
+      "sourceSha256": "fe9492e73f5aeb4a5c1b1782153e9e420cc884ff730905aaefa26aaafa70b2b5"
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_premise.py",
+      "sourceSha256": "f7112cedc6852b9fd257e3317bc3c56661caae6dd11d88d44df692bea650efd5"
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_premise_inputs.json",
+      "sourceSha256": "e7110981b096aa45c467858fb4ac279344676f4dd487f2db43669be5c130ddb5"
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_premise_plan.md",
+      "sourceSha256": "cabd09deee20a29c7bf88b9d94b1f522c4814a1fb1ce23d531f317c41568a2d0"
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_premise_review_prompt.md",
+      "sourceSha256": "2a93f8f6b6b4ed528de9ee000e758a68d6785dde7dab7bdb960398cf25f8a28a"
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_premise_source_note.md",
+      "sourceSha256": "cb85a52242d1afb2107de985a324136bb952187db352cd96e7eed8f020a8e7bb"
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_uniform_response.py",
+      "sourceSha256": "b65749ab0eaaeed372a5bf01077a030971fc3e05f05a11543443bd1de3f157d4"
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_uniform_source.py",
+      "sourceSha256": "2a135aea365c7b5e57bfff7683c7b927cda52c0d37f6a9bad3c961eb6205a2b2"
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_uniform_source_checkpoint.json",
+      "sourceSha256": "9d4b65ad07d1f403fd3aa4ec42da99db622a4d0a26d6ddce6c472148c7830085"
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_uniform_source_report.md",
+      "sourceSha256": "d95f629e292e67eafe36bde9a5bd0689345c7fb3fac97d669671ea278ae65b8b"
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_variable_profile_development_input.json",
+      "sourceSha256": "660b2b0b54494dce964c7f5fbd722a76a7e894d8ed92b18b5eb6290c3c10f1d5"
+    },
+    {
+      "path": "research/pde_ledger_v3/directives/S11c_c1_SHARED_PHYSICS.md",
+      "sourceSha256": "47554c8c9cf2fd070c1048a7ae0ca36b1315bf50a48ed07a51019ff3e72987ad"
+    },
+    {
+      "path": "research/pde_ledger_v3/directives/S11c_d_CHANNEL_MAP_BORN_AMENDMENT_DRAFT.md",
+      "sourceSha256": "8aa6fc7ab6d43f1f197a3cb8f9a83b7607f1de2c7a321aa130b582f4a323082d"
+    },
+    {
+      "path": "research/pde_ledger_v3/directives/S11c_d_SCATTERING_FORM_AMENDMENT.md",
+      "sourceSha256": "eb6f20a3fd0bce308e53901fa69fdf267b2917e5cc78b319a1e7700074a47560"
+    },
+    {
+      "path": "research/pde_ledger_v3/directives/S11c_d_SHARED_PHYSICS.md",
+      "sourceSha256": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5"
+    },
+    {
+      "path": "research/pde_ledger_v3/directives/S11c_d_TOTAL_TRANSVERSE_LOSS_AMENDMENT_DRAFT.md",
+      "sourceSha256": "ec12456947527bb162a6bd56a65651f1028cca1f95f0d85379bdc8a411fbb6fc"
+    },
+    {
+      "path": "research/pde_ledger_v3/scripts/S11c_d_mixing_scattering_sympy_audit.py",
+      "sourceSha256": "5bf77729682960bb59f10c672a5fe3f67a98b0a9533da7c6189a37183596050f"
+    },
+    {
+      "path": "scripts/s11c_guarded_run.py",
+      "sourceSha256": "9194b3e04b43d345828082e6312b0a2d7a9293f6296153f9c6ccea2defb931d2"
+    }
+  ],
+  "packetFilesAndHashes": {
+    "packet-index.json": "1418bdc4306f5551509f6f3caf8caf494abf8958dda34bdd877a931c08dbf775",
+    "research/pde_ledger_v3/_measurements/S11c_d_A9_saved_face_drives.json": "057c9960aa1c721d1973de85cc48e5d6ac3bcb20a233cfc10f63d6f9207d6bf8",
+    "research/pde_ledger_v3/_measurements/S11c_d_continuum_response.py": "0fe30a9c4771671e9fa139b0557f185f55d351887f2ba8b9fa4ed1abfb616db2",
+    "research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py": "45a16f7f952ca6b571362b1c386fec76cd86f1e0ad04113074adf49c683ec49c",
+    "research/pde_ledger_v3/_measurements/S11c_d_end_pairing_check.py": "1fcf86b0be819e2c7e9a2127d8330c907bcaccf58d1d15c3f1534d594d926dee",
+    "research/pde_ledger_v3/_measurements/S11c_d_frequency_source.py": "9be20be462bc10bfcaa7af643b9301948dd79bc2e08eb24ebcd1386a81efcdac",
+    "research/pde_ledger_v3/_measurements/S11c_d_frequency_source_report.md": "46b91c1e159f6b467809c0119511b24bef270e4c960edf0755d2034fd93fa421",
+    "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_native_source.txt": "fe9492e73f5aeb4a5c1b1782153e9e420cc884ff730905aaefa26aaafa70b2b5",
+    "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_premise.py": "f7112cedc6852b9fd257e3317bc3c56661caae6dd11d88d44df692bea650efd5",
+    "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_premise_inputs.json": "e7110981b096aa45c467858fb4ac279344676f4dd487f2db43669be5c130ddb5",
+    "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_premise_plan.md": "cabd09deee20a29c7bf88b9d94b1f522c4814a1fb1ce23d531f317c41568a2d0",
+    "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_premise_source_note.md": "cb85a52242d1afb2107de985a324136bb952187db352cd96e7eed8f020a8e7bb",
+    "research/pde_ledger_v3/_measurements/S11c_d_uniform_response.py": "b65749ab0eaaeed372a5bf01077a030971fc3e05f05a11543443bd1de3f157d4",
+    "research/pde_ledger_v3/_measurements/S11c_d_uniform_source.py": "2a135aea365c7b5e57bfff7683c7b927cda52c0d37f6a9bad3c961eb6205a2b2",
+    "research/pde_ledger_v3/_measurements/S11c_d_uniform_source_checkpoint.json": "9d4b65ad07d1f403fd3aa4ec42da99db622a4d0a26d6ddce6c472148c7830085",
+    "research/pde_ledger_v3/_measurements/S11c_d_uniform_source_report.md": "d95f629e292e67eafe36bde9a5bd0689345c7fb3fac97d669671ea278ae65b8b",
+    "research/pde_ledger_v3/_measurements/S11c_d_variable_profile_development_input.json": "660b2b0b54494dce964c7f5fbd722a76a7e894d8ed92b18b5eb6290c3c10f1d5",
+    "research/pde_ledger_v3/directives/S11c_c1_SHARED_PHYSICS.md": "47554c8c9cf2fd070c1048a7ae0ca36b1315bf50a48ed07a51019ff3e72987ad",
+    "research/pde_ledger_v3/directives/S11c_d_CHANNEL_MAP_BORN_AMENDMENT_DRAFT.md": "8aa6fc7ab6d43f1f197a3cb8f9a83b7607f1de2c7a321aa130b582f4a323082d",
+    "research/pde_ledger_v3/directives/S11c_d_SCATTERING_FORM_AMENDMENT.md": "eb6f20a3fd0bce308e53901fa69fdf267b2917e5cc78b319a1e7700074a47560",
+    "research/pde_ledger_v3/directives/S11c_d_SHARED_PHYSICS.md": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5",
+    "research/pde_ledger_v3/directives/S11c_d_TOTAL_TRANSVERSE_LOSS_AMENDMENT_DRAFT.md": "ec12456947527bb162a6bd56a65651f1028cca1f95f0d85379bdc8a411fbb6fc",
+    "review-prompt.md": "2a93f8f6b6b4ed528de9ee000e758a68d6785dde7dab7bdb960398cf25f8a28a",
+    "scripts/s11c_guarded_run.py": "9194b3e04b43d345828082e6312b0a2d7a9293f6296153f9c6ccea2defb931d2"
+  },
+  "authorization": {
+    "status": "EXPLICITLY_APPROVED_FIXED_PACKET",
+    "recordedUtc": "2026-09-29T00:19:30.718134+00:00",
+    "userInstruction": "After it clears, repair and re-review only the transverse-first map and face-drive test (premise #1). Defer thickness-classification repair as secondary. Then return a costed plan for first-order outgoing field and its power pairing. Stop for go/no-go. No science runs before that.",
+    "authorizationBasis": "User explicitly approved this exact corrected packet and Claude/Grok destinations after the automatic export refusal. The earlier refusal remains preserved.",
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "packetSha256": "70aa95c46d46830dd10e89f6cc562d55fb7fb8935fd4d19f7841e595db861dec",
+    "archiveSha256": "42ff2cc818d37b2ca9843bdf6438538726a275e54a37ebf9716e7399a8818c97",
+    "packetFiles": 24,
+    "packetBytes": 547542,
+    "currentThread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+    "scientificExecutionAuthorized": false,
+    "automaticApprovalRefusal": {
+      "status": "AUTOMATIC_EXPORT_APPROVAL_REJECTED_NO_PROCESS_STARTED",
+      "recordedUtc": "2026-09-29T00:20:22.986984+00:00",
+      "action": "Submit corrected narrowed transverse/face source-only build packet to fresh Claude and Grok reviewers",
+      "reason": "This exports a newly changed 24-file internal packet to external Claude/Grok destinations; the user authorized the repair/review sequence but did not explicitly approve this exact payload and hash, so sensitive egress remains unauthorized.",
+      "packetFiles": 24,
+      "packetBytes": 547542,
+      "packetSha256": "70aa95c46d46830dd10e89f6cc562d55fb7fb8935fd4d19f7841e595db861dec",
+      "destinations": [
+        "Claude",
+        "Grok"
+      ],
+      "scienceCalls": 0,
+      "bypassOrRetryAttempted": false,
+      "requiredNextInput": "Explicit approval for this exact corrected packet and destinations."
+    },
+    "exactPayloadUserApproval": {
+      "recordedUtc": "2026-09-29T00:27:13.130981+00:00",
+      "reply": "I approve",
+      "context": "Reply to explicit request to send this corrected 24-file / 547,542-byte packet to fresh Claude and Grok reviewers.",
+      "packetSha256": "70aa95c46d46830dd10e89f6cc562d55fb7fb8935fd4d19f7841e595db861dec",
+      "archiveSha256": "42ff2cc818d37b2ca9843bdf6438538726a275e54a37ebf9716e7399a8818c97",
+      "destinations": [
+        "Claude",
+        "Grok"
+      ],
+      "scientificExecutionAuthorized": false
+    }
+  },
+  "static": {
+    "status": "SOURCE_AST_HASH_CHECKS_ONLY_NO_SCIENCE",
+    "reviewedBaselineCommit": "c84793b3",
+    "runnerSha256": "17a7aaf9f4d12f2b9f7db9499019907b5f21cfb1f39419c217f6c277ef867685",
+    "launcherSha256": "964ee94e230d672d6382d00fa640a6f8fe34d01cb29a41910b65150bcd044b29",
+    "completionMessageSha256": "af405f4c0e1a64093a1ed41d079be5971d85f8bb5b01b780fe35be3bb3f5e396",
+    "workerSha256": "f7112cedc6852b9fd257e3317bc3c56661caae6dd11d88d44df692bea650efd5",
+    "workerSyntaxPass": true,
+    "workerExecutedOrImported": false,
+    "scientificPayloadsRestored": 0,
+    "allPinnedInputsHashAndSizeMatch": 33,
+    "acceptedArtifactCheckpointJoinsMatch": 15,
+    "archiveContentsVerified": true,
+    "peerReportsIncluded": false,
+    "transportChanges": "Only runtime root changed from previously completed read-only sequential transport.",
+    "missingOptionalStaticTriageTool": "Skill reference reduction/derived_or_declared.py not found by rg --files; no substitute created and no physics clearance inferred from syntax."
+  },
+  "governingAmendmentCommit": "d648e1f4280d2ffd4d35ed48594e99e3e2c1e6b6",
+  "priorRejectedBuildCommit": "c84793b3",
+  "scienceJobsStarted": 0,
+  "noScienceStop": "Costed outgoing-field/power plan must be returned for user go/no-go before any scientific run.",
+  "automaticApprovalRefusal": {
+    "status": "AUTOMATIC_EXPORT_APPROVAL_REJECTED_NO_PROCESS_STARTED",
+    "recordedUtc": "2026-09-29T00:20:22.986984+00:00",
+    "action": "Submit corrected narrowed transverse/face source-only build packet to fresh Claude and Grok reviewers",
+    "reason": "This exports a newly changed 24-file internal packet to external Claude/Grok destinations; the user authorized the repair/review sequence but did not explicitly approve this exact payload and hash, so sensitive egress remains unauthorized.",
+    "packetFiles": 24,
+    "packetBytes": 547542,
+    "packetSha256": "70aa95c46d46830dd10e89f6cc562d55fb7fb8935fd4d19f7841e595db861dec",
+    "destinations": [
+      "Claude",
+      "Grok"
+    ],
+    "scienceCalls": 0,
+    "bypassOrRetryAttempted": false,
+    "requiredNextInput": "Explicit approval for this exact corrected packet and destinations."
+  },
+  "builderSourceChecks": {
+    "workerSha256": "f7112cedc6852b9fd257e3317bc3c56661caae6dd11d88d44df692bea650efd5",
+    "ASTSyntaxPass": true,
+    "scientificExecution": false,
+    "numericalTests": false,
+    "sourceNotePresent": true
+  },
+  "launch": {
+    "jobPid": 845250,
+    "watcherPid": 845251,
+    "packetSha256": "70aa95c46d46830dd10e89f6cc562d55fb7fb8935fd4d19f7841e595db861dec",
+    "reviewers": [
+      "Claude",
+      "Grok"
+    ],
+    "concurrentReviewWorkers": 1,
+    "scienceCalls": 0,
+    "runnerSha256": "17a7aaf9f4d12f2b9f7db9499019907b5f21cfb1f39419c217f6c277ef867685",
+    "launcherSha256": "964ee94e230d672d6382d00fa640a6f8fe34d01cb29a41910b65150bcd044b29"
+  },
+  "startupInspection": {
+    "recordedUtc": "2026-09-29T00:27:39.812147+00:00",
+    "coordinatorAlive": true,
+    "watcherAlive": true,
+    "watcherStatus": "waiting",
+    "stateStatus": "RUNNING",
+    "coordinatorChildren": [
+      {
+        "pid": 845255,
+        "name": "claude"
+      }
+    ],
+    "scienceCalls": 0,
+    "inspection": "One host startup inspection; no recurring polling."
+  },
+  "reviewRecord": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_premise_review_r2_record.json"
+}

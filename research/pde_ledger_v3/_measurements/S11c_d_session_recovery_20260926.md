@@ -1,5 +1,37 @@
 # S11c-d session recovery — 2026-09-26
 
+**Current result — transverse/face round 2 needs revision (2026-09-28 local):**
+both reviewers again literally returned NEEDS REVISION. All packet, source,
+input and report hashes match; both finished before adjudication. The remaining
+source corrections concern loaded-term flags, timer handoff, both harmonic
+face maps, native E-slot presence and retained pole denominators. See
+`S11c_d_transverse_face_premise_review_r2_disposition.md` and its literal record.
+Preserve this exact baseline before the local repair/fresh review. No science,
+author clearance or new method is authorized. The final costed-plan go/no-go
+stop remains in force.
+
+**Current status — corrected transverse/face reviews running (2026-09-28 local):**
+the user explicitly approved the exact 24-file / 547,542-byte corrected packet
+and Claude/Grok destinations with “I approve.” The earlier automatic no-start
+refusal remains preserved. The unchanged packet launched with its local hook
+armed first. A single host startup inspection at 00:27:39 UTC on September 29
+verified the coordinator, watcher and fresh Claude alive; Grok is queued
+sequentially. See `S11c_d_transverse_face_premise_review_r2_preparation.json`.
+Both reports must finish before adjudication or edits. No science, peer sharing,
+transport retry or model polling. Build clearance must be followed by the
+costed outgoing-field/power plan and user go/no-go before any science.
+
+**Current preparation — corrected transverse/face build (2026-09-28):** the
+first reviewed worker and both NEEDS REVISION reports are preserved at
+`c84793b3`. Bounded domain/control/persistence corrections are written; only
+AST/source checks ran. The fresh packet contains 24 files / 547,542 bytes,
+SHA-256 `70aa95c46d46830dd10e89f6cc562d55fb7fb8935fd4d19f7841e595db861dec`.
+Automatic export approval rejected the new exact packet; no reviewer process
+started. Await explicit exact-payload permission. No author clearance or
+science is claimed. See `S11c_d_transverse_face_premise_review_r2_preparation.json`.
+After independent build clearance, return the costed outgoing-field/power plan
+and stop for user go/no-go. Thickness classification stays deferred.
+
 **Current result — narrowed transverse/face build needs revision (2026-09-28):**
 both fresh reviewers literally returned NEEDS REVISION. Packet/archive/source
 and receipt hashes match; both completed before adjudication or edits. See

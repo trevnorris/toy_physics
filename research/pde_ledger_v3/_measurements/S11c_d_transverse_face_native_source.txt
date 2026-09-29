@@ -1096,3 +1096,26 @@ AST-selected literal method excerpts, no execution.
 5461:         determinant = polynomial_matrix.det(method='domain-ge')
 5462:         rational = sp.cancel(determinant/sp.prod(denominators))
 5463:         return sp.fraction(rational), polynomial_matrix, tuple(denominators)
+
+### save_reduced_action_cache (saved branch-context schema)
+8135: def save_reduced_action_cache(path, rows, payloads, branch_bindings, reduction,
+8136:                               dimensions, specification, source_digests):
+8137:     """Persist computed reduction operands and state, without changing them."""
+8138:     path = path.resolve()
+8139:     path.relative_to(ROOT.parents[1]/'_scratch/s11c')
+8140:     path.parent.mkdir(parents=True, exist_ok=True)
+8141:     if path.exists():
+8142:         raise ValueError('reduced action cache already exists')
+8143:     plain_rows = {key: dict(value) for key, value in rows.items()}
+8144:     state = dict(vars(reduction))
+8145:     state['rows'] = plain_rows
+8146:     packet = {'schema': 1, 'rows': plain_rows, 'payloads': payloads,
+8147:               'branchBindings': branch_bindings, 'reductionState': state,
+8148:               'dimensionState': dict(vars(dimensions)),
+8149:               'inputSpecification': specification, 'sourceDigests': source_digests}
+8150:     temporary = path.with_name(path.name+'.new')
+8151:     with temporary.open('xb') as stream:
+8152:         pickle.dump(packet, stream, protocol=5)
+8153:         stream.flush()
+8154:         os.fsync(stream.fileno())
+8155:     temporary.replace(path)

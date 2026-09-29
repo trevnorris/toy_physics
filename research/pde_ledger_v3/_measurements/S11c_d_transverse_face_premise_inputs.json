@@ -126,8 +126,8 @@
     "plan": {
       "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_premise_plan.md",
       "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_premise_plan.md",
-      "bytes": 7669,
-      "sha256": "91b47d16a822f98017ab8f6e1ef89ceb355eedaf4cac9f0f22b7cdb2de57721d"
+      "bytes": 10302,
+      "sha256": "cabd09deee20a29c7bf88b9d94b1f522c4814a1fb1ce23d531f317c41568a2d0"
     },
     "sourceEngine": {
       "path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_d_mixing_scattering_sympy_audit.py",
@@ -188,6 +188,18 @@
       "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_uniform_response.py",
       "bytes": 21153,
       "sha256": "b65749ab0eaaeed372a5bf01077a030971fc3e05f05a11543443bd1de3f157d4"
+    },
+    "uniformCommon": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-uniform-source-20260919/production/complete/common.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-uniform-source-20260919/production/complete/common.pickle",
+      "bytes": 152330,
+      "sha256": "f05e16309a6b1d2aa841703092be69408f2a57247aca020ea92383d011a38ebb"
+    },
+    "continuumResponseSource": {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_continuum_response.py",
+      "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_continuum_response.py",
+      "bytes": 23551,
+      "sha256": "0fe30a9c4771671e9fa139b0557f185f55d351887f2ba8b9fa4ed1abfb616db2"
     }
   },
   "checkpointJoins": [
@@ -288,6 +300,11 @@
       "artifact": "right-mode-17.pickle",
       "relocatedFrom": null,
       "hashMatches": true
+    },
+    {
+      "inputKey": "uniformCommon",
+      "checkpoint": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_uniform_source_checkpoint.json",
+      "artifact": "common.pickle"
     }
   ],
   "physicalInput": {
@@ -400,144 +417,12 @@
     ],
     "displayMagnitude": "sqrt(5)*v",
     "fixedRayCoordinate": "1/10",
-    "transitionPairBudget": 64
-  },
-  "savedSeedSummary": {
-    "checkpoint": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_continuum_currents_checkpoint.json",
-    "checkpointSha256": "075bf9e9f70f38563ca28a45471e2e660115c70f64c2a81a7f4769042a9154ca",
-    "status": "PUBLISHED_ANNEX_VERIFIED",
-    "observables": {
-      "transverse": {
-        "amplitudeMaxima": {
-          "(0, 0)": 1.000000000000284,
-          "(1, 0)": 1.9058650697922435,
-          "(0, 1)": 0.0004353406978791289,
-          "(1, 1)": 0.020938598851915055
-        },
-        "approvedRetainedAmplitudeMaximum": 1.0028802858019374,
-        "fractionTaylorReal": {
-          "0": [
-            1.000000000000568,
-            1.000000000000151,
-            1.0000000000002796,
-            0.9999999999999825
-          ],
-          "1": [
-            -1.5156105431917944e-05,
-            -2.6514609007486276e-06,
-            2.072457900560378e-05,
-            3.625379667988301e-06
-          ],
-          "2": [
-            3.339540889672933,
-            3.3398680747552705,
-            3.6325745859297065,
-            3.6322005337596757
-          ]
-        },
-        "inducedQuadraticReal": [
-          3.6320723787613005,
-          3.6321128513609056,
-          3.632165835897797,
-          3.632129196877692
-        ],
-        "baselineCurrentMaximum": 0.5889609494698217,
-        "inducedVsTotalMinusBaselineMaximum": 0.31841560231399746
-      },
-      "thickness": {
-        "amplitudeMaxima": {
-          "(0, 0)": 0.0,
-          "(1, 0)": 0.0,
-          "(0, 1)": 0.0,
-          "(1, 1)": 0.0
-        },
-        "approvedRetainedAmplitudeMaximum": 0.0,
-        "fractionTaylorReal": {
-          "0": [
-            0.0,
-            0.0,
-            0.0,
-            0.0
-          ],
-          "1": [
-            0.0,
-            0.0,
-            0.0,
-            0.0
-          ],
-          "2": [
-            0.0,
-            0.0,
-            0.0,
-            0.0
-          ]
-        },
-        "inducedQuadraticReal": [
-          0.0,
-          0.0,
-          0.0,
-          0.0
-        ],
-        "baselineCurrentMaximum": 0.0,
-        "inducedVsTotalMinusBaselineMaximum": 0.0
-      },
-      "allOpen": {
-        "amplitudeMaxima": {
-          "(0, 0)": 1.000000000000284,
-          "(1, 0)": 1.9058650697922435,
-          "(0, 1)": 0.0004353406978791289,
-          "(1, 1)": 0.020938598851915055
-        },
-        "approvedRetainedAmplitudeMaximum": 1.0028802858019374,
-        "fractionTaylorReal": {
-          "0": [
-            1.000000000000568,
-            1.000000000000151,
-            1.0000000000002796,
-            0.9999999999999825
-          ],
-          "1": [
-            -1.5156105431917944e-05,
-            -2.6514609007486276e-06,
-            2.072457900560378e-05,
-            3.625379667988301e-06
-          ],
-          "2": [
-            3.339540889672933,
-            3.3398680747552705,
-            3.6325745859297065,
-            3.6322005337596757
-          ]
-        },
-        "inducedQuadraticReal": [
-          3.6320723787613005,
-          3.6321128513609056,
-          3.632165835897797,
-          3.632129196877692
-        ],
-        "baselineCurrentMaximum": 0.5889609494698217,
-        "inducedVsTotalMinusBaselineMaximum": 0.31841560231399746
-      },
-      "LEFTClosedMatching": {
-        "amplitudeMaxima": {
-          "(0, 0)": 2.9644451750226533e-13,
-          "(1, 0)": 0.03189364751303413,
-          "(0, 1)": 0.2632766572853232,
-          "(1, 1)": 0.9281852859384904
-        },
-        "approvedRetainedMaximum": 0.00010839908270751025
-      },
-      "RIGHTClosedMatching": {
-        "amplitudeMaxima": {
-          "(0, 0)": 3.7376785331950296e-13,
-          "(1, 0)": 0.03358819208585458,
-          "(0, 1)": 0.2733812185347541,
-          "(1, 1)": 1.48041222390947
-        },
-        "approvedRetainedMaximum": 9.09202038852115e-05
-      }
-    },
-    "scope": "Finite retained-rectangle open-channel and closed matching response; full finite-end normal current is distinct from bulk-depth radiation. No physical gain/loss inferred from omitted pure second-order terms; no pole solve."
+    "transitionPairBudget": 24,
+    "prefixFrequencies": [
+      "1/4",
+      "3/10",
+      "1/2"
+    ]
   },
   "scientificPayloadsRestoredDuringPreparation": 0,
   "futureComputeLimits": {
@@ -573,5 +458,19 @@
     "worker": "S11c_d_channel_map_face.py",
     "preservedCommit": "92b835e7",
     "originalInputManifestSha256": "63d7ec7ea9c379b80416a2f9562e32b00288f3edf07e649e3a26b8a5f6d6223e"
-  }
+  },
+  "savedSeedProvenance": {
+    "modeIndices": [
+      16,
+      17
+    ],
+    "scope": "Selected saved operands only, never a complete new census or Born/full anchor. Identical hashes are shared operands, independently joined to each end, not independent datasets.",
+    "checkpoint": {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_uniform_response_checkpoint.json",
+      "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_uniform_response_checkpoint.json",
+      "bytes": 82526,
+      "sha256": "74f5bd4da163dd6d78ad427fc5c4cd6926f414c961172f6854174131ea2fbc45"
+    }
+  },
+  "reviewedBaselineCommit": "c84793b3"
 }

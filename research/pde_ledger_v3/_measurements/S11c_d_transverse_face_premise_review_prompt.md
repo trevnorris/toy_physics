@@ -88,6 +88,25 @@ Write the report and exit; no orchestration or automatic downstream action.
    results, failure state, posthashes, units and strict stderr/stdout/checks
    identity inspectable? No exit code or success boolean is sufficient.
 
+Source details to inspect directly: native `ClosedCurrentPairing.construct`
+defines its plus/minus harmonic legs, harmonic average and acoustic quadratic
+pairing; distinguish those conjugate factors from independent incoming/outgoing
+wave amplitudes. Inspect both real depth-sign tests with the actual source
+normalization. The accepted common uniform packet supplies the curl gauge
+vector. Identical saved REFERENCE/LEFT seed hashes are shared operands;
+assess their joins to each bound end and selected-only coverage, rather than
+assuming that byte equality invalidates a physical operand. The packet also
+includes the actual branch-cache writer and continuum-response unit schema.
+
+Check pointwise T denominators/chart certificates before any absence, original
+multiplicities versus distinct roots, every loaded polarization's dependence,
+structural versus cancellation drive zeros, and atomic persistence under local
+and native timers. The c2 comparison is deliberately index-literal-only and
+orientation-blind. No transcript validation or independent closure proof is
+claimed. Recommend corrections only for substantive unsupported claims or
+wrong computations in this limited instrument; do not require new mode solves
+or a general classification campaign to improve a subset comparison's label.
+
 Practical toy-model scope applies: identify the smallest concrete correction
 needed for this supported question, not a general operator or classification
 campaign. The physical light-band calibration is unestablished; labels apply

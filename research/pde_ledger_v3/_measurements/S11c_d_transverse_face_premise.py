@@ -16,6 +16,7 @@ import pickle
 import resource
 import signal
 import time
+import tempfile
 import traceback
 
 ROOT = Path('/var/projects/toy_physics')
@@ -45,15 +46,35 @@ def route(path):
                 bytes=path.stat().st_size, sha256=sha(path))
 
 
-def save(path, value):
+class IntegrityError(RuntimeError):
+    """A source or stored-object pin changed; never a local math fallback."""
+
+
+def publish(path, payload):
+    """Publish a complete fsynced byte string with no overwrite window."""
     path.parent.mkdir(parents=True, exist_ok=True)
-    with path.open('x') as stream:
-        json.dump(value, stream, indent=2, allow_nan=False)
-        stream.write('\n'); stream.flush(); os.fsync(stream.fileno())
+    fd, temporary = tempfile.mkstemp(prefix='.'+path.name+'.', suffix='.partial', dir=path.parent)
+    with os.fdopen(fd, 'wb') as stream:
+        stream.write(payload); stream.flush(); os.fsync(stream.fileno())
+    os.link(temporary, path)  # Atomic exclusive publication; existing path fails.
+    directory = os.open(path.parent, os.O_RDONLY | os.O_DIRECTORY)
+    try:
+        os.fsync(directory)
+    finally:
+        os.close(directory)
+    os.unlink(temporary)
+
+
+def save(path, value):
+    publish(path, (json.dumps(value, indent=2, allow_nan=False)+'\n').encode())
 
 
 class OperationBudget(BaseException):
     """Deliberately escapes ordinary algebra/domain exception handlers."""
+
+
+class NativeDeadline(BaseException):
+    """Fatal whole-job deadline; disarm before failure bookkeeping."""
 
 
 class SavedCodec(pickle.Unpickler):
@@ -65,57 +86,93 @@ class SavedCodec(pickle.Unpickler):
 
 
 class Journal:
-    """Each operation has complete operands; repeated objects use saved refs.
-
-    The identity table holds strong references, so Python id reuse cannot alias
-    an operand. It references only complete immutable-by-convention returns.
-    Every attempted operation has its own receipt even when values coincide.
-    """
+    """Complete operands, atomic content-addressed values, local math failures."""
     def __init__(self, out, deadline):
         self.out, self.deadline = out, deadline
         self.records, self.active, self.objects = [], None, {}
+        def timeout(*_):
+            signal.setitimer(signal.ITIMER_REAL, 0)
+            if time.monotonic() >= self.deadline:
+                raise NativeDeadline('native whole-job deadline')
+            raise OperationBudget('bounded mathematical operation')
+        signal.signal(signal.SIGALRM, timeout)
+        self.arm_native()
+
+    def arm_native(self):
+        signal.setitimer(signal.ITIMER_REAL, 0)
+        remaining = self.deadline-time.monotonic()
+        if remaining <= 0:
+            raise NativeDeadline('native whole-job deadline')
+        signal.setitimer(signal.ITIMER_REAL, remaining)
 
     def blob(self, value):
         existing = self.objects.get(id(value))
         if existing is not None and existing[0] is value:
-            return existing[1]
+            record = existing[1]
+            if route(record['path']) != record:
+                raise IntegrityError('previous object changed')
+            return record
         payload = pickle.dumps(value, protocol=4)
         digest = hashlib.sha256(payload).hexdigest()
         path = self.out/'objects'/(digest+'.pickle')
-        path.parent.mkdir(exist_ok=True)
-        if not path.exists():
-            with path.open('xb') as stream:
-                stream.write(payload); stream.flush(); os.fsync(stream.fileno())
+        if path.exists():
+            if path.stat().st_size != len(payload) or sha(path) != digest:
+                raise IntegrityError('existing content-addressed object is incomplete or changed')
+        else:
+            publish(path, payload)
         record = route(path)
+        if record['sha256'] != digest:
+            raise IntegrityError('published object hash mismatch')
         self.objects[id(value)] = (value, record)
         return record
 
-    def op(self, name, function, *args, seconds=20):
+    def op(self, name, function, *args, seconds=20, required=False):
         path = self.out/'operations'/('%04d-%s' % (len(self.records), name))
         path.mkdir(parents=True, exist_ok=False)
-        self.active = dict(name=name, operands=[self.blob(arg) for arg in args],
-                           startedUtc=datetime.now(timezone.utc).isoformat())
+        self.active = dict(name=name, operands=[], startedUtc=datetime.now(timezone.utc).isoformat())
+        save(path/'started.json', self.active)
+        for arg in args:
+            self.active['operands'].append(self.blob(arg))
         save(path/'input-references.json', self.active)
         remaining = self.deadline-time.monotonic()
         if remaining <= 0:
-            raise OperationBudget('native whole-job deadline')
+            signal.setitimer(signal.ITIMER_REAL, 0)
+            raise NativeDeadline('native whole-job deadline')
         signal.setitimer(signal.ITIMER_REAL, min(seconds, remaining))
+        failed = None
         try:
             value = function(*args)
-            record = dict(self.active, status='COMPLETE', value=self.blob(value))
-            save(path/'complete.json', record)
-            self.records.append(record); self.active = None
-            return value
+        except NativeDeadline:
+            signal.setitimer(signal.ITIMER_REAL, 0)
+            raise
         except OperationBudget:
-            record = dict(self.active, status='BUDGET_STOP_UNRESOLVED_NO_RETRY')
-            save(path/'budget-stop.json', record)
-            self.records.append(record); self.active = None
-            if time.monotonic() >= self.deadline:
+            signal.setitimer(signal.ITIMER_REAL, 0)
+            if required:
+                signal.setitimer(signal.ITIMER_REAL, 0)
                 raise
-            return {'status': 'UNRESOLVED', 'reason': 'OPERATION_BUDGET',
-                    'operationReceipt': str(path/'budget-stop.json')}
-        finally:
-            signal.setitimer(signal.ITIMER_REAL, max(.001, self.deadline-time.monotonic()))
+            failed = dict(status='UNRESOLVED', reason='OPERATION_BUDGET', traceback=traceback.format_exc())
+        except Exception as error:
+            signal.setitimer(signal.ITIMER_REAL, 0)
+            if required or isinstance(error, (IntegrityError, OSError, pickle.UnpicklingError)):
+                signal.setitimer(signal.ITIMER_REAL, 0)
+                raise
+            failed = dict(status='UNRESOLVED', reason='LOCAL_OPERATION_EXCEPTION',
+                          exceptionType=type(error).__name__, traceback=traceback.format_exc())
+        # A short operation timer never covers serialization or error receipts.
+        # Only the remaining whole-job deadline is armed here, with no 1ms retry.
+        if failed is not None:
+            self.active['localFailureBeforePersistence'] = failed
+        self.arm_native()
+        if failed is not None:
+            failed['operationReceipt'] = str(path/'unresolved.json')
+            record = dict(self.active, status='UNRESOLVED_NO_RETRY', failure=failed)
+            save(path/'unresolved.json', record)
+            self.records.append(record); self.active = None
+            return failed
+        record = dict(self.active, status='COMPLETE', value=self.blob(value))
+        save(path/'complete.json', record)
+        self.records.append(record); self.active = None
+        return value
 
 
 def containment():
@@ -161,14 +218,21 @@ def construct(spec, out, journal):
         if isinstance(value, sp.Basic): return str(value)
         return value
 
-    def op(name, function, *args, seconds=20):
-        value = journal.op(name, function, *args, seconds=seconds)
-        save(out/(name+'.json'), show(value))
+    def op(name, function, *args, seconds=20, required=False, render=True):
+        value = journal.op(name, function, *args, seconds=seconds, required=required)
+        if render:
+            save(out/(name+'.json'), show(value))
+        else:
+            save(out/(name+'.json'),dict(operation=name,completeObjectReceipt=journal.records[-1],
+                 wholeRestoredPayloadRendered=False))
         return value
+
+    def restored(name, key):
+        return op(name, restore, key, required=True, render=False)
 
     def restore(name):
         record = spec['inputs'][name]
-        require(route(record['path']) == record, 'changed source '+name)
+        if route(record['path']) != record: raise IntegrityError('changed source '+name)
         with Path(record['path']).open('rb') as stream:
             return SavedCodec(stream).load()
 
@@ -208,9 +272,10 @@ def construct(spec, out, journal):
         coefficient = matrix.applyfunc(lambda x: sp.Poly(x, e).nth(2))
         return coefficient, matrix-e**2*coefficient
 
-    uniform = op('restore-uniform', restore, 'uniform')
-    reduction = op('restore-branch-context', restore, 'reduction')
-    units = op('restore-unit-context', restore, 'unitContext')
+    uniform = restored('restore-uniform','uniform')
+    reduction = restored('restore-branch-context','reduction')
+    units = restored('restore-unit-context','unitContext')
+    common = restored('restore-uniform-common','uniformCommon')
     require(all(isinstance(x, dict) and x.get('reason') != 'OPERATION_BUDGET'
                 for x in (uniform, reduction, units)), 'required source restoration incomplete')
     save(out/'unit-context.json', show(dict(unitFrame=spec['physicalInput']['unit_frame'],
@@ -226,6 +291,11 @@ def construct(spec, out, journal):
                   and node.target.id=='sign' and isinstance(node.iter,ast.Tuple)]
     require(len(sign_loops)==1, 'source face-order schema')
     face_order = ast.literal_eval(sign_loops[0].iter)
+    law_nodes = {name:next(node for node in acoustic_method.body if isinstance(node,ast.Assign)
+                 and any(isinstance(target,ast.Name) and target.id==name for target in node.targets))
+                 for name in ('pressure','velocity','local_flux','harmonic')}
+    acoustic_law_provenance = {name:dict(line=node.lineno,assignment=ast.unparse(node)) for name,node in law_nodes.items()}
+    save(out/'acoustic-law-source.json',dict(source=spec['inputs']['sourceEngine'],laws=acoustic_law_provenance))
     save(out/'native-face-order-source.json',dict(order=face_order,
         source=spec['inputs']['sourceEngine'],sourceLine=sign_loops[0].lineno,
         expression=ast.unparse(sign_loops[0].iter)))
@@ -235,11 +305,42 @@ def construct(spec, out, journal):
         residuals = [equation.rhs-mapping[equation.lhs] for equation in equations]
         return dict(equations=equations, mapping=mapping, residuals=residuals,
                     allEquationKeysPresent=all(eq.lhs in mapping for eq in equations),
-                    joins=zero(residuals), tangents=state['tangents'],
+                    joins=zero(residuals),scope='SUPPLIED_BRANCH_INVENTORY_INTEGRITY_NOT_INDEPENDENT_DERIVATION', tangents=state['tangents'],
                     groups=state['momentum_groups'], normalMap=state['normal_map'])
 
     branches = op('source-branch-map-joins', branch_inventory, reduction['reductionState'])
     require(branches.get('joins') is True, 'saved branch equation/map inconsistency')
+
+    def carrier_law_check(label, result, mapping, depth):
+        time_coordinate, depth_coordinate = sp.symbols('carrierTime carrierOutwardDepth',real=True)
+        harmonic = sp.Symbol('carrierHarmonic',nonzero=True)
+        epsilon = sp.Symbol('carrierRealFieldScale',real=True)
+        minus_amplitude,plus_amplitude = sp.symbols('carrierConjugateAmplitude carrierAmplitude')
+        plus = plus_amplitude*harmonic*sp.exp(sp.I*(q*depth_coordinate-w*time_coordinate))
+        minus = minus_amplitude/harmonic*sp.exp(-sp.I*(qb*depth_coordinate-w*time_coordinate))
+        real_ansatz = epsilon*(plus+minus)/2
+        # Source-native pressure and outward velocity laws, applied to one
+        # real harmonic carrier pair, not independent counterpropagating waves.
+        pressure = -params['rho_m']*sp.diff(real_ansatz,time_coordinate)
+        velocity = sp.diff(real_ansatz,depth_coordinate)
+        product = sp.expand(pressure*velocity)
+        average = product.coeff(harmonic,0)
+        normalization = epsilon**2*minus_amplitude*plus_amplitude
+        normalized_flux = sp.cancel(average/normalization).subs(depth_coordinate,0)
+        pressure_scale = sp.cancel(-params['rho_m']*sp.diff(plus,time_coordinate)/plus)
+        velocity_scale = sp.cancel(sp.diff(plus,depth_coordinate)/plus)
+        saved_pressure = bind(result['OPEN_BULK_PRESSURE_SCALES'][0],label,mapping)
+        saved_velocity = bind(result['OPEN_BULK_VELOCITY_SCALES'][0],label,mapping)
+        residuals = dict(pressure=sp.cancel(saved_pressure-pressure_scale),
+                         velocity=sp.cancel(saved_velocity-velocity_scale),
+                         depthFlux=sp.cancel(depth-normalized_flux))
+        return dict(scope='SOURCE_LAW_AND_REAL_CARRIER_NORMALIZATION_CHECK_NOT_INDEPENDENT_CLOSURE',
+            provenance=acoustic_law_provenance,plus=plus,conjugateLeg=minus,
+            realAnsatz=real_ansatz,pressure=pressure,velocity=velocity,product=product,
+            zeroHarmonicAverage=average,amplitudeNormalization=normalization,
+            normalizedFlux=normalized_flux,pressureScale=pressure_scale,velocityScale=velocity_scale,
+            savedPressure=saved_pressure,savedVelocity=saved_velocity,savedFlux=depth,
+            residuals=residuals,joins=zero(residuals))
 
     def bound_end(label, packet, pair_tuple):
         pair, dimensions = pair_tuple  # Authoritative end_pairing_check.py:165-166.
@@ -247,7 +348,8 @@ def construct(spec, out, journal):
         wl, wr = result['FREQUENCY_LEGS']; kl, kr = result['NORMAL_LEGS']
         ql, qr = result['BULK_LEGS']
         mapping = {wl:w, wr:w, kl:k, kr:k, ql:qb, qr:q}
-        matrix = clean(bind(result['CLOSED_PENCIL_LEGS'][0], label, mapping))
+        raw_matrix = bind(result['CLOSED_PENCIL_LEGS'][0], label, mapping)
+        matrix = clean(raw_matrix)
         wave = sp.expand(bind(result['ACOUSTIC_WAVE_ROWS'][0], label, mapping))
         wp = sp.Poly(wave, q)
         require(wp.degree() == 2 and wp.nth(1) == 0, 'unsupported depth equation')
@@ -259,11 +361,20 @@ def construct(spec, out, journal):
         source_join = clean(matrix.subs(q, scale*oldq)-original)
         wave_join = sp.cancel(wave.subs(q, scale*oldq)-relation)
         curl = bind(uniform['curl'], label)
+        common_curl_join = clean(bind(common['curl'],label)-curl)
+        gauge = tuple(bind(value,label) for value in common['gauge'])
+        longitudinal_probes = tuple(sp.ImmutableMatrix.vstack(value,sp.zeros(2,1)) for value in gauge)
         lift = sp.ImmutableMatrix.vstack(curl[:, 1:3], sp.zeros(2, 2))
-        gram = clean(lift.H*lift)
+        raw_gram = lift.H*lift
+        gram = clean(raw_gram)
         # A 2x2 coordinate inverse only; never invert the strong physical pencil.
-        weak = clean(lift.H*matrix*lift)
-        restricted = clean(gram.inv()*weak)
+        raw_weak = lift.H*raw_matrix*lift
+        raw_restricted = gram.inv()*raw_weak
+        weak, restricted = clean(raw_weak), clean(raw_restricted)
+        raw_t_denominators = tuple(dict.fromkeys(
+            [sp.fraction(sp.together(x))[1] for x in (*raw_weak,*raw_restricted)] +
+            [power.base for x in (*raw_weak,*raw_restricted) for power in x.atoms(sp.Pow)
+             if power.exp.is_negative is True]))
         invariant = clean(matrix*lift-lift*restricted)
         currents, grade_residuals = {}, {}
         for name in ('SLAB_CURRENT_MATRIX', 'BULK_NORMAL_CURRENT_DENSITY_MATRIX',
@@ -296,11 +407,13 @@ def construct(spec, out, journal):
         free_amps = {s:sp.S.One for s in depth.free_symbols
                      if s.name in ('s11cdAcousticLeftAmplitude', 's11cdAcousticRightAmplitude')}
         depth = bind(sp.Poly(depth,e).nth(2), label, {**mapping, **free_amps})
+        carrier = carrier_law_check(label,result,mapping,depth)
         denominators = tuple(dict.fromkeys(sp.denom(sp.cancel(x)) for x in
             [*matrix, *restricted, *gram, *[z for m in currents.values() for z in m],
              *[z for row in rows for m in row.values() for z in m]]))
         coupling = [uniform['records'][label]['coupling'][name] for name in ('TH','HT')]
         checks = dict(sourceJoin=zero(source_join), waveJoin=zero(wave_join),
+            suppliedCurlJoin=zero(common_curl_join), carrierLawAndNormalization=carrier['joins'],
             originalBranch=zero(packet['branchResiduals']), pairingBranch=zero(result['SOURCE_BRANCH_JOINS']),
             savedCoupling=zero(coupling), invariantT=zero(invariant),
             weakHermitian=zero(weak-weak.H), grade=zero(grade_residuals),
@@ -315,12 +428,15 @@ def construct(spec, out, journal):
         return dict(end=label, checks=checks, originalSource=packet['originalAlgebraic'],
             originalRelation=packet['originalRelation'], sourceJoin=source_join, waveJoin=wave_join,
             savedSourceBranch=packet['branchResiduals'], pairingSourceBranch=result['SOURCE_BRANCH_JOINS'],
-            sourceCoupling=coupling, matrix=matrix, wave=wave, q2=q2, scale=scale,
-            lift=lift, gram=gram, chart=sp.factor(gram.det()), restricted=restricted, weak=weak,
+            sourceCoupling=coupling, matrix=matrix, rawMatrix=raw_matrix, wave=wave, q2=q2, scale=scale,
+            lift=lift, gram=gram, suppliedCurlJoin=common_curl_join, savedGauge=gauge,
+            longitudinalDirectionProbes=longitudinal_probes, rawWeak=raw_weak, rawRestricted=raw_restricted,
+            rawTDenominators=raw_t_denominators, chart=sp.factor(gram.det()), restricted=restricted, weak=weak,
             invariantResidual=invariant, weakHermitianResidual=weak-weak.H,
             currents=currents, gradeResiduals=grade_residuals, drives=rows,
             driveReconstruction=reconstruction, flatExteriorJoins=flat_exterior, sourceDenominators=denominators,
-            outgoingDepthCoefficient=depth, dimensions=dimensions)
+            outgoingDepthCoefficient=depth, carrierLawCheck=carrier,
+            flatExteriorJoinScope='SOURCE_INTERNAL_CONSISTENCY_NOT_INDEPENDENT_CLOSURE',dimensions=dimensions)
 
     def faces(bound):
         lift = bound['lift']; records = []
@@ -330,91 +446,134 @@ def construct(spec, out, journal):
                 if item['tag'] != 'PY_S11CC2_FOLD_SYMBOL_MAP_LAB_HELD_RHO4_CONSTANT': continue
                 for identity in item['velocityIdentifications']:
                     text = identity['savedValueSrepr']
-                    require(hashlib.sha256(text.encode()).hexdigest() == identity['literalSha256'],
-                            'c2 literal hash differs')
+                    if hashlib.sha256(text.encode()).hexdigest() != identity['literalSha256']:
+                        raise IntegrityError('c2 index literal changed')
                     expression = sp.sympify(text)
                     field = next(s for s in expression.free_symbols if s.name == 'e_W_t')
-                    literals.append(dict(face=item['face'], source=expression,
-                        coefficient=bind(expression, 'REFERENCE', {field:-sp.I*w}),
+                    literals.append(dict(indexFaceLabel=item['face'], source=expression,
+                        coefficient=bind(expression,'REFERENCE',{field:-sp.I*w}),
                         literalSha256=identity['literalSha256']))
-        for index, row in enumerate(bound['drives']):
+        for index,row in enumerate(bound['drives']):
             contractions = {name:clean(row[name]*lift) for name in DRIVES}
-            original = row['OUTWARD_VELOCITY']
-            changed = sp.MutableDenseMatrix(original); changed[0,4] = 0
-            probe = sp.eye(5)[:,4]
-            difference = clean((changed-original)*probe)
-            # Tilting a supplied transverse vector into each native dependent
-            # physical slot tests the zero-drive restriction, not bulk power.
-            dependencies = []
+            loaded_controls = []
             for name in DRIVES:
-                for slot in range(5):
-                    coefficient = sp.cancel(row[name][0,slot])
-                    if coefficient.is_zero is False:
-                        tilted = lift[:,0]+sp.eye(5)[:,slot]
-                        dependencies.append(dict(drive=name, slot=slot, coefficient=coefficient,
-                            originalVector=lift[:,0], tiltedVector=tilted,
-                            baseline=clean(row[name]*lift[:,0]), changed=clean(row[name]*tilted),
-                            movement=clean(row[name]*(tilted-lift[:,0]))))
-            native_controls = []
-            for name in DRIVES:
-                terms = [(slot, term) for slot in range(5)
-                         for term in sp.Add.make_args(sp.expand(row[name][0,slot]))
-                         if term != 0]
-                if terms:
-                    slot, term = terms[0]
+                urow = row[name][:,:3]
+                if zero(urow):
+                    loaded_controls.append(dict(drive=name,status='NOT_APPLICABLE_NO_U_DEPENDENCE',
+                        originalRow=row[name],uRow=urow,baseline=contractions[name]))
+                    continue
+                terms = [(slot,term) for slot in range(3)
+                         for term in sp.Add.make_args(sp.expand(row[name][0,slot])) if term!=0]
+                columns = []
+                for column in range(lift.cols):
+                    contributions = [(slot,term,sp.cancel(term*lift[slot,column])) for slot,term in terms]
+                    loaded = [item for item in contributions if item[2].is_zero is False]
+                    if not loaded:
+                        structural = all(value==0 for _,_,value in contributions)
+                        columns.append(dict(column=column,contributions=contributions,
+                            status='NOT_APPLICABLE_STRUCTURALLY_UNLOADED_COLUMN' if structural else 'UNRESOLVED'))
+                        continue
+                    slot,term,contribution = loaded[0]
                     mutated = sp.MutableDenseMatrix(row[name]); mutated[0,slot] -= term
-                    loaded = sp.eye(5)[:,slot]
-                    native_controls.append(dict(drive=name, slot=slot, omittedTerm=term,
-                        originalRow=row[name], changedRow=mutated, loadedProbe=loaded,
-                        original=row[name]*loaded, changed=mutated*loaded,
-                        difference=clean((mutated-row[name])*loaded)))
-            addressed_literals = [item for item in literals if item['face']==face_order[index]]
-            joins = [sp.cancel(original[0,4]-item['coefficient']) for item in addressed_literals]
-            records.append(dict(face=index,sourceFaceOrientation=face_order[index], nativeRows=row, lift=lift, contractions=contractions,
-                driveZero=zero(contractions), eWControl=dict(original=original, changed=changed,
-                    probe=probe, difference=difference, responsive=not zero(difference)),
-                nativeTermControls=native_controls, dependentSlotProbes=dependencies,
-                dependencyResponsive=bool(dependencies) and all(not zero(x['movement']) for x in dependencies),
-                c2VelocityJoins=joins, c2VelocityJoinSupported=(len(addressed_literals)==1) if bound['end']=='REFERENCE' else None))
+                    before = clean(row[name]*lift[:,column])
+                    after = clean(mutated*lift[:,column]); movement = clean(after-before)
+                    columns.append(dict(column=column,slot=slot,omittedNativeUTerm=term,
+                        sourceContributions=contributions,originalRow=row[name],mutatedRow=mutated,
+                        fixedLoadedLift=lift[:,column],before=before,after=after,movement=movement,
+                        status='RESPONSIVE' if not zero(movement) else 'UNRESOLVED'))
+                supported = all(item['status']!='UNRESOLVED' for item in columns)
+                loaded_controls.append(dict(drive=name,status='SUPPORTED_LOADED_DEPENDENCE' if supported else 'UNRESOLVED',
+                    originalRow=row[name],baseline=contractions[name],columns=columns))
+            original = row['OUTWARD_VELOCITY']
+            e_probe = sp.eye(5)[:,4]
+            changed = sp.MutableDenseMatrix(original); changed[0,4]=0
+            ew = dict(scope='NATIVE_E_SLOT_PRESENCE_ONLY_NOT_T_ZERO_CONTROL',originalRow=original,
+                changedRow=changed,physicalFieldCoordinateProbe=e_probe,
+                before=original*e_probe,after=changed*e_probe,difference=clean((changed-original)*e_probe))
+            probes = [dict(kind='SAVED_CURL_GAUGE_DIRECTION_EMBEDDED_AS_U_PROBE',vector=probe,
+                normalization='Arbitrary coordinate probe; not a normalized physical longitudinal mode',
+                values={name:clean(row[name]*probe) for name in DRIVES})
+                for probe in bound['longitudinalDirectionProbes']]
+            probes.append(dict(kind='E_FIELD_COORDINATE_PROBE',vector=e_probe,
+                normalization='Unit coefficient in the saved E reference-unit coordinate',
+                values={name:clean(row[name]*e_probe) for name in DRIVES}))
+            # The readable index is orientation-blind: equal literal values do
+            # not independently validate assignment of the two physical faces.
+            joins = [sp.cancel(original[0,4]-item['coefficient']) for item in literals]
+            records.append(dict(faceOrdinal=index,nativeSourceOrientation=face_order[index],
+                nativeRows=row,lift=lift,contractions=contractions,driveZero=zero(contractions),
+                loadedUTermControls=loaded_controls,nontransverseSourceProbes=probes,eWPresenceDiagnostic=ew,
+                c2IndexLiteralJoins=joins,c2IndexLiteralSupported=(len(literals)==2) if bound['end']=='REFERENCE' else None,
+                c2OrientationIndependentlyChecked=False))
         forms = {name:clean(lift.H*matrix*lift) for name,matrix in bound['currents'].items()
-                 if name != 'SLAB_CURRENT_MATRIX'}
-        checks = dict(allDrivesZero=all(x['driveZero'] for x in records),
-            eWControls=all(x['eWControl']['responsive'] for x in records),
-            dependentSlotControls=all(x['dependencyResponsive'] for x in records),
-            nativeControls=all(x['nativeTermControls'] and all(not zero(z['difference'])
-                for z in x['nativeTermControls']) for x in records),
-            c2Velocity=(bound['end']!='REFERENCE' or
-                all(x['c2VelocityJoinSupported'] and zero(x['c2VelocityJoins']) for x in records)),
-            lossSideFormsZero=zero(forms))
-        return dict(end=bound['end'], faces=records, physicalForms=forms, checks=checks,
-                    c2LiteralEvidence=literals, flatReferenceExteriorJoins=bound['flatExteriorJoins'],
-                    c2PressureTraceFirstShapeJoin='NOT_SUPPORTED_BY_THIS_INPUT_INDEX')
+                 if name!='SLAB_CURRENT_MATRIX'}
+        checks = dict(allDrivesZero=all(item['driveZero'] for item in records),
+            loadedUControls=all(control['status']!='UNRESOLVED' for item in records for control in item['loadedUTermControls']),
+            c2IndexLiteral=(bound['end']!='REFERENCE' or all(item['c2IndexLiteralSupported'] and
+                zero(item['c2IndexLiteralJoins']) for item in records)),lossSideFormsZero=zero(forms))
+        return dict(end=bound['end'],faces=records,physicalForms=forms,checks=checks,
+            c2LiteralEvidence=literals,c2EvidenceScope='ORIENTATION_BLIND_INDEX_LITERAL_ONLY',
+            flatExteriorSourceInternalJoins=bound['flatExteriorJoins'],
+            c2PressureTraceFirstShapeJoin='NOT_SUPPORTED_BY_THIS_INPUT_INDEX')
 
     def determinant_data(matrix):
-        # Specialize the tiny T matrix before arithmetic. No full/H determinant,
-        # radical elimination, resultants, or discriminants are computed.
-        determinant = sp.cancel(matrix.det())
+        # Preserve row-clearing operands before cancellation; no H/full pencil
+        # determinant, radical resultant, or discriminant is constructed.
+        raw_denominators = tuple(sp.fraction(sp.together(x))[1] for x in matrix)
+        row_denominators = tuple(sp.prod(raw_denominators[i*matrix.cols:(i+1)*matrix.cols])
+                                 for i in range(matrix.rows))
+        cleared = sp.ImmutableMatrix(matrix.rows,matrix.cols,
+            lambda i,j:sp.cancel(row_denominators[i]*matrix[i,j]))
+        cleared_determinant = sp.expand(cleared.det())
+        determinant = sp.cancel(cleared_determinant/sp.prod(row_denominators))
         numerator, denominator = sp.fraction(determinant)
-        return dict(matrix=matrix, determinant=determinant, numerator=numerator, denominator=denominator)
+        return dict(matrix=matrix, determinant=determinant, numerator=numerator, denominator=denominator,
+                    rawEntryDenominators=raw_denominators,rowDenominators=row_denominators,
+                    rowClearedMatrix=cleared,rowClearedDeterminant=cleared_determinant)
+
+    def real_exclusion_certificate(expression, w0, v0):
+        specialized = sp.together(expression.subs({w:w0,v:v0}))
+        numerator,denominator = sp.fraction(specialized)
+        parts = []
+        for part in (numerator,denominator):
+            real,imag = map(sp.expand,part.as_real_imag())
+            rp,ip = sp.Poly(real,k,domain=sp.QQ),sp.Poly(imag,k,domain=sp.QQ)
+            if rp.is_zero and ip.is_zero:
+                parts.append(dict(real=real,imag=imag,identicallyZero=True,realZeroCount=None))
+                continue
+            gcd = sp.gcd(rp,ip)
+            parts.append(dict(real=real,imag=imag,gcd=gcd.as_expr(),identicallyZero=False,
+                realZeroCount=gcd.count_roots(-sp.oo,sp.oo) if gcd.degree()>0 else 0))
+        return dict(expression=expression,specialized=specialized,parts=parts,
+                    noRealExcludedPoint=all(x['realZeroCount']==0 for x in parts))
 
     def census(bound, w0, v0):
-        specialized = clean(bound['restricted'].subs({w:w0,v:v0}))
+        specialized = bound['rawRestricted'].subs({w:w0,v:v0})
         data = determinant_data(specialized)
         if specialized.has(q, qb): return dict(status='UNRESOLVED', reason='T_RESTRICTION_RETAINS_DEPTH_ROOT', **data)
-        real, imag = map(sp.expand, data['numerator'].as_real_imag())
-        try:
-            rp, ip = sp.Poly(real,k,domain=sp.QQ), sp.Poly(imag,k,domain=sp.QQ)
-        except (sp.PolynomialError, sp.polys.polyerrors.CoercionFailed):
-            return dict(status='UNRESOLVED', reason='UNSUPPORTED_POINT_POLYNOMIAL_DOMAIN', **data)
-        if rp.is_zero and ip.is_zero: return dict(status='UNRESOLVED', reason='DEGENERATE_T_DETERMINANT', **data)
-        gcd = sp.gcd(rp, ip).sqf_part()
+        # These are exclusively transverse row/coordinate exclusions. Their
+        # global real-k check licenses pointwise T absence/completeness only.
+        exclusions = [real_exclusion_certificate(x,w0,v0) for x in
+            (*bound['rawTDenominators'],bound['chart'],*data['rawEntryDenominators'],
+             *data['rowDenominators'],data['denominator'])]
+        real, imag = map(sp.expand, data['rowClearedDeterminant'].as_real_imag())
+        rp, ip = sp.Poly(real,k,domain=sp.QQ), sp.Poly(imag,k,domain=sp.QQ)
+        if rp.is_zero and ip.is_zero:
+            return dict(status='UNRESOLVED', reason='DEGENERATE_T_DETERMINANT', exclusions=exclusions, **data)
+        gcd = sp.gcd(rp, ip)
+        # Keep multiplicities. A twofold transverse root can contain two valid
+        # polarizations; actual lifted kernel/current ranks decide support.
         intervals = gcd.intervals(eps=sp.Rational(1,10**28)) if gcd.degree()>0 else []
-        count = gcd.count_roots(-sp.oo,sp.oo) if gcd.degree()>0 else 0
+        distinct = gcd.sqf_part().count_roots(-sp.oo,sp.oo) if gcd.degree()>0 else 0
+        multiplicity_count = sum(mult for _,mult in intervals)
+        factorization = sp.factor_list(gcd.as_expr(),k)
         return dict(status='REAL_T_CANDIDATES', omega=w0, ray=v0, kappa=sp.sqrt(5)*v0,
             realPolynomial=rp.as_expr(), imaginaryPolynomial=ip.as_expr(), gcd=gcd.as_expr(),
             realRemainder=sp.rem(rp,gcd).as_expr(), imaginaryRemainder=sp.rem(ip,gcd).as_expr(),
-            intervals=intervals, count=count,
-            coverage=(count == sum(m for _,m in intervals)), **data)
+            intervals=intervals, count=distinct, totalRootMultiplicity=multiplicity_count,
+            factorization=factorization, exclusions=exclusions,
+            noRealExcludedPoint=all(x['noRealExcludedPoint'] for x in exclusions),
+            coverage=(distinct==len(intervals)), **data)
 
     def no_pole_interval(expression, bound, point, interval, depth_sign):
         lo, hi = interval
@@ -439,24 +598,54 @@ def construct(spec, out, journal):
         return np.asarray(matrix.subs(mapping).evalf(40).tolist(), dtype=complex)
 
     def loaded_control(bound, symbol, mapping, basis, scale):
-        matrix = bound['matrix']; selected = None; best = 0.
-        for i in range(matrix.rows):
-            for j in range(matrix.cols):
-                if np.linalg.norm(basis[j,:])<=1e-12 or not matrix[i,j].has(symbol): continue
-                for term in sp.Add.make_args(sp.expand(matrix[i,j])):
-                    if not term.has(symbol): continue
-                    amount = complex(term.subs(mapping).evalf(40))
-                    movement = abs(amount)*float(np.linalg.norm(basis[j,:]))/scale[i]
-                    if movement > best:
-                        best = movement; selected = (i,j,term)
-        if selected is None: return dict(status='UNRESOLVED', reason='NO_LOADED_DEPENDENT_SOURCE_TERM')
-        i,j,term = selected; changed = sp.MutableDenseMatrix(matrix); changed[i,j] -= term
-        baseline_matrix, changed_matrix = numeric(matrix,mapping), numeric(changed,mapping)
-        original, altered = (baseline_matrix/scale[:,None])@basis, (changed_matrix/scale[:,None])@basis
-        return dict(status='RESPONSIVE' if best>1e-8 else 'UNRESOLVED', symbol=symbol,
-            selectedEntry=(i,j), omittedNativeTerm=term, baselineMatrix=baseline_matrix,
-            mutatedMatrix=changed_matrix, baselineResidual=original, mutatedResidual=altered,
-            difference=altered-original, norm=float(np.linalg.norm(altered-original)))
+        matrix = bound['matrix']; records = []
+        baseline_matrix = numeric(matrix,mapping)
+        original = (baseline_matrix/scale[:,None])@basis
+        for column in range(basis.shape[1]):
+            selected,best = None,0.
+            for i in range(matrix.rows):
+                for j in range(matrix.cols):
+                    if abs(basis[j,column])<=1e-12 or not matrix[i,j].has(symbol): continue
+                    for term in sp.Add.make_args(sp.expand(matrix[i,j])):
+                        if not term.has(symbol): continue
+                        movement = abs(complex(term.subs(mapping).evalf(40))*basis[j,column])/scale[i]
+                        if movement>best:
+                            best,selected = movement,(i,j,term)
+            if selected is None:
+                records.append(dict(column=column,status='UNRESOLVED',reason='NO_LOADED_DEPENDENT_SOURCE_TERM'))
+                continue
+            i,j,term = selected; changed = sp.MutableDenseMatrix(matrix); changed[i,j]-=term
+            altered_matrix = numeric(changed,mapping)
+            altered = (altered_matrix/scale[:,None])@basis
+            difference = altered-original
+            column_norm = float(np.linalg.norm(difference[:,column]))
+            records.append(dict(column=column,status='RESPONSIVE' if column_norm>1e-8 else 'UNRESOLVED',
+                selectedEntry=(i,j),omittedNativeTerm=term,mutatedMatrix=altered_matrix,
+                mutatedResidual=altered,difference=difference,loadedColumnMovement=column_norm))
+        return dict(status='RESPONSIVE' if records and all(x['status']=='RESPONSIVE' for x in records) else 'UNRESOLVED',
+            scope='PER_LOADED_POLARIZATION_SOURCE_DEPENDENCE_NOT_INDEPENDENT_PHYSICS',symbol=symbol,
+            baselineMatrix=baseline_matrix,fixedLoadedBasis=basis,baselineResidual=original,columns=records)
+
+    def depth_selection(bound, q2, w0, v0, k0):
+        candidates = (sp.sqrt(q2),-sp.sqrt(q2))
+        records = []
+        for candidate in candidates:
+            mapping = {w:w0,v:v0,k:k0,q:candidate,qb:sp.conjugate(candidate)}
+            native_flux = sp.cancel(bound['outgoingDepthCoefficient'].subs(mapping))
+            carrier_flux = sp.cancel(bound['carrierLawCheck']['normalizedFlux'].subs(mapping))
+            residual = sp.cancel(native_flux-carrier_flux)
+            numeric_flux = complex(native_flux.evalf(40))
+            if q2.is_positive is True:
+                selected = residual==0 and abs(numeric_flux.imag)<1e-10 and numeric_flux.real>0
+                criterion = 'REAL_DEPTH_POSITIVE_SOURCE_AND_CARRIER_OUTWARD_FLUX'
+            else:
+                selected = residual==0 and sp.im(candidate).is_positive is True
+                criterion = 'IMAGINARY_DEPTH_DECAY_NOT_PROPAGATING_FLUX'
+            records.append(dict(candidate=candidate,nativeFlux=native_flux,carrierFlux=carrier_flux,
+                normalizationResidual=residual,selected=bool(selected),criterion=criterion))
+        selected = [item['candidate'] for item in records if item['selected']]
+        return dict(status='SUPPORTED' if len(selected)==1 else 'UNRESOLVED',
+                    candidates=records,selected=selected[0] if len(selected)==1 else None)
 
     def inspect_root(bound, point, interval):
         (lo,hi), multiplicity = interval; km = (lo+hi)/2
@@ -477,7 +666,10 @@ def construct(spec, out, journal):
             return dict(base, reason='DENOMINATOR_CERTIFICATE_DOMAIN_UNSUPPORTED')
         if any(x['excluded'] for x in exclusions):
             return dict(base, reason='SOURCE_POLE_OR_CHART_NOT_EXCLUDED', exclusions=exclusions)
-        q0 = sp.sqrt(q2)
+        selection = depth_selection(bound,q2,point['omega'],point['ray'],km)
+        if selection['status']!='SUPPORTED':
+            return dict(base,reason='DEPTH_SELECTION_UNRESOLVED',depthSelection=selection,exclusions=exclusions)
+        q0 = selection['selected']
         mapping = {w:point['omega'],v:point['ray'],k:km,q:q0,qb:sp.conjugate(q0)}
         matrix = numeric(bound['matrix'],mapping); lift = numeric(bound['lift'],mapping)
         restricted = numeric(bound['restricted'],mapping)
@@ -485,7 +677,7 @@ def construct(spec, out, journal):
         _, singular, vh = np.linalg.svd(restricted)
         tolerance = 1e-10*max(1.,float(np.linalg.norm(restricted)))
         null = singular<tolerance
-        base.update(physicalDepth=q0, depthSquared=q2, exclusions=exclusions,
+        base.update(physicalDepth=q0, depthSquared=q2, exclusions=exclusions,depthSelection=selection,
                     matrix=matrix, lift=lift, restricted=restricted, singularValues=singular)
         if not null.any() or np.any((singular>=tolerance)&(singular<100*tolerance)):
             return dict(base, reason='T_RANK_UNRESOLVED')
@@ -501,7 +693,10 @@ def construct(spec, out, journal):
         eig, rotation = np.linalg.eigh((current+current.conj().T)/2)
         depth_coefficient = complex(bound['outgoingDepthCoefficient'].subs(mapping).evalf(40))
         controls = [loaded_control(bound,symbol,mapping,basis,row_scale) for symbol in (w,v)]
-        base.update(basis=basis, fullResidual=residual, rowScale=row_scale, forms=forms,
+        base.update(basis=basis,geometricNullity=basis.shape[1],
+                    rootMultiplicityAccounted=(basis.shape[1]==multiplicity),
+                    rankInterpretation='NUMERICAL_SUPPORTED_CURRENT_RANK_LOWER_BOUND',
+                    fullResidual=residual, rowScale=row_scale, forms=forms,
                     face=face, current=current, hermitianResidual=hermitian, currentEigenvalues=eig,
                     rotation=rotation, controls=controls, outgoingDepthCoefficient=depth_coefficient)
         if q2.is_positive and (abs(depth_coefficient.imag)>1e-10 or depth_coefficient.real<=0):
@@ -543,11 +738,23 @@ def construct(spec, out, journal):
         controls = [loaded_control(bound,symbol,mapping,right,scale) for symbol in (w,v)]
         wave = complex(bound['wave'].subs(mapping).evalf(40))
         projected_bulk = right.conj().T@bulk@right
+        depth_evidence = []
+        for candidate in (q0,-q0):
+            dm = dict(mapping); dm.update({q:candidate,qb:candidate.conjugate()})
+            native_flux = complex(bound['outgoingDepthCoefficient'].subs(dm).evalf(40))
+            carrier_flux = complex(bound['carrierLawCheck']['normalizedFlux'].subs(dm).evalf(40))
+            normalization_residual = native_flux-carrier_flux
+            decay = bool(info['BULK_DECAY_DISK_CERTIFIED'] and candidate.imag>0)
+            real_outward = bool(abs(candidate.imag)<1e-12 and abs(native_flux.imag)<1e-10 and native_flux.real>0)
+            depth_evidence.append(dict(candidate=candidate,nativeFlux=native_flux,carrierFlux=carrier_flux,
+                normalizationResidual=normalization_residual,savedDecayDisk=info['BULK_DECAY_DISK_CERTIFIED'],
+                supported=(abs(normalization_residual)<1e-10 and (decay or real_outward))))
         eligible = bool(info['SHEET_MEMBERSHIP'] and info['EXACT_REAL_NORMAL'] and old['currentDefined'])
         checks = dict(savedEligibility=eligible, savedFrequency=(w0==params['omega']),
             transverseMembership=np.linalg.norm(t_residual)<1e-8,
             physicalPencilJoin=np.linalg.norm(pencil_join)<1e-8,
             physicalKernel=np.linalg.norm(kernel)<1e-8, physicalWave=abs(wave)<1e-8,
+            savedPhysicalDepth=(depth_evidence[0]['supported'] and not depth_evidence[1]['supported']),
             slabCurrentOperands=np.linalg.norm(operand_joins['slab'])<1e-8,
             bulkCurrentOperands=np.linalg.norm(operand_joins['bulk'])<1e-8,
             undriven=all(np.linalg.norm(value)<1e-8 for row in face for value in row.values()),
@@ -560,7 +767,8 @@ def construct(spec, out, journal):
             savedRight=right, transverseResidual=t_residual, pencilResidual=pencil_join,
             kernelResidual=kernel, waveResidual=wave, face=face, current=current,
             savedCurrent=old.get('currentGram'), currentResidual=current_join,
-            currentOperandResiduals=operand_joins, projectedBulk=projected_bulk, controls=controls)
+            currentOperandResiduals=operand_joins, projectedBulk=projected_bulk, controls=controls,
+            savedDepthSignEvidence=depth_evidence)
 
     def classify(label, bound, w0, v0, prefix):
         if v0 == 0:
@@ -573,16 +781,18 @@ def construct(spec, out, journal):
             for index, interval in enumerate(point['intervals']):
                 if time.monotonic()>journal.deadline-60: break
                 results.append(op(prefix+'-root-%02d'%index,inspect_root,bound,point,interval,seconds=12))
-            complete = len(results)==len(point['intervals']) and all(x.get('status')=='AVAILABLE' for x in results)
+            complete = (point['noRealExcludedPoint'] and len(results)==len(point['intervals'])
+                        and all(x.get('status')=='AVAILABLE' and x.get('rootMultiplicityAccounted') is True for x in results))
             found = any(x.get('status')=='AVAILABLE' for x in results)
-            state = 'AVAILABLE' if found else ('ABSENT' if not point['intervals'] else 'UNRESOLVED')
+            state = 'AVAILABLE' if found else ('ABSENT' if not point['intervals'] and point['noRealExcludedPoint'] else 'UNRESOLVED')
             # A partially classified point retains existential availability but
             # never receives a complete inventory or inferred absence.
             coverage = 'COMPLETE' if complete else 'PARTIAL_UNRESOLVED'
         else:
             state, coverage = 'UNRESOLVED', 'UNRESOLVED'
         record = dict(end=label,status=state,coverage=coverage,omega=str(w0),ray=str(v0),
-            kappa=str(sp.sqrt(5)*v0),candidateCount=point.get('count'),
+            kappa=str(sp.sqrt(5)*v0),candidateCount=point.get('count'),candidateMultiplicity=point.get('totalRootMultiplicity'),
+            transverseDomainCertified=point.get('noRealExcludedPoint',False),
             candidateStatuses=[x.get('status','UNRESOLVED') for x in results],
             positiveCurrentRank=sum(x.get('positiveCurrentRank',0) for x in results),
             negativeCurrentRank=sum(x.get('negativeCurrentRank',0) for x in results),
@@ -611,7 +821,7 @@ def construct(spec, out, journal):
         real,imag = map(sp.expand,numerator.as_real_imag())
         rp,ip = sp.Poly(real,w,domain=sp.QQ),sp.Poly(imag,w,domain=sp.QQ)
         if rp.is_zero and ip.is_zero: return dict(status='UNRESOLVED', reason='IDENTICALLY_ZERO_SLICE')
-        gcd = sp.gcd(rp,ip).sqf_part()
+        gcd = sp.gcd(rp,ip)
         intervals = gcd.intervals(eps=sp.Rational(1,10**18)) if gcd.degree()>0 else []
         intervals = [(interval,m) for interval,m in intervals if interval[1]>=lower and interval[0]<=upper]
         samples = []
@@ -625,6 +835,10 @@ def construct(spec, out, journal):
                     specialized=expression,denominator=denominator,intervals=intervals,samples=samples)
 
     frequencies = [sp.Rational(x) for x in spec['grid']['frequencies']]
+    prefix_frequencies = [sp.Rational(x) for x in spec['grid']['prefixFrequencies']]
+    require(all(x in frequencies for x in prefix_frequencies),'prefix uses existing frequency rows')
+    transition_budget = spec['grid']['transitionPairBudget']
+    require(isinstance(transition_budget,int) and 0<=transition_budget<=64,'bounded transition pairs')
     rays = [sp.Rational(x) for x in spec['grid']['rayCoordinates']]
     require(len(frequencies)*len(rays)<=256 and all(x>0 for x in frequencies)
             and all(x>=0 for x in rays), 'bounded rational-ray window')
@@ -662,8 +876,8 @@ def construct(spec, out, journal):
     for label in ENDS:
         if time.monotonic()>journal.deadline-150:
             end_states[label] = 'UNRESOLVED_BUDGET_NOT_ATTEMPTED'; continue
-        packet = op(label+'-restore-original-symbol',restore,label+'Frequency')
-        pairing = op(label+'-restore-current',restore,label+'Pairing')
+        packet = restored(label+'-restore-original-symbol',label+'Frequency')
+        pairing = restored(label+'-restore-current',label+'Pairing')
         if any(isinstance(value,dict) and value.get('reason')=='OPERATION_BUDGET'
                for value in (packet,pairing)):
             end_states[label] = 'UNRESOLVED_SOURCE_RESTORE_BUDGET'; continue
@@ -681,17 +895,21 @@ def construct(spec, out, journal):
             if key not in spec['inputs']:
                 seed_results[label].append(dict(status='UNRESOLVED',reason='NO_PINNED_SAVED_SEED_OPERAND',key=key))
                 continue
-            saved = op(label+'-restore-seed-'+str(index),restore,key)
+            saved = restored(label+'-restore-seed-'+str(index),key)
             if isinstance(saved,dict) and saved.get('reason')=='OPERATION_BUDGET':
                 seed_results[label].append(saved); continue
             seed_results[label].append(op(label+'-seed-join-'+str(index),saved_seed,bound,saved,seconds=12))
-        for w0 in frequencies[:3]:
+        for w0 in prefix_frequencies:
             sample(label,bound,w0,fixed)
     save(out/'source-end-states.json',end_states)
     save(out/'reference-face-drive.json',show(face_results.get('REFERENCE',{'status':'UNRESOLVED'})))
+    seed_hashes = {}
+    for name,record in spec['inputs'].items():
+        if any(name==label+'Seed'+str(index) for label in ENDS for index in (16,17)):
+            seed_hashes.setdefault(record['sha256'],[]).append(name)
     save(out/'saved-seed-comparison.json',show(dict(selectedRecords=seed_results,
-        suppliedFiniteResponseSummary=spec.get('savedSeedSummary'),
-        completeCensusEstablished=False, producerReplayed=False)))
+        savedSeedProvenance=spec.get('savedSeedProvenance'),sharedAcceptedHashes=seed_hashes,
+        sharedBytesAreIndependentEvidence=False,completeCensusEstablished=False,producerReplayed=False)))
     transition_count = 0
     for label,bound in ends.items():
         if time.monotonic()>journal.deadline-150:
@@ -704,7 +922,7 @@ def construct(spec, out, journal):
                            min(frequencies),max(frequencies),seconds=10)
             if crossings.get('status')!='SLICE_CANDIDATES': continue
             for crossing in crossings['samples']:
-                if transition_count>=24 or time.monotonic()>journal.deadline-110: break
+                if transition_count+2>transition_budget or time.monotonic()>journal.deadline-110: break
                 below = sample(label,bound,crossing['below'],fixed)
                 above = sample(label,bound,crossing['above'],fixed)
                 values = {side:sp.cancel(curve[key].subs({w:crossing[side],v:fixed})) for side in ('below','above')}
@@ -716,7 +934,7 @@ def construct(spec, out, journal):
                 transition_count += 2
     save(out/'threshold-loci.json',show(curves))
     stop = None
-    ordered = [(x,fixed) for x in frequencies[3:]]+[(x,y) for x in frequencies for y in rays if y!=fixed]
+    ordered = [(x,fixed) for x in frequencies if x not in prefix_frequencies]+[(x,y) for x in frequencies for y in rays if y!=fixed]
     for w0,v0 in ordered:
         if time.monotonic()>journal.deadline-100:
             stop = 'BUDGET_SAVED_PREFIX'; break

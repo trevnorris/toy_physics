@@ -1,5 +1,14 @@
 # S11c-d: the remaining execution queue
 
+**User-directed reader continuation in preparation (2026-09-29):** “Continue”
+authorizes the narrow saved-function formatter repair and one guarded continuation
+after independent build clearance. Preserve all nine completed reader returns and
+the original failure; no completed function replay or premise-binding retry.
+This would be scientific execution 3 under the four-execution ceiling. Ordinary
+900 s / 840 s limits remain. Exact external-packet consent is still required.
+No science or review submitted yet; stop after the reader/frequency comparison.
+See `S11c_d_transverse_face_saved_reader_continue_authorization.json` and scope.
+
 **Jobs 1–2 stop (2026-09-29):** job 2 failed after 16.752281 worker seconds
 while inventorying a saved SymPy `UndefinedFunction` class. Nine complete returns
 and incomplete inputs are preserved (71 files / 6,020,056 bytes); peak 138,317,824

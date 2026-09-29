@@ -1,0 +1,48 @@
+{
+  "status": "EXPLICIT_BOUNDED_SAVED_READER_CONTINUATION_APPROVED",
+  "recordedUtc": "2026-09-29T14:56:34.811646+00:00",
+  "userReply": "Continue",
+  "approvalContext": "Direct instruction after report of the saved-reader UndefinedFunction rendering failure and recommendation for a narrow formatter repair that reuses completed returns. Preserve the failed attempt and independently review the new build before one guarded continuation.",
+  "approvedSavedReaderContinuation": true,
+  "scienceJobOrdinal": 2,
+  "scientificExecutionOrdinal": 3,
+  "scientificExecutionsUsedBefore": 2,
+  "scientificExecutionCeiling": 4,
+  "maximumNewExecutions": 1,
+  "originalJobsApproval": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_premise_authorization.json",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_premise_authorization.json",
+    "bytes": 1670,
+    "sha256": "a3f0f7c1532572fc5409f3ec8a459d0bcb8bcd1a2c24b8cad8c9a1d7e033514b"
+  },
+  "parentFailureCheckpoint": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_saved_reader_failure_checkpoint.json",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_saved_reader_failure_checkpoint.json",
+    "bytes": 67593,
+    "sha256": "48b1be5a82a9a4aaf98aaff59ca2f63a05a557c7c8f4f5e91dca8ed7e1231682"
+  },
+  "parentReport": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_saved_reader_report.md",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_saved_reader_report.md",
+    "bytes": 6975,
+    "sha256": "dd7b8b4244446fe22678434d0414227b6a3f7a653feda710b931b55af85d7d74"
+  },
+  "completedOperationReplayAuthorized": false,
+  "unfinishedPremiseBindingAuthorized": false,
+  "methodRouteDecisionAuthorized": false,
+  "fieldPowerConstructionAuthorized": false,
+  "stopAfterReaderAndFrequencyComparison": true,
+  "automaticRetry": false,
+  "externalReviewExactPacketConsentRequired": true,
+  "seconds": 900,
+  "nativeSeconds": 840,
+  "memoryGiB": 2,
+  "swapMax": 0,
+  "cpuCount": 1,
+  "nice": 15,
+  "tasksMax": 32,
+  "nativeThreads": 1,
+  "durationExceptionUsed": false,
+  "independentBuildClearanceRequired": true,
+  "completionHookTarget": "01a0e01b-ef84-7192-817f-584cda5d339b"
+}

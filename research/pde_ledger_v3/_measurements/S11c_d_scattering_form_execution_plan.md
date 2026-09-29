@@ -1,5 +1,14 @@
 # S11c-d: the remaining execution queue
 
+**Job 2 reader prepared; exact external packet approval pending:** source,
+manifest and schema note are saved without scientific execution or restoration.
+The reader covers actual job-1 returns plus three old comparison payloads and
+13 prior readable end/forcing exports. It cannot complete the missing bindings.
+Fresh Claude/Grok review packet: 34 files / 2,474,785 bytes, SHA-256
+`bb20fefb5672bd47fcbb8951200a0b4a22e8279c6d046e2e49e776853cc5ec3f`.
+No external submission, independent reader clearance or job-2 READY gate yet.
+Existing job-2 science approval and conditional duration extension remain valid.
+
 **Current result — job 1 unresolved at all three ends:** 115.199 worker seconds,
 196,616,192 peak bytes, zero swap/events. Eleven complete operations and three
 35-second source-bind timeouts; zero map points and no face-drive premise.

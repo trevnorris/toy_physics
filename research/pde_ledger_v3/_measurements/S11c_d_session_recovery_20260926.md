@@ -1,5 +1,16 @@
 # S11c-d session recovery — 2026-09-26
 
+**Saved-reader continuation launched (2026-09-29):** scientific execution 3
+is running in the new `saved-reader-continuation` directory. Both fresh literal
+build verdicts CLEAR; exact reviewed worker/manifest unchanged. The hook armed
+before launch. One host startup check verified 2 GiB / zero swap / one CPU /
+nice 15 / 32 tasks / one native thread under the unchanged guard and supervisor;
+900 s outer / 840 s native, stderr empty at startup. No duration exception.
+See `S11c_d_transverse_face_saved_reader_continue_launch_record.json`.
+Await the silent completion hook; no model polling. Actual saved-return reuse,
+unfinished joins and output acceptance remain pending. Stop after inspection and
+the omega=1/omega=3 comparison, with no automatic retry or expanded method work.
+
 **Saved-reader continuation independently cleared and gated (2026-09-29):**
 both fresh reviewers literally CLEAR FOR THIS BOUNDED SAVED-READER CONTINUATION.
 Reviewed worker/manifest/note unchanged from `8e18ddc1`; all 244 inputs match.

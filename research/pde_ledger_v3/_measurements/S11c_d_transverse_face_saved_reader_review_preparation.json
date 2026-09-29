@@ -1,5 +1,5 @@
 {
-  "status": "REVIEWS_LAUNCHED_AWAITING_BOTH_LITERAL_REPORTS",
+  "status": "BOTH_NEEDS_REVISION_NO_READER_CLEARANCE",
   "preparedUtc": "2026-09-29T05:36:00.510726+00:00",
   "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-20260928/saved-reader-build-review",
   "packetSha256": "bb20fefb5672bd47fcbb8951200a0b4a22e8279c6d046e2e49e776853cc5ec3f",
@@ -268,5 +268,8 @@
     },
     "coordinatorAlive": true,
     "watcherAlive": true
-  }
+  },
+  "completionEventHandled": true,
+  "reviewRecord": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_saved_reader_review_record.json",
+  "independentBuildClearance": false
 }

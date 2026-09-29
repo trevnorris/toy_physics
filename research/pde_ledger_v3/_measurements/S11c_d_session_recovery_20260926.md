@@ -1,5 +1,14 @@
 # S11c-d session recovery — 2026-09-26
 
+**Job 2 first build review — both NEEDS REVISION (2026-09-29):** literal
+reports and exact reviewed bytes are preserved. Static opcode metadata confirms
+sets in selected saved objects, requiring a reader rendering fix; no scientific
+payload restored. Correct source-rendering joins and historical scope/convention
+reporting within the saved-reader scope, then prepare fresh independent review.
+NumPy-2 warnings and missing selected rows are not observed on current inputs.
+No reader clearance, science READY gate or job-2 run; longer-duration permission
+does not cure a schema/rendering problem. See reader review disposition.
+
 **Job 2 independent build reviews launched:** user explicitly approved the
 34-file, 2,474,785-byte fixed packet
 `bb20fefb5672bd47fcbb8951200a0b4a22e8279c6d046e2e49e776853cc5ec3f`.

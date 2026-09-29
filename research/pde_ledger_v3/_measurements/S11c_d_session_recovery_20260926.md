@@ -1,5 +1,18 @@
 # S11c-d session recovery — 2026-09-26
 
+**Execution 4 audited; all three bindings unresolved (2026-09-29):** numeric-first
+binding still reached the local 180-second cap in epsilon_shape-squared carrier
+extraction. REFERENCE/LEFT saved three current extractions before interface
+power; RIGHT saved slab current before bulk normal current density. All 33
+partial suboperations are preserved. No point/seed/face premise was reached.
+Worker 553.558 s, peak 509,546,496 bytes, zero swap/events; containment verified,
+strict stderr empty, stdout/checks identical, all 142 input pins and 86 snapshots
+intact. Eleven complete returns restored and all 98 parent files copied exactly.
+See fixed-point checkpoint/report. Original four executions are used; no loss or
+absence claim. User subsequently permitted longer running while progress is made:
+prepare one saved-return continuation, retaining other safeguards and independent
+build review/exact packet consent. No further job or review has launched.
+
 **Execution 4 launched (2026-09-29):** the exact independently cleared
 fixed-point worker is running under the unchanged shared guard and normalization
 supervisor in `s11c-d-transverse-face-fixed-point-20260929/production`.

@@ -1,5 +1,5 @@
 {
-  "status": "LAUNCHED_WITH_VERIFIED_ORDINARY_CONTAINMENT",
+  "status": "COMPLETED_WITH_THREE_UNRESOLVED_CARRIER_TIMEOUTS",
   "recordedUtc": "2026-09-29T18:25:32.157562+00:00",
   "gate": {
     "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_fixed_point_gate.json",
@@ -204,5 +204,20 @@
     "scientificAcceptance": "PENDING_COMPLETION_INSPECTION"
   },
   "sourceSnapshotCount": 86,
-  "sourceSnapshotIndexSha256": "330116cc9a6ec80c6c9c05b409bfd741fa3972d00a6be3e9244fd6f20e012b51"
+  "sourceSnapshotIndexSha256": "330116cc9a6ec80c6c9c05b409bfd741fa3972d00a6be3e9244fd6f20e012b51",
+  "completion": {
+    "checkpoint": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_fixed_point_checkpoint.json",
+    "checkpointSha256": "38ad249e315beaecb7d7206ea3353017ad691b761e4e3051d148fb9e7fd61c19",
+    "workerWallSeconds": 553.5579822290456,
+    "peakMemoryBytes": 509546496,
+    "sourcePinsVerified": 142,
+    "sourceSnapshotsVerified": 86,
+    "reusedCompleteReturns": 11,
+    "unresolvedEndBindings": 3,
+    "pointRecords": 0,
+    "selectedSeedChecks": 0,
+    "referenceFaceAttempted": false,
+    "scientificAcceptance": "NO_PREMISE_OR_LOSS_ACCEPTANCE",
+    "subsequentDurationPermission": "RECORDED_SEPARATELY_NO_CONTINUATION_LAUNCHED"
+  }
 }

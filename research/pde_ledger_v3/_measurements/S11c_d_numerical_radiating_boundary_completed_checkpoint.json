@@ -1,0 +1,2994 @@
+{
+  "status": "CENTRAL_CANDIDATE_CONTINUATION_PASSED_CURRENT_FACE_ASSEMBLY_PENDING",
+  "inspectedUtc": "2026-09-30T15:48:00.922096+00:00",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/boundary-continuation-v2",
+  "workerChecks": {
+    "status": "CENTRAL_CANDIDATES_CONTINUED_CURRENT_FACE_AND_ASSEMBLY_PENDING",
+    "ends": [
+      "LEFT",
+      "RIGHT"
+    ],
+    "contrasts": [
+      1,
+      0.5,
+      0.25,
+      0
+    ],
+    "frequency": 3,
+    "finiteSolves": 0,
+    "physicalRadicalScales": {
+      "LEFT": 10.0,
+      "RIGHT": 10.0
+    },
+    "scope": "Candidate continuation only. No current/face premise, complete end map, finite field or loss result follows from these data.",
+    "completeOperations": 30131,
+    "restoredOperations": 5001,
+    "wallSeconds": 2928.5686304180417,
+    "peakRssKiB": 239040,
+    "posthashesIntact": true,
+    "independentMethodClearance": false,
+    "physicalLossInterpretation": "RETAINED_ORDER_LOSS_INTERPRETATION_UNRESOLVED",
+    "automaticRetry": false,
+    "journal": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/boundary-continuation-v2/complete/operations.sqlite",
+      "sha256": "03103bb2160610010ce660b3adbb712be3db7001f19d41962e40b3d026f09e21",
+      "bytes": 183111680,
+      "membersIncludingPriorReferences": 60266,
+      "priorArchive": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/boundary-continuation-v2/complete/prior-complete/operations.zip",
+      "newStorage": "SQLite immutable byte blobs"
+    }
+  },
+  "integrity": {
+    "posthashCount": 129,
+    "sourceSnapshots": 89,
+    "priorFilesByteIdentical": 36,
+    "all30131InputReturnReceiptsVerified": true,
+    "all5001PriorFunctionsNotCalled": true,
+    "firstNewOperationJoinsPriorPendingInput": true,
+    "SQLiteIntegrityAndEveryRawBlobHashVerified": true,
+    "strictStderrEmpty": true,
+    "stdoutChecksIdentical": true,
+    "scientificPayloadRestorationDuringInspection": false,
+    "protectedBuilderSuffix": "f01024512c9a028e7e524e5a95b5c455be42e125d10c36f94e20493109b013c2"
+  },
+  "resources": {
+    "wallSeconds": 2928.5686304180417,
+    "peakBytes": 582664192,
+    "maxSwapBytes": 0,
+    "maxTasks": 3,
+    "minimumHostAvailableBytes": 17302929408,
+    "memoryEventMaxima": {
+      "low": 0,
+      "high": 0,
+      "max": 0,
+      "oom": 0,
+      "oom_kill": 0,
+      "oom_group_kill": 0,
+      "sock_throttled": 0
+    },
+    "duration": {
+      "verified": true,
+      "actual": {
+        "Restart": "no",
+        "RuntimeMaxUSec": "infinity"
+      },
+      "wallDeadlineSeconds": null,
+      "inactivityDeadlineSeconds": null
+    }
+  },
+  "coverage": {
+    "ends": [
+      "LEFT",
+      "RIGHT"
+    ],
+    "contrasts": [
+      1,
+      0.5,
+      0.25,
+      0
+    ],
+    "frequency": 3,
+    "candidatesPerEndContrast": 18,
+    "explicitCensusRows": 90,
+    "LEFTReusedAdditionalRows": 54,
+    "completeOperations": 30131,
+    "restoredOperations": 5001,
+    "newOperations": 25130,
+    "finiteSolves": 0,
+    "currentFaceChecks": 0
+  },
+  "maximumRecordedComparisons": {
+    "path_k": 1.666044907730428e-14,
+    "path_q": 3.178126759414104e-14,
+    "path_projector": 2.942874306203594e-13,
+    "residual": 4.2890813642845635e-13
+  },
+  "census": {
+    "LEFT-omega3-a-1-census.json": [
+      {
+        "index": 0,
+        "nullity": 1,
+        "selected": false,
+        "selectedOutgoing": false,
+        "k": {
+          "real": 0.0029847463632115784,
+          "imag": 3.9045551930779734
+        },
+        "physicalQ": {
+          "real": -3.9096740570640285,
+          "imag": 0.002980838489960982
+        },
+        "properDepthSheet": true,
+        "spatialOutwardDecay": false,
+        "realNormalMomentum": false,
+        "pathComparison": {
+          "k": 7.606678276885937e-15,
+          "q": 6.7351659343795965e-15,
+          "projector": 1.4507110320340342e-13
+        },
+        "residual": 4.2890813642845635e-13,
+        "currentSign": "NOT_YET_EVALUATED"
+      },
+      {
+        "index": 1,
+        "nullity": 1,
+        "selected": true,
+        "selectedOutgoing": true,
+        "k": {
+          "real": -0.0029847463632115784,
+          "imag": -3.9045551930779734
+        },
+        "physicalQ": {
+          "real": -3.9096740570640285,
+          "imag": 0.002980838489960982
+        },
+        "properDepthSheet": true,
+        "spatialOutwardDecay": true,
+        "realNormalMomentum": false,
+        "pathComparison": {
+          "k": 7.606678276885937e-15,
+          "q": 6.7351659343795965e-15,
+          "projector": 1.4507110320340342e-13
+        },
+        "residual": 4.2890813642845635e-13,
+        "currentSign": "NOT_YET_EVALUATED"
+      },
+      {
+        "index": 2,
+        "nullity": 1,
+        "selected": false,
+        "selectedOutgoing": false,
+        "k": {
+          "real": 0.2933542675677425,
+          "imag": -0.4449397596046151
+        },
+        "physicalQ": {
+          "real": -0.47641875883152124,
+          "imag": -0.27397111232712323
+        },
+        "properDepthSheet": false,
+        "spatialOutwardDecay": true,
+        "realNormalMomentum": false,
+        "pathComparison": {
+          "k": 1.2102552055446191e-14,
+          "q": 2.934967872633709e-14,
+          "projector": 4.762649736545309e-15
+        },
+        "residual": 3.889000622578122e-16,
+        "currentSign": "NOT_YET_EVALUATED"
+      },
+      {
+        "index": 3,
+        "nullity": 1,
+        "selected": false,
+        "selectedOutgoing": false,
+        "k": {
+          "real": -0.2933542675677425,
+          "imag": 0.4449397596046151
+        },
+        "physicalQ": {
+          "real": -0.47641875883152124,
+          "imag": -0.27397111232712323
+        },
+        "properDepthSheet": false,
+        "spatialOutwardDecay": false,
+        "realNormalMomentum": false,
+        "pathComparison": {
+          "k": 1.2102552055446191e-14,
+          "q": 2.934967872633709e-14,
+          "projector": 4.762649736545309e-15
+        },
+        "residual": 3.889000622578122e-16,
+        "currentSign": "NOT_YET_EVALUATED"
+      },
+      {
+        "index": 4,
+        "nullity": 1,
+        "selected": false,
+        "selectedOutgoing": false,
+        "k": {
+          "real": 0.7779939319180652,
+          "imag": 5.280583344245016e-05
+        },
+        "physicalQ": {
+          "real": -5.464222705019117e-05,
+          "imag": 0.7518474302002022
+        },
+        "properDepthSheet": true,
+        "spatialOutwardDecay": false,
+        "realNormalMomentum": false,
+        "pathComparison": {
+          "k": 1.8727781329726164e-16,
+          "q": 4.39644495175696e-16,
+          "projector": 1.2412670766236366e-16
+        },
+        "residual": 2.1653102609682676e-15,
+        "currentSign": "NOT_YET_EVALUATED"
+      },
+      {
+        "index": 5,
+        "nullity": 1,
+        "selected": true,
+        "selectedOutgoing": true,
+        "k": {
+          "real": -0.7779939319180652,
+          "imag": -5.280583344245016e-05
+        },
+        "physicalQ": {
+          "real": -5.464222705019117e-05,
+          "imag": 0.7518474302002022
+        },
+        "properDepthSheet": true,
+        "spatialOutwardDecay": true,
+        "realNormalMomentum": false,
+        "pathComparison": {
+          "k": 1.8727781329726164e-16,
+          "q": 4.39644495175696e-16,
+          "projector": 1.2412670766236366e-16
+        },
+        "residual": 2.1653102609682676e-15,
+        "currentSign": "NOT_YET_EVALUATED"
+      },
+      {
+        "index": 6,
+        "nullity": 1,
+        "selected": false,
+        "selectedOutgoing": false,
+        "k": {
+          "real": 3.342176555179341,
+          "imag": 0.003880705650435731
+        },
+        "physicalQ": {
+          "real": -0.0038876727120208225,
+          "imag": 3.3361870721098987
+        },
+        "properDepthSheet": true,
+        "spatialOutwardDecay": false,
+        "realNormalMomentum": false,
+        "pathComparison": {
+          "k": 1.048701429765562e-17,
+          "q": 1.3327757952411288e-17,
+          "projector": 2.816255578577367e-17
+        },
+        "residual": 4.312365058087029e-16,
+        "currentSign": "NOT_YET_EVALUATED"
+      },
+      {
+        "index": 7,
+        "nullity": 1,
+        "selected": true,
+        "selectedOutgoing": true,
+        "k": {
+          "real": -3.342176555179341,
+          "imag": -0.003880705650435731
+        },
+        "physicalQ": {
+          "real": -0.0038876727120208225,
+          "imag": 3.3361870721098987
+        },
+        "properDepthSheet": true,
+        "spatialOutwardDecay": true,
+        "realNormalMomentum": false,
+        "pathComparison": {
+          "k": 1.048701429765562e-17,
+          "q": 1.3327757952411288e-17,
+          "projector": 2.816255578577367e-17
+        },
+        "residual": 4.312365058087029e-16,
+        "currentSign": "NOT_YET_EVALUATED"
+      },
+      {
+        "index": 8,
+        "nullity": 1,
+        "selected": false,
+        "selectedOutgoing": false,
+        "k": {
+          "real": 3.2659853933506118,
+          "imag": 0.002402117261954533
+        },
+        "physicalQ": {
+          "real": 0.0024066339390730546,
+          "imag": -3.2598559187944374
+        },
+        "properDepthSheet": false,
+        "spatialOutwardDecay": false,
+        "realNormalMomentum": false,
+        "pathComparison": {
+          "k": 1.0410020756636746e-16,
+          "q": 2.1148016577939986e-16,
+          "projector": 1.1102230246251565e-16
+        },
+        "residual": 2.951867249215078e-15,
+        "currentSign": "NOT_YET_EVALUATED"
+      },
+      {
+        "index": 9,
+        "nullity": 1,
+        "selected": false,
+        "selectedOutgoing": false,
+        "k": {
+          "real": -3.2659853933506118,
+          "imag": -0.002402117261954533
+        },
+        "physicalQ": {
+          "real": 0.0024066339390730546,
+          "imag": -3.2598559187944374
+        },
+        "properDepthSheet": false,
+        "spatialOutwardDecay": true,
+        "realNormalMomentum": false,
+        "pathComparison": {
+          "k": 1.0410020756636746e-16,
+          "q": 2.1148016577939986e-16,
+          "projector": 1.1102230246251565e-16
+        },
+        "residual": 2.951867249215078e-15,
+        "currentSign": "NOT_YET_EVALUATED"
+      },
+      {
+        "index": 10,
+        "nullity": 1,
+        "selected": false,
+        "selectedOutgoing": false,
+        "k": {
+          "real": 0.664301919352996,
+          "imag": 0.19352041136743206
+        },
+        "physicalQ": {
+          "real": 0.20208479964425666,
+          "imag": -0.6361486907064366
+        },
+        "properDepthSheet": false,
+        "spatialOutwardDecay": false,
+        "realNormalMomentum": false,
+        "pathComparison": {
+          "k": 2.2790308271176227e-16,
+          "q": 6.232104776253787e-16,
+          "projector": 1.3092278833360675e-16
+        },
+        "residual": 6.067146489677744e-16,
+        "currentSign": "NOT_YET_EVALUATED"
+      },
+      {
+        "index": 11,
+        "nullity": 1,
+        "selected": false,
+        "selectedOutgoing": false,
+        "k": {
+          "real": -0.664301919352996,
+          "imag": -0.19352041136743206
+        },
+        "physicalQ": {
+          "real": 0.20208479964425666,
+          "imag": -0.6361486907064366
+        },
+        "properDepthSheet": false,
+        "spatialOutwardDecay": true,
+        "realNormalMomentum": false,
+        "pathComparison": {
+          "k": 2.2790308271176227e-16,
+          "q": 6.232104776253787e-16,
+          "projector": 1.3092278833360675e-16
+        },
+        "residual": 6.067146489677744e-16,
+        "currentSign": "NOT_YET_EVALUATED"
+      },
+      {
+        "index": 12,
+        "nullity": 1,
+        "selected": false,
+        "selectedOutgoing": false,
+        "k": {
+          "real": 0.0025865886094794334,
+          "imag": 3.904525452563221
+        },
+        "physicalQ": {
+          "real": 3.9096443562306242,
+          "imag": -0.0025832019848372875
+        },
+        "properDepthSheet": false,
+        "spatialOutwardDecay": false,
+        "realNormalMomentum": false,
+        "pathComparison": {
+          "k": 7.250036149925122e-15,
+          "q": 6.2122833336652405e-15,
+          "projector": 1.4382836696358722e-13
+        },
+        "residual": 4.2608852092535476e-13,
+        "currentSign": "NOT_YET_EVALUATED"
+      },
+      {
+        "index": 13,
+        "nullity": 1,
+        "selected": false,
+        "selectedOutgoing": false,
+        "k": {
+          "real": -0.0025865886094794334,
+          "imag": -3.904525452563221
+        },
+        "physicalQ": {
+          "real": 3.9096443562306242,
+          "imag": -0.0025832019848372875
+        },
+        "properDepthSheet": false,
+        "spatialOutwardDecay": true,
+        "realNormalMomentum": false,
+        "pathComparison": {
+          "k": 7.250036149925122e-15,
+          "q": 6.2122833336652405e-15,
+          "projector": 1.4382836696358722e-13
+        },
+        "residual": 4.2608852092535476e-13,
+        "currentSign": "NOT_YET_EVALUATED"
+      },
+      {
+        "index": 14,
+        "nullity": 2,
+        "selected": false,
+        "selectedOutgoing": false,
+        "k": {
+          "real": 2.439262183530097,
+          "imag": -3.8055982636441387e-17
+        },
+        "physicalQ": {
+          "real": -3.1347285945046776e-17,
+          "imag": -2.4310491562286467
+        },
+        "properDepthSheet": false,
+        "spatialOutwardDecay": false,
+        "realNormalMomentum": true,
+        "pathComparison": {
+          "k": 1.6531353155748512e-14,
+          "q": 1.8532190973840796e-14,
+          "projector": 2.892180736867361e-13
+        },
+        "residual": 4.258854095889666e-14,
+        "currentSign": "NOT_YET_EVALUATED"
+      },
+      {
+        "index": 15,
+        "nullity": 2,
+        "selected": false,
+        "selectedOutgoing": false,
+        "k": {
+          "real": -2.439262183530097,
+          "imag": 3.8055982636441387e-17
+        },
+        "physicalQ": {
+          "real": -3.1347285945046776e-17,
+          "imag": -2.4310491562286467
+        },
+        "properDepthSheet": false,
+        "spatialOutwardDecay": false,
+        "realNormalMomentum": true,
+        "pathComparison": {
+          "k": 1.6531353155748512e-14,
+          "q": 1.8532190973840796e-14,
+          "projector": 2.892180736867361e-13
+        },
+        "residual": 4.258854095889666e-14,
+        "currentSign": "NOT_YET_EVALUATED"
+      },
+      {
+        "index": 16,
+        "nullity": 2,
+        "selected": true,
+        "selectedOutgoing": false,
+        "k": {
+          "real": 2.439262183530097,
+          "imag": -3.805496546278189e-17
+        },
+        "physicalQ": {
+          "real": 3.1346265385375027e-17,
+          "imag": 2.4310491562286467
+        },
+        "properDepthSheet": true,
+        "spatialOutwardDecay": false,
+        "realNormalMomentum": true,
+        "pathComparison": {
+          "k": 1.6660449076258114e-14,
+          "q": 1.8391856213079504e-14,
+          "projector": 2.551478637455536e-13
+        },
+        "residual": 3.985342309432735e-14,
+        "currentSign": "NOT_YET_EVALUATED"
+      },
+      {
+        "index": 17,
+        "nullity": 2,
+        "selected": true,
+        "selectedOutgoing": true,
+        "k": {
+          "real": -2.439262183530097,
+          "imag": 3.805496546278189e-17
+        },
+        "physicalQ": {
+          "real": 3.1346265385375027e-17,
+          "imag": 2.4310491562286467
+        },
+        "properDepthSheet": true,
+        "spatialOutwardDecay": false,
+        "realNormalMomentum": true,
+        "pathComparison": {
+          "k": 1.6660449076258114e-14,
+          "q": 1.8391856213079504e-14,
+          "projector": 2.551478637455536e-13
+        },
+        "residual": 3.985342309432735e-14,
+        "currentSign": "NOT_YET_EVALUATED"
+      }
+    ],
+    "RIGHT-omega3-a-0-census.json": [
+      {
+        "index": 0,
+        "nullity": 1,
+        "selected": true,
+        "selectedOutgoing": true,
+        "k": {
+          "real": 0.0029847463632115194,
+          "imag": 3.9045551930779734
+        },
+        "physicalQ": {
+          "real": -3.9096740570640285,
+          "imag": 0.002980838489960923
+        },
+        "properDepthSheet": true,
+        "spatialOutwardDecay": true,
+        "realNormalMomentum": false,
+        "pathComparison": {
+          "k": 7.606516434112773e-15,
+          "q": 6.557720095466083e-15,
+          "projector": 1.45021954760809e-13
+        },
+        "residual": 4.288113281063009e-13,
+        "currentSign": "NOT_YET_EVALUATED"
+      },
+      {
+        "index": 1,
+        "nullity": 1,
+        "selected": false,
+        "selectedOutgoing": false,
+        "k": {
+          "real": -0.0029847463632115194,
+          "imag": -3.9045551930779734
+        },
+        "physicalQ": {
+          "real": -3.9096740570640285,
+          "imag": 0.002980838489960923
+        },
+        "properDepthSheet": true,
+        "spatialOutwardDecay": false,
+        "realNormalMomentum": false,
+        "pathComparison": {
+          "k": 7.606516434112773e-15,
+          "q": 6.557720095466083e-15,
+          "projector": 1.45021954760809e-13
+        },
+        "residual": 4.288113281063009e-13,
+        "currentSign": "NOT_YET_EVALUATED"
+      },
+      {
+        "index": 2,
+        "nullity": 1,
+        "selected": false,
+        "selectedOutgoing": false,
+        "k": {
+          "real": 0.2933542675677426,
+          "imag": -0.4449397596046151
+        },
+        "physicalQ": {
+          "real": -0.47641875883152124,
+          "imag": -0.27397111232712323
+        },
+        "properDepthSheet": false,
+        "spatialOutwardDecay": false,
+        "realNormalMomentum": false,
+        "pathComparison": {
+          "k": 1.2143223563938544e-14,
+          "q": 2.937037374986914e-14,
+          "projector": 4.554473456506551e-15
+        },
+        "residual": 3.7577017172716146e-16,
+        "currentSign": "NOT_YET_EVALUATED"
+      },
+      {
+        "index": 3,
+        "nullity": 1,
+        "selected": false,
+        "selectedOutgoing": false,
+        "k": {
+          "real": -0.2933542675677426,
+          "imag": 0.4449397596046151
+        },
+        "physicalQ": {
+          "real": -0.47641875883152124,
+          "imag": -0.27397111232712323
+        },
+        "properDepthSheet": false,
+        "spatialOutwardDecay": true,
+        "realNormalMomentum": false,
+        "pathComparison": {
+          "k": 1.2143223563938544e-14,
+          "q": 2.937037374986914e-14,
+          "projector": 4.554473456506551e-15
+        },
+        "residual": 3.7577017172716146e-16,
+        "currentSign": "NOT_YET_EVALUATED"
+      },
+      {
+        "index": 4,
+        "nullity": 1,
+        "selected": true,
+        "selectedOutgoing": true,
+        "k": {
+          "real": 0.7779939319180652,
+          "imag": 5.280583344232966e-05
+        },
+        "physicalQ": {
+          "real": -5.464222705006648e-05,
+          "imag": 0.7518474302002022
+        },
+        "properDepthSheet": true,
+        "spatialOutwardDecay": true,
+        "realNormalMomentum": false,
+        "pathComparison": {
+          "k": 8.087022782663472e-17,
+          "q": 8.835539319619027e-17,
+          "projector": 1.1443916996305594e-16
+        },
+        "residual": 2.165310438429199e-15,
+        "currentSign": "NOT_YET_EVALUATED"
+      },
+      {
+        "index": 5,
+        "nullity": 1,
+        "selected": false,
+        "selectedOutgoing": false,
+        "k": {
+          "real": -0.7779939319180652,
+          "imag": -5.280583344232966e-05
+        },
+        "physicalQ": {
+          "real": -5.464222705006648e-05,
+          "imag": 0.7518474302002022
+        },
+        "properDepthSheet": true,
+        "spatialOutwardDecay": false,
+        "realNormalMomentum": false,
+        "pathComparison": {
+          "k": 8.087022782663472e-17,
+          "q": 8.835539319619027e-17,
+          "projector": 1.1443916996305594e-16
+        },
+        "residual": 2.165310438429199e-15,
+        "currentSign": "NOT_YET_EVALUATED"
+      },
+      {
+        "index": 6,
+        "nullity": 1,
+        "selected": true,
+        "selectedOutgoing": true,
+        "k": {
+          "real": 3.3421765551793405,
+          "imag": 0.0038807056504355907
+        },
+        "physicalQ": {
+          "real": -0.003887672712020681,
+          "imag": 3.3361870721098983
+        },
+        "properDepthSheet": true,
+        "spatialOutwardDecay": true,
+        "realNormalMomentum": false,
+        "pathComparison": {
+          "k": 2.128103682772035e-16,
+          "q": 2.1979820290615534e-16,
+          "projector": 6.085494575303282e-17
+        },
+        "residual": 1.033390488546046e-15,
+        "currentSign": "NOT_YET_EVALUATED"
+      },
+      {
+        "index": 7,
+        "nullity": 1,
+        "selected": false,
+        "selectedOutgoing": false,
+        "k": {
+          "real": -3.3421765551793405,
+          "imag": -0.0038807056504355907
+        },
+        "physicalQ": {
+          "real": -0.003887672712020681,
+          "imag": 3.3361870721098983
+        },
+        "properDepthSheet": true,
+        "spatialOutwardDecay": false,
+        "realNormalMomentum": false,
+        "pathComparison": {
+          "k": 2.128103682772035e-16,
+          "q": 2.1979820290615534e-16,
+          "projector": 6.085494575303282e-17
+        },
+        "residual": 1.033390488546046e-15,
+        "currentSign": "NOT_YET_EVALUATED"
+      },
+      {
+        "index": 8,
+        "nullity": 1,
+        "selected": false,
+        "selectedOutgoing": false,
+        "k": {
+          "real": 3.2659853933506118,
+          "imag": 0.002402117261954492
+        },
+        "physicalQ": {
+          "real": 0.0024066339390730134,
+          "imag": -3.2598559187944374
+        },
+        "properDepthSheet": false,
+        "spatialOutwardDecay": true,
+        "realNormalMomentum": false,
+        "pathComparison": {
+          "k": 1.0554151527230909e-16,
+          "q": 2.1263146548735314e-16,
+          "projector": 4.2505288522527777e-17
+        },
+        "residual": 2.9518630265481944e-15,
+        "currentSign": "NOT_YET_EVALUATED"
+      },
+      {
+        "index": 9,
+        "nullity": 1,
+        "selected": false,
+        "selectedOutgoing": false,
+        "k": {
+          "real": -3.2659853933506118,
+          "imag": -0.002402117261954492
+        },
+        "physicalQ": {
+          "real": 0.0024066339390730134,
+          "imag": -3.2598559187944374
+        },
+        "properDepthSheet": false,
+        "spatialOutwardDecay": false,
+        "realNormalMomentum": false,
+        "pathComparison": {
+          "k": 1.0554151527230909e-16,
+          "q": 2.1263146548735314e-16,
+          "projector": 4.2505288522527777e-17
+        },
+        "residual": 2.9518630265481944e-15,
+        "currentSign": "NOT_YET_EVALUATED"
+      },
+      {
+        "index": 10,
+        "nullity": 1,
+        "selected": false,
+        "selectedOutgoing": false,
+        "k": {
+          "real": 0.6643019193529959,
+          "imag": 0.1935204113674323
+        },
+        "physicalQ": {
+          "real": 0.20208479964425696,
+          "imag": -0.6361486907064365
+        },
+        "properDepthSheet": false,
+        "spatialOutwardDecay": true,
+        "realNormalMomentum": false,
+        "pathComparison": {
+          "k": 1.3225991019646354e-16,
+          "q": 4.943871585785035e-16,
+          "projector": 1.6653345369377348e-16
+        },
+        "residual": 5.891884952269944e-16,
+        "currentSign": "NOT_YET_EVALUATED"
+      },
+      {
+        "index": 11,
+        "nullity": 1,
+        "selected": false,
+        "selectedOutgoing": false,
+        "k": {
+          "real": -0.6643019193529959,
+          "imag": -0.1935204113674323
+        },
+        "physicalQ": {
+          "real": 0.20208479964425696,
+          "imag": -0.6361486907064365
+        },
+        "properDepthSheet": false,
+        "spatialOutwardDecay": false,
+        "realNormalMomentum": false,
+        "pathComparison": {
+          "k": 1.3225991019646354e-16,
+          "q": 4.943871585785035e-16,
+          "projector": 1.6653345369377348e-16
+        },
+        "residual": 5.891884952269944e-16,
+        "currentSign": "NOT_YET_EVALUATED"
+      },
+      {
+        "index": 12,
+        "nullity": 1,
+        "selected": false,
+        "selectedOutgoing": false,
+        "k": {
+          "real": 0.002586588609479432,
+          "imag": 3.904525452563221
+        },
+        "physicalQ": {
+          "real": 3.9096443562306242,
+          "imag": -0.0025832019848372858
+        },
+        "properDepthSheet": false,
+        "spatialOutwardDecay": true,
+        "realNormalMomentum": false,
+        "pathComparison": {
+          "k": 7.250061957017187e-15,
+          "q": 6.212332445171259e-15,
+          "projector": 1.4382131108764857e-13
+        },
+        "residual": 4.2603896139845985e-13,
+        "currentSign": "NOT_YET_EVALUATED"
+      },
+      {
+        "index": 13,
+        "nullity": 1,
+        "selected": false,
+        "selectedOutgoing": false,
+        "k": {
+          "real": -0.002586588609479432,
+          "imag": -3.904525452563221
+        },
+        "physicalQ": {
+          "real": 3.9096443562306242,
+          "imag": -0.0025832019848372858
+        },
+        "properDepthSheet": false,
+        "spatialOutwardDecay": false,
+        "realNormalMomentum": false,
+        "pathComparison": {
+          "k": 7.250061957017187e-15,
+          "q": 6.212332445171259e-15,
+          "projector": 1.4382131108764857e-13
+        },
+        "residual": 4.2603896139845985e-13,
+        "currentSign": "NOT_YET_EVALUATED"
+      },
+      {
+        "index": 14,
+        "nullity": 2,
+        "selected": false,
+        "selectedOutgoing": false,
+        "k": {
+          "real": 2.439262183530097,
+          "imag": -3.805726063048778e-17
+        },
+        "physicalQ": {
+          "real": -3.1348568220384006e-17,
+          "imag": -2.4310491562286467
+        },
+        "properDepthSheet": false,
+        "spatialOutwardDecay": false,
+        "realNormalMomentum": true,
+        "pathComparison": {
+          "k": 1.6531353241406908e-14,
+          "q": 1.853219109044294e-14,
+          "projector": 2.892108138761827e-13
+        },
+        "residual": 4.203134004520003e-14,
+        "currentSign": "NOT_YET_EVALUATED"
+      },
+      {
+        "index": 15,
+        "nullity": 2,
+        "selected": false,
+        "selectedOutgoing": false,
+        "k": {
+          "real": -2.439262183530097,
+          "imag": 3.805726063048778e-17
+        },
+        "physicalQ": {
+          "real": -3.1348568220384006e-17,
+          "imag": -2.4310491562286467
+        },
+        "properDepthSheet": false,
+        "spatialOutwardDecay": false,
+        "realNormalMomentum": true,
+        "pathComparison": {
+          "k": 1.6531353241406908e-14,
+          "q": 1.853219109044294e-14,
+          "projector": 2.892108138761827e-13
+        },
+        "residual": 4.203134004520003e-14,
+        "currentSign": "NOT_YET_EVALUATED"
+      },
+      {
+        "index": 16,
+        "nullity": 2,
+        "selected": true,
+        "selectedOutgoing": true,
+        "k": {
+          "real": 2.439262183530097,
+          "imag": -3.805999945134534e-17
+        },
+        "physicalQ": {
+          "real": 3.1351316295143155e-17,
+          "imag": 2.4310491562286467
+        },
+        "properDepthSheet": true,
+        "spatialOutwardDecay": false,
+        "realNormalMomentum": true,
+        "pathComparison": {
+          "k": 1.666044907730428e-14,
+          "q": 1.8812862289275524e-14,
+          "projector": 2.551509496420255e-13
+        },
+        "residual": 3.6459171930235105e-14,
+        "currentSign": "NOT_YET_EVALUATED"
+      },
+      {
+        "index": 17,
+        "nullity": 2,
+        "selected": true,
+        "selectedOutgoing": false,
+        "k": {
+          "real": -2.439262183530097,
+          "imag": 3.805999945134534e-17
+        },
+        "physicalQ": {
+          "real": 3.1351316295143155e-17,
+          "imag": 2.4310491562286467
+        },
+        "properDepthSheet": true,
+        "spatialOutwardDecay": false,
+        "realNormalMomentum": true,
+        "pathComparison": {
+          "k": 1.666044907730428e-14,
+          "q": 1.8812862289275524e-14,
+          "projector": 2.551509496420255e-13
+        },
+        "residual": 3.6459171930235105e-14,
+        "currentSign": "NOT_YET_EVALUATED"
+      }
+    ],
+    "RIGHT-omega3-a-0.25-census.json": [
+      {
+        "index": 0,
+        "nullity": 1,
+        "selected": true,
+        "selectedOutgoing": true,
+        "k": {
+          "real": 0.0029683464800397156,
+          "imag": 3.9085117106882925
+        },
+        "physicalQ": {
+          "real": -3.9136253997510893,
+          "imag": 0.0029644679277054707
+        },
+        "properDepthSheet": true,
+        "spatialOutwardDecay": true,
+        "realNormalMomentum": false,
+        "pathComparison": {
+          "k": 6.876640473319937e-15,
+          "q": 5.8432239725489985e-15,
+          "projector": 1.435679763021805e-13
+        },
+        "residual": 4.223459839487934e-13,
+        "currentSign": "NOT_YET_EVALUATED"
+      },
+      {
+        "index": 1,
+        "nullity": 1,
+        "selected": false,
+        "selectedOutgoing": false,
+        "k": {
+          "real": -0.0029683464800397156,
+          "imag": -3.9085117106882925
+        },
+        "physicalQ": {
+          "real": -3.9136253997510893,
+          "imag": 0.0029644679277054707
+        },
+        "properDepthSheet": true,
+        "spatialOutwardDecay": false,
+        "realNormalMomentum": false,
+        "pathComparison": {
+          "k": 6.876640473319937e-15,
+          "q": 5.8432239725489985e-15,
+          "projector": 1.435679763021805e-13
+        },
+        "residual": 4.223459839487934e-13,
+        "currentSign": "NOT_YET_EVALUATED"
+      },
+      {
+        "index": 2,
+        "nullity": 1,
+        "selected": false,
+        "selectedOutgoing": false,
+        "k": {
+          "real": 0.29339822291393725,
+          "imag": -0.44375921822993003
+        },
+        "physicalQ": {
+          "real": -0.4752734685299904,
+          "imag": -0.27394368642760425
+        },
+        "properDepthSheet": false,
+        "spatialOutwardDecay": false,
+        "realNormalMomentum": false,
+        "pathComparison": {
+          "k": 1.2431937236707891e-14,
+          "q": 2.996788678389151e-14,
+          "projector": 4.582024389912622e-15
+        },
+        "residual": 2.5921857256521194e-16,
+        "currentSign": "NOT_YET_EVALUATED"
+      },
+      {
+        "index": 3,
+        "nullity": 1,
+        "selected": false,
+        "selectedOutgoing": false,
+        "k": {
+          "real": -0.29339822291393725,
+          "imag": 0.44375921822993003
+        },
+        "physicalQ": {
+          "real": -0.4752734685299904,
+          "imag": -0.27394368642760425
+        },
+        "properDepthSheet": false,
+        "spatialOutwardDecay": true,
+        "realNormalMomentum": false,
+        "pathComparison": {
+          "k": 1.2431937236707891e-14,
+          "q": 2.996788678389151e-14,
+          "projector": 4.582024389912622e-15
+        },
+        "residual": 2.5921857256521194e-16,
+        "currentSign": "NOT_YET_EVALUATED"
+      },
+      {
+        "index": 4,
+        "nullity": 1,
+        "selected": true,
+        "selectedOutgoing": true,
+        "k": {
+          "real": 0.7794880599636016,
+          "imag": 5.000752446428827e-05
+        },
+        "physicalQ": {
+          "real": -5.1739592515108335e-05,
+          "imag": 0.7533934136970221
+        },
+        "properDepthSheet": true,
+        "spatialOutwardDecay": true,
+        "realNormalMomentum": false,
+        "pathComparison": {
+          "k": 1.3973998788725328e-16,
+          "q": 4.2726940829629054e-16,
+          "projector": 1.1443916996305594e-16
+        },
+        "residual": 2.1651697619187303e-15,
+        "currentSign": "NOT_YET_EVALUATED"
+      },
+      {
+        "index": 5,
+        "nullity": 1,
+        "selected": false,
+        "selectedOutgoing": false,
+        "k": {
+          "real": -0.7794880599636016,
+          "imag": -5.000752446428827e-05
+        },
+        "physicalQ": {
+          "real": -5.1739592515108335e-05,
+          "imag": 0.7533934136970221
+        },
+        "properDepthSheet": true,
+        "spatialOutwardDecay": false,
+        "realNormalMomentum": false,
+        "pathComparison": {
+          "k": 1.3973998788725328e-16,
+          "q": 4.2726940829629054e-16,
+          "projector": 1.1443916996305594e-16
+        },
+        "residual": 2.1651697619187303e-15,
+        "currentSign": "NOT_YET_EVALUATED"
+      },
+      {
+        "index": 6,
+        "nullity": 1,
+        "selected": true,
+        "selectedOutgoing": true,
+        "k": {
+          "real": 3.3341224117237704,
+          "imag": 0.0039035264560401475
+        },
+        "physicalQ": {
+          "real": -0.0039105684787223574,
+          "imag": 3.328118434098427
+        },
+        "properDepthSheet": true,
+        "spatialOutwardDecay": true,
+        "realNormalMomentum": false,
+        "pathComparison": {
+          "k": 1.0394893204555382e-16,
+          "q": 2.226521144368729e-17,
+          "projector": 5.615162497491595e-17
+        },
+        "residual": 5.159354131788293e-16,
+        "currentSign": "NOT_YET_EVALUATED"
+      },
+      {
+        "index": 7,
+        "nullity": 1,
+        "selected": false,
+        "selectedOutgoing": false,
+        "k": {
+          "real": -3.3341224117237704,
+          "imag": -0.0039035264560401475
+        },
+        "physicalQ": {
+          "real": -0.0039105684787223574,
+          "imag": 3.328118434098427
+        },
+        "properDepthSheet": true,
+        "spatialOutwardDecay": false,
+        "realNormalMomentum": false,
+        "pathComparison": {
+          "k": 1.0394893204555382e-16,
+          "q": 2.226521144368729e-17,
+          "projector": 5.615162497491595e-17
+        },
+        "residual": 5.159354131788293e-16,
+        "currentSign": "NOT_YET_EVALUATED"
+      },
+      {
+        "index": 8,
+        "nullity": 1,
+        "selected": false,
+        "selectedOutgoing": false,
+        "k": {
+          "real": 3.258043781717023,
+          "imag": 0.002388608814022008
+        },
+        "physicalQ": {
+          "real": 0.002393122075548138,
+          "imag": -3.251899338104758
+        },
+        "properDepthSheet": false,
+        "spatialOutwardDecay": true,
+        "realNormalMomentum": false,
+        "pathComparison": {
+          "k": 1.0796075619932309e-17,
+          "q": 1.397342724895599e-17,
+          "projector": 1.707540976896192e-16
+        },
+        "residual": 9.298427513635165e-16,
+        "currentSign": "NOT_YET_EVALUATED"
+      },
+      {
+        "index": 9,
+        "nullity": 1,
+        "selected": false,
+        "selectedOutgoing": false,
+        "k": {
+          "real": -3.258043781717023,
+          "imag": -0.002388608814022008
+        },
+        "physicalQ": {
+          "real": 0.002393122075548138,
+          "imag": -3.251899338104758
+        },
+        "properDepthSheet": false,
+        "spatialOutwardDecay": false,
+        "realNormalMomentum": false,
+        "pathComparison": {
+          "k": 1.0796075619932309e-17,
+          "q": 1.397342724895599e-17,
+          "projector": 1.707540976896192e-16
+        },
+        "residual": 9.298427513635165e-16,
+        "currentSign": "NOT_YET_EVALUATED"
+      },
+      {
+        "index": 10,
+        "nullity": 1,
+        "selected": false,
+        "selectedOutgoing": false,
+        "k": {
+          "real": 0.6657394101734213,
+          "imag": 0.19248412833330864
+        },
+        "physicalQ": {
+          "real": 0.200975123204782,
+          "imag": -0.6376125961310666
+        },
+        "properDepthSheet": false,
+        "spatialOutwardDecay": true,
+        "realNormalMomentum": false,
+        "pathComparison": {
+          "k": 2.277561250052343e-16,
+          "q": 5.32739970762593e-16,
+          "projector": 1.6667795129466247e-16
+        },
+        "residual": 2.9051626428292955e-16,
+        "currentSign": "NOT_YET_EVALUATED"
+      },
+      {
+        "index": 11,
+        "nullity": 1,
+        "selected": false,
+        "selectedOutgoing": false,
+        "k": {
+          "real": -0.6657394101734213,
+          "imag": -0.19248412833330864
+        },
+        "physicalQ": {
+          "real": 0.200975123204782,
+          "imag": -0.6376125961310666
+        },
+        "properDepthSheet": false,
+        "spatialOutwardDecay": false,
+        "realNormalMomentum": false,
+        "pathComparison": {
+          "k": 2.277561250052343e-16,
+          "q": 5.32739970762593e-16,
+          "projector": 1.6667795129466247e-16
+        },
+        "residual": 2.9051626428292955e-16,
+        "currentSign": "NOT_YET_EVALUATED"
+      },
+      {
+        "index": 12,
+        "nullity": 1,
+        "selected": false,
+        "selectedOutgoing": false,
+        "k": {
+          "real": 0.002572762887243984,
+          "imag": 3.9084832248240398
+        },
+        "physicalQ": {
+          "real": 3.9135969518391263,
+          "imag": -0.0025694011698158673
+        },
+        "properDepthSheet": false,
+        "spatialOutwardDecay": true,
+        "realNormalMomentum": false,
+        "pathComparison": {
+          "k": 6.249325332815973e-15,
+          "q": 5.144886542523807e-15,
+          "projector": 1.421780913815468e-13
+        },
+        "residual": 4.197625601191674e-13,
+        "currentSign": "NOT_YET_EVALUATED"
+      },
+      {
+        "index": 13,
+        "nullity": 1,
+        "selected": false,
+        "selectedOutgoing": false,
+        "k": {
+          "real": -0.002572762887243984,
+          "imag": -3.9084832248240398
+        },
+        "physicalQ": {
+          "real": 3.9135969518391263,
+          "imag": -0.0025694011698158673
+        },
+        "properDepthSheet": false,
+        "spatialOutwardDecay": false,
+        "realNormalMomentum": false,
+        "pathComparison": {
+          "k": 6.249325332815973e-15,
+          "q": 5.144886542523807e-15,
+          "projector": 1.421780913815468e-13
+        },
+        "residual": 4.197625601191674e-13,
+        "currentSign": "NOT_YET_EVALUATED"
+      },
+      {
+        "index": 14,
+        "nullity": 2,
+        "selected": false,
+        "selectedOutgoing": false,
+        "k": {
+          "real": 2.4423349483639667,
+          "imag": -3.7912475640656233e-17
+        },
+        "physicalQ": {
+          "real": -3.122923038503608e-17,
+          "imag": -2.4341322889276205
+        },
+        "properDepthSheet": false,
+        "spatialOutwardDecay": false,
+        "realNormalMomentum": true,
+        "pathComparison": {
+          "k": 1.6387589251209737e-14,
+          "q": 1.8369449335690023e-14,
+          "projector": 2.9030305623316314e-13
+        },
+        "residual": 4.200473677024844e-14,
+        "currentSign": "NOT_YET_EVALUATED"
+      },
+      {
+        "index": 15,
+        "nullity": 2,
+        "selected": false,
+        "selectedOutgoing": false,
+        "k": {
+          "real": -2.4423349483639667,
+          "imag": 3.7912475640656233e-17
+        },
+        "physicalQ": {
+          "real": -3.122923038503608e-17,
+          "imag": -2.4341322889276205
+        },
+        "properDepthSheet": false,
+        "spatialOutwardDecay": false,
+        "realNormalMomentum": true,
+        "pathComparison": {
+          "k": 1.6387589251209737e-14,
+          "q": 1.8369449335690023e-14,
+          "projector": 2.9030305623316314e-13
+        },
+        "residual": 4.200473677024844e-14,
+        "currentSign": "NOT_YET_EVALUATED"
+      },
+      {
+        "index": 16,
+        "nullity": 2,
+        "selected": true,
+        "selectedOutgoing": true,
+        "k": {
+          "real": 2.4423349483639663,
+          "imag": -3.7914942965327114e-17
+        },
+        "physicalQ": {
+          "real": 3.123170618325039e-17,
+          "imag": 2.43413228892762
+        },
+        "properDepthSheet": true,
+        "spatialOutwardDecay": false,
+        "realNormalMomentum": true,
+        "pathComparison": {
+          "k": 1.651656964313794e-14,
+          "q": 1.85096137816048e-14,
+          "projector": 2.559884136529818e-13
+        },
+        "residual": 3.64760880151037e-14,
+        "currentSign": "NOT_YET_EVALUATED"
+      },
+      {
+        "index": 17,
+        "nullity": 2,
+        "selected": true,
+        "selectedOutgoing": false,
+        "k": {
+          "real": -2.4423349483639663,
+          "imag": 3.7914942965327114e-17
+        },
+        "physicalQ": {
+          "real": 3.123170618325039e-17,
+          "imag": 2.43413228892762
+        },
+        "properDepthSheet": true,
+        "spatialOutwardDecay": false,
+        "realNormalMomentum": true,
+        "pathComparison": {
+          "k": 1.651656964313794e-14,
+          "q": 1.85096137816048e-14,
+          "projector": 2.559884136529818e-13
+        },
+        "residual": 3.64760880151037e-14,
+        "currentSign": "NOT_YET_EVALUATED"
+      }
+    ],
+    "RIGHT-omega3-a-0.5-census.json": [
+      {
+        "index": 0,
+        "nullity": 1,
+        "selected": true,
+        "selectedOutgoing": true,
+        "k": {
+          "real": 0.002951908639094248,
+          "imag": 3.9124638885031815
+        },
+        "physicalQ": {
+          "real": -3.917572418747452,
+          "imag": 0.002948059338315795
+        },
+        "properDepthSheet": true,
+        "spatialOutwardDecay": true,
+        "realNormalMomentum": false,
+        "pathComparison": {
+          "k": 5.876743146328984e-15,
+          "q": 4.77645546475943e-15,
+          "projector": 1.4194244112700467e-13
+        },
+        "residual": 4.15969302526475e-13,
+        "currentSign": "NOT_YET_EVALUATED"
+      },
+      {
+        "index": 1,
+        "nullity": 1,
+        "selected": false,
+        "selectedOutgoing": false,
+        "k": {
+          "real": -0.002951908639094248,
+          "imag": -3.9124638885031815
+        },
+        "physicalQ": {
+          "real": -3.917572418747452,
+          "imag": 0.002948059338315795
+        },
+        "properDepthSheet": true,
+        "spatialOutwardDecay": false,
+        "realNormalMomentum": false,
+        "pathComparison": {
+          "k": 5.876743146328984e-15,
+          "q": 4.77645546475943e-15,
+          "projector": 1.4194244112700467e-13
+        },
+        "residual": 4.15969302526475e-13,
+        "currentSign": "NOT_YET_EVALUATED"
+      },
+      {
+        "index": 2,
+        "nullity": 1,
+        "selected": false,
+        "selectedOutgoing": false,
+        "k": {
+          "real": 0.29343803658806555,
+          "imag": -0.44258775584437365
+        },
+        "physicalQ": {
+          "real": -0.47413718905192803,
+          "imag": -0.27391245633480016
+        },
+        "properDepthSheet": false,
+        "spatialOutwardDecay": false,
+        "realNormalMomentum": false,
+        "pathComparison": {
+          "k": 1.2525259368495309e-14,
+          "q": 3.0281528750903696e-14,
+          "projector": 4.698015512498034e-15
+        },
+        "residual": 7.299530285863092e-16,
+        "currentSign": "NOT_YET_EVALUATED"
+      },
+      {
+        "index": 3,
+        "nullity": 1,
+        "selected": false,
+        "selectedOutgoing": false,
+        "k": {
+          "real": -0.29343803658806555,
+          "imag": 0.44258775584437365
+        },
+        "physicalQ": {
+          "real": -0.47413718905192803,
+          "imag": -0.27391245633480016
+        },
+        "properDepthSheet": false,
+        "spatialOutwardDecay": true,
+        "realNormalMomentum": false,
+        "pathComparison": {
+          "k": 1.2525259368495309e-14,
+          "q": 3.0281528750903696e-14,
+          "projector": 4.698015512498034e-15
+        },
+        "residual": 7.299530285863092e-16,
+        "currentSign": "NOT_YET_EVALUATED"
+      },
+      {
+        "index": 4,
+        "nullity": 1,
+        "selected": true,
+        "selectedOutgoing": true,
+        "k": {
+          "real": 0.7809723383595251,
+          "imag": 4.733282579589594e-05
+        },
+        "physicalQ": {
+          "real": -4.896570100619624e-05,
+          "imag": 0.7549289989396274
+        },
+        "properDepthSheet": true,
+        "spatialOutwardDecay": true,
+        "realNormalMomentum": false,
+        "pathComparison": {
+          "k": 3.2871415042525476e-16,
+          "q": 7.884167622324627e-16,
+          "projector": 1.7772239894833365e-16
+        },
+        "residual": 1.0825157699947599e-15,
+        "currentSign": "NOT_YET_EVALUATED"
+      },
+      {
+        "index": 5,
+        "nullity": 1,
+        "selected": false,
+        "selectedOutgoing": false,
+        "k": {
+          "real": -0.7809723383595251,
+          "imag": -4.733282579589594e-05
+        },
+        "physicalQ": {
+          "real": -4.896570100619624e-05,
+          "imag": 0.7549289989396274
+        },
+        "properDepthSheet": true,
+        "spatialOutwardDecay": false,
+        "realNormalMomentum": false,
+        "pathComparison": {
+          "k": 3.2871415042525476e-16,
+          "q": 7.884167622324627e-16,
+          "projector": 1.7772239894833365e-16
+        },
+        "residual": 1.0825157699947599e-15,
+        "currentSign": "NOT_YET_EVALUATED"
+      },
+      {
+        "index": 6,
+        "nullity": 1,
+        "selected": true,
+        "selectedOutgoing": true,
+        "k": {
+          "real": 3.326129082466767,
+          "imag": 0.003926178639951151
+        },
+        "physicalQ": {
+          "real": -0.003933295704091642,
+          "imag": 3.3201106501391786
+        },
+        "properDepthSheet": true,
+        "spatialOutwardDecay": true,
+        "realNormalMomentum": false,
+        "pathComparison": {
+          "k": 1.94478809845197e-17,
+          "q": 2.0919955211024383e-16,
+          "projector": 5.778380563465591e-17
+        },
+        "residual": 5.845656572173404e-15,
+        "currentSign": "NOT_YET_EVALUATED"
+      },
+      {
+        "index": 7,
+        "nullity": 1,
+        "selected": false,
+        "selectedOutgoing": false,
+        "k": {
+          "real": -3.326129082466767,
+          "imag": -0.003926178639951151
+        },
+        "physicalQ": {
+          "real": -0.003933295704091642,
+          "imag": 3.3201106501391786
+        },
+        "properDepthSheet": true,
+        "spatialOutwardDecay": false,
+        "realNormalMomentum": false,
+        "pathComparison": {
+          "k": 1.94478809845197e-17,
+          "q": 2.0919955211024383e-16,
+          "projector": 5.778380563465591e-17
+        },
+        "residual": 5.845656572173404e-15,
+        "currentSign": "NOT_YET_EVALUATED"
+      },
+      {
+        "index": 8,
+        "nullity": 1,
+        "selected": false,
+        "selectedOutgoing": false,
+        "k": {
+          "real": 3.2501624070346575,
+          "imag": 0.002375288128616436
+        },
+        "physicalQ": {
+          "real": 0.002379798075806519,
+          "imag": -3.244003035378745
+        },
+        "properDepthSheet": false,
+        "spatialOutwardDecay": true,
+        "realNormalMomentum": false,
+        "pathComparison": {
+          "k": 1.0203863732628059e-18,
+          "q": 2.1248690789855345e-16,
+          "projector": 8.386203933632693e-17
+        },
+        "residual": 5.911836662347108e-15,
+        "currentSign": "NOT_YET_EVALUATED"
+      },
+      {
+        "index": 9,
+        "nullity": 1,
+        "selected": false,
+        "selectedOutgoing": false,
+        "k": {
+          "real": -3.2501624070346575,
+          "imag": -0.002375288128616436
+        },
+        "physicalQ": {
+          "real": 0.002379798075806519,
+          "imag": -3.244003035378745
+        },
+        "properDepthSheet": false,
+        "spatialOutwardDecay": false,
+        "realNormalMomentum": false,
+        "pathComparison": {
+          "k": 1.0203863732628059e-18,
+          "q": 2.1248690789855345e-16,
+          "projector": 8.386203933632693e-17
+        },
+        "residual": 5.911836662347108e-15,
+        "currentSign": "NOT_YET_EVALUATED"
+      },
+      {
+        "index": 10,
+        "nullity": 1,
+        "selected": false,
+        "selectedOutgoing": false,
+        "k": {
+          "real": 0.6671706317556261,
+          "imag": 0.19145590067713036
+        },
+        "physicalQ": {
+          "real": 0.1998742965766846,
+          "imag": -0.6390704377493411
+        },
+        "properDepthSheet": false,
+        "spatialOutwardDecay": true,
+        "realNormalMomentum": false,
+        "pathComparison": {
+          "k": 3.1472040067283154e-16,
+          "q": 7.389729124296482e-16,
+          "projector": 2.220446049250313e-16
+        },
+        "residual": 3.7630334132166817e-16,
+        "currentSign": "NOT_YET_EVALUATED"
+      },
+      {
+        "index": 11,
+        "nullity": 1,
+        "selected": false,
+        "selectedOutgoing": false,
+        "k": {
+          "real": -0.6671706317556261,
+          "imag": -0.19145590067713036
+        },
+        "physicalQ": {
+          "real": 0.1998742965766846,
+          "imag": -0.6390704377493411
+        },
+        "properDepthSheet": false,
+        "spatialOutwardDecay": false,
+        "realNormalMomentum": false,
+        "pathComparison": {
+          "k": 3.1472040067283154e-16,
+          "q": 7.389729124296482e-16,
+          "projector": 2.220446049250313e-16
+        },
+        "residual": 3.7630334132166817e-16,
+        "currentSign": "NOT_YET_EVALUATED"
+      },
+      {
+        "index": 12,
+        "nullity": 1,
+        "selected": false,
+        "selectedOutgoing": false,
+        "k": {
+          "real": 0.002558899538531261,
+          "imag": 3.912436647417499
+        },
+        "physicalQ": {
+          "real": 3.9175452139049147,
+          "imag": -0.002555562676360401
+        },
+        "properDepthSheet": false,
+        "spatialOutwardDecay": true,
+        "realNormalMomentum": false,
+        "pathComparison": {
+          "k": 5.521047433494187e-15,
+          "q": 4.25612086776183e-15,
+          "projector": 1.4064353085886856e-13
+        },
+        "residual": 4.1322016953978086e-13,
+        "currentSign": "NOT_YET_EVALUATED"
+      },
+      {
+        "index": 13,
+        "nullity": 1,
+        "selected": false,
+        "selectedOutgoing": false,
+        "k": {
+          "real": -0.002558899538531261,
+          "imag": -3.912436647417499
+        },
+        "physicalQ": {
+          "real": 3.9175452139049147,
+          "imag": -0.002555562676360401
+        },
+        "properDepthSheet": false,
+        "spatialOutwardDecay": false,
+        "realNormalMomentum": false,
+        "pathComparison": {
+          "k": 5.521047433494187e-15,
+          "q": 4.25612086776183e-15,
+          "projector": 1.4064353085886856e-13
+        },
+        "residual": 4.1322016953978086e-13,
+        "currentSign": "NOT_YET_EVALUATED"
+      },
+      {
+        "index": 14,
+        "nullity": 2,
+        "selected": false,
+        "selectedOutgoing": false,
+        "k": {
+          "real": 2.4454038521275,
+          "imag": -3.776916365270049e-17
+        },
+        "physicalQ": {
+          "real": -3.1111207133040655e-17,
+          "imag": -2.437211521390791
+        },
+        "properDepthSheet": false,
+        "spatialOutwardDecay": false,
+        "realNormalMomentum": true,
+        "pathComparison": {
+          "k": 1.65018311147777e-14,
+          "q": 1.820713139609311e-14,
+          "projector": 2.9165888627305563e-13
+        },
+        "residual": 4.191982755114034e-14,
+        "currentSign": "NOT_YET_EVALUATED"
+      },
+      {
+        "index": 15,
+        "nullity": 2,
+        "selected": false,
+        "selectedOutgoing": false,
+        "k": {
+          "real": -2.4454038521275,
+          "imag": 3.776916365270049e-17
+        },
+        "physicalQ": {
+          "real": -3.1111207133040655e-17,
+          "imag": -2.437211521390791
+        },
+        "properDepthSheet": false,
+        "spatialOutwardDecay": false,
+        "realNormalMomentum": true,
+        "pathComparison": {
+          "k": 1.65018311147777e-14,
+          "q": 1.820713139609311e-14,
+          "projector": 2.9165888627305563e-13
+        },
+        "residual": 4.191982755114034e-14,
+        "currentSign": "NOT_YET_EVALUATED"
+      },
+      {
+        "index": 16,
+        "nullity": 2,
+        "selected": true,
+        "selectedOutgoing": true,
+        "k": {
+          "real": 2.4454038521275003,
+          "imag": -3.776867791673516e-17
+        },
+        "physicalQ": {
+          "real": 3.111071982245434e-17,
+          "imag": 2.437211521390791
+        },
+        "properDepthSheet": true,
+        "spatialOutwardDecay": false,
+        "realNormalMomentum": true,
+        "pathComparison": {
+          "k": 1.6372965438628357e-14,
+          "q": 1.8347125466986877e-14,
+          "projector": 2.568358747097638e-13
+        },
+        "residual": 3.642972847566946e-14,
+        "currentSign": "NOT_YET_EVALUATED"
+      },
+      {
+        "index": 17,
+        "nullity": 2,
+        "selected": true,
+        "selectedOutgoing": false,
+        "k": {
+          "real": -2.4454038521275003,
+          "imag": 3.776867791673516e-17
+        },
+        "physicalQ": {
+          "real": 3.111071982245434e-17,
+          "imag": 2.437211521390791
+        },
+        "properDepthSheet": true,
+        "spatialOutwardDecay": false,
+        "realNormalMomentum": true,
+        "pathComparison": {
+          "k": 1.6372965438628357e-14,
+          "q": 1.8347125466986877e-14,
+          "projector": 2.568358747097638e-13
+        },
+        "residual": 3.642972847566946e-14,
+        "currentSign": "NOT_YET_EVALUATED"
+      }
+    ],
+    "RIGHT-omega3-a-1-census.json": [
+      {
+        "index": 0,
+        "nullity": 1,
+        "selected": true,
+        "selectedOutgoing": true,
+        "k": {
+          "real": 0.0029189211358772544,
+          "imag": 3.9203552862101043
+        },
+        "physicalQ": {
+          "real": -3.925453546789041,
+          "imag": 0.0029151301292119915
+        },
+        "properDepthSheet": true,
+        "spatialOutwardDecay": true,
+        "realNormalMomentum": false,
+        "pathComparison": {
+          "k": 4.24277827821642e-15,
+          "q": 2.649486431043144e-15,
+          "projector": 1.3869610367327426e-13
+        },
+        "residual": 4.0322192617548466e-13,
+        "currentSign": "NOT_YET_EVALUATED"
+      },
+      {
+        "index": 1,
+        "nullity": 1,
+        "selected": false,
+        "selectedOutgoing": false,
+        "k": {
+          "real": -0.0029189211358772544,
+          "imag": -3.9203552862101043
+        },
+        "physicalQ": {
+          "real": -3.925453546789041,
+          "imag": 0.0029151301292119915
+        },
+        "properDepthSheet": true,
+        "spatialOutwardDecay": false,
+        "realNormalMomentum": false,
+        "pathComparison": {
+          "k": 4.24277827821642e-15,
+          "q": 2.649486431043144e-15,
+          "projector": 1.3869610367327426e-13
+        },
+        "residual": 4.0322192617548466e-13,
+        "currentSign": "NOT_YET_EVALUATED"
+      },
+      {
+        "index": 2,
+        "nullity": 1,
+        "selected": false,
+        "selectedOutgoing": false,
+        "k": {
+          "real": 0.29350549102848467,
+          "imag": -0.4402718010851268
+        },
+        "physicalQ": {
+          "real": -0.47189139972935373,
+          "imag": -0.2738388350319564
+        },
+        "properDepthSheet": false,
+        "spatialOutwardDecay": false,
+        "realNormalMomentum": false,
+        "pathComparison": {
+          "k": 1.30896356413535e-14,
+          "q": 3.178126759414104e-14,
+          "projector": 4.768873153618393e-15
+        },
+        "residual": 7.501581907820442e-16,
+        "currentSign": "NOT_YET_EVALUATED"
+      },
+      {
+        "index": 3,
+        "nullity": 1,
+        "selected": false,
+        "selectedOutgoing": false,
+        "k": {
+          "real": -0.29350549102848467,
+          "imag": 0.4402718010851268
+        },
+        "physicalQ": {
+          "real": -0.47189139972935373,
+          "imag": -0.2738388350319564
+        },
+        "properDepthSheet": false,
+        "spatialOutwardDecay": true,
+        "realNormalMomentum": false,
+        "pathComparison": {
+          "k": 1.30896356413535e-14,
+          "q": 3.178126759414104e-14,
+          "projector": 4.768873153618393e-15
+        },
+        "residual": 7.501581907820442e-16,
+        "currentSign": "NOT_YET_EVALUATED"
+      },
+      {
+        "index": 4,
+        "nullity": 1,
+        "selected": true,
+        "selectedOutgoing": true,
+        "k": {
+          "real": 0.783911707255476,
+          "imag": 4.233548865330383e-05
+        },
+        "physicalQ": {
+          "real": -4.3784467458716355e-05,
+          "imag": 0.757969369365927
+        },
+        "properDepthSheet": true,
+        "spatialOutwardDecay": true,
+        "realNormalMomentum": false,
+        "pathComparison": {
+          "k": 1.51506572065867e-16,
+          "q": 4.623315491094038e-16,
+          "projector": 1.2412670766236366e-16
+        },
+        "residual": 1.0823754776152487e-15,
+        "currentSign": "NOT_YET_EVALUATED"
+      },
+      {
+        "index": 5,
+        "nullity": 1,
+        "selected": false,
+        "selectedOutgoing": false,
+        "k": {
+          "real": -0.783911707255476,
+          "imag": -4.233548865330383e-05
+        },
+        "physicalQ": {
+          "real": -4.3784467458716355e-05,
+          "imag": 0.757969369365927
+        },
+        "properDepthSheet": true,
+        "spatialOutwardDecay": false,
+        "realNormalMomentum": false,
+        "pathComparison": {
+          "k": 1.51506572065867e-16,
+          "q": 4.623315491094038e-16,
+          "projector": 1.2412670766236366e-16
+        },
+        "residual": 1.0823754776152487e-15,
+        "currentSign": "NOT_YET_EVALUATED"
+      },
+      {
+        "index": 6,
+        "nullity": 1,
+        "selected": true,
+        "selectedOutgoing": true,
+        "k": {
+          "real": 3.3103217201316966,
+          "imag": 0.003970981907219771
+        },
+        "physicalQ": {
+          "real": -0.003978249286325204,
+          "imag": 3.3042744965492425
+        },
+        "properDepthSheet": true,
+        "spatialOutwardDecay": true,
+        "realNormalMomentum": false,
+        "pathComparison": {
+          "k": 1.8714286843947552e-17,
+          "q": 2.3847959865105025e-17,
+          "projector": 4.61437259798714e-17
+        },
+        "residual": 5.136575846227163e-16,
+        "currentSign": "NOT_YET_EVALUATED"
+      },
+      {
+        "index": 7,
+        "nullity": 1,
+        "selected": false,
+        "selectedOutgoing": false,
+        "k": {
+          "real": -3.3103217201316966,
+          "imag": -0.003970981907219771
+        },
+        "physicalQ": {
+          "real": -0.003978249286325204,
+          "imag": 3.3042744965492425
+        },
+        "properDepthSheet": true,
+        "spatialOutwardDecay": false,
+        "realNormalMomentum": false,
+        "pathComparison": {
+          "k": 1.8714286843947552e-17,
+          "q": 2.3847959865105025e-17,
+          "projector": 4.61437259798714e-17
+        },
+        "residual": 5.136575846227163e-16,
+        "currentSign": "NOT_YET_EVALUATED"
+      },
+      {
+        "index": 8,
+        "nullity": 1,
+        "selected": false,
+        "selectedOutgoing": false,
+        "k": {
+          "real": 3.2345772514590263,
+          "imag": 0.0023491961272183205
+        },
+        "physicalQ": {
+          "real": 0.0023536997443549925,
+          "imag": -3.228388145319003
+        },
+        "properDepthSheet": false,
+        "spatialOutwardDecay": true,
+        "realNormalMomentum": false,
+        "pathComparison": {
+          "k": 2.2121464143567227e-17,
+          "q": 2.7935790624140127e-17,
+          "projector": 2.2204502844110104e-16
+        },
+        "residual": 2.5799192452369996e-16,
+        "currentSign": "NOT_YET_EVALUATED"
+      },
+      {
+        "index": 9,
+        "nullity": 1,
+        "selected": false,
+        "selectedOutgoing": false,
+        "k": {
+          "real": -3.2345772514590263,
+          "imag": -0.0023491961272183205
+        },
+        "physicalQ": {
+          "real": 0.0023536997443549925,
+          "imag": -3.228388145319003
+        },
+        "properDepthSheet": false,
+        "spatialOutwardDecay": false,
+        "realNormalMomentum": false,
+        "pathComparison": {
+          "k": 2.2121464143567227e-17,
+          "q": 2.7935790624140127e-17,
+          "projector": 2.2204502844110104e-16
+        },
+        "residual": 2.5799192452369996e-16,
+        "currentSign": "NOT_YET_EVALUATED"
+      },
+      {
+        "index": 10,
+        "nullity": 1,
+        "selected": false,
+        "selectedOutgoing": false,
+        "k": {
+          "real": 0.6700144190644824,
+          "imag": 0.18942337406071894
+        },
+        "physicalQ": {
+          "real": 0.19769892408066744,
+          "imag": -0.6419680456973091
+        },
+        "properDepthSheet": false,
+        "spatialOutwardDecay": true,
+        "realNormalMomentum": false,
+        "pathComparison": {
+          "k": 1.3492987811967371e-16,
+          "q": 3.4646904448084823e-16,
+          "projector": 6.938893903907228e-17
+        },
+        "residual": 2.8458824881412086e-16,
+        "currentSign": "NOT_YET_EVALUATED"
+      },
+      {
+        "index": 11,
+        "nullity": 1,
+        "selected": false,
+        "selectedOutgoing": false,
+        "k": {
+          "real": -0.6700144190644824,
+          "imag": -0.18942337406071894
+        },
+        "physicalQ": {
+          "real": 0.19769892408066744,
+          "imag": -0.6419680456973091
+        },
+        "properDepthSheet": false,
+        "spatialOutwardDecay": false,
+        "realNormalMomentum": false,
+        "pathComparison": {
+          "k": 1.3492987811967371e-16,
+          "q": 3.4646904448084823e-16,
+          "projector": 6.938893903907228e-17
+        },
+        "residual": 2.8458824881412086e-16,
+        "currentSign": "NOT_YET_EVALUATED"
+      },
+      {
+        "index": 12,
+        "nullity": 1,
+        "selected": false,
+        "selectedOutgoing": false,
+        "k": {
+          "real": 0.0025310617631352315,
+          "imag": 3.920330505466861
+        },
+        "physicalQ": {
+          "real": 3.925428798929383,
+          "imag": -0.0025277744545885916
+        },
+        "properDepthSheet": false,
+        "spatialOutwardDecay": true,
+        "realNormalMomentum": false,
+        "pathComparison": {
+          "k": 4.067678736289594e-15,
+          "q": 2.484500650360465e-15,
+          "projector": 1.376693278651179e-13
+        },
+        "residual": 4.007297455427388e-13,
+        "currentSign": "NOT_YET_EVALUATED"
+      },
+      {
+        "index": 13,
+        "nullity": 1,
+        "selected": false,
+        "selectedOutgoing": false,
+        "k": {
+          "real": -0.0025310617631352315,
+          "imag": -3.920330505466861
+        },
+        "physicalQ": {
+          "real": 3.925428798929383,
+          "imag": -0.0025277744545885916
+        },
+        "properDepthSheet": false,
+        "spatialOutwardDecay": false,
+        "realNormalMomentum": false,
+        "pathComparison": {
+          "k": 4.067678736289594e-15,
+          "q": 2.484500650360465e-15,
+          "projector": 1.376693278651179e-13
+        },
+        "residual": 4.007297455427388e-13,
+        "currentSign": "NOT_YET_EVALUATED"
+      },
+      {
+        "index": 14,
+        "nullity": 2,
+        "selected": false,
+        "selectedOutgoing": false,
+        "k": {
+          "real": 2.4515301344262563,
+          "imag": -3.748278079993756e-17
+        },
+        "physicalQ": {
+          "real": -3.0874917822545964e-17,
+          "imag": -2.4433583445741265
+        },
+        "properDepthSheet": false,
+        "spatialOutwardDecay": false,
+        "realNormalMomentum": true,
+        "pathComparison": {
+          "k": 1.6215214281219376e-14,
+          "q": 1.816306840435959e-14,
+          "projector": 2.942874306203594e-13
+        },
+        "residual": 4.184800044438543e-14,
+        "currentSign": "NOT_YET_EVALUATED"
+      },
+      {
+        "index": 15,
+        "nullity": 2,
+        "selected": false,
+        "selectedOutgoing": false,
+        "k": {
+          "real": -2.4515301344262563,
+          "imag": 3.748278079993756e-17
+        },
+        "physicalQ": {
+          "real": -3.0874917822545964e-17,
+          "imag": -2.4433583445741265
+        },
+        "properDepthSheet": false,
+        "spatialOutwardDecay": false,
+        "realNormalMomentum": true,
+        "pathComparison": {
+          "k": 1.6215214281219376e-14,
+          "q": 1.816306840435959e-14,
+          "projector": 2.942874306203594e-13
+        },
+        "residual": 4.184800044438543e-14,
+        "currentSign": "NOT_YET_EVALUATED"
+      },
+      {
+        "index": 16,
+        "nullity": 2,
+        "selected": true,
+        "selectedOutgoing": true,
+        "k": {
+          "real": 2.4515301344262563,
+          "imag": -3.748927920837796e-17
+        },
+        "physicalQ": {
+          "real": 3.088143783354284e-17,
+          "imag": 2.4433583445741265
+        },
+        "properDepthSheet": true,
+        "spatialOutwardDecay": false,
+        "realNormalMomentum": true,
+        "pathComparison": {
+          "k": 1.6343851192857196e-14,
+          "q": 1.816306836853046e-14,
+          "projector": 2.5869870074390856e-13
+        },
+        "residual": 3.6563425610373375e-14,
+        "currentSign": "NOT_YET_EVALUATED"
+      },
+      {
+        "index": 17,
+        "nullity": 2,
+        "selected": true,
+        "selectedOutgoing": false,
+        "k": {
+          "real": -2.4515301344262563,
+          "imag": 3.748927920837796e-17
+        },
+        "physicalQ": {
+          "real": 3.088143783354284e-17,
+          "imag": 2.4433583445741265
+        },
+        "properDepthSheet": true,
+        "spatialOutwardDecay": false,
+        "realNormalMomentum": true,
+        "pathComparison": {
+          "k": 1.6343851192857196e-14,
+          "q": 1.816306836853046e-14,
+          "projector": 2.5869870074390856e-13
+        },
+        "residual": 3.6563425610373375e-14,
+        "currentSign": "NOT_YET_EVALUATED"
+      }
+    ]
+  },
+  "referenceJoins": {
+    "LEFT": [
+      {
+        "index": 0,
+        "referenceIndex": 0,
+        "pencilJoin": 1.1815317075804674e-21,
+        "rootDistance": 0.0,
+        "projectorJoin": 0.0,
+        "secondDistance": 0.4940339401793611
+      },
+      {
+        "index": 1,
+        "referenceIndex": 1,
+        "pencilJoin": 1.1815317075804674e-21,
+        "rootDistance": 0.0,
+        "projectorJoin": 0.0,
+        "secondDistance": 0.4940339401793611
+      },
+      {
+        "index": 2,
+        "referenceIndex": 2,
+        "pencilJoin": 1.3503386540292067e-19,
+        "rootDistance": 0.0,
+        "projectorJoin": 0.0,
+        "secondDistance": 0.6593486871758405
+      },
+      {
+        "index": 3,
+        "referenceIndex": 3,
+        "pencilJoin": 1.3503386540292067e-19,
+        "rootDistance": 0.0,
+        "projectorJoin": 0.0,
+        "secondDistance": 0.6593486871758405
+      },
+      {
+        "index": 4,
+        "referenceIndex": 4,
+        "pencilJoin": 1.1295837865678796e-15,
+        "rootDistance": 0.0,
+        "projectorJoin": 0.0,
+        "secondDistance": 0.35885012820822043
+      },
+      {
+        "index": 5,
+        "referenceIndex": 5,
+        "pencilJoin": 1.1295837865678796e-15,
+        "rootDistance": 0.0,
+        "projectorJoin": 0.0,
+        "secondDistance": 0.35885012820822043
+      },
+      {
+        "index": 6,
+        "referenceIndex": 6,
+        "pencilJoin": 1.1486902381703389e-17,
+        "rootDistance": 0.0,
+        "projectorJoin": 0.0,
+        "secondDistance": 0.7529319288396675
+      },
+      {
+        "index": 7,
+        "referenceIndex": 7,
+        "pencilJoin": 1.1486902381703389e-17,
+        "rootDistance": 0.0,
+        "projectorJoin": 0.0,
+        "secondDistance": 0.7529319288396675
+      },
+      {
+        "index": 8,
+        "referenceIndex": 8,
+        "pencilJoin": 1.1464662393784484e-17,
+        "rootDistance": 0.0,
+        "projectorJoin": 0.0,
+        "secondDistance": 0.7500905185028753
+      },
+      {
+        "index": 9,
+        "referenceIndex": 9,
+        "pencilJoin": 1.1464662393784484e-17,
+        "rootDistance": 0.0,
+        "projectorJoin": 0.0,
+        "secondDistance": 0.7500905185028753
+      },
+      {
+        "index": 10,
+        "referenceIndex": 10,
+        "pencilJoin": 1.3534055922220256e-19,
+        "rootDistance": 0.0,
+        "projectorJoin": 0.0,
+        "secondDistance": 0.6626566433451684
+      },
+      {
+        "index": 11,
+        "referenceIndex": 11,
+        "pencilJoin": 1.3534055922220256e-19,
+        "rootDistance": 0.0,
+        "projectorJoin": 0.0,
+        "secondDistance": 0.6626566433451684
+      },
+      {
+        "index": 12,
+        "referenceIndex": 12,
+        "pencilJoin": 7.741760087275077e-17,
+        "rootDistance": 0.0,
+        "projectorJoin": 0.0,
+        "secondDistance": 0.4958895614989416
+      },
+      {
+        "index": 13,
+        "referenceIndex": 13,
+        "pencilJoin": 7.741760087275077e-17,
+        "rootDistance": 0.0,
+        "projectorJoin": 0.0,
+        "secondDistance": 0.4958895614989416
+      },
+      {
+        "index": 14,
+        "referenceIndex": 14,
+        "pencilJoin": 8.488490334963371e-18,
+        "rootDistance": 0.0,
+        "projectorJoin": 0.0,
+        "secondDistance": 0.879728344135564
+      },
+      {
+        "index": 15,
+        "referenceIndex": 15,
+        "pencilJoin": 8.488490334963371e-18,
+        "rootDistance": 0.0,
+        "projectorJoin": 0.0,
+        "secondDistance": 0.879728344135564
+      },
+      {
+        "index": 16,
+        "referenceIndex": 16,
+        "pencilJoin": 8.505657366993823e-18,
+        "rootDistance": 0.0,
+        "projectorJoin": 0.0,
+        "secondDistance": 0.879728344135564
+      },
+      {
+        "index": 17,
+        "referenceIndex": 17,
+        "pencilJoin": 8.505657366993823e-18,
+        "rootDistance": 0.0,
+        "projectorJoin": 0.0,
+        "secondDistance": 0.879728344135564
+      }
+    ],
+    "RIGHT": [
+      {
+        "index": 0,
+        "referenceIndex": 0,
+        "pencilJoin": 7.561802928515037e-20,
+        "rootDistance": 5.774727756214048e-15,
+        "projectorJoin": 1.0510544709932568e-13,
+        "secondDistance": 0.49403394017935676
+      },
+      {
+        "index": 1,
+        "referenceIndex": 1,
+        "pencilJoin": 7.561802928515037e-20,
+        "rootDistance": 5.774727756214048e-15,
+        "projectorJoin": 1.0510544709932568e-13,
+        "secondDistance": 0.49403394017935676
+      },
+      {
+        "index": 2,
+        "referenceIndex": 2,
+        "pencilJoin": 8.642167385786784e-18,
+        "rootDistance": 1.6157711201677137e-14,
+        "projectorJoin": 1.5599089336772837e-13,
+        "secondDistance": 0.659348687175819
+      },
+      {
+        "index": 3,
+        "referenceIndex": 3,
+        "pencilJoin": 8.642167385786784e-18,
+        "rootDistance": 1.6157711201677137e-14,
+        "projectorJoin": 1.5599089336772837e-13,
+        "secondDistance": 0.659348687175819
+      },
+      {
+        "index": 4,
+        "referenceIndex": 4,
+        "pencilJoin": 1.1295837865678796e-15,
+        "rootDistance": 4.489634607405732e-17,
+        "projectorJoin": 7.216449660063518e-16,
+        "secondDistance": 0.35885012820822043
+      },
+      {
+        "index": 5,
+        "referenceIndex": 5,
+        "pencilJoin": 1.1295837865678796e-15,
+        "rootDistance": 4.489634607405732e-17,
+        "projectorJoin": 7.216449660063518e-16,
+        "secondDistance": 0.35885012820822043
+      },
+      {
+        "index": 6,
+        "referenceIndex": 6,
+        "pencilJoin": 1.1486902381703389e-17,
+        "rootDistance": 3.937798569597277e-17,
+        "projectorJoin": 1.6793924180936723e-16,
+        "secondDistance": 0.7529319288396675
+      },
+      {
+        "index": 7,
+        "referenceIndex": 7,
+        "pencilJoin": 1.1486902381703389e-17,
+        "rootDistance": 3.937798569597277e-17,
+        "projectorJoin": 1.6793924180936723e-16,
+        "secondDistance": 0.7529319288396675
+      },
+      {
+        "index": 8,
+        "referenceIndex": 8,
+        "pencilJoin": 1.1464662393784484e-17,
+        "rootDistance": 7.899140502913656e-17,
+        "projectorJoin": 7.216920073798878e-16,
+        "secondDistance": 0.7500905185028752
+      },
+      {
+        "index": 9,
+        "referenceIndex": 9,
+        "pencilJoin": 1.1464662393784484e-17,
+        "rootDistance": 7.899140502913656e-17,
+        "projectorJoin": 7.216920073798878e-16,
+        "secondDistance": 0.7500905185028752
+      },
+      {
+        "index": 10,
+        "referenceIndex": 10,
+        "pencilJoin": 2.706811184444007e-19,
+        "rootDistance": 1.6553842547167242e-14,
+        "projectorJoin": 1.5373481436271236e-13,
+        "secondDistance": 0.6626566433451462
+      },
+      {
+        "index": 11,
+        "referenceIndex": 11,
+        "pencilJoin": 2.706811184444007e-19,
+        "rootDistance": 1.6553842547167242e-14,
+        "projectorJoin": 1.5373481436271236e-13,
+        "secondDistance": 0.6626566433451462
+      },
+      {
+        "index": 12,
+        "referenceIndex": 12,
+        "pencilJoin": 3.024125034091845e-19,
+        "rootDistance": 5.679483386199394e-15,
+        "projectorJoin": 1.0421037307772646e-13,
+        "secondDistance": 0.49588956149893737
+      },
+      {
+        "index": 13,
+        "referenceIndex": 13,
+        "pencilJoin": 3.024125034091845e-19,
+        "rootDistance": 5.679483386199394e-15,
+        "projectorJoin": 1.0421037307772646e-13,
+        "secondDistance": 0.49588956149893737
+      },
+      {
+        "index": 14,
+        "referenceIndex": 14,
+        "pencilJoin": 8.488490334963371e-18,
+        "rootDistance": 2.573166282668837e-16,
+        "projectorJoin": 7.155085430408735e-16,
+        "secondDistance": 0.8797283441355641
+      },
+      {
+        "index": 15,
+        "referenceIndex": 15,
+        "pencilJoin": 8.488490334963371e-18,
+        "rootDistance": 2.573166282668837e-16,
+        "projectorJoin": 7.155085430408735e-16,
+        "secondDistance": 0.8797283441355641
+      },
+      {
+        "index": 16,
+        "referenceIndex": 16,
+        "pencilJoin": 2.2681752978650196e-17,
+        "rootDistance": 2.5731663210617546e-16,
+        "projectorJoin": 6.948879480703164e-16,
+        "secondDistance": 0.8797283441355641
+      },
+      {
+        "index": 17,
+        "referenceIndex": 17,
+        "pencilJoin": 2.2681752978650196e-17,
+        "rootDistance": 2.5731663210617546e-16,
+        "projectorJoin": 6.948879480703164e-16,
+        "secondDistance": 0.8797283441355641
+      }
+    ]
+  },
+  "completedNonJournalResults": [
+    {
+      "member": "LEFT/completed-candidate-continuations.pickle",
+      "sha256": "e7afbd2a2a0356fea7a47c88d24fca63cfcd8701f61e7dfde529dc89b97ef239",
+      "bytes": 74699
+    },
+    {
+      "member": "RIGHT/symbolic-unit-context.pickle",
+      "sha256": "2e7084c1c10ac3208b8775b653eea62b38ce3e5e0a1e1827aedd0e6f81484669",
+      "bytes": 23524
+    },
+    {
+      "member": "RIGHT/completed-candidate-continuations.pickle",
+      "sha256": "818a0adc750f0ba69e1fc7f72e0ede36ff4e628f28250dfc5eb880c60ed57ce0",
+      "bytes": 273442
+    }
+  ],
+  "artifacts": {
+    "LEFT-contrast-0.25.json": {
+      "sha256": "1f58033c31226540d0d03cdd9fcef3e73d6fe632a3b072abfb4d1cf22fd47055",
+      "bytes": 1343
+    },
+    "LEFT-contrast-0.5.json": {
+      "sha256": "1f58033c31226540d0d03cdd9fcef3e73d6fe632a3b072abfb4d1cf22fd47055",
+      "bytes": 1343
+    },
+    "LEFT-contrast-0.json": {
+      "sha256": "1f58033c31226540d0d03cdd9fcef3e73d6fe632a3b072abfb4d1cf22fd47055",
+      "bytes": 1343
+    },
+    "LEFT-omega3-a-1-census.json": {
+      "sha256": "dc4547489aa055683d072ea40f716ef63c090d3bc5046213feb5200e6c5bc0d5",
+      "bytes": 10779
+    },
+    "LEFT-reference-join-0.json": {
+      "sha256": "468a0a6ea33b4aba1572957a69fd0e621268f2f7b1c674a8e7704e7b48e54c1a",
+      "bytes": 167
+    },
+    "LEFT-reference-join-1.json": {
+      "sha256": "557115276aac52ae501a3e6218ace0186b4af106353e492e4805aab55d203953",
+      "bytes": 167
+    },
+    "LEFT-reference-join-10.json": {
+      "sha256": "892ec34d735187ca97f59d8bc7c6c6f4397cdbb7374417b80e37149f2cec24ea",
+      "bytes": 169
+    },
+    "LEFT-reference-join-11.json": {
+      "sha256": "91bfdc84205ef1680a5af3cd80105f5c671ed04900cb3923d5c68931b2dd7b46",
+      "bytes": 169
+    },
+    "LEFT-reference-join-12.json": {
+      "sha256": "059cfc322f89b06a9de3daa3f122aa27854c09a5a5c39d122427197a265abc76",
+      "bytes": 168
+    },
+    "LEFT-reference-join-13.json": {
+      "sha256": "1e0cc84691a6767f358a0b2582b13e8a7760d73e094fa196e737978672740ff4",
+      "bytes": 168
+    },
+    "LEFT-reference-join-14.json": {
+      "sha256": "a4fc8b9fa053c5c731f537ce074627675982caf014d2879aca5fb1a11b03ae37",
+      "bytes": 167
+    },
+    "LEFT-reference-join-15.json": {
+      "sha256": "5a3643d4d42dad5b67e05d3d6649efe279f85f654ab175c65e6a734e4d0c1300",
+      "bytes": 167
+    },
+    "LEFT-reference-join-16.json": {
+      "sha256": "557a6033d9585ad372ad0da72ace7f18e7fba5370b8e9a0faa6c59f21cdb727a",
+      "bytes": 167
+    },
+    "LEFT-reference-join-17.json": {
+      "sha256": "a1ea6daf44ddd3a0e0fced29e7c0b79d9d1dc74a346ee02a313f971a6d30840f",
+      "bytes": 167
+    },
+    "LEFT-reference-join-2.json": {
+      "sha256": "70fa4cad16b28e75256f1a797dd3e08a30559b66fbf8a85d9cd41b6215eac142",
+      "bytes": 167
+    },
+    "LEFT-reference-join-3.json": {
+      "sha256": "a7b5ede6ec745ee446e2cf89ccae08c285eb474b432aec50175eca738c2452f3",
+      "bytes": 167
+    },
+    "LEFT-reference-join-4.json": {
+      "sha256": "515efb31c728abb4061735756797bc25141b9478eef389335d44c475391a9609",
+      "bytes": 168
+    },
+    "LEFT-reference-join-5.json": {
+      "sha256": "7b6e48393c5e626c3120a570a88cb5be31f8871f9f07d3fe293d8e36357bdbde",
+      "bytes": 168
+    },
+    "LEFT-reference-join-6.json": {
+      "sha256": "f15dcd4cf5a5a652b02a159cfdf4b4372c16ae275b52ee05eeadb9ebf5f3bd9f",
+      "bytes": 167
+    },
+    "LEFT-reference-join-7.json": {
+      "sha256": "b2f9be6c8968bb7d9d0ddfd3669f0579c0d465c80fc5e8bc914e0609e7e87d75",
+      "bytes": 167
+    },
+    "LEFT-reference-join-8.json": {
+      "sha256": "3d72465f39ff2897196e65b01e1fe3e1a64248c45a15020c5c4faf73b8dad905",
+      "bytes": 167
+    },
+    "LEFT-reference-join-9.json": {
+      "sha256": "927c9bd6a9e1846e2b8df0cfc4e00ffd4b5e54cc174c45b71134959e1a6769af",
+      "bytes": 167
+    },
+    "LEFT-seed-joins.json": {
+      "sha256": "3018560159b7b2b80e80f33bc2263ebb5b0c39e2fc740b0de77f540748996618",
+      "bytes": 3649
+    },
+    "RIGHT-contrast-0.25.json": {
+      "sha256": "494f487b3bb1e1a8f8bbfa3f53d02623391cc530061d5717ce9d685e1d84af13",
+      "bytes": 2335
+    },
+    "RIGHT-contrast-0.5.json": {
+      "sha256": "f4c21a853dadf054f9f6a4a369013b6645c62ce15231dea3baeb3e5a6bf26675",
+      "bytes": 2345
+    },
+    "RIGHT-contrast-0.json": {
+      "sha256": "032fce11b42a6afd1c32221261fc0920ef4209c9d2eedfa1d97b6296e0f46ed1",
+      "bytes": 2331
+    },
+    "RIGHT-omega3-a-0-census.json": {
+      "sha256": "1dad3c9b9f6c6eec3a5c43691f14d2acf82ca276cd71429c06f2669bad0f9c38",
+      "bytes": 10767
+    },
+    "RIGHT-omega3-a-0.25-census.json": {
+      "sha256": "e12a0430e0e96bc1c26c2190802a1aa2bdbe47d524ca965fd4a72535e1020a38",
+      "bytes": 10761
+    },
+    "RIGHT-omega3-a-0.5-census.json": {
+      "sha256": "7f59f82993395f56404ea51a67b23c18b913f8af4af7b3f1dffd30e452edf899",
+      "bytes": 10743
+    },
+    "RIGHT-omega3-a-1-census.json": {
+      "sha256": "a3b6b84a9340cb6a9d03c6dd0d8e443afc8c1ff81eab8d9539762380bce5e4b2",
+      "bytes": 10765
+    },
+    "RIGHT-reference-join-0.json": {
+      "sha256": "682ee31f36b85bd2f0cdb201cacc1e65d68a84d23935962ca74914616b414093",
+      "bytes": 204
+    },
+    "RIGHT-reference-join-1.json": {
+      "sha256": "64c3182131a25b914ff72b65249d4fe303d4d90fd3ff6fde0fa47daf89dbb00a",
+      "bytes": 204
+    },
+    "RIGHT-reference-join-10.json": {
+      "sha256": "d995efa9561d6242c29665e8260f3b668925de6882342fc4625da9b815905ef6",
+      "bytes": 206
+    },
+    "RIGHT-reference-join-11.json": {
+      "sha256": "c713494e7d350bf9a6827f4f08fefd8f59c69cc765270a9393285b3b01adb273",
+      "bytes": 206
+    },
+    "RIGHT-reference-join-12.json": {
+      "sha256": "ff9658279f2b12f7436aa333c5346416ea8de871310fdf36de4400c8d7daabf2",
+      "bytes": 206
+    },
+    "RIGHT-reference-join-13.json": {
+      "sha256": "882ff87ab03ff685d99795c6c61ce0e1802553297ae73228ff8f94fa457582d4",
+      "bytes": 206
+    },
+    "RIGHT-reference-join-14.json": {
+      "sha256": "29a4fee181e231d7c43cd55ed63617facbacb3100b851c717aa6c2fa66c01e11",
+      "bytes": 204
+    },
+    "RIGHT-reference-join-15.json": {
+      "sha256": "bd370f69fc5738802c66efcffda8f66212420739aa804783179697741415660c",
+      "bytes": 204
+    },
+    "RIGHT-reference-join-16.json": {
+      "sha256": "d80a0df32d62ccc3fcae2952bc6a220ee885ddc97fcf0c79912773920150d0a5",
+      "bytes": 206
+    },
+    "RIGHT-reference-join-17.json": {
+      "sha256": "94463162d380ab306dda3cfc1160c93b9abf8bb43fce3af276d2309ce67fc44b",
+      "bytes": 206
+    },
+    "RIGHT-reference-join-2.json": {
+      "sha256": "25ceca8f98069bad3005af82cf38fe38801a3b37e8b0bbaf89ecae3c6efc763d",
+      "bytes": 203
+    },
+    "RIGHT-reference-join-3.json": {
+      "sha256": "b7ba7131fc07ef7c1e3d8e2c5c0d79ff05c06dc9721fc5a6afc9f32d8f3a082d",
+      "bytes": 203
+    },
+    "RIGHT-reference-join-4.json": {
+      "sha256": "e9142b4484f120fd9114497d954562ca8f90bbd6b7512037551821111b7af614",
+      "bytes": 204
+    },
+    "RIGHT-reference-join-5.json": {
+      "sha256": "ce9d630b2f27f0a7323135fc595da7b70d133fddf58415ef58534f7f4442921a",
+      "bytes": 204
+    },
+    "RIGHT-reference-join-6.json": {
+      "sha256": "09e91a18226bcaf1b8a005ec740c63b4ce49270b4e26af4b7159e5cdf4652653",
+      "bytes": 204
+    },
+    "RIGHT-reference-join-7.json": {
+      "sha256": "86857a97eea396e6d8da23723fb2a3ec31d9c366355707a7a11854db98fbb11d",
+      "bytes": 204
+    },
+    "RIGHT-reference-join-8.json": {
+      "sha256": "e41939d3337d2ba9c261c3f609713a2b073c1cb2bacb6d0868064dd9f52415dd",
+      "bytes": 203
+    },
+    "RIGHT-reference-join-9.json": {
+      "sha256": "a1e73c546d9e0eaff361e05c06df2e160b32f3fa6ee8b55b1fede0241e4906af",
+      "bytes": 203
+    },
+    "RIGHT-seed-joins.json": {
+      "sha256": "7b6d6ec65cd67d87349cf05762d66b69808e78f32ad73b7254df732ee22af006",
+      "bytes": 3999
+    },
+    "active-operation.json": {
+      "sha256": "c65b2ba6539acc8bb715dfe67d1853dd0914f3475a1952069bde11f2d906e9e4",
+      "bytes": 638
+    },
+    "checks.json": {
+      "sha256": "f80271cf065e7da843175604f61f22d204b7abe2bb3f9edf1eb77515f36bb6a8",
+      "bytes": 1247
+    },
+    "incomplete-input-join.json": {
+      "sha256": "0a3fa3054e159f7d92ea6779531a181e7c33c2f3c3ab51041ebe0bcf0d3e204d",
+      "bytes": 649
+    },
+    "inputs/left-frequency-pencil.pickle": {
+      "sha256": "67148025b209f7171b7679249c075c6e68b76882ac6ac5adfffed4eb2766211a",
+      "bytes": 9470
+    },
+    "inputs/reference-frequency-pencil.pickle": {
+      "sha256": "c8854229394c52ce38c399b0f7dec6befba27aa5182ceecb6bd44362d6043764",
+      "bytes": 9347
+    },
+    "inputs/right-frequency-pencil.pickle": {
+      "sha256": "0fe2cccd0b9c08f57666530b2519dff26e8dee633058aae85d3d7f4b89ec029d",
+      "bytes": 23826
+    },
+    "inputs/uniform-response.pickle": {
+      "sha256": "1d5bd9967d08c5ad01eab8707ea25af01cfb9bf61bfd83073ed898c9d76a772f",
+      "bytes": 543796
+    },
+    "last-completed-point.json": {
+      "sha256": "536eea429a668993a161f316a27a5845eb8c7f502cbaca243ef3b3b0da77bf11",
+      "bytes": 379
+    },
+    "last-pair-check.json": {
+      "sha256": "168976bcf73c6499e90756358db762966a0317e801e062390d551221e9db952e",
+      "bytes": 8963
+    },
+    "last-sheet-check.json": {
+      "sha256": "2dca7f92900e8fdaf72f904c8f76394d1964705813c4ed08c34046e9c97a11cc",
+      "bytes": 151
+    },
+    "operation-index.jsonl": {
+      "sha256": "51f51b32c4849fc91b29a8dbc4f7c5fc12fa014519c9b5519a4ee17890c46638",
+      "bytes": 17884582
+    },
+    "operations.sqlite": {
+      "sha256": "03103bb2160610010ce660b3adbb712be3db7001f19d41962e40b3d026f09e21",
+      "bytes": 183111680
+    },
+    "posthashes.json": {
+      "sha256": "423617b8f5e283fd9d76093e3da9efaf503f956ca3b83e6a1e3438afd80b6ec4",
+      "bytes": 36992
+    },
+    "prior-complete/LEFT-contrast-0.25.json": {
+      "sha256": "1f58033c31226540d0d03cdd9fcef3e73d6fe632a3b072abfb4d1cf22fd47055",
+      "bytes": 1343
+    },
+    "prior-complete/LEFT-contrast-0.5.json": {
+      "sha256": "1f58033c31226540d0d03cdd9fcef3e73d6fe632a3b072abfb4d1cf22fd47055",
+      "bytes": 1343
+    },
+    "prior-complete/LEFT-contrast-0.json": {
+      "sha256": "1f58033c31226540d0d03cdd9fcef3e73d6fe632a3b072abfb4d1cf22fd47055",
+      "bytes": 1343
+    },
+    "prior-complete/LEFT-omega3-a-1-census.json": {
+      "sha256": "a312b22b94539f4e5f79a6c7c80f5149492f7e049f0b5e0125ae14c767f5c031",
+      "bytes": 10182
+    },
+    "prior-complete/LEFT-reference-join-0.json": {
+      "sha256": "468a0a6ea33b4aba1572957a69fd0e621268f2f7b1c674a8e7704e7b48e54c1a",
+      "bytes": 167
+    },
+    "prior-complete/LEFT-reference-join-1.json": {
+      "sha256": "557115276aac52ae501a3e6218ace0186b4af106353e492e4805aab55d203953",
+      "bytes": 167
+    },
+    "prior-complete/LEFT-reference-join-10.json": {
+      "sha256": "892ec34d735187ca97f59d8bc7c6c6f4397cdbb7374417b80e37149f2cec24ea",
+      "bytes": 169
+    },
+    "prior-complete/LEFT-reference-join-11.json": {
+      "sha256": "91bfdc84205ef1680a5af3cd80105f5c671ed04900cb3923d5c68931b2dd7b46",
+      "bytes": 169
+    },
+    "prior-complete/LEFT-reference-join-12.json": {
+      "sha256": "059cfc322f89b06a9de3daa3f122aa27854c09a5a5c39d122427197a265abc76",
+      "bytes": 168
+    },
+    "prior-complete/LEFT-reference-join-13.json": {
+      "sha256": "1e0cc84691a6767f358a0b2582b13e8a7760d73e094fa196e737978672740ff4",
+      "bytes": 168
+    },
+    "prior-complete/LEFT-reference-join-14.json": {
+      "sha256": "a4fc8b9fa053c5c731f537ce074627675982caf014d2879aca5fb1a11b03ae37",
+      "bytes": 167
+    },
+    "prior-complete/LEFT-reference-join-15.json": {
+      "sha256": "5a3643d4d42dad5b67e05d3d6649efe279f85f654ab175c65e6a734e4d0c1300",
+      "bytes": 167
+    },
+    "prior-complete/LEFT-reference-join-16.json": {
+      "sha256": "557a6033d9585ad372ad0da72ace7f18e7fba5370b8e9a0faa6c59f21cdb727a",
+      "bytes": 167
+    },
+    "prior-complete/LEFT-reference-join-17.json": {
+      "sha256": "a1ea6daf44ddd3a0e0fced29e7c0b79d9d1dc74a346ee02a313f971a6d30840f",
+      "bytes": 167
+    },
+    "prior-complete/LEFT-reference-join-2.json": {
+      "sha256": "70fa4cad16b28e75256f1a797dd3e08a30559b66fbf8a85d9cd41b6215eac142",
+      "bytes": 167
+    },
+    "prior-complete/LEFT-reference-join-3.json": {
+      "sha256": "a7b5ede6ec745ee446e2cf89ccae08c285eb474b432aec50175eca738c2452f3",
+      "bytes": 167
+    },
+    "prior-complete/LEFT-reference-join-4.json": {
+      "sha256": "515efb31c728abb4061735756797bc25141b9478eef389335d44c475391a9609",
+      "bytes": 168
+    },
+    "prior-complete/LEFT-reference-join-5.json": {
+      "sha256": "7b6e48393c5e626c3120a570a88cb5be31f8871f9f07d3fe293d8e36357bdbde",
+      "bytes": 168
+    },
+    "prior-complete/LEFT-reference-join-6.json": {
+      "sha256": "f15dcd4cf5a5a652b02a159cfdf4b4372c16ae275b52ee05eeadb9ebf5f3bd9f",
+      "bytes": 167
+    },
+    "prior-complete/LEFT-reference-join-7.json": {
+      "sha256": "b2f9be6c8968bb7d9d0ddfd3669f0579c0d465c80fc5e8bc914e0609e7e87d75",
+      "bytes": 167
+    },
+    "prior-complete/LEFT-reference-join-8.json": {
+      "sha256": "3d72465f39ff2897196e65b01e1fe3e1a64248c45a15020c5c4faf73b8dad905",
+      "bytes": 167
+    },
+    "prior-complete/LEFT-reference-join-9.json": {
+      "sha256": "927c9bd6a9e1846e2b8df0cfc4e00ffd4b5e54cc174c45b71134959e1a6769af",
+      "bytes": 167
+    },
+    "prior-complete/LEFT-seed-joins.json": {
+      "sha256": "eb496b0f11543a3c8d136fcbb50956c8fd514c2f230f6fc14ad93c71bbbe8813",
+      "bytes": 3945
+    },
+    "prior-complete/active-operation.json": {
+      "sha256": "53b9eb00a77f40420d178b7475a30afcf94276153768b0f7fe3640b204d58ac7",
+      "bytes": 332
+    },
+    "prior-complete/checks.json": {
+      "sha256": "752e90053009640623cc7599904808dd86ef98d7edf0be1f6720c3200a0cba73",
+      "bytes": 2995
+    },
+    "prior-complete/failure.json": {
+      "sha256": "51188b7d2040b2a3d3bd78e21f15eacbf4bdb2302006de0674ef8635f2d10956",
+      "bytes": 2457
+    },
+    "prior-complete/inputs/left-frequency-pencil.pickle": {
+      "sha256": "67148025b209f7171b7679249c075c6e68b76882ac6ac5adfffed4eb2766211a",
+      "bytes": 9470
+    },
+    "prior-complete/inputs/reference-frequency-pencil.pickle": {
+      "sha256": "c8854229394c52ce38c399b0f7dec6befba27aa5182ceecb6bd44362d6043764",
+      "bytes": 9347
+    },
+    "prior-complete/inputs/right-frequency-pencil.pickle": {
+      "sha256": "0fe2cccd0b9c08f57666530b2519dff26e8dee633058aae85d3d7f4b89ec029d",
+      "bytes": 23826
+    },
+    "prior-complete/inputs/uniform-response.pickle": {
+      "sha256": "1d5bd9967d08c5ad01eab8707ea25af01cfb9bf61bfd83073ed898c9d76a772f",
+      "bytes": 543796
+    },
+    "prior-complete/last-completed-point.json": {
+      "sha256": "ece18496f04cad3479129ff77f8b8d7c02d212678667bc75007035aea7f50596",
+      "bytes": 381
+    },
+    "prior-complete/last-pair-check.json": {
+      "sha256": "a80a94d92938203c8c5a164aad088c18b40dd3c788b2c97f06c3a082d2df059d",
+      "bytes": 8822
+    },
+    "prior-complete/last-sheet-check.json": {
+      "sha256": "df8d566a637521f7ce535f59305653ec239291be3a43382b87094680985d8449",
+      "bytes": 152
+    },
+    "prior-complete/operation-index.jsonl": {
+      "sha256": "ed60b8040bba05184c49bd25c9580db42b4674bd84a6e07acfab3d45339c4c22",
+      "bytes": 2618482
+    },
+    "prior-complete/operations.zip": {
+      "sha256": "0de8a6e1246a7c125f75d15cd3394cfc24f166f51b55945962602f7091a1ff86",
+      "bytes": 27468396
+    },
+    "prior-complete/posthashes.json": {
+      "sha256": "3482a7218150b586af30bba960d637fe2135f566639b587cadeaa30fdb28bf69",
+      "bytes": 19683
+    },
+    "prior-copy-index.json": {
+      "sha256": "9657c8cd120c99b6500aac823b10af5afbaab69582fa659586b81d710ae52848",
+      "bytes": 4951
+    }
+  },
+  "artifactTotals": {
+    "files": 99,
+    "bytes": 232445177
+  },
+  "acceptanceScope": "Source-bound numerical candidate continuation with recorded checks; not a complete modal boundary/current/face/field/deficit result. No unpickling during inspection.",
+  "reviewStatus": "Claude round2 CLEAR with five corrections; Grok no final report; explicit user no-further-Grok execution authority, no paired clearance.",
+  "next": "Continue authorized numerical current/face and finite end-map checks, then endpoint integration/assembly controls. No time limits; source snapshots preserve the old shared guard before replacement."
+}

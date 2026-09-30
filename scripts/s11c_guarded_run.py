@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
-"""Run one S11c job in a bounded user service, with durable resource telemetry.
+"""Run one S11c job with memory containment and no elapsed-time cutoff.
 
 Requires a host shell and a systemd user manager. Fails closed if the actual
 cgroup limits cannot be verified. No scientific imports or automatic retries.
+Standing user policy: no wall-clock, worker or inactivity deadlines.
+The older runner remains frozen for existing source pins.
 Defaults remain 2 GiB and 32 tasks. Nondefault limits require explicit user
 authorization for the particular job; they do not change other jobs' defaults.
 """
@@ -91,6 +93,13 @@ def stop(child):
 def child_main(manifest):
     spec = json.loads(manifest.read_text())
     folder = manifest.parent
+    raw = subprocess.check_output(['systemctl', '--user', 'show', spec['unit'],
+        '--property=RuntimeMaxUSec', '--property=Restart'], text=True)
+    duration = dict(line.split('=', 1) for line in raw.splitlines() if '=' in line)
+    if duration != {'RuntimeMaxUSec': 'infinity', 'Restart': 'no'}:
+        raise RuntimeError('unlimited runtime/restart verification failed; no workload started')
+    save(folder / 'duration-validation.json', {'verified': True, 'actual': duration,
+        'wallDeadlineSeconds': None, 'inactivityDeadlineSeconds': None})
     os.sched_setaffinity(0, {spec['cpu']})
     group = group_path()
     actual = {name: (group / name).read_text().strip()
@@ -124,8 +133,6 @@ def child_main(manifest):
                     low_memory = low_memory + 1 if observation['hostAvailableBytes'] < AVAILABLE_MIN else 0
                     if low_memory >= 2:
                         reason = 'host available memory below 4 GiB for two observations'
-                    elif time.monotonic() - started >= spec['seconds']:
-                        reason = 'wall-time limit'
                     if reason:
                         stop(child); code = 124; break
         finally:
@@ -139,7 +146,8 @@ def child_main(manifest):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--log-directory', type=Path)
-    parser.add_argument('--seconds', type=int, default=900)
+    parser.add_argument('--seconds', type=int, default=0,
+                        help='legacy compatibility argument; recorded but never imposes a deadline')
     parser.add_argument('--memory-gib', type=int, choices=(2, 4), default=2,
                         help='whole-job memory cap; 4 requires explicit job authorization')
     parser.add_argument('--tasks-max', type=int, choices=(32, 64), default=32,
@@ -150,8 +158,8 @@ def main():
     if args.child_manifest:
         return child_main(args.child_manifest)
     command = args.command[1:] if args.command[:1] == ['--'] else args.command
-    if not command or not args.log_directory or not 1 <= args.seconds <= 900:
-        parser.error('fresh --log-directory, --seconds 1..900 and -- command are required')
+    if not command or not args.log_directory:
+        parser.error('fresh --log-directory and -- command are required')
     if PAUSE.exists():
         raise RuntimeError('S11c work is paused after the host freeze; see ' + str(PAUSE))
     folder = args.log_directory.resolve()
@@ -171,7 +179,9 @@ def main():
     folder.mkdir(parents=True, exist_ok=False)
     unit = 's11c-guard-' + uuid.uuid4().hex[:12]
     spec = {'command': command, 'cwd': str(Path.cwd()), 'unit': unit,
-            'seconds': args.seconds, 'cpu': max(os.sched_getaffinity(0)),
+            'seconds': 0, 'requestedSecondsArgumentIgnored': args.seconds,
+            'wallDeadlineSeconds': None, 'inactivityDeadlineSeconds': None,
+            'cpu': max(os.sched_getaffinity(0)),
             **resource_limits(args.memory_gib, args.tasks_max),
             'minimumHostAvailableBytes': AVAILABLE_MIN,
             'startedUtc': datetime.now(timezone.utc).isoformat()}
@@ -179,7 +189,7 @@ def main():
     launch = ['systemd-run', '--user', '--quiet', '--wait', '--pipe', '--collect',
               '--unit=' + unit, '--property=MemoryMax=' + str(spec['memoryMax']),
               '--property=MemorySwapMax=0', '--property=TasksMax=' + str(spec['tasksMax']),
-              '--property=RuntimeMaxSec=' + str(args.seconds + 10),
+              '--property=RuntimeMaxSec=infinity', '--property=Restart=no',
               '--property=TimeoutStopSec=5', '--property=KillMode=control-group',
               '--property=OOMPolicy=kill', '--property=Nice=15',
               '--property=IOSchedulingClass=idle']

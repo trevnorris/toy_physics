@@ -32,14 +32,10 @@ time caps to save model tokens or split a computation into timed continuations.
 Keep memory containment, zero swap, host-memory protection, process/thread/CPU
 controls, overlap refusal, scientific failure checks and durable checkpoints.
 
-Continue to use `scripts/s11c_guarded_run.py` around the supervisor. Its unlimited
-replacement is prepared in `scripts/s11c_guarded_run_unlimited.py`; after the
-active job finishes and its old-source posthashes are inspected, install that
-replacement at the canonical runner path before the next scientific launch.
-Do not change the running job's pinned runner bytes. The replacement records a
-legacy `--seconds` argument without imposing a deadline. Before reusing any
-worker, remove obsolete computational alarms/time limits in a new version; keep
-historical source snapshots intact. This policy supersedes older 900/840-second
-caps and progress-stall timeouts in project instructions. No new review or permission is
+Use `scripts/s11c_guarded_run.py` around the supervisor. It now runs without a
+time cutoff; its legacy `--seconds` argument is recorded but imposes no deadline.
+Before reusing a worker, remove obsolete computational alarms/time limits in a
+new version; preserve historical source snapshots. This policy supersedes older
+900/840-second caps and progress-stall timeouts in project instructions. No new review or permission is
 needed solely to remove these obsolete timers. Pure tooling fixes remain local
 test work; scientific method/equation/claim changes retain applicable review.

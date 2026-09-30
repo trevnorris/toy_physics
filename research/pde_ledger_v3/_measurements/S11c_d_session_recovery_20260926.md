@@ -1,3 +1,19 @@
+**CURRENT STATUS — central candidate continuation passed (2026-09-30):**
+LEFT and RIGHT,18 candidates each, all four contrasts completed at omega3.
+30,131 complete operations:5,001 restored and25,130 new. The actual path/source/
+sheet checks and all129 input posthashes passed; worker48.8min, peak555.7MiB,
+no swap/memory events. See numerical_radiating_boundary_completed checkpoint
+and report. Current signs, transverse face drives and finite end maps are next;
+no finite solve or loss number is claimed. Continue the already-approved pilot.
+
+The current job is complete and no guarded service remains active. After its
+old-source hashes were verified, the canonical shared guard was upgraded to
+the tested unlimited version per the user's standing all-runs instruction.
+Historical guard snapshots stay intact. No native/elapsed/inactivity cap is to
+be reintroduced. No new reviewer submission or exactomega1 restart.
+
+Earlier entries below are preserved history, not current launch instructions.
+
 **Standing policy — all runs without time cutoffs (2026-09-30):** the user
 clarified this applies to every run, not just the current continuation. Global
 preferences and project AGENTS.md now prohibit wall/native/CPU-time/inactivity

@@ -1,3 +1,21 @@
+**FRESH METHOD REPORTS DELIVERED — interpretation checks pending (2026-09-30):**
+Claude and Grok both literally NEEDS REVISION for the original-tolerance route;
+coarse: Claude NEEDS REVISION, Grok CLEAR SUBJECT TO THE STATED CURRENT-SIDE
+CONTROLS. Both complete reports/receipts and exact packet hashes are preserved.
+No paired independent clearance. The omitted parent batches source DOES call
+Radiating.rule; three stdlib stand-in dispatch/traversal tests pass. Separate
+single-leg48/64 with unchanged nested24/32 and8/12 already exists in balance_v2.
+Do not interrupt or edit that running worker merely to add those existing fixes.
+At review inspection it was in base/group-2,22complete operations, no finite solve.
+AFTER completion, before interpretation or neighbors: actual Gaussian matrix-path
+join for a single leg and row70, actual single-leg/trial-identity joins, momentum0
+at the adopted order versus saved reference, and report label/negative-E_num
+corrections. Reuse all completed results; no producer/reference/integral replay.
+One guarded worker at a time; no extra science job launched at this review event.
+Original1e-6 uniform gate stays: coarse branch is unused after refinement passed.
+Read S11c_d_numerical_radiating_replacement_review_disposition.md and _record.json.
+No new review cycle or automatic export; no physical loss or A11/A12 acceptance.
+
 **CENTRAL BALANCE RUNNING; FRESH REVIEWS SUBMITTED (2026-09-30):**
 Balance_v2 launched from62976a54 with the local missing-import correction.
 Startup verifies no runtime deadline,2GiB/zero-swap/one-CPU/one-thread limits

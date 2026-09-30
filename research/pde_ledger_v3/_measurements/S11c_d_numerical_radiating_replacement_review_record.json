@@ -1,0 +1,238 @@
+{
+  "status": "REPORTS_DELIVERED_ORIGINAL_ROUTE_NARROW_CHECKS_PENDING_NO_PAIRED_CLEARANCE",
+  "inspectedUtc": "2026-09-30T23:28:03.060308+00:00",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/replacement-method-review",
+  "packetSha256": "ad792d2e94fdbda24f17f633c22ae371c7c0bb78535a725513909a24edb6c4e1",
+  "archiveSha256": "6e99162ac217ccb7dd2423c9c83b0b39eb000806f35ab3dde4324850683d68e8",
+  "packetFiles": 37,
+  "packetBytes": 512758,
+  "authorization": {
+    "status": "EXPLICITLY_APPROVED_FIXED_PACKET",
+    "packetSha256": "ad792d2e94fdbda24f17f633c22ae371c7c0bb78535a725513909a24edb6c4e1",
+    "archiveSha256": "6e99162ac217ccb7dd2423c9c83b0b39eb000806f35ab3dde4324850683d68e8",
+    "packetFiles": 37,
+    "packetBytes": 512758,
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "literalUserReply": "I approve allowing claude and grok to review",
+    "approvedUtc": "2026-09-30T23:03:56.162091+00:00",
+    "scope": "Same frozen packet; user expanded requested fresh independent leg to both Claude and Grok; no peer sharing.",
+    "thread": "01a0e01b-ef84-7192-817f-584cda5d339b"
+  },
+  "literalReports": {
+    "claude": {
+      "literalOriginalToleranceVerdict": "NEEDS REVISION",
+      "literalCoarseVerdict": "NEEDS REVISION",
+      "rawReportPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_replacement_review_claude.json",
+      "rawReportSha256": "7b5c5815e30f8855b3c8f652637f1e04fc72417837139963e81e084be67dd239",
+      "literalField": "result",
+      "deliveredFinalVerified": true
+    },
+    "grok": {
+      "literalOriginalToleranceVerdict": "NEEDS REVISION",
+      "literalCoarseVerdict": "CLEAR SUBJECT TO THE STATED CURRENT-SIDE CONTROLS",
+      "rawReportPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_replacement_review_grok.json",
+      "rawReportSha256": "26e94b3cedf1b466c77ec146e49a248db3a5388a0c6557a278a0b3ad1b36115e",
+      "literalField": "text",
+      "deliveredFinalVerified": true
+    }
+  },
+  "runReceipts": {
+    "claude": {
+      "engine": "claude",
+      "sessionId": "8d1c5c35-e70c-47db-ada6-1257e421a452",
+      "command": [
+        "/home/trevnorris/.local/bin/claude",
+        "--print",
+        "--output-format",
+        "json",
+        "--safe-mode",
+        "--restricted",
+        "--tools",
+        "Read,Glob,Grep",
+        "--allowedTools",
+        "Read,Glob,Grep",
+        "--permission-mode",
+        "dontAsk",
+        "--strict-mcp-config",
+        "--mcp-config",
+        "{\"mcpServers\":{}}",
+        "--setting-sources",
+        "",
+        "--disable-slash-commands",
+        "--session-id",
+        "8d1c5c35-e70c-47db-ada6-1257e421a452"
+      ],
+      "cwd": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/replacement-method-review/packet",
+      "startedUtc": "2026-09-30T23:06:53.874309+00:00",
+      "packetSha256": "ad792d2e94fdbda24f17f633c22ae371c7c0bb78535a725513909a24edb6c4e1",
+      "promptSha256": "e76f812ded9043dded60b0ceaa6467d20379fe35bf561ba495ae444db89a9437",
+      "scientificExecutionEnabled": false,
+      "reviewVerdict": "NOT_ADJUDICATED",
+      "pid": 4094968,
+      "exitStatus": 0,
+      "finishedUtc": "2026-09-30T23:12:50.730315+00:00",
+      "wallSeconds": 356.8548268460436,
+      "outputSha256": "7b5c5815e30f8855b3c8f652637f1e04fc72417837139963e81e084be67dd239",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrBytes": 0
+    },
+    "grok": {
+      "engine": "grok",
+      "sessionId": "e59fa025-5c17-4636-b5e7-17cc589f3724",
+      "command": [
+        "/home/trevnorris/.local/bin/grok",
+        "--cwd",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/replacement-method-review/packet",
+        "--prompt-file",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/replacement-method-review/packet/review-prompt.md",
+        "--output-format",
+        "json",
+        "--permission-mode",
+        "dontAsk",
+        "--no-plan",
+        "--tools",
+        "Read",
+        "--no-subagents",
+        "--disable-web-search",
+        "--verbatim",
+        "--session-id",
+        "e59fa025-5c17-4636-b5e7-17cc589f3724"
+      ],
+      "cwd": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/replacement-method-review/packet",
+      "startedUtc": "2026-09-30T23:12:50.742442+00:00",
+      "packetSha256": "ad792d2e94fdbda24f17f633c22ae371c7c0bb78535a725513909a24edb6c4e1",
+      "promptSha256": "e76f812ded9043dded60b0ceaa6467d20379fe35bf561ba495ae444db89a9437",
+      "scientificExecutionEnabled": false,
+      "reviewVerdict": "NOT_ADJUDICATED",
+      "pid": 4098749,
+      "exitStatus": 0,
+      "finishedUtc": "2026-09-30T23:23:56.433451+00:00",
+      "wallSeconds": 665.6895006250124,
+      "outputSha256": "26e94b3cedf1b466c77ec146e49a248db3a5388a0c6557a278a0b3ad1b36115e",
+      "stderrSha256": "f7f384bdc2731731f49b4b3c877b0421ca266109d8b517b686f73367f97969c8",
+      "stderrBytes": 2863
+    }
+  },
+  "transport": {
+    "launch": {
+      "jobPid": 4094960,
+      "watcherPid": 4094961,
+      "packetSha256": "ad792d2e94fdbda24f17f633c22ae371c7c0bb78535a725513909a24edb6c4e1",
+      "reviewers": [
+        "Claude",
+        "Grok"
+      ],
+      "concurrentReviewWorkers": 1,
+      "scienceCalls": 0,
+      "runnerSha256": "371a8a16384744997d6264e7b9d8808a6d7df3f252716c50a8f372f0c1f3042b",
+      "launcherSha256": "7455938377e42886abc2c039bdbe11da067dd3b611c64cdcfbed8010c44dce10"
+    },
+    "static": {
+      "runnerSha256": "371a8a16384744997d6264e7b9d8808a6d7df3f252716c50a8f372f0c1f3042b",
+      "launcherSha256": "7455938377e42886abc2c039bdbe11da067dd3b611c64cdcfbed8010c44dce10",
+      "completionMessageSha256": "5212ef29c3142aabe81f8e540475691216f055041a75d0cf310941214d8e2cdf",
+      "packetHashesChecked": true,
+      "codeExecutionEnabled": false,
+      "reviewers": [
+        "claude",
+        "grok"
+      ]
+    },
+    "coordinatorOutcome": {
+      "status": "BOTH_REQUESTED_ATTEMPTS_FINISHED_AWAITING_LITERAL_ADJUDICATION",
+      "finishedUtc": "2026-09-30T23:23:56.451637+00:00",
+      "scienceCalls": 0
+    },
+    "allPacketArchiveIndexSourceHashesVerified": true,
+    "noPeerSharing": true,
+    "reviewerStderr": {
+      "claudeBytes": 0,
+      "grokBytes": 2863,
+      "grokClassification": "CLI plugin/hook diagnostics; delivered final text independently verified, not scientific stderr."
+    },
+    "reportAcceptedFromExitAlone": false
+  },
+  "sourceAdjudication": {
+    "matrixPath": {
+      "status": "SOURCE_DISPATCH_CONFIRMED_RUNTIME_GAUSSIAN_BRIDGE_PENDING",
+      "omittedPacketSource": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_d_mixing_scattering_sympy_audit.py",
+      "sha256": "5bf77729682960bb59f10c672a5fe3f67a98b0a9533da7c6189a37183596050f",
+      "lines": [
+        1548,
+        1570
+      ],
+      "batchesSource": "        def batches(self, variables, setting, pairs, width):\n            \"\"\"Keep native limit order, splitting an inner leg at known outer legs.\"\"\"\n            points,weights=[],[];lower,upper=-setting['momentumBound'],setting['momentumBound']\n            def descend(index,environment,weight):\n                if index<0:\n                    yield tuple(environment[v] for v in variables),weight\n                    return\n                variable=variables[index]\n                centers=[environment[b if a==variable else a] for a,b in pairs\n                         if variable in (a,b) and (b if a==variable else a) in environment]\n                if setting['kind']=='legacy':centers=[];order=setting['momentumNodes']\n                else:order=setting['innerOrders'][index] if centers else setting['outerOrder']\n                x,w,_=self.rule(lower,upper,order,centers,width)\n                for value,mass in zip(x,w):\n                    environment[variable]=value\n                    yield from descend(index-1,environment,weight*mass)\n                environment.pop(variable)\n            for point,weight in descend(len(variables)-1,{},1.):\n                points.append(point);weights.append(weight)\n                if len(points)==self.batch_nodes:\n                    yield np.asarray(points),np.asarray(weights)\n                    points,weights=[],[]\n            if points:yield np.asarray(points),np.asarray(weights)\n",
+      "finding": "Inherited ThreeMomentum.batches calls self.rule and uses innerOrders[index] only with transfer centers, otherwise outerOrder. BasisMomentum inherits this class without a batches override. Radiating overrides rule. Traversal/order and exact stand-in point/weight sequences match row_integral for1/2/3variables and current base/refined orders. No replacement batches implementation is justified by source evidence. Actual Gaussian matrix-route evidence remains pending.",
+      "test": {
+        "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_matrix_path_test.py",
+        "sha256": "1c0981c8af4328a8d623c1a918db9135fa78978165d69e00c232e23608c5c840",
+        "testsPassed": 3,
+        "scientificImportsOrRestorations": false
+      }
+    },
+    "groupOrders": {
+      "status": "ALREADY_IMPLEMENTED_AFTER_FROZEN_PACKET",
+      "worker": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_balance_v2.py",
+      "sha256": "fbc751179e447de05ad37eb46ea5f74e730e9b909cc300f56024e653d32edbca",
+      "baseSingleLeg": 48,
+      "refinedSingleLeg": 64,
+      "nestedBaseOuter": 24,
+      "nestedRefinedOuter": 32,
+      "nestedInnerBase": [
+        8,
+        8
+      ],
+      "nestedInnerRefined": [
+        12,
+        12
+      ],
+      "noRunningSourceEdit": true
+    },
+    "trialIdentities": {
+      "status": "ACTUAL_COMPLETED_ORDER_AND_ALL_PASSES_CHECKED",
+      "checkpoint": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_uniform_refinement_checkpoint.json",
+      "sha256": "d63efcee217e04aba2b40af9d2120f1eb30af067b7fccc1f559e62ab8ca3fb25",
+      "actualOrderedTrials": [
+        [
+          32,
+          512
+        ],
+        [
+          48,
+          512
+        ],
+        [
+          64,
+          512
+        ],
+        [
+          64,
+          768
+        ]
+      ],
+      "remaining": "Assert each selected row is single-variable from actual saved objects in the subsequent contained check, not from flags."
+    },
+    "coarseBranch": {
+      "status": "NOT_USED_OR_NEEDED_AFTER_ORIGINAL_TOLERANCE_PASS",
+      "reviewerDisagreementPreserved": "Claude retains hard1e-6 uniform gate; Grok proposed flag/envelope up to1e-5. Adopt neither new coarse policy. Original1e-6 uniform gate stays unchanged."
+    }
+  },
+  "requiredBeforeInterpretation": [
+    "Contained join of actual matrix/row integration paths with Gaussian sources for a selected single-leg row and row70 against saved returns, preserving all existing integrals.",
+    "Check actual selected row dimensionality and ordered trial/settings objects; verify same matrix path uses current single-leg/nested settings.",
+    "Check momentum0 at adopted single-leg order against its saved independent reference; no reference recomputation.",
+    "Use DEFICIT_NOT_NUMERICALLY_RESOLVED in the interpreted report for legacy NO_DEFICIT_RESOLVED; separately report D < -E_num and retain condition numbers and all original controls.",
+    "Inspect actual finite-current uniform/scaling/refinement/domain/regulator/partition/sign controls; no physical-loss claim."
+  ],
+  "runningJobDecision": {
+    "root": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-balance-v2",
+    "observedAtReviewInspection": "Running at base/group-2;22complete operations, no completed current solve at that snapshot.",
+    "decision": "Leave pinned running calculation intact: no source evidence of wrong quadrature or changed equations. Treat outputs as pending; no neighbors or loss interpretation until narrow joins and scientific controls are handled. No restart, automatic retry or extra scientific job launched during review inspection."
+  },
+  "independentMethodClearance": false,
+  "localAdjudicationIsIndependentClearance": false,
+  "newExternalSubmission": false
+}

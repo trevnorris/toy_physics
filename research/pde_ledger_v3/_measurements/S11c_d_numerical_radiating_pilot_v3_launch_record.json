@@ -1,0 +1,89 @@
+{
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-pilot-v3",
+  "launch": {
+    "jobPid": 3687187,
+    "watcherPid": 3687188,
+    "gateSha256": "25e1d02da0b41e44d0a05dffc0248fbf4ba8c63c12b2875a26acadf5a0f0669d",
+    "command": [
+      "/usr/bin/python3",
+      "/var/projects/toy_physics/scripts/s11c_guarded_run.py",
+      "--log-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-pilot-v3/resource-guard",
+      "--",
+      "/usr/bin/python3",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-pilot-v3",
+      "--stage",
+      "numerical_radiating_pilot_v3",
+      "--",
+      "/usr/bin/python3",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_pilot_v3.py",
+      "--manifest",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_pilot_v3_inputs.json",
+      "--gate",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_pilot_v3_gate.json",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-pilot-v3/complete"
+    ],
+    "thread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+    "automaticRetry": false
+  },
+  "limits": {
+    "verified": true,
+    "actual": {
+      "memory.max": "2147483648",
+      "memory.swap.max": "0",
+      "pids.max": "32",
+      "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-33523f36d10a.service",
+      "nice": 15,
+      "affinity": [
+        15
+      ],
+      "threads": {
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "VECLIB_MAXIMUM_THREADS": "1",
+        "BLIS_NUM_THREADS": "1"
+      }
+    }
+  },
+  "duration": {
+    "verified": true,
+    "actual": {
+      "Restart": "no",
+      "RuntimeMaxUSec": "infinity"
+    },
+    "wallDeadlineSeconds": null,
+    "inactivityDeadlineSeconds": null
+  },
+  "watcher": {
+    "status": "waiting",
+    "watcherPid": 3687188,
+    "jobPid": 3687187,
+    "thread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+    "startedUtc": "2026-09-30T16:55:46.719783+00:00",
+    "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
+    "messageSha256": "f817a6318e6d5826c5d54f2e4b940a7f7b5590680b8f02b637e32a993969c13b",
+    "notifications": {}
+  },
+  "activeOperation": {
+    "name": "bind/contrast-0.25",
+    "actualInput": {
+      "storage": "sqlite",
+      "member": "restore-argument-checks/bind/contrast-0.25.pickle",
+      "sha256": "9de2df7f01e8bb084f91d0c578342fde9e0d13d2de8e59520ea5324a7c48fccc",
+      "bytes": 1105
+    },
+    "status": "RESTORING"
+  },
+  "numerical_radiating_pilot_v3.stderrBytes": 0,
+  "guard-launch.stderrBytes": 0,
+  "coordinator.stderrBytes": 0,
+  "completeOperations": 5,
+  "restoredOperations": 5,
+  "scientificAcceptance": "PENDING_COMPLETION_INSPECTION"
+}

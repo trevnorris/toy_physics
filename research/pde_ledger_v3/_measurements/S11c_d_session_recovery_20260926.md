@@ -1,3 +1,12 @@
+**LAUNCH VERIFIED — central-pilot-v3 running (2026-09-30):**
+Shared guard verifies RuntimeMaxUSec=infinity/Restart=no and the actual2GiB,
+zero-swap,one-CPU,32-task,one-thread resource limits. Completion hook is armed.
+The startup snapshot showed five prior operations restored without their
+functions and the next saved binding being restored; scientific/guard/coordinator
+stderr were empty. See pilot_v3_launch_record.json. No further polling: await
+the existing completion/error hook, then inspect actual scientific outputs.
+No finite solve or deficit has yet been accepted. Preserve pinned sources.
+
 **FLOATING-PANEL TOOLING CORRECTION — central pilot v3 (2026-09-30):**
 V2 restored four prior reads and completed eight new source/endpoint/branch
 operations. All80factor endpoint orders are at least-1 with325denominator

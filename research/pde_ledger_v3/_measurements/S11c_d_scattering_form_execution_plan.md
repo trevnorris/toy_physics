@@ -1,3 +1,11 @@
+**Next authorized stage prepared (2026-09-30):** numerical current/face/end-map
+worker at omega 3, both ends and four contrasts, reusing completed candidate
+states. See `S11c_d_numerical_radiating_end_maps_preparation.md` and its pinned
+gate/inputs. Source-only and three stdlib tooling checks passed; these are not
+runtime scientific acceptance. No time or inactivity limits. The shared guard,
+existing supervisor and hook-first launcher retain resource containment. No new
+review submission, root/path replay, finite solve or deficit is claimed.
+
 **CURRENT STATUS — central candidate continuation passed (2026-09-30):**
 LEFT and RIGHT,18 candidates each, all four contrasts completed at omega3.
 30,131 complete operations:5,001 restored and25,130 new. The actual path/source/

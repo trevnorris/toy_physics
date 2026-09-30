@@ -1,0 +1,71 @@
+{
+  "case": "LAB_HELD/RHO4_CONSTANT",
+  "tangents": [
+    "1/5",
+    "1/10"
+  ],
+  "targetFrequency": 3,
+  "contrasts": [
+    1,
+    0.5,
+    0.25,
+    0
+  ],
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/boundary-01",
+  "resultDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/boundary-01/complete",
+  "packets": {
+    "left": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-source-20260919/finish-01/complete/left-frequency-pencil.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-source-20260919/finish-01/complete/left-frequency-pencil.pickle",
+      "sha256": "67148025b209f7171b7679249c075c6e68b76882ac6ac5adfffed4eb2766211a",
+      "bytes": 9470
+    },
+    "right": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-source-20260919/finish-01/complete/right-frequency-pencil.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-source-20260919/finish-01/complete/right-frequency-pencil.pickle",
+      "sha256": "0fe2cccd0b9c08f57666530b2519dff26e8dee633058aae85d3d7f4b89ec029d",
+      "bytes": 23826
+    },
+    "reference": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-source-20260919/finish-01/complete/reference-frequency-pencil.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-source-20260919/finish-01/complete/reference-frequency-pencil.pickle",
+      "sha256": "c8854229394c52ce38c399b0f7dec6befba27aa5182ceecb6bd44362d6043764",
+      "bytes": 9347
+    },
+    "uniform": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-uniform-response-20260919/production/complete/uniform-response.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-uniform-response-20260919/production/complete/uniform-response.pickle",
+      "sha256": "1d5bd9967d08c5ad01eab8707ea25af01cfb9bf61bfd83073ed898c9d76a772f",
+      "bytes": 543796
+    }
+  },
+  "checkpointJoins": [
+    {
+      "checkpoint": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_frequency_source_checkpoint.json",
+      "artifact": "left-frequency-pencil.pickle",
+      "packetKey": "left"
+    },
+    {
+      "checkpoint": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_frequency_source_checkpoint.json",
+      "artifact": "right-frequency-pencil.pickle",
+      "packetKey": "right"
+    },
+    {
+      "checkpoint": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_frequency_source_checkpoint.json",
+      "artifact": "reference-frequency-pencil.pickle",
+      "packetKey": "reference"
+    },
+    {
+      "checkpoint": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_uniform_response_checkpoint.json",
+      "artifact": "uniform-response.pickle",
+      "packetKey": "uniform"
+    }
+  ],
+  "jointHelper": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_d_mixing_scattering_sympy_audit.py",
+    "sha256": "5bf77729682960bb59f10c672a5fe3f67a98b0a9533da7c6189a37183596050f",
+    "class": "JointBulkSheetPath"
+  },
+  "scope": "First required central boundary candidate continuation. On success continue authorized current/face, integration and finite-solve implementation. Boundary stage itself supplies no deficit.",
+  "noProducerOrAcceptedRootReplay": true
+}

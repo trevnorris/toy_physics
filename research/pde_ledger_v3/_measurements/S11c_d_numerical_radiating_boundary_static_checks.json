@@ -1,0 +1,11 @@
+{
+  "workerAstValid": true,
+  "launcherAstValid": true,
+  "allAcceptedPacketHashesMatch": true,
+  "allSourceHashesMatch": true,
+  "sourcePins": 66,
+  "scientificRestorationOutsideGuard": false,
+  "syntheticEquationAndDerivativeCheck": "IMPLEMENTED_RUNS_INSIDE_GUARD_BEFORE_PHYSICAL_INPUTS",
+  "reviewedR2Unchanged": true,
+  "automaticReviewOrScienceRetry": false
+}

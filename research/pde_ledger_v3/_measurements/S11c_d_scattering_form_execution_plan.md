@@ -1,3 +1,27 @@
+**CURRENT DIRECTION — user authorized corrections and numerical execution (2026-09-30):**
+The user withdrew the automatic two-day authoring cap and will decide that
+budget. They explicitly directed no further Grok pass, minor corrections and
+execution. No report is invented: round-2 Claude CLEAR with C1–C5, Grok missing.
+See `S11c_d_numerical_radiating_execution_authority.json`. The corrected
+`method_implementation.md` records all five corrections, including actual middle
+leg ordering, current-column envelopes and preassembly spectral resolution.
+
+The first numerical worker implements the required central candidate-continuation
+gate using the original saved end pencils and all 18 candidates. It saves full
+operands/returns, path/reference/source joins and explicit unresolved outcomes.
+No producer or accepted-root replay; identical sources reuse complete results.
+On success, the standing goal continues through current/face checks, integration
+and finite assembly. This stage itself does not establish any of those later
+results. A central method/control failure stops neighbors and is reported.
+
+Ordinary shared guard/supervisor and 900/840s, 2GiB/zero-swap/one-CPU limits
+remain. The new authority removes the authoring clock and missing-report gate;
+it does not revive exact omega1, authorize retries or claim physical leakage.
+The boundary launcher/gate are pinned and prepared for one hook-first run at
+`_scratch/s11c/s11c-d-numerical-radiating-20260929/boundary-01`.
+
+Earlier entries below are preserved history, not current launch instructions.
+
 **CURRENT STATUS — incomplete round-2 review delivery (2026-09-30):**
 Claude's complete report was recovered from two exact session-log segments;
 its literal verdict is CLEAR FOR THIS BOUNDED NUMERICAL RADIATING METHOD with

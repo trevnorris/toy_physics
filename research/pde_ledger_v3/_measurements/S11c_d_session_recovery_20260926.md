@@ -1,3 +1,26 @@
+**CURRENT DIRECTION — numerical pilot authorized without another Grok pass (2026-09-30):**
+The user now decides the authoring budget; the automatic 16-hour stop is
+withdrawn. They explicitly said to make the minor corrections and run, with no
+other Grok pass. Preserve the historical missing verdict and Claude's literal
+CLEAR with five corrections. No paired clearance is claimed. New authority and
+corrected method are canonical in numerical_radiating_execution_authority.json
+and numerical_radiating_method_implementation.md.
+
+One central boundary candidate-continuation worker is ready under the ordinary
+shared guard and existing supervisor, with hook-first launch at
+`_scratch/s11c/s11c-d-numerical-radiating-20260929/boundary-01`.
+It restores four accepted packets, continues all 18 candidate bases through
+contrast and upper-half frequency paths, and saves all inputs/returns and
+checks. Source-independent contrast changes reuse completed results. No current,
+face, finite field or deficit follows merely from a completed boundary stage.
+After successful actual inspection continue the already-authorized numerical
+pilot implementation; do not ask repetitive stage permission. A substantive
+central boundary/control failure stops the numerical route with its evidence.
+No automatic scientific retry, more review, exact-track restart, expanded
+method or loss claim. The prior results/failures and protected work stay intact.
+
+Earlier entries below are preserved history, not current launch instructions.
+
 **CURRENT STATUS — numerical method round 2 has a missing report (2026-09-30):**
 Both review processes ended, but only Claude delivered a final review. Its
 stdout was truncated to the tail; both exact report segments were recovered

@@ -1,0 +1,238 @@
+{
+  "case": "LAB_HELD/RHO4_CONSTANT",
+  "tangents": [
+    "1/5",
+    "1/10"
+  ],
+  "targetFrequency": 3,
+  "contrasts": [
+    1,
+    0.5,
+    0.25,
+    0
+  ],
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/boundary-continuation-v2",
+  "resultDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/boundary-continuation-v2/complete",
+  "packets": {
+    "left": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-source-20260919/finish-01/complete/left-frequency-pencil.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-source-20260919/finish-01/complete/left-frequency-pencil.pickle",
+      "sha256": "67148025b209f7171b7679249c075c6e68b76882ac6ac5adfffed4eb2766211a",
+      "bytes": 9470
+    },
+    "right": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-source-20260919/finish-01/complete/right-frequency-pencil.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-source-20260919/finish-01/complete/right-frequency-pencil.pickle",
+      "sha256": "0fe2cccd0b9c08f57666530b2519dff26e8dee633058aae85d3d7f4b89ec029d",
+      "bytes": 23826
+    },
+    "reference": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-source-20260919/finish-01/complete/reference-frequency-pencil.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-source-20260919/finish-01/complete/reference-frequency-pencil.pickle",
+      "sha256": "c8854229394c52ce38c399b0f7dec6befba27aa5182ceecb6bd44362d6043764",
+      "bytes": 9347
+    },
+    "uniform": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-uniform-response-20260919/production/complete/uniform-response.pickle",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-uniform-response-20260919/production/complete/uniform-response.pickle",
+      "sha256": "1d5bd9967d08c5ad01eab8707ea25af01cfb9bf61bfd83073ed898c9d76a772f",
+      "bytes": 543796
+    }
+  },
+  "checkpointJoins": [
+    {
+      "checkpoint": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_frequency_source_checkpoint.json",
+      "artifact": "left-frequency-pencil.pickle",
+      "packetKey": "left"
+    },
+    {
+      "checkpoint": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_frequency_source_checkpoint.json",
+      "artifact": "right-frequency-pencil.pickle",
+      "packetKey": "right"
+    },
+    {
+      "checkpoint": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_frequency_source_checkpoint.json",
+      "artifact": "reference-frequency-pencil.pickle",
+      "packetKey": "reference"
+    },
+    {
+      "checkpoint": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_uniform_response_checkpoint.json",
+      "artifact": "uniform-response.pickle",
+      "packetKey": "uniform"
+    }
+  ],
+  "jointHelper": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_d_mixing_scattering_sympy_audit.py",
+    "sha256": "5bf77729682960bb59f10c672a5fe3f67a98b0a9533da7c6189a37183596050f",
+    "class": "JointBulkSheetPath"
+  },
+  "scope": "First required central boundary candidate continuation. On success continue authorized current/face, integration and finite-solve implementation. Boundary stage itself supplies no deficit.",
+  "noProducerOrAcceptedRootReplay": true,
+  "priorComplete": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/boundary-01/complete",
+    "files": {
+      "LEFT-contrast-0.25.json": {
+        "sha256": "1f58033c31226540d0d03cdd9fcef3e73d6fe632a3b072abfb4d1cf22fd47055",
+        "bytes": 1343
+      },
+      "LEFT-contrast-0.5.json": {
+        "sha256": "1f58033c31226540d0d03cdd9fcef3e73d6fe632a3b072abfb4d1cf22fd47055",
+        "bytes": 1343
+      },
+      "LEFT-contrast-0.json": {
+        "sha256": "1f58033c31226540d0d03cdd9fcef3e73d6fe632a3b072abfb4d1cf22fd47055",
+        "bytes": 1343
+      },
+      "LEFT-omega3-a-1-census.json": {
+        "sha256": "a312b22b94539f4e5f79a6c7c80f5149492f7e049f0b5e0125ae14c767f5c031",
+        "bytes": 10182
+      },
+      "LEFT-reference-join-0.json": {
+        "sha256": "468a0a6ea33b4aba1572957a69fd0e621268f2f7b1c674a8e7704e7b48e54c1a",
+        "bytes": 167
+      },
+      "LEFT-reference-join-1.json": {
+        "sha256": "557115276aac52ae501a3e6218ace0186b4af106353e492e4805aab55d203953",
+        "bytes": 167
+      },
+      "LEFT-reference-join-10.json": {
+        "sha256": "892ec34d735187ca97f59d8bc7c6c6f4397cdbb7374417b80e37149f2cec24ea",
+        "bytes": 169
+      },
+      "LEFT-reference-join-11.json": {
+        "sha256": "91bfdc84205ef1680a5af3cd80105f5c671ed04900cb3923d5c68931b2dd7b46",
+        "bytes": 169
+      },
+      "LEFT-reference-join-12.json": {
+        "sha256": "059cfc322f89b06a9de3daa3f122aa27854c09a5a5c39d122427197a265abc76",
+        "bytes": 168
+      },
+      "LEFT-reference-join-13.json": {
+        "sha256": "1e0cc84691a6767f358a0b2582b13e8a7760d73e094fa196e737978672740ff4",
+        "bytes": 168
+      },
+      "LEFT-reference-join-14.json": {
+        "sha256": "a4fc8b9fa053c5c731f537ce074627675982caf014d2879aca5fb1a11b03ae37",
+        "bytes": 167
+      },
+      "LEFT-reference-join-15.json": {
+        "sha256": "5a3643d4d42dad5b67e05d3d6649efe279f85f654ab175c65e6a734e4d0c1300",
+        "bytes": 167
+      },
+      "LEFT-reference-join-16.json": {
+        "sha256": "557a6033d9585ad372ad0da72ace7f18e7fba5370b8e9a0faa6c59f21cdb727a",
+        "bytes": 167
+      },
+      "LEFT-reference-join-17.json": {
+        "sha256": "a1ea6daf44ddd3a0e0fced29e7c0b79d9d1dc74a346ee02a313f971a6d30840f",
+        "bytes": 167
+      },
+      "LEFT-reference-join-2.json": {
+        "sha256": "70fa4cad16b28e75256f1a797dd3e08a30559b66fbf8a85d9cd41b6215eac142",
+        "bytes": 167
+      },
+      "LEFT-reference-join-3.json": {
+        "sha256": "a7b5ede6ec745ee446e2cf89ccae08c285eb474b432aec50175eca738c2452f3",
+        "bytes": 167
+      },
+      "LEFT-reference-join-4.json": {
+        "sha256": "515efb31c728abb4061735756797bc25141b9478eef389335d44c475391a9609",
+        "bytes": 168
+      },
+      "LEFT-reference-join-5.json": {
+        "sha256": "7b6e48393c5e626c3120a570a88cb5be31f8871f9f07d3fe293d8e36357bdbde",
+        "bytes": 168
+      },
+      "LEFT-reference-join-6.json": {
+        "sha256": "f15dcd4cf5a5a652b02a159cfdf4b4372c16ae275b52ee05eeadb9ebf5f3bd9f",
+        "bytes": 167
+      },
+      "LEFT-reference-join-7.json": {
+        "sha256": "b2f9be6c8968bb7d9d0ddfd3669f0579c0d465c80fc5e8bc914e0609e7e87d75",
+        "bytes": 167
+      },
+      "LEFT-reference-join-8.json": {
+        "sha256": "3d72465f39ff2897196e65b01e1fe3e1a64248c45a15020c5c4faf73b8dad905",
+        "bytes": 167
+      },
+      "LEFT-reference-join-9.json": {
+        "sha256": "927c9bd6a9e1846e2b8df0cfc4e00ffd4b5e54cc174c45b71134959e1a6769af",
+        "bytes": 167
+      },
+      "LEFT-seed-joins.json": {
+        "sha256": "eb496b0f11543a3c8d136fcbb50956c8fd514c2f230f6fc14ad93c71bbbe8813",
+        "bytes": 3945
+      },
+      "active-operation.json": {
+        "sha256": "53b9eb00a77f40420d178b7475a30afcf94276153768b0f7fe3640b204d58ac7",
+        "bytes": 332
+      },
+      "checks.json": {
+        "sha256": "752e90053009640623cc7599904808dd86ef98d7edf0be1f6720c3200a0cba73",
+        "bytes": 2995
+      },
+      "failure.json": {
+        "sha256": "51188b7d2040b2a3d3bd78e21f15eacbf4bdb2302006de0674ef8635f2d10956",
+        "bytes": 2457
+      },
+      "inputs/left-frequency-pencil.pickle": {
+        "sha256": "67148025b209f7171b7679249c075c6e68b76882ac6ac5adfffed4eb2766211a",
+        "bytes": 9470
+      },
+      "inputs/reference-frequency-pencil.pickle": {
+        "sha256": "c8854229394c52ce38c399b0f7dec6befba27aa5182ceecb6bd44362d6043764",
+        "bytes": 9347
+      },
+      "inputs/right-frequency-pencil.pickle": {
+        "sha256": "0fe2cccd0b9c08f57666530b2519dff26e8dee633058aae85d3d7f4b89ec029d",
+        "bytes": 23826
+      },
+      "inputs/uniform-response.pickle": {
+        "sha256": "1d5bd9967d08c5ad01eab8707ea25af01cfb9bf61bfd83073ed898c9d76a772f",
+        "bytes": 543796
+      },
+      "last-completed-point.json": {
+        "sha256": "ece18496f04cad3479129ff77f8b8d7c02d212678667bc75007035aea7f50596",
+        "bytes": 381
+      },
+      "last-pair-check.json": {
+        "sha256": "a80a94d92938203c8c5a164aad088c18b40dd3c788b2c97f06c3a082d2df059d",
+        "bytes": 8822
+      },
+      "last-sheet-check.json": {
+        "sha256": "df8d566a637521f7ce535f59305653ec239291be3a43382b87094680985d8449",
+        "bytes": 152
+      },
+      "operation-index.jsonl": {
+        "sha256": "ed60b8040bba05184c49bd25c9580db42b4674bd84a6e07acfab3d45339c4c22",
+        "bytes": 2618482
+      },
+      "operations.zip": {
+        "sha256": "0de8a6e1246a7c125f75d15cd3394cfc24f166f51b55945962602f7091a1ff86",
+        "bytes": 27468396
+      },
+      "posthashes.json": {
+        "sha256": "3482a7218150b586af30bba960d637fe2135f566639b587cadeaa30fdb28bf69",
+        "bytes": 19683
+      }
+    },
+    "extraContext": {
+      "member": "LEFT/symbolic-unit-context.pickle",
+      "sha256": "e6ceb71bdee1edc241a87f517e02aa97169ace458c53320369145b2257fce4b1",
+      "bytes": 9411
+    },
+    "completeOperations": 5001,
+    "pendingOperation": {
+      "name": "LEFT/omega-3/a-1/candidate-17/height-0.025/across/point-0035-joint-sheet",
+      "input": {
+        "member": "LEFT/omega-3/a-1/candidate-17/height-0.025/across/point-0035-joint-sheet/input.pickle",
+        "sha256": "ed8746c7064f20db5ea68abac6171adfca80ba0f8075064c3d2a4684a2c8aed9",
+        "bytes": 184
+      },
+      "status": "STARTED"
+    }
+  },
+  "wallDeadlineSeconds": null,
+  "nativeDeadlineSeconds": null,
+  "inactivityDeadlineSeconds": null
+}

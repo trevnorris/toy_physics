@@ -1,3 +1,12 @@
+**Startup repair (2026-09-30):** the first no-deadline startup restored six
+returns, then falsely rejected an input despite identical saved/new bytes
+(SHA25621541403967fe39585202b9f6440e55902c1833da0b032bbaab2fb336c48a289).
+No new numerical operation ran. The failed startup and all119 posthashes are
+preserved. A tested tooling-only correction accepts exact prior encoded bytes
+before object equality. Corrected `boundary_continue_v2` is ready for the same
+authorized continuation with no time or inactivity cutoff; no physics/review
+change. See `boundary_continue_startup_disposition.json` and v2 test receipt.
+
 **CURRENT DIRECTION — no-time-limit continuation authorized (2026-09-30):**
 The user explicitly said to stop imposing time limits and run a continuation.
 `S11c_d_numerical_radiating_boundary_continue_*` pins one continuation with no

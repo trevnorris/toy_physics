@@ -1,3 +1,18 @@
+**REFINEMENT PASSED; FRESH CLAUDE/GROK SUBMITTED (2026-09-30):**
+The original uniform-action tolerance passed at32/48/64, including the768-node
+check; no coarse-resolution branch is needed. Both fresh reviewers received
+the exact approved37-file packetad792d2e...b6c4e1, independently; no result or
+paired clearance is claimed while their reports are pending.
+The first finite-balance startup restored20returns, then stopped before
+assembly on a missing standard-library operator import in the extracted
+helper namespace. All143input hashes,67snapshots and11result files remain
+intact. New balance_v2 supplies only that original dependency; four local
+stdlib tests pass and the numerical run AST, libraries and tolerances are
+unchanged. No new scientific computation was lost or replayed. The authorized
+central balance is ready to resume under the no-deadline shared guard; the
+review hook and science hook are separate. See balance_startup_disposition,
+balance_v2_static_checks/gate and replacement_review_preparation.
+
 **UNIFORM REFINEMENT PASSED — finite balance ready (2026-09-30):**
 The unchanged Gaussian action tolerance passes at orders32,48,64 and source
 512/768. At48 maxabsolute discrepancy3.77e-12; no coarse branch is needed.

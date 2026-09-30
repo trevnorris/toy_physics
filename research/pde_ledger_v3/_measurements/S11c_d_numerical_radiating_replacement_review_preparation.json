@@ -1,11 +1,12 @@
 {
-  "status": "AWAITING_EXACT_PACKET_EXPORT_CONSENT",
+  "status": "FRESH_CLAUDE_GROK_SUBMITTED_AWAIT_BOTH_REPORTS",
   "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/replacement-method-review",
   "packetSha256": "ad792d2e94fdbda24f17f633c22ae371c7c0bb78535a725513909a24edb6c4e1",
   "archiveSha256": "6e99162ac217ccb7dd2423c9c83b0b39eb000806f35ab3dde4324850683d68e8",
   "packetFiles": 37,
   "packetBytes": 512758,
   "reviewers": [
+    "claude",
     "grok"
   ],
   "sourceRecords": [
@@ -221,17 +222,48 @@
     }
   ],
   "static": {
-    "runnerSha256": "5aac8e816ad598883d57510939066fc132b06e8dffd88b630927f963eeec7a5c",
-    "launcherSha256": "45d071a892b259baba9bc5c1fb66776acbaff4223bd1b57157fb9671ef51b1ab",
-    "completionMessageSha256": "327d4261e6478ca7c92d74990823d633ab9ea19b4cb58c0733a93555df1c4507",
+    "runnerSha256": "371a8a16384744997d6264e7b9d8808a6d7df3f252716c50a8f372f0c1f3042b",
+    "launcherSha256": "7455938377e42886abc2c039bdbe11da067dd3b611c64cdcfbed8010c44dce10",
+    "completionMessageSha256": "5212ef29c3142aabe81f8e540475691216f055041a75d0cf310941214d8e2cdf",
     "packetHashesChecked": true,
     "codeExecutionEnabled": false,
     "reviewers": [
+      "claude",
       "grok"
     ]
   },
   "generalReviewAuthority": "User requested missing second independent method review alongside focused refinement. Existing exact-packet export rule remains.",
   "scienceAuthority": "Focused refinement and subsequent controlled finite balance under existing guard; no repeated science permission required.",
-  "noSubmissionYet": true,
-  "exactConsentQuestionSent": true
+  "noSubmissionYet": false,
+  "exactConsentQuestionSent": true,
+  "explicitPacketApproval": {
+    "status": "EXPLICITLY_APPROVED_FIXED_PACKET",
+    "packetSha256": "ad792d2e94fdbda24f17f633c22ae371c7c0bb78535a725513909a24edb6c4e1",
+    "archiveSha256": "6e99162ac217ccb7dd2423c9c83b0b39eb000806f35ab3dde4324850683d68e8",
+    "packetFiles": 37,
+    "packetBytes": 512758,
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "literalUserReply": "I approve allowing claude and grok to review",
+    "approvedUtc": "2026-09-30T23:03:56.162091+00:00",
+    "scope": "Same frozen packet; user expanded requested fresh independent leg to both Claude and Grok; no peer sharing.",
+    "thread": "01a0e01b-ef84-7192-817f-584cda5d339b"
+  },
+  "launch": {
+    "jobPid": 4094960,
+    "watcherPid": 4094961,
+    "packetSha256": "ad792d2e94fdbda24f17f633c22ae371c7c0bb78535a725513909a24edb6c4e1",
+    "reviewers": [
+      "Claude",
+      "Grok"
+    ],
+    "concurrentReviewWorkers": 1,
+    "scienceCalls": 0,
+    "runnerSha256": "371a8a16384744997d6264e7b9d8808a6d7df3f252716c50a8f372f0c1f3042b",
+    "launcherSha256": "7455938377e42886abc2c039bdbe11da067dd3b611c64cdcfbed8010c44dce10"
+  },
+  "initialHookStatus": "waiting",
+  "initialCoordinatorStatus": "RUNNING"
 }

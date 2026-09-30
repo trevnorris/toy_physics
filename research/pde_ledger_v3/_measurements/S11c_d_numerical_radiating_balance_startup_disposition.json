@@ -1,0 +1,118 @@
+{
+  "status": "TOOLING_NAMESPACE_FAILURE_BEFORE_FINITE_ASSEMBLY",
+  "inspectedUtc": "2026-09-30T23:07:58.155406+00:00",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-balance-01",
+  "checks": {
+    "status": "STOPPED_UNRESOLVED",
+    "exceptionType": "NameError",
+    "message": "name 'operator' is not defined",
+    "traceback": "Traceback (most recent call last):\n  File \"/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_balance.py\", line 130, in main\n    J=storage.Journal(base);result=run(manifest,J)\n  File \"/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_balance.py\", line 82, in run\n    worker=Radiating(zero,r,roots,setting);worker.prepare_basis(zero['jets'],x,L,N,setting['sourceNodes'])\n  File \"/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_integration_v3.py\", line 204, in prepare_basis\n    derivatives={n:H.polynomial_basis(self.source_nodes,bound,size,n) for n in range(max_order+1)}\n  File \"/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_integration_v3.py\", line 204, in <dictcomp>\n    derivatives={n:H.polynomial_basis(self.source_nodes,bound,size,n) for n in range(max_order+1)}\n  File \"/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_finite_scattering.py\", line 51, in polynomial_basis\n    order = operator.index(order)\nNameError: name 'operator' is not defined\n",
+    "incompleteOperation": null,
+    "finiteSolves": 0,
+    "wallSeconds": 25.76169246097561,
+    "completeOperations": 20,
+    "restoredOperations": 20,
+    "posthashesIntact": true,
+    "peakRssKiB": 179788,
+    "independentMethodClearance": false,
+    "physicalLossInterpretation": "RETAINED_ORDER_LOSS_INTERPRETATION_UNRESOLVED",
+    "automaticRetry": false
+  },
+  "resources": {
+    "workerSeconds": 25.76169246097561,
+    "peakCgroupBytes": 181817344,
+    "swapBytes": 0,
+    "memoryEvents": 0,
+    "duration": {
+      "verified": true,
+      "actual": {
+        "Restart": "no",
+        "RuntimeMaxUSec": "infinity"
+      },
+      "wallDeadlineSeconds": null,
+      "inactivityDeadlineSeconds": null
+    },
+    "limits": {
+      "verified": true,
+      "actual": {
+        "memory.max": "2147483648",
+        "memory.swap.max": "0",
+        "pids.max": "32",
+        "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-9fdb400a99d7.service",
+        "nice": 15,
+        "affinity": [
+          15
+        ],
+        "threads": {
+          "OPENBLAS_NUM_THREADS": "1",
+          "OMP_NUM_THREADS": "1",
+          "MKL_NUM_THREADS": "1",
+          "NUMEXPR_NUM_THREADS": "1",
+          "VECLIB_MAXIMUM_THREADS": "1",
+          "BLIS_NUM_THREADS": "1"
+        }
+      }
+    }
+  },
+  "integrity": {
+    "posthashes": 143,
+    "sourceSnapshots": 67,
+    "journalOperations": 20,
+    "allRestoredWithoutFunctions": true,
+    "sqliteBlobs": 40,
+    "allRawReceiptsAndSourceBytesChecked": true,
+    "strictStderrEmpty": true,
+    "stdoutChecksByteIdentical": true
+  },
+  "files": {
+    "artifact-index.json": {
+      "sha256": "d78e4ff2e59f1df8ba071c7c4e7c7ffe6d6dcdec512eab57fc2ab6ec8d8ceb4d",
+      "bytes": 1254
+    },
+    "checks.json": {
+      "sha256": "28599b379a015bfef3d2930987eb9a6fad7da4c71dd4565de582dac17da25c32",
+      "bytes": 1640
+    },
+    "consumed-integration-checks.json": {
+      "sha256": "2bd0b8a440a369cc0613f67b31b99f7ca645400cf5b58ce201dda88d8a5194a7",
+      "bytes": 4172
+    },
+    "failure.json": {
+      "sha256": "5b06da13d1fb2632960fe9e8a17a5cbb5fabb029956d9a3c704a3a6b17bb0f1d",
+      "bytes": 1349
+    },
+    "numerical-settings.json": {
+      "sha256": "2886101d9a0eb5366b55fe29368f37fe3efd22d4c2d793181eac25420944dc8b",
+      "bytes": 1922
+    },
+    "operation-index.jsonl": {
+      "sha256": "af9413a09920b040a9549fdbdea1f33129ebc28ef550e2a7bf38f1d75bee379d",
+      "bytes": 38433
+    },
+    "operations.sqlite": {
+      "sha256": "19f8a136ac8438281fdc5fd14d0e0a8592b9db5df59867bf55dd8f228495f1b1",
+      "bytes": 12693504
+    },
+    "posthashes.json": {
+      "sha256": "33ebacadd260f69c43e3dcd398f25d56e0ca3e750d2e8c7e489dcdfe8d597ad5",
+      "bytes": 43038
+    },
+    "prior-integration-mutations.json": {
+      "sha256": "7c2a36336dd4db35e98bfa66938949e87150fe5c9f982958931e8fc4540b626b",
+      "bytes": 572
+    },
+    "prior-middle-integration-comparison.json": {
+      "sha256": "600c67dd7a8ec1c4b1879d5b89b24b2e37d332359b73434c27f09bdd5af0ff87",
+      "bytes": 1429
+    },
+    "prior-two-sided-endpoint-values.json": {
+      "sha256": "6a7c900c5ca08f4035c519d17ec3c9a00c3fc705b8f542cef92f8e143fb62f27",
+      "bytes": 14815
+    }
+  },
+  "fileCount": 11,
+  "bytes": 12802128,
+  "cause": "AST-extracted original polynomial_basis references standard-library operator.index; extraction namespace omitted operator. First prepare_basis call fails before numerical matrix or finite solve.",
+  "repair": "Inject the original standard-library operator module into the extracted helper namespace in a new worker. Preserve all original helpers/formulas/tolerances and failed run; local tooling dependency tests, no new method or independent-clearance claim.",
+  "scientificRestorationDuringInspection": false
+}

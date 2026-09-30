@@ -1,0 +1,410 @@
+{
+  "case": "LAB_HELD/RHO4_CONSTANT",
+  "frequency": 3,
+  "tangents": [
+    "1/5",
+    "1/10"
+  ],
+  "contrasts": [
+    0,
+    0.25,
+    0.5,
+    1
+  ],
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-balance-v2",
+  "resultDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-balance-v2/complete",
+  "packets": {
+    "frequency": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-source-20260919/finish-01/complete/frequency-source.pickle",
+      "bytes": 9596921,
+      "sha256": "714a0011c6874b01d88969e8dbf02d75580639028024e04d81a4bb67a12b1cd8",
+      "checkpoint": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_frequency_source_checkpoint.json",
+      "checkpointSha256": "ca5a3fa0f33d4f5457f9c5adb46b7c9da9f935661d839d036f12b0de86692bfe"
+    },
+    "grades": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-grades-20260919/production/complete/continuum-grades.pickle",
+      "bytes": 307486,
+      "sha256": "e39412750fe58734ba4db2bd84d40908d18706ae055f6ddd6e3f53f560aa9b71",
+      "checkpoint": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_continuum_grade_checkpoint.json",
+      "checkpointSha256": "3987ff4abb782050fffc767065ed9b3126da49215aa0df41320abef7fdec4692"
+    },
+    "native": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-finite-domain-20260919/production/complete/regulator/complete/domain-binding.pickle",
+      "bytes": 617843,
+      "sha256": "723f4a8ed7e6844b4ed867a669ca23be34f00f5a7ea92ce7cca541cff1a9f475"
+    }
+  },
+  "endMaps": {
+    "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/end-maps-v2/complete/operations.sqlite",
+    "sha256": "bf635ed50e3c7fbc69628646a5d8abd568d38a33a729b396d3d43804bee82948",
+    "result": {
+      "storage": "sqlite",
+      "member": "completed-end-maps.pickle",
+      "sha256": "72e26122095b591e2373b6aa60eaae968f40333dd79e98aea2720687cdbe2225",
+      "bytes": 465303
+    }
+  },
+  "nativeEngine": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_d_mixing_scattering_sympy_audit.py",
+  "nativeFinite": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_finite_scattering.py",
+  "physicalInput": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_variable_profile_development_input.json",
+    "sha256": "660b2b0b54494dce964c7f5fbd722a76a7e894d8ed92b18b5eb6290c3c10f1d5"
+  },
+  "maximumCentralSolves": 10,
+  "maximumPilotSolves": 30,
+  "wallDeadlineSeconds": null,
+  "nativeDeadlineSeconds": null,
+  "inactivityDeadlineSeconds": null,
+  "scope": "Central finite energy balance and original controls, using completed integration and uniform refinement; no completed producer/path/current/integration replay; no deficit interpretation before required replacement review.",
+  "priorStartup": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-pilot-v4/complete",
+    "files": {
+      "active-operation.json": {
+        "sha256": "0ec9c3bcf90166a9780be79baa00e7f4d454f473a5075c25a2fb1efcbac6d3d2",
+        "bytes": 629
+      },
+      "artifact-index.json": {
+        "sha256": "754bc0f327f2b51bd32638980105cd773ed9c605e88b6e4e459907b9bfdfe6ca",
+        "bytes": 6727
+      },
+      "checks.json": {
+        "sha256": "ee9d078ae369be6b20c0e9504792998fba3c76cb6573e5829cb80fe5cac159cb",
+        "bytes": 1814
+      },
+      "consumed-end-map-evidence.json": {
+        "sha256": "ce736fb7c8248810dd253b0b130801d51fa4f90cfa9a72459cdad61cb356e598",
+        "bytes": 737525
+      },
+      "endpoint-order-summary.json": {
+        "sha256": "cd85628ec6bda35be58efce250083a2a2ead71b9b2485553196801fd50a0b056",
+        "bytes": 116
+      },
+      "failure.json": {
+        "sha256": "4118f2578727742c4fd722cb230dcf2bab18081c4e99c52ed586e17a8738c55a",
+        "bytes": 1522
+      },
+      "integration-mutations.json": {
+        "sha256": "7c2a36336dd4db35e98bfa66938949e87150fe5c9f982958931e8fc4540b626b",
+        "bytes": 572
+      },
+      "kernel-contrast-reuse.json": {
+        "sha256": "e6cf7a7ea9704ce97dd19920aa078cb803a2dd7e88e716959fd08e5c7ffd7e5e",
+        "bytes": 162
+      },
+      "middle-integration-comparison.json": {
+        "sha256": "600c67dd7a8ec1c4b1879d5b89b24b2e37d332359b73434c27f09bdd5af0ff87",
+        "bytes": 1429
+      },
+      "numerical-settings.json": {
+        "sha256": "af02564ce249af62771c466af3b0a179eb329591b8f7e0fe2d662f9ecf688b94",
+        "bytes": 1666
+      },
+      "operation-index.jsonl": {
+        "sha256": "d4a059ce6869fde893f618005cb18a5b96c388dc768335254c858c8dafaacbf9",
+        "bytes": 28617
+      },
+      "operations.sqlite": {
+        "sha256": "bc7c91385312c06dd96430e871e10bd0185822a6bb3002d4dd29f1f112fac715",
+        "bytes": 17256448
+      },
+      "posthashes.json": {
+        "sha256": "f637de7a9c4394998ff57c5ab0ff129a4047e611c4e27afaec961ab66cc6a075",
+        "bytes": 22156
+      },
+      "prior-complete/active-operation.json": {
+        "sha256": "d4be495dc0b4a4d4872248d71cb952603a111fc3dba83e5c3a2f14e8d08fba49",
+        "bytes": 276
+      },
+      "prior-complete/artifact-index.json": {
+        "sha256": "b8d6293386cb59e5c183ff7e2ca9df95b96905ca9fb25a454c263f8ae4915353",
+        "bytes": 3280
+      },
+      "prior-complete/checks.json": {
+        "sha256": "7730fa17ab281c3ae59708794261aa6c4d694f1a29b4e2b1e6193116bd8abbd0",
+        "bytes": 2392
+      },
+      "prior-complete/consumed-end-map-evidence.json": {
+        "sha256": "ce736fb7c8248810dd253b0b130801d51fa4f90cfa9a72459cdad61cb356e598",
+        "bytes": 737525
+      },
+      "prior-complete/endpoint-order-summary.json": {
+        "sha256": "cd85628ec6bda35be58efce250083a2a2ead71b9b2485553196801fd50a0b056",
+        "bytes": 116
+      },
+      "prior-complete/failure.json": {
+        "sha256": "ca0aca664d5f2398ab1bd3baf242066311236214e2db432b74eb5f9bbebcece7",
+        "bytes": 2101
+      },
+      "prior-complete/kernel-contrast-reuse.json": {
+        "sha256": "e6cf7a7ea9704ce97dd19920aa078cb803a2dd7e88e716959fd08e5c7ffd7e5e",
+        "bytes": 162
+      },
+      "prior-complete/numerical-settings.json": {
+        "sha256": "af02564ce249af62771c466af3b0a179eb329591b8f7e0fe2d662f9ecf688b94",
+        "bytes": 1666
+      },
+      "prior-complete/operation-index.jsonl": {
+        "sha256": "b4fae9a547867f2952763f190893d7c126374fe893a51bc30d9a9398050771ed",
+        "bytes": 7525
+      },
+      "prior-complete/operations.sqlite": {
+        "sha256": "f39feb369ad55c00fd068217886afc1ba0e07ee8329088e0d2ef15d1d3d7f45f",
+        "bytes": 14532608
+      },
+      "prior-complete/posthashes.json": {
+        "sha256": "e497b873d8346304fbce249649c38b5f1ea2e4d676bdbf44e56b587bf5ff4c0e",
+        "bytes": 13160
+      },
+      "prior-complete/prior-startup/active-operation.json": {
+        "sha256": "28379472bcc9b634b71a3b40dd790a42cb8918c8ea9280f82506e89cef206231",
+        "bytes": 545
+      },
+      "prior-complete/prior-startup/artifact-index.json": {
+        "sha256": "0c02063345673a9f2630cedbb80a428e5cd5b5dc5da43dede886ed7aea06314a",
+        "bytes": 1236
+      },
+      "prior-complete/prior-startup/checks.json": {
+        "sha256": "92b1752e987c6f01eaa410b719a7771c1735c17a6746d32b51da454c3453bcf5",
+        "bytes": 1358
+      },
+      "prior-complete/prior-startup/consumed-end-map-evidence.json": {
+        "sha256": "ce736fb7c8248810dd253b0b130801d51fa4f90cfa9a72459cdad61cb356e598",
+        "bytes": 737525
+      },
+      "prior-complete/prior-startup/failure.json": {
+        "sha256": "7d4a1d4980438bad47d3cb85eeecfea2cffea5f8dbd0fe5ed721639e83f1bb08",
+        "bytes": 1095
+      },
+      "prior-complete/prior-startup/inputs/continuum-grades.pickle": {
+        "sha256": "e39412750fe58734ba4db2bd84d40908d18706ae055f6ddd6e3f53f560aa9b71",
+        "bytes": 307486
+      },
+      "prior-complete/prior-startup/inputs/domain-binding.pickle": {
+        "sha256": "723f4a8ed7e6844b4ed867a669ca23be34f00f5a7ea92ce7cca541cff1a9f475",
+        "bytes": 617843
+      },
+      "prior-complete/prior-startup/inputs/frequency-source.pickle": {
+        "sha256": "714a0011c6874b01d88969e8dbf02d75580639028024e04d81a4bb67a12b1cd8",
+        "bytes": 9596921
+      },
+      "prior-complete/prior-startup/operation-index.jsonl": {
+        "sha256": "c149a4455a657f3f477b437eecabdc369f1d6b393c199e34e752db0f37af6968",
+        "bytes": 1859
+      },
+      "prior-complete/prior-startup/operations.sqlite": {
+        "sha256": "ef438004b4c2968e9494264f6d141bca18fb121d644b97ab64b50925d221efb3",
+        "bytes": 11456512
+      },
+      "prior-complete/prior-startup/posthashes.json": {
+        "sha256": "2d664071f6173eb95658b35c75c198c868f9589fb148ff2e6ed61b82ce0ebe48",
+        "bytes": 7828
+      },
+      "prior-complete/prior-startup-copy-index.json": {
+        "sha256": "7e562f3c980e47daa56a21ade9943cd84ec6dad651431062e8468bcdd6da5424",
+        "bytes": 1492
+      },
+      "prior-complete/radical-inventory.json": {
+        "sha256": "8626b029b600adfae4df334ed108387b3ac58c71cb81c50545453df9b62f5b63",
+        "bytes": 945
+      },
+      "prior-complete/reused-numerical-helper-asts.json": {
+        "sha256": "ba7a6032094bebb7b73a5031035eb321e044fa066257f5a32f1aea27403c87e7",
+        "bytes": 558
+      },
+      "prior-copy-index.json": {
+        "sha256": "471d22b1ca05c6c04019c42ac68280880903d2c13cdf1eab2a17cd9a9eeb2cb0",
+        "bytes": 3536
+      },
+      "radical-inventory.json": {
+        "sha256": "8626b029b600adfae4df334ed108387b3ac58c71cb81c50545453df9b62f5b63",
+        "bytes": 945
+      },
+      "reused-numerical-helper-asts.json": {
+        "sha256": "ba7a6032094bebb7b73a5031035eb321e044fa066257f5a32f1aea27403c87e7",
+        "bytes": 558
+      },
+      "two-sided-endpoint-values.json": {
+        "sha256": "6a7c900c5ca08f4035c519d17ec3c9a00c3fc705b8f542cef92f8e143fb62f27",
+        "bytes": 14815
+      },
+      "unfinished-input-identity.json": {
+        "sha256": "2ffa208f710981e700a14a581b11e137b694eebdbdfabe019a86fa18a2e6f89c",
+        "bytes": 302
+      },
+      "uniform-Gaussian-0.0-column-3.json": {
+        "sha256": "2af1598a68eff83107d6a6c4ab5fc7adc7ec065eacca9575ec2228d5098d38ab",
+        "bytes": 4741
+      },
+      "uniform-Gaussian-0.0-column-4.json": {
+        "sha256": "cdd82779eed3678c968b6c94b4e4c9e7a8287cf2c108511fd11c9ac2df3c31bc",
+        "bytes": 4667
+      },
+      "uniform-Gaussian-0.6000000000000001-column-3.json": {
+        "sha256": "ab280190db21a9a66f14217f757951393ab8508d1f181d4bb39b6ada149497f8",
+        "bytes": 4756
+      },
+      "uniform-Gaussian-0.6000000000000001-column-4.json": {
+        "sha256": "59cf808d14665ffec441c1940f0e9456364a92650eca3ef061830fbaeed0f8d0",
+        "bytes": 4793
+      }
+    },
+    "completeOperations": 36
+  },
+  "uniformRefinement": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/uniform-refinement-v2/complete",
+    "files": {
+      "posthashes.json": {
+        "sha256": "418e4093ea15dcb7a02f3f4116b6f0b6deffc3c02fb6cc2b87ad4b54596084bb",
+        "bytes": 37168
+      },
+      "checks.json": {
+        "sha256": "620601ed9266799671780985cef8946dd3b956d6817df646a05bff4c0628de9c",
+        "bytes": 1587
+      },
+      "prior-uniform-Gaussian-0.6000000000000001-column-4.json": {
+        "sha256": "59cf808d14665ffec441c1940f0e9456364a92650eca3ef061830fbaeed0f8d0",
+        "bytes": 4793
+      },
+      "reference-identity-column-4.json": {
+        "sha256": "1992a3d955ffeb43158a41de540fbbeba71e4f47ce56942d1fca484bbc65f2c4",
+        "bytes": 5063
+      },
+      "outer-64-source-512-column-3.json": {
+        "sha256": "7accd8d668187fef81463e21bf066b21a52e81e3d8bba73688885f4151d270a3",
+        "bytes": 5121
+      },
+      "operations.sqlite": {
+        "sha256": "c166aff508c1a65cb4e90e42b4d9e58ed9b3fd13c41fc74ec9363b89dfb22c7f",
+        "bytes": 13856768
+      },
+      "outer-32-source-512-column-4.json": {
+        "sha256": "fb61ed0d4f1b1e682402901fd96b2497d53b9bb26a14dfd6ae3972e7f4509894",
+        "bytes": 5159
+      },
+      "outer-48-source-512-column-4.json": {
+        "sha256": "617bb2eb31b61a48bb6d1d6fd5393439f68a389114fe59e4efb63436efff5f79",
+        "bytes": 5161
+      },
+      "reference-identity-column-3.json": {
+        "sha256": "1992a3d955ffeb43158a41de540fbbeba71e4f47ce56942d1fca484bbc65f2c4",
+        "bytes": 5063
+      },
+      "outer-64-source-512-column-4.json": {
+        "sha256": "b8424904a2b3aadf320adc915157622b35149965d5995ee6200818150fa0a4f0",
+        "bytes": 5162
+      },
+      "active-operation.json": {
+        "sha256": "ec6117c97b783fd4ecc801c65a3a6b368682ffe47d0fa2a709b018c15f4f8a10",
+        "bytes": 579
+      },
+      "prior-uniform-Gaussian-0.6000000000000001-column-3.json": {
+        "sha256": "ab280190db21a9a66f14217f757951393ab8508d1f181d4bb39b6ada149497f8",
+        "bytes": 4756
+      },
+      "result-artifacts.json": {
+        "sha256": "d7e1d9a7f605c651e6c1caa0dcad0ce4fac203b3df8122a76d005ad17e79a117",
+        "bytes": 212
+      },
+      "refinement-progress.json": {
+        "sha256": "fd161a09f8afb543268acede650e9ce3facef660756e56043fa32632fa679f2d",
+        "bytes": 534
+      },
+      "prior-integration-mutations.json": {
+        "sha256": "7c2a36336dd4db35e98bfa66938949e87150fe5c9f982958931e8fc4540b626b",
+        "bytes": 572
+      },
+      "artifact-index.json": {
+        "sha256": "effadd5ac719006e16c86fb8071a3393cee6a1309abea39a223bf757d963971c",
+        "bytes": 3326
+      },
+      "operation-index.jsonl": {
+        "sha256": "2f15e64403dea08266c91c49901c4ca66345f3d80d4e3646fe58f9b5b6ba8edf",
+        "bytes": 34772
+      },
+      "outer-48-source-512-column-3.json": {
+        "sha256": "41601deda4fec679eceb39b0ee6b7de8c49c1a63340d15f5e1ee8c612b02bef9",
+        "bytes": 5123
+      },
+      "outer-64-source-768-column-3.json": {
+        "sha256": "723c601244a00b64144d400ed6957a0cb260a6e7f88b2831c29452116cf243dd",
+        "bytes": 5122
+      },
+      "outer-64-source-768-column-4.json": {
+        "sha256": "6b81c7790d94becfcb76ed2b7e168298c1f3edf55e04adacc6b02c45cc979235",
+        "bytes": 5160
+      },
+      "prior-middle-integration-comparison.json": {
+        "sha256": "600c67dd7a8ec1c4b1879d5b89b24b2e37d332359b73434c27f09bdd5af0ff87",
+        "bytes": 1429
+      },
+      "outer-32-source-512-column-3.json": {
+        "sha256": "2f50ee65aecf981a1ff0f5e7daa683338601058ee362deda1b6c054a3097551c",
+        "bytes": 5121
+      },
+      "source-context-joins.json": {
+        "sha256": "9a66e16fcb0447443986584bb406524ae1e4a2be29afc0d11ab0c0167341998b",
+        "bytes": 1208
+      },
+      "prior-two-sided-endpoint-values.json": {
+        "sha256": "6a7c900c5ca08f4035c519d17ec3c9a00c3fc705b8f542cef92f8e143fb62f27",
+        "bytes": 14815
+      },
+      "uniform-refinement-summary.json": {
+        "sha256": "e4aedec82888b936d19703306dc0838a50c1a8ff41a41da32af2ac9489110fe2",
+        "bytes": 1376
+      }
+    },
+    "result": {
+      "storage": "sqlite",
+      "member": "completed-uniform-refinement.pickle",
+      "sha256": "6e6eb987c14e7abf9450c3693a272e7cf06d85159b4b0aa3048660eff2969e2c",
+      "bytes": 12599
+    }
+  },
+  "preservedBalanceStartupFiles": {
+    "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-balance-01/complete/artifact-index.json": {
+      "sha256": "d78e4ff2e59f1df8ba071c7c4e7c7ffe6d6dcdec512eab57fc2ab6ec8d8ceb4d",
+      "bytes": 1254
+    },
+    "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-balance-01/complete/checks.json": {
+      "sha256": "28599b379a015bfef3d2930987eb9a6fad7da4c71dd4565de582dac17da25c32",
+      "bytes": 1640
+    },
+    "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-balance-01/complete/consumed-integration-checks.json": {
+      "sha256": "2bd0b8a440a369cc0613f67b31b99f7ca645400cf5b58ce201dda88d8a5194a7",
+      "bytes": 4172
+    },
+    "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-balance-01/complete/failure.json": {
+      "sha256": "5b06da13d1fb2632960fe9e8a17a5cbb5fabb029956d9a3c704a3a6b17bb0f1d",
+      "bytes": 1349
+    },
+    "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-balance-01/complete/numerical-settings.json": {
+      "sha256": "2886101d9a0eb5366b55fe29368f37fe3efd22d4c2d793181eac25420944dc8b",
+      "bytes": 1922
+    },
+    "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-balance-01/complete/operation-index.jsonl": {
+      "sha256": "af9413a09920b040a9549fdbdea1f33129ebc28ef550e2a7bf38f1d75bee379d",
+      "bytes": 38433
+    },
+    "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-balance-01/complete/operations.sqlite": {
+      "sha256": "19f8a136ac8438281fdc5fd14d0e0a8592b9db5df59867bf55dd8f228495f1b1",
+      "bytes": 12693504
+    },
+    "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-balance-01/complete/posthashes.json": {
+      "sha256": "33ebacadd260f69c43e3dcd398f25d56e0ca3e750d2e8c7e489dcdfe8d597ad5",
+      "bytes": 43038
+    },
+    "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-balance-01/complete/prior-integration-mutations.json": {
+      "sha256": "7c2a36336dd4db35e98bfa66938949e87150fe5c9f982958931e8fc4540b626b",
+      "bytes": 572
+    },
+    "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-balance-01/complete/prior-middle-integration-comparison.json": {
+      "sha256": "600c67dd7a8ec1c4b1879d5b89b24b2e37d332359b73434c27f09bdd5af0ff87",
+      "bytes": 1429
+    },
+    "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-balance-01/complete/prior-two-sided-endpoint-values.json": {
+      "sha256": "6a7c900c5ca08f4035c519d17ec3c9a00c3fc705b8f542cef92f8e143fb62f27",
+      "bytes": 14815
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "status": "STANDARD_LIBRARY_NAMESPACE_REPAIR_READY",
+  "tests": 4,
+  "allTestsPass": true,
+  "originalNumericalRunASTUnchangedAfterNamespaceAndPreservationChecks": true,
+  "actualExtractedPolynomialBodyMatchesTestedOriginal": true,
+  "integrationLibrarySha256": "dc154817f13f05d436abebb708556778dc397775c57af6f56818103e12827058",
+  "finiteLibrarySha256": "61ff6cdd6c5c89d3bd1c432b840ebaddc2c62e1f84aad91a4f74fb4157210411",
+  "originalTolerancesAndControlsUnchanged": true,
+  "helperGlobalDependencyCensus": {
+    "suppliedNewDependency": "operator",
+    "remainingNamesOnlyInUnusedLegacyMethod": {
+      "BasisMomentum.matrix_group": [
+        "atomic_pickle",
+        "digest",
+        "shutil",
+        "time",
+        "unpickle"
+      ]
+    },
+    "actualMatrixMethod": "F.matrix_group, not legacy BasisMomentum.matrix_group"
+  },
+  "scientificRestorationsDuringPreparation": 0,
+  "classification": "Tooling-only missing original standard-library dependency. No equation, method, tolerance or physics claim change."
+}

@@ -1,3 +1,15 @@
+**NEXT AUTHORIZED RUN PREPARED — central numerical radiating pilot (2026-09-30):**
+The accepted omega3 end maps now feed source-bound real-axis endpoint and
+independent integration checks, then up to ten central finite solves with the
+approved uniform/scaling/refinement/domain/regulator/sign controls. See
+S11c_d_numerical_radiating_pilot_preparation.json, inputs and gate. Source-only
+checks and five stdlib tooling tests passed; four saved input streams passed
+an opcode census without restoration. No numerical result is implied.
+No time or inactivity cap, shared containment/supervisor, hook first. Exact
+omega1 stays parked; no new review or paired clearance claimed. All prior
+results/failures remain intact. The finite-model deficit retains unresolved
+physical-loss interpretation. Substantive failure stops neighbors.
+
 **CURRENT RESULT — omega-3 numerical end checks passed (2026-09-30):**
 Both ends/all four contrasts support the selected transverse current/face and
 finite trace maps. Full-contrast k magnitudes are 2.43926218 (LEFT) and

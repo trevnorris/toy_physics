@@ -1,0 +1,14 @@
+{
+  "utc": "2026-09-30T16:43:06.567534+00:00",
+  "status": "SOURCE_AND_STDLIB_TOOLING_CHECKS_PASSED",
+  "checks": {
+    "syntax": 4,
+    "stdlibTests": 5,
+    "testOutput": ".....\n----------------------------------------------------------------------\nRan 5 tests in 0.194s\n\nOK",
+    "staticOpcodeCensus": "S11c_d_numerical_radiating_pilot_codec_census.json",
+    "scientificImports": 0,
+    "scientificRestorations": 0
+  },
+  "workerSha256": "9605e86d380023b9e0dbb59229d375af20e6e68d2355dce7b46db164379c8aea",
+  "limitations": "These checks do not establish quadrature accuracy, complete native binding, memory/runtime, full rank, current conservation or a physical loss value."
+}

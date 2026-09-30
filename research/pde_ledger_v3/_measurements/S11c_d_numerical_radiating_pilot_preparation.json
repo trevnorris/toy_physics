@@ -1,0 +1,20 @@
+{
+  "status": "PREPARED_FOR_AUTHORIZED_CENTRAL_RUN",
+  "scope": "Central source-bound real-axis integration gates, then finite matrices, four contrasts and declared refinement/domain/regulator/sign controls. Original end/root/path/current construction is not replayed. Numerical deficits retain unresolved physical-loss interpretation.",
+  "implementationNotes": [
+    "Integration gates precede every field solve. Actual raw coefficient/branch/unit/source joins and endpoint operands persist. Independent middle reference uses physical-k Gauss-Kronrod; shared inner rules are explicitly disclosed.",
+    "Uniform Gaussian operator comparison drives theta and eW, and retains the actual finite Fourier/source/profile cutoffs. Nonzero uniform deficit above1e-6 is a stop, never hidden in a revised error label.",
+    "Finite signed transverse currents use full saved quadratic forms and solved end amplitudes. Reflected light survives. Cross-current partition checks and negative flags remain explicit.",
+    "All contrast-independent row/source reuse requires equality of actual operands. Source basis arrays share only identical coefficient tuples. Large arrays are checkpointed separately to avoid multi-copy serialization spikes.",
+    "Maximum10central solves,30pilot solves. No neighbors in this launch; completion inspection decides whether standing scope permits proceeding. No time cap or automatic retry."
+  ],
+  "reviewStatus": {
+    "claude": "CLEAR with five pre-implementation corrections",
+    "grok": "NO FINAL REPORT",
+    "independentPairedClearance": false,
+    "authority": "Explicit user no further Grok, minor corrections and run"
+  },
+  "physicalInterpretation": "RETAINED_ORDER_LOSS_INTERPRETATION_UNRESOLVED",
+  "calibration": "OPEN",
+  "scienceAlreadyRun": false
+}

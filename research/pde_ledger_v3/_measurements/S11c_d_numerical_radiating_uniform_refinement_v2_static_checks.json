@@ -1,0 +1,10 @@
+{
+  "status": "EXACT_REFERENCE_IDENTITY_EVIDENCE_REPAIR_READY",
+  "tests": 5,
+  "testOutput": ".....\n----------------------------------------------------------------------\nRan 5 tests in 0.035s\n\nOK",
+  "assemblySourceSetupRestoreBodiesUnchanged": true,
+  "trialsAndToleranceUnchanged": true,
+  "scientificRestorationsDuringPreparation": 0,
+  "runtimeExactZeroRequired": true,
+  "changedScope": "Persist exact matrix/scale residual evidence and require literal zero; preserve failed startup before/after."
+}

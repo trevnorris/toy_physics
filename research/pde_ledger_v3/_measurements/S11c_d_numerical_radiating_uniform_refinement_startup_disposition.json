@@ -1,0 +1,77 @@
+{
+  "status": "STARTUP_REFERENCE_IDENTITY_COMPARISON_UNRESOLVED_NO_REFINEMENT",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/uniform-refinement-01",
+  "checks": {
+    "status": "STOPPED_UNRESOLVED",
+    "exceptionType": "ValueError",
+    "message": "actual saved reference pencil and physical scale",
+    "traceback": "Traceback (most recent call last):\n  File \"/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_uniform_refinement.py\", line 139, in main\n    J=storage.Journal(base);result=run(manifest,J)\n  File \"/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_uniform_refinement.py\", line 83, in run\n    require(x['matrix']==matrix and x['physicalScale']==scale,'actual saved reference pencil and physical scale')\n  File \"/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_integration_v3.py\", line 30, in require\n    error=ValueError(message);error.evidence=evidence;raise error\nValueError: actual saved reference pencil and physical scale\n",
+    "incompleteOperation": null,
+    "finiteSolves": 0,
+    "wallSeconds": 16.033971389988437,
+    "completeOperations": 11,
+    "restoredOperations": 11,
+    "posthashesIntact": true,
+    "peakRssKiB": 169040,
+    "independentMethodClearance": false,
+    "physicalLossInterpretation": "RETAINED_ORDER_LOSS_INTERPRETATION_UNRESOLVED",
+    "automaticRetry": false
+  },
+  "files": {
+    "posthashes.json": {
+      "sha256": "7cf6c37eddc505bb7447d710ce70fc8286f896f36f1e04451996fa5e13a42711",
+      "bytes": 31619
+    },
+    "failure.json": {
+      "sha256": "14f51813bc1132c15c1cdc47fe4ef99e920d2bb1bebbce50bd3bf7f0078ed0cd",
+      "bytes": 963
+    },
+    "checks.json": {
+      "sha256": "253f7a47c7c40605fb0294e5ddfabddd249b219e4f6424a606a37972a15074d1",
+      "bytes": 1255
+    },
+    "prior-uniform-Gaussian-0.6000000000000001-column-4.json": {
+      "sha256": "59cf808d14665ffec441c1940f0e9456364a92650eca3ef061830fbaeed0f8d0",
+      "bytes": 4793
+    },
+    "operations.sqlite": {
+      "sha256": "24de3ec02dbc3ad209435ce68fcafb342ffa9f075ffc545ee83bbccf0ca88c28",
+      "bytes": 10731520
+    },
+    "prior-uniform-Gaussian-0.6000000000000001-column-3.json": {
+      "sha256": "ab280190db21a9a66f14217f757951393ab8508d1f181d4bb39b6ada149497f8",
+      "bytes": 4756
+    },
+    "prior-integration-mutations.json": {
+      "sha256": "7c2a36336dd4db35e98bfa66938949e87150fe5c9f982958931e8fc4540b626b",
+      "bytes": 572
+    },
+    "artifact-index.json": {
+      "sha256": "35db60fc39d7818d3f1ac6af01f67ce6529ea905126ee7a8c72d0fc69889dcf8",
+      "bytes": 1308
+    },
+    "operation-index.jsonl": {
+      "sha256": "b5c21337f443d178f16ebd5b671b7143cf790b103af99b9b24ef78e78e0d5936",
+      "bytes": 18887
+    },
+    "prior-middle-integration-comparison.json": {
+      "sha256": "600c67dd7a8ec1c4b1879d5b89b24b2e37d332359b73434c27f09bdd5af0ff87",
+      "bytes": 1429
+    },
+    "prior-two-sided-endpoint-values.json": {
+      "sha256": "6a7c900c5ca08f4035c519d17ec3c9a00c3fc705b8f542cef92f8e143fb62f27",
+      "bytes": 14815
+    }
+  },
+  "fileCount": 11,
+  "bytes": 10811917,
+  "sourcePosthashes": 106,
+  "opaqueJournalHashesVerified": true,
+  "stdoutChecksIdentical": true,
+  "strictStderrEmpty": true,
+  "peakCgroupBytes": 207323136,
+  "swapBytes": 0,
+  "diagnosis": "A structural equality expression for restored matrix/scale returned false. No exact difference was persisted by this attempt, so representation versus actual algebraic disagreement is not yet established.",
+  "correction": "Persist actual saved/source matrix and scale operands and exact per-entry rational residuals before requiring every residual to be literally zero. Nonzero remains fatal; no numerical tolerance or original scientific operand changes.",
+  "replay": "Eleven returns were only byte-restored; no integral or scientific producer ran. Reuse the same immutable v4 returns in the corrected worker. Keep this whole failed tree pinned in place."
+}

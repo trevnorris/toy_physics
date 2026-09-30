@@ -1,3 +1,14 @@
+**FOCUSED REFINEMENT STARTUP PRESERVED (2026-09-30):**
+The first refinement startup restored11returns but stopped before any new
+integral on raw reference matrix/scale equality. Exact disagreement was not
+saved, so its cause remains unestablished. V2 saves actual operands and exact
+rational entry/scale residuals before requiring literal zero; no tolerance or
+scientific formula changes. Five local storage/identity tests pass. All11files,
+106input pins and completed v4 science remain intact. No nested/reference
+replay. The frozen replacement-review packet is still awaiting exact consent;
+its equations/method sources remain unchanged by this local evidence correction.
+See uniform_refinement_startup_disposition and v2 gate/static checks.
+
 **AUTHORIZED — focused uniform refinement and replacement review (2026-09-30):**
 User directed the same-equation momentum0.6 refinement against saved references,
 then the controlled omega3 balance, with a prospective coarse branch if needed.

@@ -1,0 +1,91 @@
+{
+  "status": "FINISHED_REQUIRES_COMPLETION_INSPECTION",
+  "checkedUtc": "2026-09-30T22:50:09.204404+00:00",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/uniform-refinement-01",
+  "launch": {
+    "jobPid": 4083276,
+    "watcherPid": 4083277,
+    "gateSha256": "65cc30ab4d2093f80bbdbfeeb5b2d98c5e7642dc32527a9b64616ec0b4c0d29c",
+    "command": [
+      "/usr/bin/python3",
+      "/var/projects/toy_physics/scripts/s11c_guarded_run.py",
+      "--log-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/uniform-refinement-01/resource-guard",
+      "--",
+      "/usr/bin/python3",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/uniform-refinement-01",
+      "--stage",
+      "numerical_radiating_uniform_refinement",
+      "--",
+      "/usr/bin/python3",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_uniform_refinement.py",
+      "--manifest",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_uniform_refinement_inputs.json",
+      "--gate",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_uniform_refinement_gate.json",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/uniform-refinement-01/complete"
+    ],
+    "thread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+    "automaticRetry": false
+  },
+  "duration": {
+    "verified": true,
+    "actual": {
+      "Restart": "no",
+      "RuntimeMaxUSec": "infinity"
+    },
+    "wallDeadlineSeconds": null,
+    "inactivityDeadlineSeconds": null
+  },
+  "limits": {
+    "verified": true,
+    "actual": {
+      "memory.max": "2147483648",
+      "memory.swap.max": "0",
+      "pids.max": "32",
+      "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-93be616ad03c.service",
+      "nice": 15,
+      "affinity": [
+        15
+      ],
+      "threads": {
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "VECLIB_MAXIMUM_THREADS": "1",
+        "BLIS_NUM_THREADS": "1"
+      }
+    }
+  },
+  "watcherStatus": "finished",
+  "stderrBytes": {
+    "numerical_radiating_uniform_refinement.stderr": 0,
+    "guard-launch.stderr": 0,
+    "coordinator.stderr": 0
+  },
+  "operationsInSnapshot": 11,
+  "restoredInSnapshot": 11,
+  "activeSnapshot": null,
+  "checksSnapshot": {
+    "status": "STOPPED_UNRESOLVED",
+    "exceptionType": "ValueError",
+    "message": "actual saved reference pencil and physical scale",
+    "traceback": "Traceback (most recent call last):\n  File \"/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_uniform_refinement.py\", line 139, in main\n    J=storage.Journal(base);result=run(manifest,J)\n  File \"/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_uniform_refinement.py\", line 83, in run\n    require(x['matrix']==matrix and x['physicalScale']==scale,'actual saved reference pencil and physical scale')\n  File \"/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_integration_v3.py\", line 30, in require\n    error=ValueError(message);error.evidence=evidence;raise error\nValueError: actual saved reference pencil and physical scale\n",
+    "incompleteOperation": null,
+    "finiteSolves": 0,
+    "wallSeconds": 16.033971389988437,
+    "completeOperations": 11,
+    "restoredOperations": 11,
+    "posthashesIntact": true,
+    "peakRssKiB": 169040,
+    "independentMethodClearance": false,
+    "physicalLossInterpretation": "RETAINED_ORDER_LOSS_INTERPRETATION_UNRESOLVED",
+    "automaticRetry": false
+  },
+  "noFurtherPolling": true
+}

@@ -1,3 +1,18 @@
+**CURRENT DIRECTION — numerical feasibility only (2026-09-29):** exact-symbolic
+omega=1 work is parked at the user's direction. Selected REFERENCE/LEFT
+premises remain supported; RIGHT remains unresolved because of the rendered
+summary guard. Do not resume it. Source/JSON/hash inspection found a credible
+numerical reuse route, but omega=3 requires different branch-endpoint handling
+and end maps, not a parameter-only rerun. The finite solver already supplies
+the current-balance structure. Assessment and uncertain costs are recorded in
+`S11c_d_numerical_radiating_feasibility.md`. No scientific payload restoration,
+implementation, new review or run occurred. Stop for go/no-go on that proposal.
+The user right-sized pure tooling repairs to local verification; equations,
+method and claims still require two independent reviews. Existing physical
+limitations and all historical evidence remain intact.
+
+Earlier entries below are preserved history, not current launch instructions.
+
 **FINAL RIGHT ATTEMPT STOPPED (2026-09-29):** execution7 stopped after
 50.136823 worker seconds, before RIGHT. The REFERENCE face summary now matches;
 REFERENCE seed16 has one sourceFactor string difference: saved

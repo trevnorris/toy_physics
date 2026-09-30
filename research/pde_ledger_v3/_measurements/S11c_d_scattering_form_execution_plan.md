@@ -1,3 +1,18 @@
+**CURRENT DIRECTION — exact track parked; numerical feasibility returned
+(2026-09-29):** the user requested a source/metadata-only assessment of the
+existing finite solver at omega=3 and nearby frequencies. Selected
+REFERENCE/LEFT support remains; RIGHT is unresolved at a summary-comparison
+guard, not a failed physics test. No exact-track repair or diagnostic is queued.
+See `S11c_d_numerical_radiating_feasibility.md`: conditional go for a bounded
+numerical pilot, requiring real-frequency branch/endpoint treatment, numerical
+end maps and transverse-current selection. The existing local analytic chart
+and decay-only boundary selector cannot be reused unchanged. No build, review
+submission or scientific run was performed or authorized. Stop for the user's
+decision. Pure tooling fixes no longer get separate two-reviewer cycles under
+the user's instruction; method/equation/claim changes still do.
+
+Earlier entries below are preserved history, not an active execution queue.
+
 **FINAL RIGHT ATTEMPT STOPPED (2026-09-29):** execution7 stopped after
 50.136823 worker seconds, before RIGHT. The REFERENCE face summary now matches;
 REFERENCE seed16 has one sourceFactor string difference: saved

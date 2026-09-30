@@ -1,3 +1,18 @@
+**Standing policy — all runs without time cutoffs (2026-09-30):** the user
+clarified this applies to every run, not just the current continuation. Global
+preferences and project AGENTS.md now prohibit wall/native/CPU-time/inactivity
+cutoffs unless explicitly requested. Current unlimited v2 remains untouched.
+
+The reusable unlimited guard is prepared at scripts/s11c_guarded_run_unlimited.py.
+Three mocked tests passed: arbitrary elapsed time cannot terminate a job, host
+memory protection still stops it, and resource-enforcement mismatches still fail.
+After current completion/posthash inspection, replace the canonical
+scripts/s11c_guarded_run.py with this prepared version before the next launch;
+its old bytes are presently pinned by the active job. No new permission or
+review cycle is needed for this runtime-only change. Preserve the old snapshot.
+Future workers must likewise omit obsolete native timers. Do not reinstate a
+900/840-second or progress-stall cap from historical entries below.
+
 **Launch confirmed (2026-09-30 14:57 UTC):** corrected continuation v2 is
 running under the existing supervisor. Actual service RuntimeMaxUSec=infinity,
 Restart=no and memory/swap/CPU/process/thread limits were verified. No native

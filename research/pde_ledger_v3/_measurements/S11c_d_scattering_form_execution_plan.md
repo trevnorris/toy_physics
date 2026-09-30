@@ -1,3 +1,17 @@
+**Final RIGHT execution7 launched (2026-09-29):** source commit acc80fd0;
+reviewed baseline f4a4f029 remains intact. Hook armed before guard launch to this
+session. Actual containment verifies16GiB,zero swap,one CPU,32tasks,one native
+thread,desktop-managed priority and systemd infinity/Restart=no; the saved
+launch record includes the native address-space observation. User-authorized
+minor StrictGreaterThan restoration correction is explicit; literal Claude
+NEEDS REVISION/Grok CLEAR are not rewritten. No fresh independent CLEAR.
+
+Run root: `_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/right-final`.
+Wait silently for its local completion/error event. Inspect actual results and
+logs, then STOP. No retry, extra diagnostic, validator, review or new physics
+campaign is authorized. Earlier selected REFERENCE/LEFT evidence remains;
+RIGHT outcome and every loss/power/calibration claim are pending.
+
 **Final RIGHT minor correction verified; one run prepared (2026-09-29):**
 Fresh literal verdicts are Claude NEEDS REVISION / Grok CLEAR FOR THIS FINAL
 RIGHT-END CONTINUATION, preserved with baseline f4a4f029. User permission for

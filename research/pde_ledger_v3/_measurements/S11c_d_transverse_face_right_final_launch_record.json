@@ -1,5 +1,5 @@
 {
-  "status": "STATIC_READY_USER_AUTHORIZED_MINOR_REPAIR_FINAL_RIGHT_RUN",
+  "status": "FINAL_RIGHT_LAUNCHED_USER_AUTHORIZED_MINOR_REPAIR",
   "recordedUtc": "2026-09-30T01:00:00.725423+00:00",
   "gate": {
     "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_right_final_gate.json",
@@ -38,7 +38,7 @@
     "sha256": "74d5f49bfae306f6293e6ae30fdfaa543b889c8ad0a772d6fb94377f9fde6f3e"
   },
   "scientificExecutionOrdinal": 7,
-  "scientificExecutionLaunched": false,
+  "scientificExecutionLaunched": true,
   "independentBuildClearance": false,
   "scientificImportsOrRestorations": 0,
   "preflightPins": {
@@ -64,5 +64,108 @@
     "guardBookkeepingGraceSeconds": 60,
     "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/right-final"
   },
-  "completionHookTarget": "01a0e01b-ef84-7192-817f-584cda5d339b"
+  "completionHookTarget": "01a0e01b-ef84-7192-817f-584cda5d339b",
+  "launchedUtc": "2026-09-30T01:01:24.844741+00:00",
+  "launch": {
+    "jobPid": 2603834,
+    "watcherPid": 2603835,
+    "pins": {
+      "workerSha256": "6ad77bdb61d205a9d3671ebf733bd230946d4a90913cfcbfbf283dbb4b37d172",
+      "inputManifestSha256": "576c1093493abbf23e42e94fcd3dff8b4e5cc6fc1de51e6363d00d51bb2b3d06",
+      "scopeSha256": "321a8332ca178b993180a4f7bd703fbba05872d05bd016f279a767cf4048597a",
+      "authorizationSha256": "74d5f49bfae306f6293e6ae30fdfaa543b889c8ad0a772d6fb94377f9fde6f3e",
+      "guardSha256": "587061fdd6a30748e6d1520020248882237586b10fc34aeab1e91c8db24cdca2",
+      "sharedGuardSha256": "9194b3e04b43d345828082e6312b0a2d7a9293f6296153f9c6ccea2defb931d2",
+      "supervisorSha256": "45a16f7f952ca6b571362b1c386fec76cd86f1e0ad04113074adf49c683ec49c",
+      "gateSha256": "676736c9a94e00c61ace7f34b783cc7321f820b41d530dc12a32f994c0025d58",
+      "launcherSha256": "0bd24148a1066c107bd92579f8763aa0f55b4741fac9834f8d29347f24b239ee"
+    },
+    "command": [
+      "/usr/bin/python3",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_right_final_guard.py",
+      "--log-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/right-final/resource-guard",
+      "--seconds",
+      "0",
+      "--memory-gib",
+      "16",
+      "--tasks-max",
+      "32",
+      "--",
+      "/usr/bin/python3",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/right-final",
+      "--stage",
+      "transverse_face_right_final",
+      "--",
+      "/usr/bin/python3",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_right_final.py",
+      "--input-manifest",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_right_final_inputs.json",
+      "--gate-receipt",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_right_final_gate.json",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/right-final/complete"
+    ],
+    "thread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+    "maximumScientificWorkers": 1,
+    "completionMessageSha256": "55bf89f0e7164e69e6a4132bbde413f06d78e2243a34da94749d94ecd470e96f"
+  },
+  "actualEffectiveLimits": {
+    "memory.max": "17179869184",
+    "memory.swap.max": "0",
+    "pids.max": "32",
+    "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-45626297e495.service",
+    "nice": 0,
+    "affinity": [
+      15
+    ],
+    "threads": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1",
+      "VECLIB_MAXIMUM_THREADS": "1",
+      "BLIS_NUM_THREADS": "1"
+    }
+  },
+  "actualLimitValidation": {
+    "verified": true,
+    "actual": {
+      "memory.max": "17179869184",
+      "memory.swap.max": "0",
+      "pids.max": "32",
+      "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-45626297e495.service",
+      "nice": 0,
+      "affinity": [
+        15
+      ],
+      "threads": {
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "VECLIB_MAXIMUM_THREADS": "1",
+        "BLIS_NUM_THREADS": "1"
+      }
+    }
+  },
+  "actualDurationValidation": {
+    "verified": true,
+    "actual": {
+      "Restart": "no",
+      "RuntimeMaxUSec": "infinity"
+    },
+    "wallDeadlineSeconds": null,
+    "automaticRetry": false
+  },
+  "nativeAddressSpaceObservation": {
+    "pid": 2603856,
+    "procUnavailable": true,
+    "verified": false
+  },
+  "sourceCommit": "acc80fd0",
+  "reviewedBaselineCommit": "f4a4f029"
 }

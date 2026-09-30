@@ -1,3 +1,14 @@
+**Startup tooling correction (2026-09-30):** end-maps-01 stopped after one
+completed source restoration because the new loader omitted numpy.dtype from
+its allowed storage classes. No numerical operation ran. All pins/snapshots and
+strict log checks passed; 3.681s, peak66.4MiB. The nine saved files and original
+worker remain intact. End-maps-v2 permits the actual numpy.dtype/ndarray classes,
+restores the completed read without invoking its function and joins the pending
+input by exact bytes. Eight input streams passed a static opcode census; five
+stdlib tooling tests passed; all seven numerical-function ASTs are unchanged.
+This is the user-authorized local tooling repair, not a scientific retry or new
+method review. See end_maps_startup_disposition.json and v2 gate/preparation.
+
 **Next authorized stage prepared (2026-09-30):** numerical current/face/end-map
 worker at omega 3, both ends and four contrasts, reusing completed candidate
 states. See `S11c_d_numerical_radiating_end_maps_preparation.md` and its pinned

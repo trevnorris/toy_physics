@@ -1,0 +1,13 @@
+{
+  "utc": "2026-09-30T16:10:06.148789+00:00",
+  "status": "PASS_SOURCE_AND_STDLIB_TOOLING_CHECKS",
+  "workerSha256": "4c96b6957bd839bf48e5f959483e13c3b83888db2893ff8d5ebe39c5e4f4262f",
+  "testSha256": "9a7d7e566d253bd7f95cdf629db1484e1b0f9b95fc788900c8f81afd3355b27e",
+  "tests": 5,
+  "scientificPayloadRestorationDuringPreparation": false,
+  "scientificResultAcceptance": false,
+  "opaqueInputAndBoundaryBlobHashesVerified": true,
+  "deadlineCalls": false,
+  "producerImports": false,
+  "reviewStatus": "No paired independent clearance; explicit user execution authority applies."
+}

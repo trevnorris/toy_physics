@@ -1,0 +1,66 @@
+{
+  "status": "STARTUP_CODEC_TOOLING_FAILURE_NO_NUMERICAL_WORK",
+  "utc": "2026-09-30T16:08:41.727485+00:00",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/end-maps-01",
+  "workerChecks": {
+    "status": "STOPPED_UNRESOLVED",
+    "exceptionType": "ValueError",
+    "message": "unsupported saved storage class numpy.dtype",
+    "traceback": "Traceback (most recent call last):\n  File \"/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_end_maps.py\", line 327, in main\n    J=Journal(base);result=run(manifest,J)\n  File \"/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_end_maps.py\", line 274, in run\n    restored[name]=J.call('restore/'+name,item,lambda p=target:decode(p.read_bytes()))\n  File \"/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_end_maps.py\", line 66, in call\n    try:result=fn()\n  File \"/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_end_maps.py\", line 274, in <lambda>\n    restored[name]=J.call('restore/'+name,item,lambda p=target:decode(p.read_bytes()))\n  File \"/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_end_maps.py\", line 56, in decode\n    def decode(raw):return SourceReader(io.BytesIO(raw)).load()\n  File \"/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_end_maps.py\", line 53, in find_class\n    require(module in ('builtins','collections') or module.startswith(('sympy.','numpy.')),'unsupported saved storage class '+module+'.'+name)\n  File \"/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_end_maps.py\", line 26, in require\n    error=ValueError(why);error.evidence=evidence;raise error\nValueError: unsupported saved storage class numpy.dtype\n",
+    "incompleteOperation": "restore/uniformResponse",
+    "finiteSolves": 0,
+    "wallSeconds": 3.68097897793632,
+    "completeOperations": 1,
+    "posthashesIntact": true,
+    "peakRssKiB": 72308,
+    "independentMethodClearance": false,
+    "physicalLossInterpretation": "RETAINED_ORDER_LOSS_INTERPRETATION_UNRESOLVED",
+    "automaticRetry": false
+  },
+  "completeFiles": {
+    "posthashes.json": {
+      "sha256": "f77cb349629e2260183bf4d6e55d511fc3a57d0634da41cdb06e464d4ba88715",
+      "bytes": 7905
+    },
+    "failure.json": {
+      "sha256": "a11144a6263dbcee73140a364972b578651ad1a6035a3de877b00dfb2d24e9d0",
+      "bytes": 1769
+    },
+    "checks.json": {
+      "sha256": "3f63529431ccc92dcffb0800da534652ea14110d5a7c8e28084a1f03b2d91550",
+      "bytes": 2029
+    },
+    "operations.sqlite": {
+      "sha256": "b0641695411c406c55bdd665ecbf1bd1e1b3cdceb6993344039aed7ef64e5e11",
+      "bytes": 106496
+    },
+    "active-operation.json": {
+      "sha256": "45986ae70a1cd8a87007485e9e526b6321feb18d47d4294699dfe9efca5fe302",
+      "bytes": 259
+    },
+    "artifact-index.json": {
+      "sha256": "d246186ebf08a620d0f0ca78981325e3e2989db68b1ecf0c6044762a697c76d8",
+      "bytes": 926
+    },
+    "operation-index.jsonl": {
+      "sha256": "caa6e96dd95251ece9d4e8ed2469fb70abac6661e4ffd99c01d9a30ccba2f080",
+      "bytes": 435
+    },
+    "inputs/uniformResponse": {
+      "sha256": "1d5bd9967d08c5ad01eab8707ea25af01cfb9bf61bfd83073ed898c9d76a772f",
+      "bytes": 543796
+    },
+    "inputs/uniformSource": {
+      "sha256": "a482c5023d16558f52b20d0a347d6e38f33f0f06f780abd256c5220f922b5571",
+      "bytes": 109308
+    }
+  },
+  "completeOperations": 1,
+  "numericalOperations": 0,
+  "peakBytes": 69623808,
+  "stdoutChecksIdentical": true,
+  "scientificStderrBytes": 0,
+  "actualInputAndSnapshotHashesIntact": true,
+  "correction": "Permit numpy.dtype and numpy.ndarray in addition to existing NumPy submodule classes; restore the one complete prior read and compare its exact argument bytes. No numerical formula, method or control changes.",
+  "authority": "User authorizes pure tooling fixes with local tests, no two-reviewer cycle or scientific retry."
+}

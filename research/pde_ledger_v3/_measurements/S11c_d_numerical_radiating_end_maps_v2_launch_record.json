@@ -1,0 +1,105 @@
+{
+  "status": "LAUNCH_AND_INITIAL_RESTORE_VERIFIED_RESULT_PENDING",
+  "inspectedUtc": "2026-09-30T16:11:54.665410+00:00",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/end-maps-v2",
+  "launch": {
+    "jobPid": 3572745,
+    "watcherPid": 3572746,
+    "gateSha256": "fe42d73b9a8e328a27e4278c012435067bcdda997b0317469305936f76eec3de",
+    "command": [
+      "/usr/bin/python3",
+      "/var/projects/toy_physics/scripts/s11c_guarded_run.py",
+      "--log-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/end-maps-v2/resource-guard",
+      "--",
+      "/usr/bin/python3",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/end-maps-v2",
+      "--stage",
+      "numerical_radiating_end_maps_v2",
+      "--",
+      "/usr/bin/python3",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_end_maps_v2.py",
+      "--manifest",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_end_maps_v2_inputs.json",
+      "--gate",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_end_maps_v2_gate.json",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/end-maps-v2/complete"
+    ],
+    "thread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+    "automaticRetry": false
+  },
+  "duration": {
+    "verified": true,
+    "actual": {
+      "Restart": "no",
+      "RuntimeMaxUSec": "infinity"
+    },
+    "wallDeadlineSeconds": null,
+    "inactivityDeadlineSeconds": null
+  },
+  "limits": {
+    "verified": true,
+    "actual": {
+      "memory.max": "2147483648",
+      "memory.swap.max": "0",
+      "pids.max": "32",
+      "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-dd157922c5b0.service",
+      "nice": 15,
+      "affinity": [
+        15
+      ],
+      "threads": {
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "VECLIB_MAXIMUM_THREADS": "1",
+        "BLIS_NUM_THREADS": "1"
+      }
+    }
+  },
+  "firstCompletedOperation": {
+    "name": "restore/uniformSource",
+    "input": {
+      "storage": "sqlite",
+      "member": "restore/uniformSource/input.pickle",
+      "sha256": "bfafb308cca78c036fde19027032e0663e6165454e5db356c2966c9a287764e8",
+      "bytes": 354
+    },
+    "return": {
+      "storage": "sqlite",
+      "member": "restore/uniformSource/return.pickle",
+      "sha256": "9377a8a2596a7d875a011014dd986ca4a894a0b82ccd6494da93f4f1b01d7c65",
+      "bytes": 94161
+    },
+    "seconds": 1.2357496949844062,
+    "status": "RESTORED_PRIOR_COMPLETE_RETURN",
+    "functionCalled": false,
+    "prior": {
+      "name": "restore/uniformSource",
+      "input": {
+        "storage": "sqlite",
+        "member": "restore/uniformSource/input.pickle",
+        "sha256": "bfafb308cca78c036fde19027032e0663e6165454e5db356c2966c9a287764e8",
+        "bytes": 354
+      },
+      "return": {
+        "storage": "sqlite",
+        "member": "restore/uniformSource/return.pickle",
+        "sha256": "9377a8a2596a7d875a011014dd986ca4a894a0b82ccd6494da93f4f1b01d7c65",
+        "bytes": 94161
+      },
+      "seconds": 1.6985830649500713,
+      "status": "COMPLETE"
+    }
+  },
+  "preservedPriorFiles": 9,
+  "startupObservation": "Passed previously failed uniformResponse restoration; restoring RIGHTPairing at the one startup snapshot.",
+  "scientificStderrBytesAtStartup": 0,
+  "automaticRetry": false,
+  "completion": "Silent local hook; no model polling. Actual result inspection remains required."
+}

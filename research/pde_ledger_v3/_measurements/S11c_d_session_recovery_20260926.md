@@ -1,3 +1,12 @@
+**Launch verified (2026-09-30 16:11 UTC):** end-maps-v2 is running under the
+shared guard and existing supervisor. RuntimeMaxUSec=infinity, Restart=no and
+actual memory/swap/CPU/task/thread enforcement passed. The one completed prior
+read was restored without calling its function; all nine earlier files were
+copied byte-for-byte. Startup passed the earlier uniformResponse loader failure
+and reached RIGHTPairing restoration; scientific stderr was empty. The local
+completion hook is armed. No polling; wait for completion/error. No current/face,
+end-map or deficit result is accepted yet. See end_maps_v2_launch_record.json.
+
 **Startup tooling correction (2026-09-30):** end-maps-01 stopped after one
 completed source restoration because the new loader omitted numpy.dtype from
 its allowed storage classes. No numerical operation ran. All pins/snapshots and

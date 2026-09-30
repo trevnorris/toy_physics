@@ -1,3 +1,18 @@
+**STOPPED — central omega-3 uniform-action accuracy check (2026-09-30):**
+V4 completed 36 operations (12 restored,24 new) in5h16m10s. The expensive
+selected middle-integral comparison passed (maxdifference2.325e-12); both
+sheet/Jacobian controls responded. Three of four Gaussian uniform-action
+comparisons pass, but momentum0.6/inputcolumn4 exceeds the unchanged tolerance
+at two entries: worst relative difference2.351ppm,2.3459times the local limit.
+This is an actual accuracy-control failure, with cause unresolved, not a loss
+measurement or tooling diagnosis. Zero finite solves; neighbors2.3/4 stopped.
+No retry, validator or new job was launched. Preserve all36 returns and the
+independent references for any separately directed focused convergence check.
+Peak260.973MiB, no swap/events/time limit;76 input hashes,47 snapshots,25 v2
+copies and39 v3 files intact; strict stderr empty,stdout/checks identical.
+See S11c_d_numerical_radiating_pilot_v4_checkpoint.json and report. Physical
+loss/calibration/Green/FORM/A11/A12 stay open; exactomega1 remains parked.
+
 **LAUNCH VERIFIED — central-pilot-v4 (2026-09-30):**
 The array-comparison correction is committed at a4ea8213 and running under
 the shared guard/supervisor. RuntimeMaxUSec=infinity, Restart=no and actual

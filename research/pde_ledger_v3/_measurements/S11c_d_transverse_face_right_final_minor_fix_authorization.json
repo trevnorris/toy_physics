@@ -1,0 +1,12 @@
+{
+  "status": "USER_AUTHORIZED_MINOR_FIXES_THEN_SAME_FINAL_RUN",
+  "recordedUtc": "2026-09-30T00:36:53.893249+00:00",
+  "userReply": "If it only needs minor fixes then fix it then run it",
+  "scope": "After both current reports finish, apply and verify minor fixes and proceed with the same final RIGHT continuation under existing run/resource authorization. Material changes to mathematics, validity checks or scope remain a blocker. No automatic scientific retry or expanded method.",
+  "reviewedPacketSha256": "6a5329f3bc998142e96fc863cb1c0b0012962b70155c985e5fd25419e57041ae",
+  "preserveLiteralVerdicts": true,
+  "localFixIsNotFreshIndependentClearance": true,
+  "preserveReviewedBytesBeforeCorrections": true,
+  "maximumNewScientificExecutions": 1,
+  "stopAfterResults": true
+}

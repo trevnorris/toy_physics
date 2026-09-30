@@ -1,0 +1,50 @@
+{
+  "status": "USER_DIRECTED_FINAL_RIGHT_END_CONTINUATION",
+  "recordedUtc": "2026-09-30T00:22:37.843550+00:00",
+  "userReply": "So be safe and give it 16 GB. I'll make sure nothing else runs on the box until this is complete.",
+  "runtimeReply": "I give permission for running them longer than the normal limit. allow them to run as long as necessary as long as they are making progress",
+  "priorityReply": "Resume with desktop-managed priority",
+  "scopeInterpretation": "Latest user-directed combined JSON-comparison and exact coefficient-extraction repair; one review round and at most one final run.",
+  "scientificExecutionOrdinal": 7,
+  "originalExecutionsUsed": 6,
+  "maximumNewScientificExecutions": 1,
+  "seconds": 0,
+  "nativeSeconds": 0,
+  "progressStallSeconds": 3600,
+  "guardBookkeepingGraceSeconds": 60,
+  "memoryBytes": 17179869184,
+  "memoryUnitInterpretation": "16 GiB in both cgroup and native RLIMIT_AS",
+  "swapBytes": 0,
+  "cpuCount": 1,
+  "priorityPolicy": "DESKTOP_MANAGED",
+  "tasksMax": 32,
+  "nativeThreads": 1,
+  "minimumHostAvailableBytes": 4294967296,
+  "automaticRetry": false,
+  "stopAfterResults": true,
+  "independentBuildReviewRequired": true,
+  "exactExternalPacketConsentRequired": true,
+  "sourceCheckpoint": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_fixed_point_continue_checkpoint.json",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_fixed_point_continue_checkpoint.json",
+    "bytes": 24602,
+    "sha256": "48740bc4cc5fc4014945e511e2096a8ecc4b7407325159a7d5bc436dc0e1f17e"
+  },
+  "originalAuthorization": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_fixed_point_continue_authorization.json",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_fixed_point_continue_authorization.json",
+    "bytes": 1769,
+    "sha256": "34020b86a5f36175478f86f8a3963a1d1beb4c37fb341e2c3a4ed1e2d498e6c9"
+  },
+  "finalAttempt": true,
+  "maximumReviewRounds": 1,
+  "stopIfNotCleared": true,
+  "stopIfRightNotFinished": true,
+  "latestUserInstruction": "Prepare one RIGHT continuation: compare summaries after the same JSON encoder round-trip, persist differences and stop on mismatch, replace full-domain Poly extraction, keep 16 GiB, finish RIGHT, one fresh Claude/Grok round then one run; stop with results. If it fails, retain REFERENCE/LEFT support and RIGHT unresolved.",
+  "previousAuthorization": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_right_finish_authorization.json",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_right_finish_authorization.json",
+    "bytes": 2030,
+    "sha256": "e8d571e7794bbfdc57444dabe4c66a438e5d785e9b9f55c56d5b8d6958f69ca7"
+  }
+}

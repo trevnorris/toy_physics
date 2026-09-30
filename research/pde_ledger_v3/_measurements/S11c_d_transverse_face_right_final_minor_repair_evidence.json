@@ -1,0 +1,237 @@
+{
+  "status": "SOURCE_JSON_PICKLE_OPCODE_METADATA_ONLY_NO_RESTORATION",
+  "savedDomains": [
+    {
+      "end": "REFERENCE",
+      "path": "/faces/0/eWPresenceCalibration/frequencyDomain",
+      "value": "1 > 0"
+    },
+    {
+      "end": "REFERENCE",
+      "path": "/faces/1/eWPresenceCalibration/frequencyDomain",
+      "value": "1 > 0"
+    },
+    {
+      "end": "REFERENCE",
+      "path": "/faces/2/eWPresenceCalibration/frequencyDomain",
+      "value": "1 > 0"
+    },
+    {
+      "end": "REFERENCE",
+      "path": "/faces/3/eWPresenceCalibration/frequencyDomain",
+      "value": "1 > 0"
+    },
+    {
+      "end": "LEFT",
+      "path": "/faces/0/eWPresenceCalibration/frequencyDomain",
+      "value": "1 > 0"
+    },
+    {
+      "end": "LEFT",
+      "path": "/faces/1/eWPresenceCalibration/frequencyDomain",
+      "value": "1 > 0"
+    },
+    {
+      "end": "LEFT",
+      "path": "/faces/2/eWPresenceCalibration/frequencyDomain",
+      "value": "1 > 0"
+    },
+    {
+      "end": "LEFT",
+      "path": "/faces/3/eWPresenceCalibration/frequencyDomain",
+      "value": "1 > 0"
+    }
+  ],
+  "opcodes": [
+    {
+      "end": "REFERENCE",
+      "source": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/objects/db8dbe9085fe35269b9f836ad739fe4fdf769fe45f3b4d263ef556866e609d2c.pickle",
+        "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/objects/db8dbe9085fe35269b9f836ad739fe4fdf769fe45f3b4d263ef556866e609d2c.pickle",
+        "bytes": 145035,
+        "sha256": "db8dbe9085fe35269b9f836ad739fe4fdf769fe45f3b4d263ef556866e609d2c"
+      },
+      "window": [
+        {
+          "op": "SHORT_BINUNICODE",
+          "arg": "sympy.core.relational",
+          "offset": 40971
+        },
+        {
+          "op": "MEMOIZE",
+          "arg": null,
+          "offset": 40994
+        },
+        {
+          "op": "SHORT_BINUNICODE",
+          "arg": "StrictGreaterThan",
+          "offset": 40995
+        },
+        {
+          "op": "MEMOIZE",
+          "arg": null,
+          "offset": 41014
+        },
+        {
+          "op": "STACK_GLOBAL",
+          "arg": null,
+          "offset": 41015
+        },
+        {
+          "op": "MEMOIZE",
+          "arg": null,
+          "offset": 41016
+        },
+        {
+          "op": "BINGET",
+          "arg": 40,
+          "offset": 41017
+        },
+        {
+          "op": "BINGET",
+          "arg": 241,
+          "offset": 41019
+        },
+        {
+          "op": "TUPLE2",
+          "arg": null,
+          "offset": 41021
+        },
+        {
+          "op": "MEMOIZE",
+          "arg": null,
+          "offset": 41022
+        },
+        {
+          "op": "NEWOBJ",
+          "arg": null,
+          "offset": 41023
+        },
+        {
+          "op": "MEMOIZE",
+          "arg": null,
+          "offset": 41024
+        },
+        {
+          "op": "SHORT_BINUNICODE",
+          "arg": "presenceCalibrationSupported",
+          "offset": 41025
+        }
+      ]
+    },
+    {
+      "end": "LEFT",
+      "source": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/objects/4fa091b1df6d497ffeabe081edde187f7d21b8c7b191b9d9f5f5fdf6759ac698.pickle",
+        "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/objects/4fa091b1df6d497ffeabe081edde187f7d21b8c7b191b9d9f5f5fdf6759ac698.pickle",
+        "bytes": 138295,
+        "sha256": "4fa091b1df6d497ffeabe081edde187f7d21b8c7b191b9d9f5f5fdf6759ac698"
+      },
+      "window": [
+        {
+          "op": "SHORT_BINUNICODE",
+          "arg": "sympy.core.relational",
+          "offset": 39259
+        },
+        {
+          "op": "MEMOIZE",
+          "arg": null,
+          "offset": 39282
+        },
+        {
+          "op": "SHORT_BINUNICODE",
+          "arg": "StrictGreaterThan",
+          "offset": 39283
+        },
+        {
+          "op": "MEMOIZE",
+          "arg": null,
+          "offset": 39302
+        },
+        {
+          "op": "STACK_GLOBAL",
+          "arg": null,
+          "offset": 39303
+        },
+        {
+          "op": "MEMOIZE",
+          "arg": null,
+          "offset": 39304
+        },
+        {
+          "op": "BINGET",
+          "arg": 40,
+          "offset": 39305
+        },
+        {
+          "op": "BINGET",
+          "arg": 241,
+          "offset": 39307
+        },
+        {
+          "op": "TUPLE2",
+          "arg": null,
+          "offset": 39309
+        },
+        {
+          "op": "MEMOIZE",
+          "arg": null,
+          "offset": 39310
+        },
+        {
+          "op": "NEWOBJ",
+          "arg": null,
+          "offset": 39311
+        },
+        {
+          "op": "MEMOIZE",
+          "arg": null,
+          "offset": 39312
+        },
+        {
+          "op": "SHORT_BINUNICODE",
+          "arg": "presenceCalibrationSupported",
+          "offset": 39313
+        }
+      ]
+    }
+  ],
+  "sourceExcerpts": [
+    {
+      "source": {
+        "path": "/home/trevnorris/.local/lib/python3.10/site-packages/sympy/core/basic.py",
+        "canonicalPath": "/home/trevnorris/.local/lib/python3.10/site-packages/sympy/core/basic.py",
+        "bytes": 76789,
+        "sha256": "23366fb3b88870cbd5f3f6ad85d3819c8bc1609837f2486e3b67c026d77bb931"
+      },
+      "firstLine": 299,
+      "lastLine": 313,
+      "text": "    def __getnewargs__(self):\n        return self.args\n\n    def __getstate__(self):\n        return None\n\n    def __setstate__(self, state):\n        for name, value in state.items():\n            setattr(self, name, value)\n\n    def __reduce_ex__(self, protocol):\n        if protocol < 2:\n            msg = \"Only pickle protocol 2 or higher is supported by SymPy\"\n            raise NotImplementedError(msg)\n        return super().__reduce_ex__(protocol)"
+    },
+    {
+      "source": {
+        "path": "/home/trevnorris/.local/lib/python3.10/site-packages/sympy/core/relational.py",
+        "canonicalPath": "/home/trevnorris/.local/lib/python3.10/site-packages/sympy/core/relational.py",
+        "bytes": 51896,
+        "sha256": "86d6c64f4bafce8603d3b43afe1753d220c3b27b343432366a69745bc9ad0203"
+      },
+      "firstLine": 836,
+      "lastLine": 872,
+      "text": "    def __new__(cls, lhs, rhs, **options):\n\n        try:\n            lhs = _sympify(lhs)\n            rhs = _sympify(rhs)\n        except SympifyError:\n            return NotImplemented\n\n        evaluate = options.pop('evaluate', global_parameters.evaluate)\n        if evaluate:\n            for me in (lhs, rhs):\n                if me.is_extended_real is False:\n                    raise TypeError(\"Invalid comparison of non-real %s\" % me)\n                if me is S.NaN:\n                    raise TypeError(\"Invalid NaN comparison\")\n            # First we invoke the appropriate inequality method of `lhs`\n            # (e.g., `lhs.__lt__`).  That method will try to reduce to\n            # boolean or raise an exception.  It may keep calling\n            # superclasses until it reaches `Expr` (e.g., `Expr.__lt__`).\n            # In some cases, `Expr` will just invoke us again (if neither it\n            # nor a subclass was able to reduce to boolean or raise an\n            # exception).  In that case, it must call us with\n            # `evaluate=False` to prevent infinite recursion.\n            return cls._eval_relation(lhs, rhs, **options)\n\n        # make a \"non-evaluated\" Expr for the inequality\n        return Relational.__new__(cls, lhs, rhs, **options)\n\n    @classmethod\n    def _eval_relation(cls, lhs, rhs, **options):\n        val = cls._eval_fuzzy_relation(lhs, rhs)\n        if val is None:\n            return cls(lhs, rhs, evaluate=False)\n        else:\n            return _sympify(val)\n\n"
+    },
+    {
+      "source": {
+        "path": "/usr/lib/python3.10/pickle.py",
+        "canonicalPath": "/usr/lib/python3.10/pickle.py",
+        "bytes": 64949,
+        "sha256": "f29792b7bad19b9b7a6096aae01e9a6a0a3ec28029576af74efc530ee331c412"
+      },
+      "firstLine": 1511,
+      "lastLine": 1516,
+      "text": "    def load_newobj(self):\n        args = self.stack.pop()\n        cls = self.stack.pop()\n        obj = cls.__new__(cls, *args)\n        self.append(obj)\n    dispatch[NEWOBJ[0]] = load_newobj"
+    }
+  ],
+  "scientificImports": 0,
+  "scientificPayloadRestorations": 0,
+  "interpretation": "Stored StrictGreaterThan uses NEWOBJ; SymPy __getnewargs__ saves arguments without evaluate=False; default inequality constructor evaluates. This supports a narrow structural restoration repair, not proof that this is every summary difference."
+}

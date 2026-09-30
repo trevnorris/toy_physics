@@ -1,3 +1,44 @@
+**User permits minor fixes before the final run (2026-09-29):** “If it only
+needs minor fixes then fix it then run it.” After both current review reports
+finish, minor fixes may be applied and verified under the existing final-run
+approval. Material changes to mathematics, validity checks or scope remain a
+blocker. Preserve reviewed bytes and literal verdicts; local fixes are not a
+fresh independent CLEAR. One scientific run only, no automatic retry or scope
+expansion. The original submitted packet remains unchanged; this later user
+instruction supersedes the earlier blanket stop on any requested correction.
+Authority is recorded in `S11c_d_transverse_face_right_final_minor_fix_authorization.json`.
+
+**Final RIGHT packet submitted (2026-09-29):** the user replied “I approve”
+to the exact 82-file / 4,119,657-byte packet, SHA256
+`6a5329f3bc998142e96fc863cb1c0b0012962b70155c985e5fd25419e57041ae`.
+All packet/source/archive hashes verified; fresh independent Claude/Grok reviews
+launched with the silent local completion hook armed for this session. No
+scientific run or gate yet. Wait for both literal reports before adjudication
+or editing. One review round only; existing user direction covers at most one
+final RIGHT run after substantive independent clearance. A blocker or failed
+run ends this attempt; no standalone diagnostic, retry or extra review cycle.
+
+**One final combined RIGHT continuation prepared (2026-09-29):** the user
+requested one review round and at most one run, with no standalone diagnostic
+or further tooling cycle. New `S11c_d_transverse_face_right_final.py` compares
+persisted JSON forms, saves both summaries and exact differing paths before a
+remaining mismatch stops, and replaces new full-domain Poly carrier extraction
+with exact epsilon-only coefficient convolution. Existing reconstruction and
+physical checks stay unchanged; completed returns are restored. Execution 6's
+cause is not assumed to be a container mismatch: the renderer already normalizes
+common containers. All old source/results remain intact.
+
+Source/hash/JSON and synthetic arithmetic checks passed without scientific
+imports or payload restoration. One fresh Claude/Grok packet is prepared:
+82 files / 4,119,657 bytes, SHA256
+`6a5329f3bc998142e96fc863cb1c0b0012962b70155c985e5fd25419e57041ae`.
+Exact submission consent is pending; no reviewer, science gate or job launched.
+This would be scientific execution 7, with the approved 16 GiB/progress-based
+limits and desktop-managed priority. If review blocks or RIGHT stays unfinished,
+stop with the selected REFERENCE/LEFT evidence and RIGHT unresolved. Scope,
+authority, static checks and packet record use the `right_final` prefix. No new
+loss/omega3/field/power work, calibration or A11/A12 claim is authorized.
+
 # S11c-d session recovery — 2026-09-26
 
 **Execution6 stopped restoring the reference-face summary (2026-09-29):**

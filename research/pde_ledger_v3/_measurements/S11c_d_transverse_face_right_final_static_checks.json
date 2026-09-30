@@ -1,0 +1,105 @@
+{
+  "status": "SOURCE_JSON_HASH_AND_SYNTHETIC_ARITHMETIC_ONLY",
+  "recordedUtc": "2026-09-30T00:24:43.584732+00:00",
+  "workerSha256": "d413be30b95ee5cd599a0e317a1a0cda1eee553ad2643e5c3f92c9f89708c2e1",
+  "guardSha256": "587061fdd6a30748e6d1520020248882237586b10fc34aeab1e91c8db24cdca2",
+  "manifestSha256": "576c1093493abbf23e42e94fcd3dff8b4e5cc6fc1de51e6363d00d51bb2b3d06",
+  "testSourceSha256": "6fafa22ed9dc481ed883633e8bc9aa2dac6bafb1e82b4cc412094a70e6eaab57",
+  "allChecksPassed": true,
+  "inputPins": 1370,
+  "checks": 1408,
+  "changedFunctions": [
+    "construct",
+    "epsilon_coefficients",
+    "extract",
+    "grade",
+    "json_bytes",
+    "json_differences",
+    "main",
+    "multiply",
+    "reject_constant",
+    "reuse_summary",
+    "save",
+    "strict_json",
+    "verify_failed_attempt",
+    "visit"
+  ],
+  "nonInputChecks": {
+    "bounded-function-delta": true,
+    "unchanged-faces": true,
+    "unchanged-saved_seed": true,
+    "unchanged-bound_end": true,
+    "unchanged-show": true,
+    "unchanged-same": true,
+    "unchanged-bind": true,
+    "unchanged-loaded_control": true,
+    "unchanged-numeric": true,
+    "unchanged-numerical_face_legs": true,
+    "unchanged-face_address_census": true,
+    "unchanged-op": true,
+    "unchanged-restore_suboperation": true,
+    "unchanged-configure_prior": true,
+    "unchanged-configure_resume": true,
+    "unchanged-containment": true,
+    "no-executable-Poly-call": true,
+    "exact-synthetic-zero": true,
+    "exact-synthetic-constant": true,
+    "exact-synthetic-linear": true,
+    "exact-synthetic-mixed-degrees": true,
+    "exact-synthetic-cross-terms": true,
+    "exact-synthetic-high-power": true,
+    "exact-synthetic-epsilon-high-only": true,
+    "exact-synthetic-opaque-grades": true,
+    "reject-denominator": true,
+    "reject-function": true,
+    "same-encoder-roundtrip": true,
+    "persisted-differing-paths": true,
+    "both-mismatch-summaries-exist": true,
+    "no-published-success-summary-after-mismatch": true,
+    "reject-fresh-nan": true,
+    "reject-fresh-infinity": true,
+    "reject-saved-{\"bad\":NaN}": true,
+    "reject-saved-{\"bad\":Infinity}": true,
+    "only-duration-identity-guard-change": true,
+    "shared-guard-unchanged": true,
+    "protected-builder-suffix": true
+  },
+  "syntheticWrapper": {
+    "success": {
+      "calls": [
+        55,
+        56
+      ],
+      "restored": [
+        "carrier-entry-000052-input",
+        "carrier-entry-000052-return",
+        "carrier-entry-000053-input",
+        "carrier-entry-000053-return",
+        "carrier-entry-000054-input",
+        "carrier-entry-000054-return",
+        "carrier-entry-000055-input"
+      ]
+    },
+    "mutation": {
+      "refused": true,
+      "calls": []
+    }
+  },
+  "failedAttemptPreservation": {
+    "root": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/right-finish/complete",
+    "files": 1441,
+    "artifactIndex": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/right-finish/complete/artifact-index.json",
+      "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/right-finish/complete/artifact-index.json",
+      "bytes": 873878,
+      "sha256": "b0781c8d473946056b5de1324ae9bf28d1a5ef22245f58bb58862c4cc92c8ed8"
+    },
+    "completeRestoredReturns": 13,
+    "newScientificReturns": 0,
+    "preservedInPlace": true
+  },
+  "scientificImports": 0,
+  "payloadRestorations": 0,
+  "workerImportedOrLaunched": false,
+  "independentClearance": false
+}

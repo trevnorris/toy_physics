@@ -1,0 +1,1127 @@
+{
+  "status": "BOUNDED_CENTRAL_CURRENT_FACE_END_MAPS_SUPPORTED",
+  "inspectedUtc": "2026-09-30T16:17:07.136976+00:00",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/end-maps-v2",
+  "checks": {
+    "status": "CENTRAL_CURRENT_FACE_TRACE_MAPS_SUPPORTED_INTEGRATION_ASSEMBLY_PENDING",
+    "frequency": 3,
+    "case": "LAB_HELD/RHO4_CONSTANT",
+    "summary": [
+      {
+        "end": "LEFT",
+        "contrast": 1.0,
+        "status": "NUMERICAL_TRANSVERSE_CURRENT_FACE_TRACE_SUPPORTED",
+        "traceCondition": 5.891138830382961,
+        "traceResidual": 1.724459009180466e-16,
+        "incomingDirections": 2,
+        "outgoingDirections": 5,
+        "transverseDirections": 4,
+        "reusedUnchangedCompletedMap": false
+      },
+      {
+        "end": "LEFT",
+        "contrast": 0.5,
+        "status": "NUMERICAL_TRANSVERSE_CURRENT_FACE_TRACE_SUPPORTED",
+        "traceCondition": 5.891138830382961,
+        "traceResidual": 1.724459009180466e-16,
+        "incomingDirections": 2,
+        "outgoingDirections": 5,
+        "transverseDirections": 4,
+        "reusedUnchangedCompletedMap": true
+      },
+      {
+        "end": "LEFT",
+        "contrast": 0.25,
+        "status": "NUMERICAL_TRANSVERSE_CURRENT_FACE_TRACE_SUPPORTED",
+        "traceCondition": 5.891138830382961,
+        "traceResidual": 1.724459009180466e-16,
+        "incomingDirections": 2,
+        "outgoingDirections": 5,
+        "transverseDirections": 4,
+        "reusedUnchangedCompletedMap": true
+      },
+      {
+        "end": "LEFT",
+        "contrast": 0.0,
+        "status": "NUMERICAL_TRANSVERSE_CURRENT_FACE_TRACE_SUPPORTED",
+        "traceCondition": 5.891138830382961,
+        "traceResidual": 1.724459009180466e-16,
+        "incomingDirections": 2,
+        "outgoingDirections": 5,
+        "transverseDirections": 4,
+        "reusedUnchangedCompletedMap": true
+      },
+      {
+        "end": "RIGHT",
+        "contrast": 1.0,
+        "status": "NUMERICAL_TRANSVERSE_CURRENT_FACE_TRACE_SUPPORTED",
+        "traceCondition": 5.8582118775528045,
+        "traceResidual": 2.0323940306420782e-16,
+        "incomingDirections": 2,
+        "outgoingDirections": 5,
+        "transverseDirections": 4,
+        "reusedUnchangedCompletedMap": false
+      },
+      {
+        "end": "RIGHT",
+        "contrast": 0.5,
+        "status": "NUMERICAL_TRANSVERSE_CURRENT_FACE_TRACE_SUPPORTED",
+        "traceCondition": 5.8745085296348885,
+        "traceResidual": 3.6607711873459976e-16,
+        "incomingDirections": 2,
+        "outgoingDirections": 5,
+        "transverseDirections": 4,
+        "reusedUnchangedCompletedMap": false
+      },
+      {
+        "end": "RIGHT",
+        "contrast": 0.25,
+        "status": "NUMERICAL_TRANSVERSE_CURRENT_FACE_TRACE_SUPPORTED",
+        "traceCondition": 5.882766452515557,
+        "traceResidual": 1.4701063653324867e-16,
+        "incomingDirections": 2,
+        "outgoingDirections": 5,
+        "transverseDirections": 4,
+        "reusedUnchangedCompletedMap": false
+      },
+      {
+        "end": "RIGHT",
+        "contrast": 0.0,
+        "status": "NUMERICAL_TRANSVERSE_CURRENT_FACE_TRACE_SUPPORTED",
+        "traceCondition": 5.891095867866094,
+        "traceResidual": 3.5453131206075024e-16,
+        "incomingDirections": 2,
+        "outgoingDirections": 5,
+        "transverseDirections": 4,
+        "reusedUnchangedCompletedMap": false
+      }
+    ],
+    "finiteSolves": 0,
+    "scope": "Finite numerical end conditions only. No field, deficit or physical leakage claim.",
+    "wallSeconds": 101.30922109202947,
+    "completeOperations": 79,
+    "restoredOperations": 1,
+    "posthashesIntact": true,
+    "peakRssKiB": 107396,
+    "independentMethodClearance": false,
+    "physicalLossInterpretation": "RETAINED_ORDER_LOSS_INTERPRETATION_UNRESOLVED",
+    "automaticRetry": false
+  },
+  "resources": {
+    "workerSeconds": 101.30922109202947,
+    "peakCgroupBytes": 115736576,
+    "swapBytes": 0,
+    "memoryEvents": 0,
+    "minimumHostAvailableBytes": 16228642816,
+    "duration": {
+      "verified": true,
+      "actual": {
+        "Restart": "no",
+        "RuntimeMaxUSec": "infinity"
+      },
+      "wallDeadlineSeconds": null,
+      "inactivityDeadlineSeconds": null
+    },
+    "limits": {
+      "verified": true,
+      "actual": {
+        "memory.max": "2147483648",
+        "memory.swap.max": "0",
+        "pids.max": "32",
+        "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-dd157922c5b0.service",
+        "nice": 15,
+        "affinity": [
+          15
+        ],
+        "threads": {
+          "OPENBLAS_NUM_THREADS": "1",
+          "OMP_NUM_THREADS": "1",
+          "MKL_NUM_THREADS": "1",
+          "NUMEXPR_NUM_THREADS": "1",
+          "VECLIB_MAXIMUM_THREADS": "1",
+          "BLIS_NUM_THREADS": "1"
+        }
+      }
+    }
+  },
+  "integrity": {
+    "posthashes": 40,
+    "sourceSnapshots": 24,
+    "priorCopies": 9,
+    "journalOperations": 79,
+    "sqliteBlobs": 159,
+    "restoredFunctionsCalled": false,
+    "actualOpaqueBytesAndReceiptHashesVerified": true,
+    "scientificStderrBytes": 0,
+    "stdoutChecksByteIdentical": true
+  },
+  "candidateSummaries": [
+    {
+      "index": 1,
+      "kind": "evanescent",
+      "direction": "outgoing",
+      "k": {
+        "real": -0.0029847463632115784,
+        "imag": -3.9045551930779734
+      },
+      "physicalQ": {
+        "real": -3.9096740570640285,
+        "imag": 0.002980838489960982
+      },
+      "currentEigenvalues": null,
+      "slabGram": [
+        [
+          {
+            "real": -0.001585410734423336,
+            "imag": 6.071532165918825e-18
+          }
+        ]
+      ],
+      "maxFaceProjection": 0.0
+    },
+    {
+      "index": 16,
+      "kind": "transverse",
+      "direction": "incoming",
+      "k": {
+        "real": 2.439262183530097,
+        "imag": -3.805496546278189e-17
+      },
+      "physicalQ": {
+        "real": 3.1346265385375027e-17,
+        "imag": 2.4310491562286467
+      },
+      "currentEigenvalues": [
+        5.4883399129427195,
+        5.682662306445133
+      ],
+      "slabGram": [
+        [
+          {
+            "real": 5.653734955746461,
+            "imag": -6.938893903907228e-18
+          },
+          {
+            "real": -0.06915660440166062,
+            "imag": 0.0013433073505079787
+          }
+        ],
+        [
+          {
+            "real": -0.06915660440166098,
+            "imag": -0.0013433073505079926
+          },
+          {
+            "real": 5.517267263641392,
+            "imag": 6.938893903907228e-18
+          }
+        ]
+      ],
+      "maxFaceProjection": 4.629957086515473e-14
+    },
+    {
+      "index": 17,
+      "kind": "transverse",
+      "direction": "outgoing",
+      "k": {
+        "real": -2.439262183530097,
+        "imag": 3.805496546278189e-17
+      },
+      "physicalQ": {
+        "real": 3.1346265385375027e-17,
+        "imag": 2.4310491562286467
+      },
+      "currentEigenvalues": [
+        -5.682662306445133,
+        -5.4883399129427195
+      ],
+      "slabGram": [
+        [
+          {
+            "real": -5.653734955746461,
+            "imag": 6.938893903907228e-18
+          },
+          {
+            "real": 0.06915660440166062,
+            "imag": -0.0013433073505079787
+          }
+        ],
+        [
+          {
+            "real": 0.06915660440166098,
+            "imag": 0.0013433073505079926
+          },
+          {
+            "real": -5.517267263641392,
+            "imag": -6.938893903907228e-18
+          }
+        ]
+      ],
+      "maxFaceProjection": 4.629957086515473e-14
+    },
+    {
+      "index": 5,
+      "kind": "evanescent",
+      "direction": "outgoing",
+      "k": {
+        "real": -0.7779939319180652,
+        "imag": -5.280583344245016e-05
+      },
+      "physicalQ": {
+        "real": -5.464222705019117e-05,
+        "imag": 0.7518474302002022
+      },
+      "currentEigenvalues": null,
+      "slabGram": [
+        [
+          {
+            "real": -4.513071228849618,
+            "imag": -2.7755575615628914e-17
+          }
+        ]
+      ],
+      "maxFaceProjection": 0.0
+    },
+    {
+      "index": 7,
+      "kind": "evanescent",
+      "direction": "outgoing",
+      "k": {
+        "real": -3.342176555179341,
+        "imag": -0.003880705650435731
+      },
+      "physicalQ": {
+        "real": -0.0038876727120208225,
+        "imag": 3.3361870721098987
+      },
+      "currentEigenvalues": null,
+      "slabGram": [
+        [
+          {
+            "real": -9.62831943836465,
+            "imag": 1.3877787807814457e-17
+          }
+        ]
+      ],
+      "maxFaceProjection": 0.0
+    },
+    {
+      "index": 0,
+      "kind": "evanescent",
+      "direction": "outgoing",
+      "k": {
+        "real": 0.0029847463632115194,
+        "imag": 3.9045551930779734
+      },
+      "physicalQ": {
+        "real": -3.9096740570640285,
+        "imag": 0.002980838489960923
+      },
+      "currentEigenvalues": null,
+      "slabGram": [
+        [
+          {
+            "real": 0.0015855425155384664,
+            "imag": 2.6454533008646308e-17
+          }
+        ]
+      ],
+      "maxFaceProjection": 0.0
+    },
+    {
+      "index": 16,
+      "kind": "transverse",
+      "direction": "outgoing",
+      "k": {
+        "real": 2.439262183530097,
+        "imag": -3.805999945134534e-17
+      },
+      "physicalQ": {
+        "real": 3.1351316295143155e-17,
+        "imag": 2.4310491562286467
+      },
+      "currentEigenvalues": [
+        5.488339912942721,
+        5.682673650094752
+      ],
+      "slabGram": [
+        [
+          {
+            "real": 5.543971019775412,
+            "imag": 0.0
+          },
+          {
+            "real": 0.08781540244953027,
+            "imag": 0.0021531228244964524
+          }
+        ],
+        [
+          {
+            "real": 0.08781540244953041,
+            "imag": -0.0021531228244964524
+          },
+          {
+            "real": 5.6270425432620605,
+            "imag": 2.168404344971009e-19
+          }
+        ]
+      ],
+      "maxFaceProjection": 4.2346344567388155e-14
+    },
+    {
+      "index": 17,
+      "kind": "transverse",
+      "direction": "incoming",
+      "k": {
+        "real": -2.439262183530097,
+        "imag": 3.805999945134534e-17
+      },
+      "physicalQ": {
+        "real": 3.1351316295143155e-17,
+        "imag": 2.4310491562286467
+      },
+      "currentEigenvalues": [
+        -5.682673650094752,
+        -5.488339912942721
+      ],
+      "slabGram": [
+        [
+          {
+            "real": -5.543971019775412,
+            "imag": 0.0
+          },
+          {
+            "real": -0.08781540244953027,
+            "imag": -0.0021531228244964524
+          }
+        ],
+        [
+          {
+            "real": -0.08781540244953041,
+            "imag": 0.0021531228244964524
+          },
+          {
+            "real": -5.6270425432620605,
+            "imag": -2.168404344971009e-19
+          }
+        ]
+      ],
+      "maxFaceProjection": 4.2346344567388155e-14
+    },
+    {
+      "index": 4,
+      "kind": "evanescent",
+      "direction": "outgoing",
+      "k": {
+        "real": 0.7779939319180652,
+        "imag": 5.280583344232966e-05
+      },
+      "physicalQ": {
+        "real": -5.464222705006648e-05,
+        "imag": 0.7518474302002022
+      },
+      "currentEigenvalues": null,
+      "slabGram": [
+        [
+          {
+            "real": 4.513129882907459,
+            "imag": -8.326672684688674e-17
+          }
+        ]
+      ],
+      "maxFaceProjection": 0.0
+    },
+    {
+      "index": 6,
+      "kind": "evanescent",
+      "direction": "outgoing",
+      "k": {
+        "real": 3.3421765551793405,
+        "imag": 0.0038807056504355907
+      },
+      "physicalQ": {
+        "real": -0.003887672712020681,
+        "imag": 3.3361870721098983
+      },
+      "currentEigenvalues": null,
+      "slabGram": [
+        [
+          {
+            "real": 9.6283487646775,
+            "imag": -2.7755575615628914e-17
+          }
+        ]
+      ],
+      "maxFaceProjection": 0.0
+    },
+    {
+      "index": 0,
+      "kind": "evanescent",
+      "direction": "outgoing",
+      "k": {
+        "real": 0.0029683464800397156,
+        "imag": 3.9085117106882925
+      },
+      "physicalQ": {
+        "real": -3.9136253997510893,
+        "imag": 0.0029644679277054707
+      },
+      "currentEigenvalues": null,
+      "slabGram": [
+        [
+          {
+            "real": 0.0015754674049625488,
+            "imag": 1.3444106938820255e-17
+          }
+        ]
+      ],
+      "maxFaceProjection": 0.0
+    },
+    {
+      "index": 16,
+      "kind": "transverse",
+      "direction": "outgoing",
+      "k": {
+        "real": 2.4423349483639663,
+        "imag": -3.7914942965327114e-17
+      },
+      "physicalQ": {
+        "real": 3.123170618325039e-17,
+        "imag": 2.43413228892762
+      },
+      "currentEigenvalues": [
+        5.495253633818927,
+        5.68931176371339
+      ],
+      "slabGram": [
+        [
+          {
+            "real": 5.550805843713729,
+            "imag": 0.0
+          },
+          {
+            "real": 0.08769086122166125,
+            "imag": 0.00215006923078926
+          }
+        ],
+        [
+          {
+            "real": 0.08769086122166135,
+            "imag": -0.00215006923078926
+          },
+          {
+            "real": 5.633759553818588,
+            "imag": 0.0
+          }
+        ]
+      ],
+      "maxFaceProjection": 4.212116002945791e-14
+    },
+    {
+      "index": 17,
+      "kind": "transverse",
+      "direction": "incoming",
+      "k": {
+        "real": -2.4423349483639663,
+        "imag": 3.7914942965327114e-17
+      },
+      "physicalQ": {
+        "real": 3.123170618325039e-17,
+        "imag": 2.43413228892762
+      },
+      "currentEigenvalues": [
+        -5.68931176371339,
+        -5.495253633818927
+      ],
+      "slabGram": [
+        [
+          {
+            "real": -5.550805843713729,
+            "imag": 0.0
+          },
+          {
+            "real": -0.08769086122166125,
+            "imag": -0.00215006923078926
+          }
+        ],
+        [
+          {
+            "real": -0.08769086122166135,
+            "imag": 0.00215006923078926
+          },
+          {
+            "real": -5.633759553818588,
+            "imag": 0.0
+          }
+        ]
+      ],
+      "maxFaceProjection": 4.212116002945791e-14
+    },
+    {
+      "index": 4,
+      "kind": "evanescent",
+      "direction": "outgoing",
+      "k": {
+        "real": 0.7794880599636016,
+        "imag": 5.000752446428827e-05
+      },
+      "physicalQ": {
+        "real": -5.1739592515108335e-05,
+        "imag": 0.7533934136970221
+      },
+      "currentEigenvalues": null,
+      "slabGram": [
+        [
+          {
+            "real": 4.530682496528351,
+            "imag": 1.1102230246251565e-16
+          }
+        ]
+      ],
+      "maxFaceProjection": 0.0
+    },
+    {
+      "index": 6,
+      "kind": "evanescent",
+      "direction": "outgoing",
+      "k": {
+        "real": 3.3341224117237704,
+        "imag": 0.0039035264560401475
+      },
+      "physicalQ": {
+        "real": -0.0039105684787223574,
+        "imag": 3.328118434098427
+      },
+      "currentEigenvalues": null,
+      "slabGram": [
+        [
+          {
+            "real": 9.635121937796347,
+            "imag": 1.3877787807814457e-17
+          }
+        ]
+      ],
+      "maxFaceProjection": 0.0
+    },
+    {
+      "index": 0,
+      "kind": "evanescent",
+      "direction": "outgoing",
+      "k": {
+        "real": 0.002951908639094248,
+        "imag": 3.9124638885031815
+      },
+      "physicalQ": {
+        "real": -3.917572418747452,
+        "imag": 0.002948059338315795
+      },
+      "currentEigenvalues": null,
+      "slabGram": [
+        [
+          {
+            "real": 0.0015654596483733454,
+            "imag": -4.9873299934333204e-18
+          }
+        ]
+      ],
+      "maxFaceProjection": 0.0
+    },
+    {
+      "index": 16,
+      "kind": "transverse",
+      "direction": "outgoing",
+      "k": {
+        "real": 2.4454038521275003,
+        "imag": -3.776867791673516e-17
+      },
+      "physicalQ": {
+        "real": 3.111071982245434e-17,
+        "imag": 2.437211521390791
+      },
+      "currentEigenvalues": [
+        5.502158667286879,
+        5.695943751521874
+      ],
+      "slabGram": [
+        [
+          {
+            "real": 5.557632713541778,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0875674775270724,
+            "imag": 0.0021470440183369785
+          }
+        ],
+        [
+          {
+            "real": 0.08756747752707231,
+            "imag": -0.0021470440183369768
+          },
+          {
+            "real": 5.640469705266975,
+            "imag": -1.0842021724855044e-19
+          }
+        ]
+      ],
+      "maxFaceProjection": 4.183818800162468e-14
+    },
+    {
+      "index": 17,
+      "kind": "transverse",
+      "direction": "incoming",
+      "k": {
+        "real": -2.4454038521275003,
+        "imag": 3.776867791673516e-17
+      },
+      "physicalQ": {
+        "real": 3.111071982245434e-17,
+        "imag": 2.437211521390791
+      },
+      "currentEigenvalues": [
+        -5.695943751521874,
+        -5.502158667286879
+      ],
+      "slabGram": [
+        [
+          {
+            "real": -5.557632713541778,
+            "imag": 0.0
+          },
+          {
+            "real": -0.0875674775270724,
+            "imag": -0.0021470440183369785
+          }
+        ],
+        [
+          {
+            "real": -0.08756747752707231,
+            "imag": 0.0021470440183369768
+          },
+          {
+            "real": -5.640469705266975,
+            "imag": 1.0842021724855044e-19
+          }
+        ]
+      ],
+      "maxFaceProjection": 4.183818800162468e-14
+    },
+    {
+      "index": 4,
+      "kind": "evanescent",
+      "direction": "outgoing",
+      "k": {
+        "real": 0.7809723383595251,
+        "imag": 4.733282579589594e-05
+      },
+      "physicalQ": {
+        "real": -4.896570100619624e-05,
+        "imag": 0.7549289989396274
+      },
+      "currentEigenvalues": null,
+      "slabGram": [
+        [
+          {
+            "real": 4.5481870589404,
+            "imag": -2.220446049250313e-16
+          }
+        ]
+      ],
+      "maxFaceProjection": 0.0
+    },
+    {
+      "index": 6,
+      "kind": "evanescent",
+      "direction": "outgoing",
+      "k": {
+        "real": 3.326129082466767,
+        "imag": 0.003926178639951151
+      },
+      "physicalQ": {
+        "real": -0.003933295704091642,
+        "imag": 3.3201106501391786
+      },
+      "currentEigenvalues": null,
+      "slabGram": [
+        [
+          {
+            "real": 9.641816167222242,
+            "imag": 1.3877787807814457e-17
+          }
+        ]
+      ],
+      "maxFaceProjection": 0.0
+    },
+    {
+      "index": 0,
+      "kind": "evanescent",
+      "direction": "outgoing",
+      "k": {
+        "real": 0.0029189211358772544,
+        "imag": 3.9203552862101043
+      },
+      "physicalQ": {
+        "real": -3.925453546789041,
+        "imag": 0.0029151301292119915
+      },
+      "currentEigenvalues": null,
+      "slabGram": [
+        [
+          {
+            "real": 0.0015456242262121677,
+            "imag": 2.0599841277224584e-17
+          }
+        ]
+      ],
+      "maxFaceProjection": 0.0
+    },
+    {
+      "index": 16,
+      "kind": "transverse",
+      "direction": "outgoing",
+      "k": {
+        "real": 2.4515301344262563,
+        "imag": -3.748927920837796e-17
+      },
+      "physicalQ": {
+        "real": 3.088143783354284e-17,
+        "imag": 2.4433583445741265
+      },
+      "currentEigenvalues": [
+        5.515942802459079,
+        5.709189403541808
+      ],
+      "slabGram": [
+        [
+          {
+            "real": 5.571262699392245,
+            "imag": 2.7755575615628914e-17
+          },
+          {
+            "real": 0.08732414811128693,
+            "imag": 0.0021410778882008166
+          }
+        ],
+        [
+          {
+            "real": 0.08732414811128698,
+            "imag": -0.0021410778882008166
+          },
+          {
+            "real": 5.6538695066086415,
+            "imag": 1.0842021724855044e-19
+          }
+        ]
+      ],
+      "maxFaceProjection": 4.12769744612921e-14
+    },
+    {
+      "index": 17,
+      "kind": "transverse",
+      "direction": "incoming",
+      "k": {
+        "real": -2.4515301344262563,
+        "imag": 3.748927920837796e-17
+      },
+      "physicalQ": {
+        "real": 3.088143783354284e-17,
+        "imag": 2.4433583445741265
+      },
+      "currentEigenvalues": [
+        -5.709189403541808,
+        -5.515942802459079
+      ],
+      "slabGram": [
+        [
+          {
+            "real": -5.571262699392245,
+            "imag": -2.7755575615628914e-17
+          },
+          {
+            "real": -0.08732414811128693,
+            "imag": -0.0021410778882008166
+          }
+        ],
+        [
+          {
+            "real": -0.08732414811128698,
+            "imag": 0.0021410778882008166
+          },
+          {
+            "real": -5.6538695066086415,
+            "imag": -1.0842021724855044e-19
+          }
+        ]
+      ],
+      "maxFaceProjection": 4.12769744612921e-14
+    },
+    {
+      "index": 4,
+      "kind": "evanescent",
+      "direction": "outgoing",
+      "k": {
+        "real": 0.783911707255476,
+        "imag": 4.233548865330383e-05
+      },
+      "physicalQ": {
+        "real": -4.3784467458716355e-05,
+        "imag": 0.757969369365927
+      },
+      "currentEigenvalues": null,
+      "slabGram": [
+        [
+          {
+            "real": 4.583052739832979,
+            "imag": 8.326672684688674e-17
+          }
+        ]
+      ],
+      "maxFaceProjection": 0.0
+    },
+    {
+      "index": 6,
+      "kind": "evanescent",
+      "direction": "outgoing",
+      "k": {
+        "real": 3.3103217201316966,
+        "imag": 0.003970981907219771
+      },
+      "physicalQ": {
+        "real": -0.003978249286325204,
+        "imag": 3.3042744965492425
+      },
+      "currentEigenvalues": null,
+      "slabGram": [
+        [
+          {
+            "real": 9.654972273732236,
+            "imag": 1.3877787807814457e-17
+          }
+        ]
+      ],
+      "maxFaceProjection": 0.0
+    }
+  ],
+  "resultArtifact": {
+    "storage": "sqlite",
+    "member": "completed-end-maps.pickle",
+    "sha256": "72e26122095b591e2373b6aa60eaae968f40333dd79e98aea2720687cdbe2225",
+    "bytes": 465303,
+    "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/end-maps-v2/complete/operations.sqlite",
+    "databaseSha256": "bf635ed50e3c7fbc69628646a5d8abd568d38a33a729b396d3d43804bee82948"
+  },
+  "artifacts": {
+    "LEFT-a-1-candidate-1.json": {
+      "sha256": "5f7ddb8287d37683fd35b552e189049b9806cc853b04b05229b793ece6c067db",
+      "bytes": 422
+    },
+    "LEFT-a-1-candidate-16.json": {
+      "sha256": "1fddfe3fe5e8624653496a813201c3c1cf8c725ea672abdf86b28c4bfaeb66da",
+      "bytes": 773
+    },
+    "LEFT-a-1-candidate-17.json": {
+      "sha256": "a0c18dc3de6f8ce4237a7985c3924ee728d53c1667c5cf081965cd020d30813f",
+      "bytes": 775
+    },
+    "LEFT-a-1-candidate-5.json": {
+      "sha256": "da53431bff840065e523ced089999b3f1f8bf9fbd47b973d7fca287738c982f6",
+      "bytes": 422
+    },
+    "LEFT-a-1-candidate-7.json": {
+      "sha256": "9de79b0d6a14f32589b2bebe491928f4e59e3f8e18d68e80e43ff3f83f4ebab6",
+      "bytes": 418
+    },
+    "RIGHT-a-0-candidate-0.json": {
+      "sha256": "6f87c2cd99e6c64f6809d8e642ed123339bfeced737e437427c68ca0e864d7f2",
+      "bytes": 421
+    },
+    "RIGHT-a-0-candidate-16.json": {
+      "sha256": "89f8aa4c696a89789bbbe293f28d806175a366f54b6aee66f635e3807ad2788b",
+      "bytes": 753
+    },
+    "RIGHT-a-0-candidate-17.json": {
+      "sha256": "a860d2127586c37700b39ed4d6d6e4484ac72c2efc9f378f789594a7e1f8994e",
+      "bytes": 760
+    },
+    "RIGHT-a-0-candidate-4.json": {
+      "sha256": "576f815a52b210d0a4351281a39764e4d2503c14b281b1321992faa110e4a793",
+      "bytes": 418
+    },
+    "RIGHT-a-0-candidate-6.json": {
+      "sha256": "9675e7e781e6cc330ad28a11bac86cbecd01657df2c254d97c9350a5e72c248a",
+      "bytes": 416
+    },
+    "RIGHT-a-0.25-candidate-0.json": {
+      "sha256": "48e6817ac09153980403b4b4c83e69fbc13213b99cbbf25b0733a8c8361c2ba8",
+      "bytes": 422
+    },
+    "RIGHT-a-0.25-candidate-16.json": {
+      "sha256": "b61b7306aaf72c09e35794893157ab5226c15af38a799425bd64255d80910432",
+      "bytes": 727
+    },
+    "RIGHT-a-0.25-candidate-17.json": {
+      "sha256": "40abf6a6e5877a63adc4f5017feb8dd9834942920660863de24adbc255d23fa4",
+      "bytes": 733
+    },
+    "RIGHT-a-0.25-candidate-4.json": {
+      "sha256": "6a66de3d03af0d94dd8f33dacf56a83cc6f34f7ce54bd4f9b4d984f872c49681",
+      "bytes": 419
+    },
+    "RIGHT-a-0.25-candidate-6.json": {
+      "sha256": "b822816deddca0709122ebd537e6a8f3fcaf12ef1f5635260869605b37dd4838",
+      "bytes": 417
+    },
+    "RIGHT-a-0.5-candidate-0.json": {
+      "sha256": "10a2b26c59bb30324e4781921db8a0167ee440b66ffad3c9faa278849aefcfe4",
+      "bytes": 420
+    },
+    "RIGHT-a-0.5-candidate-16.json": {
+      "sha256": "a59ec61eebf23e97bb2c90740395c0701840bbbe8c3db91087f86af07cf110bd",
+      "bytes": 751
+    },
+    "RIGHT-a-0.5-candidate-17.json": {
+      "sha256": "a3d6f74d0cd9a525f9acb86b46ee2a0081f0e3349c9f5a11c87ae02de62192f9",
+      "bytes": 756
+    },
+    "RIGHT-a-0.5-candidate-4.json": {
+      "sha256": "7e7ae370dc00ec5cd714d71124f516bab41e9d57fd6e5d25c5fb0703333bc1b0",
+      "bytes": 416
+    },
+    "RIGHT-a-0.5-candidate-6.json": {
+      "sha256": "899d313f193a92b6e8ac5e6877a46c3b611ed6f34d906e13420ec448d399228c",
+      "bytes": 415
+    },
+    "RIGHT-a-1-candidate-0.json": {
+      "sha256": "b5b3edaf5c9a61e4e0f8f1a366b20c24763df3a5f67b6d65e8f901842a6aef62",
+      "bytes": 421
+    },
+    "RIGHT-a-1-candidate-16.json": {
+      "sha256": "5088ca2636fe46ce4d7c519a25b618187cd22c4bfc93af6371a45aa150319d8f",
+      "bytes": 771
+    },
+    "RIGHT-a-1-candidate-17.json": {
+      "sha256": "c7ba5523b20c5339fd2c232a3f221d0e53221ea7a43a9dfb494c9f06726c74d6",
+      "bytes": 779
+    },
+    "RIGHT-a-1-candidate-4.json": {
+      "sha256": "b6493083043cad2b6ca1db346fa4e6451d0699cd063b134b0b05f8d15a425721",
+      "bytes": 416
+    },
+    "RIGHT-a-1-candidate-6.json": {
+      "sha256": "55a9c75f85621d31d8afa551acaf665e5876cd70e9e4c92acdc0a725c83bc5a9",
+      "bytes": 416
+    },
+    "active-operation.json": {
+      "sha256": "a20ba2eb9135bbe68d21b492d3803b66004692ab2a54beb16873b3f8255304c0",
+      "bytes": 527
+    },
+    "artifact-index.json": {
+      "sha256": "56489cdefa85715e253aa661fbcff93745f6213c7f75f0a151bbf4836483f006",
+      "bytes": 6659
+    },
+    "checks.json": {
+      "sha256": "a081cbbd8f8326d766291f33bcfdb5127db9f901cdd31eba445c65b952289639",
+      "bytes": 3404
+    },
+    "end-summary.json": {
+      "sha256": "5f99bda57a892b16c8def2bed04805aebdd925aaf3536b57d35f4777b59debf9",
+      "bytes": 2660
+    },
+    "inputs/LEFTFrequency": {
+      "sha256": "67148025b209f7171b7679249c075c6e68b76882ac6ac5adfffed4eb2766211a",
+      "bytes": 9470
+    },
+    "inputs/LEFTPairing": {
+      "sha256": "6399da59a971434aae54a95ed4c823c4b029029dbe50aed2913bcc48747b9259",
+      "bytes": 318441
+    },
+    "inputs/RIGHTFrequency": {
+      "sha256": "0fe2cccd0b9c08f57666530b2519dff26e8dee633058aae85d3d7f4b89ec029d",
+      "bytes": 23826
+    },
+    "inputs/RIGHTPairing": {
+      "sha256": "690ceb5c452de298f67ec929cacb76d7d16e182efcd321f9692ecf1cbd28b628",
+      "bytes": 1065916
+    },
+    "inputs/uniformResponse": {
+      "sha256": "1d5bd9967d08c5ad01eab8707ea25af01cfb9bf61bfd83073ed898c9d76a772f",
+      "bytes": 543796
+    },
+    "inputs/uniformSource": {
+      "sha256": "a482c5023d16558f52b20d0a347d6e38f33f0f06f780abd256c5220f922b5571",
+      "bytes": 109308
+    },
+    "operation-index.jsonl": {
+      "sha256": "75d31d53525e7860aba9ff71ae22a093b54d14abefe6a75bb3c97caeba12f8cb",
+      "bytes": 40582
+    },
+    "operations.sqlite": {
+      "sha256": "bf635ed50e3c7fbc69628646a5d8abd568d38a33a729b396d3d43804bee82948",
+      "bytes": 10358784
+    },
+    "posthashes.json": {
+      "sha256": "4bdf9637bed11261a01b58946d8226f1a9f843d8cca7f8c20f9b59423ddb443b",
+      "bytes": 11430
+    },
+    "prior-startup/active-operation.json": {
+      "sha256": "45986ae70a1cd8a87007485e9e526b6321feb18d47d4294699dfe9efca5fe302",
+      "bytes": 259
+    },
+    "prior-startup/artifact-index.json": {
+      "sha256": "d246186ebf08a620d0f0ca78981325e3e2989db68b1ecf0c6044762a697c76d8",
+      "bytes": 926
+    },
+    "prior-startup/checks.json": {
+      "sha256": "3f63529431ccc92dcffb0800da534652ea14110d5a7c8e28084a1f03b2d91550",
+      "bytes": 2029
+    },
+    "prior-startup/failure.json": {
+      "sha256": "a11144a6263dbcee73140a364972b578651ad1a6035a3de877b00dfb2d24e9d0",
+      "bytes": 1769
+    },
+    "prior-startup/inputs/uniformResponse": {
+      "sha256": "1d5bd9967d08c5ad01eab8707ea25af01cfb9bf61bfd83073ed898c9d76a772f",
+      "bytes": 543796
+    },
+    "prior-startup/inputs/uniformSource": {
+      "sha256": "a482c5023d16558f52b20d0a347d6e38f33f0f06f780abd256c5220f922b5571",
+      "bytes": 109308
+    },
+    "prior-startup/operation-index.jsonl": {
+      "sha256": "caa6e96dd95251ece9d4e8ed2469fb70abac6661e4ffd99c01d9a30ccba2f080",
+      "bytes": 435
+    },
+    "prior-startup/operations.sqlite": {
+      "sha256": "b0641695411c406c55bdd665ecbf1bd1e1b3cdceb6993344039aed7ef64e5e11",
+      "bytes": 106496
+    },
+    "prior-startup/posthashes.json": {
+      "sha256": "f77cb349629e2260183bf4d6e55d511fc3a57d0634da41cdb06e464d4ba88715",
+      "bytes": 7905
+    },
+    "prior-startup-copy-index.json": {
+      "sha256": "1f5c12bc991ab2430ad46debeae38f47c6ce3b6ce3566affe48ccb254fb25ef7",
+      "bytes": 1181
+    },
+    "result-artifacts.json": {
+      "sha256": "e7adbffaf22d1b9a024fd10d12f0461d76bb5e18d803f2ce87b1e60a8f80659d",
+      "bytes": 202
+    },
+    "source-units.json": {
+      "sha256": "7fca8370870c87afb182da0f9fdfb203545214e0bf7d7ecab6143dc54ccfe809",
+      "bytes": 423
+    }
+  },
+  "artifactTotals": {
+    "files": 50,
+    "bytes": 13283389
+  },
+  "acceptanceScope": "Numerical omega3 selected current/face/finite trace checks only, both ends/four contrasts. Actual scalar current signs/face projections inspected in JSON; remaining raw controls/cross forms persist in journal and are consumed in the next guarded integration/assembly. No stand-alone payload restoration or result recomputation here.",
+  "limitations": [
+    "No finite field solve or deficit yet",
+    "Finite exterior modal approximation; no complete radiation continuum",
+    "No all-grade physical loss equivalence or calibration",
+    "No paired independent method/build clearance"
+  ],
+  "next": "Continue authorized endpoint integration, finite assembly and controls; no new reviews or repetitive permission."
+}

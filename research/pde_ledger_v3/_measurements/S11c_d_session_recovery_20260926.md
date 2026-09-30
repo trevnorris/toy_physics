@@ -1,3 +1,13 @@
+**CURRENT RESULT — omega-3 numerical end checks passed (2026-09-30):**
+Both ends/all four contrasts support the selected transverse current/face and
+finite trace maps. Full-contrast k magnitudes are 2.43926218 (LEFT) and
+2.45153013 (RIGHT), with resolved current signs and face projections below
+5e-14. Trace residuals are below3.7e-16, conditions below5.90. Worker101.309s,
+peak110.375MiB, no swap/events,40 intact input pins,79 complete operations.
+See numerical_radiating_end_maps_checkpoint.json and report. No finite solve
+or loss number yet. Continue the authorized radiation-integral/finite assembly
+work, consuming saved end maps. No time limits, new reviews or exact-track work.
+
 **Launch verified (2026-09-30 16:11 UTC):** end-maps-v2 is running under the
 shared guard and existing supervisor. RuntimeMaxUSec=infinity, Restart=no and
 actual memory/swap/CPU/task/thread enforcement passed. The one completed prior

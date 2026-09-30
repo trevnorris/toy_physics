@@ -1,0 +1,98 @@
+{
+  "status": "SOURCE_AND_JSON_ONLY_ASSESSMENT_PENDING_USER_GO_NO_GO",
+  "scientificPayloadsRestored": false,
+  "newScientificJobLaunched": false,
+  "bareS9Ratio": {
+    "definition": "sqrt(mu_R/rho_br)/c_s0",
+    "mu_R": 1,
+    "rho_br": 1,
+    "c_s0": 10,
+    "value": 0.1,
+    "calibratedEqualityApplied": false
+  },
+  "savedTransversePhaseSpeeds": [
+    {
+      "source": "_scratch/s11c/s11c-d-numerical-radiating-20260929/end-maps-v2/complete/LEFT-a-1-candidate-16.json",
+      "sha256": "1fddfe3fe5e8624653496a813201c3c1cf8c725ea672abdf86b28c4bfaeb66da",
+      "bytes": 773,
+      "matchesAcceptedCheckpoint": true,
+      "savedNormalMomentum": {
+        "real": 2.439262183530097,
+        "imag": -3.805496546278189e-17
+      },
+      "savedPhysicalDepthMomentum": {
+        "real": 3.1346265385375027e-17,
+        "imag": 2.4310491562286467
+      },
+      "phaseSpeedFromSavedMomentum": 1.2247448713915874,
+      "phaseSpeedOverBulkSpeed": 0.12247448713915873,
+      "interpretation": "Fixed-point phase speed of saved full transverse branch; not a derived identification with calibrated R4 light speed."
+    },
+    {
+      "source": "_scratch/s11c/s11c-d-numerical-radiating-20260929/end-maps-v2/complete/RIGHT-a-1-candidate-16.json",
+      "sha256": "5088ca2636fe46ce4d7c519a25b618187cd22c4bfc93af6371a45aa150319d8f",
+      "bytes": 771,
+      "matchesAcceptedCheckpoint": true,
+      "savedNormalMomentum": {
+        "real": 2.4515301344262563,
+        "imag": -3.748927920837796e-17
+      },
+      "savedPhysicalDepthMomentum": {
+        "real": 3.088143783354284e-17,
+        "imag": 2.4433583445741265
+      },
+      "phaseSpeedFromSavedMomentum": 1.2186666955535794,
+      "phaseSpeedOverBulkSpeed": 0.12186666955535794,
+      "interpretation": "Fixed-point phase speed of saved full transverse branch; not a derived identification with calibrated R4 light speed."
+    },
+    {
+      "source": "_scratch/s11c/s11c-d-numerical-radiating-20260929/end-maps-v2/complete/RIGHT-a-0-candidate-16.json",
+      "sha256": "89f8aa4c696a89789bbbe293f28d806175a366f54b6aee66f635e3807ad2788b",
+      "bytes": 753,
+      "matchesAcceptedCheckpoint": true,
+      "savedNormalMomentum": {
+        "real": 2.439262183530097,
+        "imag": -3.805999945134534e-17
+      },
+      "savedPhysicalDepthMomentum": {
+        "real": 3.1351316295143155e-17,
+        "imag": 2.4310491562286467
+      },
+      "phaseSpeedFromSavedMomentum": 1.2247448713915874,
+      "phaseSpeedOverBulkSpeed": 0.12247448713915873,
+      "interpretation": "Fixed-point phase speed of saved full transverse branch; not a derived identification with calibrated R4 light speed."
+    }
+  ],
+  "omega3RestBulkDomain": {
+    "omega": 3,
+    "c_s0": 10,
+    "tangents": [
+      "1/5",
+      "1/10"
+    ],
+    "physicalDepthRelation": "q^2=1/25-k_normal^2",
+    "grazingNormalMomenta": [
+      "-1/5",
+      "1/5"
+    ],
+    "requiredAwayFromGrazing": [
+      "abs(q*v)/3 << 1",
+      "3*abs(v)/(100*abs(q)) << 1",
+      "abs(v)<10"
+    ],
+    "drainSpeedNumericallyEstablishedForPilot": false,
+    "uniformNonzeroFlowValidityAcrossGrazingEstablished": false
+  },
+  "sourcePins": {
+    "research/pde_ledger_v3/V3_STEP_PLAN.md": "0b1b5bbe4d00cf2e92d982556458ce627d89e3661086b6070ae189e1783f2751",
+    "research/pde_ledger_v3/steps/S9_light_requires_shear.md": "260c8e1a0870dd2edd247e9d282b4c3c2b804b1644af3010a5cac33bcc9d43be",
+    "research/pde_ledger_v3/directives/S11c_c1_SHARED_PHYSICS.md": "47554c8c9cf2fd070c1048a7ae0ca36b1315bf50a48ed07a51019ff3e72987ad",
+    "research/pde_ledger_v3/directives/S11c_d_SCATTERING_FORM_AMENDMENT.md": "eb6f20a3fd0bce308e53901fa69fdf267b2917e5cc78b319a1e7700074a47560",
+    "research/pde_ledger_v3/directives/S11c_a_SHARED_PHYSICS.md": "348bb3a3fa8f849139773096885a783ef46e8b24740ad1776eb21a4aa222e7f4",
+    "research/pde_ledger_v3/steps/S11bB_interface_assembly.md": "b2f054aea247830f198f6caf368b22d45c937bfe4d3e875700461cf7201ab79c",
+    "research/pde_ledger_v3/_measurements/S11c_d_variable_profile_development_input.json": "660b2b0b54494dce964c7f5fbd722a76a7e894d8ed92b18b5eb6290c3c10f1d5",
+    "research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_sources_report.md": "248966c684cacf54ea29b195d737171eccdb79979197b1077cd302b50ce17cd1",
+    "research/pde_ledger_v3/_measurements/S11c_d_remaining_case_frequency_end_inputs_report.md": "ca9c7e9b66166f439fb76149674a187d732cb817c700650b0a83e02b1d63e75b",
+    "research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_end_maps_checkpoint.json": "175f02719dd4c5ec09392298f7fc1c7d0fb6b414e39bd5b3245510348e3fd7de"
+  }
+}

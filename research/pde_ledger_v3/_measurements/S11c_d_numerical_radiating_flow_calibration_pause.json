@@ -1,0 +1,38 @@
+{
+  "status": "WORKER_SUSPENDED_PENDING_USER_FLOW_AND_CALIBRATION_GO_NO_GO",
+  "utc": "2026-09-30T23:30:59.692829+00:00",
+  "pid": 4097233,
+  "procStartTicks": "85113744",
+  "command": [
+    "/usr/bin/python3",
+    "-u",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_balance_v2.py",
+    "--manifest",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_balance_v2_inputs.json",
+    "--gate",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_balance_v2_gate.json",
+    "--run-directory",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-balance-v2/complete"
+  ],
+  "cgroup": "0::/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-f0fe15054ec2.service\n",
+  "unit": "s11c-guard-f0fe15054ec2",
+  "signal": "SIGSTOP",
+  "processState": "State:\tT (stopped)",
+  "authority": "User asked to consider flow/calibration/anchoring before continuing and stop for go/no-go. Same calculation preserved in memory, not killed or restarted.",
+  "guardAndSupervisorRemainActive": true,
+  "noTimeLimitAdded": true,
+  "noSourceChanges": true,
+  "lastSavedProgress": {
+    "group": "base/group-2",
+    "batches": 12288,
+    "nodes": 1572864,
+    "receipt": {
+      "storage": "sqlite",
+      "member": "base/group-2/partial-000012288.pickle",
+      "sha256": "da8884ade1d1126a65b47d873b1608e0c09a62b2ce8db5b4250347cc1ddb42d9",
+      "bytes": 15931308
+    },
+    "seconds": 1093.4090891779633
+  },
+  "resumeRequiresUserGoNoGo": true
+}

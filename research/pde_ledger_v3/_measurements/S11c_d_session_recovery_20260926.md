@@ -1,3 +1,18 @@
+**PAUSED FOR USER FLOW/CALIBRATION GO/NO-GO (2026-09-30):**
+The user's latest instruction supersedes the continuation directions below.
+Central-balance-v2 is suspended in memory (SIGSTOP), not killed/restarted;
+PID4097233/start ticks85113744/unit s11c-guard-f0fe15054ec2. Guard/supervisor
+remain active, with no time limit. Last saved base/group-2 checkpoint12288
+batches; two matrix groups complete, no finite solve reached. Verify exact
+process identity before any future resume. No new job or automatic resume.
+Source/JSON-only assessment: bare S9 speed ratio0.1; actual saved LEFT omega3
+transverse phase-speed ratio0.1224745, not calibrated lambda_gamma=1. Strict
+rest bulk/LAB_HELD; no established drain smallness, and the second validity
+condition fails near grazing at fixed nonzero flow. MATERIAL_ADVECTED is a
+separate supported source route, not a restoration of bulk drain. Stop for
+user decision. Read flow_calibration_assessment.md/.json and pause.json.
+Review debts and all prior scientific limitations remain unchanged.
+
 **FRESH METHOD REPORTS DELIVERED — interpretation checks pending (2026-09-30):**
 Claude and Grok both literally NEEDS REVISION for the original-tolerance route;
 coarse: Claude NEEDS REVISION, Grok CLEAR SUBJECT TO THE STATED CURRENT-SIDE

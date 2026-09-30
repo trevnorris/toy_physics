@@ -1,0 +1,332 @@
+{
+  "status": "FOCUSED_UNIFORM_ACTION_REFINEMENT_ACCEPTED_AT_ORIGINAL_TOLERANCE",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/uniform-refinement-v2",
+  "checks": {
+    "status": "UNIFORM_REFINEMENT_SUPPORTS_ORIGINAL_ACTION_TOLERANCE",
+    "frequency": 3,
+    "contrast": 0,
+    "momentum": 0.6000000000000001,
+    "trials": [
+      {
+        "label": "outer-32-source-512",
+        "outerOrder": 32,
+        "sourceNodes": 512,
+        "passesOriginalTolerance": true,
+        "maximumToleranceRatio": 0.011737650205405938
+      },
+      {
+        "label": "outer-48-source-512",
+        "outerOrder": 48,
+        "sourceNodes": 512,
+        "passesOriginalTolerance": true,
+        "maximumToleranceRatio": 7.729464598209505e-07
+      },
+      {
+        "label": "outer-64-source-512",
+        "outerOrder": 64,
+        "sourceNodes": 512,
+        "passesOriginalTolerance": true,
+        "maximumToleranceRatio": 7.868807783785188e-07
+      },
+      {
+        "label": "outer-64-source-768",
+        "outerOrder": 64,
+        "sourceNodes": 768,
+        "passesOriginalTolerance": true,
+        "maximumToleranceRatio": 7.868386653153763e-07
+      }
+    ],
+    "sourceNodeMovementInToleranceUnits": 7.64947473134701e-09,
+    "finiteSolves": 0,
+    "operatorAccuracyIsFluxErrorBound": false,
+    "requestedCoarseFluxResolution": 1e-05,
+    "coarseResolutionStatus": "Requires actual finite uniform/scaling/refinement/domain/regulator/sign controls and independent method review; operator-action accuracy alone is not a flux bound.",
+    "physicalLossInterpretation": "RETAINED_ORDER_LOSS_INTERPRETATION_UNRESOLVED",
+    "wallSeconds": 17.036951581016183,
+    "completeOperations": 43,
+    "restoredOperations": 11,
+    "posthashesIntact": true,
+    "peakRssKiB": 169684,
+    "independentMethodClearance": false,
+    "automaticRetry": false
+  },
+  "files": {
+    "posthashes.json": {
+      "sha256": "418e4093ea15dcb7a02f3f4116b6f0b6deffc3c02fb6cc2b87ad4b54596084bb",
+      "bytes": 37168
+    },
+    "checks.json": {
+      "sha256": "620601ed9266799671780985cef8946dd3b956d6817df646a05bff4c0628de9c",
+      "bytes": 1587
+    },
+    "prior-uniform-Gaussian-0.6000000000000001-column-4.json": {
+      "sha256": "59cf808d14665ffec441c1940f0e9456364a92650eca3ef061830fbaeed0f8d0",
+      "bytes": 4793
+    },
+    "reference-identity-column-4.json": {
+      "sha256": "1992a3d955ffeb43158a41de540fbbeba71e4f47ce56942d1fca484bbc65f2c4",
+      "bytes": 5063
+    },
+    "outer-64-source-512-column-3.json": {
+      "sha256": "7accd8d668187fef81463e21bf066b21a52e81e3d8bba73688885f4151d270a3",
+      "bytes": 5121
+    },
+    "operations.sqlite": {
+      "sha256": "c166aff508c1a65cb4e90e42b4d9e58ed9b3fd13c41fc74ec9363b89dfb22c7f",
+      "bytes": 13856768
+    },
+    "outer-32-source-512-column-4.json": {
+      "sha256": "fb61ed0d4f1b1e682402901fd96b2497d53b9bb26a14dfd6ae3972e7f4509894",
+      "bytes": 5159
+    },
+    "outer-48-source-512-column-4.json": {
+      "sha256": "617bb2eb31b61a48bb6d1d6fd5393439f68a389114fe59e4efb63436efff5f79",
+      "bytes": 5161
+    },
+    "reference-identity-column-3.json": {
+      "sha256": "1992a3d955ffeb43158a41de540fbbeba71e4f47ce56942d1fca484bbc65f2c4",
+      "bytes": 5063
+    },
+    "outer-64-source-512-column-4.json": {
+      "sha256": "b8424904a2b3aadf320adc915157622b35149965d5995ee6200818150fa0a4f0",
+      "bytes": 5162
+    },
+    "active-operation.json": {
+      "sha256": "ec6117c97b783fd4ecc801c65a3a6b368682ffe47d0fa2a709b018c15f4f8a10",
+      "bytes": 579
+    },
+    "prior-uniform-Gaussian-0.6000000000000001-column-3.json": {
+      "sha256": "ab280190db21a9a66f14217f757951393ab8508d1f181d4bb39b6ada149497f8",
+      "bytes": 4756
+    },
+    "result-artifacts.json": {
+      "sha256": "d7e1d9a7f605c651e6c1caa0dcad0ce4fac203b3df8122a76d005ad17e79a117",
+      "bytes": 212
+    },
+    "refinement-progress.json": {
+      "sha256": "fd161a09f8afb543268acede650e9ce3facef660756e56043fa32632fa679f2d",
+      "bytes": 534
+    },
+    "prior-integration-mutations.json": {
+      "sha256": "7c2a36336dd4db35e98bfa66938949e87150fe5c9f982958931e8fc4540b626b",
+      "bytes": 572
+    },
+    "artifact-index.json": {
+      "sha256": "effadd5ac719006e16c86fb8071a3393cee6a1309abea39a223bf757d963971c",
+      "bytes": 3326
+    },
+    "operation-index.jsonl": {
+      "sha256": "2f15e64403dea08266c91c49901c4ca66345f3d80d4e3646fe58f9b5b6ba8edf",
+      "bytes": 34772
+    },
+    "outer-48-source-512-column-3.json": {
+      "sha256": "41601deda4fec679eceb39b0ee6b7de8c49c1a63340d15f5e1ee8c612b02bef9",
+      "bytes": 5123
+    },
+    "outer-64-source-768-column-3.json": {
+      "sha256": "723c601244a00b64144d400ed6957a0cb260a6e7f88b2831c29452116cf243dd",
+      "bytes": 5122
+    },
+    "outer-64-source-768-column-4.json": {
+      "sha256": "6b81c7790d94becfcb76ed2b7e168298c1f3edf55e04adacc6b02c45cc979235",
+      "bytes": 5160
+    },
+    "prior-middle-integration-comparison.json": {
+      "sha256": "600c67dd7a8ec1c4b1879d5b89b24b2e37d332359b73434c27f09bdd5af0ff87",
+      "bytes": 1429
+    },
+    "outer-32-source-512-column-3.json": {
+      "sha256": "2f50ee65aecf981a1ff0f5e7daa683338601058ee362deda1b6c054a3097551c",
+      "bytes": 5121
+    },
+    "source-context-joins.json": {
+      "sha256": "9a66e16fcb0447443986584bb406524ae1e4a2be29afc0d11ab0c0167341998b",
+      "bytes": 1208
+    },
+    "prior-two-sided-endpoint-values.json": {
+      "sha256": "6a7c900c5ca08f4035c519d17ec3c9a00c3fc705b8f542cef92f8e143fb62f27",
+      "bytes": 14815
+    },
+    "uniform-refinement-summary.json": {
+      "sha256": "e4aedec82888b936d19703306dc0838a50c1a8ff41a41da32af2ac9489110fe2",
+      "bytes": 1376
+    }
+  },
+  "fileCount": 25,
+  "bytes": 14015150,
+  "sourcePosthashes": 124,
+  "sourceSnapshots": 62,
+  "journalOperations": 43,
+  "restoredReturns": 11,
+  "newOperations": 32,
+  "sqliteBlobs": 95,
+  "strictStderrEmpty": true,
+  "stdoutChecksIdentical": true,
+  "allOpaqueReceiptHashesVerified": true,
+  "peakCgroupBytes": 169373696,
+  "zeroSwapMemoryEvents": true,
+  "duration": {
+    "verified": true,
+    "actual": {
+      "Restart": "no",
+      "RuntimeMaxUSec": "infinity"
+    },
+    "wallDeadlineSeconds": null,
+    "inactivityDeadlineSeconds": null
+  },
+  "limits": {
+    "verified": true,
+    "actual": {
+      "memory.max": "2147483648",
+      "memory.swap.max": "0",
+      "pids.max": "32",
+      "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-70b61ae9730a.service",
+      "nice": 15,
+      "affinity": [
+        15
+      ],
+      "threads": {
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "VECLIB_MAXIMUM_THREADS": "1",
+        "BLIS_NUM_THREADS": "1"
+      }
+    }
+  },
+  "exactIdentity": [
+    {
+      "rawMatrixEqual": false,
+      "rawScaleEqual": true,
+      "entryResiduals": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "scaleResidual": "0"
+    },
+    {
+      "rawMatrixEqual": false,
+      "rawScaleEqual": true,
+      "entryResiduals": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "scaleResidual": "0"
+    }
+  ],
+  "comparisons": [
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/uniform-refinement-v2/complete/outer-32-source-512-column-3.json",
+      "column": 3,
+      "outerOrder": 32,
+      "sourceNodes": 512,
+      "maximumToleranceRatio": 0.004854068633940672,
+      "maximumAbsoluteDifference": 1.5827939051604107e-08
+    },
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/uniform-refinement-v2/complete/outer-32-source-512-column-4.json",
+      "column": 4,
+      "outerOrder": 32,
+      "sourceNodes": 512,
+      "maximumToleranceRatio": 0.011737650205405938,
+      "maximumAbsoluteDifference": 5.8840412755985655e-08
+    },
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/uniform-refinement-v2/complete/outer-48-source-512-column-3.json",
+      "column": 3,
+      "outerOrder": 48,
+      "sourceNodes": 512,
+      "maximumToleranceRatio": 7.729464598209505e-07,
+      "maximumAbsoluteDifference": 2.716073941113646e-12
+    },
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/uniform-refinement-v2/complete/outer-48-source-512-column-4.json",
+      "column": 4,
+      "outerOrder": 48,
+      "sourceNodes": 512,
+      "maximumToleranceRatio": 7.128951762062169e-07,
+      "maximumAbsoluteDifference": 3.7661615856313545e-12
+    },
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/uniform-refinement-v2/complete/outer-64-source-512-column-3.json",
+      "column": 3,
+      "outerOrder": 64,
+      "sourceNodes": 512,
+      "maximumToleranceRatio": 7.868807783785188e-07,
+      "maximumAbsoluteDifference": 2.669146576999344e-12
+    },
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/uniform-refinement-v2/complete/outer-64-source-512-column-4.json",
+      "column": 4,
+      "outerOrder": 64,
+      "sourceNodes": 512,
+      "maximumToleranceRatio": 7.092446136404944e-07,
+      "maximumAbsoluteDifference": 3.6108026054599896e-12
+    },
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/uniform-refinement-v2/complete/outer-64-source-768-column-3.json",
+      "column": 3,
+      "outerOrder": 64,
+      "sourceNodes": 768,
+      "maximumToleranceRatio": 7.868386653153763e-07,
+      "maximumAbsoluteDifference": 2.664040877182617e-12
+    },
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/uniform-refinement-v2/complete/outer-64-source-768-column-4.json",
+      "column": 4,
+      "outerOrder": 64,
+      "sourceNodes": 768,
+      "maximumToleranceRatio": 7.092123650596784e-07,
+      "maximumAbsoluteDifference": 3.599686832560734e-12
+    }
+  ],
+  "next": "Continue authorized central finite balance with single-leg outer order48/base and64/refinements. Reuse all completed nested integrals. No coarse branch needed. Missing independent method report still required before deficit interpretation.",
+  "scope": "Uniform operator action at the fixed saved Gaussian only; not a flux-error bound or energy-balance result."
+}

@@ -1,3 +1,17 @@
+**UNIFORM REFINEMENT PASSED — finite balance ready (2026-09-30):**
+The unchanged Gaussian action tolerance passes at orders32,48,64 and source
+512/768. At48 maxabsolute discrepancy3.77e-12; no coarse branch is needed.
+Actual saved matrix/scale residuals are exactly zero: the startup raw-equality
+failure was structural, preserved with its11returns. Successful worker17.037s,
+peak161.527MiB,124intact input pins,43ops(11restored32new),empty stderr and
+stdout/checks identity. See uniform_refinement_checkpoint.json.
+The authorized central finite balance now reuses completed end/integration
+results. Single-leg groups use48/base and64/refinements; all nested rules,
+current formula/tolerances and uniform/scaling/refinement/domain/regulator/sign
+controls stay unchanged. No new solve has run yet. The fresh Grok packet is
+still awaiting exact export consent; no deficit will be interpreted before
+its independent method assessment. See balance gate/static checks; no deadline.
+
 **FOCUSED REFINEMENT STARTUP PRESERVED (2026-09-30):**
 The first refinement startup restored11returns but stopped before any new
 integral on raw reference matrix/scale equality. Exact disagreement was not

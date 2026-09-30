@@ -1,3 +1,12 @@
+**Launch confirmed (2026-09-30 14:57 UTC):** corrected continuation v2 is
+running under the existing supervisor. Actual service RuntimeMaxUSec=infinity,
+Restart=no and memory/swap/CPU/process/thread limits were verified. No native
+or inactivity timer exists. Startup passed the repaired comparison and reached
+restoration of LEFT candidate7; restored functions were not called. Strict
+scientific/guard stderr is empty. The silent completion hook is armed; wait
+without model polling. See boundary_continue_v2_launch_record.json. Completion
+and physics acceptance remain pending. Earlier startup failure is preserved.
+
 **Startup repair (2026-09-30):** the first no-deadline startup restored six
 returns, then falsely rejected an input despite identical saved/new bytes
 (SHA25621541403967fe39585202b9f6440e55902c1833da0b032bbaab2fb336c48a289).

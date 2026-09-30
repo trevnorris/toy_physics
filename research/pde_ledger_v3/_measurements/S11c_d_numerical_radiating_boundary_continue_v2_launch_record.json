@@ -1,0 +1,123 @@
+{
+  "observedUtc": "2026-09-30T14:57:03.190934+00:00",
+  "implementationCommit": "1b39573f",
+  "launch": {
+    "jobPid": 3447485,
+    "watcherPid": 3447486,
+    "gateSha256": "62b210cbb5983960fe7216edb8773dd713300afc4e76f2a9c6d6bf4f611e73ea",
+    "command": [
+      "/usr/bin/python3",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_boundary_continue_v2_guard.py",
+      "--log-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/boundary-continuation-v2/resource-guard",
+      "--seconds",
+      "0",
+      "--",
+      "/usr/bin/python3",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/boundary-continuation-v2",
+      "--stage",
+      "numerical_radiating_boundary_continue_v2",
+      "--",
+      "/usr/bin/python3",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_boundary_continue_v2.py",
+      "--manifest",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_boundary_continue_v2_inputs.json",
+      "--gate",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_boundary_continue_v2_gate.json",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/boundary-continuation-v2/complete"
+    ],
+    "thread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+    "automaticRetry": false
+  },
+  "duration": {
+    "verified": true,
+    "actual": {
+      "Restart": "no",
+      "RuntimeMaxUSec": "infinity"
+    },
+    "wallDeadlineSeconds": null,
+    "inactivityDeadlineSeconds": null
+  },
+  "limits": {
+    "verified": true,
+    "actual": {
+      "memory.max": "2147483648",
+      "memory.swap.max": "0",
+      "pids.max": "32",
+      "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-943b8c636d6a.service",
+      "nice": 15,
+      "affinity": [
+        15
+      ],
+      "threads": {
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "VECLIB_MAXIMUM_THREADS": "1",
+        "BLIS_NUM_THREADS": "1"
+      }
+    }
+  },
+  "supervisor": {
+    "stage": "numerical_radiating_boundary_continue_v2",
+    "command": [
+      "/usr/bin/python3",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_boundary_continue_v2.py",
+      "--manifest",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_boundary_continue_v2_inputs.json",
+      "--gate",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_boundary_continue_v2_gate.json",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/boundary-continuation-v2/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/boundary-continuation-v2/numerical_radiating_boundary_continue_v2.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/boundary-continuation-v2/numerical_radiating_boundary_continue_v2.stderr",
+    "startedUtc": "2026-09-30T14:56:45.332914+00:00",
+    "childPid": 3447575,
+    "status": "running"
+  },
+  "watcher": {
+    "status": "waiting",
+    "watcherPid": 3447486,
+    "jobPid": 3447485,
+    "thread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+    "startedUtc": "2026-09-30T14:56:43.279049+00:00",
+    "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
+    "messageSha256": "d1f5ac3928527df99239bab61dd2fea6ad8d28de4954be412d9c0567c708e96c",
+    "notifications": {}
+  },
+  "scientificAcceptance": "PENDING_COMPLETION_AND_ACTUAL_RESULT_INSPECTION",
+  "stderrBytes": {
+    "numerical_radiating_boundary_continue_v2.stderr": 0,
+    "resource-guard/stderr": 0,
+    "guard-launch.stderr": 0,
+    "coordinator.stderr": 0
+  },
+  "activeOperation": {
+    "name": "LEFT/omega-3/a-1/candidate-7/height-0.025/across/point-0043",
+    "input": {
+      "member": "LEFT/omega-3/a-1/candidate-7/height-0.025/across/point-0043/input.pickle",
+      "sha256": "65b6fc34e81567e74555188a7b0197c6cb1d9109d20c6fd24be4604b2d7d0676",
+      "bytes": 3247,
+      "storage": "prior-zip",
+      "archive": "prior-complete/operations.zip"
+    },
+    "return": {
+      "member": "LEFT/omega-3/a-1/candidate-7/height-0.025/across/point-0043/return.pickle",
+      "sha256": "6e8948c56b7664b54dbcfa96034b7c211e6990c6cff3c6ae731244c53c8c4601",
+      "bytes": 2856,
+      "storage": "prior-zip",
+      "archive": "prior-complete/operations.zip"
+    },
+    "status": "RESTORED_PRIOR_COMPLETE_RETURN",
+    "seconds": 0.13762023393064737,
+    "argumentJoin": "EXACT_STRUCTURAL_ARRAY_EQUALITY",
+    "functionCalled": false
+  }
+}

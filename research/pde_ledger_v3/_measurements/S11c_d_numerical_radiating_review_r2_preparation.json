@@ -1,0 +1,214 @@
+{
+  "status": "INCOMPLETE_REVIEW_DELIVERY_NO_PAIRED_CLEARANCE_NO_SCIENCE",
+  "preparedUtc": "2026-09-30T04:10:09.397271+00:00",
+  "packetSha256": "d55aa3f6674e8e491dd43bd0b3ef385d566f00e0e3b327399fe1aff3d1a439e9",
+  "archiveSha256": "6feaa22965a18f82fe7bd3d8b7c57ce9f32e52a0bd45b79e756afb192b2e7524",
+  "packetFiles": 19,
+  "packetBytes": 316856,
+  "sourceRecords": [
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_method_r2.md",
+      "sourceSha256": "5a28111302d28af4847e7ed383f4962543c4b93b5bc2b89a2e8620c5dbec03b8",
+      "bytes": 19568
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_variable_profile_development_input.json",
+      "sourceSha256": "660b2b0b54494dce964c7f5fbd722a76a7e894d8ed92b18b5eb6290c3c10f1d5",
+      "bytes": 1884
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_finite_scattering.py",
+      "sourceSha256": "f187d9426be8069342a363a0466c175d32a8cb46101e32a14c433ccb9118e469",
+      "bytes": 30252
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_finite_scattering_domain.py",
+      "sourceSha256": "73341408d0f6c1eb517e435dea986e180ff53615a6102697a8e3ba6747bd35aa",
+      "bytes": 13300
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_frequency_source.py",
+      "sourceSha256": "9be20be462bc10bfcaa7af643b9301948dd79bc2e08eb24ebcd1386a81efcdac",
+      "bytes": 29576
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_frequency_chart.py",
+      "sourceSha256": "06b1e19ffd03349951488b13580f336dc7d12e15a6941191026697b5c413ed97",
+      "bytes": 23653
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_frequency_end.py",
+      "sourceSha256": "f7a698ed27872ed0594692dbf671136b079279c32f9198bd92fcee23e3303a32",
+      "bytes": 15477
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_frequency_matrix.py",
+      "sourceSha256": "97797ab676a58f16785bf4234d41eb5cd01abc0a42f39edc4e20f926b2c2b336",
+      "bytes": 19894
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_frequency_source_report.md",
+      "sourceSha256": "46b91c1e159f6b467809c0119511b24bef270e4c960edf0755d2034fd93fa421",
+      "bytes": 2842
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_frequency_matrix_report.md",
+      "sourceSha256": "0f52b0217f657a1d995f0ef32fcf8b7b1d5b3ed6b2578e3333d463aa56047777",
+      "bytes": 1887
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_finite_scattering_domain_report.md",
+      "sourceSha256": "f5f34fb9a6c6e7bb4eb9598a52c6713508fe383a6f575430a8a5b1daf14529b3",
+      "bytes": 3017
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_fixed_point_saved_current_note.md",
+      "sourceSha256": "be704678fa3dd9fd94abba7f5ba6e25b73f8b7549e7bffa64bd5513d0a13de11",
+      "bytes": 2453
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_review_r2_prompt.md",
+      "sourceSha256": "de7c23034c9c5231ab2daa444c2982b60dce7051fa053ccf18b4a99436573555",
+      "bytes": 6436
+    },
+    {
+      "path": "research/pde_ledger_v3/scripts/S11c_d_mixing_scattering_sympy_audit.py",
+      "sourceSha256": "5bf77729682960bb59f10c672a5fe3f67a98b0a9533da7c6189a37183596050f",
+      "bytes": 545480
+    },
+    {
+      "path": "research/pde_ledger_v3/scripts/S11c_c1_bulk_closure_sympy_audit.py",
+      "sourceSha256": "02abfa93076efcb38a1b300daf9adedf5e3ad425ebf9d73555d730cea935ba20",
+      "bytes": 101082
+    },
+    {
+      "path": "research/pde_ledger_v3/scripts/S11c_c2_selfenergy_fold_sympy_audit.py",
+      "sourceSha256": "0e90c751d36178a9846e75c38ac4ad0c8591b4b8ce11b6dc194218913265d434",
+      "bytes": 102548
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_frequency_source_checkpoint.json",
+      "sourceSha256": "ca5a3fa0f33d4f5457f9c5adb46b7c9da9f935661d839d036f12b0de86692bfe",
+      "bytes": 1877129
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_frequency_matrix_checkpoint.json",
+      "sourceSha256": "0c350c5f9c554c2e585920745157be826daf51775e05676a0554d8670a750663",
+      "bytes": 60680
+    }
+  ],
+  "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/method-review-r2",
+  "role": "METHOD_REVIEW_NOT_IMPLEMENTATION_OR_SCIENCE",
+  "authority": {
+    "role": "User-renewed numerical goal; exact corrected-packet external consent received",
+    "scope": "LAB_HELD/RHO4_CONSTANT, saved tangents, frequencies3/2.3/4, at most30 finite solves and required controls; stop with results or method blocker",
+    "reviewScope": "Fresh Claude/Grok prospective method reviews; no peer sharing or automatic new packet/export",
+    "toolingPolicy": "Pure loader/format/comparison fixes: local tests and rationale. Equations, method or claims require independent review.",
+    "authoringClock": {
+      "firstDurableMarkUtc": "2026-09-30T02:25:17+00:00",
+      "maximumActiveHours": 16,
+      "priorChargedActiveHours": 0.7344,
+      "resumedSessionStartUtc": "2026-09-30T04:01:30+00:00",
+      "chargedTotalActiveHours": 0.9103,
+      "remainingActiveHours": 15.0897,
+      "asOfUtc": "2026-09-30T04:12:03.115022+00:00",
+      "reviewAndUserWaitCounts": false,
+      "reset": false,
+      "clockStatus": "WAITING_REVIEWS_NO_AUTHORING_CHARGE_WHILE_WAITING"
+    },
+    "noScienceLaunched": true,
+    "exactSymbolicTrack": "PARKED",
+    "methodCleared": false,
+    "scopeDoesNotAuthorizeExternalExportUntilPacketConsent": true,
+    "observable": "Signed retained finite-model transverse-current deficit; physical-loss interpretation remains separately unresolved, not an asserted leakage rate."
+  },
+  "methodSha256": "5a28111302d28af4847e7ed383f4962543c4b93b5bc2b89a2e8620c5dbec03b8",
+  "promptSha256": "de7c23034c9c5231ab2daa444c2982b60dce7051fa053ccf18b4a99436573555",
+  "static": {
+    "sourceHashJoins": true,
+    "archiveMemberHashJoins": true,
+    "noScientificImportsOrRestoration": true,
+    "transportAstParse": true,
+    "runnerSha256": "013915869ac2e95352ba3bda80d4546825b2135ec44b097a9ddd188b7f8ee0b0",
+    "launcherSha256": "787eb075359219c1d84b127321f3c6dff2f78177e988a0fdc79b493379388feb",
+    "completionMessageSha256": "e3c527001cd3c4e5684bbe265b151ffd1f55b0f146d679aa49fe3d3cf3070880"
+  },
+  "resumptionAuthorityPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_resumption.json",
+  "resumptionAuthoritySha256": "4883c7fb1510b770f33ee9ae38faa499eef283ff5ead9c385692420cc6125a73",
+  "priorReviewedBaselineCommit": "7ea06dca",
+  "packetPreparationClock": {
+    "firstDurableMarkUtc": "2026-09-30T02:25:17+00:00",
+    "maximumActiveHours": 16,
+    "priorChargedActiveHours": 0.7344,
+    "resumedSessionStartUtc": "2026-09-30T04:01:30+00:00",
+    "chargedTotalActiveHours": 0.8787,
+    "remainingActiveHours": 15.1213,
+    "asOfUtc": "2026-09-30T04:10:09.397271+00:00",
+    "reviewAndUserWaitCounts": false,
+    "reset": false
+  },
+  "exactConsentQuestionSent": true,
+  "scientificImplementationStarted": false,
+  "scientificExecutionLaunched": false,
+  "explicitPacketApproval": {
+    "status": "EXPLICITLY_APPROVED_FIXED_PACKET",
+    "packetSha256": "d55aa3f6674e8e491dd43bd0b3ef385d566f00e0e3b327399fe1aff3d1a439e9",
+    "archiveSha256": "6feaa22965a18f82fe7bd3d8b7c57ce9f32e52a0bd45b79e756afb192b2e7524",
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "scope": "One prospective revised method review each by fresh Claude and Grok; no scientific execution during review",
+    "approvedUtc": "2026-09-30T06:21:28.148611+00:00",
+    "literalUserReply": "Approved",
+    "packetFiles": 19,
+    "packetBytes": 316856,
+    "currentThread": "01a0e01b-ef84-7192-817f-584cda5d339b"
+  },
+  "launch": {
+    "jobPid": 2695391,
+    "watcherPid": 2695392,
+    "packetSha256": "d55aa3f6674e8e491dd43bd0b3ef385d566f00e0e3b327399fe1aff3d1a439e9",
+    "reviewers": [
+      "Claude",
+      "Grok"
+    ],
+    "concurrentReviewWorkers": 1,
+    "scienceCalls": 0,
+    "runnerSha256": "013915869ac2e95352ba3bda80d4546825b2135ec44b097a9ddd188b7f8ee0b0",
+    "launcherSha256": "787eb075359219c1d84b127321f3c6dff2f78177e988a0fdc79b493379388feb"
+  },
+  "hostStartupCheck": {
+    "checkedUtc": "2026-09-30T06:21:56.961649+00:00",
+    "reviewState": "RUNNING",
+    "hookStatus": "waiting",
+    "pids": {
+      "coordinator": 2695391,
+      "watcher": 2695392,
+      "claude": 2695397
+    },
+    "alive": {
+      "coordinator": true,
+      "watcher": true,
+      "claude": true
+    },
+    "coordinatorStderrBytes": 0,
+    "scienceCalls": 0,
+    "scope": "Single host startup check, no reviewer progress polling"
+  },
+  "submissionNote": "Read-only method review; no implementation or science. No time charged for intervening user/reviewer waiting. Single startup check complete; await local hook without model polling.",
+  "completionRecordPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_review_r2_record.json",
+  "completionAuthoringClock": {
+    "maximumActiveHours": 16,
+    "priorChargedActiveHours": 0.9103,
+    "completionInspectionStartUtc": "2026-09-30T06:46:09.297195+00:00",
+    "inspectionAndPreservationChargedHours": 0.1657,
+    "chargedTotalActiveHours": 1.076,
+    "remainingActiveHours": 14.924,
+    "asOfUtc": "2026-09-30T06:56:05.962136+00:00",
+    "reviewAndUserWaitCounts": false,
+    "reset": false,
+    "clockStatus": "AWAITING_PERMISSION_FOR_MISSING_GROK_REPORT_NO_WAIT_CHARGE"
+  },
+  "methodCleared": false
+}

@@ -1,3 +1,45 @@
+**CURRENT STATUS — numerical method round 2 has a missing report (2026-09-30):**
+Both review processes ended, but only Claude delivered a final review. Its
+stdout was truncated to the tail; both exact report segments were recovered
+offline from the same session log. Literal verdict: CLEAR FOR THIS BOUNDED
+NUMERICAL RADIATING METHOD, with five small pre-implementation corrections.
+Grok's stdout, chat history and streamed message log contain only narration;
+there is no final verdict. Exit 0/end_turn is not clearance. Full provenance,
+literal text and verified packet/source/receipt hashes are in
+`S11c_d_numerical_radiating_review_r2_record.json`; see the concise disposition.
+
+No method edit, implementation or science has started. The reviewed draft stays
+unchanged. One same-session Grok follow-up is prepared to finish the missing
+report against the unchanged packet, without peer material. It has NOT been
+sent: the completion instruction prohibits automatic reviewer/transport retries.
+Await permission for that follow-up; do not invent a second verdict or READY
+gate. The 16-hour active-authoring clock continues in the preparation record
+with waiting excluded. Exact omega1 remains parked. Scratch remains ignored.
+
+Earlier entries below are preserved history, not current launch instructions.
+
+**CURRENT DIRECTION — corrected numerical method prepared after renewed Go
+(2026-09-29):** the user resumes the same numerical goal and hard cap, not the
+exact RIGHT track. The first NEEDS REVISION/NEEDS REVISION round and unchanged
+draft remain at7ea06dca. New method_r2 and review_r2_prompt address boundary
+selection, middle-leg checks, current partition and honest retained-order
+interpretation. The finite list remains30 solves at3/2.3/4, one case/tangents;
+no new physics run or implementation has started.
+
+New fixed packet:19files/316856bytes,
+SHA256d55aa3f6674e8e491dd43bd0b3ef385d566f00e0e3b327399fe1aff3d1a439e9,
+root `_scratch/s11c/s11c-d-numerical-radiating-20260929/method-review-r2`.
+The user explicitly replied “Approved”; all packet/archive/source/transport
+hashes matched. Submitted2026-09-30 local with coordinator2695391 and
+watcher2695392. The hook armed before review; one host startup check confirmed
+both and fresh Claude alive, with Grok queued sequentially. Wait for the local
+completion/error hook and both reports before edits/adjudication; no peer
+reports, reviewer retry or polling. Method clearance must precede
+faithful implementation and actual guard/supervisor readiness before science.
+Authoring clock carries forward0.7344h, with new active time recorded in the
+round2 preparation; no reset and no charging user/reviewer waits. Stop if this
+requires a larger boundary/integration project or exhausts the16h cap.
+
 **CURRENT STOP — numerical method not cleared (2026-09-29):**
 The one authorized method round finished: Claude NEEDS REVISION, Grok NEEDS
 REVISION. Both complete literal reports and source/packet/receipt verification

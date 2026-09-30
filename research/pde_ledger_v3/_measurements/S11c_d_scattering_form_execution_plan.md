@@ -1,3 +1,49 @@
+**CURRENT STATUS — incomplete round-2 review delivery (2026-09-30):**
+Claude's complete report was recovered from two exact session-log segments;
+its literal verdict is CLEAR FOR THIS BOUNDED NUMERICAL RADIATING METHOD with
+five small pre-implementation corrections. Grok ended after progress narration,
+without a report or verdict in stdout or either saved message stream. Both
+process exits are recorded; they do not supply paired method clearance.
+All packet/archive/source/receipt hashes match. See numerical_radiating
+`review_r2_record.json` and `review_r2_disposition.md` for exact evidence.
+
+Preserve the reviewed draft unchanged. No implementation, scientific payload
+restoration or run has started. The smallest next step is one follow-up in
+the same Grok session against the unchanged packet, solely to finish its
+report. Its exact prompt is prepared but unsent. The user's no-automatic-retry
+instruction requires permission for that extra turn. No new reviewer round,
+peer sharing, science READY gate or exact-track restart is authorized by this
+completion inspection. The 16-active-hour cap carries forward; waiting is free.
+
+Earlier entries below are preserved history, not a current launch queue.
+
+**CURRENT DIRECTION — user resumed the bounded numerical goal (2026-09-29):**
+The user renewed “Go” with the same two-authoring-day hard stop, one case,
+saved tangents, three frequencies and all requested controls. The existing
+16-active-hour clock continues without reset. The earlier stop/report is
+preserved below and at7ea06dca; it is no longer a cancellation of preparation.
+
+`S11c_d_numerical_radiating_method_r2.md` specifies per-contrast/all18-candidate
+continuation and sheet checks, independent middle-leg integration, a responsive
+uniform non-transverse check and finite-end cross-current checks. It keeps
+physical retained-order loss interpretation separate from numerical resolution;
+neither port power added to current nor a sub-threshold error bound is adopted.
+No implementation, payload restoration or science has run. Pure tooling fixes
+remain local-test work; method changes receive independent review.
+
+The corrected fresh Claude/Grok packet was explicitly approved and submitted
+on2026-09-30 local:19files/316856bytes,
+SHA256d55aa3f6674e8e491dd43bd0b3ef385d566f00e0e3b327399fe1aff3d1a439e9.
+The user's literal reply was “Approved.” Packet/archive/source/transport hashes
+matched; the hook was armed before reviews. One host startup check confirmed
+the coordinator, hook and fresh Claude alive, with Grok queued sequentially.
+See resumption/review_r2_preparation for authority, remaining budget and exact
+identities. Wait silently for both reports before adjudication/edits; no polling,
+peer sharing, transport retry or new scientific work during review.
+After substantive clearance, the goal covers faithful implementation with
+actual execution readiness and guarded runs; do not infer readiness from a
+document verdict alone. Stop with results or a concrete larger-method blocker.
+
 **CURRENT STOP — numerical method review found substantive gaps (2026-09-29):**
 Both fresh literal verdicts are NEEDS REVISION. All packet/archive/source and
 review-receipt hashes match. No new implementation or science ran. The source

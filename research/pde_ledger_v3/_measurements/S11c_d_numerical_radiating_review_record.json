@@ -1,0 +1,597 @@
+{
+  "status": "REVIEW_COMPLETE_METHOD_NOT_CLEARED_NO_SCIENCE",
+  "inspectedUtc": "2026-09-30T03:11:56.953377+00:00",
+  "independentMethodClearance": false,
+  "authorIndependentClearanceClaim": false,
+  "packetSha256": "625116f563970d763870b5d1dfdcd987140ef738db5dae5be6053686ce18bde8",
+  "archiveSha256": "3c4ce7d2a24e0a17c5064d8501e02c134dd4a74b10f482c319da723a6ad0073a",
+  "packetState": {
+    "status": "AWAITING_ADJUDICATION",
+    "preparedUtc": "2026-09-30T02:33:47.843226+00:00",
+    "currentThread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "packetDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/method-review/packet",
+    "packetSha256": "625116f563970d763870b5d1dfdcd987140ef738db5dae5be6053686ce18bde8",
+    "archiveSha256": "3c4ce7d2a24e0a17c5064d8501e02c134dd4a74b10f482c319da723a6ad0073a",
+    "packetFiles": 19,
+    "packetBytes": 311706,
+    "fileHashes": {
+      "packet-index.json": "5afd4bb9e75406e04e73338b5fdc153077a0eacb9c1269e0ae98d3bcf5774bf9",
+      "research/pde_ledger_v3/_measurements/S11c_d_finite_scattering.py": "f187d9426be8069342a363a0466c175d32a8cb46101e32a14c433ccb9118e469",
+      "research/pde_ledger_v3/_measurements/S11c_d_finite_scattering_domain.py": "73341408d0f6c1eb517e435dea986e180ff53615a6102697a8e3ba6747bd35aa",
+      "research/pde_ledger_v3/_measurements/S11c_d_finite_scattering_domain_report.md": "f5f34fb9a6c6e7bb4eb9598a52c6713508fe383a6f575430a8a5b1daf14529b3",
+      "research/pde_ledger_v3/_measurements/S11c_d_frequency_chart.py": "06b1e19ffd03349951488b13580f336dc7d12e15a6941191026697b5c413ed97",
+      "research/pde_ledger_v3/_measurements/S11c_d_frequency_end.py": "f7a698ed27872ed0594692dbf671136b079279c32f9198bd92fcee23e3303a32",
+      "research/pde_ledger_v3/_measurements/S11c_d_frequency_matrix.py": "97797ab676a58f16785bf4234d41eb5cd01abc0a42f39edc4e20f926b2c2b336",
+      "research/pde_ledger_v3/_measurements/S11c_d_frequency_matrix_report.md": "0f52b0217f657a1d995f0ef32fcf8b7b1d5b3ed6b2578e3333d463aa56047777",
+      "research/pde_ledger_v3/_measurements/S11c_d_frequency_source.py": "9be20be462bc10bfcaa7af643b9301948dd79bc2e08eb24ebcd1386a81efcdac",
+      "research/pde_ledger_v3/_measurements/S11c_d_frequency_source_report.md": "46b91c1e159f6b467809c0119511b24bef270e4c960edf0755d2034fd93fa421",
+      "research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_method.md": "99039c717ca4104ac40b8782e5594fbab7a6d95d87ffb5d140c3de9dd77a4fee",
+      "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_fixed_point_saved_current_note.md": "be704678fa3dd9fd94abba7f5ba6e25b73f8b7549e7bffa64bd5513d0a13de11",
+      "research/pde_ledger_v3/_measurements/S11c_d_variable_profile_development_input.json": "660b2b0b54494dce964c7f5fbd722a76a7e894d8ed92b18b5eb6290c3c10f1d5",
+      "review-prompt.md": "658932c71d023dcea7608346999db24fbab486bbc8067bb0be467a77c2c3cbfe",
+      "saved-source-metadata.json": "dee0d2bd4d128c7319a024ed5ea34558f727880c20a358ac9d84a4a77c8fb4a1",
+      "scope-and-budget.json": "4ded90b5e7bf6408549a2a0278b9d8ec69e131c381850ec1b88e09b9e1e3f04b",
+      "source-excerpts/S11c_c1_bulk_closure_sympy_audit.txt": "ba8b75ea841b4a856cecb3e55819cc654c9c31d12d52e53e4d6bb2a6b7299bcc",
+      "source-excerpts/S11c_c2_selfenergy_fold_sympy_audit.txt": "505b1ec8c8d582aef9dce904c4e74734776eaf39829e6ee2de916aac46f40dc6",
+      "source-excerpts/S11c_d_mixing_scattering_sympy_audit.txt": "7289f9c9c9acfefcddb9b832b4a941df8cc23dba59e6e4395126fb4e3d12f5e6"
+    },
+    "sourceRecords": [
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_method.md",
+        "sourceSha256": "99039c717ca4104ac40b8782e5594fbab7a6d95d87ffb5d140c3de9dd77a4fee",
+        "bytes": 17123
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_variable_profile_development_input.json",
+        "sourceSha256": "660b2b0b54494dce964c7f5fbd722a76a7e894d8ed92b18b5eb6290c3c10f1d5",
+        "bytes": 1884
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_finite_scattering.py",
+        "sourceSha256": "f187d9426be8069342a363a0466c175d32a8cb46101e32a14c433ccb9118e469",
+        "bytes": 30252
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_finite_scattering_domain.py",
+        "sourceSha256": "73341408d0f6c1eb517e435dea986e180ff53615a6102697a8e3ba6747bd35aa",
+        "bytes": 13300
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_frequency_source.py",
+        "sourceSha256": "9be20be462bc10bfcaa7af643b9301948dd79bc2e08eb24ebcd1386a81efcdac",
+        "bytes": 29576
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_frequency_chart.py",
+        "sourceSha256": "06b1e19ffd03349951488b13580f336dc7d12e15a6941191026697b5c413ed97",
+        "bytes": 23653
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_frequency_end.py",
+        "sourceSha256": "f7a698ed27872ed0594692dbf671136b079279c32f9198bd92fcee23e3303a32",
+        "bytes": 15477
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_frequency_matrix.py",
+        "sourceSha256": "97797ab676a58f16785bf4234d41eb5cd01abc0a42f39edc4e20f926b2c2b336",
+        "bytes": 19894
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_frequency_source_report.md",
+        "sourceSha256": "46b91c1e159f6b467809c0119511b24bef270e4c960edf0755d2034fd93fa421",
+        "bytes": 2842
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_frequency_matrix_report.md",
+        "sourceSha256": "0f52b0217f657a1d995f0ef32fcf8b7b1d5b3ed6b2578e3333d463aa56047777",
+        "bytes": 1887
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_finite_scattering_domain_report.md",
+        "sourceSha256": "f5f34fb9a6c6e7bb4eb9598a52c6713508fe383a6f575430a8a5b1daf14529b3",
+        "bytes": 3017
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_fixed_point_saved_current_note.md",
+        "sourceSha256": "be704678fa3dd9fd94abba7f5ba6e25b73f8b7549e7bffa64bd5513d0a13de11",
+        "bytes": 2453
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_review_prompt.md",
+        "sourceSha256": "658932c71d023dcea7608346999db24fbab486bbc8067bb0be467a77c2c3cbfe",
+        "bytes": 5288
+      },
+      {
+        "path": "research/pde_ledger_v3/scripts/S11c_d_mixing_scattering_sympy_audit.py",
+        "sourceSha256": "5bf77729682960bb59f10c672a5fe3f67a98b0a9533da7c6189a37183596050f",
+        "bytes": 545480
+      },
+      {
+        "path": "research/pde_ledger_v3/scripts/S11c_c1_bulk_closure_sympy_audit.py",
+        "sourceSha256": "02abfa93076efcb38a1b300daf9adedf5e3ad425ebf9d73555d730cea935ba20",
+        "bytes": 101082
+      },
+      {
+        "path": "research/pde_ledger_v3/scripts/S11c_c2_selfenergy_fold_sympy_audit.py",
+        "sourceSha256": "0e90c751d36178a9846e75c38ac4ad0c8591b4b8ce11b6dc194218913265d434",
+        "bytes": 102548
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_frequency_source_checkpoint.json",
+        "sourceSha256": "ca5a3fa0f33d4f5457f9c5adb46b7c9da9f935661d839d036f12b0de86692bfe",
+        "bytes": 1877129
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_frequency_matrix_checkpoint.json",
+        "sourceSha256": "0c350c5f9c554c2e585920745157be826daf51775e05676a0554d8670a750663",
+        "bytes": 60680
+      }
+    ],
+    "scienceCalls": 0,
+    "startedUtc": "2026-09-30T02:48:23.304898+00:00",
+    "supervisorPid": 2639468,
+    "concurrentReviewWorkers": 1,
+    "finishedUtc": "2026-09-30T03:08:37.885232+00:00",
+    "productionAuthorized": false,
+    "reviewVerdict": "NOT_ADJUDICATED"
+  },
+  "packetIndex": {
+    "role": "Prospective numerical radiating method/document review; no new worker or result",
+    "method": "research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_method.md",
+    "scope": "scope-and-budget.json",
+    "sourceMetadata": "saved-source-metadata.json",
+    "sourceExcerpts": [
+      {
+        "packetPath": "source-excerpts/S11c_d_mixing_scattering_sympy_audit.txt",
+        "originalPath": "research/pde_ledger_v3/scripts/S11c_d_mixing_scattering_sympy_audit.py",
+        "originalSha256": "5bf77729682960bb59f10c672a5fe3f67a98b0a9533da7c6189a37183596050f",
+        "selections": [
+          {
+            "selector": "NumericalReducedAction",
+            "startLine": 785,
+            "endLine": 840
+          },
+          {
+            "selector": "BoundedActionQuadrature",
+            "startLine": 843,
+            "endLine": 938
+          },
+          {
+            "selector": "BoundedSourceFourierQuadrature",
+            "startLine": 1163,
+            "endLine": 1570
+          },
+          {
+            "selector": "UniformSlabCurrent",
+            "startLine": 2560,
+            "endLine": 2742
+          },
+          {
+            "selector": "SlabEnergyBalance.matrix",
+            "startLine": 2801,
+            "endLine": 2812
+          },
+          {
+            "selector": "SlabEnergyBalance.construct",
+            "startLine": 2814,
+            "endLine": 2888
+          },
+          {
+            "selector": "ClosedAcousticEnergy.construct",
+            "startLine": 2991,
+            "endLine": 3131
+          },
+          {
+            "selector": "ClosedCurrentPairing.__init__",
+            "startLine": 3183,
+            "endLine": 3198
+          },
+          {
+            "selector": "ClosedCurrentPairing.polarize",
+            "startLine": 3200,
+            "endLine": 3239
+          },
+          {
+            "selector": "ClosedCurrentPairing.construct",
+            "startLine": 3241,
+            "endLine": 3424
+          },
+          {
+            "selector": "ModalCurrentSubspaces.prepare",
+            "startLine": 4141,
+            "endLine": 4193
+          },
+          {
+            "selector": "TwoEndedMatchingChannels",
+            "startLine": 4727,
+            "endLine": 4873
+          },
+          {
+            "selector": "ChannelInput",
+            "startLine": 4876,
+            "endLine": 4947
+          },
+          {
+            "selector": "JointBulkSheetPath",
+            "startLine": 5038,
+            "endLine": 5164
+          },
+          {
+            "selector": "FullPencilModes.analytic",
+            "startLine": 5414,
+            "endLine": 5431
+          }
+        ]
+      },
+      {
+        "packetPath": "source-excerpts/S11c_c1_bulk_closure_sympy_audit.txt",
+        "originalPath": "research/pde_ledger_v3/scripts/S11c_c1_bulk_closure_sympy_audit.py",
+        "originalSha256": "02abfa93076efcb38a1b300daf9adedf5e3ad425ebf9d73555d730cea935ba20",
+        "selections": [
+          {
+            "selector": "lambda_kernels",
+            "startLine": 576,
+            "endLine": 584
+          },
+          {
+            "selector": "dtn_flat_symbol",
+            "startLine": 602,
+            "endLine": 603
+          },
+          {
+            "selector": "dtn_first_kernel",
+            "startLine": 606,
+            "endLine": 635
+          },
+          {
+            "selector": "hanzawa_first_kernel",
+            "startLine": 638,
+            "endLine": 707
+          },
+          {
+            "selector": "port_matrix",
+            "startLine": 968,
+            "endLine": 993
+          },
+          {
+            "selector": "rederive_flat_face_response",
+            "startLine": 1023,
+            "endLine": 1043
+          }
+        ]
+      },
+      {
+        "packetPath": "source-excerpts/S11c_c2_selfenergy_fold_sympy_audit.txt",
+        "originalPath": "research/pde_ledger_v3/scripts/S11c_c2_selfenergy_fold_sympy_audit.py",
+        "originalSha256": "0e90c751d36178a9846e75c38ac4ad0c8591b4b8ce11b6dc194218913265d434",
+        "selections": [
+          {
+            "selector": "matrix_evaluate",
+            "startLine": 347,
+            "endLine": 364
+          },
+          {
+            "selector": "kernel_bridge",
+            "startLine": 367,
+            "endLine": 418
+          },
+          {
+            "selector": "outgoing_spectral",
+            "startLine": 438,
+            "endLine": 452
+          },
+          {
+            "selector": "kernel_apply",
+            "startLine": 455,
+            "endLine": 471
+          }
+        ]
+      }
+    ],
+    "suppliedFiles": [
+      "research/pde_ledger_v3/_measurements/S11c_d_finite_scattering.py",
+      "research/pde_ledger_v3/_measurements/S11c_d_finite_scattering_domain.py",
+      "research/pde_ledger_v3/_measurements/S11c_d_finite_scattering_domain_report.md",
+      "research/pde_ledger_v3/_measurements/S11c_d_frequency_chart.py",
+      "research/pde_ledger_v3/_measurements/S11c_d_frequency_end.py",
+      "research/pde_ledger_v3/_measurements/S11c_d_frequency_matrix.py",
+      "research/pde_ledger_v3/_measurements/S11c_d_frequency_matrix_report.md",
+      "research/pde_ledger_v3/_measurements/S11c_d_frequency_source.py",
+      "research/pde_ledger_v3/_measurements/S11c_d_frequency_source_report.md",
+      "research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_method.md",
+      "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_fixed_point_saved_current_note.md",
+      "research/pde_ledger_v3/_measurements/S11c_d_variable_profile_development_input.json",
+      "review-prompt.md",
+      "saved-source-metadata.json",
+      "scope-and-budget.json",
+      "source-excerpts/S11c_c1_bulk_closure_sympy_audit.txt",
+      "source-excerpts/S11c_c2_selfenergy_fold_sympy_audit.txt",
+      "source-excerpts/S11c_d_mixing_scattering_sympy_audit.txt"
+    ],
+    "sources": [
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_method.md",
+        "sourceSha256": "99039c717ca4104ac40b8782e5594fbab7a6d95d87ffb5d140c3de9dd77a4fee",
+        "bytes": 17123
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_variable_profile_development_input.json",
+        "sourceSha256": "660b2b0b54494dce964c7f5fbd722a76a7e894d8ed92b18b5eb6290c3c10f1d5",
+        "bytes": 1884
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_finite_scattering.py",
+        "sourceSha256": "f187d9426be8069342a363a0466c175d32a8cb46101e32a14c433ccb9118e469",
+        "bytes": 30252
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_finite_scattering_domain.py",
+        "sourceSha256": "73341408d0f6c1eb517e435dea986e180ff53615a6102697a8e3ba6747bd35aa",
+        "bytes": 13300
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_frequency_source.py",
+        "sourceSha256": "9be20be462bc10bfcaa7af643b9301948dd79bc2e08eb24ebcd1386a81efcdac",
+        "bytes": 29576
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_frequency_chart.py",
+        "sourceSha256": "06b1e19ffd03349951488b13580f336dc7d12e15a6941191026697b5c413ed97",
+        "bytes": 23653
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_frequency_end.py",
+        "sourceSha256": "f7a698ed27872ed0594692dbf671136b079279c32f9198bd92fcee23e3303a32",
+        "bytes": 15477
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_frequency_matrix.py",
+        "sourceSha256": "97797ab676a58f16785bf4234d41eb5cd01abc0a42f39edc4e20f926b2c2b336",
+        "bytes": 19894
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_frequency_source_report.md",
+        "sourceSha256": "46b91c1e159f6b467809c0119511b24bef270e4c960edf0755d2034fd93fa421",
+        "bytes": 2842
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_frequency_matrix_report.md",
+        "sourceSha256": "0f52b0217f657a1d995f0ef32fcf8b7b1d5b3ed6b2578e3333d463aa56047777",
+        "bytes": 1887
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_finite_scattering_domain_report.md",
+        "sourceSha256": "f5f34fb9a6c6e7bb4eb9598a52c6713508fe383a6f575430a8a5b1daf14529b3",
+        "bytes": 3017
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_fixed_point_saved_current_note.md",
+        "sourceSha256": "be704678fa3dd9fd94abba7f5ba6e25b73f8b7549e7bffa64bd5513d0a13de11",
+        "bytes": 2453
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_review_prompt.md",
+        "sourceSha256": "658932c71d023dcea7608346999db24fbab486bbc8067bb0be467a77c2c3cbfe",
+        "bytes": 5288
+      },
+      {
+        "path": "research/pde_ledger_v3/scripts/S11c_d_mixing_scattering_sympy_audit.py",
+        "sourceSha256": "5bf77729682960bb59f10c672a5fe3f67a98b0a9533da7c6189a37183596050f",
+        "bytes": 545480
+      },
+      {
+        "path": "research/pde_ledger_v3/scripts/S11c_c1_bulk_closure_sympy_audit.py",
+        "sourceSha256": "02abfa93076efcb38a1b300daf9adedf5e3ad425ebf9d73555d730cea935ba20",
+        "bytes": 101082
+      },
+      {
+        "path": "research/pde_ledger_v3/scripts/S11c_c2_selfenergy_fold_sympy_audit.py",
+        "sourceSha256": "0e90c751d36178a9846e75c38ac4ad0c8591b4b8ce11b6dc194218913265d434",
+        "bytes": 102548
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_frequency_source_checkpoint.json",
+        "sourceSha256": "ca5a3fa0f33d4f5457f9c5adb46b7c9da9f935661d839d036f12b0de86692bfe",
+        "bytes": 1877129
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_frequency_matrix_checkpoint.json",
+        "sourceSha256": "0c350c5f9c554c2e585920745157be826daf51775e05676a0554d8670a750663",
+        "bytes": 60680
+      }
+    ],
+    "notSupplied": [
+      "Scientific binary payloads",
+      "Peer reviews",
+      "External Claude commentary",
+      "Exact-track reports or source",
+      "Credentials"
+    ]
+  },
+  "approval": {
+    "status": "EXPLICITLY_APPROVED_FIXED_PACKET",
+    "packetSha256": "625116f563970d763870b5d1dfdcd987140ef738db5dae5be6053686ce18bde8",
+    "archiveSha256": "3c4ce7d2a24e0a17c5064d8501e02c134dd4a74b10f482c319da723a6ad0073a",
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "scope": "One prospective method/document review each by fresh Claude and Grok; no scientific execution during review",
+    "approvedUtc": "2026-09-30T02:48:10.175914+00:00",
+    "literalUserReply": "Approved",
+    "packetFiles": 19,
+    "packetBytes": 311706,
+    "currentThread": "01a0e01b-ef84-7192-817f-584cda5d339b"
+  },
+  "coordinator": {
+    "status": "BOTH_ATTEMPTS_FINISHED_AWAITING_LITERAL_ADJUDICATION",
+    "finishedUtc": "2026-09-30T03:08:37.886864+00:00",
+    "scienceCalls": 0
+  },
+  "launch": {
+    "jobPid": 2639468,
+    "watcherPid": 2639469,
+    "packetSha256": "625116f563970d763870b5d1dfdcd987140ef738db5dae5be6053686ce18bde8",
+    "reviewers": [
+      "Claude",
+      "Grok"
+    ],
+    "concurrentReviewWorkers": 1,
+    "scienceCalls": 0,
+    "runnerSha256": "0746c71a5a550d6f4622511909ea6e1552ac24173996a6a6bfa40ea2c8756e7d",
+    "launcherSha256": "72018e3d7817a9eb65f63acdb1d07b5aab2f8cca308a79454f079a4185690cd2"
+  },
+  "static": {
+    "sourceHashJoins": true,
+    "archiveMemberHashJoins": true,
+    "noScientificImportsOrRestoration": true,
+    "transportAstParse": true,
+    "runnerSha256": "0746c71a5a550d6f4622511909ea6e1552ac24173996a6a6bfa40ea2c8756e7d",
+    "launcherSha256": "72018e3d7817a9eb65f63acdb1d07b5aab2f8cca308a79454f079a4185690cd2",
+    "completionMessageSha256": "a219931f8ac4f6c3c618369b7935682e3e5c3d7453474fdbb5d3c098b87c9232"
+  },
+  "watcher": {
+    "status": "finished",
+    "watcherPid": 2639469,
+    "jobPid": 2639468,
+    "thread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+    "startedUtc": "2026-09-30T02:48:23.195292+00:00",
+    "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
+    "messageSha256": "a219931f8ac4f6c3c618369b7935682e3e5c3d7453474fdbb5d3c098b87c9232",
+    "notifications": {
+      "completion": {
+        "status": "queued",
+        "exitCode": 0,
+        "finishedUtc": "2026-09-30T03:08:38.009075+00:00"
+      }
+    }
+  },
+  "reviews": [
+    {
+      "reviewer": "claude",
+      "literalVerdict": "NEEDS REVISION",
+      "receipt": {
+        "engine": "claude",
+        "sessionId": "f7e480ba-eba8-4298-9557-28b62d7ddc38",
+        "command": [
+          "/home/trevnorris/.local/bin/claude",
+          "--print",
+          "--output-format",
+          "json",
+          "--safe-mode",
+          "--restricted",
+          "--tools",
+          "Read,Glob,Grep",
+          "--allowedTools",
+          "Read,Glob,Grep",
+          "--permission-mode",
+          "dontAsk",
+          "--strict-mcp-config",
+          "--mcp-config",
+          "{\"mcpServers\":{}}",
+          "--setting-sources",
+          "",
+          "--disable-slash-commands",
+          "--session-id",
+          "f7e480ba-eba8-4298-9557-28b62d7ddc38"
+        ],
+        "cwd": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/method-review/packet",
+        "startedUtc": "2026-09-30T02:48:23.319577+00:00",
+        "packetSha256": "625116f563970d763870b5d1dfdcd987140ef738db5dae5be6053686ce18bde8",
+        "promptSha256": "658932c71d023dcea7608346999db24fbab486bbc8067bb0be467a77c2c3cbfe",
+        "scientificExecutionEnabled": false,
+        "reviewVerdict": "NOT_ADJUDICATED",
+        "pid": 2639474,
+        "exitStatus": 0,
+        "finishedUtc": "2026-09-30T02:59:08.117574+00:00",
+        "wallSeconds": 644.7964972429909,
+        "outputSha256": "45eb13fb922ae4a42a952989830fa1b49c2a2914a98a3aa0c57401527dcf84bd",
+        "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderrBytes": 0
+      },
+      "rawOutputPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/method-review/claude.json",
+      "rawOutputSha256": "45eb13fb922ae4a42a952989830fa1b49c2a2914a98a3aa0c57401527dcf84bd",
+      "literalReport": "**NEEDS REVISION**\n\nThis is not a no-go. The integration premise holds up under source reasoning, and the method's other stop rules and labels are sound. Four gaps are blocking, though, and each lets a spurious finite-model deficit through every listed check. All four corrections are small and stay within the same instrument. Everything below is source reading and hand-derived reasoning. I did no computation, symbolic derivation or ablation.\n\n## 1. Bulk branch and integration: supported, with one required addition\n\n**Reasoning, not measured.**\n- **Branch.** c2 `outgoing_spectral` (`S11c_c2\u2026:441-446`) takes `roots[-1]` of `q\u00b2+|k|\u00b2\u2212\u03c9\u00b2/c\u00b2` and multiplies it by `sign(\u03c9)` where the band is propagating. It uses the same root on the output, input and middle legs. For \u03c9>0 that gives q>0 in the band and, through the scimath sqrt (`S11c_d\u2026:890`), Im q>0 outside it. This matches method lines 77-79. With the fixed tangents, all three legs share the same endpoints \u00b1b, b\u00b2=\u03c9\u00b2/100\u22121/20, so splitting every leg at \u00b1b covers all branch points.\n- **Closure.** From `port_matrix` (`S11c_c1\u2026:976-980`), r(q)=q/(q+\u03b1) with \u03b1=\u03bb_A \u03c9/\u03c1_m and \u03bb_A=\u039b_A0/(1\u2212i\u03c9\u03c4_A). With the development-input values, \u03b1\u22480.218+0.050i, 0.275+0.083i and 0.345+0.138i at \u03c9=2.3, 3 and 4. Re \u03b1>0, so on the physical sheet |q+\u03b1| \u2265 Re \u03b1 \u2273 0.22. There is no coupled denominator zero on the physical sheet at any target. This assumes the native resolvent is the c1 form and \u039b_V0=\u039b_X0=0, which the input sets.\n- **Leg-by-leg singularities.** After on-shell reduction, `dtn_first_kernel` (`S11c_c1\u2026:619-626`) becomes z\u2081=i\u03c1\u03c9[h \u2212 h q_i/q_o \u2212 i t\u00b7k_i/(q_o q_i)].\n  - Diagonal term: r\u00b7z\u2080=\u03c1\u03c9/(q+\u03b1). Bounded, with only a \u221a cusp.\n  - First-order term: r_o z\u2081 r_i is bounded, because q_o and q_i cancel.\n  - Second-order term: the triangular 3\u00d73 in `kernel_bridge` (`S11c_c2\u2026:409-416`) gives second=\u2212c\u00b7r_o t\u2081 r_m t\u2082 r_i. The t\u2081\u00b7t\u2082 product carries up to 1/q_m\u00b2, and r_m\u221dq_m cancels only one power. So the **middle leg keeps an integrable |q_m|^{-1}**. dk=|q|d\u03b8 (interior) or |q|du (exterior) removes it exactly, and it also regularizes the outer-leg \u221a cusps. Orientation and mass (2K) are correctly described in method lines 86-89.\n  - The cancellation depends on \u039b_A0>0. Without it the middle leg would be ~1/(b\u2212|k|), which is not integrable. Record this as a condition.\n- **Required addition.**\n  - **What the method says** (lines 121-122): \"Independent scalar quadrature \u2026 checks selected endpoint-bearing row actions.\"\n  - **What the source shows:** the only existing independent routes (`SingleMomentum.adaptive`, `CachedMomentum.adaptive_outer`, `S11c_d\u2026:1448-1542`) are adaptive only on the outer leg. The inner and middle legs reuse the same panel rule.\n  - **Consequence:** the only leg with a genuine endpoint singularity is never independently checked.\n  - **Correction:** require at least one three-momentum row in which the middle leg is integrated by a rule other than sin/cosh, e.g. adaptive in k with breakpoints at \u00b1b and at the Abel centres.\n\n## 2. End boundaries: blockers B1 and B2\n\n**B1. Sheet and completeness monitoring (method lines 133-161).**\n- **Source.** `Pair.equation`/`solve` (`S11c_d_frequency_end.py:82-116`) solves for R, K and Q using the polynomial wave relation. The (K,Q) system is regular at q=0, so a tracked root can pass through the branch point and onto the improper (Im q<0, leaky) sheet with no Jacobian, residual or dimension signal.\n- **Why the existing stops miss it.** Near threshold at height 0.05, Im b\u00b2\u22480.0023 against Re b\u00b2\u22480.0029, so crossing is plausible. None of the method's stop rules (step failure, collision, dimension change) fires on a sheet crossing. The method also drops `BULK_DECAY_DISK_CERTIFIED` (lines 166-167) without naming a replacement.\n- **Completeness.** Only 5 of the 18 saved candidates per end are continued (`frequency_end.py:133`). An unselected wrong-sheet root can become proper and outgoing, or a new transverse or open root can appear by \u03c9=3 or 4, and neither would be seen.\n- **Consequence.** A leaky or incomplete end map sends non-transverse field back at O(a). Contrast re-converts it to transverse, and its interference with the O(1) transmitted wave enters D_T at O(a\u00b2). That is the same order and the same scaling as a real deficit, and the uniform control cannot see it.\n- **Smallest correction:**\n  - At every path point, record Im q, |q|, and |q+\u03b1| or the pencil denominator margin for each selected root.\n  - Continue all 18 saved candidates along the same path with the same `Pair` machinery. This is a numerical continuation, not a root census.\n  - At each target, report half-plane and sheet membership.\n  - Label the boundary `BOUNDARY_UNRESOLVED` if a selected root has gone improper or changed sheet, or if the proper outgoing set differs from the five selected directions. At the central frequency, this means stop.\n\n**B2. Per-contrast seeds are unspecified.**\n- **Source.** `frequency_source.py:174-175` binds **both** the LEFT and RIGHT pencils at the nonzero origin (\u03b7=1/100 and \u03c3); only REFERENCE is at zero. The saved seeds therefore exist only for a=1 (LEFT/RIGHT) and a=0 (REFERENCE). `Pair` coefficients depend only on \u03c9 (`frequency_end.py:56`).\n- **Consequence.** Method lines 59-62 and 144-145 rebind the contrast but do not say how outgoing roots are selected at a=1/4 and a=1/2.\n- **Correction:** at real \u03c9=1, below threshold where the accepted classifier is valid, either homotope the a=1 clusters in a using the same invariant-pair Newton, or re-apply the accepted \u03c9=1 classifier at each a. Check that a\u21920 reproduces REFERENCE. Only then continue in \u03c9.\n\n**Verdict on end boundaries.** With B1 and B2 in place, this remains a bounded numerical approximation with leaky-pole character. It is not a transparent boundary, and the radiation branch-cut continuum at the ends is omitted. Domain sensitivity from 64 to 80 is the only probe of that omission. It is algebraic, not exponential, so it cannot be extrapolated.\n\n## 3. Current and reference premise: largely supported\n\n- **Homogeneity.** Every pairing field is `real_field`, which is linear in \u03b5 (`S11c_d\u2026:3279-3282, 3303-3306, 3330-3332`), and the contractions are bilinear. `prepare` extracts the \u03b5\u00b2 coefficient and keeps the remainder residuals (`:4150-4153`). \u03b5=1 evaluation with 1/2 and 2 rescaling checks is therefore source-grounded, and three samples would catch any single extra power. The saved `coefficient_residuals` should be cited as the source-level evidence.\n- **Slab-only contraction.** The bulk energy, current and depth blocks are built only through the face `AMPLITUDE` lifts (`:3345-3350`). If the transverse lifts vanish, the bulk block projected onto transverse directions is zero, so the slab-only contraction is justified. This must not be routed through `TwoEndedMatchingChannels`, which raises unless Im q>0 (`:4791-4792`). The method's stop when the reduction fails (lines 181-183) is correct.\n- **Cross-term gap.**\n  - **Source.** `finite_scattering.py:384-391` counts cross terms among open channels only.\n  - **Why it matters.** At a finite end, cross current between a transverse mode (amplitude O(1)) and a slowly decaying non-transverse mode (amplitude O(a)) is O(a) unless it decays or vanishes. That is larger than the O(a\u00b2) deficit.\n  - **Correction:** report the anchored transverse\u00d7non-transverse slab cross current at each end, relative to D_T. If it is not small, label the partition unresolved.\n- The RIGHT-track rendered-summary comparison has not been reintroduced.\n\n## 4. Controls and interpretation: blockers B3 and B4\n\n**B3. No responsive radiation control.**\n- **Why the listed controls don't cover it.** The uniform transverse control is structurally blind, as method line 120 already concedes. The wrong-sheet, omitted-Jacobian and selection mutations only show that the instrument responds to a change, not that it is correct.\n- **Consequence.** Nothing tests whether the assembled interior nonlocal operator at \u03c9=3 matches the end pencil's physical branch.\n- **Open question the source doesn't settle.** From the packet I can't tell whether the uniform DtN nonlocality is inside the finite interior rows. If it is, truncating it to the source interval has an algebraic tail at radiating \u03c9.\n- **Smallest correction (no solve needed):**\n  1. At a=0, apply the assembled interior operator to Gaussian wavepackets centred inside and outside \u00b1b (the existing Gaussian-binding apparatus, `finite_scattering.py:170-184`).\n  2. Compare the result at interior points with an independent adaptive 1-D evaluation of REFERENCE-pencil(\u03c9,k,q_phys(k))\u00d7FT(Gaussian).\n\n  This tests branch, Jacobian, orientation, closure and truncation together.\n\n**B4. The retained-order O(a\u00b2) artifact passes every listed numerical check.**\n- **Source.** The operator and current are Taylor-projected to \u03b7^{\u22641}\u03c3^{\u22641} (`retained`, `:2605-2609`). The balance residual is verified only after that projection (`:2853`), and the second scattering keeps only the \u03b7\u03c3 term (`S11c_c2\u2026:417`).\n- **Reasoning.** Pure \u03b7\u00b2 and \u03c3\u00b2 terms of the operator and current are absent, so conservation of the truncated model is not guaranteed at O(a\u00b2). The RIGHT-end transverse current normalization, in particular, has an O(\u03b7\u00b2) term that is not retained. Such an artifact is converged, profile-dependent and \u221da\u00b2. It survives refinement, domain and regulator checks, and it can earn the `numerically resolved` label (lines 234-238). The saved note (`\u2026saved_current_note.md:18-22`) raises the related caution. The \u03c9=1 result (<1e-6 at a=1) is suggestive but, as the method itself says, not inherited.\n- **Correction:**\n  - Add a closed-channel, nonzero-contrast control at one sub-threshold frequency, e.g. \u03c9=2.0 (b\u00b2=\u22120.01), at a=1/2 and 1 with base settings: 2 solves.\n  - Require D_T to clearly exceed that control before the `resolved` label applies.\n  - Label D_T as including physical face absorption (\u03c4_A>0) and any retained-order non-conservation.\n\n**Other points in this area (optional unless noted):**\n- **Regulator versus b.** The Abel regulator of 0.1 and 0.05 is at or above b\u22480.054 at \u03c9=2.3 (b\u22480.2 at 3, 0.33 at 4), so the Abel width spans the whole propagating band. Report reg/b, and expect \u03c9=2.3 to come out `REGULATOR_UNRESOLVED`. The 20% rule would catch a regulator artifact linear in reg. The regulator's exact functional form is not in the packet, so I can't settle more than that.\n- **Near-threshold descent.** With step 0.05, the descent at \u03c9=2.3 is a single step. Use finer descent steps there.\n- **Degenerate doublet.** Per-column D_T depends on the basis chosen within a degenerate doublet. Also report the eigenvalues of the 4\u00d74 Hermitian loss matrix F_in\u2212S\u2020F_out S.\n- **Envelope and scaling.** Applying the a=1 sensitivity envelope to a=1/4 and 1/2 is conservative, which is fine. A ratio-of-4 criterion remains supportive only.\n- **Budget.** Credible as a gated plan, not guaranteed. Source-basis arrays at the refined setting (~3072 nodes\u00d7385\u00d716 B\u00d735 sources \u2248 0.66 GB), together with the old 2 GiB address limit, are tight. Time the first a=1 base solve at \u03c9=3 and project from it before running the refined settings.\n\n## 5. Scope and stop\n\n- **Blockers:** B1 through B4, plus the middle-leg independent quadrature. Each is a specification-level change using the same machinery. The only addition is 2 sub-threshold solves, for about 32 total.\n- **Everything else** is an optional refinement.\n- **No premise forces a no-go.** If B1 fires at the central frequency, return it as a stop rather than starting a boundary-method project.\n\n**What a successful pilot could claim:** signed finite-model transverse-current deficits at \u03c9=3 (and possibly 4) for this one case and these settings. The deficits would exceed the closed-channel control and the empirical envelope, and would come with the observed contrast scaling and stated sensitivities.\n\n**What it could not claim:**\n- physical radiation loss, or a split between radiation, absorption and conversion;\n- an error bound, an Abel limit or a transparent boundary;\n- completeness of the omitted end continuum;\n- freedom from retained-order effects beyond what the closed-channel control shows;\n- any threshold curve or no-leakage region;\n- implemented source fidelity, which remains a runtime obligation.",
+      "literalStderr": "",
+      "completionMetadata": {
+        "is_error": false,
+        "terminal_reason": "completed",
+        "stop_reason": "end_turn",
+        "num_turns": 24,
+        "total_cost_usd": 2.8928984,
+        "permission_denials": []
+      }
+    },
+    {
+      "reviewer": "grok",
+      "literalVerdict": "NEEDS REVISION",
+      "receipt": {
+        "engine": "grok",
+        "sessionId": "645c9ee7-44b0-4552-a83f-f055e4b1f7f2",
+        "command": [
+          "/home/trevnorris/.local/bin/grok",
+          "--cwd",
+          "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/method-review/packet",
+          "--prompt-file",
+          "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/method-review/packet/review-prompt.md",
+          "--output-format",
+          "json",
+          "--permission-mode",
+          "dontAsk",
+          "--no-plan",
+          "--tools",
+          "Read",
+          "--no-subagents",
+          "--disable-web-search",
+          "--verbatim",
+          "--session-id",
+          "645c9ee7-44b0-4552-a83f-f055e4b1f7f2"
+        ],
+        "cwd": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/method-review/packet",
+        "startedUtc": "2026-09-30T02:59:08.149758+00:00",
+        "packetSha256": "625116f563970d763870b5d1dfdcd987140ef738db5dae5be6053686ce18bde8",
+        "promptSha256": "658932c71d023dcea7608346999db24fbab486bbc8067bb0be467a77c2c3cbfe",
+        "scientificExecutionEnabled": false,
+        "reviewVerdict": "NOT_ADJUDICATED",
+        "pid": 2642821,
+        "exitStatus": 0,
+        "finishedUtc": "2026-09-30T03:08:37.858362+00:00",
+        "wallSeconds": 569.7066818260355,
+        "outputSha256": "63ba5d86936b3529cb93f74a22785e7d2847ab05f366d307a34e305a5d71956e",
+        "stderrSha256": "6b42dfe7aec63bc9f5767db859d6c2ee98f90b1a4ccef77b3d5b67cdaa91910a",
+        "stderrBytes": 3598
+      },
+      "rawOutputPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/method-review/grok.json",
+      "rawOutputSha256": "63ba5d86936b3529cb93f74a22785e7d2847ab05f366d307a34e305a5d71956e",
+      "literalReport": "I'll start from the packet index and source excerpts, then assess the proposed radiating method against those sources.I have the index. Next I\u2019ll read the source excerpts, scope, and metadata before looking at the method document.Source excerpts for c1/c2 are in. Next I\u2019ll read the mixing/scattering excerpts and the supporting measurement files.I have the excerpted operators. I\u2019ll now read the existing numerical route files and reports before opening the method proposal.I still need the current assembly, bulk-threshold logic, and the rest of the frequency-source/end machinery before judging the proposal.Source view is in place: bulk threshold, closed-port poles, and the \u03c9=1 end-map limits. I\u2019ll read the method proposal against that.NEEDS REVISION\n\nThis is a source-grounded method review. Equations below are analytic reasoning from the supplied sources, not measured output. No CAS run, pickle restore, or numerical evidence was obtained.\n\nThe proposal is the right *kind* of bounded pilot: real-frequency field operator, auxiliary upper-half end path, finite remaining-order solve, uniform/scaling/domain/regulator/sign gates, and a hard stop. It is not yet an implementable definition of the headline observable on the radiating domain it targets.\n\n---\n\n## Blockers\n\n### B1. Headline current is undefined on radiating bulk legs\n\n**Source.** `S11c_c1_bulk_closure_sympy_audit.py` 602\u2013603, 668\u2013670; `S11c_c2_selfenergy_fold_sympy_audit.py` 438\u2013452; `S11c_d_mixing_scattering_sympy_audit.py` 3031\u20133045, 3120, 3384\u20133396, 3418\u20133424, 4172\u20134178, 4790\u20134799.\n\nClosed acoustic depth uses a convergent factor only when the far-end modulus vanishes:\n\n\\[\n\\int_0^H e^{i(q_R-q_L)s}\\,ds\n\\quad\\text{has infinite-depth value iff}\\quad\n-\\mathrm{Re}\\bigl(i(q_R-q_L)\\bigr)>0.\n\\]\n\n`TwoEndedMatchingChannels` then composes\n\n\\[\nJ = J_{\\mathrm{slab}} + I_\\infty J_{\\mathrm{bulk}}\n\\]\n\nand raises if \\(\\mathrm{Im} q_L\\le 0\\) or \\(\\mathrm{Im} q_R\\le 0\\). Finite-depth integrals remain defined on \\(q_L\\neq q_R\\) and \\(q_L=q_R\\) separately.\n\n**Method text.** Lines 28\u201336 define\n\n\\[\nD_T=1-\\frac{J_{T,\\mathrm{refl}}+J_{T,\\mathrm{trans}}}{J_{T,\\mathrm{inc}}}\n\\]\n\nfrom \u201cphysical quadratic current matrices\u201d, and lines 180\u2013185 only say: if loss-side amplitudes vanish, use slab current and never form an undefined infinite-depth product. Lines 57\u201358 say to reuse existing physical-current machinery. Lines 169\u2013185 never state the pair rule when \\(\\mathrm{Im} q\\) is not strictly positive.\n\n**Consequence.** At \\(\\omega=3,2.3,4\\) the object is leaky: \\(b^2=\\omega^2/100-1/20>0\\), so some physical \\(q\\) are real. That is exactly the case \\(I_\\infty\\) does not exist. Reusing the \\(\\omega=1\\) composed current either fails the source decay gate or manufactures a deficit from an undefined product. The interesting case (non-vanishing loss-side amplitudes) has no written contraction.\n\n**Smallest correction.** Fix \\(D_T\\) pair-by-pair from the supplied polarized forms, after the physical \\(q\\) map (retain `ACOUSTIC_RADICAL_SCALE`; do not test decay on the unscaled radical):\n\n- If both legs satisfy the source decay domain \\(\\mathrm{Im} q>0\\) and the infinite-depth modulus limit is 0, the existing \\(J_{\\mathrm{slab}}+I_\\infty J_{\\mathrm{bulk}}\\) may be used.\n- If either leg is radiating, contract the transverse block with the finite pairing that is actually defined: slab current plus interface/port work from `ClosedCurrentPairing` (`SLAB_CURRENT_MATRIX`, `INTERFACE_POWER_MATRIX` / `PORT_POWER_MATRIX`). Do not insert \\(I_\\infty\\).\n- Stop if that finite pairing residual is unsupported, or if a radiating pair still needs a bulk \\(z\\)-integral that the source only defines as a `Limit`.\n\nHermitian congruence, cross terms, incident normalization, and the sign/off-diagonal mutation still apply to this written form.\n\n---\n\n### B2. One numeric \\(b\\) is not yet the split of every native radical leg\n\n**Source.** `S11c_c2_selfenergy_fold_sympy_audit.py` 438\u2013452, 400\u2013416; `S11c_d_frequency_chart.py` 30\u201348; `S11c_d_frequency_source_report.md` (bulk branches \\(\\pm\\sqrt{5}\\)).\n\nc2 puts the same outgoing/decaying root on output, input, and middle legs:\n\n\\[\nq^2+\\lvert k\\rvert^2=\\omega^2/c_{s0}^2,\n\\qquad\nq=\\begin{cases}\n\\mathrm{sign}(\\omega)\\,q_\\ast & \\text{propagating}\\\\\nq_\\ast & \\text{otherwise.}\n\\end{cases}\n\\]\n\nThe frequency chart found three one-momentum quadratic radicals \\(c_w\\omega^2+c_p p^2+C\\) with \\(c_w>0\\), \\(c_p<0\\), \\(C<0\\), not one shared formula in this packet. Saved tangents and \\(c_{s0}=10\\) give the acoustic threshold\n\n\\[\n\\omega_b=c_{s0}\\sqrt{(1/5)^2+(1/10)^2}=\\sqrt{5},\n\\]\n\nso \\(b^2=\\omega^2/100-1/20\\) is the correct *field-tangent* radius. That does not by itself place every integral variable\u2019s branch points at \\(\\pm b\\).\n\n**Method text.** Lines 77\u201387: one \\(b\\), and \u201cfor every momentum leg, split \u2026 at \\(-b,+b\\)\u201d with \\(k=b\\sin\\theta\\) and \\(k=\\pm b\\cosh u\\).\n\n**Consequence.** A split at the wrong points leaves the \\(q=0\\) endpoints inside a panel. Jacobian cancellation then does not act where the kernel changes. Near \\(\\omega=2.3\\), \\(b\\approx 0.054\\) versus cutoff 4, that miss is easy.\n\n**Smallest correction.** After numerical frequency/material binding, inventory each live radical on each ordered momentum leg. Split that leg at its own real zeros of the bound radicand. Use a common \\(b=\\sqrt{\\omega^2/100-1/20}\\) only when those zeros match \\(\\pm b\\). Apply \\(\\sin/\\cosh\\) only on radical-bearing momentum legs; leave profile \\(\\xi\\) and non-radical momenta on the existing grids. Join the explicit\n\n\\[\nq=\\sqrt{b_\\ell^2-k^2}\\quad(\\text{Re}\\,q>0\\ \\text{inside}),\n\\qquad\nq=+i\\sqrt{k^2-b_\\ell^2}\\quad(\\text{Im}\\,q>0\\ \\text{outside})\n\\]\n\nto c2\u2019s real-axis `Piecewise`, including the middle leg. Do not transport `i*sqrt(-radicand)` from the \\(\\lvert\\omega-1\\rvert\\le 1/4\\) chart (that replacement on a positive radicand is the incoming real sheet).\n\n---\n\n### B3. Port formula must use \\(\\lambda_A(\\omega)\\), and \\(1/q\\) cancellation is not yet a licence to integrate\n\n**Source.** `S11c_c1_bulk_closure_sympy_audit.py` 576\u2013584, 602\u2013603, 606\u2013635, 968\u2013993; `S11c_c2_selfenergy_fold_sympy_audit.py` 367\u2013417.\n\nFlat impedance \\(Z_0=\\rho_m\\omega/q\\). Closed response\n\n\\[\nR=\\frac{1}{1+\\lambda_A Z_0/\\rho_m^2},\\qquad\n\\lambda_A=\\frac{\\Lambda_{A0}}{1-i\\omega\\tau_A}.\n\\]\n\nThen \\(R Z_0\\to\\rho_m^2/\\lambda_A\\) as \\(q\\to 0\\) for \\(\\lambda_A\\neq 0\\). First-shape \\(z_1\\) has \\(1/(q_{\\mathrm{out}}q_{\\mathrm{in}})\\); on the diagonal that is \\(1/q^2\\). The ordered three-leg second term is \\((I+c\\,Z_3)^{-1}Z_3\\) at the mixed grade, not a one-momentum division.\n\n**Method text.** Line 99 writes \\(R(q)=1/(1+\\Lambda_A\\rho_m\\omega/(\\rho_m^2 q))\\) with the JSON name `Lambda_A_0`. Lines 84\u201390 present \\(\\sin/\\cosh\\) as removing \u201cthe elementary \\(1/q\\) endpoint singularity.\u201d Lines 98\u2013115 correctly demand a post-binding inventory.\n\n**Consequence.** Inserting static \\(\\Lambda_{A0}\\) puts the closed pole at the wrong \\(q\\). Jacobian \\(\\mathrm{d}k=q\\,\\mathrm{d}\\theta\\) cancels a single \\(1/q\\). It does not make \\(1/q^2\\) on one leg integrable (\\(\\int\\mathrm{d}\\theta/\\cos\\theta\\) is log-divergent). Closed \\(\\lambda_A(\\omega)\\neq 0\\) is what can leave a finite kernel; that is reasoning from `port_matrix`/`kernel_bridge`, not a computed census of the 80 bound rows.\n\n**Smallest correction.** Write \\(R\\) with \\(\\lambda_A(\\omega)\\). Keep the inventory, full-sum (not summand) weighted integrand, two-sided finite endpoint approaches, wrong-sheet \\(q\\), omitted-Jacobian, and selected independent scalar checks. Stop on an uncancelled nonintegrable endpoint or a coupled zero on the physical path. Coupled zeros of \\(\\rho_m q+\\lambda_A\\omega=0\\) lie off the physical sheet at these parameters (reasoning: \\(\\mathrm{Re}\\,q_{\\mathrm{pole}}<0\\), \\(\\mathrm{Im}\\,q_{\\mathrm{pole}}<0\\)); they still belong in the inventory because the three-leg determinant is a different denominator.\n\nThe \\(\\sin/\\cosh\\) map, Jacobian, and reversed negative-exterior orientation are otherwise the right real-axis parametrization of c1/c2, with interior Gauss nodes and endpoints only as panel bounds. Nested Abel centers must be mapped in \\(k\\), then into \\(\\theta\\) or \\(u\\), including outer-leg-dependent centers. No imaginary-frequency regulator belongs in the field operator.\n\n---\n\n## Required in-scope corrections (not optional)\n\n### C1. Per-contrast end seeds, then upper-half continuation\n\n**Source.** `S11c_d_frequency_end.py` 47\u2013116, 119\u2013136, 138\u2013145, 148\u2013176; `S11c_d_frequency_matrix.py` 89\u2013104, 26; `S11c_d_mixing_scattering_sympy_audit.py` 5038\u20135164, 5414\u20135431; `S11c_d_finite_scattering.py` 58\u201393.\n\nExisting `Pair` continues full \\(R,K,Q\\) with commuting momenta, rational entries, wave residual, and denominator SVD. Seeds at \\(\\omega=1\\) are 18 candidates, 5 selected clusters, 7 directions (5 outgoing + 2 incoming). `maps` builds the \\(5\\times 5\\) trace from those five outgoing directions. Focused continuation went to \\(1-0.01i\\) (lower half) as a matrix test, not as outgoing selection. Phase \\(e^{i(k\\cdot x-\\omega t)}\\) makes limiting absorption the *upper* half-plane. `JointBulkSheetPath` already fails on a branch locus; principal-sqrt reset is forbidden.\n\n**Method text.** Lines 133\u2013167 continue \u201cthe already selected omega=1 subspaces\u201d on \\(\\mathrm{Im}\\,\\omega>0\\) to each target, compare heights \\(0.05/0.025\\) and steps \\(0.05/0.025\\), stop on collision/dimension/path dependence, and refuse `BULK_DECAY_DISK_CERTIFIED` as the radiating selector.\n\n**Consequence.** Contrast \\(a\\) rescales \\(\\eta_{bg}\\) and \\(\\sigma_W\\) in the end pencil. The \\(\\omega=1\\) bases are at \\(a=1\\). Using them at \\(a=0,1/4,1/2\\) is the wrong operator. Crossing \\(\\sqrt{5}\\) can reclassify continued directions; five selected traces are not completeness. A growing or incoming direction kept as homogeneous outgoing can fake a deficit.\n\n**Smallest correction.** At each contrast, bind the saved algebraic end pencils first. Seed regular \\(R,K,Q\\) at \\(\\omega=1\\) (or the nearest regular point), match clusters to the known transverse incoming/outgoing pair by projector overlap, then continue in the upper half-plane and descend to the real target. After descent, require for each retained direction: full-pencil/wave residuals, subspace dimension, projector agreement across the two heights/steps, and\n\n- real \\(k\\): physical current sign outgoing/incoming as used in the map;\n- complex \\(k\\): spatially decaying at that end (not \u201ccomplex \u21d2 closed\u201d).\n\nA growing, colliding, path-dependent, or sign-unresolved direction stops the point. Domain \\([-64,64]\\) vs \\([-80,80]\\) remains the empirical surrogate for missing channels; small domain change is not completeness.\n\nThat is still a bounded approximate end condition. It does not require a new root census or a thickness-spectrum theorem. The upper-half path is the correct causal prescription for this phase; it is not a global analyticity theorem, and the path/step comparison is the check.\n\n---\n\n### C2. Uniform \\(D_T\\) is a background control, not a resolution floor\n\n**Source.** Same outgoing bulk relation; `S11c_d_transverse_face_fixed_point_saved_current_note.md`; `S11c_d_finite_scattering_domain_report.md` (regulator \\(0.2\\to 0.1\\) current change \\(\\sim 10^{-11}\\) at \\(\\omega=1\\)).\n\nAt \\(a=0\\) the first-shape rows bind to zero; face permeability \\(\\Lambda_{A0}=1/100\\) and the flat \\(Z_0\\) remain. For \\(\\omega>\\sqrt{5}\\) the uniform background can radiate. The Abel regulator is a Fourier weight, not \\(\\Lambda_A\\).\n\n**Method text.** Lines 215\u2013217 fold \u201clargest absolute matched-uniform deficit\u201d into the displayed empirical floor. Lines 221\u2013223 treat a large uniform deficit as a floor that can hide profile loss.\n\n**Consequence.** Physical uniform radiation is labelled as numerical resolution, and a real \\(a=0\\) deficit can unresolve or swallow the profile signal for the wrong reason.\n\n**Smallest correction.** Report three separate objects: raw \\(D_T(a)\\), \\(D_T(a)-D_T(0)\\), and a numerical envelope from refinement/domain/regulator plus the \\(10^{-6}\\) reporting quantum. Uniform \\(D_T\\) is a background/control. If it is large, say so; do not call it a floor and do not subtract it from \\(D_T\\). Keep the negative-deficit, \\(3\\times\\) envelope, \\(20\\%\\) sensitivity, and `SCALING_UNRESOLVED` rules. Quadratic ratios remain supportive only when both contrasts are resolved; they do not replace boundary/regulator checks.\n\n---\n\n## Optional refinements (not required to start)\n\n- Independent adaptive outer quadrature as the assembly rule for three-momentum second scattering (keep it as the selected-row check).\n- Numeric values for \u201cdeclared\u201d \\(k\\)-reality and current-sign tolerances.\n- Extra path heights near \\(\\omega=2.3\\), where the distance to \\(\\sqrt{5}\\) is comparable to height \\(0.05\\).\n- Transformed-panel implementation details that do not change the split points, Jacobian, or current formula.\n\nTooling-only loader/JSON work stays outside this physics list.\n\n---\n\n## Answers keyed to the five questions\n\n1. **Real bulk branch and integration.** c1 outgoing Neumann data plus c2\u2019s three-leg real-frequency root support a real-axis \\(\\sin/\\cosh\\) map on every *radical-bearing* momentum leg, with Jacobian and negative-exterior orientation, nested Abel centers mapped in \\(k\\), finite source/profile panels, and no complex-frequency regulator in the field operator. The supplied closed port can cancel elementary \\(1/q\\) (reasoning, not a row census). The packet does not already exhibit a proven nonintegrable closed singularity, and it does not prove all 80 rows are only \\(1/q\\). B2\u2013B3 are the missing method text. A source-specific full-sum endpoint check is the right gate; it is not optional runtime colour.\n\n2. **Finite ends.** The \\(R,K,Q\\) machinery can carry a positive-half-plane path to these real targets if C1 is written in. Five continued directions plus invertibility are not a radiation theorem; domain sensitivity and post-descent current/decay signs are the honesty conditions. This remains a bounded approximate BC. It does not require a larger exterior method before a pilot is useful. It does require a stop instead of a 5\u00d75 inverse that swallowed a growing mode.\n\n3. **Current and reference.** Source polarization is the bilinear \\(5\\times 5\\) in face amplitudes (`ClosedCurrentPairing.polarize` / slab polarization). Dropping Poly and evaluating the known quadratic at \\(\\varepsilon=1\\) with \\(1/2\\) and \\(2\\) checks is acceptable as a homogeneity probe, not as an identity proof; stop if amplitude dependence is not that quadratic. Transverse classification must be recomputed at the new real \\(\\omega\\), not copied from \\(\\omega=1\\). B1 is the parked-exact-track issue that actually bites: do not bring back infinite-depth zero products. Epsilon-in-faces linearity checks on basis vectors match the linear face closure in `ClosedAcousticEnergy`.\n\n4. **Controls.** The 10-solve-per-frequency list, joint \\(\\eta\\)-\\(\\sigma\\) scaling, negative-deficit flag, and refusal to treat regulator scatter as a subtractable bound are enough for a *rough* finite-model deficit once C2 is applied. Uniform plus \\(\\eta^2\\)-looking ratios can both miss profile artifacts; the \\(a=1\\) refinement/domain/regulator block is the counterweight. Settings (257 nodes, interval 64, cutoff 4, regulator 0.1, orders 512/512, outer 24, inner 8/8) are plausible planning values for \\(\\omega=3\\) relative to the old 129/48/0.2 run; they are not adequacy. Runtime is not guaranteed from this packet.\n\n5. **Scope and stop.** No premise already forces a program-level no-go. The smallest path is: write B1\u2013B3 and C1\u2013C2 into the method, then implement. A later runtime fail (nonintegrable row, end collision, unsupported pairing) is a stop with data, not a new review round or a Green-function campaign.\n\n---\n\n## What a successful pilot could and could not claim\n\n**Could claim.** For LAB_HELD / RHO4_CONSTANT at tangents \\((1/5,1/10)\\) and the attempted frequencies/contrasts: a signed finite-model transverse-current deficit from the saved retained operator, with approximate upper-half continued modal ends, finite source/profile/momentum cutoffs, and positive Abel regulator; the raw matrices behind the contraction; uniform and small-contrast companions; and an empirical numerical envelope from the declared refinement/domain/regulator checks. Status may be unresolved.\n\n**Could not claim.** Continuum or Abel-limit loss; a complete outgoing boundary or classified thickness spectrum; a radiation/absorption/conversion split; that opening of bulk radiation implies large leakage; a threshold curve or optical-band calibration; an absolute error bound from regulator or path-height scatter; inheritance of the \\(\\omega=1\\) \u201cno loss at \\(10^{-6}\\)\u201d result; exact-track confirmation; or implemented source fidelity and computed \\(D_T\\) before the runtime inventory, branch join, end residuals, and current-domain gate actually run.",
+      "literalStderr": "\u001b[2m2026-09-30T02:59:08.423894Z\u001b[0m \u001b[33m WARN\u001b[0m plugin name collision resolved by scope precedence \u001b[3mplugin_name\u001b[0m\u001b[2m=\u001b[0mfrontend-design \u001b[3mwinner\u001b[0m\u001b[2m=\u001b[0m/home/trevnorris/.claude/plugins/marketplaces/claude-plugins-official/plugins/frontend-design \u001b[3mloser\u001b[0m\u001b[2m=\u001b[0m/home/trevnorris/.claude/plugins/cache/claude-plugins-official/frontend-design/2a8ad9f74633\n\u001b[2m2026-09-30T02:59:08.433860Z\u001b[0m \u001b[33m WARN\u001b[0m plugin name collision resolved by scope precedence \u001b[3mplugin_name\u001b[0m\u001b[2m=\u001b[0mfrontend-design \u001b[3mwinner\u001b[0m\u001b[2m=\u001b[0m/home/trevnorris/.claude/plugins/marketplaces/claude-plugins-official/plugins/frontend-design \u001b[3mloser\u001b[0m\u001b[2m=\u001b[0m/home/trevnorris/.claude/plugins/cache/claude-plugins-official/frontend-design/2a8ad9f74633\n\u001b[2m2026-09-30T02:59:08.449466Z\u001b[0m \u001b[33m WARN\u001b[0m hooks: skipped unrecognized event names (check for typos) \u001b[3mfile\u001b[0m\u001b[2m=\u001b[0m/home/trevnorris/.claude/settings.json \u001b[3mskipped\u001b[0m\u001b[2m=\u001b[0m[\"PermissionRequest\"]\n\u001b[2m2026-09-30T02:59:08.449514Z\u001b[0m \u001b[33m WARN\u001b[0m hook loading from settings file: failed to parse hook file /home/trevnorris/.cursor/hooks.json: invalid matcher groups for event 'beforeSubmitPrompt': missing field `hooks`\n\u001b[2m2026-09-30T02:59:08.449549Z\u001b[0m \u001b[33m WARN\u001b[0m hook loading error \u001b[3merror\u001b[0m\u001b[2m=\u001b[0mParseFile { path: \"/home/trevnorris/.cursor/hooks.json\", detail: \"invalid matcher groups for event 'beforeSubmitPrompt': missing field `hooks`\" }\n\u001b[2m2026-09-30T02:59:09.497074Z\u001b[0m \u001b[33m WARN\u001b[0m Ignoring context_window downgrade from response header \u001b[3mcurrent_context_window\u001b[0m\u001b[2m=\u001b[0m500000 \u001b[3mheader_context_window\u001b[0m\u001b[2m=\u001b[0m256000\n\u001b[2m2026-09-30T02:59:13.183988Z\u001b[0m \u001b[33m WARN\u001b[0m Ignoring context_window downgrade from response header \u001b[3mcurrent_context_window\u001b[0m\u001b[2m=\u001b[0m500000 \u001b[3mheader_context_window\u001b[0m\u001b[2m=\u001b[0m256000\n\u001b[2m2026-09-30T02:59:19.327763Z\u001b[0m \u001b[33m WARN\u001b[0m Ignoring context_window downgrade from response header \u001b[3mcurrent_context_window\u001b[0m\u001b[2m=\u001b[0m500000 \u001b[3mheader_context_window\u001b[0m\u001b[2m=\u001b[0m256000\n\u001b[2m2026-09-30T02:59:22.520837Z\u001b[0m \u001b[33m WARN\u001b[0m Ignoring context_window downgrade from response header \u001b[3mcurrent_context_window\u001b[0m\u001b[2m=\u001b[0m500000 \u001b[3mheader_context_window\u001b[0m\u001b[2m=\u001b[0m256000\n\u001b[2m2026-09-30T02:59:25.340302Z\u001b[0m \u001b[33m WARN\u001b[0m Ignoring context_window downgrade from response header \u001b[3mcurrent_context_window\u001b[0m\u001b[2m=\u001b[0m500000 \u001b[3mheader_context_window\u001b[0m\u001b[2m=\u001b[0m256000\n\u001b[2m2026-09-30T02:59:30.697756Z\u001b[0m \u001b[33m WARN\u001b[0m Ignoring context_window downgrade from response header \u001b[3mcurrent_context_window\u001b[0m\u001b[2m=\u001b[0m500000 \u001b[3mheader_context_window\u001b[0m\u001b[2m=\u001b[0m256000\n\u001b[2m2026-09-30T02:59:33.459882Z\u001b[0m \u001b[33m WARN\u001b[0m Ignoring context_window downgrade from response header \u001b[3mcurrent_context_window\u001b[0m\u001b[2m=\u001b[0m500000 \u001b[3mheader_context_window\u001b[0m\u001b[2m=\u001b[0m256000\n\u001b[2m2026-09-30T02:59:39.969067Z\u001b[0m \u001b[33m WARN\u001b[0m Ignoring context_window downgrade from response header \u001b[3mcurrent_context_window\u001b[0m\u001b[2m=\u001b[0m500000 \u001b[3mheader_context_window\u001b[0m\u001b[2m=\u001b[0m256000\n\u001b[2m2026-09-30T02:59:46.522619Z\u001b[0m \u001b[33m WARN\u001b[0m Ignoring context_window downgrade from response header \u001b[3mcurrent_context_window\u001b[0m\u001b[2m=\u001b[0m500000 \u001b[3mheader_context_window\u001b[0m\u001b[2m=\u001b[0m256000\n\u001b[2m2026-09-30T03:00:20.312603Z\u001b[0m \u001b[33m WARN\u001b[0m Ignoring context_window downgrade from response header \u001b[3mcurrent_context_window\u001b[0m\u001b[2m=\u001b[0m500000 \u001b[3mheader_context_window\u001b[0m\u001b[2m=\u001b[0m256000\n\u001b[2m2026-09-30T03:01:19.713873Z\u001b[0m \u001b[33m WARN\u001b[0m Ignoring context_window downgrade from response header \u001b[3mcurrent_context_window\u001b[0m\u001b[2m=\u001b[0m500000 \u001b[3mheader_context_window\u001b[0m\u001b[2m=\u001b[0m256000\n",
+      "completionMetadata": {
+        "stopReason": "end_turn",
+        "num_turns": 11,
+        "total_cost_usd": 0.24795248
+      }
+    }
+  ],
+  "verification": {
+    "all19PacketAndArchiveMembersMatch": true,
+    "all18SourceRecordsMatch": true,
+    "reviewReceiptsAndReportsMatch": true,
+    "samePromptFreshSessions": true,
+    "transportHashesMatch": true,
+    "scientificPayloadRestored": false,
+    "coordinatorStderrBytes": 0,
+    "sharedGuardSha256": "9194b3e04b43d345828082e6312b0a2d7a9293f6296153f9c6ccea2defb931d2",
+    "protectedBuilderSuffixSha256": "f01024512c9a028e7e524e5a95b5c455be42e125d10c36f94e20493109b013c2"
+  },
+  "stderrAssessment": "Claude and coordinator stderr empty. Grok 3598 bytes contain plugin collision, hook configuration and context-window CLI warnings; both literal reports completed. No scientific stderr or scientific run exists.",
+  "sourceChangedAfterReview": false,
+  "reviewRerun": false,
+  "peerSharing": false,
+  "scienceCalls": 0,
+  "implementationStarted": false,
+  "decision": "Stop before implementation under the one-round substantive-blocker rule; retain the proposed method unchanged. This is not a program-level numerical impossibility finding."
+}

@@ -1,3 +1,44 @@
+**CURRENT STOP — numerical method review found substantive gaps (2026-09-29):**
+Both fresh literal verdicts are NEEDS REVISION. All packet/archive/source and
+review-receipt hashes match. No new implementation or science ran. The source
+confirms missing per-contrast end selection/sheet checks and independent middle-
+leg quadrature coverage, plus unresolved retained-order and finite-end cross-
+current interpretation. Some reviewer remedies do not follow from the source
+and were rejected; in particular, port power is not simply added to current.
+See `S11c_d_numerical_radiating_review_disposition.md` and `_review_record.json`.
+
+STOP before implementation under the submitted one-round substantive-blocker
+rule; no automatic revised packet, extra controls, run or review cycle. This is
+not a proof that numerical radiation is impossible or that the two-day budget
+is exhausted. Exact RIGHT remains parked; omega3/2.3/4 remain untested. The old
+omega1 finite result resolves no deficit at1e-6 but is not a physical upper
+bound. Canonical preparation records actual active authoring charge and this
+stop. All earlier science, review debts, failures and protected work remain.
+
+Earlier entries below are preserved history, not a current launch queue.
+
+**CURRENT DIRECTION — bounded numerical method review submitted (2026-09-29):**
+User directed the numerical pilot with a two-authoring-day hard stop, one
+case/saved tangents, central omega3 plus near-threshold/higher points, and
+uniform/scaling/domain/regulator/sign checks. The concrete method draft selects
+3,2.3,4 and at most30 finite solves, central first. Physical bulk branch plus
+endpoint-adapted quadrature and numerical end-subspace continuation are proposed;
+no sponge or new physical damping is introduced. Those methods are not cleared.
+
+One fresh Claude/Grok method packet was explicitly approved and submitted:19files/311706bytes,
+SHA256625116f563970d763870b5d1dfdcd987140ef738db5dae5be6053686ce18bde8.
+The user's literal reply was “Approved.” Packet/archive/source hashes matched;
+the local completion hook was armed before review. One host startup check
+confirmed the coordinator, hook and fresh Claude alive; Grok follows sequentially.
+Wait silently for both reports before adjudication or edits. No implementation
+or science has run, and no automatic second review round is authorized.
+See numerical_radiating_method/review_prompt/review_preparation. Method review
+is not worker build or result clearance. Source-only preparation consumed no
+scientific payload. Exact RIGHT remains parked; all historical artifacts intact.
+Tooling-only fixes use local verification; substantive method blockers stop,
+not an automatic review/repair campaign. The16-active-authoring-hour clock is
+recorded in the preparation record, with waiting excluded.
+
 **CURRENT DIRECTION — exact track parked; numerical feasibility returned
 (2026-09-29):** the user requested a source/metadata-only assessment of the
 existing finite solver at omega=3 and nearby frequencies. Selected

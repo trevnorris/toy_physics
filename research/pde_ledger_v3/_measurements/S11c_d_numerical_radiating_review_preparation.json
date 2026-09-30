@@ -1,0 +1,198 @@
+{
+  "status": "STOPPED_AFTER_ONE_METHOD_ROUND_NEEDS_REVISION",
+  "preparedUtc": "2026-09-30T02:33:47.843226+00:00",
+  "packetSha256": "625116f563970d763870b5d1dfdcd987140ef738db5dae5be6053686ce18bde8",
+  "archiveSha256": "3c4ce7d2a24e0a17c5064d8501e02c134dd4a74b10f482c319da723a6ad0073a",
+  "packetFiles": 19,
+  "packetBytes": 311706,
+  "sourceRecords": [
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_method.md",
+      "sourceSha256": "99039c717ca4104ac40b8782e5594fbab7a6d95d87ffb5d140c3de9dd77a4fee",
+      "bytes": 17123
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_variable_profile_development_input.json",
+      "sourceSha256": "660b2b0b54494dce964c7f5fbd722a76a7e894d8ed92b18b5eb6290c3c10f1d5",
+      "bytes": 1884
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_finite_scattering.py",
+      "sourceSha256": "f187d9426be8069342a363a0466c175d32a8cb46101e32a14c433ccb9118e469",
+      "bytes": 30252
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_finite_scattering_domain.py",
+      "sourceSha256": "73341408d0f6c1eb517e435dea986e180ff53615a6102697a8e3ba6747bd35aa",
+      "bytes": 13300
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_frequency_source.py",
+      "sourceSha256": "9be20be462bc10bfcaa7af643b9301948dd79bc2e08eb24ebcd1386a81efcdac",
+      "bytes": 29576
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_frequency_chart.py",
+      "sourceSha256": "06b1e19ffd03349951488b13580f336dc7d12e15a6941191026697b5c413ed97",
+      "bytes": 23653
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_frequency_end.py",
+      "sourceSha256": "f7a698ed27872ed0594692dbf671136b079279c32f9198bd92fcee23e3303a32",
+      "bytes": 15477
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_frequency_matrix.py",
+      "sourceSha256": "97797ab676a58f16785bf4234d41eb5cd01abc0a42f39edc4e20f926b2c2b336",
+      "bytes": 19894
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_frequency_source_report.md",
+      "sourceSha256": "46b91c1e159f6b467809c0119511b24bef270e4c960edf0755d2034fd93fa421",
+      "bytes": 2842
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_frequency_matrix_report.md",
+      "sourceSha256": "0f52b0217f657a1d995f0ef32fcf8b7b1d5b3ed6b2578e3333d463aa56047777",
+      "bytes": 1887
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_finite_scattering_domain_report.md",
+      "sourceSha256": "f5f34fb9a6c6e7bb4eb9598a52c6713508fe383a6f575430a8a5b1daf14529b3",
+      "bytes": 3017
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_fixed_point_saved_current_note.md",
+      "sourceSha256": "be704678fa3dd9fd94abba7f5ba6e25b73f8b7549e7bffa64bd5513d0a13de11",
+      "bytes": 2453
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_review_prompt.md",
+      "sourceSha256": "658932c71d023dcea7608346999db24fbab486bbc8067bb0be467a77c2c3cbfe",
+      "bytes": 5288
+    },
+    {
+      "path": "research/pde_ledger_v3/scripts/S11c_d_mixing_scattering_sympy_audit.py",
+      "sourceSha256": "5bf77729682960bb59f10c672a5fe3f67a98b0a9533da7c6189a37183596050f",
+      "bytes": 545480
+    },
+    {
+      "path": "research/pde_ledger_v3/scripts/S11c_c1_bulk_closure_sympy_audit.py",
+      "sourceSha256": "02abfa93076efcb38a1b300daf9adedf5e3ad425ebf9d73555d730cea935ba20",
+      "bytes": 101082
+    },
+    {
+      "path": "research/pde_ledger_v3/scripts/S11c_c2_selfenergy_fold_sympy_audit.py",
+      "sourceSha256": "0e90c751d36178a9846e75c38ac4ad0c8591b4b8ce11b6dc194218913265d434",
+      "bytes": 102548
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_frequency_source_checkpoint.json",
+      "sourceSha256": "ca5a3fa0f33d4f5457f9c5adb46b7c9da9f935661d839d036f12b0de86692bfe",
+      "bytes": 1877129
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_frequency_matrix_checkpoint.json",
+      "sourceSha256": "0c350c5f9c554c2e585920745157be826daf51775e05676a0554d8670a750663",
+      "bytes": 60680
+    }
+  ],
+  "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/method-review",
+  "role": "METHOD_REVIEW_NOT_IMPLEMENTATION_OR_SCIENCE",
+  "authority": {
+    "role": "User-directed numerical goal; explicit fixed-packet external consent received",
+    "scope": "LAB_HELD/RHO4_CONSTANT, saved tangents, frequencies 3/2.3/4, uniform/scaling/domain/regulator/sign checks; stop with results",
+    "reviewScope": "One fresh Claude/Grok method round; no peer sharing, rerun or new packet without exact consent",
+    "toolingPolicy": "Pure comparison/loader/formatting repairs: local tests and rationale, no independent review cycle. Equations/method/claims still require independent review.",
+    "authoringClock": {
+      "firstDurableMarkUtc": "2026-09-30T02:25:17+00:00",
+      "hoursChargedBeforeMark": 0.5,
+      "maximumActiveHours": 16,
+      "chargedThisSessionHours": 0.7344,
+      "asOfUtc": "2026-09-30T03:14:10.706575+00:00",
+      "reviewAndUserWaitCounts": false,
+      "previousRecordedActiveHours": 0.642,
+      "chargedTotalActiveHours": 0.7344,
+      "remainingActiveHours": 15.2656,
+      "clockStatus": "STOPPED_METHOD_NOT_CLEARED",
+      "adjudicationCharge": {
+        "startUtc": "2026-09-30T03:08:38+00:00",
+        "stopUtc": "2026-09-30T03:14:10.706575+00:00",
+        "hours": 0.0924,
+        "basis": "Conservative elapsed completion-inspection interval, source/metadata only; reviewer waiting excluded."
+      }
+    },
+    "noScienceLaunched": true,
+    "exactSymbolicTrack": "PARKED",
+    "methodCleared": false,
+    "scopeDoesNotAuthorizeExternalExportUntilPacketConsent": true
+  },
+  "methodSha256": "99039c717ca4104ac40b8782e5594fbab7a6d95d87ffb5d140c3de9dd77a4fee",
+  "promptSha256": "658932c71d023dcea7608346999db24fbab486bbc8067bb0be467a77c2c3cbfe",
+  "static": {
+    "sourceHashJoins": true,
+    "archiveMemberHashJoins": true,
+    "noScientificImportsOrRestoration": true,
+    "transportAstParse": true,
+    "runnerSha256": "0746c71a5a550d6f4622511909ea6e1552ac24173996a6a6bfa40ea2c8756e7d",
+    "launcherSha256": "72018e3d7817a9eb65f63acdb1d07b5aab2f8cca308a79454f079a4185690cd2",
+    "completionMessageSha256": "a219931f8ac4f6c3c618369b7935682e3e5c3d7453474fdbb5d3c098b87c9232"
+  },
+  "explicitPacketApproval": {
+    "status": "EXPLICITLY_APPROVED_FIXED_PACKET",
+    "packetSha256": "625116f563970d763870b5d1dfdcd987140ef738db5dae5be6053686ce18bde8",
+    "archiveSha256": "3c4ce7d2a24e0a17c5064d8501e02c134dd4a74b10f482c319da723a6ad0073a",
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "scope": "One prospective method/document review each by fresh Claude and Grok; no scientific execution during review",
+    "approvedUtc": "2026-09-30T02:48:10.175914+00:00",
+    "literalUserReply": "Approved",
+    "packetFiles": 19,
+    "packetBytes": 311706,
+    "currentThread": "01a0e01b-ef84-7192-817f-584cda5d339b"
+  },
+  "launch": {
+    "jobPid": 2639468,
+    "watcherPid": 2639469,
+    "packetSha256": "625116f563970d763870b5d1dfdcd987140ef738db5dae5be6053686ce18bde8",
+    "reviewers": [
+      "Claude",
+      "Grok"
+    ],
+    "concurrentReviewWorkers": 1,
+    "scienceCalls": 0,
+    "runnerSha256": "0746c71a5a550d6f4622511909ea6e1552ac24173996a6a6bfa40ea2c8756e7d",
+    "launcherSha256": "72018e3d7817a9eb65f63acdb1d07b5aab2f8cca308a79454f079a4185690cd2"
+  },
+  "hostStartupCheck": {
+    "checkedUtc": "2026-09-30T02:48:59.813898+00:00",
+    "reviewState": "RUNNING",
+    "hookStatus": "waiting",
+    "pids": {
+      "coordinator": 2639468,
+      "watcher": 2639469,
+      "claude": 2639474
+    },
+    "alive": {
+      "coordinator": true,
+      "watcher": true,
+      "claude": true
+    },
+    "coordinatorStderrBytes": 0,
+    "scienceCalls": 0,
+    "supersedesSandboxPidVisibilityObservation": true
+  },
+  "submissionNote": "One method review each; no implementation or science. No peer sharing or automatic review rerun. Await local hook; no model polling.",
+  "reviewRecord": "research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_review_record.json",
+  "disposition": "research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_review_disposition.md",
+  "literalVerdicts": {
+    "Claude": "NEEDS REVISION",
+    "Grok": "NEEDS REVISION"
+  },
+  "implementationStarted": false,
+  "scienceCalls": 0,
+  "automaticRevisedSubmission": false,
+  "stopReason": "Substantive end selection, integration-validation and observable interpretation gaps under the submitted one-round rule; budget not exhausted; not a proof of numerical impossibility."
+}

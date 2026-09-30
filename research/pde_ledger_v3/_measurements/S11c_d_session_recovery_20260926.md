@@ -1,3 +1,42 @@
+**CURRENT STOP — numerical method not cleared (2026-09-29):**
+The one authorized method round finished: Claude NEEDS REVISION, Grok NEEDS
+REVISION. Both complete literal reports and source/packet/receipt verification
+are in `S11c_d_numerical_radiating_review_record.json`; the qualified source-only
+adjudication is `_review_disposition.md`. Exact reviewed method/prompt stay
+unchanged. No implementation or science ran; the local hook finished.
+
+The real gaps concern per-contrast/outgoing end selection, independent middle-
+leg integration and separating the selected finite-model deficit from boundary/
+retained-order artifacts. Reject unsupported remedies rather than adopting
+every reviewer claim. These are substantive method issues, not serialization
+repairs. Stop under the one-round rule, with no automatically revised packet,
+science gate, extra solve or exact-track restart. The two-day authoring cap is
+not exhausted; no budget is spent while stopped. The radiating regime remains
+untested and analog-light calibration remains open. The saved omega1 finite
+balance remains context, not a physical loss bound.
+
+Earlier entries below are preserved history, not active instructions.
+
+**CURRENT DIRECTION — numerical method packet submitted
+(2026-09-29):** the user directed the bounded radiating numerical pilot and
+controls, with a two-authoring-day stop and one independent method-review round.
+Prepared `S11c_d_numerical_radiating_method.md` and its fresh Claude/Grok prompt;
+19files/311706bytes, SHA256625116f563970d763870b5d1dfdcd987140ef738db5dae5be6053686ce18bde8.
+Runtime root `_scratch/s11c/s11c-d-numerical-radiating-20260929/method-review`.
+The user explicitly replied “Approved”; all packet/archive/source identities
+matched before submission. Coordinator2639468 and watcher2639469 launched with
+the hook armed first; a host startup check confirmed both and fresh Claude
+alive, with Grok queued sequentially. The sandbox PID observation is not host
+process evidence; the preserved host check resolves it. Wait silently for the
+completion/error hook and both literal reports before adjudication or edits.
+No implementation or scientific run has occurred. This is a method document/
+source packet, not implemented worker clearance. Proposed
+frequencies3,2.3,4, central first; maximum30 finite solves includes matched
+uniform controls and contrast/resolution/domain/regulator checks. The original
+6–10-solve sketch did not cover all of the user's added per-frequency controls.
+Active authoring budget maximum16hours is in the single preparation record;
+review/user waiting does not count. No new exact-track or failed-job retry.
+
 **CURRENT DIRECTION — numerical feasibility only (2026-09-29):** exact-symbolic
 omega=1 work is parked at the user's direction. Selected REFERENCE/LEFT
 premises remain supported; RIGHT remains unresolved because of the rendered

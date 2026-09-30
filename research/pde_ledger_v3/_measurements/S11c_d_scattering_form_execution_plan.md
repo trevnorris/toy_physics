@@ -1,3 +1,10 @@
+**LAUNCH VERIFIED — central-pilot-v4 (2026-09-30):**
+The array-comparison correction is committed at a4ea8213 and running under
+the shared guard/supervisor. RuntimeMaxUSec=infinity, Restart=no and actual
+2GiB/zero-swap/one-CPU/task/thread limits are verified; completion hook armed.
+See pilot_v4_launch_record.json for the one startup snapshot. No finite result
+is accepted. Leave sources pinned and await the existing local hook silently.
+
 **RESTORED-ARRAY TOOLING CORRECTION — central pilot v4 (2026-09-30):**
 V3 stopped after eight saved-return restorations, with no new numerical work,
 on plain dictionary equality of restored NumPy arrays. All 69 input pins,

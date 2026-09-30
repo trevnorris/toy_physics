@@ -1,0 +1,230 @@
+{
+  "status": "FINAL_ATTEMPT_STOPPED_SAVED_REFERENCE_SEED_SUMMARY_MISMATCH_RIGHT_UNRESOLVED",
+  "inspectedUtc": "2026-09-30T01:04:02.986713+00:00",
+  "scientificExecutionOrdinal": 7,
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/right-final",
+  "failure": {
+    "traceback": "Traceback (most recent call last):\n  File \"/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_right_final.py\", line 1548, in main\n    result=construct(spec,out,journal)\n  File \"/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_right_final.py\", line 1399, in construct\n    joined=op(label+'-seed-join-'+str(index),saved_seed,bound,saved,seconds=20)\n  File \"/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_right_final.py\", line 609, in op\n    journal.reuse_summary(name+'.json',show(value))\n  File \"/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_right_final.py\", line 428, in reuse_summary\n    raise IntegrityError('saved/fresh JSON summary mismatch; both summaries and paths preserved')\nIntegrityError: saved/fresh JSON summary mismatch; both summaries and paths preserved\n",
+    "incompleteOperation": null,
+    "wallSeconds": 50.1368230819935,
+    "noRetry": true
+  },
+  "checks": {
+    "exitFailurePreserved": true,
+    "noChecksDocument": true,
+    "scientificStdoutEmpty": true,
+    "scientificStderrNonempty": true,
+    "allInputPosthashesMatch": true,
+    "allSavedByteReferencesMatch": true,
+    "allSourceSnapshotsMatch": true,
+    "allPriorCopiesByteIdentical": true,
+    "allFifteenRestoredArgumentJoinsMatch": true,
+    "referenceFaceRenderedSummaryJoin": true,
+    "referenceSeed16RenderedSummaryJoin": false,
+    "newRightWorkReached": false,
+    "noAutomaticRetry": true
+  },
+  "resources": {
+    "workerSeconds": 50.1368230819935,
+    "supervisorSeconds": 52.446998419007286,
+    "guardSeconds": 52.52054708998185,
+    "sampleCount": 28,
+    "peakMemoryBytes": 259072000,
+    "maxSwapBytes": 0,
+    "maxMemoryEvents": {
+      "low": 0,
+      "high": 0,
+      "max": 0,
+      "oom": 0,
+      "oom_kill": 0,
+      "oom_group_kill": 0,
+      "sock_throttled": 0
+    },
+    "minimumHostAvailableBytes": 21358403584,
+    "maximumTasks": 3,
+    "enforced": {
+      "memory.max": "17179869184",
+      "memory.swap.max": "0",
+      "pids.max": "32",
+      "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-45626297e495.service",
+      "nice": 0,
+      "affinity": [
+        15
+      ],
+      "threads": {
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "VECLIB_MAXIMUM_THREADS": "1",
+        "BLIS_NUM_THREADS": "1"
+      }
+    },
+    "duration": {
+      "verified": true,
+      "actual": {
+        "Restart": "no",
+        "RuntimeMaxUSec": "infinity"
+      },
+      "wallDeadlineSeconds": null,
+      "automaticRetry": false
+    },
+    "nativeAddressSpaceEvidence": "Worker sets RLIMIT_AS16GiB before native-limits.json; /proc limits were not captured before process exit."
+  },
+  "integrity": {
+    "inputPosthashesMatched": 1370,
+    "sourceSnapshotPairsMatched": 93,
+    "uniqueHashReferencesVerified": 4425,
+    "priorCopiedFiles": 1311,
+    "priorCopiedBytes": 31272777,
+    "actualResultFiles": 1476,
+    "actualResultBytes": 46559423,
+    "artifactIndex": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/right-final/complete/artifact-index.json",
+      "bytes": 889490,
+      "sha256": "86bc26b4151e29e355fe307430f7bfa48c2228ca4ac3564cef4dc816ac560c83"
+    },
+    "failurePosthashes": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/right-final/complete/failure-posthashes.json",
+      "bytes": 700987,
+      "sha256": "9a3b4a9140021a7f88d5a58972ee6e8f1c77f864114abdf27ccbb83b7e748034"
+    },
+    "stderrBytes": {
+      "transverse_face_right_final.stderr": 1074,
+      "guard-launch.stderr": 0,
+      "coordinator.stderr": 0,
+      "resource-guard/stderr": 0,
+      "watcher.stderr": 0
+    }
+  },
+  "operations": {
+    "completeRestored": 15,
+    "lastComplete": "REFERENCE-seed-join-16",
+    "argumentJoins": 15,
+    "newScientificReturns": 0,
+    "rightSuboperationsRestored": 0,
+    "failedSummaryJoin": {
+      "source": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/REFERENCE-seed-join-16.json",
+        "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/continuation/complete/REFERENCE-seed-join-16.json",
+        "bytes": 158721,
+        "sha256": "9d881a592eb76472bc20a3048b12f3d5d6a2a144ae60d81d2cdf255633efb41d"
+      },
+      "actualArgumentJoin": false,
+      "comparison": "SAME_STRICT_JSON_ENCODER_ROUNDTRIP_NO_ALGEBRA",
+      "saved": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/right-final/complete/summary-comparisons/REFERENCE-seed-join-16.json/saved.json",
+        "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/right-final/complete/summary-comparisons/REFERENCE-seed-join-16.json/saved.json",
+        "bytes": 158721,
+        "sha256": "9d881a592eb76472bc20a3048b12f3d5d6a2a144ae60d81d2cdf255633efb41d"
+      },
+      "fresh": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/right-final/complete/summary-comparisons/REFERENCE-seed-join-16.json/fresh.json",
+        "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/right-final/complete/summary-comparisons/REFERENCE-seed-join-16.json/fresh.json",
+        "bytes": 158719,
+        "sha256": "4b08e5844636318f6920b5c30081702aef91494f5d1533acb8d11fd9b6f78ffb"
+      },
+      "differences": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/right-final/complete/summary-comparisons/REFERENCE-seed-join-16.json/differences.json",
+        "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/right-final/complete/summary-comparisons/REFERENCE-seed-join-16.json/differences.json",
+        "bytes": 147,
+        "sha256": "e6268c34f5f04e9fede1d1d5b0cc56eee1889e9b7220491c81ae894c3df964fe"
+      },
+      "differenceCount": 1
+    },
+    "failedSummaryReceipt": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/right-final/complete/summary-joins/REFERENCE-seed-join-16.json.join.json",
+      "bytes": 2027,
+      "sha256": "0c853b5d5dacc08ae42ccb9f8441a6a4ba50131a25943497fe1f151117f1fdd4"
+    },
+    "exactMismatchNotPersisted": false,
+    "exactDifference": {
+      "path": "/sourcePointDomainValues/120/sourceFactor",
+      "saved": "(20*premiseNormalMomentum**2 + 1)/500",
+      "fresh": "premiseNormalMomentum**2/25 + 1/500"
+    }
+  },
+  "progress": {
+    "events": 16,
+    "kinds": [
+      "PRESERVED_FIXED_POINT_RESULTS",
+      "RESTORED_PRIOR_COMPLETE_RETURN"
+    ],
+    "lastEvent": {
+      "sequence": 16,
+      "kind": "RESTORED_PRIOR_COMPLETE_RETURN",
+      "receipt": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/right-final/complete/operations/0014-REFERENCE-seed-join-16/complete.json",
+        "canonicalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/right-final/complete/operations/0014-REFERENCE-seed-join-16/complete.json",
+        "bytes": 6873,
+        "sha256": "17a97d9a88835e6b0db0637d38d78b92def0e0dadb22f8c89e72209bab091035"
+      },
+      "utc": "2026-09-30T01:02:14.920975+00:00"
+    }
+  },
+  "outcomes": {
+    "coordinator": {
+      "exitCode": 1,
+      "wallSeconds": 52.6786749860039,
+      "scientificAcceptance": "PENDING",
+      "finishedUtc": "2026-09-30T01:02:17.523397+00:00"
+    },
+    "guard": {
+      "exitCode": 1,
+      "wallSeconds": 52.60767483594827,
+      "unit": "s11c-guard-45626297e495",
+      "stderrBytes": 0,
+      "limitsVerified": true,
+      "childOutcome": {
+        "exitCode": 1,
+        "guardReason": null,
+        "wallSeconds": 52.52054708998185,
+        "childPid": 2603855
+      }
+    },
+    "child": {
+      "exitCode": 1,
+      "guardReason": null,
+      "wallSeconds": 52.52054708998185,
+      "childPid": 2603855
+    },
+    "supervisor": {
+      "stage": "transverse_face_right_final",
+      "command": [
+        "/usr/bin/python3",
+        "-u",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_right_final.py",
+        "--input-manifest",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_right_final_inputs.json",
+        "--gate-receipt",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_right_final_gate.json",
+        "--run-directory",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/right-final/complete"
+      ],
+      "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/right-final/transverse_face_right_final.stdout",
+      "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/right-final/transverse_face_right_final.stderr",
+      "startedUtc": "2026-09-30T01:01:25.013420+00:00",
+      "childPid": 2603856,
+      "status": "failed",
+      "exitCode": 1,
+      "wallSeconds": 52.446998419007286,
+      "stderrBytes": 1074,
+      "finishedUtc": "2026-09-30T01:02:17.460500+00:00"
+    }
+  },
+  "literalBuildVerdicts": {
+    "claude": "NEEDS REVISION",
+    "grok": "CLEAR FOR THIS FINAL RIGHT-END CONTINUATION"
+  },
+  "minorRepair": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_right_final_minor_repair_record.json",
+    "bytes": 2989,
+    "sha256": "8be44782aeb81409add79b8ac551254ffa77c525918dded93820f5748f2f9d9e"
+  },
+  "independentBuildClearance": false,
+  "executionSixPreservedFiles": 1441,
+  "scientificAcceptance": "NONE_NEW; prior accepted/selected results preserved, RIGHT remains unresolved",
+  "stopDecision": "User final-attempt limit reached. No further tooling repair, diagnostic, review, validator or scientific job. Retain selected REFERENCE/LEFT support; RIGHT unresolved.",
+  "automaticRetry": false,
+  "protectedBuilderSuffixSha256": "f01024512c9a028e7e524e5a95b5c455be42e125d10c36f94e20493109b013c2"
+}

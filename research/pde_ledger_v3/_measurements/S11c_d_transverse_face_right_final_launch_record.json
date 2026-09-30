@@ -1,5 +1,5 @@
 {
-  "status": "FINAL_RIGHT_LAUNCHED_USER_AUTHORIZED_MINOR_REPAIR",
+  "status": "FINAL_ATTEMPT_STOPPED_SAVED_REFERENCE_SEED_SUMMARY_MISMATCH_RIGHT_UNRESOLVED",
   "recordedUtc": "2026-09-30T01:00:00.725423+00:00",
   "gate": {
     "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_right_final_gate.json",
@@ -167,5 +167,60 @@
     "verified": false
   },
   "sourceCommit": "acc80fd0",
-  "reviewedBaselineCommit": "f4a4f029"
+  "reviewedBaselineCommit": "f4a4f029",
+  "actualOutcome": {
+    "coordinator": {
+      "exitCode": 1,
+      "wallSeconds": 52.6786749860039,
+      "scientificAcceptance": "PENDING",
+      "finishedUtc": "2026-09-30T01:02:17.523397+00:00"
+    },
+    "guard": {
+      "exitCode": 1,
+      "wallSeconds": 52.60767483594827,
+      "unit": "s11c-guard-45626297e495",
+      "stderrBytes": 0,
+      "limitsVerified": true,
+      "childOutcome": {
+        "exitCode": 1,
+        "guardReason": null,
+        "wallSeconds": 52.52054708998185,
+        "childPid": 2603855
+      }
+    },
+    "child": {
+      "exitCode": 1,
+      "guardReason": null,
+      "wallSeconds": 52.52054708998185,
+      "childPid": 2603855
+    },
+    "supervisor": {
+      "stage": "transverse_face_right_final",
+      "command": [
+        "/usr/bin/python3",
+        "-u",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_right_final.py",
+        "--input-manifest",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_right_final_inputs.json",
+        "--gate-receipt",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_right_final_gate.json",
+        "--run-directory",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/right-final/complete"
+      ],
+      "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/right-final/transverse_face_right_final.stdout",
+      "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/right-final/transverse_face_right_final.stderr",
+      "startedUtc": "2026-09-30T01:01:25.013420+00:00",
+      "childPid": 2603856,
+      "status": "failed",
+      "exitCode": 1,
+      "wallSeconds": 52.446998419007286,
+      "stderrBytes": 1074,
+      "finishedUtc": "2026-09-30T01:02:17.460500+00:00"
+    }
+  },
+  "actualWorkerSeconds": 50.1368230819935,
+  "rightReached": false,
+  "newScientificReturns": 0,
+  "finalAttemptStopped": true,
+  "automaticRetry": false
 }

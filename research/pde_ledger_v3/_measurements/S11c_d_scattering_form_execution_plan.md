@@ -1,3 +1,19 @@
+**FINAL RIGHT ATTEMPT STOPPED (2026-09-29):** execution7 stopped after
+50.136823 worker seconds, before RIGHT. The REFERENCE face summary now matches;
+REFERENCE seed16 has one sourceFactor string difference: saved
+`(20*premiseNormalMomentum**2 + 1)/500`, restored
+`premiseNormalMomentum**2/25 + 1/500`. Both full JSON summaries and differing
+path were persisted; strict comparison was not bypassed.15 complete prior
+returns restored; zero new scientific work, no RIGHT suboperations. Peak
+259072000bytes,zero swap/events,1370 input pins and all prior artifacts intact.
+
+STOP as the user requested for this final attempt: no more repair/diagnostic/
+review/validator/job. Selected REFERENCE/LEFT remains supported at its prior
+scope; RIGHT unresolved. No loss magnitude or all-grade matched-end result.
+Literal Claude NEEDS REVISION/Grok CLEAR and user-authorized narrow codec fix
+remain explicit. See `S11c_d_transverse_face_right_final_failure_report.md` and
+`_failure_checkpoint.json`. Completion hook finished; no work remains running.
+
 **Final RIGHT execution7 launched (2026-09-29):** source commit acc80fd0;
 reviewed baseline f4a4f029 remains intact. Hook armed before guard launch to this
 session. Actual containment verifies16GiB,zero swap,one CPU,32tasks,one native

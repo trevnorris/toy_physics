@@ -1,3 +1,16 @@
+**RESTORED-ARRAY TOOLING CORRECTION — central pilot v4 (2026-09-30):**
+V3 stopped after eight saved-return restorations, with no new numerical work,
+on plain dictionary equality of restored NumPy arrays. All 69 input pins,
+40 source snapshots, 25 prior copies and journal bytes match; its 39 files are
+preserved. Worker46.700s, peak195.56MiB, no swap/events, strict stderr empty,
+stdout/checks identical. V4 uses the existing exact structural comparator for
+three data-sharing checks, preserving exact dtype/shape/bytes and all other
+worker and numerical-library code. Six local tooling tests pass. See
+pilot_array_disposition.json and pilot_v4_static_checks/gate. Resume all twelve
+v2 complete returns; v3 added none. First new work remains the unfinished
+measure check. No time limit, scientific retry, method change or new review.
+Actual integration/background controls must pass before any finite solve.
+
 **LAUNCH VERIFIED — central-pilot-v3 running (2026-09-30):**
 Shared guard verifies RuntimeMaxUSec=infinity/Restart=no and the actual2GiB,
 zero-swap,one-CPU,32-task,one-thread resource limits. Completion hook is armed.

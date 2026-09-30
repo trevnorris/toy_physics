@@ -1,0 +1,25 @@
+{
+  "status": "EXACT_RESTORED_ARRAY_COMPARISON_TOOLING_REPAIR_CHECKED",
+  "tests": 6,
+  "testOutput": "......\n----------------------------------------------------------------------\nRan 6 tests in 0.055s\n\nOK",
+  "workerOnlyChanges": [
+    "Import existing exact_structure",
+    "Use it for the three rows/jets/source-character equality checks"
+  ],
+  "allOtherWorkerBytesUnchanged": true,
+  "numericalLibrariesUnchanged": {
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_integration_v3.py": "dc154817f13f05d436abebb708556778dc397775c57af6f56818103e12827058",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_finite.py": "61ff6cdd6c5c89d3bd1c432b840ebaddc2c62e1f84aad91a4f74fb4157210411"
+  },
+  "syntheticCoverage": [
+    "Original shared array identity masks dictionary equality failure after restoration",
+    "Equal restored arrays pass; bytes/dtype/shape differences fail",
+    "Container keys/types/lengths/scalars remain exact",
+    "Earlier floating panel regression and protected cuts",
+    "Completed functions not called and pending input joined"
+  ],
+  "scientificRestorations": 0,
+  "runtimeIntegrityStillRequired": true,
+  "resumeFromV2CompleteOperations": 12,
+  "preservedV3NewNumericalOperations": 0
+}

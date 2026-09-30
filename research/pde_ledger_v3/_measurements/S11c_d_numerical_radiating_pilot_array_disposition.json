@@ -1,0 +1,232 @@
+{
+  "status": "RESTORED_ARRAY_COMPARISON_TOOLING_FAILURE_PRESERVED",
+  "inspectedUtc": "2026-09-30T17:02:02.710716+00:00",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-pilot-v3",
+  "checks": {
+    "status": "STOPPED_UNRESOLVED",
+    "exceptionType": "ValueError",
+    "message": "The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()",
+    "traceback": "Traceback (most recent call last):\n  File \"/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_pilot_v3.py\", line 134, in main\n    J=SavedStartupJournal(base,manifest['priorStartup']);result=run(manifest,J)\n  File \"/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_pilot_v3.py\", line 67, in run\n    require(binding['rows']==zero['rows'] and binding['jets']==zero['jets'] and binding['sources']==zero['sources'],'actual row/source operands independent of contrast')\nValueError: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()\n",
+    "incompleteOperation": null,
+    "finiteSolves": 0,
+    "wallSeconds": 46.69995541102253,
+    "completeOperations": 8,
+    "restoredOperations": 8,
+    "posthashesIntact": true,
+    "peakRssKiB": 173188,
+    "independentMethodClearance": false,
+    "physicalLossInterpretation": "RETAINED_ORDER_LOSS_INTERPRETATION_UNRESOLVED",
+    "automaticRetry": false
+  },
+  "resources": {
+    "workerSeconds": 46.69995541102253,
+    "peakCgroupBytes": 205062144,
+    "swapBytes": 0,
+    "memoryEvents": 0,
+    "duration": {
+      "verified": true,
+      "actual": {
+        "Restart": "no",
+        "RuntimeMaxUSec": "infinity"
+      },
+      "wallDeadlineSeconds": null,
+      "inactivityDeadlineSeconds": null
+    },
+    "limits": {
+      "verified": true,
+      "actual": {
+        "memory.max": "2147483648",
+        "memory.swap.max": "0",
+        "pids.max": "32",
+        "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-33523f36d10a.service",
+        "nice": 15,
+        "affinity": [
+          15
+        ],
+        "threads": {
+          "OPENBLAS_NUM_THREADS": "1",
+          "OMP_NUM_THREADS": "1",
+          "MKL_NUM_THREADS": "1",
+          "NUMEXPR_NUM_THREADS": "1",
+          "VECLIB_MAXIMUM_THREADS": "1",
+          "BLIS_NUM_THREADS": "1"
+        }
+      }
+    }
+  },
+  "integrity": {
+    "sourcePosthashes": 69,
+    "sourceSnapshots": 40,
+    "priorFilesCopied": 25,
+    "journalOperations": 8,
+    "sqliteBlobs": 193,
+    "rawInputReturnReceiptsVerified": true,
+    "restoredReturnBytesEqualPrior": true,
+    "scientificStderrEmpty": true,
+    "stdoutChecksByteIdentical": true
+  },
+  "files": {
+    "active-operation.json": {
+      "sha256": "d018c74e2f8d5029f1fa3991a24c867f8463063738d50f034cfd217c34d44187",
+      "bytes": 1320
+    },
+    "artifact-index.json": {
+      "sha256": "23bed1f6c986df424efbb29cebe390bb904a0f2b13790e5b2310d02361b7c4bd",
+      "bytes": 5538
+    },
+    "checks.json": {
+      "sha256": "461bd0c638f6504a2ecb823804dc01151ce0d61871634a83a8e8ead510ee0a16",
+      "bytes": 1195
+    },
+    "consumed-end-map-evidence.json": {
+      "sha256": "ce736fb7c8248810dd253b0b130801d51fa4f90cfa9a72459cdad61cb356e598",
+      "bytes": 737525
+    },
+    "endpoint-order-summary.json": {
+      "sha256": "cd85628ec6bda35be58efce250083a2a2ead71b9b2485553196801fd50a0b056",
+      "bytes": 116
+    },
+    "failure.json": {
+      "sha256": "2b85b0ec586c1b92bb8ad493c4b6d9602972e89a597cbe822ea49187fda9dd7e",
+      "bytes": 906
+    },
+    "kernel-contrast-reuse.json": {
+      "sha256": "e6cf7a7ea9704ce97dd19920aa078cb803a2dd7e88e716959fd08e5c7ffd7e5e",
+      "bytes": 162
+    },
+    "numerical-settings.json": {
+      "sha256": "af02564ce249af62771c466af3b0a179eb329591b8f7e0fe2d662f9ecf688b94",
+      "bytes": 1666
+    },
+    "operation-index.jsonl": {
+      "sha256": "01d375e8acdd20627b8b3eee43096aec2da48f8b859bfabde86ce9e57461eb41",
+      "bytes": 11022
+    },
+    "operations.sqlite": {
+      "sha256": "a1e55778e0819329585a1deece0f2463a0cdaa1836f291104e6d96be4054580c",
+      "bytes": 14544896
+    },
+    "posthashes.json": {
+      "sha256": "74c6c1a51fa0bd0d9219c83a488a66869b854ffb3d92356ef62a814ebccc245a",
+      "bytes": 20134
+    },
+    "prior-complete/active-operation.json": {
+      "sha256": "d4be495dc0b4a4d4872248d71cb952603a111fc3dba83e5c3a2f14e8d08fba49",
+      "bytes": 276
+    },
+    "prior-complete/artifact-index.json": {
+      "sha256": "b8d6293386cb59e5c183ff7e2ca9df95b96905ca9fb25a454c263f8ae4915353",
+      "bytes": 3280
+    },
+    "prior-complete/checks.json": {
+      "sha256": "7730fa17ab281c3ae59708794261aa6c4d694f1a29b4e2b1e6193116bd8abbd0",
+      "bytes": 2392
+    },
+    "prior-complete/consumed-end-map-evidence.json": {
+      "sha256": "ce736fb7c8248810dd253b0b130801d51fa4f90cfa9a72459cdad61cb356e598",
+      "bytes": 737525
+    },
+    "prior-complete/endpoint-order-summary.json": {
+      "sha256": "cd85628ec6bda35be58efce250083a2a2ead71b9b2485553196801fd50a0b056",
+      "bytes": 116
+    },
+    "prior-complete/failure.json": {
+      "sha256": "ca0aca664d5f2398ab1bd3baf242066311236214e2db432b74eb5f9bbebcece7",
+      "bytes": 2101
+    },
+    "prior-complete/kernel-contrast-reuse.json": {
+      "sha256": "e6cf7a7ea9704ce97dd19920aa078cb803a2dd7e88e716959fd08e5c7ffd7e5e",
+      "bytes": 162
+    },
+    "prior-complete/numerical-settings.json": {
+      "sha256": "af02564ce249af62771c466af3b0a179eb329591b8f7e0fe2d662f9ecf688b94",
+      "bytes": 1666
+    },
+    "prior-complete/operation-index.jsonl": {
+      "sha256": "b4fae9a547867f2952763f190893d7c126374fe893a51bc30d9a9398050771ed",
+      "bytes": 7525
+    },
+    "prior-complete/operations.sqlite": {
+      "sha256": "f39feb369ad55c00fd068217886afc1ba0e07ee8329088e0d2ef15d1d3d7f45f",
+      "bytes": 14532608
+    },
+    "prior-complete/posthashes.json": {
+      "sha256": "e497b873d8346304fbce249649c38b5f1ea2e4d676bdbf44e56b587bf5ff4c0e",
+      "bytes": 13160
+    },
+    "prior-complete/prior-startup/active-operation.json": {
+      "sha256": "28379472bcc9b634b71a3b40dd790a42cb8918c8ea9280f82506e89cef206231",
+      "bytes": 545
+    },
+    "prior-complete/prior-startup/artifact-index.json": {
+      "sha256": "0c02063345673a9f2630cedbb80a428e5cd5b5dc5da43dede886ed7aea06314a",
+      "bytes": 1236
+    },
+    "prior-complete/prior-startup/checks.json": {
+      "sha256": "92b1752e987c6f01eaa410b719a7771c1735c17a6746d32b51da454c3453bcf5",
+      "bytes": 1358
+    },
+    "prior-complete/prior-startup/consumed-end-map-evidence.json": {
+      "sha256": "ce736fb7c8248810dd253b0b130801d51fa4f90cfa9a72459cdad61cb356e598",
+      "bytes": 737525
+    },
+    "prior-complete/prior-startup/failure.json": {
+      "sha256": "7d4a1d4980438bad47d3cb85eeecfea2cffea5f8dbd0fe5ed721639e83f1bb08",
+      "bytes": 1095
+    },
+    "prior-complete/prior-startup/inputs/continuum-grades.pickle": {
+      "sha256": "e39412750fe58734ba4db2bd84d40908d18706ae055f6ddd6e3f53f560aa9b71",
+      "bytes": 307486
+    },
+    "prior-complete/prior-startup/inputs/domain-binding.pickle": {
+      "sha256": "723f4a8ed7e6844b4ed867a669ca23be34f00f5a7ea92ce7cca541cff1a9f475",
+      "bytes": 617843
+    },
+    "prior-complete/prior-startup/inputs/frequency-source.pickle": {
+      "sha256": "714a0011c6874b01d88969e8dbf02d75580639028024e04d81a4bb67a12b1cd8",
+      "bytes": 9596921
+    },
+    "prior-complete/prior-startup/operation-index.jsonl": {
+      "sha256": "c149a4455a657f3f477b437eecabdc369f1d6b393c199e34e752db0f37af6968",
+      "bytes": 1859
+    },
+    "prior-complete/prior-startup/operations.sqlite": {
+      "sha256": "ef438004b4c2968e9494264f6d141bca18fb121d644b97ab64b50925d221efb3",
+      "bytes": 11456512
+    },
+    "prior-complete/prior-startup/posthashes.json": {
+      "sha256": "2d664071f6173eb95658b35c75c198c868f9589fb148ff2e6ed61b82ce0ebe48",
+      "bytes": 7828
+    },
+    "prior-complete/prior-startup-copy-index.json": {
+      "sha256": "7e562f3c980e47daa56a21ade9943cd84ec6dad651431062e8468bcdd6da5424",
+      "bytes": 1492
+    },
+    "prior-complete/radical-inventory.json": {
+      "sha256": "8626b029b600adfae4df334ed108387b3ac58c71cb81c50545453df9b62f5b63",
+      "bytes": 945
+    },
+    "prior-complete/reused-numerical-helper-asts.json": {
+      "sha256": "ba7a6032094bebb7b73a5031035eb321e044fa066257f5a32f1aea27403c87e7",
+      "bytes": 558
+    },
+    "prior-copy-index.json": {
+      "sha256": "471d22b1ca05c6c04019c42ac68280880903d2c13cdf1eab2a17cd9a9eeb2cb0",
+      "bytes": 3536
+    },
+    "radical-inventory.json": {
+      "sha256": "8626b029b600adfae4df334ed108387b3ac58c71cb81c50545453df9b62f5b63",
+      "bytes": 945
+    },
+    "reused-numerical-helper-asts.json": {
+      "sha256": "ba7a6032094bebb7b73a5031035eb321e044fa066257f5a32f1aea27403c87e7",
+      "bytes": 558
+    }
+  },
+  "fileCount": 39,
+  "bytes": 53363533,
+  "diagnosis": "Plain Python nested dictionary equality attempts Boolean conversion of a multi-element NumPy array after independent saved-return restoration. No source disagreement was demonstrated. All eight operations restored completed data; no new numerical work.",
+  "correction": "Use existing exact_structure comparison: exact container types/keys/lengths, array dtype/shape/bytes and scalar equality, with no numerical tolerance. Both numerical libraries and all remaining run logic unchanged.",
+  "resume": "All twelve completed v2 returns remain the superset; preserve v3 in place and pin its inventory. Resume only unfinished transformed-measure operation after actual input joins.",
+  "authority": "Existing user-authorized tooling-only local corrections and numerical goal; no scientific retry, new method or review clearance."
+}

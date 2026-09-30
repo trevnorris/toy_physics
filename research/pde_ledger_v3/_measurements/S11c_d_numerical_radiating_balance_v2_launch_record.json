@@ -1,0 +1,90 @@
+{
+  "status": "RUNNING_HOOK_ARMED",
+  "startupCheckedUtc": "2026-09-30T23:10:57.570496+00:00",
+  "sourceCommit": "62976a54",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-balance-v2",
+  "launch": {
+    "jobPid": 4097217,
+    "watcherPid": 4097218,
+    "gateSha256": "16b837be277496f7f503f680c03b0790c6d4e2cb7c4b1f2e6e788c062c59250f",
+    "command": [
+      "/usr/bin/python3",
+      "/var/projects/toy_physics/scripts/s11c_guarded_run.py",
+      "--log-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-balance-v2/resource-guard",
+      "--",
+      "/usr/bin/python3",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-balance-v2",
+      "--stage",
+      "numerical_radiating_balance_v2",
+      "--",
+      "/usr/bin/python3",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_balance_v2.py",
+      "--manifest",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_balance_v2_inputs.json",
+      "--gate",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_balance_v2_gate.json",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-balance-v2/complete"
+    ],
+    "thread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+    "automaticRetry": false
+  },
+  "limits": {
+    "verified": true,
+    "actual": {
+      "memory.max": "2147483648",
+      "memory.swap.max": "0",
+      "pids.max": "32",
+      "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-f0fe15054ec2.service",
+      "nice": 15,
+      "affinity": [
+        15
+      ],
+      "threads": {
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "VECLIB_MAXIMUM_THREADS": "1",
+        "BLIS_NUM_THREADS": "1"
+      }
+    }
+  },
+  "duration": {
+    "verified": true,
+    "actual": {
+      "Restart": "no",
+      "RuntimeMaxUSec": "infinity"
+    },
+    "wallDeadlineSeconds": null,
+    "inactivityDeadlineSeconds": null
+  },
+  "hookStatus": "waiting",
+  "active": {
+    "stage": "numerical_radiating_balance_v2",
+    "command": [
+      "/usr/bin/python3",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_balance_v2.py",
+      "--manifest",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_balance_v2_inputs.json",
+      "--gate",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_balance_v2_gate.json",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-balance-v2/complete"
+    ],
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-balance-v2/numerical_radiating_balance_v2.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-balance-v2/numerical_radiating_balance_v2.stderr",
+    "startedUtc": "2026-09-30T23:10:31.116383+00:00",
+    "childPid": 4097233,
+    "status": "running"
+  },
+  "activeOperation": null,
+  "outcome": null,
+  "startupStderrEmpty": true,
+  "furtherModelPolling": false
+}

@@ -1,3 +1,10 @@
+**CENTRAL BALANCE RUNNING; FRESH REVIEWS SUBMITTED (2026-09-30):**
+Balance_v2 launched from62976a54 with the local missing-import correction.
+Startup verifies no runtime deadline,2GiB/zero-swap/one-CPU/one-thread limits
+and an armed completion hook. No finite deficit or paired review clearance
+is claimed. The exact approved packet is with fresh Claude and Grok; both
+reports are required before interpretation. No polling; inspect on completion.
+
 **REFINEMENT PASSED; FRESH CLAUDE/GROK SUBMITTED (2026-09-30):**
 The original uniform-action tolerance passed at32/48/64, including the768-node
 check; no coarse-resolution branch is needed. Both fresh reviewers received

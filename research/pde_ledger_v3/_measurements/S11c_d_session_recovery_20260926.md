@@ -1,3 +1,15 @@
+**AUTHORIZED — focused uniform refinement and replacement review (2026-09-30):**
+User directed the same-equation momentum0.6 refinement against saved references,
+then the controlled omega3 balance, with a prospective coarse branch if needed.
+The focused worker uses outer orders32/48/64 and source512/768, unchanged
+1e-8+1e-6*abs(reference) tolerance, no completed nested/reference replay and no
+finite solve. Three local storage/scope tests pass; pinned guard/supervisor
+launch is ready with no deadline. The separate37-file512,758-byte fresh Grok
+packet is frozen and awaiting exact export consent. No peer report is supplied.
+No deficit will be interpreted before the missing independent assessment and
+actual current controls. Operator residual alone is not a flux-error bound.
+See uniform_refinement_plan.md/gate and replacement_review_preparation.json.
+
 **STOPPED — central omega-3 uniform-action accuracy check (2026-09-30):**
 V4 completed 36 operations (12 restored,24 new) in5h16m10s. The expensive
 selected middle-integral comparison passed (maxdifference2.325e-12); both

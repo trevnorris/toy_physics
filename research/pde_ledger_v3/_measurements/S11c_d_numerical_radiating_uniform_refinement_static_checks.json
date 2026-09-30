@@ -1,0 +1,15 @@
+{
+  "status": "FOCUSED_UNIFORM_REFINEMENT_READY",
+  "tests": 3,
+  "testOutput": "...\n----------------------------------------------------------------------\nRan 3 tests in 0.055s\n\nOK",
+  "scientificRestorationsDuringPreparation": 0,
+  "newReferenceIntegrals": 0,
+  "completedMiddleIntegralReplay": false,
+  "priorResultFilesPinned": 47,
+  "sourceOnlyScopeChecked": true,
+  "numericalHelperHashes": {
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_integration_v3.py": "dc154817f13f05d436abebb708556778dc397775c57af6f56818103e12827058",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_finite.py": "61ff6cdd6c5c89d3bd1c432b840ebaddc2c62e1f84aad91a4f74fb4157210411"
+  },
+  "runtimeJoinsStillRequired": true
+}

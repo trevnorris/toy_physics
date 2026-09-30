@@ -1,0 +1,237 @@
+{
+  "status": "AWAITING_EXACT_PACKET_EXPORT_CONSENT",
+  "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/replacement-method-review",
+  "packetSha256": "ad792d2e94fdbda24f17f633c22ae371c7c0bb78535a725513909a24edb6c4e1",
+  "archiveSha256": "6e99162ac217ccb7dd2423c9c83b0b39eb000806f35ab3dde4324850683d68e8",
+  "packetFiles": 37,
+  "packetBytes": 512758,
+  "reviewers": [
+    "grok"
+  ],
+  "sourceRecords": [
+    {
+      "path": "_scratch/s11c/s11c-d-numerical-radiating-20260929/method-review-r2/packet/research/pde_ledger_v3/_measurements/S11c_d_finite_scattering.py",
+      "sourceSha256": "f187d9426be8069342a363a0466c175d32a8cb46101e32a14c433ccb9118e469",
+      "packetPath": "research/pde_ledger_v3/_measurements/S11c_d_finite_scattering.py",
+      "bytes": 30252
+    },
+    {
+      "path": "_scratch/s11c/s11c-d-numerical-radiating-20260929/method-review-r2/packet/research/pde_ledger_v3/_measurements/S11c_d_finite_scattering_domain.py",
+      "sourceSha256": "73341408d0f6c1eb517e435dea986e180ff53615a6102697a8e3ba6747bd35aa",
+      "packetPath": "research/pde_ledger_v3/_measurements/S11c_d_finite_scattering_domain.py",
+      "bytes": 13300
+    },
+    {
+      "path": "_scratch/s11c/s11c-d-numerical-radiating-20260929/method-review-r2/packet/research/pde_ledger_v3/_measurements/S11c_d_finite_scattering_domain_report.md",
+      "sourceSha256": "f5f34fb9a6c6e7bb4eb9598a52c6713508fe383a6f575430a8a5b1daf14529b3",
+      "packetPath": "research/pde_ledger_v3/_measurements/S11c_d_finite_scattering_domain_report.md",
+      "bytes": 3017
+    },
+    {
+      "path": "_scratch/s11c/s11c-d-numerical-radiating-20260929/method-review-r2/packet/research/pde_ledger_v3/_measurements/S11c_d_frequency_chart.py",
+      "sourceSha256": "06b1e19ffd03349951488b13580f336dc7d12e15a6941191026697b5c413ed97",
+      "packetPath": "research/pde_ledger_v3/_measurements/S11c_d_frequency_chart.py",
+      "bytes": 23653
+    },
+    {
+      "path": "_scratch/s11c/s11c-d-numerical-radiating-20260929/method-review-r2/packet/research/pde_ledger_v3/_measurements/S11c_d_frequency_end.py",
+      "sourceSha256": "f7a698ed27872ed0594692dbf671136b079279c32f9198bd92fcee23e3303a32",
+      "packetPath": "research/pde_ledger_v3/_measurements/S11c_d_frequency_end.py",
+      "bytes": 15477
+    },
+    {
+      "path": "_scratch/s11c/s11c-d-numerical-radiating-20260929/method-review-r2/packet/research/pde_ledger_v3/_measurements/S11c_d_frequency_matrix.py",
+      "sourceSha256": "97797ab676a58f16785bf4234d41eb5cd01abc0a42f39edc4e20f926b2c2b336",
+      "packetPath": "research/pde_ledger_v3/_measurements/S11c_d_frequency_matrix.py",
+      "bytes": 19894
+    },
+    {
+      "path": "_scratch/s11c/s11c-d-numerical-radiating-20260929/method-review-r2/packet/research/pde_ledger_v3/_measurements/S11c_d_frequency_matrix_report.md",
+      "sourceSha256": "0f52b0217f657a1d995f0ef32fcf8b7b1d5b3ed6b2578e3333d463aa56047777",
+      "packetPath": "research/pde_ledger_v3/_measurements/S11c_d_frequency_matrix_report.md",
+      "bytes": 1887
+    },
+    {
+      "path": "_scratch/s11c/s11c-d-numerical-radiating-20260929/method-review-r2/packet/research/pde_ledger_v3/_measurements/S11c_d_frequency_source.py",
+      "sourceSha256": "9be20be462bc10bfcaa7af643b9301948dd79bc2e08eb24ebcd1386a81efcdac",
+      "packetPath": "research/pde_ledger_v3/_measurements/S11c_d_frequency_source.py",
+      "bytes": 29576
+    },
+    {
+      "path": "_scratch/s11c/s11c-d-numerical-radiating-20260929/method-review-r2/packet/research/pde_ledger_v3/_measurements/S11c_d_frequency_source_report.md",
+      "sourceSha256": "46b91c1e159f6b467809c0119511b24bef270e4c960edf0755d2034fd93fa421",
+      "packetPath": "research/pde_ledger_v3/_measurements/S11c_d_frequency_source_report.md",
+      "bytes": 2842
+    },
+    {
+      "path": "_scratch/s11c/s11c-d-numerical-radiating-20260929/method-review-r2/packet/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_method_r2.md",
+      "sourceSha256": "5a28111302d28af4847e7ed383f4962543c4b93b5bc2b89a2e8620c5dbec03b8",
+      "packetPath": "research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_method_r2.md",
+      "bytes": 19568
+    },
+    {
+      "path": "_scratch/s11c/s11c-d-numerical-radiating-20260929/method-review-r2/packet/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_fixed_point_saved_current_note.md",
+      "sourceSha256": "be704678fa3dd9fd94abba7f5ba6e25b73f8b7549e7bffa64bd5513d0a13de11",
+      "packetPath": "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_fixed_point_saved_current_note.md",
+      "bytes": 2453
+    },
+    {
+      "path": "_scratch/s11c/s11c-d-numerical-radiating-20260929/method-review-r2/packet/research/pde_ledger_v3/_measurements/S11c_d_variable_profile_development_input.json",
+      "sourceSha256": "660b2b0b54494dce964c7f5fbd722a76a7e894d8ed92b18b5eb6290c3c10f1d5",
+      "packetPath": "research/pde_ledger_v3/_measurements/S11c_d_variable_profile_development_input.json",
+      "bytes": 1884
+    },
+    {
+      "path": "_scratch/s11c/s11c-d-numerical-radiating-20260929/method-review-r2/packet/saved-source-metadata.json",
+      "sourceSha256": "dee0d2bd4d128c7319a024ed5ea34558f727880c20a358ac9d84a4a77c8fb4a1",
+      "packetPath": "saved-source-metadata.json",
+      "bytes": 3587
+    },
+    {
+      "path": "_scratch/s11c/s11c-d-numerical-radiating-20260929/method-review-r2/packet/source-excerpts/S11c_c1_bulk_closure_sympy_audit.txt",
+      "sourceSha256": "ba8b75ea841b4a856cecb3e55819cc654c9c31d12d52e53e4d6bb2a6b7299bcc",
+      "packetPath": "source-excerpts/S11c_c1_bulk_closure_sympy_audit.txt",
+      "bytes": 7538
+    },
+    {
+      "path": "_scratch/s11c/s11c-d-numerical-radiating-20260929/method-review-r2/packet/source-excerpts/S11c_c2_selfenergy_fold_sympy_audit.txt",
+      "sourceSha256": "505b1ec8c8d582aef9dce904c4e74734776eaf39829e6ee2de916aac46f40dc6",
+      "packetPath": "source-excerpts/S11c_c2_selfenergy_fold_sympy_audit.txt",
+      "bytes": 6774
+    },
+    {
+      "path": "_scratch/s11c/s11c-d-numerical-radiating-20260929/method-review-r2/packet/source-excerpts/S11c_d_mixing_scattering_sympy_audit.txt",
+      "sourceSha256": "9816e422970d2085a1ec7d648fd44afe89e28e44de26585c2c43f0d8fdc4abb3",
+      "packetPath": "source-excerpts/S11c_d_mixing_scattering_sympy_audit.txt",
+      "bytes": 117763
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_boundary.py",
+      "sourceSha256": "d96d8e062f4e9cdc85ab0989ddb0a057fa931e12b412d59f937160b3f8177988",
+      "packetPath": "research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_boundary.py",
+      "bytes": 28297
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_boundary_continue_v2.py",
+      "sourceSha256": "1e008b7c223734b0a64bced49cf51c87b47890d39f15d136abf3d1c7330f555f",
+      "packetPath": "research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_boundary_continue_v2.py",
+      "bytes": 34428
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_end_maps_v2.py",
+      "sourceSha256": "4c96b6957bd839bf48e5f959483e13c3b83888db2893ff8d5ebe39c5e4f4262f",
+      "packetPath": "research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_end_maps_v2.py",
+      "bytes": 27173
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_blob_store.py",
+      "sourceSha256": "f085f35c46db05df31e217ccc1f84f2d0c6dcdcffcba322e6eb0cfed79e26a1d",
+      "packetPath": "research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_blob_store.py",
+      "bytes": 2864
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_saved_operations.py",
+      "sourceSha256": "8dae7c60e960edc1d7dfe805f28520abc9c067e3de69cac1d16a3ccec3ed20fa",
+      "packetPath": "research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_saved_operations.py",
+      "bytes": 4300
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_integration_v3.py",
+      "sourceSha256": "dc154817f13f05d436abebb708556778dc397775c57af6f56818103e12827058",
+      "packetPath": "research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_integration_v3.py",
+      "bytes": 31020
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_finite.py",
+      "sourceSha256": "61ff6cdd6c5c89d3bd1c432b840ebaddc2c62e1f84aad91a4f74fb4157210411",
+      "packetPath": "research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_finite.py",
+      "bytes": 10923
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_pilot_v4.py",
+      "sourceSha256": "4a6d572c03d16fb8e9d74fe22697ab51e780b15bafebd008053d37a19f68fa14",
+      "packetPath": "research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_pilot_v4.py",
+      "bytes": 13943
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_uniform_refinement.py",
+      "sourceSha256": "fa2c3ba35bca3f431d06b3ee51c544cf9406e906cabcdcc5706d7eca090a2c60",
+      "packetPath": "research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_uniform_refinement.py",
+      "bytes": 14350
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_uniform_refinement_plan.md",
+      "sourceSha256": "f0f1b8fe5a63acc02fc796ac67d44d16d451c08dbca54b0fb953edeeded1e1c7",
+      "packetPath": "research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_uniform_refinement_plan.md",
+      "bytes": 3735
+    },
+    {
+      "path": "_scratch/s11c/s11c-d-numerical-radiating-20260929/central-pilot-v4/complete/middle-integration-comparison.json",
+      "sourceSha256": "600c67dd7a8ec1c4b1879d5b89b24b2e37d332359b73434c27f09bdd5af0ff87",
+      "packetPath": "observed/middle-integration-comparison.json",
+      "bytes": 1429
+    },
+    {
+      "path": "_scratch/s11c/s11c-d-numerical-radiating-20260929/central-pilot-v4/complete/integration-mutations.json",
+      "sourceSha256": "7c2a36336dd4db35e98bfa66938949e87150fe5c9f982958931e8fc4540b626b",
+      "packetPath": "observed/integration-mutations.json",
+      "bytes": 572
+    },
+    {
+      "path": "_scratch/s11c/s11c-d-numerical-radiating-20260929/central-pilot-v4/complete/uniform-Gaussian-0.0-column-3.json",
+      "sourceSha256": "2af1598a68eff83107d6a6c4ab5fc7adc7ec065eacca9575ec2228d5098d38ab",
+      "packetPath": "observed/uniform-Gaussian-0.0-column-3.json",
+      "bytes": 4741
+    },
+    {
+      "path": "_scratch/s11c/s11c-d-numerical-radiating-20260929/central-pilot-v4/complete/uniform-Gaussian-0.0-column-4.json",
+      "sourceSha256": "cdd82779eed3678c968b6c94b4e4c9e7a8287cf2c108511fd11c9ac2df3c31bc",
+      "packetPath": "observed/uniform-Gaussian-0.0-column-4.json",
+      "bytes": 4667
+    },
+    {
+      "path": "_scratch/s11c/s11c-d-numerical-radiating-20260929/central-pilot-v4/complete/uniform-Gaussian-0.6000000000000001-column-3.json",
+      "sourceSha256": "ab280190db21a9a66f14217f757951393ab8508d1f181d4bb39b6ada149497f8",
+      "packetPath": "observed/uniform-Gaussian-0.6000000000000001-column-3.json",
+      "bytes": 4756
+    },
+    {
+      "path": "_scratch/s11c/s11c-d-numerical-radiating-20260929/central-pilot-v4/complete/uniform-Gaussian-0.6000000000000001-column-4.json",
+      "sourceSha256": "59cf808d14665ffec441c1940f0e9456364a92650eca3ef061830fbaeed0f8d0",
+      "packetPath": "observed/uniform-Gaussian-0.6000000000000001-column-4.json",
+      "bytes": 4793
+    },
+    {
+      "path": "_scratch/s11c/s11c-d-numerical-radiating-20260929/central-pilot-v4/complete/endpoint-order-summary.json",
+      "sourceSha256": "cd85628ec6bda35be58efce250083a2a2ead71b9b2485553196801fd50a0b056",
+      "packetPath": "observed/endpoint-order-summary.json",
+      "bytes": 116
+    },
+    {
+      "path": "_scratch/s11c/s11c-d-numerical-radiating-20260929/central-pilot-v4/complete/numerical-settings.json",
+      "sourceSha256": "af02564ce249af62771c466af3b0a179eb329591b8f7e0fe2d662f9ecf688b94",
+      "packetPath": "observed/numerical-settings.json",
+      "bytes": 1666
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_replacement_review_prompt.md",
+      "sourceSha256": "e76f812ded9043dded60b0ceaa6467d20379fe35bf561ba495ae444db89a9437",
+      "packetPath": "review-prompt.md",
+      "bytes": 4895
+    }
+  ],
+  "static": {
+    "runnerSha256": "5aac8e816ad598883d57510939066fc132b06e8dffd88b630927f963eeec7a5c",
+    "launcherSha256": "45d071a892b259baba9bc5c1fb66776acbaff4223bd1b57157fb9671ef51b1ab",
+    "completionMessageSha256": "327d4261e6478ca7c92d74990823d633ab9ea19b4cb58c0733a93555df1c4507",
+    "packetHashesChecked": true,
+    "codeExecutionEnabled": false,
+    "reviewers": [
+      "grok"
+    ]
+  },
+  "generalReviewAuthority": "User requested missing second independent method review alongside focused refinement. Existing exact-packet export rule remains.",
+  "scienceAuthority": "Focused refinement and subsequent controlled finite balance under existing guard; no repeated science permission required.",
+  "noSubmissionYet": true,
+  "exactConsentQuestionSent": true
+}

@@ -1,3 +1,21 @@
+**Final RIGHT minor correction verified; one run prepared (2026-09-29):**
+Fresh literal verdicts are Claude NEEDS REVISION / Grok CLEAR FOR THIS FINAL
+RIGHT-END CONTINUATION, preserved with baseline f4a4f029. User permission for
+minor fixes authorizes the narrow stored-StrictGreaterThan loader correction.
+Saved JSON/opcode/installed-source evidence supports preservation of unevaluated
+`1 > 0`; a stdlib synthetic NEWOBJ test passes. No scientific object was loaded
+during repair. Full strict summary equality, epsilon extraction and physical
+checks remain unchanged. Any further mismatch remains fatal with evidence.
+No fresh independent CLEAR is claimed. The pinned gate explicitly records
+USER_AUTHORIZED_MINOR_SERIALIZATION_REPAIR and independentBuildClearance=false.
+
+One execution7 is prepared under the approved16GiB/progress-based limits and
+desktop-managed priority. No additional review round or optional changes were
+made. Stop after results; an unsuccessful RIGHT ends this tooling attempt.
+Exact review, repair/test/evidence/authority, gate and launch metadata use the
+`S11c_d_transverse_face_right_final` prefix. All prior artifacts, shared guard,
+Lean/S11_lean and protected builder suffix remain intact.
+
 **User permits minor fixes before the final run (2026-09-29):** “If it only
 needs minor fixes then fix it then run it.” After both current review reports
 finish, minor fixes may be applied and verified under the existing final-run

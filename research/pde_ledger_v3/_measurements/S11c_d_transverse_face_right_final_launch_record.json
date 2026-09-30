@@ -1,0 +1,68 @@
+{
+  "status": "STATIC_READY_USER_AUTHORIZED_MINOR_REPAIR_FINAL_RIGHT_RUN",
+  "recordedUtc": "2026-09-30T01:00:00.725423+00:00",
+  "gate": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_right_final_gate.json",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_right_final_gate.json",
+    "bytes": 5352,
+    "sha256": "676736c9a94e00c61ace7f34b783cc7321f820b41d530dc12a32f994c0025d58"
+  },
+  "launcher": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_right_final_stage_launch.py",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_right_final_stage_launch.py",
+    "bytes": 16385,
+    "sha256": "0bd24148a1066c107bd92579f8763aa0f55b4741fac9834f8d29347f24b239ee"
+  },
+  "reviewRecord": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_right_final_review_record.json",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_right_final_review_record.json",
+    "bytes": 64656,
+    "sha256": "596f1724f796d3cbe01e5c5f3ec68e32b28e385d04ae1338b4c210a5e9ae9b34"
+  },
+  "minorRepairRecord": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_right_final_minor_repair_record.json",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_right_final_minor_repair_record.json",
+    "bytes": 2989,
+    "sha256": "8be44782aeb81409add79b8ac551254ffa77c525918dded93820f5748f2f9d9e"
+  },
+  "authority": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_right_final_minor_fix_authorization.json",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_right_final_minor_fix_authorization.json",
+    "bytes": 784,
+    "sha256": "81bf271483a5ed3ca68d24446c0678e5d3bf6c628421712020deee8b0d33bf80"
+  },
+  "authorization": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_right_final_authorization.json",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_right_final_authorization.json",
+    "bytes": 2943,
+    "sha256": "74d5f49bfae306f6293e6ae30fdfaa543b889c8ad0a772d6fb94377f9fde6f3e"
+  },
+  "scientificExecutionOrdinal": 7,
+  "scientificExecutionLaunched": false,
+  "independentBuildClearance": false,
+  "scientificImportsOrRestorations": 0,
+  "preflightPins": {
+    "workerSha256": "6ad77bdb61d205a9d3671ebf733bd230946d4a90913cfcbfbf283dbb4b37d172",
+    "inputManifestSha256": "576c1093493abbf23e42e94fcd3dff8b4e5cc6fc1de51e6363d00d51bb2b3d06",
+    "scopeSha256": "321a8332ca178b993180a4f7bd703fbba05872d05bd016f279a767cf4048597a",
+    "authorizationSha256": "74d5f49bfae306f6293e6ae30fdfaa543b889c8ad0a772d6fb94377f9fde6f3e",
+    "guardSha256": "587061fdd6a30748e6d1520020248882237586b10fc34aeab1e91c8db24cdca2",
+    "sharedGuardSha256": "9194b3e04b43d345828082e6312b0a2d7a9293f6296153f9c6ccea2defb931d2",
+    "supervisorSha256": "45a16f7f952ca6b571362b1c386fec76cd86f1e0ad04113074adf49c683ec49c",
+    "gateSha256": "676736c9a94e00c61ace7f34b783cc7321f820b41d530dc12a32f994c0025d58",
+    "launcherSha256": "0bd24148a1066c107bd92579f8763aa0f55b4741fac9834f8d29347f24b239ee"
+  },
+  "guardDurationAuthorizationPreflight": {
+    "gatePath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_right_final_gate.json",
+    "gateSha256": "676736c9a94e00c61ace7f34b783cc7321f820b41d530dc12a32f994c0025d58",
+    "approvalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_right_final_authorization.json",
+    "approvalSha256": "74d5f49bfae306f6293e6ae30fdfaa543b889c8ad0a772d6fb94377f9fde6f3e",
+    "seconds": 0,
+    "nativeSeconds": 0,
+    "sharedGuardUnchanged": true,
+    "progressStallSeconds": 3600,
+    "guardBookkeepingGraceSeconds": 60,
+    "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-d-transverse-face-fixed-point-20260929/right-final"
+  },
+  "completionHookTarget": "01a0e01b-ef84-7192-817f-584cda5d339b"
+}

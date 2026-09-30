@@ -163,6 +163,14 @@ class NativeDeadline(BaseException):
     """Fatal whole-job deadline; disarm before failure bookkeeping."""
 
 
+def stored_inequality_class(original):
+    """NEWOBJ adapter: keep the stored relation and its original SymPy class."""
+    class StoredInequality(original):
+        def __new__(cls, lhs, rhs):
+            return original(lhs, rhs, evaluate=False)
+    return StoredInequality
+
+
 class SavedCodec(pickle.Unpickler):
     """Only pinned data; no producer classes, arbitrary builtins, or eval.
 
@@ -191,6 +199,11 @@ class SavedCodec(pickle.Unpickler):
         }
         if (module, name) in safe:
             return safe[(module, name)]
+        # The saved frequencyDomain is Gt(1,0,evaluate=False). NEWOBJ omits
+        # that option; default reconstruction would replace the stored node
+        # by BooleanTrue. Preserve structure, then keep the strict summary join.
+        if (module, name) == ('sympy.core.relational', 'StrictGreaterThan'):
+            return stored_inequality_class(sp.StrictGreaterThan)
         # Exact storage classes present in the saved mutable control matrices.
         # Their constructors rebuild stored matrix/domain data, not a producer.
         if (module, name) in {('sympy.polys.matrices.domainmatrix', 'DomainMatrix'),
@@ -1457,7 +1470,7 @@ def main():
               scopeSha256=spec['inputs']['continuationScope']['sha256'],
               authorizationSha256=spec['inputs']['continuationAuthorization']['sha256'])
     require(all(gate.get(key)==value for key,value in pins.items()),'worker/manifest/scope/authorization gate pins')
-    require(gate.get('independentBuildClearance') is True and gate.get('scienceJobOrdinal')==7
+    require(gate.get('independentBuildClearance') is False and gate.get('scienceJobOrdinal')==7
             and gate.get('maximumNewScientificExecutions')==1,'fresh review and one continuation only')
     require(gate.get('seconds')==0 and gate.get('nativeSeconds')==0
             and gate.get('progressStallSeconds')==3600 and gate.get('maximumEndBindings')==1
@@ -1470,16 +1483,38 @@ def main():
     review=gate['reviewRecord']
     require(route(review['path'])==review,'review record pin')
     reviewed=json.loads(Path(review['path']).read_text())
-    require(reviewed.get('independentBuildClearance') is True
-            and all(reviewed.get(key)==value for key,value in pins.items()),'exact reviewed packet')
+    require(reviewed.get('independentBuildClearance') is False
+            and all(reviewed.get(key)==value for key,value in pins.items() if key!='workerSha256'),
+            'reviewed manifest/scope/authority remain unchanged')
     require(all(reviewed.get(key)==gate[key] for key in
                 ('guardSha256','sharedGuardSha256','supervisorSha256')),
             'exact reviewed resource guard and supervisor')
     legs=reviewed.get('reviews',[])
     require({leg.get('engine') for leg in legs}=={'claude','grok'} and len(legs)==2,'fresh independent Claude/Grok legs')
+    expected_verdicts={'claude':'NEEDS REVISION','grok':'CLEAR'}
     for leg in legs:
-        require(leg.get('verdict')=='CLEAR' and route(leg['output']['path'])==leg['output']
-                and leg['output']['bytes']>0,'independent review output pin and recorded clearance')
+        require(leg.get('verdict')==expected_verdicts[leg['engine']]
+                and route(leg['output']['path'])==leg['output'] and leg['output']['bytes']>0,
+                'literal independent review verdict and output pin')
+    repair_pin=gate['minorRepairRecord']; authority_pin=gate['minorFixAuthority']
+    require(route(repair_pin['path'])==repair_pin and route(authority_pin['path'])==authority_pin,
+            'minor-repair record and user authority pins')
+    repair=json.loads(Path(repair_pin['path']).read_text())
+    authority=json.loads(Path(authority_pin['path']).read_text())
+    require(gate.get('executionApproval')=='USER_AUTHORIZED_MINOR_SERIALIZATION_REPAIR'
+            and repair.get('status')=='MINOR_SERIALIZATION_REPAIR_VERIFIED_USER_AUTHORIZED'
+            and repair.get('independentBuildClearance') is False
+            and repair['reviewRecord']==review and repair['authority']==authority_pin
+            and repair['reviewedWorkerSha256']==reviewed['workerSha256']
+            and repair['workerSha256']==pins['workerSha256']
+            and repair['onlyCodecAndAuthorizationChanged'] is True,
+            'exact reviewed baseline to user-authorized minor correction')
+    require(authority['userReply']=='If it only needs minor fixes then fix it then run it'
+            and authority['maximumNewScientificExecutions']==1 and authority['stopAfterResults'] is True
+            and authority['reviewedPacketSha256']==reviewed['packetSha256'],
+            'explicit minor-fix authority for this exact reviewed baseline')
+    for name in ('testRecord','sourceEvidence'):
+        require(route(repair[name]['path'])==repair[name],'minor repair evidence pin')
     for name,record in spec['inputs'].items():
         require(route(record['path'])==record,'changed input '+name)
     approval=json.loads(Path(spec['inputs']['continuationAuthorization']['path']).read_text())

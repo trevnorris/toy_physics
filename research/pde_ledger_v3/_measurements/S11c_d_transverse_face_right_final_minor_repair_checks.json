@@ -1,0 +1,67 @@
+{
+  "status": "SYNTHETIC_NEWOBJ_AND_SOURCE_IDENTITY_PASS",
+  "recordedUtc": "2026-09-30T00:57:16.385850+00:00",
+  "workerSha256": "6ad77bdb61d205a9d3671ebf733bd230946d4a90913cfcbfbf283dbb4b37d172",
+  "reviewedWorkerSha256": "d413be30b95ee5cd599a0e317a1a0cda1eee553ad2643e5c3f92c9f89708c2e1",
+  "testSource": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_right_final_minor_repair_test.py",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_right_final_minor_repair_test.py",
+    "bytes": 4307,
+    "sha256": "1b14c7ad11d47c72095f9b1106867dd5604253e88b0ebced239d7e95bf56e9c6"
+  },
+  "changedFunctions": [
+    "__new__",
+    "find_class",
+    "main",
+    "stored_inequality_class"
+  ],
+  "onlyCodecAndAuthorizationChanged": true,
+  "syntheticCases": [
+    {
+      "arguments": [
+        1,
+        0
+      ],
+      "defaultLoaderValue": true,
+      "preservedText": "1 > 0",
+      "originalClassReturned": true,
+      "newobjPresent": true
+    },
+    {
+      "arguments": [
+        0,
+        1
+      ],
+      "defaultLoaderValue": false,
+      "preservedText": "0 > 1",
+      "originalClassReturned": true,
+      "newobjPresent": true
+    },
+    {
+      "arguments": [
+        0,
+        0
+      ],
+      "defaultLoaderValue": false,
+      "preservedText": "0 > 0",
+      "originalClassReturned": true,
+      "newobjPresent": true
+    },
+    {
+      "arguments": [
+        7,
+        -3
+      ],
+      "defaultLoaderValue": true,
+      "preservedText": "7 > -3",
+      "originalClassReturned": true,
+      "newobjPresent": true
+    }
+  ],
+  "changedArgumentsRemainUnequal": true,
+  "strictSummaryAndAllScientificFunctionsUnchanged": true,
+  "guardManifestScopeOriginalAuthorizationUnchanged": true,
+  "scientificImports": 0,
+  "scientificPayloadRestorations": 0,
+  "independentBuildClearance": false
+}

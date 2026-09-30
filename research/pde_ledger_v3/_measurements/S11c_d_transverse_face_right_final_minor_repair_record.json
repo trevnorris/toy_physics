@@ -1,0 +1,47 @@
+{
+  "status": "MINOR_SERIALIZATION_REPAIR_VERIFIED_USER_AUTHORIZED",
+  "recordedUtc": "2026-09-30T01:00:00.358992+00:00",
+  "reviewedBaselineCommit": "f4a4f029",
+  "reviewedWorkerSha256": "d413be30b95ee5cd599a0e317a1a0cda1eee553ad2643e5c3f92c9f89708c2e1",
+  "workerSha256": "6ad77bdb61d205a9d3671ebf733bd230946d4a90913cfcbfbf283dbb4b37d172",
+  "reviewRecord": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_right_final_review_record.json",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_right_final_review_record.json",
+    "bytes": 64656,
+    "sha256": "596f1724f796d3cbe01e5c5f3ec68e32b28e385d04ae1338b4c210a5e9ae9b34"
+  },
+  "authority": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_right_final_minor_fix_authorization.json",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_right_final_minor_fix_authorization.json",
+    "bytes": 784,
+    "sha256": "81bf271483a5ed3ca68d24446c0678e5d3bf6c628421712020deee8b0d33bf80"
+  },
+  "testRecord": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_right_final_minor_repair_checks.json",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_right_final_minor_repair_checks.json",
+    "bytes": 1913,
+    "sha256": "646ea4296e7569d942c9274c44c5e79c40204271274ad4447bc8088d85c4dc79"
+  },
+  "testSource": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_right_final_minor_repair_test.py",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_right_final_minor_repair_test.py",
+    "bytes": 4307,
+    "sha256": "1b14c7ad11d47c72095f9b1106867dd5604253e88b0ebced239d7e95bf56e9c6"
+  },
+  "sourceEvidence": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_right_final_minor_repair_evidence.json",
+    "canonicalPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_transverse_face_right_final_minor_repair_evidence.json",
+    "bytes": 8738,
+    "sha256": "24d42fc99577024623bf2c8f8c8c524e5f14cc28e53dcd5d98618d622cbf047f"
+  },
+  "onlyCodecAndAuthorizationChanged": true,
+  "independentBuildClearance": false,
+  "literalReviewVerdicts": {
+    "claude": "NEEDS REVISION",
+    "grok": "CLEAR FOR THIS FINAL RIGHT-END CONTINUATION"
+  },
+  "repair": "Preserve stored StrictGreaterThan arguments under NEWOBJ using evaluate=False and original SymPy class. Strict summary failure, coefficient extraction and physical checks unchanged. Execution gate records user-authorized minor repair without inventing independent CLEAR.",
+  "scientificPayloadRestorationsDuringRepair": 0,
+  "maximumNewScientificExecutions": 1,
+  "noAutomaticRetry": true
+}

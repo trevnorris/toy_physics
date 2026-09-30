@@ -1,3 +1,10 @@
+**Launch update (2026-09-30 13:39 UTC):** committed at `ec6282e6` and
+launched the first central boundary gate. The hook was armed first. One host
+startup observation confirmed the worker running, enforced 2GiB/zero swap,
+one CPU/32 tasks/one native thread, and empty scientific/guard stderr. See
+`S11c_d_numerical_radiating_boundary_launch_record.json`. Wait silently for the
+completion hook; no model polling. No scientific result is accepted yet.
+
 **CURRENT DIRECTION — user authorized corrections and numerical execution (2026-09-30):**
 The user withdrew the automatic two-day authoring cap and will decide that
 budget. They explicitly directed no further Grok pass, minor corrections and

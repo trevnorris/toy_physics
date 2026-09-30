@@ -1,0 +1,110 @@
+{
+  "status": "LAUNCHED_AWAITING_COMPLETION_INSPECTION",
+  "implementationCommit": "ec6282e6",
+  "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/boundary-01",
+  "launch": {
+    "jobPid": 3371958,
+    "watcherPid": 3371959,
+    "gateSha256": "93ae15b2dbb378c6e130797e31696037f198084714e38ab269dae057a28bc959",
+    "command": [
+      "/usr/bin/python3",
+      "/var/projects/toy_physics/scripts/s11c_guarded_run.py",
+      "--log-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/boundary-01/resource-guard",
+      "--seconds",
+      "900",
+      "--",
+      "/usr/bin/python3",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/boundary-01",
+      "--stage",
+      "numerical_radiating_boundary",
+      "--",
+      "/usr/bin/python3",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_boundary.py",
+      "--manifest",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_boundary_inputs.json",
+      "--gate",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_boundary_gate.json",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/boundary-01/complete"
+    ],
+    "thread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+    "automaticRetry": false
+  },
+  "hostStartupCheck": {
+    "checkedUtc": "2026-09-30T13:40:12.607775+00:00",
+    "runDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/boundary-01",
+    "scope": "Single startup/enforcement observation, not progress polling",
+    "pids": {
+      "jobPid": 3371958,
+      "watcherPid": 3371959
+    },
+    "alive": {
+      "jobPid": true,
+      "watcherPid": true
+    },
+    "completion-watcher/state.json": {
+      "status": "waiting",
+      "watcherPid": 3371959,
+      "jobPid": 3371958,
+      "thread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+      "startedUtc": "2026-09-30T13:39:42.644525+00:00",
+      "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
+      "messageSha256": "b561754c1b563d378266c342f19d35989ee670995e4f961a65316028057262b1",
+      "notifications": {}
+    },
+    "resource-guard/limit-validation.json": {
+      "verified": true,
+      "actual": {
+        "memory.max": "2147483648",
+        "memory.swap.max": "0",
+        "pids.max": "32",
+        "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-2551ac6b8720.service",
+        "nice": 15,
+        "affinity": [
+          15
+        ],
+        "threads": {
+          "OPENBLAS_NUM_THREADS": "1",
+          "OMP_NUM_THREADS": "1",
+          "MKL_NUM_THREADS": "1",
+          "NUMEXPR_NUM_THREADS": "1",
+          "VECLIB_MAXIMUM_THREADS": "1",
+          "BLIS_NUM_THREADS": "1"
+        }
+      }
+    },
+    "active.json": {
+      "stage": "numerical_radiating_boundary",
+      "command": [
+        "/usr/bin/python3",
+        "-u",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_boundary.py",
+        "--manifest",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_boundary_inputs.json",
+        "--gate",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_boundary_gate.json",
+        "--run-directory",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/boundary-01/complete"
+      ],
+      "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/boundary-01/numerical_radiating_boundary.stdout",
+      "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/boundary-01/numerical_radiating_boundary.stderr",
+      "startedUtc": "2026-09-30T13:39:43.520118+00:00",
+      "childPid": 3371967,
+      "status": "running"
+    },
+    "coordinator.stderrBytes": 0,
+    "guard-launch.stderrBytes": 0,
+    "resource-guard/stderrBytes": 0,
+    "numerical_radiating_boundary.stderrBytes": 0
+  },
+  "workerSha256": "d96d8e062f4e9cdc85ab0989ddb0a057fa931e12b412d59f937160b3f8177988",
+  "gateSha256": "93ae15b2dbb378c6e130797e31696037f198084714e38ab269dae057a28bc959",
+  "pairedIndependentMethodClearance": false,
+  "authority": "Explicit user instruction to make minor corrections and run without another Grok pass; authoring duration user-managed.",
+  "scientificAcceptance": "PENDING",
+  "next": "Wait for silent completion hook. Inspect actual results; if candidate gate passes continue authorized pilot implementation using completed returns. Central method/control failure stops, no retry."
+}

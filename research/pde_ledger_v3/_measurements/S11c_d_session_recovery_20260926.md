@@ -1,3 +1,25 @@
+**CURRENT STATUS — boundary gate timed out with saved progress (2026-09-30):**
+The numerical worker stopped at its 840-second native cap with 5,001 complete
+returns. At omega3, 17/18 LEFT candidates finished both frequency paths; the
+last candidate is partly complete and RIGHT was not reached. No mathematical
+check failure is recorded, but the boundary gate has not passed. No finite
+solve, current/face premise or loss estimate exists from this pilot yet.
+
+All 71 input hashes, 67 source snapshots and complete journal byte receipts
+were verified. Worker840.271s, peak251.9MiB, zero swap/memory events; strict
+stderr empty and stdout/checks identical. See numerical_radiating_boundary
+`checkpoint.json` and `report.md` for actual coverage and immutable routes.
+
+An avoidable ZIP-index append cost was identified at the timeout. A pure-storage
+helper passed synthetic byte tests; it is not integrated or running. No science
+retry/continuation or new review was launched. The next dependency is an
+explicitly authorized saved-return continuation, preserving all completed work.
+The user controls authoring time and forbids another Grok pass; ordinary job
+runtime/resource limits remain. The exact omega1 track remains parked, and
+historical review status and physical-interpretation limits are unchanged.
+
+Earlier entries below are preserved history, not current launch instructions.
+
 **Launch update (2026-09-30 13:39 UTC):** committed at `ec6282e6` and
 launched the first central boundary gate. The hook was armed first. One host
 startup observation confirmed the worker running, enforced 2GiB/zero swap,

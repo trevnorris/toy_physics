@@ -1,0 +1,860 @@
+{
+  "status": "TIME_LIMIT_WITH_SAVED_PROGRESS_BOUNDARY_INCOMPLETE",
+  "inspectedUtc": "2026-09-30T13:57:46.608178+00:00",
+  "implementationCommit": "ec6282e6",
+  "launchCommit": "1baf7eb6",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/boundary-01",
+  "workerSha256": "d96d8e062f4e9cdc85ab0989ddb0a057fa931e12b412d59f937160b3f8177988",
+  "gate": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_boundary_gate.json",
+    "sha256": "93ae15b2dbb378c6e130797e31696037f198084714e38ab269dae057a28bc959",
+    "bytes": 13680
+  },
+  "checks": {
+    "status": "STOPPED_UNRESOLVED",
+    "exceptionType": "TimeoutError",
+    "message": "840-second native pilot stage limit; preserve completed returns, no retry",
+    "traceback": "Traceback (most recent call last):\n  File \"/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_boundary.py\", line 391, in main\n    result=run(base,manifest,J)\n  File \"/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_boundary.py\", line 355, in run\n    state=trace_path(J,prefix+'/'+segment,pair,state,start,end,maximum,joint,lambda v:v);start=end\n  File \"/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_boundary.py\", line 226, in trace_path\n    lift=J.call(name+'-joint-sheet',{'vertices':vertices,'seedQ':seed_q},lambda:joint.trace(vertices,seed=seed_q))\n  File \"/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_boundary.py\", line 72, in call\n    start=time.monotonic();value=fn();out=self.blob(name+'/return.pickle',value)\n  File \"/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_boundary.py\", line 65, in blob\n    with zipfile.ZipFile(self.path,'a',compression=zipfile.ZIP_STORED) as z:\n  File \"/usr/lib/python3.10/zipfile.py\", line 1308, in __init__\n    self._RealGetContents()\n  File \"/usr/lib/python3.10/zipfile.py\", line 1392, in _RealGetContents\n    filename = filename.decode('cp437')\n  File \"/usr/lib/python3.10/encodings/cp437.py\", line 14, in decode\n    def decode(self,input,errors='strict'):\n  File \"/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_boundary.py\", line 383, in alarm\n    def alarm(*_):raise TimeoutError('840-second native pilot stage limit; preserve completed returns, no retry')\nTimeoutError: 840-second native pilot stage limit; preserve completed returns, no retry\n",
+    "incompleteOperation": "LEFT/omega-3/a-1/candidate-17/height-0.025/across/point-0035-joint-sheet",
+    "lastOperationReceipt": {
+      "name": "LEFT/omega-3/a-1/candidate-17/height-0.025/across/point-0035-joint-sheet",
+      "input": {
+        "member": "LEFT/omega-3/a-1/candidate-17/height-0.025/across/point-0035-joint-sheet/input.pickle",
+        "sha256": "ed8746c7064f20db5ea68abac6171adfca80ba0f8075064c3d2a4684a2c8aed9",
+        "bytes": 184
+      },
+      "status": "STARTED"
+    },
+    "finiteSolves": 0,
+    "completeOperations": 5001,
+    "wallSeconds": 840.2706131760497,
+    "peakRssKiB": 211544,
+    "posthashesIntact": true,
+    "independentMethodClearance": false,
+    "physicalLossInterpretation": "RETAINED_ORDER_LOSS_INTERPRETATION_UNRESOLVED",
+    "automaticRetry": false,
+    "journal": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/boundary-01/complete/operations.zip",
+      "sha256": "0de8a6e1246a7c125f75d15cd3394cfc24f166f51b55945962602f7091a1ff86",
+      "bytes": 27468396,
+      "members": 10004
+    }
+  },
+  "verification": {
+    "stdoutChecksByteIdentical": true,
+    "scientificAndGuardStderrEmpty": true,
+    "actualGuardLimitsVerified": true,
+    "all71PosthashesMatchCurrentFiles": true,
+    "all67SourceSnapshotsIntact": true,
+    "gateAndManifestSnapshotsIntact": true,
+    "fourInputCopiesByteIdentical": true,
+    "all5001InputReturnReceiptsHashVerifiedWithoutDeserialization": true,
+    "all10004ArchiveMembersAccountedFor": true,
+    "incompleteReturnAbsent": true,
+    "scientificPayloadRestoredDuringInspection": false,
+    "protectedBuilderSuffixSha256": "f01024512c9a028e7e524e5a95b5c455be42e125d10c36f94e20493109b013c2"
+  },
+  "resources": {
+    "samples": 422,
+    "peakBytes": 264159232,
+    "maxSwapBytes": 0,
+    "maxTasks": 3,
+    "minimumHostAvailableBytes": 21146181632,
+    "memoryEventMaxima": {
+      "low": 0,
+      "high": 0,
+      "max": 0,
+      "oom": 0,
+      "oom_kill": 0,
+      "oom_group_kill": 0,
+      "sock_throttled": 0
+    }
+  },
+  "coverage": {
+    "restoredAcceptedPackets": 4,
+    "completeOperations": 5001,
+    "prefixCounts": {
+      "instrument": 1,
+      "restore": 4,
+      "LEFT": 4996
+    },
+    "LEFTCompleteTargetCandidateRecords": 17,
+    "LEFTCandidate17CoarsePathComplete": true,
+    "LEFTCandidate17FinePathLastFullyJoinedParameter": {
+      "real": 1.85,
+      "imag": 0.025
+    },
+    "LEFTCandidate17LastNewtonParameter": {
+      "real": 1.875,
+      "imag": 0.025
+    },
+    "LEFTSourceIndependentContrastReuses": 54,
+    "LEFTReferenceCorrespondences": 18,
+    "RIGHTSourceBindingVisited": false,
+    "finiteSolves": 0,
+    "faceOrCurrentChecks": 0,
+    "laterFrequenciesVisited": false
+  },
+  "observedTargetCensus": [
+    {
+      "index": 0,
+      "nullity": 1,
+      "selected": false,
+      "selectedOutgoing": false,
+      "k": {
+        "real": 0.0029847463632115784,
+        "imag": 3.9045551930779734
+      },
+      "physicalQ": {
+        "real": -3.9096740570640285,
+        "imag": 0.002980838489960982
+      },
+      "properDepthSheet": true,
+      "spatialOutwardDecay": false,
+      "realNormalMomentum": false,
+      "pathComparison": {
+        "k": 7.606678276885937e-15,
+        "q": 6.7351659343795965e-15,
+        "projector": 1.4507110320340342e-13
+      },
+      "residual": 4.2890813642845635e-13,
+      "currentSign": "NOT_YET_EVALUATED"
+    },
+    {
+      "index": 1,
+      "nullity": 1,
+      "selected": true,
+      "selectedOutgoing": true,
+      "k": {
+        "real": -0.0029847463632115784,
+        "imag": -3.9045551930779734
+      },
+      "physicalQ": {
+        "real": -3.9096740570640285,
+        "imag": 0.002980838489960982
+      },
+      "properDepthSheet": true,
+      "spatialOutwardDecay": true,
+      "realNormalMomentum": false,
+      "pathComparison": {
+        "k": 7.606678276885937e-15,
+        "q": 6.7351659343795965e-15,
+        "projector": 1.4507110320340342e-13
+      },
+      "residual": 4.2890813642845635e-13,
+      "currentSign": "NOT_YET_EVALUATED"
+    },
+    {
+      "index": 2,
+      "nullity": 1,
+      "selected": false,
+      "selectedOutgoing": false,
+      "k": {
+        "real": 0.2933542675677425,
+        "imag": -0.4449397596046151
+      },
+      "physicalQ": {
+        "real": -0.47641875883152124,
+        "imag": -0.27397111232712323
+      },
+      "properDepthSheet": false,
+      "spatialOutwardDecay": true,
+      "realNormalMomentum": false,
+      "pathComparison": {
+        "k": 1.2102552055446191e-14,
+        "q": 2.934967872633709e-14,
+        "projector": 4.762649736545309e-15
+      },
+      "residual": 3.889000622578122e-16,
+      "currentSign": "NOT_YET_EVALUATED"
+    },
+    {
+      "index": 3,
+      "nullity": 1,
+      "selected": false,
+      "selectedOutgoing": false,
+      "k": {
+        "real": -0.2933542675677425,
+        "imag": 0.4449397596046151
+      },
+      "physicalQ": {
+        "real": -0.47641875883152124,
+        "imag": -0.27397111232712323
+      },
+      "properDepthSheet": false,
+      "spatialOutwardDecay": false,
+      "realNormalMomentum": false,
+      "pathComparison": {
+        "k": 1.2102552055446191e-14,
+        "q": 2.934967872633709e-14,
+        "projector": 4.762649736545309e-15
+      },
+      "residual": 3.889000622578122e-16,
+      "currentSign": "NOT_YET_EVALUATED"
+    },
+    {
+      "index": 4,
+      "nullity": 1,
+      "selected": false,
+      "selectedOutgoing": false,
+      "k": {
+        "real": 0.7779939319180652,
+        "imag": 5.280583344245016e-05
+      },
+      "physicalQ": {
+        "real": -5.464222705019117e-05,
+        "imag": 0.7518474302002022
+      },
+      "properDepthSheet": true,
+      "spatialOutwardDecay": false,
+      "realNormalMomentum": false,
+      "pathComparison": {
+        "k": 1.8727781329726164e-16,
+        "q": 4.39644495175696e-16,
+        "projector": 1.2412670766236366e-16
+      },
+      "residual": 2.1653102609682676e-15,
+      "currentSign": "NOT_YET_EVALUATED"
+    },
+    {
+      "index": 5,
+      "nullity": 1,
+      "selected": true,
+      "selectedOutgoing": true,
+      "k": {
+        "real": -0.7779939319180652,
+        "imag": -5.280583344245016e-05
+      },
+      "physicalQ": {
+        "real": -5.464222705019117e-05,
+        "imag": 0.7518474302002022
+      },
+      "properDepthSheet": true,
+      "spatialOutwardDecay": true,
+      "realNormalMomentum": false,
+      "pathComparison": {
+        "k": 1.8727781329726164e-16,
+        "q": 4.39644495175696e-16,
+        "projector": 1.2412670766236366e-16
+      },
+      "residual": 2.1653102609682676e-15,
+      "currentSign": "NOT_YET_EVALUATED"
+    },
+    {
+      "index": 6,
+      "nullity": 1,
+      "selected": false,
+      "selectedOutgoing": false,
+      "k": {
+        "real": 3.342176555179341,
+        "imag": 0.003880705650435731
+      },
+      "physicalQ": {
+        "real": -0.0038876727120208225,
+        "imag": 3.3361870721098987
+      },
+      "properDepthSheet": true,
+      "spatialOutwardDecay": false,
+      "realNormalMomentum": false,
+      "pathComparison": {
+        "k": 1.048701429765562e-17,
+        "q": 1.3327757952411288e-17,
+        "projector": 2.816255578577367e-17
+      },
+      "residual": 4.312365058087029e-16,
+      "currentSign": "NOT_YET_EVALUATED"
+    },
+    {
+      "index": 7,
+      "nullity": 1,
+      "selected": true,
+      "selectedOutgoing": true,
+      "k": {
+        "real": -3.342176555179341,
+        "imag": -0.003880705650435731
+      },
+      "physicalQ": {
+        "real": -0.0038876727120208225,
+        "imag": 3.3361870721098987
+      },
+      "properDepthSheet": true,
+      "spatialOutwardDecay": true,
+      "realNormalMomentum": false,
+      "pathComparison": {
+        "k": 1.048701429765562e-17,
+        "q": 1.3327757952411288e-17,
+        "projector": 2.816255578577367e-17
+      },
+      "residual": 4.312365058087029e-16,
+      "currentSign": "NOT_YET_EVALUATED"
+    },
+    {
+      "index": 8,
+      "nullity": 1,
+      "selected": false,
+      "selectedOutgoing": false,
+      "k": {
+        "real": 3.2659853933506118,
+        "imag": 0.002402117261954533
+      },
+      "physicalQ": {
+        "real": 0.0024066339390730546,
+        "imag": -3.2598559187944374
+      },
+      "properDepthSheet": false,
+      "spatialOutwardDecay": false,
+      "realNormalMomentum": false,
+      "pathComparison": {
+        "k": 1.0410020756636746e-16,
+        "q": 2.1148016577939986e-16,
+        "projector": 1.1102230246251565e-16
+      },
+      "residual": 2.951867249215078e-15,
+      "currentSign": "NOT_YET_EVALUATED"
+    },
+    {
+      "index": 9,
+      "nullity": 1,
+      "selected": false,
+      "selectedOutgoing": false,
+      "k": {
+        "real": -3.2659853933506118,
+        "imag": -0.002402117261954533
+      },
+      "physicalQ": {
+        "real": 0.0024066339390730546,
+        "imag": -3.2598559187944374
+      },
+      "properDepthSheet": false,
+      "spatialOutwardDecay": true,
+      "realNormalMomentum": false,
+      "pathComparison": {
+        "k": 1.0410020756636746e-16,
+        "q": 2.1148016577939986e-16,
+        "projector": 1.1102230246251565e-16
+      },
+      "residual": 2.951867249215078e-15,
+      "currentSign": "NOT_YET_EVALUATED"
+    },
+    {
+      "index": 10,
+      "nullity": 1,
+      "selected": false,
+      "selectedOutgoing": false,
+      "k": {
+        "real": 0.664301919352996,
+        "imag": 0.19352041136743206
+      },
+      "physicalQ": {
+        "real": 0.20208479964425666,
+        "imag": -0.6361486907064366
+      },
+      "properDepthSheet": false,
+      "spatialOutwardDecay": false,
+      "realNormalMomentum": false,
+      "pathComparison": {
+        "k": 2.2790308271176227e-16,
+        "q": 6.232104776253787e-16,
+        "projector": 1.3092278833360675e-16
+      },
+      "residual": 6.067146489677744e-16,
+      "currentSign": "NOT_YET_EVALUATED"
+    },
+    {
+      "index": 11,
+      "nullity": 1,
+      "selected": false,
+      "selectedOutgoing": false,
+      "k": {
+        "real": -0.664301919352996,
+        "imag": -0.19352041136743206
+      },
+      "physicalQ": {
+        "real": 0.20208479964425666,
+        "imag": -0.6361486907064366
+      },
+      "properDepthSheet": false,
+      "spatialOutwardDecay": true,
+      "realNormalMomentum": false,
+      "pathComparison": {
+        "k": 2.2790308271176227e-16,
+        "q": 6.232104776253787e-16,
+        "projector": 1.3092278833360675e-16
+      },
+      "residual": 6.067146489677744e-16,
+      "currentSign": "NOT_YET_EVALUATED"
+    },
+    {
+      "index": 12,
+      "nullity": 1,
+      "selected": false,
+      "selectedOutgoing": false,
+      "k": {
+        "real": 0.0025865886094794334,
+        "imag": 3.904525452563221
+      },
+      "physicalQ": {
+        "real": 3.9096443562306242,
+        "imag": -0.0025832019848372875
+      },
+      "properDepthSheet": false,
+      "spatialOutwardDecay": false,
+      "realNormalMomentum": false,
+      "pathComparison": {
+        "k": 7.250036149925122e-15,
+        "q": 6.2122833336652405e-15,
+        "projector": 1.4382836696358722e-13
+      },
+      "residual": 4.2608852092535476e-13,
+      "currentSign": "NOT_YET_EVALUATED"
+    },
+    {
+      "index": 13,
+      "nullity": 1,
+      "selected": false,
+      "selectedOutgoing": false,
+      "k": {
+        "real": -0.0025865886094794334,
+        "imag": -3.904525452563221
+      },
+      "physicalQ": {
+        "real": 3.9096443562306242,
+        "imag": -0.0025832019848372875
+      },
+      "properDepthSheet": false,
+      "spatialOutwardDecay": true,
+      "realNormalMomentum": false,
+      "pathComparison": {
+        "k": 7.250036149925122e-15,
+        "q": 6.2122833336652405e-15,
+        "projector": 1.4382836696358722e-13
+      },
+      "residual": 4.2608852092535476e-13,
+      "currentSign": "NOT_YET_EVALUATED"
+    },
+    {
+      "index": 14,
+      "nullity": 2,
+      "selected": false,
+      "selectedOutgoing": false,
+      "k": {
+        "real": 2.439262183530097,
+        "imag": -3.8055982636441387e-17
+      },
+      "physicalQ": {
+        "real": -3.1347285945046776e-17,
+        "imag": -2.4310491562286467
+      },
+      "properDepthSheet": false,
+      "spatialOutwardDecay": false,
+      "realNormalMomentum": true,
+      "pathComparison": {
+        "k": 1.6531353155748512e-14,
+        "q": 1.8532190973840796e-14,
+        "projector": 2.892180736867361e-13
+      },
+      "residual": 4.258854095889666e-14,
+      "currentSign": "NOT_YET_EVALUATED"
+    },
+    {
+      "index": 15,
+      "nullity": 2,
+      "selected": false,
+      "selectedOutgoing": false,
+      "k": {
+        "real": -2.439262183530097,
+        "imag": 3.8055982636441387e-17
+      },
+      "physicalQ": {
+        "real": -3.1347285945046776e-17,
+        "imag": -2.4310491562286467
+      },
+      "properDepthSheet": false,
+      "spatialOutwardDecay": false,
+      "realNormalMomentum": true,
+      "pathComparison": {
+        "k": 1.6531353155748512e-14,
+        "q": 1.8532190973840796e-14,
+        "projector": 2.892180736867361e-13
+      },
+      "residual": 4.258854095889666e-14,
+      "currentSign": "NOT_YET_EVALUATED"
+    },
+    {
+      "index": 16,
+      "nullity": 2,
+      "selected": true,
+      "selectedOutgoing": false,
+      "k": {
+        "real": 2.439262183530097,
+        "imag": -3.805496546278189e-17
+      },
+      "physicalQ": {
+        "real": 3.1346265385375027e-17,
+        "imag": 2.4310491562286467
+      },
+      "properDepthSheet": true,
+      "spatialOutwardDecay": false,
+      "realNormalMomentum": true,
+      "pathComparison": {
+        "k": 1.6660449076258114e-14,
+        "q": 1.8391856213079504e-14,
+        "projector": 2.551478637455536e-13
+      },
+      "residual": 3.985342309432735e-14,
+      "currentSign": "NOT_YET_EVALUATED"
+    }
+  ],
+  "maximumRecordedTargetResidual": 4.2890813642845635e-13,
+  "maximumRecordedTargetProjectorDifference": 2.892180736867361e-13,
+  "referenceJoins": [
+    {
+      "index": 0,
+      "referenceIndex": 0,
+      "pencilJoin": 1.1815317075804674e-21,
+      "rootDistance": 0.0,
+      "projectorJoin": 0.0,
+      "secondDistance": 0.4940339401793611
+    },
+    {
+      "index": 1,
+      "referenceIndex": 1,
+      "pencilJoin": 1.1815317075804674e-21,
+      "rootDistance": 0.0,
+      "projectorJoin": 0.0,
+      "secondDistance": 0.4940339401793611
+    },
+    {
+      "index": 2,
+      "referenceIndex": 2,
+      "pencilJoin": 1.3503386540292067e-19,
+      "rootDistance": 0.0,
+      "projectorJoin": 0.0,
+      "secondDistance": 0.6593486871758405
+    },
+    {
+      "index": 3,
+      "referenceIndex": 3,
+      "pencilJoin": 1.3503386540292067e-19,
+      "rootDistance": 0.0,
+      "projectorJoin": 0.0,
+      "secondDistance": 0.6593486871758405
+    },
+    {
+      "index": 4,
+      "referenceIndex": 4,
+      "pencilJoin": 1.1295837865678796e-15,
+      "rootDistance": 0.0,
+      "projectorJoin": 0.0,
+      "secondDistance": 0.35885012820822043
+    },
+    {
+      "index": 5,
+      "referenceIndex": 5,
+      "pencilJoin": 1.1295837865678796e-15,
+      "rootDistance": 0.0,
+      "projectorJoin": 0.0,
+      "secondDistance": 0.35885012820822043
+    },
+    {
+      "index": 6,
+      "referenceIndex": 6,
+      "pencilJoin": 1.1486902381703389e-17,
+      "rootDistance": 0.0,
+      "projectorJoin": 0.0,
+      "secondDistance": 0.7529319288396675
+    },
+    {
+      "index": 7,
+      "referenceIndex": 7,
+      "pencilJoin": 1.1486902381703389e-17,
+      "rootDistance": 0.0,
+      "projectorJoin": 0.0,
+      "secondDistance": 0.7529319288396675
+    },
+    {
+      "index": 8,
+      "referenceIndex": 8,
+      "pencilJoin": 1.1464662393784484e-17,
+      "rootDistance": 0.0,
+      "projectorJoin": 0.0,
+      "secondDistance": 0.7500905185028753
+    },
+    {
+      "index": 9,
+      "referenceIndex": 9,
+      "pencilJoin": 1.1464662393784484e-17,
+      "rootDistance": 0.0,
+      "projectorJoin": 0.0,
+      "secondDistance": 0.7500905185028753
+    },
+    {
+      "index": 10,
+      "referenceIndex": 10,
+      "pencilJoin": 1.3534055922220256e-19,
+      "rootDistance": 0.0,
+      "projectorJoin": 0.0,
+      "secondDistance": 0.6626566433451684
+    },
+    {
+      "index": 11,
+      "referenceIndex": 11,
+      "pencilJoin": 1.3534055922220256e-19,
+      "rootDistance": 0.0,
+      "projectorJoin": 0.0,
+      "secondDistance": 0.6626566433451684
+    },
+    {
+      "index": 12,
+      "referenceIndex": 12,
+      "pencilJoin": 7.741760087275077e-17,
+      "rootDistance": 0.0,
+      "projectorJoin": 0.0,
+      "secondDistance": 0.4958895614989416
+    },
+    {
+      "index": 13,
+      "referenceIndex": 13,
+      "pencilJoin": 7.741760087275077e-17,
+      "rootDistance": 0.0,
+      "projectorJoin": 0.0,
+      "secondDistance": 0.4958895614989416
+    },
+    {
+      "index": 14,
+      "referenceIndex": 14,
+      "pencilJoin": 8.488490334963371e-18,
+      "rootDistance": 0.0,
+      "projectorJoin": 0.0,
+      "secondDistance": 0.879728344135564
+    },
+    {
+      "index": 15,
+      "referenceIndex": 15,
+      "pencilJoin": 8.488490334963371e-18,
+      "rootDistance": 0.0,
+      "projectorJoin": 0.0,
+      "secondDistance": 0.879728344135564
+    },
+    {
+      "index": 16,
+      "referenceIndex": 16,
+      "pencilJoin": 8.505657366993823e-18,
+      "rootDistance": 0.0,
+      "projectorJoin": 0.0,
+      "secondDistance": 0.879728344135564
+    },
+    {
+      "index": 17,
+      "referenceIndex": 17,
+      "pencilJoin": 8.505657366993823e-18,
+      "rootDistance": 0.0,
+      "projectorJoin": 0.0,
+      "secondDistance": 0.879728344135564
+    }
+  ],
+  "lastCompletedPoint": {
+    "operation": "LEFT/omega-3/a-1/candidate-17/height-0.025/across/point-0034",
+    "parameter": {
+      "real": 1.85,
+      "imag": 0.025
+    },
+    "k": {
+      "real": -1.4938795132840759,
+      "imag": -0.020639772524593203
+    },
+    "q": {
+      "real": -0.20258742968572033,
+      "imag": 14.991469796743303
+    },
+    "nullity": 2,
+    "residual": 4.395046845388787e-16,
+    "denominatorMargin": 1.0
+  },
+  "lastSheetCheck": {
+    "name": "LEFT/omega-3/a-1/candidate-17/height-0.025/across/point-0034",
+    "status": "TRANSPORTED",
+    "relativeQDifference": 6.942001070590872e-17
+  },
+  "lastPairCheckRoute": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/boundary-01/complete/last-pair-check.json",
+    "sha256": "a80a94d92938203c8c5a164aad088c18b40dd3c788b2c97f06c3a082d2df059d",
+    "bytes": 8822
+  },
+  "pendingOperation": {
+    "name": "LEFT/omega-3/a-1/candidate-17/height-0.025/across/point-0035-joint-sheet",
+    "input": {
+      "member": "LEFT/omega-3/a-1/candidate-17/height-0.025/across/point-0035-joint-sheet/input.pickle",
+      "sha256": "ed8746c7064f20db5ea68abac6171adfca80ba0f8075064c3d2a4684a2c8aed9",
+      "bytes": 184
+    },
+    "status": "STARTED"
+  },
+  "extraNonJournalContext": {
+    "member": "LEFT/symbolic-unit-context.pickle",
+    "sha256": "e6ceb71bdee1edc241a87f517e02aa97169ace458c53320369145b2257fce4b1",
+    "bytes": 9411
+  },
+  "artifacts": {
+    "LEFT-contrast-0.25.json": {
+      "sha256": "1f58033c31226540d0d03cdd9fcef3e73d6fe632a3b072abfb4d1cf22fd47055",
+      "bytes": 1343
+    },
+    "LEFT-contrast-0.5.json": {
+      "sha256": "1f58033c31226540d0d03cdd9fcef3e73d6fe632a3b072abfb4d1cf22fd47055",
+      "bytes": 1343
+    },
+    "LEFT-contrast-0.json": {
+      "sha256": "1f58033c31226540d0d03cdd9fcef3e73d6fe632a3b072abfb4d1cf22fd47055",
+      "bytes": 1343
+    },
+    "LEFT-omega3-a-1-census.json": {
+      "sha256": "a312b22b94539f4e5f79a6c7c80f5149492f7e049f0b5e0125ae14c767f5c031",
+      "bytes": 10182
+    },
+    "LEFT-reference-join-0.json": {
+      "sha256": "468a0a6ea33b4aba1572957a69fd0e621268f2f7b1c674a8e7704e7b48e54c1a",
+      "bytes": 167
+    },
+    "LEFT-reference-join-1.json": {
+      "sha256": "557115276aac52ae501a3e6218ace0186b4af106353e492e4805aab55d203953",
+      "bytes": 167
+    },
+    "LEFT-reference-join-10.json": {
+      "sha256": "892ec34d735187ca97f59d8bc7c6c6f4397cdbb7374417b80e37149f2cec24ea",
+      "bytes": 169
+    },
+    "LEFT-reference-join-11.json": {
+      "sha256": "91bfdc84205ef1680a5af3cd80105f5c671ed04900cb3923d5c68931b2dd7b46",
+      "bytes": 169
+    },
+    "LEFT-reference-join-12.json": {
+      "sha256": "059cfc322f89b06a9de3daa3f122aa27854c09a5a5c39d122427197a265abc76",
+      "bytes": 168
+    },
+    "LEFT-reference-join-13.json": {
+      "sha256": "1e0cc84691a6767f358a0b2582b13e8a7760d73e094fa196e737978672740ff4",
+      "bytes": 168
+    },
+    "LEFT-reference-join-14.json": {
+      "sha256": "a4fc8b9fa053c5c731f537ce074627675982caf014d2879aca5fb1a11b03ae37",
+      "bytes": 167
+    },
+    "LEFT-reference-join-15.json": {
+      "sha256": "5a3643d4d42dad5b67e05d3d6649efe279f85f654ab175c65e6a734e4d0c1300",
+      "bytes": 167
+    },
+    "LEFT-reference-join-16.json": {
+      "sha256": "557a6033d9585ad372ad0da72ace7f18e7fba5370b8e9a0faa6c59f21cdb727a",
+      "bytes": 167
+    },
+    "LEFT-reference-join-17.json": {
+      "sha256": "a1ea6daf44ddd3a0e0fced29e7c0b79d9d1dc74a346ee02a313f971a6d30840f",
+      "bytes": 167
+    },
+    "LEFT-reference-join-2.json": {
+      "sha256": "70fa4cad16b28e75256f1a797dd3e08a30559b66fbf8a85d9cd41b6215eac142",
+      "bytes": 167
+    },
+    "LEFT-reference-join-3.json": {
+      "sha256": "a7b5ede6ec745ee446e2cf89ccae08c285eb474b432aec50175eca738c2452f3",
+      "bytes": 167
+    },
+    "LEFT-reference-join-4.json": {
+      "sha256": "515efb31c728abb4061735756797bc25141b9478eef389335d44c475391a9609",
+      "bytes": 168
+    },
+    "LEFT-reference-join-5.json": {
+      "sha256": "7b6e48393c5e626c3120a570a88cb5be31f8871f9f07d3fe293d8e36357bdbde",
+      "bytes": 168
+    },
+    "LEFT-reference-join-6.json": {
+      "sha256": "f15dcd4cf5a5a652b02a159cfdf4b4372c16ae275b52ee05eeadb9ebf5f3bd9f",
+      "bytes": 167
+    },
+    "LEFT-reference-join-7.json": {
+      "sha256": "b2f9be6c8968bb7d9d0ddfd3669f0579c0d465c80fc5e8bc914e0609e7e87d75",
+      "bytes": 167
+    },
+    "LEFT-reference-join-8.json": {
+      "sha256": "3d72465f39ff2897196e65b01e1fe3e1a64248c45a15020c5c4faf73b8dad905",
+      "bytes": 167
+    },
+    "LEFT-reference-join-9.json": {
+      "sha256": "927c9bd6a9e1846e2b8df0cfc4e00ffd4b5e54cc174c45b71134959e1a6769af",
+      "bytes": 167
+    },
+    "LEFT-seed-joins.json": {
+      "sha256": "eb496b0f11543a3c8d136fcbb50956c8fd514c2f230f6fc14ad93c71bbbe8813",
+      "bytes": 3945
+    },
+    "active-operation.json": {
+      "sha256": "53b9eb00a77f40420d178b7475a30afcf94276153768b0f7fe3640b204d58ac7",
+      "bytes": 332
+    },
+    "checks.json": {
+      "sha256": "752e90053009640623cc7599904808dd86ef98d7edf0be1f6720c3200a0cba73",
+      "bytes": 2995
+    },
+    "failure.json": {
+      "sha256": "51188b7d2040b2a3d3bd78e21f15eacbf4bdb2302006de0674ef8635f2d10956",
+      "bytes": 2457
+    },
+    "inputs/left-frequency-pencil.pickle": {
+      "sha256": "67148025b209f7171b7679249c075c6e68b76882ac6ac5adfffed4eb2766211a",
+      "bytes": 9470
+    },
+    "inputs/reference-frequency-pencil.pickle": {
+      "sha256": "c8854229394c52ce38c399b0f7dec6befba27aa5182ceecb6bd44362d6043764",
+      "bytes": 9347
+    },
+    "inputs/right-frequency-pencil.pickle": {
+      "sha256": "0fe2cccd0b9c08f57666530b2519dff26e8dee633058aae85d3d7f4b89ec029d",
+      "bytes": 23826
+    },
+    "inputs/uniform-response.pickle": {
+      "sha256": "1d5bd9967d08c5ad01eab8707ea25af01cfb9bf61bfd83073ed898c9d76a772f",
+      "bytes": 543796
+    },
+    "last-completed-point.json": {
+      "sha256": "ece18496f04cad3479129ff77f8b8d7c02d212678667bc75007035aea7f50596",
+      "bytes": 381
+    },
+    "last-pair-check.json": {
+      "sha256": "a80a94d92938203c8c5a164aad088c18b40dd3c788b2c97f06c3a082d2df059d",
+      "bytes": 8822
+    },
+    "last-sheet-check.json": {
+      "sha256": "df8d566a637521f7ce535f59305653ec239291be3a43382b87094680985d8449",
+      "bytes": 152
+    },
+    "operation-index.jsonl": {
+      "sha256": "ed60b8040bba05184c49bd25c9580db42b4674bd84a6e07acfab3d45339c4c22",
+      "bytes": 2618482
+    },
+    "operations.zip": {
+      "sha256": "0de8a6e1246a7c125f75d15cd3394cfc24f166f51b55945962602f7091a1ff86",
+      "bytes": 27468396
+    },
+    "posthashes.json": {
+      "sha256": "3482a7218150b586af30bba960d637fe2135f566639b587cadeaa30fdb28bf69",
+      "bytes": 19683
+    }
+  },
+  "artifactTotals": {
+    "files": 36,
+    "bytes": 30729309
+  },
+  "diagnosis": {
+    "stop": "Native840s alarm while reopening operations.zip to save a computed joint-sheet return. The return is absent and unaccepted.",
+    "recordedPhysicsCheckFailure": false,
+    "boundaryPassed": false,
+    "toolingIssue": "Journal.blob opens ZipFile in append mode for every operand/return, rescanning and rewriting the growing central directory. This introduces quadratic archive-metadata work. The stack at interruption confirms it was in _RealGetContents, but total time by cause was not profiled.",
+    "next": "Storage-only append implementation can be tested on synthetic bytes. A new saved-return scientific continuation remains unlaunched under the event no-retry instruction."
+  },
+  "noReviewOrScienceRetry": true,
+  "independentMethodClearance": false,
+  "authoringBudget": "User-managed; no automatic two-day stop",
+  "physicalLossInterpretation": "RETAINED_ORDER_LOSS_INTERPRETATION_UNRESOLVED",
+  "limits": "No complete boundary/current/face/finite-field/loss result, no Green/FORM/A11/A12 or calibrated light claim."
+}

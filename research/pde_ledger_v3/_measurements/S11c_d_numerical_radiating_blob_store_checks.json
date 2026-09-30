@@ -1,0 +1,22 @@
+{
+  "status": "PASS",
+  "command": "python3 research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_blob_store_test.py",
+  "exitCode": 0,
+  "recordedFrom": "Completed local tool execution; not a scientific job",
+  "checks": {
+    "all512OpaqueByteRoundtrips": true,
+    "duplicateRefusedWithoutChangingPriorBlob": true,
+    "crashRollbackAndAllCommittedBlobsPreserved": true,
+    "readOnlyReopenEnforced": true,
+    "existingFileCreateRefused": true,
+    "contentCorruptionDetected": true
+  },
+  "files": {
+    "blob_store.py": "f085f35c46db05df31e217ccc1f84f2d0c6dcdcffcba322e6eb0cfed79e26a1d",
+    "blob_store_test.py": "07e179b36dd8c4960a073b4de84df5c450c2a8ba214b47fac99bfa02811fc555"
+  },
+  "scientificInputsOrImports": false,
+  "integratedIntoWorker": false,
+  "continuationLaunched": false,
+  "scope": "Storage-only synthetic opaque bytes, including interrupted-transaction recovery and corruption refusal. No equations, accepted payload decoding, physical inputs or result claims changed."
+}

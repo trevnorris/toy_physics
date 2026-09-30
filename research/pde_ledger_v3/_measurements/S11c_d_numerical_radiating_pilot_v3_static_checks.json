@@ -1,0 +1,26 @@
+{
+  "status": "FLOAT_PANEL_TOOLING_REPAIR_CHECKED",
+  "tests": 3,
+  "output": "...\n----------------------------------------------------------------------\nRan 3 tests in 0.180s\n\nOK",
+  "workerRunLoadMainAstUnchanged": true,
+  "unchangedIntegrationFunctions": [
+    "require",
+    "native_helpers",
+    "context",
+    "source_jets",
+    "bind_sources",
+    "radical_inventory",
+    "lift_roots",
+    "endpoint_orders",
+    "check_rule",
+    "endpoint_values",
+    "middle_check",
+    "gaussian_derivative",
+    "uniform_gaussian",
+    "source_branch_joins"
+  ],
+  "onlyQuadratureChange": "Coalesce roundoff-equivalent cuts within8ULPs preserving protected endpoints and full interval; native order, integrands, Jacobians, tolerances unchanged.",
+  "newRestoreMechanism": "All12saved returns; byte or exact structural input identity, no printed summaries; original functions never called.",
+  "scientificRestorations": 0,
+  "runtimeIntegrityStillRequired": true
+}

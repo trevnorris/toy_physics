@@ -1,0 +1,108 @@
+{
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-pilot-v2",
+  "launch": {
+    "jobPid": 3672165,
+    "watcherPid": 3672166,
+    "gateSha256": "de72f20af888b0d494b12593feb1fe37816777d088948a8b08a1d4ef93d89410",
+    "command": [
+      "/usr/bin/python3",
+      "/var/projects/toy_physics/scripts/s11c_guarded_run.py",
+      "--log-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-pilot-v2/resource-guard",
+      "--",
+      "/usr/bin/python3",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-pilot-v2",
+      "--stage",
+      "numerical_radiating_pilot_v2",
+      "--",
+      "/usr/bin/python3",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_pilot_v2.py",
+      "--manifest",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_pilot_v2_inputs.json",
+      "--gate",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_pilot_v2_gate.json",
+      "--run-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-pilot-v2/complete"
+    ],
+    "thread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+    "automaticRetry": false
+  },
+  "limits": {
+    "verified": true,
+    "actual": {
+      "memory.max": "2147483648",
+      "memory.swap.max": "0",
+      "pids.max": "32",
+      "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-a4cae15d6187.service",
+      "nice": 15,
+      "affinity": [
+        15
+      ],
+      "threads": {
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "VECLIB_MAXIMUM_THREADS": "1",
+        "BLIS_NUM_THREADS": "1"
+      }
+    }
+  },
+  "duration": {
+    "verified": true,
+    "actual": {
+      "Restart": "no",
+      "RuntimeMaxUSec": "infinity"
+    },
+    "wallDeadlineSeconds": null,
+    "inactivityDeadlineSeconds": null
+  },
+  "watcher": {
+    "status": "finished",
+    "watcherPid": 3672166,
+    "jobPid": 3672165,
+    "thread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+    "startedUtc": "2026-09-30T16:49:05.575954+00:00",
+    "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
+    "messageSha256": "5d845381323f55ce4cbcc1d07a198774b308533fb3a50f437ef6bb5795e7f888",
+    "notifications": {
+      "completion": {
+        "status": "queued",
+        "exitCode": 0,
+        "finishedUtc": "2026-09-30T16:49:28.594363+00:00"
+      }
+    }
+  },
+  "activeOperation": {
+    "name": "integration/transformed-measure",
+    "input": {
+      "storage": "sqlite",
+      "member": "integration/transformed-measure/input.pickle",
+      "sha256": "9b24a787855e3eb21cecc525e776eef32d02c9caae377db01ab8855856c8cdf8",
+      "bytes": 1021
+    },
+    "status": "STARTED"
+  },
+  "coordinatorOutcome": {
+    "exitCode": 1,
+    "wallSeconds": 22.67896482802462,
+    "scientificAcceptance": "PENDING_ACTUAL_INSPECTION"
+  },
+  "failure": {
+    "status": "STOPPED_UNRESOLVED",
+    "exceptionType": "ValueError",
+    "message": "finite oriented transformed measure",
+    "traceback": "Traceback (most recent call last):\n  File \"/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_pilot_v2.py\", line 163, in main\n    J=SavedStartupJournal(base,manifest['priorStartup']);result=run(manifest,J)\n  File \"/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_pilot_v2.py\", line 104, in run\n    J.call('integration/transformed-measure',{'setting':settings['base'],'roots':roots},lambda:I.check_rule(worker,roots,settings['base']))\n  File \"/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_pilot_v2.py\", line 46, in call\n    return super().call(name,args,fn)\n  File \"/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_end_maps_v2.py\", line 91, in call\n    result=fn()\n  File \"/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_pilot_v2.py\", line 104, in <lambda>\n    J.call('integration/transformed-measure',{'setting':settings['base'],'roots':roots},lambda:I.check_rule(worker,roots,settings['base']))\n  File \"/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_integration.py\", line 247, in check_rule\n    nodes,weights,panels=worker.rule(-setting['momentumBound'],setting['momentumBound'],setting['outerOrder'],centers,.01)\n  File \"/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_integration.py\", line 184, in rule\n    require(np.isfinite(nodes).all() and np.all(weights>0),'finite oriented transformed measure')\n  File \"/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_integration.py\", line 15, in require\n    error=ValueError(message);error.evidence=evidence;raise error\nValueError: finite oriented transformed measure\n",
+    "incompleteOperation": "integration/transformed-measure",
+    "finiteSolves": 0
+  },
+  "numerical_radiating_pilot_v2.stderrBytes": 0,
+  "guard-launch.stderrBytes": 0,
+  "coordinator.stderrBytes": 0,
+  "completeOperations": 12,
+  "restoredReads": 4,
+  "scientificAcceptance": "PENDING_COMPLETION_INSPECTION"
+}

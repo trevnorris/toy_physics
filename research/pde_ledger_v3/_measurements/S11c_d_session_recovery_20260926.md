@@ -1,3 +1,16 @@
+**FLOATING-PANEL TOOLING CORRECTION — central pilot v3 (2026-09-30):**
+V2 restored four prior reads and completed eight new source/endpoint/branch
+operations. All80factor endpoint orders are at least-1 with325denominator
+joins. The measure self-test found floating aliases0.32999999999999996/0.33
+mapping to an identical transformed cut. A stdlib reproduction confirms this;
+v3 coalesces cuts within8ULPs while retaining exact physical/radical endpoints
+and complete interval coverage. It restores all12complete returns and preserves
+the25files/38,034,014bytes,46intact input pins and strict log checks. No integral
+or finite solve has run. Integrands/native order/tolerances/physics are unchanged;
+three local regression/reuse tests pass. See pilot_panel_disposition and v3
+static checks/gate. This is an authorized tooling continuation, with no time cap,
+not a new method or review. Any substantive central check failure stops neighbors.
+
 **STARTUP TOOLING CORRECTION — central pilot v2 (2026-09-30):**
 The first central startup completed four source reads, then stopped before
 numerical work because helper initialization followed its first context use.

@@ -1,0 +1,277 @@
+{
+  "status": "PRESERVED_FLOAT_PANEL_BOOKKEEPING_FAILURE",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-pilot-v2",
+  "checks": {
+    "status": "STOPPED_UNRESOLVED",
+    "exceptionType": "ValueError",
+    "message": "finite oriented transformed measure",
+    "traceback": "Traceback (most recent call last):\n  File \"/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_pilot_v2.py\", line 163, in main\n    J=SavedStartupJournal(base,manifest['priorStartup']);result=run(manifest,J)\n  File \"/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_pilot_v2.py\", line 104, in run\n    J.call('integration/transformed-measure',{'setting':settings['base'],'roots':roots},lambda:I.check_rule(worker,roots,settings['base']))\n  File \"/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_pilot_v2.py\", line 46, in call\n    return super().call(name,args,fn)\n  File \"/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_end_maps_v2.py\", line 91, in call\n    result=fn()\n  File \"/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_pilot_v2.py\", line 104, in <lambda>\n    J.call('integration/transformed-measure',{'setting':settings['base'],'roots':roots},lambda:I.check_rule(worker,roots,settings['base']))\n  File \"/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_integration.py\", line 247, in check_rule\n    nodes,weights,panels=worker.rule(-setting['momentumBound'],setting['momentumBound'],setting['outerOrder'],centers,.01)\n  File \"/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_integration.py\", line 184, in rule\n    require(np.isfinite(nodes).all() and np.all(weights>0),'finite oriented transformed measure')\n  File \"/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_integration.py\", line 15, in require\n    error=ValueError(message);error.evidence=evidence;raise error\nValueError: finite oriented transformed measure\n",
+    "incompleteOperation": "integration/transformed-measure",
+    "finiteSolves": 0,
+    "wallSeconds": 22.133992971037515,
+    "completeOperations": 12,
+    "restoredOperations": 4,
+    "posthashesIntact": true,
+    "peakRssKiB": 171804,
+    "independentMethodClearance": false,
+    "physicalLossInterpretation": "RETAINED_ORDER_LOSS_INTERPRETATION_UNRESOLVED",
+    "automaticRetry": false
+  },
+  "completeOperations": 12,
+  "restoredReads": 4,
+  "finiteSolves": 0,
+  "files": {
+    "posthashes.json": {
+      "sha256": "e497b873d8346304fbce249649c38b5f1ea2e4d676bdbf44e56b587bf5ff4c0e",
+      "bytes": 13160
+    },
+    "failure.json": {
+      "sha256": "ca0aca664d5f2398ab1bd3baf242066311236214e2db432b74eb5f9bbebcece7",
+      "bytes": 2101
+    },
+    "checks.json": {
+      "sha256": "7730fa17ab281c3ae59708794261aa6c4d694f1a29b4e2b1e6193116bd8abbd0",
+      "bytes": 2392
+    },
+    "numerical-settings.json": {
+      "sha256": "af02564ce249af62771c466af3b0a179eb329591b8f7e0fe2d662f9ecf688b94",
+      "bytes": 1666
+    },
+    "consumed-end-map-evidence.json": {
+      "sha256": "ce736fb7c8248810dd253b0b130801d51fa4f90cfa9a72459cdad61cb356e598",
+      "bytes": 737525
+    },
+    "prior-startup-copy-index.json": {
+      "sha256": "7e562f3c980e47daa56a21ade9943cd84ec6dad651431062e8468bcdd6da5424",
+      "bytes": 1492
+    },
+    "operations.sqlite": {
+      "sha256": "f39feb369ad55c00fd068217886afc1ba0e07ee8329088e0d2ef15d1d3d7f45f",
+      "bytes": 14532608
+    },
+    "endpoint-order-summary.json": {
+      "sha256": "cd85628ec6bda35be58efce250083a2a2ead71b9b2485553196801fd50a0b056",
+      "bytes": 116
+    },
+    "active-operation.json": {
+      "sha256": "d4be495dc0b4a4d4872248d71cb952603a111fc3dba83e5c3a2f14e8d08fba49",
+      "bytes": 276
+    },
+    "artifact-index.json": {
+      "sha256": "b8d6293386cb59e5c183ff7e2ca9df95b96905ca9fb25a454c263f8ae4915353",
+      "bytes": 3280
+    },
+    "radical-inventory.json": {
+      "sha256": "8626b029b600adfae4df334ed108387b3ac58c71cb81c50545453df9b62f5b63",
+      "bytes": 945
+    },
+    "operation-index.jsonl": {
+      "sha256": "b4fae9a547867f2952763f190893d7c126374fe893a51bc30d9a9398050771ed",
+      "bytes": 7525
+    },
+    "reused-numerical-helper-asts.json": {
+      "sha256": "ba7a6032094bebb7b73a5031035eb321e044fa066257f5a32f1aea27403c87e7",
+      "bytes": 558
+    },
+    "kernel-contrast-reuse.json": {
+      "sha256": "e6cf7a7ea9704ce97dd19920aa078cb803a2dd7e88e716959fd08e5c7ffd7e5e",
+      "bytes": 162
+    },
+    "prior-startup/posthashes.json": {
+      "sha256": "2d664071f6173eb95658b35c75c198c868f9589fb148ff2e6ed61b82ce0ebe48",
+      "bytes": 7828
+    },
+    "prior-startup/failure.json": {
+      "sha256": "7d4a1d4980438bad47d3cb85eeecfea2cffea5f8dbd0fe5ed721639e83f1bb08",
+      "bytes": 1095
+    },
+    "prior-startup/checks.json": {
+      "sha256": "92b1752e987c6f01eaa410b719a7771c1735c17a6746d32b51da454c3453bcf5",
+      "bytes": 1358
+    },
+    "prior-startup/consumed-end-map-evidence.json": {
+      "sha256": "ce736fb7c8248810dd253b0b130801d51fa4f90cfa9a72459cdad61cb356e598",
+      "bytes": 737525
+    },
+    "prior-startup/operations.sqlite": {
+      "sha256": "ef438004b4c2968e9494264f6d141bca18fb121d644b97ab64b50925d221efb3",
+      "bytes": 11456512
+    },
+    "prior-startup/active-operation.json": {
+      "sha256": "28379472bcc9b634b71a3b40dd790a42cb8918c8ea9280f82506e89cef206231",
+      "bytes": 545
+    },
+    "prior-startup/artifact-index.json": {
+      "sha256": "0c02063345673a9f2630cedbb80a428e5cd5b5dc5da43dede886ed7aea06314a",
+      "bytes": 1236
+    },
+    "prior-startup/operation-index.jsonl": {
+      "sha256": "c149a4455a657f3f477b437eecabdc369f1d6b393c199e34e752db0f37af6968",
+      "bytes": 1859
+    },
+    "prior-startup/inputs/domain-binding.pickle": {
+      "sha256": "723f4a8ed7e6844b4ed867a669ca23be34f00f5a7ea92ce7cca541cff1a9f475",
+      "bytes": 617843
+    },
+    "prior-startup/inputs/continuum-grades.pickle": {
+      "sha256": "e39412750fe58734ba4db2bd84d40908d18706ae055f6ddd6e3f53f560aa9b71",
+      "bytes": 307486
+    },
+    "prior-startup/inputs/frequency-source.pickle": {
+      "sha256": "714a0011c6874b01d88969e8dbf02d75580639028024e04d81a4bb67a12b1cd8",
+      "bytes": 9596921
+    }
+  },
+  "fileCount": 25,
+  "bytes": 38034014,
+  "lastResourceSample": {
+    "utc": "2026-09-30T16:49:28.380846+00:00",
+    "hostAvailableBytes": 18543075328,
+    "memory.current": "47222784",
+    "memory.peak": "195923968",
+    "memory.swap.current": "0",
+    "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0",
+    "memory.pressure": "some avg10=0.00 avg60=0.00 avg300=0.00 total=0\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0",
+    "pids.current": "1"
+  },
+  "strictStderrEmpty": true,
+  "stdoutChecksIdentical": true,
+  "sourcePosthashes": 46,
+  "rawReceiptHashesVerified": true,
+  "diagnosis": {
+    "physicalBounds": [
+      0.32999999999999996,
+      0.33
+    ],
+    "difference": 5.551115123125783e-17,
+    "sameTransformedBound": 1.086013413378598,
+    "reproducedUsing": "stdlib math, declared synthetic rule-test panel centers only; no scientific payload restoration"
+  },
+  "correction": "Coalesce roundoff-equivalent panel cuts within8ULPs, preserving exact physical/radical endpoints and total covered interval; do not omit intervals or alter integrands. Restore all12 complete returns; resume only unfinished measure test.",
+  "radical-inventory": {
+    "s11cdInputNormalMomentum": {
+      "original": "-100*s11cdInputNormalMomentum**2 + s11cdProfilePoleFrequency**2 - 5",
+      "bound": "4 - 100*s11cdInputNormalMomentum**2",
+      "coefficient": "-100",
+      "constant": "4",
+      "bSquared": "1/25",
+      "b": "0.2",
+      "scale": "10",
+      "carrier": "radiatingQ0"
+    },
+    "s11cdMiddleNormalMomentum": {
+      "original": "-100*s11cdMiddleNormalMomentum**2 + s11cdProfilePoleFrequency**2 - 5",
+      "bound": "4 - 100*s11cdMiddleNormalMomentum**2",
+      "coefficient": "-100",
+      "constant": "4",
+      "bSquared": "1/25",
+      "b": "0.2",
+      "scale": "10",
+      "carrier": "radiatingQ1"
+    },
+    "s11cdOutputNormalMomentum": {
+      "original": "-100*s11cdOutputNormalMomentum**2 + s11cdProfilePoleFrequency**2 - 5",
+      "bound": "4 - 100*s11cdOutputNormalMomentum**2",
+      "coefficient": "-100",
+      "constant": "4",
+      "bSquared": "1/25",
+      "b": "0.2",
+      "scale": "10",
+      "carrier": "radiatingQ2"
+    }
+  },
+  "endpoint-order-summary": {
+    "coupledConstant": "3000*(1/10 + 3*I/100)/109",
+    "rows": 80,
+    "minimumOrder": -1,
+    "denominatorJoins": 325
+  },
+  "kernel-contrast-reuse": {
+    "contrasts": [
+      0.0,
+      0.25,
+      0.5,
+      1.0
+    ],
+    "actualRowsJetsAndSourceCharactersEqual": true,
+    "localAndCellCoefficientsBoundSeparately": true
+  },
+  "numerical-settings": {
+    "settings": {
+      "base": {
+        "kind": "split",
+        "momentumBound": 4.0,
+        "sourceBound": 64.0,
+        "profileBound": 14.0,
+        "regulator": 0.1,
+        "outerOrder": 24,
+        "panelOrder": 8,
+        "innerOrders": [
+          8,
+          8
+        ],
+        "sourceNodes": 512,
+        "profileNodes": 512,
+        "size": 315,
+        "maximumNodeGap": 0.6403139344398974
+      },
+      "refinement": {
+        "kind": "split",
+        "momentumBound": 6.0,
+        "sourceBound": 64.0,
+        "profileBound": 14.0,
+        "regulator": 0.1,
+        "outerOrder": 32,
+        "panelOrder": 12,
+        "innerOrders": [
+          12,
+          12
+        ],
+        "sourceNodes": 768,
+        "profileNodes": 768,
+        "size": 473,
+        "maximumNodeGap": 0.4259755196709625
+      },
+      "domain": {
+        "kind": "split",
+        "momentumBound": 6.0,
+        "sourceBound": 80.0,
+        "profileBound": 14.0,
+        "regulator": 0.1,
+        "outerOrder": 32,
+        "panelOrder": 12,
+        "innerOrders": [
+          12,
+          12
+        ],
+        "sourceNodes": 768,
+        "profileNodes": 768,
+        "size": 473,
+        "maximumNodeGap": 0.5324693995887031
+      },
+      "regulator": {
+        "kind": "split",
+        "momentumBound": 6.0,
+        "sourceBound": 80.0,
+        "profileBound": 14.0,
+        "regulator": 0.05,
+        "outerOrder": 32,
+        "panelOrder": 12,
+        "innerOrders": [
+          12,
+          12
+        ],
+        "sourceNodes": 768,
+        "profileNodes": 768,
+        "size": 473,
+        "maximumNodeGap": 0.5324693995887031
+      }
+    },
+    "coverage": {
+      "maximumTransverseK": 2.4515301344262563,
+      "minimumWavelength": 2.5629647455465894,
+      "baseSize": 315,
+      "refinedSize": 473
+    }
+  }
+}

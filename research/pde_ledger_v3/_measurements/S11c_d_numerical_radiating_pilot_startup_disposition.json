@@ -1,0 +1,85 @@
+{
+  "status": "PRESERVED_STARTUP_INITIALIZATION_ORDER_FAILURE",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-pilot-01",
+  "checks": {
+    "status": "STOPPED_UNRESOLVED",
+    "exceptionType": "NameError",
+    "message": "name 'sp' is not defined",
+    "traceback": "Traceback (most recent call last):\n  File \"/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_pilot.py\", line 129, in main\n    J=storage.Journal(base);result=run(manifest,J)\n  File \"/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_pilot.py\", line 52, in run\n    native=packets['native']['bound'];frequency=packets['frequency'];grades=packets['grades'];r=I.context(native,frequency)\n  File \"/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_integration.py\", line 39, in context\n    symbols=set().union(*(v.atoms(sp.Symbol) for v in values))\n  File \"/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_integration.py\", line 39, in <genexpr>\n    symbols=set().union(*(v.atoms(sp.Symbol) for v in values))\nNameError: name 'sp' is not defined\n",
+    "incompleteOperation": null,
+    "finiteSolves": 0,
+    "wallSeconds": 14.519072202034295,
+    "completeOperations": 4,
+    "posthashesIntact": true,
+    "peakRssKiB": 139140,
+    "independentMethodClearance": false,
+    "physicalLossInterpretation": "RETAINED_ORDER_LOSS_INTERPRETATION_UNRESOLVED",
+    "automaticRetry": false
+  },
+  "completeOperations": 4,
+  "scientificNumericalOperations": 0,
+  "finiteSolves": 0,
+  "sourcePosthashes": 28,
+  "strictStderrEmpty": true,
+  "stdoutChecksIdentical": true,
+  "rawJournalIntegrity": true,
+  "files": {
+    "posthashes.json": {
+      "sha256": "2d664071f6173eb95658b35c75c198c868f9589fb148ff2e6ed61b82ce0ebe48",
+      "bytes": 7828
+    },
+    "failure.json": {
+      "sha256": "7d4a1d4980438bad47d3cb85eeecfea2cffea5f8dbd0fe5ed721639e83f1bb08",
+      "bytes": 1095
+    },
+    "checks.json": {
+      "sha256": "92b1752e987c6f01eaa410b719a7771c1735c17a6746d32b51da454c3453bcf5",
+      "bytes": 1358
+    },
+    "consumed-end-map-evidence.json": {
+      "sha256": "ce736fb7c8248810dd253b0b130801d51fa4f90cfa9a72459cdad61cb356e598",
+      "bytes": 737525
+    },
+    "operations.sqlite": {
+      "sha256": "ef438004b4c2968e9494264f6d141bca18fb121d644b97ab64b50925d221efb3",
+      "bytes": 11456512
+    },
+    "active-operation.json": {
+      "sha256": "28379472bcc9b634b71a3b40dd790a42cb8918c8ea9280f82506e89cef206231",
+      "bytes": 545
+    },
+    "artifact-index.json": {
+      "sha256": "0c02063345673a9f2630cedbb80a428e5cd5b5dc5da43dede886ed7aea06314a",
+      "bytes": 1236
+    },
+    "operation-index.jsonl": {
+      "sha256": "c149a4455a657f3f477b437eecabdc369f1d6b393c199e34e752db0f37af6968",
+      "bytes": 1859
+    },
+    "inputs/domain-binding.pickle": {
+      "sha256": "723f4a8ed7e6844b4ed867a669ca23be34f00f5a7ea92ce7cca541cff1a9f475",
+      "bytes": 617843
+    },
+    "inputs/continuum-grades.pickle": {
+      "sha256": "e39412750fe58734ba4db2bd84d40908d18706ae055f6ddd6e3f53f560aa9b71",
+      "bytes": 307486
+    },
+    "inputs/frequency-source.pickle": {
+      "sha256": "714a0011c6874b01d88969e8dbf02d75580639028024e04d81a4bb67a12b1cd8",
+      "bytes": 9596921
+    }
+  },
+  "fileCount": 11,
+  "bytes": 22730208,
+  "lastResourceSample": {
+    "utc": "2026-09-30T16:44:22.488631+00:00",
+    "hostAvailableBytes": 17979105280,
+    "memory.current": "30609408",
+    "memory.peak": "146382848",
+    "memory.swap.current": "0",
+    "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0",
+    "memory.pressure": "some avg10=0.00 avg60=0.00 avg300=0.00 total=0\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0",
+    "pids.current": "1"
+  },
+  "correction": "Initialize supplied numerical libraries and selected native helper namespace before context symbol inventory. No source formula, quadrature, boundary, solve or claim changes. Restore all four complete reads without calling them."
+}

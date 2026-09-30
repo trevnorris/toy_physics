@@ -1,3 +1,15 @@
+**STARTUP TOOLING CORRECTION — central pilot v2 (2026-09-30):**
+The first central startup completed four source reads, then stopped before
+numerical work because helper initialization followed its first context use.
+Its11files/22,730,208bytes are preserved; all28pins/raw journal receipts passed,
+strict stderr was empty and stdout/checks matched. New v2 moves initialization
+before use, restores all four completed reads without their functions, and
+copies prior evidence byte-for-byte. Three stdlib regression/reuse tests pass.
+Both numerical libraries and the complete scientific run body after setup are
+unchanged; no method review or scientific retry is claimed. See pilot startup
+disposition, v2 static checks and gate. The already-approved central pilot
+continues with no time limit and the same containment/stop conditions.
+
 **NEXT AUTHORIZED RUN PREPARED — central numerical radiating pilot (2026-09-30):**
 The accepted omega3 end maps now feed source-bound real-axis endpoint and
 independent integration checks, then up to ten central finite solves with the

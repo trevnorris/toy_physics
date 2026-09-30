@@ -1,0 +1,13 @@
+{
+  "status": "PURE_STARTUP_TOOLING_CORRECTION_CHECKED",
+  "tests": 3,
+  "output": "...\n----------------------------------------------------------------------\nRan 3 tests in 0.355s\n\nOK",
+  "unchangedRunTailAstSha256": "a766fde777453121db9f29d1b84e54a7e1c89d2e35537b3e40095c0d72c4bfb6",
+  "unchangedScientificLibraries": {
+    "S11c_d_numerical_radiating_integration.py": "12ec61260d977c59716332c8f962d9ed37589e1f74444c4f50580723271c1573",
+    "S11c_d_numerical_radiating_finite.py": "61ff6cdd6c5c89d3bd1c432b840ebaddc2c62e1f84aad91a4f74fb4157210411"
+  },
+  "scientificImports": 0,
+  "scientificRestorations": 0,
+  "runtimeIntegrityChecksStillRequired": true
+}

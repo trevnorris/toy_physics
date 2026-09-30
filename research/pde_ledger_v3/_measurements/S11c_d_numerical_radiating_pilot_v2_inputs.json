@@ -1,0 +1,108 @@
+{
+  "case": "LAB_HELD/RHO4_CONSTANT",
+  "frequency": 3,
+  "tangents": [
+    "1/5",
+    "1/10"
+  ],
+  "contrasts": [
+    0,
+    0.25,
+    0.5,
+    1
+  ],
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-pilot-v2",
+  "resultDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-pilot-v2/complete",
+  "packets": {
+    "frequency": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-source-20260919/finish-01/complete/frequency-source.pickle",
+      "bytes": 9596921,
+      "sha256": "714a0011c6874b01d88969e8dbf02d75580639028024e04d81a4bb67a12b1cd8",
+      "checkpoint": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_frequency_source_checkpoint.json",
+      "checkpointSha256": "ca5a3fa0f33d4f5457f9c5adb46b7c9da9f935661d839d036f12b0de86692bfe"
+    },
+    "grades": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-continuum-grades-20260919/production/complete/continuum-grades.pickle",
+      "bytes": 307486,
+      "sha256": "e39412750fe58734ba4db2bd84d40908d18706ae055f6ddd6e3f53f560aa9b71",
+      "checkpoint": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_continuum_grade_checkpoint.json",
+      "checkpointSha256": "3987ff4abb782050fffc767065ed9b3126da49215aa0df41320abef7fdec4692"
+    },
+    "native": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-finite-domain-20260919/production/complete/regulator/complete/domain-binding.pickle",
+      "bytes": 617843,
+      "sha256": "723f4a8ed7e6844b4ed867a669ca23be34f00f5a7ea92ce7cca541cff1a9f475"
+    }
+  },
+  "endMaps": {
+    "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/end-maps-v2/complete/operations.sqlite",
+    "sha256": "bf635ed50e3c7fbc69628646a5d8abd568d38a33a729b396d3d43804bee82948",
+    "result": {
+      "storage": "sqlite",
+      "member": "completed-end-maps.pickle",
+      "sha256": "72e26122095b591e2373b6aa60eaae968f40333dd79e98aea2720687cdbe2225",
+      "bytes": 465303
+    }
+  },
+  "nativeEngine": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_d_mixing_scattering_sympy_audit.py",
+  "nativeFinite": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_finite_scattering.py",
+  "physicalInput": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_variable_profile_development_input.json",
+    "sha256": "660b2b0b54494dce964c7f5fbd722a76a7e894d8ed92b18b5eb6290c3c10f1d5"
+  },
+  "maximumCentralSolves": 10,
+  "maximumPilotSolves": 30,
+  "wallDeadlineSeconds": null,
+  "nativeDeadlineSeconds": null,
+  "inactivityDeadlineSeconds": null,
+  "scope": "Central source-bound real-axis integration gates, then finite matrices, four contrasts and declared refinement/domain/regulator/sign controls. Original end/root/path/current construction is not replayed. Numerical deficits retain unresolved physical-loss interpretation.",
+  "priorStartup": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-pilot-01/complete",
+    "files": {
+      "posthashes.json": {
+        "sha256": "2d664071f6173eb95658b35c75c198c868f9589fb148ff2e6ed61b82ce0ebe48",
+        "bytes": 7828
+      },
+      "failure.json": {
+        "sha256": "7d4a1d4980438bad47d3cb85eeecfea2cffea5f8dbd0fe5ed721639e83f1bb08",
+        "bytes": 1095
+      },
+      "checks.json": {
+        "sha256": "92b1752e987c6f01eaa410b719a7771c1735c17a6746d32b51da454c3453bcf5",
+        "bytes": 1358
+      },
+      "consumed-end-map-evidence.json": {
+        "sha256": "ce736fb7c8248810dd253b0b130801d51fa4f90cfa9a72459cdad61cb356e598",
+        "bytes": 737525
+      },
+      "operations.sqlite": {
+        "sha256": "ef438004b4c2968e9494264f6d141bca18fb121d644b97ab64b50925d221efb3",
+        "bytes": 11456512
+      },
+      "active-operation.json": {
+        "sha256": "28379472bcc9b634b71a3b40dd790a42cb8918c8ea9280f82506e89cef206231",
+        "bytes": 545
+      },
+      "artifact-index.json": {
+        "sha256": "0c02063345673a9f2630cedbb80a428e5cd5b5dc5da43dede886ed7aea06314a",
+        "bytes": 1236
+      },
+      "operation-index.jsonl": {
+        "sha256": "c149a4455a657f3f477b437eecabdc369f1d6b393c199e34e752db0f37af6968",
+        "bytes": 1859
+      },
+      "inputs/domain-binding.pickle": {
+        "sha256": "723f4a8ed7e6844b4ed867a669ca23be34f00f5a7ea92ce7cca541cff1a9f475",
+        "bytes": 617843
+      },
+      "inputs/continuum-grades.pickle": {
+        "sha256": "e39412750fe58734ba4db2bd84d40908d18706ae055f6ddd6e3f53f560aa9b71",
+        "bytes": 307486
+      },
+      "inputs/frequency-source.pickle": {
+        "sha256": "714a0011c6874b01d88969e8dbf02d75580639028024e04d81a4bb67a12b1cd8",
+        "bytes": 9596921
+      }
+    }
+  }
+}

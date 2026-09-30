@@ -1,3 +1,20 @@
+**CURRENT DIRECTION — no-time-limit continuation authorized (2026-09-30):**
+The user explicitly said to stop imposing time limits and run a continuation.
+`S11c_d_numerical_radiating_boundary_continue_*` pins one continuation with no
+wall, native or inactivity deadline. A task-local guard retains memory/swap,
+CPU/process/thread, host-reserve and overlap protections around the existing
+supervisor; the shared guard is unchanged. Hook-first launch is prepared.
+
+All 5,001 complete prior returns and 36 original result files are preserved.
+The first unfinished joint-sheet operation resumes only after exact prior-input
+joins. New raw bytes use the synthetic-tested immutable SQLite store. Original
+numerical equations/paths are unchanged. No new external review or science
+replay is required; historical missing Grok verdict remains recorded. This is
+continuation of the boundary gate, not a completed finite solve or loss result.
+No automatic retry. On actual success, continue the standing numerical goal.
+
+Earlier entries below are preserved history, not current launch instructions.
+
 **CURRENT STATUS — boundary gate timed out with saved progress (2026-09-30):**
 The numerical worker stopped at its 840-second native cap with 5,001 complete
 returns. At omega3, 17/18 LEFT candidates finished both frequency paths; the

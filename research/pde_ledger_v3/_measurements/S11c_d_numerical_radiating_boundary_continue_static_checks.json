@@ -1,0 +1,19 @@
+{
+  "status": "PASS",
+  "command": "python3 research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_boundary_continue_test.py",
+  "exitCode": 0,
+  "checks": {
+    "scientificEquationPathAndRunASTUnchangedExceptRestorePath": true,
+    "noWorkerAlarmServiceOrInactivityDeadline": true,
+    "exactContainerJoinRejectsChangedStructure": true,
+    "mismatchSavedAndStoppedBeforeFunction": true,
+    "all5001ReturnsRestoredWithoutCallingFunctions": true,
+    "pendingInputJoinedBeforeFirstNewReturn": true,
+    "originalArchiveCopiedByteIdentically": true
+  },
+  "scientificImportsOrPayloads": false,
+  "workerSha256": "281ee23d3bfa6616ea564805779a2d5db90aa08a04df6bef823bf2fee0df2446",
+  "guardSha256": "d3c6ba69a11ae1a7b2021b404eba351d619fd254e8e5c23fbcaab526defcece0",
+  "testSha256": "be1b161a3387f37626e3fc2f604966994f3b552261beb01880b7bc41ac26f606",
+  "scope": "Local tooling/runtime/restoration tests only; not a physics result or new independent review."
+}

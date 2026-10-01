@@ -28,7 +28,7 @@ as governed by `research/pde_ledger_v3/directives/S11c_b_SHARED_PHYSICS.md`, whi
 - the slab degrees of freedom `u` (three in-plane components, no `w`-component), `θ`, and the two independent
   face variables `ζ_+`, `ζ_-` (spec `:59–71`);
 - the face laws and face responses `Λ_A`, `Λ_V`, `Λ_X` (spec `:145–148`);
-- **all 40 accepted stored-energy basis terms**, each with its own symbolic coefficient (record `:35`);
+- **all 40 accepted stored-energy basis terms**, each with its own symbolic coefficient (record `:35–37`);
 - both bookkeepers `η` and `σ_W`; both density representatives; both anchorings, `LAB_HELD` and
   `MATERIAL_ADVECTED`;
 - the retained order: first in wave amplitude `ε`, first in each of `η` and `σ_W`.
@@ -56,35 +56,56 @@ This build does not test any of it.
 
 ## 2 · Part 1 — the object
 
-**Index convention.** Use the engines' three in-plane directions, called 1, 2 and 3 here. State the engines'
-own names for them, with file:line.
+**Index convention.** Directions 1, 2 and 3 are the engines' **symbol-name labels**:
+- in SymPy, the direction suffix in symbol names such as `u_1` and `w1_profile_d1`
+  (`scripts/S11c_b_brane_operator_sympy_audit.py:190–195`, `:420`);
+- in Wolfram, `xOne`, `xTwo`, `xThree`.
 
-**Background restriction (R1), applied before construction.** Every background profile jet carrying any index 2
-or 3 is zero. This covers `w₁` and `m₁` and every higher jet, through the highest order the engines carry. Every
-other background datum is independent of directions 2 and 3: density representatives, support bundle, face,
-bulk-background, domain and boundary data. State how R1 is imposed in each engine, with file:line. ⛔ Do not build
-the unrestricted operator and restrict it afterwards.
+⚠ The SymPy loop variable `DIRECTIONS = range(3)` (`:57`) is 0-based and is **not** this label. State the mapping
+you used in each engine, with file:line.
+
+**Background restriction (R1), applied before construction.**
+1. Every background symbol whose name carries direction label 2 or 3 in **any** position is zero. That includes
+   mixed jets such as one carrying labels 1 and 2, and every higher jet through the highest order the engines
+   carry.
+2. Every other background datum depends only on direction 1: density representatives, support bundle, face,
+   bulk-background, domain and boundary data.
+3. Every background **vector** datum has zero components along directions 2 and 3. This includes the hold force
+   `f_hold⁰`, the hold tractions `t_hold,s⁰` and the boundary loads (spec `:195–196`).
+4. Every background tensor datum is invariant under rotations about direction 1.
+
+State how R1 is imposed in each engine, with file:line. ⛔ Do not build the unrestricted operator and restrict it
+afterwards.
 
 **Perturbation class `P`.** Every perturbation field, in whichever coordinates each engine uses, is independent
 of direction 3. Dependence on direction 2 is the form `exp(i(k₂ x₂ − ω t))`, with `k₂` and `ω` symbolic and
 live. Dependence on direction 1 is general.
 
-**Object.** The complete linear operator of the S11c-b system acting on `P`, as a matrix over the full field list
-the S11c-b engines carry. Name each field and each row, with the file:line of its definition. Use the rows as the
-engines define them: after the constraint fold (pin B), with `μ_θ` kept as its named operand, and the face
-generalized-force rows including the face responses.
+**Object.** One rectangular linear map: the first derivative, at the background and on class `P`, of an **ordered
+output vector** with respect to an **ordered input vector**. Name every input and output, with the file:line of its
+definition, and print the full matrix.
 
-**Bulk-facing quantities.** Also include, as explicit rows or columns, every bulk-facing operand and face
-kinematic quantity, for each face `s = ±`:
-- `δp_s`;
-- `n̂_s·v_bulk,s`;
-- `J_s`, `V_s`, `𝒜_s`, `μ_s`;
-- the components of the face normal `n̂_s`.
+- **Inputs, in order.**
+  - The slab fields `u_1`, `u_2`, `u_3`, `θ`, `ζ_+`, `ζ_-`.
+  - For each face `s = ±`, the bulk trace inputs: `δp_s` and the four components of `v_bulk,s`. Without a bulk
+    solve these are independent inputs, not outputs.
+- **Outputs, in order.**
+  1. Every operator row as the engines define it: after the constraint fold (pin B), with `μ_θ` kept as its named
+     operand. This includes:
+     - the three `U` body-balance rows;
+     - the `θ` and `e_W` balance rows;
+     - the face generalized-force rows, including `CENTER_FACE_GENERALIZED_ROW` for the independent `ζ_c`
+       (`scripts/S11c_b_brane_operator_sympy_audit.py:2237`);
+     - the `μ_θ` face binding.
+  2. For each face `s = ±`, every face quantity the face laws use (S11c-a `:343–354`, `:365–366`):
+     - the components of `n̂_s`;
+     - the components of `v_face,s`;
+     - the components of `δ_v x_s`, as functions of the virtual fields;
+     - `V_s`, `a_s`, `J_s`, `𝒜_s`, `μ_s`;
+     - the components of `t_s`.
 
-Print each one's dependence on every field.
-
-**Form.** You may use the strong-form operator matrix, or the weak-form bilinear form restricted to trial and test
-fields in `P` (spec `§3c`). State which, and print **every block**.
+**Form.** You may use the strong form, or the weak form with trial and test fields in `P` (spec `§3c`). State which.
+If you use the weak form, the test-field list mirrors the slab inputs.
 
 ⭐ **Construct the operator for all fields at once** from the stored energy and the supplied face laws, by the
 method in §1. Then read the blocks off it. ⛔ Do not construct any single field's equation on its own, and ⛔ do
@@ -119,16 +140,22 @@ the baseline. If a control's output is byte-identical to the baseline, report th
 
 ## 4 · Engines and comparator
 
-**SymPy.** It may import `scripts/S11c_b_exports.py`.
+**SymPy.** From `scripts/S11c_b_exports.py` or the S11c-b SymPy engine, it may import **only**:
+- symbol definitions;
+- the accepted 40-term stored-energy basis.
+
+⛔ It may not import any exported operator row, coupling kernel, face row, or other derived payload. R1 enters the
+energy, the background-jet maps and the face substrate **before** any variation.
 
 **Wolfram.** It is written blind: it **imports nothing**, re-derives from the governing specs, and ⛔ is never a
 transcription of the `.py`.
 
-**Comparator.** Join the two engines' printed blocks by field and row label. For the baseline and for each
-control, print `operand_PY`, `operand_WL` and `residual` for every entry. The two whole-row sign conventions
-recorded as cross-engine-unvalidated must be mapped explicitly (record `:15–31`): the kinetic-term sign, and the
-face generalized-force convention. State each map, with the file:line it comes from, in the comparator source
-**before** any residual is computed.
+**Comparator.** Join the two engines' printed matrices by input and output label. For the baseline and for each
+control, emit **first**, for every entry, the raw `operand_PY`, the raw `operand_WL` and the raw `residual`, with no
+convention applied. The record requires the comparator to surface the two whole-row sign conventions, not
+normalize them (record `:112–114`): the kinetic-term sign, and the face generalized-force convention. A
+convention-mapped diagnostic may follow, under distinct tag names, with each map stated alongside the file:line it
+comes from. ⛔ The mapped diagnostic never replaces the raw comparison.
 
 If an engine or the comparator cannot complete under §0, report the measurement and stop that job. ⛔ Do not
 replace it with something else.
@@ -184,7 +211,7 @@ Then **stop**.
   - each command run, with its guard invocation, exit code, wall time and measured peak memory;
   - the output paths;
   - the index convention, the R1 implementation, the field list and row definitions, with file:line;
-  - the convention maps;
+  - any convention maps used by the mapped diagnostic;
   - any byte-identical controls and any contained failures.
 
   ⛔ It contains no interpretation of the entries.

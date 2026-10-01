@@ -1,0 +1,172 @@
+I'll start from the governing operator sources, then review the two-file packet against those, with scripts for every physics claim.I'll read the S11c-b spec, step record, and operator construction first, then form a view of the symmetry before opening A and B.The spec's field content and energy-basis construction come next, along with the S11c-a background and face geometry.I'll inspect the SymPy engine's energy-basis construction and how reflection and face terms enter the operator.I'll inspect how the operator is assembled—face terms, ζ_c, and the constraint fold—before reading A.I have a working picture of the operator. Next I’ll read A, B, the grounding files, and the round-2 disposition.I have the hypothesis and the R2 fold in view. Next I’ll verify citations, then run small symbolic checks of parity, face maps, and the K1/K2 controls.Citations check out in substance; next I’ll run small symbolic models of reflection, face maps, K1/K2, and H-round parity.The H-round script failed on an integer component; I'll fix that and re-run, then finish the citation checks.**Not cleared.** H-planar is right for this operator’s energy, pin B, both anchorings, and the *contracted* face laws on class `P` under R1. Three defects still change what Part 1 would be claimed to show, or what K1 would compute.
+
+Scripts and literal stdout:
+
+- `/tmp/s11cd_clean_review_r3_grok/01_energy_reflection_R1.py` / `01_energy_reflection_R1.out`
+- `/tmp/s11cd_clean_review_r3_grok/02_face_maps_and_constraint.py` / `02_face_maps_and_constraint.out`
+- `/tmp/s11cd_clean_review_r3_grok/03_K1_K2_form_controls.py` / `03_K1_K2_form_controls.out`
+- `/tmp/s11cd_clean_review_r3_grok/04_Hround_inversion_parity.py` / `04_Hround_inversion_parity.out`
+- `/tmp/s11cd_clean_review_r3_grok/05_O2_R1_tensors_and_rotation.py` / `05_O2_R1_tensors_and_rotation.out`
+- `/tmp/s11cd_clean_review_r3_grok/06_w_reflection_and_zeta.py` / `06_w_reflection_and_zeta.out`
+
+---
+
+## Findings
+
+### 1. A’s closure criterion is false as stated, and it is how Part 1 is to be read
+
+**A §1 (closure):**
+
+> suppose **no face quantity depends on the twist-sector field, and the twist-sector rows contain no bulk trace input**. Then no bulk closure can connect that sector to the bulk … Part 1 prints exactly that map.
+
+The listed face quantities include `v_face,s` and `δ_v x_s` (S11c-a `:343–345`: `δ_vx_s^α ≡ δ_vR_s^α|_X`, `v_face,s^α ≡ ∂_tR_s^α|_X`).
+
+On R1 + class `P` the linearized kinematics are (`02_face_maps_and_constraint.out`):
+
+```
+VFACE3 eps*u3_t
+VFACE3_IS_EPS_U3T True
+DVX3 dvu3
+L_V_HAS_U3T False
+L_J_HAS_U3T False
+L_J_HAS_VB3 False
+L_T3_IS_ZERO True
+L_N0_COMPONENT3 0
+WORK_L_HAS_DVU3 False
+```
+
+`v_face,3` *is* the twist velocity; `δ_v x_3` *is* the twist virtual displacement. The even scalars `V_s`, `J_s` and the traction `t_s` drop that odd part because `n_3 = 0`, so `n·v_face`, `n·v_bulk`, and `t·δ_v x` never see `u_3`.
+
+The second half of the criterion is true: the `U_3` row and the even face scalars take no bulk-trace input. The first half is false. Part 1’s rectangular map (B §2) will print a nonzero `(v_face,3, u_3)` entry. Read with A’s “no face quantity depends on twist,” that entry looks like F1. It is the kinematic identity `v_face,3 = ∂_t u_3`.
+
+H-planar’s earlier bookkeeping is the right statement: polar vectors have an even part and an odd part, and the odd part is the direction-3 component; the face *laws* contract with `n̂` whose direction-3 component vanishes.
+
+---
+
+### 2. K1’s mixed block dies if R1 is applied to `ê`
+
+B §3: `ê ≡ (sin β, 0, cos β)` with `β` live, and “the whole Part 1 construction is re-run.” Part 1 construction includes R1 clause 3: every background vector has zero components along 2 and 3.
+
+`03_K1_K2_form_controls.out`:
+
+```
+K1_MIXED_ON_P [('d1u3', 'd1theta', a_K1*cos(beta)), ('d2u3', 'd2theta', a_K1*cos(beta))]
+K1_MIXED_IF_BETA_PI_2 []
+K1_MIXED_IF_R1_ZEROS_E3 []
+K2_MIXED_ON_P_R1 [('d2u3', 'theta', a_K2*g1)]
+```
+
+K1 with `ê_3` live is FORM: it is a preferred axis off the background gradient, and it is parity-odd if `ê` is held fixed (`K1_RESIDUAL_E_FIXED` = `-2 a_K1 cos(β) (∂_1θ ∂_1 u_3 + ∂_2θ ∂_2 u_3)`). K2 is FORM (Levi-Civita; `K2 → −K2` under the polar 3-reflection; on R1+P it is `a_K2 g_1 θ ∂_2 u_3`).
+
+Zeroing `ê_3` under R1 leaves only `a_K1 sin(β) (∂_k u_1)(∂_k θ)`, which lives in the even sector. That control then cannot expose an unimplemented `u_3`–`θ` block. B does not exempt `ê` from R1. K2 is safe: `g` is the background jet and is *meant* to obey R1; after R1 it still mixes.
+
+---
+
+### 3. A’s “R1 requires full O(2)” is stronger than B’s R1
+
+**A §1:** “R1 requires this: background vectors along direction 1 only, and tensors rotation-invariant about it.” That is offered as full `O(2)` of rotations *and reflections* about direction 1.
+
+**B R1 clause 4:** “Every background tensor datum is invariant under rotations about direction 1.”
+
+`05_O2_R1_tensors_and_rotation.out`: the ansatz `T = diag(T11, T_perp, T_perp)` plus antisymmetric `T_{23} = −T_{32}` is SO(2)-invariant about direction 1 (`T_ROTATED_MINUS_T = 0`) and flips under the 3-mirror (`T_MIRROR_RESIDUAL` has `±2 T23`). The axial coupling `A_1 θ (∂_2 u_3 − ∂_3 u_2)` on class `P` is `A_1 θ ∂_2 u_3` — the same mixed channel as K2.
+
+On *this* constitutive law that tensor is absent: the S11c-b energy is the Kronecker family (`01`: `LEVI_CIVITA_IN_UNIFORM False`, `LEVI_CIVITA_IN_SPURION False`; all 13+15 candidates have zero 3-reflection residual; after R1 the odd–even mixed Hessian is 0). Polar `f_hold` / `t_hold` are killed in components 2 and 3 by clause 3. H-planar on the rest-frame S11c-b operator still holds. The every-incidence TE claim is *not* implied by R1 as written if a background 2-tensor of that type is ever present.
+
+The rotation that takes `(k_2, k_3)` to class `P` is SO(2) about direction 1 (the background-gradient axis). Rotation about `ŵ` mixes direction 1 into the 2–3 plane and moves `W_bg(x_1)` off R1 (`05`). v3 no longer claims rotation about the interface normal; that is the right axis for this background.
+
+---
+
+### 4. Citation mismatches
+
+**4a.** A §1 quotes S11c-b “performs no curved-bulk response solve” at spec `:145–148`, `:95–97`.
+
+`:95–97` has the quoted sentence. `:145–148` is the face-law display (`J_s = Λ_A 𝒜_s + Λ_V V_s`, …). Those lines support “bulk enters through face quantities”; they do not contain the quoted phrase.
+
+**4b.** B §2 cites `S11c_b_brane_operator_sympy_audit.py:190–195`, `:420` for symbol names “such as `u_1` and `w1_profile_d1`”.
+
+`:190–195` is `w1_profile_d{i}`. `:418–422` is `w1_profile_d{i}d{j}`. `u_1` is bound at `:216–219`.
+
+**4c.** A §3: the mode that “helps hold each throat open” (ontology `:26`, `:362`).
+
+`:26` has “helps hold each throat open”. `:362` has “helps hold the aperture open”.
+
+---
+
+## 1. Is H correct for this operator?
+
+**H-planar, yes**, on the rest-frame S11c-b operator, under R1 and class `P`, with the closure wording in Finding 1.
+
+| Constituent | What the operator actually does |
+|---|---|
+| `u` (3 in-plane, no `w`) | Kronecker energy; after R1+P, `\|∇×u\|²` is `(∂_1 u_3)²+(∂_2 u_3)²` plus even-sector curl (`01`: mixed coeff of `∂_1 u_3 ∂_1 u_1` is 0). |
+| `θ`, `δW`/`e_W`, `ζ_±`, `ζ_c` | Even under 3→−3 (`06`). `ζ_c` is odd under `w→−w` and even under 3→−3; A’s H-planar list is the in-plane reflection. |
+| Tilted faces | `n_3 = 0` at the background and at linear order on `P` (`02`), both `LAB_HELD` and `MATERIAL_ADVECTED`. |
+| `Λ_A 𝒜_s`, `Λ_V V_s`, `Λ_X 𝒜_s` | Multipliers of even scalars / polar `n̂`. `μ_θ` has no `u_3` after R1 (`01` mixed Hessian 0). |
+| Both anchorings | `LAB_HELD` pullback is `u·∇Q` with `∇Q ∥ ê_1`, so only `u_1`. `MATERIAL_ADVECTED` has no `u` in `W_bg(X)`. |
+| Pin B | Uniform constraint `δθ+δe_W+∇·δu`; on `P`, `∇·δu = ∂_1 u_1+∂_2 u_2` (`02`). Reaction `−∇μ_θ` has no 3-component. |
+| Bulk `φ`/`δp` | Face traces only. `t_3=0`, `J` independent of `v_{bulk,3}` (`02`). |
+| Drain | Absent (`v_bulk_normal_0` in no derived operator). P3 stands. |
+
+P1 is right: the energy basis is Kronecker, not Levi-Civita. P2’s *vector* bookkeeping is right; the later “no face quantity depends on twist” overstates it (Finding 1). P3 is correctly untested. P4: pin B and both anchorings are 3-even on this class.
+
+**H-round parities are right** (`04`, polar-vector inversion `(Pu)(r)=−u(−r)`):
+
+| ℓ | toroidal `π` | spheroidal `π` | scalar `π` |
+|---|---|---|---|
+| 1 | `(−1)^{ℓ+1} = +1` | `(−1)^ℓ = −1` | `−1` |
+| 2 | `−1` | `+1` | `+1` |
+
+Toroidal fields are tangent and divergence-free. At each `(ℓ,m)`, inversion therefore separates twist from scalars/spheroidal. That is for a hypothetical `O(3)` throat; A already conditions on existence (F5/F6).
+
+---
+
+## 2. Coverage and requirements
+
+The §2 table matches the linear algebra: trapped twist is linear-only and conditional; TE-like/passing twist is protected subject to P1–P4; TM-like/spheroidal is open; second order is open because `(∂ u_3)²` is even (`01`: `CURL_P_COEFF_D1U3_SQ 1`).
+
+R-LEAK-1’s split (linear F1, F2, F2b, F5, F6 vs nonlinear N1, N2) is the right split. F2’s quadrature wording matches `native_light…:2377–2381`. F2b covers an extra microrotation/director. Trapped chiral shear is either a quadrature of twist (inside H) or a chiral constitutive term (F2) or an extra field (F2b).
+
+“Transfers to the calibrated model” is conditional on the draining operator having the same symmetry and field content, with the drain still absent. That is justified as stated.
+
+§4 is fair: fast bulk is suppression for analytic profiles; `λγ=1` is the calibrated GW170817 lock; the flow horizon is unverified and the ontology drain is out of the brane with distributed return (`:100`, `:1366`).
+
+No governing contradiction found with S11c-b/a/b specs on field content, `ζ_c`, drain freeze, or bulk-solve freeze.
+
+---
+
+## 3. Round-2 fold (R2-1 … R2-9)
+
+| ID | v3 | Status |
+|---|---|---|
+| R2-1 | Symbol-name labels 1,2,3; `DIRECTIONS=range(3)` excluded | Resolved |
+| R2-2 | O(2) paragraph + R1 vector/tensor clauses | Polar vector along 2 is killed; axial `T_{23}` still allowed by clause 4 (Finding 3) |
+| R2-3 | Raw PY/WL/residual first | Resolved |
+| R2-4 | Ordered Fréchet map including centre row and all face quantities | List is complete; A’s closure over-reads `v_face`/`δ_v x` (Finding 1) — new in this fold |
+| R2-5 | Import whitelist: symbols + 40-term basis | Resolved |
+| R2-6 | F2 quotes the degenerate-pair-in-quadrature source | Resolved |
+| R2-7 | F3/F4 → N1/N2; H does not deliver stability | Resolved |
+| R2-8 | “exponential for suitable analytic profiles” | Resolved |
+| R2-9 | Line ranges / grounding | Three leftovers (Finding 4) |
+
+F2 wording and the falsifier/gate split are in the right shape.
+
+---
+
+## 4. Directive B as a builder packet
+
+- **Object:** the Fréchet matrix of named outputs wrt named inputs. That is an object.
+- **Governing operator:** S11c-b spec method (`:152–154` — B’s `:151–154` pointer is one line early, the quoted words sit at 152–154), 40-term basis, pin B, both anchorings, `Λ` kernels, `ζ_c` row. Accurate.
+- **Answer leakage:** tag names are field/row/control; K1/K2 do not state which blocks must move; zeros must still be printed. The filename names the perturbation class.
+- **FORM:** K2 is FORM. K1 is FORM only while `ê_3` survives (Finding 2). They would expose an unimplemented *energy* mixed block; they need not light up a dropped `CENTER_FACE` row unless `μ_θ→t→ζ_c` is implemented. Byte-identical controls are to be reported, which is the right net for a dead row.
+- **All fields at once:** that blocks a tautological single-field `u_3` equation.
+- **Model point and freezes:** 40 coefficients live; drain and bulk solve declared.
+- **Blind Wolfram:** same control as S11c-b; sound.
+- **Feasibility:** AGENTS.md / `s11c_guarded_run.py` default is 2 GiB. S11c-b WL term-origins OOM’d above 15.6 GB; CORE residual was offered at ~8 GB. R1 specialization may cut cost; nothing in the packet measures that it fits in 2 GiB. Contained failure is a declared result. Part 1’s Wolfram path on this box is likely that result.
+- **Lane:** build → run → report → stop. No agents, no commit.
+- **Part 2:** drain entry is an orchestrator spec question given spec `:90–91`; the builder is told to mark ingredients present/missing and stop. That surfaces the missing drain specification.
+
+---
+
+## Premises P1–P4
+
+Nothing that *breaks H on this operator* is missing from P1–P4, once Finding 1’s closure sentence is dropped. The drain (P3) and an extra spin field (F2b) remain the open extensions. R1 as written does not by itself give the every-incidence O(2) claim (Finding 3).

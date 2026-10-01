@@ -1,0 +1,20 @@
+K1 a_K1*d1theta*d1u1*sin(beta) + a_K1*d1theta*d1u3*cos(beta) + a_K1*d2theta*d2u1*sin(beta) + a_K1*d2theta*d2u3*cos(beta) + a_K1*d3theta*d3u1*sin(beta) + a_K1*d3theta*d3u3*cos(beta)
+K2 a_K2*d1u2*g3*theta - a_K2*d1u3*g2*theta - a_K2*d2u1*g3*theta + a_K2*d2u3*g1*theta + a_K2*d3u1*g2*theta - a_K2*d3u2*g1*theta
+K1_RESIDUAL_E_FIXED -2*a_K1*d1theta*d1u3*cos(beta) - 2*a_K1*d2theta*d2u3*cos(beta) - 2*a_K1*d3theta*d3u3*cos(beta)
+K2_RESIDUAL_G_POLAR -2*a_K2*d1u2*g3*theta + 2*a_K2*d1u3*g2*theta + 2*a_K2*d2u1*g3*theta - 2*a_K2*d2u3*g1*theta - 2*a_K2*d3u1*g2*theta + 2*a_K2*d3u2*g1*theta
+K1_RESIDUAL_IF_E_POLAR_FLIPPED_ONLY -2*a_K1*d1theta*d1u3*cos(beta) - 2*a_K1*d2theta*d2u3*cos(beta) - 2*a_K1*d3theta*d3u3*cos(beta)
+K1_RESIDUAL_E_AS_POLAR_VECTOR 0
+K1_ON_P a_K1*d1theta*d1u1*sin(beta) + a_K1*d1theta*d1u3*cos(beta) + a_K1*d2theta*d2u1*sin(beta) + a_K1*d2theta*d2u3*cos(beta)
+K2_ON_P_R1 a_K2*d2u3*g1*theta
+K1_MIXED_ON_P [('d1u3', 'd1theta', a_K1*cos(beta)), ('d2u3', 'd2theta', a_K1*cos(beta))]
+K2_MIXED_ON_P_R1 [('d2u3', 'theta', a_K2*g1)]
+K1_MIXED_IF_BETA_PI_2 []
+K1_MIXED_IF_R1_ZEROS_E3 []
+CURL2_ON_P d1u2**2 - 2*d1u2*d2u1 + d1u3**2 + d2u1**2 + d2u3**2
+CURL2_MIXED_ON_P []
+K1_EVEN_SECTOR_AT_BETA_PI2 a_K1*d1theta*d1u1 + a_K1*d2theta*d2u1
+MU_THETA_FROM_K2 a_K2*d2u3*g1
+MU_THETA_K2_HAS_D2U3 True
+K1_DENSITY_D_DTHETA 0
+K1_DENSITY_D_D1THETA a_K1*d1u1*sin(beta) + a_K1*d1u3*cos(beta)
+K1_DENSITY_D_D1THETA_HAS_D1U3 True

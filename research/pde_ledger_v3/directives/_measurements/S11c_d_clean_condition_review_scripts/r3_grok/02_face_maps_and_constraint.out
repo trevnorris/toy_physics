@@ -1,0 +1,44 @@
+L_N3 0
+M_N3 0
+L_N3_AT_EPS0 0
+M_N3_AT_EPS0 0
+L_N3_COEFF_U3 0
+M_N3_COEFF_U3 0
+L_N1_HAS_U3 False
+L_N2_HAS_U3 False
+L_NW_HAS_U3 False
+L_N3_HAS_EVEN_ZETA False
+L_N3_AFTER_P 0
+M_N3_AFTER_P 0
+L_N_BACKGROUND [-W0*eta*s**2*Subs(Derivative(w1(_xi_1), _xi_1), _xi_1, x1/L_W)/(2*L_W), 0, 0, s]
+M_N_BACKGROUND [-W0*eta*s**2*Subs(Derivative(w1(_xi_1), _xi_1), _xi_1, x1/L_W)/(2*L_W), 0, 0, s]
+L_N0_COMPONENT3 0
+M_N0_COMPONENT3 0
+VFACE3 eps*u3_t
+VFACE3_IS_EPS_U3T True
+L_V_HAS_U3T False
+M_V_HAS_U3T False
+L_V_HAS_U1T False
+M_V_HAS_U1T True
+L_V dW_t*eps*s**2/2 + eps*s*zc_t
+M_V dW_t*eps*s**2/2 + eps*s*zc_t - W0*eps*eta*s**2*u1_t*Subs(Derivative(w1(_xi_1), _xi_1), _xi_1, x1/L_W)/(2*L_W)
+L_J_HAS_U3T False
+M_J_HAS_U3T False
+L_J_HAS_VB3 False
+M_J_HAS_VB3 False
+L_J_HAS_VB1 True
+L_J_HAS_U1T False
+L_T3 0
+L_T3_IS_ZERO True
+L_T1_IS_NONZERO_IF_TILT True
+DVX3 dvu3
+DVW_L_HAS_DVU3 False
+DVW_M_HAS_DVU3 False
+WORK_L_HAS_DVU3 False
+WORK_L_HAS_DVU1 False
+WORK_L_HAS_DVZC True
+DIV_P_AFTER_P u1_1 + u2_2
+DIV_P_HAS_U3_AFTER_P False
+PULLBACK_U_DOT_GRADQ_COMPONENTS u1 * Q_x1 ; u2 coeff 0 ; u3 coeff 0
+POLAR_ODD_PART_IS_COMPONENT_3 True
+N3_VANISHES_ON_R1_P True

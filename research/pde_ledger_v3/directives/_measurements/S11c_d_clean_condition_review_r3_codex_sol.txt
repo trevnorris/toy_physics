@@ -1,0 +1,198 @@
+Not cleared. The symmetry theorem itself is substantially correct, but Part 1’s rectangular map is not yet the physical or complete map needed to test it.
+
+## Findings
+
+1. **B omits live bulk normal-trace inputs used by the actual S11c-a/S11c-b operator.**
+
+   Packet:
+
+   > “For each face … the bulk trace inputs: `δp_s` and the four components of `v_bulk,s`.”  
+   > — [B:88](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_zinvariant_operator_blocks_directive.md:88)
+
+   Actual substrate:
+
+   > “Traced bulk perturbations and their normal jets at the flat reference faces.”  
+   > — [S11c_a_interface_geometry_sympy_audit.py:150](/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_a_interface_geometry_sympy_audit.py:150)
+
+   It explicitly constructs `d_w_delta_p_±` and all eight `d_w_delta_v_bulk_±_i` coordinates, then supplies them to `affine_bulk_perturbation` when building the pressure and velocity traces [lines 158–164](/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_a_interface_geometry_sympy_audit.py:158), [lines 638–645](/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_a_interface_geometry_sympy_audit.py:638).
+
+   My direct computation gives
+   \[
+   \delta p(h_s^0)=\delta p_s+\frac{s}{2}(W_{\rm bg}-W_0)\,\partial_w\delta p_s
+   \]
+   and the same carrier for each velocity component. Those terms occur hundreds of times in the accepted export, while none of their names occurs in B’s input list.
+
+   Therefore B must either:
+
+   - add the pressure and velocity normal jets as ordered columns; or
+   - explicitly reparameterize the entire operator in terms of traces at the physical background face and prove that reparameterization before comparing engines.
+
+   P2 must classify these jets too: \(\partial_w\) is unchanged by the 3-reflection, so scalar normal jets are even and vector component 3 remains odd.
+
+2. **B’s assertion that all four bulk-velocity components are independent contradicts the supplied bulk field on class P.**
+
+   Packet:
+
+   > “Without a bulk solve these are independent inputs, not outputs.”  
+   > — [B:90](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_zinvariant_operator_blocks_directive.md:90)
+
+   Governing source:
+
+   > “the rest-frame bulk fields `v_bulk=∇₄φ`, `δp=−ρ_m∂_tφ`”  
+   > — [S11c_b_SHARED_PHYSICS.md:95](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_b_SHARED_PHYSICS.md:95)
+
+   For
+   \[
+   \phi=\Phi(x^1,w)e^{i(k_2x^2-\omega t)},\qquad \partial_3\phi=0,
+   \]
+   the trace identities are
+   \[
+   v_1=\partial_1\phi,\quad
+   v_2=ik_2\phi=\frac{k_2}{\rho_m\omega}\delta p,\quad
+   v_3=0,\quad
+   v_w=\partial_w\phi .
+   \]
+
+   No outgoing DtN solve is needed for these kinematic identities. B may emit a larger formal face-operand matrix, but it must label it as such and also emit the pullback to the potential-flow trace subspace. Otherwise the matrix contains a spurious independent odd bulk column and cannot itself establish physical leakage.
+
+3. **A’s proposed “no face quantity depends on twist” criterion is false for the correct operator and would falsely reject H.**
+
+   Packet:
+
+   > “suppose **no face quantity depends on the twist-sector field**…”  
+   > — [A:80](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_clean_condition.md:80)
+
+   Governing face map:
+
+   > “`x(X,t) = X + u(X,t)`”  
+   > — [S11c_a_SHARED_PHYSICS.md:37](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_a_SHARED_PHYSICS.md:37)
+
+   > “`δ_vx_s^α ≡ δ_vR_s^α|_X`, `v_face,s^α ≡ ∂_tR_s^α|_X`”  
+   > — [S11c_a_SHARED_PHYSICS.md:343](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_a_SHARED_PHYSICS.md:343)
+
+   Consequently,
+   \[
+   \frac{\partial v_{\mathrm{face},3}}{\partial \dot u_3}=1,\qquad
+   \frac{\partial(\delta_vx_{s,3})}{\partial(\delta_vu_3)}=1.
+   \]
+   These are permitted odd-to-odd kinematic blocks. On the R1 background \(n_3=0\), so
+   \[
+   \partial_{\dot u_3}V_s=
+   \partial_{\dot u_3}J_s=t_{s,3}=0.
+   \]
+
+   The correct criterion is parity block-diagonality: odd-to-odd vector components may be nonzero; forbidden are odd-to-even scalar/normal-acoustic blocks. F1’s wording, “any bulk-facing quantity,” has the same defect and should be narrowed accordingly.
+
+4. **`δ_vx_s` is not an output of the same physical Fréchet map.**
+
+   B puts “the components of `δ_v x_s`, as functions of the virtual fields” inside the output vector differentiated with respect to physical inputs [B:84–105](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_zinvariant_operator_blocks_directive.md:84).
+
+   The governing definition instead makes `δ_vx_s` a test/virtual variation [S11c_a_SHARED_PHYSICS.md:340–345](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_a_SHARED_PHYSICS.md:340). With physical and virtual fields independent,
+   \[
+   D_{u_3}(\delta_vR_{s,3})=0,
+   \]
+   while \(D_{u_3}v_{\mathrm{face},3}=\partial_t\).
+
+   Emit `δ_vx_s` as a separate virtual-kinematic/test map, or define one bilinear weak operator with both trial and test domains. It cannot be another row of the stated physical-input Jacobian.
+
+5. **R1.1 is broader than R1.4 and can erase allowed \(O(2)\)-invariant tensor components.**
+
+   Packet:
+
+   > “Every background symbol whose name carries direction label 2 or 3 in any position is zero.”  
+   > — [B:67](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_zinvariant_operator_blocks_directive.md:67)
+
+   but also:
+
+   > “Every background tensor datum is invariant under rotations about direction 1.”  
+   > — [B:75](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_zinvariant_operator_blocks_directive.md:75)
+
+   A general reflection-even rank-two tensor with that symmetry is
+   \[
+   T=\operatorname{diag}(A,B,B),
+   \]
+   not merely \(\operatorname{diag}(A,0,0)\). R1.1 should apply to **spatial derivative indices of one-direction profile data**. Vector and tensor component indices must instead follow R1.3/R1.4. As written, Part 1 may compute an unnecessarily narrower background than A’s full-\(O(2)\) claim.
+
+6. **H-round’s parity formula is correct, but the toroidal sector does not exist at \(\ell=0\).**
+
+   Packet:
+
+   > “At each angular order \((\ell,m)\): twist-type (toroidal) displacements … have inversion parity \((-1)^{\ell+1}\).”  
+   > — [A:70](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_clean_condition.md:70)
+
+   Directly, \(\mathbf T_{\ell m}=\mathbf r\times\nabla Y_{\ell m}\), so \(\mathbf T_{00}=0\). For \(\ell\ge1\), the stated parity is correct and opposite to scalar/spheroidal parity. Add “for \(\ell\ge1\).”
+
+7. **The flow-horizon rejection asserts an energy return that the cited ontology does not establish.**
+
+   Packet:
+
+   > “leaked energy returns to the brane, not to the particle.”  
+   > — [A:154](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_clean_condition.md:154)
+
+   Cited source:
+
+   > “distributed return transfers material back into the ordered state. The bulk may store the corresponding response as compression, flow, internal energy, entropy…”  
+   > — [ontology:100](/var/projects/toy_physics/docs/toy_model_ontology_summary.md:100)
+
+   Material return does not imply coherent return of the leaked mode energy. The defensible statement is that no mechanism has been shown to return that energy to the same particle.
+
+8. **F5/F6 are applicability failures, not falsifiers of the linear symmetry theorem.**
+
+   A itself makes H conditional on an \(O(3)\) throat and an existing mode [A:70–78](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_clean_condition.md:70), but then lists “no normalizable mode” and “throat is not \(O(3)\)” under “Falsifiers of the linear clean condition” [A:120–132](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_clean_condition.md:120).
+
+   They can falsify the proposed R-LEAK-1 realization, but they do not falsify the conditional selection rule. Rename this group “linear applicability/failure tests,” leaving F1 as the actual operator falsifier.
+
+## Citation defects
+
+- B cites lines `190–195` and `420` for “symbol names such as `u_1` and `w1_profile_d1`” [B:59–61](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_zinvariant_operator_blocks_directive.md:59). The cited text contains only `w1_profile_d…`; `u_1` is actually declared at [engine:214–219](/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_b_brane_operator_sympy_audit.py:214).
+
+- A cites only `CHARTER.md:14` for the claim that the observation becomes a requirement [A:30](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_clean_condition.md:30). The grounding file reproduces only the truncated line:
+
+  > “REQUIREMENTS-FIRST. Each force”
+
+  The supporting context continues through lines 15–17 [CHARTER.md:14](/var/projects/toy_physics/research/pde_ledger_v3/CHARTER.md:14) and is absent from the grounding excerpt. Use `:14–17`; even that supports the requirements-first method more directly than the particular observational inference.
+
+The remaining direct pinpoint checks matched their source and grounding excerpts.
+
+## Physics conclusions that do clear
+
+- H-planar is correct on the properly restricted one-direction background. The 40-term basis is constructed from Kronecker contractions, both anchoring carriers reduce to \(u\cdot g=g_1u_1\), the pin-B constraint has no \(u_3\) term on \(\partial_3=0\), and the \(\Lambda_A,\Lambda_V,\Lambda_X\) laws preserve reflection parity.
+- The full-\(O(2)\) rotation claim is correct: for \(q^2=k_2^2+k_3^2\), an axis-1 rotation maps \((k_2,k_3)\) to \((q,0)\) while leaving a one-direction background fixed.
+- H-round’s toroidal/spheroidal parity split is correct for \(\ell\ge1\).
+- The calibrated-model transfer is now properly conditional on preserving symmetry and field content.
+- The R-LEAK-1 linear/nonlinear split, F2/F2b spin treatment, and N1/N2 gates are otherwise appropriately scoped.
+- K1 and K2 are genuine FORM controls. K1 carries a reflection-breaking \(u_3\)-\(\theta\) term proportional to \(\cos\beta\); under R1, K2 reduces to \(a_{K2}\theta g_1\partial_2u_3\), which is reflection-odd. Neither block is zero merely because it was unimplemented.
+- The import whitelist, raw-first comparator, blind-Wolfram rule, model freezes, builder stop boundary, and Part 2’s refusal to invent a drain operator are sound. The names/tags do not disclose a result value.
+
+## Round-2 fold
+
+| Finding | v3 status |
+|---|---|
+| R2-1 index convention | **Partial** — symbol labels are clarified, but the `u_1` pinpoint is wrong and R1.1 is overbroad. |
+| R2-2 full \(O(2)\) premise | **Partial** — A is fixed; B’s tensor restriction still needs repair. |
+| R2-3 raw-first comparator | **Resolved.** |
+| R2-4 rectangular map | **Not resolved** — names were added, but normal-trace columns are absent, physical trace components are over-independent, and `δ_vx_s` is ill-typed. |
+| R2-5 SymPy import restriction | **Resolved.** |
+| R2-6 angular-momentum wording | **Resolved.** |
+| R2-7 falsifiers vs nonlinear gates | **Mostly resolved** — N1/N2 are correct; F5/F6 remain mislabeled as theorem falsifiers. |
+| R2-8 analytic-profile wording | **Resolved.** |
+| R2-9 citations | **Partial** — prior pinpoints are repaired, but the new index citation is wrong and the CHARTER grounding is incomplete. |
+
+## Feasibility
+
+Part 1 cannot run now under B’s own gate because PID `4097233` existed at inspection. I did not signal or otherwise touch it.
+
+For a future run, completion under the mandatory 2 GiB cap is unestablished: the nearest recorded one-case 40-basis Wolfram core reached 7.95 GB RSS, and the production path exceeded 15.6 GB. R1 specialization may reduce that, but no measurement demonstrates the necessary fourfold reduction. B handles this safely by treating containment failure as a result, but it should not promise successful completion on this machine.
+
+## Independent computation artifacts
+
+No existing engine or CAS kernel was run. These are small standard-library derivations, with literal stdout:
+
+- [reflection_and_round_parity.py](/tmp/s11cd_clean_review_r3_codex/reflection_and_round_parity.py)
+- [reflection_and_round_parity.stdout.txt](/tmp/s11cd_clean_review_r3_codex/reflection_and_round_parity.stdout.txt)
+- [face_trace_and_map_audit.py](/tmp/s11cd_clean_review_r3_codex/face_trace_and_map_audit.py)
+- [face_trace_and_map_audit.stdout.txt](/tmp/s11cd_clean_review_r3_codex/face_trace_and_map_audit.stdout.txt)
+- [citation_and_fold_audit.py](/tmp/s11cd_clean_review_r3_codex/citation_and_fold_audit.py)
+- [citation_and_fold_audit.stdout.txt](/tmp/s11cd_clean_review_r3_codex/citation_and_fold_audit.stdout.txt)
+
+The working tree was not modified.

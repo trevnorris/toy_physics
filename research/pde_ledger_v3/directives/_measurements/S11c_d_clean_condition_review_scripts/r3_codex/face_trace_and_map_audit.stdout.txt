@@ -1,0 +1,56 @@
+SOURCE_SHA256 f4da0f2224257381300e5e78cc74a1341485b82446ac98251ca25d4b3c1a6be7
+EXPORT_SHA256 f0fd8d6d75dc7320393b7c6aad10e3fb23ca14ab8b6a50deee7d9995fbab6b17
+DIRECTIVE_SHA256 562df81244010f43c4fd396963ef82e6e8cf2be3162671d14783cb1e108aedd3
+EXPORTED_NORMAL_TRACE_COORDINATE d_w_delta_p_plus OCCURRENCES 291
+EXPORTED_NORMAL_TRACE_COORDINATE d_w_delta_p_minus OCCURRENCES 291
+EXPORTED_NORMAL_TRACE_COORDINATE d_w_delta_v_bulk_plus_1 OCCURRENCES 91
+EXPORTED_NORMAL_TRACE_COORDINATE d_w_delta_v_bulk_plus_2 OCCURRENCES 91
+EXPORTED_NORMAL_TRACE_COORDINATE d_w_delta_v_bulk_plus_3 OCCURRENCES 91
+EXPORTED_NORMAL_TRACE_COORDINATE d_w_delta_v_bulk_plus_4 OCCURRENCES 91
+EXPORTED_NORMAL_TRACE_COORDINATE d_w_delta_v_bulk_minus_1 OCCURRENCES 91
+EXPORTED_NORMAL_TRACE_COORDINATE d_w_delta_v_bulk_minus_2 OCCURRENCES 91
+EXPORTED_NORMAL_TRACE_COORDINATE d_w_delta_v_bulk_minus_3 OCCURRENCES 91
+EXPORTED_NORMAL_TRACE_COORDINATE d_w_delta_v_bulk_minus_4 OCCURRENCES 91
+DIRECTIVE_LISTED_BULK_INPUT_CLASSES ['delta_p_s', 'four components of v_bulk,s']
+DIRECTIVE_NAMES_NORMAL_TRACE_INPUT d_w_delta_p_plus False
+DIRECTIVE_NAMES_NORMAL_TRACE_INPUT d_w_delta_p_minus False
+DIRECTIVE_NAMES_NORMAL_TRACE_INPUT d_w_delta_v_bulk_plus_1 False
+DIRECTIVE_NAMES_NORMAL_TRACE_INPUT d_w_delta_v_bulk_plus_2 False
+DIRECTIVE_NAMES_NORMAL_TRACE_INPUT d_w_delta_v_bulk_plus_3 False
+DIRECTIVE_NAMES_NORMAL_TRACE_INPUT d_w_delta_v_bulk_plus_4 False
+DIRECTIVE_NAMES_NORMAL_TRACE_INPUT d_w_delta_v_bulk_minus_1 False
+DIRECTIVE_NAMES_NORMAL_TRACE_INPUT d_w_delta_v_bulk_minus_2 False
+DIRECTIVE_NAMES_NORMAL_TRACE_INPUT d_w_delta_v_bulk_minus_3 False
+DIRECTIVE_NAMES_NORMAL_TRACE_INPUT d_w_delta_v_bulk_minus_4 False
+SHIFTED_PRESSURE_TRACE face 1 = p_s + (1/2)*(W_bg-W_0)*d_w_p_s
+D_SHIFTED_PRESSURE_TRACE_D_DW_P face 1 = (1/2)*(W_bg-W_0)
+D_SHIFTED_VELOCITY_TRACE_D_DW_V face 1 component 1 = (1/2)*(W_bg-W_0)
+D_SHIFTED_VELOCITY_TRACE_D_DW_V face 1 component 2 = (1/2)*(W_bg-W_0)
+D_SHIFTED_VELOCITY_TRACE_D_DW_V face 1 component 3 = (1/2)*(W_bg-W_0)
+D_SHIFTED_VELOCITY_TRACE_D_DW_V face 1 component 4 = (1/2)*(W_bg-W_0)
+SHIFTED_PRESSURE_TRACE face -1 = p_s + (-1/2)*(W_bg-W_0)*d_w_p_s
+D_SHIFTED_PRESSURE_TRACE_D_DW_P face -1 = (-1/2)*(W_bg-W_0)
+D_SHIFTED_VELOCITY_TRACE_D_DW_V face -1 component 1 = (-1/2)*(W_bg-W_0)
+D_SHIFTED_VELOCITY_TRACE_D_DW_V face -1 component 2 = (-1/2)*(W_bg-W_0)
+D_SHIFTED_VELOCITY_TRACE_D_DW_V face -1 component 3 = (-1/2)*(W_bg-W_0)
+D_SHIFTED_VELOCITY_TRACE_D_DW_V face -1 component 4 = (-1/2)*(W_bg-W_0)
+POTENTIAL_TRACE_ANSATZ phi=Phi(x1,w)*exp(i*(k2*x2-omega*t))
+DELTA_P_TRACE i*rho_m*omega*phi
+V_BULK_1_TRACE d1(phi)
+V_BULK_2_TRACE i*k2*phi = k2*delta_p/(rho_m*omega)
+V_BULK_3_TRACE 0
+V_BULK_4_TRACE d_w(phi)
+INDEPENDENT_FOUR_VELOCITY_COMPONENTS_ON_P False
+FACE_MAP R_s=(X1+u1,X2+u2,X3+u3,h_s)
+VIRTUAL_FACE_DISPLACEMENT delta_v_R_s=(delta_v_u1,delta_v_u2,delta_v_u3,delta_v_h_s)
+D_DELTAV_R3_D_U3 0
+D_VFACE3_D_U3 d_t
+DELTA_V_X_IS_PHYSICAL_OUTPUT_OF_SAME_FRECHET_MAP False
+SOURCE_LINE 150 # Traced bulk perturbations and their normal jets at the flat reference faces.
+SOURCE_LINE 158 dw_delta_v_bulk = {
+SOURCE_LINE 163 1: symbol("d_w_delta_p_plus", "COORDINATE", "upper pressure-perturbation normal jet at the flat reference face"),
+SOURCE_LINE 638 pressure_perturbation = affine_bulk_perturbation(
+SOURCE_LINE 641 velocity_perturbation = tuple(
+SOURCE_LINE 919 def traction_raw(source: FaceSource) -> sp.ImmutableMatrix:
+SOURCE_LINE 927 def closure_raw(source: FaceSource) -> sp.Expr:
+GOVERNING_SPEC_LINE 95 Inherited from S11c-a §1b unchanged: the rest-frame bulk fields `v_bulk=∇₄φ`, `δp=−ρ_m∂_tφ`,

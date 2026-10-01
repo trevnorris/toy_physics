@@ -1,19 +1,11 @@
 {
-  "status": "READY_FOR_AUTHORIZED_SELECTED_DIAGNOSTIC_LOCAL_TOOLING_REPAIRS",
-  "sourceExtractor": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_mixed_consumer_source.py",
-  "nativeRecords": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_mixed_consumer_native.json",
-  "physicalInput": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_variable_profile_development_input.json",
-  "physicalPoint": "/var/projects/toy_physics/_scratch/s11c/s11c-mixed-tanh-20261001/diagnostic-01/complete/physical-point.json",
-  "priorDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-mixed-trace-20261001/diagnostic-01/complete",
-  "restoreFiles": [
-    "physical-factors.json",
-    "closed-response-return.json",
-    "reference-pressure-return.json",
-    "kernel-measure.json",
-    "middle-domain.json",
-    "scope.json",
-    "controls.json"
-  ],
+  "status": "READY_FOR_SELECTED_MIXED_CONSUMER_DIAGNOSTIC",
+  "independentBuildClearance": false,
+  "pooledExecution": true,
+  "workerSha256": "f8ca7d735551495918e8a5d35a64e9e06edc36573588a01a6e21a5846286ad84",
+  "launcherSha256": "2ea2d190defca580395567bce04dd6ba36d53f6eeb04be489bec1633ab5cfb46",
+  "manifestSha256": "7880a2720fc3b17e14c3ffa5bfe59fc1166d17b46e99146c74ed356c711b4d97",
+  "completionMessageSha256": "2644b7b4f944df745aa7b3b46240ac50664ddc5f13a82e816a8fee813d235fa1",
   "sourcePins": {
     "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_a_exports.py": "f0fd8d6d75dc7320393b7c6aad10e3fb23ca14ab8b6a50deee7d9995fbab6b17",
     "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_b_exports.py": "3c6555f90a85382a5e96f3f961f0e36a4875d9259fe1be947fa8e683669b7084",
@@ -80,6 +72,46 @@
     "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_mixed_consumer_launch.py": "2ea2d190defca580395567bce04dd6ba36d53f6eeb04be489bec1633ab5cfb46",
     "/var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/build-review-r2/explicit-packet-approval.json": "f4c935dbc08a7e86752a2bf60c7fb7415a327e4105e9385c0dbcceb8c93588a2"
   },
+  "outputDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete",
+  "command": [
+    "/usr/bin/python3",
+    "/var/projects/toy_physics/scripts/s11c_guarded_run.py",
+    "--pool",
+    "s11c-near-unity",
+    "--memory-gib",
+    "4",
+    "--tasks-max",
+    "32",
+    "--log-directory",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/resource-guard",
+    "--",
+    "/usr/bin/python3",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+    "--parallel-prerequisite-read",
+    "--run-root",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01",
+    "--stage",
+    "upstream_mixed_consumer",
+    "--",
+    "/usr/bin/python3",
+    "-u",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_mixed_consumer.py",
+    "--out",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete",
+    "--inputs",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_mixed_consumer_inputs.json"
+  ],
+  "reviewRecordSha256": "d1af2ec2e9ea1cc95b7d5402e9277bf9bde2e3473a478b5d7911bce6a6c2e914",
+  "repairRecordSha256": "3a5d08a3e30cfda8f924ae097c385b054e7e6da82593fee328375fff6bb7f1b2",
+  "authoritySha256": "1385bba82bf4399824fc23387fd8469aaffe4ea26d690b524b2cd19421953086",
+  "reviewedWorkerSha256": "53e8522b910fd7a9140eaeee2ac853631d00e4241f47cfa141d10f759fb06483",
+  "reviewedBaselineCommit": "3f1193e7",
+  "literalVerdicts": {
+    "claude": "NEEDS REVISION",
+    "grok": "CLEAR FOR THIS SELECTED SOURCE/CONSUMER INSTRUMENT"
+  },
+  "authority": "Existing bounded diagnostic approval and tested local tooling-fix policy; no new export.",
+  "durationLimits": null,
   "resources": {
     "pool": "s11c-near-unity",
     "aggregateMemoryBytes": 17179869184,
@@ -92,8 +124,6 @@
     "durationLimits": null,
     "priorityPolicy": "desktop-managed"
   },
-  "userAuthority": "Continue. You have my permission to keep going until you need my input on something. I\u2019ll be monitoring your progress.",
-  "externalExport": "Reviewed exact packet remains frozen; no new external export.",
-  "scientificJobLaunched": false,
-  "independentBuildClearance": false
+  "scope": "One selected direct eta*sigma source/consumer diagnostic, same supplied case and input; stop with evidence before production repair or defect sweep.",
+  "automaticRetry": false
 }

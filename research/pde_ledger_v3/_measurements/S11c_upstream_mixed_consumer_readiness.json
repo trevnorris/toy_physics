@@ -1,0 +1,20 @@
+{
+  "status": "READY_FOR_ONE_AUTHORIZED_GUARDED_DIAGNOSTIC",
+  "gateSha256": "bc66d4fc7fd19013d43dd398516c71f1532ba5d2bf398d6d289ef08eb66c51cf",
+  "checks": {
+    "actualGateVerification": true,
+    "freshOutputDirectory": true,
+    "sourcePins": 64,
+    "scienceImports": false,
+    "rejectChanged:workerSha256": true,
+    "rejectChanged:manifestSha256": true,
+    "rejectChanged:reviewRecordSha256": true,
+    "rejectChanged:authoritySha256": true,
+    "rejectChanged:completionMessageSha256": true
+  },
+  "independentBuildClearance": false,
+  "scientificJobLaunched": false,
+  "scientificAcceptance": false,
+  "noExtraSmokeJob": true,
+  "stop": "Selected diagnostic evidence only; no retry, production repair or defect sweep."
+}

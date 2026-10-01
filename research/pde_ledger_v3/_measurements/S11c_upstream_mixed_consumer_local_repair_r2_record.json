@@ -1,0 +1,57 @@
+{
+  "status": "LOCAL_TOOLING_REPAIRS_TESTED_NO_FRESH_INDEPENDENT_CLEAR",
+  "recordedUtc": "2026-10-01T23:31:42.562830+00:00",
+  "reviewedBaselineCommit": "3f1193e7",
+  "reviewedWorkerSha256": "53e8522b910fd7a9140eaeee2ac853631d00e4241f47cfa141d10f759fb06483",
+  "workerSha256": "f8ca7d735551495918e8a5d35a64e9e06edc36573588a01a6e21a5846286ad84",
+  "independentBuildClearance": false,
+  "literalVerdicts": {
+    "claude": "NEEDS REVISION",
+    "grok": "CLEAR FOR THIS SELECTED SOURCE/CONSUMER INSTRUMENT"
+  },
+  "authority": "Standing user instruction: pure tooling fixes need local tests and rationale, not another physics review; continue the authorized selected diagnostic until input needed.",
+  "changes": [
+    "Fail-closed checks of actual profile equality keys and extracted zero-grade symbol leftovers",
+    "Conservative exact constant real/imaginary evaluation of the same nonzero predicate when the direct flag is unknown; zero/nonfinite/undecidable still refuse",
+    "Persist all available downstream/pressure/routing/unit evidence before final response guards; add the already-computable full-row pressure difference",
+    "Explicit kernel(1,1) source(0,0) consumer(0,0) label and sensitivity-not-correctness label"
+  ],
+  "notAdded": [
+    "Higher-grade transverse calculations",
+    "Independent units/power campaign",
+    "Scientific smoke run",
+    "New equations, tolerance, numerical approximation or physical input",
+    "Review retry/export"
+  ],
+  "scientificEquationsOrInputsChanged": false,
+  "pureToolingOnly": true,
+  "originalTopLevelDefinitionsUnchanged": {
+    "sha": true,
+    "require": true,
+    "save": true,
+    "extract_function": true,
+    "literal_record": true,
+    "containment": true,
+    "Journal": true,
+    "assignment": true,
+    "selected_constructor": true,
+    "selected_increment": true,
+    "main": true
+  },
+  "originalScienceAssignmentRhsCount": 153,
+  "changedOriginalAssignmentTargets": [
+    "Name(id='state', ctx=Store())"
+  ],
+  "changedAssignmentMeaning": "Only operator nonzero state now uses evidence from the same exact zero predicate; scientific source/grade/consumer/control expressions unchanged.",
+  "newHelperNames": [
+    "exact_nonzero",
+    "forbidden_profile_keys",
+    "zero_grade_leftovers"
+  ],
+  "tests": {
+    "exitCode": 0,
+    "count": 16,
+    "recordSha256": "aaceea57977167c9c759ea85678b9745e0304a0e79501f7b5b558b0ff2661c2b"
+  },
+  "noScientificPayloadRestoredDuringRepair": true
+}

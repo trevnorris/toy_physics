@@ -1,3 +1,17 @@
+**SELECTED SOURCE/CONSUMER DIAGNOSTIC READY (2026-10-01):**
+Reviewed baseline3f1193e7 and literal Claude NEEDS REVISION/Grok CLEAR preserved.
+Local exact-predicate/profile-contract/persistence repairs passed16stdlib tests;
+all11 original top-level definitions and152/153 original science assignment RHSs
+are unchanged. The one changed state assignment decides the same exact nonzero
+predicate with recorded real/imaginary evidence; no numeric tolerance. No higher-
+grade work, new equation or physical input. See local_repair_r2_record, readiness,
+execution_authority and gate. No fresh independent CLEAR; gate says false.
+Existing user direction authorizes one diagnostic. Launcher pins64inputs, arms
+the existing session hook first, then shared pooled guard/supervisor4GiB/oneCPU,
+zero swap/one thread/tasks32/hostreserve4GiB, no deadlines. Scratch remains ignored.
+Stop with selected source/consumer evidence; no retry, production repair or defect
+sweep. All prior outputs/review/incident history and protected sources unchanged.
+
 **CORRECTED SOURCE/CONSUMER REPORTS PRESERVED (2026-10-01):**
 Both reports delivered; literal Claude NEEDS REVISION / Grok CLEAR. All194
 packet/archive/private-source/receipt/original-source checks pass. See the

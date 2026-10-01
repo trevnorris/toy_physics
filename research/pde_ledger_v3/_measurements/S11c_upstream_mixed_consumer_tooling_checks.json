@@ -5,7 +5,7 @@
   ],
   "exitStatus": 0,
   "stdout": "",
-  "stderr": ".............\n----------------------------------------------------------------------\nRan 13 tests in 0.238s\n\nOK\n",
+  "stderr": "................\n----------------------------------------------------------------------\nRan 16 tests in 0.286s\n\nOK\n",
   "scientificImports": false,
-  "scope": "stdlib parser/schema/persistence tests only"
+  "scope": "16 stdlib parser/schema/persistence/exact-predicate dispatch and contract tests; no CAS"
 }

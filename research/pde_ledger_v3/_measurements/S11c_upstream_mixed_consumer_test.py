@@ -141,4 +141,53 @@ class Tooling(unittest.TestCase):
   self.assertIn('amplitudeFreeOfEpsilon',s)
   self.assertIn('Native pressure/jet consumer census',s)
 
+ def test_exact_nonzero_preserves_unknown_zero_and_nonfinite(self):
+  from types import SimpleNamespace as NS
+  def constant(zero=None,finite=True,symbols=(),number=True):
+   return NS(is_zero=zero,is_finite=finite,free_symbols=set(symbols),is_number=number)
+  components=[constant(False),constant(True)]
+  calls=[]
+  def expanded(value):
+   calls.append(value);return NS(as_real_imag=lambda:tuple(components))
+  ns={'sp':NS(expand_complex=expanded,cancel=lambda x:x)}
+  exec(compile(ast.get_source_segment(SOURCE,definition('exact_nonzero')),'<exact-predicate>','exec'),ns)
+  test=ns['exact_nonzero']
+  self.assertIs(test(constant(False))['decision'],True)
+  self.assertIs(test(constant(True))['decision'],False)
+  self.assertIsNone(test(constant(False,False))['decision'])
+  self.assertIsNone(test(constant(symbols=('unbound',)))['decision'])
+  self.assertEqual(calls,[])
+  self.assertIs(test(constant())['decision'],True)
+  components[:]=[constant(True),constant(True)]
+  self.assertIs(test(constant())['decision'],False)
+  components[:]=[constant(),constant(True)]
+  self.assertIsNone(test(constant())['decision'])
+  components[:]=[constant(False,None),constant(True)]
+  self.assertIsNone(test(constant())['decision'])
+
+ def test_profile_contract_checks_keys_and_extracted_zero_grade(self):
+  class Symbol:
+   def __init__(self,name):self.name=name
+  from types import SimpleNamespace as NS
+  ns={}
+  for name in ['forbidden_profile_keys','zero_grade_leftovers']:
+   exec(compile(ast.get_source_segment(SOURCE,definition(name)),'<profile-contract>','exec'),ns)
+  keys=[Symbol('W_bg_d1'),Symbol('mu_R_bg_d2'),Symbol('e_W_bg')]
+  self.assertEqual(ns['forbidden_profile_keys'](keys),[])
+  for name in ['eta_bg','sigma_W','w1_profile_d1','m1_profile','gamma_06']:
+   self.assertEqual(ns['forbidden_profile_keys'](keys+[Symbol(name)]),[name])
+  value=NS(free_symbols=set(keys+[Symbol('w1_profile'),Symbol('m1_profile_d2'),Symbol('sigma_W'),Symbol('theta')]))
+  self.assertEqual(ns['zero_grade_leftovers'](value,keys),
+   ['W_bg_d1','e_W_bg','m1_profile_d2','mu_R_bg_d2','sigma_W','w1_profile'])
+  self.assertEqual(ns['zero_grade_leftovers'](NS(free_symbols={Symbol('theta')}),keys),[])
+
+ def test_all_control_receipts_precede_combined_responsiveness(self):
+  s=ast.get_source_segment(SOURCE,definition('science'))
+  last=s.index("J.emit('units-and-scope'")
+  for guard in ['native scalar source controls respond','native divergence-piece omission is applicable and responds',
+                'addressed source omissions reach actual scalar consumers','native pressure consumer omission responds',
+                'wrong scalar-to-vector route responds','native consumer dimensions']:
+   self.assertLess(last,s.index(guard))
+  self.assertIn('rowMovementPerD=after-before',s)
+
 if __name__=='__main__':unittest.main()

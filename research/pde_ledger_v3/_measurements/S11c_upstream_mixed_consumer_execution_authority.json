@@ -1,0 +1,25 @@
+{
+  "status": "EXISTING_SELECTED_DIAGNOSTIC_AUTHORITY_RECORDED",
+  "recordedUtc": "2026-10-01T23:33:20.544640+00:00",
+  "userDirection": "Continue. You have my permission to keep going until you need my input on something. I\u2019ll be monitoring your progress.",
+  "laterUserDirection": "I approve. Continue",
+  "scope": "One selected direct eta*sigma source/consumer diagnostic, same supplied case and input; stop with evidence before production repair or defect sweep.",
+  "scienceExecutionsAuthorized": 1,
+  "toolingPolicy": "User standing instruction: pure tooling fixes need local tests and rationale, not another physics-review round.",
+  "exactReviewApprovalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/build-review-r2/explicit-packet-approval.json",
+  "exactReviewApprovalSha256": "f4c935dbc08a7e86752a2bf60c7fb7415a327e4105e9385c0dbcceb8c93588a2",
+  "exportApprovalDoesNotIndependentlyAuthorizeScience": true,
+  "noNewExportOrReviewRetry": true,
+  "noScientificRetry": true,
+  "durationLimits": null,
+  "resources": {
+    "nativeAndCgroupBytes": 4294967296,
+    "poolMemoryBytes": 17179869184,
+    "swapBytes": 0,
+    "cpuCount": 1,
+    "threads": 1,
+    "tasks": 32,
+    "hostReserveBytes": 4294967296,
+    "priority": "desktop-managed"
+  }
+}

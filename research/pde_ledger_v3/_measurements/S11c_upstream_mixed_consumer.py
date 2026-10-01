@@ -154,6 +154,43 @@ def selected_increment(row, eta, sigma, D, slots, ref_factor, jet_factor):
     return increment,mixed
 
 
+def exact_nonzero(value):
+    """Same exact zero predicate; retain unknown and never use a numeric tolerance."""
+    direct = value.is_zero
+    evidence = dict(value=value, directZero=direct, finite=value.is_finite,
+                    decision=None, route='direct-symbolic-flag')
+    if value.is_finite is False:
+        return evidence
+    if direct is not None:
+        evidence['decision'] = direct is False
+        return evidence
+    if value.free_symbols or value.is_number is not True:
+        return evidence
+    expanded = sp.expand_complex(value)
+    real, imaginary = (sp.cancel(x) for x in expanded.as_real_imag())
+    evidence.update(route='exact-constant-real-imaginary', expanded=expanded,
+                    real=real, imaginary=imaginary,
+                    componentZero=[real.is_zero, imaginary.is_zero],
+                    componentFinite=[real.is_finite, imaginary.is_finite])
+    if real.is_finite is True and imaginary.is_finite is True:
+        if real.is_zero is False or imaginary.is_zero is False:
+            evidence['decision'] = True
+        elif real.is_zero is True and imaginary.is_zero is True:
+            evidence['decision'] = False
+    return evidence
+
+
+def forbidden_profile_keys(profiles):
+    return sorted(k.name for k in profiles if k.name in ('eta_bg','sigma_W')
+                  or k.name.startswith(('w1_profile','m1_profile','gamma_')))
+
+
+def zero_grade_leftovers(value, profiles):
+    names = {k.name for k in profiles} | {'eta_bg','sigma_W'}
+    return sorted(a.name for a in value.free_symbols if a.name in names
+                  or a.name.startswith(('w1_profile','m1_profile')))
+
+
 def science(manifest, J):
     """New source/consumer algebra only; prior closure/integral returns are inputs."""
     extractor_path = Path(manifest['sourceExtractor'])
@@ -192,6 +229,9 @@ def science(manifest, J):
     # Use the same actual equality family as Inputs.profiles, keeping sigma independent.
     profiles = {eq.lhs: eq.rhs for eq in density_context.atoms(sp.Equality)
                 if isinstance(eq.lhs, sp.Symbol) and eq.lhs != sigma}
+    J.emit('profile-key-contract',dict(keys=sorted(a.name for a in profiles),
+        forbiddenKeys=forbidden_profile_keys(profiles), independentGrades=[eta,sigma]))
+    require(not forbidden_profile_keys(profiles),'independent grade/profile keys are not replaced')
     density_map = {atom('rho_br_bg_rho4_constant'): density[1]}
     def bind(expr):
         expr = expr.subs(density_map, simultaneous=True)
@@ -224,9 +264,11 @@ def science(manifest, J):
         J.emit(name+'-grade-split',dict(full=reduced,zeroGrade=zeroth,higherGrades=reduced-zeroth,
             meaning='Grade selection with a regularity certificate; product identity, not an independent native-truncation run.',
             hiddenBackgroundSymbols=sorted([a for a in reduced.free_symbols if a.name in
-                ('W_bg','mu_R_bg','rho_br_bg_rho4_constant')], key=str)))
+                ('W_bg','mu_R_bg','rho_br_bg_rho4_constant')], key=str),
+            zeroGradeUnresolvedSymbols=zero_grade_leftovers(zeroth,profiles)))
         require(not any(a.name in ('W_bg','mu_R_bg','rho_br_bg_rho4_constant')
                         for a in reduced.free_symbols),'complete background substitution')
+        require(not zero_grade_leftovers(zeroth,profiles),'zero grade has no unresolved background/profile/grade symbols')
         return zeroth
     # Load only selected readable returns; never call an earlier function.
     prior = Path(manifest['priorDirectory'])
@@ -296,15 +338,18 @@ def science(manifest, J):
         remainder=sp.expand(polynomial-sum(coefficients[str(j)]*d for j,d in dummies.items()))
         require(remainder==0,'linear arbitrary-trial jet reconstruction')
         vals=list(coefficients.values())
+        decisions={name:exact_nonzero(v) for name,v in coefficients.items()}
         state='zero' if all(v==0 for v in vals) else (
-            'nonzero' if any(v.is_zero is False for v in vals) else 'unresolved')
-        return dict(expression=expr,independentJetCoefficients=coefficients,remainder=remainder,state=state)
+            'nonzero' if any(v['decision'] is True for v in decisions.values()) else 'unresolved')
+        return dict(expression=expr,independentJetCoefficients=coefficients,
+                    coefficientNonzeroEvidence=decisions,remainder=remainder,state=state)
     restrictions = {}
     for face,source0 in flats.items():
         label = 'plus' if face == 1 else 'minus'
         restrictions[face]={sector:restrict(source0,sector) for sector in
                             ('TRANSVERSE','LONGITUDINAL','THETA','E_W')}
         J.emit(label+'-source-restrictions',dict(source00=source0,
+            gradeScope='Only direct kernel(1,1) times source(0,0) times consumer(0,0); higher source grades are preserved but not restricted.',
             velocity00=source_parts[face]['velocity'],chemical00=source_parts[face]['chemical'],
             restrictions=restrictions[face],transverseParts={k:restrict(v,'TRANSVERSE')
             for k,v in source_parts[face].items()},
@@ -398,8 +443,6 @@ def science(manifest, J):
         velocityMovement=velocity_movement,removedChemicalChannel=chem0,thetaMovement=theta_movement,
         divergenceOmissions=[dict(jet=j,piece=p,curlSourceMovement=m,
             operatorForm=operator_form(m)) for j,p,m in choices]))
-    require(velocity_movement.is_zero is False and theta_movement.is_zero is False,'native scalar source controls respond')
-    require(bool(choices),'native divergence-piece omission is applicable and responds')
     # Carry the actual omissions through the actual scalar consumers. The full
     # row epsilon is saved; divide it only in explicitly labeled amplitude checks.
     scalar_rows=('THETA_BALANCE','E_W_BALANCE')
@@ -426,7 +469,8 @@ def science(manifest, J):
                 ablatedSource=damaged_source,baselineRowPerD=before,ablatedRowPerD=after,
                 rowMovementPerD=row_change,rowAmplitudeMovementPerD=amplitude,
                 amplitudeFreeOfEpsilon=epsilon not in amplitude.free_symbols,
-                nonzero=amplitude.is_zero is False))
+                nonzeroEvidence=exact_nonzero(amplitude),
+                nonzero=exact_nonzero(amplitude)['decision'] is True))
         for jet,piece,movement in choices:
             damaged_source=flats[1]-piece
             damaged_restriction=restrict(damaged_source,'TRANSVERSE')
@@ -444,10 +488,8 @@ def science(manifest, J):
                 operatorForm=operator_form(amplitude)))
     J.emit('source-omissions-through-consumers',dict(
         normalization='Full row movements keep epsilon; amplitude movements divide that one native row epsilon. D is the inherited whole mixed kernel.',
+        evidenceRole='Sensitivity/wiring controls, not independent correctness proofs; divergence omission tests the same curl restriction path.',
         records=downstream))
-    require(all(r['amplitudeFreeOfEpsilon'] and
-                (r['nonzero'] if 'nonzero' in r else r['operatorForm']['state']=='nonzero')
-                for r in downstream),'addressed source omissions reach actual scalar consumers')
     # Remove an addressed native upper pressure slot, then use the same selected
     # substitution and mixed-coefficient routine as the unmodified rows.
     probe={a:sp.Integer(1 if name=='e_W' else 0) for name,a in amplitudes.items()}
@@ -467,11 +509,11 @@ def science(manifest, J):
             ablatedNative=damaged_raw,bound=damaged_bound,probeAmplitudes={str(k):v for k,v in probe.items()},
             sourceAmplitude=probe_source,selectedIncrement=damaged_increment,
             mixedPerSource=damaged_mixed,baselineRowPerD=before,ablatedRowPerD=after,
+            rowMovementPerD=after-before,
             amplitudeMovementPerD=change,amplitudeFreeOfEpsilon=epsilon not in change.free_symbols,
-            nonzero=change.is_zero is False))
+            nonzeroEvidence=exact_nonzero(change),
+            nonzero=exact_nonzero(change)['decision'] is True))
     J.emit('native-pressure-consumer-omission',consumer_controls)
-    require(all(r['amplitudeFreeOfEpsilon'] and r['nonzero'] for r in consumer_controls),
-            'native pressure consumer omission responds')
     # A misplaced scalar consumer tests the actual reverse curl implementation.
     routed=row_factors['E_W_BALANCE']*H
     wrong_vector=[routed,0,0]
@@ -480,7 +522,6 @@ def science(manifest, J):
     J.emit('routing-control',dict(actualVector=vector,wrongVector=wrong_vector,
         actualCurl=curl,wrongCurl=wrong_curl,movement=[sp.expand(a-b) for a,b in zip(wrong_curl,curl)],
         role='FORM misrouting control, not another physical operator'))
-    require(any(sp.expand(a-b)!=0 for a,b in zip(wrong_curl,curl)),'wrong scalar-to-vector route responds')
     # Infer consumer dimensions before binding physical numbers. Source dimensions
     # are the supplied native amplitude declarations, not a fresh energy derivation.
     schema_node=next(n for n in ast.parse(c2).body if isinstance(n,ast.Assign) and
@@ -509,8 +550,6 @@ def science(manifest, J):
                 unit_rows.append(dict(row=name,slot=slot,coefficient=coeff,
                     coefficientDimension=dimension(coeff),total=total,expected=targets.get(name)))
     J.emit('consumer-unit-joins',unit_rows)
-    require(all(x['expected'] is not None and x['total']==x['expected'] for x in unit_rows),
-            'native consumer dimensions')
     J.emit('units-and-scope',dict(nativeChemical=records['chemicalSource']['caseConstructorText'],
         nativeConsumerDimensions=records['slabConsumers']['caseDimensionsConstructorText'],
         inheritedReducedKernelDimension=[-2,-1,1],normalizedSourceDimension=[1,-1,0],
@@ -521,6 +560,17 @@ def science(manifest, J):
                 'selected off-shell scalar/longitudinal Fourier witness'],
         deferred=['full finite inverse','lower-face correction and cancellations','on-shell scattering',
                   'production repair','loss','primitive calibration','drain flow','defect sweep']))
+    # All available control and unit evidence precedes responsiveness decisions.
+    require(velocity_movement.is_zero is False and theta_movement.is_zero is False,'native scalar source controls respond')
+    require(bool(choices),'native divergence-piece omission is applicable and responds')
+    require(all(r['amplitudeFreeOfEpsilon'] and
+                (r['nonzero'] if 'nonzero' in r else r['operatorForm']['state']=='nonzero')
+                for r in downstream),'addressed source omissions reach actual scalar consumers')
+    require(all(r['amplitudeFreeOfEpsilon'] and r['nonzero'] for r in consumer_controls),
+            'native pressure consumer omission responds')
+    require(any(sp.expand(a-b)!=0 for a,b in zip(wrong_curl,curl)),'wrong scalar-to-vector route responds')
+    require(all(x['expected'] is not None and x['total']==x['expected'] for x in unit_rows),
+            'native consumer dimensions')
     return dict(candidateEvidenceOnly=True,sourceAndConsumerCheck=True,productionChanges=False,
         priorClosureOrIntegralReplayed=False,integralOrLossValue=False)
 

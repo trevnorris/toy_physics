@@ -1,3 +1,24 @@
+**SELECTED UNIFORM NEAR-UNITY CHECK COMPLETED (2026-10-01):**
+Read S11c_d_near_unity_uniform_continue_result.md and continue_completion.json.
+All24 end evaluations/48sign checks at12exact bulk speeds support the selected
+transverse doublets, including both exact matches and both sides. Selected face
+projections are exactly zero; current stays finite/nonzero with group direction.
+Both declared nongrazing native sheet controls ran and responded. This is rest
+bulk, effective modal-speed matching, not primitive calibration or defect loss.
+All1354 saved denominator values are certified (705original nonzero flags,
+649exact real/imaginary sign witnesses); zero/nonfinite/unbound controls refuse.
+No unknown flag was promoted using a decimal. All27old complete returns and32
+prior files are preserved;44unfinished sign checks completed without source or
+limit replay.70argument joins pass (12byte-identical,58structural),1916new and
+5383old opaque blobs/hash receipts pass.705metadata checks,81posthash routes,
+40snapshots,empty stderr and stdout/checks identity pass. Worker1845.891s,
+peak458420224bytes,zero swap/events,8GiB pooled native/cgroup,no deadlines.
+The run is complete. STOP: no validator,retry,defect sweep or further scientific
+job is launched. Upstream direct height-slope composition remains unresolved;
+read the joint disposition and source-only parallel next-work preparation.
+All older results/failures/review debts remain intact. No leakage,drain,global
+Green/FORM/A11/A12 or physical-model calibration acceptance follows.
+
 **UPSTREAM GROK CONTINUATION ADJUDICATED (2026-10-01):**
 Read S11c_upstream_repair_review_joint_disposition.md and grok_completion.json.
 The missing substantive second report is now delivered: literal Grok “Needs

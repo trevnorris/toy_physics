@@ -4,6 +4,11 @@ physics acceptance from a prior worker's process success or this worker's guards
 This is prospective source-only build review; you have no scientific execution
 tools. State that limitation rather than claiming an executed ablation.
 
+Your working directory contains an `input/` subdirectory. Every packet filename
+below is relative to that subdirectory: start with `input/scope.md` and
+`input/worker.py`. Inspect these staged files; absolute original-source paths in
+the manifests are provenance, not instructions to read outside the packet.
+
 Read `scope.md`, `worker.py`, `source-extractor.py` and `native-selected.json`.
 `packet-index.json` identifies every exact source, excerpt and supplied return.
 `native-rows/` contains the complete original expanded-row constructor strings,
@@ -33,6 +38,9 @@ Please inspect in particular:
 - Regularity and the grade-product identity: is the proposed zero-grade source/
   consumer reduction valid for an already grade-(1,1) increment? Are native
   derivative and pressure slots completely covered before restriction?
+  The product identity is grade selection with a regularity certificate, not
+  an independent invocation of native retained_shape. The native Inputs.profiles
+  excerpt is supplied to inspect the treatment of the sigma equality.
 - The arbitrary-curl source test, scalar/longitudinal witness and reverse curl
   route. Is its distinction between an operator identity and the inherited
   k_in=0/k_out=1/10 witness sound? Unknowns must remain unresolved.
@@ -43,6 +51,11 @@ Please inspect in particular:
 - Addressed velocity/chemical/divergence omissions and scalar-to-vector routing
   control. Do these respond for the intended reason, and does their interpretation
   avoid treating a fabricated control as a physical alternative?
+  Inspect both original and damaged source outputs through the actual scalar
+  row factors, plus native upper-pressure omission through the same selected-row
+  substitution used for the physical row. Full row epsilon and its normalized
+  amplitude are separate. Reverse slot absence is census evidence; the arbitrary
+  source-image curl is labeled form-only.
 - Native units, source/census integrity checks, evidence-before-guard behavior,
   failure preservation and actual restorability. Do not call a source hash an
   algebraic check or imply the controls have run.

@@ -1,6 +1,6 @@
 # Selected direct mixed term: native source and slab consumers
 
-Prepared 2026-10-01 under the user's direction to continue until input is needed.
+Revised 2026-10-01 under the user's direction to continue until input is needed.
 This is one diagnostic, not a production repair or another defect calculation.
 
 The preceding diagnostic found a nonzero incremental upper-face response per
@@ -32,11 +32,13 @@ has a different scope from that selected Fourier witness; report them separately
    actual combined velocity/chemical source with the native density binding.
    Check the native source decomposition before using it for either channel.
 3. Keep the full source and consumer grades until extraction. The direct
-   insertion already carries eta*sigma; explicitly certify regular denominators
-   and the retained-product identity that only the (0,0) source and consumer
+   insertion already carries eta*sigma; check regular denominators
+   and use the product identity that only the (0,0) source and consumer
    coefficients contribute to its (1,1) increment. This is grade selection, not
    freezing a coefficient in a derivative. Preserve the omitted higher-grade
-   terms as expressions. Do not set sigma=eta*W0/L_W or claim pure second order.
+   terms as expressions. This is grade selection with a regularity certificate,
+   not an independent execution of the native truncation engine. Do not set
+   sigma=eta*W0/L_W or claim pure second order.
 4. Use the original c2 curl/gradient/scalar trial mapping on the actual source
    jets. Emit the unrestricted flat source, its velocity and chemical pieces,
    and TRANSVERSE, LONGITUDINAL, THETA and E_W restrictions. Zero, nonzero and
@@ -45,17 +47,25 @@ has a different scope from that selected Fourier witness; report them separately
    stand in for it.
 5. Insert the saved upper-face reference-pressure and normal-jet increments
    once into the actual slab consumers, before restriction. Emit each row's
-   retained coefficient and the resulting forward scalar and reverse transverse
-   contractions. For nonzero channels, show their selected Fourier amplitudes
+   retained coefficient and the resulting forward scalar contraction. Attribute
+   any absent reverse pressure route to the native U-slot census and literal U
+   force entry; label the arbitrary-source-image curl as a form control only.
+   Report whether the jet coefficient contributes at this grade. For nonzero
+   channels, show their selected Fourier amplitudes
    at the inherited momentum pair. Keep the whole bare convolution symbolic;
    no second middle integration, numerical integral or delta(0) is allowed.
    Existing closure-flux and mechanical orientation are already in the native
    rows; append neither a flux equation nor another traction sign.
-6. Controls remove addressed native velocity and chemical source pieces, break
-   one actual divergence-source component, and test a wrong placement into a
-   vector row. Persist operands and changes before checking responsiveness.
+6. Controls remove addressed native velocity and chemical source pieces and
+   break actual divergence-source components. Pass each original and damaged
+   source through the actual THETA/E_W row factors and emit the full row change.
+   Also remove the native upper pressure slot and repeat the same selected-row
+   substitution as for the original row, on an explicit scalar probe. These are
+   end-to-end consumer controls. Save full row epsilon and explicitly normalized
+   amplitude changes separately. Test wrong placement into a vector row as a
+   form-only control. Persist operands and changes before checking responsiveness.
    A zero physical result is allowed; controls must establish the inspected
-   source/consumer/restriction paths are capable of responding.
+  source/consumer/restriction paths are capable of responding.
 
 ## Interpretation and stop
 

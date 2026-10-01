@@ -1,3 +1,49 @@
+**CORRECTED SOURCE/CONSUMER REPORTS PRESERVED (2026-10-01):**
+Both reports delivered; literal Claude NEEDS REVISION / Grok CLEAR. All194
+packet/archive/private-source/receipt/original-source checks pass. See the
+review_r2_record/disposition. Preserve this exact reviewed baseline before
+local binding-predicate/persistence hardening. Both readers support the selected
+kernel(1,1) × source(0,0) × consumer(0,0) algebra. Higher-grade restrictions are
+outside this test; keep its claim narrow. Local disposition is not CLEAR.
+No scientific job, new export or reviewer rerun. Standing user authority covers
+one bounded guarded diagnostic after readiness, with no deadlines and no
+producer/defect expansion. Prior literals/results/incident history stay intact.
+
+**CORRECTED SOURCE/CONSUMER REVIEW PAIR RUNNING (2026-10-01):**
+User explicitly replied “Approve this exact packet” for the corrected 29-file,
+1,999,242-byte packet, SHA256
+3c10f7462d48c5ee0b56f77e754e0c3878c5d1e892391a216c6aff2bf5ade731.
+Both fresh reviewers started on verified separate private copies. Completion
+hook armed first to this session; host startup verified once. See
+S11c_upstream_mixed_consumer_review_r2_launch.json and review_r2_preparation.json.
+No scientific job, prior-report sharing or automatic retry. Wait for BOTH
+literal reports before adjudication or source edits. Exact reviewed baseline
+and old NEEDS REVISION/CLEAR verdicts remain at 0b30905b. The correction changes
+scientific validation through actual slab rows, not equations or physical inputs;
+local tests are not independent clearance. Standing user authority covers the
+bounded guarded diagnostic after substantive assessment/readiness. Stop with
+selected evidence before production repair or defect sweep. Runtime copies stay
+in ignored scratch; shared guard, Lean and protected builder are untouched.
+
+**CORRECTED SOURCE/CONSUMER PACKET PREPARED; EXACT CONSENT PENDING (2026-10-01):**
+Reviewed baseline and both literal reports preserved at0b30905b. Claude NEEDS
+REVISION / Grok CLEAR remain unchanged. The accepted consumer-control gap now
+has source omissions propagated through THETA/E_W and native pressure-slot
+ablation via the same selected-row substitution. Its two mathematical RHS ASTs
+match the original routine. Labels separate regularity/grade selection, census
+absence and form-only routing. No equations or physical inputs changed.
+This is a scientific-validation change, not pure tooling; no author CLEAR and
+no science run. Thirteen stdlib tests and118 packet/source/archive metadata checks
+pass; no scientific payload restored. See S11c_upstream_mixed_consumer_repair_record
+and review_r2_preparation/packet_checks.json. Exact packet consent question pending:
+29files/1999242bytes, SHA256
+3c10f7462d48c5ee0b56f77e754e0c3878c5d1e892391a216c6aff2bf5ade731.
+No submission/READY gate/automatic retry. Fresh reviewers would receive no prior
+reports; prior runtime artifacts, source snapshots, Lean/shared guard/protected
+builder and all history remain intact. Existing user science authority persists
+for the bounded diagnostic after substantive assessment/readiness, not a producer
+or defect sweep. No new tracked generated file exceeds1MiB; scratch remains ignored.
+
 **SOURCE/CONSUMER REVIEWS PRESERVED; CONTROL EXTENSION NEXT (2026-10-01):**
 Both source-only reports delivered: Claude NEEDS REVISION / Grok CLEAR FOR THIS
 SELECTED SOURCE/CONSUMER INSTRUMENT. All192 packet/archive/private/receipt/source

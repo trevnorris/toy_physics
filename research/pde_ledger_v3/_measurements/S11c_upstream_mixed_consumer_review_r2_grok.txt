@@ -1,0 +1,55 @@
+I'll review the staged source/consumer packet independently, starting with the scope, worker, and packet index so the claim boundary is fixed before I inspect the selected rows.The worker and extractor are in view. Next I’ll read the native routing, the staged operands, and the saved response factors that the insertion reuses.**CLEAR FOR THIS SELECTED SOURCE/CONSUMER INSTRUMENT**
+
+This is a source reading only. I did not run the worker, regenerate the census, or execute an ablation, so nothing below is an executed result.
+
+The instrument is fit to show how the selected direct η σ_W face increment enters the native retained slab rows, and to separate a transverse source identity from an unloaded scalar path. It does not establish an on-shell mode, a finite loss, a lower-face correction, or a new scattering solve.
+
+## What the source actually does
+
+The zero-grade reduction is the mixed derivative of an external factor η σ times a coefficient, not a call to native `retained_shape` / `shape_coefficients`. In `worker.py`, `regular` cancels and requires the denominator at `(η, σ) = (0, 0)` to be finite and nonzero, then `flat` emits the higher-grade remainder and checks that derivative against the zero-grade value before returning only the zero grade. For a coefficient that is regular at the origin, that mixed derivative is the grade-(1,1) piece of η σ f. Jet children that already carry a factor `eta_bg` therefore drop out of this grade; pressure children that do not carry `eta_bg` or `sigma_W` remain.
+
+Sigma is kept independent. The density case in `native-selected.json` contains `sigma_W = W_0 eta_bg / L_W`, and both `Inputs.__init__` (`native-method.txt`) and `bind` drop that equality and no other. The remaining equalities replace `W_bg`, `mu_R_bg`, `rho_br_bg_rho4_constant`, and their derivative symbols by expressions that still contain `w1_profile` / `m1_profile` and, where the native right-hand side has it, `sigma_W`. Numeric substitution uses the benchmark constants and sets ω = 3, and it excludes `eta_bg`, `sigma_W`, and `epsilon_shape`. That is the supplied profile family evaluated at grade (0,0), not a frozen shape and not `sigma = eta W_0 / L_W`.
+
+Epsilon matches the native face composition in `build_face`: the chemical amplitude, both face velocities, and each face `DELTA_P` are divided by `epsilon_shape` once; the slab-row coefficients are left with their own epsilon. Upper-face `DELTA_P`, with the resolvent and DtN symbols set to 1, is checked against the saved source before either channel is used, and the velocity coefficient is checked against the saved value `1`. The combined source is accepted only after the affine split into `∂(source)/∂V · velocity + ∂(source)/∂M · μ`. Both faces are built. The contraction uses the upper source only and sets the minus pressure and jet slots to 0.
+
+The saved per-unit-V pressure and normal jet are divided by that velocity coefficient once. With the saved coefficient equal to 1, the common gain is the saved numeric factor. `inherited_whole_bare_mixed_kernel` is multiplied once; there is no second middle integral, no `delta(0)`, and no added flux row or traction sign. Edge deltas are declared as already inside that symbol (`factoredEdgeDeltas` 2 in the saved kernel measure), not recomputed. Full-row movements keep epsilon; the labeled amplitude movements divide by that one row epsilon.
+
+Slot coverage happens on the unbound expanded rows, before any sector restriction. The staged census records:
+
+| Row | Children | Pressure / jet counts | Selected children |
+|---|---|---|---|
+| `U0`, `U1`, `U2` | 517 each | all four names 0 | `U1` and `U2` lists empty; `U0` counts are all 0 |
+| `THETA_BALANCE` | 380 | one of each name | four constructors, each linear in one slot |
+| `E_W_BALANCE` | 989 | two of each name | eight constructors |
+
+Every selected normal-jet constructor in `THETA_BALANCE` and `E_W_BALANCE` contains a factor `eta_bg` (and `w1_profile`). The grade-(0,0) map therefore gives those jet slots coefficient 0. The theta pressure children are the `Lambda_A_0` terms with one `epsilon_shape` and no profile. The worldvolume-energy pressure children include `(1/2) W_0 epsilon_shape` plus `Lambda_X_0` terms; `Lambda_X_0` is the benchmark value 0, and those terms also have no `w1_profile`. The literal U force entry is `Tuple(0,0,0)`. Absence of a reverse pressure route is that census, not a curl identity. The curl of `selectedKernelAppliedSource` is labeled form-only.
+
+The transverse test substitutes the native `wave_jet` curl, gradient, theta, and `e_W` ansätze and classifies each image as zero, nonzero, or unresolved. A zero transverse image is the only case turned into a zero forward action. Any other state is left as the explicit unresolved string that the saved off-shell witness cannot replace it. The Fourier map at `(k_in profile, edges) = (0, 1/5, 1/10)` is a separate emit. `k_out = 1/10` is recorded and is not applied to these consumer coefficients; the selected zero-grade pressure children contain no trial derivatives and no `w1_profile`, so they are momentum-independent multipliers. The profile transfer sits in the symbolic kernel.
+
+The scalar controls are loaded checks. Removing the upper `e_W_t` velocity piece and the theta chemical channel writes the original and damaged sources, the full-row change, and the epsilon-normalized amplitude, then requires a nonzero normalized movement on `THETA_BALANCE` and `E_W_BALANCE`. The divergence control removes one actual `u_*` jet from the zero-grade chemical source and requires the transverse image of that broken piece, times the same scalar factors, to be nonzero as an operator. The upper-pressure control deletes `delta_p_plus` and repeats `selected_increment` on an `e_W` probe. The scalar-into-vector curl is marked `FORM misrouting control, not another physical operator`. A zero physical transverse source can still be emitted; an unwired factor fails these requires rather than passing as a residual of 0. Operands are written before those requires. Failure keeps the traceback, sets no automatic retry, and forces `scientificAcceptance` false.
+
+The consumer unit walk is applied to the raw slot coefficients against the supplied schema. On the selected monomials, theta pressure plus `delta_p` has dimension `[-3,-1,1]`, and the worldvolume-energy pressure and jet monomials have dimension `[-1,-2,1]`. The kernel and normalized-source dimensions are labeled inherited declarations.
+
+## Claim boundary
+
+This reading supports only the following: at the retained mixed grade, the selected direct addition is one factor η σ_W times one symbolic whole bare kernel, times the saved per-unit-V pressure and normal-jet numbers divided by the saved velocity coefficient, acting through the native plus pressure and jet slots. On the constructors above, the jet slots contribute 0 at that grade; the U rows have no such slots; the theta and worldvolume-energy pressure slots are constant coefficients times one row epsilon. The chemical channel uses that same per-source gain because the c1 source is affine in V and μ. The saved file itself says the chemical pressure response was unreported, the integral was not evaluated, and the result is not a transverse mode. Transverse curl annihilation, the off-shell Fourier witness at profile momentum 0 to 1/10, and a one-sided divergence break are different outputs. None of them is an on-shell light excitation, a finite-loss fraction, a lower-face cancellation, or a clearance of the earlier trace inputs.
+
+## Uncertain, not established as defects
+
+Whether SymPy cancels the divergence of a curl inside `operator_form` is untested here. If the mixed partials do not cancel, the code keeps the transverse action unresolved rather than calling it zero.
+
+The saved profile hats are called with trailing arguments `(..., 0, 0)`, while the source plane uses edges `(1/5, 1/10)`. The packet says two edge deltas are already factored into the kernel. There is no emitted identity joining those hat arguments to this plane map.
+
+`referenceMixed` and `jetMixed` contain `direct_slot_tag * saved_bare_mixed_operator_slot`, while the controls baseline and this worker use a fresh kernel symbol times the numeric per-unit-V factor. The tag is not fixed in this file. The per-unit-kernel coefficient is still the saved numeric factor divided by the velocity coefficient; the symbol is not pinned by a residual.
+
+The zero-grade Fourier factor is not guarded by name against a surviving `w1_profile` or `m1_profile`. In the chemical products inspected, and in every selected pressure and jet child, a profile symbol occurs only as a factor with `eta_bg` or `sigma_W`, so the grade-(0,0) substitution removes it. A term count was not executed.
+
+## Non-blocking notes
+
+The emitter notes that a zero jet coefficient means the inherited jet factor is unused at this grade, and that a zero transverse source is not whole-operator decoupling. Those sentences match the split between operator state, census, and scalar amplitudes. They are interpretations stored beside the operands.
+
+U’s grade-join on an empty sum is not extra evidence. The evidence is the zero pressure census and the zero U force literal.
+
+`Journal.emit` overwrites `active`, so a preserved failure names the last successful emit. `selected_constructor` is unused. The census hashes and the stdlib tooling run are syntactic integrity checks, not algebraic coverage.
+
+Optional: emit one residual that sets `inherited_whole_bare_mixed_kernel * ref_factor` equal to the chosen restored object under an explicit `direct_slot_tag` rule, and name `w1_profile` / `m1_profile` in the zero-grade symbol guard.

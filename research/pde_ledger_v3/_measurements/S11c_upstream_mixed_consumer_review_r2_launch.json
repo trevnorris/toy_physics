@@ -1,0 +1,50 @@
+{
+  "status": "BOTH_FRESH_REVIEWERS_STARTED_ON_EXACT_PRIVATE_PACKETS",
+  "recordedUtc": "2026-10-01T23:05:51.243512+00:00",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/build-review-r2",
+  "approvalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/build-review-r2/explicit-packet-approval.json",
+  "approvalSha256": "f4c935dbc08a7e86752a2bf60c7fb7415a327e4105e9385c0dbcceb8c93588a2",
+  "packetSha256": "3c10f7462d48c5ee0b56f77e754e0c3878c5d1e892391a216c6aff2bf5ade731",
+  "archiveSha256": "a8b5132419e7dbc2b663ff0adfe810ff1a842d8efdab3632d1aa67b787209092",
+  "launch": {
+    "jobPid": 1589681,
+    "watcherPid": 1589682,
+    "packetSha256": "3c10f7462d48c5ee0b56f77e754e0c3878c5d1e892391a216c6aff2bf5ade731",
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "concurrentReviewWorkers": 2,
+    "scienceCalls": 0,
+    "runnerSha256": "30ed68e2d751f5c85399fcdf99384d9ef095376983da0b1bf91b89aef62e5b62",
+    "launcherSha256": "d7dd71850300818294a1218ecaf59c5576f63884457eb12b87d69d8b0c7df2a5"
+  },
+  "hookStatus": "waiting",
+  "reviewers": {
+    "claude": {
+      "sessionId": "db11e693-9c2b-49e1-90c8-2caf9fa43b1a",
+      "pid": 1589690,
+      "startedUtc": "2026-10-01T23:04:57.861902+00:00",
+      "packetSha256": "3c10f7462d48c5ee0b56f77e754e0c3878c5d1e892391a216c6aff2bf5ade731",
+      "promptSha256": "1a6c91a3342c4d669acd2d178d7e2c76f3a80ea017808011aa7c12f6b4b6b8c3",
+      "scientificExecutionEnabled": false
+    },
+    "grok": {
+      "sessionId": "4ab62536-22d2-4a83-bb38-c4bf572677ec",
+      "pid": 1589691,
+      "startedUtc": "2026-10-01T23:04:57.862444+00:00",
+      "packetSha256": "3c10f7462d48c5ee0b56f77e754e0c3878c5d1e892391a216c6aff2bf5ade731",
+      "promptSha256": "1a6c91a3342c4d669acd2d178d7e2c76f3a80ea017808011aa7c12f6b4b6b8c3",
+      "scientificExecutionEnabled": false
+    }
+  },
+  "privateFilesPerReviewer": 29,
+  "peerReportsShared": false,
+  "scientificJobLaunched": false,
+  "automaticRetry": false,
+  "hostProcessVerification": {
+    "command": "ps -p 1589681,1589682,1589690,1589691 -o pid,ppid,stat,etime,comm",
+    "stdout": "    PID    PPID STAT     ELAPSED COMMAND\n1589681    4973 Ssl        00:24 python\n1589682    4973 Ss         00:24 python\n1589690 1589681 Ssl        00:23 claude\n1589691 1589681 Ssl        00:23 grok\n",
+    "note": "One host startup verification; neither report inspected or adjudicated."
+  }
+}

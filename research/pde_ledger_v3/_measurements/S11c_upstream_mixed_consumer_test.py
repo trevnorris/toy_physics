@@ -103,4 +103,42 @@ class Tooling(unittest.TestCase):
    self.assertIn(phrase,scope)
   self.assertIn("'UNRESOLVED: nonzero/unknown source",SOURCE)
 
+ def test_shared_selected_row_substitution_routes_all_slots(self):
+  from types import SimpleNamespace
+  calls=[]
+  class Row:
+   def subs(self,mapping,simultaneous=False):
+    calls.append(('slots',mapping,simultaneous));return intermediate
+  class Mixed:
+   def subs(self,mapping,simultaneous=False):
+    calls.append(('grades',mapping,simultaneous));return 'selected-coefficient'
+  intermediate=object(); mixed=Mixed()
+  def diff(value,*grades):
+   calls.append(('differentiate',value,grades));return mixed
+  ns={'sp':SimpleNamespace(diff=diff,cancel=lambda x:x)}
+  exec(compile(ast.get_source_segment(SOURCE,definition('selected_increment')),'<routing>','exec'),ns)
+  result=ns['selected_increment'](Row(),2,3,5,('P+','P-','J+','J-'),7,11)
+  self.assertEqual(calls[0],('slots',{'P+':210,'J+':330,'P-':0,'J-':0},True))
+  self.assertEqual(calls[1],('differentiate',intermediate,(2,3)))
+  self.assertEqual(calls[2],('grades',{2:0,3:0},True))
+  self.assertEqual(result,(intermediate,'selected-coefficient'))
+
+ def test_physical_and_ablated_rows_use_same_contraction(self):
+  science=definition('science')
+  calls=[n for n in ast.walk(science) if isinstance(n,ast.Call) and
+         isinstance(n.func,ast.Name) and n.func.id=='selected_increment']
+  self.assertEqual([ast.unparse(c.args[0]) for c in calls],['row','damaged_bound'])
+  for c in calls:
+   self.assertEqual([ast.unparse(a) for a in c.args[1:]],
+                    ['eta','sigma','D','slots','ref_factor','jet_factor'])
+
+ def test_new_control_evidence_precedes_acceptance(self):
+  s=ast.get_source_segment(SOURCE,definition('science'))
+  for receipt,guard in [('source-omissions-through-consumers','addressed source omissions reach actual scalar consumers'),
+                        ('native-pressure-consumer-omission','native pressure consumer omission responds')]:
+   self.assertLess(s.index("J.emit('"+receipt),s.index(guard))
+  self.assertLess(s.index("J.emit('end-to-end-controls-input'"),s.index('downstream=[]'))
+  self.assertIn('amplitudeFreeOfEpsilon',s)
+  self.assertIn('Native pressure/jet consumer census',s)
+
 if __name__=='__main__':unittest.main()

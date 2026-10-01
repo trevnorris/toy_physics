@@ -145,6 +145,15 @@ def selected_constructor(source, key, case, outer=None):
 
 
 
+def selected_increment(row, eta, sigma, D, slots, ref_factor, jet_factor):
+    """The same selected-slot substitution for the physical and ablated rows."""
+    pplus,pminus,jplus,jminus=slots
+    increment=row.subs({pplus:eta*sigma*D*ref_factor,jplus:eta*sigma*D*jet_factor,
+                        pminus:0,jminus:0},simultaneous=True)
+    mixed=sp.cancel(sp.diff(increment,eta,sigma).subs({eta:0,sigma:0},simultaneous=True))
+    return increment,mixed
+
+
 def science(manifest, J):
     """New source/consumer algebra only; prior closure/integral returns are inputs."""
     extractor_path = Path(manifest['sourceExtractor'])
@@ -213,6 +222,7 @@ def science(manifest, J):
         direct = sp.diff(eta*sigma*reduced,eta,sigma).subs({eta:0,sigma:0}, simultaneous=True)
         J.zero(name+'-grade-product',direct,zeroth)
         J.emit(name+'-grade-split',dict(full=reduced,zeroGrade=zeroth,higherGrades=reduced-zeroth,
+            meaning='Grade selection with a regularity certificate; product identity, not an independent native-truncation run.',
             hiddenBackgroundSymbols=sorted([a for a in reduced.free_symbols if a.name in
                 ('W_bg','mu_R_bg','rho_br_bg_rho4_constant')], key=str)))
         require(not any(a.name in ('W_bg','mu_R_bg','rho_br_bg_rho4_constant')
@@ -253,6 +263,8 @@ def science(manifest, J):
             J.zero('saved-upper-c1-source',bind(raw),bind(restore(F['source'])))
         velocity = bind(velocities[face]/epsilon)
         vc = bind(sp.diff(raw,V)); mc = bind(sp.diff(raw,M))
+        if face == 1:
+            J.zero('native-saved-velocity-normalization',vc,v_coefficient)
         reconstruction = bind(raw.subs({V:velocity,M:mu},simultaneous=True))
         parts = dict(velocity=vc*velocity,chemical=mc*mu)
         J.emit(label+'-source-input',dict(raw=raw,nativeVelocity=velocities[face],
@@ -308,15 +320,19 @@ def science(manifest, J):
         coeff = {str(s):sp.diff(row,s) for s in slots}
         J.zero(name+'-slot-linearity',row,sum(coeff[str(s)]*s for s in slots))
         coefficients[name] = {str(s):flat(name+'-'+str(s),coeff[str(s)]) for s in slots}
-        increment = row.subs({pplus:eta*sigma*D*ref_factor,jplus:eta*sigma*D*jet_factor,
-                              pminus:0,jminus:0},simultaneous=True)
-        mixed = sp.cancel(sp.diff(increment,eta,sigma).subs({eta:0,sigma:0},simultaneous=True))
+        increment,mixed=selected_increment(row,eta,sigma,D,slots,ref_factor,jet_factor)
         expected = D*(coefficients[name][str(pplus)]*ref_factor+
                       coefficients[name][str(jplus)]*jet_factor)
         J.emit(name+'-consumer-input',dict(raw=raw,bound=row,slotCoefficients=coeff,
             incrementPerCombinedSource=increment,mixedPerCombinedSource=mixed))
         J.zero(name+'-consumer-grade-join',mixed,expected)
         row_factors[name]=sp.cancel(mixed/D)
+    J.emit('zero-grade-jet-consumers',dict(
+        coefficients={name:coeff[str(jplus)] for name,coeff in coefficients.items()},
+        statuses={name:('zero' if coeff[str(jplus)]==0 else
+            'nonzero' if coeff[str(jplus)].is_zero is False else 'unresolved')
+            for name,coeff in coefficients.items()},
+        note='A zero coefficient means this inherited jet factor is unused at the retained mixed grade.'))
     # Selected Fourier amplitudes are source at kin and consumer at kout, not products
     # of spatially varying coefficients disguised as a Fourier convolution.
     point = json.loads(Path(manifest['physicalPoint']).read_text())
@@ -350,11 +366,16 @@ def science(manifest, J):
         fullMixedIncrement='eta*sigma_W times whole reduced kernel D times row amplitude; no new integral',
         epsilonConvention='native row coefficients keep their epsilon; normalized source carries no epsilon',
         incidentTransverseMode=False,lowerFaceCorrectionConstructed=False))
-    # Reverse weak restriction: original vector-row route, arbitrary scalar input.
+    # Reverse route: report native slot absence separately from the form-only curl.
     H=sp.Function('selectedKernelAppliedSource')(*X,time_symbol)
     vector=[row_factors['U'+str(i)]*H for i in range(3)]
     curl=[sp.diff(vector[(i+2)%3],X[(i+1)%3])-sp.diff(vector[(i+1)%3],X[(i+2)%3]) for i in range(3)]
     J.emit('weak-directions',dict(vectorPerSourceImage=vector,reverseCurl=curl,
+        reverseEvidence='Native pressure/jet consumer census; H/curl is a form-only routing test, not a solved reverse mode.',
+        nativeUCensus=[dict(address=r['address'],counts=r['pressureSymbolOccurrenceCounts'],
+            selectedChildren=r['selectedPressureJetChildren'])
+            for r in records['slabConsumers']['rows'] if r['address'][-2]=='EXPANDED'],
+        nativeGeneralizedForceU=records['physicalGeneralizedForceULiteral'],
         forwardTransverseSource=restrictions[1]['TRANSVERSE'],
         forwardAction=({name:sp.S.Zero for name in row_factors}
             if operator_form(restrictions[1]['TRANSVERSE'])['state']=='zero'
@@ -379,6 +400,78 @@ def science(manifest, J):
             operatorForm=operator_form(m)) for j,p,m in choices]))
     require(velocity_movement.is_zero is False and theta_movement.is_zero is False,'native scalar source controls respond')
     require(bool(choices),'native divergence-piece omission is applicable and responds')
+    # Carry the actual omissions through the actual scalar consumers. The full
+    # row epsilon is saved; divide it only in explicitly labeled amplitude checks.
+    scalar_rows=('THETA_BALANCE','E_W_BALANCE')
+    J.emit('end-to-end-controls-input',dict(rowFactors=row_factors,upperSource00=flats[1],
+        sourcePlane=source_plane,velocityPiece=velocity_piece,chemicalChannel=chem0,
+        divergenceChoices=[dict(jet=j,piece=p,restrictedPiece=r) for j,p,r in choices],
+        scalarConsumers={name:row_source[name] for name in scalar_rows},
+        upperPressureSlot=pplus,referenceFactor=ref_factor,jetFactor=jet_factor,
+        grades=[eta,sigma],epsilon=epsilon))
+    downstream=[]
+    for name in scalar_rows:
+        factor=row_factors[name]
+        for channel,source_change in [('velocity',velocity_movement),('chemical',theta_movement)]:
+            selected_amplitude='e_W' if channel=='velocity' else 'theta'
+            probe={a:sp.Integer(1 if n==selected_amplitude else 0) for n,a in amplitudes.items()}
+            original_source=sp.cancel(source_plane.subs(probe,simultaneous=True))
+            damaged_source=sp.cancel(original_source-source_change)
+            before=sp.cancel(factor*original_source)
+            after=sp.cancel(factor*damaged_source)
+            row_change=sp.cancel(after-before)
+            amplitude=sp.cancel(row_change/epsilon)
+            downstream.append(dict(row=name,sourceChannel=channel,consumerFactor=factor,
+                removedSourceContribution=source_change,originalSource=original_source,
+                ablatedSource=damaged_source,baselineRowPerD=before,ablatedRowPerD=after,
+                rowMovementPerD=row_change,rowAmplitudeMovementPerD=amplitude,
+                amplitudeFreeOfEpsilon=epsilon not in amplitude.free_symbols,
+                nonzero=amplitude.is_zero is False))
+        for jet,piece,movement in choices:
+            damaged_source=flats[1]-piece
+            damaged_restriction=restrict(damaged_source,'TRANSVERSE')
+            before=sp.expand(factor*restrictions[1]['TRANSVERSE'])
+            after=sp.expand(factor*damaged_restriction)
+            row_change=sp.expand(after-before)
+            amplitude=sp.expand(row_change/epsilon)
+            downstream.append(dict(row=name,sourceChannel='divergence-omission',jet=jet,
+                omittedPiece=piece,originalSource=flats[1],ablatedSource=damaged_source,
+                baselineRestriction=restrictions[1]['TRANSVERSE'],ablatedRestriction=damaged_restriction,
+                consumerFactor=factor,removedCurlSourceContribution=movement,
+                baselineRowPerD=before,ablatedRowPerD=after,
+                rowMovementPerD=row_change,rowAmplitudeMovementPerD=amplitude,
+                amplitudeFreeOfEpsilon=epsilon not in amplitude.free_symbols,
+                operatorForm=operator_form(amplitude)))
+    J.emit('source-omissions-through-consumers',dict(
+        normalization='Full row movements keep epsilon; amplitude movements divide that one native row epsilon. D is the inherited whole mixed kernel.',
+        records=downstream))
+    require(all(r['amplitudeFreeOfEpsilon'] and
+                (r['nonzero'] if 'nonzero' in r else r['operatorForm']['state']=='nonzero')
+                for r in downstream),'addressed source omissions reach actual scalar consumers')
+    # Remove an addressed native upper pressure slot, then use the same selected
+    # substitution and mixed-coefficient routine as the unmodified rows.
+    probe={a:sp.Integer(1 if name=='e_W' else 0) for name,a in amplitudes.items()}
+    probe_source=sp.cancel(source_plane.subs(probe,simultaneous=True))
+    consumer_controls=[]
+    for name in scalar_rows:
+        raw=row_source[name]
+        damaged_raw=raw.subs(pplus,0)
+        damaged_bound=bind(damaged_raw)
+        damaged_increment,damaged_mixed=selected_increment(
+            damaged_bound,eta,sigma,D,slots,ref_factor,jet_factor)
+        damaged_factor=sp.cancel(damaged_mixed/D)
+        before=sp.cancel(row_factors[name]*probe_source)
+        after=sp.cancel(damaged_factor*probe_source)
+        change=sp.cancel((after-before)/epsilon)
+        consumer_controls.append(dict(row=name,removedSlot=pplus,native=raw,
+            ablatedNative=damaged_raw,bound=damaged_bound,probeAmplitudes={str(k):v for k,v in probe.items()},
+            sourceAmplitude=probe_source,selectedIncrement=damaged_increment,
+            mixedPerSource=damaged_mixed,baselineRowPerD=before,ablatedRowPerD=after,
+            amplitudeMovementPerD=change,amplitudeFreeOfEpsilon=epsilon not in change.free_symbols,
+            nonzero=change.is_zero is False))
+    J.emit('native-pressure-consumer-omission',consumer_controls)
+    require(all(r['amplitudeFreeOfEpsilon'] and r['nonzero'] for r in consumer_controls),
+            'native pressure consumer omission responds')
     # A misplaced scalar consumer tests the actual reverse curl implementation.
     routed=row_factors['E_W_BALANCE']*H
     wrong_vector=[routed,0,0]
@@ -422,7 +515,8 @@ def science(manifest, J):
         nativeConsumerDimensions=records['slabConsumers']['caseDimensionsConstructorText'],
         inheritedReducedKernelDimension=[-2,-1,1],normalizedSourceDimension=[1,-1,0],
         reducedPressureFourierDimension=[-1,-2,1],
-        note='Two conserved-edge deltas already factored in inherited D; remaining input plane delta integrates once. No delta(0).',
+        declarationStatus='Source/kernel dimensions and Fourier measure convention are inherited declarations; consumer dimensions above are computed against supplied expected row dimensions.',
+        note='Two conserved-edge deltas are factored in inherited D. The remaining input-plane measure convention is inherited, not a new integral verification; no delta(0) is evaluated.',
         scopes=['selected upper-face direct retained addition','arbitrary-curl flat source restriction',
                 'selected off-shell scalar/longitudinal Fourier witness'],
         deferred=['full finite inverse','lower-face correction and cancellations','on-shell scattering',

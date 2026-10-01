@@ -1,0 +1,33 @@
+{
+  "status": "CORRECTION_PREPARED_REQUIRES_INDEPENDENT_ASSESSMENT",
+  "reviewedBaselineCommit": "0b30905b",
+  "literalVerdicts": {
+    "claude": "NEEDS REVISION",
+    "grok": "CLEAR FOR THIS SELECTED SOURCE/CONSUMER INSTRUMENT"
+  },
+  "oldWorkerSha256": "40f2db5c9d45a2c0730a53008d1ad7c7f706a9010fa3d57535b349c2b7e1c51e",
+  "workerSha256": "53e8522b910fd7a9140eaeee2ac853631d00e4241f47cfa141d10f759fb06483",
+  "unchangedSelectedContractionRHS": {
+    "increment": true,
+    "mixed": true
+  },
+  "changes": [
+    "End-to-end velocity/chemical/divergence omission outputs through native scalar consumer factors",
+    "Native pressure-slot ablation through the same selected-row contraction",
+    "Census-based reverse-route reporting; grade-selection/regularity and inherited-unit labels",
+    "Explicit native-to-saved velocity coefficient equality",
+    "Native Inputs.__init__ supplied and input-relative review paths clarified"
+  ],
+  "scientificValidationChange": true,
+  "pureToolingOnly": false,
+  "scientificEquationsOrInputsChanged": false,
+  "newPhysicsResult": false,
+  "sourceExtractorSha256": "19452677bdc296e3456b545ae87fb33a544a617437730a4606cea485016be870",
+  "nativeCensusSha256": "441c580e56bd426bc098af6589776384f275401373cddd5c8fd5479707e5915e",
+  "toolingTests": 13,
+  "toolingTestsAreScientificEvidence": false,
+  "independentBuildClearance": false,
+  "externalSubmitted": false,
+  "packetSha256": "3c10f7462d48c5ee0b56f77e754e0c3878c5d1e892391a216c6aff2bf5ade731",
+  "noSourceRestorationDuringPreparation": true
+}

@@ -1,0 +1,74 @@
+**Verdict: NEEDS REVISION**
+
+This is a prospective source-only read. I ran nothing: no CAS, no producer, no ablation. Everything below comes from reading `worker.py`, `source-extractor.py`, `native-selected.json`, `native-method.txt` and `saved/`. Where I would have needed to execute something, I say so. I did not review the guard and supervisor scripts under `runtime-source/` in any depth.
+
+## What the packet supports (source read, not executed)
+
+- **Face velocity.** It is `W_0/2 · e_W_t · ε` on both faces (`native-selected.json:163-188`). The velocity coefficient in the c1 source is 1, since `Lambda_V_0=0` in `physical-input.json`.
+- **Chemical source.** Its grade-(0,0) part is `Bθ + C W_0 e_W + G_θu ∇·u − κ_θ ∇²θ − κ_θW ∇²e_W` (`native-selected.json:50`). Every other term carries `eta_bg` or `sigma_W`.
+- **Divergence-only dependence on u.** At (0,0), u enters only through `u_1_d1 + u_2_d2 + u_3_d3`. The c2 TRANSVERSE map (`native-method.txt`, `wave_jet`) uses curls, so div∘curl cancels identically for any momentum. The arbitrary-curl source null therefore follows from the source constructor's structure. It does not depend on the k_in=0 witness. The source-level argument stands.
+- **Consumer slots.** The census finds 12 selected children, each linear in one slot:
+  - THETA has 4 (one per slot), and E_W has 8.
+  - The `delta_p_±` coefficients are `-iΛ_A ε/(ρ_m(ωτ_A+i))` (THETA) and `-iΛ_X W_0 ε/(…) + W_0 ε/2` (E_W).
+  - The Λ_X term vanishes at `Lambda_X_0=0`.
+  - Every `d_w_delta_p_±` coefficient carries `eta_bg·w1_profile` (`:12193-12229`, `:18244-18328`).
+  - So the jet factor drops out at grade (1,1). This is source-read; the worker reports it at `worker.py:330-335`.
+- **U rows.** All three U rows have zero pressure occurrences, and the literal U face force is `Tuple(0,0,0)` (`native-selected.json:18346`). Reverse-slot absence is therefore a property of the supplied native operator. It is not evidence of physical decoupling.
+- **Normalization and jet reuse.**
+  - `DELTA_P = (μ-part + V-part)·R·DTN` is a single linear chain. Dividing the saved per-V factor by the V coefficient (=1) is valid.
+  - The saved jet factor equals `i·q_out·ref` (√3/10·i·ref), so the same bare D serves both slots. Row ε stays in the rows, and the source is divided by ε once.
+- **Dimensions.** The THETA and E_W slot dimensions I computed against the native schema match the worker's hard-coded targets (`worker.py:503`).
+- **Grade selection.** For regular S and C, the η σ coefficient of `ησ·S·C` is `S₀C₀`. The reduction to the (0,0) source and consumer is valid for this inserted term. It is a tautology of calculus, not a test.
+
+## Method / claim findings
+
+**M1 (required claim-boundary correction).** The transverse null is a property of the (0,0) source only. The omitted (0,1) source terms are not divergence-only. Examples: `γ_06 σ u_1_d2d2 w1_profile_d1` and the `mu_r` analogues (`native-selected.json:50`).
+- Those terms multiply kernel pieces of other grades and also land at (1,1). That is outside this selected term but not outside the slab.
+- The worker preserves `higherGrades` (`worker.py:224`) but never restricts them. As built, the output cannot show that the zero comes from grade selection rather than from a dead path.
+- Smallest fix: emit `restrict(higherGrades,'TRANSVERSE')` with `operator_form` for each source piece, labelled informational. Then state in the claim that the transverse zero holds only for the grade-(0,0) direct source.
+
+**M2 (required).** The hidden-dependency check is incomplete (`worker.py:226-230`).
+- It runs on `reduced`, not on `zeroth`, and tests only `W_bg`, `mu_R_bg` and `rho_br_bg_rho4_constant`.
+- The profile equalities also define `W_bg_d*`, `mu_R_bg_d*` and `e_W_bg`.
+- Smallest fix: assert that `zeroth` has no free symbol among the profile-equality LHS keys. Also assert no `w1_profile*`, `m1_profile*` or `gamma_*` symbol, and no `eta_bg` or `sigma_W` key, in `profiles`.
+- The sigma exclusion (`worker.py:193`) matches `Inputs.profiles` and is correct.
+
+**M3 (interpretation).** The scalar controls cannot fail by construction.
+- Velocity, chemical and pressure-slot omissions each give `row_change = factor × removed piece` (`worker.py:420-423`, `:463-465`).
+- They show the paths are connected. They do not show the value is correct.
+- The divergence omission is the real discriminator. It shows the restriction path responds when a component of the divergence structure is broken, which separates annihilation from an unloaded check.
+- The routing control (`worker.py:475-483`) is trivially nonzero and is correctly labelled form-only.
+
+## Tooling findings
+
+**T1 (probable false stop; uncertain without running).** Nonzero decisions use `.is_zero is False` on products containing `ref_factor`, an algebraic complex number with √3 (`worker.py:429`, `:443-444`, `:448-450`, `:471-473`). The relevant sympy Add/Pow/Mul zero tests plausibly return `None` for `105+241i+√3(30+250i)`. The earlier run needed `factorNormSquared` for exactly this reason (`saved/physical-factors.json:65`).
+- Smallest fix: prove `ref_factor ≠ 0` once, from the saved `factorNormSquared` or from `expand_complex` real/imaginary parts. Then decide nonzero on the rational remainder.
+
+**T2.** The guard at `worker.py:448` precedes the pressure-slot control, routing control and unit joins. A T1 failure would drop all three. Record booleans first and require them at the end.
+
+**T3.**
+- The expected row dimensions are typed in (`:503`) rather than parsed from `caseDimensionsConstructorText`.
+- The homogeneity of the c1 `DELTA_P` V and μ summands is not checked.
+- The pressure control saves only a normalized amplitude change, not the full-ε row change.
+- No assertion catches leftover wave symbols after `restrict`.
+
+**T4.** The 13 tests are stdlib-only and no CAS path has run. First-run failures in `decode` (`Str`, `Equality`) or `bind` would burn the no-retry run. A smoke test on the 12 selected children plus the chemical constructor would be cheap.
+
+**Uncertain, not established from the packet.**
+- The `r`/`z` identification in `build_face` is not supplied. The `saved-upper-c1-source` guard (`:263`) covers it.
+- Whether `kernel_apply` maps `d1` jets to `i·k_in1`.
+- The Fourier measure convention of D. This is inherited: `reducedPressureFourierDimension=[-1,-2,1]` differs from the slot dimension by one length, and the worker flags it as an inherited declaration.
+
+## Optional
+
+Report the predicted outputs (jet unused, U rows empty) as source-read expectations. Do not call any hash an algebraic check.
+
+## Claim boundary I support
+
+If M1, M2, T1 and T2 are fixed, the instrument would establish the following. It would be at the selected direct kernel(1,1) × source(0,0) × consumer(0,0) grade, upper face, off-shell, scalar rows only:
+- the source is annihilated for any divergence-free brane field;
+- it is nonzero for scalar and longitudinal channels;
+- it enters through the THETA and E_W `delta_p_+` coefficients only;
+- the jet coefficient and any U-row route are absent.
+
+It would not establish an on-shell light excitation, loss, lower-face cancellation, other direct grades, the first-shape iteration, or any physical decoupling beyond the supplied native U row.

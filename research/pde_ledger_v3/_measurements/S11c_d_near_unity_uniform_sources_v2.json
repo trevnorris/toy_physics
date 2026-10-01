@@ -1,0 +1,361 @@
+{
+  "status": "PREPARATION_V2_SOURCE_AND_OPAQUE_BYTE_INVENTORY_ONLY",
+  "createdLocalDate": "2026-10-01",
+  "scientificPayloadsRestored": false,
+  "scientificImports": false,
+  "scientificJobLaunched": false,
+  "externalPacketSubmitted": false,
+  "scope": "Selected uniform transverse matching by an effective bulk-speed sweep, strict rest-bulk, LAB_HELD/RHO4_CONSTANT, omega=3, tangents=(1/5,1/10); no profile loss calculation",
+  "packetRecommendation": {
+    "fullFiles": [
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_near_unity_uniform_plan_v2.md",
+        "sha256": "0d1eb443689f07558526bdf06f64d02072778376b0754096e60e6337ec2336a8",
+        "bytes": 15589,
+        "role": "Cohesive selected-uniform method v2; prospective source-only assessment"
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_variable_profile_development_input.json",
+        "sha256": "660b2b0b54494dce964c7f5fbd722a76a7e894d8ed92b18b5eb6290c3c10f1d5",
+        "bytes": 1884,
+        "role": "Original numerical material/profile coefficients"
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_flow_calibration_assessment.json",
+        "sha256": "e873fbda657b3741af9855ff82f38569fb7ab4c15b338973ef665c62267468d6",
+        "bytes": 4591,
+        "role": "Saved modal speed readouts and provenance; not exact matching constants"
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_uniform_source_checkpoint.json",
+        "sha256": "9d4b65ad07d1f403fd3aa4ec42da99db622a4d0a26d6ddce6c472148c7830085",
+        "bytes": 13523,
+        "role": "Original symbolic uniform source checkpoint and operand hashes"
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_end_maps_v2_inputs.json",
+        "sha256": "7f71debc891e09d8766f826fba7dd9a711ec4f69c93d545543bf3e4f05a30b17",
+        "bytes": 5857,
+        "role": "Selected original pairing/unit/pencil routes"
+      }
+    ],
+    "sourceExcerpts": [
+      {
+        "path": "research/pde_ledger_v2/notes/parameter_register.md",
+        "sourceSha256": "5fd4806cd6ff0cfcb806fca8e253c8f2a7cf561c77e8591e1f050677695f78b0",
+        "firstLine": 266,
+        "lastLine": 285,
+        "excerptSha256": "7c01700844bc3bdd5b3e5cad3422b53c48150635178e1d7102fb2ae4ac32c036",
+        "excerptBytes": 3784,
+        "excerptEncoding": "Original UTF-8 bytes for inclusive lines with original line endings",
+        "role": "Primitive sound-speed relation; bare cone; uncommitted calibration and deferred derivation"
+      },
+      {
+        "path": "research/pde_ledger_v3/scripts/S11b_interface_coupling_law_sympy_audit.py",
+        "sourceSha256": "e7ba853ded139f5795d659fc7f495fc7de57e3937185aa829c5873568bd5d6c6",
+        "firstLine": 74,
+        "lastLine": 90,
+        "excerptSha256": "5996b6c6366e43229f5a712f0fa345b81076240bab116f1f27520a673c32304b",
+        "excerptBytes": 1214,
+        "excerptEncoding": "Original UTF-8 bytes for inclusive lines with original line endings",
+        "role": "Inherited effective coefficient declarations"
+      },
+      {
+        "path": "research/pde_ledger_v3/scripts/S11b_interface_coupling_law_sympy_audit.py",
+        "sourceSha256": "e7ba853ded139f5795d659fc7f495fc7de57e3937185aa829c5873568bd5d6c6",
+        "firstLine": 457,
+        "lastLine": 485,
+        "excerptSha256": "55b35380ab8ea91ee68345b035fdcb44399ac19589fed0aeab649cd0b1adc97a",
+        "excerptBytes": 1076,
+        "excerptEncoding": "Original UTF-8 bytes for inclusive lines with original line endings",
+        "role": "Actual flat face mass/affinity closure"
+      },
+      {
+        "path": "research/pde_ledger_v3/scripts/S11b_interface_coupling_law_sympy_audit.py",
+        "sourceSha256": "e7ba853ded139f5795d659fc7f495fc7de57e3937185aa829c5873568bd5d6c6",
+        "firstLine": 1918,
+        "lastLine": 1939,
+        "excerptSha256": "35f1a3a3d67cb96a51bace57fa3ac8ff2d516cfa2ddcb13dc3894fd54db66481",
+        "excerptBytes": 1172,
+        "excerptEncoding": "Original UTF-8 bytes for inclusive lines with original line endings",
+        "role": "Historical grazing matrix handling; not this test result"
+      },
+      {
+        "path": "research/pde_ledger_v3/scripts/S11c_d_mixing_scattering_sympy_audit.py",
+        "sourceSha256": "5bf77729682960bb59f10c672a5fe3f67a98b0a9533da7c6189a37183596050f",
+        "firstLine": 4876,
+        "lastLine": 4937,
+        "excerptSha256": "2748088afe9f322baf3fd448b4170411c44d7b5c88f9eb370fde6367bb93c80a",
+        "excerptBytes": 3606,
+        "excerptEncoding": "Original UTF-8 bytes for inclusive lines with original line endings",
+        "role": "Actual input, end values and grade origin"
+      },
+      {
+        "path": "research/pde_ledger_v3/scripts/S11c_d_mixing_scattering_sympy_audit.py",
+        "sourceSha256": "5bf77729682960bb59f10c672a5fe3f67a98b0a9533da7c6189a37183596050f",
+        "firstLine": 5038,
+        "lastLine": 5120,
+        "excerptSha256": "96148771a03e6ebd0ff39934d801e5d6b002429152c94cb6b06cdc77e9059ab6",
+        "excerptBytes": 5109,
+        "excerptEncoding": "Original UTF-8 bytes for inclusive lines with original line endings",
+        "role": "Joint sheet transport limitation at q=0"
+      },
+      {
+        "path": "research/pde_ledger_v3/scripts/S11c_d_mixing_scattering_sympy_audit.py",
+        "sourceSha256": "5bf77729682960bb59f10c672a5fe3f67a98b0a9533da7c6189a37183596050f",
+        "firstLine": 5306,
+        "lastLine": 5440,
+        "excerptSha256": "07e80d521bee1e409167241be3b764f8312f01c11fe464183807b9c46ee5d568",
+        "excerptBytes": 7534,
+        "excerptEncoding": "Original UTF-8 bytes for inclusive lines with original line endings",
+        "role": "Actual full quotient/polarization and radical conventions"
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_frequency_source.py",
+        "sourceSha256": "9be20be462bc10bfcaa7af643b9301948dd79bc2e08eb24ebcd1386a81efcdac",
+        "firstLine": 166,
+        "lastLine": 207,
+        "excerptSha256": "0d82a14facc7e7a48954d19dad1a14e4ba889cc2900a8796f3e84f3ab6385ac2",
+        "excerptBytes": 5248,
+        "excerptEncoding": "Original UTF-8 bytes for inclusive lines with original line endings",
+        "role": "Saved original pre-binding end operands versus material-frozen ones"
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_uniform_source.py",
+        "sourceSha256": "2a135aea365c7b5e57bfff7683c7b927cda52c0d37f6a9bad3c961eb6205a2b2",
+        "firstLine": 92,
+        "lastLine": 135,
+        "excerptSha256": "2823f6a30ae9ff7f3c402ca86269d478234cc2bb80eac62d990989bf80e6568f",
+        "excerptBytes": 3550,
+        "excerptEncoding": "Original UTF-8 bytes for inclusive lines with original line endings",
+        "role": "Actual symbolic end/unit/source coupling construction"
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_boundary.py",
+        "sourceSha256": "d96d8e062f4e9cdc85ab0989ddb0a057fa931e12b412d59f937160b3f8177988",
+        "firstLine": 193,
+        "lastLine": 207,
+        "excerptSha256": "eda203b482dbce7f6adae592ea67ed60715e89a7cc504b1b8d02138bbf0caa2e",
+        "excerptBytes": 814,
+        "excerptEncoding": "Original UTF-8 bytes for inclusive lines with original line endings",
+        "role": "Existing source binding holds the material map fixed"
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_boundary.py",
+        "sourceSha256": "d96d8e062f4e9cdc85ab0989ddb0a057fa931e12b412d59f937160b3f8177988",
+        "firstLine": 344,
+        "lastLine": 368,
+        "excerptSha256": "4eae9a1ff4123dfbd1497b82b345f4ab644556d34815d94e04c3f15260895cf0",
+        "excerptBytes": 2530,
+        "excerptEncoding": "Original UTF-8 bytes for inclusive lines with original line endings",
+        "role": "Existing selected-root physical-sheet exclusion of grazing"
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_end_maps_v2.py",
+        "sourceSha256": "4c96b6957bd839bf48e5f959483e13c3b83888db2893ff8d5ebe39c5e4f4262f",
+        "firstLine": 135,
+        "lastLine": 277,
+        "excerptSha256": "9b90042fd509700ff2745496686ad30dd1a54bf523e73bf07f5664fa03b98091",
+        "excerptBytes": 11129,
+        "excerptEncoding": "Original UTF-8 bytes for inclusive lines with original line endings",
+        "role": "Existing actual face/current binding, homogeneity, physical-q scaling and responsive controls"
+      },
+      {
+        "path": "research/pde_ledger_v3/directives/S11c_c1_SHARED_PHYSICS.md",
+        "sourceSha256": "47554c8c9cf2fd070c1048a7ae0ca36b1315bf50a48ed07a51019ff3e72987ad",
+        "firstLine": 204,
+        "lastLine": 221,
+        "excerptSha256": "80da7951f8a18266f5d7cc15079060c4a2b3aabcbaa0bce753cb952f82ff77fe",
+        "excerptBytes": 1550,
+        "excerptEncoding": "Original UTF-8 bytes for inclusive lines with original line endings",
+        "role": "Strict rest-bulk grazing and nonuniform small-flow domain"
+      },
+      {
+        "path": "research/pde_ledger_v3/directives/S11c_d_SCATTERING_FORM_AMENDMENT.md",
+        "sourceSha256": "eb6f20a3fd0bce308e53901fa69fdf267b2917e5cc78b319a1e7700074a47560",
+        "firstLine": 373,
+        "lastLine": 384,
+        "excerptSha256": "6be09d21e267d78c188ba481d777bf15530a89c19742e13907cbaf2cb2bdd169",
+        "excerptBytes": 896,
+        "excerptEncoding": "Original UTF-8 bytes for inclusive lines with original line endings",
+        "role": "Inherited flow validity retained by FORM"
+      },
+      {
+        "path": "research/pde_ledger_v3/scripts/S11c_d_mixing_scattering_sympy_audit.py",
+        "firstLine": 2529,
+        "lastLine": 2557,
+        "role": "Native curl/gauge and physical field lift",
+        "sourceSha256": "5bf77729682960bb59f10c672a5fe3f67a98b0a9533da7c6189a37183596050f",
+        "excerptSha256": "60efb34d5a0447ae566d03c864dbd6a3e6a9d4cdbd31cdd679c11454bea1ef76",
+        "excerptBytes": 1757,
+        "excerptEncoding": "Original UTF-8 bytes for inclusive lines with original line endings"
+      },
+      {
+        "path": "research/pde_ledger_v3/scripts/S11c_d_mixing_scattering_sympy_audit.py",
+        "firstLine": 2570,
+        "lastLine": 2635,
+        "role": "Actual field order/units and constant end",
+        "sourceSha256": "5bf77729682960bb59f10c672a5fe3f67a98b0a9533da7c6189a37183596050f",
+        "excerptSha256": "5e8640de574143cdd7cdbee502216e41cb7309b4476cbd9e03be1c21077b96eb",
+        "excerptBytes": 3964,
+        "excerptEncoding": "Original UTF-8 bytes for inclusive lines with original line endings"
+      },
+      {
+        "path": "research/pde_ledger_v3/scripts/S11c_d_mixing_scattering_sympy_audit.py",
+        "firstLine": 2990,
+        "lastLine": 3026,
+        "role": "Source wave characters and both harmonic legs",
+        "sourceSha256": "5bf77729682960bb59f10c672a5fe3f67a98b0a9533da7c6189a37183596050f",
+        "excerptSha256": "12616c51af34f9985a663501fe0b306aa4a8016835fec5e8cf250587b1cb2b6a",
+        "excerptBytes": 2309,
+        "excerptEncoding": "Original UTF-8 bytes for inclusive lines with original line endings"
+      },
+      {
+        "path": "research/pde_ledger_v3/scripts/S11c_d_mixing_scattering_sympy_audit.py",
+        "firstLine": 3049,
+        "lastLine": 3130,
+        "role": "Physical closure and algebraic/physical radical conversion",
+        "sourceSha256": "5bf77729682960bb59f10c672a5fe3f67a98b0a9533da7c6189a37183596050f",
+        "excerptSha256": "dbde7202aae16cb0d11260490c5533f24785b6e27444319da5801743bb09940c",
+        "excerptBytes": 6509,
+        "excerptEncoding": "Original UTF-8 bytes for inclusive lines with original line endings"
+      },
+      {
+        "path": "research/pde_ledger_v3/scripts/S11c_d_mixing_scattering_sympy_audit.py",
+        "firstLine": 3245,
+        "lastLine": 3420,
+        "role": "Two-leg pencils, face rows and current construction",
+        "sourceSha256": "5bf77729682960bb59f10c672a5fe3f67a98b0a9533da7c6189a37183596050f",
+        "excerptSha256": "b70f06af6ea2988f0780a727d296d95209b9b1019a5bae7ed2855e32668da632",
+        "excerptBytes": 12683,
+        "excerptEncoding": "Original UTF-8 bytes for inclusive lines with original line endings"
+      },
+      {
+        "path": "research/pde_ledger_v3/scripts/S11c_d_mixing_scattering_sympy_audit.py",
+        "firstLine": 3490,
+        "lastLine": 3620,
+        "role": "Independent source row/closure and bilinear reconstruction",
+        "sourceSha256": "5bf77729682960bb59f10c672a5fe3f67a98b0a9533da7c6189a37183596050f",
+        "excerptSha256": "c72f9d4dec4ccebf91a3b0500bada6bb37584cbc4288dd494a1883d7057e8870",
+        "excerptBytes": 9918,
+        "excerptEncoding": "Original UTF-8 bytes for inclusive lines with original line endings"
+      }
+    ],
+    "includeOpaquePacketsInReviewExport": false,
+    "note": "Opaque source packets are local restoration inputs only; method packet is source/metadata. Exact export inventory/consent is separate. No prior peer report or outside commentary belongs in a fresh review packet."
+  },
+  "prospectiveInputPackets": [
+    {
+      "key": "uniformSource",
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-uniform-source-20260919/production/complete/uniform-source.pickle",
+      "bytes": 109308,
+      "sha256": "a482c5023d16558f52b20d0a347d6e38f33f0f06f780abd256c5220f922b5571",
+      "expectedSha256": "a482c5023d16558f52b20d0a347d6e38f33f0f06f780abd256c5220f922b5571",
+      "byteHashMatches": true,
+      "restored": false,
+      "use": "Original source/units/pairing candidate; changed-speed numerical results not inherited"
+    },
+    {
+      "key": "uniformResponse",
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-uniform-response-20260919/production/complete/uniform-response.pickle",
+      "bytes": 543796,
+      "sha256": "1d5bd9967d08c5ad01eab8707ea25af01cfb9bf61bfd83073ed898c9d76a772f",
+      "expectedSha256": "1d5bd9967d08c5ad01eab8707ea25af01cfb9bf61bfd83073ed898c9d76a772f",
+      "byteHashMatches": true,
+      "restored": false,
+      "use": "Original source/units/pairing candidate; changed-speed numerical results not inherited"
+    },
+    {
+      "key": "LEFTFrequency",
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-source-20260919/finish-01/complete/left-frequency-pencil.pickle",
+      "bytes": 9470,
+      "sha256": "67148025b209f7171b7679249c075c6e68b76882ac6ac5adfffed4eb2766211a",
+      "expectedSha256": "67148025b209f7171b7679249c075c6e68b76882ac6ac5adfffed4eb2766211a",
+      "byteHashMatches": true,
+      "restored": false,
+      "use": "Original source/units/pairing candidate; changed-speed numerical results not inherited"
+    },
+    {
+      "key": "RIGHTFrequency",
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-source-20260919/finish-01/complete/right-frequency-pencil.pickle",
+      "bytes": 23826,
+      "sha256": "0fe2cccd0b9c08f57666530b2519dff26e8dee633058aae85d3d7f4b89ec029d",
+      "expectedSha256": "0fe2cccd0b9c08f57666530b2519dff26e8dee633058aae85d3d7f4b89ec029d",
+      "byteHashMatches": true,
+      "restored": false,
+      "use": "Original source/units/pairing candidate; changed-speed numerical results not inherited"
+    },
+    {
+      "key": "LEFTPairing",
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-thickness-coordinate-20260914/end_pairing_left/complete.pickle",
+      "bytes": 318441,
+      "sha256": "6399da59a971434aae54a95ed4c823c4b029029dbe50aed2913bcc48747b9259",
+      "expectedSha256": "6399da59a971434aae54a95ed4c823c4b029029dbe50aed2913bcc48747b9259",
+      "byteHashMatches": true,
+      "restored": false,
+      "use": "Original source/units/pairing candidate; changed-speed numerical results not inherited"
+    },
+    {
+      "key": "RIGHTPairing",
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-thickness-coordinate-20260914/end_pairing_right/complete.pickle",
+      "bytes": 1065916,
+      "sha256": "690ceb5c452de298f67ec929cacb76d7d16e182efcd321f9692ecf1cbd28b628",
+      "expectedSha256": "690ceb5c452de298f67ec929cacb76d7d16e182efcd321f9692ecf1cbd28b628",
+      "byteHashMatches": true,
+      "restored": false,
+      "use": "Original source/units/pairing candidate; changed-speed numerical results not inherited"
+    }
+  ],
+  "baselineReadableMetadata": [
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/end-maps-v2/complete/LEFT-a-1-candidate-16.json",
+      "sha256": "1fddfe3fe5e8624653496a813201c3c1cf8c725ea672abdf86b28c4bfaeb66da",
+      "bytes": 773,
+      "role": "Saved baseline numerical mode/current summary only; not new-speed result"
+    },
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/end-maps-v2/complete/RIGHT-a-1-candidate-16.json",
+      "sha256": "5088ca2636fe46ce4d7c519a25b618187cd22c4bfc93af6371a45aa150319d8f",
+      "bytes": 771,
+      "role": "Saved baseline numerical mode/current summary only; not new-speed result"
+    }
+  ],
+  "upstreamRepairDependencies": [
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_inertia_repair_report.md",
+      "sha256": "23b540a5783153fd9cb8725d80ae2e77c8fc9f653d347464df01c7f4431634aa",
+      "bytes": 6202,
+      "dependency": "inertia sign",
+      "independentReviewStatus": "Concurrent review backlog; no clearance inferred here"
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_mechanical_repair_report.md",
+      "sha256": "57bec0e90fdaa4ada674f56cca37f53b7f2d83cce1a8ef70c82e3ee103ecae33",
+      "bytes": 10025,
+      "dependency": "mechanical face-load sign",
+      "independentReviewStatus": "Concurrent review backlog; no clearance inferred here"
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_c2_trace_repair_report.md",
+      "sha256": "d648b243b662e4e8bed1fde9504c4fac4ed3bb0db7019f6c9f9509df575aa7f9",
+      "bytes": 11758,
+      "dependency": "c2 trace/shape",
+      "independentReviewStatus": "Concurrent review backlog; no clearance inferred here"
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_thickness_coordinate_repair_report.md",
+      "sha256": "c863583f9ea50bf48d51f48ee41ea4c6e065cb5225dce0e49d9cdf938ca1c262",
+      "bytes": 25758,
+      "dependency": "thickness coordinate",
+      "independentReviewStatus": "Concurrent review backlog; no clearance inferred here"
+    }
+  ],
+  "decisions": {
+    "matchingTarget": "Actual selected full-pencil modal phase speed separately at each end, with bare R4 ratio also reported",
+    "family": "Vary inherited effective c_s0 only; preserve brane/profile/physical permeability/memory inputs; no primitive recalibration claim",
+    "pointSet": "Exact two-end principal ratios 199/200,1,201/200; reference ratios49/50,51/50; two physical approach speeds per end within the same12-speed/24-end-evaluation cap. Actual constant transverse restriction must support the construction.",
+    "grazing": "Selected two-dimensional source-lift limit, separate from full acoustic nullity; exact source-domain cancellation, physical q and unit joins, independent orientation and current remain required.",
+    "flow": "Exactly zero; no transfer from smooth rest-bulk sweep to draining bulk",
+    "preparationStop": "Prospective method/source review; scientific implementation and run require substantive clearance and actual readiness under the standing uniform goal; stop before defect sweep."
+  }
+}

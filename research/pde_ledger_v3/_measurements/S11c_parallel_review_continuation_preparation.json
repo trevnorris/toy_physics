@@ -1,0 +1,1999 @@
+{
+  "status": "PACKETS_PREPARED_SOURCE_HASHES_VERIFIED_NOT_YET_LAUNCHED",
+  "preparedUtc": "2026-10-01T17:09:28.962648+00:00",
+  "literalUserRenewal": "k. do whatever you need, and I approve. please keep going, times of the essence right now.",
+  "interpretation": "Current approval covers corrected uniform Claude/Grok review plus a fresh replacement Grok review of the upstream repairs with complete source operands. No completed upstream Claude rerun; no implicit future export. User was not shown these new hashes before this renewal.",
+  "runs": [
+    {
+      "kind": "uniform-method-review-r2",
+      "root": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-method-review-r2",
+      "state": {
+        "status": "PREPARED_NOT_LAUNCHED",
+        "packetDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-method-review-r2/packet",
+        "packetSha256": "bf55b921706cc1d2c3df225fe87ec8a20405df782de771f6e50f8d60506f3752",
+        "archiveSha256": "23f616ddd30a77a95deed92051b5de3c5e67502113135baed890d3640e9458f1",
+        "packetFiles": 28,
+        "packetBytes": 165665,
+        "fileHashes": {
+          "packet-index.json": "6840d80f096068089b30260d1022dbb44b4936834445d7ec4116b675b96b9667",
+          "research/pde_ledger_v3/_measurements/S11c_d_near_unity_uniform_plan_v2.md": "0d1eb443689f07558526bdf06f64d02072778376b0754096e60e6337ec2336a8",
+          "research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_end_maps_v2_inputs.json": "7f71debc891e09d8766f826fba7dd9a711ec4f69c93d545543bf3e4f05a30b17",
+          "research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_flow_calibration_assessment.json": "e873fbda657b3741af9855ff82f38569fb7ab4c15b338973ef665c62267468d6",
+          "research/pde_ledger_v3/_measurements/S11c_d_uniform_source_checkpoint.json": "9d4b65ad07d1f403fd3aa4ec42da99db622a4d0a26d6ddce6c472148c7830085",
+          "research/pde_ledger_v3/_measurements/S11c_d_variable_profile_development_input.json": "660b2b0b54494dce964c7f5fbd722a76a7e894d8ed92b18b5eb6290c3c10f1d5",
+          "review-prompt.md": "9b8321d06269b0bde7c296d02f99dc882e90bbe96f97196d78044949dddcd433",
+          "source-excerpts/01-parameter_register.md-L266-285.txt": "7c01700844bc3bdd5b3e5cad3422b53c48150635178e1d7102fb2ae4ac32c036",
+          "source-excerpts/02-S11b_interface_coupling_law_sympy_audit.py-L74-90.txt": "5996b6c6366e43229f5a712f0fa345b81076240bab116f1f27520a673c32304b",
+          "source-excerpts/03-S11b_interface_coupling_law_sympy_audit.py-L457-485.txt": "55b35380ab8ea91ee68345b035fdcb44399ac19589fed0aeab649cd0b1adc97a",
+          "source-excerpts/04-S11b_interface_coupling_law_sympy_audit.py-L1918-1939.txt": "35f1a3a3d67cb96a51bace57fa3ac8ff2d516cfa2ddcb13dc3894fd54db66481",
+          "source-excerpts/05-S11c_d_mixing_scattering_sympy_audit.py-L4876-4937.txt": "2748088afe9f322baf3fd448b4170411c44d7b5c88f9eb370fde6367bb93c80a",
+          "source-excerpts/06-S11c_d_mixing_scattering_sympy_audit.py-L5038-5120.txt": "96148771a03e6ebd0ff39934d801e5d6b002429152c94cb6b06cdc77e9059ab6",
+          "source-excerpts/07-S11c_d_mixing_scattering_sympy_audit.py-L5306-5440.txt": "07e80d521bee1e409167241be3b764f8312f01c11fe464183807b9c46ee5d568",
+          "source-excerpts/08-S11c_d_frequency_source.py-L166-207.txt": "0d82a14facc7e7a48954d19dad1a14e4ba889cc2900a8796f3e84f3ab6385ac2",
+          "source-excerpts/09-S11c_d_uniform_source.py-L92-135.txt": "2823f6a30ae9ff7f3c402ca86269d478234cc2bb80eac62d990989bf80e6568f",
+          "source-excerpts/10-S11c_d_numerical_radiating_boundary.py-L193-207.txt": "eda203b482dbce7f6adae592ea67ed60715e89a7cc504b1b8d02138bbf0caa2e",
+          "source-excerpts/11-S11c_d_numerical_radiating_boundary.py-L344-368.txt": "4eae9a1ff4123dfbd1497b82b345f4ab644556d34815d94e04c3f15260895cf0",
+          "source-excerpts/12-S11c_d_numerical_radiating_end_maps_v2.py-L135-277.txt": "9b90042fd509700ff2745496686ad30dd1a54bf523e73bf07f5664fa03b98091",
+          "source-excerpts/13-S11c_c1_SHARED_PHYSICS.md-L204-221.txt": "80da7951f8a18266f5d7cc15079060c4a2b3aabcbaa0bce753cb952f82ff77fe",
+          "source-excerpts/14-S11c_d_SCATTERING_FORM_AMENDMENT.md-L373-384.txt": "6be09d21e267d78c188ba481d777bf15530a89c19742e13907cbaf2cb2bdd169",
+          "source-excerpts/add-01-S11c_d_mixing_scattering_sympy_audit.py-L2529-2557.txt": "60efb34d5a0447ae566d03c864dbd6a3e6a9d4cdbd31cdd679c11454bea1ef76",
+          "source-excerpts/add-02-S11c_d_mixing_scattering_sympy_audit.py-L2570-2635.txt": "5e8640de574143cdd7cdbee502216e41cb7309b4476cbd9e03be1c21077b96eb",
+          "source-excerpts/add-03-S11c_d_mixing_scattering_sympy_audit.py-L2990-3026.txt": "12616c51af34f9985a663501fe0b306aa4a8016835fec5e8cf250587b1cb2b6a",
+          "source-excerpts/add-04-S11c_d_mixing_scattering_sympy_audit.py-L3049-3130.txt": "dbde7202aae16cb0d11260490c5533f24785b6e27444319da5801743bb09940c",
+          "source-excerpts/add-05-S11c_d_mixing_scattering_sympy_audit.py-L3245-3420.txt": "b70f06af6ea2988f0780a727d296d95209b9b1019a5bae7ed2855e32668da632",
+          "source-excerpts/add-06-S11c_d_mixing_scattering_sympy_audit.py-L3490-3620.txt": "c72f9d4dec4ccebf91a3b0500bada6bb37584cbc4288dd494a1883d7057e8870",
+          "source-inventory.json": "ede6f4177a2e7200c26028a827f6e6d97492de82b368fddc484f72aa900f3c81"
+        },
+        "reviewers": [
+          "claude",
+          "grok"
+        ],
+        "reviewerExecution": "source-only",
+        "currentThread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+        "externalSubmitted": false,
+        "uniformScienceLaunched": false
+      },
+      "authority": {
+        "status": "USER_RENEWED_CORRECTION_AND_REVIEW_AUTHORITY",
+        "literalUserReply": "k. do whatever you need, and I approve. please keep going, times of the essence right now.",
+        "context": "Renewed approval directly after explanation that corrections/preparation are already authorized and new/replacement external-review submissions need approval. Applies only to this bounded prepared packet and named reviewers; not a claim the user previously saw these new hashes.",
+        "userSawTheseNewHashes": false,
+        "recordedUtc": "2026-10-01T17:08:17.300980+00:00",
+        "packetSha256": "bf55b921706cc1d2c3df225fe87ec8a20405df782de771f6e50f8d60506f3752",
+        "archiveSha256": "23f616ddd30a77a95deed92051b5de3c5e67502113135baed890d3640e9458f1",
+        "packetFiles": 28,
+        "packetBytes": 165665,
+        "reviewers": [
+          "claude",
+          "grok"
+        ],
+        "thread": "01a0e01b-ef84-7192-817f-584cda5d339b"
+      },
+      "runtime": {
+        "runnerSha256": "3764bedbd15e07be735af3f434b912f8c3775aef025024517d4fdd1ef0ff6eea",
+        "launcherSha256": "e015e7eca1b73a4aef87692c1d09dda23dc872bd716241a9bf3a5f1adaa66df0",
+        "completionMessageSha256": "e1b880a196da7fb472a9566632b801a6c2c3645573ded801460784722d8795f1",
+        "syntaxPassed": true,
+        "runRootVerified": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-method-review-r2",
+        "reviewers": [
+          "claude",
+          "grok"
+        ],
+        "externalSubmitted": false,
+        "change": "Fresh paths and explicit user-renewal authority; requested reviewer count parameterized. No runtime scientific helper changes."
+      }
+    },
+    {
+      "kind": "upstream-repair-review-grok-replacement",
+      "root": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/upstream-repair-review-grok-replacement",
+      "state": {
+        "status": "PREPARED_NOT_LAUNCHED",
+        "packetDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/upstream-repair-review-grok-replacement/packet",
+        "packetSha256": "e16c4dff44dfffe8f36eb5919c4e7a24b2b73de7e40fd78f4976ab96b56a0db3",
+        "archiveSha256": "c2c6e9339ca8d380990aa7289273b303bdc18af243fc5f8883ec2f21870a843b",
+        "packetFiles": 125,
+        "packetBytes": 1982415,
+        "fileHashes": {
+          "historical-diffs/01-a74da30a.diff": "43dfb1a92e4bedb93c9816896a812e2e8d384dd5085382e0ee026a00263b80e0",
+          "historical-diffs/02-c643112a.diff": "d114ef917b0819d9c02afb7342c10a901c7c3e6d8206d3deb48161488efbb640",
+          "historical-diffs/03-a05b05e3.diff": "e956364d3d532fd0025a1126dbdab4ff64a00ee420a8a35b27287158acc9a2f3",
+          "historical-diffs/04-3b52afcb.diff": "b95109475d9bfac073ce2860e2a77f228dc189daa532605c0f2ddf0257627dec",
+          "historical-diffs/05-f618178a.diff": "3ac5c296d72e735eb87f889fc7434ac03471e411eef7859ffc9b5ea02dadf06d",
+          "packet-index.json": "78824050077c97e41b94ea9bc509a4d080f92f2b98db1e4b32a780c16ce7d23c",
+          "research/pde_ledger_v3/_measurements/S11c_b_inertia_action_check.py": "1a4dd9afc2c7b938547f0b5f8ed23184a5cc64d63711f3d7b9aaef36f77d8241",
+          "research/pde_ledger_v3/_measurements/S11c_c2_trace_repair_case_checkpoint.json": "008769abf6316bf3e29348336feba94283696d2bbfc56f236b5b0d28d5d1045b",
+          "research/pde_ledger_v3/_measurements/S11c_c2_trace_repair_check.py": "37d36d1334c53351a099d57ffbcbafaaa37b2e17b48efd67b651788859bb2599",
+          "research/pde_ledger_v3/_measurements/S11c_c2_trace_repair_maps_checkpoint.json": "9cf1c31460ce7689231cd7f9b2c8c4b763891f4d35db90c053550e29109085d1",
+          "research/pde_ledger_v3/_measurements/S11c_c2_trace_repair_report.md": "d648b243b662e4e8bed1fde9504c4fac4ed3bb0db7019f6c9f9509df575aa7f9",
+          "research/pde_ledger_v3/_measurements/S11c_inertia_final_checks.json": "a4de9dc2a6d03326308fd96e7dfbede29001a709b85aaa0e6dd1afb54c90b2ff",
+          "research/pde_ledger_v3/_measurements/S11c_inertia_repair_report.md": "23b540a5783153fd9cb8725d80ae2e77c8fc9f653d347464df01c7f4431634aa",
+          "research/pde_ledger_v3/_measurements/S11c_mechanical_repair_b_checks.json": "0aaa7ceef9c8b97badf818f4fd9d2f28e33bf13218a9e0ee31ee3424f1f34f53",
+          "research/pde_ledger_v3/_measurements/S11c_mechanical_repair_c2_case.py": "4a2763628cfd05661707f13a9b141d29844ae7a7c2d8435844b84b2f1e80ea94",
+          "research/pde_ledger_v3/_measurements/S11c_mechanical_repair_c2_checks.json": "95191ef991cd6661f189399ae87d0e8a1f6e7a0ea49615cdc72e429a12f92d1b",
+          "research/pde_ledger_v3/_measurements/S11c_mechanical_repair_focused_checks.json": "8c617f83c8d1702c315669ef0a914eede2f5c7c373a9634b402cd87fc9824af5",
+          "research/pde_ledger_v3/_measurements/S11c_mechanical_repair_report.md": "57bec0e90fdaa4ada674f56cca37f53b7f2d83cce1a8ef70c82e3ee103ecae33",
+          "research/pde_ledger_v3/_measurements/S11c_thickness_coordinate_action_checkpoint.json": "c4c40180ba8577780de367c5a0c22ecf3fc1dc22e5bc525d34d87746ea38d415",
+          "research/pde_ledger_v3/_measurements/S11c_thickness_coordinate_b_export_checkpoint.json": "1c8c2e2b8d1f1bd7d4fb73843ae2bee9eb41865c7aacf11b35e2b2e169ac2258",
+          "research/pde_ledger_v3/_measurements/S11c_thickness_coordinate_c2_export_checkpoint.json": "200e5f4b6aa151db3d7ccf18880688de08a76691a50e61d89113e9afd4c07e00",
+          "research/pde_ledger_v3/_measurements/S11c_thickness_coordinate_repair_report.md": "c863583f9ea50bf48d51f48ee41ea4c6e065cb5225dce0e49d9cdf938ca1c262",
+          "research/pde_ledger_v3/_measurements/S11c_thickness_coordinate_trace.py": "46c696a970dec0927d152824983d6319d795e8c8a683b24e0672e8adaf35ef7e",
+          "research/pde_ledger_v3/_measurements/S11c_thickness_coordinate_trace_checkpoint.json": "7b3a1d7ee6bd1ab8c9e40d17a4551642ae310fac88965de5966a7a799805262f",
+          "research/pde_ledger_v3/_measurements/S11c_upstream_repair_review_plan.md": "c8b70123b289ae01a106f807c90d6a86fbd183bec848c52833f2452680119fd1",
+          "research/pde_ledger_v3/_measurements/S11c_upstream_repair_review_prompt_v2.md": "def8d7857ba6c4ff53d3c74cc2d8380f0775a3b5d5f5163fc83ed3d539da082d",
+          "research/pde_ledger_v3/_measurements/S11c_upstream_repair_review_supplement.md": "0346e660dcd55d1e508a1d86a355d47ae30b271b1e861dcf65f6765e97adac21",
+          "research/pde_ledger_v3/_measurements/S11c_upstream_repair_review_supplement_sources.json": "b3438277c5757fdd1907d11f67c2c8dea583c5919b5195e2d38ce3903a6f4235",
+          "research/pde_ledger_v3/scripts/out/S11c_b_inertia_action_after_coordinate_repair.out": "df08264820d43e3053ef41de07f02eb2d5c5faa35f4340c161492d7cfdfd04db",
+          "research/pde_ledger_v3/scripts/out/S11c_thickness_coordinate_trace.out": "932dbe60ef1b6b426a98ee5629bf868f7c7a88c3722706640128c82c91d8557f",
+          "review-prompt.md": "8c292c949b88eae5a13fa58bb1815370d9c95f230f63a665901b90cdaa4423db",
+          "runtime-source/S11c_d_end_normalization_run.py": "35ad679486d2fcf5f4ee803b42293e4dd50cbe0bfcce790eb95343768bb8fd69",
+          "runtime-source/s11c_guarded_run.py": "6a6369424edfa43cbdaa36e8fa2bebbd278bebdbac3b565b2a8498aaca1dc9df",
+          "runtime-source/s11c_review_cas.py": "ae94c1ca02fd6567d0a9afa18365c341758a01c3061fe3e2d86f401afbc8f984",
+          "source-excerpts/01-S11c_b_brane_operator_sympy_audit.py-L1626-1642.txt": "4fc779f56cf954a1ed1ebeb26231937609be284157e5426ad82ff6631ea9baaa",
+          "source-excerpts/02-S11c_b_brane_operator_sympy_audit.py-L2135-2239.txt": "6621bff9441b5743bcac6750a3f2e5ebf813ff0c7b1f4a80991464faaf589834",
+          "source-excerpts/03-S11c_b_brane_operator_sympy_audit.py-L2242-2266.txt": "128ac63b60a7ea1085278db5ec07aedfc0402598d63735711e59904ab5250783",
+          "source-excerpts/04-S11c_b_brane_operator_sympy_audit.py-L2317-2336.txt": "2302e420b3fdc03567e4f5f6e5fee3c60f4e146b86cfffe28cc8545cab7858d2",
+          "source-excerpts/05-S11c_b_brane_operator_sympy_audit.py-L2339-2434.txt": "f88d0de1965c13d5be388283a338cfde670b7329c6e8371f62df020933d667ce",
+          "source-excerpts/06-S11c_b_brane_operator_sympy_audit.py-L2773-3302.txt": "d66174b17bd0bd504b1ad3ceab00a3f3a97c744bfd211226e1a2156e9d99d30f",
+          "source-excerpts/07-S11c_c2_selfenergy_fold_sympy_audit.py-L139-173.txt": "e7d32db59390ac097181e609f5c1cc69dda6696da04675de01b4024e7fa36f58",
+          "source-excerpts/08-S11c_c2_selfenergy_fold_sympy_audit.py-L367-418.txt": "c93d65c701cb6e22bfc57f12c15fcc19b910c79bc40cccb621558b492c2eddd2",
+          "source-excerpts/09-S11c_c2_selfenergy_fold_sympy_audit.py-L429-435.txt": "623c2fb4bcd43d6946b09fa65619d6243597b3da6a3e5ae47217b721c63ff34f",
+          "source-excerpts/10-S11c_c2_selfenergy_fold_sympy_audit.py-L455-471.txt": "eed2244588be9714510421a3c73882a4554ea9c4173852b952eeb8af31c186a9",
+          "source-excerpts/11-S11c_c2_selfenergy_fold_sympy_audit.py-L478-549.txt": "00a0e94b11395fc640a9bd91198d3c8b42419609514dc718fa39f55277909eb8",
+          "source-excerpts/12-S11c_c2_selfenergy_fold_sympy_audit.py-L552-607.txt": "4b25ca499a316b4bb96f4504f6e4ee7b9001729426d5849f6a2f7d294350d81e",
+          "source-excerpts/13-S11c_c2_selfenergy_fold_sympy_audit.py-L615-661.txt": "12a4fd09e2fa3f91c2d6512d64d2add006f38615882f7be831ede70547122b16",
+          "source-excerpts/14-S11c_c2_selfenergy_fold_sympy_audit.py-L664-668.txt": "0ff79602fabb39442d716de9d8d457ffbc5bd23c18ea2222b1d6342d001e7a9f",
+          "source-excerpts/15-S11c_c2_selfenergy_fold_sympy_audit.py-L671-725.txt": "f0056df884a834aa836836a4a32ac75fafbc5d2c97eb95ce199b054efd0e5e86",
+          "source-excerpts/16-S11c_c2_selfenergy_fold_sympy_audit.py-L849-861.txt": "51f8202a1a76046413fba790fb6931a9c8a70ff3babb23f7988d262cb14a525d",
+          "source-excerpts/17-S11c_c2_selfenergy_fold_sympy_audit.py-L897-940.txt": "f5704abf9df1fee19d3c2367b6054e480d20899065a989058133843b5ffbd3b6",
+          "source-excerpts/18-S11c_c2_selfenergy_fold_sympy_audit.py-L943-979.txt": "43b5c572eb2e9036bd0778595b97d79656bd9724acd6002e68b86615fbc1fa03",
+          "source-excerpts/19-S11b_SHARED_PHYSICS.md-L63-112.txt": "859fe634e840904cbdd14dfb4e51d36ff8b551ba278eb86c275ead4ef8a33318",
+          "source-excerpts/20-S11b_SHARED_PHYSICS.md-L162-181.txt": "56a85868fa35d4571996702fdf80eb9dc5004b356209a078e68f0df811f8bde7",
+          "source-excerpts/21-S11b_SHARED_PHYSICS.md-L208-244.txt": "7eba51a9acb00d76ab3207ed6d56bec9889d82b7a9250f34ca9e143773dbc542",
+          "source-excerpts/22-S11b_SHARED_PHYSICS.md-L255-279.txt": "bb3e82b3eec510b19d73e965a6a91ea840ff702c8a1ae47384cbebecce45be69",
+          "source-excerpts/23-S11b_SHARED_PHYSICS.md-L301-379.txt": "e51131fd108debc003c3efdcf01f7d6be77e71c812b2b4791431d113bfec92a1",
+          "source-excerpts/24-S11b_SHARED_PHYSICS.md-L452-497.txt": "84bfbc6b013a6c8665c99367222ba0e059eaad2d0cab222f20fdf0b612a8d851",
+          "source-excerpts/25-S11c_a_SHARED_PHYSICS.md-L32-62.txt": "ec7a07f65e558d677910a084431ca930197de0e2bccf149db698ec59dcd9d5d7",
+          "source-excerpts/26-S11c_a_SHARED_PHYSICS.md-L86-159.txt": "c856cce75a1bc9505f0c1d0b88aa44c11344e19630317083635f8feaef1f2ace",
+          "source-excerpts/27-S11c_a_SHARED_PHYSICS.md-L163-244.txt": "a9c299733e1973b2d184b99dac2039a95225a005ca13bbd89c6c5400090d50e3",
+          "source-excerpts/28-S11c_a_SHARED_PHYSICS.md-L285-401.txt": "3e4f5f732b98fec4f8dee3873dead2b95f771b7847988649f7e1cd1864a11850",
+          "source-excerpts/29-S11c_b_SHARED_PHYSICS.md-L55-160.txt": "1e5adb98cfb954d7c7fb55a1228e83d6be4a438303a09311c3e465537a26b2ce",
+          "source-excerpts/30-S11c_b_SHARED_PHYSICS.md-L247-303.txt": "a7f2a4e63995395e6241a50fd3f6da671b0a2190be5bedd92a305c0db83b67af",
+          "source-excerpts/31-S11c_b_SHARED_PHYSICS.md-L314-341.txt": "297032316fcea82bc022ced6e81b6713ef969aa2c2c6db1065ce424ad6458700",
+          "source-excerpts/32-S11c_c2_SHARED_PHYSICS.md-L48-159.txt": "4695d2318c66798d9cc6ee66383862f977a25037044930f4cc5e58bd84a4964f",
+          "source-excerpts/33-S11c_c2_SHARED_PHYSICS.md-L162-218.txt": "70b356304e62bfdbdd4cf6c994e9440ef29ceb2756e2daa0ba704ab707879121",
+          "source-excerpts/34-S11c_c2_SHARED_PHYSICS.md-L245-262.txt": "58f413a8c18d9d1c1db4861f48be662bef34cadec817b16820af6e5ecdd603b6",
+          "source-excerpts/35-S11c_c2_SHARED_PHYSICS.md-L282-302.txt": "6c7aea33de053bf97ef875b74d9d6553c8948af173ce1e54b1c15ece2f439d5f",
+          "source-excerpts/36-S11c_c2_SHARED_PHYSICS.md-L418-439.txt": "3987ce44247330e868c0fc26f327ff57e484dd1a1d9dbf70fce2813af2b1da7e",
+          "source-excerpts/37-S11c_c2_trace_repair_maps.out-L1-57.txt": "06ae7e0658c0338b2a0d2a24835ceb6ee1ef22981ab2f7c8bb484fd0a7304985",
+          "source-excerpts/38-S11c_c2_trace_repair_maps.out-L58-75.txt": "751f526b5eb13b8998f116fa1ac2973dec3e2f4fa2a8fd4568099b87031bf796",
+          "source-excerpts/39-S11c_c2_trace_repair_maps.out-L79-114.txt": "9527b2c494faff4e9cc4d9799b1d7e7104c405e2572cd442b136f071e0fae18e",
+          "source-excerpts/40-S11c_c2_trace_repair_maps.out-L115-132.txt": "9e913a0cd1cbd8edcb00ca8efd420fc2bbdf50ffab3bbed3d0f1a539e896b189",
+          "source-excerpts/41-S11c_c2_trace_repair_maps.out-L136-171.txt": "d93f36706070c18712075702079d7f86d7808ce430dfafced625fa57dea625bb",
+          "source-excerpts/42-S11c_c2_trace_repair_maps.out-L172-189.txt": "04d80568be879f4efa985ddf860eff53eb49db04259df8a884fdbd03f6fd3fc6",
+          "source-excerpts/43-S11c_c2_trace_repair_maps.out-L193-228.txt": "3bab6f60b333fc7a09c834a06f6c35e3126f03fa5b6e219e394b6450f732f5a5",
+          "source-excerpts/44-S11c_c2_trace_repair_maps.out-L229-246.txt": "46055ca220f74676edd168513d334285efda6c181cc06664318f322cc077083c",
+          "source-excerpts/45-S11c_c2_trace_repair_maps.out-L250-285.txt": "15135a866faaf142bdfc8aa903965f11bc77747346a69b4e35eb3af59beeefc9",
+          "source-excerpts/46-S11c_c2_trace_repair_maps.out-L286-303.txt": "cc36dd10f987ed3170fc549c5188a2a8d81fa2518cdd358674931f830ff09753",
+          "source-excerpts/47-S11c_c2_trace_repair_maps.out-L307-342.txt": "c1f7788a44a16fe6426c5ffa1923103616f62fa6438f0bae43044e600938ef73",
+          "source-excerpts/48-S11c_c2_trace_repair_maps.out-L343-360.txt": "0119fd8219680161741df88a6edd4b3c97aaaacb5a2b7fec07e0108f5dc7a7a7",
+          "source-excerpts/49-S11c_c2_trace_repair_maps.out-L364-399.txt": "e3cefa670d9afce5246a10764695e0e3bade59bc3a9dd4e9a85bc4e3678672a4",
+          "source-excerpts/50-S11c_c2_trace_repair_maps.out-L400-417.txt": "8be4f5ffd9b5e0022e50311104fac1cb5b3038e206673eaf924d380a37fedb2b",
+          "source-excerpts/51-S11c_c2_trace_repair_maps.out-L421-456.txt": "eb40b353b232d5e501b97c04711ed014b6eec524d17d1b895ddbe0dd8f7dc68e",
+          "source-excerpts/52-S11c_mechanical_repair_b_case.out-L1-2.txt": "982b59697acba6fedf155d8d4574ab0499427a36e72d1bb1ecc54e7aaaea8903",
+          "source-excerpts/53-S11c_mechanical_repair_c2_case.out-L3-4.txt": "e7108a08835657be035e720d3ac2fefb7b466ca2ffc26d830343e2190a6acf3c",
+          "source-excerpts/add-01-S11c_a_interface_geometry_sympy_audit.py-L390-461.txt": "4da4b4766d3d22b36a812661d28725897001d9a77ecabd01b3e4d24ac5349f0a",
+          "source-excerpts/add-02-S11c_a_interface_geometry_sympy_audit.py-L509-623.txt": "b8bf64f14fa4704838ef2e17306002bc81491a0328a11a80e1b61c2085c988f7",
+          "source-excerpts/add-03-S11c_a_interface_geometry_sympy_audit.py-L629-1001.txt": "8919f9a1143c730aa20fcc29830ebb79b345ca29584e980cd57829c332364385",
+          "source-excerpts/add-04-S11c_a_interface_geometry_sympy_audit.py-L1207-1278.txt": "3a66254113f2c810ef960f065c8109248c0921b90b832f20fea5f7b53d37e785",
+          "source-excerpts/add-05-S11c_b_brane_operator_sympy_audit.py-L722-830.txt": "354a5d241949c1b25a3d1c56bfc99dafee5b6539987caffdfb30d96963b35899",
+          "source-excerpts/add-06-S11c_b_brane_operator_sympy_audit.py-L1878-1902.txt": "fdea68d198c7ef2a0519999c64ab22fbe5ca60c873402225f90683fbebbca784",
+          "source-excerpts/add-07-S11c_b_brane_operator_sympy_audit.py-L2437-2631.txt": "3aa0c5bc290c39842cd94b45845e1705a2869685aaf651bcef518c0ea78b4e84",
+          "source-excerpts/add-08-S11c_c1_bulk_closure_sympy_audit.py-L177-210.txt": "569386a2ac11f08d643b943e96206739e7d3a3771b572da39c247757880ae536",
+          "source-excerpts/add-09-S11c_c1_bulk_closure_sympy_audit.py-L485-506.txt": "6f3d5a113a75828add070824d478be5cc43ca44b1511899035442f1d1f84cb81",
+          "source-excerpts/add-10-S11c_c1_bulk_closure_sympy_audit.py-L519-573.txt": "abbae86f6a1ea07622b3f6a067ca612730a494eb22bdfc12ccb675d17e63d7ca",
+          "source-excerpts/add-11-S11c_c1_bulk_closure_sympy_audit.py-L576-755.txt": "206e7cb0bb4c92d68feb6ca90715a693c635d2362f32219797ced062da8a43ae",
+          "source-excerpts/add-12-S11c_c1_bulk_closure_sympy_audit.py-L1046-1119.txt": "41a42c38b06be60c48f3a9c48e5588d670f4464a0124d418f1e4990d5fa6aec3",
+          "source-excerpts/add-13-S11c_c2_selfenergy_fold_sympy_audit.py-L186-306.txt": "7f59a9dc5d36dc56255291956ac5d5fe2aae81dd3950df60157a1b93d9d9b05d",
+          "source-excerpts/add-14-S11c_c2_selfenergy_fold_sympy_audit.py-L367-418.txt": "c93d65c701cb6e22bfc57f12c15fcc19b910c79bc40cccb621558b492c2eddd2",
+          "source-excerpts/add-15-S11c_c2_selfenergy_fold_sympy_audit.py-L429-435.txt": "623c2fb4bcd43d6946b09fa65619d6243597b3da6a3e5ae47217b721c63ff34f",
+          "source-excerpts/add-16-S11c_c2_selfenergy_fold_sympy_audit.py-L665-725.txt": "32a49ae61a20a96f6a14205d1869682fd1df42c7b595f8bda1e01277c396df8e",
+          "source-excerpts/add-17-S11c_c2_selfenergy_fold_sympy_audit.py-L850-861.txt": "a60e47369ad0cd46fbecbeb8940c58781697fdce25eb30a3337be00380dadb40",
+          "source-excerpts/add-18-S11c_a_SHARED_PHYSICS.md-L163-244.txt": "a9c299733e1973b2d184b99dac2039a95225a005ca13bbd89c6c5400090d50e3",
+          "source-excerpts/add-19-S11c_a_SHARED_PHYSICS.md-L285-401.txt": "3e4f5f732b98fec4f8dee3873dead2b95f771b7847988649f7e1cd1864a11850",
+          "source-excerpts/add-20-S11c_c1_SHARED_PHYSICS.md-L24-60.txt": "deba61a83bfb75d96b9d105ec846a8d47b83455b4ae1b89905c8420687025401",
+          "source-excerpts/add-21-S11c_c1_SHARED_PHYSICS.md-L63-137.txt": "eae6d375be39d8a078caec7bf13c30614c43b94fd92293f111b609140be4077d",
+          "source-excerpts/add-22-S11c_c1_SHARED_PHYSICS.md-L162-274.txt": "38db72db728972d283aaebb93a1c413a777daed1c515a667553e57a544c4271e",
+          "source-excerpts/add-23-S11c_c1_SHARED_PHYSICS.md-L285-336.txt": "22b28025e5795602c06294f5c7b639aac697d2fb0a67dc2af894614e86e6a2cf",
+          "source-excerpts/add-24-S11c_c1_SHARED_PHYSICS.md-L401-448.txt": "273c7984352968606c7f069d44647ca962a2a8ee53de01f0dd03d29edc22296b",
+          "source-excerpts/add-25-S11c_c2_SHARED_PHYSICS.md-L135-218.txt": "f626c532cf645d04295aba4e8981d6818fa499deeff1a28a58f268ede2f40e22",
+          "source-excerpts/add-26-S11c_a_exports.py-L482-482.txt": "e2328633946f1a21f5393c8cd384e6cb0c46d84f4d782ea4195187f1f0948a98",
+          "source-excerpts/add-27-S11c_a_exports.py-L3098-3098.txt": "529d51b566315c47ddfd8272eafc659d24ab3cde91c4a51523356ef5dbd26c18",
+          "source-excerpts/add-28-S11c_a_exports.py-L3105-3105.txt": "ab7c76dd29cbc2cfb1548517fa670c2af0f149701dc3f02e7ed84b85f25f5cbb",
+          "source-excerpts/add-29-S11c_a_exports.py-L3126-3126.txt": "55aa804e8e6a3b73bbf3ceb2bcba305be59ff5d1548a69974caf53acbd918b06",
+          "source-excerpts/add-30-S11c_a_exports.py-L3133-3133.txt": "fdb2d4c2f7256cc6d0c80611ef6308f520eaee6116c5aecce6c8b8eb391c0f85",
+          "source-excerpts/add-31-S11c_a_exports.py-L14121-14121.txt": "f9c51504cb68f6f415eb5ecee4f7e6390ff2dcf1e5dd7e6ec37242985ba1d1e6",
+          "source-excerpts/add-32-S11c_a_exports.py-L14766-14766.txt": "d344aa80bf1ebd5947b1219b2d047f5528b8c9a99a9f986b85658f6ea0d15bca",
+          "source-excerpts/add-33-S11c_a_exports.py-L14780-14780.txt": "712fce2bc1af0d4ee79b3c353654ca784036e070b3db2d17847ef9476baa22e9",
+          "source-excerpts/add-34-S11c_c1_exports.py-L79-79.txt": "e3b38042882ea45e2916a5bf73c477ed66bd166cb8f02a3fcbf5554387305559",
+          "source-excerpts/add-35-S11c_c1_exports.py-L87-87.txt": "41a7bc253f3feffc71969b43932eaf02ae082f007678148f5bc0ac874bada820",
+          "source-excerpts/add-36-S11c_c1_exports.py-L95-95.txt": "347f7ddb2745836e0a77cf6813b1f94b947c559fb4bb0118e95e0f8143f07be0",
+          "source-excerpts/add-37-S11c_c1_exports.py-L103-103.txt": "2ed5612f0587d45727ee1b55785dec26c68479f31f16df1b8a6543d725ece44d",
+          "source-inventory.json": "e2ba5ba8249db19652eca6e15da6d4fa3384303a235ec0644a5158a45e665a1b"
+        },
+        "reviewers": [
+          "grok"
+        ],
+        "reviewerExecution": "focused independently authored guarded probes",
+        "currentThread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+        "externalSubmitted": false,
+        "uniformScienceLaunched": false
+      },
+      "authority": {
+        "status": "USER_RENEWED_CORRECTION_AND_REVIEW_AUTHORITY",
+        "literalUserReply": "k. do whatever you need, and I approve. please keep going, times of the essence right now.",
+        "context": "Renewed approval directly after explanation that corrections/preparation are already authorized and new/replacement external-review submissions need approval. Applies only to this bounded prepared packet and named reviewers; not a claim the user previously saw these new hashes.",
+        "userSawTheseNewHashes": false,
+        "recordedUtc": "2026-10-01T17:08:18.461635+00:00",
+        "packetSha256": "e16c4dff44dfffe8f36eb5919c4e7a24b2b73de7e40fd78f4976ab96b56a0db3",
+        "archiveSha256": "c2c6e9339ca8d380990aa7289273b303bdc18af243fc5f8883ec2f21870a843b",
+        "packetFiles": 125,
+        "packetBytes": 1982415,
+        "reviewers": [
+          "grok"
+        ],
+        "thread": "01a0e01b-ef84-7192-817f-584cda5d339b"
+      },
+      "runtime": {
+        "runnerSha256": "10ec162ed9121ec7a7793e0b1674136cd954383c18cb78e1e6026e2f3a3a528b",
+        "launcherSha256": "9137c0267d2a38c2ee373c47191829746aa752f47579456eacaa6fd29a69b96a",
+        "completionMessageSha256": "ceeb7119cc4ff5c15afd9d285d638410f7b1dfd14e57641b6561d4cb154a2b3a",
+        "syntaxPassed": true,
+        "runRootVerified": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/upstream-repair-review-grok-replacement",
+        "reviewers": [
+          "grok"
+        ],
+        "externalSubmitted": false,
+        "change": "Fresh paths and explicit user-renewal authority; requested reviewer count parameterized. No runtime scientific helper changes."
+      }
+    }
+  ],
+  "checks": [
+    {
+      "name": "uniform-method-review-r2/reviewers",
+      "passed": true
+    },
+    {
+      "name": "uniform-method-review-r2/not-submitted",
+      "passed": true
+    },
+    {
+      "name": "uniform-method-review-r2/review_run.py",
+      "passed": true
+    },
+    {
+      "name": "uniform-method-review-r2/review_launch.py",
+      "passed": true
+    },
+    {
+      "name": "uniform-method-review-r2/completion_message.txt",
+      "passed": true
+    },
+    {
+      "name": "uniform-method-review-r2/source/research/pde_ledger_v3/_measurements/S11c_d_variable_profile_development_input.json",
+      "passed": true
+    },
+    {
+      "name": "uniform-method-review-r2/source/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_flow_calibration_assessment.json",
+      "passed": true
+    },
+    {
+      "name": "uniform-method-review-r2/source/research/pde_ledger_v3/_measurements/S11c_d_uniform_source_checkpoint.json",
+      "passed": true
+    },
+    {
+      "name": "uniform-method-review-r2/source/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_end_maps_v2_inputs.json",
+      "passed": true
+    },
+    {
+      "name": "uniform-method-review-r2/source/source-excerpts/01-parameter_register.md-L266-285.txt",
+      "passed": true
+    },
+    {
+      "name": "uniform-method-review-r2/excerpt/source-excerpts/01-parameter_register.md-L266-285.txt",
+      "passed": true
+    },
+    {
+      "name": "uniform-method-review-r2/source/source-excerpts/02-S11b_interface_coupling_law_sympy_audit.py-L74-90.txt",
+      "passed": true
+    },
+    {
+      "name": "uniform-method-review-r2/excerpt/source-excerpts/02-S11b_interface_coupling_law_sympy_audit.py-L74-90.txt",
+      "passed": true
+    },
+    {
+      "name": "uniform-method-review-r2/source/source-excerpts/03-S11b_interface_coupling_law_sympy_audit.py-L457-485.txt",
+      "passed": true
+    },
+    {
+      "name": "uniform-method-review-r2/excerpt/source-excerpts/03-S11b_interface_coupling_law_sympy_audit.py-L457-485.txt",
+      "passed": true
+    },
+    {
+      "name": "uniform-method-review-r2/source/source-excerpts/04-S11b_interface_coupling_law_sympy_audit.py-L1918-1939.txt",
+      "passed": true
+    },
+    {
+      "name": "uniform-method-review-r2/excerpt/source-excerpts/04-S11b_interface_coupling_law_sympy_audit.py-L1918-1939.txt",
+      "passed": true
+    },
+    {
+      "name": "uniform-method-review-r2/source/source-excerpts/05-S11c_d_mixing_scattering_sympy_audit.py-L4876-4937.txt",
+      "passed": true
+    },
+    {
+      "name": "uniform-method-review-r2/excerpt/source-excerpts/05-S11c_d_mixing_scattering_sympy_audit.py-L4876-4937.txt",
+      "passed": true
+    },
+    {
+      "name": "uniform-method-review-r2/source/source-excerpts/06-S11c_d_mixing_scattering_sympy_audit.py-L5038-5120.txt",
+      "passed": true
+    },
+    {
+      "name": "uniform-method-review-r2/excerpt/source-excerpts/06-S11c_d_mixing_scattering_sympy_audit.py-L5038-5120.txt",
+      "passed": true
+    },
+    {
+      "name": "uniform-method-review-r2/source/source-excerpts/07-S11c_d_mixing_scattering_sympy_audit.py-L5306-5440.txt",
+      "passed": true
+    },
+    {
+      "name": "uniform-method-review-r2/excerpt/source-excerpts/07-S11c_d_mixing_scattering_sympy_audit.py-L5306-5440.txt",
+      "passed": true
+    },
+    {
+      "name": "uniform-method-review-r2/source/source-excerpts/08-S11c_d_frequency_source.py-L166-207.txt",
+      "passed": true
+    },
+    {
+      "name": "uniform-method-review-r2/excerpt/source-excerpts/08-S11c_d_frequency_source.py-L166-207.txt",
+      "passed": true
+    },
+    {
+      "name": "uniform-method-review-r2/source/source-excerpts/09-S11c_d_uniform_source.py-L92-135.txt",
+      "passed": true
+    },
+    {
+      "name": "uniform-method-review-r2/excerpt/source-excerpts/09-S11c_d_uniform_source.py-L92-135.txt",
+      "passed": true
+    },
+    {
+      "name": "uniform-method-review-r2/source/source-excerpts/10-S11c_d_numerical_radiating_boundary.py-L193-207.txt",
+      "passed": true
+    },
+    {
+      "name": "uniform-method-review-r2/excerpt/source-excerpts/10-S11c_d_numerical_radiating_boundary.py-L193-207.txt",
+      "passed": true
+    },
+    {
+      "name": "uniform-method-review-r2/source/source-excerpts/11-S11c_d_numerical_radiating_boundary.py-L344-368.txt",
+      "passed": true
+    },
+    {
+      "name": "uniform-method-review-r2/excerpt/source-excerpts/11-S11c_d_numerical_radiating_boundary.py-L344-368.txt",
+      "passed": true
+    },
+    {
+      "name": "uniform-method-review-r2/source/source-excerpts/12-S11c_d_numerical_radiating_end_maps_v2.py-L135-277.txt",
+      "passed": true
+    },
+    {
+      "name": "uniform-method-review-r2/excerpt/source-excerpts/12-S11c_d_numerical_radiating_end_maps_v2.py-L135-277.txt",
+      "passed": true
+    },
+    {
+      "name": "uniform-method-review-r2/source/source-excerpts/13-S11c_c1_SHARED_PHYSICS.md-L204-221.txt",
+      "passed": true
+    },
+    {
+      "name": "uniform-method-review-r2/excerpt/source-excerpts/13-S11c_c1_SHARED_PHYSICS.md-L204-221.txt",
+      "passed": true
+    },
+    {
+      "name": "uniform-method-review-r2/source/source-excerpts/14-S11c_d_SCATTERING_FORM_AMENDMENT.md-L373-384.txt",
+      "passed": true
+    },
+    {
+      "name": "uniform-method-review-r2/excerpt/source-excerpts/14-S11c_d_SCATTERING_FORM_AMENDMENT.md-L373-384.txt",
+      "passed": true
+    },
+    {
+      "name": "uniform-method-review-r2/source/research/pde_ledger_v3/_measurements/S11c_d_near_unity_uniform_plan_v2.md",
+      "passed": true
+    },
+    {
+      "name": "uniform-method-review-r2/source/source-inventory.json",
+      "passed": true
+    },
+    {
+      "name": "uniform-method-review-r2/source/source-excerpts/add-01-S11c_d_mixing_scattering_sympy_audit.py-L2529-2557.txt",
+      "passed": true
+    },
+    {
+      "name": "uniform-method-review-r2/excerpt/source-excerpts/add-01-S11c_d_mixing_scattering_sympy_audit.py-L2529-2557.txt",
+      "passed": true
+    },
+    {
+      "name": "uniform-method-review-r2/source/source-excerpts/add-02-S11c_d_mixing_scattering_sympy_audit.py-L2570-2635.txt",
+      "passed": true
+    },
+    {
+      "name": "uniform-method-review-r2/excerpt/source-excerpts/add-02-S11c_d_mixing_scattering_sympy_audit.py-L2570-2635.txt",
+      "passed": true
+    },
+    {
+      "name": "uniform-method-review-r2/source/source-excerpts/add-03-S11c_d_mixing_scattering_sympy_audit.py-L2990-3026.txt",
+      "passed": true
+    },
+    {
+      "name": "uniform-method-review-r2/excerpt/source-excerpts/add-03-S11c_d_mixing_scattering_sympy_audit.py-L2990-3026.txt",
+      "passed": true
+    },
+    {
+      "name": "uniform-method-review-r2/source/source-excerpts/add-04-S11c_d_mixing_scattering_sympy_audit.py-L3049-3130.txt",
+      "passed": true
+    },
+    {
+      "name": "uniform-method-review-r2/excerpt/source-excerpts/add-04-S11c_d_mixing_scattering_sympy_audit.py-L3049-3130.txt",
+      "passed": true
+    },
+    {
+      "name": "uniform-method-review-r2/source/source-excerpts/add-05-S11c_d_mixing_scattering_sympy_audit.py-L3245-3420.txt",
+      "passed": true
+    },
+    {
+      "name": "uniform-method-review-r2/excerpt/source-excerpts/add-05-S11c_d_mixing_scattering_sympy_audit.py-L3245-3420.txt",
+      "passed": true
+    },
+    {
+      "name": "uniform-method-review-r2/source/source-excerpts/add-06-S11c_d_mixing_scattering_sympy_audit.py-L3490-3620.txt",
+      "passed": true
+    },
+    {
+      "name": "uniform-method-review-r2/excerpt/source-excerpts/add-06-S11c_d_mixing_scattering_sympy_audit.py-L3490-3620.txt",
+      "passed": true
+    },
+    {
+      "name": "uniform-method-review-r2/archive-names",
+      "passed": true
+    },
+    {
+      "name": "uniform-method-review-r2/archive/packet-index.json",
+      "passed": true
+    },
+    {
+      "name": "uniform-method-review-r2/archive/research/pde_ledger_v3/_measurements/S11c_d_near_unity_uniform_plan_v2.md",
+      "passed": true
+    },
+    {
+      "name": "uniform-method-review-r2/archive/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_end_maps_v2_inputs.json",
+      "passed": true
+    },
+    {
+      "name": "uniform-method-review-r2/archive/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_flow_calibration_assessment.json",
+      "passed": true
+    },
+    {
+      "name": "uniform-method-review-r2/archive/research/pde_ledger_v3/_measurements/S11c_d_uniform_source_checkpoint.json",
+      "passed": true
+    },
+    {
+      "name": "uniform-method-review-r2/archive/research/pde_ledger_v3/_measurements/S11c_d_variable_profile_development_input.json",
+      "passed": true
+    },
+    {
+      "name": "uniform-method-review-r2/archive/review-prompt.md",
+      "passed": true
+    },
+    {
+      "name": "uniform-method-review-r2/archive/source-excerpts/01-parameter_register.md-L266-285.txt",
+      "passed": true
+    },
+    {
+      "name": "uniform-method-review-r2/archive/source-excerpts/02-S11b_interface_coupling_law_sympy_audit.py-L74-90.txt",
+      "passed": true
+    },
+    {
+      "name": "uniform-method-review-r2/archive/source-excerpts/03-S11b_interface_coupling_law_sympy_audit.py-L457-485.txt",
+      "passed": true
+    },
+    {
+      "name": "uniform-method-review-r2/archive/source-excerpts/04-S11b_interface_coupling_law_sympy_audit.py-L1918-1939.txt",
+      "passed": true
+    },
+    {
+      "name": "uniform-method-review-r2/archive/source-excerpts/05-S11c_d_mixing_scattering_sympy_audit.py-L4876-4937.txt",
+      "passed": true
+    },
+    {
+      "name": "uniform-method-review-r2/archive/source-excerpts/06-S11c_d_mixing_scattering_sympy_audit.py-L5038-5120.txt",
+      "passed": true
+    },
+    {
+      "name": "uniform-method-review-r2/archive/source-excerpts/07-S11c_d_mixing_scattering_sympy_audit.py-L5306-5440.txt",
+      "passed": true
+    },
+    {
+      "name": "uniform-method-review-r2/archive/source-excerpts/08-S11c_d_frequency_source.py-L166-207.txt",
+      "passed": true
+    },
+    {
+      "name": "uniform-method-review-r2/archive/source-excerpts/09-S11c_d_uniform_source.py-L92-135.txt",
+      "passed": true
+    },
+    {
+      "name": "uniform-method-review-r2/archive/source-excerpts/10-S11c_d_numerical_radiating_boundary.py-L193-207.txt",
+      "passed": true
+    },
+    {
+      "name": "uniform-method-review-r2/archive/source-excerpts/11-S11c_d_numerical_radiating_boundary.py-L344-368.txt",
+      "passed": true
+    },
+    {
+      "name": "uniform-method-review-r2/archive/source-excerpts/12-S11c_d_numerical_radiating_end_maps_v2.py-L135-277.txt",
+      "passed": true
+    },
+    {
+      "name": "uniform-method-review-r2/archive/source-excerpts/13-S11c_c1_SHARED_PHYSICS.md-L204-221.txt",
+      "passed": true
+    },
+    {
+      "name": "uniform-method-review-r2/archive/source-excerpts/14-S11c_d_SCATTERING_FORM_AMENDMENT.md-L373-384.txt",
+      "passed": true
+    },
+    {
+      "name": "uniform-method-review-r2/archive/source-excerpts/add-01-S11c_d_mixing_scattering_sympy_audit.py-L2529-2557.txt",
+      "passed": true
+    },
+    {
+      "name": "uniform-method-review-r2/archive/source-excerpts/add-02-S11c_d_mixing_scattering_sympy_audit.py-L2570-2635.txt",
+      "passed": true
+    },
+    {
+      "name": "uniform-method-review-r2/archive/source-excerpts/add-03-S11c_d_mixing_scattering_sympy_audit.py-L2990-3026.txt",
+      "passed": true
+    },
+    {
+      "name": "uniform-method-review-r2/archive/source-excerpts/add-04-S11c_d_mixing_scattering_sympy_audit.py-L3049-3130.txt",
+      "passed": true
+    },
+    {
+      "name": "uniform-method-review-r2/archive/source-excerpts/add-05-S11c_d_mixing_scattering_sympy_audit.py-L3245-3420.txt",
+      "passed": true
+    },
+    {
+      "name": "uniform-method-review-r2/archive/source-excerpts/add-06-S11c_d_mixing_scattering_sympy_audit.py-L3490-3620.txt",
+      "passed": true
+    },
+    {
+      "name": "uniform-method-review-r2/archive/source-inventory.json",
+      "passed": true
+    },
+    {
+      "name": "uniform-method-review-r2/no-peer-reports",
+      "passed": true
+    },
+    {
+      "name": "uniform-method-review-r2/single-use",
+      "passed": true
+    },
+    {
+      "name": "uniform-method-review-r2/parameterized-legs",
+      "passed": true
+    },
+    {
+      "name": "uniform-method-review-r2/hook-first",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/reviewers",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/not-submitted",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/review_run.py",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/review_launch.py",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/completion_message.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/source/research/pde_ledger_v3/_measurements/S11c_b_inertia_action_check.py",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/source/research/pde_ledger_v3/_measurements/S11c_mechanical_repair_c2_case.py",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/source/research/pde_ledger_v3/_measurements/S11c_c2_trace_repair_check.py",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/source/research/pde_ledger_v3/_measurements/S11c_thickness_coordinate_trace.py",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/source/research/pde_ledger_v3/_measurements/S11c_inertia_final_checks.json",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/source/research/pde_ledger_v3/_measurements/S11c_mechanical_repair_focused_checks.json",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/source/research/pde_ledger_v3/_measurements/S11c_mechanical_repair_b_checks.json",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/source/research/pde_ledger_v3/_measurements/S11c_mechanical_repair_c2_checks.json",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/source/research/pde_ledger_v3/_measurements/S11c_c2_trace_repair_maps_checkpoint.json",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/source/research/pde_ledger_v3/_measurements/S11c_c2_trace_repair_case_checkpoint.json",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/source/research/pde_ledger_v3/_measurements/S11c_thickness_coordinate_action_checkpoint.json",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/source/research/pde_ledger_v3/_measurements/S11c_thickness_coordinate_trace_checkpoint.json",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/source/research/pde_ledger_v3/_measurements/S11c_thickness_coordinate_b_export_checkpoint.json",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/source/research/pde_ledger_v3/_measurements/S11c_thickness_coordinate_c2_export_checkpoint.json",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/source/research/pde_ledger_v3/scripts/out/S11c_b_inertia_action_after_coordinate_repair.out",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/source/research/pde_ledger_v3/scripts/out/S11c_thickness_coordinate_trace.out",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/source/research/pde_ledger_v3/_measurements/S11c_inertia_repair_report.md",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/source/research/pde_ledger_v3/_measurements/S11c_mechanical_repair_report.md",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/source/research/pde_ledger_v3/_measurements/S11c_c2_trace_repair_report.md",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/source/research/pde_ledger_v3/_measurements/S11c_thickness_coordinate_repair_report.md",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/source/research/pde_ledger_v3/_measurements/S11c_upstream_repair_review_plan.md",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/historical-diff/historical-diffs/01-a74da30a.diff",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/historical-diff/historical-diffs/02-c643112a.diff",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/historical-diff/historical-diffs/03-a05b05e3.diff",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/historical-diff/historical-diffs/04-3b52afcb.diff",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/historical-diff/historical-diffs/05-f618178a.diff",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/source/source-excerpts/01-S11c_b_brane_operator_sympy_audit.py-L1626-1642.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/excerpt/source-excerpts/01-S11c_b_brane_operator_sympy_audit.py-L1626-1642.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/source/source-excerpts/02-S11c_b_brane_operator_sympy_audit.py-L2135-2239.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/excerpt/source-excerpts/02-S11c_b_brane_operator_sympy_audit.py-L2135-2239.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/source/source-excerpts/03-S11c_b_brane_operator_sympy_audit.py-L2242-2266.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/excerpt/source-excerpts/03-S11c_b_brane_operator_sympy_audit.py-L2242-2266.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/source/source-excerpts/04-S11c_b_brane_operator_sympy_audit.py-L2317-2336.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/excerpt/source-excerpts/04-S11c_b_brane_operator_sympy_audit.py-L2317-2336.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/source/source-excerpts/05-S11c_b_brane_operator_sympy_audit.py-L2339-2434.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/excerpt/source-excerpts/05-S11c_b_brane_operator_sympy_audit.py-L2339-2434.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/source/source-excerpts/06-S11c_b_brane_operator_sympy_audit.py-L2773-3302.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/excerpt/source-excerpts/06-S11c_b_brane_operator_sympy_audit.py-L2773-3302.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/source/source-excerpts/07-S11c_c2_selfenergy_fold_sympy_audit.py-L139-173.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/excerpt/source-excerpts/07-S11c_c2_selfenergy_fold_sympy_audit.py-L139-173.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/source/source-excerpts/08-S11c_c2_selfenergy_fold_sympy_audit.py-L367-418.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/excerpt/source-excerpts/08-S11c_c2_selfenergy_fold_sympy_audit.py-L367-418.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/source/source-excerpts/09-S11c_c2_selfenergy_fold_sympy_audit.py-L429-435.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/excerpt/source-excerpts/09-S11c_c2_selfenergy_fold_sympy_audit.py-L429-435.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/source/source-excerpts/10-S11c_c2_selfenergy_fold_sympy_audit.py-L455-471.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/excerpt/source-excerpts/10-S11c_c2_selfenergy_fold_sympy_audit.py-L455-471.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/source/source-excerpts/11-S11c_c2_selfenergy_fold_sympy_audit.py-L478-549.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/excerpt/source-excerpts/11-S11c_c2_selfenergy_fold_sympy_audit.py-L478-549.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/source/source-excerpts/12-S11c_c2_selfenergy_fold_sympy_audit.py-L552-607.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/excerpt/source-excerpts/12-S11c_c2_selfenergy_fold_sympy_audit.py-L552-607.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/source/source-excerpts/13-S11c_c2_selfenergy_fold_sympy_audit.py-L615-661.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/excerpt/source-excerpts/13-S11c_c2_selfenergy_fold_sympy_audit.py-L615-661.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/source/source-excerpts/14-S11c_c2_selfenergy_fold_sympy_audit.py-L664-668.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/excerpt/source-excerpts/14-S11c_c2_selfenergy_fold_sympy_audit.py-L664-668.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/source/source-excerpts/15-S11c_c2_selfenergy_fold_sympy_audit.py-L671-725.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/excerpt/source-excerpts/15-S11c_c2_selfenergy_fold_sympy_audit.py-L671-725.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/source/source-excerpts/16-S11c_c2_selfenergy_fold_sympy_audit.py-L849-861.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/excerpt/source-excerpts/16-S11c_c2_selfenergy_fold_sympy_audit.py-L849-861.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/source/source-excerpts/17-S11c_c2_selfenergy_fold_sympy_audit.py-L897-940.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/excerpt/source-excerpts/17-S11c_c2_selfenergy_fold_sympy_audit.py-L897-940.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/source/source-excerpts/18-S11c_c2_selfenergy_fold_sympy_audit.py-L943-979.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/excerpt/source-excerpts/18-S11c_c2_selfenergy_fold_sympy_audit.py-L943-979.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/source/source-excerpts/19-S11b_SHARED_PHYSICS.md-L63-112.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/excerpt/source-excerpts/19-S11b_SHARED_PHYSICS.md-L63-112.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/source/source-excerpts/20-S11b_SHARED_PHYSICS.md-L162-181.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/excerpt/source-excerpts/20-S11b_SHARED_PHYSICS.md-L162-181.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/source/source-excerpts/21-S11b_SHARED_PHYSICS.md-L208-244.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/excerpt/source-excerpts/21-S11b_SHARED_PHYSICS.md-L208-244.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/source/source-excerpts/22-S11b_SHARED_PHYSICS.md-L255-279.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/excerpt/source-excerpts/22-S11b_SHARED_PHYSICS.md-L255-279.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/source/source-excerpts/23-S11b_SHARED_PHYSICS.md-L301-379.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/excerpt/source-excerpts/23-S11b_SHARED_PHYSICS.md-L301-379.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/source/source-excerpts/24-S11b_SHARED_PHYSICS.md-L452-497.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/excerpt/source-excerpts/24-S11b_SHARED_PHYSICS.md-L452-497.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/source/source-excerpts/25-S11c_a_SHARED_PHYSICS.md-L32-62.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/excerpt/source-excerpts/25-S11c_a_SHARED_PHYSICS.md-L32-62.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/source/source-excerpts/26-S11c_a_SHARED_PHYSICS.md-L86-159.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/excerpt/source-excerpts/26-S11c_a_SHARED_PHYSICS.md-L86-159.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/source/source-excerpts/27-S11c_a_SHARED_PHYSICS.md-L163-244.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/excerpt/source-excerpts/27-S11c_a_SHARED_PHYSICS.md-L163-244.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/source/source-excerpts/28-S11c_a_SHARED_PHYSICS.md-L285-401.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/excerpt/source-excerpts/28-S11c_a_SHARED_PHYSICS.md-L285-401.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/source/source-excerpts/29-S11c_b_SHARED_PHYSICS.md-L55-160.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/excerpt/source-excerpts/29-S11c_b_SHARED_PHYSICS.md-L55-160.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/source/source-excerpts/30-S11c_b_SHARED_PHYSICS.md-L247-303.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/excerpt/source-excerpts/30-S11c_b_SHARED_PHYSICS.md-L247-303.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/source/source-excerpts/31-S11c_b_SHARED_PHYSICS.md-L314-341.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/excerpt/source-excerpts/31-S11c_b_SHARED_PHYSICS.md-L314-341.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/source/source-excerpts/32-S11c_c2_SHARED_PHYSICS.md-L48-159.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/excerpt/source-excerpts/32-S11c_c2_SHARED_PHYSICS.md-L48-159.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/source/source-excerpts/33-S11c_c2_SHARED_PHYSICS.md-L162-218.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/excerpt/source-excerpts/33-S11c_c2_SHARED_PHYSICS.md-L162-218.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/source/source-excerpts/34-S11c_c2_SHARED_PHYSICS.md-L245-262.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/excerpt/source-excerpts/34-S11c_c2_SHARED_PHYSICS.md-L245-262.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/source/source-excerpts/35-S11c_c2_SHARED_PHYSICS.md-L282-302.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/excerpt/source-excerpts/35-S11c_c2_SHARED_PHYSICS.md-L282-302.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/source/source-excerpts/36-S11c_c2_SHARED_PHYSICS.md-L418-439.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/excerpt/source-excerpts/36-S11c_c2_SHARED_PHYSICS.md-L418-439.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/source/source-excerpts/37-S11c_c2_trace_repair_maps.out-L1-57.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/excerpt/source-excerpts/37-S11c_c2_trace_repair_maps.out-L1-57.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/source/source-excerpts/38-S11c_c2_trace_repair_maps.out-L58-75.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/excerpt/source-excerpts/38-S11c_c2_trace_repair_maps.out-L58-75.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/source/source-excerpts/39-S11c_c2_trace_repair_maps.out-L79-114.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/excerpt/source-excerpts/39-S11c_c2_trace_repair_maps.out-L79-114.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/source/source-excerpts/40-S11c_c2_trace_repair_maps.out-L115-132.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/excerpt/source-excerpts/40-S11c_c2_trace_repair_maps.out-L115-132.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/source/source-excerpts/41-S11c_c2_trace_repair_maps.out-L136-171.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/excerpt/source-excerpts/41-S11c_c2_trace_repair_maps.out-L136-171.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/source/source-excerpts/42-S11c_c2_trace_repair_maps.out-L172-189.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/excerpt/source-excerpts/42-S11c_c2_trace_repair_maps.out-L172-189.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/source/source-excerpts/43-S11c_c2_trace_repair_maps.out-L193-228.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/excerpt/source-excerpts/43-S11c_c2_trace_repair_maps.out-L193-228.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/source/source-excerpts/44-S11c_c2_trace_repair_maps.out-L229-246.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/excerpt/source-excerpts/44-S11c_c2_trace_repair_maps.out-L229-246.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/source/source-excerpts/45-S11c_c2_trace_repair_maps.out-L250-285.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/excerpt/source-excerpts/45-S11c_c2_trace_repair_maps.out-L250-285.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/source/source-excerpts/46-S11c_c2_trace_repair_maps.out-L286-303.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/excerpt/source-excerpts/46-S11c_c2_trace_repair_maps.out-L286-303.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/source/source-excerpts/47-S11c_c2_trace_repair_maps.out-L307-342.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/excerpt/source-excerpts/47-S11c_c2_trace_repair_maps.out-L307-342.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/source/source-excerpts/48-S11c_c2_trace_repair_maps.out-L343-360.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/excerpt/source-excerpts/48-S11c_c2_trace_repair_maps.out-L343-360.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/source/source-excerpts/49-S11c_c2_trace_repair_maps.out-L364-399.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/excerpt/source-excerpts/49-S11c_c2_trace_repair_maps.out-L364-399.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/source/source-excerpts/50-S11c_c2_trace_repair_maps.out-L400-417.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/excerpt/source-excerpts/50-S11c_c2_trace_repair_maps.out-L400-417.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/source/source-excerpts/51-S11c_c2_trace_repair_maps.out-L421-456.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/excerpt/source-excerpts/51-S11c_c2_trace_repair_maps.out-L421-456.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/source/source-excerpts/52-S11c_mechanical_repair_b_case.out-L1-2.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/excerpt/source-excerpts/52-S11c_mechanical_repair_b_case.out-L1-2.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/source/source-excerpts/53-S11c_mechanical_repair_c2_case.out-L3-4.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/excerpt/source-excerpts/53-S11c_mechanical_repair_c2_case.out-L3-4.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/source/source-inventory.json",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/source/runtime-source/s11c_review_cas.py",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/source/runtime-source/s11c_guarded_run.py",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/source/runtime-source/S11c_d_end_normalization_run.py",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/source/research/pde_ledger_v3/_measurements/S11c_upstream_repair_review_prompt_v2.md",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/source/research/pde_ledger_v3/_measurements/S11c_upstream_repair_review_supplement.md",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/source/research/pde_ledger_v3/_measurements/S11c_upstream_repair_review_supplement_sources.json",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/source/source-excerpts/add-01-S11c_a_interface_geometry_sympy_audit.py-L390-461.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/excerpt/source-excerpts/add-01-S11c_a_interface_geometry_sympy_audit.py-L390-461.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/source/source-excerpts/add-02-S11c_a_interface_geometry_sympy_audit.py-L509-623.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/excerpt/source-excerpts/add-02-S11c_a_interface_geometry_sympy_audit.py-L509-623.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/source/source-excerpts/add-03-S11c_a_interface_geometry_sympy_audit.py-L629-1001.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/excerpt/source-excerpts/add-03-S11c_a_interface_geometry_sympy_audit.py-L629-1001.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/source/source-excerpts/add-04-S11c_a_interface_geometry_sympy_audit.py-L1207-1278.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/excerpt/source-excerpts/add-04-S11c_a_interface_geometry_sympy_audit.py-L1207-1278.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/source/source-excerpts/add-05-S11c_b_brane_operator_sympy_audit.py-L722-830.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/excerpt/source-excerpts/add-05-S11c_b_brane_operator_sympy_audit.py-L722-830.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/source/source-excerpts/add-06-S11c_b_brane_operator_sympy_audit.py-L1878-1902.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/excerpt/source-excerpts/add-06-S11c_b_brane_operator_sympy_audit.py-L1878-1902.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/source/source-excerpts/add-07-S11c_b_brane_operator_sympy_audit.py-L2437-2631.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/excerpt/source-excerpts/add-07-S11c_b_brane_operator_sympy_audit.py-L2437-2631.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/source/source-excerpts/add-08-S11c_c1_bulk_closure_sympy_audit.py-L177-210.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/excerpt/source-excerpts/add-08-S11c_c1_bulk_closure_sympy_audit.py-L177-210.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/source/source-excerpts/add-09-S11c_c1_bulk_closure_sympy_audit.py-L485-506.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/excerpt/source-excerpts/add-09-S11c_c1_bulk_closure_sympy_audit.py-L485-506.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/source/source-excerpts/add-10-S11c_c1_bulk_closure_sympy_audit.py-L519-573.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/excerpt/source-excerpts/add-10-S11c_c1_bulk_closure_sympy_audit.py-L519-573.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/source/source-excerpts/add-11-S11c_c1_bulk_closure_sympy_audit.py-L576-755.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/excerpt/source-excerpts/add-11-S11c_c1_bulk_closure_sympy_audit.py-L576-755.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/source/source-excerpts/add-12-S11c_c1_bulk_closure_sympy_audit.py-L1046-1119.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/excerpt/source-excerpts/add-12-S11c_c1_bulk_closure_sympy_audit.py-L1046-1119.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/source/source-excerpts/add-13-S11c_c2_selfenergy_fold_sympy_audit.py-L186-306.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/excerpt/source-excerpts/add-13-S11c_c2_selfenergy_fold_sympy_audit.py-L186-306.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/source/source-excerpts/add-14-S11c_c2_selfenergy_fold_sympy_audit.py-L367-418.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/excerpt/source-excerpts/add-14-S11c_c2_selfenergy_fold_sympy_audit.py-L367-418.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/source/source-excerpts/add-15-S11c_c2_selfenergy_fold_sympy_audit.py-L429-435.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/excerpt/source-excerpts/add-15-S11c_c2_selfenergy_fold_sympy_audit.py-L429-435.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/source/source-excerpts/add-16-S11c_c2_selfenergy_fold_sympy_audit.py-L665-725.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/excerpt/source-excerpts/add-16-S11c_c2_selfenergy_fold_sympy_audit.py-L665-725.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/source/source-excerpts/add-17-S11c_c2_selfenergy_fold_sympy_audit.py-L850-861.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/excerpt/source-excerpts/add-17-S11c_c2_selfenergy_fold_sympy_audit.py-L850-861.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/source/source-excerpts/add-18-S11c_a_SHARED_PHYSICS.md-L163-244.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/excerpt/source-excerpts/add-18-S11c_a_SHARED_PHYSICS.md-L163-244.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/source/source-excerpts/add-19-S11c_a_SHARED_PHYSICS.md-L285-401.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/excerpt/source-excerpts/add-19-S11c_a_SHARED_PHYSICS.md-L285-401.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/source/source-excerpts/add-20-S11c_c1_SHARED_PHYSICS.md-L24-60.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/excerpt/source-excerpts/add-20-S11c_c1_SHARED_PHYSICS.md-L24-60.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/source/source-excerpts/add-21-S11c_c1_SHARED_PHYSICS.md-L63-137.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/excerpt/source-excerpts/add-21-S11c_c1_SHARED_PHYSICS.md-L63-137.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/source/source-excerpts/add-22-S11c_c1_SHARED_PHYSICS.md-L162-274.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/excerpt/source-excerpts/add-22-S11c_c1_SHARED_PHYSICS.md-L162-274.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/source/source-excerpts/add-23-S11c_c1_SHARED_PHYSICS.md-L285-336.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/excerpt/source-excerpts/add-23-S11c_c1_SHARED_PHYSICS.md-L285-336.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/source/source-excerpts/add-24-S11c_c1_SHARED_PHYSICS.md-L401-448.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/excerpt/source-excerpts/add-24-S11c_c1_SHARED_PHYSICS.md-L401-448.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/source/source-excerpts/add-25-S11c_c2_SHARED_PHYSICS.md-L135-218.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/excerpt/source-excerpts/add-25-S11c_c2_SHARED_PHYSICS.md-L135-218.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/source/source-excerpts/add-26-S11c_a_exports.py-L482-482.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/excerpt/source-excerpts/add-26-S11c_a_exports.py-L482-482.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/source/source-excerpts/add-27-S11c_a_exports.py-L3098-3098.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/excerpt/source-excerpts/add-27-S11c_a_exports.py-L3098-3098.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/source/source-excerpts/add-28-S11c_a_exports.py-L3105-3105.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/excerpt/source-excerpts/add-28-S11c_a_exports.py-L3105-3105.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/source/source-excerpts/add-29-S11c_a_exports.py-L3126-3126.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/excerpt/source-excerpts/add-29-S11c_a_exports.py-L3126-3126.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/source/source-excerpts/add-30-S11c_a_exports.py-L3133-3133.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/excerpt/source-excerpts/add-30-S11c_a_exports.py-L3133-3133.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/source/source-excerpts/add-31-S11c_a_exports.py-L14121-14121.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/excerpt/source-excerpts/add-31-S11c_a_exports.py-L14121-14121.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/source/source-excerpts/add-32-S11c_a_exports.py-L14766-14766.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/excerpt/source-excerpts/add-32-S11c_a_exports.py-L14766-14766.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/source/source-excerpts/add-33-S11c_a_exports.py-L14780-14780.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/excerpt/source-excerpts/add-33-S11c_a_exports.py-L14780-14780.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/source/source-excerpts/add-34-S11c_c1_exports.py-L79-79.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/excerpt/source-excerpts/add-34-S11c_c1_exports.py-L79-79.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/source/source-excerpts/add-35-S11c_c1_exports.py-L87-87.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/excerpt/source-excerpts/add-35-S11c_c1_exports.py-L87-87.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/source/source-excerpts/add-36-S11c_c1_exports.py-L95-95.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/excerpt/source-excerpts/add-36-S11c_c1_exports.py-L95-95.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/source/source-excerpts/add-37-S11c_c1_exports.py-L103-103.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/excerpt/source-excerpts/add-37-S11c_c1_exports.py-L103-103.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive-names",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/historical-diffs/01-a74da30a.diff",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/historical-diffs/02-c643112a.diff",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/historical-diffs/03-a05b05e3.diff",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/historical-diffs/04-3b52afcb.diff",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/historical-diffs/05-f618178a.diff",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/packet-index.json",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/research/pde_ledger_v3/_measurements/S11c_b_inertia_action_check.py",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/research/pde_ledger_v3/_measurements/S11c_c2_trace_repair_case_checkpoint.json",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/research/pde_ledger_v3/_measurements/S11c_c2_trace_repair_check.py",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/research/pde_ledger_v3/_measurements/S11c_c2_trace_repair_maps_checkpoint.json",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/research/pde_ledger_v3/_measurements/S11c_c2_trace_repair_report.md",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/research/pde_ledger_v3/_measurements/S11c_inertia_final_checks.json",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/research/pde_ledger_v3/_measurements/S11c_inertia_repair_report.md",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/research/pde_ledger_v3/_measurements/S11c_mechanical_repair_b_checks.json",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/research/pde_ledger_v3/_measurements/S11c_mechanical_repair_c2_case.py",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/research/pde_ledger_v3/_measurements/S11c_mechanical_repair_c2_checks.json",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/research/pde_ledger_v3/_measurements/S11c_mechanical_repair_focused_checks.json",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/research/pde_ledger_v3/_measurements/S11c_mechanical_repair_report.md",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/research/pde_ledger_v3/_measurements/S11c_thickness_coordinate_action_checkpoint.json",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/research/pde_ledger_v3/_measurements/S11c_thickness_coordinate_b_export_checkpoint.json",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/research/pde_ledger_v3/_measurements/S11c_thickness_coordinate_c2_export_checkpoint.json",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/research/pde_ledger_v3/_measurements/S11c_thickness_coordinate_repair_report.md",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/research/pde_ledger_v3/_measurements/S11c_thickness_coordinate_trace.py",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/research/pde_ledger_v3/_measurements/S11c_thickness_coordinate_trace_checkpoint.json",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/research/pde_ledger_v3/_measurements/S11c_upstream_repair_review_plan.md",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/research/pde_ledger_v3/_measurements/S11c_upstream_repair_review_prompt_v2.md",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/research/pde_ledger_v3/_measurements/S11c_upstream_repair_review_supplement.md",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/research/pde_ledger_v3/_measurements/S11c_upstream_repair_review_supplement_sources.json",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/research/pde_ledger_v3/scripts/out/S11c_b_inertia_action_after_coordinate_repair.out",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/research/pde_ledger_v3/scripts/out/S11c_thickness_coordinate_trace.out",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/review-prompt.md",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/runtime-source/S11c_d_end_normalization_run.py",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/runtime-source/s11c_guarded_run.py",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/runtime-source/s11c_review_cas.py",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/source-excerpts/01-S11c_b_brane_operator_sympy_audit.py-L1626-1642.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/source-excerpts/02-S11c_b_brane_operator_sympy_audit.py-L2135-2239.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/source-excerpts/03-S11c_b_brane_operator_sympy_audit.py-L2242-2266.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/source-excerpts/04-S11c_b_brane_operator_sympy_audit.py-L2317-2336.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/source-excerpts/05-S11c_b_brane_operator_sympy_audit.py-L2339-2434.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/source-excerpts/06-S11c_b_brane_operator_sympy_audit.py-L2773-3302.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/source-excerpts/07-S11c_c2_selfenergy_fold_sympy_audit.py-L139-173.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/source-excerpts/08-S11c_c2_selfenergy_fold_sympy_audit.py-L367-418.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/source-excerpts/09-S11c_c2_selfenergy_fold_sympy_audit.py-L429-435.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/source-excerpts/10-S11c_c2_selfenergy_fold_sympy_audit.py-L455-471.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/source-excerpts/11-S11c_c2_selfenergy_fold_sympy_audit.py-L478-549.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/source-excerpts/12-S11c_c2_selfenergy_fold_sympy_audit.py-L552-607.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/source-excerpts/13-S11c_c2_selfenergy_fold_sympy_audit.py-L615-661.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/source-excerpts/14-S11c_c2_selfenergy_fold_sympy_audit.py-L664-668.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/source-excerpts/15-S11c_c2_selfenergy_fold_sympy_audit.py-L671-725.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/source-excerpts/16-S11c_c2_selfenergy_fold_sympy_audit.py-L849-861.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/source-excerpts/17-S11c_c2_selfenergy_fold_sympy_audit.py-L897-940.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/source-excerpts/18-S11c_c2_selfenergy_fold_sympy_audit.py-L943-979.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/source-excerpts/19-S11b_SHARED_PHYSICS.md-L63-112.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/source-excerpts/20-S11b_SHARED_PHYSICS.md-L162-181.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/source-excerpts/21-S11b_SHARED_PHYSICS.md-L208-244.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/source-excerpts/22-S11b_SHARED_PHYSICS.md-L255-279.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/source-excerpts/23-S11b_SHARED_PHYSICS.md-L301-379.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/source-excerpts/24-S11b_SHARED_PHYSICS.md-L452-497.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/source-excerpts/25-S11c_a_SHARED_PHYSICS.md-L32-62.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/source-excerpts/26-S11c_a_SHARED_PHYSICS.md-L86-159.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/source-excerpts/27-S11c_a_SHARED_PHYSICS.md-L163-244.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/source-excerpts/28-S11c_a_SHARED_PHYSICS.md-L285-401.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/source-excerpts/29-S11c_b_SHARED_PHYSICS.md-L55-160.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/source-excerpts/30-S11c_b_SHARED_PHYSICS.md-L247-303.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/source-excerpts/31-S11c_b_SHARED_PHYSICS.md-L314-341.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/source-excerpts/32-S11c_c2_SHARED_PHYSICS.md-L48-159.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/source-excerpts/33-S11c_c2_SHARED_PHYSICS.md-L162-218.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/source-excerpts/34-S11c_c2_SHARED_PHYSICS.md-L245-262.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/source-excerpts/35-S11c_c2_SHARED_PHYSICS.md-L282-302.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/source-excerpts/36-S11c_c2_SHARED_PHYSICS.md-L418-439.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/source-excerpts/37-S11c_c2_trace_repair_maps.out-L1-57.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/source-excerpts/38-S11c_c2_trace_repair_maps.out-L58-75.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/source-excerpts/39-S11c_c2_trace_repair_maps.out-L79-114.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/source-excerpts/40-S11c_c2_trace_repair_maps.out-L115-132.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/source-excerpts/41-S11c_c2_trace_repair_maps.out-L136-171.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/source-excerpts/42-S11c_c2_trace_repair_maps.out-L172-189.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/source-excerpts/43-S11c_c2_trace_repair_maps.out-L193-228.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/source-excerpts/44-S11c_c2_trace_repair_maps.out-L229-246.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/source-excerpts/45-S11c_c2_trace_repair_maps.out-L250-285.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/source-excerpts/46-S11c_c2_trace_repair_maps.out-L286-303.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/source-excerpts/47-S11c_c2_trace_repair_maps.out-L307-342.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/source-excerpts/48-S11c_c2_trace_repair_maps.out-L343-360.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/source-excerpts/49-S11c_c2_trace_repair_maps.out-L364-399.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/source-excerpts/50-S11c_c2_trace_repair_maps.out-L400-417.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/source-excerpts/51-S11c_c2_trace_repair_maps.out-L421-456.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/source-excerpts/52-S11c_mechanical_repair_b_case.out-L1-2.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/source-excerpts/53-S11c_mechanical_repair_c2_case.out-L3-4.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/source-excerpts/add-01-S11c_a_interface_geometry_sympy_audit.py-L390-461.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/source-excerpts/add-02-S11c_a_interface_geometry_sympy_audit.py-L509-623.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/source-excerpts/add-03-S11c_a_interface_geometry_sympy_audit.py-L629-1001.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/source-excerpts/add-04-S11c_a_interface_geometry_sympy_audit.py-L1207-1278.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/source-excerpts/add-05-S11c_b_brane_operator_sympy_audit.py-L722-830.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/source-excerpts/add-06-S11c_b_brane_operator_sympy_audit.py-L1878-1902.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/source-excerpts/add-07-S11c_b_brane_operator_sympy_audit.py-L2437-2631.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/source-excerpts/add-08-S11c_c1_bulk_closure_sympy_audit.py-L177-210.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/source-excerpts/add-09-S11c_c1_bulk_closure_sympy_audit.py-L485-506.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/source-excerpts/add-10-S11c_c1_bulk_closure_sympy_audit.py-L519-573.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/source-excerpts/add-11-S11c_c1_bulk_closure_sympy_audit.py-L576-755.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/source-excerpts/add-12-S11c_c1_bulk_closure_sympy_audit.py-L1046-1119.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/source-excerpts/add-13-S11c_c2_selfenergy_fold_sympy_audit.py-L186-306.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/source-excerpts/add-14-S11c_c2_selfenergy_fold_sympy_audit.py-L367-418.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/source-excerpts/add-15-S11c_c2_selfenergy_fold_sympy_audit.py-L429-435.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/source-excerpts/add-16-S11c_c2_selfenergy_fold_sympy_audit.py-L665-725.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/source-excerpts/add-17-S11c_c2_selfenergy_fold_sympy_audit.py-L850-861.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/source-excerpts/add-18-S11c_a_SHARED_PHYSICS.md-L163-244.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/source-excerpts/add-19-S11c_a_SHARED_PHYSICS.md-L285-401.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/source-excerpts/add-20-S11c_c1_SHARED_PHYSICS.md-L24-60.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/source-excerpts/add-21-S11c_c1_SHARED_PHYSICS.md-L63-137.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/source-excerpts/add-22-S11c_c1_SHARED_PHYSICS.md-L162-274.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/source-excerpts/add-23-S11c_c1_SHARED_PHYSICS.md-L285-336.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/source-excerpts/add-24-S11c_c1_SHARED_PHYSICS.md-L401-448.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/source-excerpts/add-25-S11c_c2_SHARED_PHYSICS.md-L135-218.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/source-excerpts/add-26-S11c_a_exports.py-L482-482.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/source-excerpts/add-27-S11c_a_exports.py-L3098-3098.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/source-excerpts/add-28-S11c_a_exports.py-L3105-3105.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/source-excerpts/add-29-S11c_a_exports.py-L3126-3126.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/source-excerpts/add-30-S11c_a_exports.py-L3133-3133.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/source-excerpts/add-31-S11c_a_exports.py-L14121-14121.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/source-excerpts/add-32-S11c_a_exports.py-L14766-14766.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/source-excerpts/add-33-S11c_a_exports.py-L14780-14780.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/source-excerpts/add-34-S11c_c1_exports.py-L79-79.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/source-excerpts/add-35-S11c_c1_exports.py-L87-87.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/source-excerpts/add-36-S11c_c1_exports.py-L95-95.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/source-excerpts/add-37-S11c_c1_exports.py-L103-103.txt",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/archive/source-inventory.json",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/no-peer-reports",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/single-use",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/parameterized-legs",
+      "passed": true
+    },
+    {
+      "name": "upstream-repair-review-grok-replacement/hook-first",
+      "passed": true
+    }
+  ],
+  "allChecksPassed": true,
+  "checksCount": 432,
+  "scientificPayloadsRestored": false,
+  "originalSourcesChanged": false,
+  "uniformScientificJobLaunched": false,
+  "methodClearanceClaimed": false,
+  "stop": "Uniform evidence and applicable upstream findings, before defect sweep",
+  "runtimePolicy": "No computation deadlines. Source-only uniform pair. Upstream probes through current pooled guard/supervisor:4GiB per probe,16GiB aggregate,4GiB host reserve,zero swap,one CPU/thread,desktop priority; no Wolfram seats.",
+  "newCanonicalFilesOver1MiB": []
+}

@@ -1,3 +1,16 @@
+**CORRECTED UNIFORM / SUPPLEMENTAL UPSTREAM REVIEWS PREPARED (2026-10-01):**
+The user renewed approval to keep corrections and reviews moving. The cohesive
+uniform v2 plan is frozen for fresh Claude/Grok source-only assessment; a separate
+supplement supplies original source operands for one fresh replacement upstream
+Grok assessment. The completed upstream Claude report is preserved, not rerun or
+shared. See S11c_parallel_review_continuation_preparation.json for exact packet
+hashes, authority and source/archive checks. Prior NEEDS REVISION verdicts and the
+cancelled/no-report Grok attempt remain history. No method or science clearance
+is claimed. These named reviews may launch with hook-first private workspaces;
+no computation deadlines. Upstream probes stay under the 16GiB aggregate pool.
+Actual uniform execution awaits substantive method assessment and readiness.
+Stop after uniform evidence/applicable upstream findings, before a defect sweep.
+
 **UPSTREAM PAIR FINISHED; COMPOSITION NOT CLEARED (2026-10-01):**
 Claude delivered scoped support for inertia/thickness and flat work orientation,
 but non-flat/fold coverage is incomplete and the mixed pressure response needs

@@ -1,3 +1,19 @@
+**SELECTED UNIFORM METHOD CLEARED; IMPLEMENTATION IN PROGRESS (2026-10-01):**
+Both fresh reviewers literally CLEAR FOR THIS SELECTED UNIFORM METHOD. The
+28-file packet, archive, receipts, private copies and source pins pass181 checks;
+no scientific probe or runtime result was supplied. Read
+S11c_d_near_unity_uniform_review_r2_record.json. Preserve the earlier NEEDS/NEEDS
+reports and the unchanged reviewed v2 plan. Non-blocking run details are pinned:
+physical five-field P, source curl lift, exact algebraic bulk-speed binding,
+wave-constrained approach paths, native chemical/memory and row-power operands.
+Faithful implementation/readiness is covered by the user's standing approval.
+Use8GiB native/cgroup within the16GiB shared pool,one CPU,zero swap,one thread,
+4GiB host reserve,no time limits and a completion hook before launch. The separate
+upstream Grok continuation retains its own hook; no peer sharing or model polling.
+This clears only a prospective strict-rest-bulk selected-uniform method, not
+nonuniform composition, primitive calibration, draining response or defect loss.
+Stop after actual uniform evidence and applicable upstream findings; no defect sweep.
+
 **APPROVED UPSTREAM SAME-SESSION REVIEW RESUMED (2026-10-01):**
 The user approved the exact732-byte operational followup. The original source
 packet and Read/Write/Edit/guard-only Bash permissions are unchanged. Grok now

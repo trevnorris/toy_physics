@@ -1,0 +1,937 @@
+{
+  "status": "INDEPENDENT_METHOD_CLEARANCE_BOTH_REVIEWERS_NO_RUNTIME_RESULT",
+  "checkedUtc": "2026-10-01T17:57:59.721289+00:00",
+  "root": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-method-review-r2",
+  "packetSha256": "bf55b921706cc1d2c3df225fe87ec8a20405df782de771f6e50f8d60506f3752",
+  "archiveSha256": "23f616ddd30a77a95deed92051b5de3c5e67502113135baed890d3640e9458f1",
+  "packetFiles": 28,
+  "packetBytes": 165665,
+  "authority": {
+    "status": "EXPLICITLY_APPROVED_FIXED_PACKET",
+    "literalUserReply": "approved. go",
+    "context": "Direct response to the pending question naming both exact packet hashes, file counts, byte counts and reviewer destinations; the user approved both.",
+    "userSawTheseNewHashes": true,
+    "recordedUtc": "2026-10-01T17:40:49.085908+00:00",
+    "packetSha256": "bf55b921706cc1d2c3df225fe87ec8a20405df782de771f6e50f8d60506f3752",
+    "archiveSha256": "23f616ddd30a77a95deed92051b5de3c5e67502113135baed890d3640e9458f1",
+    "packetFiles": 28,
+    "packetBytes": 165665,
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "thread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+    "launchBlockedByApprovalReview": false,
+    "priorApprovalReviewRejectionPreserved": true
+  },
+  "state": {
+    "status": "AWAITING_ADJUDICATION",
+    "packetDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-method-review-r2/packet",
+    "packetSha256": "bf55b921706cc1d2c3df225fe87ec8a20405df782de771f6e50f8d60506f3752",
+    "archiveSha256": "23f616ddd30a77a95deed92051b5de3c5e67502113135baed890d3640e9458f1",
+    "packetFiles": 28,
+    "packetBytes": 165665,
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "reviewerExecution": "source-only",
+    "currentThread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+    "externalSubmitted": false,
+    "uniformScienceLaunched": false,
+    "startedUtc": "2026-10-01T17:41:04.726200+00:00",
+    "supervisorPid": 1464703,
+    "concurrentReviewWorkers": 2,
+    "scienceCalls": 0,
+    "finishedUtc": "2026-10-01T17:53:49.547933+00:00",
+    "productionAuthorized": false,
+    "reviewVerdict": "NOT_ADJUDICATED"
+  },
+  "coordinatorOutcome": {
+    "status": "ALL_REQUESTED_ATTEMPTS_FINISHED_AWAITING_LITERAL_ADJUDICATION",
+    "finishedUtc": "2026-10-01T17:53:49.550306+00:00",
+    "scienceCalls": 0
+  },
+  "launch": {
+    "jobPid": 1464703,
+    "watcherPid": 1464704,
+    "packetSha256": "bf55b921706cc1d2c3df225fe87ec8a20405df782de771f6e50f8d60506f3752",
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "concurrentReviewWorkers": 2,
+    "scienceCalls": 0,
+    "runnerSha256": "30ed68e2d751f5c85399fcdf99384d9ef095376983da0b1bf91b89aef62e5b62",
+    "launcherSha256": "d7dd71850300818294a1218ecaf59c5576f63884457eb12b87d69d8b0c7df2a5"
+  },
+  "watcher": {
+    "status": "finished",
+    "watcherPid": 1464704,
+    "jobPid": 1464703,
+    "thread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+    "startedUtc": "2026-10-01T17:41:04.623010+00:00",
+    "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
+    "messageSha256": "ae40d4b91952f2bac08c025400f6df2257bc94859b35c83c68e6b2e19733fde6",
+    "notifications": {
+      "completion": {
+        "status": "queued",
+        "exitCode": 0,
+        "finishedUtc": "2026-10-01T17:53:49.715347+00:00"
+      }
+    }
+  },
+  "runtime": {
+    "runnerSha256": "30ed68e2d751f5c85399fcdf99384d9ef095376983da0b1bf91b89aef62e5b62",
+    "launcherSha256": "d7dd71850300818294a1218ecaf59c5576f63884457eb12b87d69d8b0c7df2a5",
+    "completionMessageSha256": "ae40d4b91952f2bac08c025400f6df2257bc94859b35c83c68e6b2e19733fde6",
+    "syntaxPassed": true,
+    "runRootVerified": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-method-review-r2",
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "externalSubmitted": false,
+    "change": "Exact fixed-packet confirmation required following automatic approval review rejection. No packet, scientific helper or method changed.",
+    "exactUserConfirmationRecordedUtc": "2026-10-01T17:40:49.085908+00:00"
+  },
+  "reports": {
+    "claude": {
+      "literalVerdict": "CLEAR FOR THIS SELECTED UNIFORM METHOD",
+      "literalReport": "I've read the whole packet and cross-checked the plan against the excerpts. This is the verdict.\n\n# Verdict: **CLEAR FOR THIS SELECTED UNIFORM METHOD**\n\nI found no blocker. Five points below are not blockers, but each leaves something ambiguous or unnamed, so they should be fixed in the run record before implementation. I did not run anything. Where I rely on the printed decimals, I say so.\n\n## Findings by question\n\n**1. c_s0 bookkeeping, calibration vs modal speed, and the primitive limit: adequate.**\n- The plan changes only `omega` and `c_s0` in the saved 1884-byte input. It leaves the other bindings fixed, including `rho_m`, `B_rho_3`, the tangents, `eta_bg` and the sigma origin 1/1000.\n- It keeps three things separate: the bare R4 ratio `sqrt(mu_R/rho_br)/c_s0` (0.1 at c_s0=10), the modal ratios `c_T,e/c_s0`, and the two end matches. This agrees with excerpt 01 (R3/R4/R7) and with the calibration assessment.\n- The primitive limitation is correct. R1 gives c_s0\u00b2 \u221d K, so K_new/K_old = (c_new/10)\u00b2 when \u03c10 and m_GNLS are held. R2 gives \u03be_h and h0 as functions of c_s0.\n- The memory statement is correct. The kernel is `\u039b0/(1\u2212i\u03c9\u03c4)`, as in `add-04` line 12. \u039b_A(3) = (1/100)/(1\u22123i/10), and \u039b_V0 = \u039b_X0 = 0.\n- Refusing unbound physical inputs matches `ChannelInput.mapping` and the `bind()` guard. Treating an independent compression coefficient as unresolved is the right rule, since \u03c1_m c_s0\u00b2 = 10 \u2260 B_rho_3 = 4 at the saved point.\n\n**2. Lift, restriction and direction: justified.**\n- L = [curl[:,1:3];0] matches `add-01` (curl columns are the displacement response to A1 and A2) and `field_lift` (5\u00d76, with the A0 column dropped).\n- For the curl of a gradient vector g = (k1,k2,kn), columns 1 and 2 have cross product \u221d k1\u00b7g. So rank two needs k1 \u2260 0, which holds with tangent 1/5.\n- g\u00b7L = 0, so \"P L \u2208 span L\" is equivalent to the gauge adjoint residual plus vanishing theta/eW rows. That makes the Euclidean D a legitimate coordinate construction, and only a 2\u00d72 Gram is inverted.\n- Using \u2212\u2202_k d/\u2202_\u03c9 d on the restricted dispersion, and refusing the full implicit radical derivative that divides by Q at grazing, matches the `JointBulkSheetPath` limitation in excerpt 06.\n- The saved checkpoint records TH and HT with zero nonzero counts at REFERENCE, LEFT and RIGHT. That is consistent with an exact decoupled transverse block, but the plan correctly refuses to rely on it alone.\n\n**3. Fresh radical map and reconstruction: sufficient.**\n- Excerpt 08 shows the pre-binding `originalAlgebraic` and `originalRelation` are available.\n- The v2 end-maps code takes `physical_scale` as an external 10.0 and copies stored zero residuals (excerpt 12, lines 14\u201315). Several of the stored join residuals were computed after the material binding (`add-04` lines 55\u201357, `add-06` `.xreplace(bindings)`), so they are not valid at a new c_s0. The plan is right to demand recomputation.\n- `ACOUSTIC_RADICAL_SCALE` is built from the q\u00b2 leading coefficients (`add-04` lines 40\u201341). With relation q\u00b2 \u2212 base and wave row \u221d c\u00b2 q_phys\u00b2, this gives q_phys = Q/c_s0, so the plan's s = c_s0. The plan's Q = s\u00b7q_phys is the inverse of the source's `radical_scale` convention, and the two agree.\n- The source checks only the right leg (`harmonic_wave[1]`). The plan's requirement to check both legs is a real improvement.\n- The five leg identities in `add-06` lines 55\u201361 cover pressure and velocity scales, affinity, relative mass flux and the memory closure. The bilinear reconstruction uses `pair_weight`. Together with `FACE_LEG_OBJECTS` and the amplitude/port rows, that is enough operand material.\n\n**4. Matching and one-sided limits: adequate, with one pin-down (item B below).**\n- Conjugating the entire first leg is correct. `leg_maps` negates \u03c9, the tangents, k and q, so \u039b_A(\u2212\u03c9) = conj \u039b_A. The pair (q_minus,q_plus) = (x,x) or (\u2212iy, iy) matches the positive-imaginary decaying sheet (`frequency_source` lines 15\u201318).\n- By my reading of `add-04` lines 17\u201325, the face closure coefficient on the amplitude is i(\u03c1q + \u03c9\u039b_A(\u03c9)). Given \u039b_A \u2260 0, it does not vanish at q=0 or on the physical sheet. The only q\u21920 singularity is in the impedance form \u03c1\u03c9/q. This supports the plan's rule to use exact cancellation and never \"numerical zero \u00d7 infinite impedance\".\n- The plan correctly separates selected-limit regularity from full-pencil isolation and from a complete inverse.\n\n**5. Counts, thresholds, controls: concrete and proportionate.**\n- Eight main speeds plus four approach speeds gives at most twelve speeds and 24 end evaluations, with exact deduplication only.\n- Thresholds are carried over from the existing instrument unchanged.\n- The orientation control is an improvement over the source's `\u22122\u00b7orientation\u00b7G`, which is only a sensitivity. It compares against the dispersion-derived group direction and the current sign.\n- The eW omission control is trivially responsive by construction. The plan labels it a row-addressing control, which is correct.\n- The sheet probe on the eW and theta columns will respond to q vs \u2212q, because the amplitude denominator contains \u03c1q. A transverse zero is correctly allowed to stay zero.\n\n**6. Constant-end applicability: adequately bounded.**\n- `uniform_source.py` lines 13\u201321 and the checkpoint show the constant-end symbols have no integrals, normal coordinates, regulator or profile functions.\n- No specific missing source join is needed. The mixed \u03b7\u03c3 object the plan refers to (\"any supplied candidate\") is not in the packet, and the plan correctly makes its absence a conditional rather than a proof. A general certification is not required.\n\n## Non-blocking pin-downs (fix in the run record, none changes the method)\n\n- **A. Name P.** Two coordinate systems appear in the source: the 6\u00d76 potential-basis `weak`/quotient pencil, and the field-basis `strong`/`CLOSED_PENCIL_LEGS`. The plan's \"five rows including theta/eW\" implies the field basis. Say so, and add the check `field_lift[:,1:3] == [curl[:,1:3];0]`. Optionally cross-check the quotient with (lift\u00b7embedding)\u1d34 P (lift\u00b7embedding).\n- **B. Fix the limit variable.** At fixed \u03c9 and a c_s0-independent selected k_n, q_phys is fixed. Only c_s0\u2192c_T^\u2213 (with s varying) or treating q as an independent symbol in the face closure can realize \"x\u21920+\". \"Constrained by the actual wave relation\" is ambiguous between these. Because the transverse face drives are zero and the current is q-independent, either choice gives the same selected answer, but the record should state which was used.\n- **C. Define c_T,e explicitly** as \u03c9/\u221a(k_n\u00b2 + |k_\u2225|\u00b2). Then q_phys\u00b2 = (\u03c9\u00b2/c_s0\u00b2)(1 \u2212 1/r\u00b2), so r > 1 is radiating and r < 1 is evanescent. The plan never states which side is which.\n- **D. Exact arithmetic for c_s0.** The printed values suggest c_T,L\u00b2 = 3/2 and c_T,R\u00b2 \u2248 150/101 (this is my inference from the decimals, not proof). If so, the matching speeds are irrational (\u221arational/r), but `ChannelInput` coerces parameters to `sp.Rational`. State how an algebraic c_s0 is bound. Only c_s0 and c_s0\u00b2 should enter, via s.\n- **E. Operand list.** Add `CHEMICAL_FIELD_ROW`, `SLAB_SURFACE_DENSITY`, `MEMORY_KERNELS`, `ACOUSTIC_RADICAL_SCALE`, `CHEMICAL_AFFINITY_DRIVER`, `PORT_BILINEAR_WEIGHT` and the row power maps. The chemical driver feeds the closure but is not covered by the five leg identities.\n\n## Optional improvements\n\n- Check that the current equals group velocity \u00d7 slab energy, using the available `SLAB_ENERGY_MATRIX`.\n- The speed set contains near-duplicate pairs. Using the printed values and c_T,R/c_T,L \u2248 \u221a(100/101), the RIGHT match sits about 6e-6 from LEFT's r = 201/200 point, and LEFT's own match sits about 4e-5 from RIGHT's r = 199/200 point. Exact deduplication is fine, but these pairs are not independent samples.\n- If no off-diagonal current entry in the u-block actually contributes, report the omission control as unresolved rather than passed.\n- Name the \"declared non-grazing\" point for the sheet probe.\n\n## What this method could and could not establish\n\n**Could establish:**\n- The exact algebraic matching speeds for each end.\n- Whether the source-defined two-dimensional transverse subspace is exactly invariant, with a q-independent restriction.\n- Whether its face drives and physical slab current are well defined and nondegenerate below, at and above matching, with independently validated orientation.\n- Whether a removable selected limit exists, with the denominator and order evidence for it.\n- A fresh recomputation of the radical and physical-depth map and the face joins at each new c_s0.\n\n**Cannot establish:**\n- A primitive recalibration, or what a physical c_s0 is.\n- A complete outgoing basis, full-pencil isolation, or a full inverse or mode census.\n- Defect loss or nonuniform response.\n- Draining-background behavior. The result is strictly rest-bulk.\n- That the upstream repairs are correct, since none of them has been reviewed.\n- Existence of the exact limit, runtime success, or any physics result.",
+      "rawOutputPath": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-method-review-r2/claude.json",
+      "rawOutputSha256": "8da438550c56d8b103b93556e4c8afba3f513b66a069be83539b305aae8849b8",
+      "literalStderr": "",
+      "receipt": {
+        "engine": "claude",
+        "sessionId": "861bb322-97e6-4afe-baf2-446cec62cd1a",
+        "command": [
+          "/home/trevnorris/.local/bin/claude",
+          "--print",
+          "--output-format",
+          "json",
+          "--safe-mode",
+          "--restricted",
+          "--tools",
+          "Read,Glob,Grep",
+          "--allowedTools",
+          "Read,Glob,Grep",
+          "--permission-mode",
+          "dontAsk",
+          "--strict-mcp-config",
+          "--mcp-config",
+          "{\"mcpServers\":{}}",
+          "--setting-sources",
+          "",
+          "--disable-slash-commands",
+          "--session-id",
+          "861bb322-97e6-4afe-baf2-446cec62cd1a"
+        ],
+        "cwd": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-method-review-r2/claude/work",
+        "startedUtc": "2026-10-01T17:41:04.742715+00:00",
+        "packetSha256": "bf55b921706cc1d2c3df225fe87ec8a20405df782de771f6e50f8d60506f3752",
+        "promptSha256": "9b8321d06269b0bde7c296d02f99dc882e90bbe96f97196d78044949dddcd433",
+        "scientificExecutionEnabled": false,
+        "reviewVerdict": "NOT_ADJUDICATED",
+        "pid": 1464710,
+        "exitStatus": 0,
+        "finishedUtc": "2026-10-01T17:48:06.904767+00:00",
+        "wallSeconds": 422.16079308092594,
+        "outputSha256": "8da438550c56d8b103b93556e4c8afba3f513b66a069be83539b305aae8849b8",
+        "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderrBytes": 0
+      },
+      "sourceOnly": true,
+      "scientificProbeCount": 0
+    },
+    "grok": {
+      "literalVerdict": "CLEAR FOR THIS SELECTED UNIFORM METHOD",
+      "literalReport": "I'll review the uniform near-unity plan against the frozen packet only: source excerpts, original input, and the recorded inventory. First I'll read the packet index and the plan so the six method points are checked against what was actually supplied.The packet lists the plan, a source inventory, and fixed excerpts. I'll read those next and check each method claim against the named source locations.The plan and inventory are in. Next I\u2019ll read the parameter register, calibration metadata, and the source excerpts that define c_s0, the lift, and the face closure.The remaining excerpts are the curl, the two-leg pencils, the face reconstruction, and the existing numerical controls. I\u2019ll check the plan\u2019s lift, matching limits, and evaluation caps against those definitions.**CLEAR FOR THIS SELECTED UNIFORM METHOD.**\n\nThe v2 plan defines a bounded constant-end question: for LAB_HELD/RHO4_CONSTANT at \\(\\omega=3\\), tangents \\((1/5,1/10)\\), and exact rest bulk, vary only the inherited effective bulk speed and test the source\u2019s two-dimensional uniform transverse subspace, its native face drives, and its physical current below, at, and above each end\u2019s own modal/acoustic match. It does not treat a successful method description as a restored payload, a runtime, or a physics result. No blocker turned up against the six points. Optional tightenings are listed after the point assessment and are not revision gates.\n\n## 1. Parameter family, speeds, and memory\n\nThe family is the pinned dictionary `S11c_d_variable_profile_development_input.json` (`660b2b0b\u2026`), with only \\(\\omega:1\\to 3\\) and \\(c_{s0}:10\\to\\) the positive sweep value left free. The stated fixed bindings match that file: \\(\\rho_m=1/10\\), \\(\\rho_{br}=1\\), \\(\\mu_R=1\\), \\(\\mu_S=1/2\\), \\(B_{\\rho_3}=4\\), both tangents, \\(\\eta_{bg}=1/100\\), \\(W_0=1\\), \\(L_W=10\\), and all 30 gamma coefficients. The rule that every other rational binding stays fixed, with the full replacement map persisted and unexpected unbound inputs refused, covers the thickness and chemical coefficients that the prose does not name one by one (\\(C\\), \\(G_{W u}\\), \\(G_{\\theta u}\\), \\(k_W\\), \\(\\kappa_W\\), \\(\\kappa_\\theta\\), \\(\\kappa_{\\theta W}\\), \\(\\mu_W\\)).\n\n\\(\\sigma_W=\\eta_{bg} W_0/L_W=1/1000\\) is the origin constructed in `ChannelInput`. The memory closure matches the source kernels \\(\\Lambda/(1-i\\omega\\tau)\\): \\(\\Lambda_{A0}=1/100\\), \\(\\tau_A=1/10\\) give \\(\\Lambda_A(3)=(1/100)/(1-3i/10)\\), while \\(\\Lambda_{V0}=\\Lambda_{X0}=0\\) and \\(\\tau_V,\\tau_X\\) stay in the dictionary.\n\nThree different speed objects stay separate.\n\n- Register R4\u2019s bare ratio is \\(\\sqrt{\\mu_R/\\rho_{br}}/c_{s0}\\). At the saved point this is \\(0.1\\), and the calibration record has `calibratedEqualityApplied: false`. R7\u2019s cone lock is uncommitted and R10 is pending, as the register states.\n- The saved full-contrast phase speeds are correspondence only: LEFT \\(1.2247448713915874\\) and RIGHT contrast-1 \\(1.2186666955535794\\), with ratios about \\(0.12247\\) and \\(0.12187\\). The plan\u2019s decimals match those readouts and are not used as matching constants. RIGHT contrast-0 repeats the LEFT readout; the plan keeps full-contrast RIGHT, and it reuses REFERENCE for LEFT only after the bound operands actually agree. The uniform-source checkpoint\u2019s contrast counts already show LEFT is not the zero-origin reference symbol.\n- Each end\u2019s match is the selected branch of that end\u2019s own restricted dispersion. The physical relation used for the sweep is \\(q_{\\mathrm{phys}}^2=\\omega^2/c_{s0}^2-k_n^2-|k_\\parallel|^2\\). That is the acoustic wave operator in the mixing-audit construction. At the old point \\(c_{s0}=10\\), \\(\\omega=3\\), and these tangents it specializes to the recorded \\(q^2=1/25-k_n^2\\); the sweep does not freeze \\(1/25\\) or the old grazing momenta \\(\\pm 1/5\\).\n\nR1 is stated as \\(c_{s0}^2=5K\\rho_0^4/m_{\\mathrm{GNLS}}\\). Holding \\(\\rho_0\\) and \\(m_{\\mathrm{GNLS}}\\) would rescale \\(K\\) by \\((c_{s,\\mathrm{new}}/10)^2\\). The plan keeps the family on the inherited effective coefficient, says those microscopic bindings are not established, and says acoustic impedance \\(\\rho_m\\omega/q_{\\mathrm{phys}}\\) and the couplings move with \\(c_{s0}\\). A factor \\(\\rho_m c_{s0}^2\\), if the restored source contains one, is carried with \\(c_{s0}\\) and is not the held \\(B_{\\rho_3}\\). An unexpected extra compression coefficient is unresolved. The historical grazing substitution \\(\\omega^2=c_{s0}^2 k^2\\) is not part of this test.\n\n## 2. Selected lift, residual, and direction\n\nThe nonzero-first-tangent chart is the source chart. `FullPencilModes.quotient` uses the axial \\(A_0=0\\) complement when the first tangential momentum is nonzero, and these tangents start at \\(1/5\\). Curl columns 1 and 2, zero-based, are the \\(A_1,A_2\\) columns. Padding theta and \\(e_W\\) with zeros and joining to `field_lift` (rows ordered \\(u_1,u_2,u_3,\\theta,e_W\\); amplitude labels \\(A_0,A_1,A_2,\\Theta,E,\\Phi\\)) is the check that this is the physical image of that complement. The same source builds the quotient sector \\(\\mathrm{diag}(1,1,0,0,0)\\) and emits its commutator, so the two-dimensional block is a source object. Rank below two stops the selected construction.\n\n\\(D=(L^H L)^{-1} L^H P L\\) inverts only the \\(2\\times 2\\) lift Gram. The five-row residual \\(PL-LD\\), including theta and \\(e_W\\), is the invariance statement, and exact restriction identities are required to be zero. TH/HT blocks are retained as actual source blocks. The Euclidean Gram is declared a coefficient-frame projection; the numeric coefficient convention in the frequency-source packet is the dimensionless reference-unit matrix, with row and field units kept beside it. The physical current is a separate comparison.\n\nThe selected dispersion is computed from \\(D\\) and that residual. A \\(c_{s0}\\)-independent \\(c_{T,e}\\) is an output of that calculation. Group direction is \\(-\\partial_k d/\\partial_\\omega d\\) on the restricted scalar factor, or the small degenerate derivative problem, and only after the restriction has removed \\(q\\)-singular dependence. \\(\\omega\\) stays available through that derivative and is then set to 3. The full implicit radical derivative, which divides by \\(\\partial_Q R\\) and is undefined at \\(Q=0\\) in `JointBulkSheetPath` and in the frequency-source transport, is excluded at grazing. Direction signs are compared with the physical current and with the source orientation LEFT \\(-1\\), RIGHT \\(+1\\). Ambiguous rank stays unresolved. No full pencil inverse is authorized.\n\n## 3. Fresh radical map and face reconstruction\n\nAlgebraic \\(Q\\) is given frequency units by `FullPencilModes`; \\(q_\\pm\\) are inverse-length depth legs. The source conversion is the leading-coefficient scale between the algebraic relation and the physical wave row, then \\(q_{\\mathrm{phys}}\\mapsto Q\\) through that scale, with the pencil rewritten on both leg maps. Stored `physicalRadicalScales` are \\(10\\) and \\(10\\), the old \\(c_{s0}\\). The plan recomputes the positive scale from the rebound wave and pencil and checks both harmonic legs. A stored zero residual is not that check.\n\nThe restored operands are sufficient for a fresh reconstruction of this join. `FACE_LEG_OBJECTS`, amplitude and port rows, pressure and velocity scales, the affinity and relative-mass identities, the memory kernels, and the polarization weight in the two-leg bilinear are all in the mixing-audit construction. The end-map binder already treats saved face expressions as symbolic and applies the parameter map at bind time, which is why overriding \\(c_{s0}\\) in that map is the rebinding path. Slab current, bulk-normal-current density, and interface power remain separate objects with separate units. The producer is not rerun, and the saved zero flags `FACE_LINEAR_LIFT_RESIDUAL`, `FACE_PORT_LINEAR_LIFT_RESIDUAL`, `FACE_LEG_JOIN_RESIDUAL`, and `FACE_BULK_RECONSTRUCTION_RESIDUAL` are not substitutes for the rebound residuals.\n\n## 4. Matching and one-sided limits\n\nOn a real selected \\(k_n\\), the sheet is the physical wave relation: positive real \\(q\\) when \\(q^2>0\\), positive imaginary \\(q\\) when \\(q^2<0\\). Positive imaginary \\(q\\) is the decaying depth sheet, because the source convergence condition is \\(\\mathrm{Re}(\\mathrm{depth\\ rate})<0\\) and \\(\\mathrm{depth\\ rate}=i(q_+-q_-)\\).\n\nThe two limits are the source\u2019s own two-leg assignments. \\((q_-,q_+)=(x,x)\\) with \\(x\\to 0^+\\) is the equal-depth, radiating approach. \\((-iy,iy)\\) with \\(y\\to 0^+\\) is the evanescent approach used by the existing evaluation point \\((k^\\*,k,q^\\*,q)\\) when \\(k\\) is real and \\(q=iy\\). The first leg is the full source input conjugated, including the memory kernel. For real positive \\(\\Lambda_0\\) and \\(\\tau\\), \\(\\Lambda(\\omega)^\\*=\\Lambda(-\\omega)\\), which is the sign flip already present in the leg map; a root-sign swap alone does not carry that kernel. Exact rational cancellation, with denominator and order saved, is the limit test. Numeric \\(0\\cdot\\infty\\) is excluded. `JointBulkSheetPath` stays behind its existing nonzero-radical guard.\n\nThe order audit is aimed at the selected subsystem. Denominators of the lift, native face rows, and slab, bulk, and interface forms are inventoried before projection; closure is recombined on its admitted domain. The pressure/flux closure determinant is inspected apart from the coupled slab determinant. A removable selected limit needs numerator and denominator orders. An uncancelled pole or a nonunique selected closure stays unresolved. Agreement of the two paths is only a consistency check.\n\nAway from the match, full-pencil rank, selected rank, and isolation are recorded. At the match the support condition is a unique rank-two selected limit and a nondegenerate selected current. Extra full nullity is recorded where the full limiting matrix exists and blocks only a complete isolated outgoing basis. It does not, by itself, cancel a unique source-defined selected limit. A nonunique selected subspace or a singular selected current stays unresolved. That is selected-limit regularity, distinct from full-pencil isolation and from a nonsingular full inverse.\n\n## 5. Evaluation budget and controls\n\nIf the restricted dispersion produces a \\(c_{s0}\\)-independent positive \\(c_{T,e}\\), then \\(r_e=c_{T,e}/c_{s0}\\) and the speed set is the union of \\(c_{s0}=c_{T,e}/r\\) for both ends at \\(r\\in\\{199/200,1,201/200\\}\\), plus the LEFT reference speeds \\(c_{T,\\mathrm{LEFT}}/(49/50)\\) and \\(c_{T,\\mathrm{LEFT}}/(51/50)\\). That is at most eight exact speeds. The approach ratios \\(1999/2000\\) and \\(2001/2000\\) add four speeds, two per end. Both ends are evaluated at every retained speed: at most twelve speeds and twenty-four end evaluations, each with both normal-momentum signs and both polarizations. Exact duplicates may be removed. Numerically close cross-end speeds stay distinct. Both modal ratios, the bare ratio, and the distance to each match are reported at every speed. The \\(1/200\\) brackets are the main set; the \\(1/2000\\) points are approaches. Samples do not certify a rate or an interval of smoothness.\n\n\\(r<1\\), \\(r=1\\), and \\(r>1\\) are the evanescent side, the match, and the radiating side for an end whose phase speed is \\(c_{T,e}\\). If no \\(c_{s0}\\)-independent branch exists, the same \\(2\\times 2\\) system is solved with \\(Q=0\\) and the physical wave relation. Failed elimination, an unsupported expression, or a nonunique branch leaves the match unresolved. A numerical root near zero is not a match, and there is no fitted \\(q=0\\) tolerance and no 18-candidate continuation.\n\nThe numeric gates are the existing end-map predicates: normalized pencil, wave, Hermiticity, and flux residuals below \\(10^{-9}\\); face and closure projections below \\(10^{-8}\\) of the recorded operand/lift scale; current eigenvalues above \\(10^{-9}\\) of the Gram scale; control movement above \\(10^{-10}\\); epsilon-squared rescaling checked at the existing half and double carriers without a large polynomial domain. Exact restriction, reconstruction, and limit identities have to be zero. The thresholds do not promote an approximate root to an identity, and they are not relaxed after a failure. Status labels are `SUPPORTED_ON_SELECTED_UNIFORM_SUBSPACE`, `UNRESOLVED`, and `FAILED_CHECK`.\n\nThe controls match the source addressing and the requested discipline.\n\n- A corrupted pencil or lift entry has to move the full-pencil residual. An actually contributing native off-diagonal current entry is omitted and its movement kept.\n- Reversing the end orientation has to disagree with the restricted-dispersion direction. Negating the current Gram is only a sensitivity probe.\n- Omitting the native \\(e_W\\) entry of the outward-velocity row and applying that row to the \\(e_W\\) unit column (field column 4) is a row-addressing control.\n- At one declared non-grazing point, native face rows are applied to the theta and \\(e_W\\) unit columns, and \\(q\\) is compared with \\(-q\\). Those probes are not called modes. At least one nonzero sheet-sensitive response is required; if every probe is zero or unavailable, the control is unresolved. A transverse component that is structurally zero may stay zero.\n\nNamed face outputs match the eight source rows: amplitude, pressure, outward velocity, relative mass flux, affinity, chemical potential, bulk velocity, and mechanical response.\n\n## 6. Constant-end boundary\n\nThe calculation consumes the inertia sign, mechanical face-load sign, pressure-trace/shape, and thickness-coordinate repairs, keys the dispersion, match set, and observables to a frozen dependency snapshot, and treats a later restriction-changing correction as invalidating dependent outputs. The inventory leaves those four repairs uncleared. The plan does not convert their hashes, or the uniform-source checkpoint\u2019s completed exit, into acceptance.\n\nNon-flat routing and mixed \\(\\eta\\sigma\\) DtN content are delimited on the constant-end source itself: specialize the saved profile and jet definitions, keep the wave and momentum joins, and check constant-translation and flat-face reduction. The profile end limits and the jet rule are in `ChannelInput` and the current builder: end values of \\(w\\) and \\(m\\) are substituted, and derivatives of those end values are the jet images. The rectangular grade projector keeps \\(\\eta\\), \\(\\sigma\\), and \\(\\eta\\sigma\\). A zero stored TH/HT block, and the mere absence of a native term after specialization, do not prove that a nonuniform contribution vanishes. Any supplied direct mixed-grade candidate goes into that same specialization. If the join cannot be made, the uniform result stays explicitly conditional and does not clear the nonuniform composition.\n\nThe rest-bulk statement matches the c1 validity domain and the FORM amendment. Grazing remains the strict \\(v_{\\mathrm{bulk,normal},0}=0\\) result. For nonzero drain, both \\(|qv/\\omega|\\ll 1\\) and \\(|\\omega v|/(c_{s0}^2|q|)\\ll 1\\) are required, and that domain is nonuniform at \\(q=0\\). A smooth rest-bulk sample does not transfer to drain flow. Analog-light calibration and R10 stay open.\n\nNo missing source join has to be supplied before this selected constant-end calculation is scientifically usable inside those claim limits. The strong and weak symbols, original algebraic relations, and pairing operands are named and restored at execution; their pickle bodies were not part of this source packet and are not assumed here.\n\n## Blockers\n\nNone. Nothing outstanding in the plan changes the selected computation or the claims this method is allowed to make.\n\n## Optional improvements\n\nThese do not change the method. They only make existing source names easier to apply.\n\n- Name register R2\u2019s \\(\\xi_h\\) and \\(h_0\\) inside the microscopic-scale sentence already tied to R1, since that same register excerpt derives both from \\(c_{s0}\\).\n- For the radiating path \\(q_-=q_+\\), cite the equal-depth wave eliminant and the diagonal depth integral as the admitted-domain operands. The generic two-q division is the object the source marks as insufficient on that diagonal.\n- Write the current-eigenvalue gate as the existing predicate \\(10^{-9}\\max(1,\\|G\\|)\\), so the floor of 1 stays visible next to the words \u201cGram scale.\u201d\n- Name \\(P\\) as the five-field operator in order \\((u_1,u_2,u_3,\\theta,e_W)\\), and require \\(L\\) to match `field_lift` columns 1 and 2 before the \\(2\\times 2\\) Gram is inverted. The quotient sector \\(\\mathrm{diag}(1,1,0,0,0)\\) is the same block in chart coordinates.\n\n## What this method could establish\n\nIf the restored source supports the selected restriction, the method can establish, at \\(\\omega=3\\), these tangents, and zero drain, whether each full-contrast end has a unique rank-two transverse limit with a nondegenerate selected current and source-defined face drives below, at, and above that end\u2019s own modal/acoustic match. It can report the bare R4 ratio beside those modal ratios, test the radiating and evanescent approaches by exact cancellation and full first-leg conjugation, and record full-pencil rank as a collision diagnostic. It can also record whether the constant-end profile/jet specialization closes, or leave that uniform result explicitly conditional.\n\n## What it cannot establish\n\nIt cannot establish a primitive recalibration, an R7 cone lock, or an R10 derivation. It cannot establish that only kinematics change. It cannot establish a complete isolated outgoing basis, full-pencil or full-acoustic inverse regularity, or a mode census. It cannot transfer any rest-bulk sample to nonzero drain. It cannot certify nonuniform defect loss, profile-integrated scattering, or the vanishing of mixed-grade terms that were not checked in the constant-end join. Finite approach samples do not certify a convergence rate. Checkpoint hashes, dependency hashes, and a prospective process exit are not scientific acceptance. A clear method verdict does not predict that restoration succeeds, that the exact limit exists, or that any selected status will be supported.",
+      "rawOutputPath": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-method-review-r2/grok.json",
+      "rawOutputSha256": "bcb66c1a4d3f0f77e060d568dad7b3b63054428a529844ecafc9c4577ce155b5",
+      "literalStderr": "\u001b[2m2026-10-01T17:41:04.959367Z\u001b[0m \u001b[33m WARN\u001b[0m plugin name collision resolved by scope precedence \u001b[3mplugin_name\u001b[0m\u001b[2m=\u001b[0mfrontend-design \u001b[3mwinner\u001b[0m\u001b[2m=\u001b[0m/home/trevnorris/.claude/plugins/marketplaces/claude-plugins-official/plugins/frontend-design \u001b[3mloser\u001b[0m\u001b[2m=\u001b[0m/home/trevnorris/.claude/plugins/cache/claude-plugins-official/frontend-design/ab024cdcfa7c\n\u001b[2m2026-10-01T17:41:04.959598Z\u001b[0m \u001b[33m WARN\u001b[0m plugin tmux-agent-sidebar: skipped unsupported event 'CwdChanged'\n\u001b[2m2026-10-01T17:41:04.959606Z\u001b[0m \u001b[33m WARN\u001b[0m plugin tmux-agent-sidebar: skipped unsupported event 'TaskCreated'\n\u001b[2m2026-10-01T17:41:04.959608Z\u001b[0m \u001b[33m WARN\u001b[0m plugin tmux-agent-sidebar: skipped unsupported event 'TaskCompleted'\n\u001b[2m2026-10-01T17:41:04.959610Z\u001b[0m \u001b[33m WARN\u001b[0m plugin tmux-agent-sidebar: skipped unsupported event 'TeammateIdle'\n\u001b[2m2026-10-01T17:41:04.959613Z\u001b[0m \u001b[33m WARN\u001b[0m plugin tmux-agent-sidebar: skipped unsupported event 'WorktreeCreate'\n\u001b[2m2026-10-01T17:41:04.959615Z\u001b[0m \u001b[33m WARN\u001b[0m plugin tmux-agent-sidebar: skipped unsupported event 'WorktreeRemove'\n\u001b[2m2026-10-01T17:41:04.972043Z\u001b[0m \u001b[33m WARN\u001b[0m plugin name collision resolved by scope precedence \u001b[3mplugin_name\u001b[0m\u001b[2m=\u001b[0mfrontend-design \u001b[3mwinner\u001b[0m\u001b[2m=\u001b[0m/home/trevnorris/.claude/plugins/marketplaces/claude-plugins-official/plugins/frontend-design \u001b[3mloser\u001b[0m\u001b[2m=\u001b[0m/home/trevnorris/.claude/plugins/cache/claude-plugins-official/frontend-design/ab024cdcfa7c\n\u001b[2m2026-10-01T17:41:04.972267Z\u001b[0m \u001b[33m WARN\u001b[0m plugin tmux-agent-sidebar: skipped unsupported event 'CwdChanged'\n\u001b[2m2026-10-01T17:41:04.972272Z\u001b[0m \u001b[33m WARN\u001b[0m plugin tmux-agent-sidebar: skipped unsupported event 'TaskCreated'\n\u001b[2m2026-10-01T17:41:04.972273Z\u001b[0m \u001b[33m WARN\u001b[0m plugin tmux-agent-sidebar: skipped unsupported event 'TaskCompleted'\n\u001b[2m2026-10-01T17:41:04.972275Z\u001b[0m \u001b[33m WARN\u001b[0m plugin tmux-agent-sidebar: skipped unsupported event 'TeammateIdle'\n\u001b[2m2026-10-01T17:41:04.972276Z\u001b[0m \u001b[33m WARN\u001b[0m plugin tmux-agent-sidebar: skipped unsupported event 'WorktreeCreate'\n\u001b[2m2026-10-01T17:41:04.972278Z\u001b[0m \u001b[33m WARN\u001b[0m plugin tmux-agent-sidebar: skipped unsupported event 'WorktreeRemove'\n\u001b[2m2026-10-01T17:41:04.998477Z\u001b[0m \u001b[33m WARN\u001b[0m hooks: skipped unrecognized event names (check for typos) \u001b[3mfile\u001b[0m\u001b[2m=\u001b[0m/home/trevnorris/.claude/settings.json \u001b[3mskipped\u001b[0m\u001b[2m=\u001b[0m[\"PermissionRequest\"]\n\u001b[2m2026-10-01T17:41:04.998592Z\u001b[0m \u001b[33m WARN\u001b[0m hook loading from settings file: failed to parse hook file /home/trevnorris/.cursor/hooks.json: invalid matcher groups for event 'beforeSubmitPrompt': missing field `hooks`\n\u001b[2m2026-10-01T17:41:04.998650Z\u001b[0m \u001b[33m WARN\u001b[0m hook loading error \u001b[3merror\u001b[0m\u001b[2m=\u001b[0mParseFile { path: \"/home/trevnorris/.cursor/hooks.json\", detail: \"invalid matcher groups for event 'beforeSubmitPrompt': missing field `hooks`\" }\n",
+      "receipt": {
+        "engine": "grok",
+        "sessionId": "b05c4535-4789-4bd7-a6f4-5ae7cad23db0",
+        "command": [
+          "/home/trevnorris/.local/bin/grok",
+          "--cwd",
+          "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-method-review-r2/grok/work",
+          "--prompt-file",
+          "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-method-review-r2/grok/work/input/review-prompt.md",
+          "--output-format",
+          "json",
+          "--permission-mode",
+          "dontAsk",
+          "--no-plan",
+          "--tools",
+          "Read",
+          "--no-subagents",
+          "--disable-web-search",
+          "--verbatim",
+          "--session-id",
+          "b05c4535-4789-4bd7-a6f4-5ae7cad23db0"
+        ],
+        "cwd": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-method-review-r2/grok/work",
+        "startedUtc": "2026-10-01T17:41:04.743331+00:00",
+        "packetSha256": "bf55b921706cc1d2c3df225fe87ec8a20405df782de771f6e50f8d60506f3752",
+        "promptSha256": "9b8321d06269b0bde7c296d02f99dc882e90bbe96f97196d78044949dddcd433",
+        "scientificExecutionEnabled": false,
+        "reviewVerdict": "NOT_ADJUDICATED",
+        "pid": 1464711,
+        "exitStatus": 0,
+        "finishedUtc": "2026-10-01T17:53:49.526003+00:00",
+        "wallSeconds": 764.780932419002,
+        "outputSha256": "bcb66c1a4d3f0f77e060d568dad7b3b63054428a529844ecafc9c4577ce155b5",
+        "stderrSha256": "cf4838a0dc433ef7365a29cfe228aac2f69f9234b59e0f2cf76f3e4a824b48de",
+        "stderrBytes": 2863
+      },
+      "sourceOnly": true,
+      "scientificProbeCount": 0
+    }
+  },
+  "checks": [
+    {
+      "name": "allRequestedFinished",
+      "passed": true
+    },
+    {
+      "name": "exactApproval",
+      "passed": true
+    },
+    {
+      "name": "packetDigest",
+      "passed": true
+    },
+    {
+      "name": "archive",
+      "passed": true
+    },
+    {
+      "name": "review_run.py",
+      "passed": true
+    },
+    {
+      "name": "review_launch.py",
+      "passed": true
+    },
+    {
+      "name": "completion_message.txt",
+      "passed": true
+    },
+    {
+      "name": "packet/packet-index.json",
+      "passed": true
+    },
+    {
+      "name": "packet/research/pde_ledger_v3/_measurements/S11c_d_near_unity_uniform_plan_v2.md",
+      "passed": true
+    },
+    {
+      "name": "packet/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_end_maps_v2_inputs.json",
+      "passed": true
+    },
+    {
+      "name": "packet/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_flow_calibration_assessment.json",
+      "passed": true
+    },
+    {
+      "name": "packet/research/pde_ledger_v3/_measurements/S11c_d_uniform_source_checkpoint.json",
+      "passed": true
+    },
+    {
+      "name": "packet/research/pde_ledger_v3/_measurements/S11c_d_variable_profile_development_input.json",
+      "passed": true
+    },
+    {
+      "name": "packet/review-prompt.md",
+      "passed": true
+    },
+    {
+      "name": "packet/source-excerpts/01-parameter_register.md-L266-285.txt",
+      "passed": true
+    },
+    {
+      "name": "packet/source-excerpts/02-S11b_interface_coupling_law_sympy_audit.py-L74-90.txt",
+      "passed": true
+    },
+    {
+      "name": "packet/source-excerpts/03-S11b_interface_coupling_law_sympy_audit.py-L457-485.txt",
+      "passed": true
+    },
+    {
+      "name": "packet/source-excerpts/04-S11b_interface_coupling_law_sympy_audit.py-L1918-1939.txt",
+      "passed": true
+    },
+    {
+      "name": "packet/source-excerpts/05-S11c_d_mixing_scattering_sympy_audit.py-L4876-4937.txt",
+      "passed": true
+    },
+    {
+      "name": "packet/source-excerpts/06-S11c_d_mixing_scattering_sympy_audit.py-L5038-5120.txt",
+      "passed": true
+    },
+    {
+      "name": "packet/source-excerpts/07-S11c_d_mixing_scattering_sympy_audit.py-L5306-5440.txt",
+      "passed": true
+    },
+    {
+      "name": "packet/source-excerpts/08-S11c_d_frequency_source.py-L166-207.txt",
+      "passed": true
+    },
+    {
+      "name": "packet/source-excerpts/09-S11c_d_uniform_source.py-L92-135.txt",
+      "passed": true
+    },
+    {
+      "name": "packet/source-excerpts/10-S11c_d_numerical_radiating_boundary.py-L193-207.txt",
+      "passed": true
+    },
+    {
+      "name": "packet/source-excerpts/11-S11c_d_numerical_radiating_boundary.py-L344-368.txt",
+      "passed": true
+    },
+    {
+      "name": "packet/source-excerpts/12-S11c_d_numerical_radiating_end_maps_v2.py-L135-277.txt",
+      "passed": true
+    },
+    {
+      "name": "packet/source-excerpts/13-S11c_c1_SHARED_PHYSICS.md-L204-221.txt",
+      "passed": true
+    },
+    {
+      "name": "packet/source-excerpts/14-S11c_d_SCATTERING_FORM_AMENDMENT.md-L373-384.txt",
+      "passed": true
+    },
+    {
+      "name": "packet/source-excerpts/add-01-S11c_d_mixing_scattering_sympy_audit.py-L2529-2557.txt",
+      "passed": true
+    },
+    {
+      "name": "packet/source-excerpts/add-02-S11c_d_mixing_scattering_sympy_audit.py-L2570-2635.txt",
+      "passed": true
+    },
+    {
+      "name": "packet/source-excerpts/add-03-S11c_d_mixing_scattering_sympy_audit.py-L2990-3026.txt",
+      "passed": true
+    },
+    {
+      "name": "packet/source-excerpts/add-04-S11c_d_mixing_scattering_sympy_audit.py-L3049-3130.txt",
+      "passed": true
+    },
+    {
+      "name": "packet/source-excerpts/add-05-S11c_d_mixing_scattering_sympy_audit.py-L3245-3420.txt",
+      "passed": true
+    },
+    {
+      "name": "packet/source-excerpts/add-06-S11c_d_mixing_scattering_sympy_audit.py-L3490-3620.txt",
+      "passed": true
+    },
+    {
+      "name": "packet/source-inventory.json",
+      "passed": true
+    },
+    {
+      "name": "source/research/pde_ledger_v3/_measurements/S11c_d_variable_profile_development_input.json",
+      "passed": true
+    },
+    {
+      "name": "source/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_flow_calibration_assessment.json",
+      "passed": true
+    },
+    {
+      "name": "source/research/pde_ledger_v3/_measurements/S11c_d_uniform_source_checkpoint.json",
+      "passed": true
+    },
+    {
+      "name": "source/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_end_maps_v2_inputs.json",
+      "passed": true
+    },
+    {
+      "name": "source/source-excerpts/01-parameter_register.md-L266-285.txt",
+      "passed": true
+    },
+    {
+      "name": "excerpt/source-excerpts/01-parameter_register.md-L266-285.txt",
+      "passed": true
+    },
+    {
+      "name": "source/source-excerpts/02-S11b_interface_coupling_law_sympy_audit.py-L74-90.txt",
+      "passed": true
+    },
+    {
+      "name": "excerpt/source-excerpts/02-S11b_interface_coupling_law_sympy_audit.py-L74-90.txt",
+      "passed": true
+    },
+    {
+      "name": "source/source-excerpts/03-S11b_interface_coupling_law_sympy_audit.py-L457-485.txt",
+      "passed": true
+    },
+    {
+      "name": "excerpt/source-excerpts/03-S11b_interface_coupling_law_sympy_audit.py-L457-485.txt",
+      "passed": true
+    },
+    {
+      "name": "source/source-excerpts/04-S11b_interface_coupling_law_sympy_audit.py-L1918-1939.txt",
+      "passed": true
+    },
+    {
+      "name": "excerpt/source-excerpts/04-S11b_interface_coupling_law_sympy_audit.py-L1918-1939.txt",
+      "passed": true
+    },
+    {
+      "name": "source/source-excerpts/05-S11c_d_mixing_scattering_sympy_audit.py-L4876-4937.txt",
+      "passed": true
+    },
+    {
+      "name": "excerpt/source-excerpts/05-S11c_d_mixing_scattering_sympy_audit.py-L4876-4937.txt",
+      "passed": true
+    },
+    {
+      "name": "source/source-excerpts/06-S11c_d_mixing_scattering_sympy_audit.py-L5038-5120.txt",
+      "passed": true
+    },
+    {
+      "name": "excerpt/source-excerpts/06-S11c_d_mixing_scattering_sympy_audit.py-L5038-5120.txt",
+      "passed": true
+    },
+    {
+      "name": "source/source-excerpts/07-S11c_d_mixing_scattering_sympy_audit.py-L5306-5440.txt",
+      "passed": true
+    },
+    {
+      "name": "excerpt/source-excerpts/07-S11c_d_mixing_scattering_sympy_audit.py-L5306-5440.txt",
+      "passed": true
+    },
+    {
+      "name": "source/source-excerpts/08-S11c_d_frequency_source.py-L166-207.txt",
+      "passed": true
+    },
+    {
+      "name": "excerpt/source-excerpts/08-S11c_d_frequency_source.py-L166-207.txt",
+      "passed": true
+    },
+    {
+      "name": "source/source-excerpts/09-S11c_d_uniform_source.py-L92-135.txt",
+      "passed": true
+    },
+    {
+      "name": "excerpt/source-excerpts/09-S11c_d_uniform_source.py-L92-135.txt",
+      "passed": true
+    },
+    {
+      "name": "source/source-excerpts/10-S11c_d_numerical_radiating_boundary.py-L193-207.txt",
+      "passed": true
+    },
+    {
+      "name": "excerpt/source-excerpts/10-S11c_d_numerical_radiating_boundary.py-L193-207.txt",
+      "passed": true
+    },
+    {
+      "name": "source/source-excerpts/11-S11c_d_numerical_radiating_boundary.py-L344-368.txt",
+      "passed": true
+    },
+    {
+      "name": "excerpt/source-excerpts/11-S11c_d_numerical_radiating_boundary.py-L344-368.txt",
+      "passed": true
+    },
+    {
+      "name": "source/source-excerpts/12-S11c_d_numerical_radiating_end_maps_v2.py-L135-277.txt",
+      "passed": true
+    },
+    {
+      "name": "excerpt/source-excerpts/12-S11c_d_numerical_radiating_end_maps_v2.py-L135-277.txt",
+      "passed": true
+    },
+    {
+      "name": "source/source-excerpts/13-S11c_c1_SHARED_PHYSICS.md-L204-221.txt",
+      "passed": true
+    },
+    {
+      "name": "excerpt/source-excerpts/13-S11c_c1_SHARED_PHYSICS.md-L204-221.txt",
+      "passed": true
+    },
+    {
+      "name": "source/source-excerpts/14-S11c_d_SCATTERING_FORM_AMENDMENT.md-L373-384.txt",
+      "passed": true
+    },
+    {
+      "name": "excerpt/source-excerpts/14-S11c_d_SCATTERING_FORM_AMENDMENT.md-L373-384.txt",
+      "passed": true
+    },
+    {
+      "name": "source/research/pde_ledger_v3/_measurements/S11c_d_near_unity_uniform_plan_v2.md",
+      "passed": true
+    },
+    {
+      "name": "source/source-inventory.json",
+      "passed": true
+    },
+    {
+      "name": "source/source-excerpts/add-01-S11c_d_mixing_scattering_sympy_audit.py-L2529-2557.txt",
+      "passed": true
+    },
+    {
+      "name": "excerpt/source-excerpts/add-01-S11c_d_mixing_scattering_sympy_audit.py-L2529-2557.txt",
+      "passed": true
+    },
+    {
+      "name": "source/source-excerpts/add-02-S11c_d_mixing_scattering_sympy_audit.py-L2570-2635.txt",
+      "passed": true
+    },
+    {
+      "name": "excerpt/source-excerpts/add-02-S11c_d_mixing_scattering_sympy_audit.py-L2570-2635.txt",
+      "passed": true
+    },
+    {
+      "name": "source/source-excerpts/add-03-S11c_d_mixing_scattering_sympy_audit.py-L2990-3026.txt",
+      "passed": true
+    },
+    {
+      "name": "excerpt/source-excerpts/add-03-S11c_d_mixing_scattering_sympy_audit.py-L2990-3026.txt",
+      "passed": true
+    },
+    {
+      "name": "source/source-excerpts/add-04-S11c_d_mixing_scattering_sympy_audit.py-L3049-3130.txt",
+      "passed": true
+    },
+    {
+      "name": "excerpt/source-excerpts/add-04-S11c_d_mixing_scattering_sympy_audit.py-L3049-3130.txt",
+      "passed": true
+    },
+    {
+      "name": "source/source-excerpts/add-05-S11c_d_mixing_scattering_sympy_audit.py-L3245-3420.txt",
+      "passed": true
+    },
+    {
+      "name": "excerpt/source-excerpts/add-05-S11c_d_mixing_scattering_sympy_audit.py-L3245-3420.txt",
+      "passed": true
+    },
+    {
+      "name": "source/source-excerpts/add-06-S11c_d_mixing_scattering_sympy_audit.py-L3490-3620.txt",
+      "passed": true
+    },
+    {
+      "name": "excerpt/source-excerpts/add-06-S11c_d_mixing_scattering_sympy_audit.py-L3490-3620.txt",
+      "passed": true
+    },
+    {
+      "name": "source/review-prompt.md",
+      "passed": true
+    },
+    {
+      "name": "archiveList",
+      "passed": true
+    },
+    {
+      "name": "archive/packet-index.json",
+      "passed": true
+    },
+    {
+      "name": "archive/research/pde_ledger_v3/_measurements/S11c_d_near_unity_uniform_plan_v2.md",
+      "passed": true
+    },
+    {
+      "name": "archive/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_end_maps_v2_inputs.json",
+      "passed": true
+    },
+    {
+      "name": "archive/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_flow_calibration_assessment.json",
+      "passed": true
+    },
+    {
+      "name": "archive/research/pde_ledger_v3/_measurements/S11c_d_uniform_source_checkpoint.json",
+      "passed": true
+    },
+    {
+      "name": "archive/research/pde_ledger_v3/_measurements/S11c_d_variable_profile_development_input.json",
+      "passed": true
+    },
+    {
+      "name": "archive/review-prompt.md",
+      "passed": true
+    },
+    {
+      "name": "archive/source-excerpts/01-parameter_register.md-L266-285.txt",
+      "passed": true
+    },
+    {
+      "name": "archive/source-excerpts/02-S11b_interface_coupling_law_sympy_audit.py-L74-90.txt",
+      "passed": true
+    },
+    {
+      "name": "archive/source-excerpts/03-S11b_interface_coupling_law_sympy_audit.py-L457-485.txt",
+      "passed": true
+    },
+    {
+      "name": "archive/source-excerpts/04-S11b_interface_coupling_law_sympy_audit.py-L1918-1939.txt",
+      "passed": true
+    },
+    {
+      "name": "archive/source-excerpts/05-S11c_d_mixing_scattering_sympy_audit.py-L4876-4937.txt",
+      "passed": true
+    },
+    {
+      "name": "archive/source-excerpts/06-S11c_d_mixing_scattering_sympy_audit.py-L5038-5120.txt",
+      "passed": true
+    },
+    {
+      "name": "archive/source-excerpts/07-S11c_d_mixing_scattering_sympy_audit.py-L5306-5440.txt",
+      "passed": true
+    },
+    {
+      "name": "archive/source-excerpts/08-S11c_d_frequency_source.py-L166-207.txt",
+      "passed": true
+    },
+    {
+      "name": "archive/source-excerpts/09-S11c_d_uniform_source.py-L92-135.txt",
+      "passed": true
+    },
+    {
+      "name": "archive/source-excerpts/10-S11c_d_numerical_radiating_boundary.py-L193-207.txt",
+      "passed": true
+    },
+    {
+      "name": "archive/source-excerpts/11-S11c_d_numerical_radiating_boundary.py-L344-368.txt",
+      "passed": true
+    },
+    {
+      "name": "archive/source-excerpts/12-S11c_d_numerical_radiating_end_maps_v2.py-L135-277.txt",
+      "passed": true
+    },
+    {
+      "name": "archive/source-excerpts/13-S11c_c1_SHARED_PHYSICS.md-L204-221.txt",
+      "passed": true
+    },
+    {
+      "name": "archive/source-excerpts/14-S11c_d_SCATTERING_FORM_AMENDMENT.md-L373-384.txt",
+      "passed": true
+    },
+    {
+      "name": "archive/source-excerpts/add-01-S11c_d_mixing_scattering_sympy_audit.py-L2529-2557.txt",
+      "passed": true
+    },
+    {
+      "name": "archive/source-excerpts/add-02-S11c_d_mixing_scattering_sympy_audit.py-L2570-2635.txt",
+      "passed": true
+    },
+    {
+      "name": "archive/source-excerpts/add-03-S11c_d_mixing_scattering_sympy_audit.py-L2990-3026.txt",
+      "passed": true
+    },
+    {
+      "name": "archive/source-excerpts/add-04-S11c_d_mixing_scattering_sympy_audit.py-L3049-3130.txt",
+      "passed": true
+    },
+    {
+      "name": "archive/source-excerpts/add-05-S11c_d_mixing_scattering_sympy_audit.py-L3245-3420.txt",
+      "passed": true
+    },
+    {
+      "name": "archive/source-excerpts/add-06-S11c_d_mixing_scattering_sympy_audit.py-L3490-3620.txt",
+      "passed": true
+    },
+    {
+      "name": "archive/source-inventory.json",
+      "passed": true
+    },
+    {
+      "name": "claude/output",
+      "passed": true
+    },
+    {
+      "name": "claude/stderr",
+      "passed": true
+    },
+    {
+      "name": "claude/finished",
+      "passed": true
+    },
+    {
+      "name": "claude/private/packet-index.json",
+      "passed": true
+    },
+    {
+      "name": "claude/private/research/pde_ledger_v3/_measurements/S11c_d_near_unity_uniform_plan_v2.md",
+      "passed": true
+    },
+    {
+      "name": "claude/private/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_end_maps_v2_inputs.json",
+      "passed": true
+    },
+    {
+      "name": "claude/private/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_flow_calibration_assessment.json",
+      "passed": true
+    },
+    {
+      "name": "claude/private/research/pde_ledger_v3/_measurements/S11c_d_uniform_source_checkpoint.json",
+      "passed": true
+    },
+    {
+      "name": "claude/private/research/pde_ledger_v3/_measurements/S11c_d_variable_profile_development_input.json",
+      "passed": true
+    },
+    {
+      "name": "claude/private/review-prompt.md",
+      "passed": true
+    },
+    {
+      "name": "claude/private/source-excerpts/01-parameter_register.md-L266-285.txt",
+      "passed": true
+    },
+    {
+      "name": "claude/private/source-excerpts/02-S11b_interface_coupling_law_sympy_audit.py-L74-90.txt",
+      "passed": true
+    },
+    {
+      "name": "claude/private/source-excerpts/03-S11b_interface_coupling_law_sympy_audit.py-L457-485.txt",
+      "passed": true
+    },
+    {
+      "name": "claude/private/source-excerpts/04-S11b_interface_coupling_law_sympy_audit.py-L1918-1939.txt",
+      "passed": true
+    },
+    {
+      "name": "claude/private/source-excerpts/05-S11c_d_mixing_scattering_sympy_audit.py-L4876-4937.txt",
+      "passed": true
+    },
+    {
+      "name": "claude/private/source-excerpts/06-S11c_d_mixing_scattering_sympy_audit.py-L5038-5120.txt",
+      "passed": true
+    },
+    {
+      "name": "claude/private/source-excerpts/07-S11c_d_mixing_scattering_sympy_audit.py-L5306-5440.txt",
+      "passed": true
+    },
+    {
+      "name": "claude/private/source-excerpts/08-S11c_d_frequency_source.py-L166-207.txt",
+      "passed": true
+    },
+    {
+      "name": "claude/private/source-excerpts/09-S11c_d_uniform_source.py-L92-135.txt",
+      "passed": true
+    },
+    {
+      "name": "claude/private/source-excerpts/10-S11c_d_numerical_radiating_boundary.py-L193-207.txt",
+      "passed": true
+    },
+    {
+      "name": "claude/private/source-excerpts/11-S11c_d_numerical_radiating_boundary.py-L344-368.txt",
+      "passed": true
+    },
+    {
+      "name": "claude/private/source-excerpts/12-S11c_d_numerical_radiating_end_maps_v2.py-L135-277.txt",
+      "passed": true
+    },
+    {
+      "name": "claude/private/source-excerpts/13-S11c_c1_SHARED_PHYSICS.md-L204-221.txt",
+      "passed": true
+    },
+    {
+      "name": "claude/private/source-excerpts/14-S11c_d_SCATTERING_FORM_AMENDMENT.md-L373-384.txt",
+      "passed": true
+    },
+    {
+      "name": "claude/private/source-excerpts/add-01-S11c_d_mixing_scattering_sympy_audit.py-L2529-2557.txt",
+      "passed": true
+    },
+    {
+      "name": "claude/private/source-excerpts/add-02-S11c_d_mixing_scattering_sympy_audit.py-L2570-2635.txt",
+      "passed": true
+    },
+    {
+      "name": "claude/private/source-excerpts/add-03-S11c_d_mixing_scattering_sympy_audit.py-L2990-3026.txt",
+      "passed": true
+    },
+    {
+      "name": "claude/private/source-excerpts/add-04-S11c_d_mixing_scattering_sympy_audit.py-L3049-3130.txt",
+      "passed": true
+    },
+    {
+      "name": "claude/private/source-excerpts/add-05-S11c_d_mixing_scattering_sympy_audit.py-L3245-3420.txt",
+      "passed": true
+    },
+    {
+      "name": "claude/private/source-excerpts/add-06-S11c_d_mixing_scattering_sympy_audit.py-L3490-3620.txt",
+      "passed": true
+    },
+    {
+      "name": "claude/private/source-inventory.json",
+      "passed": true
+    },
+    {
+      "name": "claude/readOnlyTools",
+      "passed": true
+    },
+    {
+      "name": "claude/noGuardedProbes",
+      "passed": true
+    },
+    {
+      "name": "claude/literalClear",
+      "passed": true
+    },
+    {
+      "name": "claude/deliveredEndTurn",
+      "passed": true
+    },
+    {
+      "name": "grok/output",
+      "passed": true
+    },
+    {
+      "name": "grok/stderr",
+      "passed": true
+    },
+    {
+      "name": "grok/finished",
+      "passed": true
+    },
+    {
+      "name": "grok/private/packet-index.json",
+      "passed": true
+    },
+    {
+      "name": "grok/private/research/pde_ledger_v3/_measurements/S11c_d_near_unity_uniform_plan_v2.md",
+      "passed": true
+    },
+    {
+      "name": "grok/private/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_end_maps_v2_inputs.json",
+      "passed": true
+    },
+    {
+      "name": "grok/private/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_flow_calibration_assessment.json",
+      "passed": true
+    },
+    {
+      "name": "grok/private/research/pde_ledger_v3/_measurements/S11c_d_uniform_source_checkpoint.json",
+      "passed": true
+    },
+    {
+      "name": "grok/private/research/pde_ledger_v3/_measurements/S11c_d_variable_profile_development_input.json",
+      "passed": true
+    },
+    {
+      "name": "grok/private/review-prompt.md",
+      "passed": true
+    },
+    {
+      "name": "grok/private/source-excerpts/01-parameter_register.md-L266-285.txt",
+      "passed": true
+    },
+    {
+      "name": "grok/private/source-excerpts/02-S11b_interface_coupling_law_sympy_audit.py-L74-90.txt",
+      "passed": true
+    },
+    {
+      "name": "grok/private/source-excerpts/03-S11b_interface_coupling_law_sympy_audit.py-L457-485.txt",
+      "passed": true
+    },
+    {
+      "name": "grok/private/source-excerpts/04-S11b_interface_coupling_law_sympy_audit.py-L1918-1939.txt",
+      "passed": true
+    },
+    {
+      "name": "grok/private/source-excerpts/05-S11c_d_mixing_scattering_sympy_audit.py-L4876-4937.txt",
+      "passed": true
+    },
+    {
+      "name": "grok/private/source-excerpts/06-S11c_d_mixing_scattering_sympy_audit.py-L5038-5120.txt",
+      "passed": true
+    },
+    {
+      "name": "grok/private/source-excerpts/07-S11c_d_mixing_scattering_sympy_audit.py-L5306-5440.txt",
+      "passed": true
+    },
+    {
+      "name": "grok/private/source-excerpts/08-S11c_d_frequency_source.py-L166-207.txt",
+      "passed": true
+    },
+    {
+      "name": "grok/private/source-excerpts/09-S11c_d_uniform_source.py-L92-135.txt",
+      "passed": true
+    },
+    {
+      "name": "grok/private/source-excerpts/10-S11c_d_numerical_radiating_boundary.py-L193-207.txt",
+      "passed": true
+    },
+    {
+      "name": "grok/private/source-excerpts/11-S11c_d_numerical_radiating_boundary.py-L344-368.txt",
+      "passed": true
+    },
+    {
+      "name": "grok/private/source-excerpts/12-S11c_d_numerical_radiating_end_maps_v2.py-L135-277.txt",
+      "passed": true
+    },
+    {
+      "name": "grok/private/source-excerpts/13-S11c_c1_SHARED_PHYSICS.md-L204-221.txt",
+      "passed": true
+    },
+    {
+      "name": "grok/private/source-excerpts/14-S11c_d_SCATTERING_FORM_AMENDMENT.md-L373-384.txt",
+      "passed": true
+    },
+    {
+      "name": "grok/private/source-excerpts/add-01-S11c_d_mixing_scattering_sympy_audit.py-L2529-2557.txt",
+      "passed": true
+    },
+    {
+      "name": "grok/private/source-excerpts/add-02-S11c_d_mixing_scattering_sympy_audit.py-L2570-2635.txt",
+      "passed": true
+    },
+    {
+      "name": "grok/private/source-excerpts/add-03-S11c_d_mixing_scattering_sympy_audit.py-L2990-3026.txt",
+      "passed": true
+    },
+    {
+      "name": "grok/private/source-excerpts/add-04-S11c_d_mixing_scattering_sympy_audit.py-L3049-3130.txt",
+      "passed": true
+    },
+    {
+      "name": "grok/private/source-excerpts/add-05-S11c_d_mixing_scattering_sympy_audit.py-L3245-3420.txt",
+      "passed": true
+    },
+    {
+      "name": "grok/private/source-excerpts/add-06-S11c_d_mixing_scattering_sympy_audit.py-L3490-3620.txt",
+      "passed": true
+    },
+    {
+      "name": "grok/private/source-inventory.json",
+      "passed": true
+    },
+    {
+      "name": "grok/readOnlyTools",
+      "passed": true
+    },
+    {
+      "name": "grok/noGuardedProbes",
+      "passed": true
+    },
+    {
+      "name": "grok/literalClear",
+      "passed": true
+    },
+    {
+      "name": "grok/deliveredEndTurn",
+      "passed": true
+    }
+  ],
+  "allChecksPassed": true,
+  "checkCount": 181,
+  "runtimeScienceAccepted": false,
+  "reviewedPlan": {
+    "path": "research/pde_ledger_v3/_measurements/S11c_d_near_unity_uniform_plan_v2.md",
+    "sha256": "0d1eb443689f07558526bdf06f64d02072778376b0754096e60e6337ec2336a8"
+  },
+  "nonblockingImplementationDetails": [
+    "P is the physical strong five-field operator in saved reference units; L equals selected source field_lift columns through actual curl/ansatz join, not assumed transcript restoration.",
+    "cT=omega/sqrt(kn\u00b2+kt\u00b2); derive exact dispersion first. Bind algebraic cs directly, never coerce irrational match through Rational.",
+    "Use positive physical depth parameter t with cs=omega/sqrt(kn\u00b2+kt\u00b2+t\u00b2) on the radiating path and cs=omega/sqrt(kn\u00b2+kt\u00b2-t\u00b2) on the evanescent path; t\u21920+, fixed selected k and omega. Retain full first-leg conjugacy.",
+    "Include native CHEMICAL_FIELD_ROW, SLAB_SURFACE_DENSITY, MEMORY_KERNELS, ACOUSTIC_RADICAL_SCALE, CHEMICAL_AFFINITY_DRIVER, PORT_BILINEAR_WEIGHT and row-power maps.",
+    "Preserve source equal-depth wave eliminant and admitted diagonal depth expression; current eigenvalue floor is1e-9*max(1,norm(G)).",
+    "Source-derived match constants, untouched field lift route and actual closure/denominator properties remain runtime checks; reviewer decimal inferences are not results."
+  ],
+  "priorReportsPreserved": "Original NEEDS REVISION/NEEDS REVISION packet remains unchanged; no peer report was sent in this pair.",
+  "upstreamBoundary": "The separate completed Claude upstream review is scoped evidence. The replacement Grok continuation has its own hook. This uniform method clearance does not clear nonuniform composition; actual missing source applicability remains conditional.",
+  "next": "Faithful bounded implementation and readiness under existing user scope, no new external review or defect sweep."
+}

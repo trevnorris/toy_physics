@@ -1,0 +1,108 @@
+{
+  "status": "APPROVED_PACKETS_LAUNCHED_STARTUP_VERIFIED",
+  "checks": [
+    {
+      "kind": "uniform-method-review",
+      "packetSha256": "847839ce129366fc274bc6d01a194561e3bea1f423425b8ce2defc1f08d2a62e",
+      "archiveSha256": "612f22f80b9ecb0c956b36d36d940333bc88d61bc76190d8dff6ee07ff61391f",
+      "packetUnchanged": true,
+      "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-method-review",
+      "previousRuntimeHashes": {
+        "review_run.py": "59a6adba1a369672bc8ebb9c6bd8a823dbcedbac350d24eb0a58e7bf431c4678",
+        "review_launch.py": "4552ef6b1aa3d633c8aaa8a5bdee630d00e9e478370c4b01fef6b1e911a62d78"
+      },
+      "currentRuntimeHashes": {
+        "runnerSha256": "73a38b53f1d78562e1bb3324cc8c746e5716751df66b4f450ec278d887cd8497",
+        "launcherSha256": "7a0e1f089894e75bc0b1e27a9d7a6407438f24f11dbf37e1aad28859b01298ad",
+        "completionMessageSha256": "7902519f7c8b5706d2e1e70a7e11b0e4c77d712ca07742ab4deaecc82424c1a1"
+      },
+      "rootImportAndSyntaxChecks": true
+    },
+    {
+      "kind": "upstream-repair-review",
+      "packetSha256": "7cf2a67660fcec7f4029fdef6384a0520104b265596f902b2f3486f5e87eee29",
+      "archiveSha256": "c076da8257220ecf588c9932fc0a8a0c044c053f6f645cba2867aeda65afcaf4",
+      "packetUnchanged": true,
+      "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/upstream-repair-review",
+      "previousRuntimeHashes": {
+        "review_run.py": "bc9d8f610da40e90378165c331ab94635603e609937131287e78368550f2674f",
+        "review_launch.py": "7ac1f1d489e48582eaa00be6ebb0572217eb5ca9f883a1580a95ad2807566b0a"
+      },
+      "currentRuntimeHashes": {
+        "runnerSha256": "a1a160971f47c904ee3b03795d497064b6c56109411fb8b774ddfdabd1cf57ce",
+        "launcherSha256": "b201366bfa62643681a3d77d0672030b860f5bad0fb22cd0096552dbd9055c18",
+        "completionMessageSha256": "98bc4c8bbe4619e1eb0552502f15742291db3adcd838aada908265b6fa760b06"
+      },
+      "rootImportAndSyntaxChecks": true
+    }
+  ],
+  "scientificPayloadRestored": false,
+  "startupReceipts": [
+    {
+      "kind": "uniform-method-review",
+      "status": "RUNNING",
+      "packetSha256": "847839ce129366fc274bc6d01a194561e3bea1f423425b8ce2defc1f08d2a62e",
+      "coordinatorPid": 1435890,
+      "hookStatus": "waiting",
+      "reviewers": [
+        {
+          "engine": "claude",
+          "pid": 1435898,
+          "alive": true,
+          "state": "S",
+          "startTicks": "91349356",
+          "sessionId": "963927a9-9464-4475-afb8-42f3888f5091",
+          "cwd": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-method-review/claude/work",
+          "startedUtc": "2026-10-01T16:29:47.236989+00:00",
+          "exitStatus": null
+        },
+        {
+          "engine": "grok",
+          "pid": 1435897,
+          "alive": true,
+          "state": "S",
+          "startTicks": "91349356",
+          "sessionId": "3031df74-517b-4c4f-9708-3ae4d79470ce",
+          "cwd": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-method-review/grok/work",
+          "startedUtc": "2026-10-01T16:29:47.236764+00:00",
+          "exitStatus": null
+        }
+      ],
+      "coordinatorStderrBytes": 0,
+      "checkedUtc": "2026-10-01T16:30:27.948197+00:00"
+    },
+    {
+      "kind": "upstream-repair-review",
+      "status": "RUNNING",
+      "packetSha256": "7cf2a67660fcec7f4029fdef6384a0520104b265596f902b2f3486f5e87eee29",
+      "coordinatorPid": 1436146,
+      "hookStatus": "waiting",
+      "reviewers": [
+        {
+          "engine": "claude",
+          "pid": 1436154,
+          "alive": true,
+          "state": "S",
+          "startTicks": "91349637",
+          "sessionId": "35a49185-b0f3-4183-bfd1-c533e3622d41",
+          "cwd": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/upstream-repair-review/claude/work",
+          "startedUtc": "2026-10-01T16:29:50.046235+00:00",
+          "exitStatus": null
+        },
+        {
+          "engine": "grok",
+          "pid": 1436155,
+          "alive": false,
+          "state": null,
+          "startTicks": null,
+          "sessionId": "6c7e04cd-d2dc-450f-8ea0-32e0c4395859",
+          "cwd": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/upstream-repair-review/grok/work",
+          "startedUtc": "2026-10-01T16:29:50.047149+00:00",
+          "exitStatus": 0
+        }
+      ],
+      "coordinatorStderrBytes": 0,
+      "checkedUtc": "2026-10-01T16:30:27.948818+00:00"
+    }
+  ]
+}

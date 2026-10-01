@@ -1,8 +1,8 @@
 {
-  "status": "TWO_PACKETS_PREPARED_AWAITING_EXACT_EXPORT_CONSENT",
+  "status": "BOTH_APPROVED_PACKETS_SUBMITTED_AWAIT_PAIRED_REPORTS",
   "packets": [
     {
-      "status": "PREPARED_AWAITING_EXACT_PACKET_CONSENT",
+      "status": "SUBMITTED_AWAIT_PAIRED_ADJUDICATION",
       "packetDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-method-review/packet",
       "packetSha256": "847839ce129366fc274bc6d01a194561e3bea1f423425b8ce2defc1f08d2a62e",
       "archiveSha256": "612f22f80b9ecb0c956b36d36d940333bc88d61bc76190d8dff6ee07ff61391f",
@@ -14,11 +14,57 @@
       ],
       "reviewerExecution": "source-only",
       "currentThread": "01a0e01b-ef84-7192-817f-584cda5d339b",
-      "scienceLaunched": false,
-      "externalSubmitted": false
+      "externalSubmitted": true,
+      "authoritySha256": "29dae8df602b82ed79820a583f42237211f195b62dfe243846182568bdc55430",
+      "launch": {
+        "jobPid": 1435890,
+        "watcherPid": 1435891,
+        "packetSha256": "847839ce129366fc274bc6d01a194561e3bea1f423425b8ce2defc1f08d2a62e",
+        "reviewers": [
+          "Claude",
+          "Grok"
+        ],
+        "concurrentReviewWorkers": 2,
+        "scienceCalls": 0,
+        "runnerSha256": "73a38b53f1d78562e1bb3324cc8c746e5716751df66b4f450ec278d887cd8497",
+        "launcherSha256": "7a0e1f089894e75bc0b1e27a9d7a6407438f24f11dbf37e1aad28859b01298ad"
+      },
+      "startup": {
+        "kind": "uniform-method-review",
+        "status": "RUNNING",
+        "packetSha256": "847839ce129366fc274bc6d01a194561e3bea1f423425b8ce2defc1f08d2a62e",
+        "coordinatorPid": 1435890,
+        "hookStatus": "waiting",
+        "reviewers": [
+          {
+            "engine": "claude",
+            "pid": 1435898,
+            "alive": true,
+            "state": "S",
+            "startTicks": "91349356",
+            "sessionId": "963927a9-9464-4475-afb8-42f3888f5091",
+            "cwd": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-method-review/claude/work",
+            "startedUtc": "2026-10-01T16:29:47.236989+00:00",
+            "exitStatus": null
+          },
+          {
+            "engine": "grok",
+            "pid": 1435897,
+            "alive": true,
+            "state": "S",
+            "startTicks": "91349356",
+            "sessionId": "3031df74-517b-4c4f-9708-3ae4d79470ce",
+            "cwd": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-method-review/grok/work",
+            "startedUtc": "2026-10-01T16:29:47.236764+00:00",
+            "exitStatus": null
+          }
+        ],
+        "coordinatorStderrBytes": 0,
+        "checkedUtc": "2026-10-01T16:30:27.948197+00:00"
+      }
     },
     {
-      "status": "PREPARED_AWAITING_EXACT_PACKET_CONSENT",
+      "status": "SUBMITTED_AWAIT_PAIRED_ADJUDICATION",
       "packetDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/upstream-repair-review/packet",
       "packetSha256": "7cf2a67660fcec7f4029fdef6384a0520104b265596f902b2f3486f5e87eee29",
       "archiveSha256": "c076da8257220ecf588c9932fc0a8a0c044c053f6f645cba2867aeda65afcaf4",
@@ -30,9 +76,58 @@
       ],
       "reviewerExecution": "focused independently authored guarded SymPy probes",
       "currentThread": "01a0e01b-ef84-7192-817f-584cda5d339b",
-      "scienceLaunched": false,
-      "externalSubmitted": false
+      "externalSubmitted": true,
+      "authoritySha256": "d0ce82f564345da30bd3e4bf51a04dd2c341c39020086be2c88e9beda565f438",
+      "launch": {
+        "jobPid": 1436146,
+        "watcherPid": 1436147,
+        "packetSha256": "7cf2a67660fcec7f4029fdef6384a0520104b265596f902b2f3486f5e87eee29",
+        "reviewers": [
+          "Claude",
+          "Grok"
+        ],
+        "concurrentReviewWorkers": 2,
+        "scienceCalls": "guarded review probes only",
+        "runnerSha256": "a1a160971f47c904ee3b03795d497064b6c56109411fb8b774ddfdabd1cf57ce",
+        "launcherSha256": "b201366bfa62643681a3d77d0672030b860f5bad0fb22cd0096552dbd9055c18"
+      },
+      "startup": {
+        "kind": "upstream-repair-review",
+        "status": "RUNNING",
+        "packetSha256": "7cf2a67660fcec7f4029fdef6384a0520104b265596f902b2f3486f5e87eee29",
+        "coordinatorPid": 1436146,
+        "hookStatus": "waiting",
+        "reviewers": [
+          {
+            "engine": "claude",
+            "pid": 1436154,
+            "alive": true,
+            "state": "S",
+            "startTicks": "91349637",
+            "sessionId": "35a49185-b0f3-4183-bfd1-c533e3622d41",
+            "cwd": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/upstream-repair-review/claude/work",
+            "startedUtc": "2026-10-01T16:29:50.046235+00:00",
+            "exitStatus": null
+          },
+          {
+            "engine": "grok",
+            "pid": 1436155,
+            "alive": false,
+            "state": null,
+            "startTicks": null,
+            "sessionId": "6c7e04cd-d2dc-450f-8ea0-32e0c4395859",
+            "cwd": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/upstream-repair-review/grok/work",
+            "startedUtc": "2026-10-01T16:29:50.047149+00:00",
+            "exitStatus": 0
+          }
+        ],
+        "coordinatorStderrBytes": 0,
+        "checkedUtc": "2026-10-01T16:30:27.948818+00:00"
+      }
     }
   ],
-  "scientificWorkLaunched": false
+  "literalUserApproval": "I approve. Fire away",
+  "submittedUtc": "2026-10-01T16:31:25.446315+00:00",
+  "uniformScientificInstrumentLaunched": false,
+  "reviewerGuardedProbesAuthorized": true
 }

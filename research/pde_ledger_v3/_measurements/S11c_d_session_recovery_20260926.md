@@ -1,3 +1,20 @@
+**RESUMED CENTRAL BENCHMARK ONLY; STOP AFTER RESULT (2026-09-30):**
+User explicitly requested resuming the paused central-balance-v2 and a separate
+source/metadata-only equal-speed feasibility answer. Same PID4097233/start ticks
+85113744 resumed after exact command/cgroup/containment/hook checks; no restart,
+source/gate edit or deadline. The earlier pause below is historical.
+Label result: strict rest bulk v_bulk_normal_0=0, selected transverse speed ratio
+approximately0.12, LAB_HELD/RHO4_CONSTANT development benchmark, not the calibrated
+draining model. Retain numerical controls and outstanding review qualifications.
+NO omega2.3/4, MATERIAL_ADVECTED, equal-speed run or extra validator automatically.
+After completion inspect actual evidence, report central result plus feasibility,
+and STOP. Current job and its existing hook remain the only scientific execution.
+Equal-speed source finding: original operands/machinery reusable; material-bound
+results are not. Exact incoming-mode/branch coincidence is explicitly refused by
+current boundary/sheet checks, so it is not an established cheap parameter rebind.
+Read equal_speed_feasibility.md and flow_calibration_resume.json. Do not modify
+pinned sources to inject labels; apply them in the completion report/handoff.
+
 **PAUSED FOR USER FLOW/CALIBRATION GO/NO-GO (2026-09-30):**
 The user's latest instruction supersedes the continuation directions below.
 Central-balance-v2 is suspended in memory (SIGSTOP), not killed/restarted;

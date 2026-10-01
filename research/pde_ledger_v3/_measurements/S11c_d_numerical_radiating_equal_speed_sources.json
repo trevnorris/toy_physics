@@ -1,0 +1,12 @@
+{
+  "scope": "Source and metadata only; no scientific restoration, new build or run",
+  "sourceSha256": {
+    "research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_boundary.py": "d96d8e062f4e9cdc85ab0989ddb0a057fa931e12b412d59f937160b3f8177988",
+    "research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_integration_v3.py": "dc154817f13f05d436abebb708556778dc397775c57af6f56818103e12827058",
+    "research/pde_ledger_v3/_measurements/S11c_d_frequency_source.py": "9be20be462bc10bfcaa7af643b9301948dd79bc2e08eb24ebcd1386a81efcdac",
+    "research/pde_ledger_v3/scripts/S11c_d_mixing_scattering_sympy_audit.py": "5bf77729682960bb59f10c672a5fe3f67a98b0a9533da7c6189a37183596050f",
+    "research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_flow_calibration_assessment.json": "e873fbda657b3741af9855ff82f38569fb7ab4c15b338973ef665c62267468d6"
+  },
+  "conclusion": "Exact equal-speed selected incoming/branch coincidence is unsupported by existing boundary selection and joint sheet transport; not an established cheap numerical rebind.",
+  "runtimeAuthority": "Existing central balance resumed; stop after central result and this assessment. No neighbors, material anchoring expansion or equal-speed job."
+}

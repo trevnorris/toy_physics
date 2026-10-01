@@ -1,0 +1,35 @@
+{
+  "status": "SAME_PROCESS_RESUMED_CENTRAL_BENCHMARK_ONLY",
+  "utc": "2026-10-01T00:04:27.921198+00:00",
+  "pid": 4097233,
+  "procStartTicks": "85113744",
+  "command": [
+    "/usr/bin/python3",
+    "-u",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_balance_v2.py",
+    "--manifest",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_balance_v2_inputs.json",
+    "--gate",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_balance_v2_gate.json",
+    "--run-directory",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-balance-v2/complete"
+  ],
+  "cgroup": "0::/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-f0fe15054ec2.service\n",
+  "unit": "s11c-guard-f0fe15054ec2",
+  "signal": "SIGCONT",
+  "processStateAfterSignal": "R",
+  "limits": {
+    "memory.max": "2147483648",
+    "memory.swap.max": "0",
+    "pids.max": "32"
+  },
+  "systemdProperties": "Restart=no\nRuntimeMaxUSec=infinity\nActiveState=active\nSubState=running\n",
+  "existingHookWaiting": true,
+  "authority": "User explicitly requested resuming this suspended central-balance-v2 process to completion; source-only equal-speed feasibility separately; stop with benchmark result and answer. No MATERIAL_ADVECTED or neighbor-frequency expansion.",
+  "scopeLabel": "rest-bulk (v_bulk_normal_0=0), c_gamma/c_s approximately 0.12 for saved transverse branch, LAB_HELD development benchmark; not the calibrated draining model",
+  "priorPauseRecord": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_flow_calibration_pause.json",
+  "newProcessLaunched": false,
+  "sourceOrGateModified": false,
+  "runtimeDeadlineAdded": false,
+  "afterCompletion": "Inspect saved actual controls and outstanding independent review findings; report central result and source-only equal-speed assessment; stop. No automatic new scientific job."
+}

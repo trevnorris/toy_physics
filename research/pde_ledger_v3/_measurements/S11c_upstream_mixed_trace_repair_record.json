@@ -1,0 +1,45 @@
+{
+  "status": "LOCAL_TOOLING_REPAIRS_TESTED_NO_FRESH_INDEPENDENT_CLEAR",
+  "reviewedBaselineCommit": "8305e075",
+  "reviewedWorkerSha256": "ab3c9f47ca619fbe45af61462460001ef9e968eacbf87735596b21f3e1222064",
+  "workerSha256": "b5c7a0a6785ba93f498ec3d0f1690818a9d3ad4d876e274e9b23311b86e02313",
+  "literalVerdicts": {
+    "claude": "NEEDS REVISION",
+    "grok": "NEEDS REVISION"
+  },
+  "independentBuildClearance": false,
+  "authority": {
+    "userGoal": "continue after the selected bare-term result",
+    "standingInstruction": "Pure tooling fixes need local tests and a rationale, not another physics-review round.",
+    "priorUserInstruction": "If it only needs minor fixes then fix it then run it",
+    "externalSubmission": "No new packet or rerun."
+  },
+  "changes": [
+    "Exact native namespace keys left_map/right_map",
+    "Retain all final checks, emit physical factors/status/controls before them",
+    "Per-unit-V labels and chemical-channel-unreported label",
+    "Algebraic dependence/double-integration scope cautions"
+  ],
+  "unchangedTopLevelAST": [
+    "sha",
+    "require",
+    "save",
+    "extract_function",
+    "literal_record",
+    "containment",
+    "Journal",
+    "assignment",
+    "selected_constructor",
+    "main"
+  ],
+  "allAssignmentASTsUnchanged": true,
+  "assignmentCount": 158,
+  "resolventIdentityOrderUnchanged": true,
+  "tests": {
+    "exitCode": 0,
+    "count": 11,
+    "recordSha256": "cbfe27105eba74bbd36f7d7c5d41db1afab7dc1f547ef2cf1dd3af48d784c3b0"
+  },
+  "scientificImportsOrRestorationDuringRepair": false,
+  "automaticRetry": false
+}

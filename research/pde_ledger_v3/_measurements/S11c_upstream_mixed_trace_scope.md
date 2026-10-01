@@ -1,6 +1,6 @@
 # Selected mixed term through the closed face response
 
-Preparation, 2026-10-01. User authority: “continue” after the completed
+Locally corrected after the two completed source reviews, 2026-10-01. User authority: “continue” after the completed
 mixed-tanh diagnostic and its proposed closed-response/reference-trace check.
 No new scientific calculation has run. No production equation changes.
 
@@ -16,7 +16,9 @@ rho_m=1/10, W0=1, L_W=10, conserved edge momenta (1/5,1/10), profile-direction
 input 0 and output 1/10. Physical permeability and its memory time are retained
 at the saved values. The independent eta/sigma rectangle is unchanged; their
 physical relation is not substituted. The incoming source is prescribed normal
-velocity, not a transverse light eigenmode. Neither a calibrated speed ratio
+velocity, not a transverse light eigenmode. All three reported scalar factors
+and integrands are per unit V; the native chemical source expression is saved,
+but its response channel is unreported. Neither a calibrated speed ratio
 nor drain flow is introduced.
 
 ## Actual operands and calculation
@@ -70,13 +72,21 @@ faces, or a correction to a benchmark loss. Complete slab-row contraction,
 weak restriction, arbitrary input momentum, both-face work, pure eta²/sigma²,
 producer regeneration and defect integration are outside this test.
 
+Reference pressure and its normal jet are algebraically dependent outputs of
+this same conversion, not independent confirmations of the physical response.
+Their actual differences still have to be emitted and checked at runtime.
+
 The source-only downstream handoff is c2 `build_face` / `build_case`. Those
 already replace the slab pressure and jet slots. The b theta row already
 includes its closure-flux fold, and the mechanical row has its force orientation;
-no additional flux equation or traction sign is appended here.
+no additional flux equation or traction sign is appended here. A whole saved
+convolution must not be passed unchanged to `kernel_apply(second=...)`: that
+path integrates the middle leg again. This diagnostic does not perform that
+downstream routing or authorize a production implementation.
 
-Fresh Claude and Grok assess this actual instrument before its output is
-trusted. Prior evidence and its historical review status remain unchanged; restoring
+Both source reviews finished before these local namespace, persistence and
+labeling repairs. Their literal NEEDS REVISION verdicts remain unchanged; no
+fresh independent build CLEAR is claimed. See the review disposition. Prior evidence and its historical review status remain unchanged; restoring
 an input does not independently revalidate it. New packet contains no peer
 reports or outside commentary.
 

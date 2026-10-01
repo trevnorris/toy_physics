@@ -1,0 +1,15 @@
+{
+  "status": "READY_AFTER_REVIEWED_MATHEMATICS_AND_LOCAL_TOOLING_CORRECTIONS",
+  "independentBuildClearance": false,
+  "workerSha256": "b5c7a0a6785ba93f498ec3d0f1690818a9d3ad4d876e274e9b23311b86e02313",
+  "manifestSha256": "76397a7a822b826af57cbbc35222ee61efe47a19348349fac3d475411663fb61",
+  "gateSha256": "d48656ecfc5e8d1e9ba48ef6f21d592cb230fdbb5a1e73d9fd6ca041424998ad",
+  "reviewedBaselineCommit": "8305e075",
+  "sourcePinsVerified": 74,
+  "launcherVerifyPassed": true,
+  "toolingTests": 11,
+  "scientificImportsDuringReadiness": false,
+  "scientificJobLaunched": false,
+  "noDeadlines": true,
+  "noNewFilesAbove1MiB": true
+}

@@ -1,3 +1,16 @@
+**SELECTED RESPONSE TRACE READY AFTER LOCAL TOOLING REPAIRS (2026-10-01):**
+Reviewed source and both NEEDS REVISION reports are preserved at8305e075.
+The namespace keys now match the native left_map/right_map; eleven stdlib tests
+pass, including old-failure/corrected-execution and evidence-ordering checks.
+All scientific assignment ASTs and non-science top-level definitions match the
+reviewed source. Factors are explicitly per-unit-V; physical/chemical inputs,
+methods and tolerances are unchanged. No fresh independent CLEAR is claimed.
+See S11c_upstream_mixed_trace_repair_record.json, readiness.json and gate.json.
+Fresh74-pin gate authorizes one existing-scope diagnostic with hook first,
+4GiB pooled native/cgroup containment and no deadlines. No science launched
+at preparation; production repair, full slab contraction and defect sweep stay
+outside scope. Prior records and exact review packet remain intact.
+
 **SELECTED RESPONSE REVIEW PRESERVED; LOCAL TOOLING FIXES NEXT (2026-10-01):**
 Both literal reports are NEEDS REVISION. Both support the selected mathematics;
 the shared blocking finding is leftmap/rightmap versus native left_map/right_map.

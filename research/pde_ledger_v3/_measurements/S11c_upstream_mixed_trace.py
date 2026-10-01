@@ -217,7 +217,7 @@ def science(manifest, J):
     slot = tree.value.args[0].elts[0].elts[2]
     require(isinstance(slot,ast.Constant) and slot.value == 0, 'unchanged native bare direct slot')
     z_matrix = sp.Matrix([[flat, first],[0,flat.xreplace(dict(zip(kout,kin))|{qout:qin})]])
-    ns.update(z_matrix=z_matrix, transfer=transfer, leftmap=left, rightmap=right,
+    ns.update(z_matrix=z_matrix, transfer=transfer, left_map=left, right_map=right,
               z_middle=flat.xreplace(dict(zip(kout,middle))|{qout:qm}))
     exec(native_matrix, ns)
     Z = ns['z_three'].subs(endpoint_binding)
@@ -261,7 +261,7 @@ def science(manifest, J):
         selected = sp.cancel(mixed.subs(tag,1))
         factor = sp.cancel(sp.diff(selected,D))
         J.zero('direct-linearity',selected,factor*D)
-        # Independent resolvent-difference identity; both external response factors are retained.
+        # Second algebraic identity, not independent physical evidence; both external factors remain.
         check = (sp.eye(3)+coefficient*Z).upper_triangular_solve(added)
         right_inverse = (sp.eye(3)+coefficient*(Z+added)).upper_triangular_solve(sp.eye(3))
         matzero('resolvent-difference-identity',delta,check*right_inverse)
@@ -320,8 +320,6 @@ def science(manifest, J):
     jet_factor = sp.cancel(sp.diff(T['jetMixed'].subs(tag,1),D)*velocity_coefficient)
     J.emit('external-factor-dependence',dict(physical=sorted(response_factor.free_symbols,key=str),
         reference=sorted(ref_factor.free_symbols,key=str),normalJet=sorted(jet_factor.free_symbols,key=str)))
-    require(not (response_factor.free_symbols | ref_factor.free_symbols | jet_factor.free_symbols),
-            'fixed external factors independent of middle momentum and shape grades')
     # Persist physical factors and exact complex domain evidence before acceptance checks.
     denominators = [1+coefficient*Z[0,0],1+coefficient*Z[2,2]]
     certificates=[]
@@ -332,13 +330,12 @@ def science(manifest, J):
                                  positive=norm.is_positive,finite=norm.is_finite))
     factor_norm = sp.simplify(sp.expand_complex(response_factor*sp.conjugate(response_factor)))
     J.emit('physical-factors',dict(source=source,velocityCoefficient=velocity_coefficient,
-        physicalPressureFactor=response_factor,referencePressureFactor=ref_factor,
-        normalJetFactor=jet_factor,externalDenominators=certificates,factorNormSquared=factor_norm,
-        physicalIntegrand=response_factor*bare_integrand,referenceIntegrand=ref_factor*bare_integrand,
-        jetIntegrand=jet_factor*bare_integrand,
+        sourceChannel='per unit prescribed normal velocity; chemical-channel response unreported',
+        physicalPressurePerUnitV=response_factor,referencePressurePerUnitV=ref_factor,
+        normalJetPerUnitV=jet_factor,externalDenominators=certificates,factorNormSquared=factor_norm,
+        physicalIntegrandPerUnitV=response_factor*bare_integrand,referenceIntegrandPerUnitV=ref_factor*bare_integrand,
+        jetIntegrandPerUnitV=jet_factor*bare_integrand,
         integralEvaluated=False,sourceIsTransverseMode=False,fullSlabContraction=False))
-    for cert in certificates:
-        require(cert['positive'] is True and cert['finite'] is True,'external closure domain')
     depth = sp.Symbol('positive_middle_depth', positive=True)
     middle_certificates = []
     for label, physical_q in [('propagating', depth), ('evanescent', sp.I*depth)]:
@@ -348,8 +345,6 @@ def science(manifest, J):
                                         realPart=real_part,positive=real_part.is_positive))
     J.emit('middle-domain',dict(certificates=middle_certificates,
         endpoints='q=0 is excluded from these inverses; saved bare-action endpoint limits remain inherited.'))
-    require(all(x['positive'] is True for x in middle_certificates),'native outgoing middle closure domain')
-    require(factor_norm.is_finite is True,'finite response factor')
     J.emit('response-status',dict(zero=response_factor.is_zero,
         nonzeroNorm=factor_norm.is_positive,
         note='An exact zero is a possible result, not a failed expected-answer check.'))
@@ -366,6 +361,12 @@ def science(manifest, J):
     J.zero('sign-control',flipped,-right)
     require(sp.simplify(sp.expand_complex(movement*sp.conjugate(movement))).is_positive is True,
             'input-resolvent omission responds')
+    require(not (response_factor.free_symbols | ref_factor.free_symbols | jet_factor.free_symbols),
+            'fixed external factors independent of middle momentum and shape grades')
+    for cert in certificates:
+        require(cert['positive'] is True and cert['finite'] is True,'external closure domain')
+    require(factor_norm.is_finite is True,'finite response factor')
+    require(all(x['positive'] is True for x in middle_certificates),'native outgoing middle closure domain')
     # Native grade convention remains rectangular; no pure-second-order completion claimed.
     J.emit('scope',dict(eta=eta,sigma=sigma,epsilon=epsilon,
         outputs='difference in selected physical/reference pressure and normal-jet kernels',

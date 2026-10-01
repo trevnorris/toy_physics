@@ -1,8 +1,11 @@
 {
-  "status": "READY_AFTER_AUTHORIZED_LOCAL_TOOLING_FIXES",
-  "physicalInput": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_variable_profile_development_input.json",
-  "nativeRecords": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_mixed_trace_native.json",
-  "priorDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-mixed-tanh-20261001/diagnostic-01/complete",
+  "status": "READY_FOR_SELECTED_MIXED_TRACE_DIAGNOSTIC",
+  "independentBuildClearance": false,
+  "pooledExecution": true,
+  "workerSha256": "b5c7a0a6785ba93f498ec3d0f1690818a9d3ad4d876e274e9b23311b86e02313",
+  "launcherSha256": "cf38882423968fa58d0b2b742baff853b6ef9c0bf4af68b171b228f62e240072",
+  "manifestSha256": "76397a7a822b826af57cbbc35222ee61efe47a19348349fac3d475411663fb61",
+  "completionMessageSha256": "73d1ef4c48b49f29337266eaae80938cf47d3105bf72454d19eda63b7f9911aa",
   "sourcePins": {
     "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_mixed_trace.py": "b5c7a0a6785ba93f498ec3d0f1690818a9d3ad4d876e274e9b23311b86e02313",
     "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_mixed_trace_native.json": "06c0e757bf412c51972b803238ed246ef89259bd59156de6e785206e7447d524",
@@ -79,6 +82,43 @@
     "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_mixed_trace_launch.py": "cf38882423968fa58d0b2b742baff853b6ef9c0bf4af68b171b228f62e240072",
     "/var/projects/toy_physics/_scratch/s11c/s11c-mixed-trace-20261001/build-review/explicit-packet-approval.json": "07bf8a4458e8ed8f31354eb8929183e8f1102972ab25570c728f5f4df315cd56"
   },
+  "outputDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-mixed-trace-20261001/diagnostic-01/complete",
+  "command": [
+    "/usr/bin/python3",
+    "/var/projects/toy_physics/scripts/s11c_guarded_run.py",
+    "--pool",
+    "s11c-near-unity",
+    "--memory-gib",
+    "4",
+    "--tasks-max",
+    "32",
+    "--log-directory",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-mixed-trace-20261001/diagnostic-01/resource-guard",
+    "--",
+    "/usr/bin/python3",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+    "--parallel-prerequisite-read",
+    "--run-root",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-mixed-trace-20261001/diagnostic-01",
+    "--stage",
+    "upstream_mixed_trace",
+    "--",
+    "/usr/bin/python3",
+    "-u",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_mixed_trace.py",
+    "--out",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-mixed-trace-20261001/diagnostic-01/complete",
+    "--inputs",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_mixed_trace_inputs.json"
+  ],
+  "reviewRecordSha256": "9f1738b7357dd26c8e12eb3e48e5bfb76dfa33a248551794bd1a524d1c3e97f8",
+  "repairRecordSha256": "0ac85ea87681db8855eb48259f6bbb4900c79b4d6e02ae77cbe51bfee057a22b",
+  "literalVerdicts": {
+    "claude": "NEEDS REVISION",
+    "grok": "NEEDS REVISION"
+  },
+  "authority": "Already-approved bounded continuation; standing local tooling-fix policy. No new export.",
+  "durationLimits": null,
   "resources": {
     "pool": "s11c-near-unity",
     "aggregateMemoryBytes": 17179869184,
@@ -91,18 +131,6 @@
     "durationLimits": null,
     "priorityPolicy": "desktop-managed"
   },
-  "approvalContext": {
-    "user": "continue",
-    "scope": "one selected saved-term closed-response/reference-pressure trace after substantive assessment and readiness",
-    "externalExport": "requires exact packet consent",
-    "notAuthorized": [
-      "production repair",
-      "producer replay",
-      "defect sweep",
-      "loss calculation"
-    ]
-  },
-  "scientificJobLaunched": false,
-  "independentBuildClearance": false,
-  "reviewedBaselineCommit": "8305e075"
+  "scope": "Selected upper-face response and reference/jet difference only; no production repair.",
+  "automaticRetry": false
 }

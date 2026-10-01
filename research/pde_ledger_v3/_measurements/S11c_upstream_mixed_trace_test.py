@@ -5,6 +5,7 @@ import json
 from pathlib import Path
 import tempfile
 import unittest
+from types import SimpleNamespace
 
 HERE = Path(__file__).parent
 WORKER = HERE/'S11c_upstream_mixed_trace.py'
@@ -58,5 +59,57 @@ class Tooling(unittest.TestCase):
         calls=[ast.unparse(x.func) for x in ast.walk(TREE) if isinstance(x,ast.Call)]
         self.assertFalse(any(x.endswith(('.alarm','.setitimer')) for x in calls))
         self.assertNotIn('timeout=',SOURCE)
+
+    def test_native_namespace_old_failure_and_corrected_execution(self):
+        src=(HERE.parent/'scripts/S11c_c2_selfenergy_fold_sympy_audit.py').read_text()
+        fragment=ns['assignment'](src,'kernel_bridge','z_three')
+        left,right=object(),object()
+        calls=[]
+        class SourceMatrix:
+            def __getitem__(self,index):return ('diagonal',index)
+        class Transfer:
+            def xreplace(self,mapping):
+                calls.append(mapping)
+                return ('transfer',mapping)
+        common=dict(sp=SimpleNamespace(Matrix=lambda rows:rows),z_matrix=SourceMatrix(),
+                    transfer=Transfer(),z_middle='middle')
+        old=dict(common,leftmap=left,rightmap=right)
+        with self.assertRaisesRegex(NameError,'left_map'):exec(fragment,old)
+        corrected=dict(common,left_map=left,right_map=right)
+        exec(fragment,corrected)
+        self.assertEqual(calls,[left,right])
+        self.assertEqual(corrected['z_three'][0][2],0)
+        self.assertIs(corrected['z_three'][0][1][1],left)
+        self.assertIs(corrected['z_three'][1][2][1],right)
+        science=next(x for x in TREE.body if isinstance(x,ast.FunctionDef) and x.name=='science')
+        update=next(x for x in ast.walk(science) if isinstance(x,ast.Call)
+                    and isinstance(x.func,ast.Attribute) and x.func.attr=='update'
+                    and any(k.arg=='z_matrix' for k in x.keywords))
+        keys={k.arg for k in update.keywords}
+        self.assertTrue({'left_map','right_map'}<=keys)
+        self.assertFalse({'leftmap','rightmap'}&keys)
+    def test_all_native_fragment_name_loads(self):
+        src=(HERE.parent/'scripts/S11c_c2_selfenergy_fold_sympy_audit.py').read_text()
+        cases=[('kernel_bridge','z_three',{'sp','z_matrix','transfer','left_map','right_map','z_middle'}),
+               ('kernel_bridge','three_inverse',{'sp','coefficient','z_three'}),
+               ('reference_pressure_kernels','trace_three',{'sp','value_coefficient',
+                 'height_constant','normal_output','height_kernel','left','normal_middle','right','normal_input'})]
+        for fn,target,keys in cases:
+            tree=ast.parse(ns['assignment'](src,fn,target))
+            loads={n.id for n in ast.walk(tree) if isinstance(n,ast.Name) and isinstance(n.ctx,ast.Load)}
+            self.assertEqual(loads,keys)
+    def test_final_evidence_precedes_related_guards(self):
+        science=next(x for x in TREE.body if isinstance(x,ast.FunctionDef) and x.name=='science')
+        emits={}
+        guards={}
+        for n in ast.walk(science):
+            if not isinstance(n,ast.Call):continue
+            if isinstance(n.func,ast.Attribute) and n.func.attr=='emit' and isinstance(n.args[0],ast.Constant):
+                emits[n.args[0].value]=n.lineno
+            if isinstance(n.func,ast.Name) and n.func.id=='require' and isinstance(n.args[-1],ast.Constant):
+                guards[n.args[-1].value]=n.lineno
+        for key in ['fixed external factors independent of middle momentum and shape grades',
+                    'external closure domain','finite response factor','native outgoing middle closure domain']:
+            self.assertLess(max(emits[n] for n in ['physical-factors','response-status','controls','middle-domain']),guards[key])
 
 if __name__=='__main__':unittest.main()

@@ -1,3 +1,17 @@
+**UNIFORM METHOD REVIEWS: NEEDS REVISION / NEEDS REVISION (2026-10-01):**
+Both source-only reports delivered and were read before adjudication. Exact
+22-file packet/archive/private copies and indexed source/input hashes pass 157
+checks. See S11c_d_near_unity_uniform_review_record.json and _review_disposition.md.
+The original plan remains unchanged at b4aae7a2. A separate, unreviewed
+_revision.md supplies native/physical radical joins, named source lift, fresh
+face reconstruction, independent direction, closure limits and point accounting.
+Full acoustic nonsingularity is not silently added to the selected-limit scope;
+local qualifications do not clear either rejection. No new external packet,
+review rerun, uniform instrument or READY gate. Await applicable upstream pair
+findings and the next method decision; no defect sweep. Upstream reports have
+not been jointly adjudicated or shared with this pair. Existing hook continues;
+no model polling. No deadlines or resource-policy changes.
+
 **PARALLEL REVIEW PAIRS SUBMITTED (2026-10-01):**
 User explicitly approved both frozen packets: “I approve. Fire away”. All four
 fresh Claude/Grok legs started in separate workspaces with identical inputs per

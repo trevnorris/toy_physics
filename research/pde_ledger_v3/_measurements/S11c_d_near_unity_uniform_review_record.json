@@ -1,0 +1,901 @@
+{
+  "status": "BOTH_DELIVERED_NEEDS_REVISION_NO_SCIENCE_CLEARANCE",
+  "inspectedUtc": "2026-10-01T16:43:59.679971+00:00",
+  "reviewRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-method-review",
+  "reviewedBaselineCommit": "b4aae7a2",
+  "packetSha256": "847839ce129366fc274bc6d01a194561e3bea1f423425b8ce2defc1f08d2a62e",
+  "archiveSha256": "612f22f80b9ecb0c956b36d36d940333bc88d61bc76190d8dff6ee07ff61391f",
+  "packetFiles": 22,
+  "packetBytes": 118748,
+  "authority": {
+    "status": "EXPLICITLY_APPROVED_FIXED_PACKET",
+    "packetSha256": "847839ce129366fc274bc6d01a194561e3bea1f423425b8ce2defc1f08d2a62e",
+    "archiveSha256": "612f22f80b9ecb0c956b36d36d940333bc88d61bc76190d8dff6ee07ff61391f",
+    "packetFiles": 22,
+    "packetBytes": 118748,
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "literalUserReply": "I approve. Fire away",
+    "approvedUtc": "2026-10-01T16:29:23.932415+00:00",
+    "thread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+    "scope": "This exact frozen packet, both fresh reviewers; four independent legs across the two approved packets. Repair-review scientific probes only through the pinned pooled dispatcher."
+  },
+  "coordinator": {
+    "status": "BOTH_REQUESTED_ATTEMPTS_FINISHED_AWAITING_LITERAL_ADJUDICATION",
+    "finishedUtc": "2026-10-01T16:38:27.934147+00:00",
+    "scienceCalls": 0
+  },
+  "launch": {
+    "jobPid": 1435890,
+    "watcherPid": 1435891,
+    "packetSha256": "847839ce129366fc274bc6d01a194561e3bea1f423425b8ce2defc1f08d2a62e",
+    "reviewers": [
+      "Claude",
+      "Grok"
+    ],
+    "concurrentReviewWorkers": 2,
+    "scienceCalls": 0,
+    "runnerSha256": "73a38b53f1d78562e1bb3324cc8c746e5716751df66b4f450ec278d887cd8497",
+    "launcherSha256": "7a0e1f089894e75bc0b1e27a9d7a6407438f24f11dbf37e1aad28859b01298ad"
+  },
+  "hook": {
+    "status": "finished",
+    "watcherPid": 1435891,
+    "jobPid": 1435890,
+    "thread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+    "startedUtc": "2026-10-01T16:29:47.119177+00:00",
+    "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
+    "messageSha256": "7902519f7c8b5706d2e1e70a7e11b0e4c77d712ca07742ab4deaecc82424c1a1",
+    "notifications": {
+      "completion": {
+        "status": "queued",
+        "exitCode": 0,
+        "finishedUtc": "2026-10-01T16:38:28.328441+00:00"
+      }
+    }
+  },
+  "reviews": {
+    "claude": {
+      "literalVerdict": "NEEDS REVISION",
+      "literalDeliveredText": "**Verdict: NEEDS REVISION**\n\n**Domain and limits of this review.** I reviewed the method for the selected transverse doublet at \u03c9=3 with tangents (1/5, 1/10). The conditions were strict zero drain, LAB_HELD/RHO4_CONSTANT, and an effective c_s0 sweep with the brane inputs held fixed. This is a prospective source-reading review. I ran no CAS and restored no payloads, and I derived nothing new. Numbers quoted below are the saved readouts in the packet, not exact values. A passing uniform check would not certify the full outgoing basis, the profile problem, total loss or any draining-background claim.\n\nThe plan's overall shape is sound. It projects before taking limits, keeps the harmonic legs and current units separate, and does not claim the full acoustic inverse is bounded. It declares the wrong-root control inapplicable on the transverse subspace, and it restricts the result to rest-bulk, which the inherited validity text in excerpts 13 and 14 requires. The corrections below are needed before the method can be cleared.\n\n**1. Effective family is not fully specified (Q1)**\n- The plan says to hold the brane coefficients and carry c_s0 through \"every occurrence\". The source does not say what those occurrences are.\n  - In S11b, c_s0, rho_m, B_rho, B_rho_3, \u039b_A, \u039b_V, k_W, C and others are separate KNOBs (excerpt 02).\n  - The input JSON binds c_s0=10, rho_m=1/10, B_rho_3=4, \u039b_A0=1/100, \u039b_V0=0 and \u03c4=1/10 independently.\n  - The 4D compression modulus implied by rho_m\u00b7c_s0\u00b2 is a different object from B_rho_3.\n- The revision must list each bound parameter, state whether it moves with c_s0, and justify that choice. It must also state that q is the only c_s0-dependent input to Z0=rho_m \u03c9/q if rho_m is held.\n- The frequency dependence of \u039b_A(\u03c9) through the memory time at \u03c9=3 must be declared held.\n- The primitive remark (c_s0\u00b2=5K\u03c10\u2074/m, excerpt 01) is correctly labelled a limitation. The supplied source gives no map from rho_m to \u03c10, so no primitive claim can be made.\n- The closure denominator 1+\u039b_A Z0/\u03c1_m\u00b2 can vanish at some Z0, and the sweep changes Z0. Its zeros across the family must be checked, not assumed absent.\n- Modal match is not bare ratio 1.\n  - Baseline bare ratio is 0.1 and modal ratio is about 0.1225, per the assessment JSON.\n  - So the modal matches sit near c_s0\u22481.22, while R7's bare ratio 1 is c_s0=1.\n  - The packet should say explicitly that it makes no statement about R7.\n\n**2. Restriction and lift not yet established (Q2)**\n- The only source support for \"transverse, decoupled from theta/thickness\" is numerical and taken at c_s0=10. It is `norm(R[3:,:])<1e-8` in excerpt 12, line 79, on a saved state.\n- An exact lift needs the actual TH/HT coupling blocks (excerpt 09, lines 11\u201312) at each end's values to annihilate the selected vector for symbolic c_s0. This must hold on both signs of q, since the pencil carries odd powers of q (excerpt 07, `analytic`).\n- The plan must also require nullity exactly 2 at each sampled speed, including q=0. The saved census enforces nullity 2 (excerpt 12, line 122). q=0 is a radical branch point, and the existing path machinery already treats seed==0 as a branch locus.\n- Each end must be evaluated at its own k_n(\u03c9), and the REFERENCE-to-LEFT reuse must be gated on identical bound operands, as the plan says.\n- The plan's fallback (exact restricted system plus q=0 and the wave relation) is acceptable.\n\n**3. q=0 limits: operands and boundary condition are missing (Q3)**\n- Projecting before the limit is correct. But it only helps if the transverse-column entries of the face rows are structurally zero before q appears. The plan should require checking that symbolically, not by evaluation, because `face_solution` (excerpt 03) solves a Z-dependent 2\u00d72 system.\n- The plan omits the face matrix determinant. It must be shown that the p/J system stays nonsingular as Z\u2192\u221e. Excerpt 04 shows S11b already classifies a grazing determinant (THRESHOLD_STATE when it equals 0), and the plan does not use it. Without this, the solution operator for a generic drive is not defined at q=0.\n- At q=0 the outgoing radiation condition has no pointwise meaning. The plan must state the boundary condition: the exact-q=0 face is defined as the one-sided limit operator.\n- The two-sided check (q>0 and q=iy) is nearly an identity for rational dependence on Z=\u03c1_m \u03c9/q. If the limit exists, both directions agree. It is not independent physical evidence.\n- The plan must say whether SLAB_CURRENT_MATRIX, the leg momenta and the amplitude row contain q or 1/q. If they do, a structural zero times a pole is exactly the proof gap the prompt warns about.\n- Orientation and \"outgoing\" selection use the continuation machinery (`selectedOutgoing`, `properDepthSheet`; excerpt 12, line 124 and excerpt 11), which cannot run at q=0. The plan needs a c_s0-independent determination, such as the signed current eigenvalues plus a group-velocity direction. It should reuse the existing k_n sign census and not re-solve it.\n- Conjugation at q=iy must treat q\u0304=\u2212q explicitly, not analytically continue.\n\n**4. Point set and limit checks (Q4)**\n- The \"at most eight speeds\" set conflicts with the extra predeclared approach distances |\u03c1_e\u22121|=1/200 and 1/2000. The 1/2000 points are not in the set. The plan should either enlarge the declared set or fold these into it.\n- From the saved readouts, c_T,R/c_T,L\u22480.99504. The RIGHT end's 199/200 point therefore puts LEFT at \u03c1\u22480.99996, which is essentially at its own match. The same near-coincidence holds for the 201/200 pair.\n- Exact-equality deduplication will not merge these. The labels \"below/above one end\" become misleading, and q\u00b2 is tiny and ill-conditioned for the other end. Per-end labelling is needed, with conditioning reported.\n- q scales roughly like \u221a\u03b4. The plan gives no acceptance rule for \"achieved differences\", so it should predeclare the expected scaling or report without a pass/fail claim.\n- Sampled points support no interval claim. The plan states this correctly.\n\n**5. Controls (Q5)**\n- The eW outward-velocity omission (excerpt 12, lines 98\u2013103) measures the row entry itself, `(row\u2212mut)@e4`. It does not depend on R, and R[4]=0 on this subspace. Its response therefore does not validate the transverse state, so it must be labelled a row-addressing control only.\n- The orientation-flip movement `\u22122\u00b7orientation\u00b7G` is nonzero whenever G is nonzero, so it cannot detect a wrong orientation. Orientation needs an independent reference, for example the sign of d\u03c9/dk_n from the frequency-derivative operand (excerpt 08) compared with the current sign.\n- The off-diagonal current omission can respond if M has nonzero off-diagonals inside the transverse block, which the existing code checks. That is a valid control.\n- The plan requires at least one applicable acoustic probe away from grazing but forbids new root or path solves. It must say how the probe is built. I suggest a fixed-q linear evaluation of the face closure on a chosen non-transverse column, with q\u2192\u2212q sensitivity and the p=Z(v+J/\u03c1_m) residual. It must not be a path-continued mode.\n\n**6. Upstream dependencies (Q6)**\n- The plan freezes a snapshot and labels results provisional, which is correct.\n- But c_T,e is itself a derived object. It depends on the brane inertia \u03c1_br and the full pencil, which the inertia-sign and thickness repairs may change. The mechanical face-load sign directly redefines the MECHANICAL_RESPONSE row.\n- A change to any of these would invalidate the whole point set, not only the dependent observable. The plan should say so and key the point set to the dependency-snapshot hash.\n- The treatment of the draining background is correct. Smooth rest-bulk limits are not transferred.\n\n**Required corrections**\n1. Declare each c_s0-dependent parameter and each held parameter, and add the closure-denominator check.\n2. State the exact-q=0 boundary condition, add the Z\u2192\u221e face-matrix nondegeneracy and the q-dependence of the current and amplitude operands, and say that the two-sided test is not independent evidence.\n3. Require a symbolic transverse lift at each sampled speed, plus a nullity-2 check including at q=0.\n4. Reconcile the point set with the 1/2000 checks, and handle the near-coincident cross-end points.\n5. Replace the tautological orientation control and specify the construction of the acoustic probe.\n6. Tie the match points to the frozen dependency snapshot and say that upstream repairs invalidate them.\n\nNo missing source file blocks the verdict. The needed information is the symbolic operands and rows, which the plan can restore under its own guard.",
+      "textSha256": "74408432e6ddf57cf412d6759ca81f8beb01556b16818b8a96e9b9d06367a524",
+      "receipt": {
+        "engine": "claude",
+        "sessionId": "963927a9-9464-4475-afb8-42f3888f5091",
+        "command": [
+          "/home/trevnorris/.local/bin/claude",
+          "--print",
+          "--output-format",
+          "json",
+          "--safe-mode",
+          "--restricted",
+          "--tools",
+          "Read,Glob,Grep",
+          "--allowedTools",
+          "Read,Glob,Grep",
+          "--permission-mode",
+          "dontAsk",
+          "--strict-mcp-config",
+          "--mcp-config",
+          "{\"mcpServers\":{}}",
+          "--setting-sources",
+          "",
+          "--disable-slash-commands",
+          "--session-id",
+          "963927a9-9464-4475-afb8-42f3888f5091"
+        ],
+        "cwd": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-method-review/claude/work",
+        "startedUtc": "2026-10-01T16:29:47.236989+00:00",
+        "packetSha256": "847839ce129366fc274bc6d01a194561e3bea1f423425b8ce2defc1f08d2a62e",
+        "promptSha256": "afb6becba7ae56deaa6192579850d17a8eb4383218be00debb0136c87666a93d",
+        "scientificExecutionEnabled": false,
+        "reviewVerdict": "NOT_ADJUDICATED",
+        "pid": 1435898,
+        "exitStatus": 0,
+        "finishedUtc": "2026-10-01T16:32:32.943425+00:00",
+        "wallSeconds": 165.70433904603124,
+        "outputSha256": "4e0c5bfd05fc865a7738d6b10c57d2324448338ef1b4a1333bf4cd268506405e",
+        "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderrBytes": 0
+      },
+      "stderr": "",
+      "stopReason": "end_turn",
+      "isError": false,
+      "terminalReason": "completed"
+    },
+    "grok": {
+      "literalVerdict": "NEEDS REVISION",
+      "literalDeliveredText": "I'll start from the packet index and the proposed plan, then read the physical definitions and native source before judging the method.The packet is in place. Next I\u2019ll read the plan, the physical definitions, and the native excerpts in that order.I have the plan and inventory. I\u2019ll now read the native excerpts and metadata the packet actually supplies.The packet is enough to judge the method. The family, rest-bulk scope, and q=0 handling are largely right; a few native-object pins still have to be fixed before this bounded check can be run.\n\n# Independent method review: selected uniform transverse states near acoustic matching\n\n**Verdict: NEEDS REVISION**\n\n**Domain.** Prospective method only, for selected uniform transverse states at LAB_HELD/RHO4_CONSTANT, \u03c9=3, tangents (1/5, 1/10), exact zero bulk drain, full-contrast LEFT and RIGHT, with the inherited effective bulk-speed coefficient varied and brane/density/permeability/memory inputs held. The question is whether those states, their actual face drives, and their physical current remain well defined on both physical sides of, and at, each end\u2019s modal match. This is not worker-build clearance, a computed result, a profile solve, a leakage estimate, a primitive one-medium recalibration, or clearance of the full outgoing basis.\n\n**Limits of this review.** Source reading of the supplied packet only. No CAS, no restored scientific payloads, no interval theorem from sample points, and no analog-light/R10 identification. Upstream inertia, mechanical-face, c2-trace, and thickness-coordinate reviews remain concurrent; any later uniform output on the frozen original packet hashes stays provisional on those findings.\n\n---\n\n## Required corrections\n\nThese change what would be computed or may be claimed. Optional wording is omitted.\n\n1. **Take limits in the native radical that actually sits in the restored face/current operands, and write down the native-to-physical map before any cancellation.**  \n   `FullPencilModes` assigns the bulk radical the dimension of \u03c9 (`source-excerpts/07`, `PHYSICAL_METADATA.dimensions.known[self.q] = measure(self.r.omega)`). The frequency-source coordinate map repeats `radicalUnit: (0,-1,0)` (`source-excerpts/08`). The existing numerical route recovers a 1/length physical depth as `state['q']/physical_scale` with saved scales 10.0 on both ends (`source-excerpts/11`; `S11c_d_numerical_radiating_end_maps_v2_inputs.json`). The plan\u2019s written wave relation and schematic `Z0=rho_m omega/q` are the physical-1/length form (`plan` \u201cSource joins and grazing treatment\u201d; calibration JSON `physicalDepthRelation`).  \n   Cancellation, one-sided series, and 1/200 or 1/2000 cross-checks must use the radical symbol that appears in `originalRelation` / `FACE_LEG_OBJECTS` / current matrices, then convert with a **recomputed** map. Substituting the schematic `Z0` into those rows is a different operand. At the selected match, vanishing native radical and vanishing physical q are the same point only after that map is stated.\n\n2. **Name the source restriction that is allowed to define exact `c_T,e`.**  \n   Exact matching is allowed only after a documented kernel/block of the **pre-binding** full five-field pencil, including thickness/chemical rows, lifts with an identity residual (`plan` \u201cCompact point set\u201d; `source-excerpts/12` proof names `FACE_LINEAR_LIFT_RESIDUAL`, `FACE_PORT_LINEAR_LIFT_RESIDUAL`, `FACE_LEG_JOIN_RESIDUAL`, `FACE_BULK_RECONSTRUCTION_RESIDUAL`). The saved candidate-16 momenta and the numerical test `norm(R[3:,:])<1e-8` (`source-excerpts/12`) are correspondence at the old input. If that restriction or its lift fails, or if the restricted dispersion still depends on `c_s0`, that end\u2019s exact match stays `UNRESOLVED`. The fallback remains the small exact selected system together with vanishing native radical and the native wave relation.\n\n3. **Rebind from pre-binding objects; recompute lift/join/reconstruction residuals after the new `c_s0`.**  \n   `end_sources` is the usable split: `originalAlgebraic` / `originalRelation` before `inp.mapping`, versus the compact live pencil that already satisfies `free_symbols \u2286 {frequency, k, q}` (`source-excerpts/08`). `bind_source` keeps the saved material map and requires a single remaining frequency symbol (`source-excerpts/10`); opening `c_s0` requires putting the new speed into that map. Saved pairing zeros are identities at the old binding (`source-excerpts/12` `require(all(... proof_names ...))`). They are not evidence at a new speed.\n\n4. **Name one applicable sheet-dependent probe away from grazing, and keep current orientation live.**  \n   `JointBulkSheetPath` builds `dq` from `\u2202relation/\u2202radical` and rejects a zero seed (`source-excerpts/06`). For a quadratic `q\u00b2` relation that derivative vanishes at the match, so the even wave residual is the same on both sheets. An applicable probe has to be odd in the native radical or otherwise distinguish `q>0`, `q=iy` (`y>0`), and the opposite sheet: live slab-current Gram sign under the end\u2019s current-form convention, the odd part of the native face closure, or the odd part of the lift. A structurally zero transverse acoustic drive is inapplicable, as the plan already states. The saved `selectedOutgoing` census (`source-excerpts/11`) is correspondence at the old point. Radiating versus evanescent character is reported from the physical sheet; eigenvalue sign is reported from the live Gram.\n\n5. **Keep the two one-sided approaches as distinct paths in the two-leg variables.**  \n   Face/current evaluation uses `(k\u0304, k, q\u0304, q)` and both harmonic legs (`source-excerpts/12`). The radiating approach is `q\u0304=q=x\u21920+`. The evanescent approach is `q\u0304=-iy`, `q=iy`, `y\u21920+`. Those are different paths to `(0,0)`. Disagreement, non-uniqueness, or divergence remains `UNRESOLVED`. The physical closure is the recombined native face solution (excerpt 03\u2019s unsolved pair `(p - z(v+J/\u03c1_m), J - closure)` as it appears in the FACE rows), formed **before** the limit, after projection onto the live selected subspace.\n\n---\n\n## Question-by-question assessment\n\n### 1. Effective-parameter family\n\nThe family is well specified.\n\nHeld: LAB_HELD/RHO4_CONSTANT, \u03c9=3, tangents (1/5, 1/10), full-contrast LEFT and RIGHT, brane coefficients, density rule, contrast/end values, physical permeability and memory times (`tau_A`, `tau_V`, `tau_X` in the development input), units, and source conventions. Varied: the inherited effective `c_s0`, carried through every native occurrence of bulk dispersion, impedance, closure, and current. Drain is exactly zero.\n\nS11b registers `c_s0` and `rho_m` as independent knobs (`source-excerpts/02`). The slab input supplies `c_s0=10`, `rho_m=1/10` separately (`S11c_d_variable_profile_development_input.json`). Register R1 derives `c_s0=\u221a(5K \u03c10\u2074/m_GNLS)` (`source-excerpts/01`). The plan\u2019s classification as an effective-coefficient rest-bulk sweep, with acoustic impedance/coupling changing and no silent K-rescaling of the brane, matches that split. R4 is the bare brane cone `\u221a(\u03bc_R/\u03c1_br)/c_s0`; R7 is an available uncommitted calibration; R10 remains pending. Bare ratio and modal phase speed stay distinct objects.\n\nREFERENCE reuse of LEFT is allowed only after bound-operand identity. The uniform checkpoint already records LEFT weak contrast nonzero (2) against REFERENCE (0), so that check is load-bearing.\n\n### 2. Transverse restriction, lift, and the two end matches\n\nThe decision tree is the right one: prove a `c_s0`-independent restriction by lift against the full five-field pencil; take exact `c_T,e` from that restricted dispersion; otherwise attempt the small exact system with vanishing radical; otherwise leave the match unresolved. Saved LEFT/RIGHT phase-speed readouts (about 1.2247448714 and 1.2186666956) are correspondence only (`S11c_d_numerical_radiating_flow_calibration_assessment.json`). Matching one end leaves the other unmatched. Evaluating both ends at the union of speeds is correct.\n\nThe missing pin is correction 2. Without a named native restriction, a worker can take the old candidate-16 vector or the `R[3:,:]` test as the subspace. That would assume the old numerical mode is unchanged, which is the defect this section is meant to prevent.\n\n### 3. Projected source-local limits at vanishing radical\n\nJoint-sheet transport cannot be used at the match: the implicit radical derivative divides by `\u2202relation/\u2202radical`, and a zero seed is `BRANCH_LOCUS_ON_PATH` (`source-excerpts/06`). The existing selected-root depth test also excludes vanishing physical q (`source-excerpts/11`). Treating the match as a separate source-local limit, without weakening those guards, is the right construction.\n\nRequired order, once correction 1 is in place:\n\n- Project restored FACE/current operands onto the **live** selected subspace (the source restriction of item 2, evaluated at the current `c_s0`).\n- Recombine the native closure (excerpt 03 as stored in FACE rows) before any `1/q` product.\n- Take one-sided limits along the native wave relation on the two physical paths of item 5, keeping both harmonic legs and the actual conjugation convention.\n- Report slab-current Gram eigenvalues/signs, bulk-normal-current projections, and interface-power projections as separate unit classes (`source-excerpts/12`: three named matrices; \u201cnever add port power to current\u201d).\n\nThe FACE inventory already includes the necessary rows: AMPLITUDE, PRESSURE, OUTWARD_VELOCITY, RELATIVE_MASS_FLUX, AFFINITY, CHEMICAL_POTENTIAL, BULK_VELOCITY, MECHANICAL_RESPONSE. Finite pressure at infinite radiation impedance is encoded in those recombined rows (including `BULK_VELOCITY`); it does not require a new boundary-condition formula. A stored zero drive times a singular acoustic factor remains insufficient, as the plan states.\n\nAt the exact match the selected root can collide with the acoustic bulk kernel (higher nullity, mixed eigenspace). Rank/conditioning and the plan\u2019s branch-collision \u2192 `UNRESOLVED` rule are the right responses. A finite selected-subspace limit still does not certify the full outgoing basis.\n\n### 4. Compact points and exact-limit checks\n\nContingent on exact `c_T,e`, the union of each end\u2019s `c_T,e/\u03c1` for `\u03c1\u2208{199/200,1,201/200}` plus LEFT `49/50` and `51/50`, with both ends evaluated at each distinct speed, is a sufficient **point set** for the bounded well-definedness question. The extra `|\u03c1_e-1|=1/2000` evaluations are limit cross-checks on an already selected state, not a new root campaign.\n\nThese samples do not prove smoothness on an interval. The plan already forbids that claim. Exact source identities must be zero; the 1e-9 / 1e-8 / 1e-10 instrument thresholds cannot convert an unresolved exact match into equality.\n\n### 5. Controls\n\nCapable, after correction 4:\n\n- Full-pencil coefficient/lift corruption must move the **full** pencil residual (thickness/chemical rows included).\n- Reverse the live current-form orientation; omit an off-diagonal that actually moves the selected Gram (`source-excerpts/12` already has this pattern).\n- Native eW omission is a row probe on column 4 of `OUTWARD_VELOCITY`, which is the correct non-transverse probe when the selected state has a vanishing thickness component.\n- Wrong-sheet control is applicable only on a quantity that depends on the sheet, away from grazing.\n\nA root-independent transverse zero is an inapplicable control. Requiring a zero transverse drive to become nonzero by flipping the acoustic sheet is also inapplicable.\n\n### 6. Upstream dependencies and draining transfer\n\nPreserved as written. The result is the strict rest-bulk object. c1 \u00a72b and the FORM amendment state grazing as `v_bulk_normal_0=0`, with away-from-grazing validity `|q v/\u03c9|\u226a1` and `|\u03c9 v|/(c_s0\u00b2|q|)\u226a1`, nonuniform as `q\u21920` at fixed nonzero `v` (`source-excerpts/13`, `14`). Smooth selected limits through unity do not license a draining-background claim. Analog-light identification and R10 stay open.\n\nComputation on the inventory\u2019s original packet hashes (20260914 pairing, 20260919 uniform/frequency) is a frozen snapshot. Repair findings on inertia sign, mechanical face-load sign, c2 trace/shape, and thickness coordinate can still move current orientation and face loads; the plan\u2019s provisional label is required, not optional.\n\n---\n\n## What this review does not settle\n\nWhether a `c_s0`-independent exact `c_T,e` exists; whether the one-sided limits agree; whether the selected Gram stays nondegenerate at the match; numerical values of any residual, eigenvalue, or projection. Those are later instrument outputs. Inability to establish the selected grazing limit is already a complete answer to this bounded question.",
+      "textSha256": "3930431c82bccc19ef79e4b9344a1c18a8ab22b59ef0a229daa42b0958917254",
+      "receipt": {
+        "engine": "grok",
+        "sessionId": "3031df74-517b-4c4f-9708-3ae4d79470ce",
+        "command": [
+          "/home/trevnorris/.local/bin/grok",
+          "--cwd",
+          "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-method-review/grok/work",
+          "--prompt-file",
+          "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-method-review/grok/work/input/review-prompt.md",
+          "--output-format",
+          "json",
+          "--permission-mode",
+          "dontAsk",
+          "--no-plan",
+          "--tools",
+          "Read",
+          "--no-subagents",
+          "--disable-web-search",
+          "--verbatim",
+          "--session-id",
+          "3031df74-517b-4c4f-9708-3ae4d79470ce"
+        ],
+        "cwd": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-method-review/grok/work",
+        "startedUtc": "2026-10-01T16:29:47.236764+00:00",
+        "packetSha256": "847839ce129366fc274bc6d01a194561e3bea1f423425b8ce2defc1f08d2a62e",
+        "promptSha256": "afb6becba7ae56deaa6192579850d17a8eb4383218be00debb0136c87666a93d",
+        "scientificExecutionEnabled": false,
+        "reviewVerdict": "NOT_ADJUDICATED",
+        "pid": 1435897,
+        "exitStatus": 0,
+        "finishedUtc": "2026-10-01T16:38:27.915035+00:00",
+        "wallSeconds": 520.6766973070335,
+        "outputSha256": "01df275a1c233578a8ff785931e251faae996f7e9788324d2e9bb90298988326",
+        "stderrSha256": "9f0a41a1d7765fdba1ee35ad245ee1d0783bd89c87cea69a8e27fa1930d7a9c9",
+        "stderrBytes": 4242
+      },
+      "stderr": "\u001b[2m2026-10-01T16:29:47.555990Z\u001b[0m \u001b[33m WARN\u001b[0m plugin name collision resolved by scope precedence \u001b[3mplugin_name\u001b[0m\u001b[2m=\u001b[0mfrontend-design \u001b[3mwinner\u001b[0m\u001b[2m=\u001b[0m/home/trevnorris/.claude/plugins/marketplaces/claude-plugins-official/plugins/frontend-design \u001b[3mloser\u001b[0m\u001b[2m=\u001b[0m/home/trevnorris/.claude/plugins/cache/claude-plugins-official/frontend-design/ab024cdcfa7c\n\u001b[2m2026-10-01T16:29:47.556228Z\u001b[0m \u001b[33m WARN\u001b[0m plugin tmux-agent-sidebar: skipped unsupported event 'CwdChanged'\n\u001b[2m2026-10-01T16:29:47.556233Z\u001b[0m \u001b[33m WARN\u001b[0m plugin tmux-agent-sidebar: skipped unsupported event 'TaskCreated'\n\u001b[2m2026-10-01T16:29:47.556235Z\u001b[0m \u001b[33m WARN\u001b[0m plugin tmux-agent-sidebar: skipped unsupported event 'TaskCompleted'\n\u001b[2m2026-10-01T16:29:47.556237Z\u001b[0m \u001b[33m WARN\u001b[0m plugin tmux-agent-sidebar: skipped unsupported event 'TeammateIdle'\n\u001b[2m2026-10-01T16:29:47.556240Z\u001b[0m \u001b[33m WARN\u001b[0m plugin tmux-agent-sidebar: skipped unsupported event 'WorktreeCreate'\n\u001b[2m2026-10-01T16:29:47.556242Z\u001b[0m \u001b[33m WARN\u001b[0m plugin tmux-agent-sidebar: skipped unsupported event 'WorktreeRemove'\n\u001b[2m2026-10-01T16:29:47.566335Z\u001b[0m \u001b[33m WARN\u001b[0m plugin name collision resolved by scope precedence \u001b[3mplugin_name\u001b[0m\u001b[2m=\u001b[0mfrontend-design \u001b[3mwinner\u001b[0m\u001b[2m=\u001b[0m/home/trevnorris/.claude/plugins/marketplaces/claude-plugins-official/plugins/frontend-design \u001b[3mloser\u001b[0m\u001b[2m=\u001b[0m/home/trevnorris/.claude/plugins/cache/claude-plugins-official/frontend-design/ab024cdcfa7c\n\u001b[2m2026-10-01T16:29:47.566602Z\u001b[0m \u001b[33m WARN\u001b[0m plugin tmux-agent-sidebar: skipped unsupported event 'CwdChanged'\n\u001b[2m2026-10-01T16:29:47.566627Z\u001b[0m \u001b[33m WARN\u001b[0m plugin tmux-agent-sidebar: skipped unsupported event 'TaskCreated'\n\u001b[2m2026-10-01T16:29:47.566628Z\u001b[0m \u001b[33m WARN\u001b[0m plugin tmux-agent-sidebar: skipped unsupported event 'TaskCompleted'\n\u001b[2m2026-10-01T16:29:47.566630Z\u001b[0m \u001b[33m WARN\u001b[0m plugin tmux-agent-sidebar: skipped unsupported event 'TeammateIdle'\n\u001b[2m2026-10-01T16:29:47.566631Z\u001b[0m \u001b[33m WARN\u001b[0m plugin tmux-agent-sidebar: skipped unsupported event 'WorktreeCreate'\n\u001b[2m2026-10-01T16:29:47.566632Z\u001b[0m \u001b[33m WARN\u001b[0m plugin tmux-agent-sidebar: skipped unsupported event 'WorktreeRemove'\n\u001b[2m2026-10-01T16:29:47.589763Z\u001b[0m \u001b[33m WARN\u001b[0m hooks: skipped unrecognized event names (check for typos) \u001b[3mfile\u001b[0m\u001b[2m=\u001b[0m/home/trevnorris/.claude/settings.json \u001b[3mskipped\u001b[0m\u001b[2m=\u001b[0m[\"PermissionRequest\"]\n\u001b[2m2026-10-01T16:29:47.590059Z\u001b[0m \u001b[33m WARN\u001b[0m hook loading from settings file: failed to parse hook file /home/trevnorris/.cursor/hooks.json: invalid matcher groups for event 'beforeSubmitPrompt': missing field `hooks`\n\u001b[2m2026-10-01T16:29:47.590103Z\u001b[0m \u001b[33m WARN\u001b[0m hook loading error \u001b[3merror\u001b[0m\u001b[2m=\u001b[0mParseFile { path: \"/home/trevnorris/.cursor/hooks.json\", detail: \"invalid matcher groups for event 'beforeSubmitPrompt': missing field `hooks`\" }\n\u001b[2m2026-10-01T16:29:48.673952Z\u001b[0m \u001b[33m WARN\u001b[0m Ignoring context_window downgrade from response header \u001b[3mcurrent_context_window\u001b[0m\u001b[2m=\u001b[0m500000 \u001b[3mheader_context_window\u001b[0m\u001b[2m=\u001b[0m256000\n\u001b[2m2026-10-01T16:29:52.054798Z\u001b[0m \u001b[33m WARN\u001b[0m Ignoring context_window downgrade from response header \u001b[3mcurrent_context_window\u001b[0m\u001b[2m=\u001b[0m500000 \u001b[3mheader_context_window\u001b[0m\u001b[2m=\u001b[0m256000\n\u001b[2m2026-10-01T16:29:56.935412Z\u001b[0m \u001b[33m WARN\u001b[0m Ignoring context_window downgrade from response header \u001b[3mcurrent_context_window\u001b[0m\u001b[2m=\u001b[0m500000 \u001b[3mheader_context_window\u001b[0m\u001b[2m=\u001b[0m256000\n\u001b[2m2026-10-01T16:30:05.134024Z\u001b[0m \u001b[33m WARN\u001b[0m Ignoring context_window downgrade from response header \u001b[3mcurrent_context_window\u001b[0m\u001b[2m=\u001b[0m500000 \u001b[3mheader_context_window\u001b[0m\u001b[2m=\u001b[0m256000\n\u001b[2m2026-10-01T16:30:12.235385Z\u001b[0m \u001b[33m WARN\u001b[0m Ignoring context_window downgrade from response header \u001b[3mcurrent_context_window\u001b[0m\u001b[2m=\u001b[0m500000 \u001b[3mheader_context_window\u001b[0m\u001b[2m=\u001b[0m256000\n\u001b[2m2026-10-01T16:30:19.329781Z\u001b[0m \u001b[33m WARN\u001b[0m Ignoring context_window downgrade from response header \u001b[3mcurrent_context_window\u001b[0m\u001b[2m=\u001b[0m500000 \u001b[3mheader_context_window\u001b[0m\u001b[2m=\u001b[0m256000\n\u001b[2m2026-10-01T16:36:40.043723Z\u001b[0m \u001b[33m WARN\u001b[0m Ignoring context_window downgrade from response header \u001b[3mcurrent_context_window\u001b[0m\u001b[2m=\u001b[0m500000 \u001b[3mheader_context_window\u001b[0m\u001b[2m=\u001b[0m256000\n",
+      "stopReason": "end_turn",
+      "isError": null,
+      "terminalReason": null
+    }
+  },
+  "integrityChecks": [
+    {
+      "check": "packet file set",
+      "passed": true
+    },
+    {
+      "check": "packet/packet-index.json",
+      "passed": true
+    },
+    {
+      "check": "claude/work/input/packet-index.json",
+      "passed": true
+    },
+    {
+      "check": "grok/work/input/packet-index.json",
+      "passed": true
+    },
+    {
+      "check": "packet/research/pde_ledger_v3/_measurements/S11c_d_near_unity_uniform_plan.md",
+      "passed": true
+    },
+    {
+      "check": "claude/work/input/research/pde_ledger_v3/_measurements/S11c_d_near_unity_uniform_plan.md",
+      "passed": true
+    },
+    {
+      "check": "grok/work/input/research/pde_ledger_v3/_measurements/S11c_d_near_unity_uniform_plan.md",
+      "passed": true
+    },
+    {
+      "check": "packet/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_end_maps_v2_inputs.json",
+      "passed": true
+    },
+    {
+      "check": "claude/work/input/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_end_maps_v2_inputs.json",
+      "passed": true
+    },
+    {
+      "check": "grok/work/input/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_end_maps_v2_inputs.json",
+      "passed": true
+    },
+    {
+      "check": "packet/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_flow_calibration_assessment.json",
+      "passed": true
+    },
+    {
+      "check": "claude/work/input/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_flow_calibration_assessment.json",
+      "passed": true
+    },
+    {
+      "check": "grok/work/input/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_flow_calibration_assessment.json",
+      "passed": true
+    },
+    {
+      "check": "packet/research/pde_ledger_v3/_measurements/S11c_d_uniform_source_checkpoint.json",
+      "passed": true
+    },
+    {
+      "check": "claude/work/input/research/pde_ledger_v3/_measurements/S11c_d_uniform_source_checkpoint.json",
+      "passed": true
+    },
+    {
+      "check": "grok/work/input/research/pde_ledger_v3/_measurements/S11c_d_uniform_source_checkpoint.json",
+      "passed": true
+    },
+    {
+      "check": "packet/research/pde_ledger_v3/_measurements/S11c_d_variable_profile_development_input.json",
+      "passed": true
+    },
+    {
+      "check": "claude/work/input/research/pde_ledger_v3/_measurements/S11c_d_variable_profile_development_input.json",
+      "passed": true
+    },
+    {
+      "check": "grok/work/input/research/pde_ledger_v3/_measurements/S11c_d_variable_profile_development_input.json",
+      "passed": true
+    },
+    {
+      "check": "packet/review-prompt.md",
+      "passed": true
+    },
+    {
+      "check": "claude/work/input/review-prompt.md",
+      "passed": true
+    },
+    {
+      "check": "grok/work/input/review-prompt.md",
+      "passed": true
+    },
+    {
+      "check": "packet/source-excerpts/01-parameter_register.md-L266-285.txt",
+      "passed": true
+    },
+    {
+      "check": "claude/work/input/source-excerpts/01-parameter_register.md-L266-285.txt",
+      "passed": true
+    },
+    {
+      "check": "grok/work/input/source-excerpts/01-parameter_register.md-L266-285.txt",
+      "passed": true
+    },
+    {
+      "check": "packet/source-excerpts/02-S11b_interface_coupling_law_sympy_audit.py-L74-90.txt",
+      "passed": true
+    },
+    {
+      "check": "claude/work/input/source-excerpts/02-S11b_interface_coupling_law_sympy_audit.py-L74-90.txt",
+      "passed": true
+    },
+    {
+      "check": "grok/work/input/source-excerpts/02-S11b_interface_coupling_law_sympy_audit.py-L74-90.txt",
+      "passed": true
+    },
+    {
+      "check": "packet/source-excerpts/03-S11b_interface_coupling_law_sympy_audit.py-L457-485.txt",
+      "passed": true
+    },
+    {
+      "check": "claude/work/input/source-excerpts/03-S11b_interface_coupling_law_sympy_audit.py-L457-485.txt",
+      "passed": true
+    },
+    {
+      "check": "grok/work/input/source-excerpts/03-S11b_interface_coupling_law_sympy_audit.py-L457-485.txt",
+      "passed": true
+    },
+    {
+      "check": "packet/source-excerpts/04-S11b_interface_coupling_law_sympy_audit.py-L1918-1939.txt",
+      "passed": true
+    },
+    {
+      "check": "claude/work/input/source-excerpts/04-S11b_interface_coupling_law_sympy_audit.py-L1918-1939.txt",
+      "passed": true
+    },
+    {
+      "check": "grok/work/input/source-excerpts/04-S11b_interface_coupling_law_sympy_audit.py-L1918-1939.txt",
+      "passed": true
+    },
+    {
+      "check": "packet/source-excerpts/05-S11c_d_mixing_scattering_sympy_audit.py-L4876-4937.txt",
+      "passed": true
+    },
+    {
+      "check": "claude/work/input/source-excerpts/05-S11c_d_mixing_scattering_sympy_audit.py-L4876-4937.txt",
+      "passed": true
+    },
+    {
+      "check": "grok/work/input/source-excerpts/05-S11c_d_mixing_scattering_sympy_audit.py-L4876-4937.txt",
+      "passed": true
+    },
+    {
+      "check": "packet/source-excerpts/06-S11c_d_mixing_scattering_sympy_audit.py-L5038-5120.txt",
+      "passed": true
+    },
+    {
+      "check": "claude/work/input/source-excerpts/06-S11c_d_mixing_scattering_sympy_audit.py-L5038-5120.txt",
+      "passed": true
+    },
+    {
+      "check": "grok/work/input/source-excerpts/06-S11c_d_mixing_scattering_sympy_audit.py-L5038-5120.txt",
+      "passed": true
+    },
+    {
+      "check": "packet/source-excerpts/07-S11c_d_mixing_scattering_sympy_audit.py-L5306-5440.txt",
+      "passed": true
+    },
+    {
+      "check": "claude/work/input/source-excerpts/07-S11c_d_mixing_scattering_sympy_audit.py-L5306-5440.txt",
+      "passed": true
+    },
+    {
+      "check": "grok/work/input/source-excerpts/07-S11c_d_mixing_scattering_sympy_audit.py-L5306-5440.txt",
+      "passed": true
+    },
+    {
+      "check": "packet/source-excerpts/08-S11c_d_frequency_source.py-L166-207.txt",
+      "passed": true
+    },
+    {
+      "check": "claude/work/input/source-excerpts/08-S11c_d_frequency_source.py-L166-207.txt",
+      "passed": true
+    },
+    {
+      "check": "grok/work/input/source-excerpts/08-S11c_d_frequency_source.py-L166-207.txt",
+      "passed": true
+    },
+    {
+      "check": "packet/source-excerpts/09-S11c_d_uniform_source.py-L92-135.txt",
+      "passed": true
+    },
+    {
+      "check": "claude/work/input/source-excerpts/09-S11c_d_uniform_source.py-L92-135.txt",
+      "passed": true
+    },
+    {
+      "check": "grok/work/input/source-excerpts/09-S11c_d_uniform_source.py-L92-135.txt",
+      "passed": true
+    },
+    {
+      "check": "packet/source-excerpts/10-S11c_d_numerical_radiating_boundary.py-L193-207.txt",
+      "passed": true
+    },
+    {
+      "check": "claude/work/input/source-excerpts/10-S11c_d_numerical_radiating_boundary.py-L193-207.txt",
+      "passed": true
+    },
+    {
+      "check": "grok/work/input/source-excerpts/10-S11c_d_numerical_radiating_boundary.py-L193-207.txt",
+      "passed": true
+    },
+    {
+      "check": "packet/source-excerpts/11-S11c_d_numerical_radiating_boundary.py-L344-368.txt",
+      "passed": true
+    },
+    {
+      "check": "claude/work/input/source-excerpts/11-S11c_d_numerical_radiating_boundary.py-L344-368.txt",
+      "passed": true
+    },
+    {
+      "check": "grok/work/input/source-excerpts/11-S11c_d_numerical_radiating_boundary.py-L344-368.txt",
+      "passed": true
+    },
+    {
+      "check": "packet/source-excerpts/12-S11c_d_numerical_radiating_end_maps_v2.py-L135-277.txt",
+      "passed": true
+    },
+    {
+      "check": "claude/work/input/source-excerpts/12-S11c_d_numerical_radiating_end_maps_v2.py-L135-277.txt",
+      "passed": true
+    },
+    {
+      "check": "grok/work/input/source-excerpts/12-S11c_d_numerical_radiating_end_maps_v2.py-L135-277.txt",
+      "passed": true
+    },
+    {
+      "check": "packet/source-excerpts/13-S11c_c1_SHARED_PHYSICS.md-L204-221.txt",
+      "passed": true
+    },
+    {
+      "check": "claude/work/input/source-excerpts/13-S11c_c1_SHARED_PHYSICS.md-L204-221.txt",
+      "passed": true
+    },
+    {
+      "check": "grok/work/input/source-excerpts/13-S11c_c1_SHARED_PHYSICS.md-L204-221.txt",
+      "passed": true
+    },
+    {
+      "check": "packet/source-excerpts/14-S11c_d_SCATTERING_FORM_AMENDMENT.md-L373-384.txt",
+      "passed": true
+    },
+    {
+      "check": "claude/work/input/source-excerpts/14-S11c_d_SCATTERING_FORM_AMENDMENT.md-L373-384.txt",
+      "passed": true
+    },
+    {
+      "check": "grok/work/input/source-excerpts/14-S11c_d_SCATTERING_FORM_AMENDMENT.md-L373-384.txt",
+      "passed": true
+    },
+    {
+      "check": "packet/source-inventory.json",
+      "passed": true
+    },
+    {
+      "check": "claude/work/input/source-inventory.json",
+      "passed": true
+    },
+    {
+      "check": "grok/work/input/source-inventory.json",
+      "passed": true
+    },
+    {
+      "check": "packet digest",
+      "passed": true
+    },
+    {
+      "check": "archive digest",
+      "passed": true
+    },
+    {
+      "check": "archive file set",
+      "passed": true
+    },
+    {
+      "check": "archive/packet-index.json",
+      "passed": true
+    },
+    {
+      "check": "archive/research/pde_ledger_v3/_measurements/S11c_d_near_unity_uniform_plan.md",
+      "passed": true
+    },
+    {
+      "check": "archive/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_end_maps_v2_inputs.json",
+      "passed": true
+    },
+    {
+      "check": "archive/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_flow_calibration_assessment.json",
+      "passed": true
+    },
+    {
+      "check": "archive/research/pde_ledger_v3/_measurements/S11c_d_uniform_source_checkpoint.json",
+      "passed": true
+    },
+    {
+      "check": "archive/research/pde_ledger_v3/_measurements/S11c_d_variable_profile_development_input.json",
+      "passed": true
+    },
+    {
+      "check": "archive/review-prompt.md",
+      "passed": true
+    },
+    {
+      "check": "archive/source-excerpts/01-parameter_register.md-L266-285.txt",
+      "passed": true
+    },
+    {
+      "check": "archive/source-excerpts/02-S11b_interface_coupling_law_sympy_audit.py-L74-90.txt",
+      "passed": true
+    },
+    {
+      "check": "archive/source-excerpts/03-S11b_interface_coupling_law_sympy_audit.py-L457-485.txt",
+      "passed": true
+    },
+    {
+      "check": "archive/source-excerpts/04-S11b_interface_coupling_law_sympy_audit.py-L1918-1939.txt",
+      "passed": true
+    },
+    {
+      "check": "archive/source-excerpts/05-S11c_d_mixing_scattering_sympy_audit.py-L4876-4937.txt",
+      "passed": true
+    },
+    {
+      "check": "archive/source-excerpts/06-S11c_d_mixing_scattering_sympy_audit.py-L5038-5120.txt",
+      "passed": true
+    },
+    {
+      "check": "archive/source-excerpts/07-S11c_d_mixing_scattering_sympy_audit.py-L5306-5440.txt",
+      "passed": true
+    },
+    {
+      "check": "archive/source-excerpts/08-S11c_d_frequency_source.py-L166-207.txt",
+      "passed": true
+    },
+    {
+      "check": "archive/source-excerpts/09-S11c_d_uniform_source.py-L92-135.txt",
+      "passed": true
+    },
+    {
+      "check": "archive/source-excerpts/10-S11c_d_numerical_radiating_boundary.py-L193-207.txt",
+      "passed": true
+    },
+    {
+      "check": "archive/source-excerpts/11-S11c_d_numerical_radiating_boundary.py-L344-368.txt",
+      "passed": true
+    },
+    {
+      "check": "archive/source-excerpts/12-S11c_d_numerical_radiating_end_maps_v2.py-L135-277.txt",
+      "passed": true
+    },
+    {
+      "check": "archive/source-excerpts/13-S11c_c1_SHARED_PHYSICS.md-L204-221.txt",
+      "passed": true
+    },
+    {
+      "check": "archive/source-excerpts/14-S11c_d_SCATTERING_FORM_AMENDMENT.md-L373-384.txt",
+      "passed": true
+    },
+    {
+      "check": "archive/source-inventory.json",
+      "passed": true
+    },
+    {
+      "check": "original source/research/pde_ledger_v3/_measurements/S11c_d_near_unity_uniform_plan.md",
+      "passed": true
+    },
+    {
+      "check": "original source/research/pde_ledger_v3/_measurements/S11c_d_variable_profile_development_input.json",
+      "passed": true
+    },
+    {
+      "check": "original source/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_flow_calibration_assessment.json",
+      "passed": true
+    },
+    {
+      "check": "original source/research/pde_ledger_v3/_measurements/S11c_d_uniform_source_checkpoint.json",
+      "passed": true
+    },
+    {
+      "check": "original source/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_end_maps_v2_inputs.json",
+      "passed": true
+    },
+    {
+      "check": "original source/research/pde_ledger_v2/notes/parameter_register.md",
+      "passed": true
+    },
+    {
+      "check": "excerpt/source-excerpts/01-parameter_register.md-L266-285.txt",
+      "passed": true
+    },
+    {
+      "check": "original source/research/pde_ledger_v3/scripts/S11b_interface_coupling_law_sympy_audit.py",
+      "passed": true
+    },
+    {
+      "check": "excerpt/source-excerpts/02-S11b_interface_coupling_law_sympy_audit.py-L74-90.txt",
+      "passed": true
+    },
+    {
+      "check": "original source/research/pde_ledger_v3/scripts/S11b_interface_coupling_law_sympy_audit.py",
+      "passed": true
+    },
+    {
+      "check": "excerpt/source-excerpts/03-S11b_interface_coupling_law_sympy_audit.py-L457-485.txt",
+      "passed": true
+    },
+    {
+      "check": "original source/research/pde_ledger_v3/scripts/S11b_interface_coupling_law_sympy_audit.py",
+      "passed": true
+    },
+    {
+      "check": "excerpt/source-excerpts/04-S11b_interface_coupling_law_sympy_audit.py-L1918-1939.txt",
+      "passed": true
+    },
+    {
+      "check": "original source/research/pde_ledger_v3/scripts/S11c_d_mixing_scattering_sympy_audit.py",
+      "passed": true
+    },
+    {
+      "check": "excerpt/source-excerpts/05-S11c_d_mixing_scattering_sympy_audit.py-L4876-4937.txt",
+      "passed": true
+    },
+    {
+      "check": "original source/research/pde_ledger_v3/scripts/S11c_d_mixing_scattering_sympy_audit.py",
+      "passed": true
+    },
+    {
+      "check": "excerpt/source-excerpts/06-S11c_d_mixing_scattering_sympy_audit.py-L5038-5120.txt",
+      "passed": true
+    },
+    {
+      "check": "original source/research/pde_ledger_v3/scripts/S11c_d_mixing_scattering_sympy_audit.py",
+      "passed": true
+    },
+    {
+      "check": "excerpt/source-excerpts/07-S11c_d_mixing_scattering_sympy_audit.py-L5306-5440.txt",
+      "passed": true
+    },
+    {
+      "check": "original source/research/pde_ledger_v3/_measurements/S11c_d_frequency_source.py",
+      "passed": true
+    },
+    {
+      "check": "excerpt/source-excerpts/08-S11c_d_frequency_source.py-L166-207.txt",
+      "passed": true
+    },
+    {
+      "check": "original source/research/pde_ledger_v3/_measurements/S11c_d_uniform_source.py",
+      "passed": true
+    },
+    {
+      "check": "excerpt/source-excerpts/09-S11c_d_uniform_source.py-L92-135.txt",
+      "passed": true
+    },
+    {
+      "check": "original source/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_boundary.py",
+      "passed": true
+    },
+    {
+      "check": "excerpt/source-excerpts/10-S11c_d_numerical_radiating_boundary.py-L193-207.txt",
+      "passed": true
+    },
+    {
+      "check": "original source/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_boundary.py",
+      "passed": true
+    },
+    {
+      "check": "excerpt/source-excerpts/11-S11c_d_numerical_radiating_boundary.py-L344-368.txt",
+      "passed": true
+    },
+    {
+      "check": "original source/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_end_maps_v2.py",
+      "passed": true
+    },
+    {
+      "check": "excerpt/source-excerpts/12-S11c_d_numerical_radiating_end_maps_v2.py-L135-277.txt",
+      "passed": true
+    },
+    {
+      "check": "original source/research/pde_ledger_v3/directives/S11c_c1_SHARED_PHYSICS.md",
+      "passed": true
+    },
+    {
+      "check": "excerpt/source-excerpts/13-S11c_c1_SHARED_PHYSICS.md-L204-221.txt",
+      "passed": true
+    },
+    {
+      "check": "original source/research/pde_ledger_v3/directives/S11c_d_SCATTERING_FORM_AMENDMENT.md",
+      "passed": true
+    },
+    {
+      "check": "excerpt/source-excerpts/14-S11c_d_SCATTERING_FORM_AMENDMENT.md-L373-384.txt",
+      "passed": true
+    },
+    {
+      "check": "original source/research/pde_ledger_v3/_measurements/S11c_d_near_unity_uniform_sources.json",
+      "passed": true
+    },
+    {
+      "check": "original source/research/pde_ledger_v3/_measurements/S11c_d_near_unity_uniform_review_prompt.md",
+      "passed": true
+    },
+    {
+      "check": "prospectiveInputPackets//var/projects/toy_physics/_scratch/s11c/s11c-uniform-source-20260919/production/complete/uniform-source.pickle",
+      "passed": true
+    },
+    {
+      "check": "prospectiveInputPackets//var/projects/toy_physics/_scratch/s11c/s11c-uniform-response-20260919/production/complete/uniform-response.pickle",
+      "passed": true
+    },
+    {
+      "check": "prospectiveInputPackets//var/projects/toy_physics/_scratch/s11c/s11c-frequency-source-20260919/finish-01/complete/left-frequency-pencil.pickle",
+      "passed": true
+    },
+    {
+      "check": "prospectiveInputPackets//var/projects/toy_physics/_scratch/s11c/s11c-frequency-source-20260919/finish-01/complete/right-frequency-pencil.pickle",
+      "passed": true
+    },
+    {
+      "check": "prospectiveInputPackets//var/projects/toy_physics/_scratch/s11c/s11c-thickness-coordinate-20260914/end_pairing_left/complete.pickle",
+      "passed": true
+    },
+    {
+      "check": "prospectiveInputPackets//var/projects/toy_physics/_scratch/s11c/s11c-thickness-coordinate-20260914/end_pairing_right/complete.pickle",
+      "passed": true
+    },
+    {
+      "check": "baselineReadableMetadata//var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/end-maps-v2/complete/LEFT-a-1-candidate-16.json",
+      "passed": true
+    },
+    {
+      "check": "baselineReadableMetadata//var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/end-maps-v2/complete/RIGHT-a-1-candidate-16.json",
+      "passed": true
+    },
+    {
+      "check": "upstreamRepairDependencies/research/pde_ledger_v3/_measurements/S11c_inertia_repair_report.md",
+      "passed": true
+    },
+    {
+      "check": "upstreamRepairDependencies/research/pde_ledger_v3/_measurements/S11c_mechanical_repair_report.md",
+      "passed": true
+    },
+    {
+      "check": "upstreamRepairDependencies/research/pde_ledger_v3/_measurements/S11c_c2_trace_repair_report.md",
+      "passed": true
+    },
+    {
+      "check": "upstreamRepairDependencies/research/pde_ledger_v3/_measurements/S11c_thickness_coordinate_repair_report.md",
+      "passed": true
+    },
+    {
+      "check": "review_run.py",
+      "passed": true
+    },
+    {
+      "check": "launch/runnerSha256",
+      "passed": true
+    },
+    {
+      "check": "review_launch.py",
+      "passed": true
+    },
+    {
+      "check": "launch/launcherSha256",
+      "passed": true
+    },
+    {
+      "check": "completion_message.txt",
+      "passed": true
+    },
+    {
+      "check": "claude finished",
+      "passed": true
+    },
+    {
+      "check": "claude output",
+      "passed": true
+    },
+    {
+      "check": "claude stderr",
+      "passed": true
+    },
+    {
+      "check": "claude packet/prompt",
+      "passed": true
+    },
+    {
+      "check": "claude delivered verdict",
+      "passed": true
+    },
+    {
+      "check": "grok finished",
+      "passed": true
+    },
+    {
+      "check": "grok output",
+      "passed": true
+    },
+    {
+      "check": "grok stderr",
+      "passed": true
+    },
+    {
+      "check": "grok packet/prompt",
+      "passed": true
+    },
+    {
+      "check": "grok delivered verdict",
+      "passed": true
+    },
+    {
+      "check": "coordinator finished",
+      "passed": true
+    },
+    {
+      "check": "coordinator stderr empty",
+      "passed": true
+    },
+    {
+      "check": "hook target and completion",
+      "passed": true
+    }
+  ],
+  "originalSourcesAtAdjudication": [
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_near_unity_uniform_plan.md",
+      "sha256": "eaabe92686915b439dadf5c0c0085dd5b256f316045a3ef087de22207545fdb3"
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_variable_profile_development_input.json",
+      "sha256": "660b2b0b54494dce964c7f5fbd722a76a7e894d8ed92b18b5eb6290c3c10f1d5"
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_flow_calibration_assessment.json",
+      "sha256": "e873fbda657b3741af9855ff82f38569fb7ab4c15b338973ef665c62267468d6"
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_uniform_source_checkpoint.json",
+      "sha256": "9d4b65ad07d1f403fd3aa4ec42da99db622a4d0a26d6ddce6c472148c7830085"
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_end_maps_v2_inputs.json",
+      "sha256": "7f71debc891e09d8766f826fba7dd9a711ec4f69c93d545543bf3e4f05a30b17"
+    },
+    {
+      "path": "research/pde_ledger_v2/notes/parameter_register.md",
+      "sha256": "5fd4806cd6ff0cfcb806fca8e253c8f2a7cf561c77e8591e1f050677695f78b0"
+    },
+    {
+      "path": "research/pde_ledger_v3/scripts/S11b_interface_coupling_law_sympy_audit.py",
+      "sha256": "e7ba853ded139f5795d659fc7f495fc7de57e3937185aa829c5873568bd5d6c6"
+    },
+    {
+      "path": "research/pde_ledger_v3/scripts/S11b_interface_coupling_law_sympy_audit.py",
+      "sha256": "e7ba853ded139f5795d659fc7f495fc7de57e3937185aa829c5873568bd5d6c6"
+    },
+    {
+      "path": "research/pde_ledger_v3/scripts/S11b_interface_coupling_law_sympy_audit.py",
+      "sha256": "e7ba853ded139f5795d659fc7f495fc7de57e3937185aa829c5873568bd5d6c6"
+    },
+    {
+      "path": "research/pde_ledger_v3/scripts/S11c_d_mixing_scattering_sympy_audit.py",
+      "sha256": "5bf77729682960bb59f10c672a5fe3f67a98b0a9533da7c6189a37183596050f"
+    },
+    {
+      "path": "research/pde_ledger_v3/scripts/S11c_d_mixing_scattering_sympy_audit.py",
+      "sha256": "5bf77729682960bb59f10c672a5fe3f67a98b0a9533da7c6189a37183596050f"
+    },
+    {
+      "path": "research/pde_ledger_v3/scripts/S11c_d_mixing_scattering_sympy_audit.py",
+      "sha256": "5bf77729682960bb59f10c672a5fe3f67a98b0a9533da7c6189a37183596050f"
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_frequency_source.py",
+      "sha256": "9be20be462bc10bfcaa7af643b9301948dd79bc2e08eb24ebcd1386a81efcdac"
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_uniform_source.py",
+      "sha256": "2a135aea365c7b5e57bfff7683c7b927cda52c0d37f6a9bad3c961eb6205a2b2"
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_boundary.py",
+      "sha256": "d96d8e062f4e9cdc85ab0989ddb0a057fa931e12b412d59f937160b3f8177988"
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_boundary.py",
+      "sha256": "d96d8e062f4e9cdc85ab0989ddb0a057fa931e12b412d59f937160b3f8177988"
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_end_maps_v2.py",
+      "sha256": "4c96b6957bd839bf48e5f959483e13c3b83888db2893ff8d5ebe39c5e4f4262f"
+    },
+    {
+      "path": "research/pde_ledger_v3/directives/S11c_c1_SHARED_PHYSICS.md",
+      "sha256": "47554c8c9cf2fd070c1048a7ae0ca36b1315bf50a48ed07a51019ff3e72987ad"
+    },
+    {
+      "path": "research/pde_ledger_v3/directives/S11c_d_SCATTERING_FORM_AMENDMENT.md",
+      "sha256": "eb6f20a3fd0bce308e53901fa69fdf267b2917e5cc78b319a1e7700074a47560"
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_near_unity_uniform_sources.json",
+      "sha256": "2b3635224163125dd2ca2788d2809f95485485b46a8ecde2d2016e0695e7225d"
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_near_unity_uniform_review_prompt.md",
+      "sha256": "d06958f44166e1f5fc222e4cbb25d5e9a5731063699fee475a86dc8e2dd1a838"
+    }
+  ],
+  "sourcePayloadsRestored": false,
+  "scientificImports": false,
+  "newExternalSubmission": false,
+  "newScienceJob": false,
+  "independentMethodClearance": false,
+  "runtimeStatusNote": "Historical externalSubmitted=false/static preparation and startup RUNNING fields are preserved. Final receipts and paired coordinator establish delivery. No exit-code scientific inference.",
+  "stderrAssessment": "Claude/coordinator empty. Grok 4242 bytes: plugin collisions, unsupported hooks/settings parse and context-window diagnostics; literal final delivered. Not scientific stderr.",
+  "upstreamPair": "Separate running pair has not been adjudicated or supplied these reports; await its own hook.",
+  "adjudication": {
+    "status": "SUBSTANTIVE_REVISIONS_PROPOSED_NOT_CLEARED",
+    "disposition": "S11c_d_near_unity_uniform_review_disposition.md",
+    "proposedCorrectionSheet": "S11c_d_near_unity_uniform_revision.md",
+    "originalReviewedPlanUnchanged": true,
+    "reviewerRerun": false,
+    "newPacketPrepared": false,
+    "scienceGateCreated": false,
+    "additionalSourceInspection": [
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_transverse_face_premise.py",
+        "sha256": "ebf2739a2f8dca9ed4130b89606a36a27be29ef5d5c0915756b7118fcbd6fae5"
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_end_pairing_check.py",
+        "sha256": "1fcf86b0be819e2c7e9a2127d8330c907bcaccf58d1d15c3f1534d594d926dee"
+      },
+      {
+        "path": "research/pde_ledger_v3/_measurements/S11c_d_uniform_source_report.md",
+        "sha256": "d95f629e292e67eafe36bde9a5bd0689345c7fb3fac97d669671ea278ae65b8b"
+      }
+    ]
+  }
+}

@@ -1,8 +1,8 @@
 {
-  "status": "BOTH_APPROVED_PACKETS_SUBMITTED_AWAIT_PAIRED_REPORTS",
+  "status": "UNIFORM_REVISIONS_PREPARED_UPSTREAM_PAIR_AWAITING_SEPARATE_COMPLETION",
   "packets": [
     {
-      "status": "SUBMITTED_AWAIT_PAIRED_ADJUDICATION",
+      "status": "DELIVERED_NEEDS_REVISION_ADJUDICATED_NO_SCIENCE_CLEARANCE",
       "packetDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-method-review/packet",
       "packetSha256": "847839ce129366fc274bc6d01a194561e3bea1f423425b8ce2defc1f08d2a62e",
       "archiveSha256": "612f22f80b9ecb0c956b36d36d940333bc88d61bc76190d8dff6ee07ff61391f",
@@ -61,7 +61,14 @@
         ],
         "coordinatorStderrBytes": 0,
         "checkedUtc": "2026-10-01T16:30:27.948197+00:00"
-      }
+      },
+      "literalVerdicts": {
+        "claude": "NEEDS REVISION",
+        "grok": "NEEDS REVISION"
+      },
+      "adjudicationRecord": "S11c_d_near_unity_uniform_review_record.json",
+      "proposedCorrectionSheet": "S11c_d_near_unity_uniform_revision.md",
+      "nextSubmissionAuthorized": false
     },
     {
       "status": "SUBMITTED_AWAIT_PAIRED_ADJUDICATION",

@@ -1,0 +1,1714 @@
+{
+  "status": "COMPLETION_METADATA_AND_OPAQUE_INTEGRITY_VERIFIED_NUMERICAL_RESULT_UNRESOLVED",
+  "inspectedUtc": "2026-10-01T14:24:25.520298+00:00",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-balance-v2",
+  "workerReportedStatus": "CENTRAL_FINITE_PILOT_UNRESOLVED_STOP_NEIGHBORS",
+  "scientificPayloadsRestored": false,
+  "newScientificJob": false,
+  "integrity": {
+    "inputPosthashes": 161,
+    "sourceSnapshots": 74,
+    "workerIndexedArtifacts": 26,
+    "allResultFiles": 28,
+    "completeJournalOperations": 53,
+    "restoredExactPriorReturns": 20,
+    "newOperations": 33,
+    "restoredFunctionCalled": false,
+    "allSqliteBlobsHashed": 617,
+    "opaquePayloadBytes": 8461332497,
+    "partialMatrixBlobs": 90,
+    "matrixRowBlobs": 320,
+    "stdoutChecksByteIdentical": true,
+    "strictStderrBytes": {
+      "numerical_radiating_balance_v2.stderr": 0,
+      "guard-launch.stderr": 0,
+      "coordinator.stderr": 0,
+      "watcher.stderr": 0,
+      "resource-guard/stderr": 0
+    },
+    "noFailureFile": true,
+    "lastOperationComplete": true,
+    "launchStageGuardSupervisorCommandsJoined": true,
+    "launchGateWorkerManifestHashesJoined": true,
+    "activeSupervisorGuardStdoutIdentity": true,
+    "guardOutcomeStdoutIdentity": true
+  },
+  "resources": {
+    "workerWallSeconds": 54424.110726629966,
+    "userRequestedPauseSeconds": 2008.228369,
+    "elapsedExcludingPauseSeconds": 52415.88235762997,
+    "workerPeakRssKiB": 1675404,
+    "sampleCount": 27201,
+    "firstSampleUtc": "2026-09-30T23:10:31.066479+00:00",
+    "lastSampleUtc": "2026-10-01T14:17:35.507363+00:00",
+    "maximumSampledCgroupBytes": 2147483648,
+    "peakCgroupBytes": 2147483648,
+    "maximumSwapBytes": 0,
+    "memoryEventsMaximum": {
+      "low": 0,
+      "high": 0,
+      "max": 100419,
+      "oom": 0,
+      "oom_kill": 0,
+      "oom_group_kill": 0,
+      "sock_throttled": 0
+    },
+    "minimumHostAvailableBytes": 15190626304,
+    "duration": {
+      "verified": true,
+      "actual": {
+        "Restart": "no",
+        "RuntimeMaxUSec": "infinity"
+      },
+      "wallDeadlineSeconds": null,
+      "inactivityDeadlineSeconds": null
+    },
+    "limits": {
+      "verified": true,
+      "actual": {
+        "memory.max": "2147483648",
+        "memory.swap.max": "0",
+        "pids.max": "32",
+        "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-f0fe15054ec2.service",
+        "nice": 15,
+        "affinity": [
+          15
+        ],
+        "threads": {
+          "OPENBLAS_NUM_THREADS": "1",
+          "OMP_NUM_THREADS": "1",
+          "MKL_NUM_THREADS": "1",
+          "NUMEXPR_NUM_THREADS": "1",
+          "VECLIB_MAXIMUM_THREADS": "1",
+          "BLIS_NUM_THREADS": "1"
+        }
+      }
+    },
+    "finiteSolveCallsSeconds": 86.09811412799172,
+    "lastMemoryPressure": "some avg10=0.21 avg60=0.46 avg300=0.15 total=2821492\nfull avg10=0.21 avg60=0.46 avg300=0.15 total=2820481"
+  },
+  "execution": {
+    "coordinator": {
+      "exitCode": 0,
+      "wallSeconds": 54424.64686692192,
+      "scientificAcceptance": "PENDING_ACTUAL_INSPECTION"
+    },
+    "guard": {
+      "exitCode": 0,
+      "wallSeconds": 54424.55838970607,
+      "unit": "s11c-guard-f0fe15054ec2",
+      "stderrBytes": 0,
+      "limitsVerified": true,
+      "childOutcome": {
+        "exitCode": 0,
+        "guardReason": null,
+        "wallSeconds": 54424.442474838,
+        "childPid": 4097232
+      }
+    },
+    "supervisor": {
+      "stage": "numerical_radiating_balance_v2",
+      "command": [
+        "/usr/bin/python3",
+        "-u",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_balance_v2.py",
+        "--manifest",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_balance_v2_inputs.json",
+        "--gate",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_balance_v2_gate.json",
+        "--run-directory",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-balance-v2/complete"
+      ],
+      "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-balance-v2/numerical_radiating_balance_v2.stdout",
+      "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-balance-v2/numerical_radiating_balance_v2.stderr",
+      "startedUtc": "2026-09-30T23:10:31.116383+00:00",
+      "childPid": 4097233,
+      "status": "completed",
+      "exitCode": 0,
+      "wallSeconds": 54424.34484814701,
+      "stderrBytes": 0,
+      "finishedUtc": "2026-10-01T14:17:35.461286+00:00"
+    }
+  },
+  "resultArtifact": {
+    "storage": "sqlite",
+    "member": "completed-central-pilot.pickle",
+    "sha256": "da7a0ade5c5bceec877ff972bc23f04c3b751f8628e22f0952f881bb8284f865",
+    "bytes": 174388
+  },
+  "settings": {
+    "settings": {
+      "base": {
+        "kind": "split",
+        "momentumBound": 4.0,
+        "sourceBound": 64.0,
+        "profileBound": 14.0,
+        "regulator": 0.1,
+        "outerOrder": 24,
+        "panelOrder": 8,
+        "innerOrders": [
+          8,
+          8
+        ],
+        "sourceNodes": 512,
+        "profileNodes": 512,
+        "size": 315,
+        "maximumNodeGap": 0.6403139344398974,
+        "singleLegOuterOrder": 48
+      },
+      "refinement": {
+        "kind": "split",
+        "momentumBound": 6.0,
+        "sourceBound": 64.0,
+        "profileBound": 14.0,
+        "regulator": 0.1,
+        "outerOrder": 32,
+        "panelOrder": 12,
+        "innerOrders": [
+          12,
+          12
+        ],
+        "sourceNodes": 768,
+        "profileNodes": 768,
+        "size": 473,
+        "maximumNodeGap": 0.4259755196709625,
+        "singleLegOuterOrder": 64
+      },
+      "domain": {
+        "kind": "split",
+        "momentumBound": 6.0,
+        "sourceBound": 80.0,
+        "profileBound": 14.0,
+        "regulator": 0.1,
+        "outerOrder": 32,
+        "panelOrder": 12,
+        "innerOrders": [
+          12,
+          12
+        ],
+        "sourceNodes": 768,
+        "profileNodes": 768,
+        "size": 473,
+        "maximumNodeGap": 0.5324693995887031,
+        "singleLegOuterOrder": 64
+      },
+      "regulator": {
+        "kind": "split",
+        "momentumBound": 6.0,
+        "sourceBound": 80.0,
+        "profileBound": 14.0,
+        "regulator": 0.05,
+        "outerOrder": 32,
+        "panelOrder": 12,
+        "innerOrders": [
+          12,
+          12
+        ],
+        "sourceNodes": 768,
+        "profileNodes": 768,
+        "size": 473,
+        "maximumNodeGap": 0.5324693995887031,
+        "singleLegOuterOrder": 64
+      }
+    },
+    "coverage": {
+      "maximumTransverseK": 2.4515301344262563,
+      "minimumWavelength": 2.5629647455465894,
+      "baseSize": 315,
+      "refinedSize": 473
+    },
+    "singleLegRule": "Order48 base,64 refinements from actual fixed-tolerance Gaussian convergence; nested rules unchanged."
+  },
+  "matrixGroupSummaries": {
+    "base-group-2": {
+      "rowIndices": [
+        70,
+        71,
+        72,
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79
+      ],
+      "nodes": 4038256,
+      "batches": 31549,
+      "seconds": 5572.236764639034,
+      "maximumActionResidual": 7.983807435887876e-18,
+      "massResidual": -4.547473508864641e-13
+    },
+    "refinement-group-2": {
+      "rowIndices": [
+        70,
+        71,
+        72,
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79
+      ],
+      "nodes": 14072808,
+      "batches": 109944,
+      "seconds": 18264.406355526997,
+      "maximumActionResidual": 1.0824728461162624e-17,
+      "massResidual": -2.2737367544323206e-13
+    },
+    "regulator-group-2": {
+      "rowIndices": [
+        70,
+        71,
+        72,
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79
+      ],
+      "nodes": 16684992,
+      "batches": 130352,
+      "seconds": 15162.978470084956,
+      "maximumActionResidual": 1.0725575222385421e-17,
+      "massResidual": -3.183231456205249e-12
+    },
+    "refinement-group-1": {
+      "rowIndices": [
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69
+      ],
+      "nodes": 26928,
+      "batches": 211,
+      "seconds": 156.11115342890844,
+      "maximumActionResidual": 7.757919228897728e-17,
+      "massResidual": 5.684341886080802e-14
+    },
+    "domain-group-0": {
+      "rowIndices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39
+      ],
+      "nodes": 192,
+      "batches": 2,
+      "seconds": 2.012430988950655,
+      "maximumActionResidual": 3.148514984838087e-15,
+      "massResidual": 5.329070518200751e-15
+    },
+    "regulator-group-0": {
+      "rowIndices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39
+      ],
+      "nodes": 192,
+      "batches": 2,
+      "seconds": 1.6037209870992228,
+      "maximumActionResidual": 3.148514984838087e-15,
+      "massResidual": 5.329070518200751e-15
+    },
+    "domain-group-2": {
+      "rowIndices": [
+        70,
+        71,
+        72,
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79
+      ],
+      "nodes": 14072808,
+      "batches": 109944,
+      "seconds": 14846.522123206058,
+      "maximumActionResidual": 1.2585686982133081e-17,
+      "massResidual": -2.2737367544323206e-13
+    },
+    "domain-group-1": {
+      "rowIndices": [
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69
+      ],
+      "nodes": 26928,
+      "batches": 211,
+      "seconds": 60.334591096965596,
+      "maximumActionResidual": 6.39734408315113e-17,
+      "massResidual": 5.684341886080802e-14
+    },
+    "regulator-group-1": {
+      "rowIndices": [
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69
+      ],
+      "nodes": 29232,
+      "batches": 229,
+      "seconds": 65.21718757308554,
+      "maximumActionResidual": 5.419449386414209e-17,
+      "massResidual": 1.4210854715202004e-13
+    },
+    "base-group-1": {
+      "rowIndices": [
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69
+      ],
+      "nodes": 12496,
+      "batches": 98,
+      "seconds": 37.418941279058345,
+      "maximumActionResidual": 7.370023267452843e-17,
+      "massResidual": -1.4210854715202004e-14
+    },
+    "refinement-group-0": {
+      "rowIndices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39
+      ],
+      "nodes": 192,
+      "batches": 2,
+      "seconds": 6.309140245895833,
+      "maximumActionResidual": 3.914323474825132e-15,
+      "massResidual": 5.329070518200751e-15
+    },
+    "base-group-0": {
+      "rowIndices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39
+      ],
+      "nodes": 144,
+      "batches": 2,
+      "seconds": 1.8404839129652828,
+      "maximumActionResidual": 3.1777482645199832e-15,
+      "massResidual": 2.1316282072803006e-14
+    }
+  },
+  "summaries": [
+    {
+      "setting": "base",
+      "contrast": 0.0,
+      "incident": [
+        1.0,
+        0.9999999999999999,
+        1.0,
+        0.9999999999999998
+      ],
+      "reflected": [
+        8.001296583145369e-24,
+        2.3562913594740045e-23,
+        1.869517545328935e-23,
+        8.096762824555276e-24
+      ],
+      "transmitted": [
+        0.9999999999986633,
+        1.000000000009544,
+        1.0000000000110925,
+        1.0000000000013702
+      ],
+      "deficit": [
+        1.3367085216486885e-12,
+        -9.54414325349262e-12,
+        -1.1092460283634864e-11,
+        -1.3704593015972932e-12
+      ],
+      "crossCurrents": {
+        "LEFT": {
+          "transverseOther": [
+            1.008116156144623e-29,
+            -2.594310988429161e-25,
+            -1.0412325811331464e-25,
+            -6.993128406805387e-30
+          ],
+          "incomingOutgoingTransverse": [
+            -4.3895332666739945e-29,
+            -2.269971080257163e-28,
+            0.0,
+            0.0
+          ]
+        },
+        "RIGHT": {
+          "transverseOther": [
+            -9.654901630528918e-31,
+            -6.43246183927556e-26,
+            -2.3917251932037717e-25,
+            2.2257386133927823e-30
+          ],
+          "incomingOutgoingTransverse": [
+            0.0,
+            0.0,
+            -2.0062230446534772e-28,
+            -1.8181150203131767e-29
+          ]
+        }
+      },
+      "rank": 1575,
+      "condition": 1563010.0277620708,
+      "maximumScaledResidual": 2.9194647831328585e-16,
+      "physicalLossInterpretation": "RETAINED_ORDER_LOSS_INTERPRETATION_UNRESOLVED"
+    },
+    {
+      "setting": "base",
+      "contrast": 0.25,
+      "incident": [
+        1.0,
+        0.9999999999999999,
+        0.9999999999999992,
+        0.9999999999999993
+      ],
+      "reflected": [
+        9.994770095588093e-18,
+        3.6686226641633564e-14,
+        3.6812287530003294e-14,
+        9.994938100649092e-18
+      ],
+      "transmitted": [
+        0.9999999999982592,
+        1.000000506471589,
+        0.9999995070481944,
+        1.000000000001683
+      ],
+      "deficit": [
+        1.7408297026122455e-12,
+        -5.064716257496826e-07,
+        4.929517679608253e-07,
+        -1.6837642391465124e-12
+      ],
+      "crossCurrents": {
+        "LEFT": {
+          "transverseOther": [
+            -1.2409972059182525e-29,
+            -1.5262687955601508e-20,
+            1.4381628539085582e-20,
+            1.0870311359057838e-29
+          ],
+          "incomingOutgoingTransverse": [
+            -4.0526800976267216e-26,
+            -9.020987188944444e-24,
+            0.0,
+            0.0
+          ]
+        },
+        "RIGHT": {
+          "transverseOther": [
+            -7.493739056797918e-31,
+            -1.1931989667194858e-20,
+            1.4838460683221626e-20,
+            2.133632374188348e-30
+          ],
+          "incomingOutgoingTransverse": [
+            0.0,
+            0.0,
+            8.955832621900981e-24,
+            6.233905745441149e-27
+          ]
+        }
+      },
+      "rank": 1575,
+      "condition": 1432402.3729687044,
+      "maximumScaledResidual": 2.944184478651422e-16,
+      "physicalLossInterpretation": "RETAINED_ORDER_LOSS_INTERPRETATION_UNRESOLVED"
+    },
+    {
+      "setting": "base",
+      "contrast": 0.5,
+      "incident": [
+        1.0,
+        0.9999999999999999,
+        1.0,
+        0.9999999999999999
+      ],
+      "reflected": [
+        3.825471899501225e-17,
+        1.3423949652820759e-13,
+        1.291785953279448e-13,
+        3.8254735957494675e-17
+      ],
+      "transmitted": [
+        0.9999999999981394,
+        1.000000994061625,
+        0.9999990555749829,
+        1.000000000001758
+      ],
+      "deficit": [
+        1.8606227669693e-12,
+        -9.940617595738388e-07,
+        9.444248878498485e-07,
+        -1.7581491817963979e-12
+      ],
+      "crossCurrents": {
+        "LEFT": {
+          "transverseOther": [
+            2.213337491887474e-29,
+            -3.219408012632457e-20,
+            3.3643627633634453e-20,
+            2.4033682016180766e-29
+          ],
+          "incomingOutgoingTransverse": [
+            -7.73266998967176e-27,
+            -1.717640056049922e-23,
+            0.0,
+            0.0
+          ]
+        },
+        "RIGHT": {
+          "transverseOther": [
+            1.4067561762835317e-29,
+            -1.7748320340327353e-20,
+            3.0349098199307275e-20,
+            -6.59008267494086e-30
+          ],
+          "incomingOutgoingTransverse": [
+            0.0,
+            0.0,
+            1.584842213777826e-23,
+            8.741303094775942e-27
+          ]
+        }
+      },
+      "rank": 1575,
+      "condition": 1231874.9261840316,
+      "maximumScaledResidual": 3.639131608082464e-16,
+      "physicalLossInterpretation": "RETAINED_ORDER_LOSS_INTERPRETATION_UNRESOLVED"
+    },
+    {
+      "setting": "base",
+      "contrast": 1.0,
+      "incident": [
+        1.0,
+        0.9999999999999999,
+        1.0000000000000004,
+        1.0000000000000002
+      ],
+      "reflected": [
+        1.4786476620694873e-16,
+        3.1114518141872307e-13,
+        2.8614881961718035e-13,
+        1.478636258182022e-16
+      ],
+      "transmitted": [
+        0.9999999999986685,
+        1.0000017739110831,
+        0.9999983663908634,
+        1.0000000000013973
+      ],
+      "deficit": [
+        1.3313794511304877e-12,
+        -1.7739113944426066e-06,
+        1.6336088509705249e-06,
+        -1.397326698793222e-12
+      ],
+      "crossCurrents": {
+        "LEFT": {
+          "transverseOther": [
+            9.244326687691997e-30,
+            -6.783069547952294e-20,
+            5.499482870080465e-20,
+            3.802499284025124e-30
+          ],
+          "incomingOutgoingTransverse": [
+            2.5631854402751394e-25,
+            -2.5881084491975755e-23,
+            0.0,
+            0.0
+          ]
+        },
+        "RIGHT": {
+          "transverseOther": [
+            4.518638023278241e-30,
+            3.380265196734166e-20,
+            5.4141278738174643e-20,
+            1.544286403727052e-30
+          ],
+          "incomingOutgoingTransverse": [
+            0.0,
+            0.0,
+            1.63941814141342e-23,
+            -2.3843821646937493e-27
+          ]
+        }
+      },
+      "rank": 1575,
+      "condition": 1046759.9268140995,
+      "maximumScaledResidual": 4.0147769031857525e-16,
+      "physicalLossInterpretation": "RETAINED_ORDER_LOSS_INTERPRETATION_UNRESOLVED"
+    },
+    {
+      "setting": "refinement",
+      "contrast": 0.0,
+      "incident": [
+        1.0,
+        0.9999999999999999,
+        1.0,
+        0.9999999999999998
+      ],
+      "reflected": [
+        4.8501849300303755e-24,
+        2.488686335822291e-23,
+        1.836649118723485e-23,
+        4.864494150473474e-24
+      ],
+      "transmitted": [
+        1.0000000000001161,
+        1.0000000000054392,
+        1.000000000005054,
+        0.9999999999998506
+      ],
+      "deficit": [
+        -1.1612932837579137e-13,
+        -5.439426686848492e-12,
+        -5.053957252698638e-12,
+        1.4921397450962104e-13
+      ],
+      "crossCurrents": {
+        "LEFT": {
+          "transverseOther": [
+            -2.68413341291756e-30,
+            2.7318614500396317e-25,
+            1.1931005341879e-25,
+            -6.96253839898139e-30
+          ],
+          "incomingOutgoingTransverse": [
+            -9.410165413654151e-30,
+            1.2123728163626854e-28,
+            0.0,
+            0.0
+          ]
+        },
+        "RIGHT": {
+          "transverseOther": [
+            3.9229072349495555e-30,
+            1.4567630456025729e-25,
+            2.7674654247345753e-25,
+            7.413052693728554e-31
+          ],
+          "incomingOutgoingTransverse": [
+            0.0,
+            0.0,
+            8.149293410209528e-29,
+            -3.8718889562597426e-29
+          ]
+        }
+      },
+      "rank": 2365,
+      "condition": 4835127.770825884,
+      "maximumScaledResidual": 3.561356695818685e-16,
+      "physicalLossInterpretation": "RETAINED_ORDER_LOSS_INTERPRETATION_UNRESOLVED"
+    },
+    {
+      "setting": "refinement",
+      "contrast": 1.0,
+      "incident": [
+        1.0,
+        0.9999999999999999,
+        1.0000000000000004,
+        1.0000000000000002
+      ],
+      "reflected": [
+        1.4790404264195481e-16,
+        3.4562424864654837e-13,
+        3.1608388336470013e-13,
+        1.4790390308253952e-16
+      ],
+      "transmitted": [
+        1.0000000000008902,
+        1.0000010348688422,
+        0.9999990575425312,
+        0.9999999999990963
+      ],
+      "deficit": [
+        -8.903988657493755e-13,
+        -1.0348691881212346e-06,
+        9.42457153207954e-07,
+        9.038325643473399e-13
+      ],
+      "crossCurrents": {
+        "LEFT": {
+          "transverseOther": [
+            4.718305443450015e-30,
+            -4.643063925833495e-20,
+            1.8698309024399196e-19,
+            -1.0148199197899755e-29
+          ],
+          "incomingOutgoingTransverse": [
+            2.5635357682772656e-25,
+            -2.739015248728591e-23,
+            0.0,
+            0.0
+          ]
+        },
+        "RIGHT": {
+          "transverseOther": [
+            -3.4736040674235975e-30,
+            -1.550878821947972e-19,
+            6.201065651529454e-21,
+            9.930716177458264e-31
+          ],
+          "incomingOutgoingTransverse": [
+            0.0,
+            0.0,
+            2.0861679100959426e-23,
+            -2.3867675627517206e-27
+          ]
+        }
+      },
+      "rank": 2365,
+      "condition": 5577759.48417607,
+      "maximumScaledResidual": 3.8085179819012775e-16,
+      "physicalLossInterpretation": "RETAINED_ORDER_LOSS_INTERPRETATION_UNRESOLVED"
+    },
+    {
+      "setting": "domain",
+      "contrast": 0.0,
+      "incident": [
+        1.0,
+        0.9999999999999999,
+        1.0,
+        0.9999999999999998
+      ],
+      "reflected": [
+        4.455827179518197e-23,
+        1.2564877044123912e-22,
+        1.1245275196868264e-22,
+        4.4713234603812366e-23
+      ],
+      "transmitted": [
+        1.0000000000010825,
+        0.9999999999893361,
+        0.9999999999877143,
+        0.9999999999989495
+      ],
+      "deficit": [
+        -1.0824674490095276e-12,
+        1.0663803173827091e-11,
+        1.2285727990501982e-11,
+        1.050270981295398e-12
+      ],
+      "crossCurrents": {
+        "LEFT": {
+          "transverseOther": [
+            -2.2245631516543334e-29,
+            -7.17105849098301e-26,
+            5.202598679801967e-26,
+            -2.0490706667898768e-29
+          ],
+          "incomingOutgoingTransverse": [
+            -1.4250182554250424e-28,
+            7.12663662188925e-29,
+            0.0,
+            0.0
+          ]
+        },
+        "RIGHT": {
+          "transverseOther": [
+            7.235944508174843e-30,
+            4.3460358520464687e-26,
+            -7.765276077328098e-26,
+            2.7214753193386174e-30
+          ],
+          "incomingOutgoingTransverse": [
+            0.0,
+            0.0,
+            1.4523743073155826e-29,
+            -1.6801485206212636e-28
+          ]
+        }
+      },
+      "rank": 2365,
+      "condition": 4013634.3431675895,
+      "maximumScaledResidual": 4.0757713133294013e-16,
+      "physicalLossInterpretation": "RETAINED_ORDER_LOSS_INTERPRETATION_UNRESOLVED"
+    },
+    {
+      "setting": "domain",
+      "contrast": 1.0,
+      "incident": [
+        1.0,
+        0.9999999999999999,
+        1.0000000000000004,
+        1.0000000000000002
+      ],
+      "reflected": [
+        2.483193366328878e-19,
+        1.1568733942693516e-14,
+        1.513189396603571e-14,
+        2.483581845213778e-19
+      ],
+      "transmitted": [
+        0.9999999999899379,
+        1.0000006082450508,
+        0.9999994452122425,
+        1.000000000009981
+      ],
+      "deficit": [
+        1.0062062294480256e-11,
+        -6.082450625388702e-07,
+        5.547877428568881e-07,
+        -9.980682946775232e-12
+      ],
+      "crossCurrents": {
+        "LEFT": {
+          "transverseOther": [
+            1.1457422134194801e-29,
+            -5.706191111386473e-21,
+            -1.6598764768980812e-21,
+            8.670438787232585e-30
+          ],
+          "incomingOutgoingTransverse": [
+            1.989633938496115e-27,
+            -4.0284868855987015e-24,
+            0.0,
+            0.0
+          ]
+        },
+        "RIGHT": {
+          "transverseOther": [
+            -4.6725879040161555e-30,
+            -8.444563995918136e-21,
+            6.888558045186643e-21,
+            -5.079354897205554e-32
+          ],
+          "incomingOutgoingTransverse": [
+            0.0,
+            0.0,
+            5.62065118419099e-24,
+            4.981925496372567e-28
+          ]
+        }
+      },
+      "rank": 2365,
+      "condition": 3149063.6580722993,
+      "maximumScaledResidual": 4.9922355180938295e-16,
+      "physicalLossInterpretation": "RETAINED_ORDER_LOSS_INTERPRETATION_UNRESOLVED"
+    },
+    {
+      "setting": "regulator",
+      "contrast": 0.0,
+      "incident": [
+        1.0,
+        0.9999999999999999,
+        1.0,
+        0.9999999999999998
+      ],
+      "reflected": [
+        4.455827179518197e-23,
+        1.2564877044123912e-22,
+        1.1245275196868264e-22,
+        4.4713234603812366e-23
+      ],
+      "transmitted": [
+        1.0000000000010825,
+        0.9999999999893361,
+        0.9999999999877143,
+        0.9999999999989495
+      ],
+      "deficit": [
+        -1.0824674490095276e-12,
+        1.0663803173827091e-11,
+        1.2285727990501982e-11,
+        1.050270981295398e-12
+      ],
+      "crossCurrents": {
+        "LEFT": {
+          "transverseOther": [
+            -2.2245631516543334e-29,
+            -7.17105849098301e-26,
+            5.202598679801967e-26,
+            -2.0490706667898768e-29
+          ],
+          "incomingOutgoingTransverse": [
+            -1.4250182554250424e-28,
+            7.12663662188925e-29,
+            0.0,
+            0.0
+          ]
+        },
+        "RIGHT": {
+          "transverseOther": [
+            7.235944508174843e-30,
+            4.3460358520464687e-26,
+            -7.765276077328098e-26,
+            2.7214753193386174e-30
+          ],
+          "incomingOutgoingTransverse": [
+            0.0,
+            0.0,
+            1.4523743073155826e-29,
+            -1.6801485206212636e-28
+          ]
+        }
+      },
+      "rank": 2365,
+      "condition": 4013634.3431675895,
+      "maximumScaledResidual": 4.0757713133294013e-16,
+      "physicalLossInterpretation": "RETAINED_ORDER_LOSS_INTERPRETATION_UNRESOLVED"
+    },
+    {
+      "setting": "regulator",
+      "contrast": 1.0,
+      "incident": [
+        1.0,
+        0.9999999999999999,
+        1.0000000000000004,
+        1.0000000000000002
+      ],
+      "reflected": [
+        2.482733305665034e-19,
+        1.1568523521458373e-14,
+        1.5131087756973365e-14,
+        2.4832699351319275e-19
+      ],
+      "transmitted": [
+        0.9999999999899832,
+        1.0000006082175228,
+        0.9999994452083785,
+        1.0000000000101588
+      ],
+      "deficit": [
+        1.001676519507555e-11,
+        -6.082175345589746e-07,
+        5.54791606877103e-07,
+        -1.0158540675320182e-11
+      ],
+      "crossCurrents": {
+        "LEFT": {
+          "transverseOther": [
+            3.802526126615929e-30,
+            -5.706431565770525e-21,
+            -1.658606752024535e-21,
+            1.1430908100609292e-29
+          ],
+          "incomingOutgoingTransverse": [
+            1.989554684508038e-27,
+            -4.028773246663415e-24,
+            0.0,
+            0.0
+          ]
+        },
+        "RIGHT": {
+          "transverseOther": [
+            -3.722823165921279e-31,
+            -8.444476645465798e-21,
+            6.888199340575591e-21,
+            9.846325393263725e-31
+          ],
+          "incomingOutgoingTransverse": [
+            0.0,
+            0.0,
+            5.620539913966452e-24,
+            4.982434357587132e-28
+          ]
+        }
+      },
+      "rank": 2365,
+      "condition": 3149052.4688094957,
+      "maximumScaledResidual": 3.302187856730458e-16,
+      "physicalLossInterpretation": "RETAINED_ORDER_LOSS_INTERPRETATION_UNRESOLVED"
+    }
+  ],
+  "rawReport": {
+    "cases": [
+      {
+        "contrast": 0.0,
+        "deficit": [
+          1.3367085216486885e-12,
+          -9.54414325349262e-12,
+          -1.1092460283634864e-11,
+          -1.3704593015972932e-12
+        ],
+        "matchedUniformDeficit": [
+          1.3367085216486885e-12,
+          -9.54414325349262e-12,
+          -1.1092460283634864e-11,
+          -1.3704593015972932e-12
+        ],
+        "contrastDiagnostic": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "numericalEnvelope": [
+          1e-06,
+          1e-06,
+          1e-06,
+          1e-06
+        ],
+        "uniformFloor": [
+          1.3367085216486885e-12,
+          9.54414325349262e-12,
+          1.1092460283634864e-11,
+          1.3704593015972932e-12
+        ],
+        "comparisonEnvelope": [
+          1e-06,
+          1e-06,
+          1e-06,
+          1e-06
+        ],
+        "crossMaximum": [
+          4.3895332666739945e-29,
+          2.594310988429161e-25,
+          2.3917251932037717e-25,
+          1.8181150203131767e-29
+        ],
+        "statuses": [
+          "NO_DEFICIT_RESOLVED",
+          "NO_DEFICIT_RESOLVED",
+          "NO_DEFICIT_RESOLVED",
+          "NO_DEFICIT_RESOLVED"
+        ],
+        "negativeBeyondResolution": [
+          false,
+          false,
+          false,
+          false
+        ]
+      },
+      {
+        "contrast": 0.25,
+        "deficit": [
+          1.7408297026122455e-12,
+          -5.064716257496826e-07,
+          4.929517679608253e-07,
+          -1.6837642391465124e-12
+        ],
+        "matchedUniformDeficit": [
+          1.3367085216486885e-12,
+          -9.54414325349262e-12,
+          -1.1092460283634864e-11,
+          -1.3704593015972932e-12
+        ],
+        "contrastDiagnostic": [
+          4.04121180963557e-13,
+          -5.064620816064291e-07,
+          4.929628604211089e-07,
+          -3.133049375492192e-13
+        ],
+        "numericalEnvelope": [
+          1e-06,
+          1e-06,
+          1e-06,
+          1e-06
+        ],
+        "uniformFloor": [
+          1.3367085216486885e-12,
+          9.54414325349262e-12,
+          1.1092460283634864e-11,
+          1.3704593015972932e-12
+        ],
+        "comparisonEnvelope": [
+          1e-06,
+          1e-06,
+          1e-06,
+          1e-06
+        ],
+        "crossMaximum": [
+          4.0526800976267216e-26,
+          1.5262687955601508e-20,
+          1.4838460683221626e-20,
+          6.233905745441149e-27
+        ],
+        "statuses": [
+          "NO_DEFICIT_RESOLVED",
+          "NO_DEFICIT_RESOLVED",
+          "NO_DEFICIT_RESOLVED",
+          "NO_DEFICIT_RESOLVED"
+        ],
+        "negativeBeyondResolution": [
+          false,
+          false,
+          false,
+          false
+        ]
+      },
+      {
+        "contrast": 0.5,
+        "deficit": [
+          1.8606227669693e-12,
+          -9.940617595738388e-07,
+          9.444248878498485e-07,
+          -1.7581491817963979e-12
+        ],
+        "matchedUniformDeficit": [
+          1.3367085216486885e-12,
+          -9.54414325349262e-12,
+          -1.1092460283634864e-11,
+          -1.3704593015972932e-12
+        ],
+        "contrastDiagnostic": [
+          5.239142453206114e-13,
+          -9.940522154305853e-07,
+          9.444359803101321e-07,
+          -3.8768988019910466e-13
+        ],
+        "numericalEnvelope": [
+          1e-06,
+          1e-06,
+          1e-06,
+          1e-06
+        ],
+        "uniformFloor": [
+          1.3367085216486885e-12,
+          9.54414325349262e-12,
+          1.1092460283634864e-11,
+          1.3704593015972932e-12
+        ],
+        "comparisonEnvelope": [
+          1e-06,
+          1e-06,
+          1e-06,
+          1e-06
+        ],
+        "crossMaximum": [
+          7.73266998967176e-27,
+          3.219408012632457e-20,
+          3.3643627633634453e-20,
+          8.741303094775942e-27
+        ],
+        "statuses": [
+          "NO_DEFICIT_RESOLVED",
+          "NO_DEFICIT_RESOLVED",
+          "NO_DEFICIT_RESOLVED",
+          "NO_DEFICIT_RESOLVED"
+        ],
+        "negativeBeyondResolution": [
+          false,
+          false,
+          false,
+          false
+        ]
+      },
+      {
+        "contrast": 1.0,
+        "deficit": [
+          1.3313794511304877e-12,
+          -1.7739113944426066e-06,
+          1.6336088509705249e-06,
+          -1.397326698793222e-12
+        ],
+        "matchedUniformDeficit": [
+          1.3367085216486885e-12,
+          -9.54414325349262e-12,
+          -1.1092460283634864e-11,
+          -1.3704593015972932e-12
+        ],
+        "contrastDiagnostic": [
+          -5.329070518200751e-15,
+          -1.773901850299353e-06,
+          1.6336199434308085e-06,
+          -2.6867397195928788e-14
+        ],
+        "numericalEnvelope": [
+          1e-06,
+          1e-06,
+          1e-06,
+          1e-06
+        ],
+        "uniformFloor": [
+          1.3367085216486885e-12,
+          9.54414325349262e-12,
+          1.1092460283634864e-11,
+          1.3704593015972932e-12
+        ],
+        "comparisonEnvelope": [
+          1e-06,
+          1e-06,
+          1e-06,
+          1e-06
+        ],
+        "crossMaximum": [
+          2.5631854402751394e-25,
+          6.783069547952294e-20,
+          5.499482870080465e-20,
+          2.3843821646937493e-27
+        ],
+        "statuses": [
+          "NO_DEFICIT_RESOLVED",
+          "NEGATIVE_DEFICIT_UNRESOLVED",
+          "NO_DEFICIT_RESOLVED",
+          "NO_DEFICIT_RESOLVED"
+        ],
+        "negativeBeyondResolution": [
+          false,
+          true,
+          false,
+          false
+        ]
+      }
+    ],
+    "sensitivities": {
+      "('base', 'refinement', 0.0)": [
+        1.4528378500244798e-12,
+        4.104716566644129e-12,
+        6.0385030309362264e-12,
+        1.5196732761069143e-12
+      ],
+      "('refinement', 'domain', 0.0)": [
+        9.663381206337363e-13,
+        1.6103229860675583e-11,
+        1.733968524320062e-11,
+        9.01057006785777e-13
+      ],
+      "('domain', 'regulator', 0.0)": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "('base', 'refinement', 1.0)": [
+        2.2217783168798633e-12,
+        7.39042206321372e-07,
+        6.911516977625709e-07,
+        2.301159263140562e-12
+      ],
+      "('refinement', 'domain', 1.0)": [
+        1.0952461160229632e-11,
+        4.266241255823644e-07,
+        3.8766941035106584e-07,
+        1.0884515511122572e-11
+      ],
+      "('domain', 'regulator', 1.0)": [
+        4.529709940470639e-14,
+        2.7527979895580756e-11,
+        3.864020214905395e-12,
+        1.7785772854495008e-13
+      ]
+    },
+    "scaling": [
+      {
+        "incident": 0,
+        "status": "SCALING_UNRESOLVED",
+        "ratios": null
+      },
+      {
+        "incident": 1,
+        "status": "SCALING_UNRESOLVED",
+        "ratios": null
+      },
+      {
+        "incident": 2,
+        "status": "SCALING_UNRESOLVED",
+        "ratios": null
+      },
+      {
+        "incident": 3,
+        "status": "SCALING_UNRESOLVED",
+        "ratios": null
+      }
+    ],
+    "physicalInterpretation": "RETAINED_ORDER_LOSS_INTERPRETATION_UNRESOLVED",
+    "analogLightCalibration": "OPEN"
+  },
+  "reviewLiterals": {
+    "claude": {
+      "literalOriginalToleranceVerdict": "NEEDS REVISION",
+      "literalCoarseVerdict": "NEEDS REVISION",
+      "rawReportPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_replacement_review_claude.json",
+      "rawReportSha256": "7b5c5815e30f8855b3c8f652637f1e04fc72417837139963e81e084be67dd239",
+      "literalField": "result",
+      "deliveredFinalVerified": true
+    },
+    "grok": {
+      "literalOriginalToleranceVerdict": "NEEDS REVISION",
+      "literalCoarseVerdict": "CLEAR SUBJECT TO THE STATED CURRENT-SIDE CONTROLS",
+      "rawReportPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_replacement_review_grok.json",
+      "rawReportSha256": "26e94b3cedf1b466c77ec146e49a248db3a5388a0c6557a278a0b3ad1b36115e",
+      "literalField": "text",
+      "deliveredFinalVerified": true
+    }
+  },
+  "unresolvedReviewChecks": [
+    "Actual Gaussian matrix-route comparison for a single leg and row70",
+    "Momentum-zero Gaussian at adopted order",
+    "Saved operand row-dimensionality/ordered-trial inspection beyond source/JSON metadata"
+  ],
+  "interpretation": "Computations finished, negative-deficit control flags base incident column2; no reliable physical loss/no-loss inference. Latest user scope stops here.",
+  "artifacts": {
+    "active-operation.json": {
+      "bytes": 517,
+      "sha256": "795ade085abfbd591db5d69af8bfbdbda93ee6711e77034bf8fe3b1949218381"
+    },
+    "artifact-index.json": {
+      "bytes": 3533,
+      "sha256": "31ca467add827e5a4235610c74d88b8e200d6568224c8cb31fdd9fb739e7ebe5"
+    },
+    "base-group-0.json": {
+      "bytes": 493,
+      "sha256": "b553b7dab5efb1ca16e9813dd99bafa325b8864992411876579e96e06a5cf7bd"
+    },
+    "base-group-1.json": {
+      "bytes": 426,
+      "sha256": "97e039205815d1850b7fa7c77ec0711dc8bddd34ae20c0f85121a9f0fc4b8a19"
+    },
+    "base-group-2.json": {
+      "bytes": 269,
+      "sha256": "ad70d28f5236b789f7b03be32261c81c99ff4c5c9c437ed26179c2717fb14656"
+    },
+    "central-transverse-balance.json": {
+      "bytes": 6545,
+      "sha256": "3b3316b9e30031d9e91fe2008fa961c7b9df36fc0fdff8d8bc179e8b85b8435a"
+    },
+    "checks.json": {
+      "bytes": 23864,
+      "sha256": "95d77c5e58313342ee61f1c820e9c20a3a3cd0fc0f78b6b47d007a61e40caaee"
+    },
+    "completed-cases.json": {
+      "bytes": 14886,
+      "sha256": "55bd2c40eae8ea884216e265032826b486e52f02e831d84d196069e9e597a2c1"
+    },
+    "consumed-integration-checks.json": {
+      "bytes": 4172,
+      "sha256": "2bd0b8a440a369cc0613f67b31b99f7ca645400cf5b58ce201dda88d8a5194a7"
+    },
+    "domain-group-0.json": {
+      "bytes": 490,
+      "sha256": "ecfa953317353c31f7f1cbd92cd6d4ac20ccab56230b66dba4ba9eaefc418839"
+    },
+    "domain-group-1.json": {
+      "bytes": 424,
+      "sha256": "e21f6653c4c50454b1587a9e1f7eb6cb3fea6bf9f7eddbc8a6be6e97d7b7ea3c"
+    },
+    "domain-group-2.json": {
+      "bytes": 274,
+      "sha256": "818c15c1faca455f06858c4aa70ed61e3fa523e746d70bc934a19b7d50fa1598"
+    },
+    "finite-solve-count.json": {
+      "bytes": 42,
+      "sha256": "0a67f36048442c0d49d2dac4eeb1ba1ecc344f09d85f796728d584932cac4869"
+    },
+    "last-matrix-progress.json": {
+      "bytes": 319,
+      "sha256": "80db5ddc883509bf172e3ceae02177cdb568dd5a32c39d619d5045994e9abaaa"
+    },
+    "numerical-settings.json": {
+      "bytes": 1922,
+      "sha256": "2886101d9a0eb5366b55fe29368f37fe3efd22d4c2d793181eac25420944dc8b"
+    },
+    "operation-index.jsonl": {
+      "bytes": 54328,
+      "sha256": "cf08894cbb6986e8375b347e4c2e106a08ed31186732724c616044dcf83c528f"
+    },
+    "operations.sqlite": {
+      "bytes": 8470188032,
+      "sha256": "80dddc1a4ef565eb5651fc70303c9352bfd809a6cba508f4f5b2e2ca7ad4c346"
+    },
+    "posthashes.json": {
+      "bytes": 48422,
+      "sha256": "031f8c29235933dc39c28fca4280427a322afb5d71ffbf30da956f65c34417fe"
+    },
+    "prior-integration-mutations.json": {
+      "bytes": 572,
+      "sha256": "7c2a36336dd4db35e98bfa66938949e87150fe5c9f982958931e8fc4540b626b"
+    },
+    "prior-middle-integration-comparison.json": {
+      "bytes": 1429,
+      "sha256": "600c67dd7a8ec1c4b1879d5b89b24b2e37d332359b73434c27f09bdd5af0ff87"
+    },
+    "prior-two-sided-endpoint-values.json": {
+      "bytes": 14815,
+      "sha256": "6a7c900c5ca08f4035c519d17ec3c9a00c3fc705b8f542cef92f8e143fb62f27"
+    },
+    "refinement-group-0.json": {
+      "bytes": 490,
+      "sha256": "b1853d96c1255e30089db3860b1ecbdda9dfb150b5bad60cddc48b259d74f9e9"
+    },
+    "refinement-group-1.json": {
+      "bytes": 425,
+      "sha256": "98aede73971464539e14e79621671bb2b96850d68c91ee04fa9c75d5030de90c"
+    },
+    "refinement-group-2.json": {
+      "bytes": 274,
+      "sha256": "84927444b79a194091c810373d2bf4122b4746d325db545711ba65cc50ac8ba0"
+    },
+    "regulator-group-0.json": {
+      "bytes": 491,
+      "sha256": "6d906c1087bbf5eb29ea3d528f93436b7eb3c12cd8f7333979e80a058981985a"
+    },
+    "regulator-group-1.json": {
+      "bytes": 425,
+      "sha256": "45d0bea71dd4b3bd1adc97d8df45912a9aeedbf5b1aac1fcfb3abeb4d1d888fe"
+    },
+    "regulator-group-2.json": {
+      "bytes": 273,
+      "sha256": "6d8bacadd90acf7daca298f1eaad728b3f93e0262606050b6f2eed882746ddb1"
+    },
+    "result-artifacts.json": {
+      "bytes": 203,
+      "sha256": "c5d00ffbebd4b3601d10a39b593b46768d5ef59928dbd8c306cf062b613b56af"
+    }
+  },
+  "postInspectionPolicy": {
+    "status": "STOPPED_AFTER_CENTRAL_BENCHMARK",
+    "retryAuthorized": false,
+    "newValidatorAuthorized": false,
+    "neighborsAuthorized": false,
+    "ratio1Work": "Source-only feasibility and decision outline; no build or run",
+    "latestUserDirective": "Let it run to completion. When done consider what is needed at ratio1."
+  }
+}

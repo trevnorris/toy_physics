@@ -1,0 +1,712 @@
+{
+  "status": "COMPLETED_BENCHMARK_UNRESOLVED_NO_PHYSICAL_LOSS_INFERENCE",
+  "scope": "Strict rest bulk v_bulk_normal_0=0; LAB_HELD/RHO4_CONSTANT; omega3; tangents(1/5,1/10); one fixed profile; selected transverse speed ratio approximately0.12, bare S9 ratio0.1. Not the calibrated draining model.",
+  "jsonArithmeticOnly": true,
+  "newScientificCalculation": false,
+  "rawWorkerStatus": "CENTRAL_FINITE_PILOT_UNRESOLVED_STOP_NEIGHBORS",
+  "legacyStatusDisplayMapping": {
+    "NO_DEFICIT_RESOLVED": "DEFICIT_NOT_NUMERICALLY_RESOLVED"
+  },
+  "rawStatusesRetained": [
+    {
+      "contrast": 0.0,
+      "deficit": [
+        1.3367085216486885e-12,
+        -9.54414325349262e-12,
+        -1.1092460283634864e-11,
+        -1.3704593015972932e-12
+      ],
+      "matchedUniformDeficit": [
+        1.3367085216486885e-12,
+        -9.54414325349262e-12,
+        -1.1092460283634864e-11,
+        -1.3704593015972932e-12
+      ],
+      "contrastDiagnostic": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "numericalEnvelope": [
+        1e-06,
+        1e-06,
+        1e-06,
+        1e-06
+      ],
+      "uniformFloor": [
+        1.3367085216486885e-12,
+        9.54414325349262e-12,
+        1.1092460283634864e-11,
+        1.3704593015972932e-12
+      ],
+      "comparisonEnvelope": [
+        1e-06,
+        1e-06,
+        1e-06,
+        1e-06
+      ],
+      "crossMaximum": [
+        4.3895332666739945e-29,
+        2.594310988429161e-25,
+        2.3917251932037717e-25,
+        1.8181150203131767e-29
+      ],
+      "statuses": [
+        "NO_DEFICIT_RESOLVED",
+        "NO_DEFICIT_RESOLVED",
+        "NO_DEFICIT_RESOLVED",
+        "NO_DEFICIT_RESOLVED"
+      ],
+      "negativeBeyondResolution": [
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "contrast": 0.25,
+      "deficit": [
+        1.7408297026122455e-12,
+        -5.064716257496826e-07,
+        4.929517679608253e-07,
+        -1.6837642391465124e-12
+      ],
+      "matchedUniformDeficit": [
+        1.3367085216486885e-12,
+        -9.54414325349262e-12,
+        -1.1092460283634864e-11,
+        -1.3704593015972932e-12
+      ],
+      "contrastDiagnostic": [
+        4.04121180963557e-13,
+        -5.064620816064291e-07,
+        4.929628604211089e-07,
+        -3.133049375492192e-13
+      ],
+      "numericalEnvelope": [
+        1e-06,
+        1e-06,
+        1e-06,
+        1e-06
+      ],
+      "uniformFloor": [
+        1.3367085216486885e-12,
+        9.54414325349262e-12,
+        1.1092460283634864e-11,
+        1.3704593015972932e-12
+      ],
+      "comparisonEnvelope": [
+        1e-06,
+        1e-06,
+        1e-06,
+        1e-06
+      ],
+      "crossMaximum": [
+        4.0526800976267216e-26,
+        1.5262687955601508e-20,
+        1.4838460683221626e-20,
+        6.233905745441149e-27
+      ],
+      "statuses": [
+        "NO_DEFICIT_RESOLVED",
+        "NO_DEFICIT_RESOLVED",
+        "NO_DEFICIT_RESOLVED",
+        "NO_DEFICIT_RESOLVED"
+      ],
+      "negativeBeyondResolution": [
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "contrast": 0.5,
+      "deficit": [
+        1.8606227669693e-12,
+        -9.940617595738388e-07,
+        9.444248878498485e-07,
+        -1.7581491817963979e-12
+      ],
+      "matchedUniformDeficit": [
+        1.3367085216486885e-12,
+        -9.54414325349262e-12,
+        -1.1092460283634864e-11,
+        -1.3704593015972932e-12
+      ],
+      "contrastDiagnostic": [
+        5.239142453206114e-13,
+        -9.940522154305853e-07,
+        9.444359803101321e-07,
+        -3.8768988019910466e-13
+      ],
+      "numericalEnvelope": [
+        1e-06,
+        1e-06,
+        1e-06,
+        1e-06
+      ],
+      "uniformFloor": [
+        1.3367085216486885e-12,
+        9.54414325349262e-12,
+        1.1092460283634864e-11,
+        1.3704593015972932e-12
+      ],
+      "comparisonEnvelope": [
+        1e-06,
+        1e-06,
+        1e-06,
+        1e-06
+      ],
+      "crossMaximum": [
+        7.73266998967176e-27,
+        3.219408012632457e-20,
+        3.3643627633634453e-20,
+        8.741303094775942e-27
+      ],
+      "statuses": [
+        "NO_DEFICIT_RESOLVED",
+        "NO_DEFICIT_RESOLVED",
+        "NO_DEFICIT_RESOLVED",
+        "NO_DEFICIT_RESOLVED"
+      ],
+      "negativeBeyondResolution": [
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "contrast": 1.0,
+      "deficit": [
+        1.3313794511304877e-12,
+        -1.7739113944426066e-06,
+        1.6336088509705249e-06,
+        -1.397326698793222e-12
+      ],
+      "matchedUniformDeficit": [
+        1.3367085216486885e-12,
+        -9.54414325349262e-12,
+        -1.1092460283634864e-11,
+        -1.3704593015972932e-12
+      ],
+      "contrastDiagnostic": [
+        -5.329070518200751e-15,
+        -1.773901850299353e-06,
+        1.6336199434308085e-06,
+        -2.6867397195928788e-14
+      ],
+      "numericalEnvelope": [
+        1e-06,
+        1e-06,
+        1e-06,
+        1e-06
+      ],
+      "uniformFloor": [
+        1.3367085216486885e-12,
+        9.54414325349262e-12,
+        1.1092460283634864e-11,
+        1.3704593015972932e-12
+      ],
+      "comparisonEnvelope": [
+        1e-06,
+        1e-06,
+        1e-06,
+        1e-06
+      ],
+      "crossMaximum": [
+        2.5631854402751394e-25,
+        6.783069547952294e-20,
+        5.499482870080465e-20,
+        2.3843821646937493e-27
+      ],
+      "statuses": [
+        "NO_DEFICIT_RESOLVED",
+        "NEGATIVE_DEFICIT_UNRESOLVED",
+        "NO_DEFICIT_RESOLVED",
+        "NO_DEFICIT_RESOLVED"
+      ],
+      "negativeBeyondResolution": [
+        false,
+        true,
+        false,
+        false
+      ]
+    }
+  ],
+  "declaredEnvelope": [
+    1e-06,
+    1e-06,
+    1e-06,
+    1e-06
+  ],
+  "allSettings": [
+    {
+      "setting": "base",
+      "contrast": 0.0,
+      "incident": [
+        1.0,
+        0.9999999999999999,
+        1.0,
+        0.9999999999999998
+      ],
+      "reflected": [
+        8.001296583145369e-24,
+        2.3562913594740045e-23,
+        1.869517545328935e-23,
+        8.096762824555276e-24
+      ],
+      "transmitted": [
+        0.9999999999986633,
+        1.000000000009544,
+        1.0000000000110925,
+        1.0000000000013702
+      ],
+      "deficit": [
+        1.3367085216486885e-12,
+        -9.54414325349262e-12,
+        -1.1092460283634864e-11,
+        -1.3704593015972932e-12
+      ],
+      "deficitPpm": [
+        1.3367085216486885e-06,
+        -9.54414325349262e-06,
+        -1.1092460283634864e-05,
+        -1.3704593015972932e-06
+      ],
+      "negativeBeyondDeclaredNumericalEnvelope": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "rank": 1575,
+      "condition": 1563010.0277620708,
+      "maximumScaledResidual": 2.9194647831328585e-16
+    },
+    {
+      "setting": "base",
+      "contrast": 0.25,
+      "incident": [
+        1.0,
+        0.9999999999999999,
+        0.9999999999999992,
+        0.9999999999999993
+      ],
+      "reflected": [
+        9.994770095588093e-18,
+        3.6686226641633564e-14,
+        3.6812287530003294e-14,
+        9.994938100649092e-18
+      ],
+      "transmitted": [
+        0.9999999999982592,
+        1.000000506471589,
+        0.9999995070481944,
+        1.000000000001683
+      ],
+      "deficit": [
+        1.7408297026122455e-12,
+        -5.064716257496826e-07,
+        4.929517679608253e-07,
+        -1.6837642391465124e-12
+      ],
+      "deficitPpm": [
+        1.7408297026122455e-06,
+        -0.5064716257496826,
+        0.4929517679608253,
+        -1.6837642391465124e-06
+      ],
+      "negativeBeyondDeclaredNumericalEnvelope": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "rank": 1575,
+      "condition": 1432402.3729687044,
+      "maximumScaledResidual": 2.944184478651422e-16
+    },
+    {
+      "setting": "base",
+      "contrast": 0.5,
+      "incident": [
+        1.0,
+        0.9999999999999999,
+        1.0,
+        0.9999999999999999
+      ],
+      "reflected": [
+        3.825471899501225e-17,
+        1.3423949652820759e-13,
+        1.291785953279448e-13,
+        3.8254735957494675e-17
+      ],
+      "transmitted": [
+        0.9999999999981394,
+        1.000000994061625,
+        0.9999990555749829,
+        1.000000000001758
+      ],
+      "deficit": [
+        1.8606227669693e-12,
+        -9.940617595738388e-07,
+        9.444248878498485e-07,
+        -1.7581491817963979e-12
+      ],
+      "deficitPpm": [
+        1.8606227669692998e-06,
+        -0.9940617595738388,
+        0.9444248878498485,
+        -1.758149181796398e-06
+      ],
+      "negativeBeyondDeclaredNumericalEnvelope": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "rank": 1575,
+      "condition": 1231874.9261840316,
+      "maximumScaledResidual": 3.639131608082464e-16
+    },
+    {
+      "setting": "base",
+      "contrast": 1.0,
+      "incident": [
+        1.0,
+        0.9999999999999999,
+        1.0000000000000004,
+        1.0000000000000002
+      ],
+      "reflected": [
+        1.4786476620694873e-16,
+        3.1114518141872307e-13,
+        2.8614881961718035e-13,
+        1.478636258182022e-16
+      ],
+      "transmitted": [
+        0.9999999999986685,
+        1.0000017739110831,
+        0.9999983663908634,
+        1.0000000000013973
+      ],
+      "deficit": [
+        1.3313794511304877e-12,
+        -1.7739113944426066e-06,
+        1.6336088509705249e-06,
+        -1.397326698793222e-12
+      ],
+      "deficitPpm": [
+        1.3313794511304877e-06,
+        -1.7739113944426066,
+        1.6336088509705249,
+        -1.397326698793222e-06
+      ],
+      "negativeBeyondDeclaredNumericalEnvelope": [
+        false,
+        true,
+        false,
+        false
+      ],
+      "rank": 1575,
+      "condition": 1046759.9268140995,
+      "maximumScaledResidual": 4.0147769031857525e-16
+    },
+    {
+      "setting": "refinement",
+      "contrast": 0.0,
+      "incident": [
+        1.0,
+        0.9999999999999999,
+        1.0,
+        0.9999999999999998
+      ],
+      "reflected": [
+        4.8501849300303755e-24,
+        2.488686335822291e-23,
+        1.836649118723485e-23,
+        4.864494150473474e-24
+      ],
+      "transmitted": [
+        1.0000000000001161,
+        1.0000000000054392,
+        1.000000000005054,
+        0.9999999999998506
+      ],
+      "deficit": [
+        -1.1612932837579137e-13,
+        -5.439426686848492e-12,
+        -5.053957252698638e-12,
+        1.4921397450962104e-13
+      ],
+      "deficitPpm": [
+        -1.1612932837579137e-07,
+        -5.439426686848492e-06,
+        -5.053957252698638e-06,
+        1.4921397450962104e-07
+      ],
+      "negativeBeyondDeclaredNumericalEnvelope": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "rank": 2365,
+      "condition": 4835127.770825884,
+      "maximumScaledResidual": 3.561356695818685e-16
+    },
+    {
+      "setting": "refinement",
+      "contrast": 1.0,
+      "incident": [
+        1.0,
+        0.9999999999999999,
+        1.0000000000000004,
+        1.0000000000000002
+      ],
+      "reflected": [
+        1.4790404264195481e-16,
+        3.4562424864654837e-13,
+        3.1608388336470013e-13,
+        1.4790390308253952e-16
+      ],
+      "transmitted": [
+        1.0000000000008902,
+        1.0000010348688422,
+        0.9999990575425312,
+        0.9999999999990963
+      ],
+      "deficit": [
+        -8.903988657493755e-13,
+        -1.0348691881212346e-06,
+        9.42457153207954e-07,
+        9.038325643473399e-13
+      ],
+      "deficitPpm": [
+        -8.903988657493755e-07,
+        -1.0348691881212346,
+        0.942457153207954,
+        9.038325643473399e-07
+      ],
+      "negativeBeyondDeclaredNumericalEnvelope": [
+        false,
+        true,
+        false,
+        false
+      ],
+      "rank": 2365,
+      "condition": 5577759.48417607,
+      "maximumScaledResidual": 3.8085179819012775e-16
+    },
+    {
+      "setting": "domain",
+      "contrast": 0.0,
+      "incident": [
+        1.0,
+        0.9999999999999999,
+        1.0,
+        0.9999999999999998
+      ],
+      "reflected": [
+        4.455827179518197e-23,
+        1.2564877044123912e-22,
+        1.1245275196868264e-22,
+        4.4713234603812366e-23
+      ],
+      "transmitted": [
+        1.0000000000010825,
+        0.9999999999893361,
+        0.9999999999877143,
+        0.9999999999989495
+      ],
+      "deficit": [
+        -1.0824674490095276e-12,
+        1.0663803173827091e-11,
+        1.2285727990501982e-11,
+        1.050270981295398e-12
+      ],
+      "deficitPpm": [
+        -1.0824674490095276e-06,
+        1.0663803173827091e-05,
+        1.2285727990501982e-05,
+        1.050270981295398e-06
+      ],
+      "negativeBeyondDeclaredNumericalEnvelope": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "rank": 2365,
+      "condition": 4013634.3431675895,
+      "maximumScaledResidual": 4.0757713133294013e-16
+    },
+    {
+      "setting": "domain",
+      "contrast": 1.0,
+      "incident": [
+        1.0,
+        0.9999999999999999,
+        1.0000000000000004,
+        1.0000000000000002
+      ],
+      "reflected": [
+        2.483193366328878e-19,
+        1.1568733942693516e-14,
+        1.513189396603571e-14,
+        2.483581845213778e-19
+      ],
+      "transmitted": [
+        0.9999999999899379,
+        1.0000006082450508,
+        0.9999994452122425,
+        1.000000000009981
+      ],
+      "deficit": [
+        1.0062062294480256e-11,
+        -6.082450625388702e-07,
+        5.547877428568881e-07,
+        -9.980682946775232e-12
+      ],
+      "deficitPpm": [
+        1.0062062294480256e-05,
+        -0.6082450625388702,
+        0.5547877428568881,
+        -9.980682946775232e-06
+      ],
+      "negativeBeyondDeclaredNumericalEnvelope": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "rank": 2365,
+      "condition": 3149063.6580722993,
+      "maximumScaledResidual": 4.9922355180938295e-16
+    },
+    {
+      "setting": "regulator",
+      "contrast": 0.0,
+      "incident": [
+        1.0,
+        0.9999999999999999,
+        1.0,
+        0.9999999999999998
+      ],
+      "reflected": [
+        4.455827179518197e-23,
+        1.2564877044123912e-22,
+        1.1245275196868264e-22,
+        4.4713234603812366e-23
+      ],
+      "transmitted": [
+        1.0000000000010825,
+        0.9999999999893361,
+        0.9999999999877143,
+        0.9999999999989495
+      ],
+      "deficit": [
+        -1.0824674490095276e-12,
+        1.0663803173827091e-11,
+        1.2285727990501982e-11,
+        1.050270981295398e-12
+      ],
+      "deficitPpm": [
+        -1.0824674490095276e-06,
+        1.0663803173827091e-05,
+        1.2285727990501982e-05,
+        1.050270981295398e-06
+      ],
+      "negativeBeyondDeclaredNumericalEnvelope": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "rank": 2365,
+      "condition": 4013634.3431675895,
+      "maximumScaledResidual": 4.0757713133294013e-16
+    },
+    {
+      "setting": "regulator",
+      "contrast": 1.0,
+      "incident": [
+        1.0,
+        0.9999999999999999,
+        1.0000000000000004,
+        1.0000000000000002
+      ],
+      "reflected": [
+        2.482733305665034e-19,
+        1.1568523521458373e-14,
+        1.5131087756973365e-14,
+        2.4832699351319275e-19
+      ],
+      "transmitted": [
+        0.9999999999899832,
+        1.0000006082175228,
+        0.9999994452083785,
+        1.0000000000101588
+      ],
+      "deficit": [
+        1.001676519507555e-11,
+        -6.082175345589746e-07,
+        5.54791606877103e-07,
+        -1.0158540675320182e-11
+      ],
+      "deficitPpm": [
+        1.001676519507555e-05,
+        -0.6082175345589746,
+        0.554791606877103,
+        -1.0158540675320182e-05
+      ],
+      "negativeBeyondDeclaredNumericalEnvelope": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "rank": 2365,
+      "condition": 3149052.4688094957,
+      "maximumScaledResidual": 3.302187856730458e-16
+    }
+  ],
+  "maximumUniformAbsoluteDeficit": 1.2285727990501982e-11,
+  "fullContrastTotalSettingSpread": [
+    1.0952461160229632e-11,
+    1.165693859883632e-06,
+    1.0788211081136367e-06,
+    1.1062373239667522e-11
+  ],
+  "envelopeCaveat": "The code uses adjacent-setting changes and a 1e-6 floor. The total base-to-final spreads in columns2/3 exceed that floor. Neither is a rigorous error bound. No threshold is changed here.",
+  "scaling": [
+    {
+      "incident": 0,
+      "status": "SCALING_UNRESOLVED",
+      "ratios": null
+    },
+    {
+      "incident": 1,
+      "status": "SCALING_UNRESOLVED",
+      "ratios": null
+    },
+    {
+      "incident": 2,
+      "status": "SCALING_UNRESOLVED",
+      "ratios": null
+    },
+    {
+      "incident": 3,
+      "status": "SCALING_UNRESOLVED",
+      "ratios": null
+    }
+  ],
+  "negativeGate": "Base full-contrast column2 is below -1e-6; refinement column2 also slightly below -1e-6. Finest/domain values lie within the declared floor. These are warning flags, not physical gain.",
+  "independentClearance": false,
+  "physicalLossInterpretation": "RETAINED_ORDER_LOSS_INTERPRETATION_UNRESOLVED",
+  "next": "Stop. Source-only ratio1 decision note; no new job, validator or neighbors."
+}

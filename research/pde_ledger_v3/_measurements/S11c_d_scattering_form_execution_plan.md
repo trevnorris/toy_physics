@@ -1,3 +1,25 @@
+**CENTRAL BENCHMARK FINISHED — UNRESOLVED; STOP (2026-10-01):**
+All10 omega3 solves finished; no process failure/retry. This is strict rest bulk,
+LAB_HELD/RHO4_CONSTANT, fixed profile/tangents, selected speed ratio~0.12, not the
+calibrated draining model. Base full-contrast incident column2 has deficit
+-1.773911ppm, beyond the1ppm negative flag; column3 +1.633609ppm. Refined/larger-
+domain values shrink; final values -0.608218/+0.554792ppm are within the floor.
+Uniform controls <=1.229e-11; contrast-squared scaling and positive loss remain
+unresolved. This is neither a physical gain nor a no-leakage result/bound.
+53complete ops(20restored33new),617opaque blobs,90partial matrices,320row matrices,
+161input hashes and74snapshots verified. Strict stderr empty; stdout/checks match.
+15h7m wall including33m28s user pause; no deadlines. Cgroup touched2GiB with100419
+memory.max events, zero OOM/kills/swap; do not call these no-cap events.
+Both fresh original-route review verdicts remain NEEDS REVISION; actual Gaussian
+matrix-route/momentum-zero and contained saved-row/trial checks remain open.
+See numerical_radiating_balance_report.md, _result.json and _checkpoint.json.
+Latest user stop overrides every older conditional permission for neighbors.
+NO new validator, retry, omega2.3/4, MATERIAL_ADVECTED or ratio1 scientific job.
+Ratio1 source-only outline: choose actual full-mode reference calibration, establish
+finite grazing/end-current limits first, then assess reuse/rebinding and cost.
+Preserve all prior results/review debts and leave unrelated symmetry proposals,
+Lean/S11_lean/shared guard/protected builder unchanged. Stop for user decision.
+
 **RESUMED CENTRAL BENCHMARK ONLY; STOP AFTER RESULT (2026-09-30):**
 User explicitly requested resuming the paused central-balance-v2 and a separate
 source/metadata-only equal-speed feasibility answer. Same PID4097233/start ticks

@@ -1,202 +1,337 @@
-# Build directive — S11c-b slab/face operator blocks on a one-direction background (Part 1) + round-background scope note (Part 2)
+# Build directive — S11c-b slab/face maps on a one-direction background (Part 1) + round-background scope note (Part 2)
+
+**Status:** **v4** (2026-09-30) · Codex-revised from the orchestrator-written v1–v3 · baseline commit
+`c1e96e76` · ⛔ not governing until review-cleared.
 
 You are the builder. Your job is: **build → run → report → stop.**
 - ⛔ Do not launch, call or spawn any other AI, agent, reviewer or review process.
 - ⛔ Do not commit.
 - Write only the files named under *Deliverables*.
 
-## 0 · Execution safeguards
+## 0 · Declared freezes and execution safeguards
 
-1. **Guarded runs only.** Run every engine, constructor and comparator job under `scripts/s11c_guarded_run.py`,
-   as `AGENTS.md:8–12` requires: a whole-job 2 GiB memory cap, one job at a time, no overlapping CAS, and no
-   unguarded fallback. A contained failure is a **result**, whether the cap is hit or containment is
-   unavailable. Record the measured peak and the stage reached, then stop that job. ⛔ Never relaunch
-   unguarded, and ⛔ never raise the cap.
-2. **The suspended job.** `research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_flow_calibration_assessment.md:5`
-   says no other job may run alongside the suspended S11c-d process (PID 4097233). Run `ps -p 4097233`. If the
-   process exists in any state:
-   - do the source reading;
-   - write the Part 2 scope note, without its probe;
-   - stop before running any engine, and report that you stopped for this reason.
-3. **Wolfram.** Run at most one kernel at a time, and print observable progress.
+**Put these freezes in the first lines of the report.**
 
-## 1 · Governing physics — supplied, and unfalsifiable within this build
+1. `v_bulk_normal_0`, the bulk drain, “appears in no derived operator”
+   (`research/pde_ledger_v3/directives/S11c_b_SHARED_PHYSICS.md:90–91`). Part 1 has no drain flow.
+2. S11c-b “performs no curved-bulk response solve” (spec `:95–97`). Part 1 leaves the bulk at its supplied
+   face-trace operands.
 
-**The operator.** It is the S11c-b variable-coefficient slab operator with its face-response coupling, exactly
-as governed by `research/pde_ledger_v3/directives/S11c_b_SHARED_PHYSICS.md`, which amends
-`S11c_a_SHARED_PHYSICS.md` and `S11b_SHARED_PHYSICS.md`:
-- the slab degrees of freedom `u` (three in-plane components, no `w`-component), `θ`, and the two independent
-  face variables `ζ_+`, `ζ_-` (spec `:59–71`);
-- the face laws and face responses `Λ_A`, `Λ_V`, `Λ_X` (spec `:145–148`);
-- **all 40 accepted stored-energy basis terms**, each with its own symbolic coefficient (record `:35–37`);
-- both bookkeepers `η` and `σ_W`; both density representatives; both anchorings, `LAB_HELD` and
-  `MATERIAL_ADVECTED`;
-- the retained order: first in wave amplitude `ε`, first in each of `η` and `σ_W`.
+**Safeguards.**
 
-**Method.** Equations of motion are obtained by the spec's method (spec `:151–154`): "balance laws, the binding
-virtual-displacement rule, variational derivatives with held-fixed fields named, and prescribed external
-virtual work — **not** by putting an irreversible response kernel in an ordinary action."
+1. Run every engine, constructor and comparator job under `scripts/s11c_guarded_run.py`, as `AGENTS.md:8–12`
+   requires. Use the default whole-job 2 GiB cap, zero swap, the process/CPU controls, one job at a time, no
+   overlapping CAS and no unguarded fallback. Follow the standing no-deadline policy (`AGENTS.md:24–33`): do not
+   add a wall-clock, CPU-time, native-alarm, inactivity or progress-stall deadline. A containment refusal or
+   contained failure is a result; record the stage and available resource receipt, then stop that job.
+2. The suspended-job record says not to launch another job alongside PID 4097233
+   (`research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_flow_calibration_assessment.md:5`). Run
+   `ps -p 4097233` without signalling it. If it exists in any state, read sources, write the Part 2 scope note
+   without its probe, stop before any engine/constructor/comparator launch, and report this stop.
+3. Run at most one Wolfram kernel at a time. Preserve its durable log and progress receipts.
 
-**Sources.** The step record is `research/pde_ledger_v3/steps/S11c_b_variable_coefficient_operator.md`. The
-engines are `scripts/S11c_b_brane_operator_sympy_audit.py` and
-`mathematica/S11c_b_brane_operator_mathematica_audit.wl`. The exports are `scripts/S11c_b_exports.py`
-(`af560257`).
+## 1 · Supplied physics — unfalsifiable within this build
 
-**Status.** All of the above is supplied:
-- per-engine verified;
-- cross-engine residual **deferred**;
-- the two whole-row sign conventions are cross-engine-**unvalidated** (record `:15–31`).
+The supplied object is the S11c-b variable-coefficient slab operator and face response governed by
+`research/pde_ledger_v3/directives/S11c_b_SHARED_PHYSICS.md`, which amends `S11c_a_SHARED_PHYSICS.md` and
+`S11b_SHARED_PHYSICS.md`.
 
-This build does not test any of it.
-
-**Declared freezes.** State both in the first lines of the report:
-1. `v_bulk_normal_0`, the bulk drain, "appears in no derived operator" (spec `:90–91`). Part 1 has **no drain
-   flow**.
-2. S11c-b performs no bulk response solve. The bulk enters **only** as face operands.
-
-## 2 · Part 1 — the object
-
-**Index convention.** Directions 1, 2 and 3 are the engines' **symbol-name labels**:
-- in SymPy, the direction suffix in symbol names such as `u_1` and `w1_profile_d1`
-  (`scripts/S11c_b_brane_operator_sympy_audit.py:190–195`, `:420`);
-- in Wolfram, `xOne`, `xTwo`, `xThree`.
-
-⚠ The SymPy loop variable `DIRECTIONS = range(3)` (`:57`) is 0-based and is **not** this label. State the mapping
-you used in each engine, with file:line.
-
-**Background restriction (R1), applied before construction.**
-1. Every background symbol whose name carries direction label 2 or 3 in **any** position is zero. That includes
-   mixed jets such as one carrying labels 1 and 2, and every higher jet through the highest order the engines
-   carry.
-2. Every other background datum depends only on direction 1: density representatives, support bundle, face,
-   bulk-background, domain and boundary data.
-3. Every background **vector** datum has zero components along directions 2 and 3. This includes the hold force
-   `f_hold⁰`, the hold tractions `t_hold,s⁰` and the boundary loads (spec `:195–196`).
-4. Every background tensor datum is invariant under rotations about direction 1.
-
-State how R1 is imposed in each engine, with file:line. ⛔ Do not build the unrestricted operator and restrict it
-afterwards.
-
-**Perturbation class `P`.** Every perturbation field, in whichever coordinates each engine uses, is independent
-of direction 3. Dependence on direction 2 is the form `exp(i(k₂ x₂ − ω t))`, with `k₂` and `ω` symbolic and
-live. Dependence on direction 1 is general.
-
-**Object.** One rectangular linear map: the first derivative, at the background and on class `P`, of an **ordered
-output vector** with respect to an **ordered input vector**. Name every input and output, with the file:line of its
-definition, and print the full matrix.
-
-- **Inputs, in order.**
-  - The slab fields `u_1`, `u_2`, `u_3`, `θ`, `ζ_+`, `ζ_-`.
-  - For each face `s = ±`, the bulk trace inputs: `δp_s` and the four components of `v_bulk,s`. Without a bulk
-    solve these are independent inputs, not outputs.
-- **Outputs, in order.**
-  1. Every operator row as the engines define it: after the constraint fold (pin B), with `μ_θ` kept as its named
-     operand. This includes:
-     - the three `U` body-balance rows;
-     - the `θ` and `e_W` balance rows;
-     - the face generalized-force rows, including `CENTER_FACE_GENERALIZED_ROW` for the independent `ζ_c`
-       (`scripts/S11c_b_brane_operator_sympy_audit.py:2237`);
-     - the `μ_θ` face binding.
-  2. For each face `s = ±`, every face quantity the face laws use (S11c-a `:343–354`, `:365–366`):
-     - the components of `n̂_s`;
-     - the components of `v_face,s`;
-     - the components of `δ_v x_s`, as functions of the virtual fields;
-     - `V_s`, `a_s`, `J_s`, `𝒜_s`, `μ_s`;
-     - the components of `t_s`.
-
-**Form.** You may use the strong form, or the weak form with trial and test fields in `P` (spec `§3c`). State which.
-If you use the weak form, the test-field list mirrors the slab inputs.
-
-⭐ **Construct the operator for all fields at once** from the stored energy and the supplied face laws, by the
-method in §1. Then read the blocks off it. ⛔ Do not construct any single field's equation on its own, and ⛔ do
-not split the fields into groups before the operator is constructed.
-
-Print **every entry, including any that evaluates to 0, as a computed object**. Emission must not depend on any
-entry's value: which entries appear is decided only by the field and row labels.
-
-**Model point.** Keep every physical symbol live: the 40 basis coefficients, `μ_R`, the density representatives,
-`c_s0`, `ρ_m`, `B_ρ`, `C`, `k_W`, `κ_W`, `μ_W`, `Λ_A⁰`, `Λ_V⁰`, `Λ_X⁰`, `τ_A`, `τ_V`, `τ_X`, `k₂`, `ω`, every
-background jet that survives R1, and the bookkeepers `ε`, `η`, `σ_W`. ⛔ No numeric substitution in constructing
-the operator. If an entry is too large to print in closed form:
-1. print its exact carrier structure, plus exact rational evaluations at declared witness points;
-2. declare every witness point, and state that witnesses are not model values;
-3. choose one witness per component of any union-of-loci the carriers define.
-
-## 3 · Part 1 — controls
-
-These are FORM controls. Each one is a term **added to the stored-energy density** with a live coefficient. Then
-the whole Part 1 construction is re-run. The term itself is the only hand-written addition. Summation runs over
-the in-plane indices `i, j, k ∈ {1, 2, 3}`; `ε_ijk` is the Levi-Civita symbol; `ê ≡ (sin β, 0, cos β)` in
-components (1, 2, 3), with `β` live; `g_i ≡ ∂_{y_i} W_bg`.
+The engines define the physical slab coordinates as
 
 ```text
-K1 :   a_K1 · ê_i (∂_k u_i)(∂_k θ)
-K2 :   a_K2 · θ · ε_ijk g_i ∂_j u_k
+X_slab = (u_1, u_2, u_3, theta, e_W, zeta_c).
 ```
 
-`a_K1` and `a_K2` are live symbols carrying whatever units make each term a stored-energy density. For each
-control, print the complete block matrix exactly as for the baseline, plus the entry-by-entry difference from
-the baseline. If a control's output is byte-identical to the baseline, report that explicitly.
+`u_1,u_2,u_3,theta,e_W` are defined in
+`research/pde_ledger_v3/scripts/S11c_b_brane_operator_sympy_audit.py:143–169,214–233`; `zeta_c` is defined at
+`:569–577`. These are the engine coordinates; do not substitute a paraphrased `ζ_±` list. The two independent
+face degrees of freedom and their relation to `δW,e_W,ζ_c` are supplied at spec `:59–71`.
+
+The supplied face equations are (spec `:145–154`):
+
+```text
+J_s = Λ_A(ω) 𝒜_s + Λ_V(ω) V_s,
+Λ_I(ω) = Λ_I⁰/(1-iωτ_I),  I ∈ {A,V,X},
+𝒜_s = μ_s - δp_s/ρ_m,          μ_s = μ_θ/ρ_br⁰,
+t_s = -(δp_s + Λ_X(ω)𝒜_s) n̂_s,
+n̂_s·v_bulk,s = V_s + J_s/ρ_m,
+∂_tΣ + ∇_x·(Σv) = -(J_+ + J_-),
+Σ = ρ_4D W,                     v = ∂_t u,
+δ_vΣ_mat = 0,
+δ_vθ + δ_ve_W + ∇_x·δ_vu = 0   (uniform linearisation).
+```
+
+Obtain the equations of motion by the supplied method at spec `:152–154`: balance laws, the binding
+virtual-displacement rule, variational derivatives with held-fixed fields named, and prescribed external
+virtual work—not by placing an irreversible response kernel in an ordinary action.
+
+Keep the accepted energy object intact: 40 records = 10 uniform + 15 `W_BG` first-jet + 15 `MU_R_BG`
+first-jet records (step record `research/pde_ledger_v3/steps/S11c_b_variable_coefficient_operator.md:35–37`).
+The SymPy engine constructs each accepted record with its coefficient slot at
+`scripts/S11c_b_brane_operator_sympy_audit.py:1760–1837` and emits the retained basis at `:4119–4141`.
+Before construction, have each engine emit an ordered manifest of those 40 engine records—record label, exact
+`COEFFICIENT` slot, its free-symbol list and defining file:line—and use that manifest as the coefficient domain.
+Keep every manifested coefficient expression and free symbol live. Also keep live both bookkeepers `eta_bg` and
+`sigma_W`, both density representatives, both
+anchorings `LAB_HELD` and `MATERIAL_ADVECTED`, and every background jet admitted by R1 below. Retain first order
+in wave amplitude and first order in each background bookkeeper. No numerical model point is part of this build.
+
+This supplied physics is not an acceptance test. The build does not test or revise it.
+
+## 2 · Part 1 object and domains
+
+### 2.1 Index convention
+
+Directions 1, 2 and 3 are engine symbol-name labels. SymPy defines `u_1,u_2,u_3` at
+`scripts/S11c_b_brane_operator_sympy_audit.py:214–219` and the profile first-jet labels at `:182–199`.
+Wolfram defines `spatialCoordinates={xOne,xTwo,xThree}` at
+`research/pde_ledger_v3/mathematica/S11c_b_brane_operator_mathematica_audit.wl:239–242`.
+SymPy’s `DIRECTIONS=range(3)` at `:57` is a separate 0-based loop index. The report gives each engine’s mapping,
+with file:line.
+
+### 2.2 Background and perturbation domains
+
+**R1 is a symmetry/domain restriction, applied before construction.** Every background datum—scalar, polar,
+axial, tensor, support, face, bulk-background, domain and boundary datum—is invariant under the full `O(2)` of
+rotations and reflections about direction 1, and every background profile depends on `x_1` alone. For profile
+jets only, set a jet to zero when any spatial-derivative index has symbol-name label 2 or 3; retain every allowed
+direction-1 jet through the engine’s carried order. Do not apply component-name zeroing to general vectors or
+tensors. Implement the group-fixed domain itself in each engine before the energy, background-jet maps, face
+substrate or variations are constructed. The report states the implementation with file:line.
+
+**Class P.** Every perturbation and every trial/test field is independent of `x_3`. Its `x_2,t` dependence is
+`exp(i(k_2 x_2-omega t))`, with `k_2` and `omega` symbolic and live; its `x_1` dependence remains general.
+
+### 2.3 Formal physical-input domain
+
+Use this directive order; every name below comes from the engine coordinate definitions. The slab portion is
+
+```text
+u_1, u_2, u_3, theta, e_W, zeta_c
+```
+
+and the face-trace portion is
+
+```text
+delta_p_plus
+d_w_delta_p_plus
+delta_v_bulk_plus_1
+delta_v_bulk_plus_2
+delta_v_bulk_plus_3
+delta_v_bulk_plus_4
+d_w_delta_v_bulk_plus_1
+d_w_delta_v_bulk_plus_2
+d_w_delta_v_bulk_plus_3
+d_w_delta_v_bulk_plus_4
+delta_p_minus
+d_w_delta_p_minus
+delta_v_bulk_minus_1
+delta_v_bulk_minus_2
+delta_v_bulk_minus_3
+delta_v_bulk_minus_4
+d_w_delta_v_bulk_minus_1
+d_w_delta_v_bulk_minus_2
+d_w_delta_v_bulk_minus_3
+d_w_delta_v_bulk_minus_4
+```
+
+The trace values and normal jets are defined in
+`research/pde_ledger_v3/scripts/S11c_a_interface_geometry_sympy_audit.py:95–100,150–165`; S11c-b binds the same names at
+`scripts/S11c_b_brane_operator_sympy_audit.py:484–524`. They enter the physical shifted traces at S11c-a
+`:578–592,629–646`. These 20 trace coordinates define a **formal operand domain**, not 20 independent physical
+bulk degrees of freedom.
+
+### 2.4 Supplied potential-flow pullback
+
+Also emit the pullback of the formal map to the supplied rest-frame bulk equations (spec `:95–97`). Write
+`Psi_s=∂_w Phi_s` for the trace of
+`φ=Phi(x_1,w) exp(i(k_2x_2-omega t))`. For each face, use the supplied equations
+
+```text
+delta_p_s = i rho_m omega Phi_s,
+delta_v_bulk_s = (∂_1 Phi_s, i k_2 Phi_s, 0, Psi_s),
+∂_w delta_p_s = i rho_m omega Psi_s,
+∂_w delta_v_bulk_s =
+  (∂_1 Psi_s, i k_2 Psi_s, 0,
+   (k_2^2-omega^2/c_s0^2) Phi_s - ∂_1^2 Phi_s).
+```
+
+Label the first object `FORMAL_FACE_OPERAND_MAP` and the pulled-back object `POTENTIAL_FLOW_TRACE_MAP`. These are
+object names, not result descriptions. The equations in this subsection are supplied physics and are
+unfalsifiable within the build.
+
+### 2.5 Physical-output codomain
+
+Flatten component-valued objects in the order written below while retaining the parent engine label. The engine
+rows are, in order:
+
+```text
+U_BODY_BALANCE[1]
+U_BODY_BALANCE[2]
+U_BODY_BALANCE[3]
+THETA_BALANCE
+E_W_BALANCE
+ADVECTIVE_MASS_OPERAND
+FACE_FLUX_BOUNDARY_OPERANDS
+FACE_GENERALIZED_FORCE_ROWS.U[1]
+FACE_GENERALIZED_FORCE_ROWS.U[2]
+FACE_GENERALIZED_FORCE_ROWS.U[3]
+FACE_GENERALIZED_FORCE_ROWS.E_W
+FACE_GENERALIZED_FORCE_ROWS.THETA_FACE_FLUX
+FACE_GENERALIZED_FORCE_ROWS.CENTER_FACE_GENERALIZED_ROW
+FACE_GENERALIZED_FORCE_ROWS.SOURCE_OPERANDS
+MU_THETA_FACE_BINDING
+```
+
+These labels and their container structure are defined by the SymPy engine at
+`scripts/S11c_b_brane_operator_sympy_audit.py:2967–3021,3095–3127`; the generalized-row member names originate at
+`:2135–2239`. Preserve each engine’s `LOCAL`, `DIVERGENCE_FLUX`, `SOURCE_OPERAND`, `EVOLUTION_TERM_ORIGINS` and
+`EXPANDED` sublabels rather than inventing a replacement row list.
+
+For each ordered pair `(face,dof)`
+
+```text
+(plus, DELTA_W), (plus, ZETA_C), (minus, DELTA_W), (minus, ZETA_C)
+```
+
+append these engine-defined face objects, in order, flattening vector components 1,2,3,4:
+
+```text
+normal_exact[1..4]
+measure_exact
+face_velocity_exact[1..4]
+pressure_trace_exact
+bulk_velocity_trace_exact[1..4]
+density_trace_exact
+current_trace_exact[1..4]
+rho4_bg_exact
+rhobr_bg_exact
+face_normal_raw[tuple_position_1][component_label_1..4]
+face_normal_raw[tuple_position_2][component_label_1..4]
+face_normal_raw[tuple_position_3][component_label_1..4]
+face_measure_raw[tuple_position_1..3]
+face_velocity_raw
+relative_flux_raw
+true_area_flux_raw
+pressure_trace_raw
+mu_specific_raw
+affinity_raw
+traction_raw[1..4]
+closure_raw
+kinematic_raw.OPERAND_A
+kinematic_raw.OPERAND_B
+kinematic_raw.RESIDUAL
+```
+
+The `FaceSource` physical members are defined at
+`research/pde_ledger_v3/scripts/S11c_a_interface_geometry_sympy_audit.py:600–626`; the named raw objects are
+defined at `:878–944`. Do not replace these objects with prose aliases.
+
+Define and print
+
+```text
+FORMAL_FACE_OPERAND_MAP := D_(X_slab,X_trace) (physical-output codomain) |_(R1,P),
+POTENTIAL_FLOW_TRACE_MAP := FORMAL_FACE_OPERAND_MAP pulled back by §2.4.
+```
+
+Print every entry of both maps, including entries computed as zero. Emission is determined only by the ordered
+domain/codomain labels, never by an entry’s value.
+
+### 2.6 Separate virtual/test map
+
+The test domain is, in engine order,
+
+```text
+delta_v_u_1, delta_v_u_2, delta_v_u_3, delta_v_e_W, delta_v_zeta_c.
+```
+
+Those names are defined in S11c-a at
+`scripts/S11c_a_interface_geometry_sympy_audit.py:95–100,133–148`; the thickness/centre routing is at `:566–575`.
+For the same four `(face,dof)` pairs used in §2.5, the codomain is the four components of the engine member
+`virtual_displacement`, defined at `:780–804,840–861`. Define and print its derivative with respect to this test
+domain as `VIRTUAL_KINEMATIC_MAP`. It is a separate test-field object, not a row of either physical-input map.
+Print every labelled entry.
+
+Construct the stored-energy/face-law weak object once for all physical trial fields and all test fields; then
+extract the three named maps. Do not construct a single field’s equation in isolation or split the trial fields
+before the weak object exists. The pairing domain is class `P` with compact support in the in-plane interior, as
+supplied in spec §3c (`S11c_b_SHARED_PHYSICS.md:312–346`).
+
+## 3 · Supplied FORM controls
+
+Apply R1 and class `P` to the baseline first. Then append each control term below to the stored-energy density and
+rerun the complete §2 construction. The control-only datum `e_hat` is introduced after R1 and is not a background
+datum in R1’s domain.
+
+```text
+K1: a_K1 e_hat_i (∂_k u_i)(∂_k theta),
+    e_hat = (sin(beta), 0, cos(beta));
+
+K2: a_K2 theta epsilon_ijk g_i ∂_j u_k,
+    g_i = ∂_(y_i) W_bg.
+```
+
+Indices `i,j,k` run over engine labels 1,2,3; `epsilon_ijk` is the Levi-Civita symbol. Keep `a_K1`, `a_K2` and
+`beta` live, with control coefficients assigned the dimensions required for stored-energy density. For `K1` and
+`K2`, print all three complete maps under object tags that name the control and map, followed by the computed
+entrywise difference from the baseline. If a complete control payload is byte-identical to its baseline payload,
+report that fact after comparison. The controls enter only at stored energy.
 
 ## 4 · Engines and comparator
 
-**SymPy.** From `scripts/S11c_b_exports.py` or the S11c-b SymPy engine, it may import **only**:
-- symbol definitions;
-- the accepted 40-term stored-energy basis.
+**SymPy import whitelist.** From `scripts/S11c_b_exports.py` or the existing SymPy engine, import only symbol
+definitions and the accepted 40-record stored-energy basis. Do not import any operator row, face row, coupling
+kernel or other derived payload. R1 must be represented in the imported symbols/basis before construction.
 
-⛔ It may not import any exported operator row, coupling kernel, face row, or other derived payload. R1 enters the
-energy, the background-jet maps and the face substrate **before** any variation.
+**Blind Wolfram engine.** Import nothing. Re-derive the supplied physics and named objects from the governing
+specs; do not transcribe the Python implementation.
 
-**Wolfram.** It is written blind: it **imports nothing**, re-derives from the governing specs, and ⛔ is never a
-transcription of the `.py`.
+**Raw-first comparator.** Join by map name, parent output label, component label and input label. For baseline,
+`K1` and `K2`, emit first the raw `operand_PY`, raw `operand_WL` and raw `residual` for every entry, with no
+convention map applied. The step record requires the comparator to surface, not normalize, the kinetic whole-row
+sign and face-generalized-force whole-row sign (`S11c_b_variable_coefficient_operator.md:112–114`). A separately
+tagged convention-mapped diagnostic may follow; state every map and its source file:line. It never replaces the
+raw comparison.
 
-**Comparator.** Join the two engines' printed matrices by input and output label. For the baseline and for each
-control, emit **first**, for every entry, the raw `operand_PY`, the raw `operand_WL` and the raw `residual`, with no
-convention applied. The record requires the comparator to surface the two whole-row sign conventions, not
-normalize them (record `:112–114`): the kinetic-term sign, and the face generalized-force convention. A
-convention-mapped diagnostic may follow, under distinct tag names, with each map stated alongside the file:line it
-comes from. ⛔ The mapped diagnostic never replaces the raw comparison.
+If an engine or comparator cannot complete under §0, report the contained result and stop that job. Do not
+substitute another computation.
 
-If an engine or the comparator cannot complete under §0, report the measurement and stop that job. ⛔ Do not
-replace it with something else.
+## 5 · The three clauses and structural rule
 
-## 5 · The three clauses, and the structural rule
+> **1. The script may PRINT computed objects. It may NOT state conclusions.** An `emit`/`Print` payload is a CAS
+> object—an expression, a solved root or a boolean from a symbolic test—not prose describing a result.
+>
+> **2. PRINT the residual; do NOT assert it.** Compute → emit → then assert.
+>
+> **3. Interpretation belongs to the STEP RECORD.** The scripts do not editorialise.
 
-> **1. The script may PRINT computed objects. It may NOT state conclusions.** An `emit`/`Print` payload must be
-> a CAS object — an expression, a solved root, a boolean from a symbolic test. ⛔ Never prose describing a
-> result.
-> **2. PRINT the residual; do NOT assert it.** Compute → emit → *then* assert.
-> **3. Interpretation belongs to the STEP RECORD.** ⛔ The script does not editorialise.
+> **The only place physical symbols may be combined by hand is the supplied stored energy (including §3), the
+> supplied face laws, the supplied potential-flow pullback, and the ansatz/domain. Every other expression involving
+> them is reached by computation. Every control re-enters at stored energy, never at a row or result.**
 
-> **The ONLY place the physical symbols may be combined by hand is in constructing the STORED ENERGY (including
-> the K1/K2 terms of §3), the SUPPLIED FACE LAWS, and the ANSATZ. Every other expression involving them must be
-> REACHED BY COMPUTATION. Every control re-enters the chain at the stored energy, ⛔ never at a result.**
-
-Tag names name the object (field, row, block, control), ⛔ never a value, sign or shape of a result.
+Tag names name objects—field, coordinate, row, map or control—never a value, sign or shape of a result. The scripts,
+comparator and report contain no prediction about any entry and no acceptance criterion involving a value.
 
 ## 6 · Part 2 — scope note only (⛔ do not build)
 
-**The later object.** The complete linear operator on a background invariant under all rotations and reflections
-of the three in-plane coordinates about a point (`O(3)`). The bulk drain flow is carried as a **live background
-field**: a normal component at the faces plus a radial in-plane component, with no azimuthal component. The
-blocks of interest are those between the toroidal displacement fields and every other field, at each angular
-order. Toroidal fields are tangent to the spheres `r = const` and divergence-free. The bulk response is closed
-rather than left as face operands.
+The later object is the complete linear operator on a background invariant under `O(3)` in the three in-plane
+coordinates about a point, with the bulk response closed. The drain is a live background field: a normal face
+component plus a radial in-plane component and no azimuthal component. Its requested map is between the toroidal
+trial/test domain and the complete remaining field domain at each angular order for which the toroidal domain
+exists.
 
-**Write a scope note** answering:
-1. For each ingredient, which committed spec governs it (file:line) and which is **missing**. The ingredients are:
-   - the slab energy;
-   - the face laws and face responses;
-   - the bulk closure (including the S11c-c1 curved-bulk closure);
-   - the drain flow.
+Write a scope note that:
 
-   In particular: how the drain flow enters the slab/face/bulk equations, given spec `:90–91`.
-2. Whether the existing three-direction background jets can represent an `O(3)`-symmetric profile at the retained
-   order, and what changes if not (file:line).
-3. A measured memory/time probe on a small case, under §0, only if §0 permits it.
-4. What cannot be done under the §0 guard.
+1. identifies, with file:line, the committed governing source or missing source for the slab energy, face laws and
+   responses, curved-bulk closure (including S11c-c1), and drain flow;
+2. surfaces how the drain would have to enter the slab, face and bulk equations given spec `:90–91`; do not invent
+   that missing specification;
+3. states whether the existing three-direction background jets can represent the requested `O(3)` domain at the
+   retained order, with file:line;
+4. records a small guarded memory/time probe only if §0 permits it, and otherwise records why it was not run;
+5. states what cannot be done under the guard.
 
-Then **stop**.
+Then stop. A drain equation or scientific method change requires an orchestrator specification before a build.
 
 ## 7 · Deliverables
 
@@ -206,15 +341,16 @@ Then **stop**.
   `research/pde_ledger_v3/mathematica/out/S11c_d_zinvariant_operator_blocks.out`
 - `research/pde_ledger_v3/scripts/S11c_d_zinvariant_operator_blocks_comparator.py`, with literal stdout at
   `research/pde_ledger_v3/scripts/out/S11c_d_zinvariant_operator_blocks_comparator.out`
-- `research/pde_ledger_v3/_measurements/S11c_d_zinvariant_operator_blocks_report.md`. It contains:
-  - the declared freezes, first;
-  - each command run, with its guard invocation, exit code, wall time and measured peak memory;
-  - the output paths;
-  - the index convention, the R1 implementation, the field list and row definitions, with file:line;
-  - any convention maps used by the mapped diagnostic;
-  - any byte-identical controls and any contained failures.
-
-  ⛔ It contains no interpretation of the entries.
+- `research/pde_ledger_v3/_measurements/S11c_d_zinvariant_operator_blocks_report.md`, containing:
+  - the two declared freezes first;
+  - every command, guard invocation, exit code, wall time and peak-memory receipt;
+  - output paths;
+  - the 40-record manifest;
+  - every ordered domain/codomain label and its engine definition file:line;
+  - the R1 and class-P implementation in each engine, with file:line;
+  - any comparator convention maps and their source file:line;
+  - any byte-identical control payloads and contained failures;
+  - no interpretation of map entries.
 - `research/pde_ledger_v3/_measurements/S11c_d_round_background_scope.md` — the Part 2 scope note.
 
 Stop after writing these.

@@ -1,0 +1,12 @@
+K1 a_K1*th_d1*u1_d1*sin(beta) + a_K1*th_d1*u3_d1*cos(beta) + a_K1*th_d2*u1_d2*sin(beta) + a_K1*th_d2*u3_d2*cos(beta) + a_K1*th_d3*u1_d3*sin(beta) + a_K1*th_d3*u3_d3*cos(beta)
+K1_ON_P a_K1*th_d1*u1_d1*sin(beta) + a_K1*th_d1*u3_d1*cos(beta) + a_K1*th_d2*u1_d2*sin(beta) + a_K1*th_d2*u3_d2*cos(beta)
+K1_MIXED_ON_P [a_K1*th_d1*u3_d1*cos(beta), a_K1*th_d2*u3_d2*cos(beta)]
+K1_MIXED_IF_E3_ZEROED []
+K1_EVEN_EVEN_IF_E3_ZEROED a_K1*th_d1*u1_d1*sin(beta) + a_K1*th_d2*u1_d2*sin(beta)
+K2 -a_K2*g1*theta*u2_d3 + a_K2*g1*theta*u3_d2 + a_K2*g2*theta*u1_d3 - a_K2*g2*theta*u3_d1 - a_K2*g3*theta*u1_d2 + a_K2*g3*theta*u2_d1
+K2_ON_P_R1 a_K2*g1*theta*u3_d2
+K2_MIXED_ON_P_R1 [a_K2*g1*theta*u3_d2]
+K1_AXIS_PARALLEL_TO_G_ONLY_IF cos(beta)=0
+K2_OUTSIDE_KRONECKER_FAMILY True
+K1_E3_PIECE a_K1*th_d1*u3_d1*cos(beta) + a_K1*th_d2*u3_d2*cos(beta)
+K1_E1_PIECE a_K1*th_d1*u1_d1*sin(beta) + a_K1*th_d2*u1_d2*sin(beta)

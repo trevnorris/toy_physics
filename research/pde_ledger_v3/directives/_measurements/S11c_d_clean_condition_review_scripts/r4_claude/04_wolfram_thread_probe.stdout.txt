@@ -1,0 +1,16 @@
+04_wolfram_thread_probe.sh: line 19: /proc/495444/cmdline: No such file or directory
+SAMPLE 1 PID 495444 CMD  THREADS  RSS_KB 
+SAMPLE 1 TOTAL_THREADS_ALL_WOLFRAM_PROCS 0
+WOLFRAMSCRIPT_EXIT 255
+MAX_TOTAL_THREADS 0
+Failed to open configuaration file at path: /home/trevnorris/.config/Wolfram/WolframScript/WolframScript.conf
+Failed to open configuaration file at path: /home/trevnorris/.config/Wolfram/WolframScript/WolframScript.conf
+Failed to open configuaration file at path: /home/trevnorris/.config/Wolfram/WolframScript/WolframScript.conf
+Failed to open configuaration file at path: /home/trevnorris/.config/Wolfram/WolframScript/WolframScript.conf
+
+Your Wolfram product is not activated or is experiencing a license-related problem.
+
+Please activate the product at the following WolframKernel location:
+
+    /usr/local/Wolfram/Wolfram/15.0/Executables/WolframKernel
+

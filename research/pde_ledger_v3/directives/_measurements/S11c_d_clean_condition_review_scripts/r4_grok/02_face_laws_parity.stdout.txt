@@ -1,0 +1,25 @@
+N_1 -s*(d1W*s/2 + d1zeta)/sqrt(d2zeta**2 + (d1W*s/2 + d1zeta)**2 + 1)
+N_2 -d2zeta*s/sqrt(d2zeta**2 + (d1W*s/2 + d1zeta)**2 + 1)
+N_3 0
+N_W s/sqrt(d2zeta**2 + (d1W*s/2 + d1zeta)**2 + 1)
+N_3_ON_P 0
+N_3_IS_ZERO True
+N_2_BACKGROUND_ZETA0 0
+ORIENTATION_S_N_DOT_W 2*s**2/sqrt(4*d2zeta**2 + (d1W*s + 2*d1zeta)**2 + 4)
+N0 [-d1W*s**2/sqrt(d1W**2*s**2 + 4), 0, 0, 2*s/sqrt(d1W**2*s**2 + 4)]
+N0_3 0
+D_V_D_U3T 0
+D_V_D_U3T_ON_P 0
+D_J_D_U3T 0
+D_J_D_V3 0
+D_AFFINITY_D_U3 0
+T_3 0
+T_3_IS_ZERO_ON_P True
+D_VIRTUAL_WORK_D_DVU3 0
+VFACE_3 u3t
+D_VFACE3_D_U3T 1
+DVX_3 dv_u3
+D_DVX3_D_PHYSICAL_U3 0
+D_DVX3_D_TEST_U3 1
+D_CLOSURE_D_U3T 0
+D_MEASURE_D_U3 0

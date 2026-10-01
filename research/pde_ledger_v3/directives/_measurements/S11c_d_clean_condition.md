@@ -1,10 +1,14 @@
-# S11c_d_clean_condition.md (v3) — grounding commands (rule 2 / E1)
+# S11c_d_clean_condition.md (v4) — grounding commands (rule 2 / E1)
 
-Mechanical lookups, run from the repo root on 2026-09-30, HEAD `e5f0dfda`. Regenerated from the commands below; nothing transcribed.
+Mechanical lookups, run from the repo root on 2026-09-30, HEAD `c1e96e76`. Regenerated from the commands below;
+nothing transcribed. Fences are longer than fences in quoted source text.
 
 ````
-$ sed -n 14p research/pde_ledger_v3/CHARTER.md
+$ sed -n 14,17p research/pde_ledger_v3/CHARTER.md
 - ⭐⭐ **v3 then TOOK a method change (2026-08-01, user decision): REQUIREMENTS-FIRST.** Each force
+  sector states what it needs to survive. **Brane and bulk are defined LAST, at the knit**, by asking
+  whether one medium can satisfy every requirement at once. **A no-go between requirements IS the
+  falsification.**
 ````
 
 ````
@@ -196,6 +200,100 @@ K 40 ABS_F 0.000128744611871061807549287 NEG_LOG_OVER_K 0.223941996721032406 NEG
 K 80 ABS_F 0.00000839213464027346394662635 NEG_LOG_OVER_K 0.146102695538938832 NEG_LOG_OVER_SQRT_K 1.30678223568409
 K 160 ABS_F 1.34109966830722522083066e-8 NEG_LOG_OVER_K 0.113294942615915806 NEG_LOG_OVER_SQRT_K 1.43308026417747616
 K 320 ABS_F 4.13712643579755546390872e-10 NEG_LOG_OVER_K 0.0675182796272936264 NEG_LOG_OVER_SQRT_K 1.20780370376374171
+````
+
+## v4 author evidence — scripts and literal stdout
+
+````
+$ python3 research/pde_ledger_v3/directives/_measurements/S11c_d_clean_condition_v4_author_scripts/symmetry_domain_audit.py
+MIRROR_AXIS_1 [[1, 0, 0], [0, 1, 0], [0, 0, -1]]
+O2_RANK2_POLAR_FORM [[{'A': 1}, 0, 0], [0, {'B': 1}, 0], [0, 0, {'B': 1}]]
+O2_RANK2_POLAR_MIRROR_IMAGE [[{'A': 1}, {}, {}], [{}, {'B': 1}, {}], [{}, {}, {'B': 1}]]
+AXIAL_23_SO2_CANDIDATE [[0, 0, 0], [0, 0, {'C': 1}], [0, {'C': -1}, 0]]
+AXIAL_23_MIRROR_IMAGE [[{}, {}, {}], [{}, {}, {'C': -1}], [{}, {'C': 1}, {}]]
+AXIAL_23_FIXED_BY_MIRROR False
+AXIS_1_QUARTER_TURN [[1, 0, 0], [0, 0, -1], [0, 1, 0]]
+O2_RANK2_POLAR_QUARTER_TURN_IMAGE [[{'A': 1}, {}, {}], [{}, {'B': 1}, {}], [{}, {}, {'B': 1}]]
+PARITY_BLOCK v_face_3 FROM u_3 SAME_SECTOR True
+PARITY_BLOCK delta_v_x_3 FROM u_3 SAME_SECTOR True
+PARITY_BLOCK V FROM u_3 SAME_SECTOR False
+PARITY_BLOCK J FROM u_3 SAME_SECTOR False
+PARITY_BLOCK affinity FROM u_3 SAME_SECTOR False
+W_COORDINATE_MIRROR_SIGN 1
+NORMAL_DERIVATIVE_PRESERVES_INPLANE_PARITY True
+ROUND_SECTOR 0 SCALAR_PARITY 1 SPHEROIDAL_PARITY 1 TOROIDAL_PARITY ZERO_SECTOR TOROIDAL_EXISTS False
+ROUND_SECTOR 1 SCALAR_PARITY -1 SPHEROIDAL_PARITY -1 TOROIDAL_PARITY 1 TOROIDAL_EXISTS True
+ROUND_SECTOR 2 SCALAR_PARITY 1 SPHEROIDAL_PARITY 1 TOROIDAL_PARITY -1 TOROIDAL_EXISTS True
+ROUND_SECTOR 3 SCALAR_PARITY -1 SPHEROIDAL_PARITY -1 TOROIDAL_PARITY 1 TOROIDAL_EXISTS True
+ROUND_SECTOR 4 SCALAR_PARITY 1 SPHEROIDAL_PARITY 1 TOROIDAL_PARITY -1 TOROIDAL_EXISTS True
+CONTROL_ORDER SPECIALIZE_BASELINE_THEN_APPEND_CONTROL
+K1_FIXED_DATUM e=(sin(beta),0,cos(beta))
+K1_ON_P_U3_THETA_CARRIERS ['a_K1*cos(beta)*d1(u3)*d1(theta)', 'a_K1*cos(beta)*d2(u3)*d2(theta)']
+K2_ON_R1_P_CARRIER a_K2*theta*g1*d2(u3)
+````
+
+````
+$ python3 research/pde_ledger_v3/directives/_measurements/S11c_d_clean_condition_v4_author_scripts/potential_trace_pullback_audit.py
+FORMAL_TRACE_COORDINATE 1 delta_p_plus
+FORMAL_TRACE_COORDINATE 2 d_w_delta_p_plus
+FORMAL_TRACE_COORDINATE 3 delta_v_bulk_plus_1
+FORMAL_TRACE_COORDINATE 4 delta_v_bulk_plus_2
+FORMAL_TRACE_COORDINATE 5 delta_v_bulk_plus_3
+FORMAL_TRACE_COORDINATE 6 delta_v_bulk_plus_4
+FORMAL_TRACE_COORDINATE 7 d_w_delta_v_bulk_plus_1
+FORMAL_TRACE_COORDINATE 8 d_w_delta_v_bulk_plus_2
+FORMAL_TRACE_COORDINATE 9 d_w_delta_v_bulk_plus_3
+FORMAL_TRACE_COORDINATE 10 d_w_delta_v_bulk_plus_4
+FORMAL_TRACE_COORDINATE 11 delta_p_minus
+FORMAL_TRACE_COORDINATE 12 d_w_delta_p_minus
+FORMAL_TRACE_COORDINATE 13 delta_v_bulk_minus_1
+FORMAL_TRACE_COORDINATE 14 delta_v_bulk_minus_2
+FORMAL_TRACE_COORDINATE 15 delta_v_bulk_minus_3
+FORMAL_TRACE_COORDINATE 16 delta_v_bulk_minus_4
+FORMAL_TRACE_COORDINATE 17 d_w_delta_v_bulk_minus_1
+FORMAL_TRACE_COORDINATE 18 d_w_delta_v_bulk_minus_2
+FORMAL_TRACE_COORDINATE 19 d_w_delta_v_bulk_minus_3
+FORMAL_TRACE_COORDINATE 20 d_w_delta_v_bulk_minus_4
+SUPPLIED_CLASS_P_ANSATZ phi=Phi(x1,w)*exp(i*(k2*x2-omega*t))
+SUPPLIED_TRACE_PRESSURE delta_p=i*rho_m*omega*Phi
+SUPPLIED_TRACE_VELOCITY (d1(Phi), i*k2*Phi, 0, Psi) Psi=d_w(Phi)
+SUPPLIED_NORMAL_JET_PRESSURE d_w(delta_p)=i*rho_m*omega*Psi
+SUPPLIED_NORMAL_JET_VELOCITY (d1(Psi), i*k2*Psi, 0, d_w(Psi))
+SUPPLIED_WAVE_EQUATION_PULLBACK d_w(Psi)=(k2^2-omega^2/c_s0^2)*Phi-d1^2(Phi)
+CLASS_P_ODD_BULK_TRACE_COMPONENT 0
+CLASS_P_ODD_BULK_NORMAL_JET_COMPONENT 0
+VIRTUAL_TEST_COORDINATE 1 delta_v_u_1
+VIRTUAL_TEST_COORDINATE 2 delta_v_u_2
+VIRTUAL_TEST_COORDINATE 3 delta_v_u_3
+VIRTUAL_TEST_COORDINATE 4 delta_v_e_W
+VIRTUAL_TEST_COORDINATE 5 delta_v_zeta_c
+VIRTUAL_OUTPUT_OBJECT FaceSource.virtual_displacement
+D_VIRTUAL_X3_D_TEST_U3 1
+D_VIRTUAL_X3_D_PHYSICAL_U3 0
+D_FACE_VELOCITY3_D_PHYSICAL_U3 d_t
+VIRTUAL_MAP_IS_PHYSICAL_FRECHET_ROW False
+INTERFACE_SOURCE_LINE 150 # Traced bulk perturbations and their normal jets at the flat reference faces.
+INTERFACE_SOURCE_LINE 154 delta_v_bulk = {
+INTERFACE_SOURCE_LINE 158 dw_delta_v_bulk = {
+INTERFACE_SOURCE_LINE 163 1: symbol("d_w_delta_p_plus", "COORDINATE", "upper pressure-perturbation normal jet at the flat reference face"),
+INTERFACE_SOURCE_LINE 164 -1: symbol("d_w_delta_p_minus", "COORDINATE", "lower pressure-perturbation normal jet at the flat reference face"),
+INTERFACE_SOURCE_LINE 638 pressure_perturbation = affine_bulk_perturbation(
+INTERFACE_SOURCE_LINE 641 velocity_perturbation = tuple(
+GOVERNING_SPEC_LINE 95 Inherited from S11c-a §1b unchanged: the rest-frame bulk fields `v_bulk=∇₄φ`, `δp=−ρ_m∂_tφ`,
+````
+
+````
+$ python3 research/pde_ledger_v3/directives/_measurements/S11c_d_clean_condition_v4_author_scripts/flow_horizon_source_scope_audit.py
+ONTOLOGY_LINE 100 The bulk is therefore an internal reservoir, not an external supply. In a closed-loop realization, localized throat drainage transfers material, momentum, and energy from ordered brane degrees of freedom into de-structured bulk degrees of freedom, while distributed return transfers material back into the ordered state. The bulk may store the corresponding response as compression, flow, internal energy, entropy, or other unresolved excitations of the same medium. Any sustained cycle must include the evolution of that reservoir rather than treating it as an inexhaustible battery.
+ONTOLOGY_LINE_HAS_WORD 100 material True
+ONTOLOGY_LINE_HAS_WORD 100 energy True
+ONTOLOGY_LINE_HAS_WORD 100 particle False
+ONTOLOGY_LINE_HAS_WORD 100 coherent False
+ONTOLOGY_LINE 1366 - \(\Gamma_{\rm drain}\) converts ordered brane material into de-structured bulk material at throats;
+ONTOLOGY_LINE_HAS_WORD 1366 material True
+ONTOLOGY_LINE_HAS_WORD 1366 energy False
+ONTOLOGY_LINE_HAS_WORD 1366 particle False
+ONTOLOGY_LINE_HAS_WORD 1366 coherent False
 ````
 
 ## §P · Prior-art existence checks (WebSearch, 2026-09-30)

@@ -1,0 +1,173 @@
+I'll start from the governing S11c-b sources so I can form an independent view of the operator's symmetry, then read the v4 packet against that. First I'll set up the review sandbox and pull the source documents.Governing sources next: S11c-b spec, step record, and field/energy-basis construction, before I open A or B.I'll pull the energy-basis, face-geometry, and reflection sections from the specs, then inspect how the SymPy engine actually builds the operator.I'll inspect the SymPy operator construction and S11c-a face maps next, then form a symmetry view before opening A and B.I have an independent picture of the operator’s residual symmetries. Next I’ll read the v4 packet, grounding files, and the round-3 disposition.Disposition, changelog, and grounding files are next, so I can check the round-3 fold and every citation.I'll verify engine line numbers and citations next, then run independent parity/FORM scripts on copies under `/tmp`.I'll write independent parity, energy-mixing, face-law, FORM-control, and pullback scripts and run them in the sandbox.# Independent physics review — S11c-d clean-condition packet v4
+
+**Leg:** Grok 4.6  
+**Sandbox / scripts / stdout:** `/tmp/s11cd_clean_review_r4_grok/`  
+**Verdict:** **cleared** on the physics filter. Nothing outstanding in v4 changes what Part 1 would compute or what A may claim, given the freezes A already states.
+
+Governing sources were read first (S11c-b spec §§1–3, S11c-a face maps/laws, S11b symmetry group, S11c-b step record, SymPy energy construction and face rows). A and B were read after that.
+
+---
+
+## 1. Hypothesis H for this operator
+
+**H-planar holds** on the S11c-b operator restricted to R1 and class P.
+
+The energy is the O(3)-Kronecker bilinear family with spurions `g=∇W_bg` and `∇μ_R,bg`. Under R1, `g=(g1,0,0)`. On class P every `∂3` vanishes. Reflection `x3→−x3` makes `u3` odd and `{θ,e_W,ζ_c,ζ±,u1,u2,φ,δp,μ_s,𝒜_s,J_s,V_s}` even. Kronecker contractions then have **no odd↔even bilinear**. A Levi-Civita term does mix.
+
+```
+UNIFORM_MIXED_ON_P_COUNT 0
+SPURION_MIXED_ON_P_R1_COUNT 0
+SPURION_MIXED_ON_P_FULL_G_COUNT 6          # g2 or g3 live
+CHIRAL_ON_P_R1 g1*theta*u3_d2
+CONSTRAINT_DIV_ON_P u1_d1 + u2_d2          # pin B: no u3
+MATERIAL_ADVECTED_LINEAR -d1_Q*u1           # no u3
+CURLSQ_ON_P ... + u3_d1**2 + u3_d2**2      # u3–u3 only
+```
+
+Path: `/tmp/s11cd_clean_review_r4_grok/01_energy_pinB_anchor_mixing.py` and `01_energy_pinB_anchor_mixing.stdout.txt`.
+
+Face laws on the graph `h=s W(x1)/2+ζ(x1,x2)`:
+
+```
+N_3_IS_ZERO True
+D_V_D_U3T 0
+D_J_D_U3T 0
+D_J_D_V3 0
+T_3_IS_ZERO_ON_P True
+D_VIRTUAL_WORK_D_DVU3 0
+D_CLOSURE_D_U3T 0
+VFACE_3 u3t
+D_VFACE3_D_U3T 1
+D_DVX3_D_PHYSICAL_U3 0
+D_DVX3_D_TEST_U3 1
+```
+
+Odd→odd kinematics (`v_face,3=∂t u3`, `δ_v x_3=δ_v u3`) are allowed. Even face scalars and `t_s` (along `n̂`, `n3=0`) do not see `u3`. That is A's parity-block criterion, not “no face quantity depends on twist.”
+
+Path: `02_face_laws_parity.py` / `.stdout.txt`.
+
+**Rotation.** The background is `W_bg(y)` on one in-plane anchor (spec `:183–187`). Residual `O(2)` is rotations and reflections **about direction 1**. That rotation sends `(k2,k3)→(k⊥,0)` and the TE-like polarization onto `u3`.
+
+```
+K3_AFTER_ROTATION_ONTO_E2 0
+TE_POLARIZATION_AFTER_ROTATION u3
+BACKGROUND_W_OF_X1_INVARIANT_UNDER_ROTATION_ABOUT_E1 True
+BACKGROUND_W_OF_X1_INVARIANT_UNDER_ROTATION_ABOUT_W False
+```
+
+A states this as rotation about direction 1, with the fallback that only incidence planes containing a mirror are protected if full `O(2)` fails. A polar background vector along direction 2 preserves the `3→−3` mirror and breaks `O(2)`. An axial `A1` is `SO(2)`-invariant and mirror-odd; full `O(2)` including reflections forbids it. R1 in B is that group.
+
+Path: `05_rotation_O2_and_potential.py` / `.stdout.txt`.
+
+**H-round parities** match the polar-displacement convention `−u(−x)=P u(x)`:
+
+| ℓ | scalar / spheroidal `P` | toroidal `P` | toroidal exists | mix |
+|---|-------------------------|--------------|-----------------|-----|
+| 0 | +1 | — | no (`T00=r×∇Y00=0`) | — |
+| 1 | −1 = `(−1)^ℓ` | +1 = `(−1)^{ℓ+1}` | yes | no |
+| 2 | +1 | −1 | yes | no |
+
+`ζ_c`, `θ`, `δW`, `φ` follow `Y_ℓm`. `u` has no `w`-component; toroidal `r×∇Y` is already tangent in the brane. A’s `ℓ≥1` is required.
+
+Path: `04_round_parity.py` / `.stdout.txt`.
+
+**Potential-flow pullback on P.** `δp=i ρ_m ω Φ`, `v=(∂1Φ, i k2 Φ, 0, Ψ)`, `∂w v_w=(k2²−ω²/c_s0²)Φ−∂1²Φ`. Odd bulk trace `v3` and `∂w v3` are identically 0. That is class-P potential kinematics (bulk is a scalar superfluid), independent of the slab decoupling.
+
+Path: `05_rotation_O2_and_potential.py` / `.stdout.txt`.
+
+**Premises P1–P4**
+
+| Premise | Status |
+|---|---|
+| P1 Kronecker / no parity-odd constitutive term | Holds on the accepted 40-record family. A Levi-Civita term mixes (`CHIRAL_ON_P_R1`). |
+| P2 covariant face operands; background values `O(2)`-fixed | Holds for the listed polar/scalar operands on R1/P. Normal jets keep the parent’s in-plane parity (`w` is fixed). Extra fields (microrotation/director) are absent from S11c-b and are F2b. |
+| P3 drain/swirl | Declared untested. `v_bulk_normal_0` “appears in no derived operator” (spec `:90–91`). |
+| P4 pin B, both anchorings, truncations, signs | Pin B and both anchorings are even on this class (script 01). Sign conventions remain what Part 1’s raw comparator is for. |
+
+Nothing needed for H is missing from P1–P4 except the items A already marks untested (P3, Part 1 for P4).
+
+---
+
+## 2. Coverage and requirements
+
+The coverage table matches the symmetry: trapped twist is linear-only and conditional on an `O(3)` swirl-free throat with a normalizable toroidal mode; TE-like planar / twist-type round passing light is covered subject to P1–P4; TM-like / spheroidal is R-LEAK-2; second order is even (`lambda*odd_amp**2`) and is N1/N2.
+
+R-LEAK-1: F1 is the operator falsifier (odd↔even block with drain live and bulk closed). F2 / F2b / F5 / F6 are applicability tests. F2’s quadrature pair matches `native_light…:2377–2381`. F2b covers an extra spin-carrier field. N1/N2 are the nonlinear gates. “H alone does not deliver particle stability” is the right scope.
+
+Transfer: “If the completed calibrated, draining operator has the same symmetry and field content” — antecedent unshown, P3. That is the justified statement.
+
+§4: fast bulk is suppression (exponential for analytic profiles); `λγ=1` is the calibrated GW170817 lock (`V3_STEP_PLAN.md:1107–1126`); flow horizon is unverified and the drain is out of the brane (`ontology :100`, `:1366`); no coherent return of mode energy to the same particle is the scoped claim. Fair.
+
+A does not contradict the cited governing lines (spec `:90–91`, `:95–97`, `:145–148`; ontology `:26`, `:315`, `:362`, `:957`). It is a **proposal** to re-scope S11c-d; the scattering-form amendment remains the current production contract until this packet is cleared and adopted.
+
+---
+
+## 3. Citations
+
+Pinpoints in A and B match the files and the two grounding documents for every load-bearing quote checked (CHARTER `:14–17`, spec `:90–91`, `:95–97`, `:145–148`, `:152–154`, record `:35–37`, `:112–114`, engine `u` `:214–219`, `zeta_c` `:569–577`, Wolfram `:239–242`, ontology `:26`, `:100`, `:315`, `:362`, `:957`, `:1366`, `native_light` `:113–116`, `:1343`, `:2377–2381`, assessment `:3`, `:5`, AGENTS `:8–12`, `:24–33`, V3 `:1107–1111`, `:1116–1126`).
+
+Path: `06_citation_pinpoints.py` / `.stdout.txt`.
+
+B’s range `S11c_a … :95–100` for “trace values and normal jets” also contains `theta`, `zeta_c`, `delta_v_theta`, `delta_v_e_W`. The 20 named trace coordinates in B §2.3 are the domain; that range slop does not change the object.
+
+---
+
+## 4. Round-3 fold (R3-1 … R3-10)
+
+| ID | Owed | v4 |
+|---|---|---|
+| R3-1 | Engine trace **values and normal jets** | 20 named `delta_p` / `d_w_delta_p` / `delta_v_bulk_{1..4}` / `d_w_delta_v_bulk_{1..4}` per face |
+| R3-2 | Formal map **and** potential-flow pullback | `FORMAL_FACE_OPERAND_MAP` and `POTENTIAL_FLOW_TRACE_MAP`; 20 traces are a formal domain |
+| R3-3 | Parity block-diagonality | A §1 and F1 restated; odd→odd kinematics allowed |
+| R3-4 | `δ_v x` is a test map | `VIRTUAL_KINEMATIC_MAP` with engine test coordinates |
+| R3-5 | R1 = full `O(2)` about 1; label-zeroing only on profile-jet **derivative** indices | B §2.2; A’s “does not erase allowed transverse components” |
+| R3-6 | `ê` after R1, not a background datum | B §3; K1 mixed carriers `a_K1 cos(β) ∂k u3 ∂k θ` |
+| R3-7 | `ℓ≥1` | A §1 H-round |
+| R3-8 | No shown coherent return to the same particle | A §4 |
+| R3-9 | F1 vs F2/F2b/F5/F6 | A §3 headings |
+| R3-10 | Pinpoints | CHARTER `:14–17`, spec `:95–97` / `:152–154`, engine `:214–219`, ontology `:362` “aperture” |
+
+No R3 item is left open. No R1/R2 resolution is undone (`O(2)` about 1, raw-first comparator, import whitelist, F2 quadrature, N1/N2, analytic-profile wording, 40 live coefficients).
+
+v4 does not introduce a new physics defect in the material it changed. The pullback’s `v3=0` is class-P potential flow, not a leaked slab-decoupling answer; the formal map still has `delta_v_bulk_*_3` as a coordinate.
+
+---
+
+## 5. Directive B as a builder packet
+
+- **Object:** `FORMAL_FACE_OPERAND_MAP := D_(X_slab,X_trace)(codomain)|_(R1,P)`, plus the pullback and `VIRTUAL_KINEMATIC_MAP`. Named.
+- **Governing operator:** S11c-b spec, 40-record energy, face laws, pin B via `δ_v Σ_mat=0`, both anchorings, both density representatives, live `η` and `σ_W`, engine row list including `CENTER_FACE_GENERALIZED_ROW`. Matches the spec/record/engine.
+- **Leakage:** tags name objects; emit every labelled entry including zeros; no acceptance value. The `0` in the pullback’s third velocity slot is supplied rest-frame kinematics on P.
+- **K1/K2:** FORM. K1 inserts a preferred axis with a live 3-component after R1; K2 is a single `ε_ijk` term, outside the Kronecker family.
+
+```
+K1_MIXED_ON_P [a_K1*th_d1*u3_d1*cos(beta), a_K1*th_d2*u3_d2*cos(beta)]
+K1_MIXED_IF_E3_ZEROED []
+K2_MIXED_ON_P_R1 [a_K2*g1*theta*u3_d2]
+```
+
+Path: `03_K1_K2_form.py` / `.stdout.txt`.  
+If unimplemented, control payloads stay byte-identical to baseline; B requires that fact to be reported. Constructing the weak object once for all fields, then extracting the three maps, is the anti-tautology control.
+
+- **Freezes:** drain absent; no curved-bulk solve. First lines of the report.
+- **Blind Wolfram:** import nothing; re-derive from specs.
+- **Lane:** build → run → report → stop; no agents; no commit.
+- **Part 2:** scope note only; drain entry is an orchestrator spec question; do not invent it.
+- **Feasibility:** AGENTS.md still requires `s11c_guarded_run.py` at the default 2 GiB cap. The S11c-b Wolfram primary peaked near 16 GB/case and OOM’d at 15.6 GB. B already treats a contained failure as a result. Completing Part 1 under that cap remains unestablished (round-3 standing constraint, user decision). Not a new v4 physics defect.
+
+---
+
+## Script index
+
+All under `/tmp/s11cd_clean_review_r4_grok/`:
+
+| script | stdout |
+|---|---|
+| `01_energy_pinB_anchor_mixing.py` | `01_energy_pinB_anchor_mixing.stdout.txt` |
+| `02_face_laws_parity.py` | `02_face_laws_parity.stdout.txt` |
+| `03_K1_K2_form.py` | `03_K1_K2_form.stdout.txt` |
+| `04_round_parity.py` | `04_round_parity.stdout.txt` |
+| `05_rotation_O2_and_potential.py` | `05_rotation_O2_and_potential.stdout.txt` |
+| `06_citation_pinpoints.py` | `06_citation_pinpoints.stdout.txt` |
+
+Working tree was not modified. PID 4097233 was not signalled.

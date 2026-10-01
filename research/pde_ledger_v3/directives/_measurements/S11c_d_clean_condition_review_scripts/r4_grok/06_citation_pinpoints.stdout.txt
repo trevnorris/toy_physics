@@ -1,0 +1,105 @@
+CHECK CHARTER_14_17
+  RANGE research/pde_ledger_v3/CHARTER.md:14-17
+  HAS 'REQUIREMENTS-FIRST': True
+  HAS 'falsification': True
+CHECK SPEC_90_91
+  RANGE research/pde_ledger_v3/directives/S11c_b_SHARED_PHYSICS.md:90-91
+  HAS 'v_bulk_normal_0': True
+  HAS 'appears in no derived operator': True
+CHECK SPEC_95_97
+  RANGE research/pde_ledger_v3/directives/S11c_b_SHARED_PHYSICS.md:95-97
+  HAS 'performs no curved-bulk response solve': True
+CHECK SPEC_145_148
+  RANGE research/pde_ledger_v3/directives/S11c_b_SHARED_PHYSICS.md:145-148
+  HAS 'J_s = Λ_A': True
+  HAS 't_s': True
+CHECK SPEC_152_154
+  RANGE research/pde_ledger_v3/directives/S11c_b_SHARED_PHYSICS.md:152-154
+  HAS 'balance laws': True
+  HAS 'irreversible response kernel': True
+CHECK RECORD_35_37
+  RANGE research/pde_ledger_v3/steps/S11c_b_variable_coefficient_operator.md:35-37
+  HAS 'O(3)-Kronecker': True
+  HAS '40 = 10 uniform': True
+CHECK U_214_219
+  RANGE research/pde_ledger_v3/scripts/S11c_b_brane_operator_sympy_audit.py:214-219
+  HAS 'f"u_{a}"': True
+CHECK ZETA_C_569_577
+  RANGE research/pde_ledger_v3/scripts/S11c_b_brane_operator_sympy_audit.py:569-577
+  HAS 'zeta_c': True
+CHECK WL_239_242
+  RANGE research/pde_ledger_v3/mathematica/S11c_b_brane_operator_mathematica_audit.wl:239-242
+  HAS 'spatialCoordinates = {xOne, xTwo, xThree}': True
+CHECK ONTOLOGY_26
+  RANGE docs/toy_model_ontology_summary.md:26-26
+  HAS 'helps hold each throat open': True
+CHECK ONTOLOGY_362
+  RANGE docs/toy_model_ontology_summary.md:362-362
+  HAS 'helps hold the aperture open': True
+CHECK ONTOLOGY_315
+  RANGE docs/toy_model_ontology_summary.md:315-315
+  HAS 'not a complete nonlinear throat topology': True
+CHECK ONTOLOGY_957
+  RANGE docs/toy_model_ontology_summary.md:957-957
+  HAS 'spectrally normalizable bound state': True
+CHECK NATIVE_113_116
+  RANGE docs/native_light_em_and_vortex_throat_interpretation.md:113-116
+  HAS 'microrotation': True
+  HAS 'trapped chiral shear': True
+CHECK NATIVE_1343
+  RANGE docs/native_light_em_and_vortex_throat_interpretation.md:1343-1343
+  HAS 'not sufficient by itself': True
+CHECK NATIVE_2377_2381
+  RANGE docs/native_light_em_and_vortex_throat_interpretation.md:2377-2381
+  HAS 'zero time-averaged angular': True
+  HAS 'relative phase': True
+CHECK ASSESS_3
+  RANGE research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_flow_calibration_assessment.md:3-3
+  HAS 'does not yet answer leakage in the calibrated, draining medium': True
+CHECK ASSESS_5
+  RANGE research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_flow_calibration_assessment.md:5-5
+  HAS 'Do not launch another job alongside it': True
+CHECK S11A_95_100
+  RANGE research/pde_ledger_v3/scripts/S11c_a_interface_geometry_sympy_audit.py:95-100
+  HAS 'delta_p_plus': True
+  HAS 'theta': True
+  HAS 'zeta_c': True
+CHECK S11A_150_165
+  RANGE research/pde_ledger_v3/scripts/S11c_a_interface_geometry_sympy_audit.py:150-165
+  HAS 'delta_v_bulk': True
+  HAS 'd_w_delta_p_plus': True
+CHECK AGENTS_8_12
+  RANGE AGENTS.md:8-12
+  HAS '2 GiB memory cap': True
+  HAS 's11c_guarded_run.py': True
+CHECK AGENTS_24_33
+  RANGE AGENTS.md:24-33
+  HAS 'no wall-clock': True
+CHECK V3_1107_1111
+  RANGE research/pde_ledger_v3/V3_STEP_PLAN.md:1107-1111
+  HAS 'λγ = 1': True
+  HAS 'calibrated / uncommitted': True
+CHECK V3_1116_1126
+  RANGE research/pde_ledger_v3/V3_STEP_PLAN.md:1116-1126
+  HAS 'GW170817': True
+  HAS '1 part in 10': True
+CHECK ONTOLOGY_100
+  RANGE docs/toy_model_ontology_summary.md:100-100
+  HAS 'distributed return': True
+CHECK ONTOLOGY_1366
+  RANGE docs/toy_model_ontology_summary.md:1366-1366
+  HAS 'converts ordered brane material': True
+CHECK RECORD_112_114
+  RANGE research/pde_ledger_v3/steps/S11c_b_variable_coefficient_operator.md:112-114
+  HAS 'SURFACES them, does not normalize': True
+CHECK DIRECTIONS_57
+  RANGE research/pde_ledger_v3/scripts/S11c_b_brane_operator_sympy_audit.py:57-57
+  HAS 'DIRECTIONS = range(3)': True
+S11A_95_100_FULL
+theta = inherited("theta", "COORDINATE", "Eulerian fractional densification")
+zeta_c = inherited("zeta_c", "COORDINATE", "face-centre displacement")
+delta_v_theta = inherited("delta_v_theta", "COORDINATE", "virtual densification variation")
+delta_v_e_W = inherited("delta_v_e_W", "COORDINATE", "virtual fractional-thickness variation")
+delta_p_plus = inherited("delta_p_plus", "COORDINATE", "upper perturbation face pressure")
+delta_p_minus = inherited("delta_p_minus", "COORDINATE", "lower perturbation face pressure")
+S11A_95_100_TRACE_ONLY False

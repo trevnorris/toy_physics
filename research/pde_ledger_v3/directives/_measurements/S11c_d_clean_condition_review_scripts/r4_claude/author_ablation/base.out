@@ -1,0 +1,46 @@
+FORMAL_TRACE_COORDINATE 1 delta_p_plus
+FORMAL_TRACE_COORDINATE 2 d_w_delta_p_plus
+FORMAL_TRACE_COORDINATE 3 delta_v_bulk_plus_1
+FORMAL_TRACE_COORDINATE 4 delta_v_bulk_plus_2
+FORMAL_TRACE_COORDINATE 5 delta_v_bulk_plus_3
+FORMAL_TRACE_COORDINATE 6 delta_v_bulk_plus_4
+FORMAL_TRACE_COORDINATE 7 d_w_delta_v_bulk_plus_1
+FORMAL_TRACE_COORDINATE 8 d_w_delta_v_bulk_plus_2
+FORMAL_TRACE_COORDINATE 9 d_w_delta_v_bulk_plus_3
+FORMAL_TRACE_COORDINATE 10 d_w_delta_v_bulk_plus_4
+FORMAL_TRACE_COORDINATE 11 delta_p_minus
+FORMAL_TRACE_COORDINATE 12 d_w_delta_p_minus
+FORMAL_TRACE_COORDINATE 13 delta_v_bulk_minus_1
+FORMAL_TRACE_COORDINATE 14 delta_v_bulk_minus_2
+FORMAL_TRACE_COORDINATE 15 delta_v_bulk_minus_3
+FORMAL_TRACE_COORDINATE 16 delta_v_bulk_minus_4
+FORMAL_TRACE_COORDINATE 17 d_w_delta_v_bulk_minus_1
+FORMAL_TRACE_COORDINATE 18 d_w_delta_v_bulk_minus_2
+FORMAL_TRACE_COORDINATE 19 d_w_delta_v_bulk_minus_3
+FORMAL_TRACE_COORDINATE 20 d_w_delta_v_bulk_minus_4
+SUPPLIED_CLASS_P_ANSATZ phi=Phi(x1,w)*exp(i*(k2*x2-omega*t))
+SUPPLIED_TRACE_PRESSURE delta_p=i*rho_m*omega*Phi
+SUPPLIED_TRACE_VELOCITY (d1(Phi), i*k2*Phi, 0, Psi) Psi=d_w(Phi)
+SUPPLIED_NORMAL_JET_PRESSURE d_w(delta_p)=i*rho_m*omega*Psi
+SUPPLIED_NORMAL_JET_VELOCITY (d1(Psi), i*k2*Psi, 0, d_w(Psi))
+SUPPLIED_WAVE_EQUATION_PULLBACK d_w(Psi)=(k2^2-omega^2/c_s0^2)*Phi-d1^2(Phi)
+CLASS_P_ODD_BULK_TRACE_COMPONENT 0
+CLASS_P_ODD_BULK_NORMAL_JET_COMPONENT 0
+VIRTUAL_TEST_COORDINATE 1 delta_v_u_1
+VIRTUAL_TEST_COORDINATE 2 delta_v_u_2
+VIRTUAL_TEST_COORDINATE 3 delta_v_u_3
+VIRTUAL_TEST_COORDINATE 4 delta_v_e_W
+VIRTUAL_TEST_COORDINATE 5 delta_v_zeta_c
+VIRTUAL_OUTPUT_OBJECT FaceSource.virtual_displacement
+D_VIRTUAL_X3_D_TEST_U3 1
+D_VIRTUAL_X3_D_PHYSICAL_U3 0
+D_FACE_VELOCITY3_D_PHYSICAL_U3 d_t
+VIRTUAL_MAP_IS_PHYSICAL_FRECHET_ROW False
+INTERFACE_SOURCE_LINE 150 # Traced bulk perturbations and their normal jets at the flat reference faces.
+INTERFACE_SOURCE_LINE 154 delta_v_bulk = {
+INTERFACE_SOURCE_LINE 158 dw_delta_v_bulk = {
+INTERFACE_SOURCE_LINE 163 1: symbol("d_w_delta_p_plus", "COORDINATE", "upper pressure-perturbation normal jet at the flat reference face"),
+INTERFACE_SOURCE_LINE 164 -1: symbol("d_w_delta_p_minus", "COORDINATE", "lower pressure-perturbation normal jet at the flat reference face"),
+INTERFACE_SOURCE_LINE 638 pressure_perturbation = affine_bulk_perturbation(
+INTERFACE_SOURCE_LINE 641 velocity_perturbation = tuple(
+GOVERNING_SPEC_LINE 95 Inherited from S11c-a §1b unchanged: the rest-frame bulk fields `v_bulk=∇₄φ`, `δp=−ρ_m∂_tφ`,

@@ -1,0 +1,14 @@
+PULLBACK delta_p DERIVED I*omega*rho_m*Phi(x1, w) DIRECTIVE_B I*omega*rho_m*Phi(x1, w) RESIDUAL 0
+PULLBACK v1 DERIVED Derivative(Phi(x1, w), x1) DIRECTIVE_B Derivative(Phi(x1, w), x1) RESIDUAL 0
+PULLBACK v2 DERIVED I*k2*Phi(x1, w) DIRECTIVE_B I*k2*Phi(x1, w) RESIDUAL 0
+PULLBACK v3 DERIVED 0 DIRECTIVE_B 0 RESIDUAL 0
+PULLBACK v4 DERIVED Derivative(Phi(x1, w), w) DIRECTIVE_B Derivative(Phi(x1, w), w) RESIDUAL 0
+PULLBACK d_w delta_p DERIVED I*omega*rho_m*Derivative(Phi(x1, w), w) DIRECTIVE_B I*omega*rho_m*Derivative(Phi(x1, w), w) RESIDUAL 0
+PULLBACK d_w v1 DERIVED Derivative(Phi(x1, w), w, x1) DIRECTIVE_B Derivative(Phi(x1, w), w, x1) RESIDUAL 0
+PULLBACK d_w v2 DERIVED I*k2*Derivative(Phi(x1, w), w) DIRECTIVE_B I*k2*Derivative(Phi(x1, w), w) RESIDUAL 0
+PULLBACK d_w v3 DERIVED 0 DIRECTIVE_B 0 RESIDUAL 0
+PULLBACK d_w v4 DERIVED k2**2*Phi(x1, w) - Derivative(Phi(x1, w), (x1, 2)) - omega**2*Phi(x1, w)/c_s0**2 DIRECTIVE_B (k2**2 - omega**2/c_s0**2)*Phi(x1, w) - Derivative(Phi(x1, w), (x1, 2)) RESIDUAL 0
+DERIVED_DENSITY_TRACE drho = I*omega*rho_m*Phi(x1, w)/c_s0**2  ; drho - dp/c^2 = 0
+DERIVED_CURRENT_TRACE j = [rho_m*Derivative(Phi(x1, w), x1), I*k2*rho_m*Phi(x1, w), 0, rho_m*Derivative(Phi(x1, w), w)]
+DERIVED_CURRENT_TRACE_COMPONENT_3 0
+EXIT 0

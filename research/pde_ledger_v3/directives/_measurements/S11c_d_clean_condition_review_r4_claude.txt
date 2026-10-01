@@ -1,0 +1,223 @@
+# Round-4 review leg (fresh Claude) — S11c-d clean-condition packet v4
+
+## Verdict: NOT CLEARED
+
+H itself holds on the actual operator. Findings 1–5 change what Directive B would compute. Findings 6–9 change what Record A may claim.
+
+All work was done on copies under `/tmp/s11cd_clean_review_r4_claude/`. The working tree is unmodified. PID 4097233 was only read via `/proc` and was never signalled.
+
+## Confirmations (computed)
+
+- **H-planar on the real exported S11c-b operator.** This is the strongest evidence in the packet.
+  - Scripts: `02_engine_reflection_parity.py` and `.stdout.txt`.
+  - Method: on a copy of `S11c_b_exports.py` slab_operator, apply R1 (zero profile jets carrying a 2/3 derivative label) and P (zero field jets with a 3 label), assign mirror signs, and split every leaf into even and odd parts.
+  - Baseline result: `LEAVES 307 MIXED_PARITY_LEAVES 0` in all 4 cases (LAB_HELD/MATERIAL_ADVECTED × RHO4/RHOBR). This covers pin B, both anchorings, both density representatives, the face rows and the substrate operands.
+  - The pure-odd leaves are exactly the u_3 / direction-3 component entries.
+  - Control: keeping `w1_profile_d3`/`m1_profile_d3` live as an untransformed datum gives 80, 74, 117 and 110 mixed leaves. The control bites.
+  - An earlier wrong control, which transformed the datum, gave 0 mixed leaves. It is kept in `02_engine_reflection_parity_v1_control_transformed.*`; that result is O(3) covariance, not a failure.
+- **H-round bookkeeping** (`09_round_sector_checks.*`):
+  - toroidal parity is `(−1)^{ℓ+1}` for ℓ = 1–3;
+  - the ℓ = 0 toroidal field is `ZERO_FIELD`, so "ℓ ≥ 1" is right;
+  - spheroidal and scalar parity is `(−1)^ℓ`.
+- **The pullback equations in B §2.4 are correct.** All 10 have `RESIDUAL 0` when derived from spec :95–97 (`08_potential_flow_pullback_check.*`).
+- **R1/P applied before construction does not change the basis rank** (`10_basis_rank_under_R1_P.*`). Uniform rank is 10 and spurion rank is 15 per source in every restriction, so it is consistent with keeping the 40 records.
+- **Citation pinpoints** in A and B that I spot-checked match their sources: spec :90–91/:95–97/:145–148/:152–154, S11c-a :343–354/:365–366, ontology :26/:100/:315/:362/:957/:1366, native_light :113–116/:1343/:2377–2381, record :35–37/:112–114, engine :214–219/:2135–2239/:2967–3021/:3095–3127, and AGENTS :24–33.
+
+## Findings
+
+### 1. R3-1 is only partly resolved: B's domain omits trace coordinates that its own codomain depends on
+
+**B says:**
+- §2.3: "These 20 trace coordinates define a **formal operand domain**".
+- §2.5 codomain includes `FACE_FLUX_BOUNDARY_OPERANDS`, `density_trace_exact` and `current_trace_exact[1..4]`.
+- §2.4 supplies a pullback only for p and v.
+
+**The engine says:**
+- B's own cited binding range, S11c-b engine :484–547, also binds `delta_rho_4D_face_{plus,minus}`, `d_w_delta_rho_4D_face_*`, `d_w_delta_j_bulk_{face}_{1..4}`, `delta_j_bulk_{1..4}`, `trace_grad_f_{1..4}` / `d_w_trace_grad_f_{1..4}` ("generic traced-field derivative") and `delta_rho_4D_bulk_t`.
+- The density and current traces are built from them at S11c-a :646–652: `density_perturbation = affine_bulk_perturbation(delta_rho4_face[face], …)` and `current_perturbation = … (j_bulk[i], dw_delta_j_bulk[face][i], face)`.
+
+**Measured** (`01_slab_operator_structure.*`):
+- 25 trace and bulk symbols outside B §2.3 appear in `FACE_FLUX_BOUNDARY_OPERANDS`: in face_shift, projection_* and conormal_deriv, in all 4 cases.
+- They include the odd ones `delta_j_bulk_3`, `d_w_delta_j_bulk_±_3`, `trace_grad_f_3` and `d_w_trace_grad_f_3`.
+- So `D_(X_slab,X_trace)` would silently hold odd columns fixed, which is exactly where an odd↔even block would show.
+- `SOURCE_OPERANDS`, virtual_work_shape_deriv and virtual_constraint also carry the test symbols `delta_v_*` (including `delta_v_theta` and the test jets `delta_v_u_i_di`). The physical-map entries are therefore bilinear in test symbols, and B does not say how they are typed.
+
+**Pullback gaps** (`08`):
+- From the supplied continuity law: `drho = iωρ_mΦ/c_s0²` and `j = ρ_m(∂_1Φ, ik_2Φ, 0, ∂_wΦ)`, so `DERIVED_CURRENT_TRACE_COMPONENT_3 0`.
+- B supplies neither, and the background density in j is ambiguous (ρ_m vs the engine's ρ_4D,bg).
+- The engine's current value coordinate `delta_j_bulk_i` has **no face label**, while its normal jet does. The pullback must state how one value coordinate maps to two faces.
+
+**Fix:** enumerate every engine trace/bulk coordinate the codomain depends on, including density, current, bulk-interior and the generic `trace_grad_f`. Declare each one in the formal domain, or state explicitly that it is held, and why. Supply the density and current pullback as equations. Type the test-symbol-bearing entries.
+
+### 2. B §2.4 does not fix the trace evaluation height (new in v4)
+
+**B §2.4:** "Write `Psi_s=∂_w Phi_s` for the trace of `φ=Phi(x_1,w)…`". No height is given.
+
+**Engine:**
+- the coordinates are "bulk velocity perturbation at flat reference face" (S11c-a :150–165);
+- `affine_bulk_perturbation`: `reference_height = sp.Rational(face, 2) * W0` (S11c-a :576–583).
+
+**Measured** (`06_face_controls_pullback_pairing.*` Part B):
+- pullback at w = sW_0/2: `EXACT_MINUS_REFERENCE_FACE_PULLBACK_O(eta) 0`;
+- at the background face: `-W0*eta*s*w1(x1)*Derivative(Phi(x1, w), w)/2`, a double-shift;
+- `∂_1` of a background-face trace picks up an extra `W0*eta*s*w1'(x1)*Φ_w/2`.
+
+The blind WL engine is the likely failure point. This is the same class as the measured WL c2 defect (`_measurements/S11c_wolfram_repair_audit_report.md:16`: "assigns its physical-face pressure response to a reference-pressure slot and shifts it again").
+
+**Fix:** state that Phi_s and Psi_s are evaluated at the flat reference face w = sW_0/2.
+
+### 3. K1/K2 cannot expose zero-by-construction blocks in the face-trace and kinematic columns
+
+**B §3:** "The controls enter only at stored energy". **B §5:** "Every control re-enters at stored energy, never at a row or result."
+
+Stored-energy terms reach the face only through μ_θ → 𝒜_s. Measured in `06` Part A (LAB_HELD, R1, P model):
+
+| Control | Nonzero entries |
+|---|---|
+| K1 | `dA/d(u3_x1x1)` and `dA/d(u3_x2x2) = -a_K1*cos(beta)/rho_br` |
+| K2 | `dA/d(u3_x2) = W0*a_K2*eta*w1'/rho_br` |
+
+`dJ/dvb3`, `dV/du3_t` and the face-force entries are 0 under both. A builder that dropped `delta_v_bulk_s_3` or n̂_3 would therefore leave both control payloads byte-identical in those columns.
+
+A background-datum control does bite:
+- G3, a fixed direction-3 W_bg slope, gives `dJ/dvb3 = -g3*rho_m*s**2/sqrt(…)` (`06`).
+- In the real engine (`02` control), it gives mixed leaves in face_normal (16+16), relative_flux (8), conormal_deriv (27) and kinematic_balance (4).
+
+**Fix:** add a FORM control that is a fixed, untransformed direction-3 background jet introduced after R1. The structural rule already allows hand-combination at "the ansatz/domain", but the "only at stored energy" sentence forbids this control.
+
+### 4. Class P contradicts "compact support in the in-plane interior" (B §2.6)
+
+**B §2.2:** "Every perturbation and every trial/test field is independent of `x_3`… `exp(i(k_2 x_2-omega t))`". **B §2.6:** "The pairing domain is class `P` with compact support in the in-plane interior, as supplied in spec §3c" (spec §3c, :328: "take all trial and test fields to have compact support in its interior").
+
+A class-P field has no compact support in x_2 or x_3. Measured (`06` Part C):
+- `PAIRING_SAME_CLASS_P 0` — a same-exponential test field gives a vacuous zero;
+- `PAIRING_CONJUGATE 2*I*pi*U_amp*V_amp`;
+- the x_3 integral is unbounded.
+
+**Fix:** test fields carry the conjugate exponential. Use compact support in x_1 only, with pairing per x_2 period and per unit length in x_3.
+
+### 5. The raw comparator omits the known P2b coefficient bridge
+
+B §4 names only the two whole-row sign conventions (record :112–114).
+
+The P2b directive records:
+- `I_PY = W_0·I_WL` / `μ_R·I_WL`;
+- "`γ_WL = W_0·γ_PY`" (`directives/S11c_b_p2b_gamma_bridge_directive.md:11–13`);
+- different coefficient names and normalization across engines.
+
+The step record lists the P2b build as deferred to ≥64 GB (:56). So every spurion-coefficient entry would show a representational raw residual, and the builder would have to invent the bridge.
+
+A related gap: B does not fix how Fréchet entries are represented (coefficients of x_1-jets after ∂_2 → ik_2), so the join key is underspecified.
+
+**Fix:** either cite P2b :11–13 and :30–46 as the required convention map, or scope the cross-engine comparison and declare the spurion comparison deferred with P2b. Fix the entry representation (jet-indexed) for both engines.
+
+### 6. The "author evidence" in A and the v4 change log is hand-typed
+
+**A says:**
+- :92–93: "(Author evidence: … `symmetry_domain_audit.py` and `potential_trace_pullback_audit.py`, with their literal `*.stdout.txt`.)"
+- P2: "The v4 author script classifies the normal jets."
+
+**The scripts:**
+- `potential_trace_pullback_audit.py:25–32,44–47` are literal prints, e.g. `print("CLASS_P_ODD_BULK_NORMAL_JET_COMPONENT", 0)` and `print("VIRTUAL_MAP_IS_PHYSICAL_FRECHET_ROW", False)`.
+- `symmetry_domain_audit.py:70–80` is a typed parity dict.
+- Line 86 is `print("NORMAL_DERIVATIVE_PRESERVES_INPLANE_PARITY", True)`.
+- The ROUND_SECTOR toroidal parity is typed as `-scalar`.
+
+**FORM ablation** (`07_author_script_form_ablation.sh` and `.stdout.txt`): I corrupted a spec copy to a rotational bulk (`v_bulk=∇₄φ+∇₄×A`). The only diff is the echoed spec line, and every claim tag is byte-identical.
+
+The underlying claims are true (my 02, 08 and 09 compute them). The evidence, however, is typed (E1/E2), and the change log's evidence column inherits the defect.
+
+**Fix:** re-point A and the change log to computed evidence, or relabel the author scripts as typed bookkeeping.
+
+### 7. A §6 is stale
+
+**A §6 says:** "The suspended `ω = 3` central benchmark (PID 4097233)… Whether to finish it is the user's call… Part 1's engines wait on that decision."
+
+**Against that:**
+- commit 14861016 (2026-09-30 18:07), "Resume central benchmark…";
+- `_measurements/S11c_d_numerical_radiating_equal_speed_feasibility.md:47`: "The same PID4097233 was resumed with SIGCONT…";
+- `/proc/4097233/status`: `State: R (running)`, RSS about 0.87 GB.
+
+The leg prompt's "suspended" wording is stale too.
+
+B §0.2's "exists in any state → stop before any engine" is robust and needs no change.
+
+**Fix A:** say the job was resumed, and that Part 1 waits on its completion.
+
+### 8. P1 is a supplied input, not something Part 1 can check
+
+**A** puts P1 in its "Each is a thing to check, ⛔ not to assume" table.
+
+**The sources:**
+- spec :116: "in-plane `O(3)` isotropy and parity" is an input of the basis;
+- B §1: "The build does not test or revise it."
+
+**Fix:** state in A that P1 holds by construction of the supplied basis and is untestable by Part 1. Carry the medium's achirality as an explicit part of R-LEAK-1's adopted condition. F2's "chiral constitutive term" is then its applicability test.
+
+### 9. F2/F2b leave two of the cited spin-carrier candidates unclassified
+
+native_light :113–116 lists "circulating intake, brane-tangent vortex flow, mixed \(a\)-\(w\) circulation, trapped chiral shear, and an independent microrotation". A classifies swirl, a chiral term, non-roundness and microrotation. It does not classify:
+
+- **Trapped chiral shear.** Measured (`09`): `HELICITY_PURE_TOROIDAL 0`, `HELICITY_QUADRATURE_TOROIDAL_PAIR 0`, `HELICITY_TOROIDAL_PLUS_c_POLOIDAL 5*sqrt(2)*pi**(3/2)*c/4`, with poloidal parity −1 against toroidal +1. A chiral (helical) support mode therefore mixes parities, is not twist-type, and is unprotected by H.
+- **Mixed a–w circulation.** L_aw carries one in-plane index, so it is an inversion-odd in-plane vector. Net a–w spin selects a direction and breaks O(3).
+- **Lesser point for N2.** The quadrature pair carries `SPIN_ANGULAR_MOMENTUM… [0, 0, sqrt(2)*pi**(3/2)*omega/16]`. A swirl is inversion-even, but its Coriolis image of T_10 projects onto ℓ = 0 (`-sqrt(2)*pi**(3/2)*Omega/4`) and ℓ = 2 (`…/8`). N2 should name an induced mean flow (swirl) alongside "throat deformation".
+
+**Fix:** add an applicability test that the required trapped mode is pure twist-type (zero helicity), and classify a–w circulation.
+
+## Minor points (do not change the verdict)
+
+- B §0.1 says "as `AGENTS.md:8–12` requires" for Wolfram. AGENTS.md:8 covers "S11c Python constructors, validators and export jobs", and no Wolfram kernel appears in any of the 240 `_scratch/s11c` guard logs, so WL containment under 2 GiB / TasksMax 32 is untested. My thread probe (`04_wolfram_thread_probe.*`) failed on licence activation in the sandbox, and I make no claim from it.
+- The engine carries duplicate non-sorted mixed jets (`w1_profile_d2d1` alongside `d1d2`). This is relevant to Part 2 item 3 (O(3) representability).
+- A §4's "it would also trap gravity changes" is ungrounded. The rejection stands on its other reasons.
+- Data only, no claim (`11_zeta_c_column_locator.*`): physical ζ_c appears only in `FACE_FLUX_BOUNDARY_OPERANDS` leaves of the exported payload.
+
+## R3 resolution status
+
+| Item | Status | Basis |
+|---|---|---|
+| R3-1 | **Partial** | Finding 1 |
+| R3-2 | Resolved | `08`, 10/10 residuals 0; residual gaps are findings 1–2 |
+| R3-3 | Resolved | `02`, 0 mixed leaves |
+| R3-4 | Resolved as typing | New pairing defect is finding 4 |
+| R3-5 | Resolved | `02`, `10` |
+| R3-6 | Resolved | K1 bites in `06`; coverage gap is finding 3 |
+| R3-7 | Resolved | `09` |
+| R3-8 | Resolved | Text |
+| R3-9 | Resolved | Applicability list incomplete: finding 9 |
+| R3-10 | Resolved | Pinpoints checked |
+
+- The change log's "All R3-1 through R3-10 findings were resolved" overstates R3-1.
+- No regressions against the round-3 dispositions. v4 introduced findings 2, 4 and 6.
+- Other checks with nothing found:
+  - no value leaks in B;
+  - B is not handed A;
+  - stays in lane;
+  - freezes declared;
+  - construct-at-once present;
+  - Part 2 is scoped.
+
+## Feasibility
+
+- Loading the exported slab payload peaked at 1.58 GB RSS (`02_engine_reflection_parity.time.txt`), close to the 2 GiB guard cap. B forbids importing derived payloads, so the real cost of reconstructing under R1/P is unmeasured.
+- The S11c-b cross-engine work and P2b were deferred to ≥64 GB. A blind WL rebuild plus comparator under 2 GiB may be contained-fail. B treats that as a result, but A §5 should not presume Part 1 completes.
+- The exports import costs nothing material: 7.9 s and 182.7 MiB (`05_import_memory_probe.*`).
+
+## Scripts and stdout
+
+All in `/tmp/s11cd_clean_review_r4_claude/` (filed, without the engine/export copies, in `S11c_d_clean_condition_review_scripts/r4_claude/`). Each script's literal stdout is the matching `.stdout.txt`.
+
+| Script | Supports |
+|---|---|
+| `01_slab_operator_structure.py` | Finding 1 |
+| `02_engine_reflection_parity.py` (plus `_v1_control_transformed.*` and `.time.txt`) | H-planar; finding 3 |
+| `03_face_row_leaf_classes.py` | Face-row leaf classes |
+| `04_wolfram_thread_probe.sh` | Inconclusive |
+| `05_import_memory_probe.py` | Feasibility |
+| `06_face_controls_pullback_pairing.py` | Findings 2, 3, 4 |
+| `07_author_script_form_ablation.sh` (plus `author_ablation/`) | Finding 6 |
+| `08_potential_flow_pullback_check.py` | Findings 1, 2; §2.4 check |
+| `09_round_sector_checks.py` | H-round; finding 9 |
+| `10_basis_rank_under_R1_P.py` | R1/P rank |
+| `11_zeta_c_column_locator.py` | Data only |
+
+The engine copies are in `engine_copy/` and `import_probe/` (not filed: copies of committed sources).

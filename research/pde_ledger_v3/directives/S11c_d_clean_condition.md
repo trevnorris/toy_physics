@@ -1,16 +1,16 @@
 # Light leakage — the clean condition (S11c-d re-scope proposal)
 
-**Status:** PROPOSED · **v3** (2026-09-30) · orchestrator-written · ⛔ not governing until review-cleared.
-- Round 1: v1 preserved at `7b38e9dc`; twelve findings accepted.
-- Round 2: v2 preserved before this fold; nine findings accepted.
-- Both dispositions are in `directives/_measurements/S11c_d_clean_condition_review_disposition.md`.
+**Status:** PROPOSED · **v4** (2026-09-30) · Codex-revised from the orchestrator-written v1–v3 · ⛔ not
+governing until review-cleared. The committed v3 baseline is `c1e96e76`.
+- Rounds 1–3 and every accepted disposition are recorded in
+  `directives/_measurements/S11c_d_clean_condition_review_disposition.md`.
 - Repo citations below are reproduced verbatim, with their commands, in
   `directives/_measurements/S11c_d_clean_condition.md`.
 
 **Plain summary.** We stop asking *"does light leak at a non-uniform slab?"* and ask instead *"under what clean
 condition does it provably not leak?"* There is one candidate: **light whose motion is a pure twist about a
-symmetric non-uniformity never moves anything that the bulk can feel, so it has no linear channel into the
-bulk.** This is a standard symmetry argument, and it gives an exact zero rather than a small number. It
+symmetric non-uniformity cannot enter a reflection-even face/bulk channel at linear order.** This is a standard
+symmetry argument, and it gives an exact zero rather than a small number. It
 contains no light/bulk speed ratio. It is the natural candidate for **light trapped in a throat** (particle
 stability), which is the case that needs an exact zero. It does **not** cover all passing light: at an oblique
 hit, one polarization still converts. Three things are open and become the requirement's tests:
@@ -27,7 +27,8 @@ The user's directive, 2026-09-30, verbatim: *"It's a toy model. We start with th
 there a clean condition in which we can show that light doesn't leak? If so, then we use that."*
 
 Light is not observed to leak out of our three-dimensional space, and particles are observed to be stable.
-Under requirements-first (`research/pde_ledger_v3/CHARTER.md:14`), that observation is a **requirement**. The program's job is to:
+Under requirements-first (`research/pde_ledger_v3/CHARTER.md:14–17`), that observation is treated as a
+**requirement**. The program's job is to:
 
 1. find a condition under which the model meets the requirement;
 2. adopt that condition as a requirement with falsifiers;
@@ -59,8 +60,9 @@ A linear operator that commutes with the reflection cannot connect odd to even, 
 linear order.
 
 **Every incidence direction needs one more premise.** Suppose every background value is also invariant under the
-full `O(2)` of rotations and reflections about direction 1. R1 requires this: background vectors along direction 1
-only, and tensors rotation-invariant about it. Then **each tangential Fourier component** of an oblique
+full `O(2)` of rotations and reflections about direction 1. R1 states exactly this symmetry; it does not erase
+otherwise allowed transverse components merely because their component labels contain 2 or 3. Then **each
+tangential Fourier component** of an oblique
 perturbation can be rotated into the form above, and a superposition is classified component by component. ⇒ At
 such a planar interface, **for each incidence direction, the polarization perpendicular to the plane of
 incidence** (TE-like) is decoupled. The polarization **in** the plane of incidence (TM-like) is not decoupled at
@@ -69,7 +71,8 @@ background are protected.
 
 **H-round.** Take a background invariant under all rotations and reflections of the three in-plane coordinates
 about a point (`O(3)`), *if* such a throat background exists. That means a round throat, a parity-even
-constitutive law, and a background flow with no azimuthal (swirl) component. At each angular order `(ℓ, m)`:
+constitutive law, and a background flow with no azimuthal (swirl) component. At each angular order `(ℓ, m)` with
+`ℓ ≥ 1`:
 - **twist-type (toroidal)** displacements, tangent to the spheres `r = const` and divergence-free, have
   inversion parity `(−1)^{ℓ+1}`;
 - every scalar field and the non-twist (spheroidal) displacements have parity `(−1)^ℓ`.
@@ -77,20 +80,24 @@ constitutive law, and a background flow with no azimuthal (swirl) component. At 
 Rotation invariance conserves `(ℓ, m)`, and inversion conserves parity. So twist-type displacements evolve
 independently at linear order.
 
-**What reaches the bulk is a further step.** In S11c-b the bulk enters the slab only through face quantities, and
-S11c-b "performs no curved-bulk response solve" (spec `:145–148`, `:95–97`). The face quantities the laws use are
-`δp_s`, `v_bulk,s`, `n̂_s`, `v_face,s`, `δ_v x_s`, `a_s`, `t_s`, `J_s`, `V_s`, `𝒜_s` and `μ_s` (S11c-a
-`:343–354`, `:365–366`), plus the independent centre-shift row. The proposed interpretation, for review: suppose
-**no face quantity depends on the twist-sector field, and the twist-sector rows contain no bulk trace input**.
-Then no bulk closure can connect that sector to the bulk, because the bulk acts on the slab only through those
-quantities. Part 1 prints exactly that map.
+**What reaches the bulk is a further step.** S11c-b "performs no curved-bulk response solve" (spec `:95–97`);
+its supplied laws couple the slab to bulk trace operands through the face quantities (spec `:145–148`; S11c-a
+`:343–354`, `:365–366`). The proposed closure criterion is **parity block-diagonality**, not the absence of every
+twist-dependent face quantity. Odd-to-odd kinematics are allowed: for example, the direction-3 components of
+`v_face,s` and `δ_v x_s` belong to the odd sector with `u_3`. What the symmetry forbids is an odd↔even block in
+the slab rows, the physical face map, or the separately typed virtual/test map. On class `P`, the supplied
+rest-frame potential-flow pullback has no odd bulk trace or odd normal-jet coordinate. Therefore an equivariant
+bulk closure cannot connect this odd slab sector to the even bulk sector. Part 1 prints the formal face-operand
+map, its supplied potential-flow pullback, and the separate virtual/test map; it does not supply the missing bulk
+closure. (Author evidence: `directives/_measurements/S11c_d_clean_condition_v4_author_scripts/`
+`symmetry_domain_audit.py` and `potential_trace_pullback_audit.py`, with their literal `*.stdout.txt`.)
 
 **Premises the argument needs.** Each is a thing to check, ⛔ not to assume:
 
 | # | premise | where it stands |
 |---|---|---|
 | P1 | The constitutive law has no parity-odd term. | The S11c-b energy basis is "the O(3)-Kronecker field-bilinear invariant family" (record `:35–37`). |
-| P2 | Every operand the face laws use transforms covariantly under the reflection (or `O(3)`), **and** every background value and support/boundary datum is invariant under it. The operands are scalars (`δp_s`, `μ_s`, `𝒜_s`, `J_s`, `V_s`, `a_s`), polar vectors (`n̂_s`, `v_face,s`, `v_bulk,s`, `t_s`, `δ_v x_s`) and any axial vector. No further field is present (e.g. a microrotation or director field, a listed spin-carrier candidate, `native_light…:113–116`). | The face laws carry vector operands (S11c-a `:343–354`; S11c-b `:145–148`). Round-1 leg scripts report zero reflection residuals for these on the planar class. That is leg evidence about the term structure, with literal stdout excerpts in the grounding file. |
+| P2 | Every operand the face laws use transforms covariantly under the reflection (or `O(3)`), **and** every background value and support/boundary datum is invariant under it. The operands are scalars (`δp_s`, `μ_s`, `𝒜_s`, `J_s`, `V_s`, `a_s`), polar vectors (`n̂_s`, `v_face,s`, `v_bulk,s`, `t_s`, `δ_v x_s`) and any axial vector. The bulk trace normal jets have the parity of their parent operands because the in-plane reflection leaves `w` fixed. No further field is present (e.g. a microrotation or director field, a listed spin-carrier candidate, `native_light…:113–116`). | The face laws carry vector operands (S11c-a `:343–354`; S11c-b `:145–148`). Round-1 leg scripts report zero reflection residuals for these on the planar class. The v4 author script classifies the normal jets. These are term-structure checks, with literal stdout in the grounding file. |
 | P3 | The background flow respects the symmetry: normal drain; radial in-plane flow at a throat; no swirl. | ⚠ Untested. `v_bulk_normal_0` "appears in no derived operator" (spec `:90–91`). The drain flow is **absent** from the S11c-b operator. |
 | P4 | The truncations, the constraint fold (pin B), both anchorings, and the sign conventions in our operator do not break the reflection. | ⚠ Not yet computed in the operator. Round-1 leg scripts report pin B and both anchorings reflection-even on the planar class (stdout excerpts in the grounding file). Four upstream sign/coordinate repairs from S11c-d are unreviewed, so a convention error that breaks a reflection is exactly what Part 1 can catch. |
 
@@ -111,14 +118,17 @@ calibrated, draining medium" (assessment `:3`).
 ## 3 · Proposed requirements (to file in the register after review)
 
 **R-LEAK-1 — trapped light (particle stability).** The trapped transverse brane-shear standing mode that "helps hold
-each throat open" (ontology summary `:26`, `:362`) loses energy to the bulk at a rate below observational limits.
+each throat open" (ontology summary `:26`; the related statement at `:362` says it "helps hold the aperture open")
+loses energy to the bulk at a rate below observational limits.
 H supplies its **linear** clean condition: the mode is twist-type about a throat that is `O(3)`-symmetric in the
 brane coordinates and carries no swirl. ⛔ H alone does not deliver particle stability: a twist-type field's square
 is even and can source scalar motion at second order. So R-LEAK-1 also needs a nonlinear zero or bound.
 
-**Falsifiers of the linear clean condition:**
+**Operator falsifier of the conditional linear selection rule:**
 - **F1.** On a symmetric background with the drain flow carried live and the bulk closed, our linear operator
-  couples twist-type displacements to any bulk-facing quantity.
+  contains a reflection-odd↔reflection-even block between the twist sector and the closed slab/face/bulk system.
+
+**Applicability/failure tests for the proposed R-LEAK-1 realization:**
 - **F2.** The model's spin carrier forces the background to break `O(3)` at linear order. Possibilities: a swirl,
   a chiral constitutive term, or a non-round throat. On angular momentum: "A real linearly polarized standing wave
   can have zero time-averaged angular momentum. Two degenerate modes with a relative phase can form a circularly
@@ -157,7 +167,8 @@ symmetry-protected zero** here; special incidences, coefficients or other symmet
   - the model's drain at throats carries material **out** of the brane into the bulk, with distributed return
     inward (ontology summary `:100`, `:1366`);
   - it would also trap gravity changes;
-  - it does not protect a particle, because leaked energy returns to the brane, not to the particle.
+  - it does not protect a particle: no mechanism has been shown to return leaked mode energy coherently to the
+    same particle.
 - **Smallness only**: throat ≪ wavelength, weak fluid loading. Not clean; usable for R-LEAK-2 only.
 
 ## 5 · The computation
@@ -165,9 +176,10 @@ symmetry-protected zero** here; special incidences, coefficients or other symmet
 `directives/S11c_d_zinvariant_operator_blocks_directive.md` has two parts:
 
 - **Part 1** uses the existing S11c-b slab/face operator on the planar one-direction background (restriction R1).
-  - It builds one rectangular linear map on perturbations independent of direction 3. The inputs are the slab
-    fields and the bulk trace inputs. The outputs are every operator row (including the centre-shift row) and every
-    face quantity the face laws use.
+  - It builds the formal physical-coordinate Fréchet map on perturbations independent of direction 3, including
+    the engines' pressure/velocity trace values and normal jets; emits the pullback of that map to the supplied
+    potential-flow trace subspace; and emits the virtual/test kinematic map separately. The outputs are every
+    engine row (including the centre-shift row) and every engine-defined face quantity named by the directive.
   - It runs pinned FORM controls (K1: a fixed-axis term; K2: a single-Levi-Civita term).
   - It runs both engines, plus a comparator that surfaces the raw cross-engine residuals before any sign
     convention is applied. All jobs run under the guarded runner.

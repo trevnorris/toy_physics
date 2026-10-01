@@ -1,0 +1,10 @@
+ONTOLOGY_LINE 100 The bulk is therefore an internal reservoir, not an external supply. In a closed-loop realization, localized throat drainage transfers material, momentum, and energy from ordered brane degrees of freedom into de-structured bulk degrees of freedom, while distributed return transfers material back into the ordered state. The bulk may store the corresponding response as compression, flow, internal energy, entropy, or other unresolved excitations of the same medium. Any sustained cycle must include the evolution of that reservoir rather than treating it as an inexhaustible battery.
+ONTOLOGY_LINE_HAS_WORD 100 material True
+ONTOLOGY_LINE_HAS_WORD 100 energy True
+ONTOLOGY_LINE_HAS_WORD 100 particle False
+ONTOLOGY_LINE_HAS_WORD 100 coherent False
+ONTOLOGY_LINE 1366 - \(\Gamma_{\rm drain}\) converts ordered brane material into de-structured bulk material at throats;
+ONTOLOGY_LINE_HAS_WORD 1366 material True
+ONTOLOGY_LINE_HAS_WORD 1366 energy False
+ONTOLOGY_LINE_HAS_WORD 1366 particle False
+ONTOLOGY_LINE_HAS_WORD 1366 coherent False

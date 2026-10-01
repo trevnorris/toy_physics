@@ -1,0 +1,46 @@
+PART_A BASELINE dV/du3_t 0
+PART_A BASELINE dJ/dvb3 0
+PART_A BASELINE dJ/du3_t 0
+PART_A BASELINE dJ/d(u3_x2) 0
+PART_A BASELINE dA/d(u3_x2) 0
+PART_A BASELINE dA/d(u3_x1x1) 0
+PART_A BASELINE dA/d(u3_x2x2) 0
+PART_A BASELINE dFaceForce_u3/d(dp) 0
+PART_A BASELINE dFaceForce_u3/d(vb_w) 0
+PART_A BASELINE dFaceForce_u3/d(theta) 0
+PART_A K1 dV/du3_t 0
+PART_A K1 dJ/dvb3 0
+PART_A K1 dJ/du3_t 0
+PART_A K1 dJ/d(u3_x2) 0
+PART_A K1 dA/d(u3_x2) 0
+PART_A K1 dA/d(u3_x1x1) -a_K1*cos(beta)/rho_br
+PART_A K1 dA/d(u3_x2x2) -a_K1*cos(beta)/rho_br
+PART_A K1 dFaceForce_u3/d(dp) 0
+PART_A K1 dFaceForce_u3/d(vb_w) 0
+PART_A K1 dFaceForce_u3/d(theta) 0
+PART_A K2 dV/du3_t 0
+PART_A K2 dJ/dvb3 0
+PART_A K2 dJ/du3_t 0
+PART_A K2 dJ/d(u3_x2) 0
+PART_A K2 dA/d(u3_x2) W0*a_K2*eta*Derivative(w1(x1), x1)/rho_br
+PART_A K2 dA/d(u3_x1x1) 0
+PART_A K2 dA/d(u3_x2x2) 0
+PART_A K2 dFaceForce_u3/d(dp) 0
+PART_A K2 dFaceForce_u3/d(vb_w) 0
+PART_A K2 dFaceForce_u3/d(theta) 0
+PART_A G3 dV/du3_t 0
+PART_A G3 dJ/dvb3 -g3*rho_m*s**2/sqrt(W0**2*eta**2*s**2*Derivative(w1(x1), x1)**2 + g3**2*s**2 + 4)
+PART_A G3 dJ/du3_t 0
+PART_A G3 dJ/d(u3_x2) 0
+PART_A G3 dA/d(u3_x2) 0
+PART_A G3 dA/d(u3_x1x1) 0
+PART_A G3 dA/d(u3_x2x2) 0
+PART_A G3 dFaceForce_u3/d(dp) 0
+PART_A G3 dFaceForce_u3/d(vb_w) 0
+PART_A G3 dFaceForce_u3/d(theta) 0
+PART_B EXACT_MINUS_REFERENCE_FACE_PULLBACK_O(eta) 0
+PART_B EXACT_MINUS_BACKGROUND_FACE_PULLBACK_O(eta) -W0*eta*s*w1(x1)*Derivative(Phi(x1, w), w)/2
+PART_B D1_OF_BGFACE_TRACE_MINUS_TRACE_OF_D1 W0*eta*s*Derivative(w1(x1), x1)*Subs(Derivative(Phi(x1, _xi_2), _xi_2), _xi_2, W0*s*(eta*w1(x1) + 1)/2)/2 + Subs(Derivative(Phi(_xi_1, W0*s*(eta*w1(x1) + 1)/2), _xi_1), _xi_1, x1) - Subs(Derivative(Phi(x1, w), x1), w, W0*s*(eta*w1(x1) + 1)/2)
+PART_C PAIRING_SAME_CLASS_P 0
+PART_C PAIRING_CONJUGATE 2*I*pi*U_amp*V_amp
+EXIT 0

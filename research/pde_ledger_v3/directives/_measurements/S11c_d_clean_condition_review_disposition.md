@@ -321,3 +321,135 @@ every time, which is the recipe-creep tell: the HOW keeps being specified from p
 - **The valid non-author pairing for v4 review is a fresh Claude agent + Grok.** Neither authored any version. ⛔
   The Codex authoring instance does not review.
 - ⛔ No fourth orchestrator fold.
+
+---
+
+# Round 4 — review of v4 (Codex-authored)
+
+**Authorship and pairing.** v1–v3 are orchestrator-written; v4 was revised by a Codex author (prompt
+`_legs/S11c_d_clean_condition_v4_author_prompt.md`, `gpt-5.6-sol` xhigh, `--sandbox workspace-write`). That is
+mixed authorship. The valid non-author pairing is a **fresh Claude agent** (Opus, general-purpose, no prior
+contact) **+ Grok** (`grok-4.6`, high). Neither authored any version.
+
+**Prompt:** `_legs/S11c_d_clean_condition_review_round4_prompt.md`. It is identical for both legs; the Claude leg
+received the file text verbatim.
+
+**Reports:**
+- `S11c_d_clean_condition_review_r4_claude.txt` (the leg's final report, verbatim)
+- `S11c_d_clean_condition_review_r4_grok.txt`
+
+The scripts and literal stdout are in `S11c_d_clean_condition_review_scripts/r4_{claude,grok}/`. The Claude leg's
+`engine_copy/` and `import_probe/` were not filed (about 47 MB of copies of committed sources).
+
+**Verdicts:**
+- **Claude:** "NOT CLEARED. H itself holds on the actual operator. Findings 1–5 change what Directive B would
+  compute. Findings 6–9 change what Record A may claim."
+- **Grok:** "**cleared** on the physics filter."
+
+**Adjudication:** **not cleared.** Every Claude finding is verified below. Grok's clear is outweighed by verified
+defects it did not catch, among them a pairing that prints a vacuous zero (R4-4).
+
+**Strongest evidence to date (review-leg, single engine).** The Claude leg read the **actual exported S11c-b slab
+operator**, applied R1/P, and split every leaf by mirror parity: `LEAVES 307 MIXED_PARITY_LEAVES 0` in all four
+cases (`LAB_HELD`/`MATERIAL_ADVECTED` × `RHO4`/`RHOBR`). Its untransformed direction-3 profile-jet control lifts
+this to 80/74/117/110 (`r4_claude/02_engine_reflection_parity.stdout.txt`). This is SymPy-export evidence from a
+review leg, ⛔ not the blind dual-engine build.
+
+## Orchestrator verification — mechanical lookups, 2026-10-01
+
+````
+$ sed -n 484,547p research/pde_ledger_v3/scripts/S11c_b_brane_operator_sympy_audit.py | grep -o -E '"(delta_rho_4D_face|d_w_delta_rho_4D_face|delta_j_bulk|d_w_delta_j_bulk|trace_grad_f|d_w_trace_grad_f|delta_rho_4D_bulk_t)[^"]*"' | sort -u
+"d_w_delta_j_bulk_{face_name}_{component}"
+"d_w_delta_rho_4D_face_{face_name}"
+"d_w_trace_grad_f_{component}"
+"delta_j_bulk_{component}"
+"delta_rho_4D_bulk_t"
+"delta_rho_4D_face_{face_name}"
+"trace_grad_f_{component}"
+$ sed -n 647,652p research/pde_ledger_v3/scripts/S11c_a_interface_geometry_sympy_audit.py
+    density_perturbation = affine_bulk_perturbation(
+        delta_rho4_face[face], dw_delta_rho4_face[face], face,
+    )
+    current_perturbation = tuple(
+        affine_bulk_perturbation(j_bulk[i], dw_delta_j_bulk[face][i], face)
+        for i in range(4)
+$ sed -n 584,585p research/pde_ledger_v3/scripts/S11c_a_interface_geometry_sympy_audit.py
+    reference_height = sp.Rational(face, 2) * W0
+    return reference_value + (w - reference_height) * reference_normal_jet
+$ grep -n 'formal operand domain' research/pde_ledger_v3/directives/S11c_d_zinvariant_operator_blocks_directive.md
+141:`:578–592,629–646`. These 20 trace coordinates define a **formal operand domain**, not 20 independent physical
+$ sed -n 328,329p research/pde_ledger_v3/directives/S11c_b_SHARED_PHYSICS.md
+For the in-plane domain, take all trial and test fields to have compact support in its interior, so the
+in-plane integration-by-parts boundary term is fixed to zero; the inherited face boundary conditions still
+$ grep -n 'compact support' research/pde_ledger_v3/directives/S11c_d_zinvariant_operator_blocks_directive.md
+257:before the weak object exists. The pairing domain is class `P` with compact support in the in-plane interior, as
+$ sed -n 11,13p research/pde_ledger_v3/directives/S11c_b_p2b_gamma_bridge_directive.md
+- `I_PY = W_0·I_WL` (W-family) and `I_PY = μ_R·I_WL` (μ-family): `EXACT_UNIQUE 0 / SCALED_UNIQUE 30`. WL spurion
+  `∇W/W_0`, `∇μ/μ_R` (`…audit.wl:721-722`); PY raw jets `grad_W`/`grad_mu` (`sympy_audit.py:182`). ⇒ energy terms
+  `γ·I` equal ⟺ `γ_WL = W_0·γ_PY` (resp. `μ_R·γ_PY`).
+$ grep -n -c -i 'p2b' research/pde_ledger_v3/directives/S11c_d_zinvariant_operator_blocks_directive.md
+0
+$ grep -n -E '^\s*print\(' …/S11c_d_clean_condition_v4_author_scripts/potential_trace_pullback_audit.py   (excerpt)
+31:print("CLASS_P_ODD_BULK_TRACE_COMPONENT", 0)
+32:print("CLASS_P_ODD_BULK_NORMAL_JET_COMPONENT", 0)
+44:print("D_VIRTUAL_X3_D_TEST_U3", 1)
+$ git log -1 --format='%h %ad %s' --date=iso 14861016
+14861016 2026-09-30 18:07:45 -0600 Resume central benchmark and scope equal-speed feasibility
+$ sed -n 47p research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_equal_speed_feasibility.md   (excerpt)
+The same PID4097233 was resumed with SIGCONT after checking start ticks85113744, exact command/cgroup, 2GiB/zero-swap/task containment, …
+$ grep State /proc/4097233/status
+State:	R (running)
+$ sed -n 116,117p research/pde_ledger_v3/directives/S11c_b_SHARED_PHYSICS.md
+symmetry group in full (`S11b_SHARED_PHYSICS.md:280–288`): **in-plane translation invariance** (so `u` enters
+only through its gradients, never undifferentiated), **in-plane `O(3)` isotropy and parity**, **reflection
+$ sed -n 114,116p docs/native_light_em_and_vortex_throat_interpretation.md
+- Compare candidate carriers: circulating intake, brane-tangent vortex flow,
+  mixed \(a\)-\(w\) circulation, trapped chiral shear, and an independent
+  microrotation of the ordered substructure.
+$ grep -n -i -E 'chiral shear|a.w circulation|helic|mean flow' research/pde_ledger_v3/directives/S11c_d_clean_condition.md
+(no output)
+$ sed -n 8,9p AGENTS.md
+For future S11c Python constructors, validators and export jobs, use
+`scripts/s11c_guarded_run.py` around the existing supervisor. It requires a
+````
+
+The leg stdout relied on below:
+- `r4_claude/01_slab_operator_structure.stdout.txt`:
+  - `UNDECLARED_INPUT_SYMBOLS ['delta_j_bulk_1', 'delta_j_bulk_2', 'delta_j_bulk_3', 'delta_rho_4D_bulk_t']` (projection_* leaves)
+  - `d_w_trace_grad_f_1..4` (conormal_deriv)
+  - `d_w_delta_j_bulk_minus_1..` (face_shift)
+- `r4_claude/06_face_controls_pullback_pairing.stdout.txt`:
+  - `PART_C PAIRING_SAME_CLASS_P 0`
+  - `PART_C PAIRING_CONJUGATE 2*I*pi*U_amp*V_amp`
+- `r4_claude/09_round_sector_checks.stdout.txt`:
+  - `HELICITY_PURE_TOROIDAL 0`
+  - `HELICITY_TOROIDAL_PLUS_c_POLOIDAL 5*sqrt(2)*pi**(3/2)*c/4`
+  - `CORIOLIS_IMAGE_BREATHING_PROJECTION … -sqrt(2)*pi**(3/2)*Omega/4`
+  - `CORIOLIS_IMAGE_L2_PROJECTION … -sqrt(2)*pi**(3/2)*Omega/8`
+- `r4_claude/07_author_script_form_ablation.stdout.txt`: every claim tag is byte-identical under the
+  rotational-bulk corruption.
+
+## Dispositions (all accepted)
+
+"Fold-bred" marks a defect introduced by v4 in material it changed.
+
+| # | finding (Claude leg) | verified by | resolution owed in v5 |
+|---|---|---|---|
+| R4-1 | R3-1 is only partly resolved. The codomain depends on **25 more** engine coordinates outside B's 20-coordinate domain. They include the face density traces and their jets, the bulk current `delta_j_bulk_1..4` (no face label) and its face jets, `trace_grad_f_1..4` and its jets, and `delta_rho_4D_bulk_t`; some are odd (`…_3`). The physical-map entries also carry test symbols `delta_v_*`, untyped. No density or current pullback is supplied. | engine `:484–547`; S11c-a `:647–652`; leg `01` | The domain is defined as **every free perturbation coordinate the codomain actually depends on** under R1/P, computed from the constructed objects (⛔ not a hand list). Each is typed (slab / bulk trace / bulk interior / test / background) and declared, or held with a stated reason. Density and current pullbacks are supplied as equations from a cited governing relation. The face assignment of unlabelled coordinates is stated. |
+| R4-2 | The pullback's trace height is unfixed. The engine traces are at the **flat reference face** `w = sW_0/2`; a background-face reading double-shifts (the WL c2 defect class). Fold-bred. | S11c-a `:584–585`; leg `06` Part B | B fixes the evaluation height to the engine's reference face. |
+| R4-3 | Controls entering only at the stored energy cannot expose an omission in the face-trace or kinematic columns (`dJ/dv_b3`, `dV/du3_t`, face-force entries are unchanged under K1/K2). A fixed, untransformed direction-3 **background** datum does bite (leg `02`, `06`). Pre-existing design gap. | leg `06` Part A; leg `02` control | Add a FORM control that is an untransformed direction-3 background datum introduced after R1, with the structural rule widened accordingly. |
+| R4-4 | Class `P` (plane wave in `x_2`, constant in `x_3`) contradicts "compact support in the in-plane interior". A same-class test field gives a **vacuous zero** (`PAIRING_SAME_CLASS_P 0`). Fold-bred. | spec `:328–329`; B `:257`; leg `06` Part C | Test fields carry the conjugate exponential, compact support in `x_1` only, and the pairing is per `x_2` period and per unit `x_3` length. Or an equivalent, stated domain. |
+| R4-5 | The comparator has no account of the P2b coefficient normalization (`γ_WL = W_0·γ_PY`, resp. `μ_R·γ_PY`; P2b deferred ≥64 GB). Every spurion entry would show a representational raw residual, and the builder would have to invent the bridge. The entry representation and join key are also unspecified. | P2b `:11–13`; record `:56`; B has 0 `p2b` mentions | Raw comparison stays first. The P2b map is cited as the mapped-diagnostic convention, or the spurion comparison is declared deferred with P2b. The entry representation (jet-indexed, after `∂_2→ik_2`) is fixed for both engines. |
+| R4-6 | The "author evidence" scripts are **typed** (literal `print(…, 0)`, typed parity dicts). Under FORM ablation (rotational bulk) every tag is byte-identical. A and the change log present them as computed evidence. Fold-bred. | author script `:31–32,44`; leg `07` | Remove the evidence claim, or relabel the scripts as typed bookkeeping. Correct the change log, which overstated R3-1 as "resolved". |
+| R4-7 | A §6 is stale. PID 4097233 was **resumed** (commit `14861016`; feasibility `:47`; `/proc` state `R`). | lookups | A states that the job was resumed and that Part 1 waits on its completion (B §0.2 already stops on "exists in any state"). |
+| R4-8 | P1 (no parity-odd constitutive term) is a **supplied input** of the basis ("in-plane `O(3)` isotropy and parity", spec `:116–117`). Part 1 cannot test it. | spec `:116–117` | A: P1 holds by construction of the supplied basis and is untestable by Part 1. The medium's achirality becomes an explicit part of R-LEAK-1's adopted condition, and F2's chiral term is its applicability test. |
+| R4-9 | Two of the cited spin-carrier candidates are unclassified: **trapped chiral shear** (toroidal + poloidal mix has helicity ≠ 0 and mixes parities, so it is unprotected) and **mixed `a–w` circulation** (an in-plane vector; net spin breaks `O(3)`). N2 also omits an induced **mean flow** (a Coriolis image projects onto `ℓ = 0, 2`). | native_light `:114–116`; leg `09` | A: add an applicability test that the required trapped mode is pure twist-type (zero helicity); classify `a–w` circulation; N2 names the induced mean flow. |
+| R4-10 | Minor points. B cites `AGENTS.md:8–12` as requiring guarded **Wolfram** runs, but those lines cover Python constructors and validators, and WL containment under the guard is untested. A §4 "would also trap gravity changes" is ungrounded. | AGENTS `:8–9`; A `:169` | B makes guarded execution its own requirement, cites AGENTS for the Python scope, and flags WL containment as untested. A drops or grounds the gravity-trap clause. |
+
+**Author decision (G4).** Codex keeps authorship for v5. This is its first fold, and it bred R4-2, R4-4 and R4-6.
+If v5 again breeds defects in material it changed, the author changes again (⛔ no repeated folds by a
+defect-breeding author). v5 review: a fresh Claude agent + Grok, as new instances.
+
+**Stop point surfaced to the user (they own the cut).** The physics question has strong review-leg evidence
+(R4 Claude `02`). B is a blind dual-engine confirmation that likely cannot complete under the 2 GiB guard. The
+leg measured 1.58 GB RSS just to load the exported slab payload.

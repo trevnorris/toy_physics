@@ -1,5 +1,5 @@
 {
-  "status": "AUTHORIZED_DIAGNOSTIC_LAUNCHED_ENFORCEMENT_VERIFIED",
+  "status": "FAILED_PRESERVED_PARTIAL_SOURCE_ALGEBRA_INSPECTED_STOP",
   "recordedUtc": "2026-10-01T23:35:58.110347+00:00",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01",
   "preparedCommit": "be284ea3",
@@ -82,7 +82,10 @@
     "claude": "NEEDS REVISION",
     "grok": "CLEAR FOR THIS SELECTED SOURCE/CONSUMER INSTRUMENT"
   },
-  "scientificResult": "PENDING_COMPLETION_INSPECTION",
+  "scientificResult": "PARTIAL_SOURCE_AND_ROW_ALGEBRA; COMPLETE_DIAGNOSTIC_NOT_VALIDATED",
   "automaticRetry": false,
-  "stop": "Selected source/consumer evidence before production repair or defect sweep."
+  "stop": "Selected source/consumer evidence before production repair or defect sweep.",
+  "completionRecord": "S11c_upstream_mixed_consumer_completion.json",
+  "completionRecordSha256": "7fd2c2f8f61a143071fb6ac58c51dc65830e95cac4b9e5f964ea72d3f8e67493",
+  "noRetryOrFurtherJob": true
 }

@@ -1,3 +1,23 @@
+**SOURCE/CONSUMER DIAGNOSTIC FAILED; PARTIAL EVIDENCE PRESERVED, STOP (2026-10-01):**
+Worker612.727s,peak304.6MiB,zero swap/memory events,no time/resource stop.
+Actual native source/census/grade/row algebra saved: source(0,0) annihilates
+arbitrary transverse curl on both faces; scalar/longitudinal sources nonzero;
+three addressed source-divergence omissions respond. Selected THETA/E_W row
+factors saved,normal-jet zero grade unused,U pressure routes absent by census.
+Scope only direct kernel(1,1) × source(0,0) × consumer(0,0),upper-face off-shell.
+NOT full diagnostic acceptance or absence of leakage. Downstream divergence
+control stopped on exact linear jet reconstruction at worker488/339. Failing
+amplitude/remainder and partial downstream list were not saved: cause unresolved,
+not a proven tooling-only fault. Final consumer/routing/unit controls unvisited.
+All409metadata checks pass:64input pins,66snapshots,39prior trace files,7readable
+restorations intact;130result files/2914095bytes preserved. Empty scientific stderr,
+stdout/checks identical. No top-level journal return completed. See completion.json
+and result.md. Literal Claude NEEDS REVISION/Grok CLEAR remain unchanged; reviewed
+baseline3f1193e7,local repairsbe284ea3. No repair,retry,validator,new export or
+production/defect job after completion. Scientific payloads were not restored
+during inspection. Prior results/failures/incident history and protected sources
+remain unchanged. STOP at this diagnostic evidence.
+
 **SELECTED SOURCE/CONSUMER DIAGNOSTIC LAUNCHED (2026-10-01):**
 Prepared commitbe284ea3; reviewed baseline3f1193e7. One authorized worker started
 under the unchanged shared pooled guard/supervisor. Actual4GiB native/cgroup,

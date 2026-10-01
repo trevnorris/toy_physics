@@ -1,5 +1,5 @@
 {
-  "status": "SUBMITTED_UNIFORM_PAIR_RUNNING_UPSTREAM_REPLACEMENT_PERMISSION_CANCELLED",
+  "status": "UNIFORM_PAIR_SUBMITTED_UPSTREAM_APPROVED_SAME_SESSION_RESUME_LAUNCHED",
   "preparedUtc": "2026-10-01T17:09:28.962648+00:00",
   "literalUserRenewal": "k. do whatever you need, and I approve. please keep going, times of the essence right now.",
   "interpretation": "Current approval covers corrected uniform Claude/Grok review plus a fresh replacement Grok review of the upstream repairs with complete source operands. No completed upstream Claude rerun; no implicit future export. User was not shown these new hashes before this renewal.",
@@ -2029,5 +2029,6 @@
     "context": "Both unchanged exact packets from the pending prompt approved."
   },
   "launchRecord": "S11c_parallel_review_continuation_launch.json",
-  "upstreamReplacementOutcome": "S11c_upstream_repair_replacement_transport_record.json"
+  "upstreamReplacementOutcome": "S11c_upstream_repair_replacement_transport_record.json",
+  "upstreamResumeRecord": "S11c_upstream_repair_review_resume_launch.json"
 }

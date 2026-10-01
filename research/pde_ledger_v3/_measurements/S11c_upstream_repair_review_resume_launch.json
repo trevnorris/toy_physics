@@ -1,0 +1,87 @@
+{
+  "checkedUtc": "2026-10-01T17:52:02.221952+00:00",
+  "singleStartupCheck": true,
+  "state": "RUNNING",
+  "runReceipt": {
+    "engine": "grok",
+    "sessionId": "6df19a4c-1eaa-4953-af94-365eb4501292",
+    "command": [
+      "/home/trevnorris/.local/bin/grok",
+      "--cwd",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/upstream-repair-review-grok-replacement/grok/work",
+      "--prompt-file",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/upstream-repair-review-grok-resume-v2/operational-followup.txt",
+      "--output-format",
+      "json",
+      "--permission-mode",
+      "dontAsk",
+      "--no-plan",
+      "--tools",
+      "Read,Write,Edit,Bash",
+      "--allow",
+      "Read",
+      "--allow",
+      "Write",
+      "--allow",
+      "Edit",
+      "--allow",
+      "Bash(python3 /var/projects/toy_physics/scripts/s11c_review_cas.py *)",
+      "--no-subagents",
+      "--disable-web-search",
+      "--verbatim",
+      "--resume",
+      "6df19a4c-1eaa-4953-af94-365eb4501292"
+    ],
+    "cwd": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/upstream-repair-review-grok-replacement/grok/work",
+    "startedUtc": "2026-10-01T17:51:23.852020+00:00",
+    "packetSha256": "e16c4dff44dfffe8f36eb5919c4e7a24b2b73de7e40fd78f4976ab96b56a0db3",
+    "promptSha256": "d0cf828aa8732822776eabd6e31359c606e883840408f57302c68f831e03f39f",
+    "scientificExecutionEnabled": "guarded reviewer probes only",
+    "reviewVerdict": "NOT_ADJUDICATED",
+    "pid": 1469375
+  },
+  "launch": {
+    "jobPid": 1469366,
+    "watcherPid": 1469367,
+    "packetSha256": "e16c4dff44dfffe8f36eb5919c4e7a24b2b73de7e40fd78f4976ab96b56a0db3",
+    "reviewers": [
+      "grok"
+    ],
+    "concurrentReviewWorkers": 1,
+    "scienceCalls": "guarded review probes only",
+    "runnerSha256": "01b54a2606c9cb3e41033e1eaa71e0dec8de7d9e74db7fcddc3d82f6fd6a5d9b",
+    "launcherSha256": "238a24a3da1b714bad9c94ce7a722150a112249b36bb437e40fb5e0e6879ccdd"
+  },
+  "hookStatus": "waiting",
+  "sameSessionCommandConfirmed": true,
+  "private125FilesIntact": true,
+  "operationalPromptIntact": true,
+  "noVerdictInferred": true,
+  "sandboxPidVisible": false,
+  "hostStartupProcessCheck": {
+    "source": "One read-only host ps check after sandbox /proc visibility was insufficient",
+    "processes": [
+      {
+        "pid": 1469366,
+        "stat": "SNsl",
+        "comm": "python3",
+        "role": "coordinator"
+      },
+      {
+        "pid": 1469367,
+        "stat": "SNs",
+        "comm": "python3",
+        "role": "completion hook"
+      },
+      {
+        "pid": 1469375,
+        "stat": "SNsl",
+        "comm": "grok",
+        "role": "continued reviewer"
+      }
+    ],
+    "reviewerAndCoordinatorAndHookPresent": true,
+    "durableState": "RUNNING",
+    "exitStatusRecorded": false
+  }
+}

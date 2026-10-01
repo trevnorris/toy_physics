@@ -1,3 +1,16 @@
+**APPROVED UPSTREAM SAME-SESSION REVIEW RESUMED (2026-10-01):**
+The user approved the exact732-byte operational followup. The original source
+packet and Read/Write/Edit/guard-only Bash permissions are unchanged. Grok now
+continues session6df19a4c-1eaa-4953-af94-365eb4501292 using Read for metadata and
+the existing pooled dispatcher for computation. The first local resume command
+was rejected before a model turn because --session-id cannot reuse an existing
+UUID; unchanged session logs and empty output are preserved. The installed CLI's
+--resume flag supplies the same already-approved continuation. No new review
+round or new physics source. The new hook is armed; the actual command and125
+private file hashes were checked. Read S11c_upstream_repair_review_resume_launch.json.
+Uniform Claude/Grok has its separate existing completion hook. No model polling,
+computation deadline, automatic retry, uniform science launch or defect sweep.
+
 **EXACT PACKETS SUBMITTED; UPSTREAM GROK PERMISSION STOP (2026-10-01):**
 User confirmed both displayed packets with “approved. go”. Fresh uniform
 Claude/Grok reviews launched with a silent completion hook; do not inspect or

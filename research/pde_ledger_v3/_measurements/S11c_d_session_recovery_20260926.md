@@ -6,8 +6,10 @@ Grok assessment. The completed upstream Claude report is preserved, not rerun or
 shared. See S11c_parallel_review_continuation_preparation.json for exact packet
 hashes, authority and source/archive checks. Prior NEEDS REVISION verdicts and the
 cancelled/no-report Grok attempt remain history. No method or science clearance
-is claimed. These named reviews may launch with hook-first private workspaces;
-no computation deadlines. Upstream probes stay under the 16GiB aggregate pool.
+is claimed. Automatic approval review blocked the external launch pending exact-packet
+confirmation; neither packet has been exported. Both hashes/counts were presented
+together to the user. Local source-only preparation continues; no workaround.
+On exact approval use hook-first private workspaces and no computation deadlines. Upstream probes stay under the 16GiB aggregate pool.
 Actual uniform execution awaits substantive method assessment and readiness.
 Stop after uniform evidence/applicable upstream findings, before a defect sweep.
 

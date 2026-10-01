@@ -1,5 +1,5 @@
 {
-  "status": "PACKETS_PREPARED_SOURCE_HASHES_VERIFIED_NOT_YET_LAUNCHED",
+  "status": "EXTERNAL_LAUNCH_BLOCKED_EXACT_PACKET_CONFIRMATION_PENDING",
   "preparedUtc": "2026-10-01T17:09:28.962648+00:00",
   "literalUserRenewal": "k. do whatever you need, and I approve. please keep going, times of the essence right now.",
   "interpretation": "Current approval covers corrected uniform Claude/Grok review plus a fresh replacement Grok review of the upstream repairs with complete source operands. No completed upstream Claude rerun; no implicit future export. User was not shown these new hashes before this renewal.",
@@ -54,7 +54,7 @@
         "uniformScienceLaunched": false
       },
       "authority": {
-        "status": "USER_RENEWED_CORRECTION_AND_REVIEW_AUTHORITY",
+        "status": "AWAITING_EXACT_PACKET_CONFIRMATION",
         "literalUserReply": "k. do whatever you need, and I approve. please keep going, times of the essence right now.",
         "context": "Renewed approval directly after explanation that corrections/preparation are already authorized and new/replacement external-review submissions need approval. Applies only to this bounded prepared packet and named reviewers; not a claim the user previously saw these new hashes.",
         "userSawTheseNewHashes": false,
@@ -67,11 +67,12 @@
           "claude",
           "grok"
         ],
-        "thread": "01a0e01b-ef84-7192-817f-584cda5d339b"
+        "thread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+        "launchBlockedByApprovalReview": true
       },
       "runtime": {
-        "runnerSha256": "3764bedbd15e07be735af3f434b912f8c3775aef025024517d4fdd1ef0ff6eea",
-        "launcherSha256": "e015e7eca1b73a4aef87692c1d09dda23dc872bd716241a9bf3a5f1adaa66df0",
+        "runnerSha256": "30ed68e2d751f5c85399fcdf99384d9ef095376983da0b1bf91b89aef62e5b62",
+        "launcherSha256": "d7dd71850300818294a1218ecaf59c5576f63884457eb12b87d69d8b0c7df2a5",
         "completionMessageSha256": "e1b880a196da7fb472a9566632b801a6c2c3645573ded801460784722d8795f1",
         "syntaxPassed": true,
         "runRootVerified": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-method-review-r2",
@@ -80,7 +81,7 @@
           "grok"
         ],
         "externalSubmitted": false,
-        "change": "Fresh paths and explicit user-renewal authority; requested reviewer count parameterized. No runtime scientific helper changes."
+        "change": "Exact fixed-packet confirmation required following automatic approval review rejection. No packet, scientific helper or method changed."
       }
     },
     {
@@ -229,7 +230,7 @@
         "uniformScienceLaunched": false
       },
       "authority": {
-        "status": "USER_RENEWED_CORRECTION_AND_REVIEW_AUTHORITY",
+        "status": "AWAITING_EXACT_PACKET_CONFIRMATION",
         "literalUserReply": "k. do whatever you need, and I approve. please keep going, times of the essence right now.",
         "context": "Renewed approval directly after explanation that corrections/preparation are already authorized and new/replacement external-review submissions need approval. Applies only to this bounded prepared packet and named reviewers; not a claim the user previously saw these new hashes.",
         "userSawTheseNewHashes": false,
@@ -241,11 +242,12 @@
         "reviewers": [
           "grok"
         ],
-        "thread": "01a0e01b-ef84-7192-817f-584cda5d339b"
+        "thread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+        "launchBlockedByApprovalReview": true
       },
       "runtime": {
-        "runnerSha256": "10ec162ed9121ec7a7793e0b1674136cd954383c18cb78e1e6026e2f3a3a528b",
-        "launcherSha256": "9137c0267d2a38c2ee373c47191829746aa752f47579456eacaa6fd29a69b96a",
+        "runnerSha256": "b49933cbcf84f242ac3218ffedd348d09d54e4afc85eb79f8b432507557e596a",
+        "launcherSha256": "238a24a3da1b714bad9c94ce7a722150a112249b36bb437e40fb5e0e6879ccdd",
         "completionMessageSha256": "ceeb7119cc4ff5c15afd9d285d638410f7b1dfd14e57641b6561d4cb154a2b3a",
         "syntaxPassed": true,
         "runRootVerified": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/upstream-repair-review-grok-replacement",
@@ -253,7 +255,7 @@
           "grok"
         ],
         "externalSubmitted": false,
-        "change": "Fresh paths and explicit user-renewal authority; requested reviewer count parameterized. No runtime scientific helper changes."
+        "change": "Exact fixed-packet confirmation required following automatic approval review rejection. No packet, scientific helper or method changed."
       }
     }
   ],
@@ -1995,5 +1997,25 @@
   "methodClearanceClaimed": false,
   "stop": "Uniform evidence and applicable upstream findings, before defect sweep",
   "runtimePolicy": "No computation deadlines. Source-only uniform pair. Upstream probes through current pooled guard/supervisor:4GiB per probe,16GiB aggregate,4GiB host reserve,zero swap,one CPU/thread,desktop priority; no Wolfram seats.",
-  "newCanonicalFilesOver1MiB": []
+  "newCanonicalFilesOver1MiB": [],
+  "approvalReview": {
+    "checkedUtc": "2026-10-01T17:11:04.806504+00:00",
+    "requestedAction": "Launch corrected uniform Claude/Grok pair",
+    "result": "Rejected before execution",
+    "reason": "Exports a newly changed internal source packet to external Claude/Grok destinations; broad approval to continue does not authorize this exact payload and hash under the stated exact-packet consent rule.",
+    "next": "Both exact packet counts/bytes/hashes presented together; no workaround or second export attempted. Local source-only preparation continues."
+  },
+  "runtimeAvailability": {
+    "python3": "/usr/bin/python3",
+    "claude": "/home/trevnorris/.local/bin/claude",
+    "grok": "/home/trevnorris/.local/bin/grok",
+    "codex": "/home/trevnorris/.npm-packages/bin/codex",
+    "systemd-run": "/usr/bin/systemd-run"
+  },
+  "pendingGateChecks": {
+    "bothRefuseBeforeExactConfirmation": true,
+    "frozenPacketBytesIntact": true,
+    "nativeHelpersAndProtectedEngineIntact": true,
+    "bothNotLaunched": true
+  }
 }

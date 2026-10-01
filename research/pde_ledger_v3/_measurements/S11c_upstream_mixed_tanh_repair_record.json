@@ -1,0 +1,53 @@
+{
+  "status": "LOCAL_TOOLING_REPAIRS_TESTED_NO_FRESH_INDEPENDENT_CLEAR",
+  "reviewedBaselineCommit": "6d645f57",
+  "reviewedWorkerSha256": "bef2615e4209525ab4d1f58c49ba080cd07f158d2b717c2a20803236defb13ea",
+  "workerSha256": "de783e3d09f58db8075a115edf4ed584f28d2a090cc7a3eef150e98befd30373",
+  "testSha256": "d6dcbbc5e21e5d4b018527bb9ed61ffc08b2d24e9b2abba0da6831cdada97164",
+  "literalVerdicts": {
+    "claude": "NEEDS REVISION",
+    "grok": "CLEAR FOR THIS FOCUSED MIXED-GRADE INSTRUMENT"
+  },
+  "independentBuildClearance": false,
+  "methodAssessment": "Both source-only reports support the bounded mathematics; no runtime result exists.",
+  "acceptedRepairs": [
+    "N1 save sign/endpoint operands before their guards",
+    "N4 route already-computed native shape factors, requiring exact equality to the reviewed expressions and zero edge tilts"
+  ],
+  "notChanged": [
+    "N2 predicted simplifier failure unestablished; installed gamma reducer supports shifted reflection pairs",
+    "N3 actual pinned AST has exactly one matching pair",
+    "boundary equations and grades",
+    "profile/transform and outgoing sheets",
+    "physical input and sample point",
+    "integrand formula, tolerances and existing controls",
+    "scope and claims"
+  ],
+  "changedFunctions": [
+    "science",
+    "action"
+  ],
+  "unchangedFunctionASTs": {
+    "native": "642d601bb78d78a22cc7ea2cacedcab5434a2dfa32669f4c18b6e17fd1a2faa7",
+    "boundary": "225650faca20ca41c3a742b12f285bde6005bfed5de8e49c99274989f4386d5c",
+    "profile": "3c815a361a2d6edb40891d48397256fc0aeafc9c28ac23be80410d9d24585b60",
+    "containment": "884f1970f4e296cfc722f857282795a43ac16550739c76c9fe6a69cb8672e05b",
+    "main": "9d28c6b487ac648ed29083ddd9a806675aace693735883f4adaebd57b4b8d158",
+    "zero": "36c662be7b1187aaa7f6ed00d99ef7159b8d8a532bec33e37157e8feab13f2cd",
+    "stage": "2408a735e56b0851e89898a2dd5de89cd93e9d2d16fcf66baeef3a17bac026be"
+  },
+  "tests": {
+    "command": [
+      "python3",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_mixed_tanh_test.py"
+    ],
+    "exitCode": 0,
+    "stdout": "",
+    "stderr": "........\n----------------------------------------------------------------------\nRan 8 tests in 0.039s\n\nOK\n",
+    "count": 8,
+    "scope": "Stdlib source-routing, AST ordering, immutable JSON and failed-guard persistence only; not scientific acceptance"
+  },
+  "authority": "Standing user/AGENTS policy: pure tooling fixes need local tests and rationale, not another physics-review round. User approved focused next test and exact first review packet. No new export or method change.",
+  "scientificAcceptance": false,
+  "automaticRetry": false
+}

@@ -297,8 +297,29 @@ def science(manifest, J):
         t=P['t']; A=P['A'].subs(P['L'],length)
         At=A; AQ=A.subs(t,Q-t)
         q=sp.Symbol('q_t',nonzero=True)
-        hweighted=w0*At/(2*sp.I)  # t*h_hat/eta, including removal of constant delta.
-        slope=length*AQ/2        # s_hat/sigma; derivative of delta is not inserted.
+        # Route the already-computed native shape operands, not re-entered
+        # factors. The distributional t*w_hat=A/i identity is the same one
+        # reviewed above; cancellation occurs before using t=0.
+        sx=N['symbols']; ctx=N['ctx']
+        height_per_eta=sp.cancel(N['shape']['height_hat']/ctx.eta)
+        tilt_per_sigma=tuple(sp.cancel(value/ctx.sigma_W) for value in N['shape']['tilt_hat'])
+        height_binding={ctx.W0:w0,sx['s11cc1_w1_profile_hat_transfer']:At/(sp.I*t)}
+        jet_binding={sx['s11cc1_w1_profile_jet_hat_1']:length*AQ,
+                     sx['s11cc1_w1_profile_jet_hat_2']:sp.S.Zero,
+                     sx['s11cc1_w1_profile_jet_hat_3']:sp.S.Zero}
+        hweighted=sp.cancel(t*height_per_eta.subs(height_binding))
+        bound_tilt=tuple(value.subs(jet_binding) for value in tilt_per_sigma)
+        slope=bound_tilt[0]
+        J.emit('native-profile-factor-routing',dict(nativeShape=N['shape'],
+            heightPerEta=height_per_eta,tiltPerSigma=tilt_per_sigma,
+            heightBinding={str(key):value for key,value in height_binding.items()},
+            jetBinding={str(key):value for key,value in jet_binding.items()},
+            weightedHeight=hweighted,boundTilt=bound_tilt,
+            distributionRoute='Multiply height transform by t; t*delta(t)=0 and t*PV[A/(i*t)]=A/i before zero-transfer specialization.'))
+        J.zero('native-weighted-height-factor',hweighted,w0*At/(2*sp.I))
+        J.zero('native-profile-slope-factor',slope,length*AQ/2)
+        for i in (1,2):
+            J.zero('native-conserved-edge-tilt-'+str(i),bound_tilt[i],0)
         selected=B['selected'].subs({H:t,qi:q0,qh:q,qo:qQ,om:omega,rm:rho})
         # selected/t is polynomially cancelled BEFORE the transfer t=0 is used.
         integrand=sp.factor(sp.cancel(selected/t)*hweighted*slope)
@@ -322,25 +343,33 @@ def science(manifest, J):
         # Whole-interval sign is a factor argument, not a sampled assertion.
         pos=sp.Symbol('positive_transfer',positive=True)
         positive_A=P['A'].subs({P['L']:length,t:pos})
-        J.zero('A-even',At.subs(t,-t),At)
-        require(positive_A.is_positive is True,'A positive for positive real transfer')
-        require(P['removableValue'].is_positive is True,'A positive at removable zero')
-        require(prefactor.is_negative is True,'real prefactor sign')
         a=q0
         numerator=sp.simplify(prefactor*At*AQ)
         endpoints=[]
         for end in (-a,a):
             value=sp.simplify(numerator.subs(t,end))
             endpoints.append(dict(t=end,numerator=value,finite=value.is_finite,negative=value.is_negative))
-            require(value.is_finite is True and value.is_negative is True,'finite nonzero branch numerator')
         u=sp.Symbol('u',positive=True)
-        J.zero('interior-endpoint-square',cutoff_squared-(a-u**2)**2,u**2*(2*a-u**2))
-        J.zero('exterior-endpoint-square',(a+u**2)**2-cutoff_squared,u**2*(2*a+u**2))
         tail=sp.limit(At*sp.exp(sp.pi*length*t/2)/t,t,sp.oo)
-        J.zero('profile-tail',tail,length/2)
         g=sp.Symbol('positive_depth',positive=True)
         interior=sp.simplify(integrand.subs(q,g))
         exterior=sp.simplify(integrand.subs(q,sp.I*g))
+        J.emit('sign-ingredients',dict(At=At,AQ=AQ,prefactor=prefactor,
+            positiveA=positive_A,positiveAFlag=positive_A.is_positive,
+            removableValue=P['removableValue'],removablePositiveFlag=P['removableValue'].is_positive,
+            prefactorNegativeFlag=prefactor.is_negative,endpoints=endpoints,
+            interior=interior,interiorReal=sp.re(interior),interiorImaginary=sp.im(interior),
+            exterior=exterior,exteriorReal=sp.re(exterior),exteriorImaginary=sp.im(exterior),
+            tail=tail))
+        J.zero('A-even',At.subs(t,-t),At)
+        require(positive_A.is_positive is True,'A positive for positive real transfer')
+        require(P['removableValue'].is_positive is True,'A positive at removable zero')
+        require(prefactor.is_negative is True,'real prefactor sign')
+        for endpoint in endpoints:
+            require(endpoint['finite'] is True and endpoint['negative'] is True,'finite nonzero branch numerator')
+        J.zero('interior-endpoint-square',cutoff_squared-(a-u**2)**2,u**2*(2*a-u**2))
+        J.zero('exterior-endpoint-square',(a+u**2)**2-cutoff_squared,u**2*(2*a+u**2))
+        J.zero('profile-tail',tail,length/2)
         J.zero('exterior-real-part',sp.re(exterior),0)
         # Full t convolution already includes both height/slope assignments.
         # The explicitly symmetrized form integrates identically by t -> Q-t;

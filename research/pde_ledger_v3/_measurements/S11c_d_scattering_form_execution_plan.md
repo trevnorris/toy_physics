@@ -1,3 +1,18 @@
+**FOCUSED MIXED-TANH DIAGNOSTIC READY AFTER TOOLING FIXES (2026-10-01):**
+Reviewed baseline/source and literal reports are preserved at6d645f57.
+Only action() data routing/persistence changed: N1 emits sign/endpoint evidence
+before its guards; N4 consumes actual native height/tilt factors and requires
+exact equality to the reviewed expressions, including zero edge tilts. All
+boundary/profile equations, sheets, settings and thresholds stay unchanged.
+Eight stdlib tests and fresh metadata gate checks pass; no CAS restored/run yet.
+Literal Claude NEEDS REVISION / Grok CLEAR stay unchanged. The gate explicitly
+records independentBuildClearance=false and the user's local tooling-fix policy.
+One already-authorized 4 GiB pooled diagnostic may now launch with hook first,
+no deadlines, shared guard/supervisor and ordinary resource protections.
+Read repair_record.json, readiness.json, gate.json and launch_checks.json.
+Stop after actual source/action evidence; no producer, closed response or defect
+sweep. A failure is preserved, not automatically retried. No new review/export.
+
 **MIXED-TANH REVIEWS COMPLETE; NARROW REPAIR PENDING (2026-10-01):**
 Both reports arrived: Claude NEEDS REVISION, Grok CLEAR FOR THIS FOCUSED
 MIXED-GRADE INSTRUMENT. Read review_disposition.md and review_record.json.

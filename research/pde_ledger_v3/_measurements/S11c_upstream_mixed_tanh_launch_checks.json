@@ -1,0 +1,13 @@
+{
+  "status": "PRELAUNCH_METADATA_VERIFIED",
+  "gateSha256": "a2bccfa098cdfcef076d0e7ba85227ce0a7623bdf1eec53ef1c45da1d658938a",
+  "sources": 18,
+  "outputIsFresh": true,
+  "literalVerdicts": {
+    "claude": "NEEDS REVISION",
+    "grok": "CLEAR FOR THIS FOCUSED MIXED-GRADE INSTRUMENT"
+  },
+  "independentBuildClearance": false,
+  "scientificImports": false,
+  "toolingTests": 8
+}

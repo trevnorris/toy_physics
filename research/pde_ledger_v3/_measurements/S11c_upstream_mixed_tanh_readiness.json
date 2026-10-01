@@ -1,0 +1,30 @@
+{
+  "status": "READY_FOR_FOCUSED_MIXED_TANH_DIAGNOSTIC",
+  "workerSha256": "de783e3d09f58db8075a115edf4ed584f28d2a090cc7a3eef150e98befd30373",
+  "launcherSha256": "73fef10e19a9f89dd9cc405d9bcaf664195f33c4dedce2ed1bb7acb1d1e176c4",
+  "manifestSha256": "606c20c734b4ccaa69fbed74cbc200812afa2b211abdc9b458850e6b94273d84",
+  "gateSha256": "a2bccfa098cdfcef076d0e7ba85227ce0a7623bdf1eec53ef1c45da1d658938a",
+  "reviewRecordSha256": "93c0eb38f373436eaa12d0341de03d4843f925616ebb315188c588921b060e85",
+  "repairRecordSha256": "c05807184366e8408e7211e11d915b91f20963c0904958f3a873ebf3ba6344d8",
+  "changedASTFunctions": [
+    "science",
+    "action"
+  ],
+  "sourcePins": 18,
+  "toolingTestsPassed": 8,
+  "scientificRunStarted": false,
+  "independentBuildClearance": false,
+  "resources": {
+    "pool": "s11c-near-unity",
+    "aggregateMemoryBytes": 17179869184,
+    "memoryBytes": 4294967296,
+    "cpuCount": 1,
+    "nativeThreads": 1,
+    "tasksMax": 32,
+    "swapBytes": 0,
+    "hostReserveBytes": 4294967296,
+    "durationLimits": null,
+    "priorityPolicy": "desktop-managed"
+  },
+  "automaticRetry": false
+}

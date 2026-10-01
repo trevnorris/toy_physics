@@ -1,0 +1,87 @@
+=== PARITY TABLE (z -> -z, z-independent polar fields) ===
+PARITY[u_x] = 1
+PARITY[u_y] = 1
+PARITY[u_z] = -1
+PARITY[theta] = 1
+PARITY[e_W] = 1
+PARITY[zeta_plus] = 1
+PARITY[zeta_minus] = 1
+PARITY[phi] = 1
+PARITY[delta_p] = 1
+PARITY[g_y] = 1
+PARITY[dx] = 1
+PARITY[dy] = 1
+PARITY[dz_absent] = 1
+
+=== UNIFORM INVARIANTS restricted to z-independent jets ===
+COUNT_UNIFORM_NONEZERO_ON_P = 13
+
+=== UNIFORM INVARIANT even/odd MIXING (u_z with even fields) ===
+U01 has_uz=True mixes_odd_even=False
+    expr = u_x_dy**2 - 2*u_x_dy*u_y_dx + u_y_dx**2 + u_z_dx**2 + u_z_dy**2
+U02 has_uz=True mixes_odd_even=False
+    expr = 4*u_x_dx**2/3 - 4*u_x_dx*u_y_dy/3 + u_x_dy**2 + 2*u_x_dy*u_y_dx + u_y_dx**2 + 4*u_y_dy**2/3 + u_z_dx**2 + u_z_dy**2
+U03 has_uz=False mixes_odd_even=False
+    expr = u_x_dx**2 + 2*u_x_dx*u_y_dy + u_y_dy**2
+U04 has_uz=True mixes_odd_even=False
+    expr = u_x_dx**2 + u_x_dy**2 + u_y_dx**2 + u_y_dy**2 + u_z_dx**2 + u_z_dy**2
+U05 has_uz=False mixes_odd_even=False
+    expr = u_x_dx**2 + 2*u_x_dy*u_y_dx + u_y_dy**2
+U06 has_uz=False mixes_odd_even=False
+    expr = theta*u_x_dx + theta*u_y_dy
+U07 has_uz=False mixes_odd_even=False
+    expr = e_W*u_x_dx + e_W*u_y_dy
+U08 has_uz=False mixes_odd_even=False
+    expr = theta**2
+U09 has_uz=False mixes_odd_even=False
+    expr = e_W*theta
+U10 has_uz=False mixes_odd_even=False
+    expr = theta_dx**2 + theta_dy**2
+U11 has_uz=False mixes_odd_even=False
+    expr = e_W_dx*theta_dx + e_W_dy*theta_dy
+U12 has_uz=False mixes_odd_even=False
+    expr = e_W**2
+U13 has_uz=False mixes_odd_even=False
+    expr = e_W_dx**2 + e_W_dy**2
+UNIFORM_ODD_EVEN_MIX_COUNT = 0
+
+=== FIRST-JET SPURION INVARIANTS on g=(0,g_y,0), z-independent ===
+COUNT_SPURION_NONEZERO_ON_P = 15
+S01 has_uz=False mixes_odd_even=False
+    expr = g_y*u_x_dx*u_y + g_y*u_y*u_y_dy
+S02 has_uz=False mixes_odd_even=False
+    expr = g_y*u_x*u_y_dx + g_y*u_y*u_y_dy
+S03 has_uz=True mixes_odd_even=False
+    expr = g_y*u_x*u_x_dy + g_y*u_y*u_y_dy + g_y*u_z*u_z_dy
+S04 has_uz=False mixes_odd_even=False
+    expr = g_y*theta*u_y
+S05 has_uz=False mixes_odd_even=False
+    expr = e_W*g_y*u_y
+S06 has_uz=False mixes_odd_even=False
+    expr = g_y*theta_dx*u_y_dx + g_y*theta_dy*u_y_dy
+S07 has_uz=False mixes_odd_even=False
+    expr = g_y*theta_dx*u_x_dy + g_y*theta_dy*u_y_dy
+S08 has_uz=False mixes_odd_even=False
+    expr = g_y*theta_dy*u_x_dx + g_y*theta_dy*u_y_dy
+S09 has_uz=False mixes_odd_even=False
+    expr = e_W_dx*g_y*u_y_dx + e_W_dy*g_y*u_y_dy
+S10 has_uz=False mixes_odd_even=False
+    expr = e_W_dx*g_y*u_x_dy + e_W_dy*g_y*u_y_dy
+S11 has_uz=False mixes_odd_even=False
+    expr = e_W_dy*g_y*u_x_dx + e_W_dy*g_y*u_y_dy
+S12 has_uz=False mixes_odd_even=False
+    expr = g_y*theta*theta_dy
+S13 has_uz=False mixes_odd_even=False
+    expr = e_W_dy*g_y*theta
+S14 has_uz=False mixes_odd_even=False
+    expr = e_W*g_y*theta_dy
+S15 has_uz=False mixes_odd_even=False
+    expr = e_W*e_W_dy*g_y
+SPURION_ODD_EVEN_MIX_COUNT = 0
+
+=== EXPLICIT DANGEROUS DENSITIES ===
+u_z * g_y * d_x theta = g_y*theta_dx*u_z
+This is z-odd (u_z odd, rest even). Kronecker family mix count above is the test.
+
+CURL_SQUARED_ON_P = u_x_dy**2 - 2*u_x_dy*u_y_dx + u_y_dx**2 + u_z_dx**2 + u_z_dy**2
+CURL_SQUARED mixes_odd_even=False mixed=0

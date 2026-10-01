@@ -1,0 +1,47 @@
+ENGINE_DIRECTION_AND_CASE_DECLARATIONS
+54:BRANCHES = ("LAB_HELD", "MATERIAL_ADVECTED")
+55:DENSITY_REPS = ("RHO4_CONSTANT", "RHOBR_CONSTANT")
+57:DIRECTIONS = range(3)
+182:grad_W = tuple(
+186:grad_mu = tuple(
+WOLFRAM_THREE_COORDINATE_BACKGROUND
+241:spatialCoordinates = {xOne, xTwo, xThree};
+1892:        widthBackground[xOne, xTwo, xThree],
+1903:        (WZero/widthBackground[xOne, xTwo, xThree]) eWField],
+OPERATOR_ROW_KEYS
+2939:    raw_u_balance = operator["U_BODY_BALANCE"]
+2940:    raw_e_balance = operator["E_W_BALANCE"]
+2967:    operator["U_BODY_BALANCE"] = sp.Tuple(
+3003:    operator["E_W_BALANCE"] = sp.Tuple(
+3031:    reduced_u_balance = operator["U_BODY_BALANCE"]
+3032:    reduced_e_balance = operator["E_W_BALANCE"]
+3051:    operator["U_BODY_BALANCE"] = sp.Tuple(
+3081:    operator["E_W_BALANCE"] = sp.Tuple(
+3095:    operator["THETA_BALANCE"] = sp.Tuple(
+3103:    operator["FACE_FLUX_BOUNDARY_OPERANDS"] = faces
+3104:    operator["FACE_GENERALIZED_FORCE_ROWS"] = sp.Tuple(
+3125:    operator["MU_THETA_FACE_BINDING"] = sp.Tuple(
+3141:            named_tuple_row(term_operator["U_BODY_BALANCE"], "EXPANDED")
+3144:            named_tuple_row(term_operator["E_W_BALANCE"], "EXPANDED")
+3159:        term_u_local = tuple(named_tuple_row(term_operator["U_BODY_BALANCE"], "LOCAL"))
+3163:                term_operator["U_BODY_BALANCE"], "DIVERGENCE_FLUX"
+3167:            named_tuple_row(term_operator["E_W_BALANCE"], "DIVERGENCE_FLUX")
+3205:                    named_tuple_row(term_operator["E_W_BALANCE"], "LOCAL")
+FACE_AND_BULK_OPERAND_DECLARATIONS
+486:        f"delta_p_{face_name}", "COORDINATE", f"{face_name} face pressure perturbation", DIM_PRESSURE
+489:        f"d_w_delta_p_{face_name}",
+510:            f"{face_name} bulk velocity perturbation {component}",
+530:        f"bulk-current perturbation {component}",
+2237:        "CENTER_FACE_GENERALIZED_ROW": center_face,
+3112:            Str("CENTER_FACE_GENERALIZED_ROW"),
+3113:            sp.sympify(face_rows["CENTER_FACE_GENERALIZED_ROW"]),
+ACTUAL_EXPORT_Z_DIRECTION_CARRIERS
+delta_v_bulk_plus_3*w1_profile_d3
+e_W_d3
+u_3*w1_profile_d3d1
+u_3*w1_profile_d3d2
+u_3*w1_profile_d3d3
+u_3_t*w1_profile_d3
+zeta_c_d3
+PRIMARY_BULK_PHI_DYNAMIC_ROW_OCCURRENCES
+0

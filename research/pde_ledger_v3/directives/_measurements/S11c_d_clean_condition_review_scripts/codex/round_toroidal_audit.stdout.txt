@@ -1,0 +1,6 @@
+ROUND_BACKGROUND_GRADIENT= Matrix([[4*a*x*(x**2 + y**2 + z**2) + 2*x], [4*a*y*(x**2 + y**2 + z**2) + 2*y], [4*a*z*(x**2 + y**2 + z**2) + 2*z]])
+TOROIDAL_U_DOT_GRAD_Q= 0
+TOROIDAL_DIVERGENCE= 0
+TOROIDAL_FACE_NORMAL_VELOCITY_CARRIER= 0
+MATERIAL_ANCHOR_LINEAR_CARRIER_MINUS_U_DOT_GRAD_Q= 0
+QUADRATIC_TOROIDAL_SCALAR_U_SQUARED= x**6 + 3*x**4*y**2 + 2*x**4*z**2 + 2*x**4 + 3*x**2*y**4 + 4*x**2*y**2*z**2 + 4*x**2*y**2 + x**2*z**4 + 2*x**2*z**2 + x**2 + y**6 + 2*y**4*z**2 + 2*y**4 + y**2*z**4 + 2*y**2*z**2 + y**2

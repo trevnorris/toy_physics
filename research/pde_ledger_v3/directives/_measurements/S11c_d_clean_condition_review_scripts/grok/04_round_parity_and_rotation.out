@@ -1,0 +1,48 @@
+=== H-PLANAR ROTATION ABOUT INTERFACE NORMAL y ===
+alpha_* = atan2(k_z, k_x)
+k_z'(alpha_*) = 0
+k_x'(alpha_*) = sqrt(k_x**2 + k_z**2)
+WITNESS k=(3,4): k'=(5, 0) |k'|=5 |k|=5
+WITNESS k=(0,5): k'=(5, 0) |k'|=5 |k|=5
+WITNESS k=(-2,1): k'=(2.2360679775, 0) |k'|=2.2360679775 |k|=2.2360679775
+WITNESS k=(1,0): k'=(1, 0) |k'|=1 |k|=1
+
+Rotation maps each single Fourier mode to class P. A superposition of
+distinct incidence planes is a sum of such modes; each TE amplitude is
+classified separately. Rotation does not map a general field to one P field.
+
+=== H-ROUND INVERSION PARITY ===
+l=1 m=0 toroidal u = r × ∇z = (y, -x, 0)
+u_tor(r)      = (y, -x, 0)
+u_tor(-r)     = (-y, x, 0)
+-u_tor(r)     = (-y, x, 0)
+u(-r) + u(r)  = (0, 0, 0)
+u(-r) - u(r)  = (-2*y, 2*x, 0)
+u(-r) + (-u)  match polar-even? True
+u(-r) == u(r) axial-like? False
+
+scalar l=1: S(r)=z, S(-r)=-z, (-1)^l S = -z
+spheroidal l=1 u=∇z = (0, 0, 1)
+u_sph(-r) = (0, 0, 1)
+-u_sph(r) = (0, 0, -1)
+spheroidal: u(-r) == -u(r)? False
+
+scalar l=2: S(-r)=x**2 - y**2, S=x**2 - y**2, equal? True
+l=2 toroidal u = (2*y*z, 2*x*z, -4*x*y)
+u(-r) = (2*y*z, 2*x*z, -4*x*y)
+-u(r) = (-2*y*z, -2*x*z, 4*x*y)
+l=2 toroidal u(-r)==-u(r)? False
+l=2 toroidal u(-r)==+u(r)? True
+
+Convention used by A: toroidal inversion parity (-1)^{l+1},
+scalar/spheroidal (-1)^l.
+Computed (polar-vector component test u_i(-r) vs ± u_i(r)):
+  l=1 toroidal u=(y,-x,0): u(-r)=(-y,x,0)= -u(r)  => extra minus,
+      matching polar-vector * (-1)^{l+1}=(-1)^2=+1 times the polar minus
+      gives u(-r)=-u(r). Scalar l=1 has S(-r)=-S(r)=(-1)^l S.
+  Opposite parities at the same l, so they do not mix under inversion-even ops.
+
+=== SAME INVERSION PARITY, DIFFERENT l ===
+toroidal l parity (-1)^{l+1} equals scalar l' parity (-1)^{l'} when l'=l+1.
+SO(3) conservation of l still forbids that mixing on an O(3) background.
+A's 'therefore' at each (l,m) uses both inversion and rotation.

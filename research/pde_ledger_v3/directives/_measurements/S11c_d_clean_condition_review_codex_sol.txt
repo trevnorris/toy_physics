@@ -1,0 +1,200 @@
+codex
+## Verdict
+
+**Not cleared.** The symmetry theorem is valid for a narrower, explicitly reflection-invariant operator, and A’s round-case inversion parities are correct. The packet currently overstates the background restriction, the completeness of the computed system, coverage of a physical throat, and executable feasibility.
+
+### 1. The required `z`-invariant background is not actually frozen
+
+A says:
+
+> “The S11c interface background `W_bg(y)`, `μ_R,bg(y)` is an example.” ([A:43](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_clean_condition.md:43))
+
+B then redefines `y` as a single coordinate:
+
+> “`y` is the in-plane coordinate along which the background varies.” ([B:45](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_zinvariant_operator_blocks_directive.md:45))
+
+But governing S11c uses a vector anchor coordinate and all three derivative directions:
+
+> “`∂_{yᵢ}W_bg = …`, `∂_{yᵢ}μ_R,bg = …`.” ([S11c-b spec:182](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_b_SHARED_PHYSICS.md:182))
+
+The actual engines use `{xOne,xTwo,xThree}`, all three background-gradient components, and profile jets through fifth order. The exports contain carriers such as `u_3_t*w1_profile_d3` and `u_3*w1_profile_d3d1`.
+
+Consequently, restricting only the perturbations to `∂z=0` does not define an invariant subspace when `∂zW_bg`, `∂zμ_R,bg`, or higher jets remain live. B must explicitly set every profile jet containing a `z` index to zero, including the corresponding density, support, face, bulk-background, domain, and boundary data.
+
+Likewise, A’s:
+
+> “Any oblique perturbation can therefore be rotated into this form.” ([A:53](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_clean_condition.md:53))
+
+is true for each single tangential Fourier component on a genuinely one-dimensional planar background. It is not true for the generic S11c-b background or for an arbitrary multi-directional superposition under one rotation.
+
+Computation: [rotation script](/tmp/s11cd_clean_review_codex/rotation_and_spin_audit.py), [stdout](/tmp/s11cd_clean_review_codex/rotation_and_spin_audit.stdout.txt); [actual-source audit](/tmp/s11cd_clean_review_codex/actual_source_structure_audit.sh), [stdout](/tmp/s11cd_clean_review_codex/actual_source_structure_audit.stdout.txt).
+
+### 2. Part 1 is not a complete brane–bulk leakage operator
+
+B’s object explicitly:
+
+> “Keep the bulk face loads (`δp_±`) as symbolic operands, as S11c-b does.” ([B:53](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_zinvariant_operator_blocks_directive.md:53))
+
+The governing spec says:
+
+> “the rest-frame bulk fields `v_bulk=∇₄φ`, `δp=−ρ_m∂tφ`, … S11c-b performs no curved-bulk response solve.” ([S11c-b spec:93](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_b_SHARED_PHYSICS.md:93))
+
+The implemented operator has slab rows, face generalized rows, and symbolic bulk face operands, but no dynamic `φ`/`δp` row. Therefore a zero `u_z`–scalar slab block is not yet a computed zero of the closed brane–bulk radiation problem. The bulk closure, outgoing conditions, and drain-flow operator are absent by scope.
+
+That conflicts with the claim:
+
+> “Twist-type trapped light has no linear channel into anything that pushes the bulk.” ([A:65](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_clean_condition.md:65))
+
+Part 1 can establish **reflection equivariance of the rest-frame slab/face operator**. It cannot by itself establish no bulk leakage or R-LEAK-1. “Construct all fields at once” is good discipline, but it cannot repair dynamics omitted from the governing object.
+
+### 3. P2 is the wrong premise
+
+A states:
+
+> “Every brane–bulk coupling enters through scalar face/bulk quantities.” ([A:73](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_clean_condition.md:73))
+
+The actual supplied laws include vector geometry and vector bulk operands:
+
+> `J_s = ρ_m(v_bulk,s−v_face,s)·n̂_s`,  
+> `t_s = −(δp_s+Λ_X𝒜_s)n̂_s`,  
+> `δ_v𝒲_bulk = Σ_s a_s t_s·δ_vx_s`.  
+> ([S11c-a spec:348](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_a_SHARED_PHYSICS.md:348))
+
+The conclusion can still hold: normals, velocities, traction, both anchorings, the constraint fold, and the scalar response kernels are covariant contractions. My symbolic audit gives zero reflection residual for all of these and zero odd/even mixed derivatives for the entire raw Kronecker family after the complete `z` restriction.
+
+P2 should instead require **equivariance of every scalar, polar-vector, and axial-vector operand and of all support/boundary data**. It should also cover omitted spin/director fields, not merely current scalar fields.
+
+Computation: [reflection audit](/tmp/s11cd_clean_review_codex/reflection_operator_audit.py), [stdout](/tmp/s11cd_clean_review_codex/reflection_operator_audit.stdout.txt).
+
+### 4. The round parity bookkeeping is correct, but throat coverage is overclaimed
+
+For polar displacement, A’s inversion parities are correct at every `(ℓ,m)`:
+
+- scalar and spheroidal: `(-1)^ℓ`
+- toroidal: `(-1)^(ℓ+1)`
+
+No rotation of `m` to zero is needed; inversion is central in `O(3)`. The audit reproduces that table and verifies a radial background has `u_tor·∇Q=0`, `div u_tor=0`, and no linear face-normal carrier.
+
+However, A’s coverage table says:
+
+> “light trapped at a throat … **yes**.” ([A:79](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_clean_condition.md:79))
+
+The ontology warns:
+
+> “The fields `h_+` and `h_-` … are not a complete nonlinear throat topology. Overhangs, necks, tubes … must be represented by the parent fields…” ([ontology:315](/var/projects/toy_physics/docs/toy_model_ontology_summary.md:315))
+
+It also requires the support mode to be:
+
+> “a spectrally normalizable bound state or acceptably long-lived resonance of the complete variable-coefficient transverse operator.” ([ontology:957](/var/projects/toy_physics/docs/toy_model_ontology_summary.md:957))
+
+Thus H-round currently covers a hypothetical `O(3)` radial background with a toroidal bound mode, not an already represented physical throat. R-LEAK-1 needs falsifiers for:
+
+- absence of such a normalizable toroidal mode;
+- failure of the full nonlinear throat/background to admit `O(3)`;
+- additional parent/core/support fields changing the representation content.
+
+Computation: [round audit](/tmp/s11cd_clean_review_codex/round_toroidal_audit.py), [stdout](/tmp/s11cd_clean_review_codex/round_toroidal_audit.stdout.txt).
+
+### 5. K1/K2 are genuine FORM changes, but are under-specified and can be null by construction
+
+B says:
+
+> “K1 … Add one term that couples field gradients to a fixed … vector.”  
+> “K2 … Add one term containing a single Levi-Civita contraction.”  
+> ([B:77](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_zinvariant_operator_blocks_directive.md:77))
+
+Introducing a new fixed-axis spurion or a Levi-Civita tensor does change the admissible invariant family, so these are FORM rather than coefficient controls.
+
+But the term must be fixed in the directive. My audit found two compliant choices for each control with different outcomes:
+
+- K1 inert target block: mixed derivative `0`.
+- K1 active target block: `sin²β cosβ`.
+- K2 `g·(∇θ×∇e)` is identically zero under the `z` restriction.
+- K2 `g·(u×∇θ)` survives as `u_z(g_y∂xθ−g_x∂yθ)`.
+
+As written, the builder may accidentally select an unimplemented/null control or select terms differently between engines. Pin the exact dimensionally completed terms and coefficients before the build.
+
+There is otherwise no direct expected-value leak in the filenames or tag rule; the primary object is named neutrally.
+
+### 6. B’s “model point” omits much of the governing energy
+
+B says:
+
+> “Keep every physical parameter symbolic” and then lists the carried five-term parameters and responses. ([B:70](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_zinvariant_operator_blocks_directive.md:70))
+
+But S11c-b requires:
+
+> “carry every independent invariant with its own free symbolic coefficient.” ([S11c-b spec:250](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_b_SHARED_PHYSICS.md:250))
+
+The actual basis is 40 terms: 10 uniform plus 15 `∂W` and 15 `∂μ` invariants. B omits, among others, `μ_S`, `G_θu`, `G_Wu`, `κ_θ`, `κ_θW`, the `a_s11cb_uniform_*` coefficients, and all selected `gamma_s11cb_*` coefficients.
+
+That enumeration could cause a builder to reconstruct only the old carried energy. B must explicitly say **all 40 accepted basis coefficients remain live**, along with both bookkeepers, both density representatives, both anchorings, and every allowed higher profile jet subject to the new `z` freeze.
+
+### 7. The requested runs are not feasible under current safeguards
+
+B permits a Wolfram process up to 20 GB:
+
+> “If the kernel’s resident memory passes 20 GB, stop it.” ([B:95](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_zinvariant_operator_blocks_directive.md:95))
+
+The project instruction instead requires:
+
+> “a whole-job 2 GiB memory cap … Never fall back to an unguarded launch.” ([AGENTS.md:8](/var/projects/toy_physics/AGENTS.md:8))
+
+The S11c-b record reports one Wolfram case exceeding 15.6 GB and growing to OOM, with the full residual deferred to a ≥64 GB machine. ([step record:15](/var/projects/toy_physics/research/pde_ledger_v3/steps/S11c_b_variable_coefficient_operator.md:15))
+
+Therefore:
+
+- With PID 4097233 present, B correctly stops before all engines.
+- After that process is resolved, there is still no evidence the requested blind full-field baseline plus two controls fits the mandatory 2 GiB guard.
+- The directive must require `scripts/s11c_guarded_run.py`, accept a measured guarded failure, or redesign an independently justified restricted construction.
+- Blind Wolfram rederivation is a sound independence principle, but B should also request a blockwise cross-engine residual; merely printing two enormous matrices does not close the existing validation gap.
+
+### 8. F2 overstates what `m ≠ 0` proves and misses extra spin fields
+
+A claims:
+
+> “A circulating twist mode (`m ≠ 0`) carries angular momentum.” ([A:99](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_clean_condition.md:99))
+
+The cited interpretive source says:
+
+> “A real linearly polarized standing wave can have zero time-averaged angular momentum.” ([native-light:2377](/var/projects/toy_physics/docs/native_light_em_and_vortex_throat_interpretation.md:2377))
+
+The computation gives azimuthal Noether density `m` for a traveling complex mode but `0` for a real standing `cos(mφ)` mode. Therefore `m≠0` alone is insufficient; the phase combination and complete angular-momentum integral must be specified.
+
+F2 also only catches a spin carrier that breaks the background’s `O(3)`. An additional isotropic microrotation/director field can enlarge the linear operator without breaking the background. Since that candidate is absent from S11c-b’s field content, R-LEAK-1 must either exclude it explicitly or classify its parity and couplings.
+
+A correctly excludes second order: the audit confirms the square of an odd/toroidal carrier is even and can source scalar deformation. F4 is appropriately necessary.
+
+### 9. Calibration transfer and rejected options need weaker wording
+
+A says:
+
+> “a confirmed H **transfers to the calibrated model** (`λγ=1`, drain flow on).” ([A:86](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_clean_condition.md:86))
+
+The assessment says:
+
+> “It does not yet answer leakage in the calibrated, draining medium.” ([assessment:3](/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_flow_calibration_assessment.md:3))
+
+A symmetry zero is independent of speed coefficients, so the **theorem** transfers if the completed calibrated/draining operator has the same symmetry and field content. The actual calibrated model has not yet been shown to satisfy that antecedent.
+
+The rejected alternatives are also overstated:
+
+- “Bulk sound much faster … would make smooth non-uniformities kinematically safe” is not an exact statement. A smooth localized profile has nonzero Fourier momentum transfer and can scatter a subsonic guided wave into a propagating bulk channel, albeit exponentially weakly when very smooth.
+- “A flow horizon: … Exact for all light” is unsupported while the convective drain operator and power/boundary treatment are unconstructed.
+- “No clean zero exists” for R-LEAK-2 should be “H supplies no generic symmetry-protected zero”; special incidence, coefficients, or other symmetries can still yield zeros.
+
+Computation: [speed-gap audit](/tmp/s11cd_clean_review_codex/speed_gap_scattering_audit.py), [stdout](/tmp/s11cd_clean_review_codex/speed_gap_scattering_audit.stdout.txt).
+
+## Citation audit
+
+Material citation problems:
+
+- A says, “The calibrated model sets `λγ=1`,” while the cited source says it is a “calibrated / uncommitted” equality and the lookup calls it a **target**, not an imposed model value.
+- P2’s citation quotes only the slab field content; it does not support the claim that all brane–bulk couplings are scalar. The governing face laws quoted above contradict that characterization.
+- A’s `v_bulk_normal_0=0` pinpoint quotes only the amendment’s grazing statement; the full development-run freeze is instead established by the calibration assessment.
+- The Molz–Beamish lookup says attenuation jumps when helium freezes and SH0 generates shear in the solid. It does not verbatim establish A’s stronger “does not radiate into fluid helium” formulation.
+- B’s citations `spec :59–71` and `record :15–31`, plus its §2a/§3c section citations, are not reproduced in the handed lookup file. The actual source statements are mostly accurate, but the claimed grounding packet is incomplete.
+
+Mechanical audit: [citation script](/tmp/s11cd_clean_review_codex/citation_grounding_audit.py), [stdout](/tmp/s11cd_clean_review_codex/citation_grounding_audit.stdout.txt).
+
+All symbolic review runs exited zero under the required 600-second cap. I did not execute either existing full engine, touch PID 4097233, or modify the working tree.

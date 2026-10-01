@@ -1,0 +1,207 @@
+I'll start from the governing S11c-b operator sources and the memory notes, then check the two-file packet against them with independent computations.I'll read the S11c-b spec, step record, and operator construction first, then form an independent view of the symmetry before opening the packet.The spec and step record are in place. Next I’ll pull the S11c-a background, field content, and how the SymPy engine actually builds the operator.The operator is assembled; next I’ll pin down face geometry, the energy-basis spurions, and how S11c-d is scoped in the plan.I have an independent picture of the operator’s symmetries. Next I’ll read the two artifacts and the citation lookups against that view.The coupling-kernel export shows a possible `u_z`–`θ` structure. I’ll reconstruct those invariants and test them on the z-independent sector.I have the operator structure. Next I’ll run small independent CAS checks on parity, face coupling, K1/K2, and the citations.H-planar is correct for this operator on z-independent fields, with the Kronecker energy, graph-face laws, constraint fold, and both anchorings. The packet still has defects that would change what the builder computes or what a cleared record may claim.
+
+Scripts and stdout live under `/tmp/s11cd_clean_review_grok/`.
+
+---
+
+## Independent view of the operator (formed from S11c-a/b, S11b, the SymPy constructor)
+
+The slab fields are in-plane `u` (three components, no `w`), `θ`, and independent faces `ζ_±` with `δW=ζ_+−ζ_-` and `ζ_c=(ζ_++ζ_-)/2`. The stored-energy family is O(3)-Kronecker (40 = 10 + 15 + 15); Levi-Civita appears in the Wolfram engine only as a parity diagnostic. Face traction is `t_s=−(δp_s+Λ_X 𝒜_s)n̂_s`. Equations come from balance laws and virtual work; irreversible `Λ` kernels are not placed in an ordinary action. The drain `v_bulk_normal_0` is a rest-frame scope limit and is absent from the derived operator. Background jets exist in all three in-plane directions (`DIRECTIONS = range(3)`).
+
+A’s coordinates are the planar specialisation: `y` along `∇W_bg`, `x,z` along the interface. Class P is fields independent of `z`. Under `z→−z`, `u_z` is odd and `{θ, e_W, ζ_±, φ, δp, u_x, u_y}` are even.
+
+---
+
+## Finding 1 — K1 can leave the even–odd blocks untouched on class P
+
+**B §3:**
+
+> **K1 — anisotropy axis.** Add one term that couples field gradients to a fixed in-plane unit vector `ê = (0, sin β, cos β)` in `(x, y, z)` components, with `β` live.
+
+On class P, `∂_z≡0`, so `ê·∇ = sinβ ∂_y`. Any term that contracts `ê` only into a derivative index is a rescaling of already-allowed `∂_y` structure. The `ê_z` slot never acts.
+
+Computed (`03_k1_k2_form_controls.py` / `.out`):
+
+| term | mixed odd–even density on P |
+|---|---|
+| `(ê·∇θ)²` | `0` |
+| `Σ_a (ê·∇ u_a)²` | `0` |
+| `ê_i ê_j ∂_k u_i ∂_k u_j` | `2 sinβ cosβ (∂_x u_y ∂_x u_z + ∂_y u_y ∂_y u_z)` |
+| `ê_i ∂_k u_i ∂_k θ` | `cosβ (∂_x θ ∂_x u_z + ∂_y θ ∂_y u_z)` |
+
+The first two are the reading invited by “couples field gradients to `ê`”. They do not open `u_z`–scalar or `u_z`–`u_y` blocks. A builder can emit a byte-identical even–odd matrix, report that K1 “ran”, and never test whether those blocks were omitted by construction.
+
+K1 is FORM only if `ê` is contracted into a field (vector) index, so that `ê_z` multiplies `u_z` or `∂ u_z`. B does not require that.
+
+---
+
+## Finding 2 — K2 admits identically vanishing representatives
+
+**B §3:**
+
+> **K2 — parity-odd term.** Add one term containing a single Levi-Civita contraction, built from the fields and the background gradient.
+
+Computed on class P with `g=(0,g_y,0)`:
+
+- `ε_ijk g_i u_j u_k = 0`
+- `ε_ijk g_i g_j u_k = 0`
+- `(g·curl u) θ = −g_y θ ∂_x u_z`  (nonzero, opens `u_z`–`θ`)
+
+The first two satisfy B’s sentence. They give a byte-identical matrix because the added energy is the zero functional, which is the unimplemented-control signature B asks to report, produced for the wrong reason. B does not pin a representative that is nonzero on P.
+
+---
+
+## Finding 3 — “Governing action” would send the `Λ` blocks through the wrong method
+
+**B §2:**
+
+> ⭐ **Construct the operator for all fields at once** from the governing action and face laws, then read the blocks off it.
+
+**B §5:**
+
+> The ONLY place the physical symbols may be combined by hand is in CONSTRUCTING THE ACTION and the ANSATZ.
+
+**S11c-b spec `:151–154`:**
+
+> Equations of motion are obtained by S11b's method — balance laws, the binding virtual-displacement rule, variational derivatives with held-fixed fields named, and prescribed external virtual work — **not** by putting an irreversible response kernel in an ordinary action.
+
+S11b §6 is the same prohibition: ordinary variation of a retarded kernel produces the advanced kernel. K1/K2 correctly re-enter at stored energy. The baseline operator, including `Λ_A 𝒜_s`, `Λ_V V_s`, `Λ_X 𝒜_s`, does not. A builder who varies those kernels inside an action computes the wrong face-response blocks.
+
+---
+
+## Finding 4 — Class P is not closed unless the inherited `x` and `z` background jets are killed
+
+**B §1:**
+
+> **Coordinates.** `y` is the in-plane coordinate along which the background varies. `x` and `z` are the two in-plane coordinates along the interface.
+
+The S11c-b engines do not have that coordinate system. They carry first jets in all three in-plane directions (`DIRECTIONS = range(3)`, `w1_profile_d{i}`, `m1_profile_d{i}`). B never says to set `∂_x W_bg = ∂_z W_bg = 0` (and the same for `μ_R,bg`) in those symbols.
+
+If those jets stay live, coefficients depend on `z`, class P is not an invariant subspace, and the `z→−z` argument is broken in the object being printed. That is a different operator from H.
+
+---
+
+## Finding 5 — A lets a Part 1 confirmation be claimed of the drain-on calibrated model
+
+**A §2:**
+
+> H holds for any speed ratio, any profile shape and any frequency. For the round case it also holds for any symmetric drain-flow magnitude, though P3 is still untested. ⇒ unlike the S11c-d benchmark, a confirmed H **transfers to the calibrated model** (`λγ = 1`, drain flow on), wherever the symmetry holds.
+
+**A §5 / B §1:**
+
+> It inherits S11c-b's scope: **the drain flow is absent, a declared freeze**.
+
+**A P3:**
+
+> ⚠ Untested. `v_bulk_normal_0` "appears in no derived operator"
+
+Speed ratio does drop out of the symmetry. Drain magnitude does not, until P3 is checked on an operator that carries the drain. Part 1 cannot support the drain-on half of the transfer sentence. The plain summary (A `:10`) states the same drain-independence as a property of H.
+
+---
+
+## Hypothesis H, against this operator
+
+### H-planar — holds on class P
+
+Parity table, Kronecker invariants, face geometry, and the virtual constraint were computed independently (`01_parity_and_invariants.py`, `02_face_normal_constraint.py`).
+
+- Under `z→−z` on z-independent polar fields: `u_z` odd; `u_x, u_y, θ, e_W, ζ_±, φ, δp` even.
+- Uniform Kronecker invariants on P: **0** odd–even mixed monomials. `|∇×u|² = (∂_x u_y−∂_y u_x)² + (∂_x u_z)² + (∂_y u_z)²` splits into an even–even piece and an `u_z`–`u_z` piece.
+- First-jet spurions with `g=(0,g_y,0)`: **15** nonzero densities, **0** odd–even mixes. The only `u_z` spurion is `g_y u_z ∂_y u_z` (even). `g_y θ u_y` couples `u_y` (TM), not `u_z`.
+- Graph normals for `W_bg(y)`: `n_z=0` exactly on class P, including first-order face tilt (`∂_z ζ_±=0`). `n̂·u = −u_y W'/\sqrt{W'²+4}` on both faces. `V_±` coefficients of `∂_t u_z` are **0**.
+- Pin B on P, `Σ⁰=Σ⁰(y)`: `δ_vθ + δ_v e_W + ∂_x δ_v u_x + ∂_y δ_v u_y + δ_v u_y ∂_y log Σ⁰`. No `δ_v u_z`.
+- `MATERIAL_ADVECTED` pullback of `Q(y)` is `−u_y ∂_y Q`. Coefficient of `u_z` is **0**.
+
+P1 holds: PY builds by `delta_contractions` (Kronecker); WL comment at `S11c_b_brane_operator_mathematica_audit.wl:468–470` is “Levi-Civita contractions are generated only for the parity diagnostic.”
+
+P2 holds for the face laws (`t_s` parallel to `n̂`, `V_s=n̂·v_face`), with `n_z=0` on this background. The table’s pointer does not state those laws (Finding 7).
+
+Rotation about `y` (`04_round_parity_and_rotation.py`): `α=atan2(k_z,k_x)` sends `(k_x,k_z)` to `(|k_∥|, 0)`. Witnesses `(3,4)→(5,0)`, `(0,5)→(5,0)`. Each Fourier mode of any incidence direction is equivalent to class P; TE is `u_z`. A superposition of several incidence planes is a sum of such modes, each classified on its own.
+
+### H-round parity — correct
+
+Toroidal `u=r×∇Ψ` vs scalar/spheroidal, Cartesian inversion test:
+
+- `ℓ=1` toroidal `u=(y,−x,0)`: `u(−r)=−u(r)`
+- `ℓ=1` scalar `z`: `S(−r)=−S(r)=(−1)^ℓ S`
+- `ℓ=2` toroidal: `u(−r)=+u(r)`
+
+That is the standard polar-vector / VSH assignment A writes: toroidal `(−1)^{ℓ+1}`, scalar/spheroidal `(−1)^ℓ`. Opposite parities at the same `ℓ`. Toroidal `ℓ` and scalar `ℓ+1` share inversion parity; O(3) still conserves `ℓ`. A’s “therefore” at each `(ℓ,m)` uses both.
+
+### Premises
+
+Nothing in P1–P4 is false. P2’s evidence pointer is the DOF list, not the normal-only traction. P3/P4 are correctly marked untested for the drain-on / convention questions. Pin B and both anchorings do not mix `u_z` into even fields on class P (computed above); that part of P4 is already settled for the drain-free planar operator.
+
+---
+
+## Coverage, requirements, rejected options
+
+The coverage table matches H: trapped twist on an O(3) swirl-free throat is the linear zero; passing TE / toroidal partial waves are covered; passing TM / spheroidal convert; second order is out.
+
+R-LEAK-1 / F1–F4 are scoped correctly. F2 distinguishes a symmetry-breaking spin carrier (swirl, chiral constitutive term, non-round throat) from an `m≠0` twist perturbation on a still-symmetric background. “Trapped chiral shear” in `native_light…:113–116` is a mode candidate; A treats a chiral *constitutive* term as the linear breaker. F3/F4 are nonlinear, half two. Second-order leak and spin-as-background-swirl remain the live falsifiers of a linear zero.
+
+“Transfers to the calibrated model” is the overclaim in Finding 5. `λγ=1` itself does not enter the symmetry.
+
+Rejected options in A §4 match the cited sources: `λγ=1` from GW170817; drain at throats is brane → bulk (`ontology:100`, `:1366`); a flow horizon would also trap gravity changes.
+
+A is a proposal, not yet governing. It does not rewrite the S11c-d amendment; it asks to change the question.
+
+---
+
+## Citations
+
+Lookups excerpts match the files at the listed line ranges for A’s citations. Two *uses* do not match what those lines say.
+
+**Amendment `:375–379` used as the development-point `v=0` label**
+
+A `:35`: “strict `v_bulk_normal_0 = 0` (amendment `:375–379`)”
+
+File / lookups:
+
+> At grazing, the stated result is the strict `v_bulk_normal_0=0` result; neither away-from-grazing estimate licenses a uniform moving-background prediction across a
+
+Those lines are the grazing clause. The rest-frame development point is the assessment (`:19–23`) and N11a, not this passage.
+
+**P2 cites spec `:59–66` for scalar brane–bulk coupling**
+
+A table P2: “Every brane–bulk coupling enters through scalar face/bulk quantities … S11c-b field content: `u` has three in-plane components, no w-component (spec `:59–66`).”
+
+Spec `:59–66` is the DOF list (`u`, `θ`, `ζ_±`). The load-bearing face law is S11c-a `:354` / S11c-b `:147`:
+
+> `t_s^α ≡ −(δp_s^α + Λ_X(ω) 𝒜_s^α)n̂_s^α`
+
+P2 as physics holds (Finding on H). The pointer does not establish it.
+
+B’s spec `:59–71` and record `:15–31` match the files. Lookups does not reproduce record `:15–31` or spec lines `70–71` (`ζ_c` independence). B’s claims there are still true of the files.
+
+---
+
+## Directive B as a builder packet
+
+| Question | Result |
+|---|---|
+| Names the object | Yes: complete linear operator on class P, every block, including zeros. |
+| Governing operator | Field content, faces, `Λ`s, both anchorings, pin B, symbolic `δp_±`, retained `(ε,η,σ_W)` match S11c-b. Findings 3 and 4 are the accuracy failures. |
+| Answer leakage | Does not state that TE blocks vanish. “Construct for all fields at once / do not split before construction” is the right anti-tautology rule. K2’s title “parity-odd term” hints at the symmetry; the all-fields rule is the counter. |
+| FORM controls | Findings 1–2: K1 can stay inside the existing `∂_y` family on P; K2 can be the zero functional. |
+| All-fields-at-once | Yes, if followed. |
+| Model point / freeze | Symbolic parameters; drain freeze declared in the first lines. |
+| Blind Wolfram | Sound (import nothing, re-derive). |
+| 30 GB | S11c-b WL un-freeze reached ~16 GB/case; coupling term-origins OOM at 15.6 GB (`steps/S11c_b_variable_coefficient_operator.md:15–20, 124–131`). Part 1 drops term-origins and is a 2D restriction, with a 20 GB stop. Feasible if jets are specialised *before* construction. Rebuilding the 3D operator then restricting, times K1/K2, collides with that history. §0 correctly refuses a run beside PID 4097233. |
+| Builder lane | `build → run → report → stop`; report has no interpretation. |
+| Part 2 | Scope note, drain entry listed as missing, then stop. Does not invite the builder to invent the drain coupling. |
+
+---
+
+## Computation paths
+
+| script | stdout |
+|---|---|
+| `/tmp/s11cd_clean_review_grok/01_parity_and_invariants.py` | `.../01_parity_and_invariants.out` |
+| `/tmp/s11cd_clean_review_grok/02_face_normal_constraint.py` | `.../02_face_normal_constraint.out` |
+| `/tmp/s11cd_clean_review_grok/03_k1_k2_form_controls.py` | `.../03_k1_k2_form_controls.out` |
+| `/tmp/s11cd_clean_review_grok/04_round_parity_and_rotation.py` | `.../04_round_parity_and_rotation.out` |
+| `/tmp/s11cd_clean_review_grok/05_citation_verify.py` | `.../05_citation_verify.out` |
+| engine Levi-Civita presence | `.../06_levi_civita_presence.out` |
+
+No working-tree edits. PID 4097233 was not signalled. No Wolfram kernel was launched.The review is complete. H-planar holds on this operator; the packet still has five defects that change what would be computed or claimed, plus two citation-use mismatches.

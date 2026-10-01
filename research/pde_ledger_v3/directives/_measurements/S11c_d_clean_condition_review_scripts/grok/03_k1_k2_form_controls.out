@@ -1,0 +1,74 @@
+=== K1 candidate terms, ê=(0, sinβ, cosβ), class P (d_z=0) ===
+
+TERM[K1_e_dot_grad_theta_squared]
+  expr  = dy_th**2*sin_beta**2
+  mixed_odd_even = 0
+  is_zero = False
+  mixed_is_zero = True
+
+TERM[K1_e_dot_grad_each_u_squared]
+  expr  = dy_ux**2*sin_beta**2 + dy_uy**2*sin_beta**2 + dy_uz**2*sin_beta**2
+  mixed_odd_even = 0
+  is_zero = False
+  mixed_is_zero = True
+
+TERM[K1_e_i_e_j_dk_ui_dk_uj]
+  expr  = cos_beta**2*dx_uz**2 + cos_beta**2*dy_uz**2 + 2*cos_beta*dx_uy*dx_uz*sin_beta + 2*cos_beta*dy_uy*dy_uz*sin_beta + dx_uy**2*sin_beta**2 + dy_uy**2*sin_beta**2
+  mixed_odd_even = 2*cos_beta*dx_uy*dx_uz*sin_beta + 2*cos_beta*dy_uy*dy_uz*sin_beta
+  is_zero = False
+  mixed_is_zero = False
+
+TERM[K1_e_i_dk_ui_dk_theta]
+  expr  = cos_beta*dx_th*dx_uz + cos_beta*dy_th*dy_uz + dx_th*dx_uy*sin_beta + dy_th*dy_uy*sin_beta
+  mixed_odd_even = cos_beta*dx_th*dx_uz + cos_beta*dy_th*dy_uz
+  is_zero = False
+  mixed_is_zero = False
+
+TERM[K1_e_dot_u_times_theta]
+  expr  = cos_beta*theta*u_z + sin_beta*theta*u_y
+  mixed_odd_even = cos_beta*theta*u_z
+  is_zero = False
+  mixed_is_zero = False
+
+TERM[K1_e_dot_g_squared_background_only]
+  expr  = g_y**2*sin_beta**2
+  mixed_odd_even = 0
+  is_zero = False
+  mixed_is_zero = True
+
+=== K2 Levi-Civita candidates ===
+
+TERM[K2_eps_g_u_u_VANISHES]
+  expr  = 0
+  mixed_odd_even = 0
+  is_zero = True
+  mixed_is_zero = True
+
+TERM[K2_eps_g_g_u_VANISHES]
+  expr  = 0
+  mixed_odd_even = 0
+  is_zero = True
+  mixed_is_zero = True
+
+TERM[K2_g_dot_curl_u_times_theta]
+  expr  = -dx_uz*g_y*theta
+  mixed_odd_even = -dx_uz*g_y*theta
+  is_zero = False
+  mixed_is_zero = False
+
+TERM[K2_eps_du_dtheta_no_g]
+  expr  = dx_th*dy_uz - dx_uz*dy_th
+  mixed_odd_even = dx_th*dy_uz - dx_uz*dy_th
+  is_zero = False
+  mixed_is_zero = False
+
+TERM[K2_helicity_u_curl_u]
+  expr  = dx_uy*u_z - dx_uz*u_y - dy_ux*u_z + dy_uz*u_x
+  mixed_odd_even = dx_uy*u_z - dx_uz*u_y - dy_ux*u_z + dy_uz*u_x
+  is_zero = False
+  mixed_is_zero = False
+
+=== ê_z SLOT ON CLASS P ===
+ehat · nabla = sinb * d_y + cosb * d_z = sinb * d_y   on P
+Any ê contraction into a derivative index has inert ê_z on class P.
+Mixing through ê_z requires ê contracted into a field (vector) index.

@@ -1,0 +1,11 @@
+ROTATION_ABOUT_Y_MATRIX= Matrix([[cos(alpha), 0, sin(alpha)], [0, 1, 0], [-sin(alpha), 0, cos(alpha)]])
+GENERIC_BACKGROUND_GRADIENT_AFTER_ROTATION= Matrix([[g_x*cos(alpha) + g_z*sin(alpha)], [g_y], [-g_x*sin(alpha) + g_z*cos(alpha)]])
+PLANAR_Q_OF_Y_GRADIENT_AFTER_ROTATION= Matrix([[0], [g_y], [0]])
+GENERIC_BACKGROUND_FIXED_EXAMPLE_alpha_pi_over_2= Matrix([[3], [2], [-1]])
+SINGLE_TANGENTIAL_K_AFTER_ROTATION= Matrix([[k_x*cos(alpha) + k_z*sin(alpha)], [0], [-k_x*sin(alpha) + k_z*cos(alpha)]])
+TWO_COMPONENT_COUNTEREXAMPLE_K1_AT_ALPHA0= Matrix([[1], [0], [0]])
+TWO_COMPONENT_COUNTEREXAMPLE_K2_AT_SAME_ALPHA= Matrix([[0], [0], [1]])
+AZIMUTHAL_NOETHER_DENSITY_TRAVELLING_MODE= m
+AZIMUTHAL_NOETHER_DENSITY_REAL_STANDING_MODE= 0
+TOROIDAL_LINEAR_PARITY= (-1)**(ell + 1)
+TOROIDAL_QUADRATIC_PARITY= 1

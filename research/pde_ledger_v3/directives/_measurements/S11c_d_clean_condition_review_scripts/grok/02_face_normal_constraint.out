@@ -1,0 +1,39 @@
+=== BACKGROUND + LINEAR n_hat (exact graph formula) ===
+n_plus = Matrix([[-2*Derivative(zeta_plus(x, y, t), x)/sqrt((Derivative(W_bg(y), y) + 2*Derivative(zeta_plus(x, y, t), y))**2 + 4*Derivative(zeta_plus(x, y, t), x)**2 + 4)], [(-Derivative(W_bg(y), y) - 2*Derivative(zeta_plus(x, y, t), y))/sqrt((Derivative(W_bg(y), y) + 2*Derivative(zeta_plus(x, y, t), y))**2 + 4*Derivative(zeta_plus(x, y, t), x)**2 + 4)], [0], [2/sqrt((Derivative(W_bg(y), y) + 2*Derivative(zeta_plus(x, y, t), y))**2 + 4*Derivative(zeta_plus(x, y, t), x)**2 + 4)]])
+n_minus = Matrix([[2*Derivative(zeta_minus(x, y, t), x)/sqrt((Derivative(W_bg(y), y) - 2*Derivative(zeta_minus(x, y, t), y))**2 + 4*Derivative(zeta_minus(x, y, t), x)**2 + 4)], [(-Derivative(W_bg(y), y) + 2*Derivative(zeta_minus(x, y, t), y))/sqrt((Derivative(W_bg(y), y) - 2*Derivative(zeta_minus(x, y, t), y))**2 + 4*Derivative(zeta_minus(x, y, t), x)**2 + 4)], [0], [-2/sqrt((Derivative(W_bg(y), y) - 2*Derivative(zeta_minus(x, y, t), y))**2 + 4*Derivative(zeta_minus(x, y, t), x)**2 + 4)]])
+
+=== BACKGROUND n_hat (zeta=0) ===
+n_plus0  = Matrix([[0, -Derivative(W_bg(y), y)/sqrt(Derivative(W_bg(y), y)**2 + 4), 0, 2/sqrt(Derivative(W_bg(y), y)**2 + 4)]])
+n_minus0 = Matrix([[0, -Derivative(W_bg(y), y)/sqrt(Derivative(W_bg(y), y)**2 + 4), 0, -2/sqrt(Derivative(W_bg(y), y)**2 + 4)]])
+n_plus0_z  = 0
+n_minus0_z = 0
+
+=== BACKGROUND n_inplane · u ===
+n_plus0 · u  = -u_y(x, y, t)*Derivative(W_bg(y), y)/sqrt(Derivative(W_bg(y), y)**2 + 4)
+n_minus0 · u = -u_y(x, y, t)*Derivative(W_bg(y), y)/sqrt(Derivative(W_bg(y), y)**2 + 4)
+COEFF_u_z_in_n_plus_dot_u  = 0
+COEFF_u_z_in_n_minus_dot_u = 0
+
+=== LINEAR V_s = n0 · v_face ===
+V_plus  = (-Derivative(W_bg(y), y)*Derivative(u_y(x, y, t), t) + 2*Derivative(zeta_plus(x, y, t), t))/sqrt(Derivative(W_bg(y), y)**2 + 4)
+V_minus = (-Derivative(W_bg(y), y)*Derivative(u_y(x, y, t), t) - 2*Derivative(zeta_minus(x, y, t), t))/sqrt(Derivative(W_bg(y), y)**2 + 4)
+V_plus  coeff of d_t u_z = 0
+V_minus coeff of d_t u_z = 0
+
+=== TRACTION PAIRING t · delta u uses n·delta u, same n_z=0 ===
+t_z background ~ n_z = 0 (plus), 0 (minus)
+
+=== FIRST-ORDER n_z FROM FACE PERTURBATION ===
+d h_plus / dz = 0
+d h_minus / dz = 0
+n_plus[2] exact = 0
+n_minus[2] exact = 0
+
+=== VIRTUAL CONSTRAINT on class P (LAB_HELD, Σ0=Σ0(y)) ===
+constraint = dv_eW + dv_theta + dv_uy(x, y)*Derivative(logSigma0(y), y) + Derivative(dv_ux(x, y), x) + Derivative(dv_uy(x, y), y)
+has dv_uz = False
+div_P has d_z dv_uz = False
+
+=== MATERIAL_ADVECTED pullback Q(y - u_y) ===
+linearised Q(chi) - Q(y) = -u_y * d_y Q
+COEFF_u_z in material pullback of Q(y) = 0

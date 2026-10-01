@@ -1,0 +1,8 @@
+/var/projects/toy_physics/research/pde_ledger_v3/mathematica/S11c_b_brane_operator_mathematica_audit.wl:470:   Levi-Civita contractions are generated only for the parity diagnostic. *)
+/var/projects/toy_physics/research/pde_ledger_v3/mathematica/S11c_b_brane_operator_mathematica_audit.wl:914:epsilonPseudoscalarCandidates[branch_String, source_String] := Module[
+/var/projects/toy_physics/research/pde_ledger_v3/mathematica/S11c_b_brane_operator_mathematica_audit.wl:1962:  "CONTRACTION_TENSOR" -> HoldForm[KroneckerDelta],
+/var/projects/toy_physics/research/pde_ledger_v3/mathematica/S11c_b_brane_operator_mathematica_audit.wl:2002:    epsilonRecord = First[epsilonPseudoscalarCandidates[branch, source]];
+/var/projects/toy_physics/research/pde_ledger_v3/mathematica/S11c_b_brane_operator_mathematica_audit.wl:2021:      "GENERATED_CONTRACTION_TENSOR" -> HoldForm[KroneckerDelta],
+/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_b_brane_operator_sympy_audit.py:1334:def delta_contractions(factors: tuple[tuple[str, int, object], ...]) -> tuple[sp.Expr, ...]:
+/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_b_brane_operator_sympy_audit.py:1488:            raw.extend(delta_contractions((left, right)))
+/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_b_brane_operator_sympy_audit.py:1523:            raw.extend(delta_contractions((spurion, left, right)))

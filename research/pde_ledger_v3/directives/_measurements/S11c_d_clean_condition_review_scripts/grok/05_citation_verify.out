@@ -1,0 +1,187 @@
+=== FILE LINE CONTENT vs LOOKUPS CONTAINMENT ===
+
+[V3_STEP_PLAN.md:1116-1126] path_ok=True needle=True some_line_in_lookups=True
+---FILE---
+⭐⭐ **`λγ = 1` is not a free landing — observation already constrains it.** In this model `c_s` is the
+**gravity-change/phonon speed** and `c_γ` is the **light-cone speed**
+(`research/pde_ledger_v2/notes/stages/ledger_stage005_sound_speed_light_ratio.md:75-77`):
+
+> *"`c_s` is the phonon/gravity-change speed; `c_gamma` is the light-cone speed; `v_b` is the condensate
+> flow."*
+
+Gravitational-wave and electromagnetic arrival-time observations (**GW170817 / GRB 170817A**) constrain
+those two speeds to agree to roughly **1 part in 10¹⁵**. ⚠ **The observational value IS known** — `λγ = 1`
+to that precision is not in doubt as a *target*.
+
+---END---
+
+[assessment:11-15] path_ok=True needle=True some_line_in_lookups=True
+---FILE---
+The development input sets mu_R=1, rho_br=1 and c_s0=10 in the L_ref/T_ref unit frame. Under the bare S9/R4 definition c_gamma^2=mu_R/rho_br, this gives c_gamma/c_s=0.1, not 1. The step plan explicitly distinguishes the derived ratio definition from the calibrated, uncommitted equality lambda_gamma=1; the equality has not been imposed on these inputs.
+
+There is an additional distinction: that bare coefficient formula must not be substituted for the actual full S11c-d transverse dispersion. The saved omega=3 LEFT incoming branch has normal momentum 2.439262183530097 and tangential norm squared 1/20. Its fixed-point phase speed omega/sqrt(k_normal^2+1/20) is 1.2247448713915874, or 0.12247448713915873 of c_s0. At the full-contrast RIGHT end the corresponding ratio is 0.12186666955535794; its zero-contrast ratio returns to the LEFT value. These are arithmetic readouts of saved full-pencil modes, not a new root solve or a demonstrated identification with the calibrated light cone. The extra retained elastic structure and coefficient conventions cannot be silently discarded.
+
+Thus neither the bare input ratio nor the actual selected modal ratio realizes equal light/bulk speeds. Identifying this development slice with the calibrated analog-light band remains OPEN. Changing that calibration would change physical inputs and the branch/phase-matching problem, not just relabel a plot.
+---END---
+
+[amendment:375-379] path_ok=True needle=True some_line_in_lookups=True
+---FILE---
+[c1 §2b][c1-validity] requires both `abs(q_out*v_bulk_normal_0/omega) << 1` and
+`abs(omega*v_bulk_normal_0)/(c_s0^2*abs(q_out)) << 1`, together with its inherited
+independent subsonic condition. Keep the order of limits explicit. At grazing,
+the stated result is the strict `v_bulk_normal_0=0` result; neither away-from-
+grazing estimate licenses a uniform moving-background prediction across a
+---END---
+
+[S11c_b spec:59-66] path_ok=True needle=True some_line_in_lookups=True
+---FILE---
+The slab degrees of freedom are S11b's (`S11b_SHARED_PHYSICS.md:69–80`), with the internal slab fields
+`{u,δW,θ}` distinguished from the two independent face variables `{ζ_+,ζ_-}` (S11c-a §3a):
+
+```text
+u(x,t)     in-plane displacement, three in-plane components, no w-component ;
+θ(x,t)     Eulerian densification, ρ_4D = ρ_4D⁰(1+θ) ;
+ζ_+, ζ_-   the two independent face variables, combined as
+           δW ≡ ζ_+ − ζ_- (thickness) ,   ζ_c ≡ (ζ_+ + ζ_-)/2 (centre shift) ,
+---END---
+
+[S11c_b spec:87-92] path_ok=True needle=True some_line_in_lookups=True
+---FILE---
+undifferentiated, is computed in §3a/§3c, not stated here. The label **transverse sector** means `u_T`; the
+**{θ,e_W,u_L} sector** groups the two scalars with the longitudinal displacement.
+
+`v_bulk_normal_0` (the bulk normal drain, `S11b_SHARED_PHYSICS.md:104`) is a scope-limit parameter, not an
+active DOF, and appears in no derived operator (§0).
+
+---END---
+
+[S11c_b spec:199-203] path_ok=True needle=True some_line_in_lookups=True
+---FILE---
+**Which quantities vary (`N12`).** The varying background fields are exactly `W_bg`, `μ_R,bg`, and — through
+§2b — the density representatives `ρ_4D,bg⁰`/`ρ_br,bg⁰`. Every explicit `W₀` factor in `U` and in the
+bindings `B_ρ⁽³⁾≡B_ρ W₀`, `ρ_br⁰≡ρ_4D⁰ W₀` is the physical background thickness and becomes `W_bg(y)`. The
+constitutive moduli `B_ρ`, `C`, `k_W`, `κ_W`, `μ_W` and the bulk constants `ρ_m`, `c_s0` do **not** vary
+in-plane. ⛔ This geometric `W₀→W_bg(y)` promotion is legitimate but does **not** by itself define the
+---END---
+
+[step record:32-36] path_ok=True needle=True some_line_in_lookups=True
+---FILE---
+
+## What the step computes
+On the S11c background ansatz (in-plane-varying thickness `W_bg(y)=W̄₀[1+η w₁(ξ)]`, response modulus `μ_R,bg(y)`, two
+density representatives ρ4D/ρbr, two anchorings LAB_HELD/MATERIAL_ADVECTED), S11c-b computes: (1) the **§3a energy
+basis** — the O(3)-Kronecker field-bilinear invariant family, corrected to **40 = 10 uniform + 15 ∂W_bg-spurion + 15
+---END---
+
+[ontology:26] path_ok=True needle=True some_line_in_lookups=True
+---FILE---
+The model is a classical \(4+1\)-dimensional, one-medium analog in which our three-dimensional space is an ordered, shear-supporting brane; particles are finite, oriented throats through it; a trapped transverse brane-shear standing mode helps hold each throat open; throat transport, order conversion, stress, return, and reservoir response are the proposed material mechanism underlying a calibrated gravity observable; and freely propagating light, electric coupling, magnetism, radiation, passive response, inertia, and possible cosmic expansion are target behaviors of the same complete material configuration.
+---END---
+
+[ontology:362] path_ok=True needle=True some_line_in_lookups=True
+---FILE---
+- **Structural support:** energy \(E_{\rm support}\) in a trapped transverse brane-shear standing mode—the model's light or photon mode—helps hold the aperture open.
+---END---
+
+[ontology:100] path_ok=True needle=True some_line_in_lookups=True
+---FILE---
+The bulk is therefore an internal reservoir, not an external supply. In a closed-loop realization, localized throat drainage transfers material, momentum, and energy from ordered brane degrees of freedom into de-structured bulk degrees of freedom, while distributed return transfers material back into the ordered state. The bulk may store the corresponding response as compression, flow, internal energy, entropy, or other unresolved excitations of the same medium. Any sustained cycle must include the evolution of that reservoir rather than treating it as an inexhaustible battery.
+---END---
+
+[ontology:1366] path_ok=True needle=True some_line_in_lookups=True
+---FILE---
+- \(\Gamma_{\rm drain}\) converts ordered brane material into de-structured bulk material at throats;
+---END---
+
+[native_light:113-116] path_ok=True needle=True some_line_in_lookups=True
+---FILE---
+
+- Compare candidate carriers: circulating intake, brane-tangent vortex flow,
+  mixed \(a\)-\(w\) circulation, trapped chiral shear, and an independent
+  microrotation of the ordered substructure.
+---END---
+
+[native_light:451] path_ok=True needle=True some_line_in_lookups=True
+---FILE---
+| **Spin-like behavior** | A possible stable circulation, internal microrotation, or trapped-mode angular momentum of the vortex throat | Open. No carrier has yet earned the full standard meaning of spin. |
+---END---
+
+[native_light:1343] path_ok=True needle=True some_line_in_lookups=True
+---FILE---
+The assumption that the de-structured bulk carries no comparable shear channel helps confine a transverse disturbance, but it is not sufficient by itself. Interface motion, compressional conversion, evanescent tails, and nonlinear radiation can still drain energy. A geon-like state requires a normalizable or sufficiently long-lived bound configuration after all of those channels are included.
+---END---
+
+[assessment:5] path_ok=True needle=True some_line_in_lookups=True
+---FILE---
+On the user's request to assess before continuing and stop for go/no-go, the existing central-balance-v2 scientific child was suspended in memory, not terminated or restarted. The pause receipt records PID 4097233, its process start identity, cgroup and exact command. It had completed two matrix groups after twenty restorations and saved 12,288 batches of the next group; no finite solve had been reached. The guard/supervisor remain active, no deadline was added, and pinned sources are unchanged. Resume requires the user's decision and rechecking that process identity. Do not launch another job alongside it.
+---END---
+
+[S11c_b spec:59-71 (B)] path_ok=True needle=False some_line_in_lookups=True
+---FILE---
+The slab degrees of freedom are S11b's (`S11b_SHARED_PHYSICS.md:69–80`), with the internal slab fields
+`{u,δW,θ}` distinguished from the two independent face variables `{ζ_+,ζ_-}` (S11c-a §3a):
+
+```text
+u(x,t)     in-plane displacement, three in-plane components, no w-component ;
+θ(x,t)     Eulerian densification, ρ_4D = ρ_4D⁰(1+θ) ;
+ζ_+, ζ_-   the two independent face variables, combined as
+           δW ≡ ζ_+ − ζ_- (thickness) ,   ζ_c ≡ (ζ_+ + ζ_-)/2 (centre shift) ,
+           ζ_s = ζ_c + s δW/2 ,   e_W ≡ δW/W₀ .
+```
+
+⛔ `ζ_c` is an independent face DOF; no S11c-b computation may set `ζ_c=0` or replace the two face variables
+by a thickness-only ansatz (S11c-a §3a), except in an explicitly named centre-fixed uniform regression.
+---END---
+
+[step record:15-31 (B)] path_ok=True needle=True some_line_in_lookups=False
+---FILE---
+> ⚠⚠ **STATUS OF THE CLOSE (2026-09-03).** S11c-b closes on **per-engine leg-verification** + a coarse single-case
+> cross-engine consistency check. **The full CROSS-ENGINE RESIDUAL is DEFERRED to a ≥64 GB box by USER CHOICE** — a
+> lighter CORE-only residual (SLAB rows + `FINAL_KERNEL` + μ_θ + energy + admissibility, ~8 GB, which DOES fit this
+> 30 GB box) was OFFERED and NOT taken (`66e8d021`; `DEFERRED_HEAVY_RUNS.md`). The blocker for the FULL residual: the
+> fresh WL primaries `.out` also builds `COUPLING_KERNEL_TERM_ORIGINS` (a full `extractCoupling` per origin), which
+> exceeded 30 GB (one case > 15.6 GB and growing → OOM; STEP 0's on-box claim was overturned —
+> `_measurements/S11c_b_step0_residual_scope.md`). ⇒ the reviewed comparator decision lists P2a (slab-row join +
+> `row_residual`) and P2b (§3a scale bridge) are committed as the SPEC for that run, but their BUILDS + the run + the
+> #88 re-adjudication + the 2 owed control-hardenings are ≥64 GB work. **The committed in-tree `.out` are STALE for
+> this record** (WL at `d4adbd99` = pre-#89b, frozen operator; PY = pre-fold PRIMARIES_ONLY) — a reader of them will
+> not see the objects below; the fresh post-fold/#90 `.out` live only in `~/.s11_build/` scratch. `S11c_b_exports.py`
+> was regenerated by the fresh PY run (faithful — `BUILD_INPUT_DIGESTS` match the committed folded+#90 engine + spec)
+> and COMMITTED `af560257` (per user direction, satisfying N1's per-sub-step exports obligation); ⚠ its coupling
+> content is per-engine leg-verified (fold pin B + #90) but NOT yet cross-engine-validated, so S11c-c imports
+> per-engine-verified coupling with the cross-engine residual still deferred. The two
+> whole-row SIGN conventions (kinetic −K PY vs +K WL; face generalized-force) and #90's two flags (closure-fold sign;
+> uniform-limit Λ survivor) remain **cross-engine-UNVALIDATED**.
+---END---
+
+=== A INTERPRETIVE USE vs CITED LINES ===
+A claims: strict v_bulk_normal_0 = 0 (amendment :375-379)
+FILE 375-379:
+[c1 §2b][c1-validity] requires both `abs(q_out*v_bulk_normal_0/omega) << 1` and
+`abs(omega*v_bulk_normal_0)/(c_s0^2*abs(q_out)) << 1`, together with its inherited
+independent subsonic condition. Keep the order of limits explicit. At grazing,
+the stated result is the strict `v_bulk_normal_0=0` result; neither away-from-
+grazing estimate licenses a uniform moving-background prediction across a
+
+A P2 claims couplings through scalar face/bulk quantities, cites spec :59-66
+FILE 59-66:
+The slab degrees of freedom are S11b's (`S11b_SHARED_PHYSICS.md:69–80`), with the internal slab fields
+`{u,δW,θ}` distinguished from the two independent face variables `{ζ_+,ζ_-}` (S11c-a §3a):
+
+```text
+u(x,t)     in-plane displacement, three in-plane components, no w-component ;
+θ(x,t)     Eulerian densification, ρ_4D = ρ_4D⁰(1+θ) ;
+ζ_+, ζ_-   the two independent face variables, combined as
+           δW ≡ ζ_+ − ζ_- (thickness) ,   ζ_c ≡ (ζ_+ + ζ_-)/2 (centre shift) ,
+
+A P1 cites record :33-35 for O(3)-Kronecker
+FILE 33-35:
+## What the step computes
+On the S11c background ansatz (in-plane-varying thickness `W_bg(y)=W̄₀[1+η w₁(ξ)]`, response modulus `μ_R,bg(y)`, two
+density representatives ρ4D/ρbr, two anchorings LAB_HELD/MATERIAL_ADVECTED), S11c-b computes: (1) the **§3a energy
+
+=== ENGINE BACKGROUND JETS (mechanical) ===
+engine_contains[w1_profile_d1] = False
+engine_contains[w1_profile_d2] = False
+engine_contains[w1_profile_d3] = False
+engine_contains[DIRECTIONS = range(3)] = True

@@ -1,0 +1,27 @@
+{
+  "status": "EXPLICIT_USER_AUTHORIZATION",
+  "literalUserReply": "k. let's do that next step.",
+  "context": "Direct response to the inspected uniform result and proposed exact nonzero certificates using saved denominators, then unfinished point/control checks only.",
+  "scientificScope": "One saved-return uniform continuation; no completed calculation replay, defect sweep or external submission.",
+  "physicsChange": false,
+  "methodChange": false,
+  "toleranceChange": false,
+  "toolingChange": "Exact nonzero decision by saved real/imaginary sign certificate; unknown still refused.",
+  "methodLiteralVerdicts": [
+    "CLEAR FOR THIS SELECTED UNIFORM METHOD",
+    "CLEAR FOR THIS SELECTED UNIFORM METHOD"
+  ],
+  "independentWorkerOrResultClearance": false,
+  "noDeadlines": true,
+  "resources": {
+    "memoryGiB": 8,
+    "poolGiB": 16,
+    "cpus": 1,
+    "threads": 1,
+    "tasks": 32,
+    "swap": 0,
+    "hostReserveGiB": 4
+  },
+  "stop": "After selected uniform evidence; no automatic retry or new validator.",
+  "thread": "01a0e01b-ef84-7192-817f-584cda5d339b"
+}

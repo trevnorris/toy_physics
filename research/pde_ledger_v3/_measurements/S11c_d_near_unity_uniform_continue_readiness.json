@@ -1,0 +1,50 @@
+{
+  "status": "SOURCE_AND_METADATA_READY_NO_RUNTIME_RESULT",
+  "createdUtc": "2026-10-01T18:58:57.265171+00:00",
+  "worker": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_near_unity_uniform_continue.py",
+    "bytes": 20079,
+    "sha256": "ae3bdfa9fe96a4c700d39f988b26a3420687a46e29e8d92950b990a022742d29"
+  },
+  "manifest": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_near_unity_uniform_continue_inputs.json",
+    "bytes": 18069,
+    "sha256": "3572f7b90cfd994e4dbb31169c2ba1729b17aa28835fddff6fd23df44a5fc64a"
+  },
+  "gate": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_near_unity_uniform_continue_gate.json",
+    "bytes": 9079,
+    "sha256": "eaf5fdf6eb2cb430bb94e03696fdba8af48fd07539a44c09fd06017863f3629a"
+  },
+  "authority": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_near_unity_uniform_continue_authority.json",
+    "bytes": 1074,
+    "sha256": "00d5f19c69e662882ef41d9d616904f01584efa5662f54ed64ca6d79d79a31b2"
+  },
+  "tests": {
+    "count": 6,
+    "passed": true,
+    "scope": "Standard-library certificate decision, exact array/container joins, no-call return restoration, integrity mismatch persistence, blob corruption, and expression stand-in."
+  },
+  "syntaxPassed": true,
+  "metadataGateAndLauncherPassed": true,
+  "scientificImports": false,
+  "scientificPayloadRestorations": false,
+  "codecCensus": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_near_unity_uniform_continue_codec_census.json",
+    "bytes": 31858,
+    "sha256": "df3acfd3abb3b9bc0b27a202eea3e7d74e718c7abd5fcde4296310033877e498"
+  },
+  "unchangedOriginalWorker": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_near_unity_uniform.py",
+    "bytes": 73677,
+    "sha256": "49506203cb214572f712b023ba71c620f9f13ae75d144827726f03220fc2ff4e"
+  },
+  "repair": "Original nonzero property retained; undecided saved denominators require exact real/imaginary reconstruction and a signed nonzero component. No decimal threshold or changed physical formula.",
+  "newWork": "Exact denominator certification, then 44 unfinished sign-point checks and the two declared native sheet probes.",
+  "reuse": "All 27 prior complete journal returns and all 32 prior files, with actual argument joins. No repeated source reconstruction, current reconstruction, profile limits or grazing limits.",
+  "ephemeralContext": "EndBinding attributes/symbols and unchanged small physical-point substitution only; these have no standalone prior return.",
+  "methodReview": "Both original method reports CLEAR; no new independent worker/result clearance claimed.",
+  "noExternalSubmission": true,
+  "stop": "After uniform evidence, before a defect sweep."
+}

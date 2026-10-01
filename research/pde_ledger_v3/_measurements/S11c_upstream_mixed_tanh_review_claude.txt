@@ -1,0 +1,93 @@
+Still in the review: I've read the packet and checked the physics by hand. Below is the verdict.
+
+# NEEDS REVISION
+
+The physics of the selected action holds up. The required changes are in the instrument: three can abort the run or leave guarded operands unsaved, and one is a missing native join. All four are narrow. Nothing here has been executed, and a clean run would still not be physics acceptance.
+
+## Required corrections
+
+**N1. Guarded operands are not saved before the checks (`S11c_upstream_mixed_tanh.py:322-347`).**
+- The endpoint numerators, `positive_A`, the removable value, the prefactor sign and the tail are all computed and passed to `require(...)` inside `action()`. Only `J.zero` results and `responsive-controls` are emitted first.
+- If any guard fails, the operands behind it are lost. `profile-action-return` is written only after `action()` returns.
+- **Fix:** emit one `sign-ingredients` record before the first `require` at line 325. It should hold `At`, `AQ`, `prefactor`, `positive_A`, `removableValue`, each endpoint's value with its `is_finite`/`is_negative` flags, `interior`, `exterior`, the re/im parts and `tail`. Then run the guards.
+- The loop at 332-335 should collect all endpoints first, then require.
+
+**N2. `fourier-beta-reflection` will probably not simplify (lines 279-282).**
+- `simplify(expand_func(Γ(1-iz)Γ(1+iz)/2π))` is unlikely to reach `z/(2 sinh πz)`. sympy's `gammasimp` handles `Γ(x)Γ(1-x)`, not `Γ(iz)Γ(-iz)`.
+- `J.zero` will emit a nonzero residual and abort the profile stage, so the action stage never runs. This is a tooling fault, not a physics fault.
+- **Fix:** do the reflection explicitly. Use `Γ(1+iz) = iz·Γ(iz)` and `Γ(iz)Γ(1-iz) = π/sin(iπz)`. Check `sin(iπz) = i sinh(πz)` via `.rewrite(exp)`. Compare to `A` through those saved intermediates.
+- Line 274 has the same risk: `simplify(sech²−(1−tanh²))` may not reduce. Compare both sides after `.rewrite(sp.exp)`.
+
+**N3. The graph-normal search is not scoped to one function (lines 178-188).**
+- It walks the whole geometry file and demands exactly one `denominator` and one `normal_exact` assignment containing `grad_h`.
+- The excerpt at lines 814-871 shows `build_face_source` delegating the `MATERIAL` route to a separate `build_material_face_source`. That builder very likely has its own pair, so the uniqueness `require` would fail. I can't confirm this from the excerpt alone.
+- **Fix:** restrict the search to the `FunctionDef` named `build_face_source`, which is the LAB_HELD/EULERIAN path. Save the function name with the source fragments.
+
+**N4. The half factors and height/slope assignment are hard-coded, not joined to the native shape (lines 300-301).**
+- `hweighted = W0*A/(2i)` and `slope = L*A(Q-t)/2` are typed by hand. `N['shape']` is built and saved but never used in `action()`.
+- `native-profile-weighting` (line 306) only compares the integrand to the same algebra, so it is tautological.
+- **Fix:** derive both from `N['shape']`:
+  - `t·height_hat/η` with `w1_hat → ŵ(t)`, using `t·ŵ = A/i`;
+  - `tilt_hat[0]/σ_W` with `jet_1 → L·A(Q−t)`.
+  - Add `J.zero` against the hand-typed values.
+  - Also save that `tilt_hat[1], tilt_hat[2]` are zero, because the profile depends only on y1 and the edge momenta enter only through the dispersion.
+
+## Checks that pass, with the derivations I did by hand
+
+- **Relevant grade.** `S11c_a_SHARED_PHYSICS` (L156-204) requires independent η and σ_W, with first order in each. So the retained mixed grade is ησ and the question is the right one. The native bridge sets slot `[0,2]` to the literal 0, which the AST check at lines 373-378 inspects correctly.
+- **Boundary Taylor.**
+  - The mode set, the `range(2-a)` truncation and the slope term for `b==0` only are right.
+  - The first-order coefficients are `iωρ(1−qi/qh)` and `ωρk/(qi qs)`. They match the native `FIRST_SHAPE` literal once `k²+edge²−κ² = −qi²` is used.
+  - At k=0 I get `A00 = 1/(i qi)`, `A10 = −qi/qh`, `A11 = −H·qi/(qh qo)`. So the pressure coefficient is `−iωρ H qi/(qh qo)`, matching line 232.
+  - The normal has no h·s term, and the vertical component has no linear s.
+- **Zero-input specialization.** It is legitimate as a point evaluation of the general coefficient. The slope-first ordering vanishes because `A01 ∝ k`. This witnesses nothing about other inputs, and a zero at k=0 would not prove a general zero.
+- **η²/σ² omission.** Omitting pure η² and σ² respects the declared rectangle. The scope text and line 357 already say this is not the complete second-order shape correction.
+- **Profile and Fourier.**
+  - With x = e^{2y/L} and w = x/(1+x), `w'dy = dx/(1+x)²`.
+  - The transform is `B(1−iz, 1+iz)/2π` with z = Lt/2. That gives `A = Lt/(4 sinh(πLt/2))`, with `A(0) = 1/2π` and `A` even.
+  - The convention is forward `e^{-iky}/2π` and inverse `e^{+iky}`, so the convolution carries no stray 2π.
+  - The 3D transform factors into the 1D transform times δ(k2)δ(k3), and one transverse delta survives the middle integral.
+  - The reduced dimensions are consistent: (−2,−1,1) = Z·L.
+- **Contact terms.** The coefficient is exactly `t·F(t)` with `F` smooth at t=0, because `qh(0) = q0 ≠ 0`. So `tδ(t) = 0` and `t·PV(1/t) = 1` hold, and no contact term survives.
+- **Symmetrization.** `t → Q−t` is a change of variable. The 1/2 symmetrization integrates identically, and the full convolution is not doubled, since h and s are distinct fields. `symmetrized` has different real windows for its two pieces, so no sign claim should ever be attached to it (see O2).
+- **Sheet and sign.**
+  - The common dispersion is `q² = 1/25 − p²`. The real window is |t| < a = 1/5 and the positive outgoing root is correct. Outside it, q = +i·g.
+  - The prefactor is negative and `A > 0` on all of ℝ. So the interior integrand is strictly negative.
+  - The exterior is purely imaginary (positive imaginary), so it cannot cancel the real part.
+  - The endpoint substitutions `t = a ∓ u²` turn `dt/q` into a regular `du`, and the tails are exponentially convergent.
+  - The sign argument therefore does not rest on the sample, and the stated reason is correct.
+  - The sound conclusion is Re I < 0 from the interior alone and Im I > 0 from the exterior. It holds at this input/output pair and at the diagnostic ω = 3.
+- **Controls.** The omitted-slope and reversed-slope controls are addressed to the native normal term and responsive. The sheet control flips the sign.
+- **Containment and persistence.**
+  - Source pins are checked before sympy is imported.
+  - Containment runs before the sympy import.
+  - There are no deadlines.
+  - There are no producer imports.
+  - Every `J.zero` saves left, right and residual before it guards.
+  - The `x`-mode writes block overwrites.
+
+## Likely runtime faults, tooling only
+
+- N2 and N3 above.
+- `sample.is_negative is True` (line 319) and the endpoint `is_negative`/`is_finite` guards (lines 328, 335) rely on sympy resolving the sign of `sinh(rational·π)` expressions. They may return `None`.
+- `sp.limit(..., oo)` for the tail (line 339) and `sp.re(exterior)` (line 344) could stay unevaluated.
+- All of these fail closed. They are covered by N1, which makes their operands visible.
+
+## Optional improvements
+
+- **O1.** `wave-amplitude-linearity` (lines 220-221) is trivially true, because the pressure is linear in the amplitudes. It does not test homogeneity of the solution in the prescribed velocity amplitude. Scaling the "−1" datum by ε would.
+- **O2.** Mark `symmetrized` in the output as "integral-equivalent only, no pointwise sign".
+- **O3.** The beta integral itself (Euler) and the claim `tanh = (x−1)/(x+1)` are asserted in comments. Add a `tanh(y/L).rewrite(exp)` check.
+- **O4.** Record the contract explicitly: this is the coefficient of `z_three[0,2]` (literal 0), defined as `∫dt ĥ(t)ŝ(Q−t)·F` with no 2π, and one transverse delta remains.
+- **O5.** The dimension check (lines 363-370) is hand arithmetic, not derived from the native symbol dimensions.
+
+## Item 5: what the output can and cannot establish
+
+- **What it establishes.** The coefficient of ησ in the bare impedance Taylor expansion at (k_in, k_out) = (0, Q), at ω = 3. A nonzero Re I would show the literal 0 in slot `[0,2]` is not the full bare ησ coefficient at that point.
+- **What it does not establish.**
+  - The iterated Z1·c·Z1 product from the resolvent is a separate term.
+  - Whether the closed response, or the downstream reference-trace map, already absorbs this term is not decided here.
+  - Light excitation, loss and general input momenta are not addressed.
+- **Missing operand.** None beyond N4. The packet never shows the native contract that slot `[0,2]` is meant to hold the full second-order Taylor coefficient rather than rely on the iterated product. That is a downstream interpretation. The record should state it as such and not conclude "incomplete operator" from this output alone.
+
+**Verdict: NEEDS REVISION** (N1 through N4).

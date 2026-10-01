@@ -1,0 +1,552 @@
+{
+  "status": "BOTH_REPORTS_DELIVERED_AWAITING_LOCAL_DISPOSITION",
+  "packetSha256": "b7b6b8dd5648e95714703d41a0db7cf0f7c6b07caad9dcfece6f137f8efec361",
+  "archiveSha256": "3bb3df5078edc7846bf11834b02dce1bbf931e466a45c0f62481a6ae4811adf4",
+  "packetFiles": 19,
+  "packetBytes": 125504,
+  "reviewedWorkerSha256": "bef2615e4209525ab4d1f58c49ba080cd07f158d2b717c2a20803236defb13ea",
+  "checks": [
+    {
+      "name": "both finished",
+      "passed": true
+    },
+    {
+      "name": "exact approval",
+      "passed": true
+    },
+    {
+      "name": "archive",
+      "passed": true
+    },
+    {
+      "name": "index digest",
+      "passed": true
+    },
+    {
+      "name": "file set _scratch/s11c/s11c-mixed-tanh-20261001/build-review/packet",
+      "passed": true
+    },
+    {
+      "name": "_scratch/s11c/s11c-mixed-tanh-20261001/build-review/packet/S11c_d_variable_profile_development_input.json",
+      "passed": true
+    },
+    {
+      "name": "_scratch/s11c/s11c-mixed-tanh-20261001/build-review/packet/S11c_upstream_mixed_tanh.py",
+      "passed": true
+    },
+    {
+      "name": "_scratch/s11c/s11c-mixed-tanh-20261001/build-review/packet/S11c_upstream_mixed_tanh_inputs.json",
+      "passed": true
+    },
+    {
+      "name": "_scratch/s11c/s11c-mixed-tanh-20261001/build-review/packet/S11c_upstream_mixed_tanh_scope.md",
+      "passed": true
+    },
+    {
+      "name": "_scratch/s11c/s11c-mixed-tanh-20261001/build-review/packet/S11c_upstream_mixed_tanh_test.py",
+      "passed": true
+    },
+    {
+      "name": "_scratch/s11c/s11c-mixed-tanh-20261001/build-review/packet/S11c_upstream_mixed_tanh_tooling_checks.json",
+      "passed": true
+    },
+    {
+      "name": "_scratch/s11c/s11c-mixed-tanh-20261001/build-review/packet/packet-index.json",
+      "passed": true
+    },
+    {
+      "name": "_scratch/s11c/s11c-mixed-tanh-20261001/build-review/packet/review-prompt.md",
+      "passed": true
+    },
+    {
+      "name": "_scratch/s11c/s11c-mixed-tanh-20261001/build-review/packet/runtime-source/S11c_d_end_normalization_run.py",
+      "passed": true
+    },
+    {
+      "name": "_scratch/s11c/s11c-mixed-tanh-20261001/build-review/packet/runtime-source/s11c_guarded_run.py",
+      "passed": true
+    },
+    {
+      "name": "_scratch/s11c/s11c-mixed-tanh-20261001/build-review/packet/source/S11c_a_SHARED_PHYSICS.md-L156-204.txt",
+      "passed": true
+    },
+    {
+      "name": "_scratch/s11c/s11c-mixed-tanh-20261001/build-review/packet/source/S11c_a_interface_geometry_sympy_audit.py-L814-871.txt",
+      "passed": true
+    },
+    {
+      "name": "_scratch/s11c/s11c-mixed-tanh-20261001/build-review/packet/source/S11c_c1_SHARED_PHYSICS.md-L86-147.txt",
+      "passed": true
+    },
+    {
+      "name": "_scratch/s11c/s11c-mixed-tanh-20261001/build-review/packet/source/S11c_c1_bulk_closure_sympy_audit.py-L127-155.txt",
+      "passed": true
+    },
+    {
+      "name": "_scratch/s11c/s11c-mixed-tanh-20261001/build-review/packet/source/S11c_c1_bulk_closure_sympy_audit.py-L591-710.txt",
+      "passed": true
+    },
+    {
+      "name": "_scratch/s11c/s11c-mixed-tanh-20261001/build-review/packet/source/S11c_c2_selfenergy_fold_sympy_audit.py-L247-269.txt",
+      "passed": true
+    },
+    {
+      "name": "_scratch/s11c/s11c-mixed-tanh-20261001/build-review/packet/source/S11c_c2_selfenergy_fold_sympy_audit.py-L367-447.txt",
+      "passed": true
+    },
+    {
+      "name": "_scratch/s11c/s11c-mixed-tanh-20261001/build-review/packet/source/S11c_c2_selfenergy_fold_sympy_audit.py-L850-863.txt",
+      "passed": true
+    },
+    {
+      "name": "_scratch/s11c/s11c-mixed-tanh-20261001/build-review/packet/source/native-c1-literals.json",
+      "passed": true
+    },
+    {
+      "name": "file set _scratch/s11c/s11c-mixed-tanh-20261001/build-review/claude/work/input",
+      "passed": true
+    },
+    {
+      "name": "_scratch/s11c/s11c-mixed-tanh-20261001/build-review/claude/work/input/S11c_d_variable_profile_development_input.json",
+      "passed": true
+    },
+    {
+      "name": "_scratch/s11c/s11c-mixed-tanh-20261001/build-review/claude/work/input/S11c_upstream_mixed_tanh.py",
+      "passed": true
+    },
+    {
+      "name": "_scratch/s11c/s11c-mixed-tanh-20261001/build-review/claude/work/input/S11c_upstream_mixed_tanh_inputs.json",
+      "passed": true
+    },
+    {
+      "name": "_scratch/s11c/s11c-mixed-tanh-20261001/build-review/claude/work/input/S11c_upstream_mixed_tanh_scope.md",
+      "passed": true
+    },
+    {
+      "name": "_scratch/s11c/s11c-mixed-tanh-20261001/build-review/claude/work/input/S11c_upstream_mixed_tanh_test.py",
+      "passed": true
+    },
+    {
+      "name": "_scratch/s11c/s11c-mixed-tanh-20261001/build-review/claude/work/input/S11c_upstream_mixed_tanh_tooling_checks.json",
+      "passed": true
+    },
+    {
+      "name": "_scratch/s11c/s11c-mixed-tanh-20261001/build-review/claude/work/input/packet-index.json",
+      "passed": true
+    },
+    {
+      "name": "_scratch/s11c/s11c-mixed-tanh-20261001/build-review/claude/work/input/review-prompt.md",
+      "passed": true
+    },
+    {
+      "name": "_scratch/s11c/s11c-mixed-tanh-20261001/build-review/claude/work/input/runtime-source/S11c_d_end_normalization_run.py",
+      "passed": true
+    },
+    {
+      "name": "_scratch/s11c/s11c-mixed-tanh-20261001/build-review/claude/work/input/runtime-source/s11c_guarded_run.py",
+      "passed": true
+    },
+    {
+      "name": "_scratch/s11c/s11c-mixed-tanh-20261001/build-review/claude/work/input/source/S11c_a_SHARED_PHYSICS.md-L156-204.txt",
+      "passed": true
+    },
+    {
+      "name": "_scratch/s11c/s11c-mixed-tanh-20261001/build-review/claude/work/input/source/S11c_a_interface_geometry_sympy_audit.py-L814-871.txt",
+      "passed": true
+    },
+    {
+      "name": "_scratch/s11c/s11c-mixed-tanh-20261001/build-review/claude/work/input/source/S11c_c1_SHARED_PHYSICS.md-L86-147.txt",
+      "passed": true
+    },
+    {
+      "name": "_scratch/s11c/s11c-mixed-tanh-20261001/build-review/claude/work/input/source/S11c_c1_bulk_closure_sympy_audit.py-L127-155.txt",
+      "passed": true
+    },
+    {
+      "name": "_scratch/s11c/s11c-mixed-tanh-20261001/build-review/claude/work/input/source/S11c_c1_bulk_closure_sympy_audit.py-L591-710.txt",
+      "passed": true
+    },
+    {
+      "name": "_scratch/s11c/s11c-mixed-tanh-20261001/build-review/claude/work/input/source/S11c_c2_selfenergy_fold_sympy_audit.py-L247-269.txt",
+      "passed": true
+    },
+    {
+      "name": "_scratch/s11c/s11c-mixed-tanh-20261001/build-review/claude/work/input/source/S11c_c2_selfenergy_fold_sympy_audit.py-L367-447.txt",
+      "passed": true
+    },
+    {
+      "name": "_scratch/s11c/s11c-mixed-tanh-20261001/build-review/claude/work/input/source/S11c_c2_selfenergy_fold_sympy_audit.py-L850-863.txt",
+      "passed": true
+    },
+    {
+      "name": "_scratch/s11c/s11c-mixed-tanh-20261001/build-review/claude/work/input/source/native-c1-literals.json",
+      "passed": true
+    },
+    {
+      "name": "file set _scratch/s11c/s11c-mixed-tanh-20261001/build-review/grok/work/input",
+      "passed": true
+    },
+    {
+      "name": "_scratch/s11c/s11c-mixed-tanh-20261001/build-review/grok/work/input/S11c_d_variable_profile_development_input.json",
+      "passed": true
+    },
+    {
+      "name": "_scratch/s11c/s11c-mixed-tanh-20261001/build-review/grok/work/input/S11c_upstream_mixed_tanh.py",
+      "passed": true
+    },
+    {
+      "name": "_scratch/s11c/s11c-mixed-tanh-20261001/build-review/grok/work/input/S11c_upstream_mixed_tanh_inputs.json",
+      "passed": true
+    },
+    {
+      "name": "_scratch/s11c/s11c-mixed-tanh-20261001/build-review/grok/work/input/S11c_upstream_mixed_tanh_scope.md",
+      "passed": true
+    },
+    {
+      "name": "_scratch/s11c/s11c-mixed-tanh-20261001/build-review/grok/work/input/S11c_upstream_mixed_tanh_test.py",
+      "passed": true
+    },
+    {
+      "name": "_scratch/s11c/s11c-mixed-tanh-20261001/build-review/grok/work/input/S11c_upstream_mixed_tanh_tooling_checks.json",
+      "passed": true
+    },
+    {
+      "name": "_scratch/s11c/s11c-mixed-tanh-20261001/build-review/grok/work/input/packet-index.json",
+      "passed": true
+    },
+    {
+      "name": "_scratch/s11c/s11c-mixed-tanh-20261001/build-review/grok/work/input/review-prompt.md",
+      "passed": true
+    },
+    {
+      "name": "_scratch/s11c/s11c-mixed-tanh-20261001/build-review/grok/work/input/runtime-source/S11c_d_end_normalization_run.py",
+      "passed": true
+    },
+    {
+      "name": "_scratch/s11c/s11c-mixed-tanh-20261001/build-review/grok/work/input/runtime-source/s11c_guarded_run.py",
+      "passed": true
+    },
+    {
+      "name": "_scratch/s11c/s11c-mixed-tanh-20261001/build-review/grok/work/input/source/S11c_a_SHARED_PHYSICS.md-L156-204.txt",
+      "passed": true
+    },
+    {
+      "name": "_scratch/s11c/s11c-mixed-tanh-20261001/build-review/grok/work/input/source/S11c_a_interface_geometry_sympy_audit.py-L814-871.txt",
+      "passed": true
+    },
+    {
+      "name": "_scratch/s11c/s11c-mixed-tanh-20261001/build-review/grok/work/input/source/S11c_c1_SHARED_PHYSICS.md-L86-147.txt",
+      "passed": true
+    },
+    {
+      "name": "_scratch/s11c/s11c-mixed-tanh-20261001/build-review/grok/work/input/source/S11c_c1_bulk_closure_sympy_audit.py-L127-155.txt",
+      "passed": true
+    },
+    {
+      "name": "_scratch/s11c/s11c-mixed-tanh-20261001/build-review/grok/work/input/source/S11c_c1_bulk_closure_sympy_audit.py-L591-710.txt",
+      "passed": true
+    },
+    {
+      "name": "_scratch/s11c/s11c-mixed-tanh-20261001/build-review/grok/work/input/source/S11c_c2_selfenergy_fold_sympy_audit.py-L247-269.txt",
+      "passed": true
+    },
+    {
+      "name": "_scratch/s11c/s11c-mixed-tanh-20261001/build-review/grok/work/input/source/S11c_c2_selfenergy_fold_sympy_audit.py-L367-447.txt",
+      "passed": true
+    },
+    {
+      "name": "_scratch/s11c/s11c-mixed-tanh-20261001/build-review/grok/work/input/source/S11c_c2_selfenergy_fold_sympy_audit.py-L850-863.txt",
+      "passed": true
+    },
+    {
+      "name": "_scratch/s11c/s11c-mixed-tanh-20261001/build-review/grok/work/input/source/native-c1-literals.json",
+      "passed": true
+    },
+    {
+      "name": "source research/pde_ledger_v3/_measurements/S11c_upstream_mixed_tanh.py",
+      "passed": true
+    },
+    {
+      "name": "source research/pde_ledger_v3/_measurements/S11c_upstream_mixed_tanh_scope.md",
+      "passed": true
+    },
+    {
+      "name": "source research/pde_ledger_v3/_measurements/S11c_upstream_mixed_tanh_inputs.json",
+      "passed": true
+    },
+    {
+      "name": "source research/pde_ledger_v3/_measurements/S11c_upstream_mixed_tanh_test.py",
+      "passed": true
+    },
+    {
+      "name": "source research/pde_ledger_v3/_measurements/S11c_upstream_mixed_tanh_tooling_checks.json",
+      "passed": true
+    },
+    {
+      "name": "source research/pde_ledger_v3/_measurements/S11c_d_variable_profile_development_input.json",
+      "passed": true
+    },
+    {
+      "name": "source research/pde_ledger_v3/scripts/S11c_c1_bulk_closure_sympy_audit.py",
+      "passed": true
+    },
+    {
+      "name": "source research/pde_ledger_v3/scripts/S11c_c1_bulk_closure_sympy_audit.py",
+      "passed": true
+    },
+    {
+      "name": "source research/pde_ledger_v3/scripts/S11c_c2_selfenergy_fold_sympy_audit.py",
+      "passed": true
+    },
+    {
+      "name": "source research/pde_ledger_v3/scripts/S11c_c2_selfenergy_fold_sympy_audit.py",
+      "passed": true
+    },
+    {
+      "name": "source research/pde_ledger_v3/scripts/S11c_c2_selfenergy_fold_sympy_audit.py",
+      "passed": true
+    },
+    {
+      "name": "source research/pde_ledger_v3/scripts/S11c_a_interface_geometry_sympy_audit.py",
+      "passed": true
+    },
+    {
+      "name": "source research/pde_ledger_v3/directives/S11c_c1_SHARED_PHYSICS.md",
+      "passed": true
+    },
+    {
+      "name": "source research/pde_ledger_v3/directives/S11c_a_SHARED_PHYSICS.md",
+      "passed": true
+    },
+    {
+      "name": "source research/pde_ledger_v3/scripts/S11c_c1_exports.py",
+      "passed": true
+    },
+    {
+      "name": "source scripts/s11c_guarded_run.py",
+      "passed": true
+    },
+    {
+      "name": "source research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+      "passed": true
+    },
+    {
+      "name": "source research/pde_ledger_v3/_measurements/S11c_upstream_mixed_tanh_review_prompt.md",
+      "passed": true
+    },
+    {
+      "name": "manifest /var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_mixed_tanh.py",
+      "passed": true
+    },
+    {
+      "name": "manifest /var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_mixed_tanh_scope.md",
+      "passed": true
+    },
+    {
+      "name": "manifest /var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_mixed_tanh_review_prompt.md",
+      "passed": true
+    },
+    {
+      "name": "manifest /var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_mixed_tanh_test.py",
+      "passed": true
+    },
+    {
+      "name": "manifest /var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_variable_profile_development_input.json",
+      "passed": true
+    },
+    {
+      "name": "manifest /var/projects/toy_physics/scripts/s11c_guarded_run.py",
+      "passed": true
+    },
+    {
+      "name": "manifest /var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+      "passed": true
+    },
+    {
+      "name": "manifest /var/projects/toy_physics/scripts/codex_job_watch.py",
+      "passed": true
+    },
+    {
+      "name": "manifest /var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_c1_bulk_closure_sympy_audit.py",
+      "passed": true
+    },
+    {
+      "name": "manifest /var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_c1_exports.py",
+      "passed": true
+    },
+    {
+      "name": "manifest /var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_c2_selfenergy_fold_sympy_audit.py",
+      "passed": true
+    },
+    {
+      "name": "manifest /var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_a_interface_geometry_sympy_audit.py",
+      "passed": true
+    },
+    {
+      "name": "manifest /var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_a_SHARED_PHYSICS.md",
+      "passed": true
+    },
+    {
+      "name": "manifest /var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c1_SHARED_PHYSICS.md",
+      "passed": true
+    },
+    {
+      "name": "claude terminal",
+      "passed": true
+    },
+    {
+      "name": "claude delivered session",
+      "passed": true
+    },
+    {
+      "name": "claude output hash",
+      "passed": true
+    },
+    {
+      "name": "claude stderr hash",
+      "passed": true
+    },
+    {
+      "name": "claude stderr length",
+      "passed": true
+    },
+    {
+      "name": "claude source only",
+      "passed": true
+    },
+    {
+      "name": "grok terminal",
+      "passed": true
+    },
+    {
+      "name": "grok delivered session",
+      "passed": true
+    },
+    {
+      "name": "grok output hash",
+      "passed": true
+    },
+    {
+      "name": "grok stderr hash",
+      "passed": true
+    },
+    {
+      "name": "grok stderr length",
+      "passed": true
+    },
+    {
+      "name": "grok source only",
+      "passed": true
+    },
+    {
+      "name": "N3 unique current graph fragments",
+      "passed": true
+    }
+  ],
+  "allMetadataChecksPassed": true,
+  "reports": {
+    "claude": {
+      "literalVerdict": "NEEDS REVISION",
+      "text": "Still in the review: I've read the packet and checked the physics by hand. Below is the verdict.\n\n# NEEDS REVISION\n\nThe physics of the selected action holds up. The required changes are in the instrument: three can abort the run or leave guarded operands unsaved, and one is a missing native join. All four are narrow. Nothing here has been executed, and a clean run would still not be physics acceptance.\n\n## Required corrections\n\n**N1. Guarded operands are not saved before the checks (`S11c_upstream_mixed_tanh.py:322-347`).**\n- The endpoint numerators, `positive_A`, the removable value, the prefactor sign and the tail are all computed and passed to `require(...)` inside `action()`. Only `J.zero` results and `responsive-controls` are emitted first.\n- If any guard fails, the operands behind it are lost. `profile-action-return` is written only after `action()` returns.\n- **Fix:** emit one `sign-ingredients` record before the first `require` at line 325. It should hold `At`, `AQ`, `prefactor`, `positive_A`, `removableValue`, each endpoint's value with its `is_finite`/`is_negative` flags, `interior`, `exterior`, the re/im parts and `tail`. Then run the guards.\n- The loop at 332-335 should collect all endpoints first, then require.\n\n**N2. `fourier-beta-reflection` will probably not simplify (lines 279-282).**\n- `simplify(expand_func(\u0393(1-iz)\u0393(1+iz)/2\u03c0))` is unlikely to reach `z/(2 sinh \u03c0z)`. sympy's `gammasimp` handles `\u0393(x)\u0393(1-x)`, not `\u0393(iz)\u0393(-iz)`.\n- `J.zero` will emit a nonzero residual and abort the profile stage, so the action stage never runs. This is a tooling fault, not a physics fault.\n- **Fix:** do the reflection explicitly. Use `\u0393(1+iz) = iz\u00b7\u0393(iz)` and `\u0393(iz)\u0393(1-iz) = \u03c0/sin(i\u03c0z)`. Check `sin(i\u03c0z) = i sinh(\u03c0z)` via `.rewrite(exp)`. Compare to `A` through those saved intermediates.\n- Line 274 has the same risk: `simplify(sech\u00b2\u2212(1\u2212tanh\u00b2))` may not reduce. Compare both sides after `.rewrite(sp.exp)`.\n\n**N3. The graph-normal search is not scoped to one function (lines 178-188).**\n- It walks the whole geometry file and demands exactly one `denominator` and one `normal_exact` assignment containing `grad_h`.\n- The excerpt at lines 814-871 shows `build_face_source` delegating the `MATERIAL` route to a separate `build_material_face_source`. That builder very likely has its own pair, so the uniqueness `require` would fail. I can't confirm this from the excerpt alone.\n- **Fix:** restrict the search to the `FunctionDef` named `build_face_source`, which is the LAB_HELD/EULERIAN path. Save the function name with the source fragments.\n\n**N4. The half factors and height/slope assignment are hard-coded, not joined to the native shape (lines 300-301).**\n- `hweighted = W0*A/(2i)` and `slope = L*A(Q-t)/2` are typed by hand. `N['shape']` is built and saved but never used in `action()`.\n- `native-profile-weighting` (line 306) only compares the integrand to the same algebra, so it is tautological.\n- **Fix:** derive both from `N['shape']`:\n  - `t\u00b7height_hat/\u03b7` with `w1_hat \u2192 \u0175(t)`, using `t\u00b7\u0175 = A/i`;\n  - `tilt_hat[0]/\u03c3_W` with `jet_1 \u2192 L\u00b7A(Q\u2212t)`.\n  - Add `J.zero` against the hand-typed values.\n  - Also save that `tilt_hat[1], tilt_hat[2]` are zero, because the profile depends only on y1 and the edge momenta enter only through the dispersion.\n\n## Checks that pass, with the derivations I did by hand\n\n- **Relevant grade.** `S11c_a_SHARED_PHYSICS` (L156-204) requires independent \u03b7 and \u03c3_W, with first order in each. So the retained mixed grade is \u03b7\u03c3 and the question is the right one. The native bridge sets slot `[0,2]` to the literal 0, which the AST check at lines 373-378 inspects correctly.\n- **Boundary Taylor.**\n  - The mode set, the `range(2-a)` truncation and the slope term for `b==0` only are right.\n  - The first-order coefficients are `i\u03c9\u03c1(1\u2212qi/qh)` and `\u03c9\u03c1k/(qi qs)`. They match the native `FIRST_SHAPE` literal once `k\u00b2+edge\u00b2\u2212\u03ba\u00b2 = \u2212qi\u00b2` is used.\n  - At k=0 I get `A00 = 1/(i qi)`, `A10 = \u2212qi/qh`, `A11 = \u2212H\u00b7qi/(qh qo)`. So the pressure coefficient is `\u2212i\u03c9\u03c1 H qi/(qh qo)`, matching line 232.\n  - The normal has no h\u00b7s term, and the vertical component has no linear s.\n- **Zero-input specialization.** It is legitimate as a point evaluation of the general coefficient. The slope-first ordering vanishes because `A01 \u221d k`. This witnesses nothing about other inputs, and a zero at k=0 would not prove a general zero.\n- **\u03b7\u00b2/\u03c3\u00b2 omission.** Omitting pure \u03b7\u00b2 and \u03c3\u00b2 respects the declared rectangle. The scope text and line 357 already say this is not the complete second-order shape correction.\n- **Profile and Fourier.**\n  - With x = e^{2y/L} and w = x/(1+x), `w'dy = dx/(1+x)\u00b2`.\n  - The transform is `B(1\u2212iz, 1+iz)/2\u03c0` with z = Lt/2. That gives `A = Lt/(4 sinh(\u03c0Lt/2))`, with `A(0) = 1/2\u03c0` and `A` even.\n  - The convention is forward `e^{-iky}/2\u03c0` and inverse `e^{+iky}`, so the convolution carries no stray 2\u03c0.\n  - The 3D transform factors into the 1D transform times \u03b4(k2)\u03b4(k3), and one transverse delta survives the middle integral.\n  - The reduced dimensions are consistent: (\u22122,\u22121,1) = Z\u00b7L.\n- **Contact terms.** The coefficient is exactly `t\u00b7F(t)` with `F` smooth at t=0, because `qh(0) = q0 \u2260 0`. So `t\u03b4(t) = 0` and `t\u00b7PV(1/t) = 1` hold, and no contact term survives.\n- **Symmetrization.** `t \u2192 Q\u2212t` is a change of variable. The 1/2 symmetrization integrates identically, and the full convolution is not doubled, since h and s are distinct fields. `symmetrized` has different real windows for its two pieces, so no sign claim should ever be attached to it (see O2).\n- **Sheet and sign.**\n  - The common dispersion is `q\u00b2 = 1/25 \u2212 p\u00b2`. The real window is |t| < a = 1/5 and the positive outgoing root is correct. Outside it, q = +i\u00b7g.\n  - The prefactor is negative and `A > 0` on all of \u211d. So the interior integrand is strictly negative.\n  - The exterior is purely imaginary (positive imaginary), so it cannot cancel the real part.\n  - The endpoint substitutions `t = a \u2213 u\u00b2` turn `dt/q` into a regular `du`, and the tails are exponentially convergent.\n  - The sign argument therefore does not rest on the sample, and the stated reason is correct.\n  - The sound conclusion is Re I < 0 from the interior alone and Im I > 0 from the exterior. It holds at this input/output pair and at the diagnostic \u03c9 = 3.\n- **Controls.** The omitted-slope and reversed-slope controls are addressed to the native normal term and responsive. The sheet control flips the sign.\n- **Containment and persistence.**\n  - Source pins are checked before sympy is imported.\n  - Containment runs before the sympy import.\n  - There are no deadlines.\n  - There are no producer imports.\n  - Every `J.zero` saves left, right and residual before it guards.\n  - The `x`-mode writes block overwrites.\n\n## Likely runtime faults, tooling only\n\n- N2 and N3 above.\n- `sample.is_negative is True` (line 319) and the endpoint `is_negative`/`is_finite` guards (lines 328, 335) rely on sympy resolving the sign of `sinh(rational\u00b7\u03c0)` expressions. They may return `None`.\n- `sp.limit(..., oo)` for the tail (line 339) and `sp.re(exterior)` (line 344) could stay unevaluated.\n- All of these fail closed. They are covered by N1, which makes their operands visible.\n\n## Optional improvements\n\n- **O1.** `wave-amplitude-linearity` (lines 220-221) is trivially true, because the pressure is linear in the amplitudes. It does not test homogeneity of the solution in the prescribed velocity amplitude. Scaling the \"\u22121\" datum by \u03b5 would.\n- **O2.** Mark `symmetrized` in the output as \"integral-equivalent only, no pointwise sign\".\n- **O3.** The beta integral itself (Euler) and the claim `tanh = (x\u22121)/(x+1)` are asserted in comments. Add a `tanh(y/L).rewrite(exp)` check.\n- **O4.** Record the contract explicitly: this is the coefficient of `z_three[0,2]` (literal 0), defined as `\u222bdt \u0125(t)\u015d(Q\u2212t)\u00b7F` with no 2\u03c0, and one transverse delta remains.\n- **O5.** The dimension check (lines 363-370) is hand arithmetic, not derived from the native symbol dimensions.\n\n## Item 5: what the output can and cannot establish\n\n- **What it establishes.** The coefficient of \u03b7\u03c3 in the bare impedance Taylor expansion at (k_in, k_out) = (0, Q), at \u03c9 = 3. A nonzero Re I would show the literal 0 in slot `[0,2]` is not the full bare \u03b7\u03c3 coefficient at that point.\n- **What it does not establish.**\n  - The iterated Z1\u00b7c\u00b7Z1 product from the resolvent is a separate term.\n  - Whether the closed response, or the downstream reference-trace map, already absorbs this term is not decided here.\n  - Light excitation, loss and general input momenta are not addressed.\n- **Missing operand.** None beyond N4. The packet never shows the native contract that slot `[0,2]` is meant to hold the full second-order Taylor coefficient rather than rely on the iterated product. That is a downstream interpretation. The record should state it as such and not conclude \"incomplete operator\" from this output alone.\n\n**Verdict: NEEDS REVISION** (N1 through N4).",
+      "runReceipt": {
+        "engine": "claude",
+        "sessionId": "f291f70a-86de-4967-9ab7-fd3eb8639753",
+        "command": [
+          "/home/trevnorris/.local/bin/claude",
+          "--print",
+          "--output-format",
+          "json",
+          "--safe-mode",
+          "--restricted",
+          "--tools",
+          "Read,Glob,Grep",
+          "--allowedTools",
+          "Read,Glob,Grep",
+          "--permission-mode",
+          "dontAsk",
+          "--strict-mcp-config",
+          "--mcp-config",
+          "{\"mcpServers\":{}}",
+          "--setting-sources",
+          "",
+          "--disable-slash-commands",
+          "--session-id",
+          "f291f70a-86de-4967-9ab7-fd3eb8639753"
+        ],
+        "cwd": "/var/projects/toy_physics/_scratch/s11c/s11c-mixed-tanh-20261001/build-review/claude/work",
+        "startedUtc": "2026-10-01T20:02:13.704133+00:00",
+        "packetSha256": "b7b6b8dd5648e95714703d41a0db7cf0f7c6b07caad9dcfece6f137f8efec361",
+        "promptSha256": "ec2abf930b246795272fce9631531679e2b0a95eb16c48e53949c5367f9d4750",
+        "scientificExecutionEnabled": false,
+        "reviewVerdict": "NOT_ADJUDICATED",
+        "pid": 1523336,
+        "exitStatus": 0,
+        "finishedUtc": "2026-10-01T20:08:59.599769+00:00",
+        "wallSeconds": 405.89286179689225,
+        "outputSha256": "7a9d7ac0a9aa1860873ff7868cee3e5a1a7485c3625b6dfe022b4a8a4bfe8f04",
+        "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderrBytes": 0
+      },
+      "rawPath": "/var/projects/toy_physics/_scratch/s11c/s11c-mixed-tanh-20261001/build-review/claude.json"
+    },
+    "grok": {
+      "literalVerdict": "CLEAR FOR THIS FOCUSED MIXED-GRADE INSTRUMENT",
+      "text": "I'll start from the packet index and review only the listed sources for this mixed-grade instrument.The index lists the instrument, scope, inputs, and native excerpts. I'll read those next and keep the review inside that packet.The instrument is loaded. Next I\u2019ll compare its boundary, profile, and sheet construction against the native excerpts.**CLEAR FOR THIS FOCUSED MIXED-GRADE INSTRUMENT**\n\nThe bounded object is the upper-face bare impedance coefficient of independent grade \u03b7 \u03c3_W, on the saved profile `(1+tanh(y/L_W))/2`, at profile momenta `(k,Q)=(0,1/10)`, edges `(1/5,1/10)`, and \u03c9=3. It is not a stand-in for the linear kernel, the iterated first-shape product, a closed two-face response, or the full second-order shape correction. No integral was executed in this review. The conclusion below is source reconstruction of the emitted integrand.\n\nThe selected action is nonzero on the common outgoing sheet. After the native halves and the derivative identity, the profile integrand is the classical function\n\n`prefactor * A(t) * A(Q-t) / q(t)`,\n\nwith `prefactor = -W_0 \u03c9 \u03c1_m q_0 L_W / (4 q_Q)` and `A(t) = L t / (4 sinh(\u03c0 L t / 2))`. At the pinned point, `\u03c9\u00b2/c_s0\u00b2 - (1/5)\u00b2 - (1/10)\u00b2 = 1/25`, so `q_0 = 1/5` and `q_Q = \u221a3/10`, both outgoing and nongrazing. `prefactor` is real and negative. `A` is even and positive on the whole real line, including its removable value `1/(2\u03c0)`. On `|t|<1/5`, `q>0`, so the integrand is real and negative. On `|t|>1/5`, `q = +i g` (`g>0`) decays in the outward normal, and the real part is identically zero. The endpoints `t=\u00b11/5` are simple square-root singularities with a finite nonzero numerator, hence integrable, and the tails decay as `exp(-\u03c0 L |t|)`. The integral of the real part is therefore strictly negative.\n\n1. **Boundary Taylor.** The native graph normal in `S11c_a_interface_geometry_sympy_audit.py` is `(-\u2202h, 1)/\u221a(1+|\u2207h|\u00b2)` on the upper face. With `grad_h=(s,0,0)`, `\u2202_s n_x(0)=-1` and `\u2202_s n_z(0)=0`, so the retained rectangle sees `n\u2248(-s,0,0,1)` and no `h s` piece of the normal. The four-mode expansion keeps arbitrary input momentum `k`, solves unit outward normal velocity order by order, and uses `\u03b4p = i \u03c9 \u03c1_m \u03c6` with `exp(-i\u03c9t)` and `exp(+i q z)`. That flat limit is `\u03c9 \u03c1_m / q`, matching `dtn_flat_symbol`. The on-shell height and slope coefficients match `dtn_first_kernel` for `height_hat=1` and `tilt_hat=(1,0,0)`, including the native minus in `remainder` and the half-factors only later. At `k=0` the pure-slope channel drops because `tilt\u00b7k_profile=0`, while the bilinear piece `-s \u2202_1 \u03c6_height` survives and reduces to `-i \u03c9 \u03c1_m H q_i / (q_h q_o)`. Edge momenta stay inside the common dispersion and do not enter this normal projection. Setting `k=0` is the selected action, not a reduction to first shape order. Dropping pure `h\u00b2` and `s\u00b2` matches the declared rectangle; the worker\u2019s scope line correctly refuses to call the result the complete second-order correction after `\u03c3_W=\u03b7 W_0/L_W`.\n\n2. **Profile, contacts, halves.** `at_source` binds `w` and `L_W \u2202_y w = sech\u00b2(y/L_W)/2`. The native transform is `\u222b exp(-i\u0394k\u00b7y)/(2\u03c0)\u00b3`. Two conserved edge integrals become deltas and leave `1/(2\u03c0)` on the profile line; the inverse convention then has convolution `\u222b dt \u0125(t) \u015d(Q-t)` with no extra `2\u03c0`. The logistic substitution `x=exp(2y/L)` gives `w' dy = dx/(1+x)\u00b2`, and `\u0393(1-iz)\u0393(1+iz)/(2\u03c0)` with `z=L t/2` is `A(t)`. Thus `\u0175 = \u03b4(t)/2 + PV[A(t)/(i t)]` and `t \u0175 = A/i`, while the jet transform is `L A`. Multiplication by the kernel numerator `H=t` removes `\u03b4` and the principal value before any sheet singularity is touched; `1/q(t)` is finite at `t=0`. No contact term remains. Geometric height `(W_0/2) \u03b7 w` and slope `\u03c3 jet/2` each contribute one native half, the same halves as `shape_source`. The integral over `t` already includes both momentum assignments. `(f(t)+f(Q-t))/2` is the same integral under `t\u2192Q-t` on the outgoing sheet, not a second copy. Symmetrization does not change the sign argument, which uses the unsymmetrized classical integrand.\n\n3. **Sheet and noncancellation.** Input, output, and the height intermediate all use `q\u00b2 = 1/25 - p\u00b2`, with the positive-real root inside the sound cone and the positive-imaginary root outside. Only the height leg produces a `t`-dependent square root; the slope insertion is algebraic. The two branch points that must be kept are `t=\u00b11/5`, and the nonzero endpoint numerators show they are not cancelled. The sample at `t=1/20` lies in the propagating interval and is negative, but the sign proof is the whole-line real part, not that sample. Wrong-sheet, omitted-slope, and reversed-slope substitutions move this value because the depth and the normal tilt are both load-bearing.\n\n4. **Joins and runtime.** Literal `FLAT_DIAGONAL` / `FIRST_SHAPE`, extracted `shape_source`, `dtn_flat_symbol`, and `dtn_first_kernel`, and the c2 profile/jet operands are the joins actually used. The c2 producer and `kernel_bridge` are not executed; the direct slot is an AST read of the literal `0` in `z_three[0,2]`. Pins, immutable JSON, emit-before-guard, containment before the SymPy import, inherited infinite `RLIMIT_CPU`, and the absence of a worker deadline match the guard and the input record. The guard\u2019s two-second `wait` is a sample period. I do not see an indentation or import fault: single-line `get_source_segment` starts at `col_offset`, and the extracted c1 functions receive the globals they use. Combined `.is_negative` / `sp.re` guards can fail closed if SymPy returns `None`; that is tooling, and it does not flip the sign argument.\n\n5. **What the output is.** The emitted integrand is only this selected bare source action. `z_three[0,2] = 0` is the absent direct three-leg entry. The iterated \u03b7\u03c3 product built later from two first-shape insertions is a different object and is not formed here. No reference-pressure inverse, slab resolvent, current, or loss is constructed. No further operand is required for this question: the profile transforms, native halves, rectangular kernel, outgoing branch, and convolution measure are all in the worker.\n\nOptional, not required for this question:\n\n- `(h*s*mixed).subs(s,0)` at the zero-jet guard is true for any coefficient. The slope-factor control is the real one.\n- A middle residual `q(t)\u00b2 + t\u00b2 - cutoff\u00b2` would make the common dispersion an emitted operand; it is already implicit in the sample depth and the endpoint squares.\n- Split the sample and exterior-real guards into the prefactor sign, the positivity of `A`, and the explicit factor `1/(i g)` so a symbolic `re` cannot abort a true identity.\n- Keep `reasoningForReview` out of the worker record; the ingredient emissions are the evidence.",
+      "runReceipt": {
+        "engine": "grok",
+        "sessionId": "3dd400d1-02bf-4e9d-ac4f-4a788dda352b",
+        "command": [
+          "/home/trevnorris/.local/bin/grok",
+          "--cwd",
+          "/var/projects/toy_physics/_scratch/s11c/s11c-mixed-tanh-20261001/build-review/grok/work",
+          "--prompt-file",
+          "/var/projects/toy_physics/_scratch/s11c/s11c-mixed-tanh-20261001/build-review/grok/work/input/review-prompt.md",
+          "--output-format",
+          "json",
+          "--permission-mode",
+          "dontAsk",
+          "--no-plan",
+          "--tools",
+          "Read",
+          "--no-subagents",
+          "--disable-web-search",
+          "--verbatim",
+          "--session-id",
+          "3dd400d1-02bf-4e9d-ac4f-4a788dda352b"
+        ],
+        "cwd": "/var/projects/toy_physics/_scratch/s11c/s11c-mixed-tanh-20261001/build-review/grok/work",
+        "startedUtc": "2026-10-01T20:02:13.703670+00:00",
+        "packetSha256": "b7b6b8dd5648e95714703d41a0db7cf0f7c6b07caad9dcfece6f137f8efec361",
+        "promptSha256": "ec2abf930b246795272fce9631531679e2b0a95eb16c48e53949c5367f9d4750",
+        "scientificExecutionEnabled": false,
+        "reviewVerdict": "NOT_ADJUDICATED",
+        "pid": 1523335,
+        "exitStatus": 0,
+        "finishedUtc": "2026-10-01T20:27:59.719562+00:00",
+        "wallSeconds": 1546.014172301977,
+        "outputSha256": "5ce8e3f358bef56ee374075d747cce6ed93d0f7bb35d888b0c862c1c68e1722b",
+        "stderrSha256": "8233fa6f138373e5706f9c30f072aaa4123149f3a2bd73fb2b4550f5b7d995a3",
+        "stderrBytes": 2863
+      },
+      "rawPath": "/var/projects/toy_physics/_scratch/s11c/s11c-mixed-tanh-20261001/build-review/grok.json"
+    }
+  },
+  "N3SourceAssignments": [
+    {
+      "function": "build_face_source",
+      "name": "denominator",
+      "line": 849,
+      "source": "denominator = sp.sqrt(1 + dot(grad_h, grad_h))"
+    },
+    {
+      "function": "build_face_source",
+      "name": "normal_exact",
+      "line": 850,
+      "source": "normal_exact = tuple([-face * component / denominator for component in grad_h] + [face / denominator])"
+    }
+  ],
+  "noScienceRun": true,
+  "independentBuildClearance": false,
+  "stderrScope": "Claude empty; Grok 2863-byte CLI plugin/hook diagnostics, not scientific stderr.",
+  "stateCaveat": "externalSubmitted=false is stale preparation metadata; exact approval, receipts and reports establish submission."
+}

@@ -1,0 +1,90 @@
+{
+  "status": "BOTH_SOURCE_REVIEW_LEGS_LAUNCHED_NO_SCIENCE",
+  "launch": {
+    "jobPid": 1523327,
+    "watcherPid": 1523328,
+    "packetSha256": "b7b6b8dd5648e95714703d41a0db7cf0f7c6b07caad9dcfece6f137f8efec361",
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "concurrentReviewWorkers": 2,
+    "scienceCalls": 0,
+    "runnerSha256": "30ed68e2d751f5c85399fcdf99384d9ef095376983da0b1bf91b89aef62e5b62",
+    "launcherSha256": "d7dd71850300818294a1218ecaf59c5576f63884457eb12b87d69d8b0c7df2a5"
+  },
+  "hook": {
+    "status": "waiting",
+    "watcherPid": 1523328,
+    "jobPid": 1523327,
+    "thread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+    "startedUtc": "2026-10-01T20:02:13.584684+00:00",
+    "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
+    "messageSha256": "d1006e6c732efb2ae346ec58769188cb613da23bfc1b79dcdab4c6740a448f38",
+    "notifications": {}
+  },
+  "packetSha256": "b7b6b8dd5648e95714703d41a0db7cf0f7c6b07caad9dcfece6f137f8efec361",
+  "reviewers": {
+    "claude": {
+      "sessionId": "f291f70a-86de-4967-9ab7-fd3eb8639753",
+      "pid": 1523336,
+      "command": [
+        "/home/trevnorris/.local/bin/claude",
+        "--print",
+        "--output-format",
+        "json",
+        "--safe-mode",
+        "--restricted",
+        "--tools",
+        "Read,Glob,Grep",
+        "--allowedTools",
+        "Read,Glob,Grep",
+        "--permission-mode",
+        "dontAsk",
+        "--strict-mcp-config",
+        "--mcp-config",
+        "{\"mcpServers\":{}}",
+        "--setting-sources",
+        "",
+        "--disable-slash-commands",
+        "--session-id",
+        "f291f70a-86de-4967-9ab7-fd3eb8639753"
+      ],
+      "cwd": "/var/projects/toy_physics/_scratch/s11c/s11c-mixed-tanh-20261001/build-review/claude/work",
+      "startedUtc": "2026-10-01T20:02:13.704133+00:00",
+      "packetSha256": "b7b6b8dd5648e95714703d41a0db7cf0f7c6b07caad9dcfece6f137f8efec361",
+      "scientificExecutionEnabled": false
+    },
+    "grok": {
+      "sessionId": "3dd400d1-02bf-4e9d-ac4f-4a788dda352b",
+      "pid": 1523335,
+      "command": [
+        "/home/trevnorris/.local/bin/grok",
+        "--cwd",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-mixed-tanh-20261001/build-review/grok/work",
+        "--prompt-file",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-mixed-tanh-20261001/build-review/grok/work/input/review-prompt.md",
+        "--output-format",
+        "json",
+        "--permission-mode",
+        "dontAsk",
+        "--no-plan",
+        "--tools",
+        "Read",
+        "--no-subagents",
+        "--disable-web-search",
+        "--verbatim",
+        "--session-id",
+        "3dd400d1-02bf-4e9d-ac4f-4a788dda352b"
+      ],
+      "cwd": "/var/projects/toy_physics/_scratch/s11c/s11c-mixed-tanh-20261001/build-review/grok/work",
+      "startedUtc": "2026-10-01T20:02:13.703670+00:00",
+      "packetSha256": "b7b6b8dd5648e95714703d41a0db7cf0f7c6b07caad9dcfece6f137f8efec361",
+      "scientificExecutionEnabled": false
+    }
+  },
+  "privateCopiesVerified": true,
+  "reportContentInspected": false,
+  "scientificJobs": 0,
+  "commitDeferredUntilBothReports": true
+}

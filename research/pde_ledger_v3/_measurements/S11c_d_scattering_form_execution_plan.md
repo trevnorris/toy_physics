@@ -1,3 +1,35 @@
+**MIXED-TANH REVIEWS COMPLETE; NARROW REPAIR PENDING (2026-10-01):**
+Both reports arrived: Claude NEEDS REVISION, Grok CLEAR FOR THIS FOCUSED
+MIXED-GRADE INSTRUMENT. Read review_disposition.md and review_record.json.
+Both support the selected mathematics; accepted N1/N4 concern persistence and
+routing the already-computed native factors. N3 duplicate-source concern is
+refuted by the actual AST; N2 predicted simplifier failure is not established,
+and the installed gamma reducer supports the cited shifted reflection pair.
+Preserve exact reviewed source and reports before the local tooling corrections.
+No new independent CLEAR or science result; 109 metadata checks pass.
+The user-authorized focused guarded run remains scoped to the diagnostic after
+readiness, without deadlines. No fresh external packet, automatic retry, closed
+operator acceptance, producer regeneration or defect sweep is authorized.
+
+**FOCUSED MIXED-TANH INSTRUMENT IN REVIEW (2026-10-01):**
+The user approved the next direct height–slope test, then explicitly approved
+this exact fresh Claude/Grok packet: 19 files / 125,504 bytes, SHA256
+b7b6b8dd5648e95714703d41a0db7cf0f7c6b07caad9dcfece6f137f8efec361.
+Both source-only review legs launched independently; hook armed for this session.
+Read S11c_upstream_mixed_tanh_scope.md, preparation.json and review_launch.json.
+No report content inspected, no scientific run, no production source change.
+The complete candidate instrument and native source operands are in the packet;
+five standard-library tooling tests passed, not scientific validation.
+Question: bare upper-face eta*sigma action on the actual tanh profile and common
+outgoing dispersion at omega3; no transverse excitation or leakage claim.
+Wait for both reports before adjudication/edits. Preserve exact reviewed bytes;
+no automatic reviewer retry or new export. After substantive clearance, existing
+next-test approval covers one source-pinned 4 GiB pooled guarded run, with the
+usual supervisor and hook, no deadlines. Stop at this evidence; no defect sweep
+or producer regeneration. Keep selected uniform results and all older history.
+Canonical preparation awaits both reports before commit under G3; scratch stays
+ignored. No model polling or recurring task.
+
 **SELECTED UNIFORM NEAR-UNITY CHECK COMPLETED (2026-10-01):**
 Read S11c_d_near_unity_uniform_continue_result.md and continue_completion.json.
 All24 end evaluations/48sign checks at12exact bulk speeds support the selected

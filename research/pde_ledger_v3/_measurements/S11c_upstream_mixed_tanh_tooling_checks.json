@@ -1,0 +1,13 @@
+{
+  "command": [
+    "python3",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_mixed_tanh_test.py"
+  ],
+  "exitCode": 0,
+  "stdout": "",
+  "stderr": ".....\n----------------------------------------------------------------------\nRan 5 tests in 0.012s\n\nOK\n",
+  "tests": 5,
+  "scope": "Standard-library extraction/storage/import-boundary tests only; no scientific execution",
+  "workerSha256": "bef2615e4209525ab4d1f58c49ba080cd07f158d2b717c2a20803236defb13ea",
+  "testSha256": "7eda2d65fe2b305216be9b3b5ae8a086e6ef0a94edc75ae9886d361df1d4e92b"
+}

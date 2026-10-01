@@ -1,0 +1,32 @@
+{
+  "status": "REVIEWS_COMPLETE_LOCAL_TOOLING_REPAIR_PENDING",
+  "packetDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-mixed-tanh-20261001/build-review/packet",
+  "packetSha256": "b7b6b8dd5648e95714703d41a0db7cf0f7c6b07caad9dcfece6f137f8efec361",
+  "archiveSha256": "3bb3df5078edc7846bf11834b02dce1bbf931e466a45c0f62481a6ae4811adf4",
+  "packetFiles": 19,
+  "packetBytes": 125504,
+  "reviewers": [
+    "claude",
+    "grok"
+  ],
+  "reviewerExecution": "source-only prospective build/method",
+  "currentThread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+  "externalSubmitted": true,
+  "scientificJobLaunched": false,
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-mixed-tanh-20261001/build-review",
+  "manifestSha256": "9de667ff5cba94e03a1210d620caef3dbf90cd23bfd0b0e1e81420b560e1de77",
+  "workerSha256": "bef2615e4209525ab4d1f58c49ba080cd07f158d2b717c2a20803236defb13ea",
+  "toolingTests": 5,
+  "packetConsent": "EXPLICITLY_APPROVED_FIXED_PACKET",
+  "userNextTestAuthority": true,
+  "canonicalCommit": "PRESERVE_EXACT_REVIEWED_BASELINE_BEFORE_REPAIR",
+  "automaticRetry": false,
+  "approvalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-mixed-tanh-20261001/build-review/explicit-packet-approval.json",
+  "approvalSha256": "7e46ff7a4acadcfd7c76d8d1f3e182916f3f27493e33622c4c8a9fdf30915403",
+  "launchRecord": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_mixed_tanh_review_launch.json",
+  "literalVerdicts": {
+    "claude": "NEEDS REVISION",
+    "grok": "CLEAR FOR THIS FOCUSED MIXED-GRADE INSTRUMENT"
+  },
+  "independentBuildClearance": false
+}

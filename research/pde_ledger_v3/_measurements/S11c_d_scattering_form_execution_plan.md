@@ -1,3 +1,18 @@
+**PARALLEL NEAR-UNITY / UPSTREAM REVIEW PREPARATION (2026-10-01):**
+User approved the two-track proposal and parallel resource use. This supersedes
+the preparation stop below for these tracks, not the unresolved benchmark status.
+Near-unity selected uniform method and four-repair review packets are frozen,
+awaiting their existing exact-payload external consent; no science or external
+review launched yet. Read S11c_parallel_preparation.md and the two packet records
+in S11c_parallel_review_preparation.json. Resource pool/tooling: 22 tests plus
+actual simultaneous supervisor workers passed; no deadlines,16GiB aggregate,
+4GiB host reserve,disjoint physical-core assignments,zero swap. Failed initial
+cpuset smoke preserved; corrected supported process-affinity backend verified.
+Use guard --pool and supervisor --parallel-prerequisite-read for new pooled jobs.
+Private independent reviewer inputs; computed probes only through guarded helper.
+Stop after uniform evidence and applicable upstream findings, before defect sweep.
+No baseline repair/review debt erased; scratch untracked; original physics untouched.
+
 **CENTRAL BENCHMARK FINISHED — UNRESOLVED; STOP (2026-10-01):**
 All10 omega3 solves finished; no process failure/retry. This is strict rest bulk,
 LAB_HELD/RHO4_CONSTANT, fixed profile/tangents, selected speed ratio~0.12, not the

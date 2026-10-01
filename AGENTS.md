@@ -39,3 +39,25 @@ new version; preserve historical source snapshots. This policy supersedes older
 900/840-second caps and progress-stall timeouts in project instructions. No new review or permission is
 needed solely to remove these obsolete timers. Pure tooling fixes remain local
 test work; scientific method/equation/claim changes retain applicable review.
+
+# Parallel resource authorization (user instruction, October 1, 2026)
+
+The user explicitly authorized parallel scripts and use of available machine
+resources for the near-unity uniform check and upstream repair review tracks.
+This supersedes the one-job restriction above for explicitly pooled jobs; it
+does not authorize unguarded execution or replay of completed calculations.
+Use the tested opt-in pool in `scripts/s11c_guarded_run.py`, with disjoint CPU
+assignments, an aggregate memory reservation, zero job swap, and a 4 GiB host
+available-memory reserve. The initial pool budget is 16 GiB across all pooled
+jobs, not 16 GiB for each job. Native scientific memory limits remain required.
+Legacy exclusive jobs and pooled jobs must not overlap. Preserve prior pinned
+guard/supervisor snapshots and all incident records. Pooled jobs use desktop-
+managed priority; no scheduler exception or host configuration change is needed.
+
+Reviewers may work independently in parallel on fixed source snapshots. Keep
+reviewer outputs separate until both finish, and honor exact-packet external
+submission consent. At most two Wolfram kernels may hold the two license seats;
+coordinate their use with the user's other Claude task. No elapsed-time limit
+applies to review kernels either. Pure tooling fixes need local tests and a
+rationale, not another physics-review round. Stop after the uniform evidence
+and applicable upstream review findings before starting a defect sweep.

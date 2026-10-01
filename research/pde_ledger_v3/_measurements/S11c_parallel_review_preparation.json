@@ -1,0 +1,38 @@
+{
+  "status": "TWO_PACKETS_PREPARED_AWAITING_EXACT_EXPORT_CONSENT",
+  "packets": [
+    {
+      "status": "PREPARED_AWAITING_EXACT_PACKET_CONSENT",
+      "packetDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-method-review/packet",
+      "packetSha256": "847839ce129366fc274bc6d01a194561e3bea1f423425b8ce2defc1f08d2a62e",
+      "archiveSha256": "612f22f80b9ecb0c956b36d36d940333bc88d61bc76190d8dff6ee07ff61391f",
+      "packetFiles": 22,
+      "packetBytes": 118748,
+      "reviewers": [
+        "claude",
+        "grok"
+      ],
+      "reviewerExecution": "source-only",
+      "currentThread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+      "scienceLaunched": false,
+      "externalSubmitted": false
+    },
+    {
+      "status": "PREPARED_AWAITING_EXACT_PACKET_CONSENT",
+      "packetDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/upstream-repair-review/packet",
+      "packetSha256": "7cf2a67660fcec7f4029fdef6384a0520104b265596f902b2f3486f5e87eee29",
+      "archiveSha256": "c076da8257220ecf588c9932fc0a8a0c044c053f6f645cba2867aeda65afcaf4",
+      "packetFiles": 86,
+      "packetBytes": 1325563,
+      "reviewers": [
+        "claude",
+        "grok"
+      ],
+      "reviewerExecution": "focused independently authored guarded SymPy probes",
+      "currentThread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+      "scienceLaunched": false,
+      "externalSubmitted": false
+    }
+  ],
+  "scientificWorkLaunched": false
+}

@@ -1,0 +1,204 @@
+{
+  "status": "PARALLEL_TOOLING_VERIFIED_NO_SCIENCE_LAUNCHED",
+  "userAuthority": "User authorized available resources/multiple parallel scripts, accepted two-track proposal, then said Great. Let's get to it.",
+  "unitTestsPassed": 22,
+  "hostSmoke": {
+    "rows": [
+      {
+        "run": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-tooling-20261001/host-smoke-v2-0",
+        "exitCode": 0,
+        "outcome": {
+          "exitCode": 0,
+          "wallSeconds": 3.2129464589525014,
+          "unit": "s11c-guard-dfeb6f5e6dab",
+          "stderrBytes": 0,
+          "limitsVerified": true,
+          "childOutcome": {
+            "exitCode": 0,
+            "guardReason": null,
+            "wallSeconds": 3.1227159610716626,
+            "childPid": 1431378
+          }
+        },
+        "limits": {
+          "memory.max": "2147483648",
+          "memory.swap.max": "0",
+          "pids.max": "32",
+          "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-dfeb6f5e6dab.service",
+          "nice": 0,
+          "affinity": [
+            15
+          ],
+          "threads": {
+            "OPENBLAS_NUM_THREADS": "1",
+            "OMP_NUM_THREADS": "1",
+            "MKL_NUM_THREADS": "1",
+            "NUMEXPR_NUM_THREADS": "1",
+            "VECLIB_MAXIMUM_THREADS": "1",
+            "BLIS_NUM_THREADS": "1"
+          },
+          "nativeAddressSpaceBytes": [
+            2147483648,
+            2147483648
+          ],
+          "systemd.CPUAffinity": "15",
+          "affinityEnforcement": "systemd-and-inherited-process"
+        },
+        "duration": {
+          "verified": true,
+          "actual": {
+            "RuntimeMaxUSec": "infinity",
+            "Restart": "no"
+          },
+          "wallDeadlineSeconds": null,
+          "inactivityDeadlineSeconds": null
+        },
+        "worker": {
+          "start": 1790871572.6205046,
+          "end": 1790871575.6287816,
+          "pid": 1431380,
+          "affinity": [
+            15
+          ],
+          "nativeAddressSpace": [
+            2147483648,
+            2147483648
+          ],
+          "allocatedBytes": 16777216,
+          "scientificImports": false
+        }
+      },
+      {
+        "run": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-tooling-20261001/host-smoke-v2-1",
+        "exitCode": 0,
+        "outcome": {
+          "exitCode": 0,
+          "wallSeconds": 3.2123186379903927,
+          "unit": "s11c-guard-784b5a7bb851",
+          "stderrBytes": 0,
+          "limitsVerified": true,
+          "childOutcome": {
+            "exitCode": 0,
+            "guardReason": null,
+            "wallSeconds": 3.1232206140412018,
+            "childPid": 1431379
+          }
+        },
+        "limits": {
+          "memory.max": "2147483648",
+          "memory.swap.max": "0",
+          "pids.max": "32",
+          "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-784b5a7bb851.service",
+          "nice": 0,
+          "affinity": [
+            14
+          ],
+          "threads": {
+            "OPENBLAS_NUM_THREADS": "1",
+            "OMP_NUM_THREADS": "1",
+            "MKL_NUM_THREADS": "1",
+            "NUMEXPR_NUM_THREADS": "1",
+            "VECLIB_MAXIMUM_THREADS": "1",
+            "BLIS_NUM_THREADS": "1"
+          },
+          "nativeAddressSpaceBytes": [
+            2147483648,
+            2147483648
+          ],
+          "systemd.CPUAffinity": "14",
+          "affinityEnforcement": "systemd-and-inherited-process"
+        },
+        "duration": {
+          "verified": true,
+          "actual": {
+            "RuntimeMaxUSec": "infinity",
+            "Restart": "no"
+          },
+          "wallDeadlineSeconds": null,
+          "inactivityDeadlineSeconds": null
+        },
+        "worker": {
+          "start": 1790871572.6250372,
+          "end": 1790871575.6342742,
+          "pid": 1431381,
+          "affinity": [
+            14
+          ],
+          "nativeAddressSpace": [
+            2147483648,
+            2147483648
+          ],
+          "allocatedBytes": 16777216,
+          "scientificImports": false
+        }
+      }
+    ],
+    "allPassed": true,
+    "overlapSeconds": 3.00374436378479,
+    "differentCPUs": true,
+    "reservationsReleased": true
+  },
+  "reviewDispatcherSmoke": {
+    "startedUtc": "2026-10-01T16:20:10.067647+00:00",
+    "script": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-tooling-20261001/review-helper-smoke/probe.py",
+    "scriptSha256": "474e8faffd099bcf48a94b7b437369ea584593482a89c945648741153c4b2697",
+    "sourceCopy": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-tooling-20261001/review-helper-smoke/cas-runs/e168e64b05744d82b97da81724181395/probe.py",
+    "executionWrapperSha256": "9860dd579b9a53811e4f3abc6ddf64086f7858f3910f7b9c59db94d74dfffd6d",
+    "command": [
+      "/usr/bin/python3",
+      "/var/projects/toy_physics/scripts/s11c_guarded_run.py",
+      "--pool",
+      "s11c-review",
+      "--memory-gib",
+      "4",
+      "--log-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-tooling-20261001/review-helper-smoke/cas-runs/e168e64b05744d82b97da81724181395/resource-guard",
+      "--",
+      "/usr/bin/python3",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+      "--parallel-prerequisite-read",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-tooling-20261001/review-helper-smoke/cas-runs/e168e64b05744d82b97da81724181395/supervisor",
+      "--stage",
+      "review_probe",
+      "--",
+      "/usr/bin/python3",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-tooling-20261001/review-helper-smoke/cas-runs/e168e64b05744d82b97da81724181395/execute_probe.py"
+    ],
+    "guardSha256": "6a6369424edfa43cbdaa36e8fa2bebbd278bebdbac3b565b2a8498aaca1dc9df",
+    "supervisorSha256": "35ad679486d2fcf5f4ee803b42293e4dd50cbe0bfcce790eb95343768bb8fd69",
+    "wallDeadlineSeconds": null,
+    "retry": false,
+    "exitCode": 0,
+    "finishedUtc": "2026-10-01T16:20:10.336013+00:00",
+    "originalScriptUnchanged": true,
+    "sourceCopyUnchanged": true
+  },
+  "initialFailedHostSmoke": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-tooling-20261001/host-smoke.json",
+    "sha256": "8276d95cb4d647c0ca9cf1ff99c674f7dfe987d35ca58fe0b8495675c8e66daf",
+    "cause": "cpuset controller not delegated; failed before workloads; explicit implementation corrected to systemd and inherited process affinity"
+  },
+  "sourceHashes": {
+    "scripts/s11c_guarded_run.py": "6a6369424edfa43cbdaa36e8fa2bebbd278bebdbac3b565b2a8498aaca1dc9df",
+    "scripts/test_s11c_guarded_run_parallel.py": "7532ec6bf433cb29a1a41cdfc3e076a48aa7b04e956a03290d168fee09b5f139",
+    "scripts/s11c_review_cas.py": "ae94c1ca02fd6567d0a9afa18365c341758a01c3061fe3e2d86f401afbc8f984",
+    "scripts/test_s11c_review_cas.py": "877f376de7427fb01fb974168c05157bcdb97ab35b14941dcbf83a7467c4849b",
+    "research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py": "35ad679486d2fcf5f4ee803b42293e4dd50cbe0bfcce790eb95343768bb8fd69"
+  },
+  "oldSources": {
+    "guard-before.py": "36aaeb3aff7c36112636509261537000afda4040d111418215f7c4ff9f91b1fe",
+    "supervisor-before.py": "45a16f7f952ca6b571362b1c386fec76cd86f1e0ad04113074adf49c683ec49c"
+  },
+  "poolLimits": {
+    "aggregateMemoryBytes": 17179869184,
+    "minimumHostAvailableBytes": 4294967296,
+    "maximumWorkers": 6,
+    "oneLogicalCPUPerPhysicalCore": true,
+    "nativeThreads": 1,
+    "swapBytes": 0,
+    "deadlines": null
+  },
+  "packetConsent": "pending",
+  "scientificPayloadRestored": false
+}

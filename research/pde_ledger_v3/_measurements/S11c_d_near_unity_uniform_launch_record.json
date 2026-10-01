@@ -1,0 +1,142 @@
+{
+  "status": "LAUNCHED_AWAITING_COMPLETION_INSPECTION",
+  "recordedUtc": "2026-10-01T18:31:28.935734+00:00",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-01",
+  "workerSha256": "49506203cb214572f712b023ba71c620f9f13ae75d144827726f03220fc2ff4e",
+  "gateSha256": "6535bc2d495823cf8dfa6310d764b1ed90135d49b188c44dbef43543f096a61a",
+  "manifestSha256": "afb408e2e65de714a34fc1c90ca0302c7ca62d0e1c69b56ec7079581aae60cf3",
+  "launch": {
+    "jobPid": 1488052,
+    "watcherPid": 1488053,
+    "gateSha256": "6535bc2d495823cf8dfa6310d764b1ed90135d49b188c44dbef43543f096a61a",
+    "command": [
+      "/usr/bin/python3",
+      "/var/projects/toy_physics/scripts/s11c_guarded_run.py",
+      "--pool",
+      "s11c-near-unity",
+      "--memory-gib",
+      "8",
+      "--tasks-max",
+      "32",
+      "--log-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-01/resource-guard",
+      "--",
+      "/usr/bin/python3",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+      "--parallel-prerequisite-read",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-01",
+      "--stage",
+      "near_unity_uniform",
+      "--",
+      "/usr/bin/python3",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_near_unity_uniform.py",
+      "--out",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-01/complete",
+      "--inputs",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_near_unity_uniform_inputs.json",
+      "--gate",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_near_unity_uniform_gate.json"
+    ],
+    "thread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+    "automaticRetry": false
+  },
+  "startupResourceInvocation": {
+    "command": [
+      "/usr/bin/python3",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+      "--parallel-prerequisite-read",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-01",
+      "--stage",
+      "near_unity_uniform",
+      "--",
+      "/usr/bin/python3",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_near_unity_uniform.py",
+      "--out",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-01/complete",
+      "--inputs",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_near_unity_uniform_inputs.json",
+      "--gate",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_near_unity_uniform_gate.json"
+    ],
+    "cwd": "/var/projects/toy_physics",
+    "unit": "s11c-guard-8d370054c59a",
+    "seconds": 0,
+    "requestedSecondsArgumentIgnored": 0,
+    "wallDeadlineSeconds": null,
+    "inactivityDeadlineSeconds": null,
+    "cpu": 15,
+    "memoryMax": 8589934592,
+    "swapMax": 0,
+    "tasksMax": 32,
+    "minimumHostAvailableBytes": 4294967296,
+    "startedUtc": "2026-10-01T18:30:33.355102+00:00",
+    "pool": "s11c-near-unity",
+    "priorityPolicy": "desktop-managed",
+    "logDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-01/resource-guard",
+    "affinityEnforcement": "systemd-and-inherited-process",
+    "reservedBeforeBytes": 0,
+    "outstandingHeadroomBytes": 0,
+    "hostAvailableBytes": 22097301504,
+    "poolMemoryMax": 17179869184,
+    "poolMaxJobs": 6,
+    "activeUnits": [],
+    "owner": {
+      "pid": 1488057,
+      "startTicks": "92073958",
+      "bootId": "c8304a64-451a-49f4-b454-d113d706e731"
+    }
+  },
+  "limitValidation": {
+    "verified": true,
+    "actual": {
+      "memory.max": "8589934592",
+      "memory.swap.max": "0",
+      "pids.max": "32",
+      "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-8d370054c59a.service",
+      "nice": 0,
+      "affinity": [
+        15
+      ],
+      "threads": {
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "VECLIB_MAXIMUM_THREADS": "1",
+        "BLIS_NUM_THREADS": "1"
+      },
+      "nativeAddressSpaceBytes": [
+        8589934592,
+        8589934592
+      ],
+      "systemd.CPUAffinity": "15",
+      "affinityEnforcement": "systemd-and-inherited-process"
+    }
+  },
+  "durationValidation": {
+    "verified": true,
+    "actual": {
+      "RuntimeMaxUSec": "infinity",
+      "Restart": "no"
+    },
+    "wallDeadlineSeconds": null,
+    "inactivityDeadlineSeconds": null
+  },
+  "hookStartup": {
+    "status": "waiting",
+    "thread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+    "jobPid": 1488052,
+    "watcherPid": 1488053
+  },
+  "startupScientificPid": 1488078,
+  "sourceSnapshotCount": 32,
+  "sourceSnapshotHashesMatched": true,
+  "oneStartupObservation": "At the host startup check, supervisor running; scientific stderr empty; all9 original payload restores and selected-lift return saved. No runtime premise accepted.",
+  "methodClearanceOnly": true,
+  "independentWorkerOrResultClearance": false,
+  "next": "Use silent completion hook; inspect actual results, resources, receipts and posthashes. No healthy-job/model polling. Stop before defect sweep."
+}

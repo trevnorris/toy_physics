@@ -1,3 +1,20 @@
+**SELECTED UNIFORM NEAR-UNITY RUN LAUNCHED (2026-10-01):**
+Both fresh method reports literally CLEAR FOR THIS SELECTED UNIFORM METHOD.
+Frozen worker49506203/manifestafb408e2 and gate6535bc2d were committed6cb0cc8a
+before the authorized launch. Read S11c_d_near_unity_uniform_launch_record.json.
+Completion hook armed first for this session; actual shared guard/supervisor
+startup verifies8GiB native/cgroup,zero swap,CPU15,32tasks,one thread,16GiB pool,
+4GiB host reserve,desktop priority,RuntimeMaxUSec=infinity and Restart=no.
+At the one-time host startup check, all9 original inputs and the selected-lift
+return were saved; strict scientific stderr was empty. No result is accepted.
+The instrument checks at most12 exact speeds/24 end evaluations, both normal
+signs and two polarizations, from original physical inputs with only omega3 and
+bulk speed changed. Nonuniform/mixed-grade applicability remains conditional.
+No producer replay, defect integration, calibration or loss claim. Preserve the
+pinned worker/helper/gate files while running. The upstream review has its own
+hook; no peer sharing, automatic retry, model polling or recurring task.
+At completion inspect actual evidence and costs, then stop before a defect sweep.
+
 **SELECTED UNIFORM METHOD CLEARED; IMPLEMENTATION IN PROGRESS (2026-10-01):**
 Both fresh reviewers literally CLEAR FOR THIS SELECTED UNIFORM METHOD. The
 28-file packet, archive, receipts, private copies and source pins pass181 checks;

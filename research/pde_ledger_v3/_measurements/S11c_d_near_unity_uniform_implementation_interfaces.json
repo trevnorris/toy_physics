@@ -1,0 +1,297 @@
+{
+  "status": "SOURCE_JSON_AND_OPAQUE_BYTE_INTERFACE_SCAFFOLD_ONLY",
+  "createdLocalDate": "2026-10-01",
+  "scientificImports": false,
+  "scientificPayloadRestoration": false,
+  "workerImplemented": false,
+  "readyGateCreated": false,
+  "externalExport": false,
+  "partOfFrozenReviewPackets": false,
+  "inputManifestSource": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_end_maps_v2_inputs.json",
+    "bytes": 5857,
+    "sha256": "7f71debc891e09d8766f826fba7dd9a711ec4f69c93d545543bf3e4f05a30b17"
+  },
+  "inputs": [
+    {
+      "key": "uniformSource",
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-uniform-source-20260919/production/complete/uniform-source.pickle",
+      "bytes": 109308,
+      "sha256": "a482c5023d16558f52b20d0a347d6e38f33f0f06f780abd256c5220f922b5571",
+      "expectedSha256": "a482c5023d16558f52b20d0a347d6e38f33f0f06f780abd256c5220f922b5571",
+      "byteHashMatches": true,
+      "expectedKeysFromSource": [
+        "records[end].strong",
+        "records[end].weak",
+        "records[end].coupling",
+        "curl",
+        "units",
+        "profileEndpoints",
+        "dimensionState"
+      ],
+      "runtimeSchemaVerified": false
+    },
+    {
+      "key": "uniformResponse",
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-uniform-response-20260919/production/complete/uniform-response.pickle",
+      "bytes": 543796,
+      "sha256": "1d5bd9967d08c5ad01eab8707ea25af01cfb9bf61bfd83073ed898c9d76a772f",
+      "expectedSha256": "1d5bd9967d08c5ad01eab8707ea25af01cfb9bf61bfd83073ed898c9d76a772f",
+      "byteHashMatches": true,
+      "expectedKeysFromSource": [
+        "fieldUnits",
+        "currentUnit"
+      ],
+      "runtimeSchemaVerified": false
+    },
+    {
+      "key": "LEFTFrequency",
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-source-20260919/finish-01/complete/left-frequency-pencil.pickle",
+      "bytes": 9470,
+      "sha256": "67148025b209f7171b7679249c075c6e68b76882ac6ac5adfffed4eb2766211a",
+      "expectedSha256": "67148025b209f7171b7679249c075c6e68b76882ac6ac5adfffed4eb2766211a",
+      "byteHashMatches": true,
+      "expectedKeysFromSource": [
+        "originalAlgebraic",
+        "originalRelation",
+        "momentum",
+        "radical",
+        "frequency",
+        "origin",
+        "mapping (old fixed material bindings; replace changed c_s0, do not adopt old numerical matrix)"
+      ],
+      "runtimeSchemaVerified": false
+    },
+    {
+      "key": "RIGHTFrequency",
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-source-20260919/finish-01/complete/right-frequency-pencil.pickle",
+      "bytes": 23826,
+      "sha256": "0fe2cccd0b9c08f57666530b2519dff26e8dee633058aae85d3d7f4b89ec029d",
+      "expectedSha256": "0fe2cccd0b9c08f57666530b2519dff26e8dee633058aae85d3d7f4b89ec029d",
+      "byteHashMatches": true,
+      "expectedKeysFromSource": [
+        "originalAlgebraic",
+        "originalRelation",
+        "momentum",
+        "radical",
+        "frequency",
+        "origin",
+        "mapping (old fixed material bindings; replace changed c_s0, do not adopt old numerical matrix)"
+      ],
+      "runtimeSchemaVerified": false
+    },
+    {
+      "key": "LEFTPairing",
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-thickness-coordinate-20260914/end_pairing_left/complete.pickle",
+      "bytes": 318441,
+      "sha256": "6399da59a971434aae54a95ed4c823c4b029029dbe50aed2913bcc48747b9259",
+      "expectedSha256": "6399da59a971434aae54a95ed4c823c4b029029dbe50aed2913bcc48747b9259",
+      "byteHashMatches": true,
+      "expectedKeysFromSource": [
+        "tuple[0].result",
+        "tuple[0].checks",
+        "tuple[1] dimension registry"
+      ],
+      "runtimeSchemaVerified": false
+    },
+    {
+      "key": "RIGHTPairing",
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-thickness-coordinate-20260914/end_pairing_right/complete.pickle",
+      "bytes": 1065916,
+      "sha256": "690ceb5c452de298f67ec929cacb76d7d16e182efcd321f9692ecf1cbd28b628",
+      "expectedSha256": "690ceb5c452de298f67ec929cacb76d7d16e182efcd321f9692ecf1cbd28b628",
+      "byteHashMatches": true,
+      "expectedKeysFromSource": [
+        "tuple[0].result",
+        "tuple[0].checks",
+        "tuple[1] dimension registry"
+      ],
+      "runtimeSchemaVerified": false
+    },
+    {
+      "key": "uniformCommon",
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-uniform-source-20260919/production/complete/common.pickle",
+      "bytes": 152330,
+      "sha256": "f05e16309a6b1d2aa841703092be69408f2a57247aca020ea92383d011a38ebb",
+      "expectedSha256": "f05e16309a6b1d2aa841703092be69408f2a57247aca020ea92383d011a38ebb",
+      "byteHashMatches": true,
+      "expectedKeysFromSource": [
+        "curl",
+        "gauge",
+        "gaugeResidual",
+        "strong",
+        "kernel",
+        "blocks",
+        "units",
+        "constantFourierMass"
+      ],
+      "runtimeSchemaVerified": false
+    },
+    {
+      "key": "LEFTNativeSource",
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-thickness-coordinate-20260914/end_source_left/objects.pickle",
+      "bytes": 187054,
+      "sha256": "f3409cc92263880f0d0e2c941f1884ed5ae0aa984f8bf6ea97b169060edcd51d",
+      "expectedSha256": "f3409cc92263880f0d0e2c941f1884ed5ae0aa984f8bf6ea97b169060edcd51d",
+      "byteHashMatches": true,
+      "historicalPath": "/tmp/s11c-thickness-coordinate-20260914/end_source_left/objects.pickle",
+      "checkpoint": {
+        "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_current_source_left_thickness_repair_checkpoint.json",
+        "bytes": 8646,
+        "sha256": "cac0e90a1d8fed39e4cc341124daad4cb1f3e83fb4eac5ba42d1dce583c7493a"
+      },
+      "expectedKeysFromSource": [
+        "conservative",
+        "slab",
+        "acoustic",
+        "strong",
+        "profileBindings",
+        "knownDimensions"
+      ],
+      "runtimeSchemaVerified": false
+    },
+    {
+      "key": "RIGHTNativeSource",
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-thickness-coordinate-20260914/end_source_right/objects.pickle",
+      "bytes": 764140,
+      "sha256": "56825f670042c21e56ac6b02ce553b90227158704b4fb40c6b9f8f8c03071b1a",
+      "expectedSha256": "56825f670042c21e56ac6b02ce553b90227158704b4fb40c6b9f8f8c03071b1a",
+      "byteHashMatches": true,
+      "historicalPath": "/tmp/s11c-thickness-coordinate-20260914/end_source_right/objects.pickle",
+      "checkpoint": {
+        "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_current_source_right_thickness_repair_checkpoint.json",
+        "bytes": 8650,
+        "sha256": "89f67d0cce6740c3e360c1523c0db5414664f9853fe130adfb3ce8373fa6686c"
+      },
+      "expectedKeysFromSource": [
+        "conservative",
+        "slab",
+        "acoustic",
+        "strong",
+        "profileBindings",
+        "knownDimensions"
+      ],
+      "runtimeSchemaVerified": false
+    }
+  ],
+  "pairingResultExpectedKeys": [
+    "FREQUENCY_LEGS",
+    "NORMAL_LEGS",
+    "BULK_LEGS",
+    "ACOUSTIC_WAVE_ROWS",
+    "CLOSED_PENCIL_LEGS",
+    "SLAB_CURRENT_MATRIX",
+    "BULK_NORMAL_CURRENT_DENSITY_MATRIX",
+    "BULK_DEPTH_CURRENT_MATRIX",
+    "INTERFACE_POWER_MATRIX",
+    "FACE_LEG_OBJECTS",
+    "FACE_RECORDS",
+    "OPEN_BULK_PRESSURE_SCALES",
+    "OPEN_BULK_VELOCITY_SCALES",
+    "OPEN_BULK_CURRENT_COEFFICIENTS",
+    "SOURCE_BRANCH_JOINS"
+  ],
+  "pairingChecksExpectedKeys": [
+    "FACE_AMPLITUDE_ROWS",
+    "FACE_PORT_ROWS",
+    "PORT_BILINEAR_WEIGHT",
+    "OPEN_BULK_PAIR_COEFFICIENTS",
+    "FACE_DENOMINATOR_FACTORS"
+  ],
+  "nativeAcousticExpectedKeys": [
+    "MEMORY_KERNELS",
+    "FACE_RECORDS",
+    "CHEMICAL_AFFINITY_DRIVER",
+    "ACOUSTIC_RADICAL_SCALE",
+    "ACOUSTIC_RADICAL_JOIN_RESIDUAL",
+    "HARMONIC_WAVE_ROWS",
+    "ACOUSTIC_WAVE_EQUATION"
+  ],
+  "nativeFaceExpectedKeys": [
+    "AMPLITUDE_EQUATION_COEFFICIENT",
+    "AMPLITUDE_EQUATION_RECONSTRUCTION_RESIDUAL",
+    "CLOSURE_RESIDUAL",
+    "OUTWARD_VELOCITY",
+    "AMPLITUDE",
+    "PRESSURE",
+    "RELATIVE_MASS_FLUX",
+    "AFFINITY",
+    "MECHANICAL_LOAD"
+  ],
+  "sourceInterfaces": [
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_uniform_source.py",
+      "bytes": 14588,
+      "sha256": "2a135aea365c7b5e57bfff7683c7b927cda52c0d37f6a9bad3c961eb6205a2b2"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_uniform_response.py",
+      "bytes": 21153,
+      "sha256": "b65749ab0eaaeed372a5bf01077a030971fc3e05f05a11543443bd1de3f157d4"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_frequency_source.py",
+      "bytes": 29576,
+      "sha256": "9be20be462bc10bfcaa7af643b9301948dd79bc2e08eb24ebcd1386a81efcdac"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_pairing_check.py",
+      "bytes": 10885,
+      "sha256": "1fcf86b0be819e2c7e9a2127d8330c907bcaccf58d1d15c3f1534d594d926dee"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_current_source_check.py",
+      "bytes": 5733,
+      "sha256": "88f93d9b29a094ccc38e3579f0cf630b267e096e07b92810c4e30751b4da1d7b"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_end_maps_v2.py",
+      "bytes": 27173,
+      "sha256": "4c96b6957bd839bf48e5f959483e13c3b83888db2893ff8d5ebe39c5e4f4262f"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_d_mixing_scattering_sympy_audit.py",
+      "bytes": 545480,
+      "sha256": "5bf77729682960bb59f10c672a5fe3f67a98b0a9533da7c6189a37183596050f"
+    }
+  ],
+  "implementationNotes": [
+    "Expected schemas are read from producers/consumers; hash matches do not prove decoding or current symbol compatibility.",
+    "Rebind originalAlgebraic/originalRelation and original physical pairing objects; original frequency packets retain old mapping alongside originals.",
+    "Physical amplitudes and field order are U1,U2,U3,Theta,E, with Plus/Minus amplitude symbols in saved dimension registry; actual symbol identity must be joined inside containment.",
+    "Derive Q versus q_phys from native and physical wave relations and check both pencils; old scale 10 is not a valid changed-input assumption.",
+    "Existing end-map helpers are reference interfaces, not drop-in workers: bind_end hardcodes omega3 and uses passed parameter strings; evaluated_state expects an old physical_scale supplied externally.",
+    "Existing source residual flags are historical evidence only; fresh closure/polarization joins must use original operands.",
+    "Historical source checkpoint /tmp routes were relocated; actual _scratch objects match checkpoint bytes without editing historical paths."
+  ],
+  "fieldLiftGap": {
+    "exactFullSavedMatrixRouteEstablished": false,
+    "devSymbolCacheSchema": "(weak full_symbol, curl, weak_symbol_units, dimensions.known, strong_symbol, energy value); no field_lift slot",
+    "emittedRecord": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-thickness-coordinate-20260914/d_full/full.out",
+      "line": 4220,
+      "byteOffset": 12868663,
+      "bytes": 6429,
+      "sha256": "ba84b6706e11f4e8a22c8cc311deb7b8c2d7d9a387fa574a03c9c0695d6c361d",
+      "tag": "PY_S11CD_CLOSED_PHYSICAL_FIELD_LIFT_LAB_HELD_RHO4_CONSTANT",
+      "caveat": "Emitted using fingerprinted()/carrier_fingerprint; do not assume a restorable exact matrix."
+    },
+    "selectedRoute": "Saved curl[:,1:3] with zero Theta/E rows, joined to actual field_lift/trial-ansatz source and saved gauge/units. Whether method review accepts this source-level lift join instead of restoring a full emitted matrix remains a dependency.",
+    "sourceLocations": [
+      "ConstantEndPencil.curl_gauge_operands:2529-2543",
+      "ConstantEndPencil.field_lift:2545-2557",
+      "main symbol cache serialization:8374-8378"
+    ]
+  },
+  "unknownRuntimeJoins": [
+    "actual payload schema/storage codecs",
+    "source symbol identity and physical dimensional maps",
+    "exact selected transverse restriction and matching constants",
+    "native closure denominator/limit validity",
+    "constant-end applicability of any mixed DtN correction supplied by upstream review"
+  ],
+  "noAutomaticWork": [
+    "No restoration or scientific worker until applicable method assessment/readiness.",
+    "No modification to frozen v2 plan/prompt or either review packet."
+  ]
+}

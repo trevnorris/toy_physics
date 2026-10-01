@@ -1,0 +1,66 @@
+I've read the worker, scope, native records, source excerpts and inherited operands, so I'm now writing up the verdict. I did source-only inspection and ran nothing. The one tooling result I cite, the 8 stdlib tests passing, comes from `tooling_checks.json`, and I did not re-run it.
+
+# Verdict: **NEEDS REVISION**
+
+The physics route is sound for this selected comparison. A hard runtime defect would stop the worker before any scientific result is emitted, and there are a few small ordering and labelling fixes.
+
+## Substantive findings
+
+**S1. The mechanism is correct, and the outcome is largely fixed algebraically.**
+- Write M = I + cZ and M′ = I + c(Z+A), where A has only a [0,2] entry, ησD. Then R′−R = M′⁻¹ A M⁻¹.
+- Because A is a corner entry and M is upper-triangular, this gives δ[0,2] = ησD / (m₀₀ m₂₂) and all other entries zero.
+- The middle leg (z_middle, Z01, Z12, m₁₁) drops out. So the multiplier is independent of the middle variable. Both external response factors are retained, and no second convolution appears.
+- The inverse coefficient matches the native source. `DELTA_P` has ordering R·Z·source (`S11c_c1…L834-860`), and the native record gives c = Λ_A ρ_m⁻² /(1−iωτ_A) (`native.json`, response record).
+- At the saved point, c = 1/(1−0.3i), Z₀₀ = √3 and Z₂₂ = 3/2. I computed these by hand from the inherited depths. Both m's are finite and nonzero.
+
+**S2. The trace map cannot change the physical difference at this point. State that in the scope.**
+- The native `face_shift` trace is p + ½W₀η w₁ ∂p. With the w₁ factor set to zero, `height_constant` is 0 and the value coefficient is 1 (c2 L615 trace_three).
+- So T has a unit diagonal, and T⁻¹ row 0 times a column-2-only δ leaves δ_ref[0,2] = δ[0,2].
+- The jet change is exactly i·q_out times that (L297 versus c2 `jet_second`).
+- I found no missing term for this selected comparison. The face shift has no σ dependence, and the η·σ pieces that go through T[0,1] and R[1,2] are identical in "old" and "new". The Taylor η² term is out of grade.
+- Consequence: a nonzero reference/jet factor mostly restates a nonzero physical factor. It is not independent evidence that the coordinate maps preserve the term. Add this sentence to the scope so the result isn't over-read.
+
+**S3. The source channel is only partly reported (L314–319).**
+- `response_factor` is the response multiplier times the V coefficient only. At the saved point Λ_V₀ = 0, so that coefficient is exactly 1.
+- The native source also has a μ_θ term, Λ_A μ_s/ρ_m. It is nonzero because Λ_A = 1/100. It is not emitted.
+- Smallest fix: also emit the multiplier times ∂source/∂`s11cc1_mu_theta_lab_held_plus`. Alternatively, rename the quantities "per unit V, μ-channel unreported". As written, "physicalPressureFactor" overstates what is computed.
+
+**S4. The fixed-edge multiplier is valid. A downstream caution belongs in the scope.**
+- m₀₀ is evaluated at the output leg and m₂₂ at the input leg. Both come from the saved endpoints (Q, edge) and (0, edge), and neither depends on the saved t or q_t.
+- The diagonal delta→1 convention matches native `kernel_bridge`, so no extra measure or delta appears.
+- However, c2 `kernel_apply` (L15–16) integrates the `second` slot over MIDDLE again. A D that already contains its own t-integral and two edge deltas must not be routed through that path unchanged.
+- Add one sentence to the scope's handoff paragraph.
+
+## Local tooling
+
+**T1 (blocking). The native matrix will fail with a NameError.**
+- Worker L220 provides `leftmap` and `rightmap`. The native `z_three` fragment (c2 L43–44, also quoted in `native-direct-slot.json`) uses `left_map` and `right_map`. So `exec(native_matrix, ns)` at L222 raises NameError after a few journal files are written.
+- Fix: rename the two keys.
+- The stdlib tests can't catch this because they never execute the fragments. Optional guard: for `z_three`, `three_inverse` and `trace_three`, compare the fragment's free Name loads against the `ns` or `context` keys.
+- The `three_inverse` and `trace_three` contexts already match. I checked their names by hand.
+
+**T2. The "independent" resolvent identity uses the wrong order (L265–267).**
+- It computes M⁻¹A·M′⁻¹. The correct form is M′⁻¹·A·M⁻¹.
+- The two agree here only because A is a rank-one corner entry. Swap the order so the identity is correct in general.
+
+**T3. Some guards run before the results are emitted.**
+- The `require` at L323 comes before `physical-factors` is emitted (L334).
+- The `require`s at L351–352 come before `response-status` and `controls` are emitted (L353–364).
+- Move all `require`s after the corresponding emissions, to match the stated "emission before guards" rule.
+- The middle-domain `require` isn't needed for this difference at all, since m₁₁ cancels. Make it emit-only or run it last.
+
+**T4 (optional). Strengthen the joins and controls.**
+- The `tag` omission and sign controls are linear in `tag` by construction. They do not test the slot address.
+- Add a wrong-slot control, D placed at [0,1], and a missing-output-side one-sided control. Only the missing-input-side one exists.
+- Emit the exact dispersion residuals q² = ω²/c² − |k|² for qi and qo, instead of relying on the inherited residual. By hand they are 0.09−0.05 = 0.04 and 0.09−0.06 = 0.03, which matches 1/5 and √3/10.
+- Add T·old − C["old"].
+
+## What I couldn't inspect
+- `S11c_c1_exports.py` and `S11c_a_exports.py` are not in the packet as excerpts. I could not read the literal-record structure that `literal_record` and `selected_constructor` parse. I rely on the SHA pins and on the reported 8/8 stdlib round-trip tests, which I did not re-run.
+
+## Other checks
+- Source pins and containment run before the sympy import, and the post-hash check is in `finally`. No timeout or deadline calls.
+- Journal types and storage are fine: srepr encoding, `allow_nan=False`, and `'x'`-mode saves with unique names. I found no collisions with the control files.
+- The claim boundary in the scope is appropriately narrow. Apart from S2 and S4, it needs no change.
+
+After T1 and T3 and the S3 labelling, this is clear to launch. S2, S4 and T2 should be applied in the same revision. I have not independently accepted the inherited bare-action evidence.

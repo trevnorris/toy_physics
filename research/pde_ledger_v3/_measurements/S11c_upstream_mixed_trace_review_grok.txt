@@ -1,0 +1,29 @@
+I'll review the selected mixed term against the native sources, literal records, and saved bare-action operands, staying inside this packet and not treating prior diagnostics as acceptance.The packet is next to this work directory. I'll inventory what was actually handed over before reading the worker.The packet index lists the worker, scope, native excerpts, and saved operands. I'll read those next and check the insertion against the closed-face maps.**NEEDS REVISION**
+
+The selected comparison is the right object, and one namespace join stops it from running. The native three-leg line is never executed, so no physical-face or reference result is produced.
+
+## Substantive
+
+The worker loads the native `z_three` assignment and checks that its direct slot is the literal `0`, then executes that source. The assignment calls `transfer.xreplace(left_map)` and `transfer.xreplace(right_map)` (`source/S11c_c2_selfenergy_fold_sympy_audit.py-L367-437.txt`, the `z_three` matrix; the same text is in `inherited/native-direct-slot.json`). The execution namespace is given `leftmap` and `rightmap` (`S11c_upstream_mixed_trace.py` lines 220–222). Those names are absent from the native statement, so execution raises `NameError` before either closure matrix, either response, the trace, or the jet exists.
+
+Smallest correction: pass `left_map` and `right_map` through to that namespace. The trace statement already receives `left` and `right`, which matches `trace_three` in `source/S11c_c2_selfenergy_fold_sympy_audit.py-L455-608.txt`.
+
+I did not execute the instrument. After that rename, the construction below is the one the source specifies.
+
+The inherited resolvent coefficient is `Lambda_A_0 * rho_m**(-2) / (1 - I*omega*tau_A)`, taken from the joined `RESOLVENT_DEFINITION`, with `omega` set to the saved point value `3`. Flat legs stay `omega*rho_m/q`. Permeability, its memory time, and the `rho_m**(-2)` power stay in the coefficient; each flat leg still carries one `rho_m`. Saved `Lambda_V_0` is `0`, so the prescribed-velocity prefactor is `1`. `eta_bg` and `sigma_W` stay symbolic and are removed only by the mixed-grade derivative.
+
+With the direct term only in slot `[0, 2]` and the native upper-triangular layout unchanged, the response difference at that slot is the insertion divided by both external factors `(1 + c*z_out)` and `(1 + c*z_in)`. The two first-shape legs remain once, in both closures, and cancel in the difference. That cancellation is why the on-shell replacement of `q**2` inside the first-shape kernel, which this worker does not repeat, does not change this difference. No middle convolution is applied to the direct term.
+
+The upper-face trace is `delta_p + (W_0/2)*eta_bg*w1_profile*d_w_delta_p`. Its profile-independent jet coefficient is `0`, so the trace diagonal used here is `1`. Reference pressure and the lab-normal jet are both obtained from that one corrected physical response: the jet multiplier is `I*q_out` on the outgoing extension at `W_0/2`, which is `sqrt(3)/10` at the saved point. The later scalar subtraction of a height times the jet changes the reference pressure only beyond this rectangular `eta*sigma` grade.
+
+The saved integrand still depends on `t` and `q_t`, and `integrationNotPerformed` is true. The external factor above depends on the saved endpoint depths `q_in = 1/5` and `q_out = sqrt(3)/10`, together with `omega`, `rho_m`, `Lambda_A_0`, and `tau_A`. It is independent of `t`, `q_t`, and the three-leg middle momentum, so it can multiply that integrand as it stands. The two edge deltas stay factored: the stored kernel dimensions go from `[-2,-1,1]` to `[0,-1,1]` by `[2,0,0]`, and `factoredEdgeDeltas` is `2`. No extra `2π` or delta measure is inserted. The profile transform’s existing `1/(2π)` stays inside the inherited integrand.
+
+Original closure residuals are emitted before the guards. Denominator certificates are required to be positive and finite; an exact zero factor is recorded and allowed. Omission, sign reversal, and the one-sided solve are present. The one-sided solve keeps the output resolvent and drops the input resolvent. Containment is checked, including the 4 GiB cap, zero swap, 32 tasks, one CPU, and no CPU deadline, before `sympy` is imported. Source pins are checked first. The emitted scope stays on this one-face pressure and jet difference for prescribed normal velocity. It does not build a slab eigenmode, contract `b`, or report an integral magnitude or a loss.
+
+## Tooling
+
+`S11c_upstream_mixed_trace_test.py` parses `z_three` and checks that the direct slot is `0`. It never resolves the assignment’s free names against the execution namespace, which is why this join passed the recorded eight tests.
+
+## Checked, and not a correction for this comparison
+
+The affine reference-pressure solve and the on-shell first-shape reduction do not move this rectangular direct-slot difference. Two-face cancellation, a full slab row, and a loss integral sit outside this instrument, as the scope already says.

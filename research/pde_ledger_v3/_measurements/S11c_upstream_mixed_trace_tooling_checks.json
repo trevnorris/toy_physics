@@ -1,0 +1,11 @@
+{
+  "command": [
+    "/usr/bin/python3",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_mixed_trace_test.py"
+  ],
+  "exitCode": 0,
+  "stdout": "",
+  "stderr": "........\n----------------------------------------------------------------------\nRan 8 tests in 0.857s\n\nOK\n",
+  "scientificObjectsRestored": false,
+  "scientificAcceptance": false
+}

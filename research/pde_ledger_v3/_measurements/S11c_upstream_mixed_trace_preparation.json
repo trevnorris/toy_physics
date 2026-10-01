@@ -1,0 +1,34 @@
+{
+  "status": "BOTH_REPORTS_NEEDS_REVISION_LOCAL_TOOLING_ADJUDICATION",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-mixed-trace-20261001/build-review",
+  "packetDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-mixed-trace-20261001/build-review/packet",
+  "packetSha256": "d23734d7d3c61e058a12bf6820c45cef95b783aadb17d3c2af9a84d7651fb86c",
+  "archiveSha256": "cffca75625d94fb83cbce88682c52e6c06953193f7030cf0d42368c7efc92dd5",
+  "packetFiles": 27,
+  "packetBytes": 174626,
+  "reviewers": [
+    "claude",
+    "grok"
+  ],
+  "userScopeAuthority": "continue",
+  "externalSubmitted": true,
+  "scientificJobLaunched": false,
+  "workerSha256": "ab3c9f47ca619fbe45af61462460001ef9e968eacbf87735596b21f3e1222064",
+  "manifestSha256": "97e86f3d79e37b727b336320881dabd9be872bea2d9f746064f39c7b0976d2bb",
+  "priorResultCommit": "ce89b3f7",
+  "priorDirectoryFiles": 52,
+  "sourcePins": 67,
+  "toolingTests": 8,
+  "noScientificImportsDuringPreparation": true,
+  "independentBuildClearance": false,
+  "newGeneratedTrackedFilesAbove1MiB": [],
+  "diffExclusions": "No new file exceeds 1 MiB; existing exclusions retained.",
+  "packetConsent": "EXPLICITLY_APPROVED_FIXED_PACKET",
+  "approvalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-mixed-trace-20261001/build-review/explicit-packet-approval.json",
+  "approvalSha256": "07bf8a4458e8ed8f31354eb8929183e8f1102972ab25570c728f5f4df315cd56",
+  "launchRecord": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_mixed_trace_review_launch.json",
+  "literalVerdicts": {
+    "claude": "NEEDS REVISION",
+    "grok": "NEEDS REVISION"
+  }
+}

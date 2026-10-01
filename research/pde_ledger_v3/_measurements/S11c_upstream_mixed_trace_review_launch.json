@@ -1,0 +1,42 @@
+{
+  "status": "BOTH_FRESH_REVIEWERS_STARTED",
+  "launch": {
+    "jobPid": 1545049,
+    "watcherPid": 1545050,
+    "packetSha256": "d23734d7d3c61e058a12bf6820c45cef95b783aadb17d3c2af9a84d7651fb86c",
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "concurrentReviewWorkers": 2,
+    "scienceCalls": 0,
+    "runnerSha256": "30ed68e2d751f5c85399fcdf99384d9ef095376983da0b1bf91b89aef62e5b62",
+    "launcherSha256": "d7dd71850300818294a1218ecaf59c5576f63884457eb12b87d69d8b0c7df2a5"
+  },
+  "runReceipts": {
+    "claude": {
+      "engine": "claude",
+      "sessionId": "1c1db01d-0846-42ed-b248-e68b2e8d12a5",
+      "pid": 1545059,
+      "startedUtc": "2026-10-01T21:01:43.562387+00:00",
+      "packetSha256": "d23734d7d3c61e058a12bf6820c45cef95b783aadb17d3c2af9a84d7651fb86c",
+      "scientificExecutionEnabled": false
+    },
+    "grok": {
+      "engine": "grok",
+      "sessionId": "51c1e733-dad6-4747-91d3-0112be92e5f3",
+      "pid": 1545058,
+      "startedUtc": "2026-10-01T21:01:43.562063+00:00",
+      "packetSha256": "d23734d7d3c61e058a12bf6820c45cef95b783aadb17d3c2af9a84d7651fb86c",
+      "scientificExecutionEnabled": false
+    }
+  },
+  "hookStatus": "waiting",
+  "approvalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-mixed-trace-20261001/build-review/explicit-packet-approval.json",
+  "approvalSha256": "07bf8a4458e8ed8f31354eb8929183e8f1102972ab25570c728f5f4df315cd56",
+  "packetSha256": "d23734d7d3c61e058a12bf6820c45cef95b783aadb17d3c2af9a84d7651fb86c",
+  "privatePacketsVerified": true,
+  "scientificJobLaunched": false,
+  "automaticRetry": false,
+  "noPeerSharing": true
+}

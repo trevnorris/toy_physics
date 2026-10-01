@@ -1,0 +1,1453 @@
+{
+  "status": "BOTH_REPORTS_PRESERVED_SOURCE_ONLY",
+  "packetSha256": "d23734d7d3c61e058a12bf6820c45cef95b783aadb17d3c2af9a84d7651fb86c",
+  "archiveSha256": "cffca75625d94fb83cbce88682c52e6c06953193f7030cf0d42368c7efc92dd5",
+  "reports": {
+    "claude": {
+      "literalVerdict": "NEEDS REVISION",
+      "literalReport": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_mixed_trace_review_claude.txt",
+      "literalSha256": "00b885b161b298ddfd20a460c9a9cdee51a7386c92aa2b171d75df7cbc5cd9c5",
+      "runReceipt": {
+        "engine": "claude",
+        "sessionId": "1c1db01d-0846-42ed-b248-e68b2e8d12a5",
+        "command": [
+          "/home/trevnorris/.local/bin/claude",
+          "--print",
+          "--output-format",
+          "json",
+          "--safe-mode",
+          "--restricted",
+          "--tools",
+          "Read,Glob,Grep",
+          "--allowedTools",
+          "Read,Glob,Grep",
+          "--permission-mode",
+          "dontAsk",
+          "--strict-mcp-config",
+          "--mcp-config",
+          "{\"mcpServers\":{}}",
+          "--setting-sources",
+          "",
+          "--disable-slash-commands",
+          "--session-id",
+          "1c1db01d-0846-42ed-b248-e68b2e8d12a5"
+        ],
+        "cwd": "/var/projects/toy_physics/_scratch/s11c/s11c-mixed-trace-20261001/build-review/claude/work",
+        "startedUtc": "2026-10-01T21:01:43.562387+00:00",
+        "packetSha256": "d23734d7d3c61e058a12bf6820c45cef95b783aadb17d3c2af9a84d7651fb86c",
+        "promptSha256": "61f1efb528e849c04f130cdf26efc22e22a1c02b90009c997478050353fe2334",
+        "scientificExecutionEnabled": false,
+        "reviewVerdict": "NOT_ADJUDICATED",
+        "pid": 1545059,
+        "exitStatus": 0,
+        "finishedUtc": "2026-10-01T21:06:56.177650+00:00",
+        "wallSeconds": 312.61363550194073,
+        "outputSha256": "63bf5b687d8034267b16420d20cd626a7be9dee6486ae17136379956b049dbce",
+        "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderrBytes": 0
+      },
+      "reportStopReason": "end_turn",
+      "rawReportPath": "/var/projects/toy_physics/_scratch/s11c/s11c-mixed-trace-20261001/build-review/claude.json",
+      "permissionDenials": [
+        {
+          "tool_name": "Glob",
+          "tool_use_id": "toolu_013BRTrSnopNk1x8BsJuDNrP",
+          "tool_input": {
+            "pattern": "**/S11c_upstream_mixed_trace*",
+            "path": "/research/pde_ledger_v3/_measurements"
+          }
+        }
+      ],
+      "stderrMeaning": "Reviewer CLI diagnostics, not scientific stderr; usable detailed final report delivered."
+    },
+    "grok": {
+      "literalVerdict": "NEEDS REVISION",
+      "literalReport": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_mixed_trace_review_grok.txt",
+      "literalSha256": "775c3dc50437f4f758e3714de31ace88ba769f1612b8ce32256b6cebf88658e0",
+      "runReceipt": {
+        "engine": "grok",
+        "sessionId": "51c1e733-dad6-4747-91d3-0112be92e5f3",
+        "command": [
+          "/home/trevnorris/.local/bin/grok",
+          "--cwd",
+          "/var/projects/toy_physics/_scratch/s11c/s11c-mixed-trace-20261001/build-review/grok/work",
+          "--prompt-file",
+          "/var/projects/toy_physics/_scratch/s11c/s11c-mixed-trace-20261001/build-review/grok/work/input/review-prompt.md",
+          "--output-format",
+          "json",
+          "--permission-mode",
+          "dontAsk",
+          "--no-plan",
+          "--tools",
+          "Read",
+          "--no-subagents",
+          "--disable-web-search",
+          "--verbatim",
+          "--session-id",
+          "51c1e733-dad6-4747-91d3-0112be92e5f3"
+        ],
+        "cwd": "/var/projects/toy_physics/_scratch/s11c/s11c-mixed-trace-20261001/build-review/grok/work",
+        "startedUtc": "2026-10-01T21:01:43.562063+00:00",
+        "packetSha256": "d23734d7d3c61e058a12bf6820c45cef95b783aadb17d3c2af9a84d7651fb86c",
+        "promptSha256": "61f1efb528e849c04f130cdf26efc22e22a1c02b90009c997478050353fe2334",
+        "scientificExecutionEnabled": false,
+        "reviewVerdict": "NOT_ADJUDICATED",
+        "pid": 1545058,
+        "exitStatus": 0,
+        "finishedUtc": "2026-10-01T21:18:12.465033+00:00",
+        "wallSeconds": 988.9017201960087,
+        "outputSha256": "b44c9152e196311bcacf0635cb27ab2f74b948cea3e622046c49fe1c64e906df",
+        "stderrSha256": "6ad9a1afd6f6829bfb0635faef52e80be0bbea57ec5076b9c97150cc3dacbe3b",
+        "stderrBytes": 11969
+      },
+      "reportStopReason": "end_turn",
+      "rawReportPath": "/var/projects/toy_physics/_scratch/s11c/s11c-mixed-trace-20261001/build-review/grok.json",
+      "permissionDenials": null,
+      "stderrMeaning": "Reviewer CLI diagnostics, not scientific stderr; usable detailed final report delivered."
+    }
+  },
+  "metadataChecks": [
+    {
+      "check": "both finished",
+      "actual": "ALL_REQUESTED_ATTEMPTS_FINISHED_AWAITING_LITERAL_ADJUDICATION",
+      "expected": "ALL_REQUESTED_ATTEMPTS_FINISHED_AWAITING_LITERAL_ADJUDICATION",
+      "passed": true
+    },
+    {
+      "check": "state completed",
+      "actual": "AWAITING_ADJUDICATION",
+      "expected": "AWAITING_ADJUDICATION",
+      "passed": true
+    },
+    {
+      "check": "actual approved packet",
+      "actual": "d23734d7d3c61e058a12bf6820c45cef95b783aadb17d3c2af9a84d7651fb86c",
+      "expected": "d23734d7d3c61e058a12bf6820c45cef95b783aadb17d3c2af9a84d7651fb86c",
+      "passed": true
+    },
+    {
+      "check": "archive",
+      "actual": "cffca75625d94fb83cbce88682c52e6c06953193f7030cf0d42368c7efc92dd5",
+      "expected": "cffca75625d94fb83cbce88682c52e6c06953193f7030cf0d42368c7efc92dd5",
+      "passed": true
+    },
+    {
+      "check": "inventory",
+      "actual": [
+        "S11c_d_variable_profile_development_input.json",
+        "S11c_upstream_mixed_trace.py",
+        "S11c_upstream_mixed_trace_inputs.json",
+        "S11c_upstream_mixed_trace_native.json",
+        "S11c_upstream_mixed_trace_scope.md",
+        "S11c_upstream_mixed_trace_test.py",
+        "S11c_upstream_mixed_trace_tooling_checks.json",
+        "inherited/S11c_upstream_mixed_tanh.py",
+        "inherited/dimensions.json",
+        "inherited/native-direct-slot.json",
+        "inherited/operation-index.json",
+        "inherited/physical-point.json",
+        "inherited/profile-action-input.json",
+        "inherited/profile-action-return.json",
+        "inherited/profile-transform-return.json",
+        "inherited/sign-ingredients.json",
+        "packet-index.json",
+        "review-prompt.md",
+        "runtime-source/S11c_d_end_normalization_run.py",
+        "runtime-source/s11c_guarded_run.py",
+        "source/S11c_a_interface_geometry_sympy_audit.py-L844-871.txt",
+        "source/S11c_a_interface_geometry_sympy_audit.py-L906-916.txt",
+        "source/S11c_c1_bulk_closure_sympy_audit.py-L576-633.txt",
+        "source/S11c_c1_bulk_closure_sympy_audit.py-L834-860.txt",
+        "source/S11c_c2_selfenergy_fold_sympy_audit.py-L367-437.txt",
+        "source/S11c_c2_selfenergy_fold_sympy_audit.py-L455-608.txt",
+        "source/S11c_c2_selfenergy_fold_sympy_audit.py-L615-727.txt"
+      ],
+      "expected": [
+        "S11c_d_variable_profile_development_input.json",
+        "S11c_upstream_mixed_trace.py",
+        "S11c_upstream_mixed_trace_inputs.json",
+        "S11c_upstream_mixed_trace_native.json",
+        "S11c_upstream_mixed_trace_scope.md",
+        "S11c_upstream_mixed_trace_test.py",
+        "S11c_upstream_mixed_trace_tooling_checks.json",
+        "inherited/S11c_upstream_mixed_tanh.py",
+        "inherited/dimensions.json",
+        "inherited/native-direct-slot.json",
+        "inherited/operation-index.json",
+        "inherited/physical-point.json",
+        "inherited/profile-action-input.json",
+        "inherited/profile-action-return.json",
+        "inherited/profile-transform-return.json",
+        "inherited/sign-ingredients.json",
+        "packet-index.json",
+        "review-prompt.md",
+        "runtime-source/S11c_d_end_normalization_run.py",
+        "runtime-source/s11c_guarded_run.py",
+        "source/S11c_a_interface_geometry_sympy_audit.py-L844-871.txt",
+        "source/S11c_a_interface_geometry_sympy_audit.py-L906-916.txt",
+        "source/S11c_c1_bulk_closure_sympy_audit.py-L576-633.txt",
+        "source/S11c_c1_bulk_closure_sympy_audit.py-L834-860.txt",
+        "source/S11c_c2_selfenergy_fold_sympy_audit.py-L367-437.txt",
+        "source/S11c_c2_selfenergy_fold_sympy_audit.py-L455-608.txt",
+        "source/S11c_c2_selfenergy_fold_sympy_audit.py-L615-727.txt"
+      ],
+      "passed": true
+    },
+    {
+      "check": "hash map",
+      "actual": "d23734d7d3c61e058a12bf6820c45cef95b783aadb17d3c2af9a84d7651fb86c",
+      "expected": "d23734d7d3c61e058a12bf6820c45cef95b783aadb17d3c2af9a84d7651fb86c",
+      "passed": true
+    },
+    {
+      "check": "packet S11c_d_variable_profile_development_input.json",
+      "actual": "660b2b0b54494dce964c7f5fbd722a76a7e894d8ed92b18b5eb6290c3c10f1d5",
+      "expected": "660b2b0b54494dce964c7f5fbd722a76a7e894d8ed92b18b5eb6290c3c10f1d5",
+      "passed": true
+    },
+    {
+      "check": "packet S11c_upstream_mixed_trace.py",
+      "actual": "ab3c9f47ca619fbe45af61462460001ef9e968eacbf87735596b21f3e1222064",
+      "expected": "ab3c9f47ca619fbe45af61462460001ef9e968eacbf87735596b21f3e1222064",
+      "passed": true
+    },
+    {
+      "check": "packet S11c_upstream_mixed_trace_inputs.json",
+      "actual": "97e86f3d79e37b727b336320881dabd9be872bea2d9f746064f39c7b0976d2bb",
+      "expected": "97e86f3d79e37b727b336320881dabd9be872bea2d9f746064f39c7b0976d2bb",
+      "passed": true
+    },
+    {
+      "check": "packet S11c_upstream_mixed_trace_native.json",
+      "actual": "06c0e757bf412c51972b803238ed246ef89259bd59156de6e785206e7447d524",
+      "expected": "06c0e757bf412c51972b803238ed246ef89259bd59156de6e785206e7447d524",
+      "passed": true
+    },
+    {
+      "check": "packet S11c_upstream_mixed_trace_scope.md",
+      "actual": "c1c207d1fcb6d08985ad72b265da7f00aca41a0a86cee495a8b3ca6f3e5b2a2d",
+      "expected": "c1c207d1fcb6d08985ad72b265da7f00aca41a0a86cee495a8b3ca6f3e5b2a2d",
+      "passed": true
+    },
+    {
+      "check": "packet S11c_upstream_mixed_trace_test.py",
+      "actual": "f3391c44a67812259ef2fbeae5a14aabaafc400352d27652e5de8eecf8f25dba",
+      "expected": "f3391c44a67812259ef2fbeae5a14aabaafc400352d27652e5de8eecf8f25dba",
+      "passed": true
+    },
+    {
+      "check": "packet S11c_upstream_mixed_trace_tooling_checks.json",
+      "actual": "b0afc2fa0e20e8fca57e86ed3c74351fde5c70f88b2b52a058eb458ce6ff8cbc",
+      "expected": "b0afc2fa0e20e8fca57e86ed3c74351fde5c70f88b2b52a058eb458ce6ff8cbc",
+      "passed": true
+    },
+    {
+      "check": "packet inherited/S11c_upstream_mixed_tanh.py",
+      "actual": "de783e3d09f58db8075a115edf4ed584f28d2a090cc7a3eef150e98befd30373",
+      "expected": "de783e3d09f58db8075a115edf4ed584f28d2a090cc7a3eef150e98befd30373",
+      "passed": true
+    },
+    {
+      "check": "packet inherited/dimensions.json",
+      "actual": "bc97a9534f452eedfa96bc87aab9ee5d12bbdd19e28587c7888efb9782a403ae",
+      "expected": "bc97a9534f452eedfa96bc87aab9ee5d12bbdd19e28587c7888efb9782a403ae",
+      "passed": true
+    },
+    {
+      "check": "packet inherited/native-direct-slot.json",
+      "actual": "b44296cae4f185075891ec220c1e6f901d316ce6a21a78aab3a00e0fcd04f57a",
+      "expected": "b44296cae4f185075891ec220c1e6f901d316ce6a21a78aab3a00e0fcd04f57a",
+      "passed": true
+    },
+    {
+      "check": "packet inherited/operation-index.json",
+      "actual": "2d8f6373603283f770774a5384e276572d6092920e5458c2376c5a579d3cca99",
+      "expected": "2d8f6373603283f770774a5384e276572d6092920e5458c2376c5a579d3cca99",
+      "passed": true
+    },
+    {
+      "check": "packet inherited/physical-point.json",
+      "actual": "35a4a2ea10f4bafdfe4517305d26aa04d6945d8fcd6f75ce459ce22d362e5321",
+      "expected": "35a4a2ea10f4bafdfe4517305d26aa04d6945d8fcd6f75ce459ce22d362e5321",
+      "passed": true
+    },
+    {
+      "check": "packet inherited/profile-action-input.json",
+      "actual": "3622bdbb0b8767dc382d5811f3833dafdee3913d6d293452189bf92d36155a12",
+      "expected": "3622bdbb0b8767dc382d5811f3833dafdee3913d6d293452189bf92d36155a12",
+      "passed": true
+    },
+    {
+      "check": "packet inherited/profile-action-return.json",
+      "actual": "e9965881768a9e823976a4ab1920ff0ea18bf98b2166e69f886b552c2b7efebf",
+      "expected": "e9965881768a9e823976a4ab1920ff0ea18bf98b2166e69f886b552c2b7efebf",
+      "passed": true
+    },
+    {
+      "check": "packet inherited/profile-transform-return.json",
+      "actual": "fff546e7a76fdb66b3059627a54d3c008d456fc5acd9d971fe45140add36a099",
+      "expected": "fff546e7a76fdb66b3059627a54d3c008d456fc5acd9d971fe45140add36a099",
+      "passed": true
+    },
+    {
+      "check": "packet inherited/sign-ingredients.json",
+      "actual": "594f6cafa20722ca7399f77e4eb971df896ea60e16e84f16aea6f4522d78eec5",
+      "expected": "594f6cafa20722ca7399f77e4eb971df896ea60e16e84f16aea6f4522d78eec5",
+      "passed": true
+    },
+    {
+      "check": "packet packet-index.json",
+      "actual": "e27b792e48c19589f8790d971cd89b71dd7f99528370fbcd2ee09c20fc71ee0f",
+      "expected": "e27b792e48c19589f8790d971cd89b71dd7f99528370fbcd2ee09c20fc71ee0f",
+      "passed": true
+    },
+    {
+      "check": "packet review-prompt.md",
+      "actual": "61f1efb528e849c04f130cdf26efc22e22a1c02b90009c997478050353fe2334",
+      "expected": "61f1efb528e849c04f130cdf26efc22e22a1c02b90009c997478050353fe2334",
+      "passed": true
+    },
+    {
+      "check": "packet runtime-source/S11c_d_end_normalization_run.py",
+      "actual": "35ad679486d2fcf5f4ee803b42293e4dd50cbe0bfcce790eb95343768bb8fd69",
+      "expected": "35ad679486d2fcf5f4ee803b42293e4dd50cbe0bfcce790eb95343768bb8fd69",
+      "passed": true
+    },
+    {
+      "check": "packet runtime-source/s11c_guarded_run.py",
+      "actual": "6a6369424edfa43cbdaa36e8fa2bebbd278bebdbac3b565b2a8498aaca1dc9df",
+      "expected": "6a6369424edfa43cbdaa36e8fa2bebbd278bebdbac3b565b2a8498aaca1dc9df",
+      "passed": true
+    },
+    {
+      "check": "packet source/S11c_a_interface_geometry_sympy_audit.py-L844-871.txt",
+      "actual": "ec682e87ca2f9b08b41a7c2c6ce246a3ea735a15d166c8d647a4eaceac8fa0d2",
+      "expected": "ec682e87ca2f9b08b41a7c2c6ce246a3ea735a15d166c8d647a4eaceac8fa0d2",
+      "passed": true
+    },
+    {
+      "check": "packet source/S11c_a_interface_geometry_sympy_audit.py-L906-916.txt",
+      "actual": "6c1c1c0a0522b67521e565d3d4746b2811569c0d96b7803843dcce2b9fb32f95",
+      "expected": "6c1c1c0a0522b67521e565d3d4746b2811569c0d96b7803843dcce2b9fb32f95",
+      "passed": true
+    },
+    {
+      "check": "packet source/S11c_c1_bulk_closure_sympy_audit.py-L576-633.txt",
+      "actual": "46fc4a73edec4c9ac91f2cdfacfdb810c141d3bcfded05d7c02a65f0a8c9b707",
+      "expected": "46fc4a73edec4c9ac91f2cdfacfdb810c141d3bcfded05d7c02a65f0a8c9b707",
+      "passed": true
+    },
+    {
+      "check": "packet source/S11c_c1_bulk_closure_sympy_audit.py-L834-860.txt",
+      "actual": "65a264f71471f2e00f8ee0ac7b8c0ab0861b2ff120a018aa9cf708b0b3c5aada",
+      "expected": "65a264f71471f2e00f8ee0ac7b8c0ab0861b2ff120a018aa9cf708b0b3c5aada",
+      "passed": true
+    },
+    {
+      "check": "packet source/S11c_c2_selfenergy_fold_sympy_audit.py-L367-437.txt",
+      "actual": "066df4f7f7c1cb6aac1ba860ded846027ee5057d7675ae2d6f969440e9ccf306",
+      "expected": "066df4f7f7c1cb6aac1ba860ded846027ee5057d7675ae2d6f969440e9ccf306",
+      "passed": true
+    },
+    {
+      "check": "packet source/S11c_c2_selfenergy_fold_sympy_audit.py-L455-608.txt",
+      "actual": "0e2e807a536894963eaa2180bec45969e2ef1ba2526b5c18d2c53bb4e8a043b0",
+      "expected": "0e2e807a536894963eaa2180bec45969e2ef1ba2526b5c18d2c53bb4e8a043b0",
+      "passed": true
+    },
+    {
+      "check": "packet source/S11c_c2_selfenergy_fold_sympy_audit.py-L615-727.txt",
+      "actual": "90edbc8552dd003a7365800812fa287dfdd523c39b6d8e2b63db9cb760ef2f76",
+      "expected": "90edbc8552dd003a7365800812fa287dfdd523c39b6d8e2b63db9cb760ef2f76",
+      "passed": true
+    },
+    {
+      "check": "archive inventory",
+      "actual": [
+        "S11c_d_variable_profile_development_input.json",
+        "S11c_upstream_mixed_trace.py",
+        "S11c_upstream_mixed_trace_inputs.json",
+        "S11c_upstream_mixed_trace_native.json",
+        "S11c_upstream_mixed_trace_scope.md",
+        "S11c_upstream_mixed_trace_test.py",
+        "S11c_upstream_mixed_trace_tooling_checks.json",
+        "inherited/S11c_upstream_mixed_tanh.py",
+        "inherited/dimensions.json",
+        "inherited/native-direct-slot.json",
+        "inherited/operation-index.json",
+        "inherited/physical-point.json",
+        "inherited/profile-action-input.json",
+        "inherited/profile-action-return.json",
+        "inherited/profile-transform-return.json",
+        "inherited/sign-ingredients.json",
+        "packet-index.json",
+        "review-prompt.md",
+        "runtime-source/S11c_d_end_normalization_run.py",
+        "runtime-source/s11c_guarded_run.py",
+        "source/S11c_a_interface_geometry_sympy_audit.py-L844-871.txt",
+        "source/S11c_a_interface_geometry_sympy_audit.py-L906-916.txt",
+        "source/S11c_c1_bulk_closure_sympy_audit.py-L576-633.txt",
+        "source/S11c_c1_bulk_closure_sympy_audit.py-L834-860.txt",
+        "source/S11c_c2_selfenergy_fold_sympy_audit.py-L367-437.txt",
+        "source/S11c_c2_selfenergy_fold_sympy_audit.py-L455-608.txt",
+        "source/S11c_c2_selfenergy_fold_sympy_audit.py-L615-727.txt"
+      ],
+      "expected": [
+        "S11c_d_variable_profile_development_input.json",
+        "S11c_upstream_mixed_trace.py",
+        "S11c_upstream_mixed_trace_inputs.json",
+        "S11c_upstream_mixed_trace_native.json",
+        "S11c_upstream_mixed_trace_scope.md",
+        "S11c_upstream_mixed_trace_test.py",
+        "S11c_upstream_mixed_trace_tooling_checks.json",
+        "inherited/S11c_upstream_mixed_tanh.py",
+        "inherited/dimensions.json",
+        "inherited/native-direct-slot.json",
+        "inherited/operation-index.json",
+        "inherited/physical-point.json",
+        "inherited/profile-action-input.json",
+        "inherited/profile-action-return.json",
+        "inherited/profile-transform-return.json",
+        "inherited/sign-ingredients.json",
+        "packet-index.json",
+        "review-prompt.md",
+        "runtime-source/S11c_d_end_normalization_run.py",
+        "runtime-source/s11c_guarded_run.py",
+        "source/S11c_a_interface_geometry_sympy_audit.py-L844-871.txt",
+        "source/S11c_a_interface_geometry_sympy_audit.py-L906-916.txt",
+        "source/S11c_c1_bulk_closure_sympy_audit.py-L576-633.txt",
+        "source/S11c_c1_bulk_closure_sympy_audit.py-L834-860.txt",
+        "source/S11c_c2_selfenergy_fold_sympy_audit.py-L367-437.txt",
+        "source/S11c_c2_selfenergy_fold_sympy_audit.py-L455-608.txt",
+        "source/S11c_c2_selfenergy_fold_sympy_audit.py-L615-727.txt"
+      ],
+      "passed": true
+    },
+    {
+      "check": "archive S11c_d_variable_profile_development_input.json",
+      "actual": "660b2b0b54494dce964c7f5fbd722a76a7e894d8ed92b18b5eb6290c3c10f1d5",
+      "expected": "660b2b0b54494dce964c7f5fbd722a76a7e894d8ed92b18b5eb6290c3c10f1d5",
+      "passed": true
+    },
+    {
+      "check": "archive S11c_upstream_mixed_trace.py",
+      "actual": "ab3c9f47ca619fbe45af61462460001ef9e968eacbf87735596b21f3e1222064",
+      "expected": "ab3c9f47ca619fbe45af61462460001ef9e968eacbf87735596b21f3e1222064",
+      "passed": true
+    },
+    {
+      "check": "archive S11c_upstream_mixed_trace_inputs.json",
+      "actual": "97e86f3d79e37b727b336320881dabd9be872bea2d9f746064f39c7b0976d2bb",
+      "expected": "97e86f3d79e37b727b336320881dabd9be872bea2d9f746064f39c7b0976d2bb",
+      "passed": true
+    },
+    {
+      "check": "archive S11c_upstream_mixed_trace_native.json",
+      "actual": "06c0e757bf412c51972b803238ed246ef89259bd59156de6e785206e7447d524",
+      "expected": "06c0e757bf412c51972b803238ed246ef89259bd59156de6e785206e7447d524",
+      "passed": true
+    },
+    {
+      "check": "archive S11c_upstream_mixed_trace_scope.md",
+      "actual": "c1c207d1fcb6d08985ad72b265da7f00aca41a0a86cee495a8b3ca6f3e5b2a2d",
+      "expected": "c1c207d1fcb6d08985ad72b265da7f00aca41a0a86cee495a8b3ca6f3e5b2a2d",
+      "passed": true
+    },
+    {
+      "check": "archive S11c_upstream_mixed_trace_test.py",
+      "actual": "f3391c44a67812259ef2fbeae5a14aabaafc400352d27652e5de8eecf8f25dba",
+      "expected": "f3391c44a67812259ef2fbeae5a14aabaafc400352d27652e5de8eecf8f25dba",
+      "passed": true
+    },
+    {
+      "check": "archive S11c_upstream_mixed_trace_tooling_checks.json",
+      "actual": "b0afc2fa0e20e8fca57e86ed3c74351fde5c70f88b2b52a058eb458ce6ff8cbc",
+      "expected": "b0afc2fa0e20e8fca57e86ed3c74351fde5c70f88b2b52a058eb458ce6ff8cbc",
+      "passed": true
+    },
+    {
+      "check": "archive inherited/S11c_upstream_mixed_tanh.py",
+      "actual": "de783e3d09f58db8075a115edf4ed584f28d2a090cc7a3eef150e98befd30373",
+      "expected": "de783e3d09f58db8075a115edf4ed584f28d2a090cc7a3eef150e98befd30373",
+      "passed": true
+    },
+    {
+      "check": "archive inherited/dimensions.json",
+      "actual": "bc97a9534f452eedfa96bc87aab9ee5d12bbdd19e28587c7888efb9782a403ae",
+      "expected": "bc97a9534f452eedfa96bc87aab9ee5d12bbdd19e28587c7888efb9782a403ae",
+      "passed": true
+    },
+    {
+      "check": "archive inherited/native-direct-slot.json",
+      "actual": "b44296cae4f185075891ec220c1e6f901d316ce6a21a78aab3a00e0fcd04f57a",
+      "expected": "b44296cae4f185075891ec220c1e6f901d316ce6a21a78aab3a00e0fcd04f57a",
+      "passed": true
+    },
+    {
+      "check": "archive inherited/operation-index.json",
+      "actual": "2d8f6373603283f770774a5384e276572d6092920e5458c2376c5a579d3cca99",
+      "expected": "2d8f6373603283f770774a5384e276572d6092920e5458c2376c5a579d3cca99",
+      "passed": true
+    },
+    {
+      "check": "archive inherited/physical-point.json",
+      "actual": "35a4a2ea10f4bafdfe4517305d26aa04d6945d8fcd6f75ce459ce22d362e5321",
+      "expected": "35a4a2ea10f4bafdfe4517305d26aa04d6945d8fcd6f75ce459ce22d362e5321",
+      "passed": true
+    },
+    {
+      "check": "archive inherited/profile-action-input.json",
+      "actual": "3622bdbb0b8767dc382d5811f3833dafdee3913d6d293452189bf92d36155a12",
+      "expected": "3622bdbb0b8767dc382d5811f3833dafdee3913d6d293452189bf92d36155a12",
+      "passed": true
+    },
+    {
+      "check": "archive inherited/profile-action-return.json",
+      "actual": "e9965881768a9e823976a4ab1920ff0ea18bf98b2166e69f886b552c2b7efebf",
+      "expected": "e9965881768a9e823976a4ab1920ff0ea18bf98b2166e69f886b552c2b7efebf",
+      "passed": true
+    },
+    {
+      "check": "archive inherited/profile-transform-return.json",
+      "actual": "fff546e7a76fdb66b3059627a54d3c008d456fc5acd9d971fe45140add36a099",
+      "expected": "fff546e7a76fdb66b3059627a54d3c008d456fc5acd9d971fe45140add36a099",
+      "passed": true
+    },
+    {
+      "check": "archive inherited/sign-ingredients.json",
+      "actual": "594f6cafa20722ca7399f77e4eb971df896ea60e16e84f16aea6f4522d78eec5",
+      "expected": "594f6cafa20722ca7399f77e4eb971df896ea60e16e84f16aea6f4522d78eec5",
+      "passed": true
+    },
+    {
+      "check": "archive packet-index.json",
+      "actual": "e27b792e48c19589f8790d971cd89b71dd7f99528370fbcd2ee09c20fc71ee0f",
+      "expected": "e27b792e48c19589f8790d971cd89b71dd7f99528370fbcd2ee09c20fc71ee0f",
+      "passed": true
+    },
+    {
+      "check": "archive review-prompt.md",
+      "actual": "61f1efb528e849c04f130cdf26efc22e22a1c02b90009c997478050353fe2334",
+      "expected": "61f1efb528e849c04f130cdf26efc22e22a1c02b90009c997478050353fe2334",
+      "passed": true
+    },
+    {
+      "check": "archive runtime-source/S11c_d_end_normalization_run.py",
+      "actual": "35ad679486d2fcf5f4ee803b42293e4dd50cbe0bfcce790eb95343768bb8fd69",
+      "expected": "35ad679486d2fcf5f4ee803b42293e4dd50cbe0bfcce790eb95343768bb8fd69",
+      "passed": true
+    },
+    {
+      "check": "archive runtime-source/s11c_guarded_run.py",
+      "actual": "6a6369424edfa43cbdaa36e8fa2bebbd278bebdbac3b565b2a8498aaca1dc9df",
+      "expected": "6a6369424edfa43cbdaa36e8fa2bebbd278bebdbac3b565b2a8498aaca1dc9df",
+      "passed": true
+    },
+    {
+      "check": "archive source/S11c_a_interface_geometry_sympy_audit.py-L844-871.txt",
+      "actual": "ec682e87ca2f9b08b41a7c2c6ce246a3ea735a15d166c8d647a4eaceac8fa0d2",
+      "expected": "ec682e87ca2f9b08b41a7c2c6ce246a3ea735a15d166c8d647a4eaceac8fa0d2",
+      "passed": true
+    },
+    {
+      "check": "archive source/S11c_a_interface_geometry_sympy_audit.py-L906-916.txt",
+      "actual": "6c1c1c0a0522b67521e565d3d4746b2811569c0d96b7803843dcce2b9fb32f95",
+      "expected": "6c1c1c0a0522b67521e565d3d4746b2811569c0d96b7803843dcce2b9fb32f95",
+      "passed": true
+    },
+    {
+      "check": "archive source/S11c_c1_bulk_closure_sympy_audit.py-L576-633.txt",
+      "actual": "46fc4a73edec4c9ac91f2cdfacfdb810c141d3bcfded05d7c02a65f0a8c9b707",
+      "expected": "46fc4a73edec4c9ac91f2cdfacfdb810c141d3bcfded05d7c02a65f0a8c9b707",
+      "passed": true
+    },
+    {
+      "check": "archive source/S11c_c1_bulk_closure_sympy_audit.py-L834-860.txt",
+      "actual": "65a264f71471f2e00f8ee0ac7b8c0ab0861b2ff120a018aa9cf708b0b3c5aada",
+      "expected": "65a264f71471f2e00f8ee0ac7b8c0ab0861b2ff120a018aa9cf708b0b3c5aada",
+      "passed": true
+    },
+    {
+      "check": "archive source/S11c_c2_selfenergy_fold_sympy_audit.py-L367-437.txt",
+      "actual": "066df4f7f7c1cb6aac1ba860ded846027ee5057d7675ae2d6f969440e9ccf306",
+      "expected": "066df4f7f7c1cb6aac1ba860ded846027ee5057d7675ae2d6f969440e9ccf306",
+      "passed": true
+    },
+    {
+      "check": "archive source/S11c_c2_selfenergy_fold_sympy_audit.py-L455-608.txt",
+      "actual": "0e2e807a536894963eaa2180bec45969e2ef1ba2526b5c18d2c53bb4e8a043b0",
+      "expected": "0e2e807a536894963eaa2180bec45969e2ef1ba2526b5c18d2c53bb4e8a043b0",
+      "passed": true
+    },
+    {
+      "check": "archive source/S11c_c2_selfenergy_fold_sympy_audit.py-L615-727.txt",
+      "actual": "90edbc8552dd003a7365800812fa287dfdd523c39b6d8e2b63db9cb760ef2f76",
+      "expected": "90edbc8552dd003a7365800812fa287dfdd523c39b6d8e2b63db9cb760ef2f76",
+      "passed": true
+    },
+    {
+      "check": "review_run.py",
+      "actual": "30ed68e2d751f5c85399fcdf99384d9ef095376983da0b1bf91b89aef62e5b62",
+      "expected": "30ed68e2d751f5c85399fcdf99384d9ef095376983da0b1bf91b89aef62e5b62",
+      "passed": true
+    },
+    {
+      "check": "review_launch.py",
+      "actual": "d7dd71850300818294a1218ecaf59c5576f63884457eb12b87d69d8b0c7df2a5",
+      "expected": "d7dd71850300818294a1218ecaf59c5576f63884457eb12b87d69d8b0c7df2a5",
+      "passed": true
+    },
+    {
+      "check": "completion_message.txt",
+      "actual": "867041dc36dab431d884f562ddf868995cfa597a1a73f2e97e7607344573cb8e",
+      "expected": "867041dc36dab431d884f562ddf868995cfa597a1a73f2e97e7607344573cb8e",
+      "passed": true
+    },
+    {
+      "check": "claude delivered nonempty",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "check": "claude literal verdict",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "check": "claude raw report hash",
+      "actual": "63bf5b687d8034267b16420d20cd626a7be9dee6486ae17136379956b049dbce",
+      "expected": "63bf5b687d8034267b16420d20cd626a7be9dee6486ae17136379956b049dbce",
+      "passed": true
+    },
+    {
+      "check": "claude stderr hash",
+      "actual": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "expected": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "passed": true
+    },
+    {
+      "check": "claude exited",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "check": "claude session identity",
+      "actual": "1c1db01d-0846-42ed-b248-e68b2e8d12a5",
+      "expected": "1c1db01d-0846-42ed-b248-e68b2e8d12a5",
+      "passed": true
+    },
+    {
+      "check": "claude packet identity",
+      "actual": "d23734d7d3c61e058a12bf6820c45cef95b783aadb17d3c2af9a84d7651fb86c",
+      "expected": "d23734d7d3c61e058a12bf6820c45cef95b783aadb17d3c2af9a84d7651fb86c",
+      "passed": true
+    },
+    {
+      "check": "claude prompt identity",
+      "actual": "61f1efb528e849c04f130cdf26efc22e22a1c02b90009c997478050353fe2334",
+      "expected": "61f1efb528e849c04f130cdf26efc22e22a1c02b90009c997478050353fe2334",
+      "passed": true
+    },
+    {
+      "check": "claude source-only",
+      "actual": false,
+      "expected": false,
+      "passed": true
+    },
+    {
+      "check": "claude private S11c_d_variable_profile_development_input.json",
+      "actual": "660b2b0b54494dce964c7f5fbd722a76a7e894d8ed92b18b5eb6290c3c10f1d5",
+      "expected": "660b2b0b54494dce964c7f5fbd722a76a7e894d8ed92b18b5eb6290c3c10f1d5",
+      "passed": true
+    },
+    {
+      "check": "claude private S11c_upstream_mixed_trace.py",
+      "actual": "ab3c9f47ca619fbe45af61462460001ef9e968eacbf87735596b21f3e1222064",
+      "expected": "ab3c9f47ca619fbe45af61462460001ef9e968eacbf87735596b21f3e1222064",
+      "passed": true
+    },
+    {
+      "check": "claude private S11c_upstream_mixed_trace_inputs.json",
+      "actual": "97e86f3d79e37b727b336320881dabd9be872bea2d9f746064f39c7b0976d2bb",
+      "expected": "97e86f3d79e37b727b336320881dabd9be872bea2d9f746064f39c7b0976d2bb",
+      "passed": true
+    },
+    {
+      "check": "claude private S11c_upstream_mixed_trace_native.json",
+      "actual": "06c0e757bf412c51972b803238ed246ef89259bd59156de6e785206e7447d524",
+      "expected": "06c0e757bf412c51972b803238ed246ef89259bd59156de6e785206e7447d524",
+      "passed": true
+    },
+    {
+      "check": "claude private S11c_upstream_mixed_trace_scope.md",
+      "actual": "c1c207d1fcb6d08985ad72b265da7f00aca41a0a86cee495a8b3ca6f3e5b2a2d",
+      "expected": "c1c207d1fcb6d08985ad72b265da7f00aca41a0a86cee495a8b3ca6f3e5b2a2d",
+      "passed": true
+    },
+    {
+      "check": "claude private S11c_upstream_mixed_trace_test.py",
+      "actual": "f3391c44a67812259ef2fbeae5a14aabaafc400352d27652e5de8eecf8f25dba",
+      "expected": "f3391c44a67812259ef2fbeae5a14aabaafc400352d27652e5de8eecf8f25dba",
+      "passed": true
+    },
+    {
+      "check": "claude private S11c_upstream_mixed_trace_tooling_checks.json",
+      "actual": "b0afc2fa0e20e8fca57e86ed3c74351fde5c70f88b2b52a058eb458ce6ff8cbc",
+      "expected": "b0afc2fa0e20e8fca57e86ed3c74351fde5c70f88b2b52a058eb458ce6ff8cbc",
+      "passed": true
+    },
+    {
+      "check": "claude private inherited/S11c_upstream_mixed_tanh.py",
+      "actual": "de783e3d09f58db8075a115edf4ed584f28d2a090cc7a3eef150e98befd30373",
+      "expected": "de783e3d09f58db8075a115edf4ed584f28d2a090cc7a3eef150e98befd30373",
+      "passed": true
+    },
+    {
+      "check": "claude private inherited/dimensions.json",
+      "actual": "bc97a9534f452eedfa96bc87aab9ee5d12bbdd19e28587c7888efb9782a403ae",
+      "expected": "bc97a9534f452eedfa96bc87aab9ee5d12bbdd19e28587c7888efb9782a403ae",
+      "passed": true
+    },
+    {
+      "check": "claude private inherited/native-direct-slot.json",
+      "actual": "b44296cae4f185075891ec220c1e6f901d316ce6a21a78aab3a00e0fcd04f57a",
+      "expected": "b44296cae4f185075891ec220c1e6f901d316ce6a21a78aab3a00e0fcd04f57a",
+      "passed": true
+    },
+    {
+      "check": "claude private inherited/operation-index.json",
+      "actual": "2d8f6373603283f770774a5384e276572d6092920e5458c2376c5a579d3cca99",
+      "expected": "2d8f6373603283f770774a5384e276572d6092920e5458c2376c5a579d3cca99",
+      "passed": true
+    },
+    {
+      "check": "claude private inherited/physical-point.json",
+      "actual": "35a4a2ea10f4bafdfe4517305d26aa04d6945d8fcd6f75ce459ce22d362e5321",
+      "expected": "35a4a2ea10f4bafdfe4517305d26aa04d6945d8fcd6f75ce459ce22d362e5321",
+      "passed": true
+    },
+    {
+      "check": "claude private inherited/profile-action-input.json",
+      "actual": "3622bdbb0b8767dc382d5811f3833dafdee3913d6d293452189bf92d36155a12",
+      "expected": "3622bdbb0b8767dc382d5811f3833dafdee3913d6d293452189bf92d36155a12",
+      "passed": true
+    },
+    {
+      "check": "claude private inherited/profile-action-return.json",
+      "actual": "e9965881768a9e823976a4ab1920ff0ea18bf98b2166e69f886b552c2b7efebf",
+      "expected": "e9965881768a9e823976a4ab1920ff0ea18bf98b2166e69f886b552c2b7efebf",
+      "passed": true
+    },
+    {
+      "check": "claude private inherited/profile-transform-return.json",
+      "actual": "fff546e7a76fdb66b3059627a54d3c008d456fc5acd9d971fe45140add36a099",
+      "expected": "fff546e7a76fdb66b3059627a54d3c008d456fc5acd9d971fe45140add36a099",
+      "passed": true
+    },
+    {
+      "check": "claude private inherited/sign-ingredients.json",
+      "actual": "594f6cafa20722ca7399f77e4eb971df896ea60e16e84f16aea6f4522d78eec5",
+      "expected": "594f6cafa20722ca7399f77e4eb971df896ea60e16e84f16aea6f4522d78eec5",
+      "passed": true
+    },
+    {
+      "check": "claude private packet-index.json",
+      "actual": "e27b792e48c19589f8790d971cd89b71dd7f99528370fbcd2ee09c20fc71ee0f",
+      "expected": "e27b792e48c19589f8790d971cd89b71dd7f99528370fbcd2ee09c20fc71ee0f",
+      "passed": true
+    },
+    {
+      "check": "claude private review-prompt.md",
+      "actual": "61f1efb528e849c04f130cdf26efc22e22a1c02b90009c997478050353fe2334",
+      "expected": "61f1efb528e849c04f130cdf26efc22e22a1c02b90009c997478050353fe2334",
+      "passed": true
+    },
+    {
+      "check": "claude private runtime-source/S11c_d_end_normalization_run.py",
+      "actual": "35ad679486d2fcf5f4ee803b42293e4dd50cbe0bfcce790eb95343768bb8fd69",
+      "expected": "35ad679486d2fcf5f4ee803b42293e4dd50cbe0bfcce790eb95343768bb8fd69",
+      "passed": true
+    },
+    {
+      "check": "claude private runtime-source/s11c_guarded_run.py",
+      "actual": "6a6369424edfa43cbdaa36e8fa2bebbd278bebdbac3b565b2a8498aaca1dc9df",
+      "expected": "6a6369424edfa43cbdaa36e8fa2bebbd278bebdbac3b565b2a8498aaca1dc9df",
+      "passed": true
+    },
+    {
+      "check": "claude private source/S11c_a_interface_geometry_sympy_audit.py-L844-871.txt",
+      "actual": "ec682e87ca2f9b08b41a7c2c6ce246a3ea735a15d166c8d647a4eaceac8fa0d2",
+      "expected": "ec682e87ca2f9b08b41a7c2c6ce246a3ea735a15d166c8d647a4eaceac8fa0d2",
+      "passed": true
+    },
+    {
+      "check": "claude private source/S11c_a_interface_geometry_sympy_audit.py-L906-916.txt",
+      "actual": "6c1c1c0a0522b67521e565d3d4746b2811569c0d96b7803843dcce2b9fb32f95",
+      "expected": "6c1c1c0a0522b67521e565d3d4746b2811569c0d96b7803843dcce2b9fb32f95",
+      "passed": true
+    },
+    {
+      "check": "claude private source/S11c_c1_bulk_closure_sympy_audit.py-L576-633.txt",
+      "actual": "46fc4a73edec4c9ac91f2cdfacfdb810c141d3bcfded05d7c02a65f0a8c9b707",
+      "expected": "46fc4a73edec4c9ac91f2cdfacfdb810c141d3bcfded05d7c02a65f0a8c9b707",
+      "passed": true
+    },
+    {
+      "check": "claude private source/S11c_c1_bulk_closure_sympy_audit.py-L834-860.txt",
+      "actual": "65a264f71471f2e00f8ee0ac7b8c0ab0861b2ff120a018aa9cf708b0b3c5aada",
+      "expected": "65a264f71471f2e00f8ee0ac7b8c0ab0861b2ff120a018aa9cf708b0b3c5aada",
+      "passed": true
+    },
+    {
+      "check": "claude private source/S11c_c2_selfenergy_fold_sympy_audit.py-L367-437.txt",
+      "actual": "066df4f7f7c1cb6aac1ba860ded846027ee5057d7675ae2d6f969440e9ccf306",
+      "expected": "066df4f7f7c1cb6aac1ba860ded846027ee5057d7675ae2d6f969440e9ccf306",
+      "passed": true
+    },
+    {
+      "check": "claude private source/S11c_c2_selfenergy_fold_sympy_audit.py-L455-608.txt",
+      "actual": "0e2e807a536894963eaa2180bec45969e2ef1ba2526b5c18d2c53bb4e8a043b0",
+      "expected": "0e2e807a536894963eaa2180bec45969e2ef1ba2526b5c18d2c53bb4e8a043b0",
+      "passed": true
+    },
+    {
+      "check": "claude private source/S11c_c2_selfenergy_fold_sympy_audit.py-L615-727.txt",
+      "actual": "90edbc8552dd003a7365800812fa287dfdd523c39b6d8e2b63db9cb760ef2f76",
+      "expected": "90edbc8552dd003a7365800812fa287dfdd523c39b6d8e2b63db9cb760ef2f76",
+      "passed": true
+    },
+    {
+      "check": "grok delivered nonempty",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "check": "grok literal verdict",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "check": "grok raw report hash",
+      "actual": "b44c9152e196311bcacf0635cb27ab2f74b948cea3e622046c49fe1c64e906df",
+      "expected": "b44c9152e196311bcacf0635cb27ab2f74b948cea3e622046c49fe1c64e906df",
+      "passed": true
+    },
+    {
+      "check": "grok stderr hash",
+      "actual": "6ad9a1afd6f6829bfb0635faef52e80be0bbea57ec5076b9c97150cc3dacbe3b",
+      "expected": "6ad9a1afd6f6829bfb0635faef52e80be0bbea57ec5076b9c97150cc3dacbe3b",
+      "passed": true
+    },
+    {
+      "check": "grok exited",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "check": "grok session identity",
+      "actual": "51c1e733-dad6-4747-91d3-0112be92e5f3",
+      "expected": "51c1e733-dad6-4747-91d3-0112be92e5f3",
+      "passed": true
+    },
+    {
+      "check": "grok packet identity",
+      "actual": "d23734d7d3c61e058a12bf6820c45cef95b783aadb17d3c2af9a84d7651fb86c",
+      "expected": "d23734d7d3c61e058a12bf6820c45cef95b783aadb17d3c2af9a84d7651fb86c",
+      "passed": true
+    },
+    {
+      "check": "grok prompt identity",
+      "actual": "61f1efb528e849c04f130cdf26efc22e22a1c02b90009c997478050353fe2334",
+      "expected": "61f1efb528e849c04f130cdf26efc22e22a1c02b90009c997478050353fe2334",
+      "passed": true
+    },
+    {
+      "check": "grok source-only",
+      "actual": false,
+      "expected": false,
+      "passed": true
+    },
+    {
+      "check": "grok private S11c_d_variable_profile_development_input.json",
+      "actual": "660b2b0b54494dce964c7f5fbd722a76a7e894d8ed92b18b5eb6290c3c10f1d5",
+      "expected": "660b2b0b54494dce964c7f5fbd722a76a7e894d8ed92b18b5eb6290c3c10f1d5",
+      "passed": true
+    },
+    {
+      "check": "grok private S11c_upstream_mixed_trace.py",
+      "actual": "ab3c9f47ca619fbe45af61462460001ef9e968eacbf87735596b21f3e1222064",
+      "expected": "ab3c9f47ca619fbe45af61462460001ef9e968eacbf87735596b21f3e1222064",
+      "passed": true
+    },
+    {
+      "check": "grok private S11c_upstream_mixed_trace_inputs.json",
+      "actual": "97e86f3d79e37b727b336320881dabd9be872bea2d9f746064f39c7b0976d2bb",
+      "expected": "97e86f3d79e37b727b336320881dabd9be872bea2d9f746064f39c7b0976d2bb",
+      "passed": true
+    },
+    {
+      "check": "grok private S11c_upstream_mixed_trace_native.json",
+      "actual": "06c0e757bf412c51972b803238ed246ef89259bd59156de6e785206e7447d524",
+      "expected": "06c0e757bf412c51972b803238ed246ef89259bd59156de6e785206e7447d524",
+      "passed": true
+    },
+    {
+      "check": "grok private S11c_upstream_mixed_trace_scope.md",
+      "actual": "c1c207d1fcb6d08985ad72b265da7f00aca41a0a86cee495a8b3ca6f3e5b2a2d",
+      "expected": "c1c207d1fcb6d08985ad72b265da7f00aca41a0a86cee495a8b3ca6f3e5b2a2d",
+      "passed": true
+    },
+    {
+      "check": "grok private S11c_upstream_mixed_trace_test.py",
+      "actual": "f3391c44a67812259ef2fbeae5a14aabaafc400352d27652e5de8eecf8f25dba",
+      "expected": "f3391c44a67812259ef2fbeae5a14aabaafc400352d27652e5de8eecf8f25dba",
+      "passed": true
+    },
+    {
+      "check": "grok private S11c_upstream_mixed_trace_tooling_checks.json",
+      "actual": "b0afc2fa0e20e8fca57e86ed3c74351fde5c70f88b2b52a058eb458ce6ff8cbc",
+      "expected": "b0afc2fa0e20e8fca57e86ed3c74351fde5c70f88b2b52a058eb458ce6ff8cbc",
+      "passed": true
+    },
+    {
+      "check": "grok private inherited/S11c_upstream_mixed_tanh.py",
+      "actual": "de783e3d09f58db8075a115edf4ed584f28d2a090cc7a3eef150e98befd30373",
+      "expected": "de783e3d09f58db8075a115edf4ed584f28d2a090cc7a3eef150e98befd30373",
+      "passed": true
+    },
+    {
+      "check": "grok private inherited/dimensions.json",
+      "actual": "bc97a9534f452eedfa96bc87aab9ee5d12bbdd19e28587c7888efb9782a403ae",
+      "expected": "bc97a9534f452eedfa96bc87aab9ee5d12bbdd19e28587c7888efb9782a403ae",
+      "passed": true
+    },
+    {
+      "check": "grok private inherited/native-direct-slot.json",
+      "actual": "b44296cae4f185075891ec220c1e6f901d316ce6a21a78aab3a00e0fcd04f57a",
+      "expected": "b44296cae4f185075891ec220c1e6f901d316ce6a21a78aab3a00e0fcd04f57a",
+      "passed": true
+    },
+    {
+      "check": "grok private inherited/operation-index.json",
+      "actual": "2d8f6373603283f770774a5384e276572d6092920e5458c2376c5a579d3cca99",
+      "expected": "2d8f6373603283f770774a5384e276572d6092920e5458c2376c5a579d3cca99",
+      "passed": true
+    },
+    {
+      "check": "grok private inherited/physical-point.json",
+      "actual": "35a4a2ea10f4bafdfe4517305d26aa04d6945d8fcd6f75ce459ce22d362e5321",
+      "expected": "35a4a2ea10f4bafdfe4517305d26aa04d6945d8fcd6f75ce459ce22d362e5321",
+      "passed": true
+    },
+    {
+      "check": "grok private inherited/profile-action-input.json",
+      "actual": "3622bdbb0b8767dc382d5811f3833dafdee3913d6d293452189bf92d36155a12",
+      "expected": "3622bdbb0b8767dc382d5811f3833dafdee3913d6d293452189bf92d36155a12",
+      "passed": true
+    },
+    {
+      "check": "grok private inherited/profile-action-return.json",
+      "actual": "e9965881768a9e823976a4ab1920ff0ea18bf98b2166e69f886b552c2b7efebf",
+      "expected": "e9965881768a9e823976a4ab1920ff0ea18bf98b2166e69f886b552c2b7efebf",
+      "passed": true
+    },
+    {
+      "check": "grok private inherited/profile-transform-return.json",
+      "actual": "fff546e7a76fdb66b3059627a54d3c008d456fc5acd9d971fe45140add36a099",
+      "expected": "fff546e7a76fdb66b3059627a54d3c008d456fc5acd9d971fe45140add36a099",
+      "passed": true
+    },
+    {
+      "check": "grok private inherited/sign-ingredients.json",
+      "actual": "594f6cafa20722ca7399f77e4eb971df896ea60e16e84f16aea6f4522d78eec5",
+      "expected": "594f6cafa20722ca7399f77e4eb971df896ea60e16e84f16aea6f4522d78eec5",
+      "passed": true
+    },
+    {
+      "check": "grok private packet-index.json",
+      "actual": "e27b792e48c19589f8790d971cd89b71dd7f99528370fbcd2ee09c20fc71ee0f",
+      "expected": "e27b792e48c19589f8790d971cd89b71dd7f99528370fbcd2ee09c20fc71ee0f",
+      "passed": true
+    },
+    {
+      "check": "grok private review-prompt.md",
+      "actual": "61f1efb528e849c04f130cdf26efc22e22a1c02b90009c997478050353fe2334",
+      "expected": "61f1efb528e849c04f130cdf26efc22e22a1c02b90009c997478050353fe2334",
+      "passed": true
+    },
+    {
+      "check": "grok private runtime-source/S11c_d_end_normalization_run.py",
+      "actual": "35ad679486d2fcf5f4ee803b42293e4dd50cbe0bfcce790eb95343768bb8fd69",
+      "expected": "35ad679486d2fcf5f4ee803b42293e4dd50cbe0bfcce790eb95343768bb8fd69",
+      "passed": true
+    },
+    {
+      "check": "grok private runtime-source/s11c_guarded_run.py",
+      "actual": "6a6369424edfa43cbdaa36e8fa2bebbd278bebdbac3b565b2a8498aaca1dc9df",
+      "expected": "6a6369424edfa43cbdaa36e8fa2bebbd278bebdbac3b565b2a8498aaca1dc9df",
+      "passed": true
+    },
+    {
+      "check": "grok private source/S11c_a_interface_geometry_sympy_audit.py-L844-871.txt",
+      "actual": "ec682e87ca2f9b08b41a7c2c6ce246a3ea735a15d166c8d647a4eaceac8fa0d2",
+      "expected": "ec682e87ca2f9b08b41a7c2c6ce246a3ea735a15d166c8d647a4eaceac8fa0d2",
+      "passed": true
+    },
+    {
+      "check": "grok private source/S11c_a_interface_geometry_sympy_audit.py-L906-916.txt",
+      "actual": "6c1c1c0a0522b67521e565d3d4746b2811569c0d96b7803843dcce2b9fb32f95",
+      "expected": "6c1c1c0a0522b67521e565d3d4746b2811569c0d96b7803843dcce2b9fb32f95",
+      "passed": true
+    },
+    {
+      "check": "grok private source/S11c_c1_bulk_closure_sympy_audit.py-L576-633.txt",
+      "actual": "46fc4a73edec4c9ac91f2cdfacfdb810c141d3bcfded05d7c02a65f0a8c9b707",
+      "expected": "46fc4a73edec4c9ac91f2cdfacfdb810c141d3bcfded05d7c02a65f0a8c9b707",
+      "passed": true
+    },
+    {
+      "check": "grok private source/S11c_c1_bulk_closure_sympy_audit.py-L834-860.txt",
+      "actual": "65a264f71471f2e00f8ee0ac7b8c0ab0861b2ff120a018aa9cf708b0b3c5aada",
+      "expected": "65a264f71471f2e00f8ee0ac7b8c0ab0861b2ff120a018aa9cf708b0b3c5aada",
+      "passed": true
+    },
+    {
+      "check": "grok private source/S11c_c2_selfenergy_fold_sympy_audit.py-L367-437.txt",
+      "actual": "066df4f7f7c1cb6aac1ba860ded846027ee5057d7675ae2d6f969440e9ccf306",
+      "expected": "066df4f7f7c1cb6aac1ba860ded846027ee5057d7675ae2d6f969440e9ccf306",
+      "passed": true
+    },
+    {
+      "check": "grok private source/S11c_c2_selfenergy_fold_sympy_audit.py-L455-608.txt",
+      "actual": "0e2e807a536894963eaa2180bec45969e2ef1ba2526b5c18d2c53bb4e8a043b0",
+      "expected": "0e2e807a536894963eaa2180bec45969e2ef1ba2526b5c18d2c53bb4e8a043b0",
+      "passed": true
+    },
+    {
+      "check": "grok private source/S11c_c2_selfenergy_fold_sympy_audit.py-L615-727.txt",
+      "actual": "90edbc8552dd003a7365800812fa287dfdd523c39b6d8e2b63db9cb760ef2f76",
+      "expected": "90edbc8552dd003a7365800812fa287dfdd523c39b6d8e2b63db9cb760ef2f76",
+      "passed": true
+    },
+    {
+      "check": "current source /var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_mixed_trace.py",
+      "actual": "ab3c9f47ca619fbe45af61462460001ef9e968eacbf87735596b21f3e1222064",
+      "expected": "ab3c9f47ca619fbe45af61462460001ef9e968eacbf87735596b21f3e1222064",
+      "passed": true
+    },
+    {
+      "check": "current source /var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_mixed_trace_native.json",
+      "actual": "06c0e757bf412c51972b803238ed246ef89259bd59156de6e785206e7447d524",
+      "expected": "06c0e757bf412c51972b803238ed246ef89259bd59156de6e785206e7447d524",
+      "passed": true
+    },
+    {
+      "check": "current source /var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_mixed_trace_scope.md",
+      "actual": "c1c207d1fcb6d08985ad72b265da7f00aca41a0a86cee495a8b3ca6f3e5b2a2d",
+      "expected": "c1c207d1fcb6d08985ad72b265da7f00aca41a0a86cee495a8b3ca6f3e5b2a2d",
+      "passed": true
+    },
+    {
+      "check": "current source /var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_mixed_trace_review_prompt.md",
+      "actual": "61f1efb528e849c04f130cdf26efc22e22a1c02b90009c997478050353fe2334",
+      "expected": "61f1efb528e849c04f130cdf26efc22e22a1c02b90009c997478050353fe2334",
+      "passed": true
+    },
+    {
+      "check": "current source /var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_mixed_trace_test.py",
+      "actual": "f3391c44a67812259ef2fbeae5a14aabaafc400352d27652e5de8eecf8f25dba",
+      "expected": "f3391c44a67812259ef2fbeae5a14aabaafc400352d27652e5de8eecf8f25dba",
+      "passed": true
+    },
+    {
+      "check": "current source /var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_mixed_trace_tooling_checks.json",
+      "actual": "b0afc2fa0e20e8fca57e86ed3c74351fde5c70f88b2b52a058eb458ce6ff8cbc",
+      "expected": "b0afc2fa0e20e8fca57e86ed3c74351fde5c70f88b2b52a058eb458ce6ff8cbc",
+      "passed": true
+    },
+    {
+      "check": "current source /var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_variable_profile_development_input.json",
+      "actual": "660b2b0b54494dce964c7f5fbd722a76a7e894d8ed92b18b5eb6290c3c10f1d5",
+      "expected": "660b2b0b54494dce964c7f5fbd722a76a7e894d8ed92b18b5eb6290c3c10f1d5",
+      "passed": true
+    },
+    {
+      "check": "current source /var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_c1_exports.py",
+      "actual": "a5353b86dc526fd1b56734fdbdf7dc7f42387a3195ab4de84e8994f751871cdc",
+      "expected": "a5353b86dc526fd1b56734fdbdf7dc7f42387a3195ab4de84e8994f751871cdc",
+      "passed": true
+    },
+    {
+      "check": "current source /var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_a_exports.py",
+      "actual": "f0fd8d6d75dc7320393b7c6aad10e3fb23ca14ab8b6a50deee7d9995fbab6b17",
+      "expected": "f0fd8d6d75dc7320393b7c6aad10e3fb23ca14ab8b6a50deee7d9995fbab6b17",
+      "passed": true
+    },
+    {
+      "check": "current source /var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_c1_bulk_closure_sympy_audit.py",
+      "actual": "02abfa93076efcb38a1b300daf9adedf5e3ad425ebf9d73555d730cea935ba20",
+      "expected": "02abfa93076efcb38a1b300daf9adedf5e3ad425ebf9d73555d730cea935ba20",
+      "passed": true
+    },
+    {
+      "check": "current source /var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_c2_selfenergy_fold_sympy_audit.py",
+      "actual": "0e90c751d36178a9846e75c38ac4ad0c8591b4b8ce11b6dc194218913265d434",
+      "expected": "0e90c751d36178a9846e75c38ac4ad0c8591b4b8ce11b6dc194218913265d434",
+      "passed": true
+    },
+    {
+      "check": "current source /var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_a_interface_geometry_sympy_audit.py",
+      "actual": "f4da0f2224257381300e5e78cc74a1341485b82446ac98251ca25d4b3c1a6be7",
+      "expected": "f4da0f2224257381300e5e78cc74a1341485b82446ac98251ca25d4b3c1a6be7",
+      "passed": true
+    },
+    {
+      "check": "current source /var/projects/toy_physics/scripts/s11c_guarded_run.py",
+      "actual": "6a6369424edfa43cbdaa36e8fa2bebbd278bebdbac3b565b2a8498aaca1dc9df",
+      "expected": "6a6369424edfa43cbdaa36e8fa2bebbd278bebdbac3b565b2a8498aaca1dc9df",
+      "passed": true
+    },
+    {
+      "check": "current source /var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+      "actual": "35ad679486d2fcf5f4ee803b42293e4dd50cbe0bfcce790eb95343768bb8fd69",
+      "expected": "35ad679486d2fcf5f4ee803b42293e4dd50cbe0bfcce790eb95343768bb8fd69",
+      "passed": true
+    },
+    {
+      "check": "current source /var/projects/toy_physics/scripts/codex_job_watch.py",
+      "actual": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
+      "expected": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
+      "passed": true
+    },
+    {
+      "check": "current source /var/projects/toy_physics/_scratch/s11c/s11c-mixed-tanh-20261001/diagnostic-01/complete/A-even.json",
+      "actual": "08269f5039086b7723ca44d98f2ccb681052a18aa0eac28f2f2db4462cc03b4c",
+      "expected": "08269f5039086b7723ca44d98f2ccb681052a18aa0eac28f2f2db4462cc03b4c",
+      "passed": true
+    },
+    {
+      "check": "current source /var/projects/toy_physics/_scratch/s11c/s11c-mixed-tanh-20261001/diagnostic-01/complete/boundary-before-guards.json",
+      "actual": "2f2e1fa5fa0ab8b3532fb9a77d324e66f59fdf53a4118df8a18cb9a9c6c5a8cb",
+      "expected": "2f2e1fa5fa0ab8b3532fb9a77d324e66f59fdf53a4118df8a18cb9a9c6c5a8cb",
+      "passed": true
+    },
+    {
+      "check": "current source /var/projects/toy_physics/_scratch/s11c/s11c-mixed-tanh-20261001/diagnostic-01/complete/boundary-coefficient-input.json",
+      "actual": "086c2939471bbdfb6165e9587aac5e7d40e5f267f3ca11c970695862632bd2b8",
+      "expected": "086c2939471bbdfb6165e9587aac5e7d40e5f267f3ca11c970695862632bd2b8",
+      "passed": true
+    },
+    {
+      "check": "current source /var/projects/toy_physics/_scratch/s11c/s11c-mixed-tanh-20261001/diagnostic-01/complete/boundary-coefficient-return.json",
+      "actual": "a6b4ac7b601fcc794d12391b668d2f36259831510aea44a6a8c3edc46b5124bb",
+      "expected": "a6b4ac7b601fcc794d12391b668d2f36259831510aea44a6a8c3edc46b5124bb",
+      "passed": true
+    },
+    {
+      "check": "current source /var/projects/toy_physics/_scratch/s11c/s11c-mixed-tanh-20261001/diagnostic-01/complete/boundary-residual-0.json",
+      "actual": "7651315000de882136d6972cada89e0cb5f3d1bcc0b9afa2e1fd1e0c18144382",
+      "expected": "7651315000de882136d6972cada89e0cb5f3d1bcc0b9afa2e1fd1e0c18144382",
+      "passed": true
+    },
+    {
+      "check": "current source /var/projects/toy_physics/_scratch/s11c/s11c-mixed-tanh-20261001/diagnostic-01/complete/boundary-residual-1.json",
+      "actual": "7651315000de882136d6972cada89e0cb5f3d1bcc0b9afa2e1fd1e0c18144382",
+      "expected": "7651315000de882136d6972cada89e0cb5f3d1bcc0b9afa2e1fd1e0c18144382",
+      "passed": true
+    },
+    {
+      "check": "current source /var/projects/toy_physics/_scratch/s11c/s11c-mixed-tanh-20261001/diagnostic-01/complete/boundary-residual-2.json",
+      "actual": "7651315000de882136d6972cada89e0cb5f3d1bcc0b9afa2e1fd1e0c18144382",
+      "expected": "7651315000de882136d6972cada89e0cb5f3d1bcc0b9afa2e1fd1e0c18144382",
+      "passed": true
+    },
+    {
+      "check": "current source /var/projects/toy_physics/_scratch/s11c/s11c-mixed-tanh-20261001/diagnostic-01/complete/boundary-residual-3.json",
+      "actual": "a90198336e746b20cd4caec46075b16dc9100e4e9899e015e810e35f1f80d277",
+      "expected": "a90198336e746b20cd4caec46075b16dc9100e4e9899e015e810e35f1f80d277",
+      "passed": true
+    },
+    {
+      "check": "current source /var/projects/toy_physics/_scratch/s11c/s11c-mixed-tanh-20261001/diagnostic-01/complete/checks.json",
+      "actual": "081d2b6e8d271c506acc90b853b446fbbb66e858a775fab876cccb77323dfae7",
+      "expected": "081d2b6e8d271c506acc90b853b446fbbb66e858a775fab876cccb77323dfae7",
+      "passed": true
+    },
+    {
+      "check": "current source /var/projects/toy_physics/_scratch/s11c/s11c-mixed-tanh-20261001/diagnostic-01/complete/constant-end-zero-jet.json",
+      "actual": "7651315000de882136d6972cada89e0cb5f3d1bcc0b9afa2e1fd1e0c18144382",
+      "expected": "7651315000de882136d6972cada89e0cb5f3d1bcc0b9afa2e1fd1e0c18144382",
+      "passed": true
+    },
+    {
+      "check": "current source /var/projects/toy_physics/_scratch/s11c/s11c-mixed-tanh-20261001/diagnostic-01/complete/containment.json",
+      "actual": "e2c27c292d49fecfd02c6a566330060c368476884bc8dc10ec90ec9323deea55",
+      "expected": "e2c27c292d49fecfd02c6a566330060c368476884bc8dc10ec90ec9323deea55",
+      "passed": true
+    },
+    {
+      "check": "current source /var/projects/toy_physics/_scratch/s11c/s11c-mixed-tanh-20261001/diagnostic-01/complete/dimensions.json",
+      "actual": "bc97a9534f452eedfa96bc87aab9ee5d12bbdd19e28587c7888efb9782a403ae",
+      "expected": "bc97a9534f452eedfa96bc87aab9ee5d12bbdd19e28587c7888efb9782a403ae",
+      "passed": true
+    },
+    {
+      "check": "current source /var/projects/toy_physics/_scratch/s11c/s11c-mixed-tanh-20261001/diagnostic-01/complete/exterior-endpoint-square.json",
+      "actual": "3536411892508cf7e2a8cf1659d23281f53d8cd8729edbae4a2504b3601fcb1c",
+      "expected": "3536411892508cf7e2a8cf1659d23281f53d8cd8729edbae4a2504b3601fcb1c",
+      "passed": true
+    },
+    {
+      "check": "current source /var/projects/toy_physics/_scratch/s11c/s11c-mixed-tanh-20261001/diagnostic-01/complete/exterior-real-part.json",
+      "actual": "7651315000de882136d6972cada89e0cb5f3d1bcc0b9afa2e1fd1e0c18144382",
+      "expected": "7651315000de882136d6972cada89e0cb5f3d1bcc0b9afa2e1fd1e0c18144382",
+      "passed": true
+    },
+    {
+      "check": "current source /var/projects/toy_physics/_scratch/s11c/s11c-mixed-tanh-20261001/diagnostic-01/complete/fourier-beta-reflection.json",
+      "actual": "9c21a64655b0fb0b715477b30fc19d3f5d602dff121d2f0bba2c5b8ee1b299c3",
+      "expected": "9c21a64655b0fb0b715477b30fc19d3f5d602dff121d2f0bba2c5b8ee1b299c3",
+      "passed": true
+    },
+    {
+      "check": "current source /var/projects/toy_physics/_scratch/s11c/s11c-mixed-tanh-20261001/diagnostic-01/complete/fourier-derivative-mass.json",
+      "actual": "b6f7d09a40a34fa42c1071773edd8e5a2091d91dd9bd5791721d6ec06428d79a",
+      "expected": "b6f7d09a40a34fa42c1071773edd8e5a2091d91dd9bd5791721d6ec06428d79a",
+      "passed": true
+    },
+    {
+      "check": "current source /var/projects/toy_physics/_scratch/s11c/s11c-mixed-tanh-20261001/diagnostic-01/complete/fourier-derivative.json",
+      "actual": "9c21a64655b0fb0b715477b30fc19d3f5d602dff121d2f0bba2c5b8ee1b299c3",
+      "expected": "9c21a64655b0fb0b715477b30fc19d3f5d602dff121d2f0bba2c5b8ee1b299c3",
+      "passed": true
+    },
+    {
+      "check": "current source /var/projects/toy_physics/_scratch/s11c/s11c-mixed-tanh-20261001/diagnostic-01/complete/interior-endpoint-square.json",
+      "actual": "e4062f906259cce88c644da26147c3d2ace20e8d2b78d085f6c111bf6cdff2bb",
+      "expected": "e4062f906259cce88c644da26147c3d2ace20e8d2b78d085f6c111bf6cdff2bb",
+      "passed": true
+    },
+    {
+      "check": "current source /var/projects/toy_physics/_scratch/s11c/s11c-mixed-tanh-20261001/diagnostic-01/complete/native-conserved-edge-tilt-1.json",
+      "actual": "7651315000de882136d6972cada89e0cb5f3d1bcc0b9afa2e1fd1e0c18144382",
+      "expected": "7651315000de882136d6972cada89e0cb5f3d1bcc0b9afa2e1fd1e0c18144382",
+      "passed": true
+    },
+    {
+      "check": "current source /var/projects/toy_physics/_scratch/s11c/s11c-mixed-tanh-20261001/diagnostic-01/complete/native-conserved-edge-tilt-2.json",
+      "actual": "7651315000de882136d6972cada89e0cb5f3d1bcc0b9afa2e1fd1e0c18144382",
+      "expected": "7651315000de882136d6972cada89e0cb5f3d1bcc0b9afa2e1fd1e0c18144382",
+      "passed": true
+    },
+    {
+      "check": "current source /var/projects/toy_physics/_scratch/s11c/s11c-mixed-tanh-20261001/diagnostic-01/complete/native-direct-slot.json",
+      "actual": "b44296cae4f185075891ec220c1e6f901d316ce6a21a78aab3a00e0fcd04f57a",
+      "expected": "b44296cae4f185075891ec220c1e6f901d316ce6a21a78aab3a00e0fcd04f57a",
+      "passed": true
+    },
+    {
+      "check": "current source /var/projects/toy_physics/_scratch/s11c/s11c-mixed-tanh-20261001/diagnostic-01/complete/native-flat-source-join.json",
+      "actual": "a790dae596cf2f46ffa1b1d4202c6bc645fa77a2622ef80121fb6d7b6c3a0b5e",
+      "expected": "a790dae596cf2f46ffa1b1d4202c6bc645fa77a2622ef80121fb6d7b6c3a0b5e",
+      "passed": true
+    },
+    {
+      "check": "current source /var/projects/toy_physics/_scratch/s11c/s11c-mixed-tanh-20261001/diagnostic-01/complete/native-fourier-operands.json",
+      "actual": "a0dda60693d42646de01e8d93c7ccd4d6fa608ed7c2be58398fae8aab9ef6859",
+      "expected": "a0dda60693d42646de01e8d93c7ccd4d6fa608ed7c2be58398fae8aab9ef6859",
+      "passed": true
+    },
+    {
+      "check": "current source /var/projects/toy_physics/_scratch/s11c/s11c-mixed-tanh-20261001/diagnostic-01/complete/native-graph-normal.json",
+      "actual": "73b028380e0bc2f5e4127948d2240e9e8a7294f536f48cdbb96f7c97640d62f9",
+      "expected": "73b028380e0bc2f5e4127948d2240e9e8a7294f536f48cdbb96f7c97640d62f9",
+      "passed": true
+    },
+    {
+      "check": "current source /var/projects/toy_physics/_scratch/s11c/s11c-mixed-tanh-20261001/diagnostic-01/complete/native-height-coefficient.json",
+      "actual": "9123c5b0a6ce7a27e380abe4fc2b47e33962b0a0fc23853b21452f354760a8d3",
+      "expected": "9123c5b0a6ce7a27e380abe4fc2b47e33962b0a0fc23853b21452f354760a8d3",
+      "passed": true
+    },
+    {
+      "check": "current source /var/projects/toy_physics/_scratch/s11c/s11c-mixed-tanh-20261001/diagnostic-01/complete/native-linear-source-join.json",
+      "actual": "cd92c43c10a6c925524b6955409b89182f31ade2351b746c44f5af5b87fc6c2b",
+      "expected": "cd92c43c10a6c925524b6955409b89182f31ade2351b746c44f5af5b87fc6c2b",
+      "passed": true
+    },
+    {
+      "check": "current source /var/projects/toy_physics/_scratch/s11c/s11c-mixed-tanh-20261001/diagnostic-01/complete/native-operands.json",
+      "actual": "a656a45a24324ecc87cf8d4ed8fdc1303c3f619a2c0f6b4ec972914185b04d53",
+      "expected": "a656a45a24324ecc87cf8d4ed8fdc1303c3f619a2c0f6b4ec972914185b04d53",
+      "passed": true
+    },
+    {
+      "check": "current source /var/projects/toy_physics/_scratch/s11c/s11c-mixed-tanh-20261001/diagnostic-01/complete/native-profile-factor-routing.json",
+      "actual": "bda7983020232e3de00bc132de64867771182f96b1f249a5d23f686158b8c5ae",
+      "expected": "bda7983020232e3de00bc132de64867771182f96b1f249a5d23f686158b8c5ae",
+      "passed": true
+    },
+    {
+      "check": "current source /var/projects/toy_physics/_scratch/s11c/s11c-mixed-tanh-20261001/diagnostic-01/complete/native-profile-jet-operand.json",
+      "actual": "977ea3728622a55c0532a21c909f84285fc7f652ab09e9d406823fca581fa11a",
+      "expected": "977ea3728622a55c0532a21c909f84285fc7f652ab09e9d406823fca581fa11a",
+      "passed": true
+    },
+    {
+      "check": "current source /var/projects/toy_physics/_scratch/s11c/s11c-mixed-tanh-20261001/diagnostic-01/complete/native-profile-operand.json",
+      "actual": "1e6b94343633749e001559c51bdc01057178c26f3d9e6e874940b39fcff18302",
+      "expected": "1e6b94343633749e001559c51bdc01057178c26f3d9e6e874940b39fcff18302",
+      "passed": true
+    },
+    {
+      "check": "current source /var/projects/toy_physics/_scratch/s11c/s11c-mixed-tanh-20261001/diagnostic-01/complete/native-profile-slope-factor.json",
+      "actual": "8de655fb62603e867b46196a406ed2c4b2d7994940feeded0c19c4d08bd53ce9",
+      "expected": "8de655fb62603e867b46196a406ed2c4b2d7994940feeded0c19c4d08bd53ce9",
+      "passed": true
+    },
+    {
+      "check": "current source /var/projects/toy_physics/_scratch/s11c/s11c-mixed-tanh-20261001/diagnostic-01/complete/native-profile-weighting.json",
+      "actual": "bd99442e0779c6786b49b49af9e3368884f5271f681f3b2f198b02969bb204dd",
+      "expected": "bd99442e0779c6786b49b49af9e3368884f5271f681f3b2f198b02969bb204dd",
+      "passed": true
+    },
+    {
+      "check": "current source /var/projects/toy_physics/_scratch/s11c/s11c-mixed-tanh-20261001/diagnostic-01/complete/native-slope-coefficient.json",
+      "actual": "b3b2c600a268b7e96ed0a2791e31994a114f8870ffd8b1d1ef3b59f42f7c91d0",
+      "expected": "b3b2c600a268b7e96ed0a2791e31994a114f8870ffd8b1d1ef3b59f42f7c91d0",
+      "passed": true
+    },
+    {
+      "check": "current source /var/projects/toy_physics/_scratch/s11c/s11c-mixed-tanh-20261001/diagnostic-01/complete/native-weighted-height-factor.json",
+      "actual": "afa82ea796ff39932f55657f2e5bdb2138ab55a7d7dc0ce78c43cc6ecec3c46c",
+      "expected": "afa82ea796ff39932f55657f2e5bdb2138ab55a7d7dc0ce78c43cc6ecec3c46c",
+      "passed": true
+    },
+    {
+      "check": "current source /var/projects/toy_physics/_scratch/s11c/s11c-mixed-tanh-20261001/diagnostic-01/complete/normal-through-slope.json",
+      "actual": "5f55a811bfc9838b2c7e468dfdc14f1703b2584615641c619f140a753b08b546",
+      "expected": "5f55a811bfc9838b2c7e468dfdc14f1703b2584615641c619f140a753b08b546",
+      "passed": true
+    },
+    {
+      "check": "current source /var/projects/toy_physics/_scratch/s11c/s11c-mixed-tanh-20261001/diagnostic-01/complete/normal-vertical-through-slope.json",
+      "actual": "7651315000de882136d6972cada89e0cb5f3d1bcc0b9afa2e1fd1e0c18144382",
+      "expected": "7651315000de882136d6972cada89e0cb5f3d1bcc0b9afa2e1fd1e0c18144382",
+      "passed": true
+    },
+    {
+      "check": "current source /var/projects/toy_physics/_scratch/s11c/s11c-mixed-tanh-20261001/diagnostic-01/complete/operation-index.json",
+      "actual": "2d8f6373603283f770774a5384e276572d6092920e5458c2376c5a579d3cca99",
+      "expected": "2d8f6373603283f770774a5384e276572d6092920e5458c2376c5a579d3cca99",
+      "passed": true
+    },
+    {
+      "check": "current source /var/projects/toy_physics/_scratch/s11c/s11c-mixed-tanh-20261001/diagnostic-01/complete/physical-point.json",
+      "actual": "35a4a2ea10f4bafdfe4517305d26aa04d6945d8fcd6f75ce459ce22d362e5321",
+      "expected": "35a4a2ea10f4bafdfe4517305d26aa04d6945d8fcd6f75ce459ce22d362e5321",
+      "passed": true
+    },
+    {
+      "check": "current source /var/projects/toy_physics/_scratch/s11c/s11c-mixed-tanh-20261001/diagnostic-01/complete/posthashes.json",
+      "actual": "925583c4ad67fab9f606da315fd05017998d872bab543212748bd567693319f9",
+      "expected": "925583c4ad67fab9f606da315fd05017998d872bab543212748bd567693319f9",
+      "passed": true
+    },
+    {
+      "check": "current source /var/projects/toy_physics/_scratch/s11c/s11c-mixed-tanh-20261001/diagnostic-01/complete/profile-action-input.json",
+      "actual": "3622bdbb0b8767dc382d5811f3833dafdee3913d6d293452189bf92d36155a12",
+      "expected": "3622bdbb0b8767dc382d5811f3833dafdee3913d6d293452189bf92d36155a12",
+      "passed": true
+    },
+    {
+      "check": "current source /var/projects/toy_physics/_scratch/s11c/s11c-mixed-tanh-20261001/diagnostic-01/complete/profile-action-return.json",
+      "actual": "e9965881768a9e823976a4ab1920ff0ea18bf98b2166e69f886b552c2b7efebf",
+      "expected": "e9965881768a9e823976a4ab1920ff0ea18bf98b2166e69f886b552c2b7efebf",
+      "passed": true
+    },
+    {
+      "check": "current source /var/projects/toy_physics/_scratch/s11c/s11c-mixed-tanh-20261001/diagnostic-01/complete/profile-logistic-derivative.json",
+      "actual": "4ea7318f44f1c6f4a1859006d48f189dd7a1afea0e0491e8505828f8db4aa135",
+      "expected": "4ea7318f44f1c6f4a1859006d48f189dd7a1afea0e0491e8505828f8db4aa135",
+      "passed": true
+    },
+    {
+      "check": "current source /var/projects/toy_physics/_scratch/s11c/s11c-mixed-tanh-20261001/diagnostic-01/complete/profile-native-jet.json",
+      "actual": "8aec9998a5f9eb8f33b6313c7f51a0db47b2a93cd08ce6c983c1de1439553a7c",
+      "expected": "8aec9998a5f9eb8f33b6313c7f51a0db47b2a93cd08ce6c983c1de1439553a7c",
+      "passed": true
+    },
+    {
+      "check": "current source /var/projects/toy_physics/_scratch/s11c/s11c-mixed-tanh-20261001/diagnostic-01/complete/profile-reflection.json",
+      "actual": "b5e3017577a76aa3aa20b89a814f8f385fc7e2e1edef30fd2d9bc6d329445d38",
+      "expected": "b5e3017577a76aa3aa20b89a814f8f385fc7e2e1edef30fd2d9bc6d329445d38",
+      "passed": true
+    },
+    {
+      "check": "current source /var/projects/toy_physics/_scratch/s11c/s11c-mixed-tanh-20261001/diagnostic-01/complete/profile-tail.json",
+      "actual": "48f990e5d434d426b8a659f6bfd7a934d1d0d84cab1e7392f1d7cf147452bf75",
+      "expected": "48f990e5d434d426b8a659f6bfd7a934d1d0d84cab1e7392f1d7cf147452bf75",
+      "passed": true
+    },
+    {
+      "check": "current source /var/projects/toy_physics/_scratch/s11c/s11c-mixed-tanh-20261001/diagnostic-01/complete/profile-transform-input.json",
+      "actual": "c05f5386226a304017655729eead3b9e3236e7d2887bfe157c1a15b19ed3edc2",
+      "expected": "c05f5386226a304017655729eead3b9e3236e7d2887bfe157c1a15b19ed3edc2",
+      "passed": true
+    },
+    {
+      "check": "current source /var/projects/toy_physics/_scratch/s11c/s11c-mixed-tanh-20261001/diagnostic-01/complete/profile-transform-return.json",
+      "actual": "fff546e7a76fdb66b3059627a54d3c008d456fc5acd9d971fe45140add36a099",
+      "expected": "fff546e7a76fdb66b3059627a54d3c008d456fc5acd9d971fe45140add36a099",
+      "passed": true
+    },
+    {
+      "check": "current source /var/projects/toy_physics/_scratch/s11c/s11c-mixed-tanh-20261001/diagnostic-01/complete/responsive-controls.json",
+      "actual": "4f068d341ec9ac6ea4a99058b2e03d916de0f4c3aba01a9fbaf7e9f9990c29bb",
+      "expected": "4f068d341ec9ac6ea4a99058b2e03d916de0f4c3aba01a9fbaf7e9f9990c29bb",
+      "passed": true
+    },
+    {
+      "check": "current source /var/projects/toy_physics/_scratch/s11c/s11c-mixed-tanh-20261001/diagnostic-01/complete/rigid-height-translation.json",
+      "actual": "7651315000de882136d6972cada89e0cb5f3d1bcc0b9afa2e1fd1e0c18144382",
+      "expected": "7651315000de882136d6972cada89e0cb5f3d1bcc0b9afa2e1fd1e0c18144382",
+      "passed": true
+    },
+    {
+      "check": "current source /var/projects/toy_physics/_scratch/s11c/s11c-mixed-tanh-20261001/diagnostic-01/complete/selected-mixed-reduction.json",
+      "actual": "baf0399343297bdc631a7507c9743619405dfb8b186650b99453536897541cde",
+      "expected": "baf0399343297bdc631a7507c9743619405dfb8b186650b99453536897541cde",
+      "passed": true
+    },
+    {
+      "check": "current source /var/projects/toy_physics/_scratch/s11c/s11c-mixed-tanh-20261001/diagnostic-01/complete/sign-ingredients.json",
+      "actual": "594f6cafa20722ca7399f77e4eb971df896ea60e16e84f16aea6f4522d78eec5",
+      "expected": "594f6cafa20722ca7399f77e4eb971df896ea60e16e84f16aea6f4522d78eec5",
+      "passed": true
+    },
+    {
+      "check": "current source /var/projects/toy_physics/_scratch/s11c/s11c-mixed-tanh-20261001/diagnostic-01/complete/wave-amplitude-linearity.json",
+      "actual": "ef36bab3ef7bf4a51dbf90ea73bc9aefdd320fde07367258df7bb586d2ee1310",
+      "expected": "ef36bab3ef7bf4a51dbf90ea73bc9aefdd320fde07367258df7bb586d2ee1310",
+      "passed": true
+    },
+    {
+      "check": "distinct sessions",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    }
+  ],
+  "allMetadataChecksPassed": true,
+  "noScienceRun": true,
+  "independentBuildClearance": false,
+  "automaticReviewRetry": false,
+  "peerSharing": false,
+  "runnerStaleField": "state.externalSubmitted remained false although launch/receipts/private copies establish completed submissions; preserved verbatim."
+}

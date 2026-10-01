@@ -1,3 +1,43 @@
+**SELECTED RESPONSE REVIEW PRESERVED; LOCAL TOOLING FIXES NEXT (2026-10-01):**
+Both literal reports are NEEDS REVISION. Both support the selected mathematics;
+the shared blocking finding is leftmap/rightmap versus native left_map/right_map.
+Claude also requests evidence-before-guard ordering and per-unit-V labels.
+See S11c_upstream_mixed_trace_review_record.json and review_disposition.md.
+204 packet/archive/private/source metadata checks pass; no scientific run yet.
+Preserve the reviewed baseline before local namespace/persistence/label repairs.
+No independent CLEAR, reviewer rerun, new export or expanded physics is implied.
+Standing tooling-fix authority and the existing focused-test approval remain;
+one contained diagnostic after readiness, then stop before production repair.
+
+**SELECTED CLOSED-RESPONSE TRACE REVIEW SUBMITTED (2026-10-01):**
+User explicitly replied “approved” to the exact27-file/174626-byte packet,
+SHA256d23734d7d3c61e058a12bf6820c45cef95b783aadb17d3c2af9a84d7651fb86c.
+Both fresh source-only Claude/Grok legs have started on identical private
+copies; distinct sessions and private source hashes verified. Local completion
+hook is armed for this session. No peer sharing, CAS, scientific run, automatic
+retry or new export. Read S11c_upstream_mixed_trace_preparation.json and
+review_launch.json. Wait for both literal reports before adjudication/editing.
+Existing direction covers one bounded closed-response/reference-trace diagnostic
+after substantive assessment/readiness; no production repair or defect sweep.
+All previous results and literal review histories remain intact.
+
+**SELECTED CLOSED-RESPONSE TRACE PREPARED (2026-10-01):**
+User said “continue” after the completed mixed-tanh diagnostic. The new
+S11c_upstream_mixed_trace.py compares one insertion of the saved direct mixed
+operator slot through the native permeability response and reference pressure/
+normal-jet map. Existing first-shape compositions remain fixed. Source-selected
+c1/geometry constructors and c2 assignments are joined; prior returns are inputs,
+not rerun. Eight stdlib tooling tests pass; no scientific import, restoration or
+calculation occurred during preparation. This is not a full slab contraction,
+transverse excitation, production repair or defect sweep.
+The fixed fresh Claude/Grok packet has27files/174626bytes, SHA256
+ d23734d7d3c61e058a12bf6820c45cef95b783aadb17d3c2af9a84d7651fb86c.
+Exact external approval is pending; no submission, science READY gate or launch.
+See S11c_upstream_mixed_trace_scope.md and preparation.json. Prior completed
+result ce89b3f7 and all historical review literals remain unchanged. After
+substantive assessment/readiness, one no-deadline 4GiB pooled diagnostic is the
+bounded continuation; stop before any production repair or defect sweep.
+
 **FOCUSED MIXED-TANH DIAGNOSTIC COMPLETED (2026-10-01):**
 Read S11c_upstream_mixed_tanh_result.md and completion.json. The selected bare
 upper-face eta*sigma action is nonzero on the actual tanh profile/common outgoing

@@ -1,7 +1,7 @@
-# S11c_d_clean_condition.md (v4) — grounding commands (rule 2 / E1)
+# S11c_d_clean_condition.md (v5) — grounding commands
 
-Mechanical lookups, run from the repo root on 2026-09-30, HEAD `c1e96e76`. Regenerated from the commands below;
-nothing transcribed. Fences are longer than fences in quoted source text.
+Mechanical lookups, rerun from the repo root on 2026-10-01 against the v4 baseline `5693e861` plus the v5
+working-tree edits. Each command and its literal output are shown. Fences are longer than fences in quoted text.
 
 ````
 $ sed -n 14,17p research/pde_ledger_v3/CHARTER.md
@@ -17,6 +17,11 @@ The current pilot answers a strict rest-bulk, LAB_HELD/RHO4_CONSTANT development
 ````
 
 ````
+$ sed -n 5p research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_flow_calibration_assessment.md
+On the user's request to assess before continuing and stop for go/no-go, the existing central-balance-v2 scientific child was suspended in memory, not terminated or restarted. The pause receipt records PID 4097233, its process start identity, cgroup and exact command. It had completed two matrix groups after twenty restorations and saved 12,288 batches of the next group; no finite solve had been reached. The guard/supervisor remain active, no deadline was added, and pinned sources are unchanged. Resume requires the user's decision and rechecking that process identity. Do not launch another job alongside it.
+````
+
+````
 $ sed -n 11,13p research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_flow_calibration_assessment.md
 The development input sets mu_R=1, rho_br=1 and c_s0=10 in the L_ref/T_ref unit frame. Under the bare S9/R4 definition c_gamma^2=mu_R/rho_br, this gives c_gamma/c_s=0.1, not 1. The step plan explicitly distinguishes the derived ratio definition from the calibrated, uncommitted equality lambda_gamma=1; the equality has not been imposed on these inputs.
 
@@ -24,8 +29,8 @@ There is an additional distinction: that bare coefficient formula must not be su
 ````
 
 ````
-$ sed -n 5p research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_flow_calibration_assessment.md
-On the user's request to assess before continuing and stop for go/no-go, the existing central-balance-v2 scientific child was suspended in memory, not terminated or restarted. The pause receipt records PID 4097233, its process start identity, cgroup and exact command. It had completed two matrix groups after twenty restorations and saved 12,288 batches of the next group; no finite solve had been reached. The guard/supervisor remain active, no deadline was added, and pinned sources are unchanged. Resume requires the user's decision and rechecking that process identity. Do not launch another job alongside it.
+$ sed -n 47p research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_equal_speed_feasibility.md
+The same PID4097233 was resumed with SIGCONT after checking start ticks85113744, exact command/cgroup, 2GiB/zero-swap/task containment, systemd infinity/Restart=no and the existing waiting completion hook. No source/gate/helper was edited and no new scientific process was launched. See `S11c_d_numerical_radiating_flow_calibration_resume.json`.
 ````
 
 ````
@@ -60,24 +65,40 @@ basis** — the O(3)-Kronecker field-bilinear invariant family, corrected to **4
 ````
 
 ````
-$ sed -n 90,91p research/pde_ledger_v3/directives/S11c_b_SHARED_PHYSICS.md
+$ sed -n 90,97p research/pde_ledger_v3/directives/S11c_b_SHARED_PHYSICS.md
 `v_bulk_normal_0` (the bulk normal drain, `S11b_SHARED_PHYSICS.md:104`) is a scope-limit parameter, not an
 active DOF, and appears in no derived operator (§0).
-````
 
-````
-$ sed -n 95,97p research/pde_ledger_v3/directives/S11c_b_SHARED_PHYSICS.md
+### 1b · Bulk acoustics and the projection law
+
 Inherited from S11c-a §1b unchanged: the rest-frame bulk fields `v_bulk=∇₄φ`, `δp=−ρ_m∂_tφ`,
 `∂_t²φ=c_s0²∇₄²φ`; the current and conservation law `j=ρ_4D v_bulk`, `∂_tρ_4D+∇₄·j=0`; and the
 dynamic, anchored slab window `Ω` supplied in S11c-a §3. S11c-b performs no curved-bulk response solve (§0).
 ````
 
 ````
-$ sed -n 145,148p research/pde_ledger_v3/directives/S11c_b_SHARED_PHYSICS.md
+$ sed -n 115,121p research/pde_ledger_v3/directives/S11c_b_SHARED_PHYSICS.md
+The uniform-basis inputs are the fields and their first gradients `{u,∇u,θ,∇θ,e_W,∇e_W}`, with the S11b
+symmetry group in full (`S11b_SHARED_PHYSICS.md:280–288`): **in-plane translation invariance** (so `u` enters
+only through its gradients, never undifferentiated), **in-plane `O(3)` isotropy and parity**, **reflection
+`w→−w`**, **equivalence modulo total in-plane divergences**, and **no time-reversal, positivity, or
+boundedness** assumption. Independence of invariants is judged as field bilinears with B1's constraint **not**
+applied; every independent invariant is carried with its own free symbolic coefficient. These are the same
+construction rules S11b task B0-energy used; §3a inherits them with variable coefficients.
+````
+
+````
+$ sed -n 145,154p research/pde_ledger_v3/directives/S11c_b_SHARED_PHYSICS.md
 J_s = Λ_A(ω)𝒜_s + Λ_V(ω)V_s ,   Λ_I(ω)=Λ_I⁰/(1−iωτ_I) ,  I∈{A,V,X} ,
 𝒜_s = μ_s − δp_s/ρ_m ,   μ_s = μ_θ/ρ_br⁰ ,
 t_s = −(δp_s + Λ_X(ω)𝒜_s)n̂_s ,   n̂_s·v_bulk,s = V_s + J_s/ρ_m ,
 ∂_tΣ + ∇_x·(Σ v) = −(J₊+J₋) ,   Σ ≡ Σ_E ≡ ρ_4D W ,   v ≡ ∂_t u ,
+δ_vΣ_mat = 0 ,   (uniform linearisation)  δ_vθ + δ_ve_W + ∇_x·δ_vu = 0 .
+```
+
+The three `τ_I` are independent. Equations of motion are obtained by S11b's method — balance laws, the
+binding virtual-displacement rule, variational derivatives with held-fixed fields named, and prescribed
+external virtual work — **not** by putting an irreversible response kernel in an ordinary action.
 ````
 
 ````
@@ -133,11 +154,16 @@ $ sed -n 1366p docs/toy_model_ontology_summary.md
 ````
 
 ````
-$ sed -n 113,116p docs/native_light_em_and_vortex_throat_interpretation.md
+$ sed -n 112,120p docs/native_light_em_and_vortex_throat_interpretation.md
+### 9. Spin, chirality, helicity, and magnetic moment — *drafted*
 
 - Compare candidate carriers: circulating intake, brane-tangent vortex flow,
   mixed \(a\)-\(w\) circulation, trapped chiral shear, and an independent
   microrotation of the ordered substructure.
+- Begin with the angular-momentum tensor \(J_{IJ}\), not a borrowed
+  three-dimensional spin vector.
+- Separate circulation sign, throat orientation, chirality, helicity,
+  intrinsic angular momentum, and magnetic moment.
 ````
 
 ````
@@ -154,146 +180,52 @@ momentum. Two degenerate modes with a relative phase can form a circularly
 polarized bound pattern that carries angular momentum. Orbital winding can
 ````
 
-## Leg evidence cited in P2/P4 — literal stdout of the round-1 leg scripts (committed at `7b38e9dc`)
+## v5 author computations — commands and literal stdout
 
 ````
-$ grep -n -E 'RESIDUAL|D_DVZ|D_DUZ' research/pde_ledger_v3/directives/_measurements/S11c_d_clean_condition_review_scripts/codex/reflection_operator_audit.stdout.txt
-2:DOT_VECTOR_RESIDUAL= 0
-3:TRACE_GRADIENT_RESIDUAL= 0
+$ python3 research/pde_ledger_v3/directives/_measurements/S11c_d_clean_condition_v5_author_scripts/bulk_pullback_pairing_audit.py
+PRESSURE_TRACE I*omega*rho_m*Phi(x1, w)
+VELOCITY_TRACE [Derivative(Phi(x1, w), x1), I*k2*Phi(x1, w), 0, Derivative(Phi(x1, w), w)]
+PRESSURE_NORMAL_JET I*omega*rho_m*Derivative(Phi(x1, w), w)
+VELOCITY_NORMAL_JET [Derivative(Phi(x1, w), w, x1), I*k2*Derivative(Phi(x1, w), w), 0, k2**2*Phi(x1, w) - Derivative(Phi(x1, w), (x1, 2)) - omega**2*Phi(x1, w)/c_s0**2]
+DENSITY_TRACE I*omega*rho_m*Phi(x1, w)/c_s0**2
+DENSITY_MINUS_PRESSURE_OVER_C2 0
+DENSITY_NORMAL_JET I*omega*rho_m*Derivative(Phi(x1, w), w)/c_s0**2
+DENSITY_TIME omega**2*rho_m*Phi(x1, w)/c_s0**2
+CURRENT_TRACE [rho_m*Derivative(Phi(x1, w), x1), I*k2*rho_m*Phi(x1, w), 0, rho_m*Derivative(Phi(x1, w), w)]
+CURRENT_NORMAL_JET [rho_m*Derivative(Phi(x1, w), w, x1), I*k2*rho_m*Derivative(Phi(x1, w), w), 0, k2**2*rho_m*Phi(x1, w) - rho_m*Derivative(Phi(x1, w), (x1, 2)) - omega**2*rho_m*Phi(x1, w)/c_s0**2]
+TRACE_EXACT_MINUS_REFERENCE_AFFINE 0
+TRACE_EXACT_MINUS_BACKGROUND_AFFINE -W0*eta*s*w1(x1)*Derivative(Phi(x1, w), w)/2
+PAIRING_SAME_PHASE 0
+PAIRING_CONJUGATE_PHASE 2*I*pi*test_amplitude*trial_amplitude
+````
+
+````
+$ python3 research/pde_ledger_v3/directives/_measurements/S11c_d_clean_condition_v5_author_scripts/round_spin_carrier_audit.py
+HELICITY_TOROIDAL 0
+HELICITY_TOROIDAL_QUADRATURE 0
+HELICITY_TOROIDAL_POLOIDAL 5*sqrt(2)*pi**(3/2)*mixing/4
+PARITY_TOROIDAL 1
+PARITY_POLOIDAL -1
+ANGULAR_MOMENTUM_TOROIDAL_QUADRATURE [0, 0, sqrt(2)*pi**(3/2)*omega/16]
+CORIOLIS_SCALAR_L0_PROJECTION -sqrt(2)*pi**(3/2)*Omega/4
+CORIOLIS_SCALAR_L2_PROJECTION -sqrt(2)*pi**(3/2)*Omega/8
+O3_FIXED_VECTOR_SOLUTIONS [{Lx: 0, Ly: 0, Lz: 0}]
+````
+
+## Earlier computed term-structure evidence retained by P4
+
+````
+$ grep -n -E 'CONSTRAINT_FOLD_SCALAR_RESIDUAL|MATERIAL_ANCHOR_MINUS_U_DOT_G_RESIDUAL' research/pde_ledger_v3/directives/_measurements/S11c_d_clean_condition_review_scripts/codex/reflection_operator_audit.stdout.txt
 4:CONSTRAINT_FOLD_SCALAR_RESIDUAL= 0
 5:MATERIAL_ANCHOR_MINUS_U_DOT_G_RESIDUAL= 0
-6:TILTED_NORMAL_COVARIANCE_RESIDUAL= Matrix([[0], [0], [0], [0]])
-7:FACE_NORMAL_VELOCITY_SCALAR_RESIDUAL= 0
-8:Z_INVARIANT_FACE_SCALAR_D_DVZ= 0
-9:Z_INVARIANT_ANCHOR_D_DUZ= 0
-16:K2_ACTIVE_MIXED_DUZ_DQX= g_y
-17:K2_ACTIVE_MIXED_DUZ_DQY= -g_x
-28:ODD_SQUARED_REFLECTION_RESIDUAL= 0
 ````
 
 ````
-$ grep -n -E 'COEFF_u_z|coeff of d_t u_z|n_plus\[2\]|n_minus\[2\]|has dv_uz|d_z dv_uz' research/pde_ledger_v3/directives/_measurements/S11c_d_clean_condition_review_scripts/grok/02_face_normal_constraint.out
+$ grep -n -E 'COEFF_u_z_in_n_(plus|minus)_dot_u|COEFF_u_z in material pullback' research/pde_ledger_v3/directives/_measurements/S11c_d_clean_condition_review_scripts/grok/02_face_normal_constraint.out
 14:COEFF_u_z_in_n_plus_dot_u  = 0
 15:COEFF_u_z_in_n_minus_dot_u = 0
-20:V_plus  coeff of d_t u_z = 0
-21:V_minus coeff of d_t u_z = 0
-29:n_plus[2] exact = 0
-30:n_minus[2] exact = 0
-34:has dv_uz = False
-35:div_P has d_z dv_uz = False
 39:COEFF_u_z in material pullback of Q(y) = 0
-````
-
-## Round-2 leg evidence cited in the disposition (R2-7, R2-8)
-
-````
-$ grep -n -E 'LINEAR_ODD_SCALAR_HESSIAN_AT_BACKGROUND|NONLINEAR_SCALAR_SOURCE' research/pde_ledger_v3/directives/_measurements/S11c_d_clean_condition_review_scripts/r2_codex/operator_symmetry_audit.stdout.txt
-31:NONLINEAR_SCALAR_SOURCE lambda*odd_amp**2
-32:LINEAR_ODD_SCALAR_HESSIAN_AT_BACKGROUND 0
-````
-
-````
-$ cat research/pde_ledger_v3/directives/_measurements/S11c_d_clean_condition_review_scripts/r2_codex/smooth_profile_fourier_audit.stdout.txt
-PROFILE exp(-1/(1-x^2)) for |x|<1, else 0 (C-infinity, nonanalytic)
-K 20 ABS_F 0.000561902949952957520530988 NEG_LOG_OVER_K 0.374209070494956553 NEG_LOG_OVER_SQRT_K 1.67351383884746745
-K 40 ABS_F 0.000128744611871061807549287 NEG_LOG_OVER_K 0.223941996721032406 NEG_LOG_OVER_SQRT_K 1.41633354680884247
-K 80 ABS_F 0.00000839213464027346394662635 NEG_LOG_OVER_K 0.146102695538938832 NEG_LOG_OVER_SQRT_K 1.30678223568409
-K 160 ABS_F 1.34109966830722522083066e-8 NEG_LOG_OVER_K 0.113294942615915806 NEG_LOG_OVER_SQRT_K 1.43308026417747616
-K 320 ABS_F 4.13712643579755546390872e-10 NEG_LOG_OVER_K 0.0675182796272936264 NEG_LOG_OVER_SQRT_K 1.20780370376374171
-````
-
-## v4 author evidence — scripts and literal stdout
-
-````
-$ python3 research/pde_ledger_v3/directives/_measurements/S11c_d_clean_condition_v4_author_scripts/symmetry_domain_audit.py
-MIRROR_AXIS_1 [[1, 0, 0], [0, 1, 0], [0, 0, -1]]
-O2_RANK2_POLAR_FORM [[{'A': 1}, 0, 0], [0, {'B': 1}, 0], [0, 0, {'B': 1}]]
-O2_RANK2_POLAR_MIRROR_IMAGE [[{'A': 1}, {}, {}], [{}, {'B': 1}, {}], [{}, {}, {'B': 1}]]
-AXIAL_23_SO2_CANDIDATE [[0, 0, 0], [0, 0, {'C': 1}], [0, {'C': -1}, 0]]
-AXIAL_23_MIRROR_IMAGE [[{}, {}, {}], [{}, {}, {'C': -1}], [{}, {'C': 1}, {}]]
-AXIAL_23_FIXED_BY_MIRROR False
-AXIS_1_QUARTER_TURN [[1, 0, 0], [0, 0, -1], [0, 1, 0]]
-O2_RANK2_POLAR_QUARTER_TURN_IMAGE [[{'A': 1}, {}, {}], [{}, {'B': 1}, {}], [{}, {}, {'B': 1}]]
-PARITY_BLOCK v_face_3 FROM u_3 SAME_SECTOR True
-PARITY_BLOCK delta_v_x_3 FROM u_3 SAME_SECTOR True
-PARITY_BLOCK V FROM u_3 SAME_SECTOR False
-PARITY_BLOCK J FROM u_3 SAME_SECTOR False
-PARITY_BLOCK affinity FROM u_3 SAME_SECTOR False
-W_COORDINATE_MIRROR_SIGN 1
-NORMAL_DERIVATIVE_PRESERVES_INPLANE_PARITY True
-ROUND_SECTOR 0 SCALAR_PARITY 1 SPHEROIDAL_PARITY 1 TOROIDAL_PARITY ZERO_SECTOR TOROIDAL_EXISTS False
-ROUND_SECTOR 1 SCALAR_PARITY -1 SPHEROIDAL_PARITY -1 TOROIDAL_PARITY 1 TOROIDAL_EXISTS True
-ROUND_SECTOR 2 SCALAR_PARITY 1 SPHEROIDAL_PARITY 1 TOROIDAL_PARITY -1 TOROIDAL_EXISTS True
-ROUND_SECTOR 3 SCALAR_PARITY -1 SPHEROIDAL_PARITY -1 TOROIDAL_PARITY 1 TOROIDAL_EXISTS True
-ROUND_SECTOR 4 SCALAR_PARITY 1 SPHEROIDAL_PARITY 1 TOROIDAL_PARITY -1 TOROIDAL_EXISTS True
-CONTROL_ORDER SPECIALIZE_BASELINE_THEN_APPEND_CONTROL
-K1_FIXED_DATUM e=(sin(beta),0,cos(beta))
-K1_ON_P_U3_THETA_CARRIERS ['a_K1*cos(beta)*d1(u3)*d1(theta)', 'a_K1*cos(beta)*d2(u3)*d2(theta)']
-K2_ON_R1_P_CARRIER a_K2*theta*g1*d2(u3)
-````
-
-````
-$ python3 research/pde_ledger_v3/directives/_measurements/S11c_d_clean_condition_v4_author_scripts/potential_trace_pullback_audit.py
-FORMAL_TRACE_COORDINATE 1 delta_p_plus
-FORMAL_TRACE_COORDINATE 2 d_w_delta_p_plus
-FORMAL_TRACE_COORDINATE 3 delta_v_bulk_plus_1
-FORMAL_TRACE_COORDINATE 4 delta_v_bulk_plus_2
-FORMAL_TRACE_COORDINATE 5 delta_v_bulk_plus_3
-FORMAL_TRACE_COORDINATE 6 delta_v_bulk_plus_4
-FORMAL_TRACE_COORDINATE 7 d_w_delta_v_bulk_plus_1
-FORMAL_TRACE_COORDINATE 8 d_w_delta_v_bulk_plus_2
-FORMAL_TRACE_COORDINATE 9 d_w_delta_v_bulk_plus_3
-FORMAL_TRACE_COORDINATE 10 d_w_delta_v_bulk_plus_4
-FORMAL_TRACE_COORDINATE 11 delta_p_minus
-FORMAL_TRACE_COORDINATE 12 d_w_delta_p_minus
-FORMAL_TRACE_COORDINATE 13 delta_v_bulk_minus_1
-FORMAL_TRACE_COORDINATE 14 delta_v_bulk_minus_2
-FORMAL_TRACE_COORDINATE 15 delta_v_bulk_minus_3
-FORMAL_TRACE_COORDINATE 16 delta_v_bulk_minus_4
-FORMAL_TRACE_COORDINATE 17 d_w_delta_v_bulk_minus_1
-FORMAL_TRACE_COORDINATE 18 d_w_delta_v_bulk_minus_2
-FORMAL_TRACE_COORDINATE 19 d_w_delta_v_bulk_minus_3
-FORMAL_TRACE_COORDINATE 20 d_w_delta_v_bulk_minus_4
-SUPPLIED_CLASS_P_ANSATZ phi=Phi(x1,w)*exp(i*(k2*x2-omega*t))
-SUPPLIED_TRACE_PRESSURE delta_p=i*rho_m*omega*Phi
-SUPPLIED_TRACE_VELOCITY (d1(Phi), i*k2*Phi, 0, Psi) Psi=d_w(Phi)
-SUPPLIED_NORMAL_JET_PRESSURE d_w(delta_p)=i*rho_m*omega*Psi
-SUPPLIED_NORMAL_JET_VELOCITY (d1(Psi), i*k2*Psi, 0, d_w(Psi))
-SUPPLIED_WAVE_EQUATION_PULLBACK d_w(Psi)=(k2^2-omega^2/c_s0^2)*Phi-d1^2(Phi)
-CLASS_P_ODD_BULK_TRACE_COMPONENT 0
-CLASS_P_ODD_BULK_NORMAL_JET_COMPONENT 0
-VIRTUAL_TEST_COORDINATE 1 delta_v_u_1
-VIRTUAL_TEST_COORDINATE 2 delta_v_u_2
-VIRTUAL_TEST_COORDINATE 3 delta_v_u_3
-VIRTUAL_TEST_COORDINATE 4 delta_v_e_W
-VIRTUAL_TEST_COORDINATE 5 delta_v_zeta_c
-VIRTUAL_OUTPUT_OBJECT FaceSource.virtual_displacement
-D_VIRTUAL_X3_D_TEST_U3 1
-D_VIRTUAL_X3_D_PHYSICAL_U3 0
-D_FACE_VELOCITY3_D_PHYSICAL_U3 d_t
-VIRTUAL_MAP_IS_PHYSICAL_FRECHET_ROW False
-INTERFACE_SOURCE_LINE 150 # Traced bulk perturbations and their normal jets at the flat reference faces.
-INTERFACE_SOURCE_LINE 154 delta_v_bulk = {
-INTERFACE_SOURCE_LINE 158 dw_delta_v_bulk = {
-INTERFACE_SOURCE_LINE 163 1: symbol("d_w_delta_p_plus", "COORDINATE", "upper pressure-perturbation normal jet at the flat reference face"),
-INTERFACE_SOURCE_LINE 164 -1: symbol("d_w_delta_p_minus", "COORDINATE", "lower pressure-perturbation normal jet at the flat reference face"),
-INTERFACE_SOURCE_LINE 638 pressure_perturbation = affine_bulk_perturbation(
-INTERFACE_SOURCE_LINE 641 velocity_perturbation = tuple(
-GOVERNING_SPEC_LINE 95 Inherited from S11c-a §1b unchanged: the rest-frame bulk fields `v_bulk=∇₄φ`, `δp=−ρ_m∂_tφ`,
-````
-
-````
-$ python3 research/pde_ledger_v3/directives/_measurements/S11c_d_clean_condition_v4_author_scripts/flow_horizon_source_scope_audit.py
-ONTOLOGY_LINE 100 The bulk is therefore an internal reservoir, not an external supply. In a closed-loop realization, localized throat drainage transfers material, momentum, and energy from ordered brane degrees of freedom into de-structured bulk degrees of freedom, while distributed return transfers material back into the ordered state. The bulk may store the corresponding response as compression, flow, internal energy, entropy, or other unresolved excitations of the same medium. Any sustained cycle must include the evolution of that reservoir rather than treating it as an inexhaustible battery.
-ONTOLOGY_LINE_HAS_WORD 100 material True
-ONTOLOGY_LINE_HAS_WORD 100 energy True
-ONTOLOGY_LINE_HAS_WORD 100 particle False
-ONTOLOGY_LINE_HAS_WORD 100 coherent False
-ONTOLOGY_LINE 1366 - \(\Gamma_{\rm drain}\) converts ordered brane material into de-structured bulk material at throats;
-ONTOLOGY_LINE_HAS_WORD 1366 material True
-ONTOLOGY_LINE_HAS_WORD 1366 energy False
-ONTOLOGY_LINE_HAS_WORD 1366 particle False
-ONTOLOGY_LINE_HAS_WORD 1366 coherent False
 ````
 
 ## §P · Prior-art existence checks (WebSearch, 2026-09-30)

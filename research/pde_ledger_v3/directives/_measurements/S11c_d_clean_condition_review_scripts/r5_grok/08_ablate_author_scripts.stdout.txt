@@ -1,0 +1,56 @@
+=== BULK_BASE exit=0 ===
+PRESSURE_TRACE I*omega*rho_m*Phi(x1, w)
+VELOCITY_TRACE [Derivative(Phi(x1, w), x1), I*k2*Phi(x1, w), 0, Derivative(Phi(x1, w), w)]
+PRESSURE_NORMAL_JET I*omega*rho_m*Derivative(Phi(x1, w), w)
+VELOCITY_NORMAL_JET [Derivative(Phi(x1, w), w, x1), I*k2*Derivative(Phi(x1, w), w), 0, k2**2*Phi(x1, w) - Derivative(Phi(x1, w), (x1, 2)) - omega**2*Phi(x1, w)/c_s0**2]
+DENSITY_TRACE I*omega*rho_m*Phi(x1, w)/c_s0**2
+DENSITY_MINUS_PRESSURE_OVER_C2 0
+DENSITY_NORMAL_JET I*omega*rho_m*Derivative(Phi(x1, w), w)/c_s0**2
+DENSITY_TIME omega**2*rho_m*Phi(x1, w)/c_s0**2
+CURRENT_TRACE [rho_m*Derivative(Phi(x1, w), x1), I*k2*rho_m*Phi(x1, w), 0, rho_m*Derivative(Phi(x1, w), w)]
+CURRENT_NORMAL_JET [rho_m*Derivative(Phi(x1, w), w, x1), I*k2*rho_m*Derivative(Phi(x1, w), w), 0, k2**2*rho_m*Phi(x1, w) - rho_m*Derivative(Phi(x1, w), (x1, 2)) - omega**2*rho_m*Phi(x1, w)/c_s0**2]
+TRACE_EXACT_MINUS_REFERENCE_AFFINE 0
+TRACE_EXACT_MINUS_BACKGROUND_AFFINE -W0*eta*s*w1(x1)*Derivative(Phi(x1, w), w)/2
+PAIRING_SAME_PHASE 0
+PAIRING_CONJUGATE_PHASE 2*I*pi*test_amplitude*trial_amplitude
+
+=== BULK_ABL exit=0 ===
+PRESSURE_TRACE I*omega*rho_m*Phi(x1, w)
+VELOCITY_TRACE [Derivative(Phi(x1, w), x1), I*k2*Phi(x1, w), 0, Derivative(Phi(x1, w), w)]
+PRESSURE_NORMAL_JET I*omega*rho_m*Derivative(Phi(x1, w), w)
+VELOCITY_NORMAL_JET [Derivative(Phi(x1, w), w, x1), I*k2*Derivative(Phi(x1, w), w), 0, k2**2*Phi(x1, w) - Derivative(Phi(x1, w), (x1, 2)) + omega**2*Phi(x1, w)/c_s0**2]
+DENSITY_TRACE -I*omega*rho_m*Phi(x1, w)/c_s0**2
+DENSITY_MINUS_PRESSURE_OVER_C2 -2*I*omega*rho_m*Phi(x1, w)/c_s0**2
+DENSITY_NORMAL_JET -I*omega*rho_m*Derivative(Phi(x1, w), w)/c_s0**2
+DENSITY_TIME -omega**2*rho_m*Phi(x1, w)/c_s0**2
+CURRENT_TRACE [rho_m*Derivative(Phi(x1, w), x1), I*k2*rho_m*Phi(x1, w), 0, rho_m*Derivative(Phi(x1, w), w)]
+CURRENT_NORMAL_JET [rho_m*Derivative(Phi(x1, w), w, x1), I*k2*rho_m*Derivative(Phi(x1, w), w), 0, rho_m*(c_s0**2*(k2**2*Phi(x1, w) - Derivative(Phi(x1, w), (x1, 2))) + omega**2*Phi(x1, w))/c_s0**2]
+TRACE_EXACT_MINUS_REFERENCE_AFFINE 0
+TRACE_EXACT_MINUS_BACKGROUND_AFFINE -W0*eta*s*w1(x1)*Derivative(Phi(x1, w), w)/2
+PAIRING_SAME_PHASE 0
+PAIRING_CONJUGATE_PHASE 2*I*pi*test_amplitude*trial_amplitude
+
+=== ROUND_BASE exit=0 ===
+HELICITY_TOROIDAL 0
+HELICITY_TOROIDAL_QUADRATURE 0
+HELICITY_TOROIDAL_POLOIDAL 5*sqrt(2)*pi**(3/2)*mixing/4
+PARITY_TOROIDAL 1
+PARITY_POLOIDAL -1
+ANGULAR_MOMENTUM_TOROIDAL_QUADRATURE [0, 0, sqrt(2)*pi**(3/2)*omega/16]
+CORIOLIS_SCALAR_L0_PROJECTION -sqrt(2)*pi**(3/2)*Omega/4
+CORIOLIS_SCALAR_L2_PROJECTION -sqrt(2)*pi**(3/2)*Omega/8
+O3_FIXED_VECTOR_SOLUTIONS [{Lx: 0, Ly: 0, Lz: 0}]
+
+=== ROUND_ABL exit=0 ===
+HELICITY_TOROIDAL 0
+HELICITY_TOROIDAL_QUADRATURE 0
+HELICITY_TOROIDAL_POLOIDAL 5*sqrt(2)*pi**(3/2)*mixing/4
+PARITY_TOROIDAL -1
+PARITY_POLOIDAL 1
+ANGULAR_MOMENTUM_TOROIDAL_QUADRATURE [0, 0, sqrt(2)*pi**(3/2)*omega/16]
+CORIOLIS_SCALAR_L0_PROJECTION -sqrt(2)*pi**(3/2)*Omega/4
+CORIOLIS_SCALAR_L2_PROJECTION -sqrt(2)*pi**(3/2)*Omega/8
+O3_FIXED_VECTOR_SOLUTIONS [{Lx: 0, Ly: 0, Lz: 0}]
+
+BULK_BYTE_IDENTICAL False
+ROUND_BYTE_IDENTICAL False

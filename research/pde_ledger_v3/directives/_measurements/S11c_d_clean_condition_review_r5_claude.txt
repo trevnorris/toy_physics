@@ -1,0 +1,169 @@
+# Round-5 physics review of the v5 clean-condition packet (fresh Claude leg)
+
+**Verdict: not clear.** H-planar holds on the operator we actually have: my measurement on the committed exported S11c-b operator agrees with it. Two findings change what may be claimed (F-1, F-2), and four defects change what B computes or how its output can be read (F-3 to F-6). The R4 fold is otherwise sound, and I found no regression of R1–R3.
+
+All scripts and their literal stdout are in `/tmp/s11cd_clean_review_r5_claude/` (filed in `S11c_d_clean_condition_review_scripts/r5_claude/`). The working tree was not modified, no Wolfram kernel was run, and PID 4097233 was not touched.
+
+| # | script | stdout |
+|---|---|---|
+| 01 | `01_codomain_symbol_census.py` | `01_codomain_symbol_census.stdout.txt` |
+| 03 | `03_drain_odd_channel.py` | `03_drain_odd_channel.stdout.txt` |
+| 04 | `04_round_support_quadrupole.py` | `04_round_support_quadrupole.stdout.txt` |
+| 05 | `05_export_mirror_parity.py` | `05_export_mirror_parity.stdout.txt`, plus `05_time.txt` |
+| 06 | `06_row_sign_conventions_lookup.sh` | `06_row_sign_conventions_lookup.stdout.txt` |
+| 07 | `07_grounding_replay.py` | `07_grounding_replay.stdout.txt` |
+| 08 | `08_citation_lookups.sh` | `08_citation_lookups.stdout.txt` |
+| 09 | `09_author_script_ablation/` | `09_author_script_ablation/ablation.stdout.txt` |
+| 10 | `10_wl_schema_lookup.sh` | `10_wl_schema_lookup.stdout.txt` |
+
+---
+
+## Supporting measurements (not findings)
+
+**S-a. H-planar holds on the committed exported operator** (script 05, current SymPy exports dated Sep 14).
+- **Method:** evaluate `slab_operator` and `mu_theta_operator`, apply R1 and class P, mirror x3, and classify every leaf.
+- **Baseline:** in all 4 cases `MIXED 0` and `WRONG_SIDE 0`. For example, `LAB_HELD/RHO4: {'EVEN': 237, 'ODD': 15, 'ZERO': 41}`.
+- **Control:** keeping the direction-3 profile jets untransformed gives `MIXED` 80 / 74 / 125 / 118 leaves, so the check can fail.
+- **mu_theta:** `BASELINE {'EVEN': 1}` and `CTRL_D3 {'MIXED': 1}` in all 4 cases.
+- **ζ_c:** it appears only in `FACE_FLUX_BOUNDARY_OPERANDS`.
+- **Resources:** peak RSS 1,591,680 kB in 28.8 s, just to evaluate the stored payload (no reconstruction).
+
+**S-b. Grounding files are faithful.** All 67 recorded lookups replay byte-identically against the current tree (script 07: `RUN 24 SAME 24` and `RUN 43 SAME 43`).
+
+**S-c. R4-6 is resolved.** I FORM-ablated both v5 author scripts on `/tmp` copies (script 09):
+- Adding x3-dependence to the potential makes the odd components live (`VELOCITY_TRACE [..., I*k3*Phi(x1, w), ...]`).
+- Replacing the toroidal field with a radial one changes the mixed helicity to `0` and the angular-momentum vector to `[0, sqrt(2)*pi**(3/2)*omega/8, 0]`.
+
+---
+
+## F-1 (High): "no leak" needs an empty odd channel in the bulk, and a live drain opens one
+
+**What A claims:**
+- A:11–13: "light whose motion is a pure twist … cannot enter a reflection-even face/bulk channel at linear order … it gives an exact zero."
+- A:86–87: "Odd-to-odd kinematics are allowed."
+- P3 (A:102): "The background flow respects the symmetry: normal drain…"
+- A:109: "exact zero at linear order, if the conditions hold."
+- A:110: TE-like passing light → "no linear leak."
+- A:114–115: H "carries over" to the draining operator.
+- F1 (A:129–130) tests only an "odd↔even block".
+- B Part 2 (B:366–368) requests only the map "between the toroidal trial/test domain and the complete remaining field domain."
+
+**What the governing sources say:**
+- Ontology `:100`: "localized throat drainage transfers material, **momentum**, and energy from ordered brane degrees of freedom into de-structured bulk degrees of freedom."
+- S11b `:100–101`: "There is a **steady background transfer** of material across the interface."
+- S11c-a `:368–369`: "The background values obey `J_s⁰=0`, so the would-be `δa_s·J_s⁰` contribution vanishes."
+- S11c-a `:352`: the face traction is normal-only.
+
+**What script 03 shows** (a minimal model: uniform normal drain U, inviscid bulk, normal-only traction, lumped mode mass):
+- The drain respects the mirror: `EVEN_EQUATIONS_CHANGE_UNDER_MIRROR [0, 0, 0, 0]`. So P3 holds and F1 stays silent.
+- At rest there is no odd bulk channel: `ODD_CHANNEL_ODE_AT_U0 … [0]`. This is the premise behind native_light `:1343` ("no comparable shear channel").
+- With U ≠ 0 an advected odd channel exists: `Eq(a(w), C1*exp(I*omega*w/U))`.
+- At the face, the momentum balance with mass flux m forces `FACE_TRACE_SOLUTION_m_nonzero [u3_t]`. This is an odd→odd block (`d(jump)/d(u3_t) -m`, mirror-even entry `True`).
+- The mode decays at rate `m0/(2*M)` with `MODE_ENERGY_RATE -V**2*m0`. The drain-off control gives purely oscillatory roots, `±I*sqrt(K)/sqrt(M)`.
+- One stdout line, the energy-flux line, is a typed evaluation rather than a derivation. The model assumptions are typed inputs; the roots and solutions are computed.
+
+**Consequence:** with the drain live, which is the calibrated physics and is located exactly at throats, H still gives parity block-diagonality, but the twist sector leaks at linear order through a symmetry-allowed odd→odd channel. Neither F1 nor B Part 2 can detect it. The coefficient depends on the missing drain specification. The mechanism cannot be excluded by H.
+
+**Proposed changes:**
+- Add a premise: no outgoing or dissipative odd-sector channel. This holds only when J⁰ = 0 through the mode's support.
+- Scope "exact zero" and "no linear leak" to the rest-frame operator.
+- Make R-LEAK-1 a bound once the drain is on.
+- Add a falsifier for the drain's odd→odd channel.
+- Have B Part 2 surface the toroidal↔toroidal block, including the bulk vortical sector.
+- Restrict "carries over" to the selection rule, not to the absence of leakage.
+
+## F-2 (Medium): a throat held open by an ℓ=1 coherent twist mode is not round, and the spin-carrying pattern loses protection
+
+**What A says:**
+- A:137–139: "Two degenerate twist-type modes in quadrature are such a pattern, and they leave the background symmetric at linear order."
+- R-LEAK-1 (A:124–125) adopts an `O(3)`-symmetric throat.
+- N1 (A:153): "A twist-type standing mode must be able to hold a throat open."
+- Ontology `:26`: the mode "helps hold each throat open."
+
+**What script 04 shows:**
+- For any coherent ℓ=1 toroidal pattern: `A_DET_B 0`. Its time-averaged energy has an ℓ=2 projection equal to `-4*pi/5` × the traceless part of B (`A_L2_PROJECTION_M0_OVER_TRACELESS_B33 -4*pi/5`). That traceless part is bounded below by (trace/3)², since the excess `(5λ1²−8λ1λ2+5λ2²)/9` is ≥ 0. So the quadrupole is never zero.
+- The isotropic control gives all zeros. The circular pattern gives `{0: 8*pi/15}`, a quadrupole about the spin axis.
+- On that deformed throat:
+  - `T_z` couples to nothing.
+  - `T_x+iT_y` couples to `Y_21` with amplitude `-8*I*pi*delta/5`, which is zero at `delta=0`.
+- `PARITY_INVERSION` is `1` for T_z, T_x+iT_y, Y_21 and Y_20, so inversion does not forbid the coupling.
+- `PARITY_MIRROR_Y`: T_z is `-1` while Y_20 and the deformation are `1`.
+
+**Consequence:**
+- On its own support, only the zero-angular-momentum m=0 pattern keeps a symmetry zero.
+- The quadrature pair (m=±1) that F2 presents as compatible does not keep one. That pair is the angular-momentum carrier.
+- N2 names "throat deformation" in words, but A should state that this is unavoidable for ℓ=1 modes, and F2's sentence should be qualified.
+- The coupling used here is the u·g form; any tangential-spurion record behaves the same under the remaining symmetry.
+
+## F-3 (Medium, introduced by the v5 fold under R4-1): B's typing spans contradict the sources
+
+**What B says:** B:183–184 assigns "S11c-a engine `:76–100` (independent coordinates and `omega`)" and gives "`:568–577` (slab)" and "`:552–599` (virtual/test)".
+
+**What the sources contain** (script 08):
+- S11c-a :85–100 declares `e_W`, `theta`, `zeta_c`, `delta_v_theta`, `delta_v_e_W`, `delta_p_plus/minus`, plus `omega` at :88.
+- The independent coordinates `x_1..x_3`, `t` and `w` are at S11c-a :101–105, outside every cited span. `w` is in the closure (script 01).
+- Lines 568–577 lie inside 552–599, so `theta_t`, `zeta_c`, `zeta_c_t`, `zeta_c_d1..3` and `delta_v_zeta_c` fall in two spans at once.
+- `delta_v_zeta_c` is a column of the virtual kinematic map (S11c-a :853: `virtual_zeta = delta_v_zeta_c if dof == "ZETA_C"`).
+
+**Consequence:** following the spans literally holds θ, e_W and δp_±, which drops for example the u_3-row/θ-column block. The K1 check and the set-identity report would expose that, but the directive contradicts itself.
+
+**Fix:** use disjoint, correct spans, or type by registry description.
+
+## F-4 (Medium-Low): the sign-convention source B cites is out of date
+
+**What B says:** B:337–339 sources the kinetic and face whole-row sign diagnostics from step record `:112–114`: "kinetic −K PY vs +K WL; face generalized-force PY `+diff` vs WL `−linearVirtualVariation`". The record dates from 2026-09-03.
+
+**What script 06 shows:**
+- The SymPy engine changed after that record:
+  - a74da30a (09-10): the U row went from `- (epsilon * rhobr * u_tt[a] …)` at bcb9f7d7:2325 to `+ (u_kinetic[a] …)` at HEAD:2375.
+  - c643112a (09-12): added `face_multiplier` at :3034–3036. The stored value is `ACTION_TO_STORED_ROW_MULTIPLIER, -1` in all 4 cases.
+- The record no longer describes the SymPy side of either convention.
+- The record maps old engines anyway; B's scripts are new.
+
+**Fix:** each engine should emit its own convention anchor, and the record should not be the map source.
+
+## F-5 (Medium-Low, introduced by the v5 fold): the "blind" Wolfram engine has to copy the SymPy code structure
+
+**What B says:**
+- The codomain is defined by SymPy code paths (B:113–160), including bookkeeping keys such as `projection_term_origins`.
+- The join key requires the "exact output root/path/component" (B:273–275).
+- The Wolfram engine must "Import nothing" (B:321).
+
+**What script 10 shows:** none of the 7 top-level paths, nor `projection_term_origins` or `evolution_term_origins`, exists in the current Wolfram engine. It uses `U_MOMENTUM_ROWS`, `THICKNESS_ROW` and similar.
+
+**Consequence:** the Wolfram engine can join only by transcribing the SymPy construction. That weakens the independence the two engines exist to provide (M1).
+
+**Fix:** join on physics objects (weak rows, V_s/J_s/𝒜_s/t_s, kinematic maps), with a SymPy-emitted path-to-object table. SymPy-only bookkeeping containers should be reported as SymPy-only.
+
+## F-6 (Low): citations
+
+**"director":**
+- A:101 and A:140 cite `native_light…:112–120` and `:113–116` for "microrotation or director." Those lines list "an independent microrotation of the ordered substructure" and contain 0 matches for "director".
+- "Director" actually appears at `:2552` ("ordered-substructure director … requires an additional real material field").
+
+**C13:** A:173 cites nothing for C13. The source is V3_STEP_PLAN `:530`: "**C13** is adjacent … (a gravitational wave is not a brane mode)."
+
+---
+
+## Round-4 fold status
+
+| finding | status | note |
+|---|---|---|
+| R4-1 | resolved, but bred F-3 | |
+| R4-2 | resolved | |
+| R4-3 | resolved | S-a's control supports G3 |
+| R4-4 | resolved | |
+| R4-5 | resolved | the P2b bridge and entry representation are in place; the sign-convention source is F-4 |
+| R4-6 | resolved | S-c |
+| R4-7 to R4-10 | resolved | |
+
+## Other requested checks
+
+- **Regressions:** none against R3-2, R3-3, R3-5, R3-6, R3-7, R3-8, R2-6 or R1-10.
+- **Leakage:** B contains no expected values or result shapes; searches for "odd", "even", "parity" and "vanish" find nothing.
+- **Freezes and model point:** both are declared.
+- **FORM controls:** K1, K2 and G3 are genuine controls that leave the reflection-even family.
+- **Builder lane:** the builder stays in its lane, and Part 2 surfaces the drain specification rather than inventing it.
+- **Feasibility:** the 2 GiB cap is likely to stop the SymPy lane (S-a's 1.59 GB is before any reconstruction). B already treats a contained failure as a reportable result.
+- **§4:** fairly stated.
+- **Contradictions with governing statements:** the only one is F-1, with ontology `:100` and S11b `:100–101`.

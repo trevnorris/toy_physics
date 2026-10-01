@@ -453,3 +453,118 @@ defect-breeding author). v5 review: a fresh Claude agent + Grok, as new instance
 **Stop point surfaced to the user (they own the cut).** The physics question has strong review-leg evidence
 (R4 Claude `02`). B is a blind dual-engine confirmation that likely cannot complete under the 2 GiB guard. The
 leg measured 1.58 GB RSS just to load the exported slab payload.
+
+---
+
+# Round 5 — review of v5 (Codex-authored)
+
+**Authorship and pairing:**
+- v1–v3 are orchestrator-written; v4–v5 are Codex-revised (prompt `_legs/S11c_d_clean_condition_v5_author_prompt.md`).
+- Legs: a **fresh Claude agent** (Opus, new instance) and **Grok** (`grok-4.6`, high).
+- Prompt `_legs/S11c_d_clean_condition_review_round5_prompt.md`, identical for both. It corrects the stale
+  "suspended" wording for PID 4097233 to "running".
+
+**Reports:**
+- `S11c_d_clean_condition_review_r5_claude.txt` (verbatim)
+- `S11c_d_clean_condition_review_r5_grok.txt`
+
+The scripts and stdout are in `S11c_d_clean_condition_review_scripts/r5_{claude,grok}/`.
+
+**Verdicts:**
+- **Claude:** "**not clear.** H-planar holds on the operator we actually have … Two findings change what may be
+  claimed (F-1, F-2), and four defects change what B computes or how its output can be read (F-3 to F-6)."
+- **Grok:** "**not cleared.** Hypothesis H is right for this model's operator on the class A names. Two defects in
+  directive B change what Part 1 would compute."
+
+**Adjudication: not cleared.** Every finding from both legs is verified below.
+
+**Second independent measurement of H-planar on the real operator** (Claude S-a, `r5_claude/05_*`): `MIXED 0`
+and `WRONG_SIDE 0` in all four cases (e.g. `{'EVEN': 237, 'ODD': 15, 'ZERO': 41}`), and the control gives
+80/74/125/118. This agrees with R4's measurement. Both are single-engine review-leg measurements on the SymPy
+export.
+
+## Orchestrator verification — mechanical lookups, 2026-10-01
+
+````
+$ grep -n -E ':2416|:3103|:4156' research/pde_ledger_v3/directives/S11c_d_zinvariant_operator_blocks_directive.md
+114:at `:4156–4183`, from the whitelisted inputs in §4. The SymPy operator's code-defined top-level paths are exactly:
+126:The first four are created at engine `:2416–2433`; the face and binding paths are attached at `:3103–3127`.
+$ sed -n 3095,3096p research/pde_ledger_v3/scripts/S11c_b_brane_operator_sympy_audit.py
+    operator["THETA_BALANCE"] = sp.Tuple(
+        sp.Tuple(Str("SOURCE_OPERAND"), mass_balance),
+$ sed -n 2967,2967p research/pde_ledger_v3/scripts/S11c_b_brane_operator_sympy_audit.py
+    operator["U_BODY_BALANCE"] = sp.Tuple(
+$ sed -n 290,291p research/pde_ledger_v3/directives/S11c_b_SHARED_PHYSICS.md
+**The slab momentum and thickness rows are the CONSTRAINT-REDUCED equations under S11b's binding material
+virtual-displacement rule, not the held-fixed variational derivatives.** First compute the constitutive operand
+$ sed -n 101,105p research/pde_ledger_v3/scripts/S11c_a_interface_geometry_sympy_audit.py
+x1 = inherited("x_1", "COORDINATE", "first Eulerian in-plane coordinate")
+x2 = inherited("x_2", "COORDINATE", "second Eulerian in-plane coordinate")
+x3 = inherited("x_3", "COORDINATE", "third Eulerian in-plane coordinate")
+t = inherited("t", "COORDINATE", "time coordinate")
+w = inherited("w", "COORDINATE", "bulk normal coordinate")
+$ git show bcb9f7d7:research/pde_ledger_v3/scripts/S11c_b_brane_operator_sympy_audit.py | sed -n 2325p
+            - (epsilon * rhobr * u_tt[a] if include_kinetic else 0)
+$ sed -n 2375p research/pde_ledger_v3/scripts/S11c_b_brane_operator_sympy_audit.py
+            + (u_kinetic[a] if include_kinetic else 0)
+$ sed -n 3034p research/pde_ledger_v3/scripts/S11c_b_brane_operator_sympy_audit.py
+    face_multiplier = named_tuple_row(face_normalization, "ACTION_TO_STORED_ROW_MULTIPLIER")
+$ git log -1 --format='%h %ad %s' --date=short a74da30a ; git log -1 --format='%h %ad %s' --date=short c643112a
+a74da30a 2026-09-10 S11c-b inertia repair + regenerated b/c1/c2 artifacts; S11c-d WIP checkpoint
+c643112a 2026-09-12 S11c mechanical-load action normalization + regenerated d current and spectra; repair checkpoint
+$ for k in U_BODY_BALANCE THETA_BALANCE E_W_BALANCE ADVECTIVE_MASS_OPERAND FACE_FLUX_BOUNDARY_OPERANDS projection_term_origins evolution_term_origins; do grep -c "$k" research/pde_ledger_v3/mathematica/S11c_b_brane_operator_mathematica_audit.wl; done
+0 (each of the seven)
+$ sed -n 112,120p docs/native_light_em_and_vortex_throat_interpretation.md | grep -c -i director
+0
+$ sed -n 530p research/pde_ledger_v3/V3_STEP_PLAN.md   (excerpt)
+**Register:** **C13** is adjacent but ⛔ **not** this step's job (a gravitational wave is not a brane
+$ sed -n 101p research/pde_ledger_v3/directives/S11b_SHARED_PHYSICS.md   (excerpt)
+There is a **steady background transfer** of material across the interface. Let **`v_dr`** be the resulting
+$ sed -n 100p docs/toy_model_ontology_summary.md   (excerpt)
+… localized throat drainage transfers material, momentum, and energy from ordered brane degrees of freedom into de-structured bulk degrees of freedom, while distributed return transfers material back into the ordered state. …
+````
+
+The leg stdout relied on below:
+- `r5_claude/03_drain_odd_channel.stdout.txt`:
+  - `ODD_CHANNEL_ODE_AT_U0 … [0]`
+  - `ODD_CHANNEL_SOLUTION_U Eq(a(w), C1*exp(I*omega*w/U))`
+  - `FACE_TRACE_SOLUTION_m_nonzero [u3_t]`
+  - `ODD_TO_ODD_FACE_BLOCK d(jump)/d(u3_t) -m`
+  - `CONTROL_m0_ZERO_ROOTS [-I*sqrt(K)/sqrt(M), I*sqrt(K)/sqrt(M)]`
+- `r5_claude/04_round_support_quadrupole.stdout.txt`:
+  - `A_L2_PROJECTION_M0_OVER_TRACELESS_B33 -4*pi/5`
+  - `CONTROL_ISOTROPIC_INCOHERENT_L2 {… all 0}`
+  - `B_COUPLING_L2 T_x_plus_iT_y {… 1: -8*I*pi*delta/5 …}`
+  - `CONTROL_ROUND_DELTA0 T_x_plus_iT_y {… all 0}`
+  - `PARITY_MIRROR_Y T_z -1 Y_20 1 deformation_P2 1`
+- `r5_grok/06_prefold_vs_emitted.stdout.txt`: `S11CA_76_100_HAS_X1 False`, `S11CA_101_HAS_X1 True`.
+
+## Dispositions (all accepted)
+
+| # | finding (leg) | verified by | what it changes |
+|---|---|---|---|
+| R5-1 | **The drain opens an odd channel** (Claude F-1). The parity selection rule survives a live normal drain, but "no leak" needs an **empty** odd channel. The rest-frame potential bulk has none (`ODD_CHANNEL_ODE_AT_U0 … [0]`). With mass flux across the face, the tangential momentum balance forces `v3_bulk = u3_t`, and the twist motion is advected away (`exp(iωw/U)`), an **allowed odd→odd** block. In the leg's lumped model the mode damps at `m0/(2M)`; the drain-off control is undamped. The drain is located at throats, where trapped light lives. ⇒ The no-leak **zero holds only with the drain frozen**, which is the M3 / "no static background" freeze. The leg's model is minimal (typed assumptions, computed roots), and the coefficient depends on the missing drain specification. | ontology `:100`; S11b `:101`; S11c-a `:368–369`; leg `03` | A's "exact zero" and "no linear leak" hold only for the **rest-frame (J⁰ = 0) operator**. With the drain live, H is a selection rule and R-LEAK-1 is a **bound**. A needs an empty-odd-channel premise and a falsifier for the drain's odd→odd channel. "Carries over" applies to the selection rule only. B Part 2 must surface the toroidal↔toroidal block including the bulk vortical sector. |
+| R5-2 | **A spin-carrying trapped mode deforms its own throat** (Claude F-2). A coherent `ℓ=1` toroidal pattern's time-averaged energy always has an `ℓ=2` part, so a throat it holds open is not round. On that throat the `m=±1` (angular-momentum-carrying) pattern couples to `Y_21`; only `m=0` stays protected (mirror-odd vs even deformation). | leg `04` (controls: isotropic → 0; `δ=0` → 0) | A: state that the deformation is unavoidable for a coherent `ℓ=1` support mode; qualify F2's quadrature-pair sentence; tie F6/N2 to it. |
+| R5-3 | B cites the pre-fold creation site (`:2416–2433`) and the face attachment (`:3103–3127`). The emitted rows are **overwritten** at `:2967–3101` by pin B, the face forces and the mass-evolution `θ` row (spec `:290–291`: constraint-reduced, not held-fixed). A builder following the citations computes a different operator for the even/TM blocks (Grok 1). Fold-bred. | engine `:2967`, `:3095–3096`; spec `:290–291` | B points at the emitted object, not at construction sites. |
+| R5-4 | Typing spans: S11c-a `:76–100` does not contain `x_1…w` (at `:101–105`); `:568–577` lies inside `:552–599` (double-typed `ζ_c` family); following the spans literally holds `θ`, `e_W`, `δp_±` (Claude F-3, Grok 2). Fold-bred. | S11c-a `:101–105` | Disjoint, correct typing, or typing by registry description. |
+| R5-5 | The sign-convention source (record `:112–114`, 09-03) predates the SymPy engine changes `a74da30a` (U-row kinetic sign) and `c643112a` (`face_multiplier`). These are among the **unreviewed upstream S11c-d repairs** (Claude F-4). | engine `:2375`, `:3034`; bcb9f7d7 `:2325`; git log | Each engine emits its own convention anchor; the record is not the map source. |
+| R5-6 | The join key uses SymPy code paths, none of which exists in the WL engine. A "blind" WL would have to transcribe the SymPy construction (M1) (Claude F-5). Fold-bred. | WL grep: 0 for all seven | Join on physics objects, with a SymPy-emitted path→object table. |
+| R5-7 | Citations: "director" is not in native_light `:112–120` (it is at `:2552`); C13 is uncited (V3 `:530`) (Claude F-6). | lookups | Corrected. |
+
+**Open question raised by R5-1** (the orchestrator's question, ⛔ not a claim; a computation is owed). Ontology
+`:100` also has **distributed return**, material flowing back into the brane away from throats. If that puts a
+nonzero mass flux across the faces everywhere, does passing TE-like light meet the same odd→odd channel? R5-1's
+leg model treats the face jump for flux `m` without a sign restriction, but nobody has computed this case.
+
+## Process decision
+
+- **Defect breeding.** v5 again bred defects in the material it changed (R5-3, R5-4, R5-6), so G4's author-change
+  trigger fires a second time.
+- **Recipe-creep.** This is the fifth round on B's specification of engine internals while the selection rule
+  cleared every time (M2 recipe-creep tell).
+- **The physics moved.** R5-1 shows that what B's Part 1 computes, the drain-frozen rest-frame operator, is exactly
+  the freeze that manufactures the zero. Two review legs have already measured the selection rule on the real
+  export (R4, R5).
+
+⇒ **The B iteration is paused, and the scope goes to the user** (the user owns the cut; this is a scope change).
+No further fold until the user chooses. v5 is preserved as reviewed.

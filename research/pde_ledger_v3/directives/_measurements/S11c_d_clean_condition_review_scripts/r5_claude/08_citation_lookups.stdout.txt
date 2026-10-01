@@ -1,0 +1,62 @@
+== 'director' in native_light :112-120
+0
+== 'director' anywhere in native_light (line numbers)
+805:director
+1034:director
+1107:director
+1298:directors
+2552:director
+2555:director
+== 'C13' in V3_STEP_PLAN.md (line numbers)
+530:C13** is adjacent but ⛔ **not** this step's job (a gravitationa
+== V3_STEP_PLAN :1116-1126 mentions C13?
+0
+== S11c-a engine :76-105 COORDINATE declarations
+10:e_W = inherited("e_W", "COORDINATE", "uniform-reference fractional thickness field")
+13:omega = inherited("omega", "COORDINATE", "frequency operand of inherited response kernels")
+20:theta = inherited("theta", "COORDINATE", "Eulerian fractional densification")
+21:zeta_c = inherited("zeta_c", "COORDINATE", "face-centre displacement")
+22:delta_v_theta = inherited("delta_v_theta", "COORDINATE", "virtual densification variation")
+23:delta_v_e_W = inherited("delta_v_e_W", "COORDINATE", "virtual fractional-thickness variation")
+24:delta_p_plus = inherited("delta_p_plus", "COORDINATE", "upper perturbation face pressure")
+25:delta_p_minus = inherited("delta_p_minus", "COORDINATE", "lower perturbation face pressure")
+26:x1 = inherited("x_1", "COORDINATE", "first Eulerian in-plane coordinate")
+27:x2 = inherited("x_2", "COORDINATE", "second Eulerian in-plane coordinate")
+28:x3 = inherited("x_3", "COORDINATE", "third Eulerian in-plane coordinate")
+29:t = inherited("t", "COORDINATE", "time coordinate")
+30:w = inherited("w", "COORDINATE", "bulk normal coordinate")
+== S11c-b engine :552-599 vs :568-577 declared names
+"delta_v_theta", "delta_v_e_W"
+f"delta_v_u_{component}"
+f"delta_v_u_{component}_d{component}"
+"theta_t"
+"zeta_c"
+"zeta_c_t"
+"delta_v_zeta_c"
+f"zeta_c_d{i}"
+f"delta_v_u_{component}"
+f"delta_v_u_{component}_d{direction}"
+f"delta_v_u_{component}_d{direction}"
+== 'w' symbol declaration
+105:w = inherited("w", "COORDINATE", "bulk normal coordinate")
+== S11c-a virtual_vertical
+    virtual_zeta = delta_v_zeta_c if dof == "ZETA_C" else face * virtual_delta_W / 2
+    if branch == "LAB_HELD":
+        virtual_vertical = virtual_zeta + face * dot(delta_v_u, tuple(scales[i] * grad_W[i] for i in range(3))) / 2
+        velocity_vertical = zeta_t + face * dot(u_t, tuple(scales[i] * grad_W[i] for i in range(3))) / 2
+    else:
+        virtual_vertical = virtual_zeta
+        velocity_vertical = zeta_t
+    virtual_displacement = tuple(delta_v_u) + (virtual_vertical,)
+== S11c-a spec J0 = 0 statement
+
+Neither `a_s^α` may be replaced by one before the shape derivative is taken. The background values
+obey `J_s⁰=0`, so the would-be `δa_s·J_s⁰` contribution vanishes; the true-area measure remains in the
+== S11b drain line :104
+
+There is a **steady background transfer** of material across the interface. Let **`v_dr`** be the resulting
+steady **normal** flow speed in the bulk near a face (**symbolic**). ⭐ **`v_dr` is the bulk's NORMAL drain
+across a face; it couples to the bulk NORMAL wavenumber `q_out`.** Its standard ledger name is
+`v_bulk_normal_0`. ⛔⛔ **It is a DIFFERENT physical quantity from any in-plane / tangential background
+brane velocity, and it must NOT share that quantity's name or key.** ⛔ This step does not set the brane
+moving in-plane; `v_dr` here is neither that quantity nor an override of any premise about it.

@@ -1,0 +1,6 @@
+=== research/pde_ledger_v3/directives/_measurements/S11c_d_clean_condition.md: 26 command blocks
+SKIP_NOT_A_LOOKUP python3 research/pde_ledger_v3/directives/_measurements/S11c_d_clean_condition_v5_author_scripts/bulk_pullback
+SKIP_NOT_A_LOOKUP python3 research/pde_ledger_v3/directives/_measurements/S11c_d_clean_condition_v5_author_scripts/round_spin_ca
+RUN 24 SAME 24 DIFFERS 0 SKIPPED 2
+=== research/pde_ledger_v3/directives/_measurements/S11c_d_zinvariant_operator_blocks_directive.md: 43 command blocks
+RUN 43 SAME 43 DIFFERS 0 SKIPPED 0

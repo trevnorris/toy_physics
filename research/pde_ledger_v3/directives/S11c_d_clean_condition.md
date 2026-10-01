@@ -1,15 +1,15 @@
 # Light leakage — the clean condition (S11c-d re-scope proposal)
 
-**Status:** PROPOSED · **v4** (2026-09-30) · Codex-revised from the orchestrator-written v1–v3 · ⛔ not
-governing until review-cleared. The committed v3 baseline is `c1e96e76`.
-- Rounds 1–3 and every accepted disposition are recorded in
+**Status:** PROPOSED · **v5** (2026-10-01) · Codex-revised (v4–v5) from the orchestrator-written v1–v3 · ⛔ not
+governing until review-cleared. The committed v4 baseline is `5693e861`.
+- Rounds 1–4 and every accepted disposition are recorded in
   `directives/_measurements/S11c_d_clean_condition_review_disposition.md`.
 - Repo citations below are reproduced verbatim, with their commands, in
   `directives/_measurements/S11c_d_clean_condition.md`.
 
 **Plain summary.** We stop asking *"does light leak at a non-uniform slab?"* and ask instead *"under what clean
-condition does it provably not leak?"* There is one candidate: **light whose motion is a pure twist about a
-symmetric non-uniformity cannot enter a reflection-even face/bulk channel at linear order.** This is a standard
+condition does it provably not leak?"* There is one candidate: **in an achiral medium, light whose motion is a
+pure twist about a symmetric non-uniformity cannot enter a reflection-even face/bulk channel at linear order.** This is a standard
 symmetry argument, and it gives an exact zero rather than a small number. It
 contains no light/bulk speed ratio. It is the natural candidate for **light trapped in a throat** (particle
 stability), which is the case that needs an exact zero. It does **not** cover all passing light: at an oblique
@@ -70,7 +70,7 @@ oblique incidence. Without full `O(2)` invariance, only incidence planes that co
 background are protected.
 
 **H-round.** Take a background invariant under all rotations and reflections of the three in-plane coordinates
-about a point (`O(3)`), *if* such a throat background exists. That means a round throat, a parity-even
+about a point (`O(3)`), *if* such a throat background exists. That means an achiral medium, a round throat, a parity-even
 constitutive law, and a background flow with no azimuthal (swirl) component. At each angular order `(ℓ, m)` with
 `ℓ ≥ 1`:
 - **twist-type (toroidal)** displacements, tangent to the spheres `r = const` and divergence-free, have
@@ -85,19 +85,20 @@ its supplied laws couple the slab to bulk trace operands through the face quanti
 `:343–354`, `:365–366`). The proposed closure criterion is **parity block-diagonality**, not the absence of every
 twist-dependent face quantity. Odd-to-odd kinematics are allowed: for example, the direction-3 components of
 `v_face,s` and `δ_v x_s` belong to the odd sector with `u_3`. What the symmetry forbids is an odd↔even block in
-the slab rows, the physical face map, or the separately typed virtual/test map. On class `P`, the supplied
-rest-frame potential-flow pullback has no odd bulk trace or odd normal-jet coordinate. Therefore an equivariant
-bulk closure cannot connect this odd slab sector to the even bulk sector. Part 1 prints the formal face-operand
-map, its supplied potential-flow pullback, and the separate virtual/test map; it does not supply the missing bulk
-closure. (Author evidence: `directives/_measurements/S11c_d_clean_condition_v4_author_scripts/`
-`symmetry_domain_audit.py` and `potential_trace_pullback_audit.py`, with their literal `*.stdout.txt`.)
+the constructed weak operator, its formal coordinate map, or the separately typed virtual/test kinematic map.
+On class `P`, the supplied rest-frame potential-flow equations restrict the bulk traces, their normal jets,
+density and current. An equivariant closure on that restricted domain cannot connect opposite parities, but Part
+1 does not supply or test the missing curved-bulk closure. The v5 bulk-pullback equations are computed from the
+supplied acoustic inputs in
+`directives/_measurements/S11c_d_clean_condition_v5_author_scripts/bulk_pullback_pairing_audit.py`, with literal
+stdout beside it.
 
-**Premises the argument needs.** Each is a thing to check, ⛔ not to assume:
+**Premises the argument needs.** They do not all have the same status:
 
 | # | premise | where it stands |
 |---|---|---|
-| P1 | The constitutive law has no parity-odd term. | The S11c-b energy basis is "the O(3)-Kronecker field-bilinear invariant family" (record `:35–37`). |
-| P2 | Every operand the face laws use transforms covariantly under the reflection (or `O(3)`), **and** every background value and support/boundary datum is invariant under it. The operands are scalars (`δp_s`, `μ_s`, `𝒜_s`, `J_s`, `V_s`, `a_s`), polar vectors (`n̂_s`, `v_face,s`, `v_bulk,s`, `t_s`, `δ_v x_s`) and any axial vector. The bulk trace normal jets have the parity of their parent operands because the in-plane reflection leaves `w` fixed. No further field is present (e.g. a microrotation or director field, a listed spin-carrier candidate, `native_light…:113–116`). | The face laws carry vector operands (S11c-a `:343–354`; S11c-b `:145–148`). Round-1 leg scripts report zero reflection residuals for these on the planar class. The v4 author script classifies the normal jets. These are term-structure checks, with literal stdout in the grounding file. |
+| P1 | The medium is achiral: the constitutive law has no parity-odd term. | **Supplied, not testable by Part 1.** The accepted basis is constructed with "in-plane `O(3)` isotropy and parity" (spec `:115–121`) and is recorded as the `O(3)`-Kronecker family (`:35–37`). A chiral extension is outside that supplied basis. |
+| P2 | Every operand the face laws use transforms covariantly under the reflection (or `O(3)`), **and** every background value and support/boundary datum is invariant under it. This includes scalar, polar-vector and axial-vector operands, their normal jets, and every support field. No further field is present (e.g. a microrotation or director field, among the listed spin-carrier candidates at `native_light…:112–120`). | The face laws carry scalar and vector operands (S11c-a `:343–354`; S11c-b `:145–148`). Their transformation and the background-value invariance remain applicability conditions; Part 1 checks the represented operator on R1. |
 | P3 | The background flow respects the symmetry: normal drain; radial in-plane flow at a throat; no swirl. | ⚠ Untested. `v_bulk_normal_0` "appears in no derived operator" (spec `:90–91`). The drain flow is **absent** from the S11c-b operator. |
 | P4 | The truncations, the constraint fold (pin B), both anchorings, and the sign conventions in our operator do not break the reflection. | ⚠ Not yet computed in the operator. Round-1 leg scripts report pin B and both anchorings reflection-even on the planar class (stdout excerpts in the grounding file). Four upstream sign/coordinate repairs from S11c-d are unreviewed, so a convention error that breaks a reflection is exactly what Part 1 can catch. |
 
@@ -105,7 +106,7 @@ closure. (Author evidence: `directives/_measurements/S11c_d_clean_condition_v4_a
 
 | case | covered by H? | consequence |
 |---|---|---|
-| light trapped at a throat (particle stability) | **linear order only, conditionally** — on an `O(3)`-symmetric, swirl-free throat background that admits a normalizable twist-type bound mode. No represented physical throat exists yet: the `h_±` graphs "are … not a complete nonlinear throat topology" (ontology `:315`). The support mode must be "a spectrally normalizable bound state or acceptably long-lived resonance of the complete variable-coefficient transverse operator" (ontology `:957`). | exact zero at linear order, if the conditions hold. ⛔ Not particle stability by itself: see the nonlinear gates of R-LEAK-1 |
+| light trapped at a throat (particle stability) | **linear order only, conditionally** — in an achiral medium, on an `O(3)`-symmetric, swirl-free throat background that admits a normalizable pure twist-type bound mode. No represented physical throat exists yet: the `h_±` graphs "are … not a complete nonlinear throat topology" (ontology `:315`). The support mode must be "a spectrally normalizable bound state or acceptably long-lived resonance of the complete variable-coefficient transverse operator" (ontology `:957`). | exact zero at linear order, if the conditions hold. ⛔ Not particle stability by itself: see the nonlinear gates of R-LEAK-1 |
 | passing light, TE-like component at a planar one-direction interface; the twist part of passing light at a round scatterer | **yes**, subject to P1–P4 | no linear leak |
 | passing light, TM-like at oblique incidence; the non-twist part at a round scatterer | **no** | converts → **R-LEAK-2** (a bound) |
 | second order (nonlinear) | **no** — the square of a twist-type field is even and can source scalar deformation | half-two inventory |
@@ -120,8 +121,8 @@ calibrated, draining medium" (assessment `:3`).
 **R-LEAK-1 — trapped light (particle stability).** The trapped transverse brane-shear standing mode that "helps hold
 each throat open" (ontology summary `:26`; the related statement at `:362` says it "helps hold the aperture open")
 loses energy to the bulk at a rate below observational limits.
-H supplies its **linear** clean condition: the mode is twist-type about a throat that is `O(3)`-symmetric in the
-brane coordinates and carries no swirl. ⛔ H alone does not deliver particle stability: a twist-type field's square
+H supplies its adopted **linear** clean condition: the medium is achiral and the mode is pure twist-type about a
+throat that is `O(3)`-symmetric in the brane coordinates and carries no swirl. ⛔ H alone does not deliver particle stability: a twist-type field's square
 is even and can source scalar motion at second order. So R-LEAK-1 also needs a nonlinear zero or bound.
 
 **Operator falsifier of the conditional linear selection rule:**
@@ -129,21 +130,30 @@ is even and can source scalar motion at second order. So R-LEAK-1 also needs a n
   contains a reflection-odd↔reflection-even block between the twist sector and the closed slab/face/bulk system.
 
 **Applicability/failure tests for the proposed R-LEAK-1 realization:**
-- **F2.** The model's spin carrier forces the background to break `O(3)` at linear order. Possibilities: a swirl,
-  a chiral constitutive term, or a non-round throat. On angular momentum: "A real linearly polarized standing wave
+- **F2.** The model's spin carrier violates the adopted achiral/`O(3)` condition at linear order. Possibilities
+  include a swirl, a chiral constitutive term, a non-round throat, or a net mixed `a`–`w` circulation: the last is
+  an in-plane vector that selects a direction, so a nonzero value is not fixed by all rotations. On angular
+  momentum: "A real linearly polarized standing wave
   can have zero time-averaged angular momentum. Two degenerate modes with a relative phase can form a circularly
   polarized bound pattern that carries angular momentum" (`native_light…:2377–2381`). Two degenerate twist-type
   modes in quadrature are such a pattern, and they leave the background symmetric at linear order.
 - **F2b.** The spin carrier is an **additional field** (microrotation/director; `native_light…:113–116`). It
   enlarges the field content without breaking `O(3)`, so its parity and couplings must be classified before H
   can be applied.
+- **F2c.** The required trapped mode is not pure twist-type. In particular, a trapped chiral-shear realization
+  that mixes toroidal and poloidal sectors mixes opposite inversion parities and is not protected by H. The
+  zero-helicity pure-twist representative and the nonzero-helicity mixed representative are computed in
+  `directives/_measurements/S11c_d_clean_condition_v5_author_scripts/round_spin_carrier_audit.py`, with literal
+  stdout beside it.
 - **F5.** No normalizable twist-type bound mode exists on the throat background.
 - **F6.** The full nonlinear throat, represented by the parent fields rather than `h_±` graphs (ontology `:315`),
   is not `O(3)`-symmetric.
 
 **Nonlinear gates of R-LEAK-1** (half two; each must give a zero or a bound below the observational limit):
 - **N1.** A twist-type standing mode must be able to hold a throat open.
-- **N2.** Second-order leakage of the twist mode, including that from the throat deformation it induces.
+- **N2.** Second-order leakage of the twist mode, including that from the throat deformation and mean flow it
+  induces. The v5 round-sector script also computes nonzero `ℓ=0` and `ℓ=2` scalar projections for an explicit
+  Coriolis image; that example identifies channels to retain, not a universal coefficient.
 
 `native_light…:1343` already records that "the de-structured bulk carries no comparable shear channel … is not
 sufficient by itself." H is the proposed **sufficient condition at linear order**. N1 and N2 remain.
@@ -166,7 +176,6 @@ symmetry-protected zero** here; special incidences, coefficients or other symmet
   unverified here. Not adopted:
   - the model's drain at throats carries material **out** of the brane into the bulk, with distributed return
     inward (ontology summary `:100`, `:1366`);
-  - it would also trap gravity changes;
   - it does not protect a particle: no mechanism has been shown to return leaked mode energy coherently to the
     same particle.
 - **Smallness only**: throat ≪ wavelength, weak fluid loading. Not clean; usable for R-LEAK-2 only.
@@ -176,13 +185,15 @@ symmetry-protected zero** here; special incidences, coefficients or other symmet
 `directives/S11c_d_zinvariant_operator_blocks_directive.md` has two parts:
 
 - **Part 1** uses the existing S11c-b slab/face operator on the planar one-direction background (restriction R1).
-  - It builds the formal physical-coordinate Fréchet map on perturbations independent of direction 3, including
-    the engines' pressure/velocity trace values and normal jets; emits the pullback of that map to the supplied
-    potential-flow trace subspace; and emits the virtual/test kinematic map separately. The outputs are every
-    engine row (including the centre-shift row) and every engine-defined face quantity named by the directive.
-  - It runs pinned FORM controls (K1: a fixed-axis term; K2: a single-Levi-Civita term).
-  - It runs both engines, plus a comparator that surfaces the raw cross-engine residuals before any sign
-    convention is applied. All jobs run under the guarded runner.
+  - It constructs the complete weak operator payload and derives its coordinate domain mechanically from every
+    free perturbation coordinate actually present. The manifest types every coordinate or records why it is held;
+    no authored input list defines the map.
+  - It emits the full formal coordinate map, its supplied potential-flow pullback (pressure, velocity, density and
+    current, at the flat reference faces), and the virtual/test kinematic map. Every labelled entry is printed.
+  - It runs pinned FORM controls K1 and K2 at stored energy and G3 as a fixed transverse background datum introduced
+    after R1, so the face/trace/kinematic construction is also exercised. These names identify controls, not results.
+  - It runs both engines, plus a raw-first comparator with separately labelled coefficient- and convention-mapped
+    diagnostics. Completion under the guard is not presumed.
   - It inherits S11c-b's scope: **no drain flow and no bulk solve, both declared freezes**.
   - It also yields the TM-like blocks that R-LEAK-2 will need.
 
@@ -195,10 +206,10 @@ symmetry-protected zero** here; special incidences, coefficients or other symmet
 
 ## 6 · What happens to S11c-d
 
-- The suspended `ω = 3` central benchmark (PID 4097233) stays a **labelled development benchmark**: rest bulk,
-  `c_γ/c_s ≈ 0.12`, `LAB_HELD`. It supports no claim about the model. Whether to finish it is the user's call.
-  ⚠ Its own containment says not to launch another job alongside it (assessment `:5`). Part 1's engines wait on
-  that decision.
+- The `ω = 3` central benchmark (PID 4097233) was resumed on 2026-09-30 after its containment identity was checked
+  (equal-speed feasibility `:47`). It remains a **labelled development benchmark**: rest bulk,
+  `c_γ/c_s ≈ 0.12`, `LAB_HELD`, and supports no claim about the model. Its record forbids another job alongside it
+  (assessment `:5`), so Part 1 waits for its completion. This packet makes no claim about the PID's present OS state.
 - The passing-light question becomes R-LEAK-2, a bound check. It is no longer a matter of more precision at the
   development point.
 

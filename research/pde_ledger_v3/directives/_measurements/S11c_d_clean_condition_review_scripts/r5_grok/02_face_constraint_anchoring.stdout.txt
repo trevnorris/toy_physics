@@ -1,0 +1,12 @@
+N3_LAB_HELD_LINEAR 0
+N3_MATERIAL_LINEAR 0
+MATERIAL_PULLBACK_LINEAR -u1(x1, x2)*Derivative(Q(x1), x1)
+MATERIAL_PULLBACK_COEFF_U3 0
+DIV_U_ON_P Derivative(u1(x1, x2), x1) + Derivative(u2(x1, x2), x2)
+DIV_U_HAS_U3 0
+N_BG_LAB (-W0*eta*s**2*Derivative(w1(x1), x1)/sqrt(W0**2*eta**2*s**2*Derivative(w1(x1), x1)**2 + 4), 0, 0, 2*s/sqrt(W0**2*eta**2*s**2*Derivative(w1(x1), x1)**2 + 4))
+V_FROM_BACKGROUND_NORMAL s*(-W0*dt_u1*eta*s*Derivative(w1(x1), x1) + 2*dt_zeta_s)/sqrt(W0**2*eta**2*s**2*Derivative(w1(x1), x1)**2 + 4)
+V_COEFF_DT_U3 0
+J_FROM_BACKGROUND_NORMAL s*(W0*eta*s*(dt_u1 - vb1)*Derivative(w1(x1), x1) - 2*dt_zeta_s + 2*vbw)/sqrt(W0**2*eta**2*s**2*Derivative(w1(x1), x1)**2 + 4)
+J_COEFF_VB3 0
+J_COEFF_DT_U3 0

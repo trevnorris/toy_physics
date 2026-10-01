@@ -1,0 +1,68 @@
+--- engine cited creation site ---
+2415:    advective_constraint = epsilon * dot(u_t, rhobr_gradient)
+2416:    operator = {
+2417:        "U_BODY_BALANCE": sp.Tuple(
+2418:            sp.Tuple(Str("LOCAL"), sp.Tuple(*u_local)),
+2419:            sp.Tuple(Str("DIVERGENCE_FLUX"), sp.Tuple(*(sp.Tuple(*row) for row in u_flux))),
+2420:            sp.Tuple(Str("EXPANDED"), sp.Tuple(*u_expanded)),
+2421:        ),
+2422:        "THETA_BALANCE": sp.Tuple(
+2423:            sp.Tuple(Str("LOCAL"), theta_local),
+2424:            sp.Tuple(Str("DIVERGENCE_FLUX"), sp.Tuple(*theta_flux)),
+2425:            sp.Tuple(Str("EXPANDED"), theta_expanded),
+2426:        ),
+2427:        "E_W_BALANCE": sp.Tuple(
+2428:            sp.Tuple(Str("LOCAL"), e_local),
+2429:            sp.Tuple(Str("DIVERGENCE_FLUX"), sp.Tuple(*e_flux)),
+2430:            sp.Tuple(Str("EXPANDED"), e_expanded),
+2431:        ),
+2432:        "ADVECTIVE_MASS_OPERAND": advective_constraint,
+2433:    }
+--- emitted THETA_BALANCE overwrite ---
+3094:    )
+3095:    operator["THETA_BALANCE"] = sp.Tuple(
+3096:        sp.Tuple(Str("SOURCE_OPERAND"), mass_balance),
+3097:        sp.Tuple(Str("EVOLUTION_TERM_ORIGINS"), evolution_origins),
+3098:        sp.Tuple(Str("EXPANDED"), mass_balance),
+3099:    )
+3100:    operator["ADVECTIVE_MASS_OPERAND"] = named_tuple_row(
+3101:        evolution_origins, "BACKGROUND_ADVECTION"
+3102:    )
+--- operator_from_density THETA assignment ---
+2416:    operator = {
+2422:        "THETA_BALANCE": sp.Tuple(
+--- S11c-a 76-105 ---
+76:    """Bind a supplied quantity to the live object carried by S11b."""
+77:    return register_symbol(INCOMING_LEDGER[name]["value"], class_tag, description)
+78:
+79:
+80:# Imported identities named by the build directive and supplied S11b laws.
+81:c_s0 = inherited("c_s0", "KNOB", "bulk sound speed")
+82:mu_R = inherited("mu_R", "KNOB", "uniform curl-type brane modulus")
+83:rho_br = inherited("rho_br", "KNOB", "uniform slab-integrated inertia density")
+84:W0 = inherited("W_0", "KNOB", "uniform reference thickness")
+85:e_W = inherited("e_W", "COORDINATE", "uniform-reference fractional thickness field")
+86:rho_m = inherited("rho_m", "KNOB", "bulk mass density")
+87:v_dr = inherited("v_bulk_normal_0", "KNOB", "steady bulk-normal drain scope-limit speed")
+88:omega = inherited("omega", "COORDINATE", "frequency operand of inherited response kernels")
+89:Lambda_A0 = inherited("Lambda_A_0", "KNOB", "zero-frequency affinity mobility")
+90:Lambda_V0 = inherited("Lambda_V_0", "KNOB", "zero-frequency face-velocity mobility")
+91:Lambda_X0 = inherited("Lambda_X_0", "KNOB", "zero-frequency reciprocal traction coefficient")
+92:tau_A = inherited("tau_A", "KNOB", "affinity relaxation time")
+93:tau_V = inherited("tau_V", "KNOB", "velocity relaxation time")
+94:tau_X = inherited("tau_X", "KNOB", "traction relaxation time")
+95:theta = inherited("theta", "COORDINATE", "Eulerian fractional densification")
+96:zeta_c = inherited("zeta_c", "COORDINATE", "face-centre displacement")
+97:delta_v_theta = inherited("delta_v_theta", "COORDINATE", "virtual densification variation")
+98:delta_v_e_W = inherited("delta_v_e_W", "COORDINATE", "virtual fractional-thickness variation")
+99:delta_p_plus = inherited("delta_p_plus", "COORDINATE", "upper perturbation face pressure")
+100:delta_p_minus = inherited("delta_p_minus", "COORDINATE", "lower perturbation face pressure")
+101:x1 = inherited("x_1", "COORDINATE", "first Eulerian in-plane coordinate")
+102:x2 = inherited("x_2", "COORDINATE", "second Eulerian in-plane coordinate")
+103:x3 = inherited("x_3", "COORDINATE", "third Eulerian in-plane coordinate")
+104:t = inherited("t", "COORDINATE", "time coordinate")
+105:w = inherited("w", "COORDINATE", "bulk normal coordinate")
+CITED_CREATION_HAS_MU_THETA_AS_THETA_EXPANDED False
+EMITTED_THETA_USES_MASS_BALANCE True
+S11CA_76_100_HAS_X1 False
+S11CA_101_HAS_X1 True

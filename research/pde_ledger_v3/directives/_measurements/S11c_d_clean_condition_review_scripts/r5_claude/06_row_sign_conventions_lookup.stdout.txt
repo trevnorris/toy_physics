@@ -1,0 +1,57 @@
+== step record last commit
+eca2082a 2026-09-03 S11c-b docs: exports.py now COMMITTED af560257 (compact-prep consistency)
+== step record :112-114
+  in-band-but-verified-out-of-band: the #89 PY skipped controls + the #89b WL heavy controls.) **Two whole-row SIGN
+  CONVENTIONS** to adjudicate there (kinetic −K PY vs +K WL; face generalized-force PY `+diff` vs WL
+  `−linearVirtualVariation`) — the comparator SURFACES them, does not normalize them (rule 1/6). **#90's two flags**
+== SymPy engine commits after the record
+3b52afcb 2026-09-14 S11c-b kinetic action: compose the declared thickness coordinate before variation
+c643112a 2026-09-12 S11c mechanical-load action normalization + regenerated d current and spectra; repair checkpoint
+a74da30a 2026-09-10 S11c-b inertia repair + regenerated b/c1/c2 artifacts; S11c-d WIP checkpoint
+== WL engine commits after the record
+== SymPy kinetic term in the U body row at the record's commit bcb9f7d7
+2325:            - (epsilon * rhobr * u_tt[a] if include_kinetic else 0)
+2664:            - epsilon * rhobr * u_tt[a]
+2888:    u_kinetic = tuple(epsilon * rhobr * u_tt[a] for a in DIRECTIONS)
+2894:            named_tuple_row(raw_u_balance, "EXPANDED")[a] + u_kinetic[a]
+2946:                    sp.expand(reduced_u[a]["EXPANDED"] - u_kinetic[a])
+== SymPy kinetic term in the U body row at HEAD
+2375:            + (u_kinetic[a] if include_kinetic else 0)
+2714:            - epsilon * rhobr * u_tt[a]
+== SymPy kinetic_balance_from_energy at HEAD (sign source)
+def kinetic_balance_from_energy(rhobr: sp.Expr) -> tuple[tuple[sp.Expr, ...], sp.Expr]:
+    # Supplied kinetic energy at quadratic wave order on the stationary
+    # background. Material advection of its coefficients first contributes at
+    # cubic wave order. Use d_t(dT/dq_t) with the stored +delta U normalization.
+    velocities = (*u_t, e_t)
+    accelerations = (*u_tt, e_tt)
+    # e_W is normalized by W_0; the local fraction has a separate source map.
+    # Compose physical thickness before taking its stationary-background rate.
+    local_thickness, _ = local_thickness_map()
+    physical_thickness_rate = sp.diff(W_bg * local_thickness, e_W) * e_t
+    kinetic_density = epsilon**2 * (
+        rhobr * dot(u_t, u_t) + mu_W * physical_thickness_rate**2
+    ) / 2
+    momenta = tuple(sp.diff(kinetic_density, velocity) for velocity in velocities)
+    balances = tuple(
+        sp.expand(sum(sp.diff(momentum, velocity) * acceleration
+                      for velocity, acceleration in zip(velocities, accelerations)) / epsilon)
+        for momentum in momenta
+    )
+    return balances[:3], balances[3]
+== SymPy face multiplier at the record's commit (count of 'face_multiplier')
+0
+== SymPy face multiplier at HEAD
+3034:    face_multiplier = named_tuple_row(face_normalization, "ACTION_TO_STORED_ROW_MULTIPLIER")
+3035:    face_u = tuple(sp.expand(face_multiplier * item) for item in physical_face_u)
+3036:    face_e = sp.expand(face_multiplier * physical_face_e)
+== stored ACTION_TO_STORED_ROW_MULTIPLIER values in the committed exports
+      4 ACTION_TO_STORED_ROW_MULTIPLIER'), Integer(-1
+      4 ACTION_TO_STORED_ROW_MULTIPLIER'
+      4 ACTION_TO_STORED_ROW_MULTIPLIER, -1
+== WL kinetic and face-row sign lines
+1113:  uRows = linearVirtualVariation[variedDensity, #] & /@ virtualUVector;
+1133:  uRows = linearVirtualVariation[variedDensity, #] & /@ virtualUVector;
+1142:  uRows = -(linearVirtualVariation[work, #] & /@ virtualUVector);
+1169:  kineticU = rhoBrValue D[uVector, {time, 2}];
+1254:  kineticU = rhoBrValue D[uVector, {time, 2}];

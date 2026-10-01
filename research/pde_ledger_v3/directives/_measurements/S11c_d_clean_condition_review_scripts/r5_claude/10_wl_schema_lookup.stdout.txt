@@ -1,0 +1,26 @@
+U_BODY_BALANCE                 PY   12  WL    0
+THETA_BALANCE                  PY    4  WL    0
+E_W_BALANCE                    PY   11  WL    0
+ADVECTIVE_MASS_OPERAND         PY    2  WL    0
+FACE_FLUX_BOUNDARY_OPERANDS    PY    1  WL    0
+FACE_GENERALIZED_FORCE_ROWS    PY    3  WL    0
+MU_THETA_FACE_BINDING          PY    2  WL    0
+projection_term_origins        PY    1  WL    0
+evolution_term_origins         PY    3  WL    0
+== WL schema keys near :1139-1206
+1172:"U_MOMENTUM_ROWS"
+1174:"THICKNESS_ROW"
+1176:"MASS_EVOLUTION_ROW"
+1179:"CENTER_FACE_GENERALIZED_ROW"
+1184:"U_MOMENTUM_ROWS"
+1185:"THICKNESS_ROW"
+1186:"U_MOMENTUM_ROWS"
+1187:"THICKNESS_ROW"
+1189:"U_MOMENTUM_ROWS"
+1190:"THICKNESS_ROW"
+== B join-key and blind-WL lines
+```text
+(control, map, branch, density representative,
+ exact output root/path/component, input field family, x_1-jet order).
+**Blind Wolfram engine.** Import nothing. Re-derive the supplied physics and code-defined object schema from the
+governing specs and cited engine declarations; do not transcribe a Python result. Apply §0's guarded startup probe

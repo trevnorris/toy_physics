@@ -1,0 +1,20 @@
+BULK_CONTINUITY U*Derivative(drho(x1, x2, w, t), w) + rho_m*Derivative(v1(x1, x2, w, t), x1) + rho_m*Derivative(v2(x1, x2, w, t), x2) + rho_m*Derivative(vw(x1, x2, w, t), w) + Derivative(drho(x1, x2, w, t), t)
+BULK_MOMENTUM_x1 U*rho_m*Derivative(v1(x1, x2, w, t), w) + c_s0**2*Derivative(drho(x1, x2, w, t), x1) + rho_m*Derivative(v1(x1, x2, w, t), t)
+BULK_MOMENTUM_x2 U*rho_m*Derivative(v2(x1, x2, w, t), w) + c_s0**2*Derivative(drho(x1, x2, w, t), x2) + rho_m*Derivative(v2(x1, x2, w, t), t)
+BULK_MOMENTUM_x3 U*rho_m*Derivative(v3(x1, x2, w, t), w) + rho_m*Derivative(v3(x1, x2, w, t), t)
+BULK_MOMENTUM_w U*rho_m*Derivative(vw(x1, x2, w, t), w) + c_s0**2*Derivative(drho(x1, x2, w, t), w) + rho_m*Derivative(vw(x1, x2, w, t), t)
+EVEN_EQUATIONS_CHANGE_UNDER_MIRROR [0, 0, 0, 0]
+ODD_EQUATION_PLUS_ITS_MIRROR 0
+ODD_CHANNEL_ODE rho_m*(U*Derivative(a(w), w) - I*omega*a(w))
+ODD_CHANNEL_SOLUTION_U Eq(a(w), C1*exp(I*omega*w/U))
+ODD_CHANNEL_ODE_AT_U0 -I*omega*rho_m*a(w)  -> nonzero omega forces a(w)=0: [0]
+ODD_CHANNEL_TIME_AVERAGED_ENERGY_FLUX U*amp**2*rho_m/4  at U=0: 0
+FACE_TANGENTIAL_JUMP Eq(m*(-u3_t + v3_bulk_face), 0)
+FACE_TRACE_SOLUTION_m_nonzero [u3_t]
+FACE_TRACE_SOLUTION_m_zero [] (unconstrained / no coupling)
+ODD_TO_ODD_FACE_BLOCK d(jump)/d(u3_t) -m  mirror parity of the block entry: True
+CHARACTERISTIC K + M*s**2 + m0*s
+ROOTS [(-m0 - sqrt(-4*K*M + m0**2))/(2*M), (-m0 + sqrt(-4*K*M + m0**2))/(2*M)]
+DECAY_RATE (minus real part) m0/2 + cos(atan2(0, m0**2 - 16)/2)*sqrt(Abs(m0**2 - 16))/2 at M=1,K=4; general: m0/(2*M)
+MODE_ENERGY_RATE -V**2*m0   bulk receives (advected KE flux) V**2*m0/2
+CONTROL_m0_ZERO_ROOTS [-I*sqrt(K)/sqrt(M), I*sqrt(K)/sqrt(M)]

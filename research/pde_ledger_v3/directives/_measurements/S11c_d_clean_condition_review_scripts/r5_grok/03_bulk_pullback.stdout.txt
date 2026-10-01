@@ -1,0 +1,13 @@
+DELTA_P I*omega*rho_m*Phi(x1, w)
+V_BULK [Derivative(Phi(x1, w), x1), I*k2*Phi(x1, w), 0, Derivative(Phi(x1, w), w)]
+V3_IS_ZERO 0
+D_W_DELTA_P I*omega*rho_m*Derivative(Phi(x1, w), w)
+D_W_V [Derivative(Phi(x1, w), w, x1), I*k2*Derivative(Phi(x1, w), w), 0, k2**2*Phi(x1, w) - Derivative(Phi(x1, w), (x1, 2)) - omega**2*Phi(x1, w)/c_s0**2]
+DELTA_RHO I*omega*rho_m*Phi(x1, w)/c_s0**2
+DELTA_RHO_MINUS_DP_OVER_C2 0
+D_T_DELTA_RHO_ENVELOPE omega**2*rho_m*Phi(x1, w)/c_s0**2
+DELTA_J [rho_m*Derivative(Phi(x1, w), x1), I*k2*rho_m*Phi(x1, w), 0, rho_m*Derivative(Phi(x1, w), w)]
+L2_SAME_PHASE 0
+L2_CONJUGATE 2*pi*test_amplitude*trial_amplitude/k2
+EXACT_MINUS_REF_AFFINE 0
+EXACT_MINUS_BG_AFFINE -W0*eta*s*w1(x1)*Derivative(Phi(x1, w), w)/2

@@ -1,0 +1,187 @@
+I'll start from the governing S11c-b sources and form an independent view of the operator before reading the packet. First I need the review-leg conventions and the actual field-content construction.I'll read the S11c-b spec and operator construction first, then form a view of the symmetry before opening the packet.Next I’ll pull the energy-basis construction, face-force rows, and S11b reflection rules so I can test H against the actual operator.I have an independent picture of the operator. Next I’ll read the packet, grounding files, disposition, and the v5 changelog.I’ll verify citations against the files, inspect the v5 author scripts, and then run independent parity and pullback computations.I have enough of the operator structure. Next I’ll run independent parity, face-geometry, pullback, and citation scripts in the sandbox.# Independent physics review (Grok, round 5)
+
+**Verdict: not cleared.** Hypothesis H is right for this model’s operator on the class A names. Two defects in directive B change what Part 1 would compute.
+
+Scripts and literal stdout: `/tmp/s11cd_clean_review_r5_grok/`.
+
+---
+
+## 1. Hypothesis H
+
+H-planar and H-round hold on the S11c-b operator that was actually built: 40 Kronecker records, pin B, both anchorings, face maps, `Λ` responses, rest-frame bulk `φ`.
+
+**H-planar.** On R1 (`g = (g₁,0,0)`) and class P (`∂₃` of perturbations = 0):
+
+- The 15 first-jet Kronecker spurions and the uniform family give **zero** odd energy under `x₃ → −x₃`. Curl-squared on P is `(∂₁u₂−∂₂u₁)² + (∂₁u₃)² + (∂₂u₃)²`, even. (`01` stdout: `KRONECKER_SPURION_ODD_ENERGY_ON_R1_P_COUNT 0`, `UNIFORM_ODD_ENERGY_ON_P_COUNT 0`, `CURL_SQUARED_ODD_PART 0`.)
+- Face normals have vanishing direction-3 component at linear order on both `LAB_HELD` and `MATERIAL_ADVECTED`. Material pullback of a scalar `Q(x₁)` is `-u₁ ∂₁Q`. The uniform virtual constraint’s divergence on P is `∂₁u₁+∂₂u₂`. Background-normal `V_s` and `J_s` have coefficient 0 on `∂_t u₃` and on `v_{bulk,3}`. (`02` stdout.)
+- Rest-frame `φ = Φ(x₁,w) e^{i(k₂x₂−ωt)}` forces `v_{bulk,3}=0`. Pressure, density, current, and the `∂_w²` reduction match B’s supplied pullback. (`03` stdout.)
+
+So `u₃` is odd, the even sector (`θ`, `e_W`, `ζ_±`, `φ`, `u₁`, `u₂`, `V_s`, `J_s`, `𝒜_s`) is even, and a linear operator from this energy and these face laws cannot connect them.
+
+**Rotation of oblique incidence.** R1 is the full `O(2)` about direction 1, with profiles depending on `x₁` only. Each tangential Fourier component can be rotated so that it is independent of `x₃`. Without that `O(2)`, only incidence planes that contain an actual mirror are protected. That is what A states, and it matches the background the directive actually imposes.
+
+**H-round.** Polar-vector inversion on explicit `ℓ=1` and `ℓ=2` fields:
+
+| field | computed parity | A’s `(−1)^{ℓ+1}` / `(−1)^ℓ` |
+|---|---|---|
+| toroidal `ℓ=1` | `+1` | `+1` |
+| poloidal `ℓ=1` | `−1` | `−1` |
+| toroidal `ℓ=2` | `−1` | `−1` |
+| poloidal `ℓ=2` | `+1` | `+1` |
+| scalar `z` (`ℓ=1`) | `−1` | `−1` |
+| scalar `xy` (`ℓ=2`) | `+1` | `+1` |
+
+(`04` stdout.) Toroidal helicity is 0; toroidal+poloidal helicity is `5√2 π^{3/2}/4`. A net in-plane vector is not `O(3)`-fixed. F2c’s mixed-parity / helicity statement is the same computation.
+
+**Premises P1–P4.** Nothing required by H is missing from that table.
+
+- P1 is the supplied Kronecker/`O(3)`-parity basis. A chiral term is outside it. K2 is exactly that term: on R1/P it is `a_{K2} g₁ θ ∂₂u₃`, odd energy (`01`).
+- P2’s covariance-plus-background-invariance split is the right one. Face laws use polar vectors; on this background their direction-3 parts vanish.
+- P3: drain is absent from every derived operator (spec `:90–91`).
+- P4: pin B and both anchorings stay in the even sector on this class (`02`: `DIV_U_HAS_U3 0`, `MATERIAL_PULLBACK_COEFF_U3 0`).
+
+The shear-free bulk (`v=∇₄φ`) is already in the supplied acoustics A cites at spec `:95–97`. It is why the odd bulk trace is empty on class P.
+
+---
+
+## 2. Findings
+
+### Finding 1 — B’s cited construction of the four operator paths skips pin B and the mass-evolution `θ`-row
+
+**B** (`S11c_d_zinvariant_operator_blocks_directive.md:113–126`):
+
+> For each case, reconstruct the complete `S11CB_SLAB_OPERATOR` and `S11CB_MU_THETA_OPERATOR` emitted by the engine at `:4156–4183` […]
+> The first four are created at engine `:2416–2433`; the face and binding paths are attached at `:3103–3127`.
+
+The first four named paths are `U_BODY_BALANCE`, `THETA_BALANCE`, `E_W_BALANCE`, `ADVECTIVE_MASS_OPERAND`.
+
+**Engine, creation site** (`S11c_b_brane_operator_sympy_audit.py:2396,2416–2433`):
+
+```text
+theta_expanded = epsilon * mu_theta_amplitude
+operator = {
+    "U_BODY_BALANCE": … u_local / u_flux / u_expanded …
+    "THETA_BALANCE":  … theta_local / theta_flux / theta_expanded …
+    "E_W_BALANCE":    …
+    "ADVECTIVE_MASS_OPERAND": advective_constraint,  # ε u_t · ∇ρ_br
+}
+```
+
+That is the held-`θ` energy variation. The spec forbids it as the `u`-row (`S11c_b_SHARED_PHYSICS.md:290–304`): the slab momentum and thickness rows are the constraint-reduced equations; the `θ` slot is the sourced mass-evolution law.
+
+**Engine, emitted overwrite** (`:3095–3101`), which sits in the gap between the two cited ranges:
+
+```text
+operator["THETA_BALANCE"] = (SOURCE_OPERAND, mass_balance),
+                            (EVOLUTION_TERM_ORIGINS, …),
+                            (EXPANDED, mass_balance)
+operator["ADVECTIVE_MASS_OPERAND"] = BACKGROUND_ADVECTION from evolution origins
+```
+
+`U_BODY_BALANCE` / `E_W_BALANCE` are overwritten at `:2967–3093` by pin B plus face forces. Those lines are also outside both cited ranges.
+
+A builder who implements the cited creation site computes `μ_θ` in the `θ` slot and the held-`θ` `u`/`e_W` rows. That is a different operator from the one the step record established (pin B, `#90` closure fold). H’s even/odd split would still be even, so this would not fake a TE leak, but it would compute the wrong TM/even blocks that A says Part 1 also yields.
+
+Evidence: `/tmp/s11cd_clean_review_r5_grok/06_prefold_vs_emitted.py` and `.stdout.txt`.
+
+### Finding 2 — B labels S11c-a `:76–100` as the independent-coordinate span; those lines are field declarations, and `x₁,x₂,x₃,t,w` sit at `:101–105`
+
+**B** (`:183–187`):
+
+> The declaration spans are engine `:143–169,214–294,568–577` (slab), `:484–524` (face trace), `:526–550` (bulk interior/generic), `:552–599` (virtual/test), and S11c-a engine `:76–100` (independent coordinates and `omega`).
+> The new ansatz symbol `k_2` is `INDEPENDENT_OR_SPECTRAL`. Independent coordinates and spectral parameters are held; every perturbation field/value/jet and every virtual/test field/value/jet is a column.
+
+**S11c-a engine** (`S11c_a_interface_geometry_sympy_audit.py:76–105`):
+
+| lines | what is actually there |
+|---|---|
+| 76–87 | knobs (`c_s0`, `mu_R`, `W_0`, `rho_m`, drain, …) |
+| 88 | `omega` (the one correct independent/spectral symbol in the span) |
+| 95–100 | `theta`, `zeta_c`, `delta_v_theta`, `delta_v_e_W`, `delta_p_plus`, `delta_p_minus` |
+| **101–105** | `x_1`, `x_2`, `x_3`, `t`, `w` |
+
+The grounding dump for this citation is `sed -n '76,100p;150,181p;…'` (`_measurements/S11c_d_zinvariant_operator_blocks_directive.md:1403`). It reproduces `:76–100` and omits `:101–105`.
+
+B’s own rule is that independent coordinates are held and perturbation fields are columns. Typing by the cited span holds `θ` and `ζ_c` (and the face pressures) and leaves `x₁…w` without an independent-coordinate declaration. Those four fields are also declared in the S11c-b spans, so a builder who prefers the S11c-b registry still types them as slab/trace. `x₁…w` are declared only in S11c-a, outside the span B points at. If they appear as free `COORDINATE` symbols, B’s “never silently hold” rule turns them into Jacobian columns.
+
+Evidence: `/tmp/s11cd_clean_review_r5_grok/06_prefold_vs_emitted.py` stdout (`S11CA_76_100_HAS_X1 False`, `S11CA_101_HAS_X1 True`).
+
+---
+
+## 3. Coverage, requirements, rejected options
+
+A’s coverage table is correctly conditional: trapped light only at linear order on an achiral `O(3)` swirl-free throat with a normalizable pure-twist mode; TE-like / toroidal passing light covered; TM-like / spheroidal not covered; second order not covered. Ontology `:315` and `:957` are used as applicability limits, not as existence of a throat.
+
+R-LEAK-1 / F1 / F2 / F2b / F2c / F5 / F6 / N1 / N2 match the physics:
+
+- F1 is the operator falsifier (odd↔even block with drain live and bulk closed).
+- F2c’s mixed toroidal–poloidal representative has opposite inversion parities and nonzero helicity (`04`, author `round_spin_carrier_audit`).
+- Mixed `a`–`w` circulation as a net in-plane vector is not `O(3)`-fixed (`O3_FIXED_VECTOR [{Lx:0,Ly:0,Lz:0}]`).
+- N2 names induced mean flow; the Coriolis `ℓ=0,2` projections are scoped as an example.
+- “Transfers to the calibrated model” is the symmetry-and-field-content conditional, with the drain antecedent unshown (assessment `:3`).
+
+Rejected options in §4 match the cited sources (GW170817 / `λγ=1`; drain out of the brane at ontology `:100`, `:1366`; no convective operator). The ungrounded gravity-trap clause from R4-10 is gone.
+
+A does not contradict a governing statement it cites. It is a proposed re-scope of S11c-d, marked non-governing.
+
+---
+
+## 4. Round-4 fold
+
+| id | owed | v5 does it? |
+|---|---|---|
+| R4-1 | domain = actual free coordinates; density/current pullback; type or hold | **Mostly.** Code-defined containers and Jacobian-of-leaves replace the 20-name list. Finding 2 is a defect in that new typing span. |
+| R4-2 | flat reference face `s W₀/2` | **Yes.** `TRACE_EXACT_MINUS_REFERENCE_AFFINE 0`; background-face affine differs (`03`). |
+| R4-3 | untransformed direction-3 background datum | **Yes.** G3. `g·u θ` odd piece is `a_{G3} θ u₃`; face `n₃` numerator is `-a_{G3} s²/2` and vanishes at `a_{G3}=0` (`01`, `05`). |
+| R4-4 | conjugate test, compact in `x₁` only | **Yes.** L2 same-phase over a period is 0; conjugate is `2π AB/k₂` (`03`). |
+| R4-5 | raw first; P2b as mapped diagnostic; jet-indexed join | **Yes.** P2b `:10–17,29–57` is in B’s grounding (`sed -n '10,17p;29,57p'`). |
+| R4-6 | author scripts computed, or relabel | **Yes.** Wave-equation sign flip moves `VELOCITY_NORMAL_JET` and `DENSITY_TRACE`; dropping the polar minus flips `PARITY_TOROIDAL` `1→−1`. Byte-identical is false (`08`). |
+| R4-7 | PID resumed; no OS-state claim | **Yes.** |
+| R4-8 | P1 supplied / untestable by Part 1 | **Yes.** |
+| R4-9 | F2c, `a`–`w`, N2 mean flow | **Yes.** |
+| R4-10 | guard as B’s own requirement; drop gravity-trap | **Yes.** |
+
+No R1–R3 resolution is reversed: R1 is still `O(2)` about direction 1 with jet zeroing only on derivative indices 2 and 3; K1/K2 still enter after R1; raw comparator still comes first; `ζ_c` is in `FACE_GENERALIZED_FORCE_ROWS`; achirality is in R-LEAK-1; N1/N2 remain the nonlinear gates.
+
+The new defects sit in v5’s R4-1 material (path citations and the independent-coordinate span).
+
+---
+
+## 5. Directive B as a builder packet
+
+| check | result |
+|---|---|
+| Names the object | The maps of the reconstructed emitted operator, under R1 and class P. The recipe around that object is where Finding 1 lives. |
+| Governing operator | Spec method is quoted (`:152–154`). The cited code ranges omit the pin-B / mass-evolution overwrite (Finding 1). |
+| Expected-value leak | Tag names are objects. Every leaf is printed, including zeros. No TE-block target is stated. |
+| K1/K2 FORM, not unimplemented zeros | Baseline mixed energy is 0 because the Kronecker family has no odd bilinear (`01`), which is P1. K1 mixed energy is `a_{K1} cosβ (∂₁u₃ ∂₁θ + ∂₂u₃ ∂₂θ)`; if `ê₃` is killed it vanishes. K2 mixed energy is `a_{K2} g₁ θ ∂₂u₃`. Both leave the Kronecker family. They do not move face-trace columns; G3 does (`05`). |
+| “All fields at once” | The complete operator is built, then a Jacobian over the actual free coordinates. That is the non-tautological construction. |
+| Freezes | Drain absent; no bulk solve; no numerical model point. Declared in §0 and §1. |
+| Blind Wolfram | Sound as a requirement (import nothing, re-derive). |
+| Feasibility on this 30 GB box | Under the required 2 GiB guard, Part 1 is not expected to complete. The S11c-b Wolfram primary emit was OOM-killed at 15.6 GB; un-freeze was ~16 GB/case (step record `:17–20`, `:125–131`). B fail-closes and treats a contained stop as a result. |
+| Lane | `build → run → report → stop`. No agents, no commit. |
+| Part 2 | Scope note only. Drain entry is an orchestrator spec question from `:90–91`. Three-direction mixed jets exist (`w1_profile_d{i}d{j}` for `j≥i`); R1 drops the tangential curvature `W'/r` of a radial profile (`05`: on the `x₁`-axis `H₁₁=W''`, `H₂₂=H₃₃=W'`). |
+
+---
+
+## 6. Citations
+
+A’s repo citations match the excerpts in `_measurements/S11c_d_clean_condition.md` and the files. Cited ranges that sit inside a slightly larger dump (`:95–97` inside `sed -n 90,97p`; `:145–148` inside `145,154p`) still contain the quoted sentences.
+
+B’s P2b, AGENTS, spec, and engine dumps that I checked against the files match, with one content mismatch: Finding 2 (`:76–100` vs `:101–105`).
+
+---
+
+## Script index
+
+All under `/tmp/s11cd_clean_review_r5_grok/`:
+
+| script | stdout | what it computes |
+|---|---|---|
+| `01_energy_parity_and_controls.py` | `01_energy_parity_and_controls.stdout.txt` | Kronecker parity on R1/P; K1/K2/G3 mixed energy |
+| `02_face_constraint_anchoring.py` | `02_face_constraint_anchoring.stdout.txt` | `n₃`, pullback, constraint, `V_s`/`J_s` |
+| `03_bulk_pullback.py` | `03_bulk_pullback.stdout.txt` | potential-flow identities, pairing, affine height |
+| `04_round_parity.py` | `04_round_parity.stdout.txt` | `ℓ=1,2` inversion, helicity, `O(3)`-fixed vector |
+| `05_radial_jets.py` | `05_radial_jets.stdout.txt` | radial Hessian vs R1; G3 `n₃` |
+| `06_prefold_vs_emitted.py` | `06_prefold_vs_emitted.stdout.txt` | cited vs emitted operator lines |
+| `08_ablate_author_scripts.py` | `08_ablate_author_scripts.stdout.txt` | FORM ablation of the v5 author scripts |

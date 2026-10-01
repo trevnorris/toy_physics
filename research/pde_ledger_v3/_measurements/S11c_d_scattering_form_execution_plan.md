@@ -1,3 +1,16 @@
+**EXACT PACKETS SUBMITTED; UPSTREAM GROK PERMISSION STOP (2026-10-01):**
+User confirmed both displayed packets with “approved. go”. Fresh uniform
+Claude/Grok reviews launched with a silent completion hook; do not inspect or
+adjudicate partial peer output. One upstream replacement Grok leg launched and
+ended after9.016s with no verdict. Its first shell metadata command was outside
+the allowed Bash prefix; actual session events record permission_cancelled.
+No CAS probe ran. All private input bytes remain intact. Source-only review
+and physics are not rejected by this runtime stop. Prior Claude evidence stays
+preserved; no automatic retry or new export. A same-session operational followup
+is prepared but unsent, with shell permissions unchanged. Read the continuation
+launch record and upstream replacement transport record. No computation time
+limits, uniform scientific job, equation change or defect sweep.
+
 **CORRECTED UNIFORM / SUPPLEMENTAL UPSTREAM REVIEWS PREPARED (2026-10-01):**
 The user renewed approval to keep corrections and reviews moving. The cohesive
 uniform v2 plan is frozen for fresh Claude/Grok source-only assessment; a separate

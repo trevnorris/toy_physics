@@ -1,5 +1,5 @@
 {
-  "status": "EXTERNAL_LAUNCH_BLOCKED_EXACT_PACKET_CONFIRMATION_PENDING",
+  "status": "SUBMITTED_UNIFORM_PAIR_RUNNING_UPSTREAM_REPLACEMENT_PERMISSION_CANCELLED",
   "preparedUtc": "2026-10-01T17:09:28.962648+00:00",
   "literalUserRenewal": "k. do whatever you need, and I approve. please keep going, times of the essence right now.",
   "interpretation": "Current approval covers corrected uniform Claude/Grok review plus a fresh replacement Grok review of the upstream repairs with complete source operands. No completed upstream Claude rerun; no implicit future export. User was not shown these new hashes before this renewal.",
@@ -54,11 +54,11 @@
         "uniformScienceLaunched": false
       },
       "authority": {
-        "status": "AWAITING_EXACT_PACKET_CONFIRMATION",
-        "literalUserReply": "k. do whatever you need, and I approve. please keep going, times of the essence right now.",
-        "context": "Renewed approval directly after explanation that corrections/preparation are already authorized and new/replacement external-review submissions need approval. Applies only to this bounded prepared packet and named reviewers; not a claim the user previously saw these new hashes.",
-        "userSawTheseNewHashes": false,
-        "recordedUtc": "2026-10-01T17:08:17.300980+00:00",
+        "status": "EXPLICITLY_APPROVED_FIXED_PACKET",
+        "literalUserReply": "approved. go",
+        "context": "Direct response to the pending question naming both exact packet hashes, file counts, byte counts and reviewer destinations; the user approved both.",
+        "userSawTheseNewHashes": true,
+        "recordedUtc": "2026-10-01T17:40:49.085908+00:00",
         "packetSha256": "bf55b921706cc1d2c3df225fe87ec8a20405df782de771f6e50f8d60506f3752",
         "archiveSha256": "23f616ddd30a77a95deed92051b5de3c5e67502113135baed890d3640e9458f1",
         "packetFiles": 28,
@@ -68,12 +68,13 @@
           "grok"
         ],
         "thread": "01a0e01b-ef84-7192-817f-584cda5d339b",
-        "launchBlockedByApprovalReview": true
+        "launchBlockedByApprovalReview": false,
+        "priorApprovalReviewRejectionPreserved": true
       },
       "runtime": {
         "runnerSha256": "30ed68e2d751f5c85399fcdf99384d9ef095376983da0b1bf91b89aef62e5b62",
         "launcherSha256": "d7dd71850300818294a1218ecaf59c5576f63884457eb12b87d69d8b0c7df2a5",
-        "completionMessageSha256": "e1b880a196da7fb472a9566632b801a6c2c3645573ded801460784722d8795f1",
+        "completionMessageSha256": "ae40d4b91952f2bac08c025400f6df2257bc94859b35c83c68e6b2e19733fde6",
         "syntaxPassed": true,
         "runRootVerified": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-method-review-r2",
         "reviewers": [
@@ -81,7 +82,8 @@
           "grok"
         ],
         "externalSubmitted": false,
-        "change": "Exact fixed-packet confirmation required following automatic approval review rejection. No packet, scientific helper or method changed."
+        "change": "Exact fixed-packet confirmation required following automatic approval review rejection. No packet, scientific helper or method changed.",
+        "exactUserConfirmationRecordedUtc": "2026-10-01T17:40:49.085908+00:00"
       }
     },
     {
@@ -230,11 +232,11 @@
         "uniformScienceLaunched": false
       },
       "authority": {
-        "status": "AWAITING_EXACT_PACKET_CONFIRMATION",
-        "literalUserReply": "k. do whatever you need, and I approve. please keep going, times of the essence right now.",
-        "context": "Renewed approval directly after explanation that corrections/preparation are already authorized and new/replacement external-review submissions need approval. Applies only to this bounded prepared packet and named reviewers; not a claim the user previously saw these new hashes.",
-        "userSawTheseNewHashes": false,
-        "recordedUtc": "2026-10-01T17:08:18.461635+00:00",
+        "status": "EXPLICITLY_APPROVED_FIXED_PACKET",
+        "literalUserReply": "approved. go",
+        "context": "Direct response to the pending question naming both exact packet hashes, file counts, byte counts and reviewer destinations; the user approved both.",
+        "userSawTheseNewHashes": true,
+        "recordedUtc": "2026-10-01T17:40:49.085908+00:00",
         "packetSha256": "e16c4dff44dfffe8f36eb5919c4e7a24b2b73de7e40fd78f4976ab96b56a0db3",
         "archiveSha256": "c2c6e9339ca8d380990aa7289273b303bdc18af243fc5f8883ec2f21870a843b",
         "packetFiles": 125,
@@ -243,19 +245,21 @@
           "grok"
         ],
         "thread": "01a0e01b-ef84-7192-817f-584cda5d339b",
-        "launchBlockedByApprovalReview": true
+        "launchBlockedByApprovalReview": false,
+        "priorApprovalReviewRejectionPreserved": true
       },
       "runtime": {
         "runnerSha256": "b49933cbcf84f242ac3218ffedd348d09d54e4afc85eb79f8b432507557e596a",
         "launcherSha256": "238a24a3da1b714bad9c94ce7a722150a112249b36bb437e40fb5e0e6879ccdd",
-        "completionMessageSha256": "ceeb7119cc4ff5c15afd9d285d638410f7b1dfd14e57641b6561d4cb154a2b3a",
+        "completionMessageSha256": "853607d245f1ee91ee041e9e281cc7bc04ba4262ada2aab4c6bde701323c278c",
         "syntaxPassed": true,
         "runRootVerified": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/upstream-repair-review-grok-replacement",
         "reviewers": [
           "grok"
         ],
         "externalSubmitted": false,
-        "change": "Exact fixed-packet confirmation required following automatic approval review rejection. No packet, scientific helper or method changed."
+        "change": "Exact fixed-packet confirmation required following automatic approval review rejection. No packet, scientific helper or method changed.",
+        "exactUserConfirmationRecordedUtc": "2026-10-01T17:40:49.085908+00:00"
       }
     }
   ],
@@ -2016,6 +2020,14 @@
     "bothRefuseBeforeExactConfirmation": true,
     "frozenPacketBytesIntact": true,
     "nativeHelpersAndProtectedEngineIntact": true,
-    "bothNotLaunched": true
-  }
+    "bothNotLaunched": true,
+    "exactConfirmationNowSatisfied": true
+  },
+  "exactApproval": {
+    "literalUserReply": "approved. go",
+    "recordedUtc": "2026-10-01T17:40:49.085908+00:00",
+    "context": "Both unchanged exact packets from the pending prompt approved."
+  },
+  "launchRecord": "S11c_parallel_review_continuation_launch.json",
+  "upstreamReplacementOutcome": "S11c_upstream_repair_replacement_transport_record.json"
 }

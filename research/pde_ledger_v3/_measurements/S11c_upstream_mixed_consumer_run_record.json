@@ -1,0 +1,88 @@
+{
+  "status": "AUTHORIZED_DIAGNOSTIC_LAUNCHED_ENFORCEMENT_VERIFIED",
+  "recordedUtc": "2026-10-01T23:35:58.110347+00:00",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01",
+  "preparedCommit": "be284ea3",
+  "reviewedBaselineCommit": "3f1193e7",
+  "launch": {
+    "jobPid": 1600608,
+    "watcherPid": 1600609,
+    "gateSha256": "bc66d4fc7fd19013d43dd398516c71f1532ba5d2bf398d6d289ef08eb66c51cf",
+    "command": [
+      "/usr/bin/python3",
+      "/var/projects/toy_physics/scripts/s11c_guarded_run.py",
+      "--pool",
+      "s11c-near-unity",
+      "--memory-gib",
+      "4",
+      "--tasks-max",
+      "32",
+      "--log-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/resource-guard",
+      "--",
+      "/usr/bin/python3",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+      "--parallel-prerequisite-read",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01",
+      "--stage",
+      "upstream_mixed_consumer",
+      "--",
+      "/usr/bin/python3",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_mixed_consumer.py",
+      "--out",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete",
+      "--inputs",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_mixed_consumer_inputs.json"
+    ],
+    "thread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+    "automaticRetry": false
+  },
+  "guardDurationValidation": {
+    "verified": true,
+    "actual": {
+      "RuntimeMaxUSec": "infinity",
+      "Restart": "no"
+    },
+    "wallDeadlineSeconds": null,
+    "inactivityDeadlineSeconds": null
+  },
+  "guardLimitValidation": {
+    "verified": true,
+    "actual": {
+      "memory.max": "4294967296",
+      "memory.swap.max": "0",
+      "pids.max": "32",
+      "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-cde2f38e3b32.service",
+      "nice": 0,
+      "affinity": [
+        15
+      ],
+      "threads": {
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "VECLIB_MAXIMUM_THREADS": "1",
+        "BLIS_NUM_THREADS": "1"
+      },
+      "nativeAddressSpaceBytes": [
+        4294967296,
+        4294967296
+      ],
+      "systemd.CPUAffinity": "15",
+      "affinityEnforcement": "systemd-and-inherited-process"
+    }
+  },
+  "inputPinsVerified": 64,
+  "snapshotsVerified": 66,
+  "independentBuildClearance": false,
+  "literalVerdicts": {
+    "claude": "NEEDS REVISION",
+    "grok": "CLEAR FOR THIS SELECTED SOURCE/CONSUMER INSTRUMENT"
+  },
+  "scientificResult": "PENDING_COMPLETION_INSPECTION",
+  "automaticRetry": false,
+  "stop": "Selected source/consumer evidence before production repair or defect sweep."
+}

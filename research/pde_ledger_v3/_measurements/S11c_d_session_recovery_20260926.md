@@ -1,3 +1,14 @@
+**SELECTED SOURCE/CONSUMER DIAGNOSTIC LAUNCHED (2026-10-01):**
+Prepared commitbe284ea3; reviewed baseline3f1193e7. One authorized worker started
+under the unchanged shared pooled guard/supervisor. Actual4GiB native/cgroup,
+zero swap,CPU15,one thread,tasks32 verified; RuntimeMaxUSec=infinity/Restart=no.
+Completion hook armed before science for this session. All64input pins and66
+source snapshots verified; see S11c_upstream_mixed_consumer_run_record.json.
+Literal reviews remain Claude NEEDS REVISION/Grok CLEAR; local tooling repairs
+are not independent clearance. Wait silently for completion; inspect operands,
+controls,units,strict stderr,resources and posthashes, not exit code alone.
+Stop with selected evidence; no automatic retry, new export or defect sweep.
+
 **SELECTED SOURCE/CONSUMER DIAGNOSTIC READY (2026-10-01):**
 Reviewed baseline3f1193e7 and literal Claude NEEDS REVISION/Grok CLEAR preserved.
 Local exact-predicate/profile-contract/persistence repairs passed16stdlib tests;

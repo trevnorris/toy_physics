@@ -1,0 +1,1546 @@
+{
+  "status": "PARTIAL_SELECTED_EXACT_MATCH_SUPPORTED_NONGRAZING_UNRESOLVED_STOPPED",
+  "checkedUtc": "2026-10-01T18:45:43.954787+00:00",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-01",
+  "inspection": "JSON_SOURCE_HASH_OPAQUE_BYTES_ONLY_NO_SCIENTIFIC_RESTORATION",
+  "scientificStatus": "UNRESOLVED",
+  "processExit": 2,
+  "audit": {
+    "allExpectedPosthashesMatch": true,
+    "workerPosthashKeysAndValuesAgree": true,
+    "workerIdentity": true,
+    "manifestIdentity": true,
+    "allSnapshotsMatch": true,
+    "stdoutChecksByteIdentity": true,
+    "strictAndLauncherStderrEmpty": true,
+    "supervisorActiveIdentity": true,
+    "stageGateAndLaunchIdentity": true,
+    "sqliteIntegrity": true,
+    "allOpaqueBlobHashesAndLengthsMatch": true,
+    "blobCountMatches": true,
+    "allJournalReferencesMatch": true,
+    "everyStartedOperationHasTerminalReceipt": true,
+    "terminalArgumentsMatchStartedArguments": true,
+    "completeOperationCountMatches": true,
+    "originalInputBlobsByteIdentical": true,
+    "readablePointsMatchFinalRows": true,
+    "enforcedApprovedContainment": true,
+    "noDeadlinesOrRestart": true
+  },
+  "allIntegrityChecksPassed": true,
+  "posthashes": {
+    "/var/projects/toy_physics/research/pde_ledger_v2/notes/parameter_register.md": true,
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_current_source_check.py": true,
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py": true,
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_pairing_check.py": true,
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_frequency_source.py": true,
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_near_unity_uniform_codec_census.json": true,
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_near_unity_uniform_implementation_interfaces.json": true,
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_near_unity_uniform_launch.py": true,
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_blob_store.py": true,
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_boundary.py": true,
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_end_maps_v2.py": true,
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_uniform_response.py": true,
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_uniform_source.py": true,
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_repair_review_record.json": true,
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_repair_review_supplement_sources.json": true,
+    "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c1_SHARED_PHYSICS.md": true,
+    "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_SCATTERING_FORM_AMENDMENT.md": true,
+    "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11b_interface_coupling_law_sympy_audit.py": true,
+    "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_a_interface_geometry_sympy_audit.py": true,
+    "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_b_brane_operator_sympy_audit.py": true,
+    "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_c2_selfenergy_fold_sympy_audit.py": true,
+    "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_d_mixing_scattering_sympy_audit.py": true,
+    "/var/projects/toy_physics/scripts/codex_job_watch.py": true,
+    "/var/projects/toy_physics/scripts/s11c_guarded_run.py": true,
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_near_unity_uniform_launch_checks.json": true,
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_variable_profile_development_input.json": true,
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_near_unity_uniform_plan_v2.md": true,
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_near_unity_uniform_review_r2_record.json": true,
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_near_unity_uniform.py": true,
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_near_unity_uniform_readiness.json": true,
+    "/var/projects/toy_physics/_scratch/s11c/s11c-uniform-source-20260919/production/complete/uniform-source.pickle": true,
+    "/var/projects/toy_physics/_scratch/s11c/s11c-uniform-response-20260919/production/complete/uniform-response.pickle": true,
+    "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-source-20260919/finish-01/complete/left-frequency-pencil.pickle": true,
+    "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-source-20260919/finish-01/complete/right-frequency-pencil.pickle": true,
+    "/var/projects/toy_physics/_scratch/s11c/s11c-thickness-coordinate-20260914/end_pairing_left/complete.pickle": true,
+    "/var/projects/toy_physics/_scratch/s11c/s11c-thickness-coordinate-20260914/end_pairing_right/complete.pickle": true,
+    "/var/projects/toy_physics/_scratch/s11c/s11c-uniform-source-20260919/production/complete/common.pickle": true,
+    "/var/projects/toy_physics/_scratch/s11c/s11c-thickness-coordinate-20260914/end_source_left/objects.pickle": true,
+    "/var/projects/toy_physics/_scratch/s11c/s11c-thickness-coordinate-20260914/end_source_right/objects.pickle": true,
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_near_unity_uniform_inputs.json": true,
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_near_unity_uniform_gate.json": true
+  },
+  "sourceSnapshotCount": 32,
+  "completeOperationCount": 27,
+  "unresolvedOperationCount": 44,
+  "journal": {
+    "events": 5525,
+    "eventCounts": {
+      "COMPLETE_EVIDENCE": 5374,
+      "STARTED": 71,
+      "ORIGINAL_BYTES_SAVED": 9,
+      "COMPLETE": 27,
+      "UNRESOLVED": 44
+    },
+    "started": 71,
+    "terminal": 71,
+    "opaqueBlobs": 5383,
+    "opaqueBlobBytes": 39847162,
+    "receiptReferences": 5596,
+    "unmatchedStarted": [],
+    "badBlobs": [],
+    "badReceipts": [],
+    "completeOperations": [
+      {
+        "name": "restore/uniformSource",
+        "seconds": 1.0703285910421982,
+        "input": {
+          "storage": "sqlite",
+          "member": "restore/uniformSource/input.pickle",
+          "sha256": "84484435422b657141f76e5fccd4fd561e54367259f0b8153bbc336e8322a612",
+          "bytes": 411
+        },
+        "result": {
+          "storage": "sqlite",
+          "member": "restore/uniformSource/return.pickle",
+          "sha256": "9377a8a2596a7d875a011014dd986ca4a894a0b82ccd6494da93f4f1b01d7c65",
+          "bytes": 94161
+        }
+      },
+      {
+        "name": "restore/uniformResponse",
+        "seconds": 0.03991530498024076,
+        "input": {
+          "storage": "sqlite",
+          "member": "restore/uniformResponse/input.pickle",
+          "sha256": "63d3ae679e5c7436e92d15c6d1a91782dd21aeab7347abba251d569498be7f7b",
+          "bytes": 417
+        },
+        "result": {
+          "storage": "sqlite",
+          "member": "restore/uniformResponse/return.pickle",
+          "sha256": "42dfb6b858797281736bd20fe49c8d73ee4077bfa3da99e76181766b0012429f",
+          "bytes": 158
+        }
+      },
+      {
+        "name": "restore/uniformCommon",
+        "seconds": 2.5493032640079036,
+        "input": {
+          "storage": "sqlite",
+          "member": "restore/uniformCommon/input.pickle",
+          "sha256": "e398ca1985e610ba9bee6c099311d3ecd02783ac33bad80de30f8449b3288f43",
+          "bytes": 403
+        },
+        "result": {
+          "storage": "sqlite",
+          "member": "restore/uniformCommon/return.pickle",
+          "sha256": "740dd0cbf9fc3ae7ed696baaa2ed59d4dfc76b311fc6e6ab37ca13e51f216c81",
+          "bytes": 139090
+        }
+      },
+      {
+        "name": "restore/LEFTFrequency",
+        "seconds": 0.04948961699847132,
+        "input": {
+          "storage": "sqlite",
+          "member": "restore/LEFTFrequency/input.pickle",
+          "sha256": "9cb6b86bbcbbf9a8eef0505302586fad195471acc743d35f22022593044cc204",
+          "bytes": 415
+        },
+        "result": {
+          "storage": "sqlite",
+          "member": "restore/LEFTFrequency/return.pickle",
+          "sha256": "2dfdee76511b6f5e03a42cad7f4766e4daef8f9721448cd8d42ea3cefb2f4803",
+          "bytes": 9277
+        }
+      },
+      {
+        "name": "restore/RIGHTFrequency",
+        "seconds": 0.09428244701121002,
+        "input": {
+          "storage": "sqlite",
+          "member": "restore/RIGHTFrequency/input.pickle",
+          "sha256": "7accbaac36b22eaf00f277f40012836700e901289c19227e3b5c5a2887b1213e",
+          "bytes": 417
+        },
+        "result": {
+          "storage": "sqlite",
+          "member": "restore/RIGHTFrequency/return.pickle",
+          "sha256": "c6fb8c8633fde748dbfc9dc533a9e4445f73dc143ccc75270f567a14d6c03d20",
+          "bytes": 23414
+        }
+      },
+      {
+        "name": "restore/LEFTPairing",
+        "seconds": 1.044807592057623,
+        "input": {
+          "storage": "sqlite",
+          "member": "restore/LEFTPairing/input.pickle",
+          "sha256": "48f5cb077c870d8cb0132c182a087346ef933a7cc740510722f85d1e5ccbf4fc",
+          "bytes": 406
+        },
+        "result": {
+          "storage": "sqlite",
+          "member": "restore/LEFTPairing/return.pickle",
+          "sha256": "e67a49ca846ce77e9ec5e8c8539c60df3c0ca20369e75462b0b63c1651dda20a",
+          "bytes": 249033
+        }
+      },
+      {
+        "name": "restore/RIGHTPairing",
+        "seconds": 4.08773986401502,
+        "input": {
+          "storage": "sqlite",
+          "member": "restore/RIGHTPairing/input.pickle",
+          "sha256": "3c8c8c661c54250a3901eea53bb3dac7a4b520b98694e88c4f389ddd5d35dce7",
+          "bytes": 408
+        },
+        "result": {
+          "storage": "sqlite",
+          "member": "restore/RIGHTPairing/return.pickle",
+          "sha256": "cb285a8bdd745cdf48c529e306260534e031551d3da4778b70a69a083de75ee0",
+          "bytes": 901117
+        }
+      },
+      {
+        "name": "restore/LEFTNativeSource",
+        "seconds": 0.9747484320541844,
+        "input": {
+          "storage": "sqlite",
+          "member": "restore/LEFTNativeSource/input.pickle",
+          "sha256": "669d8085a911b74fa468c3d1cfb86b8dbce31abc147f60224a6b8fa3d53278f2",
+          "bytes": 409
+        },
+        "result": {
+          "storage": "sqlite",
+          "member": "restore/LEFTNativeSource/return.pickle",
+          "sha256": "096a10d18eb1d2475399250ef02aa0b6d40d56486036daa8c8ea2f08bab5619a",
+          "bytes": 168131
+        }
+      },
+      {
+        "name": "restore/RIGHTNativeSource",
+        "seconds": 2.907358509954065,
+        "input": {
+          "storage": "sqlite",
+          "member": "restore/RIGHTNativeSource/input.pickle",
+          "sha256": "82c9c7508845ab75d06e9c0cb4cf9a88a49a033a67698fe76b8e939c5ca8e389",
+          "bytes": 411
+        },
+        "result": {
+          "storage": "sqlite",
+          "member": "restore/RIGHTNativeSource/return.pickle",
+          "sha256": "54e0a988432d57d6e625ea0fd66839f14a51718b6198ed8031463f27cf618741",
+          "bytes": 620290
+        }
+      },
+      {
+        "name": "selected-lift",
+        "seconds": 0.13908805104438215,
+        "input": {
+          "storage": "sqlite",
+          "member": "selected-lift/input.pickle",
+          "sha256": "eac0dc00441fb2ffd5896c5a14d9044ccec31d8970f7df96ab7cdfe79416f119",
+          "bytes": 141999
+        },
+        "result": {
+          "storage": "sqlite",
+          "member": "selected-lift/return.pickle",
+          "sha256": "82d1c59cf19060b154e6a9650be0d3f4d3c48405f05b50f734c8542129b9f348",
+          "bytes": 4133
+        }
+      },
+      {
+        "name": "LEFT/restriction",
+        "seconds": 1.094987173913978,
+        "input": {
+          "storage": "sqlite",
+          "member": "LEFT/restriction/input.pickle",
+          "sha256": "20f5f14fecc4be9c99420e74bb7c4183d3cf47493830ce38a1c577d9be4a6990",
+          "bytes": 20567
+        },
+        "result": {
+          "storage": "sqlite",
+          "member": "LEFT/restriction/return.pickle",
+          "sha256": "650df545e3a82f77c26a82841bfd83fbcf58c3804b30d5ab626026a40cc08bec",
+          "bytes": 7128
+        }
+      },
+      {
+        "name": "LEFT/applicability",
+        "seconds": 0.18899238796439022,
+        "input": {
+          "storage": "sqlite",
+          "member": "LEFT/applicability/input.pickle",
+          "sha256": "4152cd17bf00f65e7eea8229fdae1d685c7b3b62803dd27859a6de75c0c59c8e",
+          "bytes": 35160
+        },
+        "result": {
+          "storage": "sqlite",
+          "member": "LEFT/applicability/return.pickle",
+          "sha256": "dc048329fce72197b117423944754e09960ae922e0b5953e6c36e157e766e0fa",
+          "bytes": 18300
+        }
+      },
+      {
+        "name": "LEFT/native-reconstruction",
+        "seconds": 54.49453360203188,
+        "input": {
+          "storage": "sqlite",
+          "member": "LEFT/native-reconstruction/input.pickle",
+          "sha256": "f84e76382920f01be37bc20d842a98def8974060e5f6947e9e7d37c200faefa6",
+          "bytes": 404607
+        },
+        "result": {
+          "storage": "sqlite",
+          "member": "LEFT/native-reconstruction/return.pickle",
+          "sha256": "70fa60b653eaf0ca61b615ec681ce81aac5da441e874c45568051581d5f8fd57",
+          "bytes": 95863
+        }
+      },
+      {
+        "name": "LEFT/native-source-controls",
+        "seconds": 0.021763578057289124,
+        "input": {
+          "storage": "sqlite",
+          "member": "LEFT/native-source-controls/input.pickle",
+          "sha256": "68b18d8bd3e746bf4f8cc182ae4c729e2065e900e7daf751db9207cd376debee",
+          "bytes": 10581
+        },
+        "result": {
+          "storage": "sqlite",
+          "member": "LEFT/native-source-controls/return.pickle",
+          "sha256": "9c83fa1530742fef29957f9241686b854c9287f69bec850fd7f75da943a44794",
+          "bytes": 1021
+        }
+      },
+      {
+        "name": "RIGHT/restriction",
+        "seconds": 2.633726842002943,
+        "input": {
+          "storage": "sqlite",
+          "member": "RIGHT/restriction/input.pickle",
+          "sha256": "cb8f95f0f645c5120a225c85fd9bc466b53205d80291cd76d722d36d54fb5a11",
+          "bytes": 46664
+        },
+        "result": {
+          "storage": "sqlite",
+          "member": "RIGHT/restriction/return.pickle",
+          "sha256": "465425676fefc891aad68c0085d7199ce442defca7f03d075bdd02fae3596621",
+          "bytes": 14009
+        }
+      },
+      {
+        "name": "RIGHT/applicability",
+        "seconds": 0.833838478079997,
+        "input": {
+          "storage": "sqlite",
+          "member": "RIGHT/applicability/input.pickle",
+          "sha256": "8d85a5114b3d20e58b928cae956fc21fd6e8e4ab63bab7ab142cbb94cc7972c7",
+          "bytes": 48028
+        },
+        "result": {
+          "storage": "sqlite",
+          "member": "RIGHT/applicability/return.pickle",
+          "sha256": "6a0967a54328adc1e603968f403a114a274f8152ce289f36e54c7ed92b19a379",
+          "bytes": 20423
+        }
+      },
+      {
+        "name": "RIGHT/native-reconstruction",
+        "seconds": 152.36509369092528,
+        "input": {
+          "storage": "sqlite",
+          "member": "RIGHT/native-reconstruction/input.pickle",
+          "sha256": "f3680916a52b550c053290d72f2ed0929958c942523dbe92de86c740087dc0e4",
+          "bytes": 1486348
+        },
+        "result": {
+          "storage": "sqlite",
+          "member": "RIGHT/native-reconstruction/return.pickle",
+          "sha256": "c4b7d702516fabb5d172e206aa3a0776b1203bf1cd0848b87f82dc7b3dd6aaa1",
+          "bytes": 179840
+        }
+      },
+      {
+        "name": "RIGHT/native-source-controls",
+        "seconds": 0.013907068991102278,
+        "input": {
+          "storage": "sqlite",
+          "member": "RIGHT/native-source-controls/input.pickle",
+          "sha256": "2c3b9e040634a55426e8499d68c1b7d1a757e32c4feaca672c53438cc8d348d5",
+          "bytes": 113055
+        },
+        "result": {
+          "storage": "sqlite",
+          "member": "RIGHT/native-source-controls/return.pickle",
+          "sha256": "b8894840e708230de78a583c303517dc8e70637c9a6344ca126968022fbffd80",
+          "bytes": 1080
+        }
+      },
+      {
+        "name": "LEFT/exact-limits/-1",
+        "seconds": 21.97086187102832,
+        "input": {
+          "storage": "sqlite",
+          "member": "LEFT/exact-limits/-1/input.pickle",
+          "sha256": "11dfbada6661eac0319adbabba8dc06bdbc8beb4229d61904a2be663ed7b7c73",
+          "bytes": 102416
+        },
+        "result": {
+          "storage": "sqlite",
+          "member": "LEFT/exact-limits/-1/return.pickle",
+          "sha256": "b72c076bffbd151a3d82c3c8595ab40ba8da04bb9bad5889e56a94fba6153aba",
+          "bytes": 192860
+        }
+      },
+      {
+        "name": "LEFT/exact-limits/1",
+        "seconds": 24.881934677017853,
+        "input": {
+          "storage": "sqlite",
+          "member": "LEFT/exact-limits/1/input.pickle",
+          "sha256": "4c327ca51100c8be1ed6170ea07ea2b48439a4edc5a96c70033da5ff0f98a231",
+          "bytes": 102413
+        },
+        "result": {
+          "storage": "sqlite",
+          "member": "LEFT/exact-limits/1/return.pickle",
+          "sha256": "c53d711f053c698f54edda98e37e406968141cb3d6409a2babf21f585a33496b",
+          "bytes": 189815
+        }
+      },
+      {
+        "name": "RIGHT/exact-limits/-1",
+        "seconds": 72.73979998601135,
+        "input": {
+          "storage": "sqlite",
+          "member": "RIGHT/exact-limits/-1/input.pickle",
+          "sha256": "2940fea5b4ffccc16dacddb7a714bd7a488b5712ec89a3aa0d2d89d684608d9b",
+          "bytes": 191859
+        },
+        "result": {
+          "storage": "sqlite",
+          "member": "RIGHT/exact-limits/-1/return.pickle",
+          "sha256": "10df239cc04692aef051331ef40cbe46fbc3a3d533565bb9c7b3126025384442",
+          "bytes": 379916
+        }
+      },
+      {
+        "name": "RIGHT/exact-limits/1",
+        "seconds": 68.96790516399778,
+        "input": {
+          "storage": "sqlite",
+          "member": "RIGHT/exact-limits/1/input.pickle",
+          "sha256": "cdbe21c2dc1be583f3db624ddac8e91a27785ca9814d0c909d53be4520369055",
+          "bytes": 191856
+        },
+        "result": {
+          "storage": "sqlite",
+          "member": "RIGHT/exact-limits/1/return.pickle",
+          "sha256": "1b6fc1bfe2e5249237a864defff278a885a6a39f46b3e7c7dc831f30047a1516",
+          "bytes": 356257
+        }
+      },
+      {
+        "name": "points/01/LEFT/-1",
+        "seconds": 0.6196146339643747,
+        "input": {
+          "storage": "sqlite",
+          "member": "points/01/LEFT/-1/input.pickle",
+          "sha256": "899384f377689955f916a36f6e3b35605b1af734ac282d426288d2af195149e5",
+          "bytes": 284608
+        },
+        "result": {
+          "storage": "sqlite",
+          "member": "points/01/LEFT/-1/return.pickle",
+          "sha256": "38ac2738e0262351d972548c11fd01e995ec426b53bff224692080468701e635",
+          "bytes": 12845
+        }
+      },
+      {
+        "name": "points/01/LEFT/1",
+        "seconds": 0.5578560029389337,
+        "input": {
+          "storage": "sqlite",
+          "member": "points/01/LEFT/1/input.pickle",
+          "sha256": "83ca6f21ae7d0ed321b3870f3aa8f271a9153be38de1ef15e9e10df02aa62230",
+          "bytes": 281578
+        },
+        "result": {
+          "storage": "sqlite",
+          "member": "points/01/LEFT/1/return.pickle",
+          "sha256": "9d6a42cf42e322def9a485c28dba33b867d0460d10532cde5629cbd70cdb0ff2",
+          "bytes": 12836
+        }
+      },
+      {
+        "name": "points/08/RIGHT/-1",
+        "seconds": 0.8294870300451294,
+        "input": {
+          "storage": "sqlite",
+          "member": "points/08/RIGHT/-1/input.pickle",
+          "sha256": "e15a9a2545b356f60825fb77eb5c6c928a3c43ad3e0b9f3418da69b68b72fc48",
+          "bytes": 554909
+        },
+        "result": {
+          "storage": "sqlite",
+          "member": "points/08/RIGHT/-1/return.pickle",
+          "sha256": "fdba91f26a4f33301c3074a5bced6ec4c6b48a99a2c0040b8a37ea348f6678c0",
+          "bytes": 13541
+        }
+      },
+      {
+        "name": "points/08/RIGHT/1",
+        "seconds": 0.7449545779963955,
+        "input": {
+          "storage": "sqlite",
+          "member": "points/08/RIGHT/1/input.pickle",
+          "sha256": "a9aa1b61c97203209e0c85cf29a2bebef255d173ed408610afc35c6688163a5d",
+          "bytes": 529594
+        },
+        "result": {
+          "storage": "sqlite",
+          "member": "points/08/RIGHT/1/return.pickle",
+          "sha256": "423771ff7da41eac0d2dabf800cc57764d8037fa709e675494c4b93a4daae0c3",
+          "bytes": 13532
+        }
+      },
+      {
+        "name": "uniform-science",
+        "seconds": 508.5895697539672,
+        "input": {
+          "storage": "sqlite",
+          "member": "uniform-science/input.pickle",
+          "sha256": "5e094f9e837d03d21fed3ca517bd690a3730a7550bd2dcff82cef98fdd5d7f92",
+          "bytes": 18124
+        },
+        "result": {
+          "storage": "sqlite",
+          "member": "uniform-science/return.pickle",
+          "sha256": "1ce371f18215044065d5b255a9c9d1e0aa0e0250bc77941cd4822b6e21caff02",
+          "bytes": 252835
+        }
+      }
+    ]
+  },
+  "coverage": {
+    "exactSpeedCount": 12,
+    "endEvaluationCount": 24,
+    "pointStatuses": {
+      "UNRESOLVED": 22,
+      "SUPPORTED_ON_SELECTED_UNIFORM_SUBSPACE": 2
+    },
+    "supportedSigns": 4,
+    "unresolvedSigns": 44,
+    "nativeSheetProbeEnds": []
+  },
+  "supported": [
+    {
+      "file": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-01/complete/point-01-LEFT.json",
+        "bytes": 114246,
+        "sha256": "6d79f2fb8531e29df8a9cf06a1aaacac5daf708da030e4375c04596f2b2df92d"
+      },
+      "end": "LEFT",
+      "schedule": {
+        "index": 1,
+        "speed": "sqrt(6)/2",
+        "modalRatios": {
+          "LEFT": "1",
+          "RIGHT": "10*sqrt(101)/101"
+        },
+        "bareRatio": "sqrt(6)/3"
+      },
+      "signs": [
+        {
+          "sign": -1,
+          "stratum": {
+            "normal": "-sqrt(595)/10",
+            "depth": "0",
+            "depthSquared": "0",
+            "stratum": "EXACT_GRAZING"
+          },
+          "selectedRank": 2,
+          "fullRankDiagnostic": 3,
+          "fullNullityDiagnostic": 2,
+          "currentEigenvalues": [
+            -32.930039477656265,
+            -0.2195335965177084
+          ],
+          "normalizedGram": [
+            [
+              {
+                "real": -0.9999999999999999,
+                "imag": 0.0
+              },
+              {
+                "real": 3.283699572970305e-17,
+                "imag": 0.0
+              }
+            ],
+            [
+              {
+                "real": 1.9667080942847795e-17,
+                "imag": 0.0
+              },
+              {
+                "real": -0.9999999999999999,
+                "imag": 0.0
+              }
+            ]
+          ],
+          "groupDirection": "-sqrt(595)/20",
+          "liftCondition": 12.247448713915887,
+          "currentCondition": 150.00000000000003,
+          "faceEntryCount": 32,
+          "allFaceExactZero": true,
+          "maximumNormalizedFaceDrive": 0.0,
+          "separateForms": {
+            "BULK_NORMAL_CURRENT_DENSITY_MATRIX": [
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                }
+              ],
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                }
+              ]
+            ],
+            "BULK_DEPTH_CURRENT_MATRIX": [
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                }
+              ],
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                }
+              ]
+            ],
+            "INTERFACE_POWER_MATRIX": [
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                }
+              ],
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                }
+              ]
+            ]
+          },
+          "allSeparateFormsZero": true,
+          "controls": {
+            "pencilMovement": 0.04158655139435333,
+            "currentMovement": 0.004148148148148123,
+            "directionReversalResponds": true,
+            "nativeEWVelocityMovements": [
+              1.0,
+              1.0,
+              1.0,
+              1.0
+            ]
+          },
+          "conditionalApplicability": true
+        },
+        {
+          "sign": 1,
+          "stratum": {
+            "normal": "sqrt(595)/10",
+            "depth": "0",
+            "depthSquared": "0",
+            "stratum": "EXACT_GRAZING"
+          },
+          "selectedRank": 2,
+          "fullRankDiagnostic": 3,
+          "fullNullityDiagnostic": 2,
+          "currentEigenvalues": [
+            0.2195335965177084,
+            32.930039477656265
+          ],
+          "normalizedGram": [
+            [
+              {
+                "real": 0.9999999999999999,
+                "imag": 0.0
+              },
+              {
+                "real": 1.9667080942847795e-17,
+                "imag": 0.0
+              }
+            ],
+            [
+              {
+                "real": 3.283699572970305e-17,
+                "imag": 0.0
+              },
+              {
+                "real": 0.9999999999999999,
+                "imag": 0.0
+              }
+            ]
+          ],
+          "groupDirection": "sqrt(595)/20",
+          "liftCondition": 12.247448713915887,
+          "currentCondition": 150.00000000000003,
+          "faceEntryCount": 32,
+          "allFaceExactZero": true,
+          "maximumNormalizedFaceDrive": 0.0,
+          "separateForms": {
+            "BULK_NORMAL_CURRENT_DENSITY_MATRIX": [
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                }
+              ],
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                }
+              ]
+            ],
+            "BULK_DEPTH_CURRENT_MATRIX": [
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                }
+              ],
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                }
+              ]
+            ],
+            "INTERFACE_POWER_MATRIX": [
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                }
+              ],
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                }
+              ]
+            ]
+          },
+          "allSeparateFormsZero": true,
+          "controls": {
+            "pencilMovement": 0.04158655139435333,
+            "currentMovement": 0.004148148148148123,
+            "directionReversalResponds": true,
+            "nativeEWVelocityMovements": [
+              1.0,
+              1.0,
+              1.0,
+              1.0
+            ]
+          },
+          "conditionalApplicability": true
+        }
+      ]
+    },
+    {
+      "file": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-01/complete/point-08-RIGHT.json",
+        "bytes": 118066,
+        "sha256": "3ae35a1d75d6e5fd71987ce33dd785ce95acb23385c9a9067176a818e2283fad"
+      },
+      "end": "RIGHT",
+      "schedule": {
+        "index": 8,
+        "speed": "5*sqrt(606)/101",
+        "modalRatios": {
+          "LEFT": "sqrt(101)/10",
+          "RIGHT": "1"
+        },
+        "bareRatio": "sqrt(606)/30"
+      },
+      "signs": [
+        {
+          "sign": -1,
+          "stratum": {
+            "normal": "-sqrt(601)/10",
+            "depth": "0",
+            "depthSquared": "0",
+            "stratum": "EXACT_GRAZING"
+          },
+          "selectedRank": 2,
+          "fullRankDiagnostic": 3,
+          "fullNullityDiagnostic": 2,
+          "currentEigenvalues": [
+            -33.42661338290195,
+            -0.22063771209836272
+          ],
+          "normalizedGram": [
+            [
+              {
+                "real": -1.0000000000000002,
+                "imag": 0.0
+              },
+              {
+                "real": 3.240190938451302e-17,
+                "imag": 0.0
+              }
+            ],
+            [
+              {
+                "real": -7.508703687276544e-17,
+                "imag": 0.0
+              },
+              {
+                "real": -0.9999999999999998,
+                "imag": 0.0
+              }
+            ]
+          ],
+          "groupDirection": "-5*sqrt(601)/101",
+          "liftCondition": 12.308533625091169,
+          "currentCondition": 151.50000000000006,
+          "faceEntryCount": 32,
+          "allFaceExactZero": true,
+          "maximumNormalizedFaceDrive": 0.0,
+          "separateForms": {
+            "BULK_NORMAL_CURRENT_DENSITY_MATRIX": [
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                }
+              ],
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                }
+              ]
+            ],
+            "BULK_DEPTH_CURRENT_MATRIX": [
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                }
+              ],
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                }
+              ]
+            ],
+            "INTERFACE_POWER_MATRIX": [
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                }
+              ],
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                }
+              ]
+            ]
+          },
+          "allSeparateFormsZero": true,
+          "controls": {
+            "pencilMovement": 0.041372529242676565,
+            "currentMovement": 0.004107077374404077,
+            "directionReversalResponds": true,
+            "nativeEWVelocityMovements": [
+              1.0,
+              1.0,
+              1.0,
+              1.0
+            ]
+          },
+          "conditionalApplicability": true
+        },
+        {
+          "sign": 1,
+          "stratum": {
+            "normal": "sqrt(601)/10",
+            "depth": "0",
+            "depthSquared": "0",
+            "stratum": "EXACT_GRAZING"
+          },
+          "selectedRank": 2,
+          "fullRankDiagnostic": 3,
+          "fullNullityDiagnostic": 2,
+          "currentEigenvalues": [
+            0.22063771209836272,
+            33.42661338290195
+          ],
+          "normalizedGram": [
+            [
+              {
+                "real": 0.9999999999999998,
+                "imag": 0.0
+              },
+              {
+                "real": -7.508703687276544e-17,
+                "imag": 0.0
+              }
+            ],
+            [
+              {
+                "real": 3.240190938451302e-17,
+                "imag": 0.0
+              },
+              {
+                "real": 1.0000000000000002,
+                "imag": 0.0
+              }
+            ]
+          ],
+          "groupDirection": "5*sqrt(601)/101",
+          "liftCondition": 12.308533625091169,
+          "currentCondition": 151.50000000000006,
+          "faceEntryCount": 32,
+          "allFaceExactZero": true,
+          "maximumNormalizedFaceDrive": 0.0,
+          "separateForms": {
+            "BULK_NORMAL_CURRENT_DENSITY_MATRIX": [
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                }
+              ],
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                }
+              ]
+            ],
+            "BULK_DEPTH_CURRENT_MATRIX": [
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                }
+              ],
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                }
+              ]
+            ],
+            "INTERFACE_POWER_MATRIX": [
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                }
+              ],
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                }
+              ]
+            ]
+          },
+          "allSeparateFormsZero": true,
+          "controls": {
+            "pencilMovement": 0.041372529242676565,
+            "currentMovement": 0.004107077374404077,
+            "directionReversalResponds": true,
+            "nativeEWVelocityMovements": [
+              1.0,
+              1.0,
+              1.0,
+              1.0
+            ]
+          },
+          "conditionalApplicability": true
+        }
+      ]
+    }
+  ],
+  "limits": [
+    {
+      "file": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-01/complete/LEFT-limits-sign--1.json",
+        "bytes": 4842,
+        "sha256": "ab4e641c3aece220006a0ee3f5e3808ba6c7c882dcb43bcd52ec79734e96f5e3"
+      },
+      "normal": "-sqrt(595)/10",
+      "selectedTwoRouteResidualsAllZero": true,
+      "fullPFinite": {
+        "RADIATING": true,
+        "EVANESCENT": true
+      },
+      "scalarLimits": {
+        "RADIATING": 322,
+        "EVANESCENT": 295
+      }
+    },
+    {
+      "file": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-01/complete/LEFT-limits-sign-1.json",
+        "bytes": 4841,
+        "sha256": "e918dc2b898bcb0eb3e3927b9577e5061a949ff914d1506ae00f1b6b3ed78eb1"
+      },
+      "normal": "sqrt(595)/10",
+      "selectedTwoRouteResidualsAllZero": true,
+      "fullPFinite": {
+        "RADIATING": true,
+        "EVANESCENT": true
+      },
+      "scalarLimits": {
+        "RADIATING": 322,
+        "EVANESCENT": 295
+      }
+    },
+    {
+      "file": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-01/complete/RIGHT-limits-sign--1.json",
+        "bytes": 4842,
+        "sha256": "2eff3bff15799bbcd40997ba0a68359c1842e772c0fee91e2c5d888180ade78d"
+      },
+      "normal": "-sqrt(601)/10",
+      "selectedTwoRouteResidualsAllZero": true,
+      "fullPFinite": {
+        "RADIATING": true,
+        "EVANESCENT": true
+      },
+      "scalarLimits": {
+        "RADIATING": 338,
+        "EVANESCENT": 311
+      }
+    },
+    {
+      "file": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-01/complete/RIGHT-limits-sign-1.json",
+        "bytes": 4841,
+        "sha256": "e16e1311f30fcff11c3069540b87cf73059a2fc37fc1d1f99495eab30909ddbc"
+      },
+      "normal": "sqrt(601)/10",
+      "selectedTwoRouteResidualsAllZero": true,
+      "fullPFinite": {
+        "RADIATING": true,
+        "EVANESCENT": true
+      },
+      "scalarLimits": {
+        "RADIATING": 338,
+        "EVANESCENT": 311
+      }
+    }
+  ],
+  "resources": {
+    "workerSeconds": 515.2389054469531,
+    "coordinatorSeconds": 515.6045187890995,
+    "sampleCount": 259,
+    "peakBytes": 260624384,
+    "maximumSwapBytes": 0,
+    "maximumPids": 3,
+    "minimumHostAvailableBytes": 21682941952,
+    "maximumMemoryEvents": {
+      "low": 0,
+      "high": 0,
+      "max": 0,
+      "oom": 0,
+      "oom_kill": 0,
+      "oom_group_kill": 0,
+      "sock_throttled": 0
+    },
+    "enforced": {
+      "memory.max": "8589934592",
+      "memory.swap.max": "0",
+      "pids.max": "32",
+      "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-8d370054c59a.service",
+      "nice": 0,
+      "affinity": [
+        15
+      ],
+      "threads": {
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "VECLIB_MAXIMUM_THREADS": "1",
+        "BLIS_NUM_THREADS": "1"
+      },
+      "nativeAddressSpaceBytes": [
+        8589934592,
+        8589934592
+      ],
+      "systemd.CPUAffinity": "15",
+      "affinityEnforcement": "systemd-and-inherited-process"
+    },
+    "duration": {
+      "verified": true,
+      "actual": {
+        "RuntimeMaxUSec": "infinity",
+        "Restart": "no"
+      },
+      "wallDeadlineSeconds": null,
+      "inactivityDeadlineSeconds": null
+    }
+  },
+  "resultFiles": [
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-01/complete/LEFT-limits-sign--1.json",
+      "bytes": 4842,
+      "sha256": "ab4e641c3aece220006a0ee3f5e3808ba6c7c882dcb43bcd52ec79734e96f5e3"
+    },
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-01/complete/LEFT-limits-sign-1.json",
+      "bytes": 4841,
+      "sha256": "e918dc2b898bcb0eb3e3927b9577e5061a949ff914d1506ae00f1b6b3ed78eb1"
+    },
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-01/complete/RIGHT-limits-sign--1.json",
+      "bytes": 4842,
+      "sha256": "2eff3bff15799bbcd40997ba0a68359c1842e772c0fee91e2c5d888180ade78d"
+    },
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-01/complete/RIGHT-limits-sign-1.json",
+      "bytes": 4841,
+      "sha256": "e16e1311f30fcff11c3069540b87cf73059a2fc37fc1d1f99495eab30909ddbc"
+    },
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-01/complete/checks.json",
+      "bytes": 1525006,
+      "sha256": "93e1156764b4c83f560cad97657bfd6d04a0c9c421dcf73c391657757a153f98"
+    },
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-01/complete/invocation.json",
+      "bytes": 1166,
+      "sha256": "f421a094ae4b3b5e9324c7818d00b137c845cd908d2b173519838262f27a5d11"
+    },
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-01/complete/operation-index.jsonl",
+      "bytes": 1494182,
+      "sha256": "350b4f8c52a6d72fc57724b593b48316b80623240e1e9abe89793b73c095be2b"
+    },
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-01/complete/operations.sqlite",
+      "bytes": 42827776,
+      "sha256": "ae1c00d82b440c75a6c998bd6fba388a5c4f7744e83be637885a5ec0fd5bb7b9"
+    },
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-01/complete/point-00-LEFT.json",
+      "bytes": 21624,
+      "sha256": "5dc0ca122a700d1f8bc500cd935adbb9a895d2805e05e2ec0c056ad8a53d572c"
+    },
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-01/complete/point-00-RIGHT.json",
+      "bytes": 31531,
+      "sha256": "b86b522248c680ad7724a7adde95789ec02b77d287062ccf81452283abaaf6f9"
+    },
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-01/complete/point-01-LEFT.json",
+      "bytes": 114246,
+      "sha256": "6d79f2fb8531e29df8a9cf06a1aaacac5daf708da030e4375c04596f2b2df92d"
+    },
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-01/complete/point-01-RIGHT.json",
+      "bytes": 30913,
+      "sha256": "907501d4fd390649780a65764a6db06686290356038d4460ef440286b3b37fc4"
+    },
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-01/complete/point-02-LEFT.json",
+      "bytes": 21553,
+      "sha256": "678da8fb917d064c22cb292e20f4cfbfb9143fd953de9cb56e9fcdfc3b70bc5a"
+    },
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-01/complete/point-02-RIGHT.json",
+      "bytes": 31344,
+      "sha256": "0da1c3f1294ca83b09d736d36733d376f3daff6e9f36f9664090bab48d994760"
+    },
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-01/complete/point-03-LEFT.json",
+      "bytes": 21752,
+      "sha256": "7463c56ab7485bbf2f6d45053fd0d7e020f7cc31b4213d5b9f2bc41ce8dd62f2"
+    },
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-01/complete/point-03-RIGHT.json",
+      "bytes": 32223,
+      "sha256": "e9ab377f33fab0f5071d8f0c0d6ea7e5bc66ae4f6bdf6bbd612993ef549d8040"
+    },
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-01/complete/point-04-LEFT.json",
+      "bytes": 21655,
+      "sha256": "0ff03e57b5d7263b9a78c1324072210a3994e275824ce77f310be4db4266b6c7"
+    },
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-01/complete/point-04-RIGHT.json",
+      "bytes": 32222,
+      "sha256": "d5495010848f5d3ca9e5d5b45769271326d979defef576e37ddeaff385593260"
+    },
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-01/complete/point-05-LEFT.json",
+      "bytes": 21511,
+      "sha256": "d272cf04d25e1ebd6f0b1bbdf6153162199aa3327864d9136d1f36bd7d1a192e"
+    },
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-01/complete/point-05-RIGHT.json",
+      "bytes": 31352,
+      "sha256": "b7209543b3f463fff9df3007e8f69fcfe107b8fdb103039804563d37570fe055"
+    },
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-01/complete/point-06-LEFT.json",
+      "bytes": 21432,
+      "sha256": "6c1f2f92eaffe073e9f391ef02af970b4e41f6b4bc5b4fcc699b756592dd0a12"
+    },
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-01/complete/point-06-RIGHT.json",
+      "bytes": 31439,
+      "sha256": "43561be74b8f52c6ed4b137722e8f59204d081fd86655c699c02129b78b7a360"
+    },
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-01/complete/point-07-LEFT.json",
+      "bytes": 21618,
+      "sha256": "356d184dd85183c7c7775b7f0d8b0e8994e17afcbb8d211fdc08234e3bb11a04"
+    },
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-01/complete/point-07-RIGHT.json",
+      "bytes": 32179,
+      "sha256": "9bd0bddea9619aebf388af529c0a43450a67035dff5f0a569d64c5b3f093976b"
+    },
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-01/complete/point-08-LEFT.json",
+      "bytes": 21337,
+      "sha256": "bd91a26633c5eaaf6973ce7de2a42949f549ef37fe5f1f828b611d32f16ca3ed"
+    },
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-01/complete/point-08-RIGHT.json",
+      "bytes": 118066,
+      "sha256": "3ae35a1d75d6e5fd71987ce33dd785ce95acb23385c9a9067176a818e2283fad"
+    },
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-01/complete/point-09-LEFT.json",
+      "bytes": 21729,
+      "sha256": "bf3c5df01ae9679a88bc8cc490cc3ba25bb056684c6ef81a7ba0c44fd0b9f2d3"
+    },
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-01/complete/point-09-RIGHT.json",
+      "bytes": 32314,
+      "sha256": "a1c2c4575c16f2a3636b9685c5bb5423151b354f384f8010c7d40830ce5ca9d6"
+    },
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-01/complete/point-10-LEFT.json",
+      "bytes": 21969,
+      "sha256": "fa863fbbde6146071701dfc5cc392d76c00c0db2568a42550cf03a4096dc062e"
+    },
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-01/complete/point-10-RIGHT.json",
+      "bytes": 32890,
+      "sha256": "3f10a89b0686e23311f96ee0e5567a7991cbab961acc47af706a0e9f6ff8beeb"
+    },
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-01/complete/point-11-LEFT.json",
+      "bytes": 21968,
+      "sha256": "aed25f94630610cefc5d555141db6524a59bbb9c1dada267e36f6d3dbb27e2dd"
+    },
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-01/complete/point-11-RIGHT.json",
+      "bytes": 32933,
+      "sha256": "09e9528286940bbfa96d86de6c54ed9b089548682bf0e6ce0ef798d64f4fab1a"
+    }
+  ],
+  "resultFileCount": 32,
+  "resultBytes": 46689296,
+  "runtimeReceipts": [
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-01/active.json",
+      "bytes": 1058,
+      "sha256": "a2d80801ad6403e667c7cb8db6f05950e673e2bcd6d8f8bede28e152f8233b0f"
+    },
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-01/completion-message.txt",
+      "bytes": 2405,
+      "sha256": "c77c739ea9cf9d3b6c7d5665994b1b72f59496feca3d98d93713da7ad0127950"
+    },
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-01/completion-watcher/completion.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-01/completion-watcher/completion.stdout",
+      "bytes": 101,
+      "sha256": "4e9e520ec410a175b10be77e48e2d857bc7f04e920160f4c6d62ec82f664c554"
+    },
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-01/completion-watcher/state.json",
+      "bytes": 505,
+      "sha256": "966b5e092c307e759631247dbadbeb7c7df7f5e29fa38a1d9c8f33e1bfc3e826"
+    },
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-01/completion-watcher/watcher.lock",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-01/coordinator-outcome.json",
+      "bytes": 111,
+      "sha256": "c405f7aa9610b9a00255d995ac3dd8ae33b27584830420f187ba1f021c6447c5"
+    },
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-01/coordinator.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-01/coordinator.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-01/guard-launch.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-01/guard-launch.stdout",
+      "bytes": 270,
+      "sha256": "3e1c7341629238765d5f2c9e4140aae56adc656687b51ea331a30e96224d1a65"
+    },
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-01/launch.json",
+      "bytes": 1365,
+      "sha256": "ca0e2e4215d50bb3cf1a85bdc1439552565dd9883a18613e2edbf15e333c5599"
+    },
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-01/near_unity_uniform.invocation.json",
+      "bytes": 1058,
+      "sha256": "a2d80801ad6403e667c7cb8db6f05950e673e2bcd6d8f8bede28e152f8233b0f"
+    },
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-01/near_unity_uniform.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-01/near_unity_uniform.stdout",
+      "bytes": 1525006,
+      "sha256": "93e1156764b4c83f560cad97657bfd6d04a0c9c421dcf73c391657757a153f98"
+    },
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-01/normalization.lock",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-01/resource-guard/child-outcome.json",
+      "bytes": 102,
+      "sha256": "574ac0f6c1f160fced74e1a6d023d7eb6fe84df0737e6b03ae32bfe2bfb6ea2c"
+    },
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-01/resource-guard/duration-validation.json",
+      "bytes": 164,
+      "sha256": "b7b9c58dd0ec33f07067967dd624c44127d7066971a4006f06ad57656809d244"
+    },
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-01/resource-guard/effective-limits.json",
+      "bytes": 596,
+      "sha256": "7f82e9e392fc4a979913b1b70c4e06057bb3829f9d5a8420876f49238288040a"
+    },
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-01/resource-guard/invocation.json",
+      "bytes": 1743,
+      "sha256": "64a5e156496b051712d0294ccc22da17d3307ec991bc77998da80d7e081d0361"
+    },
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-01/resource-guard/limit-validation.json",
+      "bytes": 678,
+      "sha256": "8719d2b8869ba816e902a3389e44e31fa08d727b5a393817992b6eb1c2a20284"
+    },
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-01/resource-guard/outcome.json",
+      "bytes": 270,
+      "sha256": "3e1c7341629238765d5f2c9e4140aae56adc656687b51ea331a30e96224d1a65"
+    },
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-01/resource-guard/resource-samples.jsonl",
+      "bytes": 103589,
+      "sha256": "22bca9948de853da999fffbf0561e8b28cd993d52a689241303881a5305f5666"
+    },
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-01/resource-guard/stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-01/resource-guard/stdout",
+      "bytes": 1058,
+      "sha256": "a2d80801ad6403e667c7cb8db6f05950e673e2bcd6d8f8bede28e152f8233b0f"
+    },
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-01/source-snapshots.json",
+      "bytes": 12374,
+      "sha256": "83093d1003849ddbd35e21e9c83bca10ffe6e2801ecc187d5d8fe8b13181c7a2"
+    },
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-01/stage-start.json",
+      "bytes": 1285,
+      "sha256": "0e775f34d03290478adcc39d50d736d7f7365423aa57c58bfab1566758358cac"
+    },
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-01/watcher.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-01/watcher.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "failure": {
+    "reasonCounts": {
+      "nongrazing source denominator outside admitted domain": 44
+    },
+    "predicate": "not finite(bound) or bound.is_zero is not False",
+    "sourceLine": 725,
+    "firstRejectedValue": {
+      "factor": "250*(uniformFrequency + 10*I)*(uniformFrequency + uniformPhysicalDepth*(-I*uniformFrequency + 10))",
+      "value": "2250 + sqrt(266)*(-1365 + 900*I)/4 + 7500*I"
+    },
+    "assessment": "The predicate treats an undecided is_zero property as unresolved. The saved representative complex value is finite and has strictly positive imaginary part 7500 + 225*sqrt(266), hence is nonzero. The failure message does not establish a physical pole. Actual is_zero flags were not separately saved; no blanket certificate for every rejected factor was produced during metadata inspection.",
+    "action": "Preserve all 44 unresolved calls and completed work. No retry, scientific restoration, validator or defect sweep launched."
+  },
+  "review": {
+    "methodLiteralVerdicts": [
+      "CLEAR FOR THIS SELECTED UNIFORM METHOD",
+      "CLEAR FOR THIS SELECTED UNIFORM METHOD"
+    ],
+    "packetSha256": "bf55b921706cc1d2c3df225fe87ec8a20405df782de771f6e50f8d60506f3752",
+    "record": {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_near_unity_uniform_review_r2_record.json",
+      "bytes": 63618,
+      "sha256": "042f1854c1e69aed1ccc55d49ad66aa304afd5b6853644ea44540083bf4f396d"
+    },
+    "independentWorkerOrResultClearance": false
+  },
+  "limitations": [
+    "Selected uniform transverse subspace only; strict rest bulk; LAB_HELD/RHO4_CONSTANT; omega3 and saved tangents.",
+    "Equality is selected modal speed versus effective bulk speed, not a primitive calibrated model ratio.",
+    "Four exact matching sign checks and two-sided selected limits passed; nearby finite-depth checks and native sheet reversal remain unresolved.",
+    "Nonuniform/direct mixed-grade composition applicability remains conditional. Separate upstream assessment is not presumed delivered or clear.",
+    "No defect response, loss, drainage, primitive calibration, complete mode census, full Green/FORM/A11/A12 or radiating loss witness."
+  ],
+  "nextDependency": "Resolve exact nongrazing denominator nonzero certificates in a separately authorized saved-return continuation, if requested; preserve completed limits/source work. Stop now before a defect sweep."
+}

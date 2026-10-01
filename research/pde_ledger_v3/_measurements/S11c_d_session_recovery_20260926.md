@@ -1,3 +1,22 @@
+**SELECTED UNIFORM CHECK COMPLETE WITH PARTIAL SUPPORT (2026-10-01):**
+Read S11c_d_near_unity_uniform_result.md and completion.json. At each end's own
+exact modal/acoustic speed match, both normal signs and two polarizations passed:
+finite nondegenerate current, zero selected face/bulk/interface drives, responsive
+controls and matching radiating/evanescent limits. LEFT cT=sqrt(3/2), RIGHT
+cT=sqrt(150/101). These are rest-bulk selected-uniform results, not calibration.
+The other22 of24 end evaluations (44sign calls) are UNRESOLVED at the exact
+nonzero-denominator predicate; no nongrazing sheet-reversal check was reached.
+A saved rejected complex value is plainly nonzero; no physical pole is inferred,
+and no blanket denominator certificate or point acceptance is supplied.
+Worker515.239s,peak260624384bytes,zero swap/events; no deadline. All41pins,
+32snapshots,5383opaque blobs and journal receipts passed metadata/byte checks;
+27complete operations and44unresolved calls are preserved. No payload restored
+outside containment. Both method literals remain CLEAR, not worker/result review.
+Stopped without retry/validator/new export or defect sweep. Further finite-depth
+checks need a separately authorized saved-return denominator-certificate repair.
+Nonuniform/mixed-grade applicability, drain/calibration/loss remain open. The
+separate upstream assessment keeps its own completion hook; no model polling.
+
 **SELECTED UNIFORM NEAR-UNITY RUN LAUNCHED (2026-10-01):**
 Both fresh method reports literally CLEAR FOR THIS SELECTED UNIFORM METHOD.
 Frozen worker49506203/manifestafb408e2 and gate6535bc2d were committed6cb0cc8a

@@ -1,3 +1,23 @@
+**UPSTREAM PAIR FINISHED; COMPOSITION NOT CLEARED (2026-10-01):**
+Claude delivered scoped support for inertia/thickness and flat work orientation,
+but non-flat/fold coverage is incomplete and the mixed pressure response needs
+source-consistent assessment. Grok stopped cancelled after its opening sentence;
+exit0 is no verdict. Do not label this a two-review clearance or retry it.
+Read S11c_upstream_repair_review_record.json and _review_disposition.md. All643
+packet/source/runtime checks passed;11 guarded reviewer probes,7 completed and
+4 preserved development failures,224.527 total worker seconds,65.34MiB peak,
+zero sampled swap/events. Native/cgroup4GiB,pool16GiB,no deadlines verified.
+The alleged direct eta*sigma DtN term is a credible unresolved composition
+finding; the reviewer used an artificially split profile/normal and a finite
+lattice witness. Join actual two-scale profile/jets before changing equations.
+No measured benchmark error or leakage follows. Current descendants have newer
+provenance than the old mechanical tests; historical tests remain historical.
+Uniform-only work need not await non-flat completion if actual constant-end
+specialization removes the affected term, but its own NEEDS/NEEDS method gaps
+and source joins remain. Both pairs are finished. No new review/science gate,
+job,producer replay or defect sweep; no recurring/model polling. Next decisions
+are recorded, no automatic repair campaign. All historical artifacts preserved.
+
 **UNIFORM METHOD REVIEWS: NEEDS REVISION / NEEDS REVISION (2026-10-01):**
 Both source-only reports delivered and were read before adjudication. Exact
 22-file packet/archive/private copies and indexed source/input hashes pass 157

@@ -1,5 +1,5 @@
 {
-  "status": "UNIFORM_REVISIONS_PREPARED_UPSTREAM_PAIR_AWAITING_SEPARATE_COMPLETION",
+  "status": "BOTH_PAIRS_FINISHED_NO_COMBINED_CLEARANCE_GROK_UPSTREAM_VERDICT_MISSING",
   "packets": [
     {
       "status": "DELIVERED_NEEDS_REVISION_ADJUDICATED_NO_SCIENCE_CLEARANCE",
@@ -71,7 +71,7 @@
       "nextSubmissionAuthorized": false
     },
     {
-      "status": "SUBMITTED_AWAIT_PAIRED_ADJUDICATION",
+      "status": "CLAUDE_SCOPED_ASSESSMENT_GROK_CANCELLED_NO_VERDICT",
       "packetDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/upstream-repair-review/packet",
       "packetSha256": "7cf2a67660fcec7f4029fdef6384a0520104b265596f902b2f3486f5e87eee29",
       "archiveSha256": "c076da8257220ecf588c9932fc0a8a0c044c053f6f645cba2867aeda65afcaf4",
@@ -130,7 +130,14 @@
         ],
         "coordinatorStderrBytes": 0,
         "checkedUtc": "2026-10-01T16:30:27.948818+00:00"
-      }
+      },
+      "literalVerdicts": {
+        "claude": "Four repairs not cleared as a composition; see separate scoped verdicts",
+        "grok": null
+      },
+      "grokStopReason": "cancelled",
+      "adjudicationRecord": "S11c_upstream_repair_review_record.json",
+      "nextSubmissionAuthorized": false
     }
   ],
   "literalUserApproval": "I approve. Fire away",

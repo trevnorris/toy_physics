@@ -136,3 +136,15 @@ disjoint cores, zero swap, 4 GiB host reserve and native memory limits. No runti
 budget change, new science gate, export or automatic review round is introduced
 by this sheet. Stop after the bounded uniform evidence and applicable upstream
 findings, before any defect sweep, forced response, power estimate or flow claim.
+
+## Upstream completion note (2026-10-01; still unreviewed)
+
+The upstream pair has finished without paired clearance: Claude supplies scoped
+inertia/thickness and flat-orientation evidence; Grok delivered no verdict.
+The possible missing direct eta*sigma DtN term and non-flat routing/fold coverage
+remain open. See S11c_upstream_repair_review_disposition.md. For this uniform
+check, explicitly specialize the actual affected source ingredients to constant
+end profiles and verify their disappearance; do not assume all upstream debt
+vanishes because a transverse baseline was zero. That conditional scope permits
+a separate uniform-only decision, not a cleared nonuniform defect calculation.
+No new method packet or scientific launch is authorized by this note.

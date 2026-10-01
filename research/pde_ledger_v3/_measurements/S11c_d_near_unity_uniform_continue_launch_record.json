@@ -1,0 +1,187 @@
+{
+  "status": "LAUNCHED_WITH_VERIFIED_POOLED_CONTAINMENT_NO_RESULT_CLAIM",
+  "recordedUtc": "2026-10-01T19:00:50.595239+00:00",
+  "preparedCommit": "c59d3bb3",
+  "gate": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_near_unity_uniform_continue_gate.json",
+    "bytes": 9079,
+    "sha256": "eaf5fdf6eb2cb430bb94e03696fdba8af48fd07539a44c09fd06017863f3629a"
+  },
+  "worker": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_near_unity_uniform_continue.py",
+    "bytes": 20079,
+    "sha256": "ae3bdfa9fe96a4c700d39f988b26a3420687a46e29e8d92950b990a022742d29"
+  },
+  "manifest": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_near_unity_uniform_continue_inputs.json",
+    "bytes": 18069,
+    "sha256": "3572f7b90cfd994e4dbb31169c2ba1729b17aa28835fddff6fd23df44a5fc64a"
+  },
+  "launch": {
+    "jobPid": 1499269,
+    "watcherPid": 1499270,
+    "gateSha256": "eaf5fdf6eb2cb430bb94e03696fdba8af48fd07539a44c09fd06017863f3629a",
+    "command": [
+      "/usr/bin/python3",
+      "/var/projects/toy_physics/scripts/s11c_guarded_run.py",
+      "--pool",
+      "s11c-near-unity",
+      "--memory-gib",
+      "8",
+      "--tasks-max",
+      "32",
+      "--log-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-continuation-01/resource-guard",
+      "--",
+      "/usr/bin/python3",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+      "--parallel-prerequisite-read",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-continuation-01",
+      "--stage",
+      "near_unity_uniform_continue",
+      "--",
+      "/usr/bin/python3",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_near_unity_uniform_continue.py",
+      "--out",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-continuation-01/complete",
+      "--inputs",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_near_unity_uniform_continue_inputs.json",
+      "--gate",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_near_unity_uniform_continue_gate.json"
+    ],
+    "thread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+    "automaticRetry": false
+  },
+  "stageStart": {
+    "utc": "2026-10-01T19:00:01.425729+00:00",
+    "gateSha256": "eaf5fdf6eb2cb430bb94e03696fdba8af48fd07539a44c09fd06017863f3629a",
+    "command": [
+      "/usr/bin/python3",
+      "/var/projects/toy_physics/scripts/s11c_guarded_run.py",
+      "--pool",
+      "s11c-near-unity",
+      "--memory-gib",
+      "8",
+      "--tasks-max",
+      "32",
+      "--log-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-continuation-01/resource-guard",
+      "--",
+      "/usr/bin/python3",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+      "--parallel-prerequisite-read",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-continuation-01",
+      "--stage",
+      "near_unity_uniform_continue",
+      "--",
+      "/usr/bin/python3",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_near_unity_uniform_continue.py",
+      "--out",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-continuation-01/complete",
+      "--inputs",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_near_unity_uniform_continue_inputs.json",
+      "--gate",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_near_unity_uniform_continue_gate.json"
+    ]
+  },
+  "guardInvocation": {
+    "command": [
+      "/usr/bin/python3",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+      "--parallel-prerequisite-read",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-continuation-01",
+      "--stage",
+      "near_unity_uniform_continue",
+      "--",
+      "/usr/bin/python3",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_near_unity_uniform_continue.py",
+      "--out",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-continuation-01/complete",
+      "--inputs",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_near_unity_uniform_continue_inputs.json",
+      "--gate",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_near_unity_uniform_continue_gate.json"
+    ],
+    "cwd": "/var/projects/toy_physics",
+    "unit": "s11c-guard-d202569dc89b",
+    "seconds": 0,
+    "requestedSecondsArgumentIgnored": 0,
+    "wallDeadlineSeconds": null,
+    "inactivityDeadlineSeconds": null,
+    "cpu": 15,
+    "memoryMax": 8589934592,
+    "swapMax": 0,
+    "tasksMax": 32,
+    "minimumHostAvailableBytes": 4294967296,
+    "startedUtc": "2026-10-01T19:00:01.494365+00:00",
+    "pool": "s11c-near-unity",
+    "priorityPolicy": "desktop-managed",
+    "logDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-continuation-01/resource-guard",
+    "affinityEnforcement": "systemd-and-inherited-process",
+    "reservedBeforeBytes": 0,
+    "outstandingHeadroomBytes": 0,
+    "hostAvailableBytes": 21853331456,
+    "poolMemoryMax": 17179869184,
+    "poolMaxJobs": 6,
+    "activeUnits": [],
+    "owner": {
+      "pid": 1499277,
+      "startTicks": "92250776",
+      "bootId": "c8304a64-451a-49f4-b454-d113d706e731"
+    }
+  },
+  "enforcedLimits": {
+    "verified": true,
+    "actual": {
+      "memory.max": "8589934592",
+      "memory.swap.max": "0",
+      "pids.max": "32",
+      "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-d202569dc89b.service",
+      "nice": 0,
+      "affinity": [
+        15
+      ],
+      "threads": {
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "VECLIB_MAXIMUM_THREADS": "1",
+        "BLIS_NUM_THREADS": "1"
+      },
+      "nativeAddressSpaceBytes": [
+        8589934592,
+        8589934592
+      ],
+      "systemd.CPUAffinity": "15",
+      "affinityEnforcement": "systemd-and-inherited-process"
+    }
+  },
+  "duration": {
+    "verified": true,
+    "actual": {
+      "RuntimeMaxUSec": "infinity",
+      "Restart": "no"
+    },
+    "wallDeadlineSeconds": null,
+    "inactivityDeadlineSeconds": null
+  },
+  "watcherArmedBeforeLaunch": true,
+  "initialStartupInspection": {
+    "restoredCompletedReturnCountObserved": 8,
+    "strictScientificStderrBytes": 0,
+    "workerHasStarted": true,
+    "scientificResultAccepted": false
+  },
+  "scope": "Restore all27 completed returns, certify saved denominator values exactly, then only unfinished uniform point/current/face/sheet controls. Stop before defect sweep.",
+  "silentCompletionHook": true,
+  "automaticRetry": false,
+  "modelPolling": false,
+  "externalSubmission": false
+}

@@ -1,3 +1,21 @@
+**SAVED UNIFORM DENOMINATOR CONTINUATION LAUNCHED (2026-10-01):**
+User: “k. let's do that next step.” Frozen source/gate committed c59d3bb3.
+Read S11c_d_near_unity_uniform_continue_readiness.json and launch_record.json.
+Six local standard-library tests pass; static opcode inspection covered 149 saved
+routes without restoration. The repair uses exact real/imaginary reconstruction
+and a signed nonzero component when the original zero property is undecided.
+No equations or thresholds changed; no new external review/acceptance is claimed.
+Restore all 27 complete prior returns and copy all 32 files; original source,
+profile/native reconstruction and grazing limits are not replayed. Join actual
+pending inputs, reuse saved denominator values, and resume only unfinished points.
+The local completion hook was armed first. One-time startup verified 8 GiB
+native/cgroup in the 16 GiB pool, CPU 15, zero swap, 32 tasks, one thread,
+4 GiB host reserve, desktop priority, RuntimeMaxUSec=infinity and Restart=no.
+Eight completed returns had restored at startup; strict stderr was empty.
+No runtime result is accepted. Run silently; inspect the completion hook, then
+stop at uniform evidence and applicable upstream findings, before a defect sweep.
+All prior unresolved results, review debts and scientific inputs remain intact.
+
 **SELECTED UNIFORM CHECK COMPLETE WITH PARTIAL SUPPORT (2026-10-01):**
 Read S11c_d_near_unity_uniform_result.md and completion.json. At each end's own
 exact modal/acoustic speed match, both normal signs and two polarizations passed:

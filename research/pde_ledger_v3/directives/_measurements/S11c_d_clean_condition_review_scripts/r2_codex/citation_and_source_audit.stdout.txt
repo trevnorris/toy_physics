@@ -1,0 +1,174 @@
+=== A_P1_AND_B_40_PINPOINT ===
+35: density representatives ρ4D/ρbr, two anchorings LAB_HELD/MATERIAL_ADVECTED), S11c-b computes: (1) the **§3a energy
+36: basis** — the O(3)-Kronecker field-bilinear invariant family, corrected to **40 = 10 uniform + 15 ∂W_bg-spurion + 15
+37: ∂μ_R,bg-spurion**; (2) the **variable-coefficient slab OPERATOR ROWS** — the equations of motion for U/θ/e_W with the
+=== A_SPIN_SOURCE ===
+2377: ### 9.8 A trapped standing wave is not automatically spinning
+2378: 
+2379: A real linearly polarized standing wave can have zero time-averaged angular
+2380: momentum. Two degenerate modes with a relative phase can form a circularly
+2381: polarized bound pattern that carries angular momentum. Orbital winding can
+2382: also contribute. These are specific mode combinations, not consequences of
+2383: the word *geon*.
+2384: 
+=== B_WEAK_FORM_SOURCE ===
+312: ### 3c · The off-diagonal coupling kernel
+313: 
+314: Extract the block of the §3b operator that couples the transverse structure to the `{θ,e_W,u_L}` structure
+315: — the object whose uniform limit is S11b's decoupled zero (§1d) — as a **weak variational restriction** under
+316: the supplied stored-energy/kinetic variational pairing of §1c. Use independent transverse trial and test
+317: displacements `u_T,v_T` with `∇·u_T=∇·v_T=0`, independent longitudinal trial and test displacements `u_L,v_L`
+318: with `∇×u_L=∇×v_L=0`, and independent trial and test fields for `θ` and `e_W`. A transverse trial paired with
+319: a `{θ,e_W,u_L}` test defines the transverse→thickness block; a `{θ,e_W,u_L}` trial paired with a transverse
+320: test defines the thickness→transverse block. These are restrictions to local differential-operator-labelled
+321: trial/test spaces, not a global spectral or Helmholtz projection. They attribute both the gradient-structured
+322: terms and the undifferentiated-`u` spurion couplings such as `g·u` (§1a/`N15`) to a sector without introducing
+323: a global projector (`N5`).
+324: 
+325: ⛔ Do **not** implement the split by setting only the **undifferentiated** field occurrences to zero: that
+326: projection is inert on gradient content and leaves diagonal thickness/longitudinal dynamics inside the
+327: block. ⛔ Extract both weak blocks from the §3b operator itself, not from a parallel direct-variation route.
+328: For the in-plane domain, take all trial and test fields to have compact support in its interior, so the
+329: in-plane integration-by-parts boundary term is fixed to zero; the inherited face boundary conditions still
+330: apply.
+331: 
+332: Emit both off-diagonal blocks and their pairing-based adjointness residual. Define that residual by applying
+333: the two weak operator restrictions to arbitrary independent cross-sector trial/test fields and comparing the
+334: transverse→thickness pairing with the formal-adjoint thickness→transverse pairing. ⛔ It is **not** the mixed
+335: second derivative of the scalar energy (`∂²U/∂u_T∂e_W − ∂²U/∂e_W∂u_T`), which is zero for any energy by the
+336: commutation of partial derivatives and tests nothing (rule 2 corollary 3). If the two blocks are adjoint by
+337: construction, emit the two blocks and state that there is no independent second route rather than dressing
+=== B_COMPARATOR_CONVENTION_SOURCE ===
+106: - **OWED / DEFERRED to a ≥64 GB box (`DEFERRED_HEAVY_RUNS.md`):** the full cross-engine `row_residual` — P2a
+107:   (`extract_slab` + `row_residual`: remove the #90-stale one-sided face subtraction, μ_θ via its own family, pinned
+108:   DOF, the closed disposition table, origin-family adapters) + P2b (the §3a expression-valued scale bridge
+109:   `γ_WL = W_0·γ_PY` + a factor-locked energy-term bijection certificate) + a FRESH WL primaries `.out` (with
+110:   term-origins) AND a fresh PY `S11CB_PRIMARIES_ONLY` `.out`; the #88 KINETIC+θ re-adjudication (its raw-EL U-row
+111:   identification conflicts with pin B — redo after the fold); the 2 owed #88 control-hardenings. (Also owed
+112:   in-band-but-verified-out-of-band: the #89 PY skipped controls + the #89b WL heavy controls.) **Two whole-row SIGN
+113:   CONVENTIONS** to adjudicate there (kinetic −K PY vs +K WL; face generalized-force PY `+diff` vs WL
+114:   `−linearVirtualVariation`) — the comparator SURFACES them, does not normalize them (rule 1/6). **#90's two flags**
+115:   (closure-fold sign; uniform-limit Λ survivor vs §1d decoupling).
+=== ENGINE_OPERATOR_ROWS ===
+3095:     operator["THETA_BALANCE"] = sp.Tuple(
+3096:         sp.Tuple(Str("SOURCE_OPERAND"), mass_balance),
+3097:         sp.Tuple(Str("EVOLUTION_TERM_ORIGINS"), evolution_origins),
+3098:         sp.Tuple(Str("EXPANDED"), mass_balance),
+3099:     )
+3100:     operator["ADVECTIVE_MASS_OPERAND"] = named_tuple_row(
+3101:         evolution_origins, "BACKGROUND_ADVECTION"
+3102:     )
+3103:     operator["FACE_FLUX_BOUNDARY_OPERANDS"] = faces
+3104:     operator["FACE_GENERALIZED_FORCE_ROWS"] = sp.Tuple(
+3105:         sp.Tuple(Str("U"), sp.Tuple(*physical_face_u)),
+3106:         sp.Tuple(Str("E_W"), physical_face_e),
+3107:         sp.Tuple(
+3108:             Str("THETA_FACE_FLUX"),
+3109:             sp.sympify(face_rows["THETA_FACE_FLUX"]),
+3110:         ),
+3111:         sp.Tuple(
+3112:             Str("CENTER_FACE_GENERALIZED_ROW"),
+3113:             sp.sympify(face_rows["CENTER_FACE_GENERALIZED_ROW"]),
+3114:         ),
+3115:         sp.Tuple(Str("SOURCE_OPERANDS"), face_rows["SOURCE_OPERANDS"]),
+3116:     )
+3117: 
+3118:     if branch == "MATERIAL_ADVECTED":
+3119:         mu_theta_value = sp.Tuple(Str("mu_theta^alpha"), epsilon * mu_theta_amplitude)
+3120:     else:
+3121:         mu_theta_value = sp.Tuple(Str("mu_theta"), epsilon * mu_theta_amplitude)
+3122:     reserved_mu_theta = INCOMING_LEDGER[
+3123:         "mu_theta_M" if branch == "MATERIAL_ADVECTED" else "mu_theta_L"
+3124:     ]["value"]
+3125:     operator["MU_THETA_FACE_BINDING"] = sp.Tuple(
+3126:         reserved_mu_theta, mu_theta_amplitude
+3127:     )
+=== PACKET_CLAIMS ===
+83: | # | premise | where it stands |
+84: |---|---|---|
+85: | P1 | The constitutive law has no parity-odd term. | The S11c-b energy basis is "the O(3)-Kronecker field-bilinear invariant family" (record `:35`). |
+86: | P2 | Every operand the face laws use, and every support/boundary datum, transforms covariantly under the reflection (or `O(3)`). This covers scalars (`δp_s`, `μ_s`, `𝒜_s`, `J_s`, `V_s`), polar vectors (`n̂_s`, `v_face,s`, `v_bulk,s`, `t_s`) and any axial vector. No further field is present (e.g. a microrotation or director field, a listed spin-carrier candidate, `native_light…:113–116`). | The face laws carry vector operands (S11c-a `:350–354`; S11c-b `:145–148`). Both round-1 legs found these covariant on the planar background, as leg evidence about the term structure (`…review_scripts/`). |
+87: | P3 | The background flow respects the symmetry: normal drain; radial in-plane flow at a throat; no swirl. | ⚠ Untested. `v_bulk_normal_0` "appears in no derived operator" (spec `:90–91`). The drain flow is **absent** from the S11c-b operator. |
+88: | P4 | The truncations, the constraint fold (pin B), both anchorings, and the sign conventions in our operator do not break the reflection. | ⚠ Not yet computed in the operator. Round-1 legs found pin B and both anchorings reflection-even on the planar class. Four upstream sign/coordinate repairs from S11c-d are unreviewed, so a convention error that breaks a reflection is exactly what Part 1 can catch. |
+110: Falsifiers:
+111: - **F1.** On a symmetric background with the drain flow carried live and the bulk closed, our linear operator
+112:   couples twist-type displacements to any bulk-facing quantity.
+113: - **F2.** The model's spin carrier forces the background to break `O(3)` at linear order. Possibilities: a swirl,
+114:   a chiral constitutive term, or a non-round throat. Note that only a **circulating** (complex, travelling)
+115:   twist mode carries angular momentum. A real standing twist mode carries none (`native_light…:2377`, "A trapped
+116:   standing wave is not automatically spinning"). A circulating twist mode leaves the background symmetric at
+117:   linear order.
+118: - **F2b.** The spin carrier is an **additional field** (microrotation/director; `native_light…:113–116`). It
+119:   enlarges the field content without breaking `O(3)`, so its parity and couplings must be classified before H
+120:   can be applied.
+121: - **F3.** A twist-type standing mode cannot hold a throat open. This is nonlinear; half two.
+122: - **F4.** Second-order leakage of the twist mode, including that from the throat deformation it induces. This is
+123:   nonlinear; half two.
+72: **Object.** The complete linear operator of the S11c-b system acting on `P`, as a matrix over the full field list
+73: the S11c-b engines carry. Name each field and each row, with the file:line of its definition. Use the rows as the
+74: engines define them: after the constraint fold (pin B), with `μ_θ` kept as its named operand, and the face
+75: generalized-force rows including the face responses.
+76: 
+77: **Bulk-facing quantities.** Also include, as explicit rows or columns, every bulk-facing operand and face
+78: kinematic quantity, for each face `s = ±`:
+79: - `δp_s`;
+80: - `n̂_s·v_bulk,s`;
+81: - `J_s`, `V_s`, `𝒜_s`, `μ_s`;
+82: - the components of the face normal `n̂_s`.
+83: 
+84: Print each one's dependence on every field.
+85: 
+86: **Form.** You may use the strong-form operator matrix, or the weak-form bilinear form restricted to trial and test
+87: fields in `P` (spec `§3c`). State which, and print **every block**.
+127: **Comparator.** Join the two engines' printed blocks by field and row label. For the baseline and for each
+128: control, print `operand_PY`, `operand_WL` and `residual` for every entry. The two whole-row sign conventions
+129: recorded as cross-engine-unvalidated must be mapped explicitly (record `:15–31`): the kinetic-term sign, and the
+130: face generalized-force convention. State each map, with the file:line it comes from, in the comparator source
+131: **before** any residual is computed.
+=== GROUNDING_LITERAL_SNIPPETS ===
+45: Gravitational-wave and electromagnetic arrival-time observations (**GW170817 / GRB 170817A**) constrain
+46: those two speeds to agree to roughly **1 part in 10¹⁵**. ⚠ **The observational value IS known** — `λγ = 1`
+47: to that precision is not in doubt as a *target*.
+48: 
+49: ```
+50: 
+51: ```
+52: $ sed -n 35p research/pde_ledger_v3/steps/S11c_b_variable_coefficient_operator.md
+53: density representatives ρ4D/ρbr, two anchorings LAB_HELD/MATERIAL_ADVECTED), S11c-b computes: (1) the **§3a energy
+54: ```
+55: 
+132: 
+133: A real linearly polarized standing wave can have zero time-averaged angular
+134: momentum. Two degenerate modes with a relative phase can form a circularly
+135: ```
+136: 
+137: ```
+138: $ ls research/pde_ledger_v3/directives/_measurements/S11c_d_clean_condition_review_scripts/codex research/pde_ledger_v3/directives/_measurements/S11c_d_clean_condition_review_scripts/grok
+139: research/pde_ledger_v3/directives/_measurements/S11c_d_clean_condition_review_scripts/codex:
+140: actual_source_structure_audit.sh
+141: actual_source_structure_audit.stdout.txt
+89: > cross-engine consistency check. **The full CROSS-ENGINE RESIDUAL is DEFERRED to a ≥64 GB box by USER CHOICE** — a
+90: > lighter CORE-only residual (SLAB rows + `FINAL_KERNEL` + μ_θ + energy + admissibility, ~8 GB, which DOES fit this
+91: > 30 GB box) was OFFERED and NOT taken (`66e8d021`; `DEFERRED_HEAVY_RUNS.md`). The blocker for the FULL residual: the
+92: > fresh WL primaries `.out` also builds `COUPLING_KERNEL_TERM_ORIGINS` (a full `extractCoupling` per origin), which
+93: > exceeded 30 GB (one case > 15.6 GB and growing → OOM; STEP 0's on-box claim was overturned —
+94: > `_measurements/S11c_b_step0_residual_scope.md`). ⇒ the reviewed comparator decision lists P2a (slab-row join +
+95: > `row_residual`) and P2b (§3a scale bridge) are committed as the SPEC for that run, but their BUILDS + the run + the
+96: > #88 re-adjudication + the 2 owed control-hardenings are ≥64 GB work. **The committed in-tree `.out` are STALE for
+97: > this record** (WL at `d4adbd99` = pre-#89b, frozen operator; PY = pre-fold PRIMARIES_ONLY) — a reader of them will
+98: > not see the objects below; the fresh post-fold/#90 `.out` live only in `~/.s11_build/` scratch. `S11c_b_exports.py`
+99: > was regenerated by the fresh PY run (faithful — `BUILD_INPUT_DIGESTS` match the committed folded+#90 engine + spec)
+100: > and COMMITTED `af560257` (per user direction, satisfying N1's per-sub-step exports obligation); ⚠ its coupling
+101: > content is per-engine leg-verified (fold pin B + #90) but NOT yet cross-engine-validated, so S11c-c imports
+102: > per-engine-verified coupling with the cross-engine residual still deferred. The two
+103: > whole-row SIGN conventions (kinetic −K PY vs +K WL; face generalized-force) and #90's two flags (closure-fold sign;
+104: > uniform-limit Λ survivor) remain **cross-engine-UNVALIDATED**.
+105: ```
+106: 
+107: ```
+108: $ sed -n 35p research/pde_ledger_v3/steps/S11c_b_variable_coefficient_operator.md
+109: density representatives ρ4D/ρbr, two anchorings LAB_HELD/MATERIAL_ADVECTED), S11c-b computes: (1) the **§3a energy
+110: ```
+111: 
+112: ```
+113: $ grep -n '^DIRECTIONS =' research/pde_ledger_v3/scripts/S11c_b_brane_operator_sympy_audit.py

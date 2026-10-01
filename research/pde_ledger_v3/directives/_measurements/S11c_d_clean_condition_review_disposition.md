@@ -97,3 +97,94 @@ Every finding below changes what is computed or what may be claimed. **All are a
 
 **Next:** fold into v2 (A, B), then a fresh two-leg round. This is a physics spec/directive, so the rule is
 review-until-clear (G2/G4), ⛔ not fold-once.
+
+---
+
+# Round 2 — review of v2
+
+**Prompt:** `directives/_legs/S11c_d_clean_condition_review_round2_prompt.md` (7944 bytes). It is identical for
+both legs and is rendered from the round-1 template. It adds a fold-check item and hands over this disposition.
+The commands are the same as in round 1.
+
+**Reports:**
+- `S11c_d_clean_condition_review_r2_codex_sol.txt` (final message)
+- `S11c_d_clean_condition_review_r2_grok.txt`
+
+The scripts are in `S11c_d_clean_condition_review_scripts/r2_{codex,grok}/`.
+
+**Verdicts:**
+- **Codex:** "not cleared". The fixed-mirror H-planar, pin B, both anchorings, K1/K2 as FORM controls and the H-round
+  parity table all clear.
+- **Grok:** "H is right for this operator on the class A/B now name. The packet is **not clear**. Two defects still
+  change what Part 1 would compute or what the citations support."
+
+**⚠ Process slip, recorded.** I began the v3 fold by editing v2 in place before committing v2 as the reviewed
+baseline (G4). v2 was recovered exactly:
+- **Source:** the Codex leg's literal `nl -ba` dump of both files at review time (transcript line 11011 onward;
+  the transcript is outside the repo).
+- **Check:** byte-identical (`cmp`) to the copies the Grok leg saved independently (`/tmp/s11cd_clean_review_r2_grok/{A,B}.md`).
+
+The v2 files are therefore committed as reviewed, and v3 is applied after this commit.
+
+## Orchestrator verification — mechanical lookups, 2026-09-30
+
+```
+$ sed -n 112,114p research/pde_ledger_v3/steps/S11c_b_variable_coefficient_operator.md
+  in-band-but-verified-out-of-band: the #89 PY skipped controls + the #89b WL heavy controls.) **Two whole-row SIGN
+  CONVENTIONS** to adjudicate there (kinetic −K PY vs +K WL; face generalized-force PY `+diff` vs WL
+  `−linearVirtualVariation`) — the comparator SURFACES them, does not normalize them (rule 1/6). **#90's two flags**
+$ sed -n 35,37p research/pde_ledger_v3/steps/S11c_b_variable_coefficient_operator.md
+density representatives ρ4D/ρbr, two anchorings LAB_HELD/MATERIAL_ADVECTED), S11c-b computes: (1) the **§3a energy
+basis** — the O(3)-Kronecker field-bilinear invariant family, corrected to **40 = 10 uniform + 15 ∂W_bg-spurion + 15
+∂μ_R,bg-spurion**; (2) the **variable-coefficient slab OPERATOR ROWS** — the equations of motion for U/θ/e_W with the
+$ sed -n 2377,2381p docs/native_light_em_and_vortex_throat_interpretation.md
+### 9.8 A trapped standing wave is not automatically spinning
+
+A real linearly polarized standing wave can have zero time-averaged angular
+momentum. Two degenerate modes with a relative phase can form a circularly
+polarized bound pattern that carries angular momentum. Orbital winding can
+$ grep -n "CENTER_FACE_GENERALIZED_ROW" research/pde_ledger_v3/scripts/S11c_b_brane_operator_sympy_audit.py | head -2
+2237:        "CENTER_FACE_GENERALIZED_ROW": center_face,
+3112:            Str("CENTER_FACE_GENERALIZED_ROW"),
+$ sed -n 343,345p research/pde_ledger_v3/directives/S11c_a_SHARED_PHYSICS.md ; sed -n 365,366p (same file)
+δ_vx_s^α ≡ δ_vR_s^α|_X ,              v_face,s^α ≡ ∂_tR_s^α|_X ,
+V_s^α ≡ V_{n,s}^α ≡ n̂_s^α·v_face,s^α .
+δ_v𝒲_bulk^α ≡ Σ_s a_s^α t_s^α·δ_vx_s^α ,
+∂_tΣ^α + ∇_x·(Σ^α v) = −Σ_s a_s^α J_s^α ,       v = ∂_t u .
+$ sed -n 195,196p research/pde_ledger_v3/directives/S11c_b_SHARED_PHYSICS.md
+𝔅⁰ ≡ {W_bg, μ_R,bg, ρ_4D,bg⁰, ρ_br,bg⁰, θ⁰, V_s⁰, J_s⁰, 𝒜_s⁰, boundary loads} ,   θ⁰ ≡ 0 ,
+𝒮_hold⁰ ≡ {f_hold⁰(x), t_hold,s⁰(x)} ,   V_s⁰ = J_s⁰ = 𝒜_s⁰ = 0 .
+$ sed -n 190,195p research/pde_ledger_v3/scripts/S11c_b_brane_operator_sympy_audit.py
+    for i in range(1, 4)
+)
+w1_grad = tuple(
+    inherited_symbol(f"w1_profile_d{i}", "KNOB", f"thickness-profile first jet {i}", DIM_ZERO)
+    for i in range(1, 4)
+)
+$ grep -o 'w1_profile_d[0-9]' research/pde_ledger_v3/scripts/S11c_b_exports.py | sort | uniq -c
+  43040 w1_profile_d1
+  34147 w1_profile_d2
+  27186 w1_profile_d3
+$ ls CHARTER.md ../../CHARTER.md   (from research/pde_ledger_v3)
+ls: cannot access '../../CHARTER.md': No such file or directory
+CHARTER.md
+```
+
+## Dispositions (all accepted; v3 folds them)
+
+| # | finding (leg) | verified by | v3 change |
+|---|---|---|---|
+| R2-1 | "Index 2 or 3" is ambiguous. SymPy loops `DIRECTIONS = range(3)` (0-based), but symbol names are 1-based (`u_1`, `w1_profile_d1`) (Grok 1). | engine `:190–195`; export symbol counts | **B:** R1 is bound to symbol-name labels, and the 0-based loop variable is excluded explicitly. |
+| R2-2 | The rotation-to-every-incidence claim needs **full `O(2)` invariance** of background values about direction 1. Independence of directions 2/3 plus one mirror is not enough: a constant direction-2 vector breaks it (Codex 1). | spec `:195–196` (hold vectors exist) | **A:** an explicit `O(2)` premise, with the fallback that only incidence planes containing a mirror are protected. P2 separates law covariance from background-value invariance. **B:** R1 requires background vectors along direction 1 only, and tensors rotation-invariant about it. |
+| R2-3 | The comparator's pre-residual convention mapping conflicts with the record: "the comparator SURFACES them, does not normalize them" (Codex 2). | record `:112–114` | **B:** raw operands and raw residual first; a mapped diagnostic only after, under distinct names. |
+| R2-4 | The operator/dependency matrix is not uniquely defined. It omits the `ζ_c` centre row, `t_s`, `v_face`, `a_s` and `δ_v x_s`; `δp_s` is an input (Codex 3). | engine `:2237`; S11c-a `:343–354`, `:365–366` | **B:** one rectangular Fréchet map with ordered inputs (slab fields + bulk trace inputs) and ordered outputs (all rows including the centre row + every face quantity). **A:** the closure paragraph lists the full face path. |
+| R2-5 | The SymPy import of `S11c_b_exports.py` bypasses "restrict before construction" (Codex 4). | B v2 `§4` vs `§2` | **B:** an import whitelist (symbol definitions + the accepted 40-term basis only); no exported operator/kernel/face row. |
+| R2-6 | The F2 angular-momentum wording is wrong. Two real standing modes in quadrature carry angular momentum; "circulating" need not mean travelling (Codex 5). **New in v2.** | native_light `:2377–2381` | **A:** F2 quotes the source and names the degenerate-pair-in-quadrature case. |
+| R2-7 | R-LEAK-1 mixes a linear selection rule with particle stability, so F3/F4 cannot falsify a linear theorem (Codex 6). | Codex `operator_symmetry_audit` stdout: `LINEAR_ODD_SCALAR_HESSIAN_AT_BACKGROUND 0`, `NONLINEAR_SCALAR_SOURCE lambda*odd_amp**2` | **A:** R-LEAK-1 is the particle-stability requirement. H is its linear clean condition, with falsifiers F1/F2/F2b/F5/F6. F3/F4 become nonlinear gates N1/N2. H alone is stated not to deliver stability. |
+| R2-8 | "Exponential for smooth profiles" is wrong for C∞ compact bumps, which have stretched-exponential tails (Codex 7). | Codex `smooth_profile_fourier_audit` stdout | **A:** "rapid suppression (exponential for suitable analytic profiles)". |
+| R2-9 | Citations: record `:35` → `:35–37`; `CHARTER.md` path; leg-evidence claims grounded only by a directory listing; §3c pairing text not reproduced (Grok 2; Codex). | lookups above | **A/B:** corrected. The grounding files reproduce the leg stdout excerpts and the §3c text. |
+
+**Round-count note.** v2 introduced two new defects in material just changed (R2-3 conflicts with the record; R2-6
+mis-states the source). Under G4, if v3's review again finds defects bred by the fold itself, the author changes
+(⛔ no fourth fold). The physics core (H, its parity bookkeeping) cleared in both rounds. The open items are the
+directive's mechanics and the doc's claim scope.

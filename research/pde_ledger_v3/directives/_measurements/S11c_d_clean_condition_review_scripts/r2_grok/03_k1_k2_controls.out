@@ -1,0 +1,39 @@
+=== K1 ===
+K1 = a_K1*d1_th*d1_u1*sin(beta) + a_K1*d1_th*d1_u3*cos(beta) + a_K1*d2_th*d2_u1*sin(beta) + a_K1*d2_th*d2_u3*cos(beta)
+K1_mixed = a_K1*d1_th*d1_u3*cos(beta) + a_K1*d2_th*d2_u3*cos(beta)
+K1_even_even = a_K1*d1_th*d1_u1*sin(beta) + a_K1*d2_th*d2_u1*sin(beta)
+K1_odd_odd = 0
+K1_other = 0
+K1_mixed_zero_identically = False
+K1_mixed_at_beta_0 = a_K1*(d1_th*d1_u3 + d2_th*d2_u3)
+K1_mixed_at_beta_pi_2 = 0
+K1_even_even_at_beta_0 = 0
+
+=== K2 ===
+K2 = a_K2*d2_u3*g1*theta
+K2_mixed = a_K2*d2_u3*g1*theta
+K2_even_even = 0
+K2_odd_odd = 0
+K2_other = 0
+K2_mixed_zero_identically = False
+K2_at_g1_0 = 0
+K2_at_d2_u3_0 = 0
+
+=== K2 IBP remainder ===
+IBP_remainder_mixed = -a_K2*d2_th*g1*u3
+remainder_is_mixed = True
+
+=== K1 IBP remainder ===
+K1_IBP_remainder = -a_K1*lap_theta*u3*cos(beta)
+
+=== FORM character ===
+K1_introduces_preferred_axis_with_e3 = True
+K1_e3_piece_not_in_R1_N15_because_g3_is_0 = True
+K2_uses_LeviCivita_forbidden_by_Kronecker_family = True
+K2_is_zero_on_P_if_k2_frozen_to_0_and_no_x2_dependence = True
+
+=== ehat contracted into derivative index (NOT v2 K1) ===
+e·∇theta on P = d1_th*sin(beta)
+e3_slot_inert_on_P = True
+e_i d_k u_i = (d1_u1*sin(beta) + d1_u3*cos(beta), d2_u1*sin(beta) + d2_u3*cos(beta), 0)
+e3_field_slot_active = True

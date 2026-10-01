@@ -1,0 +1,29 @@
+=== H-round: inversion parities of vector spherical harmonics ===
+toroidal_parity = (-1)**(l+1)
+spheroidal_parity = (-1)**l
+scalar_parity = (-1)**l
+same_l_toroidal_vs_scalar_opposite = True
+rotation_conserves_l_m = True
+inversion_conserves_parity = True
+toroidal_l_parity_equals_spheroidal_l_plus_1 = True
+blocked_by_l_conservation_under_SO3 = True
+scalar_bulk_toroidal_content = 0
+curl_of_grad_phi_is_0 = True
+
+=== H-planar: rotation about profile axis ê1 in the brane ===
+k2p_at_psi_star = sqrt(k2**2 + k3**2)
+k3p_at_psi_star = 0
+k3p_is_zero = True
+k2p_equals_k_perp = True
+numeric_k2p = 5.0
+numeric_k3p = 0.0
+numeric_k_perp = 5.0
+TE_polarization_after_rotation = e3
+background_W_of_x1_invariant_under_this_rotation = True
+without_R1_W_of_x1_x2_breaks_rotation_about_e1 = True
+without_R1_oblique_cannot_be_rotated_into_class_P = True
+
+=== Swirl vs radial drain ===
+azimuthal_background_is_toroidal_m0 = True
+radial_v_r_e_r_is_spheroidal = True
+normal_drain_v_w_is_even_under_inplane_reflection = True

@@ -1,6 +1,21 @@
-# S11c_d_zinvariant_operator_blocks_directive.md (v1) — grounding commands (rule 2 / E1)
+# S11c_d_zinvariant_operator_blocks_directive.md (v2) — grounding commands (rule 2 / E1)
 
-Mechanical lookups, run from the repo root on 2026-09-30, HEAD `14861016`. Regenerated from the commands below; nothing transcribed.
+Mechanical lookups, run from the repo root on 2026-09-30, HEAD `7b38e9dc`. Regenerated from the commands below; nothing transcribed.
+
+```
+$ sed -n 8,13p AGENTS.md
+For future S11c Python constructors, validators and export jobs, use
+`scripts/s11c_guarded_run.py` around the existing supervisor. It requires a
+host systemd user manager, verifies a whole-job 2 GiB memory cap, disables
+job swap, limits process count and CPU affinity, lowers CPU/I/O priority,
+records resource samples and fails closed. Keep native memory limits too. Never fall back to an unguarded launch if containment fails.
+One job at a time; no overlapping CAS or automatic retries. Lightweight
+```
+
+```
+$ ls -la scripts/s11c_guarded_run.py
+-rw-rw-r-- 1 trevnorris trevnorris 10714 Sep 30 09:51 scripts/s11c_guarded_run.py
+```
 
 ```
 $ sed -n 5p research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_flow_calibration_assessment.md
@@ -31,6 +46,44 @@ active DOF, and appears in no derived operator (§0).
 ```
 
 ```
+$ sed -n 95,97p research/pde_ledger_v3/directives/S11c_b_SHARED_PHYSICS.md
+Inherited from S11c-a §1b unchanged: the rest-frame bulk fields `v_bulk=∇₄φ`, `δp=−ρ_m∂_tφ`,
+`∂_t²φ=c_s0²∇₄²φ`; the current and conservation law `j=ρ_4D v_bulk`, `∂_tρ_4D+∇₄·j=0`; and the
+dynamic, anchored slab window `Ω` supplied in S11c-a §3. S11c-b performs no curved-bulk response solve (§0).
+```
+
+```
+$ sed -n 145,154p research/pde_ledger_v3/directives/S11c_b_SHARED_PHYSICS.md
+J_s = Λ_A(ω)𝒜_s + Λ_V(ω)V_s ,   Λ_I(ω)=Λ_I⁰/(1−iωτ_I) ,  I∈{A,V,X} ,
+𝒜_s = μ_s − δp_s/ρ_m ,   μ_s = μ_θ/ρ_br⁰ ,
+t_s = −(δp_s + Λ_X(ω)𝒜_s)n̂_s ,   n̂_s·v_bulk,s = V_s + J_s/ρ_m ,
+∂_tΣ + ∇_x·(Σ v) = −(J₊+J₋) ,   Σ ≡ Σ_E ≡ ρ_4D W ,   v ≡ ∂_t u ,
+δ_vΣ_mat = 0 ,   (uniform linearisation)  δ_vθ + δ_ve_W + ∇_x·δ_vu = 0 .
+```
+
+The three `τ_I` are independent. Equations of motion are obtained by S11b's method — balance laws, the
+binding virtual-displacement rule, variational derivatives with held-fixed fields named, and prescribed
+external virtual work — **not** by putting an irreversible response kernel in an ordinary action.
+```
+
+```
+$ sed -n 180,187p research/pde_ledger_v3/directives/S11c_b_SHARED_PHYSICS.md
+### 2a · The background ansatz — inherited
+
+The background ansatz is S11c-a §2 imported unchanged: the constant bindings `W̄₀≡W_0`, `μ̄_R≡mu_R`; the
+fresh varying profiles on the anchor coordinate `y`,
+
+```text
+ξ ≡ y/L_W ,   W_bg(y) ≡ W̄₀[1+η w₁(ξ)] ,   μ_R,bg(y) ≡ μ̄_R[1+η m₁(ξ)] ,   σ_W ≡ η W̄₀/L_W ,
+∂_{yᵢ}W_bg = σ_W ∂_{ξᵢ}w₁ ,   ∂_{yᵢ}μ_R,bg = (μ̄_R/W̄₀) σ_W ∂_{ξᵢ}m₁ ;
+```
+
+```
+$ grep -n '^### 3c' research/pde_ledger_v3/directives/S11c_b_SHARED_PHYSICS.md
+312:### 3c · The off-diagonal coupling kernel
+```
+
+```
 $ sed -n 15,31p research/pde_ledger_v3/steps/S11c_b_variable_coefficient_operator.md
 > ⚠⚠ **STATUS OF THE CLOSE (2026-09-03).** S11c-b closes on **per-engine leg-verification** + a coarse single-case
 > cross-engine consistency check. **The full CROSS-ENGINE RESIDUAL is DEFERRED to a ≥64 GB box by USER CHOICE** — a
@@ -52,9 +105,13 @@ $ sed -n 15,31p research/pde_ledger_v3/steps/S11c_b_variable_coefficient_operato
 ```
 
 ```
-$ grep -n '^### 2a\|^### 3c' research/pde_ledger_v3/directives/S11c_b_SHARED_PHYSICS.md
-180:### 2a · The background ansatz — inherited
-312:### 3c · The off-diagonal coupling kernel
+$ sed -n 35p research/pde_ledger_v3/steps/S11c_b_variable_coefficient_operator.md
+density representatives ρ4D/ρbr, two anchorings LAB_HELD/MATERIAL_ADVECTED), S11c-b computes: (1) the **§3a energy
+```
+
+```
+$ grep -n '^DIRECTIONS =' research/pde_ledger_v3/scripts/S11c_b_brane_operator_sympy_audit.py
+57:DIRECTIONS = range(3)
 ```
 
 ```
@@ -67,5 +124,10 @@ $ ls -la research/pde_ledger_v3/scripts/S11c_b_brane_operator_sympy_audit.py res
 ```
 $ git log -1 --format='%h %s' af560257
 af560257 S11c-b exports.py regen (folded + #90 LEDGER) — faithful, digests match committed inputs
+```
+
+```
+$ ls research/pde_ledger_v3/steps/ | grep -i c1
+S11c_c1_curved_bulk_closure.md
 ```
 

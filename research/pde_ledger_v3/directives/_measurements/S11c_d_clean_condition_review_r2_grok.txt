@@ -1,0 +1,177 @@
+I'll start by reading the governing physics sources and forming an independent view of the operator's symmetry, then I'll check artifacts A and B against that.I'll read the S11c-b spec, step record, and operator construction first, then form an independent view of the symmetry.Next I’ll pull the energy-basis, operator-construction, and reflection-symmetry sections so I can judge H from the actual operator.I have an independent picture of the operator; next I’ll read artifacts A and B, the grounding files, and the round-1 disposition.I have the packet in view. Next I’ll verify citations, check engine indexing, and run small symbolic tests of the parity claims.I have enough structure to compute the parity claims; next I’ll write the derivation scripts and run the citation checks.# Independent physics review (Grok, round 2)
+
+**Packet:** A `S11c_d_clean_condition.md` v2 + B `S11c_d_zinvariant_operator_blocks_directive.md` v2.  
+**Verdict:** H is right for this operator on the class A/B now name. The packet is **not clear**. Two defects still change what Part 1 would compute or what the citations support.
+
+Scripts and stdout: `/tmp/s11cd_clean_review_r2_grok/` (`01`–`06`, `.py` and `.out`). No Wolfram kernel. PID 4097233 was not touched.
+
+---
+
+## 1. Hypothesis H on this operator
+
+### H-planar
+
+On a one-direction background (R1: every profile jet with a 2- or 3-index zero) and perturbations independent of direction 3 (class P), the in-plane reflection \(x_3\to -x_3\) splits the linear theory into:
+
+| sector | fields on P |
+|---|---|
+| **even** | \(u_1,u_2,\theta,e_W,\zeta_\pm,\delta p_s,\mu_s,\mathcal A_s,J_s,V_s,\varphi\) |
+| **odd** | \(u_3\) only |
+
+An \(x_3\)-independent scalar cannot be odd unless it is identically zero, so the odd-sector bulk field is empty. That is the representation of a polar vector: its odd part is its direction-3 component (`01` stdout: `R_on_polar_u = (u1, u2, -u3)`).
+
+The S11c-b stored-energy family does not mix those sectors. The engine builds invariants by Kronecker contractions only (`delta_contractions` in `S11c_b_brane_operator_sympy_audit.py`; no `LeviCivita` in that file). Restricted to R1+P, that family has
+
+- `uniform_mixed_count = 0`
+- `new_mixed_count = 0`
+- a live odd self-energy `(d1_u3**2 + d2_u3**2, d1_u3*g1*u3)`
+- `|∇×u|²` mixed piece `0`
+
+(`01_reflection_and_energy_parity.out`.) P1 holds for the accepted 40-term basis.
+
+Face geometry, constraint, and both anchorings stay even:
+
+- Graph \(h_s = s W(x_1)/2+\zeta(x_1,x_2)\) has \(\partial_3 h=0\), so \(n_3=0\).
+- \(V_s=\hat n\cdot v_\text{face}\) has `coeff_u3t = 0`.
+- Traction work \(\mathbf t\cdot\delta u_3=0\) because \(\mathbf t\parallel\hat n\).
+- \(J_s=\Lambda_A\mathcal A+\Lambda_V V\) therefore sees \(u_3\) only if \(\mu_\theta\) does; \(\mu_\theta\) does not, by the Kronecker count above.
+- Constraint divergence on P has no \(u_3\) (\(\partial_3 u_3=0\)).
+- MATERIAL_ADVECTED linear carrier \(\mathbf u\cdot\nabla\rho\) is \(u_1\partial_1\rho\) only (`adv_coeff_u3 = 0`).
+
+(`02_faces_constraint_anchoring.out`.) P2 and P4 (pin B, both anchorings) hold on this class. P3 remains what A says it is: the drain is absent from every derived operator (spec `:90–91`).
+
+A’s closure reading is right for this bulk. S11b’s bulk is a scalar potential, \(\mathbf v=\nabla_4\varphi\), traction \(t_s=-(\delta p+\Lambda_X\mathcal A)\hat n\). With \(n_3=0\) the twist row has no bulk operand, and a scalar DtN cannot manufacture one: \(\nabla\varphi\) is irrotational, so it has no toroidal content (`04`: `scalar_bulk_toroidal_content = 0`). Part 1 still has to print those dependences; the symmetry argument is not a substitute for that emit.
+
+### Rotation of oblique waves
+
+A, §1: “That background is also invariant under rotations about direction 1. So each tangential Fourier component of an oblique perturbation can be rotated into this form.”
+
+That rotation is the in-brane \(SO(2)\) in the \(x_2\)–\(x_3\) plane. \(W_\mathrm{bg}(x_1)\) is invariant under it. A numeric/symbolic map with \(\psi=-\mathrm{atan2}(k_3,k_2)\) sends \((k_2,k_3)\to(k_\perp,0)\) (`04`: `numeric_k2p = 5.0`, `numeric_k3p = 0.0`). The perpendicular polarization becomes \(e_3\). Without R1, \(W(x_1,x_2)\) breaks that \(SO(2)\), and the reduction fails. v2’s R1 is the condition that makes the claim true.
+
+### H-round
+
+Toroidal (magnetic) VSH parity \((-1)^{\ell+1}\), spheroidal and scalars \((-1)^\ell\). Rotation conserves \((\ell,m)\); inversion conserves parity. Same-\(\ell\) toroidal and scalar are opposite. Toroidal \(\ell\) shares parity with spheroidal \(\ell+1\), and \(SO(3)\) blocks that mixing. A’s bookkeeping is the standard one (`04`).
+
+R-LEAK-1 protects one of the two in-plane polarizations (the twist). The divergence-free spheroidal polarization has scalar parity and is the round analogue of TM. A’s table already sends that piece to R-LEAK-2.
+
+---
+
+## 2. Coverage and requirements
+
+The §2 table matches the operator split: TE-like / twist is protected on the named backgrounds; TM-like / non-twist converts; second order is even and can source scalars. Throat coverage is conditional on an \(O(3)\), swirl-free background and a normalizable twist bound mode, which is what the ontology actually gives (`:315`, `:957`).
+
+R-LEAK-1 / F1–F6 are in the right places:
+
+- F1 is the drain-on, closed-bulk coupling test (Part 1 cannot settle it).
+- F2 is a circulating twist, not \(m\neq 0\) standing.
+- F2b is an extra microrotation/director field (`native_light` `:113–116`).
+- Chiral trapped shear is a constitutive \(\varepsilon_{ijk}\) term; that is P1 / K2 / F2, not a hole.
+- F3/F4/F5/F6 are the nonlinear / existence / full-throat tests.
+
+“Transfers to the calibrated model” is now the right conditional: H has no speed coefficient; the drain-on, same-symmetry, same-field-content antecedent is unshown (assessment `:3`).
+
+§4 is fair. Fast bulk is kinematic suppression, and \(\lambda_\gamma=1\) is the GW170817 lock (`V3_STEP_PLAN.md:1116–1126`). A flow horizon would trap gravity changes, and \(\Gamma_\mathrm{drain}\) at throats is brane \(\to\) bulk (`ontology` `:1366`), with distributed return to the brane, not to the particle.
+
+No contradiction with the governing S11c-b/S11c-a/S11b statements cited. A is a proposal; it does not silently rewrite the S11c-d scattering amendment.
+
+---
+
+## 3. Round-1 fold
+
+All twelve accepted dispositions are present in v2. Residuals that still matter:
+
+| # | v2 status |
+|---|---|
+| 1 R1 + scoped rotation | R1 is in B; rotation is scoped in A. Residual: B still says “index 2 or 3” in 1-based labels while the SymPy engine loops `DIRECTIONS = range(3)` and names `u_1..u_3` (**Finding 1**). |
+| 2 K1/K2 pinned | Pinned as equations. K2 is a pure odd–even mixer on P. K1 mixes and also moves even–even blocks (below). |
+| 3 “governing action” | B constructs by spec `:151–154` balance laws. |
+| 4 bulk-facing rows | B lists \(\delta p_s\), \(\hat n\cdot v_\mathrm{bulk}\), \(J_s,V_s,\mathcal A_s,\mu_s,\hat n\) components. A’s closure paragraph is labelled interpretation. |
+| 5 P2 | Equivariance of scalars, polar vectors, axial vectors, support data. |
+| 6 throat overclaim | Conditional coverage; F5, F6, F2b added. |
+| 7 40 coefficients live | Stated in B. The supporting line cite is still `:35` rather than `:36` (**Finding 2**). |
+| 8 guard + comparator maps | `s11c_guarded_run.py`, 2 GiB, no unguarded fallback; kinetic and face-force maps required before residuals. |
+| 9 F2 / extra field | Circulating vs standing; F2b. |
+| 10 transfer | Conditional. |
+| 11 §4 wording | Suppression / unverified horizon / no generic symmetry-protected zero. |
+| 12 citations | Most quotes now match. Record `:35` and `CHARTER.md` do not (**Finding 2**). |
+
+K1/K2 as now pinned, from `03_k1_k2_controls.out`:
+
+```
+K1_mixed     = a_K1*(d1_th*d1_u3 + d2_th*d2_u3)*cos(beta)
+K1_even_even = a_K1*(d1_th*d1_u1 + d2_th*d2_u1)*sin(beta)
+K2           = a_K2*d2_u3*g1*theta     # mixed only
+```
+
+Both are FORM (preferred axis; Levi-Civita). K2 is identically zero if \(k_2\) is frozen; B keeps \(k_2\) live. IBP remainders still mix, so they are not null representatives on P. \(\hat e\) contracted into a **derivative** index is inert in the \(e_3\) slot on P; v2 contracts \(\hat e\) into the **field** index, which is the round-1 repair.
+
+---
+
+## 4. Directive B as a builder packet
+
+- **Object, not recipe.** “The complete linear operator of the S11c-b system acting on P.” Construction method is named; no target block is given as a value.
+- **Governing operator.** Matches S11c-b: three in-plane \(u\), \(\theta\), independent \(\zeta_\pm\), 40-term energy, face \(\Lambda_{A,V,X}\), pin B, both anchorings and density representatives, first order in \((\varepsilon,\eta,\sigma_W)\). Face generalized-force rows are how #90 put \(\Lambda\) into the operator.
+- **Leakage of expected zeros.** Tag names, file names, and control text do not state that TE blocks vanish. “Print every entry, including any that evaluates to 0” fixes the matrix shape by labels.
+- **Construct-all-at-once.** That is the tautology control. Splitting TE vs even before the variation would make a zero unfalsifiable; B forbids that split.
+- **K1/K2 vs unimplemented zeros.** K2’s difference lives only in mixed entries, so a hardcoded-zero TE–even block makes the K2 output byte-identical to baseline, which B requires to be reported. K1 also moves even–even \(u_1\)–\(\theta\) blocks (`K1_even_even`), so a byte-identical test on K1 can pass over an unimplemented mixed block; the required entry-by-entry difference still shows the mixed `cos β` entries. Keep looking at those entries, not at “something moved.”
+- **Freezes.** Drain absent; no bulk solve. Stated first in the report.
+- **Blind Wolfram.** Sound (imports nothing, not a transcription).
+- **Feasibility.** The binding cap is the 2 GiB guard (`AGENTS.md:8–12`, `scripts/s11c_guarded_run.py`), not the 30 GB box. S11c-b Wolfram hit 15.6 GB on coupling term-origins and ~16 GB/case on the un-frozen operator (step record `:15–31`, `:124–131`). Part 1 is a restricted rebuild without term-origins, so it may be smaller; a blind re-derivation of the live 40-term jet operator has no measured 2 GiB success. B treats a contained failure as a result, so the likely first outcome is a cap report rather than the blocks.
+- **Lane.** Build → run → report → stop; no commit; no agents.
+- **Part 2.** The drain “appears in no derived operator” (spec `:90–91`). Asking which committed spec is missing, then stopping for go/no-go, is the right place for that gap. The radial+normal, no-swirl pattern is A’s P3 ansatz for a later object, not a licence to invent convective terms.
+
+---
+
+## Findings
+
+### Finding 1 — R1 / K1 / K2 index labels can miss the SymPy engine
+
+**B §2:** “Use the engines’ three in-plane directions, called 1, 2 and 3 here.” Then: “Every background profile jet carrying any index 2 or 3 is zero.” Class P is independent of direction 3; K1’s \(\hat e\equiv(\sin\beta,0,\cos\beta)\) is in components (1,2,3); K2 is \(\varepsilon_{ijk} g_i\partial_j u_k\).
+
+**Engine:**
+
+```
+DIRECTIONS = range(3)          # loop indices 0,1,2
+u = tuple(... for a in range(1, 4))   # symbols u_1, u_2, u_3
+spatialCoordinates = {xOne, xTwo, xThree}  # WL, 1-based
+directions = Range[braneDimension]         # {1,2,3}
+```
+
+(`06_engine_index_and_form.out`.)
+
+Zeroing Python loop indices 2 and 3 does not implement R1: there is no index 3, and index 2 is only the last direction. The `*_d2` jet (`u_*_d2`, engine direction 2 / B’s “2”) would stay live. Then the background is not one-directional, A’s rotation reduction is false, and K2 \(= a_{K2}\,g_1\theta\,\partial_2 u_3\) sits on whatever direction the builder actually kept.
+
+Wolfram’s `{xOne,xTwo,xThree}` matches B’s 1,2,3. The hazard is the SymPy loop. B asks the builder to state the map; the restriction sentence still says “index 2 or 3” without binding that phrase to symbol names versus `DIRECTIONS`.
+
+### Finding 2 — two citation mismatches
+
+**Record `:35` vs `:36`.**  
+A P1: “the O(3)-Kronecker field-bilinear invariant family” (record `:35`).  
+B: “all 40 accepted stored-energy basis terms … (record `:35`).”
+
+Actual line 35:
+
+> `density representatives ρ4D/ρbr, two anchorings LAB_HELD/MATERIAL_ADVECTED), S11c-b computes: (1) the **§3a energy`
+
+Actual line 36:
+
+> `basis** — the O(3)-Kronecker field-bilinear invariant family, corrected to **40 = 10 uniform + 15 ∂W_bg-spurion + 15`
+
+Both grounding files run `sed -n 35p` and therefore do not contain either quoted phrase (`05_citation_verify.out`). The physics on line 36 is the right physics; the pinpoint is wrong. A builder who reads only `:35` does not see the 40-count.
+
+**`CHARTER.md`.** A: “Under requirements-first (`CHARTER.md`)”. There is no `CHARTER.md` at the repo root. The file is `research/pde_ledger_v3/CHARTER.md`, and it does contain `REQUIREMENTS-FIRST`. It is absent from A’s grounding file.
+
+Other A/B repo quotes checked against the grounding files and the sources matched (assessment `:3`, spec `:90–91` and `:95–97`, S11c-a `:350–354`, ontology `:26,:315,:362,:957,:1366`, `native_light` `:113–116,:1343,:2377`, AGENTS `:8–12`, record `:15–31`).
+
+---
+
+## Scripts
+
+| path | content |
+|---|---|
+| `/tmp/s11cd_clean_review_r2_grok/01_reflection_and_energy_parity.{py,out}` | reflection sectors; Kronecker family on R1+P; curl-squared |
+| `/tmp/s11cd_clean_review_r2_grok/02_faces_constraint_anchoring.{py,out}` | \(n_3\), \(V_s\), traction work, constraint, MATERIAL_ADVECTED |
+| `/tmp/s11cd_clean_review_r2_grok/03_k1_k2_controls.{py,out}` | v2 K1/K2 mixing, IBP remainders, FORM character |
+| `/tmp/s11cd_clean_review_r2_grok/04_round_parity_and_rotation.{py,out}` | VSH parities; rotation \((k_2,k_3)\to(k_\perp,0)\) |
+| `/tmp/s11cd_clean_review_r2_grok/05_citation_verify.{py,out}` | phrase-in-file / phrase-in-grounding |
+| `/tmp/s11cd_clean_review_r2_grok/06_engine_index_and_form.{py,out}` | DIRECTIONS vs symbol names; Kronecker-only basis |

@@ -1,0 +1,196 @@
+codex
+# Review verdict: not cleared
+
+The central physics is sound only after narrowing H-planar:
+
+- The fixed `3→−3` reflection does decouple `u₃` from the even sector on R1/P.
+- The 40-term energy family, tilted faces, `Λ_A/Λ_V/Λ_X`, both anchorings, and pin-B constraint preserve that reflection.
+- H-round’s toroidal/spheroidal parity bookkeeping is correct for the existing field content.
+- K1 and K2 are genuine parity-breaking FORM controls.
+
+Seven issues still change what may be computed or claimed.
+
+## Findings
+
+1. **H-planar lacks the premise needed to rotate every incidence direction.**
+
+A assumes only a single-coordinate background and one reflection:
+
+> “all background data invariant under … `(3 → −3)`” and then “That background is also invariant under rotations about direction 1.”  
+> — [A:45](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_clean_condition.md:45)
+
+B’s R1 likewise requires background data to be independent of directions 2 and 3:
+
+> “Every other background datum is independent of directions 2 and 3.”  
+> — [B:62](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_zinvariant_operator_blocks_directive.md:62)
+
+Neither condition implies rotational invariance. A constant support/background vector along direction 2 is independent of directions 2/3 and invariant under `3→−3`, but changes under rotation about direction 1. My computation gives:
+
+> `R1_VECTOR_MIRROR3_RESIDUAL (0, 0, 0)`  
+> `R1_VECTOR_ROTATION_ABOUT1_RESIDUAL (0, b*(cos(alpha) - 1), b*sin(alpha))`
+
+Therefore the fixed-mirror theorem is valid, but the “for each incidence direction” TE conclusion requires an additional premise: every background tensor value, support, boundary datum, domain, and response law must be invariant under the full `O(2)` about direction 1. Otherwise only incidence planes aligned with an actual mirror are protected.
+
+This also repairs P2: covariance of a law is not enough; the chosen background and boundary values must be fixed by the symmetry.
+
+2. **The comparator instruction would hide the two unresolved sign disagreements.**
+
+B says:
+
+> “The two whole-row sign conventions … must be mapped explicitly … before any residual is computed.”  
+> — [B:127](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_zinvariant_operator_blocks_directive.md:127)
+
+The governing record says the opposite:
+
+> “the comparator SURFACES them, does not normalize them.”  
+> — [S11c-b record:112](/var/projects/toy_physics/research/pde_ledger_v3/steps/S11c_b_variable_coefficient_operator.md:112)
+
+The raw PY operand, raw WL operand, and raw residual must be emitted first. A convention-mapped diagnostic may follow under a distinct name, but cannot replace the raw comparison. Otherwise an unresolved kinetic or face-force sign disagreement can be manufactured into agreement.
+
+3. **The requested operator/dependency matrix is not uniquely defined and omits interface paths needed by A’s closure argument.**
+
+A describes the bulk interface using only:
+
+> “`δp_s`, `n̂_s·v_bulk,s`, `J_s`, `V_s`”  
+> — [A:75](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_clean_condition.md:75)
+
+B adds `𝒜_s`, `μ_s`, and the normal, but permits them as unspecified “rows or columns”:
+
+> “include, as explicit rows or columns, every bulk-facing operand…”  
+> — [B:77](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_zinvariant_operator_blocks_directive.md:77)
+
+The governing face law also consumes the face-velocity vector, traction, true-area measure, and virtual displacement:
+
+> `t_s^α ≡ −(δp_s^α + Λ_X 𝒜_s^α)n̂_s^α`  
+> `δ_v𝒲_bulk^α ≡ Σ_s a_s^α t_s^α·δ_vx_s^α`  
+> — [S11c-a:340](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_a_SHARED_PHYSICS.md:340)
+
+The actual engine separately emits a `CENTER_FACE_GENERALIZED_ROW` for independent `ζ_c`:
+
+> `CENTER_FACE_GENERALIZED_ROW`  
+> — [SymPy engine:2135](/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_b_brane_operator_sympy_audit.py:2135), [emission:3104](/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_b_brane_operator_sympy_audit.py:3104)
+
+B should pin one rectangular Fréchet map with an ordered input vector and ordered output vector. It must explicitly include `ζ_c`, its center row, `t_s`, `v_face,s`, `a_s`, and all bulk trace components consumed by the laws. `δp_s` is an independent input without the bulk solve, not interchangeably a row or column.
+
+Without this pin, different builders can produce different matrices, and a missing face channel can appear zero merely because it was never represented.
+
+4. **The allowed SymPy import can bypass R1’s “restrict before construction” requirement.**
+
+B correctly says:
+
+> “Do not build the unrestricted operator and restrict it afterwards.”  
+> — [B:62](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_zinvariant_operator_blocks_directive.md:62)
+
+But later allows:
+
+> “SymPy. It may import `scripts/S11c_b_exports.py`.”  
+> — [B:122](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_zinvariant_operator_blocks_directive.md:122)
+
+That export contains the already-constructed unrestricted four-case operator and kernel; the producer loops over both branches and density representatives before emitting them. [SymPy engine:4144](/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_b_brane_operator_sympy_audit.py:4144)
+
+The directive must whitelist imports: symbol identities and the accepted 40-term constitutive basis may be reused, but no exported slab operator, kernel, face row, or derived unrestricted payload may be consumed. R1 must enter the energy, background-jet maps, and face substrate before variation.
+
+5. **F2’s angular-momentum statement is too strong and contradicts its citation.**
+
+A says:
+
+> “only a circulating (complex, travelling) twist mode carries angular momentum. A real standing twist mode carries none.”  
+> — [A:113](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_clean_condition.md:113)
+
+The cited source says:
+
+> “A real linearly polarized standing wave can have zero … Two degenerate modes with a relative phase can form a circularly polarized bound pattern that carries angular momentum.”  
+> — [native-light:2377](/var/projects/toy_physics/docs/native_light_em_and_vortex_throat_interpretation.md:2377)
+
+My real-coordinate calculation likewise returns:
+
+> `REAL_LINEAR_STANDING_PAIR_ANGULAR_MOMENTUM 0`  
+> `REAL_QUADRATURE_STANDING_PAIR_ANGULAR_MOMENTUM A**2*omega`
+
+Replace F2’s statement with: a single real linearly polarized eigenmode can have zero time-averaged angular momentum; two degenerate toroidal modes in quadrature can carry it. Such a bound pattern need not be a spatially travelling mode.
+
+6. **R-LEAK-1 mixes a linear selection rule with a particle-stability requirement.**
+
+A correctly limits the result to:
+
+> “exact zero at linear order”  
+> — [A:92](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_clean_condition.md:92)
+
+But F4 calls second-order leakage a falsifier of R-LEAK-1:
+
+> “Second-order leakage of the twist mode…”  
+> — [A:121](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_clean_condition.md:121)
+
+The symbolic selection rule is:
+
+> `NONLINEAR_TERM_REFLECTION_RESIDUAL 0`  
+> `NONLINEAR_SCALAR_SOURCE lambda*odd_amp**2`  
+> `LINEAR_ODD_SCALAR_HESSIAN_AT_BACKGROUND 0`
+
+Thus reflection forbids linear odd/even mixing but allows an even scalar source quadratic in the twist amplitude. Either:
+
+- define R-LEAK-1 strictly as a linear theorem, making F3/F4 downstream nonlinear gates rather than falsifiers; or
+- define particle stability as the requirement, in which case H alone is not sufficient and a nonlinear leakage bound/zero is still required.
+
+The current text should not equate the linear exact zero with completed particle stability.
+
+7. **“Exponential for smooth profiles” is not generally correct.**
+
+A says:
+
+> “suppression, exponential for smooth profiles”  
+> — [A:140](/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_clean_condition.md:140)
+
+A standard compact `C∞` bump is smooth but nonanalytic and has a stretched-exponential rather than generic `exp(−c|k|)` Fourier tail. The computed `−log|F|/k` decreases from `0.374` at `k=20` to `0.0675` at `k=320`.
+
+Use “rapid suppression; exponential for suitable analytic profiles” instead. The broader conclusion—suppression is not a generic exact zero—remains sound.
+
+## Citation audit
+
+All other grounded pinpoints checked against their files. These mismatches remain:
+
+- A P1 and B’s “40 terms” cite `record :35`, but line 35 ends at “§3a energy”; the quoted O(3) family and `40=10+15+15` occur on lines 36–37. The grounding file reproduces only line 35. [Record:35](/var/projects/toy_physics/research/pde_ledger_v3/steps/S11c_b_variable_coefficient_operator.md:35)
+- The F2 citation supports only the weaker linearly-polarized statement and explicitly supplies the quadrature counterexample.
+- A’s claims about what both round-1 legs computed are grounded only by a directory listing, not verbatim stdout/report excerpts.
+- B cites `spec §3c`, but its grounding file reproduces only the section heading, not the weak-pairing requirements it invokes.
+- `record :15–31` supports “cross-engine-unvalidated”; it does not support pre-residual convention mapping, and the later governing text expressly forbids normalization.
+
+## Round-1 fold status
+
+| Round-1 item | v2 status |
+|---|---|
+| 1. Three-direction background/R1/rotation | Partial: R1 fixed; full `O(2)` premise still missing |
+| 2. K1/K2 null representatives | Resolved |
+| 3. Ordinary-action construction | Resolved |
+| 4. No closed bulk operator | Partial: scope caveat fixed; dependency matrix remains incomplete/ambiguous |
+| 5. Vector face operands/P2 | Partial: vectors added; covariance versus invariant background values remains conflated |
+| 6. Throat coverage | Resolved |
+| 7. Forty-term model point | Resolved |
+| 8. Guard/comparator | Partial: guard and comparator added; comparator normalization conflicts with the record |
+| 9. Spin carrier and extra fields | Partial: extra-field case fixed; angular-momentum wording introduced a new error |
+| 10. Calibrated transfer | Resolved as a conditional statement |
+| 11. Rejected-option wording | Partial: main qualifications fixed; generic smooth-profile exponential claim remains |
+| 12. Citations | Not fully resolved |
+
+## Items that clear
+
+- Fixed-mirror H-planar is correct after R1/P.
+- Both anchorings and pin B are reflection-even.
+- K1 and K2 are nonzero parity-breaking FORM controls.
+- H-round’s parity table is correct: scalar/spheroidal `(-1)^ℓ`, toroidal `(-1)^(ℓ+1)`.
+- Conditional transfer to a calibrated operator with identical symmetry and field content is justified.
+- The drain and bulk-solve freezes are declared.
+- Part 2 correctly stops for missing drain-on governing equations rather than inventing them.
+- The blind Wolfram requirement and build→run→report→stop boundary are sound.
+- Feasibility under the current 2 GiB cap is unestablished: the historical unrestricted build reached roughly 16 GB/case. B honestly treats a contained failure as a result, but should not promise completion.
+
+## Independent computation records
+
+- [operator_symmetry_audit.py](/tmp/s11cd_clean_review_r2_codex_main/operator_symmetry_audit.py)  
+  [literal stdout](/tmp/s11cd_clean_review_r2_codex_main/operator_symmetry_audit.stdout.txt)
+- [smooth_profile_fourier_audit.py](/tmp/s11cd_clean_review_r2_codex_main/smooth_profile_fourier_audit.py)  
+  [literal stdout](/tmp/s11cd_clean_review_r2_codex_main/smooth_profile_fourier_audit.stdout.txt)
+- [citation_and_source_audit.py](/tmp/s11cd_clean_review_r2_codex_main/citation_and_source_audit.py)  
+  [literal stdout](/tmp/s11cd_clean_review_r2_codex_main/citation_and_source_audit.stdout.txt)
+
+Both SymPy runs completed under `timeout 600`; neither hit the limit. I did not run either production engine, modify the worktree, or touch PID 4097233.

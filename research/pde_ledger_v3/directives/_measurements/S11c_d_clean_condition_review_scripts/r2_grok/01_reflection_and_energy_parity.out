@@ -1,0 +1,19 @@
+=== 1. Reflection representation on class P ===
+even_sector_fields = u1, u2, theta, e_W, zeta_plus, zeta_minus, phi, delta_p
+odd_sector_fields  = u3
+odd_scalar_on_P    = 0  (cannot be x3-independent and odd unless identically 0)
+R_on_polar_u = (u1, u2, -u3)
+odd_part_of_polar_u = u3
+R_on_polar_n = (n1, n2, -n3)
+
+=== 2. Kronecker bilinear family on R1+P ===
+uniform_candidate_count = 12
+uniform_mixed_count = 0
+new_spurion_candidate_count = 15
+new_mixed_count = 0
+u3_self_energy_on_P_nonzero = (d1_u3**2 + d2_u3**2, d1_u3*g1*u3)
+
+=== 3. Curl-squared cross terms on P ===
+curl = (d2_u3, -d1_u3, d1_u2 - d2_u1)
+curl_sq = d1_u2**2 - 2*d1_u2*d2_u1 + d1_u3**2 + d2_u1**2 + d2_u3**2
+curl_sq_mixed = 0

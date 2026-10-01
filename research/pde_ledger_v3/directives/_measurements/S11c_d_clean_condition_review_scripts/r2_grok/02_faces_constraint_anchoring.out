@@ -1,0 +1,31 @@
+=== Face normal on R1+P ===
+dh = (s*Derivative(W(x1), x1)/2 + Derivative(zeta(x1, x2), x1), Derivative(zeta(x1, x2), x2), 0)
+n3_numerator = 0
+n3_is_zero = True
+n_inplane = ((-s*Derivative(W(x1), x1)/2 - Derivative(zeta(x1, x2), x1))/sqrt((s*Derivative(W(x1), x1)/2 + Derivative(zeta(x1, x2), x1))**2 + Derivative(zeta(x1, x2), x2)**2 + 1), -Derivative(zeta(x1, x2), x2)/sqrt((s*Derivative(W(x1), x1)/2 + Derivative(zeta(x1, x2), x1))**2 + Derivative(zeta(x1, x2), x2)**2 + 1), 0)
+n_w = 1/sqrt((s*Derivative(W(x1), x1)/2 + Derivative(zeta(x1, x2), x1))**2 + Derivative(zeta(x1, x2), x2)**2 + 1)
+
+=== V_s = n·v_face ===
+V = (-u1t*(s*Derivative(W(x1), x1) + 2*Derivative(zeta(x1, x2), x1)) - 2*u2t*Derivative(zeta(x1, x2), x2) + 2*zetat)/sqrt((s*Derivative(W(x1), x1) + 2*Derivative(zeta(x1, x2), x1))**2 + 4*Derivative(zeta(x1, x2), x2)**2 + 4)
+coeff_u3t = 0
+V_independent_of_u3 = True
+
+=== traction work on u3 ===
+t·delta_u3 = 0
+is_zero = True
+
+=== J_s channel ===
+J_depends_on_u3_only_through_V_or_mu_theta
+V_coeff_u3 = 0 on this geometry, so J_u3 = 0 unless mu_theta(u3) != 0
+
+=== Constraint fold on P ===
+div_delta_u = d1_delta_u1 + d2_delta_u2 + d3_delta_u3
+on_P_d3_delta_u3 = 0, so div_delta_u has no u3
+u·∇ρ_R1 = drho_dx1*u1
+adv_coeff_u3 = 0
+
+=== MATERIAL_ADVECTED linear height ===
+W(chi)_linear = W(x1) - u1*W'(x1)
+u3_coefficient_in_height = 0
+LAB_HELD zeta(chi)_linear_u3_coeff = 0 on P
+inplane_face_point_has_u3_but_n3=0_so_work_still_zero

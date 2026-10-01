@@ -1,0 +1,37 @@
+=== citation checks (in_source, in_grounding) ===
+FAIL A P1 Kronecker vs record:35 file: source=False ground=None :: 'O(3)-Kronecker field-bilinear invariant family'
+FAIL A P1 Kronecker vs grounding excerpt: source=False ground=None :: 'O(3)-Kronecker field-bilinear invariant family'
+ok   A assessment :3: source=True ground=True :: 'does not yet answer leakage in the calibrated, draining medium'
+ok   A spec :90-91 drain absent: source=True ground=True :: 'appears in no derived operator'
+ok   A spec :97 no bulk solve: source=True ground=True :: 'S11c-b performs no curved-bulk response solve'
+ok   A ontology :315 graphs: source=True ground=True :: 'not a complete nonlinear throat topology'
+ok   A ontology :957 support mode: source=True ground=True :: 'spectrally normalizable bound state'
+ok   A native :2377 heading: source=True ground=True :: 'A trapped standing wave is not automatically spinning'
+ok   A native :1343 shear channel: source=True ground=True :: 'de-structured bulk carries no comparable shear channel'
+ok   A native :113-116 microrotation: source=True ground=True :: 'independent\n  microrotation of the ordered substructure'
+ok   A ontology :26 trapped mode: source=True ground=True :: 'trapped transverse brane-shear standing mode helps hold each throat open'
+ok   A ontology :362 structural support: source=True ground=True :: 'helps hold the aperture open'
+ok   A ontology :1366 drain out: source=True ground=True :: 'converts ordered brane material into de-structured bulk material at throats'
+FAIL A CHARTER.md in grounding: source=False ground=None :: 'CHARTER.md'
+ok   A CHARTER requirements-first in CHARTER file: source=True ground=None :: 'REQUIREMENTS-FIRST'
+ok   B AGENTS 2 GiB: source=True ground=True :: 'whole-job 2 GiB memory cap'
+ok   B spec :90-91: source=True ground=True :: 'appears in no derived operator'
+FAIL B record 40 terms vs file line 35: source=False ground=None :: '40 = 10 uniform'
+FAIL B record 40 terms vs grounding: source=False ground=None :: '40 = 10 uniform'
+ok   B kinetic sign convention: source=True ground=True :: 'kinetic −K PY vs +K WL'
+ok   B af560257 exports: source=True ground=None :: 'af560257'
+ok   B DIRECTIONS = range(3): source=True ground=None :: 'DIRECTIONS = range(3)'
+fail_count = 5
+
+=== record line 35 raw ===
+'density representatives ρ4D/ρbr, two anchorings LAB_HELD/MATERIAL_ADVECTED), S11c-b computes: (1) the **§3a energy'
+
+=== grounding A excerpt around record :35 ===
+sed -n 35p research/pde_ledger_v3/steps/S11c_b_variable_coefficient_operator.md
+density representatives ρ4D/ρbr, two anchorings LAB_HELD/MATERIAL_ADVECTED), S11c-b computes: (1) the **§3a energy
+```
+
+```
+$ sed -n 90,91p research/pde_ledger_v3/directives/S11c_b_SHARED_PHYSICS.md
+`v_bulk_normal_0` (the bulk normal drain, `S11b_SHARED_PHYSICS.md:104`) is a scope-limit parameter, not an
+active DOF, an

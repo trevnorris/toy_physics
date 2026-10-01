@@ -1,0 +1,33 @@
+=== PY index convention ===
+PAT '^DIRECTIONS = .*$' -> DIRECTIONS = range(3)
+PAT 'u = tuple\\(' -> u = tuple(
+PAT 'inherited_symbol\\(f"u_\\{a\\}"' -> inherited_symbol(f"u_{a}"
+PAT 'for a in range\\(1, 4\\)' -> for a in range(1, 4)
+PAT 'str\\(i \\+ 1\\)' -> str(i + 1)
+PY_u_symbol_names_are_1_based_u_1_u_2_u_3 = True
+PY_DIRECTIONS_loop_is_0_based = True
+
+=== WL index convention ===
+WL_spatialCoordinates = spatialCoordinates = {xOne, xTwo, xThree};
+WL_directions = directions = Range[braneDimension];
+WL_braneDimension = braneDimension = 3;
+
+=== Kronecker vs Levi-Civita in PY basis constructors ===
+delta_contractions_defined = True
+enumerate_uniform_uses_delta = True
+enumerate_new_uses_delta = True
+LeviCivita_in_py = False
+eps_ijk_in_py = False
+LeviCivita_in_wl = True
+
+=== zeta_c / center row / constraint ===
+CENTER_FACE_GENERALIZED_ROW = True
+constraint_fold_from_source = True
+pin B comment in py = True
+
+=== S11c-b memory history pointers ===
+record_has_'16 GB' = True
+record_has_'15.6 GB' = True
+record_has_'2 GiB' = False
+record_has_'30 GB' = True
+record_has_'64 GB' = True

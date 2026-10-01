@@ -1,0 +1,11 @@
+{
+  "command": [
+    "/usr/bin/python",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_mixed_consumer_test.py"
+  ],
+  "exitStatus": 0,
+  "stdout": "",
+  "stderr": "..........\n----------------------------------------------------------------------\nRan 10 tests in 0.217s\n\nOK\n",
+  "scientificImports": false,
+  "scope": "stdlib parser/schema/persistence tests only"
+}

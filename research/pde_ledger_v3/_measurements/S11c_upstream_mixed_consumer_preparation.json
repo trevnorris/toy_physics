@@ -1,0 +1,33 @@
+{
+  "status": "REVIEWS_PRESERVED_SUBSTANTIVE_CONTROL_EXTENSION_REQUIRED",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/build-review",
+  "packetDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/build-review/packet",
+  "packetSha256": "262749dd803b393adc2487461fe9f620b5b9ee0e5a7ed5da667a0bdc0c8b7219",
+  "archiveSha256": "ae1e4c8135be5efa8a98543c0aa293efada735391bfdea0206a067b03ad8d960",
+  "packetFiles": 29,
+  "packetBytes": 1987210,
+  "reviewers": [
+    "claude",
+    "grok"
+  ],
+  "workerSha256": "40f2db5c9d45a2c0730a53008d1ad7c7f706a9010fa3d57535b349c2b7e1c51e",
+  "manifestSha256": "d538e7581e92799311bb955ef79aed6fcdab0813751173535bd8ad4d15b1057d",
+  "priorResultCommit": "3833f585",
+  "priorResultFiles": 39,
+  "sourcePins": 56,
+  "toolingTests": 10,
+  "scientificImportsDuringPreparation": false,
+  "scientificJobLaunched": false,
+  "externalSubmitted": true,
+  "independentBuildClearance": false,
+  "newGeneratedTrackedFilesAbove1MiB": [],
+  "scope": "One selected direct source/consumer diagnostic; stop before production repair or defect sweep",
+  "packetConsent": "EXPLICITLY_APPROVED_FIXED_PACKET",
+  "approvalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/build-review/explicit-packet-approval.json",
+  "approvalSha256": "e6baf81be5552ed46f23de3484558ebb2b176a4a752a74ddd4a370e4ee71d63e",
+  "launchRecord": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_mixed_consumer_review_launch.json",
+  "literalVerdicts": {
+    "claude": "NEEDS REVISION",
+    "grok": "CLEAR FOR THIS SELECTED SOURCE/CONSUMER INSTRUMENT"
+  }
+}

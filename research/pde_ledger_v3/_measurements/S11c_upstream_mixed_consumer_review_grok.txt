@@ -1,0 +1,103 @@
+I'll start by reading the review skill and the packet files so this source-only mixed-term diagnostic can be assessed independently.The expected `scope.md` path is missing, so I'll list the workspace and locate the packet files.The packet files are not at the expected paths, so I’ll look for listing and search tools that can locate them.I'll try the likely packet locations and the project status files next.The packet lives under `build-review/packet`; I’ll read its index and the listed source files from there.I have the packet layout. Next I’ll read the worker, extractor, and supporting source files in full.I’ll inspect the native JSON operands, saved factors, tooling checks, and native-row constructors next.The chemical source is in place. I’ll now pull face-source, density, and consumer-census structure, and check whether `kout` and U-row slots are actually used.I’ll check how native `Inputs.profiles` is built and whether the Fourier/`kout` and restriction paths match that routing.# Verdict
+
+**CLEAR FOR THIS SELECTED SOURCE/CONSUMER INSTRUMENT**
+
+This is a source-only review. No CAS run, FORM ablation, or numeric residual was executed. Nothing below is an executed-control result. The saved tanh/closure returns remain inherited inputs with their original limits; this packet does not clear them.
+
+---
+
+## Claim boundary this assessment supports
+
+For the selected LAB_HELD / RHO4_CONSTANT direct \(\eta\sigma_W\) insertion, the instrument as written can:
+
+- rebuild both-face native c1 sources from the supplied constructors, with live \(\rho\) binding, \(\varepsilon\) divided once, and \(\eta\) and \(\sigma_W\) kept independent;
+- take the retained mixed increment of \(\eta\sigma_W D\times(\text{saved per-unit-}V\text{ pressure/jet factors})\) as the \((0,0)\) source and consumer coefficients of that already-\((1,1)\) kernel insertion;
+- separate an arbitrary-curl **operator** identity on the flat source from the inherited off-shell Fourier witness at \(k_\mathrm{in}=(0,1/5,1/10)\);
+- attach a nonzero **scalar** Fourier amplitude to the native THETA and E_W pressure slots that actually carry those slots;
+- treat U-row reverse curl of this increment as natively empty, because the selected expanded U rows contain no \(\delta p/\partial_w\delta p\) symbols.
+
+It does not establish an on-shell transverse light mode, a finite-loss or drain result, a lower-face correction, a second middle integral, or a production repair.
+
+---
+
+## Inspection
+
+### Native source, density, \(\varepsilon\), both faces
+
+Face velocity on both faces is \(\tfrac12 W_0\,e_{W,t}\,\varepsilon\) (`native-selected.json` geometry `face_velocity`, cases LAB_HELD \(\pm1\)). After one \(\varepsilon\) division that is the prescribed-normal-velocity channel, not a transverse \(u\) trial.
+
+DELTA_P after stripping resolvent and DTN (`worker.py` science, face loop; native `build_face` at c2:92) is linear in \(V\) and \(\mu_\theta\):
+
+\[
+S=\Bigl(1+\frac{\Lambda_{V0}}{\rho_m(1-i\omega\tau_V)}\Bigr)V+\frac{\Lambda_{A0}\,\mu}{\rho_{\mathrm{br,bg}}\rho_m(1-i\omega\tau_A)}.
+\]
+
+With \(\Lambda_{V0}=0\) the velocity coefficient is \(1\), matching the saved `velocityCoefficient`. Chemical identification uses the full selected `mu_theta_operator` VALUE divided by \(\varepsilon\) (`worker.py` ~240–256; native c2:98–105). Both faces are reconstructed; only the upper face is inserted (`pminus=jminus=0`).
+
+Live density is `density[1] = \rho_{br}(1+\eta\,w_1)` (`background_density_map` VALUE tuple). Profile equalities copy native `Inputs.profiles` (c2:207–209): every Equality whose lhs is a Symbol **except** \(\sigma_W\). The supplied identity \(\sigma_W=\eta W_0/L_W\) remains in the density case text and is not imposed. Hidden \(W_{bg}\), \(\mu_{R,bg}\), \(\rho_{br,bg}\) are required absent after bind. \(w_1\) is not replaced by the tanh profile; the inherited convolution \(D\) already carries that selected action.
+
+### Regularity, grade product, slot coverage
+
+`flat()` checks \(\partial_\eta\partial_\sigma(\eta\sigma f)|_{0}=f|_{0}\) after a regular denominator at \((\eta,\sigma)=(0,0)\). That is the correct product identity when the **kernel insertion** is already \(\eta\sigma D\times(\text{factors independent of }\eta,\sigma)\). Higher-grade pieces of \(S\) and of the consumer weights then sit above the retained rectangle and are stored as `higherGrades`, not frozen.
+
+Census of the five expanded rows (`native-selected.json` `slabConsumers`):
+
+| Row | \(\delta p_\pm\) | \(\partial_w\delta p_\pm\) | selected children |
+|---|---|---|---|
+| U0, U1, U2 | 0,0,0,0 | empty | empty |
+| THETA | 1 each | 4 children (indices 51, 52, 101, 102) |
+| E_W | 2 each | 8 children (67, 68, 117, 118, 395, 396, 399, 400) |
+
+Unrecognized `delta_p` names abort extraction. Slot linearity is emitted before the guard. FACE_GENERALIZED_FORCE U is `(0,0,0)`, consistent with empty U pressure slots. Mechanical \(\tfrac12 W_0\varepsilon\,\delta p\) and mass-closure \(\Lambda_A\) terms are already in the expanded children; no second flux equation or traction sign is appended.
+
+At grade \((0,0)\) the jet weights on THETA and E_W vanish (they carry an extra \(\eta w_1\)). Surviving upper-face pressure weights:
+
+- THETA: \(-i\Lambda_{A0}\varepsilon/(\omega\rho_m\tau_A+i\rho_m)\) (\(\Lambda_{A0}=1/100\neq0\))
+- E_W: \(\tfrac12 W_0\varepsilon\) plus \(\Lambda_{X0}\) pieces that bind to \(0\)
+
+So this mixed insertion loads THETA and E_W and does not load U.
+
+### Arbitrary-curl vs \(k_\mathrm{in}=0/k_\mathrm{out}=1/10\)
+
+`wave_jet` is the native helper (c2:139–173). Transverse restriction sends \(u\to\nabla\times A\), \(\theta\to0\), \(e_W\to0\). The flat \((0,0)\) source is \(\tfrac12 W_0 e_{W,t}\) plus \(B_{\rho3}\theta+C W_0 e_W+G_{\theta u}\nabla\cdot u-\kappa_{\theta W}\Delta e_W-\kappa_\theta\Delta\theta\). Its transverse restriction is \(\nabla\cdot(\nabla\times A)\) plus zeros, an operator identity, independent of the selected Fourier point.
+
+The Fourier witness uses `kin=(0,1/5,1/10)`, so only the **profile** momentum is zero; edge momenta remain. Longitudinal \(\nabla\cdot u\) and the scalar \(\theta,e_W\) pieces survive there. `operator_form` classifies `{zero, nonzero, unresolved}` from independent jet coefficients after emit of remainder. If the transverse operator is zero, `forwardAction` is zero; otherwise it stays the unresolved string and does not substitute the saved off-shell witness (`worker.py` ~357–362). `kout` is the output leg of inherited \(D\); at \((0,0)\) the consumer weights are constants, so a further `plane(..., kout)` does not change the amplitude.
+
+### Saved factors, one convolution, \(\varepsilon\) bookkeeping
+
+`ref_factor` and `jet_factor` are the saved per-unit-\(V\) mixed coefficients divided by the actual \(V\) coefficient (\(1\)). Combined \(S\) is used only after the c1 slot matches the saved source and after \(S=S_V+S_\mu\) is checked. Because the c1 slot is a scalar source, the same local factor multiplies the combined Fourier amplitude. \(D\) is a single symbol `inherited_whole_bare_mixed_kernel`. Fourier outputs are “per \(D\)”; the full mixed increment is declared as \(\eta\sigma_W D\) times that amplitude. Row \(\varepsilon\) is kept; the source is required free of \(\varepsilon\).
+
+### Controls
+
+- Velocity: drop the native \(e_{W,t}\) piece; Fourier movement \(\propto -i\omega\neq0\). Source-path liveness, not a transverse mode.
+- Chemical: \(\partial/\partial a_\theta\) of the chemical Fourier piece; the \(4\theta-\tfrac13\Delta\theta\) \((0,0)\) block.
+- Divergence: omit one \(G_{\theta u}\partial_i u_i\) child of a curl-killing sum; a single component is a nonzero transverse operator. FORM of that cancellation.
+- Routing: put the E_W weight in the first vector slot and compare curls. Labeled “FORM misrouting control, not another physical operator.”
+
+Operands are emitted before `require`.
+
+### Units, integrity, evidence-before-guard, restorability
+
+Consumer unit joins use native `DIMENSION_SCHEMA` on unbound THETA/E_W pressure children and match the supplied targets \([-3,-1,1]\) and \([-1,-2,1]\). U contributes no nonzero slots, so it never hits `expected is None`. Source dimension \([1,-1,0]\) is taken from the native face-velocity declaration, not a new energy derivation. Census identity is a byte-level `records == actual` rebuild, not an algebraic check of hashes. Pins, exclusive `open('x')`, `failure.json`, `posthashes`, and `functionCalled=False` on restored files are present. No producer is imported; only `field` and `wave_jet` are exec’d.
+
+---
+
+## Method / computation / claim findings
+
+No blocking finding from the supplied source.
+
+## Uncertain (not established without execution)
+
+- Whether `sp.expand` of \(\nabla\cdot(\nabla\times A)\) is identically `0` before `operator_form` splits mixed partials into independent Dummy jets. SymPy normally canonicalizes mixed partials; if it did not, transverse state could be reported `nonzero` or `unresolved` instead of `zero`. The divergence-omission control would still move.
+- Uniqueness of `Symbol('sigma_W')` / `eta_bg` / `epsilon_shape` after `sympify` of mixed constructors. A duplicate atom would fail closed, not silently freeze \(\sigma_W\).
+
+## Pure tooling (non-blocking)
+
+- `assignment()` and `selected_constructor()` in `worker.py` are unused.
+- On a failed `stage()`, `Journal.active` remains `'<name>-input'` because the input emit already ran (`tooling-test.py` asserts this).
+- Packet `source-extractor.py` uses `Path(__file__).parents[1]`; the worker exec’s the pinned measurements copy, whose parent is `research/pde_ledger_v3`.
+
+## Optional
+
+- Call `plane(consumer_coeff, kout)` even for constant weights so the momentum pair is an operation, not only a recorded label.
+- Keep emitting U reverse-curl zeros as a census result, not as a transverse-decoupling claim for the whole slab (the worker already notes that a zero source restriction does not imply whole-operator decoupling).

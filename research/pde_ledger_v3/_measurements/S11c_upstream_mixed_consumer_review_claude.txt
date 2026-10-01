@@ -1,0 +1,87 @@
+**Verdict: NEEDS REVISION**
+
+This is a source-only review. I ran no producer and no controls, and I have no scientific execution tools. Everything below comes from reading the packet, not from an executed ablation. I found no wrong algebra. The revisions are three small instrument-strength fixes that the scope itself requires.
+
+## What reads as sound
+
+- **Source and density binding.**
+  - `worker.py:184-196` keeps `sigma_W` independent by dropping its equality. It resolves `W_bg`, `mu_R_bg`, the `*_d{i}` derivative symbols and the density through the supplied equalities, then substitutes numbers.
+  - I read the full chemical source (`native-selected.json:50`). At grade (0,0) it reduces to `eps*[B θ + C W0 e_W + G_θu ∇·u − κ_θW ∇²e_W − κ_θ ∇²θ]`.
+  - Every `w1_profile`, `m1_profile` and `gamma_*·sigma` term carries an explicit `eta` or `sigma`.
+  - The (0,0) slot coefficients carry no profile symbols.
+- **Slot census.**
+  - The three U rows contain no pressure or jet slot (counts 0 at `native-selected.json:482`, `3613`, `6744`).
+  - THETA has four slot children and E_W has eight (`:12182-12232`, `:18233-18331`).
+  - The extractor rejects any other symbol with "delta_p" in its name (`source-extractor.py:163`). A `Derivative(delta_p…)` wrapper would fail the worker's linearity check (`worker.py:309`).
+- **Combined source normalization.**
+  - Stripping R and DTN and dividing by `eps` reproduces native `build_face` (c2 `:89-105`).
+  - Source = `vc·V + mc·μ`, and the saved upper-face source is checked against it (`:253`).
+  - The same saved factor is correctly reused for both channels, since R·DTN acts on the whole source.
+- **Convolution and epsilon.** `D` enters once (`:311`), with no flux or orientation factor added. `eps` sits in the row coefficients, not in the source (`:342`).
+- **Arbitrary-curl identity.**
+  - It comes from the actual (0,0) source: `∇·curl A = 0`, because `u` enters only through `G_θu ∇·u`.
+  - It is kept separate from the kin=(0,1/5,1/10) plane-wave witness.
+  - A nonzero result stays "UNRESOLVED" (`:359-361`).
+- **Consumer units.** I checked the dimensions by hand against the worker's expected row dimensions: THETA [-3,-1,1] and E_W [-1,-2,1] come out consistent.
+
+## Blocking method findings (small corrections)
+
+**B1. The "grade-product certification" cannot fail.** `worker.py:213-214` computes `d²/dηdσ(ησ·f)|₀`, which equals `f(0,0)` for any smooth `f`. `regular()` (`:202-209`) checks denominators only.
+
+The real reason only (0,0) coefficients contribute is the native rectangle truncation, `retained_shape` (a≤1, b≤1, c2 `:665-668`). The worker never invokes it.
+
+*Correction:* exec the native `shape_coefficients` (`native-method.txt:199-253`) beside `field` and `wave_jet` (`:270`). Apply it to the actual products `eta*sigma*D*ref*coef` and assert two things:
+- The (1,1) coefficient equals `coef(0,0)·D·ref`.
+- No other retained grade appears.
+
+Otherwise relabel the check as grade selection plus a regularity certificate.
+
+Uncertain: I could not establish from the packet whether native `Inputs.profiles` eliminates `sigma` before truncation. That source is not supplied, and the worker's comment at `:183` only asserts it matches.
+
+**B2. The reverse transverse route is a placeholder, and the output doesn't say why it is zero.**
+- `vector=[row_factors['U*']·H]` (`:355`) uses a fabricated scalar `H`. The zero comes only from the U-row census and from the `FACE_GENERALIZED_FORCE_ROWS` U entry, which is literally `(0,0,0)` (`native-selected.json:18346`).
+- The forward and reverse zeros have different causes. Forward is source annihilation, which the divergence-omission control can distinguish from an unloaded path. Reverse is structural absence of a consumer slot, which no control tests.
+- The routing control (`:382-390`) tests curl arithmetic only.
+
+*Correction:* emit the reverse result as "zero by census" with the U-row counts and the literal. Drop or relabel the `H` route as form-only.
+
+**B3. The controls never reach the consumer path.** The scope requires controls to show the source, consumer and restriction paths can respond.
+- The velocity, chemical and divergence controls (`:364-380`) stop at the source.
+- The velocity and chemical controls cannot tell annihilation from an unloaded path, because both pieces are already zero in TRANSVERSE.
+
+*Correction:*
+- Push the divergence-omitted source through `row_factors` and show nonzero THETA/E_W output.
+- Add one consumer-level control, such as zeroing a pressure-slot coefficient.
+- Optionally emit `restrict(higherGrades,'TRANSVERSE')`. The σ-gradient terms (`gamma_04`, `_06` and so on) should give native nonzero transverse content, which would be the strongest evidence the path is not unloaded.
+
+## Non-blocking method and claim notes
+
+- Both jet-slot coefficients carry `eta·w1_profile`, so they are zero at (0,0). The normal-jet factor reuse is therefore vacuous at this grade, and only the pressure slot contributes. The output should say so.
+- `ref_factor` divides by the saved `velocityCoefficient` (`:231-236`), not the native `vc` from `:255`. Both are 1; assert `vc == v_coefficient`.
+- The saved per-V factor holds only at this (kin, kout) pair. This is its first use on the chemical channel.
+- A scalar response is nonzero by construction: the E_W coefficient is ½W₀ε and the THETA coefficient is `−Λ_A ε/(ρ_m(1−iωτ_A))`. It does not validate the consumers.
+- Zero transverse coupling at (0,0) coefficients is close to guaranteed by isotropy. Transverse coupling can only enter through σ∇w₁ terms, which the rectangle drops. This matches the scope's own caveat.
+
+## Tooling findings
+
+- **Unit checks.**
+  - The expected row dimensions are hard-coded (`:410`) rather than read from the native `DIMENSION_L_T_M`.
+  - Source and `D` dimensions are asserted, not computed (`:421-428`).
+  - The statement that "the remaining input plane delta integrates once" is inherited and not verifiable here. Treat it as uncertain.
+- **Hidden-symbol guard.** It names only three symbols (`:218`). A whitelist of allowed free symbols (wave jets and `eps`) would be stronger.
+- **Failure preservation.**
+  - `J.active` names the last emitted artifact, not the operation in flight.
+  - `checks.json` is excluded from `artifact-index`.
+  - Evidence is emitted before each guard, as intended.
+- **Dead helpers.** `assignment`, `selected_constructor` and `literal_record` are unused in `worker.py`.
+- **Uncertain run risks.** If any of these fail, the failure is preserved:
+  - `ast.literal_eval` on the native `DIMENSION_SCHEMA` may fail if the schema isn't a pure literal.
+  - `sp.simplify` on complex rationals like `1/(1−3i/10)` may not reduce to exactly 0.
+- **Tooling tests.** `tooling-checks.json` records 10 passing stdlib tests covering parsers, persistence and routing strings. None exercise the algebra, and none have run the controls.
+
+## Claim boundary supported
+
+At most: how the selected direct `eta·sigma_W` increment enters the retained slab operator at grade (1,1), via grade-(0,0) source and consumer coefficients.
+- **Source side:** the flat source cannot load an arbitrary curl field.
+- **Consumer side:** the pressure slot feeds only the THETA and E_W rows from the upper face. No U row has a slot.
+- **Not supported:** on-shell transverse excitation, the full inverse, other direct grades, first-shape iteration, lower-face correction, loss, or any physics acceptance.

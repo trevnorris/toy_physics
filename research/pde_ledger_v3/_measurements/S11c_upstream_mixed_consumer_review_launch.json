@@ -1,0 +1,50 @@
+{
+  "status": "BOTH_FRESH_REVIEWERS_STARTED_ON_EXACT_PRIVATE_PACKETS",
+  "recordedUtc": "2026-10-01T22:39:00.266454+00:00",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/build-review",
+  "approvalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/build-review/explicit-packet-approval.json",
+  "approvalSha256": "e6baf81be5552ed46f23de3484558ebb2b176a4a752a74ddd4a370e4ee71d63e",
+  "packetSha256": "262749dd803b393adc2487461fe9f620b5b9ee0e5a7ed5da667a0bdc0c8b7219",
+  "archiveSha256": "ae1e4c8135be5efa8a98543c0aa293efada735391bfdea0206a067b03ad8d960",
+  "launch": {
+    "jobPid": 1578485,
+    "watcherPid": 1578486,
+    "packetSha256": "262749dd803b393adc2487461fe9f620b5b9ee0e5a7ed5da667a0bdc0c8b7219",
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "concurrentReviewWorkers": 2,
+    "scienceCalls": 0,
+    "runnerSha256": "30ed68e2d751f5c85399fcdf99384d9ef095376983da0b1bf91b89aef62e5b62",
+    "launcherSha256": "d7dd71850300818294a1218ecaf59c5576f63884457eb12b87d69d8b0c7df2a5"
+  },
+  "hookStatus": "waiting",
+  "reviewers": {
+    "claude": {
+      "sessionId": "92f3da1e-21bb-43c6-9916-1052239fa371",
+      "pid": 1578492,
+      "startedUtc": "2026-10-01T22:37:26.237801+00:00",
+      "packetSha256": "262749dd803b393adc2487461fe9f620b5b9ee0e5a7ed5da667a0bdc0c8b7219",
+      "promptSha256": "02e9df8ea8610c078de27ed899cc01c35043d49eb2ab5cd8beb3960fcf382e31",
+      "scientificExecutionEnabled": false
+    },
+    "grok": {
+      "sessionId": "6520f23b-583e-408a-8c03-199df3983a15",
+      "pid": 1578493,
+      "startedUtc": "2026-10-01T22:37:26.238216+00:00",
+      "packetSha256": "262749dd803b393adc2487461fe9f620b5b9ee0e5a7ed5da667a0bdc0c8b7219",
+      "promptSha256": "02e9df8ea8610c078de27ed899cc01c35043d49eb2ab5cd8beb3960fcf382e31",
+      "scientificExecutionEnabled": false
+    }
+  },
+  "privateFilesPerReviewer": 29,
+  "peerReportsShared": false,
+  "scientificJobLaunched": false,
+  "automaticRetry": false,
+  "hostProcessVerification": {
+    "command": "ps -p 1578485,1578486,1578492,1578493 -o pid,ppid,stat,etime,comm",
+    "stdout": "    PID    PPID STAT     ELAPSED COMMAND\n1578485    4973 SNsl       00:58 python\n1578486    4973 SNs        00:58 python\n1578492 1578485 SNsl       00:58 claude\n1578493 1578485 SNsl       00:58 grok\n",
+    "note": "Sandbox /proc lacks these host PIDs; the one host read verified actual startup. No reviewer report read or adjudicated."
+  }
+}

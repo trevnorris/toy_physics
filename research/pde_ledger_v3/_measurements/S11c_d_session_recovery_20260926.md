@@ -1,3 +1,48 @@
+**SOURCE/CONSUMER REVIEWS PRESERVED; CONTROL EXTENSION NEXT (2026-10-01):**
+Both source-only reports delivered: Claude NEEDS REVISION / Grok CLEAR FOR THIS
+SELECTED SOURCE/CONSUMER INSTRUMENT. All192 packet/archive/private/receipt/source
+metadata checks pass. See S11c_upstream_mixed_consumer_review_record.json and
+review_disposition.md. Preserve this exact baseline before repair.
+The grade product is a regularity-conditioned identity, not an independently
+executed native truncation; reverse zero must be labeled census-based. Accepted
+B3 requires actual source omissions through consumer rows plus pressure-slot
+ablation. This is a scientific-validation extension, not pure tooling, and needs
+applicable independent assessment before science. Prepare the bounded correction;
+no automatic new export or reviewer rerun. Exact consent is needed for a changed
+packet. No scientific job or production/defect expansion. Prior trace and all
+review/failure/incident history remain intact.
+
+**SELECTED SOURCE/CONSUMER REVIEW PAIR RUNNING (2026-10-01):**
+User replied “I approve. Continue” to the exact29-file/1987210-byte packet,
+SHA256262749dd803b393adc2487461fe9f620b5b9ee0e5a7ed5da667a0bdc0c8b7219.
+Fresh Claude/Grok started in distinct sessions on exact private copies; hook
+armed first for this session. See S11c_upstream_mixed_consumer_review_launch.json
+and preparation.json. No scientific job, peer sharing or automatic retry.
+Wait for BOTH actual reports before adjudication or source edits. Existing
+approval covers one bounded guarded source/consumer diagnostic after substantive
+assessment/readiness; no repeated science permission. Stop at selected evidence
+before production regeneration or a defect sweep. Prior source/results/review
+literals unchanged. Runtime packets and reviewer state remain scratch artifacts.
+
+**SELECTED SOURCE/CONSUMER CHECK PREPARED; EXACT EXPORT CONSENT PENDING (2026-10-01):**
+User: “Continue. You have my permission to keep going until you need my input
+on something. I'll be monitoring your progress.” Prepared one bounded next
+instrument linking the saved upper-face direct mixed correction to actual
+chemical/velocity sources and native slab consumers. Complete source-only
+census and selected rows included; arbitrary-curl source restriction and scalar/
+longitudinal controls are proposed, not yet computed. No new physics result.
+Read S11c_upstream_mixed_consumer_scope.md, preparation.json and packet_checks.json.
+Ten stdlib tests pass; no scientific imports/restoration or run. Existing trace
+result3833f585 and all literal NEEDS/NEEDS/local-repair history remain unchanged.
+Fresh Claude/Grok packet:29files/1987210bytes, SHA256
+262749dd803b393adc2487461fe9f620b5b9ee0e5a7ed5da667a0bdc0c8b7219.
+Exact consent question is pending under AGENTS.md; no submission/READY gate.
+Existing work authority covers one bounded guarded diagnostic after substantive
+assessment/readiness; no repeated science permission. Stop at selected evidence,
+before production regeneration, general missing kernel or defect sweep. No
+source/consumer zero can certify unchanged finite inverse or no loss. Scratch
+stays ignored; no new file above1MiB, protected/guard/Lean files unchanged.
+
 **SELECTED CLOSED/REFERENCE RESPONSE DIFFERENCE SUPPORTED (2026-10-01):**
 Read S11c_upstream_mixed_trace_result.md and completion.json. The single saved
 bare mixed-slot insertion survives both the selected permeability closure and

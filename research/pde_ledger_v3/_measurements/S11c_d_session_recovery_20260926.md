@@ -1,3 +1,21 @@
+**FOCUSED MIXED-TANH DIAGNOSTIC COMPLETED (2026-10-01):**
+Read S11c_upstream_mixed_tanh_result.md and completion.json. The selected bare
+upper-face eta*sigma action is nonzero on the actual tanh profile/common outgoing
+sheet. Native half-factors and zero edge tilts join exactly; all32 saved scalar
+identity residuals are zero, addressed slope omission gives zero and slope/sheet
+reversals respond. The whole-interval sign argument uses positive profile factors,
+negative prefactor, purely imaginary exterior, integrable endpoints/tails; no
+integral magnitude or light loss was computed. Worker5.247s,peak77709312bytes,
+zero swap/events.115 metadata checks,18 posthashes,20snapshots,3complete stages,
+52result files/99447bytes,empty stderr and stdout/checks identity pass.
+Literal Claude NEEDS REVISION / Grok CLEAR and local N1/N4 tooling disposition
+remain; no fresh independent CLEAR. Baseline6d645f57, repaired buildc13e23d0.
+STOP complete: no retry/validator/new job. Next question is source tracing through
+the closed face response/reference-pressure map, not a defect sweep. Bare-slot
+nonzero does not by itself establish incomplete closed response or leakage.
+Selected uniform/benchmark/history preserved; rest bulk, uncalibrated family and
+independent rectangular grades remain explicit. No new external packet/producer.
+
 **FOCUSED MIXED-TANH DIAGNOSTIC READY AFTER TOOLING FIXES (2026-10-01):**
 Reviewed baseline/source and literal reports are preserved at6d645f57.
 Only action() data routing/persistence changed: N1 emits sign/endpoint evidence

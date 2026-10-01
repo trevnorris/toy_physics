@@ -1,0 +1,1077 @@
+{
+  "status": "COMPLETED_FOCUSED_DIAGNOSTIC_METADATA_AND_SAVED_OPERANDS_INSPECTED",
+  "runtimeRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-mixed-tanh-20261001/diagnostic-01",
+  "workerSha256": "de783e3d09f58db8075a115edf4ed584f28d2a090cc7a3eef150e98befd30373",
+  "manifestSha256": "606c20c734b4ccaa69fbed74cbc200812afa2b211abdc9b458850e6b94273d84",
+  "gateSha256": "a2bccfa098cdfcef076d0e7ba85227ce0a7623bdf1eec53ef1c45da1d658938a",
+  "reviewedBaselineCommit": "6d645f57",
+  "repairedBuildCommit": "c13e23d0",
+  "literalVerdicts": {
+    "claude": "NEEDS REVISION",
+    "grok": "CLEAR FOR THIS FOCUSED MIXED-GRADE INSTRUMENT"
+  },
+  "independentBuildClearance": false,
+  "reviewRecord": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_mixed_tanh_review_record.json",
+  "repairRecord": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_mixed_tanh_repair_record.json",
+  "allChecksPassed": true,
+  "checks": [
+    {
+      "name": "coordinator completed",
+      "passed": true
+    },
+    {
+      "name": "supervisor completed",
+      "passed": true
+    },
+    {
+      "name": "guard completed without resource stop",
+      "passed": true
+    },
+    {
+      "name": "literal worker terminal status",
+      "passed": true
+    },
+    {
+      "name": "scientific stderr empty",
+      "passed": true
+    },
+    {
+      "name": "stdout checks byte identity",
+      "passed": true
+    },
+    {
+      "name": "empty coordinator.stderr",
+      "passed": true
+    },
+    {
+      "name": "empty guard-launch.stderr",
+      "passed": true
+    },
+    {
+      "name": "empty resource-guard/stderr",
+      "passed": true
+    },
+    {
+      "name": "no failure record",
+      "passed": true
+    },
+    {
+      "name": "four GiB and zero swap",
+      "passed": true
+    },
+    {
+      "name": "CPU task threads",
+      "passed": true
+    },
+    {
+      "name": "pool and host reserve",
+      "passed": true
+    },
+    {
+      "name": "verified limits",
+      "passed": true
+    },
+    {
+      "name": "unlimited duration no restart",
+      "passed": true
+    },
+    {
+      "name": "sampled resources nonempty",
+      "passed": true
+    },
+    {
+      "name": "swap/events sample 0",
+      "passed": true
+    },
+    {
+      "name": "host reserve sample 0",
+      "passed": true
+    },
+    {
+      "name": "swap/events sample 1",
+      "passed": true
+    },
+    {
+      "name": "host reserve sample 1",
+      "passed": true
+    },
+    {
+      "name": "swap/events sample 2",
+      "passed": true
+    },
+    {
+      "name": "host reserve sample 2",
+      "passed": true
+    },
+    {
+      "name": "swap/events sample 3",
+      "passed": true
+    },
+    {
+      "name": "host reserve sample 3",
+      "passed": true
+    },
+    {
+      "name": "complete source pin set",
+      "passed": true
+    },
+    {
+      "name": "posthash /var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_mixed_tanh.py",
+      "passed": true
+    },
+    {
+      "name": "posthash /var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_mixed_tanh_scope.md",
+      "passed": true
+    },
+    {
+      "name": "posthash /var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_mixed_tanh_review_prompt.md",
+      "passed": true
+    },
+    {
+      "name": "posthash /var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_mixed_tanh_test.py",
+      "passed": true
+    },
+    {
+      "name": "posthash /var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_variable_profile_development_input.json",
+      "passed": true
+    },
+    {
+      "name": "posthash /var/projects/toy_physics/scripts/s11c_guarded_run.py",
+      "passed": true
+    },
+    {
+      "name": "posthash /var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+      "passed": true
+    },
+    {
+      "name": "posthash /var/projects/toy_physics/scripts/codex_job_watch.py",
+      "passed": true
+    },
+    {
+      "name": "posthash /var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_c1_bulk_closure_sympy_audit.py",
+      "passed": true
+    },
+    {
+      "name": "posthash /var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_c1_exports.py",
+      "passed": true
+    },
+    {
+      "name": "posthash /var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_c2_selfenergy_fold_sympy_audit.py",
+      "passed": true
+    },
+    {
+      "name": "posthash /var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_a_interface_geometry_sympy_audit.py",
+      "passed": true
+    },
+    {
+      "name": "posthash /var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_a_SHARED_PHYSICS.md",
+      "passed": true
+    },
+    {
+      "name": "posthash /var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c1_SHARED_PHYSICS.md",
+      "passed": true
+    },
+    {
+      "name": "posthash /var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_mixed_tanh_review_record.json",
+      "passed": true
+    },
+    {
+      "name": "posthash /var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_mixed_tanh_review_disposition.md",
+      "passed": true
+    },
+    {
+      "name": "posthash /var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_mixed_tanh_repair_record.json",
+      "passed": true
+    },
+    {
+      "name": "posthash /var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_mixed_tanh_launch.py",
+      "passed": true
+    },
+    {
+      "name": "gate unchanged",
+      "passed": true
+    },
+    {
+      "name": "snapshot /var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_mixed_tanh.py",
+      "passed": true
+    },
+    {
+      "name": "snapshot /var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_mixed_tanh_scope.md",
+      "passed": true
+    },
+    {
+      "name": "snapshot /var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_mixed_tanh_review_prompt.md",
+      "passed": true
+    },
+    {
+      "name": "snapshot /var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_mixed_tanh_test.py",
+      "passed": true
+    },
+    {
+      "name": "snapshot /var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_variable_profile_development_input.json",
+      "passed": true
+    },
+    {
+      "name": "snapshot /var/projects/toy_physics/scripts/s11c_guarded_run.py",
+      "passed": true
+    },
+    {
+      "name": "snapshot /var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+      "passed": true
+    },
+    {
+      "name": "snapshot /var/projects/toy_physics/scripts/codex_job_watch.py",
+      "passed": true
+    },
+    {
+      "name": "snapshot /var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_c1_bulk_closure_sympy_audit.py",
+      "passed": true
+    },
+    {
+      "name": "snapshot /var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_c1_exports.py",
+      "passed": true
+    },
+    {
+      "name": "snapshot /var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_c2_selfenergy_fold_sympy_audit.py",
+      "passed": true
+    },
+    {
+      "name": "snapshot /var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_a_interface_geometry_sympy_audit.py",
+      "passed": true
+    },
+    {
+      "name": "snapshot /var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_a_SHARED_PHYSICS.md",
+      "passed": true
+    },
+    {
+      "name": "snapshot /var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c1_SHARED_PHYSICS.md",
+      "passed": true
+    },
+    {
+      "name": "snapshot /var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_mixed_tanh_review_record.json",
+      "passed": true
+    },
+    {
+      "name": "snapshot /var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_mixed_tanh_review_disposition.md",
+      "passed": true
+    },
+    {
+      "name": "snapshot /var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_mixed_tanh_repair_record.json",
+      "passed": true
+    },
+    {
+      "name": "snapshot /var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_mixed_tanh_launch.py",
+      "passed": true
+    },
+    {
+      "name": "snapshot /var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_mixed_tanh_gate.json",
+      "passed": true
+    },
+    {
+      "name": "snapshot /var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_mixed_tanh_inputs.json",
+      "passed": true
+    },
+    {
+      "name": "hook before science",
+      "passed": true
+    },
+    {
+      "name": "all three complete stages",
+      "passed": true
+    },
+    {
+      "name": "receipt boundary-coefficient-input.json",
+      "passed": true
+    },
+    {
+      "name": "receipt boundary-coefficient-return.json",
+      "passed": true
+    },
+    {
+      "name": "receipt profile-transform-input.json",
+      "passed": true
+    },
+    {
+      "name": "receipt profile-transform-return.json",
+      "passed": true
+    },
+    {
+      "name": "receipt profile-action-input.json",
+      "passed": true
+    },
+    {
+      "name": "receipt profile-action-return.json",
+      "passed": true
+    },
+    {
+      "name": "saved exact residual A-even.json",
+      "passed": true
+    },
+    {
+      "name": "saved exact residual boundary-residual-0.json",
+      "passed": true
+    },
+    {
+      "name": "saved exact residual boundary-residual-1.json",
+      "passed": true
+    },
+    {
+      "name": "saved exact residual boundary-residual-2.json",
+      "passed": true
+    },
+    {
+      "name": "saved exact residual boundary-residual-3.json",
+      "passed": true
+    },
+    {
+      "name": "saved exact residual constant-end-zero-jet.json",
+      "passed": true
+    },
+    {
+      "name": "saved exact residual exterior-endpoint-square.json",
+      "passed": true
+    },
+    {
+      "name": "saved exact residual exterior-real-part.json",
+      "passed": true
+    },
+    {
+      "name": "saved exact residual fourier-beta-reflection.json",
+      "passed": true
+    },
+    {
+      "name": "saved exact residual fourier-derivative-mass.json",
+      "passed": true
+    },
+    {
+      "name": "saved exact residual fourier-derivative.json",
+      "passed": true
+    },
+    {
+      "name": "saved exact residual interior-endpoint-square.json",
+      "passed": true
+    },
+    {
+      "name": "saved exact residual native-conserved-edge-tilt-1.json",
+      "passed": true
+    },
+    {
+      "name": "saved exact residual native-conserved-edge-tilt-2.json",
+      "passed": true
+    },
+    {
+      "name": "saved exact residual native-flat-source-join.json",
+      "passed": true
+    },
+    {
+      "name": "saved exact residual native-height-coefficient.json",
+      "passed": true
+    },
+    {
+      "name": "saved exact residual native-linear-source-join.json",
+      "passed": true
+    },
+    {
+      "name": "saved exact residual native-profile-jet-operand.json",
+      "passed": true
+    },
+    {
+      "name": "saved exact residual native-profile-operand.json",
+      "passed": true
+    },
+    {
+      "name": "saved exact residual native-profile-slope-factor.json",
+      "passed": true
+    },
+    {
+      "name": "saved exact residual native-profile-weighting.json",
+      "passed": true
+    },
+    {
+      "name": "saved exact residual native-slope-coefficient.json",
+      "passed": true
+    },
+    {
+      "name": "saved exact residual native-weighted-height-factor.json",
+      "passed": true
+    },
+    {
+      "name": "saved exact residual normal-through-slope.json",
+      "passed": true
+    },
+    {
+      "name": "saved exact residual normal-vertical-through-slope.json",
+      "passed": true
+    },
+    {
+      "name": "saved exact residual profile-logistic-derivative.json",
+      "passed": true
+    },
+    {
+      "name": "saved exact residual profile-native-jet.json",
+      "passed": true
+    },
+    {
+      "name": "saved exact residual profile-reflection.json",
+      "passed": true
+    },
+    {
+      "name": "saved exact residual profile-tail.json",
+      "passed": true
+    },
+    {
+      "name": "saved exact residual rigid-height-translation.json",
+      "passed": true
+    },
+    {
+      "name": "saved exact residual selected-mixed-reduction.json",
+      "passed": true
+    },
+    {
+      "name": "saved exact residual wave-amplitude-linearity.json",
+      "passed": true
+    },
+    {
+      "name": "actual completed argument joins",
+      "passed": true
+    },
+    {
+      "name": "actual native source routed",
+      "passed": true
+    },
+    {
+      "name": "zero conserved edge tilts",
+      "passed": true
+    },
+    {
+      "name": "preserved sign operands join return",
+      "passed": true
+    },
+    {
+      "name": "literal saved sign flags",
+      "passed": true
+    },
+    {
+      "name": "exterior real/interior imaginary zero",
+      "passed": true
+    },
+    {
+      "name": "physical point",
+      "passed": true
+    },
+    {
+      "name": "input/output dispersion residuals",
+      "passed": true
+    },
+    {
+      "name": "response controls preserved",
+      "passed": true
+    },
+    {
+      "name": "dimension residual literal zero matrix",
+      "passed": true
+    },
+    {
+      "name": "source direct slot literal zero",
+      "passed": true
+    }
+  ],
+  "sourcePosthashCount": 18,
+  "snapshotCount": 20,
+  "completedStages": [
+    {
+      "name": "boundary-coefficient",
+      "input": {
+        "path": "boundary-coefficient-input.json",
+        "sha256": "086c2939471bbdfb6165e9587aac5e7d40e5f267f3ca11c970695862632bd2b8",
+        "bytes": 1529
+      },
+      "result": {
+        "path": "boundary-coefficient-return.json",
+        "sha256": "a6b4ac7b601fcc794d12391b668d2f36259831510aea44a6a8c3edc46b5124bb",
+        "bytes": 4119
+      }
+    },
+    {
+      "name": "profile-transform",
+      "input": {
+        "path": "profile-transform-input.json",
+        "sha256": "c05f5386226a304017655729eead3b9e3236e7d2887bfe157c1a15b19ed3edc2",
+        "bytes": 79
+      },
+      "result": {
+        "path": "profile-transform-return.json",
+        "sha256": "fff546e7a76fdb66b3059627a54d3c008d456fc5acd9d971fe45140add36a099",
+        "bytes": 2211
+      }
+    },
+    {
+      "name": "profile-action",
+      "input": {
+        "path": "profile-action-input.json",
+        "sha256": "3622bdbb0b8767dc382d5811f3833dafdee3913d6d293452189bf92d36155a12",
+        "bytes": 7500
+      },
+      "result": {
+        "path": "profile-action-return.json",
+        "sha256": "e9965881768a9e823976a4ab1920ff0ea18bf98b2166e69f886b552c2b7efebf",
+        "bytes": 5109
+      }
+    }
+  ],
+  "exactScalarIdentityCount": 32,
+  "resultFiles": {
+    "A-even.json": {
+      "sha256": "08269f5039086b7723ca44d98f2ccb681052a18aa0eac28f2f2db4462cc03b4c",
+      "bytes": 430
+    },
+    "boundary-before-guards.json": {
+      "sha256": "2f2e1fa5fa0ab8b3532fb9a77d324e66f59fdf53a4118df8a18cb9a9c6c5a8cb",
+      "bytes": 8404
+    },
+    "boundary-coefficient-input.json": {
+      "sha256": "086c2939471bbdfb6165e9587aac5e7d40e5f267f3ca11c970695862632bd2b8",
+      "bytes": 1529
+    },
+    "boundary-coefficient-return.json": {
+      "sha256": "a6b4ac7b601fcc794d12391b668d2f36259831510aea44a6a8c3edc46b5124bb",
+      "bytes": 4119
+    },
+    "boundary-residual-0.json": {
+      "sha256": "7651315000de882136d6972cada89e0cb5f3d1bcc0b9afa2e1fd1e0c18144382",
+      "bytes": 141
+    },
+    "boundary-residual-1.json": {
+      "sha256": "7651315000de882136d6972cada89e0cb5f3d1bcc0b9afa2e1fd1e0c18144382",
+      "bytes": 141
+    },
+    "boundary-residual-2.json": {
+      "sha256": "7651315000de882136d6972cada89e0cb5f3d1bcc0b9afa2e1fd1e0c18144382",
+      "bytes": 141
+    },
+    "boundary-residual-3.json": {
+      "sha256": "a90198336e746b20cd4caec46075b16dc9100e4e9899e015e810e35f1f80d277",
+      "bytes": 1548
+    },
+    "checks.json": {
+      "sha256": "081d2b6e8d271c506acc90b853b446fbbb66e858a775fab876cccb77323dfae7",
+      "bytes": 276
+    },
+    "constant-end-zero-jet.json": {
+      "sha256": "7651315000de882136d6972cada89e0cb5f3d1bcc0b9afa2e1fd1e0c18144382",
+      "bytes": 141
+    },
+    "containment.json": {
+      "sha256": "e2c27c292d49fecfd02c6a566330060c368476884bc8dc10ec90ec9323deea55",
+      "bytes": 490
+    },
+    "dimensions.json": {
+      "sha256": "bc97a9534f452eedfa96bc87aab9ee5d12bbdd19e28587c7888efb9782a403ae",
+      "bytes": 1000
+    },
+    "exterior-endpoint-square.json": {
+      "sha256": "3536411892508cf7e2a8cf1659d23281f53d8cd8729edbae4a2504b3601fcb1c",
+      "bytes": 423
+    },
+    "exterior-real-part.json": {
+      "sha256": "7651315000de882136d6972cada89e0cb5f3d1bcc0b9afa2e1fd1e0c18144382",
+      "bytes": 141
+    },
+    "fourier-beta-reflection.json": {
+      "sha256": "9c21a64655b0fb0b715477b30fc19d3f5d602dff121d2f0bba2c5b8ee1b299c3",
+      "bytes": 554
+    },
+    "fourier-derivative-mass.json": {
+      "sha256": "b6f7d09a40a34fa42c1071773edd8e5a2091d91dd9bd5791721d6ec06428d79a",
+      "bytes": 264
+    },
+    "fourier-derivative.json": {
+      "sha256": "9c21a64655b0fb0b715477b30fc19d3f5d602dff121d2f0bba2c5b8ee1b299c3",
+      "bytes": 554
+    },
+    "interior-endpoint-square.json": {
+      "sha256": "e4062f906259cce88c644da26147c3d2ace20e8d2b78d085f6c111bf6cdff2bb",
+      "bytes": 476
+    },
+    "native-conserved-edge-tilt-1.json": {
+      "sha256": "7651315000de882136d6972cada89e0cb5f3d1bcc0b9afa2e1fd1e0c18144382",
+      "bytes": 141
+    },
+    "native-conserved-edge-tilt-2.json": {
+      "sha256": "7651315000de882136d6972cada89e0cb5f3d1bcc0b9afa2e1fd1e0c18144382",
+      "bytes": 141
+    },
+    "native-direct-slot.json": {
+      "sha256": "b44296cae4f185075891ec220c1e6f901d316ce6a21a78aab3a00e0fcd04f57a",
+      "bytes": 283
+    },
+    "native-flat-source-join.json": {
+      "sha256": "a790dae596cf2f46ffa1b1d4202c6bc645fa77a2622ef80121fb6d7b6c3a0b5e",
+      "bytes": 452
+    },
+    "native-fourier-operands.json": {
+      "sha256": "a0dda60693d42646de01e8d93c7ccd4d6fa608ed7c2be58398fae8aab9ef6859",
+      "bytes": 7328
+    },
+    "native-graph-normal.json": {
+      "sha256": "73b028380e0bc2f5e4127948d2240e9e8a7294f536f48cdbb96f7c97640d62f9",
+      "bytes": 608
+    },
+    "native-height-coefficient.json": {
+      "sha256": "9123c5b0a6ce7a27e380abe4fc2b47e33962b0a0fc23853b21452f354760a8d3",
+      "bytes": 1370
+    },
+    "native-linear-source-join.json": {
+      "sha256": "cd92c43c10a6c925524b6955409b89182f31ade2351b746c44f5af5b87fc6c2b",
+      "bytes": 3398
+    },
+    "native-operands.json": {
+      "sha256": "a656a45a24324ecc87cf8d4ed8fdc1303c3f619a2c0f6b4ec972914185b04d53",
+      "bytes": 22766
+    },
+    "native-profile-factor-routing.json": {
+      "sha256": "bda7983020232e3de00bc132de64867771182f96b1f249a5d23f686158b8c5ae",
+      "bytes": 3008
+    },
+    "native-profile-jet-operand.json": {
+      "sha256": "977ea3728622a55c0532a21c909f84285fc7f652ab09e9d406823fca581fa11a",
+      "bytes": 508
+    },
+    "native-profile-operand.json": {
+      "sha256": "1e6b94343633749e001559c51bdc01057178c26f3d9e6e874940b39fcff18302",
+      "bytes": 442
+    },
+    "native-profile-slope-factor.json": {
+      "sha256": "8de655fb62603e867b46196a406ed2c4b2d7994940feeded0c19c4d08bd53ce9",
+      "bytes": 630
+    },
+    "native-profile-weighting.json": {
+      "sha256": "bd99442e0779c6786b49b49af9e3368884f5271f681f3b2f198b02969bb204dd",
+      "bytes": 1055
+    },
+    "native-slope-coefficient.json": {
+      "sha256": "b3b2c600a268b7e96ed0a2791e31994a114f8870ffd8b1d1ef3b59f42f7c91d0",
+      "bytes": 574
+    },
+    "native-weighted-height-factor.json": {
+      "sha256": "afa82ea796ff39932f55657f2e5bdb2138ab55a7d7dc0ce78c43cc6ecec3c46c",
+      "bytes": 468
+    },
+    "normal-through-slope.json": {
+      "sha256": "5f55a811bfc9838b2c7e468dfdc14f1703b2584615641c619f140a753b08b546",
+      "bytes": 144
+    },
+    "normal-vertical-through-slope.json": {
+      "sha256": "7651315000de882136d6972cada89e0cb5f3d1bcc0b9afa2e1fd1e0c18144382",
+      "bytes": 141
+    },
+    "operation-index.json": {
+      "sha256": "2d8f6373603283f770774a5384e276572d6092920e5458c2376c5a579d3cca99",
+      "bytes": 1162
+    },
+    "physical-point.json": {
+      "sha256": "35a4a2ea10f4bafdfe4517305d26aa04d6945d8fcd6f75ce459ce22d362e5321",
+      "bytes": 2560
+    },
+    "posthashes.json": {
+      "sha256": "925583c4ad67fab9f606da315fd05017998d872bab543212748bd567693319f9",
+      "bytes": 4846
+    },
+    "profile-action-input.json": {
+      "sha256": "3622bdbb0b8767dc382d5811f3833dafdee3913d6d293452189bf92d36155a12",
+      "bytes": 7500
+    },
+    "profile-action-return.json": {
+      "sha256": "e9965881768a9e823976a4ab1920ff0ea18bf98b2166e69f886b552c2b7efebf",
+      "bytes": 5109
+    },
+    "profile-logistic-derivative.json": {
+      "sha256": "4ea7318f44f1c6f4a1859006d48f189dd7a1afea0e0491e8505828f8db4aa135",
+      "bytes": 509
+    },
+    "profile-native-jet.json": {
+      "sha256": "8aec9998a5f9eb8f33b6313c7f51a0db47b2a93cd08ce6c983c1de1439553a7c",
+      "bytes": 468
+    },
+    "profile-reflection.json": {
+      "sha256": "b5e3017577a76aa3aa20b89a814f8f385fc7e2e1edef30fd2d9bc6d329445d38",
+      "bytes": 141
+    },
+    "profile-tail.json": {
+      "sha256": "48f990e5d434d426b8a659f6bfd7a934d1d0d84cab1e7392f1d7cf147452bf75",
+      "bytes": 188
+    },
+    "profile-transform-input.json": {
+      "sha256": "c05f5386226a304017655729eead3b9e3236e7d2887bfe157c1a15b19ed3edc2",
+      "bytes": 79
+    },
+    "profile-transform-return.json": {
+      "sha256": "fff546e7a76fdb66b3059627a54d3c008d456fc5acd9d971fe45140add36a099",
+      "bytes": 2211
+    },
+    "responsive-controls.json": {
+      "sha256": "4f068d341ec9ac6ea4a99058b2e03d916de0f4c3aba01a9fbaf7e9f9990c29bb",
+      "bytes": 1392
+    },
+    "rigid-height-translation.json": {
+      "sha256": "7651315000de882136d6972cada89e0cb5f3d1bcc0b9afa2e1fd1e0c18144382",
+      "bytes": 141
+    },
+    "selected-mixed-reduction.json": {
+      "sha256": "baf0399343297bdc631a7507c9743619405dfb8b186650b99453536897541cde",
+      "bytes": 678
+    },
+    "sign-ingredients.json": {
+      "sha256": "594f6cafa20722ca7399f77e4eb971df896ea60e16e84f16aea6f4522d78eec5",
+      "bytes": 4029
+    },
+    "wave-amplitude-linearity.json": {
+      "sha256": "ef36bab3ef7bf4a51dbf90ea73bc9aefdd320fde07367258df7bb586d2ee1310",
+      "bytes": 4205
+    }
+  },
+  "resultFileCount": 52,
+  "resultBytes": 99447,
+  "workerSeconds": 5.247015145025216,
+  "supervisorSeconds": 5.526966660050675,
+  "guardSeconds": 5.736345486016944,
+  "peakMemoryBytes": 77709312,
+  "zeroSwapAndMemoryEvents": true,
+  "durationValidation": {
+    "verified": true,
+    "actual": {
+      "RuntimeMaxUSec": "infinity",
+      "Restart": "no"
+    },
+    "wallDeadlineSeconds": null,
+    "inactivityDeadlineSeconds": null
+  },
+  "effectiveLimits": {
+    "memory.max": "4294967296",
+    "memory.swap.max": "0",
+    "pids.max": "32",
+    "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-010e9390849c.service",
+    "nice": 0,
+    "affinity": [
+      15
+    ],
+    "threads": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1",
+      "VECLIB_MAXIMUM_THREADS": "1",
+      "BLIS_NUM_THREADS": "1"
+    },
+    "nativeAddressSpaceBytes": [
+      4294967296,
+      4294967296
+    ],
+    "systemd.CPUAffinity": "15",
+    "affinityEnforcement": "systemd-and-inherited-process"
+  },
+  "savedBoundaryCoefficients": {
+    "mixed": {
+      "text": "I*omega*rho_m*(-H*q_i**2 + k*q_h*q_i + k*q_h*q_o - k*q_h*q_s - k*q_i**2)/(q_h*q_i*q_o)",
+      "srepr": "Mul(I, Symbol('omega', real=True), Pow(Symbol('q_h', nonzero=True), Integer(-1)), Pow(Symbol('q_i', nonzero=True), Integer(-1)), Pow(Symbol('q_o', nonzero=True), Integer(-1)), Symbol('rho_m', positive=True), Add(Mul(Integer(-1), Symbol('H', real=True), Pow(Symbol('q_i', nonzero=True), Integer(2))), Mul(Symbol('k', real=True), Symbol('q_h', nonzero=True), Symbol('q_i', nonzero=True)), Mul(Symbol('k', real=True), Symbol('q_h', nonzero=True), Symbol('q_o', nonzero=True)), Mul(Integer(-1), Symbol('k', real=True), Symbol('q_h', nonzero=True), Symbol('q_s', nonzero=True)), Mul(Integer(-1), Symbol('k', real=True), Pow(Symbol('q_i', nonzero=True), Integer(2)))))"
+    },
+    "selected": {
+      "text": "-I*H*omega*q_i*rho_m/(q_h*q_o)",
+      "srepr": "Mul(Integer(-1), I, Symbol('H', real=True), Symbol('omega', real=True), Pow(Symbol('q_h', nonzero=True), Integer(-1)), Symbol('q_i', nonzero=True), Pow(Symbol('q_o', nonzero=True), Integer(-1)), Symbol('rho_m', positive=True))"
+    },
+    "height": {
+      "text": "I*omega*rho_m*(q_h - q_i)/q_h",
+      "srepr": "Mul(I, Symbol('omega', real=True), Pow(Symbol('q_h', nonzero=True), Integer(-1)), Symbol('rho_m', positive=True), Add(Symbol('q_h', nonzero=True), Mul(Integer(-1), Symbol('q_i', nonzero=True))))"
+    },
+    "slope": {
+      "text": "k*native_tangential_normal_multiplier*omega*rho_m/(q_i*q_s)",
+      "srepr": "Mul(Symbol('k', real=True), Symbol('native_tangential_normal_multiplier', real=True), Symbol('omega', real=True), Pow(Symbol('q_i', nonzero=True), Integer(-1)), Pow(Symbol('q_s', nonzero=True), Integer(-1)), Symbol('rho_m', positive=True))"
+    },
+    "controlCoefficient": {
+      "text": "I*native_tangential_normal_multiplier*omega*rho_m*(-H*q_i**2 + k*q_h*q_i + k*q_h*q_o - k*q_h*q_s - k*q_i**2)/(q_h*q_i*q_o)",
+      "srepr": "Mul(I, Symbol('native_tangential_normal_multiplier', real=True), Symbol('omega', real=True), Pow(Symbol('q_h', nonzero=True), Integer(-1)), Pow(Symbol('q_i', nonzero=True), Integer(-1)), Pow(Symbol('q_o', nonzero=True), Integer(-1)), Symbol('rho_m', positive=True), Add(Mul(Integer(-1), Symbol('H', real=True), Pow(Symbol('q_i', nonzero=True), Integer(2))), Mul(Symbol('k', real=True), Symbol('q_h', nonzero=True), Symbol('q_i', nonzero=True)), Mul(Symbol('k', real=True), Symbol('q_h', nonzero=True), Symbol('q_o', nonzero=True)), Mul(Integer(-1), Symbol('k', real=True), Symbol('q_h', nonzero=True), Symbol('q_s', nonzero=True)), Mul(Integer(-1), Symbol('k', real=True), Pow(Symbol('q_i', nonzero=True), Integer(2)))))"
+    },
+    "controlMultiplier": {
+      "text": "native_tangential_normal_multiplier",
+      "srepr": "Symbol('native_tangential_normal_multiplier', real=True)"
+    },
+    "amplitudes": {
+      "A00": {
+        "text": "-I/q_i",
+        "srepr": "Mul(Integer(-1), I, Pow(Symbol('q_i', nonzero=True), Integer(-1)))"
+      },
+      "A10": {
+        "text": "-q_i/q_h",
+        "srepr": "Mul(Integer(-1), Pow(Symbol('q_h', nonzero=True), Integer(-1)), Symbol('q_i', nonzero=True))"
+      },
+      "A01": {
+        "text": "-I*k*native_tangential_normal_multiplier/(q_i*q_s)",
+        "srepr": "Mul(Integer(-1), I, Symbol('k', real=True), Symbol('native_tangential_normal_multiplier', real=True), Pow(Symbol('q_i', nonzero=True), Integer(-1)), Pow(Symbol('q_s', nonzero=True), Integer(-1)))"
+      },
+      "A11": {
+        "text": "native_tangential_normal_multiplier*(-H*q_i**2 + k*q_h*q_i - k*q_h*q_s - k*q_i**2)/(q_h*q_i*q_o)",
+        "srepr": "Mul(Symbol('native_tangential_normal_multiplier', real=True), Pow(Symbol('q_h', nonzero=True), Integer(-1)), Pow(Symbol('q_i', nonzero=True), Integer(-1)), Pow(Symbol('q_o', nonzero=True), Integer(-1)), Add(Mul(Integer(-1), Symbol('H', real=True), Pow(Symbol('q_i', nonzero=True), Integer(2))), Mul(Symbol('k', real=True), Symbol('q_h', nonzero=True), Symbol('q_i', nonzero=True)), Mul(Integer(-1), Symbol('k', real=True), Symbol('q_h', nonzero=True), Symbol('q_s', nonzero=True)), Mul(Integer(-1), Symbol('k', real=True), Pow(Symbol('q_i', nonzero=True), Integer(2)))))"
+      }
+    }
+  },
+  "savedProfile": {
+    "profile": {
+      "text": "tanh(y/L)/2 + 1/2",
+      "srepr": "Add(Mul(Rational(1, 2), tanh(Mul(Pow(Symbol('L', positive=True), Integer(-1)), Symbol('y', real=True)))), Rational(1, 2))"
+    },
+    "derivative": {
+      "text": "(1 - tanh(y/L)**2)/(2*L)",
+      "srepr": "Mul(Rational(1, 2), Pow(Symbol('L', positive=True), Integer(-1)), Add(Integer(1), Mul(Integer(-1), Pow(tanh(Mul(Pow(Symbol('L', positive=True), Integer(-1)), Symbol('y', real=True))), Integer(2)))))"
+    },
+    "jet": {
+      "text": "1/2 - tanh(y/L)**2/2",
+      "srepr": "Add(Rational(1, 2), Mul(Integer(-1), Rational(1, 2), Pow(tanh(Mul(Pow(Symbol('L', positive=True), Integer(-1)), Symbol('y', real=True))), Integer(2))))"
+    },
+    "substitution": {
+      "text": "exp(2*y/L)",
+      "srepr": "exp(Mul(Integer(2), Pow(Symbol('L', positive=True), Integer(-1)), Symbol('y', real=True)))"
+    },
+    "betaProduct": {
+      "text": "gamma(-I*L*t/2 + 1)*gamma(I*L*t/2 + 1)/(2*pi)",
+      "srepr": "Mul(Rational(1, 2), Pow(pi, Integer(-1)), gamma(Add(Mul(Integer(-1), Rational(1, 2), I, Symbol('L', positive=True), Symbol('t', real=True)), Integer(1))), gamma(Add(Mul(Rational(1, 2), I, Symbol('L', positive=True), Symbol('t', real=True)), Integer(1))))"
+    },
+    "A": {
+      "text": "L*t/(4*sinh(pi*L*t/2))",
+      "srepr": "Mul(Rational(1, 4), Symbol('L', positive=True), Symbol('t', real=True), Pow(sinh(Mul(Rational(1, 2), pi, Symbol('L', positive=True), Symbol('t', real=True))), Integer(-1)))"
+    },
+    "removableValue": {
+      "text": "1/(2*pi)",
+      "srepr": "Mul(Rational(1, 2), Pow(pi, Integer(-1)))"
+    },
+    "heightTransform": "delta(t)/2 + PV[L/(4 i sinh(pi L t/2))]",
+    "jetTransform": {
+      "text": "L**2*t/(4*sinh(pi*L*t/2))",
+      "srepr": "Mul(Rational(1, 4), Pow(Symbol('L', positive=True), Integer(2)), Symbol('t', real=True), Pow(sinh(Mul(Rational(1, 2), pi, Symbol('L', positive=True), Symbol('t', real=True))), Integer(-1)))"
+    },
+    "distributionIdentity": "t*delta(t)=0; t*PV(1/t)=1; fixes t*w_hat(t)=A(t)/i.",
+    "convention": "Forward exp(-i k y)/(2 pi), inverse exp(+i k y); two conserved edge deltas factored.",
+    "L": {
+      "text": "L",
+      "srepr": "Symbol('L', positive=True)"
+    },
+    "t": {
+      "text": "t",
+      "srepr": "Symbol('t', real=True)"
+    }
+  },
+  "savedProfileAction": {
+    "integrand": {
+      "text": "-5*sqrt(3)*t*(10*t - 1)/(16*q_t*sinh(5*pi*t)*sinh(5*pi*t - pi/2))",
+      "srepr": "Mul(Integer(-1), Rational(5, 16), Pow(Integer(3), Rational(1, 2)), Pow(Symbol('q_t', nonzero=True), Integer(-1)), Symbol('t', real=True), Add(Mul(Integer(10), Symbol('t', real=True)), Integer(-1)), Pow(sinh(Mul(Integer(5), pi, Symbol('t', real=True))), Integer(-1)), Pow(sinh(Add(Mul(Integer(5), pi, Symbol('t', real=True)), Mul(Integer(-1), Rational(1, 2), pi))), Integer(-1)))"
+    },
+    "prefactor": {
+      "text": "-sqrt(3)/2",
+      "srepr": "Mul(Integer(-1), Rational(1, 2), Pow(Integer(3), Rational(1, 2)))"
+    },
+    "A": {
+      "text": "5*t/(2*sinh(5*pi*t))",
+      "srepr": "Mul(Rational(5, 2), Symbol('t', real=True), Pow(sinh(Mul(Integer(5), pi, Symbol('t', real=True))), Integer(-1)))"
+    },
+    "otherA": {
+      "text": "5*(1/10 - t)/(2*sinh(5*pi*(1/10 - t)))",
+      "srepr": "Mul(Rational(5, 2), Add(Rational(1, 10), Mul(Integer(-1), Symbol('t', real=True))), Pow(sinh(Mul(Integer(5), pi, Add(Rational(1, 10), Mul(Integer(-1), Symbol('t', real=True))))), Integer(-1)))"
+    },
+    "symmetrized": {
+      "text": "-5*sqrt(3)*t*(10*t - 1)/(32*q_t*sinh(5*pi*t)*sinh(5*pi*t - pi/2)) + 25*sqrt(3)*t*(1/10 - t)/(16*q_Q_minus_t*sinh(5*pi*(1/10 - t))*sinh(5*pi*(1/10 - t) - pi/2))",
+      "srepr": "Add(Mul(Integer(-1), Rational(5, 32), Pow(Integer(3), Rational(1, 2)), Pow(Symbol('q_t', nonzero=True), Integer(-1)), Symbol('t', real=True), Add(Mul(Integer(10), Symbol('t', real=True)), Integer(-1)), Pow(sinh(Mul(Integer(5), pi, Symbol('t', real=True))), Integer(-1)), Pow(sinh(Add(Mul(Integer(5), pi, Symbol('t', real=True)), Mul(Integer(-1), Rational(1, 2), pi))), Integer(-1))), Mul(Rational(25, 16), Pow(Integer(3), Rational(1, 2)), Pow(Symbol('q_Q_minus_t', nonzero=True), Integer(-1)), Symbol('t', real=True), Add(Rational(1, 10), Mul(Integer(-1), Symbol('t', real=True))), Pow(sinh(Mul(Integer(5), pi, Add(Rational(1, 10), Mul(Integer(-1), Symbol('t', real=True))))), Integer(-1)), Pow(sinh(Add(Mul(Integer(5), pi, Add(Rational(1, 10), Mul(Integer(-1), Symbol('t', real=True)))), Mul(Integer(-1), Rational(1, 2), pi))), Integer(-1))))"
+    },
+    "interior": {
+      "text": "-5*sqrt(3)*t*(10*t - 1)/(8*positive_depth*(cosh(pi*(10*t - 1/2)) - cosh(pi/2)))",
+      "srepr": "Mul(Integer(-1), Rational(5, 8), Pow(Integer(3), Rational(1, 2)), Pow(Symbol('positive_depth', positive=True), Integer(-1)), Symbol('t', real=True), Add(Mul(Integer(10), Symbol('t', real=True)), Integer(-1)), Pow(Add(cosh(Mul(pi, Add(Mul(Integer(10), Symbol('t', real=True)), Rational(-1, 2)))), Mul(Integer(-1), cosh(Mul(Rational(1, 2), pi)))), Integer(-1)))"
+    },
+    "exterior": {
+      "text": "5*sqrt(3)*I*t*(10*t - 1)/(8*positive_depth*(cosh(pi*(10*t - 1/2)) - cosh(pi/2)))",
+      "srepr": "Mul(Rational(5, 8), Pow(Integer(3), Rational(1, 2)), I, Pow(Symbol('positive_depth', positive=True), Integer(-1)), Symbol('t', real=True), Add(Mul(Integer(10), Symbol('t', real=True)), Integer(-1)), Pow(Add(cosh(Mul(pi, Add(Mul(Integer(10), Symbol('t', real=True)), Rational(-1, 2)))), Mul(Integer(-1), cosh(Mul(Rational(1, 2), pi)))), Integer(-1)))"
+    },
+    "branchPoints": [
+      {
+        "text": "-1/5",
+        "srepr": "Rational(-1, 5)"
+      },
+      {
+        "text": "1/5",
+        "srepr": "Rational(1, 5)"
+      }
+    ],
+    "inputDispersionResidual": {
+      "text": "0",
+      "srepr": "Integer(0)"
+    },
+    "outputDispersionResidual": {
+      "text": "0",
+      "srepr": "Integer(0)"
+    },
+    "endpoints": [
+      {
+        "t": {
+          "text": "-1/5",
+          "srepr": "Rational(-1, 5)"
+        },
+        "numerator": {
+          "text": "3*sqrt(3)/(8*(-cosh(5*pi/2) + cosh(pi/2)))",
+          "srepr": "Mul(Rational(3, 8), Pow(Integer(3), Rational(1, 2)), Pow(Add(Mul(Integer(-1), cosh(Mul(Rational(5, 2), pi))), cosh(Mul(Rational(1, 2), pi))), Integer(-1)))"
+        },
+        "finite": true,
+        "negative": true
+      },
+      {
+        "t": {
+          "text": "1/5",
+          "srepr": "Rational(1, 5)"
+        },
+        "numerator": {
+          "text": "sqrt(3)/(8*(-cosh(3*pi/2) + cosh(pi/2)))",
+          "srepr": "Mul(Rational(1, 8), Pow(Integer(3), Rational(1, 2)), Pow(Add(Mul(Integer(-1), cosh(Mul(Rational(3, 2), pi))), cosh(Mul(Rational(1, 2), pi))), Integer(-1)))"
+        },
+        "finite": true,
+        "negative": true
+      }
+    ],
+    "tailCoefficient": {
+      "text": "5",
+      "srepr": "Integer(5)"
+    },
+    "signIngredients": {
+      "A_even": true,
+      "A_positive_on_positive_argument": true,
+      "A_zero": {
+        "text": "1/(2*pi)",
+        "srepr": "Mul(Rational(1, 2), Pow(pi, Integer(-1)))"
+      },
+      "prefactor": {
+        "text": "-sqrt(3)/2",
+        "srepr": "Mul(Integer(-1), Rational(1, 2), Pow(Integer(3), Rational(1, 2)))"
+      }
+    },
+    "integrationNotPerformed": true,
+    "reasoningForReview": "Interior has two positive A factors / positive outgoing depth and negative prefactor; exterior denominator is positive imaginary. Square-root endpoints locally integrable; exponential tails integrable. Delta/PV singularities removed by exact transfer multiplication.",
+    "scope": "Coefficient of independent eta*sigma only, not the complete physical eta^2 shape correction."
+  },
+  "savedSignIngredients": {
+    "At": {
+      "text": "5*t/(2*sinh(5*pi*t))",
+      "srepr": "Mul(Rational(5, 2), Symbol('t', real=True), Pow(sinh(Mul(Integer(5), pi, Symbol('t', real=True))), Integer(-1)))"
+    },
+    "AQ": {
+      "text": "5*(1/10 - t)/(2*sinh(5*pi*(1/10 - t)))",
+      "srepr": "Mul(Rational(5, 2), Add(Rational(1, 10), Mul(Integer(-1), Symbol('t', real=True))), Pow(sinh(Mul(Integer(5), pi, Add(Rational(1, 10), Mul(Integer(-1), Symbol('t', real=True))))), Integer(-1)))"
+    },
+    "prefactor": {
+      "text": "-sqrt(3)/2",
+      "srepr": "Mul(Integer(-1), Rational(1, 2), Pow(Integer(3), Rational(1, 2)))"
+    },
+    "positiveA": {
+      "text": "5*positive_transfer/(2*sinh(5*pi*positive_transfer))",
+      "srepr": "Mul(Rational(5, 2), Symbol('positive_transfer', positive=True), Pow(sinh(Mul(Integer(5), pi, Symbol('positive_transfer', positive=True))), Integer(-1)))"
+    },
+    "positiveAFlag": true,
+    "removableValue": {
+      "text": "1/(2*pi)",
+      "srepr": "Mul(Rational(1, 2), Pow(pi, Integer(-1)))"
+    },
+    "removablePositiveFlag": true,
+    "prefactorNegativeFlag": true,
+    "endpoints": [
+      {
+        "t": {
+          "text": "-1/5",
+          "srepr": "Rational(-1, 5)"
+        },
+        "numerator": {
+          "text": "3*sqrt(3)/(8*(-cosh(5*pi/2) + cosh(pi/2)))",
+          "srepr": "Mul(Rational(3, 8), Pow(Integer(3), Rational(1, 2)), Pow(Add(Mul(Integer(-1), cosh(Mul(Rational(5, 2), pi))), cosh(Mul(Rational(1, 2), pi))), Integer(-1)))"
+        },
+        "finite": true,
+        "negative": true
+      },
+      {
+        "t": {
+          "text": "1/5",
+          "srepr": "Rational(1, 5)"
+        },
+        "numerator": {
+          "text": "sqrt(3)/(8*(-cosh(3*pi/2) + cosh(pi/2)))",
+          "srepr": "Mul(Rational(1, 8), Pow(Integer(3), Rational(1, 2)), Pow(Add(Mul(Integer(-1), cosh(Mul(Rational(3, 2), pi))), cosh(Mul(Rational(1, 2), pi))), Integer(-1)))"
+        },
+        "finite": true,
+        "negative": true
+      }
+    ],
+    "interior": {
+      "text": "-5*sqrt(3)*t*(10*t - 1)/(8*positive_depth*(cosh(pi*(10*t - 1/2)) - cosh(pi/2)))",
+      "srepr": "Mul(Integer(-1), Rational(5, 8), Pow(Integer(3), Rational(1, 2)), Pow(Symbol('positive_depth', positive=True), Integer(-1)), Symbol('t', real=True), Add(Mul(Integer(10), Symbol('t', real=True)), Integer(-1)), Pow(Add(cosh(Mul(pi, Add(Mul(Integer(10), Symbol('t', real=True)), Rational(-1, 2)))), Mul(Integer(-1), cosh(Mul(Rational(1, 2), pi)))), Integer(-1)))"
+    },
+    "interiorReal": {
+      "text": "-5*sqrt(3)*t*(10*t - 1)/(8*positive_depth*(cosh(pi*(10*t - 1/2)) - cosh(pi/2)))",
+      "srepr": "Mul(Integer(-1), Rational(5, 8), Pow(Integer(3), Rational(1, 2)), Pow(Symbol('positive_depth', positive=True), Integer(-1)), Symbol('t', real=True), Add(Mul(Integer(10), Symbol('t', real=True)), Integer(-1)), Pow(Add(cosh(Mul(pi, Add(Mul(Integer(10), Symbol('t', real=True)), Rational(-1, 2)))), Mul(Integer(-1), cosh(Mul(Rational(1, 2), pi)))), Integer(-1)))"
+    },
+    "interiorImaginary": {
+      "text": "0",
+      "srepr": "Integer(0)"
+    },
+    "exterior": {
+      "text": "5*sqrt(3)*I*t*(10*t - 1)/(8*positive_depth*(cosh(pi*(10*t - 1/2)) - cosh(pi/2)))",
+      "srepr": "Mul(Rational(5, 8), Pow(Integer(3), Rational(1, 2)), I, Pow(Symbol('positive_depth', positive=True), Integer(-1)), Symbol('t', real=True), Add(Mul(Integer(10), Symbol('t', real=True)), Integer(-1)), Pow(Add(cosh(Mul(pi, Add(Mul(Integer(10), Symbol('t', real=True)), Rational(-1, 2)))), Mul(Integer(-1), cosh(Mul(Rational(1, 2), pi)))), Integer(-1)))"
+    },
+    "exteriorReal": {
+      "text": "0",
+      "srepr": "Integer(0)"
+    },
+    "exteriorImaginary": {
+      "text": "5*sqrt(3)*t*(10*t - 1)/(8*positive_depth*(cosh(pi*(10*t - 1/2)) - cosh(pi/2)))",
+      "srepr": "Mul(Rational(5, 8), Pow(Integer(3), Rational(1, 2)), Pow(Symbol('positive_depth', positive=True), Integer(-1)), Symbol('t', real=True), Add(Mul(Integer(10), Symbol('t', real=True)), Integer(-1)), Pow(Add(cosh(Mul(pi, Add(Mul(Integer(10), Symbol('t', real=True)), Rational(-1, 2)))), Mul(Integer(-1), cosh(Mul(Rational(1, 2), pi)))), Integer(-1)))"
+    },
+    "tail": {
+      "text": "5",
+      "srepr": "Integer(5)"
+    }
+  },
+  "savedControls": {
+    "t": {
+      "text": "1/20",
+      "srepr": "Rational(1, 20)"
+    },
+    "physicalDepth": {
+      "text": "sqrt(15)/20",
+      "srepr": "Mul(Rational(1, 20), Pow(Integer(15), Rational(1, 2)))"
+    },
+    "baseline": {
+      "text": "-sqrt(5)/(32*sinh(pi/4)**2)",
+      "srepr": "Mul(Integer(-1), Rational(1, 32), Pow(Integer(5), Rational(1, 2)), Pow(sinh(Mul(Rational(1, 4), pi)), Integer(-2)))"
+    },
+    "wrongSheet": {
+      "text": "sqrt(5)/(32*sinh(pi/4)**2)",
+      "srepr": "Mul(Rational(1, 32), Pow(Integer(5), Rational(1, 2)), Pow(sinh(Mul(Rational(1, 4), pi)), Integer(-2)))"
+    },
+    "wrongSheetMovement": {
+      "text": "sqrt(5)/(16*sinh(pi/4)**2)",
+      "srepr": "Mul(Rational(1, 16), Pow(Integer(5), Rational(1, 2)), Pow(sinh(Mul(Rational(1, 4), pi)), Integer(-2)))"
+    },
+    "omittedSlope": {
+      "text": "0",
+      "srepr": "Integer(0)"
+    },
+    "omissionMovement": {
+      "text": "sqrt(5)/(32*sinh(pi/4)**2)",
+      "srepr": "Mul(Rational(1, 32), Pow(Integer(5), Rational(1, 2)), Pow(sinh(Mul(Rational(1, 4), pi)), Integer(-2)))"
+    },
+    "slopeReversal": {
+      "text": "sqrt(5)/(32*sinh(pi/4)**2)",
+      "srepr": "Mul(Rational(1, 32), Pow(Integer(5), Rational(1, 2)), Pow(sinh(Mul(Rational(1, 4), pi)), Integer(-2)))"
+    },
+    "reversalMovement": {
+      "text": "sqrt(5)/(16*sinh(pi/4)**2)",
+      "srepr": "Mul(Rational(1, 16), Pow(Integer(5), Rational(1, 2)), Pow(sinh(Mul(Rational(1, 4), pi)), Integer(-2)))"
+    }
+  },
+  "candidateEvidenceOnly": true,
+  "lossOrIntegralValue": false,
+  "productionChanged": false,
+  "newJobAuthorized": false,
+  "interpretationScope": "Nonzero selected bare upper-face eta*sigma action; no closed-response/transverse-excitation/loss conclusion. Literal split build verdict and local tooling disposition preserved."
+}

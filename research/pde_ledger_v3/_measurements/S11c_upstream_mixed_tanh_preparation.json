@@ -1,5 +1,5 @@
 {
-  "status": "REVIEWS_COMPLETE_LOCAL_TOOLING_REPAIR_PENDING",
+  "status": "FOCUSED_DIAGNOSTIC_COMPLETED_INSPECTED_STOP",
   "packetDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-mixed-tanh-20261001/build-review/packet",
   "packetSha256": "b7b6b8dd5648e95714703d41a0db7cf0f7c6b07caad9dcfece6f137f8efec361",
   "archiveSha256": "3bb3df5078edc7846bf11834b02dce1bbf931e466a45c0f62481a6ae4811adf4",
@@ -12,7 +12,7 @@
   "reviewerExecution": "source-only prospective build/method",
   "currentThread": "01a0e01b-ef84-7192-817f-584cda5d339b",
   "externalSubmitted": true,
-  "scientificJobLaunched": false,
+  "scientificJobLaunched": true,
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-mixed-tanh-20261001/build-review",
   "manifestSha256": "9de667ff5cba94e03a1210d620caef3dbf90cd23bfd0b0e1e81420b560e1de77",
   "workerSha256": "bef2615e4209525ab4d1f58c49ba080cd07f158d2b717c2a20803236defb13ea",
@@ -28,5 +28,6 @@
     "claude": "NEEDS REVISION",
     "grok": "CLEAR FOR THIS FOCUSED MIXED-GRADE INSTRUMENT"
   },
-  "independentBuildClearance": false
+  "independentBuildClearance": false,
+  "completedRun": "/var/projects/toy_physics/_scratch/s11c/s11c-mixed-tanh-20261001/diagnostic-01"
 }

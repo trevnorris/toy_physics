@@ -1,0 +1,67 @@
+{
+  "launch": {
+    "jobPid": 1535184,
+    "watcherPid": 1535185,
+    "gateSha256": "a2bccfa098cdfcef076d0e7ba85227ce0a7623bdf1eec53ef1c45da1d658938a",
+    "command": [
+      "/usr/bin/python3",
+      "/var/projects/toy_physics/scripts/s11c_guarded_run.py",
+      "--pool",
+      "s11c-near-unity",
+      "--memory-gib",
+      "4",
+      "--tasks-max",
+      "32",
+      "--log-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-mixed-tanh-20261001/diagnostic-01/resource-guard",
+      "--",
+      "/usr/bin/python3",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+      "--parallel-prerequisite-read",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-mixed-tanh-20261001/diagnostic-01",
+      "--stage",
+      "upstream_mixed_tanh",
+      "--",
+      "/usr/bin/python3",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_mixed_tanh.py",
+      "--out",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-mixed-tanh-20261001/diagnostic-01/complete",
+      "--inputs",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_mixed_tanh_inputs.json"
+    ],
+    "thread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+    "automaticRetry": false
+  },
+  "coordinator": {
+    "exitCode": 0,
+    "wallSeconds": 5.820665093953721,
+    "scientificAcceptance": "PENDING_ACTUAL_INSPECTION"
+  },
+  "supervisor": {
+    "stage": "upstream_mixed_tanh",
+    "command": [
+      "/usr/bin/python3",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_mixed_tanh.py",
+      "--out",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-mixed-tanh-20261001/diagnostic-01/complete",
+      "--inputs",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_mixed_tanh_inputs.json"
+    ],
+    "prerequisiteLock": "shared-read",
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-mixed-tanh-20261001/diagnostic-01/upstream_mixed_tanh.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-mixed-tanh-20261001/diagnostic-01/upstream_mixed_tanh.stderr",
+    "startedUtc": "2026-10-01T20:36:09.151643+00:00",
+    "childPid": 1535200,
+    "status": "completed",
+    "exitCode": 0,
+    "wallSeconds": 5.526966660050675,
+    "stderrBytes": 0,
+    "finishedUtc": "2026-10-01T20:36:14.678688+00:00"
+  },
+  "completionRecord": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_mixed_tanh_completion.json",
+  "status": "COMPLETED_AND_INSPECTED_STOP",
+  "automaticRetry": false
+}

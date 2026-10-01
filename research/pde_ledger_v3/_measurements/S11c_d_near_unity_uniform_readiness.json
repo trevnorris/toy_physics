@@ -1,0 +1,52 @@
+{
+  "status": "FAITHFUL_SELECTED_UNIFORM_IMPLEMENTATION_SOURCE_READINESS",
+  "recordedUtc": "2026-10-01T18:29:59.116819+00:00",
+  "worker": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_near_unity_uniform.py",
+    "bytes": 73677,
+    "sha256": "49506203cb214572f712b023ba71c620f9f13ae75d144827726f03220fc2ff4e"
+  },
+  "methodReviewRecord": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_near_unity_uniform_review_r2_record.json",
+    "sha256": "042f1854c1e69aed1ccc55d49ad66aa304afd5b6853644ea44540083bf4f396d"
+  },
+  "literalMethodVerdicts": [
+    "CLEAR FOR THIS SELECTED UNIFORM METHOD",
+    "CLEAR FOR THIS SELECTED UNIFORM METHOD"
+  ],
+  "independentWorkerBuildOrRuntimeClearance": false,
+  "syntaxPassed": true,
+  "scientificImportsDuringPreparation": false,
+  "scientificPayloadRestorationDuringPreparation": false,
+  "localLauncherTests": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_near_unity_uniform_launch_checks.json",
+    "sha256": "459ac18177268b32da264a84f8fd0c4a773e5fba1b568154d68a4515e3b8f34a",
+    "count": 7
+  },
+  "sourceAudit": {
+    "nativeSourceEquationsPreserved": true,
+    "frozenPlanUnchanged": true,
+    "coordinateFrame": "Physical five-field strong pencil, actual source curl/field lift, reference units",
+    "frequency": "Keep omega live for small direction derivative, then bind3 in native reconstruction; c_s is exact positive algebraic",
+    "limits": "Wave-constrained cs(t), both physical depth legs, pre-cancellation factors/orders, exact closure nonzero; full unselected finiteness diagnostic",
+    "reconstruction": "Fresh chemical rectangular eta/sigma projection, source pressure/velocity/memory closure, both harmonic legs, port and current bilinears, source equal-depth eliminant and diagonal derivative/zero-height joins",
+    "controls": "Addressed actual coefficient/current/velocity omissions, independent group direction, prospective nongrazing sheet probe, unchanged tolerances",
+    "availableSourceJoins": "Actual native/uniform strong and profile-end operands must join exactly",
+    "foundBlockersRemaining": [],
+    "runtimeAcceptance": "Not established: decoding, source identity, exact limits and all numerical controls are run obligations"
+  },
+  "resources": {
+    "pool": "s11c-near-unity",
+    "memoryGiB": 8,
+    "aggregatePoolGiB": 16,
+    "hostReserveGiB": 4,
+    "cpus": 1,
+    "nativeThreads": 1,
+    "tasksMax": 32,
+    "swapBytes": 0,
+    "deadlines": null,
+    "priority": "desktop-managed"
+  },
+  "stop": "Selected uniform evidence and applicable upstream findings only; no defect sweep or loss interpretation.",
+  "dependencyLimit": "Missing nonuniform/direct mixed-grade composition evidence remains explicit conditional applicability; source correction invalidates dependent results."
+}

@@ -1,0 +1,17 @@
+{
+  "status": "LOCAL_STDLIB_LAUNCHER_TESTS_PASSED",
+  "sourceSha256": "f58c55385f07d26ca53d20b38110fdd9dcaeca759360ce1f70481e64511ea18b",
+  "tests": [
+    "matching metadata joins",
+    "reject methodClearance",
+    "reject pooledExecution",
+    "reject command",
+    "reject sourcePins",
+    "changed source refused",
+    "unarmed hook refuses launch before verification/subprocess"
+  ],
+  "testCount": 7,
+  "scientificImports": false,
+  "scientificPayloadRestoration": false,
+  "scientificSubprocesses": 0
+}

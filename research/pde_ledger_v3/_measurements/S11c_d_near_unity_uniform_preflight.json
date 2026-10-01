@@ -1,0 +1,11 @@
+{
+  "status": "ACTUAL_WORKER_AND_LAUNCHER_METADATA_PREFLIGHT_PASSED",
+  "workerSha256": "49506203cb214572f712b023ba71c620f9f13ae75d144827726f03220fc2ff4e",
+  "manifestSha256": "afb408e2e65de714a34fc1c90ca0302c7ca62d0e1c69b56ec7079581aae60cf3",
+  "gateSha256": "6535bc2d495823cf8dfa6310d764b1ed90135d49b188c44dbef43543f096a61a",
+  "sourcePins": 30,
+  "originalPayloadPins": 9,
+  "scientificImports": false,
+  "scientificRestorations": false,
+  "runtimeContainmentAndScience": "NOT_YET_LAUNCHED"
+}

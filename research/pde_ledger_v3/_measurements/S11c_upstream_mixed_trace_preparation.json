@@ -1,5 +1,5 @@
 {
-  "status": "READY_FOR_ONE_FOCUSED_DIAGNOSTIC_AFTER_LOCAL_FIXES",
+  "status": "SELECTED_RESPONSE_DIAGNOSTIC_COMPLETED_INSPECTED_STOP",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-mixed-trace-20261001/build-review",
   "packetDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-mixed-trace-20261001/build-review/packet",
   "packetSha256": "d23734d7d3c61e058a12bf6820c45cef95b783aadb17d3c2af9a84d7651fb86c",
@@ -12,7 +12,7 @@
   ],
   "userScopeAuthority": "continue",
   "externalSubmitted": true,
-  "scientificJobLaunched": false,
+  "scientificJobLaunched": true,
   "workerSha256": "ab3c9f47ca619fbe45af61462460001ef9e968eacbf87735596b21f3e1222064",
   "manifestSha256": "97e86f3d79e37b727b336320881dabd9be872bea2d9f746064f39c7b0976d2bb",
   "priorResultCommit": "ce89b3f7",
@@ -34,5 +34,7 @@
   "reviewedBaselineCommit": "8305e075",
   "currentWorkerSha256": "b5c7a0a6785ba93f498ec3d0f1690818a9d3ad4d876e274e9b23311b86e02313",
   "currentManifestSha256": "76397a7a822b826af57cbbc35222ee61efe47a19348349fac3d475411663fb61",
-  "gate": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_mixed_trace_gate.json"
+  "gate": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_mixed_trace_gate.json",
+  "completedRun": "/var/projects/toy_physics/_scratch/s11c/s11c-mixed-trace-20261001/diagnostic-01",
+  "scientificResultScope": "incremental upper-face response per unit normal velocity; no slab excitation or loss"
 }

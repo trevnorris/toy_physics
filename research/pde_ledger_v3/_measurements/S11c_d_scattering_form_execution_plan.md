@@ -1,3 +1,19 @@
+**SELECTED CLOSED/REFERENCE RESPONSE DIFFERENCE SUPPORTED (2026-10-01):**
+Read S11c_upstream_mixed_trace_result.md and completion.json. The single saved
+bare mixed-slot insertion survives both the selected permeability closure and
+reference-pressure map, with finite nonzero external factor. Its reference
+pressure difference equals the physical difference; jet adds i*q_out. These
+are dependent maps, per unit prescribed V, not transverse excitation or loss.
+All55 scalar residual entries zero; omission/sign/one-sided controls respond.
+Worker8.037s,peak154464256bytes,zero swap/events,413 metadata checks,74intact
+pins,76snapshots,2complete operations,39files/270090bytes. No integrals replayed.
+Literal reviews remain NEEDS REVISION/NEEDS REVISION, baseline8305e075;
+local namespace/persistence/label repairs9d49ec43, no fresh independent CLEAR.
+STOP complete. Next bounded decision is actual slab pressure/jet consumer and
+source/mode contraction before any rebuild; no production repair/defect sweep.
+Do not integrate the already-whole bare convolution a second time through the
+native second-slot path. All prior results, review debts and limitations stay.
+
 **SELECTED RESPONSE TRACE READY AFTER LOCAL TOOLING REPAIRS (2026-10-01):**
 Reviewed source and both NEEDS REVISION reports are preserved at8305e075.
 The namespace keys now match the native left_map/right_map; eleven stdlib tests

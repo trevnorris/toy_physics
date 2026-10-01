@@ -1,0 +1,33 @@
+{
+  "status": "SELECTED_RESPONSE_DIFFERENCE_INSPECTED_STOP",
+  "scientificScope": "incremental upper-face response per unit normal velocity; no slab excitation or loss",
+  "independentBuildClearance": false,
+  "literalVerdicts": {
+    "claude": "NEEDS REVISION",
+    "grok": "NEEDS REVISION"
+  },
+  "reviewedBaselineCommit": "8305e075",
+  "repairedBuildCommit": "9d49ec43",
+  "workerSha256": "b5c7a0a6785ba93f498ec3d0f1690818a9d3ad4d876e274e9b23311b86e02313",
+  "gateSha256": "d48656ecfc5e8d1e9ba48ef6f21d592cb230fdbb5a1e73d9fd6ca041424998ad",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-mixed-trace-20261001/diagnostic-01",
+  "allMetadataChecksPassed": true,
+  "workerSeconds": 8.037098339060321,
+  "supervisorSeconds": 8.436174168018624,
+  "guardSeconds": 8.723674803972244,
+  "peakMemoryBytes": 154464256,
+  "peakMemoryMiB": 147.30859375,
+  "swapBytes": 0,
+  "memoryEventsAllZero": true,
+  "resourceSamples": 6,
+  "sourcePins": 74,
+  "sourceSnapshots": 76,
+  "completedOperations": 2,
+  "restoredPriorResultFiles": 52,
+  "scalarZeroResiduals": 55,
+  "resultFileCount": 39,
+  "resultBytes": 270090,
+  "comparisonSource": "actual saved operands/results inspected without scientific restoration",
+  "automaticRetry": false,
+  "moreScienceAuthorizedByCompletion": false
+}

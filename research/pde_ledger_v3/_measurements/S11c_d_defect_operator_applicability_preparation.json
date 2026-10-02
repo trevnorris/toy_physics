@@ -1,0 +1,34 @@
+{
+  "status": "FIXED_APPLICABILITY_METHOD_PACKET_PREPARED_AWAITING_EXACT_EXPORT_CONSENT",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-operator-applicability-20261001/method-review",
+  "packetDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-operator-applicability-20261001/method-review/packet",
+  "packetFiles": 77,
+  "packetBytes": 2986536,
+  "packetSha256": "0ee336fbe5e6ea301454564004ab0434d78b798431f0cac3a1d286af113bb8d3",
+  "archiveSha256": "d87a322e19dbf288e7d585f4c9f3833f5b7e0e19a7a6e0fe759d873ba678177e",
+  "reviewers": [
+    "claude",
+    "grok"
+  ],
+  "authority": "User directs continued work without unnecessary stops; new packet exact external consent remains required.",
+  "scientificJobLaunched": false,
+  "scientificImportsDuringPreparation": false,
+  "externalSubmitted": false,
+  "independentClearance": false,
+  "peerReportsIncluded": false,
+  "transport": {
+    "runnerSha256": "30ed68e2d751f5c85399fcdf99384d9ef095376983da0b1bf91b89aef62e5b62",
+    "launcherSha256": "d7dd71850300818294a1218ecaf59c5576f63884457eb12b87d69d8b0c7df2a5",
+    "completionMessageSha256": "f918bb2ec533cb465094ac8321de945ffce52a2a50cc074debd60715f951ae69",
+    "scientificExecutionEnabled": false
+  },
+  "checks": {
+    "allOriginalSourceHashes": true,
+    "allStagedFileHashes": true,
+    "archiveMembershipAndBytes": true,
+    "exactJSONSelections": true,
+    "transportCompileOnly": true,
+    "freshUnlaunchedRoot": true
+  },
+  "next": "After exact consent submit this pair with hook first; if substantively clear continue bounded implementation under standing user scope; no producer restart or defect sweep from source review alone."
+}

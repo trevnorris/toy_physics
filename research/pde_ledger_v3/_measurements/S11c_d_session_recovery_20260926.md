@@ -1,3 +1,28 @@
+**DEFECT-OPERATOR APPLICABILITY PACKET READY; EXACT EXPORT CONSENT PENDING (2026-10-01):**
+User renewed: Great. Let's keep going. Please stop stopping unless you need my input.
+Local source assessment identifies the material distinction: c2 truncates the
+operator to the rectangular grade, but the finite library performs an untruncated
+matrix inverse. The selected zero source alone does not protect that finite result.
+Prepared a bounded one-dimensional both-face raw direct-increment method on the
+existing tanh profile, with actual source/closure/consumer evidence and explicit
+contact/PV/physical-sheet/single-integration joins. Conditional graded-response
+logic is proposed for assessment only, not an exemption or a new scientific job.
+Do not spend another formal diagnostic unless it removes required finite-pilot work.
+See S11c_d_defect_operator_applicability.md, review_prompt, sources and preparation.
+Exact packet77files/2986536bytes, SHA256
+0ee336fbe5e6ea301454564004ab0434d78b798431f0cac3a1d286af113bb8d3;
+archive d87a322e19dbf288e7d585f4c9f3833f5b7e0e19a7a6e0fe759d873ba678177e.
+Both fresh Claude/Grok destinations displayed in the pending exact-consent question.
+No prior peer report supplied, no external submission, scientific import/restoration
+or new science. All staged/source/archive hashes and JSON selections verified.
+Once approved, use the prepared hook-first pair; both literal reports before edits.
+If substantively clear, standing user direction covers faithful bounded implementation
+and guarded checks without repetitive science-stage permission. Read actual findings;
+no author clearance, retry, optional-review loop or automatic export. Preserve all
+completed work and source joins. No producer/export regeneration or defect sweep
+from source-only review. No deadlines; existing pooled guard/supervisor and memory
+controls continue. Scratch stays ignored; protected sources/history untouched.
+
 **SELECTED SOURCE/CONSUMER CONTINUATION COMPLETED (2026-10-01):**
 Prepared d39b595c; original failed run747fd8cc unchanged. Continuation5.390s,
 peak142.4MiB,zero swap/events. All10source controls,2native pressure ablations,

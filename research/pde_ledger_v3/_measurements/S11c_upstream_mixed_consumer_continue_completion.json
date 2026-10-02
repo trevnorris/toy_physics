@@ -1,0 +1,1960 @@
+{
+  "status": "SELECTED_SOURCE_CONSUMER_CONTINUATION_SUPPORTED_WITH_SCOPE_LIMITS",
+  "recordedUtc": "2026-10-02T00:15:32.629003+00:00",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/continuation-01",
+  "workerSha256": "d94ee245e659ae79ce11f315a3d033b3e3ee5fa649f40c9dd2acabff18ceccd7",
+  "gateSha256": "86dc00fa5a01dac1987ed684dd4f02c8bcffa07bcafc34dfcde047fd70224c5a",
+  "preparedCommit": "d39b595c",
+  "priorFailureCommit": "747fd8cc",
+  "independentBuildClearance": false,
+  "literalVerdicts": {
+    "claude": "NEEDS REVISION",
+    "grok": "CLEAR FOR THIS SELECTED SOURCE/CONSUMER INSTRUMENT"
+  },
+  "acceptance": "Actual selected diagnostic evidence inspected; not a full-operator or loss result",
+  "checks": {
+    "exact launch gate": true,
+    "exact command": true,
+    "guard supervisor command": true,
+    "supervisor worker command": true,
+    "completed status consistent": true,
+    "supervisor shared-read": true,
+    "duration actual": true,
+    "limits actual": true,
+    "pool host reserve": true,
+    "worker containment": true,
+    "empty coordinator.stdout": true,
+    "empty coordinator.stderr": true,
+    "empty guard-launch.stderr": true,
+    "empty resource-guard/stderr": true,
+    "empty upstream_mixed_consumer_continue.stderr": true,
+    "empty watcher.stderr": true,
+    "stdout checks byte identity": true,
+    "guard stdout outcome": true,
+    "supervisor stdout guard": true,
+    "no failure": true,
+    "input census": true,
+    "posthash /var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_a_exports.py": true,
+    "posthash /var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_b_exports.py": true,
+    "posthash /var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_c1_exports.py": true,
+    "posthash /var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_c2_selfenergy_fold_sympy_audit.py": true,
+    "posthash /var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_b_brane_operator_sympy_audit.py": true,
+    "posthash /var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_mixed_consumer.py": true,
+    "posthash /var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_mixed_consumer_source.py": true,
+    "posthash /var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_mixed_consumer_native.json": true,
+    "posthash /var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_mixed_consumer_scope.md": true,
+    "posthash /var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_mixed_consumer_test.py": true,
+    "posthash /var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_mixed_consumer_tooling_checks.json": true,
+    "posthash /var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_mixed_consumer_review_prompt.md": true,
+    "posthash /var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_variable_profile_development_input.json": true,
+    "posthash /var/projects/toy_physics/scripts/s11c_guarded_run.py": true,
+    "posthash /var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py": true,
+    "posthash /var/projects/toy_physics/scripts/codex_job_watch.py": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-trace-20261001/diagnostic-01/complete/checks.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-trace-20261001/diagnostic-01/complete/closed-response-input.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-trace-20261001/diagnostic-01/complete/closed-response-return.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-trace-20261001/diagnostic-01/complete/closure-input.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-trace-20261001/diagnostic-01/complete/closure-raw.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-trace-20261001/diagnostic-01/complete/containment.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-trace-20261001/diagnostic-01/complete/controls.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-trace-20261001/diagnostic-01/complete/direct-linearity.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-trace-20261001/diagnostic-01/complete/external-factor-dependence.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-trace-20261001/diagnostic-01/complete/height-reconstruction.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-trace-20261001/diagnostic-01/complete/kernel-measure.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-trace-20261001/diagnostic-01/complete/middle-domain.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-trace-20261001/diagnostic-01/complete/native-dtn-source-join.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-trace-20261001/diagnostic-01/complete/native-response-source-join.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-trace-20261001/diagnostic-01/complete/native-trace-reconstruction.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-trace-20261001/diagnostic-01/complete/native-trace-source-join.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-trace-20261001/diagnostic-01/complete/new-boundary-closure.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-trace-20261001/diagnostic-01/complete/normal-jet-identity.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-trace-20261001/diagnostic-01/complete/old-boundary-closure.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-trace-20261001/diagnostic-01/complete/omission-control.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-trace-20261001/diagnostic-01/complete/operation-index.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-trace-20261001/diagnostic-01/complete/physical-factors.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-trace-20261001/diagnostic-01/complete/posthashes.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-trace-20261001/diagnostic-01/complete/reference-before-guards.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-trace-20261001/diagnostic-01/complete/reference-pressure-input.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-trace-20261001/diagnostic-01/complete/reference-pressure-return.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-trace-20261001/diagnostic-01/complete/resolvent-definition.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-trace-20261001/diagnostic-01/complete/resolvent-difference-identity.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-trace-20261001/diagnostic-01/complete/response-status.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-trace-20261001/diagnostic-01/complete/restore-dimensions.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-trace-20261001/diagnostic-01/complete/restore-physical-point.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-trace-20261001/diagnostic-01/complete/restore-profile-action-return.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-trace-20261001/diagnostic-01/complete/saved-frequency-binding.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-trace-20261001/diagnostic-01/complete/saved-input-momentum.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-trace-20261001/diagnostic-01/complete/saved-output-momentum.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-trace-20261001/diagnostic-01/complete/scope.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-trace-20261001/diagnostic-01/complete/sign-control.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-trace-20261001/diagnostic-01/complete/trace-constant.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-trace-20261001/diagnostic-01/complete/trace-difference-identity.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-tanh-20261001/diagnostic-01/complete/physical-point.json": true,
+    "posthash /var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_mixed_consumer_review_r2_record.json": true,
+    "posthash /var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_mixed_consumer_review_r2_claude.txt": true,
+    "posthash /var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_mixed_consumer_review_r2_grok.txt": true,
+    "posthash /var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_mixed_consumer_review_r2_disposition.md": true,
+    "posthash /var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_mixed_consumer_local_repair_r2_record.json": true,
+    "posthash /var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_mixed_consumer_execution_authority.json": true,
+    "posthash /var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_mixed_consumer_launch.py": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/build-review-r2/explicit-packet-approval.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/posthashes.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/E_W_BALANCE-d_w_delta_p_plus-grade-split.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/U0-delta_p_plus-grade-product.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/THETA_BALANCE-d_w_delta_p_minus-grade-split.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/failure.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/E_W_BALANCE-consumer-input.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/U0-d_w_delta_p_minus-grade-split.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/native-source-census-join.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/U2-delta_p_minus-grade-split.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/U0-d_w_delta_p_plus-grade-product.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/end-to-end-controls-input.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/checks.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/plus-source-grade-split.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/plus-chemical-domain.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/minus-velocity-grade-split.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/restored-reference-pressure-return.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/E_W_BALANCE-d_w_delta_p_minus-grade-product.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/chemical-amplitude-grade-product.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/THETA_BALANCE-consumer-input.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/U0-d_w_delta_p_minus-domain.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/E_W_BALANCE-delta_p_plus-domain.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/source-consumer-input.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/U0-d_w_delta_p_plus-grade-split.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/E_W_BALANCE-delta_p_minus-grade-split.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/U1-delta_p_plus-domain.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/plus-velocity-domain.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/E_W_BALANCE-delta_p_plus-grade-split.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/plus-velocity-grade-split.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/operation-index.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/minus-source-grade-split.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/minus-source-grade-product.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/E_W_BALANCE-delta_p_minus-domain.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/minus-source-domain.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/THETA_BALANCE-d_w_delta_p_plus-grade-product.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/U0-delta_p_plus-domain.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/THETA_BALANCE-d_w_delta_p_plus-domain.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/restored-kernel-measure.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/saved-upper-c1-source.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/E_W_BALANCE-consumer-grade-join.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/U1-d_w_delta_p_plus-grade-split.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/THETA_BALANCE-d_w_delta_p_plus-grade-split.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/U2-d_w_delta_p_plus-domain.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/E_W_BALANCE-d_w_delta_p_plus-domain.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/U1-delta_p_minus-grade-product.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/plus-source-grade-product.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/U1-delta_p_plus-grade-product.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/plus-source-input.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/U2-delta_p_plus-grade-product.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/containment.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/restored-controls.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/weak-directions.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/U0-d_w_delta_p_plus-domain.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/source-controls.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/U2-d_w_delta_p_minus-grade-split.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/U0-delta_p_plus-grade-split.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/minus-chemical-grade-split.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/U2-delta_p_minus-grade-product.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/chemical-amplitude-grade-split.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/U2-delta_p_plus-domain.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/U2-d_w_delta_p_plus-grade-product.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/U2-slot-linearity.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/U0-delta_p_minus-grade-split.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/THETA_BALANCE-delta_p_minus-grade-product.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/selected-fourier-contraction.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/plus-chemical-grade-product.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/plus-velocity-grade-product.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/inherited-source-normalization.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/U1-delta_p_minus-domain.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/minus-chemical-domain.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/minus-chemical-grade-product.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/U2-d_w_delta_p_minus-grade-product.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/U2-consumer-grade-join.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/U1-delta_p_minus-grade-split.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/native-saved-velocity-normalization.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/U0-slot-linearity.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/artifact-index.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/plus-source-domain.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/U1-d_w_delta_p_minus-grade-product.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/E_W_BALANCE-d_w_delta_p_minus-grade-split.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/THETA_BALANCE-consumer-grade-join.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/inherited-frequency.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/THETA_BALANCE-delta_p_minus-domain.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/U1-delta_p_plus-grade-split.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/U1-d_w_delta_p_plus-domain.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/E_W_BALANCE-d_w_delta_p_plus-grade-product.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/U2-d_w_delta_p_plus-grade-split.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/U0-delta_p_minus-grade-product.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/profile-key-contract.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/U1-d_w_delta_p_plus-grade-product.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/native-chemical-amplitude.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/U2-d_w_delta_p_minus-domain.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/chemical-amplitude-domain.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/U1-slot-linearity.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/U0-delta_p_minus-domain.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/restored-physical-factors.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/U2-delta_p_plus-grade-split.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/E_W_BALANCE-slot-linearity.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/U2-delta_p_minus-domain.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/restored-scope.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/source-amplitude-linearity.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/THETA_BALANCE-delta_p_plus-grade-split.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/U1-consumer-input.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/E_W_BALANCE-delta_p_plus-grade-product.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/U2-consumer-input.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/U1-consumer-grade-join.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/minus-source-linearity.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/minus-velocity-domain.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/THETA_BALANCE-slot-linearity.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/U0-consumer-input.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/minus-source-input.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/zero-grade-jet-consumers.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/THETA_BALANCE-delta_p_plus-grade-product.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/restored-closed-response-return.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/binding-context.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/minus-velocity-grade-product.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/THETA_BALANCE-delta_p_plus-domain.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/THETA_BALANCE-d_w_delta_p_minus-grade-product.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/THETA_BALANCE-delta_p_minus-grade-split.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/plus-chemical-grade-split.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/U0-d_w_delta_p_minus-grade-product.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/THETA_BALANCE-d_w_delta_p_minus-domain.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/U1-d_w_delta_p_minus-grade-split.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/plus-source-restrictions.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/plus-source-linearity.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/restored-middle-domain.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/U1-d_w_delta_p_minus-domain.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/minus-source-restrictions.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/E_W_BALANCE-d_w_delta_p_minus-domain.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/E_W_BALANCE-delta_p_minus-grade-product.json": true,
+    "posthash /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/U0-consumer-grade-join.json": true,
+    "posthash /var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_mixed_consumer_continue.py": true,
+    "posthash /var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_mixed_consumer_continue_test.py": true,
+    "posthash /var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_mixed_consumer_continue_tooling_checks.json": true,
+    "posthash /var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_mixed_consumer_continue_scope.md": true,
+    "posthash /var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_mixed_consumer_continue_repair_record.json": true,
+    "posthash /var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_mixed_consumer_continue_execution_authority.json": true,
+    "posthash /var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_mixed_consumer_continue_launch.py": true,
+    "posthash /var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_mixed_consumer_inputs.json": true,
+    "posthash /var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_mixed_consumer_gate.json": true,
+    "posthash /var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_mixed_consumer_completion.json": true,
+    "snapshot /var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_a_exports.py": true,
+    "snapshot /var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_b_exports.py": true,
+    "snapshot /var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_c1_exports.py": true,
+    "snapshot /var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_c2_selfenergy_fold_sympy_audit.py": true,
+    "snapshot /var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_b_brane_operator_sympy_audit.py": true,
+    "snapshot /var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_mixed_consumer.py": true,
+    "snapshot /var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_mixed_consumer_source.py": true,
+    "snapshot /var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_mixed_consumer_native.json": true,
+    "snapshot /var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_mixed_consumer_scope.md": true,
+    "snapshot /var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_mixed_consumer_test.py": true,
+    "snapshot /var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_mixed_consumer_tooling_checks.json": true,
+    "snapshot /var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_mixed_consumer_review_prompt.md": true,
+    "snapshot /var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_variable_profile_development_input.json": true,
+    "snapshot /var/projects/toy_physics/scripts/s11c_guarded_run.py": true,
+    "snapshot /var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py": true,
+    "snapshot /var/projects/toy_physics/scripts/codex_job_watch.py": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-trace-20261001/diagnostic-01/complete/checks.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-trace-20261001/diagnostic-01/complete/closed-response-input.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-trace-20261001/diagnostic-01/complete/closed-response-return.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-trace-20261001/diagnostic-01/complete/closure-input.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-trace-20261001/diagnostic-01/complete/closure-raw.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-trace-20261001/diagnostic-01/complete/containment.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-trace-20261001/diagnostic-01/complete/controls.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-trace-20261001/diagnostic-01/complete/direct-linearity.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-trace-20261001/diagnostic-01/complete/external-factor-dependence.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-trace-20261001/diagnostic-01/complete/height-reconstruction.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-trace-20261001/diagnostic-01/complete/kernel-measure.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-trace-20261001/diagnostic-01/complete/middle-domain.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-trace-20261001/diagnostic-01/complete/native-dtn-source-join.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-trace-20261001/diagnostic-01/complete/native-response-source-join.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-trace-20261001/diagnostic-01/complete/native-trace-reconstruction.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-trace-20261001/diagnostic-01/complete/native-trace-source-join.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-trace-20261001/diagnostic-01/complete/new-boundary-closure.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-trace-20261001/diagnostic-01/complete/normal-jet-identity.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-trace-20261001/diagnostic-01/complete/old-boundary-closure.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-trace-20261001/diagnostic-01/complete/omission-control.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-trace-20261001/diagnostic-01/complete/operation-index.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-trace-20261001/diagnostic-01/complete/physical-factors.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-trace-20261001/diagnostic-01/complete/posthashes.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-trace-20261001/diagnostic-01/complete/reference-before-guards.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-trace-20261001/diagnostic-01/complete/reference-pressure-input.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-trace-20261001/diagnostic-01/complete/reference-pressure-return.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-trace-20261001/diagnostic-01/complete/resolvent-definition.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-trace-20261001/diagnostic-01/complete/resolvent-difference-identity.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-trace-20261001/diagnostic-01/complete/response-status.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-trace-20261001/diagnostic-01/complete/restore-dimensions.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-trace-20261001/diagnostic-01/complete/restore-physical-point.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-trace-20261001/diagnostic-01/complete/restore-profile-action-return.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-trace-20261001/diagnostic-01/complete/saved-frequency-binding.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-trace-20261001/diagnostic-01/complete/saved-input-momentum.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-trace-20261001/diagnostic-01/complete/saved-output-momentum.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-trace-20261001/diagnostic-01/complete/scope.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-trace-20261001/diagnostic-01/complete/sign-control.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-trace-20261001/diagnostic-01/complete/trace-constant.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-trace-20261001/diagnostic-01/complete/trace-difference-identity.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-tanh-20261001/diagnostic-01/complete/physical-point.json": true,
+    "snapshot /var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_mixed_consumer_review_r2_record.json": true,
+    "snapshot /var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_mixed_consumer_review_r2_claude.txt": true,
+    "snapshot /var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_mixed_consumer_review_r2_grok.txt": true,
+    "snapshot /var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_mixed_consumer_review_r2_disposition.md": true,
+    "snapshot /var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_mixed_consumer_local_repair_r2_record.json": true,
+    "snapshot /var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_mixed_consumer_execution_authority.json": true,
+    "snapshot /var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_mixed_consumer_launch.py": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/build-review-r2/explicit-packet-approval.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/posthashes.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/E_W_BALANCE-d_w_delta_p_plus-grade-split.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/U0-delta_p_plus-grade-product.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/THETA_BALANCE-d_w_delta_p_minus-grade-split.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/failure.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/E_W_BALANCE-consumer-input.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/U0-d_w_delta_p_minus-grade-split.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/native-source-census-join.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/U2-delta_p_minus-grade-split.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/U0-d_w_delta_p_plus-grade-product.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/end-to-end-controls-input.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/checks.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/plus-source-grade-split.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/plus-chemical-domain.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/minus-velocity-grade-split.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/restored-reference-pressure-return.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/E_W_BALANCE-d_w_delta_p_minus-grade-product.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/chemical-amplitude-grade-product.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/THETA_BALANCE-consumer-input.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/U0-d_w_delta_p_minus-domain.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/E_W_BALANCE-delta_p_plus-domain.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/source-consumer-input.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/U0-d_w_delta_p_plus-grade-split.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/E_W_BALANCE-delta_p_minus-grade-split.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/U1-delta_p_plus-domain.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/plus-velocity-domain.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/E_W_BALANCE-delta_p_plus-grade-split.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/plus-velocity-grade-split.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/operation-index.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/minus-source-grade-split.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/minus-source-grade-product.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/E_W_BALANCE-delta_p_minus-domain.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/minus-source-domain.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/THETA_BALANCE-d_w_delta_p_plus-grade-product.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/U0-delta_p_plus-domain.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/THETA_BALANCE-d_w_delta_p_plus-domain.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/restored-kernel-measure.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/saved-upper-c1-source.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/E_W_BALANCE-consumer-grade-join.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/U1-d_w_delta_p_plus-grade-split.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/THETA_BALANCE-d_w_delta_p_plus-grade-split.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/U2-d_w_delta_p_plus-domain.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/E_W_BALANCE-d_w_delta_p_plus-domain.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/U1-delta_p_minus-grade-product.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/plus-source-grade-product.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/U1-delta_p_plus-grade-product.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/plus-source-input.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/U2-delta_p_plus-grade-product.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/containment.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/restored-controls.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/weak-directions.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/U0-d_w_delta_p_plus-domain.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/source-controls.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/U2-d_w_delta_p_minus-grade-split.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/U0-delta_p_plus-grade-split.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/minus-chemical-grade-split.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/U2-delta_p_minus-grade-product.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/chemical-amplitude-grade-split.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/U2-delta_p_plus-domain.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/U2-d_w_delta_p_plus-grade-product.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/U2-slot-linearity.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/U0-delta_p_minus-grade-split.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/THETA_BALANCE-delta_p_minus-grade-product.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/selected-fourier-contraction.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/plus-chemical-grade-product.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/plus-velocity-grade-product.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/inherited-source-normalization.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/U1-delta_p_minus-domain.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/minus-chemical-domain.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/minus-chemical-grade-product.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/U2-d_w_delta_p_minus-grade-product.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/U2-consumer-grade-join.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/U1-delta_p_minus-grade-split.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/native-saved-velocity-normalization.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/U0-slot-linearity.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/artifact-index.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/plus-source-domain.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/U1-d_w_delta_p_minus-grade-product.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/E_W_BALANCE-d_w_delta_p_minus-grade-split.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/THETA_BALANCE-consumer-grade-join.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/inherited-frequency.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/THETA_BALANCE-delta_p_minus-domain.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/U1-delta_p_plus-grade-split.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/U1-d_w_delta_p_plus-domain.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/E_W_BALANCE-d_w_delta_p_plus-grade-product.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/U2-d_w_delta_p_plus-grade-split.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/U0-delta_p_minus-grade-product.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/profile-key-contract.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/U1-d_w_delta_p_plus-grade-product.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/native-chemical-amplitude.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/U2-d_w_delta_p_minus-domain.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/chemical-amplitude-domain.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/U1-slot-linearity.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/U0-delta_p_minus-domain.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/restored-physical-factors.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/U2-delta_p_plus-grade-split.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/E_W_BALANCE-slot-linearity.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/U2-delta_p_minus-domain.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/restored-scope.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/source-amplitude-linearity.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/THETA_BALANCE-delta_p_plus-grade-split.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/U1-consumer-input.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/E_W_BALANCE-delta_p_plus-grade-product.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/U2-consumer-input.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/U1-consumer-grade-join.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/minus-source-linearity.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/minus-velocity-domain.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/THETA_BALANCE-slot-linearity.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/U0-consumer-input.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/minus-source-input.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/zero-grade-jet-consumers.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/THETA_BALANCE-delta_p_plus-grade-product.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/restored-closed-response-return.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/binding-context.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/minus-velocity-grade-product.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/THETA_BALANCE-delta_p_plus-domain.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/THETA_BALANCE-d_w_delta_p_minus-grade-product.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/THETA_BALANCE-delta_p_minus-grade-split.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/plus-chemical-grade-split.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/U0-d_w_delta_p_minus-grade-product.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/THETA_BALANCE-d_w_delta_p_minus-domain.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/U1-d_w_delta_p_minus-grade-split.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/plus-source-restrictions.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/plus-source-linearity.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/restored-middle-domain.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/U1-d_w_delta_p_minus-domain.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/minus-source-restrictions.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/E_W_BALANCE-d_w_delta_p_minus-domain.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/E_W_BALANCE-delta_p_minus-grade-product.json": true,
+    "snapshot /var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/U0-consumer-grade-join.json": true,
+    "snapshot /var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_mixed_consumer_continue.py": true,
+    "snapshot /var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_mixed_consumer_continue_test.py": true,
+    "snapshot /var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_mixed_consumer_continue_tooling_checks.json": true,
+    "snapshot /var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_mixed_consumer_continue_scope.md": true,
+    "snapshot /var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_mixed_consumer_continue_repair_record.json": true,
+    "snapshot /var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_mixed_consumer_continue_execution_authority.json": true,
+    "snapshot /var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_mixed_consumer_continue_launch.py": true,
+    "snapshot /var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_mixed_consumer_inputs.json": true,
+    "snapshot /var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_mixed_consumer_gate.json": true,
+    "snapshot /var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_mixed_consumer_completion.json": true,
+    "snapshot /var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_mixed_consumer_continue_gate.json": true,
+    "snapshot /var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_mixed_consumer_continue_inputs.json": true,
+    "input arguments": true,
+    "artifact census": true,
+    "artifact consumer-unit-joins.json": true,
+    "artifact containment.json": true,
+    "artifact native-pressure-consumer-omission.json": true,
+    "artifact operation-index.json": true,
+    "artifact posthashes.json": true,
+    "artifact pressure-consumer-control-000-input.json": true,
+    "artifact pressure-consumer-control-000-return.json": true,
+    "artifact pressure-consumer-control-001-input.json": true,
+    "artifact pressure-consumer-control-001-return.json": true,
+    "artifact prior-argument-joins.json": true,
+    "artifact prior-copy-index.json": true,
+    "artifact restore-index.json": true,
+    "artifact resumed-context.json": true,
+    "artifact resumed-operator-000-exact-residual.json": true,
+    "artifact resumed-operator-000-input.json": true,
+    "artifact resumed-operator-000-raw-reconstruction.json": true,
+    "artifact resumed-operator-000-return.json": true,
+    "artifact resumed-operator-001-exact-residual.json": true,
+    "artifact resumed-operator-001-input.json": true,
+    "artifact resumed-operator-001-raw-reconstruction.json": true,
+    "artifact resumed-operator-001-return.json": true,
+    "artifact resumed-operator-002-exact-residual.json": true,
+    "artifact resumed-operator-002-input.json": true,
+    "artifact resumed-operator-002-raw-reconstruction.json": true,
+    "artifact resumed-operator-002-return.json": true,
+    "artifact resumed-operator-003-exact-residual.json": true,
+    "artifact resumed-operator-003-input.json": true,
+    "artifact resumed-operator-003-raw-reconstruction.json": true,
+    "artifact resumed-operator-003-return.json": true,
+    "artifact resumed-operator-004-exact-residual.json": true,
+    "artifact resumed-operator-004-input.json": true,
+    "artifact resumed-operator-004-raw-reconstruction.json": true,
+    "artifact resumed-operator-004-return.json": true,
+    "artifact resumed-operator-005-exact-residual.json": true,
+    "artifact resumed-operator-005-input.json": true,
+    "artifact resumed-operator-005-raw-reconstruction.json": true,
+    "artifact resumed-operator-005-return.json": true,
+    "artifact resumed-source-tail.json": true,
+    "artifact routing-control.json": true,
+    "artifact source-consumer-continue-input.json": true,
+    "artifact source-consumer-continue-return.json": true,
+    "artifact source-consumer-control-000-input.json": true,
+    "artifact source-consumer-control-000-return.json": true,
+    "artifact source-consumer-control-001-input.json": true,
+    "artifact source-consumer-control-001-return.json": true,
+    "artifact source-consumer-control-002-input.json": true,
+    "artifact source-consumer-control-002-return.json": true,
+    "artifact source-consumer-control-003-input.json": true,
+    "artifact source-consumer-control-003-return.json": true,
+    "artifact source-consumer-control-004-input.json": true,
+    "artifact source-consumer-control-004-return.json": true,
+    "artifact source-consumer-control-005-input.json": true,
+    "artifact source-consumer-control-005-return.json": true,
+    "artifact source-consumer-control-006-input.json": true,
+    "artifact source-consumer-control-006-return.json": true,
+    "artifact source-consumer-control-007-input.json": true,
+    "artifact source-consumer-control-007-return.json": true,
+    "artifact source-consumer-control-008-input.json": true,
+    "artifact source-consumer-control-008-return.json": true,
+    "artifact source-consumer-control-009-input.json": true,
+    "artifact source-consumer-control-009-return.json": true,
+    "artifact source-omissions-through-consumers.json": true,
+    "artifact units-and-scope.json": true,
+    "prior census": true,
+    "prior copy E_W_BALANCE-consumer-grade-join.json": true,
+    "prior copy E_W_BALANCE-consumer-input.json": true,
+    "prior copy E_W_BALANCE-d_w_delta_p_minus-domain.json": true,
+    "prior copy E_W_BALANCE-d_w_delta_p_minus-grade-product.json": true,
+    "prior copy E_W_BALANCE-d_w_delta_p_minus-grade-split.json": true,
+    "prior copy E_W_BALANCE-d_w_delta_p_plus-domain.json": true,
+    "prior copy E_W_BALANCE-d_w_delta_p_plus-grade-product.json": true,
+    "prior copy E_W_BALANCE-d_w_delta_p_plus-grade-split.json": true,
+    "prior copy E_W_BALANCE-delta_p_minus-domain.json": true,
+    "prior copy E_W_BALANCE-delta_p_minus-grade-product.json": true,
+    "prior copy E_W_BALANCE-delta_p_minus-grade-split.json": true,
+    "prior copy E_W_BALANCE-delta_p_plus-domain.json": true,
+    "prior copy E_W_BALANCE-delta_p_plus-grade-product.json": true,
+    "prior copy E_W_BALANCE-delta_p_plus-grade-split.json": true,
+    "prior copy E_W_BALANCE-slot-linearity.json": true,
+    "prior copy THETA_BALANCE-consumer-grade-join.json": true,
+    "prior copy THETA_BALANCE-consumer-input.json": true,
+    "prior copy THETA_BALANCE-d_w_delta_p_minus-domain.json": true,
+    "prior copy THETA_BALANCE-d_w_delta_p_minus-grade-product.json": true,
+    "prior copy THETA_BALANCE-d_w_delta_p_minus-grade-split.json": true,
+    "prior copy THETA_BALANCE-d_w_delta_p_plus-domain.json": true,
+    "prior copy THETA_BALANCE-d_w_delta_p_plus-grade-product.json": true,
+    "prior copy THETA_BALANCE-d_w_delta_p_plus-grade-split.json": true,
+    "prior copy THETA_BALANCE-delta_p_minus-domain.json": true,
+    "prior copy THETA_BALANCE-delta_p_minus-grade-product.json": true,
+    "prior copy THETA_BALANCE-delta_p_minus-grade-split.json": true,
+    "prior copy THETA_BALANCE-delta_p_plus-domain.json": true,
+    "prior copy THETA_BALANCE-delta_p_plus-grade-product.json": true,
+    "prior copy THETA_BALANCE-delta_p_plus-grade-split.json": true,
+    "prior copy THETA_BALANCE-slot-linearity.json": true,
+    "prior copy U0-consumer-grade-join.json": true,
+    "prior copy U0-consumer-input.json": true,
+    "prior copy U0-d_w_delta_p_minus-domain.json": true,
+    "prior copy U0-d_w_delta_p_minus-grade-product.json": true,
+    "prior copy U0-d_w_delta_p_minus-grade-split.json": true,
+    "prior copy U0-d_w_delta_p_plus-domain.json": true,
+    "prior copy U0-d_w_delta_p_plus-grade-product.json": true,
+    "prior copy U0-d_w_delta_p_plus-grade-split.json": true,
+    "prior copy U0-delta_p_minus-domain.json": true,
+    "prior copy U0-delta_p_minus-grade-product.json": true,
+    "prior copy U0-delta_p_minus-grade-split.json": true,
+    "prior copy U0-delta_p_plus-domain.json": true,
+    "prior copy U0-delta_p_plus-grade-product.json": true,
+    "prior copy U0-delta_p_plus-grade-split.json": true,
+    "prior copy U0-slot-linearity.json": true,
+    "prior copy U1-consumer-grade-join.json": true,
+    "prior copy U1-consumer-input.json": true,
+    "prior copy U1-d_w_delta_p_minus-domain.json": true,
+    "prior copy U1-d_w_delta_p_minus-grade-product.json": true,
+    "prior copy U1-d_w_delta_p_minus-grade-split.json": true,
+    "prior copy U1-d_w_delta_p_plus-domain.json": true,
+    "prior copy U1-d_w_delta_p_plus-grade-product.json": true,
+    "prior copy U1-d_w_delta_p_plus-grade-split.json": true,
+    "prior copy U1-delta_p_minus-domain.json": true,
+    "prior copy U1-delta_p_minus-grade-product.json": true,
+    "prior copy U1-delta_p_minus-grade-split.json": true,
+    "prior copy U1-delta_p_plus-domain.json": true,
+    "prior copy U1-delta_p_plus-grade-product.json": true,
+    "prior copy U1-delta_p_plus-grade-split.json": true,
+    "prior copy U1-slot-linearity.json": true,
+    "prior copy U2-consumer-grade-join.json": true,
+    "prior copy U2-consumer-input.json": true,
+    "prior copy U2-d_w_delta_p_minus-domain.json": true,
+    "prior copy U2-d_w_delta_p_minus-grade-product.json": true,
+    "prior copy U2-d_w_delta_p_minus-grade-split.json": true,
+    "prior copy U2-d_w_delta_p_plus-domain.json": true,
+    "prior copy U2-d_w_delta_p_plus-grade-product.json": true,
+    "prior copy U2-d_w_delta_p_plus-grade-split.json": true,
+    "prior copy U2-delta_p_minus-domain.json": true,
+    "prior copy U2-delta_p_minus-grade-product.json": true,
+    "prior copy U2-delta_p_minus-grade-split.json": true,
+    "prior copy U2-delta_p_plus-domain.json": true,
+    "prior copy U2-delta_p_plus-grade-product.json": true,
+    "prior copy U2-delta_p_plus-grade-split.json": true,
+    "prior copy U2-slot-linearity.json": true,
+    "prior copy artifact-index.json": true,
+    "prior copy binding-context.json": true,
+    "prior copy checks.json": true,
+    "prior copy chemical-amplitude-domain.json": true,
+    "prior copy chemical-amplitude-grade-product.json": true,
+    "prior copy chemical-amplitude-grade-split.json": true,
+    "prior copy containment.json": true,
+    "prior copy end-to-end-controls-input.json": true,
+    "prior copy failure.json": true,
+    "prior copy inherited-frequency.json": true,
+    "prior copy inherited-source-normalization.json": true,
+    "prior copy minus-chemical-domain.json": true,
+    "prior copy minus-chemical-grade-product.json": true,
+    "prior copy minus-chemical-grade-split.json": true,
+    "prior copy minus-source-domain.json": true,
+    "prior copy minus-source-grade-product.json": true,
+    "prior copy minus-source-grade-split.json": true,
+    "prior copy minus-source-input.json": true,
+    "prior copy minus-source-linearity.json": true,
+    "prior copy minus-source-restrictions.json": true,
+    "prior copy minus-velocity-domain.json": true,
+    "prior copy minus-velocity-grade-product.json": true,
+    "prior copy minus-velocity-grade-split.json": true,
+    "prior copy native-chemical-amplitude.json": true,
+    "prior copy native-saved-velocity-normalization.json": true,
+    "prior copy native-source-census-join.json": true,
+    "prior copy operation-index.json": true,
+    "prior copy plus-chemical-domain.json": true,
+    "prior copy plus-chemical-grade-product.json": true,
+    "prior copy plus-chemical-grade-split.json": true,
+    "prior copy plus-source-domain.json": true,
+    "prior copy plus-source-grade-product.json": true,
+    "prior copy plus-source-grade-split.json": true,
+    "prior copy plus-source-input.json": true,
+    "prior copy plus-source-linearity.json": true,
+    "prior copy plus-source-restrictions.json": true,
+    "prior copy plus-velocity-domain.json": true,
+    "prior copy plus-velocity-grade-product.json": true,
+    "prior copy plus-velocity-grade-split.json": true,
+    "prior copy posthashes.json": true,
+    "prior copy profile-key-contract.json": true,
+    "prior copy restored-closed-response-return.json": true,
+    "prior copy restored-controls.json": true,
+    "prior copy restored-kernel-measure.json": true,
+    "prior copy restored-middle-domain.json": true,
+    "prior copy restored-physical-factors.json": true,
+    "prior copy restored-reference-pressure-return.json": true,
+    "prior copy restored-scope.json": true,
+    "prior copy saved-upper-c1-source.json": true,
+    "prior copy selected-fourier-contraction.json": true,
+    "prior copy source-amplitude-linearity.json": true,
+    "prior copy source-consumer-input.json": true,
+    "prior copy source-controls.json": true,
+    "prior copy weak-directions.json": true,
+    "prior copy zero-grade-jet-consumers.json": true,
+    "original empty journal preserved": true,
+    "restore scope": true,
+    "restored operand census": true,
+    "restore pin end-to-end-controls-input.json": true,
+    "restore pin binding-context.json": true,
+    "restore pin source-controls.json": true,
+    "restore pin plus-source-restrictions.json": true,
+    "restore pin selected-fourier-contraction.json": true,
+    "restore pin weak-directions.json": true,
+    "restore pin source-consumer-input.json": true,
+    "restore pin U0-consumer-input.json": true,
+    "restore pin U1-consumer-input.json": true,
+    "restore pin U2-consumer-input.json": true,
+    "restore pin THETA_BALANCE-consumer-input.json": true,
+    "restore pin E_W_BALANCE-consumer-input.json": true,
+    "eight actual argument joins": true,
+    "saved context grades": true,
+    "saved context epsilon": true,
+    "saved context rowFactors": true,
+    "saved context source00": true,
+    "saved context sourcePlane": true,
+    "saved context referenceFactor": true,
+    "saved context jetFactor": true,
+    "profile equality actual": true,
+    "bound parameter subset": true,
+    "original unfinished source pinned": true,
+    "one complete continuation": true,
+    "journal input": true,
+    "journal result": true,
+    "candidate-only return": true,
+    "resumed-operator-000 expression joins": true,
+    "resumed-operator-000 coefficient joins": true,
+    "resumed-operator-000 residual joins": true,
+    "resumed-operator-000 exact zero": true,
+    "resumed-operator-000 independent coefficients": true,
+    "resumed-operator-000 responsive": true,
+    "resumed-operator-001 expression joins": true,
+    "resumed-operator-001 coefficient joins": true,
+    "resumed-operator-001 residual joins": true,
+    "resumed-operator-001 exact zero": true,
+    "resumed-operator-001 independent coefficients": true,
+    "resumed-operator-001 responsive": true,
+    "resumed-operator-002 expression joins": true,
+    "resumed-operator-002 coefficient joins": true,
+    "resumed-operator-002 residual joins": true,
+    "resumed-operator-002 exact zero": true,
+    "resumed-operator-002 independent coefficients": true,
+    "resumed-operator-002 responsive": true,
+    "resumed-operator-003 expression joins": true,
+    "resumed-operator-003 coefficient joins": true,
+    "resumed-operator-003 residual joins": true,
+    "resumed-operator-003 exact zero": true,
+    "resumed-operator-003 independent coefficients": true,
+    "resumed-operator-003 responsive": true,
+    "resumed-operator-004 expression joins": true,
+    "resumed-operator-004 coefficient joins": true,
+    "resumed-operator-004 residual joins": true,
+    "resumed-operator-004 exact zero": true,
+    "resumed-operator-004 independent coefficients": true,
+    "resumed-operator-004 responsive": true,
+    "resumed-operator-005 expression joins": true,
+    "resumed-operator-005 coefficient joins": true,
+    "resumed-operator-005 residual joins": true,
+    "resumed-operator-005 exact zero": true,
+    "resumed-operator-005 independent coefficients": true,
+    "resumed-operator-005 responsive": true,
+    "three structural counterexamples": true,
+    "ten source controls": true,
+    "source control record 0": true,
+    "source control input 0": true,
+    "source control response 0": true,
+    "scalar removal 0": true,
+    "source control record 1": true,
+    "source control input 1": true,
+    "source control response 1": true,
+    "scalar removal 1": true,
+    "source control record 2": true,
+    "source control input 2": true,
+    "source control response 2": true,
+    "divergence baseline 2": true,
+    "source control record 3": true,
+    "source control input 3": true,
+    "source control response 3": true,
+    "divergence baseline 3": true,
+    "source control record 4": true,
+    "source control input 4": true,
+    "source control response 4": true,
+    "divergence baseline 4": true,
+    "source control record 5": true,
+    "source control input 5": true,
+    "source control response 5": true,
+    "scalar removal 5": true,
+    "source control record 6": true,
+    "source control input 6": true,
+    "source control response 6": true,
+    "scalar removal 6": true,
+    "source control record 7": true,
+    "source control input 7": true,
+    "source control response 7": true,
+    "divergence baseline 7": true,
+    "source control record 8": true,
+    "source control input 8": true,
+    "source control response 8": true,
+    "divergence baseline 8": true,
+    "source control record 9": true,
+    "source control input 9": true,
+    "source control response 9": true,
+    "divergence baseline 9": true,
+    "two native pressure controls": true,
+    "pressure record 0": true,
+    "pressure arguments 0": true,
+    "pressure removal zero 0": true,
+    "pressure record 1": true,
+    "pressure arguments 1": true,
+    "pressure removal zero 1": true,
+    "reverse census zero": true,
+    "wrong routing moves": true,
+    "eight computed unit joins": true,
+    "inherited units metadata identity": true,
+    "dimensions declared correctly": true,
+    "zero swap all samples": true,
+    "zero memory events all samples": true,
+    "host reserve all samples": true,
+    "pool released": true,
+    "hook queued": true,
+    "hook first": true
+  },
+  "passedMetadataChecks": 753,
+  "workerSeconds": 5.389908498967998,
+  "supervisorSeconds": 5.970134459086694,
+  "guardSeconds": 6.184413086040877,
+  "peakMemoryBytes": 149336064,
+  "peakMemoryMiB": 142.41796875,
+  "resourceSamples": 5,
+  "swapBytes": 0,
+  "memoryEventsAllZero": true,
+  "inputPins": 204,
+  "snapshots": 206,
+  "priorResultFilesIntact": 130,
+  "priorBytes": 2914095,
+  "restoredOperandFiles": 12,
+  "completedJournalStages": 1,
+  "resultFiles": [
+    {
+      "path": "artifact-index.json",
+      "sha256": "7550a09f35e05d7c370c554eef454868f30f212cc31ea5d06f09c65709ce76e7",
+      "bytes": 10069
+    },
+    {
+      "path": "checks.json",
+      "sha256": "4b61556d0613c9c58f244186c753d85719cb5779f1fd363ca8cee7919c46e2da",
+      "bytes": 297
+    },
+    {
+      "path": "consumer-unit-joins.json",
+      "sha256": "520b3a356a7faf019e3da7286d457a5c1f38142ccab447aa5bdd2f6934063ca3",
+      "bytes": 8912
+    },
+    {
+      "path": "containment.json",
+      "sha256": "6361d324f66e422b20631908d6c1a0041e8b0f8f8bf34e3aec2bb5fb524c5481",
+      "bytes": 490
+    },
+    {
+      "path": "native-pressure-consumer-omission.json",
+      "sha256": "94fe0394137574dd6729b2bfc368b8db205fc6e72404fd7aa924729810c01b34",
+      "bytes": 15596
+    },
+    {
+      "path": "operation-index.json",
+      "sha256": "096cdc898d8e74ab34cc32744a91738f478d22b8dab06b83d5028748969bc6ab",
+      "bytes": 411
+    },
+    {
+      "path": "posthashes.json",
+      "sha256": "516737cbaa59ac79bc3a0adb8825d9e1c4880d5a3984186bf554d7ad2b331b47",
+      "bytes": 60368
+    },
+    {
+      "path": "pressure-consumer-control-000-input.json",
+      "sha256": "80064ae81fd0d2c96a07edef87a857584f5620ec9924b76212838f9e0656c3aa",
+      "bytes": 2408
+    },
+    {
+      "path": "pressure-consumer-control-000-return.json",
+      "sha256": "cb42cba3c291d96daaa5a0b0f64f637d6d855c0a42d4e78da7ece374e76bfab9",
+      "bytes": 6962
+    },
+    {
+      "path": "pressure-consumer-control-001-input.json",
+      "sha256": "16c36fd56aae01aa38fe3abc01c2d922b37969350c6d6d026290428f90f8ce26",
+      "bytes": 3343
+    },
+    {
+      "path": "pressure-consumer-control-001-return.json",
+      "sha256": "d35803a250c20508e32863b465e1d47fb23013fc1b0338edf5c8d597bd80712f",
+      "bytes": 8305
+    },
+    {
+      "path": "prior-argument-joins.json",
+      "sha256": "31026ba7d0caf3b7f88ae37440aeb2d11e7b57a435b00fd35b9fdd2d8618859a",
+      "bytes": 186
+    },
+    {
+      "path": "prior-copy/E_W_BALANCE-consumer-grade-join.json",
+      "sha256": "710e396434c0f80e0a0d97bce1689709adaddd11e5066698fd14ce092824e613",
+      "bytes": 876
+    },
+    {
+      "path": "prior-copy/E_W_BALANCE-consumer-input.json",
+      "sha256": "d24e6e389d182884b7d8caf786e9a02b08bcb0f753dd4fd99e3b498a8375f86f",
+      "bytes": 5473
+    },
+    {
+      "path": "prior-copy/E_W_BALANCE-d_w_delta_p_minus-domain.json",
+      "sha256": "ea225e8459772aae1a4a81a4181cc25c56e8f5f8f4067d03979edaeb95c5a8d0",
+      "bytes": 778
+    },
+    {
+      "path": "prior-copy/E_W_BALANCE-d_w_delta_p_minus-grade-product.json",
+      "sha256": "8c9734eaa6e3619bbc46e71e0f55b3a2a8c3121acd9de078205b25b888c4575f",
+      "bytes": 188
+    },
+    {
+      "path": "prior-copy/E_W_BALANCE-d_w_delta_p_minus-grade-split.json",
+      "sha256": "144aae11874d584062b35960dffd3e8ddcd78295688814b9923fb6191fb3222e",
+      "bytes": 672
+    },
+    {
+      "path": "prior-copy/E_W_BALANCE-d_w_delta_p_plus-domain.json",
+      "sha256": "7efbc08f3771daf154d30cb5fd238ae8b80a49f8f806f06bd676d319961a84cc",
+      "bytes": 736
+    },
+    {
+      "path": "prior-copy/E_W_BALANCE-d_w_delta_p_plus-grade-product.json",
+      "sha256": "8c9734eaa6e3619bbc46e71e0f55b3a2a8c3121acd9de078205b25b888c4575f",
+      "bytes": 188
+    },
+    {
+      "path": "prior-copy/E_W_BALANCE-d_w_delta_p_plus-grade-split.json",
+      "sha256": "6e55ad2108468ed403f44bfb7a927bd043b2c1cbf20bb610c1256a437bef0020",
+      "bytes": 644
+    },
+    {
+      "path": "prior-copy/E_W_BALANCE-delta_p_minus-domain.json",
+      "sha256": "2fedcdd88014d38e6670d25e474b7d181fe93bf9f95b1a46f494e5b536b0ae79",
+      "bytes": 491
+    },
+    {
+      "path": "prior-copy/E_W_BALANCE-delta_p_minus-grade-product.json",
+      "sha256": "e099b21e44bef3b8f72e7ebd618864273cf7193126368f6604af07ee4f60c7e0",
+      "bytes": 284
+    },
+    {
+      "path": "prior-copy/E_W_BALANCE-delta_p_minus-grade-split.json",
+      "sha256": "41aeb0c3162ebcf09c8172dac4eb513060c7db0c731345a2995d4d7b19d8c879",
+      "bytes": 484
+    },
+    {
+      "path": "prior-copy/E_W_BALANCE-delta_p_plus-domain.json",
+      "sha256": "2fedcdd88014d38e6670d25e474b7d181fe93bf9f95b1a46f494e5b536b0ae79",
+      "bytes": 491
+    },
+    {
+      "path": "prior-copy/E_W_BALANCE-delta_p_plus-grade-product.json",
+      "sha256": "e099b21e44bef3b8f72e7ebd618864273cf7193126368f6604af07ee4f60c7e0",
+      "bytes": 284
+    },
+    {
+      "path": "prior-copy/E_W_BALANCE-delta_p_plus-grade-split.json",
+      "sha256": "41aeb0c3162ebcf09c8172dac4eb513060c7db0c731345a2995d4d7b19d8c879",
+      "bytes": 484
+    },
+    {
+      "path": "prior-copy/E_W_BALANCE-slot-linearity.json",
+      "sha256": "3d53de8dc5abdc6ae4d68a3988d5eac2b0613d4937681e4d6df1d71233155a80",
+      "bytes": 1362
+    },
+    {
+      "path": "prior-copy/THETA_BALANCE-consumer-grade-join.json",
+      "sha256": "affb1546bdfe962ba0f443a57fab07f1b7ed3804b13ef7b7fdb042d4c1f0a151",
+      "bytes": 974
+    },
+    {
+      "path": "prior-copy/THETA_BALANCE-consumer-input.json",
+      "sha256": "28b18c00fa5e2028c216f1ba890895e0005c143ec93a85f793ce001e18b66453",
+      "bytes": 5509
+    },
+    {
+      "path": "prior-copy/THETA_BALANCE-d_w_delta_p_minus-domain.json",
+      "sha256": "51cc249d84aa70387aab52a5afce1917c78861a38259fe83154eb2f06831c705",
+      "bytes": 967
+    },
+    {
+      "path": "prior-copy/THETA_BALANCE-d_w_delta_p_minus-grade-product.json",
+      "sha256": "8c9734eaa6e3619bbc46e71e0f55b3a2a8c3121acd9de078205b25b888c4575f",
+      "bytes": 188
+    },
+    {
+      "path": "prior-copy/THETA_BALANCE-d_w_delta_p_minus-grade-split.json",
+      "sha256": "f9f97e28f451348695bfccaa71c3a46e97970c87b1ab104142b3b0c1822334a7",
+      "bytes": 786
+    },
+    {
+      "path": "prior-copy/THETA_BALANCE-d_w_delta_p_plus-domain.json",
+      "sha256": "d0252e41bb5cf32c5d95f71bda4cf7d0feb61f4845980eb244395b016582e246",
+      "bytes": 1009
+    },
+    {
+      "path": "prior-copy/THETA_BALANCE-d_w_delta_p_plus-grade-product.json",
+      "sha256": "8c9734eaa6e3619bbc46e71e0f55b3a2a8c3121acd9de078205b25b888c4575f",
+      "bytes": 188
+    },
+    {
+      "path": "prior-copy/THETA_BALANCE-d_w_delta_p_plus-grade-split.json",
+      "sha256": "199f57a766e84ab491961ad0efb14ccc4f953dbccfb3c7dc6f5cf8b0fc2b97c7",
+      "bytes": 814
+    },
+    {
+      "path": "prior-copy/THETA_BALANCE-delta_p_minus-domain.json",
+      "sha256": "3bb90300e07e12e39ce2c43d33858c2348390e9bb945e8a3c44ca659812b14e3",
+      "bytes": 775
+    },
+    {
+      "path": "prior-copy/THETA_BALANCE-delta_p_minus-grade-product.json",
+      "sha256": "0b91f0c18a9803d38ac57b491f03d61828a145985ed6630c26ad7b6385dea7e6",
+      "bytes": 454
+    },
+    {
+      "path": "prior-copy/THETA_BALANCE-delta_p_minus-grade-split.json",
+      "sha256": "5b50eede8385a913108328b8137cf457d0cb844b979d080585b21aac3a5c76a7",
+      "bytes": 654
+    },
+    {
+      "path": "prior-copy/THETA_BALANCE-delta_p_plus-domain.json",
+      "sha256": "3bb90300e07e12e39ce2c43d33858c2348390e9bb945e8a3c44ca659812b14e3",
+      "bytes": 775
+    },
+    {
+      "path": "prior-copy/THETA_BALANCE-delta_p_plus-grade-product.json",
+      "sha256": "0b91f0c18a9803d38ac57b491f03d61828a145985ed6630c26ad7b6385dea7e6",
+      "bytes": 454
+    },
+    {
+      "path": "prior-copy/THETA_BALANCE-delta_p_plus-grade-split.json",
+      "sha256": "5b50eede8385a913108328b8137cf457d0cb844b979d080585b21aac3a5c76a7",
+      "bytes": 654
+    },
+    {
+      "path": "prior-copy/THETA_BALANCE-slot-linearity.json",
+      "sha256": "922216fd1cc29ea98cb8994738374fc063fb8c5050a3d0332d60e3b6fa513cd8",
+      "bytes": 2116
+    },
+    {
+      "path": "prior-copy/U0-consumer-grade-join.json",
+      "sha256": "8c9734eaa6e3619bbc46e71e0f55b3a2a8c3121acd9de078205b25b888c4575f",
+      "bytes": 188
+    },
+    {
+      "path": "prior-copy/U0-consumer-input.json",
+      "sha256": "bf07aa02c9b031aaca958d0fbd91d721f80fe5a4d9355c52b5194b1798360478",
+      "bytes": 625
+    },
+    {
+      "path": "prior-copy/U0-d_w_delta_p_minus-domain.json",
+      "sha256": "955b2856ceaea602d0caea2da09091e5b5995d5d266730423384bbc72f43a40f",
+      "bytes": 370
+    },
+    {
+      "path": "prior-copy/U0-d_w_delta_p_minus-grade-product.json",
+      "sha256": "8c9734eaa6e3619bbc46e71e0f55b3a2a8c3121acd9de078205b25b888c4575f",
+      "bytes": 188
+    },
+    {
+      "path": "prior-copy/U0-d_w_delta_p_minus-grade-split.json",
+      "sha256": "1516ec5d9fd03efab5ed0f54feec0fa086c6fcb0a01e69f8467db5bf250e4196",
+      "bytes": 388
+    },
+    {
+      "path": "prior-copy/U0-d_w_delta_p_plus-domain.json",
+      "sha256": "955b2856ceaea602d0caea2da09091e5b5995d5d266730423384bbc72f43a40f",
+      "bytes": 370
+    },
+    {
+      "path": "prior-copy/U0-d_w_delta_p_plus-grade-product.json",
+      "sha256": "8c9734eaa6e3619bbc46e71e0f55b3a2a8c3121acd9de078205b25b888c4575f",
+      "bytes": 188
+    },
+    {
+      "path": "prior-copy/U0-d_w_delta_p_plus-grade-split.json",
+      "sha256": "1516ec5d9fd03efab5ed0f54feec0fa086c6fcb0a01e69f8467db5bf250e4196",
+      "bytes": 388
+    },
+    {
+      "path": "prior-copy/U0-delta_p_minus-domain.json",
+      "sha256": "955b2856ceaea602d0caea2da09091e5b5995d5d266730423384bbc72f43a40f",
+      "bytes": 370
+    },
+    {
+      "path": "prior-copy/U0-delta_p_minus-grade-product.json",
+      "sha256": "8c9734eaa6e3619bbc46e71e0f55b3a2a8c3121acd9de078205b25b888c4575f",
+      "bytes": 188
+    },
+    {
+      "path": "prior-copy/U0-delta_p_minus-grade-split.json",
+      "sha256": "1516ec5d9fd03efab5ed0f54feec0fa086c6fcb0a01e69f8467db5bf250e4196",
+      "bytes": 388
+    },
+    {
+      "path": "prior-copy/U0-delta_p_plus-domain.json",
+      "sha256": "955b2856ceaea602d0caea2da09091e5b5995d5d266730423384bbc72f43a40f",
+      "bytes": 370
+    },
+    {
+      "path": "prior-copy/U0-delta_p_plus-grade-product.json",
+      "sha256": "8c9734eaa6e3619bbc46e71e0f55b3a2a8c3121acd9de078205b25b888c4575f",
+      "bytes": 188
+    },
+    {
+      "path": "prior-copy/U0-delta_p_plus-grade-split.json",
+      "sha256": "1516ec5d9fd03efab5ed0f54feec0fa086c6fcb0a01e69f8467db5bf250e4196",
+      "bytes": 388
+    },
+    {
+      "path": "prior-copy/U0-slot-linearity.json",
+      "sha256": "8c9734eaa6e3619bbc46e71e0f55b3a2a8c3121acd9de078205b25b888c4575f",
+      "bytes": 188
+    },
+    {
+      "path": "prior-copy/U1-consumer-grade-join.json",
+      "sha256": "8c9734eaa6e3619bbc46e71e0f55b3a2a8c3121acd9de078205b25b888c4575f",
+      "bytes": 188
+    },
+    {
+      "path": "prior-copy/U1-consumer-input.json",
+      "sha256": "bf07aa02c9b031aaca958d0fbd91d721f80fe5a4d9355c52b5194b1798360478",
+      "bytes": 625
+    },
+    {
+      "path": "prior-copy/U1-d_w_delta_p_minus-domain.json",
+      "sha256": "955b2856ceaea602d0caea2da09091e5b5995d5d266730423384bbc72f43a40f",
+      "bytes": 370
+    },
+    {
+      "path": "prior-copy/U1-d_w_delta_p_minus-grade-product.json",
+      "sha256": "8c9734eaa6e3619bbc46e71e0f55b3a2a8c3121acd9de078205b25b888c4575f",
+      "bytes": 188
+    },
+    {
+      "path": "prior-copy/U1-d_w_delta_p_minus-grade-split.json",
+      "sha256": "1516ec5d9fd03efab5ed0f54feec0fa086c6fcb0a01e69f8467db5bf250e4196",
+      "bytes": 388
+    },
+    {
+      "path": "prior-copy/U1-d_w_delta_p_plus-domain.json",
+      "sha256": "955b2856ceaea602d0caea2da09091e5b5995d5d266730423384bbc72f43a40f",
+      "bytes": 370
+    },
+    {
+      "path": "prior-copy/U1-d_w_delta_p_plus-grade-product.json",
+      "sha256": "8c9734eaa6e3619bbc46e71e0f55b3a2a8c3121acd9de078205b25b888c4575f",
+      "bytes": 188
+    },
+    {
+      "path": "prior-copy/U1-d_w_delta_p_plus-grade-split.json",
+      "sha256": "1516ec5d9fd03efab5ed0f54feec0fa086c6fcb0a01e69f8467db5bf250e4196",
+      "bytes": 388
+    },
+    {
+      "path": "prior-copy/U1-delta_p_minus-domain.json",
+      "sha256": "955b2856ceaea602d0caea2da09091e5b5995d5d266730423384bbc72f43a40f",
+      "bytes": 370
+    },
+    {
+      "path": "prior-copy/U1-delta_p_minus-grade-product.json",
+      "sha256": "8c9734eaa6e3619bbc46e71e0f55b3a2a8c3121acd9de078205b25b888c4575f",
+      "bytes": 188
+    },
+    {
+      "path": "prior-copy/U1-delta_p_minus-grade-split.json",
+      "sha256": "1516ec5d9fd03efab5ed0f54feec0fa086c6fcb0a01e69f8467db5bf250e4196",
+      "bytes": 388
+    },
+    {
+      "path": "prior-copy/U1-delta_p_plus-domain.json",
+      "sha256": "955b2856ceaea602d0caea2da09091e5b5995d5d266730423384bbc72f43a40f",
+      "bytes": 370
+    },
+    {
+      "path": "prior-copy/U1-delta_p_plus-grade-product.json",
+      "sha256": "8c9734eaa6e3619bbc46e71e0f55b3a2a8c3121acd9de078205b25b888c4575f",
+      "bytes": 188
+    },
+    {
+      "path": "prior-copy/U1-delta_p_plus-grade-split.json",
+      "sha256": "1516ec5d9fd03efab5ed0f54feec0fa086c6fcb0a01e69f8467db5bf250e4196",
+      "bytes": 388
+    },
+    {
+      "path": "prior-copy/U1-slot-linearity.json",
+      "sha256": "8c9734eaa6e3619bbc46e71e0f55b3a2a8c3121acd9de078205b25b888c4575f",
+      "bytes": 188
+    },
+    {
+      "path": "prior-copy/U2-consumer-grade-join.json",
+      "sha256": "8c9734eaa6e3619bbc46e71e0f55b3a2a8c3121acd9de078205b25b888c4575f",
+      "bytes": 188
+    },
+    {
+      "path": "prior-copy/U2-consumer-input.json",
+      "sha256": "bf07aa02c9b031aaca958d0fbd91d721f80fe5a4d9355c52b5194b1798360478",
+      "bytes": 625
+    },
+    {
+      "path": "prior-copy/U2-d_w_delta_p_minus-domain.json",
+      "sha256": "955b2856ceaea602d0caea2da09091e5b5995d5d266730423384bbc72f43a40f",
+      "bytes": 370
+    },
+    {
+      "path": "prior-copy/U2-d_w_delta_p_minus-grade-product.json",
+      "sha256": "8c9734eaa6e3619bbc46e71e0f55b3a2a8c3121acd9de078205b25b888c4575f",
+      "bytes": 188
+    },
+    {
+      "path": "prior-copy/U2-d_w_delta_p_minus-grade-split.json",
+      "sha256": "1516ec5d9fd03efab5ed0f54feec0fa086c6fcb0a01e69f8467db5bf250e4196",
+      "bytes": 388
+    },
+    {
+      "path": "prior-copy/U2-d_w_delta_p_plus-domain.json",
+      "sha256": "955b2856ceaea602d0caea2da09091e5b5995d5d266730423384bbc72f43a40f",
+      "bytes": 370
+    },
+    {
+      "path": "prior-copy/U2-d_w_delta_p_plus-grade-product.json",
+      "sha256": "8c9734eaa6e3619bbc46e71e0f55b3a2a8c3121acd9de078205b25b888c4575f",
+      "bytes": 188
+    },
+    {
+      "path": "prior-copy/U2-d_w_delta_p_plus-grade-split.json",
+      "sha256": "1516ec5d9fd03efab5ed0f54feec0fa086c6fcb0a01e69f8467db5bf250e4196",
+      "bytes": 388
+    },
+    {
+      "path": "prior-copy/U2-delta_p_minus-domain.json",
+      "sha256": "955b2856ceaea602d0caea2da09091e5b5995d5d266730423384bbc72f43a40f",
+      "bytes": 370
+    },
+    {
+      "path": "prior-copy/U2-delta_p_minus-grade-product.json",
+      "sha256": "8c9734eaa6e3619bbc46e71e0f55b3a2a8c3121acd9de078205b25b888c4575f",
+      "bytes": 188
+    },
+    {
+      "path": "prior-copy/U2-delta_p_minus-grade-split.json",
+      "sha256": "1516ec5d9fd03efab5ed0f54feec0fa086c6fcb0a01e69f8467db5bf250e4196",
+      "bytes": 388
+    },
+    {
+      "path": "prior-copy/U2-delta_p_plus-domain.json",
+      "sha256": "955b2856ceaea602d0caea2da09091e5b5995d5d266730423384bbc72f43a40f",
+      "bytes": 370
+    },
+    {
+      "path": "prior-copy/U2-delta_p_plus-grade-product.json",
+      "sha256": "8c9734eaa6e3619bbc46e71e0f55b3a2a8c3121acd9de078205b25b888c4575f",
+      "bytes": 188
+    },
+    {
+      "path": "prior-copy/U2-delta_p_plus-grade-split.json",
+      "sha256": "1516ec5d9fd03efab5ed0f54feec0fa086c6fcb0a01e69f8467db5bf250e4196",
+      "bytes": 388
+    },
+    {
+      "path": "prior-copy/U2-slot-linearity.json",
+      "sha256": "8c9734eaa6e3619bbc46e71e0f55b3a2a8c3121acd9de078205b25b888c4575f",
+      "bytes": 188
+    },
+    {
+      "path": "prior-copy/artifact-index.json",
+      "sha256": "3056a5fa47fbf911dce990f853b146f7c1be2099ef282fa09e3e57bbc2af59c0",
+      "bytes": 20070
+    },
+    {
+      "path": "prior-copy/binding-context.json",
+      "sha256": "9216e51151937a0b815643ee2b958869b530c2bf775d6b5e848b0ebe241eae68",
+      "bytes": 10950
+    },
+    {
+      "path": "prior-copy/checks.json",
+      "sha256": "1617ca4ecdac11b790ff4c94aa496fc9b2187a48e57a95ff28ac981d302d21ac",
+      "bytes": 1362
+    },
+    {
+      "path": "prior-copy/chemical-amplitude-domain.json",
+      "sha256": "90005cea20b494ce254ce9ade3da00f934b848c9248640d8dcb3f2cd9b1e8929",
+      "bytes": 56090
+    },
+    {
+      "path": "prior-copy/chemical-amplitude-grade-product.json",
+      "sha256": "b1aa983d94be1b10faea397ddedbdb8f0102a97a90ffcf49e8adc544b13f0449",
+      "bytes": 1494
+    },
+    {
+      "path": "prior-copy/chemical-amplitude-grade-split.json",
+      "sha256": "165b7d7eb650841077f1d057d221b7178d1a8a6cf3aa53df5cf7b696379c5434",
+      "bytes": 34595
+    },
+    {
+      "path": "prior-copy/containment.json",
+      "sha256": "fbbead801799c5233716a74da097af50f067d3797a223ce24ea135994a3e978f",
+      "bytes": 490
+    },
+    {
+      "path": "prior-copy/end-to-end-controls-input.json",
+      "sha256": "101f2fb224f29dee8f4d6eef91557a0abfc5787593f5ee515dc714ae7c4439d3",
+      "bytes": 14921
+    },
+    {
+      "path": "prior-copy/failure.json",
+      "sha256": "4a20e6f773657bba8217f24e307316170b9d62561a99d457ab286795fc4c946d",
+      "bytes": 1293
+    },
+    {
+      "path": "prior-copy/inherited-frequency.json",
+      "sha256": "3f9b9aaba04398e70ce9f8d6b16c2566debd6a53d89e6e0818f031f65f96d50d",
+      "bytes": 188
+    },
+    {
+      "path": "prior-copy/inherited-source-normalization.json",
+      "sha256": "9764a375d4a16b7c4b7d31cc5de195d4b142aacd10491408da31b6f0250dc56a",
+      "bytes": 140
+    },
+    {
+      "path": "prior-copy/minus-chemical-domain.json",
+      "sha256": "d030a1d1e5d71cfcf503516796a8b1090a42ff93d6c8164522453e8e7fbd2098",
+      "bytes": 56673
+    },
+    {
+      "path": "prior-copy/minus-chemical-grade-product.json",
+      "sha256": "060b9ef83247c6e0d69e9d1159a4474530cf468e451687aa9e4bf19086839bc7",
+      "bytes": 1826
+    },
+    {
+      "path": "prior-copy/minus-chemical-grade-split.json",
+      "sha256": "161ebbac298e3b2ab42085fb0a01cc8f89548adca677ba6366cc0293d1f9b710",
+      "bytes": 36721
+    },
+    {
+      "path": "prior-copy/minus-source-domain.json",
+      "sha256": "567eeb4b47c2310c2ad082b0486ce26b77b5e608f298e12990a32f3cf5019f0b",
+      "bytes": 57312
+    },
+    {
+      "path": "prior-copy/minus-source-grade-product.json",
+      "sha256": "e7e09f7e085bb8224a47e45b65c49c55ec90e22fb83b98bae269f13743abd345",
+      "bytes": 2072
+    },
+    {
+      "path": "prior-copy/minus-source-grade-split.json",
+      "sha256": "08521daf932bf2bb9277c28c02a9fe0573322d51240076ec646e49622241d60f",
+      "bytes": 37451
+    },
+    {
+      "path": "prior-copy/minus-source-input.json",
+      "sha256": "3dc8276d0c591d5869aa8467accbd7b12ebd89c6110ee7f7548adedce1216208",
+      "bytes": 66911
+    },
+    {
+      "path": "prior-copy/minus-source-linearity.json",
+      "sha256": "df56aeba5d0237f9e8bfb03727e9986469e37a67ce04d28bb7f98bd6104faba9",
+      "bytes": 43762
+    },
+    {
+      "path": "prior-copy/minus-source-restrictions.json",
+      "sha256": "a3f081200a90f3dd8d46b6ef4458085a0dbf885dbaa1e417d684b74de0b1d9b1",
+      "bytes": 28039
+    },
+    {
+      "path": "prior-copy/minus-velocity-domain.json",
+      "sha256": "9135865ca775af300a0c482d4d3b0d12e2949f14824047bee6c562fa3c9e874c",
+      "bytes": 443
+    },
+    {
+      "path": "prior-copy/minus-velocity-grade-product.json",
+      "sha256": "2c20d677ba51b1312773c90155326452296a3cf0474c4bb000a61dfbf91d4572",
+      "bytes": 252
+    },
+    {
+      "path": "prior-copy/minus-velocity-grade-split.json",
+      "sha256": "a3b94e3ed65be45a7c79774a4e2729f06e29fde42fd767121a9ef8b78a729d88",
+      "bytes": 452
+    },
+    {
+      "path": "prior-copy/native-chemical-amplitude.json",
+      "sha256": "d5e9019f68ae190302163a0a2bec2980ad849a9c74fbe430bf1f93231c186179",
+      "bytes": 75035
+    },
+    {
+      "path": "prior-copy/native-saved-velocity-normalization.json",
+      "sha256": "729efee8e8a090ac936f3482a1ae8cc17b67be810a84b283626bf814ce2ce51c",
+      "bytes": 188
+    },
+    {
+      "path": "prior-copy/native-source-census-join.json",
+      "sha256": "871a20627c1dc880fdb6cc06d7f335659824d8e3ec5d4affa55e9bd3da3b99e0",
+      "bytes": 1882637
+    },
+    {
+      "path": "prior-copy/operation-index.json",
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "bytes": 3
+    },
+    {
+      "path": "prior-copy/plus-chemical-domain.json",
+      "sha256": "d030a1d1e5d71cfcf503516796a8b1090a42ff93d6c8164522453e8e7fbd2098",
+      "bytes": 56673
+    },
+    {
+      "path": "prior-copy/plus-chemical-grade-product.json",
+      "sha256": "060b9ef83247c6e0d69e9d1159a4474530cf468e451687aa9e4bf19086839bc7",
+      "bytes": 1826
+    },
+    {
+      "path": "prior-copy/plus-chemical-grade-split.json",
+      "sha256": "161ebbac298e3b2ab42085fb0a01cc8f89548adca677ba6366cc0293d1f9b710",
+      "bytes": 36721
+    },
+    {
+      "path": "prior-copy/plus-source-domain.json",
+      "sha256": "567eeb4b47c2310c2ad082b0486ce26b77b5e608f298e12990a32f3cf5019f0b",
+      "bytes": 57312
+    },
+    {
+      "path": "prior-copy/plus-source-grade-product.json",
+      "sha256": "e7e09f7e085bb8224a47e45b65c49c55ec90e22fb83b98bae269f13743abd345",
+      "bytes": 2072
+    },
+    {
+      "path": "prior-copy/plus-source-grade-split.json",
+      "sha256": "08521daf932bf2bb9277c28c02a9fe0573322d51240076ec646e49622241d60f",
+      "bytes": 37451
+    },
+    {
+      "path": "prior-copy/plus-source-input.json",
+      "sha256": "78828307da0b0def1a2de27b59afb65168f214536a8315ad3e62a040273ae374",
+      "bytes": 66907
+    },
+    {
+      "path": "prior-copy/plus-source-linearity.json",
+      "sha256": "df56aeba5d0237f9e8bfb03727e9986469e37a67ce04d28bb7f98bd6104faba9",
+      "bytes": 43762
+    },
+    {
+      "path": "prior-copy/plus-source-restrictions.json",
+      "sha256": "a3f081200a90f3dd8d46b6ef4458085a0dbf885dbaa1e417d684b74de0b1d9b1",
+      "bytes": 28039
+    },
+    {
+      "path": "prior-copy/plus-velocity-domain.json",
+      "sha256": "9135865ca775af300a0c482d4d3b0d12e2949f14824047bee6c562fa3c9e874c",
+      "bytes": 443
+    },
+    {
+      "path": "prior-copy/plus-velocity-grade-product.json",
+      "sha256": "2c20d677ba51b1312773c90155326452296a3cf0474c4bb000a61dfbf91d4572",
+      "bytes": 252
+    },
+    {
+      "path": "prior-copy/plus-velocity-grade-split.json",
+      "sha256": "a3b94e3ed65be45a7c79774a4e2729f06e29fde42fd767121a9ef8b78a729d88",
+      "bytes": 452
+    },
+    {
+      "path": "prior-copy/posthashes.json",
+      "sha256": "5370acf2f9c6694aa87a7380643326d87cd14fa4d5aead7f64af57ce006a8a8c",
+      "bytes": 18227
+    },
+    {
+      "path": "prior-copy/profile-key-contract.json",
+      "sha256": "0249fb59e66dd1daa6326fa92eb6a999c0368e7cbc862355825bd3fd415f7ac6",
+      "bytes": 503
+    },
+    {
+      "path": "prior-copy/restored-closed-response-return.json",
+      "sha256": "3c349c5242ee372c848f0060d7f1c1e23edf5e49a4b09daf2ae398bfd853df40",
+      "bytes": 32178
+    },
+    {
+      "path": "prior-copy/restored-controls.json",
+      "sha256": "50f39e1b6d89a665d25d9a04a587751a3bda71478bd670794529836528059681",
+      "bytes": 2054
+    },
+    {
+      "path": "prior-copy/restored-kernel-measure.json",
+      "sha256": "53ad41f3cc97ffc363a1a5ed4d65b6e2c006240917d22d59f754d096abfca387",
+      "bytes": 1076
+    },
+    {
+      "path": "prior-copy/restored-middle-domain.json",
+      "sha256": "4df9b5f05eba10c0dd53843a02526bdf5cf0ac5a73c73ef5797ea75eb396d3bc",
+      "bytes": 1678
+    },
+    {
+      "path": "prior-copy/restored-physical-factors.json",
+      "sha256": "59919130e88f24ca099576e65333e13ab061419980a80a394b7e78b4bed59768",
+      "bytes": 5832
+    },
+    {
+      "path": "prior-copy/restored-reference-pressure-return.json",
+      "sha256": "917882331c77de81c44edc23831e82c6516e4b0eebf8e589e08f8abbe25681e6",
+      "bytes": 1916
+    },
+    {
+      "path": "prior-copy/restored-scope.json",
+      "sha256": "4a62e4b636c6d274d3801a6c46b1ed79a76cd32f9249858a25baaa6c1cafe938",
+      "bytes": 1027
+    },
+    {
+      "path": "prior-copy/saved-upper-c1-source.json",
+      "sha256": "d7b8981892c786871439634137e05a4d9d845134bd09767145ee6149e9f4cddb",
+      "bytes": 1152
+    },
+    {
+      "path": "prior-copy/selected-fourier-contraction.json",
+      "sha256": "961648675f6c371fc2e185b025c1a6197c8b0a70020a8dcecb1b0d4b06115644",
+      "bytes": 4861
+    },
+    {
+      "path": "prior-copy/source-amplitude-linearity.json",
+      "sha256": "769f0decd9902d32ea305df0f5a0e95faeb38236304670dbe322353350f56cbf",
+      "bytes": 1326
+    },
+    {
+      "path": "prior-copy/source-consumer-input.json",
+      "sha256": "4df9fdbe440431ea316a7fe96f88e0ca115846caf3dc3b64bf0e6af6ae36d42c",
+      "bytes": 12051
+    },
+    {
+      "path": "prior-copy/source-controls.json",
+      "sha256": "265c4db4eb15128fb91b271498d000a7b4295847d09078210330c2589eef35f8",
+      "bytes": 19580
+    },
+    {
+      "path": "prior-copy/weak-directions.json",
+      "sha256": "c79c24b0ba2ea46c9480dfd353a602eaddd3cce5488439f0558621268dc5e5be",
+      "bytes": 2637
+    },
+    {
+      "path": "prior-copy/zero-grade-jet-consumers.json",
+      "sha256": "18f0ce6ff5cdb1e9c60dd19de680dbfa113fddff7f82fe74db718bf85bcc597a",
+      "bytes": 610
+    },
+    {
+      "path": "prior-copy-index.json",
+      "sha256": "e1f197d54148ac2e38e5328bda459dce6bc78be934203fa5056fa28985d7f44e",
+      "bytes": 26457
+    },
+    {
+      "path": "restore-index.json",
+      "sha256": "6cb88e3004398fa01e5483b7d85df7dbf2d7bf7f927681ae0aa49485bd9c59ba",
+      "bytes": 1913
+    },
+    {
+      "path": "resumed-context.json",
+      "sha256": "038d99fbd63707c29d2835448b4edd815c18a4272e06e3fcaa62c3bcb1a5d888",
+      "bytes": 8090
+    },
+    {
+      "path": "resumed-operator-000-exact-residual.json",
+      "sha256": "d540c945f406ce3fedfc0c41f28c088b435a41c113204d03506fea702ed45f27",
+      "bytes": 200
+    },
+    {
+      "path": "resumed-operator-000-input.json",
+      "sha256": "e7dacc5690daf269623495b1544c93369b449bf0fd78cb2652451691c20d8824",
+      "bytes": 1352
+    },
+    {
+      "path": "resumed-operator-000-raw-reconstruction.json",
+      "sha256": "e499008616aee47e1474a4859d8e96db44a53e60c3e60923d4a59b05698406a7",
+      "bytes": 6499
+    },
+    {
+      "path": "resumed-operator-000-return.json",
+      "sha256": "2b31a1d6f0b2f9b9939009766ffdcc7edf48622c6c87e3506f820421f28d924f",
+      "bytes": 3849
+    },
+    {
+      "path": "resumed-operator-001-exact-residual.json",
+      "sha256": "d540c945f406ce3fedfc0c41f28c088b435a41c113204d03506fea702ed45f27",
+      "bytes": 200
+    },
+    {
+      "path": "resumed-operator-001-input.json",
+      "sha256": "624be226dd846593e183ad885225db4b4227e4d135f1edfadf054b10bcabfc0d",
+      "bytes": 1351
+    },
+    {
+      "path": "resumed-operator-001-raw-reconstruction.json",
+      "sha256": "8ca83ff2ae297fad4a44f4551ad6dbe847c9fa725b1ae2cfdb35c8540fa7e58c",
+      "bytes": 6497
+    },
+    {
+      "path": "resumed-operator-001-return.json",
+      "sha256": "41b8ea2195f40b54cf4c7c0a2b683a8ed2dd16371b9bf8e48a624b5801bfbbfe",
+      "bytes": 3848
+    },
+    {
+      "path": "resumed-operator-002-exact-residual.json",
+      "sha256": "d540c945f406ce3fedfc0c41f28c088b435a41c113204d03506fea702ed45f27",
+      "bytes": 200
+    },
+    {
+      "path": "resumed-operator-002-input.json",
+      "sha256": "b83d081b51dd3997409eeefe73a0e6f9e1835b07a43f94c83987ce7ed9ddccb9",
+      "bytes": 1352
+    },
+    {
+      "path": "resumed-operator-002-raw-reconstruction.json",
+      "sha256": "22869e3b2a5ef76ba15842fa07b943c142f0ddeacd68eda3a1b2f031c7b90a22",
+      "bytes": 6499
+    },
+    {
+      "path": "resumed-operator-002-return.json",
+      "sha256": "86d7f019c239fe98d6dea6513711d8de20f80826c8dc88bc15e0cf4faa40baca",
+      "bytes": 3849
+    },
+    {
+      "path": "resumed-operator-003-exact-residual.json",
+      "sha256": "abc4b4fbd96de89587b348002d06f8c3a1facc896119ff828472f2cc6fc493f4",
+      "bytes": 1400
+    },
+    {
+      "path": "resumed-operator-003-input.json",
+      "sha256": "6a88edfbefcdac87ad092aec5151e16efe0c7c997628c805400b612ff86f081c",
+      "bytes": 2528
+    },
+    {
+      "path": "resumed-operator-003-raw-reconstruction.json",
+      "sha256": "acec961e0fddc6b758d790d35f70c2569302f50387402cbcb8e1aeff04045b7b",
+      "bytes": 9563
+    },
+    {
+      "path": "resumed-operator-003-return.json",
+      "sha256": "a4d9186e003ca3267340b521f30c578c146cac0e45bf1e4009f38b3f7230e243",
+      "bytes": 6403
+    },
+    {
+      "path": "resumed-operator-004-exact-residual.json",
+      "sha256": "8f0e1538081794210233ee9d310569f0f1c34cd6170496f3d027d1f4834cf7f1",
+      "bytes": 1400
+    },
+    {
+      "path": "resumed-operator-004-input.json",
+      "sha256": "ba5af505b6d6551c4f8ae5df773bd8c84df949ea0e57e531d0c7f80daaf8cb6d",
+      "bytes": 2529
+    },
+    {
+      "path": "resumed-operator-004-raw-reconstruction.json",
+      "sha256": "a37fb5d5b230f820c07729da0e3dc14f8843a875f76d298433faf5a823364ba7",
+      "bytes": 9565
+    },
+    {
+      "path": "resumed-operator-004-return.json",
+      "sha256": "cfee674e78bcf4f63269260c68a7d3fa0a6fe3eabbe2357fb28c173514c6bb5e",
+      "bytes": 6404
+    },
+    {
+      "path": "resumed-operator-005-exact-residual.json",
+      "sha256": "da596f787aa019a3cbe021f1fc92dcaf0308bbb906df9cfe71415e3939332d46",
+      "bytes": 1400
+    },
+    {
+      "path": "resumed-operator-005-input.json",
+      "sha256": "45fccb9b1d9d7276823a0ed89e77d5a454cdb9ffc1a00aa203a320aac98d0d52",
+      "bytes": 2528
+    },
+    {
+      "path": "resumed-operator-005-raw-reconstruction.json",
+      "sha256": "05caa6df16ad1250728e9ea64513403979097447861c63950afd16647bf5ceac",
+      "bytes": 9563
+    },
+    {
+      "path": "resumed-operator-005-return.json",
+      "sha256": "ac633bbcdcf56fb9649e4e2049b8f4c87f34db8d87bf0bb61a6642e1e1aef949",
+      "bytes": 6403
+    },
+    {
+      "path": "resumed-source-tail.json",
+      "sha256": "422aa45e52d8529835ab7eefa8d5433e111e7851bbdd25e160e0cb553d641a6a",
+      "bytes": 9494
+    },
+    {
+      "path": "routing-control.json",
+      "sha256": "dd6549f7bb5c79bf38fd2542dec5da3025a19c6a3b832a68c08a297576bef5f8",
+      "bytes": 5012
+    },
+    {
+      "path": "source-consumer-continue-input.json",
+      "sha256": "5d020d4d391aa6dc963a74b9d26960b5f1459c982a810da0aaa56bf6e04233df",
+      "bytes": 40125
+    },
+    {
+      "path": "source-consumer-continue-return.json",
+      "sha256": "6f93b688358c220ccd5b3737f7babc4e2d8c8cbe2cc2683a3c8b7d29bd809277",
+      "bytes": 175
+    },
+    {
+      "path": "source-consumer-control-000-input.json",
+      "sha256": "0a6ba519c75b8a0ef43b05527832cffe9d30025fddeb3e24b3404c6a3cfbe0cb",
+      "bytes": 1283
+    },
+    {
+      "path": "source-consumer-control-000-return.json",
+      "sha256": "dbbc875f2b030b2a9bf318b1b3d79bf0a3d737a8900170aac4935097914d2ee3",
+      "bytes": 2590
+    },
+    {
+      "path": "source-consumer-control-001-input.json",
+      "sha256": "12cc16d8c5acad2489179d39d24d14653bf8f1d2a207f62315862a3ccc5109ef",
+      "bytes": 1314
+    },
+    {
+      "path": "source-consumer-control-001-return.json",
+      "sha256": "8634b24c7f7cc6efe101d1ee72e5686819492305b9a75f0faf303236d2c05bcc",
+      "bytes": 2185
+    },
+    {
+      "path": "source-consumer-control-002-input.json",
+      "sha256": "5f048d03d9fc2228f0673c29c159201cb45ecb33feb1aaf8d4118c14797d8a43",
+      "bytes": 3385
+    },
+    {
+      "path": "source-consumer-control-002-return.json",
+      "sha256": "0c17a2c7b20a03bfa3695aecd5ed6f5ea2387f3b6fc75d496f7deb72ec6c452f",
+      "bytes": 14237
+    },
+    {
+      "path": "source-consumer-control-003-input.json",
+      "sha256": "58be079ade198d57e4ff26118c96368a3bf771be59bb8b836f44d823697d54d5",
+      "bytes": 3384
+    },
+    {
+      "path": "source-consumer-control-003-return.json",
+      "sha256": "b2c440cbfade6818fcffff86f698940836eaf8ff5ed8fa1b16373f600e7cd67b",
+      "bytes": 14233
+    },
+    {
+      "path": "source-consumer-control-004-input.json",
+      "sha256": "001c4529068c6011cb8a0fb18121a4373dec656c13d844353e21ed08a7e86aca",
+      "bytes": 3385
+    },
+    {
+      "path": "source-consumer-control-004-return.json",
+      "sha256": "0590188eacd518b419a9e52d29ba45962fc1d0626cc3b1a88f3fad8078e34839",
+      "bytes": 14237
+    },
+    {
+      "path": "source-consumer-control-005-input.json",
+      "sha256": "b8335df1d25d055b0f0bbda896d829ac76d86109699083a30014aa9f06b9ec33",
+      "bytes": 1268
+    },
+    {
+      "path": "source-consumer-control-005-return.json",
+      "sha256": "6663f1355d44a3089368ef141f943f7ec3d45951db41cb4c61dfba81b293a480",
+      "bytes": 2617
+    },
+    {
+      "path": "source-consumer-control-006-input.json",
+      "sha256": "92a9819996fc71d9fb79a04f696e2034a680acb921f21c767a642f2574d04109",
+      "bytes": 1299
+    },
+    {
+      "path": "source-consumer-control-006-return.json",
+      "sha256": "bea402ef2a01a593cc14382f829919f6eeb990a59ad02cbecddf3fe762bcd03e",
+      "bytes": 2345
+    },
+    {
+      "path": "source-consumer-control-007-input.json",
+      "sha256": "23f4a56011288f754662f25b12e7cc9adbb9af6d860129eb32ad50da2f002b11",
+      "bytes": 3370
+    },
+    {
+      "path": "source-consumer-control-007-return.json",
+      "sha256": "5b5c8b69b29c7d1769537542823ceb9a7ca913fc2660dcccbcf7f961ce9a90e7",
+      "bytes": 20460
+    },
+    {
+      "path": "source-consumer-control-008-input.json",
+      "sha256": "3067deab574e183087244f7211fa7f2439a9a360a5678ae6a99b03e1fb117073",
+      "bytes": 3369
+    },
+    {
+      "path": "source-consumer-control-008-return.json",
+      "sha256": "8dc180fdfc16b36c7bd087f6b3c2d1df9d434099771e2bf1ec9cf38f9fe8f371",
+      "bytes": 20464
+    },
+    {
+      "path": "source-consumer-control-009-input.json",
+      "sha256": "643433f4027c492981cf23c424dd1845abaf783ac8e639ffa99503616682e0ac",
+      "bytes": 3370
+    },
+    {
+      "path": "source-consumer-control-009-return.json",
+      "sha256": "f5b19b0afa1918a8d70321949f97e652bdc3f0265ba57598ce2b9be07e522ef6",
+      "bytes": 20460
+    },
+    {
+      "path": "source-omissions-through-consumers.json",
+      "sha256": "c2b87dc7fc5e7e7281339700a7cfa3c4f352f9f0541eae6d48a9be5bcd3e7dc5",
+      "bytes": 117994
+    },
+    {
+      "path": "units-and-scope.json",
+      "sha256": "d69056300c1e6c1d021b9556f887092c28df04c03c1ab252894de87bb8d82b8b",
+      "bytes": 79889
+    }
+  ],
+  "resultFileCount": 195,
+  "resultBytes": 3555228,
+  "newTopLevelFiles": 65,
+  "sourceOmissionControls": 10,
+  "pressureOmissionControls": 2,
+  "unitJoins": 8,
+  "reconstructionEvidence": [
+    {
+      "name": "resumed-operator-000",
+      "rawLiteralZero": true,
+      "cancelledLiteralZero": true,
+      "rawRemainder": {
+        "text": "0",
+        "srepr": "Integer(0)"
+      },
+      "coefficients": {
+        "s11cc2TrialA1(s11cc2X1, s11cc2X2, s11cc2X3, s11cc2Time)": {
+          "text": "0",
+          "srepr": "Integer(0)"
+        },
+        "s11cc2TrialA2(s11cc2X1, s11cc2X2, s11cc2X3, s11cc2Time)": {
+          "text": "0",
+          "srepr": "Integer(0)"
+        },
+        "Derivative(s11cc2TrialA1(s11cc2X1, s11cc2X2, s11cc2X3, s11cc2Time), s11cc2X1, s11cc2X3)": {
+          "text": "-I/(1050 + 2410*I + sqrt(3)*(300 + 2500*I))",
+          "srepr": "Mul(Integer(-1), I, Pow(Add(Integer(1050), Mul(Integer(2410), I), Mul(Pow(Integer(3), Rational(1, 2)), Add(Integer(300), Mul(Integer(2500), I)))), Integer(-1)))"
+        },
+        "Derivative(s11cc2TrialA2(s11cc2X1, s11cc2X2, s11cc2X3, s11cc2Time), s11cc2X1, s11cc2X2)": {
+          "text": "I/(1050 + 2410*I + sqrt(3)*(300 + 2500*I))",
+          "srepr": "Mul(I, Pow(Add(Integer(1050), Mul(Integer(2410), I), Mul(Pow(Integer(3), Rational(1, 2)), Add(Integer(300), Mul(Integer(2500), I)))), Integer(-1)))"
+        }
+      },
+      "responsiveState": "nonzero"
+    },
+    {
+      "name": "resumed-operator-001",
+      "rawLiteralZero": true,
+      "cancelledLiteralZero": true,
+      "rawRemainder": {
+        "text": "0",
+        "srepr": "Integer(0)"
+      },
+      "coefficients": {
+        "s11cc2TrialA0(s11cc2X1, s11cc2X2, s11cc2X3, s11cc2Time)": {
+          "text": "0",
+          "srepr": "Integer(0)"
+        },
+        "s11cc2TrialA2(s11cc2X1, s11cc2X2, s11cc2X3, s11cc2Time)": {
+          "text": "0",
+          "srepr": "Integer(0)"
+        },
+        "Derivative(s11cc2TrialA0(s11cc2X1, s11cc2X2, s11cc2X3, s11cc2Time), s11cc2X2, s11cc2X3)": {
+          "text": "I/(1050 + 2410*I + sqrt(3)*(300 + 2500*I))",
+          "srepr": "Mul(I, Pow(Add(Integer(1050), Mul(Integer(2410), I), Mul(Pow(Integer(3), Rational(1, 2)), Add(Integer(300), Mul(Integer(2500), I)))), Integer(-1)))"
+        },
+        "Derivative(s11cc2TrialA2(s11cc2X1, s11cc2X2, s11cc2X3, s11cc2Time), s11cc2X1, s11cc2X2)": {
+          "text": "-I/(1050 + 2410*I + sqrt(3)*(300 + 2500*I))",
+          "srepr": "Mul(Integer(-1), I, Pow(Add(Integer(1050), Mul(Integer(2410), I), Mul(Pow(Integer(3), Rational(1, 2)), Add(Integer(300), Mul(Integer(2500), I)))), Integer(-1)))"
+        }
+      },
+      "responsiveState": "nonzero"
+    },
+    {
+      "name": "resumed-operator-002",
+      "rawLiteralZero": true,
+      "cancelledLiteralZero": true,
+      "rawRemainder": {
+        "text": "0",
+        "srepr": "Integer(0)"
+      },
+      "coefficients": {
+        "s11cc2TrialA0(s11cc2X1, s11cc2X2, s11cc2X3, s11cc2Time)": {
+          "text": "0",
+          "srepr": "Integer(0)"
+        },
+        "s11cc2TrialA1(s11cc2X1, s11cc2X2, s11cc2X3, s11cc2Time)": {
+          "text": "0",
+          "srepr": "Integer(0)"
+        },
+        "Derivative(s11cc2TrialA0(s11cc2X1, s11cc2X2, s11cc2X3, s11cc2Time), s11cc2X2, s11cc2X3)": {
+          "text": "-I/(1050 + 2410*I + sqrt(3)*(300 + 2500*I))",
+          "srepr": "Mul(Integer(-1), I, Pow(Add(Integer(1050), Mul(Integer(2410), I), Mul(Pow(Integer(3), Rational(1, 2)), Add(Integer(300), Mul(Integer(2500), I)))), Integer(-1)))"
+        },
+        "Derivative(s11cc2TrialA1(s11cc2X1, s11cc2X2, s11cc2X3, s11cc2Time), s11cc2X1, s11cc2X3)": {
+          "text": "I/(1050 + 2410*I + sqrt(3)*(300 + 2500*I))",
+          "srepr": "Mul(I, Pow(Add(Integer(1050), Mul(Integer(2410), I), Mul(Pow(Integer(3), Rational(1, 2)), Add(Integer(300), Mul(Integer(2500), I)))), Integer(-1)))"
+        }
+      },
+      "responsiveState": "nonzero"
+    },
+    {
+      "name": "resumed-operator-003",
+      "rawLiteralZero": false,
+      "cancelledLiteralZero": true,
+      "rawRemainder": {
+        "text": "-10*_independentJet2*I/(600*sqrt(3) + 2100 + 4820*I + 5000*sqrt(3)*I) + _independentJet2*I/(60*sqrt(3) + 210 + 482*I + 500*sqrt(3)*I) - _independentJet3*I/(60*sqrt(3) + 210 + 482*I + 500*sqrt(3)*I) + 10*_independentJet3*I/(600*sqrt(3) + 2100 + 4820*I + 5000*sqrt(3)*I)",
+        "srepr": "Add(Mul(Integer(-1), Integer(10), Dummy('independentJet2', dummy_index=1583620), I, Pow(Add(Mul(Integer(600), Pow(Integer(3), Rational(1, 2))), Integer(2100), Mul(Integer(4820), I), Mul(Integer(5000), Pow(Integer(3), Rational(1, 2)), I)), Integer(-1))), Mul(Dummy('independentJet2', dummy_index=1583620), I, Pow(Add(Mul(Integer(60), Pow(Integer(3), Rational(1, 2))), Integer(210), Mul(Integer(482), I), Mul(Integer(500), Pow(Integer(3), Rational(1, 2)), I)), Integer(-1))), Mul(Integer(-1), Dummy('independentJet3', dummy_index=1583621), I, Pow(Add(Mul(Integer(60), Pow(Integer(3), Rational(1, 2))), Integer(210), Mul(Integer(482), I), Mul(Integer(500), Pow(Integer(3), Rational(1, 2)), I)), Integer(-1))), Mul(Integer(10), Dummy('independentJet3', dummy_index=1583621), I, Pow(Add(Mul(Integer(600), Pow(Integer(3), Rational(1, 2))), Integer(2100), Mul(Integer(4820), I), Mul(Integer(5000), Pow(Integer(3), Rational(1, 2)), I)), Integer(-1))))"
+      },
+      "coefficients": {
+        "s11cc2TrialA1(s11cc2X1, s11cc2X2, s11cc2X3, s11cc2Time)": {
+          "text": "0",
+          "srepr": "Integer(0)"
+        },
+        "s11cc2TrialA2(s11cc2X1, s11cc2X2, s11cc2X3, s11cc2Time)": {
+          "text": "0",
+          "srepr": "Integer(0)"
+        },
+        "Derivative(s11cc2TrialA1(s11cc2X1, s11cc2X2, s11cc2X3, s11cc2Time), s11cc2X1, s11cc2X3)": {
+          "text": "(3 + 10*I)/(2100 + 4820*I + sqrt(3)*(600 + 5000*I))",
+          "srepr": "Mul(Add(Integer(3), Mul(Integer(10), I)), Pow(Add(Integer(2100), Mul(Integer(4820), I), Mul(Pow(Integer(3), Rational(1, 2)), Add(Integer(600), Mul(Integer(5000), I)))), Integer(-1)))"
+        },
+        "Derivative(s11cc2TrialA2(s11cc2X1, s11cc2X2, s11cc2X3, s11cc2Time), s11cc2X1, s11cc2X2)": {
+          "text": "(-3 - 10*I)/(2100 + 4820*I + sqrt(3)*(600 + 5000*I))",
+          "srepr": "Mul(Add(Integer(-3), Mul(Integer(-1), Integer(10), I)), Pow(Add(Integer(2100), Mul(Integer(4820), I), Mul(Pow(Integer(3), Rational(1, 2)), Add(Integer(600), Mul(Integer(5000), I)))), Integer(-1)))"
+        }
+      },
+      "responsiveState": "nonzero"
+    },
+    {
+      "name": "resumed-operator-004",
+      "rawLiteralZero": false,
+      "cancelledLiteralZero": true,
+      "rawRemainder": {
+        "text": "-_independentJet2*I/(60*sqrt(3) + 210 + 482*I + 500*sqrt(3)*I) + 10*_independentJet2*I/(600*sqrt(3) + 2100 + 4820*I + 5000*sqrt(3)*I) - 10*_independentJet3*I/(600*sqrt(3) + 2100 + 4820*I + 5000*sqrt(3)*I) + _independentJet3*I/(60*sqrt(3) + 210 + 482*I + 500*sqrt(3)*I)",
+        "srepr": "Add(Mul(Integer(-1), Dummy('independentJet2', dummy_index=1583630), I, Pow(Add(Mul(Integer(60), Pow(Integer(3), Rational(1, 2))), Integer(210), Mul(Integer(482), I), Mul(Integer(500), Pow(Integer(3), Rational(1, 2)), I)), Integer(-1))), Mul(Integer(10), Dummy('independentJet2', dummy_index=1583630), I, Pow(Add(Mul(Integer(600), Pow(Integer(3), Rational(1, 2))), Integer(2100), Mul(Integer(4820), I), Mul(Integer(5000), Pow(Integer(3), Rational(1, 2)), I)), Integer(-1))), Mul(Integer(-1), Integer(10), Dummy('independentJet3', dummy_index=1583631), I, Pow(Add(Mul(Integer(600), Pow(Integer(3), Rational(1, 2))), Integer(2100), Mul(Integer(4820), I), Mul(Integer(5000), Pow(Integer(3), Rational(1, 2)), I)), Integer(-1))), Mul(Dummy('independentJet3', dummy_index=1583631), I, Pow(Add(Mul(Integer(60), Pow(Integer(3), Rational(1, 2))), Integer(210), Mul(Integer(482), I), Mul(Integer(500), Pow(Integer(3), Rational(1, 2)), I)), Integer(-1))))"
+      },
+      "coefficients": {
+        "s11cc2TrialA0(s11cc2X1, s11cc2X2, s11cc2X3, s11cc2Time)": {
+          "text": "0",
+          "srepr": "Integer(0)"
+        },
+        "s11cc2TrialA2(s11cc2X1, s11cc2X2, s11cc2X3, s11cc2Time)": {
+          "text": "0",
+          "srepr": "Integer(0)"
+        },
+        "Derivative(s11cc2TrialA0(s11cc2X1, s11cc2X2, s11cc2X3, s11cc2Time), s11cc2X2, s11cc2X3)": {
+          "text": "(-3 - 10*I)/(2100 + 4820*I + sqrt(3)*(600 + 5000*I))",
+          "srepr": "Mul(Add(Integer(-3), Mul(Integer(-1), Integer(10), I)), Pow(Add(Integer(2100), Mul(Integer(4820), I), Mul(Pow(Integer(3), Rational(1, 2)), Add(Integer(600), Mul(Integer(5000), I)))), Integer(-1)))"
+        },
+        "Derivative(s11cc2TrialA2(s11cc2X1, s11cc2X2, s11cc2X3, s11cc2Time), s11cc2X1, s11cc2X2)": {
+          "text": "(3 + 10*I)/(2100 + 4820*I + sqrt(3)*(600 + 5000*I))",
+          "srepr": "Mul(Add(Integer(3), Mul(Integer(10), I)), Pow(Add(Integer(2100), Mul(Integer(4820), I), Mul(Pow(Integer(3), Rational(1, 2)), Add(Integer(600), Mul(Integer(5000), I)))), Integer(-1)))"
+        }
+      },
+      "responsiveState": "nonzero"
+    },
+    {
+      "name": "resumed-operator-005",
+      "rawLiteralZero": false,
+      "cancelledLiteralZero": true,
+      "rawRemainder": {
+        "text": "-10*_independentJet2*I/(600*sqrt(3) + 2100 + 4820*I + 5000*sqrt(3)*I) + _independentJet2*I/(60*sqrt(3) + 210 + 482*I + 500*sqrt(3)*I) - _independentJet3*I/(60*sqrt(3) + 210 + 482*I + 500*sqrt(3)*I) + 10*_independentJet3*I/(600*sqrt(3) + 2100 + 4820*I + 5000*sqrt(3)*I)",
+        "srepr": "Add(Mul(Integer(-1), Integer(10), Dummy('independentJet2', dummy_index=1583640), I, Pow(Add(Mul(Integer(600), Pow(Integer(3), Rational(1, 2))), Integer(2100), Mul(Integer(4820), I), Mul(Integer(5000), Pow(Integer(3), Rational(1, 2)), I)), Integer(-1))), Mul(Dummy('independentJet2', dummy_index=1583640), I, Pow(Add(Mul(Integer(60), Pow(Integer(3), Rational(1, 2))), Integer(210), Mul(Integer(482), I), Mul(Integer(500), Pow(Integer(3), Rational(1, 2)), I)), Integer(-1))), Mul(Integer(-1), Dummy('independentJet3', dummy_index=1583641), I, Pow(Add(Mul(Integer(60), Pow(Integer(3), Rational(1, 2))), Integer(210), Mul(Integer(482), I), Mul(Integer(500), Pow(Integer(3), Rational(1, 2)), I)), Integer(-1))), Mul(Integer(10), Dummy('independentJet3', dummy_index=1583641), I, Pow(Add(Mul(Integer(600), Pow(Integer(3), Rational(1, 2))), Integer(2100), Mul(Integer(4820), I), Mul(Integer(5000), Pow(Integer(3), Rational(1, 2)), I)), Integer(-1))))"
+      },
+      "coefficients": {
+        "s11cc2TrialA0(s11cc2X1, s11cc2X2, s11cc2X3, s11cc2Time)": {
+          "text": "0",
+          "srepr": "Integer(0)"
+        },
+        "s11cc2TrialA1(s11cc2X1, s11cc2X2, s11cc2X3, s11cc2Time)": {
+          "text": "0",
+          "srepr": "Integer(0)"
+        },
+        "Derivative(s11cc2TrialA0(s11cc2X1, s11cc2X2, s11cc2X3, s11cc2Time), s11cc2X2, s11cc2X3)": {
+          "text": "(3 + 10*I)/(2100 + 4820*I + sqrt(3)*(600 + 5000*I))",
+          "srepr": "Mul(Add(Integer(3), Mul(Integer(10), I)), Pow(Add(Integer(2100), Mul(Integer(4820), I), Mul(Pow(Integer(3), Rational(1, 2)), Add(Integer(600), Mul(Integer(5000), I)))), Integer(-1)))"
+        },
+        "Derivative(s11cc2TrialA1(s11cc2X1, s11cc2X2, s11cc2X3, s11cc2Time), s11cc2X1, s11cc2X3)": {
+          "text": "(-3 - 10*I)/(2100 + 4820*I + sqrt(3)*(600 + 5000*I))",
+          "srepr": "Mul(Add(Integer(-3), Mul(Integer(-1), Integer(10), I)), Pow(Add(Integer(2100), Mul(Integer(4820), I), Mul(Pow(Integer(3), Rational(1, 2)), Add(Integer(600), Mul(Integer(5000), I)))), Integer(-1)))"
+        }
+      },
+      "responsiveState": "nonzero"
+    }
+  ],
+  "interpretation": {
+    "sameStructuralPredicateFailsOnEquivalentForms": true,
+    "exactOldFailedExpressionRecovered": false,
+    "why": "Three E_W control reconstructions have raw nonliteral-zero residuals with denominators differing by a factor of ten; all six exact cancelled residuals are zero. The old failing expression was not saved, so its exact instance remains unavailable.",
+    "arbitraryTransverseSource": "Saved source(0,0) exact zero on both faces; restored selected direct insertion therefore has no such source at the tested retained grade.",
+    "otherChannels": "Nonzero scalar/longitudinal sources and scalar consumer factors, with all addressed controls responsive.",
+    "scope": "Upper-face direct kernel(1,1)source(0,0)consumer(0,0), rest bulk LAB_HELD/RHO4_CONSTANT, omega3,cs10,saved tangents,off-shell kin0/kout0.1 only.",
+    "notEstablished": [
+      "all retained-order decoupling",
+      "lower-face correction",
+      "on-shell scattering",
+      "loss",
+      "calibration",
+      "drain response",
+      "production repair",
+      "defect sweep"
+    ]
+  },
+  "automaticRetry": false,
+  "scientificPayloadRestoredDuringInspection": false,
+  "additionalScientificJobLaunched": false,
+  "stopBeforeProductionOrDefect": true
+}

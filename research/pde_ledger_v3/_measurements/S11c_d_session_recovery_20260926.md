@@ -1,3 +1,25 @@
+**SELECTED SOURCE/CONSUMER CONTINUATION COMPLETED (2026-10-01):**
+Prepared d39b595c; original failed run747fd8cc unchanged. Continuation5.390s,
+peak142.4MiB,zero swap/events. All10source controls,2native pressure ablations,
+8computed unit joins pass. Three E_W raw reconstruction residuals are structurally
+nonzero but exact cancel(together()) gives literal0; all6reconstructions have
+independent-jet-free coefficients and exact zero residuals. This demonstrates
+the old predicate's representation failure; the exact old failing expression
+was not saved and is not recovered. No tolerance/equation change.
+Prior source00 arbitrary-curl zero on both faces and nonzero scalar/longitudinal
+sources remain; selected direct kernel11*source00*consumer00 has no such direct
+transverse source. NOT full-operator decoupling,defect loss or calibration.
+All753metadata/evidence checks pass:204input pins,206snapshots,130prior files
+copied unchanged,12selected operand files restored. Old top-level journal stays
+empty; new continuation has1complete operation. Result195files/3555228bytes.
+Strict stderr empty/stdout-checks identical. Shared pooled guard/supervisor4GiB,
+zero swap,oneCPU/thread,tasks32,hostreserve4GiB,no deadlines;hook armed first.
+See continue_completion.json/result.md/run_record.json. Literal Claude NEEDS /
+Grok CLEAR unchanged; local tooling is not fresh independent clearance.
+Scientific inspection was JSON/source/hash only. No new run,validator,external
+review,producer/production repair or defect sweep. All history and protected
+sources retained. Diagnostic complete; downstream applicability remains scoped.
+
 **SOURCE/CONSUMER SAVED-EVIDENCE CONTINUATION READY (2026-10-01):**
 User renewed work after preserved failure747fd8cc. One continuation finishes only
 unpublished controls from saved operands; all130 prior files/2914095bytes pinned

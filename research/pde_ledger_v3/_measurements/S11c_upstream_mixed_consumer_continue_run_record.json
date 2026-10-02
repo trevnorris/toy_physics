@@ -1,0 +1,25 @@
+{
+  "status": "SELECTED_SOURCE_CONSUMER_CONTINUATION_SUPPORTED_WITH_SCOPE_LIMITS",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/continuation-01",
+  "workerSha256": "d94ee245e659ae79ce11f315a3d033b3e3ee5fa649f40c9dd2acabff18ceccd7",
+  "gateSha256": "86dc00fa5a01dac1987ed684dd4f02c8bcffa07bcafc34dfcde047fd70224c5a",
+  "preparedCommit": "d39b595c",
+  "workerSeconds": 5.389908498967998,
+  "supervisorSeconds": 5.970134459086694,
+  "guardSeconds": 6.184413086040877,
+  "peakMemoryBytes": 149336064,
+  "inputPins": 204,
+  "snapshots": 206,
+  "priorResultFilesIntact": 130,
+  "literalVerdicts": {
+    "claude": "NEEDS REVISION",
+    "grok": "CLEAR FOR THIS SELECTED SOURCE/CONSUMER INSTRUMENT"
+  },
+  "independentBuildClearance": false,
+  "hookArmedBeforeScience": true,
+  "completionAlreadyInspected": true,
+  "scienceExecutions": 1,
+  "noDeadline": true,
+  "noRetry": true,
+  "completionRecord": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_mixed_consumer_continue_completion.json"
+}

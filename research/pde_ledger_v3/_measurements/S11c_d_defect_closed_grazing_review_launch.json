@@ -1,0 +1,87 @@
+{
+  "status": "RUNNING_INDEPENDENT_SOURCE_REVIEWS",
+  "recordedUtc": "2026-10-02T04:37:51.481625+00:00",
+  "preparedCommit": "28103d21",
+  "packetSha256": "6d416736f7bde0ab10ae8d10761d4415757bbf3e23fa004441ebc8175200d2be",
+  "archiveSha256": "d930278ce82e2b2f9429f88ce58c020f90f809526274bf86288f2d94a14daa70",
+  "launch": {
+    "jobPid": 1742153,
+    "watcherPid": 1742154,
+    "packetSha256": "6d416736f7bde0ab10ae8d10761d4415757bbf3e23fa004441ebc8175200d2be",
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "concurrentReviewWorkers": 2,
+    "scienceCalls": 0,
+    "runnerSha256": "bc3b5337a6416d6a7b84bcc21aa1fbde298b3d69d7634d51ec4892ec556c62c0",
+    "launcherSha256": "b06398239090661b80494cdf3af31d329ccaa1c4dc4ce97101a13b923f27967d"
+  },
+  "watcherStatus": "waiting",
+  "legs": {
+    "claude": {
+      "pid": 1742192,
+      "sessionId": "046a945d-048d-492e-be69-5f4def437d4c",
+      "privateFiles": 93,
+      "allPrivateHashesMatch": true,
+      "hostProcessVerifiedAtStartup": true,
+      "receiptStartedUtc": "2026-10-02T04:36:28.845440+00:00",
+      "scientificExecutionEnabled": false,
+      "command": [
+        "/home/trevnorris/.local/bin/claude",
+        "--print",
+        "--output-format",
+        "json",
+        "--safe-mode",
+        "--restricted",
+        "--tools",
+        "Read,Glob,Grep",
+        "--allowedTools",
+        "Read,Glob,Grep",
+        "--permission-mode",
+        "dontAsk",
+        "--strict-mcp-config",
+        "--mcp-config",
+        "{\"mcpServers\":{}}",
+        "--setting-sources",
+        "",
+        "--disable-slash-commands",
+        "--session-id",
+        "046a945d-048d-492e-be69-5f4def437d4c"
+      ]
+    },
+    "grok": {
+      "pid": 1742188,
+      "sessionId": "c51d0934-be31-4b1e-a1de-5cf3bc7b442c",
+      "privateFiles": 93,
+      "allPrivateHashesMatch": true,
+      "hostProcessVerifiedAtStartup": true,
+      "receiptStartedUtc": "2026-10-02T04:36:28.737860+00:00",
+      "scientificExecutionEnabled": false,
+      "command": [
+        "/home/trevnorris/.local/bin/grok",
+        "--cwd",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-defect-closed-grazing-20261001/method-review/grok/work",
+        "--prompt-file",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-defect-closed-grazing-20261001/method-review/grok/work/input/review-prompt.md",
+        "--output-format",
+        "json",
+        "--permission-mode",
+        "dontAsk",
+        "--no-plan",
+        "--tools",
+        "Read",
+        "--no-subagents",
+        "--disable-web-search",
+        "--verbatim",
+        "--session-id",
+        "c51d0934-be31-4b1e-a1de-5cf3bc7b442c"
+      ]
+    }
+  },
+  "reportsReadOrShared": false,
+  "scienceCalls": 0,
+  "noAutomaticRetry": true,
+  "startupProcessInspection": "Sandbox /proc visibility could not see host PIDs; a single escalated host ps confirmed coordinator/watcher/Claude/Grok alive. No run or review was restarted.",
+  "hostPsReceipt": "1742153 4973 SNsl 00:50 python; 1742154 4973 SNs 00:50 python; 1742188 1742153 SNsl 00:49 grok; 1742192 1742153 SNsl 00:49 claude"
+}

@@ -1,3 +1,13 @@
+**CLOSED-GRAZING METHOD REVIEWS RUNNING (2026-10-01):**
+Prepared28103d21. Hook first; coordinator1742153,watcher1742154. Bothfresh
+Claude/Grok source-only review processes started with93private files each;
+allprivate hashes verified. Hostps confirmed processes; sandbox/proc could not
+see hostPIDs. No restart or report contents read/shared. Standinguserconsent,
+no sciencecalls,no automaticretry. See closed_grazing_review_launch. Awaitlocal
+completionhook without modelpolling; then inspect bothliteral reports/receipts/
+stderr/source/private/archive hashes before jointassessment. Continue authorized
+bounded work after substantiveassessment; no routinepermission or defectsweep.
+
 **CLOSED-GRAZING METHOD PACKET PREPARED (2026-10-01):**
 Raw both-face nongrazing result/control completion committed80cb6b4f. New method
 proposes exact external cancellation, first-quadrant closure bounds and moving

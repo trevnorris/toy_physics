@@ -1,0 +1,47 @@
+{
+  "status": "CORRECTED_VALIDATION_PREPARED_FOR_FRESH_BUILD_ASSESSMENT",
+  "recordedUtc": "2026-10-02T19:56:18.707037+00:00",
+  "priorDispositionCommit": "08fd2616",
+  "oldWorkerSha256": "55f009b3325d100a26f333f69ccbc19167b9d8aebfa06f1d50908c255704c49d",
+  "workerSha256": "7bcf9b69c9abd07ad6e49415f8720eed56b71ce29121eaac284d004f951434a1",
+  "methodSha256": "d24083ac01df581f2c11c6027866f7fe3d605a9e80e4c1d1c362819f4872964a",
+  "oldLiteralClaudeVerdict": "NEEDS REVISION",
+  "oldGrokDeliveredVerdict": false,
+  "sourceScienceExecuted": false,
+  "scientificObjectsRestored": false,
+  "independentBuildClearance": false,
+  "newValidation": [
+    "Native row/slot child hash equality and complete twelve-child union, including empty U rows.",
+    "New bound/affine/slot-sum identities from actual saved inputs before local work.",
+    "Actual completed whole-definition arguments, factor/normal proof inputs and returns, every address map and native wave multipliers.",
+    "Actual addressed-zero epsilon convention and native map labels; shared scalar map reuse requires identical operands."
+  ],
+  "toolingCorrections": [
+    "Do not compare opposite sides of an inherited cancel-based identity structurally. Join actual input and preserved exact-zero return.",
+    "Explicit private input paths and direct alias files in the corrected packet.",
+    "Read original native source line in binary, as the existing test does.",
+    "Label integrity failure in executionStatus as well as exit code."
+  ],
+  "unchangedLocalAst": {
+    "derive": true,
+    "profile_atom": true,
+    "constant": true,
+    "polynomial": true,
+    "bind": true,
+    "zero_record": true,
+    "source_rules": true,
+    "numeric_extension": true,
+    "checkpoint_batch": true,
+    "EvidenceLog": true
+  },
+  "tests": {
+    "count": 33,
+    "passed": true,
+    "scope": "stdlib/synthetic and complete actual JSON/AST metadata only, no scientific restoration"
+  },
+  "samePhysicalInput": true,
+  "sameEquations": true,
+  "priorPressureFunctionsReplayed": false,
+  "noAutomaticTransportRetry": "This is a new substantive validation packet; no continuation or rerun of the cancelled old session.",
+  "noScienceGateYet": true
+}

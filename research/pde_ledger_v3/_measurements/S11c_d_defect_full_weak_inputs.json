@@ -1,6 +1,6 @@
 {
   "status": "PREPARED_NO_SCIENCE_OR_GATE",
-  "createdUtc": "2026-10-02T19:26:36.706109+00:00",
+  "createdUtc": "2026-10-02T19:54:44.676176+00:00",
   "worker": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_full_weak.py",
   "launcher": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_full_weak_launch.py",
   "helperSource": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_raw_increment.py",
@@ -10,7 +10,7 @@
   "physicalInput": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_variable_profile_development_input.json",
   "methodPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_full_weak_method.md",
   "methodRecord": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_full_weak_review_record.json",
-  "reviewRecordWillBe": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_full_weak_build_review_record.json",
+  "reviewRecordWillBe": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_full_weak_build_review_r2_record.json",
   "executionAuthority": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_full_weak_execution_authority.json",
   "scope": {
     "frequency": 3,
@@ -585,6 +585,11 @@
       "sha256": "d24e6e389d182884b7d8caf786e9a02b08bcb0f753dd4fd99e3b498a8375f86f",
       "bytes": 5473
     },
+    "weak/whole-definition-inputs.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-weak-composition-20261002/diagnostic-01/complete/whole-definition-inputs.json",
+      "sha256": "6bf1b7bc38d7beb0c79e9c3f619d45c8a9ff221a4bdccc94a8cb32ccd26f211e",
+      "bytes": 43132
+    },
     "weak/analytic-conclusion.json": {
       "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-weak-composition-20261002/diagnostic-01/complete/analytic-conclusion.json",
       "sha256": "732bfaa4fb2fa32d8eec627c930143968712814edeaef8a14037804d9ab5bac7",
@@ -629,6 +634,451 @@
       "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-weak-composition-20261002/diagnostic-01/complete/global-whole-kernel-envelopes.json",
       "sha256": "4e7035849d15bbfaecd04daef7eddd36782583cfd068ed1f1bd98017acf44171",
       "bytes": 925
+    },
+    "inventory/factors/address-full-factor-0-operands.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/address-full-factor-0-operands.json",
+      "sha256": "79de75c3ed78ad91fdb85a368f070211ac12e62e82ed89acfb3760c26684ffdd",
+      "bytes": 2172
+    },
+    "inventory/factors/address-full-factor-0-full-mapped-residual-input.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/address-full-factor-0-full-mapped-residual-input.json",
+      "sha256": "10ecf8ae4461b232f69520e18c882c5ef0ba55fad32a819dee3c90579634e7cf",
+      "bytes": 532
+    },
+    "inventory/factors/address-full-factor-0-full-mapped-residual-return.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/address-full-factor-0-full-mapped-residual-return.json",
+      "sha256": "d40f72d407074ddd92d6d2a868b52e001a832495c8bb4d0903a6f5a3723ccceb",
+      "bytes": 127
+    },
+    "inventory/factors/address-full-factor-0-normal-source-join-input.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/address-full-factor-0-normal-source-join-input.json",
+      "sha256": "a93f86946a5d5650a721014c7ce8e401cca7571db86bb475bf6c449977f9518a",
+      "bytes": 124
+    },
+    "inventory/factors/address-full-factor-0-normal-source-join-return.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/address-full-factor-0-normal-source-join-return.json",
+      "sha256": "d40f72d407074ddd92d6d2a868b52e001a832495c8bb4d0903a6f5a3723ccceb",
+      "bytes": 127
+    },
+    "inventory/factors/address-full-factor-1-operands.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/address-full-factor-1-operands.json",
+      "sha256": "817520c43dbe538b601d183beaa0cdcdf9b84d2674b173f8343e4c67b581cda4",
+      "bytes": 5587
+    },
+    "inventory/factors/address-full-factor-1-full-mapped-residual-input.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/address-full-factor-1-full-mapped-residual-input.json",
+      "sha256": "97cc3355c4dae7682c53ef84e28ecb8ebbff385440f19164b3b1c46b91fe5204",
+      "bytes": 1134
+    },
+    "inventory/factors/address-full-factor-1-full-mapped-residual-return.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/address-full-factor-1-full-mapped-residual-return.json",
+      "sha256": "d40f72d407074ddd92d6d2a868b52e001a832495c8bb4d0903a6f5a3723ccceb",
+      "bytes": 127
+    },
+    "inventory/factors/address-full-factor-1-normal-source-join-input.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/address-full-factor-1-normal-source-join-input.json",
+      "sha256": "a93f86946a5d5650a721014c7ce8e401cca7571db86bb475bf6c449977f9518a",
+      "bytes": 124
+    },
+    "inventory/factors/address-full-factor-1-normal-source-join-return.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/address-full-factor-1-normal-source-join-return.json",
+      "sha256": "d40f72d407074ddd92d6d2a868b52e001a832495c8bb4d0903a6f5a3723ccceb",
+      "bytes": 127
+    },
+    "inventory/factors/address-full-factor-10-operands.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/address-full-factor-10-operands.json",
+      "sha256": "0c41c8b04863315cc38e329c2886a092bd102275572f8238be2a73b686758524",
+      "bytes": 6812
+    },
+    "inventory/factors/address-full-factor-10-full-mapped-residual-input.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/address-full-factor-10-full-mapped-residual-input.json",
+      "sha256": "04a87c5f5b26ac63f23754b01aae62ae1067f83411b818e6e339cc81975082b2",
+      "bytes": 2212
+    },
+    "inventory/factors/address-full-factor-10-full-mapped-residual-return.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/address-full-factor-10-full-mapped-residual-return.json",
+      "sha256": "d40f72d407074ddd92d6d2a868b52e001a832495c8bb4d0903a6f5a3723ccceb",
+      "bytes": 127
+    },
+    "inventory/factors/address-full-factor-10-normal-source-join-input.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/address-full-factor-10-normal-source-join-input.json",
+      "sha256": "a93f86946a5d5650a721014c7ce8e401cca7571db86bb475bf6c449977f9518a",
+      "bytes": 124
+    },
+    "inventory/factors/address-full-factor-10-normal-source-join-return.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/address-full-factor-10-normal-source-join-return.json",
+      "sha256": "d40f72d407074ddd92d6d2a868b52e001a832495c8bb4d0903a6f5a3723ccceb",
+      "bytes": 127
+    },
+    "inventory/factors/address-full-factor-11-operands.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/address-full-factor-11-operands.json",
+      "sha256": "f1d4ebad05e633301308d319f22fc03ead61e1fb64ff65f0a8f5781a3168867b",
+      "bytes": 1900
+    },
+    "inventory/factors/address-full-factor-11-full-mapped-residual-input.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/address-full-factor-11-full-mapped-residual-input.json",
+      "sha256": "b137e54988282378bd4a1072609b4a31bf3bb2b8b1b182790b4c5bc17b14dee7",
+      "bytes": 674
+    },
+    "inventory/factors/address-full-factor-11-full-mapped-residual-return.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/address-full-factor-11-full-mapped-residual-return.json",
+      "sha256": "d40f72d407074ddd92d6d2a868b52e001a832495c8bb4d0903a6f5a3723ccceb",
+      "bytes": 127
+    },
+    "inventory/factors/address-full-factor-11-normal-source-join-input.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/address-full-factor-11-normal-source-join-input.json",
+      "sha256": "a93f86946a5d5650a721014c7ce8e401cca7571db86bb475bf6c449977f9518a",
+      "bytes": 124
+    },
+    "inventory/factors/address-full-factor-11-normal-source-join-return.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/address-full-factor-11-normal-source-join-return.json",
+      "sha256": "d40f72d407074ddd92d6d2a868b52e001a832495c8bb4d0903a6f5a3723ccceb",
+      "bytes": 127
+    },
+    "inventory/factors/address-full-factor-12-operands.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/address-full-factor-12-operands.json",
+      "sha256": "20921df35ab014be43152533a991ee954c1dfecba7da127d1c9a820d96a6fbff",
+      "bytes": 2445
+    },
+    "inventory/factors/address-full-factor-12-full-mapped-residual-input.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/address-full-factor-12-full-mapped-residual-input.json",
+      "sha256": "c1eae6942b1fe08ec47ff7a3dc6e242897f56cfe52b6ec6cc50309393e87f1d0",
+      "bytes": 770
+    },
+    "inventory/factors/address-full-factor-12-full-mapped-residual-return.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/address-full-factor-12-full-mapped-residual-return.json",
+      "sha256": "d40f72d407074ddd92d6d2a868b52e001a832495c8bb4d0903a6f5a3723ccceb",
+      "bytes": 127
+    },
+    "inventory/factors/address-full-factor-12-normal-source-join-input.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/address-full-factor-12-normal-source-join-input.json",
+      "sha256": "a873c9b587e1d24fd94342cbfb5cfa11259a3c9370c9ca1e1e0c6c6edaeb7774",
+      "bytes": 218
+    },
+    "inventory/factors/address-full-factor-12-normal-source-join-return.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/address-full-factor-12-normal-source-join-return.json",
+      "sha256": "d40f72d407074ddd92d6d2a868b52e001a832495c8bb4d0903a6f5a3723ccceb",
+      "bytes": 127
+    },
+    "inventory/factors/address-full-factor-13-operands.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/address-full-factor-13-operands.json",
+      "sha256": "6c202f28917e6534d5ded8c2e79d62b8935a1ca9bfa172f5e5d354102ec00756",
+      "bytes": 5811
+    },
+    "inventory/factors/address-full-factor-13-full-mapped-residual-input.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/address-full-factor-13-full-mapped-residual-input.json",
+      "sha256": "0226d7c01f62213f9d3aceab879d2ff9d637c817a395daf016d3368eba457532",
+      "bytes": 1324
+    },
+    "inventory/factors/address-full-factor-13-full-mapped-residual-return.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/address-full-factor-13-full-mapped-residual-return.json",
+      "sha256": "d40f72d407074ddd92d6d2a868b52e001a832495c8bb4d0903a6f5a3723ccceb",
+      "bytes": 127
+    },
+    "inventory/factors/address-full-factor-13-normal-source-join-input.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/address-full-factor-13-normal-source-join-input.json",
+      "sha256": "a873c9b587e1d24fd94342cbfb5cfa11259a3c9370c9ca1e1e0c6c6edaeb7774",
+      "bytes": 218
+    },
+    "inventory/factors/address-full-factor-13-normal-source-join-return.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/address-full-factor-13-normal-source-join-return.json",
+      "sha256": "d40f72d407074ddd92d6d2a868b52e001a832495c8bb4d0903a6f5a3723ccceb",
+      "bytes": 127
+    },
+    "inventory/factors/address-full-factor-14-operands.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/address-full-factor-14-operands.json",
+      "sha256": "e744dfa6d5f20f36b804a71b5c7570fb6f4d56faf4aa9bf75a0d972b2a7751ae",
+      "bytes": 6322
+    },
+    "inventory/factors/address-full-factor-14-full-mapped-residual-input.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/address-full-factor-14-full-mapped-residual-input.json",
+      "sha256": "97196f2d202271c75c6494f1f699d2f2eb30ffba4ab88b0dcaa9e1d2a797eaa0",
+      "bytes": 1608
+    },
+    "inventory/factors/address-full-factor-14-full-mapped-residual-return.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/address-full-factor-14-full-mapped-residual-return.json",
+      "sha256": "d40f72d407074ddd92d6d2a868b52e001a832495c8bb4d0903a6f5a3723ccceb",
+      "bytes": 127
+    },
+    "inventory/factors/address-full-factor-14-normal-source-join-input.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/address-full-factor-14-normal-source-join-input.json",
+      "sha256": "a873c9b587e1d24fd94342cbfb5cfa11259a3c9370c9ca1e1e0c6c6edaeb7774",
+      "bytes": 218
+    },
+    "inventory/factors/address-full-factor-14-normal-source-join-return.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/address-full-factor-14-normal-source-join-return.json",
+      "sha256": "d40f72d407074ddd92d6d2a868b52e001a832495c8bb4d0903a6f5a3723ccceb",
+      "bytes": 127
+    },
+    "inventory/factors/address-full-factor-15-operands.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/address-full-factor-15-operands.json",
+      "sha256": "987a97177485288572997c79a64891f11ad2f622ae16dfa9c3a381a7f846d477",
+      "bytes": 7095
+    },
+    "inventory/factors/address-full-factor-15-full-mapped-residual-input.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/address-full-factor-15-full-mapped-residual-input.json",
+      "sha256": "98198d1d1ccbcbb0a77e83f4eb3a2ce132aed117f6341b4ae897339c3dce7a82",
+      "bytes": 2464
+    },
+    "inventory/factors/address-full-factor-15-full-mapped-residual-return.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/address-full-factor-15-full-mapped-residual-return.json",
+      "sha256": "d40f72d407074ddd92d6d2a868b52e001a832495c8bb4d0903a6f5a3723ccceb",
+      "bytes": 127
+    },
+    "inventory/factors/address-full-factor-15-normal-source-join-input.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/address-full-factor-15-normal-source-join-input.json",
+      "sha256": "a873c9b587e1d24fd94342cbfb5cfa11259a3c9370c9ca1e1e0c6c6edaeb7774",
+      "bytes": 218
+    },
+    "inventory/factors/address-full-factor-15-normal-source-join-return.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/address-full-factor-15-normal-source-join-return.json",
+      "sha256": "d40f72d407074ddd92d6d2a868b52e001a832495c8bb4d0903a6f5a3723ccceb",
+      "bytes": 127
+    },
+    "inventory/factors/address-full-factor-16-operands.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/address-full-factor-16-operands.json",
+      "sha256": "efc6c1197c5964d85b049c9ed4a1478e279900f3f0b17c807f4c88d2658124d6",
+      "bytes": 2438
+    },
+    "inventory/factors/address-full-factor-16-full-mapped-residual-input.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/address-full-factor-16-full-mapped-residual-input.json",
+      "sha256": "921f67b6e700745bac2fa367dcaee2902dad2a9925da679cb70ac11fb75fb973",
+      "bytes": 922
+    },
+    "inventory/factors/address-full-factor-16-full-mapped-residual-return.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/address-full-factor-16-full-mapped-residual-return.json",
+      "sha256": "d40f72d407074ddd92d6d2a868b52e001a832495c8bb4d0903a6f5a3723ccceb",
+      "bytes": 127
+    },
+    "inventory/factors/address-full-factor-16-normal-source-join-input.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/address-full-factor-16-normal-source-join-input.json",
+      "sha256": "a873c9b587e1d24fd94342cbfb5cfa11259a3c9370c9ca1e1e0c6c6edaeb7774",
+      "bytes": 218
+    },
+    "inventory/factors/address-full-factor-16-normal-source-join-return.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/address-full-factor-16-normal-source-join-return.json",
+      "sha256": "d40f72d407074ddd92d6d2a868b52e001a832495c8bb4d0903a6f5a3723ccceb",
+      "bytes": 127
+    },
+    "inventory/factors/address-full-factor-2-operands.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/address-full-factor-2-operands.json",
+      "sha256": "1ada75cb7ae8d471651910d188524719cf1eb506d213d0479659de282fce021f",
+      "bytes": 6051
+    },
+    "inventory/factors/address-full-factor-2-full-mapped-residual-input.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/address-full-factor-2-full-mapped-residual-input.json",
+      "sha256": "5adc934b1e604b762c66c0ae2d489f9f1f6a34d3b45e941b1a1e86edfc1c0791",
+      "bytes": 1370
+    },
+    "inventory/factors/address-full-factor-2-full-mapped-residual-return.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/address-full-factor-2-full-mapped-residual-return.json",
+      "sha256": "d40f72d407074ddd92d6d2a868b52e001a832495c8bb4d0903a6f5a3723ccceb",
+      "bytes": 127
+    },
+    "inventory/factors/address-full-factor-2-normal-source-join-input.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/address-full-factor-2-normal-source-join-input.json",
+      "sha256": "a93f86946a5d5650a721014c7ce8e401cca7571db86bb475bf6c449977f9518a",
+      "bytes": 124
+    },
+    "inventory/factors/address-full-factor-2-normal-source-join-return.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/address-full-factor-2-normal-source-join-return.json",
+      "sha256": "d40f72d407074ddd92d6d2a868b52e001a832495c8bb4d0903a6f5a3723ccceb",
+      "bytes": 127
+    },
+    "inventory/factors/address-full-factor-3-operands.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/address-full-factor-3-operands.json",
+      "sha256": "2e68f8f3bb3947044b7a3440371ad73a8a21d8ee1ab1dd9d1afbdffe45536039",
+      "bytes": 6802
+    },
+    "inventory/factors/address-full-factor-3-full-mapped-residual-input.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/address-full-factor-3-full-mapped-residual-input.json",
+      "sha256": "4f81c3c9845ab549431f264232e9b0adcbf58103c33a8d5159be1d0f21c436a6",
+      "bytes": 2208
+    },
+    "inventory/factors/address-full-factor-3-full-mapped-residual-return.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/address-full-factor-3-full-mapped-residual-return.json",
+      "sha256": "d40f72d407074ddd92d6d2a868b52e001a832495c8bb4d0903a6f5a3723ccceb",
+      "bytes": 127
+    },
+    "inventory/factors/address-full-factor-3-normal-source-join-input.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/address-full-factor-3-normal-source-join-input.json",
+      "sha256": "a93f86946a5d5650a721014c7ce8e401cca7571db86bb475bf6c449977f9518a",
+      "bytes": 124
+    },
+    "inventory/factors/address-full-factor-3-normal-source-join-return.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/address-full-factor-3-normal-source-join-return.json",
+      "sha256": "d40f72d407074ddd92d6d2a868b52e001a832495c8bb4d0903a6f5a3723ccceb",
+      "bytes": 127
+    },
+    "inventory/factors/address-full-factor-4-operands.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/address-full-factor-4-operands.json",
+      "sha256": "82396f696eb6a93f960cc59abb00a3ff1fc3f1a8bf14edd807fda17906fdb1ba",
+      "bytes": 1890
+    },
+    "inventory/factors/address-full-factor-4-full-mapped-residual-input.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/address-full-factor-4-full-mapped-residual-input.json",
+      "sha256": "0860db4a229ef1a22343d0ea92454823d7705b49aa75df1680b200c7385a54ef",
+      "bytes": 670
+    },
+    "inventory/factors/address-full-factor-4-full-mapped-residual-return.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/address-full-factor-4-full-mapped-residual-return.json",
+      "sha256": "d40f72d407074ddd92d6d2a868b52e001a832495c8bb4d0903a6f5a3723ccceb",
+      "bytes": 127
+    },
+    "inventory/factors/address-full-factor-4-normal-source-join-input.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/address-full-factor-4-normal-source-join-input.json",
+      "sha256": "a93f86946a5d5650a721014c7ce8e401cca7571db86bb475bf6c449977f9518a",
+      "bytes": 124
+    },
+    "inventory/factors/address-full-factor-4-normal-source-join-return.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/address-full-factor-4-normal-source-join-return.json",
+      "sha256": "d40f72d407074ddd92d6d2a868b52e001a832495c8bb4d0903a6f5a3723ccceb",
+      "bytes": 127
+    },
+    "inventory/factors/address-full-factor-5-operands.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/address-full-factor-5-operands.json",
+      "sha256": "ae9ec12e949a85c4e765a6b379d40da77cbb61f6b704f0653941d6fcc5d1954c",
+      "bytes": 2387
+    },
+    "inventory/factors/address-full-factor-5-full-mapped-residual-input.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/address-full-factor-5-full-mapped-residual-input.json",
+      "sha256": "d107c75842b6a13f3f51a0f0aa8d23d5b75faa6f5bec6e215daa38fd86fa311a",
+      "bytes": 742
+    },
+    "inventory/factors/address-full-factor-5-full-mapped-residual-return.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/address-full-factor-5-full-mapped-residual-return.json",
+      "sha256": "d40f72d407074ddd92d6d2a868b52e001a832495c8bb4d0903a6f5a3723ccceb",
+      "bytes": 127
+    },
+    "inventory/factors/address-full-factor-5-normal-source-join-input.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/address-full-factor-5-normal-source-join-input.json",
+      "sha256": "abd4ef4ae151269e78f0f2c330024491b33cf082595feb311e1eef23b6ccf7d8",
+      "bytes": 190
+    },
+    "inventory/factors/address-full-factor-5-normal-source-join-return.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/address-full-factor-5-normal-source-join-return.json",
+      "sha256": "d40f72d407074ddd92d6d2a868b52e001a832495c8bb4d0903a6f5a3723ccceb",
+      "bytes": 127
+    },
+    "inventory/factors/address-full-factor-6-operands.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/address-full-factor-6-operands.json",
+      "sha256": "c172ac69c05dc7567dc5abffd6f04fb1437d353fcf7441234f37b6b11d9adfd4",
+      "bytes": 5753
+    },
+    "inventory/factors/address-full-factor-6-full-mapped-residual-input.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/address-full-factor-6-full-mapped-residual-input.json",
+      "sha256": "ff33508026a16a7683026b8fd99e4955a5c864ca6628f8c19e452cfa25d55320",
+      "bytes": 1296
+    },
+    "inventory/factors/address-full-factor-6-full-mapped-residual-return.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/address-full-factor-6-full-mapped-residual-return.json",
+      "sha256": "d40f72d407074ddd92d6d2a868b52e001a832495c8bb4d0903a6f5a3723ccceb",
+      "bytes": 127
+    },
+    "inventory/factors/address-full-factor-6-normal-source-join-input.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/address-full-factor-6-normal-source-join-input.json",
+      "sha256": "abd4ef4ae151269e78f0f2c330024491b33cf082595feb311e1eef23b6ccf7d8",
+      "bytes": 190
+    },
+    "inventory/factors/address-full-factor-6-normal-source-join-return.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/address-full-factor-6-normal-source-join-return.json",
+      "sha256": "d40f72d407074ddd92d6d2a868b52e001a832495c8bb4d0903a6f5a3723ccceb",
+      "bytes": 127
+    },
+    "inventory/factors/address-full-factor-7-operands.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/address-full-factor-7-operands.json",
+      "sha256": "6c449fb9d048c0ab0a322401e35f170fc8b0eb39918a858168daeab9cd40e553",
+      "bytes": 6264
+    },
+    "inventory/factors/address-full-factor-7-full-mapped-residual-input.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/address-full-factor-7-full-mapped-residual-input.json",
+      "sha256": "36df1bd421bbc495c180d3176119253b06fa755f6ba9bf94e5a850915847101b",
+      "bytes": 1580
+    },
+    "inventory/factors/address-full-factor-7-full-mapped-residual-return.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/address-full-factor-7-full-mapped-residual-return.json",
+      "sha256": "d40f72d407074ddd92d6d2a868b52e001a832495c8bb4d0903a6f5a3723ccceb",
+      "bytes": 127
+    },
+    "inventory/factors/address-full-factor-7-normal-source-join-input.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/address-full-factor-7-normal-source-join-input.json",
+      "sha256": "abd4ef4ae151269e78f0f2c330024491b33cf082595feb311e1eef23b6ccf7d8",
+      "bytes": 190
+    },
+    "inventory/factors/address-full-factor-7-normal-source-join-return.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/address-full-factor-7-normal-source-join-return.json",
+      "sha256": "d40f72d407074ddd92d6d2a868b52e001a832495c8bb4d0903a6f5a3723ccceb",
+      "bytes": 127
+    },
+    "inventory/factors/address-full-factor-8-operands.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/address-full-factor-8-operands.json",
+      "sha256": "4d85289d72f2503c2f3b9d965e265135ec9b47a389f0ae5c041561c8e956937d",
+      "bytes": 7030
+    },
+    "inventory/factors/address-full-factor-8-full-mapped-residual-input.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/address-full-factor-8-full-mapped-residual-input.json",
+      "sha256": "508a38e7c849edcf595872d6c3b6323e238b12a9b54468c8ca9437cb557a90cd",
+      "bytes": 2432
+    },
+    "inventory/factors/address-full-factor-8-full-mapped-residual-return.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/address-full-factor-8-full-mapped-residual-return.json",
+      "sha256": "d40f72d407074ddd92d6d2a868b52e001a832495c8bb4d0903a6f5a3723ccceb",
+      "bytes": 127
+    },
+    "inventory/factors/address-full-factor-8-normal-source-join-input.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/address-full-factor-8-normal-source-join-input.json",
+      "sha256": "abd4ef4ae151269e78f0f2c330024491b33cf082595feb311e1eef23b6ccf7d8",
+      "bytes": 190
+    },
+    "inventory/factors/address-full-factor-8-normal-source-join-return.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/address-full-factor-8-normal-source-join-return.json",
+      "sha256": "d40f72d407074ddd92d6d2a868b52e001a832495c8bb4d0903a6f5a3723ccceb",
+      "bytes": 127
+    },
+    "inventory/factors/address-full-factor-9-operands.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/address-full-factor-9-operands.json",
+      "sha256": "3373080973e491f375211df77580927fe8fbcc37e048f0e86720c5cc026c9b60",
+      "bytes": 2373
+    },
+    "inventory/factors/address-full-factor-9-full-mapped-residual-input.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/address-full-factor-9-full-mapped-residual-input.json",
+      "sha256": "49a7f81cd9110679518b49543ae7dc9a63a51f8cbdb38bc18bc7fa8e6bfe2749",
+      "bytes": 890
+    },
+    "inventory/factors/address-full-factor-9-full-mapped-residual-return.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/address-full-factor-9-full-mapped-residual-return.json",
+      "sha256": "d40f72d407074ddd92d6d2a868b52e001a832495c8bb4d0903a6f5a3723ccceb",
+      "bytes": 127
+    },
+    "inventory/factors/address-full-factor-9-normal-source-join-input.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/address-full-factor-9-normal-source-join-input.json",
+      "sha256": "abd4ef4ae151269e78f0f2c330024491b33cf082595feb311e1eef23b6ccf7d8",
+      "bytes": 190
+    },
+    "inventory/factors/address-full-factor-9-normal-source-join-return.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/address-full-factor-9-normal-source-join-return.json",
+      "sha256": "d40f72d407074ddd92d6d2a868b52e001a832495c8bb4d0903a6f5a3723ccceb",
+      "bytes": 127
+    },
+    "saved/reference/retained-response-census.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/saved/reference/retained-response-census.json",
+      "sha256": "6296b181a3fd62ad9ada7cbd6bec33ce6935c52c3d11533d0cbb05ff81ace0d1",
+      "bytes": 18004
+    },
+    "saved/reference/left-height-subtracted-PV.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/saved/reference/left-height-subtracted-PV.json",
+      "sha256": "171ef96832608a95b1209e6bb84f4e233bea3e11af9d92c411547a26f9a6f432",
+      "bytes": 2695
+    },
+    "saved/reference/right-height-PV-operands.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/saved/reference/right-height-PV-operands.json",
+      "sha256": "55c3928dd78eaae4b2c94f4c64c24b07587d0c689df33b1566ae0d7b4b6a747d",
+      "bytes": 8844
+    },
+    "saved/direct/closed-density.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/saved/direct/closed-density.json",
+      "sha256": "64013b7918e41d5705822962fba3a48264f1e2d953e0189d6fc7a6ab1a42cd04",
+      "bytes": 4850
     },
     "weak/field-79ea957c64638287ecf5c82f447aa3c615b5aec665b948ee5301bc2965b0bc00-operands.json": {
       "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-weak-composition-20261002/diagnostic-01/complete/field-79ea957c64638287ecf5c82f447aa3c615b5aec665b948ee5301bc2965b0bc00-operands.json",
@@ -1928,6 +2378,7 @@
     "/var/projects/toy_physics/_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/E_W_BALANCE-d_w_delta_p_minus-full-coefficient-input.json": "e64e21b8380578569a70df2e8a550d18d8f15345149fb837197e95b8090ce5e7",
     "/var/projects/toy_physics/_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/E_W_BALANCE-d_w_delta_p_minus-full-coefficient-return.json": "d40f72d407074ddd92d6d2a868b52e001a832495c8bb4d0903a6f5a3723ccceb",
     "/var/projects/toy_physics/_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/saved/consumer/E_W_BALANCE-consumer-input.json": "d24e6e389d182884b7d8caf786e9a02b08bcb0f753dd4fd99e3b498a8375f86f",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-defect-weak-composition-20261002/diagnostic-01/complete/whole-definition-inputs.json": "6bf1b7bc38d7beb0c79e9c3f619d45c8a9ff221a4bdccc94a8cb32ccd26f211e",
     "/var/projects/toy_physics/_scratch/s11c/s11c-defect-weak-composition-20261002/diagnostic-01/complete/analytic-conclusion.json": "732bfaa4fb2fa32d8eec627c930143968712814edeaef8a14037804d9ab5bac7",
     "/var/projects/toy_physics/_scratch/s11c/s11c-defect-weak-composition-20261002/diagnostic-01/complete/all-coefficient-certificates.json": "3a3210148a6e05bb4f69585745510f2dbe7f15d39d0e952dea3dc78676079f41",
     "/var/projects/toy_physics/_scratch/s11c/s11c-defect-weak-composition-20261002/diagnostic-01/complete/weak-address-coverage.json": "bb51d2af07f2c084c0c50084af44870913e60e7e4eefb94224228a7a233d9d6a",
@@ -2108,8 +2559,8 @@
     "/var/projects/toy_physics/_scratch/s11c/s11c-defect-weak-composition-20261002/diagnostic-01/complete/field-fa0ddf2b17ed3658971337ce4746ce9b61a6e02a401b7fd5c2dfd9bcaf23fd59-reconstruction-input.json": "c2ef7e7c7ea53b5c68a3fd6c359a8876dee61f0a3c99e2a01b9c556a23a37ec2",
     "/var/projects/toy_physics/_scratch/s11c/s11c-defect-weak-composition-20261002/diagnostic-01/complete/field-fa0ddf2b17ed3658971337ce4746ce9b61a6e02a401b7fd5c2dfd9bcaf23fd59-reconstruction-return.json": "d40f72d407074ddd92d6d2a868b52e001a832495c8bb4d0903a6f5a3723ccceb",
     "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_weak_composition_inputs.json": "d6797efd88af2bb08535072031d4d1ffc4218d87929535158b7015a652278fd8",
-    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_full_weak.py": "55f009b3325d100a26f333f69ccbc19167b9d8aebfa06f1d50908c255704c49d",
-    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_full_weak_launch.py": "05343300a46ede4a513140b384a82e6ee668619c95c7078bdf4ef66f91cf0790",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_full_weak.py": "7bcf9b69c9abd07ad6e49415f8720eed56b71ce29121eaac284d004f951434a1",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_full_weak_launch.py": "c24f78c7fc7de45a92acb2df544cdffab1ce5d87b3fff908b85ef5036f7272ab",
     "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_full_weak_method.md": "d24083ac01df581f2c11c6027866f7fe3d605a9e80e4c1d1c362819f4872964a",
     "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_full_weak_review_record.json": "e6ee6885385196abba47db8615e805ac6ad93cb3df85d6100690c8a9c6ced3bd",
     "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_full_weak_execution_authority.json": "3562331eca248310a9b853c0f8e1b1b3136c65e3e46f6d50c5ce3b3954cac1c8"

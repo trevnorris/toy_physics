@@ -1,0 +1,16 @@
+{
+  "status": "STANDING_USER_AUTHORIZED_FIXED_PACKET",
+  "recordedUtc": "2026-10-02T19:56:20.995116+00:00",
+  "packetSha256": "0f5d32deddace7c7ce91175bf46fb0e8a05ee67907005f56e2f7d8124c5be5c1",
+  "archiveSha256": "d34688e65255bda6551c357cedcff15f33f4d53f24698df38aeadef3277ec974",
+  "reviewers": [
+    "claude",
+    "grok"
+  ],
+  "files": 430,
+  "bytes": 30930944,
+  "AGENTSSha256": "3485cb891f831619eef7de1266fa1ae01da8a140faaa18c97e65c1625098c5bf",
+  "authority": "AGENTS.md standing review-submission authority and continued bounded research direction",
+  "scope": "Concrete native pre-pressure local coefficients plus inherited retained pressure weak form; no evaluated integral or finite solve",
+  "noAutomaticRetry": true
+}

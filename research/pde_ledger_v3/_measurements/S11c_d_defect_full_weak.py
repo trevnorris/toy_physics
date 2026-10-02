@@ -129,6 +129,53 @@ def numeric_extension(physical, shared, symbolic_names):
     return allowed
 
 
+def pressure_child_coverage(partition, addresses, row):
+    """New assembly join: actual child hashes per slot, including zero U rows."""
+    by_slot={s:[] for s in SLOTS};expected=set()
+    for child in partition['children']:
+        if child['childIndex'] not in partition['pressureChildIndices']:continue
+        require(child['hits'] and all(h['name'] in by_slot for h in child['hits']),'known addressed pressure child')
+        expected.add(child['sha256'])
+        for slot in {h['name'] for h in child['hits']}:by_slot[slot].append(child['sha256'])
+    covered=set()
+    for a in addresses:
+        require(a['row']==row and a['face'] in ('plus','minus') and a['slot'] in ('pressure','normal'),'native address selection')
+        slot=('delta_p_' if a['slot']=='pressure' else 'd_w_delta_p_')+a['face']
+        require(a['nativeRowChildHashes']==by_slot[slot],'address to actual native slot children')
+        covered.update(a['nativeRowChildHashes'])
+    require(covered==expected,'complete native pressure-child union')
+    return {'row':row,'bySlot':by_slot,'coveredHashes':sorted(covered),'expectedHashes':sorted(expected),'addresses':len(addresses)}
+
+
+def inherited_slot_join(native_coefficient, operands, returned):
+    # Different sides of a completed cancel-based identity need not be
+    # structurally equal. Join the actual input and inherit its published zero.
+    require(native_coefficient==operands['left'],'actual inherited slot input')
+    require(returned['cancelled']=={'text':'0','srepr':'Integer(0)'},'published slot identity return')
+    return {'left':operands['left'],'right':operands['right'],'returned':returned,'functionCalled':False}
+
+
+def factor_address_join(address, operands, proof_address):
+    require(proof_address['addressId']==operands['addressId'] and
+            proof_address['fullFactorProof']['proof']==address['fullFactorProof']['proof'],'actual original proof address')
+    # This legacy digest is a serialized operand-tuple identity, not a file hash.
+    # Keep it attached to its original address; join actual operands below.
+    require(proof_address['fullFactorProof']['operandSha256']==address['fullFactorProof']['operandSha256'],'same inherited proof identity')
+    for a in (address,proof_address):
+        require(a['responseMap']['id']==a['face']+'-'+str(tuple(a['responseGrade']))+'-'+a['component'],'native face/grade/component map label')
+    require(proof_address['responseMap']==operands['actualResponseMap'],'original proof response map')
+    # The same actual scalar map may serve both native faces. Its descriptive
+    # ID differs; all mathematical operands and assumptions must be identical.
+    require({k:v for k,v in address['responseMap'].items() if k!='id'}==
+            {k:v for k,v in operands['actualResponseMap'].items() if k!='id'},'actual inherited response arguments')
+    require(address['normalOriginal']==operands['addressNormalOriginal'],'actual inherited normal operand')
+    require(address['fullFactorProof']['completeNormalMap']==operands['requiredMap'],'complete inherited depth/normal arguments')
+    require(address['responseOriginal']==operands['actualResponseMap']['original'] and
+            address['responseCoefficient']==operands['actualResponseMap']['mapped'],'actual response coefficient arguments')
+    return {'proof':address['fullFactorProof']['proof'],'addressId':address['addressId'],'normalOriginal':address['normalOriginal'],
+            'normalMultiplier':address['normalMultiplier'],'responseCoefficient':address['responseCoefficient'],'completeNormalMap':address['fullFactorProof']['completeNormalMap']}
+
+
 def chunks(values,size=16):
     for i in range(0,len(values),size):yield i//size,values[i:i+size]
 
@@ -269,11 +316,117 @@ def run_science(manifest,J,ns,unused_exact_helper):
             alias='inventory/'+row+'-'+tag
             result=take(alias+'-return.json');require(result['cancelled']=={'text':'0','srepr':'Integer(0)'},'inherited exact pressure identity')
             inherited.append({'name':alias,'input':copies[alias+'-input.json'],'return':copies[alias+'-return.json'],'functionCalled':False})
+    # Completed pressure certificate and addresses are restored, not re-derived.
+    conclusion=take('weak/analytic-conclusion.json');certs=take('weak/all-coefficient-certificates.json');fields=take('inventory/fields.json')
+    prior_manifest=take('weak/input-manifest.json');prior_input=take('weak/global-weak-composition-input.json')
+    prior_return=take('weak/global-weak-composition-return.json');prior_copies=take('weak/saved-copy-index.json')
+    require(prior_input['manifestSha256']==copies['weak/input-manifest.json']['sha256'],'actual inherited run manifest')
+    for k in ('frequency','anchoring','density','drain','edges','effectiveCs','sourceFrequencyContinued','responseRegularization'):
+        require(prior_manifest['scope'][k]==manifest['scope'][k],'actual inherited pressure scope '+k)
+    for alias in ['inventory/fields.json','inventory/whole-tag-definitions.json','inventory/typed-direct-objects.json','inventory/fourier-and-unit-provenance.json']+['inventory/'+r+'-ordered-addresses.json' for r in ROWS]:
+        require(prior_copies[alias]['sha256']==copies[alias]['sha256'] and prior_copies[alias]['source']==copies[alias]['source'],'actual pressure computation operands '+alias)
+    definitions_record=take('weak/whole-definition-certificate.json');duality=take('weak/new-weak-duality-and-order.json')
+    definition_inputs=take('weak/whole-definition-inputs.json')
+    require(definition_inputs['tags']==take('inventory/whole-tag-definitions.json') and
+            definition_inputs['typedDirect']==take('inventory/typed-direct-objects.json'),'actual completed whole-definition arguments')
+    require(definition_inputs['savedReference']==take('saved/reference/retained-response-census.json'),'actual reference used by completed whole-definition check')
+    for tag,alias in [('H','saved/reference/left-height-subtracted-PV.json'),('Jwhole','saved/reference/right-height-PV-operands.json'),('Dwhole','saved/direct/closed-density.json')]:
+        require(definition_inputs['tags'][tag]['savedDefinition']==take(alias) and
+                definition_inputs['tags'][tag]['sha256']==copies[alias]['sha256']==prior_copies[alias]['sha256'],'actual inherited whole definition '+tag)
+    require(definitions_record=={'savedDefinitionsJoined':['H','Jwhole','Dwhole'],'typedFactorsDistinct':True,'wholeDirectOnce':True,'nativeIterationOnce':True},'actual whole-definition certificate')
+    require(duality['inheritedConvention']==take('inventory/fourier-and-unit-provenance.json')['contract'] and duality['nativeEpsilonOnce'] is True and duality['sourceDerivativeBeforeMultiplication'] is True,'inherited Fourier/epsilon/order operands')
+    require(duality['sourceDerivativeVariable']=='original p' and duality['normalVariable']=='response output l','actual pressure derivative placement')
+    for fid,field in fields.items():
+        original=take('weak/field-'+fid+'-operands.json');derivative=take('weak/field-'+fid+'-derivative-class.json')
+        recon=take('weak/field-'+fid+'-reconstruction-input.json');ret=take('weak/field-'+fid+'-reconstruction-return.json')
+        require(original['fieldId']==fid and original['original']==field['field']==recon['left'] and derivative['P0']==certs[fid]['polynomial'],'inherited actual field coefficient and bound')
+        field_map={'fieldId':fid,'savedArguments':original,'savedDerivative':derivative,'savedReconstruction':recon}
+        zero_record(field_map,'new-field-argument-'+fid,D(recon['right']),D(derivative['P0']).xreplace({D(original['T']):sp.tanh(D(original['x'])/L)}))
+        require(ret['cancelled']=={'text':'0','srepr':'Integer(0)'},'restored field reconstruction return')
+        inherited.append({'name':'field-'+fid+'-reconstruction','functionCalled':False,'input':copies['weak/field-'+fid+'-reconstruction-input.json'],'return':copies['weak/field-'+fid+'-reconstruction-return.json']})
+    require(conclusion['status']=='SOURCE_JOINED_GLOBAL_WEAK_PRESSURE_CERTIFICATE' and conclusion['testSpace']=='S(R) x S(R), complex bilinear' and conclusion['localSlabPartIncluded'] is False,'actual inherited pressure scope')
+    require(conclusion['wholeDirectOnce'] and conclusion['nativeIterationOnce'] and not conclusion['hiddenProjection'],'inherited pressure multiplicity')
+    require(set(certs)==set(fields) and len(fields)==34,'actual inherited coefficient set')
+    weak_routes=take('weak/weak-address-coverage.json');byid={a['addressId']:a for a in weak_routes};require(len(byid)==len(weak_routes)==13260,'all weak pressure addresses')
+    native_addresses={a['addressId']:a for row in ROWS for a in take('inventory/'+row+'-ordered-addresses.json')}
+    require(len(native_addresses)==13260,'all native pressure argument addresses')
+    aggregate=[];allids=[];factor_joins={};wave_joins={};child_joins=[]
+    for row in ROWS:
+        oldrow=load('consumer/'+row+'-consumer-input.json')
+        require(oldrow['raw']==load('inventory/'+row+'-pressure-source-join-input.json')['right'] and oldrow['bound']==load('inventory/'+row+'-affine-pressure-reconstruction-input.json')['left'],'actual saved native consumer source')
+        affine=load('inventory/'+row+'-affine-pressure-reconstruction-input.json')
+        native_slots={s.name:s for s in affine['right'].free_symbols if s.name in SLOTS}
+        require(len(native_slots)==len([s for s in affine['right'].free_symbols if s.name in SLOTS]),'unambiguous native pressure symbols')
+        require(all(v==0 or slot in native_slots for slot,v in oldrow['slotCoefficients'].items()),'nonzero coefficient has actual native slot')
+        affine_sum=sum(oldrow['slotCoefficients'][slot]*native_slots.get(slot,sp.Symbol(slot)) for slot in SLOTS)
+        new_join={'row':row,'savedBound':oldrow['bound'],'savedAffine':affine,'slotCoefficients':oldrow['slotCoefficients'],
+            'slotSymbols':native_slots,'newSum':affine_sum,'newAssemblyJoin':True}
+        zero_record(new_join,'new-'+row+'-affine-slot-sum',affine['right'],affine_sum)
+        zero_record(new_join,'new-'+row+'-bound-slot-sum',oldrow['bound'],affine_sum)
+        J.emit(row+'-new-pressure-slot-assembly',new_join)
+        slots={}
+        for slot in SLOTS:
+            split=load('inventory/'+row+'-'+slot+'-split.json');full=load('inventory/'+row+'-'+slot+'-full-coefficient-input.json')
+            r=take('inventory/'+row+'-'+slot+'-full-coefficient-return.json')
+            inherited_slot_join(oldrow['slotCoefficients'][slot],full,r)
+            inherited.append({'name':row+'-'+slot+'-full-coefficient','functionCalled':False,'input':copies['inventory/'+row+'-'+slot+'-full-coefficient-input.json'],'return':copies['inventory/'+row+'-'+slot+'-full-coefficient-return.json']})
+            slots[slot]=split['retained']
+        addresses=take('inventory/'+row+'-ordered-addresses.json')
+        child_join=pressure_child_coverage(take('inventory/'+row+'-full-native-partition.json'),addresses,row)
+        J.emit(row+'-addressed-native-pressure-children',child_join);child_joins.append(child_join)
+        for a in addresses:
+            wr=byid[a['addressId']];slot=('delta_p_' if a['slot']=='pressure' else 'd_w_delta_p_')+a['face']
+            require(a['row']==row and wr['face']==a['face'] and wr['slot']==a['slot'] and wr['component']==a['component'],'same native row/face/slot pressure address')
+            require(wr['sourceJet']==a['jet'] and wr['gradeTriple']==[a[k] for k in ('consumerGrade','responseGrade','sourceGrade')],'same wave/grade route')
+            require(wr['sourceFieldId']==a['sourceTransform']['coefficientId'] and wr['consumerFieldId']==a['consumerTransform']['coefficientId'],'actual field IDs')
+            require(fields[wr['sourceFieldId']]['field']==a['sourceField'] and fields[wr['consumerFieldId']]['field']==a['consumerField'],'actual field operands')
+            require(D(a['consumerOriginal'])==slots[slot][str(tuple(a['consumerGrade']))],'exact actual native grade slot operand')
+            require(wr['status']==a['status'] and wr['inheritedFactorProof']==a['fullFactorProof']['proof'],'same saved scope and factor proof')
+            proof=a['fullFactorProof']['proof'];pa='inventory/factors/'+proof
+            operands=take(pa+'-operands.json');fj=factor_address_join(a,operands,native_addresses[operands['addressId']])
+            if proof not in factor_joins:
+                old_factor=load(pa+'-full-mapped-residual-input.json');old_normal=load(pa+'-normal-source-join-input.json')
+                for tail in ['full-mapped-residual','normal-source-join']:
+                    ret=take(pa+'-'+tail+'-return.json');require(ret['cancelled']=={'text':'0','srepr':'Integer(0)'},'inherited factor/normal zero return')
+                    inherited.append({'name':proof+'-'+tail,'functionCalled':False,'input':copies[pa+'-'+tail+'-input.json'],'return':copies[pa+'-'+tail+'-return.json']})
+                require(old_normal['left']==D(a['normalOriginal']) and old_normal['right']==D(operands['savedNormal']),'actual saved native normal identity arguments')
+                require(old_factor['right']==D(operands['mappedAddressFactor']),'actual saved complete factor argument')
+                mapped_normal=D(a['normalOriginal']).xreplace(dict(D(a['fullFactorProof']['completeNormalMap'])))
+                zero_record(fj,'new-'+proof+'-normal-argument',D(a['normalMultiplier']),mapped_normal)
+                zero_record(fj,'new-'+proof+'-factor-argument',old_factor['right'],D(a['normalMultiplier'])*D(a['responseCoefficient']))
+                factor_joins[proof]=fj
+            else:
+                require(all(fj[k]==factor_joins[proof][k] for k in ['normalOriginal','normalMultiplier','responseCoefficient','completeNormalMap']),'identical factor reuse arguments')
+            jet=a['jet'];require(jet==jet_spec(jet['name']) and jet['name'] in rules['waveNames'],'actual native pressure wave jet')
+            if jet['name'] not in wave_joins:
+                p=sp.Symbol('composition_p',real=True);expected_wave=(-sp.I*3)**jet['timeOrder']
+                for n,mom in zip(jet['spatialOrders'],(p,sp.Rational(1,5),sp.Rational(1,10))):expected_wave*=(sp.I*mom)**n
+                wj={'jet':jet,'savedMultiplier':D(a['waveMultiplier']),'sourceMomentum':p,'nativeExpected':expected_wave}
+                zero_record(wj,'new-pressure-wave-argument-'+jet['name'],wj['savedMultiplier'],expected_wave);wave_joins[jet['name']]=wj
+            else:require(D(a['waveMultiplier'])==wave_joins[jet['name']]['savedMultiplier'],'identical wave argument reuse')
+            require(a['epsilon']==take('inventory/actual-binding-context.json')['restored']['epsilon'] and a['epsilonCount'] in (0,1),'actual inherited native amplitude')
+            require(a['epsilonCount']==(0 if a['status'].startswith('EXACT_ZERO_') else 1),'actual addressed zero/epsilon convention')
+            tags=wr['wholeTagCheck'];require(len(tags)==2 and {t['operand'] for t in tags}=={'responseOriginal','responseCoefficient'},'both inherited tag operands')
+            # The native mixed response is the sum of H and Jwhole, one each;
+            # the separate direct response contains Dwhole only once.
+            expected_tag_count={'INHERITED_DIRECT_WHOLE_OFF_DIAGONAL':1,'NATIVE_MIXED_ITERATION':2}.get(a['component'],0)
+            require(all(t['tagCount']==expected_tag_count for t in tags),'inherited whole-tag multiplicities')
+            require(a['responseMap']['frequency']==3 and a['responseMap']['positiveRegulatorContinuation'] is False,'real source composition')
+            allids.append(a['addressId'])
+        aggregate.append({'row':row,'pressureChildIndices':take('inventory/'+row+'-full-native-partition.json')['pressureChildIndices'],'addressIds':[a['addressId'] for a in addresses],
+            'actualConsumerSlotsJoined':list(slots),'pressureKernelFunctionsCalled':False})
+    require(sorted(allids)==list(range(13260)),'once-only pressure addresses')
+    require(sum(len(v['coveredHashes']) for v in child_joins)==12,'all twelve pressure child hashes covered')
+    J.emit('new-pressure-factor-arguments',factor_joins);J.emit('new-pressure-wave-arguments',wave_joins)
+    J.emit('pressure-source-assembly-joins',aggregate);J.emit('restored-pressure-identities',inherited)
+    J.emit('inherited-pressure-law',{'conclusion':conclusion,'duality':duality,'wholeDefinitions':take('inventory/whole-tag-definitions.json'),
+        'typedObjects':take('inventory/typed-direct-objects.json'),'definitionCertificate':definitions_record,'operationReturn':prior_return,
+        'wholeKernelEnvelopes':take('weak/global-whole-kernel-envelopes.json'),'oldFunctionsCalled':False})
     source_origin=take('inventory/'+ROWS[0]+'-full-native-partition.json')['source']
     native_path=Path(source_origin['source']);require(sha(native_path)==manifest['sourcePins'][str(native_path)],'native export unchanged')
-    with native_path.open() as f:
+    with native_path.open('rb') as f:
         native_line=next(line for i,line in enumerate(f,1) if i==source_origin['valueLine'])
-    require(hashlib.sha256(native_line.encode()).hexdigest()==source_origin['sourceLineSha256'],'native original source line')
+    require(hashlib.sha256(native_line).hexdigest()==source_origin['sourceLineSha256'],'native original source line')
     pressure_joins=[];cells={};child_results=[];new_jets={};raw_names=set();raw_denominators={};counts={}
     for row in ROWS:
         partition=take('inventory/'+row+'-full-native-partition.json');counts[row]=validate_partition(partition)
@@ -382,65 +535,6 @@ def run_science(manifest,J,ns,unused_exact_helper):
             left=sum(rec['value']*formal_jets[ev['fieldColumn'],ev['xOrder']] for ev in child_results if ev['row']==row for rec in ev['mappedGrades'] if tuple(rec['grade'])==g)
             right=sum(rec['coefficient']*formal_jets[rec['fieldColumn'],rec['xOrder']] for rec in cell_records if rec['row']==row and tuple(rec['grade'])==g)
             J.zero(row+'-new-physical-row-grade-'+str(g[0])+str(g[1]),left,right)
-    # Completed pressure certificate and addresses are restored, not re-derived.
-    conclusion=take('weak/analytic-conclusion.json');certs=take('weak/all-coefficient-certificates.json');fields=take('inventory/fields.json')
-    prior_manifest=take('weak/input-manifest.json');prior_input=take('weak/global-weak-composition-input.json')
-    prior_return=take('weak/global-weak-composition-return.json');prior_copies=take('weak/saved-copy-index.json')
-    require(prior_input['manifestSha256']==copies['weak/input-manifest.json']['sha256'],'actual inherited run manifest')
-    for k in ('frequency','anchoring','density','drain','edges','effectiveCs','sourceFrequencyContinued','responseRegularization'):
-        require(prior_manifest['scope'][k]==manifest['scope'][k],'actual inherited pressure scope '+k)
-    for alias in ['inventory/fields.json','inventory/whole-tag-definitions.json','inventory/typed-direct-objects.json','inventory/fourier-and-unit-provenance.json']+['inventory/'+r+'-ordered-addresses.json' for r in ROWS]:
-        require(prior_copies[alias]['sha256']==copies[alias]['sha256'] and prior_copies[alias]['source']==copies[alias]['source'],'actual pressure computation operands '+alias)
-    definitions_record=take('weak/whole-definition-certificate.json');duality=take('weak/new-weak-duality-and-order.json')
-    require(definitions_record=={'savedDefinitionsJoined':['H','Jwhole','Dwhole'],'typedFactorsDistinct':True,'wholeDirectOnce':True,'nativeIterationOnce':True},'actual whole-definition certificate')
-    require(duality['inheritedConvention']==take('inventory/fourier-and-unit-provenance.json')['contract'] and duality['nativeEpsilonOnce'] is True and duality['sourceDerivativeBeforeMultiplication'] is True,'inherited Fourier/epsilon/order operands')
-    require(duality['sourceDerivativeVariable']=='original p' and duality['normalVariable']=='response output l','actual pressure derivative placement')
-    for fid,field in fields.items():
-        original=take('weak/field-'+fid+'-operands.json');derivative=take('weak/field-'+fid+'-derivative-class.json')
-        recon=take('weak/field-'+fid+'-reconstruction-input.json');ret=take('weak/field-'+fid+'-reconstruction-return.json')
-        require(original['fieldId']==fid and original['original']==field['field']==recon['left'] and derivative['P0']==certs[fid]['polynomial'],'inherited actual field coefficient and bound')
-        require(D(recon['right'])==D(derivative['P0']).xreplace({D(original['T']):sp.tanh(D(original['x'])/L)}),'actual saved field argument map')
-        require(ret['cancelled']=={'text':'0','srepr':'Integer(0)'},'restored field reconstruction return')
-        inherited.append({'name':'field-'+fid+'-reconstruction','functionCalled':False,'input':copies['weak/field-'+fid+'-reconstruction-input.json'],'return':copies['weak/field-'+fid+'-reconstruction-return.json']})
-    require(conclusion['status']=='SOURCE_JOINED_GLOBAL_WEAK_PRESSURE_CERTIFICATE' and conclusion['testSpace']=='S(R) x S(R), complex bilinear' and conclusion['localSlabPartIncluded'] is False,'actual inherited pressure scope')
-    require(conclusion['wholeDirectOnce'] and conclusion['nativeIterationOnce'] and not conclusion['hiddenProjection'],'inherited pressure multiplicity')
-    require(set(certs)==set(fields) and len(fields)==34,'actual inherited coefficient set')
-    weak_routes=take('weak/weak-address-coverage.json');byid={a['addressId']:a for a in weak_routes};require(len(byid)==len(weak_routes)==13260,'all weak pressure addresses')
-    aggregate=[];allids=[]
-    for row in ROWS:
-        oldrow=load('consumer/'+row+'-consumer-input.json')
-        require(oldrow['raw']==load('inventory/'+row+'-pressure-source-join-input.json')['right'] and oldrow['bound']==load('inventory/'+row+'-affine-pressure-reconstruction-input.json')['left'],'actual saved native consumer source')
-        slots={}
-        for slot in SLOTS:
-            split=load('inventory/'+row+'-'+slot+'-split.json');full=load('inventory/'+row+'-'+slot+'-full-coefficient-input.json')
-            require(oldrow['slotCoefficients'][slot]==full['left'] and full['left']==full['right'],'saved exact native slot coefficient')
-            r=take('inventory/'+row+'-'+slot+'-full-coefficient-return.json');require(r['cancelled']=={'text':'0','srepr':'Integer(0)'},'saved slot return')
-            inherited.append({'name':row+'-'+slot+'-full-coefficient','functionCalled':False,'return':copies['inventory/'+row+'-'+slot+'-full-coefficient-return.json']})
-            slots[slot]=split['retained']
-        addresses=take('inventory/'+row+'-ordered-addresses.json')
-        for a in addresses:
-            wr=byid[a['addressId']];slot=('delta_p_' if a['slot']=='pressure' else 'd_w_delta_p_')+a['face']
-            require(a['row']==row and wr['face']==a['face'] and wr['slot']==a['slot'] and wr['component']==a['component'],'same native row/face/slot pressure address')
-            require(wr['sourceJet']==a['jet'] and wr['gradeTriple']==[a[k] for k in ('consumerGrade','responseGrade','sourceGrade')],'same wave/grade route')
-            require(wr['sourceFieldId']==a['sourceTransform']['coefficientId'] and wr['consumerFieldId']==a['consumerTransform']['coefficientId'],'actual field IDs')
-            require(fields[wr['sourceFieldId']]['field']==a['sourceField'] and fields[wr['consumerFieldId']]['field']==a['consumerField'],'actual field operands')
-            require(D(a['consumerOriginal'])==slots[slot][str(tuple(a['consumerGrade']))],'exact actual native grade slot operand')
-            require(wr['status']==a['status'] and wr['inheritedFactorProof']==a['fullFactorProof']['proof'],'same saved scope and factor proof')
-            require(a['epsilon']==take('inventory/actual-binding-context.json')['restored']['epsilon'] and a['epsilonCount'] in (0,1),'actual inherited native amplitude')
-            tags=wr['wholeTagCheck'];require(len(tags)==2 and {t['operand'] for t in tags}=={'responseOriginal','responseCoefficient'},'both inherited tag operands')
-            # The native mixed response is the sum of H and Jwhole, one each;
-            # the separate direct response contains Dwhole only once.
-            expected_tag_count={'INHERITED_DIRECT_WHOLE_OFF_DIAGONAL':1,'NATIVE_MIXED_ITERATION':2}.get(a['component'],0)
-            require(all(t['tagCount']==expected_tag_count for t in tags),'inherited whole-tag multiplicities')
-            require(a['responseMap']['frequency']==3 and a['responseMap']['positiveRegulatorContinuation'] is False,'real source composition')
-            allids.append(a['addressId'])
-        aggregate.append({'row':row,'pressureChildIndices':take('inventory/'+row+'-full-native-partition.json')['pressureChildIndices'],'addressIds':[a['addressId'] for a in addresses],
-            'actualConsumerSlotsJoined':list(slots),'pressureKernelFunctionsCalled':False})
-    require(sorted(allids)==list(range(13260)),'once-only pressure addresses')
-    J.emit('pressure-source-assembly-joins',aggregate);J.emit('restored-pressure-identities',inherited)
-    J.emit('inherited-pressure-law',{'conclusion':conclusion,'duality':duality,'wholeDefinitions':take('inventory/whole-tag-definitions.json'),
-        'typedObjects':take('inventory/typed-direct-objects.json'),'definitionCertificate':definitions_record,'operationReturn':prior_return,
-        'wholeKernelEnvelopes':take('weak/global-whole-kernel-envelopes.json'),'oldFunctionsCalled':False})
     # New addressed local controls: coefficients, never response or field values.
     controls=[]
     mixed=next((ev for ev in child_results if any(tuple(r['grade'])==(1,1) and not r['polynomial']['zero'] for r in ev['mappedGrades'])),None)
@@ -519,7 +613,7 @@ def main():
             try:records[path]={'expected':expected,'actual':sha(path),'error':None}
             except OSError as e:records[path]={'expected':expected,'actual':None,'error':str(e)}
         save(args.out/'posthashes.json',records)
-        if any(v['expected']!=v['actual'] for v in records.values()):result['integrityFailure']=True;code=1
+        if any(v['expected']!=v['actual'] for v in records.values()):result['integrityFailure']=True;result['executionStatus']='INTEGRITY_FAILURE_PRESERVED';code=1
         result.update(wallSeconds=time.monotonic()-started,scientificAcceptance=False);save(args.out/'checks.json',result);sys.stdout.write((args.out/'checks.json').read_text())
     return code
 

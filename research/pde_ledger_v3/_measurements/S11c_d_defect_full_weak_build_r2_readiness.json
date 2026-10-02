@@ -1,0 +1,61 @@
+{
+  "status": "READY_FOR_INDEPENDENT_BUILD_ASSESSMENT_ONLY",
+  "root": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-full-weak-20261002/build-review-r2",
+  "authority": {
+    "status": "STANDING_USER_AUTHORIZED_FIXED_PACKET",
+    "recordedUtc": "2026-10-02T19:56:20.995116+00:00",
+    "packetSha256": "0f5d32deddace7c7ce91175bf46fb0e8a05ee67907005f56e2f7d8124c5be5c1",
+    "archiveSha256": "d34688e65255bda6551c357cedcff15f33f4d53f24698df38aeadef3277ec974",
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "files": 430,
+    "bytes": 30930944,
+    "AGENTSSha256": "3485cb891f831619eef7de1266fa1ae01da8a140faaa18c97e65c1625098c5bf",
+    "authority": "AGENTS.md standing review-submission authority and continued bounded research direction",
+    "scope": "Concrete native pre-pressure local coefficients plus inherited retained pressure weak form; no evaluated integral or finite solve",
+    "noAutomaticRetry": true
+  },
+  "static": {
+    "status": "STATIC_BUILD_PACKET_ONLY_NO_SCIENCE",
+    "runnerSha256": "bc3b5337a6416d6a7b84bcc21aa1fbde298b3d69d7634d51ec4892ec556c62c0",
+    "launcherSha256": "b06398239090661b80494cdf3af31d329ccaa1c4dc4ce97101a13b923f27967d",
+    "completionMessageSha256": "f577170938029716e3552d8ecdaf9206b0a920da8530ea8c972cbafcf682b6ba",
+    "packetSha256": "0f5d32deddace7c7ce91175bf46fb0e8a05ee67907005f56e2f7d8124c5be5c1",
+    "archiveSha256": "d34688e65255bda6551c357cedcff15f33f4d53f24698df38aeadef3277ec974",
+    "workerSha256": "7bcf9b69c9abd07ad6e49415f8720eed56b71ce29121eaac284d004f951434a1",
+    "manifestSha256": "7662c3308f53da87166ec21e9c19ba5314945985a1a6e24a0cc46f67e78f8f2e",
+    "scienceLauncherSha256": "c24f78c7fc7de45a92acb2df544cdffab1ce5d87b3fff908b85ef5036f7272ab",
+    "methodSha256": "d24083ac01df581f2c11c6027866f7fe3d605a9e80e4c1d1c362819f4872964a",
+    "files": 430,
+    "bytes": 30930944,
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "sourceHashesChecked": 428,
+    "payloadRestored": false,
+    "scienceCalls": 0,
+    "localTests": {
+      "command": "python /var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_full_weak_tests.py",
+      "tests": 33,
+      "passed": true,
+      "scientificEvidence": false
+    },
+    "omittedRuntimeInputs": 6
+  },
+  "checks": {
+    "allSourcePrivateArchiveHashesMatch": true,
+    "SavedAliasBytesExact": true,
+    "noScientificPayloadRestored": true,
+    "noGateOrScienceRun": true,
+    "noOldPeerReports": true,
+    "newTrackedGeneratedFilesOver1MiB": []
+  },
+  "preservedTestFindings": [
+    "Original reviewed build and Claude NEEDS/Grok no-verdict are preserved; required corrections change validation only.",
+    "New metadata tests caught legacy operand digest versus file hash, addressed-zero epsilon convention and shared scalar maps with distinct native face labels. Actual legacy operands and statuses determine both; no scientific object restored during preparation."
+  ],
+  "evidencePersistence": "Append-only chained JSONL inputs/returns, fsync before scalar guards; partial batch returns on failure"
+}

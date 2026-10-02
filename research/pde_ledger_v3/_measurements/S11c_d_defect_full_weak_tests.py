@@ -12,7 +12,7 @@ from types import SimpleNamespace
 
 ROOT=Path('/var/projects/toy_physics');M=ROOT/'research/pde_ledger_v3/_measurements';PREFIX='S11c_d_defect_full_weak'
 WORKER=M/(PREFIX+'.py');SOURCE=WORKER.read_text();TREE=ast.parse(SOURCE)
-NAMES={'require','sha','validate_partition','numeric_extension','chunks','checkpoint_batch','EvidenceLog','source_rules','verify_helper_paths','verify_invocation'}
+NAMES={'require','sha','validate_partition','numeric_extension','chunks','checkpoint_batch','EvidenceLog','source_rules','verify_helper_paths','verify_invocation','pressure_child_coverage','inherited_slot_join','factor_address_join'}
 NS={'ast':ast,'hashlib':hashlib,'json':json,'os':os,'Path':Path,'ROOT':ROOT,'__file__':str(WORKER),'SLOTS':('delta_p_plus','delta_p_minus','d_w_delta_p_plus','d_w_delta_p_minus')}
 exec(compile(ast.Module([n for n in TREE.body if isinstance(n,(ast.FunctionDef,ast.ClassDef)) and n.name in NAMES],type_ignores=[]),'inert-stdlib-definitions','exec'),NS)
 read=lambda p:json.loads(Path(p).read_text())
@@ -88,6 +88,48 @@ class Tests(unittest.TestCase):
   for row in ['U0','U1','U2','THETA_BALANCE','E_W_BALANCE']:
    s=saved('inventory/'+row+'-pressure-source-join-input.json');b=saved('inventory/'+row+'-pressure-bound-join-input.json');a=saved('inventory/'+row+'-affine-pressure-reconstruction-input.json');old=saved('consumer/'+row+'-consumer-input.json')
    self.assertEqual(s['right'],old['raw']);self.assertEqual(b['left'],old['bound']);self.assertEqual(b['right'],a['left'])
+ def test_cancelled_identity_is_not_structural_equality(self):
+  prefix='inventory/THETA_BALANCE-delta_p_plus-full-coefficient';i=saved(prefix+'-input.json');r=saved(prefix+'-return.json')
+  self.assertNotEqual(i['left'],i['right'])
+  out=NS['inherited_slot_join'](i['left'],i,r);self.assertFalse(out['functionCalled']);self.assertEqual(out['right'],i['right'])
+ def test_slot_join_rejects_wrong_input(self):
+  with self.assertRaises(ValueError):NS['inherited_slot_join']('wrong',{'left':'actual','right':'different'},{'cancelled':{'text':'0','srepr':'Integer(0)'}})
+ def test_slot_join_rejects_missing_zero(self):
+  with self.assertRaises(ValueError):NS['inherited_slot_join']('actual',{'left':'actual','right':'different'},{'cancelled':{'text':'1','srepr':'Integer(1)'}})
+ def test_all_actual_slot_identity_arguments(self):
+  for row in ['U0','U1','U2','THETA_BALANCE','E_W_BALANCE']:
+   old=saved('consumer/'+row+'-consumer-input.json')
+   for slot in NS['SLOTS']:
+    pre='inventory/'+row+'-'+slot+'-full-coefficient';NS['inherited_slot_join'](old['slotCoefficients'][slot],saved(pre+'-input.json'),saved(pre+'-return.json'))
+ def test_actual_child_hash_coverage(self):
+  covered=[]
+  for row in ['U0','U1','U2','THETA_BALANCE','E_W_BALANCE']:
+   v=NS['pressure_child_coverage'](saved('inventory/'+row+'-full-native-partition.json'),saved('inventory/'+row+'-ordered-addresses.json'),row);covered+=v['coveredHashes']
+  self.assertEqual(len(covered),12)
+ def test_wrong_pressure_child_refused(self):
+  p=toy_partition();a={'row':'THETA_BALANCE','slot':'pressure','face':'plus','nativeRowChildHashes':['wrong']}
+  with self.assertRaises(ValueError):NS['pressure_child_coverage'](p,[a],'THETA_BALANCE')
+ def test_missing_pressure_coverage_refused(self):
+  with self.assertRaises(ValueError):NS['pressure_child_coverage'](toy_partition(),[],'THETA_BALANCE')
+ def test_zero_row_cannot_claim_pressure_child(self):
+  p={'children':[],'pressureChildIndices':[]};a={'row':'U0','slot':'pressure','face':'plus','nativeRowChildHashes':['wrong']}
+  with self.assertRaises(ValueError):NS['pressure_child_coverage'](p,[a],'U0')
+ def test_factor_join_and_corruption(self):
+  a=saved('inventory/THETA_BALANCE-ordered-addresses.json')[0];o=saved('inventory/factors/'+a['fullFactorProof']['proof']+'-operands.json');origin=saved('inventory/U0-ordered-addresses.json')[o['addressId']];NS['factor_address_join'](a,o,origin)
+  a=copy.deepcopy(a);a['normalOriginal']={'text':'wrong','srepr':"Symbol('wrong')"}
+  with self.assertRaises(ValueError):NS['factor_address_join'](a,o,origin)
+ def test_all_factor_actual_arguments(self):
+  all_a={a['addressId']:a for row in ['U0','U1','U2','THETA_BALANCE','E_W_BALANCE'] for a in saved('inventory/'+row+'-ordered-addresses.json')}
+  for a in all_a.values():
+   proof=a['fullFactorProof']['proof'];v=MAN['savedInputs']['inventory/factors/'+proof+'-operands.json'];o=read(v['path']);NS['factor_address_join'](a,o,all_a[o['addressId']])
+   self.assertEqual(a['epsilonCount'],0 if a['status'].startswith('EXACT_ZERO_') else 1)
+ def test_factor_map_label_not_silently_ignored(self):
+  a=saved('inventory/U0-ordered-addresses.json')[0];o=saved('inventory/factors/'+a['fullFactorProof']['proof']+'-operands.json');a=copy.deepcopy(a);a['responseMap']['id']='wrong-face-or-grade'
+  with self.assertRaises(ValueError):NS['factor_address_join'](a,o,a)
+ def test_cheap_pressure_checks_precede_local_derivation(self):
+  self.assertLess(SOURCE.index("J.emit('inherited-pressure-law'"),SOURCE.index('        def derive(entry):'))
+ def test_exact_whole_input_ancestry(self):
+  old=saved('weak/whole-definition-inputs.json');self.assertEqual(old['tags'],saved('inventory/whole-tag-definitions.json'));self.assertEqual(old['typedDirect'],saved('inventory/typed-direct-objects.json'));self.assertEqual(old['savedReference'],saved('saved/reference/retained-response-census.json'))
  def test_actual_address_and_epsilon_metadata(self):
   routes={a['addressId']:a for a in saved('weak/weak-address-coverage.json')};seen=[];epsilon=saved('inventory/actual-binding-context.json')['restored']['epsilon']
   for row in ['U0','U1','U2','THETA_BALANCE','E_W_BALANCE']:

@@ -1,5 +1,5 @@
 {
-  "status": "SOURCE_AND_GATE_READINESS_PASS_NO_SCIENCE_LAUNCHED",
+  "status": "GUARDED_RUN_STARTED_RESOURCE_ENFORCEMENT_VERIFIED",
   "methodCommit": "dbebfd44",
   "workerSha256": "9545304e7c74d974ef4965aab1eedc0a0a0c1ae2f3a7ae54713a287bbe676f36",
   "manifestSha256": "e65eaf61da68e73b5e82ae85d1632407358175c1a28a1575ee52555b63df16c8",
@@ -36,5 +36,6 @@
   "launchRecord": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_raw_increment_review_r2_launch.json",
   "executionGate": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_raw_increment_gate.json",
   "executionReadiness": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_raw_increment_launch_readiness.json",
-  "localToolingRepairAccepted": true
+  "localToolingRepairAccepted": true,
+  "executionRecord": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_raw_increment_execution.json"
 }

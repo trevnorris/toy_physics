@@ -1,0 +1,88 @@
+{
+  "status": "RUNNING_STARTUP_VERIFIED",
+  "recordedUtc": "2026-10-02T03:10:19.031750+00:00",
+  "preparedCommit": "3448e86a",
+  "reviewBaselineCommit": "ba418f6f",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-raw-increment-20261001/diagnostic-01",
+  "launch": {
+    "jobPid": 1678650,
+    "watcherPid": 1678651,
+    "gateSha256": "7dfcbd6efa65c61c6349348de52f31813a4275f1d40501bb56b7fc5698d2b9a6",
+    "command": [
+      "/usr/bin/python",
+      "/var/projects/toy_physics/scripts/s11c_guarded_run.py",
+      "--pool",
+      "s11c-near-unity",
+      "--memory-gib",
+      "4",
+      "--tasks-max",
+      "32",
+      "--log-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-defect-raw-increment-20261001/diagnostic-01/resource-guard",
+      "--",
+      "/usr/bin/python",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+      "--parallel-prerequisite-read",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-defect-raw-increment-20261001/diagnostic-01",
+      "--stage",
+      "defect_raw_increment",
+      "--",
+      "/usr/bin/python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_raw_increment.py",
+      "--out",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-defect-raw-increment-20261001/diagnostic-01/complete",
+      "--inputs",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_raw_increment_inputs.json",
+      "--gate",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_raw_increment_gate.json"
+    ],
+    "thread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+    "automaticRetry": false
+  },
+  "sourceSnapshotsChecked": 51,
+  "limits": {
+    "verified": true,
+    "actual": {
+      "memory.max": "4294967296",
+      "memory.swap.max": "0",
+      "pids.max": "32",
+      "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-3aa600fd6e6a.service",
+      "nice": 0,
+      "affinity": [
+        15
+      ],
+      "threads": {
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "VECLIB_MAXIMUM_THREADS": "1",
+        "BLIS_NUM_THREADS": "1"
+      },
+      "nativeAddressSpaceBytes": [
+        4294967296,
+        4294967296
+      ],
+      "systemd.CPUAffinity": "15",
+      "affinityEnforcement": "systemd-and-inherited-process"
+    }
+  },
+  "duration": {
+    "verified": true,
+    "actual": {
+      "RuntimeMaxUSec": "infinity",
+      "Restart": "no"
+    },
+    "wallDeadlineSeconds": null,
+    "inactivityDeadlineSeconds": null
+  },
+  "workerPidAtStartup": 1678670,
+  "startupScientificStderrBytes": 0,
+  "independentBuildClearance": false,
+  "localToolingRepairAccepted": true,
+  "scientificAcceptance": false,
+  "automaticRetry": false,
+  "waitingUsesLocalHookOnly": true
+}

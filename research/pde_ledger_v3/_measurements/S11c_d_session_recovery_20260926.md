@@ -1,3 +1,17 @@
+**BOTH-FACE RAW-INCREMENT DIAGNOSTIC RUNNING (2026-10-01):**
+Prepared code/gate/local repair at3448e86a; literal second build CLEAR/NEEDS
+preserved atba418f6f. One authorized run launched hook-first: coordinator1678650,
+watcher1678651, worker1678670. Startup verified actual4GiB cgroup/native caps,
+zero job swap,CPU15,one native thread,tasks32,host4GiB reserve and16GiB pool.
+RuntimeMaxUSec=infinity,Restart=no; no wall/native/CPU/inactivity deadline.
+51source snapshots hash-identical; scientific stderr empty at startup. See
+raw_increment_execution.json and diagnostic-01 logs. Do not poll the running
+script or edit pinned files; completion hook wakes this same session. On return,
+inspect every operand/control/join,strict stderr,stdout/checks bytes,resources,
+all source/copy posthashes before scientific acceptance. No automatic retry.
+Only nongrazing raw operator; no integral,finite matrix,production overwrite,
+defect sweep,exact-match or loss claim. Standing authority remains in scope.
+
 **RAW-INCREMENT READY FOR ONE GUARDED EXECUTION (2026-10-01):**
 Second build reports preserved atba418f6f: Claude CLEAR/Grok NEEDS REVISION,
 not paired clearance. All568 review/source/private/archive checks pass. Both

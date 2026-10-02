@@ -1,0 +1,26 @@
+{
+  "status": "SOURCE_AND_GATE_READINESS_PASS_NO_SCIENCE_LAUNCHED",
+  "workerSha256": "9545304e7c74d974ef4965aab1eedc0a0a0c1ae2f3a7ae54713a287bbe676f36",
+  "manifestSha256": "e65eaf61da68e73b5e82ae85d1632407358175c1a28a1575ee52555b63df16c8",
+  "gateSha256": "7dfcbd6efa65c61c6349348de52f31813a4275f1d40501bb56b7fc5698d2b9a6",
+  "sourcePins": 49,
+  "gateTests": [
+    "actual matching gate and launcher source accepted",
+    "refused workerSha256",
+    "refused manifestSha256",
+    "refused guardSha256",
+    "refused supervisorSha256",
+    "refused repairRecordSha256",
+    "refused executionAuthoritySha256",
+    "refused buildReviewRecordSha256",
+    "refused scope",
+    "refused scientificRunsAuthorized",
+    "refused localToolingRepairAccepted"
+  ],
+  "scientificImport": false,
+  "scientificRestoration": false,
+  "independentBuildClearance": false,
+  "authority": "Standing user bounded-run and local-tooling authority; literal CLEAR/NEEDS preserved.",
+  "actualResourcesStillRequireGuard": true,
+  "actualRuntimeAcceptance": false
+}

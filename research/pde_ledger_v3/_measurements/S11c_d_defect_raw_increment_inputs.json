@@ -1,5 +1,5 @@
 {
-  "status": "CANDIDATE_SOURCE_FOR_BUILD_REVIEW_NO_SCIENCE_GATE",
+  "status": "PINNED_FOR_ONE_GUARDED_RAW_INCREMENT_LOCAL_REPRESENTATION_REPAIR",
   "scope": "Both-face nongrazing raw direct eta*sigma increment; rest-bulk LAB_HELD/RHO4_CONSTANT omega3 saved edges effective cs family; no integral/finite solve/production edits",
   "savedOperands": {
     "bare": {
@@ -119,8 +119,8 @@
     "/var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/U2-consumer-input.json": "bf07aa02c9b031aaca958d0fbd91d721f80fe5a4d9355c52b5194b1798360478",
     "/var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/THETA_BALANCE-consumer-input.json": "28b18c00fa5e2028c216f1ba890895e0005c143ec93a85f793ce001e18b66453",
     "/var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/E_W_BALANCE-consumer-input.json": "d24e6e389d182884b7d8caf786e9a02b08bcb0f753dd4fd99e3b498a8375f86f",
-    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_raw_increment.py": "e38038da5b795f8b31e7ead758f9a8652e80b5d8e80dd0971fe40d1ec02af5af",
-    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_raw_increment_test.py": "f18c4e28e68a1520f9a5065e08a217a944a353e51c220815ab416eca0afd7ed4",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_raw_increment.py": "9545304e7c74d974ef4965aab1eedc0a0a0c1ae2f3a7ae54713a287bbe676f36",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_raw_increment_test.py": "c5f3a267f81be31395632556bf2988b4cd4692316c02ea67a789ba29ebf38011",
     "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_raw_increment_plan.md": "b0cecc17ab71903a05896f280a6f653d5dcabcd94e4ff47e3cb5b3e5622261cc",
     "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_raw_increment_review_prompt.md": "ad310db519fb37915563b4189a5b0eefa5dcd2c245fcdf1720e653052944121d",
     "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_mixed_consumer_native.json": "441c580e56bd426bc098af6589776384f275401373cddd5c8fd5479707e5915e",
@@ -142,7 +142,15 @@
     "/var/projects/toy_physics/_scratch/s11c/s11c-defect-raw-increment-20261001/build-review/packet/native-rows/U_BODY_BALANCE-1.txt": "be7e7e4a32fef68f498f2f4344ba648f4e9136c2df66195011d02d0cdb651a1d",
     "/var/projects/toy_physics/_scratch/s11c/s11c-defect-raw-increment-20261001/build-review/packet/native-rows/U_BODY_BALANCE-2.txt": "cef1a1351606de912b3bfb34a16381ad5b8b0decb6ca882bc12f9094e2764c25",
     "/var/projects/toy_physics/_scratch/s11c/s11c-defect-raw-increment-20261001/build-review/packet/native-rows/THETA_BALANCE-0.txt": "f68aeec7625765e35fb90ce450e1dc475333d16e5dfec291cc53b309d69d4405",
-    "/var/projects/toy_physics/_scratch/s11c/s11c-defect-raw-increment-20261001/build-review/packet/native-rows/E_W_BALANCE-0.txt": "9bffb7fd7412c8de8b64066a2bb60fba1d211f89ae3a07eddd106f42284bdd8f"
+    "/var/projects/toy_physics/_scratch/s11c/s11c-defect-raw-increment-20261001/build-review/packet/native-rows/E_W_BALANCE-0.txt": "9bffb7fd7412c8de8b64066a2bb60fba1d211f89ae3a07eddd106f42284bdd8f",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_raw_increment_local_tooling_checks.json": "3e680dad2f9e8bc29f67e2fc5384e9bd0eb655e582159001782a2307ef320d30",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_raw_increment_local_repair_record.json": "b1255bbedce8cba915eb9df6334eb082a851f6dff045992f4e0bb7dd83b19639",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_raw_increment_execution_authority.json": "97e8db15cf00f563df8951ba5eb4c5a509aab8a7fe6aba1842bb2474a7d28b6c",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_raw_increment_launch.py": "7abb3b3711987df807dc82c3fa0ac947e001e3683cf96d31d6e2a4142bd57429",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_raw_increment_review_r2_record.json": "d7de14d2bf38906d9ea90715239af5948f54e19e861c884bfe866a2b31bd51d2",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_raw_increment_review_r2_claude.md": "e4c35483e3cb7c22c921f47cb15599f3071f7177b590083a67eaefa1a934ae9b",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_raw_increment_review_r2_grok.md": "8c3e798875d0237c2b303842d8b2693f16e13308b9cc2547c183c8328efe9a0f",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_raw_increment_review_r2_disposition.md": "89504eaff4a55e42f9f64098840068029e5f29e2e96b155a842d90f760acf89d"
   },
   "resources": {
     "memoryBytes": 4294967296,

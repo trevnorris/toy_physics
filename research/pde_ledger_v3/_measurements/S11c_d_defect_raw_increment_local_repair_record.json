@@ -1,0 +1,26 @@
+{
+  "status": "TESTED_LOCAL_REPRESENTATION_REPAIR_NO_FRESH_INDEPENDENT_CLEAR",
+  "toolingOnly": true,
+  "testsPassed": true,
+  "testsPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_raw_increment_local_tooling_checks.json",
+  "testsSha256": "3e680dad2f9e8bc29f67e2fc5384e9bd0eb655e582159001782a2307ef320d30",
+  "workerSha256": "9545304e7c74d974ef4965aab1eedc0a0a0c1ae2f3a7ae54713a287bbe676f36",
+  "reviewedWorkerSha256": "e38038da5b795f8b31e7ead758f9a8652e80b5d8e80dd0971fe40d1ec02af5af",
+  "reviewRecordSha256": "d7de14d2bf38906d9ea90715239af5948f54e19e861c884bfe866a2b31bd51d2",
+  "independentBuildClearance": false,
+  "mathematicalAssignmentASTsUnchanged": 219,
+  "scope": "Same nongrazing raw increment, exact identity acceptance; no physical-input/equation/tolerance change",
+  "changes": [
+    "Only saved-selected-integrand comparison expands sinh arguments; saves original and rewritten pairs and residuals, still requires literal zero.",
+    "Persist existing raw/closure operands before cancellation.",
+    "Extend final posthashes to gate/manifest/authority/review and copied operand files.",
+    "Gate records literal CLEAR/NEEDS plus this standing-authorized local repair, never paired clearance."
+  ],
+  "notEstablished": [
+    "Actual SymPy expression normalization",
+    "runtime restoration",
+    "control acceptance",
+    "physics result"
+  ],
+  "scientificImportsOrRestorationDuringPreparation": false
+}

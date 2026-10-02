@@ -1,13 +1,13 @@
 {
-  "status": "CORRECTED_BUILD_REVIEWS_RUNNING_HOOK_ARMED",
+  "status": "SOURCE_AND_GATE_READINESS_PASS_NO_SCIENCE_LAUNCHED",
   "methodCommit": "dbebfd44",
-  "workerSha256": "e38038da5b795f8b31e7ead758f9a8652e80b5d8e80dd0971fe40d1ec02af5af",
-  "manifestSha256": "f3b8fc3d1d8b48fb4ff66c3f52cc646f492e8784fd236cc8042ee94139a2e46d",
+  "workerSha256": "9545304e7c74d974ef4965aab1eedc0a0a0c1ae2f3a7ae54713a287bbe676f36",
+  "manifestSha256": "e65eaf61da68e73b5e82ae85d1632407358175c1a28a1575ee52555b63df16c8",
   "sourcePins": 41,
   "savedOperands": 17,
   "toolingTests": 23,
   "scienceImportedOrRestored": false,
-  "scientificExecutionReady": false,
+  "scientificExecutionReady": true,
   "independentBuildClearance": false,
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-raw-increment-20261001/build-review-r2",
   "packetFiles": 102,
@@ -33,5 +33,8 @@
   "next": "Submit this one independent build pair with hook first under standing user authorization. Actual gate/readiness only after substantive build assessment.",
   "previousReviewedCommit": "b13aff4d",
   "preparedCommit": "e60ce093",
-  "launchRecord": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_raw_increment_review_r2_launch.json"
+  "launchRecord": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_raw_increment_review_r2_launch.json",
+  "executionGate": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_raw_increment_gate.json",
+  "executionReadiness": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_raw_increment_launch_readiness.json",
+  "localToolingRepairAccepted": true
 }

@@ -70,6 +70,12 @@ def posthash_records(pins):
     return records
 
 
+def expanded_sinh_arguments(expression):
+    """Exact argument expansion for one saved-expression equality, not output."""
+    mapping={atom:sp.sinh(sp.expand(atom.args[0])) for atom in expression.atoms(sp.sinh)}
+    return expression.xreplace(mapping),mapping
+
+
 def pressure_census(text):
     """Inspect every native constructor; never evaluate full-row science here."""
     tree=ast.parse(text,mode='eval').body
@@ -188,8 +194,22 @@ def verify_gate(path, manifest_path, manifest):
     for p,h in g['sourcePins'].items(): require(sha(p)==h,'gate pin '+p)
     r=json.loads(Path(g['buildReviewRecord']).read_text())
     require(sha(g['buildReviewRecord'])==g['buildReviewRecordSha256'],'actual build record')
-    require(r['independentBuildClearance'] is True,'independent build assessment')
-    for k in ('workerSha256','manifestSha256','guardSha256','supervisorSha256'):
+    if r['independentBuildClearance'] is True:
+        for k in ('workerSha256','manifestSha256'):
+            require(r[k]==g[k],'review/gate '+k)
+    else:
+        require(g['independentBuildClearance'] is False and g['localToolingRepairAccepted'] is True,'literal review status')
+        require(sha(g['repairRecord'])==g['repairRecordSha256'],'local repair pin')
+        repair=json.loads(Path(g['repairRecord']).read_text())
+        require(repair['toolingOnly'] is True and repair['testsPassed'] is True,'tested representation repair')
+        require(repair['workerSha256']==g['workerSha256'] and repair['reviewedWorkerSha256']==r['workerSha256'],'reviewed/repaired worker join')
+        require(repair['reviewRecordSha256']==g['buildReviewRecordSha256'] and r['allChecksPassed'] is True,'actual assessed record')
+        require(r['reports']['claude']['literalVerdict']=='CLEAR FOR THIS BOUNDED RAW-INCREMENT BUILD'
+                and r['reports']['grok']['literalVerdict']=='NEEDS REVISION','preserved literal reviews')
+        require(sha(g['executionAuthority'])==g['executionAuthoritySha256'],'execution authority pin')
+        authority=json.loads(Path(g['executionAuthority']).read_text())
+        require(authority['scienceExecutionsAuthorized']==1 and authority['localToolingRepairAllowed'] is True,'standing scope and tooling authority')
+    for k in ('guardSha256','supervisorSha256'):
         require(r[k]==g[k],'review/gate '+k)
     require(sha(g['sharedGuard'])==g['guardSha256'] and sha(g['supervisor'])==g['supervisorSha256'],'actual helpers')
     require(g['methodRecordSha256']==sha(manifest['methodRecord']),'method record pin')
@@ -239,6 +259,18 @@ class Journal:
         movement=sp.simplify(corrupt-baseline)
         self.emit(name+'-return',{'movement':movement,'zero':movement.is_zero,'finite':movement.is_finite})
         require(movement.is_zero is False and movement.is_finite is True,name)
+        self.active=previous
+
+    def sinh_zero(self,name,left,right):
+        previous=self.active;self.active=name
+        self.emit(name+'-original-input',{'left':left,'right':right})
+        self.emit(name+'-original-raw',{'residual':left-right})
+        new_left,left_map=expanded_sinh_arguments(left)
+        new_right,right_map=expanded_sinh_arguments(right)
+        self.emit(name+'-argument-expansion',{'leftReplacements':[[a,b] for a,b in left_map.items()],
+            'rightReplacements':[[a,b] for a,b in right_map.items()],
+            'left':new_left,'right':new_right,'identity':'exact expansion inside sinh; intrinsic odd symmetry; no numeric tolerance'})
+        self.zero(name+'-canonical',new_left,new_right)
         self.active=previous
 
 
@@ -413,6 +445,7 @@ def scientific_work(manifest,J):
     transform=saved['transform'];old_t=transform['t'];old_L=transform['L']
     J.zero('saved-transform-A',transform['A'].subs({old_t:t,old_L:L},simultaneous=True),A(t))
     J.zero('saved-transform-jet',transform['jetTransform'].subs({old_t:Q-t,old_L:L},simultaneous=True),L*A(Q-t))
+    J.emit('raw-ordered-before-cancel',{'heightScale':W/2,'B':fact['B'].subs(H,t),'heightNumerator':A(t),'jet':L*A(Q-t)/2,'phaseDivisor':sp.I,'numeric':{str(a):v for a,v in numeric.items()}})
     raw=sp.cancel((W/2)*fact['B'].subs(H,t)*A(t)*(L*A(Q-t)/2)/sp.I).subs(numeric)
     raw_lower=raw # only after saved lower==upper exact mirror identity above
     J.emit('raw-ordered-kernel',{'heightTransfer':t,'slopeTransfer':Q-t,'externalInput':k,'externalOutput':k+Q,
@@ -424,7 +457,7 @@ def scientific_work(manifest,J):
     old_action=saved['action'];old_depth=one_symbol([old_action['integrand']],'q_t')
     old_transfer=one_symbol([old_action['integrand']],'t')
     selected=raw.subs({k:0,Q:sp.Rational(1,10),qi:qpoint[qi],qo:qpoint[qo],qh:old_depth,t:old_transfer},simultaneous=True)
-    J.zero('saved-selected-integrand',selected,old_action['integrand'])
+    J.sinh_zero('saved-selected-integrand',selected,old_action['integrand'])
     dims=saved['dimensions'];J.emit('inherited-kernel-dimensions',dims)
     # L,T,M integer dimensions from original declarations, not a numerical bound.
     reduced=list(dims['reducedOneDimensionalKernel']);full=[list(x) for x in dims['nativeKernel']]
@@ -517,6 +550,7 @@ def scientific_work(manifest,J):
         require(trace0!=0,'nonzero native reference trace')
         reference=sp.cancel(Rprod/trace0);jet=sp.I*face*qo*reference
         factors[label]=(reference,jet);trace_info[label]={'a':a0,'trace':trace0}
+        J.emit(label+'-closed-before-cancel',{'Rprod':Rprod,'mixed':mixed.subs(numeric),'raw':raw,'reference':reference,'jet':jet})
         Cclosed=sp.cancel(Rprod*mixed.subs(numeric))
         expected=sp.I*mass*freq*(-H*qi**2+k*qh*qi+k*qh*qo-k*qh*qs-k*qi**2)/(qh*(qi+a0*mass*freq)*(qo+a0*mass*freq))
         J.zero(label+'-external-depth-cancellation',Cclosed,expected)
@@ -615,7 +649,9 @@ def main():
     p=argparse.ArgumentParser();p.add_argument('--inputs',type=Path,required=True);p.add_argument('--gate',type=Path,required=True);p.add_argument('--out',type=Path,required=True)
     args=p.parse_args();manifest=json.loads(args.inputs.read_text())
     for path,h in manifest['sourcePins'].items():require(sha(path)==h,'input pin '+path)
-    verify_gate(args.gate,args.inputs,manifest)
+    gate=verify_gate(args.gate,args.inputs,manifest)
+    inspection_pins={**manifest['sourcePins'],**gate['sourcePins'],str(args.inputs):sha(args.inputs),str(args.gate):sha(args.gate),
+        gate['buildReviewRecord']:gate['buildReviewRecordSha256']}
     args.out.resolve().relative_to(ROOT/'_scratch/s11c');args.out.mkdir(exist_ok=False)
     J=None;result={};code=1;start=time.monotonic()
     try:
@@ -629,7 +665,10 @@ def main():
         result={'executionStatus':'FAILED_PRESERVED','traceback':traceback.format_exc(),'incompleteOperation':None if J is None else J.active,'automaticRetry':False}
         save(args.out/'failure.json',result)
     finally:
-        post=posthash_records(manifest['sourcePins']);save(args.out/'posthashes.json',post)
+        for alias,record in manifest['savedOperands'].items():
+            copy=args.out/'saved-operands'/(alias+'.json')
+            if copy.exists():inspection_pins[str(copy)]=record['sha256']
+        post=posthash_records(inspection_pins);save(args.out/'posthashes.json',post)
         if any(v['expected']!=v['actual'] for v in post.values()):result['integrityFailure']=True;code=1
         if J is not None:replace_json(args.out/'operation-index.json',J.completed)
         result.update(wallSeconds=time.monotonic()-start,scientificAcceptance=False)

@@ -86,6 +86,34 @@ def run():
         records=namespace['posthash_records'](pins)
         check('missing pin preserves subsequent hash',records[str(missing)]['actual'] is None
               and records[str(missing)]['error'] and records[str(present)]['actual']==pins[str(present)])
+    # Stand-ins test exact expansion routing and rejection, not SymPy algebra.
+    class Atom:
+        def __init__(self,arg):self.args=(arg,)
+        def __hash__(self):return hash(self.args)
+        def __eq__(self,other):return isinstance(other,Atom) and self.args==other.args
+    class Expression:
+        def __init__(self,atom,scale=1):self.atom=atom;self.scale=scale
+        def atoms(self,kind):return {self.atom}
+        def xreplace(self,mapping):return Expression(mapping.get(self.atom,self.atom),self.scale)
+        def __eq__(self,other):return isinstance(other,Expression) and self.atom==other.atom and self.scale==other.scale
+        def __sub__(self,other):return ('unreduced difference',self,other)
+    expansion=lambda arg:('expanded',Fraction(1,2),Fraction(-5)) if arg=='factored' else arg
+    fake=SimpleNamespace(sinh=Atom,expand=expansion)
+    namespace['expanded_sinh_arguments'].__globals__['sp']=fake
+    class Trace:
+        sinh_zero=journal_type.sinh_zero
+        def __init__(self):self.active='parent';self.events=[]
+        def emit(self,name,value):self.events.append(name)
+        def zero(self,name,left,right):
+            self.events.append(name)
+            if left!=right:raise ValueError('remaining nonzero')
+    left=Expression(Atom('factored'));right=Expression(Atom(expansion('factored')))
+    trace=Trace();trace.sinh_zero('identity',left,right)
+    check('sinh comparison preserves original operands',left.atom.args==('factored',) and trace.events[:2]==['identity-original-input','identity-original-raw'])
+    check('sinh rewrite saved before exact acceptance',trace.events[2:] == ['identity-argument-expansion','identity-canonical'] and trace.active=='parent')
+    trace=Trace()
+    check('sinh rewrite does not hide unequal scale',_raises(lambda:trace.sinh_zero('unequal',left,Expression(right.atom,2)))
+          and trace.active=='unequal' and 'unequal-argument-expansion' in trace.events)
     return {'status':'PASS_STDLIB_TOOLING_ONLY','tests':tests,'count':len(tests),'scientificImport':False,'scientificPayloadRestoration':False,'physicsValidated':False}
 
 

@@ -1,0 +1,51 @@
+{
+  "status": "READY_SOURCE_METHOD_REVIEW_ONLY",
+  "root": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-weak-composition-20261002/method-review",
+  "authority": {
+    "status": "STANDING_USER_AUTHORIZED_FIXED_PACKET",
+    "recordedUtc": "2026-10-02T16:05:54.049677+00:00",
+    "packetSha256": "8778601d9f6b4f35d2a8f61d1dd1da3cd7a23d0525ef486069da5086d432d415",
+    "archiveSha256": "4cbbc6d170ff56de2cc63646c17c55af65b334692147ec1f2a57299e7678d4f3",
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "files": 226,
+    "bytes": 11953296,
+    "AGENTSSha256": "3485cb891f831619eef7de1266fa1ae01da8a140faaa18c97e65c1625098c5bf",
+    "authority": "AGENTS.md standing review-submission authorization and user direction to continue clear bounded research without routine prompts",
+    "scope": "Proposed polynomial-weighted global response bounds and Schwartz weak retained pressure composition; no evaluated integral, finite inverse or defect sweep",
+    "noAutomaticRetry": true
+  },
+  "static": {
+    "status": "STATIC_SOURCE_AND_PACKET_CHECKED_NO_SCIENCE",
+    "runnerSha256": "bc3b5337a6416d6a7b84bcc21aa1fbde298b3d69d7634d51ec4892ec556c62c0",
+    "launcherSha256": "b06398239090661b80494cdf3af31d329ccaa1c4dc4ce97101a13b923f27967d",
+    "completionMessageSha256": "5eca4fd35b1c2edc77fd168b3df8d6ac5adcce0b45c1dab07a77dba86e1dd8e1",
+    "packetSha256": "8778601d9f6b4f35d2a8f61d1dd1da3cd7a23d0525ef486069da5086d432d415",
+    "archiveSha256": "4cbbc6d170ff56de2cc63646c17c55af65b334692147ec1f2a57299e7678d4f3",
+    "files": 226,
+    "bytes": 11953296,
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "sourceHashesChecked": 224,
+    "payloadRestored": false,
+    "transportIdenticalToPrior": true,
+    "noReviewVerdict": true
+  },
+  "checks": {
+    "completeFilesByteIdentical": true,
+    "JSONSelectionsExactlyMatchOriginalRecords": true,
+    "archiveMembersMatch": true,
+    "transportIdentical": true,
+    "noPeerReports": true,
+    "noScientificImportsRestoration": true,
+    "newScienceRuns": 0,
+    "addressRepresentatives": 608,
+    "sourceJets": 39,
+    "uniqueFactorProofs": 11,
+    "newTrackedDataOver1MiB": []
+  }
+}

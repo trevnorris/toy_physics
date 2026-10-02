@@ -1,0 +1,16 @@
+{
+  "status": "STANDING_USER_AUTHORIZED_FIXED_PACKET",
+  "recordedUtc": "2026-10-02T16:05:54.049677+00:00",
+  "packetSha256": "8778601d9f6b4f35d2a8f61d1dd1da3cd7a23d0525ef486069da5086d432d415",
+  "archiveSha256": "4cbbc6d170ff56de2cc63646c17c55af65b334692147ec1f2a57299e7678d4f3",
+  "reviewers": [
+    "claude",
+    "grok"
+  ],
+  "files": 226,
+  "bytes": 11953296,
+  "AGENTSSha256": "3485cb891f831619eef7de1266fa1ae01da8a140faaa18c97e65c1625098c5bf",
+  "authority": "AGENTS.md standing review-submission authorization and user direction to continue clear bounded research without routine prompts",
+  "scope": "Proposed polynomial-weighted global response bounds and Schwartz weak retained pressure composition; no evaluated integral, finite inverse or defect sweep",
+  "noAutomaticRetry": true
+}

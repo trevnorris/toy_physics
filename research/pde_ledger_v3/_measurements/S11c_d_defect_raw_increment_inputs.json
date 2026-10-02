@@ -1,0 +1,157 @@
+{
+  "status": "CANDIDATE_SOURCE_FOR_BUILD_REVIEW_NO_SCIENCE_GATE",
+  "scope": "Both-face nongrazing raw direct eta*sigma increment; rest-bulk LAB_HELD/RHO4_CONSTANT omega3 saved edges effective cs family; no integral/finite solve/production edits",
+  "savedOperands": {
+    "bare": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-mixed-tanh-20261001/diagnostic-01/complete/boundary-coefficient-return.json",
+      "sha256": "a6b4ac7b601fcc794d12391b668d2f36259831510aea44a6a8c3edc46b5124bb",
+      "bytes": 4119
+    },
+    "modes": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-mixed-tanh-20261001/diagnostic-01/complete/boundary-coefficient-input.json",
+      "sha256": "086c2939471bbdfb6165e9587aac5e7d40e5f267f3ca11c970695862632bd2b8",
+      "bytes": 1529
+    },
+    "point": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-mixed-tanh-20261001/diagnostic-01/complete/physical-point.json",
+      "sha256": "35a4a2ea10f4bafdfe4517305d26aa04d6945d8fcd6f75ce459ce22d362e5321",
+      "bytes": 2560
+    },
+    "transform": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-mixed-tanh-20261001/diagnostic-01/complete/profile-transform-return.json",
+      "sha256": "fff546e7a76fdb66b3059627a54d3c008d456fc5acd9d971fe45140add36a099",
+      "bytes": 2211
+    },
+    "action": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-mixed-tanh-20261001/diagnostic-01/complete/profile-action-return.json",
+      "sha256": "e9965881768a9e823976a4ab1920ff0ea18bf98b2166e69f886b552c2b7efebf",
+      "bytes": 5109
+    },
+    "dimensions": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-mixed-tanh-20261001/diagnostic-01/complete/dimensions.json",
+      "sha256": "bc97a9534f452eedfa96bc87aab9ee5d12bbdd19e28587c7888efb9782a403ae",
+      "bytes": 1000
+    },
+    "trace_factors": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-mixed-trace-20261001/diagnostic-01/complete/physical-factors.json",
+      "sha256": "70445aaed5424729d66c8bcb53b3d12f2fc7f0db8eab9ba4890bf5cdf8c102fb",
+      "bytes": 5420
+    },
+    "binding": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/binding-context.json",
+      "sha256": "9216e51151937a0b815643ee2b958869b530c2bf775d6b5e848b0ebe241eae68",
+      "bytes": 10950
+    },
+    "source_plus": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/plus-source-restrictions.json",
+      "sha256": "a3f081200a90f3dd8d46b6ef4458085a0dbf885dbaa1e417d684b74de0b1d9b1",
+      "bytes": 28039
+    },
+    "source_minus": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/minus-source-restrictions.json",
+      "sha256": "a3f081200a90f3dd8d46b6ef4458085a0dbf885dbaa1e417d684b74de0b1d9b1",
+      "bytes": 28039
+    },
+    "input_plus": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/plus-source-input.json",
+      "sha256": "78828307da0b0def1a2de27b59afb65168f214536a8315ad3e62a040273ae374",
+      "bytes": 66907
+    },
+    "input_minus": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/minus-source-input.json",
+      "sha256": "3dc8276d0c591d5869aa8467accbd7b12ebd89c6110ee7f7548adedce1216208",
+      "bytes": 66911
+    },
+    "consumer_U0": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/U0-consumer-input.json",
+      "sha256": "bf07aa02c9b031aaca958d0fbd91d721f80fe5a4d9355c52b5194b1798360478",
+      "bytes": 625
+    },
+    "consumer_U1": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/U1-consumer-input.json",
+      "sha256": "bf07aa02c9b031aaca958d0fbd91d721f80fe5a4d9355c52b5194b1798360478",
+      "bytes": 625
+    },
+    "consumer_U2": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/U2-consumer-input.json",
+      "sha256": "bf07aa02c9b031aaca958d0fbd91d721f80fe5a4d9355c52b5194b1798360478",
+      "bytes": 625
+    },
+    "consumer_THETA_BALANCE": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/THETA_BALANCE-consumer-input.json",
+      "sha256": "28b18c00fa5e2028c216f1ba890895e0005c143ec93a85f793ce001e18b66453",
+      "bytes": 5509
+    },
+    "consumer_E_W_BALANCE": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/E_W_BALANCE-consumer-input.json",
+      "sha256": "d24e6e389d182884b7d8caf786e9a02b08bcb0f753dd4fd99e3b498a8375f86f",
+      "bytes": 5473
+    }
+  },
+  "rowNames": [
+    "U0",
+    "U1",
+    "U2",
+    "THETA_BALANCE",
+    "E_W_BALANCE"
+  ],
+  "nativeRecords": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_mixed_consumer_native.json",
+  "c1Source": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_c1_bulk_closure_sympy_audit.py",
+  "c2Source": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_c2_selfenergy_fold_sympy_audit.py",
+  "geometrySource": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_a_interface_geometry_sympy_audit.py",
+  "physicalInput": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_variable_profile_development_input.json",
+  "methodRecord": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_operator_applicability_review_r2_record.json",
+  "sourcePins": {
+    "/var/projects/toy_physics/_scratch/s11c/s11c-mixed-tanh-20261001/diagnostic-01/complete/boundary-coefficient-return.json": "a6b4ac7b601fcc794d12391b668d2f36259831510aea44a6a8c3edc46b5124bb",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-mixed-tanh-20261001/diagnostic-01/complete/boundary-coefficient-input.json": "086c2939471bbdfb6165e9587aac5e7d40e5f267f3ca11c970695862632bd2b8",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-mixed-tanh-20261001/diagnostic-01/complete/physical-point.json": "35a4a2ea10f4bafdfe4517305d26aa04d6945d8fcd6f75ce459ce22d362e5321",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-mixed-tanh-20261001/diagnostic-01/complete/profile-transform-return.json": "fff546e7a76fdb66b3059627a54d3c008d456fc5acd9d971fe45140add36a099",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-mixed-tanh-20261001/diagnostic-01/complete/profile-action-return.json": "e9965881768a9e823976a4ab1920ff0ea18bf98b2166e69f886b552c2b7efebf",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-mixed-tanh-20261001/diagnostic-01/complete/dimensions.json": "bc97a9534f452eedfa96bc87aab9ee5d12bbdd19e28587c7888efb9782a403ae",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-mixed-trace-20261001/diagnostic-01/complete/physical-factors.json": "70445aaed5424729d66c8bcb53b3d12f2fc7f0db8eab9ba4890bf5cdf8c102fb",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/binding-context.json": "9216e51151937a0b815643ee2b958869b530c2bf775d6b5e848b0ebe241eae68",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/plus-source-restrictions.json": "a3f081200a90f3dd8d46b6ef4458085a0dbf885dbaa1e417d684b74de0b1d9b1",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/minus-source-restrictions.json": "a3f081200a90f3dd8d46b6ef4458085a0dbf885dbaa1e417d684b74de0b1d9b1",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/plus-source-input.json": "78828307da0b0def1a2de27b59afb65168f214536a8315ad3e62a040273ae374",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/minus-source-input.json": "3dc8276d0c591d5869aa8467accbd7b12ebd89c6110ee7f7548adedce1216208",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/U0-consumer-input.json": "bf07aa02c9b031aaca958d0fbd91d721f80fe5a4d9355c52b5194b1798360478",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/U1-consumer-input.json": "bf07aa02c9b031aaca958d0fbd91d721f80fe5a4d9355c52b5194b1798360478",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/U2-consumer-input.json": "bf07aa02c9b031aaca958d0fbd91d721f80fe5a4d9355c52b5194b1798360478",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/THETA_BALANCE-consumer-input.json": "28b18c00fa5e2028c216f1ba890895e0005c143ec93a85f793ce001e18b66453",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/E_W_BALANCE-consumer-input.json": "d24e6e389d182884b7d8caf786e9a02b08bcb0f753dd4fd99e3b498a8375f86f",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_raw_increment.py": "536f89b55a955ea80fb931728631dd9306c88cfb833008b24aae72ccbd4b0488",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_raw_increment_test.py": "cb241f5617d180baf175ca764a69862222661f2915d10452d96318d5f83aec8e",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_raw_increment_plan.md": "57c19d4fdb6f3040495ae0cc813ee125b42ae2e9ecc51fc039827052a6f58cd3",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_raw_increment_review_prompt.md": "f121f549c632200b05a45346fb5ba0fa2d64bbaac1e89c7784123384243c93d8",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_mixed_consumer_native.json": "441c580e56bd426bc098af6589776384f275401373cddd5c8fd5479707e5915e",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_variable_profile_development_input.json": "660b2b0b54494dce964c7f5fbd722a76a7e894d8ed92b18b5eb6290c3c10f1d5",
+    "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_c1_bulk_closure_sympy_audit.py": "02abfa93076efcb38a1b300daf9adedf5e3ad425ebf9d73555d730cea935ba20",
+    "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_c2_selfenergy_fold_sympy_audit.py": "0e90c751d36178a9846e75c38ac4ad0c8591b4b8ce11b6dc194218913265d434",
+    "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_a_interface_geometry_sympy_audit.py": "f4da0f2224257381300e5e78cc74a1341485b82446ac98251ca25d4b3c1a6be7",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_operator_applicability.md": "5aa308131e055d24f9e6f15fdc3a616801da8c99fdd4a8910043e797330bf833",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_operator_applicability_review_r2_record.json": "75b3f06f24a75b4e6f0cee1bb67b3740bb5f81b26259905fad8155aea79b035f",
+    "/var/projects/toy_physics/scripts/s11c_guarded_run.py": "6a6369424edfa43cbdaa36e8fa2bebbd278bebdbac3b565b2a8498aaca1dc9df",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py": "35ad679486d2fcf5f4ee803b42293e4dd50cbe0bfcce790eb95343768bb8fd69",
+    "/var/projects/toy_physics/scripts/codex_job_watch.py": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
+    "/var/projects/toy_physics/AGENTS.md": "3485cb891f831619eef7de1266fa1ae01da8a140faaa18c97e65c1625098c5bf",
+    "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_a_exports.py": "f0fd8d6d75dc7320393b7c6aad10e3fb23ca14ab8b6a50deee7d9995fbab6b17",
+    "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_b_exports.py": "3c6555f90a85382a5e96f3f961f0e36a4875d9259fe1be947fa8e683669b7084",
+    "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_c1_exports.py": "a5353b86dc526fd1b56734fdbdf7dc7f42387a3195ab4de84e8994f751871cdc",
+    "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_b_brane_operator_sympy_audit.py": "666b4005b745dd29933561f701c6c1859a2b00e9855badcb08e2347308504472"
+  },
+  "resources": {
+    "memoryBytes": 4294967296,
+    "pool": "s11c-near-unity",
+    "poolBudgetBytes": 17179869184,
+    "swapBytes": 0,
+    "cpus": 1,
+    "threads": 1,
+    "tasksMax": 32,
+    "hostReserveBytes": 4294967296,
+    "durationLimits": null,
+    "priority": "desktop-managed"
+  },
+  "futureGateRequired": true,
+  "productionWrites": false,
+  "scienceRuns": 0
+}

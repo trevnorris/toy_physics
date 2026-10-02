@@ -1,0 +1,25 @@
+{
+  "status": "PASS_STDLIB_TOOLING_ONLY",
+  "tests": [
+    "scientific imports not at top level",
+    "containment before scientific import",
+    "gate before scientific import",
+    "no scientific timer calls",
+    "complete return recorded",
+    "input and return receipts hash bytes",
+    "failed input and partial preserved",
+    "failed stage not falsely complete",
+    "partial artifact indexed",
+    "immutable result not overwritten",
+    "unique native normal source",
+    "native snippet same-namespace execution",
+    "unique native assignment three_inverse",
+    "missing native function refused"
+  ],
+  "count": 14,
+  "scientificImport": false,
+  "scientificPayloadRestoration": false,
+  "physicsValidated": false,
+  "workerSha256": "536f89b55a955ea80fb931728631dd9306c88cfb833008b24aae72ccbd4b0488",
+  "testSha256": "cb241f5617d180baf175ca764a69862222661f2915d10452d96318d5f83aec8e"
+}

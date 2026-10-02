@@ -1,0 +1,34 @@
+{
+  "status": "CANDIDATE_BUILD_PREPARED_AND_STANDING_AUTHORIZED_FOR_REVIEW",
+  "methodCommit": "dbebfd44",
+  "workerSha256": "536f89b55a955ea80fb931728631dd9306c88cfb833008b24aae72ccbd4b0488",
+  "manifestSha256": "a39bd98ad701db7bead88cdb992bba1b99999c1bfcda5de1d7690d3579170c65",
+  "sourcePins": 36,
+  "savedOperands": 17,
+  "toolingTests": 14,
+  "scienceImportedOrRestored": false,
+  "scientificExecutionReady": false,
+  "independentBuildClearance": false,
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-raw-increment-20261001/build-review",
+  "packetFiles": 102,
+  "packetBytes": 3325546,
+  "packetSha256": "413dd666d398e9baf9d138c50fc08a166ef343807566984bf7fd55bbd47b7cb9",
+  "archiveSha256": "84539aedd8eb712a8aadfa19777531662e45dbd6524284ae7a0c06870917fc45",
+  "approvalSha256": "372641a2689aca345bed7d60225f09f87b4fe8b6313531825526d05926a4906b",
+  "standingConsent": true,
+  "peerReportsIncluded": false,
+  "transport": {
+    "runnerSha256": "30ed68e2d751f5c85399fcdf99384d9ef095376983da0b1bf91b89aef62e5b62",
+    "launcherSha256": "d7dd71850300818294a1218ecaf59c5576f63884457eb12b87d69d8b0c7df2a5",
+    "completionMessageSha256": "66e950198b21ee26b097419e2350c11c70f77bcd9c693f5f956b17b21028a3e5",
+    "scientificExecutionEnabled": false
+  },
+  "checks": {
+    "compileOnly": true,
+    "allSourceAndPacketHashes": true,
+    "archiveMembershipAndBytes": true,
+    "noPeerReports": true,
+    "noScienceGateOrLaunch": true
+  },
+  "next": "Submit this one independent build pair with hook first under standing user authorization. Actual gate/readiness only after substantive build assessment."
+}

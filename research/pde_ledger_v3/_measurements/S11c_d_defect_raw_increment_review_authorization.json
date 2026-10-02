@@ -1,0 +1,21 @@
+{
+  "status": "EXPLICITLY_APPROVED_FIXED_PACKET",
+  "recordedUtc": "2026-10-02T01:58:49.471033+00:00",
+  "authorizationKind": "STANDING_USER_REVIEW_SUBMISSION_AUTHORITY",
+  "userText": "I give you permission to edit. AGENTS.md so you don't have to ask for permission every time. I didn't add that rule. Then I give you permission to run it",
+  "context": "Necessary actual instrument build assessment within the already authorized bounded raw-increment implementation; no new per-packet approval is required under AGENTS.md.",
+  "packetSha256": "413dd666d398e9baf9d138c50fc08a166ef343807566984bf7fd55bbd47b7cb9",
+  "archiveSha256": "84539aedd8eb712a8aadfa19777531662e45dbd6524284ae7a0c06870917fc45",
+  "packetFiles": 102,
+  "packetBytes": 3325546,
+  "reviewers": [
+    "claude",
+    "grok"
+  ],
+  "currentThread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+  "scienceAuthorizedBySubmission": false,
+  "policyPath": "/var/projects/toy_physics/AGENTS.md",
+  "policySha256": "3485cb891f831619eef7de1266fa1ae01da8a140faaa18c97e65c1625098c5bf",
+  "newUserReplyObtained": false,
+  "authority": "Standing consent recorded at852af1ba; reviewed source snapshots remain exact, independent and separate."
+}

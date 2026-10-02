@@ -1,0 +1,13 @@
+{
+  "status": "RENEWED_USER_CONTINUE_AFTER_PRESERVED_FORMATTER_FAILURE",
+  "userDirection": "Continue",
+  "priorFailureCommit": "fcc3ee32",
+  "executionsAuthorized": 1,
+  "automaticRetry": false,
+  "localToolingRepairAllowed": true,
+  "scope": "Restore the complete saved both-face nongrazing raw construction; execute only unfinished controls. No integral, finite solve, producer or production overwrite.",
+  "durationLimits": null,
+  "memoryBytes": 4294967296,
+  "pooledBudgetBytes": 17179869184,
+  "thread": "01a0e01b-ef84-7192-817f-584cda5d339b"
+}

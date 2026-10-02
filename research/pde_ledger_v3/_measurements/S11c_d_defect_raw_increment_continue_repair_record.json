@@ -1,0 +1,36 @@
+{
+  "status": "TESTED_SERIALIZATION_ONLY_SAVED_WORK_CONTINUATION",
+  "toolingOnly": true,
+  "testsPassed": true,
+  "workerSha256": "8e904aa22c522aa7bd1c3f0b919359ec03d00953ddd5d900b6dd2e88041abeba",
+  "originalWorkerSha256": "9545304e7c74d974ef4965aab1eedc0a0a0c1ae2f3a7ae54713a287bbe676f36",
+  "testSha256": "0692a6f97160636df921cb0d8e484338ac2aad582414d9504d5a59a8cbb1cfab",
+  "testRecordSha256": "cec8e0344b9f9b0a2f3d69d1793ae0e553edf61133f9ba50e023333ffb662f90",
+  "scientificAssignmentASTsIdentical": true,
+  "mathematicalAssignmentCount": 15,
+  "oneTailChange": "depths: control_depths -> depths: string_keys(control_depths)",
+  "keyCollisionRefused": true,
+  "reviewVerdictsPreserved": {
+    "claude": "CLEAR FOR THIS BOUNDED RAW-INCREMENT BUILD",
+    "grok": "NEEDS REVISION"
+  },
+  "independentBuildClearance": false,
+  "newIndependentReview": false,
+  "priorFiles": 306,
+  "priorBytes": 10406596,
+  "completePriorOperations": 4,
+  "copyWholePriorTree": true,
+  "replayedCompletedFunctions": false,
+  "contextReconstitution": [
+    "Exact q callable and original unfinished point declarations",
+    "Small expected prior stage argument expressions",
+    "Exact cs/rho scalar bindings from pinned physical parameters"
+  ],
+  "runtimeRemaining": [
+    "Actual symbol/argument/grade/physical-input joins",
+    "All unfinished nonzero and omission/doubling controls",
+    "Native resources and source/copy integrity"
+  ],
+  "preparationScientificImports": false,
+  "preparationScientificRestoration": false
+}

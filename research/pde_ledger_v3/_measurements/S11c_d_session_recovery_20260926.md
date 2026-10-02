@@ -1,3 +1,16 @@
+**RAW-INCREMENT CONTROL CONTINUATION PREPARED (2026-10-01):**
+User renewed execution with Continue after fcc3ee32. New saved-evidence worker
+restores all4complete nested returns and306prior files/10406596bytes, joins
+actual symbols/arguments, and runs only unfinished controls. Original construction
+is never called again. Single serialization change: depth-map symbolic keys become
+strings with collision refusal. All15 mathematical assignment ASTs unchanged;
+22stdlib tests and matching+10negative gate checks pass. No scientific restoration
+in preparation.366source pins; fresh gate and hook-first launcher prepared.
+See raw_increment_continue_scope/readiness/repair_record/authority. Literal build
+CLEAR/NEEDS stays unchanged; no new independent CLEAR or reviewer round. One4GiB
+pooled job, no deadlines. Await actual controls/resources/posthashes before result
+acceptance. No integral,finite matrix,production change or defect sweep.
+
 **RAW-INCREMENT PARTIAL CONSTRUCTION PRESERVED; FINAL CONTROLS UNFINISHED (2026-10-01):**
 Diagnostic-01 stopped at a JSON formatter, before nonzero response controls:
 `control_depths` used symbolic keys; the encoder requires strings. Actual source

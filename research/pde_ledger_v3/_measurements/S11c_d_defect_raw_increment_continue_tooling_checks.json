@@ -1,0 +1,32 @@
+{
+  "status": "PASS_STDLIB_TOOLING_ONLY",
+  "count": 22,
+  "tests": [
+    "only selected helper definitions",
+    "only q and unfinished controls executable",
+    "all unfinished mathematical assignment ASTs identical",
+    "exactly one evidence-only AST change",
+    "q definition unchanged",
+    "duplicate or absent repair refused",
+    "gate and containment before science",
+    "no top-level science import",
+    "no computation timers",
+    "unfinished fragment namespace complete",
+    "serialization key conversion retains all values",
+    "duplicate labels refused",
+    "original encoder failure reproduced",
+    "fixed encoder JSON roundtrip",
+    "new failure propagates",
+    "partial evidence survives failure",
+    "prior complete remains distinct",
+    "prior files immutable",
+    "byte-identical entire prior copy",
+    "changed prior input rejected",
+    "no completed construction in tail",
+    "actual prior argument guard present"
+  ],
+  "mathematicalAssignmentCount": 15,
+  "scienceImported": false,
+  "scientificPayloadRestored": false,
+  "physicsValidated": false
+}

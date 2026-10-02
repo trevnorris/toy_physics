@@ -1,0 +1,28 @@
+{
+  "status": "READY_ONE_RENEWED_SAVED_CONTROL_CONTINUATION",
+  "preparedUtc": "2026-10-02T04:04:25.518788+00:00",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-raw-increment-20261001/continuation-01",
+  "workerSha256": "8e904aa22c522aa7bd1c3f0b919359ec03d00953ddd5d900b6dd2e88041abeba",
+  "manifestSha256": "bcbc4bf6b080ccb49615e485f2d76c7ec2f5641facf58370a3008d751177dd38",
+  "gateSha256": "d0631a9eceed54f0e84d18575d9a877bfe8c05311d95b2e9f9255dbe1cde3a40",
+  "sourcePins": 366,
+  "priorFiles": 306,
+  "priorBytes": 10406596,
+  "tests": 22,
+  "matchingGatePass": true,
+  "gateRefusals": [
+    "workerSha256",
+    "manifestSha256",
+    "sharedGuardSha256",
+    "supervisorSha256",
+    "authoritySha256",
+    "repairRecordSha256",
+    "priorCompletionSha256",
+    "priorGateSha256",
+    "buildReviewRecordSha256",
+    "methodRecordSha256"
+  ],
+  "independentBuildClearance": false,
+  "scientificImportsOrRestorationDuringPreparation": false,
+  "next": "Commit prepared version, arm hook and launch exactly once under pooled guard. No repeated science permission required."
+}

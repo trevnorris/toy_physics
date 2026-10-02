@@ -1,3 +1,15 @@
+**CLOSED-GRAZING METHOD BOTH CLEAR; INSTRUMENT NEXT (2026-10-01):**
+Both delivered applicability SUPPORTED WITH STATED LIMITS and method CLEAR FOR
+BOUNDED CLOSED-GRAZING IMPLEMENTATION.486receipt/source/archive/private checks
+pass. Claude's4required execution amendments accepted, with Grok's actual-density,
+row-coefficient/frequency/measure guards. See closed_grazing_review_record,
+claude/grok literals and disposition. No worker/result clearance. Preserve exact
+28103d21method/packet. Build source-bound missing cancellation/contact/limit/bound
+checks using saved returns, including unrestrictedOmega, l=-k collision, native
+face signs and predeclared pole/quadrant/jet controls. No routinepermission,
+no integral/finite matrix/productionoverwrite/defectsweep. Standinguser asks
+continued work overnight. Native scientific restoration stays guarded.
+
 **CLOSED-GRAZING METHOD REVIEWS RUNNING (2026-10-01):**
 Prepared28103d21. Hook first; coordinator1742153,watcher1742154. Bothfresh
 Claude/Grok source-only review processes started with93private files each;

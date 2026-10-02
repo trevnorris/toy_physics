@@ -1,5 +1,5 @@
 {
-  "status": "CORRECTED_METHOD_PACKET_PREPARED_EXACT_EXPORT_CONSENT_PENDING",
+  "status": "BOTH_APPROVED_FRESH_REVIEWS_RUNNING",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-operator-applicability-20261001/method-review-r2",
   "packetDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-operator-applicability-20261001/method-review-r2/packet",
   "recordedUtc": "2026-10-02T01:02:37.882491+00:00",
@@ -22,13 +22,14 @@
   "newScienceRun": false,
   "scientificRestoration": false,
   "independentClearance": false,
-  "externalSubmitted": false,
+  "externalSubmitted": true,
   "peerReportsIncluded": false,
   "transport": {
     "runnerSha256": "30ed68e2d751f5c85399fcdf99384d9ef095376983da0b1bf91b89aef62e5b62",
     "launcherSha256": "d7dd71850300818294a1218ecaf59c5576f63884457eb12b87d69d8b0c7df2a5",
-    "completionMessageSha256": "0bae86b40696254148102899154104885d81de6cbd449ae084c213cac56af961",
-    "scientificExecutionEnabled": false
+    "completionMessageSha256": "40fdfd649e2c7c944d6f93f3174e3caaca9b10e225238f6671f07b25884bf2e0",
+    "scientificExecutionEnabled": false,
+    "priorCompletionMessageSha256": "0bae86b40696254148102899154104885d81de6cbd449ae084c213cac56af961"
   },
   "checks": {
     "same file census": true,
@@ -272,5 +273,13 @@
     "no peer reports": true
   },
   "passedChecks": 239,
-  "next": "Exact-packet consent, then one hook-first fresh source-method pair; after substantive clearance bounded raw-increment implementation under continuing user authority. No automatic retry/review campaign, extra formal-identity job or defect sweep."
+  "next": "Launch this pair with hook first. After both reports, substantive assessment/readiness and bounded implementation continue under standing authorization. No new per-packet question within scope.",
+  "approvalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-operator-applicability-20261001/method-review-r2/explicit-packet-approval.json",
+  "approvalSha256": "089bd48821c2a65971a8a8ab69288a13abba5d25b09d0fba19582d4039d665a8",
+  "approvalRecordedUtc": "2026-10-02T01:30:52.772093+00:00",
+  "prelaunchAllHashesVerified": true,
+  "standingReviewAuthorization": true,
+  "startupVerified": true,
+  "hookStatus": "waiting",
+  "reviewLaunchRecord": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_operator_applicability_review_r2_launch.json"
 }

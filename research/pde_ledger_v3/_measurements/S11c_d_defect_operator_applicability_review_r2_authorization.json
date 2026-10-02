@@ -1,0 +1,20 @@
+{
+  "status": "EXPLICITLY_APPROVED_FIXED_PACKET",
+  "recordedUtc": "2026-10-02T01:30:52.772093+00:00",
+  "userText": "I give you permission to edit. AGENTS.md so you don't have to ask for permission every time. I didn't add that rule. Then I give you permission to run it",
+  "context": "Direct authorization to launch the prepared corrected method-review pair and establish standing submission consent. Packet remains unchanged from f2895aa7.",
+  "packetSha256": "18534026279d992c02c446e33dd1fc455361c941f2cf04232fa291d5650b9ade",
+  "archiveSha256": "47d8ab14383baa38b8009a0bbf847c6622f6a3c3e90ed30184ac3b40730660cb",
+  "packetFiles": 77,
+  "packetBytes": 2995866,
+  "reviewers": [
+    "claude",
+    "grok"
+  ],
+  "currentThread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+  "scienceAuthorizedBySubmission": false,
+  "authority": "Current pair explicitly approved; necessary future source/evidence reviews and substantive revisions within ongoing authorized research use standing consent. Scientific assessment/readiness/resource requirements remain.",
+  "policyPath": "/var/projects/toy_physics/AGENTS.md",
+  "policySha256": "3485cb891f831619eef7de1266fa1ae01da8a140faaa18c97e65c1625098c5bf",
+  "supersedesPerPacketConsent": true
+}

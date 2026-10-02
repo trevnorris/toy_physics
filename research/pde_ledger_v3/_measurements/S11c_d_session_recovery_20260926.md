@@ -1,3 +1,22 @@
+**STANDING REVIEW CONSENT UPDATED; CORRECTED METHOD PAIR RUNNING (2026-10-01):**
+User explicitly authorized editing AGENTS.md to remove repeated review-packet
+permission requests, then approved this run. AGENTS.md now records standing
+consent for necessary source/evidence packets and substantive revisions to the
+established Claude/Grok reviewers within ongoing authorized research. This
+supersedes exact-packet permission language in older notes/hooks. Keep hashes,
+private snapshots, independent assessment and scientific safeguards; ask only
+for genuine user decisions or material scope/new-disclosure changes. Do not
+reinstate repetitive per-packet or science-stage approval from old records.
+Prepared f2895aa7 packet remains unchanged:77files/2995866bytes, SHA256
+18534026279d992c02c446e33dd1fc455361c941f2cf04232fa291d5650b9ade.
+Hook armed first; coordinator1639709,watcher1639710, both reviewers verified
+alive in fresh distinct sessions, all private77file hashes match. See review_r2
+launch/authorization/preparation records. No report content read or peer sharing,
+no scientific execution. Wait silently for the existing local completion hook,
+then inspect both literal reports and continue authorized work after substantive
+assessment/readiness. No automatic scientific retry or optional wording loop;
+no immediate defect sweep. Historical reports and protected sources intact.
+
 **CORRECTED DEFECT INCREMENT METHOD READY; EXACT EXPORT CONSENT PENDING (2026-10-01):**
 First reviewed draft/literal pair/disposition preserved at ba1a2923. Corrected
 method specifies one ordered convolution, full H-factored contact/PV expression

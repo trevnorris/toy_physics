@@ -1,0 +1,76 @@
+{
+  "status": "BOTH_APPROVED_FRESH_REVIEWS_RUNNING",
+  "checkedUtc": "2026-10-02T01:31:55.964516+00:00",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-operator-applicability-20261001/method-review-r2",
+  "preparedCommit": "f2895aa7",
+  "launch": {
+    "jobPid": 1639709,
+    "watcherPid": 1639710,
+    "packetSha256": "18534026279d992c02c446e33dd1fc455361c941f2cf04232fa291d5650b9ade",
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "concurrentReviewWorkers": 2,
+    "scienceCalls": 0,
+    "runnerSha256": "30ed68e2d751f5c85399fcdf99384d9ef095376983da0b1bf91b89aef62e5b62",
+    "launcherSha256": "d7dd71850300818294a1218ecaf59c5576f63884457eb12b87d69d8b0c7df2a5"
+  },
+  "reviewers": {
+    "claude": {
+      "pid": 1639718,
+      "sessionId": "95482898-7e72-4d7a-b77a-ee29c9ad6926",
+      "startedUtc": "2026-10-02T01:31:07.625365+00:00",
+      "runReceipt": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-operator-applicability-20261001/method-review-r2/claude-run.json",
+      "privateFiles": 77,
+      "allPrivateHashesMatched": true,
+      "aliveAtStartup": true,
+      "scientificExecutionEnabled": false
+    },
+    "grok": {
+      "pid": 1639717,
+      "sessionId": "78e438a6-ffe6-4d60-845a-7e33a125a06f",
+      "startedUtc": "2026-10-02T01:31:07.625044+00:00",
+      "runReceipt": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-operator-applicability-20261001/method-review-r2/grok-run.json",
+      "privateFiles": 77,
+      "allPrivateHashesMatched": true,
+      "aliveAtStartup": true,
+      "scientificExecutionEnabled": false
+    }
+  },
+  "approval": {
+    "status": "EXPLICITLY_APPROVED_FIXED_PACKET",
+    "recordedUtc": "2026-10-02T01:30:52.772093+00:00",
+    "userText": "I give you permission to edit. AGENTS.md so you don't have to ask for permission every time. I didn't add that rule. Then I give you permission to run it",
+    "context": "Direct authorization to launch the prepared corrected method-review pair and establish standing submission consent. Packet remains unchanged from f2895aa7.",
+    "packetSha256": "18534026279d992c02c446e33dd1fc455361c941f2cf04232fa291d5650b9ade",
+    "archiveSha256": "47d8ab14383baa38b8009a0bbf847c6622f6a3c3e90ed30184ac3b40730660cb",
+    "packetFiles": 77,
+    "packetBytes": 2995866,
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "currentThread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+    "scienceAuthorizedBySubmission": false,
+    "authority": "Current pair explicitly approved; necessary future source/evidence reviews and substantive revisions within ongoing authorized research use standing consent. Scientific assessment/readiness/resource requirements remain.",
+    "policyPath": "/var/projects/toy_physics/AGENTS.md",
+    "policySha256": "3485cb891f831619eef7de1266fa1ae01da8a140faaa18c97e65c1625098c5bf",
+    "supersedesPerPacketConsent": true
+  },
+  "approvalSha256": "089bd48821c2a65971a8a8ab69288a13abba5d25b09d0fba19582d4039d665a8",
+  "checks": {
+    "coordinatorAlive": true,
+    "watcherAlive": true,
+    "hookArmedFirst": true,
+    "bothFreshIndependentSessions": true,
+    "allPrivatePacketHashesMatched": true,
+    "packetUnchanged": true,
+    "noScienceStarted": true
+  },
+  "reviewOutputsInspected": false,
+  "peerSharing": false,
+  "automaticRetry": false,
+  "waitingPolicy": "Silent local completion hook; no model polling. Both reports before adjudication or method edits.",
+  "standingReviewAuthorization": "User explicitly removed per-packet consent requests in AGENTS.md; future necessary in-scope submissions do not need another question."
+}

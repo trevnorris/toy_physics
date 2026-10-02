@@ -11,7 +11,7 @@ import unittest
 
 HERE=Path(__file__).resolve().parent
 WORKER=HERE/'S11c_d_defect_source_composition.py'
-NAMES={'require','triples','jet_spec','broad_row_census','quotient_recurrence','definitions'}
+NAMES={'require','triples','jet_spec','broad_row_census','quotient_recurrence','definitions','native_jet_dimensions','select_certified_candidate','epsilon_power','address_sum_for'}
 NS={'ast':ast,'hashlib':hashlib,'itertools':itertools,'re':re,
     'G':((0,0),(1,0),(0,1),(1,1))}
 TREE=ast.parse(WORKER.read_text())
@@ -68,6 +68,60 @@ class Tests(unittest.TestCase):
         targets=[t.id for n in fn.body if isinstance(n,ast.Assign) for t in n.targets if isinstance(t,ast.Name)]
         for target in ('extension','jet_transfer','normal_jet','reference_pressure'):
             self.assertEqual(targets.count(target),1)
+    def test_native_dimension_rule_is_read_from_source(self):
+        native=(HERE.parent/'scripts/S11c_c2_selfenergy_fold_sympy_audit.py').read_text()
+        fn=next(n for n in ast.parse(native).body if isinstance(n,ast.FunctionDef) and n.name=='wave_jet')
+        text=ast.get_source_segment(native,fn)
+        result=NS['native_jet_dimensions'](text)
+        self.assertEqual(result['velocity'],[1,0,0])
+        self.assertEqual(result['scalar'],[0,0,0])
+        self.assertEqual(result['sourceSha256'],hashlib.sha256(text.encode()).hexdigest())
+        with self.assertRaises(ValueError):NS['native_jet_dimensions'](text.replace('(1, 0, 0) if','(2, 0, 0) if'))
+    def test_candidate_search_skips_zero_and_unknown(self):
+        entries=[{'eligible':True,'zero':True,'finite':True,'jet':'zero'},
+                 {'eligible':True,'zero':None,'finite':True,'jet':'unknown'},
+                 {'eligible':True,'zero':False,'finite':None,'jet':'unproved-finite'},
+                 {'eligible':False,'zero':False,'finite':True,'jet':'ineligible'},
+                 {'eligible':True,'zero':False,'finite':True,'jet':'applicable'}]
+        self.assertEqual(NS['select_certified_candidate'](entries)['jet'],'applicable')
+        self.assertIsNone(NS['select_certified_candidate'](entries[:-1]))
+    def test_actual_address_sum_and_corruption(self):
+        # Independent affine row C(eta)*R(eta)*S(eta), source jet=7.
+        # Target eta coefficient: C1 R0 S0 + C0 R1 S0 + C0 R0 S1.
+        row_terms=[(3,5,11),(2,13,11),(2,5,17)]
+        expected=7*(3*5*11+2*13*11+2*5*17)
+        rows=[{'row':'A','face':'minus','targetGrade':(1,0),'consumerOriginal':Fraction(c),
+               'responsePlaceholder':Fraction(r),'sourceOriginal':Fraction(v),'sourceAtom':7}
+              for c,r,v in row_terms]
+        unrelated={**rows[0],'row':'B','consumerOriginal':999}
+        selected,actual=NS['address_sum_for'](rows+[unrelated],'A','minus',(1,0))
+        self.assertEqual(actual,expected);self.assertEqual(len(selected),3)
+        self.assertNotEqual(NS['address_sum_for'](rows[:-1],'A','minus',(1,0))[1],expected)
+        self.assertNotEqual(NS['address_sum_for'](rows+[rows[0]],'A','minus',(1,0))[1],expected)
+        self.assertEqual(NS['address_sum_for'](rows,'A','plus',(1,0)),([],0))
+    def test_zero_addresses_have_no_epsilon_power(self):
+        self.assertEqual(NS['epsilon_power'](True),0)
+        self.assertEqual(NS['epsilon_power'](False),1)
+    def test_correction_obligations_have_persistent_inputs(self):
+        source=WORKER.read_text()
+        for name in ('actual-row-placeholder-input','actual-address-reconstruction',
+                     'assembled-mixed-components','whole-native-trace-direct-injection',
+                     'inherited-isolated-factor','inherited-full-row-density-proof',
+                     'historical-pressure-ablation-scope','physical-depth-branch-conditions',
+                     'source-control-candidates','control-address-selection','constant-end-and-zero-profile-scope'):
+            self.assertIn(name,source)
+        self.assertIn("'reference':sign*context['numeric']['W_0']/2",source)
+        self.assertNotIn("'tag':'Dwhole_'+face+'(2,3/2)'",source)
+    def test_response_adapter_native_reference_assignment(self):
+        native=(HERE.parent/'scripts/S11c_c2_selfenergy_fold_sympy_audit.py').read_text()
+        fn=next(n for n in ast.parse(native).body if isinstance(n,ast.FunctionDef) and n.name=='build_face')
+        assignments=[n for n in fn.body if isinstance(n,ast.Assign) and any(isinstance(t,ast.Name) and t.id=='reference' for t in n.targets)]
+        self.assertEqual(len(assignments),1)
+        class Inputs:values={'W_0':Fraction(6,5)}
+        namespace={'face':-1,'inputs':Inputs()}
+        exec(compile(ast.Module(body=assignments,type_ignores=[]),'native-reference-standin','exec'),namespace)
+        self.assertEqual(namespace['reference'],Fraction(-3,5))
+
     def test_metadata_route_class_supported(self):
         native=(HERE.parent/'scripts/S11c_c2_selfenergy_fold_sympy_audit.py').read_text()
         entries=[n for n in ast.parse(native).body if isinstance(n,(ast.ClassDef,ast.FunctionDef)) and n.name=='Inputs']

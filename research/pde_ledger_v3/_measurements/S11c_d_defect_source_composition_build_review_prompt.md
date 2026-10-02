@@ -44,3 +44,14 @@ Give concrete blockers with source location, consequence and minimum correction.
 Separate scientific/validation issues from pure tooling and optional wording.
 State coverage limitations and runtime evidence still needed. No optional
 wording review loop is requested.
+
+In particular, assess the concrete actual-row placeholder substitution against
+the address sum, assembled mixed-response reconstruction, per-component maps,
+whole trace-matrix injection, inherited isolated/full-density operand joins,
+old excluded-grade ablation history, and controls through actual address IDs.
+Check the distinction between epsilon homogeneity and certified nonzero values,
+source-bound unit rules, positive outgoing branch conditions and H's own bound
+variable. Formal zero-profile reductions are supplied; the nonzero constant-
+height full-response reduction is explicitly unavailable. Decide whether that
+scope is sufficient for this bounded inventory, without treating it as global
+operator applicability. No prior reviewer reports or commentary are supplied.

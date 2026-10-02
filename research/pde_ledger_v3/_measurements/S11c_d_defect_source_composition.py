@@ -97,8 +97,37 @@ def jet_spec(name):
         return None
     channel,suffix=match.groups()
     return {'name':original,'channel':channel,'timeOrder':2 if '_tt' in suffix else 1 if '_t' in suffix else 0,
-            'spatialOrders':[len(re.findall('d'+str(i),suffix)) for i in (1,2,3)],
-            'baseDimension':[1,0,0] if channel.startswith('u_') else [0,0,0]}
+            'spatialOrders':[len(re.findall('d'+str(i),suffix)) for i in (1,2,3)]}
+
+
+def address_sum_for(addresses,row,face,grade):
+    selected=[a for a in addresses if a['row']==row and a['face']==face and a['targetGrade']==grade]
+    total=sum(a['consumerOriginal']*a['responsePlaceholder']*a['sourceOriginal']*a['sourceAtom'] for a in selected)
+    return selected,total
+
+
+def select_certified_candidate(candidates):
+    return next((v for v in candidates if v['eligible'] is True and
+                 v['zero'] is False and v['finite'] is True),None)
+
+
+def epsilon_power(exact_zero):
+    return 0 if exact_zero else 1
+
+
+def native_jet_dimensions(text):
+    """Read the unrestricted field dimension rule, without executing wave_jet."""
+    calls=[n for n in ast.walk(ast.parse(text)) if isinstance(n,ast.Call)
+           and isinstance(n.func,ast.Name) and n.func.id=='field' and len(n.args)==3
+           and isinstance(n.args[0],ast.BinOp)]
+    require(len(calls)==1, 'unique unrestricted field rule')
+    rule=calls[0].args[2]
+    expected=ast.parse("(1,0,0) if base.startswith('u_') else (0,0,0)",mode='eval').body
+    require(ast.dump(rule)==ast.dump(expected),'native field dimension decision')
+    return {'velocity':list(ast.literal_eval(rule.body)),
+            'scalar':list(ast.literal_eval(rule.orelse)),
+            'source':ast.get_source_segment(text,calls[0]),
+            'sourceSha256':hashlib.sha256(text.encode()).hexdigest()}
 
 
 def broad_row_census(text):
@@ -214,7 +243,7 @@ def run_science(manifest,J,helpers,text_helpers,nonzero):
         if name=='U_BODY_BALANCE':
             row_texts.update({'U'+str(i):t for i,t in enumerate(text_helpers['tuple_arguments'](expanded))})
         else:row_texts[name]=expanded
-    consumers={};consumer_full={};census={};unit_by_key={}
+    consumers={};consumer_full={};native_rows={};census={};unit_by_key={}
     units=load('consumer-finish/consumer-unit-joins.json')
     for u in units:unit_by_key[u['row'],str(u['slot'])]=u
     for rowname in ROWS:
@@ -240,7 +269,7 @@ def run_science(manifest,J,helpers,text_helpers,nonzero):
             J.emit(rowname+'-'+label+'-native-pressure-slot-ablation',{'baseline':row_bound,'ablated':ablated,'removed':removed,'slot':atom})
             J.zero(rowname+'-'+label+'-native-pressure-ablation-join',removed,coeff[slotname]*atom)
         J.zero(rowname+'-affine-pressure-reconstruction',row_bound,sum(coeff[n]*symbols.get(n,sp.Symbol(n)) for n in SLOTS))
-        consumers[rowname]={};consumer_full[rowname]=coeff;census[rowname]=entries
+        consumers[rowname]={};consumer_full[rowname]=coeff;native_rows[rowname]=row_bound;census[rowname]=entries
         for slot in SLOTS:
             expr=coeff[slot]
             require(not any(s.name in SLOTS for s in expr.atoms(sp.Symbol)), 'affine independent-slot coefficients')
@@ -257,6 +286,21 @@ def run_science(manifest,J,helpers,text_helpers,nonzero):
                 u=unit_by_key[rowname,slot]
                 J.zero(rowname+'-'+slot+'-native-unit-coefficient',bind(u['coefficient']),expr)
                 for i in range(3):J.zero(rowname+'-'+slot+'-unit-'+str(i),u['total'][i],u['expected'][i])
+    unit_scope=load('consumer-finish/units-and-scope.json')
+    source_dim=unit_scope['normalizedSourceDimension']
+    require(list(source_dim)==[1,-1,0], 'inherited normalized source dimension')
+    native_dim=native_jet_dimensions(next(a['text'] for a in routes if a['name']=='wave_jet'))
+    J.emit('native-unrestricted-jet-dimension-rule',native_dim)
+    historical=load('consumer-finish/native-pressure-consumer-omission.json')
+    J.emit('historical-pressure-ablation-scope',{'records':historical,
+        'lowerRecordInPriorEvidence':False,'newLowerAblations':'own native rows above',
+        'excludedGrade':[2,1],'includedAsRetainedMixed':False})
+    require(len(historical)==2 and {h['row'] for h in historical}=={'THETA_BALANCE','E_W_BALANCE'}, 'historical upper records')
+    for h in historical:
+        require(str(h['removedSlot'])=='delta_p_plus' and h['mixedPerSource']==0 and h['ablatedRowPerD']==0,'old mixed ablation zero')
+        hg=polynomial_terms(h['selectedIncrement'],eta,sigma)
+        require(set(hg)<={(2,1)},'old unprojected21 excluded')
+        J.zero('historical-'+h['row']+'-native-join',bind(h['native']),native_rows[h['row']])
     sources={};source_jets={};source_full={};x=sp.Symbol('composition_x',real=True)
     w=(1+sp.tanh(x/10))/2;m=(1-sp.tanh(x/10)**2)/3
     def profile(expr):
@@ -289,9 +333,9 @@ def run_science(manifest,J,helpers,text_helpers,nonzero):
                 coefficient=sp.cancel(sp.diff(expr,atom));reconstruction+=coefficient*atom
                 require(not any(j in coefficient.free_symbols for j in alljets),'linear wave-jet coefficient')
                 field=profile(coefficient)
-                spec=jet_spec(atom.name);orders=spec['spatialOrders'];dim=[spec['baseDimension'][0]-sum(orders),-spec['timeOrder'],0]
+                spec=jet_spec(atom.name);orders=spec['spatialOrders'];base_dim=native_dim['velocity' if spec['channel'].startswith('u_') else 'scalar'];dim=[base_dim[0]-sum(orders),base_dim[1]-spec['timeOrder'],base_dim[2]]
                 jetrows.append({'atom':atom,'spec':spec,'coefficient':coefficient,'field':field,'jetDimension':dim,
-                    'coefficientDimensionFromSource':[1-dim[0],-1-dim[1],-dim[2]],
+                    'coefficientDimensionFromSource':[source_dim[i]-dim[i] for i in range(3)],'nativeDimensionRuleSha256':native_dim['sourceSha256'],
                     'status':'EXACT_ZERO' if field==0 else 'FORMAL_COEFFICIENT_AVAILABLE'})
             J.emit(face+'-source-jets-'+str(g[0])+str(g[1]),{'grade':g,'source':expr,'jets':jetrows,'reconstruction':reconstruction,
                 'dimensionScope':'Native un-restricted wave_jet dimensions and inherited normalized source dimension; material units remain in saved coefficient provenance'})
@@ -302,6 +346,7 @@ def run_science(manifest,J,helpers,text_helpers,nonzero):
     rc=load('reference/retained-response-census.json');objects=[rc[n] for n in ('flat','heightCoefficient','slopeCoefficient','mixedIteration','taggedTotalMixed')]
     omega=one(objects,'reference_unrestricted_frequency');qi=one(objects,'reference_qi');qo=one(objects,'reference_qo')
     k=one(objects,'reference_k');l=one(objects,'reference_l');p,r=sp.symbols('composition_p composition_r',real=True)
+    K,L=sp.symbols('composition_k composition_l',real=True)
     cs=sp.Symbol('composition_cs',positive=True);beta=omega/(10-sp.I*omega)
     wholeD=one(objects,'certified_closed_direct_whole_convolution')
     beta3=beta.subs(omega,3);R=lambda q:q/(q+beta3)
@@ -325,6 +370,14 @@ def run_science(manifest,J,helpers,text_helpers,nonzero):
             target=direct['density'].subs(O,3)*(sp.I*sign*dq_o if op.endswith('normalJet') else 1)
             J.sinh_zero(face+'-'+op+'-current-operand-join',prior_in['right'],target)
         raw=load('raw/'+face+'-closure-operands.json');before=load('raw/'+face+'-closed-before-cancel.json')
+        fi=load('direct/'+face+'-reference-factor-input.json');fo=load('direct/'+face+'-reference-factor-return.json')
+        fmap={s:{'grazing_qi':qi,'grazing_qo':qo}[s.name] for s in fi['right'].free_symbols}
+        J.emit(face+'-inherited-isolated-factor',{'input':fi,'return':fo,'map':[[a,b] for a,b in fmap.items()],
+            'completeDensityIdentity':False,'recomputedPriorProof':False})
+        require(fo['cancelled']==0,'saved isolated factor literal zero')
+        J.zero(face+'-isolated-factor-current-right',fi['right'].xreplace(fmap),Rprod)
+        oldfactor_map={a:{'q_i':dq_i,'q_o':dq_o}[a.name] for a in before['reference'].free_symbols}
+        J.zero(face+'-isolated-factor-current-left',before['reference'].xreplace(oldfactor_map),fi['left'])
         bare=one([raw['matrix']],'{}_raw_direct'.format(face))
         mapping={s:{'q_i':qi,'q_o':qo}.get(s.name,s) for s in raw['factor'].free_symbols}
         J.zero(face+'-bare-linear-factor',sp.diff(raw['closed'][0,2],bare).xreplace(mapping),Rprod)
@@ -336,7 +389,13 @@ def run_science(manifest,J,helpers,text_helpers,nonzero):
         trace=load('reference/'+face+'-new-native-trace.json');slot=load('reference/'+face+'-final-native-slot-routing.json')
         require(trace['newTrace'][0,0]==1 and trace['newTrace'][0,2]==0 and slot['valueCoefficient']==1,'own face trace diagonal/direct slot')
         T=trace['newTrace'];delta_matrix=sp.zeros(3);delta_matrix[0,2]=P
-        J.zero(face+'-unchanged-native-T01-direct-subtraction',(T*delta_matrix)[0,2],P)
+        Tdelta=T*delta_matrix
+        J.emit(face+'-whole-native-trace-direct-injection',{'T':T,'delta':delta_matrix,'product':Tdelta,'T01':T[0,1],
+            'newReference12':delta_matrix[1,2],'T01TimesNew12':T[0,1]*delta_matrix[1,2]})
+        for i in range(3):
+            J.zero(face+'-native-trace-unit-diagonal-'+str(i),T[i,i],sp.S.One)
+            for j in range(i):J.zero(face+'-native-trace-lower-'+str(i)+str(j),T[i,j],sp.S.Zero)
+            for j in range(3):J.zero(face+'-unchanged-native-Tdelta-'+str(i)+str(j),Tdelta[i,j],delta_matrix[i,j])
         H=slot['affineHeight'];solution=slot['equationSolution'];target=one([solution],face+'_physical_target');jet=one([solution],face+'_jet_slot')
         normal=sp.Symbol('composition_NORMAL',real=True);calls=[]
         def adapter(inputs,diagonal,off_diagonal,source,kout,kin,second=sp.S.Zero):
@@ -344,7 +403,7 @@ def run_science(manifest,J,helpers,text_helpers,nonzero):
             require(kout==(l,) and kin==(k,), 'adapter ordered arguments')
             calls.append({'diagonal':diagonal,'offDiagonal':off_diagonal,'source':source,'kout':kout,'kin':kin,'second':second})
             return off_diagonal
-        ns={'sp':sp,'face':sign,'qo':qo,'NORMAL':normal,'reference':sp.Rational(sign,2),
+        ns={'sp':sp,'face':sign,'qo':qo,'NORMAL':normal,'reference':sign*context['numeric']['W_0']/2,
             'reference_matrix':sp.Matrix([[0,P],[0,0]]),'jet_diagonal':sp.S.Zero,'jet_second':sp.S.Zero,
             'inputs':None,'composed_source':sp.S.One,'ko':(l,),'ki':(k,),'kernel_apply':adapter,
             'trace_map':{'REFERENCE_VALUE_SOLVE':solution,'PHYSICAL_PRESSURE_TARGET':target},'pressure':P,'jet_slot':jet}
@@ -361,6 +420,9 @@ def run_science(manifest,J,helpers,text_helpers,nonzero):
         J.zero(face+'-direct-normal-routing',ns['normal_jet'],sp.I*sign*qo*P)
         J.zero(face+'-direct-reference-routing',projected,P)
         require(set(pt)<={(1,1),(2,1)}, 'direct trace only excluded21')
+        J.zero(face+'-excluded21-trace-correction',unprojected-projected,-height*sp.I*sign*qo*P)
+        J.emit(face+'-native-reference-location',{'W0':context['numeric']['W_0'],'reference':ns['reference'],
+            'face':sign,'nativeReferenceAssignment':helpers['assignment_source'](c2,'build_face','reference')})
         J.zero(face+'-saved-flat-diagonal-jet',rc['jetKernels'][face]['flat'],sp.I*sign*qo*rc['flat'].subs(qi,qo))
         flat_good=rc['jetKernels'][face]['flat'].subs({omega:3,qo:sp.Rational(3,2)},simultaneous=True)
         flat_bad=(sp.I*sign*qo*rc['flat']).subs({omega:3,qo:sp.Rational(3,2),qi:2},simultaneous=True)
@@ -370,7 +432,41 @@ def run_science(manifest,J,helpers,text_helpers,nonzero):
             J.zero(face+'-saved-'+key+'-jet',rc['jetKernels'][face][key],sp.I*sign*qo*rc[key+'Coefficient'])
         J.zero(face+'-saved-mixed-sum',rc['jetKernels'][face]['mixed'],sp.I*sign*qo*(rc['mixedIteration']+wholeD))
     J.zero('saved-total-mixed-sum',rc['taggedTotalMixed'],rc['mixedIteration']+wholeD)
+    # Join inherited raw kernels and completed row-density returns, without redoing their proofs.
+    density_symbols={a.name:a for a in direct['density'].free_symbols}
+    raw_density_targets={'q_i':dq_i,'q_o':dq_o,'q_h':density_symbols['grazing_qh'],
+        'q_s':density_symbols['grazing_qs'],'increment_transfer':density_symbols['grazing_transfer'],
+        'increment_difference':density_symbols['grazing_output']-density_symbols['k'],
+        'k':density_symbols['k']}
+    for rowname in ROWS:
+        rawrow=load('raw/'+rowname+'-retained-increment.json')
+        for face in ('plus','minus'):
+            kernel=rawrow['rawKernelPlus' if face=='plus' else 'rawKernelMinus']
+            before=load('raw/'+face+'-closed-before-cancel.json')
+            J.zero(rowname+'-'+face+'-raw-kernel-operand-join',kernel,before['raw'])
+            J.zero(rowname+'-'+face+'-raw-source-zero-join',rawrow['sourcePlus' if face=='plus' else 'sourceMinus'],sources[face][0,0])
+        mixed=rawrow['mixedCoefficient']
+        mixmap={a:{'q_i':qi,'q_o':qo}.get(a.name,a) for a in mixed.free_symbols}
+        bare_terms={face:sp.Symbol('composition_bare_'+face) for face in ('plus','minus')}
+        for a in mixed.free_symbols:
+            if a.name in ('increment_raw_plus','increment_raw_minus'):mixmap[a]=bare_terms[a.name.rsplit('_',1)[1]]
+        joined=sum(consumers[rowname]['delta_p_'+f][0,0]*sources[f][0,0]*Rprod*bare_terms[f] for f in ('plus','minus'))
+        J.emit(rowname+'-raw-direct-row-map',{'original':mixed,'map':[[a,b] for a,b in mixmap.items()],
+            'currentBareDirectRow':joined,'closedWholeUsedHere':False})
+        J.zero(rowname+'-raw-direct-row-join',mixed.xreplace(mixmap),joined)
+        if rowname.startswith('U'):continue
+        old_in=load('direct/'+rowname+'-actual-closed-row-density-original-input.json')
+        old_out=load('direct/'+rowname+'-actual-closed-row-density-canonical-return.json')
+        rawmap={a:raw_density_targets[a.name] for a in rawrow['rawRowDensity'].free_symbols if a.name in raw_density_targets}
+        current=direct['density'].subs(O,3)*sum(consumers[rowname]['delta_p_'+f][0,0]*sources[f][0,0] for f in ('plus','minus'))
+        J.emit(rowname+'-inherited-full-row-density-proof',{'originalInput':old_in,'return':old_out,
+            'rawMap':[[a,b] for a,b in rawmap.items()],'currentDirect11Row':current,
+            'recomputedPriorCancellation':False,'perFaceDirectWholeMultiplicity':1})
+        require(old_out['cancelled']==0,'inherited full row density literal zero')
+        J.sinh_zero(rowname+'-full-row-density-left-join',old_in['left'],rawrow['rawRowDensity'].subs(rawmap,simultaneous=True))
+        J.sinh_zero(rowname+'-full-row-density-right-join',old_in['right'],current)
     # Whole definitions and maps retain their bound variable roles; no Integral constructor is called.
+
     tagdefs={}
     t,td=sp.symbols('composition_middle_transfer composition_direct_transfer',real=True)
     qfun=sp.Function('common_outgoing_q')
@@ -384,12 +480,16 @@ def run_science(manifest,J,helpers,text_helpers,nonzero):
     qm_map={a:qm_names[a.name] for a in old_q.free_symbols}
     qdefinition=old_q.subs(qm_map,simultaneous=True)
     require(isinstance(qdefinition,sp.Piecewise) and len(qdefinition.args)==3 and qdefinition.args[-1].expr is sp.nan,'unassigned grazing branch')
+    expected_conditions=(sp.Lt(depth_variable**2-9/cs**2,-sp.Rational(1,20)),
+                         sp.Gt(depth_variable**2-9/cs**2,-sp.Rational(1,20)),sp.true)
+    J.emit('physical-depth-branch-conditions',{'actual':[a.cond for a in qdefinition.args],'expected':expected_conditions})
+    require(tuple(a.cond for a in qdefinition.args)==expected_conditions,'physical branch conditions')
     J.zero('mapped-positive-depth-branch',qdefinition.args[0].expr,sp.sqrt(rad))
     J.zero('mapped-decaying-depth-branch',qdefinition.args[1].expr,sp.I*sp.sqrt(-rad))
     J.emit('inherited-depth-map',{'saved':old_q,'map':[[a,b] for a,b in qm_map.items()],'new':qdefinition})
-    new_direct_map={'grazing_unrestricted_frequency':sp.Integer(3),'grazing_output':l,'k':k,
-        'grazing_transfer':td,'grazing_qi':qfun(k),'grazing_qo':qfun(l),
-        'grazing_qh':qfun(k+td),'grazing_qs':qfun(l-td)}
+    new_direct_map={'grazing_unrestricted_frequency':sp.Integer(3),'grazing_output':L,'k':K,
+        'grazing_transfer':td,'grazing_qi':qfun(K),'grazing_qo':qfun(L),
+        'grazing_qh':qfun(K+td),'grazing_qs':qfun(L-td)}
     require({a.name for a in direct['density'].free_symbols}==set(new_direct_map),'complete direct map symbol census')
     actual_direct_map={a:new_direct_map[a.name] for a in direct['density'].free_symbols}
     mapped_direct=direct['density'].subs(actual_direct_map,simultaneous=True)
@@ -399,8 +499,8 @@ def run_science(manifest,J,helpers,text_helpers,nonzero):
     old_mapped=direct['density'].subs(dict(old_join['map']),simultaneous=True)
     J.zero('saved-direct-argument-provenance',old_mapped,old_join['transported'])
     jd=load('reference/right-height-PV-operands.json')['density']
-    new_iter_map={'reference_unrestricted_frequency':sp.Integer(3),'reference_k':k,'reference_l':l,
-        'reference_t':t,'reference_qi':qfun(k),'reference_qo':qfun(l),'reference_qm':qfun(k+t)}
+    new_iter_map={'reference_unrestricted_frequency':sp.Integer(3),'reference_k':K,'reference_l':L,
+        'reference_t':t,'reference_qi':qfun(K),'reference_qo':qfun(L),'reference_qm':qfun(K+t)}
     require({a.name for a in jd.free_symbols}==set(new_iter_map),'complete iteration density symbol census')
     actual_iter_map={a:new_iter_map[a.name] for a in jd.free_symbols}
     J.emit('actual-whole-density-argument-maps',{'direct':{'old':direct['density'],'map':[[a,b] for a,b in actual_direct_map.items()],
@@ -413,7 +513,11 @@ def run_science(manifest,J,helpers,text_helpers,nonzero):
             'freeMomenta':['l','k'],'boundVariable':'td' if name=='Dwhole' else 't',
             'middleMomentum':'k+td' if name=='Dwhole' else 'k+t','reflectedMomentum':'l-td' if name=='Dwhole' else None,
             'valueEvaluated':False,'globalDomain':'UNRESOLVED outside certified response k/l[-3,3]'}
-    tagdefs['H']['freeMomenta']=['l-k'];tagdefs['H']['middleMomentum']=None
+    hdef=tagdefs['H']['savedDefinition'];hs=one([hdef['ordinarySubtractedIntegrand']],'reference_left_height_transfer')
+    J.zero('actual-H-bound-variable-map',hdef['variableChange'][1],l-hs)
+    tagdefs['H'].update(freeMomenta=['l-k'],boundVariable=hs,middleMomentum=None,
+        originalChangeOfVariable=hdef['variableChange'],boundVariableAssumptions=hs.assumptions0,
+        integrationNotSameAsJwhole=True)
     J.emit('whole-tag-definitions',tagdefs)
     direct_map=load('reference/restored-direct-argument-join.json')
     J.emit('inherited-direct-map',{'saved':direct_map,'realFrequency':3,'argumentMapRequired':True,'newConvolution':False})
@@ -438,17 +542,55 @@ def run_science(manifest,J,helpers,text_helpers,nonzero):
         for n,mom in zip(spec['spatialOrders'],(momentum,sp.Rational(1,5),sp.Rational(1,10))):out*= (sp.I*mom)**n
         return out
     wholeH=one(objects,'whole_height_slope_convolution');wholeJ=one(objects,'whole_iterated_density_integral')
-    Htag=sp.Function('Hwhole')(l-k,sp.Integer(1),sp.Integer(10))
+    Htag=sp.Function('Hwhole')(L-K,sp.Integer(1),sp.Integer(10))
     base_components={ (0,0):[('NATIVE_FLAT',rc['flat'].subs({omega:3,qi:qo},simultaneous=True))],
         (1,0):[('NATIVE_HEIGHT',rc['heightCoefficient'].subs(omega,3))],
         (0,1):[('NATIVE_SLOPE',rc['slopeCoefficient'].subs(omega,3))] }
     def components_for(face,grade):
         if grade!=(1,1):return base_components[grade]
-        signature=(l,k,sp.Integer(3),cs,sp.Rational(1,5),sp.Rational(1,10),sp.Integer(1),sp.Integer(10))
+        signature=(L,K,sp.Integer(3),cs,sp.Rational(1,5),sp.Rational(1,10),sp.Integer(1),sp.Integer(10))
         Jtag=sp.Function('Jwhole_'+face)(*signature);Dtag=sp.Function('Dwhole_'+face)(*signature)
         iteration=rc['mixedIteration'].subs({omega:3,wholeH:Htag,wholeJ:Jtag},simultaneous=True)
         return [('NATIVE_MIXED_ITERATION',iteration),('INHERITED_DIRECT_WHOLE_OFF_DIAGONAL',Dtag)]
-    coverage=[];addresses=[];consumer_fields={}
+    component_maps={};component_cache={}
+    for face in ('plus','minus'):
+        for grade in G:
+            for component,rv in components_for(face,grade):
+                mapping={omega:sp.Integer(3),qi:qfun(L if grade==(0,0) else K),qo:qfun(L),k:K,l:L}
+                actual_map={a:b for a,b in mapping.items() if a in rv.free_symbols}
+                mapped=rv.subs(actual_map,simultaneous=True)
+                require(not (rv.free_symbols & {omega,qi,qo,k,l}) - set(actual_map),'complete response argument map')
+                key=face+'-'+str(grade)+'-'+component
+                digest=hashlib.sha256(sp.srepr(sp.Tuple(*[sp.Tuple(a,b) for a,b in actual_map.items()])).encode()).hexdigest()
+                component_maps[face,grade,component]={'id':key,'sha256':digest,'original':rv,'mapped':mapped,
+                    'map':[[a,b] for a,b in actual_map.items()], 'symbolAssumptions':[[a,a.assumptions0] for a in actual_map],
+                    'flatSupport':'k=l' if grade==(0,0) else None,'frequency':3,'positiveRegulatorContinuation':False}
+                component_cache[face,grade,component]=mapped
+                J.emit('component-map-'+str(len(component_maps)),component_maps[face,grade,component])
+        assembled=sum(v for _,v in components_for(face,(1,1)))
+        signature=(L,K,sp.Integer(3),cs,sp.Rational(1,5),sp.Rational(1,10),sp.Integer(1),sp.Integer(10))
+        back={Htag:wholeH,sp.Function('Jwhole_'+face)(*signature):wholeJ,sp.Function('Dwhole_'+face)(*signature):wholeD}
+        transported=assembled.xreplace(back)
+        J.emit(face+'-assembled-mixed-components',{'components':components_for(face,(1,1)),'sum':assembled,
+            'backMap':[[a,b] for a,b in back.items()],'transported':transported})
+        J.zero(face+'-assembled-mixed-reference',transported,rc['taggedTotalMixed'].subs(omega,3))
+        for grade in G:
+            for component,rv in components_for(face,grade):
+                tags=rv.atoms(sp.Function)
+                require(all(v.func.__name__ in ('reference_height_hat','reference_slope_hat','Hwhole','Jwhole_'+face,'Dwhole_'+face) for v in tags),'zero-profile tag census')
+                zero_map={v:sp.S.Zero for v in tags}
+                reduced=rv.xreplace(zero_map)
+                J.emit(face+'-'+component+'-zero-profile-response',{'original':rv,'formalProfileMap':[[a,b] for a,b in zero_map.items()],
+                    'reduced':reduced,'distributionValueEvaluated':False})
+                J.zero(face+'-'+component+'-zero-profile-response-identity',reduced,rv if grade==(0,0) else sp.S.Zero)
+        J.zero(face+'-assembled-mixed-normal',sp.I*(1 if face=='plus' else -1)*qo*transported,
+               rc['jetKernels'][face]['mixed'].subs(omega,3))
+    coverage=[];addresses=[];consumer_fields={};response_tokens={}
+    def response_token(face,slot,b,component,c,atom):
+        key=(face,slot,b,component,c,str(atom))
+        if key not in response_tokens:response_tokens[key]=sp.Symbol('ordered_response_'+str(len(response_tokens)))
+        return response_tokens[key]
+
     for rowname in ROWS:
         for face,sign in (('plus',1),('minus',-1)):
             for slotkind,prefix in (('pressure','delta_p_'),('normal','d_w_delta_p_')):
@@ -461,17 +603,23 @@ def run_science(manifest,J,helpers,text_helpers,nonzero):
                         coverage.append({**core,'status':zero or 'ADDRESSED','sourceJets':len(source_list)})
                         for item in source_list:
                             for component,rv in components_for(face,b):
-                                reason=zero or ('EXACT_ZERO_SOURCE_JET' if item['field']==0 else None)
+                                reason=zero or ('EXACT_ZERO_SOURCE_JET' if item['field']==0 else 'EXACT_ZERO_RESPONSE' if rv==0 else None)
                                 reduced=b==(0,0)
-                                addr={**core,'component':component,'jet':item['spec'],'sourceField':item['field'],
-                                    'consumerField':cf,'epsilonCount':1,'epsilon':eps,'consumerOriginal':cv,
+                                addr={**core,'addressId':len(addresses),'component':component,'jet':item['spec'],'sourceField':item['field'],
+                                    'responsePlaceholder':response_token(face,slot,b,component,c,item['atom']),
+                                    'consumerField':cf,'epsilonCount':epsilon_power(bool(reason)),'epsilon':eps,'consumerOriginal':cv,
+                                    'epsilonMeaning':'exact zero has no power; otherwise explicit homogeneous factor, not proof of nonzero field',
+                                    'sourceOriginal':item['coefficient'],'sourceAtom':item['atom'],
                                     'sourceTransform':transform(item['field'],'l-p' if reduced else 'k-p'),
                                     'consumerTransform':transform(cf,'r-l'),'waveMultiplier':wave(item['spec'],p),
-                                    'responseCoefficient':rv,'normalMultiplier':sp.I*sign*qo if slotkind=='normal' else sp.S.One,
+                                    'responseCoefficient':component_cache[face,b,component], 'responseOriginal':rv,
+                                    'responseMap':component_maps[face,b,component],
+                                    'normalMultiplier':sp.I*sign*qfun(L) if slotkind=='normal' else sp.S.One,
+                                    'normalOriginal':sp.I*sign*qo if slotkind=='normal' else sp.S.One,
                                     'responseInputDepth':'q(l)' if reduced else 'q(k)','responseOutputDepth':'q(l)',
                                     'freeMomenta':['p','l','r'] if reduced else ['p','k','l','r'],
                                     'measure':'dl' if reduced else 'dl dk','deltaSupport':['k=l'] if reduced else [],
-                                    'status':reason or 'FORMAL_ADDRESS_AVAILABLE','globalComposition':'UNRESOLVED',
+                                    'status':reason or 'FORMAL_ADDRESS_AVAILABLE_NONZERO_NOT_ASSERTED','globalComposition':'UNRESOLVED',
                                     'nativeRowChildHashes':[e['sha256'] for e in census[rowname] if any(h['name']==slot for h in e['hits'])],
                                     'sourceOperandSha256':copies['consumer/'+face+'-source-grade-split.json']['sha256'],
                                     'responseCensusSha256':copies['reference/retained-response-census.json']['sha256'],
@@ -482,7 +630,71 @@ def run_science(manifest,J,helpers,text_helpers,nonzero):
         J.emit(rowname+'-ordered-addresses',[a for a in addresses if a['row']==rowname])
     require(len(coverage)==len(ROWS)*2*2*16,'complete 16-triple coverage per face/slot/row')
     J.emit('grade-coverage',coverage);J.emit('whole-coefficient-transforms',ft)
+    # Actual native affine rows, with independent source/response addresses substituted.
+    # Tokens retain the response/source-grade/jet identity; they have no evaluated field value.
+    for rowname in ROWS:
+        for face in ('plus','minus'):
+            substitutions={a:sp.S.Zero for a in native_rows[rowname].free_symbols if a.name in SLOTS}
+            slot_inputs={}
+            for prefix in ('delta_p_','d_w_delta_p_'):
+                slot=prefix+face;signal=sp.S.Zero
+                for b,c in itertools.product(G,repeat=2):
+                    if any(b[i]+c[i]>1 for i in (0,1)):continue
+                    for component,_ in components_for(face,b):
+                        for item in source_jets[face][c]:
+                            token=response_token(face,slot,b,component,c,item['atom'])
+                            signal+=eta**(b[0]+c[0])*sigma**(b[1]+c[1])*token*item['coefficient']*item['atom']
+                slot_inputs[slot]=signal
+                for atom in substitutions:
+                    if atom.name==slot:substitutions[atom]=signal
+            substituted=native_rows[rowname].subs(substitutions,simultaneous=True)
+            numerator,denominator=sp.fraction(sp.cancel(substituted))
+            n=polynomial_terms(numerator,eta,sigma);d=polynomial_terms(denominator,eta,sigma)
+            nonzero(J,rowname+'-'+face+'-formal-row-denominator',d.get((0,0),sp.S.Zero))
+            actual=quotient_recurrence(n,d,G,sp.cancel)
+            J.emit(rowname+'-'+face+'-actual-row-placeholder-input',{'nativeRow':native_rows[rowname],
+                'substitution':[[a,b] for a,b in substitutions.items()],'slotSignals':slot_inputs,
+                'substituted':substituted,'tokenMeaning':'Response component acting on the specified source grade and jet; no kernel evaluation',
+                'operatorOrder':['consumer multiplication','response','source multiplication then wave derivative']})
+            for g in G:
+                selected,address_sum=address_sum_for(addresses,rowname,face,g)
+                J.emit(rowname+'-'+face+'-actual-address-sum-'+str(g),{'addressIds':[a['addressId'] for a in selected],
+                    'sum':address_sum,'directRowCoefficient':actual[g]})
+                J.zero(rowname+'-'+face+'-actual-address-reconstruction-'+str(g),actual[g],address_sum)
+    J.emit('response-placeholder-index',[{'key':key,'token':v,
+        'actualAddresses':[{'id':a['addressId'],'mappedResponse':a['responseCoefficient']*a['normalMultiplier'],
+                           'operand':a['responseOriginal']*a['normalOriginal'],'map':a['responseMap']['sha256']}
+                          for a in addresses if a['responsePlaceholder']==v]}
+        for key,v in response_tokens.items()])
+    # Zero-profile and constant-coefficient reductions do not evaluate response convolutions.
+    def profile_limit(expr,constant):
+        mapping={}
+        for a in expr.free_symbols:
+            match=re.fullmatch(r'([wm])1_profile((?:_?d[123])*)',a.name)
+            if match:mapping[a]=constant[match.group(1)] if not match.group(2) else sp.S.Zero
+        return expr.xreplace(mapping),mapping
+    const_profile={'w':sp.Symbol('constant_height',real=True),'m':sp.Symbol('constant_modulation',real=True)}
+    for face in ('plus','minus'):
+        for g in G:
+            reduced,mapping=profile_limit(sources[face][g],{'w':sp.S.Zero,'m':sp.S.Zero})
+            constant,cmap=profile_limit(sources[face][g],const_profile)
+            J.emit(face+'-source-profile-limits-'+str(g),{'source':sources[face][g],
+                'zeroMap':[[a,b] for a,b in mapping.items()],'zeroProfile':reduced,
+                'constantMap':[[a,b] for a,b in cmap.items()],'constantCoefficientSource':constant})
+            J.zero(face+'-zero-profile-source-'+str(g),reduced,sources[face][0,0] if g==(0,0) else sp.S.Zero)
+    for rowname in ROWS:
+        for slot in SLOTS:
+            for g in G:
+                reduced,mapping=profile_limit(consumers[rowname][slot][g],{'w':sp.S.Zero,'m':sp.S.Zero})
+                J.emit(rowname+'-'+slot+'-zero-profile-'+str(g),{'map':[[a,b] for a,b in mapping.items()],'value':reduced})
+                J.zero(rowname+'-'+slot+'-zero-profile-consumer-'+str(g),reduced,consumers[rowname][slot][0,0] if g==(0,0) else sp.S.Zero)
+    J.emit('constant-end-and-zero-profile-scope',{'sourceConsumerConstantMultipliers':'constant*delta of own transfer',
+        'flatResponseSupport':'k=l; complete input pole and normal prefactor use q(l)',
+        'zeroProfileNonflatTags':'set height/slope/H/Jwhole/Dwhole to zero as formal profile-degree reduction',
+        'nonzeroConstantHeightResponseReduction':'NOT_COMPUTED; no new distribution product or constant-end response proof',
+        'fullOperatorConstantEndClaim':False})
     # Independent formal expansion of ordered multiplication, with coefficient fields noncommuting.
+
     C={g:sp.Symbol('Mconsumer'+str(g),commutative=False) for g in G}
     F={g:sp.Symbol('Fresponse'+str(g),commutative=False) for g in G}
     S={g:sp.Symbol('MsourceWave'+str(g),commutative=False) for g in G}
@@ -496,43 +708,96 @@ def run_science(manifest,J,helpers,text_helpers,nonzero):
         'actualAddressesFileSuffix':'-ordered-addresses.json','nativeAffineRowJoinedBeforePlaceholders':True})
     controls=[]
     qpoint={sp.Rational(3,2):sp.Integer(2),sp.Integer(2):sp.Rational(3,2),sp.Rational(30,13):sp.Rational(25,26)}
-    for momentum,depth in qpoint.items():J.zero('physical-control-depth-'+str(len(J.artifacts)),depth**2,9/sp.Rational(10,7)-sp.Rational(1,20)-momentum**2)
+    for momentum,depth in qpoint.items():
+        radpoint=rad.subs({depth_variable:momentum,cs:sp.sqrt(sp.Rational(10,7))},simultaneous=True)
+        selected_depth=qdefinition.subs({depth_variable:momentum,cs:sp.sqrt(sp.Rational(10,7))},simultaneous=True)
+        J.emit('physical-control-depth-input-'+str(len(J.artifacts)),{'momentum':momentum,'depth':depth,'radicand':radpoint,
+            'selectedSheetDepth':selected_depth,'positiveDepth':depth.is_positive,'positiveRadicand':radpoint.is_positive})
+        require(depth.is_positive is True and radpoint.is_positive is True,'control on positive outgoing branch')
+        J.zero('physical-control-depth-'+str(len(J.artifacts)),depth,selected_depth)
     def sensitivity(name,baseline,corrupt,context_record):
         movement=sp.cancel(corrupt-baseline)
         J.emit(name+'-control-operands',{'baselineCoefficient':baseline,'corruptCoefficient':corrupt,'movement':movement,
              'context':context_record,'formalTagCoefficientOnly':True,'physicalConvolutionNotEvaluated':True})
         cert=nonzero(J,name+'-movement',movement);controls.append({'name':name,'movement':movement,'certificate':cert,'formalTagCoefficientOnly':True})
+    def choose_source(face,grade,spatial):
+        candidates=[]
+        for item in source_jets[face][grade]:
+            val=sp.cancel(item['field'].subs(x,0)*wave(item['spec'],sp.Rational(3,2)))
+            applicable=(item['spec']['spatialOrders'][0]>0) if spatial else (x not in item['field'].free_symbols)
+            candidates.append({'jet':item,'valueAtDeclaredPoint':val,'eligible':applicable,
+                'zero':val.is_zero,'finite':val.is_finite})
+        selected=select_certified_candidate(candidates)
+        chosen=None if selected is None else selected['jet']
+        J.emit(face+'-source-control-candidates-'+str(grade),{'candidates':candidates,
+            'selected':chosen,'noneApplicable':chosen is None,'unknownTreatedAsApplicable':False})
+        require(chosen is not None,'no certified applicable source control; evidence preserved')
+        return chosen
+    selected_sources={(f,g):choose_source(f,g,g==(1,0)) for f in ('plus','minus') for g in ((1,0),(0,0))}
+    def control_address(row,face,slot,a,b,c,jet,component):
+        matches=[v for v in addresses if v['row']==row and v['face']==face and v['slot']==slot
+                 and v['consumerGrade']==a and v['responseGrade']==b and v['sourceGrade']==c
+                 and v['sourceAtom']==jet['atom'] and v['component']==component]
+        J.emit('control-address-selection-'+str(len(J.artifacts)),{'requested':[row,face,slot,a,b,c,jet['atom'],component],
+            'matches':matches,'count':len(matches)})
+        require(len(matches)==1 and matches[0]['epsilonCount']==1,'one actual nonzero-candidate address')
+        return matches[0]
+    def response_scalar(address,kin,kout,strip_slope=False):
+        original=address['responseOriginal']*address['normalOriginal']
+        substitutions={omega:sp.Integer(3),k:kin,l:kout,qi:qpoint[kin],qo:qpoint[kout]}
+        if strip_slope:
+            slopes=[v for v in original.atoms(sp.Function) if v.func.__name__=='reference_slope_hat']
+            require(len(slopes)==1,'one actual saved slope profile factor')
+            substitutions[slopes[0]]=sp.S.One
+        value=original.subs(substitutions,simultaneous=True)
+        J.emit('control-response-map-'+str(len(J.artifacts)),{'addressId':address['addressId'],'original':original,
+            'map':[[a,b] for a,b in substitutions.items()],'value':value,
+            'slopeTagCoefficientOnly':strip_slope,'responseMapSha256':address['responseMap']['sha256']})
+        require(not value.free_symbols and not value.atoms(sp.Function),'fully bound scalar control coefficient')
+        return value
     for rowname in ('THETA_BALANCE','E_W_BALANCE'):
         for face,sign in (('plus',1),('minus',-1)):
             cp=consumer_fields[rowname,'delta_p_'+face][0,0];cn=consumer_fields[rowname,'d_w_delta_p_'+face][1,0]
+            J.emit(rowname+'-'+face+'-consumer-control-applicability',{'pressure':cp,'normal':cn,'normalAtZero':cn.subs(x,0)})
             require(x not in cp.free_symbols,'constant pressure consumer')
             nonzero(J,rowname+'-'+face+'-pressure-applicability',cp)
             nonzero(J,rowname+'-'+face+'-normal-applicability',cn.subs(x,0))
-            src10=next((a for a in source_jets[face][1,0] if a['field']!=0 and a['spec']['spatialOrders'][0]>0),None)
-            require(src10 is not None,'actual nonzero source10 spatial jet')
-            nonzero(J,rowname+'-'+face+'-source10-profile-applicability',src10['field'].subs(x,0))
-            # Entire source transform is retained as a tag. Baseline/corruption are its coefficients.
-            flat3=sp.Rational(3,10)/(sp.Rational(3,2)+beta3)
+            src10=selected_sources[face,(1,0)];src00=selected_sources[face,(0,0)]
+            aflat=control_address(rowname,face,'pressure',(0,0),(0,0),(1,0),src10,'NATIVE_FLAT')
+            flat3=response_scalar(aflat,sp.Integer(2),sp.Integer(2))
+            J.zero(rowname+'-'+face+'-flat-control-saved-join',aflat['responseOriginal'],rc['flat'].subs({omega:3,qi:qo},simultaneous=True))
+            J.zero(rowname+'-'+face+'-flat-control-scalar',flat3,sp.Rational(3,10)/(sp.Rational(3,2)+beta3))
             wp=wave(src10['spec'],sp.Rational(3,2));wk=wave(src10['spec'],sp.Integer(2))
-            context10={'sourceJet':src10,'sourceTransform':transform(src10['field'],'2-3/2'),'support':'k=l=r=2,p=3/2','csSquared':sp.Rational(10,7)}
+            context10={'addressId':aflat['addressId'],'sourceJet':src10,'sourceTransform':transform(src10['field'],'2-3/2'),
+                'support':'k=l=r=2,p=3/2','csSquared':sp.Rational(10,7),'actualResponseScalar':flat3}
             sensitivity(rowname+'-'+face+'-source-p-to-k',cp*flat3*wp,cp*flat3*wk,context10)
             sensitivity(rowname+'-'+face+'-omit-source10',cp*flat3*wp,sp.S.Zero,context10)
-            src00=next((a for a in source_jets[face][0,0] if a['field']!=0 and x not in a['field'].free_symbols and wave(a['spec'],sp.Rational(3,2))!=0),None)
-            require(src00 is not None,'nonzero constant source00')
             sourceval=src00['field']*wave(src00['spec'],sp.Rational(3,2));nonzero(J,rowname+'-'+face+'-source00-applicability',sourceval)
-            slope=(sp.Rational(3,10)*sp.Rational(3,2))/((sp.Rational(3,2)+beta3)*(2+beta3))
-            tags={'consumerTransform':transform(cn,'30/13-2'),'slopeProfile':'j(2-3/2)','support':'p=k=3/2,l=2,r=30/13','sourceJet':src00,'csSquared':sp.Rational(10,7)}
-            baseline=sp.I*sign*sp.Rational(3,2)*slope*sourceval
-            sensitivity(rowname+'-'+face+'-normal-q-l-to-r',baseline,sp.I*sign*sp.Rational(25,26)*slope*sourceval,tags)
+            aslope=control_address(rowname,face,'normal',(1,0),(0,1),(0,0),src00,'NATIVE_SLOPE')
+            slope_normal=response_scalar(aslope,sp.Rational(3,2),sp.Integer(2),True)
+            J.zero(rowname+'-'+face+'-slope-control-saved-join',aslope['responseOriginal']*aslope['normalOriginal'],rc['jetKernels'][face]['slope'].subs(omega,3))
+            tags={'addressId':aslope['addressId'],'consumerTransform':transform(cn,'30/13-2'),
+                'slopeProfile':'j(2-3/2)','support':'p=k=3/2,l=2,r=30/13','sourceJet':src00,'csSquared':sp.Rational(10,7)}
+            baseline=slope_normal*sourceval
+            sensitivity(rowname+'-'+face+'-normal-q-l-to-r',baseline,baseline*qpoint[sp.Rational(30,13)]/qpoint[sp.Integer(2)],tags)
             sensitivity(rowname+'-'+face+'-omit-consumer10',baseline,sp.S.Zero,tags)
+            adirect=control_address(rowname,face,'pressure',(0,0),(1,1),(0,0),src00,'INHERITED_DIRECT_WHOLE_OFF_DIAGONAL')
+            dtag=adirect['responseCoefficient'];require(dtag.func.__name__=='Dwhole_'+face,'actual direct tag')
+            pointtag=dtag.subs({K:sp.Rational(3,2),cs:sp.sqrt(sp.Rational(10,7))},simultaneous=True)
+            J.zero(rowname+'-'+face+'-direct-whole-unit-multiplier',adirect['normalOriginal'],sp.S.One)
             directcoef=cp*sourceval
             for label,factor in (('omit-direct',0),('double-direct',2)):
                 sensitivity(rowname+'-'+face+'-'+label,directcoef,factor*directcoef,
-                    {'tag':'Dwhole_'+face+'(2,3/2)','sourceJet':src00,'grades':[[0,0],[1,1],[0,0]],'externalResolventMultiplier':1})
+                    {'addressId':adirect['addressId'],'tag':pointtag,'fullSignature':list(pointtag.args),
+                     'support':['k=p=3/2','r=l'],'freeExternalMomentum':L,'sourceJet':src00,
+                     'grades':[[0,0],[1,1],[0,0]],'externalResolventMultiplier':1})
             if face=='minus':
-                normflat=sp.I*sign*2*sp.Rational(3,10)/(2+beta3)*sourceval
+                anormal=control_address(rowname,face,'normal',(1,0),(0,0),(0,0),src00,'NATIVE_FLAT')
+                normflat=response_scalar(anormal,sp.Rational(3,2),sp.Rational(3,2))*sourceval
+                J.zero(rowname+'-lower-flat-control-saved-join',anormal['responseOriginal']*anormal['normalOriginal'],rc['jetKernels'][face]['flat'].subs(omega,3))
                 sensitivity(rowname+'-lower-jet-sign',normflat,-normflat,
-                    {'consumerTransform':transform(cn,'30/13-3/2'),'support':'p=k=l=3/2,r=30/13','grade':[1,0]})
+                    {'addressId':anormal['addressId'],'consumerTransform':transform(cn,'30/13-3/2'),
+                     'support':'p=k=l=3/2,r=30/13','grade':[1,0]})
     J.emit('responsive-formal-controls',controls)
     J.emit('applicability-obligations',{'globalComposition':'UNRESOLVED','globalTestSpace':'UNRESOLVED','composedGrazingLimit':'UNRESOLVED',
         'sourceRegulatorContinuation':'NOT_CLAIMED','internalCertifiedDomain':{'cs':[1,2],'k/l':[-3,3]},

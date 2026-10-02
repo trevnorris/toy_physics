@@ -1,0 +1,46 @@
+{
+  "recordedUtc": "2026-10-02T11:45:16.935939+00:00",
+  "status": "LOCAL_SOURCE_AND_SYNTHETIC_CHECKS_ONLY",
+  "workerSha256": "d495977d1369ea3b61d5cfe1f7b73b79e7017c09374945d56165d6ebe4f8e689",
+  "manifestSha256": "50f3504feb15c5ba50ee7a475a66059ae98f615787c099fdfd2c38cfb8011b85",
+  "testsSha256": "1fefc9af213781816cec35cdec58093ba6e5efcba5baad11eea559881267d080",
+  "testOutput": "...................\n----------------------------------------------------------------------\nRan 19 tests in 0.210s\n\nOK\n",
+  "testsPassed": true,
+  "testCount": 19,
+  "scienceImports": false,
+  "payloadRestored": false,
+  "savedFilesUnchanged": 122,
+  "sourcePinsChecked": 138,
+  "changedPacketFiles": [
+    {
+      "packetPath": "worker.py",
+      "reviewedSha256": "e85c0b1cd36dfe695b0545e846b64d3109e09b59356f6539ffb928da011b4dcc",
+      "newSha256": "d495977d1369ea3b61d5cfe1f7b73b79e7017c09374945d56165d6ebe4f8e689"
+    },
+    {
+      "packetPath": "inputs.json",
+      "reviewedSha256": "c2504c4140c7fb64e4e8d8059c42d9948cc78d3670599cd0d7ba3978f0745894",
+      "newSha256": "50f3504feb15c5ba50ee7a475a66059ae98f615787c099fdfd2c38cfb8011b85"
+    },
+    {
+      "packetPath": "tooling-tests.py",
+      "reviewedSha256": "7c803b028cc1fd33d2af824ecc714906ed9b68cc66077ade3841db96f8a1dd2c",
+      "newSha256": "1fefc9af213781816cec35cdec58093ba6e5efcba5baad11eea559881267d080"
+    },
+    {
+      "packetPath": "review-prompt.md",
+      "reviewedSha256": "b6be10823c4666bc85a3ec8a743926011ca64cc9fe06fd7d0b8d4f439898428f",
+      "newSha256": "225295875bf9a6c1d26cfaf903b4501b59ff2aca6a06db809417e8908e53ad8a"
+    },
+    {
+      "packetPath": "implementation-guide.md",
+      "reviewedSha256": "6ef17e7ba56303e56d8a74b6f0993c55c8919cfb04a36d3cf5108126105b1f6b",
+      "newSha256": "0f8da3de3fab02e374f1b3c2b3eb57c5b59a947d02bb37c0b7ed63344c0b37d0"
+    }
+  ],
+  "methodUnchanged": true,
+  "launcherGuardSupervisorUnchanged": true,
+  "priorReviewedPacketIntact": true,
+  "independentBuildClearance": false,
+  "newTrackedDataOver1MiB": []
+}

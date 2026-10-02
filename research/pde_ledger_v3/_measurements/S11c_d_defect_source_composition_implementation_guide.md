@@ -37,3 +37,41 @@ retained rectangle; the unprojected21term remains saved and excluded.
 No old reviewer text is in this packet. Current method-only history does not
 supply paired clearance; this assessment covers the concrete build and precise
 typed-factor method without treating author disposition as independent clearance.
+
+## Actual assembly and evidence checks
+
+The instrument now substitutes independent response/source-grade/jet tokens into
+the actual native affine rows and compares every retained coefficient with the
+published address sum. Each token records its actual response operand, mapped
+expression, normal factor and address IDs. This is a formal coefficient and
+routing check, not evaluation of a nonlocal operator. The abstract noncommuting
+check remains a separate enumeration check.
+
+The mixed component list is summed and its H/J/D tags mapped back to the saved
+total reference and normal responses. Each component has its own source-symbol
+map, assumptions and map hash; flat support maps the full pole to the output
+depth. Whole H retains the saved left-height transfer variable and variable-change
+record, separately from J's middle variable. No whole term is integrated again.
+
+Additional inherited operand checks join isolated-factor input/zero-return pairs,
+both raw kernels, raw mixed rows and full closed-row original-input/zero-return
+pairs. Prior cancellation proofs are inherited; current operand equalities are
+new joins. Historical upper pressure ablations retain their excluded (2,1) term
+and zero retained coefficient; no prior lower ablation is invented.
+
+The independent-D adapter checks the entire native trace matrix action, including
+the zero (1,2) injection, and the explicit excluded height correction. Its
+reference location uses the bound W_0. Controls select actual addressed source
+jets, persist every candidate and reject unknown applicability. Scalar response
+coefficients come from saved response entries. Direct controls carry the full
+whole-tag signature, with k=p and r=l, leaving l free. Movements remain formal
+tag coefficients, not field or loss values.
+
+Native jet dimensions are extracted from the pinned unrestricted wave_jet field
+rule without executing it. Zero addresses have epsilon power zero; other entries
+record explicit first-degree homogeneity, not a proof of nonzero response. Sheet
+checks include branch conditions and positive outgoing depth at the control
+points. Zero-profile source/consumer reductions and formal response-tag zeros
+are checked. A nonzero constant-height full-response reduction is explicitly
+not computed: the constant-coefficient Fourier delta rule is recorded without
+claiming a new distribution product or whole-operator constant-end result.

@@ -1,0 +1,50 @@
+{
+  "status": "READY_FOR_SOURCE_BUILD_ASSESSMENT_ONLY",
+  "recordedUtc": "2026-10-02T11:45:16.935939+00:00",
+  "root": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-source-composition-20261002/build-review-r2",
+  "scope": "Both-face real-omega3 retained source/consumer Fourier and grade/address inventory; native c2 plus inherited direct correction, no integral/matrix/defect sweep/loss",
+  "static": {
+    "status": "STATIC_CORRECTED_BUILD_PREPARATION_NO_SCIENCE",
+    "runnerSha256": "bc3b5337a6416d6a7b84bcc21aa1fbde298b3d69d7634d51ec4892ec556c62c0",
+    "launcherSha256": "b06398239090661b80494cdf3af31d329ccaa1c4dc4ce97101a13b923f27967d",
+    "completionMessageSha256": "5423484428ef7e0b6ec09815464b88a0fd0f79640f7fba25aacfdc6f26aae95d",
+    "packetSha256": "6e3ac39dab9fa78a081a2761735fb0042fdb7c45797df6a8198e2d38f6b5489b",
+    "archiveSha256": "81737ff2c514e2cad120ac3a867a2ecff09ee46e6196cccf097bb1e2da0e7259",
+    "files": 144,
+    "bytes": 5913593,
+    "workerSha256": "d495977d1369ea3b61d5cfe1f7b73b79e7017c09374945d56165d6ebe4f8e689",
+    "manifestSha256": "50f3504feb15c5ba50ee7a475a66059ae98f615787c099fdfd2c38cfb8011b85",
+    "scienceLauncherSha256": "acbd287478be6e224523bc86a8818b4fae48614ee8dd16303ccd6b63f0577c8d",
+    "methodSha256": "0f3d796474f2fb5da11e1f0d4ada02e7837877f4ef27990f1b62c1c0cf4c4d0f",
+    "sourceHashesChecked": 143,
+    "payloadRestored": false,
+    "noGateExists": true,
+    "tests": "19 stdlib tests passed; not science",
+    "noReviewVerdict": true
+  },
+  "savedFiles": 122,
+  "sourcePins": 138,
+  "authority": {
+    "status": "STANDING_USER_AUTHORIZED_FIXED_PACKET",
+    "recordedUtc": "2026-10-02T11:45:16.935939+00:00",
+    "packetSha256": "6e3ac39dab9fa78a081a2761735fb0042fdb7c45797df6a8198e2d38f6b5489b",
+    "archiveSha256": "81737ff2c514e2cad120ac3a867a2ecff09ee46e6196cccf097bb1e2da0e7259",
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "files": 144,
+    "bytes": 5913593,
+    "AGENTSSha256": "3485cb891f831619eef7de1266fa1ae01da8a140faaa18c97e65c1625098c5bf",
+    "authority": "Standing necessary substantive validation corrections and established-reviewer consent; no routine question",
+    "scope": "Both-face real-omega3 retained source/consumer Fourier and grade/address inventory; native c2 plus inherited direct correction, no integral/matrix/defect sweep/loss",
+    "noAutomaticRetry": true,
+    "noPeerReportsIncluded": true
+  },
+  "allSourcePacketArchiveHashesMatch": true,
+  "noScientificImportsOrRestoration": true,
+  "noSourceVerdictInferred": true,
+  "priorBuildRecord": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_source_composition_build_review_record.json",
+  "priorBuildCommit": "72fe3a8e",
+  "newTrackedFilesOver1MiB": []
+}

@@ -1,0 +1,39 @@
+{
+  "status": "READY_FOR_ONE_REVIEWED_BOUNDED_INSTRUMENT",
+  "recordedUtc": "2026-10-02T18:18:51.127399+00:00",
+  "buildReviewCommit": "cea9df97",
+  "gatePath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_weak_composition_gate.json",
+  "gateSha256": "be73597881a7386c439aecfb6ae072b1c36d904df1c4786122d39e736a96929f",
+  "workerSha256": "77ec3fa030b5a5a839c31b2be1d8dd76b392b06f3cbf5b859870a6f20b56740c",
+  "manifestSha256": "d6797efd88af2bb08535072031d4d1ffc4218d87929535158b7015a652278fd8",
+  "launcherSha256": "d471924724bb41777861d8af2c3e3b2c5b0779bdd4081814cf103571ca519e32",
+  "sourcePins": 345,
+  "savedFiles": 202,
+  "allSourceHashesMatch": true,
+  "actualStdlibLaunchWorkerGateAndInvocationPassed": true,
+  "actualCommandHelpersEqualReviewedPinnedHelpers": true,
+  "additionalIdentityPins": 12,
+  "hookArmsBeforeScientificStart": true,
+  "preflightHost": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-weak-composition-20261002/execution-preparation/host-preflight.json",
+  "preflightHostSha256": "37197ac09d542fa5eb4421916d0bdf4146f27784b65e7b7af90ed059849f5997",
+  "toolingTests": {
+    "methodsPassed": 18,
+    "record": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_weak_composition_build_r2_correction.json",
+    "scope": "Prior passed stdlib tests; no scientific imports/restoration during readiness"
+  },
+  "scientificRunStarted": false,
+  "resourceLimits": {
+    "memoryBytes": 4294967296,
+    "poolMemoryBytes": 17179869184,
+    "swapBytes": 0,
+    "cpuCount": 1,
+    "nativeThreads": 1,
+    "tasksMax": 32,
+    "hostReserveBytes": 4294967296,
+    "durationLimits": null,
+    "priority": "desktop-managed"
+  },
+  "noOptionalEditsAfterBuildReview": true,
+  "runtimeResultAcceptance": false,
+  "newTrackedDataOver1MiB": []
+}

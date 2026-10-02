@@ -1,0 +1,58 @@
+{
+  "status": "BOTH_FRESH_SOURCE_ONLY_REVIEWERS_STARTED_HOOK_ARMED",
+  "recordedUtc": "2026-10-02T11:47:53.444680+00:00",
+  "preparedCommit": "e2f6d535",
+  "root": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-source-composition-20261002/build-review-r2",
+  "launch": {
+    "jobPid": 1921220,
+    "watcherPid": 1921221,
+    "packetSha256": "6e3ac39dab9fa78a081a2761735fb0042fdb7c45797df6a8198e2d38f6b5489b",
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "concurrentReviewWorkers": 2,
+    "scienceCalls": 0,
+    "runnerSha256": "bc3b5337a6416d6a7b84bcc21aa1fbde298b3d69d7634d51ec4892ec556c62c0",
+    "launcherSha256": "b06398239090661b80494cdf3af31d329ccaa1c4dc4ce97101a13b923f27967d"
+  },
+  "hookState": {
+    "status": "waiting",
+    "watcherPid": 1921221,
+    "jobPid": 1921220,
+    "thread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+    "startedUtc": "2026-10-02T11:46:14.920163+00:00",
+    "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
+    "messageSha256": "5423484428ef7e0b6ec09815464b88a0fd0f79640f7fba25aacfdc6f26aae95d",
+    "notifications": {}
+  },
+  "reviewers": {
+    "claude": {
+      "sessionId": "81db5a31-0e95-49d8-8661-064b18d84c20",
+      "pid": 1921231,
+      "startedUtc": "2026-10-02T11:46:15.075734+00:00",
+      "privateHashesChecked": 144,
+      "sourceOnly": true,
+      "hostProcessPresent": true,
+      "hostProcessState": "State:\tS (sleeping)"
+    },
+    "grok": {
+      "sessionId": "96dbb581-d477-4278-90ff-2ae6e6ce1a4c",
+      "pid": 1921232,
+      "startedUtc": "2026-10-02T11:46:15.080822+00:00",
+      "privateHashesChecked": 144,
+      "sourceOnly": true,
+      "hostProcessPresent": true,
+      "hostProcessState": "State:\tS (sleeping)"
+    }
+  },
+  "packetSha256": "6e3ac39dab9fa78a081a2761735fb0042fdb7c45797df6a8198e2d38f6b5489b",
+  "archiveSha256": "81737ff2c514e2cad120ac3a867a2ecff09ee46e6196cccf097bb1e2da0e7259",
+  "reportReadBeforeBothFinished": false,
+  "scienceCalls": 0,
+  "noReadyGate": true,
+  "automaticRetry": false,
+  "noModelPolling": true,
+  "startupInspectionNote": "Initial sandbox process-presence assertion could not see host PIDs; inspected host /proc once instead. No process restart or reviewer retry. No report read.",
+  "next": "Await the local completion event, inspect both delivered reports and exact bytes, then adjudicate. No routine stage permission needed."
+}

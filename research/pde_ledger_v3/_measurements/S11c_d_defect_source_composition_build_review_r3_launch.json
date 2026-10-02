@@ -1,0 +1,57 @@
+{
+  "status": "BOTH_FRESH_SOURCE_ONLY_REVIEWERS_STARTED_HOOK_ARMED",
+  "recordedUtc": "2026-10-02T12:39:34.619561+00:00",
+  "preparedCommit": "c6977045",
+  "root": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-source-composition-20261002/build-review-r3",
+  "launch": {
+    "jobPid": 2579737,
+    "watcherPid": 2579738,
+    "packetSha256": "177345b642cea07846ef60f5fea323fd5b2276a9434d1b8d9ba2f2a186feed06",
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "concurrentReviewWorkers": 2,
+    "scienceCalls": 0,
+    "runnerSha256": "bc3b5337a6416d6a7b84bcc21aa1fbde298b3d69d7634d51ec4892ec556c62c0",
+    "launcherSha256": "b06398239090661b80494cdf3af31d329ccaa1c4dc4ce97101a13b923f27967d"
+  },
+  "hookState": {
+    "status": "waiting",
+    "watcherPid": 2579738,
+    "jobPid": 2579737,
+    "thread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+    "startedUtc": "2026-10-02T12:38:53.875516+00:00",
+    "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
+    "messageSha256": "f28e233c0e536668feb2c9447338f9fac074ed204dc4c89689105c5d146955db",
+    "notifications": {}
+  },
+  "reviewers": {
+    "claude": {
+      "sessionId": "d49522c1-6e49-417e-bd7d-54d903558597",
+      "pid": 2579749,
+      "startedUtc": "2026-10-02T12:38:54.018977+00:00",
+      "privateHashesChecked": 144,
+      "sourceOnly": true,
+      "hostProcessPresent": true,
+      "hostProcessState": "State:\tS (sleeping)"
+    },
+    "grok": {
+      "sessionId": "178f2bc9-0819-49a2-9b2f-5ff040b7226f",
+      "pid": 2579748,
+      "startedUtc": "2026-10-02T12:38:54.013881+00:00",
+      "privateHashesChecked": 144,
+      "sourceOnly": true,
+      "hostProcessPresent": true,
+      "hostProcessState": "State:\tS (sleeping)"
+    }
+  },
+  "packetSha256": "177345b642cea07846ef60f5fea323fd5b2276a9434d1b8d9ba2f2a186feed06",
+  "archiveSha256": "7d1bef339b7f83b8e0066e6e9ed87536c1c2e93a2cda97cb79fd16f4b2a12976",
+  "reportReadBeforeBothFinished": false,
+  "scienceCalls": 0,
+  "noReadyGate": true,
+  "automaticRetry": false,
+  "noModelPolling": true,
+  "next": "Await local completion; inspect both reports and bytes before disposition. Continue clear bounded authorized work without routine permission."
+}

@@ -1,0 +1,54 @@
+{
+  "status": "INDEPENDENT_BUILD_PAIR_LAUNCHED_HOOK_FIRST",
+  "recordedUtc": "2026-10-02T17:03:30.976580+00:00",
+  "root": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-weak-composition-20261002/build-review",
+  "preparationCommit": "3389ff48",
+  "methodAssessmentCommit": "37410a0c",
+  "completedInventoryCommit": "7455ee78",
+  "packetSha256": "ad1be7c06ef0399ef1bf7e01eed8680cbcdc1da78dd5815be7cd7da6acdfd9dd",
+  "archiveSha256": "d3e7e03dfe95ebe9707df023e537af28598ea8a219ef3e0f3b8a86455d04b2e1",
+  "files": 429,
+  "bytes": 15669910,
+  "launch": {
+    "jobPid": 2668412,
+    "watcherPid": 2668413,
+    "packetSha256": "ad1be7c06ef0399ef1bf7e01eed8680cbcdc1da78dd5815be7cd7da6acdfd9dd",
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "concurrentReviewWorkers": 2,
+    "scienceCalls": 0,
+    "runnerSha256": "bc3b5337a6416d6a7b84bcc21aa1fbde298b3d69d7634d51ec4892ec556c62c0",
+    "launcherSha256": "b06398239090661b80494cdf3af31d329ccaa1c4dc4ce97101a13b923f27967d"
+  },
+  "receipts": {
+    "claude": {
+      "sessionId": "5f0736e3-bbe5-45b2-bd5f-649a188d3aa9",
+      "pid": 2668442,
+      "startedUtc": "2026-10-02T17:01:25.826076+00:00",
+      "promptSha256": "5a1bd6701cb28ae3bbde0741e4f35607544e231dc40a8857ac51f41f1142b177",
+      "cwd": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-weak-composition-20261002/build-review/claude/work",
+      "scientificExecutionEnabled": false
+    },
+    "grok": {
+      "sessionId": "0a69e998-a3c5-4fb9-8e73-4861dcba14bc",
+      "pid": 2668443,
+      "startedUtc": "2026-10-02T17:01:25.826809+00:00",
+      "promptSha256": "5a1bd6701cb28ae3bbde0741e4f35607544e231dc40a8857ac51f41f1142b177",
+      "cwd": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-weak-composition-20261002/build-review/grok/work",
+      "scientificExecutionEnabled": false
+    }
+  },
+  "hookStartedUtc": "2026-10-02T17:01:25.505061+00:00",
+  "reviewStartUtc": "2026-10-02T17:01:25.664987+00:00",
+  "hookSession": "01a0e01b-ef84-7192-817f-584cda5d339b",
+  "allPacketPrivateSourceHashesIntact": true,
+  "hashChecks": 1718,
+  "scienceCalls": 0,
+  "noPeerReportsShared": true,
+  "reviewOutputsRead": false,
+  "automaticRetry": false,
+  "standingAuthoritySha256": "f0751603d95f3e32048973b7dd5eb0220282c5f6e9d95f63c62c500c262f8887",
+  "noNewTrackedGeneratedFilesOver1MiB": true
+}

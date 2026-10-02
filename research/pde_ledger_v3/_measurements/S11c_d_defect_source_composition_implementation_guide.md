@@ -75,3 +75,36 @@ points. Zero-profile source/consumer reductions and formal response-tag zeros
 are checked. A nonzero constant-height full-response reduction is explicitly
 not computed: the constant-coefficient Fourier delta rule is recorded without
 claiming a new distribution product or whole-operator constant-end result.
+
+## Support, complete factors and parser coverage
+
+Off-delta controls require nonconstant source10 and normal-consumer10 fields.
+The instrument maps the already-bound tanh(x/10) to an independent scalar and
+certifies a polynomial with finite constant coefficients, a nonzero constant
+denominator and a nonzero positive-degree coefficient. It preserves the map,
+reconstruction and exact coefficient evidence. This certifies nonconstancy of
+the field, not a nonzero Fourier value at any transfer. No profile value at x=0
+serves as a transform certificate. Constant source00 controls retain their own
+delta support. Every reported movement is a formal transform-tag coefficient.
+
+Each actual address now has a full-factor residual joining the saved normal
+factor and original response through the complete source-bound argument map to
+the mapped address factor. Identical new operands can share a completed join;
+its identity and consuming addresses remain recorded. This supplements the
+native affine-row token identity, whose tokens alone do not test normal signs
+or momentum arguments.
+
+The source-text census cross-checks pressure-name substring counts against
+literal AST hits, including both substrings in a normal-slot name. Attribute,
+plural or dynamic Symbol/Function constructors and nonliteral Add partitions
+are refused with evidence. All four pressure/normal slots have ablation joins.
+The single native reference-location assignment is executed on the bound scalar
+context before the existing four direct-adapter assignments.
+
+Historical excluded (2,1) remainders must be present with a nonzero constant
+coefficient after their independent formal factors are removed. Inherited
+left-assignment-plus-trace input/zero-return and right-assignment coefficient
+records join the current mixed census without replaying their prior proofs.
+Native jet dimensions and saved consumer totals are checked; required source
+coefficient dimensions after numerical binding remain inferred expectations,
+not independently verified units. The normalized source unit is inherited.

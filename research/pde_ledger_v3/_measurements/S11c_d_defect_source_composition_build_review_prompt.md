@@ -55,3 +55,13 @@ variable. Formal zero-profile reductions are supplied; the nonzero constant-
 height full-response reduction is explicitly unavailable. Decide whether that
 scope is sufficient for this bounded inventory, without treating it as global
 operator applicability. No prior reviewer reports or commentary are supplied.
+
+Assess off-delta support eligibility using the exact nonconstant tanh-polynomial
+certificate and the explicit absence of any Fourier-value/nonzero-transform
+claim. Inspect complete original-response plus saved-normal-factor map residuals
+for each address, all four slot ablations, conservative constructor-text census,
+native reference-location assignment, nonzero formal excluded-grade evidence
+and inherited two-assignment/trace provenance. Source coefficient dimensions
+inferred after binding are required units only; no new source dimensional audit
+is asserted. Evaluate whether these explicitly limited checks support this
+inventory. Do not infer a computed field or global operator result from them.

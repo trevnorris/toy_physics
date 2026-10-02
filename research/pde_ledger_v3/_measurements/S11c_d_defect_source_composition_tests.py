@@ -11,7 +11,7 @@ import unittest
 
 HERE=Path(__file__).resolve().parent
 WORKER=HERE/'S11c_d_defect_source_composition.py'
-NAMES={'require','triples','jet_spec','broad_row_census','quotient_recurrence','definitions','native_jet_dimensions','select_certified_candidate','epsilon_power','address_sum_for'}
+NAMES={'require','triples','jet_spec','broad_row_census','quotient_recurrence','definitions','native_jet_dimensions','select_certified_candidate','epsilon_power','address_sum_for','complete_factor_map'}
 NS={'ast':ast,'hashlib':hashlib,'itertools':itertools,'re':re,
     'G':((0,0),(1,0),(0,1),(1,1))}
 TREE=ast.parse(WORKER.read_text())
@@ -121,6 +121,42 @@ class Tests(unittest.TestCase):
         namespace={'face':-1,'inputs':Inputs()}
         exec(compile(ast.Module(body=assignments,type_ignores=[]),'native-reference-standin','exec'),namespace)
         self.assertEqual(namespace['reference'],Fraction(-3,5))
+
+    def test_broad_scan_refuses_attribute_and_dynamic_routes(self):
+        for text in ("sp.Symbol('delta_p_plus')", "Function(name)", "symbols('delta_p_plus d_w_delta_p_plus')",
+                     "Symbol(f'delta_p_{face}')", "sp.Add(Symbol('delta_p_plus'),Integer(0))"):
+            rows=NS['broad_row_census'](text)
+            self.assertTrue(any(not v['completeNameCoverage'] for v in rows),text)
+            self.assertTrue(any(v['unsupportedConstructors'] for v in rows),text)
+    def test_broad_scan_accounts_overlapping_name_substrings(self):
+        rows=NS['broad_row_census']("Add(Symbol('d_w_delta_p_minus'),Symbol('delta_p_plus'))")
+        self.assertEqual([v['rawPressureSubstringCount'] for v in rows],[2,1])
+        self.assertTrue(all(v['completeNameCoverage'] for v in rows))
+    def test_broad_scan_refuses_hidden_substring(self):
+        rows=NS['broad_row_census']("Add(Symbol('u_1'),Str('delta_p_hidden'))")
+        self.assertFalse(rows[1]['completeNameCoverage'])
+        self.assertEqual(rows[1]['hits'],[])
+    def test_full_factor_map_includes_normal_output(self):
+        roles={'qi':'q(k)','qo':'q(l)','omega':3}
+        mapped=NS['complete_factor_map']({'qi'},{'qo'},roles,[['qi','q(k)']])
+        self.assertEqual(mapped,{'qi':'q(k)','qo':'q(l)'})
+        # The direct whole response has no raw depth; its normal prefactor still does.
+        self.assertEqual(NS['complete_factor_map'](set(),{'qo'},roles,[]),{'qo':'q(l)'})
+    def test_full_factor_map_rejects_wrong_or_missing_role(self):
+        roles={'qi':'q(k)','qo':'q(l)','omega':3}
+        for pairs in ([],[['qi','q(l)']],[['qi','q(k)'],['qo','q(l)']],[['qi','q(k)'],['qi','q(k)']]):
+            with self.assertRaises(ValueError):NS['complete_factor_map']({'qi'},{'qo'},roles,pairs)
+    def test_off_delta_controls_do_not_use_profile_at_zero(self):
+        text=WORKER.read_text();start=text.index('    def choose_source(')
+        controls=text[start:text.index("    J.emit('responsive-formal-controls'",start)]
+        self.assertNotIn('subs(x,0)',controls)
+        self.assertIn("x in item['field'].free_symbols",controls)
+        self.assertIn("cncert['status']=='NONCONSTANT_POLYNOMIAL_IN_TANH_CERTIFIED'",controls)
+        self.assertIn("'transformValue':'NOT_EVALUATED_OR_CERTIFIED_NONZERO'",controls)
+    def test_source_unit_expectation_not_claimed_as_new_proof(self):
+        text=WORKER.read_text()
+        self.assertNotIn('coefficientDimensionFromSource',text)
+        self.assertIn("'coefficientDimensionIndependentlyVerified':False",text)
 
     def test_metadata_route_class_supported(self):
         native=(HERE.parent/'scripts/S11c_c2_selfenergy_fold_sympy_audit.py').read_text()

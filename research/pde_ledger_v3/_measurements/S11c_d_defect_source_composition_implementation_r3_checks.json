@@ -1,0 +1,46 @@
+{
+  "recordedUtc": "2026-10-02T12:37:50.103014+00:00",
+  "status": "LOCAL_SOURCE_AND_SYNTHETIC_CHECKS_ONLY",
+  "workerSha256": "1e269ca42dcdebcf1f5e7e069fbda48d6de26535fe1bdf56477d8732b7180bc7",
+  "manifestSha256": "4e7e7a31d7753f681a7fd4b329e307b4001c4d881149ebca830b712aeced0b28",
+  "testsSha256": "5bbc53246362d8074c62163faa4381afa65d7f21c777d56ad9ef01770b528ba8",
+  "testOutput": "..........................\n----------------------------------------------------------------------\nRan 26 tests in 0.218s\n\nOK\n",
+  "testsPassed": true,
+  "testCount": 26,
+  "scienceImports": false,
+  "payloadRestored": false,
+  "savedFilesUnchanged": 122,
+  "sourcePinsChecked": 138,
+  "changedPacketFiles": [
+    {
+      "packetPath": "worker.py",
+      "reviewedSha256": "d495977d1369ea3b61d5cfe1f7b73b79e7017c09374945d56165d6ebe4f8e689",
+      "newSha256": "1e269ca42dcdebcf1f5e7e069fbda48d6de26535fe1bdf56477d8732b7180bc7"
+    },
+    {
+      "packetPath": "inputs.json",
+      "reviewedSha256": "50f3504feb15c5ba50ee7a475a66059ae98f615787c099fdfd2c38cfb8011b85",
+      "newSha256": "4e7e7a31d7753f681a7fd4b329e307b4001c4d881149ebca830b712aeced0b28"
+    },
+    {
+      "packetPath": "tooling-tests.py",
+      "reviewedSha256": "1fefc9af213781816cec35cdec58093ba6e5efcba5baad11eea559881267d080",
+      "newSha256": "5bbc53246362d8074c62163faa4381afa65d7f21c777d56ad9ef01770b528ba8"
+    },
+    {
+      "packetPath": "review-prompt.md",
+      "reviewedSha256": "225295875bf9a6c1d26cfaf903b4501b59ff2aca6a06db809417e8908e53ad8a",
+      "newSha256": "cb5a0f94e9dd8f57eb1dab15d78d57429b8c9fff5500239eb2e410e50a436ae9"
+    },
+    {
+      "packetPath": "implementation-guide.md",
+      "reviewedSha256": "0f8da3de3fab02e374f1b3c2b3eb57c5b59a947d02bb37c0b7ed63344c0b37d0",
+      "newSha256": "0f2e0373d69e77274a22585e90fe2ec95e0d2855acd4011a7844b92e3867af75"
+    }
+  ],
+  "methodUnchanged": true,
+  "launcherGuardSupervisorUnchanged": true,
+  "priorReviewedPacketIntact": true,
+  "independentBuildClearance": false,
+  "newTrackedDataOver1MiB": []
+}

@@ -1,0 +1,48 @@
+{
+  "status": "READY_FOR_SOURCE_BUILD_ASSESSMENT_ONLY",
+  "recordedUtc": "2026-10-02T10:58:33.819651+00:00",
+  "root": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-source-composition-20261002/build-review",
+  "scope": "Both-face real-omega3 retained source/consumer Fourier and grade/address inventory; native c2 plus inherited direct correction, no integral/matrix/defect sweep/loss",
+  "static": {
+    "status": "STATIC_BUILD_PREPARATION_NO_SCIENCE",
+    "runnerSha256": "bc3b5337a6416d6a7b84bcc21aa1fbde298b3d69d7634d51ec4892ec556c62c0",
+    "launcherSha256": "b06398239090661b80494cdf3af31d329ccaa1c4dc4ce97101a13b923f27967d",
+    "completionMessageSha256": "52b1fb155a254d64994a334d4771f41338ba763b3fe66f02c1dbac2abf869bbd",
+    "packetSha256": "98663fa6f7b78a2d21c1b679787bb364303d647c066d6d2f42d9b9ef200c9c52",
+    "archiveSha256": "b295475056fb5f2714363e9a4ffd41a83090bde34db4e5f854ac87f273efd70b",
+    "files": 144,
+    "bytes": 5885680,
+    "workerSha256": "e85c0b1cd36dfe695b0545e846b64d3109e09b59356f6539ffb928da011b4dcc",
+    "manifestSha256": "c2504c4140c7fb64e4e8d8059c42d9948cc78d3670599cd0d7ba3978f0745894",
+    "scienceLauncherSha256": "acbd287478be6e224523bc86a8818b4fae48614ee8dd16303ccd6b63f0577c8d",
+    "methodSha256": "0f3d796474f2fb5da11e1f0d4ada02e7837877f4ef27990f1b62c1c0cf4c4d0f",
+    "sourceHashesChecked": 143,
+    "payloadRestored": false,
+    "noGateExists": true,
+    "tests": "13 stdlib synthetic/source tests passed; not science",
+    "noReviewVerdict": true
+  },
+  "savedFiles": 122,
+  "sourcePins": 138,
+  "authority": {
+    "status": "STANDING_USER_AUTHORIZED_FIXED_PACKET",
+    "recordedUtc": "2026-10-02T10:58:33.819651+00:00",
+    "packetSha256": "98663fa6f7b78a2d21c1b679787bb364303d647c066d6d2f42d9b9ef200c9c52",
+    "archiveSha256": "b295475056fb5f2714363e9a4ffd41a83090bde34db4e5f854ac87f273efd70b",
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "files": 144,
+    "bytes": 5885680,
+    "AGENTSSha256": "3485cb891f831619eef7de1266fa1ae01da8a140faaa18c97e65c1625098c5bf",
+    "authority": "Standing necessary bounded implementation and established-reviewer consent",
+    "scope": "Both-face real-omega3 retained source/consumer Fourier and grade/address inventory; native c2 plus inherited direct correction, no integral/matrix/defect sweep/loss",
+    "noAutomaticRetry": true,
+    "noPeerReportsIncluded": true
+  },
+  "allSourcePacketArchiveHashesMatch": true,
+  "noScientificImportsOrRestoration": true,
+  "noSourceVerdictInferred": true,
+  "newTrackedFilesOver1MiB": []
+}

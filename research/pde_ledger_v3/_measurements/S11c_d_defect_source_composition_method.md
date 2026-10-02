@@ -155,9 +155,22 @@ R(q)=q/[q+beta], beta=omega/(10-i*omega). Do not rerun the triangular solve.
 The bare symbol belongs to the independently augmented closure, not the original
 native kernel_bridge matrix. Connect its actual raw kernel to rawKernelPlus or
 rawKernelMinus in raw/*-retained-increment.json and to the saved both-face
-closed-before-cancel reference/jet factors. The restored direct/closed-density.json
-is the final closed density: it already includes these two external resolvents.
-Its whole tag Dwhole must NOT receive them a second time. Restore the completed
+closed-before-cancel reference/jet factors. Keep three typed objects separate. The bare closure factor is
+
+    Rprod = qi*qo/[(qi+beta)(qo+beta)].
+
+The factored closed density displays
+
+    E = 1/[(qi+beta)(qo+beta)],  so Rprod = qi*qo*E,
+
+multiplying its OWN full numerator. The complete density is neither Rprod nor E.
+The full raw-to-closed identities are inherited completed observations in the
+per-face actual-closed-reference original-input/canonical-return files; their
+literal zero returns and actual operands must be joined, not recomputed. Do not
+compare `density external factor - Rprod` to zero. Do not identify an independent
+bare D with the whole closed tag Dwhole. Dwhole means the saved COMPLETE closed
+density integrated once with its saved transfer definition; do not multiply it
+by another Rprod, E or qi*qo. Restore the completed
 closed-density joins and their saved parameter/depth maps; do not rederive the
 raw boundary, the factorization, the profile transform or the closure.
 
@@ -188,8 +201,13 @@ In the ordered three-leg representation, restore the saved native trace matrix
 and show that an increment confined to [0,2] has no [1,2] direct contribution:
 the existing T01*reference12 subtraction is unchanged. These are distinct
 algebraic routing checks of the same added address, not independent physics.
-Join the resulting real-3 reference and normal factors to both saved raw factors
-and to the independently certified closed-density maps. Persist all inputs and
+Join the resulting real-3 bare-placeholder reference and normal factors only
+to the saved raw closure/reference factors. Separately retain the typed relation
+Rprod=qi*qo*E and join the complete saved closed-density right operands and their
+argument maps. These are different residuals over different objects. The raw map
+uses increment_difference=l-k, increment_transfer=td, q_i=q(k), q_o=q(l),
+q_h=q(k+td), q_s=q(l-td); the unrestricted saved density uses the corresponding
+grazing_* symbols. All symbols' saved assumptions remain part of the join. Persist all inputs and
 residuals before requiring literal exact zero. Unknown or mismatch stops.
 
 The new direct address type is `INHERITED_DIRECT_WHOLE_OFF_DIAGONAL`: plain dl dk

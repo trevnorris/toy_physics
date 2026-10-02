@@ -1,0 +1,17 @@
+{
+  "status": "STANDING_USER_AUTHORIZED_FIXED_PACKET",
+  "recordedUtc": "2026-10-02T10:58:33.819651+00:00",
+  "packetSha256": "98663fa6f7b78a2d21c1b679787bb364303d647c066d6d2f42d9b9ef200c9c52",
+  "archiveSha256": "b295475056fb5f2714363e9a4ffd41a83090bde34db4e5f854ac87f273efd70b",
+  "reviewers": [
+    "claude",
+    "grok"
+  ],
+  "files": 144,
+  "bytes": 5885680,
+  "AGENTSSha256": "3485cb891f831619eef7de1266fa1ae01da8a140faaa18c97e65c1625098c5bf",
+  "authority": "Standing necessary bounded implementation and established-reviewer consent",
+  "scope": "Both-face real-omega3 retained source/consumer Fourier and grade/address inventory; native c2 plus inherited direct correction, no integral/matrix/defect sweep/loss",
+  "noAutomaticRetry": true,
+  "noPeerReportsIncluded": true
+}

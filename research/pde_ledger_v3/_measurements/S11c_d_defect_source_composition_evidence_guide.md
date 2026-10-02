@@ -71,6 +71,9 @@ a literal export of the original c2 operator. For this distinction inspect:
 
 The method now requires a new independent-placeholder check through selected
 `build_face` assignment text, with a declared formal off-diagonal adapter. This
-is a proposed algebraic check, not native execution. The closed Dwhole already
-contains its resolvents and must not acquire them twice. No middle integral is
+is a proposed algebraic check, not native execution. The bare-placeholder
+closure factor Rprod and the factored density denominator E are different:
+Rprod=qi*qo*E. Full-expression checks compare full numerators as well as factors.
+Dwhole is the complete already-closed density tag, not the bare placeholder or
+either isolated factor. Do not multiply Dwhole by any of them again. No middle integral is
 performed. Sources and consumers compose only at real frequency 3.

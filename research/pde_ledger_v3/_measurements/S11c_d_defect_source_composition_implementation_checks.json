@@ -1,0 +1,17 @@
+{
+  "status": "LOCAL_IMPLEMENTATION_TESTS_AND_SOURCE_PINS_PASS_NO_SCIENCE",
+  "recordedUtc": "2026-10-02T11:00:41.108092+00:00",
+  "workerSha256": "e85c0b1cd36dfe695b0545e846b64d3109e09b59356f6539ffb928da011b4dcc",
+  "testsSha256": "7c803b028cc1fd33d2af824ecc714906ed9b68cc66077ade3841db96f8a1dd2c",
+  "exitCode": 0,
+  "stdout": "",
+  "stderr": ".............\n----------------------------------------------------------------------\nRan 13 tests in 0.112s\n\nOK\n",
+  "tests": 13,
+  "nativeFunctionAndClassRoutesMatch": 10,
+  "sourcePins": 138,
+  "packetSha256": "98663fa6f7b78a2d21c1b679787bb364303d647c066d6d2f42d9b9ef200c9c52",
+  "scientificImportsOrRestoration": false,
+  "scientificAcceptance": false,
+  "newGeneratedTrackedFilesAbove1MiB": [],
+  "noExecutionGateExists": true
+}

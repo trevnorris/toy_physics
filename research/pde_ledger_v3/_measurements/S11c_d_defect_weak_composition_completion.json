@@ -1,0 +1,451 @@
+{
+  "status": "SUPPORTED_SOURCE_JOINED_GLOBAL_WEAK_PRESSURE_CERTIFICATE",
+  "recordedUtc": "2026-10-02T18:23:12.703306+00:00",
+  "root": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-weak-composition-20261002/diagnostic-01",
+  "gateCommit": "69e885d8",
+  "buildReviewCommit": "cea9df97",
+  "workerSha256": "77ec3fa030b5a5a839c31b2be1d8dd76b392b06f3cbf5b859870a6f20b56740c",
+  "manifestSha256": "d6797efd88af2bb08535072031d4d1ffc4218d87929535158b7015a652278fd8",
+  "gateSha256": "be73597881a7386c439aecfb6ae072b1c36d904df1c4786122d39e736a96929f",
+  "inspectionChecks": 55442,
+  "allInspectionChecksPassed": true,
+  "acceptanceScope": "Retained pressure contribution defines a continuous bilinear Schwartz weak action, conditional on the assessed analytic induction, uniform integrability, dominated convergence and saved dependencies. No local slab operator, finite inverse, plane-wave or loss acceptance.",
+  "cost": {
+    "workerSeconds": 9.727457568980753,
+    "guardSeconds": 10.38463761494495,
+    "peakBytes": 483966976,
+    "swapBytes": 0,
+    "memoryEvents": 0,
+    "resourceSamples": 7
+  },
+  "coverage": {
+    "completedStages": 1,
+    "artifacts": 581,
+    "literalZeroReturns": 127,
+    "inheritedZeroReturns": 48,
+    "newFormalResponsiveControls": 6,
+    "priorControlsRestored": 4,
+    "gradeCells": 320,
+    "addressEntries": 13260,
+    "sourceJets": 39,
+    "coefficientFields": 34,
+    "fieldDegrees": {
+      "0": 8,
+      "1": 8,
+      "4": 9,
+      "3": 5,
+      "5": 4
+    },
+    "savedCopies": 202,
+    "sourcePosthashes": 549,
+    "sourceSnapshots": 347,
+    "additionalIdentityCopies": 12,
+    "files": 789,
+    "bytes": 107572509
+  },
+  "controls": [
+    {
+      "name": "plus-Leibniz-interchange",
+      "movement": {
+        "text": "-37/1389750 - 11*I/694875",
+        "srepr": "Add(Rational(-37, 1389750), Mul(Integer(-1), Rational(11, 694875), I))"
+      },
+      "certificate": {
+        "finiteNonzero": true,
+        "numerator": {
+          "text": "-37/1389750 - 11*I/694875",
+          "srepr": "Add(Rational(-37, 1389750), Mul(Integer(-1), Rational(11, 694875), I))"
+        },
+        "denominator": {
+          "text": "1",
+          "srepr": "Integer(1)"
+        },
+        "components": [
+          [
+            {
+              "text": "-37/1389750",
+              "srepr": "Rational(-37, 1389750)"
+            },
+            {
+              "text": "-11/694875",
+              "srepr": "Rational(-11, 694875)"
+            }
+          ],
+          [
+            {
+              "text": "1",
+              "srepr": "Integer(1)"
+            },
+            {
+              "text": "0",
+              "srepr": "Integer(0)"
+            }
+          ]
+        ]
+      },
+      "formalCoefficientOnly": true
+    },
+    {
+      "name": "plus-omit-H-contact",
+      "movement": {
+        "text": "141/3073600 - 129*I/1536800",
+        "srepr": "Add(Rational(141, 3073600), Mul(Integer(-1), Rational(129, 1536800), I))"
+      },
+      "certificate": {
+        "finiteNonzero": true,
+        "numerator": {
+          "text": "141/3073600 - 129*I/1536800",
+          "srepr": "Add(Rational(141, 3073600), Mul(Integer(-1), Rational(129, 1536800), I))"
+        },
+        "denominator": {
+          "text": "1",
+          "srepr": "Integer(1)"
+        },
+        "components": [
+          [
+            {
+              "text": "141/3073600",
+              "srepr": "Rational(141, 3073600)"
+            },
+            {
+              "text": "-129/1536800",
+              "srepr": "Rational(-129, 1536800)"
+            }
+          ],
+          [
+            {
+              "text": "1",
+              "srepr": "Integer(1)"
+            },
+            {
+              "text": "0",
+              "srepr": "Integer(0)"
+            }
+          ]
+        ]
+      },
+      "formalCoefficientOnly": true
+    },
+    {
+      "name": "minus-Leibniz-interchange",
+      "movement": {
+        "text": "-37/1389750 - 11*I/694875",
+        "srepr": "Add(Rational(-37, 1389750), Mul(Integer(-1), Rational(11, 694875), I))"
+      },
+      "certificate": {
+        "finiteNonzero": true,
+        "numerator": {
+          "text": "-37/1389750 - 11*I/694875",
+          "srepr": "Add(Rational(-37, 1389750), Mul(Integer(-1), Rational(11, 694875), I))"
+        },
+        "denominator": {
+          "text": "1",
+          "srepr": "Integer(1)"
+        },
+        "components": [
+          [
+            {
+              "text": "-37/1389750",
+              "srepr": "Rational(-37, 1389750)"
+            },
+            {
+              "text": "-11/694875",
+              "srepr": "Rational(-11, 694875)"
+            }
+          ],
+          [
+            {
+              "text": "1",
+              "srepr": "Integer(1)"
+            },
+            {
+              "text": "0",
+              "srepr": "Integer(0)"
+            }
+          ]
+        ]
+      },
+      "formalCoefficientOnly": true
+    },
+    {
+      "name": "minus-omit-H-contact",
+      "movement": {
+        "text": "141/3073600 - 129*I/1536800",
+        "srepr": "Add(Rational(141, 3073600), Mul(Integer(-1), Rational(129, 1536800), I))"
+      },
+      "certificate": {
+        "finiteNonzero": true,
+        "numerator": {
+          "text": "141/3073600 - 129*I/1536800",
+          "srepr": "Add(Rational(141, 3073600), Mul(Integer(-1), Rational(129, 1536800), I))"
+        },
+        "denominator": {
+          "text": "1",
+          "srepr": "Integer(1)"
+        },
+        "components": [
+          [
+            {
+              "text": "141/3073600",
+              "srepr": "Rational(141, 3073600)"
+            },
+            {
+              "text": "-129/1536800",
+              "srepr": "Rational(-129, 1536800)"
+            }
+          ],
+          [
+            {
+              "text": "1",
+              "srepr": "Integer(1)"
+            },
+            {
+              "text": "0",
+              "srepr": "Integer(0)"
+            }
+          ]
+        ]
+      },
+      "formalCoefficientOnly": true
+    },
+    {
+      "name": "plus-wrong-reflected-root",
+      "movement": {
+        "text": "-47/2305200 + 43*I/1152600",
+        "srepr": "Add(Rational(-47, 2305200), Mul(Rational(43, 1152600), I))"
+      },
+      "certificate": {
+        "finiteNonzero": true,
+        "numerator": {
+          "text": "-47/2305200 + 43*I/1152600",
+          "srepr": "Add(Rational(-47, 2305200), Mul(Rational(43, 1152600), I))"
+        },
+        "denominator": {
+          "text": "1",
+          "srepr": "Integer(1)"
+        },
+        "components": [
+          [
+            {
+              "text": "-47/2305200",
+              "srepr": "Rational(-47, 2305200)"
+            },
+            {
+              "text": "43/1152600",
+              "srepr": "Rational(43, 1152600)"
+            }
+          ],
+          [
+            {
+              "text": "1",
+              "srepr": "Integer(1)"
+            },
+            {
+              "text": "0",
+              "srepr": "Integer(0)"
+            }
+          ]
+        ]
+      },
+      "formalCoefficientOnly": true
+    },
+    {
+      "name": "minus-wrong-reflected-root",
+      "movement": {
+        "text": "-47/2305200 + 43*I/1152600",
+        "srepr": "Add(Rational(-47, 2305200), Mul(Rational(43, 1152600), I))"
+      },
+      "certificate": {
+        "finiteNonzero": true,
+        "numerator": {
+          "text": "-47/2305200 + 43*I/1152600",
+          "srepr": "Add(Rational(-47, 2305200), Mul(Rational(43, 1152600), I))"
+        },
+        "denominator": {
+          "text": "1",
+          "srepr": "Integer(1)"
+        },
+        "components": [
+          [
+            {
+              "text": "-47/2305200",
+              "srepr": "Rational(-47, 2305200)"
+            },
+            {
+              "text": "43/1152600",
+              "srepr": "Rational(43, 1152600)"
+            }
+          ],
+          [
+            {
+              "text": "1",
+              "srepr": "Integer(1)"
+            },
+            {
+              "text": "0",
+              "srepr": "Integer(0)"
+            }
+          ]
+        ]
+      },
+      "formalCoefficientOnly": true
+    }
+  ],
+  "restoredControls": [
+    {
+      "name": "THETA_BALANCE-plus-normal-q-l-to-r",
+      "addressId": 9126,
+      "nativeRoute": {
+        "row": "THETA_BALANCE",
+        "face": "plus",
+        "sign": 1,
+        "normalJet": {
+          "text": "I*reference_qo",
+          "srepr": "Mul(I, Symbol('reference_qo'))"
+        }
+      },
+      "functionCalled": false,
+      "movement": {
+        "text": "371/1248650 - 539*I/384200",
+        "srepr": "Add(Rational(371, 1248650), Mul(Integer(-1), Rational(539, 384200), I))"
+      },
+      "status": "RESTORED_PRIOR_CONTROL_RETURN"
+    },
+    {
+      "name": "THETA_BALANCE-minus-normal-q-l-to-r",
+      "addressId": 10452,
+      "nativeRoute": {
+        "row": "THETA_BALANCE",
+        "face": "minus",
+        "sign": -1,
+        "normalJet": {
+          "text": "-I*reference_qo",
+          "srepr": "Mul(Integer(-1), I, Symbol('reference_qo'))"
+        }
+      },
+      "functionCalled": false,
+      "movement": {
+        "text": "-371/1248650 + 539*I/384200",
+        "srepr": "Add(Rational(-371, 1248650), Mul(Rational(539, 384200), I))"
+      },
+      "status": "RESTORED_PRIOR_CONTROL_RETURN"
+    },
+    {
+      "name": "E_W_BALANCE-plus-normal-q-l-to-r",
+      "addressId": 11778,
+      "nativeRoute": {
+        "row": "E_W_BALANCE",
+        "face": "plus",
+        "sign": 1,
+        "normalJet": {
+          "text": "I*reference_qo",
+          "srepr": "Mul(I, Symbol('reference_qo'))"
+        }
+      },
+      "functionCalled": false,
+      "movement": {
+        "text": "371/1248650 - 539*I/384200",
+        "srepr": "Add(Rational(371, 1248650), Mul(Integer(-1), Rational(539, 384200), I))"
+      },
+      "status": "RESTORED_PRIOR_CONTROL_RETURN"
+    },
+    {
+      "name": "E_W_BALANCE-minus-normal-q-l-to-r",
+      "addressId": 13104,
+      "nativeRoute": {
+        "row": "E_W_BALANCE",
+        "face": "minus",
+        "sign": -1,
+        "normalJet": {
+          "text": "-I*reference_qo",
+          "srepr": "Mul(Integer(-1), I, Symbol('reference_qo'))"
+        }
+      },
+      "functionCalled": false,
+      "movement": {
+        "text": "-371/1248650 + 539*I/384200",
+        "srepr": "Add(Rational(-371, 1248650), Mul(Rational(539, 384200), I))"
+      },
+      "status": "RESTORED_PRIOR_CONTROL_RETURN"
+    }
+  ],
+  "limits": {
+    "memory.max": "4294967296",
+    "memory.swap.max": "0",
+    "pids.max": "32",
+    "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-e533d5bd8836.service",
+    "nice": 0,
+    "affinity": [
+      15
+    ],
+    "threads": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1",
+      "VECLIB_MAXIMUM_THREADS": "1",
+      "BLIS_NUM_THREADS": "1"
+    },
+    "nativeAddressSpaceBytes": [
+      4294967296,
+      4294967296
+    ],
+    "systemd.CPUAffinity": "15",
+    "affinityEnforcement": "systemd-and-inherited-process"
+  },
+  "duration": {
+    "verified": true,
+    "actual": {
+      "RuntimeMaxUSec": "infinity",
+      "Restart": "no"
+    },
+    "wallDeadlineSeconds": null,
+    "inactivityDeadlineSeconds": null
+  },
+  "coordinator": {
+    "exitCode": 0,
+    "wallSeconds": 10.443397374008782,
+    "scientificAcceptance": "PENDING_ACTUAL_INSPECTION"
+  },
+  "outcome": {
+    "exitCode": 0,
+    "wallSeconds": 10.38463761494495,
+    "unit": "s11c-guard-e533d5bd8836",
+    "stderrBytes": 0,
+    "limitsVerified": true,
+    "childOutcome": {
+      "exitCode": 0,
+      "guardReason": null,
+      "wallSeconds": 10.31858630105853,
+      "childPid": 2695652
+    }
+  },
+  "independentBuildClearance": true,
+  "noOptionalEditsAfterClearance": true,
+  "limitations": {
+    "status": "SOURCE_JOINED_GLOBAL_WEAK_PRESSURE_CERTIFICATE",
+    "testSpace": "S(R) x S(R), complex bilinear",
+    "ordinaryGrowthDegreeAtMost": 3,
+    "heightAction": "subtracted PV plus contact; Holder 1/2 bound, weighted by Pk^(3/2)",
+    "assessment": "Analytic induction, uniform integrability and dominated convergence independently assessed; not machine measure theory",
+    "scope": "real omega3 source/consumer; response-only outgoing regularization; strict rest bulk LAB_HELD/RHO4; cs[1,2]; all real internal momenta",
+    "wholeDirectOnce": true,
+    "nativeIterationOnce": true,
+    "hiddenProjection": false,
+    "planeWaveScattering": false,
+    "finiteInverse": false,
+    "loss": false,
+    "sourceDimensions": "inherited/required, not reconstructed",
+    "localSlabPartIncluded": false
+  },
+  "nonblockingReviewLimitations": [
+    "Wave multipliers are inherited inventory evidence, not newly reconstructed here.",
+    "Source dimensions inherited/required, not a new dimensional proof.",
+    "Analytic universal estimates and convergence are assessed arguments, not machine measure theory.",
+    "Controls establish formal sensitivity; no field or convolution value."
+  ],
+  "noScientificRestorationDuringInspection": true,
+  "scientificValidationJobLaunched": false,
+  "protectedSuffixSha256": "f01024512c9a028e7e524e5a95b5c455be42e125d10c36f94e20493109b013c2",
+  "next": "Read-only assessment of the remaining boundary between this weak pressure certificate and a corrected finite pilot; no immediate integral or finite solve."
+}

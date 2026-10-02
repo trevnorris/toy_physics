@@ -1,0 +1,139 @@
+{
+  "status": "REVIEWED_INSTRUMENT_LAUNCHED_AND_COMPLETION_INSPECTED",
+  "recordedUtc": "2026-10-02T18:29:18.679041+00:00",
+  "recordedAfterCompletion": true,
+  "root": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-weak-composition-20261002/diagnostic-01",
+  "gateCommit": "69e885d8",
+  "buildClearanceCommit": "cea9df97",
+  "gateSha256": "be73597881a7386c439aecfb6ae072b1c36d904df1c4786122d39e736a96929f",
+  "workerSha256": "77ec3fa030b5a5a839c31b2be1d8dd76b392b06f3cbf5b859870a6f20b56740c",
+  "manifestSha256": "d6797efd88af2bb08535072031d4d1ffc4218d87929535158b7015a652278fd8",
+  "launch": {
+    "jobPid": 2695640,
+    "watcherPid": 2695641,
+    "gateSha256": "be73597881a7386c439aecfb6ae072b1c36d904df1c4786122d39e736a96929f",
+    "command": [
+      "/usr/bin/python",
+      "/var/projects/toy_physics/scripts/s11c_guarded_run.py",
+      "--pool",
+      "s11c-near-unity",
+      "--memory-gib",
+      "4",
+      "--tasks-max",
+      "32",
+      "--log-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-defect-weak-composition-20261002/diagnostic-01/resource-guard",
+      "--",
+      "/usr/bin/python",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+      "--parallel-prerequisite-read",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-defect-weak-composition-20261002/diagnostic-01",
+      "--stage",
+      "defect_weak_composition",
+      "--",
+      "/usr/bin/python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_weak_composition.py",
+      "--out",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-defect-weak-composition-20261002/diagnostic-01/complete",
+      "--inputs",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_weak_composition_inputs.json",
+      "--gate",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_weak_composition_gate.json"
+    ],
+    "thread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+    "automaticRetry": false
+  },
+  "stageStart": {
+    "utc": "2026-10-02T18:19:29.109675+00:00",
+    "gateSha256": "be73597881a7386c439aecfb6ae072b1c36d904df1c4786122d39e736a96929f",
+    "command": [
+      "/usr/bin/python",
+      "/var/projects/toy_physics/scripts/s11c_guarded_run.py",
+      "--pool",
+      "s11c-near-unity",
+      "--memory-gib",
+      "4",
+      "--tasks-max",
+      "32",
+      "--log-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-defect-weak-composition-20261002/diagnostic-01/resource-guard",
+      "--",
+      "/usr/bin/python",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+      "--parallel-prerequisite-read",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-defect-weak-composition-20261002/diagnostic-01",
+      "--stage",
+      "defect_weak_composition",
+      "--",
+      "/usr/bin/python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_weak_composition.py",
+      "--out",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-defect-weak-composition-20261002/diagnostic-01/complete",
+      "--inputs",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_weak_composition_inputs.json",
+      "--gate",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_weak_composition_gate.json"
+    ]
+  },
+  "hookState": {
+    "status": "finished",
+    "watcherPid": 2695641,
+    "jobPid": 2695640,
+    "thread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+    "startedUtc": "2026-10-02T18:19:28.552113+00:00",
+    "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
+    "messageSha256": "b1eda8676f0b28c64f6cc1fb7a803c2a5901e74dab9b2fc6b0085381f3c06c21",
+    "notifications": {
+      "completion": {
+        "status": "queued",
+        "exitCode": 0,
+        "finishedUtc": "2026-10-02T18:19:39.673841+00:00"
+      }
+    }
+  },
+  "guardUnit": "s11c-guard-e533d5bd8836",
+  "actualResourceLimits": {
+    "memory.max": "4294967296",
+    "memory.swap.max": "0",
+    "pids.max": "32",
+    "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-e533d5bd8836.service",
+    "nice": 0,
+    "affinity": [
+      15
+    ],
+    "threads": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1",
+      "VECLIB_MAXIMUM_THREADS": "1",
+      "BLIS_NUM_THREADS": "1"
+    },
+    "nativeAddressSpaceBytes": [
+      4294967296,
+      4294967296
+    ],
+    "systemd.CPUAffinity": "15",
+    "affinityEnforcement": "systemd-and-inherited-process"
+  },
+  "durationValidation": {
+    "verified": true,
+    "actual": {
+      "RuntimeMaxUSec": "infinity",
+      "Restart": "no"
+    },
+    "wallDeadlineSeconds": null,
+    "inactivityDeadlineSeconds": null
+  },
+  "hookArmedBeforeStart": true,
+  "sourceSnapshotsChecked": 347,
+  "additionalIdentityPinsChecked": 12,
+  "scientificResultAcceptance": "SUPPORTED_SOURCE_JOINED_GLOBAL_WEAK_PRESSURE_CERTIFICATE",
+  "automaticRetry": false,
+  "modelPolling": false,
+  "canonicalSharedGuardChanged": false
+}
